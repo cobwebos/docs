@@ -1,47 +1,47 @@
 ---
 title: 针对受限制请求的指南
-description: 了解如何进行分组、错开、分页和并行查询，以避免 Azure Resource Graph 限制请求。
-ms.date: 12/02/2019
+description: 了解如何分组、错开、分页以及并行查询，以避免 Azure Resource Graph 限制请求。
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259846"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682061"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中受限请求的指南
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中的受限制请求的指南
 
-创建编程代码和频繁使用 Azure Resource Graph 数据时，应考虑到限制对查询结果的影响。 更改请求数据的方式可能有助于你和你的组织避免受到限制，并在 Azure 资源方面保持及时的数据流。
+创建编程和频繁使用 Azure Resource Graph 数据时，应考虑限制会如何影响查询的结果。 更改请求数据的方式可帮助你和你的组织避免受到限制并维护有关 Azure 资源的及时数据流。
 
-本文介绍与在 Azure Resource Graph 中创建查询相关的四个方面和模式：
+本文涵盖与在 Azure Resource Graph 中创建查询相关的四个领域和模式：
 
 - 了解限制标头
-- 分组查询
+- 对查询分组
 - 错开查询
 - 分页的影响
 
 ## <a name="understand-throttling-headers"></a>了解限制标头
 
-Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如，某个用户可以每隔 5 秒最多发送 15 个查询，而不会受到限制。 配额值由多种因素决定，并可能会发生更改。
+Azure Resource Graph 基于时段为每个用户分配配额数量。 例如，用户可以在每 5 秒的时段内最多发送 15 个查询，而不会受到限制。 配额值由许多因素确定，可能会发生更改。
 
 在每个查询响应中，Azure Resource Graph 会添加两个限制标头：
 
 - `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
 - `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间。
 
-为了演示标头的工作原理，让我们看看一个包含标头以及值 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 的查询响应。
+为了说明标头的工作方式，我们来看看具有标头并且值为 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 查询响应。
 
-- 在接下来的 3 秒内，最多可以提交 10 个查询，这不会受到限制。
-- 3 秒后，`x-ms-user-quota-remaining` 和 `x-ms-user-quota-resets-after` 的值将分别重置为 `15` 和 `00:00:05`。
+- 在接下来的 3 秒内，最多可以提交 10 个查询，而不会受到限制。
+- 在 3 秒后，`x-ms-user-quota-remaining` 和 `x-ms-user-quota-resets-after` 的值将分别重置为 `15` 和 `00:00:05`。
 
-有关演示如何使用标头回退查询请求的示例，请参阅[并行查询](#query-in-parallel)中的示例。 
+若要查看使用标头在查询请求中进行回退的示例，请参阅[并行查询](#query-in-parallel)中的示例。
 
-## <a name="grouping-queries"></a>分组查询
+## <a name="grouping-queries"></a>对查询分组
 
-按订阅、资源组或单个资源分组查询比并行化查询更为有效。 较大查询的配额成本通常小于众多有针对性的小型查询的配额成本。 建议使组大小小于 300  。
+按订阅、资源组或单个资源对查询分组比并行查询更加高效。 较大查询的配额成本通常低于许多小型定向查询的配额成本。 组大小建议小于 300。
 
-- 优化不当的方法示例
+- 不良优化方法的示例
 
   ```csharp
   // NOT RECOMMENDED
@@ -62,7 +62,7 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
   }
   ```
 
-- 优化的分组方法示例 #1
+- 优化分组方法的示例 #1
 
   ```csharp
   // RECOMMENDED
@@ -85,7 +85,7 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
   }
   ```
 
-- 优化的分组方法示例 #2，用于在一个查询中获取多个资源
+- 用于在一个查询中获取多个资源的优化分组方法的示例 #2
 
   ```kusto
   Resources | where id in~ ({resourceIdGroup}) | project name, type
@@ -115,15 +115,15 @@ Azure Resource Graph 根据时间范围为每个用户分配配额数。 例如�
 
 ## <a name="staggering-queries"></a>错开查询
 
-由于限制的实施方式，我们建议将查询错开。 也就是说，不要同时发送 60 个查询，而是在四个 5 秒时限内将查询错开：
+由于强制实施限制的方式，建议错开查询。 也就是说，在四个 5 秒时段内错开查询，而不是同时发送 60 个查询：
 
-- 未错开的查询计划
+- 非错开查询计划
 
   | 查询计数         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
   | 时间间隔（秒） | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- 错开的查询计划
+- 交错查询计划
 
   | 查询计数         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
@@ -153,7 +153,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-尽管我们建议使用分组而不是并行化，但有时，并不能轻松地分组查询。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退： 
+虽然建议进行分组而不是采用并行，不过有时候无法轻松地对查询分组。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 下面的示例演示如何在这类情形中基于限制标头进行回退：
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -187,11 +187,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>分页
 
-由于 Azure Resource Graph 在单个查询响应中最多返回 1000 个条目，因此你可能需要将查询[分页](./work-with-data.md#paging-results)才能获取所需的完整数据集。 但是，某些 Azure Resource Graph 客户端处理分页的方式与其他客户端不同。
+由于 Azure Resource Graph 在单个查询响应中最多返回 1000 个条目，因此可能需要对查询[分页](./work-with-data.md#paging-results)，以获取所查找的完整数据集。 但是，某些 Azure Resource Graph 客户端处理分页的方式与其他客户端不同。
 
 - C# SDK
 
-  使用 ResourceGraph SDK 时，需要通过将上一查询响应中返回的跳过标记传递给下一个分页查询，来处理分页。 这种设计意味着需要收集所有分页调用的结果，并最终将其组合到一起。 在这种情况下，发送的每个分页查询都会占用一个查询配额：
+  使用 ResourceGraph SDK 时，需要通过将从上一个查询响应返回的跳过标记传递到下一个分页查询来处理分页。 这种设计意味着需要从所有分页调用收集结果，最后将它们合并在一起。 在这种情况下，发送的每个分页查询都采用一个查询配额：
 
   ```csharp
   var results = new List<object>();
@@ -216,7 +216,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 - Azure CLI/Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 的查询将自动分页，以最多提取 5000 个条目。 查询结果将返回所有分页调用中的条目的组合列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
+  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在下面的示例中，运行一次查询可能会消耗最多五个查询配额：
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
@@ -226,19 +226,19 @@ async Task ExecuteQueries(IEnumerable<string> queries)
   Search-AzGraph -Query 'Resources | project id, name, type' -First 5000
   ```
 
-## <a name="still-get-throttled"></a>仍然受到限制？
+## <a name="still-get-throttled"></a>仍受到限制？
 
-如果在运用上述建议后仍然受到限制，请联系支持团队 ([resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com))。
+如果在执行以上建议后仍受到限制，请通过 [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) 与团队联系。
 
 请提供以下详细信息：
 
-- 特定的用例，以及需要提高限制的业务驱动因素。
-- 你有权访问多少资源？ 单个查询返回了多少资源？
-- 你感兴趣的资源类型有哪些？
-- 你的查询模式是什么？ 每 Y 秒发送 X 个查询，等等。
+- 对更高限制的特定用例和业务驱动因素需求。
+- 你可以访问多少资源？ 从单个查询返回多少资源？
+- 你对哪些类型的资源感兴趣？
+- 你的查询模式是什么？ 每 Y 秒 X 个查询，等等。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[初学者查询](../samples/starter.md)中了解使用的语言。
-- 在[高级查询](../samples/advanced.md)中了解高级用法。
+- 请参阅[初学者查询](../samples/starter.md)中使用的语言。
+- 请参阅[高级查询](../samples/advanced.md)中的高级用法。
 - 详细了解如何[浏览资源](explore-resources.md)。

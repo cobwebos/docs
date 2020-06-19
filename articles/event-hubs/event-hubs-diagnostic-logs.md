@@ -16,54 +16,54 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 0fb5da965a9b13667b8a128e83a5a4cd2c2b28d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691838"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649801"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../azure-monitor/platform/platform-logs-overview.md)**：这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。 可以通过在 Azure 门户的事件中心命名空间的左窗格中选择 "**活动日志**" 来查看活动日志条目。 例如： "创建或更新命名空间"，"创建或更新事件中心"。
+* **[活动日志](../azure-monitor/platform/platform-logs-overview.md)** ：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。 要查看活动日志条目，可以在 Azure 门户的事件中心命名空间的左窗格中选择“活动日志”。 例如：“创建或更新命名空间”、“创建或更新事件中心”。
 
     ![事件中心命名空间的活动日志](./media/event-hubs-diagnostic-logs/activity-log.png)
-* **[诊断日志](../azure-monitor/platform/platform-logs-overview.md)**：诊断日志提供有关使用 API 或通过语言 SDK 上的管理客户端对命名空间执行的操作和操作的更丰富信息。 
+* **[诊断日志](../azure-monitor/platform/platform-logs-overview.md)** ：通过使用 API 或语言 SDK 上的管理客户端，诊断日志可提供有关对命名空间所执行操作的更丰富的信息。 
     
-    以下部分说明如何为事件中心命名空间启用诊断日志。
+    下面的部分演示如何对事件中心命名空间启用诊断日志。
 
 ## <a name="enable-diagnostic-logs"></a>启用诊断日志
 诊断日志默认已禁用。 若要启用诊断日志，请执行以下步骤：
 
 1.  在 [Azure 门户](https://portal.azure.com)中，导航到你的事件中心命名空间。 
-2. 在左窗格中选择 "**监视**" 下的 "**诊断设置**"，然后选择 " **+ 添加诊断设置**"。 
+2. 在左窗格中，选择“监视”下的“诊断设置”，然后选择“+ 添加诊断设置”  。 
 
-    !["诊断设置" 页-添加诊断设置](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
-4. 在 "**类别详细信息**" 部分中，选择要启用的**诊断日志类型**。 稍后会在本文中找到有关这些类别的详细信息。 
-5. 在 "**目标详细信息**" 部分中，设置所需的存档目标（目标）;例如，存储帐户、事件中心或 Log Analytics 工作区。
+    ![诊断设置页面 - 添加诊断设置](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. 在“类别详细信息”部分中，选择要启用的诊断日志类型 。 本文的稍后部分将介绍有关这些类别的详细信息。 
+5. 在“目标位置详细信息”部分中，设置所需的存档目标（目标位置）；例如，存储帐户、事件中心或 Log Analytics 工作区。
 
-    !["添加诊断设置" 页](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
-6.  在工具栏上选择 "**保存**" 以保存诊断设置。
+    ![“添加诊断设置”页面](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
+6.  选择工具栏上的“保存”以保存诊断设置。
 
-    新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中****。
+    新设置在大约 10 分钟后生效。 在此之后，日志将出现在“诊断日志”窗格上配置的存档目标中。
 
     有关配置诊断的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="diagnostic-logs-categories"></a>诊断日志类别
 
-事件中心捕获以下类别的诊断日志：
+事件中心会捕获以下类别的诊断日志：
 
 | 类别 | 说明 | 
 | -------- | ----------- | 
 | 存档日志 | 捕获有关[事件中心捕获](event-hubs-capture-overview.md)操作的信息，特别是与捕获错误相关的日志。 |
-| 操作日志 | 捕获在 Azure 事件中心命名空间上执行的所有管理操作。 由于在 Azure 事件中心进行的数据操作量很大，因此不会捕获数据操作。 |
-| 自动缩放日志 | 捕获在事件中心命名空间上执行的自动膨胀操作。 |
+| 操作日志 | 捕获在 Azure 事件中心命名空间中执行的所有管理操作。 由于在 Azure 事件中心进行的数据操作量较大，因此不会捕获数据操作。 |
+| 自动缩放日志 | 捕获在事件中心命名空间中执行的自动膨胀操作。 |
 | Kafka 协调器日志 | 捕获与事件中心相关的 Kafka 协调器操作。 |
-| Kafka 用户错误日志 | 捕获有关事件中心调用的 Kafka Api 的信息。 |
-| 事件中心虚拟网络（VNet）连接事件 | 捕获有关将流量发送到事件中心的 IP 地址和虚拟网络的信息。 |
-| 客户托管的密钥用户日志 | 捕获与客户托管的密钥相关的操作。 |
+| Kafka 用户错误日志 | 捕获事件中心中调用的 Kafka API 的相关信息。 |
+| 事件中心虚拟网络 (VNet) 连接事件 | 捕获向事件中心发送流量的 IP 地址和虚拟网络的相关信息。 |
+| 客户管理的密钥用户日志 | 捕获与客户管理的密钥相关的操作。 |
 
 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目均包含字符串字段，这些字段采用以下部分所述的格式。
@@ -77,10 +77,10 @@ ms.locfileid: "82691838"
 TaskName | 描述失败的任务
 ActivityId | 用于跟踪的内部 ID
 trackingId | 用于跟踪的内部 ID
-ResourceId | Azure 资源管理器资源 ID
+resourceId | Azure 资源管理器资源 ID
 eventHub | 事件中心的完整名称（包括命名空间名称）
-partitionId | 要写入的事件中心分区
-archiveStep | 可能的值： ArchiveFlushWriter、DestinationInit
+partitionId | 要写入到的事件中心分区
+archiveStep | 可能值：ArchiveFlushWriter、DestinationInit
 startTime | 失败开始时间
 失败 | 发生失败的次数
 durationInSeconds | 失败持续时间
@@ -112,9 +112,9 @@ category | ArchiveLogs
 
 名称 | 说明
 ------- | -------
-ActivityId | 用于跟踪的内部 ID |
+ActivityId | 内部 ID，用于跟踪目的 |
 EventName | 操作名称 |
-ResourceId | Azure 资源管理器资源 ID |
+resourceId | Azure 资源管理器资源 ID |
 SubscriptionId | 订阅 ID |
 EventTimeString | 操作时间 |
 EventProperties | 操作属性 |
@@ -140,26 +140,36 @@ Example:
 ```
 
 ## <a name="autoscale-logs-schema"></a>自动缩放日志架构
-自动缩放日志 JSON 包含下表中列出的元素：
+自动缩放日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- | 
-| TrackingId | 用于跟踪的内部 ID |
+| TrackingId | 内部 ID，用于跟踪目的 |
 | ResourceId | Azure 资源管理器资源 ID。 |
-| 消息 | 信息性消息，提供有关自动膨胀操作的详细信息。 此消息包含给定命名空间的吞吐量单位的以前值和当前值，并触发了 TU 的陀螺形。 |
+| 消息 | 信息性消息，提供有关自动膨胀操作的详细信息。 此消息包含给定命名空间的吞吐量单位的以前值和当前值，以及触发了 TU 膨胀的因素。 |
+
+下面是一个示例自动缩放事件： 
+
+```json
+{
+    "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
+}
+```
 
 ## <a name="kafka-coordinator-logs-schema"></a>Kafka 协调器日志架构
-Kafka 协调器日志 JSON 包含下表中列出的元素：
+Kafka 协调器日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- | 
 | RequestId | 请求 ID，用于跟踪目的 |
 | ResourceId | Azure 资源管理器资源 ID |
-| 操作 | 在组协调期间完成的操作的名称 |
+| Operation | 组协调期间执行的操作的名称 |
 | ClientId | 客户端 ID |
 | NamespaceName | 命名空间名称 | 
 | SubscriptionId | Azure 订阅 ID |
-| 消息 | 信息性或警告消息，提供有关在组协调期间完成的操作的详细信息。 |
+| 消息 | 信息性或警告消息，提供有关组协调期间执行的操作的详细信息。 |
 
 ### <a name="example"></a>示例
 
@@ -177,7 +187,7 @@ Kafka 协调器日志 JSON 包含下表中列出的元素：
 ```
 
 ## <a name="kafka-user-error-logs-schema"></a>Kafka 用户错误日志架构
-Kafka 用户错误日志 JSON 包含下表中列出的元素：
+Kafka 用户错误日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- |
@@ -192,16 +202,16 @@ Kafka 用户错误日志 JSON 包含下表中列出的元素：
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中心虚拟网络连接事件架构
 
-事件中心虚拟网络（VNet）连接事件 JSON 包含下表中列出的元素：
+事件中心虚拟网络 (VNet) 连接事件 JSON 包含下表列出的元素：
 
 | 名称 | 说明 |
 | ---  | ----------- | 
 | SubscriptionId | Azure 订阅 ID |
 | NamespaceName | 命名空间名称 |
 | IPAddress | 连接到事件中心服务的客户端的 IP 地址 |
-| 操作 | 事件中心服务在评估连接请求时执行的操作。 支持的操作为 "**接受连接**" 和 "**拒绝连接**"。 |
-| 原因 | 提供操作执行的原因 |
-| 计数 | 给定操作的出现次数 |
+| 操作 | 评估连接请求时事件中心服务执行的操作。 支持的操作为“接受连接”和“拒绝连接” 。 |
+| 原因 | 提供执行操作的原因 |
+| Count | 给定操作的发生次数 |
 | ResourceId | Azure 资源管理器资源 ID。 |
 
 ### <a name="example"></a>示例
@@ -219,17 +229,17 @@ Kafka 用户错误日志 JSON 包含下表中列出的元素：
 }
 ```
 
-## <a name="customer-managed-key-user-logs"></a>客户托管的密钥用户日志
-客户托管的密钥用户日志 JSON 包括下表中列出的元素：
+## <a name="customer-managed-key-user-logs"></a>客户管理的密钥用户日志
+客户管理的密钥用户日志 JSON 包括下表列出的元素：
 
 | 名称 | 说明 |
 | ---- | ----------- | 
-| 类别 | 消息类别的类型。 它是下列值之一：**错误**和**信息** |
+| 类别 | 消息类别的类型。 以下值之一：“错误”和“信息”  |
 | ResourceId | 内部资源 ID，包括 Azure 订阅 ID 和命名空间名称 |
 | KeyVault | Key Vault 资源的名称 |
-| Key | Key Vault 密钥的名称。 |
+| 密钥 | Key Vault 密钥的名称。 |
 | 版本 | Key Vault 密钥的版本 |
-| 操作 | 为请求服务而执行的操作的名称 |
+| Operation | 对服务器请求执行的操作的名称 |
 | 代码 | 状态代码 |
 | 消息 | 消息，提供有关错误或信息性消息的详细信息 |
 

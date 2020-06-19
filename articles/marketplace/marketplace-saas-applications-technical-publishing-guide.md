@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace SaaS 应用程序发布指南
-description: 将 SaaS 应用程序发布到 Azure 市场的分步指南和发布查检表
+title: SaaS 应用程序发布指南 - Microsoft 商业市场
+description: 向 Microsoft AppSource 和 Azure 市场发布 SaaS 应用程序套餐的要求和资源。
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,28 +8,28 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117227"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657828"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 应用程序产品/服务发布指南
 
-SaaS 应用程序可以使用三种不同的号召性用语在市场上发布：“与我联系”，“立即尝试”和“立即获取”。 本指南介绍这三个选项，包括每个选项的要求。 
+可以使用三种不同的号召性用语，在商业市场上发布 SaaS 应用程序：“与我联系”，“立即试用”和“立即获取”。 本文介绍这三个选项，包括每个选项的要求。 
 
 ## <a name="offer-overview"></a>产品/服务概述  
 
-SaaS 应用程序可用于 Microsoft AppSource 和 Azure Marketplace。  店面支持列表、试用版和事务服务。
+SaaS 应用程序可用于 Microsoft AppSource 和 Azure 市场。  两个商店均支持正式上架、试用和事务处理套餐。
 
-**列表**：“列表”发布选项包含“与我联系”产品/服务类型，是在试用级别或交易级别的参与不可行时使用的。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
-**试用/交易**：客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
+**列表：** “列表”发布选项包含“与我联系”产品/服务类型，在试用级别或交易级别的参与不可行时使用。 此方法的好处是帮助在市场中发布解决方案的发布者立即开始获取潜在顾客，这些潜在客户可能会产生交易，从而扩大你的业务。  
+**试用/交易：** 客户可以选择直接购买，也可以请求试用解决方案。 提供试用体验可以提升客户参与度，让客户在购买前体验解决方案。 借助面向客户的试用体验，发布者能获得更好的店面促销商机，随着参与客户的增多，可获得越来越多的潜在顾客。 试用版必须包含免费支持（至少在试用时间内）。  
 
 | SaaS 应用产品/服务 | 业务要求 | 技术要求 |  
 | --- | --- | --- |  
 | **联系我们** | 是 | 否 |  
-| **PowerBI/Dynamics** | 是 | 是(Azure AD 集成) |  
+| **Power BI/Dynamics** | 是 | 是(Azure AD 集成) |  
 | **SaaS 应用**| 是 | 是(Azure AD 集成) |     
 
 ## <a name="saas-list"></a>SaaS 列表
@@ -90,7 +90,7 @@ SaaS 应用程序的技术要求非常简单。 发布者只需与要发布的 A
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>使用 Azure Active Directory 启用试用  
 
-Microsoft 使用 Azure AD 对所有 Marketplace 用户进行身份验证，因此，当经过身份验证的用户单击 Marketplace 中的试用列表并将其重定向到你的试用环境时，你可以将用户直接预配到试用版，而无需执行其他登录步骤。 身份验证期间应用从 Azure AD 接收的令牌包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 有关令牌的详细信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+Microsoft 通过 Azure AD 对所有市场用户进行身份验证，因此当已验证的用户单击市场中的试用商品并重定向到试用环境时，可将用户直接预配到一个试用版中，而无需执行其他登录步骤。 身份验证期间应用从 Azure AD 接收的令牌包含有用的客户信息，可使用这些信息在应用内创建用户帐户，这样可以自动获得预配体验并提高转换率。 有关令牌的详细信息，请参阅[示例令牌](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
 
 使用 Azure AD 为应用或试用启用一键式身份验证具有以下影响：  
 * 简化从市场到试用的客户体验。  
@@ -100,7 +100,7 @@ Microsoft 使用 Azure AD 对所有 Marketplace 用户进行身份验证，因�
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>为市场认证 Azure AD 集成  
 
-使用几种不同的方法来证明你的 Azure AD 集成，具体取决于你的应用程序是单租户还是多租户，以及你是不是 Azure AD 联合单一登录（SSO）的新手，还是已在支持它。  
+可以采用多种其他的方式来认证 Azure AD 集成，具体取决于应用程序是单租户还是多租户，以及你是尚未使用过 Azure AD 联合单一登录 (SSO) 还是已经启用此功能。  
 
 **对于多租户应用程序：**  
 
@@ -122,26 +122,26 @@ Microsoft 使用 Azure AD 对所有 Marketplace 用户进行身份验证，因�
 ## <a name="saas-subscriptions"></a>SaaS 订阅
 
 使用 SaaS 应用产品/服务类型可让客户以订阅的形式购买基于 SaaS 的技术解决方案。 SaaS 应用必须满足以下要求：
-- 以平面（每月或每年）或按用户费率为服务定价并计费。
+- 按统一价格（每月或每年）或按用户费率对服务进行定价和计费。
 - 提供随时升级或取消服务的方法。
-Microsoft 托管商业事务。 Microsoft 代你向客户计费。 若要将 SaaS 应用作为订阅提供，你必须与 SaaS 履单 Api 集成。  你的服务必须支持预配、升级和取消。
+Microsoft 托管商业事务。 Microsoft 代你向客户计费。 要将 SaaS 应用作为订阅提供，必须与 SaaS 履行 API 集成。  服务必须支持预配、升级和取消。
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-|计费和计量 | 你的产品/服务将基于你在发布之前选择的定价模型（单层速率或每个用户）。  如果使用的是扁平速率模型，则可以选择包含其他维度，以对客户进行计费，使其不包含在平整费率中。 |  
+|计费和计量 | 你的套餐将根据你在发布之前选择的定价模型（统一费率或用户费率）进行定价。  如果使用统一费率模型，则可以选择包含其他维度，用于向客户收取统一费率中未包含的使用费。 |  
 |取消 | 客户可以随时取消你的产品/服务。 |  
 |事务登陆页 | 托管一个 Azure 联合品牌事务登陆页，用户可以在其中创建并管理其 SaaS 服务帐户。 |   
 | 订阅 API | 公开一个服务，该服务可以通过与 SaaS 订阅交互来创建、更新和删除用户帐户和服务计划。 必须在 24 小时内支持关键 API 更改。 非关键 API 更改将定期发布。 |  
 
 >[!Note]
->现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。  请参阅[云解决方案提供商](./cloud-solution-providers.md)，了解有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息。
+>云解决方案提供商 (CSP) 合作伙伴渠道选择加入现已可用。  请参阅[云解决方案提供商](./cloud-solution-providers.md)，以获取有关通过 Microsoft CSP 合作伙伴渠道推广套餐的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 如果尚未注册，
 
-* [了解](https://azuremarketplace.microsoft.com/sell)marketplace。
+* [了解](https://azuremarketplace.microsoft.com/sell)有关市场的信息。
 
-若要在合作伙伴中心注册，请开始创建新产品/服务或使用现有产品/服务：
+要在合作伙伴中心注册，请开始创建新套餐或使用现有套餐：
 
-* [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。
-* 有关详细信息，请参阅[创建 SaaS 应用程序产品/服务](./partner-center-portal/create-new-saas-offer.md)。
+* [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
+* 请参阅[创建 SaaS 应用程序套餐](./partner-center-portal/create-new-saas-offer.md)获取详细信息。

@@ -3,7 +3,7 @@ title: PowerShell：创建托管实例
 titleSuffix: Azure SQL Managed Instance
 description: 本文提供用于创建托管实例的 Azure PowerShell 示例脚本。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: PowerShell
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: af4add4f14457ea3cbf2acf88fb8d1cc11409c7a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 455860b2ccdfe3188c4985b64bd76ce51ab991ca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220909"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708457"
 ---
 # <a name="use-powershell-to-create-a-managed-instance"></a>使用 PowerShell 创建托管实例
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 714d587cc047887685f7f7c7f4f5a2bbc2310aa2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 709b442fde94d88adc7fe4cce16ee1a50bf06c6b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596386"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674354"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>什么是 Azure Synapse Link for Azure Cosmos DB（预览版）？
 
@@ -35,11 +35,11 @@ Azure Synapse Link for Azure Cosmos DB 是一种云原生混合事务和分析�
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>降低了复杂性，无需管理 ETL 作业
 
-借助 Azure Synapse Link，可以使用 Azure Synapse Analytics 直接访问 Azure Cosmos DB 分析存储，无需进行复杂的数据移动。 对操作数据所做的任何更新都准实时显示在分析存储中，不包含任何 ETL 或更改源。 可以从 Synapse Analytics 对分析存储运行大型分析，无需额外的数据转换。
+借助 Azure Synapse Link，可以使用 Azure Synapse Analytics 直接访问 Azure Cosmos DB 分析存储，无需进行复杂的数据移动。 对操作数据所做的任何更新都准实时显示在分析存储中，不包含任何 ETL 或更改源作业。 可以从 Synapse Analytics 对分析存储运行大型分析，无需额外的数据转换。
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>准实时了解操作数据
 
-使用 Azure Synapse Link，现在可以准实时深入了解操作数据。 由于有许多层要提取、转换和加载操作数据，因此基于 ETL 的系统在分析操作数据时往往会产生较高的延迟。 通过 Azure Cosmos DB 分析存储与 Azure Synapse Analytics 的本机集成，可以准实时分析操作数据，从而启用新的业务方案。 
+使用 Azure Synapse Link，现在可以准实时深入了解操作数据。 由于有许多层需要提取、转换和加载操作数据，因此基于 ETL 的系统在分析操作数据时往往会产生较高的延迟。 通过 Azure Cosmos DB 分析存储与 Azure Synapse Analytics 的本机集成，可以准实时分析操作数据，从而启用新的业务方案。 
 
 
 ### <a name="no-impact-on-operational-workloads"></a>不会影响操作工作负荷
@@ -99,7 +99,7 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 * 数据工程师，想要无需手动 ETL 过程即可对 Azure Cosmos DB 容器创建 SQL 或 Spark 表，以便使数据可供使用者访问。
 
-有关 Azure Cosmos DB 的 Azure Synapse Analytics 运行时支持的详细信息，请参阅 [Azure Synapse Analytics for Cosmos DB 支持]()。
+有关 Azure Cosmos DB 的 Azure Synapse Analytics 运行时支持的详细信息，请参阅 [Azure Synapse Analytics for Cosmos DB 支持](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)。
 
 ## <a name="when-to-use-azure-synapse-link-for-azure-cosmos-db"></a>何时使用 Azure Synapse Link for Azure Cosmos DB？
 
@@ -124,11 +124,11 @@ Azure Cosmos DB 分析存储是 Azure Cosmos DB 中的操作数据的面向列�
 
 * 通过 Synapse SQL 无服务器访问 Azure Cosmos DB 分析存储当前处于封闭预览阶段。 若要请求访问权限，请向 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)发送电子邮件。
 
-* 当前无法访问预配了 Synapse SQL 的 Azure Cosmos DB 分析存储。 
+* 当前无法访问预配了 Synapse SQL 的 Azure Cosmos DB 分析存储。
 
 ## <a name="pricing"></a>定价
 
-Azure Synapse Link 的计费模型转换为使用 Azure Cosmos DB 分析存储和 Synapse 运行时所产生的成本。 若要了解详细信息，请参阅 [Azure Cosmos DB 分析存储定价](analytical-store-introduction.md#analytical-store-pricing)和 [Azure Synapse Analytics 定价]()文章。
+Azure Synapse Link 的计费模型包含使用 Azure Cosmos DB 分析存储和 Synapse 运行时所产生的成本。 若要了解详细信息，请参阅 [Azure Cosmos DB 分析存储定价](analytical-store-introduction.md#analytical-store-pricing)和 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/synapse-analytics/)文章。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -136,9 +136,9 @@ Azure Synapse Link 的计费模型转换为使用 Azure Cosmos DB 分析存储�
 
 * [Azure Cosmos DB 分析存储概述](analytical-store-introduction.md)
 
-* [开始使用 Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md) 
+* [开始使用 Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md)
  
-* [Azure Synapse Analytics 运行时支持的功能]()
+* [Azure Synapse Analytics 运行时支持的功能](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
 * [有关 Azure Synapse Link for Azure Cosmos DB 的常见问题](synapse-link-frequently-asked-questions.md)
 
