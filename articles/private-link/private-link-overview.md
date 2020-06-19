@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/02/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4752fe65cf06b894413df2fda0decdfbb427afd5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449373"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673405"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -63,7 +63,7 @@ Azure 专用链接提供以下优势：
 |Azure 事件网格| 所有公共区域       |   GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web 应用 | 所有公共区域      |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure 机器学习 | 美国东部、美国西部 2、美国中南部      |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| IoT 中心 | 所有公共区域    |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
+| Azure IoT 中心 | 所有公共区域    |   GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | 美国东部、美国西部 2、美国中南部      |   预览   <br/> [了解详细信息](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>（Log Analytics 和 Application Insights） | 所有公共区域      |   GA   <br/> [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
 

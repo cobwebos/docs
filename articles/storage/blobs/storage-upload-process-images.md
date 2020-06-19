@@ -5,31 +5,34 @@ author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/11/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 3c475787eafde4ba847b292df57e4b0d18cfe5d0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 37e751d78bddd76847a4859b6f24e37bec5c9acb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196054"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730486"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 本教程介绍如何部署一个 Web 应用，该应用使用 Azure Blob 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
 ![.NET 中的图像调整器应用](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 ![Node.js V10 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-在该系列的第一部分中，你会学习如何：
+在该系列的第一部分中，你将学习如何：
 
 > [!div class="checklist"]
+
 > * 创建存储帐户
 > * 创建容器并设置权限
 > * 检索访问密钥
@@ -47,11 +50,15 @@ ms.locfileid: "83196054"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
 
 以下示例创建名为 `myResourceGroup` 的资源组。
 
-```azurecli-interactive
+```bash
+az group create --name myResourceGroup --location southeastasia
+```
+
+```powershell
 az group create --name myResourceGroup --location southeastasia
 ```
 
@@ -64,10 +71,17 @@ az group create --name myResourceGroup --location southeastasia
 
 在以下命令中，请将 `<blob_storage_account>` 占位符替换为你自己的 Blob 存储帐户的全局唯一名称。
 
-```azurecli-interactive
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia \
+  --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
+```
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+az storage account create --name $blobStorageAccount --location southeastasia `
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
@@ -79,14 +93,28 @@ az storage account create --name $blobStorageAccount --location southeastasia \
 
 *images* 容器的公共访问权限设置为 `off`。 *thumbnails* 容器的公共访问权限设置为 `container`。 `container` 公共访问权限设置允许访问网页的用户查看缩略图。
 
-```azurecli-interactive
+```bash
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
 az storage container create -n images --account-name $blobStorageAccount \
-  --account-key $blobStorageAccountKey --public-access off
+  --account-key $blobStorageAccountKey
 
 az storage container create -n thumbnails --account-name $blobStorageAccount \
+  --account-key $blobStorageAccountKey --public-access container
+
+echo "Make a note of your Blob storage account key..."
+echo $blobStorageAccountKey
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+  -n $blobStorageAccount --query "[0].value" --output tsv)
+
+az storage container create -n images --account-name $blobStorageAccount `
+  --account-key $blobStorageAccountKey
+
+az storage container create -n thumbnails --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey --public-access container
 
 echo "Make a note of your Blob storage account key..."
@@ -103,18 +131,28 @@ echo $blobStorageAccountKey
 
 以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
 
-```azurecli-interactive
+```bash
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
+```
+
+```powershell
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/azure/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。  
+Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/azure/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../../app-service/overview.md)。  
 
 在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，将收到错误消息：*具有给定名称 `<web_app>` 的网站已存在。* Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
 
-```azurecli-interactive
+```bash
 webapp="<web_app>"
+
+az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
+```
+
+```powershell
+$webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 ```
@@ -127,18 +165,31 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 示例项目包含一个 [ASP.NET MVC](https://www.asp.net/mvc) 应用。 该应用接受一个图像，将其保存到存储帐户，然后从缩略图容器显示图像。 此 Web 应用使用 [Azure.Storage](/dotnet/api/azure.storage)、[Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) 和 [Azure.Storage.Blobs.Models](/dotnet/api/azure.storage.blobs.models) 命名空间与 Azure 存储服务交互。
 
-```azurecli-interactive
+```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
+```powershell
+az webapp deployment source config --name $webapp --resource-group myResourceGroup `
+  --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。
 
-```azurecli-interactive
+```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+```
+
+```powershell
+az webapp deployment source config --name $webapp --resource-group myResourceGroup `
+  --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
 ```
 
@@ -150,7 +201,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 示例 Web 应用使用[适用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage) 上传图像。 存储帐户凭据在 Web 应用的应用设置中进行设置。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
-```azurecli-interactive
+```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -158,14 +209,28 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
+```powershell
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup `
+  --settings AzureStorageConfig__AccountName=$blobStorageAccount `
+    AzureStorageConfig__ImageContainer=images `
+    AzureStorageConfig__ThumbnailContainer=thumbnails `
+    AzureStorageConfig__AccountKey=$blobStorageAccountKey
+```
+
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 示例 Web 应用使用 [Azure 存储客户端库](https://github.com/Azure/azure-storage-js)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
-```azurecli-interactive
+```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
+```
+
+```powershell
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup `
+  --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
 ```
 
 ---
@@ -212,8 +277,8 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 以下是用于前一任务的类和方法：
 
-| 类    | 方法   |
-|----------|----------|
+| 类 | 方法 |
+|-------|--------|
 | [Uri](/dotnet/api/system.uri) | [Uri 构造函数](/dotnet/api/system.uri.-ctor) |
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String) 构造函数](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
@@ -283,7 +348,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
 
     try {
-      
+
       await uploadStreamToBlockBlob(aborter, stream,
         blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
 
@@ -296,11 +361,12 @@ router.post('/', uploadStrategy, async (req, res) => {
     }
 });
 ```
+
 ---
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器 。
 
 验证图像是否显示在该容器中。
 
@@ -310,16 +376,18 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
+登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器 。 选择“上传”以打开“上传 blob”窗格。
 
 使用文件选取器选择文件，然后选择“上传”。
 
 导航回到应用，以验证上传到 **thumbnails** 容器的图像是否可见。
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
 ![显示新图像的 .NET 图像调整器应用](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 ![显示新图像的 Node.js V10 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/08/2020
+ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022055"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660959"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
@@ -156,11 +156,13 @@ ms.locfileid: "84022055"
     ![“列映射”页](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. 在“设置”页中，选择“下一步”。 
-1. 在“摘要”页中检查设置，然后选择“下一步”。
-1. 在“部署”页中，选择“监视”可以监视管道（任务） 。
- 
-    ![监视管道](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
+1. 在“摘要”页中检查设置，然后选择“下一步”。
+
+1. 在“部署”页中，选择“监视”可以监视管道（任务） 。
+
+    ![监视管道](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+    
 1. 在“管道运行”页上，选择“刷新”来刷新列表。 单击“管道名称”下的链接，查看活动运行详细信息或重新运行管道。 
     ![管道运行](./media/tutorial-copy-data-tool/pipeline-run.png)
 
@@ -168,9 +170,7 @@ ms.locfileid: "84022055"
 
     ![监视活动运行](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-
 1. 验证数据是否已插入到 SQL 数据库中的 **dbo.emp** 表。
-
 
 1. 选择左侧的“创作”选项卡切换到编辑器模式。 可以使用编辑器来更新通过该工具创建的链接服务、数据集和管道。 有关在数据工厂 UI 中编辑这些实体的详细信息，请参阅[本教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
 

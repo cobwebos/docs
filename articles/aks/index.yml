@@ -9,12 +9,12 @@ metadata:
   author: laurenhughes
   ms.author: lahugh
   ms.date: 03/25/2020
-  ms.openlocfilehash: 4829b95fb62a33406248f503e646238e116cb413
-  ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+  ms.openlocfilehash: 44ef4686cd2213230479711060e3f0558981bc18
+  ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/07/2020
-  ms.locfileid: "80803273"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84976466"
 landingContent:
 - title: 关于 Azure Kubernetes 服务 (AKS)
   linkLists:
@@ -48,18 +48,14 @@ landingContent:
       url: kubernetes-walkthrough-portal.md
     - text: 资源管理器模板
       url: kubernetes-walkthrough-rm-template.md
-- title: 使用 AKS 和 Dev Spaces 开发和调试应用程序
+- title: 使用 Kubernetes 本地进程开发和调试应用程序
   linkLists:
-  - linkListType: quickstart
+  - linkListType: how-to-guide
     links:
-    - text: Java
-      url: ../dev-spaces/quickstart-java.md
-    - text: .NET 和 VS Code
-      url: ../dev-spaces/quickstart-netcore.md
-    - text: .NET 和 Visual Studio
-      url: ../dev-spaces/quickstart-netcore-visualstudio.md
-    - text: Node.js
-      url: ../dev-spaces/quickstart-nodejs.md
+    - text: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
+      url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+    - text: 在 Visual Studio 中使用 Local Process with Kubernetes（预览版）
+      url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
 - title: 部署、管理和更新应用程序
   linkLists:
   - linkListType: tutorial

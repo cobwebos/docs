@@ -476,6 +476,34 @@
           href: /azure/active-directory/app-provisioning/scim-graph-scenarios
         - name: 使用 MS Graph 自动执行配置
           href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+    - name: Azure 门户帮助文章
+      items:
+        - name: 自定义开发的应用程序的令牌生存期默认设置
+          href: registration-config-change-token-lifetime-how-to.md
+        - name: 发现终结点
+          href: registration-config-how-to.md
+        - name: 为给定 API 选择权限
+          href: perms-for-given-api.md
+        - name: 身份验证协议
+          href: active-directory-authentication-protocols.md
+        - name: 委派权限与应用程序权限之间的差异
+          href: delegated-and-app-perms.md
+        - name: 应用程序同意操作的工作原理
+          href: consent-framework-links.md
+        - name: 为自定义开发的应用程序查找所需的特定 API
+          href: api-find-an-api-how-to.md
+        - name: 应用注册参考
+          href: active-directory-v2-registration-portal.md
+        - name: Azure 门户针对自定义开发的应用的注册字段
+          href: registration-config-specific-application-property-how-to.md
+        - name: 配置新的多租户应用程序
+          href: setup-multi-tenant-app.md
+        - name: 将多租户应用程序添加到 Azure AD 应用程序库
+          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
+        - name: 与 Azure Active Directory 集成
+          href: active-directory-how-to-integrate.md
+        - name: 为应用程序配置单一登录
+          href: registration-config-sso-how-to.md
 - name: 操作指南
   items:
     - name: 身份验证

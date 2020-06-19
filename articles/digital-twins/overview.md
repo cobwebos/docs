@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 11ec9a4294cb1d5895d1bbc4e75c6b1a9b071f65
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613312"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737115"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure 数字孪生**是一个 IoT 平台，可用于创建整个环境的完整数字模型。 这些环境可能是建筑物、工厂、农场、能源网络、铁路，体育场等，甚至是整个城市。 这些数字模型可用于获取洞察力，以推动产品改进、运营优化、成本降低和客户体验突破。
 

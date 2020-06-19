@@ -119,7 +119,7 @@ mydemoserver.mysql.database.azure.com       myadmin
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>使用 mysql 命令行工具连接到服务器
 
-使用 `mysql` 命令行工具连接到服务器。 若要下载并安装该命令行工具，请参阅 [MySQL 社区下载](https://dev.mysql.com/downloads/shell/)。 还可以通过在本文的代码示例中选择“试用”按钮，在 Azure Cloud Shell 中访问预装版本的 `mysql` 命令行工具。 访问 Azure Cloud Shell 的其他方式包括：在 Azure 门户右上角的工具栏上选择“>_”按钮，或访问 [shell.azure.com](https://shell.azure.com/)。
+使用 `mysql` 命令行工具连接到服务器。 若要下载并安装该命令行工具，请参阅 [MySQL 社区下载](https://dev.mysql.com/downloads/shell/)。 还可以通过在本文的代码示例中选择“试用”按钮，在 Azure Cloud Shell 中访问预装版本的 `mysql` 命令行工具。 访问 Azure Cloud Shell 的其他方式包括：在 Azure 门户右上角的工具栏上选择“>_”按钮，或访问 [shell.azure.com](https://shell.azure.com/)。 
 
 ```azurepowershell-interactive
 mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p

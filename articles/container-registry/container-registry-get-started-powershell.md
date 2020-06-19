@@ -4,12 +4,12 @@ description: 快速了解如何使用 PowerShell 在 Azure 容器注册表中创
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 792146abeaad137a29bfea25a59a957c5f69c5ac
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ed0790f79ef4a83f42519ce6f89ee36f54558f4b
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682776"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752155"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建专用容器注册表
 
@@ -86,7 +86,10 @@ Remove-AzResourceGroup -Name myResourceGroup
 本快速入门介绍了如何使用 Azure PowerShell 创建 Azure 容器注册表、推送容器映像，以及提取和运行注册表中的映像。 请继续阅读 Azure 容器注册表教程，以更深入地了解 ACR。
 
 > [!div class="nextstepaction"]
-> [Azure 容器注册表教程][container-registry-tutorial-quick-task]
+> [Azure 容器注册表教程][container-registry-tutorial-prepare-registry]
+
+> [!div class="nextstepaction"]
+> [Azure 容器注册表任务教程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -105,3 +108,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 [Remove-AzResourceGroup]: /powershell/module/az.resources/remove-azresourcegroup
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-tutorial-prepare-registry]: container-registry-tutorial-prepare-registry.md

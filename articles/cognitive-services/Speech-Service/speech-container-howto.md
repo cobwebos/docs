@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: b76690cfbe0eb4851bdd1e4316235a7a9092c86e
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84781202"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974647"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -26,12 +26,12 @@ ms.locfileid: "84781202"
 > [!IMPORTANT]
 > 所有语音容器当前均作为[公共 "封闭" 预览版](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分提供。 语音容器推出正式发行版（GA）时将发出一则通知。
 
-| 函数 | 功能 | 最新版本 |
+| 功能 | 功能 | 最新版本 |
 |--|--|--|
-| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.2.0 |
-| 自定义语音转文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.2.0 |
-| 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.4.0 |
-| 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.4.0 |
+| 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.3.1 |
+| 自定义语音转文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.3.1 |
+| 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.5.0 |
+| 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.5.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "84781202"
 
 使用语音容器之前的先决条件如下：
 
-| 必选 | 目标 |
+| 必需 | 目的 |
 |--|--|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
@@ -165,7 +165,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 以下标记是格式示例：
 
 ```
-2.2.0-amd64-en-us-preview
+2.3.1-amd64-en-us-preview
 ```
 
 对于 "**语音到文本**" 容器的所有受支持的区域设置，请参阅[语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。
@@ -194,7 +194,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> `latest` 标记提取 `en-US` 区域设置和 `jessarus` 语音。 有关其他区域设置，请参阅[文本到语音的区域设置](#text-to-speech-locales)。
+> `latest` 标记提取 `en-US` 区域设置和 `ariarus` 语音。 有关其他区域设置，请参阅[文本到语音的区域设置](#text-to-speech-locales)。
 
 #### <a name="text-to-speech-locales"></a>文本到语音的区域设置
 
@@ -207,13 +207,13 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 以下标记是格式示例：
 
 ```
-1.3.0-amd64-en-us-jessarus-preview
+1.5.0-amd64-en-us-ariarus-preview
 ```
 
 对于支持的**文本到语音转换**容器的所有区域设置和相应声音，请参阅[文本到语音图像标记](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要 `voice` 具有属性的元素 `name` 。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如，标记的 `latest` 语音名称将为 `en-US-JessaRUS` 。
+> 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要 `voice` 具有属性的元素 `name` 。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如，标记的 `latest` 语音名称将为 `en-US-AriaRUS` 。
 
 # <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
@@ -569,7 +569,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文已介绍语音容器的概念，及其下载、安装和运行工作流。 综上所述：
 

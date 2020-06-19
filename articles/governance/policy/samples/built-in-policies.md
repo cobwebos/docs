@@ -1,21 +1,25 @@
 ---
 title: 内置策略定义列表
 description: 列出 Azure Policy 的内置策略定义。 类别包括“标记”、“合规性”、“Key Vault”、“Kubernetes”、“来宾配置”等。
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b95029a5422a427e071cb2d3e4481b846ff9a295
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0ab717e4246112152b9a497c51d2a630bc48dfd1
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233653"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709317"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy 内置策略定义
 
 此页是 Azure Policy 内置策略定义的索引。
 
 每个内置链接（指向Azure 门户中的策略定义）的名称。 使用“源”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。 这些内置项按**元数据**中的 **category** 属性进行分组。 若要跳转到特定的**类别**，请使用页面右侧的菜单。 否则，请按 <kbd>Ctrl</kbd>-<kbd>F</kbd> 来使用浏览器的搜索功能。
+
+## <a name="api-management"></a>API 管理
+
+[!INCLUDE [azure-policy-samples-policies-api-management](../../../../includes/policy/samples/bycat/policies-api-management.md)]
 
 ## <a name="app-configuration"></a>应用配置
 
@@ -44,6 +48,10 @@ ms.locfileid: "84233653"
 ## <a name="cache"></a>缓存
 
 [!INCLUDE [azure-policy-samples-policies-cache](../../../../includes/policy/samples/bycat/policies-cache.md)]
+
+## <a name="cognitive-services"></a>认知服务
+
+[!INCLUDE [azure-policy-samples-policies-cognitive-services](../../../../includes/policy/samples/bycat/policies-cognitive-services.md)]
 
 ## <a name="compute"></a>计算
 
@@ -132,6 +140,10 @@ ms.locfileid: "84233653"
 ## <a name="service-fabric"></a>Service Fabric
 
 [!INCLUDE [azure-policy-samples-policies-service-fabric](../../../../includes/policy/samples/bycat/policies-service-fabric.md)]
+
+## <a name="signalr"></a>SignalR
+
+[!INCLUDE [azure-policy-samples-policies-signalr](../../../../includes/policy/samples/bycat/policies-signalr.md)]
 
 ## <a name="sql"></a>SQL
 
