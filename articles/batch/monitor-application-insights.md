@@ -1,14 +1,14 @@
 ---
-title: 监视 Azure 应用程序 Insights 的批处理
+title: 使用 Azure Application Insights 监视 Batch
 description: 了解如何使用 Azure Application Insights 库检测 Azure Batch .NET 应用程序。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b6817ad1303e6039ebfe5fe5ae6101b9bc192eb4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115459"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723606"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "82115459"
 
 * [Application Insights 资源](../azure-monitor/app/create-new-resource.md )
   
-   * 使用 Azure 门户创建一个 Application Insights 资源。  选择“常规”应用程序类型   。
+   * 使用 Azure 门户创建一个 Application Insights 资源。 选择“常规”作为应用程序类型。
 
    * 从门户中复制[检测密钥](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)。 本文稍后会用到此密钥。
   
@@ -257,13 +257,13 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 
 ### <a name="view-live-stream-data"></a>查看实时流数据
 
-若要查看 Application Insights 资源中的跟踪日志，请单击“实时流”。  以下屏幕截图显示如何查看来自池中计算节点的实时数据，例如每个计算节点的 CPU 使用率。
+若要查看 Application Insights 资源中的跟踪日志，请单击“实时流”。 以下屏幕截图显示如何查看来自池中计算节点的实时数据，例如每个计算节点的 CPU 使用率。
 
 ![实时流计算节点数据](./media/monitor-application-insights/applicationinsightslivestream.png)
 
 ### <a name="view-trace-logs"></a>查看跟踪日志
 
-若要查看 Application Insights 资源中的跟踪日志，请单击“搜索”。  此视图显示 Application Insights 捕获的诊断数据列表，包括跟踪、事件和异常。 
+若要查看 Application Insights 资源中的跟踪日志，请单击“搜索”。 此视图显示 Application Insights 捕获的诊断数据列表，包括跟踪、事件和异常。 
 
 以下屏幕截图显示如何记录某个任务的单个跟踪，并随后对其进行查询以实现调试目的。
 
@@ -280,14 +280,14 @@ for (int i = 1; i <= topNWordsConfiguration.NumberOfTasks; i++)
 自定义指标也是门户中的一个有用工具。 例如，可以显示每个计算节点下载其处理的所需文本文件平均花费的时间。
 
 创建示例图表：
-1. 在 Application Insights 资源中，单击“指标资源管理器” > “添加图表”。  
-2. 在添加的图表上单击“编辑”。 
+1. 在 Application Insights 资源中，单击“指标资源管理器” > “添加图表”。 
+2. 在添加的图表上单击“编辑”。
 2. 按如下所示更新图表详细信息：
-   * 将“图表类型”设置为“网格”。  
-   * 将“聚合”设置为“平均”。  
-   * 将“分组依据”设置为“NodeId”。  
-   * 在“指标”中，选择“自定义” > “Blob 下载时间(秒)”。   
-   * 根据偏好调整“调色板”的显示。  
+   * 将“图表类型”设置为“网格”。 
+   * 将“聚合”设置为“平均”。 
+   * 将“分组依据”设置为“NodeId”。 
+   * 在“指标”中，选择“自定义” > “Blob 下载时间(秒)”。  
+   * 根据偏好调整“调色板”的显示。 
 
 ![每个节点的 Blob 下载时间](./media/monitor-application-insights/blobdownloadtime.png)
 

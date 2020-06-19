@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: 用于 VSCode 的 Spark 和 Hive 工具
               href: ./hdinsight-for-vscode.md
-            - name: 将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Data Lake 工具与 Hortonworks 沙盒
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: 监视
           items:
             - name: 使用 Azure Monitor 日志
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: 运行自定义 Apache Hadoop MapReduce 程序
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: '开发 C# 流式处理 MapReduce 程序'
+                - name: 开发 C# 流式处理 MapReduce 程序
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: 开发 Java MapReduce 程序
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: 处理和分析 JSON 文档
               href: ./hadoop/using-json-in-hive.md
-            - name: '使用 C# 用户定义的函数'
+            - name: 使用 C# 用户定义的函数
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: 将 Python 与 Apache Hive 和 Apache Pig 配合使用
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: 使用 Python 开发拓扑
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: '使用 C# 开发拓扑'
+                - name: 使用 C# 开发拓扑
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: SCP.NET 编程指南
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: 流式处理管道
               items:
-                - name: '事件中心和 Apache Storm（C# 和 Java）'
+                - name: 事件中心和 Apache Storm（C# 和 Java）
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: 管理
           items:

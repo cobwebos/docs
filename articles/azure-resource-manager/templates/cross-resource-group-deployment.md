@@ -2,126 +2,42 @@
 title: 跨订阅和资源组部署资源
 description: 介绍如何在部署期间将多个 Azure 订阅和资源组作为目标。
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/18/2020
+ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460341"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650635"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
+# <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>跨订阅或资源组部署 Azure 资源
 
-通常情况下，将模板中的所有资源部署到单个[资源组](../management/overview.md)。 不过，在某些情况下，你可能希望将一组资源部署在一起但将其放置在不同的资源组或订阅中。 例如，你可能希望将 Azure Site Recovery 的备份虚拟机部署到一个单独的资源组和位置。 资源管理器允许使用嵌套模板，以多个订阅和资源组为目标。
+资源管理器使你可以在单个部署中部署到多个资源组。 使用嵌套模板可指定与部署操作中的资源组不同的资源组。 资源组可以存在于不同的订阅中。
 
 > [!NOTE]
-> 在单个部署中可以仅部署到五个资源组。 通常情况下，此限制意味着，在嵌套或链接的部署中可以部署到为父模板指定的一个资源组和最多四个资源组。 但是，如果父模板仅包含嵌套或链接的模板，并且本身不部署任何资源，则在嵌套或链接的部署中最多可包含五个资源组。
+> 在单个部署中可以部署到 800 个资源组。 通常情况下，此限制意味着，在嵌套或链接的部署中可以部署到为父模板指定的一个资源组和最多 799 个资源组。 但是，如果父模板仅包含嵌套或链接的模板，并且本身不部署任何资源，则在嵌套或链接的部署中最多可包含 800 个资源组。
 
 ## <a name="specify-subscription-and-resource-group"></a>指定订阅和资源组
 
-若要以其他资源组或订阅为目标，请使用[嵌套或链接模板](linked-templates.md)。 `Microsoft.Resources/deployments` 资源类型为 `subscriptionId` 和 `resourceGroup` 提供参数，使你可以为嵌套部署指定订阅和资源组。 如果未指定订阅 ID 或资源组，将使用父模板中的订阅和资源组。 在运行部署之前，所有资源组都必须存在。
+若要将与父模板不同的资源组作为目标，请使用[嵌套或链接模板](linked-templates.md)。 在部署资源类型中，为要将嵌套模板部署到的订阅 ID 和资源组指定值。
 
-用于部署模板的帐户必须有权部署到指定的订阅 ID。 如果指定的订阅存在于不同的 Azure Active Directory 租户中，则必须[从另一个目录添加来宾用户](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json" range="38-43" highlight="5-6":::
 
-若要指定不同的资源组和订阅，请使用：
+如果未指定订阅 ID 或资源组，将使用父模板中的订阅和资源组。 在运行部署之前，所有资源组都必须存在。
 
-```json
-"resources": [
-  {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "resourceGroup": "[parameters('secondResourceGroup')]",
-    "subscriptionId": "[parameters('secondSubscriptionID')]",
-    ...
-  }
-]
-```
+部署模板的帐户必须有权部署到指定的订阅 ID。 如果指定的订阅存在于不同的 Azure Active Directory 租户中，则必须[从另一个目录添加来宾用户](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)。
 
-如果资源组位于同一订阅中，则可以删除“subscriptionId”值****。
+以下示例部署两个存储帐户。 第一个存储帐户部署到在部署操作中指定的资源组。 第二个存储帐户部署到在 `secondResourceGroup` 和 `secondSubscriptionID` 参数中指定的资源组：
 
-以下示例部署两个存储帐户。 第一个存储帐户部署到部署期间指定的资源组。 第二个存储帐户部署到在 `secondResourceGroup` 和 `secondSubscriptionID` 参数中指定的资源组：
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "secondResourceGroup": {
-      "type": "string"
-    },
-    "secondSubscriptionID": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "secondStorageLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2017-06-01",
-      "name": "[variables('firstStorageName')]",
-      "location": "[resourceGroup().location]",
-      "sku":{
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('secondResourceGroup')]",
-      "subscriptionId": "[parameters('secondSubscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
-            "name": "[variables('secondStorageName')]",
-            "location": "[parameters('secondStorageLocation')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          }
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
 
 如果将 `resourceGroup` 设置为不存在的资源组的名称，则部署会失败。
 
-若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
+若要测试以上模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
+若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -138,7 +54,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-若要将两个存储帐户部署到**两个订阅**，请使用：
+若要将两个存储帐户部署到两个订阅，请使用：
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -164,7 +80,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
+若要将两个存储帐户部署到同一订阅中的两个资源组，请使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -179,7 +95,7 @@ az deployment group create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-若要将两个存储帐户部署到**两个订阅**，请使用：
+若要将两个存储帐户部署到两个订阅，请使用：
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -205,9 +121,9 @@ az deployment group create \
 
 ## <a name="use-functions"></a>使用函数
 
-[resourceGroup()](template-functions-resource.md#resourcegroup) 和 [subscription()](template-functions-resource.md#subscription) 函数根据指定模板的方式以不同的方式解析。 链接到外部模板时，函数始终解析为该模板的作用域。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是否解析为父模板或嵌套模板的资源组和订阅。 将属性设置为 `inner`，以便解析为嵌套模板的范围。 将属性设置为 `outer`，以便解析为父模板的范围。
+[resourceGroup()](template-functions-resource.md#resourcegroup) 和 [subscription()](template-functions-resource.md#subscription) 函数根据指定模板的方式以不同的方式解析。 链接到外部模板时，函数始终解析为该模板的范围。 在父模板中嵌套模板时，请使用 `expressionEvaluationOptions` 属性指定函数是解析为父模板还是嵌套模板的资源组和订阅。 将该属性设置为 `inner` 可解析为嵌套模板的范围。 将该属性设置为 `outer` 可解析为父模板的范围。
 
-下表显示了函数是解析为父资源组，还是解析为嵌入资源组和订阅。
+下表显示函数是解析为父级还是嵌入资源组和订阅。
 
 | 模板类型 | 范围 | 解决方法 |
 | ------------- | ----- | ---------- |
@@ -219,103 +135,11 @@ az deployment group create \
 
 * 具有默认（外部）范围的嵌套模板
 * 具有内部范围的嵌套模板
-* 链接的模板
+* 链接模板
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "defaultScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "innerScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "expressionEvaluationOptions": {
-          "scope": "inner"
-      },
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "resourceGroup": "linkedGroup",
-      "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "contentVersion": "1.0.0.0",
-          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-      },
-      "parameters": {}
-      }
-    }
-  ],
-  "outputs": {
-    "parentRG": {
-      "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-    },
-    "defaultScopeRG": {
-      "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "innerScopeRG": {
-      "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "linkedRG": {
-      "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crossresourcegroupproperties.json":::
 
-若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
+若要测试以上模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

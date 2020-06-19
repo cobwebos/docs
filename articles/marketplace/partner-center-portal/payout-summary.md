@@ -1,246 +1,246 @@
 ---
-title: 支出报表-Microsoft 商业应用商店
-description: 费用报表显示你在产品/服务中获得的资金的详细信息，包括付款金额以及支付的时间。
+title: 付款报告 - Microsoft 商业市场
+description: 付款报告详细说明了你通过自己的产品/服务赚取的资金，包括付款金额和你将何时收到付款。
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 0380330c2cfd4b0a72dcc158a0d6e051d5547b31
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 6639026d071b496027996036a81f6bc66e0185e3
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857021"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744815"
 ---
 # <a name="payout-summaries"></a>付款摘要
 
-费用摘要显示了你在 Microsoft 获得的资金的详细信息。 它还使你可以知道你将何时收到付款和收到多少付款。
+“付款摘要”详细说明了你通过 Microsoft 赚取的资金。 它还显示了你将何时收到付款以及付款金额。
 
-如果在 Azure Marketplace 中销售产品，还将在付款摘要中看到成功付款信息。 有关详细信息，请参阅[Microsoft Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和[Microsoft Azure 市场发行者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)。
-
-> [!NOTE]
-> 为了满足付出的条件，你的继续必须达到[支付阈值](payment-thresholds-methods-timeframes.md)$50。 有关付款阈值的详细信息，请参阅此页并查看应用开发人员协议。
+如果你在 Azure 市场上销售产品，还会在“付款摘要”中看到成功付款的相关信息。 有关详细信息，请参阅 [Microsoft Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)。
 
 > [!NOTE]
-> 如果你正在寻找有关付款的支持，包括配置帐户、缺失付款、将付款置于保持状态或其他任何内容，请在[此处](https://developer.microsoft.com/windows/support)联系支持人员。
+> 你的收款必须达到 50 美元的[付款阈值](payment-thresholds-methods-timeframes.md)，才符合成为付款的条件。 若要详细了解付款阈值，请参阅此页，并查阅应用开发人员协议。
 
-## <a name="access-the-payout-summary-pages"></a>访问支出摘要页面
+> [!NOTE]
+> 若要寻求付款方面的支持（包括配置付款帐户、付款丢失、暂停付款或其他任何方面），请单击[此处](https://developer.microsoft.com/windows/support)联系支持人员。
 
-若要打开一个付出的摘要页面：
+## <a name="access-the-payout-summary-pages"></a>访问“付款摘要”页
 
-1. 选择右上角的 "支出" 图标。
-2. 选择 "事务历史记录"、"付款" 或 "导出数据"。
+若要打开“付款摘要”页之一，请执行以下操作：
 
-## <a name="transaction-history-page"></a>事务历史记录页
+1. 选择右上角的“付款”图标。
+2. 选择“交易历史记录”、“付款”或“导出数据”。
 
-此页面显示您的个人收入，包括每个收入的日期、类型和收益。 你可以选择要查看的时间段，还可以按注册 ID、计划、付款 ID、收益类型、杠杆和状态进行筛选。 数据可用于当前会计年度（7月1日–6月30日）和前两个会计年度。
+## <a name="transaction-history-page"></a>“交易历史记录”页
 
-若要查看有关收益的详细信息，请选择页面右侧的向下箭头。 这将显示杠杆、收入金额和产品。 如果此数据中的任何一个不可用，但你需要访问它，请与[支持](https://developer.microsoft.com/windows/support)部门联系。 如果收益是调整而不是交易的结果，则不会显示 "产品" 字段。
+此页显示你的所有个人收入，包括每次交易的日期、类型和收入。 可以选择要查看的时间段，也可以按“合约 ID”、“计划”、“付款 ID”、“收入类型”、“控制杆”和“状态”进行筛选。 本会计年度（7 月 1 日至 6 月 30 日）和前两个会计年度的数据都可查看。
 
-若要导出此页上的任何事务数据，请使用 "**导出数据**" 页。
+若要查看关于收入的更多详情，请选择页面右侧的向下箭头。 这会显示控制杆、收入金额和产品。 如果任何此类数据无法查看，但你又需要访问它，请联系[支持人员](https://developer.microsoft.com/windows/support)。 如果收入是由于调整（而不是交易）生成的，产品字段将不会显示。
 
-## <a name="payments-page"></a>付款页
+若要导出此页上的任何交易数据，请使用“导出数据”页。
 
-此页上的总计表示你参与的所有程序。 您可以按参与者 ID、节目、付款 ID 和收入类型进行筛选。 金额为美元提供。 支付的值还会以货币支付。
+## <a name="payments-page"></a>“付款”页
 
-| 领域                   | 说明                                                                                |
+此页上的总计代表你参与的所有计划。 可以按“参与者 ID”、“计划”、“付款 ID”和“收入类型”进行筛选。 金额以美元为单位。 付款值还以付款币种显示。
+
+| 区域                   | 说明                                                                                |
 |------------------------|---------------------------------------------------------------------------------------------|
-| 本年度支付的总金额   | 你的所有计划在今年的美元支付的总金额（美元）       |
-| 下一估计付款 | 接下来的一项付款（即使即将推出其他人），美元 |
-| 上次付款           | 最近支付的金额（美元）、节目名称和计划           |
-| 按源付款     | 过去12个月内程序代表的付款金额（美元）           |
-| 付款               | 选择 "**付费**" 或 "**挂起**"，然后根据需要进行排序。 有关特定付款的其他详细信息，请选择 "**查看**"。 若要下载付款汇款报表的副本，请选择 "**下载**"。 由于事务历史记录数据可能需要长达24小时才能显示，因此你可能看不到相关收入。 |
+| 今年付款总额   | 你今年通过所有计划收到的合并付款总额（以美元为单位）       |
+| 下次估计付款 | 你的下一单笔付款（即使很快会有其他付款）（以美元为单位） |
+| 上次付款           | 最近一次付款的金额（以美元为单位）、计划名称和计划           |
+| 付款(按来源)     | 按计划显示的过去 12 个月内的付款金额（以美元为单位）           |
+| 付款               | 选择“已付款”或“挂起”，然后根据需要进行排序。 如需了解特定付款的更多详情，请选择“查看”。 若要下载付款汇款对帐单的副本，请选择“下载”。 由于交易历史记录数据最长可能需要 24 小时才会显示，因此你可能无法立即看到相关收入。 |
 |||
 
-若要导出此页上的任何数据，请选择 "导出数据" 页上的 "**导出**并按说明"。
+若要导出此页上的任何数据，请选择“导出数据”页上的“导出”，然后按照说明操作。
 
-## <a name="transaction-history-page"></a>事务历史记录页
+## <a name="transaction-history-page"></a>“交易历史记录”页
 
-此页面显示您的个人收入，包括每个收入的日期、类型和收益。 你可以选择要查看的时间段，并且可以按注册 ID、计划、付款 ID、收益类型、杠杆和状态进行筛选。 数据可用于当前会计年度（7月1日–6月30日）和前两个会计年度。
+此页显示你的所有个人收入，包括每次交易的日期、类型和收入。 可以选择要查看的时间段，也可以按“合约 ID”、“计划”、“付款 ID”、“收入类型”、“控制杆”和“状态”进行筛选。 本会计年度（7 月 1 日至 6 月 30 日）和前两个会计年度的数据都可查看。
 
-若要查看有关收益的详细信息，请选择页面右侧的向下箭头。 这将显示杠杆、收入金额和产品。 如果此数据中的任何一个不可用，但你需要访问它，请与[支持](https://developer.microsoft.com/windows/support)人员联系。 如果收益是调整而不是交易的结果，则不会显示 "产品" 字段。
+若要查看关于收入的更多详情，请选择页面右侧的向下箭头。 这会显示控制杆、收入金额和产品。 如果任何此类数据无法查看，但你又需要访问它，请联系[支持人员](https://developer.microsoft.com/windows/support)。 如果收入是由于调整（而不是交易）生成的，产品字段将不会显示。
 
-若要导出此页上的任何事务数据，请选择 "导出数据" 页上的 "**导出**并按说明"。 从 "事务历史记录" 页导出的文件以交易货币显示数据，按交易币种和美元计算收入，并按货币支付付薪值。
+若要导出此页上的任何交易数据，请选择“导出数据”页上的“导出”，然后按照说明操作。 从“交易历史记录”页导出的文件以交易币种显示数据、以交易币种和美元显示收入，并以付款币种显示付款值。
 
 ## <a name="payment-status"></a>付款状态
 
-| 收益状态           | 原因                                                                                                                                      | 需要合作伙伴操作？                                   |
+| 收入状态           | 原因                                                                                                                                      | 合作伙伴是否需要采取行动？                                   |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
-| 尚未              | 收益有资格支付。 它在激励计划的收视指南中定义的冷却周期处于此状态。 | 否                                                         |
-| 到来                 | 支付订单在处理付款之前生成待定内部审核                                                               | 否                                                         |
-| 待定销售税发票      | 您的纳税发票不完整或无效                                                                                                  | 您需要更新您的纳税发票才能支付费用 |
-| 审核时被拒绝   | 付款在审查期间被拒绝                                                                                                     | 有关详细信息，请联系[Microsoft 支持](https://developer.microsoft.com/windows/support)部门                      |
-| Failed                   | 由于 Microsoft 系统错误而导致付款失败                                                                                         | 有关详细信息，请联系[Microsoft 支持](https://developer.microsoft.com/windows/support)部门                      |
-| 正在进行              | 付款正在进行                                                                                                                 | 否                                                         |
-| 付款错误        | 正在付款 recouping                                                                                                       | 否                                                         |
-| 已发送                     | 已将付款发送到银行                                                                                                     | 否                                                         |
-| 处理             | 付款遇到 Microsoft 系统错误，正在重新处理                                                                  | 否                                                         |
-| Reversed                 | 付款已被银行冲销，并将在下一个付款周期再次发送                                                     | 否                                                         |
-| 销售税发票已拒绝     | 您的纳税发票在审查期间被拒绝。 在纳税发票评审完成之前，所有待定付款都将处于暂停状态。                 | 有关详细信息，请联系[Microsoft 支持](https://developer.microsoft.com/windows/support)部门                      |
-| 审查后的纳税发票 | 正在查看您的纳税发票。 发票获得批准后，你的付款就会发布。                                   | 否                                                         |
-| 已拒绝                 | 银行拒绝付款                                                                                                      | 联系银行获取详细信息。                             |
+| 未处理              | 收入符合成为付款的条件。 按照激励计划的计划指南中的规定，它会在这种状态下度过“冷却”期。 | 否                                                         |
+| 即将处理                 | 付款订单已生成，正在等待处理付款前的内部审查                                                               | 否                                                         |
+| 等待纳税发票      | 纳税发票不完整或无效                                                                                                  | 必须更新纳税发票，才能收到付款 |
+| 审查期间被拒绝   | 付款在审查期间被拒绝了                                                                                                     | 有关详细信息，请联系 [Microsoft 支持人员](https://developer.microsoft.com/windows/support)                      |
+| 失败                   | 付款因 Microsoft 系统错误而失败                                                                                         | 有关详细信息，请联系 [Microsoft 支持人员](https://developer.microsoft.com/windows/support)                      |
+| 正在进行              | 正在付款                                                                                                                 | 否                                                         |
+| 付款不正确        | 正在收回付款                                                                                                       | 否                                                         |
+| 已发送                     | 付款已发送到银行                                                                                                     | 否                                                         |
+| 正在重新处理             | 付款遇到了 Microsoft 系统错误，正在重新处理                                                                  | 否                                                         |
+| Reversed                 | 付款已被银行退回，将在下一个付款周期再次发送                                                     | 否                                                         |
+| 纳税发票被拒绝     | 纳税发票在审查期间被拒绝了。 在纳税发票审查完成之前，所有挂起的付款都将处于暂停状态。                 | 有关详细信息，请联系 [Microsoft 支持人员](https://developer.microsoft.com/windows/support)                      |
+| 正在审查纳税发票 | 正在审查纳税发票。 一旦纳税发票获准，就会发放付款。                                   | 否                                                         |
+| 已拒绝                 | 付款被银行拒绝                                                                                                      | 有关详细信息，请联系银行。                             |
 |||
 
-## <a name="export-data-page"></a>"导出数据" 页
+## <a name="export-data-page"></a>“导出数据”页
 
-按照这些说明来导出数据。
+若要导出数据，请按照下面这些说明操作。
 
-"导出数据" 页不会自行刷新。 你可能需要手动刷新页面以查看最新数据。
+“导出数据”页本身不会刷新。 你可能需要手动刷新此页，才能看到最新数据。
 
-筛选器可能会导致 "**无数据**" 错误。 这可能意味着，你已将默认时间段设置为三个月的时间，然后从超出该时间段的收入中选择付款 ID。 展开你的时间段，然后重试。
+筛选器可能会导致“无可用数据”错误出现。 这可能意味着，你保持默认选择的三个月时间段不变，然后又选择了超出此时间段的收入中的付款 ID。 请延长时间段，然后重试。
 
 ## <a name="payments"></a>付款
 
 ![导出付款](./media/pc-export-payments.png)
 
-此选项可用于下载你在银行中收到的给定节目、相关税款和总收入金额的付款。 此报告用于许多合作伙伴中心计划，因此某些列可能会不适用您的报表。 这些列标记如下。
+使用此选项，可以下载你的银行收到的给定计划的付款、相关税款和总收入金额。 因为此报告用于许多合作伙伴中心计划，所以你的报告中可能没有某些列。 下面介绍了这些列。
 
 | 列名称              | 说明                                                                                                                               |
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
-| participantID            | 计划下合作伙伴收益的主要标识                                                                             |
-| participantIDType        | 应用商店计划的激励计划和卖方 ID 的程序 ID                                                                |
-| participantName          | 收益伙伴的名称                                                                                                               |
-| programName              | 激励/存储程序名称                                                                                                              |
-| 所得                   | 该计划/participantID 的货币支付金额                                                                       |
-| earnedUSD                | 节目/参与者 ID 的获得额（美元）                                                                                      |
-| withheldTax              | 计划/participantID 的货币的预扣税金                                                               |
-| salesTax                 | 计划/participantID （仅适用于激励计划）的支付的总销售税金额                   |
-| serviceFeeTax            | 计划/participantID 的 serviceFeeTax 总金额（仅适用于商店计划和 Azure Marketplace） |
-| totalPayment             | 按本币支付的总付款金额，包括预缴税金，并包括该计划/participantID 的销售税（如果适用）   |
-| currencyCode             | 支付给货币代码                                                                                                                      |
-| paymentMethod            | 用于支付合作伙伴的方法，例如，电子银行转帐、贷方说明                                                     |
-| paymentID                | 付款的唯一标识符。 此数字通常在银行对帐单中可见（仅适用于 SAP 付款）。              |
+| participantID            | 计划下合作伙伴收入的主要标识                                                                             |
+| participantIdType        | 通常为激励计划的计划 ID 和应用商店计划的卖家 ID                                                                |
+| participantName          | 收入合作伙伴的名称                                                                                                               |
+| programName              | 激励计划/应用商店计划的名称                                                                                                              |
+| earned                   | 计划/participantID 赚取的金额（以付款币种为单位）                                                                       |
+| earnedUSD                | 计划/participantID 赚取的金额（以美元为单位）                                                                                      |
+| withheldTax              | 计划/participantID 的预扣税款金额（以付款币种为单位）                                                               |
+| salesTax                 | 计划/participantID 的销售税总金额（以付款币种为单位）（仅适用于激励计划）                   |
+| serviceFeeTax            | 计划/participantID 的 serviceFeeTax 总金额（以付款币种为单位）（仅适用于应用商店计划和 Azure 市场） |
+| totalPayment             | 计划/participantID 的总付款（以本国币种为单位），不含预扣税款，但包括销售税（若有）   |
+| currencyCode             | 付款币种代码                                                                                                                      |
+| paymentMethod            | 向合作伙伴付款的方式（例如，电子银行转帐、贷方通知单）                                                     |
+| paymentID                | 付款的唯一标识符。 此编号通常显示在银行对帐单中（仅适用于 SAP 付款）。              |
 | paymentStatus            | 付款状态                                                                                                                            |
-| paymentStatusDescription | 付款状态的友好说明                                                                                                    |
-| paymentDate              | 从 Microsoft 发送了日期支付                                                                                                      |
+| paymentStatusDescription | 付款状态的易记说明                                                                                                    |
+| paymentDate              | Microsoft 发放付款的日期                                                                                                      |
 |||
 
-## <a name="transaction-history"></a>事务历史记录
+## <a name="transaction-history"></a>交易历史记录
 
-![导出事务历史记录](./media/pc-export-transaction.png)
+![导出交易历史记录](./media/pc-export-transaction.png)
 
-此选项可用于下载您在 "交易历史记录" 页中看到的每个收益行项、收入类型、日期、关联的交易金额、客户、产品和适用于您的计划的其他事务详细信息。
+使用此选项，可以下载“交易历史记录”页中的每个收入行项，即收入类型、日期、相关交易金额、客户、产品和其他适用于计划的交易详细信息。
 
-| 列名称                    | 说明                                                                                                                              | 激励/存储/Azure Marketplace 的适用性           |
+| 列名称                    | 说明                                                                                                                              | 是否适用于激励/应用商店/Azure 市场           |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| earningId                      | 每个收益的唯一标识符                                                                                                       | All                                                            |
-| participantId                  | 计划下合作伙伴收益的主要标识                                                                            | All                                                            |
-| participantIdType              | 应用商店计划和 Azure Marketplace 的激励计划和卖方的主要计划 ID                                          | All                                                            |
-| participantName                | 收益伙伴的名称                                                                                                              | All                                                            |
-| partnerCountryCode             | 收益合作伙伴所在国家/地区                                                                                                  | All                                                            |
-| programName                    | 激励/存储程序名称                                                                                                             | All                                                            |
-| transactionId                  | 事务的唯一标识符                                                                                                    | All                                                            |
-| transactionCurrency            | 原始客户交易发生的币种（这不是合作伙伴位置货币）                                     | All                                                            |
-| transactionDate                | 交易日期。 适用于多个事务贡献给一个收益的程序                                           | All                                                            |
-| transactionExchangeRate        | 用于显示相应事务美元的汇率日期                                                                 | All                                                            |
-| transactionAmount              | 基于所生成收益的原始交易币种的交易金额                                              | All                                                            |
-| transactionAmountUSD           | 交易金额（美元）                                                                                                                | All                                                            |
-| 断裂                          | 指示收入的业务规则                                                                                                  | All                                                            |
-| earningRate                    | 应用于交易金额以生成收入的激励率                                                                      | All                                                            |
-| quantity                       | 根据程序而异。 指示交易计划的计费数量                                                            | All                                                            |
-| quantityType                   | 指示数量类型，例如，计费数量，MAU                                                                             | All                                                            |
-| earningType                    | 指示是费用、回扣、合作、销售等                                                                                          | All                                                            |
-| earningAmount                  | 按原始交易币种的收入金额                                                                                      | All                                                            |
-| earningAmountUSD               | 收入金额（美元）                                                                                                                    | All                                                            |
-| earningDate                    | 收益日期                                                                                                                      | All                                                            |
+| earningId                      | 每笔收入的唯一标识符                                                                                                       | All                                                            |
+| participantID                  | 计划下合作伙伴收入的主要标识                                                                            | All                                                            |
+| participantIdType              | 主要是激励计划的计划 ID，以及应用商店计划和 Azure 市场的卖家 ID                                          | All                                                            |
+| participantName                | 收入合作伙伴的名称                                                                                                              | All                                                            |
+| partnerCountryCode             | 收入合作伙伴所在的位置/国家/地区                                                                                                  | All                                                            |
+| programName                    | 激励计划/应用商店计划的名称                                                                                                             | All                                                            |
+| transactionId                  | 交易的唯一标识符                                                                                                    | All                                                            |
+| transactionCurrency            | 原始客户交易发生时使用的币种（这不是合作伙伴所在位置的币种）                                     | All                                                            |
+| transactionDate                | 交易日期。 适用于多次交易促成一笔收入的计划                                           | All                                                            |
+| transactionExchangeRate        | 用于显示相应交易金额（以美元为单位）的汇率日期                                                                 | All                                                            |
+| transactionAmount              | 交易金额（以产生收入的原始交易币种为单位）                                              | All                                                            |
+| transactionAmountUSD           | 交易金额（以美元为单位）                                                                                                                | All                                                            |
+| lever                          | 表示收入的业务规则                                                                                                  | All                                                            |
+| earningRate                    | 用于交易金额以生成收入的激励率                                                                      | All                                                            |
+| quantity                       | 因计划而异。 表示交易计划的已计费数量                                                            | All                                                            |
+| quantityType                   | 表示数量类型（例如，“已计费数量”、“MAU”）                                                                             | All                                                            |
+| earningType                    | 表示是否是费用、返点、合作收入、销售收入等                                                                                          | All                                                            |
+| earningAmount                  | 收入金额（以原始交易币种为单位）                                                                                      | All                                                            |
+| earningAmountUSD               | 收入金额（以美元为单位）                                                                                                                    | All                                                            |
+| earningDate                    | 收入日期                                                                                                                      | All                                                            |
 | calculationDate                | 在系统中计算收入的日期                                                                                            | All                                                            |
-| earningExchangeRate            | 用于显示相应 USD 金额的汇率                                                                                  | All                                                            |
-| exchangeRateDate               | 用于计算 EarningAmount USD 的汇率日期                                                                                   | All                                                            |
-| paymentAmountWOTax             | 仅为 "已发送" 付款支付的金额（不含税）                                                                 | All                                                            |
-| paymentCurrency                | 支付给伙伴在付款配置文件中选择的货币。 仅显示已发送的付款                                                   | All                                                            |
-| paymentExchangeRate            | 用于使用 ExchangeRateDate 计算 paymentAmountWOTax 的汇率                                            | All                                                            |
-| claimId                        | 声明的唯一标识符                                                                                                              | 激励-仅限一些程序                                |
-| planId                         | 计划的唯一标识符                                                                                                               | 激励-仅限一些程序                                |
-| paymentId                      | 付款的唯一标识符。 此数字通常显示在银行对帐单中                                                 | 仅限 SAP 支付                                              |
+| earningExchangeRate            | 用于显示相应金额（以美元为单位）的汇率                                                                                  | All                                                            |
+| exchangeRateDate               | 用于计算 EarningAmount（以美元为单位）的汇率日期                                                                                   | All                                                            |
+| paymentAmountWOTax             | 收入金额（不含税）（以付款币种为单位），仅针对状态为“已发送”的付款显示                                                                 | All                                                            |
+| paymentCurrency                | 合作伙伴在付款配置文件中选择的付款币种。 仅针对状态为“已发送”的付款显示                                                   | All                                                            |
+| paymentExchangeRate            | 用于使用 ExchangeRateDate 计算 paymentAmountWOTax（以付款币种为单位）的汇率                                            | All                                                            |
+| claimId                        | 索赔的唯一标识符                                                                                                              | 激励 - 仅某些计划                                |
+| planId                         | 计划的唯一标识符                                                                                                               | 激励 - 仅某些计划                                |
+| paymentId                      | 付款的唯一标识符。 此编号通常显示在银行对帐单中                                                 | 仅适用于 SAP 付款                                              |
 | paymentStatus                  | 付款状态                                                                                                                           | All                                                            |
-| paymentStatusDescription       | 付款状态的友好说明                                                                                                   | All                                                            |
-| customerId                     | 始终为空                                                                                                                     | 仅激励计划（例外： OEM）和 Azure Marketplace |
-| CustomerName                   | 始终为空                                                                                                                     | 仅激励计划（例外： OEM）和 Azure Marketplace |
-| partNumber                     | 始终为空                                                                                                                     | 某些激励和商店计划和 Azure Marketplace        |
-| productName                    | 链接到事务的产品名称                                                                                                       | All                                                            |
-| productId                      | 唯一产品标识符                                                                                                                | 存储和 Azure Marketplace                                    |
-| ParentProductID                | 唯一的父产品标识符。 如果没有用于事务的父产品，则父产品 ID = 产品 ID。 | 存储和 Azure Marketplace                                    |
-| parentProductName              | 父产品的名称。 如果没有适用于事务的父产品，则父产品名称 = 产品名称。   | 存储和 Azure Marketplace                                    |
-| productType                    | 产品类型，如应用、外接程序或游戏                                                                                        | 存储和 Azure Marketplace                                    |
-| invoiceNumber                  | 发票编号（仅适用于 EA）                                                                                                  | 激励和 Azure Marketplace-仅限一些程序           |
-| subscriptionId                 | 与客户关联的订阅标识符                                                                                         | 激励-仅限一些程序                                 |
-| And subscription.subscriptionstartdate          | 订阅开始日期                                                                                                                  | 激励-仅限一些程序                                 |
-| Subscription.subscriptionenddate            | 订阅结束日期                                                                                                                    | 激励-仅限一些程序                                 |
-| resellerId                     | 经销商标识符                                                                                                                      | 激励-仅限一些程序                                 |
-| resellerName                   | 经销商名称                                                                                                                            | 激励-仅限一些程序                                 |
-| distributorId                  | 分发服务器标识符                                                                                                                   | 激励-仅限一些程序                                 |
-| distributorName                | 分发服务器名称                                                                                                                         | 激励-仅限一些程序                                 |
-| agreementNumber                | 协议编号                                                                                                                         | 激励-仅限一些程序                                 |
-| agreementStartDate             | 协议开始日期                                                                                                                     | 激励-仅限一些程序                                 |
-| agreementEndDate               | 协议结束日期                                                                                                                       | 激励-仅限一些程序                                 |
-| workload                       | 工作负载                                                                                                                                 | 激励-仅限一些程序                                 |
-| transactionType                | 交易类型，例如购买、退款、冲销或按使用计费                                                               | 存储和 Azure Marketplace                                    |
-| localProviderSeller            | 本地提供商/记录的卖方                                                                                                          | 仅限应用商店                                                     |
-| taxRemitted                    | 汇款金额（销售、使用或 VAT/GST 税）                                                                                   | 存储和 Azure Marketplace                                    |
-| taxRemitModel                  | 负责 remitting 税款的参与方（销售、使用或 VAT/GST 税）                                                                    | 仅限应用商店                                                     |
-| storeFee                       | Microsoft 为使应用或外接程序在应用商店中提供的费用而保留的金额                                           | 仅限应用商店                                                     |
-| transactionPaymentMethod       | 用于交易的客户付款方式，例如卡、移动运营商计费或 PayPal                                | 存储和 Azure Marketplace                                    |
-| tpan                           | 指示第三方 ad 网络                                                                                                     | 存储-仅广告                                               |
-| customerCountry                | 客户所在国家/地区                                                                                                                         | 存储和 Azure Marketplace                                    |
-| customerCity                   | 客户城市                                                                                                                            | 存储和 Azure Marketplace                                    |
-| customerState                  | 客户状态                                                                                                                           | 存储和 Azure Marketplace                                    |
-| customerZip                    | 客户邮政编码                                                                                                                 | 存储和 Azure Marketplace                                    |
-| purchaseTypeCode               | 始终为空                                                                                                                     | 激励计划-CRI                                        |
-| purchaseOrderType              | 始终为空                                                                                                                     | 激励计划-CRI                                        |
-| purchaseOrderCoverageStartDate | 始终为空                                                                                                                     | 激励计划-CRI                                        |
-| purchaseOrderCoverageEndDate   | 始终为空                                                                                                                     | 激励计划-CRI                                        |
-| programOfferingLevel           |                                                                                                                                          | 激励计划-CRI                                        |
+| paymentStatusDescription       | 付款状态的易记说明                                                                                                   | All                                                            |
+| customerId                     | 始终为空白                                                                                                                     | 仅激励计划（例外：OEM）和 Azure 市场 |
+| customerName                   | 始终为空白                                                                                                                     | 仅激励计划（例外：OEM）和 Azure 市场 |
+| partNumber                     | 始终为空白                                                                                                                     | 某些激励计划和应用商店计划以及 Azure 市场        |
+| productName                    | 关联到交易的产品名称                                                                                                       | All                                                            |
+| productId                      | 唯一产品标识符                                                                                                                | 应用商店和 Azure 市场                                    |
+| parentProductId                | 唯一父产品标识符。 如果交易没有父产品，则父产品 ID = 产品 ID。 | 应用商店和 Azure 市场                                    |
+| parentProductName              | 父产品名称。 如果交易没有父产品，则父产品名称 = 产品名称。   | 应用商店和 Azure 市场                                    |
+| productType                    | 产品类型（如应用、加载项和游戏）                                                                                        | 应用商店和 Azure 市场                                    |
+| invoiceNumber                  | 发票编号（仅适用于 EA）                                                                                                  | 激励和 Azure 市场 - 仅某些计划           |
+| subscriptionId                 | 与客户关联的订阅标识符                                                                                         | 激励 - 仅某些计划                                 |
+| subscriptionStartDate          | 订阅开始日期                                                                                                                  | 激励 - 仅某些计划                                 |
+| subscriptionEndDate            | 订阅结束日期                                                                                                                    | 激励 - 仅某些计划                                 |
+| resellerId                     | 经销商标识符                                                                                                                      | 激励 - 仅某些计划                                 |
+| resellerName                   | 经销商名称                                                                                                                            | 激励 - 仅某些计划                                 |
+| distributorId                  | 分销商标识符                                                                                                                   | 激励 - 仅某些计划                                 |
+| distributorName                | 分销商名称                                                                                                                         | 激励 - 仅某些计划                                 |
+| agreementNumber                | 协议编号                                                                                                                         | 激励 - 仅某些计划                                 |
+| AgreementStartDate             | 协议开始日期                                                                                                                     | 激励 - 仅某些计划                                 |
+| AgreementEndDate               | 协议结束日期                                                                                                                       | 激励 - 仅某些计划                                 |
+| workload                       | 工作负荷                                                                                                                                 | 激励 - 仅某些计划                                 |
+| TransactionType                | 交易类型（如购买、退款、冲销或退单）                                                               | 应用商店和 Azure 市场                                    |
+| localProviderSeller            | 记录的本地提供商/卖家                                                                                                          | 仅应用商店                                                     |
+| taxRemitted                    | 汇出的税款金额（销售税、使用税或 VAT/GST 税）                                                                                   | 应用商店和 Azure 市场                                    |
+| taxRemitModel                  | 汇出税款（销售税、使用税或 VAT/GST 税）的责任方                                                                    | 仅应用商店                                                     |
+| storeFee                       | Microsoft 保留金额，用于支付在应用商店中提供应用或加载项的费用                                           | 仅应用商店                                                     |
+| transactionPaymentMethod       | 用于交易的客户付款方式（如银行卡、移动运营商计费或 PayPal）                                | 应用商店和 Azure 市场                                    |
+| tpan                           | 表示第三方广告网络                                                                                                     | 应用商店 - 仅广告                                               |
+| customerCountry                | 客户所在国家/地区                                                                                                                         | 应用商店和 Azure 市场                                    |
+| customerCity                   | 客户所在城市                                                                                                                            | 应用商店和 Azure 市场                                    |
+| customerState                  | 客户所在省/自治区/直辖市                                                                                                                           | 应用商店和 Azure 市场                                    |
+| customerZip                    | 客户邮政编码                                                                                                                 | 应用商店和 Azure 市场                                    |
+| purchaseTypeCode               | 始终为空白                                                                                                                     | 激励计划 - CRI                                        |
+| purchaseOrderType              | 始终为空白                                                                                                                     | 激励计划 - CRI                                        |
+| purchaseOrderCoverageStartDate | 始终为空白                                                                                                                     | 激励计划 - CRI                                        |
+| purchaseOrderCoverageEndDate   | 始终为空白                                                                                                                     | 激励计划 - CRI                                        |
+| programOfferingLevel           |                                                                                                                                          | 激励计划 - CRI                                        |
 | TenantID                       |                                                                                                                                          | 激励计划                                             |
-| externalReferenceId            | 程序的唯一标识符                                                                                                        | 直接付费计划（激励和商店）                      |
-| externalReferenceIdLabel       | 唯一标识符标签                                                                                                                  | 直接付费计划（激励和商店）                      |
+| externalReferenceId            | 计划的唯一标识符                                                                                                        | 直接付款计划（激励和应用商店）                      |
+| externalReferenceIdLabel       | 唯一标识符标签                                                                                                                  | 直接付款计划（激励和应用商店）                      |
 |||
 
-## <a name="historical-statements"></a>历史语句
+## <a name="historical-statements"></a>历史对帐单
 
-![导出历史记录语句](./media/pc-export-statements.png)
+![导出历史对帐单](./media/pc-export-statements.png)
 
-早于 1 2019 年7月之前的事务历史记录单独处理。 语句将使用以下字段，而不是当前的字段。
-
-> [!NOTE]
-> 旧的事务历史记录中有一个名为 "Reserved" 的列，该列对应于新式历史记录中的 "收入" 列，只不过它不包括状态为 "已发送付款" 的所有收入。
+2019 年 7 月 1 日之前的交易历史记录另行处理。 对帐单将使用以下字段，而不是当前字段。
 
 > [!NOTE]
-> 3M、6分钟或12M 等筛选器将不会应用于 "**历史语句**" 部分。
+> 旧式交易历史记录中有一个名为“预留”的列，它对应于新式历史记录中的“收入”列，区别在于它不包括状态为“付款已发送”的所有收入。
 
-| 字段名称              | 说明                                                                                                                                                             |
+> [!NOTE]
+> 3M、6M 或 12M 等筛选器不适用于“历史对帐单”部分。
+
+| 字段名              | 说明                                                                                                                                                             |
 |-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 收入来源          | 基于发生事务的位置的收入源，例如 Microsoft Store、Windows Phone 商店、Windows 应用商店8或广告                  |
-| 订单 ID                | 唯一订单标识符。 此 ID 允许您通过其各自的非采购交易（如退款或退款）来识别购买交易。 两者将具有相同订单编码。 此外，如果有多个付款方式用于单个购买，则可以通过此方式链接采购交易。 |
+| 收入来源          | 收入来源，取决于发生交易的位置，如 Microsoft Store、Windows Phone 应用商店、Microsoft Store 8 或广告                  |
+| 订单 ID                | 唯一订单标识符。 使用此 ID，可以识别购买交易及其各自的非购买交易（如退款或退单）。 两者具有相同的订单 ID。 此外，对于在一次购买中使用多种付款方式的拆分费用，它可便于关联购买交易。 |
 | Transaction ID          | 唯一交易标识符。                                                                                                                                          |
-| 交易日期时间   | 进行交易的日期和时间 (UTC)。                                                                                                                       |
-| 父产品 ID       | 唯一的父产品标识符。 如果没有用于事务的父产品，则父产品 ID = 产品 ID。                                |
+| 交易日期/时间   | 交易发生的日期和时间 (UTC)。                                                                                                                       |
+| 父产品 ID       | 唯一父产品标识符。 如果交易没有父产品，则父产品 ID = 产品 ID。                                |
 | 产品 ID              | 唯一产品标识符。                                                                                                                                              |
-| 父产品名称     | 父产品的名称。 如果没有适用于事务的父产品，则父产品名称 = 产品名称。                                  |
+| 父产品名称     | 父产品名称。 如果交易没有父产品，则父产品名称 = 产品名称。                                  |
 | 产品名称            | 产品名称                                                                                                                                                    |
-| 产品类型            | 产品类型，如应用、外接程序或游戏                                                                                                                       |
-| 数量                | 当收入来源为适用于企业的 Microsoft Store 时，数量表示已购买的许可证数量。 对于所有其他收入来源，数量将始终为 1。 即使将单个事务拆分为两个行项，因为使用了两个不同的付款方式，每个行项都将显示数量1。 |
-| 事务类型        | 交易类型，例如购买、退款、冲销或按使用计费                                                                                              |
-| 付款方式          | 用于交易的客户付款方式，例如卡、移动运营商计费或 PayPal                                                               |
-| 国家/地区        | 发生事务的国家/地区                                                                                                                          |
-| 本地提供商/卖家 | 本地提供商/记录的卖方                                                                                                                                        |
-| 交易币种    | 交易的币种                                                                                                                                            |
-| 交易金额      | 交易量                                                                                                                                              |
-| 免除的税收            | 汇款金额（销售、使用或 VAT/GST 税）                                                                                                                  |
-| 净收入            | 交易金额更少汇款                                                                                                                                   |
-| 应用商店费用               | Microsoft 保留的净收入百分比，用于在商店中提供应用或外接程序                                                      |
-| 应用收益            | 净收入减去商店费用                                                                                                                                       |
-| 扣缴的税款          | 预扣的所得税量（**保留**的 CSV 文件中包含）                                                                                                |
-| 付款                 | 应用收益减去任何相应的所得税预缴（交易币种中所示的金额）。 不包括在**保留**的 CSV 文件中。                               |
-| 外汇汇率                 | 用于将交易货币转换为支付货币的外币汇率                                                                                         |
-| 付款货币        | 支付付的货币                                                                                                                                       |
-| 已兑换的付款       | 使用 FX 费率转换为付款币种的付款金额                                                                                                         |
-| 税款代缴模型         | 负责 remitting 税款的参与方（销售、使用或 VAT/GST 税）                                                                                                   |
-| 资格日期时间   | 交易收益可用于付款的日期和时间 (UTC)。 创建支出后，该事务将继续执行比率创建日期（仅包含在**保留**的 CSV 文件中）之前的资格日期时间。 |
-| Charges                 | 显示 "事务量" 列中聚合的所有费用详细信息的细目（仅包括在 Azure Marketplace 中，不包括在**保留**的 CSV 文件中）。 |
+| 产品类型            | 产品类型（如应用、加载项和游戏）                                                                                                                       |
+| 数量                | 当“收入来源”为“适用于企业的 Microsoft Store”时，“数量”表示购买的许可证数量。 对于其他所有收入来源，“数量”始终为“1”。 即使因为使用了两种不同的付款方式而将一项交易拆分为两个行项，每个行项也都显示值为“1”的“数量”。 |
+| 事务类型        | 交易类型（如购买、退款、冲销或退单）                                                                                              |
+| 付款方式          | 用于交易的客户付款方式（如银行卡、移动运营商计费或 PayPal）                                                               |
+| 国家/地区        | 发生交易的国家/地区                                                                                                                          |
+| 本地提供商/卖家 | 记录的本地提供商/卖家                                                                                                                                        |
+| 交易币种    | 交易币种                                                                                                                                            |
+| 交易金额      | 交易金额                                                                                                                                              |
+| 汇出税款            | 汇出的税款金额（销售税、使用税或 VAT/GST 税）                                                                                                                  |
+| 净收入            | 交易金额减去汇出的税款金额                                                                                                                                   |
+| 应用商店费用               | Microsoft 保留的净收入百分比，用于支付在应用商店中提供应用或加载项的费用                                                      |
+| 应用收款            | 净收入减去应用商店费用                                                                                                                                       |
+| 预扣税款          | 预扣的所得税金额（不包含在“预留”CSV 文件中）                                                                                                |
+| 付款                 | 应用收款减去任何相应所得税预扣金额（金额以交易币种显示）。 不包含在“预留”CSV 文件中。                               |
+| 外汇汇率                 | 用于将交易币种转换为付款币种的外汇汇率                                                                                         |
+| 付款币种        | 付款使用的币种                                                                                                                                       |
+| 转换后的付款       | 使用外汇汇率转换为付款币种的付款金额                                                                                                         |
+| 税款汇出模型         | 汇出税款（销售税、使用税或 VAT/GST 税）的责任方                                                                                                   |
+| 资格日期/时间   | 交易收款符合成为付款的条件的日期和时间 (UTC)。 在付款创建后，它包括“资格日期/时间”先于付款创建日期的交易收款（只包含在“预留”CSV 文件中）。 |
+| Charges                 | 显示“交易金额”列中聚合的所有费用详细信息的细目（只对 Azure 市场包括，不包括在“预留”CSV 文件中）。 |
 |||
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [付款策略详细信息](./payout-policy-details.md)

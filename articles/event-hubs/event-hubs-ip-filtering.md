@@ -11,31 +11,31 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 18212726f0ab921a05a3b640a32754c62958d047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2d67ad70ccdf4ce1f88401806700f38bd1d3c11d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393143"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655884"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>为 Azure 事件中心命名空间配置 IP 防火墙规则
-默认情况下，只要请求附带了有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 使用 IP 防火墙，可以将其进一步限制为采用 [CIDR（无类域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法的一组 IPv4 地址或 IPv4 地址范围。
+默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
 
-在只应从某些已知站点访问 Azure 事件中心的情况下，此功能很有用。 可使用防火墙规则配置相关规则，以接受源自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route][express-route] 配合使用，则可创建防火墙规则  ，只允许流量来自本地基础结构 IP 地址。 
+在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route][express-route] 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
 >[!WARNING]
-> 启用 IP 筛选可以防止其他 Azure 服务与事件中心交互。
+> 实现 IP 筛选可以阻止其他 Azure 服务与事件中心进行交互。
 >
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
-> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）****-
-> - Azure Monitor （诊断设置）
+> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
+> - Azure Monitor（诊断设置）
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
 >
-> 需要在虚拟网络上安装以下 Microsoft 服务
+> 以下 Microsoft 服务必须在虚拟网络中
 > - Azure Web 应用
 > - Azure Functions
 
@@ -44,35 +44,38 @@ ms.locfileid: "81393143"
 IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
-本部分说明如何使用 Azure 门户为事件中心命名空间创建 IP 防火墙规则。 
+本部分演示如何使用 Azure 门户为事件中心命名空间创建 IP 防火墙规则。 
 
-1. 在[Azure 门户](https://portal.azure.com)中导航到**事件中心命名空间**。
-2. 在左侧菜单中，选择 "**网络**" 选项。 如果选择 "**所有网络**" 选项，则事件中心接受来自任何 IP 地址的连接。 此设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+1. 在 [Azure 门户](https://portal.azure.com)中导航到“事件中心命名空间”。
+2. 在左侧菜单中，选择“网络”选项。 如果选择“所有网络”选项，则事件中心将接受来自任何 IP 地址的连接。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    !["防火墙-所有网络" 选项已选中](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 若要限制对特定网络和 IP 地址的访问，请选择 "**所选网络**" 选项。 在 "**防火墙**" 部分中，执行以下步骤：
-    1. 选择 "**添加客户端 ip 地址**" 选项，为当前客户端 ip 授予对命名空间的访问权限。 
-    2. 对于 "**地址范围**"，请输入特定的 ipv4 地址或 CIDR 表示法中的 ipv4 地址范围。 
-    3. 指定是否**允许受信任的 Microsoft 服务跳过此防火墙**。 
+    ![防火墙 - 已选择“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. 若要将访问限制为特定网络和 IP 地址，请选择“所选网络”选项。 在“防火墙”部分中执行以下步骤：
+    1. 选择“添加客户端 IP 地址”选项，使当前客户端 IP 可以访问命名空间。 
+    2. 对于“地址范围”，请输入某个特定的 IPv4 地址或以 CIDR 表示法表示的 IPv4 地址范围。 
+    3. 指定是否要“允许受信任的 Microsoft 服务绕过此防火墙”。 
 
-        !["防火墙-所有网络" 选项已选中](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
-3. 在工具栏上选择 "**保存**"，保存设置。 等待几分钟让确认显示在门户通知上。
+        > [!WARNING]
+        > 如果选择“选定的网络”选项但未指定 IP 地址或地址范围，则服务将允许来自所有网络的流量。 
+
+        ![防火墙 - 已选择“所有网络”选项](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+3. 选择工具栏上的“保存”以保存设置。 请等待几分钟，直到门户通知中显示确认消息。
 
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 
 > [!IMPORTANT]
-> 事件中心的标准层和专用层支持防火墙规则********。 基本层不支持它。
+> 事件中心的标准层和专用层支持防火墙规则 。 基本层不支持它。
 
 以下资源管理器模板可用于向现有的事件中心命名空间添加 IP 筛选器规则。
 
 模板参数：
 
-- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块****。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
+- ipMask 是单个 IPv4 地址或者是以 CIDR 表示法表示的一个 IP 地址块。 例如，在 CIDR 表示法中，70.37.104.0/24 表示从 70.37.104.0 到 70.37.104.255 的 256 个 IPv4 地址，其中 24 表示范围的有效前缀位数。
 
 > [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接****。
-> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”******
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
 > 从
 > ```json

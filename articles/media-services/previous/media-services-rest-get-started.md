@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773687"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654521"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容  
 
@@ -28,25 +28,25 @@ ms.locfileid: "76773687"
 
 本快速入门介绍了使用 Azure 媒体服务 (AMS) REST API 实现视频点播 (VoD) 内容传送应用程序的步骤。
 
-本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，你将能够流式传输或渐进下载已上传、编码和下载的示例媒体文件。
+本教程介绍了基本的媒体服务工作流，以及进行媒体服务开发需要用到的最常见编程对象和任务。 完成本教程后，即可流式传输或渐进下载已上传、编码和下载的示例媒体文件。
 
-开发针对媒体服务 OData 模型的 VoD 应用程序时，以下图像会显示某些最常用的对象。
+下图显示了在针对媒体服务 OData 模型开发 VoD 应用程序时，某些最常用的对象。
 
-单击图像查看其完整大小。  
+单击图像可查看其完整大小。  
 
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>先决条件
 以下是开始使用媒体服务和 REST API 进行开发所要满足的先决条件。
 
-* 一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
+* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 了解如何使用媒体服务 REST API 进行开发。 有关详细信息，请参阅[媒体服务 REST API 概述](media-services-rest-how-to-use.md)。
 * 可以发送 HTTP 请求和响应的所选应用程序。 本教程使用 [Fiddler](https://www.telerik.com/download/fiddler)。
 
 本快速入门教程中说明了以下任务。
 
-1. 启动流式处理终结点（使用 Azure 门户）。
+1. 启动流式处理终结点（使用 Azure 门户）
 2. 使用 REST API 连接到媒体服务帐户。
 3. 使用 REST API 创建新资产并上传视频文件。
 4. 使用 REST API 将源文件编码为一组自适应比特率 MP4 文件。
@@ -54,19 +54,19 @@ ms.locfileid: "76773687"
 6. 播放内容。
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，请使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[本文](media-services-dotnet-manage-entities.md#limit-access-policies)。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，请使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
-若要深入了解本文中使用的 AMS REST 实体，请参阅 [Azure 媒体服务 REST API 参考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。 也可参阅 [Azure 媒体服务概念](media-services-concepts.md)。
+要深入了解本文使用的 AMS REST 实体，请参阅 [Azure 媒体服务 REST API 参考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。 也可参阅 [Azure 媒体服务概念](media-services-concepts.md)。
 
 >[!NOTE]
 >访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。 有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>使用 Azure 门户启动流式处理终结点
 
-使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理来传送视频。 媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，而无需存储上述各种流格式的预打包版本。
+使用 Azure 媒体服务时，最常见的场景之一是通过自适应比特率流式处理传送视频。 媒体服务提供动态打包，可按媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）及时传送自适应比特率 MP4 编码内容，而无需存储上述各种流格式的预打包版本。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。   若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
 若要启动流式处理终结点，请执行以下操作：
 
@@ -83,14 +83,14 @@ ms.locfileid: "76773687"
 
 若要了解如何连接到 AMS API，请参阅[通过 Azure AD 身份验证访问 Azure 媒体服务 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>使用 REST API 创建新资产并上传视频文件
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>使用 REST API 创建新资产并上载视频文件
 
 在媒体服务中，可以将数字文件上传到资产中。 **资产**实体可以包含视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件（以及这些文件的相关元数据。）将文件上传到资产后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 创建资产时必须提供的值之一是资产创建选项。 **Options** 属性是一个枚举值，描述可用于创建资产的加密选项。 有效值为以下列表中的某个值，而不是此列表中值的组合：
 
 * **None** = **0** - 不使用加密。 使用此选项时，内容在传送过程中或静态存储过程中都不会受到保护。
-    如果计划使用渐进式下载交付 MP4，请使用此选项。
+    如果计划使用渐进式下载交付 MP4，则使用此选项。
 * **StorageEncrypted** = **1** - 使用 AES-256 位加密在本地加密明文内容，然后将其上传到 Azure 存储，在其中以加密形式静态存储相关内容。 受存储加密保护的资产会在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上传为新的输出资产前重新加密。 存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 * **CommonEncryptionProtected** = **2** - 上传经过通用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流式处理）时使用此选项。
 * **EnvelopeEncryptionProtected** = **4** - 如果要上传使用 AES 加密的 HLS，请使用此选项。 Transform Manager 必须已对文件进行编码和加密。
@@ -119,7 +119,7 @@ ms.locfileid: "76773687"
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -150,7 +150,7 @@ ms.locfileid: "76773687"
     }
 
 ### <a name="create-an-assetfile"></a>创建 AssetFile
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) 实体表示 blob 容器中存储的视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个 AssetFiles。 如果资产文件对象未与 blob 容器中的数字文件关联，则媒体服务编码器任务将失败。
+[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) 实体表示 blob 容器中存储的视频或音频文件。 一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个 AssetFiles。 如果资产文件对象未与 BLOB 容器中的数字文件关联，则媒体服务 Encoder 任务会失败。
 
 将数字媒体文件上传到 blob 容器中后，可使用 **MERGE** HTTP 请求更新 AssetFile 中有关媒体文件的信息（如本主题稍后所述）。
 
@@ -212,7 +212,7 @@ ms.locfileid: "76773687"
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>创建具有写入权限的 AccessPolicy
-将任何文件上传到 blob 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
+将任何文件上传到 BLOB 存储之前，请设置用于对资产执行写入操作的访问策略权限。 为此，请向 AccessPolicy 实体集发送一个 HTTP POST 请求。 请在执行创建操作时定义 DurationInMinutes 值，否则会在响应中收到 500 内部服务器错误消息。 有关 AccessPolicies 的详细信息，请参阅 [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)。
 
 以下示例说明了如何创建 AccessPolicy：
 
@@ -233,7 +233,7 @@ ms.locfileid: "76773687"
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -261,7 +261,7 @@ ms.locfileid: "76773687"
 
 ### <a name="get-the-upload-url"></a>获取上传 URL
 
-若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅 [定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
+若要检索实际上传 URL，请创建一个 SAS 定位符。 定位符为希望访问资产中文件的客户端定义连接终结点的开始时间和类型。 可以为给定 AccessPolicy 和资产对创建多个定位符实体，以处理不同的客户端请求和需求。 这其中的任一定位符都可使用 AccessPolicy 的 StartTime 值和 DurationInMinutes 值来确定可以使用某 URL 的时间长度。 有关详细信息，请参阅[定位符](https://docs.microsoft.com/rest/api/media/operations/locator)。
 
 SAS URL 采用以下格式：
 
@@ -270,7 +270,7 @@ SAS URL 采用以下格式：
 请注意以下事项：
 
 * 一项给定的资产一次最多只能与五个唯一的定位符相关联。 
-* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 此外，StartTime 值必须采用以下 DateTime 格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。    
+* 如果需要立即上传文件，应将 StartTime 值设置为当前时间前五分钟。 这是因为客户端计算机与媒体服务之间可能存在时钟偏差。 StartTime 值还必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。    
 * 定位符从创建到可用可能会有 30-40 秒的延迟。 [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 和源定位符都会出现这个问题。
 
 以下示例说明了如何创建 SAS URL 定位符，由请求正文中的 Type 属性定义（“1”表示 SAS 定位符，“2”表示按需来源定位符）。 返回的 **Path** 属性包含上传文件时必须使用的 URL。
@@ -298,7 +298,7 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -329,14 +329,14 @@ SAS URL 采用以下格式：
     }
 
 ### <a name="upload-a-file-into-a-blob-storage-container"></a>将文件上传到 Blob 存储容器
-设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure Blob 存储容器。 必须将文件作为块 blob 上传。 页 blob 不受 Azure 媒体服务支持。  
+设置 AccessPolicy 和定位符后，即可使用 Azure 存储 REST API 将具体的文件上传到 Azure Blob 存储容器。 必须以块 blob 形式上传文件。 Azure 媒体服务不支持页 blob。  
 
 > [!NOTE]
-> 必须将要上传的文件的文件名添加到上一部分中收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`。
+> 必须将要上传文件的文件名添加到在上一节收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?` 。
 >
 >
 
-有关使用 Azure 存储 blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
+有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
 ### <a name="update-the-assetfile"></a>更新 AssetFile
 上传文件后，请更新 FileAsset 大小（和其他）信息。 例如：
@@ -362,7 +362,7 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 204 No Content
     ...
@@ -382,7 +382,7 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 204 No Content
     ...
@@ -400,21 +400,21 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 204 No Content
     ...
 
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>将源文件编码为一组自适应比特率 MP4 文件
 
-将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，并将其传送至客户端。 根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作（有关详细信息，请参阅[作业](https://docs.microsoft.com/rest/api/media/operations/job)、[任务](https://docs.microsoft.com/rest/api/media/operations/task)描述）。
+将资产引入媒体服务后，即可对媒体进行编码、传输复用、打水印等处理，然后将其传送至客户端。 将根据多个后台角色实例调度把那个运行这些活动，以确保较高的性能和可用性。 这些活动称为作业，每个作业由原子任务构成，这些原子任务在资产文件上完成具体的工作（有关详细信息，请参阅[作业](https://docs.microsoft.com/rest/api/media/operations/job)、[任务](https://docs.microsoft.com/rest/api/media/operations/task)描述）。
 
 如前所述，使用 Azure 媒体服务最常见的方案之一是将自适应比特率流传送至客户端。 媒体服务可将一组自适应比特率 MP4 文件动态打包为以下格式之一：HTTP Live Streaming (HLS)、平滑流式处理、MPEG DASH。
 
 以下部分说明了如何创建包含一个编码任务的作业。 该任务指定使用 **Media Encoder Standard** 将夹层文件转码成一组自适应比特率 MP4。 该部分还说明了如何监视作业处理进度。 作业完成后，可创建所需的定位符来获取对资产的访问权限。
 
 ### <a name="get-a-media-processor"></a>获取媒体处理器
-在媒体服务中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 对于本教程中所示的编码任务，会使用 Media Encoder Standard。
+在媒体服务中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。 对于本教程中所示的编码任务，将使用 Media Encoder Standard。
 
 以下代码会请求编码器的 ID。
 
@@ -460,7 +460,7 @@ SAS URL 采用以下格式：
     }
 
 ### <a name="create-a-job"></a>创建作业
-每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 REST API 允许通过以下两种方式之一创建作业及其相关任务：可按以下两种方式以内联形式定义任务：通过作业实体上的任务导航属性，或通过 OData 批处理。 媒体服务 SDK 使用批处理。 但为了确保本文中代码示例的可读性，任务以内联方式定义。 有关批处理的信息，请参阅 [Open Data Protocol (OData) 批处理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
+每个作业可以有一个或多个任务，具体因要完成的处理类型而异。 REST API 允许通过以下两种方式之一创建作业及相关任务：可按以下两种方式以内联形式定义任务：通过作业实体上的任务导航属性，或通过 OData 批处理。 媒体服务 SDK 使用批处理。 但为了确保本文中代码示例的可读性，任务以内联方式定义。 有关批处理的信息，请参阅 [Open Data Protocol (OData) 批处理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
 
 以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。 以下文档部分包含 Media Encoder Standard 处理器支持的所有[任务预设](https://msdn.microsoft.com/library/mt269960)的列表。  
 
@@ -498,7 +498,7 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -562,18 +562,18 @@ SAS URL 采用以下格式：
 
 * TaskBody 属性必须使用文本 XML 来定义任务使用的输入资产或输出资产的数量。 任务文章包含 XML 的 XML 架构定义。
 * 在 TaskBody 定义中，必须将 `<inputAsset>` 和 `<outputAsset>` 的每个内部值设置为 JobInputAsset(value) 或 JobOutputAsset(value)。
-* 一个任务可以有多个输出资产。 一个 JobOutputAsset(x) 只能一次用作作业中任务的输出。
-* 可以将 JobInputAsset 或 JobOutputAsset 指定为任务的输入资产。
+* 一个任务可以有多个输出资产。 作为作业任务的输出，一个 JobOutputAsset(x) 只能使用一次。
+* 可以将 JobInputAsset 或 JobOutputAsset 指定为某任务的输入资产。
 * 任务不得构成循环。
-* 传递给 JobInputAsset 或 JobOutputAsset 的 value 参数代表资产的索引值。 在作业实体定义的 InputMediaAssets 和 OutputMediaAssets 导航属性中定义实际资产。
+* 传递给 JobInputAsset 或 JobOutputAsset 的 value 参数代表资产的索引值。 实际资产在作业实体定义的 InputMediaAssets 和 OutputMediaAssets 导航属性中定义。
 
 > [!NOTE]
-> 由于媒体服务基于 OData v3，因此通过“__metadata : uri”名称-值对引用 InputMediaAssets 和 OutputMediaAssets 导航属性集合中的各项资产。
+> 由于媒体服务基于 OData v3，因此，InputMediaAssets 和 OutputMediaAssets 导航属性集合中的单个资产将通过“__metadata : uri”名称/值对进行引用。
 >
 >
 
-* InputMediaAssets 映射到已在媒体服务中创建的一项或多项资产。 OutputMediaAssets 由系统创建。 它们不引用现有资产。
-* OutputMediaAssets 可以使用 assetName 属性来命名。 如果该属性不存在，则 OutputMediaAsset 的名称为 `<outputAsset>` 元素的任意内部文本值，并以作业名称值或作业 ID 值（在没有定义名称属性的情况下）为后缀。 例如，如果将 assetName 的值设置为“Sample”，则会将 OutputMediaAsset 名称属性设置为“Sample”。 但是，如果未设置 assetName 的值，但已将作业名称设置为“NewJob”，则 OutputMediaAsset 名称为“JobOutputAsset(value)_NewJob”。
+* InputMediaAssets 将映射到已在媒体服务中创建的一个或多个资产。 OutputMediaAssets 由系统创建。 它们不引用现有资产。
+* OutputMediaAssets 可以使用 assetName 属性来命名。 如果该属性不存在，则 OutputMediaAsset 的名称为 `<outputAsset>` 元素的任意内部文本值，并以作业名称值或作业 ID 值（在没有定义名称属性的情况下）为后缀。 例如，如果将 assetName 的值设置为“Sample”，则会将 OutputMediaAsset 名称属性设置为“Sample”。 但是，如果未设置 assetName 的值，但已将作业名称设置为“NewJob”，则 OutputMediaAsset 名称将为“JobOutputAsset(value)_NewJob”。
 
     以下示例说明了如何设置 assetName 属性：
 
@@ -603,7 +603,7 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -637,7 +637,7 @@ SAS URL 采用以下格式：
     Host: wamsbayclus001rest-hs.net
 
 
-如果成功，返回不带消息正文的 204 响应代码。
+如果成功，将返回不带消息正文的 204 响应代码。
 
 > [!NOTE]
 > 将作业 ID 作为参数传递给 CancelJob 时，必须对作业 ID 进行 URL 编码（通常为 nb:jid:UUID: 某个值）。
@@ -694,14 +694,14 @@ SAS URL 采用以下格式：
 
 ## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>使用 REST API 发布资产并获取流式处理和渐进式下载 URL
 
-若要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如，MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
+要流处理或下载资产，必须先创建定位符来“发布”资产。 定位符提供对资产中所含文件的访问权限。 媒体服务支持两种类型的定位符：用于流媒体（例如，MPEG DASH、HLS 或平滑流式处理）的 OnDemandOrigin 定位符，以及用于下载媒体文件的访问签名 (SAS) 定位符。 
 
 创建定位符后，可以创建用来流式处理或下载文件的 URL。
 
 >[!NOTE]
->创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。   若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。
+>创建 AMS 帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
-平滑流式处理的流 URL 采用以下格式：
+平滑流式处理的流式处理 URL 采用以下格式：
 
     {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
@@ -741,7 +741,7 @@ MPEG DASH 的流 URL 采用以下格式：
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-如果成功，则返回描述已创建的 AccessPolicy 实体的 201 成功代码。 然后，需要使用 AccessPolicy ID 以及包含需传送文件的资产（如某个输出资产）的资产 ID 来创建定位符实体。
+如果成功，将返回描述已创建的 AccessPolicy 实体的 201 成功代码。 然后，需要使用 AccessPolicy ID 以及包含需传送文件的资产（如某个输出资产）的资产 ID 来创建定位符实体。
 
 > [!NOTE]
 > 此基本工作流与引入资产时上传文件的工作流相同（如本主题前面所述）。 此外，和上传文件一样，如果（或客户端）需要立即访问文件，请将 StartTime 值设置为当前时间前五分钟。 此操作是必需的，因为客户端与媒体服务之间可能存在时钟偏差。 StartTime 值必须采用以下日期/时间格式：YYYY-MM-DDTHH:mm:ssZ（例如“2014-05-23T17:53:50Z”）。
@@ -764,7 +764,7 @@ MPEG DASH 的流 URL 采用以下格式：
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:71d2dd33-efdf-ec43-8ea1-136a110bd42c", "StartTime" : "2014-05-17T16:45:53", "Type":1}
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -806,10 +806,10 @@ MPEG DASH 的流 URL 采用以下格式：
        }
     }
 
-返回的 **Path** 属性包含的 SAS URL。
+返回的 **Path** 属性包含 SAS URL。
 
 > [!NOTE]
-> 如果下载存储加密的内容，则必须先手动进行解密，才能显示该内容；也可以在处理任务中使用 Storage Decryption MediaProcessor 将已处理的文件以明文形式输出到某个 OutputAsset，并从该资产中进行下载。 有关处理的详细信息，请参阅“使用媒体服务 REST API 创建编码作业”。 此外，SAS URL 定位符在创建后即无法更新。 例如，不能将同一定位符重用于已更新的 StartTime 值。 这是由创建 SAS URL 的方式决定的。 如果希望在定位符过期后访问某个供下载的资产，则必须创建一个带新 StartTime 的新定位符。
+> 如果下载存储加密的内容，则必须先手动进行解密，然后才能显示该内容；也可以在处理任务中使用 Storage Decryption MediaProcessor 将已处理的文件以明文形式输出到某个 OutputAsset，然后从该资产中进行下载。 有关处理的详细信息，请参阅“使用媒体服务 REST API 创建编码作业”。 此外，SAS URL 定位符在创建后即无法更新。 例如，不能将同一定位符重用于已更新的 StartTime 值。 这是由创建 SAS URL 的方式决定的。 如果希望在定位符过期后访问某个供下载的资产，则必须创建一个带新 StartTime 的新定位符。
 >
 >
 
@@ -817,7 +817,7 @@ MPEG DASH 的流 URL 采用以下格式：
 设置 AccessPolicy 和定位符后，可以使用 Azure 存储 REST API 下载文件。  
 
 > [!NOTE]
-> 必须将要下载的文件的文件名添加到在上一部分收到的 Locator **Path** 值中。 例如： https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? 上获取。 上获取。 上获取。
+> 必须将要下载的文件的文件名添加到在上一部分收到的定位符 **Path** 值中。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`? 。 。 。
 
 有关使用 Azure 存储 Blob 的详细信息，请参阅 [Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)。
 
@@ -855,7 +855,7 @@ MPEG DASH 的流 URL 采用以下格式：
 
     {"AccessPolicyId": "nb:pid:UUID:38c71dd0-44c5-4c5f-8418-08bb6fbf7bf8", "AssetId" : "nb:cid:UUID:eb5540a2-116e-4d36-b084-7e9958f7f3c3", "StartTime" : "2014-05-17T16:45:53",, "Type":2}
 
-如果成功，返回以下响应：
+如果成功，将返回以下响应：
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache

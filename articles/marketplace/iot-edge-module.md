@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace IoT Edge 模块
-description: Azure 市场中的 IoT Edge 模块套餐适用于应用和服务发布者。
+title: Azure 市场 IoT Edge 模块产品/服务
+description: 了解如何在 Azure 市场中发布 IoT Edge 模块产品/服务。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684336"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657960"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 平台由 Azure 云提供支持。  用户可以通过此平台部署云工作负载以直接在 IoT 设备上运行。  IoT Edge 模块可以运行脱机工作负载，并在本地执行数据分析。 此套餐类型可帮助节省带宽、保护本地数据和敏感数据，并提供低延迟响应时间。  现在，你可以选择利用这些预生成的工作负载。 到目前为止，只有少量来自 Microsoft 的第一方解决方案可用。  必须投入时间和资源来构建你自己的自定义 IoT 解决方案。
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) 平台由 Microsoft Azure 提供支持。  用户可以通过此平台部署云工作负载以直接在 IoT 设备上运行。  IoT Edge 模块可以运行脱机工作负载，并在本地执行数据分析。 此套餐类型可帮助节省带宽、保护本地数据和敏感数据，并提供低延迟响应时间。  现在，你可以选择利用这些预生成的工作负载。 到目前为止，只有少量来自 Microsoft 的第一方解决方案可用。  必须投入时间和资源来构建你自己的自定义 IoT 解决方案。
 
-通过引入 [Azure 市场中的 IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)，我们现在有单个目标，让发布者向 IoT 受众公开和销售其解决方案。 最终，IoT 开发人员可以查找和购买功能，以便加速其解决方案的开发进程。  
+使用 [Azure 市场中的 IoT Edge 模块](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)，我们现在有单个目标，让发布者向 IoT 受众公开和销售其解决方案。 最终，IoT 开发人员可以查找和购买功能，以便加速其解决方案的开发进程。  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure 市场中 IoT Edge 模块的主要优点：
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>Azure 市场中 IoT Edge 模块的主要优点
 
 | **对于发布者**    | **对于客户（IoT 开发人员）**  |
 | :------------------- | :-------------------|
@@ -44,11 +44,11 @@ IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面�
  
 **计费选项**
 
-市场当前支持 IoT Edge 模块的“免费”**** 和“自带许可证 (BYOL)”**** 计费选项。
+市场当前支持 IoT Edge 模块的“免费”和“自带许可证 (BYOL)”计费选项。
  
 **发布选项**
 
-在所有情况下，IoT Edge 模块应选择“Transact”**** 发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
 
 ## <a name="eligibility-criteria"></a>资格条件
 
@@ -75,15 +75,15 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="documentation-and-resources"></a>文档和资源
 
-[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)-在合作伙伴中心发布新的 IoT Edge 模块服务的步骤。
+[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md) - 在合作伙伴中心中发布新 IoT Edge 模块套餐的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
 如果尚未注册，
 
-- [了解](https://azuremarketplace.microsoft.com/sell)marketplace。
+- [了解](https://azuremarketplace.microsoft.com/sell)有关市场的信息。
 
-若要在合作伙伴中心注册，并开始创建新产品/服务或使用现有产品/服务，
+若要在合作伙伴中心中注册，并开始创建新产品/服务或正在使用现有产品/服务，
 
-- 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。
-- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅[创建 IoT Edge 模块提供](./partner-center-portal/azure-iot-edge-module-creation.md)。
+- 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
+- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅 [创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。

@@ -1,5 +1,5 @@
 ---
-title: Azure Internet 分析器故障排除 |Microsoft Docs
+title: Azure Internet 分析器故障排除 | Microsoft Docs
 description: Azure Internet 分析器的故障排除参考。
 services: internet-analyzer
 author: diego-perez-botero
@@ -7,29 +7,29 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: a265278652c16b4682707470d183a02a55b9a0ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77069211"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745470"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet 分析器故障排除
 
 本文包含常见 Internet 分析器问题的故障排除步骤。
 
 ## <a name="things-to-keep-in-mind"></a>要点
-- 必须将客户端脚本嵌入到**HTTPS**网站中。 如果脚本在纯文本（**http://**）或本地（**file://**）网站中运行，则不会收集度量值。
-- 仅当 Internet 分析器配置文件的客户端脚本已嵌入到接收真实用户流量的应用程序中时，才会收集度量数据。 综合流量（例如，Azure WebApp 性能测试）通常不执行嵌入的 Javascript 代码，因此不会通过该类型的流量生成度量。
+- 必须将客户端脚本嵌入到 HTTPS 网站中。 如果脚本在纯文本 (http://) 或本地 (file://) 网站中运行，则不会收集度量。
+- 仅当 Internet 分析器配置文件的客户端脚本已嵌入到接收真实用户流量的应用程序中时，才会收集度量数据。 综合流量（例如，Azure WebApp 性能测试）通常不执行嵌入的 Javascript 代码，因此该类型的流量不会生成度量。
 
 ## <a name="azure-portal"></a>Azure 门户
-**"记分卡部分中未为所选筛选器组合生成记分卡"**
-- 每日生成记分卡（在每天的结束时间，UTC 时间）。
-- 仅当为所选筛选器组合（测试、时间段、国家/地区等）收集了100多个度量值时，才会生成记分卡。
+“记分卡”部分中的“尚未为选定筛选器组合生成记分卡”
+- 每天都会生成记分卡（在一天结束时，UTC 时间）。
+- 仅当为选定筛选器组合（测试、时间段、国家/地区等）收集 100 多个度量时，才会生成记分卡。
 
-**测试中的一个或两个终结点的 "总度量计数" 为零**
-- 时序和度量值计数每小时计算一次，因此需要等待至少一段时间才能显示新的度量值数据。
-- Internet 分析器仅对其分析的成功度量值（即 HTTP 200 响应）进行计数。 如果测试中的一个或两个终结点无法访问或返回非 200 HTTP 代码，则它们将显示为零总度量值。
+测试中的一个或两个终结点的“度量总计数”为零
+- 时序和度量计数每小时计算一次，因此需要至少等待一段时间才能显示新的度量数据。
+- Internet 分析器仅对其分析的成功度量（即 HTTP 200 响应）进行计数。 如果测试中的一个或两个终结点无法访问或返回非 200 HTTP 代码，则它们将显示为零度量总计。
 
 ## <a name="next-steps"></a>后续步骤
-阅读[Internet 分析器常见问题](internet-analyzer-faq.md)
+阅读 [Internet 分析器常见问题解答](internet-analyzer-faq.md)

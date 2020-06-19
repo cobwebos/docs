@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 463bccb29d59f06e7381d7d7123946029223a93a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199721"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649596"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure 防火墙强制隧道
 
-可以对 Azure 防火墙进行配置，将所有发往 Internet 的流量路由到指定的下一个跃点，而不是直接转到 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。
+当配置新的 Azure 防火墙时，将所有 Internet 绑定的流量路由到指定的下一个跃点，而不是直接转到 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。 但不能配置现有的防火墙来实现强制隧道的目的。
 
 默认情况下，Azure 防火墙不允许强制隧道，以确保满足所有的出站 Azure 依赖关系。 AzureFirewallSubnet 上的其默认路由不直接指向 Internet 的用户定义路由 (UDR) 配置处于禁用状态。
 

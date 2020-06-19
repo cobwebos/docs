@@ -1,5 +1,5 @@
 ---
-title: 快速入门：创建 NAT 网关 - 资源管理器模板
+title: 教程：创建 NAT 网关 - 资源管理器模板
 titleSuffix: Azure Virtual Network NAT
 description: 本快速入门介绍如何使用 Azure 资源管理器模板创建 NAT 网关。
 services: load-balancer
@@ -10,20 +10,20 @@ Customer intent: I want to create a NAT gateway by using an Azure Resource Manag
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 5e0d62885598aea6f1656d0cdcef5f0c3406e7dd
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fbc8b48f4ff6a6df687d45a53008a159c5322084
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341025"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703564"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>快速入门：创建 NAT 网关 - 资源管理器模板
+# <a name="tutorial-create-a-nat-gateway---resource-manager-template"></a>教程：创建 NAT 网关 - 资源管理器模板
 
 通过 Azure 资源管理器模板完成虚拟网络 NAT 入门。  此模板部署虚拟网络、NAT 网关资源和 Ubuntu 虚拟机。 Ubuntu 虚拟机将部署到与 NAT 网关资源关联的子网。
 
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 从左侧窗格中选择“资源组”  。
+2. 从左侧窗格中选择“资源组”。
 
 3. 选择你在上一部分中创建的资源组。 默认资源组名称是 **myResourceGroupNAT**
 
@@ -138,7 +138,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure 门户**
 
-如果不再需要上述资源组、NAT 网关和所有相关资源，请将其删除。 选择包含 NAT 网关的资源组 **myResourceGroupNAT**，然后选择“删除”。 
+如果不再需要上述资源组、NAT 网关和所有相关资源，请将其删除。 选择包含 NAT 网关的资源组 **myResourceGroupNAT**，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

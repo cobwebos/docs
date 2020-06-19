@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 6a838455bfda47dee55e8726e5eab071d2dfe4f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 348ddb0fa8bd973a7e8ebcf5ae14de1eee57d5a5
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121144"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827484"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -86,11 +86,11 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 > Key Vault 访问策略适用于保管库级别。 如果授予某个用户创建和删除密钥的权限，该用户可以针对该密钥保管库中的所有密钥执行这些操作。
 >
 
-你可以使用[Azure Key Vault 的虚拟网络服务终结点](overview-vnet-service-endpoints.md)限制数据平面访问。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
+可以通过使用[适用于 Azure 密钥保管库的虚拟网络服务终结点](overview-vnet-service-endpoints.md)来限制数据平面访问权限）。 可以配置[防火墙和虚拟网络规则](network-security.md)以提供额外的安全层。
 
 ## <a name="example"></a>示例
 
-在此示例中，我们将开发一个应用程序，该应用程序使用证书来实现 TLS/SSL、使用 Azure 存储进行数据存储，并使用 RSA 2,048 位密钥进行签名操作。 我们的应用程序在 Azure 虚拟机 (VM)（或虚拟机规模集）中运行。 我们可以使用密钥保管库来存储应用程序机密。 我们可以存储应用程序用于通过 Azure AD 进行身份验证的启动证书。
+在此示例中，我们正在开发一个应用程序，该应用程序使用 TLS/SSL 证书，使用 Azure 存储进行数据存储，并使用 RSA 2048 位密钥进行签名操作。 我们的应用程序在 Azure 虚拟机 (VM)（或虚拟机规模集）中运行。 我们可以使用密钥保管库来存储应用程序机密。 我们可以存储应用程序用于通过 Azure AD 进行身份验证的启动证书。
 
 我们需要对以下存储密钥和机密的访问权限：
 - **TLS/SSL 证书**：用于 TLS/SSL。
@@ -99,7 +99,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - **启动证书**：用于使用 Azure AD 进行身份验证。 授予访问权限后，可以提取存储密钥并使用 RSA 密钥进行签名。
 
 我们需要定义以下角色，以指定可以管理、部署和审核应用程序的用户：
-- **安全团队**：CSO（首席安全官）办公室中的 IT 人员或类似参与者。 安全团队负责机密的适当保管。 机密可能包括 TLS/SSL 证书、用于签名的 RSA 密钥、连接字符串和存储帐户密钥。
+- **安全团队**：CSO（首席安全官）办公室中的 IT 人员或类似参与者。 安全团队负责机密的适当保管。 机密可以包括 TLS/SSL 证书、用于签名的 RSA 密钥、连接字符串和存储帐户密钥。
 - **开发人员和操作人员**：开发应用程序并在 Azure 中进行部署的人员。 此团队的成员不属于安全人员。 他们不应有权访问 TLS/SSL 证书和 RSA 密钥等敏感数据。 仅他们部署的应用程序才应有权访问敏感数据。
 - **审核员**：此角色适用于不属于开发人员或一般 IT 人员的参与者。 他们评审证书、密钥和机密的使用及维护，确保符合安全标准。
 
@@ -116,7 +116,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 - 定期滚动密钥和机密。
 
 **开发人员和操作人员**
-- 从安全团队获取启动证书和 TLS/SSL 证书（指纹）、存储密钥（机密 URI）以及用于签名的 RSA 密钥（密钥 URI）的引用。
+- 从安全团队获取启动证书和 TLS/SSL 证书引用（指纹）、存储密钥（机密 URI）以及用于签名的 RSA 密钥（密钥 URI）。
 - 以编程方式开发和部署用于访问密钥和机密的应用程序。
 
 **审核人员**
@@ -135,7 +135,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 有关如何以编程方式部署证书、访问密钥和机密的详细信息，请参阅以下资源：
 - 了解如何[将证书从客户托管的密钥保管库部署到 VM](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/)（博客文章）。
-- 查看[Azure Key Vault 客户端示例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此内容介绍了如何使用启动证书对 Azure AD 进行身份验证以访问密钥保管库。
+- 查看 [Azure 密钥保管库客户端示例](https://docs.microsoft.com/samples/browse/?term=Key%20Vault)。 此内容介绍了如何使用启动证书对 Azure AD 进行身份验证以访问密钥保管库。
 
 可以通过使用 Azure 门户授予大部分访问权限。 若要授予粒度权限，可以使用 Azure PowerShell 或 Azure CLI。
 
@@ -184,7 +184,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 定义的自定义角色只能分配给创建 **ContosoAppRG** 资源组所在的订阅。 若要将自定义角色用于其他订阅中的其他项目，请将其他订阅添加到角色的范围。
 
-对于我们的开发运营人员，密钥保管库 `deploy/action` 权限的自定义角色分配范围限定为资源组。 仅允许在 **ContosoAppRG** 资源组中创建的 VM 访问机密（TLS/SSL 和启动证书）。 即使 VM 具有机密 URI，由开发运营成员在其他资源组中创建的 VM 也无法访问这些机密。
+对于我们的开发运营人员，密钥保管库 `deploy/action` 权限的自定义角色分配范围限定为资源组。 仅允许在 ContosoAppRG 资源组中创建的 VM 访问机密（TLS/SSL 和启动证书）。 即使 VM 具有机密 URI，由开发运营成员在其他资源组中创建的 VM 也无法访问这些机密。
 
 我们的示例介绍了一个简单的方案。 现实方案可能更复杂。 可以根据需要调整密钥保管库的权限。 我们假设安全团队提供密钥和机密引用（URI 和指纹），开发运营员工在其应用程序中使用这些引用。 开发人员和操作员不需要任何数据平面访问权限。 我们将重点放在如何保护密钥保管库上。 对于保护 [VM](https://azure.microsoft.com/services/virtual-machines/security/)、[存储帐户](../../storage/blobs/security-recommendations.md)和其他 Azure 资源，应进行类似的考虑。
 
@@ -227,10 +227,10 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 配置[密钥保管库防火墙和虚拟网络](network-security.md)。
 
-有关管理员的入门教程，请参阅[什么是 Azure Key Vault？](overview.md)）。
+有关面向管理员的入门教程，请参阅[什么是 Azure 密钥保管库？](overview.md)）。
 
-有关 Key Vault 的使用日志记录的详细信息，请参阅[Azure Key Vault 日志记录](logging.md)）。
+有关 Key Vault 使用情况日志记录的详细信息，请参阅 [Azure Key Vault 日志记录](logging.md)）。
 
 有关将密钥和机密与 Azure Key Vault 配合使用的详细信息，请参阅[关于密钥和机密](https://msdn.microsoft.com/library/azure/dn903623.aspx)。
 
-如果对 Key Vault 有任何疑问，请访问[论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)。
+如果对密钥保管库有任何疑问，请访问 [Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。

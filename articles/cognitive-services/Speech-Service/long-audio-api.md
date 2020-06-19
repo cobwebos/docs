@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310591"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080655"
 ---
 # <a name="long-audio-api-preview"></a>长音频 API （预览）
 
@@ -66,7 +66,7 @@ ms.locfileid: "84310591"
 |        | 400 | 语音合成仅支持采用字节顺序标记的 UTF-8 编码格式的文本文件。 | 请确保输入文件采用带有字节顺序标记的 UTF-8 编码。 |
 |        | 400 | 语音合成请求中仅允许有效的 SSML 输入。 | 请确保输入的 SSML 表达式是正确的。 |
 |        | 400 | 在输入文件中找不到语音名称 {voiceName}。 | 输入的 SSML 语音名称与模型 ID 不一致。 |
-|        | 400 | 输入文件中的段落量应小于10000。 | 请确保文件中的段落小于10000。 |
+|        | 400 | 输入文件中的段落数应小于10000。 | 请确保文件中的段落数小于10000。 |
 |        | 400 | 输入文件应超过400个字符。 | 请确保输入文件超过400个字符。 |
 |        | 404 | 找不到语音合成定义中声明的模型： {modelID}。 | 请确保 {modelID} 是正确的。 |
 |        | 429 | 超出活动的语音合成限制。 请等待一些请求完成。 | 允许服务器运行每个 Azure 帐户，并为多达120请求排队。 请等待并避免提交新请求，直到完成一些请求。 |
@@ -114,7 +114,7 @@ ms.locfileid: "84310591"
 
 * [快速入门： Python](https://aka.ms/long-audio-python)
 
-## <a name="sample-code"></a>示例代码
+## <a name="sample-code"></a>代码示例
 GitHub 上提供了长音频 API 的示例代码。
 
 * [示例代码： Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)

@@ -1,44 +1,44 @@
 ---
-title: 按区域的支出详细信息-Microsoft 商用 marketplace
-description: 了解如何传输支付的费用，以及你可以从中接收付款的 Microsoft 商店，这取决于你所在的国家/地区和帐户类型。
+title: 按区域的付款详细信息 - Microsoft 商业市场
+description: 了解转账付款的估计时间，以及你可以从中接收付款的 Microsoft 店面，根据你所在的国家/地区和付款帐户类型而异。
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 29b6b47a30760887fb01700e50ecdeb5dd307ad4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 33c4286c5a3fa8be68c1e6ec3bd331aa1e804cb4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858175"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745016"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款阈值、方法和时间范围
 
-传输付款的估计时间以及你可以从其接收付款的商店可能因国家/地区和支出帐户类型而异。 本文概述每个国家和地区支持的付款方式。
+转账付款的估计时间，以及你可以从中接收付款的店面，根据你所在的国家/地区和付款帐户类型而异。 本文概述每个国家和地区支持的付款方式。
 
-对于任何给定的国家和地区，我们使用支票/SEPA 或电汇方式付费。 某些国家和地区还支持 PayPal 作为付款方式。
+对于任何给定的国家和地区，我们使用 ACH/SEPA 或电汇方式付费。 某些国家和地区还支持 PayPal 作为付款方式。
 
 > [!NOTE]
-> 若要详细了解如何在事务发生之后 Microsoft 为商业市场颁发付款，请参阅[策略详细信息](./payout-policy-details.md)。
+> 若要详细了解在交易发生后 Microsoft 何时向商业市场发放付款，请参阅[付款策略详细信息](./payout-policy-details.md)。
 
-## <a name="number-of-days-for-payments-to-reach-payout-account"></a>到达付款帐户的付款天数
+## <a name="number-of-days-for-payments-to-reach-payout-account"></a>款项到达付款帐户的天数
 
-我们通常会在该月的第15天发送在给定月份到期的任何付款。 但是，付款需要额外的时间才能联系到你的帐户。 天数将因帐户使用的付款方式而异，如下所述。
+我们通常会在给定月份的 15 日前发送该月应付的任何付款。 但是，付款到达你的帐户还需要额外的时间。 天数将因帐户使用的付款方式而异，如下所述。
 
-| 付款方式 | 接近帐户的大概天数 |
+| 付款方式 | 到达帐户的大概天数 |
 | --- | --- |
 | PayPal | 1 个工作日 |
-| ACH/SEPA | 2 到 3 个工作日 |
-| 电汇 | 7 到 10 个工作日 |
+| ACH/SEPA | 2-3 个工作日 |
+| 电汇 | 7-10 个工作日 |
 | | |
 
 ## <a name="payment-methods-in-countries-and-regions"></a>国家和地区中的付款方式
 
-这些是针对每个市场使用以上支付方法的国家和地区。 所有情况下的付款阈值为 $50 美元。
+这些是针对每个市场使用以上付款方式的国家和地区。 所有情况下的付款阈值均为 50 美元。
 
-| 国家/地区 | Azure 市场 | 商店、广告、混音器和 Minecraft | Office | PayPal 付款  |
+| 国家/地区 | Azure 市场 | Microsoft Store、Advertising、Mixer 和 Minecraft | Office | PayPal 付款  |
 | --- | --- | --- | --- | --- |
 | 阿富汗 | 是 | 是 | 否 | 否 |
 | 阿尔巴尼亚 | 是 | 是 | 是 | 是 |
@@ -71,8 +71,8 @@ ms.locfileid: "82858175"
 | 智利 | 是 | 是 | 是 | 是 |
 | 中国 | 否 | 是 | 是 | 是 |
 | 哥伦比亚 | 是 | 是 | 是 | 是 |
-| 科摩罗 | 是 | 是 | 否 | 否 |
-| 刚果（民主共和国） | 是 | 是 | 是 | 否 |
+| 科摩罗联盟 | 是 | 是 | 否 | 否 |
+| 刚果（金） | 是 | 是 | 是 | 否 |
 | 刚果共和国 | 是 | 是 | 是 | 否 |
 | 哥斯达黎加 | 是 | 是 | 是 | 是 |
 | 科特迪瓦 | 是 | 是 | 是 | 否 |
@@ -80,7 +80,7 @@ ms.locfileid: "82858175"
 | 塞浦路斯 | 是 | 是 | 是 | 是 |
 | 捷克共和国 | 是 | 是 | 是 | 是 |
 | 丹麦 | 是 | 是 | 是 | 是 |
-| 多米尼加 | 是 | 是 | 否 | 是 |
+| 多米尼加岛 | 是 | 是 | 否 | 是 |
 | 多米尼加共和国 | 是 | 是 | 是 | 是 |
 | 厄瓜多尔 | 是 | 是 | 是 | 是 |
 | 埃及 | 是 | 是 | 是 | 是 |
@@ -124,7 +124,7 @@ ms.locfileid: "82858175"
 | 立陶宛 | 是 | 是 | 是 | 否 |
 | 卢森堡 | 是 | 是 | 是 | 是 |
 | 马其顿 | 否 | 是 | 是 | 否 |
-| 马达加斯加 | 是 | 是 | 是 | 否 |
+| 马达加斯加岛 | 是 | 是 | 是 | 否 |
 | 马拉维 | 是 | 是 | 是 | 是 |
 | 马来西亚 | 是 | 是 | 是 | 是 |
 | 马里 | 是 | 是 | 是 | 否 |
@@ -137,7 +137,7 @@ ms.locfileid: "82858175"
 | 摩洛哥 | 是 | 是 | 是 | 否 |
 | 莫桑比克 | 是 | 是 | 是 | 是 |
 | 尼泊尔 | 是 | 是 | 是 | 否 |
-| 荷兰， | 是 | 是 | 是 | 是 |
+| 荷兰 | 是 | 是 | 是 | 是 |
 | 新西兰 | 是 | 是 | 是 | 是 |
 | 尼加拉瓜 | 是 | 是 | 是 | 是 |
 | 尼日尔 | 是 | 是 | 是 | 否 |
@@ -194,6 +194,6 @@ ms.locfileid: "82858175"
 | 津巴布韦 | 是 | 是 | 是 | 否 |
 | | |
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-step"></a>下一步
 
 - [付款摘要概述](./payout-summary-overview.md)

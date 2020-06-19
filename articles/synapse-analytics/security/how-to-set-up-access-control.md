@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591975"
+ms.locfileid: "83660082"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保护 Synapse 工作区（预览）
 
@@ -115,7 +115,7 @@ Synapse 工作区需要访问 STG1 和 CNT1，以便能够运行管道并执行�
 |   | 步骤 | 工作区管理员 | Spark 管理员 | SQL 管理员 |
 | --- | --- | --- | --- | --- |
 | 1 | 将 parquet 文件上传到 CNT1 中 | YES | YES | YES |
-| 2 | 使用 SQL On-Demand 读取 parquet 文件 | YES | 是 | YES |
+| 2 | 使用 SQL 按需版本读取 parquet 文件 | YES | 是 | YES |
 | 3 | 创建 Spark 池 | 是 [1] | 是 [1] | 是  |
 | 4 | 使用笔记本读取 parquet 文件 | YES | YES | 是 |
 | 5 | 通过笔记本创建管道，并触发管道立即运行 | YES | 是 | 是 |

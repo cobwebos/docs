@@ -12,16 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92fbd254f223e2c7eb70a4e86bb7e904294395e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595076"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712264"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>将 Facebook 添加为外部标识的标识提供者
 
 可以将 Facebook 添加到自助注册用户流（预览），这样用户可以使用自己的 Facebook 帐户来登录应用。 必须先为租户[启用自助注册](self-service-sign-up-user-flow.md)，然后才能允许用户使用 Facebook 登录。 将 Facebook 添加为标识提供者后，设置应用的用户流，并选择“Facebook”作为登录方式之一。
+
+> [!NOTE]
+> 用户只能使用其 Facebook 帐户通过支持自助服务注册和用户流的应用进行注册。 用户无法通过 Facebook 帐户被邀请或兑换邀请。
 
 ## <a name="create-an-app-in-the-facebook-developers-console"></a>在 Facebook 开发人员控制台中创建应用
 
@@ -53,7 +56,9 @@ ms.locfileid: "83595076"
 18. 若要让 Facebook 应用对 Azure AD 可用，请选择页面右上角的“状态”选择器，将它设置为“开”以公开应用，然后选择“切换模式”。 此时，状态应从“开发”变为“实时” 。
     
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>将 Facebook 帐户配置为标识提供者
+现在请设置 Facebook 客户端 ID 和客户端密码：在 Azure AD 门户中输入，或者使用 PowerShell 进行设置。 可以通过以下方法测试 Facebook 配置：通过在已启用了自助服务注册的应用上的用户流进行注册。
 
+### <a name="to-configure-facebook-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中配置 Facebook 联合身份验证
 1. 以 Azure AD 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
 2. 在“Azure 服务”下，选择“Azure Active Directory”。
 3. 在左侧菜单中，选择“外部标识”。
@@ -64,8 +69,38 @@ ms.locfileid: "83595076"
    ![显示“添加社交标识提供者”页的屏幕截图](media/facebook-federation/add-social-identity-provider-page.png)
 
 7. 选择“保存”。
+### <a name="to-configure-facebook-federation-by-using-powershell"></a>使用 PowerShell 配置 Facebook 联合身份验证
+1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
+2. 运行以下命令：`Connect-AzureAD`。
+3. 根据登录提示使用托管的全局管理员帐户登录。  
+4. 运行以下命令： 
+   
+   `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
+ 
+   > [!NOTE]
+   > 使用在 Facebook 开发者控制台中创建的应用客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
+
+## <a name="how-do-i-remove-facebook-federation"></a>如何删除 Facebook 联合身份验证？
+可以删除 Facebook 联合身份验证设置。 这样做的话，任何已经在用户流中使用 Facebook 帐户注册的用户都将无法再登录。 
+
+### <a name="to-delete-facebook-federation-in-the-azure-ad-portal"></a>在 Azure AD 门户中删除 Facebook 联合身份验证： 
+1. 转到 [Azure 门户](https://portal.azure.com)。 在左窗格中选择“Azure Active Directory”。 
+2. 选择“外部标识”。
+3. 选择“所有标识提供者”。
+4. 在“Facebook”行上，选择上下文菜单（“...”），然后选择“删除”。 
+5. 选择“是”以确认删除。
+
+### <a name="to-delete-facebook-federation-by-using-powershell"></a>使用 PowerShell 删除 Facebook 联合身份验证： 
+1. 安装最新版本的 Azure AD PowerShell for Graph 模块 ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview))。
+2. 运行 `Connect-AzureAD`。  
+4. 根据登录提示，使用托管的全局管理员帐户登录。  
+5. 输入以下命令：
+
+    `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
+
+   > [!NOTE]
+   > 有关详细信息，请参阅 [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [邀请外部用户进行协作](add-users-administrator.md)
 - [向应用添加自助注册](self-service-sign-up-user-flow.md)

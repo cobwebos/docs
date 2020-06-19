@@ -1,22 +1,22 @@
 ---
-title: 适用于商业市场的地理可用性和币种支持 |Azure Marketplace
-description: 商业应用商店中的地理位置
+title: Microsoft 商业市场的地域可用性和货币支持
+description: 商业市场中交易的地域可用性和货币支持
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 16d41879321c7cbaa4f38bcba83d83d39f30ee13
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687587"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657876"
 ---
-# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>适用于商业市场的地理可用性和币种支持
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
-可在141地理位置按客户的帐单地址进行购买，并可使用17个币种完成交易。 下表列出了每个受支持的地理位置、其[ISO 3166 2 位字母代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
+可在按客户的帐单地址定义的 141 个地理位置购买商业市场产品/服务，并可使用 17 个币种完成交易。 下表列出了每个受支持的地理位置、[ISO 3166 2 位 alpha 代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)以及分配的货币。
 
 |   国家/地区名称               |   ISO-2   |   货币   |
 |-------------------------------------|-----------|--------------|
@@ -48,12 +48,12 @@ ms.locfileid: "81687587"
 | 佛得角                          | CV        | USD          |
 | 开曼群岛                      | KY        | USD          |
 | 智利                               | CL        | USD          |
-| 中文\**                            | CN        | 空值          |
+| 中国\**                            | CN        | 空值          |
 | 哥伦比亚                            | CO        | USD          |
 | 哥斯达黎加                          | CR        | USD          |
 | 科特迪瓦                       | CI        | USD          |
 | 克罗地亚                             | HR        | EUR          |
-| 库拉索岛                             | °        | USD          |
+| 库拉索岛                             | CW        | USD          |
 | 塞浦路斯                              | CY        | EUR          |
 | 捷克共和国                      | CZ        | EUR          |
 | 丹麦                             | DK        | DKK          |
@@ -148,8 +148,8 @@ ms.locfileid: "81687587"
 | 突尼斯                             | TN        | USD          |
 | 土耳其                              | TR        | USD          |
 | 土库曼斯坦                        | TM        | USD          |
-| 梵蒂冈城国（圣见）             | VA        | EUR          |
-| 美国的维尔京群岛 | VI        | USD          |
+| 梵蒂冈（教区）             | VA        | EUR          |
+| 维尔京群岛（美属） | VI        | USD          |
 | 乌干达                              | UG        | USD          |
 | 乌克兰                             | UA        | USD          |
 | 阿拉伯联合酋长国                | AE        | USD          |
@@ -164,6 +164,6 @@ ms.locfileid: "81687587"
 | 津巴布韦                            | ZW        | USD          |
 |   |   |   |
 
-\*对于巴西的客户，通过云解决方案提供商（CSP）提供的 Marketplace 使用 USD。
+\* 对于巴西的客户，市场通过云解决方案提供商 (CSP) 使用 USD。
 
-\** 仅限免费和 BYOL VM 映像。
+\** 仅适用于免费和 BYOL VM 映像。

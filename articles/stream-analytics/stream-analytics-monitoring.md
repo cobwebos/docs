@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 11cb598420b4cecf803b17a78f14f9268e1c8be2
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611885"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831273"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
-## <a name="introduction-the-monitor-page"></a>简介：“监视”页
-Azure 门户提供了可用于监视和排查查询和作业性能问题的关键性能指标。 要查看这些指标，请浏览到感兴趣的想要查看其指标的流分析作业，并查看“概览”页面上的“监视”  部分。  
+## <a name="introduction-the-monitor-page"></a>简介：监视页
+Azure 门户会显示可用于监视和排查查询与作业性能问题的关键性能指标。 要查看这些指标，请浏览到感兴趣的想要查看其指标的流分析作业，并查看“概览”页面上的“监视”部分。  
 
 ![流分析作业监视链接](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
@@ -37,8 +37,8 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 | 函数请求数      | 对 Azure 机器学习函数（如果存在）的调用数。 |
 | 输入反序列化错误       | 不可反序列化的输入事件数。  |
 | 输入事件字节数      | 流分析作业收到的数据量（以字节为单位）。 这可以用于验证正在发送到输入源的事件。 |
-| 输入事件数           | 从输入事件反序列化的记录数。 此计数不包括导致反序列化错误的传入事件。 在内部恢复和自联接等方案中，流分析可以多次引入相同的事件。 因此，如果作业具有简单的 "传递" 查询，则建议不要预计输入事件和输出事件的指标。 |
-| 收到的输入源数       | 作业收到的消息数。 对于事件中心，消息是单个 EventData。 对于 Blob，消息是单个 Blob。 请注意，输入源在反序列化之前不计数。 如果存在反序列化错误，则输入源数可能大于输入事件数。 否则，它可能小于或等于输入事件数，因为每条消息可能包含多个事件。 |
+| 输入事件数           | 从输入事件反序列化的记录数。 此计数不包括导致反序列化错误的传入事件。 在内部恢复和自联接等方案中，流分析可以多次引入相同的事件。 因此，如果作业包含简单的“传递”查询，则我们建议不要指望输入事件与输出事件的指标相匹配。 |
+| 收到的输入源数       | 作业收到的消息数。 对于事件中心，一条消息是一个事件数据。 对于 Blob，一条消息是一个 Blob。 请注意，在反序列化之前，将会统计输入源的数目。 如果出现反序列化错误，则输入源数可能大于输入事件数。 否则，它可能小于或等于输入事件数，因为每条消息可能包含多个事件。 |
 | 延迟输入事件数      | 到达时间晚于已配置的延迟到达容错时段的事件。 详细了解 [Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。 |
 | 无序事件数    | 收到的无序事件的数目，系统根据事件排序策略来删除这些事件，或者为其提供一个经过调整的时间戳。 这可能会受“无序容错时段”设置的影响。 |
 | 输出事件数          | 流分析作业发送到输出目标的数据量，以事件数来衡量。 |
@@ -59,7 +59,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 此时间是作业的最新输出的应用程序时间（即使用事件数据的时间戳的时间）。
 
 ## <a name="get-help"></a>获取帮助
-若要获得进一步的帮助，请尝试我们的[Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请参阅[有关 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

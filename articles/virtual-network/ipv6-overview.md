@@ -1,7 +1,7 @@
 ---
-title: Azure 虚拟网络 IPv6 概述
+title: 适用于 Azure 虚拟网络的 IPv6 概述
 titlesuffix: Azure Virtual Network
-description: 介绍 Azure 虚拟网络中的 IPv6 以及 IPv6 终结点和数据路径。
+description: Azure 虚拟网络中的 IPv6 终结点和数据路径的 IPv6 描述。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,19 +12,19 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984004"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653305"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>什么是适用于 Azure 虚拟网络的 IPv6？
 
-Azure 虚拟网络 (VNet) IPv6 可让你通过虚拟网络内部的以及与 Internet 之间的 IPv6 和 IPv4 连接，在 Azure 中托管应用程序。 由于公共 IPv4 地址即将耗尽，面向移动应用和物联网 (IoT) 的新网络通常构建在 IPv6 上的基础之上。 甚至是建立了很久的 ISP 和移动网络也正在过渡到 IPv6。 在现有市场和新兴市场中，仅使用 IPv4 的服务可能会处于真正的劣势。 双堆栈 IPv4/IPv6 连接使得 Azure 托管的服务能够通过全球可用的、随时可连接现有 IPv4 和这些新 IPv6 设备与网络的双堆栈服务来弥补这种技术缺口。
+适用于 Azure 虚拟网络 (VNet) 的 IPv6 可让你通过虚拟网络内部的以及与 Internet 之间的 IPv6 和 IPv4 连接，在 Azure 中托管应用程序。 由于公共 IPv4 地址即将耗尽，面向移动应用和物联网 (IoT) 的新网络通常构建在 IPv6 上的基础之上。 甚至是建立了很久的 ISP 和移动网络也正在过渡到 IPv6。 在现有市场和新兴市场中，仅使用 IPv4 的服务可能会处于真正的劣势。 双堆栈 IPv4/IPv6 连接使得 Azure 托管的服务能够通过全球可用的、随时可连接现有 IPv4 和这些新 IPv6 设备与网络的双堆栈服务来弥补这种技术缺口。
 
-借助 Azure 的原始 IPv6 连接，可以轻松为 Azure 中托管的应用程序提供双堆栈 (IPv4/IPv6) Internet 连接。 它可以通过入站和出站发起连接的负载均衡 IPv6 连接简化 VM 的部署。 此功能仍可用，[此处](../load-balancer/load-balancer-ipv6-overview.md)提供了详细信息。
-Azure 虚拟网络 IPv6 的功能要全面得多，它可以实现在 Azure 中部署完整的 IPv6 解决方案体系结构。
+借助 Azure 的原始 IPv6 连接，可以轻松为 Azure 中托管的应用程序提供双堆栈 (IPv4/IPv6) Internet 连接。 它可以通过入站和出站发起连接的负载均衡 IPv6 连接简化 VM 的部署。 此功能仍可用，详细信息请参阅[此处](../load-balancer/load-balancer-ipv6-overview.md)。
+适用于 Azure 虚拟网络的 IPv6 的功能要全面得多，它可以实现在 Azure 中部署完整的 IPv6 解决方案体系结构。
 
 
 下图描绘了 Azure 中的简单双堆栈 (IPv4/IPv6) 部署：
@@ -56,8 +56,9 @@ Azure VNet IPv6 提供以下功能：
     - 可选的 IPv6 运行状况探测可以确定哪些后端池实例是正常的，因而可以接收新流。
     - 可选的出站规则可以根据具体的需求，以完全声明性的方式控制出站连接，以缩放和优化此功能。
     - 可选的多种前端配置可让单个负载均衡器使用多个 IPv6 公共 IP 地址 - 可在不同的前端地址中重复使用相同的前端协议和端口。
-    - 可以通过负载均衡规则的“浮动 IP”功能，在后端实例上重复使用可选的 IPv6 端口** 
-    - 注意：负载均衡不会执行任何协议转换（NAT64）。 
+    - 可以通过负载均衡规则的“浮动 IP”功能，在后端实例上重复使用可选的 IPv6 端口 
+    - 注意：负载均衡不执行任何协议转换（无 NAT64）。 
+    - 注意：IPv6 只能对 Azure VM 上的主要网络接口 (NIC) 进行负载均衡。 
 - [标准 IPv6 内部负载均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支持在 Azure VNET 内部创建弹性多层应用程序。   
 - 基本 IPv6 公共负载均衡器支持与传统部署实现兼容
 - [保留的 IPv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md)提供稳定、可预测的 IPv6 地址，方便将公司和客户的 Azure 托管应用程序列入允许列表。
@@ -69,14 +70,18 @@ Azure VNet IPv6 提供以下功能：
 - 可以使用负载均衡器指标/警报与网络观察程序功能（例如数据包捕获、NSG 流日志、连接故障排除和连接监视）实现 IPv6 故障排除与诊断。   
 
 ## <a name="scope"></a>范围
-Azure VNET IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆栈 (IPv4 + IPv6) 应用程序。  我们有意不断地将 IPv6 支持添加到更多的 Azure 网络功能，最终提供 Azure PaaS 服务的双堆栈版本，但在此过程中，仍可以通过双堆栈虚拟机上的 IPv4 终结点访问所有 Azure PaaS 服务。   
+适用于 Azure VNET 的 IPv6 是一个基础功能集，可让客户在 Azure 中托管双堆栈 (IPv4 + IPv6) 应用程序。  我们有意不断地将 IPv6 支持添加到更多的 Azure 网络功能，最终提供 Azure PaaS 服务的双堆栈版本，但在此过程中，仍可以通过双堆栈虚拟机上的 IPv4 终结点访问所有 Azure PaaS 服务。   
 
 ## <a name="limitations"></a>限制
-当前的 Azure 虚拟网络 IPv6 版本存在以下限制：
-- Azure 虚拟网络 IPv6 适用于所有部署方法的全球 Azure 商业区域。  美国政府云中的部署暂时限制为 ARM （JSON）模板、命令行接口（CLI）和 Powershell。  我们很快就会提供美国政府云门户中的 IPv6 支持。  
-- ExpressRoute 网关可用于启用了 IPv6 的 VNET 中仅适用于 IPv4 的流量。  在我们的路线图上支持 IPv6 通信。   
-- VPN 网关不能用于启用了 IPv6 的 VNET 中，可以直接使用 "UseRemoteGateway" 或对等互连。
+当前的适用于 Azure 虚拟网络的 IPv6 版本存在以下限制：
+- 使用所有部署方法，适用于 Azure 虚拟网络的 IPv6 已在全球所有 Azure 商业版和美国政府版区域中提供。  
+- 在启用了 IPv6 的 VNET 中，ExpressRoute 网关可以用于仅 IPv4 通信。  我们的路线图展示了对 IPv6 通信的支持。   
+- VPN 网关不能在启用了 IPv6 的 VNET 中使用，可以直接使用，也可以使用“UseRemoteGateway”查看。
 - Azure 平台（AKS 等）不支持容器的 IPv6 通信。  
+- IPv6 只能对 Azure VM 上的主要网络接口 (NIC) 进行负载均衡。 不支持到辅助 NIC 的负载均衡 IPv6 通信。    
+- 不支持仅 IPv6 虚拟机或虚拟机规模集，每个 NIC 必须至少包含一个 IPv4 IP 配置。 
+- 将 IPv6 添加到现有 IPv4 部署时，无法将 IPv6 范围添加到具有现有资源导航链接的 VNET。  
+- 目前，Azure 公共 DNS 支持 IPv6 的正向 DNS，但尚不支持反向 DNS。   
 
 ## <a name="pricing"></a>定价
 

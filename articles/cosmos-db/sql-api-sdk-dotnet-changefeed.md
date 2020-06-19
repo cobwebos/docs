@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB .NET 更改源处理器 API、SDK 发行说明
 description: 了解有关更改源处理器 API 和 SDK 的全部信息，包括发布日期、停用日期和 .NET 更改源处理器 SDK 各版本之间所做的更改。
-author: ealsur
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/30/2019
-ms.author: maquaran
-ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: e39cef33d8d402b6e04c6b9952cae21848e02424
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619440"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660421"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -23,14 +23,15 @@ ms.locfileid: "80619440"
 > * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [异步 Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
+> * [批量执行工具 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行工具 - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -40,29 +41,29 @@ ms.locfileid: "80619440"
 |**当前受支持的框架**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
-> 如果使用更改源处理器，请参阅 [.NET SDK](change-feed-processor.md) 的最新版本 3.x，其中内置了更改源。 
+> 如果使用的是更改源处理器，请参阅 [.NET SDK](change-feed-processor.md) 的最新版本 3.x，其中包含内置于 SDK 中的更改源。 
 
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* 添加了新方法`ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`和相应的公共`ICheckpointPartitionProcessorFactory`接口。 这允许`IPartitionProcessor`接口的实现使用内置检查点机制。 新工厂类似于现有`IPartitionProcessorFactory`，只不过其`Create`方法也采用`ILeaseCheckpointer`参数。
-* 只能将`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory`或`ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`中的一个方法用于同一个`ChangeFeedProcessorBuilder`实例。
+* 添加了新方法 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 和相应的公共接口 `ICheckpointPartitionProcessorFactory`。 这样可以实现 `IPartitionProcessor` 接口来使用内置检查点机制。 新工厂类似于现有 `IPartitionProcessorFactory`，只不过其 `Create` 方法也采用 `ILeaseCheckpointer` 参数。
+* 只有 `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` 或 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 方法中的一个可用于同一个 `ChangeFeedProcessorBuilder` 实例。
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * 稳定性和诊断改进：
-  * 添加了对检测长时间的读取更改源的支持。 当超过`ChangeFeedProcessorOptions.ChangeFeedTimeout`属性所指定的值时，将执行以下步骤：
-    * 在有问题的分区上读取更改源的操作将中止。
-    * 更改源处理器实例会丢弃问题租约的所有权。 将由相同或不同的更改源处理器实例完成的下一次租约获取步骤期间选取丢弃的租约。 这样一来，就可以开始读取更改源。
-    * 向运行状况监视器报告问题。 默认 heath 监视器将报告的所有问题发送到跟踪日志。
-  * 添加了新的公共属性`ChangeFeedProcessorOptions.ChangeFeedTimeout`：。 此属性的默认值为10分钟。
-  * 添加了新的公共枚举值`Monitoring.MonitoredOperation.ReadChangeFeed`：。 当的值`HealthMonitoringRecord.Operation`设置为`Monitoring.MonitoredOperation.ReadChangeFeed`时，它指示运行状况问题与读取更改源相关。
+  * 添加了对长时间检测读取更改源的支持。 所用时间比 `ChangeFeedProcessorOptions.ChangeFeedTimeout` 属性指定的值更长时，将执行以下步骤：
+    * 将中止在有问题的分区上读取更改源的操作。
+    * 更改源处理器实例将删除有问题的租约的所有权。 将在由相同或不同的更改源处理器实例完成的下次租约获取步骤期间选取已删除的租约。 这样便可以重新开始读取更改源。
+    * 向运行状况监视器报告问题。 默认运行状况监视器将报告的所有问题发送到跟踪日志。
+  * 添加了新的公共属性：`ChangeFeedProcessorOptions.ChangeFeedTimeout`。 此属性的默认值为 10 分钟。
+  * 添加了新的公共枚举值：`Monitoring.MonitoredOperation.ReadChangeFeed`。 当 `HealthMonitoringRecord.Operation` 的值设置为 `Monitoring.MonitoredOperation.ReadChangeFeed` 时，表示运行状况问题与读取更改源相关。
 
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
-* 改进了负载均衡策略，适用于获得所有租约所用时间超过租约过期时间间隔的情况，例如，由于网络问题：
-  * 在此方案中，用于将租约视为过期的负载平衡算法将导致活动所有者盗取租约。 这可能导致不必要地重新平衡大量租约。
-  * 在此版本中，此问题已修复，方法是避免在获取过期租约时重试，而不会更改所有者，并 posponing 获取过期租约以进行下一次负载平衡迭代。
+* 获取所有租约所用时间超过租约过期间隔时（例如，由于网络问题），改进了方案的负载均衡策略：
+  * 在此方案中，负载均衡算法过去常常将租约错误地视为过期，导致从活动所有者盗取租约。 这可能会导致对大量租约重新进行不必要的负载均衡。
+  * 在此版本中已修复此问题，方法是避免在获取所有者未更改的过期租约发生冲突时进行重试，并将获取过期租约推迟到下次负载均衡迭代。
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * 改进了对观察者异常的处理。
@@ -92,7 +93,7 @@ ms.locfileid: "80619440"
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * 添加了对已分区租用集合的支持。 分区键必须定义为 /id。
-* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一种高级扩展点，使你可以提供文档客户端的自定义实现，以便与更改源处理器一起使用，例如，修饰 DocumentClient 并截获对它的所有调用，以执行额外的跟踪、错误处理等操作。在此更新中，实现 IChangeFeedDocumentClient 的代码将需要更改为包括实现中的新参数。
+* 次要重大更改：IChangeFeedDocumentClient 接口和 ChangeFeedDocumentClient 类的方法都已更改为包括 RequestOptions 和 CancellationToken 参数。 IChangeFeedDocumentClient 是一个高级的扩展点，通过它可以提供文档客户端自定义实现以与更改源处理器结合使用，例如修饰 DocumentClient 并截获对它的所有调用以进行额外跟踪和错误处理等等。利用此更新，实现 IChangeFeedDocumentClient 的代码将需要更改为在实现中包含新参数。
 * 次要诊断改进。
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -153,7 +154,7 @@ ms.locfileid: "80619440"
 
 ### <a name="131"></a><a name="1.3.1"/>1.3.1
 * 稳定性改进。
-  * 修复了可能导致在某些分区上停止观察程序的已取消任务问题。
+  * 修复了处理取消的任务问题，该问题可能导致某些分区上的观察者停止。
 * 支持手动检查点。
 * 兼容 [SQL .NET SDK](sql-api-sdk-dotnet.md) 1.21 及更高版本。
 
@@ -186,8 +187,8 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.3.0](#2.3.0) |2020年4月2日 |--- |
-| [2.2.8](#2.2.8) |2019年10月28日 |--- |
+| [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
+| [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |
@@ -203,7 +204,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

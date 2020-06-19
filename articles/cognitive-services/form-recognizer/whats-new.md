@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8b6cad548c9fdc5b5157c842d6302c8635e21a15
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996816"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099323"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -22,6 +22,17 @@ ms.locfileid: "83996816"
 
 > [!NOTE]
 > 除非指定，否则窗体识别器的快速入门和指南始终使用最新版本的 API。
+
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="new-features"></a>新增功能
+* **COPYMODEL API 已添加到客户端 sdk**你现在可以使用客户端 Sdk 将模型从一个订阅复制到另一个订阅。 有关此功能的常规信息，请参阅[备份和恢复模型](./disaster-recovery.md)。
+* **Azure Active Directory 集成**你现在可以使用 AAD 凭据来验证 Sdk 中的表单识别器客户端对象。
+* **SDK 特定的更改**这包括次要功能添加和重大更改。 有关详细信息，请参阅 SDK 了解。
+  * [C # SDK 预览版 3 changelog](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
+  * [Python SDK 预览版 3 changelog](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [Java SDK 预览版 3 changelog](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [JavaScript SDK 预览版 3 changelog](https://github.com/Azure/azure-sdk-for-js/blob/%40azure/ai-form-recognizer_1.0.0-preview.3/sdk/formrecognizer/ai-form-recognizer/CHANGELOG.md)
 
 ## <a name="april-2020"></a>2020 年 4 月
 

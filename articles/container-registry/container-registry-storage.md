@@ -3,12 +3,12 @@ title: 容器映像存储
 description: 详述如何在 Azure 容器注册表中存储 Docker 容器映像，包括安全性、冗余和容量。
 ms.topic: article
 ms.date: 03/21/2018
-ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456210"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683397"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure 容器注册表中的容器映像存储
 
@@ -24,7 +24,7 @@ Azure 使用异地冗余存储方案来防止容器映像丢失。 Azure 容器�
 
 ## <a name="geo-replication"></a>异地复制
 
-对于需要更高可用性保证的方案，请考虑使用高级注册表的[异地复制](container-registry-geo-replication.md)功能。 异地复制可帮助在全部  区域失败（而不仅仅是一个存储失败）时，防止丢失对注册表的访问权限。 异地复制还提供了其他好处，如临近网络映像存储，以便在分布式开发或部署方案中实现更快地推送和拉取。
+对于需要更高可用性保证的方案，请考虑使用高级注册表的[异地复制](container-registry-geo-replication.md)功能。 异地复制可帮助在全部区域失败（而不仅仅是一个存储失败）时，防止丢失对注册表的访问权限。 异地复制还提供了其他好处，如临近网络映像存储，以便在分布式开发或部署方案中实现更快地推送和拉取。
 
 ## <a name="image-limits"></a>映像限制
 
@@ -46,7 +46,7 @@ Azure 使用异地冗余存储方案来防止容器映像丢失。 Azure 容器�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关不同 Azure 容器注册表 SKU（基本、标准和高级）的详细信息，请参阅 [Azure 容器注册表 SKU](container-registry-skus.md)。
+有关基本、标准和高级容器注册表的详细信息，请参阅 [Azure 容器注册表服务层级](container-registry-skus.md)。
 
 <!-- IMAGES -->
 

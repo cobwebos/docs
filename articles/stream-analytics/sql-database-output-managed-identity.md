@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 70ad69c1a34f656347b0cf53b28a1c35ac6ad043
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595836"
+ms.locfileid: "83651980"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用托管标识访问 Azure 流分析作业的 Azure SQL 数据库（预览）
 
@@ -56,13 +56,17 @@ Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识�
 
    ![Active Directory 管理员页](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
  
-1. 在“Active Directory 管理员”页中，搜索将成为 SQL Server 管理员的某个用户或组，并单击“选择”。  
+1. 在“Active Directory 管理员”页中，搜索将成为 SQL Server 管理员的某个用户或组，并单击“选择”。
 
    ![添加 Active Directory 管理员](./media/sql-db-output-managed-identity/add-admin.png)
 
-1. 在“Active Directory 管理员”页中，选择“保存”。 更改管理员的过程只需要几分钟。  
+   “Active Directory 管理员”页会显示 Active Directory 的所有成员和组。 若用户或组为灰显，则无法选择，因为不支持它们作为 Azure AD 管理员。 有关受支持的管理员列表，请参阅 [将 Azure Active Directory 身份验证与使用 SQL 数据库或 Azure Synapse 进行身份验证结合使用](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)中的“Azure AD 功能和限制”部分 ****  。 基于角色的访问控制 (RBAC) 仅适用于该门户，不会传播到 SQL Server。 此外，所选用户或组是将能够在下一个部分创建“包含数据库用户”的用户。
 
-## <a name="create-a-database-user"></a>创建数据库用户
+1. 在“Active Directory 管理员”页中，选择“保存”。 更改管理员的过程只需要几分钟。
+
+   设置 Azure AD 管理员时，此新的管理员名称（用户或组）不能作为 SQL Server 身份验证用户存在于虚拟 master 数据库中。 否则，Azure AD 管理员设置会失败，并将回滚其创建，指示此管理员（名称）已存在。 由于此 SQL Server 身份验证用户不是 Azure AD 的一部分，因此，以此用户身份使用 Azure AD 身份验证连接到服务器的任何尝试都会失败。 
+
+## <a name="create-a-contained-database-user"></a>创建包含数据库用户
 
 接下来，在 SQL 数据库中创建包含的数据库用户，该用户将映射到 Azure Active Directory 标识。 包含的数据库用户在 master 数据库中没有登录名，但它映射到与数据库关联的目录中的标识。 Azure Active Directory 标识可以是单独的用户帐户，也可以是组。 在这种情况下，你需要为流分析作业创建包含的数据库用户。 
 
@@ -92,15 +96,27 @@ Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识�
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
+1. 为了让 Microsoft 的 Azure Active Directory 验证流分析作业是否具有对 SQL 数据库的访问权限，我们需要授予 Azure Active Directory 与数据库进行通信的权限。 为此，请再次转到 Azure 门户的“防火墙和虚拟网络”页面，并启用“允许 Azure 服务和资源访问此服务器”。 
+
+   ![防火墙和虚拟网络](./media/sql-db-output-managed-identity/allow-access.png)
+
 ## <a name="grant-stream-analytics-job-permissions"></a>授予流分析作业权限
 
-流分析作业具有来自托管标识的权限，可以对 SQL 数据库资源执行 CONNECT 命令。 最有可能的情况是，允许流分析作业运行 SELECT 等命令。 可以使用 SQL Server Management Studio 将这些权限授予流分析作业。 有关详细信息，请参阅 [GRANT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) 参考。
+在创建包含数据库用户并按照上节所述在门户中授予其对 Azure 服务的访问权限后，流分析作业就具有了托管标识的权限，可通过托管标识连接到 SQL 数据库资源。 我们建议你向流分析作业授予“选择”和“插入”权限，因为后面在流分析工作流中会需要这些权限。 通过“选择”权限，此作业可以测试其与 SQL 数据库中表的连接。 配置输入和 SQL 数据库输出后，可以通过“插入”权限测试端到端流分析查询。你可以使用 SQL Server Management Studio 向流分析作业授予这些权限。 有关详细信息，请参阅 [GRANT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) 参考。
+
+若要仅对数据库中某个表或对象授予权限，请使用以下 T-SQL 语法，并运行查询。 
+
+```sql
+GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
+```
 
 或者，你可以在 SQL Server Management Studio 中右键单击 SQL 数据库，然后选择“属性”>“权限”。 从“权限”菜单中，你可以看到之前添加的流分析作业，可以根据需要手动授予或拒绝权限。
 
 ## <a name="create-an-azure-sql-database-output"></a>创建 Azure SQL 数据库输出
 
 配置托管标识后，便可以将 Azure SQL 数据库作为输出添加到流分析作业。
+
+请确保已在 SQL 数据库中使用适当的输出架构创建了一个表。 在向流分析作业添加 SQL 数据库输出时，此表的名称是必须填写的必需属性之一。 此外，请确保此作业具有“选择”和“插入”权限，以便测试连接并运行流分析查询。  如果尚未执行此操作，请参阅[授予流分析作业权限](#grant-stream-analytics-job-permissions)部分。 
 
 1. 返回到你的流分析作业，然后在“作业拓扑”下导航到“输出”页。 
 

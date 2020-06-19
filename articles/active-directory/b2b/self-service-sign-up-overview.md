@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e0325b43b6726f04d5994b60404f218ac58122d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594826"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737752"
 ---
 # <a name="self-service-sign-up-preview"></a>自助注册（预览）
 |     |
@@ -24,17 +24,20 @@ ms.locfileid: "83594826"
 | 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
-与外部用户共享应用时，你可能并不总是提前知道谁需要访问应用。 除了直接向个人发送邀请之外，还可以通过启用自助注册来允许外部用户自行注册特定的应用。 可以通过自定义自助注册用户流来创建个性化注册体验。 例如，可以提供 Azure AD 选项或社交标识提供者选项，并收集用户信息。
+与外部用户共享应用时，你可能并不总是提前知道谁需要访问应用。 除了直接向个人发送邀请之外，还可以通过启用自助注册来允许外部用户自行注册特定的应用。 可以通过自定义自助注册用户流来创建个性化注册体验。 例如，可以提供使用 Azure AD 或社交标识提供者注册的选项，并在注册过程中收集关于用户的信息。
+
+> [!NOTE]
+> 可以将用户流与组织生成的应用相关联。 用户流不能用于 Microsoft 应用，如 SharePoint 或 Teams。
 
 ## <a name="user-flow-for-self-service-sign-up"></a>自助注册用户流
 
-自助注册用户流通过要共享的应用为外部用户创建注册体验。 用户流可以与一个或多个应用相关联。 首先，为租户启用自助注册，并与要允许外部用户用来登录的任何标识提供者联合。 然后，创建和自定义注册用户流，并将应用分配到此流。
+自助注册用户流通过要共享的应用为外部用户创建注册体验。 用户流可以与一个或多个应用相关联。 首先，为租户启用自助注册，并与要允许外部用户用来登录的标识提供者联合。 然后，创建和自定义注册用户流，并将应用分配到此流。
 可以配置用户流设置来控制用户注册应用的方式：
 
 - 用于登录的帐户类型，如 Facebook 等社交帐户或 Azure AD 帐户
-- 要从注册用户收集的属性，如名字、邮政编码或居住地所在国家/地区
+- 要从注册用户收集的属性，例如名字、邮政编码或居住地所在国家/地区
 
-当用户要登录应用时，无论是 Web、移动、桌面还是单页应用 (SPA)，应用都会向用户流提供的终结点发起授权请求。 用户流定义并控制用户体验。 在用户完成注册用户流后，Azure AD 会生成一个令牌，然后将用户重定向回应用。 多个应用可以使用相同的用户流。
+当用户要登录应用时，无论是 Web、移动、桌面还是单页应用 (SPA)，应用都会向用户流提供的终结点发起授权请求。 用户流定义并控制用户体验。 在用户完成注册用户流后，Azure AD 会生成一个令牌，并将用户重定向回应用。 注册完成后，将在目录中为用户预配一个来宾帐户。 多个应用可以使用相同的用户流。
 
 ## <a name="example-of-self-service-sign-up"></a>自助注册示例
 
@@ -47,7 +50,7 @@ Woodgrove 的一个合作伙伴打开了 Woodgrove 应用。 合作伙伴决定�
 
 ![展示了选择 Facebook 进行登录的示例](media/self-service-sign-up-overview/example-sign-in-with-facebook.png)
 
-Azure AD 使用合作伙伴的 Facebook 帐户与 Woodgrove 建立关系，并新建一个帐户。
+Azure AD 使用合作伙伴的 Facebook 帐户与 Woodgrove 建立关系，并在用户注册后为其新建来宾帐户。
 
 Woodgrove 希望了解更多关于用户的信息，如姓名、企业名称、企业注册码、电话号码。
 

@@ -1,16 +1,16 @@
 ---
-title: 动态创建 Azure 文件共享
+title: 动态创建 Azure 文件存储共享
 titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 文件动态创建永久性卷，以便与 Azure Kubernetes 服务 (AKS) 中的多个并发 Pod 一起使用
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: 0826035a6c81cdbdd8c93f78cb32835dce675eb4
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 447df96240891e30570f0c7a8174674e1f404efc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207677"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677912"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -26,21 +26,20 @@ ms.locfileid: "82207677"
 
 ## <a name="create-a-storage-class"></a>创建存储类
 
-存储类用于定义如何创建 Azure 文件共享。 [节点资源组][node-resource-group]中会自动创建一个存储帐户来与存储类配合使用，以保存 Azure 文件共享。 为 [skuName][storage-skus] 选择下列任一 *Azure 存储冗余*：
+存储类用于定义如何创建 Azure 文件共享。 系统会在[节点资源组][node-resource-group]中自动创建一个存储帐户，以便与存储类一起用来保存 Azure 文件共享。 为 skuName 选择下列任一 [Azure 存储冗余][storage-skus]：
 
 * *Standard_LRS* - 标准本地冗余存储 (LRS)
 * *Standard_GRS* - 标准异地冗余存储 (GRS)
-* *Standard_ZRS*标准区域冗余存储（ZRS）
+* *Standard_ZRS* - 标准区域冗余存储 (ZRS)
 * *Standard_RAGRS* - 标准读取访问异地冗余存储 (RA-GRS)
 * *Premium_LRS* - 高级本地冗余存储 (LRS)
-* *Premium_ZRS* -高级区域冗余存储（GRS）
 
 > [!NOTE]
-> Azure 文件支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储，最低的高级文件共享为100GB
+> Azure 文件存储支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储，最小高级文件共享为 100GB
 
-有关 Azure 文件的 Kubernetes 存储类的详细信息，请参阅[Kubernetes 存储类][kubernetes-storage-classes]。
+有关 Azure 文件存储的 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
-创建名为 `azure-file-sc.yaml` 的文件，并将其复制到以下示例清单中。 有关 *mountOptions* 的详细信息，请参阅[装载选项][mount-options]部分。
+创建名为 `azure-file-sc.yaml` 的文件，并将其复制到以下示例清单中。 有关 mountOptions 的详细信息，请参阅[装载选项][mount-options]部分。
 
 ```yaml
 kind: StorageClass
@@ -59,7 +58,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-使用[kubectl apply][kubectl-apply]命令创建存储类：
+使用 [kubectl apply][kubectl-apply] 命令创建存储类：
 
 ```console
 kubectl apply -f azure-file-sc.yaml
@@ -67,7 +66,7 @@ kubectl apply -f azure-file-sc.yaml
 
 ## <a name="create-a-persistent-volume-claim"></a>创建永久性卷声明
 
-永久性卷声明 (PVC) 使用存储类对象来动态预配 Azure 文件共享。 可使用以下 YAML 创建大小为 *5 GB*、访问权限为 *ReadWriteMany* 的永久性卷声明。 有关访问模式的详细信息，请参阅 [Kubernetes 永久性卷][access-modes]文档。
+永久性卷声明 (PVC) 使用存储类对象来动态预配 Azure 文件共享。 可使用以下 YAML 创建大小为 5 GB、访问权限为 ReadWriteMany 的永久性卷声明。 有关访问模式的详细信息，请参阅 [Kubernetes 永久性卷][access-modes]文档。
 
 现在，创建名为 `azure-file-pvc.yaml` 的文件，并将其复制到以下 YAML 中。 请确保 *storageClassName* 与上一步骤中创建的存储类匹配：
 
@@ -86,9 +85,9 @@ spec:
 ```
 
 > [!NOTE]
-> 如果将 *Premium_LRS* SKU 用于存储类，则存储** 的最小值必须为 100Gi**。
+> 如果将 Premium_LRS sku 用于存储类，则存储的最小值必须为 100Gi。
 
-使用[kubectl apply][kubectl-apply]命令创建永久性卷声明：
+使用 [kubectl apply][kubectl-apply] 命令创建永久性卷声明：
 
 ```console
 kubectl apply -f azure-file-pvc.yaml
@@ -105,7 +104,7 @@ azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        RWX 
 
 ## <a name="use-the-persistent-volume"></a>使用永久性卷
 
-以下 YAML 创建的 Pod 使用永久性卷声明 *azurefile* 将 Azure 文件共享装载到 */mnt/azure* 路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定*mountPath* ，例如 *"d："*。
+以下 YAML 创建的 Pod 使用永久性卷声明 *azurefile* 将 Azure 文件共享装载到 */mnt/azure* 路径。 对于 Windows Server 容器，请使用 Windows 路径约定指定 mountPath，例如“D:”。
 
 创建名为 `azure-pvc-files.yaml` 的文件，并将其复制到以下 YAML 中。 请确保 *claimName* 与上一步骤中创建的 PVC 匹配。
 
@@ -140,7 +139,7 @@ spec:
 kubectl apply -f azure-pvc-files.yaml
 ```
 
-现有一个正在运行的 Pod，其中的 Azure 文件存储共享已装载到 /mnt/azure 目录中**。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。 以下精简示例输出显示容器中装载的卷：
+现有一个正在运行的 Pod，其中的 Azure 文件存储共享已装载到 /mnt/azure 目录中。 通过 `kubectl describe pod mypod` 检查 pod 时，可以看到此配置。 以下精简示例输出显示容器中装载的卷：
 
 ```
 Containers:
@@ -165,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-对于 Kubernetes 版本1.13.0 和更高*版本，"dirMode" 和 "* *dirMode* " 的默认值为*0777* 。 如果使用存储类动态创建持久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 1.13.0 及更高版本，fileMode 和 dirMode 的默认值为 0777。 如果使用存储类动态创建永久性卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 kind: StorageClass
@@ -186,7 +185,7 @@ parameters:
 
 ## <a name="next-steps"></a>后续步骤
 
-如需相关的最佳做法，请参阅 [AKS 中的存储和备份最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅 [AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 详细了解使用 Azure 文件的 Kubernetes 永久性卷。
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731184"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657143"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
@@ -129,11 +129,24 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>其他必需的依赖项
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>启用 Azure Spring Cloud 功能的其他推荐依赖项
 
-若要启用 Azure Spring Cloud 的内置功能，应用程序必须包含以下依赖项： 这样包含可以确保应用程序通过每个组件正确地自行配置。
+若要启用服务注册表到分布式跟踪的 Azure Spring Cloud 内置功能，你还需要在应用程序中包含以下依赖项。 如果不需要特定应用的相应功能，你可以删除这些依赖项。
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注释
+### <a name="service-registry"></a>服务注册表
+
+若要使用托管的 Azure 服务注册表服务，请在 pom.xml 文件中包括 `spring-cloud-starter-netflix-eureka-client` 依赖项，如下所示：
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+服务注册表服务器的终结点自动作为应用的环境变量注入。 然后，应用程序可自行注册到服务注册表服务器，并发现其他依赖性微服务。
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient 注释
 
 将以下注释添加到应用程序源代码中。
 ```java
@@ -159,20 +172,7 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>服务注册表依赖项
-
-若要使用托管的 Azure 服务注册表服务，请在 pom.xml 文件中包括 `spring-cloud-starter-netflix-eureka-client` 依赖项，如下所示：
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-服务注册表服务器的终结点自动作为应用的环境变量注入。 然后，应用程序可自行注册到服务注册表服务器，并发现其他依赖性微服务。
-
-### <a name="distributed-configuration-dependency"></a>分布式配置依赖项
+### <a name="distributed-configuration"></a>分布式配置
 
 若要启用分布式配置，请在 pom.xml 文件的 dependencies 节中包括以下 `spring-cloud-config-client` 依赖项：
 
@@ -186,7 +186,7 @@ public class GatewayApplication {
 > [!WARNING]
 > 请勿在启动配置中指定 `spring.cloud.config.enabled=false`。 否则，应用程序将再也不能与配置服务器配合使用。
 
-### <a name="metrics-dependency"></a>指标依赖项
+### <a name="metrics"></a>指标
 
 在 pom.xml 文件的 dependencies 节中包括 `spring-boot-starter-actuator` 依赖项，如下所示：
 
@@ -199,7 +199,7 @@ public class GatewayApplication {
 
  指标会定期从 JMX 终结点拉取。 可以通过 Azure 门户将指标可视化。
 
-### <a name="distributed-tracing-dependency"></a>分布式跟踪依赖项
+### <a name="distributed-tracing"></a>分布式跟踪
 
 在 pom.xml 文件的 dependencies 节中包括下面的 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 依赖项：
 

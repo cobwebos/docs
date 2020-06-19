@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443885"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674242"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -30,13 +30,13 @@ ms.locfileid: "75443885"
 
 IT 运营团队负责管理数据中心基础结构、应用程序和数据，包括这些系统的稳定性和安全性。 但是，若要获得日益增多的复杂 IT 环境的安全洞察信息，通常需要组织从多个安全性和管理系统收集数据。
 
-[Microsoft Azure 监视器日志](/azure/operations-management-suite/operations-management-suite-overview)是一种基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
+[Microsoft Azure Monitor 日志](/azure/operations-management-suite/operations-management-suite-overview)是基于云的 IT 管理解决方案，可帮助你管理和保护本地和云基础结构。 其核心功能由在 Azure 中运行的以下服务提供。 Azure 包含多个服务，这些服务可帮助你管理和保护本地和云基础结构。 每项服务都提供特定的管理功能。 可合并服务，实现不同的管理方案。 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](/azure/azure-monitor/overview) 可将来自托管源的数据收集到中央数据存储中。 这些数据可能包括事件、性能数据或通过 API 提供的自定义数据。 收集数据后，可分析、导出数据或发出警报。
 
-可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 Azure Monitor 日志还清楚地将数据收集与对数据执行的操作进行分隔，以便所有操作都可用于所有类型的数据。
+可整合来自各种源的数据，并将 Azure 服务中的数据合并到现有的本地环境。 此外，Azure Monitor 日志还能将数据收集与针对该数据执行的操作明确区分开来，以便能够针对所有类型的数据执行所有操作。
 
 ### <a name="automation"></a>自动化
 
@@ -60,7 +60,7 @@ Azure 备份提供多个组件，可将其下载并部署到适当计算机、�
 
 -   启用标识和访问管理 (IAM) 作为云服务。
 -   提供中心访问管理、单一登录 (SSO) 及报告功能。
--   支持 Azure 市场中[数千款应用程序](https://azure.microsoft.com/marketplace/active-directory/)（包括 Salesforce、Google Apps、Box 和 Concur）的集成访问管理。
+-   支持 Azure 市场中[数千款应用程序](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)（包括 Salesforce、Google Apps、Box 和 Concur）的集成访问管理。
 
 Azure AD 中还包括了整套[标识管理功能](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)，其中包括：
 
@@ -94,7 +94,7 @@ Azure AD 中还包括了整套[标识管理功能](/azure/security/security-iden
 >[!Note]
 >若要深入了解安全中心中的角色和允许的操作，请参阅 [Azure 安全中心中的权限](/azure/security-center/security-center-permissions)。
 
-安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
+安全中心使用 Microsoft Monitoring Agent。 此代理与 Azure Monitor 服务使用的代理相同。 通过此代理收集的数据存储在与 Azure 订阅关联的现有 Log Analytics [工作区](/azure/log-analytics/log-analytics-manage-access)或新工作区中，具体取决于 VM 的地理位置。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -145,9 +145,9 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 - [IP 流验证](/azure/network-watcher/network-watcher-ip-flow-verify-overview)：根据流信息的 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果安全组拒绝数据包，则返回拒绝数据包的规则和组。
 - [下一跃点](/azure/network-watcher/network-watcher-next-hop-overview)：确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何配置不正确的用户定义的路由。
 - [安全组视图](/azure/network-watcher/network-watcher-security-group-view-overview)：获取在 VM 上应用的有效安全规则。
-- [网络安全组的 NSG 流日志](/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：可捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
-- [虚拟网络网关和连接故障排除](/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供排查虚拟网络网关和连接问题的功能。
-- [网络订阅限制](/azure/network-watcher/network-watcher-monitoring-overview)：可查看网络资源用量与限制。
+- [网络安全组的 NSG 流日志](/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：用于捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
+- [虚拟网络网关和连接故障排除](/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供对虚拟网关和连接进行故障排除的功能。
+- [网络订阅限制](/azure/network-watcher/network-watcher-monitoring-overview)：用于查看网络资源用量与限制。
 - [诊断日志](/azure/network-watcher/network-watcher-monitoring-overview)：提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。
 
 有关详细信息，请参阅[配置网络观察程序](/azure/network-watcher/network-watcher-create)。
@@ -191,6 +191,6 @@ Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商�
 
 若要了解有关安全和审核解决方案的信息，请参阅以下文章：
 
-- [安全和符合性](https://azure.microsoft.com/overview/trusted-cloud/)
+- [安全性和符合性](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure 安全中心](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

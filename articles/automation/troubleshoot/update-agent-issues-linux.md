@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure Automation 中的 Linux update 代理问题更新管理
-description: 了解如何使用更新管理解决方案排查和解决 Linux Windows update 代理的问题。
+title: 使用 Azure 自动化排查 Linux 更新代理问题
+description: 本文介绍如何排查和解决在进行更新管理时出现的 Linux Windows 更新代理问题。
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997016"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680874"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>排查 Linux 更新代理问题
 
-在更新管理中，计算机未显示为 "就绪" （正常）的原因有很多。 可以检查 Linux 混合 Runbook 辅助角色代理的运行状况，以确定基本问题。 下面是计算机的三个就绪状态：
+在进行更新管理时计算机未显示为已就绪（正常），这可能有多种原因。 你可以检查 Linux 混合 Runbook 辅助角色代理的运行状况，以确定潜在问题。 以下是计算机的三种就绪状态：
 
-* 准备就绪：混合 Runbook 辅助角色已部署，最后发现不到1小时前。
-* 已断开连接：混合 Runbook 辅助角色已部署，上次在一小时前查看。
-* 未配置：混合 Runbook 辅助角色找不到或未完成加入。
-
-> [!NOTE]
-> 在 Azure 门户显示的内容和计算机的当前状态之间可能会有轻微的延迟。
-
-本文介绍如何在[脱机方案](#troubleshoot-offline)中从 Azure 门户和非 Azure 计算机运行 Azure 计算机的疑难解答。 
+* 迁移就绪性：已部署混合 Runbook 辅助角色，并且上次访问它的时间距当前时间不到一小时。
+* 已断开连接：已部署混合 Runbook 辅助角色，并且上次访问它的时间距当前时间超过一小时。
+* 未配置：混合 Runbook 辅助角色找不到或尚未完成部署。
 
 > [!NOTE]
-> 如果配置了一个代理服务器，则疑难解答脚本当前不会通过代理服务器路由流量。
+> Azure 门户显示的内容和计算机的当前状态之间可能会些微延迟。
+
+本文介绍如何从 Azure 门户为 Azure 计算机运行故障排除，以及如何为[离线场景](#troubleshoot-offline)下的非 Azure 计算机运行故障排除。 
+
+> [!NOTE]
+> 如果配置了代理服务器，则故障排除脚本当前不会通过它路由流量。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 
-对于 Azure 计算机，请在门户中的 "**更新代理就绪**" 列下选择 "**故障排除**" 链接，以打开 "更新代理故障排除" 页。 对于非 Azure 计算机，此链接会将你带入本文。 若要对非 Azure 计算机进行故障排除，请参阅 "脱机疑难解答" 部分中的说明。
+对于 Azure 计算机，请选择门户中“更新代理准备”列下的“故障排除”链接，以打开“排除更新代理故障”页 。 对于非 Azure 计算机，该链接会转到本文。 若要对非 Azure 计算机进行故障排除，请参阅“脱机进行故障排除”部分中的说明。
 
 ![VM 列表页](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> 检查要求 VM 处于运行状态。 如果 VM 未运行，将显示 **"启动 vm"** 。
+> 检查要求 VM 处于运行状态。 如果 VM 没有运行，则会显示“启动 VM”。
 
-在 "更新代理故障排除" 页上，选择 "**运行检查**" 以启动疑难解答。 疑难解答使用[运行命令](../../virtual-machines/linux/run-command.md)在计算机上运行脚本，以验证依赖关系。 完成故障排除时，它会返回检查的结果。
+在“排除更新代理故障”页上，选择“运行检查”，启动故障排除。 故障排除将使用[运行命令](../../virtual-machines/linux/run-command.md)在计算机上运行脚本，以验证依赖项。 完成故障排除时，它会返回检查的结果。
 
 ![故障排除页](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-完成检查后，结果将返回到窗口中。 检查部分提供了每项检查所要查找的内容相关信息。
+检查完成后，在窗口中将返回结果。 检查部分提供了每项检查所要查找的内容相关信息。
 
 ![更新代理检查页](../media/update-agent-issues-linux/update-agent-checks.png)
 
@@ -53,11 +53,11 @@ ms.locfileid: "82997016"
 
 ### <a name="operating-system"></a>操作系统
 
-操作系统检查会验证混合 Runbook 辅助角色是否正在运行以下操作系统之一。
+操作系统检查将验证混合 Runbook 辅助角色是否正在运行以下操作系统之一。
 
-|操作系统  |注释  |
+|操作系统  |说明  |
 |---------|---------|
-|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要使用 "yum" 来返回安全数据，CentOS 不能使用这些数据。         |
+|CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。         |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x86/x64)      |Linux 代理必须具有访问更新存储库的权限。         |
@@ -66,11 +66,11 @@ ms.locfileid: "82997016"
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
 
-此检查可确保安装适用于 Linux 的 Log Analytics 代理。 有关如何安装的说明，请参阅[安装适用于 Linux 的代理](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)。
+此检查可确保已安装适用于 Linux 的 Log Analytics 代理。 有关如何安装的说明，请参阅[安装适用于 Linux 的代理](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux)。
 
-### <a name="log-analytics-agent-status"></a>代理状态 Log Analytics
+### <a name="log-analytics-agent-status"></a>Log Analytics 代理状态
 
-此检查可确保适用于 Linux 的 Log Analytics 代理正在运行。 如果该代理未在运行，则可以运行以下命令尝试重启该代理。 有关对代理进行故障排除的详细信息，请参阅[Linux 混合 Runbook 辅助角色故障排除](hybrid-runbook-worker.md#linux)。
+此检查可确保适用于 Linux 的 Log Analytics 代理正在运行。 如果该代理未在运行，则可以运行以下命令尝试重启该代理。 有关对该代理进行故障排除的详细信息，请参阅 [Linux - 排查混合 Runbook 辅助角色问题](hybrid-runbook-worker.md#linux)。
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -82,13 +82,13 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="hybrid-runbook-worker"></a>混合 Runbook 辅助角色
 
-此检查将验证适用于 Linux 的 Log Analytics 代理是否具有混合 Runbook 辅助角色包。 更新管理需要此包才能工作。 若要了解详细信息，请参阅[适用于 Linux 的 Log Analytics 代理未运行](hybrid-runbook-worker.md#oms-agent-not-running)。
+此检查可验证适用于 Linux 的 Log Analytics 代理是否拥有混合 Runbook 辅助角色包。 更新管理需要此包才能工作。 若要了解详细信息，请参阅[适用于 Linux 的 Log Analytics 代理未运行](hybrid-runbook-worker.md#oms-agent-not-running)。
 
-更新管理从操作终结点下载混合 Runbook 辅助角色包。 因此，如果混合 Runbook 辅助角色未运行并且[操作终结点](#operations-endpoint)失败，则更新可能会失败。
+更新管理将从操作终结点下载混合 Runbook 辅助角色包。 因此，如果混合 Runbook 辅助角色未运行，并且[操作终结点](#operations-endpoint)检查失败，则更新可能会失败。
 
 ### <a name="hybrid-runbook-worker-status"></a>混合 Runbook 辅助角色状态
 
-此检查可确保混合 Runbook 辅助角色在计算机上运行。 如果混合 Runbook 辅助角色运行正常，则应出现以下示例中的进程。
+此检查可确保混合 Runbook 辅助角色在计算机上运行。 如果混合 Runbook 辅助角色正常运行，则应存在以下示例中的进程。
 
 
 ```bash
@@ -105,13 +105,13 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 ### <a name="registration-endpoint"></a>注册终结点
 
-此检查确定混合 Runbook 辅助角色能否与 Log Analytics 工作区中的 Azure 自动化进行正确通信。
+此检查可确定混合 Runbook 辅助角色是否可以与 Log Analytics 工作区中的 Azure 自动化正确通信。
 
 代理和防火墙配置必须允许混合 Runbook 辅助角色代理与注册终结点通信。 有关要打开的地址和端口的列表，请参阅[网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
 ### <a name="operations-endpoint"></a>操作终结点
 
-此检查确定 Log Analytics 代理能否与作业运行时数据服务正确通信。
+此检查可确定 Log Analytics 代理是否可以与作业运行时数据服务正确通信。
 
 代理和防火墙配置必须允许混合 Runbook 辅助角色代理与作业运行时数据服务通信。 有关要打开的地址和端口的列表，请参阅[网络规划](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -127,9 +127,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 此检查会验证计算机是否可以访问 Log Analytics 代理所需的终结点。
 
-## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>脱机使用故障排除
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>脱机进行故障排除
 
-可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 可以在脚本中心中找到 Python 脚本（ [update_mgmt_health_check py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6)）。 以下示例显示了此脚本的输出示例：
+可以通过在本地运行脚本，在混合 Runbook 辅助角色上脱机使用故障排除。 Python 脚本 [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) 可在脚本中心内找到。 以下示例显示了此脚本的输出示例：
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2
@@ -184,4 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>后续步骤
 
-若要排查混合 Runbook 辅助角色的其他问题，请参阅[对混合 Runbook 辅助角色进行故障排除](hybrid-runbook-worker.md)。
+[排查混合 Runbook 辅助角色问题](hybrid-runbook-worker.md)。

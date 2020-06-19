@@ -7,40 +7,40 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c69a700c9bcaa018bcfc1b1e6e01e166ef2d43bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72515814"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680236"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect：配置 AD DS 连接器帐户权限 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect： 配置 AD DS 连接器帐户权限 
 
 内部版本 1.1.880.0（发布于 2018 年 8 月）中引入了名为 [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) 的 PowerShell 模块，其中包括有助于为 Azure AD Connect 部署配置正确 Active Directory 权限的 cmdlet 集合。 
 
 ## <a name="overview"></a>概述 
 对于选择要在 Azure AD Connect 中启用的每个功能，可以使用以下 PowerShell cmdlet 设置 AD DS Connector 帐户的 Active Directory 权限。 为了防止出现任何问题，每当要使用自定义域帐户安装 Azure AD Connect 以连接林时，都应提前准备 Active Directory 权限。 部署 Azure AD Connect 后，此 ADSyncConfig 模块还可用于配置权限。
 
-![ad ds 帐户概述](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![AD DS 帐户概述](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 对于 Azure AD Connect 快速安装，将在 Active Directory 中创建一个具有所有必需权限的自动生成的帐户 (MSOL_nnnnnnnnnn)，因此除非你已阻止对组织单位或要同步到 Azure AD 的特定 Active Directory 对象的权限继承，否则无需使用此 ADSyncConfig 模块。 
  
 ### <a name="permissions-summary"></a>权限摘要 
 下表提供了 AD 对象所需权限的摘要： 
 
-| 功能 | 权限 |
+| Feature | 权限 |
 | --- | --- |
-| ms DS ConsistencyGuid 功能 |在设计概念中介绍的对 Msds-consistencyguid 属性的读写权限[-使用 msds-consistencyguid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。 | 
+| ms DS ConsistencyGuid 功能 |针对 ms-DS-ConsistencyGuid 属性的读写权限，详见[设计概念 - 使用 ms-DS-ConsistencyGuid 作为 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)。 | 
 | 密码哈希同步 |<li>复制目录更改</li>  <li>复制所有目录更改 |
-| Exchange 混合部署 |针对用户、组和联系人的[Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)中所述的属性的读取和写入权限。 |
+| Exchange 混合部署 |针对用户、组和联系人的属性的读写权限，详见 [Exchange 混合写回](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)。 |
 | Exchange 邮件公用文件夹 |对 [Exchange 邮件公用文件夹](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)中所述的公用文件夹属性的读取权限。 | 
-| 密码写回 |用户的[密码管理](../authentication/howto-sspr-writeback.md)入门中所述的属性的读取和写入权限。 |
-| 设备写回 |设备对象和[设备写回](how-to-connect-device-writeback.md)中记录的容器的读取和写入权限。 |
-| 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。  有关详细信息，请参阅[组写回](how-to-connect-preview.md#group-writeback)。|
+| 密码写回 |针对用户属性的读写权限，详见[密码管理入门](../authentication/howto-sspr-writeback.md)。 |
+| 设备写回 |针对设备对象和容器的读写权限，详见[设备写回](how-to-connect-device-writeback.md)。 |
+| 组写回 |读取、创建、更新和删除同步的 **Office 365 组**的组对象。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>使用 ADSyncConfig PowerShell 模块 
 ADSyncConfig 模块需要[适用于 AD DS 的远程服务器管理工具 (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)，因为它依赖于 AD DS PowerShell 模块和工具。 若要安装适用于 AD DS 的 RSAT，请使用“以管理员身份运行”打开 Windows PowerShell 窗口并执行： 
@@ -65,7 +65,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Get-Command -Module AdSyncConfig  
 ```
 
-![检查](media/how-to-connect-configure-ad-ds-connector-account/configure3.png)
+![勾选标记](media/how-to-connect-configure-ad-ds-connector-account/configure3.png)
 
 每个 cmdlet 都具有相同的参数来输入 AD DS 连接器帐户和 AdminSDHolder 开关。 若要指定 AD DS 连接器帐户，可以提供帐户名称和域，或仅提供帐户可分辨名称 (DN)，
 
@@ -81,7 +81,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -A
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-请确保将`<ADAccountName>` `<ADDomainName>`和`<ADAccountDN>`替换为环境的正确值。
+务必将 `<ADAccountName>`、`<ADDomainName>` 和 `<ADAccountDN>` 替换为适合你的环境的值。
 
 如果不想修改 AdminSDHolder 容器的权限，请使用开关 `-SkipAdminSdHolders`。 
 
@@ -110,7 +110,7 @@ Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -Obje
 ```
  
 ### <a name="view-ad-ds-permissions-of-an-object"></a>查看对象的 AD DS 权限 
-你可以使用以下 cmdlet 来查看当前在 Active Directory 对象上设置的权限列表，方法是提供其 DistinguishedName： 
+可以使用以下 cmdlet 来查看当前对 Active Directory 对象设置的权限列表，只需提供其 DistinguishedName 即可： 
 
 ``` powershell
 Show-ADSyncADObjectPermissions -ADobjectDN '<DistinguishedName>' 
@@ -295,9 +295,9 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 |类型 |名称 |访问 |应用于|
 |-----|-----|-----|-----| 
 |Allow |SYSTEM |完全控制 |此对象 
-|Allow |Enterprise Admins |完全控制 |此对象 
-|Allow |Domain Admins |完全控制 |此对象 
-|Allow |Administrators |完全控制 |此对象 
+|Allow |企业管理员 |完全控制 |此对象 
+|Allow |域管理员 |完全控制 |此对象 
+|Allow |管理员 |完全控制 |此对象 
 |Allow |企业域控制器 |列出内容 |此对象 
 |Allow |企业域控制器 |读取所有属性 |此对象 
 |Allow |企业域控制器 |读取权限 |此对象 

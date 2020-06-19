@@ -44,14 +44,10 @@
           href: path-selection-multiple-links.md
 - name: 操作指南
   items:
-    - name: 将虚拟网络网关连接到虚拟 WAN
-      href: connect-virtual-network-gateway-vwan.md
     - name: 配置全局 VNet 对等互连
       href: global-peering-vnet.md
     - name: 升级虚拟 WAN SKU
       href: upgrade-virtual-wan.md
-    - name: 配置自定义 IPsec 策略
-      href: virtual-wan-custom-ipsec-portal.md
     - name: ExpressRoute
       items:
         - name: 创建 ExpressRoute 连接
@@ -62,6 +58,10 @@
       items:
         - name: 创建站点到站点连接
           href: virtual-wan-site-to-site-portal.md
+        - name: 将虚拟网络网关连接到虚拟 WAN
+          href: connect-virtual-network-gateway-vwan.md
+        - name: 配置自定义 IPsec 策略
+          href: virtual-wan-custom-ipsec-portal.md
     - name: 用户 VPN（点到站点）
       items:
         - name: 创建用户 VPN 连接
@@ -109,7 +109,7 @@
 - name: 参考
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI

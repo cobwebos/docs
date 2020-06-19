@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdc99ca50255bd9b75828f0a051f364c5218471
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 217cf8822fcd8ef515ac9ce2dacdac3682e5fd12
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115483"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680166"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure 政府云的混合标识注意事项
 
@@ -41,7 +41,7 @@ ms.locfileid: "83115483"
 |代码 |用途|
 |-----|-----|
 |&#42;.msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|代理使用这些 URL 与 Azure AD 云服务通信。 |
-|mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| 代理使用这些 URL 来验证证书。|
+|`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| 代理使用这些 URL 来验证证书。|
 |login.windows.us </br>secure.aadcdn.microsoftonline p.com </br>&#42;.microsoftonline.us </br>&#42;.microsoftonline-p.us </br>&#42;.msauth.net </br>&#42;.msauthimages.net </br>&#42;.msecnd.net</br>&#42;.msftauth.net </br>&#42;.msftauthimages.net</br>&#42;.phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| 在注册过程中，代理使用这些 URL。
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>为 Azure 政府云安装代理
@@ -76,7 +76,7 @@ ms.locfileid: "83115483"
 
 ### <a name="roll-out-seamless-single-sign-on"></a>推行无缝单一登录
 
-你可以根据以下说明逐步向你的用户推行 Azure AD 无缝单一登录。 首先，使用 Active Directory 中的组策略将 Azure AD URL [https://autologon.microsoft.us](https://autologon.microsoft.us) 添加到所有或所选用户的 Intranet 区域设置。
+你可以根据以下说明逐步向你的用户推行 Azure AD 无缝单一登录。 首先，使用 Active Directory 中的组策略将 Azure AD URL `https://autologon.microsoft.us` 添加到所有或所选用户的 Intranet 区域设置。
 
 你还需要通过组策略启用 Intranet 区域策略设置“允许通过脚本更新状态栏”。
 
@@ -89,16 +89,16 @@ Mozilla Firefox 不会自动使用 Kerberos 身份验证。 每个用户必须�
 1. 运行 Firefox 并在地址栏中输入 **about:config** 。 关闭你可能会看到的任何通知。
 1. 搜索 **network.negotiate-auth.trusted-uris**  首选项。 此首选项列出了 Firefox 信任的用于 Kerberos 身份验证的站点。
 1. 右键单击首选项名称，然后选择“修改”。 ****
-1. 在框中输入  [ **https://autologon.microsoft.us** ](https://autologon.microsoft.us**)  。
+1. 在框中输入 `https://autologon.microsoft.us`。
 1. 选择“确定” ****  ，然后重新打开浏览器。
 
 ### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>基于 Chromium 的 Microsoft Edge（所有平台）
 
-如果覆盖了环境中的  `AuthNegotiateDelegateAllowlist`  或 `AuthServerAllowlist`  策略设置，请确保将 Azure AD URL [https://autologon.microsoft.us](https://autologon.microsoft.us) 添加到其中。
+如果覆盖了环境中的  `AuthNegotiateDelegateAllowlist`  或 `AuthServerAllowlist`  策略设置，请确保将 Azure AD URL `https://autologon.microsoft.us` 添加到其中。
 
 ### <a name="google-chrome-all-platforms"></a>Google Chrome（所有平台）
 
-如果覆盖了环境中的  `AuthNegotiateDelegateWhitelist`  或 `AuthServerWhitelist`  策略设置，请确保将 Azure AD URL [https://autologon.microsoft.us](https://autologon.microsoft.us) 添加到其中。
+如果覆盖了环境中的  `AuthNegotiateDelegateWhitelist`  或 `AuthServerWhitelist`  策略设置，请确保将 Azure AD URL `https://autologon.microsoft.us` 添加到其中。
 
 ## <a name="next-steps"></a>后续步骤
 

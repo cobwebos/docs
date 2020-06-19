@@ -1,51 +1,51 @@
 ---
 title: 确定导致非符合性的原因
-description: 有多种可能的原因会导致资源不合规。 了解如何查明导致不合规的原因。
-ms.date: 04/26/2019
+description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182576"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684238"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
-在判定某个 Azure 资源不符合某个策略规则时，了解该资源不符合该规则的哪个部分会很有帮助。 这还有助于了解哪项更改改变了以前合规的资源，导致它现在不合规。 可通过两种方式查找此信息：
+当 Azure 资源被确定为不符合策略规则时，了解该资源的哪一部分不符合规则很有用。 这也有助于了解哪些更改内容更改了以前符合的资源，使其变得不符合。 可通过两种方法查找此信息：
 
 > [!div class="checklist"]
-> - [合规性详细信息](#compliance-details)
-> - [更改历史记录（预览版）](#change-history)
+> - [符合性详细系信息](#compliance-details)
+> - [更改历史记录（预览）](#change-history)
 
-## <a name="compliance-details"></a>合规性详细信息
+## <a name="compliance-details"></a>符合性详细信息
 
-当某个资源不合规时，“策略合规性”页中会提供该资源的合规性详细信息。**** 合规性详细信息窗格包含以下信息：
+当资源不符合时，“策略符合性”页中将提供该资源的符合性详细信息。 符合性详细信息窗格包含以下信息：
 
-- 资源详细信息，例如名称、类型、位置和资源 ID
-- 上次评估当前策略分配时的合规状态和时间戳
-- 资源不合规的原因列表__
+- 名称、类型、位置和资源 ID 等资源详细信息
+- 当前策略分配的上一个计算的符合性状态和时间戳
+- 资源不符合性的原因列表
 
 > [!IMPORTANT]
-> 由于不合规资源的合规性详细信息显示有关该资源的属性的当前值，因此，用户必须对资源**类型**拥有**读取**操作权限。__ 例如，如果不合规的资源为 **Microsoft.Compute/virtualMachines**，则用户必须拥有 **Microsoft/virtualMachines/read** 操作权限。__ 如果用户没有所需的操作权限，将显示访问权限错误。
+> 由于不符合资源的符合性详细信息显示该资源属性的当前值，因此用户必须对资源类型进行读取操作。 例如，如果不符合资源为 Microsoft.Compute/virtualMachines，则用户必须进行 Microsoft.Compute/virtualMachines/read 操作。 如果用户没有进行所需操作，则会显示访问错误。
 
-若要查看合规性详细信息，请执行以下步骤：
+若要查看符合性详细信息，请执行以下步骤：
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。********
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
 
-1. 在“概述”或“合规性”页上，选择**合规性状态**为“不合规”的策略。********__
+1. 在“概览”或“符合性”页，选择“符合性状态”为“不符合”的策略  。
 
-1. 在“策略合规性”页的“资源合规性”选项卡下，右键单击**合规性状态**为“不合规”的资源或选择其对应的省略号。********__ 然后选择“查看合规性详细信息”。****
+1. 在“策略符合性”页的“资源符合性”选项卡下，右键单击或选择“符合性状态”为“不符合”的资源的省略号。 然后选择“查看符合性详细信息”。
 
-   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="“查看合规性详细信息”选项" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/view-compliance-details.png" alt-text="查看符合性详细信息选项" border="false":::
 
-1. “合规性详细信息”窗格将显示最近评估当前策略分配中的资源时的信息。**** 在此示例中，**Microsoft.Sql/servers/version** 字段值为 _12.0_，而策略定义预期该值为 _14.0_。 如果资源出于多种原因而不合规，此窗格中会列出每种原因。
+1. “符合性详细信息”窗格显示对当前策略分配最近进行的计算得出的信息。 在此示例中，发现字段“Microsoft.Sql/servers/version”为“12.0”，而策略定义预期为“14.0”。 如果资源不符合有多种原因，则此窗格将列出每个原因。
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="“合规性详细信息”窗格和不合规的原因" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane.png" alt-text="符合性详细信息窗格和不符合性原因" border="false":::
 
-   对于 **auditIfNotExists** 或 **deployIfNotExists** 策略定义，详细信息包含 **details.type** 属性和所有可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上次评估的资源”是定义的 **details** 节中的相关资源。****
+   对于“auditIfNotExists”或“deployIfNotExists”策略定义，详细信息包括“details.type”属性和任何可选属性。 有关列表，请参阅 [auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)和 [deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 “上一个计算资源”为定义的“详细信息”部分中的相关资源。
 
-   部分 **deployIfNotExists** 定义示例：
+   部分“deployIfNotExists”定义示例：
 
    ```json
    {
@@ -70,68 +70,68 @@ ms.locfileid: "82182576"
    }
    ```
 
-   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="“合规性详细信息”窗格 - *ifNotExists" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/compliance-details-pane-existence.png" alt-text="符合性详细信息窗格 - *ifNotExists" border="false":::
 
 > [!NOTE]
-> 若要保护数据，当属性值是机密时，当前值将显示星号。__
+> 为保护数据，当属性值为“secret”时，当前值显示星号。
 
-这些详细信息将解释资源当前不合规的原因，但不显示何时对该资源做出了更改，导致它不合规。 如需查看该信息，请参阅下面的[更改历史记录（预览版）](#change-history)。
+这些详细信息解释了资源当前不符合的原因，但没有显示对资源所做的更改导致其不符合的时间。 有关此信息，请参阅下面的[更改历史记录（预览版）](#change-history)。
 
-### <a name="compliance-reasons"></a>合规性原因
+### <a name="compliance-reasons"></a>符合性原因
 
-以下矩阵将每个可能的原因映射到策略定义中的控制 [条件：](../concepts/definition-structure.md#conditions)__
+以下矩阵将每个可能原因映射到策略定义中的负责[条件](../concepts/definition-structure.md#conditions)：
 
 |原因 | 条件 |
 |-|-|
-|当前值必须包含目标值作为键。 |containsKey，或 notContainsKey 的**求反** |
-|当前值必须包含目标值。 |contains，或 notContains 的**求反** |
-|当前值必须等于目标值。 |equals，或 notEquals 的**求反** |
-|当前值必须小于目标值。 |less，或 greaterOrEquals 的**求反** |
-|当前值必须大于或等于目标值。 |greaterOrEquals，或 less 的**求反** |
-|当前值必须大于目标值。 |greater，或 lessOrEquals 的**求反** |
-|当前值必须小于或等于目标值。 |lessOrEquals，或 greater 的**求反** |
-|必须存在当前值。 |exists |
-|当前值必须在目标值中。 |in，或 notIn 的**求反** |
-|当前值必须与目标值类似。 |like，或 notLike 的**求反** |
-|当前值必须与目标值匹配（区分大小写）。 |match，或 notMatch 的**求反** |
-|当前值必须与目标值匹配（不区分大小写）。 |matchInsensitively，或 notMatchInsensitively 的**求反** |
-|当前值不得包含目标值作为键。 |notContainsKey，或 containsKey 的**求反**|
-|当前值不得包含目标值。 |notContains，或 contains 的**求反** |
-|当前值不得等于目标值。 |notEquals，或 equals 的**求反** |
-|不得存在当前值。 |exists 的**求反**  |
-|当前值不得在目标值中。 |notIn，或 in 的**求反** |
-|当前值不得与目标值类似。 |notLike，或 like 的**求反** |
-|当前值不得与目标值匹配（区分大小写）。 |notMatch，或 match 的**求反** |
-|当前值不得与目标值匹配（不区分大小写）。 |notMatchInsensitively，或 matchInsensitively 的**求反** |
-|没有与策略定义中的效果详细信息匹配的相关资源。 |在 **then.details.type** 中定义的类型的、与策略规则的 **if** 部分中定义的资源相关的资源不存在。 |
+|当前值必须包含目标值作为关键值。 |containsKey 或不为 notContainsKey |
+|当前值必须包含目标值。 |contains 或不为 notContains |
+|当前值必须等于目标值。 |equals 或不为 notEquals |
+|当前值必须小于目标值。 |less 或不为 greaterOrEquals |
+|当前值必须大于或等于目标值。 |greaterOrEquals 或不为 less |
+|当前值必须大于目标值。 |greater 或不为 lessOrEquals |
+|当前值必须小于或等于目标值。 |lessOrEquals 或不为 greater |
+|当前值必须存在。 |exists |
+|当前值必须在目标值中。 |in 或不为 notIn |
+|当前值必须与目标值类似。 |like 或不为 notLike |
+|当前值必须与目标值匹配（区分大小写）。 |match 或不为 notMatch |
+|当前值必须与目标值匹配（不区分大小写）。 |matchInsensitively 或不为 notMatchInsensitively |
+|当前值不得包含目标值作为关键值。 |notContainsKey 或不为 containsKey|
+|当前值不得包含目标值。 |notContains 或不为 contains |
+|当前值不得等于目标值。 |notEquals 或不为 equals |
+|不能存在当前值。 |不能为 exists  |
+|当前值不得存在于目标值中。 |notIn 或不为 in |
+|当前值不得与目标值类似。 |notLike 或不为 like |
+|当前值不得与目标值匹配（区分大小写）。 |notMatch 或不为 match |
+|当前值不得与目标值匹配（不区分大小写）。 |notMatchInsensitively 或不为 matchInsensitively |
+|没有与策略定义中的效果详细信息匹配的相关资源。 |类型在“then.details.type”中定义，且与策略规则“if”部分定义的资源相关的资源不存在。 |
 
-## <a name="compliance-details-for-guest-configuration"></a>Guest Configuration 的合规性详细信息
+## <a name="compliance-details-for-guest-configuration"></a>来宾配置的符合性详细信息
 
-对于 _Guest Configuration_ 类别中的 _auditIfNotExists_ 策略，可能会在 VM 中评估多个设置，而你需要查看每个设置的详细信息。 例如，如果你要审核密码策略列表，而其中只有一个策略的状态为“不合规”，则你需要知道哪个特定的密码策略不合规，以及不合规的原因。__
+对于"来宾配置”类别中的“auditIfNotExists”策略，VM 内可能有多个计算设置，需要查看各个设置的详细信息。 例如，如果你正在审核一个密码策略列表，其中只有一个密码策略的状态为“不符合”，这时你需要了解具体哪些密码策略不符合以及不符合的原因。
 
-此外，你可能无权直接登录到 VM，但需要报告 VM 为何不合规。__
+你也可能无权直接登录到 VM，但需要报告 VM 不符合的原因。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-首先，遵循前面部分所述的有关查看策略合规性详细信息的相同步骤。
+首先遵循上述部分中的相同步骤查看策略符合性详细信息。
 
-在“合规性详细信息”窗格视图中，单击“上次评估的资源”链接。********
+在符合性详细信息窗格视图中，单击“上一个计算资源”。
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="查看 auditIfNotExists 定义详细信息" border="false":::
 
-“来宾分配”页将显示提供的所有合规性详细信息。**** 视图中的每一行代表在计算机中执行的一项评估。 “原因”列中会显示一条短语，描述来宾分配为何不合规。****__ 例如，如果你要审核密码策略，则“原因”列将显示包含每项设置的当前值的文本。****
+“来宾分配”页显示所有可用的符合性详细信息。 视图中的每一行都代表在计算机中执行的计算。 “原因”列中显示描述来宾分配“不符合”原因的短语。 例如，如果要审核密码策略，“原因”列将显示包含每个设置当前值的文本。
 
-:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="查看合规性详细信息" border="false":::
+:::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="查看符合性详细信息" border="false":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-也可以从 Azure PowerShell 查看合规性详细信息。 首先，确保已安装 Guest Configuration 模块。
+还可以在 Azure PowerShell 上查看符合性详细信息。 首先，请确保已安装来宾配置模块。
 
 ```azurepowershell-interactive
 Install-Module Az.GuestConfiguration
 ```
 
-可使用以下命令查看 VM 的所有来宾分配的当前状态：
+可以使用以下命令查看 VM 所有来宾分配的当前状态：
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
@@ -144,7 +144,7 @@ Audit that an application is installed inside Windows VMs                 {[Inst
 Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
 ```
 
-如果只想查看描述 VM 为何不合规的原因短语，请仅返回 Reason 子属性。____
+若要仅查看描述 VM 不符合原因的原因短语，只需返回原因子属性。
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
@@ -154,10 +154,10 @@ Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname
 The following applications are not installed: '<name>'.
 ```
 
-还可以输出来宾分配在该计算机范围内的合规性历史记录。 此命令的输出包括每份 VM 报告的详细信息。
+还可以输出计算机范围内来宾分配的符合性历史记录。 此命令的输出包含 VM 的每个报告的详细信息。
 
 > [!NOTE]
-> 输出中可能会返回大量的数据。 建议将输出存储在变量中。
+> 输出可能会返回大量数据。 建议将输出存储在变量中。
 
 ```azurepowershell-interactive
 $guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
@@ -172,7 +172,7 @@ PolicyDisplayName                                                         Compli
 <truncated>
 ```
 
-若要简化此视图，请使用 **ShowChanged** 参数。 此命令的输出仅包括报告，后接合规性状态的变化。
+若要简化视图，请使用“ShowChanged”参数。 此命令的输出仅包括遵循符合性状态更改的报告。
 
 ```azurepowershell-interactive
 $guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
@@ -190,32 +190,32 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"/>更改历史记录（预览版）
 
-作为新**公共预览版**的一部分，最后14天的更改历史记录适用于支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的所有 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改资源管理器属性时，将触发更改检测。
+作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或修改资源管理器属性时，就会触发更改检测。
 
-1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。********
+1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
 
-1. 在 "**概述**" 或 "**符合性**" 页上，选择任何**符合性状态**的策略。
+1. 在“概览”或“符合性”页，选择任一“符合性状态”策略  。
 
-1. 在 "**策略符合性**" 页的 "**资源符合性**" 选项卡下，选择一个资源。
+1. 在“策略符合性”页的“资源符合性”选项卡下，选择资源 。
 
-1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡********。 此时会显示检测到的更改的列表（如果存在）。
+1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡 。 此时会显示检测到的更改的列表（如果存在）。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="资源符合性页上的 Azure 策略更改历史记录选项卡" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-tab.png" alt-text="“资源符合性”页上的“Azure Policy 更改历史记录”选项卡" border="false":::
 
-1. 选择其中一个检测到的更改。 "**更改历史记录**" 页上显示了资源的_可视化差异_。
+1. 选择其中一个检测到的更改。 资源的“视觉差异”在“更改历史记录”页上显示。
 
-   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text=""更改历史记录" 页上的 Azure 策略更改历史记录视觉差异" border="false":::
+   :::image type="content" source="../media/determine-non-compliance/change-history-visual-diff.png" alt-text="更改历史记录页上的 Azure 策略更改历史记录视觉差异" border="false":::
 
 _视觉差异_可帮助识别资源的更改。 检测到的更改可能与资源的当前符合性状态不相关。
 
-更改历史记录数据由[Azure 资源 Graph](../../resource-graph/overview.md)提供。 若要在 Azure 门户之外查询此信息，请参阅[获取资源更改](../../resource-graph/how-to/get-resource-changes.md)。
+更改历史记录数据由 [Azure Resource Graph](../../resource-graph/overview.md) 提供。 若要在 Azure 门户之外查询此信息，请参阅[获取资源更改](../../resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看[Azure 策略示例](../samples/index.md)中的示例。
+- 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看 [Azure Policy 定义结构](../concepts/definition-structure.md)。
 - 查看[了解策略效果](../concepts/effects.md)。
-- 了解如何以[编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取相容性数据](get-compliance-data.md)。
-- 了解如何[修正不合规的资源](remediate-resources.md)。
+- 了解如何[以编程方式创建策略](programmatically-create.md)。
+- 了解如何[获取符合性数据](get-compliance-data.md)。
+- 了解如何[修正不符合的资源](remediate-resources.md)。
 - 参阅[使用 Azure 管理组来组织资源](../../management-groups/overview.md)，了解什么是管理组。

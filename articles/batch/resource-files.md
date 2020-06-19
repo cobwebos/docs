@@ -1,43 +1,43 @@
 ---
 title: 创建和使用资源文件
-description: 了解如何基于各种输入源创建 Batch 资源文件。 本文将会介绍用于创建资源文件并将其放在 VM 上的几个常用方法。
+description: 了解如何从各种输入源创建 Batch 资源文件。 本文介绍有关如何创建这些文件并将其置于 VM 上的一些常用方法。
 ms.date: 03/18/2020
-ms.topic: article
-ms.openlocfilehash: c9a2e581d0cada467e89e3da731fac7f78b22992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117176"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723453"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
-通常，需要提供某种形式的数据才能处理 Azure Batch 任务。 资源文件是通过任务将此数据提供给批处理虚拟机（VM）的方式。 所有类型的任务都支持资源文件：任务、启动任务、作业准备任务、作业释放任务等。本文介绍了如何创建资源文件并将其放在 VM 上的几个常见方法。  
+Azure Batch 任务通常需要处理某种形式的数据。 使用资源文件，可以通过任务将此数据提供给 Batch 虚拟机 (VM)。 所有类型的任务都支持资源文件：任务、启动任务、作业准备任务、作业发布任务等。本文介绍有关如何创建资源文件并将其置于 VM 上的一些常用方法。  
 
-资源文件将数据成批地放入 VM，但数据的类型和使用方式是灵活的。 但是存在一些常见用例：
+资源文件将数据放置在 Batch VM 上，但数据类型和使用方式是灵活的。 有一些常见的用例：
 
-1. 在启动任务中使用资源文件在每个 VM 上预配通用文件
-1. 预配任务要处理的输入数据
+1. 使用启动任务上的资源文件在每个 VM 上预配公共文件
+1. 预配要由任务处理的输入数据
 
-例如，通用文件可能是用于安装任务运行的应用程序的启动任务中的文件。 输入数据可能是原始图像或视频数据，或者 Batch 要处理的任何信息。
+例如，公共文件可以是启动任务上用于安装任务运行的应用程序的文件。 输入数据可以是原始图像或视频数据，也可以是 Batch 要处理的任何信息。
 
 ## <a name="types-of-resource-files"></a>资源文件的类型
 
-可使用多种不同的选项来生成资源文件。 资源文件的创建过程根据原始数据的存储位置而有所不同。
+有几个不同的选项可用于生成资源文件。 资源文件的创建过程因原始数据的存储位置而异。
 
-用于创建资源文件的选项：
+可用于创建资源文件的选项：
 
-- [存储容器 URL](#storage-container-url)：基于 Azure 中的任何存储容器生成资源文件
-- [存储容器名称](#storage-container-name)：基于已链接到 Batch 的 Azure 存储帐户中的容器名称生成资源文件
-- [Web 终结点](#web-endpoint)：基于任何有效的 HTTP URL 生成资源文件
+- [存储容器 URL](#storage-container-url)：从 Azure 中的任何存储容器中生成资源文件
+- [存储容器名称](#storage-container-name)：根据链接到 Batch 的 Azure 存储帐户中的容器名称生成资源文件
+- [Web 终结点](#web-endpoint)：从任何有效的 HTTP URL 生成资源文件
 
 ### <a name="storage-container-url"></a>存储容器 URL
 
-使用存储容器 URL 意味着，使用正确的权限，你可以访问 Azure 中任何存储容器中的文件。 
+使用存储容器 URL 意味着，只要拥有正确的权限，就可以访问 Azure 中任何存储容器中的文件。 
 
-在此 C# 示例中，文件已上传到用作 Blob 存储的 Azure 存储容器。 若要访问创建资源文件所需的数据，我们首先需要获取对该存储容器的访问权限。
+在下面的 C# 示例中，文件已作为 blob 存储上传到 Azure 存储容器。 为了访问在创建资源文件时所需的数据，首先需要获取对存储容器的访问权限。
 
-使用适当的权限创建共享访问签名 (SAS) URI 用于访问该存储容器。 设置 SAS 的过期时间和权限。 在本例中未指定开始时间，因此，该 SAS 在生成后会立即生效，并在两个小时后过期。
+创建一个具有正确权限的共享访问签名 (SAS) URI 来访问存储容器。 设置 SAS 的到期时间和权限。 本例中没有指定开始时间，因此 SAS 会立即生效，并且有效期是生成后的两小时内。
 
 ```csharp
 SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
@@ -48,9 +48,9 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 ```
 
 > [!NOTE]
-> 必须拥有 `Read` 和 `List` 权限才能访问容器，而只需 `Read` 权限就能访问 Blob。
+> 若要访问容器，必须同时拥有 `Read` 和 `List` 权限；而如果要访问 blob，只需要 `Read` 权限即可。
 
-配置权限后，创建 SAS 令牌并设置 SAS URL 的格式，以访问存储容器。 结合 [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 使用存储容器的带格式 SAS URL 生成资源文件。
+配置权限后，创建 SAS 令牌并格式化 SAS URL 以访问存储容器。 使用存储容器的格式化 SAS URL，通过 [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 生成资源文件。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -61,15 +61,15 @@ string containerSasUrl = String.Format("{0}{1}", container.Uri, sasToken);
 ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 ```
 
-生成 SAS URL 的替代方法是启用对 Azure Blob 存储中的容器及其 blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需 SAS。 公共读取访问通常用于希望某些 blob 始终可用于匿名读取访问的情况。 如果你的解决方案存在这种情况，请参阅[匿名访问 Blob](../storage/blobs/storage-manage-access-to-resources.md) 一文详细了解如何管理对 Blob 数据的访问。
+生成 SAS URL 的替代方法是，启用对 Azure Blob 存储中的容器及其 blob 的匿名公共读取访问。 这样做可以授予对这些资源的只读访问权限，无需共享帐户密钥，也无需 SAS。 如果需要始终允许对某些 blob 进行匿名读取访问，通常是通过启用公共读取访问来实现。 如果这与你的解决方案相匹配，请参阅[匿名访问 blob](../storage/blobs/storage-manage-access-to-resources.md) 一文，详细了解如何管理对 blob 数据的访问。
 
 ### <a name="storage-container-name"></a>存储容器名称
 
-如果不配置并创建 SAS URL，可以使用 Azure 存储容器的名称来访问 Blob 数据。 你使用的存储容器必须位于链接到 Batch 帐户的 Azure 存储帐户中。 该存储帐户称为 autostorage-keys 帐户。 使用 autostorage-keys 容器可以绕过配置和创建用于访问存储容器的 SAS URL。
+如果不选择配置和创建 SAS URL，可以使用 Azure 存储容器名称访问 blob 数据。 使用的存储容器必须位于关联到 Batch 帐户的 Azure 存储帐户中。 该存储帐户称为自动存储帐户。 使用自动存储容器，可以绕过配置和创建 SAS URL 以访问存储容器的步骤。
 
-在此示例中，我们假设用于创建资源文件的数据已在链接到 Batch 帐户的 Azure 存储帐户中。 如果你没有自动存储帐户，请参阅[创建 Batch 帐户](batch-account-create-portal.md)中的步骤来详细了解如何创建和链接帐户。
+本示例假设要用于创建资源文件的数据已存在于关联到 Batch 帐户的 Azure 存储帐户中。 如果没有自动存储帐户，请参阅[创建 Batch 帐户](batch-account-create-portal.md)中的步骤，详细了解如何创建和关联帐户。
 
-如果使用链接的存储帐户，则无需创建和配置存储容器的 SAS URL， 只需提供链接的存储帐户中的存储容器名称即可。
+使用关联的存储帐户，便无需创建和配置 SAS URL 来访问存储容器。 只需在关联的存储帐户中提供存储容器的名称即可。
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
@@ -77,9 +77,9 @@ ResourceFile inputFile = ResourceFile.FromAutoStorageContainer(containerName);
 
 ### <a name="web-endpoint"></a>Web 终结点
 
-未上传到 Azure 存储的数据仍可用于创建资源文件。 可以指定包含输入数据的任何有效 HTTP URL。 该 URL 将提供给 Batch API，然后，这些数据将用于创建资源文件。
+尚未上传到 Azure 存储的数据仍可用于创建资源文件。 可以指定包含输入数据的任何有效 HTTP URL。 此 URL 将提供给 Batch API，然后使用数据创建资源文件。
 
-在下面的 c # 示例中，输入数据托管在虚拟 GitHub 终结点上。 API 将从有效的 Web 终结点检索文件，并生成一个资源文件供任务使用。 此方案不需要凭据。
+在下面的 C# 示例中，输入数据托管在虚拟 GitHub 终结点上。 API 从有效的 Web 终结点检索文件，并生成将由任务使用的资源文件。 在这种情况下，不需要凭据。
 
 ```csharp
 ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt", filePath);
@@ -87,23 +87,23 @@ ResourceFile inputFile = ResourceFile.FromUrl("https://github.com/foo/file.txt",
 
 ## <a name="tips-and-suggestions"></a>提示和建议
 
-每个 Azure Batch 任务以不同的方式使用文件，正因如此，Batch 提供了用于管理任务中的文件的选项。 以下方案并不全面，只是涵盖了几种常见情况，并提供了建议。
+每个 Azure Batch 任务都以不同的方式使用文件，这就是 Batch 包含可用于管理任务文件的选项的原因。 以下应用场景并不全面，只是介绍了几种常见的情况，并提供了建议。
 
-### <a name="many-resource-files"></a>许多资源文件
+### <a name="many-resource-files"></a>多个资源文件
 
-Batch 作业可能包含多个任务，而所有这些任务使用相同的通用文件。 如果通用任务文件在多个任务之间共享，则更好的选项可能是使用应用程序包来包含文件，而不是使用资源文件。 应用程序包可以优化下载速度。 此外，每次执行不同的任务，应用程序包中的数据都会缓存，因此，如果任务文件不经常更改，则应用程序包可能很适合你的解决方案。 使用应用程序包时，无需手动管理多个资源文件，或生成 SAS URL 用于访问 Azure 存储中的文件。 Batch 在后台与 Azure 存储协作来存储应用程序包，并将其部署到计算节点。
+Batch 作业可能包含多个任务，这些任务都使用相同的公共文件。 如果在许多任务之间共享公共任务文件，那么使用应用程序包来包含文件（而不是使用资源文件）可能是更好的选择。 应用程序包优化了下载速度。 此外，应用程序包中的数据缓存在任务之间，因此，如果任务文件不经常更改，应用程序包可能非常适合你的解决方案。 借助应用程序包，无需手动管理多个资源文件或生成 SAS URL 即可访问 Azure 存储中的文件。 Batch 在后台与 Azure 存储协作存储应用程序包，并将其部署到计算节点。
 
-如果每个任务都具有该任务独有的多个文件，则资源文件是最佳选项，因为通常需要更新或替换使用唯一文件的任务，这并不像应用程序包内容那样简单。 在更新、添加或编辑单个文件方面，资源文件提供更大的灵活性。
+如果每个任务本身包含许多独有的文件，那么资源文件是最佳选择，因为通常需要更新或替换那些使用独有文件的任务，这对于应用程序包内容而言并不简单。 资源文件使更新、添加或编辑单个文件的操作更具灵活性。
 
 ### <a name="number-of-resource-files-per-task"></a>每个任务的资源文件数
 
-如果在任务上指定了几百个资源文件，批处理可能会拒绝该任务，因为该任务太大。 最好是尽量减少任务本身包含的资源文件数，使任务保持较小的大小。
+如果在任务上指定了几百个资源文件，Batch 可能会因为任务太大而拒绝该任务。 最好是将任务本身的资源文件数量减到最小，从而使任务保持较小规模。
 
-如果无法做到尽量减少任务所需的文件数，可以通过创建单个引用资源文件存储容器的资源文件来优化任务。 为此，请将资源文件放入 Azure 存储容器，并为资源文件使用不同的 "容器"[方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 Blob 前缀选项指定要为任务下载的文件集合。
+如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解可以替代资源文件的[应用程序包](batch-application-packages.md)。
-- 有关为资源文件使用容器的详细信息，请参阅[容器工作负荷](batch-docker-container-workloads.md)。
-- 若要了解如何收集和保存任务的输出数据，请参阅[保存作业和任务输出](batch-task-output.md)。
+- 了解作为资源文件的替代方案的[应用程序包](batch-application-packages.md)。
+- 有关为资源文件使用容器的详细信息，请参阅[容器工作负载](batch-docker-container-workloads.md)。
+- 要了解如何收集和保存任务的输出数据，请参阅[持久保存作业和任务输出](batch-task-output.md)。
 - 了解适用于生成批处理解决方案的[批处理 API 和工具](batch-apis-tools.md)。

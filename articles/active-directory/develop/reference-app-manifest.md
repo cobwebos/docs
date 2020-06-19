@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure Active Directory 应用程序清单
+title: 了解 Azure Active Directory 应用清单
 description: 详细介绍 Azure Active Directory 应用清单，该清单表示 Azure AD 租户中的应用程序标识配置，并方便实现 OAuth 授权、许可体验和其他功能。
 services: active-directory
 author: rwike77
@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450868"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737327"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -25,23 +25,23 @@ ms.locfileid: "81450868"
 
 可以通过 Azure 门户或者使用 [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) 或 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications) 以编程方式配置应用的属性。 但是，在某些情况下，需要编辑应用清单来配置应用的属性。 这些方案包括：
 
-* 如果已将应用注册为 Azure AD 多租户和个人 Microsoft 帐户，则不能在 UI 中更改受支持的 Microsoft 帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
+* 如果已将应用注册为 Azure AD 多租户和个人 Microsoft 帐户，则不能在 UI 中更改支持的 Microsoft 帐户。 而是必须使用应用程序清单编辑器来更改支持的帐户类型。
 * 如果需要定义你的应用支持的权限和角色，则必须修改应用程序清单。
 
 ## <a name="configure-the-app-manifest"></a>配置应用清单
 
 若要配置应用程序清单，请执行以下操作：
 
-1. 转到 [Azure 门户](https://portal.azure.com)。 搜索并选择 **Azure Active Directory** 服务。
-1. 选择“应用注册”  。
+1. 转到 [Azure 门户](https://portal.azure.com)。 搜索并选择 Azure Active Directory 服务。
+1. 选择 **“应用注册”** 。
 1. 选择要配置的应用。
-1. 在应用的“概览”页中，选择“清单”部分。   此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。  
+1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中编辑门户中的清单。 （可选）可以选择“下载”以在本地编辑清单，然后使用“上传”将清单重新应用于应用程序。 
 
 ## <a name="manifest-reference"></a>清单参考
 
-本部分介绍在应用程序清单中找到的属性。
+本部分介绍应用程序清单中的属性。
 
-### <a name="id-attribute"></a>id 属性
+### <a name="id-attribute"></a>ID 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -55,7 +55,7 @@ ms.locfileid: "81450868"
     "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion 特性
+### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -67,7 +67,7 @@ ms.locfileid: "81450868"
 
 `accesstokenAcceptedVersion` 的可能值为 1、2 或为 null。 如果值为 null，则此参数默认为 1，这对应于 v1.0 终结点。
 
-如果`signInAudience`为`AzureADandPersonalMicrosoftAccount`，则值必须为`2`。
+如果 `signInAudience` 为 `AzureADandPersonalMicrosoftAccount`，则值必须是 `2`。
 
 示例：
 
@@ -81,7 +81,7 @@ ms.locfileid: "81450868"
 | :--- | :--- |
 | addIns | 集合 |
 
-定义使用方服务在特定上下文中调用某个应用时可以使用的自定义行为。 例如，可以呈现文件流的应用程序可以设置其`addIns` "FileHandler" 功能的属性。 Office 365 等服务可以通过此参数在用户正在处理的文档上下文中调用该应用程序。
+定义自定义行为，供消耗型服务在特定上下文中调用应用。 例如，可呈现文件流的应用程序可以为其“FileHandler”功能设置 `addIns` 属性。 此参数将允许 Office 365 等服务在用户正在处理的文档的上下文中调用应用程序。
 
 示例：
 
@@ -100,13 +100,13 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="allowpublicclient-attribute"></a>allowPublicClient 特性
+### <a name="allowpublicclient-attribute"></a>allowPublicClient 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | allowPublicClient | Boolean |
 
-指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型。 例如，这样的一种情况是 [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流，其中发生了没有 URL 重定向的 HTTP 请求。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。
+指定回退应用程序类型。 默认情况下，Azure AD 基于 replyUrlsWithType 推断应用程序类型。 某些情况下，Azure AD 无法确定客户端应用类型。 例如，[ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) 流中的 HTTP 请求未进行 URL 重定向时。 在这种情况下，Azure AD 将基于此属性的值解释应用程序类型。 如果此值设置为 true，则回退应用程序类型设置为公共客户端，例如在移动设备上运行的已安装应用。 默认值为 false，这意味着，回退应用程序类型为机密，例如 Web 应用。
 
 示例：
 
@@ -114,18 +114,18 @@ ms.locfileid: "81450868"
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 特性
+### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | availableToOtherTenants | Boolean |
 
-如果与其他租户共享应用程序，则设置为 true;否则为 false。
+如果与其他租户共享应用程序，则设置为 true；否则为 false。
 
 > [!NOTE]
-> 此属性仅在**应用注册（旧）** 体验中可用。 此功能已由[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中的 `signInAudience` 取代。
+> 此属性仅在“应用注册(旧版)”体验中提供。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `signInAudience`。
 
-### <a name="appid-attribute"></a>appId 特性
+### <a name="appid-attribute"></a>appId 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -139,13 +139,13 @@ ms.locfileid: "81450868"
     "appId": "601790de-b632-4f57-9523-ee7cb6ceba95",
 ```
 
-### <a name="approles-attribute"></a>appRoles 特性
+### <a name="approles-attribute"></a>appRoles 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
-指定应用可以声明的角色集合。 可将这些角色分配给用户、组或服务主体。 有关更多示例和信息，请参阅在[应用程序中添加应用程序角色并在令牌中接收它们](howto-add-app-roles-in-azure-ad-apps.md)。
+指定应用可以声明的角色集合。 可将这些角色分配给用户、组或服务主体。 有关更多示例和信息，请参阅[在应用程序中添加应用角色并在令牌中接收它们](howto-add-app-roles-in-azure-ad-apps.md)。
 
 示例：
 
@@ -164,7 +164,7 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName 特性
+### <a name="displayname-attribute"></a>displayName 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -173,17 +173,17 @@ ms.locfileid: "81450868"
 应用的显示名称。
 
 > [!NOTE]
-> 此属性仅在**应用注册（旧）** 体验中可用。 此功能已由[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中的 `name` 取代。
+> 此属性仅在“应用注册(旧版)”体验中提供。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `name`。
 
-### <a name="errorurl-attribute"></a>errorUrl 特性
+### <a name="errorurl-attribute"></a>errorUrl 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | errorUrl | 字符串 |
 
-不支持。
+不受支持。
 
-### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 特性
+### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -201,7 +201,7 @@ ms.locfileid: "81450868"
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>主页属性
+### <a name="homepage-attribute"></a>homepage 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -210,9 +210,9 @@ ms.locfileid: "81450868"
 应用程序主页的 URL。
 
 > [!NOTE]
-> 此属性仅在**应用注册（旧）** 体验中可用。 此功能已由[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中的 `signInUrl` 取代。
+> 此属性仅在“应用注册(旧版)”体验中提供。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `signInUrl`。
 
-### <a name="objectid-attribute"></a>objectId 特性
+### <a name="objectid-attribute"></a>objectId 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -220,7 +220,7 @@ ms.locfileid: "81450868"
 
 应用在目录中的唯一标识符。
 
-这仅适用于**应用注册（旧）** 体验。 此功能已由[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中的 `id` 取代。
+此属性仅在“应用注册(旧版)”体验中提供。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `id`。
 
 示例：
 
@@ -228,7 +228,7 @@ ms.locfileid: "81450868"
     "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
 ```
 
-### <a name="optionalclaims-attribute"></a>optionalClaims 特性
+### <a name="optionalclaims-attribute"></a>optionalClaims 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -246,7 +246,7 @@ ms.locfileid: "81450868"
 
 
 
-### <a name="identifieruris-attribute"></a>identifierUris 特性
+### <a name="identifieruris-attribute"></a>identifierUris 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -260,7 +260,7 @@ ms.locfileid: "81450868"
     "identifierUris": "https://MyRegisteredApp",
 ```
 
-### <a name="informationalurls-attribute"></a>informationalUrls 特性
+### <a name="informationalurls-attribute"></a>informationalUrls 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -279,13 +279,13 @@ ms.locfileid: "81450868"
     },
 ```
 
-### <a name="keycredentials-attribute"></a>keyCredentials 特性
+### <a name="keycredentials-attribute"></a>keyCredentials 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
-包含对应用所分配的凭据、基于字符串的共享机密和 X.509 证书的引用。 当请求访问令牌时（应用作为客户端而不是资源），会使用这些凭据。
+包含对应用所分配的凭据、基于字符串的共享机密和 X.509 证书的引用。 在请求访问令牌时，可使用这些凭据（如果应用充当客户端而不是资源）。
 
 示例：
 
@@ -303,13 +303,13 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="knownclientapplications-attribute"></a>knownClientApplications 特性
+### <a name="knownclientapplications-attribute"></a>knownClientApplications 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
-如果解决方案包含两个部分：客户端应用和自定义 Web API 应用，则该值用于捆绑许可。 如果在此值中输入客户端应用的 appID，则用户只需许可该客户端应用一次。 Azure AD 会知道许可客户端意味着隐式许可 Web API， 并会自动为客户端和 Web API 同时预配服务主体。 客户端和 Web API 应用都必须在同一个租户中注册。
+如果解决方案包含两个部分：客户端应用和自定义 Web API 应用，则该值用于捆绑许可。 如果在此值中输入客户端应用的 appID，则用户只需许可该客户端应用一次。 Azure AD 将知道，许可客户端意味着隐式许可 Web API。 它会同时为客户端和 Web API 自动预配服务主体。 客户端和 Web API 应用都必须在同一个租户中注册。
 
 示例：
 
@@ -317,7 +317,7 @@ ms.locfileid: "81450868"
     "knownClientApplications": ["f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"],
 ```
 
-### <a name="logourl-attribute"></a>logoUrl 特性
+### <a name="logourl-attribute"></a>logoUrl 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -331,7 +331,7 @@ ms.locfileid: "81450868"
     "logoUrl": "https://MyRegisteredAppLogo",
 ```
 
-### <a name="logouturl-attribute"></a>logoutUrl 特性
+### <a name="logouturl-attribute"></a>logoutUrl 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -359,7 +359,7 @@ ms.locfileid: "81450868"
     "name": "MyRegisteredApp",
 ```
 
-### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 特性
+### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -373,7 +373,7 @@ ms.locfileid: "81450868"
     "oauth2AllowImplicitFlow": false,
 ```
 
-### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 特性
+### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -387,7 +387,7 @@ ms.locfileid: "81450868"
     "oauth2AllowIdTokenImplicitFlow": false,
 ```
 
-### <a name="oauth2permissions-attribute"></a>oauth2Permissions 特性
+### <a name="oauth2permissions-attribute"></a>oauth2Permissions 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -412,7 +412,7 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 特性
+### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -426,7 +426,7 @@ ms.locfileid: "81450868"
     "oauth2RequirePostResponse": false,
 ```
 
-### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 特性
+### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -444,7 +444,7 @@ ms.locfileid: "81450868"
     },
 ```
 
-### <a name="passwordcredentials-attribute"></a>passwordCredentials 特性
+### <a name="passwordcredentials-attribute"></a>passwordCredentials 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -466,7 +466,7 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 特性
+### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -487,23 +487,23 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient 特性
+### <a name="publicclient-attribute"></a>publicClient 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | publicClient | Boolean|
 
-指定此应用程序是否为公共客户端（例如在移动设备上运行的已安装应用程序）。 
+指定此应用程序是否是公共客户端（例如在移动设备上运行的已安装应用程序）。 
 
-此属性仅在**应用注册（旧）** 体验中可用。 此功能已由[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中的 `allowPublicClient` 取代。
+此属性仅在“应用注册(旧版)”体验中提供。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `allowPublicClient`。
 
-### <a name="publisherdomain-attribute"></a>publisherDomain 特性
+### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | publisherDomain | 字符串 |
 
-应用程序的已验证发布者域。 只读。
+应用程序的经验证发布服务器域。 只读。
 
 示例：
 
@@ -511,7 +511,7 @@ ms.locfileid: "81450868"
     "publisherDomain": "https://www.contoso.com",
 ````
 
-### <a name="replyurls-attribute"></a>replyUrls 特性
+### <a name="replyurls-attribute"></a>replyUrls 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -519,9 +519,9 @@ ms.locfileid: "81450868"
 
 此多值属性保存 Azure AD 在返回令牌时接受用作目标的已注册 redirect_uri 值列表。
 
-此属性仅在**应用注册（旧）** 体验中可用。 此功能已由[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中的 `replyUrlsWithType` 取代。
+此属性仅在“应用注册(旧版)”体验中提供。 在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验中替换为了 `replyUrlsWithType`。
 
-### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 特性
+### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -532,7 +532,7 @@ ms.locfileid: "81450868"
 - `Web`
 - `InstalledClient`
 
-若要了解详细信息，请参阅[replyUrl 限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
+若要了解详细信息，请参阅 [replyUrl 限制和局限](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
 
 示例：
 
@@ -545,7 +545,7 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 特性
+### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -572,7 +572,7 @@ ms.locfileid: "81450868"
     ],
 ```
 
-### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 特性
+### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -586,7 +586,7 @@ ms.locfileid: "81450868"
     "samlMetadataUrl": "https://MyRegisteredAppSAMLMetadata",
 ```
 
-### <a name="signinurl-attribute"></a>signInUrl 特性
+### <a name="signinurl-attribute"></a>signInUrl 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -600,17 +600,17 @@ ms.locfileid: "81450868"
     "signInUrl": "https://MyRegisteredApp",
 ```
 
-### <a name="signinaudience-attribute"></a>signInAudience 特性
+### <a name="signinaudience-attribute"></a>signInAudience 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
 | signInAudience | 字符串 |
 
 指定当前应用程序支持哪些 Microsoft 帐户。 支持的值为：
-- `AzureADMyOrg`-组织的 Azure AD 租户中使用 Microsoft 工作或学校帐户的用户（例如，单租户）
-- `AzureADMultipleOrgs`-在任何组织的 Azure AD 租户中使用 Microsoft 工作或学校帐户的用户（例如，多租户）
-- `AzureADandPersonalMicrosoftAccount`-具有个人 Microsoft 帐户的用户，或任何组织 Azure AD 租户中的工作或学校帐户
-- `PersonalMicrosoftAccount`-用于登录到 Xbox 和 Skype 等服务的个人帐户。
+- `AzureADMyOrg` - 在我的组织的 Azure AD 租户（例如单租户）中具有 Microsoft 工作或学校帐户的用户
+- `AzureADMultipleOrgs` - 在任何组织的 Azure AD 租户（例如多租户）中具有 Microsoft 工作或学校帐户的用户
+- `AzureADandPersonalMicrosoftAccount` - 在任何组织的 Azure AD 租户中具有个人 Microsoft 帐户、工作或学校帐户的用户
+- `PersonalMicrosoftAccount` - 用于登录 Xbox 和 Skype 等服务的个人帐户。
 
 示例：
 
@@ -618,7 +618,7 @@ ms.locfileid: "81450868"
     "signInAudience": "AzureADandPersonalMicrosoftAccount",
 ```
 
-### <a name="tags-attribute"></a>tags 特性
+### <a name="tags-attribute"></a>tags 属性
 
 | 密钥 | 值类型 |
 | :--- | :--- |
@@ -638,16 +638,16 @@ ms.locfileid: "81450868"
 
 ### <a name="manifest-limits"></a>清单限制
 
-应用程序清单具有多个称为集合的属性;例如，appRoles、keyCredentials、knownClientApplications、identifierUris、redirectUris、requiredResourceAccess 和 oauth2Permissions。 在任一应用程序的完整应用程序清单中，所有合并集合中的条目总数不能超过 1200 个。 如果以前在应用程序清单中指定了 100 个重定向 URI，则在构成该清单的其他所有合并集合中，只剩下 1100 个条目可供使用。
+应用程序清单具有多个称为集合的属性，例如，appRoles、keyCredentials、knownClientApplications、identifierUris、redirectUris、requiredResourceAccess 和 oauth2Permissions。 在任何应用程序的完整应用程序清单中，所有合并集合中的条目总数的上限为 1200。 如果你之前在应用程序清单中指定了 100 个重定向 URI，则在构成清单的其他所有合并集合中只能使用剩余的 1100 个条目。
 
 > [!NOTE]
-> 如果尝试在应用程序清单中添加超过1200个条目，可能会看到错误 **"更新应用程序 Xxxxxx 失败。错误详细信息：清单的大小已超出其限制。请减少值的数目，然后重试请求。 "**
+> 如果你尝试在应用程序清单中添加超过 1200 个条目，则可能会显示错误“未能更新应用程序 xxxxxx **。错误详细信息：清单的大小已超出其限制。请减少值的数目，然后重试请求。** ”
 
-### <a name="unsupported-attributes"></a>不支持的属性
+### <a name="unsupported-attributes"></a>属性不受支持
 
-应用程序清单代表 Azure AD 中底层应用程序模型的架构。 随着底层架构的不断演进，清单编辑器将不时地更新，以反映新的架构。 因此，你可能会在应用程序清单中看到新的属性。 在极少数情况下，可能会注意现有属性中出现了语法或语义的更改，或者以前存在的某个属性不再受支持。 例如，你会在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)中看到新的属性，而这些属性在应用注册（旧版）体验中使用不同的名称。
+应用程序清单表示 Azure AD 中基础应用程序模型的架构。 随着基础架构的发展，清单编辑器将不时更新以反映新架构。 因此，你可能会注意到应用程序清单中显示了新的属性。 在极少数情况下，你可能会注意到现有属性中的语法或语义发生了变化，或者你可能会发现以前存在的属性不再受支持。 例如，你将在[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)中看到新的属性，这些属性在应用注册（旧版）体验中具有不同的名称。
 
-| 应用注册（旧版）| 应用注册           |
+| 应用注册(旧版)| 应用注册           |
 |---------------------------|-----------------------------|
 | `availableToOtherTenants` | `signInAudience`            |
 | `displayName`             | `name`                      |
@@ -659,23 +659,23 @@ ms.locfileid: "81450868"
 
 有关这些属性的说明，请参阅[清单参考](#manifest-reference)部分。
 
-尝试上传以前下载的清单时，可能会看到以下错误之一。 此错误可能的原因是清单编辑器现在支持更新版本的架构，而该架构与你尝试上传的架构不匹配。
+尝试上传之前下载的清单时，可能会出现以下错误之一。 此错误很可能是因为清单编辑器现在支持较新版本的架构，该架构与你尝试上传的清单不匹配。
 
-* “无法更新 xxxxxx 应用程序。 错误详细信息：对象标识符 "undefined" 无效。 []."
-* “无法更新 xxxxxx 应用程序。 错误详细信息：指定的一个或多个属性值无效。 []."
-* “无法更新 xxxxxx 应用程序。 错误详细信息：不允许在此 api 版本中设置 availableToOtherTenants 进行更新。 []."
-* “无法更新 xxxxxx 应用程序。 错误详细信息：不允许对此应用程序进行 "replyUrls" 属性更新。 请改用 "replyUrlsWithType" 属性。 []."
-* “无法更新 xxxxxx 应用程序。 错误详细信息：找不到类型名称的值，并且没有预期类型可用。 指定模型时，负载中的每个值都必须具有可在有效负载中指定的类型，该类型可由调用方显式指定或从父值隐式推断。 []"
+* “未能更新 xxxxxx 应用程序。 错误详细信息：对象标识符无效‘未定义’。 []。”
+* “未能更新 xxxxxx 应用程序。 错误详细信息：指定的一个或多个属性值无效。 []。”
+* “未能更新 xxxxxx 应用程序。 错误详细信息：不允许在此 api 版本中设置 availableToOtherTenants 进行更新。 []。”
+* “未能更新 xxxxxx 应用程序。 错误详细信息：不允许对此应用程序的 replyUrls 属性进行更新。 改用 replyUrlsWithType 属性。 []。”
+* “未能更新 xxxxxx 应用程序。 错误详细信息：找到了没有类型名称的值，并且没有可用的预期类型。 如果指定该模型，则负载中的每个值都必须具有带以下特点的类型: 可在负载中指定、由调用方显式调用或从父值隐式推断。 []"
 
-如果看到以下错误之一，我们建议采取以下操作：
+显示这些错误之一时，建议执行以下操作：
 
-1. 单独在清单编辑器中编辑属性，而不要上传以前下载的清单。 使用[清单参考](#manifest-reference)表来了解旧属性和新属性的语法与语义，以便能够成功编辑所需的属性。 
-1. 如果工作流要求在源存储库中保存清单供以后使用，我们建议使用**应用注册**体验中显示的清单来变基存储库中保存的清单。
+1. 在清单编辑器中逐个编辑属性，而不是上传之前下载的清单。 使用[清单参考](#manifest-reference)表了解新旧属性的语法和语义，以便成功编辑你所感兴趣的属性。 
+1. 如果你的工作流需要你将清单保存到源存储库供以后使用，则我们建议使用“应用注册”体验中的清单对存储库中保存的清单进行变基。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关应用程序的应用程序对象与服务主体对象之间的关系的详细信息，请参阅[Azure AD 中的应用程序和服务主体对象](app-objects-and-service-principals.md)。
-* 参阅 [Microsoft 标识平台开发人员词汇表](developer-glossary.md)，了解某些 Microsoft 标识平台开发人员核心概念的定义。
+* 有关应用的应用程序对象与服务主体对象之间关系的详细信息，请参阅 [Azure AD 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
+* 请参阅 [Microsoft 标识平台开发人员术语表](developer-glossary.md)，了解一些核心 Microsoft 标识平台开发人员概念的定义。
 
 请使用以下评论部分提供反馈，帮助我们改进和组织内容。
 

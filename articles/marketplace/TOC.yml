@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: 创建 Azure VM 技术资产
               items:
+                - name: 虚拟机认证 - 问题和解决方案
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: 创建 Azure VM 技术资产
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Azure VM 技术资产常见问题解答

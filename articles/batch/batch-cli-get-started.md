@@ -1,15 +1,15 @@
 ---
-title: 批处理 Azure CLI 入门
+title: 适用于 Batch 的 Azure CLI 入门
 description: Azure CLI 中用于管理 Azure Batch 服务资源的 Batch 命令简介
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2bb3dd2e67c3c3bf9139a25935ab0dd074799c6f
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117363"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83780229"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 资源
 
@@ -73,7 +73,7 @@ az login
 
 可以使用两个选项对 Batch 帐户进行身份验证：
 
-- **通过使用 Azure Active Directory （Azure AD）身份验证** 
+- **使用 Azure Active Directory (Azure AD) 身份验证** 
 
     将 Azure CLI 与 Batch 配合使用时，通过 Azure AD 进行身份验证是默认设置，建议用于大多数方案。 
     
@@ -87,7 +87,7 @@ az login
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **使用共享密钥身份验证**
+- **使用“共享密钥”身份验证**
 
     [“共享密钥”身份验证](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)通过帐户访问密钥对适用于 Batch 服务的 Azure CLI 命令进行身份验证。
 
@@ -103,7 +103,7 @@ az login
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>使用 Azure Batch CLI 扩展命令
 
-通过安装 Azure Batch CLI 扩展，可以在不编写代码的情况下，使用 Azure CLI 来运行端到端的 Batch 作业。 可以执行扩展支持的 Batch 命令，以便使用 JSON 模板通过 Azure CLI 来创建池、作业和任务。 也可使用扩展 CLI 命令将作业输入文件上传到与 Batch 帐户关联的 Azure 存储帐户，以及从其下载作业输出文件。 有关详细信息，请参阅[使用 AZURE BATCH CLI 模板和文件传输](batch-cli-templates.md)。
+通过安装 Azure Batch CLI 扩展，可以在不编写代码的情况下，使用 Azure CLI 来运行端到端的 Batch 作业。 可以执行扩展支持的 Batch 命令，以便使用 JSON 模板通过 Azure CLI 来创建池、作业和任务。 也可使用扩展 CLI 命令将作业输入文件上传到与 Batch 帐户关联的 Azure 存储帐户，以及从其下载作业输出文件。 有关详细信息，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
 
 ## <a name="script-examples"></a>脚本示例
 
@@ -119,7 +119,7 @@ az batch pool create my_batch_pool.json
 
 尽管只使用命令行选项即可创建大多数 Batch 资源，但某些功能需要指定 JSON 格式的包含资源详细信息的文件。 例如，若要指定启动任务的资源文件，必须使用 JSON 文件。
 
-若要查看创建资源所需的 JSON 语法，请参阅 [Batch REST API 参考][rest_api]文档。 ** REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。 可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如，若要查看用于创建池的 JSON 语法，请参阅[向帐户添加池][rest_add_pool]。
+若要查看创建资源所需的 JSON 语法，请参阅 [Batch REST API 参考][rest_api]文档。 REST API 参考中的每个“添加资源类型”主题都包含用于创建该资源的示例 JSON 脚本。 可以将这些示例 JSON 脚本用作模板，以便将 JSON 文件与 Azure CLI 配合使用。 例如，若要查看用于创建池的 JSON 语法，请参阅[向帐户添加池][rest_add_pool]。
 
 如需用于指定 JSON 文件的示例脚本，请参阅[使用 Batch 运行作业和任务](./scripts/batch-cli-sample-run-job.md)。
 
@@ -162,9 +162,9 @@ az batch task list --job-id job001
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
-* 有关 Batch 资源的详细信息，请参阅[适用于开发人员的 Azure Batch 概述](batch-api-basics.md)。
-* 若要详细了解如何在不编写代码的情况下使用 Batch 模板来创建池、作业和任务，请参阅[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)。
+* 请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+* 在[使用 Azure Batch CLI 模板和文件传输](batch-cli-templates.md)中了解如何在不编写代码的情况下使用 Batch 模板来创建池、作业和任务。
 
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx

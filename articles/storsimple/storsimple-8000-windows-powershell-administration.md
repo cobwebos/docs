@@ -1,17 +1,17 @@
 ---
-title: 用于 StorSimple 设备管理的 PowerShell
+title: 用于 StorSimple 的 PowerShell 的设备管理
 description: 了解如何使用 Windows PowerShell for StorSimple 来管理 StorSimple 设备。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 35be2e0b7b5a24261cd8ee15b1964b953c1a3327
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277109"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747711"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -53,20 +53,20 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
    | 键盘项 | Select |
    | --- | --- |
    | Backspace 键 |Control-? (127) |
-   | Home 和 End 键 |标准 |
+   | Home 和 End 键 |Standard |
    | 功能键和键盘 |ESC[n~ |
    | 光标键的初始状态 |一般 |
    | 数字小键盘的初始状态 |一般 |
    | 启用额外的键盘功能 |Control-Alt 与 AltGr 不同 |
    
     ![支持的 Putty 设置](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. 单击“应用”  。
-4. 在“类别”**** 窗格中选择“转换”****。
-5. 在“远程字符集”**** 列表框中选择“UTF-8”****。
-6. 在“处理线条图形字符”**** 中，选择“使用 Unicode 线条图形代码点”****。 以下屏幕截图显示了正确的 PuTTY 选择。
+3. 单击“应用”。
+4. 在“**类别**”窗格中，选择“**转换**”。
+5. 在“**远程字符集**”列表框中，选择“**UTF-8**”。
+6. 在“**处理线条图形字符**”下，选择“**使用 Unicode 线条图形代码点**”。 以下屏幕截图显示了正确的 PuTTY 选择。
    
     ![UTF PuTTY 设置](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. 单击“应用”  。
+7. 单击“应用”。
 
 现在可以通过执行以下步骤使用 PuTTY 连接到设备串行控制台。
 
@@ -81,7 +81,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 ![串行标题消息](./media/storsimple-windows-powershell-administration/IC741098.png)
 
 > [!IMPORTANT]
-> 你可以使用横幅消息来识别连接到的控制器是处于_主动_还是_被动_状态。
+> 可以使用标题消息来确定连接到的控制器是_主动的_还是_被动的_。
 
 下图显示了串行控制台菜单中可用的各种运行空间选项。
 
@@ -89,7 +89,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 可以从以下设置中选择：
 
-1. **以完全访问权限登录**：选择此选项可以（使用正确的凭据）连接到本地控制器上的 **SSAdminConsole** 运行空间。 （本地控制器是当前通过 StorSimple 设备的串行控制台访问的控制器。）此选项还可用于允许 Microsoft 支持部门访问不受限制的运行空间（支持会话），以便对可能出现的任何设备问题进行故障排除。 在使用选项 1 登录之后，可以通过运行某个特定的 cmdlet 让 Microsoft 支持部门的工程师访问不受限制的运行空间。 有关详细信息，请参阅[启动支持会话](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)。
+1. **以完全访问权限登录**：选择此选项可以（使用正确的凭据）连接到本地控制器上的 **SSAdminConsole** 运行空间。 （本地控制器是你当前正在通过 StorSimple 设备的串行控制台访问的控制器。）此选项还可以用于让 Microsoft 支持部门访问不受限制的运行空间（某个支持会话）以解决任何可能存在的设备问题。 在使用选项 1 登录之后，可以通过运行某个特定的 cmdlet 让 Microsoft 支持部门的工程师访问不受限制的运行空间。 有关详细信息，请参阅[启动支持会话](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)。
    
 2. **以完全访问权限登录对等控制器**：此选项与选项 1 相同，区别在于使用此选项可以连接（使用正确的凭据）到对等控制器上的 **SSAdminConsole** 运行空间。 因为 StorSimple 设备是带有采用主动-被动配置的两台控制器的一台高可用性设备，所以对等方指的是正在通过串行控制台访问的设备中的另一台控制器。
    与选项 1 相似，此选项也可以用于让 Microsoft 支持部门访问对等控制器上不受限制的运行空间。
@@ -105,16 +105,16 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
      > [!NOTE]
      > 如果忘记了设备管理员密码并且无法通过选项 1 或选项 2 进行连接，那么这是首选选项。
 
-4. **更改语言**：此选项用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语（巴西）。
+4. **更改语言**：此选项用于更改 Windows PowerShell 界面上的显示语言。 支持的语言包括英语、日语、俄语、法语、韩语、西班牙语、意大利语、德语、中文和葡萄牙语。
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>使用 Windows PowerShell for StorSimple 远程连接到 StorSimple
 
-可以使用 Windows PowerShell 远程处理连接到 StorSimple 设备。 采取这种方式连接时，不会看到菜单。 （仅当使用设备上的串行控制台连接时，才会看到菜单。 远程连接会将你直接转到串行控制台上 "选项1–完全访问权限" 的等效项。）使用 Windows PowerShell 远程处理，可以连接到特定的运行空间。 也可以指定显示语言。
+可以使用 Windows PowerShell 远程处理连接到 StorSimple 设备。 采取这种方式连接时，不会看到菜单。 （仅当使用设备上的串行控制台连接时，才会看到菜单。 远程连接使你直接进入串行控制台上的“选项 1 – 完全访问权限”的等效选项。）借助 Windows PowerShell 远程处理，可连接到特定的运行空间。 也可以指定显示语言。
 
-显示语言与你在串行控制台菜单中使用“更改语言”**** 选项设置的语言无关。 如果未指定显示语言，远程 PowerShell 会自动选取连接所用设备的区域设置。
+显示语言与通过使用串行控制台菜单中的“**更改语言**”选项设置的语言无关。 如果未指定显示语言，远程 PowerShell 会自动选取连接所用设备的区域设置。
 
 > [!NOTE]
-> 如果使用的是 Microsoft Azure 虚拟主机和 StorSimple 云设备，则可以使用 Windows PowerShell 远程处理和虚拟主机来连接到云设备。 如果你在主机上设置了一个共享位置，而该位置要保存 Windows PowerShell 会话中的信息，则你应注意到_Everyone_主体仅包括经过身份验证的用户。 因此，如果已设置共享以允许_Everyone_访问，并且在不指定凭据的情况下进行连接，则将使用未经身份验证的匿名主体，并且你将看到错误。 若要解决此问题，必须在共享主机上启用来宾帐户，并且授予来宾帐户对该共享的完全访问权限，否则必须同时指定有效的凭据和 Windows PowerShell cmdlet。
+> 如果使用的是 Microsoft Azure 虚拟主机和 StorSimple 云设备，则可以使用 Windows PowerShell 远程处理和虚拟主机来连接到云设备。 如果已设置了主机上的某个共享位置（用于保存来自 Windows PowerShell 会话的信息），则应注意到 _Everyone_ 主体仅包括已经过身份验证的用户。 因此，如果已设置共享以允许 _Everyone_ 访问，并且连接时无需指定凭据，那么将使用未经身份验证的 Anonymous 主体，并且会显示一个错误。 若要解决此问题，必须在共享主机上启用来宾帐户，并且授予来宾帐户对该共享的完全访问权限，否则必须同时指定有效的凭据和 Windows PowerShell cmdlet。
 
 
 可以使用 HTTP 或 HTTPS 来通过 Windows PowerShell 远程处理进行连接。 使用以下教程中的指导︰
@@ -151,7 +151,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 在 Windows PowerShell for StorSimple 中，有关于 cmdlet 的帮助信息。 此帮助的在线最新版本也可用，可以用它来更新系统上的帮助信息。
 
-获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 可在 Windows PowerShell [online 中找到帮助：](/powershell/module/Microsoft.PowerShell.Core/)
+获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 可以联机找到针对 Windows PowerShell 的帮助：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 下面是关于此 Windows PowerShell 界面的帮助信息类型的简要说明，包括如何更新帮助信息。
 
@@ -166,7 +166,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 在 Windows PowerShell 界面中更新帮助信息很容易。 执行以下步骤就可以更新系统上的帮助信息。
 
 #### <a name="to-update-cmdlet-help"></a>更新 cmdlet 帮助信息
-1. 使用 **“以管理员身份运行”** 选项启动 Windows PowerShell。
+1. 在选中“**以管理员身份运行**”选项的情况下启动 Windows PowerShell。
 2. 在命令提示符处，键入：`Update-Help`
 3. 将安装更新的帮助文件。
 4. 安装帮助文件之后，键入︰`Get-Help Get-Command`。 此操作会显示有可用帮助信息的 cmdlet 列表。

@@ -1,14 +1,14 @@
 ---
 title: 监视 Azure Batch
 description: 了解 Azure 监视服务、指标、诊断日志以及 Azure Batch 的其他监视功能。
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: c8b11d0b7187d6c4b5b3ccff1e19eb533ff3f0da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113884"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83723521"
 ---
 # <a name="monitor-batch-solutions"></a>监视 Batch 解决方案
 
@@ -22,7 +22,7 @@ Azure 和 Batch 服务提供了一系列服务、工具和 API 来监视 Batch �
 
 对于 Batch 帐户，具体而言，活动日志收集与帐户创建和删除以及密钥管理相关的事件。
 
-从活动日志中检索事件的一种方法是使用 Azure 门户。 单击“所有服务” **“活动日志”。**  >   或者，使用 Azure CLI、PowerShell cmdlet 或 Azure Monitor REST API 来查询事件。 还可以导出活动日志，或者配置[活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)。
+从活动日志中检索事件的一种方法是使用 Azure 门户。 单击“所有服务” > “活动日志”。  或者，使用 Azure CLI、PowerShell cmdlet 或 Azure Monitor REST API 来查询事件。 还可以导出活动日志，或者配置[活动日志警报](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)。
 
 ## <a name="batch-account-level-monitoring"></a>Batch 帐户级监视
 

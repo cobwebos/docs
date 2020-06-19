@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 9b767caa1041f865d8e15cd57796b186f7a4a6bb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f62f2b5bc01518af29bd1deb17a38e9fe105a4ed
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596266"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800557"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>存储队列作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 多个 Azure 服务已自动配置为处理事件，Azure 队列存储就是其中之一。 
@@ -25,6 +25,121 @@ ms.locfileid: "83596266"
 |标题  |说明  |
 |---------|---------|
 | [快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 队列存储](custom-event-to-queue-storage.md) | 说明如何将自定义事件发送到队列存储。 |
+
+## <a name="rest-examples-for-put"></a>REST 示例（适用于 PUT）
+
+### <a name="storage-queue-as-the-event-handler"></a>存储队列用作事件处理程序
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                "queueName": "<QUEUE NAME>"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-the-event-handler---delivery-with-managed-identity"></a>存储队列用作事件处理程序 - 使用托管标识传送
+
+```json
+{
+    "properties": 
+    {
+        "deliveryWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "destination": 
+            {
+                "endpointType": "StorageQueue",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>",
+                    "queueName": "<QUEUE NAME>"
+                }
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema"
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination"></a>存储队列用作死信目标
+
+```json
+{
+    "name": "",
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterDestination": 
+        {
+            "endpointType": "StorageBlob",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                "blobContainerName": "test"
+            }
+        }
+    }
+}
+```
+
+### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>存储队列用作死信目标 - 托管标识
+
+```json
+{
+    "properties": 
+    {
+        "destination": 
+        {
+            "endpointType": "StorageQueue",
+            "properties": 
+            {
+                "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DESTINATION STORAGE>",
+                "queueName": "queue1"
+            }
+        },
+        "eventDeliverySchema": "EventGridSchema",
+        "deadLetterWithResourceIdentity": 
+        {
+            "identity": 
+            {
+                "type": "SystemAssigned"
+            },
+            "deadLetterDestination": 
+            {
+                "endpointType": "StorageBlob",
+                "properties": 
+                {
+                    "resourceId": "/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<DEADLETTER STORAGE>",
+                    "blobContainerName": "test"
+                }
+            }
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 如需支持的事件处理程序的列表，请参阅[事件处理程序](event-handlers.md)一文。 

@@ -1,47 +1,43 @@
 ---
-title: 使用 Azure HDInsight 中的 Apache Mahout 生成建议
-description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight (Hadoop) 生成电影推荐。
+title: 在 Azure HDInsight 中使用 Apache Mahout 生成推荐
+description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight 生成电影推荐。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767630"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656335"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>将 Apache Mahout 与 HDInsight 中的 Apache Hadoop 配合使用生成电影推荐 (SSH)
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Mahout 生成推荐
 
 了解如何使用 [Apache Mahout](https://mahout.apache.org) 机器学习库通过 Azure HDInsight 生成电影推荐。
 
-Mahout 是适用于 Apache Hadoop 的[计算机学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
-
-## <a name="prerequisites"></a>必备条件
-
-HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
-
-## <a name="apache-mahout-versioning"></a>Apache Mahout 版本控制
+Mahout 是适用于 Apache Hadoop 的[机器学习](https://en.wikipedia.org/wiki/Machine_learning)库。 Mahout 包含用于处理数据的算法，例如筛选、分类和群集。 在本文中，用户使用推荐引擎根据好友看过的电影生成电影推荐。
 
 若要深入了解 HDInsight 中的 Mahout 版本，请参阅 [HDInsight 版本和 Apache Hadoop 组件](../hdinsight-component-versioning.md)。
 
+## <a name="prerequisites"></a>先决条件
+
+HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
+
 ## <a name="understanding-recommendations"></a>了解建议
 
-由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析以确定：偏好某个项的用户也偏好其他类似项  。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
+由 Mahout 提供的功能之一是推荐引擎。 此引擎接受 `userID`、`itemId` 和 `prefValue` 格式（项的首选项）的数据。 然后，Mahout 将执行共现分析以确定：偏好某个项的用户也偏好其他类似项。 Mahout 然后确定拥有类似项首选项的用户，这些首选项可用于做出推荐。
 
 下面的工作流是使用电影数据的简化示例：
 
-* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》  、《帝国反击战》  和《绝地归来》  。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
+* **共现**：Joe、Alice 和 Bob 都喜欢电影《星球大战》、《帝国反击战》和《绝地大反击》。 Mahout 可确定喜欢以上电影之一的用户也喜欢其他两部。
 
-* **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》  、《克隆人的进攻》  和《西斯的复仇》  。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
+* **共现**：Bob 和 Alice 还喜欢电影《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。 Mahout 可确定喜欢前面三部电影的用户也喜欢这三部电影。
 
-* **相似性建议**：由于 Joe 喜欢前三个电影，Mahout 会查看具有类似首选项的其他人喜欢的电影，但 Joe 未被监视（赞/评级）。 在这种情况下，Mahout 推荐《幽灵的威胁》  、《克隆人的进攻》  和《西斯的复仇》  。
+* **类似性推荐**：由于 Joe 喜欢前三部电影，Mahout 会查看具有类似偏好的其他人已喜欢但 Joe 还未观看过（已点赞/已评价）的电影。 在这种情况下，Mahout 推荐《幽灵的威胁》、《克隆人的进攻》和《西斯的复仇》。
 
 ### <a name="understanding-the-data"></a>了解数据
 
@@ -49,7 +45,7 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入�
 
 有两个文件，即 `moviedb.txt` 和 `user-ratings.txt`。 `user-ratings.txt` 文件在分析期间使用。 `moviedb.txt` 用于在查看结果时提供用户友好的文本信息。
 
-`user-ratings.txt`中包含`userID`的数据具有、 `movieID`、 `userRating`和`timestamp`的结构，指示每个用户对电影进行评分的程度。 下面是数据的示例：
+`user-ratings.txt` 中包含的数据具有 `userID`、`movieID`、`userRating` 和 `timestamp` 的结构，指示每个用户对电影评级的情况。 下面是数据的示例：
 
     196    242    3    881250949
     186    302    3    891717742
@@ -194,7 +190,7 @@ HDInsight 中的 Apache Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入�
 
 ## <a name="delete-temporary-data"></a>删除临时数据
 
-Mahout 作业不会删除在处理作业时创建的临时数据。 在示例作业中指定 `--tempDir` 参数，以将临时文件隔离到特定路径中轻松删除。 若要删除临时文件，请使用以下命令：
+Mahout 作业不删除在处理作业时创建的临时数据。 在示例作业中指定 `--tempDir` 参数，以将临时文件隔离到特定路径中轻松删除。 若要删除临时文件，请使用以下命令：
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
@@ -207,7 +203,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何使用 Mahout，但会发现在 HDInsight 上使用数据的其他方式：
+现在，已经学习了如何使用 Mahout，因此可以探索通过其他方式来使用 HDInsight 上的数据：
 
 * [将 Apache Hive 和 HDInsight 配合使用](hdinsight-use-hive.md)
 * [MapReduce 和 HDInsight 配合使用](hdinsight-use-mapreduce.md)

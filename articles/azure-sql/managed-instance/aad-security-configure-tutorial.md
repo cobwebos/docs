@@ -2,7 +2,7 @@
 title: 使用 Azure AD 服务器主体（登录名）实现 SQL 托管实例安全性
 description: 了解保护 Azure SQL 托管实例的技术和功能，以及 Azure AD 服务器主体（登录名）的用法
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 5152f78b428008d3f9a76264f2253167e6c5a138
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219815"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84706420"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 托管实例中的安全性
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

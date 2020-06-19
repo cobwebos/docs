@@ -1,5 +1,5 @@
 ---
-title: 管理紧急访问管理帐户-Azure AD |Microsoft Docs
+title: 管理紧急访问管理员帐户 - Azure AD | Microsoft Docs
 description: 本文介绍如何借助紧急访问帐户来防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外的情况。
 services: active-directory
 author: markwahl-msft
@@ -13,22 +13,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5c26b4e04970dd6c35fc6a71a1aade94d949b520
+ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74028133"
+ms.lasthandoff: 05/24/2020
+ms.locfileid: "83816176"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
-必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。 
+必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外失去管理访问权限造成的影响。
 
-紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 建议你始终以将紧急帐户的使用限于绝对必要情况为目标。
+紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于紧急情况或“破窗式”情况，即不能使用正常管理帐户。 建议始终以将紧急帐户的使用限于绝对必要情况为目标。
 
 本文提供有关在 Azure AD 中管理紧急访问帐户的指导。
 
-## <a name="why-use-an-emergency-access-account"></a>为何使用紧急访问帐户
+## <a name="why-use-an-emergency-access-account"></a>为什么使用紧急访问帐户
 
 在以下情况下，组织可能需要使用紧急访问帐户：
 
@@ -44,7 +44,7 @@ ms.locfileid: "74028133"
 配置这些帐户时，必须满足以下要求：
 
 - 紧急访问帐户不应与组织中的任何单个用户相关联。 确保帐户未关联到任何员工提供的移动电话、会随单个员工流动的硬件令牌或其他特定于员工的凭据。 此预防措施介绍需要凭据而无法找到某个拥有凭据的员工时的情况。 请务必确保将任何已注册设备保存在与 Azure AD 有多种通信方式的已知安全位置。
-- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员通过本地 MFA 正常登录，则 Azure MFA 是不同的机制。  但是，如果 Azure MFA 是用于管理帐户的身份验证的主要部分，请考虑使用不同的方法，例如，将条件访问与第三方 MFA 提供程序结合使用。
+- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员通过本地 MFA 正常登录，则 Azure MFA 是不同的机制。  但是，如果 Azure MFA 是管理帐户的主要身份验证部分，请考虑对这些帐户使用不同的方法，例如，通过[自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)结合第三方 MFA 提供程序使用条件访问。
 - 设备或凭据不得过期，或者由于使用次数不多而划归到自动清理的范围内。  
 - 应将全局管理员角色分配设为紧急访问帐户的永久角色。 
 
@@ -52,13 +52,13 @@ ms.locfileid: "74028133"
 
 为降低泄露密码所致攻击的风险，Azure AD 建议要求所有用户使用多重身份验证。 此组包括管理员和被盗帐户将产生重大影响的其他所有用户（例如财务）。
 
-但是，至少应有一个紧急访问帐户的多重身份验证机制与其他非紧急帐户不同。 这包括第三方多重身份验证解决方案。 如果条件访问策略要求每个管理员针对 Azure AD 及连接的其他软件即服务 (SaaS) 应用执行[多重身份验证](../authentication/howto-mfa-userstates.md)，则应从此要求中排除紧急访问帐户，并改而配置其他机制。 此外，应确保这些帐户不使用按用户的多重身份验证策略。
+但是，至少应有一个紧急访问帐户的多重身份验证机制与其他非紧急帐户不同。 这包括第三方多重身份验证解决方案。 如果条件访问策略要求每个管理员针对 Azure AD 及连接的其他软件即服务 (SaaS) 应用执行[多重身份验证](../authentication/howto-mfa-userstates.md)，则应从此要求中排除紧急访问帐户，并改为配置其他机制。 此外，应确保这些帐户不使用按用户的多重身份验证策略。
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>从条件访问策略中排除至少一个帐户
 
 在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。 如果已启用[基准策略](../conditional-access/baseline-protection.md)，应排除紧急访问帐户。
 
-## <a name="federation-guidance"></a>联合身份验证指南
+## <a name="federation-guidance"></a>联合指南
 
 对于使用 AD 域服务和 ADFS 或类似标识提供者联合到 Azure AD 的组织，另一种做法是配置一个可由该标识提供者提供 MFA 声明的紧急访问帐户。  例如，紧急访问帐户可由证书和密钥对（例如，存储在智能卡上）提供安全保障。  当该用户在 AD 中进行身份验证时，ADFS 可向 Azure AD 提供声明，指示该用户满足 MFA 要求。  即使使用此方法，组织也仍需要提供基于云的紧急访问帐户，否则无法建立联合。 
 
@@ -70,72 +70,72 @@ ms.locfileid: "74028133"
 
 ## <a name="monitor-sign-in-and-audit-logs"></a>监视登录和审核日志
 
-组织应该监视紧急帐户的登录和审核日志活动，并触发目标为其他管理员的通知。 监视不受限帐户的活动时，可以验证这些帐户是仅用于测试，还是用于真实的紧急情况。 可以使用 Azure Log Analytics 监视登录日志，在不受限帐户登录时触发接收人为管理员的电子邮件和短信警报。
+组织应监视紧急帐户的登录和审核日志活动，并向其他管理员发出通知。 监视破窗式帐户上的活动时，可以验证这些帐户是否仅用于测试或实际紧急情况。 可以使用 Azure Log Analytics 监视登录日志，并在出现破窗式帐户登录时发出电子邮件和短信警报。
 
 ### <a name="prerequisites"></a>先决条件
 
-1. [将 Azure AD 登录日志发送](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)到 Azure Monitor。
+1. 向 Azure Monitor [发送 Azure AD 登录日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
 
-### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>获取 break 玻璃帐户的对象 Id
+### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>获取破窗式帐户的对象 ID
 
-1. 使用分配给 "用户管理员" 角色的帐户登录到[Azure 门户](https://portal.azure.com)。
-1. 选择**Azure Active Directory** > **用户**。
-1. 搜索 "中断玻璃" 帐户并选择用户的名称。
-1. 复制并保存 "对象 ID" 属性，以便以后可以使用。
-1. 对第二个中断玻璃帐户重复前面的步骤。
+1. 使用分配给“用户管理员”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 选择“Azure Active Directory” > “用户”。 
+1. 搜索破窗式帐户并选择用户的名称。
+1. 复制并保存“对象 ID”属性，以便以后可以使用。
+1. 对另一个破窗式帐户重复前面的步骤。
 
 ### <a name="create-an-alert-rule"></a>创建警报规则
 
-1. 使用分配给 Azure Monitor 中的 "监视参与者" 角色的帐户登录到[Azure 门户](https://portal.azure.com)。
-1. 选择 "**所有服务**"，在 "搜索" 中输入 "log analytics"，然后选择 " **Log Analytics 工作区**"。
+1. 使用 Azure Monitor 中分配给“监视参与者”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 选择“所有服务”，在“搜索”中输入“log analytics”，然后选择“Log Analytics 工作区”。 
 1. 选择工作区。
-1. 在工作区中，选择 "**警报** > " "**新建警报规则**"。
-    1. 在 "**资源**" 下，验证订阅是否与警报规则关联。
-    1. 在 "**条件**" 下，选择 "**添加**"。
-    1. 在 "**信号名称**" 下选择 "**自定义日志搜索**"。
-    1. 在 "**搜索查询**" 下，输入以下查询，插入两个中断玻璃帐户的对象 id。
+1. 在工作区中，选择“警报” > “新建警报规则”。 
+    1. 在“资源”下，验证订阅是否与警报规则关联。
+    1. 在“条件”下，选择“添加”。 
+    1. 在“信号名称”下选择“自定义日志搜索”。 
+    1. 在“搜索查询”下，输入以下查询，插入两个破窗式帐户的对象 ID。
         > [!NOTE]
-        > 对于要包含的每个附加 break 玻璃帐户，请将另一个 "或 UserId = =" ObjectGuid "" 添加到查询中。
+        > 对于要包含的每个附加破窗式帐户，请向查询中添加另一个“or UserId == "ObjectGuid"”。
 
-        ![将中断玻璃帐户的对象 Id 添加到警报规则](./media/directory-emergency-access/query-image1.png)
+        ![将破窗式帐户的对象 ID 添加到警报规则](./media/directory-emergency-access/query-image1.png)
 
-    1. 在 "**警报逻辑**" 下，输入以下内容：
+    1. 在“警报逻辑”下，输入以下内容：
 
-        - 基于：结果数
+        - 依据：结果数
         - 运算符：大于
         - 阈值：0
 
-    1. 在 "**基于计算**依据" 下，选择要运行查询的时间**段（以分钟为单位）** ，并选择要运行查询的**频率（以分钟**为单位）。 频率应小于或等于句点。
+    1. 在“计算基于”下，选择“期限(以分钟为单位)”（希望查询运行的时长）和“频率(以分钟为单位)”（希望查询运行的频率）。   频率应小于或等于期限。
 
         ![警报逻辑](./media/directory-emergency-access/alert-image2.png)
 
-    1. 选择“完成”  。 你现在可以查看此警报的每月预估成本。
+    1. 选择“完成”。 现在可以查看此警报的每月预估成本。
 1. 选择警报要通知的用户操作组。 若要创建一个操作组，请参阅[创建操作组](#create-an-action-group)。
-1. 若要自定义发送到操作组的成员的电子邮件通知，请选择 "**自定义操作**" 下的 "操作"。
-1. 在 "**警报详细信息**" 下，指定警报规则名称并添加可选说明。
-1. 设置事件的**严重级别**。 建议将其设置为 "**严重（严重性0）**"。
-1. 在 "**创建时启用规则**" 下，将其设置为 **"是"**。
-1. 若要关闭警报一段时间，请选中 "**取消警报**" 复选框并输入等待持续时间，然后再次发出警报，然后选择 "**保存**"。
-1. 单击“创建警报规则”。****
+1. 若要自定义发送给操作组成员的电子邮件通知，请选择“自定义操作”下的“操作”。
+1. 在“警报详细信息”下，指定警报规则名称并添加可选说明。
+1. 设置事件的“严重级别”。 建议将其设置为“关键(严重性 0)。
+1. 在“创建后启用规则”下，将其设置为“是”。 
+1. 若要关闭警报一段时间，请选中“阻止警报”复选框，并输入再次发出警报之前的等待持续时间，然后选择“保存”。 
+1. 单击“创建警报规则”。
 
 ### <a name="create-an-action-group"></a>创建操作组
 
-1. 选择 "**创建操作组**"。
+1. 选择“创建操作组”。
 
     ![为通知操作创建操作组](./media/directory-emergency-access/action-group-image3.png)
 
 1. 输入操作组名称和短名称。
 1. 验证订阅和资源组。
-1. 在 "操作类型" 下，选择**电子邮件/短信/推送/语音**。
-1. 输入操作名称，如 "**通知全局管理员**"。
-1. 选择 "**操作类型**" 作为**电子邮件/短信/推送/语音**。
-1. 选择 "**编辑详细信息**" 以选择要配置的通知方法，并输入所需的联系信息，然后选择 **"确定"** 保存详细信息。
+1. 在操作类型下，选择“电子邮件/短信/推送/语音”。
+1. 输入操作名称，如“通知全局管理员”。
+1. 将“操作类型”选择为“电子邮件/短信/推送/语音”。 
+1. 选择“编辑详细信息”以选择要配置的通知方法，输入所需的联系信息，然后选择“确定”以保存详细信息。 
 1. 添加要触发的任何其他操作。
-1. 选择“确定”  。
+1. 选择“确定”。
 
 ## <a name="validate-accounts-regularly"></a>定期验证帐户
 
-为员工培训紧急访问帐户的用法和验证紧急访问帐户时，至少应定期执行以下步骤：
+培训员工成员使用紧急访问帐户和验证紧急访问帐户时，至少应定期执行以下步骤：
 
 - 确保安全监视人员了解正在进行帐户检查活动。
 - 确保使用这些帐户的紧急破窗流程有文档记录，且是最新的流程。

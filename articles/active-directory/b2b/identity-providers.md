@@ -11,27 +11,41 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395473e70137ead2b7185d54d165f82e9b3f1f04
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 2284d015b451872753dd0855cac42e6f1926545c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595706"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712156"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部标识的标识提供者
 
 标识提供程序创建、维护和管理标识信息，同时向应用程序提供身份验证服务。 与外部用户共享应用和资源时，Azure AD 是用于共享的默认标识提供者。 这意味着，当你邀请已有 Azure AD 或 Microsoft 帐户的外部用户时，这些用户可以自动登录，而无需你进行进一步的配置。
 
-但是，你可以允许用户使用各种标识提供者登录。 例如，你可以与 Azure AD 支持的社交标识提供者（包括 Google 和 Facebook）建立联合。 你还可以与任何支持 SAML 或 WS 联合身份验证协议的外部标识提供者联合。 借助外部标识提供者联合，你可以让外部用户使用其现有的社交或企业帐户登录到你的应用。
+但是，你可以允许用户使用各种标识提供者登录。
+
+- **Google**：通过 Google 联合身份验证，外部用户可以使用他们自己的 Gmail 帐户登录你的应用，来兑换你发出的邀请。 Google 联合身份验证还可以用于自助注册用户流。
+   > [!NOTE]
+   > 在当前的自助注册预览版中，如果用户流已与某个应用关联，而你向某位用户发送了该应用的邀请，那么该用户将无法使用 Gmail 帐户兑换该邀请。 解决方法是，用户可以执行自助注册流程。 此外，用户可以通过访问其他应用或使用“我的应用”门户（位于 https://myapps.microsoft.com ）来兑换邀请。
+
+- **Facebook**：生成应用时，可以配置自助注册并启用 Facebook 联合身份验证，这样用户即能够使用他们自己的 Facebook 帐户注册你的应用。 Facebook 只能用于自助注册用户流，当用户兑换你发出的邀请时不能将它用作登录选项。
+
+- **直接联合身份验证**：你还可以设置与任何支持 SAML 或 WS 联合身份验证协议的外部标识提供者的直接联合身份验证。 通过直接联合身份验证，外部用户可以使用他们现有的社交或公司帐户登录你的应用，来兑换你发出的邀请。 
+   > [!NOTE]
+   > 直接联合身份验证标识提供者不能用于自助注册用户流。
+
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure AD 外部标识已预先配置为与 Google 和 Facebook 联合。 若要在 Azure AD 租户中设置这些标识提供者，需针对每个标识提供者创建一个应用程序并配置凭据。 你将获得一个客户端或应用 ID 和一个客户端或应用机密，然后你可以将其添加到 Azure AD 租户。
+通过 Azure AD 外部标识自助注册功能，用户可以使用他们的 Azure AD、Google 或 Facebook 帐户注册。 若要在 Azure AD 租户中设置社交标识提供者，需针对每个标识提供者创建一个应用程序并配置凭据。 你将获得一个客户端或应用 ID 和一个客户端或应用机密，然后你可以将其添加到 Azure AD 租户。
 
 将标识提供者添加到 Azure AD 租户后：
 
 - 当你邀请外部用户访问组织中的应用或资源时，外部用户可以使用自己的帐户通过该标识提供者登录。
-- 当你为应用启用[自助注册](self-service-sign-up-overview.md)时，外部用户可以使用自己的帐户通过你添加的标识提供者注册你的应用。 
+- 当你为应用启用[自助注册](self-service-sign-up-overview.md)时，外部用户可以使用自己的帐户通过你添加的标识提供者注册你的应用。
+
+> [!NOTE]
+> 默认情况下为自助注册启用 Azure AD，这样用户始终可以选择使用 Azure AD 帐户进行注册。
 
 外部用户在兑换你的邀请或注册你的应用时，可以选择通过社交标识提供者进行登录和身份验证：
 

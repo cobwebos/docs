@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 9d74ea2b967112a794cda204cbbfcac707e1d7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: de14f334b2a68d820dbf80f194ac93430c452038
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879456"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83833364"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -63,7 +63,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 若要管理安全警报和保护资源，请参考以下资源。
 
 项目    
-* [Azure 安全中心的安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
+* [在 Azure 安全中心进行安全运行状况监视](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
 * [保护 Azure 安全中心中的网络](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
 * [在 Azure 安全中心保护 Azure SQL 服务和数据](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
@@ -73,7 +73,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 * [Mitigating Security Issues using Azure Security Center](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Mitigating-Security-Issues-using-Azure-Security-Center)（使用 Azure 安全中心缓解安全问题）
 
 ### <a name="security-center-for-incident-response"></a>负责事件响应的安全中心
-为了降低成本和损坏情况，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
+为降低成本并减少破坏，必须在攻击发生之前制定事件响应计划。 可在事件响应的不同阶段使用 Azure 安全中心。
 
 若要了解如何将安全中心纳入事件响应流程中，请参考以下资源。
 
@@ -83,16 +83,16 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 
 项目    
 * [利用 Azure 安全中心进行事件响应](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [通过工作流自动化自动完成响应](workflow-automation.md)
+* [通过工作流自动化自动响应](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>高级云防御
 
-Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能包括实时虚拟机（VM）访问和自适应应用程序控制。
+Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能包括实时虚拟机 (VM) 访问和自适应应用程序控制。
 
 若要了解如何在安全中心使用这些功能，请参考以下资源。
 
 视频    
-* [Azure 安全中心-实时 VM 访问](https://youtu.be/UOQb2FcdQnU)
+* [Azure 安全中心 – 实时 VM 访问](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptive Application Controls](https://youtu.be/wWWekI1Y9ck)（Azure 安全中心 - 自适应应用程序控制）
 
 项目    
@@ -103,7 +103,7 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 
 * [安全中心动手实验](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [安全中心的 Web 应用程序防火墙 (WAF) 建议攻略](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Azure Security Center Playbook: Security Alerts](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)（Azure 安全中心 Playbook：安全警报）
+* [Azure 安全中心 Playbook：安全警报](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
 ## <a name="additional-resources"></a>其他资源
 * [安全中心文档页](https://docs.microsoft.com/azure/security-center/)
@@ -114,12 +114,11 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [网络安全最佳实践](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS 建议](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [遵从性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
-* [Log analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
+* [Log Analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)
 
 ## <a name="community-resources"></a>社区资源
 
 * [安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [安全中心社区论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSecurityCenter)
-
+* [适用于云服务的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-security-center.html)
 
 

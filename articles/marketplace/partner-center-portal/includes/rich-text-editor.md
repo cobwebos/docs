@@ -1,0 +1,23 @@
+---
+title: include 文件
+description: 文件
+author: anbene
+ms.author: mingshen
+ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 05/19/2020
+ms.openlocfilehash: d11589e34ac24cafe57d38d0eef25a1b44576b7c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698380"
+---
+要使产品/服务说明更具吸引力，请使用 RTF 编辑器应用格式设置。
+
+![使用 RTF 编辑器](media/rich-text-editor.png)
+
+| <center>更改文本格式 | <center>添加项目符号或编号 | <center>添加或删除文本缩进 |
+| --- | --- | --- |
+| <center>![使用 RTF 编辑器更改文本格式](media/text-editor3.png) |  <center>![使用 RTF 编辑器添加列表](media/text-editor4.png) |  <center>![使用 RTF 编辑器进行缩进](media/text-editor5.png) |

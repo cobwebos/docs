@@ -1,34 +1,34 @@
 ---
-title: Azure Kubernetes Service （AKS）高可用性和运行时间 SLA
-description: 了解 Azure Kubernetes Service （AKS） API 服务器的可选高可用性运行时间 SLA。
+title: Azure Kubernetes 服务 (AKS) 与运行时间 SLA
+description: 了解 Azure Kubernetes 服务 (AKS) API 服务器的可选运行时间 SLA 产品/服务。
 services: container-service
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 1c340f85a107cac437e1241025d8c9bc6991b965
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.date: 05/19/2020
+ms.openlocfilehash: e0e1399f69640dddfd618ac99637023390f28a92
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125717"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683220"
 ---
-# <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务（AKS）运行时间 SLA
+# <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
-运行时间 SLA 是一项可选功能，用于为群集启用财务支持的更高 SLA。 运行时间 SLA 保证使用[可用性区域][availability-zones]的群集的 Kubernetes API 服务器终结点99.95% 的可用性，以及不使用可用性区域的群集的可用性99.9%。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
+运行时间 SLA 是一个可选功能，用于为群集启用具有财务支持的更高 SLA。 对于使用[可用性区域][availability-zones]的群集，运行时间 SLA 可保证 Kubernetes API 服务器终结点 99.95% 的可用性，对于不使用可用性区域的群集，可保证 99.9% 的可用性。 AKS 跨更新域和容错域使用主节点副本，以确保满足 SLA 要求。
 
-出于合规性原因或向其客户扩展 SLA 的客户应启用此功能。 具有需要更高可用性的关键工作负荷的客户，其中包括用于启用此功能的 SLA 权益。 启用带有可用性区域的功能，以获得 Kubernetes API 服务器的更高可用性。  
+需要 SLA 以满足法规符合性要求或需要将 SLA 扩展到其最终用户的客户应启用此功能。 具有将从更高的运行时间 SLA 中受益的关键工作负载的客户也可能受益。 将运行时间 SLA 功能与可用性区域结合使用可以提高 Kubernetes API 服务器运行时间的可用性。  
 
-客户可创建具有99.5% 的服务级别目标（SLO）的无限制可用群集。
+客户仍可以创建服务级别目标 (SLO) 为 99.5% 的无限制免费群集，并根据需要选择首选 SLO 或 SLA 运行时间。
 
 > [!Important]
-> 对于具有出口锁定的群集，请参阅[限制传出流量](limit-egress-traffic.md)打开合适的端口以获取运行时间 SLA。
+> 对于出口锁定的群集，请参阅[限制出口流量](limit-egress-traffic.md)以打开适当的端口。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 
-运行时间 SLA 是一项付费功能，按群集启用。 运行时间 SLA 定价取决于分类的数量，而不是群集的大小。 可以查看[运行时间 SLA 定价详细](https://azure.microsoft.com/pricing/details/kubernetes-service/)信息以获取详细信息。
+运行时间 SLA 是付费功能，按群集启用。 运行时间 SLA 定价取决于离散群集的数量，而不是各个群集的大小。 有关详细信息，可以查看[运行时间 SLA 定价详细信息](https://azure.microsoft.com/pricing/details/kubernetes-service/)。
 
 ## <a name="region-availability"></a>区域可用性
 
-运行时间 SLA 在以下区域中提供：
+运行时间 SLA 在以下区域可用：
 
 * 澳大利亚东部
 * 加拿大中部
@@ -40,23 +40,23 @@ ms.locfileid: "83125717"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* Azure CLI 版本2.7.0 或更高版本
+* Azure CLI 版本 2.7.0 或更高版本
 
 ## <a name="creating-a-cluster-with-uptime-sla"></a>创建具有运行时间 SLA 的群集
 
-若要创建具有运行时间 SLA 的新群集，请使用 Azure CLI。
+若要创建具有运行时间 SLA 的群集，请使用 Azure CLI。
 
-以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
-使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为  myAKSCluster 的群集。 也可通过 *--enable-addons monitoring* 参数启用用于容器的 Azure Monitor。  此操作需要几分钟才能完成。
+使用 [az aks create][az-aks-create] 命令创建 AKS 群集。 以下示例创建一个具有一个节点的名为 myAKSCluster 的群集。 也可通过 *--enable-addons monitoring* 参数启用用于容器的 Azure Monitor。  此操作需要几分钟才能完成。
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
-片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 下面的 JSON 代码片段显示了 SKU 的付费层，指示群集已启用运行时间 SLA。
+片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 下面的 JSON 片段显示了 SKU 的付费层，表明群集已启用了运行时间 SLA。
 
 ```output
   },
@@ -64,19 +64,18 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --uptime-sla 
     "name": "Basic",
     "tier": "Paid"
   },
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters",
-  "windowsProfile": null
 ```
 
 ## <a name="limitations"></a>限制
 
-* 目前不能向现有群集添加运行时间 SLA。
-* 目前，无法从 AKS 群集中删除运行时间 SLA。  
+* 目前无法转换现有群集以启用运行时间 SLA。
+* 当前，在创建 AKS 群集并启用运行时间 SLA 后，将无法从该群集中将其删除。  
+* 当前不支持专用群集。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[可用性区域][availability-zones]提高 AKS 群集工作负荷的高可用性。
+使用[可用性区域][availability-zones]增加 AKS 群集工作负载的高可用性。
+将群集配置为[限制出口流量](limit-egress-traffic.md)。
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

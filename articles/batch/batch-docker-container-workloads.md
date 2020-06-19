@@ -1,15 +1,15 @@
 ---
-title: 容器工作负荷
-description: 了解如何在 Azure Batch 上的容器映像中运行和缩放应用。 创建支持运行容器任务的计算节点池。
-ms.topic: article
-ms.date: 03/02/2020
+title: 容器工作负载
+description: 了解如何在 Azure Batch 上通过容器映像运行和缩放应用。 创建支持运行容器任务的计算节点池。
+ms.topic: how-to
+ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 27edfe67152857a89840f5cd24b06d66ae8d94c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b1310af2797e43659ac8859e74d1be8bdbab3c98
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116122"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726717"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>在 Azure Batch 上运行容器应用程序
 
@@ -21,9 +21,9 @@ ms.locfileid: "82116122"
 
 使用容器可以方便地运行 Batch 任务，无需管理环境和依赖项即可运行应用程序。 容器将应用程序部署为轻量级、可移植、自给自足的单元，可以在各种不同的环境中运行。 例如，在本地构建和测试容器，然后将容器映像上传到 Azure 或其他位置的注册表中。 容器部署模型可确保始终正确安装和配置应用程序的运行时环境，而不考虑在何处托管应用程序。 Batch 中基于容器的任务也可利用非容器任务的功能，包括应用程序包以及资源文件和输出文件的管理。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* **SDK 版本**： Batch sdk 支持以下版本的容器映像：
+* **SDK 版本**：Batch SDK 支持到以下版本为止的容器映像：
     * Batch REST API 版本 2017-09-01.6.0
     * Batch .NET SDK 版本 8.0.0
     * Batch Python SDK 版本 4.0
@@ -32,7 +32,7 @@ ms.locfileid: "82116122"
 
 * **帐户**：在 Azure 订阅中，需要创建 Batch 帐户和 Azure 存储帐户（后者为可选）。
 
-* **支持的 VM 映像**：容器仅在使用来自映像的虚拟机配置创建的池中受支持。有关详细信息，请参阅下一节：“受支持的虚拟机映像”。 如果提供自定义映像，请参阅以下部分所述的注意事项，以及[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)中所述的要求。
+* **受支持的 VM 映像**：容器仅在使用来自映像的虚拟机配置创建的池中受支持，有关详细信息，请参阅下一节“受支持的虚拟机映像”。 如果提供自定义映像，请参阅以下部分所述的注意事项，以及[使用托管的自定义映像创建虚拟机池](batch-custom-images.md)中所述的要求。
 
 ### <a name="limitations"></a>限制
 
@@ -46,33 +46,33 @@ ms.locfileid: "82116122"
 
 ### <a name="windows-support"></a>Windows 支持
 
-Batch 支持具有容器支持标识的 Windows server 映像。 通常，这些图像 sku 名称带有`-with-containers`或`-with-containers-smalldisk`后缀。 此外，如果映像支持 Docker 容器，[则成批列出所有支持](batch-linux-nodes.md#list-of-virtual-machine-images)的`DockerCompatible`映像的 API 将表示一项功能。
+Batch 支持被指派了容器支持的 Windows Server 映像。 通常，这些映像 sku 名称的后缀为 `-with-containers` 或 `-with-containers-smalldisk`。 此外，如果映像支持 Docker 容器，则[列出 Batch 中所有受支持映像的 API](batch-linux-nodes.md#list-of-virtual-machine-images) 将指出 `DockerCompatible` 功能。
 
-也可以从 Windows 上运行 Docker 的 VM 创建自定义映像。
+也可从 Windows 上运行 Docker 的 VM 创建自定义映像。
 
 ### <a name="linux-support"></a>Linux 支持
 
-对于 Linux 容器工作负荷，Batch 目前支持 Azure Marketplace 中 Microsoft Azure Batch 发布的以下 Linux 映像，无需自定义映像。
+对于 Linux 容器工作负载，Batch 目前支持 Microsoft Azure Batch 在 Azure 市场中发布的下列 Linux 映像，而无需自定义映像。
 
-#### <a name="vm-sizes-without-rdma"></a>无 RDMA 的 VM 大小
+#### <a name="vm-sizes-without-rdma"></a>没有 RDMA 的 VM 大小
 
-- 器`microsoft-azure-batch`
-  - 提供`centos-container`
-  - 提供`ubuntu-server-container`
+- 发布者：`microsoft-azure-batch`
+  - 产品/服务：`centos-container`
+  - 产品/服务：`ubuntu-server-container`
 
-#### <a name="vm-sizes-with-rdma"></a>带 RDMA 的 VM 大小
+#### <a name="vm-sizes-with-rdma"></a>带有 RDMA 的 VM 大小
 
-- 器`microsoft-azure-batch`
-  - 提供`centos-container-rdma`
-  - 提供`ubuntu-server-container-rdma`
+- 发布者：`microsoft-azure-batch`
+  - 产品/服务：`centos-container-rdma`
+  - 产品/服务：`ubuntu-server-container-rdma`
 
-仅支持在 Azure Batch 池中使用这些映像，适用于 Docker 容器的执行。 这些映像具有以下特性：
+这些映像只能在 Azure Batch 池中使用，适用于 Docker 容器执行。 这些映像具有以下特性：
 
-* 预安装的 Docker 兼容[小鲸鱼](https://github.com/moby/moby)容器运行时
+* 预装了与 Docker 兼容的 [Moby](https://github.com/moby/moby) 容器运行时
 
-* 预安装的 NVIDIA GPU 驱动程序和 NVIDIA 容器运行时，用于简化 Azure N 系列 Vm 上的部署
+* 预装了 NVIDIA GPU 驱动程序和 NVIDIA 容器运行时，可简化 Azure N 系列 VM 上的部署
 
-* 预安装/预配置的映像，它支持后缀为的`-rdma`映像的不支持的 RDMA VM 大小。 当前这些映像不支持 SR-IOV IB/RDMA VM 大小。
+* 预安装/预配置了映像，支持后缀为 `-rdma` 的映像的 Infiniband RDMA VM 大小。 这些映像目前不支持 SR-IOV IB/RDMA VM 大小。
 
 也可以从与 Batch 兼容的 Linux 分发版之一上运行 Docker 的 VM 创建自定义映像。 如果选择提供你自己的自定义 Linux 映像，请参阅[使用托管自定义映像创建虚拟机池](batch-custom-images.md)中的说明。
 
@@ -159,32 +159,40 @@ new_pool = batch.models.PoolAddParameter(
 以下 C# 示例假设要从 [Docker 中心](https://hub.docker.com)预提取一个 TensorFlow 映像。 本示例包含一个在池节点的 VM 主机中运行的启动任务。 可以在主机中运行具有特定目的（例如，装载可以从容器访问的文件服务器）的启动任务。
 
 ```csharp
-
 ImageReference imageReference = new ImageReference(
     publisher: "microsoft-azure-batch",
     offer: "ubuntu-server-container",
     sku: "16-04-lts",
     version: "latest");
 
+ContainerRegistry containerRegistry = new ContainerRegistry(
+    registryServer: "https://hub.docker.com",
+    userName: "UserName",
+    password: "YourPassword"                
+);
+
 // Specify container configuration, prefetching Docker images
-ContainerConfiguration containerConfig = new ContainerConfiguration(
-    containerImageNames: new List<string> { "tensorflow/tensorflow:latest-gpu" } );
+ContainerConfiguration containerConfig = new ContainerConfiguration();
+containerConfig.ContainerImageNames = new List<string> { "tensorflow/tensorflow:latest-gpu" };
+containerConfig.ContainerRegistries = new List<ContainerRegistry> { containerRegistry };
 
 // VM configuration
 VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
     imageReference: imageReference,
-    containerConfiguration: containerConfig,
     nodeAgentSkuId: "batch.node.ubuntu 16.04");
+virtualMachineConfiguration.ContainerConfiguration = containerConfig;
 
 // Set a native host command line start task
-StartTask startTaskNative = new StartTask( CommandLine: "<native-host-command-line>" );
+StartTask startTaskContainer = new StartTask( commandLine: "<native-host-command-line>" );
 
 // Create pool
 CloudPool pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicatedComputeNodes: 4,
     virtualMachineSize: "Standard_NC6",
-    virtualMachineConfiguration: virtualMachineConfiguration, startTaskContainer);
+    virtualMachineConfiguration: virtualMachineConfiguration);
+
+// Start the task in the pool
+pool.StartTask = startTaskContainer;
 ...
 ```
 
@@ -195,22 +203,22 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 ```csharp
 // Specify a container registry
-ContainerRegistry containerRegistry = new ContainerRegistry (
+ContainerRegistry containerRegistry = new ContainerRegistry(
     registryServer: "myContainerRegistry.azurecr.io",
-    username: "myUserName",
+    userName: "myUserName",
     password: "myPassword");
 
 // Create container configuration, prefetching Docker images from the container registry
-ContainerConfiguration containerConfig = new ContainerConfiguration(
-    containerImageNames: new List<string> {
-        "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" },
-    containerRegistries: new List<ContainerRegistry> { containerRegistry } );
+ContainerConfiguration containerConfig = new ContainerConfiguration();
+containerConfig.ContainerImageNames = new List<string> {
+        "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" };
+containerConfig.ContainerRegistries = new List<ContainerRegistry> { containerRegistry } );
 
 // VM configuration
 VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
     imageReference: imageReference,
-    containerConfiguration: containerConfig,
     nodeAgentSkuId: "batch.node.ubuntu 16.04");
+virtualMachineConfiguration.ContainerConfiguration = containerConfig;
 
 // Create pool
 CloudPool pool = batchClient.PoolOperations.CreatePool(
@@ -225,7 +233,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 
 若要在启用了容器的池上运行容器任务，请指定特定于容器的设置。 设置包括要使用的映像、注册表和容器运行选项。
 
-* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意， `--rm`容器选项不需要其他`--runtime`选项，因为它是按批处理进行处理的。
+* 使用任务类中的 `ContainerSettings` 属性来配置特定于容器的设置。 这些设置由 [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) 类定义。 请注意，`--rm` 容器选项由 Batch 处理，因此它不需要其他 `--runtime` 选项。
 
 * 如果在容器映像上运行任务，[云任务](/dotnet/api/microsoft.azure.batch.cloudtask)和[作业管理器任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask)将需要容器设置。 但是，[启动任务](/dotnet/api/microsoft.azure.batch.starttask)、[作业准备任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)和[作业发布任务](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask)都不需要容器设置（即，它们可以在容器上下文中或直接在节点上运行）。
 
@@ -285,7 +293,6 @@ task = batch.models.TaskAddParameter(
 
 ```csharp
 // Simple container task command
-
 string cmdLine = "c:\\app\\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
@@ -295,10 +302,9 @@ TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
 
 CloudTask containerTask = new CloudTask (
     id: "Task1",
-    containerSettings: cmdContainerSettings,
-    commandLine: cmdLine);
+    commandline: cmdLine);
+containerTask.ContainerSettings = cmdContainerSettings;
 ```
-
 
 ## <a name="next-steps"></a>后续步骤
 
