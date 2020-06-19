@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256512"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682704"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
-Microsoft 为云和本地平台提供了全套分析资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此过程的数据科学团队处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
+Microsoft 为云或本地平台提供了整套分析资源。 部署这些服务和资源可让数据科学项目的执行变得有效且可缩放。 [Team Data Science Process](overview.md) (TDSP) 为团队以可跟踪、版本受控和协作的方式实施数据科学项目提供指导。  有关致力于标准化此过程的数据科学团队处理的人员角色及其相关任务的概述，请参阅 [Team Data Science Process 角色和任务](roles-tasks.md)。
 
 使用 TDSP 的数据科学团队可用的分析资源包括：
 
@@ -45,13 +45,13 @@ Microsoft 在 Windows 和 Linux 上提供的数据科学虚拟机包含用于数
 - 适用于 Windows 的 Power BI Desktop
 - Windows/Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-它还包括**ML 和 AI 工具**，如 xgboost、Mxnet 和 Vowpal Wabbit。
+它还包括 ML 和 AI 工具，例如 xgboost、mxnet 和 Vowpal Wabbit。
 
 DSVM 目前可在 **Windows** 和 **Linux CentOS** 操作系统中使用。 根据计划在其上执行的数据科学项目的需求，选择 DSVM 的大小（CPU 核心数和内存量）。 
 
-有关 Windows 版本 DSVM 的详细信息，请参阅 Azure Marketplace 上的[Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) 。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。
+有关 Windows 版 DSVM 的详细信息，请参阅 Azure 市场中的 [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。
 
-若要了解如何有效地在 DSVM 上执行一些常见的数据科学任务，请参阅[数据科学虚拟机上的十大操作](../data-science-virtual-machine/vm-do-ten-things.md)
+若要了解如何在 DSVM 上有效执行某些常见的数据科学任务，请参阅[Data Science Virtual Machine 的十大功能](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark 群集
@@ -60,7 +60,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight **Spark 群集**的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -72,9 +72,9 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azu
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure Data Lake 是一种企业范围的存储库，其中存储在单个位置、在任何正式要求或架构强加之前收集的每种数据类型。 这种灵活性允许将每种数据保留在 Data Lake 中，而不管数据的大小或结构或引入速度如何。 然后，组织可以使用 Hadoop 或高级分析功能在这些 Data Lake 中查找模式。 在策划数据并其转移到数据仓库之前，Data Lake 还可以充当较低成本的数据准备工作的存储库。
+Azure Data Lake 是在施加任何正式要求或架构之前，在单个位置收集的每种数据的企业级存储库。 这种灵活性允许将每种数据保留在 Data Lake 中，而不管数据的大小或结构或引入速度如何。 然后，组织可以使用 Hadoop 或高级分析功能在这些 Data Lake 中查找模式。 在策划数据并其转移到数据仓库之前，Data Lake 还可以充当较低成本的数据准备工作的存储库。
 
-有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 若要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅[Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
+有关 Azure Data Lake 的详细信息，请参阅 [Azure Data Lake 简介](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 要了解如何使用 Azure Data Lake 生成可缩放的端到端数据科学解决方案，请参阅 [Azure Data Lake 中可缩放的数据科学：端到端演练](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Azure HDInsight Hive (Hadoop) 群集
@@ -97,9 +97,9 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R 和 Python 服务
 
-R Services （数据库内）提供了一个平台，用于开发和部署可揭示新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 因为 R Services （数据库内）将 R 语言与 SQL Server 相集成，所以分析与数据接近，这消除了与移动数据相关的成本和安全风险。
+R 服务（数据库内部）提供一个平台用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
 
-R Services （数据库内）支持开放源代码 R 语言，同时提供一套全面的 SQL Server 工具和技术。 它们提供优异的性能、安全性、可靠性和可管理性。 可以使用便捷、熟悉的工具部署 R 解决方案。 生产应用程序可以使用 Transact-SQL 调用 R 运行时以及检索预测数据和视觉对象。 还可以使用 ScaleR 库来改善 R 解决方案的缩放性和性能。 有关详细信息，请参阅 [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
+R 服务（数据库内部）凭借一套综合性的 SQL Server 工具和技术来支持开放源代码 R 语言。 它们提供优异的性能、安全性、可靠性和可管理性。 可以使用便捷、熟悉的工具部署 R 解决方案。 生产应用程序可以使用 Transact-SQL 调用 R 运行时以及检索预测数据和视觉对象。 还可以使用 ScaleR 库来改善 R 解决方案的缩放性和性能。 有关详细信息，请参阅 [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
 
 Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Server 2016 R 服务中生成数据科学解决方案：一篇面向 R 程序员，另一篇面向 SQL 开发人员。 **R 程序员**可参阅[数据科学端到端演练](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 **SQL 开发人员**可参阅[面向 SQL 开发人员的数据库内部高级分析（教程）](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
 
@@ -136,19 +136,19 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 1. 复制整个 SSH 密钥，包括 *ssh-rsa*。 
 1. 登录到 Azure DevOps Services。 
-1. 在页面右上角单击 **<你的名称\> ** ，然后单击 "**安全**"。 
+1. 单击页面右上角的“<你的姓名\>”，再单击“安全性” 。 
     
    ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. 依次单击“SSH 公钥”、“+添加”。******** 
+1. 依次单击“SSH 公钥”、“+添加”。  
 
    ![单击 SSH 公钥，再单击“+ 添加”](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. 将复制的 ssh 密钥粘贴到文本框中，然后保存。
+1. 将复制的 SSH 密钥粘贴到文本框中并保存。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
 
-有关如何使用 Azure 机器学习工作室（经典）执行 Team Data Science Process 中的步骤的示例，请参见[使用 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 学习路径。
+有关演示如何通过使用 Azure 机器学习工作室（经典）在 Team Data Science Process 中执行步骤的示例，请参阅[使用 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 学习路径。

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594956"
+ms.locfileid: "83655260"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 若要阻止平台向各个应用提供有关将来请求的此信息，请将请求提交到以下 URL：
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>系统文件夹
@@ -154,6 +154,11 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 }
 ```
 
+### <a name="post-login-redirect"></a>登录后重定向
+
+如果希望用户登录后返回到特定页面，请在 `post_login_redirect_uri` 查询字符串参数中提供 URL。
+
+
 ## <a name="logout"></a>Logout
 
 `/.auth/logout` 路由将用户从网站注销。 可以添加指向站点导航的链接，以允许用户注销，如以下示例所示。
@@ -170,6 +175,10 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
   "serve": "/.auth/logout"
 }
 ```
+
+### <a name="post-logout-redirect"></a>注销后重定向
+
+如果希望用户注销后返回到特定页面，请在 `post_logout_redirect_uri` 查询字符串参数中提供 URL。
 
 ## <a name="block-an-authorization-provider"></a>阻止授权提供程序
 

@@ -1,18 +1,18 @@
 ---
-title: 裁切平面
+title: 剪切平面
 description: 介绍了什么是裁切平面，以及如何使用裁切平面
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759075"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021358"
 ---
-# <a name="cut-planes"></a>裁切平面
+# <a name="cut-planes"></a>剪切平面
 
 裁切平面是一项视觉功能，它会剪裁虚拟平面一端上的像素，从而呈现[网格](../../concepts/meshes.md)的内部。
 下图演示了该效果。 左侧显示了原始网格，在右侧可以看到网格内部：
@@ -60,11 +60,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 裁切平面组件上公开了以下属性：
 
-* **已启用：** 可以通过禁用此组件来暂时关闭裁切平面。 已禁用的裁切平面不会产生渲染开销，且不会计入全局裁切平面限制。
+* `Enabled`：可以通过禁用此组件来暂时关闭裁切平面。 已禁用的裁切平面不会产生渲染开销，且不会计入全局裁切平面限制。
 
-* **Normal：** 指定要将哪个方向（+X、-X、+Y、-Y、+Z、-Z）用作平面法线。 此方向相对于所有者实体的方向。 请移动和旋转所有者实体以便精确定位。
+* `Normal`：指定要将哪个方向（+X、-X、+Y、-Y、+Z、-Z）用作平面法线。 此方向相对于所有者实体的方向。 请移动和旋转所有者实体以便精确定位。
 
-* **FadeColor** 和 **FadeLength：**
+* `FadeColor` 和 `FadeLength`：
 
   如果 *FadeColor* 的 alpha 值不为零，则靠近裁切平面的像素将会根据 FadeColor 的 RGB 部分淡化。 alpha 通道的强度决定了像素是根据淡化颜色完全淡化，还是仅部分淡化。 *FadeLength* 定义超过什么距离将进行这种淡化。
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f2db6d614c3c12cb1be87724e79d79a16769d6b8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789080"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829590"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Twitter
 
@@ -31,7 +31,7 @@ ms.locfileid: "74789080"
 
    你的凭据授权逻辑应用创建连接并访问你的 Twitter 帐户。
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Twitter 帐户的逻辑应用。 若要使用 Twitter 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Twitter 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -46,16 +46,16 @@ ms.locfileid: "74789080"
    * 对于空白逻辑应用，请在搜索框中输入“twitter”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     \- 或 -
+     -或-
 
    * 对于现有逻辑应用： 
    
-     * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-       \- 或 -
+       -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号（**+**），然后选择 "**添加操作**"。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“twitter”作为筛选器。 
        在操作列表下，选择所需的操作。
@@ -72,7 +72,7 @@ ms.locfileid: "74789080"
 
 （可选）可以包括一个条件来规定合格的推文必须来自至少具有指定数量的关注者的用户。
 
-**企业示例**：可以使用此触发器监视有关你的公司的推文并将推文的内容上传到 SQL 数据库。
+**企业示例**：可使用此触发器监视有关你的公司的推文并将推文的内容上传到 SQL 数据库。
 
 ### <a name="twitter-action-post-a-tweet"></a>Twitter 操作：发布推文
 
@@ -84,7 +84,7 @@ ms.locfileid: "74789080"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

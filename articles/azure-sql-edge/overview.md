@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6e5e54f7bf61d933240403ff952c1aa6e162958f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594576"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712802"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>什么是 Azure SQL Edge（预览版）？
 
@@ -33,7 +33,7 @@ Azure SQL Edge 在 Azure 市场中提供，可以部署为 [Azure IoT Edge](../i
 
 ## <a name="editions-of-sql-edge"></a>SQL Edge 版本
 
-SQL Edge 有三个不同的版本或软件计划。 这些版本具有相同的功能集，仅在使用权限和支持的 CPU/内存量方面存在差异。
+SQL Edge 有两个不同的版本或软件计划。 这些版本具有相同的功能集，仅在使用权限和支持的 CPU/内存量方面存在差异。
 
    |**规划**  |**说明**  |
    |---------|---------|
@@ -42,7 +42,7 @@ SQL Edge 有三个不同的版本或软件计划。 这些版本具有相同的�
 
 ## <a name="pricing-and-availability"></a>定价和可用性
 
-Azure SQL Edge 目前处于预览状态。 有关定价和可用性的详细信息，请参阅 [Azure SQL Edge](https://azure.microsoft.com/services/sql-database-edge/)。
+Azure SQL Edge 目前处于预览状态。 有关定价和可用性的详细信息，请参阅 [Azure SQL Edge](https://azure.microsoft.com/services/sql-edge/)。
 
 > [!IMPORTANT]
 > 若要了解 Azure SQL Edge 与 SQL Server 的功能差异，以及不同 Azure SQL Edge 选项之间的区别，请参阅[Azure SQL Edge 支持的功能](features.md)。

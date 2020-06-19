@@ -1,22 +1,22 @@
 ---
-title: 诊断和排查 Azure Cosmos DB Async Java SDK v2
-description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查异步 Java SDK v2 中的 Azure Cosmos DB 问题。
+title: 诊断 Azure Cosmos DB Async Java SDK v2 并对其进行故障排除
+description: 使用客户端日志记录等功能和其他第三方工具来确定、诊断和排查 Async Java SDK v2 中的 Azure Cosmos DB 问题。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982609"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651891"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 与 SQL API 帐户一起使用时的问题
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Async Java SDK v2 于 SQL API 帐户配合使用时出现的问题
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
@@ -25,12 +25,12 @@ ms.locfileid: "82982609"
 > 
 
 > [!IMPORTANT]
-> 这*不*是最新的 Java SDK for Azure Cosmos DB！ 请考虑将 Azure Cosmos DB Java SDK v4 用于项目。 按照[迁移到 Azure Cosmos DB JAVA SDK v4](migrate-java-v4-sdk.md)指南和[反应器 vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)指南中的说明升级。 
+> 这不是最新的 Azure Cosmos DB Java SDK！ 应将项目升级到 [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md)，然后阅读 Azure Cosmos DB Java SDK v4 [故障排除指南](troubleshoot-java-sdk-v4-sql.md)。 请按照[迁移到 Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) 指南和 [Reactor 与 RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) 指南中的说明进行升级。 
 >
-> 本文介绍仅对 Azure Cosmos DB Async Java SDK v2 进行故障排除。 有关详细信息，请参阅 Azure Cosmos DB Async Java SDK v2[发行说明](sql-api-sdk-async-java.md)、 [Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[性能提示](performance-tips-async-java.md)。
+> 本文仅介绍 Azure Cosmos DB Async Java SDK v2 的故障排除。 有关详细信息，请参阅 Azure Cosmos DB Async Java SDK v2 [发行说明](sql-api-sdk-async-java.md)、[Maven 存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[性能提示](performance-tips-async-java.md)。
 >
 
-本文介绍将[Java ASYNC SDK](sql-api-sdk-async-java.md)与 AZURE COSMOS DB SQL API 帐户一起使用时的常见问题、解决方法、诊断步骤和工具。
+本文介绍了将 [Java 异步 SDK](sql-api-sdk-async-java.md) 与 Azure Cosmos DB SQL API 帐户配合使用时的常见问题、解决方法、诊断步骤和工具。
 Java 异步 SDK 提供客户端逻辑表示用于访问 Azure Cosmos DB SQL API。 本文介绍了在遇到任何问题时可以提供帮助的工具和方法。
 
 从本列表开始：
@@ -62,7 +62,7 @@ ulimit -a
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
-如果在没有公共 IP 地址的 Azure 虚拟机上部署应用，则默认情况下， [AZURE SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)会与 VM 外部的任何终结点建立连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)的限制。
+如果应用部署在没有公共 IP 地址的 Azure 虚拟机上，则默认情况下，[Azure SNAT 端口](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)用于建立与 VM 外部任何终结点的连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)的限制。
 
  仅当 VM 具有专用 IP 地址且来自 VM 的进程尝试连接到公共 IP 地址时，才会使用 Azure SNAT 端口。 有两种解决方法可以避免 Azure SNAT 限制：
 
@@ -71,15 +71,15 @@ ulimit -a
     启用服务终结点后，不再从公共 IP 向 Azure Cosmos DB 发送请求， 而是发送虚拟网络和子网标识。 如果仅允许公共 IP，则此更改可能会导致防火墙丢失。 如果使用防火墙，则在启用服务终结点后，请使用[虚拟网络 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 将子网添加到防火墙。
 * 将公共 IP 分配给 Azure VM。
 
-##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>不能访问服务 - 防火墙
-``ConnectTimeoutException`` 指示 SDK 不能访问服务。
-使用直接模式时，可能会出现如下所示的故障：
+##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>无法访问服务 - 防火墙
+``ConnectTimeoutException`` 指示 SDK 无法访问服务。
+使用直接模式时，可能会出现类似如下的错误：
 ```
 GoneException{error=null, resourceAddress='https://cdb-ms-prod-westus-fd4.documents.azure.com:14940/apps/e41242a5-2d71-5acb-2e00-5e5f744b12de/services/d8aa21a5-340b-21d4-b1a2-4a5333e7ed8a/partitions/ed028254-b613-4c2a-bf3c-14bd5eb64500/replicas/131298754052060051p//', statusCode=410, message=Message: The requested resource is no longer available at the server., getCauseInfo=[class: class io.netty.channel.ConnectTimeoutException, message: connection timed out: cdb-ms-prod-westus-fd4.documents.azure.com/101.13.12.5:14940]
 ```
 
-如果应用计算机上有防火墙运行，请打开 10,000 到 20,000 这一端口范围，该范围由直接模式使用。
-另请按[主机上的连接限制](#connection-limit-on-host)中的说明操作。
+如果应用计算机上有防火墙正在运行，请打开端口范围 10,000 到 20,000，这是直接模式使用的端口范围。
+请遵循[主机上的连接限制](#connection-limit-on-host)。
 
 #### <a name="http-proxy"></a>HTTP 代理
 
@@ -94,7 +94,7 @@ Netty IO 线程仅用于非阻塞性 Netty IO 工作。 SDK 将其中一个 Nett
 
 例如，请查看以下代码片段。 你可能会在 Netty 线程上执行耗时超过几毫秒的持续时间较长的工作。 在这种情况下，你最终会陷入没有 Netty IO 线程来处理 IO 工作的状态。 因此，你会遇到 ReadTimeoutException 故障。
 
-### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 @Test
@@ -149,7 +149,7 @@ public void badCodeWithReadTimeoutException() throws Exception {
 ```
 解决方法是更改用于执行需要耗费一定时间的工作的线程。 为应用定义计划程序的单一实例。
 
-### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 // Have a singleton instance of an executor and a scheduler.
@@ -158,7 +158,7 @@ Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
 ```
 你可能会需要完成需耗费一定时间的工作，例如，计算工作量繁重的工作或阻塞性 IO。 在这种情况下，使用 `.observeOn(customScheduler)` API 将线程切换为 `customScheduler` 提供的辅助角色。
 
-### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK V2 （Maven：： azure-cosmosdb）
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
 
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
@@ -189,17 +189,17 @@ Azure Cosmos DB 仿真器 HTTPS 证书是自签名证书。 若要将 SDK 与仿
 Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()Lrx/Single;
 ```
 
-上述异常表明在旧版 RxJava 库（例如 1.2.2）上有依赖项。 我们的 SDK 依赖于 RxJava 1.3.8，该版本的 API 在更早版的 RxJava 中不可用。 
+上述异常表明你依赖于旧版本的 RxJava 库（例如 1.2.2）。 我们的 SDK 依赖于 RxJava 1.3.8，它具有早期版本的 RxJava 中没有的 API。 
 
-此类问题的解决方法是确定哪些其他依赖关系在 RxJava-1.2.2 中提供，并在 RxJava 1.2.2 上排除传递依赖关系，并允许 CosmosDB SDK 引入较新版本。
+此类问题的解决方法是，确定其他哪些依赖项会引入 RxJava-1.2.2，并排除对 RxJava-1.2.2 的传递依赖关系，让 CosmosDB SDK 能够引入较新版本。
 
-若要确定 RxJava-1.2.2 中引入了哪个库，请在项目 pom.xml 文件旁白运行以下命令：
+若要确定引入 RxJava-1.2.2 的库，请在项目 pom.xml 文件旁边运行以下命令：
 ```bash
 mvn dependency:tree
 ```
 有关详细信息，请参阅 [maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
-确定 RxJava-1.2.2 是项目的哪个其他依赖项的传递依赖项以后，即可在 pom 文件中修改该库的依赖项，排除 RxJava 传递依赖项：
+确定 RxJava-1.2.2 是项目中其他哪个依赖项的传递依赖项，即可在 pom 文件中修改该库的依赖项，并排除它带来的 RxJava 传递依赖关系：
 
 ```xml
 <dependency>
@@ -215,7 +215,7 @@ mvn dependency:tree
 </dependency>
 ```
 
-有关详细信息，请参阅[排除传递依赖项指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
+有关详细信息，请参阅[排除传递依赖关系指南](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html)。
 
 
 ## <a name="enable-client-sdk-logging"></a><a name="enable-client-sice-logging"></a>启用客户端 SDK 日志记录

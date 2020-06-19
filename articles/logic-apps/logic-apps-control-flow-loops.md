@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270571"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831613"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
 若要在逻辑应用中处理数组，可以创建[“Foreach”循环](#foreach-loop)。 此循环会对数组中的每一项重复一个或多个操作。 有关“Foreach”循环可处理数组项数的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
 
-若要重复操作直到满足条件或状态发生变化，可以创建[“Until”循环](#until-loop)。 逻辑应用先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行中“Until”循环数的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
+若要重复操作直到满足条件或状态发生变化，可以创建[“Until”循环](#until-loop)。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行中“Until”循环数的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
 
 > [!TIP]
-> 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”  该数组。 
+> 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,32 +50,32 @@ ms.locfileid: "79270571"
 2. 在 RSS 触发器与“发送电子邮件”操作之间，添加一个 Foreach 循环。 
 
    1. 若要在步骤之间添加循环，请将鼠标指针移到这些步骤之间的箭头上。 
-   选择出现的加号 (+)，然后选择“添加操作”    。
+   选择出现的加号 (+)，然后选择“添加操作”  。
 
-      ![选择“添加操作”](media/logic-apps-control-flow-loops/add-for-each-loop.png)
+      ![选择“添加操作”。](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. 在搜索框下，选择“所有”  。 在搜索框中键入“for each”作为筛选器。 在操作列表中选择此操作：“For each - 控制” 
+   1. 在搜索框下，选择“所有”。 在搜索框中键入“for each”作为筛选器。 在操作列表中选择此操作：“For each - 控制”
 
       ![添加“For each”循环](media/logic-apps-control-flow-loops/select-for-each.png)
 
-3. 现在，构建循环。 在“添加动态内容”列表出现后，在“选择来自之前步骤的输出”下，选择“源链接”数组，这是来自 RSS 触发器的输出。    
+3. 现在，构建循环。 在“添加动态内容”列表出现后，在“选择来自之前步骤的输出”下，选择“源链接”数组，这是来自 RSS 触发器的输出。   
 
    ![从动态内容列表进行选择](media/logic-apps-control-flow-loops/for-each-loop-dynamic-content-list.png)
 
    > [!NOTE] 
-   > 只能选择来自之前步骤的数组输出。 
+   > 只能选择来自之前步骤的数组输出。
 
    所选数组现在显示在此处：
 
    ![选择数组](media/logic-apps-control-flow-loops/for-each-loop-select-array.png)
 
-4. 若要对每个数组项执行操作，请将“发送电子邮件”操作拖到循环中  。 
+4. 若要对每个数组项执行操作，请将“发送电子邮件”操作拖到循环中。 
 
    你的逻辑应用可能看起来如以下示例所示：
 
    ![向 Foreach 循环添加步骤](media/logic-apps-control-flow-loops/for-each-loop-with-step.png)
 
-5. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”  。
+5. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
 
 <a name="for-each-json"></a>
 
@@ -120,13 +120,13 @@ ms.locfileid: "79270571"
 
 ## <a name="foreach-loop-sequential"></a>“Foreach”循环：顺序
 
-默认情况下，“Foreach”循环中的周期并行运行。 若要按顺序运行每个周期，请设置循环的“顺序”选项  。 如果期望得出可预测结果的循环中具有嵌套循环或变量时，“Foreach”循环必须按顺序运行。 
+默认情况下，“Foreach”循环中的周期并行运行。 若要按顺序运行每个周期，请设置循环的“顺序”选项。 如果期望得出可预测结果的循环中具有嵌套循环或变量时，“Foreach”循环必须按顺序运行。 
 
-1. 在循环的右上角，选择**省略号** ( **...** ) >“设置”。 
+1. 在循环的右上角，选择**省略号** ( **...** ) >“设置”。
 
    ![在 Foreach 循环中，选择“...”>“设置”](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
-1. 在“并发控制”下，将“并发控制”设置转为“开启”    。 将“并行度”滑块移至“1”，然后选择“完成”    。
+1. 在“并发控制”下，将“并发控制”设置转为“开启”  。 将“并行度”滑块移至“1”，然后选择“完成”  。
 
    ![启用并发控制](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "79270571"
 
 ## <a name="until-loop"></a>Until 循环
   
-若要运行并重复操作直到满足条件或状态发生变化，请将这些操作放在“Until”循环中。 你的逻辑应用将首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。
+若要运行并重复操作直到满足条件或状态发生变化，请将这些操作放在“Until”循环中。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。
 
 下面是可以在其中使用“Until”循环的一些常见场景：
 
@@ -164,24 +164,24 @@ ms.locfileid: "79270571"
 > 这些步骤使用 Office 365 Outlook，但也可以使用逻辑应用支持的任何电子邮件提供商。 
 > [检查此处的连接器列表](https://docs.microsoft.com/connectors/)。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 外观可能稍有不同。 
 
-1. 创建空白逻辑应用。 在逻辑应用设计器的搜索框下，选择“全部”  。 搜索“定期”。 
-   从触发器列表中选择此触发器：**定期 - 计划**
+1. 创建空白逻辑应用。 在逻辑应用设计器的搜索框下，选择“全部”。 搜索“定期”。 
+   从触发器列表中选择此触发器：“定期 - 计划”
 
    ![添加“定期 - 计划”触发器](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
-1. 通过设置时间间隔、频率和天中的小时来指定触发器何时触发。 若要设置小时，请选择“显示高级选项”  。
+1. 通过设置时间间隔、频率和天中的小时来指定触发器何时触发。 若要设置小时，请选择“显示高级选项”。
 
    ![设置定期计划](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
-   | 属性 | Value |
+   | properties | 值 |
    | -------- | ----- |
-   | **时间间隔** | 1 | 
+   | 间隔 | 1 | 
    | **频率** | 日期 |
    | **在这些小时** | 8 |
    ||| 
 
-1. 在触发器下，选择“新建步骤”。  
-   搜索“变量”，然后选择以下操作：“初始化变量 - 变量” 
+1. 在触发器下，选择“新建步骤”。 
+   搜索“变量”，然后选择以下操作：“初始化变量 - 变量”
 
    ![添加“初始化变量 - 变量”操作](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -189,16 +189,16 @@ ms.locfileid: "79270571"
 
    ![设置变量属性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | 属性 | Value | 说明 |
+   | properties | 值 | 说明 |
    | -------- | ----- | ----------- |
    | **名称** | 限制 | 变量的名称 | 
-   | **类型** | Integer | 变量的数据类型 | 
+   | 类型 | Integer | 变量的数据类型 | 
    | **值** | 0 | 变量的起始值 | 
    |||| 
 
-1. 在“初始化变量”操作下，选择“新建步骤”   。 
+1. 在“初始化变量”操作下，选择“新建步骤” 。 
 
-1. 在搜索框下，选择“所有”  。 搜索“until”，然后选择以下操作：“Until - 控制” 
+1. 在搜索框下，选择“所有”。 搜索“until”，然后选择以下操作：“Until - 控制”
 
    ![添加“Until”循环](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
@@ -207,19 +207,19 @@ ms.locfileid: "79270571"
 
    ![构建用于停止循环的退出条件](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
-1. 在循环中，选择“添加操作”  。 
+1. 在循环中，选择“添加操作”。 
 
-1. 在搜索框下，选择“所有”  。 搜索“变量”，然后选择以下操作：“递增变量 - 变量” 
+1. 在搜索框下，选择“所有”。 搜索“变量”，然后选择以下操作：“递增变量 - 变量”
 
    ![添加用于递增变量的操作](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
-1. 对于“名称”  ，选择 **Limit** 变量。 对于“值”  ，输入“1”。 
+1. 对于“名称”，选择 **Limit** 变量。 对于“值”，输入“1”。 
 
      ![按增幅 1 递增“Limit”](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-1. 在循环外部和循环下，选择“新建步骤”  。 
+1. 在循环外部和循环下，选择“新建步骤”。 
 
-1. 在搜索框下，选择“所有”  。 
+1. 在搜索框下，选择“所有”。 
      查找并添加发送电子邮件的操作，例如： 
 
      ![添加用于发送电子邮件的操作](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
@@ -230,14 +230,14 @@ ms.locfileid: "79270571"
 
       ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | 属性 | Value | 说明 |
+      | properties | 值 | 说明 |
       | -------- | ----- | ----------- | 
-      | **To** | *\<电子邮件地址\@域>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+      | **收件人** | *\<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
       | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
-      | **大量** | <*电子邮件-内容*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
+      | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
       |||| 
 
-1. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”****。
+1. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
 
       在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：
 
@@ -253,7 +253,7 @@ Until 循环具有默认限制，用于在发生下列任一条件时停止执�
 | **超时** | PT1H | 在循环退出之前运行循环的最大时间量。 默认值为一小时，并且是以 ISO 8601 格式指定的。 <p>将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 | 
 |||| 
 
-若要更改这些默认限制，请在循环操作形状中选择“显示高级选项”。****
+若要更改这些默认限制，请在循环操作形状中选择“显示高级选项”。
 
 <a name="until-json"></a>
 
@@ -335,7 +335,7 @@ Until 循环具有默认限制，用于在发生下列任一条件时停止执�
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

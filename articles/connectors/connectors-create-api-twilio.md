@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: e5b218efd9c8cfaad99d76d8118d181390a977c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bb7be1815364b3def9b22e50454dceabd17e6150
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789097"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829641"
 ---
 # <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Twilio 中的消息
 
@@ -27,13 +27,13 @@ ms.locfileid: "74789097"
   * 你的 Twilio 帐户 ID 和[身份验证令牌](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them)，这可以在 Twilio 仪表板上找到
 
     你的凭据授权逻辑应用创建连接并访问你的 Twilio 帐户。 
-    如果使用的是 Twilio 试用帐户，则只能向“已验证”** 的手机号码发送短信。
+    如果使用的是 Twilio 试用帐户，则只能向“已验证”的手机号码发送短信。
 
   * 已验证可以发送短信的 Twilio 手机号码
 
   * 已验证可以接收短信的 Twilio 手机号码
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Twilio 帐户的逻辑应用。 若要使用 Twilio 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -45,17 +45,17 @@ ms.locfileid: "74789097"
 
 1. 选择一个路径： 
 
-     * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-       \- 或 -
+       -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号（**+**），然后选择 "**添加操作**"。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“twilio”作为筛选器。 
        在操作列表下，选择所需的操作。
 
-1. 提供连接所需的详细信息，然后选择 "**创建**"：
+1. 为你的连接提供必要的详细信息，然后选择“创建”：
 
    * 要为你的连接使用的名称
    * 你的 Twilio 帐户 ID 
@@ -69,7 +69,7 @@ ms.locfileid: "74789097"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

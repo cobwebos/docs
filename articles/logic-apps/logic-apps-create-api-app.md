@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005255"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834486"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
-虽然 Azure 逻辑应用提供可用于逻辑应用工作流的[数百个内置连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
+虽然 Azure 逻辑应用提供可用于逻辑应用工作流的[数百个连接器](../connectors/apis-list.md)，但建议调用不作为连接器提供的 API、系统和服务。 可以创建自己的 API，提供在逻辑应用中使用的操作和触发器。 下面是一些其他理由，解释为何建议创建可从逻辑应用工作流调用的自定义 API：
 
 * 扩展当前系统集成和数据集成工作流。
 * 帮助客户使用服务来管理专业或个人任务。
@@ -23,14 +23,14 @@ ms.locfileid: "83005255"
 
 连接器本质上是 Web API，此类 API 将 REST 用于可插入接口、将 [Swagger 元数据格式](https://swagger.io/specification/)用于文档、将 JSON 用作其数据交换格式。 因为连接器是通过 HTTP 终结点进行通信的 REST API，所以可以使用任何语言生成连接器，如 .NET、Java、Python 或 Node.js。 此外，还可在 [Azure 应用服务](../app-service/overview.md)上托管API，前者是一款平台即服务 (PaaS) 产品，可为 API 托管提供一种最简单且可缩放性最高的最佳方法。 
 
-对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)**。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)**，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
+对于要用于逻辑应用的自定义 API，API 可以提供在逻辑应用工作流中执行特定任务的[操作](./logic-apps-overview.md#logic-app-concepts)。 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用工作流。 本主题介绍根据想要 API 提供的行为，在 API 中生成操作和触发器可以遵循的常见模式。
 
 可在 [Azure App Service](../app-service/overview.md) 上托管API，它是一款平台即服务 (PaaS) 产品，可提供简单的高缩放性 API 托管。
 
 > [!TIP] 
 > 虽然可以将 API 部署为 Web 应用，但请考虑将 API 部署为 API 应用，这样可以更轻松地在云和本地生成、托管和使用 API。 不必更改 API 中的任何代码 - 可直接将代码部署到 API 应用。 例如，了解如何生成使用以下语言创建的 API 应用： 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
+> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
 > * [Java](../app-service/app-service-web-get-started-java.md)
 > * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
@@ -49,7 +49,7 @@ ms.locfileid: "83005255"
 * 在逻辑应用设计器中，显示在 Microsoft 托管连接器旁边（含图标）。
 * 仅适用于满足以下条件的连接器创建者和逻辑应用用户：在部署逻辑应用的区域中具有相同的 Azure Active Directory 租户和 Azure 订阅。
 
-还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Power Automate 和 Microsoft Power Apps 中的用户使用。
+还可指定注册的连接器进行 Microsoft 认证。 此过程验证注册的连接器是否满足公共使用的条件，并使这些连接器可供 Power Automate 和 Microsoft PowerApps 中的用户使用。
 
 有关自定义连接器的详细信息，请参阅 
 
@@ -66,7 +66,7 @@ ms.locfileid: "83005255"
 
 ## <a name="action-patterns"></a>操作模式
 
-对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-overview.md#logic-app-concepts)**。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
+对于执行任务的逻辑应用，自定义 API 应提供[操作](./logic-apps-overview.md#logic-app-concepts)。 API 中的每个操作 (operation) 将映射到操作 (action)。 基本操作是接受 HTTP 请求并返回 HTTP 响应的控制器。 例如，逻辑应用将 HTTP 请求发送到 Web 应用或 API 应用。 然后应用返回 HTTP 响应及逻辑应用可处理的内容。
 
 对于标准操作，可在 API 中编写 HTTP 请求方法，并在 Swagger 文件中描述该方法。 然后，可以使用 [HTTP 操作](../connectors/connectors-native-http.md)或 [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) 操作直接调用 API。 默认情况下，必须在[请求超时限制](./logic-apps-limits-and-config.md)内返回响应。 
 
@@ -100,9 +100,9 @@ ms.locfileid: "83005255"
    
    `202 ACCEPTED` 响应应包含这些标头：
    
-   * 必需**：用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径的 `location` 标头
+   * 必需：`location` 标头，用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径
 
-   * 可选**：用于指定引擎检查 `location` URL 获知作业状态之前应等待秒数的 `retry-after` 标头。 
+   * *可选*：`retry-after` 标头，用于指定引擎检查 `location` URL 获知作业状态之前应等待的秒数。 
 
      默认情况下，引擎每隔 20 秒检查一次。 若要指定不同的时间间隔，请包括 `retry-after` 标头和下次轮询前的秒数。
 
@@ -130,31 +130,31 @@ ms.locfileid: "83005255"
 
 对于此模式，在控制器上设置两个终结点：`subscribe` 和 `unsubscribe`
 
-*  `subscribe` 终结点：当执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
+*  `subscribe` 终结点：在执行到达工作流中的 API 操作时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤导致逻辑应用创建 API 将存储的回叫 URL，然后等待工作完成时 API 的回叫。 API 通过 HTTP POST 回叫 URL，并将任何返回的内容和标头作为输入传递到逻辑应用。
 
-* `unsubscribe` 终结点： 如果逻辑应用运行已取消，逻辑应用引擎将调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
+* `unsubscribe` 终结点：如果已取消逻辑应用运行，逻辑应用引擎调用 `unsubscribe` 终结点。 然后 API 可以取消注册回叫 URL，并根据需要停止任何进程。
 
 ![Webhook 操作模式](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook **** 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 操作](../connectors/connectors-native-webhook.md)并指定 URL、标头以及请求正文。 另请参阅[工作流操作和触发器](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action)。 有关 Webhook 模式的示例，查看 [GitHub 中的 Webhook 触发器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
 下面是一些其他提示和说明：
 
 * 若要传入回叫 URL，可以根据需要使用以前任何字段中的 `@listCallbackUrl()` 工作流函数。
 
-* 如果同时拥有逻辑应用和订阅服务，则在调用回调 URL 之后，无需`unsubscribe`调用终结点。 否则，逻辑应用运行时需要调用`unsubscribe`终结点，以指示不需要更多调用，也不允许服务器端的资源清理。
+* 如果同时拥有逻辑应用和订阅的服务，则在调用回调 URL 之后，无需调用 `unsubscribe` 终结点。 否则，逻辑应用运行时需要调用 `unsubscribe` 终结点以表示不需要更多调用，并且允许在服务器端进行资源清理。
 
 <a name="triggers"></a>
 
 ## <a name="trigger-patterns"></a>触发器模式
 
-自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用**。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)** 或 [Webhook 触发器](#webhook-triggers)** 模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
+自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)或 [Webhook 触发器](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 
 ### <a name="check-for-new-data-or-events-regularly-with-the-polling-trigger-pattern"></a>使用轮询触发器模式定期检查新数据或事件
 
-轮询触发器** 的行为非常类似于本主题中前面所述的[轮询操作](#async-pattern)。 逻辑应用引擎定期调用并检查触发器终结点，查看新数据或事件。 如果引擎发现满足指定条件的新数据或事件，触发器即触发。 然后，引擎创建将数据处理为输入的逻辑应用实例。 
+轮询触发器的行为非常类似于本主题中前面所述的[轮询操作](#async-pattern)。 逻辑应用引擎定期调用并检查触发器终结点，查看新数据或事件。 如果引擎发现满足指定条件的新数据或事件，触发器即触发。 然后，引擎创建将数据处理为输入的逻辑应用实例。 
 
 ![轮询触发器模式](./media/logic-apps-create-api-app/custom-api-polling-trigger-pattern.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "83005255"
 
 ### <a name="wait-and-listen-for-new-data-or-events-with-the-webhook-trigger-pattern"></a>使用 Webhook 触发器模式等待和侦听新数据或事件
 
-Webhook 触发器是推送触发器**，等待并侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器即触发，并创建逻辑应用实例，然后将数据处理为输入。
+Webhook 触发器是推送触发器，等待并侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器即触发，并创建逻辑应用实例，然后将数据处理为输入。
 Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook 操作](#webhook-actions)，并设置有 `subscribe` 和 `unsubscribe` 终结点。 
 
 * `subscribe` 终结点：在逻辑应用中添加和保存 Webhook 触发器时，逻辑应用引擎调用 `subscribe` 终结点。 此步骤将导致逻辑应用创建 API 将存储的回叫 URL。 存在满足指定条件的新数据或事件时， API 通过 HTTP POST 回叫 URL。 内容有效负载和标头作为输入传递到逻辑应用。
@@ -200,7 +200,7 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 ![Webhook 触发器模式](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)**** 并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
+目前，逻辑应用设计器不支持通过 Swagger 发现 Webhook 终结点。 因此对于此模式，需要添加 [Webhook 触发器](../connectors/connectors-native-webhook.md)并指定 URL、 标头以及请求正文。 另请参阅 [HTTPWebhook 触发器](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger)。 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
 下面是一些其他提示和说明：
 
@@ -208,11 +208,11 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 * 若要防止多次处理相同数据，触发器应清理已读取且传递到逻辑应用的数据。
 
-* 如果同时拥有逻辑应用和订阅服务，则在调用回调 URL 之后，无需`unsubscribe`调用终结点。 否则，逻辑应用运行时需要调用`unsubscribe`终结点，以指示不需要更多调用，也不允许服务器端的资源清理。
+* 如果同时拥有逻辑应用和订阅的服务，则在调用回调 URL 之后，无需调用 `unsubscribe` 终结点。 否则，逻辑应用运行时需要调用 `unsubscribe` 终结点以表示不需要更多调用，并且允许在服务器端进行资源清理。
 
-## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用对 Api 的调用的安全性
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用对 API 进行调用的安全性
 
-创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何提高从逻辑应用对自定义 api 的调用的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
+创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何提高从逻辑应用对自定义 API 进行调用的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和调用 API
 
@@ -222,13 +222,13 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 
 要使自定义 API 可供 Azure 中其他逻辑应用用户使用，必须添加安全性并将这些 API 注册为逻辑应用连接器。 有关详细信息，请参阅[自定义连接器概述](../logic-apps/custom-connector-overview.md)。 
 
-要使自定义 API 可供逻辑应用、Power Automate 和 Microsoft Power Apps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名你的连接器。 
+要使自定义 API 可供逻辑应用、Power Automate 和 Microsoft PowerApps 中所有用户使用，必须添加安全性、将 API 注册为逻辑应用连接器并向 [Microsoft Azure 认证计划](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/)提名连接器。 
 
 ## <a name="get-support"></a>获取支持
 
-* 有关自定义 Api 的特定帮助， [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)请联系。
+* 有关使用自定义 API 的特定帮助，请联系[customapishelp@microsoft.com](mailto:customapishelp@microsoft.com)。
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 
 * 为帮助改进逻辑应用，敬请在[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)上投票或发表看法。 
 

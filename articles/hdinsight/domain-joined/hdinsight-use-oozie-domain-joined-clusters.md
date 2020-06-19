@@ -1,21 +1,21 @@
 ---
-title: Apache Oozie 工作流 & 企业安全性-Azure HDInsight
+title: Apache Oozie 工作流和企业安全性 - Azure HDInsight
 description: 使用 Azure HDInsight 企业安全性套餐保护 Apache Oozie 工作流。 了解如何定义 Oozie 工作流，并提交 Oozie 作业。
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
-ms.date: 12/09/2019
-ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194897"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647574"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
+# <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 Azure HDInsight 群集中运行 Apache Oozie
 
 Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 Oozie 与 Hadoop 堆栈集成，并支持以下作业：
 
@@ -31,7 +31,7 @@ Apache Oozie 是一个管理 Apache Hadoop 作业的工作流和协调系统。 
 具有企业安全性套餐 (ESP) 的 Azure HDInsight Hadoop 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](./apache-domain-joined-configure-using-azure-adds.md)。
 
 > [!NOTE]  
-> 有关如何在非 ESP 群集上使用 Oozie 的详细说明，请参阅[在基于 Linux 的 Azure HDInsight 中使用 Apache Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
+> 有关在非 ESP 群集中使用 Oozie 的详细说明，请参阅[在基于 Linux 的 Azure HDInsight 中使用 Apache Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="connect-to-an-esp-cluster"></a>连接到 ESP 群集
 
@@ -69,7 +69,7 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
    将 `DomainUser` 替换为域用户名。
    将 `DomainUserPath` 替换为域用户的主目录路径。
-   将`ClusterVersion`替换为群集数据平台版本。
+   将 `ClusterVersion` 替换为群集数据平台版本。
 
 2. 使用以下语句创建并编辑新文件：
 
@@ -178,17 +178,17 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
 4. 将 `clustername` 替换为群集的名称。
 
-5. 若要保存文件，请选择 " **Ctrl + X**"。 输入**Y**。然后选择**Enter**。
+5. 若要保存该文件，请选择“Ctrl+X”。 输入“Y”。然后选择 Enter。
 
     工作流分为两部分：
 
-   - **Credential.** 此部分接收用于验证 Oozie 操作的凭据：
+   - CREDENTIAL。 此部分接收用于验证 Oozie 操作的凭据：
 
      此示例对 Hive 操作进行身份验证。 若要了解详细信息，请参阅[操作身份验证](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)。
 
      凭据服务允许 Oozie 操作模拟用户访问 Hadoop 服务。
 
-   - **采取.** 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
+   - 操作。 此部分包含三个操作：map-reduce、Hive server 2 和 Hive server 1：
 
      - map-reduce 操作针对输出聚合字数统计的映射化简运行来自 Oozie 包的示例。
 
@@ -230,9 +230,9 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，请将其更改`wasb://home`为。 如果使用 Azure Data Lake Storage Gen2，则将其更改为`abfs://home`。
+   - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，则更改为 `wasb://home`。 如果使用的是 Azure Data Lake Storage Gen2，则更改为 `abfs://home`。
    - 将 `domainuser` 替换为你的域用户名。  
-   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net，`clustershortname` 为群集的前 6 个字符：sechad******。  
+   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net，`clustershortname` 为群集的前 6 个字符：sechad。  
    - 将 `jdbcurlvalue` 替换为 Hive 配置中的 JDBC URL。 例如，jdbc:hive2://headnodehost:10001/;transportMode=http。
    - 若要保存文件，请按 Ctrl+X，输入 `Y`，再按 **Enter**。
 
@@ -347,5 +347,5 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [将 Apache Oozie 与 Apache Hadoop 结合使用，在基于 Linux 的 Azure HDInsight 上定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
-- [使用 SSH 连接到 HDInsight （Apache Hadoop）](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。
+- [在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
+- [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。

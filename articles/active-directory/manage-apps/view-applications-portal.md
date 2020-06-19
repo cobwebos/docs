@@ -3,8 +3,8 @@ title: 快速入门 - 使用 Azure Active Directory 查看租户应用程序
 description: 本快速入门使用 Azure 门户查看 Azure Active Directory (Azure AD) 租户中的应用程序。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d40e968bb7079d50e3fa18889ae996c9b59c90f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ce3a1a55683b0882984a4986cf59853933954274
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74421814"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763000"
 ---
 # <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>快速入门：查看 Azure Active Directory 租户应用程序
 

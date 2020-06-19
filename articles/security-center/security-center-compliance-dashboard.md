@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77604456"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782851"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 ---
@@ -103,4 +103,4 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 -   [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解如何使用 Azure 安全中心的建议来保护 Azure 资源。
 
--   [提高 Azure 安全中心的安全分数](security-center-secure-score.md) - 了解如何确定漏洞和安全建议的优先级，以便最大程度地改善安全状况。
+-   [提高 Azure 安全中心的安全分数](secure-score-security-controls.md) - 了解如何确定漏洞和安全建议的优先级，以便最大程度地改善安全状况。

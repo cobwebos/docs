@@ -1,6 +1,6 @@
 ---
 title: 在 Azure VM 中禁用来宾 OS 防火墙 | Microsoft Docs
-description: 了解解决方法的解决方法，即来宾操作系统防火墙正在筛选部分或全部到 VM 的流量。
+description: 了解排查来宾操作系统防火墙会筛选流向 VM 的部分或全部流量这类情况时使用的解决方法。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422369"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774342"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>在 Azure VM 中禁用来宾 OS 防火墙
 
@@ -27,7 +27,7 @@ ms.locfileid: "80422369"
 
 ## <a name="solution"></a>解决方案
 
-本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 Microsoft 最佳做法是启用 Windows 防火墙组件。 配置防火墙规则的方式取决于对所需 VM 的访问级别。
+本文所述的过程（即，如何正确设置防火墙规则）旨在作为一种解决方法，让你能够集中精力解决实际问题。 它是一种启用 Windows 防火墙组件的 Microsoft 最佳做法。 如何配置防火墙规则取决于对所需 VM 的访问级别。
 
 ### <a name="online-solutions"></a>联机解决方案 
 
@@ -49,7 +49,7 @@ ms.locfileid: "80422369"
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
 >   但是，只要再次应用该策略，就会被踢出远程会话。 此问题的永久性解决方法是修改此计算机上应用的策略。
@@ -70,7 +70,7 @@ ms.locfileid: "80422369"
     ```
 
 > [!Note]
-> 如果通过组策略对象设置防火墙，则此方法可能不起作用，因为此命令仅更改本地注册表项。 如果应用策略，它将覆盖此更改。 
+> 如果防火墙是通过组策略对象设置的，此方法可能无效，因为此命令仅更改本地注册表项。 如果应用策略，它将覆盖此更改。 
 
 #### <a name="mitigation-3-pstools-commands"></a>缓解措施 3：PSTools 命令
 
@@ -86,13 +86,13 @@ ms.locfileid: "80422369"
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>缓解措施 4：远程注册表 
+#### <a name="mitigation-4-remote-registry"></a>缓解操作 4：远程注册表 
 
 按以下步骤来使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，启动注册表编辑器，然后中转到 "**文件** > " "**连接网络注册表**"。
+1.  在故障排除 VM 上，启动注册表编辑器，然后转到“文件” > “连接网络注册表” 。
 
-2.  打开 TARGET MACHINE** \SYSTEM 分支，指定以下值：
+2.  打开 TARGET MACHINE\SYSTEM 分支，然后指定以下值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,15 +100,15 @@ ms.locfileid: "80422369"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重启服务。 由于不能通过使用远程注册表来执行此操作，因此必须使用远程服务控制台。
+3.  重启服务。 由于无法使用远程注册表执行此操作，因此必须使用远程服务控制台。
 
-4.  打开 **Services.msc** 的实例。
+4.  打开 Services.msc 的实例。
 
-5.  单击“服务(本地)”****。
+5.  单击“服务(本地)”。
 
-6.  选择“连接到另一台计算机”。****
+6.  选择“连接到另一台计算机”。
 
-7.  输入问题 VM 的**专用 IP 地址 (DIP)**。
+7.  输入问题 VM 的专用 IP 地址 (DIP)。
 
 8.  重启本地防火墙策略。
 
@@ -116,7 +116,7 @@ ms.locfileid: "80422369"
 
 ### <a name="offline-solutions"></a>脱机解决方案 
 
-如果遇到无法通过任何方法访问该 VM 的情况，则自定义脚本扩展将失败，你必须直接通过系统磁盘在脱机模式下工作。 要完成该操作，请执行以下步骤：
+如果遇到无法通过任何方法访问该 VM 的情况，则自定义脚本扩展将失败，你必须直接通过系统磁盘在脱机模式下工作。 为此，请执行以下步骤：
 
 1.  [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。
 

@@ -1,36 +1,36 @@
 ---
 title: Azure 蓝图函数
 description: 介绍可用于 Azure 蓝图定义和分配中的蓝图项目的函数。
-ms.date: 12/09/2019
+ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280672"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834775"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>与 Azure 蓝图一起使用的函数
 
-Azure 蓝图提供使蓝图定义更动态的函数。 这些函数可用于蓝图定义和蓝图项目。 资源管理器模板项目除了通过蓝图参数获取动态值外，还支持资源管理器函数的全部使用。
+Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于蓝图定义和蓝图项目。 除了通过蓝图参数获取动态值之外，资源管理器模板项目还支持充分利用资源管理器功能。
 
 支持以下函数：
 
-- [诸如](#artifacts)
+- [项目](#artifacts)
 - [concat](#concat)
-- [parameters](#parameters)
+- [参数](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
-- [订阅](#subscription)
+- [subscription](#subscription)
 
 ## <a name="artifacts"></a>项目
 
 `artifacts(artifactName)`
 
-返回使用该蓝图项目输出填充的属性的对象。
+返回由蓝图项目输出填充的属性对象。
 
 > [!NOTE]
-> 不`artifacts()`能从资源管理器模板内使用该函数。 此函数只能在蓝图定义 JSON 中或项目 JSON 中使用，当使用 Azure PowerShell 或 REST API 作为[蓝图作为代码](https://github.com/Azure/azure-blueprints/blob/master/README.md)的一部分来管理蓝图时。
+> 无法从资源管理器模板内部使用 `artifacts()` 函数。 当使用 Azure PowerShell 或 REST API 作为 [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分来管理蓝图时，此函数只能在蓝图定义 JSON 或项目 JSON 中使用。
 
 ### <a name="parameters"></a>参数
 
@@ -40,7 +40,7 @@ Azure 蓝图提供使蓝图定义更动态的函数。 这些函数可用于蓝�
 
 ### <a name="return-value"></a>返回值
 
-输出属性的对象。 **输出**属性取决于所引用的蓝图项目的类型。 所有类型都遵循以下格式：
+输出属性的对象。 “输出”属性依赖于所引用的蓝图项目的类型。 所有类型都遵循以下格式：
 
 ```json
 {
@@ -62,7 +62,7 @@ Azure 蓝图提供使蓝图定义更动态的函数。 这些函数可用于蓝�
 
 #### <a name="resource-manager-template-artifact"></a>资源管理器模板项目
 
-返回对象的**输出**属性在资源管理器模板中定义，并由部署返回。
+返回对象的“输出”属性在资源管理器模板中定义，并由部署返回。
 
 #### <a name="role-assignment-artifact"></a>角色分配项目
 
@@ -78,7 +78,7 @@ Azure 蓝图提供使蓝图定义更动态的函数。 这些函数可用于蓝�
 
 ### <a name="example"></a>示例
 
-ID 为_myTemplateArtifact_的资源管理器模板项目，其中包含以下示例输出属性：
+ID 为“myTemplateArtifact”的资源管理器模板项目，包含以下示例输出属性：
 
 ```json
 {
@@ -104,15 +104,15 @@ ID 为_myTemplateArtifact_的资源管理器模板项目，其中包含以下示
 }
 ```
 
-从_myTemplateArtifact_示例中检索数据的一些示例如下：
+从“myTemplateArtifact”示例检索数据的一些示例如下：
 
 | 表达式 | 类型 | 值 |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | 数组 | \["first"、"second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | 字符串 | 1 |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | 字符串 | "我的字符串值" |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | 对象 | {"t.myproperty"： "my value"，"anotherProperty"： true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | 字符串 | "我的值" |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | 字符串 | "first" |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | 字符串 | "my string value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | 对象 | { "myproperty": "my value", "anotherProperty": true } |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | 字符串 | "my value" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
@@ -126,7 +126,7 @@ ID 为_myTemplateArtifact_的资源管理器模板项目，其中包含以下示
 | 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | string1 |是 |字符串 |串联的第一个值。 |
-| 其他参数 |否 |字符串 |串联的顺序的其他值 |
+| 其他参数 |否 |字符串 |按顺序排列的串联的其他值 |
 
 ### <a name="return-value"></a>返回值
 
@@ -134,7 +134,7 @@ ID 为_myTemplateArtifact_的资源管理器模板项目，其中包含以下示
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适用于字符串。
+Azure 蓝图函数与 Azure 资源管理器模板函数的不同之处在于，它只处理字符串。
 
 ### <a name="example"></a>示例
 
@@ -158,11 +158,11 @@ Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适�
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适用于蓝图参数。
+Azure 蓝图函数与 Azure 资源管理器模板函数的不同之处在于，它只处理蓝图参数。
 
 ### <a name="example"></a>示例
 
-在蓝图定义中定义参数_principalIds_ ：
+在蓝图定义中定义参数“principalIds”：
 
 ```json
 {
@@ -184,7 +184,7 @@ Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适�
 }
 ```
 
-然后，将_principalIds_用作蓝图项目`parameters()`中的的参数：
+然后使用“principalIds”作为蓝图项目中 `parameters()` 的参数：
 
 ```json
 {
@@ -218,13 +218,13 @@ Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适�
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图功能不同于 Azure 资源管理器模板功能。 此`resourceGroup()`函数不能在订阅级别项目或蓝图定义中使用。 它只能在属于资源组项目的蓝图项目中使用。
+Azure 蓝图函数与 Azure 资源管理器模板函数不同。 `resourceGroup()` 函数不能在订阅级项目或蓝图定义中使用。 它只能在作为资源组项目一部分的蓝图项目中使用。
 
-`resourceGroup()`函数的一个常见用途是在与资源组项目相同的位置创建资源。
+`resourceGroup()` 函数的一个常见用途是在与资源组项目相同的位置中创建资源。
 
 ### <a name="example"></a>示例
 
-若要使用资源组的位置，请在蓝图定义中或在分配期间设置为另一个项目的位置，在蓝图定义中声明资源组占位符对象。 在此示例中， _NetworkingPlaceholder_是资源组占位符的名称。
+若要使用在蓝图定义中或分配期间设置的资源组位置作为另一个项目的位置，请在蓝图定义中声明一个资源组占位符对象。 在本例中，“NetworkingPlaceholder”是资源组占位符的名称。
 
 ```json
 {
@@ -240,7 +240,7 @@ Azure 蓝图功能不同于 Azure 资源管理器模板功能。 此`resourceGro
 }
 ```
 
-然后，在`resourceGroup()`面向资源组占位符对象的蓝图项目的上下文中使用该函数。 在此示例中，模板项目部署到_NetworkingPlaceholder_资源组中，并提供_resourceLocation_动态填充到模板的_NetworkingPlaceholder_资源组位置的参数。 可以在蓝图定义上静态定义_NetworkingPlaceholder_资源组的位置，也可以在分配过程中动态定义该位置。 无论是哪种情况，模板项目都作为参数提供，并使用它将资源部署到正确的位置。
+然后，在面向资源组占位符对象的蓝图项目的上下文中使用 `resourceGroup()` 函数。 在本例中，模板项目部署到“NetworkingPlaceholder”资源组中，并提供参数“resourceLocation”，动态填充到模板的“NetworkingPlaceholder”资源组位置  。 “NetworkingPlaceholder”资源组的位置可以在蓝图定义上静态定义，也可以在分配期间动态定义。 在这两种情况下，模板项目都会将该信息作为参数提供，并使用它将资源部署到正确的位置。
 
 ```json
 {
@@ -265,7 +265,7 @@ Azure 蓝图功能不同于 Azure 资源管理器模板功能。 此`resourceGro
 
 `resourceGroups(placeholderName)`
 
-返回一个对象，该对象表示指定的资源组项目。 与`resourceGroup()`要求项目上下文的不同，此函数用于获取特定资源组占位符的属性，而不是在该资源组的上下文中。
+返回表示指定资源组项目的对象。 与需要项目上下文的 `resourceGroup()` 不同，此函数用于在不在资源组上下文中时获取特定资源组占位符的属性。
 
 ### <a name="parameters"></a>参数
 
@@ -286,7 +286,7 @@ Azure 蓝图功能不同于 Azure 资源管理器模板功能。 此`resourceGro
 
 ### <a name="example"></a>示例
 
-若要使用资源组的位置，请在蓝图定义中或在分配期间设置为另一个项目的位置，在蓝图定义中声明资源组占位符对象。 在此示例中， _NetworkingPlaceholder_是资源组占位符的名称。
+若要使用在蓝图定义中或分配期间设置的资源组位置作为另一个项目的位置，请在蓝图定义中声明一个资源组占位符对象。 在本例中，“NetworkingPlaceholder”是资源组占位符的名称。
 
 ```json
 {
@@ -302,7 +302,7 @@ Azure 蓝图功能不同于 Azure 资源管理器模板功能。 此`resourceGro
 }
 ```
 
-然后，使用`resourceGroups()`任何蓝图项目上下文中的函数获取对资源组占位符对象的引用。 在此示例中，模板项目部署在_NetworkingPlaceholder_资源组外部，并提供 artifactLocation 动态填充到模板的_NetworkingPlaceholder_资源组位置的参数_artifactLocation_ 。 可以在蓝图定义上静态定义_NetworkingPlaceholder_资源组的位置，也可以在分配过程中动态定义该位置。 无论是哪种情况，模板项目都作为参数提供，并使用它将资源部署到正确的位置。
+然后使用任何蓝图项目上下文中的 `resourceGroups()` 函数来获取对资源组占位符对象的引用。 在本例中，模板项目部署到“NetworkingPlaceholder”资源组外，并提供参数“artifactLocation”，动态填充到模板的“NetworkingPlaceholder”资源组位置  。 “NetworkingPlaceholder”资源组的位置可以在蓝图定义上静态定义，也可以在分配期间动态定义。 在这两种情况下，模板项目都会将该信息作为参数提供，并使用它将资源部署到正确的位置。
 
 ```json
 {
@@ -344,7 +344,7 @@ Azure 蓝图功能不同于 Azure 资源管理器模板功能。 此`resourceGro
 
 ### <a name="example"></a>示例
 
-使用订阅的显示名称和`concat()`函数创建作为参数名称传递到模板项目的命名_resourceName_约定。
+使用订阅的显示名称和 `concat()` 函数创建作为参数“resourceName”传递给模板项目的命名约定。
 
 ```json
 {

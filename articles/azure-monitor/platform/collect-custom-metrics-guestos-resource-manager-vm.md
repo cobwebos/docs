@@ -1,32 +1,29 @@
 ---
-title: 使用模板在 Azure Monitor 中收集 Windows VM 指标
-description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+title: 使用模板收集 Azure Monitor 中的 Windows VM 指标
+description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标数据库存储
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: ancav
+ms.date: 05/04/2020
+ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657361"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650539"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的 Azure 资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
+对于来自 Azure 虚拟机来宾 OS 的性能数据，不会像收集其他[平台指标](../insights/monitor-azure-resource.md#monitoring-data)一样自动收集其性能数据。 安装 Azure Monitor [诊断扩展](diagnostics-extension-overview.md)以将来宾 OS 指标收集到指标数据库中，以便该数据库可用于 Azure Monitor 指标的所有功能，包括准实时警报、制图、路由和来自 REST API 的访问。 本文介绍使用资源管理器模板将 Windows 虚拟机的来宾 OS 性能指标发送到指标数据库的过程。 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> [!NOTE]
+> 有关配置诊断扩展以使用 Azure 门户收集来宾 OS 指标的详细信息，请参阅[安装和配置 Windows Azure 诊断扩展 (WAD)](diagnostics-extension-windows-install.md)。
 
-使用 Azure Monitor [诊断扩展](diagnostics-extension-overview.md)，可以从作为虚拟机、云服务或 Service Fabric 群集的一部分运行的来宾操作系统（来宾 OS）中收集指标和日志。 该扩展可将遥测数据发送到[许多不同的位置](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)。
-
-本文介绍将 Windows 虚拟机的来宾 OS 性能指标发送到 Azure Monitor 数据存储的过程。 自诊断版本 1.11 版起，可将指标直接写入已收集标准平台指标的 Azure Monitor 指标存储。
-
-将它们存储在此位置可以访问平台指标的相同操作。 操作包括近实时警报、图表绘制、路由、从 REST API 访问，等等。 在过去，诊断扩展将数据写入 Azure 存储而不是 Azure Monitor 数据存储。
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
@@ -50,7 +47,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 ### <a name="modify-azuredeployparametersjson"></a>修改 azuredeploy.parameters.json
 打开 *azuredeploy.parameters.json* 文件
 
-1. 输入 VM 的“adminUsername”和“adminPassword”的值   。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
+1. 输入 VM 的“adminUsername”和“adminPassword”的值 。 这些参数用于对 VM 进行远程访问。 为了避免 VM 被劫持，请勿使用此模板中的值。 机器人在 Internet 上扫描公共 GitHub 存储库中的用户名和密码。 它们可能会使用这些默认值测试 VM。
 
 1. 为 VM 创建唯一 dnsname。
 
@@ -257,7 +254,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 运行以下命令，使用资源管理器模板部署 VM。
    > [!NOTE]
-   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾  。
+   > 如果要更新现有 VM，只需将“-Mode Incremental”添加到以下命令的末尾。
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
@@ -272,19 +269,19 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 1. 登录到 Azure 门户。
 
-2. 在左侧菜单中，选择“监视”  。
+2. 在左侧菜单中，选择“监视”。
 
-3. 在“监视”页上选择“指标”  。
+3. 在“监视”页上选择“指标”。
 
    ![“指标”页](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. 将聚合时限更改为“过去 30 分钟”  。
+4. 将聚合时限更改为“过去 30 分钟”。
 
-5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”  。
+5. 在资源下拉菜单中选择创建的 VM。 如果未更改模板中的名称，则名称应为“SimpleWinVM2”。
 
-6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest” 
+6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”
 
-7. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。
+7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。
 
 
 ## <a name="next-steps"></a>后续步骤

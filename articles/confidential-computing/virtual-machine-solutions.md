@@ -8,28 +8,28 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: e574ac33e5f7da814c4bd813fc1c083c7cb4c2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187879"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773128"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虚拟机上的解决方案
 
-本文介绍如何部署运行 intel[软件防护扩展](https://software.intel.com/sgx)（intel SGX）支持的 intel 处理器的 Azure 机密计算虚拟机（vm）。 
+本文介绍了如何部署运行基于 [Intel Software Guard Extension](https://software.intel.com/sgx) (Intel SGX) 的 Intel 处理器的 Azure 机密计算虚拟机 (VM)。 
 
 ## <a name="azure-confidential-computing-vm-sizes"></a>Azure 机密计算 VM 大小
 
-Azure 机密计算虚拟机旨在保护数据和代码的机密性和完整性，同时在云中进行处理 
+Azure 机密计算虚拟机旨在保护云中处理的数据和代码的机密性与完整性 
 
-[DCsv2 系列](../virtual-machines/dcv2-series.md)Vm 是最新且最新的机密计算大小系列。 这些 Vm 支持更大范围的部署功能，与我们的 DC 系列 Vm 相比，Enclave 页缓存（EPC）和更大的大小选择。 [DC 系列](../virtual-machines/sizes-previous-gen.md#preview-dc-series)vm 当前处于预览状态，将被弃用，并且不会在正式发行版本中包括在内。
+[DCsv2 系列](../virtual-machines/dcv2-series.md) VM 是最新的机密计算大小系列。 这些 VM 支持更大范围的部署功能，其 Enclave 页面缓存 (EPC) 是 DC 系列 VM 的 2 倍，并且这些 VM 比 DC 系列 VM 有更多的大小可供用户选择。 [DC 系列](../virtual-machines/sizes-previous-gen.md#preview-dc-series) VM 目前以预览版提供，将来会被弃用，并且不会包含在正式版中。
 
-按照[快速入门教程](quick-create-marketplace.md)中的说明，开始通过 Microsoft 商用 Marketplace 部署 DCSV2 系列 VM。
+遵循[快速入门教程](quick-create-marketplace.md)，开始通过 Microsoft 商业市场部署 DCsv2 系列 VM。
 
-### <a name="current-available-sizes-and-regions"></a>当前可用的大小和区域
+### <a name="current-available-sizes-and-regions"></a>当前可用大小和区域
 
-若要获取可用区域和可用性区域中所有公开可用的机密计算 VM 大小的列表，请在[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)中运行以下命令：
+若要获取可用区域和可用性区域中所有正式版机密计算 VM 大小的列表，请在 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) 中运行以下命令：
 
 ```azurecli-interactive
 az vm list-skus 
@@ -39,7 +39,7 @@ az vm list-skus
     --output table
 ```
 
-从2020年4月起，这些 Sku 在以下区域和可用性区域中提供：
+从 2020 年 5 月开始，这些 SKU 已在以下区域和可用性区域中推出：
 
 ```output
 Name              Locations      AZ_a
@@ -62,7 +62,7 @@ Standard_DC2s_v2  CentralUSEUAP
 Standard_DC4s_v2  CentralUSEUAP
 ```
 
-有关上述大小的更详细视图，请运行以下命令：
+若要更详细地了解上述大小，请运行以下命令：
 
 ```azurecli-interactive
 az vm list-skus 
@@ -72,43 +72,43 @@ az vm list-skus
 
 ## <a name="deployment-considerations"></a>部署注意事项
 
-按照快速入门教程，在10分钟内部署 DCsv2 系列虚拟机。 
+遵循快速入门教程，在不到 10 分钟的时间内部署 DCsv2 系列虚拟机。 
 
-- **Azure 订阅**-若要部署机密计算 VM 实例，请考虑使用即用即付订阅或其他购买选项。 如果使用的是[azure 免费帐户](https://azure.microsoft.com/free/)，则不会有合适数量的 azure 计算核心的配额。
+- **Azure 订阅** – 若要部署机密计算 VM 实例，请考虑使用即用即付订阅或其他购买选项。 如果使用 [Azure 免费帐户](https://azure.microsoft.com/free/)，则不会有相应 Azure 计算核心数量的配额。
 
-- **定价和区域可用性**-找到[虚拟机定价页](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)上的 DCsv2 系列 vm 的定价。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)（按区域提供的产品）。
+- **定价和区域可用性** - 在[虚拟机定价页](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)上查找 DCsv2 系列 VM 的定价。 有关各 Azure 区域推出的产品，请查看 [Products available by region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)（按区域提供的产品）。
 
 
-- **核心配额** - 可能需要在 Azure 订阅中在默认值的基础上增加核心配额。 订阅还可能会限制在某些 VM 大小系列（包括 DCsv2 系列）中可部署的核心数。 若要请求增加配额，请免费[打开联机客户支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)。 请注意，默认限制可能因订阅类别而异。
+- **核心配额** - 可能需要在 Azure 订阅中在默认值的基础上增加核心配额。 订阅可能也会限制可在特定 VM 大小系列（包括 DCsv2 系列）中部署的核心数目。 若要请求提高配额，可免费[提出在线客户支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)。 请注意，默认限制可能会因订阅类别而异。
 
   > [!NOTE]
   > 如果有大规模容量需求，请联系 Azure 支持。 Azure 配额为信用额度，而不是容量保障。 不管配额是什么，都只根据所用的核心数计费。
   
-- **调整大小**–由于其专用硬件，只能调整相同大小系列中的机密计算实例的大小。 例如，只能将 DCsv2 系列的 VM 从一个 DCsv2 系列大小调整为另一个。 不支持从非机密计算大小调整为机密计算大小。  
+- **调整大小** – 由于机密计算实例包含专用的硬件，你只能在同一大小系列内调整其大小。 例如，对于 DCsv2 系列 VM，只能将其从一种 DCsv2 系列大小调整为另一种 DCsv2 系列大小。 不支持从非机密计算大小调整为机密计算大小。  
 
-- **映像**-若要为机密计算实例提供 Intel 软件防护扩展（intel SGX）支持，所有部署都需要在第2代映像上运行。 Azure 机密计算支持在 Ubuntu 18.04 第2代、Ubuntu 16.04 第2代和 Windows Server 2016 Gen 2 上运行的工作负荷。 阅读有关[Azure 上第2代 vm 的支持](../virtual-machines/linux/generation-2.md)，了解有关受支持和不支持的方案的详细信息。 
+- **映像** – 若要在机密计算实例上提供 Intel Software Guard Extension (Intel SGX) 支持，所有部署需要在第 2 代映像上运行。 Azure 机密计算支持 Ubuntu 18.04 Gen 2、Ubuntu 16.04 Gen 2、Windows Server 2019 Gen 2 和 Windows Server 2016 Gen 2 上运行的工作负荷。 请阅读 [Azure 对第 2 代 VM 的支持](../virtual-machines/linux/generation-2.md)以详细了解支持的方案和不支持的方案。 
 
-- **存储**– Azure 机密计算虚拟机数据磁盘和临时操作系统磁盘位于 NVMe 磁盘上。 实例仅支持高级 SSD 和标准 SSD 磁盘，而不支持超级 SSD 或标准 HDD。 虚拟机大小**DC8_v2**不支持高级存储。 
+- **存储** – Azure 机密计算虚拟机数据磁盘和临时 OS 磁盘位于 NVMe 磁盘上。 实例仅支持高级 SSD 和标准 SSD 磁盘，而不支持超级 SSD 或标准 HDD。 虚拟机大小 **DC8_v2** 不支持高级存储。 
 
-- **磁盘加密**–机密计算实例目前不支持磁盘加密。 
+- **磁盘加密** – 机密计算实例目前不支持磁盘加密。 
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性和灾难恢复注意事项
 
-使用 Azure 中的虚拟机时，你负责实现高可用性和灾难恢复解决方案，以避免任何停机。 
+在 Azure 中使用虚拟机时，你需要负责实施高可用性和灾难恢复解决方案，以避免出现任何停机。 
 
-Azure 机密计算此时不支持通过可用性区域区域冗余。 为了获得机密计算的最高可用性和冗余，请使用[可用性集](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。 由于硬件限制，适用于机密计算实例的可用性集最多只能有10个更新域。 
+Azure 机密计算目前不支持通过可用性区域实现区域冗余。 若要实现机密计算的最高可用性和冗余，请使用[可用性集](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。 由于硬件限制，机密计算实例的可用性集最多只能包含 10 个更新域。 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>通过 Azure 资源管理器模板进行部署 
+## <a name="deploying-via-an-azure-resource-manager-template"></a>通过 Azure 资源管理器模板部署 
 
 Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
 
 若要了解 Azure 资源管理器模板，请参阅[模板部署概述](../azure-resource-manager/templates/overview.md)。
 
-要将 DCsv2 系列 VM 部署到 ARM 模板，你将利用[虚拟机资源](../virtual-machines/windows/template-description.md)。 你需要确保指定**vmSize**和**imageReference**的正确属性。
+若要在 Azure 资源管理器模板中部署 DCsv2 系列 VM，可以利用[虚拟机资源](../virtual-machines/windows/template-description.md)。 确保为 **vmSize** 和 **imageReference** 指定正确的属性。
 
 ### <a name="vm-size"></a>VM 大小
 
-在虚拟机资源的 ARM 模板中指定以下大小之一。 此字符串将作为**vmSize**放在**属性**中。
+在 Azure 资源管理器模板中为虚拟机资源指定以下大小之一。 此字符串用作 **properties** 中的 **vmSize**。
 
 ```json
   [
@@ -121,9 +121,15 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 ### <a name="gen2-os-image"></a>Gen2 OS 映像
 
-在 "**属性**" 下，还必须在**storageProfile**下引用图像。 对于**imageReference**，只使用以下映像*之一*。
+在 **properties** 下，还必须在 **storageProfile** 下引用一个映像。 请仅将以下某一映像用于 **imageReference**。
 
 ```json
+      "2019-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2019-datacenter-gensecond",
+        "version": "latest"
+      },
       "2016-datacenter-gensecond": {
         "offer": "WindowsServer",
         "publisher": "MicrosoftWindowsServer",
@@ -146,7 +152,7 @@ Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理
 
 ## <a name="next-steps"></a>后续步骤 
 
-本文介绍了创建机密计算虚拟机时所需的条件和配置。 现在，你可以转到 Azure Marketplace 部署 DCsv2 系列 VM。
+在本文中，你已了解在创建机密计算虚拟机时所要满足的条件和所需的配置。 现在，你可以转到 Microsoft Azure 市场来部署 DCsv2 系列 VM。
 
 > [!div class="nextstepaction"]
-> [在 Azure Marketplace 中部署 DCsv2 系列虚拟机](quick-create-marketplace.md)
+> [在 Azure 市场中部署 DCsv2 系列虚拟机](quick-create-marketplace.md)

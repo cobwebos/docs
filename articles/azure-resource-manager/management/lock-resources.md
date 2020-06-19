@@ -2,20 +2,20 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/19/2020
+ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274003"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847661"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改
 
 管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
 * **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
-* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”  角色授予的权限。
+* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”角色授予的权限。
 
 ## <a name="how-locks-are-applied"></a>锁的应用方式
 
@@ -23,43 +23,45 @@ ms.locfileid: "79274003"
 
 与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 会允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
-应用 **ReadOnly** 可能导致意外的结果，因为某些似乎不会修改资源的操作实际上需要被锁定阻止的操作。 **ReadOnly** 锁可以应用于资源或包含资源的资源组。 被 **ReadOnly** 锁阻止的操作的一些常见示例包括：
+## <a name="considerations-before-applying-locks"></a>应用锁之前的注意事项
 
-* 存储帐户上的 **ReadOnly** 锁会阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
+应用锁可能会导致意外结果，因为某些操作看似不会修改资源，但实际上需要执行被锁阻止的操作。 被锁阻止的一些常见操作的示例包括：
 
-* 应用服务资源上的 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
+* **存储帐户**上的只读锁将阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。
 
-* 包含虚拟机的资源组上的 **ReadOnly** 锁会阻止所有用户启动或重启虚拟机。 这些操作需要 POST 请求。
+* **应用服务**资源上的只读锁将阻止 Visual Studio 服务器资源管理器显示资源的文件，因为该交互需要写入访问权限。
+
+* 包含**虚拟机**的**资源组**上的只读锁将阻止所有用户启动或重启该虚拟机。 这些操作需要 POST 请求。
+
+* **订阅**上的只读锁会导致 **Azure 顾问**无法正常运行。 顾问将无法存储其查询的结果。
+
+* **Azure 备份服务**创建的**资源组**上的“不能删除”锁会导致备份失败。 该服务最多支持 18 个还原点。 锁定后，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题解答 - 备份 Azure VM](../../backup/backup-azure-vm-backup-faq.md)。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
 
-若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。  
+若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。 
 
 ## <a name="managed-applications-and-locks"></a>托管应用程序和锁
 
-某些 Azure 服务（如 Azure Databricks）使用[托管应用程序](../managed-applications/overview.md)来实现该服务。 在这种情况下，该服务将创建两个资源组。 一个资源组包含服务概述，未锁定。 其他资源组包含服务的基础结构并且已锁定。
+某些 Azure 服务（如 Azure Databricks）使用[托管应用程序](../managed-applications/overview.md)来实现该服务。 在这种情况下，该服务将创建两个资源组。 一个资源组包含服务的概述，且未锁定。 另一个资源组包含服务的基础结构，且已锁定。
 
-如果尝试删除基础结构资源组，将收到一条错误消息，指出资源组已锁定。 如果尝试删除对基础结构资源组的锁定，会收到一条错误消息，指出无法删除该锁，因为它是系统应用程序所拥有的。
+如果尝试删除基础结构资源组，将会收到一条错误消息，指出资源组已锁定。 如果尝试删除基础结构资源组的锁，将会收到一条错误消息，指出无法删除该锁，因为它由系统应用程序所拥有。
 
-而是删除服务，此操作还会删除基础结构资源组。
+应该删除服务，这样也会删除基础结构资源组。
 
-对于托管应用程序，请选择已部署的服务。
+对于托管应用程序，请选择你部署的服务。
 
 ![选择服务](./media/lock-resources/select-service.png)
 
-请注意，该服务包括**托管资源组**的链接。 该资源组包含基础结构并被锁定。 不能直接删除它。
+请注意，服务包含**托管资源组**的链接。 该资源组包含基础结构且已锁定。 无法直接将其删除。
 
 ![显示托管组](./media/lock-resources/show-managed-group.png)
 
-若要删除服务的所有内容，包括锁定的基础结构资源组，请选择 "**删除**服务"。
+若要删除服务的所有内容（包括锁定的基础结构资源组），请选择该服务对应的“删除”。
 
 ![删除服务](./media/lock-resources/delete-service.png)
-
-## <a name="azure-backups-and-locks"></a>Azure 备份和锁定
-
-如果你锁定由 Azure 备份服务创建的资源组，则备份将开始失败。 服务最多支持18个还原点。 使用**CanNotDelete**锁时，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题-备份 Azure vm](../../backup/backup-azure-vm-backup-faq.md)。
 
 ## <a name="portal"></a>门户
 
@@ -67,17 +69,17 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ## <a name="template"></a>模板
 
-使用资源管理器模板来部署某个锁定时，请根据锁定范围对名称和类型使用不同的值。
+使用资源管理器模板部署锁时，你需要根据该锁的作用域为名称和类型使用不同的值。
 
-对**资源**应用锁定时，请使用以下格式：
+将锁应用于**资源**时，请使用以下格式：
 
-* name - `{resourceName}/Microsoft.Authorization/{lockName}`
-* type - `{resourceProviderNamespace}/{resourceType}/providers/locks`
+* 名称 - `{resourceName}/Microsoft.Authorization/{lockName}`
+* 类型 - `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-对**资源组**或**订阅**应用锁定时，请使用以下格式：
+将锁应用于**资源组**或**订阅**时，请使用以下格式：
 
-* name - `{lockName}`
-* type - `Microsoft.Authorization/locks`
+* 名称 - `{lockName}`
+* 类型 - `Microsoft.Authorization/locks`
 
 以下示例演示可创建应用服务计划、网站和网站上的锁的模板。 锁的资源类型是要锁定的资源的资源类型和 **/providers/locks**。 锁名是通过将包含 **/Microsoft.Authorization/** 的资源名称与锁名连接起来创建的。
 
@@ -136,7 +138,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 }
 ```
 
-如需在资源组上设置锁定的示例，请参阅[创建资源组并将其锁定](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+有关在资源组上设置锁的示例，请参阅[创建资源组并将其锁定](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
 
 ## <a name="powershell"></a>PowerShell
 可以通过 Azure PowerShell 使用 [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) 命令锁定已部署的资源。
@@ -226,7 +228,7 @@ az lock delete --ids $lockid
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01**。
+作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api-version，请使用 **2016-09-01**。
 
 在请求中，包括指定锁属性的 JSON 对象。
 
@@ -238,7 +240,7 @@ az lock delete --ids $lockid
     } 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用逻辑方式组织资源的信息，请参阅[使用标记来组织资源](tag-resources.md)
+* 若要了解如何使用逻辑方式组织资源，请参阅[使用标记来组织资源](tag-resources.md)。
 * 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
 

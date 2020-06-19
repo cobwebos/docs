@@ -1,22 +1,22 @@
 ---
-description: 了解 Azure 中 Desired State Configuration (DSC) 扩展的版本历史记录。
+title: 使用 Azure Desired State Configuration 扩展版本历史记录
+description: 本文介绍了如何使用 Azure Desired State Configuration (DSC) 扩展的版本历史记录。
 ms.date: 06/21/2018
 keywords: dsc, powershell, azure, 扩展
-title: Azure DSC 扩展版本历史记录
 author: mgoedtel
 ms.author: magoedte
 services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 207b8f7467753a8693bbabe6dd3f7a890307cf21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82120699"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836917"
 ---
-# <a name="azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 扩展版本历史记录
+# <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>使用 Azure Desired State Configuration 扩展版本历史记录
 
 已根据需要更新 Azure Desired State Configuration (DSC) VM 扩展，以支持 Azure、Windows Server 和 Windows Management Framework (WMF) 提供的包含 Windows PowerShell 的增强功能和新功能。
 
@@ -27,7 +27,7 @@ ms.locfileid: "82120699"
 ### <a name="version-276"></a>版本 2.76
 
 - **发布日期：**
-  - 2018 年 5 月 9 日 (Azure) | 2018 年 6 月 21 日（Azure 中国、Azure 政府）
+  - 2018 年 5 月 9 日 (Azure) | 2018 年 6 月 21 日（Azure 中国世纪互联、Azure 政府）
 - **OS 支持：**
   - Windows Server 2016
   - Windows Server 2012 R2
@@ -40,18 +40,18 @@ ms.locfileid: "82120699"
   - WMF 5.0 RTM
   - WMF 4.0 更新
   - WMF 4.0
-- **环境**
+- **环境：**
   - Azure
-  - Azure 中国
+  - Azure 中国世纪互联
   - Azure Government
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 子状态的扩展元数据改进和其他次要 bug 修复。
 
 ## <a name="supported-versions"></a>支持的版本
 
 > [!WARNING]
-> 版本2.4 到2.13 使用 WMF 5.0 公共预览版，其签名证书已于8月过期
+> 版本 2.4 到 2.13 使用 WMF 5.0 公共预览版，该版本的签名证书于 8 月到期
 > 2016. 有关此问题的详细信息，请参阅[博客文章](https://devblogs.microsoft.com/powershell/azure-dsc-extension-versions-2-4-up-to-2-13-will-retire-in-august/)。
 
 ### <a name="version-275"></a>版本 2.75
@@ -61,7 +61,7 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 在 GitHub 最近迁移到 TLS 1.2 后，便无法使用 Azure 市场中的 DIY 资源管理器模板将 VM 上架到 Azure Automation DSC 中，也无法使用 DSC 扩展来获取 GitHub 上托管的任何配置。 部署扩展时将看到类似如下的错误：
 
     ```json
@@ -98,7 +98,7 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 进行了 Bug 修复和改进，简化了通过门户 UI 以及资源管理器模板使用 DSC Azure 自动化的过程。 有关详细信息，请参阅 DSC 扩展文档中的[默认配置脚本](/azure/virtual-machines/extensions/dsc-overview)。
 
 ### <a name="version-226"></a>版本 2.26
@@ -108,7 +108,7 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 遥测改进。
 
 ### <a name="version-225"></a>版本 2.25
@@ -118,48 +118,48 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 添加了多项 bug 修复和其他小的改进。
 
 ### <a name="version-224"></a>版本 2.24
 
 - **发布日期：** 2017 年 4 月 13 日
-- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1、Nano Server
+- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 和 Nano Server
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 将 VM UUID 和 DSC 代理 ID 公开为扩展元数据。 添加了其他小的改进。
 
 ### <a name="version-223"></a>版本 2.23
 
 - **发布日期：** 2017 年 3 月 15 日
-- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1、Nano Server
+- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 和 Nano Server
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 添加了多项 bug 修复和其他改进。
 
 ### <a name="version-222"></a>版本 2.22
 
 - **发布日期：** 2017 年 2 月 8 日
-- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1、Nano Server
+- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 和 Nano Server
 - **WMF 支持：** WMF 5.1、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - DSC 扩展现在支持 WMF 5.1。
   - 添加了其他小的改进。
 
 ### <a name="version-221"></a>版本 2.21
 
 - **发布日期：** 2016 年 12 月 2 日
-- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1、Nano Server
+- **OS 支持：** Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 和 Nano Server
 - **WMF 支持：** WMF 5.1 预览版、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。 对于 Nano Server，DSC 角色安装在 VM 上。
-- **新增功能：**
+- **新功能：**
   - 现在可在 Nano Server 上使用 DSC 扩展。 这一版主要更改了在 Nano Server 上运行扩展所需的代码。
   - 添加了其他小的改进。
 
@@ -170,9 +170,9 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.1 预览版、WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
+- **新功能：**
   - 支持 WMF 5.1 预览版。 此版本在首次发布时是一个可选升级，必须在资源管理器模板中指定 Wmfversion =“5.1PP”来安装 WMF 5.1 预览版。
-    Wmfversion = ' 最新 ' 仍安装[WMF 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)。
+    若 Wmfversion =“latest”，则仍安装 [WMF 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)。
     有关 WMF 5.1 预览版的详细信息，请参阅[此博客](https://devblogs.microsoft.com/powershell/announcing-windows-management-framework-wmf-5-1-preview/)。
   - 添加了其他小的修复和改进。
 
@@ -181,10 +181,10 @@ ms.locfileid: "82120699"
 - **发布日期：** 2016 年 6 月 3 日
 - **OS 支持：** Windows Server 2016 Technical Preview、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1
 - **WMF 支持：** WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
-- **环境：** Azure、Azure 中国、Azure 政府
+- **环境：** Azure 中国世纪互联、Azure 政府
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
-  - DSC 扩展现已上架到中国区 Azure 中。 此版本主要包含在 Azure 中国上运行扩展的修补程序。
+- **新功能：**
+  - DSC 扩展现已上架到 Azure 中国世纪互联。 此版本主要包含在 Azure 中国世纪互联上运行扩展的修补程序。
 
 ### <a name="version-218"></a>版本 2.18
 
@@ -193,7 +193,7 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
+- **新功能：**
   - 当遥测修补程序下载（已知 Azure DNS 问题）或安装期间出现错误时不阻止遥测。
   - 修复了扩展在重启后停止处理配置的间歇性问题。
     这将导致 DSC 扩展仍然处于“正在转换”状态。
@@ -206,9 +206,9 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.0 RTM、WMF 4.0 更新、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
+- **新功能：**
   - 支持 WMF 4.0 更新。 有关 WMF 4.0 更新的详细信息，请参阅[此博客](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-4-0-update-now-available-for-windows-server-2012-windows-server-2008-r2-sp1-and-windows-7-sp1/)。
-  - 针对在 DSC 扩展安装期间或在扩展安装后应用 DSC 配置时出现的错误的重试逻辑。 作为此更改的一部分，如果之前安装失败或重新执行之前失败的 DSC 配置，则扩展将至多重试安装三次，直到达到完成状态（成功/错误）或传入新请求。 如果扩展因无效的用户设置/用户输入失败，则不会重试。 在这种情况下，需要使用新的请求和正确的用户设置再次调用扩展。 注意：DSC 扩展依赖于重试的 Azure VM 代理。 Azure VM 代理使用最后失败的请求调用扩展，直到达到成功或错误状态。
+  - 针对在 DSC 扩展安装期间或在扩展安装后应用 DSC 配置时出现的错误的重试逻辑。 作为此更改的一部分，如果之前安装失败或重新执行之前失败的 DSC 配置，则扩展将至多重试安装三次，直到达到完成状态（成功/错误）或传入新请求。 如果扩展因无效的用户设置/用户输入失败，则不会重试。 在这种情况下，需要使用新的请求和正确的用户设置再次调用扩展。 注意：DSC 扩展依赖于 Azure VM 代理进行重试。 Azure VM 代理使用最后失败的请求调用扩展，直到达到成功或错误状态。
 
 ### <a name="version-216"></a>版本 2.16
 
@@ -217,7 +217,7 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.0 RTM、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
+- **新功能：**
   - 错误处理改进和其他细微缺陷修复。
   - DSC 扩展设置中的新属性。 已添加 AdvancedOptions 中的“ForcePullAndApply”，以便使 DSC 扩展在刷新模式为请求（与默认的推送模式相反）时执行 DSC 配置。 有关详细信息，请参阅[此博客](https://devblogs.microsoft.com/powershell/arm-dsc-extension-settings/)，获取有关 DSC 扩展设置的详细信息。
 
@@ -228,8 +228,8 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.0 RTM、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
-  - 在扩展版本 2.14 中，包括了对安装 WMF RTM 的更改。 从扩展版本 2.13.2.0 升级到 2.14.0.0 时，你可能会注意到某些 DSC cmdlet 失败或配置失败，并出现错误“未找到含给定属性值的实例”。 有关详细信息，请参阅 [DSC 发行说明](/powershell/scripting/wmf/known-issues/known-issues-dsc)。 2.15 版中已添加这些问题的解决方法。
+- **新功能：**
+  - 在扩展版本 2.14 中，包括了对安装 WMF RTM 的更改。 从扩展版本 2.13.2.0 升级到 2.14.0.0 时，你可能会注意到某些 DSC cmdlet 失败或配置失败，并出现错误“未找到含给定属性值的实例”。 有关详细信息，请参阅 [DSC 发行说明](/powershell/scripting/wmf/known-issues/known-issues-dsc)。 2\.15 版中已添加这些问题的解决方法。
   - 遗憾的是，如果你已安装版本 2.14 且遇到上述两个问题之一，则将需要手动执行这些步骤。 在提升的 PowerShell 会话中：
     - `Remove-Item -Path $env:SystemRoot\system32\Configuration\DSCEngineCache.mof`
     - `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
@@ -241,7 +241,7 @@ ms.locfileid: "82120699"
 - **WMF 支持：** WMF 5.0 RTM、WMF 4.0
 - **环境：** Azure
 - **备注：** 此版本使用包括在 Windows Server 2016 Technical Preview 中的 DSC；对于其他 Windows OS，它将安装 [Windows Management Framework 5.0 RTM](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-5-0-rtm-is-now-available-via-the-microsoft-update-catalog/)（安装 WMF 需要重启）。
-- **新增功能：**
+- **新功能：**
   - 使用 WMF RTM。
   - 启用数据收集，以提高 DSC 扩展的质量。 有关详细信息，请参阅[博客](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/)。
   - 在资源管理器模板中为扩展提供更新的设置格式。 有关详细信息，请参阅[博客](https://devblogs.microsoft.com/powershell/arm-dsc-extension-settings/)。
@@ -249,7 +249,7 @@ ms.locfileid: "82120699"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 PowerShell DSC 的详细信息，请转到 [PowerShell 文档中心](/powershell/scripting/dsc/overview/overview)。
+- 有关 PowerShell DSC 的详细信息，请查看 [PowerShell 文档中心](/powershell/scripting/dsc/overview/overview)。
 - 查看[适用于 DSC 扩展的资源管理器模板](/azure/virtual-machines/extensions/dsc-template)。
-- 若要了解可以使用 PowerShell DSC 管理的其他功能并获取更多 DSC 资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
+- 要查看可使用 PowerShell DSC 管理的更多功能和资源，请浏览 [PowerShell 库](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)。
 - 有关将敏感参数传入配置的详细信息，请参阅[使用 DSC 扩展处理程序安全管理凭据](/azure/virtual-machines/extensions/dsc-credentials)。

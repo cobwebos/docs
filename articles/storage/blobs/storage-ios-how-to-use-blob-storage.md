@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726402"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83831868"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>如何通过 iOS 使用 Blob 存储
 
@@ -62,7 +62,7 @@ ms.locfileid: "68726402"
 使用库的其他方法是手动生成框架：
 
 1. 首先，下载或克隆 [azure-storage-ios repo](https://github.com/azure/azure-storage-ios)。
-2. 转到“azure-storage-ios”   -> “Lib”   -> “Azure 存储客户端库”  ，并在 Xcode 中打开 `AZSClient.xcodeproj`。
+2. 转到“azure-storage-ios” -> “Lib” -> “Azure 存储客户端库”，并在 Xcode 中打开 `AZSClient.xcodeproj`。
 3. 在 Xcode 的左上方，将活动方案从“Azure 存储客户端库”更改为“Framework”。
 4. 生成项目 (⌘+B)。 这会在桌面上创建 `AZSClient.framework` 文件。
 
@@ -70,9 +70,9 @@ ms.locfileid: "68726402"
 
 1. 在 Xcode 中创建一个新项目或打开现有项目。
 2. 将 `AZSClient.framework` 拖放到 Xcode 项目导航器中。
-3. 选择“需要时复制项”，并单击“完成”。  
-4. 单击左侧导航栏中的项目，并在项目编辑器顶部，单击“常规”  选项卡。
-5. 在“链接的框架和库”  部分下，单击“添加”按钮 (+)。
+3. 选择“需要时复制项”，并单击“完成”。 
+4. 单击左侧导航栏中的项目，并在项目编辑器顶部，单击“常规”选项卡。
+5. 在“链接的框架和库”部分下，单击“添加”按钮 (+)。
 6. 在已提供的库的列表中，搜索 `libxml2.2.tbd` 并将其添加到项目。
 
 ## <a name="import-the-library"></a>导入该库
@@ -82,11 +82,11 @@ ms.locfileid: "68726402"
 #import <AZSClient/AZSClient.h>
 ```
 
-如果使用 Swift，则需要创建桥接头并在该位置导入 \<AZSClient/AZSClient.h>：
+如果使用的是 Swift，则需要创建桥接头文件并在其中导入 \<AZSClient/AZSClient.h>：
 
 1. 创建头文件 `Bridging-Header.h`，并添加上面的 import 语句。
-2. 转到“生成设置”  选项卡，并搜索“Objective-C 桥接头文件”  。
-3. 双击“Objective-C 桥接头文件”  字段并添加头文件的路径：`ProjectName/Bridging-Header.h`
+2. 转到“生成设置”选项卡，并搜索“Objective-C 桥接头文件”。
+3. 双击“Objective-C 桥接头文件”字段并添加头文件的路径：`ProjectName/Bridging-Header.h`
 4. 生成项目 (⌘+B) 以确认桥接头文件已由 Xcode 选取。
 5. 开始在任何 Swift 文件中直接使用库，不需要 import 语句。
 
@@ -133,9 +133,9 @@ Azure 存储空间中的每个 Blob 都必须驻留在一个容器中。 以下�
 
 默认情况下，容器的权限配置为**专用**访问权限。 但是，容器提供了几个不同的容器访问权限选项：
 
-- **专用**：仅帐户所有者可读取容器和 Blob 数据。
-- **Blob**：可通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
-- **容器**：可通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
+- **专用**：仅帐户所有者可以读取容器和 Blob 数据。
+- **Blob**：可以通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。 客户端无法通过匿名请求枚举容器中的 Blob。
+- **容器**：可以通过匿名请求读取容器和 Blob 数据。 客户端可以通过匿名请求枚举容器中的 Blob，但无法枚举存储帐户中的容器。
 
 以下示例演示如何创建一个具有**容器**访问权限的容器，这会允许 Internet 上的所有用户对其进行公共只读访问：
 
@@ -224,12 +224,12 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 - **prefix** - 可以指定要用于 blob 列出的前缀。 将仅列出以该前缀开头的 blob。
 - **useFlatBlobListing** - 如[命名和引用容器和 blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 部分中所述，虽然 Blob 服务是平面存储方案，但可通过命名具有路径信息的 blob 来创建虚拟层次结构。 但是，目前不支持非平面列表。 此功能即将支持。 目前，此值应为 **YES**。
 - **blobListingDetails** - 可指定在列出 blob 时要包含哪些项
-  - AZSBlobListingDetailsNone  ：仅列出已提交的 blob，不返回 blob 元数据。
-  - AZSBlobListingDetailsSnapshots  ：列出已提交的 blob 和 blob 快照。
-  - AZSBlobListingDetailsMetadata  ：检索列表中返回的每个 blob 的 blob 元数据。
-  - AZSBlobListingDetailsUncommittedBlobs  ：列出已提交和未提交的 blob。
-  - AZSBlobListingDetailsCopy  ：在列表中包括复制属性。
-  - AZSBlobListingDetailsAll  ：列出所有可用的已提交 blob、未提交 blob 和快照，并返回这些 blob 的所有元数据和复制状态。
+  - _AZSBlobListingDetailsNone_：仅列出已提交的 blob，并且不返回 blob 元数据。
+  - _AZSBlobListingDetailsSnapshots_：列出提交的 blob 和 blob 快照。
+  - _AZSBlobListingDetailsMetadata_：检索列表中返回的每个 blob 的 blob 元数据。
+  - _AZSBlobListingDetailsUncommittedBlobs_：列出已提交和未提交的 blob。
+  - _AZSBlobListingDetailsCopy_：在列表中包含复制属性。
+  - _AZSBlobListingDetailsAll_：列出所有可用的已提交 blob、未提交 blob 和快照，并返回这些 blob 的所有元数据和复制状态。
 - **maxResults** - 此操作可返回的结果的最大数目。 使用 -1 以不设置限制。
 - **completionHandler** - 要使用列表操作的结果执行的代码块。
 
@@ -392,7 +392,7 @@ https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblo
 - [适用于 iOS 的 Azure 存储客户端库](https://github.com/azure/azure-storage-ios)
 - [Azure 存储 iOS 参考文档](https://azure.github.io/azure-storage-ios/)
 - [Azure 存储空间服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage)
+- [Azure 存储团队博客](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
-如果对此库有任何疑问，可随时会问题发布到我们的 [MSDN Azure 论坛](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)。
+如果对此库有任何疑问，可随时在 [Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-blob-storage.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) 中提问。
 如果有关于 Azure 存储的功能建议，请将建议发布到 [Azure 存储反馈](https://feedback.azure.com/forums/217298-storage/)。

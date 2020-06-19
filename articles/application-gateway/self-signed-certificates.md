@@ -8,21 +8,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a0e930116447ded51616651751bba7482b638ca1
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311940"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745483"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
-应用程序网关 v2 SKU 引入了允许后端服务器的受信任根证书。 这样，就无需像在 v1 SKU 中那样使用身份验证证书。 该根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。  它标识颁发服务器证书的根证书颁发机构（CA），然后将服务器证书用于 TLS/SSL 通信。
+应用程序网关 v2 SKU 介绍了如何使用受信任的根证书以允许后端服务器。 这会删除 v1 SKU 中所需的身份验证证书。 根证书是来自后端证书服务器的 Base-64 编码的 X.509(.CER) 格式根证书。 它标识颁发服务器证书的根证书颁发机构 (CA)，服务器证书随后将用于 TLS/SSL 通信。
 
-如果网站的证书由众所周知的 CA（例如 GoDaddy 或 DigiCert）签名，则默认情况下应用程序网关会信任该证书。 在这种情况下，无需显式上传根证书。 有关详细信息，请参阅[tls 终止概述和应用程序网关的端到端 tls](ssl-overview.md)。 但是，如果你有一个开发/测试环境，但不想要购买由已验证的 CA 签名的证书，可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
+如果你网站的证书是由知名 CA（例如 GoDaddy 或 DigiCert）签名的，则默认情况下，应用程序网关将信任该证书。 在这种情况下，不需要显式上传根证书。 有关详细信息，请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。 但如果你已有开发/测试环境，并且不想购买由已验证的 CA 签名的证书，则可以创建自己的自定义 CA，然后使用该 CA 创建自签名证书。 
 
 > [!NOTE]
-> 自签名证书默认不受信任，并且可能难以维护。 另外，它们可能使用过时的哈希，以及不够可靠的加密套件。 为了提高安全性，请购买由知名证书颁发机构签名的证书。
+> 自签名证书默认不受信任，并且可能难以维护。 另外，它们可能使用过时的哈希以及不够可靠的加密套件。 为了提高安全性，请购买由知名证书颁发机构签名的证书。
 
 本文介绍如何执行以下操作：
 
@@ -32,16 +32,16 @@ ms.locfileid: "81311940"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **在运行 Windows 或 Linux 的计算机上安装 [OpenSSL](https://www.openssl.org/)** 
+- 在运行 Windows 或 Linux 的计算机上安装 [OpenSSL](https://www.openssl.org/) 
 
-   本教程将使用 OpenSSL，不过，其他工具可能也可用于证书管理。 你可能会发现，许多 Linux 分发版（例如 Ubuntu）中已捆绑 OpenSSL。
+   本教程将使用 OpenSSL，不过，其他工具可能也可用于证书管理。 你可能会发现，许多 Linux 分发版（如 Ubuntu）中已捆绑 OpenSSL。
 - **一个 Web 服务器**
 
    例如，用于测试证书的 Apache、IIS 或 NGINX。
 
 - **一个应用程序网关 v2 SKU**
    
-  如果没有现有的应用程序网关，请参阅[快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)。
+  如果没有现有的应用程序网关，请参阅[快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户](quick-create-portal.md)
 
 ## <a name="create-a-root-ca-certificate"></a>创建根 CA 证书
 
@@ -49,14 +49,14 @@ ms.locfileid: "81311940"
 
 ### <a name="create-the-root-key"></a>创建根密钥
 
-1. 登录到安装了 OpenSSL 的计算机并运行以下命令。 这会创建密码保护的密钥。
+1. 登录到安装了 OpenSSL 的计算机并运行以下命令。 这会创建一个受密码保护的密钥。
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
 1. 在提示符下键入强密码。 例如，使用大写字母、小写字母、数字和符号至少输入 9 个字符。
 
-### <a name="create-a-root-certificate-and-self-sign-it"></a>创建根证书并自签名
+### <a name="create-a-root-certificate-and-self-sign-it"></a>创建根证书并进行自签名
 
 1. 使用以下命令生成 CSR 和证书。
 
@@ -65,7 +65,7 @@ ms.locfileid: "81311940"
 
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
-   以上命令创建根证书。 稍后你将使用此证书来为服务器证书签名。
+   上述命令将创建根证书。 稍后你将使用此证书来为服务器证书签名。
 
 1. 出现提示时，请键入根密钥的密码，以及自定义 CA 的组织信息，例如国家/地区、省/市/自治区、组织、组织单位和完全限定的域名（颁发者的域）。
 
@@ -88,7 +88,7 @@ ms.locfileid: "81311940"
 CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁发证书。
 
 > [!NOTE]
-> 服务器证书的 CN（公用名）必须与颁发者的域不同。 例如，在本例中，颁发者的 CN 是 `www.contoso.com`，服务器证书的 CN 是 `www.fabrikam.com`。
+> 服务器证书的 CN（公用名）必须与颁发者的域不同。 例如，在本例中，颁发者的 CN 是 `www.contoso.com`，服务器证书的 CN 是 `www.fabrikam.com`
 
 
 1. 使用以下命令生成 CSR：
@@ -118,16 +118,16 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
    ![证书验证](media/self-signed-certificates/verify-cert.png)
 
-1. 验证目录中的文件，确保其中包含以下文件：
+1. 验证目录中的文件，确保其中具有以下文件：
 
    - contoso.crt
    - contoso.key
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 web 服务器的 TLS 设置中配置证书
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>在 Web 服务器的 TLS 设置中配置证书
 
-在 web 服务器中，使用 fabrikam 和 fabrikam 文件配置 TLS。 如果 Web 服务器无法接收两个文件，你可以使用 OpenSSL 命令将其合并成单个 .pem 或 .pfx 文件。
+在 Web 服务器中，使用 fabrikam.crt 和 fabrikam.key 文件配置 TLS。 如果 Web 服务器无法接收这两个文件，你可以使用 OpenSSL 命令将其合并成单个 .pem 或 .pfx 文件。
 
 ### <a name="iis"></a>IIS
 
@@ -137,7 +137,7 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
 ### <a name="apache"></a>Apache
 
-以下配置是在 Apache 中[为 SSL 配置的虚拟主机](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts)示例：
+以下配置是在 Apache 中 [为 SSL 配置的虚拟主机](https://cwiki.apache.org/confluence/display/HTTPD/NameBasedSSLVHosts) 示例：
 
 ```
 <VirtualHost www.fabrikam:443>
@@ -151,9 +151,9 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
 
 ### <a name="nginx"></a>NGINX
 
-以下配置是[NGINX server block](https://nginx.org/docs/http/configuring_https_servers.html) with TLS 配置的示例：
+以下配置是 [NGINX 服务器块](https://nginx.org/docs/http/configuring_https_servers.html)与 TLS 配置的示例：
 
-![NGINX 与 TLS](media/self-signed-certificates/nginx-ssl.png)
+![具有 TLS 的 NGINX](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>访问服务器以验证配置
 
@@ -162,7 +162,7 @@ CSR 是请求证书时向 CA 提供的公钥。 CA 将针对此特定请求颁�
    ![受信任的根证书](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > 假设 DNS 已配置为将 Web 服务器名称（在本示例中为 www.fabrikam.com）指向 Web 服务器的 IP 地址。 否则，可以编辑 [hosts 文件](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)来解析名称。
+   > 假设 DNS 已配置为将 Web 服务器名称（在本示例中为 www.fabrikam.com）指向 Web 服务器的 IP 地址。 否则，可以编辑[主文件](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d)来解析名称。
 1. 浏览到你的网站，然后单击浏览器地址框中的锁定图标来验证站点和证书信息。
 
 ## <a name="verify-the-configuration-with-openssl"></a>使用 OpenSSL 验证配置
@@ -181,7 +181,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要从门户上传受信任的根证书，请选择“HTTP 设置”，然后选择“HTTPS”协议。  
+若要从门户上传受信任的根证书，请选择“HTTP 设置”，然后选择“HTTPS”协议 。
 
 ![使用门户添加证书](media/self-signed-certificates/portal-cert.png)
 
@@ -190,7 +190,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 或者，可以使用 Azure CLI 或 Azure PowerShell 上传根证书。 以下代码是一个 Azure PowerShell 示例。
 
 > [!NOTE]
-> 以下示例将受信任的根证书添加到应用程序网关，创建新的 HTTP 设置并添加新的规则（假设后端池和侦听器已存在）。
+> 下面的示例将受信任的根证书添加到应用程序网关，创建新的 HTTP 设置并添加新的规则（假设后端池和侦听器已存在）。
 
 ```azurepowershell
 ## Add the trusted root certificate to the Application Gateway
@@ -265,12 +265,12 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="verify-the-application-gateway-backend-health"></a>验证应用程序网关后端运行状况
 
-1. 单击应用程序网关的“后端运行状况”视图，检查探测是否正常。 
-1. 应会看到，HTTPS 探测的状态为“正常”。 
+1. 单击应用程序网关的“后端运行状况”视图，检查探测是否正常。
+1. 应会看到，HTTPS 探测的状态为“正常”。
 
 ![HTTPS 探测](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关应用程序网关上的 SSL\TLS 的详细信息，请参阅[tls 终止概述和应用程序网关的端到端 tls](ssl-overview.md)。
+若要了解有关应用程序网关上的 SSL\TLS 的详细信息，请参阅[应用程序网关的 TLS 终止和端到端 TLS 概述](ssl-overview.md)。
 

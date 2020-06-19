@@ -1,6 +1,6 @@
 ---
-title: 使用 GPT 分区调整 OS 磁盘的大小 |Microsoft Docs
-description: 本文介绍如何使用 GPT 分区调整 OS 磁盘的大小。
+title: 调整具有 GPT 分区的 OS 磁盘的大小 | Microsoft Docs
+description: 本文介绍如何调整具有 GPT 分区的 OS 磁盘的大小。
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: f863233f0a34271841cc8e973f9aa3ca9416ceeb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 7c408e8e29b3f9ac423a6104c40242f11f93a171
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858985"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651091"
 ---
-# <a name="resize-an-os-disk-with-a-gpt-partition"></a>调整 OS 磁盘的大小，并使用 GPT 分区
+# <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>调整具有 GPT 分区的 OS 磁盘的大小
 
 > [!NOTE]
-> 此方案仅适用于包含 GPT 分区的 OS 磁盘。
+> 此方案仅适用于具有 GUID 分区表 (GPT) 分区的 OS 磁盘。
 
-本文介绍如何使用 Linux 中的 GPT 分区增加 OS 磁盘的大小。
+本文介绍如何在 Linux 中增加具有 GPT 分区的 OS 磁盘的大小。 
 
-## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>确定 OS 磁盘是否有 MBR 或 GPT 分区
+## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>确定 OS 磁盘是否具有 MBR 或 GPT 分区
 
-使用**parted**命令来确定磁盘分区是使用主启动记录（MBR）分区还是 GUID 分区表（GPT）分区创建的。
+使用 parted 命令确定创建的磁盘分区是否具有主启动记录 (MBR) 分区或 GPT 分区。
 
 ### <a name="mbr-partition"></a>MBR 分区
 
-在下面的输出中，**分区表**显示值**msdos.sys**，其中标识**MBR**分区。
+在下面的输出中，分区表显示了一个 msdos 值 。 此值标识 MBR 分区。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT 分区
 
-在下面的输出中，**分区表**显示值**gpt**，用于标识 gpt 分区。
+在下面的输出中，分区表显示了一个 gpt 值 。 此值标识 GPT 分区。
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -67,25 +67,25 @@ Number  Start   End     Size    File system  Name                  Flags
 4       1052MB  68.7GB  67.7GB                                     lvm
 ```
 
-如果你的虚拟机（VM）在操作系统磁盘上有 GPT 分区，则增加操作系统磁盘的大小。
+如果虚拟机 (VM) 在 OS 磁盘上具有 GPT 分区，请增加 OS 磁盘的大小。
 
-## <a name="increase-the-size-of-the-os-disk"></a>增加操作系统磁盘的大小
+## <a name="increase-the-size-of-the-os-disk"></a>增加 OS 磁盘的大小
 
-以下说明适用于 Linux 认可的分发版。
+以下说明适用于 Linux 支持的分发版。
 
 > [!NOTE]
-> 在继续下一步之前，请为 VM 创建备份副本，或者创建 OS 磁盘的快照。
+> 在继续操作之前，为 VM 创建备份副本，或者拍摄 OS 磁盘的快照。
 
-### <a name="ubuntu-16x-and-18x"></a>Ubuntu 16. x 和 18. x
+### <a name="ubuntu"></a>Ubuntu
 
-若要增加 Ubuntu 16. x 和 18. x 中 OS 磁盘的大小，请执行以下操作：
+在 Ubuntu 16.x 和 18.x 中增加 OS 磁盘的大小：
 
 1. 停止 VM。
-1. 从门户增加 OSDisk 的大小。
-1. 重新启动 VM，并以**根**用户身份登录到 vm。
-1. OSDisk 现在会显示增加的文件系统大小。
+1. 从门户增加 OS 磁盘的大小。
+1. 重新启动 VM，然后以根用户身份登录到 VM。
+1. 验证 OS 磁盘现在是否显示增加后的文件系统大小。
 
-如以下示例中所示，操作系统磁盘已从门户调整到 100 GB，因为**/** 现在装入的 **/dev/sda1**文件系统显示 97 gb。
+如以下示例中所示，已通过门户将 OS 磁盘的大小调整为 100 GB。 / 上装载的 /dev/sda1 文件系统现在显示为 97 GB 。
 
 ```
 user@myvm:~# df -Th
@@ -102,21 +102,21 @@ tmpfs          tmpfs      65M     0   65M   0% /run/user/1000
 user@myvm:~#
 ```
 
-### <a name="suse-12-sp4suse-sles-12-for-sap-suse-sles-15-and-suse-sles-15-for-sap"></a>SUSE 12 SP4、SUSE SLES 12 for SAP、SUSE SLES 15 和 SUSE SLES 15 for SAP
+### <a name="suse"></a>SUSE
 
-若要增加 SUSE 12 SP4 中的 OS 磁盘的大小，SUSE SLES 15 和 SUSE SLES 15 for SAP：
+增加 SUSE 12 SP4、SUSE SLES 12 for SAP、SUSE SLES 15 和 SUSE SLES 15 for SAP 中的 OS 磁盘大小：
 
 1. 停止 VM。
-1. 从门户增加 OSDisk 的大小。
+1. 从门户增加 OS 磁盘的大小。
 1. 重启 VM。
 
 重新启动 VM 后，请执行以下步骤：
 
-   1. 使用以下命令以**根用户**身份访问 VM：
+   1. 通过使用以下命令，以根用户身份访问 VM：
    
       `#sudo su`
 
-   1. 使用以下命令安装**gptfdisk**包，这是增加 OS 磁盘大小所必需的：
+   1. 使用以下命令安装 gptfdisk 包，增加 OS 磁盘大小需要此包：
 
       `#zypper install gptfdisk -y`
 
@@ -124,13 +124,13 @@ user@myvm:~#
 
       `#sgdisk -e /dev/sda`
 
-   1. 调整分区大小，但不使用以下命令将其删除。 **Parted**命令有一个名为**resizepart**的选项，用于重设分区大小，而不会将其删除。 Resizepart 后面的数字4指示调整第四个（第四个）分区的大小。
+   1. 使用以下命令，在不删除分区的情况下调整其大小。 Parted 命令具有一个名为“resizepart”的选项，用于在不删除分区的情况下调整其大小 。 Resizepart 后面的数字 4 表示调整第四个分区的大小。
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
 
-   1. 运行`#lsblk`命令以检查分区是否已增加。
+   1. 运行 #lsblk 命令以检查是否已增加分区大小。
 
-      以下输出显示已将 **/dev/sda4**分区调整为 98.5 GB。
+      下面的输出显示已将 /dev/sda4 分区的大小调整为 98.5 GB。
 
       ```
       user@myvm:~ # lsblk
@@ -143,7 +143,7 @@ user@myvm:~#
       └─sdb1   8:17   0   20G  0 part /mnt/resource
       ```
       
-   1. 使用以下命令标识 OSDisk 上的文件系统类型：
+   1. 使用以下命令确定 OS 磁盘上的文件系统类型：
 
       `blkid`
 
@@ -162,7 +162,7 @@ user@myvm:~#
 
    1. 根据文件系统类型，使用相应的命令调整文件系统的大小。
 
-      对于**xfs**，请使用以下命令：
+      对于 xfs，使用以下命令：
 
       ` #xfs_growfs /`
 
@@ -183,11 +183,11 @@ user@myvm:~#
       data blocks changed from 7470331 to 25820172
       ```
 
-      对于**ext4**，请使用以下命令：
+      对于 ext4，使用以下命令：
 
       ```#resize2fs /dev/sda4```
 
-   1. 使用以下命令验证**df-Th**增加的文件系统大小：
+   1. 使用以下命令验证增加后的用于 df -Th 的文件系统的大小：
 
       `#df -Th`
 
@@ -208,37 +208,39 @@ user@myvm:~#
       user@myvm:~ #
       ```
 
-如前面的示例所示，我们可以看到 OSDisk 的文件系统大小已增加。
+在前面的示例中，可以看到 OS 磁盘的文件系统大小已增加。
 
-### <a name="rhel-7x-with-lvm"></a>RHEL 7、windows with LVM
+### <a name="rhel"></a>RHEL
+
+在带有 LVM 的 RHEL 7.x 中增加 OS 磁盘的大小：
 
 1. 停止 VM。
-1. 从门户增加 OSDisk 的大小。
+1. 从门户增加 OS 磁盘的大小。
 1. 启动 VM。
 
 重新启动 VM 后，请执行以下步骤：
 
-   1. 使用以下命令以**根用户**身份访问 VM：
+   1. 通过使用以下命令，以根用户身份访问 VM：
    
       `#sudo su`
 
-   1. 安装**gptfdisk**包，它需要增加操作系统磁盘的大小。
+   1. 安装 gptfdisk 包，增加 OS 磁盘大小需要此包。
 
       `#yum install gdisk -y`
 
-   1. 若要查看磁盘上的最大可用扇区，请运行以下命令：
+   1. 若要查看磁盘上可用的最大扇区，请运行以下命令：
 
       `#sgdisk -e /dev/sda`
 
-   1. 调整分区大小，但不使用以下命令将其删除。 **Parted**命令有一个名为**resizepart**的选项，用于重设分区大小，而不会将其删除。 Resizepart 后面的数字4指示调整第四个（第四个）分区的大小。
+   1. 使用以下命令，在不删除分区的情况下调整其大小。 Parted 命令具有一个名为“resizepart”的选项，用于在不删除分区的情况下调整其大小 。 Resizepart 后面的数字 4 表示调整第四个分区的大小。
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
     
-   1. 运行以下命令以验证分区是否已增加：
+   1. 运行以下命令，以验证分区大小是否已增加：
 
       `#lsblk`
 
-      以下输出显示已将 **/dev/sda4**分区调整为 99 GB。
+      下面的输出显示已将 /dev/sda4 分区的大小调整为 99 GB。
 
       ```
       [user@myvm ~]# lsblk
@@ -259,11 +261,11 @@ user@myvm:~#
       └─sdb1              8:17   0   50G  0 part /mnt/resource
       ```
 
-   1. 使用以下命令调整**物理卷的大小（PV）**：
+   1. 使用以下命令调整物理卷 (PV) 大小：
 
       `#pvresize /dev/sda4`
 
-      以下输出显示 PV 已调整大小为 99.02 GB。
+      下面的输出显示已将 PV 的大小调整为 99.02 GB。
 
       ```
       [user@myvm ~]# pvresize /dev/sda4
@@ -275,7 +277,7 @@ user@myvm:~#
       /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
       ```
 
-   1. 在下面的示例中`/dev/mapper/rootvg-rootlv` ，使用以下命令将大小从2gb 调整为12GB （增加10gb），这也会调整文件系统的大小：
+   1. 在下面的示例中，通过以下命令将 /dev/mapper/rootvg-rootlv 的大小从 2 GB 调整到了 12 GB（增加了 10 GB）。 此命令还将调整文件系统的大小。
 
       `#lvresize -r -L +10G /dev/mapper/rootvg-rootlv`
 
@@ -297,7 +299,7 @@ user@myvm:~#
       data blocks changed from 524288 to 3145728
       ```
          
-   1. 验证是否`/dev/mapper/rootvg-rootlv`增加了文件系统大小或未使用以下命令：
+   1. 使用以下命令验证是否已增加 /dev/mapper/rootvg-rootlv 的文件系统大小：
 
       `#df -Th /`
 
@@ -310,8 +312,8 @@ user@myvm:~#
       [user@myvm ~]#
       ```
 
-      > [!NOTE]
-      > 若要使用相同的过程调整任何其他逻辑卷的大小，请在步骤7中更改**lv**名称
+   > [!NOTE]
+   > 若要使用相同的过程来调整任何其他逻辑卷的大小，请更改步骤 7 中的 lv 名称。
 
 ## <a name="next-steps"></a>后续步骤
 

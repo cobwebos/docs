@@ -1,6 +1,6 @@
 ---
-title: 存档 Azure 安全中心的新增功能
-description: 介绍 Azure 安全中心在六个月以前和更早版本中的新增功能和更改内容。
+title: Azure 安全中心的新增功能存档
+description: 介绍 Azure 安全中心在六个月以前的新增功能和已更改的功能。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c0883e91d5e806fb166c3ddeafc4ce130ff3f66f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210838"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860896"
 ---
-# <a name="archive-for-whats-new-in-azure-security-center"></a>如何存档 Azure 安全中心的新增功能？
+# <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能存档
 
-" [Azure Active Directory 中的新增功能？"](release-notes.md)发行说明 "页包含过去六个月的更新，而此页面包含较旧的项目。
+[Azure 安全中心的新增功能](release-notes.md)发行说明主页包含过去六个月的更新，而本页包含更早以前的项目。
 
-此页提供以下信息：
+本页提供以下方面的信息：
 
 - 新增功能
 - Bug 修复
@@ -31,181 +31,181 @@ ms.locfileid: "83210838"
 
 ## <a name="november-2019"></a>2019 年 11 月
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>北美区域的公共预览版中的 Azure Key Vault 威胁防护
+### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>针对 Azure Key Vault 的威胁防护在北美区域推出了公共预览版
 
-Azure Key Vault 是一项基本服务，通过提供集中管理云中密钥、机密、加密密钥和策略的功能，来保护数据和提高云应用程序的性能。 由于 Azure Key Vault 会存储敏感数据和业务关键数据，因此需要对密钥保管库和存储的数据的最大安全性。
+Azure Key Vault 是一个基本服务，它通过提供集中管理云中密钥、机密、加密密钥和策略的功能，来保护数据和提高云应用程序的性能。 由于 Azure Key Vault 存储敏感数据和业务关键数据，因此必须保证密钥保管库及其存储的数据的最高安全性。
 
-Azure 安全中心对 Azure Key Vault 威胁防护的支持提供了额外的安全智能层，用于检测访问或利用密钥保管库的异常和潜在有害尝试。 这一新的保护层允许客户针对其密钥保管库解决威胁，而无需成为安全专家或管理安全监视系统。 功能北美区域中的公共预览版。
-
-
-### <a name="threat-protection-for-azure-storage-includes-malware-reputation-screening"></a>Azure 存储的威胁防护包括恶意软件信誉屏蔽
-
-适用于 Azure 存储的威胁防护提供了由 Microsoft 威胁智能提供支持的新检测功能，通过使用哈希信誉分析和来自活动 Tor 出口节点的可疑访问（匿名代理）来检测恶意软件上传到 Azure 存储。 你现在可以使用 Azure 安全中心查看跨存储帐户检测到的恶意软件。
+Azure 安全中心对 Azure Key Vault 的威胁防护的支持提供额外的安全情报层，用于检测以非寻常和可能有害的方式访问或恶意利用密钥保管库的企图。 此新保护层使得客户无需成为安全专家或管理安全监视系统，就能应对其密钥保管库受到的威胁。 此功能在北美区域推出了公共预览版。
 
 
-### <a name="workflow-automation-with-logic-apps-preview"></a>逻辑应用的工作流自动化（预览）
+### <a name="threat-protection-for-azure-storage-includes-malware-reputation-screening"></a>针对 Azure 存储的威胁防护包括恶意软件信誉屏蔽
 
-在其环境中发现差异时，具有集中管理的安全性和 IT/操作的组织将实施内部工作流进程，以在组织内推动所需的操作。 在许多情况下，这些工作流是可重复的过程，自动化可大大简化组织内的过程。
-
-今天，我们在安全中心引入了一项新功能，该功能使客户能够使用 Azure 逻辑应用创建自动化配置，并创建可根据特定 ASC 发现（如建议或警报）自动触发这些配置的策略。 可以将 Azure 逻辑应用配置为执行任意自定义操作，该操作由大型逻辑应用连接器团体支持，或使用安全中心提供的模板之一，例如发送电子邮件或打开 ServiceNow™票证。
-
-有关运行工作流的自动和手动安全中心功能的详细信息，请参阅[工作流自动化](workflow-automation.md)。
-
-若要了解如何创建逻辑应用，请参阅[Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+针对 Azure 存储的威胁防护提供由 Microsoft 威胁情报支持的新检测，可以使用哈希信誉分析来检测将恶意软件上传到 Azure 存储的行为，并可以检测从活动的 Tor 出口节点（一个匿名代理）进行的可疑访问。 现在，你可以使用 Azure 安全中心查看在各个存储帐户中检测到的恶意软件。
 
 
-### <a name="quick-fix-for-bulk-resources-generally-available"></a>适用于大容量资源的快速修复功能已正式发布
+### <a name="workflow-automation-with-logic-apps-preview"></a>使用逻辑应用实现工作流自动化（预览版）
 
-由于将用户作为安全分数的一部分提供的多个任务，能够有效地纠正大型汽油中的问题可能会变得很困难。
+在集中管理安全性和 IT/运营的组织的环境中发现差异时，这些组织可以实施内部工作流程来驱动所需的操作。 在许多情况下，这些工作流是可重复的流程，而自动化可以在组织内部大幅简化流程。
 
-若要简化对安全错误配置的修正，并能够快速修正对大量资源的建议并提高安全分数，请使用快速修复修补程序。
+目前我们正在安全中心内引入一项新功能，它可以让客户创建利用 Azure 逻辑应用的自动化配置，并创建可根据具体 ASC 发现结果自动触发这些配置的策略（例如“建议”或“警报”）。 可将 Azure 逻辑应用配置为执行逻辑应用连接器大型社区所支持的任何自定义操作，或使用安全中心提供的某个模板，例如，发送电子邮件或开具 ServiceNow™ 票证。
 
-此操作可让你选择要对其应用修正的资源，并启动一个将代表你配置设置的修正操作。
+若要详细了解用于运行工作流的自动和手动安全中心功能，请参阅[工作流自动化](workflow-automation.md)。
 
-快速修补程序现已在安全中心建议页中提供。
-
-请参阅[安全建议的参考指南](recommendations-reference.md)中的建议启用了快速修复。
+若要了解如何创建逻辑应用，请参阅 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
 
 
-### <a name="scan-container-images-for-vulnerabilities-preview"></a>扫描容器映像中的漏洞（预览版）
+### <a name="quick-fix-for-bulk-resources-generally-available"></a>批量资源快速修复功能已推出正式版
 
-Azure 安全中心现在可以扫描 Azure 容器注册表中的容器映像中的漏洞。
+由于用户在安全评分中要执行许多任务，有效修正大型机群中的问题可能会变得困难。
 
-映像扫描的工作方式是分析容器映像文件，然后检查是否有任何已知的漏洞（由 Qualys 提供支持）。
+为了简化对安全错误配置的修正，快速修正针对批量资源的建议并提高安全评分，请使用“快速修复”修正措施。
 
-将新的容器映像推送到 Azure 容器注册表时，会自动触发扫描本身。 找到的漏洞将作为安全中心建议，并包括在 Azure 安全分数中，并提供有关如何修补它们以减少所允许攻击面的信息。
+此操作可让你选择要对其应用修正措施的资源，并启动一个修正措施来让系统代你配置设置。
 
+现在，安全中心建议页上已向客户推出了快速修复正式版。
 
-### <a name="additional-regulatory-compliance-standards-preview"></a>其他法规遵从标准（预览版）
-
-规章相容性仪表板提供基于安全中心评估的符合性状态的见解。 该仪表板显示了你的环境如何符合特定规章标准和行业基准规范指定的控制和要求，并提供有关如何满足这些要求的说明性建议。
-
-目前，合规性仪表板支持四种内置的标准： Azure CIS 1.1.0、PCI-DSS、ISO 27001 和 SOC-TSP。 我们现在宣布推出其他受支持标准的公共预览版： NIST SP 800-53 R4、SWIFT CSP CSCF v2020、加拿大联邦 PBMM 和英国官方与英国 NHS 一起发布。 我们还发布了 Azure CIS 1.1.0 的更新版本，涵盖了来自标准和增强扩展性的更多控制。
-
-[详细了解如何自定义合规性仪表板中的标准集](update-regulatory-compliance-packages.md)。
+在[安全建议参考指南](recommendations-reference.md)中了解哪些建议启用了快速修复。
 
 
-### <a name="threat-protection-for-azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版）的威胁防护
+### <a name="scan-container-images-for-vulnerabilities-preview"></a>扫描容器映像的漏洞（预览版）
 
-Kubernetes 很快就成为了部署和管理云中软件的新标准。 很少有用户对 Kubernetes 有丰富的经验，并且很多人只关注一般的工程和管理，并忽略安全方面。 需要认真配置 Kubernetes 环境，以确保不会为攻击者公开面向容器的受攻击面门。 安全中心正在将容器空间中的支持扩展到 Azure 中增长最快的一项服务（AKS）。
+Azure 安全中心现在可以扫描 Azure 容器注册表中容器映像的漏洞。
+
+映像扫描的工作原理是分析容器映像文件，然后查看是否存在任何已知漏洞（由 Qualys 提供支持）。
+
+将新容器映像推送到 Azure 容器注册表时，会自动触发扫描本身。 发现的漏洞将以安全中心建议的形式显示，其中包括 Azure 安全评分，以及有关如何修补这些漏洞以减小允许的受攻击面的信息。
+
+
+### <a name="additional-regulatory-compliance-standards-preview"></a>其他监管合规标准（预览版）
+
+“监管合规”仪表板基于安全中心评估结果提供合规态势的见解。 该仪表板会显示你的环境是否符合特定法规标准和行业基准指定的控制措施与要求，并提供有关如何符合这些要求的规范性建议。
+
+目前，监管合规仪表板支持四项内置标准：Azure CIS 1.1.0、PCI-DSS、ISO 27001 和 SOC-TSP。 我们现在宣布推出其他受支持标准的公共预览版：NIST SP 800-53 R4、SWIFT CSP CSCF v2020、加拿大联邦 PBMM、UK Official 和 UK NHS。 此外，我们正在发布 Azure CIS 1.1.0 的更新版本，其中涵盖了标准中的更多控制措施，并增强了扩展性。
+
+[详细了解如何在监管合规仪表板中自定义标准集](update-regulatory-compliance-packages.md)。
+
+
+### <a name="threat-protection-for-azure-kubernetes-service-preview"></a>针对 Azure Kubernetes 服务的威胁防护（预览版）
+
+Kubernetes 很快就成了在云中部署和管理软件的新标准。 只有少量的用户对 Kubernetes 拥有丰富的经验；很多用户只是注重一般的工程和管理，而忽略了安全方面。 需要精心配置 Kubernetes 环境以使其保持安全，确保不会公开任何以容器为中心的受攻击面，避免为攻击者打开后门。 安全中心正在将其在容器领域的支持扩展到 Azure 中发展速度最快的服务之一 - Azure Kubernetes 服务 (AKS)。
 
 此公共预览版中的新功能包括：
 
-- **发现 & 可见性**-在安全中心的已注册订阅内持续发现托管的 AKS 实例。
-- **安全分数建议**-可操作的项可帮助客户遵循 AKS 中的安全最佳做法，作为客户的安全分数的一部分，例如 "应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问权限。
-- **威胁检测**-基于主机和群集的分析，如 "检测到特权容器"。
+- **发现和可见性** - 在安全中心的已注册订阅中持续发现 AKS 托管实例。
+- **安全评分建议** - 提供可操作的项来帮助客户遵循 AKS 中的安全最佳做法（以客户安全评分提供评估结果），例如“应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问”。
+- **威胁检测** - 基于主机和群集的分析，例如“检测到特权容器”。
 
 
 ### <a name="virtual-machine-vulnerability-assessment-preview"></a>虚拟机漏洞评估（预览版）
 
-安装在虚拟机中的应用程序通常会有可能导致虚拟机破坏的漏洞。 我们将宣布安全中心标准层包含虚拟机的内置漏洞评估，无额外费用。 公共预览版中的漏洞评估由 Qualys 提供支持，可让你持续扫描虚拟机上所有已安装的应用程序，以查找有漏洞的应用程序，并在安全中心门户的体验中提供调查结果。 安全中心负责所有部署操作，使用户无需进行额外的工作。 接下来，我们计划提供漏洞评估选项来支持客户独特的业务需求。
+安装在虚拟机中的应用程序可能经常出现漏洞，导致虚拟机遭到入侵。 我们宣布，安全中心标准层包含针对虚拟机的内置漏洞评估，且不收取额外的费用。 由 Qualys 提供支持的漏洞评估公共预览版可让你持续扫描虚拟机上安装的所有应用程序以找出有漏洞的应用程序，并在安全中心门户体验中显示扫描结果。 安全中心负责处理所有部署操作，不需要用户额外付出精力。 接下来，我们计划提供漏洞评估选项来支持客户实现其独特的业务需求。
 
-[了解有关 Azure 虚拟机的漏洞评估的详细信息](security-center-vulnerability-assessment-recommendations.md)。
+[详细了解针对 Azure 虚拟机的漏洞评估](security-center-vulnerability-assessment-recommendations.md)。
 
 
-### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 虚拟机上 SQL server 的高级数据安全性（预览版）
+### <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 虚拟机上的 SQL 服务器的高级数据安全性（预览版）
 
-Azure 安全中心支持在 IaaS Vm 上运行的 SQL 数据库的威胁防护和漏洞评估现在为预览版。
+Azure 安全中心对 IaaS VM 上运行的 SQL 数据库的威胁防护和漏洞评估支持现已推出预览版。
 
-[漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)是一种易于配置的服务，可以发现、跟踪和帮助您修正潜在的数据库漏洞。 它以 Azure 安全分数的形式提供安全状况的可见性，并包含解决安全问题并增强数据库 fortifications 的步骤。
+[漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 此服务可让你查看以 Azure 安全评分提供的安全态势，并包含用于解决安全问题和增强数据库防御能力的步骤。
 
-[高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)可检测异常活动，这些活动表明访问或利用 SQL server 的异常和潜在有害尝试。 它会持续监视你的数据库中是否存在可疑活动，并针对异常数据库访问模式提供面向操作的安全警报。 这些警报提供可疑活动的详细信息和建议的操作来调查和缓解威胁。
+[高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)检测异常活动，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用你的 SQL 服务器。 它会持续监视数据库中的可疑活动，并针对异常的数据库访问模式提供操作导向的安全警报。 这些警报提供可疑活动的详细信息，以及有助于调查和缓解威胁的建议操作。
 
 
 ### <a name="support-for-custom-policies-preview"></a>支持自定义策略（预览版）
 
 Azure 安全中心现在支持自定义策略（预览版）。
 
-我们的客户想要在安全中心使用其自己的安全评估来扩展他们的当前安全评估范围，并根据他们在 Azure 策略中创建的策略进行评估。 由于支持自定义策略，现在就可以了。
+我们的客户一直希望在安全中心内扩大其当前安全评估的涵盖范围，以便能够基于他们在 Azure Policy 中创建的策略执行自己的安全评估。 由于支持自定义策略，这种愿望已得到实现。
 
-这些新策略将是安全中心建议体验、安全评分和规章遵从标准仪表板的一部分。 由于支持自定义策略，你现在可以在 Azure 策略中创建一个自定义计划，然后将其作为策略添加到安全中心，并将其可视化为建议。
-
-
-### <a name="extending-azure-security-center-coverage-with-platform-for-community-and-partners"></a>通过适用于社区和合作伙伴的平台扩展 Azure 安全中心覆盖范围
-
-使用安全中心不仅能接收来自 Microsoft 的建议，还能接收来自合作伙伴的现有解决方案（如 Check Point、Tenable 和 CyberArk），并提供更多的集成。  安全中心的简单载入流可以将您的现有解决方案连接到安全中心，使您可以在一个位置查看您的安全状况建议，运行统一报表，并利用所有安全中心的功能，同时应对内置和合作伙伴的建议。 你还可以将安全中心建议导出到合作伙伴产品。
-
-[了解有关 Microsoft 智能安全关联的详细信息](https://www.microsoft.com/security/partnerships/intelligent-security-association)。
+安全中心建议体验、安全评分和监管合规标准仪表板中将会包含这些新策略。 由于支持自定义策略，现在可以在 Azure Policy 中创建一个自定义计划，然后将其作为策略添加到安全中心，并将其作为建议可视化。
 
 
+### <a name="extending-azure-security-center-coverage-with-platform-for-community-and-partners"></a>在面向社区和合作伙伴的平台中扩大 Azure 安全中心的涵盖范围
 
-### <a name="advanced-integrations-with-export-of-recommendations-and-alerts-preview"></a>与导出建议和警报（预览）的高级集成
+使用安全中心不仅可以从 Microsoft 接收建议，而且还能从 Check Point、Tenable 和 CyberArk 等合作伙伴提供的现有解决方案以及不断推出的其他许多集成中接收建议。  安全中心的简单加入流程可将你的现有解决方案连接到安全中心，使你可以在一个位置查看安全态势建议、运行统一报告，以及针对内置建议和合作伙伴建议利用安全中心的所有功能。 还可以将安全中心建议导出到合作伙伴产品。
 
-为了在安全中心之上启用企业级方案，现在可以在 Azure 门户或 API 之外的其他位置使用安全中心警报和建议。 这些可以直接导出到事件中心并 Log Analytics 工作区。 下面是一些可以围绕这些新功能创建的工作流：
-
-- 通过导出到 Log Analytics 工作区，你可以创建具有 Power BI 的自定义仪表板。
-- 使用 "导出到事件中心"，可以将安全中心警报和建议导出到第三方 Siem，并将其提供给第三方解决方案的实时或 Azure 数据资源管理器。
+[详细了解 Microsoft 智能安全关联](https://www.microsoft.com/security/partnerships/intelligent-security-association)。
 
 
-### <a name="onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview"></a>从 Windows 管理中心（预览版）将本地服务器载入到安全中心
 
-Windows 管理中心是一个管理门户，适用于未在 Azure 中部署的 Windows 服务器提供多种 Azure 管理功能，例如备份和系统更新。 我们最近添加了一项功能，该功能可将这些非 Azure 服务器直接由 ASC 保护，以通过 Windows 管理中心体验。
+### <a name="advanced-integrations-with-export-of-recommendations-and-alerts-preview"></a>支持导出建议和警报的高级集成（预览版）
 
-通过这种新体验，用户将 WAC 服务器加入 Azure 安全中心，并直接在 Windows 管理中心体验中查看其安全警报和建议。
+若要在安全中心的顶层实现企业级方案，现在可以在除 Azure 门户或 API 以外的其他位置使用安全中心警报和建议。 可直接将这些警报和建议导出到事件中心与 Log Analytics 工作区。 下面是可以围绕这些新功能创建的一些工作流：
+
+- 借助导出到 Log Analytics 工作区的功能，可以使用 Power BI 创建自定义仪表板。
+- 借助导出到事件中心的功能，可将安全中心警报和建议导出到第三方 SIEM、实时导出到第三方解决方案，或导出到 Azure 数据资源管理器。
+
+
+### <a name="onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview"></a>从 Windows 管理中心将本地服务器加入安全中心（预览版）
+
+Windows 管理中心是一个管理门户，适用于未在 Azure 中部署的 Windows Server，为它们提供多项 Azure 管理功能（例如备份和系统更新）。 我们最近添加了一项功能，允许直接从 Windows 管理中心体验加入这些非 Azure 服务器，使其受 ASC 保护。
+
+使用此新体验，用户可以直接在 Windows 管理中心体验中将 WAC 服务器加入 Azure 安全中心，并查看其安全警报和建议。
 
 
 ## <a name="september-2019"></a>2019 年 9 月
 
-### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>通过自适应应用程序控件改进功能管理规则
+### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>使用自适应应用程序控制管理规则的功能已改进
 
-使用自适应应用程序控件来管理虚拟机的规则的体验已得到改进。 Azure 安全中心的自适应应用程序控件可帮助您控制哪些应用程序可以在您的虚拟机上运行。 除了对规则管理的一般改进之外，还可以通过新的权益来控制在添加新规则时将保护哪些文件类型。
+使用自适应应用程序控制管理虚拟机规则的体验已得到改进。 Azure 安全中心的自适应应用程序控制可帮助你控制哪些应用程序能够在你的虚拟机上运行。 除了对规则管理做出了一般性的改进外，在添加新规则时，你还可以通过一个新功能来控制要保护哪些文件类型。
 
-[详细了解自适应应用程序控件](security-center-adaptive-application.md)。
+[详细了解自适应应用程序控制](security-center-adaptive-application.md)。
 
 
-### <a name="control-container-security-recommendation-using-azure-policy"></a>使用 Azure 策略控制容器安全建议
+### <a name="control-container-security-recommendation-using-azure-policy"></a>使用 Azure Policy 控制容器安全建议
 
-Azure 安全中心建议修正容器安全中的漏洞现在可以通过 Azure 策略启用或禁用。
+现在，可以通过 Azure Policy 启用或禁用 Azure 安全中心提供的有关修正容器安全性中的漏洞的建议。
 
-若要查看已启用的安全策略，请在 "安全中心" 中打开 "安全策略" 页。
+若要查看已启用的安全策略，请在安全中心内打开“安全策略”页。
 
 
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Azure 防火墙的实时（JIT） VM 访问 
+### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Azure 防火墙的实时 (JIT) VM 访问 
 
-Azure 防火墙的实时（JIT） VM 访问现已正式发布。 使用它来保护 Azure 防火墙保护的环境以及 NSG 受保护的环境。
+Azure 防火墙的实时 (JIT) VM 访问现已推出正式版。 使用此功能可以确保 Azure 防火墙保护的环境以及 NSG 保护的环境的安全。
 
-JIT VM 访问通过使用 NSG 和 Azure 防火墙规则，仅在需要时提供对 Vm 的受控访问，从而减少了网络容量耗尽攻击的风险。
+JIT VM 访问使用 NSG 和 Azure 防火墙规则，仅在需要时才提供对 VM 的受控访问，以此减少受到网络容量耗尽攻击的风险。
 
-为 Vm 启用 JIT 时，将创建一个策略，该策略确定要保护的端口、端口保持打开状态的时间，以及可以访问这些端口的已批准 IP 地址。 此策略可帮助你控制用户在请求访问时可执行的操作。
+为 VM 启用 JIT 时，可创建一个策略来确定要保护的端口、端口保持打开状态的时间，以及可从哪些已批准的 IP 地址访问这些端口。 此策略可帮助你控制用户在请求访问权限时可执行哪些操作。
 
-请求记录在 Azure 活动日志中，因此你可以轻松监视和审核访问。 此实时页面还可帮助你快速识别已启用 JIT 的现有 Vm 以及建议使用 JIT 的虚拟机。
+请求将记录在 Azure 活动日志中，因此你可以轻松监视和审核访问。 此实时页面还可帮助你快速识别已启用 JIT 的现有 VM，以及建议启用 JIT 的 VM。
 
 [详细了解 Azure 防火墙](https://docs.microsoft.com/azure/firewall/overview)。
 
 
-### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>单击 "修正" 以提升安全状况（预览版）
+### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>提升安全态势的一键式修正（预览版）
 
-安全评分是一个可帮助你评估工作负荷安全状况的工具。 它会查看你的安全建议并为你确定其优先级，因此你知道首先要执行哪些建议。 这可以帮助你找到最严重的安全漏洞来确定调查的优先级。
+安全评分是一个可帮助你评估工作负荷安全状况的工具。 它会评审你的安全建议并确定其优先级，以便你知道要首先执行哪些建议。 这可帮助你找到最严重的安全漏洞，以确定调查优先级。
 
-为了简化安全配置错误的补救，并帮助你快速提高安全分数，我们添加了一项新功能，使你可以通过一次单击来修正大量资源的建议。
+为了简化安全配置错误的修正并帮助你快速提高安全评分，我们添加了一项新功能，让你一键式修正针对批量资源的建议。
 
-此操作可让你选择要对其应用修正的资源，并启动一个将代表你配置设置的修正操作。
+此操作可让你选择要对其应用修正措施的资源，并启动一个修正措施来让系统代你配置设置。
 
-请参阅[安全建议的参考指南](recommendations-reference.md)中的建议启用了快速修复。
+在[安全建议参考指南](recommendations-reference.md)中了解哪些建议启用了快速修复。
 
 
 ### <a name="cross-tenant-management"></a>跨租户管理
 
-安全中心现在支持在 Azure Lighthouse 中进行跨租户管理方案。 这使你能够在安全中心查看和管理多个租户的安全状况。 
+安全中心现在可通过 Azure Lighthouse 支持跨租户管理方案。 此功能使你能够在安全中心查看和管理多个租户的安全态势。 
 
-[了解有关跨租户管理体验的详细信息](security-center-cross-tenant-management.md)。
+[详细了解跨租户管理体验](security-center-cross-tenant-management.md)。
 
 
 ## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="updates-to-network-recommendations"></a>网络建议的更新
 
-Azure 安全中心（ASC）已推出新的网络建议，并改进了现有的网络建议。 现在，使用安全中心可以确保更好地为资源提供更好的网络保护。 
+Azure 安全中心 (ASC) 已推出新的网络建议，并改进了一些现有的建议。 现在，使用安全中心可以确保进一步为资源提供更好的网络保护。 
 
-[了解有关网络建议的详细信息](recommendations-reference.md#recs-network)。
+[详细了解网络建议](recommendations-reference.md#recs-network)。
 
 
 ## <a name="june-2019"></a>2019 年 6 月
 
-### <a name="adaptive-network-hardening---generally-available"></a>自适应网络强化-正式发布
+### <a name="adaptive-network-hardening---generally-available"></a>自适应网络强化 - 正式版
 
-在公有云中运行的工作负荷的最大攻击面之一是与公共 Internet 之间的连接。 我们的客户发现很难知道哪个网络安全组（NSG）规则应该已准备就绪，以确保 Azure 工作负荷仅适用于所需的源范围。 利用此功能，安全中心可了解 Azure 工作负荷的网络流量和连接模式，并为面向 Internet 的虚拟机提供 NSG 规则建议。 这可以帮助我们的客户更好地配置其网络访问策略，并限制他们遭受攻击。 
+公有云中运行的工作负荷面对的最大受攻击面之一是与公共 Internet 之间的连接。 我们的客户发现，他们很难知道要部署哪些网络安全组 (NSG) 规则来确保仅在所需的源范围内提供 Azure 工作负荷。 使用此功能，安全中心可以了解 Azure 工作负荷的网络流量和连接模式，并为面向 Internet 的虚拟机提供 NSG 规则建议。 这有助于我们的客户更好地配置其网络访问策略，并限制受到攻击的风险。 
 
 [详细了解自适应网络强化](security-center-adaptive-network-hardening.md)。

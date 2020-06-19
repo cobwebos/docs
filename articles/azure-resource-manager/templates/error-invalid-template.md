@@ -1,14 +1,14 @@
 ---
-title: 无效模板错误
-description: 说明如何在部署 Azure 资源管理器模板时解决无效模板错误。
+title: “模板无效”错误
+description: 介绍如何解决在部署 Azure 资源管理器模板时遇到的“模板无效”错误。
 ms.topic: troubleshooting
-ms.date: 03/08/2018
-ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/22/2020
+ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76154051"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83832515"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
 
@@ -62,7 +62,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称  。
+根级别的资源其名称中的段必须比资源类型中的段少一个。 段之间用斜杠隔开。 在下面的示例中，类型有两个段，名称有一个段，因此为有效名称。
 
 ```json
 {
@@ -115,7 +115,7 @@ for type {resource-type} has incorrect segment lengths.
 
 ## <a name="solution-3---parameter-is-not-valid"></a>解决方案 3 - 参数无效
 
-如果所提供的的参数值不是允许值之一，则会收到类似于以下错误的消息：
+如果你提供的参数值不是允许值之一，则会收到类似于以下错误的消息：
 
 ```
 Code=InvalidTemplate;
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解决方案 4 - 太多目标资源组
 
-如果在单个部署中指定的目标资源组超过五个，则会收到此错误。 请考虑合并部署中的资源组数，或者部署某些模板作为单独的部署。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
+你可能在之前的部署中看到此错误，原因是你被限制为一个部署使用 5 个目标资源组。 在 2020 年 5 月，此限额被上调到了 800 个资源组。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
 
 <a id="circular-dependency" />
 
@@ -143,7 +143,7 @@ part of the allowed values
 1. 在模板中找到循环依赖项中标识的资源。
 2. 检查该资源的 **dependsOn** 属性并使用 **reference** 函数查看其所依赖的资源。
 3. 检查这些资源，看其依赖于哪些资源。 顺着这些依赖项检查下去，直到找到依赖于原始资源的资源。
-5. 对于循环依赖项所牵涉的资源，请仔细检查所有使用 **dependsOn** 属性的情况，确定不需要的依赖项。 删除这些依赖项。 如果不确定某个依赖项是否为必需依赖项，可尝试删除它。
+5. 对于循环依赖项所牵涉的资源，请仔细检查所有使用 dependsOn 属性的情况，确定不需要的依赖项。 删除这些依赖项。 如果不确定某个依赖项是否必需，可尝试删除它。
 6. 重新部署模板。
 
 部署模板时，删除 **dependsOn** 属性中的值可能导致错误。 如果遇到错误，可将依赖项添加回模板。

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd430d750b2220882479a430322f4b4c4e0c44c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594726"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83712343"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>向应用添加自助注册用户流（预览）
 |     |
@@ -25,7 +25,10 @@ ms.locfileid: "83594726"
 | 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
-通过将用户流与应用关联，可以在相应应用上启用注册。 可以选择多个与用户流关联的应用。 在你将用户流与一个或多个应用关联后，访问相应应用的用户就能使用用户流中配置的选项进行注册。
+可以为组织生成的应用创建用户流。 通过将用户流与应用关联，可以在相应应用上启用注册。 可以选择多个与用户流关联的应用。 将用户流与一个或多个应用关联后，访问相应应用的用户将能够使用用户流中配置的选项注册并获得来宾帐户。
+
+> [!NOTE]
+> 可以将用户流与组织生成的应用相关联。 用户流不能用于 Microsoft 应用，如 SharePoint 或 Teams。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -33,9 +36,12 @@ ms.locfileid: "83594726"
 
 Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情况下，用户可以使用 Azure AD 帐户进行注册。 也可以通过在这些注册流中添加社交标识提供者来支持 Google 和 Facebook 帐户。
 
-- [向社交标识提供者列表添加 Google](google-federation.md)
 - [向社交标识提供者列表添加 Facebook](facebook-federation.md)
- 
+- [向社交标识提供者列表添加 Google](google-federation.md)
+
+> [!NOTE]
+> 在当前的预览版中，如果自助注册用户流已与某个应用关联，而你向某位用户发送了该应用的邀请，那么该用户将无法使用 Gmail 帐户兑换该邀请。 作为解决方法，用户可以执行自助服务注册流程。 此外，用户可以通过访问其他应用或使用“我的应用”门户（位于 https://myapps.microsoft.com ）来兑换邀请。
+
 ### <a name="define-custom-attributes-optional"></a>定义自定义属性（可选）
 
 用户属性是在自助注册期间收集的用户值。 Azure AD 随附了一组内置属性，但你也可以创建自定义属性，以用于用户流。 还可以使用 Microsoft Graph API 读写这些属性。 请参阅[定义用户流的自定义属性](user-flow-add-custom-attributes.md)。

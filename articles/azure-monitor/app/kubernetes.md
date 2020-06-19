@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119243"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797884"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>采用 Istio 对 Kubernetes 托管的应用程序进行零检测应用程序监视 - 已弃用
 
 > [!IMPORTANT]
 > 此功能当前正被弃用，在 2020 年 8 月 1 日之后将不再受支持。
-> 当前推荐的版本仅适用于[通过独立代理提供的 Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)。
+> 目前只能[通过独立代理为 Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) 启用无代码监视。 对于其他语言，请使用 SDK 监视 AKS 上的应用：[ASP.Net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)、[ASP.Net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)、[Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)、[JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript) 和 [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
 
-Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由 Kubernetes 托管的应用提供现成的应用程序监视功能。 使用默认的 Application Insight 功能，例如使用[应用程序映射](../../azure-monitor/app/app-map.md)对依赖关系建模，使用[实时指标流](../../azure-monitor/app/live-stream.md)进行实时监视，使用[默认仪表板](../../azure-monitor/app/overview-dashboard.md)、[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)和[工作簿](../../azure-monitor/app/usage-workbooks.md)进行强大的可视化操作。 此功能可帮助用户查明所选 Kubernetes 命名空间中所有 Kubernetes 工作负荷的性能瓶颈和故障热点。 利用包含 Istio 之类技术的现有服务网格投资，Azure Monitor 可以在不修改应用程序代码的情况下实现自动检测的应用监视。
+Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术为任何由 Kubernetes 托管的应用提供现成的应用程序监视功能。 使用默认的 Application Insight 功能，例如使用[应用程序映射](../../azure-monitor/app/app-map.md)对依赖关系建模，使用[实时指标流](../../azure-monitor/app/live-stream.md)进行实时监视，使用[默认仪表板](../../azure-monitor/app/overview-dashboard.md)、[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)和[工作簿](../../azure-monitor/platform/workbooks-overview.md)进行强大的可视化操作。 此功能可帮助用户查明所选 Kubernetes 命名空间中所有 Kubernetes 工作负荷的性能瓶颈和故障热点。 利用包含 Istio 之类技术的现有服务网格投资，Azure Monitor 可以在不修改应用程序代码的情况下实现自动检测的应用监视。
 
 > [!NOTE]
 > 这是在 Kubernetes 上执行应用程序监视的多种方式之一。 还可以使用 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) 来检测托管在 Kubernetes 中的任何应用，不需要使用服务网格。 若要在不使用 SDK 来检测应用程序的情况下监视 Kubernetes，可以使用以下方法。
@@ -95,7 +95,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 - 生成针对你的应用程序的示例请求，以确认监视功能是否正常运行。
 - 在 3-5 分钟内，你应该会开始看到遥测数据出现在 Azure 门户中。 请确保在门户中查看 Application Insights 资源的“应用程序映射”部分。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 下面是遥测数据未按预期出现在 Azure 门户中时要使用的故障排除流。
 

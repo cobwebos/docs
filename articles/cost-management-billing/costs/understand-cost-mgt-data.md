@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995643"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791276"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -122,6 +122,7 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 标记的应用是否已超出 24 小时？ 请参阅[成本和使用情况数据更新和保留](#cost-and-usage-data-updates-and-retention)
 - 资源类型是否支持标记？ 以下资源类型在 2019 年 12 月 1 日之前的使用情况数据中不支持标记。 如需所支持功能的完整列表，请参阅 [Azure 资源的标记支持](../../azure-resource-manager/tag-support.md)。
     - Azure Active Directory B2C 目录
+    - Azure Bastion
     - Azure 防火墙
     - Azure NetApp 文件
     - 数据工厂

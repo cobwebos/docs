@@ -8,28 +8,28 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456883"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808398"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>教程 - 使用 Azure 密钥保管库加密和解密 blob
 
-本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。 其中将引导完成如何在控制台应用程序中使用这些技术加密和解密 blob。
+本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。 它会逐步演示如何使用这些技术在控制台应用程序中加密和解密 Blob。
 
 **估计完成时间：** 20 分钟
 
-有关 Azure 密钥保管库的概述信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
+有关 Azure Key Vault 的概述信息，请参阅[什么是 Azure Key Vault？](../../key-vault/general/overview.md)。
 
 有关 Azure 存储的客户端加密概述信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，必须满足下列要求：
+若要完成本教程，必须具备以下项目：
 
 * Azure 存储帐户
 * Visual Studio 2013 或更高版本
@@ -48,7 +48,7 @@ ms.locfileid: "81456883"
 
 ## <a name="set-up-your-azure-key-vault"></a>设置 Azure 密钥保管库
 
-若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure 密钥保管库中设置和检索机密](../../key-vault/secrets/quick-create-net.md)中所述的以下步骤：
+若要继续学习本教程，需要执行教程[快速入门：使用 .NET Web 应用在 Azure Key Vault 中设置和检索机密](../../key-vault/secrets/quick-create-net.md)中所述的以下步骤：
 
 * 创建密钥保管库。
 * 将密钥或密码添加到密钥保管库。
@@ -144,17 +144,17 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > [!NOTE]
 > 密钥保管库对象模型
 > 
-> 务必了解，实际上有两个密钥保管库对象模型：一个基于 REST API（KeyVault 命名空间），另一个是客户端加密的扩展。
+> 务必了解，实际上有两个 Key Vault 对象模型：一个基于 REST API（KeyVault 命名空间），另一个是客户端加密的扩展。
 > 
 > 密钥保管库客户端与 REST API 进行交互，并了解密钥保管库中包含的两种模型的 JSON Web 密钥和密码。
 > 
-> 密钥保管库扩展似乎是专门为 Azure 存储中的客户端加密所创建的类。 根据密钥解析程序的概念，它们包含密钥 (IKey) 和类的接口。 需要了解两种 IKey 实现：RSAKey 和 SymmetricKey。 现在它们碰巧与密钥保管库中包含的内容保持一致，但此时它们是独立的类（因此，密钥保管库客户端检索到的密钥与秘密检索未实现 IKey）。
+> 密钥保管库扩展似乎是专为 Azure 存储中的客户端加密而创建的类。 根据密钥解析程序的概念，它们包含密钥 (IKey) 和类的接口。 需要了解两种 IKey 实现：RSAKey 和 SymmetricKey。 现在它们碰巧与 Key Vault 中包含的内容保持一致，但此时它们是独立的类（因此，Key Vault 客户端检索到的密钥与秘密检索未实现 IKey）。
 > 
 > 
 
-## <a name="encrypt-blob-and-upload"></a>加密 blob 和上传
+## <a name="encrypt-blob-and-upload"></a>加密 Blob 和上传
 
-添加以下代码以加密 blob 并将其上传到 Azure 存储帐户。 使用的 **ResolveKeyAsync** 方法会返回 IKey。
+添加以下代码以加密 Blob 并将其上传到 Azure 存储帐户。 使用的 **ResolveKeyAsync** 方法会返回 IKey。
 
 ```csharp
 // Retrieve the key that you created previously.
@@ -176,15 +176,15 @@ using (var stream = System.IO.File.OpenRead(@"C:\Temp\MyFile.txt"))
 ```
 
 > [!NOTE]
-> 如果看一下 BlobEncryptionPolicy 构造函数，会看到它可以接受密钥和/或解析程序。 请注意，现在无法将解析程序用于加密，因为它当前不支持默认密钥。
+> 如果查看 BlobEncryptionPolicy 构造函数，会看到它可以接受密钥和/或解析程序。 请注意，现在无法将解析程序用于加密，因为它当前不支持默认密钥。
 
-## <a name="decrypt-blob-and-download"></a>解密 blob 并下载
+## <a name="decrypt-blob-and-download"></a>解密 Blob 并下载
 
-当使用解析程序类有意义时，实际上就是解密。 用于加密的密钥的 ID 与其元数据中的 Blob 相关联，因此，没有理由检索该密钥，请记住密钥与 blob 之间的关联关系。 只需确保该密钥保留在密钥保管库中。   
+当使用解析程序类有意义时，实际上就是解密。 用于加密的密钥的 ID 与其元数据中的 Blob 相关联，因此没有理由检索该密钥，请记住密钥与 Blob 之间的关联关系。 只需确保该密钥保留在密钥保管库中。   
 
-RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 blob 元数据的加密密钥将发送到密钥保管库进行解密。
+RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 Blob 元数据的加密密钥会发送到密钥保管库进行解密。
 
-添加以下代码以解密刚刚上传的 blob。
+添加以下代码以解密刚刚上传的 Blob。
 
 ```csharp
 // In this case, we will not pass a key and only pass the resolver because
@@ -208,7 +208,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 * 用作 SymmetricKey 的密钥保管库密钥需要在密钥保管库中具有“application/octet-stream”内容类型。
 
 以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。
-请注意，硬编码值 $key 仅用于演示目的。 在自己的代码中需要生成此密钥。
+请注意，硬编码值 $key 仅用于演示目的。 请在自己的代码中生成此密钥。
 
 ```csharp
 // Here we are making a 128-bit key so we have 16 characters.
@@ -237,6 +237,6 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 要深入了解如何将 Microsoft Azure 存储与 C# 配合使用，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
-有关 Blob REST API 的详细信息，请参阅 [Blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Blob 服务 REST API）。
+有关 Blob REST API 的详细信息，请参阅 [Blob 服务 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)。
 
 有关 Microsoft Azure 存储的最新信息，请转到 [Microsoft Azure 存储团队博客](https://blogs.msdn.com/b/windowsazurestorage/)。

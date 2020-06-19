@@ -3,12 +3,12 @@ title: Azure 文件共享备份的支持矩阵
 description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 38e8cdba4913a56b4dc6b4398a99db9e9f93be51
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116724"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684626"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
@@ -19,10 +19,10 @@ ms.locfileid: "83116724"
 以下地理区域提供了 Azure 文件共享备份功能：
 
 **正式发布区域**：<br>
-澳大利亚东南部 (ASE)、加拿大中部 (CNC)、美国中西部 (WCUS)、美国西部 2 (WUS 2)、印度南部 (INS)、美国中北部 (NCUS)、日本东部 (JPE)、巴西南部 (BRS)、东南亚 (SEA)、瑞士西部 (SZW)、阿联酋中部 (UAC)、挪威东部 (NWE)、印度西部 (INW)、澳大利亚中部 (ACL)、韩国中部 (KRC)、日本西部 (JPW)、南非北部 (SAN)、英国西部 (UKW)、韩国南部 (KRS)、德国北部 (GN)、挪威西部 (NWW)、南非西部 (SAW)、瑞士北部 (SZN)、德国中西部 (GWC)、阿联酋北部 (UAN)、法国中部 (FRC)、印度中部 (INC)、加拿大东部 (CNE)、东亚 (EA)、澳大利亚东部 (AE)、美国中部 (CUS)、美国西部 (WUS)、美国亚利桑那州 (UGA)，美国德克萨斯州 (UGT)、美国弗吉尼亚州 (UGV)、美国国防部中央 (UDC)、美国国防部东部 (UDE)
+澳大利亚东南部 (ASE)、加拿大中部 (CNC)、美国中西部 (WCUS)、美国中南部 (SCUS)、美国西部 2 (WUS 2)、印度南部 (INS)、美国中北部 (NCUS)、日本东部 (JPE)、巴西南部 (BRS)、东南亚 (SEA)、瑞士西部 (SZW)、阿联酋中部 (UAC)、挪威东部 (NWE)、印度西部 (INW)、澳大利亚中部 (ACL)、韩国中部 (KRC)、日本西部 (JPW)、南非北部 (SAN)、英国南部 (UKS)、英国西部 (UKW)、韩国南部 (KRS)、北欧 (NE)、德国北部 (GN)、挪威西部 (NWW)、南非西部 (SAW)、瑞士北部 (SZN)、德国中西部 (GWC)、阿联酋北部 (UAN)、法国中部 (FRC)、印度中部 (INC)、加拿大东部 (CNE)、东亚 (EA)、澳大利亚东部 (AE)、美国中部 (CUS)、美国西部 (WUS)、美国亚利桑那州 (UGA)，美国德克萨斯州 (UGT)、美国弗吉尼亚州 (UGV)、美国国防部中央 (UDC)、美国国防部东部 (UDE)
 
 **（作为预览版的一部分）支持的但未正式发布的区域**：<br>
-美国东部 (EUS)、美国东部 2 (EUS2)、北欧 (NE)、美国中南部 (SCUS)、英国南部 (UKS)、西欧 (WE)
+美国东部 (EUS)、美国东部 2 (EUS2)、西欧 (WE)
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 

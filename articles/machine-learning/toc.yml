@@ -6,7 +6,7 @@
     - name: 什么是 Azure 机器学习？
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure 机器学习与工作室
+    - name: Azure 机器学习与工作室（经典）
       displayName: 'AML, Studio, designer'
       href: compare-azure-ml-to-studio-classic.md
     - name: 体系结构和术语
@@ -323,6 +323,9 @@
         - name: 自动训练预测模型
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: 数据拆分和交叉验证 (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-cross-validation-data-splits.md
         - name: 自动化 ML 中的特征化 (Python)
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-auto-features.md

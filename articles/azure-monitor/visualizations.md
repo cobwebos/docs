@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535363"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797502"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -19,7 +19,7 @@ ms.locfileid: "79535363"
 图表和图形等可视化效果有助于你分析监视数据，从而深入了解问题并识别模式。 根据使用的工具，你还可以选择与组织内外的其他用户共享可视化效果。
 
 ## <a name="workbooks"></a>工作簿
-[工作簿](../azure-monitor/app/usage-workbooks.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
+[工作簿](../azure-monitor/platform/workbooks-overview.md)是交互式文档，可以让用户深入了解团队内部的数据、调查和协作。 例如，工作簿在故障排查指南和事件分析方面非常有用。
 
 ![工作簿](media/visualizations/workbook.png)
 
@@ -46,14 +46,14 @@ ms.locfileid: "79535363"
 - 支持指标和日志。
 - 合并来自多个源的数据，包括来自[指标资源管理器](platform/metrics-charts.md)、[日志查询](log-query/log-query-overview.md)以及 Application Insights 中的[映射](app/app-map.md)和可用性的输出。
 - 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
-- 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，通过单击给定可视化界面上的“刷新”图标或刷新整个仪表板，可以根据需要使用手动刷新选项。
+- 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志每小时刷新一次，同时可根据需要使用手动刷新选项，方法是单击给定可视化效果上的“刷新”图标或刷新整个仪表板。
 - 带有时间戳和自定义参数的参数化指标仪表板。
 - 灵活的布局选项。
 - 全屏模式。
 
 
 ### <a name="limitations"></a>限制
-- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 10，其他数据系列在“其他”__ Bucket 下进行分组。
+- 对日志可视化效果具有有限控制，不支持数据表。 数据系列总数限制为 10，其他数据系列在“其他” Bucket 下进行分组。
 - 对于日志图表，不支持自定义参数。
 - 日志图表仅限于过去 30 天。
 - 日志图表只能固定到共享仪表板。
@@ -111,7 +111,7 @@ ms.locfileid: "79535363"
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
 
 > [!IMPORTANT]
-> 视图正在被弃用。 有关将视图转换为工作簿的指南，请参阅[Azure Monitor 查看设计器到工作簿转换指南](platform/view-designer-conversion-overview.md)"。
+> 视图即将弃用。 有关将视图转换为工作簿的指导，请参阅 [Azure Monitor 视图设计器转换为工作簿的指南](platform/view-designer-conversion-overview.md)。
 
 借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
@@ -137,7 +137,7 @@ ms.locfileid: "79535363"
 - 了解[由 Azure Monitor 收集的数据](platform/data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
-- 了解[工作簿](../azure-monitor/app/usage-workbooks.md)。
+- 了解[工作簿](../azure-monitor/platform/workbooks-overview.md)。
 - 了解如何[将日志数据导入 Power BI](../azure-monitor/platform/powerbi.md)。
 - 了解 [Grafana Azure Monitor 数据源插件](../azure-monitor/platform/grafana-plugin.md)。
 

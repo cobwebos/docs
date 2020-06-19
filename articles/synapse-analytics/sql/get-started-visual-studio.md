@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201679"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658117"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 Synapse SQL
 > [!div class="op_single_selector"]
@@ -36,11 +36,11 @@ ms.locfileid: "83201679"
 
 * 现有的 SQL 池。 如果没有，请参阅[创建 SQL 池](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)以完成此先决条件要求的操作。
 * 适用于 Visual Studio 的 SSDT。 如果安装了 Visual Studio，则可能已有了此组件。 有关安装指说明和选项，请参阅 [安装 Visual Studio 和 SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
-* 完全限定的 SQL Server 名称。 若要查找此名称，请参阅[连接到 SQL 池](connect-overview.md)。
+* 完全限定的 SQL Server 名称。 若要查找此服务器名称，请参阅[连接到 SQL 池](connect-overview.md)。
 
 ## <a name="1-connect-to-sql-pool"></a>1.连接到 SQL 池
 1. 打开 Visual Studio 2019。
-2. 打开 SQL Server 对象资源管理器。 为此，请选择“视图” > “SQL Server 对象资源管理器”。
+2. 通过选择“视图” > “SQL Server 对象资源管理器”来打开 SQL Server 对象资源管理器 。
    
     ![SQL Server 对象资源管理器](./media/get-started-visual-studio/open-ssdt.png)
 3. 单击“添加 SQL Server”图标。
@@ -70,7 +70,7 @@ ms.locfileid: "83201679"
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. 运行查询。 为此，请单击绿色箭头，或使用以下快捷键： `CTRL`+`SHIFT`+`E`。
+4. 若要运行查询，请单击绿色箭头，或使用以下快捷键：`CTRL`+`SHIFT`+`E`。
    
     ![运行查询](./media/get-started-visual-studio/run-query.png)
 5. 查看查询结果。 在此示例中，FactInternetSales 表包含 60398 行。
