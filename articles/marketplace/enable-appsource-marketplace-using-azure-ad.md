@@ -1,26 +1,26 @@
 ---
-title: 使用 Azure Active Directory 启用 Microsoft AppSource 和 Azure 市场列表 | Azure
-description: 在 Azure 市场和 AppSource 中使用 Azure Active Directory 为应用和服务发布者启用列表类型。
+title: 将 Microsoft 商业市场产品/服务与 Azure Active Directory 集成
+description: 使用 Azure Active Directory 实现 Microsoft AppSource 和 Azure 市场产品/服务的身份验证。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160607"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658045"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>使用 Azure Active Directory 启用 AppSource 和市场列表
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>将商业市场列表与 Azure Active Directory 集成
 
- Azure Active Directory (Azure AD) 是一种云标识服务，它使用 Microsoft 帐户进行身份验证。 Azure AD 使用行业标准框架。 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
+ 本文介绍将商业市场列表或产品/服务与 Azure Active Directory (Azure AD) 进行集成的相关要求。 Azure AD 是一种云标识服务，它使用行业标准框架来实现 Microsoft 帐户的身份验证。 [详细了解 Azure Active Directory](https://azure.microsoft.com/services/active-directory)。
 
 ## <a name="azure-ad-benefits"></a>Azure AD 优势
 
-Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索列表目录。 这将要求客户登录该产品。 Azure AD 集成具有以下优势：
+Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索店面列表目录。 这将要求客户登录该产品。 Azure AD 集成具有以下优势：
 
 - 更快的参与和优化的客户体验
 - 针对数百万企业用户的单一登录 (SSO)
@@ -29,17 +29,17 @@ Microsoft AppSource 和 Azure 市场客户使用产品内体验来搜索列表�
 
 ## <a name="offers-that-require-azure-ad"></a>需要 Azure AD 的产品/服务
 
-AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)对 Azure AD 实现有不同的要求。 有关详细信息，请参阅下表：
+各种商业市场[列表选项和产品/服务类型](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)对 Azure AD 的实现有不同的要求。 有关详细信息，请参阅下表。
 
-| **产品类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
+| **产品/服务类型**    | **是否需要 Azure AD SSO？**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | 与我联系 | 试用 | 体验版 | 事务处理 |
-| 虚拟机 | 不适用 | 否 | 否 | 否 |
-| Azure 应用（解决方案模板）  | 不适用 | 不适用 | 不适用 | 不适用 |
-| 托管应用  | 不适用 | 不适用 | 不适用 | 否 |
+| 虚拟机 | 空值 | 否 | 否 | 否 |
+| Azure 应用（解决方案模板）  | 空值 | 空值 | 空值 | 空值 |
+| 托管应用  | 空值 | 空值 | 空值 | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 不适用 | 不适用 | 不适用 | 否 |
-| 咨询服务  | 否 | 不适用 | 不适用 | 不适用 |
+| 容器  | 空值 | 空值 | 空值 | 否 |
+| 咨询服务  | 否 | 空值 | 空值 | 空值 |
 
 有关 SaaS 技术需求的详细信息，请参阅 [SaaS 应用程序产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)。
 
@@ -73,7 +73,7 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 如果对使用 Azure AD 联合单一登录不熟悉，请执行以下步骤：
 
 1. 在市场中注册应用。
-1. 使用[OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)或[OpenID connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)开发 Azure AD 的 SSO。
+1. 使用 [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) 或 [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) 通过 Azure AD 开发 SSO。
 1. 启用 Azure AD 中的多租户支持功能，以提供一键式试用体验。
 
 ### <a name="single-tenant-solutions"></a>单租户解决方案
@@ -81,7 +81,7 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 使用 Azure AD 支持以下操作之一：
 
 - 使用 [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) 将访客用户添加到目录。
-- 使用 "**联系我**" 发布选项手动设置客户的试用版。
+- 使用“与我联系”发布选项手动为客户设置试用版。
 - 开发针对每个用户的体验版。
 - 生成使用 SSO 的多租户示例演示应用。
 
@@ -89,8 +89,8 @@ AppSource 和 Azure 市场的各种[列表选项和产品/服务类型](https://
 
 如果尚未注册， 
 
-- [了解](https://azuremarketplace.microsoft.com/sell)marketplace。
+- [了解](https://azuremarketplace.microsoft.com/sell)有关市场的信息。
 
-若要在合作伙伴中心注册，请开始创建新产品/服务或使用现有产品/服务：
+要在合作伙伴中心注册，请开始创建新产品/服务或处理现有产品/服务：
 
-- [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。

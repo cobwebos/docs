@@ -1,29 +1,29 @@
 ---
 title: Azure Cosmos DB 中的索引
-description: 了解 Azure Cosmos DB 中索引的工作原理，Azure Cosmos DB 支持不同类型的索引，如范围索引、空间索引和组合索引。
-author: ThomasWeiss
+description: 了解索引在 Azure Cosmos DB 中的工作原理，学习受支持的不同类型的索引，例如范围索引、空间索引和组合索引。
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.author: thweiss
-ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/21/2020
+ms.author: tisande
+ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273233"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849784"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
-Azure Cosmos DB 是一种架构不可知的数据库，使你能够迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 将自动为[容器](databases-containers-items.md#azure-cosmos-containers)中所有项的每个属性编制索引，而无需定义任何架构或配置辅助索引。
+Azure Cosmos DB 是一种架构不可知的数据库，你可用它来迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 自动对[容器](databases-containers-items.md#azure-cosmos-containers)中所有项的每个属性编制索引，不用定义任何架构或配置辅助索引。
 
-本文的目的是说明 Azure Cosmos DB 如何为数据编制索引以及如何使用索引来提高查询性能。 在探索如何自定义[索引策略](index-policy.md)之前，建议先阅读本部分。
+本文的目的是说明 Azure Cosmos DB 如何为数据编制索引以及如何使用索引来提高查询性能。 建议先阅读本部分，然后再探索如何自定义[索引策略](index-policy.md)。
 
 ## <a name="from-items-to-trees"></a>从项到树
 
-每当在容器中存储某个项时，该项的内容将投影为 JSON 文档，然后转换为树表示形式。 这意味着，该项的每个属性表示为树中的一个节点。 系统会创建一个伪根节点，作为该项的所有第一级属性的父级。 叶节点包含项携带的实际标量值。
+每次在容器中存储项时，项的内容都投影为 JSON 文档，然后转换为树表示形式。 这意味着，该项的每个属性都在树中以节点的形式表示。 伪根节点被创建为项的所有第一级属性的父级。 叶节点包含项带有的实际标量值。
 
-例如，假设存在以下项：
+例如，请看以下项：
 
 ```json
     {
@@ -39,15 +39,15 @@ Azure Cosmos DB 是一种架构不可知的数据库，使你能够迭代应用�
     }
 ```
 
-该项可由以下树表示:
+它由以下树表示：
 
-![上一个项表示为一个树](./media/index-overview/item-as-tree.png)
+![上一项以树的形式表示](./media/index-overview/item-as-tree.png)
 
-请注意树中的数组编码方式：数组中的每个条目将获取一个中间节点，该节点标有该条目在数组中的索引（0、1 等等）。
+请注意数组是如何在树中进行编码的：数组中的每个条目都获得一个中间节点，该节点标记了该数组中该条目的索引（0、1 等等）。
 
 ## <a name="from-trees-to-property-paths"></a>从树到属性路径
 
-Azure Cosmos DB 将项转换为树的原因是便于按照属性在这些树中的路径引用这些属性。 若要获取某个属性的路径，可以在树中从根节点遍历到该属性，并将遍历的每个节点的标签连接起来。
+Azure Cosmos DB 将项转换为树的原因是，它允许通过这些树中属性的路径来引用属性。 若要获取属性的路径，可从根节点到该属性来遍历树，并将每个遍历的节点的标签连接起来。
 
 下面是上述示例项中每个属性的路径：
 
@@ -60,7 +60,7 @@ Azure Cosmos DB 将项转换为树的原因是便于按照属性在这些树中�
     /exports/0/city: "Moscow"
     /exports/1/city: "Athens"
 
-写入某个项时，Azure Cosmos DB 会有效地为每个属性的路径及其相应值编制索引。
+写入项时，Azure Cosmos DB 会有效地对每个属性的路径及其相应的值编制索引。
 
 ## <a name="index-kinds"></a>索引类型
 
@@ -68,9 +68,9 @@ Azure Cosmos DB 目前支持三种类型的索引。
 
 ### <a name="range-index"></a>范围索引
 
-**范围**索引基于有序的树状结构。 范围索引类型用于：
+范围索引基于已排序的树形结构。 范围索引类型用于：
 
-- 等式查询：
+- 相等查询：
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
@@ -98,10 +98,14 @@ Azure Cosmos DB 目前支持三种类型的索引。
    SELECT * FROM c WHERE IS_DEFINED(c.property)
    ```
 
-- 字符串前缀匹配（CONTAINS 关键字将不利用范围索引）：
+- 字符串系统函数：
 
    ```sql
-   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   SELECT * FROM c WHERE CONTAINS(c.property, "value")
+   ```
+
+   ```sql
+   SELECT * FROM c WHERE STRINGEQUALS(c.property, "value")
    ```
 
 - `ORDER BY` 查询：
@@ -116,11 +120,11 @@ Azure Cosmos DB 目前支持三种类型的索引。
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-可以针对标量值（字符串或数字）使用范围索引。
+范围索引可用于标量值（字符串或数字）。
 
 ### <a name="spatial-index"></a>空间索引
 
-**空间**索引支持对地理空间对象（如点、线、多边形和多多边形）进行高效查询。 这些查询使用 ST_DISTANCE、ST_WITHIN、ST_INTERSECTS 关键字。 下面是使用空间索引类型的一些示例：
+空间索引可对地理空间对象（例如点、线、多边形和多面）进行有效查询。 这些查询使用ST_DISTANCE、ST_WITHIN 和 ST_INTERSECTS 关键字。 下面是使用空间索引类型的一些示例：
 
 - 地理空间距离查询：
 
@@ -128,59 +132,59 @@ Azure Cosmos DB 目前支持三种类型的索引。
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- 查询中的地理空间：
+- 在查询的地理空间：
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-- 地理空间交叉查询：
+- 地理空间相交查询：
 
    ```sql
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-可以针对格式正确的 [GeoJSON](geospatial.md) 对象使用空间索引。 当前支持 Points、LineStrings、Polygons 和 MultiPolygons。
+空间索引可在格式正确的 [GeoJSON](geospatial.md) 对象上使用。 目前支持点、线串、多边形和多面。
 
 ### <a name="composite-indexes"></a>组合索引
 
-在多个字段上执行操作时，**复合**索引可提高效率。 复合索引类型用于：
+对多个字段执行操作时，组合索引可提高效率。 组合索引类型用于：
 
-- 针对多个属性的 `ORDER BY` 查询：
+- 对多个属性的 `ORDER BY` 查询：
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- 使用筛选器和 `ORDER BY` 的查询。 如果将 Filter 属性添加到 `ORDER BY` 子句，则这些查询可以利用组合索引。
+- 使用筛选器和 `ORDER BY` 的查询。 如果在 `ORDER BY` 子句中添加筛选器属性，则这些查询可使用组合索引。
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
 ```
 
-- 对两个或更多属性使用筛选器的查询，其中至少有一个属性是相等筛选器
+- 对两个或更多属性进行的带筛选器的查询，其中至少一个属性是等式筛选器
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-只要一个筛选器谓词使用某一索引类型，查询引擎就会在扫描其余部分之前计算。 例如，如果你有一个 SQL 查询，如 `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+只要有一个筛选器谓词使用某一索引类型，查询引擎就将在扫描其余部分之前先评估该谓词。 例如，如果你有一个 SQL 查询，如 `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
-* 上面的查询将首先使用索引筛选 firstName = "Andrew" 的条目。 然后，它通过后续管道传递所有 firstName = "Andrew" 条目，以评估 CONTAINS 筛选器谓词。
+* 上面的查询将先使用索引筛选 firstName = "Andrew" 的条目， 然后通过后续管道传递所有 firstName = "Andrew" 的条目来评估 CONTAINS 筛选器谓词。
 
-* 当使用不使用索引的函数（例如 CONTAINS）时，可以通过添加使用索引的新筛选器谓词来加快查询速度并避免完整的容器扫描。 筛选子句的顺序并不重要。 查询引擎将找出哪些谓词更具选择性，并相应地运行查询。
+* 如果使用不采用索引（如 CONTAINS）的函数，可额外添加使用该索引的筛选器谓词来加快查询速度和避免完整容器扫描。 筛选子句的顺序并不重要。 查询引擎将确定哪些谓词更具选择性，并相应地运行查询。
 
 
 ## <a name="querying-with-indexes"></a>使用索引进行查询
 
-处理查询时，可以使用为数据编制索引时提取的路径轻松查找索引。 通过将查询的 `WHERE` 子句与已编制索引的路径列表进行匹配，可以快速识别与查询谓词匹配的项。
+通过编制数据索引时提取的路径，可在处理查询时轻松查找索引。 通过将查询的 `WHERE` 子句与已编制索引的路径的列表相匹配，可快速确定与查询谓词匹配的项。
 
-例如，考虑以下查询：`SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查询谓词（按项筛选，其中的任意位置使用“France”作为其国家/地区）将与下面红色突出显示的路径相匹配：
+例如，请看以下查询：`SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查询谓词（对项进行筛选，其中任何位置都采用“法国”作为其国家/地区）与下面用红色突出显示的路径相匹配：
 
 ![匹配树中的特定路径](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> 按单个属性排序的 `ORDER BY` 子句始终需要一个范围索引，如果它引用的路径不包含范围索引，则会失败。  同样，按多个属性排序的 `ORDER BY` 查询始终  需要组合索引。
+> 按单个属性排序的 `ORDER BY` 子句总是需要一个范围索引，如果它引用的路径没有范围索引，则会失败。 同样地，按多个属性排序的 `ORDER BY` 查询总是需要一个组合索引。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79222144"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693222"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教程：准备异地复制的 Azure 容器注册表
 
@@ -39,7 +39,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 登录 [Azure 门户](https://portal.azure.com)。
 
-选择“创建资源” > “容器” > “Azure 容器注册表”。
+选择“创建资源” > “容器” > “Azure 容器注册表”。  
 
 ![在 Azure 门户中创建容器注册表][tut-portal-01]
 
@@ -51,7 +51,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 * **管理员用户**：`Enable`（用于容器的 Web 应用需使用此帐户来提取映像）
 * **SKU**：`Premium`（异地复制需要此项设置）
 
-选择“创建”，部署 ACR 实例  。
+选择“创建”，部署 ACR 实例。
 
 ![在 Azure 门户中创建容器注册表][tut-portal-02]
 
@@ -65,7 +65,7 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
 获取高级注册表后，可以配置异地复制。 Web 应用（在下一篇教程中，会将其配置为在两个区域中运行）可从最靠近的注册表中提取其容器映像。
 
-在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”：  
+在 Azure 门户中导航到新的容器注册表，选择“服务”下面的“复制项”： 
 
 ![Azure 门户容器注册表 UI 中的副本][tut-portal-03]
 
@@ -73,11 +73,11 @@ Azure Cloud Shell 不包含完成本教程每个步骤所需的 Docker 组件。
 
  ![Azure 门户中的区域地图][tut-map-01]
 
-选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”：  
+选择注册表对应的绿色六边形将它复制到“美国东部”区域，然后选择“创建复制项”下面的“创建”： 
 
  ![Azure 门户中的“创建副本”UI][tut-portal-04]
 
-完成复制后，门户会显示两个区域的“就绪”状态。  使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。 
+完成复制后，门户会显示两个区域的“就绪”状态。 使用“刷新”按钮刷新复制状态；创建并同步副本可能需要大约一分钟时间。
 
 ![Azure 门户中的复制状态 UI][tut-portal-05]
 
@@ -156,7 +156,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-接下来，使用注册表登录服务器的 FQDN 更新 `ENV DOCKER_REGISTRY` 行。 本示例体现了示例注册表名称，uniqueregistryname  ：
+接下来，使用注册表登录服务器的 FQDN 更新 `ENV DOCKER_REGISTRY` 行。 本示例体现了示例注册表名称，uniqueregistryname：
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -205,7 +205,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。
+由于已经为异地复制配置了注册表，因此，使用这一条 `docker push` 命令，即可将映像自动复制到“美国西部”和“美国东部”区域。 
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

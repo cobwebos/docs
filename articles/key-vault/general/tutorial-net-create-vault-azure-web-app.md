@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dca7392c35c398ae3d9da62114c991ee4c0e57ca
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997008"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051903"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "82997008"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门教程需要：
+若要完成本快速入门教程，需先执行以下操作：
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
@@ -121,7 +121,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-创建应用服务计划后，Azure CLI 会显示类似于以下示例的信息：
+创建应用服务计划后，Azure CLI 将显示类似于以下示例的信息：
 
 <pre>
 { 
@@ -147,7 +147,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 在 `myAppServicePlan` 应用服务计划中创建 [Azure Web 应用](../../app-service/containers/app-service-linux-intro.md)。 
 
 > [!Important]
-> 与密钥保管库类似，Azure Web 应用必须具有独一无二的名称。 将以下示例中的 \<your-webapp-name\> 替换为你的 Web 应用名称。
+> 与密钥保管库类似，Azure Web 应用必须具有独一无二的名称。 在以下示例中，请将 \<your-webapp-name\> 替换为 Web 应用的名称。
 
 
 ```azurecli-interactive
@@ -174,7 +174,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 </pre>
 
 
-Git 远程存储库的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`。 保存此 URL，因为稍后会需要它。
+Git 远程的 URL 将显示在 `deploymentLocalGitUrl` 属性中，其格式为 `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git`。 保存此 URL，因为稍后会需要它。
 
 浏览到新建的应用。 将 &lt;your-webapp-name> 替换为你的应用名称。
 
@@ -186,13 +186,13 @@ https://<your-webapp-name>.azurewebsites.net
 
 ### <a name="deploy-your-local-app"></a>部署本地应用
 
-回到本地终端窗口，将 Azure 远程存储库添加到本地 Git 存储库，将 \<deploymentLocalGitUrl-from-create-step> 替换为在[创建远程 Web 应用](#create-a-remote-web-app)步骤中保存的 Git 远程存储库的 URL。
+回到本地终端窗口，将 Azure 远程库添加到本地 Git 存储库，将 \<deploymentLocalGitUrl-from-create-step> 替换为在[创建远程 Web 应用](#create-a-remote-web-app)步骤中保存的 Git 远程库的 URL。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-使用以下命令推送到 Azure 远程存储库以部署应用。 当 Git 凭据管理器提示你输入凭据时，请使用你在[配置部署用户](#configure-a-deployment-user)步骤中创建的凭据。
+使用以下命令推送到 Azure 远程库以部署应用。 当 Git 凭据管理器提示你输入凭据时，请使用你在[配置部署用户](#configure-a-deployment-user)步骤中创建的凭据。
 
 ```bash
 git push azure master
@@ -261,7 +261,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>"
 
 ## <a name="modify-the-app-to-access-your-key-vault"></a>修改应用以访问密钥保管库
 
-### <a name="install-the-packages"></a>安装这些包
+### <a name="install-the-packages"></a>安装包
 
 在终端窗口中，安装适用于 .NET 的 Azure Key Vault 客户端库包：
 
@@ -279,6 +279,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 ```csharp
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using Azure.Core;
 ```
 
 将以下行添加到 `app.UseEndpoints` 调用之前，更新 URI 以反映密钥保管库的 `vaultUri`。 下面的代码将 [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) 用于向密钥保管库进行身份验证，该类使用来自应用程序托管标识的令牌进行身份验证。 它还在密钥保管库受到限制的情况下将指数退避用于重试。

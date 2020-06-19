@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9b6589d2045d9bb7bdfb38f9872acd8366481106
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425366"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790463"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 
@@ -33,7 +33,7 @@ ms.locfileid: "81425366"
 > [!NOTE]
 > 本教程不包含有关如何创建密钥保管库、密钥或机密的说明。 有关此信息，请参阅[什么是 Azure Key Vault？](overview.md)。 或者，如需跨平台 Azure CLI 的说明，请参阅[此对应教程](manage-with-cli2.md)。
 >
-> 本文提供有关更新诊断日志记录的 Azure PowerShell 说明。 也可以使用 Azure 门户的“诊断日志”部分的 Azure Monitor 来更新诊断日志记录。  
+> 本文提供有关更新诊断日志记录的 Azure PowerShell 说明。 也可以使用 Azure 门户的“诊断日志”部分的 Azure Monitor 来更新诊断日志记录。 
 >
 
 有关 Key Vault的概述信息，请参阅[什么是 Azure Key Vault？](overview.md)。 有关 Key Vault 可用位置的信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
@@ -187,7 +187,7 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构  。 你将使用此结构下载 Blob 并将其存储为文件。
+运行第二个命令时，blob 名称中的 / 分隔符会在目标文件夹下创建完整的文件夹结构。 你将使用此结构下载 Blob 并将其存储为文件。
 
 若要选择性地下载 Blob，请使用通配符。 例如：
 
@@ -216,13 +216,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>解释 Key Vault 日志
 
-每个 Blob 存储为文本，并格式化为 JSON Blob。 让我们看一个示例日志项。 运行以下命令：
-
-```powershell
-Get-AzKeyVault -VaultName 'contosokeyvault'`
-```
-
-该命令将返回类似于下面的日志项：
+每个 Blob 存储为文本，并格式化为 JSON Blob。 让我们看一个示例日志项。 
 
 ```json
     {

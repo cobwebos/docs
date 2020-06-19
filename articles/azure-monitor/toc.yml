@@ -114,6 +114,8 @@
         - name: 日志数据引入时间
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: 将数据流式传输到事件中心
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: 洞察力
       href: insights/insights-overview.md
     - name: 数据安全
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: 活动日志
-          items:
-            - name: 在 Azure 门户中查看
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: 收集和分析
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: 导出（旧版）
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: 发送到 Log Analytics 工作区
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: 发送到 Azure 存储
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: 发送到事件中心
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: 创建诊断设置
+          href: platform/activity-log.md
+        - name: 资源日志
+          href: platform/resource-logs.md
+        - name: 诊断设置
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: 使用资源管理器创建诊断设置
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: 更改为 Blob 存储格式
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: 将数据流式传输到事件中心
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: 日志查询概述
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: 资源组
           href: insights/resource-group-insights.md
+        - name: 见解疑难解答
+          href: insights/troubleshoot-workbooks.md
     - name: 解决方案
       items:
         - name: 概述
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: 平台日志
       items:
-        - name: 支持的资源日志类型和类别
-          href: platform/resource-logs-categories.md
-        - name: 资源日志架构
-          href: platform/resource-logs-schema.md
         - name: 活动日志架构
           href: platform/activity-log-schema.md
+        - name: 资源日志架构
+          href: platform/resource-logs-schema.md
+        - name: 支持的资源日志类别
+          href: platform/resource-logs-categories.md
     - name: 诊断扩展架构
       items:
         - name: Windows 诊断扩展
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: 磁盘指标弃用
           href: platform/portal-disk-metrics-deprecation.md
+        - name: 更改为 Blob 存储格式
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: 资源
   items:
     - name: Azure 路线图

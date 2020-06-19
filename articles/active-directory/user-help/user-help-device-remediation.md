@@ -1,6 +1,6 @@
 ---
-title: "\"无法从此处获取\" 错误的修补程序-Azure AD"
-description: 找到可能的修补程序，了解为何出现 "无法从这里获取" 错误消息。
+title: 针对“您无法从此处到达所需目的地”错误的修补程序 - Azure AD
+description: 针对收到“您无法从此处到达所需目的地”错误消息的原因查找潜在修补程序。
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,24 +8,24 @@ ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190023"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740993"
 ---
-# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能出现的 "无法从此处获取" 错误消息的修补程序
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>针对“您无法从此处到达所需目的地”错误消息的潜在修补程序
 
-访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问****。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。
+访问组织的内部 Web 应用或服务时，可能会收到以下错误消息：无法从此处访问。 此消息表示组织已使阻止设备访问组织的资源的策略就位。 虽然你可能不必联系支持人员来解决此问题，但可以先尝试执行以下操作。
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>确保使用的是支持的浏览器
-如果收到“无法从此处访问”**** 消息，指示正在尝试从不受支持的浏览器访问组织的站点，请检查你所运行的浏览器。
+如果收到“无法从此处访问”消息，指示正在尝试从不受支持的浏览器访问组织的站点，请检查你所运行的浏览器。
 
 ![与浏览器支持相关的错误消息](media/user-help-device-remediation/browser-version.png)
 
@@ -34,18 +34,18 @@ ms.locfileid: "77190023"
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>确保使用的是支持的操作系统
 确保正在运行支持的操作系统版本，包括：
 
-- **Windows 客户端。** Windows 7 或更高版本。
+- Windows 客户端。 Windows 7 或更高版本。
 
-- **Windows Server。** Windows Server 2008 R2 或更高版本。
+- Windows Server。 Windows Server 2008 R2 或更高版本。
 
-- **macOS.** macOS X 或更高版本
+- macOS。 macOS X 或更高版本
 
-- **Android 和 iOS。** 最新版本的 Android 和 iOS 移动操作系统
+- Android 和 iOS。 最新版本的 Android 和 iOS 移动操作系统
 
 若要解决此问题，必须安装并运行支持的操作系统。
 
 ## <a name="make-sure-your-device-is-joined-to-your-network"></a>确保设备已加入网络
-如果收到“无法从此处访问”**** 消息，指示设备不符合组织的访问策略，请确保已将设备加入组织的网络。
+如果收到“无法从此处访问”消息，指示设备不符合组织的访问策略，请确保已将设备加入组织的网络。
 
 ![与是否已加入网络相关的错误消息](media/user-help-device-remediation/network-version.png)
 
@@ -54,20 +54,20 @@ ms.locfileid: "77190023"
 
 2. 通过虚拟专用网络 (VPN) 或 DirectAccess 连接到组织的网络。
 
-3. 建立连接后，按 Windows 徽标键 + L 键**** 来锁定设备。
+3. 建立连接后，按 Windows 徽标键 + L 键来锁定设备。
 
 4. 使用工作或学校帐户解锁设备，然后尝试再次访问有问题的应用或服务。
 
-    如果再次看到****“无法从此处访问”错误消息，请选择****“更多详细信息”链接，然后联系支持人员以获取详细信息。
+    如果再次看到“无法从此处访问”错误消息，请选择“更多详细信息”链接，然后联系支持人员以获取详细信息。
 
 ### <a name="to-join-your-device-to-your-network"></a>将设备加入网络
 如果设备未加入组织的网络，则可以执行两个操作之一：
 
-- **加入你的工作设备。** 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。 有关详细信息和分步说明，请参阅[将工作设备加入组织的网络](user-help-join-device-on-network.md)。
+- 加入工作设备。 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。 有关详细信息和分步说明，请参阅[将工作设备加入组织的网络](user-help-join-device-on-network.md)。
 
-- **注册你的个人设备进行工作。** 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，可以访问组织的受限资源。 有关详细信息和分步说明，请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
+- **注册用于工作的个人设备。** 在组织的网络上注册个人设备（通常为电话或平板电脑）。 设备注册后，可以访问组织的受限资源。 有关详细信息和分步说明，请参阅[在组织的网络上注册个人设备](user-help-register-device-on-network.md)。
 
 ## <a name="next-steps"></a>后续步骤
 - [什么是 MyApps 门户？](active-directory-saas-access-panel-introduction.md)
 
-- [使用手机（而不是密码）登录](user-help-auth-app-sign-in.md)
+- [使用手机而非密码登录](user-help-auth-app-sign-in.md)

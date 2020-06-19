@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d775e876a0cce1ba13964d6d4777307a34fdf3f
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671029"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83797906"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights 中的 Impact 分析功能
 
@@ -38,13 +38,13 @@ Impact 可以分析加载时间和其他属性对应用的各个部件的转换�
 
 ![Impact 工具](./media/usage-impact/0002-dropdown.png)
 
-1. 从“针对页面视图”下拉列表中选择一个页面视图。 
-2. 将“分析依据”下拉列表中的选择保留为“持续时间”（在此上下文中，“持续时间”是“页面加载时间”的别名）。    
-3. 在“影响以下对象的使用”下拉列表中，选择一个自定义事件。  此事件应该对应于在步骤 1 中选择的页面视图的 UI 元素。
+1. 从“针对页面视图”下拉列表中选择一个页面视图。
+2. 将“分析依据”下拉列表中的选择保留为“持续时间”（在此上下文中，“持续时间”是“页面加载时间”的别名）。   
+3. 在“影响以下对象的使用”下拉列表中，选择一个自定义事件。 此事件应该对应于在步骤 1 中选择的页面视图的 UI 元素。
 
 ![结果的屏幕截图](./media/usage-impact/0003-results.png)
 
-在此情况下，随着“产品页面”加载时间的增加，“单击‘购买产品’”的转换率下降。   根据上面的分布，可将最佳页面加载持续时间 3.5 秒指定为目标，以实现潜在的 55% 转换率。 可将加载时间降到 3.5 秒以下的其他性能改进措施目前与带来的其他转换优势没有关联。
+在此情况下，随着“产品页面”加载时间的增加，“单击‘购买产品’”的转换率下降。  根据上面的分布，可将最佳页面加载持续时间 3.5 秒指定为目标，以实现潜在的 55% 转换率。 可将加载时间降到 3.5 秒以下的其他性能改进措施目前与带来的其他转换优势没有关联。
 
 ## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>是否能以自定义的方式跟踪页面视图或加载时间？
 
@@ -52,11 +52,11 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 
 ## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>来自不同国家或地区的用户是否以不同的比率转换？
 
-1. 从“针对页面视图”下拉列表中选择一个页面视图。 
-2. 在“分析依据”下拉列表中选择“国家或地区” 
-3. 在“影响以下对象的使用”下拉列表中，选择与在步骤 1 中选择的页面视图中的 UI 元素对应的自定义事件。 
+1. 从“针对页面视图”下拉列表中选择一个页面视图。
+2. 在“分析依据”下拉列表中选择“国家或地区”
+3. 在“影响以下对象的使用”下拉列表中，选择与在步骤 1 中选择的页面视图中的 UI 元素对应的自定义事件。
 
-在本例中，结果不再像第一个示例中一样拟合到持续 X 轴模型中， 而是显示类似于分段漏斗图的可视化效果。 按“用法”排序可以根据国家/地区查看自定义事件转换的变体。 
+在本例中，结果不再像第一个示例中一样拟合到持续 X 轴模型中， 而是显示类似于分段漏斗图的可视化效果。 按“使用情况”排序，可以按国家/地区查看自定义事件转换的变体。
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Impact 工具如何计算这些转换率？
@@ -71,7 +71,7 @@ Impact 支持标准和自定义的属性与度量值。 可以任意使用这两
 
 Impact 会查找选定时间范围内所有用户会话的样本。 对于每个会话，它会查找出现的每个 _A_。
 
-然后，根据以下两个条件之一，将会话分解成两种不同的子会话： 
+然后，根据以下两个条件之一，将会话分解成两种不同的子会话：
 
 - 转换后的子会话包括以 _B_ 事件结尾的会话，并包含 _B_ 前面发生的所有 _A_ 事件。
 - 如果所有 _A_ 事件是在未发生终结性 _B_ 的情况下发生的，则发生未转换的子会话。
@@ -85,5 +85,5 @@ Impact 最终计算方式根据是按指标还是按维护分析而异。 使用
     - [漏斗图](usage-funnels.md)
     - [保留](usage-retention.md)
     - [用户流](usage-flows.md)
-    - [工作簿](../../azure-monitor/app/usage-workbooks.md)
+    - [工作簿](../../azure-monitor/platform/workbooks-overview.md)
     - [添加用户上下文](usage-send-user-context.md)

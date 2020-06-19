@@ -18,6 +18,8 @@
           href: ./servers/onboard-dsc.md
     - name: 管理
       items:
+        - name: 管理和使用 Azure VM 扩展
+          href: ./servers/manage-vm-extensions.md
         - name: 管理代理
           href: ./servers/manage-agent.md
 - name: 示例

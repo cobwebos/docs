@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120804"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986665"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
-本指南说明如何将人脸数据（如保存的 Person group 对象）转移到不同的 Azure 认知服务人脸订阅。 若要移动数据，可以使用快照功能。 这样，在转移或扩展操作时就无需反复生成并训练 PersonGroup 或 FaceList 对象。 例如，你可能会使用免费试用版订阅创建一个 Person group 对象，现在想要将其迁移到付费订阅。 或者，可能需要在不同区域中的不同订阅之间同步人脸数据，以进行大规模企业操作。
+本指南说明如何将人脸数据（如保存的 Person group 对象）转移到不同的 Azure 认知服务人脸订阅。 若要移动数据，可以使用快照功能。 这样，在转移或扩展操作时就无需反复生成并训练 PersonGroup 或 FaceList 对象。 例如，你可能使用了免费订阅创建了 Person group 对象，现在想要将其迁移到付费订阅。 或者，可能需要在不同区域中的不同订阅之间同步人脸数据，以进行大规模企业操作。
 
 此迁移策略同样适用于 LargePersonGroup 和 LargeFaceList 对象。 如果你不熟悉本指南中的概念，请查看[人脸识别概念](../concepts/face-recognition.md)指南中的相关定义。 本指南使用带有 c # 的面部 .NET 客户端库。
 

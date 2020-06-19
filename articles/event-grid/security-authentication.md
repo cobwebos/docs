@@ -8,18 +8,18 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
-ms.openlocfilehash: 71d47c83586f7e5e31b148714e2804686422326a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588252"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774313"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>对 Azure 事件网格资源的访问进行身份验证
 本文提供了关于以下方案的信息：  
 
 - 使用共享访问签名 (SAS) 或密钥对将事件发布到 Azure 事件网格主题的客户端进行身份验证。 
-- 使用 Azure Active Directory (Azure AD) 保护 Webhook 终结点，以向事件网格进行身份验证，从而将事件传递到终结点。
+- 使用 Azure Active Directory (Azure AD) 或共享机密保护用于从事件网格接收事件的 Webhook 终结点。
 
 ## <a name="authenticate-publishing-clients-using-sas-or-key"></a>使用 SAS 或密钥对发布客户端进行身份验证
 自定义主题使用共享访问签名 (SAS) 或密钥身份验证。 建议使用 SAS，但密钥身份验证提供简单的编程，并与多个现有 webhook 发布服务器兼容。
@@ -89,12 +89,12 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 下面各部分介绍了如何对 Webhook 终结点的事件传递进行身份验证。 无论使用何种方法，都需要使用验证握手机制。 有关详细信息，请参阅 [Webhook 事件传递](webhook-event-delivery.md)。 
 
 ### <a name="using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD)
-可以保护 Webhook 终结点，具体方法为使用 Azure Active Directory (Azure AD) 向事件网格进行身份验证和授权，以将事件传递到终结点。 需要创建 Azure AD 应用程序，并在授权事件网格的应用程序中创建角色和服务主体，同时还需要将事件订阅配置为使用 Azure AD 应用程序。 [了解如何为事件网格配置 Azure Active Directory](secure-webhook-delivery.md)。
+可以使用 Azure AD 保护用于从事件网格接收事件的 Webhook 终结点。 需要创建 Azure AD 应用程序，并在授权事件网格的应用程序中创建角色和服务主体，同时还需要将事件订阅配置为使用 Azure AD 应用程序。 了解如何[使用事件网格配置 Azure Active Directory](secure-webhook-delivery.md)。
 
 ### <a name="using-client-secret-as-a-query-parameter"></a>使用客户端密码作为查询参数
-在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为客户端密码，如[访问令牌](https://en.wikipedia.org/wiki/Access_token)或共享密码。 Webhook 可以使用该机密来识别事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。 如果更新了客户端密码，还需要更新事件订阅。 为了避免在此密码轮换期间出现传递失败，让 Webhook 在有限的时间内同时接受新旧密码。 
+还可以通过向在创建事件订阅时指定的 Webhook 目标 URL 添加查询参数来保护 Webhook 终结点。 将其中一个查询参数设置为客户端密码，如[访问令牌](https://en.wikipedia.org/wiki/Access_token)或共享密码。 事件网格服务会在发往 Webhook 的每个事件传递请求中加入所有查询参数。 Webhook 服务可以检索和验证密码。 如果更新了客户端密码，还需要更新事件订阅。 为了避免在此密码轮换期间出现传递失败，让 Webhook 在有限的时间内同时接受新旧密码，然后再使用新密码更新事件订阅。 
 
-由于查询参数可能包含客户端密码，因此需要格外小心地处理它们。 它们以加密的形式存储，不可由服务操作员访问。 它们不作为服务日志/跟踪的一部分进行记录。 编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
+由于查询参数可能包含客户端密码，因此需要格外小心地处理它们。 它们以加密的形式存储，并且服务操作员无法访问。 它们不作为服务日志/跟踪的一部分进行记录。 检索事件订阅属性时，默认情况下不会返回目标查询参数。 例如：[--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数将用于 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)。
 
 若要详细了解如何将事件传递到 Webhook，请参阅 [Webhook 事件传递](webhook-event-delivery.md)
 

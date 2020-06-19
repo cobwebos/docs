@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877382"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83827041"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用现有的本地代理服务器
 
@@ -27,7 +27,7 @@ ms.locfileid: "80877382"
 
 * 将连接器配置为绕过本地出站代理。
 * 将连接器配置为使用出站代理来访问 Azure AD 应用程序代理。
-* 使用连接器与后端应用程序之间的代理进行配置。
+* 配置为在连接器与后端应用程序之间使用代理。
 
 有关连接器工作原理的详细信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。
 
@@ -39,7 +39,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 可以将连接器配置为绕过本地代理，以确保它使用与 Azure 服务的直接连接。 我们建议使用此方法（只要网络策略允许这样做），因为这样可以少维护一项配置。
 
-若要对连接器禁用出站代理，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加以下代码示例中所示的*system.net*部分：
+若要对连接器禁用出站代理，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加 *system.net* 节，如以下代码示例中所示：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -77,7 +77,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 如果在环境中启用并正确配置了 WPAD，连接器会自动发现出站代理服务器并尝试使用它。 但是，可以显式将连接器配置为通过出站代理。
 
-为此，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加 system.net** 节，如以下代码示例中所示。 更改*proxyserver： 8080* ，以反映本地代理服务器的名称或 IP 地址及其侦听的端口。 即使使用 IP 地址，值也必须具有前缀 http://。
+为此，请编辑 C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config 文件并添加 system.net 节，如以下代码示例中所示。 更改 *proxyserver:8080*，反映本地代理服务器的名称或 IP 地址及其侦听的端口。 即使使用 IP 地址，值也必须具有前缀 http://。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -114,10 +114,10 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 | 代码 | 用途 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 Url 来验证证书 |
-| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>*. microsoftonline.com<br>*. microsoftonline-p.com<br>*. msauth.net<br>*. msauthimages.net<br>*. msecnd.net<br>*. msftauth.net<br>*. msftauthimages.net<br>*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 URL 来验证证书 |
+| login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
 
-如果你的防火墙或代理允许你配置 DNS 允许列表，则可以允许连接到\*msappproxy.net 和\*servicebus.windows.net。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
+如果防火墙或代理允许你配置 DNS 允许列表，则你可以允许与 \*.msappproxy.net 和 \*.servicebus.windows.net 建立连接。 否则，需要允许访问 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 IP 范围每周更新。
 
 如果不能通过 FQDN 允许连接，请使用以下选项改为指定 IP 范围：
 
@@ -137,24 +137,24 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 #### <a name="tls-inspection"></a>TLS 检查
 
-不要对连接器流量使用 TLS 检查，因为这会导致连接器流量出现问题。 连接器使用证书对应用程序代理服务进行身份验证，并且该证书可能会在 TLS 检查过程中丢失。
+请勿对连接器流量使用 TLS 检查，因为这会导致连接器流量出现问题。 连接器使用证书对应用程序代理服务进行身份验证，在 TLS 检查过程中，该证书可能会丢失。
 
-## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>使用连接器与后端应用程序之间的代理进行配置
-在某些环境中，使用转发代理进行与后端应用程序的通信可能是一项特殊要求。
-若要启用此操作，请执行以下步骤：
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>配置为在连接器与后端应用程序之间使用代理
+某些环境可能专门要求使用转发代理来与后端应用程序进行通信。
+若要启用此功能，请执行以下步骤：
 
-### <a name="step-1-add-the-required-registry-value-to-the-server"></a>步骤1：向服务器添加所需的注册表值
-1. 若要启用使用默认代理，请将以下注册表值（DWORD `UseDefaultProxyForBackendRequests = 1` ）添加到位于 "HKEY_LOCAL_MACHINE \Software\microsoft\microsoft AAD App proxy Connector" 中的连接器配置注册表项。
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>步骤 1：将所需的注册表值添加到服务器
+1. 若要启用默认代理，请将以下注册表值 (DWORD) `UseDefaultProxyForBackendRequests = 1` 添加到“HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector”中的 Connector configuration 注册表项。
 
-### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>步骤2：使用 netsh 命令手动配置代理服务器
-1.  启用组策略 "设置每台计算机的代理设置"。 此操作位于： Computer Configuration\Policies\Administrative \Windows 组件 \Internet Explorer 中。 这需要设置，而不是将此策略设置为每用户。
-2.  在`gpupdate /force`服务器上运行或重新启动服务器以确保它使用更新的组策略设置。
-3.  使用管理员权限启动提升的命令提示符，然后`control inetcpl.cpl`输入。
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>步骤 2：使用 netsh 命令手动配置代理服务器
+1.  启用组策略“按计算机进行代理设置”。 可在以下位置找到此项设置：“计算机配置”\“策略”\“管理模板”\“Windows 组件”\“Internet Explorer”。 需要指定此设置，而不要将此策略设置为按用户。
+2.  在服务器上运行 `gpupdate /force` 或重启服务器，以确保它使用更新的组策略设置。
+3.  使用管理员权限启动提升的命令提示符，然后输入 `control inetcpl.cpl`。
 4.  配置所需的代理设置。 
 
-这些设置使连接器使用与 Azure 和后端应用程序通信相同的转发代理。 如果连接器到 Azure 的通信不需要转发代理或其他转发代理，则可以按照 "绕过出站代理" 部分或 "使用出站代理服务器" 部分所述，使用修改文件 ApplicationProxyConnectorService 进行设置。
+这些设置使连接器使用同一个转发代理来与 Azure 和后端应用程序进行通信。 如果连接器与 Azure 之间的通信不需要转发代理或需要不同的转发代理，则你可以按照“绕过出站代理”或“使用出站代理服务器”部分中所述，通过修改 ApplicationProxyConnectorService.exe.config 文件进行此项设置。
 
-连接器更新程序服务也将使用计算机代理。 可以通过修改文件 Applicationproxyconnectorupdaterservice.exe.config 来更改此行为。
+连接器更新程序服务也使用计算机代理。 可以通过修改 ApplicationProxyConnectorUpdaterService.exe.config 文件来更改此行为。
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>排查连接器代理问题和服务连接问题
 
@@ -162,7 +162,7 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
 
 识别和排查连接器连接问题的最佳方法就是在启动连接器服务时，创建“网络”捕获。 以下是一些关于捕获和筛选网络跟踪的小技巧。
 
-可以使用自选的监视工具。 本文使用了 Microsoft 消息分析器。 可[从 Microsoft 下载](https://www.microsoft.com/download/details.aspx?id=44226)该工具。
+可以使用自选的监视工具。 本文使用了 Microsoft 消息分析器。
 
 以下示例特定于消息分析器，但其原理适用于任何分析工具。
 
@@ -175,17 +175,17 @@ OS 组件尝试通过针对 wpad.domainsuffix 执行 DNS 查找来查找代理�
    ![services.msc 中的 Azure AD 应用程序代理连接器服务](./media/application-proxy-configure-connectors-with-proxy-servers/services-local.png)
 
 1. 以管理员身份运行消息分析器。
-1. 选择“启动本地跟踪”****。
+1. 选择“启动本地跟踪”。
 1. 启动 Azure AD 应用程序代理连接器服务。
 1. 停止网络捕获。
 
-   ![屏幕截图显示 "停止网络捕获" 按钮](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
+   ![屏幕截图中显示了“停止网络捕获”按钮](./media/application-proxy-configure-connectors-with-proxy-servers/stop-trace.png)
 
 ### <a name="check-if-the-connector-traffic-bypasses-outbound-proxies"></a>检查连接器通信流是否绕过出站代理
 
 如果将应用程序代理连接器配置为绕过代理服务器并直接连接到应用程序代理服务，可通过网络捕获查看失败的 TCP 连接尝试。
 
-使用“消息分析器”筛选器来标识这些尝试。 在筛选框中输入 `property.TCPSynRetransmit`，选择“应用”****。
+使用“消息分析器”筛选器来标识这些尝试。 在筛选框中输入 `property.TCPSynRetransmit`，选择“应用”。
 
 SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果此数据包未返回响应，则重新尝试 SYN。 可以使用上面的筛选器查看任何重新传输的 SYN。 然后，可以检查这些 SYN 是否对应于连接器相关的任何流量。
 
@@ -195,7 +195,7 @@ SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果�
 
 如果将应用程序代理连接器通信流配置为通过代理服务器，可查看指向代理的失败 http 连接。
 
-若要筛选这些连接尝试的网络捕获，请在“消息分析器”筛选器中输入 `(https.Request or https.Response) and tcp.port==8080`，将 8080 替换为自己的代理服务端口。 选择“应用”可查看筛选结果****。
+若要筛选这些连接尝试的网络捕获，请在“消息分析器”筛选器中输入 `(https.Request or https.Response) and tcp.port==8080`，将 8080 替换为自己的代理服务端口。 选择“应用”可查看筛选结果。
 
 上面的筛选器只显示传入/传出代理端口的 HTTP 请求和响应。 假设想要查找显示与代理服务器之间的通信的 CONNECT 请求。 成功后，会获得 HTTP OK (200) 响应。
 
@@ -204,4 +204,4 @@ SYN 数据包是为了建立 TCP 连接而发送的第一个数据包。 如果�
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)
-* 如果有任何关于连接器连接的问题，请在 [Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD&forum=WindowsAzureAD)提问，或创建一个支持团队票证。
+* 如有任何关于连接器连接的问题，请在[有关 Azure Active Directory 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-active-directory.html)中提问，或向我们的支持团队提交一个票证。

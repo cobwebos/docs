@@ -1,33 +1,33 @@
 ---
-title: 用 Key Vault 证书配置 TLS 终止-PowerShell
+title: 使用 Key Vault 证书配置 TLS 终止 - PowerShell
 titleSuffix: Azure Application Gateway
-description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以便存储附加到支持 HTTPS 的侦听器的服务器证书。
+description: 了解如何将 Azure 应用程序网关与 Key Vault 集成，以获取附加到支持 HTTPS 的侦听器上的服务器证书。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c638004d209996e52b0e57b467bfa184a77779c
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457835"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873458"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 配置使用 Key Vault 证书的 TLS 终止
+# <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>使用 Azure PowerShell 和 Key Vault 证书配置 TLS 终止
 
-[Azure Key Vault](../key-vault/general/overview.md)是平台管理的密钥存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与密钥保管库集成，以存储附加到支持 HTTPS 的侦听器的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
+[Azure Key Vault](../key-vault/general/overview.md) 是平台托管的密钥存储，可用于保护机密、密钥和 TLS/SSL 证书。 Azure 应用程序网关支持与 Key Vault 集成，从而获取附加到支持 HTTPS 的侦听器上的服务器证书。 此支持仅限于应用程序网关 v2 SKU。
 
-有关详细信息，请参阅[采用 Key Vault 证书的 TLS 终止](key-vault-certs.md)。
+有关详细信息，请参阅[使用 Key Vault 证书实现 TLS 终止](key-vault-certs.md)。
 
-本文介绍如何使用 Azure PowerShell 脚本将密钥保管库与应用程序网关集成，以实现 TLS/SSL 终止证书。
+本文介绍如何使用 Azure PowerShell 脚本将密钥保管库与应用程序网关集成，以获取 TLS/SSL 终止证书。
 
-本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本文中的命令，还需要通过运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+本文需要使用 Azure PowerShell 模块 1.0.0 版或更高版本。 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本文中的命令，还需要通过运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，必须已安装 ManagedServiceIdentity 模块：
 
@@ -44,11 +44,13 @@ Select-AzSubscription -Subscription <your subscription>
 ```azurepowershell
 $rgname = "KeyVaultTest"
 $location = "East US"
-$kv = "TestKeyVaultAppGw"
+$kv = "<your key vault name>"
 $appgwName = "AppGwKVIntegration"
 ```
+> [!IMPORTANT]
+> 密钥保管库名称必须是全局唯一的。
 
-### <a name="create-a-resource-group-and-a-user-managed-identity"></a>创建资源组和用户托管标识
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>创建资源组和用户管理的标识
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -71,7 +73,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> 必须使用-EnableSoftDelete 标志才能正常使用 TLS 终止。 如果是[通过门户配置 Key Vault 软删除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，则保留期必须保留为 90 天（默认值）。 应用程序网关尚不支持不同的保留期。 
+> 必须使用 -EnableSoftDelete 标志才能正常运行 TLS 终止。 如果要配置[通过门户实现 Key Vault 软删除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，保持期必须为 90 天（默认值）。 应用程序网关尚不支持其他保持期。 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
@@ -102,7 +104,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>将 TLS/SSL 证书指向你的密钥保管库
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>让 TLS/SSL 证书指向密钥保管库
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -125,7 +127,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>将用户托管标识分配给应用程序网关
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>将用户管理的标识分配给应用程序网关
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id

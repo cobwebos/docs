@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b02835ae3a1d7fed52f2cdb4ab25aa74ba66e8c3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119886"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642190"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -107,7 +107,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 如果已授予对某个容器的[匿名读取访问权限](storage-manage-access-to-resources.md)，则 ACL 对该容器或该容器中的文件没有影响。
 
-## <a name="premium-performance-block-blob-storage-accounts"></a>高级性能块 Blob 存储帐户
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>高性能 BlockBlobStorage 存储帐户
 
 ### <a name="diagnostic-logs"></a>诊断日志
 
@@ -126,7 +126,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>生命周期管理策略
 
-- 高级块 blob 存储帐户中尚不支持生命周期管理策略。 
+- 高级 BlockBlobStorage 存储帐户中尚不支持生命周期管理策略。 
 
 - 不能将数据从高级层级移到较低的层级。 
 
@@ -134,11 +134,11 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="hdinsight-support"></a>HDInsight 支持
 
-创建 HDInsight 群集时，还无法选择其上启用了分层命名空间功能的块 blob 存储帐户。 但是，创建群集后，可以将该帐户附加到该群集。
+创建 HDInsight 群集时，尚无法选择启用了分层命名空间功能的 BlockBlobStorage 帐户。 但是，创建群集后，可以将该帐户附加到该群集。
 
 ### <a name="dremio-support"></a>Dremio 支持
 
-Dremio 还不能连接到其上启用了分层命名空间功能的块 blob 存储帐户。 
+Dremio 尚且不能连接到其上启用了分层命名空间功能的 BlockBlobStorage 帐户。 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) 驱动程序（不支持用于 Data Lake Storage Gen2）
 

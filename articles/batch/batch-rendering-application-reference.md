@@ -1,16 +1,16 @@
 ---
-title: 使用呈现应用程序
-description: 如何通过 Azure Batch 使用渲染应用程序。 本文简要介绍如何运行每个渲染应用程序。
+title: 使用渲染应用程序
+description: 如何配合 Azure Batch 使用渲染应用程序。 本文简要介绍如何运行每个渲染应用程序。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115799"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726496"
 ---
 # <a name="rendering-applications"></a>渲染应用程序
 
@@ -39,12 +39,12 @@ ms.locfileid: "82115799"
 
 说明：
 
-* 请务必小心操作，以确保能够找到资产文件。  使用“资产跟踪”窗口来确保路径正确且相关，或者在命令行中使用  **参数。** `-bitmapPath`
+* 请务必小心操作，以确保能够找到资产文件。  使用“资产跟踪”窗口来确保路径正确且相关，或者在命令行中使用 `-bitmapPath` 参数。
 * 运行任务时检查 3ds Max 写入的 `stdout.txt` 文件，查看渲染器是否有问题，例如，找不到资产。
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板
 
-可以从 Batch Explorer 中的“库”访问池和作业模板。   [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)中提供了模板源文件。
+可以从 Batch Explorer 中的“库”访问池和作业模板。  [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)中提供了模板源文件。
 
 ## <a name="rendering-with-autodesk-maya"></a>使用 Autodesk Maya 进行渲染
 
@@ -79,7 +79,7 @@ render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_B
 
 ### <a name="batch-explorer-templates"></a>Batch Explorer 模板
 
-可以从 Batch Explorer 中的“库”访问池和作业模板。   [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)中提供了模板源文件。
+可以从 Batch Explorer 中的“库”访问池和作业模板。  [GitHub 上的 Batch Explorer 数据存储库](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)中提供了模板源文件。
 
 ## <a name="next-steps"></a>后续步骤
 

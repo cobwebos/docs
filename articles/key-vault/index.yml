@@ -13,32 +13,32 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 7a0efa00b4fc881c113e151c6730ca5185ea0349
-  ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+  ms.openlocfilehash: 55cf57d283433936b0cba03b67de8726d0ee98c8
+  ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84194437"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84945590"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
     itemType: overview
     url: ./general/overview.md
-  - title: 基本概念
+  - title: 身份验证
     itemType: overview
-    url: ./general/basic-concepts.md
+    url: ./general/authentication.md
   - title: 软删除
     itemType: overview
     url: ./general/overview-soft-delete.md
+  - title: 基本概念
+    itemType: overview
+    url: ./general/basic-concepts.md
   - title: 日志记录
     itemType: overview
     url: ./general/logging.md
   - title: 限制
     itemType: overview
     url: ./general/overview-throttling.md
-  - title: 安全建议
-    itemType: overview
-    url: ./general/security-recommendations.md
 conceptualContent:
   items:
   - title: 证书
@@ -63,6 +63,9 @@ conceptualContent:
     - url: ./keys/about-keys.md
       itemType: overview
       text: 关于密钥
+    - url: ../security/fundamentals/encryption-atrest.md
+      itemType: overview
+      text: 数据加密
     - url: ./keys/quick-create-portal.md
       itemType: quickstart
       text: 使用 Azure 门户在 Azure Key Vault 中设置和检索密钥
@@ -131,6 +134,6 @@ conceptualContent:
     - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
       itemType: overview
       text: Azure Kubernetes 服务 - 在 AKS 中使用 Key Vault 机密、证书和密钥
-    - url: ../data-factory/store-credentials-in-key-vault.md
+    - url: https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes
       itemType: overview
-      text: Azure 数据工厂 - 在 Key Vault 中维护凭据
+      text: Azure Databricks - 使用 Key Vault 实现机密管理

@@ -1,7 +1,7 @@
 ---
-title: 迁移到 Azure 资源进行创作
+title: 迁移到 Azure 资源进行创作2
 titleSuffix: Azure Cognitive Services
-description: 迁移到 Azure 创作资源密钥。
+description: 迁移到 Azure 创作资源密钥2。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,116 +9,239 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 02/28/2020
+ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: b480dca46e544caabdf3be62b57b38652ee973ae
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5f0778436db7bd8c3a09e3ba346d8a9a6c4af454
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337982"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983697"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
 语言理解（LUIS）创作身份验证从电子邮件帐户更改为 Azure 资源。 目前不需要切换到 Azure 资源，以后将强制实施。
 
-## <a name="why-migrate"></a>为何要迁移？
 
-使用 Azure 资源进行创作可以让你作为资源的所有者来控制对创作的访问。 你可以创建和命名创作资源，以管理不同的作者组。
+## <a name="what-is-migration"></a>什么是迁移？
 
-例如，你是2个 LUIS 应用的所有者，并且你有不同的成员，这些成员是每个应用的协作者。 可以创建两个不同的创作资源，并将每个应用程序分配给每个单独的资源。 然后，将每个成员作为参与者分配给适当的创作资源，具体取决于他们所在的应用。 Azure 创作资源控制授权。
+迁移是将创作身份验证从电子邮件帐户更改为 Azure 资源的过程。 迁移后，你的帐户将链接到 Azure 订阅和 Azure 创作资源。 **所有 LUIS 用户（所有者或合作者）最终都需要迁移。** 必须从 LUIS 门户完成迁移。 如果创建了创作密钥，例如 with LUIS CLI，则仍需在 LUIS 门户中完成迁移过程。 迁移后，你仍可以对应用程序进行共同创作者，但会将其添加到 Azure 资源级别，而不是应用程序级别。
 
 > [!Note]
 > 在迁移之前，共同创作者称为 LUIS 应用级别的_协作_者。 迁移后，_参与者_的 azure 角色用于相同的功能，但在 azure 资源级别上使用。
 
-## <a name="what-is-migrating"></a>什么是迁移？
+## <a name="note-before-you-migrate"></a>请注意，在迁移之前
 
-迁移包括：
+* 迁移是**一个**单向过程。 迁移后无法返回。
+* 如果你是应用程序的**所有者**，应用程序将自动与你一起**迁移**。
+* 所有者无法选择要迁移的应用子集，此过程不可逆。
+* 在**所有者迁移**后，应用程序将**从协作方中消失**。
+* 系统会提示所有者向协作者发送电子邮件，告知他们迁移。
+* 如果你是应用程序的**协作**者，应用程序将不会随你一起**迁移**。
+* 所有者没有办法知道他的协作者已迁移。
+* **迁移**不会自动收集协作者，也不会将其移动或添加到 Azure 创作资源。 应用所有者是在迁移后需要完成此步骤的人员。 此步骤需要[Azure 创作资源的权限](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate)。
+* 在将资源分配给 Azure 资源后，**协作者需要迁移才能访问应用程序**。 否则，他们将无权使用创作应用程序。
+* 无法将迁移的用户添加为应用程序的协作者。
+* 如果**您拥有分配给其他用户所拥有的应用程序的预测密钥**，这会阻止所有者和协作者进行**迁移**。 请参阅下面的建议。
 
-* LUIS、所有者和参与者的所有用户。
-* **所有**应用。
-* 单向**迁移。**
+> [!Note]
+> 如果需要创建预测运行时资源，则可以[使用单独的进程](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)来创建它。
 
-所有者无法选择要迁移的应用子集，此过程不可逆。
+## <a name="migration-prerequisites"></a>迁移先决条件
 
-迁移不是：
+* 需要与有效的 Azure 订阅相关联。 请求租户管理员将你添加到订阅，或者可以在[此处](https://azure.microsoft.com/free/)注册一个免费订阅。
+* 需要从 LUIS 门户或 Azure 门户创建 LUIS Azure 创作资源。 从 LUIS 门户创建创作资源是下一节中讨论的迁移流程的一部分。
+* 如果你是**应用程序的协作**者，应用程序将不会自动迁移。 建议通过导出这些应用程序或使用[导出 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)**来备份这些应用程序**。 迁移后，可以将应用导入回 LUIS。 导入过程将创建一个新应用，其中包含你作为其所有者的新应用 ID。
+* 如果你是**应用程序的所有者**，则无需导出应用，因为它们会自动迁移。 **建议保存每个应用的 collaborator's 列表。** 提供此列表的电子邮件模板在迁移过程中是可选的。
 
-* 收集协作者并自动移动或添加到 Azure 创作资源的进程。 作为应用所有者，需要完成此步骤。 此步骤需要具有相应资源的权限。
-* 用于创建和分配预测运行时资源的进程。 如果需要预测运行时资源，这是[一个单独的进程](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal)，并且保持不变。
-
-## <a name="how-are-the-apps-migrating"></a>如何迁移应用？
-
-[LUIS 门户](https://www.luis.ai)提供迁移过程。
-
-系统会要求你在以下情况中进行迁移：
-
-* 你具有用于创作的电子邮件身份验证系统上的应用。
-* 你是应用所有者。
-
-您可以通过取消窗口来延迟迁移过程。 系统会定期要求你迁移，直到你迁移或通过迁移截止时间。 可以从顶部导航栏的锁定图标开始迁移过程。
-
-## <a name="migration-for-the-app-owner"></a>应用所有者的迁移
-
-### <a name="before-you-migrate"></a>迁移之前
-
-* **需要，需要**有一个[Azure 订阅](https://azure.microsoft.com/free/)。 订阅过程的一部分需要计费信息。 但是，在使用 LUIS 时，可以使用免费（ `F0` ）定价层。
-* **（可选**）通过导出每个应用或使用导出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，从 LUIS 门户的 "应用" 列表备份应用。
-* **还可以选择**保存每个应用的 collaborator's 列表。 此电子邮件列表作为迁移过程的一部分提供。
-
-
-**创作你的 LUIS 应用程序是免费**的，由 `F0` 层指示。 了解[有关定价层的详细信息](luis-limits.md#key-limits)。
-
-如果你没有 Azure 订阅，请[注册](https://azure.microsoft.com/free/)。
-
-### <a name="migration-steps"></a>迁移步骤
-
-请按照[以下迁移步骤](luis-migration-authoring-steps.md)操作。
-
-### <a name="after-you-migrate"></a>迁移后
-
-迁移过程完成后，所有 LUIS 应用现已分配给单个 LUIS 创作资源。
-
-你可以在_LUIS 门户_中创建更多的创作资源，并从**管理-> Azure 资源**页分配。
-
-您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到_Azure 门户_中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
 |门户|目的|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)|* 创建预测和创作资源。<br>* 分配参与者。|
-|[LUIS](https://www.luis.ai)|* 迁移到新的创作资源。<br>* 通过 "**管理-> Azure 资源**" 页为应用分配预测和创作资源。|
+|[Azure](https://azure.microsoft.com/free/)|* 创建预测和创作资源。<br>* 分配资源的参与者。|
+|[LUIS](https://www.luis.ai)|* 迁移到新的创作资源。<br>* 在迁移流程中创建新的创作资源。<br>* 通过 "**管理-> Azure 资源**" 页为应用分配预测和创作资源。 <br>* 将应用程序从一个创作资源移到另一个。  |
 
-## <a name="migration-for-the-app-contributor"></a>应用参与者的迁移
+> [!Note]
+> **创作你的 LUIS 应用程序是免费**的，由 `F0` 层指示。 了解[有关定价层的详细信息](luis-limits.md#key-limits)。
 
-LUIS 的每个用户都需要迁移，包括协作者/参与者。 协作者必须迁移才能访问应用。
+
+## <a name="migration-steps"></a>迁移步骤
+
+1. 在正在使用的 LUIS 门户中，可以从顶部工具栏上的**Azure**图标开始迁移过程。
+
+   > [!div class="mx-imgBorder"]
+   > ![迁移图标](./media/migrate-authoring-key/migration-button.png)
+
+2. 可以在 "迁移" 弹出窗口中继续进行迁移或迁移。 选择 "**立即迁移**"。
+
+   > [!div class="mx-imgBorder"]
+   > ![迁移过程中的第一个弹出窗口，选择 "立即迁移"。](./media/migrate-authoring-key/prompt-when-migrating-2.png)
+
+3. （可选）如果你的任何应用有协作者，系统将提示你向**他们发送一封电子邮件**，告知他们有关迁移的信息。 这是可选步骤。
+
+   对于每个协作者和应用，会打开默认的电子邮件应用程序，其中包含一种格式较轻的电子 你可以在发送电子邮件之前对其进行编辑。 电子邮件模板包含确切的应用程序 ID 和应用名称。
+   
+   ```html
+   Dear Sir/Madam,
+
+   I will be migrating my LUIS account to Azure. Consequently, you will no longer have access to the following app:
+
+   App Id: <app-ID-omitted>
+   App name: Human Resources
+      
+   Thank you
+   ```
+   
+   > [!Note]
+   > 将你的帐户迁移到 Azure 后，你的应用程序将不能再用于协作者。
+
+4. （可选）如果你是任何应用程序的协作者，则会提示你在迁移流程中通过选择此选项来**导出应用的副本**。 选择该选项后，会看到以下页面，单击左侧的 "下载" 按钮即可导出所需的应用。 你可以在迁移后重新导入这些应用，因为它们不会自动随你一起迁移。 这是可选步骤。
+
+   > [!div class="mx-imgBorder"]
+   > ![提示导出应用程序。](./media/migrate-authoring-key/export-app-for-collabs-2.png)
+
+5. 如果已从 Azure 创建新的 LUIS 创作资源，可以选择创建新的创作资源或迁移到现有创作资源。 选择以下选项，选择所需的选项。
+
+   > [!div class="mx-imgBorder"]
+   > ![创建创作资源](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
+
+### <a name="create-new-authoring-resource-from-luis-to-migrate"></a>从 LUIS 创建新的创作资源以进行迁移
+
+如果要创建新的创作资源，请选择 "**创建新的创作资源**"，并在下一个窗口中提供以下信息。
+
+> [!div class="mx-imgBorder"]
+> ![创建创作资源](./media/migrate-authoring-key/create-new-authoring-resource-2.png)
+
+* **资源名称** - 你选择的自定义名称，用作创作和预测终结点查询的 URL 的一部分。
+* **订阅名称**-将与资源关联的订阅。 如果有多个订阅属于租户，请从下拉列表中选择所需的订阅。
+* **资源组**-从下拉列表中选择的自定义资源组名称。 使用资源组可将 Azure 资源分组，以便进行访问和管理。
+* **租户** - 与 Azure 订阅关联的租户。 默认情况下，此值设置为当前选择的租户。 可以通过选择包含首字母缩写的最右侧头像来切换租户。
+
+输入以上信息后，请选择 "**完成**"。
+
+请注意，每个订阅的每个区域可以有10个免费创作资源。 如果订阅的同一区域中的创作资源超过10个，将无法创建新的资源。
+
+* 创建创作资源后，会显示成功消息。 选择 "**关闭**" 以关闭弹出窗口。
+
+  > [!div class="mx-imgBorder"]
+  > ![创作资源已成功创建。](./media/migrate-authoring-key/migration-success-2.png)
+
+### <a name="use-existing-authoring-resource-to-migrate"></a>使用现有的创作资源进行迁移
+
+如果你的订阅已与 LUIS 创作 Azure 资源关联，或者 Azure 门户你要迁移到它，而不是创建新资源，请选择 "**使用现有的创作资源**"，并在下一个窗口中提供以下信息。
+
+> [!div class="mx-imgBorder"]
+>![创建创作资源](./media/migrate-authoring-key/choose-existing-authoring-resource-2.png)
+
+* **租户** - 与 Azure 订阅关联的租户。 默认情况下，此值设置为当前选择的租户。
+* **订阅名称**-将与资源关联的订阅。 如果有多个订阅属于租户，请从下拉列表中选择所需的订阅。
+* **资源名称**-选择要迁移到的创作资源。
+
+> [!Note]
+> 如果在下拉列表中看不到你的创作资源，请确保根据你登录的 LUIS 门户在**适当的位置**创建它。 此外，请确保创建的是**创作资源**，而不是**预测资源**。
+
+
+* 验证创作资源名称，并单击 "**立即迁移**" 按钮。
+
+ > [!div class="mx-imgBorder"]
+ > ![创建创作资源](./media/migrate-authoring-key/choose-authoring-resource-and-migrate-2.png)
+
+* 显示成功消息。 选择 "**关闭**" 以关闭弹出窗口。
+
+ > [!div class="mx-imgBorder"]
+ > ![创作资源已成功创建。](./media/migrate-authoring-key/migration-success-2.png)
+
+## <a name="using-apps-after-migration"></a>迁移后使用应用
+
+* 迁移过程完成后，你作为其所有者的所有 LUIS 应用将立即分配给单个 LUIS 创作资源。
+* "**我的应用**" 列表显示迁移到新的创作资源的应用。
+* 在访问应用之前，请选择 "订阅" 和 "LUIS 创作资源"，以查看可以创作的应用。
+
+ > [!div class="mx-imgBorder"]
+ > ![选择 "订阅" 和 "LUIS 创作资源"，查看你可以创作的应用。](./media/create-app-in-portal-select-subscription-luis-resource.png)
+
+* 不需要知道创作资源的密钥即可继续在 LUIS 门户中编辑应用。
+* 如果计划以编程方式编辑应用，则需要创作密钥值。 这些值显示在 LUIS 门户中的 "**管理-> Azure 资源**" 页上，也可以在资源的 "**密钥**" 页上的 "Azure 门户中找到。 你还可以创建更多的创作资源并从同一页分配这些资源。
+
+ > [!div class="mx-imgBorder"]
+ > ![管理创作资源。](./media/migrate-authoring-key/manage-authoring-resource-2.png)
+
+## <a name="add-contributors-to-authoring-resources"></a>添加参与者以创作资源
+
+[!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
+
+了解如何在创作资源上[添加参与者](luis-how-to-collaborate.md)。 参与者将有权访问该资源下的所有应用程序。
+
+您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到_Azure 门户_中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
 > [!Note]
 > 如果 LUIS 应用的所有者迁移并添加了协作者作为 Azure 资源的参与者，则协作者仍将无法访问应用，除非他们还在迁移。
 
-### <a name="before-the-app-is-migrated"></a>迁移应用之前
+## <a name="luis-portal-migration-reminders"></a>LUIS 门户迁移提醒
 
-您可以选择导出您是其协作者的应用程序，然后将该应用程序导回 LUIS。 导入过程将创建一个新应用，其中包含你作为其所有者的新应用 ID。
+[LUIS 门户](https://www.luis.ai)提供迁移过程。
 
-### <a name="after-the-app-is-migrated"></a>迁移应用后
+系统会要求你在以下情况中进行迁移：
+* 你具有用于创作的电子邮件身份验证系统上的应用。
+* 你是应用所有者。
 
-应用所有者需要[将电子邮件作为协作者添加到 Azure 创作资源](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)。
+每周一次，系统都会提示您迁移应用程序。 无需迁移即可取消此窗口。 如果要在下一个计划的时间段之前迁移，可以从 LUIS 门户顶部工具栏上的**Azure**图标开始迁移过程。
 
-迁移过程完成后，LUIS 门户的 "**我的应用**" 页上提供了你拥有的任何应用。
+您可以通过取消窗口来延迟迁移过程。 系统会定期要求你迁移，直到你迁移或通过迁移截止时间。 可以从顶部导航栏的锁定图标开始迁移过程。
 
-## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>排查 LUIS 创作的迁移过程
+## <a name="prediction-resources-blocking-migration"></a>阻止迁移的预测资源
+迁移会对任何应用程序运行时产生负面影响。 迁移时，会从应用中删除任何协作者，并将其作为协作者从其他应用中删除。 此过程意味着，合作者分配的密钥也会被删除，如果应用程序在生产环境中，则可能会破坏应用程序。 这就是我们阻止迁移的原因，因为你已手动删除分配给他们的协作者或密钥。
 
-* 迁移过程完成后，LUIS 创作密钥仅在 LUIS 门户中可见。 如果创建了创作密钥，例如 with LUIS CLI，则用户仍需在 LUIS 门户中完成迁移过程。
-* 如果已迁移的用户在其 azure 资源上添加了非迁移用户作为参与者，则未迁移的用户将无法访问应用，除非他们迁移。
-* 如果非迁移的用户不是任何应用的所有者，而是其他用户拥有的其他应用的协作者，且这些所有者已完成迁移过程，则此用户需要迁移才能访问应用。
-* 如果非迁移的用户将其他已迁移用户添加为其应用的协作者，则会发生错误，因为无法将迁移的用户作为协作者添加到应用中。 然后，非迁移的用户必须完成迁移过程，并创建 azure 资源并将迁移的用户作为参与者添加到该资源。
+### <a name="when-does-prediction-resources-block-migration"></a>预测资源何时会阻止迁移？
+* 如果你在不属于的应用中分配了预测/运行时资源，则迁移将被阻止。
+* 如果你有其他用户向你拥有的应用程序分配预测/运行时资源，则迁移将被阻止。
 
-如果出现下列情况，则在迁移过程中会收到错误：
-* 你的订阅不会授权你创建认知服务资源
-* 迁移会对任何应用程序运行时产生负面影响。 迁移时，会从应用中删除任何协作者，并将其作为协作者从其他应用中删除。 此过程表明，分配的密钥也会删除。 如果已在其他应用中分配密钥，则迁移将被阻止。 在迁移之前，请删除安全指定的密钥。 如果你知道在运行时中未使用分配的密钥，则需要将其删除才能在迁移过程中进行。
+### <a name="recommended-steps-to-do-if-you-are-the-owner-of-the-app"></a>如果你是应用的所有者，建议执行的步骤
+如果你是某些应用程序的所有者，并且具有协作者将预测/运行时密钥分配给这些应用程序，则在你迁移时，将会显示一个错误，其中列出了分配给其他用户的预测密钥的应用程序 Id。
 
-使用以下 URL 格式访问应用的 Azure 资源列表：
+建议执行以下操作：
+* 通知协作者有关迁移的信息。
+* 从错误中显示的应用程序中删除所有协作者。
+* 如果手动删除了协作者，则应执行迁移过程。
+* 为新的创作资源分配合作者作为参与者。
+* 协作者是将预测资源迁移并重新分配给应用程序。
+请注意，这将导致暂时中断应用程序，直到重新分配预测资源。
 
-`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
+此处的另一种解决方案是，在所有者迁移之前，协作者可以从 Azure 门户的 Azure 订阅中将应用所有者添加为参与者。 这将授予所有者对运行时预测资源的访问权限。 如果使用新的订阅（将在新租户下找到）来迁移所有者，这不仅会阻止协作者和应用所有者的迁移过程，而且还允许使用仍分配了预测密钥的应用进行平滑迁移，而不会破坏应用。
+
+
+### <a name="recommended-steps-to-do-if-you-are-a-collaborator-on-an-app"></a>如果你是应用的协作者，建议执行的步骤
+如果要在应用程序上进行协作并将预测/运行时密钥分配给这些应用程序，则在迁移时，将会显示一个错误，指出阻止迁移的应用程序 Id 和密钥路径。
+
+建议执行以下操作：
+* 将应用程序导出为备份。 在迁移过程中，这是一个可选步骤。
+* 从 "**管理-> Azure 资源**" 页取消分配预测资源。
+* 迁移过程。
+* 迁移后导入后导入应用程序。
+* 将预测密钥重新分配给应用程序**管理-> Azure 资源**页。
+
+> [!Note]
+> 当你在迁移后导入应用程序时，它们将具有不同的应用程序 Id，并将不同于在生产中命中的应用程序 Id。 你现在将是这些应用程序的所有者。
+
+## <a name="troubleshooting-migration-process"></a>迁移过程疑难解答
+
+当你尝试在下拉列表中进行迁移但找不到你的 Azure 订阅时：
+* 确保你有一个有效的 Azure 订阅，该订阅有权创建认知服务资源。 中转到[Azure 门户](https://ms.portal.azure.com)并检查订阅的状态。 如果没有，请[创建一个免费试用版](https://azure.microsoft.com/free/)。
+* 确保你处于与有效订阅关联的正确租户中。 你可以从以下工具栏中的更多左边的头像切换租户： ![ 切换租户。](./media/migrate-authoring-key/switch-user-tenant-2.png)
+
+ 如果你已有现有的创作资源，但在选择 "使用现有创作资源" 选项时找不到它：
+* 你的资源可能创建在与你登录的门户不同的位置。 请检查[LUIS 创作区域和门户](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions)
+* 改为通过 LUIS 门户创建新资源
+
+如果选择 "创建新的创作资源" 选项，并且迁移失败，并出现错误消息 "检索用户的 Azure 信息失败，请稍后重试"
+* 每个订阅的订阅可能有10个或更多的创作资源。 如果是这种情况，您将无法创建新的创作资源。
+* 选择 "使用现有的创作资源" 选项，并选择订阅下的现有资源之一进行迁移。
+
+如果看到以下错误，请查看 [如果你是应用的所有者，推荐的步骤] ![ 迁移失败的所有者](./media/migrate-authoring-key/migration-failed-for-owner-2.png)
+
+如果你看到以下错误，请查看 [如果你是应用的协作者，建议执行的步骤] ![ 迁移失败的协作者](./media/migrate-authoring-key/migration-failed-for-collab-2.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何将应用迁移到创作资源](luis-migration-authoring-steps.md)
+* 查看有关创作和运行时密钥的[概念](luis-concept-keys.md)
+* 查看[如何分配密钥](luis-how-to-azure-subscription.md)并添加[参与者](luis-how-to-collaborate.md)

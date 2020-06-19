@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect 中的预览版功能 | Microsoft Docs
+title: Azure AD Connect：预览版功能 | Microsoft Docs
 description: 本主题详细介绍 Azure AD Connect 中以预览版形式提供的功能。
 services: active-directory
 documentationcenter: ''
@@ -12,38 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 396e1d9e6ad474d053ca803218d55396c073845d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261276"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680179"
 ---
 # <a name="more-details-about-features-in-preview"></a>有关预览版功能的详细信息
 本主题介绍如何使用当前以预览版形式提供的功能。
 
-## <a name="group-writeback"></a>组写回
-可选功能中的组写回选项允许用户将“Office 365 组”写回到装有 Exchange 的林。**** 这是永远在云中受控制的组。 如果有本地 Exchange，则可以将这些组写回到本地，使具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同步 V2 终结点 API（公共预览版） 
 
-可在[此处](https://aka.ms/O365g)找到有关 Office 365 组及其用法的详细信息。
-
-Office 365 组会在本地 AD DS 中表示为分发组。 本地 Exchange 服务器必须是 Exchange 2013 累积更新 8（2015 年 3 月发行）或 Exchange 2016，才能识别这个新的组类型。
-
-**预览期注意事项**
-
-* 预览版中当前不会填充通讯簿属性。 如果没有这个属性，组就不会显示在 GAL 中。 若要填充此属性，最简单的方法是使用 Exchange PowerShell cmdlet `update-recipient`。
-* 只有使用 Exchange 架构的林才是组的有效目标。 如果没有检测到 Exchange，则无法启用组写回功能。
-* 目前仅支持单林 Exchange 组织部署。 如果本地环境中有多个 Exchange 组织，则需有一个本地 GALSync 解决方案才能让这些组显示在其他林中。
-* 组写回功能不处理安全组或分发组。
-
-> [!NOTE]
-> 组写回需要 Azure AD Premium 订阅。
-> 
->
+我们已部署新的 Azure AD Connect 终结点 (API)，可提高 Azure Active Directory 的同步服务操作性能。 通过利用新的 V2 终结点，导出或导入 Azure AD 时的性能会有显著提升。 这个新的终结点还支持同步最多包含 250000 个成员的组。 使用此终结点，还可以在组回写处于启用状态时，将 O365 统一组（没有最多成员人数限制）回写到本地 Active Directory。   有关详细信息，请参阅 [Azure AD Connect 同步 V2 终结点 API（公共预览版）](how-to-connect-sync-endpoint-api-v2.md)。
 
 ## <a name="user-writeback"></a>用户写回
 > [!IMPORTANT]
@@ -54,4 +39,4 @@ Office 365 组会在本地 AD DS 中表示为分发组。 本地 Exchange 服务
 ## <a name="next-steps"></a>后续步骤
 配置 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

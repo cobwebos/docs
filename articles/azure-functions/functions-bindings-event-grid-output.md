@@ -1,26 +1,26 @@
 ---
-title: Azure Functions 的 Azure 事件网格输出绑定
+title: 适用于 Azure Functions 的 Azure 事件网格输出绑定
 description: 了解如何在 Azure Functions 中发送事件网格事件。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0237bcbf98578d9f83f3c9652661c786df54e73a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627681"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773955"
 ---
-# <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions 的 Azure 事件网格输出绑定
+# <a name="azure-event-grid-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格输出绑定
 
-使用事件网格输出绑定将事件写入到自定义主题。 必须具有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
+使用事件网格输出绑定将事件写入到自定义主题。 必须拥有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
 
-若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
+有关设置和配置的详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 
 > [!NOTE]
-> 事件网格输出绑定不支持共享访问签名（SAS 令牌）。 必须使用主题的访问密钥。
+> 事件网格输出绑定不支持共享访问签名（SAS 令牌）。 必须使用该主题的访问密钥。
 
 > [!IMPORTANT]
 > 事件网格输出绑定仅适用于 Functions 2.x 和更高版本。
@@ -29,7 +29,7 @@ ms.locfileid: "82627681"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-以下示例演示使用方法返回值作为输出将消息写入到事件网格自定义主题的 [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示了一个 [C# 函数](functions-dotnet-class-library.md)它使用方法返回值作为输出，将消息写入到事件网格自定义主题：
 
 ```csharp
 [FunctionName("EventGridOutput")]
@@ -40,7 +40,7 @@ public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTim
 }
 ```
 
-以下示例演示如何使用 `IAsyncCollector` 接口发送一批消息。
+以下示例显示了如何使用 `IAsyncCollector` 接口来发送一批消息。
 
 ```csharp
 [FunctionName("EventGridAsyncOutput")]
@@ -59,7 +59,7 @@ public static async Task Run(
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 *function.json* 文件中的事件网格输出绑定数据。
+以下示例显示了 *function.json* 文件中的事件网格输出绑定数据。
 
 ```json
 {
@@ -71,7 +71,7 @@ public static async Task Run(
 }
 ```
 
-下面是可创建一个事件的 C# 脚本代码：
+以下 C# 脚本代码将创建一个事件：
 
 ```cs
 #r "Microsoft.Azure.EventGrid"
@@ -85,7 +85,7 @@ public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogge
 }
 ```
 
-下面是可创建多个事件的 C# 脚本代码：
+以下 C# 脚本代码将创建多个事件：
 
 ```cs
 #r "Microsoft.Azure.EventGrid"
@@ -102,7 +102,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-以下示例演示 *function.json* 文件中的事件网格输出绑定数据。
+以下示例显示了 *function.json* 文件中的事件网格输出绑定数据。
 
 ```json
 {
@@ -114,7 +114,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
-下面是可创建单个事件的 JavaScript 代码：
+以下 JavaScript 代码将创建单个事件：
 
 ```javascript
 module.exports = async function (context, myTimer) {
@@ -132,7 +132,7 @@ module.exports = async function (context, myTimer) {
 };
 ```
 
-下面是可创建多个事件的 JavaScript 代码：
+以下 JavaScript 代码将创建多个事件：
 
 ```javascript
 module.exports = function(context) {
@@ -162,7 +162,53 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-事件网格输出绑定不适用于 Python。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 然后，它会将事件发送到自定义事件网格主题，如 `topicEndpointUri` 所指定。
+
+下面是 function.json 文件中的绑定数据：
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    },
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+以下 Python 示例通过设置 `EventGridOutputEvent` 将事件发送到自定义事件网格主题：
+
+```python
+import logging
+import azure.functions as func
+import datetime
+
+
+def main(eventGridEvent: func.EventGridEvent, 
+         outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
+
+    logging.log("eventGridEvent: ", eventGridEvent)
+
+    outputEvent.set(
+        func.EventGridOutputEvent(
+            id="test-id",
+            data={"tag1": "value1", "tag2": "value2"},
+            subject="test-subject",
+            event_type="test-event-1",
+            event_time=datetime.datetime.utcnow(),
+            data_version="1.0"))
+```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -174,9 +220,9 @@ module.exports = function(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-对于[c # 类库](functions-dotnet-class-library.md)，请使用[EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs)属性。
+对于 [C# 类库](functions-dotnet-class-library.md)，使用 [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) 特性。
 
-该特性的构造函数采用包含自定义主题名称的应用设置的名称，以及包含主题键的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#configuration)。 下面是 `EventGrid` 特性的示例：
+该特性的构造函数可接受包含自定义主题名称的应用设置的名称，以及包含主题密钥的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#configuration)。 下面是 `EventGrid` 特性的示例：
 
 ```csharp
 [FunctionName("EventGridOutput")]
@@ -189,7 +235,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 有关完整示例，请参阅[示例](#example)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -199,7 +245,7 @@ JavaScript 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-事件网格输出绑定不适用于 Python。
+事件网格输出绑定对于 Python 不可用。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -209,38 +255,38 @@ JavaScript 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`EventGrid`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `EventGrid` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 "eventGrid"。 |
-|**方向键** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
-|**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题的 URI 的应用设置的名称，例如`MyTopicEndpointUri`。 |
-|**topicKeySetting** |**TopicKeySetting** | 应用设置的名称，该设置包含自定义主题的访问密钥。 |
+|type | 不适用 | 必须设置为“eventGrid”。 |
+|direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题 URI 的应用设置的名称，例如 `MyTopicEndpointUri`。 |
+|**topicKeySetting** |**TopicKeySetting** | 包含自定义主题访问密钥的应用设置的名称。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!IMPORTANT]
-> 确保将 " `TopicEndpointUri`配置" 属性的值设置为包含自定义主题的 URI 的应用设置的名称。 不要在此属性中直接指定自定义主题的 URI。
+> 确保将 `TopicEndpointUri` 配置属性的值设置为包含自定义主题 URI 的应用设置的名称。 请勿直接在此属性中指定自定义主题的 URI。
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用方法参数（如） `out EventGridEvent paramName`发送消息。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+可以使用 `out EventGridEvent paramName` 等方法参数发送消息。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-使用方法参数（如） `out EventGridEvent paramName`发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+可以使用 `out EventGridEvent paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<name>`访问 output 事件，其中`<name>`是在`name` *函数 json*的属性中指定的值。
+使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是 function.json 的 `name` 属性中指定的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
-事件网格输出绑定不适用于 Python。
+事件网格输出绑定对于 Python 不可用。
 
 # <a name="java"></a>[Java](#tab/java)
 
