@@ -4,12 +4,12 @@ description: 了解 Azure 容器注册表的静态加密，以及如何使用 Az
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: d9cd10401e7f645a8edd269184a56dc27544a8c8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927304"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683483"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -17,7 +17,7 @@ ms.locfileid: "82927304"
 
 使用客户管理的密钥进行服务器端加密，是通过与 [Azure Key Vault](../key-vault/general/overview.md) 的集成来支持的。 你可以创建自己的加密密钥并将其存储在密钥保管库中，或使用 Azure Key Vault 的 API 来生成密钥。 使用 Azure Key Vault 还可以审核密钥的使用情况。
 
-此功能在“高级”容器注册表服务层级中可用。 有关注册表服务层级和限制的信息，请参阅 [Azure 容器注册表 SKU](container-registry-skus.md)。
+此功能在“高级”容器注册表服务层级中可用。 若要了解注册表服务层和限制，请参阅 [Azure 容器注册表服务层](container-registry-skus.md)。
 
    
 ## <a name="things-to-know"></a>使用须知

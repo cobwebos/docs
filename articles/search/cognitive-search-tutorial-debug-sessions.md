@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662229"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886780"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教程：诊断、修正和提交对技能组的更改
 
@@ -173,12 +173,12 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 ## <a name="fix-missing-skill-output-values"></a>修复缺失的技能输出值
 
 > [!div class="mx-imgBorder"]
-> ![错误和警告](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![错误和警告](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 某个技能缺失输出值。 若要确定出现错误的技能，请转到“扩充数据结构”，查找值名称并查看其“原始源”。 在缺失 organizations 和 locations 值的情况下，它们是技能 #1 的输出。 为每个路径打开表达式计算器 </> 时，列出的表达式将分别显示为“/document/content/organizations”和“/document/content/locations”。
 
 > [!div class="mx-imgBorder"]
-> ![表达式计算器 organizations 实体](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![表达式计算器 organizations 实体](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 这些实体的输出为空，但其输出不应为空。 哪些输入生成此结果？
 
@@ -187,7 +187,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 为输入“text”打开表达式计算器 </>。
 
 > [!div class="mx-imgBorder"]
-> ![text 技能的输入](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![text 技能的输入](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 此输入的显示结果看起来不像文本输入。 它看起来像是被新行包围的图像。 缺少文本意味着无法确定任何实体。 查看技能组的层次结构时，系统显示内容首先由技能 #6 (OCR) 处理，然后传递给技能 #5 (Merge)。 
 
@@ -195,7 +195,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在右侧的“技能详细信息”窗格中选择“执行”选项卡，然后为输出“mergedText”打开表达式计算器 </>。
 
 > [!div class="mx-imgBorder"]
-> ![Merge 技能的输出](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![Merge 技能的输出](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 此处的文本与图像配对。 查看表达式“/document/merged_content”时，可以看到技能 #1 的“organizations”和“locations”路径中的错误。 它不应使用“/document/content”，而是应该使用“/document/merged_content”作为“text”输入。
 
@@ -216,7 +216,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 为“organizations”实体打开表达式计算器 </>。
 
 > [!div class="mx-imgBorder"]
-> ![organizations 实体的输出](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![organizations 实体的输出](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 计算表达式的结果可给出正确的结果。 该技能正在为“organizations”实体确定正确的值。 但是，实体路径中的输出映射仍在引发错误。 在将技能中的输出路径与错误中的输出路径进行比较时，该技能将 /document/content 节点下的输出、组织和位置作为父级。 而输出字段映射期望结果在 /document/merged_content 节点下成为父级。 在上一步中，输入从“/document/content”更改为“/document/merged_content”。 需要更改技能设置中的上下文，以确保在正确的上下文中生成输出。
 
@@ -228,7 +228,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 1. 在会话的窗口菜单中单击“运行”。 这将启动对使用文档的技能组的另一次执行。
 
 > [!div class="mx-imgBorder"]
-> ![技能设置中的上下文更正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![技能设置中的上下文更正](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 所有错误均已解决。
 

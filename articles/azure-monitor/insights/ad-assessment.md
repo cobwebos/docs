@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06c8949be681d13b9dc7d5c433197dd9371aeef8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77667221"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651858"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -27,26 +27,26 @@ ms.locfileid: "77667221"
 
 可以选择对组织最重要的重点领域，并跟踪一个运行正常无风险环境的进度。
 
-在添加解决方案并完成检查后，会在环境中基础结构的“AD 运行状况检查”  仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“AD 运行状况检查”  仪表板上的信息，可以在其中查看并针对 Active Directory 服务器基础结构采取建议的操作。  
+在添加解决方案并完成检查后，会在环境中基础结构的“AD 运行状况检查”仪表板上显示有关重点领域的摘要信息。 以下部分介绍如何使用“AD 运行状况检查”仪表板上的信息，可以在其中查看并针对 Active Directory 服务器基础结构采取建议的操作。  
 
 ![AD 运行状况检查磁贴的图像](./media/ad-assessment/ad-healthcheck-summary-tile.png)
 
 ![AD 运行状况检查仪表板的图像](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* Active Directory 运行状况检查解决方案要求在每台安装了适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  该代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
-* 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
-* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 无需其他配置。
+* Active Directory 运行状况检查解决方案要求在每台装有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent (MMA)）的计算机上安装受支持的 .NET Framework 4.6.2 或更高版本。  代理由 System Center 2016 - Operations Manager、Operations Manager 2012 R2 以及 Azure Monitor 使用。
+* 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2、Windows Server 2016 以及 Windows Server 2019 的域控制器。
+* 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 Active Directory 运行状况检查解决方案。 不需要其他配置。
 
   > [!NOTE]
   > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Azure Monitor 进行处理。 逻辑应用于接收的数据，云服务则记录数据。
   >
   >
 
-若要对属于要评估的域的域控制器执行运行状况检查，该域中的每个域控制器都需要一个代理并使用以下受支持的方法之一连接到 Azure Monitor：
+若要对属于待评估域的域控制器执行运行状况检查，该域中的每个域控制器都需要一个代理，并使用以下受支持的方法之一与 Azure Monitor 建立连接：
 
-1. 如果域控制器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 监视，请安装[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)。
+1. 如果域控制器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)。
 2. 如果域控制器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Azure Monitor 集成，则它可与 Azure Monitor 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
 3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)中的步骤，为数据收集服务添加域控制器。  
 
@@ -78,9 +78,9 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 
 权重是基于三个关键因素的聚合值：
 
-* 所发现的问题会导致不良后果的概率**。 概率较高相当于建议的总体分数较高。
-* 问题确实会导致其他问题时对组织的*影响*。 影响较大相当于建议的总体分数更高。
-* 实施建议所要付出的*工作量*。 工作量较大相当于建议的总体分数较低。
+* 所发现的问题会导致不良后果的概率。 概率较高相当于建议的总体分数较高。
+* 问题对组织的*影响*（如果它确实会导致不良后果）。 影响较大相当于建议的总体分数更高。
+* 实施建议所需的*工作*。 工作量较大相当于建议的总体分数较低。
 
 每一项建议的权重表示为可用于每个重点区域的总分百分比。 例如，如果安全性和合规性重点区域中建议的分数为 5%，则实施该建议将使总体安全性和合规性的分数增加 5%。
 
@@ -110,15 +110,15 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-1. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。********
+1. 在“概述”页上，单击“Active Directory 运行状况检查”磁贴。 
 
-2. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。****
+2. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 
 3. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。
 
-    ![运行状况检查建议的图像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
+    ![运行状况检查建议图像](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 
-4. 可以采取“建议的操作”**** 中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 纠正的项将显示为“已通过的对象”****。
+4. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且合规性分数将提高。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 
@@ -134,7 +134,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
 ```
 
-下面是一个显示日志查询的屏幕截图：<
+下面是一个显示了日志查询的屏幕截图：<
 
 ![失败的建议](media/ad-assessment/ad-failed-recommendations.png)
 
@@ -154,7 +154,7 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略
 
-在下一次计划运行状况检查运行后（默认情况下每隔七天运行一次），指定的建议会被标记为“已忽略”，不会在仪表板上显示。**
+在下一次计划运行状况检查运行后（默认情况下每隔七天运行一次），指定的建议会被标记为“已忽略”，不会在仪表板上显示。
 
 1. 可以使用以下日志查询列出所有已忽略的建议。
 
@@ -166,7 +166,7 @@ ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Co
 
 ## <a name="ad-health-check-solutions-faq"></a>AD 运行状况检查解决方案常见问题解答
 
-*AD 评估解决方案执行哪些检查？*
+*AD 评估解决方案会执行哪些检查？*
 
 * 以下查询显示了当前执行的所有检查的说明：
 
@@ -177,19 +177,19 @@ ADAssessmentRecommendation
 ```
 可以将结果导出到 Excel，以便深入查看。
 
-运行状况检查的运行频率如何？**
+运行状况检查的运行频率如何？
 
 * 每隔七天运行检查。
 
-是否有某种方法可配置运行状况检查的运行频率？**
+是否有某种方法可配置运行状况检查的运行频率？
 
 * 现在不行。
 
-如果添加运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？**
+如果添加运行状况检查解决方案后发现另一台服务器，那么它是否会被检查？
 
 * 是的，一经发现，会每隔七天对其进行一次检查。
 
-如果服务器已停用，何时会将其从运行状况检查中删除？**
+如果服务器已停用，何时会将其从运行状况检查中删除？
 
 * 如果服务器 3 周未提交数据，则会被删除。
 

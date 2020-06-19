@@ -1,5 +1,5 @@
 ---
-title: 快速入门： Fivetran 和数据仓库
+title: 快速入门：Fivetran 和数据仓库
 description: Fivetran 和 Azure Synapse Analytics 数据仓库入门。
 services: synapse-analytics
 author: mlee3gsd
@@ -11,36 +11,36 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4cf6c82b330a2672fdde39c3acf156a74cb57e34
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414267"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659976"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>快速入门： Fivetran 与数据仓库 
+# <a name="quickstart-fivetran-with-data-warehouse"></a>快速入门：Fivetran 和数据仓库 
 
-本快速入门介绍如何将新的 Fivetran 用户设置为使用通过 SQL 池预配的 Azure Synapse Analytics 数据仓库。 本文假定您有一个现有数据仓库。
+本快速入门介绍了如何设置新的 Fivetran 用户，以使用通过 SQL 池预配的 Synapse Analytics 数据仓库。 本文假定你已有数据仓库。
 
 ## <a name="set-up-a-connection"></a>设置连接
 
-1. 查找用于连接到数据仓库的完全限定的服务器名称和数据库名称。
+1. 查找用于连接到数据仓库的完全限定的服务器名称和数据库名。
     
-    如果需要帮助找到此信息，请参阅[连接到数据仓库](../sql/connect-overview.md)。
+    如果需要有关查找此信息的帮助，请参阅[连接到数据仓库](../sql/connect-overview.md)。
 
 2. 在安装向导中，选择是要直接连接数据库还是通过 SSH 隧道进行连接。
 
    如果选择直接连接数据库，则必须创建防火墙规则，用于允许访问。 此方法是最简单且最安全的方法。
 
-   如果选择使用 SSH 隧道进行连接，Fivetran 将连接到网络上的单独服务器。 服务器提供一个连接到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
+   如果选择通过 SSH 隧道进行连接，Fivetran 会连接到网络中一个单独的服务器。 服务器提供一个连接到数据库的 SSH 隧道。 如果数据库位于虚拟网络上一个无法访问的子网中，则必须使用此方法。
 
-3. 将 IP 地址**52.0.2.4**添加到服务器级防火墙，以允许从 Fivetran 到数据仓库实例的传入连接。
+3. 在服务器级别的防火墙中添加 IP 地址“52.0.2.4”，允许传入从 Fivetran 到数据仓库实例的连接。
 
    有关详细信息，请参阅[创建服务器级防火墙规则](create-data-warehouse-portal.md#create-a-server-level-firewall-rule)。
 
 ## <a name="set-up-user-credentials"></a>设置用户凭据
 
-1. 使用 SQL Server Management Studio （SSMS）或你喜欢的工具连接到数据仓库。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
+1. 使用 SQL Server Management Studio (SSMS) 或首选工具连接到数据仓库。 以服务器管理员用户身份登录。 然后，运行以下 SQL 命令，为 Fivetran 创建一个用户：
 
     - 在 master 数据库中： 
     
@@ -56,7 +56,7 @@ ms.locfileid: "81414267"
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. 向 Fivetran 用户授予对数据仓库的以下权限：
+2. 向 Fivetran 用户授予以下数据仓库权限：
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -77,10 +77,10 @@ ms.locfileid: "81414267"
 
 ## <a name="connect-from-fivetran"></a>从 Fivetran 连接
 
-若要从 Fivetran 帐户连接到数据仓库，请输入用于访问数据仓库的凭据： 
+要从 Fivetran 帐户连接到数据仓库，请输入用于访问数据仓库的凭据： 
 
 * 主机（服务器名称）。
 * 端口。
 * 数据库。
-* 用户（用户名应为**\@fivetran server_name**其中*server_name*是 Azure 主机 URI 的一部分： ** _\_服务器名称_. database.windows.net**）。
+* 用户（用户名应该为 fivetran\@server_name，其中 server_name 是 Azure 主机 URI server\_name.database.windows.net 的一部分）。
 * Password。

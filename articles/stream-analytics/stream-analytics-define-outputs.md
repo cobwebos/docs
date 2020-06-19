@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585396"
+ms.locfileid: "83647505"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -59,7 +59,7 @@ ms.locfileid: "83585396"
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 数据库的名称（将向该数据库发送输出）。 |
-| 服务器名称 | SQL 数据库服务器名称。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，sampleserver.public.database.windows.net,3342 |
+| 服务器名称 | SQL 数据库服务器名称。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，“sampleserver.public.database.windows.net,3342” |
 | 用户名 | 对数据库具有写入访问权限的用户名。 流分析仅支持 SQL 身份验证。 |
 | 密码 | 用于连接到数据库的密码。 |
 | 表 | 将写入输出的表名称。 表名称区分大小写。 此表的架构应与作业输出生成的字段数量及其类型完全匹配。 |
@@ -80,7 +80,7 @@ Azure 流分析作业可以输出到 Azure Synapse Analytics 中的 SQL 池表�
 
 SQL 池表必须存在，然后才能将其作为输出添加到流分析作业。 表架构必须与作业输出中的字段及类型匹配。 
 
-若要使用 Azure Synapse 作为输出，需要确保已配置存储帐户。 导航到“存储帐户设置”，以配置存储帐户。 仅允许支持表的存储帐户类型：常规用途 V2 和常规用途 V1。   
+若要使用 Azure Synapse 作为输出，需要确保已配置存储帐户。 导航到“存储帐户设置”，以配置存储帐户。 仅允许支持表的存储帐户类型：常规用途 V2 和常规用途 V1。 仅选择标准层。 不支持高级层。   
 
 下表列出了用于创建 Azure Synapse Analytics 输出的属性名称及其说明。
 

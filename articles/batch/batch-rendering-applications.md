@@ -2,13 +2,13 @@
 title: 渲染应用程序
 description: 可以将任何渲染应用程序与 Azure Batch 配合使用。 不过，常见的预安装应用程序都提供了 Azure 市场 VM 映像。
 ms.date: 09/19/2019
-ms.topic: conceptual
-ms.openlocfilehash: f04fff3df2deb714f0432e5ad77d921a2d7ac205
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 70e3fb18f0cc4788303ed16656e1eed0f8177dfc
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115782"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726479"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>在渲染 VM 映像上预安装的应用程序
 
@@ -18,13 +18,13 @@ ms.locfileid: "82115782"
 
 某些应用程序仅支持 Windows，但大多数应用程序在 Windows 和 Linux 上都受支持。
 
-## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 上的应用程序（渲染图像）
+## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 渲染映像上的应用程序
 
-以下列表适用于 CentOS 7.6 版本 1.1.6（渲染图像）。
+以下列表适用于 CentOS 7.6 版本 1.1.6 渲染映像。
 
 * Autodesk Maya I/O 2017 更新 5 (cut 201708032230)
 * Autodesk Maya I/O 2018 更新 2 (cut 201711281015)
-* Autodesk Maya I/O 2019 Update 1
+* Autodesk Maya I/O 2019 更新 1
 * Autodesk Arnold for Maya 2017（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2017
 * Autodesk Arnold for Maya 2018（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2018
 * Autodesk Arnold for Maya 2019（Arnold 版本 5.3.1.1）MtoA-3.2.1.1-2019
@@ -33,9 +33,9 @@ ms.locfileid: "82115782"
 * Blender (2.68)
 * Blender (2.8)
 
-## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>最新的 Windows Server 2016 上的应用程序（渲染图像）
+## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>最新 Windows Server 2016 渲染映像上的应用程序
 
-以下列表适用于 Windows Server 2016 版本 1.3.8（渲染图像）。
+以下列表适用于 Windows Server 2016 版本 1.3.8 渲染映像。
 
 * Autodesk Maya I/O 2017 更新 5（版本 17.4.5459）
 * Autodesk Maya I/O 2018 更新 6（版本 18.4.0.7622）
@@ -60,13 +60,13 @@ ms.locfileid: "82115782"
 * AZ 10
 
 > [!IMPORTANT]
-> 若要在 [Azure Batch 扩展模板](https://github.com/Azure/batch-extension-templates)之外使用 Maya 运行 V-Ray，请在运行渲染之前启动 `vrayses.exe`。 若要在模板之外启动 vrayses.exe，可以使用以下命令 `%MAYA_2017%\vray\bin\vrayses.exe"`。
+> 若要在 [Azure Batch 扩展模板](https://github.com/Azure/batch-extension-templates)之外运行 V-Ray 和 Maya，请在运行渲染之前启动 `vrayses.exe`。 若要在模板之外启动 vrayses.exe，可以使用以下命令 `%MAYA_2017%\vray\bin\vrayses.exe"`。
 >
-> 有关示例，请参阅 GitHub 上的 [Maya 和 V-Ray 模板](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json)启动任务。
+> 有关示例，请参阅 GitHub 上 [Maya 和 V-Ray 模板](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json)的启动任务。
 
-## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>以前的 Windows Server 2016 上的应用程序（渲染图像）
+## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>之前 Windows Server 2016 渲染映像上的应用程序
 
-以下列表适用于 Windows Server 2016 版本 1.3.7（渲染图像）。
+以下列表适用于 Windows Server 2016 版本 1.3.7 渲染映像。
 
 * Autodesk Maya I/O 2017 更新 5（版本 17.4.5459）
 * Autodesk Maya I/O 2018 更新 4（版本 18.4.0.7622）
@@ -83,7 +83,7 @@ ms.locfileid: "82115782"
 * Blender (2.79)
 
 > [!NOTE]
-> Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）引入了对 V-ray 的中断性变更。 若要使用以前版本（版本 3.60.02），请使用 Windows Server 2016 版本 1.3.2（渲染节点）。
+> Chaos Group V-Ray for 3ds Max 2019（版本 4.10.01）引入了对 V-ray 的重大更改。 若要使用之前的版本（版本 3.60.02），请使用 Windows Server 2016 版本 1.3.2 渲染节点。
 
 ## <a name="next-steps"></a>后续步骤
 

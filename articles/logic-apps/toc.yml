@@ -94,12 +94,6 @@
           href: logic-apps-handle-large-messages.md
         - name: 处理限制问题或 429 错误
           href: handle-throttling-problems-429-errors.md
-        - name: 安全
-          items:
-            - name: 提高逻辑应用的安全性
-              href: logic-apps-securing-a-logic-app.md
-            - name: 使用托管标识进行身份验证
-              href: create-managed-service-identity.md
         - name: 开发自定义连接器
           href: custom-connector-overview.md
         - name: 开发自定义 API
@@ -316,6 +310,14 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
+    - name: 安全
+      items:
+        - name: 增强逻辑应用的安全性
+          href: logic-apps-securing-a-logic-app.md
+        - name: 使用托管标识进行身份验证
+          href: create-managed-service-identity.md
+        - name: 阻止逻辑应用中的连接
+          href: block-connections-connectors.md
     - name: 管理
       items:
         - name: 管理逻辑应用 - Azure 门户

@@ -5,19 +5,21 @@ author: mamccrea
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: mamccrea
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3882352c7e1d484818a58d7bd4410cbd66bd6637
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fcac7e47570cf10388891f2e9b81da896acc5c02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587793"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699327"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>将 .NET for Apache Spark 与 Azure Synapse Analytics 配合使用
 
-[.NET for Apache Spark](https://dot.net/spark) 是针对 Spark 的免费开源跨平台 .NET 支持。 .NET for Apache Spark 针对 Spark 提供了 .NET 绑定，允许你通过 C# 和 F# 访问 Spark API。 利用 .NET for Apache Spark，你可以通过 .NET 为 Spark 编写和执行用户定义的函数。 使用 .NET APIs for Spark，你可以在分析数据时访问 Spark 的所有方面，包括 Spark SQL 和结构化流式处理。
+[.NET for Apache Spark](https://dot.net/spark) 提供针对 Spark 的免费开源跨平台 .NET 支持。 
+
+它针对 Spark 提供了 .NET 绑定，允许你通过 C# 和 F# 访问 Spark API。 利用 .NET for Apache Spark，你还可以为使用 .NET 编写的 Spark 编写和执行用户定义的函数。 使用 .NET APIs for Spark，你可以在分析数据时访问 Spark DataFrame 的所有方面，包括 Spark SQL、增量 Lake 和结构化流式处理。
 
 可以使用 NET for Apache Spark 通过 Spark 批处理作业定义或交互式 Azure Synapse Analytics 笔记本来分析数据。 本文介绍如何通过这两种技术将 .NET for Apache Spark 与 Azure Synapse 配合使用。
 
@@ -31,16 +33,10 @@ ms.locfileid: "83587793"
 
    ```dotnetcli
    cd mySparkApp
-   dotnet publish -c Release -f netcoreapp3.0 -r ubuntu.16.04-x64
+   dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.16.04-x64
    ```
 
    **在 Linux 上：**
-
-### <a name="net-for-apache-spark-in-azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics 笔记本中的 .NET for Apache Spark
-
-创建新笔记本时，需要选择用来表述业务逻辑的语言内核。 提供了针对多种语言（包括 C#）的内核支持。
-
-若要在 Azure Synapse Analytics 笔记本中使用 .NET for Apache Spark，请选择 **.NET Spark (C#)** 作为内核，并将笔记本附加到现有的 Spark 池。
 
    ```bash
    zip -r publish.zip
@@ -50,7 +46,7 @@ ms.locfileid: "83587793"
 
 若要为 .NET for Apache Spark 管道和方案构建原型，笔记本是一个不错的方法。 你可以快速高效地开始使用、了解、筛选、显示和可视化数据。 数据工程师、数据科学家、业务分析员和机器学习工程师都可以通过共享的交互式文档进行协作。 你可以看到数据探索的即时结果，并且可以在同一个笔记本中可视化你的数据。
 
-### <a name="how-to-use-notebooks"></a>如何使用笔记本
+### <a name="how-to-use-net-for-apache-spark-notebooks"></a>如何使用 .NET for Apache Spark 笔记本
 
 创建新笔记本时，你需要选择用来表述业务逻辑的语言内核。 提供了针对多种语言（包括 C#）的内核支持。
 
@@ -58,7 +54,7 @@ ms.locfileid: "83587793"
 
 .NET Spark 笔记本基于 .NET 交互式体验并提供了交互式 C# 体验，能够直接将 .NET for Spark 与已预定义的 Spark 会话变量 `spark` 配合使用。
 
-### <a name="sparknet-c-kernel-features"></a>Spark.NET C# 内核功能
+### <a name="net-for-apache-spark-c-kernel-features"></a>.NET for Apache Spark C# 内核功能
 
 在 Azure Synapse Analytics 笔记本中使用 .NET for Apache Spark 时，可以使用以下功能：
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fd854691203361847ae9a6c873121c9b66820a90
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195131"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743374"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
 
@@ -63,7 +63,12 @@ Youradminupn subscriptionname AzureADTenantID AzureCloud
 若要在登录后更改默认订阅，请运行以下 cmdlet：
 
 ```powershell
-Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -Subscription <preferredsubscriptionname>
+```
+
+还可以使用 Out-GridView cmdlet 从列表中选择一个订阅：
+```powershell
+Get-AzSubscription | Out-GridView -PassThru | Select-AzSubscription
 ```
 
 选择要使用的新订阅时，无需在随后运行的 cmdlet 中指定该订阅的 ID。 例如，以下 cmdlet 检索特定的会话主机，无需订阅 ID：

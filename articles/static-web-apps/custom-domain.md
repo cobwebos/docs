@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594936"
+ms.locfileid: "83655241"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
 
@@ -80,7 +80,7 @@ CNAME 记录将一个域映射到另一个域。 可以使用 CNAME 记录将 `w
 
 1. 单击“验证”按钮。
 
-现在，自定义域已完成配置，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的域自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
+现在，自定义域已完成配置，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
 
 如果 DNS 更改已填充，则网站将返回静态 Web 应用的自动生成的 URL（例如 _random-name-123456789c.azurestaticapps.net_）。
 
@@ -92,7 +92,7 @@ CNAME 记录将一个域映射到另一个域。 可以使用 CNAME 记录将 `w
 
 ## <a name="map-a-wildcard-domain"></a>映射通配符域
 
-有时，你希望发送到子域的所有流量路由到另一个域。 常见的示例是将所有子域流量映射到 `www.example.com`。 这样一来，即使有人键入 `ww.example.com`（而不是 `www.example.com`），请求也将发送给 `www.example.com`。
+有时，你希望发送到子域的所有流量路由到另一个域。 常见的示例是将所有子域流量映射到 `www.example.com`。 这样一来，即使有人键入 `w.example.com`（而不是 `www.example.com`），请求也将发送给 `www.example.com`。
 
 ### <a name="configure-dns-provider"></a>配置 DNS 提供程序
 

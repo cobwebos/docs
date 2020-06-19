@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 466c47492de9c2fc86f309f4cb74df1ff5411dcb
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/14/2020
+ms.openlocfilehash: a71d8e251de1d1aedea1d1a329a27bfa236ddfff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929292"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652381"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
 
@@ -94,11 +94,10 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 * HDInsight 4.0 中不再提供 Hive 视图。
 * Spark 和 Interactive Query 群集不支持 Apache Zeppelin 中的 Shell 解释器。
 * 无法在 Spark-LLAP 群集上*禁用* LLAP。 只能关闭 LLAP。
-* Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Juypter Notebook。
+* Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Jupyter Notebook。
 * 默认情况下，Apache Pig 在 Tez 上运行，但你可以将其更改为 Mapreduce
 * 为了提高行和列安全性而推出的 Spark SQL Ranger 集成已弃用
-* 由于在 HDInsight 4.0 中提供 Spark 2.4 和 Kafka 2.1，因此不再支持 Spark 2.3 和 Kafka 1.1。 建议在 HDInsight 4.0 中使用 Spark 2.4 和 Kafka 2.3 及更高版本。
-
+* 由于在 HDInsight 4.0 中提供 Spark 2.4 和 Kafka 2.1，因此不再支持 Spark 2.3 和 Kafka 1.1。 建议在 HDInsight 4.0 中使用 Spark 2.4 和 Kafka 2.1 及更高版本。
 
 ## <a name="next-steps"></a>后续步骤
 

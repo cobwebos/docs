@@ -1,15 +1,20 @@
 ---
 title: 使用 Azure 虚拟机进行高级自动缩放
-description: 使用包含多个规则和配置文件的 Resource Manager 与 VM 规模集，通过缩放操作发送电子邮件和调用 Webhook URL。
+description: 使用包含多个规则和配置文件的资源管理器与 VM 规模集，通过缩放操作发送电子邮件和调用 Webhook URL。
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 02/22/2016
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 65182ce16b8785a3a0e497b3ed8003fa9e7b67bc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75364214"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655434"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。
@@ -47,12 +52,12 @@ ms.locfileid: "75364214"
    * **消息队列大小** - 使用服务总线队列为应用程序传入消息。 使用队列的消息计数和 CPU 利用率并配置默认的配置文件，在消息计数或 CPU 利用率达到阈值时触发缩放操作。\*
    * **每周和每日时间** - 每周定期按基于“每日时间”的配置文件（名为“工作日上午时间”）执行。 根据历史数据，在此期间最好有一定数量的 VM 实例来处理应用程序的负载。\*
    * **特殊日期** - 添加了“产品上市日”配置文件。 提前计划具体日期，以便应用程序做好准备来处理由市场通知以及将新产品放入应用程序中时所产生的负载。\*
-   * *可以在最后两个配置文件中放置基于其他性能指标的规则。本例中决定不使用任何一个其他规则，而是依赖基于性能指标的默认规则。对于定期和基于日期的配置文件来说，规则是可选的。*
+   * *可以在最后两个配置文件中放置基于其他性能指标的规则。在这种情况下，我决定不那样做，而是依赖于基于默认性能指标的规则。对于定期和基于日期的配置文件来说，规则是可选的。*
 
      自动缩放引擎的配置文件和规则的优先级顺序也在[自动缩放最佳实践](autoscale-best-practices.md)文章中有所介绍。
      有关自动缩放的常用指标列表，请参阅[自动缩放的常用指标](autoscale-common-metrics.md)
 
-5. 确保在资源浏览器中处于“读/写”  模式
+5. 确保在资源浏览器中处于“读/写”模式
 
     ![Autoscalewad，默认自动缩放设置](media/autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
@@ -192,7 +197,7 @@ ms.locfileid: "75364214"
     ```
     有关支持的字段及其值，请参阅[自动缩放 REST API 文档](https://msdn.microsoft.com/library/azure/dn931928.aspx)。 现在，自动缩放设置包含了之前说明的三个配置文件。
 
-7. 最后，来看一下自动缩放“通知”  部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
+7. 最后，来看一下自动缩放“通知”部分。 自动缩放通知允许在成功触发扩大或缩小操作时执行三项操作。
    - 通知订阅的管理员和共同管理员
    - 向一组用户发送电子邮件
    - 触发 webhook 调用。 触发时，此 webhook 将发送关于自动缩放条件和规模集资源的元数据。 若要了解有关自动缩放 webhook 的有效负载的详细信息，请参阅[对自动缩放配置 Webhook 和电子邮件通知](autoscale-webhook-email.md)。
@@ -225,7 +230,7 @@ ms.locfileid: "75364214"
 
    ```
 
-   在资源浏览器中单击“输入”  按钮，更新自动缩放设置。
+   在资源浏览器中单击“输入”按钮，更新自动缩放设置。
 
 已在 VM 规模集上更新了自动缩放设置，以包括多个缩放配置文件和缩放通知。
 

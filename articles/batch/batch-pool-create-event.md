@@ -1,15 +1,14 @@
 ---
 title: Azure Batch 池创建事件
-description: Batch 池创建事件（在池创建后发出）的参考。 日志内容将公开有关池的常规信息。
-ms.topic: article
+description: 有关 Batch 池创建事件的参考，在池创建后会发出此事件。 日志内容将公开有关池的常规信息。
+ms.topic: reference
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: 755fbe548b4be729d20788597db05f4d9678ebea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116547"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83724031"
 ---
 # <a name="pool-create-event"></a>池创建事件
 
@@ -52,10 +51,10 @@ ms.locfileid: "82116547"
 
 |元素|类型|说明|
 |-------------|----------|-----------|
-|`id`|String|池的 ID。|
-|`displayName`|String|池的显示名称。|
-|`vmSize`|String|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机市场中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) 或[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
-|`imageType`|String|映像的部署方法。 支持的值为 `virtualMachineConfiguration` 或 `cloudServiceConfiguration`|
+|`id`|字符串|池的 ID。|
+|`displayName`|字符串|池的显示名称。|
+|`vmSize`|字符串|池中虚拟机的大小。 池中所有虚拟机的大小相同。 <br/><br/> 有关云服务池（使用 cloudServiceConfiguration 创建的池）的虚拟机可用大小的信息，请参阅[云服务的大小](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)。 批处理支持除 `ExtraSmall` 以外的所有云服务 VM 大小。<br/><br/> 有关使用虚拟机市场中映像的池（使用 virtualMachineConfiguration 创建的池）的可用 VM 大小的信息，请参阅[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) 或[虚拟机的大小](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows)。 Batch 支持除 `STANDARD_A0` 和高级存储大小（`STANDARD_GS`、`STANDARD_DS` 和 `STANDARD_DSV2` 系列）以外所有的 Azure VM 大小。|
+|`imageType`|字符串|映像的部署方法。 支持的值为 `virtualMachineConfiguration` 或 `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|复杂类型|池的云服务配置。|
 |[`virtualMachineConfiguration`](#bk_vmconf)|复杂类型|池的虚拟机配置。|
 |[`networkConfiguration`](#bk_netconf)|复杂类型|池的网络配置。|
@@ -66,31 +65,31 @@ ms.locfileid: "82116547"
 |`enableInterNodeCommunication`|Bool|指定是否针对节点间的直接通信设置池。|
 |`isAutoPool`|Bool|指定是否已通过作业的 AutoPool 机制创建池。|
 |`maxTasksPerNode`|Int32|可在池中单个计算节点上并发运行的任务的最大数目。|
-|`vmFillType`|String|定义批处理服务如何在池中不同的计算节点之间分配任务。 有效值为 Spread 或 Pack。|
+|`vmFillType`|字符串|定义批处理服务如何在池中不同的计算节点之间分配任务。 有效值为 Spread 或 Pack。|
 
-###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>cloudServiceConfiguration
+###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a> cloudServiceConfiguration
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`osFamily`|String|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
-|`targetOSVersion`|String|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\*** ，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
+|`osFamily`|字符串|要安装在池中虚拟机上的 Azure 来宾 OS 系列。<br /><br /> 可能的值包括：<br /><br /> **2** – OS 系列 2，等效于 Windows Server 2008 R2 SP1。<br /><br /> **3** – OS 系列 3，等效于Windows Server 2012。<br /><br /> **4** – OS 系列 4，等效于 Windows Server 2012 R2。<br /><br /> 有关详细信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
+|`targetOSVersion`|字符串|要安装在池中虚拟机上的 Azure 来宾 OS 版本。<br /><br /> 默认值为 **\*** ，用于指定特定系列的最新操作系统版本。<br /><br /> 有关其他允许的值的信息，请参阅 [Azure 来宾 OS 版本](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases)。|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a> virtualMachineConfiguration
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|复杂类型|指定关于要使用的平台或市场映像的信息。|
-|`nodeAgentId`|String|在计算节点上预配的批处理节点代理的 SKU。|
+|`nodeAgentId`|字符串|在计算节点上预配的批处理节点代理的 SKU。|
 |[`windowsConfiguration`](#bk_winconf)|复杂类型|指定虚拟机上的 Windows 操作系统设置。 如果 imageReference 引用 Linux OS 映像，则不能指定此属性。|
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a> imageReference
 
 |元素名称|类型|说明|
 |------------------|----------|-----------|
-|`publisher`|String|映像的发布者。|
-|`offer`|String|映像的产品/服务。|
-|`sku`|String|映像的 SKU。|
-|`version`|String|映像的版本。|
+|`publisher`|字符串|映像的发布者。|
+|`offer`|字符串|映像的产品/服务。|
+|`sku`|字符串|映像的 SKU。|
+|`version`|字符串|映像的版本。|
 
 ###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a> windowsConfiguration
 
@@ -102,4 +101,4 @@ ms.locfileid: "82116547"
 
 |元素名称|类型|说明|
 |------------------|--------------|----------|
-|`subnetId`|String|指定创建池计算节点的子网的资源标识符。|
+|`subnetId`|字符串|指定创建池计算节点的子网的资源标识符。|

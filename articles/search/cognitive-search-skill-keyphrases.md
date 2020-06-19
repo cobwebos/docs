@@ -1,23 +1,23 @@
 ---
 title: 关键短语提取认知技能
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 认知搜索中的 AI 扩充管道中，计算非结构化的文本，并针对每个记录返回关键短语列表。
+description: 计算非结构化的文本，并针对每个记录返回 Azure 认知搜索的 AI 扩充管道中的关键短语列表。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ccdd25d82af2b4893260af18dac818816d9e4579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ddcd95356f9b70fec5a74f36f5b80e55ea56b477
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72791976"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744017"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>关键短语提取认知技能
 
-关键短语提取  技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
+关键短语提取技能可以计算非结构化的文本，并针对每个记录返回关键短语列表。 此技能使用认知服务中的[文本分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)提供的机器学习模型。
 
 如果你需要快速确定记录中的谈话要点，此功能十分有用。 例如，给定输入文本“The food was delicious and there were wonderful staff”，服务会返回“food”和“wonderful staff”。
 
@@ -44,10 +44,17 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入     | 说明 |
+| 输入  | 说明 |
 |--------------------|-------------|
 | text | 要分析的文本。|
 | languageCode  |  表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+
+## <a name="skill-outputs"></a>技能输出
+
+| 输出  | 说明 |
+|--------------------|-------------|
+| keyPhrases | 从输入文本中提取的关键短语的列表。 关键短语按重要性顺序返回。 |
+
 
 ##  <a name="sample-definition"></a>示例定义
 

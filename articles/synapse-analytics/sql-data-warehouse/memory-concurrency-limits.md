@@ -1,6 +1,6 @@
 ---
 title: 内存和并发限制
-description: 查看分配给 Azure Synapse Analytics 中不同性能级别和资源类的内存和并发限制。
+description: 查看分配给 Azure Synapse Analytics 中的各个性能级别和资源类的内存和并发限制。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632680"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636393"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的内存和并发限制
 
-查看分配给 Azure Synapse Analytics 中不同性能级别和资源类的内存和并发限制。  
+查看分配给 Azure Synapse Analytics 中的各个性能级别和资源类的内存和并发限制。  
 
 ## <a name="data-warehouse-capacity-settings"></a>数据仓库容量设置
 
@@ -49,11 +49,11 @@ ms.locfileid: "80632680"
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-最高服务级别为 DW30000c，包括 60 个计算节点，每个计算节点有一个分布区。 例如，DW30000c 级别的 600 TB 数据仓库的每个计算节点可以处理大约 10 TB 数据。
+最大服务级别为 DW30000c，包含 60 个计算节点，每个计算节点有一个分布区。 例如，DW30000c 级别的 600 TB 数据仓库的每个计算节点可以处理大约 10 TB 数据。
 
-## <a name="concurrency-maximums-for-workload-groups"></a>工作负荷组的并发性最大值
+## <a name="concurrency-maximums-for-workload-groups"></a>工作负载组的并发最大值
 
-引入[工作负荷组](sql-data-warehouse-workload-isolation.md)后，并发槽的概念不再适用。  每个请求的资源按百分比分配，在工作负荷组定义中指定。  但是，即使删除了并发槽，每个查询所需的资源量仍有一个最小值，具体取决于服务级别。  下表定义了每个查询所需的最小资源量，具体取决于服务级别和能够实现的相关并发目标。
+随着[工作负载组](sql-data-warehouse-workload-isolation.md)的引入，并发槽位的概念不再适用。  每个请求的资源按百分比分配，并在工作负载组定义中指定。  但是，即使删除了并发槽位，每个查询也需要基于服务级别的最小资源量。  下表定义了各服务级别协议中，每个查询所需的最小资源量以及可以实现的关联并发。
 
 |服务级别|最大并行查询|REQUEST_MIN_RESOURCE_GRANT_PERCENT 支持的最小百分比|
 |---|---|---|
@@ -75,15 +75,15 @@ ms.locfileid: "80632680"
 |DW30000c|128|0.75%|
 ||||
 
-## <a name="concurrency-maximums-for-resource-classes"></a>资源类的并发性最大值
+## <a name="concurrency-maximums-for-resource-classes"></a>资源类的并发最大值
 
-为了确保每个查询具有足够的资源来有效执行，Azure Synapse 中的 SQL Analytics 通过将并发槽分配给每个查询来跟踪资源利用率。 系统将根据重要性和并发槽位将查询置于队列中。 查询将在队列中等待，直到有足够的并发槽位可用。 [重要性](sql-data-warehouse-workload-importance.md)和并发槽位决定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
+为了确保每个查询都有足够的资源来有效执行，Synapse SQL 会通过向每个查询分配并发槽位来跟踪资源利用率。 系统根据重要性和并发槽位将查询放入某个队列。 查询在队列中等待，直到有足够的并发槽位可用。 [重要性](sql-data-warehouse-workload-importance.md)和并发槽位确定了 CPU 优先级。 有关详细信息，请参阅[分析工作负荷](analyze-your-workload.md)。
 
 **静态资源类**
 
 下表显示了每个[静态资源类](resource-classes-for-workload-management.md)的最大并发查询数和并发槽位数。  
 
-| 服务级别 | 最大并行查询 | 可用的并发槽位数 | staticrc10 使用的槽数 | staticrc20 使用的槽数 | staticrc30 使用的槽数 | staticrc40 使用的槽数 | staticrc50 使用的槽数 | staticrc60 使用的槽数 | staticrc70 使用的槽数 | staticrc80 使用的槽数 |
+| 服务级别 | 最大并行查询 | 可用的并发槽位数 | staticrc10 使用的槽位数 | staticrc20 使用的槽位数 | staticrc30 使用的槽位数 | staticrc40 使用的槽位数 | staticrc50 使用的槽位数 | staticrc60 使用的槽位数 | staticrc70 使用的槽位数 | staticrc80 使用的槽位数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -104,7 +104,7 @@ ms.locfileid: "80632680"
 
 **动态资源类**
 
-下表显示了每个[动态资源类](resource-classes-for-workload-management.md)的最大并发查询数和并发槽位数。 动态资源类对所有服务级别中的 small-medium-large-xlarge 资源类使用 3-10-22-70 内存百分比分配。
+下表显示了每个[动态资源类](resource-classes-for-workload-management.md)的最大并发查询数和并发槽位数。 动态资源类对所有服务级别的 small-medium-large-xlarge 资源类使用 3-10-22-70 内存百分比分配。
 
 | 服务级别 | 最大并行查询 | 可用的并发槽位数 | smallrc 使用的槽数 | mediumrc 使用的槽数 | largerc 使用的槽数 | xlargerc 使用的槽数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
@@ -125,7 +125,7 @@ ms.locfileid: "80632680"
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-当没有足够的并发槽来启动查询执行操作时，系统会根据重要性让查询排队执行。  如果重要性相同，则按“先进先出”原则排队执行查询。  如果查询已完成并且查询数和槽位数低于限制，则 Azure SQL 数据仓库会释放排队的查询。
+如果没有足够的并发槽位来启动查询执行，查询将根据重要性进行排队和执行。  如果重要性相同，查询将以先进先出的方式执行。  如果查询已完成并且查询数和槽位数低于限制，则 Azure SQL 数据仓库会释放排队的查询。
 
 ## <a name="next-steps"></a>后续步骤
 

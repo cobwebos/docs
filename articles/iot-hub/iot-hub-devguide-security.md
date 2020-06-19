@@ -11,12 +11,12 @@ ms.date: 07/18/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b7f9ac7e6e7049a3b744151bc9cb05115fbac935
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f1f6f4a6a1d48a0f409d5e5aba644a26653aa7df
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729218"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726054"
 ---
 # <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
@@ -38,7 +38,7 @@ ms.locfileid: "81729218"
 
 可以通过以下方式授予[权限](#iot-hub-permissions)：
 
-* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](https://portal.azure.com) 或使用 [az iot 中心策略](/rest/api/iothub/iothubresource) CLI 以编程方式在 [Azure 门户](/cli/azure/iot/hub/policy?view=azure-cli-latest)中定义策略。 新建的 IoT 中心有以下默认策略：
+* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](/rest/api/iothub/iothubresource) 或使用 [az iot 中心策略](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI 以编程方式在 [Azure 门户](https://portal.azure.com)中定义策略。 新建的 IoT 中心有以下默认策略：
   
   | 共享访问策略 | 权限 |
   | -------------------- | ----------- |
@@ -54,13 +54,13 @@ ms.locfileid: "81729218"
 
 * 设备管理组件使用 *registryReadWrite* 策略。
 * 事件处理器组件使用 *service* 策略。
-* 运行时设备业务逻辑组件使用 service  策略。
+* 运行时设备业务逻辑组件使用 service 策略。
 * 各个设备的连接使用 IoT 中心的标识注册表中存储的凭据。
 
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>身份验证
 
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
 
@@ -88,13 +88,13 @@ Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验�
 
 在这两种情况下，密码字段都包含令牌，如 [IoT 中心安全令牌](iot-hub-devguide-security.md#security-tokens)所述。
 
-HTTPS 通过在 Authorization  请求标头中包含有效的令牌来实施身份验证。
+HTTPS 通过在 Authorization 请求标头中包含有效的令牌来实施身份验证。
 
 #### <a name="example"></a>示例
 
 用户名（DeviceId 区分大小写）：`iothubname.azure-devices.net/DeviceId`
 
-密码（可以使用 CLI 扩展命令[az iot 中心生成 sas](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)令牌或[用于 Visual Studio Code 的 Azure IOT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)生成 sas 令牌）：
+密码（可使用 CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 或[用于 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 来生成 SAS 令牌）：
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -129,7 +129,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 可以使用安全令牌向设备和服务授予限时访问 IoT 中心特定功能的权限。 若要获取授权连接到 IoT 中心，设备和服务必须发送使用共享访问或对称密钥进行签名的安全令牌。 这些密钥与设备标识一起存储在标识注册表中。
 
-使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 使用设备标识的对称密钥进行签名的令牌只能向相关设备标识授予 DeviceConnect  权限。
+使用共享访问密钥进行签名的令牌可以授权访问与共享访问策略权限相关的所有功能。 使用设备标识的对称密钥进行签名的令牌只能向相关设备标识授予 DeviceConnect 权限。
 
 安全令牌采用以下格式：
 
@@ -145,7 +145,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
 
-**有关前缀的说明**：URI 前缀是根据分段而不是字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
+**有关前缀的说明**：URI 前缀是按分段而不是按字符计算的。 例如，`/a/b` 是 `/a/b/c` 的前缀，而不是 `/a/bc` 的前缀。
 
 以下 Node.js 代码片段显示名为 **generateSasToken** 的函数，该函数通过输入 `resourceUri, signingKey, policyName, expiresInMins` 计算令牌。 以下各节将详细讲解如何初始化不同令牌用例的不同输入。
 
@@ -198,7 +198,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-下面是必备组件的安装说明。
+以下是必备组件的安装说明。
 
 [!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -280,11 +280,11 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> 可以使用 CLI 扩展命令[az iot 中心生成 sas 令牌](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)或[用于 Visual Studio Code 的 Azure IOT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)生成 sas 令牌。
+> 可以使用 CLI 扩展命令 [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) 或[用于 Visual Studio Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 来生成 SAS 令牌。
 
 ### <a name="use-a-shared-access-policy"></a>使用共享访问策略
 
-使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect  权限。
+使用共享访问策略创建令牌时，将 `skn` 字段设置为策略名称。 此策略必须授予 DeviceConnect 权限。
 
 使用共享访问策略访问设备功能的两个主要方案是：
 
@@ -350,7 +350,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ## <a name="supported-x509-certificates"></a>支持的 X.509 证书
 
-可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹进行的身份验证将验证所提供的指纹是否与配置的指纹匹配。 使用证书颁发机构的身份验证会验证证书链。 无论采用哪种方式，TLS 握手都要求设备具有有效的证书和私钥。 有关详细信息，请参阅 TLS 规范，例如： [RFC 5246-传输层安全性（TLS）协议版本 1.2](https://tools.ietf.org/html/rfc5246/)。
+可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 使用证书指纹的身份验证可验证提供的指纹是否与配置的指纹相匹配。 使用证书颁发机构的身份验证会验证证书链。 无论采用哪种方式，TLS 握手都要求设备具有有效的证书和私钥。 有关详细信息，请参阅 TLS 规范，例如：[RFC 5246 - 传输层安全性 (TLS) 协议版本 1.2](https://tools.ietf.org/html/rfc5246/)。
 
 支持的证书包括：
 
@@ -368,7 +368,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 [用于 C# 的 Azure IoT 服务 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service)（版本 1.0.8+）支持注册使用 X.509 证书进行身份验证的设备。 其他 API（例如设备的导入/导出）也支持 X.509 证书。
 
-此外，还可使用 CLI 扩展命令 [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
+此外，还可使用 CLI 扩展命令 [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) 配置设备的 X.509 证书。
 
 ### <a name="c-support"></a>C\# 支持
 
@@ -409,9 +409,9 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-and-module-authentication"></a>自定义设备和模块身份验证
 
-可以使用 IoT 中心[标识注册表](iot-hub-devguide-identity-registry.md)，通过[令牌](iot-hub-devguide-security.md#security-tokens)配置每个设备/模块的安全凭据和访问控制。 如果 IoT 解决方案已经具有自定义标识注册表和/或身份验证方案，可考虑通过创建“令牌服务”**，将此基础结构与 IoT 中心集成。 这样，便可以在解决方案中使用其他 IoT 功能。
+可以使用 IoT 中心[标识注册表](iot-hub-devguide-identity-registry.md)，通过[令牌](iot-hub-devguide-security.md#security-tokens)配置每个设备/模块的安全凭据和访问控制。 如果 IoT 解决方案已经具有自定义标识注册表和/或身份验证方案，可考虑通过创建“令牌服务”，将此基础结构与 IoT 中心集成。 这样，便可以在解决方案中使用其他 IoT 功能。
 
-令牌服务是自定义云服务。 它使用包含 **DeviceConnect** 或 **ModuleConnect** 权限的 IoT 中心共享访问策略** 创建设备范围的** 或模块范围的** 令牌。 这些令牌可让设备和模块连接到 IoT 中心。
+令牌服务是自定义云服务。 它使用包含 **DeviceConnect** 或 **ModuleConnect** 权限的 IoT 中心共享访问策略创建设备范围的或模块范围的令牌。 这些令牌可让设备和模块连接到 IoT 中心。
 
 ![令牌服务模式的步骤](./media/iot-hub-devguide-security/tokenservice.png)
 
@@ -434,7 +434,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ### <a name="comparison-with-a-custom-gateway"></a>与自定义网关的比较
 
-令牌服务模式是使用 IoT 中心实现自定义标识注册表/身份验证方案的建议方式。 建议使用这种模式是因为 IoT 中心继续处理大部分解决方案流量。 但是，如果自定义身份验证方案与协议过度交织，可能需要自定义网关** 来处理所有流量。 使用[传输层安全性 (TLS) 和预共享密钥 (PSK)](https://tools.ietf.org/html/rfc4279) 就是这种情况的例子。 有关详细信息，请参阅[协议网关](iot-hub-protocol-gateway.md)一文。
+令牌服务模式是使用 IoT 中心实现自定义标识注册表/身份验证方案的建议方式。 建议使用这种模式是因为 IoT 中心继续处理大部分解决方案流量。 但是，如果自定义身份验证方案与协议过度交织，可能需要自定义网关来处理所有流量。 使用[传输层安全性 (TLS) 和预共享密钥 (PSK)](https://tools.ietf.org/html/rfc4279) 就是这种情况的例子。 有关详细信息，请参阅[协议网关](iot-hub-protocol-gateway.md)一文。
 
 ## <a name="reference-topics"></a>参考主题：
 
@@ -444,7 +444,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 下表列出了可用于控制对 IoT 中心的访问的权限。
 
-| 权限 | 注意 |
+| 权限 | 说明 |
 | --- | --- |
 | **RegistryRead** |授予对标识注册表的读取访问权限。 有关详细信息，请参阅[标识注册表](iot-hub-devguide-identity-registry.md)。 <br/>后端云服务将使用此权限。 |
 | **RegistryReadWrite** |授予对标识注册表的读取和写入访问权限。 有关详细信息，请参阅[标识注册表](iot-hub-devguide-identity-registry.md)。 <br/>后端云服务将使用此权限。 |
@@ -455,17 +455,17 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 IoT 中心开发人员指南中的其他参考主题包括：
 
-* [Iot 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 iot 中心针对运行时和管理操作公开的各种终结点。
+* [IoT 中心终结点](iot-hub-devguide-endpoints.md)介绍了每个 IoT 中心针对运行时和管理操作公开的各种终结点。
 
 * [限制和配额](iot-hub-devguide-quotas-throttling.md)介绍了适用于 IoT 中心服务的配额和限制行为。
 
 * [Azure IoT 设备和服务 SDK](iot-hub-devguide-sdks.md) 列出了开发与 IoT 中心交互的设备和服务应用时可使用的各种语言 SDK。
 
-* [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备克隆和作业相关信息的查询语言。
+* [IoT 中心查询语言](iot-hub-devguide-query-language.md)介绍了可用来从 IoT 中心检索设备孪生和作业相关信息的查询语言。
 
-* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供有关 IoT 中心对 MQTT 协议的支持的详细信息。
+* [IoT 中心 MQTT 支持](iot-hub-mqtt-support.md)提供了有关 IoT 中心对 MQTT 协议的支持的详细信息。
 
-* [RFC 5246-传输层安全性（TLS）协议版本 1.2](https://tools.ietf.org/html/rfc5246/)提供有关 TLS 身份验证的详细信息。
+* [RFC 5246 - 传输层安全性 (TLS) 协议版本 1.2](https://tools.ietf.org/html/rfc5246/) 提供了有关 TLS 身份验证的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -478,5 +478,5 @@ IoT 中心开发人员指南中的其他参考主题包括：
 如果要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
 * [Azure IoT 中心入门](quickstart-send-telemetry-node.md)
-* [如何使用 IoT 中心发送从云到设备的消息](iot-hub-csharp-csharp-c2d.md)
-* [如何处理 IoT 中心从设备到云的消息](tutorial-routing.md)
+* [如何使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)
+* [如何处理 IoT 中心设备到云的消息](tutorial-routing.md)

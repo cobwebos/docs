@@ -1,52 +1,51 @@
 ---
-title: 集成解决方案-Azure Marketplace
-description: Azure Marketplace 和 AppSource 中的集成解决方案
+title: 集成的解决方案 - Microsoft 商业市场
+description: 了解在商业市场中提供集成的解决方案的优点、资源和后续步骤。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c32fe80b681e6d82d40b0f5c94d5e9288f72cd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684402"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657996"
 ---
-# <a name="integrated-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource 和 Azure Marketplace 中的集成解决方案
+# <a name="integrated-solutions-in-the-commercial-marketplace"></a>商业市场中集成的解决方案
+集成的解决方案将 Microsoft 合作伙伴提供的同类最佳技术与专家服务合作伙伴提供的咨询、部署和支持结合在一起。
 
-集成的解决方案将 Microsoft 合作伙伴提供的同类最佳技术结合在一起，并提供咨询、部署和专家提供的支持。
+两个或两个以上 Microsoft 合作伙伴可集成其技术和服务，以创建统一、无缝且可重复的部署体验，从而帮助客户快速启动并运行。  解决方案中的潜在顾客合作伙伴（通常是服务合作伙伴）为客户提供了单独联系人，并提供有关解决方案的相关自定义服务、咨询和支持。
 
-两个或两个以上的 Microsoft 合作伙伴集成其技术和服务，以创建一个统一、无缝且可重复的部署体验，以便快速启动并运行客户。  解决方案中的潜在客户合作伙伴（通常是服务合作伙伴）为客户提供了单一联系点，并提供有关解决方案的相关自定义、咨询和支持。
-
-在其他方案中，合作伙伴共同销售或共同营销其解决方案，而集成解决方案是一种联合构建的新解决方案，可跨合作伙伴集成技术和服务。
+在其他方案中，合作伙伴联合销售或联合营销其解决方案，而集成的解决方案是一种联合构建的新解决方案，该方案跨合作伙伴集成技术和服务。
 
 ## <a name="advantages"></a>优点
 
 集成方法的优点是：
 
-* *行业专业知识*：提供特定于行业的解决方案和知识的服务合作伙伴
-* 实现*价值*：集成部署方法以帮助你实现直接的优势
-* *同类最佳的解决方案*：发现易于集成的购买和实现体验
+* 行业专家：提供行业特定解决方案和知识的服务合作伙伴
+* 价值实现时间：集成的部署方法有助于实现即时优势
+* 同类最佳解决方案：获得轻松的集成购买和实现体验
 
-有关详细信息，请参阅[发布集成解决方案](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers)。
+有关详细信息，请参阅[发布集成的解决方案](./integrated-solutions-for-publishers.md)。
 
 ## <a name="submit-a-nomination"></a>提交提名
 
-希望参与计划的合作伙伴应确定他们要使用的其他合作伙伴。 他们应完成 "[集成解决方案提名" 窗体](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)。 集成解决方案计划团队评审提名，并在10个工作日内进行跟踪。 团队提供批准和后续步骤。
+希望参与计划的合作伙伴应确定他们要合作的其他合作伙伴。 他们应填写[集成的解决方案提名表单](https://assetsprod.microsoft.com/mpn/integrated-solutions-partner-nomination.docx)。 集成的解决方案计划团队将评审提名，并在 10 个工作日内进行跟进。 该团队提供审批和后续步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-可在此处查看集成解决方案并与这些重要合作伙伴建立联系：
+可查看此处的列表来了解集成的解决方案并与这些重要合作伙伴建立联系：
 
-* [Zero2Hero 提供支持的客户360](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
-* [快速商务](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
-* [贷款项目组合分析](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
-* [医疗保健云安全堆栈](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
-* [DevOps 加速引擎](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
-* [Windows Server 支持终止](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
-* [快速数据中心合并 Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)
-* [用于已连接的字段服务的 DeviceTone IoT](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)
-* [统一：统一营销管理解决方案](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)
-* [智能 M&截止时间](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)
+* [Customer 360 Powered by Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)（Zero2Hero 提供支持的 Customer 360）
+* [Rapid Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)（快速商业）
+* [Loan Portfolio Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)（贷款项目组合分析）
+* [Healthcare Cloud Security Stack](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)（医疗保健云安全堆栈）
+* [DevOps Acceleration Engine](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)（DevOps 加速引擎）
+* [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)（Windows Server 终止支持）
+* [Rapid Datacenter Consolidation Jumpstart](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rivermeadowsoftwareinc.rapid-datacenter-consolidation-jumpstart?flightCodes=100discovermigrate)（快速数据中心合并快速入门）
+* [DeviceTone IoT for Connected Field Service](https://azuremarketplace.microsoft.com/marketplace/apps/marketplaceprodware.devicetone_iot_for_connected_field_service?tab=Overview)（用于已连接的现场服务的 DeviceTone IoT）
+* [Unison：A Unified Marketing Management solution](https://appsource.microsoft.com/marketplace/consulting-services/barhead_solutions.unison_p2p?pub_source=email&pub_status=success)（Unison：统一的营销管理解决方案）
+* [Intelligent M&A Due Diligence](https://azuremarketplace.microsoft.com/marketplace/consulting-services/avanadeinc.intelligent_ma_due_diligence)（智能 M&A 尽职调查）

@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9f834924a564f92fe7050a1236701701af7f5229
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512957"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647265"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory 混合标识设计注意事项 - 后续步骤
 既然已为移动设备管理解决方案完成要求定义和所有选项检查，就可以随时采取后续步骤，为你和组织部署合适的支持基础结构。
@@ -37,9 +37,9 @@ ms.locfileid: "76512957"
 经常监视以下资源可提供有关移动设备管理解决方案的最新消息和更新：
 
 * [Microsoft 企业移动性博客](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [云中的 Microsoft 博客](https://blogs.technet.com/b/in_the_cloud/)
-* [Microsoft Intune 博客](https://blogs.technet.com/b/microsoftintune/)
-* [Microsoft 端点 Configuration Manager 博客](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
+* [云中的 Microsoft 博客](https://cloudblogs.microsoft.com/)
+* [Microsoft Intune 博客](https://techcommunity.microsoft.com/t5/intune-customer-success/welcome-to-the-new-intune-customer-success-blog/ba-p/281367)
+* [Microsoft Endpoint Configuration Manager 博客](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
 ## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)

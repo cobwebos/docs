@@ -1,5 +1,5 @@
 ---
-title: Azure AD 联接设备是什么？
+title: 什么是已加入 Azure AD 的设备？
 description: 了解设备标识管理如何帮助你管理正在访问环境中的资源的设备。
 services: active-directory
 ms.service: active-directory
@@ -11,45 +11,45 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672677"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83737021"
 ---
-# <a name="azure-ad-joined-devices"></a>Azure AD 加入设备
+# <a name="azure-ad-joined-devices"></a>已加入 Azure AD 的设备
 
-Azure AD 联接适用于希望成为云优先或仅限云的组织。 无论规模或行业如何，任何组织都可以部署 Azure AD 联接设备。 即使在混合环境中，Azure AD 联接仍有效，同时支持云和本地应用程序和资源的访问权限。
+“Azure AD 加入”面向的是想要云优先或仅使用云的组织。 无论规模或行业，任何组织都可部署已加入 Azure AD 的设备。 即使在混合环境中，也能使用“Azure AD 加入”，从而提供对云和本地应用及资源的访问。
 
-|   | Azure AD Join |
+|   | Azure AD 加入 |
 | --- | --- |
-| **定义** | 仅加入到需要组织帐户登录到设备 Azure AD |
-| **主要用户** | 适用于仅限云的组织和混合组织。 |
+| **定义** | 只需用组织帐户登录到设备即可加入 Azure AD |
+| **主要受众** | 适合仅使用云和使用混合环境的组织。 |
 |   | 适用于组织中的所有用户 |
 | **设备所有权** | 组织 |
 | **操作系统** | 所有 Windows 10 设备 |
-| **设置** | 自助服务： Windows OOBE 或设置 |
+| **预配** | 自助服务：Windows OOBE 或设置 |
 |   | 批量注册 |
 |   | Windows Autopilot |
 | **设备登录选项** | 组织帐户使用： |
 |   | 密码 |
 |   | Windows Hello for Business |
-|   | FIDO 2.0 安全密钥（预览版） |
-| **设备管理** | 移动设备管理（示例： Microsoft Intune） |
-|   | 与 Microsoft Intune 和 Microsoft 终结点的共同管理 Configuration Manager |
-| **关键功能** | SSO 到云和本地资源 |
-|   | 通过 MDM 注册和 MDM 符合性评估的条件性访问 |
-|   | 在锁屏界面上进行自助密码重置和 Windows Hello PIN 重置 |
-|   | 跨设备企业状态漫游 |
+|   | FIDO2.0 安全密钥（预览版） |
+| **设备管理** | 移动设备管理（例如：Microsoft Intune） |
+|   | 使用 Microsoft Intune 和 Microsoft Endpoint Configuration Manager 共同管理 |
+| **关键功能** | SSO 连接到云和本地资源 |
+|   | 通过 MDM 注册和 MDM 符合性评估进行条件访问 |
+|   | 在锁屏界面上进行自助式密码重置和 Windows Hello PIN 重置 |
+|   | 跨设备的企业状态漫游 |
 
-Azure AD 联接的设备使用组织 Azure AD 帐户登录。 根据应用于设备标识的 Azure AD 帐户和[条件访问策略](../conditional-access/overview.md)，可以进一步限制对组织中资源的访问。
+使用 Azure AD 组织帐户登录已加入 Azure AD 的设备。 可根据 Azure AD 帐户和设备标识所应用的[条件访问策略](../conditional-access/howto-conditional-access-policy-compliant-device.md)，进一步限制对组织中的资源的访问。
 
-管理员可以使用移动设备管理（MDM）工具（如 Microsoft Intune 或使用 Microsoft 终结点 Configuration Manager 的共同管理方案）来保护和进一步控制 Azure AD 加入的设备。 这些工具提供了一种方法，可强制实施组织必需的配置，例如需要存储加密、密码复杂性、软件安装和软件更新。 管理员可以使用 Configuration Manager 来[管理业务和教育 Microsoft Store 中的应用](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)，使组织应用程序可用于 Azure AD 加入的设备。
+管理员可使用 Microsoft Intune 等移动设备管理 (MDM) 工具或使用 Microsoft Endpoint Configuration Manager（在共同管理场景中）来保护和进一步控制已加入 Azure AD 的设备。 通过这些工具，可强制实施组织要求的配置，例如要求加密存储、密码复杂度、软件安装和软件更新。 管理员可使用 Configuration Manager [管理来自适用于企业和教育的 Microsoft Store 的应用](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)，将组织应用程序提供给已加入 Azure AD 的设备。
 
-可以使用自助服务选项（如全新体验（OOBE）、批量注册或[Windows Autopilot](/intune/enrollment-autopilot)）来实现 Azure AD join。
+可使用开箱即用体验 (OOBE)、批量注册或 [Windows Autopilot](/intune/enrollment-autopilot) 等自助服务选项来实现加入 Azure AD 的操作。
 
-Azure AD 联接的设备在组织的网络上时仍可保持对本地资源的单一登录访问。 Azure AD 联接的设备仍可对本地服务器（如文件、打印和其他应用程序）进行身份验证。
+已加入 Azure AD 的设备在位于组织的网络上时，仍可保证对本地资源进行单一登录访问。 这些设备仍可向文件、打印和其他应用程序等本地服务器进行身份验证。
 
 ## <a name="scenarios"></a>方案
 
@@ -58,7 +58,7 @@ Azure AD 联接的设备在组织的网络上时仍可保持对本地资源的�
 - 要使用 Azure AD 和 MDM（如 Intune）转换到基于云的基础结构。
 - 例如，在需要控制平板电脑和手机等设备时，无法使用本地域加入。
 - 用户主要需要访问 Office 365 或其他与 Azure AD 集成的 SaaS 应用。
-- 你需要在 Azure AD 而不是 Active Directory 中管理用户组。 例如，此方案可以应用于季节性工作人员、承包商或学生。
+- 你需要在 Azure AD 而不是 Active Directory 中管理用户组。 该方案适用于季节工、承包商或学生等群体。
 - 想要向本地基础设施有限的远程分支机构中的员工提供加入功能。
 
 可对 Windows 10 设备配置 Azure AD 加入设备。
@@ -68,7 +68,7 @@ Azure AD 加入设备旨在简化：
 - 工作所有设备的 Windows 部署
 - 从任何 Windows 设备访问组织的应用和资源
 - 基于云管理工作所有的设备
-- 用户使用其 Azure AD 或 Active Directory 工作或学校帐户登录到其设备。
+- 用户可使用其 Azure AD 或已同步的 Active Directory 工作或学校帐户登录其设备。
 
 ![Azure AD 加入设备](./media/concept-azure-ad-join/azure-ad-joined-device.png)
 
@@ -83,4 +83,4 @@ Azure AD 加入可以通过下列任何方法进行部署：
 - [计划 Azure AD 加入实现](azureadjoin-plan.md)
 - [如何管理已加入 Azure AD 的设备上的本地管理员组](assign-local-admin.md)
 - [使用 Azure 门户管理设备标识](device-management-azure-portal.md)
-- [在 Azure AD 中管理陈旧的设备](manage-stale-devices.md)
+- [在 Azure AD 中管理旧设备](manage-stale-devices.md)
