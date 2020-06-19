@@ -3,16 +3,16 @@ title: 连接到 Oracle 数据库
 description: 使用 Oracle Database REST API 和 Azure 逻辑应用插入和管理记录
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: fdbf7fd7dded2fc0026e5c819ca579eeddc5cdb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147818"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836271"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle 数据库连接器入门
 
@@ -20,6 +20,13 @@ ms.locfileid: "82147818"
 
 * 通过向客户数据库添加新客户或在订单数据库中更新订单生成工作流。
 * 使用操作获取数据行、插入新行，甚至删除。 例如，在 Dynamics CRM Online 中创建记录时（触发器），则在 Oracle 数据库中插入行（操作）。 
+
+该连接器不支持以下项：
+
+* 视图 
+* 包含复合键的任意表
+* 表中的嵌套对象类型
+* 具有非标量值的数据库函数
 
 本文介绍如何在逻辑应用中使用 Oracle 数据库连接器。
 
@@ -45,24 +52,24 @@ ms.locfileid: "82147818"
 ## <a name="add-the-connector"></a>添加连接器
 
 > [!IMPORTANT]
-> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。   
+> 此连接器没有任何触发器。 它只有操作。 因此，请在创建逻辑应用时，添加另一个用于启动逻辑应用的触发器，例如“计划 - 重复周期”或“请求/响应 - 响应”。  
 
 1. 在 [Azure 门户](https://portal.azure.com)中，创建一个空白逻辑应用。
 
-2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器：  
+2. 在启动逻辑应用时，请选择“请求/响应 - 请求”触发器： 
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. 选择“保存”  。 保存时，会自动生成请求 URL。 
+3. 选择“保存”。 保存时，会自动生成请求 URL。 
 
-4. 选择“新步骤”  ，并选择“添加操作”  。 若要查看可用操作，请键入 `oracle`： 
+4. 选择“新步骤”，并选择“添加操作”。 若要查看可用操作，请键入 `oracle`： 
 
     ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > 这也是查看适用于任何连接器的触发器和操作的最快方式。 键入连接器的部分名称，例如 `oracle`。 设计器会列出任何触发器和任何操作。 
 
-5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。  选择“通过本地数据网关连接”。  输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
+5. 选择其中一个操作，例如“Oracle 数据库 - 获取行”。 选择“通过本地数据网关连接”。 输入 Oracle 服务器名称、身份验证方法、用户名、密码，并选择网关：
 
     ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
@@ -72,11 +79,11 @@ ms.locfileid: "82147818"
 
     ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. 在这个后续步骤中，可以使用任何其他连接器来生成工作流。 如果要测试从 Oracle 获取数据，请使用 "发送电子邮件" 连接器（例如 Office 365 Outlook）之一向自己发送一封包含 Oracle 数据的电子邮件。 使用 Oracle 表中的动态令牌生成电子邮件的 `Subject` 和 `Body`：
+7. 在这个后续步骤中，可以使用任何其他连接器来生成工作流。 如需测试能否从 Oracle 获取数据，则请使用某个发送电子邮件连接器（例如 Office 365 Outlook）向自己发送一封包含 Oracle 数据的电子邮件。 使用 Oracle 表中的动态令牌生成电子邮件的 `Subject` 和 `Body`：
 
     ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
-8. **保存**逻辑应用，并选择“运行”。  关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
+8. **保存**逻辑应用，并选择“运行”。 关闭设计器，并在运行历史记录中查看状态。 如果该操作失败，请选择失败的消息行。 设计器会打开，并且会显示具体的失败步骤，以及错误信息。 如果该操作成功，应该会收到一封电子邮件，其中包含你添加的信息。
 
 
 ### <a name="workflow-ideas"></a>工作流创意
@@ -93,27 +100,21 @@ ms.locfileid: "82147818"
 
 #### <a name="error-cannot-reach-the-gateway"></a>**错误**：无法访问网关
 
-**原因：** 本地数据网关不能连接到云。 
+**原因**：本地数据网关不能连接到云。 
 
 **缓解措施**：请确保网关正在安装了该网关的本地计算机上运行，并确保该网关可以连接到 Internet。  建议不要将网关安装在可能会关闭或进入睡眠状态的计算机上。 还可以重新启动本地数据网关服务 (PBIEgwService)。
 
 #### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**错误**：所使用的提供程序已弃用：“System.Data.OracleClient 需要 Oracle 客户端软件 8.1.7 版或更高版本”。 请参阅 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) 安装正式的提供程序。
 
-**原因：** Oracle 客户端 SDK 未安装在运行本地数据网关的计算机上。  
+**原因**：Oracle 客户端 SDK 未安装在运行本地数据网关的计算机上。  
 
 **解决方法**：下载 Oracle 客户端 SDK 并将其与本地数据网关安装在同一计算机上。
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**错误**：表“[表名]”未定义任何键列
 
-**原因：** 该表没有主键。  
+**原因**：该表没有主键。  
 
 **解决方法**：Oracle Database 连接器要求使用包含主键列的表。
-
-#### <a name="currently-not-supported"></a>目前不受支持。
-
-* 视图 
-* 包含复合键的任意表
-* 表中的嵌套对象类型
  
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
@@ -121,7 +122,7 @@ ms.locfileid: "82147818"
 
 ## <a name="get-some-help"></a>获取帮助
 
-若要提问、解答问题和了解其他逻辑应用用户的活动，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。 
+若要提问、解答问题和了解其他逻辑应用用户的活动，请访问[有关 Azure 逻辑应用的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。 
 
 可以在 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) 上投票并提交自己的创意，帮助改进逻辑应用和连接器。 
 

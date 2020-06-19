@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "82609895"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860507"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -125,14 +125,39 @@ ms.locfileid: "82609895"
 1. 在应用注册创建后，复制“应用(客户端) ID”的值。
 1. 依次选择“API 权限” > “添加权限” > “我的 API”。
 1. 选择先前为应用服务应用创建的应用注册。 如果看不到应用注册，请确保已在[在 Azure AD 中为应用服务应用创建应用注册](#register)中添加了 user_impersonation 范围。
-1. 依次选择“user_impersonation”和“添加权限”。
+1. 在“委托的权限”下，依次选择“user_impersonation”和“添加权限”。
 
 现已配置可以代表用户访问应用服务应用的本机客户端应用。
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>为服务到服务调用配置后台程序客户端应用程序
+
+应用程序可以获取令牌，代表自身（不代表用户）调用应用服务或 Functions 应用中托管的 Web API。 此方案适用于在没有登录用户的情况下执行任务的非交互式后台程序应用程序。 它使用标准 OAuth 2.0 [客户端凭据](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)授权。
+
+1. 在 [Azure 门户]中，依次选择“Active Directory” > “应用注册” > “新建注册”。
+1. 在“注册应用程序”页上的“名称”中，输入后台程序应用注册的名称。
+1. 对于后台应用程序，不需要“重定向 URI”，因此可将其保留为空。
+1. 选择“创建”。
+1. 在应用注册创建后，复制“应用(客户端) ID”的值。
+1. 选择“证书和机密” > “新建客户端机密” > “添加”。 复制页面中显示的客户端密码值。 它不会再次显示。
+
+现在可以通过将 `resource` 参数设置为目标应用的“应用程序 ID URI”，[使用客户端 ID 和客户端机密请求访问令牌](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)。 然后，可以使用标准 [OAuth 2.0 授权标头](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)将生成的访问令牌提供给目标应用，应用服务身份验证/授权将像平常一样验证和使用该令牌，以指示调用方（在本例中是应用程序，不是用户）已进行身份验证。
+
+目前，这允许 Azure AD 租户中的_任何_客户端应用程序请求访问令牌，并向目标应用进行身份验证。 如果还想要强制_授权_以只允许某些客户端应用程序，则必须执行一些附加配置。
+
+1. 在表示要保护的应用服务或 Functions 应用的应用注册清单中[定义应用角色](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)。
+1. 在表示需要获得授权的客户端的应用注册上，选择“API 权限” > “添加权限” > “我的 API”。
+1. 选择之前创建的应用注册。 如果看不到应用注册，请确保已[添加应用角色](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)。
+1. 在“应用程序权限”下，选择之前创建的应用角色，然后选择“添加权限”。
+1. 确保单击“授予管理员同意”以授权客户端应用程序请求权限。
+1. 与前面的方案（添加任何角色之前）类似，现在可以为同一目标 `resource` [请求访问令牌](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)，而访问令牌将包括一个 `roles` 声明，其中包含授权给客户端应用程序的应用角色。
+1. 在目标应用服务或 Functions 应用代码中，现在可以验证令牌中是否存在预期的角色（这不是由应用服务身份验证/授权执行的）。 有关详细信息，请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)。
+
+现已配置可以使用自己的标识访问应用服务应用的后台程序客户端应用程序。
 
 ## <a name="next-steps"></a><a name="related-content"> </a>后续步骤
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-
+* [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
 [Azure 门户]: https://portal.azure.com/

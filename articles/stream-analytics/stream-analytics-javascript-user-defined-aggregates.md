@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d33cc14612b5c00c8102bd035e7331bef670a4dd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79531728"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836441"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  
@@ -78,7 +78,7 @@ function main() {
 
 ### <a name="function-alias"></a>函数别名
 
-函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀开头。
+函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀。
 
 ### <a name="function-type"></a>函数类型
 
@@ -110,7 +110,7 @@ deaccumulateState() 方法基于前一状态和跃点状态重新计算状态。
 
 ### <a name="method--computeresult"></a>方法 – computeResult()
 
-computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用此方法。
+computeResult() 方法基于当前状态返回聚合结果。 当某个时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时，会调用此方法。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA 支持的输入和输出数据类型
 有关 JavaScript UDA 数据类型，请参阅[集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的**流分析和 JavaScript 类型转换**部分。
@@ -119,12 +119,12 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 
 下面演练通过门户创建 UDA 的过程。 此处使用的示例计算时间加权平均值。
 
-现在，让我们执行以下步骤，在现有的 ASA 作业下创建一个 JavaScript UDA。
+现在，让我们执行以下步骤在现有的 ASA 作业下创建一个 JavaScript UDA。
 
 1. 登录到 Azure 门户，并找到现有的流分析作业。
-1. 然后单击“作业拓扑”下的函数链接。 
-1. 单击“添加”图标添加新函数。 
-1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。 
+1. 然后单击“作业拓扑”下的函数链接。
+1. 单击“添加”图标添加新函数。
+1. 在“新建函数”视图中，选择“JavaScript UDA”作为函数类型，然后，编辑器中会显示默认的 UDA 模板。
 1. 填入“TWA”作为 UDA 别名，并按如下所示更改函数实现：
 
     ```JavaScript
@@ -169,7 +169,7 @@ computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（
 
 1. 单击“保存”按钮后，该 UDA 会显示在函数列表中。
 
-1. 单击新函数“TWA”即可检查函数定义。
+1. 单击新函数“TWA”，可以检查函数定义。
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>在 ASA 查询中调用 JavaScript UDA
 
@@ -225,7 +225,7 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>获取帮助
 
-如需更多帮助，请访问我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需更多帮助，请访问[有关 Azure 流分析的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

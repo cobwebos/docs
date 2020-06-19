@@ -1,97 +1,109 @@
 ---
-title: 启用 Azure 自动化在空闲时间启动/停止 VM 解决方案
-description: 本文介绍如何在 Azure 虚拟机的非工作时间解决方案中启用 Azure 自动化启动/停止 VM。
+title: 启用 Azure 自动化“在空闲时间启动/停止 VM”
+description: 本文介绍如何为 Azure VM 启用“在空闲时间启动/停止 VM”功能。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed9937576334fcba6707f2737e92c3cddce2d7f7
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
-ms.translationtype: MT
+ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864209"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83743753"
 ---
-# <a name="enable-azure-automation-startstop-vms-solution"></a>启用 Azure Automation 启动/停止 Vm 解决方案
+# <a name="enable-startstop-vms-during-off-hours"></a>启用“在空闲时间启动/停止 VM”
 
-执行以下步骤，将**在空闲时间启动/停止 VM**解决方案添加到新的或现有的自动化帐户，并链接 Log Analytics 工作区。 完成载入过程后，请配置变量以自定义解决方案。
+按顺序执行本主题中的步骤，即可使用新的或现有的自动化帐户以及链接的 Log Analytics 工作区为 VM 启用“在空闲时间启动/停止 VM”功能。 完成设置过程后，请配置变量来自定义该功能。
 
 >[!NOTE]
->若要将此解决方案用于经典 Vm，需要使用经典运行方式帐户，默认情况下不会创建该帐户。 有关创建经典运行方式帐户的说明，请参阅[创建经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+>若要将此功能用于经典 VM，则需要一个经典运行方式帐户，但默认情况下不会创建该帐户。 请参阅[创建经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
 >
 
-## <a name="enable-solution"></a>启用解决方案
+## <a name="create-resources-for-the-feature"></a>为该功能创建资源
 
-1. 登录到 Azure[门户](https://portal.azure.com)。
-
-2. 搜索并选择 "**自动化帐户**"。
-
-3. 在 "自动化帐户" 页上，从列表中选择你的自动化帐户。
-
-4. 在自动化帐户中，选择 "**相关资源**" 下的 "**启动/停止 VM** "。 在此处，可以单击“详细了解和启用解决方案”。**** 如果已部署“启动/停止 VM”解决方案，可单击“管理解决方案”，在列表中找到并选择它****。
+1. 登录 Azure [门户](https://portal.azure.com)。
+2. 搜索并选择“自动化帐户”。
+3. 在“自动化帐户”页，选择列表中的自动化帐户。
+4. 在自动化帐户中，选择“相关资源”下的“启动/停止 VM” 。 在此处，可以单击“详细了解和启用解决方案”。 如果已部署了该功能，则可以单击“管理解决方案”在列表中找到它。
 
    ![从自动化帐户启用](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
    > [!NOTE]
-   > 也可以单击“创建资源”，在 Azure 门户中的任意位置创建该解决方案。**** 在“市场”页面中，键入类似于“启动”或“启动/停止”的关键字********。 开始键入时，会根据输入筛选该列表。 或者，可以键入解决方案完整名称中的一个或多个关键，然后按 Enter。 在搜索结果中选择“在空闲时间启动/停止 VM”****。
+   > 此外，你也可以单击“创建资源”，在 Azure 门户中的任意位置创建资源。 在“市场”页面中，键入类似于“启动”或“启动/停止”的关键字 。 开始键入时，会根据输入筛选该列表。 或者，可以键入功能完整名称中的一个或多个关键字，然后按 Enter。 在搜索结果中选择“在空闲时间启动/停止 VM”。
 
-5. 在所选解决方案的“在空闲时间启动/停止 VM”页中查看摘要信息，并单击“创建”********。
+5. 在所选部署的“在空闲时间启动/停止 VM”页中查看摘要信息，然后单击“创建”。
 
    ![Azure 门户](media/automation-solution-vm-management/azure-portal-01.png)
 
-6. 此时会显示“添加解决方案”页面。 系统会提示你配置解决方案，然后才能将其导入自动化订阅。
+## <a name="configure-the-feature"></a>配置功能
+
+创建资源后，即会显示“添加解决方案”页面。 系统会提示先要配置功能，然后才可以将它导入自动化订阅。 请参阅[配置“在空闲时间启动/停止 VM”](automation-solution-vm-management-config.md)。
 
    ![VM 管理中的“添加解决方案”页面](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-7. 在“添加解决方案”页面上，选择“工作区”****。 选择链接到自动化帐户所在的同一个 Azure 订阅的 Log Analytics 工作区。 如果没有工作区，请选择“新建工作区”****。 在 "Log Analytics 工作区" 页上，执行以下步骤：
+## <a name="select-a-log-analytics-workspace"></a>选择 Log Analytics 工作区
 
-   - 为新的 Log Analytics 工作区指定名称，例如**ContosoLAWorkspace**。
-   - 从下拉列表中选择要链接到的**订阅**（如果选择的默认值不合适）。
-   - 对于“资源组”****，可以创建新资源组，或选择现有的资源组。
-   - 选择一个**位置**。
-   - 选择**定价层**。 选择“每 GB (独立)”选项****。 Azure Monitor 日志具有更新的[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，并且每 GB 的级别是唯一的选择。
+1. 在“添加解决方案”页面上，选择“工作区”。 选择链接到自动化帐户所用的 Azure 订阅的 Log Analytics 工作区。 
+
+2. 如果没有工作区，请选择“新建工作区”。 在“Log Analytics 工作区”页上，请执行以下步骤：
+
+   - 为新的 Log Analytics 工作区指定名称，例如“ContosoLAWorkspace”。
+   - 如果选择的默认值不合适，请从下拉列表中选择要链接到的“订阅”。
+   - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
+   - 选择“位置” 。
+   - 选择“定价层”。 选择“每 GB (独立)”选项。 Azure Monitor 日志已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)，“每 GB”层是唯一的选项。
 
    > [!NOTE]
-   > 启用解决方案时，仅支持某些区域以链接 Log Analytics 工作区和自动化帐户。
-   >
-   > 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
+   > 在启用功能时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
-8. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”****。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。****
+3. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”。 你可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
 
-9. 在“添加解决方案”页面中，选择“自动化帐户”****。 如果要创建新的 Log Analytics 工作区，则可以创建一个与之关联的新自动化帐户，也可以选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或单击 "**创建自动化帐户**"，并在 "添加自动化帐户" 页上提供以下信息：
- 
-   - 在“名称”字段中输入自动化帐户的名称****。
+## <a name="add-automation-account"></a>添加自动化帐户
 
-     系统会根据所选的 Log Analytics 工作区自动填充所有其他选项。 无法修改这些选项。 “Azure 运行方式帐户”是此解决方案为 Runbook 包含的默认身份验证方法。 单击“确定”后，系统会验证配置选项并创建自动化帐户。**** 可以在菜单中的“通知”下面跟踪操作进度****。
+再次访问“添加解决方案”页面，选择“自动化帐户”。 可以选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页的“名称”字段中提供自动化帐户的名称： 
 
-10. 最后，在“添加解决方案”页面上，选择“配置”。**** 此时会显示“参数”页面。
+系统会根据所选的 Log Analytics 工作区自动填充所有其他选项。 无法修改这些选项。 Azure 运行方式帐户是此功能为 Runbook 包含的默认身份验证方法。 
+
+单击“确定”后，系统会验证配置选项并创建自动化帐户。 可以在菜单中的“通知”下面跟踪操作进度。
+
+## <a name="define-feature-parameters"></a>定义功能参数
+
+1. 在“添加解决方案”页面上，选择“配置”。 此时会显示“参数”页面。
 
     ![解决方案的“参数”页面](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
-   在此处，系统会提示：
+2. 为“目标资源组名称”字段指定一个值。 词字段将定义包含该功能要管理的 VM 的组名称。 你可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 这些值存储在 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames` 变量中。
+
+    > [!IMPORTANT]
+    > “目标资源组名称”的默认值是 &ast; 。 该设置面向订阅中的所有 VM。 如果不希望该功能面向订阅中的所有 VM，请务必在选择计划前提供一个资源组名称列表。
   
-   - 指定“目标资源组名称”。**** 这些值是包含此解决方案要管理的 VM 的资源组名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 如果想要针对订阅中的所有资源组内的 VM，可以使用通配符。 此值存储在 **External_Start_ResourceGroupNames** 和 **External_Stop_ResourceGroupNames** 变量中。
+3. 为“VM 排除列表(字符串)”字段指定一个值。 该值是目标资源组中的一个或多个虚拟机的名称。 你可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 该值存储在变量 `External_ExcludeVMNames` 中。
   
-   - 指定“VM 排除列表(字符串)”。**** 该值是目标资源组中的一个或多个虚拟机的名称。 可以输入多个名称，使用逗号分隔（这些值不区分大小写）。 支持使用通配符。 此值存储在 **External_ExcludeVMNames** 变量中。
-  
-   - 选择“计划”。**** 选择计划的日期和时间。 将从所选时间开始，创建重复每日计划。 无法选择其他区域。 若要在配置解决方案后将计划配置为特定时区，请参阅[修改启动和关闭计划](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)。
-  
-   - 要从操作组接收“电子邮件通知”，请接受默认值“是”，并提供有效的电子邮件地址********。 如果选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的[操作组](../azure-monitor/platform/action-groups.md)****。 还需要启用以下警报规则：
+4. 使用“计划”字段来选择按功能进行 VM 管理的计划。 为你的计划选择一个开始日期和时间，以创建从所选时间开始的每日重复计划。 无法选择其他区域。 若要在配置功能后将计划配置为特定时区，请参阅[修改启动和关闭计划](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)。
 
-     - AutoStop_VM_Child
-     - Scheduled_StartStop_Parent
-     - Sequenced_StartStop_Parent
+5. 要从[操作组](../azure-monitor/platform/action-groups.md)接收电子邮件通知，请在“电子邮件通知”字段中接受默认值“是”，并提供有效的电子邮件地址。 。 如果你选择了“否”，但后来想要接收电子邮件通知，则可以使用有效的电子邮件地址（以逗号分隔）更新创建的操作组。 
 
-     > [!IMPORTANT]
-     > “目标资源组名称”的默认值是 &ast;********。 这面向订阅中的所有 VM。 如果不希望解决方案面向订阅中的所有 VM，则需要在启用计划前，将此值更新到资源组名称列表。
+6. 启用以下警报规则：
 
-11. 配置解决方案所需的初始设置后，单击“确定”以关闭“参数”页面并选择“创建”。******** 
+   - `AutoStop_VM_Child`
+   - `Scheduled_StartStop_Parent`
+   - `Sequenced_StartStop_Parent`
 
-系统会验证所有设置，然后在订阅中部署该解决方案。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度****。
+## <a name="create-alerts"></a>创建警报
 
-> [!NOTE]
-> 如果你有 Azure 云解决方案提供商（Azure CSP）订阅，则在部署完成后，在你的自动化帐户中，请参阅 "**共享资源**" 下的 "**变量**"，并将 " [External_EnableClassicVMs](automation-solution-vm-management.md#variables) " 变量设置为**False**。 这会使解决方案停止查找经典 VM 资源。
+“在空闲时间启动/停止 VM”不包括预定义的一组警报。 查看[通过 Azure Monitor 创建日志警报](../azure-monitor/platform/alerts-log.md)，了解如何创建作业失败警报，以支持 DevOps 或操作过程和程序。
+
+## <a name="deploy-the-feature"></a>部署功能
+
+1. 配置功能所需的初始设置后，单击“确定”以关闭“参数”页面。
+
+2. 单击“创建”。 系统会验证所有设置，然后在订阅中部署该功能。 此过程需要几秒钟才能完成，可以在菜单中的“通知”下面跟踪进度。
+
+    > [!NOTE]
+    > 如果你具有 Azure 云解决方案提供商 (Azure CSP) 订阅，则部署完成之后，在自动化帐户中转到“共享资源”下的“变量”，然后将 [External_EnableClassicVMs](automation-solution-vm-management.md#variables) 变量设置为“False”。 这会使解决方案停止查找经典 VM 资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-启用解决方案后，可以[将其配置](automation-solution-vm-management-config.md)为支持 VM 管理要求。
+* 要设置该功能，请参阅[配置“在空闲时间启动/停止 VM”](automation-solution-vm-management-config.md)。
+* 若要解决功能问题，请参阅[“在空闲时间启动/停止 VM”问题的故障排除](troubleshoot/start-stop-vm.md)。

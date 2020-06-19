@@ -6,26 +6,26 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79290105"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697820"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
-Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩展。 可以使用业务流程协调程序函数来协调函数应用中其他持久函数的执行。  业务流程协调程序函数具有以下特征：
+Durable Functions 是 [Azure Functions](../functions-overview.md) 的一个扩展。 可以使用业务流程协调程序函数来协调函数应用中其他持久函数的执行。 业务流程协调程序函数具有以下特征：
 
 * 业务流程协调程序函数使用过程代码来定义函数工作流。 不需要声明性的架构或设计器。
 * 业务流程协调程序函数可以同步和异步调用其他持久函数。 被调用函数的输出可以可靠保存到本地变量。
 * 业务流程协调程序函数是持久且可靠的。 当函数处于“等待”或“生成”状态时，可自动对执行进度设置检查点。 回收进程或重启 VM 时，从来不会丢失本地状态。
-* 业务流程协调程序函数可以长时间运行。 业务流程实例的总生存期可以是几秒、几天、几月或者永不结束。 
+* 业务流程协调程序函数可以长时间运行。 业务流程实例的总生存期可以是几秒、几天、几月或者永不结束。
 
 本文概述业务流程协调程序功能，及其如何帮助解决各种应用开发难题。 如果你不熟悉 Durable Functions 应用中可用的函数类型，请先阅读[持久函数类型](durable-functions-types-features-overview.md)一文。
 
 ## <a name="orchestration-identity"></a>业务流程标识
 
-业务流程的每个实例都有一个实例标识符（也称为“实例 ID”）。   默认情况下，每个实例 ID 都是自动生成的 GUID。 但是，实例 ID 也可以是用户生成的任何字符串值。 每个业务流程实例 ID 在[任务中心](durable-functions-task-hubs.md)内必须唯一。
+业务流程的每个实例都有一个实例标识符（也称为“实例 ID”）。  默认情况下，每个实例 ID 都是自动生成的 GUID。 但是，实例 ID 也可以是用户生成的任何字符串值。 每个业务流程实例 ID 在[任务中心](durable-functions-task-hubs.md)内必须唯一。
 
 下面是有关实例 ID 的一些规则：
 
@@ -48,7 +48,7 @@ Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程�
 如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器到期），业务流程协调程序将会唤醒，并从头开始重新执行整个函数，以重新生成本地状态。 在重播过程中，如果代码尝试调用函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成结果，则会回放该函数的结果并且业务流程协调程序代码继续运行。 在函数代码完成或计划了新的异步工作之前，重放会一直继续。
 
 > [!NOTE]
-> 要使重播模式正常可靠工作，业务流程协调程序函数代码必须是确定性的。  有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)主题。
+> 要使重播模式正常可靠工作，业务流程协调程序函数代码必须是确定性的。 有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)主题。
 
 > [!NOTE]
 > 如果业务流程协调程序函数发出日志消息，重播行为可能导致发出重复的日志消息。 请参阅[日志记录](durable-functions-diagnostics.md#logging)主题来详细了解此行为的发生原因及其解决方法。
@@ -93,7 +93,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-执行到每条 `await` (C#) 或 `yield` (JavaScript) 语句时，Durable Task Framework 会在某个持久存储后端（通常是 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。 
+执行到每条 `await` (C#) 或 `yield` (JavaScript) 语句时，Durable Task Framework 会在某个持久存储后端（通常是 Azure 表存储）中创建该函数的执行状态检查点。 此状态称为“业务流程历史记录”。
 
 ### <a name="history-table"></a>历史记录表
 
@@ -106,7 +106,7 @@ module.exports = df.orchestrator(function*(context) {
 完成检查点之后，在业务流程协调程序函数需要执行其他工作之前，可以从内存中任意删除该函数。
 
 > [!NOTE]
-> 在将数据保存到表存储和队列的间隔期限内，Azure 存储不提供任何事务保证。 若要处理错误，Durable Functions 存储提供程序会使用“最终一致性”模式。  这些模式可确保在发生崩溃时不会丢失数据，或者在创建检查点的中途不会断开连接。
+> 在将数据保存到表存储和队列的间隔期限内，Azure 存储不提供任何事务保证。 若要处理错误，Durable Functions 存储提供程序会使用“最终一致性”模式。 这些模式可确保在发生崩溃时不会丢失数据，或者在创建检查点的中途不会断开连接。
 
 完成后，前面所示的函数历史记录在 Azure 表存储中如下表所示（为方便演示，此处采用了缩写）：
 
@@ -133,19 +133,19 @@ module.exports = df.orchestrator(function*(context) {
 
 * **PartitionKey**：包含业务流程的实例 ID。
 * **EventType**：表示事件的类型。 可为以下类型之一：
-  * **OrchestrationStarted**：业务流程协调程序函数已从 await（等待）状态恢复，或者正在首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
+  * **OrchestrationStarted**：业务流程协调程序函数已从等待状态恢复，或者正首次运行。 `Timestamp` 列用于填充 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的确定性值。
   * **ExecutionStarted**：业务流程协调程序函数已开始首次执行。 此事件也包含 `Input` 列中输入的函数。
   * **TaskScheduled**：已计划活动函数。 `Name` 列中已捕获该活动函数的名称。
   * **TaskCompleted**：已完成活动函数。 `Result` 列中提供了该函数的结果。
   * **TimerCreated**：已创建持久计时器。 `FireAt` 列包含计时器过期时的 UTC 计划时间。
-  * **TimerFired**：持久计时器已触发。
+  * **TimerFired**：已触发持久计时器。
   * **EventRaised**：已将外部事件发送到业务流程实例。 `Name` 列捕获事件的名称，`Input` 列捕获事件的有效负载。
-  * **OrchestratorCompleted**：业务流程协调程序函数处于等待状态。
+  * **OrchestratorCompleted**：处于等待状态的业务流程协调程序函数。
   * **ContinueAsNew**：业务流程协调程序函数已完成，并已使用新状态重启自身。 `Result` 列包含用作已重启实例中的输入的值。
   * **ExecutionCompleted**：业务流程协调程序函数已运行并已完成（或失败）。 该函数的输出或错误详细信息存储在 `Result` 列中。
-* **Timestamp**：历史记录事件的 UTC 时间戳。
-* **Name**：调用的函数的名称。
-* **Input**：函数的 JSON 格式输入。
+* **时间戳**：历史记录事件的 UTC 时间戳。
+* 名称：调用的函数的名称。
+* **输入**：函数的 JSON 格式的输入。
 * **Result**：函数的输出，即其返回值。
 
 > [!WARNING]
@@ -165,7 +165,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="durable-timers"></a>持久计时器
 
-业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。  请在业务流程协调程序函数中使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+业务流程可以计划持久计时器来实现延迟或设置处理异步操作时的超时。 请在业务流程协调程序函数中使用持久计时器，而不要使用 `Thread.Sleep` 和 `Task.Delay` (C#) 或 `setTimeout()` 和 `setInterval()` (JavaScript)。
 
 有关详细信息和示例，请参阅[持久计时器](durable-functions-timers.md)一文。
 
@@ -188,7 +188,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>关键节（Durable Functions 2.x，当前仅限 .NET）
 
-业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。  但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。
+业务流程实例是单线程的，因此无需考虑业务流程内部的争用情况。 但是，当业务流程与外部系统交互时，可能会出现争用情况。 若要在与外部系统交互时缓解争用情况，业务流程协调程序函数可以使用 .NET 中的 `LockAsync` 方法定义关键节。
 
 以下示例代码演示了一个定义关键节的业务流程协调程序函数。 它使用 `LockAsync` 方法进入关键节。 此方法要求向某个持久管理锁状态的[持久实体](durable-functions-entities.md)传递一个或多个引用。 此业务流程的单个实例每次只能执行关键节中的代码。
 

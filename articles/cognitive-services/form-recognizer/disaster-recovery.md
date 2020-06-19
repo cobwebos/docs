@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2e5b32421a04e09bd32d2bba21ff4faf920d84dd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221841"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100877"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
@@ -45,7 +45,7 @@ ms.locfileid: "84221841"
 以下 HTTP 请求从目标资源获取复制授权。 需要以标头的形式输入目标资源的终结点和密钥。
 
 ```
-POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization HTTP/1.1
+POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -53,7 +53,7 @@ Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 
 ```
 HTTP/1.1 201 Created
-Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
+Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
 {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
 ```
 
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 以下 HTTP 请求将对源资源启动复制操作。 需要以标头形式输入源资源的终结点和密钥。 请注意，请求 URL 包含要复制的源模型的模型 ID。
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -76,19 +76,29 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 }
 ```
 
+> [!NOTE]
+> 复制 API 以透明方式支持[AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys)功能。 这不需要任何特殊处理，但请注意，如果在未加密的资源之间复制到已加密的资源，则需要包含请求标头 `x-ms-forms-copy-degrade: true` 。 如果未包括此标头，则复制操作将失败，并返回 `DataProtectionTransformServiceError` 。
+
 你将收到 `202\Accepted` 包含操作位置标头的响应。 此值是用于跟踪操作进度的 URL。 将其复制到临时位置，以供下一步使用。
 
 ```
 HTTP/1.1 202 Accepted
-Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
+Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
 ```
+
+### <a name="common-errors"></a>常见错误
+
+|错误|解决方法|
+|:--|:--|
+| 400/错误的请求`"code:" "1002"` | 指示验证错误或格式不正确的复制请求。 常见问题包括：）无效或修改的 `copyAuthorization` 有效负载。 b）令牌的过期值 `expirationDateTimeTicks` （有效 `copyAuhtorization` 负载有效期为24小时）。 c）无效或不受支持 `targetResourceRegion` 。 d）无效或格式不正确 `targetResourceId` 的字符串。
+|
 
 ## <a name="track-copy-progress"></a>跟踪复制进度
 
 通过根据源资源终结点查询**获取副本模型结果**API 来跟踪进度。
 
 ```
-GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
+GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -100,12 +110,22 @@ Content-Type: application/json; charset=utf-8
 {"status":"succeeded","createdDateTime":"2020-04-23T18:18:01.0275043Z","lastUpdatedDateTime":"2020-04-23T18:18:01.0275048Z","copyResult":{}}
 ```
 
+### <a name="common-errors"></a>常见错误
+
+|错误|解决方法|
+|:--|:--|
+|"错误"： [{"代码"： "Authorizationerror)"，<br>"消息"： "授权失败，原因是 <br>授权声明缺少或无效。 "}]   | 当 `copyAuthorization` 从 API 返回的内容修改了负载或内容时发生 `copyAuthorization` 。 确保有效负载与先前调用返回的内容完全相同 `copyAuthorization` 。|
+|"错误"： [{"代码"： "Authorizationerror)"，<br>"消息"： "无法检索授权 <br>新元. 如果此问题仍然存在，请使用不同的 <br>要复制到的目标模型。 "}] | 指示 `copyAuthorization` 负载将与复制请求一起使用。 成功的复制请求将不允许任何使用相同 `copyAuthorization` 有效负载的请求。 如果引发了单独的错误（如下所示），并且随后使用相同的授权有效负载重试副本，则会引发此错误。 解决方法是生成新的 `copyAuthorization` 负载，然后重新发出复制请求。|
+|"错误"： [{"代码"： "DataProtectionTransformServiceError"，<br>"消息"： "不允许数据传输请求 <br>因为它会降级到不太安全的数据保护方案。 请参阅文档或联系你的服务管理员 <br>了解详细信息。 "}]    | 在 `AEK` 已启用的资源之间复制到未 `AEK` 启用的资源时发生。 若要允许将加密模型作为未加密的复制到目标，请指定 `x-ms-forms-copy-degrade: true` 包含复制请求的标头。|
+|"错误"： [{"代码"： "ResourceResolverError"，<br>"message"： "无法提取 Id 为" ... "的认知资源的信息。 请确保资源有效且存在于指定的区域 "westus2"。 | 指示所指示的 Azure 资源不是 `targetResourceId` 有效的认知资源，或者不存在。 验证并重新发出复制请求以解决此问题。|
+
+
 ### <a name="optional-track-the-target-model-id"></a>可有可无跟踪目标模型 ID 
 
 你还可以使用**获取自定义模型**API 来跟踪操作的状态，方法是查询目标模型。 使用在第一步中复制的目标模型 ID 调用此 API。
 
 ```
-GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
+GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -124,19 +144,19 @@ Content-Type: application/json; charset=utf-8
 ### <a name="generate-copy-authorization-request"></a>生成复制授权请求
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
 ```
 
 ### <a name="start-copy-operation"></a>开始复制操作
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
 ```
 
 ### <a name="track-copy-progress"></a>跟踪复制进度
 
 ```bash
-curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0-preview/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
+curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
 ## <a name="next-steps"></a>后续步骤

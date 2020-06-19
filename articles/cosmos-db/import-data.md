@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79222384"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687576"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教程：使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
@@ -90,8 +90,8 @@ ms.locfileid: "79222384"
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* `<CosmosDB Endpoint>` 是终结点 URI。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“概述”窗格并复制 URI 值   。
-* `<AccountKey>` 是“密码”或“主要密钥”  。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“连接字符串”或“密钥”窗格，然后复制“密码”或“主要密钥”值    。
+* `<CosmosDB Endpoint>` 是终结点 URI。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“概述”窗格并复制 URI 值 。
+* `<AccountKey>` 是“密码”或“主要密钥”。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“连接字符串”或“密钥”窗格，然后复制“密码”或“主要密钥”值  。
 * `<CosmosDB Database>` 是 CosmosDB 数据库名称。
 
 示例： `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -563,7 +563,7 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 
     ![摘要屏幕的屏幕截图](./media/import-data/summarycommand.png)
 
-2. 对源和目标选项满意后，单击“导入”  。 在导入过程中，已用时间、传输计数和失败信息（如果未在“高级”配置中提供文件名）将会更新。 完成后，可以导出结果（例如，用于处理所有导入失败结果）。
+2. 对源和目标选项满意后，单击“导入”。 在导入过程中，已用时间、传输计数和失败信息（如果未在“高级”配置中提供文件名）将会更新。 完成后，可以导出结果（例如，用于处理所有导入失败结果）。
 
     ![Azure Cosmos DB JSON 导出选项的屏幕截图](./media/import-data/viewresults.png)
 

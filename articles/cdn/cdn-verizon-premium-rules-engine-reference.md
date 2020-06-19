@@ -5,16 +5,16 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253384"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872497"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>从 Verizon 高级规则引擎引用 Azure CDN
+# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Verizon Premium Azure CDN 规则引擎引用
 
 本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-verizon-premium-rules-engine.md)的可用匹配条件和功能的详细说明。
 
@@ -26,20 +26,62 @@ ms.locfileid: "81253384"
 - 保护或拒绝对敏感内容的请求。
 - 将请求重定向。
 - 存储自定义日志数据。
+## <a name="key-concepts"></a>关键概念
+下面将介绍设置规则引擎的关键概念。
+### <a name="draft"></a>草稿
+策略草稿由一个或多个用于标识请求的规则和将应用于请求的操作集组成。 草稿是一项正在进行的工作，它允许在不影响站点流量的情况下进行频繁的配置更新。 草稿准备好定稿后，应将其转换为只读策略。
 
-## <a name="terminology"></a>术语
+### <a name="rule"></a>规则
+规则标识一种或多种类型的请求以及将应用于这些请求的操作集。
 
-通过使用[**条件表达式**](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)、[**匹配条件**](cdn-verizon-premium-rules-engine-reference-match-conditions.md)和[**功能**](cdn-verizon-premium-rules-engine-reference-features.md)来定义规则。 下图突出显示了这些元素：
+该环境包括： 
 
- ![CDN 匹配条件](./media/cdn-rules-engine-reference/cdn-rules-engine-terminology.png)
+- 定义用于标识请求的逻辑的一组条件表达式。
+- 定义用于标识请求的标准的一组匹配条件。
+- 定义 CDN 如何处理上述请求的一组功能。
+下图中标识了这些元素。
 
+![策略部署工作流](./media/cdn-verizon-premium-rules-engine-reference/verizon-rules-engine-reference.png)
+
+### <a name="policy"></a>策略
+包含一组只读规则的策略提供了以下方法：
+
+- 创建、存储和管理规则的多个变体。
+- 回退到以前部署的版本。
+- 预先准备特定于事件的规则（例如，由于客户源代码维护而重定向流量的规则。）
+
+> [!NOTE]
+> 尽管每个环境只允许单个策略，但可以根据需要部署策略。
+
+### <a name="deploy-request"></a>部署请求
+部署请求提供了一个简单而简化的过程，通过该过程，策略可以快速应用于过渡或生产环境。 提供部署请求的历史记录，以便于跟踪应用于这些环境的更改。
+
+> [!NOTE]
+> 只有未通过自动验证和错误检测系统的请求才需要手动审查和批准。
+
+### <a name="rule-precedence"></a>规则优先级
+策略中包含的规则通常按列出的顺序（即从上到下）进行处理。 如果请求与冲突规则匹配，则将优先处理最后一个要处理的规则。
+
+### <a name="policy-deployment-workflow"></a>策略部署工作流
+下面说明了可以将策略应用于生产或过渡环境的工作流。
+
+![策略部署工作流](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
+
+|步骤 |说明 |
+|---------|---------|
+|[创建草稿](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    草稿由一组规则组成，这些规则定义 CDN 应如何处理对内容的请求。     |
+|锁定草稿   |     草稿定稿后，应将其锁定并转换为只读策略。    |
+|[提交部署请求](https://docs.vdms.com/cdn/index.html#HRE/DeployRequest.htm)   |   <br> 部署请求允许将策略应用于测试或生产流量。</br> <br>向暂存或生产环境提交部署请求。</br>     |
+|部署请求评审   |    <br>部署请求将进行自动验证和错误检测。</br><br>尽管大部分部署请求都是自动批准的，但对于更复杂的策略，需要手动审查。</br>   |
+|策略部署（[过渡](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging)）   |  <br> 在批准部署请求到过渡环境时，策略将应用于过渡环境。 此环境允许针对模拟站点流量测试策略。</br><br>策略已准备好应用于实时站点流量后，就应该提交生产环境的新部署请求。</br>      |
+|策略部署（[生产](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti)）   |  向生产环境批准部署请求后，策略将应用于生产环境。 此环境允许策略充当确定 CDN 应如何处理实时流量的最终权限。     |
 ## <a name="syntax"></a>语法
 
 特殊字符的处理方式取决于匹配条件或功能处理文本值的方式。 匹配条件或功能可能会以下述某种方式解释文本：
 
-1. [**文本值**](#literal-values)
-2. [**通配符值**](#wildcard-values)
-3. [**正则表达式**](#regular-expressions)
+- [**文本值**](#literal-values)
+- [**通配符值**](#wildcard-values)
+- [**正则表达式**](#regular-expressions)
 
 ### <a name="literal-values"></a>文本值
 
@@ -51,13 +93,13 @@ ms.locfileid: "81253384"
 
 可以解释为通配符值的文本会为特殊字符赋予其他意义。 下表说明了如何解释以下字符集：
 
-字符 | 描述
+字符 | 说明
 ----------|------------
 \ | 反斜杠用于对此表中指定的任何字符进行转义操作。 必须直接在应该进行转义的特殊字符之前指定一个反斜杠。<br/>例如，以下语法会对星号进行转义：`\*`
 % | 百分比符号用于指示 URL 编码（例如 `%20`）。
 \* | 星号是通配符，代表一个或多个字符。
 Space | 空格字符表示某个匹配条件可以由指定的值或模式满足。
-'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 它具有以下用途：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />- 使用单引号时，可以将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号中（即 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（即 ''）来指定空值。<br /><br/>**重要说明：**<br/>- 如果指定的值不包含通配符，则会自动将其视为文本值，这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
+'值' | 一个单引号没有特殊含义， 但是，可以使用一组单引号来指示应将其中的值视为文本值。 可以通过以下方式使用单引号：<br><br/>- 使用单引号时，只要指定的值与比较值的任何部分匹配，即表示满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <br/><br/>/business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template.**ma**p<br /><br />- 使用单引号时，可以将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号中（即 `' '` 或 `'sample value'`）来指定文本空格字符。<br/>- 使用单引号时，可以指定空值。 通过指定一组单引号（即 ''）来指定空值。<br /><br/>**重要提示：**<br/>- 如果指定的值不包含通配符，则会自动将其视为文本值，这意味着不需要指定一组单引号。<br/>- 如果反斜杠不对此表中的其他字符进行转义操作，则会忽略在一组单引号中指定的反斜杠。<br/>- 要将特殊字符指定为文本字符，另一种方式是使用反斜杠（即 `\`）对其进行转义操作。
 
 ### <a name="regular-expressions"></a>正则表达式
 
@@ -71,7 +113,9 @@ Space | 空格字符表示某个匹配条件可以由指定的值或模式满足
 Space | 通常将空格字符视为文本字符。
 '值' | 可将单引号视为文本字符。 一组单引号没有特殊含义。
 
-支持正则表达式的匹配条件和功能接受由 Perl 兼容的正则表达式（PCRE）定义的模式。
+匹配支持正则表达式的条件和功能接受由 Perl 兼容的正则表达式 (PCRE) 定义的模式。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

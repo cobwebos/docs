@@ -1,6 +1,6 @@
 ---
-title: 从 Azure 中的专用磁盘创建 VM
-description: 通过在 Resource Manager 部署模型中附加专用非托管磁盘创建新 VM。
+title: 在 Azure 中从专用磁盘创建 VM
+description: 在 Resource Manager 部署模型中，通过附加专用非托管磁盘来创建新 VM。
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
@@ -9,16 +9,16 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099642"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232823"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>从存储帐户中的专用 VHD 创建 VM
 
-通过使用 Powershell 将专用非托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是保留原始 VM 中用户帐户、应用程序和其他状态数据的现有 VM 中 VHD 的副本。 
+通过使用 Powershell 将专用非托管磁盘附加为 OS 磁盘来创建新 VM。 专用磁盘是保留原始 VM 中的用户帐户、应用程序和其他状态数据的现有 VM 中 VHD 的副本。 
 
 可以使用两个选项：
 * [上传 VHD](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
@@ -32,17 +32,17 @@ ms.locfileid: "82099642"
 可从使用本地虚拟化工具（如 Hyper-V）创建的专用 VM 或从另一个云导出的 VM 上传 VHD。
 
 ### <a name="prepare-the-vm"></a>准备 VM
-可上传使用本地 VM 创建的专用 VHD 或从另一个云导出的 VHD。 用 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果想要使用当前 VHD 创建新 VM，请确保完成以下步骤。 
+可上传用本地 VM 创建的专用 VHD或从另一个云导出的 VHD。 用 VHD 保留原始 VM 中的用户帐户、应用程序和其他状态数据。 如果打算按原样使用 VHD 来创建新 VM，请确保完成以下步骤。 
   
-  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 **不要**使用 Sysprep 通用化 VM。
+  * [准备好要上传到 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 不要使用 Sysprep 通用化 VM。
   * 删除 VM 上安装的所有来宾虚拟化工具和代理（例如 VMware 工具）。
-  * 确保 VM 配置为通过 DHCP 来提取其 IP 地址和 DNS 设置。 这确保服务器在启动时在 VNet 中获取 IP 地址。 
+  * 确保 VM 配置为通过 DHCP 提取 IP 地址和 DNS 设置。 这可以确保服务器在启动时获得 VNet 中的 IP 地址。 
 
 
 ### <a name="get-the-storage-account"></a>获取存储帐户
-需要在 Azure 中创建存储帐户来存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新存储帐户。 
+需要在 Azure 中创建一个存储帐户用于存储上传的 VM 映像。 可以使用现有存储帐户，也可以创建新的存储帐户。 
 
-显示可用的存储帐户，请键入：
+若要显示可用的存储帐户，请键入：
 
 ```powershell
 Get-AzStorageAccount
@@ -50,9 +50,9 @@ Get-AzStorageAccount
 
 如果要使用现有存储帐户，请转到“上传 VM 映像”部分。
 
-若要创建存储帐户，请执行以下步骤：
+如果需要创建存储帐户，请执行以下步骤：
 
-1. 需要应在其中创建存储帐户的资源组的名称。 若要查找订阅中的所有资源组，请键入：
+1. 需要使用要在其中创建存储帐户的资源组的名称。 若要找出订阅中的所有资源组，请键入：
    
     ```powershell
     Get-AzResourceGroup
@@ -96,37 +96,37 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-完成执行此命令可能需要一段时间，具体取决于网络连接速度和 VHD 文件的大小。
+根据网络连接速度和 VHD 文件的大小，可能需要一段时间才能完成此命令。
 
 
 ## <a name="option-2-copy-the-vhd-from-an-existing-azure-vm"></a>选项 2：从现有 Azure VM 复制 VHD
 
 可将 VHD 复制到另一个存储帐户，以便在创建新的重复 VM 时使用。
 
-### <a name="before-you-begin"></a>准备阶段
+### <a name="before-you-begin"></a>开始之前
 请确保：
 
-* 获取有关**源和目标存储帐户**的信息。 对于源 VM，需要具有存储帐户和容器名称。 通常，容器名称为 **vhds**。 还需要获取目标存储帐户。 如果尚未拥有存储帐户，可以使用门户（“所有服务”>“存储帐户”>“添加”）或使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 创建一个存储帐户  。 
+* 获取有关**源和目标存储帐户**的信息。 对于源 VM，需要具有存储帐户和容器名称。 通常，容器名称为 **vhds**。 还需要获取目标存储帐户。 如果尚未拥有存储帐户，可以使用门户（“所有服务”>“存储帐户”>“添加”）或使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 创建一个存储帐户。 
 * 已下载并安装 [AzCopy 工具](../../storage/common/storage-use-azcopy.md)。 
 
 ### <a name="deallocate-the-vm"></a>解除分配 VM
 解除分配 VM，释放要复制的 VHD。 
 
-* **门户**：单击“虚拟机” > “myVM”>“停止”  
+* **门户**：单击“虚拟机” > “myVM”>“停止” 
 * **Powershell**：使用 [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) 可停止（解除分配）资源组 **myResourceGroup** 中名为 **myVM** 的 VM。
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 ```
 
-Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”    。
+Azure 门户中该 VM 的“状态”将从“已停止”更改为“已停止(已解除分配)”。  
 
 ### <a name="get-the-storage-account-urls"></a>获取存储帐户 URL
-需要源和目标存储帐户的 URL。 URL 类似于： `https://<storageaccount>.blob.core.windows.net/<containerName>/`。 如果已经知道了存储帐户和容器名称，则只需替换括号之间的信息即可创建 URL。 
+需要源和目标存储帐户的 URL。 URL 类似于：`https://<storageaccount>.blob.core.windows.net/<containerName>/`。 如果已经知道了存储帐户和容器名称，则只需替换括号之间的信息即可创建 URL。 
 
 可以使用 Azure 门户或 Azure PowerShell 获取 URL：
 
-* **门户**：单击 **>** 以选择“所有服务” > “存储帐户” > “存储帐户” > “Blob”，源 VHD 文件可能在“vhds”容器中      。 单击容器的“属性”并复制标记为 **URL** 的文本。  你会需要用到源和目标容器的 URL。 
+* **门户**：单击 **>** 以选择“所有服务” > “存储帐户” > “存储帐户” > “Blob”，源 VHD 文件可能在“vhds”容器中  。 单击容器的“属性”并复制标记为 **URL** 的文本。 需要用到源和目标容器的 URL。 
 * **Powershell**：使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 可获取资源组 **myResourceGroup** 中名为 **myVM** 的 VM 的信息。 在结果中，查看 **Vhd Uri** 的 **Storage profile** 部分。 URI 的第一部分是容器的 URL，最后一部分是 VM 的 OS VHD 名称。
 
 ```powershell
@@ -136,8 +136,8 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>获取存储访问密钥
 查找源和目标存储帐户的访问密钥。 有关访问密钥的详细信息，请参阅[关于 Azure 存储帐户](../../storage/common/storage-create-storage-account.md)。
 
-* **门户**：单击“所有服务” > “存储帐户” > “存储帐户” > “访问密钥”     。 复制标记为 **key1** 的密钥。
-* **Powershell**：使用 [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) 可获取资源组 **myResourceGroup** 中存储帐户 **mystorageaccount** 的存储密钥。 复制标记为 key1 的密钥  。
+* **门户**：单击“所有服务” > “存储帐户” > “存储帐户” > “访问密钥” 。 复制标记为 **key1** 的密钥。
+* **Powershell**：使用 [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) 可获取资源组 **myResourceGroup** 中存储帐户 **mystorageaccount** 的存储密钥。 复制标记为“key1”的密钥。
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -146,7 +146,7 @@ Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGrou
 ### <a name="copy-the-vhd"></a>复制 VHD
 可以使用 AzCopy 在存储帐户之间复制文件。 对于目标容器，如果指定的容器不存在，系统会自动创建该容器。 
 
-如果要使用 AzCopy，请在本地计算机上打开命令提示符，并导航到安装 AzCopy 的文件夹。 路径类似于 *C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy*。 
+要使用 AzCopy，请在本地计算机上打开命令提示符，并导航到安装 AzCopy 的文件夹。 路径类似于 *C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy*。 
 
 若要复制容器中的所有文件，请使用 **/S** 开关。 此开关可用于复制 OS VHD 和所有数据磁盘（如果它们在同一个容器中）。 本示例演示如何将存储帐户 **mysourcestorageaccount** 中容器 **mysourcecontainer** 内的所有文件复制到存储帐户 **mydestinationstorageaccount** 中的容器 **mydestinationcontainer**。 将存储帐户和容器的名称替换为自己的名称。 将 `<sourceStorageAccountKey1>` 和 `<destinationStorageAccountKey1>` 替换为自己的密钥。
 
@@ -166,7 +166,7 @@ AzCopy /Source:https://mysourcestorageaccount.blob.core.windows.net/mysourcecont
 ```
 
 
-完成后，出现如下所示的消息：
+完成后，将出现如下所示的消息：
 
 ```
 Finished 2 of total 2 file(s).
@@ -179,12 +179,12 @@ Transfer failed:         0
 Elapsed time:            00.00:13:07
 ```
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 * 使用 AZCopy 时，如果看到错误“服务器无法对请求进行身份验证”，请确保授权标头的值构成正确（包括签名）。 如果使用的是密钥 2 或辅助存储密钥，则请尝试使用主密钥或第一个存储密钥。
 
 ## <a name="create-the-new-vm"></a>创建新 VM 
 
-需创建新 VM 使用的网络和其他 VM 资源。
+需要创建用于新 VM 的网络和其他 VM 资源。
 
 ### <a name="create-the-subnet-and-vnet"></a>创建子网和 vNet
 
@@ -225,16 +225,16 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 有关终结点和 NSG 规则的详细信息，请参阅 [Opening ports to a VM in Azure using PowerShell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（使用 PowerShell 在 Azure 中打开 VM 端口）。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>创建公共 IP 地址和 NIC
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md) 和网络接口。
 
-1. 创建公共 IP。 在此示例中，公共 IP 地址名称设置为 **myIP**。
+1. 创建公共 IP 地址。 在本示例中，公共 IP 地址名称设置为 **myIP**。
    
     ```powershell
     $ipName = "myIP"
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. 创建 NIC。 在此示例中，NIC 名称设置为 **myNicName**。 此步骤还将之前创建的网络安全组与此 NIC 相关联。
+2. 创建 NIC。 在本示例中，NIC 名称设置为 **myNicName**。 此步骤还将之前创建的网络安全组与此 NIC 相关联。
    
     ```powershell
     $nicName = "myNicName"
@@ -259,12 +259,12 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     
 ### <a name="configure-the-os-disk"></a>配置 OS 磁盘
 
-1. 为上传或复制的 VHD 设置 URI。 在此示例中，将名为 **myOsDisk.vhd** 的 VHD 文件保存在容器（名为 **myContainer**）中名为 **myStorageAccount** 的存储帐户中。
+1. 为上传或复制的 VHD 设置 URI。 在此示例中，将名为 **myOsDisk.vhd** 的 VHD 文件保留在容器（名为 **myContainer**）中名为 **myStorageAccount** 的存储帐户中。
 
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. 添加 OS 磁盘。 在此示例中，创建 OS 磁盘时，“osDisk”一词将追加到用于创建 OS 磁盘名称的 VM 名称后。 此示例还指定应将此基于 Windows 的 VHD 附加到 VM 作为 OS 磁盘。
+2. 添加 OS 磁盘。 本例中，创建 OS 磁盘时，会在 VM 名称后面附加词“osDisk”以创建 OS 磁盘名称。 此示例还指定应将此基于 Windows 的 VHD 作为 OS 磁盘附加到 VM。
     
     ```powershell
     $osDiskName = $vmName + "osDisk"
@@ -278,10 +278,10 @@ $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-使用存储帐户时，数据和操作系统磁盘 URL 如下所示：`https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`。 可通过以下方法在门户上找到此信息：浏览到目标存储容器，单击复制的操作系统或数据 VHD，并复制 URL 的内容。
+使用存储帐户时，数据和操作系统磁盘 URL 类似于：`https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`。 可通过以下方法在门户上找到此信息：浏览到目标存储容器，单击复制的操作系统或数据 VHD，并复制 URL 的内容。
 
 
-### <a name="complete-the-vm"></a>完成该 VM 
+### <a name="complete-the-vm"></a>完成 VM 
 
 使用刚刚创建的配置创建 VM。
 
@@ -300,7 +300,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-在 [Azure 门户](https://portal.azure.com)中，应当可以在“所有服务” > “虚拟机”   下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
+在 [Azure 门户](https://portal.azure.com)中，应当可以在“所有服务” > “虚拟机” 下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName

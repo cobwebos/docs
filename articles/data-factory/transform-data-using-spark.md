@@ -9,13 +9,13 @@ author: nabhishek
 ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 05/31/2018
-ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/08/2020
+ms.openlocfilehash: bc8fd73b18e197c42e4750612320c1b15a6db020
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418841"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849206"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -59,20 +59,20 @@ ms.locfileid: "81418841"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-| properties              | 说明                              | 必需 |
+| properties              | 说明                              | 必选 |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | 管道中活动的名称。    | 是      |
 | description           | 描述活动用途的文本。  | 否       |
 | type                  | 对于 Spark 活动，活动类型是 HDInsightSpark。 | 是      |
 | linkedServiceName     | 运行 Spark 程序的 HDInsight Spark 链接服务的名称。 若要了解此链接服务，请参阅[计算链接服务](compute-linked-services.md)一文。 | 是      |
-| SparkJobLinkedService | 用于保存 Spark 作业文件、依赖项和日志的 Azure 存储链接服务。  如果未指定此属性的值，将使用与 HDInsight 群集关联的存储。 此属性的值只能是 Azure 存储链接服务。 | 否       |
+| SparkJobLinkedService | 用于保存 Spark 作业文件、依赖项和日志的 Azure 存储链接服务。 此处仅支持 [Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)和 [ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) 链接服务 。 如果未指定此属性的值，将使用与 HDInsight 群集关联的存储。 此属性的值只能是 Azure 存储链接服务。 | 否       |
 | rootPath              | 包含 Spark 文件的 Azure Blob 容器和文件夹。 文件名称需区分大小写。 有关此文件夹结构的详细信息，请参阅“文件夹结构”部分（下一部分）。 | 是      |
 | entryFilePath         | Spark 代码/包的根文件夹的相对路径 条目文件必须是 Python 文件或 .jar 文件。 | 是      |
 | className             | 应用程序的 Java/Spark main 类      | 否       |
 | 参数             | Spark 程序的命令行参数列表。 | 否       |
 | proxyUser             | 用于模拟执行 Spark 程序的用户帐户 | 否       |
 | sparkConfig           | 指定在以下主题中列出的 Spark 配置属性的值：[Spark 配置 - 应用程序属性](https://spark.apache.org/docs/latest/configuration.html#available-properties)。 | 否       |
-| getDebugInfo          | 指定何时将 Spark 日志文件复制到 HDInsight 群集使用的（或者）sparkJobLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：None。 | 否       |
+| getDebugInfo          | 指定何时将 Spark 日志文件复制到 HDInsight 群集使用的（或者）sparkJobLinkedService 指定的 Azure 存储。 允许的值：None、Always 或 Failure。 默认值：无。 | 否       |
 
 ## <a name="folder-structure"></a>文件夹结构
 与 Pig/Hive 作业相比，Spark 作业的可扩展性更高。 对于 Spark 作业，可以提供多个依赖项，例如 jar 包（放在 java CLASSPATH 中）、python 文件（放在 PYTHONPATH 中）和其他任何文件。
@@ -119,5 +119,5 @@ SparkJob2
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289169"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118559"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -30,7 +30,7 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 * 从 VM 收集系统性能指标，并存储在指定存储帐户中的特定表中。
 * 从 syslog 检索日志事件，并存储在指定存储帐户中的特定表中。
 * 让用户能够自定义收集并上传的数据指标。
-* 让用户能够自定义收集和上传的事件的 syslog 辅助参数和严重性级别。
+* 让用户能够自定义要收集和上传的事件的 syslog 辅助参数和严重性级别。
 * 让用户能够将指定日志文件上传到指定的存储表。
 * 支持将指标和日志事件发送到指定存储帐户中的任意 EventHub 终结点和 JSON 格式的 blob。
 
@@ -47,15 +47,30 @@ Linux 诊断扩展可帮助用户监视 Microsoft Azure 上运行的 Linux VM �
 * 捕获 LAD 2.3 允许的默认 syslog 收集；
 * 允许 Azure 门户体验，以便对 VM 指标进行制图以及就其发送警报。
 
-可下载配置只是一个示例；请根据需要对其进行修改。
+可下载配置只是一个示例；请对其进行修改以适应你的需求。
+
+### <a name="supported-linux-distributions"></a>支持的 Linux 分发
+
+Linux 诊断扩展支持以下分发和版本。 分发和版本的列表仅适用于 Azure 认可的 Linux 供应商映像。 Linux 诊断扩展通常不支持第三方 BYOL 和 BYOS 映像（如设备）。
+
+仅列出主要版本（如 Debian 7）的分发对于所有次要版本也均受支持。 如果指定了特定的次要版本，则仅支持该特定版本；如果追加了“+”，则支持的次要版本等于或大于指定的版本。
+
+支持的分发和版本：
+
+- Ubuntu 18.04、16.04、14.04
+- CentOS 7、6.5+
+- Oracle Linux 7、6.4+
+- OpenSUSE 13.1+
+- SUSE Linux Enterprise Server 12
+- Debian 9、8、7
+- RHEL 7、6.7+
 
 ### <a name="prerequisites"></a>先决条件
 
-* Azure Linux 代理 2.2.0 版或更高版本  。 大部分 Azure VM Linux 库映像包含 2.2.7 或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
+* Azure Linux 代理 2.2.0 版或更高版本。 大部分 Azure VM Linux 库映像包含 2.2.7 版或更高版本。 运行 `/usr/sbin/waagent -version` 以确认 VM 上安装的版本。 如果 VM 正在运行较早版本的来宾代理，请按照[以下说明](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)将其更新。
 * **Azure CLI**。 在计算机上[设置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 环境。
 * wget 命令（如果尚无此命令，请运行 `sudo apt-get install wget`。
 * 现有 Azure 订阅以及其中用于存储数据的现有存储帐户。
-* 支持的 Linux 发行版列表位于 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
 ### <a name="sample-installation"></a>示例安装
 
@@ -89,7 +104,7 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会更改。 在大多数情况下，你应该下载门户设置 JSON 文件的副本，并根据需要对其进行自定义，然后使用你自己的配置文件版本，而不是每次下载该 URL。
+在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会有所更改。 在大多数情况下，应该下载门户设置 JSON 文件的副本，并根据需要对其进行自定义，然后使用你自己的配置文件版本，而不是每次下载该 URL。
 
 #### <a name="powershell-sample"></a>PowerShell 示例
 
@@ -125,7 +140,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>从以前版本的扩展迁移
 
-扩展的最新版本是 3.0  。 任何旧版本 (2.x) 都已弃用，可能会在 2018 年 7 月 31 日或之后取消发布  。
+扩展的最新版本是 3.0。 任何旧版本 (2.x) 都已弃用，可能会在 2018 年 7 月 31 日或之后取消发布。
 
 > [!IMPORTANT]
 > 此扩展引入了对扩展配置的重大更改。 其中一项更改是为了提高扩展的安全性；因此，无法维持与 2.x 版本的向后兼容性。 此外，此扩展的扩展发布服务器与 2.x 版本的发布服务器不同。
@@ -135,7 +150,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 建议：
 
 * 启用自动次要版本升级后再安装扩展。
-  * 在经典的部署模型 VM 上，如果要通过 Azure XPLAT CLI 或 Powershell 安装扩展，请指定“3.*”作为版本。
+  * 在经典的部署模型 VM 上，如果要通过 Azure XPLAT CLI 或Powershell 安装扩展，请指定“3.*”作为版本。
   * 在 Azure 资源管理器部署模型 VM 上，在 VM 部署模板中加入“"autoUpgradeMinorVersion": true”。
 * 为 LAD 3.0 使用新的/不同的存储帐户。 LAD 2.3 和 LAD 3.0 之间存在几个小的不兼容性，使得共享帐户变得麻烦：
   * LAD 3.0 将 syslog 事件存储在不同名称的表中。
@@ -155,15 +170,15 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 }
 ```
 
-名称 | Value
+名称 | 值
 ---- | -----
 storageAccountName | 扩展写入数据的存储帐户的名称。
-storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云 `https://core.windows.net`。 若要使用 Azure Germany、Azure 政府或 Azure China 中的存储帐户，请相应地设置此值。
-storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) (`ss='bt'`)，适用于容器和对象 (`srt='co'`)，用于授予添加、创建、列出、更新和写入权限 (`sp='acluw'`)。 请勿使用前导问号 (?)  。
+storageAccountEndPoint | （可选）标识存储帐户所在云的终结点。 如果缺少此设置，则 LAD 默认为 Azure 公有云`https://core.windows.net`。 若要使用 Azure Germany、Azure 政府或 Azure China 中的存储帐户，请相应地设置此值。
+storageAccountSasToken | Blob 服务和表服务的[帐户 SAS 令牌](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) (`ss='bt'`)，适用于容器和对象 (`srt='co'`)，用于授予添加、创建、列出、更新和写入权限 (`sp='acluw'`)。 请勿使用前导问号 (?)。
 mdsdHttpProxy | （可选）允许扩展连接到指定存储帐户和终结点所需的 HTTP 代理信息。
 sinksConfig | （可选）可将指标和事件传递到的替换目标的详细信息。 扩展所支持的每个数据接收器的具体详细信息将在下面各节中介绍。
 
-若要在资源管理器模板中获取 SAS 令牌，请使用 **listAccountSas** 函数。 有关示例模板，请参阅 [List 函数示例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
+若要在资源管理器模板内获取 SAS 令牌，请使用 **listAccountSas** 函数。 有关示例模板，请参阅 [List 函数示例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
 
 可通过 Azure 门户轻松构造所需的 SAS 令牌。
 
@@ -172,7 +187,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 1. 如上所述设置相应部分
 1. 单击“生成 SAS”按钮。
 
-![图像](./media/diagnostics-linux/make_sas.png)
+![image](./media/diagnostics-linux/make_sas.png)
 
 将生成的 SAS 复制到 storageAccountSasToken 字段中；删除前导问号（“?”）。
 
@@ -191,9 +206,9 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 },
 ```
 
-此可选部分所定义的附加目标是扩展将所收集信息发送到其中的目标。 “sink”数组包含每个附加数据接收器的对象。 “type”属性确定对象中的其他属性。
+此可选部分用于定义扩展要将其收集到的信息发送到的附加目的地。 “sink”数组包含每个附加数据接收器的对象。 “type”属性确定对象中的其他属性。
 
-元素 | Value
+元素 | 值
 ------- | -----
 name | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
@@ -213,11 +228,11 @@ Linux 诊断扩展 3.0 版支持两种接收器类型：EventHub 和 JsonBlob。
 ]
 ```
 
-“sasURL”条目包含应将数据发布到其中的事件中心的完整 URL，包括 SAS 令牌。 LAD 要求 SAS 命名启用发送声明的策略。 示例：
+“sasURL”条目包含应将数据发布到的事件中心的完整 URL，包括 SAS 令牌。 LAD 要求 SAS 命名启用发送声明的策略。 示例：
 
 * 创建名为 `contosohub` 的事件中心命名空间
 * 在名为 `syslogmsgs` 的命名空间中创建事件中心
-* 在名为 `writer` 的事件中心创建启用发送声明的共享访问策略
+* 在名为 `writer` 的事件中心上创建启用发送声明的共享访问策略
 
 如果创建在 UTC 2018 年 1 月 1 日午夜之前有效的 SAS，sasURL 值可能为：
 
@@ -225,7 +240,7 @@ Linux 诊断扩展 3.0 版支持两种接收器类型：EventHub 和 JsonBlob。
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-有关为事件中心生成和检索 SAS 令牌信息的详细信息，请参阅[此网页](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
+有关为事件中心生成和检索 SAS 令牌信息的详细情况，请参阅[此网页](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob 接收器
 
@@ -255,7 +270,7 @@ https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.wi
 }
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 StorageAccount | 扩展写入数据的存储帐户的名称。 必须与[受保护的设置](#protected-settings)中指定的名称相同。
 mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的相同。 如果设置，则专用值将重写公用值。 将包含机密（如密码）的代理设置放在[受保护的设置](#protected-settings)中。
@@ -278,7 +293,7 @@ mdsdHttpProxy | （可选）与[受保护的设置](#protected-settings)中的�
 
 此可选结构控制指标和日志的收集，以传递到 Azure Metrics 服务和其他数据接收器。 必须指定 `performanceCounters` 和/或 `syslogEvents`。 必须指定 `metrics` 结构。
 
-元素 | Value
+元素 | 值
 ------- | -----
 eventVolume | （可选）控制在存储表中创建的分区数。 必须是 `"Large"`、`"Medium"` 或 `"Small"`。 如果未指定，默认值为 `"Medium"`。
 sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间的默认时间间隔。 支持的最小采样率为 15 秒。 如果未指定，默认值为 `15`。
@@ -295,9 +310,9 @@ sampleRateInSeconds | （可选）两次收集原始（未聚合）指标之间�
 }
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
-ResourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
+resourceId | VM 或 VM 所属虚拟机规模集的 Azure 资源管理器资源 ID。 如果配置中使用了任何 JsonBlob 接收器，也必须指定此设置。
 scheduledTransferPeriod | 计算聚合指标并将转移到 Azure Metrics 的频率，以 IS 8601 时间间隔形式表示。 最小传输周期为 60 秒，即 PT1M。 必须指定至少一个 scheduledTransferPeriod。
 
 performanceCounters 节中指定的指标样本每 15 秒收集一次，或者按计数器明确定义的采样率进行收集。 如果出现多个 scheduledTransferPeriod 频率（如示例所示），则每个聚合都将独立计算。
@@ -330,24 +345,24 @@ performanceCounters 节中指定的指标样本每 15 秒收集一次，或者�
 此可选部分控制指标的收集。 每个 [scheduledTransferPeriod](#metrics) 的原始样本聚合产生以下值：
 
 * 平均值
-* 最小值
-* 最大值
+* minimum
+* maximum
 * 上一次收集的值
 * 用于计算聚合的原始样本数
 
-元素 | Value
+元素 | 值
 ------- | -----
 sinks | （可选）LAD 将聚合指标结果发送到的接收器的名称的逗号分隔列表。 所有聚合指标都将发布到列出的每个接收器。 请参阅 [sinksConfig](#sinksconfig)。 示例：`"EHsink1, myjsonsink"`。
 type | 标识指标的实际提供程序。
 class | 与“counter”一起标识提供程序的命名空间中的特定指标。
 counter | 与“class”一起标识提供程序的命名空间中的特定指标。
 counterSpecifier | 标识 Azure Metrics 命名空间中的特定指标。
-condition | （可选）选择指标适用对象的特定实例，或选择该对象所有实例的聚合。 有关详细信息，请参阅 `builtin` 指标定义。
+条件 (condition) | （可选）选择指标适用对象的特定实例，或选择该对象所有实例的聚合。 有关详细信息，请参阅 `builtin` 指标定义。
 sampleRate | IS 8601 时间间隔，用于设置收集此指标原始样本的速率。 如果未设置，则收集时间间隔由 [sampleRateInSeconds](#ladcfg) 的值设置。 支持的最短采样率为 15 秒 (PT15S)。
-unit | 应为以下字符串之一：“Count”、“Bytes”、“Seconds”、“Percent”、“CountPerSecond”、“BytesPerSecond”、“Millisecond”。 定义指标的单位。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 会忽略此字段。
-displayName | Azure Metrics 中要附加到此数据的标签（使用由相关区域设置指定的语言）。 LAD 会忽略此字段。
+单位 | 应为以下字符串之一：“Count”、“Bytes”、“Seconds”、“Percent”、“CountPerSecond”、“BytesPerSecond”、“Millisecond”。 定义指标的单位。 所收集数据的使用者会预期收集到的数据值与此单位匹配。 LAD 将忽略此字段。
+displayName | Azure Metrics 中要附加到此数据的标签（使用由相关区域设置指定的语言）。 LAD 将忽略此字段。
 
-counterSpecifier 是一个任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 counterSpecifier 作为标识指标或指标实例的“关键字”。 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 counterSpecifier 值。 如果要收集指标的特定实例，建议将该实例的标识符附加到 counterSpecifier 值。 下面是一些示例：
+counterSpecifier 是一个任意标识符。 Azure 门户绘图和警报功能等指标使用者使用 counterSpecifier 作为标识指标或指标实例的“关键字”。 对于 `builtin` 指标，建议使用以 `/builtin/` 开头的 counterSpecifier 值。 如果要收集指标的特定实例，建议将该实例的标识符附加到 counterSpecifier 值。 以下是一些示例：
 
 * `/builtin/Processor/PercentIdleTime` - 所有 vCPU 的平均空闲时间
 * `/builtin/Disk/FreeSpace(/mnt)` - /mnt 文件系统的可用空间
@@ -379,11 +394,11 @@ LAD 和 Azure 门户都不需要 counterSpecifier 值匹配任何模式。 请�
 
 此可选部分控制 syslog 中日志事件的收集。 如果省略此部分，则不会捕获 syslog 事件。
 
-syslogEventConfiguration 收集会为相关的每个 syslog 辅助参数创建一个条目。 如果特定辅助参数的 minSeverity 为“NONE”，或者该辅助参数并未出现在元素中，则不会捕获该辅助参数下的任何事件。
+syslogEventConfiguration 收集将为相关的每个 syslog 辅助参数创建一个条目。 如果特定辅助参数的 minSeverity 为“NONE”，或者该辅助参数并未出现在元素中，则不会捕获该辅助参数下的任何事件。
 
-元素 | Value
+元素 | 值
 ------- | -----
-sinks | 一个逗号分隔列表，包含要将单个日志事件发布到其中的接收器的名称。 与 syslogEventConfiguration 中的限制匹配的所有日志事件都会发布到列出的每个接收器。 示例：“EHforsyslog”
+sinks | 要将单个日志事件发布到的接收器的名称的逗号分隔列表。 与 syslogEventConfiguration 中的限制匹配的所有日志事件都会发布到列出的每个接收器。 示例：“EHforsyslog”
 facilityName | Syslog 辅助参数名称（例如“LOG\_USER”或“LOG\_LOCAL0”）。 有关完整列表，请参阅 [syslog 手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“facility”部分。
 minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）。 有关完整列表，请参阅 [syslog手册页](http://man7.org/linux/man-pages/man3/syslog.3.html)的“level”部分。 扩展将捕获发送到该辅助参数的等于或高于指定级别的事件。
 
@@ -410,13 +425,13 @@ minSeverity | Syslog 严重性级别（例如“LOG\_ERR”或“LOG\_INFO”）
 ]
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
 命名空间 | （可选）应在其中执行查询的 OMI 命名空间。 如果未指定，则默认值为“root/scx”，由 [ System Center 跨平台提供程序](https://github.com/Microsoft/SCXcore)实现。
-查询 | 要执行的 OMI 查询。
+query | 要执行的 OMI 查询。
 表 | （可选）指定存储帐户中的 Azure 存储表（请参阅[受保护的设置](#protected-settings)）。
-frequency | （可选）两次执行查询之间的秒数。 默认值为 300 秒（5 分钟）；最小值为 15 秒。
-sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结果发布到其中的附加接收器的名称。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
+频率 | （可选）两次执行查询之间的秒数。 默认值为 300（5 分钟）；最小值为 15 秒。
+sinks | （可选）应将原始样本指标结果发布到的附加接收器的名称的逗号分隔列表。 扩展或 Azure Metrics 不计算这些原始样本的聚合。
 
 必须指定“表”和/或“接收器”。
 
@@ -434,9 +449,9 @@ sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结
 ]
 ```
 
-元素 | Value
+元素 | 值
 ------- | -----
-file | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
+文件 | 要监视和捕获的日志文件的完整路径名。 路径名必须命名单个文件；它不能命名目录，也不能包含通配符。
 表 | （可选）指定的存储帐户（在受保护的配置中指定）中的 Azure 存储表，文件“结尾”处的新行将写入此表。
 sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔列表。
 
@@ -449,7 +464,7 @@ sinks | （可选）日志行发送到的附加接收器的名称的逗号分隔
 * 处理器
 * 内存
 * 网络
-* 文件系统
+* Filesystem
 * 磁盘
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>处理器类的内置指标
@@ -528,7 +543,7 @@ TransfersPerSecond | 每秒读取或写入操作数
 
 可通过设置 `"condition": "IsAggregate=True"`，获取跨所有文件系统的聚合值。 可通过设置 `"condition": 'Name="/mnt"'`，获取已装入的特定文件系统（如“/mnt”）的值。 
 
-**注意**：如果使用 Azure 门户而不是 JSON，则正确的条件字段形式为 Name='/mnt'
+**注意**：如果使用的是 Azure 门户而不是 JSON，则正确的条件字段格式为 Name='/mnt'
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁盘类的内置指标
 
@@ -714,7 +729,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 使用 Azure 门户查看性能数据或设置警报：
 
-![图像](./media/diagnostics-linux/graph_metrics.png)
+![image](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` 数据始终存储在 Azure 存储表中。 Azure 存储 API 适用于多种语言和平台。
 
@@ -727,9 +742,9 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-![图像](./media/diagnostics-linux/stg_explorer.png)
+![image](./media/diagnostics-linux/stg_explorer.png)
 
-请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-what-is-event-hubs.md)，了解如何使用发布到 EventHubs 终结点的消息。
+请参阅相关 [ EventHubs 文档](../../event-hubs/event-hubs-what-is-event-hubs.md)，了解如何使用发布到 EventHubs 终结点的消息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,27 +1,27 @@
 ---
-title: 在 AKS 上启用 Azure Dev Spaces & 安装客户端工具
+title: 在 AKS 上启用 Azure Dev Spaces 并安装客户端工具
 services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
-description: 了解如何在 AKS 群集上启用 Azure Dev Spaces 和安装客户端工具。
+description: 了解如何在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: a6b3be5ceba5e60b99b2f75e060f3321cd3151f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3666eeb995c73615c522200a3619d785814ea0b5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898950"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873522"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具
 
-本文介绍了如何通过多种方式在 AKS 群集上启用 Azure Dev Spaces，以及如何安装客户端工具。
+本文介绍了多种方式来在 AKS 群集上启用 Azure Dev Spaces 以及安装客户端工具。
 
 ## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>使用 CLI 启用或删除 Azure Dev Spaces
 
-在可以使用 CLI 启用 Dev 空间之前，需要：
+需具备以下项，才可使用 CLI 启用 Dev Spaces：
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户][az-portal-create-account]。
-* [Azure CLI 安装][install-cli]。
-* [受支持区域][supported-regions]中[的 AKS 群集][create-aks-cli]。
+* [已安装的 Azure CLI][install-cli]。
+* [支持的区域][supported-regions]中的 [AKS 群集][create-aks-cli]。
 
 使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。
 
@@ -29,7 +29,7 @@ ms.locfileid: "78898950"
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster
 ```
 
-上述命令在*myResourceGroup*组中的*myAKSCluster*群集上启用 Dev 空间，并创建*默认*的 dev 空间。
+上述命令在 myResourceGroup 组中的 myAKSCluster 群集上启用 Dev Spaces，并创建一个默认开发空间  。
 
 ```console
 'An Azure Dev Spaces Controller' will be created that targets resource 'myAKSCluster' in resource group 'myResourceGroup'. Continue? (y/N): y
@@ -47,9 +47,9 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-`use-dev-spaces`命令还会安装 Azure Dev Spaces CLI。
+`use-dev-spaces` 命令还会安装 Azure Dev Spaces CLI。
 
-若要从 AKS 群集中删除 Azure Dev Spaces，请`azds remove`使用命令。 例如：
+要从 AKS 群集中删除 Azure Dev Spaces，请使用 `azds remove` 命令。 例如：
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -58,34 +58,33 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-上述命令将从*MyResourceGroup*中的*MyAKS*群集中删除 Azure Dev Spaces。 用 Azure Dev Spaces 创建的所有命名空间都将与其工作负荷一起保留，但这些命名空间中的新工作负荷不会通过 Azure Dev Spaces 进行检测。 此外，如果你重新启动任何检测到 Azure Dev Spaces 的现有 pod，你可能会看到错误。 必须在不 Azure Dev Spaces 工具的情况下重新部署这些 pod。 若要从群集中完全删除 Azure Dev Spaces，请删除启用了 Azure Dev Spaces 的所有命名空间中的所有 pod。
+上述命令将从 MyResourceGroup 中的 MyAKS 群集中删除 Azure Dev Spaces 。 使用 Azure Dev Spaces 创建的所有命名空间仍将与其工作负载一起保留，但这些命名空间中新的工作负载将不使用 Azure Dev Spaces 进行检测。 此外，如果你重启已使用 Azure Dev Spaces 检测的任何现有 Pod，可能会看到错误。 必须在没有 Azure Dev Spaces 工具的情况下重新部署这些 Pod。 若要从群集中完全删除 Azure Dev Spaces，请在已启用 Azure Dev Spaces 的所有命名空间中删除所有 Pod。
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>使用 Azure 门户启用或删除 Azure Dev Spaces
+## <a name="enable-or-remove-azure-dev-spaces-using-the-azure-portal"></a>通过 Azure 门户启用或删除 Azure Dev Spaces
 
-在可以使用 Azure 门户启用 Dev 空间之前，需要：
+需具备以下项，才可通过 Azure 门户启用 Dev Spaces：
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户][az-portal-create-account]。
-* [受支持区域][supported-regions]中[的 AKS 群集][create-aks-portal]。
+* [支持的区域][supported-regions]中的 [AKS 群集][create-aks-portal]。
 
-使用 Azure 门户启用 Azure Dev Spaces：
+若要通过 Azure 门户启用或删除 Azure Dev Spaces：
 1. 登录 [Azure 门户][az-portal]。
 1. 导航到 AKS 群集。
-1. 选择 " *Dev Spaces* " 菜单项。
-1. 将“启用 Dev Spaces”更改为“是”，然后单击“保存”。******
+1. 选择“Dev Spaces”菜单项。
+1. 将“启用 Dev Spaces”更改为“是”，然后单击“保存”。  
 
 ![在 Azure 门户中启用 Dev Spaces](../media/how-to-setup-dev-spaces/enable-dev-spaces-portal.png)
 
-使用 Azure 门户启用 Azure Dev Spaces 不**会**安装任何用于 Azure Dev Spaces 的客户端工具。
+如果通过 Azure 门户启用 Azure Dev Spaces，则不会安装 Azure Dev Spaces 的任何客户端工具。
 
-要从 AKS 群集中删除 Azure Dev Spaces，请将 "*启用 Dev 空间*" 更改为 "*否*"，然后单击 "*保存*"。 用 Azure Dev Spaces 创建的所有命名空间都将与其工作负荷一起保留，但这些命名空间中的新工作负荷不会通过 Azure Dev Spaces 进行检测。 此外，如果你重新启动任何检测到 Azure Dev Spaces 的现有 pod，你可能会看到错误。 必须在不 Azure Dev Spaces 工具的情况下重新部署这些 pod。 若要从群集中完全删除 Azure Dev Spaces，请删除启用了 Azure Dev Spaces 的所有命名空间中的所有 pod。
+若要从 AKS 群集删除 Azure Dev Spaces，请将“启用 Dev Spaces”更改为“否”，然后单击“保存”  。 使用 Azure Dev Spaces 创建的所有命名空间仍将与其工作负载一起保留，但这些命名空间中新的工作负载将不使用 Azure Dev Spaces 进行检测。 此外，如果你重启已使用 Azure Dev Spaces 检测的任何现有 Pod，可能会看到错误。 必须在没有 Azure Dev Spaces 工具的情况下重新部署这些 Pod。 若要从群集中完全删除 Azure Dev Spaces，请在已启用 Azure Dev Spaces 的所有命名空间中删除所有 Pod。
 
 ## <a name="install-the-client-side-tools"></a>安装客户端工具
 
-可以使用 Azure Dev Spaces 的客户端工具与本地计算机上的 AKS 群集中的 Dev 空间进行交互。 有多种方法来安装客户端工具：
+可使用 Azure Dev Spaces 客户端工具与本地计算机上 AKS 群集中的开发空间进行交互。 可采用多种方法安装客户端工具：
 
-* 在[Visual Studio Code][vscode]中，安装[Azure Dev Spaces 扩展][vscode-extension]。
-* 在[Visual Studio 2019][visual-studio]中，安装 Azure 开发工作负荷。
-* 在 Visual Studio 2017 中，安装 Web 开发工作负荷并[Visual Studio Tools for Kubernetes][visual-studio-k8s-tools]。
-* 下载并安装[Windows][cli-win]、 [Mac][cli-mac]或[Linux][cli-linux] CLI。
+* 在 [Visual Studio Code][vscode] 中安装 [Azure Dev Spaces 扩展][vscode-extension]。
+* 在 [Visual Studio 2019][visual-studio] 中安装 Azure 开发工作负载。
+* 下载并安装 [Windows][cli-win]、[Mac][cli-mac] 或 [Linux][cli-linux] CLI。
 
 ## <a name="next-steps"></a>后续步骤
 

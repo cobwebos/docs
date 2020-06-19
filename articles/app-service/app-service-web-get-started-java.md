@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ed46859184dd17141892373943ac43e407b21eb6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300937"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817664"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
 
@@ -48,6 +48,8 @@ cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>配置 Maven 插件
+
+部署到 Azure 应用服务的过程会自动从 Azure CLI 选取 Azure 凭据。 如果尚未安装 Azure CLI，Maven 插件将使用 Oauth 或设备登录名登录。 如果需要，请查看[使用 Maven 插件进行身份验证](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)了解详细信息。
 
 可以在命令提示符中运行以下 maven 命令以配置部署，在第一步中为 Windows OS 选择“2”并按 Enter 接受默认配置，直到出现“确认(Y/N)”提示，然后按“y”完成配置    。 
 

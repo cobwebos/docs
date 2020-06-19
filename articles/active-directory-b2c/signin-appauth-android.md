@@ -1,22 +1,22 @@
 ---
 title: 在 Android 应用程序中获取令牌
 titleSuffix: Azure AD B2C
-description: 如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识并对用户进行身份验证的 Android 应用。
+description: 如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 Android 应用。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183767"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638390"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 应用程序登录
 
@@ -35,21 +35,21 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 ## <a name="create-an-application"></a>创建应用程序
 
-接下来，将应用程序注册到 Azure AD B2C 租户。 这为 Azure AD 提供了与应用安全通信所需的信息。
+接下来，在 Azure AD B2C 租户中注册应用程序。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-记录“应用程序(客户端) ID”，以便在后续步骤中使用  。
+记录“应用程序(客户端) ID”，以便在后续步骤中使用。
 
-还记录自定义重定向 URI，以便在后续步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+还应记录自定义重定向 URI，以便在后续步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 
 在 Azure AD B2C 中，每个用户体验都是由[用户流](user-flow-overview.md)定义的，这是一组控制 Azure AD 行为的策略。 该应用程序需要登录和注册用户流。 创建用户流时，请务必：
 
-* 选择“显示名称”  作为用户流中的注册属性。
-* 在每个用户流中，选择“显示名称”  和“对象 ID”  应用程序声明。 也可以选择其他声明。
-* 创建用户流后，请复制每个用户流的名称  。 其前缀应为 `b2c_1_`。  稍后需要用户流名称。
+* 选择“显示名称”作为用户流中的注册属性。
+* 在每个用户流中，选择“显示名称”和“对象 ID”应用程序声明。 也可以选择其他声明。
+* 创建用户流后，请复制每个用户流的名称。 其前缀应为 `b2c_1_`。  稍后需要用户流名称。
 
 创建用户流后，可以开始构建应用。
 
@@ -72,10 +72,10 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 * 租户 ID（例如 contoso.onmicrosoft.com）
 * 用户流名称（例如 B2C\_1\_SignUpIn）
 
-如果选择自动发现授权和令牌终结点 URI，需要从发现 URI 中提取信息。 可以通过替换以下 URL 中的 Tenant\_ID 和 Policy\_Name 来生成发现 URI：
+如果选择自动发现授权和令牌终结点 URI，需要从发现 URI 中提取信息。 可以通过替换以下 URL 中的 `<tenant-id>` 和 `<policy-name>` 来生成发现 URI：
 
 ```java
-String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/v2.0/.well-known/openid-configuration";
 ```
 
 然后，可以获取授权和令牌终结点 URI，并运行以下命令来创建 AuthorizationServiceConfiguration 对象：
@@ -99,12 +99,12 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-如果不使用发现功能来获取授权和令牌终结点 URI，也可以通过替换以下 URL 中的 Tenant\_ID 和 Policy\_Name 来显式指定这些 URI：
+如果不使用发现功能来获取授权和令牌终结点 URI，也可以通过替换以下 URL 中的 `<tenant-id>` 和 `<policy-name>` 来显式指定这些 URI：
 
 ```java
-String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/authorize";
 
-String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/token";
 ```
 
 运行以下代码创建 AuthorizationServiceConfiguration 对象：

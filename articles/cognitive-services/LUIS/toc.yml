@@ -194,11 +194,7 @@
         - name: 从复合实体迁移
           href: migrate-from-composite-entity.md
         - name: 迁移到创作资源
-          items:
-            - name: 概述
-              href: luis-migration-authoring.md
-            - name: 如何迁移
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: 迁移到 V3 API
           href: luis-migration-api-v3.md
     - name: 管理应用
@@ -209,11 +205,7 @@
         - name: 应用和版本设置
           href: how-to-application-settings-portal.md
         - name: 迁移到创作资源
-          items:
-            - name: 概述
-              href: luis-migration-authoring.md
-            - name: 如何迁移
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: 作者和协作者
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md

@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 840c0157713e9758092ca5cc51ee2745428ae568
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: b4092ac7bdd03d2e978cd9d9a8aa9fd2aaf1cdd2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483524"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733285"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 
@@ -90,9 +90,9 @@ ms.locfileid: "84483524"
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>步骤 4：应用已配置并可以运行
 > 我们已经为项目配置了应用属性的值，并且该项目已准备好运行。
-> >  [!NOTE]
+> > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-
+>
 > [!div renderon="docs"]
 >#### <a name="step-4-configure-your-project"></a>步骤 4：配置项目
 > 如果选择了上面的“选项 1”，则可跳过这些步骤。

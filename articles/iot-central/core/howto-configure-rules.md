@@ -1,6 +1,6 @@
 ---
 title: 在 Azure IoT Central 中配置规则和操作 | Microsoft Docs
-description: 本操作指南文章介绍构建人员如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
+description: 本操作指南文章演示，作为构建者，如何在 Azure IoT Central 应用程序中配置基于遥测的规则和操作。
 author: vavilla
 ms.author: vavilla
 ms.date: 11/27/2019
@@ -8,52 +8,49 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871944"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659352"
 ---
 # <a name="configure-rules"></a>配置规则
 
 *本文适用于操作员、构建者和管理员。*
 
-IoT Central 中的规则充当一种可自定义的响应手段，它们是基于已连接设备发生的、有效监视到的事件触发的。 以下部分介绍如何评估规则。
+IoT Central 中的规则充当可自定义的响应工具，针对已连接设备的主动监视事件进行触发。 以下部分介绍如何评估规则。
 
 ## <a name="select-target-devices"></a>选择目标设备
 
-使用“目标设备”部分选择要对哪种类型的设备应用此规则。 使用筛选器可以进一步具体化要包含的设备。 筛选器使用设备模板中的属性来筛选设备集。 筛选器本身不会触发操作。 在以下屏幕截图中，目标设备的设备模板类型为“冰箱”。  该筛选器指出，规则只能包含“制造地所在州”属性为“华盛顿”的“冰箱”。   
+使用目标设备部分选择将此规则应用于的设备类型。 筛选器可以进一步优化应该包含的设备。 筛选器使用设备模板上的属性来筛选一组设备。 筛选器本身不触发操作。 在以下屏幕截图中，目标设备的设备模板类型是冰箱。   筛选器表明规则应只包含冰箱，其中“产地”属性等于“华盛顿”。
 
 ![条件](media/howto-configure-rules/filters.png)
 
 ## <a name="use-multiple-conditions"></a>使用多个条件
 
-条件是规则的触发依据。 目前，在将多个条件添加到规则时，这些条件将以逻辑 AND 运算符联接到一起。 换言之，必须满足所有条件才会将规则评估为 true。  
+条件是规则触发操作所根据的内容。 目前，向规则添加多个条件时，它们通过 AND 以逻辑方式合并在一起。 换句话说，必须满足所有条件，规则才能评估为 true。  
 
-在下面的屏幕截图中，当温度大于 70&deg; F 并且湿度小于10时，将检查条件。 如果这两个语句均为 true，则规则将评估为 true 并触发操作。
+在下面的屏幕截图中，条件检查何时温度大于 70&deg; F 且湿度小于 10。 当这两个语句都为 true 时，规则的结果为 true，并触发操作。
 
 ![条件](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>在值字段中使用云属性
 
-您可以通过 "**值**" 字段中的 "设备" 模板引用某个条件的云属性。 Cloud 属性和遥测值必须具有相似的类型。 例如，如果**温度**为 double，则仅在 "**值**" 下拉箭头中的 "double" 类型的云属性为 "选项"。
+可以在“值”字段中为条件引用来自设备模板的云属性。 云属性和遥测值必须具有相似的类型。  例如，如果温度是一个 double 值，则只有 double 类型的云属性显示在“值”下拉列表的选项中。
 
-如果选择事件类型 "遥测" 值，则 "**值**" 下拉选项将包含选项**Any**。 **Any**选项表示当应用程序接收到该类型的事件时引发的规则，无论负载是什么。
+ 如果选择事件类型的遥测值，则“值”下拉列表包含“任一”选项。 “任一”选项意味着当应用程序收到该类型的事件时将触发规则（无论有效负载是什么）。
 
-## <a name="use-aggregate-windowing"></a>使用聚合开窗
+## <a name="use-aggregate-windowing"></a>使用聚合窗口
 
-规则将聚合时间窗口作为翻转窗口评估。 在以下屏幕截图中，时间窗口为 5 分钟。 每隔五分钟根据过去五分钟的数据评估规则。 数据只会在其对应的窗口中评估一次。
+规则将聚合时间窗口评估为翻转窗口。 在下面的屏幕截图中，时间窗口为 5 分钟。 每隔五分钟，规则将评估过去五分钟的数据。 只有当数据位于其对应的窗口时才评估它。
 
 ![翻转窗口](media/howto-configure-rules/tumbling-window.png)
 
-## <a name="use-rules-with-iot-edge-modules"></a>在 IoT Edge 模块中使用规则
+## <a name="use-rules-with-iot-edge-modules"></a>将规则用于 IoT Edge 模块
 
-应用到 IoT Edge 模块的规则存在一种限制。 基于来自不同模块的遥测数据的规则不会评估为有效规则。 下面是一个示例。 该规则的第一个条件是模块 A 的温度遥测数据。该规则的第二个条件是模块 B 的湿度遥测数据。由于这两个条件来自不同的模块，因此这是一组无效的条件。 该规则无效，尝试保存该规则时会引发错误。
+应用于 IoT Edge 模块的规则有一个限制。 不同模块的遥测规则不会评估为有效规则。 请看以下示例。 规则的第一个条件是关于模块 A 中的温度遥测。规则的第二个条件是关于模块 B 中的湿度遥测。由于这两个条件来自不同的模块，因此这是一组无效的条件。 规则无效，在尝试保存规则时会引发错误。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何在 Azure IoT Central 应用程序中配置规则后，可以：
-
-> [!div class="nextstepaction"]
-> [即时分析数据](howto-create-analytics.md)
+现在已了解如何在 Azure IoT Central 应用程序中配置规则，接下来将了解如何使用 Power Automate 或 Azure 逻辑应用[配置高级规则](howto-configure-rules-advanced.md)。

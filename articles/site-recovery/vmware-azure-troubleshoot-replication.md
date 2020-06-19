@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259487"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836407"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "81259487"
 
 Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-server-overview.md#process-server)接收和优化复制的数据，并将其发送到 Azure。
 
-我们建议在门户中监视进程服务器的运行状况，以确保它们已连接并正常运行，且正在对进程服务器关联的源计算机进行复制。
+建议在门户中监视进程服务器的运行状况，以确保它们已连接并正常运行，且正在对进程服务器关联的源计算机进行复制。
 
 - [了解](vmware-physical-azure-monitor-process-server.md)如何监视进程服务器。
 - [查看最佳实践](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
@@ -46,39 +46,39 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 * **vCenter 特权不足**：如果未提供所需的权限来访问 vCenter，则发现虚拟机时可能会失败。 确保将[为自动发现准备帐户](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)中所述的权限添加到 vCenter 用户帐户。
 * **Azure Site Recovery 管理服务器**：如果虚拟机用作管理服务器并充当以下一个或多个角色 - 配置服务器/横向扩展进程服务器/主目标服务器，则无法在门户中选择该虚拟机。 无法复制管理服务器。
 * **已通过 Azure Site Recovery 服务进行保护/故障转移**：如果虚拟机已通过 Site Recovery 进行保护或故障转移，则无法在门户中选择保护该虚拟机。 确保要在门户中查找的虚拟机尚未由其他任何用户进行保护，或者位于不同的订阅下。
-* **vCenter 未连接**：检查 vCenter 是否处于连接状态。 若要验证，请转到“恢复服务保管库”>“Site Recovery 基础结构”>“配置服务器”，单击相应的配置服务器，此时，右侧会打开一个边栏选项卡，其中显示了关联服务器的详细信息。 检查 vCenter 是否已连接。 如果处于“未连接”状态，请解决问题，并在门户中[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
+* **vCenter 未连接**：检查 vCenter 是否处于连接状态。 若要验证，请转到“恢复服务保管库”>“Site Recovery 基础结构”>“配置服务器”，单击相应的配置服务器，此时，右侧会打开一个边栏选项卡，其中显示了关联服务器的详细信息。 检查 vCenter 是否已连接。 如果其处于“未连接”状态，请解决问题，并在门户中[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
 * **ESXi 已关机**：如果虚拟机所在的 ESXi 主机处于关机状态，则虚拟机将不会列出，或者在 Azure 门户中不可选择。 打开 ESXi 主机，并在门户中[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
 * **正在等待重新启动**：如果虚拟机正在等待重新启动，则你无法在 Azure 门户中选择该虚拟机。 请务必完成等待中的重新启动活动，并[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
 * **找不到 IP**：如果虚拟机没有关联有效的 IP 地址，则你无法在 Azure 门户中选择该虚拟机。 请务必将有效的 IP 地址分配到虚拟机，并[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。 然后，虚拟机将列在门户中。
 
-### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>排查在门户中灰显的受保护虚拟机的问题
+### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>排查门户中处于灰显状态的受保护虚拟机的问题
 
 如果系统中存在重复的条目，则在 Site Recovery 下复制的虚拟机将不会显示在 Azure 门户中。 若要了解如何删除过时的条目和解决此问题，请参阅[使用 Azure Site Recovery 进行 VMware 到 Azure 的复制：如何清除重复或过时的条目](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)。
 
-## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>在最后 "XXX" 分钟内，VM 没有可用的崩溃一致恢复点
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>在过去“XXX”分钟内没有可供 VM 使用的崩溃一致性恢复点
 
-下面列出了其中的一些最常见
+下面列出了其中的一些最常见问题
 
 ### <a name="initial-replication-issues-error-78169"></a>初始复制问题 [错误 78169]
 
 反复确认不存在连接、带宽或时间同步相关的问题后，请确保：
 
-- 没有任何防病毒软件正在阻止 Azure Site Recovery。 [了解详细](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) Azure Site Recovery 要求排除的文件夹。
+- 没有任何防病毒软件正在阻止 Azure Site Recovery。 [详细](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)了解 Azure Site Recovery 要求排除的文件夹。
 
-### <a name="source-machines-with-high-churn-error-78188"></a>源计算机的变动率较高 [错误 78188]
+### <a name="source-machines-with-high-churn-error-78188"></a>源计算机改动率高 [错误 78188]
 
 可能的原因：
-- 虚拟机的所列磁盘中的数据更改率（每秒写入字节数）超过了复制目标存储帐户类型的 [Azure Site Recovery 支持限制](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits)。
-- 有大量的数据等待上传，使变动率出现突发性的高峰。
+- 虚拟机列出的磁盘上的数据更改率（写入字节数/秒）大于复制目标存储帐户类型的 [Azure Site Recovery 支持限制](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits)。
+- 由于大量数据正在等待上传，导致改动率激增。
 
 若要解决问题，请执行以下操作：
-- 确保根据源中的变动率要求预配目标存储帐户类型（“标准”或“高级”）。
-- 如果已复制到高级托管磁盘（asrseeddisk 类型），请确保磁盘大小支持根据 Site Recovery 限制观察到的变动率。 如果需要，可以增加 asrseeddisk 的大小。 请按照以下步骤操作：
+- 确保根据源中的改动率要求预配目标存储帐户类型（标准或高级）。
+- 如果已复制到高级托管磁盘（asrseeddisk 类型），请确保磁盘大小支持根据 Site Recovery 限制观察到的改动率。 如果需要，可以增加 asrseeddisk 的大小。 请按照以下步骤操作：
     - 导航到受影响的复制计算机的“磁盘”边栏选项卡，并复制副本磁盘名称
     - 导航到此副本托管磁盘
-    - 你可能会在“概述”边栏选项卡上看到一个横幅，指出已生成 SAS URL。 单击此横幅并取消导出。 如果看不到横幅，请忽略此步骤。
-    - 撤销 SAS URL 后，请转至托管磁盘的“配置”边栏选项卡并增加大小，以便 ASR 支持源磁盘上观察到的变动率
-- 如果观测到的变动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
+    - 可能会在“概述”边栏选项卡上看到一个横幅，指出已生成 SAS URL。 单击此横幅并取消导出。 如果看不到横幅，请忽略此步骤。
+    - 撤销 SAS URL 后，请转到托管磁盘的“配置”边栏选项卡并增加大小，以便 ASR 支持源磁盘上观察到的改动率
+- 如果观测到的改动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
 - 如果磁盘包含非关键数据（如临时日志、测试数据等），请考虑将此数据移到其他位置，或者从复制中完全排除此磁盘
 - 如果问题持续出现，请使用 Site Recovery [部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
 
@@ -88,9 +88,9 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 若要解决此问题，请使用以下步骤来验证源 VM 与配置服务器之间的网络连接：
 
-1. 确认源计算机正在运行。
-2. 使用拥有管理员特权的帐户登录到源计算机。
-3. 确认以下服务正在运行，如果未运行，请重启以下服务：
+1. 验证源计算机是否正在运行。
+2. 使用具有管理员特权的帐户登录到源计算机。
+3. 验证以下服务是否正在运行，如果未运行，请重启以下服务：
    - Svagents (InMage Scout VX Agent)
    - InMage Scout 应用程序服务
 4. 在源计算机上，检查位于以下位置的日志以查看错误详细信息：
@@ -112,13 +112,13 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 若要解决此问题，请使用以下步骤验证服务状态：
 
-1. 确认主目标 VM 正在运行。
-2. 使用拥有管理员特权的帐户登录到主目标 VM。
-    - 确认 svagents 服务正在运行。 如果它正在运行，请重启服务
+1. 验证主目标 VM 是否正在运行。
+2. 使用具有管理员特权的帐户登录到主目标 VM。
+    - 验证 svagents 服务是否正在运行。 如果正在运行，请重启服务
     - 检查位于以下位置的日志以查看错误详细信息：
 
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
-3. 若要向配置服务器注册主目标，请导航到 **%PROGRAMDATA%\ASR\Agent**文件夹，并在命令提示符下运行以下命令：
+3. 若要将主目标注册到配置服务器，请导航到文件夹“%PROGRAMDATA%\ASR\Agent”，并在命令提示符上运行以下命令：
    ```
    cmd
    cdpcli.exe --registermt
@@ -132,24 +132,24 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>错误 ID 78144 - 在过去“XXX”分钟内没有可供 VM 使用的应用一致性恢复点
 
-移动代理[9.23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9.27](site-recovery-whats-new.md#update-rollup-39)版本中的增强功能可用于处理 VSS 安装失败行为。 确保你处于最新版本，以获得有关排查 VSS 故障的最佳指导。
+已在移动代理 [9.23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9.27](site-recovery-whats-new.md#update-rollup-39) 版本中进行了增强，以处理 VSS 安装失败行为。 请确保使用的是最新版本，以获取有关排查 VSS 故障的最佳指南。
 
-下面列出了其中的一些最常见
+下面列出了其中的一些最常见问题
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因1： SQL server 2008/2008 R2 中的已知问题
-**如何修复**： SQL Server 2008/2008 R2 存在一个已知问题。 请参阅此知识库文章：[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>原因 1：SQL Server 2008/2008 R2 中的已知问题
+**如何解决**：SQL Server 2008/2008 R2 有一个已知问题。 请参阅此知识库文章：[托管 SQL Server 2008 R2 的服务器的 Azure Site Recovery 代理或其他非组件 VSS 备份失败](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因2：在承载具有 AUTO_CLOSE Db 的 SQL Server 实例的任何版本的服务器上，Azure Site Recovery 作业失败
-**如何修复**：请参阅知识库[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
-
-
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因3： SQL Server 2016 和2017中的已知问题
-**如何修复**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>原因 2：在使用 AUTO_CLOSE DB 托管任何版本的 SQL Server 实例的服务器上，Azure Site Recovery 作业失败
+**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
 
 
-### <a name="more-causes-due-to-vss-related-issues"></a>更多 VSS 相关问题原因：
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
+**如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
-若要进一步排查问题，请查看源计算机上的文件，获取故障的具体错误代码：
+
+### <a name="more-causes-due-to-vss-related-issues"></a>VSS 相关问题的更多原因：
+
+若要进一步排除故障，请检查源计算机上的文件，获取故障的具体错误代码：
 
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
@@ -158,34 +158,34 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
-在上面的示例中，**2147754994** 是介绍故障情况的错误代码，如下所示
+在上面的示例中，“2147754994”是介绍故障情况的错误代码，如下所示
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164
 
-*如何修复*：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
+*如何解决*：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
 请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
-**如何修复**：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现 错误“指定的服务已禁用，无法启动(0x80070422)”。 </br>
+**如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现错误 ID“指定的服务已禁用且无法启动(0x80070422)”。 </br>
 
-- 如果已禁用 VSS：
-    - 确认 VSS 提供程序服务的启动类型是否设置为“自动”。****
+- 如果已禁用 VSS，
+    - 验证 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
         - VDS 服务
 
-####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS 提供程序未注册 - 错误 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS PROVIDER NOT_REGISTERED - 错误 2147754756
 
-**如何修复**：若要生成应用程序一致性标记，Azure Site Recovery 使用 Microsoft 卷影复制服务（VSS）。
-检查 Azure Site Recovery VSS 提供程序服务是否已安装。 </br>
+**如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。
+检查是否已安装 Azure Site Recovery VSS 提供程序服务。 </br>
 
 - 使用以下命令重试提供程序安装：
-- 卸载现有提供程序： C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Uninstall .cmd
-- 重新安装： C:\Program Files （x86） \Microsoft Azure Site Recovery\agent\ InMageVSSProvider_Install .cmd
+- 卸载现有提供程序：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Uninstall.cmd
+- 重新安装：C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd
 
-确认 VSS 提供程序服务的启动类型是否设置为“自动”。****
+验证 VSS 提供程序服务的启动类型是否设置为“自动”。
     - 重启以下服务：
         - VSS 服务
         - Azure Site Recovery VSS 提供程序
@@ -193,4 +193,4 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 ## <a name="next-steps"></a>后续步骤
 
-如需更多帮助，请在 [Azure Site Recovery 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)中提问。 我们的社区非常活跃，将有一位工程师为你提供帮助。
+如需更多帮助，请在[有关 Azure Site Recovery 的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)中发布问题。 我们的社区非常活跃，将有一位工程师为你提供帮助。

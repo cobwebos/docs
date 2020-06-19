@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983069"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682228"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步服务功能
 
@@ -61,8 +61,8 @@ Azure AD Connect 的同步功能有两个组件：
 | DirectoryExtensions |[Azure AD Connect 同步：目录扩展](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |如果某些属性是另一个对象的副本而不会在导出期间导致整个对象失败，则允许隔离该属性。 |
 | 密码哈希同步 |[使用 Azure AD Connect 同步实现密码哈希同步](how-to-connect-password-hash-synchronization.md) |
-|直通身份验证|[使用 Azure Active Directory 传递身份验证的用户登录](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[预览：组写回](how-to-connect-preview.md#group-writeback) |
+|直通身份验证|[使用 Azure Active Directory 直通身份验证的用户登录](how-to-connect-pta.md)|
+| UnifiedGroupWriteback |组写回|
 | UserWriteback |当前不支持。 |
 
 ## <a name="duplicate-attribute-resiliency"></a>重复属性复原
@@ -89,16 +89,16 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>同步 userPrincipalName 更新
 
-过去，除非以下两个条件都成立，否则从本地使用同步服务对 UserPrincipalName 属性进行更新已被阻止：
+在过去，除非以下两个条件都成立，否则会阻止在本地使用同步服务对 UserPrincipalName 属性进行更新：
 
 * 用户受管理（非联合）。
 * 没有为用户分配许可证。
 
 > [!NOTE]
-> 从3月2019开始，将允许同步联合用户帐户的 UPN 更改。
+> 从 2019 年 3 月开始，允许同步联合用户帐户的 UPN 更改。
 > 
 
-如果启用此功能，则在本地更改 userPrincipalName 并使用密码哈希同步或直通身份验证时，同步引擎可以更新 userPrincipalName。
+如果 userPrincipalName 在本地发生更改并且你使用密码哈希同步或直通身份验证，则启用此功能后，同步引擎将更新 userPrincipalName。
 
 在新建的 Azure AD 目录中，默认已打开此功能。 可以运行以下命令查看是否已启用此功能：  
 

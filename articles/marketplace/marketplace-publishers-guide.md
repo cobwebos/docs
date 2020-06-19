@@ -1,22 +1,22 @@
 ---
-title: 商业 marketplace 发布指南
-description: 适用于应用程序和服务发布者的商业应用商店概述。
+title: Microsoft 商业市场发布指南
+description: 简要介绍了面向要将产品/服务发布到 Microsoft AppSource 和 Azure Marketplace 的 Microsoft 合作伙伴的商业市场。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261986"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657852"
 ---
-# <a name="commercial-marketplace-publishing-guide"></a>商业 marketplace 发布指南
+# <a name="commercial-marketplace-publishing-guide"></a>商业市场发布指南
 
-本市场发布指南旨在帮助新发布者和现有发布者了解如何利用 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 的店面列出他们的应用程序和服务，从而在与 Microsoft 的合作中发展自己的业务。
+本发布指南旨在帮助新发布者和现有发布者了解如何列出商业市场店面、[Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 中的应用程序和服务，从而在与 Microsoft 的合作中发展自己的业务。
 
 >[!Note]
 >此处的市场是指 Azure 市场和 AppSource。  有关详细信息，请参阅[一个市场，两个店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
@@ -30,7 +30,7 @@ ms.locfileid: "81261986"
 
 本指南包含在列出你的应用程序和服务之前，需要执行的步骤的相关技术和业务信息。 使用目录转到指南的不同部分并直接转到关键主题。
 
-有关 Azure Marketplace 和 AppSource 的问题，请在 "**Marketplace 载入**"**问题类型** > 下向我们发送一条消息。 我们的市场发布者载入团队将乐于为你提供帮助！ 
+有关 Azure 市场和 AppSource 的问题，请在“问题类型” > “市场加入” 下向我们发送消息。  我们的市场发布者载入团队将乐于为你提供帮助！ 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>加入市场的好处 
 
@@ -52,7 +52,7 @@ ms.locfileid: "81261986"
 
 通过市场为你提供的见解和分析，深入了解商品性能。 获取有关市场活动效果、订单和付款以及如何最大化利用解决方案的营销活动的详细信息。
 
-### <a name="commercial-marketplace-benefits"></a>商业应用商店权益 
+### <a name="commercial-marketplace-benefits"></a>商业市场权益 
 
 市场中的新上市商品有资格获得一组不同的免费权益，帮助合作伙伴在市场中拓展业务。 这些权益分为以下类别： 
 
@@ -64,7 +64,7 @@ ms.locfileid: "81261986"
 
 在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息，请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
 
-详细了解你的[商业应用商店权益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
+详细了解[商业市场权益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 
 ## <a name="next-steps"></a>后续步骤
 

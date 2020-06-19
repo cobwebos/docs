@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 05/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c47016d0b82a4e4ed084f5d82394d91fd2b46be1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116707"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697711"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源拉取模型
 
@@ -43,7 +43,7 @@ FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 使用 `FeedIterator`，可以轻松地按自己的节奏处理整个容器的更改源。 下面是一个示例：
 
 ```csharp
-FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator<User>();
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -58,10 +58,10 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 
 ## <a name="consuming-a-partition-keys-changes"></a>使用分区键的更改
 
-在某些情况下，你可能只需要处理特定分区键的更改。 可以获取特定分区键的 `FeedIterator`，并采用处理整个容器的方式来处理更改：
+在某些情况下，你可能只需要处理特定分区键的更改。 可以获取特定分区键的 `FeedIterator`，并采用处理整个容器的方式来处理更改。
 
 ```csharp
-FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator<User>(new PartitionKey("myPartitionKeyValueToRead"));
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -98,7 +98,7 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 计算机 1：
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<Person>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 while (iteratorA.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorA.ReadNextAsync();
@@ -149,6 +149,8 @@ while (iterator.HasMoreResults)
 FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(continuation);
 ```
 
+只要 Cosmos 容器仍然存在，FeedIterator 的继续标记将永不过期。
+
 ## <a name="comparing-with-change-feed-processor"></a>与更改源处理器进行比较
 
 许多情况下，既可以使用[更改源处理器](change-feed-processor.md)又可以使用拉取模型来处理更改源。 拉取模型的继续标记和更改源处理器的租约容器都是更改源中最后处理的项（或一批项）的“书签”。
@@ -156,9 +158,9 @@ FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIte
 
 以下情况应考虑使用拉取模型：
 
-- 希望一次性读取更改源中的现有数据
-- 仅希望读取特定分区键的更改
-- 不希望使用推送模型，而是想要按自己的节奏使用更改源
+- 从特定的分区键读取更改
+- 控制客户端接收要处理的更改的速度
+- 对更改源中的现有数据执行一次性读取（例如，执行数据迁移）
 
 下面是更改源处理器与拉取模型之间的一些主要差异：
 

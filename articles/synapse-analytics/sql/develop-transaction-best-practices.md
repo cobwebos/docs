@@ -1,6 +1,6 @@
 ---
 title: 优化 SQL 池的事务
-description: 了解如何在 SQL 池中优化事务性代码的性能，同时最大程度地降低长时间回退的风险。
+description: 了解如何在尽量降低长时间回退风险的情况下优化 SQL 池（数据仓库）中事务性代码的性能。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d6902b2b076df86012cec6941be417ad0f0c7660
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8b5d508450d17d6e07e2c2bdb78b7934988936b9
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428727"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715743"
 ---
 # <a name="optimizing-transactions-in-sql-pool"></a>优化 SQL 池中的事务
 
-了解如何在 SQL 池中优化事务性代码的性能，同时降低长时间回退的风险。
+了解如何在尽量降低长时间回退风险的情况下优化 SQL 池中事务性代码的性能。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
 
@@ -44,7 +44,7 @@ SQL 池使用事务日志将更改提交到数据库。 每个分布区都具有
 
 以下操作可以实现最少记录：
 
-* CREATE TABLE AS SELECT （[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* CREATE TABLE AS SELECT ([CTAS])(../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -68,17 +68,17 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
-| 堆 |Any |**最低** |
-| 聚集索引 |空目标表 |**最低** |
-| 聚集索引 |加载的行不与目标中现有页面重叠 |**最低** |
+| 堆 |Any |**最少** |
+| 聚集索引 |空目标表 |**最少** |
+| 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
 | 聚集索引 |加载的行与目标中现有页面重叠 |完全 |
-| 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最低** |
+| 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
 | 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完全 |
 
 值得注意的是，任何更新辅助或非聚集索引的写入都将始终是完整记录的操作。
 
 > [!IMPORTANT]
-> SQL 池有60个分发版。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
+> SQL 池具有 60 个分布区。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
 
 将数据加载到含聚集索引的非空表通常可以包含完整记录和最少记录的行的组合。 聚集索引是页面的平衡树 (b-tree)。 如果正写入的页面已包含其他事务中的行，则这些写入操作会被完整记录。 但如果该页面为空，则写入到该页面会按最少记录的方式记录。
 
@@ -116,7 +116,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>优化更新
 
-UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ）。
+UPDATE 是一个完整记录的操作。  如果需要更新表或分区中的大量行，通常更有效的方法是使用最少记录的操作（如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)）来实现。
 
 在下面的示例中，完整的表更新已转换为 CTAS，以便使最少日志记录成为可能。
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 重新创建大型表可以受益于使用 SQL 池工作负荷管理功能。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> 重新创建大型表时，使用 SQL 池工作负荷管理功能可带来很多好处。 有关详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="optimizing-with-partition-switching"></a>使用分区切换进行优化
 
@@ -406,20 +406,20 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暂停和缩放指南
 
-Azure Synapse Analytics 允许你根据需要[暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)SQL 池。 
+借助 Azure Synapse Analytics，可以根据需要[暂停、恢复和缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) SQL 池。 
 
-暂停或缩放 SQL 池时，必须了解任何正在进行的事务立即终止，这一点很重要。导致回滚所有打开的事务。 
+暂停或缩放 SQL 池时，一定要了解任何正在处理的事务都将立即终止；导致回退所有未决事务。 
 
-如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消操作可能会影响暂停或缩放 SQL 池所用的时间。 
+如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消操作可能会影响暂停或缩放 SQL 池所花费的时间。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。
 
-最佳方案是在暂停或缩放 SQL 池之前，使数据修改事务完成。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
+最佳方案是在暂停或缩放 SQL 池前就完成正在处理的数据修改事务。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
-* 使用[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)重新编写长时间运行的操作
+* 使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新编写长时间运行的操作
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅[SQL 池中的事务](develop-transactions.md)，详细了解隔离级别和事务限制。  有关其他最佳实践的概述，请参阅[SQL 池最佳实践](best-practices-sql-pool.md)。
+请参阅 [SQL 池中的事务](develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳做法的概述，请参阅 [SQL 池最佳做法](best-practices-sql-pool.md)。

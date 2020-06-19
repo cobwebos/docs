@@ -1,42 +1,39 @@
 ---
-title: 使用 SQL 点播查询 CSV 文件（预览）
-description: 本文介绍如何使用 SQL 点播（预览版）以不同的文件格式查询单个 CSV 文件。
+title: 使用 SQL 按需版本（预览版）查询 CSV 文件
+description: 本文介绍如何使用 SQL 按需版本（预览版）查询不同文件格式的单个 CSV 文件。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 41c4a8940cc49a3859a2511f0de65d0019817078
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431587"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836543"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
-本文介绍如何在 Azure Synapse Analytics 中使用 SQL 点播（预览版）查询单个 CSV 文件。 CSV 文件的格式可能不同： 
+在本文中，你将了解如何在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）查询单个 CSV 文件。 CSV 文件可有多种不同的格式： 
 
-- 带有或不带标题行的
+- 带有或不带标题行
 - 逗号和制表符分隔的值
 - Windows 和 Unix 样式行尾
-- 非引号和带引号的值以及转义字符
+- 不带引号和带引号的值，以及转义字符
 
-所有上述变化都将在下面介绍。
+上述所有类型都将在下文中进行介绍。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-阅读本文其余部分之前，请先查看以下文章：
+第一步是创建将在其中创建表的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建数据源、数据库范围的凭据以及在这些示例中使用的外部文件格式。
 
-- [首次设置](query-data-storage.md#first-time-setup)
-- [先决条件](query-data-storage.md#prerequisites)
+## <a name="windows-style-new-line"></a>Windows 样式换行符
 
-## <a name="windows-style-new-line"></a>Windows 样式新行
-
-下面的查询演示了如何使用 Windows 样式的新行和逗号分隔的列读取没有标题行的 CSV 文件。
+以下查询展示了如何读取不包含标题行、包含 Windows 样式换行符和逗号分隔列的 CSV 文件。
 
 文件预览：
 
@@ -45,8 +42,9 @@ ms.locfileid: "81431587"
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
@@ -61,18 +59,19 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix 样式的新行
+## <a name="unix-style-new-line"></a>Unix 样式换行符
 
-下面的查询演示了如何使用 Unix 样式的新行和逗号分隔的列来读取没有标题行的文件。 与其他示例相比，请注意文件的不同位置。
+以下查询展示了如何读取不包含标题行、包含 Unix 样式换行符和逗号分隔列的文件。 请注意文件位置，相较其他示例中有何不同。
 
 文件预览：
 
-![不带标头的 CSV 文件和 Unix 样式的新行的前10行。](./media/query-single-csv-file/population-unix.png)
+![不带标题行、带 Unix 样式换行符的 CSV 文件的前 10 行。](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a'
@@ -90,16 +89,17 @@ WHERE
 
 ## <a name="header-row"></a>标题行
 
-下面的查询演示了如何使用带有标题行的读取文件、Unix 样式的新行和逗号分隔的列。 与其他示例相比，请注意文件的不同位置。
+以下查询展示了如何读取带标题行、带 Unix 样式换行符和逗号分隔列的文件。 请注意文件位置，相较其他示例中有何不同。
 
 文件预览：
 
-![带有标题行和 Unix 样式的新行的 CSV 文件前10行。](./media/query-single-csv-file/population-unix-hdr.png)
+![带标题行、带 Unix 样式换行符的 CSV 文件的前 10 行。](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr/population.csv',
+        BULK 'csv/population-unix-hdr/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         FIRSTROW = 2
@@ -115,18 +115,19 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="custom-quote-character"></a>自定义引号字符
+## <a name="custom-quote-character"></a>自定义引证字符
 
-下面的查询显示了如何读取带有标题行的文件，以及 Unix 样式的新行、逗号分隔的列和带引号的值。 与其他示例相比，请注意文件的不同位置。
+以下查询展示了如何读取包含标题行、包含 Unix 样式换行符、逗号分隔列和引证值的文件。 请注意文件位置，相较其他示例中有何不同。
 
 文件预览：
 
-![带有标题行并带有 Unix 样式的新行和带引号的值的 CSV 文件的前10行。](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![带标题行、带 Unix 样式换行符和引证值的 CSV 文件的前 10 行。](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-quoted/population.csv',
+        BULK 'csv/population-unix-hdr-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -145,20 +146,21 @@ WHERE
 ```
 
 > [!NOTE]
-> 如果省略 FIELDQUOTE 参数，此查询将返回相同的结果，因为 FIELDQUOTE 的默认值为双引号。
+> 如果省略 FIELDQUOTE 参数，此查询会返回相同的结果，因为 FIELDQUOTE 的默认值是双引号。
 
 ## <a name="escaping-characters"></a>转义字符
 
-下面的查询显示了如何读取带有标题行的文件、具有 Unix 样式的新行、逗号分隔的列以及用于字段分隔符（逗号）的转义字符。 与其他示例相比，请注意文件的不同位置。
+以下查询展示了如何读取包含标题行、包含 Unix 样式换行符、逗号分隔列和用于值内字段分隔符（逗号）的转义字符的文件。 请注意文件位置，相较其他示例中有何不同。
 
 文件预览：
 
-![带有标题行并带有 Unix 样式的新行和转义字符（用于字段分隔符）的 CSV 文件的前10行。](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![CSV 文件的前 10 行，其中包含了标题行、带 Unix 样式换行符和用于字段分隔符的转义字符。](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-escape/population.csv',
+        BULK 'csv/population-unix-hdr-escape/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '0x0a',
@@ -176,20 +178,21 @@ WHERE
 ```
 
 > [!NOTE]
-> 如果未指定 ESCAPECHAR，此查询将失败，因为 "Slov，enia" 中的逗号将被视为字段分隔符，而不是国家/地区名称的一部分。 "Slov，enia" 将被视为两个列。 因此，特定行将有一列以上的行，而不是在 WITH 子句中定义的列。
+> 如果未指定 ESCAPECHAR，此查询将失败，因为 "Slov,enia" 中的逗号将被视为字段分隔符，而不是国家/地区名称的一部分。 "Slov,enia" 将被视为两个列。 因此，该特定行将比其他行多一列，并且比 WITH 子句中定义的列数多一列。
 
 ## <a name="tab-delimited-files"></a>制表符分隔的文件
 
-下面的查询显示了如何读取带有标题行的文件、Unix 样式的新行和制表符分隔的列。 与其他示例相比，请注意文件的不同位置。
+以下查询展示了如何读取包含标题行、包含 Unix 样式换行符和制表符分隔列的文件。 请注意文件位置，相较其他示例中有何不同。
 
 文件预览：
 
-![带有标题行和 Unix 样式的新行和制表符分隔符的 CSV 文件的前10行。](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![带标题行、带 Unix 样式换行符和制表符的 CSV 文件的前 10 行。](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix-hdr-tsv/population.csv',
+        BULK 'csv/population-unix-hdr-tsv/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
         FORMAT = 'CSV',
         FIELDTERMINATOR ='\t',
         ROWTERMINATOR = '0x0a',
@@ -208,25 +211,26 @@ WHERE
 
 ## <a name="returning-subset-of-columns"></a>返回列的子集
 
-到目前为止，您已使用 WITH 和列出所有列指定了 CSV 文件架构。 仅可通过对所需的每个列使用序号来指定查询中实际需要的列。 你还将忽略不感兴趣的列。
+到目前为止，已通过使用 WITH 和列出所有列来指定了 CSV 文件架构。 可以通过对所需的每个列使用序号来仅指定查询中实际要用的列。 这样将忽略不需要使用的列。
 
-下面的查询返回文件中不同国家/地区名称的数目，仅指定所需的列：
+下面的查询返回文件中不同国家/地区名称的数量，并且仅指定所需的列：
 
 > [!NOTE]
-> 在下面的查询中查看 WITH 子句，并注意在您定义 *[country_name]* 列的行尾有 "2" （不带引号）。 这意味着 *[country_name]* 列是文件中的第二列。 查询将忽略文件中的所有列（第二个列除外）。
+> 在下面的查询中查看 WITH 子句，并注意，定义了 [country_name] 列的行的末尾处带有“2”（不带引号）。 这意味着 [country_name] 列是文件中的第二列。 查询将忽略文件中除第二个列以外的所有列。
 
 ```sql
 SELECT
     COUNT(DISTINCT country_name) AS countries
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV',
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV',
         FIELDTERMINATOR =',',
         ROWTERMINATOR = '\n'
     )
 WITH (
-    --[country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
-    [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2 2
+    --[country_code] VARCHAR (5),
+    [country_name] VARCHAR (100) 2
     --[year] smallint,
     --[population] bigint
 ) AS [r]

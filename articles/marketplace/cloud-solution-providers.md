@@ -1,198 +1,198 @@
 ---
-title: 云解决方案提供商 |Azure Marketplace
-description: 发布者现在可以通过 Microsoft 云解决方案提供商（CSP）合作伙伴渠道销售其产品/服务。
+title: 云解决方案提供商 - Microsoft 商业市场
+description: 了解如何通过商业市场中的 Microsoft 云解决方案提供商 (CSP) 计划合作伙伴渠道销售产品/服务。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160641"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798147"
 ---
-# <a name="cloud-solution-providers"></a>云解决方案提供商
+# <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
-软件产品/服务可与云解决方案提供商（CSP）计划中的合作伙伴提供的数百万个合格 Microsoft 客户，以及通过[Microsoft web 商店](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)提供的公开上市。
+本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过[商业市场 Web 店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)发布产品/服务以外，还可以通过 CSP 计划，向该计划所服务的数百万符合条件的 Microsoft 客户销售产品/服务。
 
-发布者可根据选择来配置 CSP 计划中的可用性，为新产品/服务或现有产品/服务提供产品/服务，使合作伙伴能够销售你的产品并为客户创建捆绑式解决方案。
+可以按照“选择加入”的原则配置要在 CSP 计划中提供的新的或现有的产品/服务，以允许 CSP 合作伙伴销售你的产品并为客户创建捆绑式解决方案。
 
-发布者负责向最终用户提供中断修复支持，并为 CSP 计划中的合作伙伴提供一种机制，并/或让客户与你联系以获得支持。 最佳做法是，在 CSP 计划中为合作伙伴提供用户文档、培训和服务运行状况/中断通知（如果适用），以使 CSP 计划中的合作伙伴能够处理来自客户的第1层支持请求。  
+发布者负责向最终客户提供中断后修复支持，并提供一个机制来让 CSP 计划中的合作伙伴和/或客户与你联系以获得支持。 最佳做法是为 CSP 计划中的合作伙伴提供用户文档、培训和服务运行状况/中断通知（如果适用），使 CSP 计划中的合作伙伴具备处理客户提出的一级支持请求的能力。  
 
-以下产品/服务有资格在 CSP 计划中选择加入合作伙伴：
+可以选择让 CSP 计划中的合作伙伴销售以下产品/服务：
 
-- 软件即服务（SaaS）服务提供
+- 软件即服务 (SaaS) 事务产品/服务
 - 虚拟机 (VM)
 - 解决方案模板
 - 托管应用程序
 
 > [!NOTE]
-> 默认情况下，"容器" 和 "自带许可证（BYOL）" VM Sku 选择加入 CSP 计划中的合作伙伴。
+> 默认情况下，可以选择让 CSP 计划中的合作伙伴销售“容器”和“自带许可证”(BYOL) VM SKU。
 
-## <a name="how-to-configure-an-offering"></a>如何配置产品
+## <a name="how-to-configure-an-offering"></a>如何配置产品/服务
 
-CSP 计划选择加入设置在合作伙伴中心或云合作伙伴门户产品/服务创建体验中进行配置。 [了解有关更改发布者体验的详细信息](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+在合作伙伴中心或云合作伙伴门户产品/服务创建体验中配置 CSP 计划选择加入设置。 [详细了解发布者体验的变化](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
 
-### <a name="partner-center-opt-in"></a>合作伙伴中心选择加入
+### <a name="partner-center-opt-in"></a>在合作伙伴中心选择加入
 
-在合作伙伴中心，你会发现 "CSP 分销商受众" 模块下有选择体验。
+在合作伙伴中心，可以在“CSP 经销商受众”模块下找到选择加入体验。
 
-![CSP 分销商受众](media/marketplace-publishers-guide/csp-reseller-audience.png)
+![CSP 经销商受众](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-在 CSP 经销商的受众模块中，你有三个选项可供选择：
+在“CSP 经销商受众”模块中，有三个选项可供选择：
 
-- 选项一： CSP 计划中的任何合作伙伴
-- 选项2：我选择的 CSP 程序中的特定合作伙伴
-- 选项3： CSP 计划中没有合作伙伴
+- 选项 1：CSP 计划中的任何合作伙伴
+- 选项 2：我选择的 CSP 计划中的特定合作伙伴
+- 选项 3：不包括 CSP 计划中的任何合作伙伴
 
-#### <a name="option-one-any-partner-in-the-csp-program"></a>选项一： CSP 计划中的任何合作伙伴
+#### <a name="option-one-any-partner-in-the-csp-program"></a>选项 1：CSP 计划中的任何合作伙伴
 
 ![CSP 计划中的任何合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
- 通过选择此选项，CSP 计划中的所有合作伙伴都有资格向其客户转售你的产品/服务。
+ 如果选择此选项，CSP 计划中的所有合作伙伴都有资格向其客户转售你的产品/服务。
 
-#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>选项2：我选择的 CSP 程序中的特定合作伙伴
+#### <a name="option-two-specific-partners-in-the-csp-program-i-select"></a>选项 2：我选择的 CSP 计划中的特定合作伙伴
 
-![我选择的 CSP 程序中的特定合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-two.png)
+![我选择的 CSP 计划中的特定合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-two.png)
 
-通过选择此选项，可以授权 CSP 计划中的哪些合作伙伴有资格转售你的产品/服务。
+如果选择此选项，需要指定 CSP 计划中有资格转售你的产品/服务的合作伙伴并向其授权。
 
-若要授权合作伙伴，请单击 "**选择 CSP 合作伙伴**"，此时将显示一个菜单，让你按伙伴名称或 CSP AZURE ACTIVE DIRECTORY （AAD）租户 ID 进行搜索。
+若要为合作伙伴授权，请单击“选择 CSP 合作伙伴”，此时会显示一个菜单，让你按合作伙伴名称或 CSP Azure Active Directory (AAD) 租户 ID 进行搜索。
 
-![选择 CSP 菜单](media/marketplace-publishers-guide/csp-pop-up-module.png)
+![“选择 CSP 合作伙伴”菜单](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-您可以应用搜索筛选器，例如**国家/地区**、**资格**或**技能**。
+可以应用搜索筛选器，例如“国家/地区”、“资质”或“技能”。  
 
-![合作伙伴搜索的国家/地区、资格和技能筛选器](media/marketplace-publishers-guide/csp-add-resellers.png)
+![用于搜索合作伙伴的“国家/地区”、“资质”和“技能”筛选器](media/marketplace-publishers-guide/csp-add-resellers.png)
 
-选择伙伴列表后，选择 "**添加**"。
+选择合作伙伴列表后，选择“添加”。
 
-![CSP 计划中授权合作伙伴的示例列表](media/marketplace-publishers-guide/csp-add-resellers-details.png)
+![CSP 计划中已授权合作伙伴的示例列表](media/marketplace-publishers-guide/csp-add-resellers-details.png)
 
-此时会显示一个表，其中显示了所选合作伙伴的列表。
+“CSP 经销商受众”页上会显示一个表格，其中列出了所选的合作伙伴。
 
-![具有 CSP 分销商观众页面上合作伙伴列表的表](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
+![“CSP 经销商受众”页上包含合作伙伴列表的表格](media/marketplace-publishers-guide/csp-option-two-add-reseller.png)
 
-选择 "**保存草稿**" 以注册更改。
+选择“保存草稿”以注册更改。
 
-如果未发布此产品/服务，则需要发布产品/服务，使其可供所选合作伙伴使用。
+如果此产品/服务尚未发布，则需要将其发布，以将其提供给所选的合作伙伴。
 
 >[!NOTE]
->如果在给定区域的 CSP 计划中授权合作伙伴，则他们可以将该产品/服务销售给属于该特定区域的任何客户。 请参阅[云解决方案提供商计划地区市场和货币](https://docs.microsoft.com/partner-center/regional-authorization-overview)，详细了解如何在区域下对 CSP 产品/服务进行分类。
+>如果在给定的区域为 CSP 计划中的某家合作伙伴授权，则该合作伙伴可以向属于该特定区域的任何客户销售该产品/服务。 有关不同区域中 CSP 产品/服务的分类方式的详细信息，请参阅[云解决方案提供商计划区域市场和货币](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
 
-如果要更新已发布产品/服务的 CSP 列表，请添加其他合作伙伴，并选择 "**同步 CSP 受众**"。
+如果要更新已发布产品/服务的 CSP 列表，请添加其他合作伙伴，然后选择“同步 CSP 受众”。
 
-如果有一个产品/服务已获得授权合作伙伴列表，并且想要为另一个产品/服务使用同一列表，请使用**导入/导出**。 导航到具有 CSP 列表的产品/服务，并选择 "**导出 csp**"。 该函数开发可以导入到另一个产品/服务的 .csv 文件。
+如果某个产品/服务已有一个已授权合作伙伴列表，而你想要对另一个产品/服务使用同一列表，请使用“导入/导出”。 导航到具有 CSP 列表的产品/服务，选择“导出 CSP”。 该功能将制作一个可导入到另一产品/服务的 .csv 文件。
 
-#### <a name="option-three-no-partners-in-the-csp-program"></a>选项3： CSP 计划中没有合作伙伴
+#### <a name="option-three-no-partners-in-the-csp-program"></a>选项 3：不包括 CSP 计划中的任何合作伙伴
 
-![CSP 计划中没有合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
+![不包括 CSP 计划中的任何合作伙伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
-通过选择此选项，你将选择退出 CSP 计划。 你可以随时更改此选择。
+选择此选项表示你选择让产品/服务退出 CSP 计划。 随时可以更改此选择。
 
-### <a name="cloud-partner-portal-opt-in"></a>云合作伙伴门户选择加入
+### <a name="cloud-partner-portal-opt-in"></a>在云合作伙伴门户中选择加入
 
-在云合作伙伴门户中，在 Marketplace 或店面选项卡上设置了选择加入。在 CSP 计划中选择特定合作伙伴的能力仅在合作伙伴中心可用。
+在云合作伙伴门户中，可以在“市场”或“店面”选项卡上设置选择加入。选择 CSP 计划中特定合作伙伴的功能仅在合作伙伴中心提供。
 
-![CPP 中的 CSP 选择体验](media/marketplace-publishers-guide/csp-opt-in.png)
+![CPP 中的 CSP 选择加入体验](media/marketplace-publishers-guide/csp-opt-in.png)
 
-## <a name="deauthorize-partners-in-the-csp-program"></a>CSP 计划中的 Deauthorize 合作伙伴
+## <a name="deauthorize-partners-in-the-csp-program"></a>对 CSP 计划中的合作伙伴取消授权
 
-如果已在 CSP 计划中授权合作伙伴，并且该合作伙伴已将产品转售给给客户，则不允许 deauthorize 该合作伙伴。
+如果你已为 CSP 计划中的某家合作伙伴授权，并且该合作伙伴已向其客户转售产品，则你无法对该合作伙伴取消授权。
 
-如果 CSP 计划中的合作伙伴未向客户销售产品，并且你想要在发布产品/服务后删除 CSP，请使用以下说明：
+如果 CSP 计划中的合作伙伴未向其客户销售你的产品，而你想要在发布产品/服务后删除 CSP，请参考以下说明：
 
-1. 请参阅[支持请求页面](https://partner.microsoft.com/support/v2/?stage=1)。 将自动为您填充前几个下拉菜单。
+1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
-   > 请勿更改预填充的下拉菜单选项。
+   > 请不要更改预先填充的下拉菜单选择内容。
 
-2. 对于 "**选择产品版本**"，请选择 " **Live 产品管理**"。
-3. 对于 **"选择最能描述此问题的类别**"，请选择引用您的产品/服务的类别。
-4. 对于 **"选择最能说明问题的问题**"，请选择 "**更新现有产品/服务**"。
-5. 选择 "**下一步**" 以转到 "**问题详细信息" 页**，输入有关问题的更多详细信息。
-6. 使用**DEAUTHORIZE CSP**作为问题标题，并填写其余必需部分。
+2. 对于“选择产品版本”，请选择“Live 产品/服务管理”。 
+3. 对于“选择最适当地描述了问题的类别”，请选择引用你的产品/服务的类别。
+4. 对于“选择最适当地描述了问题的问题”，请选择“更新现有产品/服务”。 
+5. 选择“下一步”转到“问题详细信息页”，在其中输入有关问题的更多详细信息。 
+6. 使用“取消 CSP 授权”作为问题标题，并填写剩余的必填部分。
 
 
 
 
 ## <a name="navigate-between-options"></a>在选项之间导航
 
-使用此部分在三个 CSP 分销商选项之间导航。
+使用此部分可在三个 CSP 经销商选项之间导航。
 
-### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>从选项 one 导航： CSP 计划中的任何合作伙伴
+### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>从“选项 1:CSP 计划中的任何合作伙伴”导航
 
-如果产品/服务当前为**选项1： CSP 计划中的任何合作伙伴**，并且你想要导航到其他两个选项中的任何一个选项，请使用以下说明创建请求：
+如果产品/服务当前采用“选项 1:CSP 计划中的任何合作伙伴”，而你想要导航到其他两个选项之一，请参考以下说明来创建请求：
 
-1. 请参阅[支持请求页面](https://partner.microsoft.com/support/v2/?stage=1)。 将自动为您填充前几个下拉菜单。
+1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
-   > 请勿更改预填充的下拉菜单选项。
+   > 请不要更改预先填充的下拉菜单选择内容。
 
-2. 对于 "**选择产品版本**"，请选择 " **Live 产品管理**"。
-3. 对于 **"选择最能描述此问题的类别**"，请选择引用您的产品/服务的类别。
-4. 对于 **"选择最能说明问题的问题**"，请选择 "**更新现有产品/服务**"。
-5. 选择 "**下一步**" 以转到 "**问题详细信息" 页**，输入有关问题的更多详细信息。
-6. 使用**DEAUTHORIZE CSP**作为问题标题，并填写其余必需部分。
+2. 对于“选择产品版本”，请选择“Live 产品/服务管理”。 
+3. 对于“选择最适当地描述了问题的类别”，请选择引用你的产品/服务的类别。
+4. 对于“选择最适当地描述了问题的问题”，请选择“更新现有产品/服务”。 
+5. 选择“下一步”转到“问题详细信息页”，在其中输入有关问题的更多详细信息。 
+6. 使用“取消 CSP 授权”作为问题标题，并填写剩余的必填部分。
 
 > [!NOTE]
-> 如果你正在尝试导航到选项2，并且 CSP 计划中的一个合作伙伴已将该产品/服务转售给给其客户，则默认情况下该合作伙伴已在你的授权合作伙伴列表中。  
+> 如果你要尝试导航到选项 2，而 CSP 计划中的合作伙伴已向其客户转售产品/服务，则默认情况下，该合作伙伴已包含在你的已授权合作伙伴列表中。  
 
-### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>从 "选项2：选择 CSP 计划中的特定合作伙伴" 导航
+### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>从“选项 2:我选择的 CSP 计划中的特定合作伙伴”导航
 
-如果产品/服务当前为**选项2：选择 csp 程序中的特定合作伙伴**，并希望导航到**选项 one： csp 计划中的任何合作伙伴**，请使用以下说明创建请求：
+如果产品/服务当前采用“选项 2:我选择的 CSP 计划中的特定合作伙伴”，而你想要导航到“选项 1:CSP 计划中的任何合作伙伴”，请参考以下说明来创建请求：
 
-1. 请参阅[支持请求页面](https://partner.microsoft.com/support/v2/?stage=1)。 将自动为您填充前几个下拉菜单。
-
-   > [!NOTE]
-   > 请勿更改预填充的下拉菜单选项。
-
-2. 对于 "**选择产品版本**"，请选择 " **Live 产品管理**"。
-3. 对于 **"选择最能描述此问题的类别**"，请选择引用您的产品/服务的类别。
-4. 对于 **"选择最能说明问题的问题**"，请选择 "**更新现有产品/服务**"。
-5. 选择 "**下一步**" 以转到 "**问题详细信息" 页**，输入有关问题的更多详细信息。
-6. 使用**DEAUTHORIZE CSP**作为问题标题，并填写其余必需部分。
-
- 如果 "产品/服务 **" 为 "选项2： csp 计划中的特定合作伙伴"** ，并希望导航到 "**选项3： csp 计划中的任何合作伙伴**"，并且你之前获得授权的 csp 计划中的合作伙伴未将你的产品/服务转售给给最终客户，则只能导航到该选项。 请按照以下说明创建请求：
-
-1. 请参阅[支持请求页面](https://partner.microsoft.com/support/v2/?stage=1)。 将自动为您填充前几个下拉菜单。
+1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
-   > 请勿更改预填充的下拉菜单选项。
+   > 请不要更改预先填充的下拉菜单选择内容。
 
-2. 对于 "**选择产品版本**"，请选择 " **Live 产品管理**"。
-3. 对于 **"选择最能描述此问题的类别**"，请选择引用您的产品/服务的类别。
-4. 对于 **"选择最能说明问题的问题**"，请选择 "**更新现有产品/服务**"。
-5. 选择 "**下一步**" 以转到 "**问题详细信息" 页**，输入有关问题的更多详细信息。
-6. 使用**DEAUTHORIZE CSP**作为问题标题，并填写其余必需部分。
+2. 对于“选择产品版本”，请选择“Live 产品/服务管理”。 
+3. 对于“选择最适当地描述了问题的类别”，请选择引用你的产品/服务的类别。
+4. 对于“选择最适当地描述了问题的问题”，请选择“更新现有产品/服务”。 
+5. 选择“下一步”转到“问题详细信息页”，在其中输入有关问题的更多详细信息。 
+6. 使用“取消 CSP 授权”作为问题标题，并填写剩余的必填部分。
 
-### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>从选项3导航： CSP 计划中没有合作伙伴
+ 如果产品/服务当前采用“选项 2:我选择的 CSP 计划中的特定合作伙伴”，而你想要导航到“选项 3:不包括 CSP 计划中的任何合作伙伴”，则仅当 CSP 计划中已授权的合作伙伴尚未向最终客户转售你的产品/服务时，你才能导航到该选项。 请参考以下说明来创建请求：
 
-如果产品/服务当前为**选项3： CSP 计划中没有合作伙伴**，则随时可以导航到其他两个选项中的任意一个。
+1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
 
-## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>在 CSP 计划中与合作伙伴共享销售和支持材料
+   > [!NOTE]
+   > 请不要更改预先填充的下拉菜单选择内容。
 
-为了帮助云解决方案提供商计划中的合作伙伴最有效地表示您的产品/服务并与您的组织合作，您必须提交销售商提供的销售和支持材料。 这些资源不会公开给 marketplace 商店中的客户。
+2. 对于“选择产品版本”，请选择“Live 产品/服务管理”。 
+3. 对于“选择最适当地描述了问题的类别”，请选择引用你的产品/服务的类别。
+4. 对于“选择最适当地描述了问题的问题”，请选择“更新现有产品/服务”。 
+5. 选择“下一步”转到“问题详细信息页”，在其中输入有关问题的更多详细信息。 
+6. 使用“取消 CSP 授权”作为问题标题，并填写剩余的必填部分。
 
-### <a name="partner-center-csp-channel"></a>合作伙伴中心 CSP 通道
+### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>从“选项 3:不包括 CSP 计划中的任何合作伙伴”导航
 
-如果你已在合作伙伴中心选择了 CSP 通道，则发布者必须输入一个 URL，该 URL 将相关营销材料和渠道联系信息托管到产品/服务列表模块下的 CSP 通道：
+如果产品/服务当前采用“选项 3:不包括 CSP 计划中的任何合作伙伴”，则你随时可以导航到其他两个选项之一。
 
-![合作伙伴中心 CSP 宣传品信息](media/marketplace-publishers-guide/pc-csp-channel.png)
+## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>与 CSP 计划中的合作伙伴共享销售和支持材料
 
-### <a name="cloud-partner-portal-csp-channel"></a>云合作伙伴门户 CSP 通道
+为了帮助云解决方案提供商计划中的合作伙伴最有效地演示你的产品/服务以及与你的组织接洽，必须提交可供经销商使用的销售和支持材料。 这些资源不会透露给市场店面中的客户。
 
-如果你已在云合作伙伴门户中选择了 CSP 通道，则发布者必须输入一个 URL，该 URL 将相关营销材料和渠道联系信息托管到 CSP 通道：
+### <a name="partner-center-csp-channel"></a>合作伙伴中心 CSP 渠道
 
-![云合作伙伴门户 CSP 宣传品信息](media/marketplace-publishers-guide/cpp-csp-information.png)
+如果你已在合作伙伴中心选择加入 CSP 渠道，则发布者必须在产品/服务列表模块中输入一个 URL，其中存放了有关 CSP 渠道的营销材料和渠道联系信息：
+
+![合作伙伴中心 CSP 宣传信息](media/marketplace-publishers-guide/pc-csp-channel.png)
+
+### <a name="cloud-partner-portal-csp-channel"></a>云合作伙伴门户 CSP 渠道
+
+如果你已在云合作伙伴门户中选择加入 CSP 渠道，则发布者必须输入一个 URL，其中存放了有关 CSP 渠道的营销材料和渠道联系信息：
+
+![云合作伙伴门户 CSP 宣传信息](media/marketplace-publishers-guide/cpp-csp-information.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-请访问[Azure Marketplace 和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
 
-若要了解有关 marketplace 中转服务的详细信息，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
+若要详细了解市场 GTM 服务，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
 
-登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)来创建和配置你的产品/服务。
+登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 15f94e93c270c8d62436b81a7caedbf181c1aeb8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645838"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022536"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645838"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -318,14 +318,14 @@ Oracle 支持在 Microsoft Azure 上运行 Oracle 软件。 有关 Windows Hyper
 
 以下 SAP 说明与 Azure 上的 SAP 相关。
 
-| 说明文档编号 | Title |
+| 说明文档编号 | 标题 |
 | --- | --- |
 | [1928533] |Azure 上的 SAP 应用程序：支持的产品和 Azure VM 类型 |
 | [2015553] |Microsoft Azure 上的 SAP：支持先决条件 |
 | [1999351] |适用于 SAP 的增强型 Azure 监视故障排除 |
 | [2178632] |Microsoft Azure 上的 SAP 关键监视指标 |
-| [2191498] |带有 Azure 的 Linux 上的 SAP：增强型监视 |
-| [2039619] |使用 Oracle 数据库 Microsoft Azure 上的 SAP 应用程序：支持的产品和版本 |
+| [2191498] |Azure 的 Linux 上的 SAP：增强型监视 |
+| [2039619] |Microsoft Azure 上使用 Oracle Database 的 SAP 应用程序：支持的产品和版本 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
 | [2069760] |Oracle Linux 7.x SAP 安装和升级 |
 | [1597355] |适用于 Linux 的交换空间建议 |
@@ -357,7 +357,7 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支持的操作�
 
 我们强烈建议使用 [Azure 托管磁盘](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 另外，我们强烈建议使用[高级 SSD](../../windows/disks-types.md) 进行 Oracle Database 部署。
 
-Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参见:
+Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅：
 
 - [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -377,7 +377,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 | \oracle\<SID>\origlogaA & mirrlogB | Premium | 无 | 无需 |
 | \oracle\<SID>\origlogaB & mirrlogA | Premium | 无 | 无需 |
 | \oracle\<SID>\sapdata1...n | Premium | 只读 | 可使用 |
-| \oracle\<SID>\oraarch | 标准 | 无 | 无需 |
+| \oracle\<SID>\oraarch | Standard | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | | 无需 |
 
 
@@ -464,10 +464,10 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/Origlogaa & mirrlogB | Premium | 无 | 无需 |
-| /oracle/\<SID>/Origlogab & mirrlogA | Premium | 无 | 无需 |
-| /oracle/\<SID>/sapdata1.。。北 | Premium | 只读 | 可使用 |
-| /oracle/\<SID>/oraarch | 标准 | 无 | 无需 |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium | 无 | 无需 |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium | 无 | 无需 |
+| /oracle/\<SID>/sapdata1...n | Premium | 只读 | 可使用 |
+| /oracle/\<SID>/oraarch | Standard | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
@@ -478,18 +478,18 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 | 组件 | 磁盘 | Caching | 撤消* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaa | Premium | 无 | 可使用  |
-| /oracle/\<SID>/origlogab | Premium | 无 | 可使用 |
-| /oracle/\<SID>/mirrlogab | Premium | 无 | 可使用 |
-| /oracle/\<SID>/mirrlogba | Premium | 无 | 可使用 |
-| /oracle/\<SID>/sapdata1.。。北 | Premium | 只读 | 建议  |
-| /oracle/\<SID>/sapdata （n + 1） * | Premium | 无 | 可使用 |
-| /oracle/\<SID>/oraarch * | Premium | 无 | 无需 |
+| /oracle/\<SID>/origlogaA | Premium | 无 | 可使用  |
+| /oracle/\<SID>/origlogaB | Premium | 无 | 可使用 |
+| /oracle/\<SID>/mirrlogAB | Premium | 无 | 可使用 |
+| /oracle/\<SID>/mirrlogBA | Premium | 无 | 可使用 |
+| /oracle/\<SID>/sapdata1...n | Premium | 只读 | 建议  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium | 无 | 可使用 |
+| /oracle/\<SID>/oraarch* | Premium | 无 | 无需 |
 | Oracle 主页, saptrace, ... | OS 磁盘 | 无需 |
 
 *撤消：使用 RAID0 的 LVM 带状线或 MDADM
 
-* （n + 1）：宿主系统、TEMP 和 UNDO 表空间：系统和撤消表空间的 i/o 模式不同于承载应用程序数据的其他表空间。 无缓存是系统和撤消表空间性能的最佳选择。
+*(n+1)：托管 SYSTEM、TEMP 和 UNDO 表空间。系统和撤消表空间的 I/O 模式与托管应用程序数据的其他表空间不同。 无缓存是系统和撤消表空间性能的最佳选择。
 
 *oraarch：性能视图中不需要存储池。
 

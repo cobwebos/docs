@@ -1,26 +1,26 @@
 ---
-title: 自动执行具有服务主体的 Azure Analysis Services 任务 |Microsoft Docs
+title: 使用服务主体自动完成 Azure Analysis Services 任务 | Microsoft Docs
 description: 了解如何创建服务主体以自动完成 Azure Analysis Services 管理任务。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266138"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871171"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
-服务主体是在租户中创建的 Azure Active Directory 应用程序资源，用于执行无人参与的资源和服务级别操作。 服务主体是特殊类型的用户标识，  具有应用程序 ID 和密码或证书。 服务主体只具有特定任务所需的权限，这些任务是按分配的角色和权限来定义的。 
+服务主体是在租户中创建的 Azure Active Directory 应用程序资源，用于执行无人参与的资源和服务级别操作。 服务主体是特殊类型的用户标识，具有应用程序 ID 和密码或证书。 服务主体只具有特定任务所需的权限，这些任务是按分配的角色和权限来定义的。 
 
 在 Analysis Services 中，服务主体可以与 Azure 自动化、PowerShell 无人参与模式、自定义客户端应用程序和 Web 应用配合使用，以便自动完成常见的任务。 例如，预配服务器、部署模型、数据刷新、垂直缩放、暂停/恢复等操作均可使用服务主体自动完成。 权限通过角色成员身份分配给服务主体，十分类似于常规的 Azure AD UPN 帐户。
 
-Analysis Services 还支持由托管标识使用服务主体执行的操作。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。  
+Analysis Services 还支持使用服务主体执行由托管标识执行的操作。 有关详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。  
 
 ## <a name="create-service-principals"></a>创建服务主体
  
@@ -50,9 +50,9 @@ Analysis Services 还支持由托管标识使用服务主体执行的操作。 �
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule" />使用 Az.AnalysisServices 模块
 
-将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用以进行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
+将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用来执行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
 
-以下示例使用 appID 和密码执行控制平面操作，以便与只读副本同步并进行纵向/横向扩展：
+在以下示例中，appID 和 password 用于执行控制平面操作，以同步到只读副本并进行纵向/横向扩展：
 
 ```powershell
 Param (
@@ -110,4 +110,7 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>后续步骤
 [使用 Azure PowerShell 进行登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)   
+[使用逻辑应用进行刷新](analysis-services-refresh-logic-app.md)  
+[使用 Azure 自动化进行刷新](analysis-services-refresh-azure-automation.md)  
+[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)  
+[使用服务主体自动完成 Power BI Premium 工作区和数据集任务](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

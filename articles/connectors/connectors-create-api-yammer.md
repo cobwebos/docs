@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 194c08d034d44ba0a4472b3b516fc45d1d262d28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3023aa72d713dc25351a6e509319e1c4c0ed609a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789063"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83829658"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Yammer 帐户
 
@@ -32,7 +32,7 @@ ms.locfileid: "74789063"
 
    你的凭据授权逻辑应用创建连接并访问你的 Yammer 帐户。
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Yammer 帐户的逻辑应用。 若要使用 Yammer 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Yammer 操作，请使用其他触发器（例如**定期**触发器）启动逻辑应用。
 
@@ -47,21 +47,21 @@ ms.locfileid: "74789063"
    * 对于空白逻辑应用，请在搜索框中输入“yammer”作为筛选器。 
    在触发器列表下，选择所需的触发器。 
 
-     \- 或 -
+     -或-
 
    * 对于现有逻辑应用： 
    
-     * 在要添加操作的最后一个步骤下，选择“新建步骤”。**** 
+     * 在要添加操作的最后一个步骤下，选择“新建步骤”。 
 
-       \- 或 -
+       -或-
 
      * 在要在其中添加操作的两个步骤之间，将鼠标指针移到步骤之间的箭头上。 
-     选择出现的加号（**+**），然后选择 "**添加操作**"。
+     选择出现的加号 ( **+** )，然后选择“添加操作”。
      
        在搜索框中，输入“yammer”作为筛选器。 
        在操作列表下，选择所需的操作。
 
-1. 如果系统提示你登录到 Yammer，请立即登录以允许访问。
+1. 如果提示你登录到 Yammer，请立即登录，以便可允许访问。
 
 1. 为所选触发器或操作提供所需的详细信息，然后继续生成逻辑应用的工作流。
 
@@ -71,7 +71,7 @@ ms.locfileid: "74789063"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

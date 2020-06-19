@@ -2,20 +2,24 @@
 title: 从 Application Insights 连续导出遥测数据 | Microsoft Docs
 description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存储，然后从中下载这些数据。
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/20/2020
+ms.openlocfilehash: 7284e6305b1028cbcb62041ff8196d06250f4414
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298287"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83744864"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
-想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 你可以从此处下载数据，并编写处理该数据所需的任何代码。  
+想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
+
+> [!NOTE]
+> 只有经典 Application Insights 资源支持连续导出。 [基于工作区的 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)必须使用[诊断设置](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)。
+>
 
 在设置连续导出之前，请考虑一些备选方法：
 
-* 通过“指标”或“搜索”选项卡顶部的“导出”按钮，可将表格和图表传输到 Excel 电子表格。
+* 通过“指标”或“搜索”选项卡顶部的“导出”按钮，可将表格和图表发送到 Excel 电子表格。
 
 * [Analytics](../../azure-monitor/app/analytics.md) 提供功能强大的遥测查询语言。 它还可以导出结果。
 * 如果想要[在 Power BI 中浏览数据](../../azure-monitor/app/export-power-bi.md )，无需使用连续导出也可以做到。
@@ -26,9 +30,9 @@ ms.locfileid: "80298287"
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>连续导出高级存储配置
 
-连续导出**不支持**以下 Azure 存储功能/配置：
+连续导出不支持以下 Azure 存储功能/配置：
 
-* 将 [VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)与 Azure Blob 存储结合使用。
+* 将 [VNET/Azure 存储防火墙](https://docs.microsoft.com/azure/storage/common/storage-network-security)与 Azure Blob 存储一起使用。
 
 * Azure Blob 存储的[不可变存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)。
 
@@ -36,11 +40,11 @@ ms.locfileid: "80298287"
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 创建连续导出
 
-1. 在左侧“配置”下应用的 Application Insights 资源中，打开“连续导出”，并选择“添加”****：
+1. 在应用左侧配置下的 Application Insights 资源中，打开“连续导出”，并选择“添加”：
 
 2. 选择要导出的遥测数据类型。
 
-3. 创建或选择要用于存储数据的 [Azure 存储帐户](../../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页](https://azure.microsoft.com/pricing/details/storage/)。
+3. 创建或选择要用于存储数据的 [Azure 存储帐户](../../storage/common/storage-introduction.md)。 有关存储定价选项的详细信息，请访问[官方定价页面](https://azure.microsoft.com/pricing/details/storage/)。
 
      单击“添加”、“导出目标”、“存储帐户”，并创建新存储或选择现有存储。
 
@@ -53,7 +57,7 @@ ms.locfileid: "80298287"
 
 数据出现在存储中之前可能有大约一小时的延迟。
 
-第一次导出完成后，你将在 Azure Blob 存储容器中找到如下所示的结构：（这会因你收集的数据而异。）
+第一次导出完成后，你将在 Azure Blob 存储容器中找到类似于以下内容的结构：（这会因你收集的数据而异。）
 
 |名称 | 说明 |
 |:----|:------|
@@ -62,12 +66,12 @@ ms.locfileid: "80298287"
 | [异常](export-data-model.md#exceptions) |报告服务器和浏览器中发生的[异常](../../azure-monitor/app/asp-net-exceptions.md)。
 | [消息](export-data-model.md#trace-messages) | 由 [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 和[日志记录适配器](../../azure-monitor/app/asp-net-trace-logs.md)发送。
 | [指标](export-data-model.md#metrics) | 由指标 API 调用生成。
-| [PerformanceCounters](export-data-model.md) | Application Insights 收集的性能计数器。
+| [PerformanceCounters](export-data-model.md) | Application Insights 收集到的性能计数器。
 | [请求](export-data-model.md#requests)| 由 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 发送。 标准模块使用此属性报告在服务器上测量的服务器响应时间。| 
 
 ### <a name="to-edit-continuous-export"></a>编辑连续导出
 
-单击“连续导出”并选择要编辑的存储帐户。
+单击“连续导出”，然后选择要编辑的存储帐户。
 
 ### <a name="to-stop-continuous-export"></a>停止连续导出
 
@@ -76,10 +80,10 @@ ms.locfileid: "80298287"
 要永久停止导出，请将其删除。 这样做不会将数据从存储中删除。
 
 ### <a name="cant-add-or-change-an-export"></a>无法添加或更改导出？
-* 若要添加或更改导出，需要“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
+* 若要添加或更改导出，你需要具有“所有者”、“参与者”或“Application Insights 参与者”访问权限。 [了解角色][roles]。
 
 ## <a name="what-events-do-you-get"></a><a name="analyze"></a> 获取哪些事件？
-导出的数据是从应用程序接收的原始遥测数据，只不过我们添加了从客户端 IP 地址计算的位置数据。
+导出的数据是从应用程序接收的原始遥测数据，只是我们添加了基于客户端 IP 地址计算出的位置数据。
 
 被[采样](../../azure-monitor/app/sampling.md)丢弃的数据不会包含在导出的数据中。
 
@@ -88,14 +92,14 @@ ms.locfileid: "80298287"
 该数据还包含已设置的任何[可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)的结果。
 
 > [!NOTE]
-> **样本.** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
+> **采样。** 如果应用程序发送大量数据，采样功能可能会运行，并只发送一小部分生成的遥测数据。 [了解有关采样的详细信息。](../../azure-monitor/app/sampling.md)
 >
 >
 
 ## <a name="inspect-the-data"></a><a name="get"></a> 检查数据
-可以直接在门户中检查存储。 单击最左侧菜单中的“主页”，在顶部显示“Azure 服务”的位置选择“存储帐户”****，选择存储帐户名称，在“概述”页上选择“服务”下的“Blob”****，最后选择容器名称。
+可以直接在门户中检查存储。 单击最左侧菜单中的“主页”，在顶部显示“Azure 服务”处选择“存储帐户”，选择存储帐户名称，在“概述”页的服务下，选择“Blob”，最后选择容器名称。
 
-若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。******** （如果未看到该菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开“Visual C#/云”，并选择“获取用于 .NET 的 Microsoft Azure SDK”。）********
+若要在 Visual Studio 中检查 Azure 存储，请依次打开“视图”、“Cloud Explorer”。  （如果没有此菜单命令，则需要安装 Azure SDK：打开“新建项目”对话框，展开 Visual C#/云/并选择“用于 .NET 的 Microsoft Azure SDK”。）
 
 打开 Blob 存储后，会看到包含一组 Blob 文件的容器。 每个文件的 URI 派生自 Application Insights 的资源名称、其检测密钥、遥测类型/日期/时间。 （资源名称为全小写形式，检测密钥不包含连字符。）
 
@@ -107,12 +111,12 @@ ms.locfileid: "80298287"
 
     $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
 
-Where
+其中
 
-* `blobCreationTimeUtc`在内部暂存存储中创建 blob 的时间
+* `blobCreationTimeUtc` 是在内部暂存存储中创建 Blob 的时间
 * `blobDeliveryTimeUtc` 是将 Blob 复制到导出目标存储的时间
 
-## <a name="data-format"></a><a name="format"></a>数据格式
+## <a name="data-format"></a><a name="format"></a> 数据格式
 * 每个 Blob 是一个文本文件，其中包含多个以“\n”分隔的行。 它包含大约半分钟时间内处理的遥测数据。
 * 每行代表遥测数据点，例如请求或页面视图。
 * 每行是未设置格式的 JSON 文档。 如果想要琢磨该文档，请在 Visual Studio 中打开它，并依次选择“编辑”、“高级”、“设置文件格式”：
@@ -166,10 +170,10 @@ Where
 
 如果数据规模较大，可以考虑 [HDInsight](https://azure.microsoft.com/services/hdinsight/) - 云中的 Hadoop 群集。 HDInsight 提供多种技术用于管理和分析大数据。可以使用 HDInsight 来处理从 Application Insights 导出的数据。
 
-## <a name="q--a"></a>问与答
+## <a name="q--a"></a>问题解答
 * *我想要一次性下载某个图表。*  
 
-    没问题，可以这样做。 在选项卡顶部单击“导出数据”。****
+    没问题，可以这样做。 请在选项卡顶部单击“导出数据”。
 * *我设置了导出，但存储中没有数据。*
 
     自设置导出之后，Application Insights 是否从应用程序收到了任何遥测数据？ 只会收到新数据。
@@ -181,14 +185,14 @@ Where
     很抱歉，不可以。 我们的导出引擎目前仅适用于 Azure 存储。  
 * *放置在存储中的数据量是否有任何限制？*
 
-    不能。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
+    不是。 我们将持续推送数据，直到删除了导出。 如果达到 Blob 存储的外在限制，推送会停止，但那个限制极大。 可以自行控制使用的存储量。  
 * *存储中应会出现多少个 Blob？*
 
   * 对于选择要导出的每种数据类型，将每隔分钟创建一个新 Blob（如果有可用的数据）。
-  * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元每隔一分钟创建一个 Blob。
+  * 此外，对于高流量应用程序，将分配额外的分区单元。 在此情况下，每个单元会每分钟创建一个 Blob。
 * *我为存储重新生成了密钥或更改了容器的名称，但现在导出不能正常进行。*
 
-    编辑导出并打开 "导出目标" 选项卡。保留选定的相同存储，然后单击 "确定" 进行确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
+    请编辑导出并打开导出目标选项卡。像以前一样保留选择相同的存储，并单击“确定”以确认。 导出将重新开始。 如果更改是在最近几天内做出的，则不会丢失数据。
 * *是否可以暂停导出？*
 
     是的。 单击“禁用”即可。

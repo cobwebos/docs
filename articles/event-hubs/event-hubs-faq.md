@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e8ae3cbbca926a97bf90f4ac1104d4f082b332fd
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086362"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835608"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
@@ -24,14 +24,14 @@ ms.locfileid: "82086362"
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
 命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间而不是使用现有的命名空间？
-容量分配（[吞吐量单位 (TU)](#throughput-units)）在命名空间级别进行计费。 命名空间也与区域相关联。
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>何时创建新的命名空间与使用现有命名空间？
+容量分配（[吞吐量单位 (TU)](#throughput-units)）在命名空间级别计费。 命名空间也与区域关联。
 
-在以下任一情况下，你可能希望创建新的命名空间，而不是使用现有的命名空间： 
+在以下情况下，你可能想要创建一个新的命名空间，而不是使用现有命名空间： 
 
 - 需要与新区域关联的事件中心。
 - 需要与其他订阅关联的事件中心。
-- 需要一个具有不同容量分配的事件中心（即，具有添加的事件中心的命名空间的容量需求将超过 40 TU 阈值，并且你不希望使用专用群集）  
+- 需要一个具有不同容量分配的事件中心（也就是说，具有已添加事件中心的命名空间的容量需要超过 40 TU 阈值，并且你不希望获得专用群集）  
 
 ### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>事件中心基本和标准这两种服务层有什么不同？
 
@@ -55,53 +55,53 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>事件的最长保留期有多久？
 
-事件中心标准版目前支持的最长保留期为七天。 事件中心不应作为永久性的数据存储。 大于 24 小时的保留期适用于将事件流重播到相同系统中的情形；例如，为了基于现有数据来培训或验证新机器学习模型。 如果需要将消息保留七天以上，请启用事件中心的[事件中心捕获](event-hubs-capture-overview.md)功能，将数据从事件中心提取到所选的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能需要支付费用，具体因购买的吞吐量单位而异。
+事件中心标准版目前支持的最长保留期为七天。 事件中心并非永久性数据存储。 大于 24 小时的保留期适用于方便地将事件流重播到相同系统中的情形；例如，基于现有数据来训练或验证新的机器学习模型。 如果需要将消息保留七天以上，请启用事件中心的[事件中心捕获](event-hubs-capture-overview.md)功能，将数据从事件中心提取到所选的存储帐户或 Azure Data Lake 服务帐户。 启用捕获功能需要支付费用，具体因购买的吞吐量单位而异。
 
-可以在存储帐户上配置已捕获数据的保留期。 Azure 存储的“生命周期管理”**** 功能为常规用途 v2 和 blob 存储帐户提供了基于规则的丰富策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
+可以为存储帐户中捕获的数据配置保留期。 Azure 存储的生命周期管理功能为常规用途 v2 和 Blob 存储帐户提供丰富的基于规则的策略。 可使用该策略将数据转移到适当的访问层，或在数据的生命周期结束时使数据过期。 有关详细信息，请参阅[管理 Azure Blob 存储生命周期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何监视事件中心？
 事件中心向 [Azure Monitor](../azure-monitor/overview.md) 发出详尽指标用于提供资源的状态。 此外，参考指标不仅可以在命名空间级别，而且还能在实体级别评估事件中心服务的总体运行状况。 了解 [Azure 事件中心](event-hubs-metrics-azure-monitor.md)提供哪些监视功能。
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火墙上打开哪些端口？ 
-可以将以下协议与 Azure 服务总线配合使用，以便发送和接收消息：
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
+可以将以下协议与 Azure 服务总线配合使用来发送和接收消息：
 
 - 高级消息队列协议 (AMQP)
 - HTTP
 - Apache Kafka
 
-请查看下表，了解需要打开哪些出站端口，以便使用这些协议与 Azure 事件中心通信。 
+请参阅下表，了解需要打开的出站端口，以使用这些协议与 Azure 事件中心通信。 
 
 | 协议 | 端口 | 详细信息 | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 和 5672 | 请参阅 [AMQP 协议指南](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP、HTTPS | 80、443 |  |
-| Kafka | 9093 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | 请参阅[使用 Kafka 应用程序中的事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要将哪些 IP 地址加入允许列表？
-若要找到适合加入连接的允许列表的 IP 地址，请执行以下步骤：
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要将哪些 IP 地址列入白名单？
+若要查找列入连接白名单的正确 IP 地址，请执行以下步骤：
 
-1. 从命令提示符处运行以下命令： 
+1. 从命令提示符运行以下命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 只有在你将命名空间还原到另一群集时，它才会更改。
+2. 记下 `Non-authoritative answer` 中返回的 IP 地址。 只有将命名空间还原到其他群集时，它才会更改。
 
-如果对命名空间使用区域冗余，则需执行一些额外的步骤： 
+如果对命名空间使用区域冗余，则需要执行一些额外步骤： 
 
-1. 首先，在命名空间中运行 nslookup。
+1. 首先，在命名空间上运行 nslookup。
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 记下“非权威回答”**** 部分中的名称，该名称采用下述格式之一： 
+2. 记下“非权威答案”部分中的名称，其采用以下格式之一： 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
+3. 为带有后缀 s1、s2 和 s3 的每个实例运行 nslookup，以获取三个可用性区域中运行的所有三个实例的 IP 地址。 
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka 集成
 
@@ -109,15 +109,15 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 事件中心提供可由基于 Apache Kafka 的现有应用程序使用的 Kafka 终结点。 只需完成一项配置更改，即可获得 PaaS Kafka 体验。 使用该体验就如同运行自己的 Kafka 群集。 事件中心支持 Apache Kafka 1.0 和更高版本的客户端，并且适用于现有的 Kafka 应用程序、工具和框架。 有关详细信息，请参阅[适用于 Kafka 的事件中心存储库](https://github.com/Azure/azure-event-hubs-for-kafka)。
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>要使现有的应用程序与事件中心通信，需要完成哪些配置更改？
-若要连接到事件中心，需要更新 Kafka 客户端配置。 这是通过创建事件中心命名空间并获取[连接字符串](event-hubs-get-connection-string.md)来完成的。 更改 bootstrap.servers，以将事件中心 FQDN 和端口指向 9093。 更新 jaas 以将 Kafka 客户端定向到事件中心终结点（即你获取的连接字符串），并提供正确的身份验证，如下所示：
+若要连接到事件中心，需要更新 Kafka 客户端配置。 为此，可以创建事件中心命名空间并获取[连接字符串](event-hubs-get-connection-string.md)。 更改 bootstrap.servers，以将事件中心 FQDN 和端口指向 9093。 更新 sasl.jaas.config，以使用正确的身份验证将 Kafka 客户端定向到事件中心终结点（已获取的连接字符串），如下所示：
 
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 
-例如：
+示例：
 
 bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-注意：如果 jaas 不是框架中支持的配置，请查找用于设置 SASL 用户名和密码的配置，并使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
+注意：如果 sasl.jaas.config 不是框架中受支持的配置，请查找用于设置 SASL 用户名和密码的配置，并改为使用这些配置。 将用户名设置为 $ConnectionString，将密码设置为事件中心连接字符串。
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>事件中心的消息/事件大小是多少？
 事件中心允许的最大消息大小为 1 MB。
@@ -147,31 +147,33 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 可以从较低的吞吐量单位 (TU) 着手，例如 2 个 TU。 如果预测流量可能会增大到 15 TU，请对命名空间启用自动扩充功能，并将最大限制设置为 15 TU。 现在，当流量增大时可以自动扩展 TU。
 
 ### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>启用自动扩充功能是否会产生相关的费用？
-此功能**不会**产生相关的费用。 
+此功能不会产生相关的费用。 
 
 ### <a name="how-are-throughput-limits-enforced"></a>如何强制实施吞吐量限制？
-如果某个命名空间中所有事件中心间的总入口吞吐量或总入口事件率超过了聚合吞吐量单位限额，发送方会受到限制，并会收到指明已超出入口配额的错误信息。
+如果某个命名空间中所有事件中心间的总入口吞吐量或总入口事件率超过了聚合吞吐量单位限额，那么发送方会受到限制，并会收到指明已超出入口配额的错误信息。
 
-如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，接收方会受到限制，并会收到指明已超出出口配额的错误信息。 入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
+如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，那么接收方会受到限制，但不会生成任何限制错误。 
+
+入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>可预留/选择的吞吐量单位 (TU) 数量是否有限制？
-在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。**** 专用群集按容量单位 (CU) 销售。
+在多租户产品/服务中，吞吐量单位最多可扩展到 40 TU（可在门户中最多选择 20 TU，然后提出支持票证，在同一命名空间中将数目提高到 40 TU）。 如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。
 
 ## <a name="dedicated-clusters"></a>专用群集
 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>什么是事件中心专用群集？
-事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以使用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
+事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以利用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
 
 ### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>一个容量单位可以实现多大的处理量？
-对于专用群集，可以引入和流式传输的数据量取决于各种因素，例如生成者、使用者、引入和处理速率，等等。 
+对于专用群集，可以引入和流式传输的数据量取决于各种因素，例如生成者、使用者、引入和处理速率等等。 
 
 下表显示了我们在测试期间实现的基准结果：
 
 | 有效负载形状 | 接收方 | 入口带宽| 入口消息 | 出口带宽 | 出口消息 | TU 总数 | 每个 CU 的 TU 数 |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB 批 | 2 | 400 MB/秒 | 400k 消息数/秒 | 800 MB/秒 | 800k 消息数/秒 | 400 TU | 100 TU | 
-| 10x10KB 批 | 2 | 666 MB/秒 | 66.6k 消息数/秒 | 1.33 GB/秒 | 133k 消息数/秒 | 666 TU | 166 TU |
-| 6x32KB 批 | 1 | 1.05 GB/秒 | 34k 消息数/秒 | 1.05 GB/秒 | 34k 消息数/秒 | 1000 TU | 250 TU |
+| 100x1KB 批 | 2 | 400 MB/秒 | 400k 条消息/秒 | 800 MB/秒 | 800k 条消息/秒 | 400 TU | 100 TU | 
+| 10x10KB 批 | 2 | 666 MB/秒 | 66.6k 条消息/秒 | 1.33 GB/秒 | 133k 条消息/秒 | 666 TU | 166 TU |
+| 6x32KB 批 | 1 | 1.05 GB/秒 | 34k 条消息/秒 | 1.05 GB/秒 | 34k 条消息/秒 | 1000 TU | 250 TU |
 
 测试中使用了以下条件：
 
@@ -182,16 +184,16 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 结果大致反映了一个专用事件中心群集可以实现的处理量。 此外，专用群集还为微批和长期保留方案启用了“事件中心捕获”。
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何创建事件中心专用群集？
-可以通过提交[提高配额支持请求](https://portal.azure.com/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是临时的，直到通过 Azure 门户提供完整的自助服务。
+可以通过提交[提高配额支持请求](https://portal.azure.com/#create/Microsoft.Support)或联系[事件中心团队](mailto:askeventhubs@microsoft.com)来创建事件中心专用群集。 通常，我们需要花费大约两周时间来部署群集，并将其转交给你使用。 此过程是临时的，直到可通过 Azure 门户提供完整的自助服务为止。
 
 ## <a name="best-practices"></a>最佳做法
 
 ### <a name="how-many-partitions-do-i-need"></a>需要多少分区？
-分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期规模。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
+分区数在创建时指定，必须介于 2 到 32 之间。 分区计数不可更改，因此在设置分区计数时应考虑长期扩展。 分区是一种数据组织机制，与使用方应用程序中所需的下游并行度相关。 事件中心的分区数与预期会有的并发读取者数直接相关。 有关分区的详细信息，请参阅[分区](event-hubs-features.md#partitions)。
 
-你可能希望在创建时将其设置为最高可能值，即 32。 请记住，拥有多个分区将导致事件发送到多个分区而不保留顺序，除非你将发送方配置为仅发送到 32 个分区中的一个分区，剩下的 31 个分区是冗余分区。 在前一种情况下，必须跨所有 32 个分区读取事件。 在后一种情况下，除了必须在事件处理器主机上进行额外配置外，没有明显的额外成本。
+创建时，可能需要将其设置为可能的最大值（即 32）。 请记住，具有多个分区将导致事件发送到多个分区，不会保留顺序，除非将发送方配置为：仅发送到 32 个分区中的一个分区，而让其余 31 个分区冗余。 在前一种情况下，必须在所有 32 个分区中读取事件。 在后一种情况下，除了需要在事件处理器主机上进行额外的配置，没有明显的额外成本。
 
-事件中心设计用于允许每个用户组使用单个分区读取器。 在大多数用例中，四个分区的默认设置就足够了。 如果希望扩展事件处理，则可以考虑添加其他分区。 对分区没有特定的吞吐量限制，但是命名空间中的聚合吞吐量受吞吐量单位数限制。 增加命名空间中吞吐量单位的数量时，可能需要添加额外分区来允许并发读取器实现其自身的最大吞吐量。
+事件中心设计用于允许每个用户组使用单个分区读取器。 在大多数用例中，四个分区的默认设置就足够了。 如果希望扩展事件处理，可以考虑添加其他分区。 对分区没有特定的吞吐量限制，但是命名空间中的聚合吞吐量受吞吐量单位数限制。 增加命名空间中吞吐量单位的数量时，可能需要添加额外分区来允许并发读取器实现其自身的最大吞吐量。
 
 但是，如果有一个模型，其中应用程序具有到特定分区的关联性，则增加分区数可能对你没有任何益处。 有关详细信息，请参阅[可用性和一致性](event-hubs-availability-and-consistency.md)。
 
@@ -248,7 +250,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="support-and-sla"></a>支持和 SLA
 
-事件中心的技术支持可通过[社区论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)获得。 计费和订阅管理支持免费提供。
+事件中心的技术支持可通过 [Azure 服务总线的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-service-bus.html)获取。 计费和订阅管理支持免费提供。
 
 若要详细了解我们的 SLA，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)页面。
 

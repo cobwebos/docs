@@ -1,16 +1,16 @@
 ---
-title: 呈现功能
-description: 标准 Azure Batch 功能用于运行渲染工作负荷和应用。 Batch 包含用于支持渲染工作负荷的特定功能。
+title: 渲染功能
+description: 标准 Azure Batch 功能用于运行渲染工作负荷与应用。 Batch 包含用于支持渲染工作负荷的特定功能。
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
-ms.topic: conceptual
-ms.openlocfilehash: 3efe1dfa69de5ce41aed2152baa88b313fd928f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 867dfae570a1e2006b7eea568e3450050f485d9d
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115748"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726462"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -35,7 +35,7 @@ ms.locfileid: "82115748"
 
 如果池 VM 上需要其他应用程序，则可以使用其他选项：
 
-* 共享映像库中的自定义映像：
+* 共享映像库中的自定义映像
   * 可以使用此选项为 VM 配置所需的具体应用程序和版本。 有关详细信息，请参阅[使用共享映像库创建池](batch-sig-images.md)。 Autodesk 和 Chaos Group 已分别修改了 Arnold 和 V-Ray，可以验证 Azure Batch 许可服务。 请确保这些应用程序的版本提供此支持，否则，即用即付许可模式将不适用。 运行无头模式（批处理/命令行模式）时，最新版本的 Maya 或 3ds Max 不需要许可证服务器。 如果不确定如何使用此选项，请联系 Azure 支持部门。
 * [应用程序包](https://docs.microsoft.com/azure/batch/batch-application-packages)：
   * 使用一个或多个 ZIP 文件打包应用程序文件，通过 Azure 门户上传，然后在池配置中指定该包。 创建池 VM 时，将下载 ZIP 文件并解压缩文件。
@@ -46,7 +46,7 @@ ms.locfileid: "82115748"
 
 需在池配置中指定要使用的并且会产生许可费的应用程序。
 
-* `applicationLicenses`创建池[时指定 ](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
+* [创建池](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)时指定 `applicationLicenses` 属性。  可在字符串数组中指定以下值 -“vray”、“arnold”、“3dsmax”、“maya”。
 * 指定一个或多个应用程序时，这些应用程序的费用将与 VM 费用相加。  [Azure Batch 定价页面](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)上列出了应用程序价格。
 
 > [!NOTE]

@@ -4,13 +4,13 @@ description: 了解启用基于工作区的新 Azure Monitor Application Insight
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65c2220bd3e9ea93e562b256e84796aed9046d00
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/18/2020
+ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211403"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647897"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>基于工作区的 Application Insights 资源（预览版）
 
@@ -40,9 +40,7 @@ ms.locfileid: "83211403"
 
 ## <a name="copy-the-connection-string"></a>复制连接字符串
 
-[连接字符串]()用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
-
-![单击并复制检测密钥](./media/create-new-resource/instrumentation-key.png)
+[连接字符串](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 ## <a name="monitoring-configuration"></a>监视配置
 
@@ -192,6 +190,10 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 创建基于工作区的 Application Insights 资源后，可以修改关联的 Log Analytics 工作区。
 
 从“Application Insights 资源”窗格中，选择“属性” > “更改工作区” > “Log Analytics 工作区”  
+
+## <a name="export-telemetry"></a>导出遥测
+
+基于工作区的资源不支持旧版连续导出功能。 相反，请选择“诊断设置” > 从 Application Insights 资源中“添加诊断设置”。 可以选择所有表，或是要存档到存储帐户或流式传输到 Azure 事件中心的表的子集。
 
 ## <a name="next-steps"></a>后续步骤
 

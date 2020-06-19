@@ -9,12 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: ae2df6f47d99fc5d452a6d3ea70f2dd2e4e7416b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68359586"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835625"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。
@@ -23,7 +23,7 @@ ms.locfileid: "68359586"
 
 **2014 年 11 月 3 日** - 来宾 OS 系列 1 的延长支持结束，该系列完全停用。 仍基于系列 1 的所有服务将受影响。 我们随时可能会停止这些服务。 除非自己手动升级服务，否则无法保证服务将继续运行。
 
-如果有其他疑问，请访问[云服务论坛](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)或[联系 Azure 支持人员](https://azure.microsoft.com/support/options/)。
+如果有其他疑问，请访问[适用于云服务的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-cloud-services.html)或[联系 Azure 支持](https://azure.microsoft.com/support/options/)。
 
 ## <a name="are-you-affected"></a>了解你是否受到影响
 如果存在下列任一情况，则表示云服务已受到影响：

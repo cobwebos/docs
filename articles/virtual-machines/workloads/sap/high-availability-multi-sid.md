@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c7c6b797605da2884c6bffc47e593ffc9a3faca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 553abc0a221950d81f3ee8591875507d0b6a2f0c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77615135"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020755"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>创建 SAP NetWeaver 多 SID 配置
 
@@ -414,10 +414,10 @@ ms.locfileid: "77615135"
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
 [virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:./../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[virtual-machines-windows-portal-sql-alwayson-int-listener]:./../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -444,7 +444,7 @@ ms.locfileid: "77615135"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-2016 年 9 月，Microsoft 推出了一项可让用户通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址的功能。 Azure 外部负载均衡器已包含此功能。
+2016 年 9 月，Microsoft 推出了一项功能，可用于通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 Azure 外部负载均衡器已包含此功能。
 
 在 SAP 部署中，可以根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中所述，使用内部负载均衡器创建 SAP ASCS/SCS 的 Windows 群集配置。
 
@@ -455,7 +455,7 @@ ms.locfileid: "77615135"
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 已根据 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]中的介绍和下图所示，配置了用于一个 SAP ASCS/SCS 实例的 WSFC 群集。
 
 ![高可用性 SAP ASCS/SCS 实例][sap-ha-guide-figure-6001]
@@ -472,7 +472,7 @@ ms.locfileid: "77615135"
 >一个 WSFC 群集中的最大 SAP ASCS/SCS 实例数等于每个 Azure 内部负载均衡器的最大专用前端 IP 数。
 >
 
-有关负载均衡器限制的详细信息，请参阅 [网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]中的“每个负载均衡器的专用前端 IP”。
+若要详细了解负载均衡器限制，请参阅[网络限制：Azure 资源管理器][networking-limits-azure-resource-manager]。
 
 包含两个高可用性 SAP 系统的完整布局如下所示：
 
@@ -641,8 +641,8 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
 概要过程如下所述：
 
-1. [安装 SAP 第一个群集节点][sap-ha-guide-9.1.2]。  
- 在此步骤中，你在**现有 WSFC 群集节点 1**上安装包含高可用性 ASCS/SCS 实例的 SAP。
+1. [安装 SAP 的第一个群集节点][sap-ha-guide-9.1.2]。  
+ 此步骤在**现有 WSFC 群集节点 1** 上安装包含高可用性 ASCS/SCS 实例的 SAP 系统。
 
 2. [修改 ASCS/SCS 实例的 SAP 配置文件][sap-ha-guide-9.1.3]。
 

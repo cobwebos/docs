@@ -188,6 +188,8 @@
       items:
         - name: 启用设备写回
           href: how-to-connect-device-writeback.md
+        - name: 启用组写回
+          href: how-to-connect-group-writeback.md
         - name: 设备选项
           href: how-to-connect-device-options.md
         - name: Azure AD Connect 中的其他功能

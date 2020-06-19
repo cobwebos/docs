@@ -1,5 +1,5 @@
 ---
-title: 从 Azure 逻辑应用连接到时差
+title: 从 Azure 逻辑应用连接到 Slack
 description: 使用 Azure 逻辑应用自动执行任务和工作流，用以监视文件以及管理你的 Slack 帐户中的通道、组和消息
 services: logic-apps
 ms.suite: integration
@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 194f75fbb486d5c53a8e650631c16fcf2649f277
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789165"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826020"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Slack
 
@@ -33,7 +33,7 @@ ms.locfileid: "74789165"
 
   你的凭据授权逻辑应用创建连接并访问你的 Slack 帐户。
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要在其中访问 Slack 帐户的逻辑应用。 若要使用 Slack 触发器启动，请[创建空白的逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 Slack 操作，请使用一个触发器启动逻辑应用，例如 Slack 触发器或其他个触发器（例如**定期**触发器）。
 
@@ -45,14 +45,14 @@ ms.locfileid: "74789165"
 
 1. 对于空白逻辑应用，请在搜索框中输入“slack”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
-   \- 或 -
+   -或-
 
-   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”****。 
+   对于现有逻辑应用，请在要添加操作的最后一个步骤下，选择“新建步骤”。 
    在搜索框中，输入“slack”作为筛选器。 
    在操作列表下，选择所需的操作。
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号（**+**），然后选择 "**添加操作**"。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 如果提示你登录到 Slack，请登录到你的 Slack 工作区。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "74789165"
 
 ## <a name="get-support"></a>获取支持
 
-* 有关问题，请访问 [Azure 逻辑应用论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)。
+* 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
 * 若要提交功能建议或对功能建议进行投票，请访问[逻辑应用用户反馈网站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>后续步骤

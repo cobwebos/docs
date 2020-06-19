@@ -1,22 +1,22 @@
 ---
 title: Azure Analysis Services 别名服务器名称 | Microsoft Docs
-description: 了解如何创建 Azure Analysis Services 服务器名称别名。 然后，用户可以使用较短的别名，而不是服务器名称连接到服务器。
+description: 了解如何创建 Azure Analysis Services 服务器名称别名。 然后，用户可以使用较短的别名而非服务器名称连接到服务器。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572293"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698983"
 ---
 # <a name="alias-server-names"></a>别名服务器名称
 
-通过使用服务器名称别名，用户可以使用较短的“别名”  而非服务器名称来连接到 Azure Analysis Services 服务器。 从客户端应用程序进行连接时，将使用 **link://** 协议格式将别名指定为终结点。 然后，终结点返回实际的服务器名称以便进行连接。
+通过使用服务器名称别名，用户可以使用较短的“别名”而非服务器名称来连接到 Azure Analysis Services 服务器。 从客户端应用程序进行连接时，将使用 **link://** 协议格式将别名指定为终结点。 然后，终结点返回实际的服务器名称以便进行连接。
 
 别名服务器名称在下列方面具有优势：
 

@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372333"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052693"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>语言理解静态数据的服务加密
 
@@ -22,7 +22,7 @@ ms.locfileid: "79372333"
 
 ## <a name="about-cognitive-services-encryption"></a>关于认知服务加密
 
-使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密是透明的，这意味着对加密和访问进行管理。 默认情况下，你的数据是安全的，无需修改你的代码或应用程序即可利用加密。
+使用符合[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) [的256位 AES 加密对](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)数据进行加密和解密。 加密和解密都是透明的，这意味着将替你管理加密和访问。 你的数据默认情况下就是安全的，你无需修改代码或应用程序，即可利用加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
@@ -38,13 +38,11 @@ ms.locfileid: "79372333"
 
 若要请求使用客户管理的密钥的功能，请填写并提交 [LUIS 服务客户托管的密钥请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 CMK 与 LUIS 配合使用后，需要从 Azure 门户创建新的语言理解资源，并选择 E0 作为定价层。 新 SKU 的工作方式与已提供的 F0 SKU 相同（CMK 除外）。 用户无法从 F0 升级到新的 E0 SKU。
 
-E0 资源仅可用于创作服务，并且仅在美国西部地区才支持 E0 层。
-
 ![LUIS 订阅图像](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>区域可用性
 
-客户托管的密钥目前在**美国西部**区域中可用。
+客户管理的密钥在所有[创作区域](luis-reference-regions.md)均可用。 
 
 ### <a name="limitations"></a>限制
 
@@ -71,13 +69,13 @@ E0 资源仅可用于创作服务，并且仅在美国西部地区才支持 E0 �
 > 如果禁用系统分配的托管标识，则将删除对密钥保管库的访问权限，并且任何使用客户密钥加密的数据将无法再访问。 所有依赖于此数据的功能都将停止工作。
 
 > [!IMPORTANT]
-> 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，会自动在这些内容下分配托管标识。 如果随后将订阅、资源组或资源从一个 Azure AD 目录移动到另一个目录，则与该资源关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”****。  
+> 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，会自动在这些内容下分配托管标识。 如果随后将订阅、资源组或资源从一个 Azure AD 目录移动到另一个目录，则与该资源关联的托管标识不会传输到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”。  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户管理的密钥存储在 Azure 密钥保管库
 
-若要启用客户管理的密钥，必须使用 Azure Key Vault 来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性********。
+若要启用客户管理的密钥，必须使用 Azure Key Vault 来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性 。
 
-认知服务加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)中的“Key Vault 密钥”。****
+认知服务加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)中的“Key Vault 密钥”。
 
 ### <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 
