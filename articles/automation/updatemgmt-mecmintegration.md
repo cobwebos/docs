@@ -7,12 +7,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 183189253d11638751e1f8283b202f122131b005
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836305"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84013191"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>将更新管理与 Windows Endpoint Configuration Manager 集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "83836305"
 1. 在 Azure 自动化中，选择“更新管理”。 根据[创建更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)中介绍的步骤创建一个新部署，并从“类型”下拉列表中选择“导入的组”来选择合适的 Windows Endpoint Configuration Manager 集合 。 请记住以下要点：a. 如果为所选的 Windows Endpoint Configuration Manager 设备集合定义了维护窗口，则它将存储在集合的成员中而不是存储在计划的部署中定义的“持续时间”设置中。
     b. 目标集合的成员必须连接到 Internet（直接连接、通过代理服务器或者通过 Log Analytics 网关）。
 
-通过 Azure 自动化完成更新部署后，属于所选计算机组的成员的目标计算机将按计划的时间从本地客户端缓存中安装更新。 可以[查看更新部署状态](automation-tutorial-update-management.md#view-results-of-an-update-deployment)来监视部署结果。
+通过 Azure 自动化完成更新部署后，属于所选计算机组的成员的目标计算机将按计划的时间从本地客户端缓存中安装更新。 可以[查看更新部署状态](automation-tutorial-update-management.md#check-deployment-status)来监视部署结果。
 
 ## <a name="manage-software-updates-from-azure-automation"></a>从 Azure 自动化管理软件更新
 

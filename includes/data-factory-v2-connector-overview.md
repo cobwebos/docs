@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b9264f3690f2a2e3a8488866f26248644859348
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3503af1b5baa02697d2c26b1b84ecb23554fda6e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696471"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84224923"
 ---
 | 类别              | 数据存储                                                   | [复制活动](../articles/data-factory/copy-activity-overview.md)（源/接收器） | [映射数据流源](../articles/data-factory/concepts-data-flow-overview.md)（源/接收器） | [Lookup 活动](../articles/data-factory/control-flow-lookup-activity.md) | [获取元数据活动](../articles/data-factory/control-flow-get-metadata-activity.md)/[验证活动](../articles/data-factory/control-flow-validation-activity.md) | [删除活动](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -25,7 +25,7 @@ ms.locfileid: "83696471"
 | &nbsp;                | [Azure Database for PostgreSQL](../articles/data-factory/connector-azure-database-for-postgresql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure 文件存储](../articles/data-factory/connector-azure-file-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure SQL 数据库](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                          | ✓/✓ <br>                                                     | ✓                                                            | ✓                                                            |                                                              |
-| &nbsp;                | [Azure SQL 数据库托管实例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |
+| &nbsp;                | [Azure SQL 托管实例](../articles/data-factory/connector-azure-sql-managed-instance.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure Synapse Analytics（以前称为 SQL 数据仓库）](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure 表存储](../articles/data-factory/connector-azure-table-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | **Database**          | [Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |

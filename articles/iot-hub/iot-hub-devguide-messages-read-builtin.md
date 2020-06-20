@@ -7,14 +7,14 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: fba22324a3c35b861d28ed9b84207ab3a6f9816b
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 791d41aae7dde3e1ef2ae511de4ffd84141f0232
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872708"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310778"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -63,8 +63,8 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 
 | 语言 | SDK 中 IsInRole 中的声明 | 示例 |
 | -------- | --- | ------ |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入门](quickstart-send-telemetry-dotnet.md) |
- Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](quickstart-send-telemetry-java.md) |
+| .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](quickstart-send-telemetry-dotnet.md) |
+| Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](quickstart-send-telemetry-java.md) |
 | Node.js | https://www.npmjs.com/package/@azure/event-hubs | [快速入门](quickstart-send-telemetry-node.md) |
 | Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 

@@ -3,12 +3,12 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 60f77d7bb29af8bcd1a0932a9ac93f5fe4b8e3ac
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653359"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299241"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -386,7 +386,7 @@ New-AzSubscriptionDeployment `
 
 可通过模板[创建](../../governance/blueprints/tutorials/create-from-sample.md)蓝图定义。
 
-:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/subscription-deployments/blueprints-new-blueprint/azuredeploy.json":::
 
 若要在订阅中创建蓝图定义，请使用以下 CLI 命令：
 
@@ -394,7 +394,7 @@ New-AzSubscriptionDeployment `
 az deployment sub create \
   --name demoDeployment \
   --location centralus \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 若要使用 PowerShell 部署此模板，请使用：
@@ -403,17 +403,17 @@ az deployment sub create \
 New-AzSubscriptionDeployment `
   -Name demoDeployment `
   -Location centralus `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>模板示例
 
-* [创建资源组、将其锁定并向其授予权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+* [创建资源组、将其锁定并向其授予权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
 * [创建资源组、策略和策略分配](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 示例模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments) 找到。
+* 示例模板可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) 找到。
 * 还可在[管理组级别](deploy-to-management-group.md)和[租户级别](deploy-to-tenant.md)部署模板。

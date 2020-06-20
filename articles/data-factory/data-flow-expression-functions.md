@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 82fbc144b9b2dffdddc09900bf6ed9424b445100
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9894bb2c6ead38b2770f572f7f5000c770d555e7
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701462"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267726"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式
 
@@ -153,9 +153,7 @@ ___
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 获取流的所有输出列。 可以将可选流名称作为第二个参数传递。   
 * ``columns()``
-* ````
 * ``columns('DeriveStream')``
-* ````
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>

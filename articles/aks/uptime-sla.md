@@ -4,12 +4,13 @@ description: 了解 Azure Kubernetes 服务 (AKS) API 服务器的可选运行�
 services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: e0e1399f69640dddfd618ac99637023390f28a92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: references_regions
+ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683220"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299547"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -25,18 +26,6 @@ ms.locfileid: "83683220"
 ## <a name="sla-terms-and-conditions"></a>SLA 条款和条件
 
 运行时间 SLA 是付费功能，按群集启用。 运行时间 SLA 定价取决于离散群集的数量，而不是各个群集的大小。 有关详细信息，可以查看[运行时间 SLA 定价详细信息](https://azure.microsoft.com/pricing/details/kubernetes-service/)。
-
-## <a name="region-availability"></a>区域可用性
-
-运行时间 SLA 在以下区域可用：
-
-* 澳大利亚东部
-* 加拿大中部
-* 美国东部
-* 美国东部 2
-* 美国中南部
-* 东南亚
-* 美国西部 2
 
 ## <a name="before-you-begin"></a>开始之前
 

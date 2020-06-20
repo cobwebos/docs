@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
-ms.openlocfilehash: 92473dc7553286867a33100d7328dd0320d55823
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: references_regions
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799937"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300063"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -265,7 +266,7 @@ IP 地址是按 Azure 环境划分的。 当允许入站请求时，使用“全
 | Azure Government| USDoD 东部| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>相关内容
-* [使用 Vpn 网关将虚拟网络连接到后端](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [使用 Vpn 网关将虚拟网络连接到后端](../vpn-gateway/design.md#s2smulti)
 * [通过不同的部署模型连接虚拟网络](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [如何使用 API 检查器跟踪 Azure API 管理中的调用](api-management-howto-api-inspector.md)
 * [Azure 虚拟网络常见问题](../virtual-network/virtual-networks-faq.md)

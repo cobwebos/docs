@@ -81,7 +81,7 @@ ms.locfileid: "83651107"
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 联系 [@AzureSupport](https://twitter.com/azuresupport) - 这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可获得解答、支持和专家建议。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”，或打开“帮助 + 支持”中心 。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，技术支持将通过某个 [Azure 支持计划](https://azure.microsoft.com/support/plans/)提供。
 

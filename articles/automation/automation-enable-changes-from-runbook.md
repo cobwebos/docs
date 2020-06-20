@@ -5,14 +5,14 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 014442dee1be23a189e22a505abf86050601b2aa
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826736"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171083"
 ---
-# <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>从 Runbook 启用更改跟踪和库存
+# <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>从 runbook“启用更改跟踪和清单”
 
 本文介绍如何使用 Runbook 为环境中的虚拟机 (VM) 启用[更改跟踪和库存](change-tracking.md)功能。 若要大规模启用 Azure VM，必须使用更改跟踪和库存启用现有 VM。 
 
@@ -104,8 +104,4 @@ ms.locfileid: "83826736"
 
 * 若要计划 Runbook，请参阅[在 Azure 自动化中管理计划](shared-resources/schedules.md)。
 * 有关使用此功能的详细信息，请参阅[管理更改跟踪和库存](change-tracking-file-contents.md)。
-* 有关范围配置的信息，请参阅[使用更改跟踪和库存的范围配置](automation-scope-configurations-change-tracking.md)。
-* 若要了解如何使用此功能来识别环境中安装的软件，请参阅[发现 VM 上安装了哪些软件](automation-tutorial-installed-software.md)。
-* 如果不希望在启用此功能时将自动化帐户与 Log Analytics 工作区集成，请参阅[取消工作区与自动化帐户的链接](automation-unlink-workspace-change-tracking.md)。
-* 将更改部署到 VM 后，可以按照[从更改跟踪和库存中删除 VM](automation-remove-vms-from-change-tracking.md) 中的说明将其删除。
 * 若要排查该功能的常见问题，请参阅[排查更改跟踪和清单问题](troubleshoot/change-tracking.md)。

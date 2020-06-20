@@ -3,12 +3,12 @@ title: 获取资源更改
 description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9e233ebbdd1d70d483af44eacf12cc924deaafac
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681053"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167156"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -25,8 +25,7 @@ ms.locfileid: "83681053"
 - 使配置管理数据库（称为 CMDB）保持最新。 无需按计划的频率刷新所有资源及其完整的属性集，只获取更改的内容。
 - 了解当某个资源更改了符合性状态时可能已更改的其他属性。 评估这些附加属性可以洞察可能需要通过 Azure Policy 定义进行管理的其他属性。
 
-本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure Policy 的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
-有关从基础结构层对应用程序所做的更改的详细信息，请参阅 Azure Monitor 中的[使用应用程序更改分析（预览版）](../../../azure-monitor/app/change-analysis.md)。
+本文介绍如何通过 Resource Graph 的 SDK 收集此信息。 若要在 Azure 门户中查看此信息，请参阅 Azure Policy 的[更改历史记录](../../policy/how-to/determine-non-compliance.md#change-history)或 Azure 活动日志[更改历史记录](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。 有关从基础结构层对应用程序所做的更改的详细信息，请参阅 Azure Monitor 中的[使用应用程序更改分析（预览版）](../../../azure-monitor/app/change-analysis.md)。
 
 > [!NOTE]
 > Resource Graph 中的更改详细信息适用于资源管理器属性。 若要跟踪虚拟机内的更改，请参阅 Azure 自动化的[更改跟踪](../../../automation/automation-change-tracking.md)或 Azure Policy 的 [VM 来宾配置](../../policy/concepts/guest-configuration.md)。

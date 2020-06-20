@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821510"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017592"
 ---
 ## <a name="application-performance-indicators"></a>应用程序性能指标
 
@@ -333,7 +333,7 @@ sudo reboot
 
 例如，如果应用程序生成的 IO 请求大于磁盘条带大小，存储系统会将数据写在不止一个磁盘上，跨越条带单元的边界。 在需要访问该数据时，则必须跨多个条带单元进行搜索才能完成请求。 这种行为的累积效应就是性能大幅下降。 另一方面，如果 IO 请求大小小于条带大小，并且其性质是随机的，则 IO 请求可能会在同一磁盘上累积起来，导致瓶颈的出现，最终导致 IO 性能下降。
 
-请根据应用程序正在运行的工作负荷的类型，选择合适的条带大小。 对于随机的较小的 IO 请求，请使用较小的条带大小。 而对于大型的顺序性的 IO 请求，则请使用较大的条带大小。 对于要在高级存储上运行的应用程序，请找出相应的条带大小建议。 对于 SQL Server，如果工作负荷为 OLTP 工作负荷，请将条带大小配置为 64 KB；如果工作负荷为数据仓库型工作负荷，则请将条带大小配置为 256 KB。 请参阅 [Azure VM 上的 SQL Server 性能最佳实践](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance)以了解更多信息。
+请根据应用程序正在运行的工作负荷的类型，选择合适的条带大小。 对于随机的较小的 IO 请求，请使用较小的条带大小。 而对于大型的顺序性的 IO 请求，则请使用较大的条带大小。 对于要在高级存储上运行的应用程序，请找出相应的条带大小建议。 对于 SQL Server，如果工作负荷为 OLTP 工作负荷，请将条带大小配置为 64 KB；如果工作负荷为数据仓库型工作负荷，则请将条带大小配置为 256 KB。 请参阅 [Azure VM 上的 SQL Server 性能最佳实践](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance)以了解更多信息。
 
 > [!NOTE]
 > 在 DS 系列 VM 上可将最多 32 个高级存储磁盘条带化，在 GS 系列 VM 上可将最多 64 个高级存储磁盘条带化。
