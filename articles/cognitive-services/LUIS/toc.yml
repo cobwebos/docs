@@ -30,9 +30,9 @@
     - name: 使用 REST API
       items:
         - name: 获取意向
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: 更改模型
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: 教程
   items:
     - name: 生成可分解的应用
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: 迁移到 V2 API
           href: luis-migration-api-v1-to-v2.md
+    - name: 使用 REST API
+      items:
+        - name: 获取意向
+          href: luis-get-started-get-intent-from-rest.md
+        - name: 更改模型
+          href: get-started-get-model-rest-apis.md
     - name: 使用容器
       items:
         - name: 安装和运行容器
