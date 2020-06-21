@@ -38,9 +38,11 @@
 - name: 示例
   items:
     - name: 策略
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Azure Policy 内置策略定义
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 术语
