@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745135"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020075"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -106,9 +106,9 @@ HBase 自适应性取决于 HDInsight 群集中的节点数。
 
 Azure 提供三个 PaaS 关系数据库：
 
-- [Azure SQL 数据库](../../sql-database/sql-database-technical-overview.md)是 Microsoft SQL Server 的一种实现。 有关性能的详细信息，请参阅[优化 Azure SQL 数据库性能](../../sql-database/sql-database-performance-guidance.md)。
-- [Azure Database for MySQL](../../mysql/overview.md) 是 Oracle MySQL 的一种实现。
-- [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) 是 PostgreSQL 的一种实现。
+* [Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)是 Microsoft SQL Server 的一种实现。 有关性能的详细信息，请参阅[优化 Azure SQL 数据库性能](../../azure-sql/database/performance-guidance.md)。
+* [Azure Database for MySQL](../../mysql/overview.md) 是 Oracle MySQL 的一种实现。
+* [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) 是 PostgreSQL 的一种实现。
 
 添加更多 CPU 和内存以横向扩展这些产品。  还可以选择使用高级磁盘配合这些产品来获得更好的 I/O 性能。
 
