@@ -1,6 +1,6 @@
 ---
-title: 专用链接
-description: 专用终结点功能概述
+title: Azure 专用链接
+description: 专用终结点功能概述。
 author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
@@ -9,36 +9,36 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219881"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343993"
 ---
-# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的专用链接
+# <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的 Azure 专用链接
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 使用专用链接可以通过**专用终结点**连接到 Azure 中的各种 PaaS 服务。 若要查看支持专用链接功能的 PaaS 服务列表，请转到[专用链接文档](../../private-link/index.yml)页。 专用终结点是特定[ VNet ](../../virtual-network/virtual-networks-overview.md)和子网中的专用 IP 地址。
 
 > [!IMPORTANT]
-> 本文适用于 Azure SQL 数据库和 Azure Synapse Analytics（以前的 SQL 数据仓库）。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指托管 Azure SQL 数据库和 Azure Synapse Analytics[ 的逻辑 SQL Server](logical-servers.md)。 本文不适用于 **Azure SQL 托管实例**。
+> 本文适用于 Azure SQL 数据库和 Azure Synapse Analytics（以前的 Azure SQL 数据仓库）。 为简单起见，术语“数据库”是指 Azure SQL 数据库中的数据库和 Azure Synapse Analytic 中的数据库。 同样，无论何时提及“服务器”，都是指托管 Azure SQL 数据库和 Azure Synapse Analytics[ 的逻辑 SQL Server](logical-servers.md)。 本文不适用于 **Azure SQL 托管实例**。
 
 ## <a name="data-exfiltration-prevention"></a>数据渗透防护
 
 Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据库管理员）能够从一个系统提取数据，并将其移到组织外部的其他位置或系统。 例如，该用户将数据移到第三方拥有的存储帐户。
 
-假设某个用户在连接到 SQL 数据库的 Azure VM 中运行 SQL Server Management Studio (SSMS)。 此 SQL 数据库位于“美国西部”数据中心。 以下示例演示如何使用网络访问控制来限制通过公共终结点对 SQL 数据库进行访问。
+假设某个用户在连接到 SQL 数据库中的数据库的 Azure 虚拟机中运行 SQL Server Management Studio (SSMS)。 此数据库位于“美国西部”数据中心。 以下示例演示如何使用网络访问控制来限制通过公共终结点对 SQL 数据库进行访问。
 
 1. 通过将“允许 azure 服务”设置为“关闭”，禁止所有 Azure 服务流量通过公共终结点进入 SQL 数据库。 确保不要在服务器和数据库级防火墙规则中允许任何 IP 地址。 有关详细信息，请参阅 [Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制](network-access-controls-overview.md)。
-1. 仅允许流量使用 VM 的专用 IP 地址进入 SQL 数据库。 有关详细信息，请参阅有关[服务终结点](vnet-service-endpoint-rule-overview.md)和 [VNet 防火墙规则](firewall-configure.md)的文章。
+1. 仅允许流量使用 VM 的专用 IP 地址进入 SQL 数据库中的数据库。 有关详细信息，请参阅有关[服务终结点](vnet-service-endpoint-rule-overview.md)和[虚拟网络防火墙规则](firewall-configure.md)的文章。
 1. 在 Azure VM 上，按如下所示使用[网络安全组 (NSG)](../../virtual-network/manage-network-security-group.md) 和服务标记缩小传出连接的范围
     - 指定一个 NSG 规则以允许服务标记 SQL.WestUs 的流量 - 仅允许连接到“美国西部”的 SQL 数据库
     - 指定一个 NSG 规则（具有**较高的优先级**），以拒绝服务标记 SQL 的流量 - 拒绝连接到所有区域中的 SQL 数据库
 
-完成此设置后，Azure VM 只能连接到“美国西部”区域中的 SQL 数据库。 不过，连接并不局限于单个 SQL 数据库。 VM 仍可连接到“美国西部”区域中的任何 SQL 数据库，包括不在订阅中的数据库。 尽管我们在上述场景中已将数据渗透范围缩小到了特定的区域，但我们并未完全消除这种渗透。
+完成此设置后，Azure VM 只能连接到“美国西部”区域的 SQL 数据库中的数据库。 不过，连接并不局限于 SQL 数据库中的单个数据库。 VM 仍可连接到“美国西部”区域中的任何数据库，包括不在订阅中的数据库。 尽管我们在上述场景中已将数据渗透范围缩小到了特定的区域，但我们并未完全消除这种渗透。
 
-借助专用链接，客户现在可以设置 NSG 等网络访问控制来限制对专用终结点的访问。 然后，将单个 Azure PaaS 资源映射到特定的专用终结点。 恶意内部攻击只能访问映射的 PaaS 资源（例如 SQL 数据库），而不能访问其他资源。 
+借助专用链接，客户现在可以设置 NSG 等网络访问控制来限制对专用终结点的访问。 然后，将单个 Azure PaaS 资源映射到特定的专用终结点。 恶意的预览体验成员只能访问映射的 PaaS 资源（例如 SQL 数据库中的数据库），而不能访问其他资源。 
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>通过专用对等互连建立本地连接
 
@@ -49,7 +49,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>如何设置 Azure SQL 数据库的专用链接 
 
 ### <a name="creation-process"></a>创建过程
-可以使用门户、PowerShell 或 Azure CLI 创建专用终结点：
+可以使用 Azure 门户、PowerShell 或 Azure CLI 创建专用终结点：
 - [门户](../../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../../private-link/create-private-endpoint-powershell.md)
 - [CLI](../../private-link/create-private-endpoint-cli.md)
@@ -57,7 +57,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 ### <a name="approval-process"></a>审批过程
 网络管理员创建专用终结点 (PE) 后，SQL 管理员可以管理与 SQL 数据库建立的专用终结点连接 (PEC)。
 
-1. 按照下面的屏幕截图中所示的步骤，导航到 Azure 门户中的 SQL 服务器资源
+1. 按照下面的屏幕截图中所示的步骤，导航到 Azure 门户中的服务器资源
 
     - (1) 在左窗格中选择“专用终结点连接”
     - (2) 显示所有专用终结点连接 (PEC) 的列表
@@ -74,11 +74,11 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Azure SQL 数据库专用链接的用例 
 
-客户端可以通过同一 VNet、同一区域中的对等互连 VNet 或者跨区域的 VNet 到 VNet 连接连接到专用终结点。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
+客户端可以从同一虚拟网络、同一区域中的对等互联虚拟网络或通过跨区域的虚拟网络到虚拟网络连接连接到专用终结点。 此外，客户端可以使用 ExpressRoute、专用对等互连或 VPN 隧道从本地进行连接。 以下简化示意图显示了常见用例。
 
  ![连接选项示意图][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>测试从同一虚拟网络 (VNet) 中的 Azure VM 连接到 SQL 数据库
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>测试从同一虚拟网络中的 Azure VM 到 SQL 数据库的连接
 
 此方案假设已创建一个运行 Windows Server 2016 的 Azure 虚拟机 (VM)。 
 
@@ -93,7 +93,7 @@ Azure SQL 数据库中的数据渗透是指已获授权的用户（例如数据�
 
 [Telnet 客户端](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)是可用于测试连接的 Windows 功能。 根据 Windows OS 的版本，可能需要显式启用此功能。 
 
-安装 Telnet 后，打开命令提示符窗口。 运行 Telnet 命令并指定 SQL 数据库的 IP 地址和专用终结点。
+安装 Telnet 后，打开命令提示符窗口。 运行 Telnet 命令并指定 SQL 数据库中的数据库的 IP 地址和专用终结点。
 
 ```
 >telnet 10.1.1.5 1433
@@ -159,17 +159,17 @@ where session_id=@@SPID
 与专用终结点的连接仅支持使用“代理”作为[连接策略](connectivity-architecture.md#connection-policy)
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>从对等互连虚拟网络 (VNet) 中的 Azure VM 进行连接 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>从对等互联虚拟网络中的 Azure VM 进行连接 
 
-配置 [VNet 对等互连](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)，以便从对等互连 VNet 中的 Azure VM 来与 SQL 数据库建立连接。
+配置[虚拟网络对等互联](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)，以便从对等互联虚拟网络中的 Azure VM 建立与 SQL 数据库的连接。
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>从 VNet 到 VNet 环境中的 Azure VM 进行连接
+## <a name="connecting-from-an-azure-vm-in-virtual-network-to-virtual-network-environment"></a>从虚拟网络中的 Azure VM 连接到虚拟网络环境
 
-配置 [VNet 到 VNet VPN 网关连接](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)，以便从另一区域或订阅中的 Azure VM 来与 SQL 数据库建立连接。
+配置[虚拟网络到虚拟网络 VPN 网关连接](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)，以便从另一区域或订阅中的 Azure VM 建立与 SQL 数据库中的数据库的连接。
 
 ## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>通过 VPN 从本地环境进行连接
 
-若要建立从本地环境到 SQL 数据库的连接，请选择并实施以下选项之一：
+若要建立从本地环境到 SQL 数据库中的数据库的连接，请选择并实施以下选项之一：
 - [点到站点连接](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 - [站点到站点 VPN 连接](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [ExpressRoute 线路](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -177,7 +177,7 @@ where session_id=@@SPID
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>使用 Polybase 从 Azure Synapse Analytics 连接到 Azure 存储
 
-PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组 VNet 子网，则通过 PolyBase 与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到 VNet）的 Azure Synapse Analytics，若要启用 PolyBase 导入和导出方案，请执行[此处](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
+PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Analytics 中。 如果要从中加载数据的 Azure 存储帐户仅允许通过专用终结点、服务终结点或基于 IP 的防火墙访问一组虚拟网络子网，则通过 PolyBase 与该帐户建立的连接将会断开。 对于连接到 Azure 存储（已通过安全方式连接到虚拟网络）的 Azure Synapse Analytics，若要启用 PolyBase 导入和导出方案，请执行[此处](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步骤。 
 
 ## <a name="next-steps"></a>后续步骤
 

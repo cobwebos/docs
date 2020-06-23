@@ -1,23 +1,23 @@
 ---
-title: 对性能降低进行故障排除
-description: 了解如何解决 Azure 应用服务中的应用性能缓慢问题，包括监视应用行为、收集数据和缓解问题。
+title: 排查性能降低问题
+description: 了解如何解决 Azure 应用服务中的应用性能低的问题，包括监视应用行为、收集数据和缓解该问题。
 tags: top-support-issue
 keywords: Web 应用性能，缓慢应用，应用缓慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688315"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170760"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>排查 Azure 应用服务中应用性能缓慢的问题
 本文帮助排查 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中应用性能缓慢的问题。
 
-如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 
 ## <a name="symptom"></a>症状
 浏览应用时，页面加载缓慢，并且有时还会超时。
@@ -39,14 +39,14 @@ ms.locfileid: "74688315"
 
 [应用服务](overview.md)在每个步骤提供了多种选项。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴****。 “指标”边栏选项卡显示所有可以添加的指标。****
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡显示所有可以添加的指标。
 
 可能需要在应用中监视的一些指标包括
 
@@ -58,13 +58,13 @@ ms.locfileid: "74688315"
 
 ![监视应用性能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 * [监视 Azure 应用服务中的应用](web-sites-monitor.md)
 * [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 #### <a name="monitor-web-endpoint-status"></a>监视 Web 终结点状态
-如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。****
+如果在“标准”定价层中运行应用，应用服务允许从三个地理位置监视两个终结点。
 
 终结点监视可从测试 Web URL 的响应时间和运行时间的分布式地理位置配置 Web 测试。 该测试可对 Web URL 执行 HTTP GET 操作，以从每个位置确定响应时间和运行时间。 每个已配置位置每 5 分钟运行一次测试。
 
@@ -75,7 +75,7 @@ ms.locfileid: "74688315"
 另外，有关终结点监视的视频，请参阅[保持 Azure 网站运行以及终结点监视 - Stefan Schackow](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow)。
 
 #### <a name="application-performance-monitoring-using-extensions"></a>使用扩展的应用程序性能监视
-还可以使用站点扩展监视应用程序的性能。**
+还可以使用站点扩展监视应用程序的性能。
 
 每个应用服务应用都提供了一个可扩展的管理终结点，通过此终结点可使用一组作为站点扩展部署的功能强大的工具。 扩展包括： 
 
@@ -84,16 +84,16 @@ ms.locfileid: "74688315"
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 是也可用的性能监视站点扩展。 若要使用 Application Insights，请使用 SDK 重新生成代码。 还可以安装用于访问其他数据的扩展。 SDK 可用于编写代码，以便更详细地监视应用的使用情况和性能。 有关详细信息，请参阅[在 Web 应用程序中监视性能](../azure-monitor/app/web-monitor-performance.md)。
 
-<a name="collect" />
+<a name="collect"></a>
 
-### <a name="2-collect-data"></a>2. 收集数据
+### <a name="2-collect-data"></a>2.收集数据
 应用服务为 Web 服务器和 Web 应用程序中的日志记录信息提供诊断功能。 此信息分为 Web 服务器诊断和应用程序诊断。
 
 #### <a name="enable-web-server-diagnostics"></a>启用 Web 服务器诊断
 可以启用或禁用以下种类的日志：
 
 * **详细错误日志记录** - 指示故障的 HTTP 状态代码（状态代码 400 或更大数字）的详细错误消息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。
-* **失败请求跟踪**-有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高应用性能或查找导致特定 HTTP 错误的问题时，此信息很有用。
+* **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 在尝试提高应用性能或查找导致特定 HTTP 错误的问题时，此信息很有用。
 * **Web 服务器日志记录** - 使用 W3C 扩展日志文件格式的 HTTP 事务信息。 这在确定总体应用指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 #### <a name="enable-application-diagnostics"></a>启用应用程序诊断
@@ -121,10 +121,10 @@ Application Insights Profiler 提供每个 Web 调用响应时间的统计信息
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。****
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
-应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。****
+应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 Kudu 控制台或 SCM 仪表板。 
 
 可以通过转到链接 **https://&lt;Your app name>.scm.azurewebsites.net/** 来访问此仪表板。
 
@@ -139,9 +139,9 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 有关 Kudu 提供的功能的详细信息，请参阅[应该了解的 Azure DevOps 工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
-### <a name="3-mitigate-the-issue"></a>3. 缓解此问题
+### <a name="3-mitigate-the-issue"></a>3.缓解问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
@@ -161,4 +161,4 @@ AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的�
 
  ![重启应用以解决性能问题](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[使用 Azure 资源管理器的 Azure PowerShell](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。

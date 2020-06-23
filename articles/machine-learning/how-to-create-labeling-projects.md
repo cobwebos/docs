@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171543"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629635"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -40,7 +40,6 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 
 ## <a name="prerequisites"></a>先决条件
 
-
 * 本地文件或 Azure Blob 存储中要标记的数据。
 * 要应用的一组标签。
 * 标记说明。
@@ -67,6 +66,8 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 
 如果已创建包含数据的数据集，请从“选择现有数据集”下拉列表中选择该数据集。 或者，选择“创建数据集”以使用现有的 Azure 数据存储或上传本地文件。
 
+> [!NOTE]
+> 一个项目最多包含 500,000 个图像。  如果数据集中包含的图像超过此限制，将只加载前 500,000 个图像。  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>从 Azure 数据存储创建数据集
 
@@ -85,8 +86,6 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 1. 选择“**下一页**”。
 1. 确认详细信息。 选择“后退”以修改设置，或选择“创建”以创建数据集。 
 
-> [!NOTE]
-> 所选的数据将载入到项目。  创建项目后，添加到数据存储的其他数据不会显示在此项目中。  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>基于上传的数据创建数据集
 
@@ -102,6 +101,19 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 1. 确认详细信息。 选择“后退”以修改设置，或选择“创建”以创建数据集。 
 
 数据将上传到机器学习工作区的默认 Blob 存储（“workspaceblobstore”）。
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"></a>配置增量刷新
+
+如果打算向数据集中添加新图像，请使用增量刷新将这些新图像添加到项目。   启用增量刷新时，将根据标记完成率定期检查数据集，以将新图像添加到项目。   项目包含的图像达到最大数 500,000 时，新数据检查将停止。
+
+若要将更多图像添加到项目中，请使用 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)上载到 blob 存储中的相应文件夹。 
+
+如果希望项目持续监视数据存储中的新数据，请选中“启用增量刷新”框。
+
+如果不希望数据存储中的新图像添加到项目，请取消选中此框。
+
+可以在项目的“详细信息”选项卡的“增量刷新”部分中找到最新刷新的时间戳。
+
 
 ## <a name="specify-label-classes"></a>添加标签类
 

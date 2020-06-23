@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448738"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434579"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>什么是必应自定义搜索 API？
 
@@ -29,7 +29,7 @@ ms.locfileid: "75448738"
 |[自定义图像搜索体验](get-images-from-instance.md)     | 让用户从自定义搜索实例中指定的域和网站搜索图像。        |        
 |[自定义视频搜索体验](get-videos-from-instance.md)     | 让用户从自定义搜索实例中指定的域和站点搜索视频。        |    
 |[共享自定义搜索实例](share-your-custom-search.md)     | 将搜索实例与团队成员共享，以合作方式对其进行编辑和测试。        | 
-|[配置应用程序和网站的 UI](hosted-ui.md)     | 将搜索实例与团队成员共享，以合作方式对其进行编辑和测试。        | 
+|[配置应用程序和网站的 UI](hosted-ui.md)     | 提供的托管 UI 可以轻松地作为 JavaScript 代码片段集成到网页和 Web 应用程序中。        | 
 ## <a name="workflow"></a>工作流
 
 可以使用[必应自定义搜索门户](https://customsearch.ai)创建自定义的搜索实例。 通过该门户可以创建自定义的搜索实例，用于指定要让必应搜索的域、网站和网页，以及你不希望必应搜索的内容。 使用门户还可以：预览搜索体验、调整 API 提供的搜索排名，并选择性地配置一个可在网站和应用程序中呈现的可搜索用户界面。

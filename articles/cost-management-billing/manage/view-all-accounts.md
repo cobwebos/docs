@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/29/2020
 ms.author: banders
-ms.openlocfilehash: 4dab11afb2ddd910a4d6619d088031279ebf3172
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6f571d323a06b64f79c3f97ae8717be7eb8968d3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238000"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434499"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 门户中的计费帐户和范围
 
@@ -22,9 +22,9 @@ Azure 门户支持以下类型的计费帐户：
 
 - **Microsoft Online Services 计划**：Microsoft Online Services 计划的计费帐户是通过 Azure 网站注册 Azure 时创建的。 例如，当你注册 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)、[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或作为 [Visual Studio 订阅者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)时。
 
-- **企业协议**：当组织签署使用 Azure 的[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 时，将为企业协议创建一个计费帐户。
+- **企业协议**：当组织签署使用 Azure 的[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 时，将为企业协议创建一个计费帐户。 在企业协议中，最多可以有 500 个订阅。
 
-- **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。 有关详细信息，请参阅 [Microsoft 客户协议的计费帐户入门](../understand/mca-overview.md)。
+- **Microsoft 客户协议**：当组织与 Microsoft 代表一起签署 Microsoft 客户协议时，将会为 Microsoft 客户协议创建一个计费帐户。 特定区域的某些客户通过 Azure 网站注册[采用即用即付费率的帐户](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免费帐户](https://azure.microsoft.com/offers/ms-azr-0044p/)，这些客户可能也有一个适用于 Microsoft 客户协议的计费帐户。 在 Microsoft 客户协议中，最多可以有 20 个订阅。 有关详细信息，请参阅 [Microsoft 客户协议的计费帐户入门](../understand/mca-overview.md)。
 
 - **Microsoft 合作伙伴协议**：Microsoft 合作伙伴协议的计费帐户是为云解决方案提供商 (CSP) 合作伙伴创建的，用于在新的商业体验中管理其客户。 合作伙伴至少需要有一个客户拥有 [Azure 计划](https://docs.microsoft.com/partner-center/purchase-azure-plan)，才能在 Azure 门户中管理其计费帐户。 有关详细信息，请参阅 [Microsoft 合作伙伴协议的计费帐户入门](../understand/mpa-overview.md)。
 
@@ -35,7 +35,7 @@ Azure 门户支持以下类型的计费帐户：
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services 计划
 
- ![显示 MOSP 层次结构的屏幕截图](./media/view-all-accounts/mosp-hierarchy.png)
+![显示 MOSP 层次结构的屏幕截图](./media/view-all-accounts/mosp-hierarchy.png)
 
 |范围  |定义  |
 |---------|---------|
@@ -77,11 +77,11 @@ Azure 门户支持以下类型的计费帐户：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。 
+2. 搜索“成本管理 + 计费”。
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
-3. 在概览页中，选择“切换范围”。 
+3. 在概览页中，选择“切换范围”。
 
    ![显示计费范围的屏幕截图](./media/view-all-accounts/overview-select-scopes.png)
 

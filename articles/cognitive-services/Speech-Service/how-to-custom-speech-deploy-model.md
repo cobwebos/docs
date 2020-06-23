@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402180"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130409"
 ---
 # <a name="deploy-a-custom-model"></a>部署自定义模型
 
@@ -39,10 +39,12 @@ ms.locfileid: "81402180"
 ## <a name="view-logging-data"></a>查看日志记录数据
 
 可以在“终结点”>“详细信息”下下载日志记录数据。 
+> [!NOTE]
+>日志记录数据可在 Microsoft 拥有的存储上30天内可用，并将在以后删除。 如果客户拥有的存储帐户已链接到认知服务订阅，则不会自动删除日志记录数据。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在此处](how-to-specify-source-language.md)了解如何使用自定义模型。
+* 在[此处](how-to-specify-source-language.md)了解如何使用自定义模型。
 
 ## <a name="additional-resources"></a>其他资源
 

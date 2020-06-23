@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978147"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014853"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>使用 PowerShell 在 Azure VM 中配置 Always On 可用性组
 > [!div class="op_single_selector"]
@@ -27,10 +27,10 @@ ms.locfileid: "75978147"
 > * [经典：PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-在开始之前，考虑到现在可以在 Azure Resource Manager 模型中完成此任务。 我们建议使用 Azure Resource Manager 模型来进行新的部署。 请参阅 [Azure 虚拟机上的 SQL Server Always On 可用性组](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
+在开始之前，考虑到现在可以在 Azure Resource Manager 模型中完成此任务。 我们建议使用 Azure Resource Manager 模型来进行新的部署。 请参阅 [Azure 虚拟机上的 SQL Server Always On 可用性组](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)。
 
 > [!IMPORTANT]
-> 我们建议在大多数新部署中使用 Resource Manager 模型。 Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍使用经典部署模型。
+> 我们建议在大多数新部署中使用 Resource Manager 模型。 Azure 具有用于创建和处理资源的两个不同部署模型：[资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍使用经典部署模型。
 
 Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server 系统的成本。 本教程展示了如何在 Azure 环境中使用端到端 SQL Server Always On 实现可用性组。 在本教程结束时，Azure 中的 SQL Server Always On 解决方案将包括以下要素：
 
@@ -238,7 +238,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”  和“创建计算对象”  权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”  权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需权限的详细信息，请参阅[故障转移群集循序渐进指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)。
+    上面指定的 GUID 是计算机对象类型的 GUID。 **CORP\Install** 帐户需要“读取所有属性”和“创建计算对象”权限才能为故障转移群集创建 Active Direct 对象。 默认情况下，已经将“读取所有属性”权限授予 CORP\Install，因此无需显式授予该权限。 有关创建故障转移群集所需权限的详细信息，请参阅[故障转移群集循序渐进指南：在 Active Directory 中配置帐户](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)中）。
 
     现在已完成了 Active Directory 和用户对象的配置，接下来，将创建两个 SQL Server VM 并将其加入到此域中。
 
@@ -379,15 +379,15 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 ## <a name="initialize-the-failover-cluster-vms"></a>初始化故障转移群集 VM
 在本部分中，需要修改会在故障转移群集和 SQL Server 安装中使用的三个服务器。 具体来说：
 
-* 所有服务器：需要安装**故障转移群集**功能。
-* 所有服务器：需要添加 **CORP\Install** 作为计算机**管理员**。
-* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 **CORP\Install** 添加为默认数据库中的 **sysadmin** 角色。
-* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 **NT AUTHORITY\System** 添加为具有以下权限的登录名：
+* 所有服务器：需要安装“故障转移群集”功能。
+* 所有服务器：需要添加 CORP\Install 作为计算机“管理员” 。
+* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 CORP\Install 添加为默认数据库中的 sysadmin 角色 。
+* 仅限 ContosoSQL1 和 ContosoSQL2：需要将 NT AUTHORITY\System 添加为具有以下权限的登录名：
 
   * 更改任何可用性组
   * 连接 SQL
   * 查看服务器状态
-* 仅限 ContosoSQL1 和 ContosoSQL2：在 SQL Server VM 上已启用了 **TCP** 协议。 但是，仍需打开防火墙以便远程访问 SQL Server。
+* 仅限 ContosoSQL1 和 ContosoSQL2：SQL Server VM 上已启用 TCP 协议。 但是，仍需打开防火墙以便远程访问 SQL Server。
 
 现在，已准备就绪，可以执行启动操作了。 从 **ContosoQuorum** 开始，执行以下步骤：
 
@@ -481,7 +481,7 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. 从**为 Azure VM 中的 AlwaysOn 可用性组创建故障转移群集**，将 [CreateAzureFailoverCluster.ps1](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) 下载到本地工作目录中。 将使用此脚本创建一个正常运行的故障转移群集。 有关 Windows 故障转移群集如何与 Azure 网络交互的重要信息，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
+7. 从[为 Azure VM 中的 AlwaysOn 可用性组创建故障转移群集](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a)，将 **CreateAzureFailoverCluster.ps1** 下载到本地工作目录中。 将使用此脚本创建一个正常运行的故障转移群集。 有关 Windows 故障转移群集如何与 Azure 网络交互的重要信息，请参阅 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)。
 8. 切换至工作目录并使用下载的脚本创建故障转移群集。
 
         Set-ExecutionPolicy Unrestricted -Force
@@ -567,4 +567,4 @@ Azure 虚拟机 (VM) 可帮助数据库管理员降低高可用性 SQL Server �
 ## <a name="next-steps"></a>后续步骤
 现在，已通过在 Azure 中创建可用性组成功实现了 SQL Server Always On。 若要为此可用性组配置侦听器，请参阅[在 Azure 中配置 Always On 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
 
-有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [SQL Server on Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)（Azure 虚拟机上的 SQL Server）。
+有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [SQL Server on Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)（Azure 虚拟机上的 SQL Server）。

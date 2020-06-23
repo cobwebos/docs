@@ -18,6 +18,11 @@
     - name: 使用门户和 OBS 创建直播活动
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 使用门户上传、编码和流式处理内容
+      href: manage-assets-quickstart.md
+    - name: 使用门户加密内容
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: 教程
   items:
     - name: 对远程文件进行编码并流式传输视频
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: 标准编码器架构
       items:
+        - name: 输入元数据
+          href: input-metadata-schema.md
         - name: 输出元数据
           href: output-metadata-schema.md
 - name: 资源

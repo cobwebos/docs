@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702025"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560874"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何使用 SQL 按需版本（预览版）中的 OPENROWSET
 
@@ -107,7 +107,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 'unstructured_data_path'
 
 用于建立数据路径的 unstructured_data_path 可以是绝对路径，也可以是相对路径：
-- 绝对路径的格式为“\<prefix>://\<storage_account_path>/\<storage_path>”，允许用户直接读取文件。
+- 采用格式“\<prefix>://\<storage_account_path>/\<storage_path>”的绝对路径使用户能够直接读取文件。
 - 相对路径的格式为“<storage_path>”，必须与 `DATA_SOURCE` 参数一起使用，它描述 `EXTERNAL DATA SOURCE` 定义的 <storage_account_path> 位置中的文件模式。 
 
  在下面可以找到相关的 <storage account path> 值，用于链接到特定的外部数据源。 
@@ -130,7 +130,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 如果将 unstructured_data_path 指定为某个文件夹，则 SQL 按需版本查询将从该文件夹中检索文件。 
 
 > [!NOTE]
-> 与 Hadoop 和 PolyBase 不同，SQL 按需版本不返回子文件夹。 此外，与 Hadoop 和 PloyBase 不同，SQL 按需版本会返回文件名以下划线 (_) 或句点 (.) 开头的文件。
+> 与 Hadoop 和 PolyBase 不同，SQL 按需版本不返回子文件夹。 此外，与 Hadoop 和 PolyBase 不同，SQL 按需版本会返回文件名以下划线 (_) 或句点 (.) 开头的文件。
 
 在以下示例中，如果 unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`，则 SQL 按需版本查询将返回 mydata.txt 和 _hidden.txt 中的行。 它不返回 mydata2.txt 和 mydata3.txt，因为这些文件位于子文件夹中。
 
@@ -163,7 +163,7 @@ WITH (
 )
 ```
 
-\<bulk_options>
+**\<bulk_options>**
 
 FIELDTERMINATOR ='field_terminator'
 

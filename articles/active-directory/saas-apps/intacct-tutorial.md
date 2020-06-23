@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201340"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509366"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教程：将 Sansan Intacct 与 Azure Active Directory 集成
 
@@ -44,22 +44,22 @@ ms.locfileid: "82201340"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Sage Intacct 支持 IDP  发起的 SSO
+* Sage Intacct 支持 IDP 发起的 SSO
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>从库中添加 Sage Intacct
 
 要配置 Sage Intacct 与 Azure AD 的集成，需要从库中将 Sage Intacct 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入“Sage Intacct”   。
-1. 从结果面板中选择“Sage Intacct”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Sage Intacct” 。
+1. 从结果面板中选择“Sage Intacct”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>配置并测试 Sage Intacct 的 Azure AD 单一登录
 
-使用名为 B. Simon 的测试用户配置和测试 Sage Intacct 的 Azure AD SSO  。 若要运行 SSO，需要在 Azure AD 用户与 Sage Intacct 相关用户之间建立链接关系。
+使用名为 B. Simon 的测试用户配置和测试 Sage Intacct 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Sage Intacct 相关用户之间建立链接关系。
 
 若要配置和测试 Sage Intacct 的 Azure AD SSO，请完成以下构建基块：
 
@@ -74,47 +74,46 @@ ms.locfileid: "82201340"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Sage Intacct”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Sage Intacct”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“回复 URL”文本框中键入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml` 
+    在“回复 URL”文本框中键入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml`
 
-1. Sage Intacct 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”  图标以打开“用户属性”对话框.
+1. Sage Intacct 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框.
 
     ![image](common/edit-attribute.png)
 
-1. 除了上述属性，Sage Intacct 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”  对话框的“用户声明”  部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
+1. 除了上述属性，Sage Intacct 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性和声明”对话框中，执行以下步骤来添加 SAML 令牌属性，如下表所示：
 
-    | 名称  |  源属性|
+    | 属性名称  |  源属性|
     | ---------------| --------------- |
     | 公司名称 | **Sage Intacct 公司 ID** |
-    | name | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“用户 ID”  相同，本教程的后半部分会对此进行解释 |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | 值应与在“创建 Sage Intact 测试用户部分”  中输入的 Sage Intacct“联合 SSO 用户 ID”  相同，本教程的后半部分会对此进行解释 |
+    | name | 值应与在“创建 Sage Intact 测试用户部分”中输入的 Sage Intacct“用户 ID”相同，本教程的后半部分会对此进行解释 |
 
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
-    c. 将“命名空间”留空  。
+    c. 将“命名空间”留空。
 
-    d. 选择“源”作为“属性”  。
+    d. 选择“源”作为“属性”。
 
-    e. 在“源属性”  列表中，键入为该行显示的属性值。
+    e. 在“源属性”列表中，键入或选择为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
-1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
+1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 在“设置 Sage Intacct”  部分上，根据要求复制相应的 URL。
+1. 在“设置 Sage Intacct”部分上，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -122,57 +121,57 @@ ms.locfileid: "82201340"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，通过授予 B.Simon 访问 Sage Intacct 的权限，允许她使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Sage Intacct”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Sage Intacct”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-sage-intacct-sso"></a>配置 Sage Intacct SSO
 
 1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Sage Intacct 公司站点。
 
-1. 单击“公司”  选项卡，并单击“公司信息”  。
+1. 单击“公司”选项卡，并单击“公司信息”。
 
     ![Company](./media/intacct-tutorial/ic790037.png "Company")
 
-1. 单击“安全性”  选项卡，并单击“编辑”  。
+1. 单击“安全性”选项卡，并单击“编辑”。
 
     ![安全性](./media/intacct-tutorial/ic790038.png "安全性")
 
-1. 在“单一登录(SSO)”  部分中，执行以下步骤：
+1. 在“单一登录(SSO)”部分中，执行以下步骤：
 
     ![单一登录](./media/intacct-tutorial/ic790039.png "单一登录")
 
-    a. 选择“启用单一登录”  。
+    a. 选择“启用单一登录”。
 
-    b. 对于“标识提供者类型”  ，选择“SAML 2.0”  。
+    b. 对于“标识提供者类型”，选择“SAML 2.0”。
 
-    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。
 
-    d. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    d. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
-    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”框中   。
+    e. 在记事本中打开 base-64 编码的证书，将其内容复制到剪贴板，然后将其粘贴到“证书”框中 。
 
     f. 单击“ **保存**”。
 
@@ -182,24 +181,24 @@ ms.locfileid: "82201340"
 
 **若要预配用户帐户，请执行以下步骤：**
 
-1. 登录到 Sage Intacct  租户。
+1. 登录到 Sage Intacct 租户。
 
-1. 单击“公司”  选项卡，并单击“用户”  。
+1. 单击“公司”选项卡，并单击“用户”。
 
     ![用户](./media/intacct-tutorial/ic790041.png "用户")
 
-1. 单击“添加”  选项卡。
+1. 单击“添加”选项卡。
 
     ![添加](./media/intacct-tutorial/ic790042.png "添加")
 
-1. 在“用户信息”  部分中，执行以下步骤：
+1. 在“用户信息”部分中，执行以下步骤：
 
     ![用户信息](./media/intacct-tutorial/ic790043.png "用户信息")
 
-    a. 在“用户信息”部分中输入要预配的 Azure AD 帐户的**用户 ID**、**姓氏**、**名字**、**电子邮件地址**、**职务**和**电话**  。
+    a. 在“用户信息”部分中输入要预配的 Azure AD 帐户的**用户 ID**、**姓氏**、**名字**、**电子邮件地址**、**职务**和**电话** 。
 
     > [!NOTE]
-    > 确保上述屏幕截图中的“用户 ID”与 Azure 门户中“用户属性”部分的通过“名称”属性映射的“源属性”值是相同的     。
+    > 确保上述屏幕截图中的“用户 ID”与 Azure 门户中“用户属性”部分的通过“名称”属性映射的“源属性”值是相同的   。
 
     b. 选择要预配的 Azure AD 帐户的**管理员特权**。
 
@@ -207,7 +206,7 @@ ms.locfileid: "82201340"
     
     d. Azure AD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。
 
-1. 单击“单一登录”选项卡并确保下方屏幕截图中的“联合 SSO 用户 ID”与 Azure 门户的“用户属性”部分中通过 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 映射的“源属性”值是相同的     。
+1. 单击“单一登录”选项卡并确保下方屏幕截图中的“联合 SSO 用户 ID”与 Azure 门户的“用户属性”部分中通过 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 映射的“源属性”值是相同的   。
 
     ![用户信息](./media/intacct-tutorial/ic790044.png "用户信息")
 

@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296521"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464804"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 
 可以通过两种方式连接到 Azure 文件共享：
 
 - 直接通过 SMB 或 FileREST 协议访问共享。 要删除尽可能多的本地服务器时，主要使用此访问模式。
-- 使用 Azure 文件同步在本地服务器上创建 Azure 文件共享的缓存，并使用所选协议（SMB、NFS、FTPS 等）从本地服务器访问文件共享的数据。 此访问模式非常方便，因为它结合了本地性能以及云缩放和无服务器可附加服务（例如，Azure 备份）的优势。
+- 使用 Azure 文件同步在本地服务器上（或在 Azure VM 上）创建 Azure 文件共享的缓存，并使用适合自己用例的所选协议（SMB、NFS、FTPS 等）从本地服务器访问文件共享的数据。 此访问模式非常方便，因为它结合了本地性能以及云缩放和无服务器可附加服务（例如，Azure 备份）的优势。
 
-本文重点介绍如何在用例要求直接访问 Azure 文件共享而不是使用 Azure 文件同步时配置网络。要详细了解 Azure 文件同步部署的网络注意事项，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
+本文重点介绍如何在用例要求直接访问 Azure 文件共享而不是使用 Azure 文件同步时配置网络。要详细了解 Azure 文件同步部署的网络注意事项，请参阅[Azure 文件同步网络注意事项](storage-sync-files-networking-overview.md)。
 
 Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储帐户公开多种设置用于帮助保护对文件共享的网络访问：网络终结点、存储帐户防火墙设置和传输中加密。 
 
@@ -137,7 +137,7 @@ IP4Address : 52.239.194.40
 
 可通过两种方法来仅限虚拟网络访问存储帐户：
 - 为存储帐户创建一个或多个专用终结点，并限制对公共终结点的所有访问。 这可以确保只有源自所需虚拟网络内部的流量才能访问存储帐户中的 Azure 文件共享。
-- 仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。  通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
+- 仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。 通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
 
 若要详细了解如何配置存储帐户防火墙，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 

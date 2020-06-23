@@ -7,20 +7,21 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.custom: tracking-python
+ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758179"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607204"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
-本文适用于解决方案构建者和设备开发人员。 
+本文适用于解决方案构建者和设备开发人员。
 
-本教程介绍如何以设备开发人员的身份将 Python 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Python 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。   此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
+本教程介绍如何以设备开发人员的身份将 Python 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Python 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。  此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -37,8 +38,8 @@ ms.locfileid: "81758179"
 
 若要完成本文中的步骤，需要以下各项：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。  有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
-* 装有 [Python](https://www.python.org/) 3.7 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `python3 --version`。 Python 适用于各种操作系统。 本教程中的说明假设在 Windows 命令提示符下运行 python3 命令。 
+* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 装有 [Python](https://www.python.org/) 3.7 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `python3 --version`。 Python 适用于各种操作系统。 本教程中的说明假设在 Windows 命令提示符下运行 python3 命令。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
@@ -54,9 +55,9 @@ ms.locfileid: "81758179"
     pip install azure-iot-device
     ```
 
-1. 在 `environmental-sensor` 文件夹中创建名为 environmental_sensor.py 的文件。 
+1. 在 `environmental-sensor` 文件夹中创建名为 environmental_sensor.py 的文件。
 
-1. 在 environmental_sensor.py 文件的开头添加以下 `import` 语句： 
+1. 在 environmental_sensor.py 文件的开头添加以下 `import` 语句：
 
     ```python
     import asyncio
@@ -241,7 +242,7 @@ ms.locfileid: "81758179"
             )
     ```
 
-    当操作员在 IoT Central 应用程序中设置可写属性时，该应用程序会使用设备孪生所需属性将值发送到设备。 然后，设备使用设备孪生报告属性做出响应。 IoT Central 在收到报告属性值时会使用 synced 状态更新属性视图。 
+    当操作员在 IoT Central 应用程序中设置可写属性时，该应用程序会使用设备孪生所需属性将值发送到设备。 然后，设备使用设备孪生报告属性做出响应。 IoT Central 在收到报告属性值时会使用 synced 状态更新属性视图。
 
     属性的名称（`name` 和 `brightness`）必须与设备模板中使用的名称相匹配。
 
@@ -283,7 +284,7 @@ ms.locfileid: "81758179"
         print('Device could not connect')
     ```
 
-1. 保存 environmental_sensor.py 文件。 
+1. 保存 environmental_sensor.py 文件。
 
 ## <a name="run-your-python-application"></a>运行 Python 应用程序
 
@@ -307,8 +308,9 @@ python3 environmental_sensor.py
 
 作为设备开发人员，现在你已了解了有关使用 Node.js 创建设备的基础知识，建议执行的后续步骤是：
 
-- 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
-- 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
+* 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
+* 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
+* 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
 
 若要继续浏览 IoT Central 系列教程并详细了解如何构建 IoT Central 解决方案，请参阅：
 

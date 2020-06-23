@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053064"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324600"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>快速入门：在 Azure SQL 数据库机器学习服务（预览版）中创建和运行简单的 R 脚本
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84053064"
 
 若要运行 R 脚本，请将它作为参数传递给系统存储过程 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql)。
 
-在下面的步骤中，你将在 SQL 数据库中运行此示例 R 脚本：
+在下面的步骤中，你将在数据库中运行此示例 R 脚本：
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. 打开 **SQL Server Management Studio**，连接到 SQL 数据库。
+1. 打开 SQL Server Management Studio，连接到数据库。
 
-   如果在连接方面需要帮助，请参阅[快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库](connect-query-ssms.md)。
+   如果在连接方面需要帮助，请参阅[快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库中的数据库](connect-query-ssms.md)。
 
 1. 将完整的 R 脚本传递给 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 存储过程。
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   如果出现错误，则可能是因为尚未为 SQL 数据库启用机器学习服务（使用 R）的公共预览版。 请参阅上述[先决条件](#prerequisites)。
+   如果出现错误，则可能是因为尚未为数据库启用机器学习服务（使用 R）的公共预览版。 请参阅上述[先决条件](#prerequisites)。
 
    > [!NOTE]
    > 如果你是管理员，可以自动运行外部代码。 你可以使用以下命令向其他用户授予权限：
@@ -196,7 +196,7 @@ GO
 
 ## <a name="check-r-version"></a>检查 R 版本
 
-若要查看在 SQL 数据库中安装的 R 的版本，请运行以下脚本。
+若要查看在数据库中安装的 R 的版本，请运行以下脚本。
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>列出 R 包
 
-Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R 包。
+Microsoft 提供许多预安装在数据库的机器学习服务中的 R 包。
 
 若要查看已安装的 R 包列表（包括版本、依赖项、许可证和库路径的信息），请运行以下脚本。
 

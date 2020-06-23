@@ -9,12 +9,13 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+- tracking-python
+ms.openlocfilehash: 4a2f80ea30fc68ae1dfea72983fd2b229d40c711
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609776"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559282"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Python (Django) Web 应用
 
@@ -111,7 +112,7 @@ az login
 az extension add --name db-up
 ```
 
-如以下示例所示，使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令在 Azure 中创建 Postgres 数据库。 请将 \<postgresql-name> 替换为唯一名称（服务器终结点为 https://\<postgresql-name>.postgres.database.azure.com）。   对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据。 
+如以下示例所示，使用 [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) 命令在 Azure 中创建 Postgres 数据库。 将 \<postgresql-name> 替换为唯一名称（服务器终结点为 https://\<postgresql-name>.postgres.database.azure.com）  。 对于 \<admin-username> 和 \<admin-password>，请指定用来为此 Postgres 服务器创建管理员用户的凭据 。
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -146,7 +147,7 @@ az postgres up --resource-group myResourceGroup --location westus2 --server-name
 
 请确保返回到存储库根目录 (`djangoapp`)，因为应用将从此目录部署。
 
-如以下示例所示，使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令创建应用服务应用。 请将 \<app-name> 替换为唯一名称（服务器终结点为 https://\<app-name>.azurewebsites.net）。   \<app-name> 允许的字符为 `A`-`Z`、`0`-`9` 和 `-`。
+如以下示例所示，使用 [`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令创建应用服务应用。 将 \<app-name> 替换为唯一名称（服务器终结点为 https://\<app-name>.azurewebsites.net）  。 \<app-name> 允许的字符为 `A`-`Z`、`0`-`9` 和 `-`。
 
 ```azurecli
 az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
@@ -195,7 +196,7 @@ az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-nam
 
 在本地运行应用时，可以在终端会话中设置环境变量。 在应用服务中，可以使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令通过应用设置来实现此目的。
 
-运行以下命令，以将数据库连接详细信息指定为应用设置。 请将 \<app-name>、\<app-resource-group> 和 \<postgresql-name> 替换为自己的值。   请记住，`az postgres up` 已经为你创建了用户凭据 `root` 和 `Pollsdb1`。
+运行以下命令，以将数据库连接详细信息指定为应用设置。 将 \<app-name>、\<app-resource-group> 和 \<postgresql-name> 替换为自己的值  。 请记住，`az postgres up` 已经为你创建了用户凭据 `root` 和 `Pollsdb1`。
 
 ```azurecli
 az webapp config appsettings set --name <app-name> --resource-group <app-resource-group> --settings DJANGO_ENV="production" DBHOST="<postgresql-name>.postgres.database.azure.com" DBUSER="root@<postgresql-name>" DBPASS="Pollsdb1" DBNAME="pollsdb"
@@ -205,7 +206,7 @@ az webapp config appsettings set --name <app-name> --resource-group <app-resourc
 
 ### <a name="run-database-migrations"></a>运行数据库迁移
 
-若要在应用服务中运行数据库迁移，请在浏览器中导航到 https://>\<appname>.azurewebsites.net/webssh/host 来打开 SSH 会话：
+要在应用服务中运行数据库迁移，请通过导航至 https://\<app-name>.scm.azurewebsites.net/webssh/host 在浏览器中打开 SSH 会话：
 
 <!-- doesn't work when container not started -->
 <!-- ```azurecli
@@ -231,11 +232,11 @@ python manage.py createsuperuser
 
 浏览到 http:\//\<app-name>.azurewebsites.net/admin，并使用在上一步骤中创建的管理员用户登录。 选择“问题”旁边的“添加”，创建一个包含一些选项的轮询问题 。
 
-使用 URL http:\//\<app-name>.azurewebsites.net/admin 浏览到部署的应用，并创建一些投票问题。 可以在 http:\//\<app-name>.azurewebsites.net/ 中查看问题。 
+使用 URL http:\//\<app-name>.azurewebsites.net/admin 浏览到部署的应用，并创建一些轮询问题。 可以在 http:\//\<app-name>.azurewebsites.net/ 中查看问题。 
 
 ![在 Azure 的应用程序服务中运行 Python Django 应用](./media/tutorial-python-postgresql-app/deploy-python-django-app-in-azure.png)
 
-再次使用 URL http:\//\<app-name>.azurewebsites.net/admin 浏览到部署的应用，以查看投票问题并回答问题。
+再次使用 URL http:\//\<app-name>.azurewebsites.net 浏览到部署的应用，以查看轮询问题并回答问题。
 
 应用服务会检测存储库中的 Django 项目，其方式是在每个由 `manage.py startproject` 默认创建的子目录中查找 wsgi.py 文件。 应用服务找到该文件后，就会加载 Django Web 应用。 若要详细了解应用服务如何加载 Python 应用，请参阅[配置内置的 Python 映像](how-to-configure-python.md)。
 
@@ -363,7 +364,7 @@ az webapp up
 
 ### <a name="rerun-migrations-in-azure"></a>在 Azure 中重新运行迁移
 
-由于对数据模型进行了更改，因此需要在应用服务中重新运行数据库迁移。 在浏览器中导航到 https://\<app-name>.scm.azurewebsites.net/webssh/host 来打开 SSH 会话。 运行以下命令：
+由于对数据模型进行了更改，因此需要在应用服务中重新运行数据库迁移。 通过导航至 https://\<app-name>.scm.azurewebsites.net/webssh/host 在浏览器中打开 SSH 会话。 运行以下命令：
 
 ```
 cd site/wwwroot

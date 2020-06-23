@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310442"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457042"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 
@@ -92,12 +92,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
    ![选择“Webhook”](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. 在“创建事件订阅”页中执行以下步骤： 
     1. 输入事件订阅的“名称”。
-    2. 输入系统主题的名称 。 
+    2. 输入系统主题的名称 。 若要了解系统主题，请参阅[系统主题的概述](system-topics.md)。
 
        ![输入事件订阅和系统主题的名称](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-
-       > [!NOTE]
-       > 以前，为 Azure 源引发的事件创建订阅时，事件网格服务会用随机生成的名称自动创建系统主题。 现在，可以使用此文本框为系统主题指定名称。 可以使用此系统主题资源来发现指标和诊断日志。
     2. 对于“终结点类型”，请选择“Web Hook”。  
 
        ![选择 Web Hook 终结点类型](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

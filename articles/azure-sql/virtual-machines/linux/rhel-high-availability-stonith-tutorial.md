@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024632"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343764"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,13 +21,13 @@ ms.locfileid: "84024632"
 > [!NOTE]
 > 演示的教程为**公共预览版**。 
 >
-> 本教程结合使用 SQL Server 2017 和 RHEL 7.6，但也可以使用 RHEL 7 或 RHEL 8 中的 SQL Server 2019 来配置 HA。 用于配置可用性组资源的命令在 RHEL 8 中已更改，有关正确命令的详细信息，请查看[创建可用性组资源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) 和 RHEL 8 资源。
+> 本教程结合使用 SQL Server 2017 和 RHEL 7.6，但也可使用 RHEL 7 或 RHEL 8 中的 SQL Server 2019 来配置高可用性。 用于配置可用性组资源的命令在 RHEL 8 中已更改，查看[创建可用性组资源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) 和 RHEL 8 资源，详细了解正确的命令。
 
 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> - 创建新的资源组、可用性集和 Azure Linux 虚拟机 (VM)
-> - 启用高可用性 (HA)
+> - 创建新的资源组、可用性集和 Linux 虚拟机 (VM)
+> - 实现高可用性 (HA)
 > - 创建 Pacemaker 群集
 > - 通过创建 STONITH 设备来配置隔离代理
 > - 在 RHEL 上安装 SQL Server 和 mssql-tools
@@ -35,7 +35,7 @@ ms.locfileid: "84024632"
 > - 在 Pacemaker 群集中配置可用性组 (AG) 资源
 > - 测试故障转移和隔离代理
 
-本教程将使用 Azure 命令行接口 (CLI) 在 Azure 中部署资源。
+本教程将使用 Azure CLI 在 Azure 中部署资源。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "84024632"
 
 如果你希望在本地安装并使用 CLI，则本文需要 Azure CLI 版本 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
-## <a name="create-a-resource-group"></a>创建资源组。
+## <a name="create-a-resource-group"></a>创建资源组
 
 如果你有多个订阅，请[设置](/cli/azure/manage-azure-subscriptions-azure-cli)要将这些资源部署到的订阅。
 
@@ -55,7 +55,7 @@ az group create --name <resourceGroupName> --location eastus2
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 
-下一步是创建可用性集。 在 Azure Cloud Shell 中运行以下命令（请将 `<resourceGroupName>` 替换为你的资源组名称）。 选择 `<availabilitySetName>` 的名称。
+下一步是创建可用性集。 在 Azure Cloud Shell 中运行以下命令，并将 `<resourceGroupName>` 替换为你的资源组名称。 选择 `<availabilitySetName>` 的名称。
 
 ```azurecli-interactive
 az vm availability-set create \
@@ -95,7 +95,7 @@ az vm availability-set create \
 >
 > 为了避免“双重计费”，请在创建 Azure VM 时使用 RHEL HA 映像。 作为 RHEL-HA 映像提供的映像也是预先启用了 HA 存储库的 PAYG 映像。
 
-1. 获取提供已启用 HA 的 RHEL 的虚拟机 (VM) 映像列表：
+1. 获取提供已启用 HA 的 RHEL 的虚拟机映像列表：
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -132,7 +132,7 @@ az vm availability-set create \
     本教程将选择映像 `RedHat:RHEL-HA:7.6:7.6.2019062019`。
 
     > [!IMPORTANT]
-    > 若要设置可用性组，计算机名称必须短于 15 个字符。 用户名不能包含大写字符，密码必须包含 12 个以上的字符。
+    > 若要设置可用性组，计算机名称不得超过 15 个字符。 用户名不能包含大写字符，密码必须包含 12 个以上的字符。
 
 1. 我们希望在可用性集中创建 3 个 VM。 请替换以下命令中的以下占位符：
 
@@ -531,13 +531,13 @@ systemctl status mssql-server --no-pager
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>配置 SQL Server Always On 可用性组
+## <a name="configure-an-availability-group"></a>配置可用性组
 
 使用以下步骤为 VM 配置 SQL Server Always On 可用性组。 有关详细信息，请参阅[配置 SQL Server Always On 可用性组以在 Linux 上实现高可用性](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>启用 AlwaysOn 可用性组，并重启 mssql-server
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>启用 Always On 可用性组，并重启 mssql-server
 
-在托管 SQL Server 实例的每个节点上启用 AlwaysOn 可用性组。 然后重启 mssql-server。 运行以下脚本：
+在托管 SQL Server 实例的每个节点上启用 Always On 可用性组。 然后重启 mssql-server。 运行以下脚本：
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -566,19 +566,19 @@ sudo systemctl restart mssql-server
 1. 使用 SSMS 或 SQL CMD 连接到主要副本。 以下命令将在主要 SQL Server 副本上的 `/var/opt/mssql/data/dbm_certificate.cer` 中创建一个证书，并在 `var/opt/mssql/data/dbm_certificate.pvk` 中创建一个私钥：
 
     - 请将 `<Private_Key_Password>` 替换为自己的密码。
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 运行 `exit` 命令退出 SQL CMD 会话，并返回到 SSH 会话。
  
@@ -631,7 +631,7 @@ GO
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>在所有副本上创建数据库镜像终结点
 
-使用 SQL CMD 或 SSMS 在所有 SQL 实例上运行以下脚本：
+使用 SQL CMD 或 SSMS 在所有 SQL Server 实例上运行以下脚本：
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -649,7 +649,7 @@ GO
 
 ### <a name="create-the-availability-group"></a>创建可用性组
 
-使用 SQL CMD 或 SSMS 连接到托管主要副本的 SQL Server 实例。 运行以下命令以创建可用性组：
+使用 SQL CMD 或 SSMS 连接到托管主要副本的 SQL Server 实例。 运行以下命令来创建可用性组：
 
 - 请将 `ag1` 替换为所需的可用性组名称。
 - 请将 `<VM1>`、`<VM2>` 和 `<VM3>` 值替换为托管副本的 SQL Server 实例的名称。
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>为 Pacemaker 创建 SQL Server 登录名
 
-在所有 SQL Server 上，为 Pacemaker 创建 SQL 登录名。 以下 Transact-SQL 创建登录名。
+在所有 SQL Server 实例上，为 Pacemaker 创建 SQL Server 登录名。 以下 Transact-SQL 创建登录名。
 
 - 请将 `<password>` 替换为自己的复杂密码。
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-在所有 SQL Server 上，保存 SQL Server 登录名使用的凭据。 
+在所有 SQL Server 实例上，保存 SQL Server 登录名使用的凭据。 
 
 1. 创建文件：
 
@@ -985,7 +985,7 @@ Node: <VM3> fenced
 
 ## <a name="next-steps"></a>后续步骤
 
-为了利用 SQL Server 的可用性组侦听程序，需要创建和配置一个负载均衡器。
+为了利用 SQL Server 实例的可用性组侦听程序，需要创建和配置一个负载均衡器。
 
 > [!div class="nextstepaction"]
-> [教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组侦听程序](rhel-high-availability-listener-tutorial.md)
+> [教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器](rhel-high-availability-listener-tutorial.md)

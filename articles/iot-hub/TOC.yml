@@ -423,6 +423,8 @@
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET（服务）
       href: /dotnet/api/microsoft.azure.devices
+    - name: .NET（管理）
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
     - name: Java（设备）
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java（服务）
@@ -431,6 +433,14 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js（服务）
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: Node.js（管理）
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+    - name: Python（设备）
+      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+    - name: Python（服务）
+      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+    - name: Python（管理）
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
     - name: C 设备 SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
     - name: REST（设备）

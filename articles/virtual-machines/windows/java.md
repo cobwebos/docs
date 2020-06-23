@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870027"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232970"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -33,7 +33,7 @@ ms.locfileid: "81870027"
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
 1. 如果尚未安装 [Java](https://aka.ms/azure-jdks)，请安装。
-2. 安装[Maven](https://maven.apache.org/download.cgi)。
+2. 安装 [Maven](https://maven.apache.org/download.cgi)。
 3. 创建新文件夹和项目：
     
     ```
@@ -127,7 +127,7 @@ ms.locfileid: "81870027"
     graphURL=https://graph.microsoft.com/
     ```
 
-    将** &lt;订阅&gt; id**替换为你的订阅标识符** &lt;，应用程序&gt; id**替换为 Active Directory 应用程序标识符， ** &lt;身份&gt;验证密钥**替换为应用程序密钥， ** &lt;租户&gt; id**替换为租户标识符。
+    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符   。
 
 2. 保存文件。
 3. 在 shell 中将包含完整路径的环境变量 AZURE_AUTH_LOCATION 设置为身份验证文件。
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>创建公共 IP 地址
 
-与虚拟机通信需要[公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+与虚拟机通信需要[公共 IP 地址](../../virtual-network/public-ip-addresses.md)。
 
 若要创建虚拟机的公共 IP 地址，请将此代码添加到 main 方法的 try 块：
 

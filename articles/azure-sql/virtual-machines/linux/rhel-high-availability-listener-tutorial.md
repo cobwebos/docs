@@ -8,22 +8,22 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025061"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343755"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > 演示的教程为**公共预览版**。 
 >
-> 本教程结合使用 SQL Server 2017 和 RHEL 7.6，但也可以使用 RHEL 7 或 RHEL 8 中的 SQL Server 2019 来配置 HA。 用于配置可用性组资源的命令在 RHEL 8 中已更改，有关正确命令的详细信息，请查看[创建可用性组资源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) 和 RHEL 8 资源。
+> 本教程结合使用 SQL Server 2017 和 RHEL 7.6，但也可使用 RHEL 7 或 RHEL 8 中的 SQL Server 2019 来配置高可用性。 用于配置可用性组资源的命令在 RHEL 8 中已更改，查看[创建可用性组资源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) 和 RHEL 8 资源，详细了解正确的命令。
 
-本教程逐步说明如何为 Azure 中 RHEL 虚拟机上的 SQL Server 创建可用性组侦听器。 将了解如何执行以下操作：
+本教程逐步说明如何为 Azure 中 RHEL 虚拟机 (VM) 上的 SQL Server 创建可用性组侦听器。 将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > - 在 Azure 门户中创建负载均衡器
@@ -37,7 +37,7 @@ ms.locfileid: "84025061"
 
 ## <a name="prerequisite"></a>先决条件
 
-已完成[**教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组**](rhel-high-availability-stonith-tutorial.md)
+已完成[教程：为 Azure 中 RHEL 虚拟机上的 SQL Server 配置可用性组](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>在 Azure 门户中创建负载均衡器
 
@@ -59,7 +59,7 @@ ms.locfileid: "84025061"
    | --- | --- |
    | **名称** |表示负载均衡器的文本名称。 例如 **sqlLB**。 |
    | 类型 |**内部** |
-   | **虚拟网络** |创建的默认 VNet 应命名为 **VM1VNET**。 |
+   | **虚拟网络** |创建的默认虚拟网络应命名为 VM1VNET。 |
    | **子网** |选择 SQL Server 实例所在的子网。 默认值应是 **VM1Subnet**。|
    | IP 地址分配 |**静态** |
    | **专用 IP 地址** |使用在群集中创建的 `virtualip` IP 地址。 |
@@ -117,7 +117,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
 
 ### <a name="set-the-load-balancing-rules"></a>设置负载均衡规则
 
-负载均衡规则设置负载均衡器将流量路由到 SQL Server 实例的方式。 对此负载均衡器，需要启用直接服务器返回，因为在三个 SQL Server 实例中，每次只有一个实例拥有可用性组侦听器资源。
+负载均衡规则会配置负载均衡器将流量路由到 SQL Server 实例的方式。 对此负载均衡器，需要启用直接服务器返回，因为在三个 SQL Server 实例中，每次只有一个实例拥有可用性组侦听器资源。
 
 1. 在负载均衡器的“设置”边栏选项卡上，单击“负载均衡规则”。  
 
@@ -220,7 +220,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
 
 ## <a name="test-the-listener-and-a-failover"></a>测试侦听器和故障转移
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>使用可用性组侦听器测试登录到 SQL Server
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>使用可用性组侦听器测试到 SQL Server 的登录
 
 1. 在 SQLCMD 中使用可用性组侦听器名称登录到 SQL Server 的主节点：
 
@@ -238,7 +238,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
 
     输出应显示当前主节点。 如果以前未测试过故障转移，则主节点应是 `VM1`。
 
-    键入 `exit` 命令退出 SQL 会话。
+    键入 `exit` 命令退出 SQL Server 会话。
 
 ### <a name="test-a-failover"></a>测试故障转移
 
@@ -280,7 +280,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. 检查连接到的服务器。 在 SQLCMD 中运行以下命令：
 
@@ -292,7 +292,7 @@ Azure 创建探测，并使用它来测试哪个 SQL Server 实例具有可用�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 中的负载均衡器的详细信息，请参阅：
+要详细了解 Azure 中的负载均衡器，请参阅：
 
 > [!div class="nextstepaction"]
-> [为 Azure SQL Server VM 上的可用性组配置负载均衡器](../windows/availability-group-load-balancer-portal-configure.md)
+> [为 Azure VM 上的 SQL Server 的可用性组配置负载均衡器](../windows/availability-group-load-balancer-portal-configure.md)

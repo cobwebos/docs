@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114558"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342640"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用导入的数据评估服务器
 
@@ -48,9 +48,9 @@ ms.locfileid: "82114558"
 
 你的 Azure 帐户需要有权创建 Azure Migrate 项目。
 
-1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。 
-2. 在“检查访问权限”中找到相关帐户，然后选择它以查看权限。 
-3. 确保你拥有“参与者”或“所有者”权限。  
+1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。
+2. 在“检查访问权限”中找到相关帐户，然后选择它以查看权限。
+3. 确保你拥有“参与者”或“所有者”权限。 
     - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
     - 如果你不是订阅所有者，请让所有者分配该角色。
 
@@ -58,15 +58,15 @@ ms.locfileid: "82114558"
 
 若要设置新的 Azure Migrate 项目，请执行以下操作：
 
-1. 在 Azure 门户中，在“所有服务”中搜索 **Azure Migrate**。 
-2. 在“服务”下选择“Azure Migrate”。  
-3. 在“概览”中的“发现、评估和迁移服务器”下，选择“评估和迁移服务器”。   
+1. 在 Azure 门户中，在“所有服务”中搜索 **Azure Migrate**。
+2. 在“服务”下选择“Azure Migrate”。 
+3. 在“概览”中的“发现、评估和迁移服务器”下，选择“评估和迁移服务器”。  
 
     ![发现和评估服务器](./media/tutorial-assess-import/assess-migrate.png)
 
-4. 在“入门”中，选择“添加工具”。  
-5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
-6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  更多相关信息：
+4. 在“入门”中，选择“添加工具”。 
+5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 更多相关信息：
 
     - 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
     - 运行迁移时，可以选择任一目标区域。
@@ -74,13 +74,13 @@ ms.locfileid: "82114558"
     ![创建 Azure Migrate 项目](./media/tutorial-assess-import/migrate-project.png)
 
 7. 选择“**下一页**”。
-8. 在“选择评估工具”中，选择“Azure Migrate:   服务器评估” > “下一步”。 
+8. 在“选择评估工具”中，选择“Azure Migrate: 服务器评估” > “下一步”。
 
     ![创建 Azure Migrate 评估](./media/tutorial-assess-import/assessment-tool.png)
 
-9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。   
-10. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。  
-11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。 
+9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
+10. 在“查看 + 添加工具”中查看设置，然后选择“添加工具”。 
+11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
 
 ## <a name="prepare-the-csv"></a>准备 CSV
 
@@ -88,9 +88,9 @@ ms.locfileid: "82114558"
 
 ### <a name="download-the-template"></a>下载模板
 
-1. 在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，选择“发现”。 
-2. 在“发现计算机”  中，选择“使用 CSV 导入”  。
-3. 选择“下载”以下载 CSV 模板  。 或者，也可以[直接下载它](https://go.microsoft.com/fwlink/?linkid=2109031)。
+1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，选择“发现”。
+2. 在“发现计算机”中，选择“使用 CSV 导入”。
+3. 选择“下载”以下载 CSV 模板。 或者，也可以[直接下载它](https://go.microsoft.com/fwlink/?linkid=2109031)。
 
     ![下载 CSV 模板](./media/tutorial-assess-import/download-template.png)
 
@@ -106,11 +106,12 @@ ms.locfileid: "82114558"
 **字段名称** | **必需** | **详细信息**
 --- | --- | ---
 **服务器名称** | 是 | 建议指定完全限定的域名 (FQDN)。
-IP 地址  | 否 | 服务器地址。
+IP 地址 | 否 | 服务器地址。
 **核心数** | 是 | 分配给服务器的处理器内核数。
 **内存** | 是 | 分配给服务器的总 RAM (MB)。
 **OS 名称** | 是 | 服务器操作系统。 <br/> 匹配或包含[此](#supported-operating-system-names)列表中的名称的操作系统名称将被评估识别。
 **OS 版本** | 否 | 服务器操作系统版本。
+**OS 体系结构** | 否 | 服务器 OS 体系结构 <br/> 有效值为：x64、x86、amd64、32 位或 64 位
 **磁盘数目** | 否 | 如果提供了单独的磁盘详细信息，则不需要。
 **磁盘 1 大小**  | 否 | 磁盘最大大小 (GB)。<br/>可以通过在模板中[添加列](#add-multiple-disks)来添加更多磁盘的详细信息。 最多可以添加八个磁盘。
 **磁盘 1 读取操作数** | 否 | 每秒的磁盘读取操作次数。
@@ -150,29 +151,29 @@ IP 地址  | 否 | 服务器地址。
 
 将信息添加到 CSV 模板之后，将服务器导入到“服务器评估”。
 
-1. 在 Azure Migrate 中，在“发现计算机”  中，转到完成的模板。
-2. 选择“导入”  。
+1. 在 Azure Migrate 中，在“发现计算机”中，转到完成的模板。
+2. 选择“导入”。
 3. 将显示导入状态。
     - 如果状态中出现警告，则可以修复它们，也可以继续操作而不解决它们。
     - 若要提高评估准确性，请按照警告中建议的方式改进服务器信息。
-    - 若要查看并修复警告，请单击“下载警告详细信息 .CSV”  。 此操作将下载包含警告的 CSV。 查看警告并根据需要解决问题。
-    - 如果状态中出现错误，导致导入状态为“失败”  ，则必须修复这些错误，然后才能继续导入：
+    - 若要查看并修复警告，请单击“下载警告详细信息 .CSV”。 此操作将下载包含警告的 CSV。 查看警告并根据需要解决问题。
+    - 如果状态中出现错误，导致导入状态为“失败”，则必须修复这些错误，然后才能继续导入：
         1. 下载 CSV，现在其中包含错误详细信息。
         1. 查看并根据需要处理错误。 
         1. 重新上传修改后的文件。
-4. 如果导入状态为“已完成”  ，则服务器信息已导入。
+4. 如果导入状态为“已完成”，则服务器信息已导入。
 
 ## <a name="update-server-information"></a>更新服务器信息
 
-可以通过使用相同的服务器名称再次上传服务器数据来更新服务器信息  。 不能修改“服务器名称”  字段。 目前不支持删除服务器。
+可以通过使用相同的服务器名称再次上传服务器数据来更新服务器信息。 不能修改“服务器名称”字段。 目前不支持删除服务器。
 
 ## <a name="verify-servers-in-the-portal"></a>验证门户中的服务器
 
 在发现完成后，若要验证服务器是否出现在 Azure 门户中，请执行以下操作：
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate:   服务器评估”页面上，选择显示了**已发现服务器**计数的图标。
-3. 选择“基于导入”  选项卡。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页面上，选择显示了**已发现服务器**计数的图标。
+3. 选择“基于导入”选项卡。
 
 ## <a name="set-up-and-run-an-assessment"></a>设置并运行评估
 
@@ -186,24 +187,24 @@ IP 地址  | 否 | 服务器地址。
 若要运行评估，请执行以下操作：
 
 1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
-2. 在“服务器”选项卡上的“Azure Migrate:   服务器评估”磁贴中，选择“评估”。 
+2. 在“服务器”选项卡上的“Azure Migrate: 服务器评估”磁贴中，选择“评估”。
 
     ![评估](./media/tutorial-assess-physical/assess.png)
 
-3. 在“评估服务器”中，指定评估的名称。 
-4. 在“发现源”  中，选择“通过导入添加到 Azure Migrate 的计算机”  。
-5. 选择“全部查看”来查看评估属性  。
+3. 在“评估服务器”中，指定评估的名称。
+4. 在“发现源”中，选择“通过导入添加到 Azure Migrate 的计算机”。
+5. 选择“全部查看”来查看评估属性。
 
     ![评估属性](./media/tutorial-assess-physical/view-all.png)
 
-6. 在“选择或创建组”中，选择“新建”并指定组名称。   组将要评估的一个或多个 VM 集合到一起。
-7. 在“将计算机添加到组”中，选择要添加到该组的服务器  。
-8. 选择“创建评估”来创建组，然后运行评估。 
+6. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+7. 在“将计算机添加到组”中，选择要添加到该组的服务器。
+8. 选择“创建评估”来创建组，然后运行评估。
 
     ![创建评估](./media/tutorial-assess-physical/assessment-create.png)
 
-9. 创建评估后，在“服务器” > “Azure Migrate:   服务器评估” > “评估”中查看它。 
-10. 选择“导出评估”，将评估下载为 Microsoft Excel 文件。 
+9. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
+10. 选择“导出评估”，将评估下载为 Microsoft Excel 文件。
 
 ## <a name="review-an-assessment"></a>查看评估
 
@@ -215,21 +216,21 @@ IP 地址  | 否 | 服务器地址。
 
 ### <a name="view-an-assessment"></a>查看评估
 
-1. 在“迁移目标” > “服务器”中，选择“Azure Migrate:     服务器评估”中的“评估”。
-2. 在“评估”中，选择某项评估将其打开。 
+1. 在“迁移目标” > “服务器”中，选择“Azure Migrate:   服务器评估”中的“评估”。
+2. 在“评估”中，选择某项评估将其打开。
 
     ![评估摘要](./media/tutorial-assess-physical/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>查看 Azure 迁移就绪性
 
-1. 在“Azure 迁移就绪性”中，确定服务器是否已准备好迁移到 Azure  。
+1. 在“Azure 迁移就绪性”中，确定服务器是否已准备好迁移到 Azure。
 2. 查看状态：
     - **已做好 Azure 迁移准备**：对于评估中的 VM，Azure Migrate 将建议 VM 大小并显示估算成本。
     - **准备就绪但存在以下状况**：显示问题和建议的补救措施。
     - **尚未做好 Azure 迁移准备**：显示问题和建议的补救措施。
     - **就绪性未知**：数据可用性问题导致 Azure Migrate 无法评估就绪性。
 
-3. 选择某种“Azure 迁移就绪性”状态。  可以查看服务器就绪性详细信息，并深入查看服务器详细信息，包括计算、存储和网络设置。
+3. 选择某种“Azure 迁移就绪性”状态。 可以查看服务器就绪性详细信息，并深入查看服务器详细信息，包括计算、存储和网络设置。
 
 ### <a name="review-cost-details"></a>查看成本详细信息
 

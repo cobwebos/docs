@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655515"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555145"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较
 
@@ -31,21 +31,25 @@ ms.locfileid: "80655515"
     * 有关 Azure AD 的详细信息，请参阅[什么是 Azure Active Directory？][whatis-azuread]
 * **Azure Active Directory 域服务 (Azure AD DS)** - 为托管域服务提供一部分完全兼容的传统 AD DS 功能，例如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
     * Azure AD DS 与 Azure AD 集成，后者本身可与本地 AD DS 环境同步。 此功能通过直接迁移策略将中心标识用例扩展到在 Azure 中运行的传统 Web 应用程序。
+    * 若要详细了解与 Azure AD 和本地的同步，请参阅[如何在托管域中同步对象和凭据][synchronization]。
 
 本概述文章将这些标识解决方案根据组织需求相互配合工作或者独立工作时的情况做了对比。
 
-若要开始，请[使用 Azure 门户创建 Azure AD DS 托管域][tutorial-create]。
+> [!div class="nextstepaction"]
+> [若要开始，请使用 Azure 门户创建 Azure AD DS 托管域][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS 和自我管理型 AD DS
 
 如果应用程序和服务需要访问 Kerberos 或 NTLM 等传统身份验证机制，可以通过两种方式在云中提供 Active Directory 域服务：
 
-* 使用 Azure Active Directory 域服务 (AD DS) 创建的托管域  。 Microsoft 将创建并管理所需的资源。
-* 使用虚拟机 (VM)、Windows Server 来宾 OS 和 Active Directory 域服务等传统资源创建和配置的自我管理域  。 然后，你需要继续管理这些资源。
+* 使用 Azure Active Directory 域服务 (Azure AD DS) 创建的托管域。 Microsoft 将创建并管理所需的资源。
+* 使用虚拟机 (VM)、Windows Server 来宾 OS 和 Active Directory 域服务等传统资源创建和配置的自我管理域。 然后，你需要继续管理这些资源。
 
-使用 Azure AD DS 时，Microsoft 将为你部署和维护核心服务组件（托管域体验）。  你无需部署、管理、修补和保护 VM、Windows Server OS 或域控制器 (DC) 等组件的 AD DS 基础结构。
+使用 Azure AD DS 时，Microsoft 将为你部署和维护核心服务组件（托管域体验）。 你无需部署、管理、修补和保护 VM、Windows Server OS 或域控制器 (DC) 等组件的 AD DS 基础结构。
 
-Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这在一定程度上可以减轻设计和管理复杂性。 例如，无需设计和维护 AD 林、域、站点和复制链接。 对于在云中运行的、需要访问 Kerberos 或 NTLM 等传统身份验证机制的应用程序和服务，Azure AD DS 以极少量的管理开销提供托管域体验。
+Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这在一定程度上可以减轻设计和管理复杂性。 例如，无需设计和维护 AD 林、域、站点和复制链接。 你仍可以[在 Azure AD DS 和本地环境（目前为预览版）之间创建林信任][create-forest-trust]。
+
+对于在云中运行的、需要访问 Kerberos 或 NTLM 等传统身份验证机制的应用程序和服务，Azure AD DS 以极少量的管理开销提供托管域体验。 有关详细信息，请参阅 [Azure AD DS 中用户帐户、密码和管理的管理概念][administration-concepts]。
 
 部署和运行自我管理型 AD DS 环境时，必须维护所有关联的基础结构和目录组件。 自行管理型 AD DS 环境会产生额外的维护开销，但你可以执行更多的任务，例如扩展架构或创建林信任。
 
@@ -94,7 +98,7 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 
 | **设备类型**                                        | **设备平台**             | **机制**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| 个人设备                                          | Windows 10、iOS、Android、Mac OS | 已注册 Azure AD    |
+| 个人设备                                          | Windows 10、iOS、Android、macOS | 已注册 Azure AD    |
 | 组织拥有的未加入本地 AD DS 的设备 | Windows 10                       | 已加入 Azure AD        |
 | 组织拥有的已加入本地 AD DS 的设备  | Windows 10                       | 已加入混合 Azure AD |
 
@@ -115,6 +119,8 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 
 若要开始使用 Azure AD DS，请[使用 Azure 门户创建一个 Azure AD DS 托管域][tutorial-create]。
 
+你还可以详细了解 [Azure AD DS 中用户帐户、密码和管理的管理概念][administration-concepts]以及[如何在托管域中同步对象和凭据][synchronization]。
+
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
 [deploy-kcd]: deploy-kcd.md
@@ -124,3 +130,6 @@ Azure AD DS 提供传统自我管理型 AD DS 环境的一小部分功能，这�
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085852"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561105"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教程：从专用注册表生成自定义映像并在应用服务中运行
 
@@ -139,7 +139,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 </pre>
 
-在本地终端窗口中，使用 `docker login` 命令登录到 Azure 容器注册表，如下面的示例中所示。 将 \<azure-container-registry-name> 和 \<registry-username> 替换为自己的注册表值   。 出现提示时，键入在上一步骤中获取的某个密码。
+在本地终端窗口中，使用 `docker login` 命令登录到 Azure 容器注册表，如下面的示例中所示。 用注册表的值替换 \<azure-container-registry-name> 和 \<registry-username> 。 出现提示时，键入在上一步骤中获取的某个密码。
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -180,7 +180,7 @@ az acr repository list -n <azure-container-registry-name>
 
 ### <a name="create-web-app"></a>创建 Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](app-service-linux-intro.md)。 将 \<app-name> 替换为唯一的应用名称，并将 \<azure-container-registry-name> 替换为自己的注册表名称   。
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](app-service-linux-intro.md)。 用唯一的应用名替换 \<app-name>，用注册表名替换 \<azure-container-registry-name> 。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -205,7 +205,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ### <a name="configure-registry-credentials-in-web-app"></a>在 Web 应用中配置注册表凭据
 
-要让应用服务拉取专用映像，需要提供与注册表和映像有关的信息。 在 Cloud Shell 中，请使用 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令提供这些信息。 替换 \<app-name>、\<azure-container-registry-name>、\<registry-username> 和 \<password>     。
+要让应用服务拉取专用映像，需要提供与注册表和映像有关的信息。 在 Cloud Shell 中，请使用 [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) 命令提供这些信息。 请替换 \<app-name>、\<azure-container-registry-name>、\<registry-username> 和 \<password>  。
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>

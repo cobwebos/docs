@@ -1,5 +1,5 @@
 ---
-title: 使用 C 创建和管理 Azure 虚拟机#
+title: 使用 C# 创建和管理 Azure 虚拟机
 description: 使用 C# 和 Azure 资源管理器部署虚拟机及其所有支持资源。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4fd7ccc7b6df85397fd547f8e1e48b776f12c0df
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082877"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234517"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>使用 C# 创建和管理 Azure 中的 Windows VM #
 
@@ -31,15 +31,15 @@ ms.locfileid: "82082877"
 
 ## <a name="create-a-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”****，然后单击“安装”****。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。**** 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
-2. 在 Visual Studio 中，单击 "**文件** > " "**新建** > **项目**"。
-3. 在**Templates** > **Visual c #** 模板中，选择 "**控制台应用（.NET Framework）**"，输入*myDotnetProject*作为项目的名称，选择项目的位置，然后单击 **"确定"**。
+1. 如果尚未安装，请安装 [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)。 在“工作负荷”页上选择“.NET 桌面开发”，然后单击“安装”。 在摘要中，可以看到系统已自动选择“.NET Framework 4 4.6 开发工具”。 如果已安装 Visual Studio，则可以使用 Visual Studio 启动器添加 .NET 工作负荷。
+2. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
+3. 在“模板” > “Visual C#”中，选择“控制台应用(.NET Framework)”，输入 *myDotnetProject* 作为项目名称，选择项目位置，然后单击“确定”。   
 
 ## <a name="install-the-package"></a>安装包
 
 使用 NuGet 包可以最轻松地安装完成这些步骤所需的库。 若要在 Visual Studio 中获取所需的库，请执行以下步骤：
 
-1. 单击 "**工具** > " "**Nuget 包管理器**"，然后单击 "**程序包管理器控制台**"。
+1. 单击“工具” > “Nuget 包管理器”，然后单击“包管理器控制台”  。
 2. 在控制台中键入此命令：
 
     ```
@@ -52,7 +52,7 @@ ms.locfileid: "82082877"
 
 ### <a name="create-the-authorization-file"></a>创建授权文件
 
-1. 在解决方案资源管理器中，右键单击*myDotnetProject* > **"添加** > **新项**"，然后在*Visual c # 项*中选择 "**文本文件**"。 命名文件 azureauth.properties，然后单击“添加”******。
+1. 在解决方案资源管理器中，右键单击*myDotnetProject* >  **，单击“添加** > **新建项**，然后在**Visual C# 项**中选择*文本文件*。 命名文件 azureauth.properties，然后单击“添加”。
 2. 添加这些授权属性：
 
     ```
@@ -66,7 +66,7 @@ ms.locfileid: "82082877"
     graphURL=https://graph.microsoft.com/
     ```
 
-    将** &lt;订阅&gt; id**替换为你的订阅标识符** &lt;，应用程序&gt; id**替换为 Active Directory 应用程序标识符， ** &lt;身份&gt;验证密钥**替换为应用程序密钥， ** &lt;租户&gt; id**替换为租户标识符。
+    将 &lt;subscription-id&gt; 替换为订阅标识符，&lt;application-id&gt; 替换为 Active Directory 应用程序标识符，&lt;authentication-key&gt; 替换为授权密钥，&lt;tenant-id&gt; 替换为租户标识符   。
 
 3. 保存 azureauth.properties 文件。 
 4. 在 Windows 中设置名为 AZURE_AUTH_LOCATION 的环境变量，其中包含创建的授权文件的完整路径。 例如，以下 PowerShell 命令可用于：
@@ -77,7 +77,7 @@ ms.locfileid: "82082877"
 
 ### <a name="create-the-management-client"></a>创建管理客户端
 
-1. 打开创建的项目的 Program.cs 文件。 然后，将以下 using 语句添加到文件顶部的现有语句中：
+1. 打开所创建项目的 Program.cs 文件。 然后，将这些 using 语句添加到文件顶部的现有语句：
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -136,7 +136,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>创建公共 IP 地址
 
-与虚拟机通信需要[公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
+与虚拟机通信需要[公共 IP 地址](../../virtual-network/public-ip-addresses.md)。
 
 若要创建虚拟机的公共 IP 地址，请将以下代码添加到 Main 方法：
    
@@ -357,7 +357,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>将数据磁盘添加到 VM
 
-若要将数据磁盘添加到虚拟机，请将此代码添加到 Main 方法。 此示例添加了一个大小为 2 GB、LUN 为 0、缓存类型为 ReadWrite 的数据磁盘：
+若要将数据磁盘添加到虚拟机，请将以下代码添加到 Main 方法。 本示例添加了一个大小为 2 GB 的数据磁盘，其中 LUN 为 0 且缓存类型为 ReadWrite：
 
 ```csharp
 Console.WriteLine("Adding data disk to vm...");
@@ -382,7 +382,7 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 控制台应用程序从头到尾完成运行大约需要五分钟时间。 
 
-1. 若要运行控制台应用程序，请单击“开始”****。
+1. 若要运行控制台应用程序，请单击“开始”。
 
 2. 在按 **Enter** 开始删除资源之前，可能需要在 Azure 门户中花几分钟时间来验证资源的创建。 单击部署状态以查看有关部署的信息。
 

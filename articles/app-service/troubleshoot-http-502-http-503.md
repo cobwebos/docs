@@ -7,17 +7,17 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688327"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170794"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>排查 Azure 应用服务中出现的 HTTP 错误“502 错误的网关”和“503 服务不可用”
-[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中托管的应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文帮助你排查这些错误。
+[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)中托管的应用经常出现“502 错误的网关”和“503 服务不可用”错误。 本文将帮助你排查这些错误。
 
-如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)，并单击“**获取支持**”。
 
 ## <a name="symptom"></a>症状
 浏览应用时返回 HTTP 错误“502 错误的网关”或 HTTP 错误“503 服务不可用”。
@@ -38,14 +38,14 @@ ms.locfileid: "74688327"
 
 [应用服务](overview.md)在每个步骤提供了多种选项。
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.观察和监视应用程序行为
 #### <a name="track-service-health"></a>跟踪服务运行状况
 每次发生服务中断或性能下降时 Microsoft Azure 会发出通告。 可以在 [Azure 门户](https://portal.azure.com/)中跟踪服务的运行状况。 有关详细信息，请参阅[跟踪服务的运行状况](../monitoring-and-diagnostics/insights-service-health.md)。
 
 #### <a name="monitor-your-app"></a>监视应用
-此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴****。 “指标”边栏选项卡会显示所有可以添加的指标。****
+此选项可用于查明应用程序是否存在任何问题。 在应用的边栏选项卡中，单击“请求和错误”磁贴。 “指标”边栏选项卡会显示所有可以添加的指标。
 
 可能需要在应用中监视的一些指标包括
 
@@ -57,18 +57,18 @@ ms.locfileid: "74688327"
 
 ![监视应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 * [监视 Azure 应用服务中的应用](web-sites-monitor.md)
 * [接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
-### <a name="2-collect-data"></a>2. 收集数据
+### <a name="2-collect-data"></a>2.收集数据
 #### <a name="use-the-diagnostics-tool"></a>使用诊断工具
 应用服务提供了智能的交互式体验，可帮助我们排查应用的问题，且无需配置。 如果应用确实出现问题，诊断工具会指出问题所在，并引导你获取适当的信息，以便更轻松快速地排查和解决问题。
 
-若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。****
+若要访问应用服务诊断，请在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务应用或应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
 #### <a name="use-the-kudu-debug-console"></a>使用 Kudu 调试控制台
 应用服务随附可用于调试、浏览和上传文件的调试控制台，以及用于获取环境相关信息的 JSON 终结点。 此控制台称为应用的 *Kudu 控制台*或 *SCM 仪表板*。
@@ -86,9 +86,9 @@ Kudu 的另一项有用功能是，如果应用程序引发第一次异常，可
 
 有关 Kudu 提供的功能的详细信息，请参阅[应该了解的 Azure 网站联机工具](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)。
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
-### <a name="3-mitigate-the-issue"></a>3. 缓解此问题
+### <a name="3-mitigate-the-issue"></a>3.缓解问题
 #### <a name="scale-the-app"></a>缩放应用
 在 Azure 应用服务中，为了提高性能和吞吐量，可以调整运行应用程序的规模。 纵向扩展应用涉及到两个相关操作：将应用服务计划更改为较高的定价层，以及在切换到较高的定价层后配置特定的设置。
 
@@ -104,9 +104,9 @@ AutoHeal 会根据所选设置（例如配置更改、请求、基于内存的�
 有关详细信息，请参阅[自动修复 Azure 网站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
 #### <a name="restart-the-app"></a>重启应用
-这通常是在发生一次性问题后进行恢复的最简单方式。 在[Azure 门户](https://portal.azure.com/)的应用边栏选项卡上，可以选择停止或重新启动应用。
+这通常是在发生一次性问题后进行恢复的最简单方式。 [Azure 门户](https://portal.azure.com/)上的应用边栏选项卡中提供了用于停止或重启应用的选项。
 
  ![重新启动应用以解决 HTTP 错误“502 错误的网关”和“503 服务不可用”](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
-还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[使用 Azure 资源管理器的 Azure PowerShell](../powershell-azure-resource-manager.md)。
+还可以使用 Azure Powershell 管理应用。 有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 

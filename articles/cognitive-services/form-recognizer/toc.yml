@@ -60,7 +60,7 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: 使用容器实例
           href: deploy-form-recognizer-on-container-instances.md
-    - name: 复制模型以用于灾难恢复
+    - name: 备份和恢复模型
       href: disaster-recovery.md
 - name: 参考
   items:

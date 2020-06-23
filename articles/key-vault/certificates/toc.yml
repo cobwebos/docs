@@ -34,6 +34,8 @@
       href: create-certificate-scenarios.md
     - name: 证书创建方法
       href: create-certificate.md
+    - name: 创建证书签名请求
+      href: create-certificate-signing-request.md
 - name: 操作指南
   items:
     - name: 将 Key Vault 与 DigiCert CA 集成

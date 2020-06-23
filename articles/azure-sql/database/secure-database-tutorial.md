@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267899"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323920"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>教程：保护 Azure SQL 数据库
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本教程介绍如何执行下列操作：
@@ -25,7 +25,7 @@ ms.locfileid: "84267899"
 > [!div class="checklist"]
 >
 > - 创建服务器级和数据库级防火墙规则
-> - 配置 Azure Active Directory (AD) 管理员
+> - 配置 Azure Active Directory (Azure AD) 管理员
 > - 通过 SQL 身份验证、Azure AD 身份验证和安全的连接字符串管理用户访问
 > - 启用安全功能，例如高级数据安全、审核、数据掩码和加密
 
@@ -42,7 +42,7 @@ Azure SQL 数据库支持通过以下方式保护数据：
 若要了解详细信息，请参阅 [Azure SQL 数据库安全概述](/azure/sql-database/sql-database-security-index)和[功能](security-overview.md)这两篇文章。
 
 > [!TIP]
-> 以下 Microsoft Learn 模块可帮助你免费学习如何[保护 Azure SQL 数据库](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
+> 以下 Microsoft Learn 模块可帮助你免费学习如何[保护 Azure SQL 数据库中的数据库](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -94,7 +94,7 @@ SQL 数据库中的数据库受 Azure 中防火墙的保护。 默认情况下�
 
 数据库级防火墙规则仅适用于单个数据库。 数据库在服务器故障转移期间会保留这些规则。 数据库级防火墙规则只能使用 Transact-SQL (T-SQL) 语句进行配置，而且只能在配置了服务器级防火墙规则后进行配置。
 
-若要设置数据库级防火墙规则，请执行以下操作：
+若要设置数据库级防火墙规则：
 
 1. 例如，使用 [SQL Server Management Studio](connect-query-ssms.md) 连接到数据库。
 

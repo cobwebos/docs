@@ -2,14 +2,14 @@
 title: 使用 Azure Migrate 评估要迁移到 Azure 的 Hyper-V VM | Microsoft Docs
 description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁移到 Azure 的本地 Hyper-V VM。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535445"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331757"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -41,29 +41,29 @@ ms.locfileid: "81535445"
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
 
-1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。 
-2. 在搜索结果中，选择“Azure Migrate”。 
-3. 在“概述”中的“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。   
+1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
+2. 在搜索结果中，选择“Azure Migrate”。
+3. 在“概述”中的“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。  
 
     ![发现和评估服务器](./media/tutorial-assess-hyper-v/assess-migrate.png)
 
-4. 在“开始”中，单击“添加工具”。  
-5. 在“迁移项目”选项卡中选择你的 Azure 订阅，并创建一个资源组（如果没有）。 
-6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的区域。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
+4. 在“开始”中，单击“添加工具”。 
+5. 在“迁移项目”选项卡中选择你的 Azure 订阅，并创建一个资源组（如果没有）。
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的区域。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
     - 项目区域仅用于存储从本地 VM 中收集的元数据。
     - 迁移 VM 时，可以选择其他 Azure 目标区域。 迁移目标支持所有 Azure 区域。
 
     ![创建 Azure Migrate 项目](./media/tutorial-assess-hyper-v/migrate-project.png)
 
-7. 单击“下一步”。 
-8. 在“选择评估工具”中，选择“Azure Migrate:   服务器评估” > “下一步”。 
+7. 单击“下一步”。
+8. 在“选择评估工具”中，选择“Azure Migrate: 服务器评估” > “下一步”。
 
     ![创建 Azure Migrate 项目](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
-9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。   
-10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。  
-11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。 
+9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
+10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。 
+11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
@@ -79,9 +79,9 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
 下载设备的压缩 VHD 模板。
 
-1. 在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，单击“发现”。 
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 Hyper-V”。   
-3. 单击“下载”以下载 VHD 文件。 
+1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 Hyper-V”。  
+3. 单击“下载”以下载 VHD 文件。
 
     ![下载 VM](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
 
@@ -96,12 +96,20 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - 用法示例：```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  对于设备版本 2.19.07.30，生成的哈希应与这些设置匹配。
+3.  验证最新的设备版本和哈希值：
 
-  **算法** | **哈希值**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - 对于 Azure 公有云：
+
+        **方案** | **下载** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8.93 MB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - 对于 Azure 政府：
+
+        **方案*** | **下载** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
 
 ### <a name="create-the-appliance-vm"></a>创建设备 VM
 
@@ -112,19 +120,19 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
     - 此文件夹包含一个子文件夹，也称为 **AzureMigrateAppliance_VersionNumber**。
     - 此子文件夹包含另外三个子文件夹 - **快照**、**虚拟硬盘**和**虚拟机**。
 
-2. 打开 Hyper-V 管理器。 在“操作”中，单击“导入虚拟机”。  
+2. 打开 Hyper-V 管理器。 在“操作”中，单击“导入虚拟机”。 
 
     ![部署 VHD](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
-2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。  
-3. 在“查找文件夹”  中，选择“虚拟机”  文件夹。 然后单击“下一步”  。
-1. 在“选择虚拟机”中，单击“下一步”。  
-2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。   然后单击“下一步”  。
-3. 在“选择目标”中保留默认设置。  单击“下一步”。 
-4. 在“存储文件夹”中保留默认设置。  单击“下一步”。 
-5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。  该交换机需要与 Internet 建立连接才能向 Azure 发送数据。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何创建虚拟交换机。
-6. 在“摘要”中检查设置。  然后单击“完成”  。
-7. 在“Hyper-V 管理器”>“虚拟机”中启动 VM。 
+2. 在“导入虚拟机向导”>“开始之前”中，单击“下一步”。 
+3. 在“查找文件夹”中，选择“虚拟机”文件夹。 然后单击“下一步”。
+1. 在“选择虚拟机”中，单击“下一步”。 
+2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
+3. 在“选择目标”中保留默认设置。 单击“下一步”。
+4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
+5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何创建虚拟交换机。
+6. 在“摘要”中检查设置。 然后单击“完成”。
+7. 在“Hyper-V 管理器”>“虚拟机”中启动 VM。
 
 
 ## <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
@@ -138,15 +146,15 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 > [!NOTE]
 > 如果使用 [PowerShell 脚本](deploy-appliance-script.md)而不是下载的 VHD 设置设备，则此过程中的前两个步骤不相关。
 
-1. 在“Hyper-V 管理器”>“虚拟机”中，右键单击该 VM 并选择“连接”。  
+1. 在“Hyper-V 管理器”>“虚拟机”中，右键单击该 VM 并选择“连接”。 
 2. 提供设备的语言、时区和密码。
 3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
 
    或者，可以在设备桌面上单击应用快捷方式打开该应用。
-1. 在 Web 应用 >“设置必备组件”中执行以下操作： 
+1. 在 Web 应用 >“设置必备组件”中执行以下操作：
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用将检查 VM 是否可访问 Internet。 如果 VM 使用代理：
-      - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。 
+      - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
       - 如果代理需要身份验证，请指定凭据。
       - 仅支持 HTTP 代理。
     - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常发现 VM。
@@ -154,14 +162,14 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
-1. 单击“登录”。  如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
+1. 单击“登录”。 如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
 2. 在新的标签页中，使用 Azure 凭据登录。
     - 使用用户名和密码登录。
     - 不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。
 4. 选择在其中创建了 Azure Migrate 项目的订阅。 然后选择该项目。
 5. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
-6. 单击“注册”  。
+6. 单击“注册”。
 
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>为 SMB VHD 委托凭据
@@ -187,23 +195,23 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 或者，在设备上的本地组策略编辑器中执行此操作：
 
-1. 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。     
-2. 双击“允许委托新凭据”，并选择“已启用”。  
-3. 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。   
-4. 在“凭据分配”中，双击“允许分配新的凭据用于仅 NTLM 服务器身份验证”。   再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
+1. 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。    
+2. 双击“允许委托新凭据”，并选择“已启用”。 
+3. 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。  
+4. 在“凭据分配”中，双击“允许分配新的凭据用于仅 NTLM 服务器身份验证”。  再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
 从设备连接到 Hyper-V 主机或群集，并启动 VM 发现。
 
-1. 在“用户名”和“密码”中，指定设备用来发现 VM 的帐户凭据。   指定凭据的易记名称，然后单击“保存详细信息”。 
-2. 单击“添加主机”，然后指定 Hyper-V 主机/群集详细信息。 
+1. 在“用户名”和“密码”中，指定设备用来发现 VM 的帐户凭据。  指定凭据的易记名称，然后单击“保存详细信息”。
+2. 单击“添加主机”，然后指定 Hyper-V 主机/群集详细信息。
 3. 单击 **“验证”** 。 验证后，将显示每个主机/群集上可发现的 VM 数。
-    - 如果主机验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。  解决问题并再次验证。
-    - 若要删除主机或群集，请选择“删除”。 
+    - 如果主机验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。
+    - 若要删除主机或群集，请选择“删除”。
     - 无法删除群集中的特定主机。 只能删除整个群集。
     - 即使群集中的特定主机出现问题，你也可以添加群集。
-4. 验证之后，单击“保存并启动发现”以启动发现过程。 
+4. 验证之后，单击“保存并启动发现”以启动发现过程。
 
 随即会启动发现。 在 Azure 门户中，每台主机大约需要 1.5 分钟才能显示发现的服务器的元数据。
 
@@ -212,7 +220,7 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 发现完成后，可以验证 VM 是否出现在门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate:   服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
 
 ## <a name="set-up-an-assessment"></a>设置评估
 
@@ -230,23 +238,23 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 按如下述运行评估：
 
 1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
-2. 在“服务器” > “Azure Migrate:   服务器评估”中，单击“评估”。 
+2. 在“服务器” > “Azure Migrate: 服务器评估”中，单击“评估”。
 
     ![评估](./media/tutorial-assess-hyper-v/assess.png)
 
-3. 在“评估服务器”中，指定评估的名称。 
-4. 单击“全部查看”查看评估属性  。
+3. 在“评估服务器”中，指定评估的名称。
+4. 单击“全部查看”查看评估属性。
 
     ![评估属性](./media/tutorial-assess-hyper-v/assessment-properties.png)
 
-3. 在“选择或创建组”中，选择“新建”并指定组名称。   组将要评估的一个或多个 VM 集合到一起。
-4. 在“将计算机添加到组”中，选择要添加到该组的 VM。 
-5. 单击“创建评估”以创建该组，并运行评估。 
+3. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个 VM 集合到一起。
+4. 在“将计算机添加到组”中，选择要添加到该组的 VM。
+5. 单击“创建评估”以创建该组，并运行评估。
 
     ![创建评估](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. 创建评估后，在“服务器” > “Azure Migrate:   服务器评估”中查看该评估。
-7. 单击“导出评估”，将评估下载为 Excel 文件。 
+6. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估”中查看该评估。
+7. 单击“导出评估”，将评估下载为 Excel 文件。
 
 
 ## <a name="review-an-assessment"></a>查看评估
@@ -260,22 +268,22 @@ Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com Hyper
 
 ### <a name="view-an-assessment"></a>查看评估
 
-1. 在“迁移目标” >  “服务器” > “Azure Migrate:    服务器评估”中，单击“评估”。 
-2. 在“评估”中，单击某项评估将其打开。 
+1. 在“迁移目标” >  “服务器” > “Azure Migrate:  服务器评估”中，单击“评估”。
+2. 在“评估”中，单击某项评估将其打开。
 
     ![评估摘要](./media/tutorial-assess-hyper-v/assessment-summary.png)
 
 
 ### <a name="review-azure-readiness"></a>查看 Azure 迁移就绪性
 
-1. 在“Azure 迁移就绪性”中，验证 VM 是否已准备好迁移到 Azure。 
+1. 在“Azure 迁移就绪性”中，验证 VM 是否已准备好迁移到 Azure。
 2. 查看 VM 状态：
     - **已做好 Azure 迁移准备**：对于评估中的 VM，Azure Migrate 将建议 VM 大小并显示估算成本。
     - **准备就绪但存在以下状况**：显示问题和建议的补救措施。
     - **尚未做好 Azure 迁移准备**：显示问题和建议的补救措施。
     - **就绪性未知**：当数据可用性问题导致 Azure Migrate 无法评估就绪性时使用。
 
-2. 单击某种“Azure 迁移就绪性”状态。  可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
+2. 单击某种“Azure 迁移就绪性”状态。 可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。
 
 ### <a name="review-cost-details"></a>查看成本详细信息
 

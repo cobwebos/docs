@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053240"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324583"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>快速入门：通过 Azure SQL 数据库机器学习服务（预览版）使用 R 创建并训练预测模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,9 +53,9 @@ ms.locfileid: "84053240"
 
 在下面的步骤中，你将设置训练数据，创建一个回归模型，使用训练数据对其进行训练，然后将该模型保存到一个 SQL 表。
 
-1. 打开 **SQL Server Management Studio**，连接到 SQL 数据库。
+1. 打开 SQL Server Management Studio，连接到数据库。
 
-   如果在连接方面需要帮助，请参阅[快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库](connect-query-ssms.md)。
+   如果在连接方面需要帮助，请参阅[快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库中的数据库](connect-query-ssms.md)。
 
 1. 创建 **CarSpeed** 表来保存训练数据。
 

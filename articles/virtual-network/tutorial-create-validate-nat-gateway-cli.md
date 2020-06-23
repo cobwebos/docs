@@ -8,17 +8,18 @@ author: asudbring
 manager: KumudD
 Customer intent: I want to test a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: b3e10b3abbe5c9815e51ce67786882dbd294df3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b1ca26a63c910861d333f707d13946c5e046f599
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202202"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340974"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教程：使用 Azure CLI 创建 NAT 网关并测试 NAT 服务
 
@@ -390,13 +391,13 @@ go get -u github.com/rakyll/hey
 
 登录到源 VM 后，可以使用 **curl** 和 **hey** 生成发往目标 IP 地址的请求。
 
-使用 curl 检索 100 KB 大小的文件。  请将以下示例中的 **\<ip-address-destination>** 替换为前面复制的目标 IP 地址。  **--output** 参数指示将丢弃检索到的文件。
+使用 curl 检索 100 KB 大小的文件。  请将以下示例中的 \<ip-address-destination> 替换为前面复制的目标 IP 地址。  **--output** 参数指示将丢弃检索到的文件。
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-也可以使用 **hey** 生成一系列请求。 同样，请将 **\<ip-address-destination>** 替换为前面复制的目标 IP 地址。
+也可以使用 **hey** 生成一系列请求。 同样，请将 \<ip-address-destination> 替换为前面复制的目标 IP 地址。
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k

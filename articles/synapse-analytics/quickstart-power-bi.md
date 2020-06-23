@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c5b86319752fc70e754e34b787bbdc12f18636f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3317410408754519bcd8b52e78dee4a81b3ab070
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656010"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609482"
 ---
-# <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-analytics-workspace-preview"></a>快速入门：将 Power BI 工作区链接到 Synapse Analytics 工作区（预览版）
+# <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>快速入门：将 Power BI 工作区链接到 Synapse 工作区
 
 本快速入门介绍如何将 Power BI 工作区连接到 Synapse Analytics 工作区，以便从 Synapse Studio（预览版）创建新的 Power BI 报表和数据集。
 

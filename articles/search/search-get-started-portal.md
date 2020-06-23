@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 06/07/2020
+ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369458"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488760"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -25,15 +25,17 @@ ms.locfileid: "80369458"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-使用门户的“导入数据”向导和“搜索资源管理器”工具，可以在数分钟内快速了解概念，并针对索引编写有趣的查询   。
+“导入数据”向导是一种 Azure 门户工具，可指导你完成搜索索引的创建过程，以便你可以在几分钟内编写感兴趣的查询。 
 
-如果这些工具限制过多，则可考虑参阅[在 .NET 中进行基于代码的 Azure 认知搜索编程简介](search-howto-dotnet-sdk.md)，或使用[进行 REST API 调用的 Postman](search-get-started-postman.md)。 
-
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+该向导还具有 AI 扩充页面，以便你可以从图像文件和非结构化文本中提取文本和结构。 AI 内容处理包括光学字符识别 (OCR)、关键短语和实体提取以及图像分析。
 
 ## <a name="prerequisites"></a>先决条件
 
-[创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
+在开始之前，必须满足以下条件：
+
++ 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/)。
+
++ Azure 认知搜索服务。 [创建服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 
 ### <a name="check-for-space"></a>检查空间
 
@@ -45,27 +47,29 @@ ms.locfileid: "80369458"
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> 创建索引并加载数据
 
-搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。 
+搜索查询可循环访问[索引](search-what-is-an-index.md)，索引中包含可搜索数据、元数据，以及其他用于优化某些搜索行为的构造。
 
-在本教程中，请使用可通过[“导入数据”向导](search-import-data-portal.md)利用[索引器](search-indexer-overview.md)对其进行抓取的内置示例数据集。   索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问  。 
+在本教程中，请使用可通过[“导入数据”向导](search-import-data-portal.md)利用[索引器](search-indexer-overview.md)对其进行抓取的内置示例数据集。 索引器是特定于源的爬网程序，可以从支持的 Azure 数据源中读取元数据和内容。 通常，索引器以编程方式使用，但在门户中，你可以通过“导入数据”向导来访问。 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>步骤 1 - 启动“导入数据”向导和创建数据源
 
-1. 在 Azure 认知搜索服务仪表板的命令栏中单击“导入数据”，以创建和填充搜索索引  。
+1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com/)。
+
+1. [查找搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，并在“概述”页中，单击命令栏上的“导入数据”，以创建和填充搜索索引。
 
    ![导入数据命令](media/search-get-started-portal/import-data-cmd.png)
 
-2. 在向导中，单击“连接到数据” > “示例” > “hotels-sample”。    此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
+1. 在向导中，单击“连接到数据” > “示例” > “hotels-sample”。   此数据源是内置的。 如果要创建自己的数据源，则需要指定名称、类型和连接信息。 创建后，它将成为可在其他导入操作中重复使用的“现有数据源”。
 
    ![选择示例数据集](media/search-get-started-portal/import-datasource-sample.png)
 
-3. 继续转到下一页。
+1. 继续转到下一页。
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>步骤 2 - 跳过“充实内容”页面
 
 该向导支持创建 [AI 扩充管道](cognitive-search-concept-intro.md)，用于将认知服务 AI 算法合并到索引中。 
 
-我们将暂时跳过此步骤，转到“自定义目标索引”。 
+我们将暂时跳过此步骤，转到“自定义目标索引”。
 
    ![跳过认知技能步骤](media/search-get-started-portal/skip-cog-skill-step.png)
 
@@ -79,13 +83,13 @@ ms.locfileid: "80369458"
 字段包含数据类型和属性。 顶部的复选框为*索引属性*，用于控制如何使用字段。
 
 * **可检索**意味着该字段将显示在搜索结果列表中。 清除此复选框即可将单个字段标记为关闭搜索结果限制，例如 for 字段仅用在筛选器表达式中。
-* “密钥”是唯一的文档标识符  。 它始终是一个字符串，而且是必需的字符串。
-* “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构    。
+* “密钥”是唯一的文档标识符。 它始终是一个字符串，而且是必需的字符串。
+* “可筛选”、“可排序”和“可查找”确定字段是否可用于筛选器、排序或方面导航结构  。
 * **可搜索**意味着该字段将包括在全文搜索中。 字符串可搜索。 数值字段和布尔字段通常标记为不可搜索。
 
-存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加  。
+存储要求不会因你的选择而发生更改。 例如，如果你在多个字段上设置“可检索”属性，则存储需求不会增加。
 
-默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。  字符串经过属性化，**可检索**且**可搜索**。  整数经过属性化，**可检索**、**可筛选**、**可排序**且**可分面**。
+默认情况下，向导会在数据源中扫描用作键字段基础的唯一标识符。 字符串经过属性化，**可检索**且**可搜索**。 整数经过属性化，**可检索**、**可筛选**、**可排序**且**可分面**。
 
 1. 接受默认值。 
 
@@ -98,17 +102,17 @@ ms.locfileid: "80369458"
 
 ### <a name="step-4---configure-indexer"></a>步骤 4 - 配置索引器
 
-仍在“导入数据”向导中，单击“索引器” > “名称”，并键入索引器的名称。   
+仍在“导入数据”向导中，单击“索引器” > “名称”，并键入索引器的名称。  
 
 此对象定义一个可执行过程。 可将该对象放入定期计划，但我们现在使用默认选项立即运行索引器一次。
 
-单击“提交”以创建并同时运行索引器  。
+单击“提交”以创建并同时运行索引器。
 
   ![hotels 索引器](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>监视进度
 
-该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”  。
+该向导应转到索引器列表，你可在其中监视进度。 若要进行自导航，请转到“概述”页，然后单击“索引器”。
 
 门户网站可能需要几分钟才能更新页面，但列表中应会出现新建的索引器，其状态指示“正在进行”或“成功”，此外还会列出已编制索引的文档数。
 
@@ -124,7 +128,7 @@ ms.locfileid: "80369458"
 
 从此列表中，可以单击刚刚创建的 *hotels-sample* 索引，查看索引架构， 并可以选择添加新字段。 
 
-“字段”  选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 认知搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
+“字段”选项卡显示索引架构。 滚动到列表底部可输入新字段。 在大多数情况下，不能更改现有字段。 现有字段在 Azure 认知搜索中具有实际的表示形式，因此不可修改，即使在代码中也是如此。 若要从根本上更改现有字段，请创建新索引并丢弃原始索引。
 
    ![示例索引定义](media/search-get-started-portal/sample-index-def.png)
 
@@ -146,11 +150,11 @@ ms.locfileid: "80369458"
 
    ![搜索浏览器命令](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. 在“索引”下拉列表中，  选择“hotels-sample-index”  。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。  对于以下查询，请使用正式版 (2019-05-06)。
+2. 在“索引”下拉列表中，选择“hotels-sample-index”。 单击“API 版本”下拉列表，查看有哪些 REST API 可用。 对于以下查询，请使用正式版 (2019-05-06)。
 
    ![索引和 API 命令](media/search-get-started-portal/search-explorer-changeindex.png)
 
-3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。 
+3. 在搜索栏中粘贴以下查询字符串，并单击“搜索”。
 
    ![查询字符串和搜索按钮](media/search-get-started-portal/search-explorer-query-string-example.png)
 
@@ -166,7 +170,7 @@ ms.locfileid: "80369458"
 
 * **搜索浏览器**以 JSON 格式返回结果，如果文档采用密集结构，这种结果将很冗长且难以阅读。 这是有意而为的；整个文档的可见性对于开发来说很重要，尤其是在测试期间。 为了改善用户体验，需要编写代码用于[处理搜索结果](search-pagination-page-layout.md)，以提供重要元素。
 
-* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“hotels-sample”   。
+* 文档由标记为在索引中“可检索”的所有字段构成。 若要在门户中查看索引属性，请在“索引”列表中单击“hotels-sample”。
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>示例（参数化查询）：`search=spa&$count=true&$top=10`
 
@@ -193,17 +197,17 @@ ms.locfileid: "80369458"
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>示例（使用范围缩减进行分面）：`search=*&facet=Category&$top=2`
 
 * **search=** * 是空搜索。 空搜索会搜索所有内容。 提交空查询的原因之一是针对整个文档集进行筛选器或分面。 例如，你希望某个分面导航结构由索引中的所有酒店组成。
-* **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于可以方便地称为“类别”的字段。  Azure 认知搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
+* **facet** 返回可传递给 UI 控件的导航结构。 它将返回类别和计数。 在本例中，类别基于可以方便地称为“类别”的字段。 Azure 认知搜索中没有聚合，但可以通过 `facet` 进行近似聚合，提供每个类别中的文档计数。
 
 * **$top=2** 返回两个文档，演示如何使用 `top` 来减少或增加结果。
 
 #### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>示例（包含数字值的分面）：`search=spa&facet=Rating`
 
-* 此查询针对 *spa* 执行文本搜索后返回的评分分面。 可将“评分”一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组。 
+* 此查询针对 *spa* 执行文本搜索后返回的评分分面。 可将“评分”一词指定为分面，因为该字段已标记为可在索引中检索、筛选和分面，并且它包含的值（数字 1 到 5）适合用于将列表分类为组。
 
 * 只有可筛选的字段才可分面。 结果中只返回仅可检索的字段。
 
-* “评分”字段  为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)。
+* “评分”字段为双精度浮点，将按精度值分组。 若要详细了解如何按间隔来分组（例如，“3 星评分”、“4 星评分”等），请参阅[如何在 Azure 认知搜索中实现分面导航](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)。
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 突出显示搜索结果
@@ -222,7 +226,7 @@ ms.locfileid: "80369458"
 
 ### <a name="try-fuzzy-search"></a><a name="fuzzy-search"></a> 试用模糊搜索
 
-默认情况下，执行典型搜索时，如果拼错查询字词（例如，将“Seattle”错拼为“seatle”），则无法返回匹配项。  以下示例不会返回任何结果。
+默认情况下，执行典型搜索时，如果拼错查询字词（例如，将“Seattle”错拼为“seatle”），则无法返回匹配项。 以下示例不会返回任何结果。
 
 #### <a name="example-misspelled-term-unhandled-searchseatle"></a>示例（拼错字词且未经处理）：`search=seatle`
 
@@ -252,7 +256,7 @@ ms.locfileid: "80369458"
 
 本教程快速介绍了如何在 Azure 门户中使用 Azure 认知搜索。
 
-介绍了如何使用“导入数据”向导创建搜索索引；  介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
+介绍了如何使用“导入数据”向导创建搜索索引； 介绍了[索引器](search-indexer-overview.md)，以及索引设计的基本工作流，包括[对已发布索引进行的支持的修改](https://docs.microsoft.com/rest/api/searchservice/update-index)；
 
 介绍了一些基本的查询语法，在 Azure 门户中使用**搜索浏览器**通过手动示例演示筛选器、搜索词突出显示、模糊搜索和地理搜索等重要功能；
 
@@ -262,7 +266,7 @@ ms.locfileid: "80369458"
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 

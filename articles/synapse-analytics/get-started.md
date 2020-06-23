@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248322"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605402"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Azure Synapse Analytics 入门
 
@@ -164,7 +164,7 @@ ms.locfileid: "84248322"
 
 1. 导航到“数据”中心，右键单击“数据库”，然后选择“刷新”  。
 1. 此时你应该看到以下数据库：
-    - SQLDB（SQL 池）
+    - SQLDB1（SQL 池）
     - nyctaxi (Spark)
       
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>使用 Spark 和笔记本分析纽约市出租车数据
@@ -190,10 +190,10 @@ ms.locfileid: "84248322"
       WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
-    """) 
-    display(df)
-    df.write.saveAsTable("nyctaxi.passengercountstats")
-    ```
+   """) 
+   display(df)
+   df.write.saveAsTable("nyctaxi.passengercountstats")
+   ```
 
 1. 在单元结果中，选择“图表”以查看直观呈现出来的数据
  
@@ -282,7 +282,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. 选择“用户(主)”
 1. 应看到名为 `NYCTaxi` 的文件夹。 在其中，应看到两个文件夹：`PassengerCountStats.csv` 和 `PassengerCountStats.parquet`。
 1. 导航到 `PassengerCountStats.parquet` 文件夹中。
-1. 右键单击内部的 parquet 文件，然后选择“新建笔记本”，这将创建笔记本，其中包含如下所示的单元：
+1. 右键单击内部的 `.parquet` 文件，然后选择“新建笔记本”，这将创建笔记本，其中包含如下所示的单元：
 
     ```py
     %%pyspark

@@ -1,6 +1,6 @@
 ---
-title: 快速入门 - 创建工作区
-description: 遵循本指南中的步骤创建一个 Azure Synapse Analytics 工作区。
+title: 快速入门 - 创建 Synapse 工作区
+description: 遵循本指南中的步骤创建 Synapse 工作区。
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4d3044ec04a3306efdc3b57c1e5a3149b70fab05
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6f72e2ee3b83b693d889e9c43fe42a4677f1666d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112866"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609465"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>快速入门：创建 Azure Synapse Analytics 工作区（预览版）
 

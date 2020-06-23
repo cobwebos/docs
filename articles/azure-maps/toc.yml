@@ -91,6 +91,17 @@
           href: how-to-manage-account-keys.md
         - name: 管理身份验证
           href: how-to-manage-authentication.md
+          items:
+            - name: 如何保护守护程序应用程序
+              href: how-to-secure-daemon-app.md
+            - name: 如何保护交互式登录单页面应用程序
+              href: how-to-secure-spa-users.md
+            - name: 如何保护 Web 应用程序
+              href: how-to-secure-webapp-users.md
+            - name: 如何保护非交互式登录单页面应用程序
+              href: how-to-secure-spa-app.md
+            - name: 如何保护有输入限制的应用程序
+              href: how-to-secure-device-code.md
         - name: 管理定价层
           href: how-to-manage-pricing-tier.md
         - name: 管理 Creator
@@ -318,9 +329,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure Maps 使用条款
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps 定价

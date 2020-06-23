@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f780ad3d2c95f9d23ea9a0b675b59ba22e25016
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b9a855a89a37cde0be3c30b2428c32db361aa2e8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651949"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021681"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>对 Azure 流分析作业使用 SQL 数据库中的参考数据
 
@@ -40,7 +40,7 @@ Azure 流分析支持将 Azure SQL 数据库用作参考数据的输入源。 �
 
    ![SQL 数据库参考配置](./media/sql-reference-data/sql-input-config.png)
 
-3. 在 SQL 查询编辑器中测试快照查询。 有关详细信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](../sql-database/sql-database-connect-query-portal.md)
+3. 在 SQL 查询编辑器中测试快照查询。 有关详细信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](../azure-sql/database/connect-query-portal.md)
 
 ### <a name="specify-storage-account-in-job-config"></a>在作业配置中指定存储帐户
 
@@ -69,7 +69,7 @@ Azure 流分析支持将 Azure SQL 数据库用作参考数据的输入源。 �
 
 ### <a name="create-a-sql-database-table"></a>创建 SQL 数据库表
 
-使用 SQL Server Management Studio 创建用于存储参考数据的表。 有关详细信息，请参阅[使用 SSMS 设计第一个 Azure SQL 数据库](../sql-database/sql-database-design-first-database.md)。
+使用 SQL Server Management Studio 创建用于存储参考数据的表。 有关详细信息，请参阅[使用 SSMS 设计第一个 Azure SQL 数据库](../azure-sql/database/design-first-database-tutorial.md)。
 
 以下示例中使用的示例表是通过以下语句创建的：
 
@@ -129,7 +129,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ## <a name="delta-query"></a>增量查询
 
-使用增量查询时，建议使用 [Azure SQL 数据库中的时态表](../sql-database/sql-database-temporal-tables.md)。
+使用增量查询时，建议使用 [Azure SQL 数据库中的时态表](../azure-sql/temporal-tables.md)。
 
 1. 在 Azure SQL 数据库中创建临时表。
    

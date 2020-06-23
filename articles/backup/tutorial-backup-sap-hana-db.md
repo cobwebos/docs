@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 52ffc6bf83ff2a2dcc22fd7c5ad8ab1480f9ce50
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248237"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417287"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 
@@ -31,7 +31,7 @@ ms.locfileid: "84248237"
 
 * 允许从 VM 连接到 Internet，以便 VM 可以访问 Azure，如下面的[设置网络连接](#set-up-network-connectivity)过程中所述。
 * **hdbuserstore** 中应存在一个满足以下条件的密钥：
-  * 它应该出现在默认的 **hdbuserstore** 中。
+  * 它应该出现在默认的 hdbuserstore 中。 默认值为安装 SAP HANA 的 `<sid>adm` 帐户。
   * 对于 MDC，该密钥应指向 **NAMESERVER** 的 SQL 端口。 对于 SDC，它应指向 INDEXSERVER 的 SQL 端口
   * 它应该包含用于添加和删除用户的凭据
 * 在安装了 HANA 的虚拟机中，以 root 用户身份运行 SAP HANA 备份配置脚本（注册前脚本）。 [此脚本](https://aka.ms/scriptforpermsonhana)可使 HANA 系统做好备份的准备。 请参阅[注册前脚本的功能](#what-the-pre-registration-script-does)部分来详细了解注册前脚本。
@@ -100,7 +100,7 @@ ms.locfileid: "84248237"
 
 注册前脚本执行以下功能：
 
-* 安装或更新分发版中 Azure 备份代理所需的任何包。
+* 脚本将基于 Linux 分发安装或更新 Azure 备份代理所需的任何包。
 * 执行与 Azure 备份服务器和相关服务（例如 Azure Active Directory 和 Azure 存储）之间的出站网络连接检查。
 * 使用[先决条件](#prerequisites)中列出的用户密钥登录到 HANA 系统。 此用户密钥用于在 HANA 系统中创建备份用户 (AZUREWLBACKUPHANAUSER)，成功运行注册前脚本后，可以删除此用户密钥。
 * 为 AZUREWLBACKUPHANAUSER 分配了以下必需的角色和权限：

@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 06/04/2020
+ms.openlocfilehash: 5524a8920ef49603ab9aa143ae4094cdaad9d340
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310353"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456516"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure 区块链服务成员
 
@@ -61,6 +61,12 @@ ms.locfileid: "84310353"
 1. 选择“购买”以部署模板。
 
   此处使用 Azure 门户来部署模板。 还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../../azure-resource-manager/templates/deploy-powershell.md)。
+
+## <a name="review-deployed-resources"></a>查看已部署的资源
+
+你可以使用 Azure 门户查看已部署的 Azure 区块链服务成员的详细信息。 在门户中，前往包含 Azure 区块链服务成员的资源组。 选择创建的区块链成员。
+
+![Azure 门户中的已部署 Azure 区块链成员概述详细信息](./media/create-member-template/deployed-member.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

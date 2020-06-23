@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196516"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628393"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>教程：创建用于多类图像分类的标记项目（预览） 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,12 @@ Azure 机器学习数据存储用于存储连接信息，例如订阅 ID 和令�
     1. 在列表中选择数据集名称（例如“images-for-tutorial”）旁边的圆圈。
 
 1. 选择“下一步”继续创建项目。
+
+### <a name="incremental-refresh"></a>增量刷新
+
+如果打算将新映像添加到数据集中，增量刷新将找到这些新映像并将其添加到项目中。  启用此功能后，项目将定期检查新映像。  在本教程中，你不会将新映像添加到数据存储中，因此不要选中此功能。
+
+选择“下一步”继续。
 
 ### <a name="label-classes"></a>标签类
 

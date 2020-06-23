@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535428"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331791"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用 Azure Migrate:服务器评估工具评估物理服务器
 
@@ -44,15 +44,15 @@ ms.locfileid: "81535428"
 
 按如下所述设置新的 Azure Migrate 项目。
 
-1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。 
-2. 在“服务”下选择“Azure Migrate”。  
-3. 在“概述”中的“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。   
+1. 在 Azure 门户中选择“所有服务”，然后搜索 **Azure Migrate**。
+2. 在“服务”下选择“Azure Migrate”。 
+3. 在“概述”中的“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。  
 
     ![发现和评估服务器](./media/tutorial-assess-physical/assess-migrate.png)
 
-4. 在“开始”中，单击“添加工具”。  
-5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。   
-6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。  查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
+4. 在“开始”中，单击“添加工具”。 
+5. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。  
+6. 在“项目详细信息”中，指定项目名称以及要在其中创建项目的地理位置。 查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
     - 项目地理位置仅用于存储从本地服务器中收集的元数据。
     - 运行迁移时，可以选择任一目标区域。
@@ -60,14 +60,14 @@ ms.locfileid: "81535428"
     ![创建 Azure Migrate 项目](./media/tutorial-assess-physical/migrate-project.png)
 
 
-7. 单击“下一步”。 
-8. 在“选择评估工具”中，选择“Azure Migrate:   服务器评估” > “下一步”。 
+7. 单击“下一步”。
+8. 在“选择评估工具”中，选择“Azure Migrate: 服务器评估” > “下一步”。
 
     ![创建 Azure Migrate 项目](./media/tutorial-assess-physical/assessment-tool.png)
 
-9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。   
-10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。  
-11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。 
+9. 在“选择迁移工具”中，选择“暂时跳过添加迁移工具” > “下一步”。  
+10. 在“检查 + 添加工具”中检查设置，然后单击“添加工具”。 
+11. 等待几分钟，让 Azure Migrate 项目部署完成。 随后将转到项目页。 如果未看到该项目，可以从 Azure Migrate 仪表板中的“服务器”访问它。
 
 
 ## <a name="set-up-the-appliance"></a>设置设备
@@ -86,9 +86,9 @@ ms.locfileid: "81535428"
 
 下载设备的压缩文件。
 
-1. 在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，单击“发现”。 
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。   
-3. 单击“下载”以下载压缩文件  。
+1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。  
+3. 单击“下载”以下载压缩文件。
 
     ![下载安装程序](./media/tutorial-assess-physical/download-appliance.png)
 
@@ -102,20 +102,18 @@ ms.locfileid: "81535428"
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  验证哈希值：
- 
-    - 对于公有云（适用于最新设备版本）：
+3.  验证最新的设备版本和哈希值：
+    - 对于公有云：
 
-        **算法** | **哈希值**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **方案** | **下载*** | **哈希值**
+        --- | --- | ---
+        Physical (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - 对于 Azure 政府云（适用于最新设备版本）：
+    - 对于 Azure 政府：
 
-        **算法** | **哈希值**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **方案** | **下载*** | **哈希值**
+        --- | --- | ---
+        Physical (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 ### <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
 
@@ -134,7 +132,7 @@ ms.locfileid: "81535428"
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的计算机中运行该脚本。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本  ：
+4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
     - 对于公有云：``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - 对于 Azure 政府云：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
@@ -152,13 +150,13 @@ ms.locfileid: "81535428"
 
 首次设置设备。
 
-1. 在可连接到该设备的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL： https://设备名称或 IP 地址:   44368。
+1. 在可连接到该设备的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL： https://设备名称或 IP 地址:44368。
 
    或者，可以在桌面上单击应用快捷方式打开该应用。
-2. 在 Web 应用 >“设置必备组件”中执行以下操作： 
+2. 在 Web 应用 >“设置必备组件”中执行以下操作：
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用将检查服务器是否可访问 Internet。 如果服务器使用代理：
-        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。 
+        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
         - 如果代理需要身份验证，请指定凭据。
         - 仅支持 HTTP 代理。
     - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常发现服务器。
@@ -166,28 +164,28 @@ ms.locfileid: "81535428"
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
-1. 单击“登录”。  如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
+1. 单击“登录”。 如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
 2. 在新的标签页中，使用 Azure 凭据登录。
     - 使用用户名和密码登录。
     - 不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。
 4. 选择在其中创建了 Azure Migrate 项目的订阅。 然后选择该项目。
 5. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
-6. 单击“注册”  。
+6. 单击“注册”。
 
 
 ## <a name="start-continuous-discovery"></a>启动持续发现
 
 现在，从设备连接到要发现的物理服务器，并启动发现。
 
-1. 单击“添加凭据”以指定设备用于发现服务器的帐户凭据  。  
-2. 指定操作系统  、凭据的友好名称以及用户名和密码。 然后单击“添加”  。
+1. 单击“添加凭据”以指定设备用于发现服务器的帐户凭据。  
+2. 指定操作系统、凭据的友好名称以及用户名和密码。 然后单击“添加”。
 你可以为 Windows 和 Linux 服务器分别添加一组凭据。
-4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器  。
+4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器。
 3. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。
-    - 如果服务器验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。  解决问题并再次验证。
-    - 若要删除服务器，请选择 >“删除”  。
-4. 验证之后，单击“保存并启动发现”以启动发现过程。 
+    - 如果服务器验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。
+    - 若要删除服务器，请选择 >“删除”。
+4. 验证之后，单击“保存并启动发现”以启动发现过程。
 
 随即会启动发现。 每台服务器大约需要 1.5 分钟，才能将已发现的服务器的元数据显示在 Azure 门户中。
 
@@ -196,7 +194,7 @@ ms.locfileid: "81535428"
 发现完成后，可以验证服务器是否出现在 Azure 门户中。
 
 1. 打开 Azure Migrate 仪表板。
-2. 在“Azure Migrate - 服务器” > “Azure Migrate:   服务器评估”页中，单击显示了**已发现服务器**计数的图标。
+2. 在“Azure Migrate - 服务器” > “Azure Migrate: 服务器评估”页中，单击显示了**已发现服务器**计数的图标。
 
 ## <a name="set-up-an-assessment"></a>设置评估
 
@@ -213,23 +211,23 @@ ms.locfileid: "81535428"
 按如下述运行评估：
 
 1. 查看有关创建评估的[最佳做法](best-practices-assessment.md)。
-2. 在“服务器”选项卡上的“Azure Migrate:   服务器评估”磁贴中，单击“评估”。 
+2. 在“服务器”选项卡上的“Azure Migrate: 服务器评估”磁贴中，单击“评估”。
 
     ![评估](./media/tutorial-assess-physical/assess.png)
 
-2. 在“评估服务器”中，指定评估的名称。 
-3. 单击“全部查看”查看评估属性  。
+2. 在“评估服务器”中，指定评估的名称。
+3. 单击“全部查看”查看评估属性。
 
     ![评估属性](./media/tutorial-assess-physical/view-all.png)
 
-3. 在“选择或创建组”中，选择“新建”并指定组名称。   组将要评估的一个或多个服务器集合到一起。
-4. 在“将计算机添加到组”中，选择要添加到该组的服务器  。
-5. 单击“创建评估”以创建该组，并运行评估。 
+3. 在“选择或创建组”中，选择“新建”并指定组名称。  组将要评估的一个或多个服务器集合到一起。
+4. 在“将计算机添加到组”中，选择要添加到该组的服务器。
+5. 单击“创建评估”以创建该组，并运行评估。
 
     ![创建评估](./media/tutorial-assess-physical/assessment-create.png)
 
-6. 创建评估后，在“服务器” > “Azure Migrate:   服务器评估” > “评估”中查看它。 
-7. 单击“导出评估”，将评估下载为 Excel 文件。 
+6. 创建评估后，在“服务器” > “Azure Migrate: 服务器评估” > “评估”中查看它。
+7. 单击“导出评估”，将评估下载为 Excel 文件。
 
 
 
@@ -243,21 +241,21 @@ ms.locfileid: "81535428"
 
 ### <a name="view-an-assessment"></a>查看评估
 
-1. 在“迁移目标” >  “服务器”中，单击“Azure Migrate:     服务器评估”中的“评估”。
-2. 在“评估”中，单击某项评估将其打开。 
+1. 在“迁移目标” >  “服务器”中，单击“Azure Migrate:   服务器评估”中的“评估”。
+2. 在“评估”中，单击某项评估将其打开。
 
     ![评估摘要](./media/tutorial-assess-physical/assessment-summary.png)
 
 ### <a name="review-azure-readiness"></a>查看 Azure 迁移就绪性
 
-1. 在“Azure 迁移就绪性”中，验证服务器是否已准备好迁移到 Azure  。
+1. 在“Azure 迁移就绪性”中，验证服务器是否已准备好迁移到 Azure。
 2. 查看状态：
     - **已做好 Azure 迁移准备**：对于评估中的 VM，Azure Migrate 将建议 VM 大小并显示估算成本。
     - **准备就绪但存在以下状况**：显示问题和建议的补救措施。
     - **尚未做好 Azure 迁移准备**：显示问题和建议的补救措施。
     - **就绪性未知**：当数据可用性问题导致 Azure Migrate 无法评估就绪性时使用。
 
-2. 单击某种“Azure 迁移就绪性”状态。  可以查看服务器就绪性详细信息，并深入查看服务器详细信息，包括计算、存储和网络设置。
+2. 单击某种“Azure 迁移就绪性”状态。 可以查看服务器就绪性详细信息，并深入查看服务器详细信息，包括计算、存储和网络设置。
 
 
 

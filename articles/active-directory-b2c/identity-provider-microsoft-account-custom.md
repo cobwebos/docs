@@ -70,7 +70,7 @@ ms.locfileid: "83636982"
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于“选项”，请选择 `Manual`。
-1. 输入策略密钥的**名称**。 例如，`MSASecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的**名称**。 例如，`MSASecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“密码”中，输入在上一部分中记录的客户端密码。
 1. 在“密钥用法”处选择 `Signature`。
 1. 单击“创建”。
@@ -151,7 +151,7 @@ ms.locfileid: "83636982"
 1. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
 1. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 1. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
-1. 重命名用户旅程的 ID。 例如，`SignUpSignInMSA` 。
+1. 重命名用户旅程的 ID。 例如，`SignUpSignInMSA`。
 
 ### <a name="display-the-button"></a>显示按钮
 
@@ -175,7 +175,7 @@ ms.locfileid: "83636982"
     <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
     ```
 
-    更新 TechnicalProfileReferenceId 的值，以与前面添加的声明提供程序的 TechnicalProfile 元素中的 `Id` 值相匹配。 例如，`MSA-OIDC` 。
+    更新 TechnicalProfileReferenceId 的值，以与前面添加的声明提供程序的 TechnicalProfile 元素中的 `Id` 值相匹配。 例如，`MSA-OIDC`。
 
 1. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -190,7 +190,7 @@ ms.locfileid: "83636982"
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 在工作目录中创建 *SignUpOrSignIn.xml* 的副本并将其重命名。 例如，将其重命名为 *SignUpSignInMSA.xml*。
-1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInMSA` 。
+1. 打开新文件，并将 **TrustFrameworkPolicy** 的 **PolicyId** 属性的值更新为唯一的值。 例如，`SignUpSignInMSA`。
 1. 将 **PublicPolicyUri** 的值更新为策略的 URI。 例如 `http://contoso.com/B2C_1A_signup_signin_msa`
 1. 更新 DefaultUserJourney 中 ReferenceId 属性的值，以匹配之前创建的用户旅程的 ID (SignUpSignInMSA)。
 1. 保存更改并上传文件，然后选择列表中的新策略。

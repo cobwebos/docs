@@ -1,6 +1,6 @@
 ---
 title: 为可用性组配置 ILB 侦听器（经典）
-description: 本教程使用通过经典部署模型创建的资源，并在 Azure 中为使用内部负载均衡器的 Azure SQL Server VM 创建 Always On 可用性组侦听器。
+description: 本教程使用通过经典部署模型创建的资源，并为 Azure 中的 SQL Server VM 创建使用内部负载均衡器的 Always On 可用性组侦听器。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f05e1d46485b337acbd9390441359e086067db74
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978174"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014803"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>为 Azure SQL Server VM 上的可用性组配置 ILB 侦听器
 > [!div class="op_single_selector"]
@@ -32,9 +32,9 @@ ms.locfileid: "75978174"
 ## <a name="overview"></a>概述
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器和经典模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[Azure 资源管理器部署模型和经典部署模型](../../../azure-resource-manager/management/deployment-models.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
 
-若要在 Resource Manager 模型中配置 Always On 可用性组的侦听器，请参阅[在 Azure 中配置 Always On 可用性组的负载均衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
+若要在 Resource Manager 模型中配置 Always On 可用性组的侦听器，请参阅[在 Azure 中配置 Always On 可用性组的负载均衡器](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md)。
 
 可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。 Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络的多个区域。 本文中的过程假设已[配置可用性组](../classic/portal-sql-alwayson-availability-groups.md)，但未配置侦听器。
 
@@ -56,9 +56,9 @@ ms.locfileid: "75978174"
 
 1. 在 Azure 门户中，转到每个托管副本的 VM 查看详细信息。
 
-2. 单击每个 VM 的“终结点”选项卡。 
+2. 单击每个 VM 的“终结点”选项卡。
 
-3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。   在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。  
+3. 验证想要使用的侦听器终结点“名称”和“公用端口”是否已被使用。  在本部分的示例中，名称为“MyEndpoint”，端口为“1433”。 
 
 4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
 

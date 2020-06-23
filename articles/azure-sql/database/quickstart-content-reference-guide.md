@@ -1,6 +1,6 @@
 ---
 title: 单一数据库快速入门内容参考
-description: 查找所有快速入门的内容参考，这有助于快速学习 Azure SQL 数据库中的单一数据库
+description: 查找所有快速入门的内容参考，这有助于快速学习 Azure SQL 数据库中的单一数据库。
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: c4a699a6b531feee98f9c6f83ba19cfef9d27620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052899"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338271"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>开始使用 Azure SQL 数据库中的单一数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[单一数据库](../index.yml)是完全托管的 PaaS 数据库即服务 (DbaaS)，也是新式云原生应用程序的理想存储引擎。 本部分介绍如何在 Azure SQL 数据库中快速配置和创建单一数据库。
+[单一数据库](../index.yml)是完全托管的平台即服务 (PaaS) 数据库即服务 (DbaaS)，也是新式云原生应用程序的理想存储引擎。 本部分介绍如何在 Azure SQL 数据库中快速配置和创建单一数据库。
 
 ## <a name="quickstart-overview"></a>快速入门概述
 
@@ -48,8 +48,8 @@ ms.locfileid: "84052899"
 以下 Microsoft Learn 模块可帮助你免费了解 Azure SQL 数据库。
 
 - [预配 SQL 数据库中的数据库，用于存储应用程序数据](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [开发和配置可查询 Azure SQL 数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [保护 Azure SQL 数据库](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [开发和配置可在 Azure SQL 数据库中查询数据库的 ASP.NET 应用程序](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [保护 Azure SQL 数据库中的数据库](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -58,4 +58,4 @@ ms.locfileid: "84052899"
 - 在[如何在 Azure SQL 数据库中使用单一数据库](how-to-content-reference-guide.md)中查看更深入的操作指南。
 - 查找在 [PowerShell](powershell-script-content-guide.md) 和 [Azure CLI](az-cli-script-samples-content-guide.md) 中编写的其他示例脚本。
 - 详细了解可用于配置数据库的[管理 API](single-database-manage.md)。
-- [确定适合本地数据库的 Azure SQL 数据库或 SQL 托管实例 SKU](/sql/dma/dma-sku-recommend-sql-db/)。
+- [确定适合本地数据库的 Azure SQL 数据库或 Azure SQL 托管实例 SKU](/sql/dma/dma-sku-recommend-sql-db/)。

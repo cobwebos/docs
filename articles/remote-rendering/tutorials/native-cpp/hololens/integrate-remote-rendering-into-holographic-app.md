@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: b6dceff8b777d09a6f791437eb4aaca70365b518
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 75f041d8ec149c67c82744a87e0812b19a22bcb1
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300711"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508516"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>教程：将远程渲染集成到 HoloLens Holographic 应用
 
@@ -163,12 +163,11 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
     {
         // Users need to fill out the following with their account data and model
         RR::AzureFrontendAccountInfo init;
-        memset(&init, 0, sizeof(RR::AzureFrontendAccountInfo));
         init.AccountId = "00000000-0000-0000-0000-000000000000";
         init.AccountKey = "<account key>";
         init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
         m_modelURI = "builtin://Engine";
-        m_sessionOverride = ""; // if there is a valid session ID to re-use, put it here. Otherwise a new one is created
+        m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
 
         m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
     }
@@ -176,23 +175,6 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
     // 3. Open/create rendering session
     {
         bool createNewSession = true;
-
-        auto SetNewSession = [this](RR::ApiHandle<RR::AzureSession> newSession)
-        {
-            SetNewState(AppConnectionStatus::Connecting, RR::Result::Success);
-            m_session = newSession;
-            m_api = m_session->Actions();
-            m_graphicsBinding = m_session->GetGraphicsBinding().as<RR::GraphicsBindingWmrD3d11>();
-            m_session->ConnectionStatusChanged([this](auto status, auto error)
-                {
-                    OnConnectionStatusChanged(status, error);
-                });
-
-            // The following is async, but we'll get notifications via OnConnectionStatusChanged
-            RR::ConnectToRuntimeParams init;
-            init.mode = RR::ServiceRenderMode::Default;
-            m_session->ConnectToRuntime(init);
-        };
 
         // If we had an old (valid) session that we can recycle, we call synchronous function m_frontEnd->OpenRenderingSession
         if (!m_sessionOverride.empty())
@@ -207,7 +189,7 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
 
         if (createNewSession)
         {
-            // Create a new session
+            // create a new session
             RR::RenderingSessionCreationParams init;
             memset(&init, 0, sizeof(RR::RenderingSessionCreationParams));
             init.MaxLease.minute = 10; // session is leased for 10 minutes
@@ -221,10 +203,10 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
                     }
                     else
                     {
-                        SetNewState(AppConnectionStatus::ConnectionFailed, RR::Result::Fail);
+                        SetNewState(AppConnectionStatus::ConnectionFailed, "failed");
                     }
                 });
-            SetNewState(AppConnectionStatus::CreatingSession, RR::Result::Success);
+            SetNewState(AppConnectionStatus::CreatingSession, nullptr);
         }
     }
 
@@ -232,7 +214,10 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
     ...
 }
 ```
-在本地函数 `SetNewSession` 中，我们注册到一个回调，只要给定会话的连接状态发生变化，就会触发该回调。 我们将该调用重定向到我们自己的函数 `OnConnectionStatusChanged`。 我们将在下一段中声明并实现它（以及其余的状态机代码）。 另请注意，该示例中的凭据采用硬编码，需要在适当的位置填写（[帐户 ID、帐户密钥](../../../how-tos/create-an-account.md#retrieve-the-account-information)和[域](../../../reference/regions.md)）。
+
+此代码调用成员函数 `SetNewSession` 和 `SetNewState`，我们将在下一段中实现该函数，并在剩余的状态机代码中实现。
+
+另请注意，该示例中的凭据采用硬编码，需要在适当的位置填写（[帐户 ID、帐户密钥](../../../how-tos/create-an-account.md#retrieve-the-account-information)和[域](../../../reference/regions.md)）。
 
 我们以对称的方式和相反的顺序在析构函数主体的末尾执行取消初始化操作：
 
@@ -261,7 +246,7 @@ HolographicAppMain::~HolographicAppMain()
 
 在远程渲染中，用于创建会话和加载模型的关键函数是异步函数。 为了解决这个问题，我们需要一个简单的状态机，该状态机实际上是在以下状态之间自动进行转换：
 
-初始化 -> 会话创建 -> 模型加载（包含进度）
+初始化 -> 会话创建 -> 会话开始 -> 模型加载（包含进度）
 
 因此，下一步，我们向类添加一些状态机处理。 我们为应用程序可以处于的各种状态声明自己的枚举 `AppConnectionStatus`。 它与 `RR::ConnectionStatus` 类似，但具有用于失败连接的附加状态。
 
@@ -276,6 +261,7 @@ namespace HolographicApp
         Disconnected,
 
         CreatingSession,
+        StartingSession,
         Connecting,
         Connected,
 
@@ -288,7 +274,8 @@ namespace HolographicApp
         ...
         // Member functions for state transition handling
         void OnConnectionStatusChanged(RR::ConnectionStatus status, RR::Result error);
-        void SetNewState(AppConnectionStatus state, RR::Result error);
+        void SetNewState(AppConnectionStatus state, const char* statusMsg);
+        void SetNewSession(RR::ApiHandle<RR::AzureSession> newSession);
         void StartModelLoading();
 
         // Members for state handling:
@@ -299,9 +286,12 @@ namespace HolographicApp
 
         // Connection state machine:
         AppConnectionStatus m_currentStatus = AppConnectionStatus::Disconnected;
+        std::string m_statusMsg;
         RR::Result m_connectionResult = RR::Result::Success;
         RR::Result m_modelLoadResult = RR::Result::Success;
         bool m_isConnected = false;
+        bool m_sessionStarted = false;
+        RR::ApiHandle<RR::SessionPropertiesAsync> m_sessionPropertiesAsync;
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
@@ -348,10 +338,10 @@ void HolographicAppMain::StartModelLoading()
 
 
 
-void HolographicAppMain::SetNewState(AppConnectionStatus state, RR::Result error)
+void HolographicAppMain::SetNewState(AppConnectionStatus state, const char* statusMsg)
 {
     m_currentStatus = state;
-    m_connectionResult = error;
+    m_statusMsg = statusMsg ? statusMsg : "";
 
     // Some log for the VS output panel:
     const char* appStatus = nullptr;
@@ -360,51 +350,61 @@ void HolographicAppMain::SetNewState(AppConnectionStatus state, RR::Result error
     {
         case AppConnectionStatus::Disconnected: appStatus = "Disconnected"; break;
         case AppConnectionStatus::CreatingSession: appStatus = "CreatingSession"; break;
+        case AppConnectionStatus::StartingSession: appStatus = "StartingSession"; break;
         case AppConnectionStatus::Connecting: appStatus = "Connecting"; break;
         case AppConnectionStatus::Connected: appStatus = "Connected"; break;
         case AppConnectionStatus::ConnectionFailed: appStatus = "ConnectionFailed"; break;
     }
 
     char buffer[1024];
-    sprintf_s(buffer, "Remote Rendering: New status: %s, result: %s\n", appStatus, RR::ResultToString(error));
+    sprintf_s(buffer, "Remote Rendering: New status: %s, result: %s\n", appStatus, m_statusMsg.c_str());
     OutputDebugStringA(buffer);
 }
 
+void HolographicAppMain::SetNewSession(RR::ApiHandle<RR::AzureSession> newSession)
+{
+    SetNewState(AppConnectionStatus::StartingSession, nullptr);
+
+    m_session = newSession;
+    m_api = m_session->Actions();
+    m_graphicsBinding = m_session->GetGraphicsBinding().as<RR::GraphicsBindingWmrD3d11>();
+    m_session->ConnectionStatusChanged([this](auto status, auto error)
+        {
+            OnConnectionStatusChanged(status, error);
+        });
+
+};
 
 void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, RR::Result error)
 {
+    const char* asString = RR::ResultToString(error);
+    m_connectionResult = error;
+
     switch (status)
     {
     case RR::ConnectionStatus::Connecting:
-        SetNewState(AppConnectionStatus::Connecting, error);
+        SetNewState(AppConnectionStatus::Connecting, asString);
         break;
     case RR::ConnectionStatus::Connected:
         if (error == RR::Result::Success)
         {
-            SetNewState(AppConnectionStatus::Connected, error);
+            SetNewState(AppConnectionStatus::Connected, asString);
         }
         else
         {
-            SetNewState(AppConnectionStatus::ConnectionFailed, error);
+            SetNewState(AppConnectionStatus::ConnectionFailed, asString);
         }
         m_modelLoadTriggered = m_modelLoadFinished = false;
         m_isConnected = error == RR::Result::Success;
-
-        // start model loading as soon as we have a valid connection
-        if (m_isConnected && !m_modelLoadTriggered)
-        {
-            m_modelLoadTriggered = true;
-            StartModelLoading();
-        }
         break;
     case RR::ConnectionStatus::Disconnected:
         if (error == RR::Result::Success)
         {
-            SetNewState(AppConnectionStatus::Disconnected, error);
+            SetNewState(AppConnectionStatus::Disconnected, asString);
         }
         else
         {
-            SetNewState(AppConnectionStatus::ConnectionFailed, error);
+            SetNewState(AppConnectionStatus::ConnectionFailed, asString);
         }
         m_modelLoadTriggered = m_modelLoadFinished = false;
         m_isConnected = false;
@@ -412,22 +412,75 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
     default:
         break;
     }
+    
 }
 ```
 
 ### <a name="per-frame-update"></a>每帧更新
 
-我们必须在每个模拟计时周期对客户端进行一次计时。 `HolographicApp1Main` 类为每帧更新提供了一个很好的挂钩，因此请将以下代码添加到 `HolographicApp1Main::Update` 函数的主体中：
+我们必须在每个模拟计时周期对客户端进行一次计时。 类 `HolographicApp1Main` 为每帧更新提供良好的挂钩。 此外，我们还需要轮询会话的状态，并查看它是否已转换为 `Ready` 状态。 如果已成功连接，最终会通过 `StartModelLoading` 启动模型加载。
+
+将以下代码添加到函数 `HolographicApp1Main::Update` 的主体：
 
 ```cpp
 // Updates the application state once per frame.
 HolographicFrame HolographicAppMain::Update()
 {
-    // Tick Remote rendering:
     if (m_session != nullptr)
     {
         // Tick the client to receive messages
         m_api->Update();
+
+        // query session status periodically until we reach 'session started'
+        if (!m_sessionStarted && m_sessionPropertiesAsync == nullptr)
+        {
+            if (auto propAsync = m_session->GetPropertiesAsync())
+            {
+                m_sessionPropertiesAsync = *propAsync;
+                m_sessionPropertiesAsync->Completed([this](const RR::ApiHandle<RR::SessionPropertiesAsync>& async)
+                    {
+                        if (auto res = async->Result())
+                        {
+                            switch (res->Status)
+                            {
+                            case RR::RenderingSessionStatus::Ready:
+                            {
+                                // The following is async, but we'll get notifications via OnConnectionStatusChanged
+                                m_sessionStarted = true;
+                                SetNewState(AppConnectionStatus::Connecting, nullptr);
+                                RR::ConnectToRuntimeParams init;
+                                init.ignoreCertificateValidation = false;
+                                init.mode = RR::ServiceRenderMode::Default;
+                                m_session->ConnectToRuntime(init);
+                            }
+                            break;
+                            case RR::RenderingSessionStatus::Error:
+                                SetNewState(AppConnectionStatus::ConnectionFailed, "Session error");
+                                break;
+                            case RR::RenderingSessionStatus::Stopped:
+                                SetNewState(AppConnectionStatus::ConnectionFailed, "Session stopped");
+                                break;
+                            case RR::RenderingSessionStatus::Expired:
+                                SetNewState(AppConnectionStatus::ConnectionFailed, "Session expired");
+                                break;
+                            }
+
+                        }
+                        else
+                        {
+                            SetNewState(AppConnectionStatus::ConnectionFailed, "Failed to retrieve session status");
+                        }
+                        m_sessionPropertiesAsync = nullptr; // next try
+                        m_needsStatusUpdate = true;
+                    });
+            }
+        }
+
+        if (m_isConnected && !m_modelLoadTriggered)
+        {
+            m_modelLoadTriggered = true;
+            StartModelLoading();
+        }
     }
 
     // Rest of the body:
@@ -437,16 +490,22 @@ HolographicFrame HolographicAppMain::Update()
 
 ### <a name="rendering"></a>渲染
 
-最后一步是调用远程内容的渲染。 清除渲染目标之后，我们必须在渲染管道内的正确位置进行此调用。 将以下代码片段插入 `HolographicAppMain::Render` 函数的 `UseHolographicCameraResources` 锁中：
+最后一步是调用远程内容的渲染。 清除渲染目标并设置视区之后，我们必须在渲染管道内的正确位置进行此调用。 将以下代码片段插入 `HolographicAppMain::Render` 函数的 `UseHolographicCameraResources` 锁中：
 
 ```cpp
         ...
         // Existing clear function:
         context->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+        
+        // ...
+
+        // Exiting check to test for valid camera:
+        bool cameraActive = pCameraResources->AttachViewProjectionBuffer(m_deviceResources);
+
 
         // Inject remote rendering: as soon as we are connected, start blitting the remote frame.
         // We do the blitting after the Clear, and before cube rendering.
-        if (m_isConnected)
+        if (m_isConnected && cameraActive)
         {
             m_graphicsBinding->BlitRemoteFrame();
         }

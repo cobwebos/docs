@@ -27,11 +27,11 @@
               href: tutorial-c-module.md
             - name: 适用于 Windows 设备的 C 模块
               href: tutorial-c-module-windows.md
-        - name: 'C#'
+        - name: C#
           items:
-            - name: '适用于 Linux 设备的 C# 模块'
+            - name: 适用于 Linux 设备的 C# 模块
               href: tutorial-csharp-module.md
-            - name: '适用于 Windows 设备的 C# 模块'
+            - name: 适用于 Windows 设备的 C# 模块
               href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
@@ -199,6 +199,12 @@
           href: how-to-store-data-blob.md
         - name: 部署 blob 存储模块
           href: how-to-deploy-blob.md
+    - name: IoT Edge 上的 Azure SQL Edge
+      items:
+        - name: 了解边缘的 Azure SQL
+          href: ../azure-sql-edge/overview.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+        - name: 部署 Azure SQL Edge 模块
+          href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: 使用 DevOps 工具进行管理
       items:
         - name: Azure DevOps Projects
@@ -238,12 +244,12 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure IoT 示例
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'

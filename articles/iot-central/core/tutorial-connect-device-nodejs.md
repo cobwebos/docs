@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758198"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417899"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
-本文适用于解决方案构建者和设备开发人员。 
+本文适用于解决方案构建者和设备开发人员。
 
-本教程介绍如何以设备开发人员的身份将 Node.js 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Node.js 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。   此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
+本教程介绍如何以设备开发人员的身份将 Node.js 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Node.js 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。  此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -38,7 +38,7 @@ ms.locfileid: "81758198"
 
 若要完成本文中的步骤，需要以下各项：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。  有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 * 安装了 [Node.js](https://nodejs.org/) 10.0.0 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `node --version`。 本教程中的说明假设在 Windows 命令提示符下运行 **node** 命令。 但是，可以在许多其他的操作系统上使用 Node.js。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -162,7 +162,7 @@ ms.locfileid: "81758198"
     }
     ```
 
-    当操作员在 IoT Central 应用程序中设置可写属性时，该应用程序会使用设备孪生所需属性将值发送到设备。 然后，设备使用设备孪生报告属性做出响应。 IoT Central 在收到报告属性值时会使用 synced 状态更新属性视图。 
+    当操作员在 IoT Central 应用程序中设置可写属性时，该应用程序会使用设备孪生所需属性将值发送到设备。 然后，设备使用设备孪生报告属性做出响应。 IoT Central 在收到报告属性值时会使用 synced 状态更新属性视图。
 
     属性的名称（`name` 和 `brightness`）必须与设备模板中使用的名称相匹配。
 
@@ -330,8 +330,9 @@ node environmentalSensor.js
 
 作为设备开发人员，现在你已了解了有关使用 Node.js 创建设备的基础知识，建议执行的后续步骤是：
 
-- 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
-- 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
+* 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
+* 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
+* 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
 
 若要继续浏览 IoT Central 系列教程并详细了解如何构建 IoT Central 解决方案，请参阅：
 

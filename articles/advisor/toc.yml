@@ -10,7 +10,7 @@
       href: advisor-get-started.md
 - name: 操作指南
   items:
-    - name: 提高 Azure 应用程序的可用性
+    - name: 提高 Azure 应用程序的可靠性
       href: advisor-high-availability-recommendations.md
     - name: 提高资源的安全性
       href: advisor-security-recommendations.md

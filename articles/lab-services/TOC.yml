@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: 方案
       items:
-        - name: 将实验室用于上课
+        - name: 使用实验室服务进行授课
           href: classroom-labs-scenarios.md
+        - name: 使用实验室服务开展编程马拉松
+          href: hackathon-labs.md
         - name: 教室实验室 - 课程类型
           items:
             - name: 课程类型概述

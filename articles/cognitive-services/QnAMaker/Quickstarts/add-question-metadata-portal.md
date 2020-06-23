@@ -3,16 +3,16 @@ title: 快速入门：在 QnA Maker 门户中添加问题和回答
 description: 本快速入门介绍如何添加具有元数据的问题和答案对，以便用户可以找到其问题的正确答案。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266570"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331383"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>快速入门：使用 QnA Maker 门户添加问题和回答
 
-创建知识库后，添加具有元数据的问题和回答 (QnA) 对，以便筛选回答。 下表中的问题涉及到 Azure 服务限制，但每个问题与不同的 Azure 服务相关。
+创建知识库后，添加具有元数据的问题和回答 (QnA) 对，以便筛选回答。 下表中的问题涉及到 Azure 服务限制，但每个问题与不同的 Azure 搜索服务相关。
 
 <a name="qna-table"></a>
 

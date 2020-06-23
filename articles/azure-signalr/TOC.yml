@@ -25,10 +25,6 @@
   items:
     - name: 生成带身份验证的无服务器实时应用
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: 监视
-      items:
-        - name: 使用诊断日志监视 SignalR 服务
-          href: signalr-tutorial-diagnostic-logs.md
 - name: 示例
   items:
     - name: 代码示例
@@ -51,6 +47,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Azure Functions 的 SignalR 服务绑定参考
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: 上游设置
+          href: concept-upstream.md
     - name: 高可用性
       items:
         - name: 复原能力和灾难恢复
@@ -81,12 +79,20 @@
           href: howto-private-endpoints.md
         - name: 管理网络访问控制
           href: howto-network-access-control.md
+        - name: 使用托管标识
+          href: howto-use-managed-identity.md
     - name: 集成
       items:
         - name: Azure Functions 绑定
           href: signalr-concept-azure-functions.md
         - name: 事件网格集成
           href: signalr-howto-event-grid-integration.md
+    - name: 监视
+      items:
+        - name: 使用诊断日志监视 SignalR 服务
+          href: signalr-howto-diagnostic-logs.md
+        - name: 使用 Azure Policy 审核符合性
+          href: signalr-howto-azure-policy.md
 - name: 参考
   items:
     - name: Azure CLI
