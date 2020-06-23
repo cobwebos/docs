@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 070a65207bc1aa2cf754f3a0dca59f1a2950a339
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 2534b2ef2eec0ca993ee2506dcc285d750ba38ce
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611810"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737185"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>使用示例客户端应用了解 Azure 数字孪生
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 本教程介绍实现了命令行客户端应用程序的示例应用程序，用于与 Azure 数字孪生实例进行交互。 客户端应用与[教程：编写客户端应用](tutorial-code.md)中编写的应用类似。
 

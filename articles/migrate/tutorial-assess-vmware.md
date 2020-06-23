@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331876"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771302"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>使用“服务器评估”功能评估 VMware VM
 
@@ -34,7 +34,7 @@ ms.locfileid: "84331876"
 - [完成第一个教程](tutorial-prepare-vmware.md)（本系列）。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
     - [准备 Azure](tutorial-prepare-vmware.md#prepare-azure) 以便使用 Azure Migrate。
-    - [准备 VMware 以进行评估](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment)。 这包括检查 VMware 设置、设置供 Azure Migrate 用来访问 vCenter Server 的帐户。
+    - [准备 VMware 以进行评估](tutorial-prepare-vmware.md#prepare-for-assessment)。 这包括检查 VMware 设置、设置供 Azure Migrate 用来访问 vCenter Server 的帐户。
     - [验证](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment)部署用于 VMware 评估的 Azure Migrate 设备所需的内容。
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
@@ -170,7 +170,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 1. 在“指定 vCenter Server 详细信息”中，指定 vCenter Server 实例的名称 (FQDN) 或 IP 地址。 可以保留默认端口，或指定 vCenter Server 侦听的自定义端口。
 2. 在“用户名”和“密码”中，指定设备用来发现 vCenter 服务器实例上的 VM 的 vCenter Server 帐户凭据 。 
 
-    - 你应该已在[上一教程](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)中设置具有所需权限的帐户。
+    - 你应该已在[上一教程](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)中设置具有所需权限的帐户。
     - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、群集文件夹、主机、主机文件夹或单个 VM），请参阅[此文](set-discovery-scope.md)中的说明，以限制 Azure Migrate 所使用的帐户。
 
 3. 选择“验证连接”，确保设备可以连接到 vCenter Server。
@@ -178,7 +178,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
     - 如果已创建用于[应用程序发现功能](how-to-discover-applications.md)或[无代理依赖项分析功能](how-to-create-group-machine-dependencies-agentless.md)的帐户，则可选择在此处添加凭据。
     - 如果不使用这些功能，则可跳过此设置。
-    - 查看[应用发现](migrate-support-matrix-vmware.md#application-discovery)或[无代理分析](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)所需的凭据。
+    - 查看[应用发现](migrate-support-matrix-vmware.md#application-discovery-requirements)或[无代理分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的凭据。
 
 5. **保存并启动发现**，即可启动 VM 发现。
 

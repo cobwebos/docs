@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344010"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669896"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
 
@@ -133,9 +133,9 @@ ms.locfileid: "84344010"
 
 1. 单击“下一步:生成 >”按钮以编辑生成配置
 
-1. 将“应用位置”设置为“公共”。
+1. 将“应用位置”设置为 /。
 
-1. “应用项目位置”留空。
+1. 将“应用项目位置”设置为“公共”。
 
    “API 位置”的值不是必需的，因为目前不会部署 API。
 
