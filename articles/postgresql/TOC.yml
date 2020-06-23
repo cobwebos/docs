@@ -193,6 +193,8 @@
           items:
             - name: 配置选项
               href: concepts-hyperscale-configuration-options.md
+            - name: 为预留容量预付费
+              href: concepts-hyperscale-reserved-pricing.md
 - name: 操作指南
   items:
     - name: 单个服务器
