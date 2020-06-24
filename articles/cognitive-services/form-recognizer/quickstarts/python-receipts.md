@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 8fe179cb3bc965112ece9e2be4b98d758c4db28f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: d798b3b35bbe051700c44ee362f8f517adb4a7a3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606252"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209124"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入门：将表单识别器 REST API 与 Python 结合使用来提取回执数据
 
@@ -38,7 +38,7 @@ ms.locfileid: "84606252"
 
 ## <a name="analyze-a-receipt"></a>分析回执
 
-若要开始分析回执，请使用以下 Python 脚本调用 **[分析收据](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API。 在运行该脚本之前，请进行以下更改：
+若要开始分析回执，请使用以下 Python 脚本调用 **[分析收据](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** API。 在运行该脚本之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `<your receipt URL>` 替换为回执图像的 URL 地址。
@@ -54,7 +54,7 @@ ms.locfileid: "84606252"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.0/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -89,12 +89,12 @@ ms.locfileid: "84606252"
 你将收到 `202 (Success)` 响应，其中包括 **Operation-Location** 标头，脚本会将其输出到控制台。 此标头包含一个可用于查询异步操作状态和获取结果的操作 ID。 在以下示例值中，`operations/` 后面的字符串就是操作 ID。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>获取回执结果
 
-调用了“分析回执”API 后，可以调用 **[获取分析收据结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 这将在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
+调用了“分析回执”API 后，可以调用 **[获取分析收据结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 这将在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
 
 ```python
 n_tries = 10
@@ -466,4 +466,4 @@ while n_try < n_tries:
 在本快速入门中，结合使用了表单识别器 REST API 与 Python，以提取销售收据的内容。 接下来，请参阅参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)

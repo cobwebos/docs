@@ -54,8 +54,12 @@
       href: expressroute-global-reach.md
     - name: 关于 ExpressRoute 加密
       href: expressroute-about-encryption.md
-    - name: 安全控件
-      href: expressroute-security-controls.md
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
+        - name: 安全属性
+          href: expressroute-security-controls.md
     - name: 关于虚拟网络网关
       href: expressroute-about-virtual-network-gateways.md
     - name: 将 Azure 连接到公有云
@@ -210,7 +214,7 @@
 - name: 参考
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#expressroute'
+      href: /powershell/module/az.network#expressroute
     - name: Azure CLI
       href: /cli/azure/network/express-route
     - name: REST

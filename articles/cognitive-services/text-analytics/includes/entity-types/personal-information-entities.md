@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: cd17bf6c97cb89984bf407552330fbe9bec36e3f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84902489"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85292178"
 ---
 > [!NOTE]
 > 若要检测 `PHI` ，请使用 `domain=phi` 参数和模型版本 `2020-04-01` 或更高版本。
@@ -22,7 +22,7 @@ ms.locfileid: "84902489"
  
 将请求发送到终结点时，将返回以下实体类别 `/v3.1-preview.1/entities/recognition/pii` 。
 
-| 类别   | 子类别 | 说明                          | 开始模型版本 | 说明 |
+| Category   | 子类别 | 说明                          | 开始模型版本 | 备注 |
 |------------|-------------|--------------------------------------|------------------------|---|
 | 人员     | 空值         | 人员姓名。  | `2019-10-01`  | 还返回了 `domain=phi` 。 |
 | PersonType | 空值         | 人员持有的作业类型或角色。 | `2020-02-01` | |
@@ -34,7 +34,7 @@ ms.locfileid: "84902489"
 | 地址 | 空值 | 完整的邮件地址。  | `2020-04-01` | 还返回了 `domain=phi` 。 |
 | 欧盟 GPS 坐标 | 空值 | 欧盟内位置的 GPS 坐标。  | `2019-10-01` |  |
 | 电子邮件 | 空值 | 电子邮件地址。 | `2019-10-01` | 还返回了 `domain=phi` 。   |
-| URL | 空值 | 指向网站的 Url。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
+| 代码 | 空值 | 指向网站的 Url。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
 | IP | 空值 | 网络 IP 地址。 | `2019-10-01` | |
 | DateTime | 空值 | 日期和时间。 | `2019-10-01` |  | 
 | DateTime | Date | 日历日期。 | `2019-10-01` | 还返回了 `domain=phi` 。 |
@@ -51,7 +51,7 @@ ms.locfileid: "84902489"
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB 身份验证密钥             | Azure DocumentDB 服务器的授权密钥。                           |
 | Azure IAAS 数据库连接字符串和 Azure SQL 连接字符串 | Azure 基础结构即服务（IaaS）数据库的连接字符串和 SQL 连接字符串。 |
-| Azure SQL 连接字符串           | 用于 Azure SQL 数据库的连接字符串。                                |
+| Azure SQL 连接字符串           | Azure SQL 数据库中的数据库的连接字符串。                                |
 | Azure IoT 连接字符串           | 适用于物联网（IoT）的连接字符串。                        |
 | Azure 发布设置密码        | Azure 发布设置的密码。                                        |
 | Azure Redis 缓存连接字符串   | 用于 Redis 的 Azure 缓存的连接字符串。                             |

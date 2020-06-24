@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: ca60b7c12ec7e7a5e04202e377c345055ce1090c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 79206ffb51b41c3d7e671bb37353548b47190f6b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736001"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206456"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>通过 Azure Synapse Analytics 在 SQL 按需版本（预览版）中创建和使用视图
 

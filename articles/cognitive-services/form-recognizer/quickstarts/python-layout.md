@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 7600efef943f5e38b8187474e82e36590d576a17
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 8893ebf1288e592131938f39b10e204f98471fa8
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610859"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208138"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入门：使用表单识别器 REST API 和 Python 提取文本和布局信息
 
@@ -39,7 +39,7 @@ ms.locfileid: "84610859"
 
 ## <a name="analyze-the-form-layout"></a>分析表单布局
 
-若要开始分析布局，请使用以下 Python 脚本调用 **[分析布局](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API。 在运行该脚本之前，请进行以下更改：
+若要开始分析布局，请使用以下 Python 脚本调用 **[分析布局](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)** API。 在运行该脚本之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `<path to your form>` 替换为本地表单文档的路径。
@@ -55,7 +55,7 @@ ms.locfileid: "84610859"
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.0-preview/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.0/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -85,12 +85,12 @@ ms.locfileid: "84610859"
 你将收到 `202 (Success)` 响应，其中包括 **Operation-Location** 标头，脚本会将其输出到控制台。 此标头包含一个可用于查询异步操作状态和获取结果的操作 ID。 在以下示例值中，`operations/` 后面的字符串就是操作 ID。
 
 ```console
-https://cognitiveservice/formrecognizer/v2.0-preview/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-layout-results"></a>获取布局结果
 
-调用了“分析布局”API 后，可以调用 **[获取分析布局结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 此代码在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
+调用了“分析布局”API 后，可以调用 **[获取分析布局结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeLayoutResult)** API，以获取操作状态和已提取的数据。 将以下代码添加到 Python 脚本的底部。 此代码在新的 API 调用中使用操作 ID 值。 此脚本定期调用 API，直到结果可用为止。 我们建议调用间隔为一秒或更长时间。
 
 ```python
 n_tries = 10
@@ -283,4 +283,4 @@ while n_try < n_tries:
 在本快速入门中，你结合使用了表单识别器 REST API 与 Python，以提取发票的文本布局。 接下来，请参阅参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeLayoutAsync)

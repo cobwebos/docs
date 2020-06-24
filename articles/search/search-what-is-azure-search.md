@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 01/06/2020
-ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/23/2020
+ms.openlocfilehash: 7075753049e6ba6f4804d23aa31796cbd5bc9141
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466215"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263222"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
@@ -29,7 +29,7 @@ Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-n
 
 Azure 认知搜索非常适合以下应用方案：
 
-+ 将异构内容类型整合成单个专用的可搜索索引。 查询始终基于你创建并连同文档一起加载的索引，索引始终驻留在云中的 Azure 认知搜索服务上。 可以在索引中填充来自任何源或平台的 JSON 文档流。 或者，对于源自 Azure 的内容，可以使用索引器将数据提取到索引中。  索引定义和管理/所有权是使用 Azure 认知搜索的重要原因。
++ 将异构内容类型整合成单个专用的可搜索索引。 查询始终基于你创建并连同文档一起加载的索引，索引始终驻留在云中的 Azure 认知搜索服务上。 可以在索引中填充来自任何源或平台的 JSON 文档流。 或者，对于源自 Azure 的内容，可以使用索引器将数据提取到索引中。 索引定义和管理/所有权是使用 Azure 认知搜索的重要原因。
 
 + 原始内容是 Azure 数据源（例如 Azure Blob 存储或 Cosmos DB）中的大型无差别文本、图像文件或应用程序文件（例如 Office 内容类型）。 可以在编制索引期间应用认知技能，以添加结构，或者从图像和应用程序文件中提取含义。
 
@@ -45,11 +45,11 @@ Azure 认知搜索非常适合以下应用方案：
 
 | 核心搜索&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 功能 |
 |-------------------|----------|
-|自由格式文本搜索 | [全文搜索  ](search-lucene-query-architecture.md)是大多数基于搜索的应用的主要用例。 查询可以使用支持的语法进行陈述。 <br/><br/>[简单查询语法](query-simple-syntax.md)提供逻辑运算符、短语搜索运算符、后缀运算符和优先运算符  。<br/><br/>[Lucene 查询语法](query-lucene-syntax.md)包括简单语法中的所有操作，以及模糊搜索、邻近搜索、术语提升和正则表达式扩展  。|
+|自由格式文本搜索 | [全文搜索](search-lucene-query-architecture.md)是大多数基于搜索的应用的主要用例。 查询可以使用支持的语法进行陈述。 <br/><br/>[简单查询语法](query-simple-syntax.md)提供逻辑运算符、短语搜索运算符、后缀运算符和优先运算符。<br/><br/>[Lucene 查询语法](query-lucene-syntax.md)包括简单语法中的所有操作，以及模糊搜索、邻近搜索、术语提升和正则表达式扩展。|
 | 相关性 | [**简单计分**](index-add-scoring-profiles.md)是 Azure 认知搜索的主要优势。 计分配置文件用于在文档中自行将相关性建模为值的函数。 例如，你可能希望较新产品或打折产品显示在搜索结果的顶部位置。 也可以基于已跟踪和单独存储的客户搜索首选项将标记用于个性化计分，来生成计分配置文件。 |
 | 地理搜索 | Azure 认知搜索可以处理、筛选和显示地理位置。 它可以让用户基于搜索结果与物理位置的临近程度浏览数据。 [观看此视频](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)或[查看此示例](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)了解详细信息。 |
 | 筛选器和分面导航 | 通过单个查询参数实现[**分面导航**](search-faceted-navigation.md)。 Azure 认知搜索返回一个分面导航结构，可以将该结构用作类别列表背后的代码，用于自定向筛选（例如，按价格范围或品牌来筛选目录项）。 <br/><br/> 可以使用[**筛选器**](query-odata-filter-orderby-syntax.md)将分面导航纳入到应用程序的 UI 中，改进查询表述，以及基于用户或开发人员指定的条件进行筛选。 可以使用 OData 语法创建筛选器。 |
-| 用户体验功能 | 可以为搜索栏中预先键入的查询启用[自动完成  ](search-autocomplete-tutorial.md)。 <br/><br/>[**搜索建议**](https://docs.microsoft.com/rest/api/searchservice/suggesters)也基于搜索栏中的部分文本输入开始工作，但结果是索引中的实际文档而不是查询术语。 <br/><br/>[**同义词**](search-synonyms.md)功能无需用户提供替换术语，便可关联隐式扩展查询范围的等效术语。 <br/><br/>[命中项突出显示](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)向搜索结果中的匹配关键字应用文本格式设置。  可以选择哪些字段返回突出显示的片段。<br/><br/>[**排序**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)通过索引架构覆盖多个字段，可以使用一个搜索参数在查询时进行切换。<br/><br/> 通过 Azure 认知搜索所提供的对搜索结果的优化控制，[**分页**](search-pagination-page-layout.md)和限制搜索结果将变得更简单。  <br/><br/>|
+| 用户体验功能 | 可以为搜索栏中预先键入的查询启用[自动完成](search-autocomplete-tutorial.md)。 <br/><br/>[**搜索建议**](https://docs.microsoft.com/rest/api/searchservice/suggesters)也基于搜索栏中的部分文本输入开始工作，但结果是索引中的实际文档而不是查询术语。 <br/><br/>[**同义词**](search-synonyms.md)功能无需用户提供替换术语，便可关联隐式扩展查询范围的等效术语。 <br/><br/>[命中项突出显示](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)向搜索结果中的匹配关键字应用文本格式设置。 可以选择哪些字段返回突出显示的片段。<br/><br/>[**排序**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)通过索引架构覆盖多个字段，可以使用一个搜索参数在查询时进行切换。<br/><br/> 通过 Azure 认知搜索所提供的对搜索结果的优化控制，[**分页**](search-pagination-page-layout.md)和限制搜索结果将变得更简单。  <br/><br/>|
 
 | AI&nbsp;扩充&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | 功能 |
 |-------------------|----------|
@@ -59,17 +59,17 @@ Azure 认知搜索非常适合以下应用方案：
 
 | 数据导入/编制索引&nbsp; | 功能 |
 |----------------------------------|----------|
-| 数据源 | Azure 认知搜索索引接受来自任何源的数据，前提是以 JSON 数据结构提交这些数据。 <br/><br/> [索引器  ](search-indexer-overview.md)自动引入受支持的 Azure 数据源中的数据，并处理 JSON 序列化。 连接到 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以提取主要数据存储中的可搜索内容。 Azure Blob 索引器可以执行“文档破解”[从主要文件格式提取文本](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文档。  |
-| 分层的嵌套数据结构 | 借助[复杂类型  ](search-howto-complex-data-types.md)和集合，可以将几乎所有类型的 JSON 结构建模为 Azure 认知搜索索引。 可以通过集合、复杂类型和复杂类型集合，以本机方式表示一对多和多对多基数。|
-| 语言分析 | 分析器是在编制索引和搜索操作期间用于处理文本的组件。 有两种类型。 <br/><br/>[自定义词汇分析器](index-add-custom-analyzers.md)用于使用拼音匹配和正则表达式的复杂搜索查询  。 <br/><br/>Lucene 或 Microsoft 的[语言分析器](index-add-language-analyzers.md)用于智能处理特定于语言的语言学，包括谓词时态、词性、不规则复数名词（例如“mouse”与“mice”）、词取消复合、词拆分（对于不带空格的语言）等  。 <br/><br/>|
+| 数据源 | Azure 认知搜索索引接受来自任何源的数据，前提是以 JSON 数据结构提交这些数据。 <br/><br/> [索引器](search-indexer-overview.md)自动引入受支持的 Azure 数据源中的数据，并处理 JSON 序列化。 连接到 [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md) 或 [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)，以提取主要数据存储中的可搜索内容。 Azure Blob 索引器可以执行“文档破解”[从主要文件格式提取文本](search-howto-indexing-azure-blob-storage.md)，包括 Microsoft Office、PDF 和 HTML 文档。 |
+| 分层的嵌套数据结构 | 借助[复杂类型](search-howto-complex-data-types.md)和集合，可以将几乎所有类型的 JSON 结构建模为 Azure 认知搜索索引。 可以通过集合、复杂类型和复杂类型集合，以本机方式表示一对多和多对多基数。|
+| 语言分析 | 分析器是在编制索引和搜索操作期间用于处理文本的组件。 有两种类型。 <br/><br/>[自定义词汇分析器](index-add-custom-analyzers.md)用于使用拼音匹配和正则表达式的复杂搜索查询。 <br/><br/>Lucene 或 Microsoft 的[语言分析器](index-add-language-analyzers.md)用于智能处理特定于语言的语言学，包括谓词时态、词性、不规则复数名词（例如“mouse”与“mice”）、词取消复合、词拆分（对于不带空格的语言）等。 <br/><br/>|
 
 
 | 平台级别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 功能 |
 |-------------------|----------|
 | 用于原型制作和检查的工具 | 在门户中，可以使用[**导入数据向导**](search-import-data-portal.md)来配置索引器、索引设计器以建立索引，并可以使用[**搜索浏览器**](search-explorer.md)来测试查询并优化评分配置文件。 还可以打开任何索引来查看其架构。 |
-| 监视和诊断 | [启用监视功能  ](search-monitor-usage.md)可查看除门户中始终可见的一目了然指标外的其他指标。 门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。|
-| 服务器端加密 | [Microsoft 托管的静态加密  ](search-security-overview.md#encrypted-transmissions-and-storage)内置在内部存储层中，它是不可撤消的。 可以视需要使用[客户托管的加密密钥  ](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 认知搜索中的索引和同义词映射。 |
-| 基础结构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确缩放时，[Azure 认知搜索可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> 作为一种**完全托管且可缩放的**端到端解决方案，Azure 认知搜索绝对不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
+| 监视和诊断 | [启用监视功能](search-monitor-usage.md)可查看除门户中始终可见的一目了然指标外的其他指标。 门户页面中会捕获并报告关于每秒查询数、延迟和限制的指标，无需额外进行配置。|
+| 服务器端加密 | [Microsoft 托管的静态加密](search-security-overview.md#encrypted-transmissions-and-storage)内置在内部存储层中，它是不可撤消的。 可以视需要使用[客户托管的加密密钥](search-security-manage-encryption-keys.md)来补充默认加密。 你在 Azure Key Vault 中创建和管理的密钥用于加密 Azure 认知搜索中的索引和同义词映射。 |
+| 基础结构 | **高可用性平台**确保极其可靠的搜索服务体验。 正确缩放后，[Azure 认知搜索可提供 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)。<br/><br/> 作为一种**完全托管且可缩放的**端到端解决方案，Azure 认知搜索绝对不需要基础结构管理。 通过在两个维度进行缩放以便处理更多文档存储和/或更高的查询负载，可以根据需求来定制服务。<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>如何使用 Azure 认知搜索
 ### <a name="step-1-provision-service"></a>步骤 1：预配服务

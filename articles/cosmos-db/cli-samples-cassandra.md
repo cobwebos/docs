@@ -4,15 +4,15 @@ description: 适用于 Azure Cosmos DB Cassandra API 的 Azure CLI 示例
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: sample
+ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: ff4029b13c503413686fbc52c8d59b7d2745cb8e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 04bbfe3ee38c5ce37c36ab2f85467ce68e7335be
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509502"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262967"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>适用于 Azure Cosmos DB Cassandra API 的 Azure CLI 示例
 
