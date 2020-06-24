@@ -1,7 +1,7 @@
 ---
-title: 自定义命令（预览）-语音服务
+title: 自定义命令-语音服务
 titleSuffix: Azure Cognitive Services
-description: 概述自定义命令的功能、功能和限制（预览），这是用于创建语音应用程序的解决方案。
+description: 概述自定义命令的功能、功能和限制，这是用于创建语音应用程序的解决方案。
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,46 +10,49 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266009"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299103"
 ---
-# <a name="what-is-custom-commands-preview"></a>什么是自定义命令（预览）？
+# <a name="what-is-custom-commands"></a>什么是自定义命令？
 
 语音应用程序（如[语音助手](voice-assistants.md)）会倾听用户的身份，并采取措施进行响应，这通常是一回活动。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。 设备通过语音 SDK 对象连接到助手 `DialogServiceConnector` 。
 
-**自定义命令（预览版）** 是一种用于创建语音应用程序的简化解决方案。 它提供统一的创作体验、自动托管模型，以及相对较低的复杂性和其他选项，如[直接行语音](direct-line-speech.md)。 不过，这种简化的灵活性。 自定义命令（预览版）最适用于任务完成或命令和控制方案。 它对于物联网（IoT）和无外设设备特别适用。
+通过**自定义命令**，可以轻松地构建经过优化的丰富语音命令应用程序，以实现语音首次交互体验。 它提供统一的创作体验、自动托管模型和相对较低的复杂性，从而帮助你集中精力为语音命令方案构建最佳解决方案。
 
-对于复杂的对话交互以及与其他解决方案（如[虚拟助手解决方案和企业模板](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)）的集成，建议使用直行语音。
+自定义命令最适用于任务完成或命令和控制方案，尤其适合物联网（IoT）设备、环境和无外设设备。 示例包括用于宾馆、零售和汽车行业的解决方案，使你能够为你的客人构建最佳的带外语音控制体验、在商店中管理库存并在移动时控制汽车内功能。
 
-适用于自定义命令（预览版）的候选词汇具有一组定义完善的变量集。 例如，家庭自动化任务（如控制恒温器）是理想之选。
+> [!TIP]
+> 在登陆页面上查看我们的示例演示 [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) 。
+
+如果你有兴趣构建复杂的对话应用，则建议你使用[虚拟助手解决方案](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)尝试机器人框架。 可以使用直行语音将语音添加到任何机器人框架机器人。
+
+适用于自定义命令的候选项具有一个具有定义完善的变量集的固定词汇。 例如，家庭自动化任务（如控制恒温器）是理想之选。
 
    ![任务完成方案示例](media/voice-assistants/task-completion-examples.png "任务完成示例")
 
-## <a name="getting-started-with-custom-commands-preview"></a>自定义命令入门（预览版）
+## <a name="getting-started-with-custom-commands"></a>自定义命令入门
 
-使用自定义命令（预览版）发出语音应用程序的第一步是[获取语音订阅密钥](get-started.md)，并访问[speech Studio](https://speech.microsoft.com)上的自定义命令（预览版）生成器。 在这里，你可以创建一个新的自定义命令（预览版）应用程序并发布该应用程序，之后设备上的应用程序可以使用语音 SDK 与它进行通信。
+自定义命令的目标是减少认知负载，以了解所有不同的技术，并专注于构建语音命令应用。 使用自定义命令<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的第一步。 您可以在 Speech Studio 上创作自定义命令应用程序并发布该应用程序，之后设备上的应用程序可以使用语音 SDK 与它进行通信。
 
-   ![自定义命令的创作流（预览）](media/voice-assistants/custom-commands-flow.png "自定义命令（预览）创作流")
+#### <a name="authoring-flow-for-custom-commands"></a>自定义命令的创作流
+   ![自定义命令的创作流](media/voice-assistants/custom-commands-flow.png "自定义命令创作流")
 
-我们专门提供了快速入门来帮助你在 10 分钟内运行代码。
+遵循我们的快速入门，让第一个自定义命令应用在10分钟内运行代码。
 
-* [创建自定义命令（预览版）应用程序](quickstart-custom-speech-commands-create-new.md)
-* [使用参数创建自定义命令（预览版）应用程序](quickstart-custom-speech-commands-create-parameters.md)
-* [使用语音 SDK 连接到自定义命令（预览版）应用程序，C#](quickstart-custom-speech-commands-speech-sdk.md)
+* [使用自定义命令创建语音助手](quickstart-custom-commands-application.md)
 
-完成快速入门后，请浏览我们的操作方法。
+完成快速入门后，请浏览我们的操作方法指南，了解用于设计、开发、调试、部署和集成自定义命令应用程序的详细步骤。
 
-- [向自定义命令参数添加验证](./how-to-custom-speech-commands-validations.md)
-- [通过语音 SDK 完成客户端上的命令](./how-to-custom-speech-commands-fulfill-sdk.md)
-- [向自定义命令添加确认](./how-to-custom-speech-commands-confirmations.md)
-- [向自定义命令添加单步更正](./how-to-custom-speech-commands-one-step-correction.md)
+## <a name="building-voice-assistants-with-custom-commands"></a>用自定义命令构建语音助手
+> [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
 ## <a name="next-steps"></a>后续步骤
 
 * [免费获取语音服务订阅密钥](get-started.md)
-* [转到 Speech Studio 以试用自定义命令](https://speech.microsoft.com)
+* [查看 GitHub 上的语音助手存储库以获取示例](https://aka.ms/speech/cc-samples)
+* [转到 Speech Studio 以试用自定义命令](https://speech.microsoft.com/customcommands)
 * [获取语音 SDK](speech-sdk.md)

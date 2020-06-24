@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: trbye
-  ms.openlocfilehash: c4b1c6348e834f83e20c612678075405a14f1a9d
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 4fae88de9ad6c48e8079fc7d9ff2d7527d9e7208
+  ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82106196"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85299375"
 landingContent:
 - title: 关于语音助手
   linkLists:
@@ -42,24 +42,20 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 创建自定义命令应用
-      url: quickstart-custom-speech-commands-create-new.md
-    - text: 创建带参数的自定义命令
-      url: quickstart-custom-speech-commands-create-parameters.md
-    - text: 通过自定义语音使用自定义命令
-      url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: 通过语音 SDK 使用自定义命令
-      url: quickstart-custom-speech-commands-speech-sdk.md
+    - text: 使用自定义命令创建语音助手
+      url: quickstart-custom-commands-application.md
   - linkListType: how-to-guide
     links:
-    - text: 从客户端执行命令
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: 添加参数验证
-      url: how-to-custom-speech-commands-validations.md
-    - text: 添加确认
-      url: how-to-custom-speech-commands-confirmations.md
-    - text: 添加单步更正
-      url: how-to-custom-speech-commands-one-step-correction.md
+    - text: 通过简单的命令创建应用程序
+      url: how-to-custom-commands-create-application-with-simple-commands.md
+    - text: 向命令添加参数
+      url: how-to-custom-commands-add-parameters-to-commands.md
+    - text: 向参数添加验证并提示进行更正
+      url: how-to-custom-commands-add-parameter-configuration.md
+    - text: 使用 Speech SDK 集成
+      url: how-to-custom-commands-setup-speech-sdk.md
+    - text: 使用 Azure DevOps 为自定义命令应用设置持续部署
+      url: how-to-custom-commands-deploy-cicd.md
 - title: 利用直接行语音进行开发
   linkLists:
   - linkListType: quickstart
