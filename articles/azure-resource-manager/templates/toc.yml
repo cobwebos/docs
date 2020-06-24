@@ -14,6 +14,10 @@
       items:
         - name: AI + 机器学习
           items:
+            - name: 认知搜索
+              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 认知服务
+              href: ../../cognitive-services/resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 数据科学虚拟机
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 机器学习
@@ -40,6 +44,8 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 流分析
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: Synapse Analytics
+              href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 区块链
           items:
             - name: 区块链
@@ -130,8 +136,6 @@
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
-            - name: 认知搜索
-              href: ../../search/search-get-started-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 通知中心
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: 教程
@@ -293,6 +297,14 @@
           href: export-template-portal.md
         - name: 发现资源
           href: view-resources.md
+    - name: 验证模版
+      items:
+        - name: 模拟部署
+          href: template-deploy-what-if.md
+        - name: 测试工具包
+          href: test-toolkit.md
+        - name: 测试事例
+          href: test-cases.md
     - name: 部署模板
       items:
         - name: 部署 - 门户
@@ -309,8 +321,6 @@
           href: deploy-rest.md
         - name: 从 GitHub 进行部署
           href: deploy-to-azure-button.md
-        - name: 模拟部署
-          href: template-deploy-what-if.md
         - name: 出错时重新部署
           displayName: rollback
           href: rollback-on-error.md
