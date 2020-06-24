@@ -240,6 +240,8 @@
       items:
         - name: 绘图包要求
           href: drawing-requirements.md
+        - name: 动态地图 StylesObject
+          href: schema-stateset-stylesobject.md
         - name: 车辆消耗模型
           href: consumption-model.md
         - name: 扩展 GeoJSON 格式
