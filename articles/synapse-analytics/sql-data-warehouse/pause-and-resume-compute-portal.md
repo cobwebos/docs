@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 55e3d5bf4fb63c35d484e4a764c7eeb2e2484fcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80350959"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214462"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>快速入门：通过 Azure 门户暂停和恢复 Synapse SQL 池中的计算
 
@@ -39,19 +39,19 @@ ms.locfileid: "80350959"
 按照以下步骤暂停 SQL 池：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧导航页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。 
-2. 在“Azure Synapse Analytics (前称为 SQL 数据仓库)”页中选择“mySampleDataWarehouse”打开 SQL 池。   
-3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“联机”    。
+2. 在 Azure 门户的左侧导航页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。
+2. 在“Azure Synapse Analytics (前称为 SQL 数据仓库)”页中选择“mySampleDataWarehouse”打开 SQL 池。  
+3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“联机”  。
 
     ![联机计算](././media/pause-and-resume-compute-portal/compute-online.png)
 
-4. 若要暂停 SQL 池，请单击“暂停”按钮。  
+4. 若要暂停 SQL 池，请单击“暂停”按钮。 
 5. 此时将出现询问是否恢复的确认提问。 单击 **“是”** 。
-6. 等待几分钟后，“状态”将更改为“正在暂停”   。
+6. 等待几分钟后，“状态”将更改为“正在暂停” 。
 
     ![正在暂停](./media/pause-and-resume-compute-portal/pausing.png)
 
-7. 完成暂停操作后，状态将显示为“已暂停”，选项按钮变为“恢复”。  
+7. 完成暂停操作后，状态将显示为“已暂停”，选项按钮变为“恢复”。 
 8. SQL 池的计算资源现已脱机。 在恢复服务之前无需为计算付费。
 
     ![脱机计算](././media/pause-and-resume-compute-portal/compute-offline.png)
@@ -61,19 +61,19 @@ ms.locfileid: "80350959"
 
 遵循以下步骤恢复 SQL 池。
 
-1. 在 Azure 门户的左侧页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。 
-2. 在“Azure Synapse Analytics (前称为 SQL 数据仓库)”页中选择“mySampleDataWarehouse”打开 SQL 池页。   
-3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“已暂停”    。
+1. 在 Azure 门户的左侧页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。
+2. 在“Azure Synapse Analytics (前称为 SQL 数据仓库)”页中选择“mySampleDataWarehouse”打开 SQL 池页。  
+3. 在“mySampleDataWarehouse”页中，可看到“状态”显示为“已暂停”  。
 
     ![脱机计算](././media/pause-and-resume-compute-portal/compute-offline.png)
 
-4. 若要恢复 SQL 池，请单击“恢复”。  
+4. 若要恢复 SQL 池，请单击“恢复”。 
 5. 此时将出现询问是否启动的确认提问。 单击 **“是”** 。
-6. 可看到“状态”显示为“正在恢复”   。
+6. 可看到“状态”显示为“正在恢复” 。
 
     ![正在恢复](./media/pause-and-resume-compute-portal/resuming.png)
 
-7. SQL 池联机后，状态将显示为“联机”，选项按钮将变为“暂停”。  
+7. SQL 池联机后，状态将显示为“联机”，选项按钮将变为“暂停”。 
 8. SQL 池的计算资源现已联机，可以使用该服务。 收取已恢复计算费用。
 
     ![联机计算](././media/pause-and-resume-compute-portal/compute-online.png)
@@ -91,16 +91,16 @@ ms.locfileid: "80350959"
 
     ![清理资源](./media/pause-and-resume-compute-portal/clean-up-resources.png)
 
-1. 要暂停计算，请单击“暂停”  按钮。 
+1. 要暂停计算，请单击“暂停”按钮。 
 
-2. 若要删除 SQL 池以免产生计算或存储费用，请单击“删除”。 
+2. 若要删除 SQL 池以免产生计算或存储费用，请单击“删除”。
 
-3. 若要删除创建的 SQL 服务器，请依次单击“sqlpoolservername.database.windows.net”、“删除”。    
+3. 若要删除创建的 SQL 服务器，请依次单击“sqlpoolservername.database.windows.net”、“删除”。   
 
    > [!CAUTION]
    > 请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
 
-5. 要删除资源组，请单击“myResourceGroup”  ，然后单击“删除资源组”  。
+5. 要删除资源组，请单击“myResourceGroup”，然后单击“删除资源组”。
 
 
 ## <a name="next-steps"></a>后续步骤

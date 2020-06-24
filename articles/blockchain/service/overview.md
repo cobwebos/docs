@@ -4,12 +4,12 @@ description: Azure 区块链服务概述
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: 8a73ed45279ce224441ea9c021b565e63bc4fc63
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432224"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214071"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -29,11 +29,11 @@ Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用[
 
 ### <a name="performance-and-service-tiers"></a>性能和服服务层级
 
-Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。 
+Azure 区块链服务提供两种服务层：“基本”和“标准”** **。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”** 层进行开发、测试和概念证明。 使用“标准”** 层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。 
 
 ![定价层](./media/overview/pricing-tiers.png)
 
-除了提供两个验证器节点之外，“标准层”还为每个事务和验证器节点提供了 2 个 vCore，而“基本”层提供 1 个 vCore 配置 。  通过为事务和验证器节点提供 2 个 vCore，1 个 vCore 可以专用于 Quorum 账本，而另 1 个 vCore 可以用于其他与基础结构相关的服务，从而确保生产区块链工作负载的性能达到最优。 有关定价详细信息的更多信息，请参阅 [Azure 区块链服务定价](https://azure.microsoft.com/pricing/details/blockchain-service)。
+除了提供两个验证器节点之外，“标准层”还为每个事务和验证器节点提供了 2 个 vCore，而“基本”层提供 1 个 vCore 配置** **。**  通过为事务和验证器节点提供 2 个 vCore，1 个 vCore 可以专用于 Quorum 账本，而另 1 个 vCore 可以用于其他与基础结构相关的服务，从而确保生产区块链工作负载的性能达到最优。 有关定价详细信息的更多信息，请参阅 [Azure 区块链服务定价](https://azure.microsoft.com/pricing/details/blockchain-service)。
 
 ### <a name="security-and-maintenance"></a>安全性和维护
 
@@ -59,7 +59,7 @@ Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每
 
 ## <a name="develop-using-familiar-development-tools"></a>使用常用的开发工具进行开发
 
-基于开放源代码 Quorum Ethereum 账本，可以像使用现有 Ethereum 应用程序一样开发 Azure 区块链服务应用程序。 Azure 区块链开发工具包 Visual Studio Code 扩展通过与领先的行业合作伙伴合作，使开发人员可以利用 Truffle Suite 等常用工具来构建智能合同。 使用 Azure 区块链开发工具包扩展，开发人员可以创建或连接到现有联盟，以便可以在一个 IDE 中构建和部署智能合同。 使用 Azure 区块链 Visual Studio Code 扩展，可以创建或连接到现有联盟，以便可以在一个 IDE 中生成和部署智能合同。 有关详细信息，请参阅 [VS Code 商城中的 Azure 区块链开发工具包](https://aka.ms/vscodebcextension)和 [Azure 区块链开发工具包用户指南](https://aka.ms/vscodebcextensionwiki)。
+基于开放源代码 Quorum Ethereum 账本，可以像使用现有 Ethereum 应用程序一样开发 Azure 区块链服务应用程序。 Azure 区块链开发工具包 Visual Studio Code 扩展通过与领先的行业合作伙伴合作，使开发人员可以利用 Truffle Suite 等常用工具来构建智能合同。 使用 Azure 区块链 Visual Studio Code 扩展，可以创建或连接到现有联盟，以便可以在一个 IDE 中生成和部署智能合同。 有关详细信息，请参阅 [VS Code 商城中的 Azure 区块链开发工具包](https://aka.ms/vscodebcextension)和 [Azure 区块链开发工具包用户指南](https://aka.ms/vscodebcextensionwiki)。
 
 ## <a name="publish-blockchain-data"></a>发布区块链数据
 

@@ -6,17 +6,17 @@ author: Antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 780137c8e081917b317656de3caba60dfaea4810
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb813c9a30b644459f3e586ed4313ca070b5a746
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80633730"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212915"
 ---
 # <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>快速入门：使用 T-SQL 缩放 Azure Synapse Analytics 中的计算
 
@@ -30,7 +30,7 @@ ms.locfileid: "80633730"
 
 ## <a name="create-a-data-warehouse"></a>创建数据仓库
 
-使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库  。 完成此快速入门，以确保获得防火墙规则并可以从 SQL Server Management Studio 中连接到数据仓库。
+使用[创建并连接 - 门户](create-data-warehouse-portal.md)创建名为“mySampleDataWarehouse”的数据仓库。 完成此快速入门，以确保获得防火墙规则并可以从 SQL Server Management Studio 中连接到数据仓库。
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
@@ -38,7 +38,7 @@ ms.locfileid: "80633730"
 
 1. 打开 SQL Server Management Studio。
 
-2. 在“连接到服务器”对话框中，输入以下信息： 
+2. 在“连接到服务器”对话框中，输入以下信息：
 
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
@@ -50,9 +50,9 @@ ms.locfileid: "80633730"
 
     ![连接到服务器](./media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-3. 单击“连接”  。 对象资源管理器窗口在 SSMS 中打开。
+3. 单击“连接”。 对象资源管理器窗口在 SSMS 中打开。
 
-4. 在“对象资源管理器”中，展开“数据库”  。 然后展开“mySampleDataWarehouse”  ，查看新数据库中的对象。
+4. 在“对象资源管理器”中，展开“数据库”。 然后展开“mySampleDataWarehouse”，查看新数据库中的对象。
 
     ![数据库对象](./media/quickstart-scale-compute-tsql/connected.png)
 
@@ -62,8 +62,8 @@ ms.locfileid: "80633730"
 
 若要查看数据仓库当前数据仓库单位：
 
-1. 在与 **mySampleDataWarehouseservername.database.windows.net** 的连接下，展开“系统数据库”  。
-2. 右键单击“master”，并单击“新建查询”。   “新建查询”窗口随即打开。
+1. 在与 **mySampleDataWarehouseservername.database.windows.net** 的连接下，展开“系统数据库”。
+2. 右键单击“master”，并单击“新建查询”。  “新建查询”窗口随即打开。
 3. 运行以下查询，从 sys.database_service_objectives 动态管理视图中选择。
 
     ```sql
@@ -89,7 +89,7 @@ ms.locfileid: "80633730"
 
 更改数据仓库单位：
 
-1. 右键单击“master”，并单击“新建查询”。  
+1. 右键单击“master”，并单击“新建查询”。 
 2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 语句修改的服务目标。 运行以下查询以将服务目标更改为 DW300。
 
     ```Sql
@@ -103,7 +103,7 @@ ms.locfileid: "80633730"
 
 若要轮询服务对象更改状态，请执行以下操作：
 
-1. 右键单击“master”，并单击“新建查询”。  
+1. 右键单击“master”，并单击“新建查询”。 
 2. 运行以下查询来轮询 sys.dm_operation_status DMV。
 
     ```sql

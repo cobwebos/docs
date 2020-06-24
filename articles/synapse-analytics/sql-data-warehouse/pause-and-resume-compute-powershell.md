@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 44ce56238140de90145f69e966c94be8572c7749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f502c93b4df6db83756f3fe9853ac598b40074ef
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81252296"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212694"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>快速入门：通过 Azure PowerShell 暂停和恢复 Synapse SQL 池中的计算
 
@@ -56,8 +56,8 @@ Set-AzContext -SubscriptionName "MySubscription"
 按照以下步骤查找 SQL 池的位置信息：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 在 Azure 门户的左侧页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。 
-1. 从“Azure Synapse Analytics (以前称为 SQL DW)”  页中选择 **mySampleDataWarehouse**。 此时将打开 SQL 池。
+1. 在 Azure 门户的左侧页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。
+1. 从“Azure Synapse Analytics (以前称为 SQL DW)”页中选择 **mySampleDataWarehouse**。 此时将打开 SQL 池。
 
     ![服务器名称和资源组](./media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
@@ -71,7 +71,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 >[!NOTE]
 >数据库暂停时，不对计算资源进行收费。 但是，仍将收取存储费用。
 
-若要暂停数据库，请使用 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。 以下示例暂停 **sqlpoolservername** 服务器上托管的 SQL 池 **mySampleDataWarehouse**。 该服务器位于名为 myResourceGroup 的 Azure 资源组中  。
+若要暂停数据库，请使用 [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。 以下示例暂停 **sqlpoolservername** 服务器上托管的 SQL 池 **mySampleDataWarehouse**。 该服务器位于名为 myResourceGroup 的 Azure 资源组中。
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -89,7 +89,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>恢复计算
 
-若要启动数据库，请使用 [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。 以下示例启动 **sqlpoolservername** 服务器上托管的 **mySampleDataWarehouse** 数据库。 该服务器位于名为 myResourceGroup 的 Azure 资源组中  。
+若要启动数据库，请使用 [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet。 以下示例启动 **sqlpoolservername** 服务器上托管的 **mySampleDataWarehouse** 数据库。 该服务器位于名为 myResourceGroup 的 Azure 资源组中。
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -126,13 +126,13 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
     ![清理资源](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. 要暂停计算，请单击“暂停”  按钮。 暂停 SQL 池后，会看到“启动”按钮。   要恢复计算，请单击“启动”  。
+2. 要暂停计算，请单击“暂停”按钮。 暂停 SQL 池后，会看到“启动”按钮。  要恢复计算，请单击“启动”。
 
-3. 若要删除 SQL 池以免产生计算或存储费用，请单击“删除”。 
+3. 若要删除 SQL 池以免产生计算或存储费用，请单击“删除”。
 
-4. 若要删除创建的 SQL 服务器，请依次单击“sqlpoolservername.database.windows.net”、“删除”。    请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
+4. 若要删除创建的 SQL 服务器，请依次单击“sqlpoolservername.database.windows.net”、“删除”。   请谨慎执行此删除操作，因为删除服务器的同时也会删除分配给该服务器的所有数据库。
 
-5. 要删除资源组，请单击“myResourceGroup”  ，然后单击“删除资源组”  。
+5. 要删除资源组，请单击“myResourceGroup”，然后单击“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 

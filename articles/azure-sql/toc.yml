@@ -664,12 +664,15 @@
     - name: 快速入门
       href: managed-instance/quickstart-content-reference-guide.md
       items:
-        - name: 创建
+        - name: 创建 SQL 托管实例
           items:
-            - name: 使用 Azure 门户
+            - name: Azure 门户
               href: managed-instance/instance-create-quickstart.md
-            - name: 使用 PowerShell
+            - name: PowerShell
               href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: ARM 模板
+              displayName: Resource Manager
+              href: managed-instance/create-template-quickstart.md
             - name: 创建实例池
               href: managed-instance/instance-pools-configure.md
         - name: 配置
