@@ -91,6 +91,8 @@
           href: troubleshoot-reboot-loop.md
         - name: 在更新 Windows 时停滞
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: 意外重启或错误
+          href: troubleshoot-unexpected-restart-error-during-vm-boot.md
         - name: VM 启动时出现停滞
           href: troubleshoot-vm-boot-configure-update.md
         - name: VM 因 Windows 启动管理器而无法启动

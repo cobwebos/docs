@@ -102,7 +102,7 @@
       href: monitor-container-security.md
     - name: 使用 Microsoft Defender ATP 保护服务器
       href: security-center-wdatp.md
-    - name: 使用 Azure VM 上的 SQL 高级数据安全
+    - name: 使用 SQL 计算机的高级数据安全
       href: security-center-iaas-advanced-data.md
     - name: 使用应用服务保护应用程序
       href: security-center-app-services.md

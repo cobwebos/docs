@@ -10,14 +10,14 @@ ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 012800806aeff81939baa2cee88e78191e4fb6c5
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82195258"
 ---
 ### <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 
-使用 [az identity create][az-identity-create] 命令在订阅中创建名为 myACRTasksId  的标识。 可以使用先前用于创建容器注册表的相同资源组，也可以使用不同的资源组。
+使用 [az identity create][az-identity-create] 命令在订阅中创建一个名为 *myACRTasksId* 的标识。 可以使用之前用于创建容器注册表的同一资源组，也可以使用其他资源组。
 
 ```azurecli
 az identity create \
@@ -25,7 +25,7 @@ az identity create \
   --name myACRTasksId
 ```
 
-若要在以下步骤中配置用户分配的标识，请使用[az identity show][az-identity-show]命令将标识的资源 id、主体 id 和客户端 id 存储在变量中。
+为了在以下步骤中配置用户分配的标识，请使用 [az identity show][az-identity-show] 命令将标识的资源 ID、主体 ID 和客户端 ID 存储在变量中。
 
 ```azurecli
 # Get resource ID of the user-assigned identity
