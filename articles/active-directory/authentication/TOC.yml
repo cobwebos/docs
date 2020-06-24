@@ -36,6 +36,8 @@
       items:
         - name: MFA 工作原理
           href: concept-mfa-howitworks.md
+        - name: 提示和会话生存期
+          href: concepts-azure-multi-factor-authentication-prompts-session-lifetime.md
         - name: 数据驻留
           href: concept-mfa-data-residency.md
         - name: 许可证
