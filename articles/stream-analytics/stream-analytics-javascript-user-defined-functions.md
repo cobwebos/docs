@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
-ms.date: 03/23/2020
-ms.openlocfilehash: 58d750b47f3f6a2bcfbf23399ca249131e7876ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/16/2020
+ms.openlocfilehash: c9767942c893017e98e3013f92022f058524e13c
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235390"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079005"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
@@ -45,7 +45,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 ![添加 JavaScript UDF](./media/javascript/stream-analytics-jsudf-add.png)
 
-然后，你必须提供以下属性并选择“保存”  。
+然后，你必须提供以下属性并选择“保存”。
 
 |properties|说明|
 |--------|-----------|
@@ -57,7 +57,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 可在任何浏览器中测试和调试 JavaScript UDF 逻辑。 流分析门户目前不支持调试和测试这些用户定义函数的逻辑。 函数按预期方式运行后，可以将其添加到流分析作业（如上所述），然后直接从查询调用它。 还可以使用[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)测试包含 JavaScript UDF 的查询逻辑。
 
-JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。 
+JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
@@ -86,8 +86,8 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
 DateTime | Date（JavaScript 仅支持毫秒）
 double | Number
-nvarchar(MAX) | String
-Record | Object
+nvarchar(MAX) | 字符串
+Record | 对象
 Array | Array
 Null | Null
 
@@ -97,8 +97,8 @@ JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
 Date | DateTime
-String | nvarchar(MAX)
-Object | Record
+字符串 | nvarchar(MAX)
+对象 | Record
 Array | Array
 Null、Undefined | Null
 其他任何类型（例如函数或错误） | 不支持（导致运行时错误）

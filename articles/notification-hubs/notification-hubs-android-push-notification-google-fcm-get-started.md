@@ -6,24 +6,22 @@ documentationcenter: android
 keywords: 推送通知, 推送通知, android 推送通知, fcm, firebase cloud messaging
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 02298560-da61-4bbb-b07c-e79bd520e420
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/11/2019
+ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7dbe9faabcb7a46ae3862ac7da6504b6b0407d86
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 244e9d9136705eeef27680d2fa590d283abb6467
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170437"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255460"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教程：使用 Firebase SDK 版本 0.6 将推送通知发送到 Android 设备
 
@@ -556,11 +554,13 @@ ms.locfileid: "84170437"
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ### <a name="run-the-mobile-app-on-emulator"></a>在仿真器中运行移动应用
+
 在模拟器中测试推送通知之前，请确保模拟器映像支持你为应用程序选择的 Google API 级别。 如果映像不支持本机 Google API，可能会收到 “SERVICE\_NOT\_AVAILABLE”异常。
 
 另外，请确保已在“设置” > “帐户”下将 Google 帐户添加到正在运行的模拟器中。 否则，尝试向 FCM 注册可能会导致 “AUTHENTICATION\_FAILED” 异常。
 
 ## <a name="next-steps"></a>后续步骤
+
 在本教程中，你已使用 Firebase Cloud Messaging 将通知广播到在该服务中注册的所有 Android 设备。 若要了解如何向特定的设备推送通知，请转到以下教程：
 
 > [!div class="nextstepaction"]

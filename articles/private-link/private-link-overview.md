@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/02/2020
+ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e46f9dabe2b6f38a08b8e14bae845e0fee22457
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673405"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081022"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -43,6 +43,7 @@ Azure 专用链接提供以下优势：
 |支持的服务  |可用区域 | 状态  |
 |:-------------------|:-----------------|:--------|
 |标准 Azure 负载均衡器后面的专用链接服务 | 所有公共区域  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure 自动化  | 所有公共区域 | 预览 | |
 | Azure 存储        |  所有公共区域       | GA <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
 | Azure Data Lake Storage Gen2        |  所有公共区域      | GA <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | 所有公共区域      |   GA <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
