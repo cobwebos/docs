@@ -158,7 +158,15 @@
 - name: 概念
   items:
     - name: 映像
-      href: shared-image-galleries.md
+      items:
+        - name: 概述
+          href: imaging.md
+        - name: 设置
+          href: provisioning.md
+        - name: 共享映像库
+          href: shared-image-galleries.md
+        - name: 映像生成器
+          href: image-builder-overview.md
     - name: Azure 资源管理器
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 区域
@@ -415,6 +423,50 @@
     - name: 使用映像
       displayName: 'SIG, AMI, image'
       items:
+        - name: 分发特定要求
+          items:
+            - name: 一般步骤
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: 使用 cloud-init
+          items:
+            - name: Cloud-init 概述
+              href: using-cloud-init.md
+            - name: 深入探讨
+              href: cloud-init-deep-dive.md
+            - name: 疑难解答
+              href: cloud-init-troubleshooting.md
+            - name: 配置 VM 主机名
+              href: cloudinit-update-vm-hostname.md
+            - name: 更新 VM 中的包
+              href: cloudinit-update-vm.md
+            - name: 在 VM 上添加用户
+              href: cloudinit-add-user.md
+            - name: 配置交换文件
+              href: cloudinit-configure-swapfile.md
+            - name: 运行现有的 Bash 脚本
+              href: cloudinit-bash-script.md
+            - name: 准备适用于 cloud-init 的现有 VM
+              href: cloudinit-prepare-custom-image.md
+        - name: 创建映像但不使用
+          href: no-agent.md
+        - name: 禁用 Linux 代理预配
+          href: disable-provisioning.md
         - name: 共享映像库
           items:
             - name: CLI
@@ -480,8 +532,6 @@
               href: ../image-version-encryption.md
         - name: 映像生成器（预览版）
           items:
-            - name: 概述
-              href: image-builder-overview.md
             - name: 使用 Azure CLI
               href: image-builder.md
             - name: ARM 模板参考
@@ -495,27 +545,7 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: 查找和使用映像
           href: cli-ps-findimage.md
-        - name: 创建自定义映像
-          items:
-            - name: 一般步骤
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: 将 VM 捕获到映像
+        - name: 将 VM 捕获到托管映像
           href: capture-image.md
         - name: 使用 Packer 生成映像
           href: build-image-with-packer.md
@@ -813,22 +843,6 @@
               href: /azure/developer/terraform/install-configure
             - name: 创建完整 VM
               href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
-        - name: Cloud-init
-          items:
-            - name: Cloud-init 概述
-              href: using-cloud-init.md
-            - name: 配置 VM 主机名
-              href: cloudinit-update-vm-hostname.md
-            - name: 更新 VM 中的包
-              href: cloudinit-update-vm.md
-            - name: 在 VM 上添加用户
-              href: cloudinit-add-user.md
-            - name: 配置交换文件
-              href: cloudinit-configure-swapfile.md
-            - name: 运行现有的 Bash 脚本
-              href: cloudinit-bash-script.md
-            - name: 准备适用于 cloud-init 的现有 VM
-              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: /azure/developer/jenkins/overview
           items:

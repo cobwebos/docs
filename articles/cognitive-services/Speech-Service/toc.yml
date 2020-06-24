@@ -394,30 +394,64 @@
       items:
         - name: 什么是语音助手？
           href: voice-assistants.md
-    - name: 自定义命令（预览版）
+    - name: 自定义命令
       items:
         - name: 什么是自定义命令？
           href: custom-commands.md
         - name: 快速入门
           items:
-            - name: 创建自定义命令应用
-              href: quickstart-custom-speech-commands-create-new.md
-            - name: 创建带参数的自定义命令
-              href: quickstart-custom-speech-commands-create-parameters.md
-            - name: 通过自定义语音使用自定义命令
-              href: quickstart-custom-speech-commands-select-custom-voice.md
-            - name: 通过语音 SDK 使用自定义命令
-              href: quickstart-custom-speech-commands-speech-sdk.md
+            - name: 构建自定义命令应用
+              href: quickstart-custom-commands-application.md
         - name: 操作指南
           items:
-            - name: 从客户端执行命令
-              href: how-to-custom-speech-commands-fulfill-sdk.md
-            - name: 添加参数验证
-              href: how-to-custom-speech-commands-validations.md
-            - name: 添加确认
-              href: how-to-custom-speech-commands-confirmations.md
-            - name: 添加单步更正
-              href: how-to-custom-speech-commands-one-step-correction.md
+            - name: 开发
+              items:
+                - name: 通过简单的命令创建应用程序
+                  href: how-to-custom-commands-create-application-with-simple-commands.md
+                - name: 向命令添加参数
+                  href: how-to-custom-commands-add-parameters-to-commands.md
+                - name: 向命令参数添加配置
+                  href: how-to-custom-commands-add-parameter-configuration.md
+                - name: 添加交互规则
+                  href: how-to-custom-commands-add-interaction-rules.md
+                - name: 为语音响应添加语言生成模板
+                  href: how-to-custom-commands-add-language-generation-templates.md
+            - name: 集成
+              items:
+                - name: 使用语音 SDK 与客户端应用集成
+                  href: how-to-custom-commands-setup-speech-sdk.md
+                - name: 向客户端应用程序发送活动
+                  href: how-to-custom-commands-send-activity-to-client.md
+                - name: 设置 Web 终结点
+                  href: how-to-custom-commands-setup-web-endpoints.md
+            - name: 部署
+              items:
+                - name: 使用 Azure DevOps 持续部署
+                  href: how-to-custom-commands-deploy-cicd.md
+            - name: 测试
+              items:
+                - name: 测试自定义命令应用
+                  href: how-to-custom-commands-developer-flow-test.md
+            - name: 调试
+              items:
+                - name: 调试创作应用时出现的错误
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: 调试运行应用时出现的错误
+                  href: how-to-custom-commands-debug-runtime.md
+            - name: 参考
+              items:
+                - name: 自定义命令概念
+                  href: custom-commands-references.md
+        - name: 资源
+          items:
+            - name: 自定义命令示例 (GitHub)
+              href: 'https://aka.ms/speech/cc-samples'
+            - name: 语音助手示例 (GitHub)
+              href: 'http://aka.ms/speech/va-samples'
+            - name: 语音助手常见问题解答
+              href: faq-voice-assistants.md
+            - name: 语音 SDK
+              href: speech-sdk.md
     - name: Direct Line 语音
       items:
         - name: 什么是 Direct Line 语音？

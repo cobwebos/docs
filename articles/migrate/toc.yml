@@ -48,6 +48,10 @@
           href: tutorial-assess-physical.md
         - name: 迁移物理服务器
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: 评估和迁移 AWS VM
+      items:
+        - name: 发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
+          href: tutorial-migrate-aws-virtual-machines.md
     - name: 评估要迁移的已导入服务器
       items:
         - name: 评估要迁移的已导入服务器

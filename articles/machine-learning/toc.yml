@@ -150,7 +150,7 @@
       href: concept-ml-pipelines.md
     - name: 企业就绪情况和安全性
       items:
-        - name: 企业安全性
+        - name: 企业安全和管理
           items:
             - name: 企业安全概述
               displayName: authorization authentication encryption aad azure active directory
@@ -164,8 +164,8 @@
               displayName: private endpoint
               href: how-to-configure-private-link.md
             - name: 使用 TLS 保护 Web 服务
-              href: how-to-secure-web-service.md
               displayName: ssl
+              href: how-to-secure-web-service.md
             - name: 在 AKS 部署中使用 Azure AD 标识
               href: how-to-use-azure-ad-identity.md
             - name: 重新生成存储访问密钥
@@ -274,19 +274,16 @@
               href: how-to-differential-privacy.md
     - name: 训练模型
       items:
+        - name: 设置训练环境
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-set-up-training-targets.md
         - name: 将估算器用于 ML
           items:
             - name: 在训练期间创建估算器
               href: how-to-train-ml-models.md
-            - name: 设置训练环境
-              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
-              href: how-to-set-up-training-targets.md
             - name: 优化超参数
               displayName: parameter
               href: how-to-tune-hyperparameters.md
-            - name: 训练时使用 Key Vault
-              displayName: secrets keyvault
-              href: how-to-use-secrets-in-runs.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -295,17 +292,33 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: 跟踪和监视培训
+          items:
+            - name: 启动、监视或取消运行
+              displayName: 'cancel, fail, status, child run'
+              href: how-to-manage-runs.md
+            - name: 记录训练运行的指标
+              href: how-to-track-experiments.md
+            - name: 使用 MLflow 对试验进行跟踪
+              displayName: 'log, monitor, metrics, Databricks'
+              href: how-to-use-mlflow.md
+            - name: 使用 TensorBoard 将运行可视化
+              displayName: 'log, monitor, metrics'
+              href: how-to-monitor-tensorboard.md
+        - name: 解释和说明模型
+          displayName: interpretability
+          items:
+            - name: 解释 ML 模型
+              displayName: 'SDK, interpret, explain, explanability, interpretability'
+              href: how-to-machine-learning-interpretability-aml.md
+            - name: 解释自动化 ML 模型
+              displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
+              href: how-to-machine-learning-interpretability-automl.md
+        - name: 训练时使用 Key Vault
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
         - name: 强化学习
           href: how-to-use-reinforcement-learning.md
-    - name: 解释和说明模型
-      displayName: interpretability
-      items:
-        - name: 解释 ML 模型
-          displayName: 'SDK, interpret, explain, explanability, interpretability'
-          href: how-to-machine-learning-interpretability-aml.md
-        - name: 解释自动化 ML 模型
-          displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
-          href: how-to-machine-learning-interpretability-automl.md
     - name: 自动化机器学习
       displayName: 'automl, auto ml'
       items:
@@ -334,19 +347,6 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: 了解图表和指标
           href: how-to-understand-automated-ml.md
-    - name: 跟踪和监视试验
-      items:
-        - name: 启动、监视或取消运行
-          displayName: 'cancel, fail, status, child run'
-          href: how-to-manage-runs.md
-        - name: 记录训练运行的指标
-          href: how-to-track-experiments.md
-        - name: 使用 MLflow 对试验进行跟踪
-          displayName: 'log, monitor, metrics, Databricks'
-          href: how-to-use-mlflow.md
-        - name: 使用 TensorBoard 将运行可视化
-          displayName: 'log, monitor, metrics'
-          href: how-to-monitor-tensorboard.md
     - name: 部署和提供模型
       items:
         - name: 在何处以及如何部署
@@ -413,7 +413,6 @@
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: 在 Application Insights 中调试管道
-          displayname: 'pipelines, log, monitor'
           href: how-to-debug-pipelines-application-insights.md
         - name: 设计器转换数据
           displayName: pipeline
@@ -483,7 +482,7 @@
       displayName: 'bugs, errors, troubleshoot'
       href: resource-known-issues.md
     - name: 用户论坛
-      href: 'https://aka.ms/aml-forum-service'
+      href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比较我们的 ML 产品

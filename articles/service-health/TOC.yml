@@ -30,7 +30,9 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: 将警报发送给 OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: 配置资源运行状况事件的警报
+    - name: 使用 Azure 门户配置资源运行状况警报
+      href: resource-health-alert-monitor-guide.md
+    - name: 使用资源管理器模板创建资源运行状况警报
       href: resource-health-alert-arm-template-guide.md
 - name: 参考
   items:

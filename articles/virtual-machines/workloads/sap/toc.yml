@@ -123,6 +123,8 @@
     - name: 在 Azure 上规划和实施 SAP NetWeaver
       href: planning-guide.md
       items:
+        - name: 适用于 SAP 工作负载的 Azure 存储类型
+          href: planning-guide-storage.md
         - name: Azure 虚拟机支持的方案中的 SAP 工作负载
           href: sap-planning-supported-configurations.md
         - name: Azure 部署支持的 SAP 软件
@@ -230,7 +232,7 @@
             - name: 将 RHEL 与用于 A(SCS) 实例的 Pacemaker 多 SID 配合使用
               href: high-availability-guide-rhel-multi-sid.md
     - name: 使用 Azure Site Recovery 进行 SAP 灾难恢复
-      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
+      href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: 用于最大程度地降低 SAP 应用程序网络延迟的 Azure 邻近放置组
       href: sap-proximity-placement-scenarios.md
 - name: AAD SAP 标识集成和单一登录

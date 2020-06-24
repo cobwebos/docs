@@ -16,6 +16,8 @@
       href: tutorial-access-private-cloud.md
     - name: 5 - 缩放私有云
       href: tutorial-scale-private-cloud.md
+    - name: 6 - 创建用于部署 VM 的内容库
+      href: tutorial-deploy-vm-content-library.md
 - name: 概念
   items:
     - name: 私有云和群集
@@ -28,6 +30,8 @@
       href: concepts-identity.md
     - name: 私有云升级
       href: concepts-upgrades.md
+    - name: 适用于 AVS VM 的 API 管理
+      href: concepts-api-management.md
 - name: 操作指南
   items:
     - name: 设置 HCX

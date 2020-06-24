@@ -35,6 +35,8 @@
 - name: 操作指南
   expanded: false
   items:
+    - Name: 规划 Azure AD 设备部署
+      href: plan-device-deployment.md
     - name: 计划 Azure AD 加入实现
       href: azureadjoin-plan.md
     - name: 将本地管理员分配到加入 Azure AD 的设备

@@ -77,6 +77,8 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: 常见问题解答
           href: ./afds/waf-faq.md
+    - name: WAF 和 Azure Policy
+      href: ./shared/waf-azure-policy.md
 - name: 操作指南
   items:
     - name: 应用程序网关
