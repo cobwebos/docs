@@ -6,17 +6,17 @@ author: Antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19548aa76d3dd08ebb8a1edd0cf726db6d458d67
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80633780"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212966"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 缩放 Synapse SQL 池的计算
 
@@ -24,7 +24,7 @@ ms.locfileid: "80633780"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -56,7 +56,7 @@ Set-AzContext -SubscriptionName "MySubscription"
 
 按照以下步骤查找数据仓库的位置信息。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户的左侧导航页中单击“Azure Synapse Analytics (前称为 SQL 数据仓库)”。 
 3. 在“Azure Synapse Analytics (前称为 SQL 数据仓库)”页中选择“mySampleDataWarehouse”打开数据仓库。  
 
@@ -111,9 +111,9 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-可在输出中查看数据库的“状态”  。 在本例中，可以看到此数据库处于联机状态。  运行此命令后，应收到“联机”、“正在暂停”、“正在恢复”、“正在缩放”和“已暂停”等状态值。
+可以在输出中查看数据库的 **Status**（状态）。 在本例中，可以看到此数据库处于联机状态。  运行此命令后，应收到“联机”、“正在暂停”、“正在恢复”、“正在缩放”和“已暂停”等状态值。
 
-要单独查看状态，请使用以下命令：
+若要查看数据库本身的状态，请使用以下命令：
 
 ```powershell
 $database | Select-Object DatabaseName,Status

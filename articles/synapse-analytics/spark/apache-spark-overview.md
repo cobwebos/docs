@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 1f1a83bce3a8b46bb49bf78917690851390408e0
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140967"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194682"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Apache Spark 是什么
 

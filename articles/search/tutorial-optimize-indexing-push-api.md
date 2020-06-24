@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 85ac56eb20eabf308d6686a047d8c5ede914fed9
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82941754"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079221"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>教程：使用推送 API 优化索引编制
 
@@ -21,7 +21,7 @@ Azure 认知搜索支持采用[两种基本方法](search-what-is-data-import.md
 
 本教程介绍了如何使用[推送模型](search-what-is-data-import.md#pushing-data-to-an-index)通过分批处理请求并使用指数回退重试策略来高效地为数据编制索引。 你可以[下载并运行该应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)。 本文介绍了该应用程序的主要方面，以及为数据编制索引时要考虑的因素。
 
-本教程使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 执行以下任务：
+本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 执行以下任务：
 
 > [!div class="checklist"]
 > * 创建索引

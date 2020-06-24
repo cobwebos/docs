@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: 948c30c641b68f7966831a3324c1bfab5dbd3b03
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: efabb5402a40b9084452366c2b8cc5ff5167feae
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610729"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206218"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入门：使用 REST API 和 Python 训练表单识别器模型并提取表单数据
 
@@ -44,7 +44,7 @@ ms.locfileid: "84610729"
 > [!NOTE]
 > 可以使用标记数据功能来手动预先标记部分或全部训练数据。 这是一个更为复杂的过程，但会生成更好的经过训练的模型。 有关详细信息，请参阅概述的[使用标签进行训练](../overview.md#train-with-labels)部分。
 
-若要使用 Azure Blob 容器中的文档训练表单识别器模型，请运行下面的 python 代码来调用[自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync) API。 运行该代码之前，请进行以下更改：
+若要使用 Azure Blob 容器中的文档训练表单识别器模型，请运行下面的 python 代码来调用[自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) API。 运行该代码之前，请进行以下更改：
 
 1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
 1. 将 `<subscription key>` 替换为从上一步复制的订阅密钥。
@@ -59,7 +59,7 @@ ms.locfileid: "84610729"
     
     # Endpoint URL
     endpoint = r"<endpoint>"
-    post_url = endpoint + r"/formrecognizer/v2.0-preview/custom/models"
+    post_url = endpoint + r"/formrecognizer/v2.0/custom/models"
     source = r"<SAS URL>"
     prefix = "<Blob folder name>"
     includeSubFolders = False
@@ -461,4 +461,4 @@ print("Train operation did not complete within the allocated time.")
 在本快速入门中，我们已使用表单识别器 REST API 和 Python 训练了一个模型，并在示例案例中运行了该模型。 接下来，请参阅参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)

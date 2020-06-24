@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: quickstart
 ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79499626"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130749"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
@@ -25,7 +25,7 @@ ms.locfileid: "79499626"
 
 ## <a name="sign-up-for-video-indexer"></a>注册视频索引器
 
-若要开始使用视频索引器进行开发，请浏览到[视频索引器](https://www.videoindexer.com)网站并注册。
+若要开始使用视频索引器进行开发，请浏览到[视频索引器](https://www.videoindexer.ai/)网站并注册。
 
 > [!NOTE]
 > 开始使用视频索引器后，所有存储的数据和上传的内容都将使用 Microsoft 托管密钥进行静态加密。
