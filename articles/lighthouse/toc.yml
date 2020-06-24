@@ -69,6 +69,8 @@
         - name: 部署可修正的策略
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Sentinel 集成
+      href: ./how-to/manage-sentinel-workspaces.md
     - name: 客户操作
       items:
         - name: 查看和管理服务提供商
