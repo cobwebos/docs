@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 9342d87318eb6a5248c75d2333fb5e2a4cbef8f4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873294"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212660"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型构建定型数据集
 
@@ -26,7 +26,7 @@ ms.locfileid: "83873294"
 
 ## <a name="training-data-tips"></a>训练数据提示
 
-使用针对定型进行优化的数据集很重要。 使用以下提示来确保从[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)操作获得最佳结果：
+使用针对定型进行优化的数据集很重要。 使用以下提示来确保从[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)操作获得最佳结果：
 
 * 如果可能，请使用基于文本的 PDF 文档而不是基于图像的文档。 扫描的 Pdf 作为图像处理。
 * 对于填充窗体，请使用填充了所有字段的示例。
@@ -44,11 +44,11 @@ ms.locfileid: "83873294"
 
 将用于定型的窗体文档集中在一起后，需要将其上传到 Azure blob 存储容器。 如果你不知道如何使用容器创建 Azure 存储帐户，请遵循[适用于 Azure 门户的 Azure 存储快速入门](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
 
-如果要使用手动标记的数据，则还必须上传对应于定型文档的 *. 标签*和*文件*。 您可以使用[示例标记工具](./quickstarts/label-tool.md)（或您自己的 UI）来生成这些文件。
+如果要使用手动标记的数据，则还必须上传与训练文档对应的文件上的 *.labels.js*和 *.ocr.js* 。 您可以使用[示例标记工具](./quickstarts/label-tool.md)（或您自己的 UI）来生成这些文件。
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>组织子文件夹中的数据（可选）
 
-默认情况下，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)API 将仅使用位于存储容器根目录下的窗体文档。 但是，如果在 API 调用中指定数据，则可以训练子文件夹中的数据。 通常，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
+默认情况下，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)API 将仅使用位于存储容器根目录下的窗体文档。 但是，如果在 API 调用中指定数据，则可以训练子文件夹中的数据。 通常，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
 
 ```json
 {

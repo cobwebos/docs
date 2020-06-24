@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117261"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212439"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>部署示例标记工具
 
@@ -42,7 +42,7 @@ ms.locfileid: "82117261"
 按照以下步骤使用 Azure 门户创建新资源： 
 
 1. 登录 [Azure 门户](https://portal.azure.com/signin/index/)。
-2. 选择“创建资源”。  
+2. 选择“创建资源”。 
 3. 接下来，选择 " **Web 应用**"。 
 
    > [!div class="mx-imgBorder"]
@@ -82,20 +82,20 @@ ms.locfileid: "82117261"
    > [!div class="mx-imgBorder"]
    > ![配置 Docker](./media/quickstarts/formre-configure-docker.png)
 
-7. 就这么简单。 接下来，依次选择 "**查看**" 和 "创建"，然后单击 "**创建**" 以部署 web 应用。 完成后，你可以在资源的 "**概述**" 中提供的 URL 访问你的 web 应用。
+7. 分配过程如上所述。 接下来，依次选择 "**查看**" 和 "创建"，然后单击 "**创建**" 以部署 web 应用。 完成后，你可以在资源的 "**概述**" 中提供的 URL 访问你的 web 应用。
 
 > [!NOTE]
 > 创建 web 应用时，还可以配置授权/身份验证。 这并不是必需的。 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-作为使用 Azure 门户的替代方法，可以使用 Azure CLI 创建资源。 继续之前，需要安装[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 如果已使用 Azure CLI，则可以跳过此步骤。 
+作为使用 Azure 门户的替代方法，可以使用 Azure CLI 创建资源。 继续之前，需要安装[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 如果已使用 Azure CLI，则可以跳过此步骤。 
 
 有关此命令，需要了解以下几个事项：
 
 * `DNS_NAME_LABEL=aci-demo-$RANDOM`生成一个随机 DNS 名称。 
-* 此示例假设您有一个可用于创建资源的资源组。 将`<resource_group_name>`替换为与订阅关联的有效资源组。 
-* 你需要指定要创建资源的位置。 将`<region name>`替换为 web 应用所需的区域。 
+* 此示例假设您有一个可用于创建资源的资源组。 将替换为 `<resource_group_name>` 与订阅关联的有效资源组。 
+* 你需要指定要创建资源的位置。 将替换为 `<region name>` web 应用所需的区域。 
 * 此命令自动接受 EULA。
 
 在 Azure CLI 中运行以下命令，为示例标签工具创建 web 应用资源： 

@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 57cb68726adf8818f9ef0c8804be9c388ea39ff5
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872290"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080171"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容
 
 如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 本 C# 教程对图像应用光学字符识别 (OCR)，并执行自然语言处理来创建可在查询、分面和筛选器中利用的新字段。
 
-本教程使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 执行以下任务：
+本教程使用 C# 和 [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 执行以下任务：
 
 > [!div class="checklist"]
 > * 从 Azure Blob 存储中的应用程序文件和图像开始。
@@ -127,7 +127,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-[Azure 认知搜索 .NET SDK](https://aka.ms/search-sdk) 由一些客户端库组成。借助这些库，不仅可以管理索引、数据源、索引器和技能集，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
+[Azure 认知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) 由一些客户端库组成。借助这些库，不仅可以管理索引、数据源、索引器和技能集，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
 
 对于此项目，请安装版本 9 或更高版本的 `Microsoft.Azure.Search` NuGet 包。
 

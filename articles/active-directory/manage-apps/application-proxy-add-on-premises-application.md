@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc1d0687c0d2d48a64e38fd5a57fe32c13063890
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: e365503ba975f8cc93302bd3f1084c2cdd4f254f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760297"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114021"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -50,7 +50,9 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > 如果要在 Windows Server 2019 上安装连接器，则必须在 WinHttp 组件中禁用 HTTP2 协议支持。 默认情况下，在受支持的操作系统的早期版本中已禁用此功能。 添加以下注册表项并重启服务器会在 Windows Server 2019 上禁用此功能。 请注意，这是计算机范围的注册表项。
 >
 > ```
-> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> Windows Registry Editor Version 5.00
+> 
+> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp] "EnableDefaultHttp2"=dword:00000000
 > ```
 >
 

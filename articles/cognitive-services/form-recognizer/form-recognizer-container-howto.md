@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 761cf5831bb2332ae8c3f7a9a8edee707e6810ee
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: fe6e0a0f3ffd3680c75c086222a4a390ce15d4df
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816329"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213187"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安装和运行窗体识别器容器（预览）
 
@@ -35,11 +35,11 @@ Azure 表单识别器应用机器学习技术从表单中识别和提取键值�
 
 使用表单识别器容器之前，必须满足以下先决条件：
 
-| 必选 | 目的 |
+| 必需 | 目的 |
 |----------|---------|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念（例如注册表、存储库、容器和容器映像）有一个基本的理解，并了解基本的 `docker` 命令。 |
-| Azure CLI | 在主机上安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 |
+| Azure CLI | 在主机上安装 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 |
 | 计算机视觉 API 资源 | 若要处理扫描的文档和图像，需要计算机视觉资源。 可以访问作为 Azure 资源（REST API 或 SDK）或 *cognitive-services-recognize-text* [容器](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)提供的文本识别功能。 使用此功能需要按普通费率付费。 <br><br>同时传入计算机视觉资源（Azure 云或认知服务容器）的 API 密钥和终结点。 使用此 API 密钥和终结点作为 **{COMPUTER_VISION_API_KEY}** 和 **{COMPUTER_VISION_ENDPOINT_URI}**。<br><br> 如果使用 *cognitive-services-recognize-text* 容器，请确保：<br><br>表单识别器容器的计算机视觉密钥是在 *cognitive-services-recognize-text* 容器的计算机视觉 `docker run` 命令中指定的密钥。<br>计费终结点是容器的终结点（例如 `http://localhost:5000`）。 如果在同一台主机上同时使用计算机视觉容器和表单识别器容器，不能使用默认端口 *5000* 将两者同时启动。 |
 | 表单识别器资源 | 若要使用这些容器，必须具有：<br><br>用于获取关联的 API 密钥和终结点 URI 的 Azure**窗体识别器**资源。 Azure 门户**窗体识别器**概述和密钥页上都提供了这两个值，这两个值都是启动容器所必需的。<br><br>**{FORM_RECOGNIZER_API_KEY}**： "密钥" 页上有两个可用的资源键之一<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}**： "概述" 页中提供的终结点 |
 
@@ -307,7 +307,7 @@ formrecognizer_config =
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果运行启用了输出[装入点](form-recognizer-container-configuration.md#mount-settings)和日志记录的容器，该容器会生成有助于排查启动或运行容器时发生的问题的日志文件。
 

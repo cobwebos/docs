@@ -26,7 +26,7 @@ ms.locfileid: "84974647"
 > [!IMPORTANT]
 > 所有语音容器当前均作为[公共 "封闭" 预览版](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分提供。 语音容器推出正式发行版（GA）时将发出一则通知。
 
-| 功能 | 功能 | 最新版本 |
+| 函数 | 功能 | 最新版本 |
 |--|--|--|
 | 语音转文本 | 利用中间结果分析情绪和转录连续实时语音或批处理音频记录。  | 2.3.1 |
 | 自定义语音转文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.3.1 |

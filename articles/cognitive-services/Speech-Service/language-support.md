@@ -1,7 +1,7 @@
 ---
 title: 语言支持 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 对于语音到文本和文本到语音转换以及语音翻译，语音服务支持多种语言。 本文提供了按服务功能列出的语言支持的完整列表。
+description: 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供了按服务功能列出的语言支持的完整列表。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 89b2b7b993ef9613740dd777546cc15a12203e62
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783089"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210722"
 ---
-# <a name="language-and-voice-support-for-the-speech-service"></a>对语音服务的语言和语音支持
+# <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
-语言支持因语音服务功能而异。 下表汇总了对[语音到文本](#speech-to-text)、[文本到语音](#text-to-speech)和[语音翻译](#speech-translation)服务产品的语言支持。
+语言支持因语音服务功能而异。 下表汇总了对[语音转文本](#speech-to-text)、[文本转语音](#text-to-speech)和[语音翻译](#speech-translation)服务产品的语言支持。
 
 ## <a name="speech-to-text"></a>语音转文本
 
@@ -39,14 +39,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Locale  | 语言                          | 支持 | 自定义                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | 阿拉伯语（阿拉伯联合酋长国）                      | 是       | 否                                                |
-| `ar-BH` | 阿拉伯语（巴林），现代标准 | 是       | 语言模型                                    |
+| `ar-BH` | 阿拉伯语(巴林)，现代标准 | 是       | 语言模型                                    |
 | `ar-EG` | 阿拉伯语（埃及）                    | 是       | 语言模型                                    |
 | `ar-IL` | 阿拉伯语（以色列）                   | 是       | 否                                                |
 | `ar-JO` | 阿拉伯语（约旦）                   | 是       | 否                                                |
 | `ar-KW` | 阿拉伯语（科威特）                   | 是       | 否                                                |
 | `ar-LB` | 阿拉伯语（黎巴嫩）                  | 是       | 否                                                |
 | `ar-PS` | 阿拉伯语（巴勒斯坦）                | 是       | 否                                                |
-| `ar-QA` | 阿拉伯语（卡塔尔）                    | 是       | 否                                                |
+| `ar-QA` | 阿拉伯语(卡塔尔)                    | 是       | 否                                                |
 | `ar-SA` | 阿拉伯语（沙特阿拉伯）             | 是       | 否                                                |
 | `ar-SY` | 阿拉伯语（叙利亚）                    | 是       | 语言模型                                    |
 | `ca-ES` | 加泰罗尼亚语                           | 是       | 语言模型                                    |
@@ -81,7 +81,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `th-TH` | 泰语（泰国）                   | 是       | 否                                                |
 | `tr-TR` | 土耳其语（土耳其）                  | 是       | 语言模型                                    |
 | `zh-CN` | 中文(普通话，简体)    | 是       | 声学模型<br>语言模型                  |
-| `zh-HK` | 中文（粤语，繁体）  | 是       | 语言模型                                    |
+| `zh-HK` | 中文(粤语，繁体)  | 是       | 语言模型                                    |
 | `zh-TW` | 中文(台湾普通话)      | 是       | 语言模型                                    |
 
 ## <a name="text-to-speech"></a>文本转语音
@@ -95,36 +95,36 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 神经文本到语音转换是由深度神经网络提供支持的新型语音合成。 使用神经语音时，几乎无法将合成的语音与人类录音区分开来。
 
-神经语音可用来使与聊天机器人和虚拟助手的交流更加自然和专注，将数字文本（如电子书）转换为有声读物，以及增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
+使用神经语音可使得与聊天机器人和语音助手的交互更加自然且富有吸引力、将数字文本（如电子书）转换为有声读物以及增强车载导航系统。 随着类人的自然韵律和字词的清晰发音，用户在与 AI 系统交互时，神经语音显著减轻了听力疲劳。
 
 有关区域可用性的详细信息，请参阅[区域](regions.md#standard-and-neural-voices)。
 
 |Locale  | 语言            | 性别 | 语音名称 | 风格支持 |
 |--|--|--|--|--|
-| `de-DE` | 德语（德国）                | Female | "de-DE-KatjaNeural"      | 常规 |
-| `en-AU` | 英语（澳大利亚）             | Female | "en-AU-NatashaNeural"    | 常规 |
-| `en-CA` | 英语（加拿大）                | Female | "en-CA-ClaraNeural"      | 常规 |
-| `en-GB` | 英语(英国)                    | Female | "en-GB-LibbyNeural"      | 常规 |
-|         |                                 | Female | "en-GB-MiaNeural"        | 常规 |
-| `en-US` | 英语(美国)                    | Female | "en-US-AriaNeural"       | 常规，提供了多种语音风格 |
+| `de-DE` | 德语（德国）                | 女 | "de-DE-KatjaNeural"      | 常规 |
+| `en-AU` | 英语（澳大利亚）             | 女 | "en-AU-NatashaNeural"    | 常规 |
+| `en-CA` | 英语（加拿大）                | 女 | "en-CA-ClaraNeural"      | 常规 |
+| `en-GB` | 英语(英国)                    | 女 | "en-GB-LibbyNeural"      | 常规 |
+|         |                                 | 女 | "en-GB-MiaNeural"        | 常规 |
+| `en-US` | 英语(美国)                    | 女 | "en-US-AriaNeural"       | 常规，提供了多种语音风格 |
 |         |                                 | 男   | "en-US-GuyNeural"        | 常规 |
-| `es-ES` | 西班牙语(西班牙)                 | Female | "es-ES-ElviraNeural"     | 常规 |
+| `es-ES` | 西班牙语(西班牙)                 | 女 | "es-ES-ElviraNeural"     | 常规 |
 | `es-MX` | 西班牙语（墨西哥）                | Female | "es-MX-DaliaNeural"      | 常规 |
-| `fr-CA` | 法语（加拿大）                 | Female | "fr-CA-SylvieNeural"     | 常规 |
-| `fr-FR` | 法语（法国）                 | Female | "fr-FR-DeniseNeural"     | 常规 |
-| `it-IT` | 意大利语（意大利）                 | Female | "it-IT-ElsaNeural"       | 常规 |
-| `ja-JP` | 日语                        | Female | "ja-JP-NanamiNeural"     | 常规 |
-| `ko-KR` | 韩语                          | Female | "ko-KR-SunHiNeural"      | 常规 |
-| `nb-NO` | 挪威语                       | Female | "nb-NO-IselinNeural"     | 常规 |
-| `pt-BR` | 葡萄牙语（巴西）             | Female | "pt-BR-FranciscaNeural"  | 常规 |
-| `tr-TR` | 土耳其语                         | Female | "tr-TR-EmelNeural"       | 常规 |
-| `zh-CN` | 中文(普通话，简体)  | Female | "zh-CN-XiaoxiaoNeural"   | 常规，提供了多种语音风格 |
-|         |                                 | Female | "zh-CN-XiaoyouNeural"    | 儿童语音，针对讲故事进行了优化 |
+| `fr-CA` | 法语（加拿大）                 | 女 | "fr-CA-SylvieNeural"     | 常规 |
+| `fr-FR` | 法语（法国）                 | 女 | "fr-FR-DeniseNeural"     | 常规 |
+| `it-IT` | 意大利语（意大利）                 | 女 | "it-IT-ElsaNeural"       | 常规 |
+| `ja-JP` | 日语                        | 女 | "ja-JP-NanamiNeural"     | 常规 |
+| `ko-KR` | 韩语                          | 女 | "ko-KR-SunHiNeural"      | 常规 |
+| `nb-NO` | 挪威语                       | 女 | "nb-NO-IselinNeural"     | 常规 |
+| `pt-BR` | 葡萄牙语（巴西）             | 女 | "pt-BR-FranciscaNeural"  | 常规 |
+| `tr-TR` | 土耳其语                         | 女 | "tr-TR-EmelNeural"       | 常规 |
+| `zh-CN` | 中文(普通话，简体)  | 女 | "zh-CN-XiaoxiaoNeural"   | 常规，提供了多种语音风格 |
+|         |                                 | 女 | "zh-CN-XiaoyouNeural"    | 儿童语音，针对讲故事进行了优化 |
 |         |                                 | 男   | "zh-CN-YunyangNeural"    | 针对新闻朗读进行了优化，提供了多种语音风格 |
 |         |                                 | 男   | "zh-CN-YunyeNeural"      | 针对讲故事进行了优化 |
 
 > [!IMPORTANT]
-> `en-US-JessaNeural` 语音已更改为 `en-US-AriaNeural`。 如果以前使用了“Jessa”，请转换为“Aria”。
+> `en-US-JessaNeural` 语音已更改为 `en-US-AriaNeural`。 如果以前使用的是“Jessa”，请转换为“Aria”。
 
 若要了解如何配置和调整神经语音，请参阅[语音合成标记语言](speech-synthesis-markup.md#adjust-speaking-styles)。
 
@@ -137,84 +137,84 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 | Locale | 语言 | 性别 | 语音名称 |
 |--|--|--|--|
-| <sup>1</sup>`ar-EG` | 阿拉伯语（埃及） | Female | "ar-EG-Hoda" |
+| <sup>1</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | "ar-EG-Hoda" |
 | `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | "ar-SA-Naayf" |
 | `bg-BG` | 保加利亚语 | 男 |  "bg-BG-Ivan" |
-| `ca-ES` | 加泰罗尼亚语 | Female |  "ca-ES-HerenaRUS" |
+| `ca-ES` | 加泰罗尼亚语 | 女 |  "ca-ES-HerenaRUS" |
 | `cs-CZ` | 捷克语 | 男 | "cs-CZ-Jakub" |
-| `da-DK` | 丹麦语 | Female |  "da-DK-HelleRUS" |
+| `da-DK` | 丹麦语 | 女 |  "da-DK-HelleRUS" |
 | `de-AT` | 德语（奥地利） | 男 | "de-AT-Michael" |
 | `de-CH` | 德语（瑞士） | 男 |  "de-CH-Karsten" |
-| `de-DE` | 德语（德国） | Female |  "de-DE-Hedda" |
-|  |  | Female | "de-DE-HeddaRUS" |
+| `de-DE` | 德语（德国） | 女 |  "de-DE-Hedda" |
+|  |  | 女 | "de-DE-HeddaRUS" |
 |  |  | 男 |  "de-DE-Stefan-Apollo" |
 | `el-GR` | 希腊语 | 男 | "el-GR-Stefanos" |
-| `en-AU` | 英语（澳大利亚） | Female |  "en-AU-Catherine" |
-|  |  | Female |  "en-AU-HayleyRUS" |
-| `en-CA` | 英语（加拿大） | Female |  "en-CA-Linda" |
+| `en-AU` | 英语（澳大利亚） | 女 |  "en-AU-Catherine" |
+|  |  | 女 |  "en-AU-HayleyRUS" |
+| `en-CA` | 英语（加拿大） | 女 |  "en-CA-Linda" |
 |  |  | Female |  "en-CA-HeatherRUS" |
-| `en-GB` | 英语(英国) | Female |  "en-GB-Susan-Apollo" |
-|  |  | Female |  "en-GB-HazelRUS" |
+| `en-GB` | 英语(英国) | 女 |  "en-GB-Susan-Apollo" |
+|  |  | 女 |  "en-GB-HazelRUS" |
 |  |  | 男 |  "en-GB-George-Apollo" |
 | `en-IE` | 英语（爱尔兰） | 男 | "en-IE-Sean" |
-| `en-IN` | 英语（印度） | Female | "en-IN-Heera-Apollo" |
-|  |  | Female |  "en-IN-PriyaRUS" |
+| `en-IN` | 英语（印度） | 女 | "en-IN-Heera-Apollo" |
+|  |  | 女 |  "en-IN-PriyaRUS" |
 |  |  | 男 |  "en-IN-Ravi-Apollo" |
-| `en-US` | 英语(美国) | Female |  "en-US-ZiraRUS" |
-|  |  | Female | "en-US-AriaRUS" |
+| `en-US` | 英语(美国) | 女 |  "en-US-ZiraRUS" |
+|  |  | 女 | "en-US-AriaRUS" |
 |  |  | 男 | "en-US-BenjaminRUS" |
 |  |  | 男 |  "en-US-Guy24kRUS" |
-| `es-ES` | 西班牙语(西班牙) | Female |  "es-ES-Laura-Apollo" |
-|  |  | Female | "es-ES-HelenaRUS" |
+| `es-ES` | 西班牙语(西班牙) | 女 |  "es-ES-Laura-Apollo" |
+|  |  | 女 | "es-ES-HelenaRUS" |
 |  |  | 男 | "es-ES-Pablo-Apollo" |
-| `es-MX` | 西班牙语（墨西哥） | Female |  "es-MX-HildaRUS" |
+| `es-MX` | 西班牙语（墨西哥） | 女 |  "es-MX-HildaRUS" |
 |  |  | 男 | "es-MX-Raul-Apollo" |
-| `fi-FI` | 芬兰语 | Female | "fi-FI-HeidiRUS" |
-| `fr-CA` | 法语（加拿大） | Female | "fr-CA-Caroline" |
-|  |  | Female | "fr-CA-HarmonieRUS" |
+| `fi-FI` | 芬兰语 | 女 | "fi-FI-HeidiRUS" |
+| `fr-CA` | 法语（加拿大） | 女 | "fr-CA-Caroline" |
+|  |  | 女 | "fr-CA-HarmonieRUS" |
 | `fr-CH` | 法语（瑞士） | 男 | "fr-CH-Guillaume" |
-| `fr-FR` | 法语（法国） | Female |  "fr-FR-Julie-Apollo" |
-|  |  | Female |"fr-FR-HortenseRUS" |
+| `fr-FR` | 法语（法国） | 女 |  "fr-FR-Julie-Apollo" |
+|  |  | 女 |"fr-FR-HortenseRUS" |
 |  |  | 男 |  "fr-FR-Paul-Apollo" |
 | `he-IL` | 希伯来语（以色列） | 男 |  "he-IL-Asaf" |
-| `hi-IN` | 印地语（印度） | Female | "hi-IN-Kalpana-Apollo" |
-|  |  | Female |  "hi-IN-Kalpana" |
+| `hi-IN` | 印地语（印度） | 女 | "hi-IN-Kalpana-Apollo" |
+|  |  | 女 |  "hi-IN-Kalpana" |
 |  |  | 男 |  "hi-IN-Hemant" |
 | `hr-HR` | 克罗地亚语 | 男 | "hr-HR-Matej" |
 | `hu-HU` | 匈牙利语 | 男 |  "hu-HU-Szabolcs" |
 | `id-ID` | 印度尼西亚语 | 男 | "id-ID-Andika" |
 | `it-IT` | 意大利语 | 男 |  "it-IT-Cosimo-Apollo" |
-|  |  | Female |  "it-IT-LuciaRUS" |
-| `ja-JP` | 日语 | Female |  "ja-JP-Ayumi-Apollo" |
+|  |  | 女 |  "it-IT-LuciaRUS" |
+| `ja-JP` | 日语 | 女 |  "ja-JP-Ayumi-Apollo" |
 |  |  | 男 | "ja-JP-Ichiro-Apollo" |
-|  |  | Female |  "ja-JP-HarukaRUS" |
-| `ko-KR` | 韩语 | Female | "ko-KR-HeamiRUS" |
+|  |  | 女 |  "ja-JP-HarukaRUS" |
+| `ko-KR` | 韩语 | 女 | "ko-KR-HeamiRUS" |
 | `ms-MY` | 马来语 | 男 |  "ms-MY-Rizwan" |
-| `nb-NO` | 挪威语 | Female |  "nb-NO-HuldaRUS" |
-| `nl-NL` | 荷兰语 | Female |  "nl-NL-HannaRUS" |
+| `nb-NO` | 挪威语 | 女 |  "nb-NO-HuldaRUS" |
+| `nl-NL` | 荷兰语 | 女 |  "nl-NL-HannaRUS" |
 | `pl-PL` | 波兰语 | Female |  "pl-PL-PaulinaRUS" |
-| `pt-BR` | 葡萄牙语（巴西） | Female | "pt-BR-HeloisaRUS" |
+| `pt-BR` | 葡萄牙语（巴西） | 女 | "pt-BR-HeloisaRUS" |
 |  |  | 男 |  "pt-BR-Daniel-Apollo" |
-| `pt-PT` | 葡萄牙语(葡萄牙) | Female | "pt-PT-HeliaRUS" |
+| `pt-PT` | 葡萄牙语(葡萄牙) | 女 | "pt-PT-HeliaRUS" |
 | `ro-RO` | 罗马尼亚语 | 男 | "ro-RO-Andrei" |
-| `ru-RU` | 俄语 | Female |  "ru-RU-Irina-Apollo" |
+| `ru-RU` | 俄语 | 女 |  "ru-RU-Irina-Apollo" |
 |  |  | 男 | "ru-RU-Pavel-Apollo" |
-|  |  | Female |  ru-RU-EkaterinaRUS |
+|  |  | 女 |  ru-RU-EkaterinaRUS |
 | `sk-SK` | 斯洛伐克语 | 男 | "sk-SK-Filip" |
 | `sl-SI` | 斯洛文尼亚语 | 男 |  "sl-SI-Lado" |
-| `sv-SE` | 瑞典语 | Female | "sv-SE-HedvigRUS" |
+| `sv-SE` | 瑞典语 | 女 | "sv-SE-HedvigRUS" |
 | `ta-IN` | 泰米尔语（印度） | 男 |  "ta-IN-Valluvar" |
-| `te-IN` | 泰卢固语（印度） | Female |  "te-IN-Chitra" |
+| `te-IN` | 泰卢固语（印度） | 女 |  "te-IN-Chitra" |
 | `th-TH` | 泰语 | 男 |  "th-TH-Pattara" |
-| `tr-TR` | 土耳其语（土耳其） | Female | "tr-TR-SedaRUS" |
+| `tr-TR` | 土耳其语（土耳其） | 女 | "tr-TR-SedaRUS" |
 | `vi-VN` | 越南语 | 男 |  "vi-VN-An" |
-| `zh-CN` | 中文(普通话，简体) | Female |  "zh-CN-HuihuiRUS" |
-|  |  | Female | "zh-CN-Yaoyao-Apollo" |
+| `zh-CN` | 中文(普通话，简体) | 女 |  "zh-CN-HuihuiRUS" |
+|  |  | 女 | "zh-CN-Yaoyao-Apollo" |
 |  |  | 男 | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | 中文（粤语，繁体） | Female |  "zh-HK-Tracy-Apollo" |
-|  |  | Female | "zh-HK-TracyRUS" |
+| `zh-HK` | 中文（粤语，繁体） | 女 |  "zh-HK-Tracy-Apollo" |
+|  |  | 女 | "zh-HK-TracyRUS" |
 |  |  | 男 |  "zh-HK-Danny-Apollo" |
-| `zh-TW` | 中文(台湾普通话) | Female |  "zh-TW-Yating-Apollo" |
+| `zh-TW` | 中文(台湾普通话) | 女 |  "zh-TW-Yating-Apollo" |
 |  |  | Female | "zh-TW-HanHanRUS" |
 |  |  | 男 |  "zh-TW-Zhiwei-Apollo" |
 
@@ -235,7 +235,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 ## <a name="speech-translation"></a>语音翻译
 
-**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自“语音转文本”语言表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言中的一部分可用于[语音合成](language-support.md#text-languages)。
+**语音翻译** API 支持使用不同的语言进行语音转语音和语音转文本的翻译。 源语言必须始终来自“语音转文本”语言表。 可用的目标语言取决于翻译目标是语音还是文本。 可以将传入的语音翻译成 [60 种以上的语言](https://www.microsoft.com/translator/business/languages/)。 这些语言的子集可用于[语音合成](language-support.md#text-languages)。
 
 ### <a name="text-languages"></a>文本语言
 
@@ -332,7 +332,6 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 |es-MX  |西班牙语（墨西哥）   |不适用|   是|    是|
 |ja-JP| 日语    |不适用    |是    |是|
 |pt-BR| 葡萄牙语（巴西）|    不适用|    是|    是|
-|ko-KR| 韩语  |不适用    |是|   是|
 
 ## <a name="next-steps"></a>后续步骤
 

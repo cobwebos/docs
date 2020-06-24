@@ -7,20 +7,18 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
-ms.date: 02/27/2020
-ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/18/2020
+ms.openlocfilehash: 56af098050315e1b2cb0bdde531cc38452db4738
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343764"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079365"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 演示的教程为**公共预览版**。 
->
 > 本教程结合使用 SQL Server 2017 和 RHEL 7.6，但也可使用 RHEL 7 或 RHEL 8 中的 SQL Server 2019 来配置高可用性。 用于配置可用性组资源的命令在 RHEL 8 中已更改，查看[创建可用性组资源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) 和 RHEL 8 资源，详细了解正确的命令。
 
 在本教程中，你将了解如何执行以下操作：
@@ -535,7 +533,7 @@ systemctl status mssql-server --no-pager
 
 使用以下步骤为 VM 配置 SQL Server Always On 可用性组。 有关详细信息，请参阅[配置 SQL Server Always On 可用性组以在 Linux 上实现高可用性](/sql/linux/sql-server-linux-availability-group-configure-ha)
 
-### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>启用 Always On 可用性组，并重启 mssql-server
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>启用 AlwaysOn 可用性组，并重启 mssql-server
 
 在托管 SQL Server 实例的每个节点上启用 Always On 可用性组。 然后重启 mssql-server。 运行以下脚本：
 

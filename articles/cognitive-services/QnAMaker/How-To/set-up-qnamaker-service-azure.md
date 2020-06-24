@@ -3,12 +3,12 @@ title: 设置 QnA Maker 服务-QnA Maker
 description: 在创建任何 QnA Maker 知识库之前，必须先在 Azure 中设置 QnA Maker 服务。 任何有权在订阅中创建新资源的人都可以设置 QnA Maker 服务。
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 0a1b79c91e4e1bd9a57d6dcbb38432125573b9e6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235524"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214122"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 资源
 
@@ -51,7 +51,7 @@ ms.locfileid: "84235524"
     * 选择将在其中部署 Application Insights 资源的**App insights 位置**。
     * 为了节省成本，可以[共享](#configure-qna-maker-to-use-different-cognitive-search-resource)为 QnA Maker 创建的某些 Azure 资源，但不是所有。
 
-1. 验证所有字段后，选择 "**创建**"。 该过程可能需要几分钟才能完成。
+1. 验证所有字段后，选择 "**创建**"。 此过程可能需要几分钟才能完成。
 
 1. 部署完成后，你将看到在订阅中创建的以下资源：
 
@@ -60,9 +60,9 @@ ms.locfileid: "84235524"
     具有_认知服务_类型的资源具有您的_订阅_密钥。
 
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>在 Azure 门户中查找订阅密钥
+## <a name="find-authoring-keys-in-the-azure-portal"></a>在 Azure 门户中查找创作密钥
 
-你可以从创建 QnA Maker 资源的 Azure 门户查看和重置你的订阅密钥。
+你可以从创建 QnA Maker 资源的 Azure 门户查看和重置创作密钥。 这些密钥可能称为订阅密钥。 
 
 1. 中转到 Azure 门户中的 QnA Maker 资源，并选择具有_认知服务_类型的资源：
 
@@ -72,7 +72,7 @@ ms.locfileid: "84235524"
 
     ![订阅密钥](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 门户中查找终结点密钥
+## <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>在 QnA Maker 门户中查找查询终结点密钥
 
 终结点与资源位于同一区域，因为终结点键用于调用知识库。
 
@@ -118,7 +118,7 @@ ms.locfileid: "84235524"
 
 如果计划有很多知识库，请升级 Azure 认知搜索服务定价层。
 
-目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 为此，请按照下列步骤进行操作：
+目前不能执行 Azure 搜索 SKU 的就地升级。 但是，你可以使用所需的 SKU 创建新的 Azure 搜索资源、将数据还原到新资源，然后将其链接到 QnA Maker 堆栈。 要实现这一点，请执行下列操作：
 
 1. 在 Azure 门户中创建新的 Azure 搜索资源，并选择所需的 SKU。
 
@@ -198,7 +198,7 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
 
 若要使预测终结点应用始终加载（即使没有流量），请将 "空闲" 设置为 "始终打开"。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 QnA Maker 资源的应用服务。 它将具有与 QnA Maker 资源相同的名称，但它将具有不同**类型**的应用服务。
 1. 找到 "**设置**"，然后选择 "**配置**"。
 1. 在 "配置" 窗格上，选择 "**常规设置**"，然后找到 "**始终打开**"，并选择 **"打开**" 作为值。
@@ -206,7 +206,7 @@ QnA Maker 的**应用服务**资源使用认知搜索资源。 若要更改 QnA 
     > [!div class="mx-imgBorder"]
     > ![在 "配置" 窗格上，选择 "常规设置"，然后查找 * * Always on * *，然后选择 * * On * * 作为值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
-1. 选择“保存”**** 以保存配置。
+1. 选择 "**保存**" 以保存配置。
 1. 系统会询问你是否要重新启动应用程序以使用新设置。 选择“继续”。
 
 详细了解如何配置应用服务[常规设置](../../../app-service/configure-common.md#configure-general-settings)。
