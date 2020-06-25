@@ -21,10 +21,10 @@
     - name: Azure CLI
       href: /cli/azure/account/management-group
     - name: Azure PowerShell
-      href: '/powershell/module/az.resources/#resources'
+      href: /powershell/module/az.resources/#resources
     - name: 用于 .NET 的 Azure SDK
       href: /dotnet/api/overview/azure/managementgroups
-    - name: 用于 Node 的 Azure SDK
+    - name: 用于 JavaScript 的 Azure SDK
       href: /javascript/api/@azure/arm-managementgroups/managementgroups
     - name: REST
       href: /rest/api/resources/managementgroups
