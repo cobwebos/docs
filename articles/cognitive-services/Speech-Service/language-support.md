@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 89b2b7b993ef9613740dd777546cc15a12203e62
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 23ecfc96c8f75dbae4cfb02cc16f5e5de359c4f6
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210722"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362170"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -274,8 +274,8 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 日语                | `ja`          |
 | 卡纳达语                 | `kn`          |
 | 斯瓦希里语               | `sw`          |
-| 克林贡语                 | `tlh`         |
-| 克林贡语(plqaD)         | `tlh-Qaak`    |
+| 克林贡语                 | `tlh-Latn`    |
+| 克林贡语(plqaD)         | `tlh-Piqd`    |
 | 韩语                  | `ko`          |
 | 拉脱维亚语                 | `lv`          |
 | 立陶宛语              | `lt`          |

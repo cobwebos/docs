@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 14bf43375e2ebe37d496a7343c5f85c41f55bc29
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307380"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362136"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自定义命令创建语音助手
 
@@ -24,7 +24,7 @@ ms.locfileid: "85307380"
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建 Azure 语音资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支持自定义命令的区域中创建 Azure Speech 资源。<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * 下载示例[智能房间 Lite](https://aka.ms/speech/cc-quickstart) json 文件。
 > * 下载最新版本的[Windows 语音助手客户端](https://aka.ms/speech/va-samples-wvac)。
 
@@ -82,7 +82,8 @@ ms.locfileid: "85307380"
     - 打开电视
     - 将温度设置为80度
     - 关掉
-    - 设置闹铃
+    - 电视
+    - 设置 5 PM 的警报
 
 ## <a name="integrate-custom-commands-application-in-an-assistant"></a>在助手中集成自定义命令应用程序
 你需要发布应用程序，然后才能从 Speech Studio 外部访问此应用程序。 若要发布应用程序，你将需要配置预测 LUIS 资源。  
@@ -92,7 +93,7 @@ ms.locfileid: "85307380"
 
 1. 在左窗格中选择 "**设置**"，然后在中间窗格中选择 " **LUIS 资源**"。
 1. 选择一个预测资源，或选择 "**创建新资源**" 创建一个。
-1. 选择“保存”。
+1. 选择“保存” 。
     
     > [!div class="mx-imgBorder"]
     > ![设置 LUIS 资源](media/custom-commands/set-luis-resources.png)
@@ -110,7 +111,7 @@ ms.locfileid: "85307380"
 
 在本文的范围内，我们将使用作为必备组件的一部分下载的 Windows 语音助手客户端。 解压缩文件夹。
 1. 启动**VoiceAssistantClient.exe**。
-1. 创建新的发布配置文件，并输入**连接配置文件**的值。 在 "**常规设置**" 部分中，输入值 "**订阅密钥**"、"**订阅密钥区域**" 和 "**自定义命令" 应用 ID**。
+1. 创建新的发布配置文件，并输入**连接配置文件**的值。 在 "**常规设置**" 部分中，输入值 "**订阅密钥**" （与发布应用程序时保存的**语音资源密钥**值相同）、"**订阅密钥" 区域**和 "**自定义命令" 应用 ID**。
     > [!div class="mx-imgBorder"]
     > ![WVAC 创建配置文件](media/custom-commands/create-profile.png)
 1. 选择 "**保存并应用配置文件**"。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 7f98b2c94659c083f5dbd2c43fd9015f8b60a9db
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e0927ccd8c94f589adf6eb11004b728f697b6e1
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307431"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85362401"
 ---
 # <a name="create-application-with-simple-commands"></a>通过简单的命令创建应用程序
 
@@ -27,6 +27,10 @@ ms.locfileid: "85307431"
 ## <a name="create-empty-application"></a>创建空应用程序
 创建空的自定义命令应用程序。 有关详细信息，请参阅[快速入门](quickstart-custom-commands-application.md)。 此时，不会导入项目，而是创建一个空项目。
 
+1. 在 "**名称**" 框中，输入 "项目名称为" `Smart-Room-Lite` （或您选择的其他内容）。
+1. 在 "**语言**" 列表中，选择 "**英语（美国）**"。
+1. 选择或创建所选的 LUIS 资源。
+
    > [!div class="mx-imgBorder"]
    > ![创建项目](media/custom-commands/create-new-project.png)
 
@@ -36,11 +40,11 @@ ms.locfileid: "85307431"
 
 ## <a name="add-turnon-command"></a>添加 TurnOn 命令
 
-在**智能空间精简**自定义命令应用程序中，添加一个简单的命令，用于处理查询文本、 `turn on the tv` 和响应消息 `Ok, turning the tv on` 。
+在刚创建的空的**智能空间精简**自定义命令应用程序中，添加一个简单的命令，用于处理查询文本， `turn on the tv` 并使用消息进行响应 `Ok, turning the tv on` 。
 
 1. 通过选择左侧窗格顶部的 "**新建命令**" 来创建新命令。 此时将打开**新的命令**窗口。
 1. 为 "**名称**" 字段提供值作为**TurnOn**。
-1. 选择“创建”。
+1. 选择“创建” 。
 
 中间窗格列出了命令的不同属性。 配置命令的以下属性。 有关命令的所有配置属性的说明，请参阅 "[引用](./custom-commands-references.md)"。
 
@@ -74,7 +78,7 @@ ms.locfileid: "85307431"
 
 接下来，该命令需要具有完成规则。 此规则告知用户正在执行执行操作。 若要阅读有关规则和完成规则的详细信息，请参阅 "[参考](./custom-commands-references.md)"。
 
-1. 选择 "完成" "默认完成规则" 并按如下所示对其**进行**编辑： 
+1. 选择 "完成" "默认完成规则" 并按如下所示对其**进行**编辑：
 
     
     | 设置    | 建议的值                          | 描述                                        |
@@ -84,13 +88,7 @@ ms.locfileid: "85307431"
     | **操作**    | > 简单编辑器 > 第一种变体发送语音响应 >`Ok, turning the tv on` | 规则条件为 true 时要执行的操作 |
     
 
-1. 或者，您可以通过选择中间窗格顶部的 "**添加**"，删除现有的默认完成规则并创建一个新规则。
-1. 在 "**名称**" 部分中提供值。
-1. 添加操作。
-   1. 通过选择 "**操作**" 部分中的 "**添加操作**" 来创建操作。
-   1. 在 "**新建操作**" 窗口的 "**类型**" 列表中，选择 "**发送语音响应**"。
-   1. 在 "**响应**" 下，选择 "**简单编辑器**"。
-   1. 在**第一个变体**字段中，为 response 提供值 `Ok, turning the tv on` 。
+
 
    > [!div class="mx-imgBorder"]
    > ![创建语音响应](media/custom-commands/create-speech-response-action.png)
@@ -98,6 +96,9 @@ ms.locfileid: "85307431"
 1. 选择 "**保存**" 以保存操作。
 1. 返回 "**完成规则**" 部分，选择 "**保存**" 以保存所有更改。 
 
+
+ > [!NOTE]
+    > 不需要使用命令附带的默认完成规则。 如果需要，可以删除现有的默认完成规则并添加自己的规则。
 
 ### <a name="try-it-out"></a>试用
 
