@@ -58,6 +58,8 @@
           href: tutorial-assess-import.md
 - name: 概念
   items:
+    - name: 使用 Azure Migrate 构建迁移计划
+      href: concepts-migration-planning.md
     - name: 支持矩阵
       items:
         - name: 常规支持

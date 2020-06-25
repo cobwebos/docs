@@ -41,6 +41,10 @@
       href: automation-runbook-types.md
     - name: PowerShell DSC
       href: /powershell/scripting/dsc/overview/overview
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 数据安全
       items:
         - name: 安全资产的加密
@@ -63,6 +67,8 @@
           href: how-to/automation-region-dns-records.md
         - name: 管理自动化运行方式帐户
           href: manage-runas-account.md
+        - name: 专门连接到自动化帐户
+          href: how-to/private-link-security.md
         - name: 管理角色权限和安全性
           href: automation-role-based-access-control.md
         - name: 将自动化帐户移到另一个订阅

@@ -30,8 +30,8 @@ ms.locfileid: "76842481"
 
 在本文中，需要两个 Azure 容器注册表：
 
-* 使用第一个注册表来创建和执行 ACR 任务。 在本文中，此注册表名为 myregistry**。 
-* 第二个注册表承载任务生成映像时要使用的基础映像。 在本文中，第二个注册表名为 mybaseregistry**。 
+* 使用第一个注册表来创建和执行 ACR 任务。 在本文中，此注册表名为 myregistry。 
+* 第二个注册表承载任务生成映像时要使用的基础映像。 在本文中，第二个注册表名为 mybaseregistry。 
 
 请在后续步骤中将其替换为你自己的注册表名称。
 
@@ -72,7 +72,7 @@ steps:
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下 [az acr task create][az-acr-task-create] 命令，创建任务 helloworldtask**。 该任务在没有源代码上下文的情况下运行，且该命令引用工作目录中的文件 `helloworldtask.yaml`。 `--assign-identity` 参数传递用户分配的标识的资源 ID。 
+通过执行以下 [az acr task create][az-acr-task-create] 命令，创建任务 helloworldtask。 该任务在没有源代码上下文的情况下运行，且该命令引用工作目录中的文件 `helloworldtask.yaml`。 `--assign-identity` 参数传递用户分配的标识的资源 ID。 
 
 ```azurecli
 az acr task create \
@@ -91,7 +91,7 @@ az acr task create \
 
 ### <a name="create-task"></a>创建任务
 
-通过执行以下 [az acr task create][az-acr-task-create] 命令，创建任务 helloworldtask**。 该任务在没有源代码上下文的情况下运行，且该命令引用工作目录中的文件 `helloworldtask.yaml`。 不具有值的 `--assign-identity` 参数在任务上启用系统分配的标识。 
+通过执行以下 [az acr task create][az-acr-task-create] 命令，创建任务 helloworldtask。 该任务在没有源代码上下文的情况下运行，且该命令引用工作目录中的文件 `helloworldtask.yaml`。 不具有值的 `--assign-identity` 参数在任务上启用系统分配的标识。 
 
 ```azurecli
 az acr task create \
@@ -105,7 +105,7 @@ az acr task create \
 
 ## <a name="give-identity-pull-permissions-to-the-base-registry"></a>为标识授予对基础注册表的提取权限
 
-在本部分中，向托管标识授予从基础注册表 mybaseregistry** 中进行拉取的权限。
+在本部分中，向托管标识授予从基础注册表 mybaseregistry 中进行拉取的权限。
 
 使用 [az acr show][az-acr-show] 命令获取基础注册表的资源 ID 并将其存储在变量中：
 
@@ -201,7 +201,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-运行 [az acr repository show-tags][az-acr-repository-show-tags] 命令，验证映像已构建并成功推送到 myregistry**：
+运行 [az acr repository show-tags][az-acr-repository-show-tags] 命令，验证映像已构建并成功推送到 myregistry：
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
