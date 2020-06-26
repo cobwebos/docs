@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: 应用程序管理文档
-summary: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Office 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
+summary: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Microsoft 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
 metadata:
   title: 应用程序管理文档
-  description: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Office 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
+  description: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Microsoft 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 3bea7dda1cf44548ea924ffa84fb922410242f27
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
+  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77063466"
+  ms.lasthandoff: 06/24/2020
+  ms.locfileid: "85339199"
 landingContent:
 - title: 关于应用程序管理
   linkLists:

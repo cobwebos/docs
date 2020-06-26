@@ -17,11 +17,11 @@
       href: cognitive-services-apis-create-account.md
     - name: 使用 Azure CLI 创建新资源
       href: cognitive-services-apis-create-account-cli.md
-    - name: 诊断日志记录
-      href: diagnostic-logging.md
-    - name: ARM 模板
+    - name: 使用 ARM 模板创建新资源
       displayName: Resource Manager
       href: resource-manager-template.md
+    - name: 诊断日志记录
+      href: diagnostic-logging.md
 - name: 示例
   items:
     - name: Azure Policy 内置策略定义

@@ -121,6 +121,8 @@
       href: troubleshoot-sign-in-issue.md
     - name: 企业成本视图已禁用
       href: enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: 找不到计费帐户
+      href: troubleshoot-account-not-found.md
     - name: 联系支持人员
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: 示例

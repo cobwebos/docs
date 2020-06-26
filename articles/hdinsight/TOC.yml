@@ -167,6 +167,8 @@
                   href: ./optimize-hive-ambari.md
                 - name: 优化 Apache Pig
                   href: ./optimize-pig-ambari.md
+            - name: 重启群集节点
+              href: ./cluster-reboot-vm.md
             - name: 使用 Apache Ambari REST API
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: 删除群集
