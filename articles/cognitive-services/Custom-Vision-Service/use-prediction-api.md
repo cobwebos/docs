@@ -3,19 +3,19 @@ title: 使用分类器和预测终结点以编程的方式测试图像 - 自定�
 titleSuffix: Azure Cognitive Services
 description: 了解如何借助自定义影像服务分类器使用 API 以编程方式测试图像。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.author: anroth
-ms.openlocfilehash: 88aaa3d54ea44a15f7900aba093bf28c70c19695
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: 0766ad38265368a00272eb8abbe974ce94f5dd72
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82129860"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391683"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>将模型与预测 API 配合使用
 
@@ -109,9 +109,9 @@ ms.locfileid: "82129860"
     ```
 
 1. 更改以下信息：
-   * 将`namespace`字段设置为项目的名称。
-   * 将占位符`<Your prediction key>`替换为前面检索到的键值。
-   * 将占位符`<Your prediction URL>`替换为前面检索到的 URL。
+   * 将 `namespace` 字段设置为项目的名称。
+   * 将占位符替换 `<Your prediction key>` 为前面检索到的键值。
+   * 将占位符替换 `<Your prediction URL>` 为前面检索到的 URL。
 
 ## <a name="run-the-application"></a>运行应用程序
 

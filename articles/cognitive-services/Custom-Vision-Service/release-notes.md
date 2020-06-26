@@ -3,19 +3,19 @@ title: 发行说明 - 自定义影像服务
 titleSuffix: Azure Cognitive Services
 description: 从自定义视觉团队获取有关新版本的最新信息。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: anroth
-ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: pafarley
+ms.openlocfilehash: f7259fe486a473f994d7795de5926b86717bb1b6
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647572"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391700"
 ---
 # <a name="custom-vision-service-release-notes"></a>自定义影像服务发行说明
 
@@ -62,9 +62,9 @@ ms.locfileid: "73647572"
 - 修复了大量辅助功能问题以获得改进的屏幕阅读器和键盘导航支持。
 - 对图像查看器进行了 UX 更新并改进了对象检测标记体验以便更快速地进行标记。  
 - 更新了对象检测域的基础模型以获得更好质量的对象检测。
-- Bug 修复。
+- bug 修复。
 
-## <a name="november-6-2018"></a>2018 年 11 月 6日
+## <a name="november-6-2018"></a>2018 年 11 月 6 日
 
 - 添加了对对象检测中的徽标域的支持。
 
