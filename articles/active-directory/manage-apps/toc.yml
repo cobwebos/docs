@@ -303,8 +303,6 @@
               href: application-proxy-page-load-speed-problem.md
             - name: 应用程序页上的链接不起作用
               href: application-proxy-page-links-broken-problem.md
-            - name: 要为应用打开哪些端口
-              href: application-proxy-connectivity-ports-how-to.md
             - name: 应用的连接器组中没有正常工作的连接器
               href: application-proxy-connectivity-no-working-connector.md
             - name: 在管理门户中配置
