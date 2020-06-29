@@ -117,7 +117,7 @@ ms.locfileid: "84340583"
     * **看**
         * 更改机器人句柄 - 如果它不独一无二。
         * 选择 SDK 语言。 创建机器人后，可以将代码下载到本地开发环境，然后继续开发过程。
-    * **禁止事项**
+    * **不要**
         * 创建机器人时，更改 Azure 门户中的以下设置。 这些值是为现有的知识库预先填充的：
            * QnA 身份验证密钥
            * 应用服务计划和位置
@@ -150,7 +150,7 @@ ms.locfileid: "84340583"
 > [!div class="nextstepaction"]
 > [添加带有元数据的问题](add-question-metadata-portal.md)
 
-参考信息：
+更多相关信息：
 
 * [答案中的 Markdown 格式](../reference-markdown-format.md)
 * QnA Maker [数据源](../concepts/knowledge-base.md)。

@@ -12,7 +12,7 @@ ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 8aef4a5eeeec27bfb2ca3edf9ff6823b88431319
 ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83591823"

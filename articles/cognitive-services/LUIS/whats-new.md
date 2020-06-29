@@ -12,7 +12,7 @@ ms.locfileid: "84789202"
 ---
 # <a name="whats-new-in-language-understanding"></a>语言理解中的新增功能
 
-了解该服务中的新增功能。 这些项包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+了解服务中的新增功能。 这些项包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
 
@@ -103,7 +103,7 @@ ms.locfileid: "84789202"
 
 以下功能是在 Build 2019 大会上发布的：
 
-* [V3 API 迁移指南预览版](luis-migration-api-v3.md)
+* [V3 API 预览版迁移指南](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
 * [改进的预生成域](luis-reference-prebuilt-domains.md)
 * [动态列表实体](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
