@@ -242,10 +242,14 @@
           href: enable-diagnostic-logs-topic.md
         - name: 排查错误
           href: troubleshoot-errors.md
+        - name: 排查网络连接问题
+          href: troubleshoot-network-connectivity.md
         - name: 排查订阅验证问题
           href: troubleshoot-subscription-validation.md
-        - name: 查看指标并设置警报
+        - name: 查看指标
           href: monitor-event-delivery.md
+        - name: 创建警报
+          href: set-alerts.md
 - name: 参考
   items:
     - name: Azure CLI

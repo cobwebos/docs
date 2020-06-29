@@ -12,8 +12,8 @@
       href: cdn-create-a-storage-account-with-cdn.md
     - name: 创建配置文件和终结点
       href: cdn-create-new-endpoint.md
-    - name: 使用 Azure 资源管理器模板创建配置文件
-      href: create-profile-resource-manager-template.md
+    - name: 创建配置文件和终结点 - ARM 模板
+      href: create-profile-endpoint-template.md
 - name: 教程
   items:
     - name: 将 Azure CDN 添加到 Web 应用

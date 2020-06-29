@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 4fd893691f68c8b51fa3ef234d7828b1bd70cea5
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465586"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85413325"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文本分析 API v3 语言支持 
 
@@ -54,10 +54,10 @@ ms.locfileid: "84465586"
 | 英语               |     `en`      |              2020-04-01              |                    |
 
 
-#### <a name="named-entity-recognition-ner"></a>[命名实体识别 (NER)](#tab/named-entity-recognition)
+#### <a name="named-entity-recognition-ner"></a>[命名实体识别（NER）](#tab/named-entity-recognition)
 
 > [!NOTE]
-> * NER v3 目前仅支持英语。 如果使用其他语言调用 NER v3，则 API 将返回2.1 版结果，前提是版本2.1 支持该语言。
+> * NER v3 目前只支持英语和西班牙语语言。 如果使用其他语言调用 NER v3，则 API 将返回2.1 版结果，前提是版本2.1 支持该语言。
 > * 对于英语、简体中文、法语、德语和西班牙语，v 2.1 仅返回可用实体的完整集。  对于其他支持的语言，将返回 "Person"、"Location" 和 "组织" 实体。
 
 | 语言               | 语言代码 | 版本2.1 支持 | v3 支持 | 从 v3 模型版本开始： |       说明        |
@@ -80,9 +80,9 @@ ms.locfileid: "84465586"
 | 挪威语(博克马尔语)   |     `no`      |     ✓      |            |                                 | `nb` 也接受 |
 | 波兰语                |     `pl`      |     ✓      |            |                                 |                    |
 | 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |            |                                 | `pt` 也接受 |
-| 葡萄牙语(巴西)   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| 葡萄牙语（巴西）   |    `pt-BR`    |     ✓      |            |                                 |                    |
 | 俄语              |     `ru`      |     ✓      |            |                                 |                    |
-| 西班牙语               |     `es`      |     ✓      |            |                                 |                    |
+| 西班牙语               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | 瑞典语               |     `sv`      |     ✓      |            |                                 |                    |
 | 土耳其语               |     `tr`      |     ✓      |            |                                 |                    |
 
@@ -101,7 +101,7 @@ ms.locfileid: "84465586"
 | 挪威语(博克马尔语)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` 也接受 |
 | 波兰语                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 葡萄牙语(葡萄牙) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` 也接受 |
-| 葡萄牙语(巴西)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| 葡萄牙语（巴西）   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 俄语               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 西班牙语               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 瑞典语               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -123,6 +123,6 @@ ms.locfileid: "84465586"
 
 ---
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [什么是文本分析 API？](overview.md)   

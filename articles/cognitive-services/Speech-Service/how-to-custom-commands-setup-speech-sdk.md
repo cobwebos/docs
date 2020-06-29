@@ -1,5 +1,5 @@
 ---
-title: 使用语音 SDK 与客户端应用程序集成
+title: 使用语音 SDK 与客户端应用集成
 titleSuffix: Azure Cognitive Services
 description: 本文介绍如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: d87301f09665062a1b56fa33443f1178b42fb42f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307441"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414347"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "85307441"
 
 ## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
 
-1. 打开之前创建的自定义命令应用程序（预览版），然后选择 "**发布**"
+1. 打开之前创建的自定义命令应用程序并选择 "**发布**"
 
    > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-commands/setup-speech-sdk-publish-application.png)

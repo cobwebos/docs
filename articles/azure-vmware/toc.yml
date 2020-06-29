@@ -30,7 +30,9 @@
       href: concepts-identity.md
     - name: 私有云升级
       href: concepts-upgrades.md
-    - name: 适用于 AVS VM 的 API 管理
+    - name: 中心和分支集成
+      href: concepts-avs-hub-and-spoke-integration.md
+    - name: API 管理
       href: concepts-api-management.md
 - name: 操作指南
   items:
@@ -40,8 +42,6 @@
       href: manage-dhcp.md
     - name: 灾难恢复
       href: disaster-recovery.md
-    - name: 获取有关 AVS 部署或预配失败的帮助
-      href: fix-deployment-provisioning-failures.md
     - name: 用于 AVS 的 Azure 备份服务器
       items:
         - name: 设置用于 AVS 的 Azure 备份服务器
@@ -52,5 +52,9 @@
   items: null
 - name: 资源
   items:
+    - name: 疑难解答
+      items:
+        - name: 获取有关 AVS 部署或预配失败的帮助
+          href: fix-deployment-provisioning-failures.md
     - name: 常见问题解答
       href: faq.md

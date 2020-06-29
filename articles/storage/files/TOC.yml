@@ -147,7 +147,7 @@
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Authenticate
       items:
-        - name: 启用本地身份验证和授权
+        - name: 启用本地 AD DS 身份验证和授权
           items:
             - name: AD DS 概述
               href: storage-files-identity-auth-active-directory-enable.md

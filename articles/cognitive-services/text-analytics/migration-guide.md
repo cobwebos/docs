@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 06/25/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd6c908aa95ef22cbf7ea0b62b925d84d66cd28
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84143267"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85412577"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>迁移到文本分析 API 的版本1。x
 
@@ -44,7 +44,7 @@ ms.locfileid: "84143267"
 ## <a name="feature-changes"></a>功能更改
 
 > [!NOTE] 
-> 目前， [v3 实体类别](named-entity-types.md)仅在英语文本上返回。 API 为其他语言的请求返回2.1 版结果，前提是它们在版本2.1 中受支持。
+> 目前， [v3 实体类别](named-entity-types.md)仅在英语和西班牙语文本上返回。 API 为其他语言的请求返回2.1 版结果，前提是它们在版本2.1 中受支持。
 
 在版本2.1 中，文本分析 API 使用一个终结点进行命名实体识别（NER）和实体链接。 版本3提供了扩展的命名实体检测，并为 NER 和实体链接请求使用了单独的终结点。 从第 3.1-NER 开始，还可以检测个人 `pii` 和健康 `phi` 信息。 
 
@@ -94,7 +94,7 @@ NER
 
 ### <a name="rest-api"></a>REST API
 
-如果你的应用程序使用 REST API，请将其请求终结点更新到 v3 终结点以进行关键短语提取。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+如果你的应用程序使用 REST API，请将其请求终结点更新到 v3 终结点以进行关键短语提取。 例如： `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
 ### <a name="client-libraries"></a>客户端库
 

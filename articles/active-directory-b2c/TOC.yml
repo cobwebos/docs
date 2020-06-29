@@ -191,8 +191,12 @@
               displayName: 'ux, input, cors, html, css'
             - name: 自定义语言
               href: custom-policy-localization.md
-            - name: 自定义电子邮件
-              href: custom-email.md
+            - name: 自定义电子邮件验证
+              items:
+                - name: Mailjet
+                  href: custom-email-mailjet.md
+                - name: SendGrid
+                  href: custom-email-sendgrid.md
               displayName: verification
             - name: 禁用电子邮件验证
               href: custom-policy-disable-email-verification.md
@@ -373,6 +377,8 @@
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
+        - name: TypingDNA
+          href: partner-typingdna.md
     - name: 使用 b2clogin.com
       items:
         - name: b2clogin.com 概述

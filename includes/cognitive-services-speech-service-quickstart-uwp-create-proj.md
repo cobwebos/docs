@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: a24c0a3129a851eb94c43158424f786b1df5a532
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609265"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414346"
 ---
 若要创建 Visual Studio 项目以用于通用 Windows 平台 (UWP) 开发，需要设置 Visual Studio 开发选项，创建项目，选择目标体系结构，设置音频捕获，然后安装语音 SDK。
 
@@ -70,7 +70,7 @@ ms.locfileid: "84609265"
 
 ### <a name="set-up-audio-capture"></a>设置音频捕获
 
-然后允许项目捕获音频输入：
+允许项目捕获音频输入：
 
 1. 在“解决方案资源管理器”  中，双击“Package.appxmanifest”  ，以打开包应用程序清单。
 

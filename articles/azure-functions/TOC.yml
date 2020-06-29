@@ -65,7 +65,7 @@
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure 示例
       items:
-        - name: 'C#'
+        - name: C#
           href: /samples/browse/?products=azure-functions&languages=csharp
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
@@ -112,11 +112,11 @@
       items:
         - name: 支持的语言
           href: supported-languages.md
-        - name: 'C#（类库）'
+        - name: C#（类库）
           href: functions-dotnet-class-library.md
-        - name: 'C# 脚本 (.csx)'
+        - name: C# 脚本 (.csx)
           href: functions-reference-csharp.md
-        - name: 'F#'
+        - name: F#
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
@@ -127,7 +127,7 @@
         - name: Python
           href: functions-reference-python.md
         - name: TypeScript
-          href: 'functions-reference-node.md#typescript'
+          href: functions-reference-node.md#typescript
     - name: 安全性
       items:
         - name: 安全概述
@@ -377,7 +377,7 @@
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
               displayName: Azure Cosmos DB
-            - name: Functions 2.x
+            - name: Functions 2.x 及更高版本
               displayName: Azure Cosmos DB
               items:
                 - name: 概述
@@ -507,7 +507,7 @@
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 配额信息
-      href: 'functions-scale.md#service-limits'
+      href: functions-scale.md#service-limits
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 视频

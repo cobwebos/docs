@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 5bdb77d27b01f576ca06aa5b6d3df0572b3b1ea6
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
+ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307452"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85414277"
 ---
-# <a name="set-up-web-endpoints"></a>设置 web 终结点
+# <a name="set-up-web-endpoints"></a>设置 Web 终结点
 
-本文介绍如何在自定义命令应用程序中设置 web 终结点，以允许从客户端应用程序发出 HTTP 请求。 完成以下任务：
+本文介绍如何在自定义命令应用程序中设置 web 终结点，以允许从客户端应用程序发出 HTTP 请求。 你将完成以下任务：
 
 - 在自定义命令应用程序中设置 web 终结点
 - 在自定义命令应用程序中调用 web 终结点
@@ -44,16 +44,16 @@ ms.locfileid: "85307452"
    | 设置 | 建议的值 | 说明 |
    | ------- | --------------- | ----------- |
    | 名称 | UpdateDeviceState | Web 终结点的名称。 |
-   | 代码 | https://webendpointexample.azurewebsites.net/api/DeviceState | 希望自定义命令应用与之通信的终结点的 URL。 |
+   | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | 希望自定义命令应用与之通信的终结点的 URL。 |
    | 方法 | POST | 与终结点之间允许的交互（如 GET、POST）。|
-   | 标头 | 注册表项：应用程序的值：应用程序的唯一名称 | 要包含在请求标头中的标头参数。|
+   | 头文件 | 注册表项：应用程序的值：应用程序的唯一名称 | 要包含在请求标头中的标头参数。|
 
     > [!NOTE]
     > - 使用[Azure Function](https://docs.microsoft.com/azure/azure-functions/)创建的示例 web 终结点，该终结点与保存电视和风扇的设备状态的数据库挂钩
     > - 建议的标头仅对示例终结点是必需的
     > - 在现实世界中，web 终结点可以是用于管理设备的[IOT 中心](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)的终结点
 
-1. 单击 **“保存”** 。
+1. 单击“保存” ****。
 
 ## <a name="call-web-endpoints"></a>调用 web 终结点
 

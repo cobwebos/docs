@@ -8,9 +8,13 @@
       href: lab-services-overview.md
 - name: 教程
   items:
-    - name: 1. 设置实验室
-      href: tutorial-create-custom-lab.md
-    - name: 2. 访问实验室
+    - name: 设置实验室
+      items:
+        - name: 使用 Azure 门户
+          href: tutorial-create-custom-lab.md
+        - name: 使用 Resource Manager 模板
+          href: create-lab-windows-vm-template.md
+    - name: 访问实验室
       href: tutorial-use-custom-lab.md
 - name: 示例
   items:
