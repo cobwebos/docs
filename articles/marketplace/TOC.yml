@@ -258,36 +258,6 @@
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 虚拟机套餐
           href: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
-    - name: API 参考
-      items:
-        - name: 概述
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
-        - name: 先决条件
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: 注意事项
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
-        - name: 并发控制
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
-        - name: 检索产品/服务
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-        - name: 检索特定套餐
-          href: ./cloud-partner-portal-orig//cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: 添加或修改套餐
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
-        - name: 检索产品/服务状态
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offer-status.md
-        - name: 发布产品/服务
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-publish-offer.md
-        - name: 检索操作
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-operations.md
-        - name: 取消操作
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-cancel-operations.md
-        - name: 投入使用
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
-        - name: 虚拟机套餐的定价
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
-        - name: 排查身份验证错误
-          href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: 获取支持
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: 合作伙伴中心内的商业市场
@@ -433,8 +403,6 @@
       href: ./partner-center-portal/update-existing-offer.md
     - name: 激活权益
       href: ./partner-center-portal/marketplace-rewards.md
-    - name: 支持选项
-      href: ./partner-center-portal/support.md
     - name: 合作伙伴中心分析
       items:
         - name: 用于商业市场的分析
@@ -471,3 +439,35 @@
           href: ./partner-center-portal/payout-policy-details.md
         - name: 税项详细信息
           href: ./partner-center-portal/tax-details-paid-transactions.md
+    - name: CPP API 参考
+      items:
+        - name: 概述
+          href: ./cloud-partner-portal-api-overview.md
+        - name: 先决条件
+          href: ./cloud-partner-portal-api-prerequisites.md
+        - name: 注意事项
+          href: ./cloud-partner-portal-api-considerations.md
+        - name: 并发控制
+          href: ./cloud-partner-portal-api-concurrency-control.md
+        - name: 检索产品/服务
+          href: ./cloud-partner-portal-api-retrieve-offers.md
+        - name: 检索特定套餐
+          href: ./cloud-partner-portal-api-retrieve-specific-offer.md
+        - name: 添加或修改套餐
+          href: ./cloud-partner-portal-api-creating-offer.md
+        - name: 检索产品/服务状态
+          href: ./cloud-partner-portal-api-retrieve-offer-status.md
+        - name: 发布产品/服务
+          href: ./cloud-partner-portal-api-publish-offer.md
+        - name: 检索操作
+          href: ./cloud-partner-portal-api-retrieve-operations.md
+        - name: 取消操作
+          href: ./cloud-partner-portal-api-cancel-operations.md
+        - name: 投入使用
+          href: ./cloud-partner-portal-api-go-live.md
+        - name: 虚拟机套餐的定价
+          href: ./cloud-partner-portal-api-setting-price.md
+        - name: 排查身份验证错误
+          href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - name: 支持选项
+      href: ./partner-center-portal/support.md
