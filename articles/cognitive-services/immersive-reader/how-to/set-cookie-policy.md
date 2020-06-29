@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: pasta
-ms.openlocfilehash: 876379a211038933cf665bd1a4a4daae9c9b2787
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ae4812a69a1e6833224dc4dedf36566167ae4796
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267063"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85483408"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>如何设置沉浸式读取器的 cookie 策略
 
 默认情况下，沉浸式读取器将禁用 cookie。 如果启用 cookie，则沉浸式读者可以使用 cookie 来维护用户首选项并跟踪功能的使用情况。 如果在沉浸式阅读器中启用 cookie，请考虑欧盟 Cookie 符合性策略的要求。 主机应用程序负责根据欧盟 Cookie 符合性策略获取任何必需的用户同意。
 
-Cookie 策略可通过沉浸式读者[选项](../reference.md#options)进行设置。 有关详细信息，请参阅[CookiePolicy 枚举](../reference.md#cookiepolicy-enum)。
+Cookie 策略可通过沉浸式读者[选项](../reference.md#options)进行设置。
 
 ## <a name="enable-cookie-usage"></a>启用 Cookie 用法
 

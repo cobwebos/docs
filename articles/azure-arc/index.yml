@@ -1,21 +1,20 @@
 ### YamlMime:Landing
 title: Azure Arc
-summary: Azure Arc 将 Azure 资源管理器功能扩展到 Linux 和 Windows 服务器，以及跨本地、多云和边缘的任何基础结构上的 Kubernetes 群集。 借助 Azure Arc，客户还可以在任何地方运行 Azure 数据服务，从而实现云创新的优势，包括始终提供最新数据的功能、几秒钟（而不是几小时）内完成的部署以及任何基础结构的动态可扩展性。 用于服务器的 Azure Arc 目前为公共预览版。
+summary: Azure Arc 将 Azure 资源管理器功能扩展到 Linux 和 Windows 服务器，以及跨本地、多云和边缘的任何基础结构上的 Kubernetes 群集。 借助 Azure Arc，客户还可以在任何地方运行 Azure 数据服务，从而实现云创新的优势，包括始终提供最新数据的功能、几秒钟（而不是几小时）内完成的部署以及任何基础结构的动态可扩展性。
 metadata:
   title: 用于服务器的 Azure Arc
   description: 了解如何管理 Azure 中的本地计算机
-  author: bobbytreed
-  manager: carmonm
+  author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 11/04/2019
-  ms.author: robreed
-  ms.openlocfilehash: e80cdec365a14caee5c74900e1c21f7349165e66
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.date: 06/26/2020
+  ms.author: magoedte
+  ms.openlocfilehash: 8493a5d90656206c5498fafbc2b0a2743cd973a7
+  ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81261272"
+  ms.lasthandoff: 06/27/2020
+  ms.locfileid: "85482337"
 landingContent:
 - title: Azure Arc 概述
   linkLists:
@@ -37,3 +36,25 @@ landingContent:
       url: ./servers/onboard-service-principal.md
     - text: 通过 PowerShell DSC 将计算机连接到 Azure
       url: ./servers/onboard-dsc.md
+- title: 使用 Azure Arc 将 Kubernetes 群集连接到 Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是已启用 Azure Arc 的 Kubernetes？
+      url: ./kubernetes/overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 连接群集
+      url: ./kubernetes/connect-cluster.md
+    - text: 在连接的群集中使用 GitOps
+      url: ./kubernetes/use-gitops-connected-cluster.md
+    - text: 将 GitOps 与 Helm 结合使用
+      url: ./kubernetes/use-gitops-with-helm.md
+    - text: 对容器使用 Azure Monitor
+      url: ../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md
+    - text: 使用 Azure Policy
+      url: ./kubernetes/use-azure-policy.md
+    - text: 部署 Azure IoT Edge 工作负载
+      url: ./kubernetes/deploy-azure-iot-edge-workloads.md
+    - text: 加入服务主体
+      url: ./kubernetes/create-onboarding-service-principal.md
