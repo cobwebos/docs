@@ -2,16 +2,16 @@
 title: 使用 Azure Cosmos 模拟器在本地开发
 description: 利用 Azure Cosmos 模拟器，无需创建 Azure 订阅即可在本地免费开发和测试应用程序。
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: cd7f1ba856cb2c58d14f7a2560a7716beff92076
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0a6a1bd5e56f94a97779a85eafd0d46473cc2d0c
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849002"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262423"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -76,7 +76,7 @@ Azure Cosmos 模拟器默认安装到 `C:\Program Files\Azure Cosmos DB Emulator
 
 Azure Cosmos 模拟器启动时，会在浏览器中自动打开 Azure Cosmos 数据资源管理器。 地址显示为 `https://localhost:8081/_explorer/index.html`。 如果关闭了资源管理器且稍后想要重新打开它，可在浏览器中打开 URL，或者通过 Windows 托盘图标中的 Azure Cosmos 模拟器进行启动，如下所示。
 
-![Azure Cosmos 本地模拟器数据资源管理器启动器](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Azure Cosmos 本地模拟器数据资源管理器启动器":::
 
 ## <a name="checking-for-updates"></a>检查更新
 
@@ -271,9 +271,9 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 | NoExplorer | 在启动时不显示数据资源管理器。 |Microsoft.Azure.Cosmos.Emulator.exe /NoExplorer | | 
 | PartitionCount | 指定已分区的容器的最大数。 有关详细信息，请参阅[更改容器数量](#set-partitioncount)。 | Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=\<partitioncount\> | \<partitioncount\>：允许的单分区容器的最大数量。 默认值为 25。 允许的最大值为 250。|
 | DefaultPartitionCount| 指定分区容器的默认分区数。 | Microsoft.Azure.Cosmos.Emulator.exe /DefaultPartitionCount=\<defaultpartitioncount\> | \<defaultpartitioncount\> 默认值为 25。|
-| AllowNetworkAccess | 通过网络启用对仿真器的访问。 要启用网络访问，还必须传递 /Key=\<key_string\> 或 /KeyFile=\<file_name\>。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> or  Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
+| AllowNetworkAccess | 通过网络启用对仿真器的访问。 要启用网络访问，还必须传递 /Key=\<key_string\> 或 /KeyFile=\<file_name\>。 | Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=\<key_string\> 或 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /KeyFile=\<file_name\>| |
 | NoFirewall | 使用 /AllowNetworkAccess 选项时，不要调整防火墙规则。 |Microsoft.Azure.Cosmos.Emulator.exe /NoFirewall | |
-| GenKeyFile | 生成新的授权密钥并保存至指定文件。 所生成的密钥可与 /Key 或 /KeyFile 选项配合使用。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<密钥文件路径\> | |
+| GenKeyFile | 生成新的授权密钥并保存至指定文件。 所生成的密钥可与 /Key 或 /KeyFile 选项配合使用。 | Microsoft.Azure.Cosmos.Emulator.exe /GenKeyFile=\<path to key file\> | |
 | 一致性 | 为帐户设置默认一致性级别。 | Microsoft.Azure.Cosmos.Emulator.exe /Consistency=\<consistency\> | \<consistency\>：值必须是以下[一致性级别](consistency-levels.md)之一：Session、Strong、Eventual 或 BoundedStaleness。 默认值为“Session”。 |
 | ? | 显示帮助消息。| | |
 
@@ -482,7 +482,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 1. 打开该特定项的上下文菜单，选择“获取项”，然后在“信任” > “使用此证书时”选项下选择“始终信任”。   
 
-   ![打开该特定项的上下文菜单，选择“获取项”，然后在“信任 - 使用此证书时”选项下选择“始终信任”。](./media/local-emulator/mac-trust-certificate.png)
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="打开该特定项的上下文菜单，选择“获取项”，然后在“信任 - 使用此证书时”选项下选择“始终信任”":::
 
 完成这些步骤后，当连接到通过 `/AllowNetworkAccess` 公开的 IP 地址时，你的环境将信任模拟器使用的证书。
 

@@ -7,13 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
+ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: a40099c06946830808a235fce2915d28b7647fa5
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735762"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194478"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
@@ -53,7 +54,7 @@ ms.locfileid: "84735762"
 
 5. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
 
-     |  属性   | 说明   |  
+     |  properties   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 示例： `job definition sample`|
      |主定义文件| 用于作业的主文件。 从存储中选择一个 PY 文件。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
@@ -127,10 +128,10 @@ ms.locfileid: "84735762"
      |  properties   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 示例： `job definition sample`|
-     |主定义文件| 用于作业的主文件。 从存储中选择包含 .NET for Apache Spark 应用程序的 ZIP 文件（即，主可执行文件、包含用户定义的函数的 DLL，以及其他所需文件）。 可选择“上传文件”，将文件上传到存储帐户。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |主定义文件| 用于作业的主文件。 从存储中选择包含 .NET for Apache Spark 应用程序的 ZIP 文件（即，主可执行文件、包含用户定义的函数的 DLL，以及其他所需文件）。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
      |主可执行文件| 主定义 ZIP 文件中的主可执行文件。 示例： `WordCount`|
      |命令行参数| 作业的可选参数。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
-     |引用文件| 工作器节点所需的其他文件（即，依赖的 jar、其他用户定义的函数 DLL，以及其他配置文件），用于执行主定义 ZIP 文件中不包含的 .NET for Apache Spark 应用程序。 可选择“上传文件”，将文件上传到存储帐户。|
+     |引用文件| 工作器节点所需的其他文件（即，依赖的 jar、其他用户定义的函数 DLL，以及其他配置文件），用于执行主定义 ZIP 文件中不包含的 .NET for Apache Spark 应用程序。 可以选择“上传文件”以将文件上传到存储帐户。|
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
      |执行程序| 要在作业的指定 Apache Spark 池中提供的执行程序数目。|  
