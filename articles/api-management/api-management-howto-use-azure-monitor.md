@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: bee93cf84f4beda0684127102942447630219881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128846"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982044"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -43,26 +43,25 @@ ms.locfileid: "82128846"
 
 ## <a name="view-metrics-of-your-apis"></a>查看 API 的指标
 
-API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状态和运行状况。 下面汇总了一些可用指标：
+API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状态和运行状况。 下面是两个最常用的指标。 有关所有可用指标的列表，请参阅[支持的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)。
 
 * 容量：帮助做出有关升级/降级 APIM 服务的决策。 指标每分钟发出，在报告时反映网关容量。 指标范围为 0-100，是根据 CPU 和内存利用率等网关资源计算的。
-* 网关请求总数：期间内的 API 请求数。 
-* 成功的网关请求数：接收成功的 HTTP 响应代码（包括 304、307 以及任何小于 301 的代码，例如 200）的 API 请求数。
-* 失败的网关请求数：接收错误的 HTTP 响应代码（包括 400 以及任何大于 500 的代码）的 API 请求数。
-* 未经授权的网关请求数：接收包括 401、403 和 429的 HTTP 响应代码的 API 请求数。
-* 其他网关请求数：接收不属于上述任何类别的 HTTP 响应代码（例如 418）的 API 请求数。
+* 请求：帮助分析通过 APIM 服务的 API 流量。 指标每分钟发出一次，并报告网关请求数，其维度包括响应代码、位置、主机名和错误。 
+
+> [!IMPORTANT]
+> 以下指标已于 2019 年 5 月弃用，并将于 2023 年 8 月停用：网关请求总数、成功的网关请求数、未经授权的网关请求数、失败的网关请求数、其他网关请求数。 请迁移到提供等效功能的请求指标。
 
 ![指标图表](./media/api-management-azure-monitor/apim-monitor-metrics.png)
 
 访问指标：
 
-1. 在靠近页面底部的菜单中选择“指标”。 
+1. 在靠近页面底部的菜单中选择“指标”。
 
     ![指标](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-1. 从下拉列表中选择所需的指标。 例如，“请求”  。 
-1. 该图显示 API 调用总数。
-1. 可以使用**请求**指标的维度来筛选该图表。 例如，单击“添加筛选器”  ，选择“后端响应代码”  ，输入 500 作为值。 现在，该图表显示了 API 后端中失败的请求数。   
+2. 从下拉列表中选择所需的指标。 例如，“请求”。 
+3. 该图显示 API 调用总数。
+4. 可以使用**请求**指标的维度来筛选该图表。 例如，单击“添加筛选器”，选择“后端响应代码”，输入 500 作为值。 现在，该图表显示了 API 后端中失败的请求数。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>针对未经授权的请求设置警报规则
 
@@ -74,18 +73,18 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 配置警报：
 
-1. 在靠近页面底部的菜单栏中选择“警报”。 
+1. 在靠近页面底部的菜单栏中选择“警报”。
 
     ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. 对于此警报，请单击“新建警报规则”。 
-3. 单击“添加条件”。 
-4. 在“信号类型”下拉列表中选择“指标”。 
-5. 选择“未经授权的网关请求”作为要监视的信号。 
+2. 对于此警报，请单击“新建警报规则”。
+3. 单击“添加条件”。
+4. 在“信号类型”下拉列表中选择“指标”。
+5. 选择“未经授权的网关请求”作为要监视的信号。
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. 在“配置信号逻辑”视图中指定触发警报的阈值，然后单击“完成”。  
+6. 在“配置信号逻辑”视图中指定触发警报的阈值，然后单击“完成”。 
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
@@ -94,7 +93,7 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
 8. 提供警报规则的名称和说明，然后选择严重级别。 
-9. 按“创建警报规则”。 
+9. 按“创建警报规则”。
 10. 现在，尝试在不使用 API 密钥的情况下调用会议 API。 将会触发警报，向管理员发送电子邮件。 
 
 ## <a name="activity-logs"></a>活动日志
@@ -111,11 +110,11 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 要查看活动日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
-2. 单击“活动日志”  。
+2. 单击“活动日志”。
 
     ![活动日志](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 选择所需的筛选范围，然后单击“应用”  。
+3. 选择所需的筛选范围，然后单击“应用”。
 
 ## <a name="resource-logs"></a>资源日志
 
@@ -124,11 +123,11 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 若要配置资源日志，请执行以下操作：
 
 1. 选择 APIM 服务实例。
-2. 单击“诊断设置”。 
+2. 单击“诊断设置”。
 
     ![资源日志](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 单击“启用诊断”  。 可以将资源日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
+3. 单击“启用诊断”。 可以将资源日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
 
 “API 管理”当前提供有关单个 API 请求的资源日志（每小时进行批处理），其中每个条目具有以下架构：
 

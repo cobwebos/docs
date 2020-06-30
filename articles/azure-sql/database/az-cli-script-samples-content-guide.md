@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658180"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251499"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>适用于 Azure SQL 数据库和 SQL 托管实例的 Azure CLI 示例 
  
@@ -39,15 +39,15 @@ ms.locfileid: "84658180"
 |---|---|
 |在 Azure SQL 数据库中创建数据库||
 | [创建单一数据库和配置防火墙规则](scripts/create-and-configure-database-cli.md) | 创建 SQL 数据库并配置服务器级防火墙规则。 |
-| [创建弹性池并移动共用数据库](scripts/move-database-between-elastic-pools-cli.md) | 创建弹性池，移动共用 SQL 数据库，并更改计算大小。 |
+| [创建弹性池并移动共用数据库](scripts/move-database-between-elastic-pools-cli.md) | 创建弹性池、移动共用数据库，并更改计算大小。 |
 |在 Azure SQL 数据库中缩放数据库||
 | [缩放单一数据库](scripts/monitor-and-scale-database-cli.md) | 先查询 SQL 数据库中某个数据库的大小信息，然后将该数据库缩放到不同的计算大小。 |
 | [缩放弹性池](scripts/scale-pool-cli.md) | 将 SQL 弹性池缩放为不同的计算大小。 |
 |**配置异地复制和故障转移**||
 | [将单一数据库添加到故障转移组](scripts/add-database-to-failover-group-cli.md)| 创建一个数据库和一个故障转移组，将此数据库添加到该故障转移组，然后测试到辅助服务器的故障转移。 |
 | [为弹性池配置故障转移组](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | 创建一个数据库，将其添加到弹性池，将弹性池添加到故障转移组，然后测试到辅助服务器的故障转移。 |
-| [使用活动异地复制配置单一数据库并对其进行故障转移](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| 为 Azure SQL 数据库配置活动异地复制，并将其故障转移到辅助副本。 |
-| [使用活动异地复制配置共用数据库并对其进行故障转移](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| 为 SQL 弹性池中的 Azure SQL 数据库配置活动异地复制，然后将其故障转移到辅助副本。 |
+| [使用活动异地复制配置单一数据库并对其进行故障转移](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| 为 Azure SQL 数据库中的数据库配置活动异地复制，并将其故障转移到次要副本。 |
+| [使用活动异地复制配置共用数据库并对其进行故障转移](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| 为弹性池中的数据库配置活动异地复制，然后将其故障转移到次要副本。 |
 | **审核和威胁检测** |
 | [配置审核和威胁检测](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| 为 Azure SQL 数据库中的数据库配置审核和威胁检测策略。 |
 | 备份、还原、复制和导入数据库||

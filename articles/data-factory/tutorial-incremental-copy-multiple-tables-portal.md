@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 680f8518e5d005aebeffd54fe6d05ae1124c595a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/10/2020
+ms.openlocfilehash: 2578d1b6fa07545e7205b8a8c86447ef2e54176a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559714"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730095"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
@@ -260,9 +260,13 @@ END
 ## <a name="create-self-hosted-integration-runtime"></a>创建自承载的 Integration Runtime
 在将数据从专用网络（本地）中的数据存储移至 Azure 数据存储时，请在本地环境中安装自承载的 Integration Runtime (IR)。 自承载的 IR 可在专用网络和 Azure 之间移动数据。 
 
-1. 单击左窗格底部的“连接”，切换到“连接”窗口中的“Integration Runtime”。   
+1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[管理选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
-1. 在“Integration Runtime”选项卡中，单击“+ 新建”。  
+   ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
+
+1. 在左窗格中选择“集成运行时”，然后选择“+ 新建” 。
+
+   ![创建集成运行时](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. 在“Integration Runtime 安装”窗口中，选择“执行数据移动并将活动分发到外部计算”，然后单击“继续”。   
 
@@ -288,6 +292,7 @@ END
 
 1. 在“连接”窗口中从“Integration Runtime”选项卡切换到“链接服务”选项卡，然后单击“+ 新建”。   
 
+   ![新建链接服务](./media/doc-common-process/new-linked-service.png)
 1. 在“新建链接服务”窗口中，选择“SQL Server”，然后单击“继续”。   
 
 1. 在“新建链接服务”窗口中执行以下步骤：
@@ -349,7 +354,7 @@ END
     1. 在“创建/更新参数”部分单击“新建”。  
     1. 输入 **SinkTableName** 作为**名称**，输入**字符串**作为**类型**。 此数据集采用 **SinkTableName** 作为参数。 SinkTableName 参数由管道在运行时动态设置。 管道中的 ForEach 活动循环访问一个包含表名的列表，每一次迭代都将表名传递到此数据集。
    
-    ![接收器数据集 - 属性](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+        ![接收器数据集 - 属性](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
 1. 在“属性”窗口中切换到“连接”选项卡，然后选择 **AzureSqlDatabaseLinkedService** 作为“链接服务”。  对于“表”属性，单击“添加动态内容”。   
     
 1. 在“添加动态内容”窗口的“参数”部分中选择 **SinkTableName**。  
@@ -371,7 +376,7 @@ END
     1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
     1. 对于“表”，请选择 **[dbo].[watermarktable]** 。
 
-    ![水印数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
+        ![水印数据集 - 连接](./media/tutorial-incremental-copy-multiple-tables-portal/watermark-dataset-connection.png)
 
 ## <a name="create-a-pipeline"></a>创建管道
 此管道使用表名列表作为参数。 ForEach 活动循环访问包含表名的列表，并执行以下操作： 
@@ -455,7 +460,7 @@ END
     1. 至于“表类型”属性，请输入 `@{item().TableType}`。
     1. 至于“表类型参数名称”，请输入 `@{item().TABLE_NAME}`。
 
-    ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。  将“复制”活动连接到“存储过程”活动。  
 
 1. 在管道中选择“存储过程”活动，然后在“属性”窗口的“常规”选项卡中输入 **StoredProceduretoWriteWatermarkActivity** 作为**名称**。  
@@ -507,10 +512,12 @@ END
 
 ## <a name="monitor-the-pipeline"></a>监视管道
 
-1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 单击“刷新”按钮刷新列表。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。 
+1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 
-    ![管道运行](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
-1. 在“操作”列中单击“查看活动运行”链接。 此时会看到与所选管道运行相关联的所有活动运行。 
+1. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的链接。 有关活动运行的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标） 。 
+
+1. 选择顶部的“所有管道运行”，回到“管道运行”视图。 若要刷新视图，请选择“刷新”。
+
 
 ## <a name="review-the-results"></a>查看结果
 在 SQL Server Management Studio 中对目标 SQL 数据库运行以下查询，验证数据是否已从源表复制到目标表： 
@@ -605,9 +612,11 @@ VALUES
 
 ## <a name="monitor-the-pipeline-again"></a>再次监视管道
 
-1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 单击“刷新”按钮刷新列表。 使用“操作”列中的链接可以查看与管道运行关联的活动运行，以及重新运行管道。 
+1. 在左侧切换到“监视”选项卡。 可以看到**手动触发器**触发的管道运行。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 
-1. 在“操作”列中单击“查看活动运行”链接。 此时会看到与所选管道运行相关联的所有活动运行。 
+1. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的链接。 有关活动运行的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标） 。 
+
+1. 选择顶部的“所有管道运行”，回到“管道运行”视图。 若要刷新视图，请选择“刷新”。
 
 ## <a name="review-the-final-results"></a>查看最终结果
 在 SQL Server Management Studio 中对目标 SQL 数据库运行以下查询，验证更新的/全新的数据是否已从源表复制到目标表。 

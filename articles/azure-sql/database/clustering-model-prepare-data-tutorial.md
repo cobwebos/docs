@@ -1,7 +1,7 @@
 ---
 title: 教程：准备数据以在 R 中执行聚类
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 本文是由三个部分组成的教程系列的第一部分，其中介绍了如何准备 Azure SQL 数据库中的数据，以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类。
+description: 在此三部分教程系列的第一部分中，准备 Azure SQL 数据库中的数据，以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c06e1b13f87972cbcd50e888edf55158b77881d8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a23dbd150dbe8ab05e0d4cf1f3decd67a856cbf4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024093"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251244"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：准备数据以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中执行聚类
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在这个由三部分组成的教程系列的第一部分中，将使用 R 从 Azure SQL 数据库导入和准备数据。在此系列中的后面部分，将通过 Azure SQL 数据库机器学习服务（预览版）借助 R 语言使用该数据训练和部署聚类分析模型。
+在此三部分教程系列的第一部分中，使用 R 在 Azure SQL 数据库中导入并准备好数据。稍后在本系列中将通过 Azure SQL 数据库机器学习服务（预览版）在 R 中使用此数据训练和部署群集模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "84024093"
 你将使用 K-Means 算法在产品购买及退货的数据集中执行针对客户的聚类分析。 通过对客户进行聚类分析，可以将特定组定为目标，更加高效地专注于市场营销工作。
 K-Means 群集是一种无监督式学习算法，该算法根据相似性寻找数据中的规律。
 
-在此系列的第一部分和第二部分中，将在 RStudio 中开发一些 R 脚本，以便准备数据和训练机器学习模型。 然后，在第三部分中，将使用存储过程在 SQL 数据库中运行这些 R 脚本。
+在此系列的第一部分和第二部分中，将在 RStudio 中开发一些 R 脚本，以便准备数据和训练机器学习模型。 然后，在第三部分中，将使用存储过程在数据库中运行这些 R 脚本。
 
 本文将指导如何进行以下操作：
 
@@ -40,11 +40,11 @@ K-Means 群集是一种无监督式学习算法，该算法根据相似性寻找
 >
 > * 将示例数据库导入 Azure SQL 数据库
 > * 使用 R 沿不同维度分离客户
-> * 将数据从 Azure SQL 数据库加载到 R 数据帧中
+> * 将数据从数据库加载到 R 数据帧中
 
 在[第二部分](clustering-model-build-tutorial.md)中，你将了解如何使用 R 创建和训练 K-Means 群集模型。
 
-在[第 3 部分](clustering-model-deploy-tutorial.md)中，你将了解如何在 Azure SQL 数据库中，创建一个可以使用 R 基于新数据执行聚类分析的存储过程。
+在[第三部分](clustering-model-deploy-tutorial.md)中，将了解如何创建可以基于新数据在 R 中执行聚类分析的存储过程。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -68,7 +68,7 @@ K-Means 群集是一种无监督式学习算法，该算法根据相似性寻找
 
 1. 下载文件 [tpcxbb_1gb.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/tpcxbb_1gb.bacpac)。
 
-1. 按照[导入 BACPAC 文件以创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-import)中的说明执行操作，并使用以下详细信息：
+1. 按照[导入 BACPAC 文件到 Azure SQL 数据库中的数据库或 Azure SQL 托管实例](../../azure-sql/database/database-import.md)中的说明操作，并使用以下详细信息：
 
    * 从下载的 **tpcxbb_1gb.bacpac** 文件导入数据
    * 在公共预览版中，为新数据库选择 Gen5/vCore 配置
@@ -211,9 +211,9 @@ head(customer_data, n = 5);
 
 在本系列教程的第一部分中，你已完成以下步骤：
 
-* 将示例数据库导入 Azure SQL 数据库
+* 将示例数据库导入 Azure SQL 数据库中的数据库
 * 使用 R 沿不同维度分离客户
-* 将数据从 Azure SQL 数据库加载到 R 数据帧中
+* 将数据从数据库加载到 R 数据帧中
 
 若要创建使用此客户数据的机器学习模型，请参阅本教程系列的第二部分：
 

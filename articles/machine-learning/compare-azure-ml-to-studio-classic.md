@@ -8,18 +8,18 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 5577a9847ff405397c553028a6dfdf2df80d03fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371845"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210365"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure 机器学习与机器学习工作室（经典版）
 
 本文介绍 Azure 机器学习和机器学习工作室（经典版）的区别。 
 
-Azure 机器学习提供 Python 和 R SDK 以及  “拖放”设计器，用于构建和部署机器学习模型。 工作室（经典版）仅提供独立的拖放体验。
+Azure 机器学习提供 Python 和 R SDK 以及“拖放”设计器，用于构建和部署机器学习模型。 工作室（经典版）仅提供独立的拖放体验。
 
 建议新用户选择 Azure 机器学习，以便获取最广泛的先进机器学习工具。
 
@@ -29,7 +29,7 @@ Azure 机器学习提供 Python 和 R SDK 以及  “拖放”设计器，用于
 
 | | 机器学习工作室（经典版） | Azure 机器学习 |
 |---| --- | --- |
-| 拖放界面 | 支持 | 支持 - [Azure 机器学习设计器（预览版）](concept-designer.md) | 
+| 拖放界面 | 支持 | 支持 - [Azure 机器学习设计器（预览版）](concept-designer.md) <br/>（需要企业工作区） | 
 | 试验 | 可缩放（10 GB 训练数据限制） | 使用计算目标进行缩放 |
 | 训练计算目标 | 专用计算目标，仅限 CPU 支持 | 各种可自定义的[训练计算目标](concept-compute-target.md#train)。 包括 GPU 和 CPU 支持 | 
 | 部署计算目标 | 专用 Web 服务格式，不可自定义 | 各种可自定义的[部署计算目标](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支持 |
@@ -42,7 +42,7 @@ Azure 机器学习提供 Python 和 R SDK 以及  “拖放”设计器，用于
 
 ## <a name="migrate-from-machine-learning-studio-classic"></a>从机器学习工作室（经典版）迁移
 
-目前没有办法将工作室（经典版）资产迁移到 Azure 机器学习设计器（预览版）。 当前的工作室（经典版）用户可以继续使用其机器学习资产。 但是，我们建议所有用户考虑使用此设计器，它提供用户熟悉的拖放式体验和改进的工作流以及可伸缩性、版本控制和企业安全性。 
+目前没有办法将工作室（经典版）资产迁移到 Azure 机器学习设计器（预览版）。 当前的工作室（经典版）用户可以继续使用其机器学习资产。 但是，我们建议所有用户考虑使用此设计器，它提供用户熟悉的拖放式体验和改进的工作流以及可伸缩性、版本控制和企业安全性。
 
 ## <a name="get-started-with-azure-machine-learning"></a>开始使用 Azure 机器学习
 

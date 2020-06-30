@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 5cbd1b85bdb9017a96dc863b83223c31c716cf77
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331791"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052201"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用 Azure Migrate:服务器评估工具评估物理服务器
 
@@ -101,7 +101,7 @@ ms.locfileid: "84331791"
 2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-    - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+    - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
 3.  验证最新的设备版本和哈希值：
     - 对于公有云：
 
@@ -180,7 +180,7 @@ ms.locfileid: "84331791"
 
 1. 单击“添加凭据”以指定设备用于发现服务器的帐户凭据。  
 2. 指定操作系统、凭据的友好名称以及用户名和密码。 然后单击“添加”。
-你可以为 Windows 和 Linux 服务器分别添加一组凭据。
+你可以为 Windows 和 Linux 服务器添加多个凭据。
 4. 单击“添加服务器”，然后指定服务器详细信息 - FQDN/IP 地址和凭据的友好名称（每行一个条目）以连接到服务器。
 3. 单击 **“验证”** 。 验证后，将显示可发现的服务器列表。
     - 如果服务器验证失败，请将鼠标悬停在“状态”列中的图标上以查看错误。 解决问题并再次验证。

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 6da2537464e39ecb2c613a97b19f2d8f316818af
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677551"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105937"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -48,7 +48,7 @@ ms.locfileid: "83677551"
 
 1. 打开“Ranger 管理 UI”。
 
-2. 选择“Kafka”下的“\<ClusterName>_kafka”。 可以列出一个预先配置的策略。
+2. 在“Kafka”下选择“\<ClusterName>_kafka” 。 可以列出一个预先配置的策略。
 
 3. 选择“添加新策略”，并输入以下值：
 
@@ -117,8 +117,8 @@ ms.locfileid: "83677551"
 1. 运行以下命令：
 
    ```bash
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
-   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
 ## <a name="test-the-ranger-policies"></a>测试 Ranger 策略
@@ -131,13 +131,7 @@ ms.locfileid: "83677551"
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. 执行以下命令：
-
-   ```bash
-   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
-   ```
-
-3. 使用上一部分中的代理名称来设置以下环境变量：
+2. 使用上一部分中的代理名称来设置以下环境变量：
 
    ```bash
    export KAFKABROKERS=<brokerlist>:9092
@@ -145,48 +139,80 @@ ms.locfileid: "83677551"
 
    示例： `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-4. 按照以下文章的**生成并部署示例**下的步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 来确保 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
+3. 按照以下文章的**生成并部署示例**下的步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 来确保 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
 
-> [!NOTE]  
-> 对于本教程，请使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。
+   > [!NOTE]  
+   > 对于本教程，请使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。
 
-5. 执行以下命令来验证 **sales_user1** 可以生成主题 `salesevents`：
+4. 执行以下命令来验证 **sales_user1** 可以生成主题 `salesevents`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer salesevents $KAFKABROKERS
    ```
 
-6. 执行以下命令来使用主题 `salesevents`：
+5. 执行以下命令来使用主题 `salesevents`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    验证你能够读取消息。
 
-7. 在同一 ssh 窗口中执行以下命令来验证 **sales_user1** 无法生成主题 `marketingspend`：
+6. 在同一 ssh 窗口中执行以下命令来验证 **sales_user1** 无法生成主题 `marketingspend`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar producer marketingspend $KAFKABROKERS
    ```
 
    发生授权错误，但可以忽略。
 
-8. 请注意，**marketing_user1** 无法使用主题 `salesevents`。
+7. 请注意，**marketing_user1** 无法使用主题 `salesevents`。
 
-   重复上面的步骤 1-4，但这次以 **marketing_user1** 身份登录。
+   重复上面的步骤 1-3，但这次以 marketing_user1 身份登录。
 
    执行以下命令来使用主题 `salesevents`：
 
    ```bash
-   java -jar kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
+   java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf kafka-producer-consumer.jar consumer salesevents $KAFKABROKERS
    ```
 
    无法查看以前的消息。
 
-9. 从 Ranger UI 查看审核访问事件。
+8. 从 Ranger UI 查看审核访问事件。
 
    ![Ranger UI 策略审核访问事件 ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   
+## <a name="produce-and-consume-topics-in-esp-kafka-by-using-the-console"></a>使用控制台生成并使用 ESP Kafka 中的主题
+
+> [!NOTE]
+> 不能使用控制台命令来创建主题。 相反，必须使用上一部分中演示的 Java 代码。 有关详细信息，请参阅[使用 ESP 创建 Kafka 群集中的主题](#create-topics-in-a-kafka-cluster-with-esp)。
+
+若要使用控制台生成和使用 ESP Kafka 中的主题，请执行以下操作：
+
+1. 将 `kinit` 与用户的用户名一起使用。 出现提示时，输入密码。
+
+   ```bash
+   kinit sales_user1
+   ```
+
+2. 设置环境变量：
+
+   ```bash
+   export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/conf/kafka_client_jaas.conf"
+   export KAFKABROKERS=<brokerlist>:9092
+   ```
+
+3. 生成 `salesevents` 主题的消息：
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh --topic salesevents --broker-list $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
+
+4. 使用主题 `salesevents` 中的消息：
+
+   ```bash
+   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --topic salesevents --from-beginning --bootstrap-server $KAFKABROKERS --security-protocol SASL_PLAINTEXT
+   ```
 
 ## <a name="clean-up-resources"></a>清理资源
 

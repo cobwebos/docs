@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78402660"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944808"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -32,8 +32,8 @@ ms.locfileid: "78402660"
 * [Azure 订阅](https://azure.microsoft.com/free/)
 * 免费提供的 [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)。
 * 一个 Excel 文件 (.xlsx)，其中包含时序数据点。 可在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 上找到本快速入门的示例数据
-* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 
-    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 稍后会在本快速入门中执行此操作。
+* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 稍后会在本快速入门中执行此操作。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -44,31 +44,31 @@ ms.locfileid: "78402660"
 > [!NOTE]
 > Power BI 可以使用各种源（例如 .csv 文件、SQL 数据库、Azure Blob 存储等）提供的数据。  
 
-在 Power BI Desktop 主窗口中，单击“开始”  功能区。 在功能区的“外部数据”  组中，打开“获取数据”  下拉菜单，然后单击“Excel”  。
+在 Power BI Desktop 主窗口中，单击“开始”功能区。 在功能区的“外部数据”组中，打开“获取数据”下拉菜单，然后单击“Excel”。
 
 ![Power BI 中“获取数据”按钮的图像](../media/tutorials/power-bi-get-data-button.png)
 
-对话框出现以后，导航到下载了示例 .xlsx 文件的文件夹，然后将其选中。 在“导航器”对话框出现以后，单击“Sheet1”，然后单击“编辑”。   
+对话框出现以后，导航到下载了示例 .xlsx 文件的文件夹，然后将其选中。 在“导航器”对话框出现以后，单击“Sheet1”，然后单击“编辑”。  
 
 ![Power BI 中数据源“导航器”屏幕的图像](../media/tutorials/navigator-dialog-box.png)
 
-Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这些时间戳必须转换为文本才能发送到异常检测器 API。 如果 Power Query 编辑器没有自动打开，请单击主页选项卡上的“编辑查询”。  
+Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这些时间戳必须转换为文本才能发送到异常检测器 API。 如果 Power Query 编辑器没有自动打开，请单击主页选项卡上的“编辑查询”。 
 
-单击 Power Query 编辑器中的“转换”  功能区。 在“任何列”  组中，打开“数据类型:”  下拉菜单，然后选择“文本”  。
+单击 Power Query 编辑器中的“转换”功能区。 在“任何列”组中，打开“数据类型:”下拉菜单，然后选择“文本”。
 
 ![Power BI 中数据源“导航器”屏幕的图像](../media/tutorials/data-type-drop-down.png)
 
-获得有关更改列类型的通知后，请单击“替换当前项”。  然后，在“主页”  功能区中单击“关闭并应用”  或“应用”  。 
+获得有关更改列类型的通知后，请单击“替换当前项”。 然后，在“主页”功能区中单击“关闭并应用”或“应用”。 
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>创建一个函数来发送数据并设置响应的格式
 
-若要设置数据文件的格式并将其发送到异常检测器 API，可以调用一个在上面创建的表的查询。 在 Power Query 编辑器的“开始”  功能区中，打开  “新建源”  下拉菜单并单击“空白查询”。
+若要设置数据文件的格式并将其发送到异常检测器 API，可以调用一个在上面创建的表的查询。 在 Power Query 编辑器的“开始”功能区中，打开“新建源”下拉菜单并单击“空白查询”。
 
-确保选中新建查询，然后单击“高级编辑器”  。 
+确保选中新建查询，然后单击“高级编辑器”。 
 
 ![Power BI 中“高级编辑器”按钮的图像](../media/tutorials/advanced-editor-screen.png)
 
-在高级编辑器中，使用以下 Power Query M 代码片段从表中提取列并将其发送到 API。 然后，查询会根据 JSON 响应创建一个表并将其返回。 将 `apiKey` 变量替换为有效的异常检测器 API 密钥，并将 `endpoint` 替换为终结点。 将查询输入高级编辑器以后，单击“完成”。 
+在高级编辑器中，使用以下 Power Query M 代码片段从表中提取列并将其发送到 API。 然后，查询会根据 JSON 响应创建一个表并将其返回。 将 `apiKey` 变量替换为有效的异常检测器 API 密钥，并将 `endpoint` 替换为终结点。 将查询输入高级编辑器以后，单击“完成”。
 
 ```M
 (table as table) => let
@@ -112,7 +112,7 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
  in results
 ```
 
-调用数据工作表上的查询，方法是：在“输入参数”下选择 `Sheet1`，  然后单击“调用”。  
+调用数据工作表上的查询，方法是：在“输入参数”下选择 `Sheet1`，然后单击“调用”。 
 
 ![“高级编辑器”按钮的图像](../media/tutorials/invoke-function-screenshot.png)
 
@@ -125,23 +125,23 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 ![一个显示由 Power BI 创建的警告的图像](../media/tutorials/blocked-function.png)
 
-若要修复此问题，请单击“文件”，然后单击“选项和设置”  。  然后单击“选项”  。 在“当前文件”下选择“隐私”，然后选择“忽略隐私级别并潜在地改善性能”。    
+若要修复此问题，请单击“文件”，然后单击“选项和设置”。 然后单击“选项”。 在“当前文件”下选择“隐私”，然后选择“忽略隐私级别并潜在地改善性能”。   
 
 另外，可能会出现一条消息，要求指定连接到 API 的方式。
 
 ![一个图像，其中显示了一条请求，要求指定访问凭据](../media/tutorials/edit-credentials-message.png)
 
-若要修复此问题，请单击消息中的“编辑凭据”  。 在对话框出现后选择“匿名”，以匿名方式连接到 API。  然后单击“连接”  。 
+若要修复此问题，请单击消息中的“编辑凭据”。 在对话框出现后选择“匿名”，以匿名方式连接到 API。 然后单击“连接”。 
 
-然后在“主页”  功能区中单击“关闭并应用”  ，应用所做的更改。
+然后在“主页”功能区中单击“关闭并应用”，应用所做的更改。
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>可视化异常检测器 API 响应
 
-在 Power BI 主屏幕中，开始使用上面创建的查询将数据可视化。 首先选择“可视化效果”中的“折线图”。   然后，将已调用函数中的时间戳添加到折线图的“轴”。  右键单击它，并选择“时间戳”。  
+在 Power BI 主屏幕中，开始使用上面创建的查询将数据可视化。 首先选择“可视化效果”中的“折线图”。  然后，将已调用函数中的时间戳添加到折线图的“轴”。 右键单击它，并选择“时间戳”。 
 
 ![右键单击时间戳值](../media/tutorials/timestamp-right-click.png)
 
-将“已调用函数”中的以下字段添加到图的“值”字段。   根据以下屏幕截图来构建图表。
+将“已调用函数”中的以下字段添加到图的“值”字段。  根据以下屏幕截图来构建图表。
 
     * 值
     * UpperMargins
@@ -156,19 +156,19 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 ### <a name="display-anomaly-data-points"></a>显示异常数据点
 
-在 Power BI 窗口右侧的“字段”窗格下面，  右键单击“已调用函数查询”下的“值”   ，然后单击“新建快速度量”。 
+在 Power BI 窗口右侧的“字段”窗格下面，右键单击“已调用函数查询”下的“值” ，然后单击“新建快速度量”。
 
 ![新快速度量屏幕的图像](../media/tutorials/new-quick-measure.png)
 
-在出现的屏幕上，选择“筛选的值”进行计算。  将“基础值”  设置为`Sum of Value`。 然后将 `IsAnomaly` 从“已调用函数”字段拖至“筛选器”。   从“筛选器”下拉菜单中选择 `True`。 
+在出现的屏幕上，选择“筛选的值”进行计算。 将“基础值”设置为`Sum of Value`。 然后将 `IsAnomaly` 从“已调用函数”字段拖至“筛选器”。  从“筛选器”下拉菜单中选择 `True`。
 
 ![新快速度量屏幕的图像](../media/tutorials/new-quick-measure-2.png)
 
-单击“确定”后，会在字段列表底部出现一个  `Value for True`字段。 右键单击它，将其重命名为“异常”。  将其添加到图表的“值”。  然后选择“格式”工具，  将 X 轴类型设置为“分类”。 
+单击“确定”后，会在字段列表底部出现一个`Value for True`字段。 右键单击它，将其重命名为“异常”。 将其添加到图表的“值”。 然后选择“格式”工具，将 X 轴类型设置为“分类”。
 
 ![新快速度量屏幕的图像](../media/tutorials/format-x-axis.png)
 
-为图表应用颜色，方法是：单击“格式”工具和“数据颜色”。   图表的外观应如下所示：
+为图表应用颜色，方法是：单击“格式”工具和“数据颜色”。  图表的外观应如下所示：
 
 ![新快速度量屏幕的图像](../media/tutorials/final-chart.png)
 

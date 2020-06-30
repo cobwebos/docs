@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a5936501f45694febe284d9747bdefdfeae6aeb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca0af9a34587f8d3a3c0502c77556975b1d8df4e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023983"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253828"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中创建预测模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在这个由三部分组成的教程系列的第二部分中，将使用 R 创建两个预测模型，然后选择最准确的模型。 在本系列的下一部分中，将使用 Azure SQL 数据库机器学习服务（预览版）在 SQL 数据库中部署此模型。
+在这个由三部分组成的教程系列的第二部分中，将使用 R 创建两个预测模型，然后选择最准确的模型。 在本系列的下一部分中，将使用 Azure SQL 数据库机器学习服务（预览版）在 SQL 数据库的数据库中部署此模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ ms.locfileid: "84023983"
 
 [第一部分](predictive-model-prepare-data-tutorial.md)介绍如何导入示例数据库，然后准备要用于通过 R 训练预测模型的数据。
 
-[第三部分](predictive-model-deploy-tutorial.md)介绍如何将模型存储在数据库中，然后使用在第一部分和第二部分中已开发的 R 脚本创建存储过程。 这些存储过程将在 SQL 数据库中运行，以基于新数据进行预测。
+[第三部分](predictive-model-deploy-tutorial.md)介绍如何将模型存储在数据库中，然后使用在第一部分和第二部分中已开发的 R 脚本创建存储过程。 这些存储过程将在数据库中运行，基于新数据进行预测。
 
 ## <a name="prerequisites"></a>先决条件
 

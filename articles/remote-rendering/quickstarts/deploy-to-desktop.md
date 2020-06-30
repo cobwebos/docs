@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758990"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659925"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>快速入门：将 Unity 示例部署到桌面
 
@@ -46,7 +46,7 @@ ms.locfileid: "83758990"
 ## <a name="build-the-sample-project"></a>生成示例项目
 
 1. 打开“文件”>“生成设置”。
-1. 将“平台”更改为“通用 Windows 平台”（也支持“电脑独立”，但此处不使用该平台） 。
+1. 将“平台”更改为“通用 Windows 平台”（也支持“电脑独立”，但此处不使用该平台，请参阅[平台限制](../reference/limits.md#platform-limitations)） 。
 1. 将“目标设备”设置为“电脑”。
 1. 将“体系结构”设置为“x86”。
 1. 将“生成类型”设置为“D3D 项目”。
@@ -60,7 +60,7 @@ ms.locfileid: "83758990"
 1. 生成解决方案 (F7)。
 
 > [!WARNING]
-> 请确保选择“x86”。 当前不支持“x64”，请参阅[平台限制](../reference/limits.md#platform-limitations)。
+> 请确保选择“x86”。 当前不支持“UWP/x64”，请参阅[平台限制](../reference/limits.md#platform-limitations)。
 
 ## <a name="launch-the-sample-project"></a>启动示例项目
 

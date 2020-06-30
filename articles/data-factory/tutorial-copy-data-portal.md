@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248611"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253955"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 SQL 数据库
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+在本教程中，请使用 Azure 数据工厂用户界面 (UI) 创建数据工厂。 此数据工厂中的管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库。 本教程中的配置模式适用于从基于文件的数据存储复制到关系数据存储。 如需可以用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 > [!NOTE]
 > - 如果对数据工厂不熟悉，请参阅 [Azure 数据工厂简介](introduction.md)。
@@ -41,7 +41,7 @@ ms.locfileid: "84248611"
 ## <a name="prerequisites"></a>先决条件
 * **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * **Azure 存储帐户**。 可将 Blob 存储用作源数据存储。 如果没有存储帐户，请参阅[创建 Azure 存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。
-* **Azure SQL 数据库**。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。
+* **Azure SQL 数据库**。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库中的数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)了解创建步骤。
 
 ### <a name="create-a-blob-and-a-sql-table"></a>创建 blob 和 SQL 表
 
@@ -61,7 +61,7 @@ ms.locfileid: "84248611"
 
 #### <a name="create-a-sink-sql-table"></a>创建接收器 SQL 表
 
-1. 使用以下 SQL 脚本在 SQL 数据库中创建 **dbo.emp** 表：
+1. 使用以下 SQL 脚本在数据库中创建 dbo.emp 表：
 
     ```sql
     CREATE TABLE dbo.emp
@@ -162,7 +162,7 @@ ms.locfileid: "84248611"
 
     b. 在“服务器名称”下选择 SQL Server 实例。
 
-    c. 在“数据库名称”下选择自己的 SQL 数据库。
+    c. 在“数据库名称”下选择数据库。
 
     d. 在“用户名”下输入用户的名称。
 
@@ -209,7 +209,7 @@ ms.locfileid: "84248611"
 
     [![监视活动运行](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. 验证是否又向 SQL 数据库的 **emp** 表添加了两个行。
+1. 验证是否又向数据库的 emp 表添加了两行。
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>按计划触发管道
 在此计划中，请为管道创建计划触发器。 触发器按指定的计划（例如，每小时或每天）运行管道。 此处，你要将触发器设置为每分钟运行一次，直至指定的结束日期/时间。

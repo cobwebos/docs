@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901415"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771268"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
@@ -46,9 +46,9 @@ ms.locfileid: "82901415"
 
 请检查你是否有权创建 Azure Migrate 项目。
 
-1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。 
-2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。 
-3. 你应该拥有“参与者”或“所有者”权限。  
+1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。
+2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。
+3. 你应该拥有“参与者”或“所有者”权限。 
     - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
     - 如果你不是订阅所有者，请让所有者分配该角色。
 
@@ -69,8 +69,8 @@ ms.locfileid: "82901415"
 
 租户/全局管理员可按如下所述授予权限：
 
-1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”    。
-2. 管理员应将“应用注册”设置为“是”   。
+1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”  。
+2. 管理员应将“应用注册”设置为“是” 。
 
     ![Azure AD 权限](./media/tutorial-prepare-hyper-v/aad.png)
 
@@ -95,9 +95,9 @@ ms.locfileid: "82901415"
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
 
-1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。 
-2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。 
-3. 你应该拥有“参与者”或“所有者”权限。  
+1. 在 Azure 门户中打开订阅，然后选择“访问控制(IAM)”。
+2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。
+3. 你应该拥有“参与者”或“所有者”权限。 
     - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
     - 如果你不是订阅所有者，请让所有者分配该角色。
 
@@ -138,7 +138,7 @@ ms.locfileid: "82901415"
 
 Azure Migrate 需要拥有发现本地服务器的权限。
 
-- **Windows：** 在要包括在发现中的所有 Windows 服务器上设置一个本地用户帐户。 需要将该用户帐户添加到以下组：- 远程管理用户 - 性能监视器用户 - 性能日志用户
+- **Windows：** 你需要是域管理员，或者是你要发现的所有 Windows 服务器上的本地管理员。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。
 - **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。
 
 ## <a name="prepare-for-physical-server-migration"></a>为物理服务器迁移做准备
@@ -148,12 +148,14 @@ Azure Migrate 需要拥有发现本地服务器的权限。
 > [!NOTE]
 > 迁移物理计算机时，“Azure Migrate:服务器迁移”使用与 Azure Site Recovery 服务中基于代理的灾难恢复功能相同的复制体系结构，并且某些组件共享相同的代码库。 某些内容可能链接到 Site Recovery 文档。
 
-- [查看](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器迁移要求。
-- “Azure Migrate:服务器迁移”使用复制服务器进行物理服务器迁移：
+1. [查看](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器迁移要求。
+2. “Azure Migrate:服务器迁移”使用复制服务器进行物理服务器迁移：
     - [查看](migrate-replication-appliance.md#appliance-requirements)复制设备的部署要求，以及用于在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
     - 查看复制设备访问公有云和政府云时所需的 [Azure URL](migrate-appliance.md#url-access)。
     - 查看复制设备的[端口] (migrate-replication-appliance.md#port-access)访问要求。
-
+3. 在将 VM 迁移到 Azure 之前，需要在 VM 上进行一些更改。
+    - 在开始迁移之前，必须做出这些更改。 如果在做出更改之前迁移 VM，VM 可能无法在 Azure 中启动。
+    - 查看在 [Windows](prepare-for-migration.md#windows-machines) 和 [Linux](prepare-for-migration.md#linux-machines) 上需要进行的更改。
 
 
 

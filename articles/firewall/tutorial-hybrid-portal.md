@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5ba9bb723ab7b052440eea2ac509692200b80f6e
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298952"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84750703"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -54,7 +54,7 @@ ms.locfileid: "84298952"
    此外，通往网关连接的虚拟网络或本地网络的路由会通过网关传输自动传播到对等互连的虚拟网络的路由表。 有关详细信息，请参阅[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)。
 
 - 将 VNet-Spoke 对等互连到 VNet-Hub 时设置 **UseRemoteGateways**。 如果设置了 **UseRemoteGateways** 并且还在远程对等互连上设置了 **AllowGatewayTransit**，则辐射虚拟网络使用远程虚拟网络的网关进行传输。
-- 若要通过中心防火墙路由分支子网流量，需要有一个用户定义的路由 (UDR) 指向禁用了“虚拟网关路由传播”选项的防火墙。 禁用了“虚拟网关路由传播”选项可防止将路由分配到分支子网。 这可以防止获知的路由与你的 UDR 冲突。
+- 若要通过中心防火墙路由分支子网流量，则可使用一个用户定义的路由 (UDR) 指向禁用了“虚拟网关路由传播”选项的防火墙。 禁用了“虚拟网关路由传播”选项可防止将路由分配到分支子网。 这可以防止获知的路由与你的 UDR 冲突。 如果要保持“虚拟网关路由传播”处于启用状态，请确保定义到防火墙的特定路由，以替代通过 BGP 从本地发布的路由。
 - 请在中心网关子网上配置一个指向防火墙 IP 地址的 UDR，将其作为通向辐射网络的下一跃点。 无需在 Azure 防火墙子网中创建 UDR，因为它会从 BGP 探测路由。
 
 请参阅本教程的[创建路由](#create-the-routes)部分了解如何创建这些路由。

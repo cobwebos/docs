@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177060"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983453"
 ---
 # <a name="call-the-computer-vision-api"></a>调用计算机视觉 API
 
@@ -25,14 +25,6 @@ ms.locfileid: "72177060"
 - 获取标记、说明和类别
 - 获取特定于域的信息（或“名人”）
 
-## <a name="prerequisites"></a>先决条件
-
-- 本地存储的图像的图像 URL 或路径
-- 支持的输入方法：原始图像二进制，采用应用程序/八位字节流或图像 URL 的形式
-- 支持的图像文件格式：JPEG、PNG、GIF 和 BMP
-- 图像文件大小：4 MB 或更小
-- 图像尺寸：50 &times; 50 像素或以上
-  
 本文中的示例演示以下功能：
 
 * 分析图像以返回标记数组和说明
@@ -42,14 +34,22 @@ ms.locfileid: "72177060"
 
 - **选项 1**：范围分析 - 仅分析指定的模型
 - **选项 2**：增强分析 - 使用 [86 类别分类法](../Category-Taxonomy.md)进行分析，以提供更多详细信息
+
+## <a name="prerequisites"></a>先决条件
+
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到计算机视觉服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 本地存储的图像的图像 URL 或路径
+* 支持的输入方法：原始图像二进制，采用应用程序/八位字节流或图像 URL 的形式
+* 支持的图像文件格式：JPEG、PNG、GIF 和 BMP
+* 图像文件大小：4 MB 或更小
+* 图像尺寸：50 &times; 50 像素或以上
   
 ## <a name="authorize-the-api-call"></a>授权 API 调用
 
 每次调用计算机视觉 API 都需要订阅密钥。 此密钥必须通过查询字符串参数传递，或在请求标头中指定。
-
-若要获取免费试用密钥，请执行以下操作之一：
-* 转到[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)页。 
-* 转到[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)页以订阅计算机视觉。
 
 可通过以下任一操作传递订阅密钥：
 
@@ -180,12 +180,12 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=cele
 字段 | 类型 | 内容
 ------|------|------|
 Tags  | `object` | 标记数组的顶级对象。
-tags[].Name | `string`  | 标记分类器中的关键字。
-tags[].Score    | `number`  | 置信度评分，介于 0 和 1 之间。
-description  | `object` | 说明的顶级对象。
+tags[].Name | `string`    | 标记分类器中的关键字。
+tags[].Score    | `number`    | 置信度评分，介于 0 和 1 之间。
+description     | `object`    | 说明的顶级对象。
 description.tags[] |    `string`    | 标记列表。  如果置信度不足，因此无法生成标题，则标记可能是可供调用方使用的唯一信息。
-description.captions[].text | `string`  | 描述图像的短语。
-description.captions[].confidence   | `number`  | 短语的置信度评分。
+description.captions[].text    | `string`    | 描述图像的短语。
+description.captions[].confidence    | `number`    | 短语的置信度评分。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>检索并了解特定于域的模型的 JSON 输出
 
@@ -239,12 +239,12 @@ description.captions[].confidence   | `number`  | 短语的置信度评分。
 
 类别字段是原始分类法中一个或多个 [86 类别](../Category-Taxonomy.md)的列表。 以下划线结尾的类别将匹配该类别及其子级（例如，在 celebrities 模型中匹配“people_”或“people_group”）。
 
-字段   | 类型  | 内容
+字段    | 类型    | 内容
 ------|------|------|
-categories | `object`   | 顶级对象
-categories[].name    | `string` | 86 类别分类法列表中的名称。
-categories[].score  | `number`  | 置信度评分，介于 0 和 1 之间。
-categories[].detail  | `object?`      | （可选）详细信息对象。
+categories | `object`    | 顶级对象
+categories[].name     | `string`    | 86 类别分类法列表中的名称。
+categories[].score    | `number`    | 置信度评分，介于 0 和 1 之间。
+categories[].detail     | `object?`      | （可选）详细信息对象。
 
 如果多个类别匹配（例如，86 类别分类器在 model=celebrities 时同时返回“people_”和“people_young”的评分），则详细信息将附加到最宽泛级别的匹配项（在该示例中为“people_”）。
 

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4122e575fc7823fd2e79a26f210f06e5c1b0a835
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e114bf3a87f3018cc51c5752d57ce5911053542f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857987"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118400"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
 
@@ -42,21 +42,21 @@ ms.locfileid: "82857987"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。 
 
-2. 选择“创建资源”   >   “数据库” >   “Azure Cosmos DB”。 
+2. 选择“创建资源” > “数据库” > “Azure Cosmos DB”。 
 
-3. 在“新建帐户”窗格上，输入新 Azure Cosmos 帐户的设置。  
+3. 在“新建帐户”窗格上，输入新 Azure Cosmos 帐户的设置。 
 
    |设置   |建议的值  |说明  |
    |---------|---------|---------|
    |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmosdb.azure.com 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
-   |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库  。  |
+   |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库。  |
    |订阅    |  订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
-   |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称  。 为简单起见，可以使用与 ID 相同的名称。    |
+   |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。    |
    |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
 
-   ![使用门户创建帐户](./media/create-cassandra-api-account-java/create-account.png)
+   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="使用门户创建帐户":::
 
-4. 选择“创建”  。 <br/>创建帐户需要几分钟时间。 创建资源后，可以在门户右侧看到“部署成功”  通知。
+4. 选择“创建”。 <br/>创建帐户需要几分钟时间。 创建资源后，可以在门户右侧看到“部署成功”通知。
 
 ## <a name="get-the-connection-details-of-your-account"></a>获取帐户的连接详细信息  
 
@@ -64,9 +64,9 @@ ms.locfileid: "82857987"
 
 1. 从 [Azure 门户](https://portal.azure.com/)转到 Azure Cosmos 帐户。 
 
-2. 打开“连接字符串”  窗格。  
+2. 打开“连接字符串”窗格。  
 
-3. 复制接触点、端口、用户名以及主密码值，以便在后续步骤中使用     。
+3. 复制接触点、端口、用户名以及主密码值，以便在后续步骤中使用   。
 
 ## <a name="create-the-project-and-the-dependencies"></a>创建项目和依赖项 
 
@@ -219,7 +219,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
 
    终端窗口会显示通知，指出密钥空间和表已创建。 
    
-2. 现在在 Azure 门户中，打开“数据资源管理器”以确认是否已创建键空间和表  。
+2. 现在在 Azure 门户中，打开“数据资源管理器”以确认是否已创建键空间和表。
 
 ## <a name="next-steps"></a>后续步骤
 

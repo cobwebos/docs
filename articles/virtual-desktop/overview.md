@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 61162a0e2e95a08547848f286f2db489f4b9d963
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929819"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737013"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -22,7 +22,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 下面是在 Azure 中运行 Windows 虚拟桌面时可以执行的操作：
 
 * 设置多会话 Windows 10 部署，使整个 Windows 10 操作系统获得可伸缩性
-* 虚拟化 Office 365 ProPlus，并将其优化为可在多用户虚拟方案中运行
+* 虚拟化 Microsoft 365 应用企业版，并对其进行优化，使其可在多用户虚拟场景中运行
 * 为 Windows 7 虚拟桌面提供免费的扩展安全更新
 * 将现有的远程桌面服务 (RDS) 和 Windows Server 桌面与应用迁移到任何计算机
 * 虚拟化桌面和应用
@@ -109,11 +109,11 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
-|*.microsoftonline.com|443|向 MS Online Services 进行的身份验证|无|
+|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|无|
 |*.events.data.microsoft.com|443|遥测服务|无|
 |www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|无|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|无|
-|login.windows.net|443|登录到 MS Online Services、Office 365|无|
+|login.windows.net|443|登录到 Office 365 等 Microsoft Online Services|无|
 |*.sfx.ms|443|OneDrive 客户端软件更新|无|
 |*.digicert.com|443|证书吊销检查|无|
 

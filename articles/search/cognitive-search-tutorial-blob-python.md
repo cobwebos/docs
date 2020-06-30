@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/26/2020
+ms.date: 06/12/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 350bc92193a27b595158f65b6ae54edc1c934e35
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 2f650681742b2d91396ad41aeb69505c703cd3ac
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608785"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753036"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 Python 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -43,9 +43,9 @@ ms.locfileid: "84608785"
 
 ## <a name="download-files"></a>下载文件
 
-1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。  
+1. 打开此 [OneDrive 文件夹](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然后单击左上角的“下载”将文件复制到计算机。 
 
-1. 右键单击 zip 文件并选择“全部提取”。  有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
+1. 右键单击 zip 文件并选择“全部提取”。 有 14 个不同类型的文件。 本练习将使用其中的 7 个文件。
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
@@ -55,31 +55,31 @@ ms.locfileid: "84608785"
 
 ### <a name="start-with-azure-storage"></a>从 Azure 存储开始
 
-1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。 
+1. [登录到 Azure 门户](https://portal.azure.com/)并单击“+ 创建资源”。
 
-1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。 
+1. 搜索“存储帐户”，并选择“Microsoft 的存储帐户”产品/服务。
 
    ![创建存储帐户](media/cognitive-search-tutorial-blob/storage-account.png "创建存储帐户")
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   + 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
    + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
    + **位置**。 如果可能，请选择 Azure 认知搜索和认知服务所用的相同位置。 使用一个位置可以避免带宽费用。
 
-   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”  。
+   + **帐户类型**。 选择默认设置“StorageV2 (常规用途 v2)”。
 
-1. 单击“查看 + 创建”以创建服务。 
+1. 单击“查看 + 创建”以创建服务。
 
-1. 创建后，单击“转到资源”打开“概述”页。 
+1. 创建后，单击“转到资源”打开“概述”页。
 
-1. 单击“Blob”服务。 
+1. 单击“Blob”服务。
 
-1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。 
+1. 单击“+ 容器”创建容器，并将其命名为 *cog-search-demo*。
 
-1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。   选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。 
+1. 选择“cog-search-demo”，然后单击“上传”打开下载文件所保存到的文件夹。 选择所有的非图像文件。 应有 7 个文件。 单击“确定”以上传。
 
    ![上传示例文件](media/cognitive-search-tutorial-blob/sample-files.png "上传示例文件")
 
@@ -87,12 +87,12 @@ ms.locfileid: "84608785"
 
    1. 向后浏览到存储帐户的“概述”页（我们使用了 *blobstragewestus* 作为示例）。 
    
-   1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。  
+   1. 在左侧导航窗格中，选择“访问密钥”并复制其中一个连接字符串。 
 
    连接字符串是类似于以下示例的 URL：
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 1. 将连接字符串保存到记事本中。 稍后在设置数据源连接时需要用到它。
@@ -101,7 +101,7 @@ ms.locfileid: "84608785"
 
 AI 扩充由认知服务（包括用于自然语言和图像处理的文本分析与计算机视觉）提供支持。 如果你的目标是完成实际原型或项目，则此时应预配认知服务（在 Azure 认知搜索所在的同一区域中），以便可将认知服务附加到索引操作。
 
-但是，对于本练习，可以跳过资源预配，因为 Azure 认知搜索在幕后可以连接到认知服务，并为每个索引器运行提供 20 个免费事务。 由于本教程使用 7 个事务，因此免费的分配已足够。 对于大型项目，请计划在即用即付 S0 层预配认知服务。 有关详细信息，请参阅[附加认知服务](cognitive-search-attach-cognitive-services.md)。
+由于本教程仅使用 7 个事务，因此可跳过资源预配，因为 Azure 认知搜索可连接到认知服务，并为每个索引器运行提供 20 个免费事务。 免费分配已经足够。 对于大型项目，请计划在即用即付 S0 层预配认知服务。 有关详细信息，请参阅[附加认知服务](cognitive-search-attach-cognitive-services.md)。
 
 ### <a name="azure-cognitive-search"></a>Azure 认知搜索
 
@@ -111,9 +111,9 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>获取 Azure 认知搜索的管理 API 密钥和 URL
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取搜索服务的名称。  可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.windows.net`，则服务名称为 `mydemo`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取搜索服务的名称。 可以通过查看终结点 URL 来确认服务名称。 如果终结点 URL 为 `https://mydemo.search.windows.net`，则服务名称为 `mydemo`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
@@ -159,7 +159,7 @@ params = {
 
 ## <a name="3---create-the-pipeline"></a>3 - 创建管道
 
-在 Azure 认知搜索中，AI 处理是在索引编制（或数据引入）期间发生的。 本演练部分将创建四个对象：数据源、索引定义、技能集和索引器。 
+在 Azure 认知搜索中，AI 处理是在索引编制（或数据引入）期间发生的。 本演练部分将创建 4 个对象：数据源、索引定义、技能集和索引器。 
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
 
@@ -188,13 +188,13 @@ print(r.status_code)
 
 请求应返回状态代码 201，确认成功。
 
-在 Azure 门户中，在搜索服务仪表板页面上，验证 cogsrch-py-datasource 是否出现在“数据源”列表中  。 单击“刷新”更新页面  。
+在 Azure 门户中，在搜索服务仪表板页面上，验证 cogsrch-py-datasource 是否出现在“数据源”列表中。 单击“刷新”更新页面。
 
 ![门户中的“数据源”磁贴](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "门户中的“数据源”磁贴")
 
 ### <a name="step-2-create-a-skillset"></a>步骤 2：创建技能集
 
-在此步骤中，你将定义一组要应用到数据的扩充步骤。 每个扩充步骤称为“技能”，一组扩充步骤称为“技能集”。   本教程对技能集使用以下[内置认知技能](cognitive-search-predefined-skills.md)：
+在此步骤中，你将定义一组要应用到数据的扩充步骤。 每个扩充步骤称为“技能”，一组扩充步骤称为“技能集”。  本教程对技能集使用以下[内置认知技能](cognitive-search-predefined-skills.md)：
 
 + [实体识别](cognitive-search-skill-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
 
@@ -220,12 +220,14 @@ skillset_payload = {
             "defaultLanguageCode": "en",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
                 {
-                    "name": "organizations", "targetName": "organizations"
+                    "name": "organizations", 
+                    "targetName": "organizations"
                 }
             ]
         },
@@ -233,7 +235,8 @@ skillset_payload = {
             "@odata.type": "#Microsoft.Skills.Text.LanguageDetectionSkill",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/content"
+                    "name": "text", 
+                    "source": "/document/content"
                 }
             ],
             "outputs": [
@@ -269,10 +272,12 @@ skillset_payload = {
             "context": "/document/pages/*",
             "inputs": [
                 {
-                    "name": "text", "source": "/document/pages/*"
+                    "name": "text", 
+                    "source": "/document/pages/*"
                 },
                 {
-                    "name": "languageCode", "source": "/document/languageCode"
+                    "name": "languageCode", 
+                    "source": "/document/languageCode"
                 }
             ],
             "outputs": [
@@ -378,9 +383,9 @@ print(r.status_code)
 
 要在索引器中将这些对象捆绑在一起，必须定义字段映射。
 
-+ 先处理 fieldMapping，再处理技能集；将数据源中的源字段映射到索引中的目标字段。 如果两端的字段名称和类型相同，则无需映射。
++ 先处理 `"fieldMappings"`，再处理技能集；将数据源中的源字段映射到索引中的目标字段。 如果两端的字段名称和类型相同，则无需映射。
 
-+ 先处理技能集，再处理 outputFieldMapping；引用不存在的 sourceFieldName，直到文档破解或扩充功能创建了它们。 targetFieldName 是索引中的字段。
++ 先处理技能集，再处理 `"outputFieldMappings"`；引用不存在的 `"sourceFieldNames"`，直到文档破解或扩充功能创建了它们。 `"targetFieldName"` 是索引中的字段。
 
 除了将输入挂接到输出以外，还可以使用字段映射来平展数据结构。 有关详细信息，请参阅[如何将扩充字段映射到可搜索索引](cognitive-search-output-field-mapping.md)。
 
@@ -465,7 +470,7 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-在响应中，监视 lastResult 的 status 和 endTime 值。 定期运行脚本以检查状态。 索引器完成后，状态将设置为 success ，将指定 endTime，响应将包括在扩充期间发生的任何错误和警告。
+在响应中，监视 `"lastResult"` 的 `"status"` 和 `"endTime"` 值。 定期运行脚本以检查状态。 索引器完成后，状态将设置为 success ，将指定 endTime，响应将包括在扩充期间发生的任何错误和警告。
 
 ![已创建索引器](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "已创建索引器")
 
@@ -505,7 +510,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 ![查询组织内容的索引](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "查询索引以返回组织内容")
 
-针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
+对其他字段重复此操作，在本练习中这些字段是 `content`、`languageCode`、`keyPhrases` 和 `organizations`。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
 
 可以根据查询字符串的复杂性和长度，使用 GET 或 POST。 有关详细信息，请参阅[使用 REST API 进行查询](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 

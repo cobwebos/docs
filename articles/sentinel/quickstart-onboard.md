@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: a581288259a521f8f2f93ff3fbc16f4926486643
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488114"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771166"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入门：载入 Azure Sentinel
 
@@ -43,7 +43,7 @@ ms.locfileid: "84488114"
 
 1. 登录到 Azure 门户。 确保已选中在其中创建 Azure Sentinel 的订阅。
 
-1. 搜索“Azure Sentinel”并将其选中。。
+1. 搜索“Azure Sentinel”并将其选中。
 
    ![搜索](./media/quickstart-onboard/search-product.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "84488114"
    > - Azure Sentinel 可在 [Log Analytics 的任何 GA 区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)的工作区中运行，但中国和德国（主权）区域除外。 Azure Sentinel 生成的数据（如事件、书签和警报规则，其中可能包含源自这些工作区的某些客户数据）将保存在欧洲（适用于位于欧洲的工作区）、澳大利亚（适用于位于澳大利亚的工作区）或美国东部（适用于位于其他区域的工作区）。
 
    >[!IMPORTANT]
-   > - 在工作区上启用 Azure Sentinel 后，不支持将该工作区移动到其他资源组或订阅。 如果需要移动工作区，请联系支持人员以获得指导。
+   > - 在工作区上启用 Azure Sentinel 后，不支持将该工作区移动到其他资源组或订阅。 如果需要移动工作区，请联系 [Azure Sentinel](mailto:AzureSentinel@microsoft.com)。
 
 1. 选择“添加 Azure Sentinel”。
   

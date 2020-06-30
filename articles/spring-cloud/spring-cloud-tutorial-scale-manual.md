@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: f08a3b5d0a03b0e898457bbb783dd5031c4b0f27
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76277475"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84792058"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中缩放应用程序
 
@@ -33,15 +33,15 @@ ms.locfileid: "76277475"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 转到 Azure Spring Cloud 的“概览”页  。
+1. 转到 Azure Spring Cloud 的“概览”页。
 
 1. 选择包含服务的资源组。
 
-1. 在页面左侧菜单中的“设置”下选择“应用”选项卡。  
+1. 在页面左侧菜单中的“设置”下选择“应用”选项卡。 
 
-1. 选择要缩放的应用程序。 在此示例中，选择名为 **account-service** 的应用程序。 然后会看到应用程序的“概览”页。 
+1. 选择要缩放的应用程序。 在此示例中，选择名为 **account-service** 的应用程序。 然后会看到应用程序的“概览”页。
 
-1. 转到页面左侧菜单中的“设置”下的“缩放”选项卡。   你应会看到以下部分中所示的缩放属性的选项。
+1. 转到页面左侧菜单中的“设置”下的“缩放”选项卡。  你应会看到以下部分中所示的缩放属性的选项。
 
 ## <a name="scale-your-application"></a>缩放应用程序
 
@@ -53,11 +53,14 @@ ms.locfileid: "76277475"
 
 * **应用实例计数**：在“标准”层中，最多可横向扩展到 20 个实例。 此值更改微服务应用程序的单独运行实例的数目。
 
-确保选择“保存”，以应用缩放设置。 
+确保选择“保存”，以应用缩放设置。
 
 ![Azure 门户中的缩放服务](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
-数秒钟后，所做的更改会显示在“概览”页上，更多详细信息在“应用程序实例”选项卡中提供。   缩放不需任何代码更改或重新部署。
+数秒钟后，所做的更改会显示在“概览”页上，更多详细信息在“应用程序实例”选项卡中提供。 缩放不需任何代码更改或重新部署。
+
+## <a name="upgrade-to-the-standard-tier"></a>升级到标准层
+如果在使用基本层，且受其中一项或多项[限制](spring-cloud-quotas.md)约束，则可升级到标准层。 若要执行此操作，请先选择“标准层”列，然后单击“升级”按钮，转到“定价层”菜单。
 
 ## <a name="next-steps"></a>后续步骤
 

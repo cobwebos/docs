@@ -4,12 +4,12 @@ description: 使用 Azure CLI 在 Azure 中的可缩放高级计划中创建函�
 ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
-ms.openlocfilehash: dd31dbadce4f0a55853607504b4322277784f27f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3587e5b5e46867ff3abe97b3593c9732be3afa22
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74534584"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117212"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>在高级计划中创建函数应用 - Azure CLI
 
@@ -37,7 +37,7 @@ ms.locfileid: "74534584"
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 创建 Azure 存储帐户。 |
-| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 创建高级计划。 |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | 在[特定 SKU](../functions-premium-plan.md#available-instance-skus) 中创建高级计划。 |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在应用服务计划中创建函数应用。 |
 
 ## <a name="next-steps"></a>后续步骤

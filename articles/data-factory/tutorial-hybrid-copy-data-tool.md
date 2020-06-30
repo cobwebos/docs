@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/09/2018
-ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/09/2020
+ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194596"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660944"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -146,18 +146,15 @@ ms.locfileid: "84194596"
 
 1. 在“源数据存储”页面上，单击“创建新连接”。
 
-
 1. 在“新建链接服务”下，搜索“SQL Server”，然后选择“继续”。
 
 1. 在“新建链接服务(SQL Server)”对话框中的“名称”下输入“SqlServerLinkedService”  。 在“通过集成运行时连接”下选择“+新建”。  必须创建自承载的 Integration Runtime，将其下载到计算机，然后将其注册到数据工厂。 自承载的 Integration Runtime 时可在本地环境与云之间复制数据。
 
+1. 在“集成运行时安装”对话框中选择“自承载”。  然后选择“继续”。
 
-1. 在“集成运行时安装”对话框中选择“自承载”。  然后，选择“下一步”。
+   ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-   ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
-
-1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。  然后，选择“下一步”。
-
+1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。  然后选择“创建”。
 
 1. 在“集成运行时安装”对话框中，选择“单击此处对此计算机启动快速安装”。  此操作在计算机上安装集成运行时，并将其注册到数据工厂。 或者，可以使用手动安装选项来下载安装文件、运行该文件，并使用密钥来注册集成运行时。
 
@@ -216,20 +213,17 @@ ms.locfileid: "84194596"
 
 1. 在“摘要”对话框中，复查所有设置的值，然后选择“下一步”。 
 
-1. 在“部署”页中，选择“监视”可以监视创建的管道或任务。 
+1. 在“部署”页中，选择“监视”可以监视管道（任务） 。 
 
-   ![“部署”页](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+1. 管道运行完成后，可以查看所创建的管道的状态。 
 
-1. 在“监视”选项卡中，可以查看创建的管道的状态。 可以使用“操作”列中的链接查看与管道运行关联的活动运行，以及重新运行管道。
+1. 在“管道运行”页上，选择“刷新”来刷新列表。 单击“管道名称”下的链接，查看活动运行详细信息或重新运行管道。 
 
-1. 选择“操作”列中的“查看活动运行”链接可以查看与管道运行关联的活动运行。  若要查看复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。  若要切换回“管道运行”视图，请选择顶部的“管道运行” 。
+1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息。 若要回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
 
 1. 确认可以在 **adftutorial** 容器的 **fromonprem** 文件夹中看到输出文件。
 
-
 1. 选择左侧的“编辑”选项卡可以切换到编辑器模式。 可以使用编辑器来更新该工具创建的链接服务、数据集和管道。 选择“代码”可以查看与编辑器中打开的实体相关联的 JSON 代码。 有关如何在数据工厂 UI 中编辑这些实体的详细信息，请参阅[此教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
-
-   ![“编辑”选项卡](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>后续步骤

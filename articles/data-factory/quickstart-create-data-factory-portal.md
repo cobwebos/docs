@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248526"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655792"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂
 
@@ -42,8 +42,6 @@ ms.locfileid: "84248526"
 1. 启动 **Microsoft Edge** 或 **Google Chrome** Web 浏览器。 目前，仅 Microsoft Edge 和 Google Chrome Web 浏览器支持数据工厂 UI。
 1. 转到 [Azure 门户](https://portal.azure.com)。 
 1. 在 Azure 门户菜单中，选择“创建资源”。
-   
-   ![在 Azure 门户菜单中，选择“创建资源”](./media/doc-common-process/create-a-resource.png)
 1. 选择“分析”，然后选择“数据工厂” 。 
    
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ ms.locfileid: "84248526"
 ## <a name="create-a-linked-service"></a>创建链接服务
 在此过程中，请创建一个链接服务，将 Azure 存储帐户链接到数据工厂。 链接服务包含的连接信息可供数据工厂服务用来在运行时连接到它。
 
-1. 选择“连接”，然后选择工具栏上的“新建”按钮（“连接”按钮位于左栏底部的“工厂资源”下）。 
+1. 从左窗格打开[“管理”选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
+1. 在“链接服务”页上，选择“+ 新建”以创建新的链接服务。
+
+   ![新建链接服务](./media/doc-common-process/new-linked-service.png)
+   
 1. 在“新建链接服务”页中，选择“Azure Blob 存储”，然后选择“继续”。   
 
 1. 在“新建链接服务(Azure Blob 存储)”页上，完成以下步骤： 

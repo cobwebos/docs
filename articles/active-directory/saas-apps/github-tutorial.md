@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1da910cbf700845bdb6d5c07a6ee375a73579e75
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456838"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253727"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
 
@@ -58,7 +58,6 @@ ms.locfileid: "84456838"
 1. 在“从库中添加”部分中，在搜索框中键入“GitHub” 。
 1. 从结果面板中选择“GitHub”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>配置并测试 GitHub 的 Azure AD 单一登录
 
 使用名为 **B.Simon** 的测试用户配置并测试 GitHub 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 GitHub 中的相关用户之间建立链接关系。
@@ -84,14 +83,17 @@ ms.locfileid: "84456838"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-   a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>/sso`
+   a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/sso`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>`
+
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/saml/consume`
+
 
     > [!NOTE]
-    > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。
+    > 请注意，这些不是实际值。 必须使用实际登录 URL、标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。
 
-5. GitHub 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 GitHub 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
+5. GitHub 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中“唯一用户标识符(名称 ID)”通过 user.userprincipalname 进行映射 。 GitHub 应用程序要求通过 user.mail 对“唯一用户标识符(名称 ID)”进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射  。
 
     ![image](common/edit-attribute.png)
 
@@ -141,15 +143,19 @@ ms.locfileid: "84456838"
 
 ## <a name="configure-github-sso"></a>配置 GitHub SSO
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 GitHub 组织站点。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 GitHub 组织站点。
 
 2. 导航“设置”并单击“安全性”。 
 
     ![设置](./media/github-tutorial/tutorial_github_config_github_03.png)
 
-3. 选中“启用 SAML 身份验证”框，显示“单一登录”配置字段。 然后，使用单一登录 URL 值更新 Azure AD 配置中的单一登录 URL。
+3. 选中“启用 SAML 身份验证”框，显示“单一登录”配置字段。 执行以下步骤：
 
     ![设置](./media/github-tutorial/tutorial_github_config_github_13.png)
+
+    a. 复制“单一登录 URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”的“登录 URL”文本框中  。
+    
+    b. 复制“断言使用者服务 URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”的“回复 URL”文本框中  。
 
 4. 配置以下字段：
 

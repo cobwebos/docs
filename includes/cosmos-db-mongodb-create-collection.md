@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 0f471c5aefdb39396ea189984d32a9e8f5419182
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200350"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85121462"
 ---
 现在可以在 Azure 门户中使用数据资源管理器工具来创建用于 MongoDB 数据库和容器的 Azure Cosmos DB API。 
 
@@ -21,7 +21,7 @@ ms.locfileid: "84200350"
     
     “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。
 
-    ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png)
+    :::image type="content" source="./media/cosmos-db-create-collection/azure-cosmosdb-mongodb-data-explorer.png" alt-text="Azure 门户 >“数据资源管理器”>“添加集合”窗格":::
 
 2. 在“添加容器”页中，输入新容器的设置。
 

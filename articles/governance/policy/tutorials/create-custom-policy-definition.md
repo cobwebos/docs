@@ -1,14 +1,14 @@
 ---
 title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
-ms.date: 05/20/2020
+ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8702e84923762b2f417eee882a473228d6bafb8
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683253"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888142"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -171,6 +171,9 @@ GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quicksta
 ### <a name="get-aliases-in-vs-code-extension"></a>在 VS Code 扩展中获取别名
 
 利用适用于 VS Code 扩展的 Azure Policy 扩展，可轻松浏览资源并[发现别名](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)。
+
+> [!NOTE]
+> VS Code 扩展只公开资源管理器模式属性，不会显示任何[资源提供程序模式](../concepts/definition-structure.md#mode)属性。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 05/04/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: f0d45c9dd8dc33226ca75fe34467a8695c8aae4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778815"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743909"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -40,13 +40,13 @@ PAL 使 Microsoft 能够识别哪些合作伙伴促成了 Azure 客户的成功�
 
 1. 可以在 Azure 门户中[链接到合作伙伴 ID](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade)。
 
-2. 登录到 Azure 门户。  
+2. 登录到 Azure 门户。
 
 3. 输入 Microsoft 合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
 
    ![显示链接到合作伙伴 ID 的屏幕截图](./media/link-partner-id/link-partner-id01.png)
 
-4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录  。
+4. 若要链接另一个客户的合作伙伴 ID，请切换目录。 在“切换目录”下，选择你的目录。
 
    ![显示“切换”目录的屏幕截图](./media/link-partner-id/directory-switcher.png)
 
@@ -160,4 +160,17 @@ C:\ az managementpartner delete --partner-id 12345
 **如果我的公司使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 访问客户资源，则如何关联我的合作伙伴 ID？**
 
 如果[将托管服务套餐发布到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，以便将客户加入 Azure 委托的资源管理，则 MPN ID 会自动进行关联。 如果[通过部署 Azure 资源管理器模板来加入客户](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，则需将 Microsoft 合作伙伴网络 (MPN) ID 与至少一个可访问每个载入的订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中这样做。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并授予它对你载入的每个客户的“读者”访问权限。 在此示例中，我们使用了“RBAC 读者”角色，它是没资格获得“合作伙伴赚取的返点”的角色之一。 有关角色的更多信息，请参阅[与合作伙伴赚取的返点相关的角色和权限](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3QuW2)。
+
+
+如何向客户说明合作伙伴管理链接 (PAL)？
+
+通过合作伙伴管理链接 (PAL)，Microsoft 可以确定并识别在帮助客户实现业务目标并实现云中价值的合作伙伴。 客户必须先向合作伙伴提供对其 Azure 资源的访问权限。 授予访问权限后，合作伙伴的 Microsoft 合作伙伴网络 ID (MPN ID) 会进行关联。 此关联可帮助 Microsoft 了解 IT 服务提供商的生态系统，并优化为共同客户提供最佳支持所需的工具和程序。
+
+PAL 收集哪些数据？
+
+与现有凭据的 PAL 关联不向 Microsoft 提供任何新的客户数据。 它只是向 Microsoft 提供遥测，合作伙伴可在其中积极参与客户的 Azure 环境。 Microsoft 可以根据客户向合作伙伴提供的帐户权限（RBAC 角色）和范围（管理组、订阅、资源组、资源），将来自客户环境的影响力和 Azure 消费收入归结于合作伙伴组织。 
+
+这是否会影响客户的 Azure 环境的安全性？
+
+PAL 关联只会将合作伙伴的 MPN ID 添加到已玉佩的凭据，而不会更改任何权限（RBAC 角色），也不会向合作伙伴或 Microsoft 提供额外的 Azure 服务数据。 
 

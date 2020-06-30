@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure CLI 运行批处理作业。 从命�
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: a4d2e791d810a55b765669c8e909cf448a68fc99
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266893"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262678"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Batch 帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "84266893"
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-storage-account"></a>创建存储帐户
+## <a name="create-a-batch-account-with-storage"></a>使用存储创建批处理帐户
 
 ### <a name="review-the-template"></a>查看模板
 

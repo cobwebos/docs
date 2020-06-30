@@ -1,23 +1,23 @@
 ---
-title: Azure Front Door | Microsoft Docs
-description: 本文提供 Azure Front Door 的概述。 了解它是否是针对应用程序进行用户流量负载均衡的正确选择。
+title: 配置规则引擎 - Azure Front Door
+description: 本文介绍如何为 Azure Front Door 配置规则引擎
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4574597c0b93f2985953bfbc815cca220ecc4f28
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515862"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743552"
 ---
 # <a name="configure-your-rules-engine"></a>配置规则引擎 
 
@@ -28,24 +28,24 @@ ms.locfileid: "82515862"
 ## <a name="configure-rules-engine-in-azure-portal"></a>在 Azure 门户中配置规则引擎 
 1. 在创建规则引擎配置之前，[创建一个 Front Door](quickstart-create-front-door.md)。
 
-2. 在你的 Front Door 资源中，转到“设置”，然后选择“规则引擎配置”。   单击“添加”，为配置命名，然后开始创建你的第一个规则引擎配置。  
+2. 在你的 Front Door 资源中，转到“设置”，然后选择“规则引擎配置”。  单击“添加”，为配置命名，然后开始创建你的第一个规则引擎配置。 
 
 ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-3. 单击“添加规则”，创建你的一个规则。  然后即可通过单击“添加条件”或“添加操作”来定义规则。   
+3. 单击“添加规则”，创建你的一个规则。 然后即可通过单击“添加条件”或“添加操作”来定义规则。  
     
-    注意： 
+    注意：
     - 若要从规则中删除条件或操作，请使用特定条件或操作右侧的垃圾桶。
     - 若要创建适用于所有传入流量的规则，请不要指定任何条件。 
-    - 若要在满足第一个匹配条件后停止对规则进行评估，请选中“停止评估规则”  。 
+    - 若要在满足第一个匹配条件后停止对规则进行评估，请选中“停止评估规则”。 
 
 ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-4.png)
 
 4. 使用“上移”、“下移”和“移至顶部”按钮来确定配置中的规则的优先级。 优先级按升序排序，即首先列出的规则是最重要的规则。 
 
-5. 创建一个或多个规则后，按“保存”  。 此操作将创建规则引擎配置。 
+5. 创建一个或多个规则后，按“保存”。 此操作将创建规则引擎配置。 
 
-6. 创建一个或多个配置后，请将规则引擎配置与路由规则关联起来。 虽然一个配置可以应用于多个路由规则，但一个路由规则只能包含一个规则引擎配置。 若要进行关联，请转到“Front Door 设计器”   >   “路由规则”。 选择要向其中添加规则引擎配置的路由规则，转到“路由详细信息”   >   “规则引擎配置”，然后选择要关联的配置。 
+6. 创建一个或多个配置后，请将规则引擎配置与路由规则关联起来。 虽然一个配置可以应用于多个路由规则，但一个路由规则只能包含一个规则引擎配置。 若要进行关联，请转到“Front Door 设计器” > “路由规则”。 选择要向其中添加规则引擎配置的路由规则，转到“路由详细信息” > “规则引擎配置”，然后选择要关联的配置。 
 
 ![找到规则引擎](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 

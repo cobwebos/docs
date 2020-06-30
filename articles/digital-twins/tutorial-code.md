@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 7e057d6d973eedd3ac53fd7b2ea228470e9123d7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: f36a41a1151255e792281ae959d40ce183040cb5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611480"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737132"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>使用 Azure 数字孪生 API 编写代码
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 开发人员使用 Azure 数字孪生编写客户端应用程序，以与其 Azure 数字孪生服务实例交互，这是很常见的情况。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure IoT 数字孪生客户端库 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
 
@@ -99,8 +102,8 @@ using Azure.Identity;
 
 为进行身份验证，需要以下三条信息：
 * 订阅的目录（租户）ID
-* 在之前设置服务实例时创建的应用程序（客户端）ID
-* 服务实例的主机名
+* 在之前设置 Azure 数字孪生实例时创建的应用程序（客户端）ID
+* Azure 数字孪生实例的 hostName
 
 >[!TIP]
 > 如果不知道自己的目录（租户）ID，可以在 [Azure Cloud Shell](https://shell.azure.com) 中运行以下命令来获取该 ID：

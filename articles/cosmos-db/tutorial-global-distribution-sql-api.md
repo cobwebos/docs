@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 1b4c9aff6889d7c95d82470a2db57ddc14103edc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d50217bed3850f0e9021dda4bf1b577d006839d1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561585"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674476"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>教程：使用 SQL API 设置 Azure Cosmos DB 全局分发
 
@@ -111,18 +111,17 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v4-sdk"></a>Java V4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a> Java V4 SDK
 
 以下代码演示如何使用 Java SDK 设置首选位置：
 
-### <a id="java4-preferred-locations"></a>
-#### <a name="async"></a>[异步](#tab/api-async)
+# <a name="async"></a>[异步](#tab/api-async)
 
    [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 异步 API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
 
-#### <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Sync](#tab/api-sync)
 
    [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) 同步 API
 

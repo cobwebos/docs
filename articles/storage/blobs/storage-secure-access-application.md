@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac9bf7edf6e3973dd2f1f917d26ac280be4648e3
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061331"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945641"
 ---
 # <a name="secure-access-to-application-data"></a>安全访问应用程序数据
 
@@ -43,7 +43,7 @@ ms.locfileid: "80061331"
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -135,11 +135,13 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 |[UriBuilder](/dotnet/api/system.uribuilder) | [查询](/dotnet/api/system.uribuilder.query) |  |
 |[列表](/dotnet/api/system.collections.generic.list-1) | | [添加](/dotnet/api/system.collections.generic.list-1.add) |
 
-## <a name="server-side-encryption"></a>服务器端加密
+## <a name="azure-storage-encryption"></a>Azure 存储加密
 
-[Azure 存储服务加密 (SSE)](../common/storage-service-encryption.md) 可帮助你保护数据。 SSE 加密静态数据，处理加密、解密和密钥管理。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
+[Azure 存储加密](../common/storage-service-encryption.md)通过加密静态数据以及处理加密和解密来帮助你的保护数据。 采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。
 
-SSE 自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）、所有 Azure 存储服务（Blob、队列、表和文件）中的数据。 
+可以选择让 Microsoft 管理加密密钥，也可以使用 Azure Key Vault 客户托管的密钥实现自带密钥。 有关详细信息，请参阅[使用 Azure Key Vault 客户托管的密钥管理 Azure 存储加密](../common/encryption-customer-managed-keys.md)。
+
+Azure 存储加密自动加密所有性能层（标准和高级）、所有部署模型（Azure 资源管理器和经典）以及所有 Azure 存储服务（Blob、队列、表和文件）中的数据。
 
 ## <a name="enable-https-only"></a>仅启用 HTTPS
 

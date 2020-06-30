@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 9257a87c69e98db1107528551fe9ce0553c50f75
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b85a70b6d2feba68ed5a766ad05bc6aa22f597f8
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858154"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114684"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 
@@ -84,9 +84,9 @@ ms.locfileid: "82858154"
 
 1. 在浏览器中导航到 `http://localhost:3000` 即可查看新应用程序。
    
-   ![了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
+   :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-express.png" alt-text="了解 Node.js - 浏览器窗口中 Hello World 应用程序的屏幕截图":::
 
-   停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。 
+   停止应用程序的方法是先在终端窗口中按 CTRL+C，然后选择“y”终止批处理作业。
 
 ## <a name="install-the-required-modules"></a><a name="_Toc395783179"></a>安装所需的模块
 
@@ -106,7 +106,7 @@ ms.locfileid: "82858154"
 
 2. 在 **models** 目录中，创建一个名为 **taskDao.js** 的新文件。 此文件包含创建数据库和容器所需的代码， 并定义在 Azure Cosmos DB 中读取、更新、创建和查找任务所需的方法。 
 
-3. 将以下代码复制到“taskDao.js”  文件中：
+3. 将以下代码复制到“taskDao.js”文件中：
 
    ```javascript
     // @ts-check
@@ -438,20 +438,20 @@ ms.locfileid: "82858154"
 
 1. 若要在本地计算机上测试应用程序，请在终端中运行 `npm start` 以启动应用程序，然后刷新 `http://localhost:3000` 浏览器页。 该页现在应该如以下屏幕截图所示：
    
-    ![浏览器窗口中 MyTodo List 应用程序的屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="浏览器窗口中“我的待办事项列表”应用程序的屏幕截图":::
 
     > [!TIP]
     > 如果收到有关 layout.jade 文件或 index.jade 文件的缩进错误，请确保这两个文件中的头两行都已经左对齐，没有空格。 如果头两行之前留有空格，请删除这些空格，将这两个文件保存，然后刷新浏览器窗口。 
 
-2. 使用“项”、“项名”和“类别”字段输入新任务，然后选择“添加项”。  此时会在 Azure Cosmos DB 中创建具有这些属性的文档。 
+2. 使用“项”、“项名”和“类别”字段输入新任务，然后选择“添加项”。 此时会在 Azure Cosmos DB 中创建具有这些属性的文档。 
 
 3. 页面应更新为在 ToDo 列表中显示新建项。
    
-    ![ToDo 列表中具有新的项的应用程序屏幕截图](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="待办事项列表中有新的项的应用程序屏幕截图":::
 
-4. 若要完成任务，请选中“完成”列中的复选框，然后选择“更新任务”  。 此时会更新已创建的文档并将其从视图中删除。
+4. 若要完成任务，请选中“完成”列中的复选框，然后选择“更新任务”。 此时会更新已创建的文档并将其从视图中删除。
 
-5. 若要停止应用程序，请在终端窗口中按 CTRL+C，然后选择“Y”以终止批处理作业。 
+5. 若要停止应用程序，请在终端窗口中按 CTRL+C，然后选择“Y”以终止批处理作业。
 
 ## <a name="deploy-your-application-to-web-apps"></a><a name="_Toc395783182"></a>将应用程序部署到 Web 应用
 
@@ -475,7 +475,7 @@ ms.locfileid: "82858154"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos DB 帐户和所有相关的资源时，可将这些资源删除。 为此，请选择用于 Azure Cosmos DB 帐户的资源组，接着选择“删除”  ，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos DB 帐户和所有相关的资源时，可将这些资源删除。 为此，请选择用于 Azure Cosmos DB 帐户的资源组，接着选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>后续步骤
 

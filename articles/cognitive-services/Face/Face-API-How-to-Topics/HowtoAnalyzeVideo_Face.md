@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d52f4ad7be6ce31fd2d01208536945c1f9ab2d7d
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169903"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986721"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>示例：如何实时分析视频
 
@@ -201,22 +201,21 @@ namespace VideoFrameConsoleApplication
 
 若要开始使用此示例，请按照下列步骤操作：
 
-1. 从[订阅](https://azure.microsoft.com/try/cognitive-services/)获取视觉 API 的 API 密钥。 对于视频帧分析，适用的 API 包括：
-    - [计算机视觉 API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [人脸 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-
-2. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库
-
-3. 在 Visual Studio 2015 中打开示例，然后生成并运行示例应用程序：
+1. 创建 [Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。 如果已有帐户，请跳至下一步。
+2. 在 Azure 门户中为计算机视觉和人脸创建资源，以获取密钥和终结点。 请确保在设置过程中选择免费层 (F0)。
+   - [计算机视觉](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [人脸](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) 部署资源后，单击“转到资源”，以收集每项资源的密钥和终结点。 
+3. 克隆 [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub 存储库。
+4. 在 Visual Studio 中打开示例，然后生成并运行示例应用程序：
     - 对于 BasicConsoleSample，人脸密钥直接在  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 中进行硬编码。
     - 对于 LiveCameraSample，应将密钥输入应用的“设置”窗格。 它们将作为用户数据保留在各会话中。
         
 
-当准备好进行集成时，请从你自己的项目中引用 VideoFrameAnalyzer 库。  
+当准备好进行集成时，请从你自己的项目中引用 VideoFrameAnalyzer 库。 
 
 ## <a name="summary"></a>总结
 
-本指南介绍了如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。 可以在 [Azure 认知服务注册页](https://azure.microsoft.com/try/cognitive-services/)上使用免费 API 密钥开始构建应用。 
+本指南介绍了如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。
 
 请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的  [UserVoice 站点](https://cognitive.uservoice.com/)上提供更广泛的 API 反馈。
 

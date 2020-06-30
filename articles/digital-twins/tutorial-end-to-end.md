@@ -8,12 +8,12 @@ ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 0f9ddf2f4fba9e216ef0b5a5747fc32f4288cf67
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: f83eb6a0cab8bdf2f26888f895aeac8a8fa796bb
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737268"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296978"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>扩建端到端解决方案
 
@@ -136,6 +136,8 @@ Query
 > [!NOTE]
 > 你可能会看到如下所示的弹出窗口：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
 > 如果出现弹出窗口，请依次选择“尝试从 Azure 检索凭据”和“保存” 。
+>
+> 若看到“你的 Functions 运行时版本与在 Azure中运行的版本不匹配”警告，请按照提示升级到最新的 Azure Functions 运行时版本。 若使用旧版本的 Visual Studio 而不是本教程开头的“先决条件”部分中推荐的版本，则可能出现此问题。
 
 ### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
 

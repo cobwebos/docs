@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 6abfeb1601c85f9202611b914f9dfd47ac50ea1a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: de1d548be7f426f42b369ae7607bd6f798b42317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560965"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296162"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
@@ -43,25 +43,27 @@ ms.locfileid: "84560965"
 ## <a name="prerequisites"></a>先决条件
 
 * 如果你没有 Azure 机器学习工作区或笔记本虚拟机，请完成[设置教程的第 1 部分](tutorial-1st-experiment-sdk-setup.md)。
-* 完成设置教程后，使用同一笔记本服务器打开 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb  笔记本。
+* 完成设置教程后，使用同一笔记本服务器打开 tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb 笔记本。
 
-如果要在自己的[本地环境](how-to-configure-environment.md#local)中运行设置教程，可以访问 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上的教程。 运行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` 以获取所需的包。
+如果要在自己的[本地环境](how-to-configure-environment.md#local)中运行设置教程，可以访问 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上的教程。 运行 `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` 以获取所需的包。
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>配置工作区并创建数据存储
 
 从现有的 Azure 机器学习工作区创建工作区对象。
-
-- [工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)是可接受 Azure 订阅和资源信息的类。 工作区还可创建用于监视和跟踪模型运行的云资源。 
-- `Workspace.from_config()` 读取 `config.json` 文件并将身份验证详细信息加载到名为 `ws` 的对象中。 本教程中的代码使用 `ws` 对象。
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
+> [!IMPORTANT]
+> 此代码片段需要将工作区配置保存到当前目录或其父目录中。 有关创建工作区的详细信息，请参阅[创建和管理 Azure 机器学习工作区](how-to-manage-workspace.md)。 有关将配置保存到文件的详细信息，请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)。
+
 ## <a name="create-a-datastore-for-sample-images"></a>为示例图像创建数据存储
 
 在 `pipelinedata` 帐户中，从 `sampledata` 公共 Blob 容器获取 ImageNet 评估公共数据示例。 调用 `register_azure_blob_container()` 可使数据可用于名为 `images_datastore` 的工作区。 然后，将工作区的默认数据存储设置为输出数据存储。 使用输出数据存储在管道中为输出评分。
+
+有关访问数据的详细信息，请参阅[如何访问数据](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#python-sdk)。
 
 ```python
 from azureml.core.datastore import Datastore
@@ -82,9 +84,9 @@ def_data_store = ws.get_default_datastore()
 > [!Important]
 > 本教程中的批量评分示例只使用一个管道步骤。 在包含多个步骤的用例中，典型流包括以下步骤：
 >
-> 1. 使用 `Dataset` 对象作为提取原始数据的输入，执行某种转换，然后输出 `PipelineData` 对象。  
+> 1. 使用 `Dataset` 对象作为提取原始数据的输入，执行某种转换，然后输出 `PipelineData` 对象。 
 >
-> 2. 使用上一步骤中的 `PipelineData` 输出对象作为输入对象   。 针对后续步骤重复此过程。
+> 2. 使用上一步骤中的 `PipelineData` 输出对象作为输入对象 。 针对后续步骤重复此过程。
 
 在此场景中，你将创建与输入图像和分类标签（y-test 值）的数据存储目录相对应的 `Dataset` 对象。 此外，将为批量评分输出数据创建一个 `PipelineData` 对象。
 
@@ -93,7 +95,7 @@ from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
-label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
@@ -138,7 +140,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 ## <a name="create-and-attach-the-remote-compute-target"></a>创建并附加远程计算目标
 
-机器学习管道无法在本地运行，因此你需要在云资源或远程计算目标上运行这些管道。  远程计算目标是可重用的虚拟计算环境，可在其中运行试验和机器学习工作流。 
+机器学习管道无法在本地运行，因此你需要在云资源或远程计算目标上运行这些管道。 远程计算目标是可重用的虚拟计算环境，可在其中运行试验和机器学习工作流。 
 
 运行以下代码创建支持 GPU 的 [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) 目标，并将其附加到工作区。 有关计算目标的详细信息，请参阅[概念文章](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)。
 
@@ -167,8 +169,8 @@ except ComputeTargetException:
 
 `batch_scoring.py` 脚本采用以下参数，这些参数将从稍后创建的 `ParallelRunStep` 传递：
 
-- `--model_name`设置用户帐户 ：所用模型的名称。
-- `--labels_name`设置用户帐户 ：保存 `labels.txt` 文件的 `Dataset` 的名称。
+- `--model_name`：所用模型的名称。
+- `--labels_dir`：`labels.txt` 文件的位置。
 
 管道基础结构使用 `ArgumentParser` 类将参数传入管道步骤。 例如，在以下代码中，为第一个参数 `--model_name` 指定了属性标识符 `model_name`。 在 `init()` 函数中，使用 `Model.get_model_path(args.model_name)` 访问此属性。
 
@@ -196,9 +198,10 @@ image_size = 299
 num_channel = 3
 
 
-def get_class_label_dict():
+def get_class_label_dict(labels_dir):
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
+    labels_path = os.path.join(labels_dir, 'labels.txt')
+    proto_as_ascii_lines = tf.gfile.GFile(labels_path).readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
@@ -209,14 +212,10 @@ def init():
 
     parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
     parser.add_argument('--model_name', dest="model_name", required=True)
-    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    parser.add_argument('--labels_dir', dest="labels_dir", required=True)
     args, _ = parser.parse_known_args()
 
-    workspace = Run.get_context(allow_offline=False).experiment.workspace
-    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
-    label_ds.download(target_path='.', overwrite=True)
-
-    label_dict = get_class_label_dict()
+    label_dict = get_class_label_dict(args.labels_dir)
     classes_num = len(label_dict)
 
     with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
@@ -263,14 +262,15 @@ def run(mini_batch):
 
 ## <a name="build-the-pipeline"></a>构建管道
 
-在运行管道之前，请创建一个用于定义 Python 环境的对象，并创建 `batch_scoring.py` 脚本所需的依赖项。 所需的主要依赖项是 Tensorflow，但你还需要为后台进程安装 `azureml-defaults`。 使用依赖项创建 `RunConfiguration` 对象。 另外，指定 Docker 和 Docker-GPU 支持。
+在运行管道之前，请创建一个用于定义 Python 环境的对象，并创建 `batch_scoring.py` 脚本所需的依赖项。 所需的主要依赖项是 Tensorflow，但你还需安装 ParallelRunStep 所需的 `azureml-core` 和 `azureml-dataprep[fuse]`。 另外，指定 Docker 和 Docker-GPU 支持。
 
 ```python
 from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
+cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.15.2",
+                                            "azureml-core", "azureml-dataprep[fuse]"])
 env = Environment(name="parallelenv")
 env.python.conda_dependencies = cd
 env.docker.base_image = DEFAULT_GPU_IMAGE
@@ -281,12 +281,12 @@ env.docker.base_image = DEFAULT_GPU_IMAGE
 使用脚本、环境配置和参数创建管道步骤。 指定已附加到工作区的计算目标。
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     environment=env,
     entry_script="batch_scoring.py",
-    source_directory=".",
+    source_directory="scripts",
     output_action="append_row",
     mini_batch_size="20",
     error_threshold=1,
@@ -305,20 +305,25 @@ parallel_run_config = ParallelRunConfig(
 * 输入和输出数据，以及任何自定义参数
 * 对执行步骤期间要运行的脚本或 SDK 逻辑的引用
 
-有多个类继承自父类 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 你可以选择适当的类，以使用特定的框架和堆栈生成步骤。 在此示例中，将通过自定义 Python 脚本使用 `ParallelRunStep` 类定义步骤逻辑。 如果脚本的某个自变量是步骤的输入或步骤的输出，则必须分别在 `arguments` 数组以及 `input` 或 `output` 参数中定义该自变量。   
+有多个类继承自父类 [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)。 你可以选择适当的类，以使用特定的框架和堆栈生成步骤。 在此示例中，将通过自定义 Python 脚本使用 `ParallelRunStep` 类定义步骤逻辑。 如果脚本的某个自变量是步骤的输入或步骤的输出，则必须分别在 `arguments` 数组以及 `input` 或 `output` 参数中定义该自变量。  
 
-如果存在多个步骤，`outputs` 数组中的某个对象引用可用作后续管道步骤的输入。 
+如果存在多个步骤，`outputs` 数组中的某个对象引用可用作后续管道步骤的输入。
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
+from datetime import datetime
+
+parallel_step_name = "batchscoring-" + datetime.now().strftime("%Y%m%d%H%M")
+
+label_config = label_ds.as_named_input("labels_input")
 
 batch_score_step = ParallelRunStep(
-    name="parallel-step-test",
+    name=parallel_step_name,
     inputs=[input_images.as_named_input("input_images")],
     output=output_dir,
-    models=[model],
     arguments=["--model_name", "inception",
-               "--labels_name", "label_ds"],
+               "--labels_dir", label_config],
+    side_inputs=[label_config],
     parallel_run_config=parallel_run_config,
     allow_reuse=False
 )
@@ -330,10 +335,10 @@ batch_score_step = ParallelRunStep(
 
 现在请运行管道。 首先，使用工作区引用和创建的管道步骤创建一个 `Pipeline` 对象。 `steps` 参数是步骤数组。 在本例中，批量评分只有一个步骤。 若要生成包含多个步骤的管道，请将步骤按顺序放入此数组。
 
-接下来，使用 `Experiment.submit()` 函数提交管道以供执行。 还可以指定自定义参数 `param_batch_size`。 `wait_for_completion` 函数将在管道生成过程中输出日志。 可以使用日志来查看当前进度。
+接下来，使用 `Experiment.submit()` 函数提交管道以供执行。 `wait_for_completion` 函数将在管道生成过程中输出日志。 可以使用日志来查看当前进度。
 
 > [!IMPORTANT]
-> 首次管道运行需要大约 15 分钟。  必须下载所有依赖项、创建 Docker 映像，并预配和创建 Python 环境。 再次运行管道所花费的时间会大幅减少，因为会重复使用这些资源，而无需再次创建。 但是，管道的总运行时间取决于脚本的工作负荷，以及每个管道步骤中运行的进程数。
+> 首次管道运行需要大约 15 分钟。 必须下载所有依赖项、创建 Docker 映像，并预配和创建 Python 环境。 再次运行管道所花费的时间会大幅减少，因为会重复使用这些资源，而无需再次创建。 但是，管道的总运行时间取决于脚本的工作负荷，以及每个管道步骤中运行的进程数。
 
 ```python
 from azureml.core import Experiment
@@ -381,7 +386,7 @@ published_pipeline
 
 若要从 REST 终结点运行管道，需要获取 OAuth2 Bearer-type 身份验证标头。 以下示例使用交互式身份验证（用于演示目的），但对于大多数需要自动身份验证或无头身份验证的生产方案，请使用服务主体身份验证，如[此文中所述](how-to-setup-authentication.md)。
 
-服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。  首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。  使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 类来管理身份验证流。 
+服务主体身份验证涉及到在 *Azure Active Directory* 中创建应用注册。 首先生成客户端机密，然后为服务主体授予对机器学习工作区的角色访问权限。 使用 [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) 类来管理身份验证流。 
 
 [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) 和 `ServicePrincipalAuthentication` 均继承自 `AbstractAuthentication`。 在这两种情况下，请以相同的方式使用 [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) 函数来提取标头：
 
@@ -394,7 +399,7 @@ auth_header = interactive_auth.get_authentication_header()
 
 从已发布的管道对象的 `endpoint` 属性获取 REST URL。 也可以在 Azure 机器学习工作室的工作区中找到该 REST URL。 
 
-对终结点生成 HTTP POST 请求。 在请求中指定身份验证标头。 添加包含试验名称和批大小参数的 JSON 有效负载对象。 如本教程前面所述，`param_batch_size` 将传递到 `batch_scoring.py` 脚本，因为已在步骤配置中将其定义为 `PipelineParameter` 对象。
+对终结点生成 HTTP POST 请求。 在请求中指定身份验证标头。 添加包含试验名称的 JSON 有效负载对象。
 
 发出触发运行的请求。 包含相应的代码用于访问响应字典中的 `Id` 密钥以获取运行 ID 的值。
 
@@ -405,7 +410,7 @@ rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
                          json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
+                               "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
 
@@ -433,12 +438,12 @@ RunDetails(published_pipeline_run).show()
 
 如果不打算使用已创建的资源，请删除它们，以免产生任何费用：
 
-1. 在 Azure 门户的左侧菜单中选择“资源组”  。
+1. 在 Azure 门户的左侧菜单中选择“资源组”。
 1. 在资源组列表中，选择创建的资源组。
-1. 选择“删除资源组”  。
-1. 输入资源组名称。 然后选择“删除”  。
+1. 选择“删除资源组”。
+1. 输入资源组名称。 然后选择“删除”。
 
-还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”  。
+还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

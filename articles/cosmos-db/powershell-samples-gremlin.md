@@ -3,15 +3,15 @@ title: 适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Gremlin API
 description: 获取用于在 Azure Cosmos DB Gremlin API 帐户中执行各种常见任务的 Azure PowerShell 示例
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 05/13/2020
+ms.topic: how-to
+ms.date: 06/12/2020
 ms.author: mjbrown
-ms.openlocfilehash: 175e527e46bc15b894f7beec7c6c95d56e8c6d17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 30a3e4be070d0bdc628fbf891755049e1979e503
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649739"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263375"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>适用于 Azure Cosmos DB 的 Azure PowerShell 示例 - Gremlin API
 
@@ -30,4 +30,5 @@ ms.locfileid: "83649739"
 |[更改故障转移优先级或触发故障转移](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 更改 Azure Cosmos 帐户的区域故障转移优先级或触发手动故障转移。 |
 |[帐户密钥或连接字符串](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 获取主密钥和辅助密钥、连接字符串或重新生成 Azure Cosmos 帐户的帐户密钥。 |
 |[创建启用 IP 防火墙的 Cosmos 帐户](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建启用 IP 防火墙的 Azure Cosmos 帐户。 |
+|[锁定资源以防止将其删除](scripts/powershell/gremlin/powershell-gremlin-lock.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 使用资源锁防止资源被删除。 |
 |||

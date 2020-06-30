@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4ac33a01f574f537d64c706842c7d867f387c804
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889673"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194461"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -44,7 +44,7 @@ ms.locfileid: "82889673"
 
     ![创建函数](media/quickstart-js-vscode/functions-create-project.png)
 
-1. 为项目选择一个空文件夹位置，然后选择“选择”。 
+1. 为项目选择一个空文件夹位置，然后选择“选择”。
 
 1. 按照提示提供以下信息：
 
@@ -59,30 +59,11 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 此外，还会在根文件夹中创建 package.json 文件。
 
-### <a name="enable-compatibility-mode"></a>启用兼容模式
-
-目前，JavaScript Durable Functions 要求启用 Azure Functions V2 兼容模式。
-
-1. 打开 *local.settings.json* 以编辑在本地运行应用时要使用的设置。
-
-1. 添加名为 `FUNCTIONS_V2_COMPATIBILITY_MODE` 的设置并将其值指定为 `true`。
-
-    ```json
-    {
-        "IsEncrypted": false,
-        "Values": {
-            "AzureWebJobsStorage": "",
-            "FUNCTIONS_WORKER_RUNTIME": "node",
-            "FUNCTIONS_V2_COMPATIBILITY_MODE": "true"
-        }
-    }
-    ```
-
 ## <a name="install-the-durable-functions-npm-package"></a>安装 Durable Functions npm 包
 
 若要在 Node.js 函数应用中使用 Durable Functions，请使用名为 `durable-functions` 的库。
 
-1. 使用“视图”菜单或按 Ctrl+Shift+`，在 VS Code 中打开新的终端。 
+1. 使用“视图”菜单或按 Ctrl+Shift+`，在 VS Code 中打开新的终端。
 
 1. 通过运行函数应用的根目录中的 `npm install durable-functions` 来安装 `durable-functions` npm 包。
 
@@ -146,12 +127,12 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具。
 
-1. 若要测试函数，请在 `Hello` 活动函数代码 (*Hello/node.js*) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
+1. 若要测试函数，请在 `Hello` 活动函数代码 (*Hello/node.js*) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
 
-1. Durable Functions 需要一个 Azure 存储帐户才能运行。 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。 
+1. Durable Functions 需要一个 Azure 存储帐户才能运行。 当 VS Code 提示选择存储帐户时，请选择“选择存储帐户”。
 
     ![创建存储帐户](media/quickstart-js-vscode/functions-select-storage.png)
 
@@ -165,11 +146,11 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
     | 选择一个位置 | *region* | 选择离你较近的区域 |
 
-1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
+1. 在“终端”面板中，复制 HTTP 触发的函数的 URL 终结点。
 
     ![Azure 本地输出](media/quickstart-js-vscode/functions-f5.png)
 
-1. 使用 [Postman](https://www.getpostman.com/) 或 [cURL](https://curl.haxx.se/) 之类的工具向 URL 终结点发送一个 HTTP POST 请求。 将最后一个段替换为业务流程协调程序函数的名称 (`HelloOrchestrator`)。 URL 应类似于 `http://localhost:7071/api/orchestrators/HelloOrchestrator`。
+1. 使用浏览器或者 [Postman](https://www.getpostman.com/) 或 [cURL](https://curl.haxx.se/) 之类的工具向 URL 终结点发送一个 HTTP POST 请求。 将最后一个段替换为业务流程协调程序函数的名称 (`HelloOrchestrator`)。 URL 应类似于 `http://localhost:7071/api/orchestrators/HelloOrchestrator`。
 
    响应是来自 HTTP 函数的初始结果，告知持久业务流程已成功启动。 它还不是业务流程的最终结果。 响应中包括了几个有用的 URL。 现在，让我们查询业务流程的状态。
 
@@ -202,23 +183,9 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-compatibility-mode"></a>启用兼容模式
-
-需要在 Azure 上的应用中启用本地所启用的相同 Azure Functions V2 兼容性。
-
-1. 使用命令面板搜索并选择 `Azure Functions: Edit Setting...`。
-
-1. 按照提示在 Azure 订阅中找到你的函数应用。
-
-1. 选择 `Create new App Setting...`。
-
-1. 输入新设置键 `FUNCTIONS_V2_COMPATIBILITY_MODE`。
-
-1. 输入设置值 `true`。
-
 ## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
 
-1. 从“输出”  面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. 从“输出”面板复制 HTTP 触发器的 URL。 调用 HTTP 触发的函数的 URL 应采用此格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 你应当会得到与之前使用已发布的应用时相同的状态响应。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 3de73156618b0f5234cc8049c4ea70385b790388
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dfcde775780cdb42f9df1d677ff2f2475de92843
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743581"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85115272"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>教程：在 Azure Cosmos DB 中创建笔记本用于分析和可视化数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "83743581"
 
 1. 转到“笔记本”选项卡，选择“我的笔记本”旁边的 `…`，然后创建一个**新笔记本**。  选择“Python 3”作为默认内核。
 
-   ![创建新的 Notebook](./media/create-notebook-visualize-data/create-new-notebook.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="创建新的笔记本":::
 
 1. 创建新笔记本后，可将其重命名，例如 **VisualizeRetailData.ipynb**。
 
@@ -49,7 +49,7 @@ ms.locfileid: "83743581"
 
    若要运行某个单元，请选择 `Shift + Enter`，或者选择该单元，然后选择数据资源管理器导航栏上的“运行活动单元”选项。
 
-   ![运行活动单元](./media/create-notebook-visualize-data/run-active-cell.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="运行活动单元":::
 
    将在当前的 Azure Cosmos 帐户中创建数据库和容器。 该容器的预配吞吐量为 400 RU/秒。 创建数据库和容器后，会显示以下输出。 
 
@@ -60,7 +60,7 @@ ms.locfileid: "83743581"
 
    也可以刷新“数据”选项卡并查看新建的资源：
 
-   ![刷新“数据”选项卡以查看新容器](media/create-notebook-visualize-data/refresh-data-tab.png)
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="刷新“数据”选项卡以查看新容器":::
 
 1. 接下来，将示例零售数据导入 Azure Cosmos 容器。 下面是零售数据中的项的格式：
 
@@ -135,7 +135,7 @@ SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 df_cosmos.head(10)
 ```
 
-![运行查询获取前 10 个项](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="运行查询以获取销量排名前 10 的商品":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>运行查询并分析数据
 
@@ -148,7 +148,7 @@ df_cosmos.head(10)
    display(df_revenue.head(5))
    ```
 
-   ![总销售收入输出](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="总销售收入输出":::
 
 * **查询 2**：若要获取前五个购买项的列表，请打开新的笔记本单元并运行以下代码：
 
@@ -159,7 +159,7 @@ df_cosmos.head(10)
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![前五个购买项](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="销量排名前五的商品":::
 
 ## <a name="visualize-your-data"></a>可视化数据  
 
@@ -286,7 +286,7 @@ df_cosmos.head(10)
    show(p)
    ```
 
-   ![可视化购买转换率](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="可视化购买转换率":::
 
 ## <a name="next-steps"></a>后续步骤
 

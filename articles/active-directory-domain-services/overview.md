@@ -10,16 +10,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: c8a29f95e7b987af2b408ec24bc390a7fd162263
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554864"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734548"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什么是 Azure Active Directory 域服务？
 
-Azure Active Directory 域服务 (Azure AD DS) 提供托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器即可使用这些域服务。
+Azure Active Directory 域服务 (Azure AD DS) 提供托管域服务，例如域加入、组策略、轻型目录访问协议 (LDAP) 和 Kerberos/NTLM 身份验证。 无需在云中部署、管理和修补域控制器 (DC) 即可使用这些域服务。
+
+托管域是一个 DNS 命名空间和匹配目录。 托管域与现有 Azure AD 租户集成，使得用户可使用其现有凭据登录。 此外，也可使用现有的组和用户帐户安全访问资源，确保更顺畅地将本地资源直接迁移到 Azure。
 
 Azure AD DS 与现有的 Azure AD 租户集成。 通过此集成，用户可以使用其现有凭据登录到与托管域相连的服务和应用程序。 还可以使用现有组和用户帐户来保护对资源的访问。 这些功能可更顺畅地将本地资源直接迁移到 Azure。
 
@@ -61,9 +63,9 @@ Azure AD DS 提供了替代方法，由此能够创建返回到本地 AD DS 环�
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS 如何工作？
 
-为了提供标识服务，Azure 会在所选的虚拟网络上创建一个 AD DS 实例。 在后台，会创建在 Azure VM 上运行的一对 Windows Server 域控制器。 你不需要管理、配置或更新这些域控制器。 Azure 平台将域控制器作为 Azure AD DS 服务的一部分进行管理。
+为了提供标识服务，Azure 会在所选的虚拟网络上创建一个 AD DS 托管域。 在后台，会创建在 Azure VM 上运行的一对 Windows Server 域控制器。 你不需要管理、配置或更新这些域控制器。 Azure 平台将域控制器作为 Azure AD DS 服务的一部分进行管理。
 
-Azure AD DS 托管域配置为从 Azure AD 执行单向同步，以提供对一组集中用户、组和凭据的访问。 你可以直接在 Azure AD DS 托管域中创建资源，但它们不会同步回 Azure AD。 然后，Azure 中连接到此虚拟网络的应用程序、服务和 VM 便可使用常见 AD DS 功能，如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
+托管域配置为从 Azure AD 执行单向同步，以提供对一组集中用户、组和凭据的访问。 你可以直接在托管域中创建资源，但它们不会同步回 Azure AD。 然后，Azure 中连接到此虚拟网络的应用程序、服务和 VM 便可使用常见 AD DS 功能，如域加入、组策略、LDAP 和 Kerberos/NTLM 身份验证。
 
 在具有本地 AD DS 环境的混合环境中，[Azure AD Connect][azure-ad-connect] 会将标识信息与 Azure AD 同步，后者随后将同步到 Azure AD DS。
 
@@ -90,7 +92,7 @@ Azure AD DS 托管域配置为从 Azure AD 执行单向同步，以提供对一�
 * 然后，在 Azure 虚拟网络中部署的应用程序和 VM 便可使用 Azure AD DS 功能，如域加入、LDAP 读取、LDAP 绑定、NTLM、Kerberos 身份验证以及组策略等。
 
 > [!IMPORTANT]
-> 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
+> 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
 
 ### <a name="azure-ad-ds-for-cloud-only-organizations"></a>仅限云的组织的 Azure AD DS
 
@@ -136,7 +138,7 @@ Azure AD DS 托管域的一些关键方面包括：
 * [将 Azure AD DS 与 Azure AD、Azure VM 上的 Active Directory 域服务和本地 Active Directory 域服务进行比较][compare]
 * [了解如何将 Azure AD 域服务与 Azure AD 目录同步][synchronization]
 
-若要开始，请[使用 Azure 门户创建 Azure AD DS 托管域][tutorial-create]。
+若要开始操作，请[使用 Azure 门户创建托管域][tutorial-create]。
 
 <!-- INTERNAL LINKS -->
 [compare]: compare-identity-solutions.md

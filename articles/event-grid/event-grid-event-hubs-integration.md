@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610657"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212167"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
 Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知（事件）作出响应。 例如，它可以触发 Azure 函数来处理已捕获到 Azure Blob 存储或 Azure Data Lake Storage 的事件中心数据，并将数据迁移到其他数据存储库。 此[事件中心和事件网格集成示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)展示了如何将事件中心与事件网格结合使用，从而将捕获的事件中心数据从 blob 存储无缝迁移到 SQL 数据仓库。
@@ -173,7 +173,7 @@ Azure [事件网格](overview.md)是一项智能事件路由服务，可用于�
 2. 在 SQL 数据仓库页中，选择左侧菜单中的“查询编辑器 (预览)”。 
 
     ![SQL 数据仓库页](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. 输入 SQL Server 的“用户名”和“密码”，然后选择“确定”  。 需要将客户端 IP 地址添加到防火墙中才能成功登录到 SQL Server。 
+2. 输入 SQL Server 的“用户名”和“密码”，然后选择“确定”  。 需要将客户端 IP 地址添加到防火墙中才能成功登录 SQL Server。 
 
     ![SQL Server 身份验证](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. 在查询窗口中，复制并运行以下 SQL 脚本： 

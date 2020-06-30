@@ -12,19 +12,19 @@ ms.custom:
 - mvc
 - mqtt
 - tracking-python
-ms.date: 10/17/2019
-ms.openlocfilehash: 53acb49e5e2be5b8ccf0c131a9219fdcf2baca47
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.date: 06/16/2020
+ms.openlocfilehash: f49f2156a6d0e1b5563145c00007746ef4a1bf51
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607460"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84904901"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Python)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-本快速入门会将模拟设备应用程序的遥测数据通过 Azure IoT 中心发送到后端应用程序进行处理。 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门使用预先编写的 Python 应用程序来发送遥测数据，使用 CLI 实用程序从中心读取遥测数据。 运行这两个应用程序前，请先创建 IoT 中心并在中心注册设备。
+本快速入门会将模拟设备应用程序的遥测数据通过 Azure IoT 中心发送到后端应用程序进行处理。 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门使用两个预先编写的 Python 应用程序：一个用于发送遥测数据，一个用于读取中心的遥测数据。 运行这两个应用程序前，请先创建 IoT 中心并在中心注册设备。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -80,13 +80,27 @@ az extension add --name azure-iot
 
     稍后会在快速入门中用到此值。
 
+1. 还需要使用来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
+
+   **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
+
+    ```azurecli-interactive
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
+    ```
+
+    记下这三个值，稍后会在快速入门中用到这些值。
+
 ## <a name="send-simulated-telemetry"></a>发送模拟遥测数据
 
 模拟设备应用程序会连接到 IoT 中心上特定于设备的终结点，并发送模拟的温度和湿度遥测数据。
 
 1. 在本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.py 文件  。
+1. 在所选文本编辑器中打开 SimulatedDevice.py 文件。
 
     将 `CONNECTION_STRING` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 **SimulatedDevice.py**。
 
@@ -104,22 +118,40 @@ az extension add --name azure-iot
 
     以下屏幕截图显示了模拟设备应用程序将遥测数据发送到 IoT 中心后的输出：
 
-    ![运行模拟设备](media/quickstart-send-telemetry-python/SimulatedDevice.png)
-
+    ![运行模拟设备](media/quickstart-send-telemetry-python/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 该扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+后端应用程序会连接到 IoT 中心上的服务端“事件”终结点。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
-在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
+> [!NOTE]
+> 以下步骤使用同步示例 read_device_to_cloud_messages_sync.py。 可以通过 read_device_to_cloud_messages_async.py 异步示例执行相同的步骤。
 
-```azurecli-interactive
-az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice 
-```
+1. 在其他本地终端窗口中，导航到示例 Python 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹。
 
-以下屏幕截图显示了在扩展接收模拟设备发送到 IoT 中心的遥测数据后的输出：
+2. 在所选的文本编辑器中打开 read_device_to_cloud_messages_sync.py 文件。 更新以下变量并保存对文件所做的更改。
 
-![运行后端应用程序](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
+    | 变量 | 值 |
+    | -------- | ----------- |
+    | `EVENTHUB_COMPATIBLE_ENDPOINT` | 将变量的值替换为之前记下的与事件中心兼容的终结点。 |
+    | `EVENTHUB_COMPATIBLE_PATH`     | 将变量的值替换为之前记下的与事件中心兼容的路径。 |
+    | `IOTHUB_SAS_KEY`                | 将变量的值替换为之前记下的服务主密钥。 |
+
+3. 在本地终端窗口中，运行以下命令，安装后端应用程序所需的库：
+
+    ```cmd/sh
+    pip install azure-eventhub
+    ```
+
+4. 在本地终端窗口中，运行以下命令，生成并运行后端应用程序：
+
+    ```cmd/sh
+    python read_device_to_cloud_messages_sync.py
+    ```
+
+    以下屏幕截图显示了后端应用程序接收模拟设备发送到 IoT 中心的遥测数据后的输出：
+
+    ![运行后端应用程序](media/quickstart-send-telemetry-python/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 39bdd2d34260b9adb12b25adff9d661083d51fe4
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: fbb24ac1974c23bf5292a987fc64a84dff69bf7d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310047"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118349"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入门：使用 Node.js SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -170,31 +170,31 @@ ms.locfileid: "84310047"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
-    使用 ![“复制”按钮](./media/create-cassandra-nodejs/copy.png) 复制最上面的值“联系点”。
+1. 使用 ![“复制”按钮](./media/create-cassandra-nodejs/copy.png) 复制最上面的值“联系点”。
 
-    ![在 Azure 门户的连接字符串页中查看并复制“联系点”、“用户名”和“密码”](./media/create-cassandra-nodejs/keys.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/keys.png" alt-text="在 Azure 门户的连接字符串页中查看并复制“联系点”、“用户名”和“密码”":::
 
-2. 打开 `config.js` 文件。 
+1. 打开 `config.js` 文件。 
 
-3. 粘贴门户中的“联系点”值，并覆盖第 4 行中的 `<FillMEIN>`。
+1. 粘贴门户中的“联系点”值，并覆盖第 4 行中的 `<FillMEIN>`。
 
     第 4 行现在应如下所示 
 
     `config.contactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350"`
 
-4. 复制并粘贴门户中的“用户名”值，并覆盖第 2 行中的 `<FillMEIN>`。
+1. 复制并粘贴门户中的“用户名”值，并覆盖第 2 行中的 `<FillMEIN>`。
 
     第 2 行现在应如下所示 
 
     `config.username = 'cosmos-db-quickstart';`
     
-5. 复制并粘贴门户中的“密码”值，并覆盖第 3 行中的 `<FillMEIN>`。
+1. 复制并粘贴门户中的“密码”值，并覆盖第 3 行中的 `<FillMEIN>`。
 
     第 3 行现在应如下所示
 
     `config.password = '2Ggkr662ifxz2Mg==';`
 
-6. 保存 `config.js` 文件。
+1. 保存 `config.js` 文件。
     
 ## <a name="use-the-x509-certificate"></a>使用 X509 证书
 
@@ -211,11 +211,11 @@ ms.locfileid: "84310047"
 > 
 > 双击 .crt 文件，将其打开到证书显示。 
 >
-> ![查看并验证输出](./media/create-cassandra-nodejs/crtcer1.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="查看并验证输出":::
 >
 > 在证书向导中按“下一步”。 选择“Base-64 编码 X.509 (.CER)”，然后选择“下一步”。
 >
-> ![查看并验证输出](./media/create-cassandra-nodejs/crtcer2.gif)
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="查看并验证输出":::
 >
 > 选择“浏览”（目的是查找目标），然后键入文件名。
 > 完成后，选择“下一步”。
@@ -236,13 +236,13 @@ ms.locfileid: "84310047"
 
 4. 通过命令行验证结果是否符合预期。
 
-    ![查看并验证输出](./media/create-cassandra-nodejs/output.png)
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="查看并验证输出":::
 
     按 CTRL+C 停止执行程序并关闭控制台窗口。 
 
 5. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
 
-    ![在数据资源管理器中查看数据](./media/create-cassandra-nodejs/data-explorer.png) 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="在数据资源管理器中查看数据"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

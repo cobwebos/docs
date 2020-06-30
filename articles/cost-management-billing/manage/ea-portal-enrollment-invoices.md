@@ -7,12 +7,12 @@ ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 16f89fa99c9619e3956a089763ece1b96aff4480
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298119"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807797"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -224,7 +224,7 @@ Microsoft 每年在注册生效日期，针对 Microsoft Azure 服务的任何�
 | 区域 2 | 亚太东部 <br> 亚太东南部 <br> 日本东部 <br> 日本西部 <br> 澳大利亚东部 <br> 澳大利亚东南部 | 亚太区 <br> 日本 <br> 拉丁美洲 <br> 中东/非洲 <br> 澳大利亚东部 <br> 澳大利亚东南部 |
 | 区域 3 | 巴西南部 |   |
 
-对于驻留在同一数据中心内的服务之间的数据传出不收取任何费用。 例如 Office 365 和 Azure。
+对于驻留在同一数据中心内的服务之间的数据传出不收取任何费用。 例如 Microsoft 365 和 Azure。
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>货币承诺和未开票用途
 

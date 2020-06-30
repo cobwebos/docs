@@ -3,16 +3,16 @@ title: Azure EA 虚拟机预留实例
 description: 本文总结了针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 06/11/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 649766d5daedbf880a3c17a1cb8282b0a9e4f2fe
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299054"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735415"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -28,7 +28,7 @@ ms.locfileid: "84299054"
 
 - 获取预留购买数据。
 - 了解哪个订阅、资源组或资源使用了预留。
-- 预留使用费的分摊。
+- 预留使用的退款。
 - 计算预留节省额。
 - 获取预留未充分利用的数据。
 - 摊销预留成本。
@@ -39,21 +39,30 @@ ms.locfileid: "84299054"
 
 ## <a name="reserved-instances-api-support"></a>预留实例 API 支持
 
-可以使用 Azure API 以编程方式为组织获取有关 Azure 服务或软件预留的信息。 有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
+使用 Azure API 以编程方式为组织获取有关 Azure 服务或软件预留的信息。 例如，使用 API 可：
+
+- 查找要购买的预留
+- 购买预留项
+- 查看购买的预留
+- 查看和管理预留访问权限
+- 拆分或合并预留
+- 更改预留范围
+
+有关详细信息，请参阅[适用于 Azure 预留自动化的 API](../reservations/reservation-apis.md)。
 
 ## <a name="azure-reserved-virtual-machine-instances"></a>Azure 虚拟机预留实例
 
-预留实例最多可将虚拟机费用降低到所有虚拟机的即用即付价格的 72%；与 Azure 混合权益搭配使用时最多可节省 82%。 通过预付一年或三年的费用，可以为工作负载设置优先级并更好地做预算和执行预测。 还可以随业务需求的变化交换或取消预留。
+预留实例最多可将虚拟机费用降低到所有虚拟机的即用即付价格的 72%。 与 Azure 混合权益搭配使用时最多可节省 82%。 预留实例可帮助你通过预付一年或三年的费用，更好地管理工作负载、做预算和执行预测。 还可以随业务需求的变化交换或取消预留。
 
 ### <a name="how-to-buy-reserved-virtual-machine-instances"></a>如何购买虚拟机预留实例
 
-要购买 Azure 虚拟机预留实例，Enterprise Azure 合约管理员必须在 [Azure EA 门户](https://ea.azure.com/)“合约”选项卡的“合约详细信息”部分中启用“预留实例”购买选项    。
+要购买 Azure 虚拟机预留实例，Enterprise Azure 合约管理员必须启用“预留实例”购买选项。 该选项位于 [Azure EA 门户](https://ea.azure.com/)“合约”选项卡的“合约详细信息”部分中 。
 
 一旦启用了 EA 合约以添加预留实例，任何拥有与 EA 合约关联的有效订阅的帐户所有者都可以在 [Azure 门户](https://aka.ms/reservations)中购买虚拟机预留实例。 有关详细信息，请参阅 [Prepay for virtual machines and save money with Reserved Virtual Machine Instances](https://go.microsoft.com/fwlink/?linkid=861721)（通过虚拟机预留实例预付虚拟机款项以节省资金）。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何查看预留实例购买详细信息
 
-可通过 [Azure 门户](https://aka.ms/reservations)左侧的“预留”菜单或从 [Azure EA 门户](https://ea.azure.com/)查看预留实例购买详细信息  。 从左侧菜单选择“报表”，然后在“使用情况摘要”选项卡上向下滚动到“按服务收费”部分    。滚动到该部分的底部，该部分末尾列出预留实例的购买和使用情况（在服务名称旁指定“1 年”或“3 年”），例如：Standard_DS1_v2 eastus 1 年或者 Standard_D2s_v3 eastus2 3 年。
+可通过 [Azure 门户](https://aka.ms/reservations)左侧的“预留”菜单或从 [Azure EA 门户](https://ea.azure.com/)查看预留实例购买详细信息。 从左侧菜单选择“报表”，然后在“使用情况摘要”选项卡上向下滚动到“按服务收费”部分 。滚动到该部分的底部，该部分末尾列出预留实例的购买和使用情况（在服务名称旁指定“`1 year`”或“`3 years`”），例如：`Standard_DS1_v2 eastus 1 year` 或 `Standard_D2s_v3 eastus2 3 years`。
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>如何更改与我的预留实例关联的订阅或者将预留实例权益转让给同一帐户下的某个订阅？
 
@@ -66,11 +75,11 @@ ms.locfileid: "84299054"
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>如何查看预留实例使用情况详细信息
 
-你可以在 [Azure 门户](https://aka.ms/reservations)或 [Azure EA 门户](https://ea.azure.com/)中，通过“报表” > “使用情况摘要” > “按服务收费”查看预留实例使用情况详细信息（对于有权查看账单信息的 EA 客户而言）    。 可通过含“预留”一词的服务名称标识预留实例，例如：“预留-基础 VM”或“虚拟机预留-Windows Svr（1 核心）”。
+你可以在 [Azure 门户](https://aka.ms/reservations)或 [Azure EA 门户](https://ea.azure.com/)中，通过“报表” > “使用情况摘要” > “按服务收费”查看预留实例使用情况详细信息（对于有权查看账单信息的 EA 客户而言）  。 可通过含“预留”一词的服务名称标识预留实例，例如：`Reservation-Base VM or Virtual Machines Reservation-Windows Svr (1 Core)`。
 
-使用情况详细信息和高级报表下载 CSV 包含额外的预留实例使用情况信息。 “附加信息”字段有助于标识预留实例使用情况  。
+使用情况详细信息和高级报表下载 CSV 包含额外的预留实例使用情况信息。 “附加信息”字段有助于标识预留实例使用情况。
 
-如果未使用 Azure 混合权益购买 Azure 虚拟机预留实例，预留实例将有两个计价器（硬件和软件）。 如果使用了 Azure 混合权益来购买预留实例，则在预留实例使用情况详细信息中不会出现软件计价器。
+如果未使用 Azure 混合权益购买 Azure 虚拟机预留实例，预留实例将有两个计价器（硬件和软件）。 使用 Azure 混合权益来购买预留实例时，在预留实例使用情况详细信息中不会出现软件计价器。
 
 ### <a name="reserved-instance-billing"></a>预留实例计费
 
@@ -83,6 +92,7 @@ ms.locfileid: "84299054"
 你将在预留前 30 天和到期时收到电子邮件通知。 预留到期时，所部署的 VM 会继续运行，并按即用即付费率计费。 有关详细信息，请参阅[虚拟机预留实例产品/服务](https://azure.microsoft.com/pricing/reserved-vm-instances/)。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关 Azure 预留的详细信息，请参阅[什么是 Azure 保留？](../reservations/save-compute-costs-reservations.md)。
 - 若要详细了解企业预留成本和使用情况，请参阅[获取企业协议预留成本和使用情况](../reservations/understand-reserved-instance-usage-ea.md)。
 - 有关定价的信息，请参阅 [Linux 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)或 [Windows 虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: f883b8527fff97ea3e16e7ffa7637c432dc33c2f
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616541"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783344"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -30,7 +30,7 @@ Azure Key Vault 的软删除功能允许恢复已删除的保管库和保管库�
 - Azure PowerShell 1.0.0 或更高版本 - 若尚未安装此产品，请安装 Azure PowerShell 并将其与 Azure 订阅关联，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 
 
 >[!NOTE]
-> 环境中可能加载了过期版本的 Key Vault PowerShell 输出格式化文件，而没有加载正确版本。  预期 PowerShell 的更新版本将包含输出格式所需的更正，届时将更新此主题。 如果遇到此格式问题，当前的解决方法是：
+> 环境中可能加载了过期版本的 Key Vault PowerShell 输出格式化文件，而没有加载正确版本。 预期 PowerShell 的更新版本将包含输出格式所需的更正，届时将更新此主题。 如果遇到此格式问题，当前的解决方法是：
 > - 如果发现未看到此主题中所述的已启用软删除的属性，请使用以下查询：`$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`。
 
 
@@ -40,7 +40,7 @@ Azure Key Vault 的软删除功能允许恢复已删除的保管库和保管库�
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
-| 操作 | 说明 | 用户权限 |
+| Operation | 说明 | 用户权限 |
 |:--|:--|:--|
 |列出|列出已删除的密钥保管库。|Microsoft.KeyVault/deletedVaults/read|
 |恢复|还原已删除的密钥保管库。|Microsoft.KeyVault/vaults/write|
@@ -75,7 +75,7 @@ New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "we
 
 ### <a name="verify-soft-delete-enablement"></a>验证软删除支持
 
-若要验证密钥保管库是否启用了软删除，请运行“显示”命令，并查看“启用软删除?”  属性：
+若要验证密钥保管库是否启用了软删除，请运行“显示”命令，并查看“启用软删除?” 属性：
 
 ```powershell
 Get-AzKeyVault -VaultName "ContosoVault"
@@ -106,9 +106,9 @@ Remove-AzKeyVault -VaultName 'ContosoVault'
 Get-AzKeyVault -InRemovedState 
 ```
 
-- ID 可用于在恢复或清除时识别资源  。 
-- 资源 ID是此保管库的原始资源 ID  。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
-- “计划清除日期”表示如果不采取任何操作，将永久删除保管库  。 用于计算“计划清除日期”的默认保留期是 90 天  。
+- ID 可用于在恢复或清除时识别资源。 
+- 资源 ID是此保管库的原始资源 ID。 由于此密钥保管库现在处于已删除状态，因此该资源 ID 不存在任何资源。 
+- “计划清除日期”表示如果不采取任何操作，将永久删除保管库。 用于计算“计划清除日期”的默认保留期是 90 天。
 
 ## <a name="recovering-a-key-vault"></a>恢复密钥保管库
 
@@ -161,18 +161,18 @@ Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
-“恢复”和“清除”操作具有与密钥保管库访问策略相关的各自权限   。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限   。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中  。 必须明确授予“清除”权限  。 
+“恢复”和“清除”操作具有与密钥保管库访问策略相关的各自权限 。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限 。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中。 必须明确授予“清除”权限。 
 
 #### <a name="set-a-key-vault-access-policy"></a>设置密钥保管库访问策略
 
-以下命令授予 user@contoso.com 对“ContosoVault”中的密钥执行多项操作（包括“清除”）的权限   ：
+以下命令授予 user@contoso.com 对“ContosoVault”中的密钥执行多项操作（包括“清除”）的权限：
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
 ```
 
 >[!NOTE] 
-> 如果现有密钥保管库刚刚启用软删除，则可能没有“恢复”和“清除”权限   。
+> 如果现有密钥保管库刚刚启用软删除，则可能没有“恢复”和“清除”权限 。
 
 #### <a name="secrets"></a>机密
 
@@ -252,20 +252,20 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 ```
 
 ### <a name="purge-permissions-required"></a>所需的清除权限
-- 要清除已删除的密钥保管库，用户需要 Microsoft.KeyVault/locations/deletedVaults/purge/action 操作的 RBAC 权限  。 
-- 要列出已删除的密钥保管库，用户需要 Microsoft.KeyVault/deletedVaults/read 操作的 RBAC 权限  。 
+- 要清除已删除的密钥保管库，用户需要 Microsoft.KeyVault/locations/deletedVaults/purge/action 操作的 RBAC 权限。 
+- 要列出已删除的密钥保管库，用户需要 Microsoft.KeyVault/deletedVaults/read 操作的 RBAC 权限。 
 - 默认情况下，只有订阅管理员具有这些权限。 
 
 ### <a name="scheduled-purge"></a>计划清除
 
-列出已删除的密钥保管库对象还会显示 Key Vault 计划将其清除的时间。 “计划清除日期”指示如果不采取任何操作，将永久删除密钥保管库对象的时间  。 默认情况下，已删除的密钥保管库对象的保留期为 90 天。
+列出已删除的密钥保管库对象还会显示 Key Vault 计划将其清除的时间。 “计划清除日期”指示如果不采取任何操作，将永久删除密钥保管库对象的时间。 默认情况下，已删除的密钥保管库对象的保留期为 90 天。
 
 >[!IMPORTANT]
->已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除  。 不可恢复！
+>已清除的保管库对象（由“计划清除日期”字段触发清除操作）将被永久删除。 不可恢复！
 
 ## <a name="enabling-purge-protection"></a>启用清除保护
 
-启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。
+启用清除保护时，在保持期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。 默认保持期为 90 天，但在创建密钥保管库期间，可将保留策略间隔设置为介于 7 到 90 天之间的值。 清除保护保留策略使用相同的间隔。 一旦设置，保留策略间隔就不能再更改。
 
 仅当也启用了软删除时，才能启用清除保护。 
 

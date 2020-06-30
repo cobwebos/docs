@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 633f406d042ce5b8ddde5b28022bdb33fdd70377
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745852"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052159"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -100,7 +100,7 @@ Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 
 
 ## <a name="supported-subscription-types"></a>支持的订阅类型
 
-Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试用](https://azure.microsoft.com/offers/ms-azr-0044p/)或 [Azure 开放许可 (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 订阅目前不支持转移。 若要暂时避开此问题，请参阅[将资源移动到新的资源组或订阅中](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 若要转移其他订阅（例如[赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)或支持计划），请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试用](https://azure.microsoft.com/offers/ms-azr-0044p/)或 [Azure 开放许可 (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) 订阅目前不支持转移。 若要暂时避开此问题，请参阅[将资源移动到新的资源组或订阅中](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。 若要转移其他订阅（例如支持计划），请联系 [Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 - [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
 - [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/)  

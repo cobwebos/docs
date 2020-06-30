@@ -5,18 +5,18 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: banders
-ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: bbc4ed254d0b193d7cf328b95fc9dffbfcced380
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692330"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753408"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>从其他帐户获取 Azure 订阅的计费所有权
 
-如果现有的计费所有者即将离职，或者你希望通过计费帐户为订阅付费，你可以接管 Azure 订阅的所有权。 接管所有权会将订阅的计费责任转移到你的帐户。
+如果现有的计费所有者即将离职，或者你希望通过你的计费帐户为订阅付费时，你可以接管 Azure 订阅的所有权。 接管所有权会将订阅的计费责任转移到你的帐户。
 
 本文适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-for-access)。
 
@@ -25,77 +25,48 @@ ms.locfileid: "82692330"
 ## <a name="request-billing-ownership"></a>请求计费所有权
 
 1. 以 Microsoft 客户协议计费帐户的发票科目所有者或参与者身份登录到 [Azure 门户](https://portal.azure.com)。
-
-2. 搜索“成本管理 + 计费”。 
-
+1. 搜索“成本管理 + 计费”。  
     ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-
-3. 在计费范围页中，选择用于订阅使用情况付款的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。
-
-    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/list-of-scopes.png)
-
+1. 在计费范围页中，选择用于订阅使用情况付款的计费帐户。 计费帐户的类型应为 **Microsoft 客户协议**。  
+    [![显示“成本管理 + 计费”门户搜索的屏幕截图](./media/mca-request-billing-ownership/list-of-scopes.png)](./media/mca-request-billing-ownership/list-of-scopes.png#lightbox)
     > [!NOTE]
-    >
     > Azure 门户会记住你访问的最后一个计费范围，并在你下一次转到“成本管理 + 计费”页时显示该范围。 如果你早前访问过“成本管理 + 计费”，则看不到计费范围页。 如果是这样，请检查你是否处于[正确的范围](#check-for-access)。 否则，请[切换范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)，选择 Microsoft 客户协议的计费帐户。
-
-4. 在左侧选择“计费对象信息”。 
-
-    ![屏幕截图，显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)     
-
+1. 在左侧选择“计费对象信息”。  
+    [![屏幕截图显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
     > [!Note]
-    >
     > 如果看不到“计费对象信息”，则表明你未处于正确的计费范围。 需要为 Microsoft 客户协议选择计费帐户，然后选择“计费对象信息”。 若要了解如何更改范围，请参阅[在 Azure 门户中切换计费范围](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)。
-
-5. 从列表中选择“计费对象信息”。  在你接管订阅所有权后，系统会根据此计费对象信息计收订阅使用费用。
-
-6. 在左侧选择“发票科目”。 
-
-    ![显示选择发票科目的屏幕截图](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
-
-7. 从列表中选择一个发票科目。 在你接管订阅的所有权后，系统会将其使用情况分配到计费对象信息的发票的此部分。
-
-8. 选择左下角的“转移请求”，然后选择“添加新请求”。  
-
-    ![显示选择转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)
-
-9. 输入要从其请求计费所有权的用户的电子邮件地址。 该用户必须是 Microsoft 在线服务计划计费帐户的帐户管理员，或企业协议中的帐户所有者。 有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。 选择“发送转移请求”。 
-
-    ![显示发送转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)
-
-10. 用户将收到一封电子邮件，其中包含查看转让请求的说明。
-
+1. 从列表中选择“计费对象信息”。 在你接管订阅所有权后，系统会根据此计费对象信息计收订阅使用费用。
+1. 在左侧选择“发票科目”。  
+    [![屏幕截图显示正在选择发票部分](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
+1. 从列表中选择一个发票科目。 在你接管订阅的所有权后，系统会将其使用情况分配到计费对象信息的发票的此部分。
+1. 选择左下角的“转移请求”，然后选择“添加新请求”。   
+    [![显示正在选择转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
+1. 输入要从其请求计费所有权的用户的电子邮件地址。 该用户必须是 Microsoft 在线服务计划计费帐户的帐户管理员，或企业协议中的帐户所有者。 有关详细信息，请参阅[在 Azure 门户中查看计费帐户](view-all-accounts.md)。 选择“发送转移请求”。  
+    [![显示正在发送转移请求的屏幕截图](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
+1. 用户将收到一封电子邮件，其中包含查看转让请求的说明。  
     ![显示查看转移请求电子邮件的屏幕截图](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
-
-11. 若要批准转移请求，用户需选择电子邮件中的链接，并按说明操作。
-
-    ![显示查看转移请求电子邮件的屏幕截图](./media/mca-request-billing-ownership/mca-review-transfer-request.png)
+1. 若要批准转移请求，用户需选择电子邮件中的链接，并按说明操作。
+    [![显示评审转移请求的屏幕截图](./media/mca-request-billing-ownership/review-transfer-requests.png)](./media/mca-request-billing-ownership/review-transfer-requests.png#lightbox) 用户可以选择要从中转移 Azure 产品的计费帐户。 选择后，将显示可转移的合格产品。 **注意：** 无法转移禁用的订阅，如果适用，这些订阅将显示在“不可转移的 Azure 产品”列表中。 选择了要转移的 Azure 产品后，请选择“验证”。
+1. “转移验证结果”区域将显示要转移的 Azure 产品的影响。 可能的状态有：
+    * “通过”- 此 Azure 产品已通过验证，可以进行转移。
+    * “警告”- 所选 Azure 产品出现警告。 虽然仍可转移该产品，但这样做会产生一些影响，如果用户希望采取缓解措施，则他们应该了解这些影响。 例如，要转移的 Azure 订阅从 RI 中获益。 转移后，订阅将不再获得该权益。 若要最大程度地节省成本，请确保 RI 关联到可使用其权益的另一订阅。 此外，用户还可以选择返回到“选择”页并取消选择此 Azure 订阅。
+    * “失败”- 由于出现错误，无法转移所选的 Azure 产品。 用户需要返回“选择”页并取消选择此产品以转移其他选定的 Azure 产品。  
+    ![显示验证体验的屏幕截图](./media/mca-request-billing-ownership/validate-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>检查转移请求状态
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-
-2. 搜索“成本管理 + 计费”。 
-
+1. 搜索“成本管理 + 计费”。  
     ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
-
-3. 在计费范围页中，选择已发送其转账请求的计费帐户。
-
-4. 在左侧选择“计费对象信息”。 
-
-    ![屏幕截图，显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)     
-
-5. 选择已发送其转账请求的**计费对象信息**。
-
-6. 在左侧选择“发票科目”。 
-
-    ![显示选择发票科目的屏幕截图](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)   
-
-7. 从列表中选择已发送其转账请求的发票科目。
-
-8. 选择左下角的“转移请求”。  “转移请求”页将显示以下信息：
-
-    ![显示转移请求列表的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
-
+1. 在计费范围页中，选择已发送其转账请求的计费帐户。
+1. 在左侧选择“计费对象信息”。  
+    [![屏幕截图显示正在选择计费对象信息](./media/mca-request-billing-ownership/mca-select-profiles.png)](./media/mca-request-billing-ownership/mca-select-profiles.png#lightbox)
+1. 选择已发送其转账请求的**计费对象信息**。
+1. 在左侧选择“发票科目”。  
+    [![屏幕截图显示正在选择发票部分](./media/mca-request-billing-ownership/mca-select-invoice-sections.png)](./media/mca-request-billing-ownership/mca-select-invoice-sections.png#lightbox)   
+1. 从列表中选择已发送其转账请求的发票科目。
+1. 选择左下角的“转移请求”。 “转移请求”页将显示以下信息：  
+    [![显示转移请求列表的屏幕截图](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
    |列|定义|
    |---------|---------|
    |请求日期|发送转移请求的日期|
@@ -115,13 +86,12 @@ ms.locfileid: "82692330"
    |已取消|有权访问转移请求的某人取消了该请求|
    |已拒绝|用户拒绝了转移请求|
 
-9. 选择一个转移请求以查看详细信息。 转移详细信息页将显示以下信息：
-
-    ![显示已转移订阅列表的屏幕截图](./media/mca-request-billing-ownership/mca-transfer-completed.png)
+1. 选择一个转移请求以查看详细信息。 转移详细信息页将显示以下信息：  
+    [![显示已转移订阅列表的屏幕截图](./media/mca-request-billing-ownership/mca-transfer-completed.png)](./media/mca-request-billing-ownership/mca-transfer-completed.png#lightbox)
 
    |列  |定义|
    |---------|---------|
-   |转移请求 ID|转移请求的唯一 ID。 提交支持请求时，请与 Azure 支持人员共享该 ID，以加速支持请求的处理|
+   |转移请求 ID|转移请求的唯一 ID。 提交支持请求时，请与 Azure 支持人员共享该 ID，以加速你的支持请求的处理|
    |转移请求日期|发送转移请求的日期|
    |转移请求者|发送转移请求的用户的电子邮件地址|
    |转移请求过期日期| 转移请求的过期日期|
@@ -142,6 +112,7 @@ ms.locfileid: "82692330"
 - [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
 - [Microsoft Azure 赞助套餐](https://azure.microsoft.com/offers/ms-azr-0036p/)\*
 - [Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)
+- [Microsoft 客户协议](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
 - [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p/)\*
 - [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p/)\*
 - [Visual Studio Enterprise (BizSpark) 订户](https://azure.microsoft.com/offers/ms-azr-0064p/)\*
@@ -153,7 +124,6 @@ ms.locfileid: "82692330"
 \* 转移后，订阅中可用的任何额度在新帐户中将不可用。
 
 \*\* 仅支持在 Azure 网站上注册期间创建的帐户中的订阅。
-
 
 ## <a name="additional-information"></a>其他信息
 
@@ -177,11 +147,11 @@ Azure 市场产品将连同各自的订阅一起转移。
 
 ### <a name="azure-reservations-transfer"></a>Azure 预留项转移
 
-如果正在转移企业协议 (EA) 订阅，则 Azure 预留项不会自动与订阅一起移动。 请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)移动预留项。
+如果正在转移企业协议 (EA) 订阅或Microsoft 客户协议，则 Azure 预留不会自动与订阅一起移动。 请[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)移动预留项。
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
-在转换期间，使用 Azure RBAC（基于角色的访问控制）[../role-based-access-control/overview.md] 为现有用户、组或服务主体分配的访问权限不受影响。
+在转换期间，使用 (Azure RBAC（基于角色的访问控制）)[../role-based-access-control/overview.md] 为现有用户、组或服务主体分配的访问权限不受影响。
 
 ### <a name="azure-support-plan"></a>Azure 支持计划
 
@@ -197,7 +167,7 @@ Azure 支持不会随订阅一起转移。 如果用户要转移所有 Azure 订
 
 ### <a name="software-as-a-service-saas-transfer"></a>软件即服务 (SaaS) 转移
 
-SaaS 产品不会随订阅一起转移。 请让用户[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)转移 SaaS 产品的计费所有权。 除了计费所有权以外，用户还可以转移资源所有权。 使用资源所有权可以执行管理操作，例如删除产品，以及查看产品详细信息。 用户必须是 SaaS 产品中的资源所有者才能转移资源所有权。
+SaaS 产品不会随订阅一起转移。 请让用户[联系 Azure 支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)转移 SaaS 产品的计费所有权。 除了计费所有权以外，用户还可以转移资源所有权。 使用资源所有权可以执行管理操作，例如删除产品，以及查看产品详细信息。 用户必须是 SaaS 产品的资源所有者才能转移资源所有权。
 
 ## <a name="check-for-access"></a>检查访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

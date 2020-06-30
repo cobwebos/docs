@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 581c3a035ab5b9e573f153361b41eedcd759baa1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853079"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>教程：Azure Active Directory 单一登录 (SSO) 与 TextExpander 的集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "83853079"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* TextExpander 支持 SP 和 IDP 发起的 SSO
+* TextExpander 支持 IDP 发起的 SSO
 * TextExpander 支持实时用户预配
 * 配置 TextExpander 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
@@ -88,10 +88,6 @@ ms.locfileid: "83853079"
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.textexpander.com/acs/<ORGID>`
 
-1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
-
-    在“登录 URL”文本框中，键入 URL：`https://app.textexpander.com/ssoSignin`
-
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [TextExpander 客户端支持团队](mailto:support@smilesoftware.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
@@ -123,7 +119,7 @@ ms.locfileid: "83853079"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
    1. 单击“创建”。
 

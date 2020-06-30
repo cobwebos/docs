@@ -2,62 +2,52 @@
 title: 使用 Azure Migrate 服务器迁移工具将 Hyper-V VM 迁移到 Azure
 description: 了解如何使用 Azure Migrate 服务器迁移工具将本地 Hyper-V VM 迁移到 Azure
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b50c11f43d29de354f04e1a4296818c5bd8cbab
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 820b9b7e67e873d23bed5a1f9c6aa1a0a2128015
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773518"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770911"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>将 Hyper-V VM 迁移到 Azure 
 
-本文介绍如何使用 Azure Migrate 通过无代理迁移将本地 Hyper-V VM 迁移到 Azure：服务器迁移工具。
+本文介绍如何使用 [Azure Migrate:服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)工具将本地 Hyper-V VM 迁移到 Azure。
 
-[Azure Migrate](migrate-services-overview.md) 提供一个中心用于跟踪本地应用、工作负荷与私有云/公有云 VM 的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
+本教程是教程系列中的第三篇，演示如何评估计算机并将其迁移到 Azure。 
 
-本教程是教程系列中的第三篇教程，演示了如何使用 Azure Migrate 服务器评估与服务器迁移工具评估 Hyper-V 并将其迁移到 Azure。 在本教程中，你将了解如何执行以下操作：
+> [!NOTE]
+> 教程中演示了方案的最简单部署路径，使你能够快速设置概念证明。 教程尽可能使用默认选项，不会演示所有可能的设置和路径。 
 
+ 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 准备 Azure 和本地 Hyper-V 环境
-> * 设置源环境。
-> * 设置目标环境。
-> * 启用复制。
+> * 添加 Azure Migrate:服务器迁移工具。
+> * 发现要迁移的 VM。
+> * 开始复制 VM。
 > * 运行测试迁移，确保一切按预期正常进行。
-> * 运行到 Azure 的完整迁移。
+> * 运行完整的 VM 迁移。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
+
 开始学习本教程之前，应做好以下准备：
 
 1. [查看](hyper-v-migration-architecture.md) Hyper-V 迁移体系结构。
-2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V 主机要求以及 Hyper-V 主机需要访问的 Azure URL。
-3. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移的 Hyper-V VM 的要求。 Hyper-V VM 必须符合 [Azure VM 要求](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)。
-2. 我们建议你完成本系列中前面的教程。 [第一篇教程](tutorial-prepare-hyper-v.md)演示了如何针对迁移设置 Azure 和 Hyper-V。 第二篇教程演示了如何在迁移之前使用 Azure Migrate:服务器评估来[评估 Hyper-V VM](tutorial-assess-hyper-v.md)。 
-    > [!NOTE]
-    > 尽管我们建议你尝试运行评估，但在迁移 VM 之前不一定非要这样做。
-    > 对于迁移 Hyper-V VM，Azure Migrate:服务器迁移在 Hyper-V 主机或群集节点上运行软件代理（Microsoft Azure Site Recovery 提供程序和 Microsoft Azure 恢复服务代理），以便进行协调并将数据复制到 Azure Migrate。 [Azure Migrate 设备](migrate-appliance.md)不用于 Hyper-V 迁移。
+2. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Hyper-V 主机迁移要求，以及迁移 VM 时 Hyper-V 主机和群集需要访问的 Azure URL。
+3. [查看](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms)要迁移到 Azure 的 Hyper-V VM 要求。
+4. 建议在评估 [Hyper-V VM](tutorial-assess-hyper-v.md) 后将其迁移到 Azure，但不强制要求这样做。
 
-3. 确保为 Azure 帐户分配“虚拟机参与者”角色，以便你有权执行以下操作：
-
-    - 在所选资源组中创建 VM。
-    - 在所选虚拟网络中创建 VM。
-    - 写入 Azure 托管磁盘。
-4. [设置 Azure 网络](../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 迁移到 Azure 时，创建的 Azure VM 将加入到设置迁移时指定的 Azure 网络。
-
+   
 ## <a name="add-the-azure-migrateserver-migration-tool"></a>添加 Azure Migrate:服务器迁移工具
 
-添加 Azure Migrate:服务器迁移工具。
-
-- 如果你已按照第二篇教程来[评估 Hyper-V VM](tutorial-assess-hyper-v.md)，则已设置了一个 Azure Migrate 项目，现在可以继续添加工具。
-- 如果未按照第二篇教程操作，请[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目。 创建项目时，请添加 Azure Migrate:服务器迁移工具。
+添加 Azure Migrate:服务器迁移工具。 如果还没有 Azure Migrate 项目，请先[创建项目](how-to-add-tool-first-time.md)，以设置 Azure Migrate 项目。 创建项目时，请添加 Azure Migrate:服务器迁移工具。
 
 如果已设置项目，请如下所述添加工具：
 
@@ -71,8 +61,9 @@ ms.locfileid: "83773518"
 
     ![服务器迁移工具](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-## <a name="prepare-hyper-v-hosts"></a>准备 Hyper-V 主机
+## <a name="download-and-install-the-provider"></a>下载并安装提供程序
 
+为迁移 Hyper-V VM，Azure Migrate:服务器迁移会在 Hyper-V 主机或群集节点上安装软件提供程序（Microsoft Azure Site Recovery 提供程序和 Microsoft Azure 恢复服务代理）。 请注意，[Azure Migrate 设备](migrate-appliance.md)不用于 Hyper-V 迁移。
 
 1. 在 Azure Migrate 项目中选择“服务器”，在“Azure Migrate: 服务器迁移”中，单击“发现”。
 2. 在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 Hyper-V”。  
@@ -149,7 +140,7 @@ ms.locfileid: "83773518"
 > [!NOTE]
 > 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。  开始复制后无法更改设置。
 
-## <a name="provisioning-for-the-first-time"></a>首次预配
+## <a name="provision-for-the-first-time"></a>首次预配
 
 如果这是你要在 Azure Migrate 项目中复制的第一个 VM，则 Azure Migrate:服务器迁移会自动在该项目所在的资源组中预配这些资源。
 

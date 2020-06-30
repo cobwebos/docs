@@ -3,19 +3,19 @@ title: Durable Functions 概述 - Azure
 description: Azure Functions 的 Durable Functions 扩展简介。
 author: cgillum
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bfbab26e47befbd84ed7b060992d6c0b239ae4db
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697872"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193424"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。   在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的一个扩展，可用于在无服务器计算环境中编写有状态函数。 在该扩展中，可以通过编写[业务流程协调程序函数](durable-functions-orchestrations.md)和有状态实体并使用 Azure Functions 编程模型编写[实体函数](durable-functions-entities.md)，来定义有状态工作流。  在幕后，该扩展可以管理状态、检查点和重启，使你可以专注于业务逻辑。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支持的语言
 
@@ -23,6 +23,7 @@ Durable Functions 目前支持以下语言：
 
 * **C#** ：[预编译的类库](../functions-dotnet-class-library.md)和 [C# 脚本](../functions-reference-csharp.md)。
 * **JavaScript**：仅 Azure Functions 运行时的版本 2.x 支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
+* **Python**：要求使用 1.8.5 版或更高版本的 Durable Functions 扩展。 
 * **F#** ：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
 
 Durable Functions 的目标是支持所有 [Azure Functions 语言](../supported-languages.md)。 请参阅 [Durable Functions 问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)，了解支持其他语言所需的最新工作状态。
@@ -95,6 +96,29 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > JavaScript 中的 `context` 对象表示整个[函数上下文](../functions-reference-node.md#context-object)。 使用主上下文中的 `df` 属性访问 Durable Functions 上下文。
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    x = yield context.call_activity("F1", None)
+    y = yield context.call_activity("F2", x)
+    z = yield context.call_activity("F3", y)
+    result = yield context.call_activity("F4", z)
+    return result
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+可以使用 `context` 对象按名称调用其他函数、传递参数并返回函数输出。 每当代码调用 `yield` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或虚拟机，函数实例将从上一个 `yield` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
+
+> [!NOTE]
+> Python 中的 `context` 对象表示业务流程上下文。 使用业务流程上下文上的 `function_context` 属性访问主 Azure Functions 上下文。
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：扇出/扇入
@@ -161,6 +185,36 @@ module.exports = df.orchestrator(function*(context) {
 扇出工作将分散到 `F2` 函数的多个实例。 可使用动态任务列表跟踪此工作。 将调用 `context.df.Task.all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
 在针对 `context.df.Task.all` 调用 `yield` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    parallel_tasks = []
+
+    # Get a list of N work items to process in parallel.
+    work_batch = yield context.call_activity("F1", None)
+
+    for i in range(0, len(work_batch)):
+        parallel_tasks.append(context.call_activity("F2", work_batch[i]))
+    
+    outputs = yield context.task_all(parallel_tasks)
+
+    # Aggregate all N outputs and send the result to F3.
+    total = sum(outputs)
+    yield context.call_activity("F3", total)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+扇出工作将分散到 `F2` 函数的多个实例。 可使用动态任务列表跟踪此工作。 将调用 `context.task_all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+
+在针对 `context.task_all` 调用 `yield` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
 ---
 
@@ -276,6 +330,38 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    job = json.loads(context.get_input())
+    job_id = job["jobId"]
+    polling_interval = job["pollingInterval"]
+    expiry_time = job["expiryTime"]
+
+    while context.current_utc_datetime < expiry_time:
+        job_status = yield context.call_activity("GetJobStatus", job_id)
+        if job_status == "Completed":
+            # Perform an action when a condition is met.
+            yield context.call_activity("SendAlert", job_id)
+            break
+
+        # Orchestration sleeps until this time.
+        next_check = context.current_utc_datetime + timedelta(seconds=polling_interval)
+        yield context.create_timer(next_check)
+
+    # Perform more work here, or let the orchestration end.
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器控制轮询间隔。 然后可以执行其他操作，或者可以结束业务流程。 当 `nextCheck` 超过 `expiryTime` 时，监视器将结束。
@@ -345,6 +431,36 @@ module.exports = df.orchestrator(function*(context) {
 
 若要创建持久计时器，请调用 `context.df.createTimer`。 通知由 `context.df.waitForExternalEvent` 接收。 然后，调用 `context.df.Task.any` 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+import json
+from datetime import timedelta 
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("RequestApproval", None)
+
+    due_time = context.current_utc_datetime + timedelta(hours=72)
+    durable_timeout_task = context.create_timer(due_time)
+    approval_event_task = context.wait_for_external_event("ApprovalEvent")
+
+    winning_task = yield context.task_any([approval_event_task, durable_timeout_task])
+
+    if approval_event_task == winning_task:
+        durable_timeout_task.cancel()
+        yield context.call_activity("ProcessApproval", approval_event_task.result)
+    else:
+        yield context.call_activity("Escalate", None)
+
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+若要创建持久计时器，请调用 `context.create_timer`。 通知由 `context.wait_for_external_event` 接收。 然后，调用 `context.task_any` 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
+
 ---
 
 外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 将事件通知传递给正在等待的业务流程协调程序函数：
@@ -380,11 +496,23 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+
+async def main(client: str):
+    durable_client = df.DurableOrchestrationClient(client)
+    is_approved = True
+    await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
+```
+
 ---
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：聚合器（有状态实体）
 
-第六种模式涉及到将一段时间的事件数据聚合到单个可寻址的实体。  在此模式中，要聚合的数据可来自多个源、可分批传送，也可以分散在较长的时间段。 聚合器可能需要在事件数据抵达时对其执行操作，而外部客户端可能需要查询聚合数据。
+第六种模式涉及到将一段时间的事件数据聚合到单个可寻址的实体。 在此模式中，要聚合的数据可来自多个源、可分批传送，也可以分散在较长的时间段。 聚合器可能需要在事件数据抵达时对其执行操作，而外部客户端可能需要查询聚合数据。
 
 ![聚合器示意图](./media/durable-functions-concepts/aggregator.png)
 
@@ -457,9 +585,13 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Python 目前不支持持久性实体。
+
 ---
 
-客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。 
+客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -493,9 +625,13 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+Python 目前不支持持久性实体。
+
 ---
 
-实体函数在 [Durable Functions 2.0](durable-functions-versions.md) 及更高版本中可用。
+实体函数在 [Durable Functions 2.0](durable-functions-versions.md) 及更高版本中可用于 C# 和 JavaScript。
 
 ## <a name="the-technology"></a>技术
 
@@ -515,6 +651,7 @@ Durable Functions 的计费与 Azure Functions 一样。 有关详细信息，�
 
 * [使用 Visual Studio 2019 的 C#](durable-functions-create-first-csharp.md)
 * [使用 Visual Studio Code 的 JavaScript](quickstart-js-vscode.md)
+* [Python 使用 Visual Studio Code](quickstart-python-vscode.md)
 
 在两个快速入门中，请在本地创建并测试“hello world”持久函数。 然后将函数代码发布到 Azure。 创建的函数将协调对其他函数的调用并将其链接在一起。
 

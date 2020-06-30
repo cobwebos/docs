@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587891"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073365"
 ---
 适用于 Go 的人脸客户端库入门。 请按照以下步骤安装库并试用基本任务的示例。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -30,66 +30,14 @@ ms.locfileid: "82587891"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Go](https://golang.org/dl/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 获取密钥和终结点后，请为该密钥和终结点[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别命名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
 
-## <a name="set-up"></a>设置
-
-### <a name="create-a-face-azure-resource"></a>创建人脸 Azure 资源 
-
-通过创建 Azure 资源开始使用人脸服务。 选择适合你的资源类型：
-
-* [试用资源](https://azure.microsoft.com/try/cognitive-services/#decision)（不需要 Azure 订阅）： 
-    * 有效期为七天，免费。 注册后，试用密钥和终结点将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上可用。 
-    * 如果你想尝试人脸服务，但没有 Azure 订阅，则这是一个很好的选项。
-* 一个[人脸服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)：
-    * 在删除资源前，可通过 Azure 门户使用。
-    * 使用免费定价层试用该服务，稍后升级到用于生产的付费层。
-* 一个[多服务资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)：
-    * 在删除资源前，可通过 Azure 门户使用。  
-    * 在多个认知服务中对应用程序使用相同的密钥和终结点。
-
-### <a name="create-an-environment-variable"></a>创建环境变量
-
->[!NOTE]
-> 在 2019 年 7 月 1 日之后创建的非试用资源的终结点使用如下所示的自定义子域格式。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
-
-从创建的资源使用密钥和终结点，创建两个用于身份验证的环境变量：
-* `FACE_SUBSCRIPTION_KEY` - 用于验证请求的资源密钥。
-* `FACE_ENDPOINT` - 用于发送 API 请求的资源终结点。 它将如下所示： 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-使用操作系统的说明。
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-添加环境变量后，请重启控制台窗口。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-编辑 `.bash_profile`，然后添加环境变量：
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-添加环境变量后，请从控制台窗口运行 `source .bash_profile`，使更改生效。
-***
+## <a name="setting-up"></a>设置
 
 ### <a name="create-a-go-project-directory"></a>创建 Go 项目目录
 
@@ -125,7 +73,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>创建 Go 应用程序
 
-接下来，在 src 目录中创建名为 `sample-app.go` 的文件  ：
+接下来，在 src 目录中创建名为 `sample-app.go` 的文件：
 
 ```bash
 cd src
@@ -263,7 +211,7 @@ touch sample-app.go
 
 ### <a name="identify-faces"></a>标识人脸
 
-**[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** 方法采用检测到的人脸的数组，并将其与给定的 **PersonGroup**（已在前一部分定义并训练）进行比较。 如果检测到的某个人脸与组中的某个人相匹配，则它会保存结果。 
+**[Identify](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client.Identify)** 方法采用检测到的人脸的数组，并将其与给定的 **PersonGroup**（已在前一部分定义并训练）进行比较。 如果检测到的某个人脸与组中的某个人相匹配，则它会保存结果。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id)]
 
@@ -274,7 +222,7 @@ touch sample-app.go
 
 ## <a name="verify-faces"></a>验证人脸
 
-验证操作采用某个人脸 ID 和其他人脸 ID 或 Person 对象，并确定它们是否属于同一个人  。
+验证操作采用某个人脸 ID 和其他人脸 ID 或 Person 对象，并确定它们是否属于同一个人。
 
 以下代码检测两个源图像中的人脸，然后根据目标图像中检测到的人脸来验证源图像中的每个人脸。
 
@@ -301,13 +249,13 @@ touch sample-app.go
 
 ## <a name="take-a-snapshot-for-data-migration"></a>创建用于数据迁移的快照
 
-利用快照功能，可将已保存的人脸数据（例如训练的 **PersonGroup**）移到不同的 Azure 认知服务人脸订阅。 例如，如果你使用免费试用订阅创建了一个 **PersonGroup** 对象，现在想要将其迁移到付费订阅，则可以使用此功能。 有关快照功能的大致概述，请参阅[迁移人脸数据](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+利用快照功能，可将已保存的人脸数据（例如训练的 **PersonGroup**）移到不同的 Azure 认知服务人脸订阅。 例如，如果你使用免费订阅创建了一个 PersonGroup 对象，现在想要将其迁移到付费订阅，则可以使用此功能。 有关快照功能的大致概述，请参阅[迁移人脸数据](../../Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 此示例将迁移你在[创建和训练人员组](#create-and-train-a-person-group)中创建的 **PersonGroup**。 可以先完成该部分，或者使用你自己的人脸数据构造。
 
 ### <a name="set-up-target-subscription"></a>设置目标订阅
 
-首先，必须有另一个已包含人脸资源的 Azure 订阅；为此，可以重复[设置](#set-up)部分中的步骤。 
+首先，必须有另一个已包含人脸资源的 Azure 订阅；为此，可以重复[设置](#setting-up)部分中的步骤。 
 
 然后在 **main** 方法的顶部附近创建以下变量。 还需要为 Azure 帐户的订阅 ID 以及新（目标）帐户的密钥、终结点和订阅 ID 创建新的环境变量。
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652220"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126223"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用访问控制策略提供 Key Vault 身份验证
 
@@ -60,10 +60,10 @@ Key Vault 最多支持 1024 个访问策略条目，每个条目可向“主体�
 
 可通过两种方式获取应用程序的 objectId。  第一种方式是将应用程序注册到 Azure Active Directory。 为此，请遵循快速入门[将应用程序注册到 Microsoft 标识平台](../../active-directory/develop/quickstart-register-app.md)中的步骤。 完成注册后，objectID 将作为“应用程序(客户端) ID”列出。
 
-第二种方式是在终端窗口中创建服务主体。 在 Azure CLI 中，使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，并以“http://&lt;my-unique-service-principle-name&gt;”的格式为 -n 标志提供唯一服务主体名称。
+第二种方式是在终端窗口中创建服务主体。 在 Azure CLI 中，使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令，并以“http://&lt;my-unique-service-principal-name&gt;”的格式为 -n 标志提供唯一服务主体名称。
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 objectId 将在输出中作为 `clientID` 列出。
@@ -72,7 +72,7 @@ objectId 将在输出中作为 `clientID` 列出。
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 objectId 将在输出中作为 `Id`（而不是 `ApplicationId`）列出。

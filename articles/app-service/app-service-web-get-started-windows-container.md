@@ -4,12 +4,12 @@ description: 将第一个自定义 Windows 容器部署到 Azure 应用服务。
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cd6b78e5fd824cc013cc946d23677237923f485e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 44ade8b0b218f028cf6f211e37824ffc43a191ac
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047106"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764071"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>在 Azure 中运行自定义 Windows 容器（预览版）
 
@@ -26,28 +26,28 @@ ms.locfileid: "80047106"
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">将 Docker 切换为运行 Windows 容器</a>。
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">安装 Visual Studio 2019</a>，其中包含 **ASP.NET 和 web 开发**以及 **Azure 开发**工作负载。 如果已安装 Visual Studio 2019：
 
-    - 通过选择“帮助”   >   “检查更新”，在 Visual Studio 中安装最新更新。
-    - 在 Visual Studio 中，通过选择“工具”   >   “获取工具和功能”，添加工作负载。
+    - 通过选择“帮助” > “检查更新”，在 Visual Studio 中安装最新更新。
+    - 在 Visual Studio 中，通过选择“工具” > “获取工具和功能”，添加工作负载。
 
 ## <a name="create-an-aspnet-web-app"></a>创建 ASP.NET Web 应用
 
 按照以下步骤创建 ASP.NET Web 应用：
 
-1. 打开 Visual Studio，然后选择“创建新项目”  。
+1. 打开 Visual Studio，然后选择“创建新项目”。
 
-1. 在“创建新项目”  中，找到并选择用于 C# 的 **ASP.NET Web 应用程序(.NET Framework)** ，然后选择“下一步”  。
+1. 在“创建新项目”中，找到并选择用于 C# 的 **ASP.NET Web 应用程序(.NET Framework)** ，然后选择“下一步”。
 
-1. 在“配置新项目”  中，将应用程序命名为“myFirstAzureWebApp”  ，然后选择“创建”  。
+1. 在“配置新项目”中，将应用程序命名为“myfirstazurewebapp”，然后选择“创建”。
 
    ![配置 Web 应用项目](./media/app-service-web-get-started-windows-container/configure-web-app-project-container.png)
 
-1. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。 
+1. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。
 
-1. 选择“Docker 支持”，并确保身份验证设置为“无身份验证”。   选择“创建”  。
+1. 选择“Docker 支持”，并确保身份验证设置为“无身份验证”。  选择“创建”。
 
    ![创建 ASP.NET Web 应用程序](./media/app-service-web-get-started-windows-container/select-mvc-template-for-container.png)
 
-1. 如果 _Dockerfile_ 文件未自动打开，则从解决方案资源管理器中打开  。
+1. 如果 _Dockerfile_ 文件未自动打开，则从解决方案资源管理器中打开。
 
 1. 需要使用[受支持的父映像](#use-a-different-parent-image)。 通过将 `FROM` 行替换为以下代码，更改父映像，并保存文件：
 
@@ -55,23 +55,23 @@ ms.locfileid: "80047106"
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
    ```
 
-1. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以在本地运行 Web 应用。  
+1. 在 Visual Studio 菜单中，选择“调试” > “开始执行(不调试)”以在本地运行 Web 应用。 
 
    ![在本地运行应用](./media/app-service-web-get-started-windows-container/local-web-app.png)
 
 ## <a name="publish-to-docker-hub"></a>发布到 Docker 中心
 
-1. 在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
+1. 在解决方案资源管理器中右键单击“myfirstazurewebapp”项目，然后选择“发布”  。
 
-1. 选择“应用服务”  ，然后选择“发布”  。
+1. 选择“应用服务”，然后选择“发布”。
 
-1. 在“选取发布目标”中选择“容器注册表”和“Docker Hub”，然后单击“发布”。    
+1. 在“选取发布目标”中选择“容器注册表”和“Docker Hub”，然后单击“发布”。   
 
    ![从项目概述页发布](./media/app-service-web-get-started-windows-container/publish-to-docker-vs2019.png)
 
-1. 提供 Docker Hub 帐户凭据，然后选择“保存”  。
+1. 提供 Docker Hub 帐户凭据，然后选择“保存”。
 
-   等待部署完成。 “发布”页现在会显示稍后要使用的存储库名称。 
+   等待部署完成。 “发布”页现在会显示稍后要使用的存储库名称。
 
    ![从项目概述页发布](./media/app-service-web-get-started-windows-container/published-docker-repository-vs2019.png)
 
@@ -81,23 +81,23 @@ ms.locfileid: "80047106"
 
 1. 登录 [Azure 门户]( https://portal.azure.com)。
 
-1. 在 Azure 门户的左上角选择“创建资源”。 
+1. 在 Azure 门户的左上角选择“创建资源”。
 
-1. 在 Azure 市场资源列表上方的搜索框中，搜索“用于容器的 Web 应用”并选择“创建”   。
+1. 在 Azure 市场资源列表上方的搜索框中，搜索“用于容器的 Web 应用”并选择“创建” 。
 
-1. 在“Web 应用创建”中，选择你的订阅和一个**资源组**。  如果需要，可以创建新的资源组。
+1. 在“Web 应用创建”中，选择你的订阅和一个**资源组**。 如果需要，可以创建新的资源组。
 
-1. 提供应用名称（例如 *win-container-demo*），然后选择“Windows”作为**操作系统**。  在完成时选择“下一步:  Docker”以继续。
+1. 提供应用名称（例如 *win-container-demo*），然后选择“Windows”作为**操作系统**。 在完成时选择“下一步:Docker”以继续。
 
    ![创建用于容器的 Web 应用。](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
-1. 对于“映像源”，请选择“Docker Hub”；对于“映像和标记”，请输入在[发布到 Docker Hub](#publish-to-docker-hub) 中复制的存储库名称。   
+1. 对于“映像源”，请选择“Docker Hub”；对于“映像和标记”，请输入在[发布到 Docker Hub](#publish-to-docker-hub) 中复制的存储库名称。  
 
    ![配置用于容器的 Web 应用](media/app-service-web-get-started-windows-container/configure-web-app-continer.png)
 
     如果用于 Web 应用程序的自定义映像位于其他位置，例如位于 [Azure 容器注册表](/azure/container-registry/)中或任何其他的专用存储库中，则可在这里对其进行配置。
 
-1. 选择“查看和创建”，然后选择“创建”并等待 Azure 创建所需的资源。  
+1. 选择“查看和创建”，然后选择“创建”并等待 Azure 创建所需的资源。 
 
 ## <a name="browse-to-the-container-app"></a>浏览到容器应用
 
@@ -105,9 +105,9 @@ Azure 操作完成后，会显示通知框。
 
 ![部署成功](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
-1. 单击“转到资源”。 
+1. 单击“转到资源”。
 
-1. 在此资源的概述中，单击“URL”旁边的链接。 
+1. 在此资源的概述中，单击“URL”旁边的链接。
 
 此时会打开一个如下所示的新浏览器页面：
 
@@ -117,11 +117,11 @@ Azure 操作完成后，会显示通知框。
 
 ![Windows 容器应用正在运行](media/app-service-web-get-started-windows-container/app-running-vs.png)
 
-祝贺你！  你正在 Azure 应用服务中运行你的第一个自定义 Windows 容器。
+祝贺你！ 你正在 Azure 应用服务中运行你的第一个自定义 Windows 容器。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
-加载 Windows 容器可能需要一些时间。 要查看进度，请导航到以下 URL（将 \<app_name> 替换为你的应用名称）。 
+加载 Windows 容器可能需要一些时间。 若要查看进度，请通过将 \<app_name> 替换为应用的名称，导航到以下 URL。
 ```
 https://<app_name>.scm.azurewebsites.net/api/logstream
 ```
@@ -138,7 +138,7 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
-1. 在 Visual Studio 的“解决方案资源管理器”中，打开“视图” > “主页” > “Index.cshtml”。    
+1. 在 Visual Studio 的“解决方案资源管理器”中，打开“视图” > “主页” > “Index.cshtml”。   
 
 1. 在顶部附近找到 `<div class="jumbotron">` HTML 标记，将整个元素替换为以下代码：
 
@@ -149,11 +149,11 @@ https://<app_name>.scm.azurewebsites.net/api/logstream
    </div>
    ```
 
-1. 若要重新部署到 Azure，请在“解决方案资源管理器”  中右键单击“myFirstAzureWebApp”  项目，然后选择“发布”  。
+1. 若要重新部署到 Azure，请在解决方案资源管理器中右键单击“myfirstazurewebapp”项目，然后选择“发布”  。
 
-1. 在发布页上，选择“发布”  并等待发布完成。
+1. 在发布页上，选择“发布”并等待发布完成。
 
-1. 若要指示应用服务从 Docker 中心拉取新映像，请重启应用。 返回门户中的应用页，单击“重启”   > “是”  。
+1. 若要指示应用服务从 Docker 中心拉取新映像，请重启应用。 返回门户中的应用页，单击“重启” > “是”。
 
    ![在 Azure 中重新启动 Web 应用](./media/app-service-web-get-started-windows-container/portal-restart-app.png)
 

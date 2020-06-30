@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022106"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253454"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -48,13 +48,13 @@ ms.locfileid: "84022106"
 
 * Azure 存储帐户。 可将 Blob 存储用作源数据存储。 如果还没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
 * Azure 存储资源管理器下载。 若要安装此工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。
-* Azure SQL 数据库。 将数据库用作接收器数据存储。 如果你没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)。
+* Azure SQL 数据库。 将数据库用作接收器数据存储。 如果没有 Azure SQL 数据库中的数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)。
 * Visual Studio。 本文使用 Visual Studio 2019。
 * Azure .NET SDK。 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)。
 
 有关当前可以使用数据工厂的 Azure 区域列表，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据存储和计算可以位于其他区域。 存储包括 Azure 存储和 Azure SQL 数据库。 计算包括数据工厂使用的 HDInsight。
 
-根据[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中所述创建一个应用程序。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。  需要获取多个值（例如“应用程序(客户端) ID”和“目录(租户) ID”），以便在本教程的后续部分中使用。  
+根据[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中所述创建一个应用程序。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。 需要获取多个值（例如“应用程序(客户端) ID”和“目录(租户) ID”），以便在本教程的后续部分中使用。 
 
 ### <a name="create-a-blob-table"></a>创建 Blob 表
 
@@ -65,22 +65,22 @@ ms.locfileid: "84022106"
    Tamika|Walsh
    ```
 
-1. 打开 Azure 存储资源管理器。 展开你的存储帐户。 右键单击“Blob 容器”，并选择“创建 Blob 容器”。  
-1. 将新容器命名为 *adfv2branch*，然后选择“上传”将 *input.txt* 文件添加到该容器。 
+1. 打开 Azure 存储资源管理器。 展开你的存储帐户。 右键单击“Blob 容器”，并选择“创建 Blob 容器”。 
+1. 将新容器命名为 *adfv2branch*，然后选择“上传”将 *input.txt* 文件添加到该容器。
 
 ## <a name="create-visual-studio-project"></a>创建 Visual Studio 项目<a name="create-visual-studio-project"></a>
 
 创建一个 C# .NET 控制台应用程序：
 
-1. 启动 Visual Studio 并选择“创建新项目”。 
-1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。   
+1. 启动 Visual Studio 并选择“创建新项目”。
+1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。  
 1. 将项目命名为 *ADFv2BranchTutorial*。
-1. 选择“.NET 版本 4.5.2”或更高版本，然后选择“创建”。  
+1. 选择“.NET 版本 4.5.2”或更高版本，然后选择“创建”。 
 
 ### <a name="install-nuget-packages"></a>安装 NuGet 包
 
-1. 选择“工具”   > “NuGet 包管理器”   > “包管理器控制台”  。
-1. 在“包管理器控制台”  中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
+1. 选择“工具” > “NuGet 包管理器” > “包管理器控制台”。
+1. 在“包管理器控制台”中，运行以下命令来安装包。 有关详细信息，请参阅 [Microsoft.Azure.Management.DataFactory NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)。
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -336,11 +336,11 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 此 JSON 内容与前一部分中创建的 `EmailRequest` 类相符。
 
-添加 `Office 365 Outlook – Send an email` 操作。 对于“发送电子邮件”操作，请使用传入请求**正文** JSON 架构的属性来自定义如何设置电子邮件的格式。  下面是一个示例：
+添加 `Office 365 Outlook – Send an email` 操作。 对于“发送电子邮件”操作，请使用传入请求**正文** JSON 架构的属性来自定义如何设置电子邮件的格式。 下面是一个示例：
 
 ![逻辑应用设计器 - 发送电子邮件操作](media/tutorial-control-flow/customize-send-email-action.png)
 
-保存工作流后，复制并保存触发器中的“HTTP POST URL”值。 
+保存工作流后，复制并保存触发器中的“HTTP POST URL”值。
 
 ## <a name="fail-email-workflow"></a>失败电子邮件工作流
 
@@ -348,7 +348,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 ![逻辑应用设计器 - 失败电子邮件工作流](media/tutorial-control-flow/fail-email-workflow.png)
 
-保存工作流后，复制并保存触发器中的“HTTP POST URL”值。 
+保存工作流后，复制并保存触发器中的“HTTP POST URL”值。
 
 现在，应有两个工作流 URL，如以下示例所示：
 
@@ -366,7 +366,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 在此管道中使用以下功能：
 
-* parameters
+* 参数
 * Web 活动
 * 活动依赖项
 * 使用一个活动的输出作为另一活动的输入
@@ -451,13 +451,13 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
    ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 管道代码的第一个部分定义参数。
 
-* `sourceBlobContainer`。 源 Blob 数据集在管道中使用此参数。
-* `sinkBlobContainer`。 接收器 Blob 数据集在管道中使用此参数。
-* `receiver`。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
+* `sourceBlobContainer` 列中的一个值匹配。 源 Blob 数据集在管道中使用此参数。
+* `sinkBlobContainer` 列中的一个值匹配。 接收器 Blob 数据集在管道中使用此参数。
+* `receiver` 列中的一个值匹配。 管道中的两个 Web 活动使用此参数向收件人发送成功或失败电子邮件。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -490,7 +490,7 @@ Web 活动允许调用任何 REST 终结点。 有关该活动的详细信息，
         }
 ```
 
-在 `Url` 属性中，粘贴来自逻辑应用工作流的“HTTP POST URL”终结点。  在 `Body` 属性中，传递 `EmailRequest` 类的实例。 电子邮件请求包含以下属性：
+在 `Url` 属性中，粘贴来自逻辑应用工作流的“HTTP POST URL”终结点。 在 `Body` 属性中，传递 `EmailRequest` 类的实例。 电子邮件请求包含以下属性：
 
 * 消息。 传递 `@{activity('CopyBlobtoBlob').output.dataWritten` 值。 访问前一复制活动的属性，并传递 `dataWritten` 值。 失败时，传递错误输出而不是 `@{activity('CopyBlobtoBlob').error.message`。
 * 数据工厂名称。 传递 `@{pipeline().DataFactory}` 值。这是一个系统变量，用于访问相应的数据工厂名称。 有关系统变量的列表，请参阅[系统变量](control-flow-system-variables.md)。

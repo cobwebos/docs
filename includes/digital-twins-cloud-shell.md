@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 76480959d94b9e2a2e04857c85b7359105e73e4f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611469"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296961"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
 ### <a name="set-up-cloud-shell-session"></a>设置 Cloud Shell 会话
 
-在打开 Cloud Shell 窗口后，要做的第一件事是登录，并将 shell 上下文设置为此会话的订阅。 
+在打开 Cloud Shell 窗口后，要做的第一件事是登录，并将 shell 上下文设置为此会话的订阅。 在 Cloud Shell 中运行以下命令：
 
 ```azurecli
 az login
@@ -29,16 +29,18 @@ az account set --subscription <your-Azure-subscription-ID>
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-然后，在 Cloud Shell 实例中运行以下命令，以添加用于 Azure CLI 的 Microsoft Azure IoT 扩展。
+接下来，将[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)添加到 Cloud Shell 以支持用于与 Azure 数字孪生和其他 IoT 服务进行交互的命令。 使用以下命令添加该扩展：
 
    ```azurecli-interactive
    az extension add --name azure-iot
    ```
 
-> [!NOTE]
-> 本文使用最新版本的 Azure IoT 扩展（称为 `azure-iot`）。 旧版本称为 `azure-iot-cli-ext`。只应同时安装有一个版本。 可以使用命令 `az extension list` 来验证当前安装的扩展。
-> 使用 `az extension remove --name azure-cli-iot-ext` 可删除扩展的旧版本。
-> 使用 `az extension add --name azure-iot` 可添加扩展的新版本。 若要查看已安装了哪些扩展，请使用 `az extension list`。
+如果该扩展之前已经安装，输出可能会显示“azure-iot 扩展已安装”。 这种情况下，请运行以下命令确保具有最新更新： 
 
-> [!TIP]
-> 可以运行 `az dt -h` 以查看顶级 Azure 数字孪生命令。
+   ```azurecli-interactive
+   az extension update --name azure-iot
+   ```
+
+现在 Azure 数字孪生已可在 Cloud Shell 中使用。
+
+若要验证 Azure 数字孪生在 Cloud Shell 中的就绪性，可以随时运行 `az dt -h` 查看可用的顶层 Azure 数字孪生命令列表。

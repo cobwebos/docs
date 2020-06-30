@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bf3f454296acafcff6fe775b07abeb7a253749b5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78299306"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253522"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教程：查看 Microsoft 合作伙伴协议发票
 
@@ -44,21 +44,21 @@ ms.locfileid: "78299306"
 
 检查协议类型以确定你是否有权访问 Microsoft 合作伙伴协议的计费帐户。
 
-在 Azure 门户中，在搜索框中键入“成本管理 + 计费”  ，然后选择“成本管理 + 计费”  。
+在 Azure 门户中，在搜索框中键入“成本管理 + 计费”，然后选择“成本管理 + 计费”。
 
 ![显示了 Azure 门户搜索的屏幕截图](./media/review-partner-agreement-bill/billing-search-cost-management-billing.png)
 
-如果仅有权访问一个计费范围，请从左侧选择“属性”  。 如果计费帐户类型为“Microsoft 合作伙伴协议”  ，则有权访问 Microsoft 合作伙伴协议的计费帐户。
+如果仅有权访问一个计费范围，请从左侧选择“属性”。 如果计费帐户类型为“Microsoft 合作伙伴协议”，则有权访问 Microsoft 合作伙伴协议的计费帐户。
 
 ![屏幕截图，在“属性”页中显示了 Microsoft 合作伙伴协议](./media/review-partner-agreement-bill/billing-account-properties-partner-agreement.png)
 
-如果有权访问多个计费范围，请检查“计费帐户”列中的类型。 如果任何范围的计费帐户类型为“Microsoft 合作伙伴协议”  ，则有权访问 Microsoft 合作伙伴协议的计费帐户。
+如果有权访问多个计费范围，请检查“计费帐户”列中的类型。 如果任何范围的计费帐户类型为“Microsoft 合作伙伴协议”，则有权访问 Microsoft 合作伙伴协议的计费帐户。
 
 ![屏幕截图，在“计费帐户列表”页中显示了 Microsoft 合作伙伴协议](./media/review-partner-agreement-bill/mpa-in-the-list.png)
 
 ## <a name="review-invoiced-transactions-in-the-azure-portal"></a>在 Azure 门户中查看已开票交易
 
-在“成本管理 + 计费”中，从页面左侧选择“所有事务”。  根据你的访问权限，可能需要选择某个计费帐户、计费对象信息或客户，然后选择“所有交易”。 
+在“成本管理 + 计费”中，从页面左侧选择“所有事务”。 根据你的访问权限，可能需要选择某个计费帐户、计费对象信息或客户，然后选择“所有交易”。
 
 “所有交易”页显示以下信息：
 
@@ -84,19 +84,19 @@ ms.locfileid: "78299306"
 
 识别未结费用时，可以通过分析产生这些费用的每笔交易来了解费用。 此时，未结使用费不会显示在“所有交易”页上。 可以在 Azure 订阅页上查看未结使用费。
 
-在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。 
+在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。
 
-在页面左侧选择“所有事务”。 
+在页面左侧选择“所有事务”。
 
-搜索“未结”。  使用“时间跨度”筛选器查看当前月份或上一月份的未结费用。 
+搜索“未结”。 使用“时间跨度”筛选器查看当前月份或上一月份的未结费用。
 
 <!-- ![Screenshot that shows the pending transactions list](./media/billing-mpa-understand-your-bill/mpa-billing-profile-pending-transactions.png) -->
 
 ### <a name="view-pending-charges-by-customer"></a>按客户查看待定费用
 
-在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。 
+在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。
 
-选择页面左侧的“客户”  。
+选择页面左侧的“客户”。
 
 <!-- ![screenshot of billing profile customers list](./media/billing-mpa-understand-your-bill/mpa-billing-profile-customers.png) -->
 
@@ -104,15 +104,15 @@ ms.locfileid: "78299306"
 
 ### <a name="view-pending-usage-charges"></a>查看未结使用费
 
-在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。 
+在“成本管理 + 计费”中，选择一个计费配置文件。 根据你的访问权限，可能需要选择一个计费帐户。 在该计费帐户中选择“计费配置文件”，然后选择一个计费配置文件。
 
-在页面左侧选择“Azure 订阅”。  Azure 订阅页将显示计费配置文件中每个订阅的当月费用和上个月费用。 本月至今累计费用是当前月份的未结费用，将在生成当月的发票时计收。 如果上个月的发票仍未生成，则上个月的费用也是未结的。
+在页面左侧选择“Azure 订阅”。 Azure 订阅页将显示计费配置文件中每个订阅的当月费用和上个月费用。 本月至今累计费用是当前月份的未结费用，将在生成当月的发票时计收。 如果上个月的发票仍未生成，则上个月的费用也是未结的。
 
 <!--     ![Screenshot that shows the Azure subscriptions list for MPA billing profile](./media/billing-mpa-understand-your-bill/mpa-billing-profile-subscriptions-list.png) -->
 
 ## <a name="analyze-your-azure-usage-charges"></a>分析 Azure 使用费
 
-使用 Azure 使用情况和费用 CSV 文件来分析基于用量的费用。 可以筛选 Azure 使用情况和费用文件，以协调发票 pdf 中列出的每个产品的使用费用。 若要查看特定产品的详细使用费用，请筛选 Azure 使用情况和费用 CSV 文件中的“产品”  列，以仅包括该产品的名称。
+使用 Azure 使用情况和费用 CSV 文件来分析基于用量的费用。 可以筛选 Azure 使用情况和费用文件，以协调发票 pdf 中列出的每个产品的使用费用。 若要查看特定产品的详细使用费用，请筛选 Azure 使用情况和费用 CSV 文件中的“产品”列，以仅包括该产品的名称。
 
 还可以在 Azure 使用情况和费用 CSV 文件中筛选 **customerName** 列，以查看每个客户的每日使用费用。 如果要按 Azure 订阅查看每日使用费用，请筛选 **subscriptionName** 列。
 

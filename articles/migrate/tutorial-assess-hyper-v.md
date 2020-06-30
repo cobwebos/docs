@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: d87e0d54a62736623483f1929b1979af8efb3a58
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331757"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052433"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -36,7 +36,7 @@ ms.locfileid: "84331757"
 - [完成](tutorial-prepare-hyper-v.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：
     - [准备 Azure](tutorial-prepare-hyper-v.md#prepare-azure) 以使用 Azure Migrate。
-    - [准备 Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) 主机和 VM 评估。
+    - [准备 Hyper-V](tutorial-prepare-hyper-v.md#prepare-for-assessment) 主机和 VM 评估。
     - [验证](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment)部署用于 Hyper-V 评估的 Azure Migrate 设备所需的内容。
 
 ## <a name="set-up-an-azure-migrate-project"></a>设置 Azure Migrate 项目
@@ -102,7 +102,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
         **方案** | **下载** | **SHA256**
         --- | --- | ---
-        Hyper-V (8.93 MB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+        Hyper-V (8.93 GB) | [最新版本](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
     - 对于 Azure 政府：
 
@@ -174,10 +174,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 
 ### <a name="delegate-credentials-for-smb-vhds"></a>为 SMB VHD 委托凭据
 
-如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 这需要以下条件：
-
-- 允许每个主机充当设备的代理。 如果你按照教程顺序操作，则在上一教程准备 Hyper-V 进行评估和迁移时执行了此操作。 应该[手动](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)或通过[运行执行此操作的脚本](tutorial-prepare-hyper-v.md#prepare-with-a-script)为主机设置 CredSSP。
-- 启用 CredSSP 委托，以便 Azure Migrate 设备可以充当客户端，将凭据委托给主机。
+如果在 SMB 上运行 VHD，必须启用从设备到 Hyper-V 主机的凭据委托。 为此，请允许每个主机充当设备的代理。 如果你按照教程顺序操作，则在上一教程准备 Hyper-V 进行评估和迁移时执行了此操作。 应该[手动](tutorial-prepare-hyper-v.md#enable-credssp-to-delegate-credentials)或通过[运行执行此操作的脚本](tutorial-prepare-hyper-v.md#run-the-script)为主机设置 CredSSP。
 
 在设备上启用，如下所示：
 
@@ -186,7 +183,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 在设备 VM 上运行此命令。 HyperVHost1/HyperVHost2 是示例主机名。
 
 ```
-Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
 ```
 
 示例： ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force `

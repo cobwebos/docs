@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 04/22/2020
+ms.date: 06/10/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: dc37039d6777a77f9de247808329930f1621ee82
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830304"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686403"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建预算
 
@@ -61,9 +61,9 @@ Azure 资源管理器模板仅支持 Azure 企业协议 (EA) 订阅。 该模板
 
    [![资源管理器模板，创建预算，部署门户](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
 
-    * **订阅**：选择一个 Azure 订阅。
+    * 订阅：选择一个 Azure 订阅。
     * **资源组**：选择“新建”并输入资源组的唯一名称，然后单击“确定”；或者选择现有的资源组 。
-    * **位置**：选择一个位置。 例如“美国中部”。
+    * 位置：选择一个位置。 例如“美国中部”。
     * **预算名称**：为预算输入一个名称。 此名称在资源组中应是唯一的。 只允许输入字母数字、下划线和连字符。
     * **数量**：输入要通过预算跟踪的总成本或使用量。
     * **预算类别**：选择预算的类别，以及预算是要跟踪“成本”还是“用量” 。
@@ -74,7 +74,7 @@ Azure 资源管理器模板仅支持 Azure 企业协议 (EA) 订阅。 该模板
     * **阈值**：输入通知的阈值。 当成本超过阈值时，会发送通知。 该值始终为百分比，并且必须介于 0 和 1000 之间。
     * **联系人电子邮件**：输入超出阈值时要将预算通知发送到的电子邮件地址列表。 预期格式为 `["user1@domain.com","user2@domain.com"]`。
     * **联系人角色**：输入超出阈值时要将预算通知发送到的联系人角色列表。 默认值为“所有者”、“参与者”和“读取者”。 预期格式为 `["Owner","Contributor","Reader"]`。
-    * **联系人组**：输入超出阈值时要将预算通知发送到的操作组列表。 此字段接受字符串数组。 预期格式为 `["Action Group Name1","Action Group Name2"]`。 如果你不想使用操作组，请输入 `[]`。
+    * 联系人组：输入超出阈值时要将预算通知发送到的操作组资源 ID 列表（作为完整资源 URI）。 此字段接受字符串数组。 预期格式为 `["action group resource ID1","action group resource ID2"]`。 如果你不想使用操作组，请输入 `[]`。
     * **资源筛选器**：输入针对资源的筛选器列表。 预期格式为 `["Resource Filter Name1","Resource Filter Name2"]`。 如果你不想应用筛选器，请输入 `[]`。 如果输入了资源筛选器，则还必须输入“计量器筛选器”值。
     * **计量器筛选器**：输入针对计量器的筛选器列表，对于“用量”预算类别的预算，必须填写此字段。 预期格式为 `["Meter Filter Name1","Meter Filter Name2"]`。 如果未输入资源筛选器，请输入 `[]`。
     * **我同意上述条款和条件**：选中。

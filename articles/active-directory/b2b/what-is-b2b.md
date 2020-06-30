@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 89e1868d8e9a346d5a791c9fa8ae7682ca2b6807
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585806"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905130"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
@@ -98,9 +98,12 @@ Azure AD 支持外部标识提供者，如 Facebook、Microsoft 帐户、Google 
 
 ## <a name="create-a-self-service-sign-up-user-flow-preview"></a>创建自助注册用户流（预览）
 
-使用自助注册用户流，可以为要访问应用的外部用户创建注册体验。 在注册流中，可以提供不同的社交或企业标识提供者选项，并收集用户信息。 了解自助注册及其设置方法。
+使用自助注册用户流，可以为要访问应用的外部用户创建注册体验。 在注册流中，可以提供不同的社交或企业标识提供者选项，并收集用户信息。 了解[自助注册及其设置方法](self-service-sign-up-overview.md)。
+
+还可以使用 [API 连接器](api-connectors-overview.md)将自助注册用户流与外部云系统集成。 可以与自定义审批工作流连接、执行身份验证、验证用户提供的信息等。
 
 ![显示“用户流”页的屏幕截图](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
+<!--TODO: Add screenshot with API connectors -->
 
 ## <a name="next-steps"></a>后续步骤
 

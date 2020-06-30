@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: e27719f7a639a97a0cde04848a51ba6135c3199e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: f8f65d5f5fe9ec2345279d9f680cb77354834715
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84346164"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735522"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,8 @@ ms.locfileid: "84346164"
 
 #### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
-右键单击**解决方案资源管理器**中的解决方案，然后选择“管理 NuGet 包”，以便安装客户端库。 在打开的包管理器中，选择“浏览”，选中“包括预发行版”并搜索 `Azure.AI.TextAnalytics`。 选择版本 `1.0.0-preview.5`，然后选择“安装”。 也可使用[包管理器控制台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+右键单击**解决方案资源管理器**中的解决方案，然后选择“管理 NuGet 包”，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Azure.AI.TextAnalytics`。 选择版本 `1.0.0`，然后选择“安装”。 也可使用[包管理器控制台](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+
 
 > [!TIP]
 > 想要立即查看整个快速入门代码文件？ 可以[在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)找到它，其中包含此快速入门中的代码示例。 

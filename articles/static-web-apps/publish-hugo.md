@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669896"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297935"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用（预览版）
 
@@ -144,42 +144,6 @@ ms.locfileid: "84669896"
 1. 单击“查看 + 创建”按钮以验证详细信息是否都正确。
 
 1. 单击“创建”以开始创建 Azure 静态 Web 应用并为部署预配 GitHub Action。
-
-1. 部署完成后，导航到终端并将 GitHub Actions 提交拉取到你的计算机。
-
-   ```bash
-   git pull
-   ```
-
-1. 在文本编辑器中打开 Hugo 应用，然后打开 .github/workflows/azure-pages-<WORKFLOW_NAME>.yml 文件。
-
-1. 将行 `- uses: actions/checkout@v2`（第 18 行）替换为以下行，以生成 Hugo 应用程序。 如需扩展 Hugo，请取消注释 `extended: true`。
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true  # Fetch Hugo themes (true OR recursive)
-       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.11
-     with:
-       hugo-version: "latest"  # Hugo version: latest OR x.y.z
-       # extended: true
-
-   - name: Build
-     run: hugo
-   ```
-   
-   有关将 Hugo 安装到 GitHub 操作运行程序的更多详细信息，请参阅 [peaceiris/Actions-Hugo](https://github.com/peaceiris/actions-hugo)。
-
-1. 提交更新的工作流并推送到 GitHub。
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. 等待 GitHub Actions 完成。
 

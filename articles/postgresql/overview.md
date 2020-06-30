@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: deb720638e0921762eb9c5800d218c3cfccb7f55
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74481657"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213595"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什么是用于 PostgreSQL 的 Azure 数据库？
 Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系型数据库服务。 它基于开源 [PostgreSQL](https://www.postgresql.org/) 数据库引擎的社区版本，提供两部署选项：单一服务器和超大规模 (Citus)。
@@ -52,6 +52,6 @@ Azure Database for PostgreSQL 是 Microsoft 云中为开发人员构建的关系
 - 若要提供反馈或请求新功能，请通过 [UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) 创建条目。
 
 ## <a name="next-steps"></a>后续步骤
-- 有关成本比较和计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
+- 有关成本比较和计算器，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。 单一服务器和超大规模 (Citus) 部署选项也都提供预付的预留实例折扣，请参阅[单一服务器 RI 定价](concept-reserved-pricing.md)和[超大规模 RI 定价](concepts-hyperscale-reserved-pricing.md)页获取详细信息。
 - 开始时，请创建第一个 Azure Database for PostgreSQL [单一服务器](./quickstart-create-server-database-portal.md)或[超大规模 (Citus)](./quickstart-create-hyperscale-portal.md)
 - 使用 Python、PHP、Ruby、C\#、Java、Node.js 构建第一个应用：[连接库](./concepts-connection-libraries.md)

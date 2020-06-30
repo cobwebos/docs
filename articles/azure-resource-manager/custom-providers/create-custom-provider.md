@@ -3,14 +3,14 @@ title: 创建资源提供程序
 description: 介绍如何创建资源提供程序并部署其自定义资源类型。
 author: MSEvanhi
 ms.topic: tutorial
-ms.date: 05/01/2019
+ms.date: 06/19/2020
 ms.author: evanhi
-ms.openlocfilehash: 393993a44c860525b9bd9a540ed7afff78e5b93c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce547c010d3cc814d4e6f6182c19572248228fc3
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648504"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124998"
 ---
 # <a name="quickstart-create-custom-provider-and-deploy-custom-resources"></a>快速入门：创建自定义提供程序并部署自定义资源
 
@@ -18,7 +18,11 @@ ms.locfileid: "75648504"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本快速入门中的步骤需要调用 REST 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。 如果还没有用于 REST 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
+完成本快速入门中的步骤需要调用 `REST` 操作。 可以通过[不同的方法来发送 REST 请求](/rest/api/azure/)。
+
+要运行 Azure CLI 命令，请使用 [Azure Cloud Shell 中的 Bash](/azure/cloud-shell/quickstart)。 [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) 命令需要扩展。 有关详细信息，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
+
+要在本地运行 PowerShell 命令，请使用 PowerShell 7 或更高版本以及 Azure PowerShell 模块。 有关详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果还没有用于 `REST` 操作的工具，请安装 [ARMClient](https://github.com/projectkudu/ARMClient)。 它是一种可简化 Azure 资源管理器 API 调用的开源命令行工具。
 
 ## <a name="deploy-custom-provider"></a>部署自定义提供程序
 
@@ -31,37 +35,80 @@ ms.locfileid: "75648504"
 * 自定义提供程序，用于定义自定义资源类型和操作。 它使用函数应用终结点来发送请求。
 * 自定义提供程序提供的自定义资源。
 
-若要通过 PowerShell 部署自定义提供程序，请使用：
+要部署自定义提供程序，请使用 Azure CLI 或 PowerShell：
 
-```azurepowershell-interactive
-$rgName = "<resource-group-name>"
-$funcName = "<function-app-name>"
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-New-AzResourceGroup -Name $rgName -Location eastus
-New-AzResourceGroupDeployment -ResourceGroupName $rgName `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/custom-providers/customprovider.json `
-  -funcname $funcName
+```azurecli-interactive
+read -p "Enter a resource group name:" rgName &&
+read -p "Enter the location (i.e. eastus):" location &&
+read -p "Enter the provider's function app name:" funcName &&
+templateUri="https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/custom-providers/customprovider.json" &&
+az group create --name $rgName --location "$location" &&
+az deployment group create --resource-group $rgName --template-uri $templateUri --parameters funcName=$funcName &&
+echo "Press [ENTER] to continue ..." &&
+read
 ```
 
-也可通过以下按钮来部署解决方案：
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json" target="_blank">
-    <img src="https://azuredeploy.net/deploybutton.png"/>
-</a>
+```powershell
+$rgName = Read-Host -Prompt "Enter a resource group name"
+$location = Read-Host -Prompt "Enter the location (i.e. eastus)"
+$funcName = Read-Host -Prompt "Enter the provider's function app name"
+$templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/custom-providers/customprovider.json"
+New-AzResourceGroup -Name $rgName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $rgName -TemplateUri $templateUri -funcName $funcName
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
+
+---
+
+也可通过以下按钮从 Azure 门户部署解决方案：
+
+[![部署到 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
 ## <a name="view-custom-provider-and-resource"></a>查看自定义提供程序和资源
 
-在门户中，自定义提供程序是隐藏的资源类型。 若要确认资源提供程序是否已部署，请导航到资源组。 选择“显示隐藏类型”选项。 
+在门户中，自定义提供程序是隐藏的资源类型。 要确认是否已部署资源提供程序，请导航到资源组。 选择“显示隐藏类型”选项。
 
 ![显示隐藏的资源类型](./media/create-custom-provider/show-hidden.png)
 
-若要查看已部署的自定义资源类型，请在资源类型上使用 GET 操作。
+要查看已部署的自定义资源类型，请对资源类型使用 `GET` 操作。
 
-```
+```http
 GET https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users?api-version=2018-09-01-preview
 ```
 
-有了 ARMClient，可以使用：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+subID=$(az account show --query id --output tsv)
+requestURI="https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/users?api-version=2018-09-01-preview"
+az rest --method get --uri $requestURI
+```
+
+你会收到响应：
+
+```json
+{
+  "value": [
+    {
+      "id": "/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/santa",
+      "name": "santa",
+      "properties": {
+        "FullName": "Santa Claus",
+        "Location": "NorthPole",
+        "provisioningState": "Succeeded"
+      },
+      "resourceGroup": "<rg-name>",
+      "type": "Microsoft.CustomProviders/resourceProviders/users"
+    }
+  ]
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 $subID = (Get-AzContext).Subscription.Id
@@ -89,17 +136,37 @@ armclient GET $requestURI
 }
 ```
 
+---
+
 ## <a name="call-action"></a>调用操作
 
-自定义提供程序还有名为 **ping** 的操作。 处理请求的代码在函数应用中实现。 ping 操作使用一条问候信息进行回复。
+自定义提供程序还有名为 `ping` 的操作。 处理请求的代码在函数应用中实现。 `ping` 操作使用一条问候信息进行回复。
 
-若要发送 ping 请求，请在自定义提供程序上使用 POST 操作。
+要发送 `ping` 请求，请对自定义提供程序使用 `POST` 操作。
 
-```
+```http
 POST https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/ping?api-version=2018-09-01-preview
 ```
 
-有了 ARMClient，可以使用：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+pingURI="https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/ping?api-version=2018-09-01-preview"
+az rest --method post --uri $pingURI
+```
+
+你会收到响应：
+
+```json
+{
+  "message": "hello <function-name>.azurewebsites.net",
+  "pingcontent": {
+    "source": "<function-name>.azurewebsites.net"
+  }
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 $pingURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/ping?api-version=2018-09-01-preview"
@@ -118,17 +185,42 @@ armclient POST $pingURI
 }
 ```
 
-## <a name="create-resource-type"></a>创建资源类型
+---
 
-若要创建自定义资源类型，可以在模板中部署资源。 此方法显示在本快速入门部署的模板中。 也可针对此资源类型发送 PUT 请求。
+## <a name="create-a-resource-type"></a>创建资源类型
 
-```
+若要创建自定义资源类型，可以在模板中部署资源。 此方法显示在本快速入门部署的模板中。 也可针对此资源类型发送 `PUT` 请求。
+
+```http
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview
 
 {"properties":{"FullName": "Test User", "Location": "Earth"}}
 ```
 
-有了 ARMClient，可以使用：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+addURI="https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/users/testuser?api-version=2018-09-01-preview"
+az rest --method put --uri $addURI --body "{'properties':{'FullName': 'Test User', 'Location': 'Earth'}}"
+```
+
+你会收到响应：
+
+```json
+{
+  "id": "/subscriptions/<sub-ID>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/testuser",
+  "name": "testuser",
+  "properties": {
+    "FullName": "Test User",
+    "Location": "Earth",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "<rg-name>",
+  "type": "Microsoft.CustomProviders/resourceProviders/users"
+}
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 $addURI = "https://management.azure.com/subscriptions/$subID/resourceGroups/$rgName/providers/Microsoft.CustomProviders/resourceProviders/$funcName/users/testuser?api-version=2018-09-01-preview"
@@ -152,6 +244,110 @@ armclient PUT $addURI $requestBody
 }
 ```
 
+---
+
+## <a name="custom-resource-provider-commands"></a>自定义资源提供程序命令
+
+通过 [custom-providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) 命令来使用自定义资源提供程序。
+
+### <a name="list-custom-resource-providers"></a>列出自定义资源提供程序
+
+列出订阅中的所有自定义资源提供程序。 默认列出当前订阅的自定义资源提供程序，也可以指定 `--subscription` 参数。 要列出资源组，请使用 `--resource-group` 参数。
+
+```azurecli-interactive
+az custom-providers resource-provider list --subscription $subID
+```
+
+```json
+[
+  {
+    "actions": [
+      {
+        "endpoint": "https://<provider-name>.azurewebsites.net/api/{requestPath}",
+        "name": "ping",
+        "routingType": "Proxy"
+      }
+    ],
+    "id": "/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceproviders/<provider-name>",
+    "location": "eastus",
+    "name": "<provider-name>",
+    "provisioningState": "Succeeded",
+    "resourceGroup": "<rg-name>",
+    "resourceTypes": [
+      {
+        "endpoint": "https://<provider-name>.azurewebsites.net/api/{requestPath}",
+        "name": "users",
+        "routingType": "Proxy, Cache"
+      }
+    ],
+    "tags": {},
+    "type": "Microsoft.CustomProviders/resourceproviders",
+    "validations": null
+  }
+]
+```
+
+### <a name="show-the-properties"></a>显示属性
+
+显示自定义资源提供程序的属性。 输出格式类似于 `list` 输出。
+
+```azurecli-interactive
+az custom-providers resource-provider show --resource-group $rgName --name $funcName
+```
+
+### <a name="create-a-new-resource"></a>创建新资源
+
+使用 `create` 命令创建或更新自定义资源提供程序。 此示例更新了 `actions` 和 `resourceTypes`。
+
+```azurecli-interactive
+az custom-providers resource-provider create --resource-group $rgName --name $funcName \
+--action name=ping endpoint=https://myTestSite.azurewebsites.net/api/{requestPath} routing_type=Proxy \
+--resource-type name=users endpoint=https://myTestSite.azurewebsites.net/api{requestPath} routing_type="Proxy, Cache"
+```
+
+```json
+"actions": [
+  {
+    "endpoint": "https://myTestSite.azurewebsites.net/api/{requestPath}",
+    "name": "ping",
+    "routingType": "Proxy"
+  }
+],
+
+"resourceTypes": [
+  {
+    "endpoint": "https://myTestSite.azurewebsites.net/api{requestPath}",
+    "name": "users",
+    "routingType": "Proxy, Cache"
+  }
+],
+```
+
+### <a name="update-the-providers-tags"></a>更新提供程序的标记
+
+`update` 命令仅更新自定义资源提供程序的标记。 在 Azure 门户中，自定义资源提供程序的应用服务会显示标记。
+
+```azurecli-interactive
+az custom-providers resource-provider update --resource-group $rgName --name $funcName --tags new=tag
+```
+
+```json
+"tags": {
+  "new": "tag"
+},
+```
+
+### <a name="delete-a-custom-resource-provider"></a>删除自定义资源提供程序
+
+`delete` 命令将发出提示，并仅删除自定义资源提供程序。 不会删除存储帐户、应用服务和应用服务计划。 删除提供程序后，将返回到命令提示符。
+
+```azurecli-interactive
+az custom-providers resource-provider delete --resource-group $rgName --name $funcName
+```
+
 ## <a name="next-steps"></a>后续步骤
 
-有关自定义提供程序的简介，请参阅 [Azure 自定义提供程序预览版概述](overview.md)。
+有关自定义提供程序的简介，请参阅以下文章：
+
+> [!div class="nextstepaction"]
+> [Azure 自定义提供程序预览版概述](overview.md)

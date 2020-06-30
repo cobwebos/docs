@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: b44547998b7ed7159e43bcbbfb4b4456d2a232e9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654555"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734209"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure Active Directory 域服务托管域
 
@@ -33,12 +33,12 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 * 安装并配置 Azure AD PowerShell。
     * 如果需要，请按照说明[安装 Azure AD PowerShell 模块并连接到 Azure AD](/powershell/azure/active-directory/install-adv2)。
     * 确保使用 [Connect-AzureAD][Connect-AzureAD] cmdlet 登录到 Azure AD 租户。
-* 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。 
-* 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。 
+* 需要在 Azure AD 目录中拥有“全局管理员”特权才能启用 Azure AD DS。
+* 需要在 Azure 订阅中拥有“参与者”特权才能创建所需的 Azure AD DS 资源。
 
 ## <a name="dns-naming-requirements"></a>DNS 命名要求
 
-创建 Azure AD DS 实例时，请指定 DNS 名称。 选择此 DNS 名称时请注意以下事项：
+创建 Azure AD DS 托管域时，请指定 DNS 名称。 选择此 DNS 名称时请注意以下事项：
 
 * **内置域名：** 默认将使用目录的内置域名（带 *.onmicrosoft.com* 后缀）。 若要启用通过 Internet 对托管域进行安全 LDAP 访问，则不能创建数字证书来保护与此默认域建立的连接。 Microsoft 拥有 *.onmicrosoft.com* 域，因此，证书颁发机构 (CA) 不会颁发证书。
 * **自定义域名：** 最常见的方法是指定自定义域名，通常是你已拥有且可路由的域名。 使用可路由的自定义域时，流量可根据需要正确传送，以支持你的应用程序。
@@ -47,7 +47,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 > [!TIP]
 > 如果创建自定义域名，请注意现有的 DNS 命名空间。 建议使用独立于任何现有 Azure 或本地 DNS 命名空间的域名。
 >
-> 例如，如果现有的 DNS 命名空间为 *contoso.com*，则使用自定义域名 corp.contoso.com*aaddscontoso.com* 创建 Azure AD DS 托管域。 如果需要使用安全 LDAP，则必须注册并拥有此自定义域名才能生成所需的证书。
+> 例如，如果现有的 DNS 命名空间为 contoso.com，则使用自定义域名 aaddscontoso.com 创建托管域 。 如果需要使用安全 LDAP，则必须注册并拥有此自定义域名才能生成所需的证书。
 >
 > 可能需要为环境中的其他服务或环境中现有 DNS 名称空间之间的条件 DNS 转发器创建一些其他的 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
 >
@@ -63,7 +63,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="create-required-azure-ad-resources"></a>创建所需的 Azure AD 资源
 
-Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使 Azure AD DS 托管域能够同步数据，并定义哪些用户在托管域中拥有管理权限。
+Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使托管域能够同步数据，并定义哪些用户在托管域中拥有管理权限。
 
 首先，使用 [Register-AzResourceProvider][Register-AzResourceProvider] cmdlet 注册 Azure AD 域服务资源提供程序：
 
@@ -71,13 +71,13 @@ Azure AD DS 需要一个服务主体和一个 Azure AD 组。 这些资源使 Az
 Register-AzResourceProvider -ProviderNamespace Microsoft.AAD
 ```
 
-使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。   请不要更改此应用程序 ID。
+使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建一个 Azure AD 服务主体，以供 Azure AD DS 通信和验证自身身份。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。  请不要更改此应用程序 ID。
 
 ```powershell
 New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 ```
 
-现在，使用 [New-AzureADGroup][New-AzureADGroup] cmdlet 创建名为“AAD DC 管理员”的 Azure AD 组。  然后，添加到此组的用户会被授予在 Azure AD DS 托管域上执行管理任务的权限。
+现在，使用 [New-AzureADGroup][New-AzureADGroup] cmdlet 创建名为“AAD DC 管理员”的 Azure AD 组。 然后，添加到此组的用户会被授予在托管域上执行管理任务的权限。
 
 ```powershell
 New-AzureADGroup -DisplayName "AAD DC Administrators" `
@@ -86,9 +86,9 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -MailNickName "AADDCAdministrators"
 ```
 
-创建“AAD DC 管理员”组后，使用 [Add-AzureADGroupMember][Add-AzureADGroupMember] cmdlet 将一个用户添加到该组。  首先使用 [Get-AzureADGroup][Get-AzureADGroup] cmdlet 获取“AAD DC 管理员”组对象 ID，然后使用 [Get-AzureADUser][Get-AzureADUser] cmdlet 获取所需用户的对象 ID。 
+创建“AAD DC 管理员”组后，使用 [Add-AzureADGroupMember][Add-AzureADGroupMember] cmdlet 将一个用户添加到该组。 首先使用 [Get-AzureADGroup][Get-AzureADGroup] cmdlet 获取“AAD DC 管理员”组对象 ID，然后使用 [Get-AzureADUser][Get-AzureADUser] cmdlet 获取所需用户的对象 ID。
 
-以下示例显示了 UPN 为 `admin@aaddscontoso.onmicrosoft.com` 的帐户的用户对象 ID。 请将此用户帐户替换为要添加到“AAD DC 管理员”组的用户的 UPN： 
+以下示例显示了 UPN 为 `admin@aaddscontoso.onmicrosoft.com` 的帐户的用户对象 ID。 请将此用户帐户替换为要添加到“AAD DC 管理员”组的用户的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -105,7 +105,7 @@ $UserObjectId = Get-AzureADUser `
 Add-AzureADGroupMember -ObjectId $GroupObjectId.ObjectId -RefObjectId $UserObjectId.ObjectId
 ```
 
-最后，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 在以下示例中，资源组被命名为 myResourceGroup，并且是在 westus 区域中创建的。   使用自己的名称和所需区域：
+最后，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 在以下示例中，资源组被命名为 myResourceGroup，并且是在 westus 区域中创建的。  使用自己的名称和所需区域：
 
 ```powershell
 New-AzResourceGroup `
@@ -124,11 +124,11 @@ New-AzResourceGroup `
 | 参数               | 值 |
 |-------------------------|---------|
 | domainName              | 托管域的 DNS 域名，填写此参数时，请考虑到前面提到的有关命名前缀和冲突的要点。 |
-| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。   如果选择同步所有用户和组，则以后无法选择仅执行范围内同步。<br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
-| notificationSettings    | 如果 Azure AD DS 托管域中生成了任何警报，可以发出电子邮件通知。 <br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。   <br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
-| domainConfigurationType | 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。 <br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为 ResourceTrusting 可创建资源林。 <br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]  。|
+| filteredSync            | Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。  如果选择同步所有用户和组，则以后无法选择仅执行范围内同步。<br /> 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。|
+| notificationSettings    | 如果托管域中生成了任何警报，可以发出电子邮件通知。 <br />可为 Azure 租户的“全局管理员”以及“AAD DC 管理员”组的成员启用这些通知。  <br /> 如果需要，可以添加更多收件人来接收在有需要关注的警报时发出的通知。|
+| domainConfigurationType | 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定 domainConfiguration 值即可创建用户林。<br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为 ResourceTrusting 可创建资源林。<br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
 
-以下精简参数定义演示了这些值的声明方式。 将创建名为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步到 Azure AD DS 托管域的所有用户： 
+以下精简参数定义演示了这些值的声明方式。 将创建名为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步到托管域的所有用户：
 
 ```json
 "parameters": {
@@ -149,7 +149,7 @@ New-AzResourceGroup `
 }
 ```
 
-然后，以下精简资源管理器模板资源类型将用来定义和创建 Azure AD DS 托管域。 一个 Azure 虚拟网络和子网必须已存在，或者作为资源管理器模板的一部分创建。 Azure AD DS 托管域已连接到此子网。
+然后，以下精简资源管理器模板资源类型将用来定义和创建托管域。 一个 Azure 虚拟网络和子网必须已存在，或者作为资源管理器模板的一部分创建。 托管域已连接到此子网。
 
 ```json
 "resources": [
@@ -176,7 +176,7 @@ New-AzResourceGroup `
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>使用示例模板创建托管域
 
-以下完整资源管理器示例模板将创建 Azure AD DS 托管域以及支持性的虚拟网络、子网和网络安全组规则。 需要使用网络安全组规则来保护托管域并确保流量可以正常流动。 将创建 DNS 名称为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步的所有用户： 
+以下完整资源管理器示例模板将创建托管域以及支持性的虚拟网络、子网和网络安全组规则。 需要使用网络安全组规则来保护托管域并确保流量可以正常流动。 将创建 DNS 名称为 aaddscontoso.com 的用户林，其中包含已从 Azure AD 同步的所有用户：
 
 ```json
 {
@@ -325,17 +325,17 @@ New-AzResourceGroup `
 New-AzResourceGroupDeployment -ResourceGroupName "myResourceGroup" -TemplateFile <path-to-template>
 ```
 
-创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 Azure AD DS 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，Azure AD DS 托管域的“概览”页会显示整个部署阶段的当前状态。 
+创建资源并将控制权返回给 PowerShell 提示符需要花费几分钟时间。 托管域将在后台继续预配，完成部署最长可能需要一小时。 在 Azure 门户中，托管域的“概览”页会显示整个部署阶段的当前状态。
 
-当 Azure 门户显示 Azure AD DS 托管域已完成预配时，需要完成以下任务：
+当 Azure 门户显示托管域已完成预配时，需要完成以下任务：
 
 * 为虚拟网络更新 DNS 设置，以使虚拟机能够找到用于域加入或身份验证的托管域。
-    * 若要配置 DNS，请在门户中选择你的 Azure AD DS 托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。 
+    * 若要配置 DNS，请在门户中选择你的托管域。 在“概览”窗口中，系统会提示你自动配置这些 DNS 设置。
 * [启用 Azure AD 域服务的密码同步](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，使最终用户能够使用其企业凭据登录到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看 Azure AD DS 托管域的运作方式，可[将某个 Windows VM 加入域][windows-join]，[配置安全 LDAP][tutorial-ldaps]，并[配置密码哈希同步][tutorial-phs]。
+若要查看托管域的运作方式，可[将某个 Windows VM 加入域][windows-join]，[配置安全 LDAP][tutorial-ldaps]，并[配置密码哈希同步][tutorial-phs]。
 
 <!-- INTERNAL LINKS -->
 [windows-join]: join-windows-vm.md

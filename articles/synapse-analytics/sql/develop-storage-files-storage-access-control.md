@@ -6,15 +6,15 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 4e717de82c289aacfba2372e77dc932becaf9a5c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835829"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764173"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
 
@@ -29,7 +29,18 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 如果文件不是公开可用的，则已登录到 SQL 按需版本资源的用户必须获得访问和查询 Azure 存储中的文件的授权。 可以使用三种授权类型来访问非公共存储 - [用户标识](?tabs=user-identity)、[共享访问签名](?tabs=shared-access-signature)和[托管标识](?tabs=managed-identity)。
 
 > [!NOTE]
-> [Azure AD 直通](#force-azure-ad-pass-through)是创建工作区时的默认行为。 如果使用 Azure AD 直通，则不需要为使用 Azure AD 登录名进行访问的每个存储帐户创建凭据。 可以[禁用此行为](#disable-forcing-azure-ad-pass-through)。
+> **Azure AD 直通**是创建工作区时的默认行为。
+
+### <a name="user-identity"></a>[用户标识](#tab/user-identity)
+
+用户标识（也称为“Azure AD 直通”）是一种授权类型。使用这种授权时，按需登录 SQL 的 Azure AD 用户的标识将用于授予数据访问权限。 在访问数据之前，Azure 存储管理员必须向 Azure AD 用户授予权限。 如下表中所示，SQL 用户类型不支持此授权类型。
+
+> [!IMPORTANT]
+> 需要具有存储 Blob 数据所有者/参与者/读取者角色才能使用自己的标识来访问数据。
+> 即使你是存储帐户的所有者，也仍需将自己添加到存储 Blob 数据角色之一。
+>
+> 若要详细了解 Azure Data Lake Store Gen2 中的访问控制，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
+>
 
 ### <a name="shared-access-signature"></a>[共享访问签名](#tab/shared-access-signature)
 
@@ -43,49 +54,6 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 > SAS 令牌：?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D
 
 你需要创建数据库范围或服务器范围的凭据来启用通过 SAS 令牌进行的访问。
-
-### <a name="user-identity"></a>[用户标识](#tab/user-identity)
-
-用户标识（也称为“直通”）是一种授权类型。在使用这种授权类型的情况下，登录到 SQL 按需版本的 Azure AD 用户的标识会用来授予数据访问权限。 在访问数据之前，Azure 存储管理员必须向 Azure AD 用户授予权限。 如上表中所示，SQL 用户类型不支持此授权类型。
-
-> [!IMPORTANT]
-> 需要具有存储 Blob 数据所有者/参与者/读取者角色才能使用自己的标识来访问数据。
-> 即使你是存储帐户的所有者，也仍需将自己添加到存储 Blob 数据角色之一。
->
-> 若要详细了解 Azure Data Lake Store Gen2 中的访问控制，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](../../storage/blobs/data-lake-storage-access-control.md)一文。
->
-
-你需要显式启用 Azure AD 直通身份验证，使 Azure AD 用户能够使用其标识访问存储。
-
-#### <a name="force-azure-ad-pass-through"></a>强制使用 Azure AD 直通
-
-强制使用 Azure AD 直通是特殊 CREDENTIAL NAME `UserIdentity`（在 Azure Synapse 工作区预配期间自动创建）实现的默认行为。 它强制对每个 Azure AD 登录名的每个查询使用 Azure AD 直通，不管是否存在其他凭据，都会出现此行为。
-
-> [!NOTE]
-> Azure AD 直通是默认行为。 无需为 AD 登录名访问的每个存储帐户创建凭据。
-
-如果[已对每个查询禁用了强制使用 Azure AD 直通](#disable-forcing-azure-ad-pass-through)，但现在想要重新启用，请执行：
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
-若要对特定的用户启用强制使用 Azure AD 直通，可向该特定用户授予对凭据 `UserIdentity` 的 REFERENCE 权限。 以下示例对 user_name 启用强制使用 Azure AD 直通：
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO USER [user_name];
-```
-
-#### <a name="disable-forcing-azure-ad-pass-through"></a>禁用强制使用 Azure AD 直通
-
-可[对每个查询禁用强制使用 Azure AD 直通](#force-azure-ad-pass-through)。 若要禁用此功能，请使用以下语句删除 `Userdentity` 凭据：
-
-```sql
-DROP CREDENTIAL [UserIdentity];
-```
-
-如果要重新启用此功能，请参阅[强制使用 Azure AD 直通](#force-azure-ad-pass-through)部分。
 
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
@@ -152,7 +120,7 @@ GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 当 SQL 登录名在未指定 `DATA_SOURCE` 的情况下调用 `OPENROWSET` 函数来读取某个存储帐户上的文件时，将使用服务器范围的凭据。 服务器范围的凭据的名称必须与 Azure 存储的 URL 匹配。 可通过运行 [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 来添加凭据。 需要提供 CREDENTIAL NAME 参数。 该参数必须匹配存储中数据的一部分路径或完整路径（参阅下文）。
 
 > [!NOTE]
-> 不支持 FOR CRYPTOGRAPHIC PROVIDER 参数。
+> 不支持参数 `FOR CRYPTOGRAPHIC PROVIDER`。
 
 服务器级 CREDENTIAL 名称必须与存储帐户（以及可选容器）的完整路径匹配，格式如下：`<prefix>://<storage_account_path>/<storage_path>`。 下表描述了存储帐户路径：
 
@@ -162,10 +130,13 @@ GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 | Azure Data Lake Storage Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Storage Gen2 | https  | <storage_account>.dfs.core.windows.net              |
 
-> [!NOTE]
-> 有一个特殊的服务器级 CREDENTIAL `UserIdentity`，它[强制使用 Azure AD 直通](?tabs=user-identity#force-azure-ad-pass-through)。
-
 服务器范围的凭据允许使用以下身份验证类型来访问 Azure 存储：
+
+### <a name="user-identity"></a>[用户标识](#tab/user-identity)
+
+如果 Azure AD 用户具有 `Storage Blob Data Owner`、`Storage Blob Data Contributor` 或 `Storage Blob Data Reader` 角色，则可访问 Azure 存储中的任意文件。 Azure AD 用户无需凭据即可访问存储。 
+
+SQL 用户无法使用 Azure AD 身份验证来访问存储。
 
 ### <a name="shared-access-signature"></a>[共享访问签名](#tab/shared-access-signature)
 
@@ -180,15 +151,6 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-### <a name="user-identity"></a>[用户标识](#tab/user-identity)
-
-下面的脚本将创建一个服务器级凭据，该凭据使用户能够使用 Azure AD 标识进行模拟。
-
-```sql
-CREATE CREDENTIAL [UserIdentity]
-WITH IDENTITY = 'User Identity';
-```
-
 ### <a name="managed-identity"></a>[托管标识](#tab/managed-identity)
 
 以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据通过工作区托管标识访问 Azure 存储上的任何文件。
@@ -200,16 +162,8 @@ WITH IDENTITY='Managed Identity'
 
 ### <a name="public-access"></a>[公共访问权限](#tab/public-access)
 
-以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据访问公开可用的 Azure 存储上的任何文件。 创建此凭据后，用于执行 `OPENROWSET` 函数的 SQL 主体就可以读取与凭据名称中的 URL 匹配的 Azure 存储上公开可用的文件。
+若要允许访问公开可用的文件，不需要使用数据库范围的凭据。 创建[不使用数据库范围的凭据的数据源](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)，以便访问 Azure 存储上公开可用的文件。
 
-你需要将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称： 
-
-```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
-WITH IDENTITY='SHARED ACCESS SIGNATURE'
-, SECRET = '';
-GO
-```
 ---
 
 ## <a name="database-scoped-credential"></a>数据库范围的凭据
@@ -218,23 +172,20 @@ GO
 
 数据库范围的凭据允许使用以下身份验证类型来访问 Azure 存储：
 
+### <a name="azure-ad-identity"></a>[Azure AD 标识](#tab/user-identity)
+
+如果 Azure AD 用户至少具有 `Storage Blob Data Owner`、`Storage Blob Data Contributor` 或 `Storage Blob Data Reader` 角色，则可访问 Azure 存储中的任意文件。 Azure AD 用户无需凭据即可访问存储。
+
+SQL 用户无法使用 Azure AD 身份验证来访问存储。
+
 ### <a name="shared-access-signature"></a>[共享访问签名](#tab/shared-access-signature)
 
 下面的脚本创建一个凭据，该凭据用来通过其中指定的 SAS 令牌访问存储中的文件。
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
-GO
-```
-
-### <a name="azure-ad-identity"></a>[Azure AD 标识](#tab/user-identity)
-
-下面的脚本创建一个数据库范围的凭据，该凭据用于[外部表](develop-tables-external-tables.md)，还用于 `OPENROWSET` 函数，后者可将数据源与凭据配合使用，以便使用其自己的 Azure AD 标识来访问存储文件。
-
-```sql
-CREATE DATABASE SCOPED CREDENTIAL [AzureAD]
-WITH IDENTITY = 'User Identity';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+     SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
 
@@ -272,14 +223,17 @@ WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
 使用以下脚本创建一个表，用以访问公开可用的数据源。
 
 ```sql
-CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
+       WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
 WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [publicData],
+       FILE_FORMAT = [SynapseParquetFormat] )
 ```
 
 数据库用户可以使用外部表或使用引用数据源的 [OPENROWSET](develop-openrowset.md) 函数从数据源读取文件的内容：
@@ -287,7 +241,9 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FIL
 ```sql
 SELECT TOP 10 * FROM dbo.userPublicData;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
+                                DATA_SOURCE = [mysample],
+                                FORMAT=PARQUET) as rows;
 GO
 ```
 
@@ -300,13 +256,13 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use User Identity, Managed Identity, or SAS. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
 
-CREATE DATABASE SCOPED CREDENTIAL MyIdentity WITH IDENTITY = 'User Identity'
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
+WITH IDENTITY = 'Managed Identity'
 GO
-CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity WITH IDENTITY = 'Managed Identity'
-GO
-CREATE DATABASE SCOPED CREDENTIAL SasCredential WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
+CREATE DATABASE SCOPED CREDENTIAL SasCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
 
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
@@ -316,13 +272,14 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
---,CREDENTIAL = MyIdentity 
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
-WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FILE_FORMAT = [SynapseParquetFormat] )
+WITH ( LOCATION = 'parquet/user-data/*.parquet',
+       DATA_SOURCE = [mysample],
+       FILE_FORMAT = [SynapseParquetFormat] );
 
 ```
 

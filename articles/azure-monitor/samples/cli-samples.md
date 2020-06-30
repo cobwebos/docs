@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
-ms.openlocfilehash: 3c55becb098c9d93688b59f1db4f702acbff3f72
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: bb61f6146e588673038fae9f41b770c4865cefb7
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837262"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84945284"
 ---
 # <a name="azure-monitor-cli-samples"></a>Azure Monitor CLI 示例
 本文演示有助于访问 Azure 监视器功能的示例命令行接口 (CLI) 命令。 使用 Azure 监视器，可以基于配置的遥测数据值自动缩放云服务、虚拟机和 Web 应用以及发送警报通知或调用 Web URL。
@@ -29,51 +29,51 @@ az login
 
 运行此命令后，必须按照屏幕上的说明进行登录。 所有命令都在默认订阅的上下文中工作。
 
-若要列出当前订阅的详细信息，请使用以下命令。
+列出当前订阅的详细信息。
 
 ```azurecli
 az account show
 ```
 
-要将工作上下文更改为其他订阅，请使用以下命令。
+将工作上下文更改为其他订阅。
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-若要查看所有受支持的 Azure Monitor 命令的列表，请执行以下命令。
+查看所有受支持的 Azure Monitor 命令的列表。
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>查看订阅的活动日志
+## <a name="view-activity-log"></a>查看活动日志
 
-若要查看活动日志事件的列表，请执行以下命令。
+查看活动日志事件的列表。
 
 ```azurecli
 az monitor activity-log list
 ```
 
-尝试以下操作以查看所有可用选项。
+查看所有可用选项。
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-下面是一个按 resourceGroup 列出日志的示例
+按 resourceGroup 列出日志。
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-按调用方列出日志的示例
+按调用方列出日志。
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-在日期范围内，按调用方对资源类型列出日志的示例
+在日期范围内，按调用方列出资源类型的日志。
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \

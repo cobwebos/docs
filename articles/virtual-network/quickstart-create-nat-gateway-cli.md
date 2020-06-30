@@ -1,11 +1,11 @@
 ---
-title: 快速入门：创建 NAT 网关 - Azure CLI
+title: 教程：创建 NAT 网关 - Azure CLI
 titlesuffix: Azure Virtual Network NAT
 description: 本快速入门介绍如何使用 Azure CLI 创建 NAT 网关
 services: virtual-network
 documentationcenter: na
 author: asudbring
-manager: KumundD
+manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
 ms.subservice: nat
@@ -14,16 +14,16 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: dcc3eda4c19e8d15040feb31d2a45922035c6cb0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 016e187c2ae41958b9527b88b06517b5f5544c7b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341501"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84707882"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 NAT 网关
+# <a name="tutorial-create-a-nat-gateway-using-azure-cli"></a>教程：使用 Azure CLI 创建 NAT 网关
 
-本快速入门介绍如何使用 Azure 虚拟网络 NAT 服务。 你将创建一个 NAT 网关，以便为 Azure 中的虚拟机提供出站连接。 
+本教程介绍如何使用 Azure 虚拟网络 NAT 服务。 你将创建一个 NAT 网关，以便为 Azure 中的虚拟机提供出站连接。 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

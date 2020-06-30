@@ -1,6 +1,6 @@
 ---
-title: 教程：将 SQL 按需版本（预览版）连接到 Power BI Desktop 并创建报表
-description: 本教程介绍如何在 Azure Synapse Analytics 中将 SQL 按需版本（预览版）连接到 Power BI Desktop 并基于视图创建演示报表。
+title: 教程：将 SQL 按需版本连接到 Power BI Desktop 并创建报表
+description: 本教程介绍如何在 Azure Synapse Analytics 中将 SQL 按需版本连接到 Power BI Desktop 并基于视图创建演示报表。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 3f32dc14163df6694c69258be365fcbb1390c926
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258277"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660232"
 ---
-# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>教程：在 Power BI Desktop 中使用 SQL 按需版本（预览版）并创建报表
+# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>教程：在 Power BI Desktop 中使用 SQL 按需版本并创建报表
 
 在本教程中，你将了解如何执行以下操作：
 

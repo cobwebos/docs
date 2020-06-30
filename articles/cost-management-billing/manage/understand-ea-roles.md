@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: banders
-ms.openlocfilehash: 15c686e0d33d7341d16097f32e1c69077c319a12
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: e38271b3a56894380ca5456146a7ab36fb09e08c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295297"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678012"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
 
@@ -27,6 +27,10 @@ ms.locfileid: "84295297"
 <sup>1</sup> EA 合同的“收票方”联系人将在此角色下。
 
 <sup>2</sup> 不能在 Azure EA 门户中添加或更改“收票方”联系人，并且将根据在协议级别上设置为“收票方”联系人的用户将其添加到 EA 注册中。 若要更改“收票方”联系人，需要通过合作伙伴/软件顾问向区域运营中心 (ROC) 发出请求。
+
+由注册预配期间设置的第一位注册管理员确定“收票方”联系人帐户的身份验证类型。 当“收票方”联系人作为只读管理员添加到 EA 门户时，将进行 Microsoft 帐户身份验证。 
+
+例如，如果初始身份验证类型设置为“混合”，则 EA 将被添加为 Microsoft 帐户，而“收票方”联系人将具有只读 EA 管理员权限。 如果 EA 管理员未批准现有“收票方”联系人的 Microsoft 帐户授权，EA 管理员可能会删除相关用户，并要求客户将用户重新添加为只读管理员，只在 EA 门户中的注册级别设置工作或学校帐户。
 
 这些角色专用于管理 Azure 企业协议，是在 Azure 用于控制资源访问权限的内置角色的基础上添加的。 有关详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -103,11 +107,11 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 
 |企业协议管理员角色|角色的视图费用策略|RBAC 角色|定价视图|
 |---|---|---|---|
-|帐户所有者或部门管理员|✔ 已启用|“所有者”|组织的 EA 定价|
-|帐户所有者或部门管理员|✘ 已禁用|“所有者”|零售定价|
+|帐户所有者或部门管理员|✔ 已启用|所有者|组织的 EA 定价|
+|帐户所有者或部门管理员|✘ 已禁用|所有者|零售定价|
 |帐户所有者或部门管理员|✔ 已启用 |none|无定价|
 |帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
-|无|不适用 |“所有者”|零售定价|
+|无|不适用 |所有者|零售定价|
 
 在企业门户中设置企业管理员角色和视图费用策略。 RBAC 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 

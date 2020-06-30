@@ -9,15 +9,14 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7aa7c33a94980081efa3bc54422389aef7defa61
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c0518e12a2c654b8f971db3a6733b0e64f80a1f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235016"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254044"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>教程：使用 SQL 数据同步将数据从 SQL Edge 同步到 Azure SQL 数据库
-
 
 本教程介绍了如何使用 Azure SQL 数据同步的同步组，以增量方式将数据从 Azure SQL Edge 同步到 Azure SQL 数据库。 使用 SQL 数据同步这项基于 Azure SQL 数据库的服务，可以跨 Azure SQL 数据库和 SQL Server 实例中的多个数据库双向同步选定数据。 有关 SQL 数据同步的详细信息，请参阅 [Azure SQL 数据同步](../azure-sql/database/sql-data-sync-data-sql-server-sql-database.md)。
 
@@ -29,7 +28,7 @@ ms.locfileid: "84235016"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 创建 Azure SQL 数据库。 有关如何使用 Azure 门户创建 Azure SQL 数据库的信息，请参阅[在 Azure SQL 数据库中创建单一数据库](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)。
+* 在 Azure SQL 数据库中创建数据库。 有关如何使用 Azure 门户创建数据库的信息，请参阅[在 Azure SQL 数据库中创建单一数据库](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)。
 
 * 在 Azure SQL 数据库部署中创建表和其他必需的对象。
 
@@ -37,9 +36,9 @@ ms.locfileid: "84235016"
 
 * 向用于 Azure SQL 数据同步的 Data Sync Agent 注册 Azure SQL Edge 实例。有关详细信息，请参阅[添加 SQL Server 数据库](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-on-prem)。
 
-## <a name="sync-data-between-an-azure-sql-database-and-sql-edge"></a>在 Azure SQL 数据库与 SQL Edge 之间同步数据
+## <a name="sync-data-between-a-database-in-azure-sql-database-and-sql-edge"></a>同步 Azure SQL 数据库中的数据库与 SQL Edge 之间的数据
 
-设置在 Azure SQL 数据库与 SQL Edge 实例之间使用 SQL 数据同步进行同步涉及三个关键步骤：  
+使用 SQL 数据同步功能在 Azure SQL 数据库中的数据库与 SQL Edge 实例之间设置同步，包括以下三个关键步骤：  
 
 
 1. 使用 Azure 门户创建同步组。 有关详细信息，请参阅[创建同步组](../azure-sql/database/sql-data-sync-sql-server-configure.md#create-sync-group)。 可以使用单个中心数据库创建多个同步组，以将不同 SQL Edge 实例中的数据同步到 Azure SQL 数据库中的一个或多个数据库。 
@@ -48,7 +47,7 @@ ms.locfileid: "84235016"
 
 3. 设置同步组以选择将作为同步的一部分的表。 有关详细信息，请参阅[配置同步组](../azure-sql/database/sql-data-sync-sql-server-configure.md#add-sync-members)。
 
-完成上述步骤后，你将拥有一个包含 Azure SQL 数据库和 SQL Edge 实例的同步组。
+完成上述步骤后，将拥有一个包含 Azure SQL 数据库中的数据库和 SQL Edge 实例的同步组。
 
 有关 SQL 数据同步的详细信息，请参阅这些文章：
 

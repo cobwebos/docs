@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: ebc30f995c44685dfd58e627706e4ca60e8ecfd5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4969628bb80d63cafc9537ec511ac218ff87ca7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84556822"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84738288"
 ---
 # <a name="what-is-azure-machine-learning"></a>什么是 Azure 机器学习？
 
@@ -124,16 +124,11 @@ Azure 存储帐户、计算目标和其他资源可在虚拟网络内安全地�
 ## <a name="basic--enterprise-editions"></a><a name="sku"></a>Basic 和 Enterprise Edition
 
 Azure 机器学习提供了两个版本，专为你的机器学习需求提供：
-+ Basic（正式版）
-+ Enterprise（预览版）
++ **基本**：适用于云规模的开放源代码开发，具有代码优先体验。
 
-这些版本确定开发人员和数据科学家的工作区中可用的机器学习工具。   
++ **企业版**：所有基本功能以及 Web 界面（工作室）+ 安全、全面的 ML 生命周期管理，适用于所有技能级别。
 
-Basic 工作区允许继续使用 Azure 机器学习，并只为在机器学习过程中使用的 Azure 资源付费。 Enterprise Edition 工作区只对其 Azure 使用情况收费，它是预览版。 若要详细了解 Azure 机器学习中提供的内容，请参阅[版本概述和定价页](https://azure.microsoft.com/pricing/details/machine-learning/)。 
-
-你始终可以在创建工作区时分配版本。 而且，预先存在的工作区已转换为 Basic Edition。 Basic Edition 包括已于 2019 年 10 月公开发布的所有功能。 使用 Enterprise Edition 功能构建的工作区中的任何试验都将以只读模式继续供你使用，直至升级到 Enterprise。 了解如何[将 Basic 工作区升级到 Enterprise Edition](how-to-manage-workspace.md#upgrade)。 
-
-客户负责在此期间因计算和其他 Azure 资源产生的成本。
+若要了解有关这些版本及其解锁的功能的详细信息，请阅读[“Azure 机器学习版本”一文](concept-editions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

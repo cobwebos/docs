@@ -2,26 +2,29 @@
 title: 通过无代理 Azure Migrate 服务器迁移功能迁移 VMware VM
 description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁移。
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 86f24b7fdfee30c182419023e4ed33f6228b3711
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ba0eda071bd677435e89fb2de57ce824574f1761
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509306"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769889"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
-本文介绍如何使用 Azure Migrate 服务器迁移工具以无代理方法将本地 VMware VM 迁移到 Azure。
+本文介绍如何使用 [Azure Migrate 服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)工具以无代理迁移方法将本地 VMware VM 迁移到 Azure。 还可以使用基于代理的迁移来迁移 VMware VM。 [比较](server-migrate-overview.md#compare-migration-methods)方法。
 
-[Azure Migrate](migrate-services-overview.md) 提供了一个集中化中心来用于跟踪本地应用、工作负荷与 AWS/GCP VM 实例的发现、评估及其到 Azure 的迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
+本教程是演示如何评估 VMware VM 以及将其迁移到 Azure 的教程系列中的第三篇文章。 
 
-本教程是演示如何使用 Azure Migrate 服务器评估与迁移工具评估 VMware VM 以及将其迁移到 Azure 的教程系列中的第三篇文章。 在本教程中，你将了解如何执行以下操作：
+> [!NOTE]
+> 教程中演示了方案的最简单部署路径，使你能够快速设置概念证明。 教程尽可能使用默认选项，不会演示所有可能的设置和路径。 
+
+
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 准备要迁移的 VM。
-> * 添加 Azure Migration 服务器迁移工具。
+> * 添加 Azure Migrate:服务器迁移工具。
 > * 发现要迁移的 VM。
 > * 开始复制 VM。
 > * 运行测试迁移，确保一切按预期正常进行。
@@ -29,181 +32,112 @@ ms.locfileid: "82509306"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="migration-methods"></a>迁移方法
-
-可以使用 Azure Migrate 服务器迁移工具将 VMware VM 迁移到 Azure。 此工具提供多个选项用于迁移 VMware VM：
-
-- 使用无代理复制进行迁移。 迁移 VM 且无需在其上安装任何组件。
-- 使用复制代理进行迁移。 在要复制的 VM 上安装代理。
-
-若要确定是使用无代理迁移还是基于代理的迁移，请查看以下文章：
-
-- [了解](server-migrate-overview.md)无代理迁移的工作原理，并[比较迁移方法](server-migrate-overview.md#compare-migration-methods)。
-- 若要使用基于代理的方法，请[阅读此文](tutorial-migrate-vmware-agent.md)。
-
 ## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，应做好以下准备：
 
-1. 完成本教程系列的[第一篇教程](tutorial-prepare-vmware.md)来设置 Azure 和 VMware，以便能够完成迁移。 具体而言，在本教程中，需要：
-    - [准备 Azure](tutorial-prepare-vmware.md#prepare-azure)，以便能够完成迁移。
-    - [准备本地环境](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration)，以便能够完成迁移。
-    
-2. 在将 VMware VM 迁移到 Azure 之前，我们建议你尝试使用 Azure Migrate 服务器评估工具对其进行评估。 若要设置评估，请完成本教程系列的[第二篇教程](tutorial-assess-vmware.md)。 如果你不想评估 VM，可以跳过此教程。 尽管我们建议你尝试运行评估，但在迁移之前不一定非要这样做。
-
+1. [完成第一篇教程](tutorial-prepare-vmware.md)来准备 Azure 和 VMware，以便进行迁移。
+2. 建议先完成第二篇教程以[评估 VMware VM](tutorial-assess-vmware.md)，然后再将它们迁移到 Azure，但不一定要这样做。 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>添加 Azure Migration 服务器迁移工具
 
-添加 Azure Migrate:服务器迁移工具。
+如果尚未设置 Azure Migrate 项目，请在添加工具之前[执行该操作](how-to-add-tool-first-time.md)。 如果已设置项目，请如下所述添加工具：
 
-- 如果你已按照第二个教程来[评估 VMware VM](tutorial-assess-vmware.md)，则可以继续添加该工具。
-- 如果未按照第二个教程操作，请[按照这些说明](how-to-add-tool-first-time.md)设置 Azure Migrate 项目。  创建项目时，请添加 Azure Migrate:服务器迁移工具。
-
-如果已设置项目，请如下所述添加工具：
-
-1. 在 Azure Migrate 项目中，单击“概述”。  
-2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。  
+1. 在 Azure Migrate 项目中，单击“概述”。 
+2. 在“发现、评估和迁移服务器”中，单击“评估和迁移服务器”。 
 
      ![评估和迁移服务器](./media/tutorial-migrate-vmware/assess-migrate.png)
 
-3. 在“迁移工具”中，选择“准备好迁移时单击此处添加迁移工具”。  
+3. 在“迁移工具”中，选择“准备好迁移时单击此处添加迁移工具”。 
 
     ![选择工具](./media/tutorial-migrate-vmware/select-migration-tool.png)
 
-4. 在“工具”列表中，选择“Azure Migrate:  服务器迁移” > “添加工具” 
+4. 在“工具”列表中，选择“Azure Migrate:服务器迁移” > “添加工具”
 
     ![服务器迁移工具](./media/tutorial-migrate-vmware/server-migration-tool.png)
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>设置 Azure Migrate 设备
 
-Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备。 该设备执行 VM 发现，并将 VM 元数据和性能数据发送到 Azure Migrate:服务器迁移。 Azure Migrate:服务器评估工具也使用同一设备来执行 VMware VM 的无代理迁移。
+Azure Migrate 服务器迁移运行一个轻型 VMware VM 设备，该设备用于 VMware VM 的发现、评估和无代理迁移。 如果按照[评估教程](tutorial-assess-vmware.md)操作，则已将该设备设置为已启动。 如果尚未这样做，请使用以下方法之一立即进行设置：
 
-- 如果你已按照[评估 VMware VM 教程](tutorial-assess-vmware.md)进行操作，则已在该教程中设置了此设备。
-- 如果你未按照该教程进行操作，则现在需要使用以下方法之一设置此设备：
-    - 使用下载的 OVA 模板在 VMware VM 上进行[设置](how-to-set-up-appliance-vmware.md)。
-    - 使用 PowerShell 安装程序脚本在 VMware VM 或物理计算机上进行设置。 如果无法使用 OVA 模板设置 VM，或者你使用的是 Azure 政府，则应使用[此方法](deploy-appliance-script.md)。
+- OVA 模板：使用下载的 OVA 模板在 VMware VM 上进行[设置](how-to-set-up-appliance-vmware.md)。
+- **脚本**：使用 PowerShell 安装程序脚本在 VMware VM 或物理计算机上进行[设置](deploy-appliance-script.md)。 如果无法使用 OVA 模板设置 VM，或者你使用的是 Azure 政府，则应使用此方法。
 
 创建设备后，请检查它是否可以连接到 Azure Migrate:服务器评估，首次配置该设备，并将其注册到 Azure Migrate 项目。
 
-
-## <a name="prepare-vms-for-migration"></a>准备要迁移的 VM
-
-Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure。
-
-- 对于某些操作系统，Azure Migrate 可自动做出这些更改。 [了解详细信息](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms)
-- 如果要迁移的 VM 不使用其中的某种操作系统，请遵照说明准备 VM。
-- 在开始迁移之前，必须做出这些更改。 如果在做出更改之前迁移 VM，VM 可能无法在 Azure 中启动。
-- 为本地 VM 启用复制后，对这些 VM 做出的配置更改将复制到 Azure。 为了确保复制这些更改，要迁移到的恢复点必须晚于在本地进行配置更改的时间。
-
-
-### <a name="prepare-windows-server-vms"></a>准备 Windows Server VM
-
-**操作** | **详细信息** | **说明**
---- | --- | ---
-确保 Azure VM 中的 Windows 卷使用的驱动器号分配与本地 VM 相同。 | 将 SAN 策略配置为“全部联机”。 | 1.使用管理员帐户登录到 VM，然后打开命令窗口。<br/> 2.键入 **diskpart** 运行 Diskpart 实用工具。<br/> 3.键入 **SAN POLICY=OnlineAll**<br/> 4.键入 Exit 退出 Diskpart，然后关闭命令提示符。
-为 Azure VM 启用 Azure 串行访问控制台 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。 | 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)启用此功能。
-安装 Hyper-V 来宾集成 | 如果要迁移的计算机运行 Windows Server 2003，请在 VM 操作系统上安装 Hyper-V 来宾 Integration Services。 | [了解详细信息](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
-远程桌面 | 在 VM 上启用远程桌面，并在所有网络配置文件中检查 Windows 防火墙是否未阻止远程桌面访问。 | [了解详细信息](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。
-
-### <a name="prepare-linux-vms"></a>准备 Linux VM
-
-**操作** | **详细信息** 
---- | --- | ---
-安装 Hyper-V Linux Integration Services | 默认情况下，大多数最新版本的 Linux 分发版已包含此服务。
-重新生成 Linux init 映像，以包含所需的 Hyper-V 驱动程序 | 这可以确保 VM 在 Azure 中启动；只需在某些分发版中执行此操作。
-启用 Azure 串行控制台日志记录 | 这有助于完成故障排除。 无需重新启动 VM。 Azure VM 将使用磁盘映像启动，这相当于重新启动新的 VM。<br/> 遵照[这些说明](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console)启用此功能。
-更新设备映射文件 | 更新包含设备名称到卷的关联的设备映射文件，以使用永久设备标识符
-更新 fstab 条目 | 更新条目以使用永久卷标识符。
-删除 udev 规则 | 删除基于 MAC 地址等属性保留接口名称的所有 udev 规则。
-更新网络接口 | 更新网络接口以基于 DHCP 接收 IP 地址。
-启用 SSH | 确保启用 SSH，并将 sshd 服务设置为在重新启动时自动启动。<br/> 确保传入的 SSH 连接请求未被 OS 防火墙或脚本化规则阻止。
-
-请[遵循此文](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)操作，其中介绍了在 Azure 上运行 Linux VM 的步骤，并提供了适用于某些热门 Linux 分发版的说明。  
-
-
 ## <a name="replicate-vms"></a>复制 VM
 
-完成发现后，可以开始将 VMware VM 复制到 Azure。 
+设置设备并完成发现之后，可以开始将 VMware VM 复制到 Azure。 
 
-> [!NOTE]
-> 最多可以同时复制 10 台计算机。 如果需要复制更多，则可以每批 10 台同时复制它们。 对于无代理迁移，最多可运行 100 次同时复制。
+- 最多可以同时运行 300 个复制。
+- 在门户中，一次最多可选择迁移 10 个 VM。 若要迁移更多计算机，请将它们 10 个一批地添加到组中。
 
-1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate:   服务器迁移”，然后单击“复制”。 
+请按如下所述启用复制：
+
+1. 在 Azure Migrate 项目中选择“服务器”>“Azure Migrate: 服务器迁移”，然后单击“复制”。
 
     ![复制 VM](./media/tutorial-migrate-vmware/select-replicate.png)
 
-2. 在“复制”>“源设置” > “你的计算机是否已虚拟化”中，选择“是，使用 VMware vSphere”。    
-3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称，然后选择“确定”。   
+2. 在“复制”>“源设置” > “你的计算机是否已虚拟化”中，选择“是，使用 VMware vSphere”。   
+3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称，然后选择“确定”。  
 
     ![源设置](./media/tutorial-migrate-vmware/source-settings.png)
 
-    - 此步骤假设你在完成本教程时已设置了设备。
-    - 如果尚未设置设备，请遵照[此文](how-to-set-up-appliance-vmware.md)中的说明。
-
-4. 在“虚拟机”中，选择要复制的计算机。 
-    - 如果已针对 VM 运行评估，则可以应用评估结果中提供的 VM 大小和磁盘类型（高级/标准）建议。 为此，请在“从 Azure Migrate 评估导入迁移设置?”中选择“是”选项。  
-    - 如果你未运行评估，或者不想要使用评估设置，请选择“否”选项。 
-    - 如果你已选择使用评估，请选择 VM 组和评估名称。
-
+4. 在“虚拟机”中，选择要复制的计算机。 若要从评估（如果已运行）应用 VM 大小调整和磁盘类型，请在“从 Azure Migrate 评估导入迁移设置?”中，选择“是”，然后选择 VM 组和评估名称。 如果不使用评估设置，请选择“否”。
+   
     ![选择评估](./media/tutorial-migrate-vmware/select-assessment.png)
 
-5. 在“虚拟机”中，根据需要搜索 VM，并检查要迁移的每个 VM。  然后单击“下一页:  目标设置”。
+5. 在“虚拟机”中，选择要迁移的 VM。 然后单击“下一页:目标设置”。
 
     ![选择 VM](./media/tutorial-migrate-vmware/select-vms.png)
 
-6. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。  在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。 
-7. 在“Azure 混合权益”中： 
+6. 在“目标设置”中，选择订阅和目标区域。 指定迁移后 Azure VM 所在的资源组。
+7. 在“虚拟网络”中，选择迁移之后 Azure VM 加入的 Azure VNet/子网。
+7. 在“Azure 混合权益”中：
 
-    - 如果你不想要应用 Azure 混合权益，请选择“否”。  然后单击“下一步”  。
-    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。  然后单击“下一步”  。
+    - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
+    - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
     ![目标设置](./media/tutorial-migrate-vmware/target-settings.png)
 
-8. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。  VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
+8. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。 VM 必须符合 [Azure 要求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
 
-    - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表将包含建议的大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。  
+    - **VM 大小**：如果你正在使用评估建议，则 VM 大小下拉列表会显示建议大小。 否则，Azure Migrate 会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。 
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 
-    - **可用性集**：如果迁移后 VM 应位于某个 Azure 可用性集中，请指定该集。 该集必须位于为迁移指定的目标资源组中。
+    - **可用性集**：如果迁移后 VM 将位于某个 Azure 可用性集中，请指定该集。 该集必须位于为迁移指定的目标资源组中。
 
     ![VM 计算设置](./media/tutorial-migrate-vmware/compute-settings.png)
 
-9. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。  然后单击“下一步”  。
-    - 可以从复制中排除磁盘。
-    - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
-
+9. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+   
     ![磁盘](./media/tutorial-migrate-vmware/disks.png)
 
-10. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。  
+10. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 
 > [!NOTE]
-> 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。   开始复制后无法更改设置。
+> 在复制开始之前，随时可以更新复制设置（在“管理” > “复制计算机”中 ）。 复制开始之后无法更改设置。
 
 ### <a name="provisioning-for-the-first-time"></a>首次预配
 
-如果这是你要在 Azure Migrate 项目中复制的第一个 VM，Azure Migrate 服务器迁移会在项目所在的同一资源组中自动预配这些资源。
+如果这是你要在项目中复制的第一个 VM，则服务器迁移会在项目所在的同一资源组中自动预配这些资源。
 
-- **服务总线**：Azure Migrate 服务器迁移使用服务总线将复制业务流程消息发送到设备。
+- **服务总线**：服务器迁移使用服务总线将复制业务流程消息发送到设备。
 - **网关存储帐户**：服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
 - **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
-- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在准备阶段，你应已设置 Key Vault 访问存储帐户所需的权限。 请[检查这些权限](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)。   
-
+- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。
 
 ## <a name="track-and-monitor"></a>跟踪和监视
 
+1. 在门户通知中跟踪作业状态。
+2. 通过单击“Azure Migrate: 服务器迁移”中的“正在复制服务器” 来监视复制状态。
 
-- 单击“复制”会启动一个“开始复制”作业。  
+     ![监视复制](./media/tutorial-migrate-vmware/replicating-servers.png)
+
+复制按如下方式进行：
 - “开始复制”作业成功完成后，计算机将开始初始复制到 Azure。
 - 在初始复制期间，会创建一个 VM 快照。 该快照中的磁盘数据将复制到 Azure 中的副本托管磁盘。
 - 初始复制完成后，增量复制将会开始。 对本地磁盘所做的增量更改会定期复制到 Azure 中的副本磁盘。
-
-可以在门户通知中跟踪作业状态。
-
-可以通过单击“Azure Migrate: 服务器迁移”中的“正在复制服务器”   来监视复制状态。
-![监视复制](./media/tutorial-migrate-vmware/replicating-servers.png)
-
-
-
 
 ## <a name="run-a-test-migration"></a>运行测试迁移
 
@@ -217,18 +151,18 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 按如下所述执行测试迁移：
 
 
-1. 在“迁移目标” > “服务器” > “Azure Migrate:    服务器迁移”中，单击“测试已迁移的服务器”。 
+1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器迁移”中，单击“测试已迁移的服务器”。
 
      ![测试已迁移的服务器](./media/tutorial-migrate-vmware/test-migrated-servers.png)
 
-2. 右键单击要测试的 VM，然后单击“测试迁移”。 
+2. 右键单击要测试的 VM，然后单击“测试迁移”。
 
     ![测试迁移](./media/tutorial-migrate-vmware/test-migrate.png)
 
-3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure VNet。  建议使用非生产 VNet。
-4. “测试迁移”作业随即启动。  在门户通知中监视该作业。
-5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。  计算机名称带有 **-Test** 后缀。
-6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。  
+3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure VNet。 建议使用非生产 VNet。
+4. “测试迁移”作业随即启动。 在门户通知中监视该作业。
+5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。 计算机名称带有 **-Test** 后缀。
+6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。 
 
     ![清理迁移](./media/tutorial-migrate-vmware/clean-up.png)
 
@@ -237,20 +171,20 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 
 确认测试迁移按预期方式进行后，可以迁移本地计算机。
 
-1. 在 Azure Migrate 项目中选择“服务器” > “Azure Migrate:   服务器迁移”，然后单击“复制服务器”。 
+1. 在 Azure Migrate 项目中选择“服务器” > “Azure Migrate: 服务器迁移”，然后单击“复制服务器”。
 
     ![复制服务器](./media/tutorial-migrate-vmware/replicate-servers.png)
 
-2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。  
-3. 在“迁移” > “关闭虚拟机并执行计划迁移(不会丢失任何数据)”中，选择“是” > “确定”。    
+2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。 
+3. 在“迁移” > “关闭虚拟机并执行计划迁移(不会丢失任何数据)”中，选择“是” > “确定”。   
     - 默认情况下，Azure Migrate 将关闭本地 VM，并运行按需复制，以同步自上次复制发生以来发生的任何 VM 更改。 这可以确保不会丢失数据。
-    - 如果你不想要关闭 VM，请选择“否” 
+    - 如果你不想要关闭 VM，请选择“否”
 4. 随即会针对该 VM 启动一个迁移作业。 在 Azure 通知中跟踪该作业。
-5. 该作业完成后，可以从“虚拟机”页查看和管理该 VM。 
+5. 该作业完成后，可以从“虚拟机”页查看和管理该 VM。
 
 ## <a name="complete-the-migration"></a>完成迁移
 
-1. 完成迁移后，右键单击该 VM 并选择“停止复制”。  这会停止本地计算机的复制，并清理 VM 的复制状态信息。
+1. 完成迁移后，右键单击该 VM 并选择“停止复制”。 这会停止本地计算机的复制，并清理 VM 的复制状态信息。
 2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。

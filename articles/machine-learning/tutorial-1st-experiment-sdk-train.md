@@ -11,18 +11,18 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558361"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667076"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本教程是由两个部分构成的系列教程的第二部分  。 在上一篇教程中，你[创建了一个工作区并选择了一个开发环境](tutorial-1st-experiment-sdk-setup.md)。 本教程介绍 Azure 机器学习中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。 完成本教程后，你将获得 SDK 的实践知识，继而可以开发更复杂的试验和工作流。
+本教程是由两个部分构成的系列教程的第二部分。 在上一篇教程中，你[创建了一个工作区并选择了一个开发环境](tutorial-1st-experiment-sdk-setup.md)。 本教程介绍 Azure 机器学习中的基础设计模式，并基于糖尿病数据集训练一个简单的 scikit-learn 模型。 完成本教程后，你将获得 SDK 的实践知识，继而可以开发更复杂的试验和工作流。
 
 本教程将介绍以下任务：
 
@@ -36,7 +36,7 @@ ms.locfileid: "84558361"
 
 唯一的先决条件是运行本教程的第一部分：[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-在本教程的这一部分中，你将运行在第一部分末尾打开的示例 Jupyter 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  中的代码。 本文将介绍此 Notebook 中的相同代码。
+在本教程的这一部分中，你将运行在第一部分末尾打开的示例 Jupyter 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb 中的代码。 本文将介绍此 Notebook 中的相同代码。
 
 ## <a name="open-the-notebook"></a>打开笔记本
 
@@ -46,7 +46,7 @@ ms.locfileid: "84558361"
 
 
 > [!Warning]
-> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  包含本教程**所需的所有代码和数据**。
+> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb 包含本教程**所需的所有代码和数据**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>连接工作区并创建试验
 
@@ -54,7 +54,7 @@ ms.locfileid: "84558361"
 > 本文的其余部分包含的内容与在笔记本中看到的内容相同。  
 >
 > 如果要在运行代码时继续阅读，请立即切换到 Jupyter 笔记本。 
-> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”  来运行整个笔记本。
+> 若要在笔记本中运行单个代码单元，请单击代码单元，然后按 **Shift+Enter**。 或者，通过从顶部工具栏中选择“全部运行”来运行整个笔记本。
 
 导入 `Workspace` 类，并使用函数 `from_config().` 从文件 `config.json` 中加载订阅信息。默认情况下，这会查找当前目录中的 JSON 文件，但你也可以使用 `from_config(path="your/file/path")` 指定一个路径参数以指向该文件。 在云笔记本服务器中，该文件自动位于根目录中。
 
@@ -138,14 +138,14 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>在工作室中查看训练结果
 
-单击“Azure 机器学习工作室链接”  可转到试验主页。 在此处可以查看试验中的每个运行。 所有自定义记录的值（在本例中为 `alpha_value` 和 `rmse`）将成为每个运行的字段，并且可在试验页顶部的图表和磁贴中使用。 若要将记录的指标添加到图表或磁贴，请将鼠标悬停在该图表或磁贴上，单击编辑按钮，然后找到自定义记录的指标。
+单击“Azure 机器学习工作室链接”可转到试验主页。 在此处可以查看试验中的每个运行。 所有自定义记录的值（在本例中为 `alpha_value` 和 `rmse`）将成为每个运行的字段，并且可在图标中使用。 要绘制具有日志记录指标的新图表，请单击“添加图表”并选择要绘制的指标。
 
 对包含数百甚至数千个独立运行的模型进行大规模训练时，在此页中可以轻松查看训练的每个模型，具体而言，可以查看模型的训练方式，以及独特的指标在不同时间的变化。
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="工作室中的试验主页。":::
 
 
-选择 `RUN NUMBER` 列中的运行编号链接可查看单个运行的页面。 默认选项卡“详细信息”显示有关每个运行的详细信息。  导航到“输出 + 日志”选项卡可看到在每次训练迭代期间上传到运行的模型的 `.pkl` 文件。  在此处可以下载模型文件，而无需手动重新训练。
+选择 `RUN NUMBER` 列中的运行编号链接可查看单个运行的页面。 默认选项卡“详细信息”显示有关每个运行的详细信息。 导航到“输出 + 日志”选项卡可看到在每次训练迭代期间上传到运行的模型的 `.pkl` 文件。 在此处可以下载模型文件，而无需手动重新训练。
 
 :::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="工作室中的运行详细信息页。":::
 
@@ -207,7 +207,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”  。
+还可保留资源组，但请删除单个工作区。 显示工作区属性，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

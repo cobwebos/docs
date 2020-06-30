@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403349"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987806"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>快速入门：使用 REST API 和 PHP 检测图像中的人脸
 
@@ -23,10 +23,13 @@ ms.locfileid: "81403349"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。
-- 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
-- PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) 包。
-- 支持 PHP 的 Web 浏览器。 如果尚未进行设置，可以在计算机上安装并设置 [XAMPP](https://www.apachefriends.org/)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/download)。
+* PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) 包。
+* 支持 PHP 的 Web 浏览器。 如果尚未进行设置，可以在计算机上安装并设置 [XAMPP](https://www.apachefriends.org/)。
 
 ## <a name="initialize-the-html-file"></a>初始化 HTML 文件
 
@@ -43,7 +46,7 @@ ms.locfileid: "81403349"
 
 ## <a name="write-the-php-script"></a>编写 PHP 脚本
 
-在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”  按钮、响应窗格和图像显示窗格。
+在该文档的 `body` 元素中添加以下代码。 此代码将设置一个基本用户界面，其中包含 URL 字段、“分析人脸”按钮、响应窗格和图像显示窗格。
 
 ```php
 <?php

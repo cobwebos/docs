@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96e79fdfeed5b56a4e0a33229f419f439b20b04c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ae13dc51b4621dc3d8be39049dcade87c105cbc
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124422"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262610"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>使用 Synapse SQL 进行大容量加载
 
@@ -28,7 +28,7 @@ ms.locfileid: "83124422"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须至少具有 ADLS Gen2 帐户的存储 Blob 数据参与者 RBAC 角色才能访问工作区。
+- 此向导生成一个使用 AAD 直通身份验证进行身份验证的 COPY 语句。 [AAD 用户必须](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad)至少具有 ADLS Gen2 帐户的存储 Blob 数据参与者 RBAC 角色才能访问工作区。
 
 - 若要创建一个新表，以便将数据加载到其中，必须具有[使用 COPY 语句的权限](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions)和“创建表”权限。
 

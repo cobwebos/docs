@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b4458920ec8b3e0c302f6e0654891b83ed07264f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 633404b59581a86dc3c115f132b06d8c8165d13a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402898"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986511"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>教程：创建 Windows Presentation Framework (WPF) 应用以显示图像中的人脸数据
 
@@ -34,21 +34,25 @@ ms.locfileid: "81402898"
 
 完整的示例代码在 GitHub 上的[认知人脸 CSharp 示例](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample)存储库中提供。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。 
 
 
 ## <a name="prerequisites"></a>先决条件
 
-- 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。 然后，为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
-- 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="创建人脸资源"  target="_blank">创建人脸资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，获取密钥和终结点。 部署后，单击“转到资源”。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到人脸 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
+* 为密钥和服务终结点字符串[创建环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，分别名为 `FACE_SUBSCRIPTION_KEY` 和 `FACE_ENDPOINT`。
+- 任何版本的 [Visual Studio](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
 执行以下步骤，以便创建新的 WPF 应用程序项目。
 
-1. 在 Visual Studio 中打开“新建项目”对话框。 展开“已安装”，接着展开“Visual C#”，然后选择“WPF 应用(.NET Framework)”。   
-1. 将应用程序命名为“FaceTutorial”，然后单击“确定”   。
-1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包： 
+1. 在 Visual Studio 中打开“新建项目”对话框。 展开“已安装”，接着展开“Visual C#”，然后选择“WPF 应用(.NET Framework)”。  
+1. 将应用程序命名为“FaceTutorial”，然后单击“确定” 。
+1. 获取所需的 NuGet 包。 右键单击解决方案资源管理器中的项目，选择“管理 NuGet 包”，然后找到并安装以下包：
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.5.0-preview.1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1)
 
 ## <a name="add-the-initial-code"></a>添加初始代码
@@ -67,11 +71,11 @@ ms.locfileid: "81402898"
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
-接下来，在 **MainWindow** 类中插入以下代码。 此代码将使用订阅密钥和终结点创建 FaceClient  实例。
+接下来，在 **MainWindow** 类中插入以下代码。 此代码将使用订阅密钥和终结点创建 FaceClient 实例。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_fields)]
 
-接下来，添加 MainWindow  构造函数。 它将检查终结点 URL 字符串，然后将其与客户端对象关联。
+接下来，添加 MainWindow 构造函数。 它将检查终结点 URL 字符串，然后将其与客户端对象关联。
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
@@ -87,7 +91,7 @@ ms.locfileid: "81402898"
 
 ### <a name="try-the-app"></a>试用应用
 
-按菜单上的“启动”，对应用进行测试。  应用窗口打开后，单击左下角的“浏览”。  此时会打开“打开的文件”对话框。  从文件系统中选择一个图像，验证它是否显示在窗口中。 然后，关闭应用并转到下一步。
+按菜单上的“启动”，对应用进行测试。 应用窗口打开后，单击左下角的“浏览”。 此时会打开“打开的文件”对话框。 从文件系统中选择一个图像，验证它是否显示在窗口中。 然后，关闭应用并转到下一步。
 
 ![显示未修改的人脸图像的屏幕截图](../Images/getting-started-cs-ui.png)
 

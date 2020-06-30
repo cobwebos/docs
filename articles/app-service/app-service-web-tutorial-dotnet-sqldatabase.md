@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: f6c8b388a9d1261e08314b8f8c607e5ee16362ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013782"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906116"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>教程：使用 Azure SQL 数据库将 ASP.NET 应用部署到 Azure
 
@@ -410,3 +410,8 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 > [!div class="nextstepaction"]
 > [使用适用于 Azure 资源的托管标识安全地访问 SQL 数据库](app-service-web-tutorial-connect-msi.md)
+
+更多资源：
+
+> [!div class="nextstepaction"]
+> [配置 ASP.NET 应用](configure-language-dotnet-framework.md)

@@ -4,23 +4,21 @@ description: 了解 Azure Migrate 服务。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193595"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771251"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
 本文简要概述了 Azure Migrate 服务。
 
-Azure Migrate 提供了一个集中化中心，用于评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。
-
-Azure Migrate 提供以下功能：
+Azure Migrate 提供了一个集中化中心，用于评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。 它提供以下内容：
 
 - **统一迁移平台**：用于启动、运行和跟踪到 Azure 的迁移的单一门户。
-- **工具范围**：用于评估和迁移的一系列工具。 工具包括“Azure Migrate: 服务器评估和 Azure Migrate:服务器迁移。 Azure Migrate 集成了其他 Azure 服务，以及其他工具和独立软件供应商 (ISV) 产品/服务。
+- **工具范围**：用于评估和迁移的一系列工具。 Azure Migrate 工具包括服务器评估和 Azure Migrate:服务器迁移。 Azure Migrate 还集成了其他 Azure 服务和工具，以及独立软件供应商 (ISV) 产品/服务。
 - **评估和迁移**：在 Azure Migrate 中心内，可以评估和迁移以下项目：
     - **服务器**：评估本地服务器并将其迁移到 Azure 虚拟机。
     - **数据库**：评估本地数据库，并将其迁移到 Azure SQL 数据库或 SQL 托管实例。
@@ -82,15 +80,12 @@ Azure Migrate:服务器评估工具可发现并评估要迁移到 Azure 的本�
 
 Azure Migrate:服务器迁移工具可帮助你迁移到 Azure：
 
-- 本地 VMware VM
-- Hyper-V VM
-- 物理服务器
-- 其他虚拟化计算机
-- 公有云 VM
+**迁移** | **详细信息**
+--- | ---
+本地 VMware VM | 可以使用无代理或基于代理的迁移将 VM 迁移到 Azure。<br/><br/> 对于无代理迁移，服务器迁移将使用你在本地部署的 Azure Migrate 设备。 它与用于服务器评估的设备类型相同。<br/><br/> 对于基于代理的迁移，服务器评估使用复制设备。
+本地 Hyper-V VM | 将 VM 迁移到 Azure。<br/><br/> 服务器评估使用 Hyper-V 主机上安装的提供程序代理进行迁移。
+本地物理服务器 | 可将物理计算机到迁移到 Azure。 还可迁移其他虚拟化计算机以及其他公有云中的 VM，方法是将其视为虚拟机以进行迁移。 | 服务器评估使用复制设备进行迁移。
 
-可在评估计算机后进行迁移，也可不评估直接进行迁移。
-
-对于 VMware VM 的无代理迁移以及 Hyper-V VM 的迁移，服务器迁移将使用你在本地部署的 Azure Migrate 设备。 如果设置了服务器评估，则也会使用该设备。 前一部分提供了相关介绍。
 
 ## <a name="selecting-assessment-and-migration-tools"></a>选择评估和迁移工具
 

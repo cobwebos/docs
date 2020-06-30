@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 5b7c7219c15f6c9b687aecd2e9d9f46ea4a71efa
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.date: 06/10/2020
+ms.openlocfilehash: 71fca8f7dd808058e88d5a5ffe9a64e1136ceefc
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249087"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84736490"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -277,7 +277,7 @@ END
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | 字符串 | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-    ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. 若要验证管道设置，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”窗口，请单击 >>。   
 
 28. 选择“全部发布”按钮，将实体（链接服务、数据集和管道）发布到 Azure 数据工厂服务。 等待“发布成功”消息出现。
@@ -290,9 +290,9 @@ END
 
 ## <a name="monitor-the-pipeline-run"></a>监视管道运行
 
-1. 在左侧切换到“监视”选项卡。 可以看到手动触发器触发的管道运行的状态。 单击“刷新”按钮刷新列表。
+1. 在左侧切换到“监视”选项卡。 可看到手动触发器触发的管道运行的状态。 可使用“管道名称”列下的链接来查看运行详细信息并重新运行该管道。
 
-2. 若要查看与此管道运行关联的活动运行，请单击“操作”列中的第一个链接（“查看活动运行”）。  单击顶部的“管道”可以回到上一视图。 单击“刷新”按钮刷新列表。
+2. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的链接。 有关活动运行的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标） 。 选择顶部的“所有管道运行”，回到“管道运行”视图。 若要刷新视图，请选择“刷新”。
 
 
 ## <a name="review-the-results"></a>查看结果
@@ -355,9 +355,9 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>监视第二个管道运行
 
-1. 在左侧切换到“监视”选项卡。 可以看到手动触发器触发的管道运行的状态。 单击“刷新”按钮刷新列表。
+1. 在左侧切换到“监视”选项卡。 可看到手动触发器触发的管道运行的状态。 可以使用“管道名称”列下的链接来查看活动详细信息以及重新运行该管道。
 
-2. 若要查看与此管道运行关联的活动运行，请单击“操作”列中的第一个链接（“查看活动运行”）。  单击顶部的“管道”可以回到上一视图。 单击“刷新”按钮刷新列表。
+2. 若要查看与管道运行关联的活动运行，请选择“管道名称”列下的链接。 有关活动运行的详细信息，请选择“活动名称”列下的“详细信息”链接（眼镜图标） 。 选择顶部的“所有管道运行”，回到“管道运行”视图。 若要刷新视图，请选择“刷新”。
 
 
 ## <a name="verify-the-second-output"></a>验证第二个输出

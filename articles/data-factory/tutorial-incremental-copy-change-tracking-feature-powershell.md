@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 2eb52ae24fe17a3e1a161ab132eee862efae9af1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 41841fd51433a18389aa9f5beee063fb30696755
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559660"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251157"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>使用 PowerShell 根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，请创建一个带管道的 Azure 数据工厂，以便根据源 Azure SQL 数据库中的**更改跟踪**信息将增量数据加载到 Azure Blob 存储。  
+在本教程中，请创建一个带管道的 Azure 数据工厂，该管道根据 Azure SQL 数据库的源数据库中的“更改跟踪”信息将增量数据加载到 Azure Blob 存储。  
 
 在本教程中执行以下步骤：
 
@@ -47,13 +47,13 @@ ms.locfileid: "84559660"
 > Azure SQL 数据库和 SQL Server 都支持更改跟踪技术。 本教程使用 Azure SQL 数据库作为源数据存储。 此外，还可以使用 SQL Server 实例。
 
 1. **首次加载历史数据**（运行一次）：
-    1. 在源 Azure SQL 数据库中启用更改跟踪技术。
-    2. 在 Azure SQL 数据库中获取 SYS_CHANGE_VERSION 的初始值，作为捕获更改数据的基线。
-    3. 将完整数据从 Azure SQL 数据库加载到 Azure Blob 存储中。
+    1. 在 Azure SQL 数据库的源数据库中启用更改跟踪技术。
+    2. 在数据库中获取 SYS_CHANGE_VERSION 的初始值，作为捕获更改数据的基线。
+    3. 将完整数据从源数据库加载到 Azure Blob 存储中。
 2. **以增量方式按计划加载增量数据**（在首次加载数据后定期运行）：
     1. 获取旧的和新的 SYS_CHANGE_VERSION 值。
-    3. 将 **sys.change_tracking_tables** 中已更改行（两个 SYS_CHANGE_VERSION 值之间）的主键与**源表**中的数据联接，以便加载增量数据，然后将增量数据移到目标位置。
-    4. 更新 SYS_CHANGE_VERSION，以便下次进行增量加载。
+    2. 将 **sys.change_tracking_tables** 中已更改行（两个 SYS_CHANGE_VERSION 值之间）的主键与**源表**中的数据联接，以便加载增量数据，然后将增量数据移到目标位置。
+    3. 更新 SYS_CHANGE_VERSION，以便下次进行增量加载。
 
 ## <a name="high-level-solution"></a>高级解决方案
 在本教程中，请创建两个管道来执行下述两项操作：  
@@ -77,10 +77,11 @@ ms.locfileid: "84559660"
 * **Azure SQL 数据库**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。 创建名为 **adftutorial** 的容器。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
+### <a name="create-a-data-source-table-in-your-database"></a>在数据库中创建数据源表
+
 1. 启动 SQL Server Management Studio，连接到 SQL 数据库。
 2. 在“服务器资源管理器”中，右键单击你的**数据库**，然后选择“新建查询”。
-3. 针对 Azure SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储。  
+3. 针对数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储。  
 
     ```sql
     create table data_source_table
@@ -104,7 +105,7 @@ ms.locfileid: "84559660"
 4. 通过运行以下 SQL 查询，在数据库和源表 (data_source_table) 上启用**更改跟踪**机制：
 
     > [!NOTE]
-    > - 将 &lt;your database name&gt; 替换为你的 Azure SQL 数据库的名称，其中包含 data_source_table。
+    > - 将 &lt;your database name&gt; 替换为你的数据库的名称，其中包含 data_source_table。
     > - 在当前的示例中，更改的数据保留两天。 如果每隔三天或三天以上加载更改的数据，则不会包括某些更改的数据。  需将 CHANGE_RETENTION 的值更改为更大的值。 或者，确保在两天内加载一次更改的数据。 有关详细信息，请参阅[对数据库启用更改跟踪](/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server#enable-change-tracking-for-a-database)
 
     ```sql
@@ -134,7 +135,7 @@ ms.locfileid: "84559660"
 
     > [!NOTE]
     > 如果对 SQL 数据库启用更改跟踪后数据并未更改，则更改跟踪版本的值为 0。
-6. 运行以下查询，在 Azure SQL 数据库中创建存储过程。 管道会调用此存储过程，以便更新上一步创建的表中的更改跟踪版本。
+6. 运行以下查询，在数据库中创建存储过程。 管道会调用此存储过程，以便更新上一步创建的表中的更改跟踪版本。
 
     ```sql
     CREATE PROCEDURE Update_ChangeTracking_Version @CurrentTrackingVersion BIGINT, @TableName varchar(50)
@@ -197,7 +198,7 @@ ms.locfileid: "84559660"
 
 
 ## <a name="create-linked-services"></a>创建链接服务
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建 Azure 存储帐户和 Azure SQL 数据库的链接服务。
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建 Azure 存储帐户和 Azure SQL 数据库中数据库的链接服务。
 
 ### <a name="create-azure-storage-linked-service"></a>创建 Azure 存储链接服务。
 在此步骤中，请将 Azure 存储帐户链接到数据工厂。
@@ -232,7 +233,7 @@ ms.locfileid: "84559660"
     ```
 
 ### <a name="create-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
-在此步骤中，将 Azure SQL 数据库链接到数据工厂。
+在此步骤中，请将数据库链接到数据工厂。
 
 1. 在 **C:\ADFTutorials\IncCopyChangeTrackingTutorial** 文件夹中，创建包含以下内容的名为 **AzureSQLDatabaseLinkedService.json** 的 JSON 文件：将 &lt;server&gt;、&lt;database name&gt;、&lt;user id&gt; 和 &lt;password&gt; 分别替换为自己的服务器名称、数据库名称、用户 ID 和密码，然后保存文件。
 
@@ -464,7 +465,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 
 ![来自完整复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-powershell/full-copy-output-file.png)
 
-该文件应该包含 Azure SQL 数据库中的数据：
+该文件应包含数据库中的数据：
 
 ```
 1,aaaa,21
@@ -476,7 +477,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
 
 ## <a name="add-more-data-to-the-source-table"></a>向源表中添加更多数据
 
-对 Azure SQL 数据库运行以下查询，以便添加行和更新行。
+对数据库运行以下查询来添加和更新行。
 
 ```sql
 INSERT INTO data_source_table
@@ -642,7 +643,7 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 
 ![来自增量复制的输出文件](media/tutorial-incremental-copy-change-tracking-feature-powershell/incremental-copy-output-file.png)
 
-该文件应该只包含 Azure SQL 数据库中的增量数据。 带 `U` 的记录是数据库中的更新行，带 `I` 的记录是添加的行。
+该文件应该只包含数据库中的增量数据。 带 `U` 的记录是数据库中的更新行，带 `I` 的记录是添加的行。
 
 ```
 1,update,10,2,U

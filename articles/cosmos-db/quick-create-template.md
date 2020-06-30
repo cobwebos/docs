@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: e626f6e5b65e369c3c77900cd46f2b86cd6f9d52
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324024"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85117992"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
 
@@ -53,11 +53,11 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将创建 Azure Cosmos 帐户、数据库和容器。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
+   [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
-   ![资源管理器模板, Azure Cosmos DB 集成, 部署门户](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   :::image type="content" source="./media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="资源管理器模板, Azure Cosmos DB 集成, 部署门户":::
 
     除非另有指定，否则请使用默认值创建 Azure Cosmos 资源。
 
@@ -78,7 +78,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 3. 选择“购买”。 成功部署 Azure Cosmos 帐户后，你会收到通知：
 
-   ![资源管理器模板, Cosmos DB 集成, 部署门户通知](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   :::image type="content" source="./media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="资源管理器模板, Cosmos DB 集成, 部署门户通知":::
 
 使用 Azure 门户部署模板。 除了 Azure 门户，还可以使用 Azure PowerShell、Azure CLI 和 REST API。 若要了解其他部署方法，请参阅[部署模板](../azure-resource-manager/templates/deploy-powershell.md)。
 
@@ -108,7 +108,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果打算继续使用后续的教程，则可能需要保留这些资源。
+如果打算继续使用后续的快速入门和教程，则可能需要保留这些资源。
 如果不再需要资源组，可以将其删除，这将删除 Azure Cosmos 帐户和相关的资源。 使用 Azure CLI 或 Azure PowerShell 删除资源组：
 
 # <a name="cli"></a>[CLI](#tab/CLI)

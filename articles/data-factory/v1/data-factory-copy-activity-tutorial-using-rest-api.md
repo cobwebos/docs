@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6344f2c69e7b6407152e752c61c1928ab651a88c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119231"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248567"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教程：使用 REST API 创建用于复制数据的 Azure 数据工厂管道 
 > [!div class="op_single_selector"]
@@ -222,7 +222,7 @@ ms.locfileid: "84119231"
 
 | properties | 说明 |
 |:--- |:--- |
-| type | type 属性设置为 **AzureSqlTable**，因为数据复制到 Azure SQL 数据库中的表。 |
+| type | type 属性设置为“AzureSqlTable”，因为数据复制到 Azure SQL 数据库中的表。 |
 | linkedServiceName | 表示前面创建的 **AzureSqlLinkedService**。 |
 | tableName | 指定一个**表**，以便将数据复制到其中。 | 
 | frequency/interval | frequency 设置为 **Hour**，interval 设置为 **1**，表示输出切片在管道开始和结束时间范围内（而不是范围外）**每小时**生成一次。  |
@@ -241,7 +241,7 @@ ms.locfileid: "84119231"
     "activities": [
       {
         "name": "CopyFromBlobToSQL",
-        "description": "Push Regional Effectiveness Campaign data to Azure SQL database",
+        "description": "Push Regional Effectiveness Campaign data to Azure SQL Database",
         "type": "Copy",
         "inputs": [
           {
@@ -403,7 +403,7 @@ AzureSqlLinkedService 将 Azure SQL 数据库链接到数据工厂。 从 Blob �
     ```
 
 ### <a name="create-azure-sql-linked-service"></a>创建 Azure SQL 链接服务
-在此步骤中，将 Azure SQL 数据库链接到数据工厂。 在本部分中指定逻辑 SQL Server 名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。
+此步骤将 Azure SQL 数据库链接到数据工厂。 在本部分中指定逻辑 SQL Server 名称、数据库名称、用户名和用户密码。 有关用于定义 Azure SQL 链接服务的 JSON 属性的详细信息。请参阅 [Azure SQL linked service](data-factory-azure-sql-connector.md#linked-service-properties)（Azure SQL 链接服务）。
 
 1. 将命令分配到名为 **cmd**的变量。 
    
@@ -515,9 +515,9 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 }
 ```
 
-运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。  当切片处于就绪状态，请查看 Azure SQL 数据库中的 **emp** 表是否包含输出数据。 
+运行 Invoke-Command 和下一条命令，直到切片进入“就绪”或“失败”状态。  当切片处于就绪状态，请查看 Azure SQL 数据库中的 emp 表是否包含输出数据。 
 
-对于每个切片，源文件中有两行数据已复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
+对于每个切片，源文件中有两行数据复制到 Azure SQL 数据库中的 emp 表。 因此，成功处理所有切片（处于“就绪”状态）后，emp 表中有 24 条新记录。 
 
 ## <a name="summary"></a>总结
 本教程使用 REST API 创建了一个 Azure 数据工厂，用于将数据从 Azure Blob 复制到 Azure SQL 数据库。 下面是本教程中执行的高级步骤：  
@@ -525,7 +525,7 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 1. 创建了 Azure **数据工厂**。
 2. 创建 **链接服务**：
    1. 一个 Azure 存储链接服务，用于链接保存输入数据的 Azure 存储帐户。     
-   2. 一个 Azure SQL 链接服务，用于链接保存输出数据的 Azure SQL 数据库。 
+   2. 一个 Azure SQL 链接服务，用于链接保存输出数据的数据库。 
 3. 创建了 **数据集**，用于描述管道的输入和输出数据。
 4. 创建了包含复制活动的 **管道** ，其中 BlobSource 为源，SqlSink 为接收器。 
 

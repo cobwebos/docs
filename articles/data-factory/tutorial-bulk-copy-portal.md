@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561148"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661066"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -108,13 +108,16 @@ ms.locfileid: "84561148"
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>创建源 Azure SQL 数据库链接服务
 在此步骤中，请创建一个链接服务，将 Azure SQL 数据库链接到数据工厂。 
 
-1. 单击窗口底部的“连接”，然后单击工具栏上的“+ 新建”（“连接”按钮位于左栏底部的“工厂资源”下）。    
+1. 从左窗格打开[“管理”选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
+1. 在“链接服务”页上，选择“+ 新建”以创建新的链接服务。
+
+   ![新建链接服务](./media/doc-common-process/new-linked-service.png)
 1. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。   
 1. 在“新建链接服务(Azure SQL 数据库)”窗口中执行以下步骤： 
 
     a. 对于“名称”，请输入 **AzureSqlDatabaseLinkedService**。
-    
+
     b. 对于“服务器名称”，请选择你的服务器
     
     c. 对于“数据库名称”，请选择 Azure SQL 数据库。 
@@ -159,7 +162,6 @@ ms.locfileid: "84561148"
     b. 对于“存储帐户名称”，请选择 **Azure 存储帐户**。
     
     c. 单击“创建”。
-
 
 ## <a name="create-datasets"></a>创建数据集
 在本教程中创建源和接收器数据集，用于指定数据的存储位置。 

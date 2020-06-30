@@ -1,7 +1,7 @@
 ---
 title: 教程：准备数据以在 R 中训练预测模型
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
-description: 在这个由三部分组成的教程系列的第一部分中，需要通过 Azure SQL 数据库准备数据，以便使用 Azure SQL 数据库机器学习服务（预览版）在 R 中训练预测模型。
+description: 本文是由三个部分组成的教程系列的第一部分，其中介绍了如何准备 Azure SQL 数据库中数据库的数据，以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中训练预测模型。
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,35 +14,36 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a82467a097c50314e8f26f4a5cc4507f867ad504
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 698cc089f770d60b6399864c9832fbc8d104c16f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024786"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253794"
 ---
 # <a name="tutorial-prepare-data-to-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：准备数据以使用 Azure SQL 数据库机器学习服务（预览版）在 R 中训练预测模型
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在这个由三部分组成的教程系列的第一部分中，将使用 R 从 Azure SQL 数据库导入和准备数据。在此系列中的后面部分，将通过 Azure SQL 数据库机器学习服务（预览版）借助 R 语言使用该数据训练和部署预测机器学习模型。
+本文是由三个部分组成的教程系列的第一部分，其中介绍了如何使用 R 从 Azure SQL 数据库的数据库中导入和准备数据。本系列的后续部分中，将介绍如何通过 Azure SQL 数据库机器学习服务（预览版）在 R 中使用此数据训练和部署预测机器学习模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
 在本教程系列中，假设你拥有一家滑雪用具租赁公司，并且希望预测未来某一日期的租用数量。 此信息可帮助你准备好库存、人员和设施。
 
-在此系列的第一部分和第二部分中，将在 RStudio 中开发一些 R 脚本，以便准备数据和训练机器学习模型。 然后，在第三部分中，将使用存储过程在 SQL 数据库中运行这些 R 脚本。
+在此系列的第一部分和第二部分中，将在 RStudio 中开发一些 R 脚本，以便准备数据和训练机器学习模型。 然后，在第三部分中，将使用存储过程在数据库中运行这些 R 脚本。
 
 本文将指导如何进行以下操作：
 
 > [!div class="checklist"]
 >
-> * 使用 R 将示例数据库导入 Azure SQL 数据库
-> * 将数据从 Azure SQL 数据库加载到 R 数据帧中
+> * 使用 R 将示例数据库导入 Azure SQL 数据库中的数据库
+> * 将数据库中的数据加载到 R 数据帧中
 > * 将某些列标识为类别列以使用 R 准备数据
 
 [第二部分](predictive-model-build-compare-tutorial.md)介绍如何使用 R 创建和训练多个机器学习模型，然后选择最准确的模型。
 
-[第三部分](predictive-model-deploy-tutorial.md)介绍如何将模型存储在数据库中，然后使用在第一部分和第二部分中已开发的 R 脚本创建存储过程。 这些存储过程将在 SQL 数据库中运行，以基于新数据进行预测。
+[第三部分](predictive-model-deploy-tutorial.md)介绍如何将模型存储在数据库中，然后使用在第一部分和第二部分中已开发的 R 脚本创建存储过程。 这些存储过程将在数据库中运行，以基于新数据进行预测。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,7 +67,7 @@ ms.locfileid: "84024786"
 
 1. 请下载文件 [TutorialDB.bacpac](https://sqlchoice.blob.core.windows.net/sqlchoice/static/TutorialDB.bacpac)。
 
-1. 按照[导入 BACPAC 文件以创建 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-import)中的说明执行操作，并使用以下详细信息：
+1. 按照[将 BACPAC 文件导入 Azure SQL 数据库或 Azure SQL 托管实例中的数据库](../../azure-sql/database/database-import.md)中的说明操作，并使用以下详细信息：
 
    * 从下载的 TutorialDB.bacpac 文件进行导入
    * 在公共预览版中，为新数据库选择 Gen5/vCore 配置
@@ -74,7 +75,7 @@ ms.locfileid: "84024786"
 
 ## <a name="load-the-data-into-a-data-frame"></a>将数据加载到数据帧中
 
-要在 R 中使用这些数据，请将 Azure SQL 数据库中的数据加载到数据帧 (`rentaldata`) 中。
+若要在 R 中使用这些数据，请将数据库中的数据加载到数据帧 (`rentaldata`) 中。
 
 在 RStudio 中创建新的 RScript 文件并运行以下脚本。 使用自己的连接信息替换“服务器”、“UID”和“PWD”  。
 
@@ -163,8 +164,8 @@ $ Snow       : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
 
 在本系列教程的第一部分中，你已完成以下步骤：
 
-* 使用 R 将示例数据库导入 Azure SQL 数据库
-* 将数据从 Azure SQL 数据库加载到 R 数据帧中
+* 使用 R 将示例数据库导入 Azure SQL 数据库中的数据库
+* 将数据库中的数据加载到 R 数据帧中
 * 将某些列标识为类别列以使用 R 准备数据
 
 若要创建使用 TutorialDB 数据库中数据的机器学习模型，请按照本教程系列的第二部分执行操作：

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605470"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735524"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>快速入门：使用文本分析客户端库
 
@@ -33,7 +33,7 @@ ms.locfileid: "84605470"
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * 最新稳定版本的文本分析客户端库为 `3.0`。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
 
@@ -44,7 +44,7 @@ ms.locfileid: "84605470"
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * 最新稳定版本的文本分析客户端库为 `3.0`。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -54,7 +54,7 @@ ms.locfileid: "84605470"
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * 最新稳定版本的文本分析客户端库为 `3.0`。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。
 > * 还可[在浏览器中](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)运行此版本的文本分析客户端库。
@@ -66,7 +66,7 @@ ms.locfileid: "84605470"
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * 最新稳定版本的文本分析客户端库为 `3.0`。
+> * 文本分析 API 的最新稳定版本为 `3.0`。
 >    * 确保只按所用版本的说明操作。
 > * 为了简单起见，本文中的代码使用了同步方法和不受保护的凭据存储。 对于生产方案，我们建议使用批处理的异步方法来提高性能和可伸缩性。 请参阅下面的参考文档。 
 

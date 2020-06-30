@@ -1,5 +1,5 @@
 ---
-title: 快速入门：创建 NAT 网关 - Azure 门户
+title: 教程：创建 NAT 网关 - Azure 门户
 titlesuffix: Azure Virtual Network NAT
 description: 本快速入门介绍如何使用 Azure 门户创建 NAT 网关
 services: virtual-network
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341229"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711402"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 NAT 网关
+# <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>教程：使用 Azure 门户创建 NAT 网关
 
-本快速入门介绍如何使用 Azure 虚拟网络 NAT 服务。 你将创建一个 NAT 网关，以便为 Azure 中的虚拟机提供出站连接。 
+本教程介绍如何使用 Azure 虚拟网络 NAT 服务。 你将创建一个 NAT 网关，以便为 Azure 中的虚拟机提供出站连接。 
 
 如果愿意，可以使用 [Azure CLI](quickstart-create-nat-gateway-cli.md)、[Azure PowerShell](quickstart-create-nat-gateway-powershell.md) 或部署 [ARM 模板](quickstart-create-nat-gateway-powershell.md)而不是使用门户来执行这些步骤。
 

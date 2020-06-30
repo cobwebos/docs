@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 754fb27d03aebf6029d3ae2f22e748db87a89753
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ca6b0ff197c21dd41521d2aa6106aa3b0df2d177
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325221"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249477"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -55,7 +55,8 @@ ms.locfileid: "84325221"
 * **Azure SQL 数据库托管实例**。 将数据库用作**源**数据存储。 如果没有 Azure SQL 数据库托管实例，请参阅[创建 Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)一文获取创建步骤。
 * **Azure 存储帐户**。 将 Blob 存储用作**接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)一文获取创建步骤。 创建名为“raw”的容器。 
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
+### <a name="create-a-data-source-table-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据源表
+
 1. 启动 **SQL Server Management Studio**，然后连接到 Azure SQL 托管实例服务器。
 2. 在“服务器资源管理器”中，右键单击你的**数据库**，然后选择“新建查询”。
 3. 针对 Azure SQL 托管实例数据库运行以下 SQL 命令，以创建名为 `customers` 的表作为数据源存储。  

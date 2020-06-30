@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791147"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106426"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
 本文提供了用于在云解决方案提供商 (CSP) 合作伙伴与其客户之间转移 Azure 订阅的概要步骤。
 
-## <a name="transfer-ea-subscriptions"></a>转移 EA 订阅
+## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>将 EA 订阅转移到 CSP 合作伙伴
 
 认证为 [Azure 专家托管服务提供商 (MSP)](https://partner.microsoft.com/membership/azure-expert-msp)的 CSP 直接帐单合作伙伴可以请求为其具有直接企业协议 (EA) 的客户转移 Azure 订阅。 仅允许为已接受了 Microsoft 客户协议 (MCA) 并购买了某个 Azure 计划的客户进行订阅转移。
 
@@ -44,7 +44,7 @@ ms.locfileid: "82791147"
     > [!IMPORTANT]
     >  - 在订阅之间移动 Azure 资源可能会导致服务停机，这取决于订阅中的资源。
 
-## <a name="all-subscription-transfers-from-a-csp-partner"></a>从 CSP 合作伙伴转移所有订阅
+## <a name="transfer-csp-subscription-to-other-offer"></a>将 CSP 订阅转移到其他产品/服务
 
 若要将任何其他订阅从 CSP 合作伙伴转移到任何其他 Azure 套餐，订阅者需要在源 CSP 订阅与目标订阅之间移动资源。
 

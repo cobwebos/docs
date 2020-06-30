@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 Helix Core - Helix Authentication Service 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 Helix Core - Helix Authentication Service 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Perforce Helix Core- Helix Authentication Service 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 与 Perforce Helix Core- Helix Authentication Service 之间配置单一登录。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/03/2020
+ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afe752dbaffc96186d37bfae319367e2c6e13385
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 0ea6531d85670301691e4aa88503d7eee4fb16d9
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466147"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905457"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helix-core---helix-authentication-service"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Helix Core - Helix Authentication Service 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core--helix-authentication-service"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Perforce Helix Core- Helix Authentication Service 集成
 
-本教程介绍如何将 Helix Core - Helix Authentication Service 与 Azure Active Directory (Azure AD) 集成。 将 Helix Core - Helix Authentication Service 与 Azure AD 集成时，可以执行以下操作：
+本教程介绍如何将 Perforce Helix Core- Helix Authentication Service 与 Azure Active Directory (Azure AD) 集成。 将 Perforce Helix Core- Helix Authentication Service 与 Azure AD 集成时，可以执行以下操作：
 
-* 在 Azure AD 中控制谁有权访问 Helix Core - Helix Authentication Service。
-* 让用户使用其 Azure AD 帐户自动登录到 Helix Core - Helix Authentication Service。
+* 在 Azure AD 中控制谁有权访问 Perforce Helix Core- Helix Authentication Service。
+* 让用户使用其 Azure AD 帐户自动登录到 Perforce Helix Core- Helix Authentication Service。
 * 在一个中心位置（Azure 门户）管理帐户。
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
@@ -37,44 +37,44 @@ ms.locfileid: "84466147"
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 已启用 Helix Core- Helix Authentication Service 单一登录 (SSO) 的订阅。
+* 已启用 Perforce Helix Core- Helix Authentication Service 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Helix Core - Helix Authentication Service 支持 SP 发起的 SSO
-* 配置 Helix Core - Helix Authentication Service 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* Perforce Helix Core- Helix Authentication Service 支持 SP 发起的 SSO
+* 配置 Perforce Helix Core- Helix Authentication Service 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
-## <a name="adding-helix-core---helix-authentication-service-from-the-gallery"></a>从库中添加 Helix Core - Helix Authentication Service
+## <a name="adding-perforce-helix-core--helix-authentication-service-from-the-gallery"></a>从库中添加 Perforce Helix Core- Helix Authentication Service
 
-若要配置 Helix Core - Helix Authentication Service 与 Azure AD 的集成，需从库中将 Helix Core - Helix Authentication Service 添加到托管 SaaS 应用列表。
+若要配置 Perforce Helix Core- Helix Authentication Service 与 Azure AD 的集成，需从库中将 Perforce Helix Core- Helix Authentication Service 添加到托管 SaaS 应用程序列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
 1. 导航到“企业应用程序”，选择“所有应用程序” 。
 1. 若要添加新的应用程序，请选择“新建应用程序”。
-1. 在“从库中添加”部分中，在搜索框中键入“Helix Core - Helix Authentication Service” 。
-1. 从结果面板中选择“Helix Core - Helix Authentication Service”，然后添加应用。 在该应用添加到租户时等待几秒钟。
+1. 在“从库中添加”部分中，在搜索框中键入“Perforce Helix Core- Helix Authentication Service” 。
+1. 从结果面板中选择“Perforce Helix Core- Helix Authentication Service”，然后添加应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-helix-core---helix-authentication-service"></a>配置和测试 Helix Core - Helix Authentication Service 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core--helix-authentication-service"></a>配置和测试 Perforce Helix Core- Helix Authentication Service 的 Azure AD 单一登录
 
-使用名为 B.Simon 的测试用户配置并测试 Helix Core - Helix Authentication Service 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Helix Core - Helix Authentication Service 中的相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置并测试 Perforce Helix Core- Helix Authentication Service 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Perforce Helix Core- Helix Authentication Service 中的相关用户之间建立链接关系。
 
-若要配置并测试 Helix Core - Helix Authentication Service 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Perforce Helix Core- Helix Authentication Service 的 Azure AD SSO，请完成以下构建基块：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. **[配置 Helix Core - Helix Authentication Service SSO](#configure-helix-core-helix-authentication-service-sso)** - 在应用程序端配置单一登录设置。
-    1. **[创建 Helix Core - Helix Authentication Service 测试用户](#create-helix-core-helix-authentication-service-test-user)** - 在 Helix Core - Helix Authentication Service 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[配置 Perforce Helix Core- Helix Authentication Service SSO](#configure-perforce-helix-core--helix-authentication-service-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Perforce Helix Core- Helix Authentication Service 测试用户](#create-perforce-helix-core--helix-authentication-service-test-user)** - 在 Perforce Helix Core- Helix Authentication Service 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Helix Core - Helix Authentication Service”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
+1. 在 [Azure 门户](https://portal.azure.com/)的“Perforce Helix Core- Helix Authentication Service”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -86,8 +86,10 @@ ms.locfileid: "84466147"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<helix-auth-service>.<customer-hostname>.com/saml`
 
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER-HOSTNAME>.com/saml/sso`
+
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Helix Core - Helix Authentication Service 客户端支持团队](mailto:support@perforce.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Perforce Helix Core- Helix Authentication Service 客户端支持团队](mailto:support@perforce.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
@@ -107,10 +109,10 @@ ms.locfileid: "84466147"
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，通过授予 B.Simon 访问 Helix Core - Helix Authentication Service 的权限，允许其使用 Azure 单一登录。
+在本部分中，通过授予 B.Simon 访问 Perforce Helix Core- Helix Authentication Service 的权限，允许其使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“Helix Core - Helix Authentication Service”。
+1. 在应用程序列表中，选择“Perforce Helix Core- Helix Authentication Service”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
@@ -123,19 +125,19 @@ ms.locfileid: "84466147"
 1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
 1. 在“添加分配”对话框中，单击“分配”按钮。 
 
-## <a name="configure-helix-core-helix-authentication-service-sso"></a>配置 Helix Core - Helix Authentication Service SSO
+## <a name="configure-perforce-helix-core--helix-authentication-service-sso"></a>配置 Perforce Helix Core- Helix Authentication Service SSO
 
-若要在“Helix Core - Helix Authentication Service”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Helix Core - Helix Authentication Service 支持团队](mailto:support@perforce.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Perforce Helix Core- Helix Authentication Service”端配置单一登录，需要将“应用联合元数据 URL”发送给 [Perforce Helix Core- Helix Authentication Service 支持团队](mailto:support@perforce.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-### <a name="create-helix-core-helix-authentication-service-test-user"></a>创建 Helix Core - Helix Authentication Service 测试用户
+### <a name="create-perforce-helix-core--helix-authentication-service-test-user"></a>创建 Perforce Helix Core- Helix Authentication Service 测试用户
 
-在本部分中，在 Helix Core - Helix Authentication Service 中创建名为 Britta Simon 的用户。 与  [Helix Core - Helix Authentication Service 支持团队](mailto:support@perforce.com)合作，将用户添加到 Helix Core - Helix Authentication Service 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，在 Perforce Helix Core- Helix Authentication Service 中创建名为 Britta Simon 的用户。 与 [Perforce Helix Core- Helix Authentication Service 支持团队](mailto:support@perforce.com)合作，将用户添加到 Perforce Helix Core- Helix Authentication Service 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在“访问面板”中单击“Helix Core - Helix Authentication Service”磁贴时，应会自动登录到设置了 SSO 的 Helix Core - Helix Authentication Service。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在“访问面板”中单击“Perforce Helix Core- Helix Authentication Service”磁贴时，应会自动登录到设置了 SSO 的 Perforce Helix Core- Helix Authentication Service。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
@@ -145,9 +147,8 @@ ms.locfileid: "84466147"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [在 Azure AD 中试用 Helix Core - Helix Authentication Service](https://aad.portal.azure.com/)
+- [在 Azure AD 中试用 Perforce Helix Core- Helix Authentication Service](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Helix Core - Helix Authentication Service](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何通过高级可见性和控制保护 Perforce Helix Core- Helix Authentication Service](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

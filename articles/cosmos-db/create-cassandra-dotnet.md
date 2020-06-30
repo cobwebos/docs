@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: abab57a84a7c630bcce71056b49d73024ae75e9f
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 88ec29ef1a0c0766a6c50af218e66f5fec3b9087
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310795"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118417"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -120,31 +120,31 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。
 
-    使用 ![“复制”按钮](./media/create-cassandra-dotnet/copy.png) 屏幕右侧的按钮以复制“用户名”值。
+1. 使用 ![“复制”按钮](./media/create-cassandra-dotnet/copy.png) 屏幕右侧的按钮以复制“用户名”值。
 
-    ![在 Azure 门户的“连接字符串”页面中查看并复制访问密钥](./media/create-cassandra-dotnet/keys.png)
+   :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="在 Azure 门户的“连接字符串”页面中查看并复制访问密钥":::
 
-2. 在 Visual Studio 中，打开 Program.cs 文件。 
+1. 在 Visual Studio 中，打开 Program.cs 文件。 
 
-3. 粘贴门户中的“用户名”值，并覆盖第 13 行中的 `<FILLME>`。
+1. 粘贴门户中的“用户名”值，并覆盖第 13 行中的 `<FILLME>`。
 
     Program.cs 的第 13 行现在应该类似 
 
     `private const string UserName = "cosmos-db-quickstart";`
 
-3. 返回到门户，然后复制“密码”值。 粘贴门户中的“密码”值，并覆盖第 14 行中的 `<FILLME>`。
+1. 返回到门户，然后复制“密码”值。 粘贴门户中的“密码”值，并覆盖第 14 行中的 `<FILLME>`。
 
     Program.cs 的第 14 行现在应该类似 
 
     `private const string Password = "2Ggkr662ifxz2Mg...==";`
 
-4. 返回到门户，然后复制“联系点”值。 粘贴门户中的“联系点”值，并覆盖第 15 行中的 `<FILLME>`。
+1. 返回到门户，然后复制“联系点”值。 粘贴门户中的“联系点”值，并覆盖第 15 行中的 `<FILLME>`。
 
     Program.cs 的第 15 行现在应该类似 
 
     `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
-5. 保存 Program.cs 文件。
+1. 保存 Program.cs 文件。
     
 ## <a name="run-the-net-app"></a>运行 .NET 应用
 
@@ -157,13 +157,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ```
 3. 按 CTRL + F5 运行应用程序。 应用将显示在控制台窗口中。 
 
-    ![查看并验证输出](./media/create-cassandra-dotnet/output.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="查看并验证输出":::
 
     按 CTRL + C 停止执行程序并关闭控制台窗口。 
     
 4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。
 
-    ![在数据资源管理器中查看数据](./media/create-cassandra-dotnet/data-explorer.png)
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="在数据资源管理器中查看数据":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>在 Azure 门户中查看 SLA
 

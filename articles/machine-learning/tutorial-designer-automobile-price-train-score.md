@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2fab23e9f765d9ab4908cc4be69d8b747c6856b9
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119038"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84790528"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
     如果已有可用的计算目标，则可以选择它来运行此管道。
 
     > [!NOTE]
-    > 设计器只能在 Azure 机器学习计算目标和 Azure 机器学习计算实例目标上运行训练试验。 不会显示其他计算目标。
+    > 设计器只能在 Azure 机器学习计算目标和 Azure 机器学习计算实例目标上运行训练试验，但其他计算目标不会显示。
 
 1. 输入计算资源的名称。
 

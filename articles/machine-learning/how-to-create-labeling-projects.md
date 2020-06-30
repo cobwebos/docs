@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f514c33f2c39e205ac186b70711b478f67fcb4e5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629635"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211998"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>创建数据标记项目并导出标签 
 
@@ -176,7 +176,10 @@ Azure 机器学习可跟踪进度，并维护未完成标记任务的队列。
 
 ## <a name="initialize-the-labeling-project"></a>初始化标记项目
 
-在初始化标记项目后，项目的某些方面是不可变的。 无法更改任务类型或数据集。 可以修改任务说明的标签和 URL。 请在创建项目之前仔细检查设置。 提交项目后，将返回到“数据标记”主页，其中显示项目的状态为“正在初始化”。  此页面不会自动刷新。 因此，在暂停后，手动刷新页面会看到项目状态为“已创建”。
+在初始化标记项目后，项目的某些方面是不可变的。 无法更改任务类型或数据集。 可以修改任务说明的标签和 URL。 请在创建项目之前仔细检查设置。 提交项目后，将返回到“数据标记”主页，其中显示项目的状态为“正在初始化”。 
+
+> [!NOTE]
+> 此页面可能不会自动刷新。 因此，在暂停后，手动刷新页面会看到项目状态为“已创建”。
 
 ## <a name="run-and-monitor-the-project"></a>运行和监视项目
 

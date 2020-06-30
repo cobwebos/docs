@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310251"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765074"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理对工作区、数据和管道的访问
 
@@ -169,14 +169,7 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > 如果授予 db_owner 权限不符合需要，可为 db_datareader 和 db_datawriter 授予读取/写入权限。  
 > 要使 Spark 用户能够直接使用 Spark 在 SQL 池中读取/写入数据，需要授予 db_owner 权限。
 
-创建用户后，验证 SQL 按需版本是否可以查询存储帐户：
-
-- 针对 SQL 按需版本的 master 数据库运行以下命令：
-
-    ```sql
-    CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
-    WITH IDENTITY='User Identity';
-    ```
+创建用户后，验证 SQL 按需版本是否可以查询存储帐户。
 
 ## <a name="access-control-to-workspace-pipeline-runs"></a>对工作区管道运行的访问控制
 

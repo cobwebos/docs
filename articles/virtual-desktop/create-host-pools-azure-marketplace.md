@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a6ac2fd0ef3414f5b9d7f6551628264b4724b037
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a01d8568c50cca181ec10f91b316715d64d2c37e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234334"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737829"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -111,7 +111,7 @@ ms.locfileid: "84234334"
 
     - 如果选择了“库”，请从下拉菜单中选择一个建议的映像：
 
-      - Windows 10 企业版多会话版本 1909 + Office 365 ProPlus – Gen 1
+      - Windows 10 企业版多会话版本 1909 + Microsoft 365 企业应用版 - Gen 1
       - Windows 10 企业版多会话版本 1909 – Gen 1
       - Windows Server 2019 Datacenter - Gen1
 

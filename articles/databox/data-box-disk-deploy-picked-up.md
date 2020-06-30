@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: bfac12c6ef278072c6bb44d55dc12926fe906e6f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 07c86ca016d3e38359cbe8ba61d67f109c42edb0
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747680"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944961"
 ---
 ::: zone target="docs"
 
@@ -159,7 +159,7 @@ ms.locfileid: "83747680"
 
 ### <a name="in-self-managed"></a>[在自托管中](#tab/in-selfmanaged)
 
-如果在日本、新加坡、韩国和西欧使用 Data Box Disk，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
+如果在日本、新加坡、韩国、西欧或印度使用 Data Box Disk，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
 
 1. 在 Azure 门户中转到订单的“概览”边栏选项卡。 如果选择“安排提货”，请查看显示的说明。 应会看到在进行订单送货时使用的授权代码。
 

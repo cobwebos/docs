@@ -13,19 +13,19 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310098"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209566"
 ---
 # <a name="troubleshooting"></a>疑难解答
 
 Azure 专用 HSM 服务有两个不同的方面。 第一个方面是指在 Azure 中注册和部署包含基础网络组件的 HSM 设备。 第二个方面是指配置 HSM 设备，做好与给定的工作负载或应用程序配合使用/集成的准备。 尽管 Azure 中的 Thales Luna Network HSM 设备与直接从 Thales 购买的相同，但由于它们是 Azure 中的资源，因此有一些独特的注意事项。 本文介绍了这些注意事项以及所产生的任何故障排除见解或最佳做法，确保关键信息的高可见性和访问权限。 开始使用此服务后，可通过向 Microsoft 或 Thales 发送支持请求直接获取权威信息。 
 
 > [!NOTE]
-> 应注意的是，在新部署的 HSM 设备上执行任何配置之前，应使用任何相关的修补程序对其进行更新。 特定的必需修补程序是 Thales 支持门户中的 [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789)，用于解决重启挂起问题。
+> 应注意的是，在新部署的 HSM 设备上执行任何配置之前，应使用任何相关的修补程序对其进行更新。 特定的必需修补程序是 Thales 支持门户中的 [KB0019789](https://supportportal.gemalto.com/csm?id=kb_article_view&sys_kb_id=19a81c8bdb9a1fc8d298728dae96197d&sysparm_article=KB0019789)，用于解决系统在重启过程中出现的未响应问题。
 
 ## <a name="hsm-registration"></a>HSM 注册
 
@@ -120,7 +120,7 @@ Thales SafeNet Luna 7 HSM 设备的软件和文档不由 Microsoft 提供，必�
 
 ### <a name="hsm-device-reboot"></a>HSM 设备重启
 
-某些配置更改需要重启 HSM。 Microsoft 在 Azure 中对 HSM 的测试表明，在某些情况下，重启可能会停止响应。 这意味着必须在 Azure 门户中创建支持请求，请求强行重启。考虑到这是一个需要在 Azure 数据中心完成的手动过程，这可能需要长达 48 小时的时间才能完成。  若要避免这种情况，请确保已部署直接从 Thales 获得的重启修补程序。 请参阅 Thales Luna Network HSM 7.2 下载内容中的 [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789)，获取一个建议用于解决重启挂起问题的修补程序（注意：需要在 Thales 支持门户中注册才能下载）。
+某些配置更改需要重启 HSM。 Microsoft 在 Azure 中对 HSM 的测试表明，在某些情况下，重启可能会停止响应。 这意味着必须在 Azure 门户中创建支持请求，请求强行重启。考虑到这是一个需要在 Azure 数据中心完成的手动过程，这可能需要长达 48 小时的时间才能完成。  若要避免这种情况，请确保已部署直接从 Thales 获得的重启修补程序。 请参阅 Thales Luna Network HSM 7.2 下载内容中的 [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789)，获取一个建议用于解决系统在重启过程中出现的未响应问题的修补程序（注意：需要在 Thales 支持门户中注册才能下载）。
 
 ### <a name="ntls-certificates-out-of-sync"></a>NTLS 证书不同步
 当证书过期或被配置更新的内容覆盖时，客户端可能会失去与 HSM 的连接。 应该针对每个 HSM 重新应用证书交换客户端配置。

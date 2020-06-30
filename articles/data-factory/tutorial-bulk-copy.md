@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: c150972c2804b12ac436a0dd10cdf13f92f43478
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: b1601bf095b5898de965d42a16e63f278499a9bf
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561011"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251502"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>使用 PowerShell 通过 Azure 数据工厂批量复制多个表
 
@@ -59,7 +59,7 @@ ms.locfileid: "84561011"
 
 **准备源 Azure SQL 数据库**：
 
-遵循[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据创建 Azure SQL 数据库。 本教程将此示例数据库中的所有表复制到 SQL 数据仓库。
+按照[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据在 Azure SQL 数据库中创建一个数据库。 本教程将此示例数据库中的所有表复制到 SQL 数据仓库。
 
 **准备接收器 Azure SQL 数据仓库**：
 
@@ -334,7 +334,7 @@ ms.locfileid: "84561011"
                         "activities": [
                             {
                                 "name": "CopyData",
-                                "description": "Copy data from SQL database to SQL DW",
+                                "description": "Copy data from Azure SQL Database to SQL DW",
                                 "type": "Copy",
                                 "inputs": [
                                     {

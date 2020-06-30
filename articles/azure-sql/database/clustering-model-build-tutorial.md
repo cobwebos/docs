@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024126"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251431"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中生成聚类模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在这个由三部分组成的教程系列的第二部分中，你将在 R 中构建一个 K-Means 模型来执行聚类分析。 在本系列的下一部分中，将使用 Azure SQL 数据库机器学习服务（预览版）在 SQL 数据库中部署此模型。
+在这个由三部分组成的教程系列的第二部分中，你将在 R 中构建一个 K-Means 模型来执行聚类分析。 在本系列的下一部分中，将使用 Azure SQL 数据库机器学习服务（预览版）在 Azure SQL 数据库的数据库中部署此模型。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ ms.locfileid: "84024126"
 > * 执行聚类分析
 > * 分析结果
 
-在[第 1 部分](clustering-model-prepare-data-tutorial.md)中，你已了解如何准备 Azure SQL 数据库中的数据，以执行聚类分析。
+在[第二部分](clustering-model-prepare-data-tutorial.md)中，我们学习了如何准备来自数据库的数据以执行聚类分析。
 
-在[第 3 部分](clustering-model-deploy-tutorial.md)中，你将了解如何在 Azure SQL 数据库中，创建一个可以使用 R 基于新数据执行聚类分析的存储过程。
+在[第三部分](clustering-model-deploy-tutorial.md)中，将了解如何创建可以基于新数据在 R 中执行聚类分析的存储过程。
 
 ## <a name="prerequisites"></a>先决条件
 

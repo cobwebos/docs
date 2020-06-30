@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78942918"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673303"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -27,27 +27,27 @@ Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命�
 
 Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式增强了性能、管理和安全性：
 
--   优化了性能  ，因为你不需要将复制或转换数据作为分析的先决条件。 与 Blob 存储上的平面命名空间相比，分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。
+-   优化了性能，因为你不需要将复制或转换数据作为分析的先决条件。 与 Blob 存储上的平面命名空间相比，分层命名空间极大地提高了目录管理操作的性能，从而提高了整体作业性能。
 
--   管理  更为容易，因为你可以通过目录和子目录来组织和操作文件。
+-   管理更为容易，因为你可以通过目录和子目录来组织和操作文件。
 
--   安全性  是可以强制实施的，因为可以在目录或单个文件上定义 POSIX 权限。
+-   安全性是可以强制实施的，因为可以在目录或单个文件上定义 POSIX 权限。
 
 另外，Data Lake Storage Gen2 非常经济高效，因为它构建在低成本的 [Azure Blob 存储](storage-blobs-introduction.md)之上。 这些新增功能进一步降低了在 Azure 上运行大数据分析的总拥有成本。
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 的主要功能
 
--   Hadoop 兼容访问  ：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)可在所有 Apache Hadoop 环境中使用（包括 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [SQL 数据仓库](https://docs.microsoft.com/azure/sql-data-warehouse/)）以访问 Data Lake Storage Gen2 中存储的数据  。
+-   Hadoop 兼容访问：使用 Data Lake Storage Gen2，可以像使用 [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。 可在 [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) 和 [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics) 等所有 Apache Hadoop 环境中使用新的 [ABFS 驱动程序](data-lake-storage-abfs-driver.md)来访问 Data Lake Storage Gen2 中存储的数据。
 
--   POSIX 权限的超集  ：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
+-   POSIX 权限的超集：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
 
 -   **经济高效**：Data Lake Storage Gen2 提供低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
 
--   已优化的驱动程序  ：ABFS 驱动程序已针对大数据分析[专门进行了优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
+-   已优化的驱动程序：ABFS 驱动程序已针对大数据分析[专门进行了优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
 
 ### <a name="scalability"></a>可伸缩性
 
-按照设计，无论是通过 Data Lake Storage Gen2 还是 Blob 存储接口进行访问，Azure 存储都可自如缩放。 它可以存储和处理许多百亿亿字节的数据  。 这种存储量可用于在每秒高级别的输入/输出操作 (IOPS) 下以每秒千兆位 (Gbps) 的速度测量的吞吐量。 除持久性之外，还会根据在服务、帐户和文件级别上测量的持续请求延迟来执行处理。
+按照设计，无论是通过 Data Lake Storage Gen2 还是 Blob 存储接口进行访问，Azure 存储都可自如缩放。 它可以存储和处理许多百亿亿字节的数据。 这种存储量可用于在每秒高级别的输入/输出操作 (IOPS) 下以每秒千兆位 (Gbps) 的速度测量的吞吐量。 除持久性之外，还会根据在服务、帐户和文件级别上测量的持续请求延迟来执行处理。
 
 ### <a name="cost-effectiveness"></a>成本效益
 

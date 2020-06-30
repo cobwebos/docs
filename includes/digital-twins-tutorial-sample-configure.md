@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: f7b3bf347b15ebad2403f3aa64c0f3fd6c4be052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 463fb7860eb35a7ff45d3794d200c69685825827
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611788"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737184"
 ---
 ## <a name="configure-the-sample-project"></a>配置示例项目
 
@@ -22,7 +22,7 @@ ms.locfileid: "84611788"
 
 在 Visual Studio 中，使用“解决方案资源管理器”窗格创建 SampleClientApp > serviceConfig.json.TEMPLATE 文件的副本（可使用右键菜单进行复制和粘贴）。 重命名副本 serviceConfig.json。 该副本将充当预设置的 JSON 文件，其中包含运行项目所需的配置变量。
 
-选择新文件，在编辑窗口中将其打开。 将 `tenantId` 更改为目录 ID，将 `clientId` 更改为应用程序 ID，并将 `instanceUrl` 更改为 Azure 数字孪生实例 hostName URL（以 https:// 开头，如下所示）   。
+选择 serviceConfig.json 文件，在编辑窗口中将其打开。 将 `tenantId` 更改为目录 ID，将 `clientId` 更改为应用程序 ID，并将 `instanceUrl` 更改为 Azure 数字孪生实例 hostName URL（以 https:// 开头，如下所示）   。
 
 ```json
 {

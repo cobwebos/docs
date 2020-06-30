@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006491"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977934"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -32,7 +32,7 @@ ms.locfileid: "83006491"
 可以通过两个选项为 P2S 客户端添加 DNS 服务器。
 
 1. 向 Microsoft 提交支持票证，要求将你的 DNS 服务器添加到中心
-2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 标记。
+2. 或者，如果你使用的是适用于 Windows 10 的 Azure VPN 客户端，则可修改下载的 XML 配置文件，在导入该文件之前添加 \<dnsservers>\<dnsserver>\</dnsserver>\</dnsservers> 标记。
 
 ```
 <azvpnprofile>
@@ -212,9 +212,14 @@ ms.locfileid: "83006491"
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>虚拟 WAN 中的虚拟中心如何从多个中心选择路由的最佳路径
 
 如果某个虚拟中心从多个远程中心获知同一路由，则其决定顺序如下所示
-1) 路由源  a) 网络路由 - 虚拟中心网关直接获知的 VNET 前缀  b) 中心路由表（静态配置的路由）  c) BGP  d) 中心间路由
-2)  路由指标：虚拟 WAN 首选 ExpressRoute，而不是 VPN。 与 VPN 对等机相比，ExpressRoute 对等机具有更高的权重
-3)  AS 路径长度
+1. 最长前缀匹配
+2. 本地路由优于 interhub
+3. 静态路由优于 BGP
+4. ExpressRoute (ER) 优于 VPN
+5. AS 路径长度
+
+ER 到 ER 之间的传输始终通过 Global Reach 实现，因此，如果请求通过一个中心中的 ER 传入，并且在远程中心存在 VPN 和 ER，则从远程中心到达通过远程中心的 VPN 或 ER 连接的终结点时，将倾向于使用 VPN 而非 ER
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虚拟 WAN 是否支持 IPv6？
 

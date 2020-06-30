@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, tracking-python
-ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 88ca971986119b3612c79d0bee381d3a0fc9a977
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561105"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84906830"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>教程：从专用注册表生成自定义映像并在应用服务中运行
 
@@ -236,23 +236,33 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 ## <a name="change-web-app-and-redeploy"></a>更改 Web 应用并重新部署
 
-在本地 Git 存储库中打开 app/templates/app/index.html。 找到第一个 HTML 元素，将其更改为 。
+在本地 Git 存储库中打开 app/templates/app/index.html。 更改第一个 HTML 元素，使其与以下代码相匹配。
 
-```python
+```html
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Azure App Service - Updated Here!</a>
     </div>
-  </nav>
+  </div>
+</nav>
 ```
 
-当修改并保存 Python 文件后，必须重新生成并推送新的 Docker 映像。 为使更改生效，请重新启动 Web 应用。 使用先前在本教程中使用的命令。 可参阅[从 Docker 文件生成映像](#build-the-image-from-the-docker-file)和[向 Azure 容器注册表推送映像](#push-image-to-azure-container-registry)。 按照[测试 Web 应用](#test-the-web-app)中的说明测试 Web 应用
+保存更改后，请使用在本教程前面使用的相同命令重新生成并推送新的 Docker 映像。 可参阅[从 Docker 文件生成映像](#build-the-image-from-the-docker-file)和[向 Azure 容器注册表推送映像](#push-image-to-azure-container-registry)。
+
+推送新映像后，请使用以下命令重启 Web 应用以使所做的更改生效：
+
+```azurecli-interactive
+az webapp restart --name <app_name> --resource-group myResourceGroup
+```
+
+将 `<app_name>` 替换为之前使用的特定名称。
+
+重启应用后，请按照[测试 Web 应用](#test-the-web-app)中的说明对其进行测试。
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="enable-ssh-connections"></a>启用 SSH 连接
 

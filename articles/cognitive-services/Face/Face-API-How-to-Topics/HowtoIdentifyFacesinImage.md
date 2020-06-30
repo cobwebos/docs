@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169920"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986708"
 ---
 # <a name="example-identify-faces-in-images"></a>示例：在图像中识别人脸
 
@@ -50,7 +50,11 @@ private readonly IFaceClient faceClient = new FaceClient(
             new System.Net.Http.DelegatingHandler[] { });
 ```
  
-若要获取订阅密钥，请从 Azure 门户转到 Azure 市场。 有关详细信息，请参阅[订阅](https://azure.microsoft.com/try/cognitive-services/)。
+按照这些说明获取密钥。
+
+1. 创建 [Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。 如果已有帐户，请跳至下一步。
+2. 在 Azure 门户中创建[人脸资源](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace)以获取密钥。 请确保在设置过程中选择免费层 (F0)。 
+3. 部署资源后，单击“转到资源”以收集密钥。 
 
 ## <a name="step-2-create-the-persongroup"></a>步骤 2：创建 PersonGroup
 

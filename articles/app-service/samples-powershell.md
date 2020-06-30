@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 6300b9fe10d7b12d71f87adec85d3a86658a8c97
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532419"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254474"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure 应用服务的 PowerShell 示例
 
@@ -32,7 +32,7 @@ ms.locfileid: "81532419"
 | [手动缩放应用](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用并将其在 2 个实例之间进行缩放。 |
 | [缩放具有高可用性体系结构的全球应用](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 在两个不同地理区域中创建两个应用服务应用，并使用 Azure 流量管理器通过单个终结点使其可用。 |
 |**将应用连接到资源**||
-| [将应用连接到 SQL 数据库](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用和 SQL 数据库，然后将数据库连接字符串添加到应用设置。 |
+| [将应用连接到 SQL 数据库](./scripts/powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用并在 Azure SQL 数据库中创建数据库，然后将数据库连接字符串添加到应用设置中。 |
 | [将应用连接到存储帐户](./scripts/powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 创建应用服务应用和存储帐户，然后将存储连接字符串添加到应用设置。 |
 |**备份和还原应用**||
 | [备份应用](./scripts/powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 创建应用服务应用，并为其创建一次性备份。 |

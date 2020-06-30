@@ -1,94 +1,100 @@
 ---
 title: IoT Edge 上的实时视频分析入门 - Azure
-description: 本快速入门介绍如何开始使用 IoT Edge 上的实时视频分析，并检测实时视频流中的运动。
+description: 本快速入门演示如何开始使用 IoT Edge 上的实时视频分析。 了解如何检测实时视频流中的运动。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 307a81938be3e25b8a6a07bb3696ca3b7647c0aa
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 98ab333a495c31889bee2a9cddab778a12876af5
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261561"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84816908"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入门：入门 - IoT Edge 上的实时视频分析
 
-本快速入门将引导你完成开始使用 IoT Edge 上的实时视频分析的步骤。 它将 Azure VM 用作 IoT Edge 设备和模拟的实时视频流。 完成设置步骤后，你将能通过媒体图运行模拟实时视频流，该媒体图可检测和报告该流中的任何运动。 下图显示了该媒体图的图形表示形式。
+本快速入门将引导你完成开始使用 IoT Edge 上的实时视频分析的步骤。 它将 Azure VM 用作 IoT Edge 设备。 它还使用模拟的实时视频流。 
+
+完成设置步骤后，你将能通过媒体图运行模拟实时视频流，该媒体图可检测和报告该流中的任何运动。 下图显示了该媒体图的图形表示形式。
 
 ![基于运动检测的实时视频分析](./media/analyze-live-video/motion-detection.png)
 
 ## <a name="prerequisites"></a>先决条件
 
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 开发计算机上的 [Visual Studio Code](https://code.visualstudio.com/)，带有 [Azure IoT Tools 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
-* 开发计算机连接到的网络应允许经由端口 5671 的 AMQP 协议（这样 Azure IoT Tools 便可与 Azure IoT 中心通信）。
+* 具有活动订阅的 Azure 帐户。 如果没有帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 开发计算机上的 [Visual Studio Code](https://code.visualstudio.com/)。 请确保具有 [Azure IoT Tools 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
+* 确保开发计算机连接到的网络允许经由端口 5671 的高级消息队列协议协议 (AMQP)。 此设置使 Azure IoT Tools 可以与 Azure IoT 中心通信。
 
 > [!TIP]
 > 安装 Azure IoT Tools 扩展时，系统可能会提示你安装 Docker。 可以忽略此提示。
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
 
-本教程需要以下 Azure 资源。
+本教程需要以下 Azure 资源：
 
 * IoT 中心
 * 存储帐户
 * Azure 媒体服务帐户
 * Azure 中的 Linux VM，已安装 [IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 
-在快速入门中，我们建议你使用[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)在 Azure 订阅中部署上述 Azure 资源。 为此，请执行以下步骤：
+在本快速入门中，我们建议你使用[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)在 Azure 订阅中部署所需资源。 为此，请执行下列步骤：
 
-1. 浏览到 https://shell.azure.com 。
-1. 如果这是你首次使用 Cloud Shell，系统将提示你选择一个订阅以创建存储帐户和 Microsoft Azure 文件存储共享。 选择“创建存储”，创建用于存储 Cloud Shell 会话信息的存储帐户。 此存储帐户不同于脚本将要创建的与 Azure 媒体服务帐户配合使用的帐户。
-1. 在 shell 窗口左侧的下拉列表中选择“Bash”作为环境。
+1. 转到 [Azure Cloud Shell](https://shell.azure.com)。
+1. 如果你是第一次使用 Cloud Shell，系统将提示你选择一个订阅以创建存储帐户和 Microsoft Azure 文件存储共享。 选择“创建存储”，创建用于存储 Cloud Shell 会话信息的存储帐户。 此存储帐户不同于脚本将要创建的与 Azure 媒体服务帐户配合使用的帐户。
+1. 在 Cloud Shell 窗口左侧的下拉菜单中，选择“Bash”作为环境。
 
     ![环境选择器](./media/quickstarts/env-selector.png)
 
-1. 运行以下命令
+1. 运行以下命令。
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-如果脚本成功完成，你应该可在订阅中看到上述所有资源。 在脚本输出过程中，生成一个资源表，其中将列出 IoT 中心名称。 查找“Microsoft.Devices/IotHubs”的资源类型，并记下名称。 下一步骤需要用到该名称。 该脚本还将在 ~/clouddrive/lva-sample/ directory 中生成一些配置文件 - 稍后你在快速入门中将需要这些文件。
+如果脚本成功完成，你应该可在订阅中看到所有所需资源。 在脚本输出中，资源表会列出 IoT 中心名称。 查找资源类型 `Microsoft.Devices/IotHubs`，并记下名称。 下一步骤需要用到此名称。 
+
+该脚本还会在 ~/clouddrive/lva-sample/ 目录中生成一些配置文件。 稍后在快速入门中需要用到这些文件。
 
 ## <a name="deploy-modules-on-your-edge-device"></a>在边缘设备上部署模块
 
-在 Cloud Shell 中运行以下命令
+在 Cloud Shell 中运行以下命令。
 
 ```
 az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device --content ~/clouddrive/lva-sample/edge-deployment/deployment.amd64.json
 ```
 
-上述命令会将以下模块部署到边缘设备 (Linux VM)：
+此命令会将以下模块部署到边缘设备（在此例中为 Linux VM）。
 
-* IoT Edge 上的实时视频分析（模块名称为“lvaEdge”）
-* RTSP 模拟器（模块名称为“rtspsim”）
+* IoT Edge 上的实时视频分析（模块名称为 `lvaEdge`）
+* 实时流式处理协议 (RTSP) 模拟器（模块名称为 `rtspsim`）
 
-RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件已在运行[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)时复制到边缘设备。 在此阶段，你已部署模块，但没有媒体图处于活动状态。
+RTSP 模拟器模块使用视频文件模拟实时视频流，该文件已在运行[实时视频分析资源设置脚本](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)时复制到边缘设备。 
 
-## <a name="configure-azure-iot-tools-extension-in-visual-studio-code"></a>在 Visual Studio Code 中配置 Azure IoT Tools 扩展
+现在已部署模块，但没有媒体图处于活动状态。
 
-启动 Visual Studio Code，然后按照以下说明使用 Azure IoT Tools 扩展连接到 Azure IoT 中心。
+## <a name="configure-the-azure-iot-tools-extension"></a>配置 Azure IoT Tools 扩展
 
-1. 通过“视图” > “资源管理器”或只需按 (Ctrl+Shift+E)，导航到 Visual Studio Code 中的“资源管理器”选项卡 。
-1. 在“资源管理器”选项卡中，单击左下角的“Azure IoT 中心”。
-1. 单击“更多选项”图标以查看上下文菜单，然后选择“设置 IoT 中心连接字符串”选项。
-1. 随即弹出一个输入框，在其中输入 IoT 中心连接字符串。 可以在 Cloud Shell 中的 ~/clouddrive/lva-sample/appsettings.json 获取 IoT 中心的连接字符串。
-1. 如果连接成功，边缘设备列表随即显示。 列表中应该至少有一个设备，称为“lva-sample-device”。
-1. 现在你可以管理 IoT Edge 设备，并通过上下文菜单与 Azure IoT 中心进行交互。
-1. 可以展开“lva-sample-device”下的模块节点，查看部署在边缘设备上的模块。
+按照以下说明使用 Azure IoT Tools 扩展连接到 IoT 中心。
 
-    ![lva-sample-device 节点](./media/quickstarts/lva-sample-device-node.png)
+1. 在 Visual Studio Code 中选择“视图” > “资源管理器”。 或是选择 Ctrl+Shift+E。
+1. 在“资源管理器”选项卡的左下角，选择“Azure IoT 中心”。
+1. 选择“更多选项”图标以查看上下文菜单。 然后选择“设置 IoT 中心连接字符串”。
+1. 输入框出现时，在其中输入 IoT 中心连接字符串。 在 Cloud Shell 中，可以从 ~/clouddrive/lva-sample/appsettings.json 获取连接字符串。
+
+如果连接成功，边缘设备列表随即显示。 应该会看到至少一个设备，名为 lva-sample-device。 现在你可以管理 IoT Edge 设备，并通过上下文菜单与 Azure IoT 中心进行交互。 若有查看部署在边缘设备上的模块，请在“lva-sample-device”下，展开“模块”节点。
+
+![lva-sample-device 节点](./media/quickstarts/lva-sample-device-node.png)
 
 ## <a name="use-direct-methods"></a>使用直接方法
 
-可以通过调用直接方法来使用该模块分析实时视频流。 阅读 [IoT Edge 上的实时视频分析的直接方法](direct-methods.md)，了解模块提供的所有直接方法。 
+可以通过调用直接方法来使用该模块分析实时视频流。 有关详细信息，请参阅 [IoT Edge上的实时视频分析的直接方法](direct-methods.md)。 
 
 ### <a name="invoke-graphtopologylist"></a>调用 GraphTopologyList
-这会枚举模块中的所有[图形拓扑](media-graph-concept.md#media-graph-topologies-and-instances)。
 
-1. 右键单击“lvaEdge”模块，然后从上下文菜单中选择“调用模块直接方法”。
-1. 你将看到一个编辑框在 Visual Studio Code 窗口的顶部中间弹出。 在编辑框中输入“GraphTopologyList”，然后按 Enter。
-1. 接下来，在编辑框中复制并粘贴以下 JSON 有效负载，然后按 Enter。
+若有枚举模块中的所有[图形拓扑](media-graph-concept.md#media-graph-topologies-and-instances)：
+
+1. 在 Visual Studio Code 中，右键单击“lvaEdge”模块，然后选择“调用模块直接方法”。
+1. 在出现的框中，输入 GraphTopologyList。
+1. 复制以下 JSON 有效负载，然后粘贴到框中。 然后选择 Enter 键。
 
     ```
     {
@@ -96,7 +102,7 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
     }
     ```
 
-    几秒钟内，你将看到 Visual Studio Code 中弹出“输出”窗口，并显示以下响应
+    几秒钟内，“输出”窗口会显示以下响应。
 
     ```
     [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
@@ -109,12 +115,12 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
     }
     ```
     
-    由于没有创建图形拓扑，所以预期会出现上述响应。
+    由于没有创建图形拓扑，所以预期会出现此响应。
     
 
 ### <a name="invoke-graphtopologyset"></a>调用 GraphTopologySet
 
-通过与调用 GraphTopologyList 相同的步骤，你可以使用以下 JSON 作为有效负载，调用 GraphTopologySet 以设置[图形拓扑](media-graph-concept.md#media-graph-topologies-and-instances)。
+通过与调用 `GraphTopologyList` 相同的步骤，可以调用 `GraphTopologySet` 以设置[图形拓扑](media-graph-concept.md#media-graph-topologies-and-instances)。 使用以下 JSON 作为有效负载。
 
 ```
 {
@@ -185,10 +191,9 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 
 ```
 
+此 JSON 有效负载创建定义三个参数的图形拓扑。 其中两个参数具有默认值。 拓扑具有一个源（RTSP 源）节点、一个处理器（运动检测处理器）节点和一个接收器（IoT 中心接收器）节点。
 
-上述 JSON 有效负载的结果是创建一个定义了三个参数（其中两个参数具有默认值）的图形拓扑。 拓扑具有一个源（RTSP 源）节点、一个处理器（运动检测处理器）节点和一个接收器（IoT 中心接收器）节点。
-
-几秒钟内，“输出”窗口中显示以下响应：
+几秒钟内，“输出”窗口中显示以下响应。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...
@@ -268,25 +273,26 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-返回的状态为 201，表示已创建新拓扑。 请尝试以下步骤：
+返回的状态为 201。 此状态指示已创建了新拓扑。 
 
-* 再次调用 GraphTopologySet，并注意返回的状态代码为 200。 状态代码 200 指示已成功更新现有拓扑。
-* 再次调用 GraphTopologySet，但更改描述字符串。 请注意，响应中的状态代码为 200，且说明已更新为新值。
-* 如前一节所述，调用 GraphTopologyList；注意，现在你可以在返回的有效负载中看到“MotionDetection”拓扑。
+请尝试以下后续步骤：
+
+1. 再次调用 `GraphTopologySet`。 返回的状态代码为 200。 此代码指示已成功更新现有拓扑。
+1. 再次调用 `GraphTopologySet`，但更改描述字符串。 返回的状态代码为 200，且描述已更新为新值。
+1. 调用 `GraphTopologyList`，如前一部分所述。 现在，你可以在返回的有效负载中查看 `MotionDetection` 拓扑。
 
 ### <a name="invoke-graphtopologyget"></a>调用 GraphTopologyGet
 
-现在，使用以下有效负载调用 GraphTopologyGet
+使用以下有效负载调用 `GraphTopologyGet`。
 
 ```
-
 {
     "@apiVersion" : "1.0",
     "name" : "MotionDetection"
 }
 ```
 
-几秒钟内，你应该可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应：
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyGet] to [lva-sample-device/lvaEdge] ...
@@ -366,16 +372,16 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-请注意响应有效负载中的以下内容：
+在响应有效负载中，请注意以下详细信息：
 
 * 状态代码为 200，表示成功。
-* 有效负载具有“created”和“lastModified”时间戳。
+* 有效负载包含 `created` 时间戳和 `lastModified` 时间戳。
 
 ### <a name="invoke-graphinstanceset"></a>调用 GraphInstanceSet
 
-接下来，创建引用上述图形拓扑的图形实例。 如[此处](media-graph-concept.md#media-graph-topologies-and-instances)所述，图形实例允许你分析来自具有相同图形拓扑的许多照相机的实时视频流。
+创建引用上述图形拓扑的图形实例。 图形实例允许你使用相同图形拓扑分析来自许多照相机的实时视频流。 有关详细信息，请参阅[媒体图拓扑和实例](media-graph-concept.md#media-graph-topologies-and-instances)。
 
-使用以下有效负载调用直接方法 GraphInstanceSet。
+使用以下有效负载调用直接方法 `GraphInstanceSet`。
 
 ```
 {
@@ -391,12 +397,12 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-注意以下事项：
+请注意，此有效负载：
 
-* 上述有效负载指定需要为其创建实例的拓扑名称 (MotionDetection)。
-* 有效负载包含“rtspUrl”（它在图形拓扑有效负载中没有默认值）的参数值。
+* 指定需要为其创建实例的拓扑名称 (`MotionDetection`)。
+* 包含 `rtspUrl`（它在图形拓扑有效负载中没有默认值）的参数值。
 
-几秒钟内，你可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应：
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceSet] to [lva-sample-device/lvaEdge] ...
@@ -422,20 +428,20 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-请注意响应有效负载中的以下内容：
+在响应有效负载中，请注意：
 
 * 状态代码为 201，指示已创建新实例。
-* 状态为“非活动”，指示图形实例已创建但未激活。 有关详细信息，请参阅[媒体图状态](media-graph-concept.md)。
+* 状态为 `Inactive`，指示图形实例已创建但未激活。 有关详细信息，请参阅[媒体图状态](media-graph-concept.md)。
 
-请尝试以下步骤：
+请尝试以下后续步骤：
 
-* 使用相同的有效负载再次调用 GraphInstanceSet，并注意返回的状态代码是 200。
-* 再次调用 GraphInstanceSet，但使用不同的说明，并注意响应有效负载中更新的说明，指示图形实例已成功更新。
-* 调用 GraphInstanceSet，但将名称更改为“Sample-Graph-2”并观察响应有效负载。 请注意，创建了一个新的图形实例（即状态代码为 201）。
+1. 使用相同有效负载再次调用 `GraphInstanceSet`。 请注意，返回的状态代码为 200。
+1. 再次调用 `GraphInstanceSet`，但使用不同描述。 请注意响应有效负载中更新的描述，指示图形实例已成功更新。
+1. 调用 `GraphInstanceSet`，但将名称更改为 `Sample-Graph-2`。 在响应有效负载中，请注意新创建的图形实例（即状态代码 201）。
 
 ### <a name="invoke-graphinstanceactivate"></a>调用 GraphInstanceActivate
 
-现在激活图形实例，它通过模块启动实时视频流。 使用以下有效负载调用直接方法 GraphInstanceActivate。
+现在激活图形实例，以通过模块启动实时视频流。 使用以下有效负载调用直接方法 `GraphInstanceActivate`。
 
 ```
 {
@@ -444,7 +450,7 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-几秒钟内，你应该可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceActivate] to [lva-sample-device/lvaEdge] ...
@@ -455,11 +461,11 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-响应有效负载中的状态代码 200 指示图形实例已成功激活。
+状态代码 200 指示图形实例已成功激活。
 
 ### <a name="invoke-graphinstanceget"></a>调用 GraphInstanceGet
 
-现在使用以下有效负载调用直接方法 GraphInstanceGet：
+现在使用以下有效负载调用直接方法 `GraphInstanceGet`。
 
 ```
  {
@@ -468,7 +474,7 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
  }
  ```
 
-几秒钟内，你应该可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceGet] to [lva-sample-device/lvaEdge] ...
@@ -494,22 +500,24 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-请注意响应有效负载中的以下内容：
+在响应有效负载中，请注意以下详细信息：
 
 * 状态代码为 200，表示成功。
-* 状态为“活动”，表示图形实例现在处于“活动”状态。
+* 状态为 `Active`，表示图形实例现在处于活动状态。
 
 ## <a name="observe-results"></a>观察结果
 
-我们在上面创建和激活的图形实例使用运动检测处理器节点来检测传入实时视频流中的运动，并将事件发送到 IoT 中心接收器节点。 这些事件随后被转送到 IoT Edge 中心，现在可以观察到这一点。 为此，请执行下列步骤。
+创建和激活的图形实例使用运动检测处理器节点来检测传入实时视频流中的运动。 它会将事件发送到 IoT 中心接收器节点。 这些事件会中继到 IoT Edge 中心。 
 
-1. 在 Visual Studio Code 中打开“资源管理器”窗格，然后在左下角查找“Azure IoT 中心”。
+若要观察结果，请遵循以下步骤。
+
+1. 在 Visual Studio Code 中，打开“资源管理器”窗格。 在左下角，查找“Azure IoT 中心”。
 2. 展开“设备”节点。
-3. 右键单击“lva-sample-device”，然后选择“开始监视内置事件监视”选项。
+3. 右键单击“lva-sample-device”，然后选择“开始监视内置事件监视” 。
 
-![开始监视 IoT 中心事件](./media/quickstarts/start-monitoring-iothub-events.png)
-
-可在“输出”窗口看到以下消息：
+    ![开始监视 IoT 中心事件](./media/quickstarts/start-monitoring-iothub-events.png)
+    
+“输出”窗口显示以下消息：
 
 ```
 [IoTHubMonitor] [7:44:33 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -551,16 +559,16 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-请注意上述消息中的以下内容
+请注意以下详细信息：
 
-* 该消息包含“body”部分和“applicationProperties”部分。 若要理解这些部分的内容，请阅读[创建和读取 IoT 中心消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)一文。
-* applicationProperties 中的“subject”引用生成消息的 MediaGraph 中的节点。 在本例中，该消息来自运动检测处理器。
-* applicationProperties 中的“eventType”指示这是分析事件。
-* “eventTime”指示事件发生的时间。
-* “body”包含有关分析事件的数据。 在本例中，该事件是推理事件，因此“body”包含“timestamp”和“inferences”数据。
-* “inferences”部分指示“type”为“motion”，并且具有关于“motion”事件的其他数据。
+* 该消息包含 `body` 部分和 `applicationProperties` 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+* 在 `applicationProperties` 中，`subject` 引用生成消息的 `MediaGraph` 中的节点。 在本例中，该消息来自运动检测处理器。
+* `applicationProperties` 中的 `eventType` 指示此事件是分析事件。
+* `eventTime` 值为事件发生的时间。
+* `body` 部分包含有关分析事件的数据。 在本例中，该事件是推理事件，因此正文包含 `timestamp` 和 `inferences` 数据。
+* `inferences` 部分指示 `type` 为 `motion`。 它提供有关 `motion` 事件的附加数据。
 
-如果让 MediaGraph 运行一段时间，你将在“输出”窗口中看到以下消息：
+如果让媒体图运行一段时间，你会在“输出”窗口中看到以下消息。
 
 ```
 [IoTHubMonitor] [7:47:45 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -578,19 +586,19 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-请注意上述消息中的以下内容
+在此消息中，请注意以下详细信息：
 
-* applicationProperties 中的“subject”指示消息是从媒体图中的 RTSP 源节点生成的。
-* applicationProperties 中的“eventType”指示这是诊断事件。
-* “body”包含有关诊断事件的数据。 在本例中，该事件是 MediaSessionEstablished，因此该事件就是“body”。
+* `applicationProperties` 中的 `subject` 指示消息是从媒体图中的 RTSP 源节点生成的。
+* `applicationProperties` 中的 `eventType` 指示此事件是诊断事件。
+* `body` 包含有关诊断事件的数据。 在本例中，消息包含正文，因为事件是 `MediaSessionEstablished`。
 
 ## <a name="invoke-additional-direct-methods-to-clean-up"></a>调用其他直接方法进行清理
 
-现在，调用直接方法以停用和删除图形实例（按该顺序执行操作）。
+调用直接方法以便先停用图形实例，然后删除它。
 
 ### <a name="invoke-graphinstancedeactivate"></a>调用 GraphInstanceDeactivate
 
-使用以下有效负载调用直接方法 GraphInstanceDeactivate。
+使用以下有效负载调用直接方法 `GraphInstanceDeactivate`。
 
 ```
 {
@@ -599,7 +607,7 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-几秒钟内，你应该可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应：
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDeactivate] to [lva-sample-device/lvaEdge] ...
@@ -612,13 +620,11 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 
 状态代码 200 指示图形实例已成功停用。
 
-请尝试以下步骤。
-
-* 如前面各节所示调用 GraphInstanceGet，并观察“状态”值。
+接下来，尝试按本文前面所示来调用 `GraphInstanceGet`。 观察 `state` 值。
 
 ### <a name="invoke-graphinstancedelete"></a>调用 GraphInstanceDelete
 
-使用以下有效负载调用直接方法 GraphInstanceDelete
+使用以下有效负载调用直接方法 `GraphInstanceDelete`。
 
 ```
 {
@@ -627,7 +633,7 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-几秒钟内，你应该可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应：
 
 ```
 [DirectMethod] Invoking Direct Method [GraphInstanceDelete] to [lva-sample-device/lvaEdge] ...
@@ -638,11 +644,11 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-响应中的状态代码 200 指示图形实例已成功删除。
+状态代码 200 指示图形实例已成功删除。
 
 ### <a name="invoke-graphtopologydelete"></a>调用 GraphTopologyDelete
 
-使用以下有效负载调用直接方法 GraphTopologyDelete：
+使用以下有效负载调用直接方法 `GraphTopologyDelete`。
 
 ```
 {
@@ -651,7 +657,7 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 }
 ```
 
-几秒钟内，你应该可在“输出”窗口中看到以下响应：
+几秒钟内，“输出”窗口中显示以下响应。
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologyDelete] to [lva-sample-device/lvaEdge] ...
@@ -664,16 +670,16 @@ RTSP 模拟器模块使用存储的视频文件模拟实时视频流，该文件
 
 状态代码 200 指示图形拓扑已成功删除。
 
-请尝试以下步骤。
+请尝试以下后续步骤：
 
-* 调用 GraphTopologyList 并观察到模块中没有图形拓扑。
-* 使用与 GraphTopologyList 相同的有效负载调用 GraphInstanceList，并观察到未枚举任何图形实例。
+1. 调用 `GraphTopologyList`，并观察到模块不包含图形拓扑。
+1. 使用与 `GraphTopologyList` 相同的有效负载调用 `GraphInstanceList`。 观察到未枚举任何图形实例。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果你不打算继续使用此应用程序，请删除本快速入门中创建的资源。
+如果不打算继续使用此应用程序，请删除本快速入门中创建的资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何使用 IoT Edge 上的实时视频分析录制视频
-* 详细了解诊断消息。
+* 了解如何[使用 IoT Edge 上的实时视频分析录制视频](continuous-video-recording-tutorial.md)。
+* 详细了解[诊断消息](monitoring-logging.md)。

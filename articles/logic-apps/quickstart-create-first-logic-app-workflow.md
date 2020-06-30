@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 3087b964ff5f9754d6552fc95625541ce94a6535
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 555230499ebda106cbca616b779ae632d65349ab
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147998"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84807860"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -31,34 +31,34 @@ ms.locfileid: "82147998"
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 在 Azure 主页上的搜索框中，查找并选择“逻辑应用”  。
+1. 在 Azure 主页上的搜索框中，查找并选择“逻辑应用”。
 
    ![查找并选择“逻辑应用”](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. 在“逻辑应用”页上，选择“添加”   。
+1. 在“逻辑应用”页上，选择“添加” 。
 
    ![添加新逻辑应用](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
-1. 在“逻辑应用”窗格上，提供有关逻辑应用的详细信息，如下所示  。 完成后，选择“创建”  。
+1. 在“逻辑应用”窗格上，提供有关逻辑应用的详细信息，如下所示。 完成后，选择“创建”。
 
    ![提供有关新逻辑应用的详细信息](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
    | properties | 值 | 说明 |
    |----------|-------|-------------|
-   | **名称** | <*logic-app-name*> | 逻辑应用名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 |
+   | **名称** | <*logic-app-name*> | 逻辑应用名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“My-First-Logic-App”。 <p><p>**注意**：逻辑应用的名称必须在区域之间是唯一的。 |
    | **订阅** | <*Azure-subscription-name*> | Azure 订阅名称 |
-   | **资源组** | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“My-First-LA-RG”。 |
+   | **资源组** | <*Azure-resource-group-name*> | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“My-First-LA-RG”。 <p><p>**注意**：资源组的名称必须在区域之间是唯一的。 |
    | **位置** | <*Azure-region*> | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
-   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
+   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。 |
    ||||
 
-1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知”   > “转到资源”  ，查看你部署的逻辑应用。
+1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知” > “转到资源”，查看你部署的逻辑应用。
 
    ![转到新创建的逻辑应用资源](./media/quickstart-create-first-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
 
-   逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。   在“模板”下选择“空白逻辑应用”。
+   逻辑应用设计器打开并显示一个包含简介视频和常用触发器的页面。  在“模板”下选择“空白逻辑应用”。
 
    ![选择逻辑应用的空白模板](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
@@ -68,9 +68,9 @@ ms.locfileid: "82147998"
 
 ## <a name="add-the-rss-trigger"></a>添加 RSS 触发器
 
-1. 在“逻辑应用设计器”的搜索框下，选择“全部”   。
+1. 在“逻辑应用设计器”的搜索框下，选择“全部” 。
 
-1. 在搜索框中，输入 `rss` 以查找 RSS 连接器。 从触发器列表中，选择“发布源项时”触发器  。
+1. 在搜索框中，输入 `rss` 以查找 RSS 连接器。 从触发器列表中，选择“发布源项时”触发器。
 
    ![选择“发布源项时”触发器](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "82147998"
    | properties | 值 | 说明 |
    |----------|-------|-------------|
    | **RSS 源 URL** | `http://feeds.reuters.com/reuters/topNews` | 要监视的 RSS 源的链接 |
-   | 间隔  | 1 | 在两次检查之间需等待的时间间隔数 |
+   | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 |
    | **频率** | Minute | 两次检查的间隔的时间单位  |
    ||||
 
@@ -91,7 +91,7 @@ ms.locfileid: "82147998"
 
    ![折叠逻辑应用形状即可隐藏详细信息](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 逻辑应用现已生成，但除了检查 RSS 源，不能执行任何操作。 因此，请添加一项在触发器触发时进行响应的操作。
 
@@ -99,13 +99,13 @@ ms.locfileid: "82147998"
 
 现在请添加一项[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)，在 RSS 源中出现新项时发送电子邮件。
 
-1. 在“发布源项时”触发器下，选择“新建步骤”   。
+1. 在“发布源项时”触发器下，选择“新建步骤” 。
 
    ![在触发器下，选择“新建步骤”](./media/quickstart-create-first-logic-app-workflow/add-new-step-under-trigger.png)
 
-1. 在“选择操作”和搜索框下，选择“全部”   。
+1. 在“选择操作”和搜索框下，选择“全部” 。
 
-1. 在搜索框中，输入 `send an email` 以查找提供此操作的连接器。 从操作列表中，为要使用的电子邮件服务选择“发送电子邮件”操作。 此示例使用 Office 365 Outlook 连接器，该连接器具有“发送电子邮件”操作  。
+1. 在搜索框中，输入 `send an email` 以查找提供此操作的连接器。 从操作列表中，为要使用的电子邮件服务选择“发送电子邮件”操作。 此示例使用 Office 365 Outlook 连接器，该连接器具有“发送电子邮件”操作。
 
    ![选择 Office 365 Outlook 的“发送电子邮件”操作](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -124,17 +124,17 @@ ms.locfileid: "82147998"
    > * [使用托管标识验证访问](../logic-apps/create-managed-service-identity.md)
    > * [为逻辑应用部署验证连接](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
-1. 在“发送电子邮件”操作中，指定需要电子邮件包括的数据。 
+1. 在“发送电子邮件”操作中，指定需要电子邮件包括的数据。
 
-   1. 在“收件人”  框中，输入收件人的电子邮件地址。 为进行测试，可以使用你的电子邮件地址。
+   1. 在“收件人”框中，输入收件人的电子邮件地址。 为进行测试，可以使用你的电子邮件地址。
 
-      现在，请忽略出现的“添加动态内容”列表。  单击某些编辑框时，此列表会出现并显示前一步骤中提供的参数，这样即可将其作为工作流的输入包括进去。
+      现在，请忽略出现的“添加动态内容”列表。 单击某些编辑框时，此列表会出现并显示前一步骤中提供的参数，这样即可将其作为工作流的输入包括进去。
 
-   1. 在“主题”框中，输入带有尾随空格的以下文本：  `New RSS item: `
+   1. 在“主题”框中，输入带有尾随空格的以下文本：`New RSS item: `
 
       ![在“主题”属性中，输入电子邮件主题](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
-   1. 从“添加动态内容”列表  中选择“源标题”  ，用于包括 RSS 项标题。
+   1. 从“添加动态内容”列表中选择“源标题”，用于包括 RSS 项标题。
 
       ![从动态内容列表中，选择“源标题”属性](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject-dynamic-content.png)
 
@@ -142,17 +142,17 @@ ms.locfileid: "82147998"
 
       ![完成的添加源标题的电子邮件主题示例](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-feed-title.png)
 
-      如果“For each”循环显示在设计器上，则你为数组选择了一个令牌，例如 **categories-Item** 令牌。 对于这些类型的令牌，设计器会自动围绕引用该令牌的操作添加此循环。 这样一来，逻辑应用会对每个数组项执行同一操作。 若要删除循环，请选择循环的标题栏上的省略号 ( **...** )，然后选择“删除”。  
+      如果“For each”循环显示在设计器上，则你为数组选择了一个令牌，例如 **categories-Item** 令牌。 对于这些类型的令牌，设计器会自动围绕引用该令牌的操作添加此循环。 这样一来，逻辑应用会对每个数组项执行同一操作。 若要删除循环，请选择循环的标题栏上的省略号 ( **...** )，然后选择“删除”。 
 
-   1. 在“正文”框中选择此文本，然后选择这些令牌作为电子邮件正文。  若要在编辑框中添加空行，请按 Shift + Enter。
+   1. 在“正文”框中选择此文本，然后选择这些令牌作为电子邮件正文。 若要在编辑框中添加空行，请按 Shift + Enter。
 
       ![选择电子邮件正文内容的属性](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | properties | 说明 |
       |----------|-------------|
-      | 源标题  | 项的标题 |
-      |  源发布日期 | 项的发布日期和时间 |
-      | 源主链接  | 项的 URL |
+      | 源标题 | 项的标题 |
+      | 源发布日期 | 项的发布日期和时间 |
+      | 源主链接 | 项的 URL |
       |||
 
 1. 保存逻辑应用。
@@ -161,7 +161,7 @@ ms.locfileid: "82147998"
 
 ## <a name="run-your-logic-app"></a>运行逻辑应用
 
-若要手动启动逻辑应用，请在设计器工具栏中选择“运行”  。 或者，等待逻辑应用根据指定的计划（每隔一分钟）检索 RSS 源。 如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 否则，逻辑应用会等到下一个间隔过后才进行检查。 如果没有收到任何电子邮件，请检查垃圾邮件文件夹。
+若要手动启动逻辑应用，请在设计器工具栏中选择“运行”。 或者，等待逻辑应用根据指定的计划（每隔一分钟）检索 RSS 源。 如果 RSS 源有新项，逻辑应用会为每个新项发送一封电子邮件。 否则，逻辑应用会等到下一个间隔过后才进行检查。 如果没有收到任何电子邮件，请检查垃圾邮件文件夹。
 
 例如，下面是此逻辑应用发送的一封示例电子邮件。
 
@@ -175,11 +175,11 @@ ms.locfileid: "82147998"
 
 不再需要此示例时，删除包含你的逻辑应用和相关资源的资源组。
 
-1. 在 Azure 主菜单中，选择“资源组”，然后选择逻辑应用的资源组。  在“概述”  窗格上，选择“删除资源组”。 
+1. 在 Azure 主菜单中，选择“资源组”，然后选择逻辑应用的资源组。 在“概述”窗格上，选择“删除资源组”。
 
    ![查找、选择和删除资源组](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. 出现确认窗格时，输入资源组名称，然后选择“删除”  。
+1. 出现确认窗格时，输入资源组名称，然后选择“删除”。
 
    ![若要确认删除，请选择“删除”](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 

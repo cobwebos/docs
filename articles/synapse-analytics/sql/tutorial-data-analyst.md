@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 84e808caa033491ce3f2da099459d1242df6decd
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: afe231186adec95b09a75d7fe59552ca8a07049b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299530"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213136"
 ---
 # <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>在 Azure Synapse Studio（预览版）中使用 SQL 按需版本（预览版）分析 Azure 开放数据集并将结果可视化
 
@@ -32,7 +32,7 @@ ms.locfileid: "84299530"
 
 ## <a name="automatic-schema-inference"></a>自动架构推理
 
-由于数据以 Parquet 文件格式存储，因此可以使用自动架构推理。 无需列出文件中所有列的数据类型，就能轻松查询数据。 还可以使用虚拟列机制和 filepath 函数筛选出特定的文件子集。
+由于数据以 Parquet 文件格式存储，因此可以使用自动架构推理。 无需列出文件中所有列的数据类型即可轻松查询数据。 还可以使用虚拟列机制和 filepath 函数筛选出特定的文件子集。
 
 首先，通过运行以下查询来熟悉 NYC 出租车数据：
 

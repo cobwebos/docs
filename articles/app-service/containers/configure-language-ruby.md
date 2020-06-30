@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8daebba840223d050a14b4b99cb6ae15472ee4f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 804e6d562322eff20de8eb7e33caae98418ea3fe
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80046323"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84905674"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -51,7 +51,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> 这意味着项目中配置的 Ruby 版本与正在运行的容器中安装的版本不同（在上面的示例中为 `2.3.3`）。 在上面的示例中，检查 Gemfile 和 .ruby-version 并验证是否未设置 Ruby 版本，或者是否设置为正在运行的容器中安装的版本（在上面的示例中为 `2.3.3`）   。
+> 这意味着项目中配置的 Ruby 版本与正在运行的容器中安装的版本不同（在上面的示例中为 `2.3.3`）。 在上面的示例中，检查 Gemfile 和 .ruby-version 并验证是否未设置 Ruby 版本，或者是否设置为正在运行的容器中安装的版本（在上面的示例中为 `2.3.3`） 。
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
@@ -65,7 +65,7 @@ ENV['WEBSITE_SITE_NAME']
 
 部署 [Git 存储库](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)或者部署启用了生成过程的 [Zip 包](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)时，部署引擎 (Kudu) 会默认运行以下后期部署步骤：
 
-1. 检查 Gemfile 是否存在  。
+1. 检查 Gemfile 是否存在。
 1. 运行 `bundle clean`。 
 1. 运行 `bundle install --path "vendor/bundle"`。
 1. 运行 `bundle package`，将 gems 打包到 vendor/cache 文件夹中。
@@ -96,8 +96,8 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 1. 生成 [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) 值（如果尚不存在）。 应用在生产模式下运行时需要此值。
 1. 将 `RAILS_ENV` 环境变量设置为 `production`。
-1. 在 tmp / pids 目录中，删除先前运行 Rails 服务器留下的任何 .pid 文件   。
-1. 检查是否安装了所有依赖项。 如果没有，请尝试从本地 vendor/cache 目录安装 gems  。
+1. 在 tmp / pids 目录中，删除先前运行 Rails 服务器留下的任何 .pid 文件 。
+1. 检查是否安装了所有依赖项。 如果没有，请尝试从本地 vendor/cache 目录安装 gems。
 1. 运行 `rails server -e $RAILS_ENV`。
 
 可按以下方式自定义启动进程：
@@ -141,7 +141,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>在浏览器中打开 SSH 会话
 

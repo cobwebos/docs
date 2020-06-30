@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199596"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297998"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 
@@ -26,21 +26,21 @@ ms.locfileid: "77199596"
 
 ## <a name="request-to-pay-by-invoice"></a>请求按发票付款
 
-1. 若要提交支持请求，请转到 [Azure 门户](https://portal.azure.com)。 搜索并选择“帮助 + 支持”  。
+1. 若要提交支持请求，请转到 [Azure 门户](https://portal.azure.com)。 搜索并选择“帮助 + 支持”。
 
     ![搜索“帮助和支持”、Microsoft Azure 门户](./media/pay-by-invoice/search-for-help-and-support.png)
 
-2. 选择“新建支持请求”。 
+2. 选择“新建支持请求”。
 
     ![“新建支持请求”链接、“帮助和支持”屏幕、Microsoft Azure 门户](./media/pay-by-invoice/help-and-support.png)
 
-2. 选择“计费”作为“问题类型”。   问题类型是支持请求类别。  选择要按发票付款的订阅，选择支持计划，然后选择“下一步”。 
+2. 选择“计费”作为“问题类型”。  问题类型是支持请求类别。 选择要按发票付款的订阅，选择支持计划，然后选择“下一步”。
 
-3. 选择“付款”作为“问题类型”。   问题类型是支持请求子类别。 
+3. 选择“付款”作为“问题类型”。  问题类型是支持请求子类别。
 
-4. 选择“切换到按发票付款”作为“问题子类型”   。
+4. 选择“切换到按发票付款”作为“问题子类型” 。
 
-5. 在“详细信息”  框中输入以下信息，并选择“下一步”  。
+5. 在“详细信息”框中输入以下信息，并选择“下一步”。
 
          New or existing customer:
          If existing, current payment method:
@@ -65,10 +65,10 @@ ms.locfileid: "77199596"
          (New quota) Requested cores:
          Specific region & series of Subscription:
 
-    - “公司名称”和“公司地址”应与你为 Azure 帐户提供的信息匹配。   若要查看或更新信息，请参阅[更改 Azure 帐户个人资料信息](change-azure-account-profile.md)。
+    - “公司名称”和“公司地址”应与你为 Azure 帐户提供的信息匹配。  若要查看或更新信息，请参阅[更改 Azure 帐户个人资料信息](change-azure-account-profile.md)。
     - 请在 Azure 门户中添加计费联系人信息，然后额度限制才会获得批准。 联系人详细信息应该与公司的应付账款或财务部门相关。 若要更新计费联系人信息，请转到 [Azure 帐户中心](https://account.azure.com/Profile)。
 
-6. 验证联系人信息和首选联系方法，并选择“创建”  。
+6. 验证联系人信息和首选联系方法，并选择“创建”。
 
 如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。
 
@@ -82,13 +82,13 @@ ms.locfileid: "77199596"
 
 执行以下步骤，将 Azure 订阅切换为发票付款（支票/电汇）。 *切换为按发票付款（支票/电汇）后，无法切换回信用卡付款*。
 
-1. 转到 [Azure 门户](https://portal.azure.com)，以帐户管理员身份登录。 搜索并选择“成本管理 + 计费”  。
+1. 转到 [Azure 门户](https://portal.azure.com)，以帐户管理员身份登录。 搜索并选择“成本管理 + 计费”。
 
     ![搜索成本管理和计费, Microsoft Azure 门户](./media/pay-by-invoice/search.png)
 
 1. 选择要切换为发票付款的订阅。
-1. 选择“付款方式”。 
-1. 在命令栏中，选择“按发票付款”按钮。 
+1. 选择“付款方式”。
+1. 在命令栏中，选择“按发票付款”按钮。
 
     ![“按发票付款”按钮、付款方式、Microsoft Azure 门户](./media/pay-by-invoice/pay-by-invoice.png)
 
@@ -96,13 +96,13 @@ ms.locfileid: "77199596"
 
 执行以下步骤，将计费对象信息切换为支票/电汇。 只有注册 Azure 的人才能更改计费对象信息的默认付款方式。
 
-1. 转到 [Azure 门户](https://portal.azure.com)，查看计费信息。 搜索并选择“成本管理 + 计费”  。
-1. 在菜单中，选择“计费对象信息”。 
+1. 转到 [Azure 门户](https://portal.azure.com)，查看计费信息。 搜索并选择“成本管理 + 计费”。
+1. 在菜单中，选择“计费对象信息”。
 
     ![计费对象信息菜单项、成本管理和计费、Microsoft Azure 门户](./media/pay-by-invoice/billing-profile.png)
 
 1. 选择计费对象信息。
-1. 在“计费对象信息”  菜单中，选择“付款方式”  。
+1. 在“计费对象信息”菜单中，选择“付款方式”。
 
    ![付款方式菜单项、计费对象信息、成本管理、Microsoft Azure 门户](./media/pay-by-invoice/billing-profile-payment-methods.png)
 
@@ -113,10 +113,19 @@ ms.locfileid: "77199596"
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
+## <a name="frequently-asked-questions"></a>常见问题
+
+为什么我收到了要求我提供法律文件的请求？
+
+如果客户提供的信息不完整或无法查证，Microsoft 有时会要求客户提供法律文档。 示例可能包括：
+
+* 帐户名称与公司名称有何不同
+* 名称变更
+
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 根据需要在 [Azure 帐户中心](https://account.azure.com/Profile)更新计费联系人信息。
+* 根据需要在 [Azure 帐户中心](https://account.azure.com/Profile)更新计费联系人信息。

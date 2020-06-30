@@ -2,20 +2,20 @@
 title: 教程 - Azure Toolkit for IntelliJ（Spark 应用程序）
 description: 教程 - 使用 Azure Toolkit for IntelliJ 开发以 Scala 编写的 Spark 应用程序，并将其提交到 Apache Spark 池（预览版）。
 services: synapse-analytics
-author: v-jiche
-ms.author: v-jiche
+author: hrasheed-msft
+ms.author: jejiang
 ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 6f71b9ecc5dc0279d2053f6212f685968309284e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608751"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976789"
 ---
-# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>教程：使用 Synapse Analytics 通过 IntelliJ 创建 Apache Spark 应用程序（工作区预览版）
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
 
 本教程演示如何使用 Azure Toolkit for IntelliJ 插件开发以 [Scala](https://www.scala-lang.org/) 编写的 Apache Spark 应用程序，并将其直接从 IntelliJ 集成开发环境 (IDE) 提交到 Spark 池（预览版）。 可按多种方式使用该插件：
 
@@ -146,7 +146,7 @@ ms.locfileid: "84608751"
     |命令行参数|如果需要，可为 main 类输入参数并以空格分隔。|
     |引用的 Jar 和引用的文件|可以输入引用的 Jar 和引用的文件的路径（如果有）。 还可以在 Azure 虚拟文件系统中浏览文件，但目前仅支持 ADLS 第 2 代群集。 更多相关信息：[Apache Spark 配置](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)和[如何将资源上传到群集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
     |作业上传存储|展开以显示其他选项。|
-    |存储类型|从下拉列表中选择“使用 Azure Blob 上传”。|
+    |存储类型|从下拉列表中选择“使用 Azure Blob 上传”或“使用群集默认存储帐户上传” 。|
     |存储帐户|输入存储帐户。|
     |存储密钥|输入存储密钥。|
     |存储容器|输入“存储帐户”和“存储密钥”后，从下拉列表中选择你的存储容器。 |
@@ -250,6 +250,7 @@ ms.locfileid: "84608751"
 
     |properties |值 |
     |----|----|
+    |主类名| 选择主类名。| 
     |Spark 池|选择要在其上运行应用程序的 Spark 池。|
     ||
 

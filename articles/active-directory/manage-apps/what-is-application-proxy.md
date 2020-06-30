@@ -2,23 +2,22 @@
 title: 使用 Azure AD 应用程序代理发布本地应用
 description: 了解为何要在外部使用应用程序代理向远程用户发布本地 Web 应用程序。 了解应用程序代理体系结构、连接器、身份验证方法和安全优势。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 05/31/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: d38cf25bb3b7622a0d444e4a71a4d62aafc053b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a5c9ba026819a542ccd0a7ae41316c0f1d325004
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196452"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976500"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -89,7 +88,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 * Web 应用程序
 * 想要公开给不同设备上丰富应用程序的 Web API
 * 托管在远程桌面网关之后的应用程序
-* 与 Active Directory 身份验证库 (ADAL) 集成的富客户端应用
+* 与 [Microsoft 身份验证库 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview) 集成的丰富客户端应用
 
 应用代理适用于使用以下本机身份验证协议的应用：
 
@@ -133,11 +132,11 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 2. 成功登录后，Azure AD 向用户的客户端设备发送令牌。
 3. 客户端将令牌发送到应用程序代理服务，该服务检索令牌中的用户主体名称 (UPN) 和安全主体名称 (SPN)。
 4. 应用程序代理转发请求，应用程序代理[连接器](application-proxy-connectors.md)拾取请求。
-5. 连接器代表用户执行所需的任何其他身份验证（可选操作，是否执行将取决于身份验证方法），请求应用程序服务器的内部终结点，并将请求发送到本地应用程序。 
+5. 连接器代表用户执行所需的任何其他身份验证（可选操作，是否执行将取决于身份验证方法），请求应用程序服务器的内部终结点，并将请求发送到本地应用程序。
 6. 通过连接器将应用程序服务器返回的响应发送到应用程序代理服务。
 7. 响应将从应用程序代理服务发送到用户。
 
-|组件 |**说明**|
+|组件|**说明**|
 |:-|:-|
 |端点|终结点是 URL 或 [最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
 |Azure AD|Azure AD 使用存储在云端的租户目录执行身份验证。|

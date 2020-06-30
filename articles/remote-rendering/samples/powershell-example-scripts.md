@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80891486"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052295"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 脚本示例
 
@@ -19,7 +19,7 @@ Azure 远程渲染提供以下两个 REST API：
 - [转换 REST API](../how-tos/conversion/conversion-rest-api.md)
 - [会话 REST API](../how-tos/session-rest-api.md)
 
-[ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)的 Scripts 文件夹中包含了用来与服务的 REST API 进行交互的示例脚本。  本文介绍这些脚本的用法。
+[ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)的 Scripts 文件夹中包含了用来与服务的 REST API 进行交互的示例脚本。 本文介绍这些脚本的用法。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -42,7 +42,7 @@ Azure 远程渲染提供以下两个 REST API：
 > [!NOTE]
 > 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
 
-1. 从 [Azure 远程渲染 GithHub 存储库](https://github.com/Azure/azure-remote-rendering)下载 Scripts 文件夹。 
+1. 从 [Azure 远程渲染 GithHub 存储库](https://github.com/Azure/azure-remote-rendering)下载 Scripts 文件夹。
 
 ## <a name="configuration-file"></a>配置文件
 
@@ -76,6 +76,9 @@ Azure 远程渲染提供以下两个 REST API：
 > [!CAUTION]
 > 请务必使用双反斜杠“\\\\”来正确转义 LocalAssetDirectoryPath 路径中的反斜杠，并在 inputFolderPath 和 inputAssetPath 等所有其他路径中使用正斜杠“/”。
 
+> [!CAUTION]
+> 需要填写可选值，或者需要完全删除密钥和值。 例如，如果不使用 `"outputAssetFileName"` 参数，则需要删除 `arrconfig.json` 内的整行。
+
 ### <a name="accountsettings"></a>accountSettings
 
 对于 `arrAccountId` 和 `arrAccountKey`，请参阅[创建 Azure 远程渲染帐户](../how-tos/create-an-account.md)。
@@ -83,14 +86,14 @@ Azure 远程渲染提供以下两个 REST API：
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-若要运行 RenderingSession.ps1，必须填写此结构。 
+若要运行 RenderingSession.ps1，必须填写此结构。
 
-- **vmSize：** 选择虚拟机的大小。 选择“标准”或“高级”。   请关闭不再需要的渲染会话。
+- **vmSize：** 选择虚拟机的大小。 选择“标准”或“高级”。  请关闭不再需要的渲染会话。
 - **maxLeaseTime：** 要租用 VM 的持续时间。 租约过期后，该 VM 将会关闭。 以后可以延长租用时间（请参阅下文）。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-若要运行 Conversion.ps1，必须填写此结构。 
+若要运行 Conversion.ps1，必须填写此结构。
 
 有关详细信息，请参阅[准备 Azure 存储帐户](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)。
 
@@ -99,7 +102,7 @@ Azure 远程渲染提供以下两个 REST API：
 此脚本用于创建、查询和停止渲染会话。
 
 > [!IMPORTANT]
-> 请确保已填写 arrconfig.json 中的 accountSettings 和 renderingSessionSettings 部分。  
+> 请确保已填写 arrconfig.json 中的 accountSettings 和 renderingSessionSettings 部分。 
 
 ### <a name="create-a-rendering-session"></a>创建渲染会话
 
@@ -109,27 +112,27 @@ Azure 远程渲染提供以下两个 REST API：
 .\RenderingSession.ps1
 ```
 
-此脚本将调用[会话管理 REST API](../how-tos/session-rest-api.md) 来运转采用指定设置的渲染 VM。 成功时，它会检索 sessionId。  然后，它将轮询会话属性，直到会话准备就绪或出错。
+此脚本将调用[会话管理 REST API](../how-tos/session-rest-api.md) 来运转采用指定设置的渲染 VM。 成功时，它会检索 sessionId。 然后，它将轮询会话属性，直到会话准备就绪或出错。
 
-若要使用备用配置文件： 
+若要使用备用配置文件：
 
 ```PowerShell
 .\RenderingSession.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-可以重写配置文件中的各项设置： 
+可以重写配置文件中的各项设置：
 
 ```PowerShell
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-如果只是启动会话而不轮询，可以使用： 
+如果只是启动会话而不轮询，可以使用：
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
 ```
 
-必须将脚本检索的 sessionId 传递给其他大部分会话命令。 
+必须将脚本检索的 sessionId 传递给其他大部分会话命令。
 
 ### <a name="retrieve-session-properties"></a>检索会话属性
 
@@ -139,7 +142,7 @@ Azure 远程渲染提供以下两个 REST API：
 .\RenderingSession.ps1 -GetSessionProperties -Id <sessionID> [-Poll]
 ```
 
-使用 `-Poll` 来等待会话准备就绪或出错。 
+使用 `-Poll` 来等待会话准备就绪或出错。
 
 ### <a name="list-active-sessions"></a>列出活动会话
 
@@ -158,7 +161,7 @@ Azure 远程渲染提供以下两个 REST API：
 目前我们仅支持更改会话的 maxLeaseTime。
 
 > [!NOTE]
-> 租用时间始终从最初创建会话 VM 时开始算起。 因此，若要将会话租用时间延长一小时，请将 maxLeaseTime 增大一小时。 
+> 租用时间始终从最初创建会话 VM 时开始算起。 因此，若要将会话租用时间延长一小时，请将 maxLeaseTime 增大一小时。
 
 ```PowerShell
 .\RenderingSession.ps1 -UpdateSession -Id <sessionID> -MaxLeaseTime <hh:mm:ss>
@@ -169,7 +172,7 @@ Azure 远程渲染提供以下两个 REST API：
 此脚本用于将输入模型转换成特定于 Azure 远程渲染的运行时格式。
 
 > [!IMPORTANT]
-> 请确保已填写 arrconfig.json 中的 accountSettings 和 assetConversionSettings 部分。  
+> 请确保已填写 arrconfig.json 中的 accountSettings 和 assetConversionSettings 部分。 
 
 该脚本演示两个用于在服务中使用存储帐户的选项：
 
@@ -209,19 +212,19 @@ Azure 远程渲染提供以下两个 REST API：
 
 ### <a name="additional-command-line-options"></a>其他命令行选项
 
-若要使用备用配置文件： 
+若要使用备用配置文件：
 
 ```PowerShell
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-如果只是启动模型转换而不轮询，可以使用： 
+如果只是启动模型转换而不轮询，可以使用：
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
 ```
 
-可以使用以下命令行开关重写配置文件中的各项设置： 
+可以使用以下命令行开关重写配置文件中的各项设置：
 
 * **Id：** 与 GetConversionStatus 配合使用的 ConversionId
 * **ArrAccountId：** accountSettings 的 arrAccountId
@@ -252,7 +255,7 @@ Azure 远程渲染提供以下两个 REST API：
 .\Conversion.ps1 -Upload
 ```
 
-仅对已上传到 Blob 存储的模型启动转换过程（不运行上传，且不轮询转换状态）。该脚本将返回 conversionId。 
+仅对已上传到 Blob 存储的模型启动转换过程（不运行上传，且不轮询转换状态）。该脚本将返回 conversionId。
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
@@ -268,6 +271,6 @@ Azure 远程渲染提供以下两个 REST API：
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：使用 Unity 渲染模型](../quickstarts/render-model.md)
+- [快速入门：使用 Unity 来渲染模型](../quickstarts/render-model.md)
 - [快速入门：转换要渲染的模型](../quickstarts/convert-model.md)
 - [模型转换](../how-tos/conversion/model-conversion.md)

@@ -1,46 +1,31 @@
 ---
-title: Azure API 管理策略示例 | Microsoft Docs
-description: 了解可在 Azure API 管理中使用的策略。
-services: api-management
-documentationcenter: ''
-author: vladvino
-manager: cflower
-editor: ''
+title: Azure API 管理的内置策略定义
+description: 列出 Azure API 管理的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
+ms.date: 06/11/2020
+author: georgewallace
+ms.author: gwallace
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 10/31/2017
-ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: subject-policy-samples
+ms.openlocfilehash: b7e273b4ae7d213eb45775540d1e83b5a4d8b971
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75940943"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85123996"
 ---
-# <a name="api-management-policy-samples"></a>API 管理策略示例
+# <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure API 管理的 Azure Policy 内置策略定义
 
-[策略](api-management-howto-policies.md)是一项强大的系统功能，可让发布者通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 下表包含示例链接，并提供每个示例的简要说明。
+本页是 Azure API 管理的 [Azure Policy](../governance/policy/overview.md) 内置策略定义的索引。 有关其他服务的其他 Azure Policy 内置定义，请参阅 [Azure Policy 内置定义](../governance/policy/samples/built-in-policies.md)。 有关 API 管理策略示例，请参阅 [API 管理 - 策略索引](./policies/index.md)。
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **入站策略**                                                                                                                                                 |                                                                                                                                                                                                                             |
-| [添加 Forwarded 标头，使后端 API 能够构造正确的 URL](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) | 演示如何在入站请求中添加 Forwarded 标头，使后端 API 能够构造正确的 URL。                                                                                                        |
-| [添加包含相关 ID 的标头](./policies/add-correlation-id.md?toc=api-management/toc.json)                                                             | 演示如何将包含相关 ID 的标头添加到入站请求。                                                                                                                                        |
-| [将功能添加到后端服务并缓存响应](./policies/cache-response.md?toc=api-management/toc.json)                                             | 演示如何将功能添加到后端服务。 例如，接受位置的名称而不是天气预报 API 中的纬度和经度。                                                                    |
-| [基于 JWT 声明授权访问权限](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | 演示如何基于 JWT 声明授予对 API 中特定 HTTP 方法的访问权限。                                                                                                                                       |
-| [使用外部授权者授权请求](./policies/authorize-request-using-external-authorizer.md)                                                   | 演示如何使用外部授权者保护 API 访问。                                                                                                                                                               |
-| [使用 Google OAuth 令牌授予访问权限](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | 演示如何使用 Google 作为 OAuth 令牌提供程序授予对终结点的访问权限。                                                                                                                                    |
-| [使用应用程序网关时筛选 IP 地址](./policies/filter-ip-addresses-when-using-appgw.md) | 说明通过应用程序网关访问 API 管理实例时如何通过策略进行 IP 筛选
-| [生成共享访问签名并将请求转发到 Azure 存储](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | 演示如何使用表达式生成[共享访问签名](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1)并使用 rewrite-uri 策略将请求转发到 Azure 存储。 |
-| [从 AAD 获取 OAuth2 访问令牌并将其转发到后端](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | 提供一个示例用于演示如何使用 OAuth2 在网关与后端之间授权。 该示例演示如何从 AAD 获取访问令牌并将其转发到后端。                                                    |
-| [使用发送请求策略从 SAP 网关获取 X-CSRF 令牌](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | 演示如何实现许多 API 所用的 X-CSRF 模式。 此示例特定于 SAP 网关。                                                                                                                           |
-| [基于请求的正文大小路由请求](./policies/route-requests-based-on-size.md?toc=api-management/toc.json)                                            | 演示如何基于请求的正文大小路由请求。                                                                                                                                                       |
-| [将请求上下文信息转发到后端服务](./policies/send-request-context-info-to-backend-service.md?toc=api-management/toc.json)                    | 演示如何将一些上下文信息发送到后端服务进行日志记录或处理。                                                                                                                                |
-| [设置响应缓存持续时间](./policies/set-cache-duration.md?toc=api-management/toc.json)                                                                          | 演示如何使用后端发送的 Cache-Control 标头中的 maxAge 值设置响应缓存持续时间。                                                                                                             |
-| **出站策略**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [筛选响应内容](./policies/filter-response-content.md?toc=api-management/toc.json)                                                                         | 演示如何基于与请求关联的产品从响应有效负载中筛选数据元素。                                                                                                        |
-| **出错时的策略**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [将错误记录到 Stackify](./policies/log-errors-to-stackify.md?toc=api-management/toc.json)                                                                           | 演示如何添加错误日志记录策略，以便将错误发送到 Stackify 进行日志记录。                                                                                                                                            |
+每个内置策略定义链接（指向 Azure 门户中的策略定义）的名称。 使用“版本”列中的链接查看 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)上的源。
+
+## <a name="azure-api-management"></a>Azure API 管理
+
+[!INCLUDE [azure-policy-samples-rp-apimanagement](../../includes/policy/samples/byrp/microsoft.apimanagement.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+- 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。
+- 查看 [Azure Policy 定义结构](../governance/policy/concepts/definition-structure.md)。
+- 查看[了解策略效果](../governance/policy/concepts/effects.md)。

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 0e13fcba4b961efb6a839f95ad0e8100382619c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798244"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051945"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -93,7 +93,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
+拥有 [Microsoft 365 商业高级版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
 
 ## <a name="next-steps"></a>后续步骤
 

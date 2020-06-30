@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: f4d6e1bb0d5db0dbfc30e14abc58321bce8d0baf
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6e1dc5f0016c27d987361aa52e59682806a31c95
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693169"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85118910"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 
@@ -67,7 +67,7 @@ ms.locfileid: "84693169"
 
 1. 打开“连接字符串”或“访问密钥”窗格 。 使用窗口右侧的复制按钮复制“主连接字符串”。
 
-   ![在“连接字符串”窗格中查看并复制“主连接字符串”](./media/create-table-dotnet/connection-string.png)
+   :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="“连接字符串”窗格中的“主连接字符串”":::
    
 1. 要配置连接字符串，请在 Visual Studio 中右键单击项目“CosmosTableSamples”。
 
@@ -422,7 +422,7 @@ namespace CosmosTableSamples
 
 立即生成解决方案并按 F5 运行该项目。 运行项目时，将在命令提示符中看到以下输出：
 
-![来自命令提示符的输出](./media/tutorial-develop-table-standard/output-from-sample.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="来自命令提示符的输出":::
 
 如果收到说明在运行项目时无法找到 Settings.json 文件的错误，可以通过将以下 XML 条目添加到项目设置来解决该问题。 右键单击 CosmosTableSamples，选择“编辑 CosmosTableSamples.csproj”并添加以下 itemGroup： 
 
@@ -435,7 +435,7 @@ namespace CosmosTableSamples
 ```
 现在可以登录到 Azure 门户，并验证表中是否存在数据。 
 
-![门户中的结果](./media/tutorial-develop-table-standard/results-in-portal.png)
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="门户中的结果":::
 
 ## <a name="next-steps"></a>后续步骤
 

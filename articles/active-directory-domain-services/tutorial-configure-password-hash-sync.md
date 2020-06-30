@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ee0c6e67dcf0cf5f85734be3ac53a0417e398654
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676610"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733698"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -42,7 +42,7 @@ ms.locfileid: "80676610"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
     * 如果需要，请[为密码哈希同步启用 Azure AD Connect][enable-azure-ad-connect]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
+    * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
 
 ## <a name="password-hash-synchronization-using-azure-ad-connect"></a>使用 Azure AD Connect 实现密码哈希同步
 
@@ -59,10 +59,10 @@ ms.locfileid: "80676610"
 
 安装 Azure AD Connect 并将其配置为与 Azure AD 同步后，接下来请配置 NTLM 和 Kerberos 的旧密码哈希同步。 可以使用一个 PowerShell 脚本来配置所需的设置，然后启动与 Azure AD 的完全密码同步。 Azure AD Connect 密码哈希同步过程完成后，用户可以通过 Azure AD DS 登录到使用旧 NTLM 或 Kerberos 密码哈希的应用程序。
 
-1. 在安装了 Azure AD Connect 的计算机上，通过“开始”菜单打开“Azure AD Connect”>“同步服务”。 
-1. 选择“连接器”选项卡。  此时会列出用于在本地 AD DS 环境与 Azure AD 之间建立同步的连接信息。
+1. 在安装了 Azure AD Connect 的计算机上，通过“开始”菜单打开“Azure AD Connect”>“同步服务”。
+1. 选择“连接器”选项卡。此时会列出用于在本地 AD DS 环境与 Azure AD 之间建立同步的连接信息。
 
-    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。    请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
+    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。  请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
 
     ![在同步服务管理器中列出连接器名称](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
@@ -97,7 +97,7 @@ ms.locfileid: "80676610"
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    将旧密码哈希同步到 Azure AD 可能需要一段时间，具体时间取决于目录的大小（根据帐户和组的数目度量）。 密码在同步到 Azure AD 之后，将同步到 Azure AD DS 托管域。
+    将旧密码哈希同步到 Azure AD 可能需要一段时间，具体时间取决于目录的大小（根据帐户和组的数目度量）。 密码在同步到 Azure AD 之后，将同步到托管域。
 
 ## <a name="next-steps"></a>后续步骤
 

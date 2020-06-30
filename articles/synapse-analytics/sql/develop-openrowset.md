@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f70c14c424e8aaecbdc1138b52fdd6fb1e9fc265
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560874"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051794"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何使用 SQL 按需版本（预览版）中的 OPENROWSET
 
@@ -49,7 +49,7 @@ Synapse SQL 中的 OPENROWSET 函数从数据源读取文件的内容。 数据�
     使用此选项，可以配置数据源中的存储帐户的位置，并指定应该用来访问存储的身份验证方法。 
     
     > [!IMPORTANT]
-    > 不带 `DATA_SOURCE` 的 `OPENROWSET` 提供了快速轻松地访问存储文件的方法，但提供的身份验证选项有限。 例如，Azure AD 主体只能使用其 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through)来访问文件，不能访问公开提供的文件。 如果需要更强大的身份验证选项，请使用 `DATA_SOURCE` 选项，并定义需要将其用来访问存储的凭据。
+    > 不带 `DATA_SOURCE` 的 `OPENROWSET` 提供了快速轻松地访问存储文件的方法，但提供的身份验证选项有限。 例如，Azure AD 主体只能使用其 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity)或公开提供的文件来访问文件。 如果需要更强大的身份验证选项，请使用 `DATA_SOURCE` 选项，并定义需要将其用来访问存储的凭据。
 
 
 ## <a name="security"></a>安全性
@@ -60,7 +60,8 @@ Synapse SQL 中的 OPENROWSET 函数从数据源读取文件的内容。 数据�
 
 `OPENROWSET` 使用以下规则来确定如何向存储进行身份验证：
 - 在不带 `DATA_SOURCE` 的 `OPENROWSET` 中，身份验证机制依赖于调用方类型。
-  - 如果 Azure 存储允许 Azure AD 用户访问基础文件（例如，如果调用方对存储具有“存储读取者”权限），并且你在 Synapse SQL 服务上[启用 Azure AD 直通身份验证](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through)，则 Azure AD 登录名只能使用其自己的 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)来访问文件。
+  - 任何用户都可以使用 `OPENROWSET` 而不使用 `DATA_SOURCE` 来读取 Azure 存储上公开提供的文件。
+  - 如果 Azure 存储允许 Azure AD 用户访问基础文件（例如，如果调用方对 Azure 存储具有 `Storage Reader` 权限），则 Azure AD 登录名可以使用其自己的 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)来访问受保护的文件。
   - SQL 登录名还可以使用不带 `DATA_SOURCE` 的 `OPENROWSET` 来访问公开可用的文件、使用 SAS 令牌或 Synapse 工作区的托管标识保护的文件。 你需要[创建服务器范围的凭据](develop-storage-files-storage-access-control.md#examples)，以便访问存储文件。 
 - 在带 `DATA_SOURCE` 的 `OPENROWSET` 中，身份验证机制是在分配给被引用数据源的数据库范围的凭据中定义的。 使用此选项，可以访问公开可用的存储，或者使用 SAS 令牌、工作区的托管标识或[调用方的 Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)（如果调用方是 Azure AD 主体）来访问存储。 如果 `DATA_SOURCE` 引用了非公共的 Azure 存储，则你需要[创建数据库范围的凭据](develop-storage-files-storage-access-control.md#examples)并在 `DATA SOURCE` 中引用该凭据以便访问存储文件。
 
@@ -238,10 +239,6 @@ FROM
     ) AS [r]
 ```
 
-如果收到错误消息，指出无法列出文件，则需要在 Synapse SQL 按需版本中启用对公共存储的访问权限：
-- 如果使用 SQL 登录，则需要[创建服务器范围的凭据以允许访问公共存储](develop-storage-files-storage-access-control.md#examples)。
-- 如果你使用 Azure AD 主体来访问公共存储，则需要[创建服务器范围的凭据以允许访问公共存储](develop-storage-files-storage-access-control.md#examples)并禁用 [Azure AD 直通身份验证](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through)。
-
 ## <a name="next-steps"></a>后续步骤
 
-有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 OPENROWSET 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。
+有关更多示例，请参阅[查询数据存储快速入门](query-data-storage.md)，了解如何使用 `OPENROWSET` 来读取 [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md) 和 [JSON](query-json-files.md) 文件格式。 你还可以了解如何使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储。

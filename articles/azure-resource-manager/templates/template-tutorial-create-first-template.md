@@ -2,15 +2,15 @@
 title: 教程 - 创建和部署模板
 description: 创建第一个 Azure 资源管理器模板。 本教程将介绍模板文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235216"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676142"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教程：创建和部署第一个 ARM 模板
 
@@ -37,6 +37,7 @@ ms.locfileid: "84235216"
 - [安装 Azure PowerShell](/powershell/azure/install-az-ps)
 - [在 Windows 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)
 - [在 Linux 上安装 Azure CLI](/cli/azure/install-azure-cli-linux)
+- [在 macOS 上安装 Azure CLI](/cli/azure/install-azure-cli-macos)
 
 安装 Azure PowerShell 或 Azure CLI 后，请务必完成首次登录。 有关帮助，请参阅[登录 - PowerShell](/powershell/azure/install-az-ps#sign-in) 或[登录 - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in)。
 

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996306"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771115"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性概述
 
-Azure HDInsight 提供许多方法来解决企业安全性需求。 默认情况下，其中大多数解决方案均未激活。 这种灵活性允许你选择对你最重要的安全功能， 避免在不需要的功能上花钱。 这种灵活性也意味着，你有责任确保为你的设置和环境提供正确的解决方案。
+Azure HDInsight 提供许多方法来解决企业安全性需求。 默认情况下，其中大多数解决方案均未激活。 这种灵活性允许你选择对你来说最重要的安全功能，避免在不需要的功能上花钱。 这种灵活性也意味着，你有责任确保为你的设置和环境提供正确的解决方案。
 
 本文通过将安全解决方案划分为以下四个传统的安全支柱来审视安全解决方案：外围安全性、身份验证、授权和加密。
 
@@ -53,7 +53,7 @@ Hadoop 管理员可以配置基于角色的访问控制 (RBAC)。 这些配置�
 
 管理员可以查看和报告对 HDInsight 群集资源与数据的所有访问。 管理员可以查看并报告对访问控制策略的更改。
 
-若要访问 Apache Ranger 和 Ambari 审核日志以及 SSH 访问日志，请[启用 Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) 并 查看提供了审核记录的表。
+若要访问 Apache Ranger 和 Ambari 审核日志以及 SSH 访问日志，请[启用 Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) 并查看提供审核记录的表。
 
 ### <a name="encryption"></a>加密
 

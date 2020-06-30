@@ -3,18 +3,18 @@ title: 简介
 description: 了解使用 Azure VMware 解决方案 (AVS) 在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: e227b6c7c2f25fbf62f11c17dc62293e4fbd5267
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9e3ab0abfdaa613a08675356bc5b01949e0381ae
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740988"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84749675"
 ---
 # <a name="what-is-azure-vmware-solution-avs-preview"></a>什么是 Azure VMware 解决方案 (AVS) 预览版？
 
-Azure VMware 解决方案 (AVS) 可为你在 Azure 中提供私有云。 私有云包含从专用裸机 Azure 基础设施构建的 vSphere 群集。 可将私有云群集从 3 个主机扩展到 16 个主机，获得在单个私有云中部署多个群集的功能。 所有私有云中都预配了 vCenter Server、VSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、创建或部署新的虚拟机，并从私有云使用 Azure 服务。
+Azure VMware 解决方案 (AVS) 可为你在 Azure 中提供私有云。 私有云包含从专用裸机 Azure 基础设施构建的 vSphere 群集。 可将私有云群集从 3 个主机扩展到 16 个主机，获得在单个私有云中部署多个群集的功能。 所有私有云中都预配了 vCenter Server、vSAN、vSphere 和 NSX-T。 可以从本地环境迁移工作负载、创建或部署新的虚拟机，并从私有云使用 Azure 服务。
 
-AVS 是经过 VMware 验证的解决方案，我们会持续对其进行验证、测试、增强和升级操作。 私有云基础设施和软件由 Microsoft 管理和维护，使你可以专注于在私有云中开发和运行工作负载。
+AVS 是经过 VMware 验证的解决方案，我们会持续对增强和升级进行验证和测试。 私有云基础设施和软件由 Microsoft 管理和维护，使你可以专注于在私有云中开发和运行工作负载。
 
 下图显示了 Azure、Azure 服务和本地环境中的私有云与 VNet 之间的邻近性。 从私有云对 Azure 服务或 VNet 进行网络访问可以提供 SLA 驱动的 Azure 服务终结点集成。 从本地环境进行的私有云访问使用 ExpressRoute Global Reach 建立私密且安全的连接。
 
@@ -42,7 +42,7 @@ AVS 私有云和群集是从裸机超融合 Azure 基础设施主机构建的。
 
 ## <a name="host-and-software-lifecycle-maintenance"></a>主机和软件生命周期维护
 
-定期升级 AVS 私有云和 VMware 软件可确保安全性、稳定性并在私有云中运行最新的功能集。 [升级概念](concepts-upgrades.md)一文中提供了有关平台维护和升级的更多详细信息。
+定期升级 AVS 私有云和 VMware 软件可确保最新的安全性、稳定性并在私有云中运行功能集。 [升级概念](concepts-upgrades.md)一文中提供了有关平台维护和升级的更多详细信息。
 
 ## <a name="monitoring-your-private-cloud"></a>监视私有云
 

@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267301"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253607"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 SSMS 连接到并查询 Azure SQL 数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "84267301"
   > [!IMPORTANT]
   > 本文中脚本的编写目的是使用 Adventure Works 数据库。 使用托管实例时，必须将 Adventure Works 数据库导入一个实例数据库，或者修改本文中的脚本，以便使用 Wide World Importers 数据库。
 
-如果只是想要在不安装 SSMS 的情况下运行某些即席查询，请参阅[快速入门：使用 Azure 门户的查询编辑器查询 SQL 数据库](connect-query-portal.md)。
+如果只是想要在不安装 SSMS 的情况下运行某些即席查询，请参阅[快速入门：使用 Azure 门户的查询编辑器查询 Azure SQL 数据库中的数据库](connect-query-portal.md)。
 
 ## <a name="get-server-connection-information"></a>获取服务器连接信息
 

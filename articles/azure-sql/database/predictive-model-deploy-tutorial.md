@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023972"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253811"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教程：使用 Azure SQL 数据库机器学习服务（预览版）在 R 中部署预测模型
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在这个由三部分组成的教程的第三部分中，将使用 Azure SQL 数据库机器学习服务（预览版）将预测模型（使用 R 开发）部署到 SQL 数据库中。
+在此三部分教程的第三部分中，将使用 Azure SQL 数据库机器学习服务（预览版）将预测模型（在 R 中开发）部署到 Azure SQL 数据库中的数据库。
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-将使用嵌入式 R 脚本创建存储过程，该脚本使用模型进行预测。 由于模型在 Azure SQL 数据库中执行，因此可用存储在数据库中的数据轻松地对其进行训练。
+将使用嵌入式 R 脚本创建存储过程，该脚本使用模型进行预测。 由于模型在数据库中执行，因此可以轻松地使用存储在数据库中的数据对其进行训练。
 
 本文介绍如何使用在第一部分和第二部分中已开发的 R 脚本执行以下操作：
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-已在 Azure SQL 数据库中成功创建、培训和部署模型。 然后，你在存储过程中使用了该模型来基于新数据对值进行预测。
+已在 Azure SQL 数据库的数据库中成功创建、训练和部署模型。 然后，你在存储过程中使用了该模型来基于新数据对值进行预测。
 
 ## <a name="clean-up-resources"></a>清理资源
 
