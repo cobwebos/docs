@@ -1,5 +1,5 @@
 ---
-title: 上载通用化 VHD 以在 Azure 中创建多个 Vm
+title: 上传通用化 VHD 以在 Azure 中创建多个 VM
 description: 将通用化 VHD 上传到 Azure 存储帐户，创建一个 Windows VM，将其用于 Resource Manager 部署模型。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,12 +9,12 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: e2ecdb6f436806f93610325b4d5adf28cb3253e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099625"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234621"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>将通用化 VHD 上传到 Azure，创建新 VM
 
@@ -45,9 +45,9 @@ ms.locfileid: "82099625"
 
 1. 登录到 Windows 虚拟机。
 2. 以管理员身份打开“命令提示符”窗口。 将目录切换到 **%windir%\system32\sysprep**，然后运行 `sysprep.exe`。
-3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。   
-4. 在“关机选项”  中选择“关机”  。
-5. 单击“确定”。 
+3. 在“系统准备工具”对话框中，选择“进入系统全新体验(OOBE)”，确保已选中“通用化”复选框。  
+4. 在“关机选项”中选择“关机”。
+5. 单击“确定”。
    
     ![启动 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep 在完成运行后会关闭虚拟机。 
@@ -106,7 +106,7 @@ Get-AzStorageAccount
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. 使用 **New-AzStorageAccount** cmdlet 在此资源组中创建名为 [mystorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) 的存储帐户：
+2. 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) cmdlet 在此资源组中创建名为 **mystorageaccount** 的存储帐户：
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -148,7 +148,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="set-the-uri-of-the-vhd"></a>设置 VHD 的 URI
 
-VHD 使用的 URI 采用以下格式：https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此示例中，名为 **myVHD** 的 VHD 位于存储帐户 **mystorageaccount** 的 **mycontainer** 容器中。
+VHD 使用的 URI 采用以下格式： https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd。 在此示例中，名为 **myVHD** 的 VHD 位于存储帐户 **mystorageaccount** 的 **mycontainer** 容器中。
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -175,7 +175,7 @@ $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vh
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>创建公共 IP 地址和网络接口
-若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) 和网络接口。
+若要与虚拟网络中的虚拟机通信，需要一个 [公共 IP 地址](../../virtual-network/public-ip-addresses.md) 和网络接口。
 
 1. 创建公共 IP 地址。 此示例创建名为 **myPip** 的公共 IP 地址。 
    
@@ -276,7 +276,7 @@ $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>验证是否已创建 VM
-完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” **“虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM：**  >  
+完成后，应会在 [Azure 门户](https://portal.azure.com)的“浏览” > “虚拟机”下看到新建的 VM，也可以使用以下 PowerShell 命令查看该 VM： 
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

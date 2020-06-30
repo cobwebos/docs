@@ -1,5 +1,5 @@
 ---
-title: 创建并上传 Oracle Linux VHD
+title: 创建和上传 Oracle Linux VHD
 description: 了解如何创建和上传包含 Oracle Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 author: gbowerman
 ms.service: virtual-machines-linux
@@ -9,7 +9,7 @@ ms.date: 12/10/2019
 ms.author: guybo
 ms.openlocfilehash: fd6d17709cc3e5e9f6bb89ed7480fcd9ee80fd97
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759384"
@@ -24,26 +24,26 @@ ms.locfileid: "81759384"
 * Hyper-V 和 Azure 不支持 Oracle 的 UEK2，因为它不包括所需的驱动程序。
 * Azure 不支持 VHDX 格式，仅支持**固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。
 * 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧发行版，并已在 Oracle Linux 6.6 及更高版本中修复
+* 低于 2.6.37 的 Linux 内核版本不支持具有更大 VM 大小的 Hyper-V 上的 NUMA。 此问题主要影响使用上游 Red Hat 2.6.32 内核的旧分发版，并已在 Oracle Linux 6.6 及更高版本中修复
 * 不要在操作系统磁盘上配置交换分区。 可以配置 Linux 代理，以在临时资源磁盘上创建交换文件。  可以在下面的步骤中找到有关此内容的详细信息。
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
-* 请确保已启用 `Addons` 存储库。 编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7)，并在此文件中 `enabled=0`[ol6_addons]`enabled=1` 或 **[ol7_addons]** 下将行 **更改为**。
+* 请确保已启用 `Addons` 存储库。 编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) 或 `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7)，并在此文件中的 [ol6_addons] 或 [ol7_addons] 下将行 `enabled=0` 更改为 `enabled=1`。
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6.4 及更高版本
 必须在操作系统中完成特定的配置步骤才能使虚拟机在 Azure 中运行。
 
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
-2. 单击“连接”打开虚拟机窗口。 
+2. 单击“连接”打开虚拟机窗口。
 3. 通过运行以下命令卸载 NetworkManager：
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **注意：** 如果尚未安装此包，则此命令会失败，并显示一条错误消息。 这是正常情况。
-4. 在包含以下文本的 **目录中创建一个名为**network`/etc/sysconfig/` 的文件：
+    **注意：** 如果未安装此包，则该命令会失败，并显示一条错误消息。 这是正常情况。
+4. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. 在包含以下文本的 **目录中创建一个名为**ifcfg-eth0`/etc/sysconfig/network-scripts/` 的文件：
+5. 在包含以下文本的 `/etc/sysconfig/network-scripts/` 目录中创建一个名为 **ifcfg-eth0** 的文件：
    
         DEVICE=eth0
         ONBOOT=yes
@@ -95,7 +95,7 @@ ms.locfileid: "81759384"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-14. 在 Hyper-V 管理器中单击“操作”->“关闭”。  Linux VHD 现已准备好上传到 Azure。
+14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ---
 ## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7.0 及更高版本
@@ -111,12 +111,12 @@ ms.locfileid: "81759384"
 **配置步骤**
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”打开该虚拟机的控制台窗口。 
-3. 在包含以下文本的 **目录中创建一个名为**network`/etc/sysconfig/` 的文件：
+2. 单击“连接”打开该虚拟机的控制台窗口。
+3. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. 在包含以下文本的 **目录中创建一个名为**ifcfg-eth0`/etc/sysconfig/network-scripts/` 的文件：
+4. 在包含以下文本的 `/etc/sysconfig/network-scripts/` 目录中创建一个名为 **ifcfg-eth0** 的文件：
    
         DEVICE=eth0
         ONBOOT=yes
@@ -142,7 +142,7 @@ ms.locfileid: "81759384"
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 它还会关闭具有 UnBreak Enterprise Kernel 的 Oracle Linux 7 中 NIC 的命名约定。 除此之外，建议*删除*以下参数：
+   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 它还会关闭具有 Unbreakable Enterprise Kernel 的 Oracle Linux 7 中 NIC 的命名约定。 除此之外，建议*删除*以下参数：
    
        rhgb quiet crashkernel=auto
    
@@ -171,7 +171,7 @@ ms.locfileid: "81759384"
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-15. 在 Hyper-V 管理器中单击“操作”->“关闭”。  Linux VHD 现已准备好上传到 Azure。
+15. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 现在，已准备就绪，可以使用 Oracle Linux .vhd 在 Azure 中创建新的虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

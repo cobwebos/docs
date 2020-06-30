@@ -7,7 +7,7 @@ ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
 ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2020
 ms.locfileid: "82733390"
@@ -51,11 +51,11 @@ FunctionsProject
 
 存在共享的 [host.json](functions-host-json.md) 文件，可用于配置函数应用。 每个函数都具有自己的代码文件 (.csx) 和绑定配置文件 (function.json)。
 
-[2.x 版及更高版本](functions-versions.md)的 Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
+[2.x 及更高版本](functions-versions.md)的 Functions 运行时中所需的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](./functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 
-输入或输出数据通过 `name`function.json*配置文件中的* 属性绑定到 C# 脚本函数参数。 以下示例显示了一个 *function.json* 文件以及适用于队列触发函数的 *run.csx* 文件。 从队列消息接收数据的参数名为 `myQueueItem`，因为这是 `name` 属性的值。
+输入或输出数据通过 *function.json* 配置文件中的 `name` 属性绑定到 C# 脚本函数参数。 以下示例显示了一个 *function.json* 文件以及适用于队列触发函数的 *run.csx* 文件。 从队列消息接收数据的参数名为 `myQueueItem`，因为这是 `name` 属性的值。
 
 ```json
 {
@@ -85,7 +85,7 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-`#r`本文后面[对 ](#referencing-external-assemblies) 语句做了解释。
+[本文后面](#referencing-external-assemblies)对 `#r` 语句做了解释。
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
@@ -116,7 +116,7 @@ POCO 类必须为每个属性定义 getter 和 setter。
 
 ## <a name="reusing-csx-code"></a>重用.csx 代码
 
-可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx`#load`*文件中的* 指令。 在下面的实例中，在 myLogger.csx`MyLogger`*中共享了名为* 的日志记录例程，并使用  *指令将其加载到 run.csx*`#load`：
+可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx 文件中的 `#load` 指令。 在下面的实例中，在 myLogger.csx 中共享了名为 `MyLogger` 的日志记录例程，并使用 `#load` 指令将其加载到 run.csx：
 
 示例 *run.csx*：
 
@@ -141,9 +141,9 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-若要使用 POCO 对象强类型化在函数间传递的数据，常见模式是使用共享的 .csx  文件。 在下面的简化示例中，一个 HTTP 触发器和队列触发器共享名为 `Order` 的 POCO 对象以强类型化顺序数据：
+若要使用 POCO 对象强类型化在函数间传递的数据，常见模式是使用共享的 .csx 文件。 在下面的简化示例中，一个 HTTP 触发器和队列触发器共享名为 `Order` 的 POCO 对象以强类型化顺序数据：
 
-HTTP 触发器的示例 run.csx  ：
+HTTP 触发器的示例 run.csx：
 
 ```cs
 #load "..\shared\order.csx"
@@ -169,7 +169,7 @@ public static async Task<HttpResponseMessage> Run(Order req, IAsyncCollector<Ord
 }
 ```
 
-队列触发器的示例 run.csx  ：
+队列触发器的示例 run.csx：
 
 ```cs
 #load "..\shared\order.csx"
@@ -186,7 +186,7 @@ public static void Run(Order myQueueItem, out Order outputQueueItem, ILogger log
 }
 ```
 
-示例 order.csx  ：
+示例 order.csx：
 
 ```cs
 public class Order
@@ -218,7 +218,7 @@ public class Order
 
 ## <a name="binding-to-method-return-value"></a>绑定到方法返回值
 
-可通过在 `$return`function.json*中使用名称* 将方法返回值用于输出绑定。 有关示例，请参阅[触发器和绑定](./functions-bindings-return-value.md)。
+可通过在 *function.json* 中使用名称 `$return` 将方法返回值用于输出绑定。 有关示例，请参阅[触发器和绑定](./functions-bindings-return-value.md)。
 
 仅当成功的函数执行始终将返回值传递给输出绑定时，才使用返回值。 否则，请使用 `ICollector` 或 `IAsyncCollector`，如以下部分所示。
 
@@ -250,7 +250,7 @@ public static void Run(string myBlob, ILogger log)
 > [!NOTE]
 > 有关可以用来代替 `TraceWriter` 的较新的日志记录框架，请参阅**监视 Azure Functions** 一文中的[以 C# 函数写入日志](functions-monitoring.md#write-logs-in-c-functions)。
 
-## <a name="async"></a>Async
+## <a name="async"></a>异步
 
 要使函数[异步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
 
@@ -357,7 +357,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 ## <a name="referencing-custom-assemblies"></a>引用自定义程序集
 
-若要引用自定义程序集，可使用共享程序集或私有程序集****：
+若要引用自定义程序集，可使用共享程序集或私有程序集 ：
 
 * 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到[函数应用根文件夹`bin` (wwwroot) 中名为 ](functions-reference.md#folder-structure) 的文件夹。
 
@@ -370,7 +370,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-若要在 2.x 及更高版本的 C# 函数中使用 NuGet 包，请将 function.proj** 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用****：
+若要在 2.x 及更高版本的 C# 函数中使用 NuGet 包，请将 function.proj 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用 ：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -384,12 +384,12 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 </Project>
 ```
 
-若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源**。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。
+若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。
 
 > [!NOTE]
-> 在 1.x C# 函数中，NuGet 包是通过 *project.json* 文件而非 *function.proj* 文件引用的。
+> 在 1.x C# 函数中，NuGet 包是通过 project.json 文件而非 function.proj 文件引用的。
 
-对于 1.x 函数，请改用 *project.json* 文件。 下面是 *project.json* 文件示例：
+对于 1.x 函数，请改用 project.json 文件。 下面是 project.json 文件示例：
 
 ```json
 {
@@ -406,8 +406,8 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ### <a name="using-a-functionproj-file"></a>使用 function.proj 文件
 
 1. 在 Azure 门户中打开函数。 日志选项卡显示包安装输出。
-2. 若要上传 *function.proj* 文件，请使用 Azure Functions 开发人员参考主题中[如何更新函数应用文件](functions-reference.md#fileupdate)部分描述的方法之一。
-3. 上传完 *function.proj* 文件后，将在函数的流日志中看到类似以下示例的输出：
+2. 若要上传 function.proj 文件，请使用 Azure Functions 开发人员参考主题中[如何更新函数应用文件](functions-reference.md#fileupdate)描述的方法之一。
+3. 上传完 function.proj 文件后，将在函数的流式传输日志中看到类似以下示例的输出：
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -444,12 +444,12 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 c # 和其他 .NET 语言中，可以使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是使用*函数 json*中的[*声明性*](https://en.wikipedia.org/wiki/Declarative_programming)绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
+在 C# 和其他 .NET 语言中，可以使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是 *function.json* 中的[*声明式*](https://en.wikipedia.org/wiki/Declarative_programming)绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
 
 如下所示定义命令性绑定：
 
-- 对于所需的命令性绑定，**不要**包含 function.json** 中的条目。
-- 传入输入参数[`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs)或[`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
+- 对于所需的命令性绑定，**不要**包含 function.json 中的条目。
+- 传递输入参数 [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) 或 [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下面的 C# 模式执行数据绑定。
 
 ```cs
@@ -506,7 +506,7 @@ public static async Task Run(string input, Binder binder)
 下表列出了每种绑定类型的 .NET 属性及其定义所在的包。
 
 > [!div class="mx-codeBreakAll"]
-> | 绑定 | 特性 | 添加引用 |
+> | 绑定 | Attribute | 添加引用 |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/b798412ad74ba97cf2d85487ae8479f277bdd85c/test/Microsoft.Azure.WebJobs.ServiceBus.UnitTests/ServiceBusAccountTests.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |

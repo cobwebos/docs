@@ -13,7 +13,7 @@ ms.custom: seo-lt-2019
 ms.date: 10/31/2018
 ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106604"
@@ -22,7 +22,7 @@ ms.locfileid: "82106604"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本指南介绍如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
+本指南演示如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建共享自承载 IR
 
@@ -53,7 +53,7 @@ ms.locfileid: "82106604"
 1. 创建链接的集成运行时。
 1. 撤消共享。
 
-### <a name="prerequisites"></a>必备条件 
+### <a name="prerequisites"></a>先决条件 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,7 +101,7 @@ ms.locfileid: "82106604"
     > [!NOTE]  
     > 此步骤是可选的。 若已有数据工厂，请跳过此步骤。 
 
-    使用 [New-AzResourceGroup](../azure-resource-manager/management/overview.md) 命令创建 [Azure 资源组](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 WestEurope 位置创建名为 `myResourceGroup` 的资源组： 
+    使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令创建 [Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。 以下示例在 WestEurope 位置创建名为 `myResourceGroup` 的资源组： 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName

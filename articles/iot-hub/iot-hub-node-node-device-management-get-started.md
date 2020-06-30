@@ -11,7 +11,7 @@ ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732331"
@@ -22,7 +22,7 @@ ms.locfileid: "81732331"
 
 本教程演示如何：
 
-* 使用[Azure 门户](https://portal.azure.com)创建 iot 中心，并在 IoT 中心创建设备标识。
+* 使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心，以及如何在 IoT 中心创建设备标识。
 
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 
@@ -34,11 +34,11 @@ ms.locfileid: "81732331"
 
 * **dmpatterns_getstarted_service.js**，它调用模拟设备应用中的直接方法，显示响应，并显示更新后的报告属性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "81732331"
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  将 `{yourdeviceconnectionstring}` 占位符值替换为先前在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。  
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  将 `{yourdeviceconnectionstring}` 占位符值替换为以前在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -183,7 +183,7 @@ ms.locfileid: "81732331"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 添加以下变量声明，并将 `{iothubconnectionstring}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串：
+5. 添加以下变量声明，并将 `{iothubconnectionstring}` 占位符值替换为以前复制（[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)）的 IoT 中心连接字符串：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -247,7 +247,7 @@ ms.locfileid: "81732331"
 
 ## <a name="run-the-apps"></a>运行应用
 
-现已准备好运行应用。
+现在可以运行应用了。
 
 1. 在 **manageddevice** 文件夹的命令提示符处，运行以下命令以开始侦听重新启动直接方法。
 
@@ -261,13 +261,13 @@ ms.locfileid: "81732331"
     node dmpatterns_getstarted_service.js
     ```
 
-3. 可以在控制台中看到设备对重新启动直接方法的响应和重新启动状态。
+3. 可在控制台查看对重新启动直接方法和重新启动状态的设备响应。
 
-   下面显示了设备对服务发送的重新启动直接方法的响应：
+   下面显示了对服务发送的重新启动直接方法的设备响应：
 
    ![manageddevice 应用输出](./media/iot-hub-node-node-device-management-get-started/device.png)
 
-   下面显示了触发重新启动并轮询设备孪生的上次重新启动时间的服务：
+   下面显示服务触发重新启动并轮询设备孪生以获取上次重新启动时间：
 
    ![triggerrebootondevice 应用输出](./media/iot-hub-node-node-device-management-get-started/service.png)
 

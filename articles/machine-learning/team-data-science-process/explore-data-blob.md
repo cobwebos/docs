@@ -13,7 +13,7 @@ ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e429dce497411305964cb1ec5298228dc4093b1f
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685957"
@@ -24,7 +24,7 @@ ms.locfileid: "81685957"
 
 此任务是[团队数据科学过程](overview.md)中的一个步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-account-create.md)
@@ -33,7 +33,7 @@ ms.locfileid: "81685957"
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>将数据加载到 pandas 数据帧
 要浏览和操作数据集，首先必须从 blob 源将数据集下载到本地文件，然后将数据集加载到 pandas 数据帧。 下面是此过程的所需步骤：
 
-1. 通过以下使用 Blob 服务的 Python 代码示例，从 Azure blob 下载数据。 使用特定值替代下方代码中的变量：
+1. 通过 Blob 服务使用下方 Python 代码示例从 Azure blob 下载数据。 使用特定值替代下方代码中的变量：
 
     ```python
     from azure.storage.blob import BlockBlobService

@@ -1,6 +1,6 @@
 ---
 title: Web 应用中 IoT 中心数据的实时数据可视化
-description: 使用 Web 应用程序将从传感器收集的并发送到 Azure IoT 中心的温度和湿度数据可视化。
+description: 使用 Web 应用程序可视化从传感器收集并发送到 IoT 中心的温度和湿度数据。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,12 +10,12 @@ ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83201535"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心内的实时传感器数据
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
 ![端到端关系图](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
 
@@ -23,21 +23,21 @@ ms.locfileid: "83201535"
 
 ## <a name="what-you-learn"></a>学习内容
 
-本教程介绍如何使用本地计算机上运行的 node.js Web 应用将 IoT 中心收到的实时传感器数据可视化。 在本地运行该 Web 应用后，可以选择性地遵循相应的步骤在 Azure 应用服务中托管该 Web 应用。 若要尝试使用 Power BI 可视化 IoT 中心的数据，请参阅[使用 Power BI 可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
+本教程介绍如何通过在本地计算机上运行的 Node.js Web 应用将 IoT 中心接收的实时传感器数据可视化。 在本地运行该 Web 应用后，可以选择性地遵循相应的步骤在 Azure 应用服务中托管该 Web 应用。 若要尝试使用 Power BI 可视化 IoT 中心的数据，请参阅[使用 Power BI 可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
 
 ## <a name="what-you-do"></a>准备工作
 
 * 将一个使用者组添加到 Web 应用程序用来读取传感器数据的 IoT 中心
 * 从 GitHub 下载 Web 应用代码
 * 检查 Web 应用代码
-* 配置环境变量用于保存 Web 应用所需的 IoT 中心项目
-* 在开发计算机上运行该 Web 应用
-* 打开一个网页，以查看 IoT 中心内的实时温度和湿度数据
+* 配置环境变量以保存 Web 应用所需的 IoT 中心项目
+* 在开发计算机上运行 Web 应用
+* 打开一个网页，以查看 IoT 中心的实时温度和湿度数据
 * （可选）使用 Azure CLI 在 Azure 应用服务中托管 Web 应用
 
-## <a name="what-you-need"></a>需要什么
+## <a name="what-you-need"></a>所需条件
 
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
+* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如，[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
 
   * 一个有效的 Azure 订阅
   * 已在订阅中创建一个 IoT 中心
@@ -57,7 +57,7 @@ az extension add --name azure-iot
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
 
-[使用者组](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)提供事件流的独立视图，可让应用和 Azure 服务单独使用同一事件中心终结点内的数据。 在本部分，你要将一个使用者组添加到 IoT 中心的内置终结点，Web 应用将从该终结点读取数据。
+[使用者组](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers)提供事件流的独立视图，可让应用和 Azure 服务单独使用同一事件中心终结点内的数据。 在本部分中，你要将一个使用者组添加到 IoT 中心的内置终结点，Web 应用将从该终结点读取数据。
 
 运行以下命令，将使用者组添加到 IoT 中心的内置终结点：
 
@@ -69,7 +69,7 @@ az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGr
 
 ## <a name="get-a-service-connection-string-for-your-iot-hub"></a>获取 IoT 中心的服务连接字符串
 
-创建的 IoT 中心具有多个默认访问策略。 其中的一个策略是**服务**策略，该策略为某个服务提供足够的权限，使其能够读取和写入 IoT 中心的终结点。 运行以下命令获取符合服务策略的 IoT 中心的连接字符串：
+创建的 IoT 中心具有多个默认访问策略。 其中的一个策略是服务策略，该策略为某个服务提供足够的权限，使其能够读取和写入 IoT 中心的终结点。 运行以下命令，获取符合服务策略的 IoT 中心的连接字符串：
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service
@@ -96,9 +96,9 @@ cd web-apps-node-iot-hub-data-visualization
 
 在 web-apps-node-iot-hub-data-visualization 目录中，使用偏好的编辑器打开 Web 应用。 下面显示了 VS Code 中显示的文件结构：
 
-![Web 应用文件结构](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
+![Web 应用的文件结构](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
 
-请花费片刻时间检查以下文件：
+请花点时间检查以下文件：
 
 * **Server.js** 是用于初始化 Web 套接字和事件中心包装类的服务端脚本。 它提供对事件中心包装类的回调，以便将传入的消息广播到 Web 套接字。
 
@@ -106,7 +106,7 @@ cd web-apps-node-iot-hub-data-visualization
 
 * **Chart-device-data.js** 是一个客户端脚本，可以侦听 Web 套接字，跟踪每个 DeviceId，并存储每个设备的最后 50 个传入数据点。 然后，它将选定的设备数据绑定到图表对象。
 
-* **Index.html** 处理网页的 UI 布局，并引用客户端逻辑的所需脚本。
+* **Index.html** 处理网页的 UI 布局，并引用客户端逻辑所需的脚本。
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>配置 Web 应用的环境变量
 
@@ -117,7 +117,7 @@ const iotHubConnectionString = process.env.IotHubConnectionString;
 const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
 ```
 
-在命令窗口中使用以下命令设置环境变量。 请将占位符值替换为 IoT 中心的服务连接字符串，以及前面创建的使用者组的名称。 不要使用引号括住字符串。
+在命令窗口中使用以下命令设置环境变量。 将占位符值替换为 IoT 中心的服务连接字符串，以及前面创建的使用者组的名称。 不要将字符串括在引号中。
 
 ```cmd
 set IotHubConnectionString=YourIoTHubConnectionString
@@ -137,13 +137,13 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 3. 控制台中应会显示输出，指出 Web 应用已成功连接到 IoT 中心并在侦听端口 3000：
 
-   ![Web 应用已在控制台上启动](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
+   ![已在控制台上启动 Web 应用](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
 
 ## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>打开一个网页以查看 IoT 中心的数据
 
 在浏览器中打开 `http://localhost:3000`。
 
-在“选择设备”列表中选择你的设备，以查看设备发送到 IoT 中心的最后 50 个温度和湿度数据点的运行图。****
+在“选择设备”列表中选择你的设备，以查看设备发送到 IoT 中心的最后 50 个温度和湿度数据点的运行图。
 
 ![显示实时温度和湿度的 Web 应用页](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
 
@@ -153,11 +153,11 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="host-the-web-app-in-app-service"></a>在应用服务中托管 Web 应用
 
-[Azure 应用服务的 Web 应用功能](https://docs.microsoft.com/azure/app-service/overview)提供用于托管 Web 应用程序的平台即服务 (PAAS)。 托管在 Azure 应用服务中的 Web 应用程序可受益于强大的 Azure 功能（例如更高的安全性、负载均衡和可伸缩性）以及 Azure 和合作伙伴 DevOps 解决方案（例如持续部署、包管理等）。 Azure 应用服务支持以多种流行语言开发的、部署在 Windows 或 Linux 基础结构上的 Web 应用程序。
+[Azure 应用服务的 Web 应用功能](https://docs.microsoft.com/azure/app-service/overview)提供用于托管 Web 应用程序的平台即服务 (PAAS)。 托管在 Azure 应用服务中的 Web 应用程序可受益于强大的 Azure 功能（例如更高的安全性、负载均衡和可伸缩性）以及 Azure 和合作伙伴 DevOps 解决方案（例如持续部署、包管理等）。 Azure 应用服务支持以多种流行语言开发并部署在 Windows 或 Linux 基础结构上的 Web 应用程序。
 
-在本部分，你将在应用服务中预配一个 Web 应用，然后使用 Azure CLI 命令将代码部署到该应用。 可以在 [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) 文档中查找所用命令的详细信息。 在开始之前，请确保已完成[将资源组添加到 IoT 中心](#add-a-consumer-group-to-your-iot-hub)、[获取 IoT 中心的服务连接字符串](#get-a-service-connection-string-for-your-iot-hub)以及[从 GitHub下载 Web 应用](#download-the-web-app-from-github)的步骤。
+在本部分中，你将在应用服务中预配一个 Web 应用，然后使用 Azure CLI 命令将代码部署到该应用。 可以在 [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) 文档中查找所用命令的详细信息。 在开始之前，请确保已完成[将资源组添加到 IoT 中心](#add-a-consumer-group-to-your-iot-hub)、[获取 IoT 中心的服务连接字符串](#get-a-service-connection-string-for-your-iot-hub)以及[从 GitHub 下载 Web 应用](#download-the-web-app-from-github)的步骤。
 
-1. [应用服务计划](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)为应用服务中托管的应用定义一组计算资源，使其能够运行。 本教程使用开发人员/免费层来托管 Web 应用。 使用免费层时，你的 Web 应用将在与其他应用服务应用（包括其他客户的应用）共享的 Windows 资源上运行。 Azure 还提供应用服务计划用于在 Linux 计算资源上部署 Web 应用。 如果你已有可用的应用服务计划，则可以跳过此步骤。
+1. [应用服务计划](https://docs.microsoft.com/azure/app-service/overview-hosting-plans)为应用服务中托管的应用定义一组计算资源，使其能够运行。 本教程使用开发人员/免费层来托管 Web 应用。 使用免费层时，你的 Web 应用将在与其他应用服务应用（包括其他客户的应用）共享的 Windows 资源上运行。 Azure 还提供用于在 Linux 计算资源上部署 Web 应用的应用服务计划。 如果已有要使用的应用服务计划，则可以跳过此步骤。
 
    若要使用 Windows 免费层创建应用服务计划，请运行以下命令。 使用 IoT 中心所在的同一资源组。 服务计划名称可以包含大小写字母、数字和连字符。
 
@@ -184,9 +184,9 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. 若要将代码部署到应用服务，需使用[用户级部署凭据](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。 用户级部署凭据不同于 Azure 凭据，用于在 Web 应用中实现 Git 本地部署和 FTP 部署。 设置后，可对 Azure 帐户中所有订阅内的所有应用服务应用使用这些凭据。 如果以前已经设置了用户级部署凭据，则可以使用这些凭据。
+5. 若要将代码部署到应用服务，需使用[用户级部署凭据](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)。 用户级部署凭据不同于 Azure 凭据，用于在 Web 应用中实现 Git 本地部署和 FTP 部署。 设置后，可对 Azure 帐户中所有订阅内的所有应用服务应用使用这些凭据。 如果以前设置了用户级部署凭据，则可以使用这些凭据。
 
-   如果以前尚未设置用户级部署凭据或不记得密码，请运行以下命令。 部署用户名必须在 Azure 中唯一，不得包含用于本地 Git 推送的“@”符号。 出现提示时，请输入并确认新密码。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
+   如果以前未设置过用户级部署凭据或不记得密码，请运行以下命令。 部署用户名在 Azure 中必须唯一，并且不得包含用于本地 Git 推送的“@”符号。 出现提示时，请输入并确认新密码。 密码必须至少为 8 个字符，且具有字母、数字和符号这三种元素中的两种。
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
@@ -198,7 +198,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. 将远程库添加到引用应用服务中 Web 应用的 Git 存储库的克隆。 对于“\<Git 克隆 URL\>”，请使用上一步骤返回的 URL。 在命令窗口中运行以下命令。
+7. 将远程库添加到克隆中，该克隆引用了应用服务中 Web 应用的 Git 存储库。 对于 \<Git clone URL\>，请使用上一步中返回的 URL。 在命令窗口中运行以下命令。
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -227,7 +227,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. 在浏览器中导航到 `https://<your web app name>.azurewebsites.net`。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
+11. 在浏览器中导航至 `https://<your web app name>.azurewebsites.net` 。 此时会显示一个网页，它类似于在本地运行 Web 应用时所看到的网页。 假设你的设备正在运行且正在发送数据，则应会显示该设备最近发送的 50 个温度和湿度读数的运行图。
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -243,22 +243,22 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ### <a name="local-website-issues"></a>本地网站问题
 
-* 观察启动 node 时所在的窗口中的控制输出。
+* 在启动 node 的窗口中观察控制台输出。
 
 * 调试服务器代码，具体而言，是 server.js 和 /scripts/event-hub-reader.js。
 
 ### <a name="azure-app-service-issues"></a>Azure 应用服务问题
 
-* 在 Azure 门户中转到你的 Web 应用。 在左窗格中的“监视”下，选择“应用服务日志”。******** 启用“应用程序日志记录(文件系统)”，将“级别”设置为“错误”，并选择“保存”。************ 然后打开“日志流”（在“监视”下）。********
+* 在 Azure 门户中转到你的 Web 应用。 在左窗格中的“监视”下，选择“应用服务日志” 。 启用“应用程序日志记录(文件系统)”，将“级别”设置为“错误”，并选择“保存”  。 然后打开“日志流”（在“监视”下） 。
 
-* 在 Azure 门户上的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 `node -v` 和 `npm -v` 验证 node 和 npm 版本。********
+* 在 Azure 门户的 Web 应用中，在“开发工具”下选择“控制台”，然后使用 `node -v` 和 `npm -v` 验证 node 和 npm 版本 。
 
-* 如果看到了有关找不到包的错误，则可能表示步骤的运行顺序不当。 部署站点（使用 `git push`）时，应用服务将会根据当前配置的 node 版本运行 `npm install`。 如果以后在配置中更改此版本，则需要对代码进行无意义的更改，然后再次推送。
+* 如果看到了有关找不到包的错误，则可能表示步骤的运行顺序不当。 部署站点（使用 `git push`）时，应用服务会根据当前配置的 node 版本运行 `npm install`。 如果以后在配置中更改此版本，则需要对代码进行无意义的更改，然后再次推送。
 
 ## <a name="next-steps"></a>后续步骤
 
 现已成功使用 Web 应用可视化 IoT 中心的实时传感器数据。
 
-若要从 Azure IoT 中心直观显示数据，请参阅[使用 Power BI 直观显示 IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
+若要了解另一种可视化 Azure IoT 中心数据的方式，请参阅[使用 Power BI 可视化 IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

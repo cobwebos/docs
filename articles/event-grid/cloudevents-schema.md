@@ -1,6 +1,6 @@
 ---
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
-description: 说明如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 该服务支持 Cloud Events 的 JSON 实现中的事件。
+description: 说明如何对 Azure 事件网格中的事件使用 CloudEvents 架构。 该服务支持 CloudEvents 的 JSON 实现中的事件。
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -15,7 +15,7 @@ ms.lasthandoff: 05/26/2020
 ms.locfileid: "83847593"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
-除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
+除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 架构](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
 CloudEvents 提供的常用事件架构适合发布和使用基于云的事件，因此可简化互操作性。 可以通过此架构使用统一的工具、以标准方式路由和处理事件，以及以通用方式反序列化外部事件架构。 使用通用架构可以更轻松地跨平台集成工作。
 
@@ -137,15 +137,15 @@ New-AzureRmEventGridSubscription `
 
  目前，在以 CloudEvents 架构传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 使用 HTTP 触发器。 有关实现在 CloudEvents 架构中接收事件的 HTTP 触发器的示例，请参阅[将 CloudEvents 与 Azure Functions 配合使用](#azure-functions)。
 
- ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 进行终结点验证
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 验证终结点
 
-如果熟悉事件网格，你可能会了解事件网格的用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法来实现自己的[滥用保护语义](webhook-event-delivery.md)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
+如果熟悉事件网格，你可能会了解事件网格的用于防止滥用的终结点验证握手。 CloudEvents v1.0 使用 HTTP OPTIONS 方法实现自己的[滥用保护语义](webhook-event-delivery.md)。 可以在 [此处](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)阅读详细内容。 使用 CloudEvents 架构进行输出时，事件网格可与 CloudEvents v1.0 滥用保护配合使用，取代事件网格验证事件机制。
 
 <a name="azure-functions"></a>
 
 ## <a name="use-with-azure-functions"></a>与 Azure Functions 配合使用
 
-[Azure Functions 事件网格绑定](../azure-functions/functions-bindings-event-grid.md)本身不支持 CloudEvents，因此使用 HTTP 触发的函数读取 CloudEvents 消息。 使用 HTTP 触发器来读取 CloudEvents 时，必须编写代码来指定事件网格触发器自动执行的操作：
+[Azure Functions 事件网格绑定](../azure-functions/functions-bindings-event-grid.md)本身不支持 CloudEvents，因此使用 HTTP 触发的函数读取 CloudEvents 消息。 使用 HTTP 触发器读取 CloudEvents 时，必须编写代码来指定事件网格触发器自动执行的操作：
 
 * 将验证响应发送到[订阅验证请求](../event-grid/webhook-event-delivery.md)。
 * 针对请求正文中包含的事件数组的每个元素调用该函数一次。

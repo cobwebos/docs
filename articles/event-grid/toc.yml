@@ -180,9 +180,11 @@
           href: geo-disaster-recovery.md
     - name: 安全性
       items:
-        - name: 身份验证
+        - name: 对事件处理程序的事件传递进行身份验证
           href: security-authentication.md
-        - name: 授权
+        - name: 对发布客户端进行身份验证
+          href: security-authenticate-publishing-clients.md
+        - name: 授予对事件网格资源的访问权限
           href: security-authorization.md
         - name: 网络安全
           href: network-security.md
@@ -202,6 +204,8 @@
           href: create-view-manage-system-topics-cli.md
         - name: Azure 资源管理器模板
           href: create-view-manage-system-topics-arm.md
+    - name: 获取主题或域的访问密钥
+      href: get-access-keys.md
     - name: 发布到自定义主题
       href: post-to-custom-topic.md
     - name: 订阅 Auth0 事件

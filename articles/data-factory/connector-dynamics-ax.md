@@ -14,12 +14,12 @@ ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 4dd82eea0a80ef81a0f972d1964a62e6c17a80c0
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417364"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 复制数据
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 中复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "81417364"
 
 以下活动支持此 Dynamics AX 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Dynamics AX 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
@@ -45,7 +45,7 @@ ms.locfileid: "81417364"
 
 对于特定于 Dynamics AX 连接器的数据工厂实体，以下部分提供了有关用于定义这些实体的属性的详细信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用服务主体身份验证，请执行以下步骤：
 
@@ -142,7 +142,7 @@ Dynamics AX 链接的服务支持以下属性：
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
-| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 
 **示例**
 
@@ -177,9 +177,9 @@ Dynamics AX 链接的服务支持以下属性：
 ```
 
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>“查找”活动属性
 
-若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+若要详细了解这些属性，请查看[“查找”活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,7 +16,7 @@ ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460420"
@@ -43,14 +43,14 @@ ms.locfileid: "81460420"
   - 也可以在 [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) 或 [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) 上使用 Hyper-V。
 
 > [!NOTE]
-> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为格式。 如果需要，可以使用 [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在将动态磁盘上传到 Azure 的过程中转换磁盘。
+> Azure 不支持更新的 VHDX 格式。 创建 VM 时，请将 VHD 指定为映像格式。 如果需要，可以使用 [qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) 或 [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell cmdlet 将 VHDX 磁盘转换为 VHD。 Azure 不支持上传动态 VHD，因此，上传之前，你需要将此类磁盘转换为静态 VHD。 可以使用 [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) 等工具在将动态磁盘上传到 Azure 的过程中转换磁盘。
 > 
 > 
 
 
 - 确保已安装了最新的 [Azure CLI](/cli/azure/install-az-cli2) 并已使用 [az login](/cli/azure/reference-index#az-login) 登录到 Azure 帐户。
 
-在以下示例中，将示例参数名称替换为自己的值，例如 `myResourceGroup`、`mystorageaccount` 和 `mydisks`。
+在以下示例中，请将示例参数名称替换为自己的值，如 `myResourceGroup`、`mystorageaccount` 和 `mydisks`。
 
 <a id="prepimage"> </a>
 
@@ -64,7 +64,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [其他：非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [其他：非认可的分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 另请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
@@ -75,15 +75,15 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 
 ## <a name="option-1-upload-a-vhd"></a>选项 1：上传 VHD
 
-现在可以直接将 VHD 上传到托管磁盘中。 有关说明，请参阅[使用 Azure CLI 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
+现在可以将 VHD 直接上传到托管磁盘。 有关说明，请参阅[使用 Azure CLI 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
 
-## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有 VM
+## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有的 VM
 
-也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。** 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
+也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 
-如果要将现有 VM 复制到其他区域，可能需要使用 azcopy [在其他区域中创建磁盘副本](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)。 
+如果要将现有 VM 复制到其他区域，可能想要使用 azcopy [在另一个区域中创建磁盘的副本](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk)。 
 
-否则，应创建 VM 的快照，然后基于快照创建新的 OS VHD。
+否则，应拍摄 VM 的快照，然后从快照创建新的 OS VHD。
 
 ### <a name="create-a-snapshot"></a>创建快照
 

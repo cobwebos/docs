@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 服务器的高可用性-Azure Active Directory
+title: Azure MFA 服务器的高可用性 - Azure Active Directory
 description: 在配置中部署可提供高可用性的多个 Azure 多重身份验证服务器实例。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -13,7 +13,7 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653381"
@@ -23,7 +23,7 @@ ms.locfileid: "80653381"
 若要使用 Azure 服务器 MFA 部署实现高可用性，需要部署多个 MFA 服务器。 本部分提供有关可在 Azure MFS 服务器部署中实现高可用性目标的负载均衡设计的信息。
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
 ## <a name="mfa-server-overview"></a>MFA 服务器概述
 

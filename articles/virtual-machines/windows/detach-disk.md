@@ -1,5 +1,5 @@
 ---
-title: 从 Windows VM 分离数据磁盘-Azure
+title: 从 Windows VM 中分离数据磁盘
 description: 在 Azure 中从使用资源管理器部署模型的虚拟机分离磁盘。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -10,7 +10,7 @@ ms.date: 01/08/2020
 ms.author: cynthn
 ms.openlocfilehash: c93bb5fd3e92c6a947fe997b58207b87b2717fd5
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082758"
@@ -28,7 +28,7 @@ ms.locfileid: "82082758"
 
 ## <a name="detach-a-data-disk-using-powershell"></a>使用 PowerShell 分离数据磁盘
 
-可以使用 PowerShell 热** 删除数据磁盘，但在从 VM 中分离磁盘之前，请确保没有任何设备正在使用该磁盘。
+可以使用 PowerShell 热删除数据磁盘，但在从 VM 中分离磁盘之前，请确保没有任何设备正在使用该磁盘。
 
 在此示例中，我们从 **myResourceGroup** 资源组的 VM **myVM** 中删除名为 **myDisk** 的磁盘。 首先，使用 [Remove-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmdatadisk) cmdlet 删除磁盘。 然后，使用 [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) cmdlet 更新虚拟机的状态，完成数据磁盘删除过程。
 
@@ -48,14 +48,14 @@ Update-AzVM `
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用门户分离数据磁盘
 
-可以*热*删除数据磁盘，但请确保在将磁盘从 VM 分离之前，没有任何活动正在使用该磁盘。
+可以热删除数据磁盘，但在从 VM 中分离磁盘之前，请确保没有任何设备正在使用该磁盘。
 
-1. 在左侧菜单中，选择“虚拟机”****。
-1. 选择包含要分离的数据磁盘的虚拟机。
-1. 在“设置”下，选择“磁盘”********。
-1. 在“磁盘”**** 窗格的顶部，选择“编辑”****。
-1. 在 "**磁盘**" 窗格中，选择要分离的数据磁盘的最右侧，然后选择 "**分离**"。
-1. 选择页面顶部的 "**保存**" 以保存所做的更改。
+1. 在左侧菜单中，选择“虚拟机”。
+1. 选择具有要分离的数据磁盘的虚拟机。
+1. 在“设置”下，选择“磁盘”。 
+1. 在“磁盘”窗格的顶部，选择“编辑”。
+1. 在“磁盘”窗格中，转到要分离的数据磁盘最右侧，选择“分离”。
+1. 选择页面顶部的“保存”以保存更改。
 
 磁盘保留在存储中，但不再附加到虚拟机。
 

@@ -1,6 +1,6 @@
 ---
 title: 从 Azure CLI 命令行部署模块 - Azure IoT Edge
-description: 将 Azure CLI 与 Azure IoT 扩展结合使用，根据部署清单的配置将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备。
+description: 将 Azure CLI 与 Azure IoT 扩展结合使用，以将 IoT Edge 模块从 IoT 中心推送到 IoT Edge 设备（按照部署清单的配置）。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -11,7 +11,7 @@ ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: fbd0d65624852737c424128e9125b8370b870d4d
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133947"
@@ -24,7 +24,7 @@ ms.locfileid: "82133947"
 
 本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-cli-at-scale.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-the-azure-cli)。
@@ -112,7 +112,7 @@ ms.locfileid: "82133947"
 
 应用使用模块信息配置的部署清单即可将模块部署至设备。
 
-将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 `deployment.json`config**文件夹中的** 文件，而不是使用 `deployment.template.json` 文件。
+将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 **config** 文件夹中的 `deployment.json` 文件，而不是使用 `deployment.template.json` 文件。
 
 使用以下命令将配置应用于 IoT Edge 设备：
 

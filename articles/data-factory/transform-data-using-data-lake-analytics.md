@@ -1,5 +1,5 @@
 ---
-title: 使用 U SQL 脚本转换数据
+title: 使用 U-SQL 脚本转换数据
 description: 了解如何通过在 Azure Data Lake Analytics 计算服务上运行 U-SQL 脚本来处理或转换数据。
 services: data-factory
 documentationcenter: ''
@@ -14,7 +14,7 @@ ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: 427b7fff7b8f76412d7bd9d63aeb64583637779c
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418960"
@@ -36,12 +36,12 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 
 下表介绍了 JSON 定义中使用的一般属性。 
 
-| 属性                 | 说明                              | 必需                                 |
+| properties                 | 说明                              | 必选                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | 类型属性应设置为 **AzureDataLakeAnalytics**。 | 是                                      |
-| **名**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
+| type                 | 类型属性应设置为：AzureDataLakeAnalytics。 | 是                                      |
+| **accountName**          | Azure Data Lake Analytics 帐户名。  | 是                                      |
 | **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | 否                                       |
-| **订阅**       | Azure 订阅 ID                    | 否                                       |
+| **subscriptionId**       | Azure 订阅 ID                    | 否                                       |
 | **resourceGroupName**    | Azure 资源组名称                | 否                                       |
 
 ### <a name="service-principal-authentication"></a>服务主体身份验证
@@ -55,11 +55,11 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 通过指定以下属性使用服务主体身份验证：
 
-| 属性                | 说明                              | 必需 |
+| properties                | 说明                              | 必选 |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | 指定应用程序的客户端 ID。     | 是      |
 | **servicePrincipalKey** | 指定应用程序的密钥。           | 是      |
-| **组织**              | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是      |
+| **tenant**              | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是      |
 
 **示例：服务主体身份验证**
 ```json
@@ -119,7 +119,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| 属性            | 说明                              | 必需 |
+| properties            | 说明                              | 必选 |
 | :------------------ | :--------------------------------------- | :------- |
 | name                | 管道中活动的名称     | 是      |
 | description         | 描述活动用途的文本。  | 否       |
@@ -131,7 +131,7 @@ Azure Data Lake Analytics 链接服务需要进行服务主体身份验证，才
 | priority            | 确定应在所有排队的作业中选择哪些作业首先运行。 编号越低，优先级越高。 | 否       |
 | parameters          | 要传入 U-SQL 脚本的参数。    | 否       |
 | runtimeVersion      | 要使用的 U-SQL 引擎的运行时版本。 | 否       |
-| compilationMode     | <p>U-SQL 编译模式。 必须是以下值之一：**Semantic：** 只执行语义检查和必要的完整性检查；**Full：** 执行完整的编译，包括语法检查、优化、代码生成，等等；**SingleBox：** 通过将 TargetType 设置为 SingleBox，可执行完整编译。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
+| compilationMode     | <p>U-SQL 编译模式。 必须是这些值之一：**Semantic：** 只执行语义检查和必要的健全性检查；**Full：** 执行完整编译，包括语法检查、优化、代码生成等；**SingleBox：** 执行完整编译，且 TargetType 设置为 SingleBox。 如果该属性未指定值，则服务器将确定最佳编译模式。 | 否 |
 
 请参阅 [SearchLogProcessing.txt](#sample-u-sql-script) 了解有关脚本定义的信息。 
 
@@ -164,7 +164,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-在上面的脚本示例中，脚本的输入和输出是在** \@in**和** \@out**参数中定义的。 使用 "parameters" 节通过数据工厂动态传递 U SQL 脚本中** \@in**和** \@out**参数的值。 
+在上面的脚本示例中，脚本的输入和输出分别在 \@in 和 \@out 参数中定义。 数据工厂使用“parameters”部分动态传递 U-SQL 脚本中 \@in 和 \@out 参数的值。 
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 
@@ -198,5 +198,5 @@ OUTPUT @rs1
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
 * [.NET 自定义活动](transform-data-using-dotnet-custom-activity.md)
-* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

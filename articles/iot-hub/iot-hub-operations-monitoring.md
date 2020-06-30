@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心操作监视（已弃用） |Microsoft Docs
+title: Azure IoT 中心操作监视（已弃用）| Microsoft Docs
 description: 如何使用 Azure IoT 中心操作监视功能实时监视 IoT 中心上的操作状态。
 author: nberdy
 manager: briz
@@ -11,17 +11,17 @@ ms.author: nberdy
 ms.custom: amqp
 ms.openlocfilehash: edbc3431c860794c7cd1dd8e5011c0d7d11d692d
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732237"
 ---
-# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作监视（不推荐使用）
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作监视（已弃用）
 
-IoT 中心操作监视可让你实时监视其 IoT 中心上的操作状态。 IoT 中心可跨多个类别的操作跟踪事件。 可选择将一个或多个类别的事件发送到 IoT 中心终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
+IoT 中心操作监视可让你实时监视 IoT 中心上的操作状态。 IoT 中心可以跟踪多个操作类别的事件。 可以选择将一个或多个类别的事件发送到 IoT 中心的终结点进行处理。 可以监视数据中是否有错误，或根据数据模式设置更复杂的处理行为。
 
 >[!NOTE]
->IoT 中心**操作监视功能已弃用，并已于 2019 年 3 月 10 日从 IoT 中心中删除**。 若要了解如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题](iot-hub-monitor-resource-health.md)。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
+>IoT 中心操作监视功能已弃用，已于 2019 年 3 月 10 日从 IoT 中心中删除。 有关如何监视 IoT 中心的操作和运行状况，请参阅[监视 Azure IoT 中心运行状况并快速诊断问题](iot-hub-monitor-resource-health.md)。 若要详细了解弃用日程表，请参阅[利用 Azure Monitor 和 Azure 资源运行状况监视 Azure IoT 解决方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
 
 IoT 中心监视 6 种类别的事件：
 
@@ -43,12 +43,12 @@ IoT 中心监视 6 种类别的事件：
 
     ![访问门户中的操作监视配置](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-3. 选择要监视的监视类别，并单击“保存”  。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
+3. 选择要监视的监视类别，并单击“保存”。 可以从“**监视设置**”中所列的与事件中心兼容的终结点读取事件。 IoT 中心终结点称为 `messages/operationsmonitoringevents`。
 
     ![在 IoT 中心配置操作监视](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
-> 为“连接”  类别选择“详细”  监视会导致 IoT 中心生成额外的诊断消息。 对于所有其他类别，“详细”  设置会更改 IoT 中心在每个错误消息中包含的信息数量。
+> 为“连接”类别选择“详细”监视会导致 IoT 中心生成额外的诊断消息。 对于所有其他类别，“详细”设置会更改 IoT 中心在每个错误消息中包含的信息数量。
 
 ## <a name="event-categories-and-how-to-use-them"></a>事件类别及其用法
 
@@ -56,7 +56,7 @@ IoT 中心监视 6 种类别的事件：
 
 ### <a name="device-identity-operations"></a>设备标识操作
 
-设备标识操作类别跟踪你尝试在其 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
+设备标识操作类别跟踪你尝试在 IoT 中心的标识注册表中创建、更新或删除条目时所发生的错误。 预配方案就很适合跟踪此类别。
 
 ```json
 {
@@ -75,7 +75,7 @@ IoT 中心监视 6 种类别的事件：
 
 ### <a name="device-telemetry"></a>设备遥测
 
-设备遥测类别跟踪在 IoT 中心发生且与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
+设备遥测类别跟踪在 IoT 中心发生的、与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
 
 ```json
 {
@@ -143,11 +143,11 @@ IoT 中心监视 6 种类别的事件：
 
 ### <a name="file-uploads"></a>文件上传
 
-文件上传类别跟踪在 IoT 中心发生且与文件上传功能相关的错误。 此类别包括：
+文件上传类别跟踪在 IoT 中心发生的、与文件上传功能相关的错误。 此类别包括：
 
-* SAS URI 发生的错误，例如它在设备就上传完毕通知中心之前到期。
+* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上传前失效。
 
-* 设备报告的失败上传。
+* 由设备报告的失败上传。
 
 * 创建 IoT 中心通知消息期间在存储中找不到文件时发生的错误。
 
@@ -197,23 +197,23 @@ IoT 中心上的监视终结点是与事件中心兼容的终结点。 可使用
 
 1. 在门户中，导航到 IoT 中心资源边栏选项卡。
 
-2. 选择“操作监视”  ，记下“与事件中心兼容的名称”  和“与事件中心兼容的终结点”  值：
+2. 选择“操作监视”，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”值：
 
     ![“与事件中心兼容的终结点”值](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. 选择“共享访问策略”  ，并选择“服务”  。 记下“主密钥”  值：
+3. 选择“共享访问策略”，并选择“服务”。 记下“主密钥”值：
 
     ![服务共享访问策略主密钥](./media/iot-hub-operations-monitoring/service-key.png)
 
 以下 C# 代码示例取自 Visual Studio **Windows 经典桌面** C# 控制台应用。 该项目安装了 **WindowsAzure.ServiceBus** NuGet 包。
 
-* 如以下示例所示，将连接字符串占位符替换为使用之前记下的“与事件中心兼容的终结点”  和服务“主密钥”  值的连接字符串：
+* 如以下示例所示，将连接字符串占位符替换为使用之前记下的“与事件中心兼容的终结点”和服务“主密钥”值的连接字符串：
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* 将监视终结点名称占位符替换为之前记下的“与事件中心兼容的名称”  值。
+* 将监视终结点名称占位符替换为之前记下的“与事件中心兼容的名称”值。
 
 ```csharp
 class Program

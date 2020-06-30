@@ -3,12 +3,12 @@ title: 使用 MABS 将 SharePoint 场备份到 Azure
 description: 使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657283"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234794"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 将 SharePoint 场备份到 Azure
 
@@ -68,10 +68,9 @@ ms.locfileid: "83657283"
 
     * 输入场管理员凭据。 此帐户应是 WFE 服务器上本地管理员组的成员。 如果场管理员不是本地管理员，请在 WFE 服务器上授予以下权限：
 
-        * 授予 WSS\_Admin\_WPG 组对 MABS 文件夹 \(%Program Files%\\Data Protection Manager\\DPM\) 的完全控制权限。
-            -A
+        * 向 WSS_Admin_WPG 组授予对 MABS 文件夹 (`%Program Files%\Data Protection Manager\DPM\`) 的完全控制权限。
 
-        * 授予 WSS\_Admin\_WPG 组对 MABS 注册表项 \(HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager\) 的读取访问权限。
+        * 向 WSS_Admin_WPG 组授予对 MABS 注册表项 (`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager`) 的读取访问权限。
 
         运行 ConfigureSharePoint.exe 后，如果 SharePoint 场管理员凭据发生更改，则需要重新运行。
 

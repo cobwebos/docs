@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 配置每站点 WAF 策略
+title: 使用 PowerShell 配置每个站点的 WAF 策略
 titleSuffix: Azure Web Application Firewall
 description: 了解如何使用 Azure PowerShell 在应用程序网关上配置每个站点的 Web 应用程序防火墙策略。
 services: web-application-firewall
@@ -10,18 +10,18 @@ ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682480"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>使用 Azure PowerShell 配置每个站点的 WAF 策略
 
-Web 应用程序防火墙（WAF）设置包含在 WAF 策略中，用于更改你修改了 WAF 策略的 WAF 配置。
+Web 应用程序防火墙 (WAF) 设置包含在 WAF 策略中，若要更改 WAF 配置，请修改 WAF 策略。
 
-与应用程序网关关联时，策略和所有设置将在全局范围内反映出来。 因此，如果你在 WAF 后面有5个站点，则所有5个站点都受相同的 WAF 策略保护。 如果对每个站点需要相同的安全设置，则此设置非常有用。 不过，你也可以将 WAF 策略应用到各个侦听器，以允许站点特定的 WAF 配置。
+与应用程序网关关联后，策略和所有设置都会在全局反映。 因此，如果在 WAF 后面有五个站点，则全部五个站点均受相同的 WAF 策略保护。 如果每个站点都需要相同的安全设置，则此设置非常有用。 但是，也可以将 WAF 策略应用于各个侦听器，以允许进行特定于站点的 WAF 配置。
 
-通过将 WAF 策略应用到侦听器，可以为各个站点配置 WAF 设置，而不会影响每个站点的更改。 最具体的策略采用引用单元。 如果有全局策略和每个站点策略（与侦听器关联的 WAF 策略），则每个站点策略会替代该侦听器的全局 WAF 策略。 不具有其自己的策略的其他侦听器仅受全局 WAF 策略的影响。
+通过将 WAF 策略应用于侦听器，可以为单个站点配置 WAF 设置，而不会让所做的更改影响每个站点。 最具体的策略优先。 如果存在全局策略和每站点策略（与侦听器关联的 WAF 策略），则每站点策略将替代该侦听器的全局 WAF 策略。 没有自己的策略的其他侦听器只会受到全局 WAF 策略的影响。
 
 在本文中，学习如何：
 
@@ -29,7 +29,7 @@ Web 应用程序防火墙（WAF）设置包含在 WAF 策略中，用于更改�
 > * 设置网络
 > * 创建 WAF 策略
 > * 创建启用 WAF 的应用程序网关
-> * 全局、每个站点和每个 URI 应用 WAF 策略
+> * 在全局范围、每个站点和每个 URI 上应用 WAF 策略
 > * 创建虚拟机规模集
 > * 创建存储帐户和配置诊断
 > * 测试应用程序网关
@@ -42,7 +42,7 @@ Web 应用程序防火墙（WAF）设置包含在 WAF 策略中，用于更改�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -54,7 +54,7 @@ $rgname = New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>创建网络资源 
 
-使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 *myBackendSubnet* 和 *myAGSubnet* 的子网配置。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络**。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址**。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
+使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 创建名为 *myBackendSubnet* 和 *myAGSubnet* 的子网配置。 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 和子网配置创建名为 myVNet 的虚拟网络。 最后使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 创建名为 myAGPublicIPAddress 的公共 IP 地址。 这些资源用于提供与应用程序网关及其关联资源的网络连接。
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -90,7 +90,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>创建 IP 配置和前端端口
 
-使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关**。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
+使用 [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration) 将前面创建的 myAGSubnet 关联到应用程序网关。 使用 [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig) 将 *myAGPublicIPAddress* 分配给应用程序网关。
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -134,9 +134,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-two-waf-policies"></a>创建两个 WAF 策略
 
-创建两个 WAF 策略，每个站点有一个全局策略，并添加自定义规则。 
+创建两个 WAF 策略，其中一个是全局策略，一个是每站点策略，然后添加自定义规则。 
 
-每个站点策略会将文件上传限制限制为 5 MB。 其他所有内容都是相同的。
+每站点策略将文件上传大小限制为 5 MB。 其他设置一样。
 
 ```azurepowershell-interactive
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestUri
@@ -194,7 +194,7 @@ $wafPolicySite = New-AzApplicationGatewayFirewallPolicy `
 
 应用程序网关需要侦听器才能适当地将流量路由到后端地址池。 在此示例中，将一个创建基本侦听器以侦听根 URL 上的流量。 
 
-使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 mydefaultListener 的侦听器**。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 rule1 的基本规则**。
+使用 [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) 以及前面创建的前端配置和前端端口创建名为 mydefaultListener 的侦听器。 侦听器需要使用规则来了解哪个后端池使用传入流量。 使用 [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) 创建一个名为 rule1 的基本规则。
 
 ```azurepowershell-interactive
 $globalListener = New-AzApplicationGatewayHttpListener `
@@ -252,7 +252,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="apply-a-per-uri-policy"></a>应用每 URI 策略
 
-若要应用每个 URI 策略，只需创建一个新策略，并将其应用于路径规则配置。 
+若要应用每 URI 策略，只需创建一个新策略并将其应用于路径规则配置即可。 
 
 ```azurepowershell-interactive
 $policySettingURI = New-AzApplicationGatewayFirewallPolicySetting `
@@ -406,7 +406,7 @@ Set-AzDiagnosticSetting `
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 然后使用此 IP 地址来弯曲（替换下面显示的1.1.1.1）。 
+可以使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 获取应用程序网关的公共 IP 地址。 然后使用此 IP 地址执行 curl 命令（替换下面所示的 1.1.1.1）。 
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress

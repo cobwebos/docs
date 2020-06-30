@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 部署和管理通知中心
-description: 如何使用 PowerShell 为自动化创建和管理通知中心
+description: 如何使用自动化 PowerShell 创建和管理通知中心
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
 ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2020
 ms.locfileid: "82891199"
@@ -36,7 +36,7 @@ ms.locfileid: "82891199"
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。 在 PowerShell 中，最佳方法是引用 Microsoft.Azure.NotificationHubs.dll 程序集。 该程序集是随 [Microsoft Azure 通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)一起分发的。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 Azure 是基于订阅的平台。 有关获取订阅的详细信息，请参阅[购买选项]、[会员套餐]或[免费试用]。
 - 配备 Azure PowerShell 的计算机。 有关说明，请参阅[安装和配置 Azure PowerShell]。
@@ -158,7 +158,7 @@ else
 
 [购买选项]: https://azure.microsoft.com/pricing/purchase-options/
 [会员套餐]: https://azure.microsoft.com/pricing/member-offers/
-[免费试用版]: https://azure.microsoft.com/pricing/free-trial/
+[免费试用]: https://azure.microsoft.com/pricing/free-trial/
 [安装和配置 Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [通知中心的 .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace

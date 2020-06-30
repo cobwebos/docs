@@ -14,7 +14,7 @@ ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: 1d3772a17d0429d9b3a5bf95d2060f2dfbbbafe1
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418042"
@@ -31,7 +31,7 @@ ms.locfileid: "81418042"
 
 以下活动支持此 SAP Cloud for Customer 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可将数据从 SAP Cloud for Customer 复制到任何受支持的接收器数据存储，或者将数据从任何受支持的源数据存储复制到 SAP Cloud for Customer。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
@@ -118,7 +118,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 ### <a name="sap-c4c-as-source"></a>以 SAP C4C 作为源
 
-若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动源  部分支持以下属性：
+若要从 SAP Cloud for Customer 复制数据，请将复制活动中的源类型设置为 **SapCloudForCustomerSource**。 复制活动源部分支持以下属性：
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -161,7 +161,7 @@ SAP Cloud for Customer 链接服务支持以下属性：
 
 ### <a name="sap-c4c-as-sink"></a>以 SAP C4C 作为接收器
 
-若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性  ：
+若要将数据复制到 SAP Cloud for Customer，请将复制活动中的接收器类型设置为 **SapCloudForCustomerSink**。 复制活动接收器部分中支持以下属性：
 
 | properties | 说明 | 必选 |
 |:--- |:--- |:--- |
@@ -226,14 +226,14 @@ SAP Cloud for Customer 链接服务支持以下属性：
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
+| Edm.String | 字符串 |
 | Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>“查找”活动属性
 
-若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
+若要详细了解这些属性，请查看[“查找”活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

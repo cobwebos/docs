@@ -11,7 +11,7 @@ ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759755"
@@ -36,7 +36,7 @@ ms.locfileid: "81759755"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -60,15 +60,15 @@ ms.locfileid: "81759755"
 
 * 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
 
-1. 在命令提示符处，运行以下命令以安装 **azure-iot-device** 包：
+1. 在命令提示符处，运行以下命令以安装 azure-iot-device 包：
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_device.py** 的文件。
+2. 使用文本编辑器，在工作目录中创建名为 dmpatterns_getstarted_device.py 的文件。
 
-3. 在 `import`dmpatterns_getstarted_device.py**文件开头添加以下** 语句。
+3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
 
     ```python
     import threading
@@ -77,7 +77,7 @@ ms.locfileid: "81759755"
     from azure.iot.device import IoTHubDeviceClient, MethodResponse
     ```
 
-4. 添加 **CONNECTION_STRING** 变量。 将 `{deviceConnectionString}` 占位符值替换为设备连接字符串。 你先前在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制了此连接字符串。  
+4. 添加 CONNECTION_STRING 变量。 将 `{deviceConnectionString}` 占位符值替换为设备连接字符串。 以前在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中复制了此连接字符串。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
@@ -153,15 +153,15 @@ ms.locfileid: "81759755"
 
 此部分将创建一个 Python 控制台应用，以使用直接方法在设备上启动远程重新启动。 该应用使用设备孪生查询来搜索该设备的上次重新启动时间。
 
-1. 在命令提示符处，运行以下命令以安装 **azure-iot-hub** 包：
+1. 在命令提示符处，运行以下命令以安装 azure-iot-hub 包：
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-2. 使用文本编辑器，在工作目录中创建名为 **dmpatterns_getstarted_service.py** 的文件。
+2. 使用文本编辑器，在工作目录中创建名为 dmpatterns_getstarted_service.py 的文件。
 
-3. 在 `import`dmpatterns_getstarted_service.py**文件开头添加以下** 语句。
+3. 在 **dmpatterns_getstarted_service.py** 文件开头添加以下 `import` 语句。
 
     ```python
     import sys, time
@@ -170,7 +170,7 @@ ms.locfileid: "81759755"
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. 添加以下变量声明。 将 `{IoTHubConnectionString}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[在 IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
+4. 添加以下变量声明。 将 `{IoTHubConnectionString}` 占位符值替换为以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。 将 `{deviceId}` 占位符值替换为在[在 IoT 中心内注册新设备](#register-a-new-device-in-the-iot-hub)中注册的设备 ID。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -239,7 +239,7 @@ ms.locfileid: "81759755"
 
 ## <a name="run-the-apps"></a>运行应用
 
-现已准备好运行应用。
+现在可以运行应用了。
 
 1. 在命令提示符处，运行以下命令以开始侦听重新启动直接方法。
 
@@ -255,11 +255,11 @@ ms.locfileid: "81759755"
 
 3. 可在控制台查看对直接方法的设备响应。
 
-   下面显示了设备对重新启动直接方法的响应：
+   下面显示了对重新启动直接方法的设备响应：
 
    ![模拟设备应用输出](./media/iot-hub-python-python-device-management-get-started/device.png)
 
-   下面显示了调用重新启动直接方法并轮询设备孪生状态的服务：
+   下面显示服务调用重新启动直接方法并轮询设备孪生以获取状态：
 
    ![触发重新启动服务输出](./media/iot-hub-python-python-device-management-get-started/service.png)
 

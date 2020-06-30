@@ -14,7 +14,7 @@ ms.custom:
 - mqtt
 ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732516"
@@ -23,44 +23,44 @@ ms.locfileid: "81732516"
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-本教程在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)的基础上编写。 它展示了如何执行以下操作：
+本教程建立在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)的基础之上。 它展示了如何执行以下操作：
 
 * 通过 IoT 中心，将云到设备的消息从解决方案后端发送到单个设备。
 
 * 在设备上接收云到设备的消息。
 
-* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈**）。
+* 通过解决方案后端，请求确认收到从 IoT 中心发送到设备的消息（反馈）。
 
 可以在 [IoT 中心开发人员指南](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
 在本教程的最后，将运行两个 Java 控制台应用：
 
-* **simulated-device**（[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
+* simulated-device（[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
 
-* **c2d-消息**，它通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收其传递确认。
+* send-c2d-messages，它将云到设备消息通过 IoT 中心发送到模拟设备应用，然后接收 IoT 中心的送达确认。
 
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 对许多设备平台和语言（包括 C、Java、Python 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门或[使用 IoT 中心配置消息路由](tutorial-routing.md)教程的完整工作版本。
+* [将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门或[使用 IoT 中心配置消息路由](tutorial-routing.md)教程的完整工作版本。
 
-* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”  下选择“Java 8”  以获取 JDK 8 的下载。
+* [Java SE 开发工具包 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 请确保在“长期支持”下选择“Java 8”以获取 JDK 8 的下载。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
 
-在本部分中，将修改在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的模拟设备应用，以接收来自 IoT 中心的云到设备消息。
+在本部分中，修改在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的模拟设备应用，接收来自 IoT 中心的云到设备消息。
 
 1. 使用文本编辑器打开 simulated-device\src\main\java\com\mycompany\app\App.java 文件。
 
@@ -88,7 +88,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     ```
 
     > [!NOTE]
-    > 如果使用 HTTPS（而不使用 MQTT 或 AMQP）作为传输，则 DeviceClient**** 实例将不会频繁（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTPS 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南的消息传递部分](iot-hub-devguide-messaging.md)。
+    > 如果使用 HTTPS（而不使用 MQTT 或 AMQP）作为传输，则 DeviceClient 实例将不会频繁（频率低于每 25 分钟一次）检查 IoT 中心发来的消息。 有关 MQTT、AMQP 和 HTTPS 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心开发人员指南的消息传递部分](iot-hub-devguide-messaging.md)。
 
 4. 若要使用 Maven 生成 **simulated-device** 应用，请在 simulated-device 文件夹中的命令提示符下执行以下命令：
 
@@ -98,13 +98,13 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你将创建一个后端服务，通过在将[遥测从设备发送到 iot 中心](quickstart-send-telemetry-java.md)中创建的 iot 中心发送云到设备的消息。 若要发送云到设备消息，服务需要“服务连接”权限。**** 默认情况下，每个 IoT 中心都使用名为 **service** 的共享访问策略创建，该策略授予此权限。
+在本文中，你会创建一个后端服务，以通过在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)中创建的 IoT 中心，发送云到设备消息。 若要发送云到设备消息，服务需要服务连接权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
 
-在本部分中，会创建 Java 控制台应用，用于向模拟设备应用发送“云到设备”消息。 需要在[从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门中添加的设备的设备 ID。 还需要先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
+在本部分中，会创建 Java 控制台应用，用于向模拟设备应用发送“云到设备”消息。 需要在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门中添加的设备的设备 ID。 还需要以前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 IoT 中心连接字符串。
 
 1. 在命令提示符处使用以下命令，创建名为 **send-c2d-messages** 的 Maven 项目。 请注意，此命令是一条很长的命令：
 
@@ -139,7 +139,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
     import java.net.URISyntaxException;
     ```
 
-7. 将以下类级变量添加到 **App** 类，并将 **{yourhubconnectionstring}** 和 **{yourdeviceid}** 替换为前面记下的值：
+7. 将以下类级变量添加到 App 类，并将 {yourhubconnectionstring} 和 {yourdeviceid} 替换为前面记下的值  ：
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -148,7 +148,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
         IotHubServiceClientProtocol.AMQPS;
     ```
 
-8. 将**main**方法替换为以下代码。 此代码用于连接到 IoT 中心，将消息发送到设备，然后等待设备已接收并处理消息的通知：
+8. 将 **main**方法替换为以下代码。 此代码用于连接到 IoT 中心，将消息发送到设备，然后等待设备已接收并处理消息的通知：
 
     ```java
     public static void main(String[] args) throws IOException,
@@ -215,4 +215,4 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器](https://azure.microsoft.com/documentation/suites/iot-suite/)。
 
-若要了解有关通过 IoT 中心开发解决方案的详细信息，请参阅[Iot 中心开发人员指南](iot-hub-devguide.md)。
+若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。

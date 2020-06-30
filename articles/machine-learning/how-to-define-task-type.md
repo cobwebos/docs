@@ -1,7 +1,7 @@
 ---
 title: 为自动化机器学习运行定义机器学习任务
 titleSuffix: Azure Machine Learning
-description: 了解如何为自动化机器学习运行定义机器学习任务
+description: 了解为自动化机器学习运行定义机器学习任务
 services: machine-learning
 author: RachelKellam
 ms.author: rakellam
@@ -29,9 +29,9 @@ ms.locfileid: "83653246"
 
 任务类型| 说明| 示例
 ----|----|----
-分类 | 用于预测数据集中特定行的类别的任务。 | 在信用卡上进行的欺诈检测。 目标列将是“检测到的欺诈”  ，其类别为 *True* 或 *False*。 在这种情况下，我们将数据中的每一行分类为 true 或 false。
-回归 | 预测连续数量输出的任务。 | 汽车费用基于其功能，目标列将为“价格”  。
-预测 |用于在确定未来趋势的方向时做出明智估计的任务。| 未来 48 小时预测能源需求。 目标列将为“需求”  ，预测的值将用于显示能源需求中的模式。
+分类 | 用于预测数据集中特定行的类别的任务。 | 对信用卡进行的欺诈检测。 目标列将是“检测到的欺诈”，其类别为 True 或 False。 在这种情况下，我们将数据中的每一行分类为 true 或 false。
+回归 | 用于预测连续数量输出的任务。 | 汽车成本基于其功能，目标列为“价格”。
+预测 |用于在确定未来趋势的方向方面做出明智估计的任务。用于在确定未来趋势的方向时做出明智估计的任务。| 预测未来 48 小时的能源需求。 目标列为“需求”，预测值将用于显示能源需求中的模式。
 
 在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。
 
@@ -47,7 +47,7 @@ ms.locfileid: "83653246"
 [随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
 [极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[深度神经网络回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [深度神经网络回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
 [朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)||
 [随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)||
@@ -56,7 +56,7 @@ ms.locfileid: "83653246"
 ### <a name="set-the-task-type"></a>设置任务类型
 可以通过 SDK 或 Azure 机器学习工作室为自动化 ML 试验设置任务类型。
 
-使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定试验类型。
+使用 `AutoMLConfig` 构造函数中的 `task` 参数来指定实验类型。
 
 ```python
 from azureml.train.automl import AutoMLConfig

@@ -1,5 +1,5 @@
 ---
-title: 将 Raspberry Pi 连接到远程监视解决方案-node.js-Azure |Microsoft Docs
+title: 将 Raspberry Pi 连接到远程监视 - Node.js - Azure | Microsoft Docs
 description: 介绍如何使用以 Node.js 编写的应用程序将 Raspberry Pi 设备连接到远程监视解决方案加速器。
 author: dominicbetts
 manager: timlt
@@ -11,7 +11,7 @@ ms.author: dobett
 ms.custom: mqtt
 ms.openlocfilehash: 9335c45688752ea41801e988157740f4170cfcb4
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683940"

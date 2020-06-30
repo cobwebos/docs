@@ -1,6 +1,6 @@
 ---
 title: Azure 磁盘加密故障排除指南
-description: 本文提供了针对 Windows Vm Microsoft Azure 磁盘加密的故障排除提示。
+description: 本文提供适用于 Windows VM 的 Microsoft Azure 磁盘加密的故障排除提示。
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
@@ -10,7 +10,7 @@ ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 11c1e0bf10725173a2a341addf4c3f845bbb7fba
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085682"
@@ -19,7 +19,7 @@ ms.locfileid: "82085682"
 
 本指南面向使用 Azure 磁盘加密的组织中的 IT 专业人员、信息安全分析人员和云管理员。 本文旨在帮助排查与磁盘加密相关的问题。
 
-在执行以下任何步骤之前，请首先确保你尝试加密的 VM 具有[受支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)，并且已满足所有先决条件：
+执行以下任何步骤之前，请先确保尝试加密的 VM 具有[支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)，并且你满足所有先决条件：
 
 - [网络要求](disk-encryption-overview.md#networking-requirements)
 - [组策略要求](disk-encryption-overview.md#group-policy-requirements)
@@ -78,9 +78,9 @@ DISKPART> list vol
 
 ## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
 
-即使磁盘在 VM 中解密后，门户也可能显示该磁盘已加密。  当使用低级别命令从 VM 内部直接解密磁盘，而不是使用较高级别的 Azure 磁盘加密管理命令时，可能会发生这种情况。  较高级别命令不仅从 VM 内部解密磁盘，而且在 VM 外部它们还更新与 VM 关联的重要平台级加密设置和扩展设置。  如果这些未保持一致，平台将无法报告加密状态或正确预配 VM。   
+即使磁盘在 VM 内解密之后，门户也可能会将磁盘显示为已加密。  当使用低级别命令从 VM 内部直接解密磁盘，而不是使用较高级别 Azure 磁盘加密管理命令时，可能会发生这种情况。  较高级别命令不仅从 VM 内解密磁盘，还会在 VM 外部更新与 VM 关联的重要平台级别加密设置和扩展设置。  如果这些设置未保持一致，则平台将无法正确报告加密状态或预配 VM。   
 
-若要使用 PowerShell 禁用 Azure 磁盘加密，请使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)，然后使用 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密之前，运行 Remove-AzVMDiskEncryptionExtension 会失败。
+若要使用 PowerShell 禁用 Azure 磁盘加密，请使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)后跟 [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension)。 禁用加密之前，运行 Remove-AzVMDiskEncryptionExtension 会失败。
 
 若要使用 CLI 禁用 Azure 磁盘加密，请使用 [az vm encryption disable](/cli/azure/vm/encryption)。 
 

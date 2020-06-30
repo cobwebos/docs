@@ -1,5 +1,5 @@
 ---
-title: 通过 Azure Cosmos DB Gremlin API 使用图批量执行程序 .NET 库
+title: 将图批量执行程序 .NET 库与 Azure Cosmos DB Gremlin API 配合使用
 description: 了解如何使用批量执行程序库将图数据大规模导入 Azure Cosmos DB Gremlin API 容器中。
 author: luisbosquez
 ms.service: cosmos-db
@@ -10,7 +10,7 @@ ms.author: lbosq
 ms.reviewer: sngun
 ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982697"
@@ -34,7 +34,7 @@ ms.locfileid: "80982697"
 
 ### <a name="creating-vertices-and-edges"></a>创建顶点和边缘
 
-`GraphBulkExecutor` 提供的 `BulkImportAsync` 方法要求使用一个包含 `IEnumerable` 或 `GremlinVertex` 对象的 `GremlinEdge` 列表，这两个对象都是在 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 命名空间中定义的。 在示例中，我们已将边缘和顶点划分到两个 BulkExecutor 导入任务中。 请参阅以下示例：
+`GraphBulkExecutor` 提供的 `BulkImportAsync` 方法要求使用一个包含 `GremlinVertex` 或 `GremlinEdge` 对象的 `IEnumerable` 列表，这两个对象都是在 `Microsoft.Azure.CosmosDB.BulkExecutor.Graph.Element` 命名空间中定义的。 在示例中，我们已将边缘和顶点划分到两个 BulkExecutor 导入任务中。 请参阅以下示例：
 
 ```csharp
 
@@ -113,9 +113,9 @@ e.AddProperty("customProperty", "value");
 
 ## <a name="sample-application"></a>示例应用程序
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 * 包含 Azure 开发工作负荷的 Visual Studio 2019。 一开始可以使用免费的 [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/)。
-* Azure 订阅。 可在[此处创建免费的 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，可以通过[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 创建一个 Cosmos 数据库帐户，而无需 Azure 订阅。
+* Azure 订阅。 可以[在此创建一个免费的 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db)。 或者，可以通过[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 创建一个 Cosmos 数据库帐户，而无需 Azure 订阅。
 * 包含**不受限集合**的 Azure Cosmos DB Gremlin API 数据库。 本指南介绍了如何开始使用 [.NET 中的 Azure Cosmos DB Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet)。
 * Git。 有关详细信息，请查看[“Git 下载”页](https://git-scm.com/downloads)。
 
@@ -140,7 +140,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 ---|---
 `EndPointUrl`|这是 **.NET SDK 终结点**，位于 Azure Cosmos DB Gremlin API 数据库帐户的“概览”边栏选项卡中。 此项的格式为 `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|这是在 Azure Cosmos DB 帐户下列出的主密钥或辅助密钥。 详细了解如何[确保对 Azure Cosmos DB 数据的安全访问](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)
-`DatabaseName`, `CollectionName`|这些是**目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是**无限制集合**。
+`DatabaseName`、`CollectionName`|这些是**目标数据库和集合名称**。 当 `ShouldCleanupOnStart` 设置为 `true` 时，将会根据这些值和 `CollectionThroughput` 来删除它们并创建新的数据库和集合。 同样，如果 `ShouldCleanupOnFinish` 设置为 `true`，将会根据这些值在引入完成后立即删除数据库。 请注意，目标集合必须是**无限制集合**。
 `CollectionThroughput`|如果 `ShouldCleanupOnStart` 选项设置为 `true`，则使用此项来创建新的集合。
 `ShouldCleanupOnStart`|此项会在程序运行之前删除数据库帐户和集合，然后使用 `DatabaseName`、`CollectionName` 和 `CollectionThroughput` 值创建新的。
 `ShouldCleanupOnFinish`|此项会在程序运行之后删除具有指定 `DatabaseName` 和 `CollectionName` 的数据库帐户和集合。
@@ -151,7 +151,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 ### <a name="run-the-sample-application"></a>运行示例应用程序
 
 1. 在 `App.config` 中添加特定的数据库配置参数。 此文件将用于创建 DocumentClient 实例。 如果数据库和容器尚未创建，则会自动创建它们。
-2. 运行该应用程序。 此时会调用 `BulkImportAsync` 两次，一次是为了导入顶点，另一次是为了导入边缘。 如果在插入这些对象时，有对象生成了错误，则会将这些对象添加到 `.\BadVertices.txt` 或 `.\BadEdges.txt`。
+2. 运行应用程序。 此时会调用 `BulkImportAsync` 两次，一次是为了导入顶点，另一次是为了导入边缘。 如果在插入这些对象时，有对象生成了错误，则会将这些对象添加到 `.\BadVertices.txt` 或 `.\BadEdges.txt`。
 3. 通过查询图形数据库来评估结果。 如果 `ShouldCleanupOnFinish` 选项设置为 true，则会自动删除此数据库。
 
 ## <a name="next-steps"></a>后续步骤
