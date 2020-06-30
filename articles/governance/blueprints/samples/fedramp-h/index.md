@@ -3,12 +3,12 @@ title: FedRAMP High 蓝图示例概述
 description: FedRAMP High 蓝图示例概述。 此蓝图示例可帮助客户评估特定 FedRAMP High 控制要求。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: dede255b73a2a052acf1e8b95ad5171a1ace6ae5
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a26c6f8e781a1bb2ff30ca9e2c179bcda8eadec
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "77087288"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517110"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例概述
 
@@ -26,7 +26,7 @@ FedRAMP High 蓝图示例提供了监管防护措施，其中使用 [Azure Polic
 > [FedRAMP High 蓝图 - 控制映射](./control-mapping.md)
 > [FedRAMP High 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

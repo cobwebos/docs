@@ -3,12 +3,12 @@ title: DoD 影响级别 4 蓝图示例概述
 description: DoD 影响级别 4 示例的概述。 此蓝图示例可帮助客户评估特定 DoD 影响级别 4 控制要求。
 ms.date: 03/12/2020
 ms.topic: sample
-ms.openlocfilehash: a67dae5399d3e2e24c226c53f915b91e2524e735
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3b032e1a26c4fb5e97b1c7ab4fff65bc1b046f21
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "79415370"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517246"
 ---
 # <a name="overview-of-the-dod-impact-level-4-blueprint-sample"></a>DoD 影响级别 4 蓝图示例概述
 
@@ -26,7 +26,7 @@ ms.locfileid: "79415370"
 > [DoD 影响级别 4 蓝图 - 控制映射](./control-mapping.md)
 > [DoD 影响级别 4 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。
