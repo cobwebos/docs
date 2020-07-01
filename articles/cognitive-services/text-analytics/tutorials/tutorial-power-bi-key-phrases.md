@@ -47,17 +47,17 @@ Microsoft Power BI Desktop 是免费的应用程序，可让你连接、转换�
 > [!NOTE]
 > Power BI 可以使用各种源（例如 Facebook 或 SQL 数据库）提供的数据。 有关详细信息，请参阅 [Facebook 与 Power BI 集成](https://powerbi.microsoft.com/integrations/facebook/)和 [SQL Server 与 Power BI 集成](https://powerbi.microsoft.com/integrations/sql-server/)。
 
-在 Power BI Desktop 主窗口中，选择“开始”  功能区。 在功能区的“外部数据”  组中，打开“获取数据”  下拉菜单，然后选择“文本/CSV”  。
+在 Power BI Desktop 主窗口中，选择“开始”功能区。 在功能区的“外部数据”组中，打开“获取数据”下拉菜单，然后选择“文本/CSV”。
 
 ![[“获取数据”按钮]](../media/tutorials/power-bi/get-data-button.png)
 
-此时会显示“打开”对话框。 导航到“下载”文件夹，或你下载 `FabrikamComments.csv` 文件的文件夹。 单击“`FabrikamComments.csv`”，然后单击“打开”按钮。  此时会显示 CSV 导入对话框。
+此时会显示“打开”对话框。 导航到“下载”文件夹，或你下载 `FabrikamComments.csv` 文件的文件夹。 单击“`FabrikamComments.csv`”，然后单击“打开”按钮。 此时会显示 CSV 导入对话框。
 
 ![[CSV 导入对话框]](../media/tutorials/power-bi/csv-import.png)
 
-CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符集、分隔符、标头行和列类型。 这些信息全都正确，因此单击“加载”。 
+CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符集、分隔符、标头行和列类型。 这些信息全都正确，因此单击“加载”。
 
-若要查看加载的数据，请单击 Power BI 工作区左侧的“数据视图”  按钮。 将会打开一个包含数据的表，就像在 Microsoft Excel 中一样。
+若要查看加载的数据，请单击 Power BI 工作区左侧的“数据视图”按钮。 将会打开一个包含数据的表，就像在 Microsoft Excel 中一样。
 
 ![[已导入数据的初始视图]](../media/tutorials/power-bi/initial-data-view.png)
 
@@ -68,21 +68,21 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 
 示例数据包含一个 `subject` 列和一个 `comment` 列。 使用 Power BI Desktop 中的“合并列”功能，你可以从这两个列（而非仅仅 `comment` 列）的数据中提取关键短语。
 
-在 Power BI Desktop 中，选择“开始”  功能区。 在“外部数据”  组中，单击“编辑查询”  。
+在 Power BI Desktop 中，选择“开始”功能区。 在“外部数据”组中，单击“编辑查询”。
 
 ![[“主页”功能区中的“外部数据”组]](../media/tutorials/power-bi/edit-queries.png)
 
-选择窗口左侧“查询”  列表中的 `FabrikamComments`（如果尚未选择）。
+选择窗口左侧“查询”列表中的 `FabrikamComments`（如果尚未选择）。
 
 现在请选择表中的 `subject` 和 `comment` 列。 可能需要进行水平滚动才能看到这些列。 首先单击 `subject` 列标题，然后在按住 Ctrl 键的同时单击 `comment` 列标题。
 
 ![[选择要合并的字段]](../media/tutorials/power-bi/select-columns.png)
 
-选择“转换”  功能区。 在功能区的“文本列”组中，单击“合并列”。   此时会显示“合并列”对话框。
+选择“转换”功能区。 在功能区的“文本列”组中，单击“合并列”。  此时会显示“合并列”对话框。
 
 ![[使用“合并列”对话框合并字段]](../media/tutorials/power-bi/merge-columns.png)
 
-在“合并列”对话框中，选择 `Tab` 作为分隔符，然后单击“确定”  。
+在“合并列”对话框中，选择 `Tab` 作为分隔符，然后单击“确定”。
 
 也可考虑使用“删除空白”筛选器筛选掉空白消息，或者使用“洁净转换”删除无法打印的字符。 如果数据包含的一个列类似于示例文件中的 `spamscore` 列，则可使用“数字筛选器”跳过“垃圾”评论。
 
@@ -105,13 +105,13 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 > [!NOTE]
 > Power BI Desktop 自定义函数是以 [Power Query M 公式语言](https://docs.microsoft.com/powerquery-m/power-query-m-reference)（简称“M”）编写的。 M 是基于 [F#](https://docs.microsoft.com/dotnet/fsharp/) 的函数编程语言。 不过，完成本教程不需要你是程序员；所需代码已在下面提供。
 
-在 Power BI Desktop 中，确保你仍处于“查询编辑器”窗口。 如果并非如此，请选择“开始”  功能区，然后在“外部数据”  组中，单击“编辑查询”  。
+在 Power BI Desktop 中，确保你仍处于“查询编辑器”窗口。 如果并非如此，请选择“开始”功能区，然后在“外部数据”组中，单击“编辑查询”。
 
-现在，在“开始”  功能区的“新建查询”  组中，打开“新建源”  下拉菜单并选择“空白查询”  。 
+现在，在“开始”功能区的“新建查询”组中，打开“新建源”下拉菜单并选择“空白查询”。 
 
 此时会在“查询”列表中显示新查询（初始名称为 `Query1`）。 双击此条目，将其命名为 `KeyPhrases`。
 
-现在，在“开始”  功能区的“查询”  组中，单击“高级编辑器”  以打开高级编辑器窗口。 删除该窗口中的现有代码，将以下代码粘贴到其中。 
+现在，在“开始”功能区的“查询”组中，单击“高级编辑器”以打开高级编辑器窗口。 删除该窗口中的现有代码，将以下代码粘贴到其中。 
 
 > [!NOTE]
 > 将下面的示例终结点（包含 `<your-custom-subdomain>`）替换为为文本分析资源生成的终结点。 可以通过登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)，选择“文本分析”订阅并选择 `Quick start` 来找到此终结点。
@@ -132,24 +132,24 @@ CSV 导入对话框用于验证 Power BI Desktop 是否已正确检测到字符�
 in  keyphrases
 ```
 
-将 `YOUR_API_KEY_HERE` 替换为你的文本分析访问密钥。 你还可以通过登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)、选择文本分析订阅并选择“概述”页面来找到此密钥。 请务必保留密钥前后的引号。 然后单击“完成”  。
+将 `YOUR_API_KEY_HERE` 替换为你的文本分析访问密钥。 你还可以通过登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)、选择文本分析订阅并选择“概述”页面来找到此密钥。 请务必保留密钥前后的引号。 然后单击“完成”。
 
 ## <a name="use-the-custom-function"></a>使用自定义函数
 <a name="UseCustomFunction"></a>
 
 现在可以使用自定义函数从每个客户评论中提取关键短语并将其存储在表的新列中。 
 
-在 Power BI Desktop 的查询编辑器窗口中，切换回 `FabrikamComments` 查询。 选择“添加列”  功能区。 在“常规”  组中，单击“调用自定义函数”  。
+在 Power BI Desktop 的查询编辑器窗口中，切换回 `FabrikamComments` 查询。 选择“添加列”功能区。 在“常规”组中，单击“调用自定义函数”。
 
 ![[“调用自定义函数”按钮]](../media/tutorials/power-bi/invoke-custom-function-button.png)<br><br>
 
-将出现“调用自定义函数”对话框。 在“新列名”  中，输入 `keyphrases`。 在“函数查询”  中，选择你创建的自定义函数 `KeyPhrases`。
+将出现“调用自定义函数”对话框。 在“新列名”中，输入 `keyphrases`。 在“函数查询”中，选择你创建的自定义函数 `KeyPhrases`。
 
-对话框中将出现新字段“文本(可选)”  。 此字段会询问我们希望使用哪一列来提供关键短语 API 的 `text` 参数的值。 （请记住，你已经硬编码了 `language` 和 `id` 参数的值。）从下拉菜单中选择 `Merged`（[此前](#PreparingData)通过合并主题和消息字段所创建的列）。
+对话框中将出现新字段“文本(可选)”。 此字段会询问我们希望使用哪一列来提供关键短语 API 的 `text` 参数的值。 （请记住，你已经硬编码了 `language` 和 `id` 参数的值。）从下拉菜单中选择 `Merged`（[此前](#PreparingData)通过合并主题和消息字段所创建的列）。
 
 ![[调用自定义函数]](../media/tutorials/power-bi/invoke-custom-function.png)
 
-最后，单击“确定”  。
+最后，单击“确定”。
 
 如果一切准备就绪，Power BI 将针对表中的每一行调用自定义函数一次。 它将查询发送到关键短语 API，并为表添加一个新列来存储结果。 但在这些操作开始之前，可能需要指定身份验证和隐私设置。
 
@@ -160,7 +160,7 @@ in  keyphrases
 
 ![[凭据横幅]](../media/tutorials/power-bi/credentials-banner.png)
 
-单击“编辑凭据”  ，确保选中对话框中的 `Anonymous`，然后单击“连接”  。 
+单击“编辑凭据”，确保选中对话框中的 `Anonymous`，然后单击“连接”。 
 
 > [!NOTE]
 > 你选择 `Anonymous` 是因为文本分析服务使用你的访问密钥对你进行身份验证，这样 Power BI 便不需要为 HTTP 请求自身提供凭据。
@@ -174,23 +174,23 @@ in  keyphrases
 
 ![[隐私横幅]](../media/tutorials/power-bi/privacy-banner.png)
 
-对于对话框中的每个数据源，请单击“继续”  ，然后选择 `Public`。 然后单击“保存”。 
+对于对话框中的每个数据源，请单击“继续”，然后选择 `Public`。 然后单击“保存”。
 
 ![[设置数据源隐私]](../media/tutorials/power-bi/privacy-dialog.png)
 
 ## <a name="create-the-word-cloud"></a>创建词云
 <a name="WordCloud"></a>
 
-处理完显示的横幅以后，请单击“主页”功能区中的“关闭并应用”，关闭查询编辑器。 
+处理完显示的横幅以后，请单击“主页”功能区中的“关闭并应用”，关闭查询编辑器。
 
 Power BI Desktop 需要时间来发出必需的 HTTP 请求。 对于表中的每一行，新的 `keyphrases` 列都包含关键短语 API 在文本中检测到的关键短语。 
 
-现在将使用此列生成一个词云。 首先，单击工作区左侧 Power BI Desktop 主窗口中的“报表”  按钮。
+现在将使用此列生成一个词云。 首先，单击工作区左侧 Power BI Desktop 主窗口中的“报表”按钮。
 
 > [!NOTE]
-> 为何使用提取的关键短语而不是每个评论的完整文本来生成词云？ 关键短语提供的是客户评论中的重要词汇，而不仅仅是最常见词汇。   另外，生成的云中的单词大小调整不会因某个词在相对少数评论中的频繁使用而扭曲。
+> 为何使用提取的关键短语而不是每个评论的完整文本来生成词云？ 关键短语提供的是客户评论中的重要词汇，而不仅仅是最常见词汇。  另外，生成的云中的单词大小调整不会因某个词在相对少数评论中的频繁使用而扭曲。
 
-如果尚未安装词云自定义视觉对象，请安装它。 在工作区右侧的“可视化效果”面板中，单击三点形式的省略号 ( **...** )，然后选择“从存储导入”。  然后搜索“云”并单击词云视觉对象旁边的“添加”按钮。  Power BI 会安装词云视觉对象并会让你知道它已成功安装。
+如果尚未安装词云自定义视觉对象，请安装它。 在工作区右侧的“可视化效果”面板中，单击三点形式的省略号 ( **...** )，然后选择“从存储导入”。 然后搜索“云”并单击词云视觉对象旁边的“添加”按钮。 Power BI 会安装词云视觉对象并会让你知道它已成功安装。
 
 ![[添加自定义视觉对象]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
@@ -200,11 +200,11 @@ Power BI Desktop 需要时间来发出必需的 HTTP 请求。 对于表中的�
 
 此时会在工作区中显示新的报表。 将 `keyphrases` 字段从“字段”面板拖至“可视化效果”面板中的“类别”字段。 词云会显示在报表中。
 
-现在，请切换到“可视化效果”面板的“格式”页面。 在“非索引字”类别中启用“默认非索引字”，以便从云中消除短的常用词，例如“of”。  
+现在，请切换到“可视化效果”面板的“格式”页面。 在“非索引字”类别中启用“默认非索引字”，以便从云中消除短的常用词，例如“of”。 
 
 ![[激活默认非索引字]](../media/tutorials/power-bi/default-stop-words.png)
 
-在此面板中再往下稍微移动一点，禁用“旋转文本”和“标题”。  
+在此面板中再往下稍微移动一点，禁用“旋转文本”和“标题”。 
 
 ![[激活焦点模式]](../media/tutorials/power-bi/word-cloud-focus-mode.png)
 
