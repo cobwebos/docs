@@ -17,6 +17,7 @@
         - name: Azure 门户
           href: learn/quick-collect-activity-log-portal.md
         - name: ARM 模板
+          displayName: Resource Manager
           href: learn/quick-collect-activity-log-arm.md
     - name: 监视虚拟机
       items:

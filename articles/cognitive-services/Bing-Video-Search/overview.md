@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8377f0f5d586212c94bb763598b6e7a9e391073c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c52f909cf3cc77b4f5e40ee9804d0c473e575c5
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75382712"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85601932"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>什么是必应视频搜索 API？
 
@@ -35,7 +35,7 @@ ms.locfileid: "75382712"
 
 必应视频搜索 API 是一项 RESTful Web 服务，可以轻松地通过任何编程语言进行调用，只要该语言能够发出 HTTP 请求和分析 JSON 即可。 可以通过 [REST API](csharp.md) 或 [SDK](video-search-sdk-quickstart.md) 使用此服务。
 
-1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的搜索查询向 API 发送请求。
 3. 通过分析返回的 JSON 消息处理 API 响应。
 
@@ -43,8 +43,6 @@ ms.locfileid: "75382712"
 ## <a name="next-steps"></a>后续步骤
 
 必应视频搜索 API [交互演示](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)介绍如何自定义搜索查询并在 Web 中搜索视频。
-
-做好调用 API 的准备后，请创建一个[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
 
 通过[快速入门](csharp.md)完成第一个 API 请求的快速入门。
 
