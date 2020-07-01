@@ -8,7 +8,7 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 运行自己的第一个查询 - Azure 门户
+    - name: 运行自己的第一个查询 - 门户
       displayName: 'portal, resource, graph, explorer'
       href: ./first-query-portal.md
     - name: 运行自己的第一个查询 - Azure CLI
@@ -26,6 +26,9 @@
     - name: 运行自己的第一个查询 - Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: 创建共享查询 - Azure CLI
+      displayName: 'extension, docker, queries'
+      href: ./shared-query-azure-cli.md
     - name: 部署共享查询 - ARM 模板
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

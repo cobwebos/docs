@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f70c14c424e8aaecbdc1138b52fdd6fb1e9fc265
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c5f65993909e142de6017b07591529cd7cb7b86
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051794"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200573"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何使用 SQL 按需版本（预览版）中的 OPENROWSET
 
@@ -60,7 +60,7 @@ Synapse SQL 中的 OPENROWSET 函数从数据源读取文件的内容。 数据�
 
 `OPENROWSET` 使用以下规则来确定如何向存储进行身份验证：
 - 在不带 `DATA_SOURCE` 的 `OPENROWSET` 中，身份验证机制依赖于调用方类型。
-  - 任何用户都可以使用 `OPENROWSET` 而不使用 `DATA_SOURCE` 来读取 Azure 存储上公开提供的文件。
+  - 任何用户都可使用 `OPENROWSET` 而不使用 `DATA_SOURCE` 来读取 Azure 存储上公开提供的文件。
   - 如果 Azure 存储允许 Azure AD 用户访问基础文件（例如，如果调用方对 Azure 存储具有 `Storage Reader` 权限），则 Azure AD 登录名可以使用其自己的 [Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)来访问受保护的文件。
   - SQL 登录名还可以使用不带 `DATA_SOURCE` 的 `OPENROWSET` 来访问公开可用的文件、使用 SAS 令牌或 Synapse 工作区的托管标识保护的文件。 你需要[创建服务器范围的凭据](develop-storage-files-storage-access-control.md#examples)，以便访问存储文件。 
 - 在带 `DATA_SOURCE` 的 `OPENROWSET` 中，身份验证机制是在分配给被引用数据源的数据库范围的凭据中定义的。 使用此选项，可以访问公开可用的存储，或者使用 SAS 令牌、工作区的托管标识或[调用方的 Azure AD 标识](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)（如果调用方是 Azure AD 主体）来访问存储。 如果 `DATA_SOURCE` 引用了非公共的 Azure 存储，则你需要[创建数据库范围的凭据](develop-storage-files-storage-access-control.md#examples)并在 `DATA SOURCE` 中引用该凭据以便访问存储文件。
@@ -178,7 +178,7 @@ ESCAPE_CHAR = 'char'
 
 指定文件中用于将自身及文件中所有分隔符值转义的字符。 如果转义字符后接除本身以外的某个值或者任何分隔符值，则读取值时会删除该转义字符。 
 
-无论是否启用了 FIELDQUOTE，都会应用 ESCAPE_CHAR 参数。 不会使用该参数来转义引号字符。 将会根据 Excel CSV 的行为使用双引号来转义引号字符。
+无论是否启用了 FIELDQUOTE，都会应用 ESCAPE_CHAR 参数。 不会使用该参数来转义引号字符。 必须使用其他引号字符来转义引号字符。 要让引号字符出现在列值内，必须将值放在引号中。
 
 FIRSTROW = 'first_row' 
 

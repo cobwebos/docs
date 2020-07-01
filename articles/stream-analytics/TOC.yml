@@ -30,7 +30,7 @@
       href: stream-analytics-with-azure-functions.md
     - name: 3 - 在 Azure Pipelines 中通过 CI/CD 进行部署
       href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: '4 - 运行 C# UDF'
+    - name: 4 - 运行 C# UDF
       href: stream-analytics-edge-csharp-udf.md
     - name: 5 - 创建自定义 .NET 反序列化程序
       href: custom-deserializer.md
@@ -82,10 +82,12 @@
           href: stream-analytics-javascript-user-defined-functions.md
         - name: JavaScript UDA
           href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: 'C# UDF'
+        - name: C# UDF
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: 机器学习 UDF
           href: machine-learning-udf.md
+        - name: 调试 UDF 和更新
+          href: debug-user-defined-functions.md
     - name: 优化流分析作业
       items:
         - name: 了解和调整流式处理单元
@@ -228,6 +230,8 @@
           href: visual-studio-code-local-run.md
         - name: 使用实时数据在本地进行测试
           href: visual-studio-code-local-run-live-input.md
+        - name: 使用作业关系图调试查询
+          href: debug-locally-using-job-diagram-vs-code.md
         - name: 设置 CI/CD 管道
           href: setup-cicd-vs-code.md
         - name: 探索作业

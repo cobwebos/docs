@@ -12,7 +12,7 @@
       href: quick-secure-virtual-hub.md
 - name: 教程
   items:
-    - name: 保护虚拟 WAN - 门户
+    - name: 保护虚拟中心 - 门户
       href: secure-cloud-network.md
     - name: 保护中心虚拟网络 - 门户
       href: secure-hybrid-network.md
@@ -26,16 +26,24 @@
       href: deployment-overview.md
     - name: 安全合作伙伴提供程序
       href: trusted-security-partners.md
+    - name: IP 组
+      href: ip-groups.md
     - name: 规则处理逻辑
       href: rule-processing.md
     - name: 体系结构选项
       href: vhubs-and-vnets.md
+    - name: 威胁情报设置
+      href: threat-intelligence-settings.md
+    - name: 网络规则中的 FQDN
+      href: fqdn-filtering-network-rules.md
 - name: 操作指南
   items:
     - name: 部署安全合作伙伴提供程序
       href: deploy-trusted-security-partner.md
     - name: 迁移到防火墙策略 - PowerShell
       href: migrate-to-policy.md
+    - name: DNS 设置
+      href: dns-settings.md
 - name: 参考
   items:
     - name: Azure CLI

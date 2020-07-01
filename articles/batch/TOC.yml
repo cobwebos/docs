@@ -135,6 +135,8 @@
           href: batch-virtual-network.md
         - name: 创建具有公共 IP 地址的池
           href: create-pool-public-ip.md
+        - name: 创建不具有公共 IP 地址的池
+          href: batch-pool-no-public-ip-address.md
         - name: 装载虚拟文件系统
           href: virtual-file-mount.md
         - name: 装载 Azure 文件共享

@@ -36,6 +36,30 @@
           href: virtual-wan-locations-partners.md
         - name: 面向合作伙伴的自动化指南
           href: virtual-wan-configure-automation-providers.md
+    - name: 定价概念
+      href: pricing-concepts.md
+    - name: 路由
+      items:
+        - name: 关于虚拟中心路由
+          href: about-virtual-hub-routing.md
+        - name: 方案
+          items:
+            - name: 任意位置到任意位置
+              href: scenario-any-to-any.md
+            - name: 隔离 VNet
+              href: scenario-isolate-vnets.md
+            - name: 隔离 VNet - 自定义
+              href: scenario-isolate-vnets-custom.md
+            - name: 共享服务 VNet
+              href: scenario-shared-services-vnet.md
+            - name: 通过 NVA 路由
+              href: scenario-route-through-nva.md
+            - name: 通过 NVA 路由 - 自定义（预览版）
+              href: scenario-route-through-nvas-custom.md
+            - name: Azure 防火墙 - 中心间（预览版）
+              href: scenario-route-between-hubs-firewall.md
+            - name: Azure 防火墙 - 自定义
+              href: scenario-route-between-vnets-firewall.md
     - name: 站点到站点
       items:
         - name: 关于 IPsec 策略
@@ -44,8 +68,6 @@
           href: path-selection-multiple-links.md
 - name: 操作指南
   items:
-    - name: 配置全局 VNet 对等互连
-      href: global-peering-vnet.md
     - name: 升级虚拟 WAN SKU
       href: upgrade-virtual-wan.md
     - name: ExpressRoute
@@ -90,13 +112,9 @@
           href: openvpn-azure-ad-tenant-multi-app.md
     - name: 路由
       items:
-        - name: 将流量从虚拟中心路由到 NVA
-          items:
-            - name: Azure 门户
-              href: virtual-wan-route-table-portal.md
-            - name: Azure PowerShell
-              href: virtual-wan-route-table.md
-        - name: 查看虚拟中心有效路由
+        - name: 如何配置虚拟中心路由
+          href: how-to-virtual-hub-routing.md
+        - name: 如何查看虚拟中心有效路由
           href: effective-routes-virtual-hub.md
     - name: 安全性
       items:

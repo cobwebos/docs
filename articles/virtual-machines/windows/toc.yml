@@ -855,6 +855,8 @@
           href: incremental-snapshots.md
         - name: 迁移和转换
           items:
+            - name: 转换为服务器端加密
+              href: disks-ade-sse-conversion-powershell.md
             - name: 在“标准”和“高级”之间转换磁盘
               href: convert-disk-storage.md
             - name: 使用 Azure Site Recovery 迁移到高级存储

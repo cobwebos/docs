@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61162a0e2e95a08547848f286f2db489f4b9d963
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737013"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85125798"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
 
@@ -113,7 +113,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 |*.events.data.microsoft.com|443|遥测服务|无|
 |www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|无|
 |*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|无|
-|login.windows.net|443|登录到 Office 365 等 Microsoft Online Services|无|
+|login.windows.net|443|登录到 Microsoft 365 等 Microsoft Online Services|无|
 |*.sfx.ms|443|OneDrive 客户端软件更新|无|
 |*.digicert.com|443|证书吊销检查|无|
 

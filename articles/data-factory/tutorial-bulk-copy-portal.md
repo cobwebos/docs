@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/22/2020
+ms.openlocfilehash: d7f6da930f797912ef0e91666082aa5654b7f1ab
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661066"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251711"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -58,7 +58,7 @@ ms.locfileid: "84661066"
 
 **准备源 Azure SQL 数据库**：
 
-遵循[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据创建 Azure SQL 数据库。 本教程将此示例数据库中的所有表复制到 Azure Synapse Analytics（前称为 SQL 数据仓库）。
+按照[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)一文，使用 Adventure Works LT 示例数据在 SQL 数据库中创建一个数据库。 本教程将此示例数据库中的所有表复制到 Azure Synapse Analytics（前称为 SQL 数据仓库）。
 
 **准备接收器 Azure Synapse Analytics（前称为 SQL 数据仓库）** ：
 
@@ -106,7 +106,7 @@ ms.locfileid: "84661066"
 在本教程中，请将 Azure SQL 数据库、Azure Synapse Analytics（前称为 SQL 数据仓库）和 Azure Blob 存储数据存储链接到数据工厂。 Azure SQL 数据库是源数据存储。 Azure Synapse Analytics（前称为 SQL 数据仓库）是接收器/目标数据存储。 在使用 PolyBase 将数据载入 Azure Synapse Analytics（前称为 SQL 数据仓库）之前，Azure Blob 存储用于暂存数据。 
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>创建源 Azure SQL 数据库链接服务
-在此步骤中，请创建一个链接服务，将 Azure SQL 数据库链接到数据工厂。 
+在此步骤中，请创建一个链接服务，将 Azure SQL 数据库中的数据库链接到数据工厂。 
 
 1. 从左窗格打开[“管理”选项卡](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
 
@@ -120,13 +120,13 @@ ms.locfileid: "84661066"
 
     b. 对于“服务器名称”，请选择你的服务器
     
-    c. 对于“数据库名称”，请选择 Azure SQL 数据库。 
+    c. 对于“数据库名称”，请选择你的数据库。 
     
-    d. 输入要连接到 Azure SQL 数据库的**用户名称**。 
+    d. 输入要连接到数据库的用户的姓名。 
     
     e. 输入对应于该用户的**密码**。 
 
-    f. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。
+    f. 若要使用指定的信息测试到数据库的连接，请单击“测试连接”。
   
     g. 单击“创建”以保存链接服务。
 
@@ -141,13 +141,13 @@ ms.locfileid: "84661066"
      
     b. 对于“服务器名称”，请选择你的服务器
      
-    c. 对于“数据库名称”，请选择 Azure SQL 数据库。 
+    c. 对于“数据库名称”，请选择你的数据库。 
      
-    d. 输入用于连接 Azure SQL 数据库的**用户名**。 
+    d. 输入用于连接到你的数据库的用户名。 
      
     e. 输入该用户的**密码**。 
      
-    f. 若要使用指定的信息测试到 Azure SQL 数据库的连接，请单击“测试连接”。
+    f. 若要使用指定的信息测试到数据库的连接，请单击“测试连接”。
      
     g. 单击“创建”。
 
@@ -181,7 +181,7 @@ ms.locfileid: "84661066"
     
 1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDatabaseDataset**。 在“链接服务”下选择“AzureSqlDatabaseLinkedService”。  然后单击“确定”。
 
-1. 切换到“连接”选项卡，然后选择任何表作为“表”。 此表是一个虚拟表。 在创建管道时指定一个针对源数据集的查询。 该查询用于从 Azure SQL 数据库提取数据。 也可以单击“编辑”复选框，然后输入 **dbo.dummyName** 作为表名称。 
+1. 切换到“连接”选项卡，然后选择任何表作为“表”。 此表是一个虚拟表。 在创建管道时指定一个针对源数据集的查询。 该查询用于从数据库提取数据。 也可以单击“编辑”复选框，然后输入 **dbo.dummyName** 作为表名称。 
  
 
 ### <a name="create-a-dataset-for-sink-azure-synapse-analytics-formerly-sql-dw"></a>为接收器 Azure Synapse Analytics（前称为 SQL 数据仓库）创建数据集
@@ -189,17 +189,18 @@ ms.locfileid: "84661066"
 1. 单击左窗格中的“+ (加)”，然后单击“数据集”。  
 1. 在“新建数据集”窗口中，选择“Azure Synapse Analytics (前称为 SQL 数据仓库)”，然后单击“继续”。  
 1. 在“设置属性”窗口的“名称”下，输入 **AzureSqlDWDataset**。 在“链接服务”下选择“AzureSqlDWLinkedService”。  然后单击“确定”。
-1. 切换到“参数”选项卡，单击“+ 新建”，并输入 **DWTableName** 作为参数名称。 如果从页面中复制/粘贴此名称，请确保 **DWTableName** 末尾没有**尾随空格字符**。
+1. 切换到“参数”选项卡，单击“+ 新建”，并输入 **DWTableName** 作为参数名称。 再次单击“+新建”，然后输入 DWSchema 作为参数名称 。 如果从页面中复制/粘贴此名称，请确保 DWTableName 和 DWSchema 末尾没有尾随空格字符 。 
 1. 切换到“连接”选项卡。 
 
-    a. 对于“表”，请选中“编辑”选项。  在第一个表名称输入框中输入 **dbo**。 然后选择进入第二个输入框，单击下面的“添加动态内容”链接。 
+    1. 对于“表”，请选中“编辑”选项。  选择进入第一个输入框，单击下面的“添加动态内容”链接。 在“添加动态内容”页面中，单击“参数”下面的 DWSchema，这将自动填充顶部的表达式文本框 `@dataset().DWSchema`，然后单击“完成”   。  
+    
+        ![数据集连接表名称](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
 
-    ![数据集连接表名称](./media/tutorial-bulk-copy-portal/dataset-connection-tablename.png)
+    1. 选择进入第二个输入框，单击下面的“添加动态内容”链接。 在“添加动态内容”页面中，单击“参数”下面的 DWTAbleName，这将自动填充顶部的表达式文本框 `@dataset().DWTableName`，然后单击“完成”   。 
+    
+    1. 数据集的 tableName 属性设置为一个特定值，该值作为 DWSchema 和 DWTableName 参数的自变量传递  。 ForEach 活动循环访问一系列表，然后将这些表逐个传递到“复制”活动。 
+    
 
-    b. 在“添加动态内容”页面中，单击“参数”下的 **DWTAbleName** 以自动填充顶部的表达式文本框 `@dataset().DWTableName`，然后单击“完成”。 数据集的 **tableName** 属性设置为一个特定值，该值作为 **DWTableName** 参数的自变量传递。 ForEach 活动循环访问一系列表，然后将这些表逐个传递到“复制”活动。 
-
-    ![数据集参数生成器](./media/tutorial-bulk-copy-portal/dataset-parameter-builder.png)
- 
 ## <a name="create-pipelines"></a>创建管道
 在本教程中创建两个管道：**IterateAndCopySQLTables** 和 **GetTableListAndTriggerCopyData**。 
 
@@ -257,7 +258,8 @@ ms.locfileid: "84661066"
 1. 切换到“接收器”选项卡，然后执行以下步骤： 
 
     1. 选择 **AzureSqlDWDataset** 作为**接收器数据集**。
-    1. 单击 DWTableName 参数的“值”输入框，选择下方的“添加动态内容”，输入 `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` 表达式作为脚本，然后选择“完成”。
+    1. 单击 DWTableName 参数的“值”输入框，选择下方的“添加动态内容”，输入 `@item().TABLE_NAME` 表达式作为脚本，然后选择“完成”。
+    1. 单击 DWSchema 参数的“值”输入框，选择下方的“添加动态内容”，输入 `@item().TABLE_SCHEMA` 表达式作为脚本，然后选择“完成” 。
     1. 对于“复制方法”，请选择“PolyBase”。 
     1. 清除“使用类型默认值”选项。 
     1. 单击“复制前脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
@@ -282,12 +284,12 @@ ms.locfileid: "84661066"
 * 触发管道“IterateAndCopySQLTables”来执行实际数据复制。
 
 1. 在左窗格中单击“+ (加)”，然后单击“管道”。 
-1. 在“常规”选项卡中，将管道的名称更改为 **GetTableListAndTriggerCopyData**。 
+1. 在“常规”面板的“属性”下，将管道的名称更改为 GetTableListAndTriggerCopyData 。 
 
 1. 在“活动”工具箱中展开“常规”， 将“查找”活动拖放到管道设计器图面，然后执行以下步骤：
 
     1. 输入 **LookupTableList** 作为**名称**。 
-    1. 输入“从 Azure SQL 数据库检索表格列表”作为**说明**。
+    1. 输入“从数据库检索表格列表”作为说明 。
 
 1. 切换到“设置”选项卡，然后执行以下步骤：
 
@@ -310,10 +312,8 @@ ms.locfileid: "84661066"
 1. 切换到“执行管道”活动的“设置”选项卡，并执行以下步骤：  
 
     1. 选择 **IterateAndCopySQLTables** 作为**调用的管道**。 
-    1. 展开“高级”部分，然后清除“等待完成”对应的复选框。 
-    1. 在“参数”部分单击“+ 新建”。  
-    1. 输入 **tableList** 作为参数**名称**。
-    1. 单击“值”输入框，选择下方的“添加动态内容”，输入 `@activity('LookupTableList').output.value` 作为表名值，然后选择“完成”。 你是在将“查找”活动的结果列表设置为第二个管道的输入。 结果列表包含一系列表，这些表的数据需要复制到目标。 
+    1. 清除“等待完成”复选框。
+    1. 在“参数”部分，单击“值”下的输入框，选择下面的“添加动态内容”，输入 `@activity('LookupTableList').output.value` 作为表名值，然后选择“完成”  。 你是在将“查找”活动的结果列表设置为第二个管道的输入。 结果列表包含一系列表，这些表的数据需要复制到目标。 
 
         ![“执行管道”活动 - 设置页](./media/tutorial-bulk-copy-portal/execute-pipeline-settings-page.png)
 

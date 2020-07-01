@@ -58,6 +58,8 @@
       href: central-management.md
     - name: 远程工作支持
       href: remote-work-support.md
+    - name: 网络规则中的 FQDN
+      href: fqdn-filtering-network-rules.md
 - name: 操作指南
   items:
     - name: 使用 Azure PowerShell 进行部署
@@ -80,6 +82,10 @@
       href: create-ip-group.md
     - name: 保护 Windows 虚拟桌面
       href: protect-windows-virtual-desktop.md
+    - name: 保护 Azure Kubernetes 服务 (AKS)
+      href: protect-azure-kubernetes-service.md
+    - name: DNS 设置
+      href: dns-settings.md
 - name: 参考
   items:
     - name: Azure CLI

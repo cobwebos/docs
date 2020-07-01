@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a01d8568c50cca181ec10f91b316715d64d2c37e
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8a20d7cb05f4529d5aa8a115b7d1db6e4d812be0
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737829"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100865"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -41,7 +41,7 @@ ms.locfileid: "84737829"
 - 要使用的映像的源所在的位置。 该映像是来自 Azure 库，还是一个自定义映像？
 - 你的域加入凭据。
 
-此外，请确保已注册 Microsoft.DesktopVirtualization 资源提供程序。 如果还没有注册，请转到“订阅”，选择你的订阅名称，然后选择“Azure 资源提供程序”。
+此外，请确保已注册 Microsoft.DesktopVirtualization 资源提供程序。 如果还没有注册，请转到“订阅”，选择你的订阅名称，然后选择“Azure 资源提供程序” 。
 
 使用 Azure 资源管理器模板创建 Windows 虚拟桌面主机池时，可以从 Azure 库、托管映像或非托管映像创建虚拟机。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
 

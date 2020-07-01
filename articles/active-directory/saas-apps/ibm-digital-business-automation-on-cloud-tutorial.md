@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94dcd06e1b3c201a10e656b6752cfa60c0c7d39c
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: f33992c7aa205e503c7de150adad7180ff823881
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765243"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibm-digital-business-automation-on-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 IBM Digital Business Automation on Cloud 的集成
 
@@ -81,7 +81,21 @@ ms.locfileid: "84765243"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 在“基本 SAML 配置”部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
+    
+    a. 单击“上传元数据文件”。
+
+    b. 单击“文件夹徽标”来选择元数据文件并单击“上传”。
+
+    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充到“IBM Digital Business Automation on Cloud”部分的文本框中 ：
+
+    > [!Note]
+    > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。 
+
+    > [!Note]
+    > 客户可从 [DBAoC DevOps 团队](mailto:supportbpmoncloud@us.ibm.com)那里获取云订阅的元数据文件。
+
+1. 在没有“服务提供程序元数据文件”的情况下，如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值  ：
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.automationcloud.ibm.com/isam/sps/<TENANT>/saml20`
 

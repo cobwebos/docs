@@ -1,23 +1,25 @@
 ---
 title: CIS Microsoft Azure 基础基准的法规符合性详细信息
 description: CIS Microsoft Azure 基础基准法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 1e3c2baec1186e29da45c6395123e2f5aab9165a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 214d50c790f9976b96bf29906d4db64a111e859f
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736826"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299018"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基础基准法规符合性内置计划的详细信息
 
-以下文章详细说明了 Azure Policy 法规符合性内置计划定义如何映射到 CIS Microsoft Azure 基础基准的符合性域和控制措施 。
+下文详细说明了 Azure Policy 法规符合性内置计划定义如何映射到 CIS Microsoft Azure 基础基准的符合性域和控制措施 。
 有关此符合性标准的详细信息，请参阅 [CIS Microsoft Azure 基础基准](https://www.cisecurity.org/benchmark/azure/)。 若要了解所有权，请参阅 [Azure Policy 策略定义](../concepts/definition-structure.md#type)和[云中责任分担](../../../security/fundamentals/shared-responsibility.md)。
 
 以下映射适用于 CIS Microsoft Azure 基础基准控制措施。 使用右侧的导航栏可直接跳转到特定的符合性域。 许多控制措施都是使用 [Azure Policy](../overview.md) 计划定义实现的。 若要查看完整计划定义，请在 Azure 门户中打开“策略”，并选择“定义”页 。
 然后，请查找并选择 CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划定义。
+
+此内置计划部署为 [CIS Microsoft Azure Foundations 基准蓝图示例](../../blueprints/samples/cis-azure-1-1-0.md)的一部分。
 
 > [!IMPORTANT]
 > 下面的每个控件都与一个或多个 [Azure Policy](../overview.md) 定义关联。
@@ -606,7 +608,6 @@ ms.locfileid: "84736826"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应选择安全中心标准定价层](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1181c5f-672a-477a-979a-7d58aa086233) |标准定价层为网络和虚拟机启用威胁检测，在 Azure 安全中心提供威胁情报、异常检测和行为分析 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_Standard_pricing_tier.json) |
 
 ## <a name="storage-accounts"></a>存储帐户
 
@@ -616,7 +617,7 @@ ms.locfileid: "84736826"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应限制对存储帐户的网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |应限制对存储帐户的网络访问。 配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端的连接，可以向来自特定 Azure 虚拟网络或到公共 Internet IP 地址范围的流量授予访问权限 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
+|[应限制对存储帐户的网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |应限制对存储帐户的网络访问。 配置网络规则，以便只允许来自允许的网络的应用程序访问存储帐户。 若要允许来自特定 Internet 或本地客户端的连接，可以向来自特定 Azure 虚拟网络或到公共 Internet IP 地址范围的流量授予访问权限 |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |
 
 ### <a name="ensure-that-secure-transfer-required-is-set-to-enabled"></a>确保“需要安全传输”设置为“已启用”
 

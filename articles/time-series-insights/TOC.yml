@@ -117,6 +117,8 @@
       items:
         - name: 添加对 Long 数据类型的支持
           href: time-series-insights-long-data-type.md
+        - name: JSON 平展和存储的更改
+          href: ingestion-rules-update.md
 - name: 参考
   items:
     - name: 时序见解

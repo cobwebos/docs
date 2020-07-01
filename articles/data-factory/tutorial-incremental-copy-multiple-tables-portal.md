@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户以增量方式复制多个表
-description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库。
+description: 在本教程中，你将创建一个 Azure 数据工厂管道，该管道以递增方式将增量数据从 SQL Server 数据库中的多个表复制到 Azure SQL 数据库的数据库中。
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 2578d1b6fa07545e7205b8a8c86447ef2e54176a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: c215c2cb256ab37bcb096c018aefb3a410ab1e4f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730095"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251142"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库。    
+在本教程中，你将创建一个带管道的 Azure 数据工厂，该管道将增量数据从 SQL Server 数据库中的多个表加载到 Azure SQL 数据库中的数据库。    
 
 在本教程中执行以下步骤：
 
@@ -69,7 +69,7 @@ ms.locfileid: "84730095"
 
 ## <a name="prerequisites"></a>先决条件
 * **SQL Server**。 在本教程中，请将 SQL Server 数据库用作源数据存储。 
-* **Azure SQL 数据库**。 使用 SQL 数据库作为接收器数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。 
+* **Azure SQL 数据库**。 使用 Azure SQL 数据库中的数据库作为接收器数据存储。 如果 SQL 数据库没有数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建步骤。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 数据库中创建源表
 
@@ -111,12 +111,13 @@ ms.locfileid: "84730095"
     
     ```
 
-### <a name="create-destination-tables-in-your-azure-sql-database"></a>在 Azure SQL 数据库中创建目标表
-1. 打开 SQL Server Management Studio，连接到 Azure SQL 数据库。
+### <a name="create-destination-tables-in-your-database"></a>在数据库中创建目标表
+
+1. 打开 SQL Server Management Studio，连接到 Azure SQL 数据库中的数据库。
 
 1. 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
 
-1. 对 Azure SQL 数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
+1. 对数据库运行以下 SQL 命令，以便创建名为 `customer_table` 和 `project_table` 的表：  
     
     ```sql
     create table customer_table
@@ -134,8 +135,9 @@ ms.locfileid: "84730095"
 
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>在 Azure SQL 数据库中创建另一个表，用于存储高水印值
-1. 针对 Azure SQL 数据库运行以下 SQL 命令，创建名为 `watermarktable` 的表用于存储水印值： 
+### <a name="create-another-table-in-your-database-to-store-the-high-watermark-value"></a>在数据库中再创建一个表来存储高水印值
+
+1. 针对数据库运行以下 SQL 命令，创建一个名为 `watermarktable` 的表来存储水印值： 
     
     ```sql
     create table watermarktable
@@ -156,9 +158,9 @@ ms.locfileid: "84730095"
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>在 Azure SQL 数据库中创建存储过程 
+### <a name="create-a-stored-procedure-in-your-database"></a>在数据库中创建一个存储流程
 
-运行以下命令，在 Azure SQL 数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
+运行以下命令，在数据库中创建存储过程。 此存储过程在每次管道运行后更新水印值。 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -174,8 +176,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>在 Azure SQL 数据库中创建数据类型和其他存储过程
-运行以下查询，在 Azure SQL 数据库中创建两个存储过程和两个数据类型， 以便将源表中的数据合并到目标表中。
+### <a name="create-data-types-and-additional-stored-procedures-in-your-database"></a>在数据库中创建数据类型和其他存储流程
+
+运行以下查询，在数据库中创建两个存储过程和两个数据类型。 以便将源表中的数据合并到目标表中。
 
 为了方便入门，我们直接使用这些存储过程通过表变量来传入增量数据，然后将其合并到目标存储中。 请注意，不能将大量的增量行（超过 100）存储在表变量中。  
 
@@ -285,7 +288,7 @@ END
 1. 确认在 Integration Runtime 的列表中看到 **MySelfHostedIR**。
 
 ## <a name="create-linked-services"></a>创建链接服务
-可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，你将创建指向 SQL Server 数据库和 Azure SQL 数据库的链接服务。 
+可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，你将创建 SQL Server 数据库和 Azure SQL 数据库中数据库的链接服务。 
 
 ### <a name="create-the-sql-server-linked-service"></a>创建 SQL Server 链接服务
 在此步骤中，请将 SQL Server 数据库链接到数据工厂。
@@ -308,7 +311,7 @@ END
     1. 若要保存链接服务，请单击“完成”。
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
-在上一步骤中，你创建一个链接服务，将源 SQL Server 数据库链接到数据工厂。 在此步骤中，请将目标/接收器 Azure SQL 数据库链接到数据工厂。 
+在上一步骤中，你创建一个链接服务，将源 SQL Server 数据库链接到数据工厂。 在该步骤中，要将目标/接收器数据库链接到数据工厂。 
 
 1. 在“连接”窗口中从“Integration Runtime”选项卡切换到“链接服务”选项卡，然后单击“+ 新建”。   
 1. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。   
@@ -316,8 +319,8 @@ END
 
     1. 对于“名称”，请输入 **AzureSqlDatabaseLinkedService**。 
     1. 至于“服务器名称”，请从下拉列表中选择服务器的名称。 
-    1. 至于“数据库名称”，请选择按照先决条件在其中创建了 created customer_table 和 project_table 的 Azure SQL 数据库。 
-    1. 至于“用户名”，请输入能够访问 Azure SQL 数据库的用户的名称。 
+    1. 至于“数据库名称”，请选择按照先决条件在其中创建了 created customer_table 和 project_table 的数据库。 
+    1. 对于“用户名”，请输入有权访问该数据库的用户的姓名。 
     1. 至于“密码”，请输入用户的**密码**。 
     1. 若要测试数据工厂是否可以连接到 SQL Server 数据库，请单击“测试连接”。 修复任何错误，直到连接成功。 
     1. 若要保存链接服务，请单击“完成”。

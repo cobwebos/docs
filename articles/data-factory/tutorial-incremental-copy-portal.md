@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 71fca8f7dd808058e88d5a5ffe9a64e1136ceefc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: df185f8b75af6a845306fccc18d7d3cce74d0815
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84736490"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249154"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
+# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
+在本教程中，创建一个带管道的 Azure 数据工厂，将增量数据从 Azure SQL 数据库中的表加载到 Azure Blob 存储。
 
 在本教程中执行以下步骤：
 
@@ -65,7 +65,7 @@ ms.locfileid: "84736490"
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 ## <a name="prerequisites"></a>先决条件
-* **Azure SQL 数据库**。 将数据库用作源数据存储。 如果没有 SQL 数据库，请参阅[创建 Azure SQL 数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建该数据库的步骤。
+* **Azure SQL 数据库**。 将数据库用作源数据存储。 如果 Azure SQL 数据库没有数据库，请参阅[在 Azure SQL 数据库中创建数据库](../azure-sql/database/single-database-create-quickstart.md)，了解创建步骤。
 * **Azure 存储**。 将 Blob 存储用作接收器数据存储。 如果没有存储帐户，请参阅[创建存储帐户](../storage/common/storage-account-create.md)以获取创建步骤。 创建名为 adftutorial 的容器。 
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>在 SQL 数据库中创建数据源表
@@ -103,6 +103,7 @@ ms.locfileid: "84736490"
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>在 SQL 数据库中创建另一个表，用于存储高水印值
+
 1. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `watermarktable` 的表，用于存储水印值：  
 
     ```sql
@@ -169,7 +170,7 @@ END
          
         若要了解有关资源组的详细信息，请参阅 [使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。  
 6. 选择“V2”作为“版本”。
-7. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+7. 选择数据工厂的**位置**。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库、Azure SQL 托管实例等）和计算资源（HDInsight 等）可位于其他区域中。
 8. 单击“创建”。      
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
 
@@ -199,7 +200,7 @@ END
     2. 对于“服务器名称”，请选择你的服务器。
     3. 从下拉列表中选择“数据库名称”。
     4. 请输入“用户名” & “密码”。
-    5. 若要测试到 Azure SQL 数据库的连接，请单击“测试连接”。
+    5. 若要测试到 SQL 数据库的连接，请单击“测试连接”。
     6. 单击“完成”。
     7. 对于“链接服务”，确认选择了“AzureSqlDatabaseLinkedService”。 
 
@@ -322,7 +323,7 @@ END
 
 ## <a name="add-more-data-to-source"></a>向源添加更多数据
 
-在 SQL 数据库（数据源存储）中插入新数据。
+在数据库（数据源存储）中插入新数据。
 
 ```sql
 INSERT INTO data_source_table
@@ -332,7 +333,7 @@ INSERT INTO data_source_table
 VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
 ```
 
-SQL 数据库中的更新数据为：
+数据库中更新后的数据为：
 
 ```
 PersonID | Name | LastModifytime
@@ -346,8 +347,8 @@ PersonID | Name | LastModifytime
 7 | newdata | 2017-09-07 09:01:00.000
 ```
 
-
 ## <a name="trigger-another-pipeline-run"></a>触发另一管道运行
+
 1. 切换到“编辑”选项卡。单击树状视图中的管道（如果未在设计器中打开）。
 
 2. 单击工具栏中的“添加触发器”，然后单击“立即触发”。 

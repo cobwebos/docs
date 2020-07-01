@@ -3,20 +3,14 @@
 - name: 概述
   expanded: true
   items:
-    - name: 云应用管理和单一登录是什么？
+    - name: 什么是应用程序管理？
       href: what-is-application-management.md
-    - name: 本地应用的应用程序代理是什么？
-      href: what-is-application-proxy.md
-    - name: 常见的应用管理方案
-      href: common-scenarios.md
-    - name: 什么是应用程序预配？
-      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: 快速入门
   items:
-    - name: 从库中添加云应用
-      href: add-application-portal.md
     - name: 查看企业应用程序
       href: view-applications-portal.md
+    - name: 从库中添加云应用
+      href: add-application-portal.md
 - name: 教程
   items:
     - name: 集成库应用（例如 ServiceNow、Salesforce、Dropbox）
@@ -32,6 +26,8 @@
   items:
     - name: 应用管理最佳做法
       href: application-management-fundamentals.md
+    - name: 应用管理常用方案
+      href: common-scenarios.md
     - name: 云应用和单一登录
       items:
         - name: 计划云应用集成
@@ -80,6 +76,8 @@
       items:
         - name: 应用程序代理
           href: application-proxy.md
+        - name: 什么是本地应用的应用程序代理？
+          href: what-is-application-proxy.md
         - name: 计划应用程序代理部署
           href: application-proxy-deployment-plan.md
         - name: 连接器

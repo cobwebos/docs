@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: 265c4087dbb93bc429cf61ebbeab13dc18c83353
-  ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+  ms.openlocfilehash: e740fd08dc3e616b0768c6c15fd4191cb58e261a
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/16/2020
-  ms.locfileid: "84808928"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565421"
 landingContent:
 - title: 关于 Azure 远程渲染
   linkLists:
@@ -60,11 +60,19 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Unity：从头开始设置项目
-      url: tutorials/unity/project-setup.md
-    - text: Unity：使用远程实体
-      url: tutorials/unity/working-with-remote-entities.md
-    - text: Unity：更改环境和材料
-      url: tutorials/unity/changing-environment-and-materials.md
+    - text: 概述
+      url: tutorials/unity/tutorial-landing.md
+    - text: 查看远程渲染的模型
+      url: tutorials/unity/view-remote-models/view-remote-models.md
+    - text: 加载自定义模型
+      url: tutorials/unity/custom-models/custom-models.md
+    - text: 操作模型
+      url: tutorials/unity/manipulate-models/manipulate-models.md
+    - text: 优化材料、照明和效果
+      url: tutorials/unity/materials-lighting-effects/materials-lighting-effects.md
+    - text: 保护 Azure 远程渲染和模型存储
+      url: tutorials/unity/security/security.md
+    - text: 创建可以商用的 Azure 远程渲染应用程序
+      url: tutorials/unity/commercial-ready/commercial-ready.md
     - text: 本机 C++：将远程渲染集成到 HoloLens Holographic 应用
       url: tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md

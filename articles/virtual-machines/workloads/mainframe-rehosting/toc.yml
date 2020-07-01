@@ -18,6 +18,8 @@
           href: microfocus/get-started.md
         - name: 安装 Enterprise Server
           href: microfocus/set-up-micro-focus-azure.md
+        - name: 将 Enterprise Server 部署到 AKS
+          href: microfocus/deploy-micro-focus-enterprise-server.md
         - name: 运行 CICS BankDemo
           href: microfocus/demo.md
         - name: 容器中的 Enterprise Server

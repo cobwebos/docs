@@ -4,6 +4,14 @@
   items:
     - name: 什么是 Azure 顾问？
       href: advisor-overview.md
+- name: 快速入门
+  items:
+    - name: 针对新的建议配置警报
+      items:
+        - name: Azure 门户
+          href: advisor-alerts-portal.md
+        - name: ARM 模板
+          href: advisor-alerts-arm.md
 - name: 教程
   items:
     - name: 顾问入门
@@ -25,7 +33,7 @@
     - name: 权限和阻止的操作
       href: permissions.md
     - name: 针对建议配置警报
-      href: advisor-alerts.md
+      href: advisor-alerts-portal.md
     - name: 针对建议的批量修正
       href: advisor-quick-fix.md
     - name: Azure Resource Graph 中的顾问数据

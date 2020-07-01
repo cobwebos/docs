@@ -86,8 +86,10 @@
       href: hyper-v-migration-architecture.md
     - name: 基于 VMware 代理的迁移体系结构
       href: agent-based-migration-architecture.md
-    - name: “评估”概述
+    - name: “Azure VM 评估”概述
       href: concepts-assessment-calculation.md
+    - name: “AVS 评估”概述
+      href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: 用于评估的最佳做法
       href: best-practices-assessment.md
     - name: 依赖项分析概述
@@ -124,8 +126,10 @@
       href: how-to-create-group-machine-dependencies.md
     - name: 分析计算机依赖项（无代理）
       href: how-to-create-group-machine-dependencies-agentless.md
-    - name: 创建评估
+    - name: 创建 Azure VM 评估
       href: how-to-create-assessment.md
+    - name: 创建 AVS 评估
+      href: how-to-create-azure-vmware-solution-assessment.md
     - name: 评估 SQL Server 数据库
       href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: 自定义评估

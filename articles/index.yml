@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 6edc39bc9923d53732775c68c9b7fe4f2d35b055
-  ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+  ms.openlocfilehash: 525d39eb4170927ebbf2fdee9298921093ee2aef
+  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/26/2020
-  ms.locfileid: "85414379"
+  ms.lasthandoff: 06/30/2020
+  ms.locfileid: "85565589"
 highlightedContent:
   items:
   - title: Azure 开发人员入门指南
@@ -68,7 +68,7 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     - analytics
-    url: /azure/databricks/index.yml
+    url: /azure/databricks/
   - title: Azure 机器学习
     summary: 通过试验和模型管理，使用端到端、可缩放的可信平台，让所有人都能够获得 AI 体验
     imageSrc: https://static.docs.com/ui/media/product/azure/machine-learning.svg
@@ -682,7 +682,7 @@ productDirectory:
     azureCategories:
     - developer-tools
     url: https://code.visualstudio.com/docs
-  - title: Visual Studio Online（预览版）
+  - title: Visual Studio Codespaces（预览版）
     summary: 云支持的开发环境，可从任何位置访问
     imageSrc: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
     azureCategories:
@@ -1042,12 +1042,12 @@ productDirectory:
     - media
     url: media-services/latest/index.yml
   - title: Data Box
-    summary: 用于将数据传输到 Azure 并进行 Edge 计算的设备和解决方案
+    summary: 用于将数据传输到 Azure 的设备和解决方案
     imageSrc: https://static.docs.com/ui/media/product/azure/data-box.svg
     azureCategories:
     - migration
     - storage
-    url: databox-family/index.md
+    url: databox/index.yml
   - title: 空间定位点（预览版）
     summary: 创建多用户的、具有空间感的混合现实体验
     imageSrc: https://static.docs.com/ui/media/product/azure/spatial-anchor-accounts.svg

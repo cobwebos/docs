@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的物理
 description: 介绍如何使用 Azure Migrate 服务器评估来评估要迁移到 Azure 的本地物理服务器。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: ee88f9058abc89a671fa846a67c22a752f0d05e4
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052201"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080768"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用 Azure Migrate:服务器评估工具评估物理服务器
 
@@ -80,7 +80,7 @@ ms.locfileid: "85052201"
     - 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
     - 执行 PowerShell 脚本以启动设备 Web 应用程序。
     - 完成设备的首次配置，并将其注册到 Azure Migrate 项目。
-- 可为单个 Azure Migrate 项目设置多个设备。 在所有设备中，你可以发现任意数量的物理服务器。 在每个设备上，最多可以发现 250 个服务器。
+- 可为单个 Azure Migrate 项目设置多个设备。 在所有设备中，你可以发现任意数量的物理服务器。 在每台设备上，最多可发现 1000 个服务器。
 
 ### <a name="download-the-installer-script"></a>下载安装程序脚本
 

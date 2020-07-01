@@ -1,6 +1,14 @@
-- name: 从头开始设置 Unity 项目
-  href: project-setup.md
-- name: 在 Unity 中使用远程实体
-  href: working-with-remote-entities.md
-- name: 更改环境和材料
-  href: changing-environment-and-materials.md
+- name: 概述
+  href: tutorial-landing.md
+- name: 查看远程渲染的模型
+  href: view-remote-models/view-remote-models.md
+- name: 接口和自定义模型
+  href: custom-models/custom-models.md
+- name: 操作模型
+  href: manipulate-models/manipulate-models.md
+- name: 优化材料、照明和效果
+  href: materials-lighting-effects/materials-lighting-effects.md
+- name: 保护 Azure 远程渲染和模型存储
+  href: security/security.md
+- name: 创建可以商用的 Azure 远程渲染应用程序
+  href: commercial-ready/commercial-ready.md

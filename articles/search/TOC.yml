@@ -1,13 +1,13 @@
 - name: Azure 认知搜索文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: Azure 认知搜索是什么？
       href: search-what-is-azure-search.md
     - name: 新增功能
       href: whats-new.md
 - name: 快速入门
-  expanded: true
   items:
     - name: 门户
       items:
@@ -85,7 +85,7 @@
     - name: Python 示例
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST 示例
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
@@ -388,10 +388,10 @@
           href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
     - name: REST
       items:
-        - name: 搜索 2019-05-06
+        - name: 搜索 2020-06-30
           href: /rest/api/searchservice
-        - name: 搜索 2019-05-06-Preview
-          href: /rest/api/searchservice/index-2019-05-06-preview
+        - name: 搜索 2020-06-30-Preview
+          href: /rest/api/searchservice/index-preview
         - name: 管理 2020-03-13
           href: /rest/api/searchmanagement
         - name: 管理 2019-10-01-Preview

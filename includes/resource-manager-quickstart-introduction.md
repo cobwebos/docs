@@ -11,4 +11,4 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 06/23/2020
 ms.locfileid: "85249300"
 ---
-[ARM 模板](/azure/azure-resource-manager/templates/overview)是一个 JAVASCRIPT 对象表示法（JSON）文件，用于定义项目的基础结构和配置。 该模板使用声明性语法，使你可以声明要部署的内容，而不需要编写一系列编程命令来进行创建。
+[ARM 模板](/azure/azure-resource-manager/templates/overview)是定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以声明要部署的内容，而不需要编写一系列编程命令来进行创建。

@@ -36,6 +36,10 @@
       href: create-certificate.md
     - name: 创建证书签名请求
       href: create-certificate-signing-request.md
+- name: 示例
+  items:
+    - name: Key Vault 代码示例
+      href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
 - name: 操作指南
   items:
     - name: 将 Key Vault 与 DigiCert CA 集成
