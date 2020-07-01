@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 10e25338ab6960addeebcc224d0a6633df451964
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 04f4c91ece77f7476cbe3bb27236ecdc2b5c60e7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943146"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603156"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>教程：在网页上获取搜索建议
 
@@ -29,7 +29,7 @@ ms.locfileid: "78943146"
 
 ## <a name="prerequisites"></a>先决条件
 
-要继续学习本教程，需要必应自动推荐 API 的订阅密钥。 如果没有，请在 Azure 门户中[创建必应自动建议资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)。 也可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/)。
+要继续学习本教程，需要必应自动推荐 API 的订阅密钥。 如果没有，请在 Azure 门户中[创建必应自动建议资源](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)。
 
 ## <a name="create-a-new-web-page"></a>创建新的网页
 
@@ -118,7 +118,7 @@ getSubscriptionKeyLocalStorage 帮助程序函数首先尝试通过查找适当�
     }
 ```
 
-getSubscriptionKey 帮助程序函数采用一个参数 invalidate  。 如果 invalidate  为 true  ，则 getSubscriptionKey 删除包含必应自动推荐 API 密钥的 cookie。 如果 invalidate  为 false  ，则 getSubscriptionKey 返回必应自动推荐 API 密钥的值。
+getSubscriptionKey 帮助程序函数采用一个参数 invalidate。 如果 invalidate 为 true，则 getSubscriptionKey 删除包含必应自动推荐 API 密钥的 cookie。 如果 invalidate 为 false，则 getSubscriptionKey 返回必应自动推荐 API 密钥的值。
 
 ```html
     function getSubscriptionKey(invalidate) {
@@ -200,7 +200,7 @@ function bingAutosuggest(query, key) {
     }
 ```
 
-将 Ocp-Apim-Subscription-Key  标头设置为必应自动推荐 API 密钥的值。
+将 Ocp-Apim-Subscription-Key 标头设置为必应自动推荐 API 密钥的值。
 
 ```html
     request.setRequestHeader("Ocp-Apim-Subscription-Key", key);
@@ -232,7 +232,7 @@ function bingAutosuggest(query, key) {
     });
 ```
 
-发送请求。 结束 bingAutosuggest 函数、script  标记和 head  标记。
+发送请求。 结束 bingAutosuggest 函数、script 标记和 head 标记。
 
 ```html
     request.send();
@@ -266,7 +266,7 @@ function bingAutosuggest(query, key) {
 </form>
 ```
 
-添加用于显示结果的 HTML div 标记  。 之前定义的 JavaScript 指此 div 标记  。
+添加用于显示结果的 HTML div 标记。 之前定义的 JavaScript 指此 div 标记。
 
 ```html
 <h2>Results</h2>
@@ -283,7 +283,7 @@ function bingAutosuggest(query, key) {
 
 ## <a name="display-results"></a>显示结果
 
-在浏览器中打开网页。 在提示符处，输入必应自动推荐 API 订阅密钥。 然后在“自动建议”  文本框中输入查询（例如，“sail”）。 在键入时，网页将自动更新以显示自动建议结果。
+在浏览器中打开网页。 在提示符处，输入必应自动推荐 API 订阅密钥。 然后在“自动建议”文本框中输入查询（例如，“sail”）。 在键入时，网页将自动更新以显示自动建议结果。
 
 ```json
 {

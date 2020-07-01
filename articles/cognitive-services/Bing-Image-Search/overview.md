@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6bd8c472aa659bec31440292e20328865b1cb531
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: eb657c16f6f3ff67f4379134f3aa478f10d8ef94
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79134521"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603530"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>什么是必应图像搜索 API？
 
@@ -39,7 +39,7 @@ ms.locfileid: "79134521"
 
 必应图像搜索 API 是一项 RESTful Web 服务，可以轻松地通过任何编程语言调用，只要该语言能够发出 HTTP 请求和分析 JSON 即可。 可以通过 [REST API](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?) 或 [SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) 使用此服务。
 
-1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+1. 创建可以访问必应搜索 API 的[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/free/cognitive-services/)。
 2. 使用有效的[搜索查询](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)向 API 发送请求。
 3. 通过分析返回的 JSON 消息处理 API 响应。
 
@@ -47,8 +47,6 @@ ms.locfileid: "79134521"
 
 首先，请尝试必应搜索 API [交互式演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)。
 此演示介绍如何快速自定义搜索查询并在 Web 中搜索图像。
-
-做好调用 API 的准备后，请创建一个[认知服务 API 帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以免费[创建一个帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
 
 若要完成第一个 API 请求的快速入门，可以学习：
 

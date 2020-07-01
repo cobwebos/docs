@@ -3,12 +3,12 @@ title: 标记实体示例言语
 description: 了解如何在 LUIS 门户的意向详细信息页中使用子实体在示例查询文本中标记计算机学习实体。
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 959b9c6b25a7a76a87112fcbd1a10e7da12db1dd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f576f42f46930d81212ff754a14ee30c75b79624
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722637"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610483"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>在示例查询文本中标记计算机学习实体
 
@@ -16,14 +16,14 @@ ms.locfileid: "83722637"
 
 您可以标记计算机学习的实体和子实体。
 
-由于无法标记正则表达式、列出或预生成的实体，请创建一个实体或子实体，并将这些实体添加到实体或子实体的功能（如果适用）。
+由于无法标记正则表达式、列出或预生成的实体，请创建一个实体或子实体，并将这些实体添加为适用于实体或子实体的功能（如果适用）。
 
 ## <a name="label-example-utterances-from-the-intent-detail-page"></a>从意向详细信息页最谈话的标签示例
 
 若要标记查询文本中实体的示例，请选择查询文本的目的。
 
-1. 登录到[LUIS 门户](https://www.luis.ai)，选择**订阅**和**创作资源**，查看分配给该创作资源的应用。
-1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
+1. 在“我的应用”页上选择应用名称以打开应用。
 1. 选择具有要为其添加实体的最谈话示例的目的。
 1. 选择要添加标签的文本，然后选择实体。
 

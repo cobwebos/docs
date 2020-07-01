@@ -30,10 +30,8 @@
       href: concepts-identity.md
     - name: 私有云升级
       href: concepts-upgrades.md
-    - name: 中心和分支集成
-      href: concepts-avs-hub-and-spoke-integration.md
-    - name: API 管理
-      href: concepts-api-management.md
+    - name: 基于角色的访问控制
+      href: concepts-rbac.md
 - name: 操作指南
   items:
     - name: 设置 HCX
