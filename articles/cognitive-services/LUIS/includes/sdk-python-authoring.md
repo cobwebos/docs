@@ -30,7 +30,7 @@ ms.locfileid: "84171323"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Python 3.x](https://www.python.org/)。
-* 有了 Azure 订阅后，在 Azure 门户中[创建语言理解创作资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以获取创作密钥和终结点。 等待其部署并单击“转到资源”按钮。
+* 有了 Azure 订阅后，在 Azure 门户中[创建语言理解创作资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)，以获取创作密钥和终结点。 等待其部署并单击“转到资源”按钮****。
     * 需要从[创建](../luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)的资源获取密钥和终结点，以便将应用程序连接到语言理解创作。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。 可以使用免费定价层 (`F0`) 来试用该服务。
 
 ## <a name="setting-up"></a>设置
@@ -95,7 +95,7 @@ pip install azure-cognitiveservices-language-luis
 
 
 ## <a name="create-intent-for-the-app"></a>为应用创建意向
-LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的分组相符。 用户可以提问，或者做出表述，指出希望机器人（或其他客户端应用程序）提供特定的有针对性响应。 意向的示例包括预订航班、询问目的地城市的天气，以及询问客户服务的联系信息。
+LUIS 应用模型中的主要对象是意向。 意向与用户言语意向的分组相符。__ 用户可以提问，或者做出表述，指出希望机器人（或其他客户端应用程序）提供特定的有针对性响应。__ 意向的示例包括预订航班、询问目的地城市的天气，以及询问客户服务的联系信息。
 
 将 [model.add_intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) 方法与唯一意向的名称配合使用，然后传递应用 ID、版本 ID 和新的意向名称。
 

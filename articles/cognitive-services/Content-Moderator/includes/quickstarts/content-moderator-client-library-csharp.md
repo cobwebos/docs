@@ -73,7 +73,7 @@ Build succeeded.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
-在 Program 类中，为资源的终结点位置创建变量，并将密钥创建为环境变量  。
+在 Program 类中，为资源的终结点位置创建变量，并将密钥创建为环境变量。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_creds)]
 
@@ -119,11 +119,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 
 ## <a name="moderate-text"></a>审查文本
 
-以下代码使用内容审查器客户端分析文本的正文，并将结果输出到控制台。 在 Program 类的根中，定义输入和输出文件  ：
+以下代码使用内容审查器客户端分析文本的正文，并将结果输出到控制台。 在 Program 类的根中，定义输入和输出文件：
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
-然后，在项目的根下添加一个 TextFile.txt 文件  。 将你自己的文本添加到此文件中，或使用以下示例文本：
+然后，在项目的根下添加一个 TextFile.txt 文件。 将你自己的文本添加到此文件中，或使用以下示例文本：
 
 ```
 Is this a grabage email abcdef@abcd.com, phone: 4255550111, IP: 255.255.255.255, 1234 Main Boulevard, Panapolis WA 96555.
@@ -134,7 +134,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod_call)]
 
-然后在 Program 类中的某个位置定义文本审查方法  ：
+然后在 Program 类中的某个位置定义文本审查方法：
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod)]
 
@@ -151,7 +151,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-然后，在项目的根下创建输入文件 ImageFiles.txt  。 在此文件中添加要分析的图像的 URL &mdash; 在每行添加一个 URL。 可使用以下示例图像：
+然后，在项目的根下创建输入文件 ImageFiles.txt。 在此文件中添加要分析的图像的 URL &mdash; 在每行添加一个 URL。 可使用以下示例图像：
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -164,13 +164,13 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-helper-class"></a>使用帮助器类
 
-在 Program 类中添加以下类定义  。 此内部类将处理图像审查结果。
+在 Program 类中添加以下类定义。 此内部类将处理图像审查结果。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_dataclass)]
 
 ### <a name="define-the-image-moderation-method"></a>定义图像审查方法
 
-以下方法将循环访问文本文件中的图像 URL，创建 EvaluationData 实例，并分析图像中的成人/猥亵内容、文本和人脸  。 然后，它将最终的 EvaluationData 实例添加到列表中，并将返回数据的完整列表写入控制台  。
+以下方法将循环访问文本文件中的图像 URL，创建 EvaluationData 实例，并分析图像中的成人/猥亵内容、文本和人脸。 然后，它将最终的 EvaluationData 实例添加到列表中，并将返回数据的完整列表写入控制台。
 
 #### <a name="iterate-through-image-urls"></a>循环访问图像 URL
 
@@ -196,19 +196,19 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="get-sample-images"></a>获取示例图像
 
-在 Program 类的根下声明以下数组  。 此变量引用用于创建评审的示例图像。
+在 Program 类的根下声明以下数组。 此变量引用用于创建评审的示例图像。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_urls)]
 
 ### <a name="get-review-credentials"></a>获取审阅凭据
 
-登录到[评审工具](https://contentmoderator.cognitive.microsoft.com)并检索团队名称。 然后将其分配给 Program 类中的相应变量  。 或者，可以设置一个回调终结点用于接收有关评审活动的更新。
+登录到[评审工具](https://contentmoderator.cognitive.microsoft.com)并检索团队名称。 然后将其分配给 Program 类中的相应变量。 或者，可以设置一个回调终结点用于接收有关评审活动的更新。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_vars)]
 
 ### <a name="define-helper-class"></a>使用帮助器类
 
-将以下类定义添加到 Program 类中  。 此类将用于表示提交到评审工具的单个评审实例。
+将以下类定义添加到 Program 类中。 此类将用于表示提交到评审工具的单个评审实例。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_item)]
 
@@ -220,7 +220,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-the-review-creation-method"></a>定义评审创建方法
 
-现在，你已准备好定义将处理评审创建和查询的方法。 添加新方法 CreateReviews 并定义以下局部变量  。
+现在，你已准备好定义将处理评审创建和查询的方法。 添加新方法 CreateReviews 并定义以下局部变量。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 

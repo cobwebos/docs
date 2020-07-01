@@ -77,7 +77,7 @@ python -m pip install azure-cognitiveservices-language-luis
 
     添加用于管理从 `LUIS_RUNTIME_KEY` 环境变量提取的预测密钥的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
 
-    创建保留资源名称 `LUIS_RUNTIME_ENDPOINT` 的变量。
+    创建一个变量，用于保留资源名称 `LUIS_RUNTIME_ENDPOINT`。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
