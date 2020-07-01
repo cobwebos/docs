@@ -32,13 +32,13 @@ ms.locfileid: "81275519"
 
 现在，添加定义应用程序用户界面的 XAML 代码，并添加 C# 代码隐藏实现。
 
-1. 在“解决方案资源管理器”  中打开 `MainPage.xaml`。
+1. 在“解决方案资源管理器”中打开 `MainPage.xaml`。
 
-1. 在设计器的 XAML 视图中，将以下 XAML 代码片段插入到“Grid”  标记中（位于 `<Grid>` 和 `</Grid>` 之间）：
+1. 在设计器的 XAML 视图中，将以下 XAML 代码片段插入到“Grid”标记中（位于 `<Grid>` 和 `</Grid>` 之间）：
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/text-to-speech/helloworld/MainPage.xaml#StackPanel)]
 
-1. 在“解决方案资源管理器”  中，打开代码隐藏源文件 `MainPage.xaml.cs`。 （其分组在 `MainPage.xaml` 下。）
+1. 在“解决方案资源管理器”中，打开代码隐藏源文件 `MainPage.xaml.cs`。 （其分组在 `MainPage.xaml` 下。）
 
 1. 将其中的所有代码替换为以下片段：
 
@@ -50,17 +50,17 @@ ms.locfileid: "81275519"
 
 1. 在菜单栏中，选择“文件”   > “全部保存”  以保存所做的更改。
 
-## <a name="build-and-run-the-application"></a>构建并运行应用程序
+## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
 现已准备好构建并测试应用程序。
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动应用程序。 此时将显示“helloworld”  窗口。
+1. 选择“调试” > “开始调试”（或按 F5）以启动应用程序。 此时将显示“helloworld”窗口。
 
    ![C# 中的示例 UWP 语音合成应用程序 - 快速入门](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. 在文本框中输入一些文本，然后单击“朗读”  。 你的文本将传输到语音服务，并合成为语音，以在扬声器上播放。
+1. 在文本框中输入一些文本，然后单击“朗读”。 你的文本将传输到语音服务，并合成为语音，以在扬声器上播放。
 
     ![语音合成用户界面](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 

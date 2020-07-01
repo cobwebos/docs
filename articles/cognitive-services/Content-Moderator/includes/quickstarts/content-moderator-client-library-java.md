@@ -55,7 +55,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-当系统提示你选择一个生成脚本 DSL 时，请选择“Kotlin”。 
+当系统提示你选择一个生成脚本 DSL 时，请选择“Kotlin”。
 
 找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后在该文件中复制以下生成配置。 此配置将项目定义一个 Java 应用程序，其入口点为 **ContentModeratorQuickstart** 类。 它会导入内容审查器客户端库以及用于 JSON 序列化的 Gson SDK。
 

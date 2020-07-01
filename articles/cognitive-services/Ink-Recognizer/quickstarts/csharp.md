@@ -34,8 +34,8 @@ ms.locfileid: "80371376"
 - 任何版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
     - 若要在 Visual Studio 中以 NuGet 包的形式安装 Newtonsoft.Json，请执行以下操作：
-        1. 右键单击“解决方案管理器” 
-        2. 单击“管理 NuGet 包”。 
+        1. 右键单击“解决方案管理器”
+        2. 单击“管理 NuGet 包”。
         3. 搜索 `Newtonsoft.Json` 并安装该包
 - 如果使用的是 Linux/MacOS，则可使用 [Mono](https://www.mono-project.com/) 运行此应用程序。
 

@@ -58,15 +58,15 @@ ms.locfileid: "81275006"
 
 1. 在同一文件中，将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 另外，将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”。  例如，将 `westus` 用于免费试用版订阅。
+1. 另外，将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”。 例如，将 `westus` 用于免费试用版订阅。
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
 1. 将 Android 设备连接到开发电脑。 确保已在设备上启用[开发模式和 USB 调试](https://developer.android.com/studio/debug/dev-options)。
 
-1. 若要生成应用程序，请选择 Ctrl+F9，或者从菜单栏中选择“生成” > “生成项目”   。
+1. 若要生成应用程序，请选择 Ctrl+F9，或者从菜单栏中选择“生成” > “生成项目” 。
 
-1. 若要启动应用程序，请选择 Shift+F10 或选择“运行” > “运行‘应用’”   。
+1. 若要启动应用程序，请选择 Shift+F10 或选择“运行” > “运行‘应用’” 。
 
 1. 在出现的部署目标窗口中，选择 Android 设备。
 

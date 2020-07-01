@@ -27,9 +27,9 @@ ms.locfileid: "81275486"
 
 ## <a name="add-sample-code"></a>添加示例代码
 
-1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。   
+1. 若要向 Java 项目添加新的空类，请选择“文件” > “新建” > “类”。  
 
-1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。   
+1. 在“新建 Java 类”窗口中，在“包”字段内输入 **speechsdk.quickstart**，在“名称”字段内输入 **Main**。  
 
    ![“新建 Java 类”窗口的屏幕截图](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-06-create-main-java.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "81275486"
 
 ## <a name="build-and-run-the-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。  
+按 F11，或选择“运行” > “调试”。 
 出现提示时输入文本，你将听到从默认扬声器播放的合成音频。
 
 ## <a name="next-steps"></a>后续步骤

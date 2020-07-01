@@ -19,7 +19,7 @@ ms.locfileid: "82188840"
 ---
 [参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) |[库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [示例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org) 和 NPM。
@@ -30,7 +30,7 @@ ms.locfileid: "82188840"
 使用此快速入门有几个步骤：
 
 * 在 Azure 门户中，创建一个个性化体验创建服务资源
-* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，将模型更新频率更改为非常短的间隔 
+* 在 Azure 门户中，对于个性化体验创建服务资源，在“配置”页上，将模型更新频率更改为非常短的间隔
 * 在代码编辑器中，创建一个代码文件并编辑该代码文件
 * 在命令行或终端中，从命令行安装 SDK
 * 在命令行或终端中，运行代码文件

@@ -201,13 +201,13 @@ ms.locfileid: "80671850"
 
 1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，免费试用版订阅的 `westus`）。
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  。
+1. 在菜单栏中，选择“文件” > “全部保存”。
 
 ## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>构建并运行应用程序以创建新对话
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 现在，编译代码时应不会提示错误。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 现在，编译代码时应不会提示错误。
 
-1. 选择“调试”   > “开始调试”  （或按 F5<kbd></kbd>）以启动 helloworld  应用程序。
+1. 选择“调试” > “开始调试”（或按 F5<kbd></kbd>）以启动 helloworld 应用程序。
 
 1. 看到 `Started transcribing` 消息出现后，你可以开始说话。 在你说话时，你会看到口述文本出现。
     - 如果你与其他人分享对话代码并且他们加入了对话，则你还会看到他们的口述文本。
@@ -285,9 +285,9 @@ ms.locfileid: "80671850"
 
 4. 返回到 Visual Studio，并将你的 `int main()` 函数中的 `YourConversationId` 替换为上一步中的对话 ID。
 
-5. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 编译代码时应不会出错。
+5. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 编译代码时应不会出错。
 
-6. 选择“调试”   > “开始调试”  （或按 F5<kbd></kbd>）以启动 helloworld  应用程序。
+6. 选择“调试” > “开始调试”（或按 F5<kbd></kbd>）以启动 helloworld 应用程序。
 
 7. 看到 `Started transcribing` 消息出现后，你可以开始说话。 在你说话时，你会看到口述文本出现。
     - 如果返回到浏览器，则应当会看到在你说话时你的口述文本也出现在那里。

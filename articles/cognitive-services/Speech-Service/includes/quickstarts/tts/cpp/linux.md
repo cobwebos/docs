@@ -38,7 +38,7 @@ ms.locfileid: "81274720"
 ## <a name="build-the-app"></a>生成应用
 
 > [!NOTE]
-> 请确保将以下命令输入在单个命令行上。  执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。 
+> 请确保将以下命令输入在单个命令行上。 执行该操作的最简单方法是使用每个命令旁边的“复制按钮”来复制命令，然后将其粘贴到 shell 提示符下。
 
 * 在 **x64**（64 位）系统上，运行以下命令来生成应用程序。
 
@@ -58,7 +58,7 @@ ms.locfileid: "81274720"
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
   ```
 
-## <a name="run-the-app"></a>运行应用程序
+## <a name="run-the-app"></a>运行应用
 
 1. 将加载程序的库路径配置为指向语音 SDK 库。
 
