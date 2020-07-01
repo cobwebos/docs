@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 37eed03ed839411f1acf5d963d4118a3c6d2c379
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c859965c951ad271b1b9e272ce60de64aa3d3d5
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74975918"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391360"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -39,7 +39,7 @@ ms.locfileid: "74975918"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。   
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。**** **** ****
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -77,8 +77,8 @@ ms.locfileid: "74975918"
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 使调试输出可见（“视图”   > “调试区域”   >   “激活控制台”）。
-1. 在菜单中选择“产品” -> “运行”，或者单击“播放”按钮，以生成并运行示例代码。   
+1. 使调试输出可见（“视图”**** > “调试区域”**** > ****“激活控制台”）。
+1. 在菜单中选择“产品” -> “运行”，或者单击“播放”按钮，以生成并运行示例代码。**** **** ****
 1. 在输入一些文本并单击应用中的按钮后，你应该会听到播放的合成音频。
 
 ## <a name="next-steps"></a>后续步骤

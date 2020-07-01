@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 7c5611a142087cff06eefb0277b12ff786074e1a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 440addd017e7a819d9d3d02a8b77b9432b68b9af
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75446831"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391411"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -41,7 +41,7 @@ ms.locfileid: "75446831"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。   
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
 在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -68,7 +68,7 @@ ms.locfileid: "75446831"
 1. 将名为 `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 的新头文件放置到 helloworld 项目内的 `helloworld` 目录中，并将以下代码粘贴到其中：
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/from-microphone/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
-1. 在“Objective-C 桥接头文件”  字段![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中
+1. 在“Objective-C 桥接头文件”字段![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-macos-bridging-header.png)中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中
 1. 通过以下方式替换自动生成的 `AppDelegate.swift` 文件的内容：
 
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/macos/from-microphone/helloworld/helloworld/AppDelegate.swift#code)]
@@ -86,8 +86,8 @@ ms.locfileid: "75446831"
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
-1. 使调试输出可见（“视图”   > “调试区域”   >   “激活控制台”）。
-1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。   
+1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
+1. 在菜单中选择“产品” > “运行”，或者单击“播放”按钮，以生成并运行示例代码。  
 1. 单击应用中的“识别”按钮并讲几句话后，应会在应用窗口的下部看到讲出的文本。
 
 ## <a name="next-steps"></a>后续步骤

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 31f5339c70d52019400ca5f1fe873de4790a3bd6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 95c69aad24ff10b49bdc09411553e6ed43bfdccd
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380518"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391428"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 识别语音
 
@@ -40,12 +40,12 @@ ms.locfileid: "75380518"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。   
-在模板选择对话框中，选择“iOS 单一视图应用”模板。 
+启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。  
+在模板选择对话框中，选择“iOS 单一视图应用”模板。
 
 在随后的对话框中，进行以下选择。
 
-1. 在“项目选项”  对话框中，执行以下操作：
+1. 在“项目选项”对话框中，执行以下操作：
     1. 为快速入门应用输入一个名称，例如 *helloworld*。
     1. 如果已经有 Apple 开发人员帐户，请输入相应的组织名称和组织标识符。 出于测试目的，请使用 *testorg* 之类的名称。 若要对应用进行签名，需要适当的预配配置文件。 有关详细信息，请参阅 [Apple 开发人员站点](https://developer.apple.com/)。
     1. 确保选择 **Swift** 作为项目的语言。
@@ -54,7 +54,7 @@ ms.locfileid: "75380518"
 1. 选择项目目录：
     1. 选择用于放置该项目的目录。 此步骤会在所选目录中创建一个 helloworld 目录，其中包含 Xcode 项目的所有文件。
     1. 禁止创建适用于此示例项目的 Git 存储库。
-1. 该应用还需要在 `Info.plist` 文件中声明使用麦克风。 选择概述中的文件，然后添加“隐私 - 麦克风使用说明”键，其值类似于“语音识别所需的麦克风”。  
+1. 该应用还需要在 `Info.plist` 文件中声明使用麦克风。 选择概述中的文件，然后添加“隐私 - 麦克风使用说明”键，其值类似于“语音识别所需的麦克风”。
 
     ![Info.plist 中的设置](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-info-plist.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "75380518"
 
    [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/from-microphone/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 
-1. 在“Objective-C 桥接头文件”  字段中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中。
+1. 在“Objective-C 桥接头文件”字段中，将桥接头文件的相对路径 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 添加到 helloworld 目标的 Swift 项目设置中。
 
    ![标头属性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-bridging-header.png)
 
@@ -90,10 +90,10 @@ ms.locfileid: "75380518"
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
 1. 在 Xcode 中打开 `helloworld.xcworkspace` 工作区。
-1. 使调试输出可见，方法是：选择“视图”   > “调试区域”   >   “激活控制台”。
-1. 从“产品” > “目标”菜单中的列表中，选择 iOS 模拟器或连接到开发计算机的 iOS 设备作为应用的目标位置   。
-1. 在 iOS 模拟器中生成并运行示例代码，方法是在菜单中选择“产品”   >   “运行”。 也可选择“播放”按钮。 
-1. 选择应用中的“识别”按钮并讲几句话后，应会在屏幕下方看到讲出的文本。 
+1. 使调试输出可见，方法是：选择“视图” > “调试区域” > “激活控制台”。
+1. 从“产品” > “目标”菜单中的列表中，选择 iOS 模拟器或连接到开发计算机的 iOS 设备作为应用的目标位置 。
+1. 在 iOS 模拟器中生成并运行示例代码，方法是在菜单中选择“产品” > “运行”。 也可选择“播放”按钮。
+1. 选择应用中的“识别”按钮并讲几句话后，应会在屏幕下方看到讲出的文本。
 
 ## <a name="next-steps"></a>后续步骤
 

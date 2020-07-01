@@ -3,13 +3,13 @@ title: 教程：审核终结点话语 - LUIS
 description: 在本教程中，通过验证或更正通过 LUIS HTTP 终结点收到的 LUIS 不确定的话语来改进应用预测。 某些陈述可能需要针对意向进行验证，而另一些陈述可能需要针对实体进行验证。
 services: cognitive-services
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 06/22/2020
+ms.openlocfilehash: c2df8cdba3422c522aa4ccf1fe4138a510355d12
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592570"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445912"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>教程：通过查看终结点话语来修复不确定的预测
 本教程介绍如何通过验证或更正 LUIS 不确定的、通过 LUIS HTTPS 终结点收到的言语来改进应用预测。 在日常的计划性 LUIS 维护过程中，应该评审终结点言语。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/23/2019
+ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75380586"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391513"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>快速入门：在 macOS 上使用语音 SDK 通过 Objective-C 识别语音
 
@@ -38,11 +38,11 @@ ms.locfileid: "75380586"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。    在模板选择对话框中，选择“Cocoa 应用”模板。 
+启动 Xcode，然后通过选择“文件” > “新建” > “项目”来启动新项目。   在模板选择对话框中，选择“Cocoa 应用”模板。
 
 在随后的对话框中，进行以下选择。
 
-1. 在“项目选项”  对话框中，执行以下操作：
+1. 在“项目选项”对话框中，执行以下操作：
     1. 为快速入门应用输入一个名称，例如 *helloworld*。
     1. 如果已经有 Apple 开发人员帐户，请输入相应的组织名称和组织标识符。 出于测试目的，请使用 *testorg* 之类的名称。 若要对应用进行签名，需要适当的预配配置文件。 有关详细信息，请参阅 [Apple 开发人员站点](https://developer.apple.com/)。
     1. 确保选择 **Objective-C** 作为项目的语言。
@@ -54,13 +54,13 @@ ms.locfileid: "75380586"
 1. 选择项目目录：
     1. 选择用于放置该项目的目录。 此步骤会在主目录中创建一个 helloworld 目录，其中包含 Xcode 项目的所有文件。
     1. 禁止创建适用于此示例项目的 Git 存储库。
-1. 设置网络和麦克风访问权限。 选择左侧概述中第一行内的应用名称转到应用配置， 然后选择“功能”选项卡。 
-    1. 为该应用启用“应用沙盒”设置。 
-    1. 选择“传出连接”和“麦克风”访问权限对应的复选框。  
+1. 设置网络和麦克风访问权限。 选择左侧概述中第一行内的应用名称转到应用配置， 然后选择“功能”选项卡。
+    1. 为该应用启用“应用沙盒”设置。
+    1. 选择“传出连接”和“麦克风”访问权限对应的复选框。 
 
     ![沙盒设置](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-sandbox.png)
 
-1. 该应用还需要在 `Info.plist` 文件中声明使用麦克风。 选择概述中的文件，然后添加“隐私 - 麦克风使用说明”键，其值类似于“语音识别所需的麦克风”。  
+1. 该应用还需要在 `Info.plist` 文件中声明使用麦克风。 选择概述中的文件，然后添加“隐私 - 麦克风使用说明”键，其值类似于“语音识别所需的麦克风”。
 
     ![Info.plist 中的设置](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-macos-info-plist.png)
 
@@ -85,8 +85,8 @@ ms.locfileid: "75380586"
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 使调试输出可见，方法是：选择“视图”   > “调试区域”   >   “激活控制台”。
-1. 在菜单中选择“产品” > “运行”，，以生成并运行示例代码。   也可选择“播放”。 
+1. 使调试输出可见，方法是：选择“视图” > “调试区域” > “激活控制台”。
+1. 在菜单中选择“产品” > “运行”，，以生成并运行示例代码。  也可选择“播放”。
 1. 选择相应按钮并讲几句话后，应会在屏幕下方看到讲出的文本。 首次运行该应用时，系统应会提示是否允许该应用访问计算机的麦克风。
 
 ## <a name="next-steps"></a>后续步骤

@@ -26,7 +26,7 @@
     - name: 创建数据工厂 - 资源管理器模板
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: 安全性 - 启用客户管理的密钥加密
-      href: quickstart-enable-customer-managed-key.md
+      href: enable-customer-managed-key.md
     - name: 创建数据流
       href: data-flow-create.md
 - name: 教程
@@ -576,7 +576,7 @@
         - name: 数据工厂的托管标识
           href: data-factory-service-identity.md
         - name: 客户托管密钥加密
-          href: quickstart-enable-customer-managed-key.md
+          href: enable-customer-managed-key.md
     - name: 监视和管理
       items:
         - name: 直观地监视
