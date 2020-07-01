@@ -161,6 +161,10 @@
               href: concepts-read-replicas.md
             - name: 逻辑解码
               href: concepts-logical.md
+        - name: 在区域之间移动
+          items:
+            - name: Azure 门户
+              href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
         - name: Nodes

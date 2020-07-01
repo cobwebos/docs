@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 7898fcf9b149f50f8478576d18cd3c3b984eb937
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: ad87c7e3517aad8a611c711773c5e1cc99b24f88
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209090"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85562870"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -46,8 +46,8 @@ ms.locfileid: "85209090"
   新的 SDK 支持用于窗体识别器的 v2.0 REST API 的所有功能。 例如，你可以使用或不带标签来训练模型，并从窗体提取文本、键值对和表、从收据中提取数据以及预先生成的回执服务，并从文档中提取带有布局服务的文本和表。 可以通过[Sdk 反馈窗体](https://aka.ms/FR_SDK_v1_feedback)在 sdk 上共享你的反馈。
  
 * **复制自定义模型**你现在可以使用新的复制自定义模型功能在区域和订阅之间复制模型。 在调用复制自定义模型 API 之前，必须首先通过对目标资源终结点调用复制授权操作来获取要复制到目标资源的授权。
-   * [生成复制授权](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/CopyCustomFormModelAuthorization)REST API
-   * [复制自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/CopyCustomFormModel)REST API 
+   * [生成复制授权](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)REST API
+   * [复制自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel)REST API 
 
 ### <a name="security-improvements"></a>安全性改进
 
@@ -137,4 +137,4 @@ ms.locfileid: "85209090"
 
 ## <a name="next-steps"></a>后续步骤
 
-完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)。
+完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。

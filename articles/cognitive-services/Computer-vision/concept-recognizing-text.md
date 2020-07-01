@@ -11,25 +11,24 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 65e1613eb8fda934899afe692f45a38fca04bff2
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413994"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560807"
 ---
-# <a name="read-text-from-images-and-documents"></a>从图像和文档中读取文本
+# <a name="read-text-from-images-and-documents"></a>从图像和文档读取文字
 
 计算机视觉包括新的基于深度学习的光学字符识别（OCR）功能，这些功能可从图像和 PDF 文档中提取打印文本或手写文本。 计算机视觉从模拟文档（图像、扫描的文档）和数字化的文档中提取文本。 你可以从图像中提取文本（例如，具有序列号的许可印版照片或包含序列号的容器），也可以从文档-发票、帐单、财务报表、文章等。 此 OCR 功能作为云中或本地（容器）的托管服务的一部分提供。 此外，它还支持虚拟网络和专用终结点，以满足企业级符合性和隐私需求。
 
 ## <a name="read-api"></a>读取 API 
 
-计算机视觉的[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技术，可从图像和 PDF 文档中提取打印文本、手写文本（仅英语）、数字和货币符号。 它经过优化，可以从图像中提取文本、具有视觉干扰的图像、包含数字或扫描的 PDF 文档以及文本粗图像。 它支持在同一图像或文档中打印和手写文本（英语）和混合语言。 有关支持的语言的完整列表，请参阅计算机视觉页面的[语言支持](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
-
+计算机视觉的[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技术，可从图像和多页面 PDF 文档中提取打印文本（七种语言）、手写文本（仅英语）、数字和货币符号。 它经过优化，可以从通配符文本和混合语言的多页面 PDF 文档中提取文本。 它支持在同一图像或文档中检测打印文本和手写文本（仅英语）。 有关支持的语言的完整列表，请参阅计算机视觉页面的[语言支持](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
 
 ### <a name="how-it-works"></a>工作原理
 
-[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是异步的。 第一步是调用读取操作。 读取操作采用图像或 PDF 文档作为输入，并返回操作 ID。 
+[读取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)支持最大为2000页的文本繁重的文档，因此以异步方式执行。 第一步是调用读取操作。 读取操作采用图像或 PDF 文档作为输入，并返回操作 ID。 
 
 第二步是调用[获取结果](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)操作。 此操作采用读取操作创建的操作 ID。 然后，它将从图像或文档中以 JSON 格式返回提取的文本内容。 JSON 响应维护已识别单词的原始行组。 它包括提取的文本行及其边界框坐标。 每个文本行都包含带有坐标和置信度分数的所有已提取单词。
 
@@ -90,7 +89,7 @@ Read API 支持以英语、西班牙语、德语、法语、意大利语、葡�
 
 ## <a name="ocr-api"></a>OCR API
 
-[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)使用较旧的识别模式。 它仅支持单个映像，而不支持 Pdf，并返回立即响应。 它比读取 API 支持[更多语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
+[OCR API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)使用较旧的识别模式，仅支持图像，并以同步方式执行，并立即返回检测到的文本。 它比读取 API 支持[更多语言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#text-recognition)。
 
 ## <a name="next-steps"></a>后续步骤
 

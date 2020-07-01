@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: a207118af0b07be79c934a9665f47e73c5eecde0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589187"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560176"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
 计算机视觉的某些功能支持多种语言；此处未提及的任何功能均只支持英语。
 
-## <a name="text-recognition"></a>文本识别
+## <a name="text-detection-ocr"></a>文本检测（OCR）
 
-计算机视觉可以识别许多语言的文本。 OCR 和读取 Api 不需要指定语言代码。 请参阅[识别印刷文本和手写文本](concept-recognizing-text.md)，详细了解此功能以及每个 API 的优势。
+计算机视觉可以检测到多种语言的文本。 Read 和 OCR Api 不需要指定语言代码。 有关此功能以及每个 API 的优点的详细信息，请参阅[从图像和文档读取文本](concept-recognizing-text.md)。
 
 |语言| 语言代码 | OCR API | 读取 API |
 |:-----|:----:|:-----:|:---:|
@@ -58,7 +58,7 @@ ms.locfileid: "83589187"
 
 [分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](home.md)以获取能够通过图像分析完成的所有操作的列表。
 
-|语言 | 语言代码 | 类别 | 标记 | 说明 | 成人 | 品牌 | 颜色 | 面 | ImageType | Objects | 名人 | 特征点 |
+|语言 | 语言代码 | 类别 | Tags | 说明 | 成人 | 品牌 | 颜色 | 面 | ImageType | 对象 | 名人 | 特征点 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英语 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

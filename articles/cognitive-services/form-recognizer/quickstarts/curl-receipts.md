@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 03b289bb01285dd13f4456940ce891cf42518253
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d1e0587ae583585b6247aed9997243ec70fcbf03
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206274"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563213"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>快速入门：结合使用表单识别器 REST API 与 cURL 以提取回执数据
 
@@ -34,7 +34,7 @@ ms.locfileid: "85206274"
 
 ## <a name="analyze-a-receipt"></a>分析回执
 
-若要开始分析回执，可使用以下 cURL 命令调用 **[分析收据](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)** API。 运行该命令之前，请进行以下更改：
+若要开始分析回执，可使用以下 cURL 命令调用 **[分析收据](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API。 运行该命令之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅中获取的终结点。
 1. 将 `<your receipt URL>` 替换为回执图像的 URL 地址。
@@ -52,7 +52,7 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 
 ## <a name="get-the-receipt-results"></a>获取回执结果
 
-调用了“分析回执”API 后，可以调用 **[获取分析收据结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/GetAnalyzeReceiptResult)** API，以获取操作状态和已提取的数据。 运行该命令之前，请进行以下更改：
+调用了“分析回执”API 后，可以调用 **[获取分析收据结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API，以获取操作状态和已提取的数据。 运行该命令之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为从表单识别器订阅密钥中获得的终结点。 可以在表单识别器资源的“概览”选项卡中找到该终结点。
 1. 将 `<operationId>` 替换为上一步中的操作 ID。
@@ -402,4 +402,4 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/prebuilt/receipt/analyzeResu
 在本快速入门中结合使用了表单识别器 REST API 与 cURL，以提取销售收据的内容。 接下来，请参阅参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeReceiptAsync)
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

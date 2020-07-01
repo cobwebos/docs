@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/29/2020
 ms.author: swmachan
-ms.openlocfilehash: 100084a244944bcaf0d566e347d56dd4a03ecfae
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995779"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561458"
 ---
 # <a name="request-limits-for-translator"></a>转换器的请求限制
 
@@ -66,20 +66,19 @@ ms.locfileid: "83995779"
 
 | 语言 | 代码 | 字符限制 |
 |----------|------|-----------------|
-| 中文 | zh | 132 |
-| 德语 | de | 290 |
-| 意大利语 | it | 280 |
-| 日语 | ja | 150 |
-| 葡萄牙语 | pt | 290 |
-| 西班牙语 | es | 280 |
-| 意大利语 | it | 280 |
-| 泰语 | th | 258 |
+| 中文 | zh | 166 |
+| 德语 | de | 800 |
+| 意大利语 | it | 800 |
+| 日语 | ja | 166 |
+| 葡萄牙语 | pt | 800 |
+| 西班牙语 | es | 800 |
+| 泰语 | th | 180 |
 
 > [!NOTE]
 > 此限制不适用于翻译。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [价格](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+* [定价](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 * [区域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
 * [v3 翻译器参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

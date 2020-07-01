@@ -7,7 +7,11 @@
 - name: 快速入门
   items:
     - name: 配置服务运行状况事件的警报
-      href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
+      items:
+        - name: Azure 门户
+          href: alerts-activity-log-service-notifications-portal.md
+        - name: ARM 模板
+          href: alerts-activity-log-service-notifications-arm.md
 - name: 概念
   items:
     - name: Azure 状态页

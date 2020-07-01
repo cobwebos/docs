@@ -112,6 +112,10 @@
           href: concepts-data-in-replication.md
         - name: 只读副本
           href: concepts-read-replicas.md
+    - name: 在区域之间移动
+      items:
+        - name: Azure 门户
+          href: howto-move-regions-portal.md
 - name: 操作指南
   items:
     - name: 管理服务器

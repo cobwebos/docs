@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168462"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85561563"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -118,6 +118,9 @@ ms.locfileid: "77168462"
   - 从显示的服务中，选取需要增加其并发性的语音服务；
   - 显示此服务的 `Properties`；
   - 复制完整的 `Resource ID`。
+  
+>[!NOTE]
+>[容器](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)不需要增加并发限制，因为容器只受承载它们的硬件的 cpu 的约束。
 
 ## <a name="importing-data"></a>导入数据
 

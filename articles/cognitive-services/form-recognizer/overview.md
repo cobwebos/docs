@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 241d91a8c8670c32461684ed964b6fc0fd7c1672
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8885f66b3501217ead302486d2e5ef7de63f5f47
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206404"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563256"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -81,7 +81,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 | **分析收据** |分析单个回执文档，以提取关键信息和其他回执文本。|
 | **分析布局** |分许表单布局，以便提取文本和表结构。|
 
-请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
+请浏览 [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)以了解详细信息。 如果熟悉旧版 API，请参阅[新增功能](./whats-new.md)一文，了解最近的变更。
 
 ## <a name="input-requirements"></a>输入要求
 ### <a name="custom-model"></a>自定义模型
@@ -104,4 +104,4 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 ## <a name="next-steps"></a>后续步骤
 
-完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/AnalyzeWithCustomForm)。
+完成一个[快速入门](quickstarts/curl-train-extract.md)，开始使用[表单识别器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)。
