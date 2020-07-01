@@ -3,12 +3,12 @@ title: 开发人员资源 - 语言理解
 description: SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS) 应用。 管理 Azure 资源和 LUIS 预测。
 ms.topic: reference
 ms.date: 05/19/2020
-ms.openlocfilehash: c712a81e5b786ac980a0c48d358fef4caf2e7597
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 27212f30c90abb20e7ded2eee01365c7b023f851
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758055"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610774"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -53,16 +53,16 @@ GitHub 上公开提供 [LUIS REST 规范](https://github.com/Azure/azure-rest-ap
 
 LUIS 目前有 2 种类型的终结点：
 
-* 培训端点上的**创作**
-* 运行时终结点上的查询**预测**。
+* 在训练终结点上进行创作
+* 运行时终结点上的查询预测。
 
-|目的|代码|
+|目的|URL|
 |--|--|
-|V2 培训终结点上的创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|在训练终结点上进行 V2 创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
 |对定型终结点进行 V3 创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/authoring/v3.0-preview/apps/{appID}/`|
-|V2 预测-运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
-|V3 预测-针对运行时终结点的版本预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
-|V3 预测-运行时终结点上的槽预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V2 预测 - 运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 预测 - 运行时终结点上的版本预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 预测 - 运行时终结点上的槽预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 
 下表说明了上表中用大括号 `{}` 表示的参数。
 
@@ -70,8 +70,12 @@ LUIS 目前有 2 种类型的终结点：
 |--|--|
 |`your-resource-name`|Azure 资源名称|
 |`q` 或 `query`|从客户端应用程序（如聊天机器人）发送的话语文本|
-|`version`|10字符版本名称|
+|`version`|10 字符版本名称|
 |`slot`| `production` 或 `staging`|
+
+### <a name="rest-query-string-parameters"></a>REST 查询字符串参数
+
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ## <a name="app-schema"></a>应用架构
 
@@ -100,14 +104,14 @@ LUIS 目前有 2 种类型的终结点：
 
 ## <a name="workshops"></a>研讨会
 
-* GitHub：（研讨会）[对话-AI： NLU USING LUIS](https://github.com/GlobalAICommunity/Workshop-Conversational-AI)
+* GitHub：（研讨会）[Conversational-AI：使用 LUIS 的 NLU](https://github.com/GlobalAICommunity/Workshop-Conversational-AI)
 
 ## <a name="continuous-integration-tools"></a>持续集成工具
 
 * GitHub：（预览版）[使用 DevOps 实践开发 LUIS 应用](https://github.com/Azure-Samples/LUIS-DevOps-Template)
 * GitHub： [NLU。DevOps](https://github.com/microsoft/NLU.DevOps)支持持续集成和部署 NLU 服务。
 
-## <a name="bot-framework-tools"></a>机器人框架工具
+## <a name="bot-framework-tools"></a>Bot Framework 工具
 
 Bot Framework 在多种语言中以 [SDK](https://github.com/Microsoft/botframework) 形式提供，并通过 [Azure 机器人服务](https://dev.botframework.com/)以服务形式提供。
 
@@ -117,9 +121,9 @@ Bot Framework 提供有助于语言理解的[多种工具](https://github.com/mi
 * [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) - 创建并管理 LUIS.ai 应用程序
 * [Dispatch](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)- 管理父应用和子应用
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) - 为 LUIS 意向和实体自动生成 C#/Typescript 支持类。
-* [机器人 framework 模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases)-一种桌面应用程序，允许机器人开发人员测试和调试使用 BOT Framework SDK 生成的机器人
-* [机器人 Framework 编辑器](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md)-一种集成开发工具，可供开发人员和多个专业团队使用 Microsoft bot Framework 构建机器人和会话体验
-* [机器人框架示例](https://github.com/microsoft/botbuilder-samples)-in #C、JavaScript、TypeScript 和 Python
+* [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases) - 一款桌面应用程序，可让机器人开发人员测试和调试使用 Bot Framework SDK 构建的机器人。
+* [Bot Framework Composer](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) - 一个集成开发工具，供开发人员和多学科团队通过 Microsoft Bot Framework 构建机器人和聊天体验
+* [Bot Framework 示例](https://github.com/microsoft/botbuilder-samples) - 使用 #C、JavaScript、TypeScript 和 Python 编写
 ## <a name="next-steps"></a>后续步骤
 
 * 了解常见的 [HTTP 错误代码](luis-reference-response-codes.md)

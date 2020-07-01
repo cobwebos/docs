@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68882780"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609463"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>将分析添加到必应搜索 API
 
 必应统计信息为必应搜索 API 提供分析。 这些分析包括调用量、顶级查询字符串、地理分布等。 可以通过导航到 Azure 资源并单击 "**启用必应统计信息**"，在[Azure 门户](https://ms.portal.azure.com)中启用必应统计信息。
 
 > [!IMPORTANT]
-> * 必应统计信息不能用于免费试用版订阅或免费`F0`定价层上的资源。
+> * 必应统计信息不适用于免费定价层上的资源 `F0` 。
 > * 无法使用通过必应统计信息仪表板提供的任何数据来创建要分发到第三方的应用程序。
 > * 启用必应统计信息会略微增加订阅率。 有关详细信息，请参阅[定价](https://aka.ms/bingstatisticspricing)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "68882780"
 
 - **资源 ID**：用于标识 Azure 订阅的唯一资源 ID。 如果你订阅了多个必应搜索 API 层，则该列表包含多个 ID。 默认已选中所有资源。  
   
-- **市场**：结果的来源市场。 例如，en-us (美国英语) 默认已选中所有市场。 如果`en-WW`呼叫未指定市场，必应使用市场，必应使用市场，必应使用市场。  
+- **市场**：结果的来源市场。 例如，en-us (美国英语) 默认已选中所有市场。 `en-WW`如果呼叫未指定市场，必应使用市场，必应使用市场，必应使用市场。  
   
 - **终结点**：必应搜索 API 终结点。 该列表包含为其购买了付费订阅的所有终结点。 默认已选中所有终结点。  
 
@@ -86,7 +86,7 @@ For example, if you don't include the User-Agent header in your calls, the dashb
   > [!NOTE]  
   > 可以抑制一些查询字词，以删除电子邮件、电话号码、SSN 等机密信息。
 
-- **地理分布**：搜索结果源自的市场。 例如`en-us` （英语、美国）。 必应使用 `mkt` 查询参数来确定市场（如果已指定）。 否则，必应使用调用方 IP 地址等信号来确定市场。
+- **地理分布**：搜索结果源自的市场。 例如 `en-us` （英语、美国）。 必应使用 `mkt` 查询参数来确定市场（如果已指定）。 否则，必应使用调用方 IP 地址等信号来确定市场。
 
 - **响应代码分布**：在报告时段发出的所有调用的 HTTP 状态代码。
 
@@ -94,7 +94,7 @@ For example, if you don't include the User-Agent header in your calls, the dashb
 
 - **安全搜索分布**：安全搜索值的分布。 例如 off、moderate 或 strict。 `safeSearch` 查询参数包含该值（如果已指定）。 否则，必应使用默认值 moderate。  
 
-- **请求的分发答案**：在`responseFilter`查询参数中请求的 Web 搜索 API 答案。  
+- **请求的分发答案**：在查询参数中请求的 Web 搜索 API 答案 `responseFilter` 。  
 
 - **返回的回答分布**：Web 搜索 API 在响应中返回的回答。
 

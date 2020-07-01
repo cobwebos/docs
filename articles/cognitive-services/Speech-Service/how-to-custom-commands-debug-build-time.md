@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b0a26b4d3f0f59f8e05c5990bbc64ee55f12f124
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307451"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85604686"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>创作自定义命令应用程序时调试错误
 
@@ -26,7 +26,7 @@ ms.locfileid: "85307451"
 
 [LUIS 限制每个创作资源的500个应用程序](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits)。 如果使用的是已包含500应用程序的创作资源，则创建 LUIS 应用程序可能会失败。 
 
-请确保所选的 LUIS 创作资源小于500。 如果不是，可以新建 LUIS 创作资源，切换到其他资源，或尝试清理 LUIS 应用程序。  
+请确保所选的 LUIS 创作资源包含少于500个应用程序。 否则，可以创建新的 LUIS 创作资源，切换到另一个资源，或尝试清理 LUIS 应用程序。  
 
 ## <a name="errors-when-deleting-an-application"></a>删除应用程序时出错
 ### <a name="cant-delete-luis-application"></a>无法删除 LUIS 应用程序
@@ -48,8 +48,8 @@ ms.locfileid: "85307451"
 不允许删除正在使用的 Web 终结点。 请在删除 Web 终结点之前删除使用此 Web 终结点的任何**调用 Web 终结点**操作。
 
 ## <a name="errors-when-training-an-application"></a>培训应用程序时出现的错误
-### <a name="build-in-intents"></a>按意向构建
-LUIS 提供了 "是/否"。 只有 "是"、"否" 的示例句子将无法进行训练。 
+### <a name="built-in-intents"></a>内置意向
+LUIS 内置了 "是/否"。 只有 "是"、"否" 的示例句子将无法进行训练。 
 
 | 关键字 | 变体 | 
 | ------- | --------- | 
@@ -72,7 +72,7 @@ LUIS 提供了 "是/否"。 只有 "是"、"否" 的示例句子将无法进行�
 ### <a name="training-takes-too-long"></a>训练时间太长
 LUIS 培训旨在快速了解更少的示例。 不要添加太多示例句子。 
 
-如果有多个示例句子相似，请定义一个参数，将其抽象为一个模式，然后将其添加到示例句子。
+如果有多个类似的示例句子，请定义一个参数，将其抽象为一个模式，然后将其添加到示例句子。
 
 例如，可以为下面的示例句子定义参数 {车辆}，并且仅将 "Book a {车辆}" 添加到示例句子。
 

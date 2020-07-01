@@ -2,14 +2,14 @@
 title: V3 API 中的预测终结点更改
 description: 查询预测终结点 V3 API 已更改。 请使用本指南了解如何迁移到终结点 API 版本 3。
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338186"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85610874"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的预测终结点更改
 
@@ -73,9 +73,9 @@ V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼�
 
 ### <a name="changes-by-slot-name-and-version-name"></a>按槽名称和版本名称进行的更改
 
-[V3 终结点 HTTP](developer-reference-resource.md#rest-endpoints)调用的格式已更改。
+[V3 终结点 HTTP 的格式](developer-reference-resource.md#rest-endpoints)调用已更改。
 
-如果希望按版本查询，首先需要使用 `"directVersionPublish":true`[通过 API 进行发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
+如果希望按版本查询，首先需要使用 `"directVersionPublish":true` [通过 API 进行发布](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b)。 查询引用版本 ID 而不是槽名称的终结点。
 
 |`SLOT-NAME` 的有效值|
 |--|
@@ -86,17 +86,7 @@ V3 预测终结点不支持此 API-继续使用 V2 API 预测终结点进行拼�
 
 ### <a name="query-string-changes"></a>查询字符串更改
 
-V3 API 包含不同的查询字符串参数。
-
-|参数名称|类型|版本|默认|目的|
-|--|--|--|--|--|
-|`log`|boolean|V2 和 V3|false|将查询存储在日志文件中。 默认值为 false。|
-|`query`|字符串|仅 V3|无默认值 - 在 GET 请求中是必需的|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
-|`show-all-intents`|boolean|仅 V3|false|在 **prediction.intents** 对象中返回包含相应评分的所有意向。 意向将在父 `intents` 对象中作为对象返回。 这样，便可以通过编程方式进行访问，而无需在数组中查找意向：`prediction.intents.give`。 在 V2 中，这些意向在数组中返回。 |
-|`verbose`|boolean|V2 和 V3|false|**在 V2 中**，如果设置为 true，则返回所有预测意向。 如果需要所有预测的意向，请使用 V3 参数 `show-all-intents`。<br><br>**在 V3 中**，此参数仅提供实体预测的实体元数据详细信息。  |
-|`timezoneOffset`|字符串|V2|-|应用于 datetimeV2 实体的时区。|
-|`datetimeReference`|字符串|V3|-|应用于 datetimeV2 实体的[时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 替换 V2 中的 `timezoneOffset`。|
-
+[!INCLUDE [V3 query params](./includes/v3-prediction-query-params.md)]
 
 ### <a name="v3-post-body"></a>V3 POST 正文
 
@@ -112,13 +102,13 @@ V3 API 包含不同的查询字符串参数。
 }
 ```
 
-|Property|类型|版本|默认|目的|
+|属性|类型|版本|默认|目的|
 |--|--|--|--|--|
-|`dynamicLists`|array|仅 V3|不要求。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
-|`externalEntities`|array|仅 V3|不要求。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
-|`options.datetimeReference`|字符串|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 datetimeReference 的格式是 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
+|`dynamicLists`|array|仅 V3|非必需。|使用[动态列表](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)可以扩展已在 LUIS 应用中的已训练且已发布的现有列表实体。|
+|`externalEntities`|array|仅 V3|非必需。|[外部实体](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)可让 LUIS 应用在运行时识别和标记实体，这些实体可用作现有实体的特征。 |
+|`options.datetimeReference`|string|仅 V3|无默认值|用于确定 [datetimeV2 偏移量](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)。 datetimeReference 的格式是 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)。|
 |`options.preferExternalEntities`|boolean|仅 V3|false|指定是使用用户的[外部实体（与现有实体具有相同名称）](schema-change-prediction-runtime.md#override-existing-model-predictions)，还是使用模型中的现有实体进行预测。 |
-|`query`|字符串|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
+|`query`|string|仅 V3|必需。|**在 V2 中**，要预测的言语位于 `q` 参数中。 <br><br>**在 V3 中**，该功能在 `query` 参数中传递。|
 
 ## <a name="response-changes"></a>响应更改
 
@@ -273,9 +263,9 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 <a name="external-entities-passed-in-at-prediction-time"></a>
 <a name="override-existing-model-predictions"></a>
 
-## <a name="extend-the-app-at-prediction-time"></a>在预测时间扩展应用
+## <a name="extend-the-app-at-prediction-time"></a>在预测时扩展应用
 
-了解有关如何在预测运行时扩展应用程序的[概念](schema-change-prediction-runtime.md)。
+了解关于如何在预测运行时扩展应用的[概念](schema-change-prediction-runtime.md)。
 
 ## <a name="deprecation"></a>弃用
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4a96f31588e199d5696e2d9eff351051d46c1f96
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 872a90a0b4f5b348e45b04998067f9e97a3ae987
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873963"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611316"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>快速入门：使用必应 Web 搜索 REST API 和 Node.js 搜索网页
 
@@ -43,7 +43,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>设置订阅密钥
 
-此代码片段使用 `AZURE_SUBSCRIPTION_KEY` 环境变量来存储你的订阅密钥，这是在部署代码时防止你的密钥意外泄露的一个好办法。 若要查找订阅密钥，请参阅[你的 API](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)。
+此代码片段使用 `AZURE_SUBSCRIPTION_KEY` 环境变量来存储你的订阅密钥，这是在部署代码时防止你的密钥意外泄露的一个好办法。
 
 如果你熟悉使用环境变量，或希望尽快运行此应用，请将 `process.env['AZURE_SUBSCRIPTION_KEY']` 替换为你的订阅密钥（设置为字符串形式）。
 
