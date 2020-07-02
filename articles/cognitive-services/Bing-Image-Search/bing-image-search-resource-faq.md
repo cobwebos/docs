@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881696"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800017"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -39,15 +39,18 @@ ms.locfileid: "68881696"
 
 CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-search-single-page-app.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
-接下来，将 HTML 文件中的必应图像搜索 API 终结点更改为：
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+接下来，将 HTML 文件中的必应图像搜索 API 终结点更改为： \
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 最后，运行下面的命令，启动 CORS 代理：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

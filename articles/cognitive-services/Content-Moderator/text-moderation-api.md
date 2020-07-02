@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561029"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800085"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
@@ -36,13 +36,15 @@ ms.locfileid: "84561029"
 
 如果 API 在任何[受支持语言](Text-Moderation-API-Languages.md)中检测到任何亵渎字词，这些字词会包含在响应中。 响应还会包含这些字词在原始文本中的位置 (`Index`)。 以下示例 JSON 中的 `ListId` 引用[自定义字词列表](try-terms-list-api.md)（如果有）中找到的字词。
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 0,
         "Term": "crap"
     }
+```
 
 > [!NOTE]
 > 对于 **language** 参数，请分配 `eng` 或将其留空以查看机器辅助的**分类**响应（预览功能）。 **此功能仅支持英语**。
@@ -55,18 +57,20 @@ ms.locfileid: "84561029"
 
 以下 JSON 摘录内容显示了示例输出：
 
-    "Classification": {
-        "ReviewRecommended": true,
-        "Category1": {
-              "Score": 1.5113095059859916E-06
-            },
-        "Category2": {
-              "Score": 0.12747249007225037
-            },
-        "Category3": {
-              "Score": 0.98799997568130493
-        }
+```json
+"Classification": {
+    "ReviewRecommended": true,
+    "Category1": {
+        "Score": 1.5113095059859916E-06
+    },
+    "Category2": {
+        "Score": 0.12747249007225037
+    },
+    "Category3": {
+        "Score": 0.98799997568130493
     }
+}
+```
 
 ### <a name="explanation"></a>说明
 
@@ -127,11 +131,11 @@ ms.locfileid: "84561029"
 
 假设输入文本为（故意为 "lzay" 和 "f0x"）：
 
-    The qu!ck brown f0x jumps over the lzay dog.
+> Qu！ ck 棕色 f0x 将跳过 lzay 狗。
 
 如果请求执行自动更正，则响应会包含更正后的文本版本：
 
-    The quick brown fox jumps over the lazy dog.
+> 快速棕色的 fox 会跳过延迟犬。
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>创建和管理自定义字词列表
 
@@ -143,13 +147,15 @@ ms.locfileid: "84561029"
 
 以下示例显示匹配的列表 ID：
 
-    "Terms": [
+```json
+"Terms": [
     {
         "Index": 118,
         "OriginalIndex": 118,
         "ListId": 231.
         "Term": "crap"
     }
+```
 
 内容审查器提供[字词列表 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) 和相应的操作用于管理自定义字词列表。 请从[字词列表 API 控制台](try-terms-list-api.md)开始，使用 REST API 代码示例。 如果你熟悉 Visual Studio 和 C#，另请参阅[字词列表 .NET 快速入门](term-lists-quickstart-dotnet.md)。
 
