@@ -10,21 +10,21 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 33c5cbd47213d021d374f52c1dadaf20d508ae37
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943135"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608562"
 ---
 # <a name="tutorial-single-page-web-app"></a>教程：单页 Web 应用
 
-必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。   可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
+必应实体搜索 API 用于在 Web 中搜索实体和场所的信息。  可以在给定查询中请求一种或两种结果。 场所和实体的定义在下面提供。
 
 |||
 |-|-|
 |实体|按名称查找的知名人物、场所和事物|
-|场所|按名称或类型查找的餐馆、酒店和其他本地商业场所（例如，意大利餐馆） |
+|场所|按名称或类型查找的餐馆、酒店和其他本地商业场所（例如，意大利餐馆）|
 
 本教程将生成一个单页 Web 应用程序，该应用程序使用必应实体搜索 API 直接在页面中显示搜索结果。 该应用程序包含 HTML、CSS 和 JavaScript 组件。
 
@@ -56,9 +56,14 @@ ms.locfileid: "78943135"
 > [!NOTE]
 > 本教程大致类似于[单页必应 Web 搜索应用教程](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md)，但只涉及实体搜索结果。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要继续学习本教程，需要必应搜索 API 和必应地图 API 的订阅密钥。 如果没有这些密钥，可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本必应地图密钥](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+若要继续学习本教程，需要必应搜索 API 和必应地图 API 的订阅密钥。 
+
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后：
+  * 在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
+  * 在 Azure 门户中<a href="https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"  title="创建计算机视觉资源"  target="_blank">创建必应地图资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
 
 ## <a name="app-components"></a>应用组件
 
@@ -86,7 +91,7 @@ HTML 还包含部门（HTML `<div>` 标记），其中显示搜索结果。
 ## <a name="managing-subscription-keys"></a>管理订阅密钥
 
 > [!NOTE]
-> 不管是对必应搜索 API 还是对必应地图 API，此应用都要求使用订阅密钥。 可以使用[试用型必应搜索密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)和[基本型必应地图密钥](https://www.microsoft.com/maps/create-a-bing-maps-key)。
+> 不管是对必应搜索 API 还是对必应地图 API，此应用都要求使用订阅密钥。
 
 为了避免必须将必应搜索和必应地图 API 订阅密钥包含在代码中这种情形，请使用浏览器的持久性存储来存储它们。 如果任何一种密钥尚未存储，我们会提示你进行存储，以备后用。 如果该密钥随后被 API 拒绝，我们会使已存储的密钥失效，并会在用户下次进行搜索时要求其提供密钥。
 
@@ -251,7 +256,7 @@ function bingMapsCallback(response) {
 }
 ```
 
-除了纬度和经度，必应实体搜索查询还需要一个 *radius*（半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。  边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
+除了纬度和经度，必应实体搜索查询还需要一个 *radius*（半径），用于指示位置信息的精确度。 我们使用在必应地图响应中提供的边界框来计算半径。 边界框是一个将整个位置包围住的矩形。 例如，如果用户输入 `NYC`，则结果大致包含纽约市的中心坐标以及一个围绕该市的边界框。 
 
 首先使用函数 `haversineDistance()`（未显示）计算从主坐标分别到边界框的四个角的距离。 在这四个距离中，使用最大的一个作为半径。 最小半径为一公里。 如果响应中未提供边界框，则此值也会用作默认值。
 
@@ -380,7 +385,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> 成功的 HTTP 请求不  一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
+> 成功的 HTTP 请求不一定意味着搜索本身成功。 如果搜索操作中出现错误，必应实体搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 此外，如果请求速率受限制，该 API 还会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 
@@ -408,7 +413,7 @@ function handleBingResponse() {
 
 | | |
 |-|-|
-|`id`|`id` 看起来像 URL，但不应将其用于链接。 排名结果的 `id` 类型与答案集合中某个搜索结果项的 `id` 匹配，或者  与整个答案集合（例如 `Entities`）匹配。
+|`id`|`id` 看起来像 URL，但不应将其用于链接。 排名结果的 `id` 类型与答案集合中某个搜索结果项的 `id` 匹配，或者与整个答案集合（例如 `Entities`）匹配。
 |`answerType`<br>`resultIndex`|`answerType` 是指包含结果的顶级答案集合（例如 `Entities`）。 `resultIndex` 是指结果在该集合中的索引。 如果省略 `resultIndex`，则排名结果指整个集合。
 
 > [!NOTE]
@@ -436,7 +441,7 @@ function renderSearchResults(results) {
 
 ## <a name="rendering-result-items"></a>呈现结果项
 
-在 JavaScript 代码中有一个对象 `searchItemRenderers`，其中包含呈现器  函数，为每种搜索结果生成 HTML。
+在 JavaScript 代码中有一个对象 `searchItemRenderers`，其中包含呈现器函数，为每种搜索结果生成 HTML。
 
 ```javascript
 searchItemRenderers = { 
@@ -520,7 +525,7 @@ searchItemRenderers = {
 
 来自必应搜索 API 的响应可能包含应通过后续请求发送回 API 的 `X-MSEdge-ClientID` 标头。 如果正在使用多个必应搜索 API，应将相同客户端 ID 用于所有这些必应搜索 API（如有可能）。
 
-提供 `X-MSEdge-ClientID` 标头可以让必应 API 关联用户的所有搜索，这有两个主要好处。
+提供 `X-MSEdge-ClientID` 标头可让必应 API 关联用户的所有搜索，这有两个主要好处。
 
 首先，它允许必应搜索引擎将过去的上下文应用于搜索来查找更好地满足用户的结果。 例如，如果用户以前搜索过与航海相关的词汇，则稍后搜索“码头”时，系统可能会优先返回可以让帆船停靠的码头的信息。
 
@@ -531,7 +536,7 @@ searchItemRenderers = {
 > [!NOTE]
 > 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，你的必应搜索 API 密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。
 
-进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应中有 `Access-Control-Expose-Headers` 头，可以将响应头列入允许列表，让响应头可供 JavaScript 访问。
+进行开发时，可以通过 CORS 代理发出必应 Web 搜索 API 请求。 此类代理的响应有一个 `Access-Control-Expose-Headers` 标头，它允许列出响应标头并使其可供 JavaScript 访问。
 
 安装 CORS 代理很容易，教程应用可以用它来访问客户端 ID 标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令窗口中发出以下命令：
 

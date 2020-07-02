@@ -3,12 +3,12 @@ title: 教程：使用机器学习实体提取结构化数据 - LUIS
 description: 使用机器学习实体从言语中提取结构化数据。 若要提高提取准确性，请添加包含功能的子实体。
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: f9a732d38d2d4557340080d9d1bbdcf789caea08
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e16badfb2e024c5d82f1aed8a02aa901dca2c2a9
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676173"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611010"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>教程：在语言理解 (LUIS) 中使用机器学习实体从用户言语中提取结构化数据
 
@@ -98,7 +98,7 @@ ms.locfileid: "83676173"
 
 1. 在下拉菜单中选择“新建短语列表”。
 
-1. 在“创建新短语列表”框中，输入名称 `SizePhraselist`，然后输入 `small`、`medium` 和 `large` 值。 当填充“建议”框时，选择 `extra large` 和 `xl`。 选择“保存”以创建新的短语列表。
+1. 在“创建新短语列表”框中，输入名称 `SizePhraselist`，然后输入 `small`、`medium` 和 `large` 值。 当填充“建议”框时，选择 `extra large` 和 `xl`。 选择“创建”来创建新的短语列表。
 
     此短语列表功能通过提供示例字词，帮助 `Size` 子实体查找与大小相关的字词。 此短语列表不需要包含每个尺寸词，而应当包含预期指示尺寸的字词。
 
@@ -131,7 +131,7 @@ ms.locfileid: "83676173"
 
 1. 在“架构和特性”选项卡上，选择“大小”实体，然后选择“+ 添加特性”  。
 
-1. 从下拉列表中选择“@ SizeList”。
+1. 从下拉列表中选择“@ SizeListentity”。
 
 <a name="add-prebuilt-number-entity-to-app"></a>
 

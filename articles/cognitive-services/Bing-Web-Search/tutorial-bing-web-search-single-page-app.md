@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 085bfd51ae6eabfc26201897a124a6272e0221fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78943878"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603581"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -30,15 +30,16 @@ ms.locfileid: "78943878"
 > * 管理订阅密钥
 > * 处理错误
 
-要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)获取订阅密钥。
+要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需具备以下几项才可运行应用：
 
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
+
 * Node.js 8 或更高版本
-* 必应搜索 API 的订阅密钥。 如果没有该密钥，请[创建必应搜索 v7 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)。 也可以使用[试用密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
-## <a name="get-the-source-code-and-install-dependencies"></a>获取源代码并安装依赖项
 
 首先是使用示例应用的源代码克隆存储库。
 
@@ -131,7 +132,7 @@ function bingSearchOptions(form) {
 
 如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
 > [!NOTE]
-> 提升结果类型后，该类型不一定会包含在搜索结果中  。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
+> 提升结果类型后，该类型不一定会包含在搜索结果中。 不过，提升可以提高此类结果的排名（相对于其通常的排名而言）。 若要将搜索限制为特定类型的结果，请使用 `responseFilter` 查询参数，或者调用更具体的终结点，例如必应图像搜索或必应新闻搜索。
 
 将 `textDecoration` 和 `textFormat` 查询参数硬编码到脚本中，这两个参数可使搜索词在搜索结果中显示为粗体。 这些参数并非必需。
 
@@ -282,7 +283,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> HTTP 请求成功并不表示搜索本身会成功  。 如果搜索操作中出现错误，必应 Web 搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 如果请求速率受到限制，该 API 会返回空响应。
+> HTTP 请求成功并不表示搜索本身会成功。 如果搜索操作中出现错误，必应 Web 搜索 API 将返回非 200 HTTP 状态代码并将错误信息包含在 JSON 响应中。 如果请求速率受到限制，该 API 会返回空响应。
 
 上面两个函数中的很多代码专用于错误处理。 以下阶段可能会出现错误：
 

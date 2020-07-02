@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 53572f4c5cce3ecd0c2e1dec90826e620841a852
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ee1308f08b5ca2192bb429acbb5bdaec199fb26f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118710"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85603260"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>快速入门：使用必应图像搜索 REST API 和 Ruby 来搜索图像
 
@@ -146,7 +146,6 @@ puts "Url to the thumbnail of the first returned search result: #{first_result}"
 ## <a name="see-also"></a>另请参阅
 
 * [什么是必应图像搜索 API？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)。  
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)。  
-* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)。
-* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。
+* [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)   
+* [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
+* [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
