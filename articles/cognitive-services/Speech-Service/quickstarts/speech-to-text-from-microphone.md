@@ -1,23 +1,23 @@
 ---
 title: 快速入门：从麦克风中识别语音 - 语音服务
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，我们将使用语音 SDK 以交互方式识别从麦克风捕获的音频数据中的语音。
+description: 在本快速入门中，你将使用语音 SDK 以交互方式识别从麦克风捕获的音频数据中的语音。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.author: dapine
+ms.date: 06/25/2020
+ms.author: trbye
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-two-with-js-go-spx
-ms.openlocfilehash: b2a0dfb363bb834bff03ffc36b0763cc38097089
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: e5097b30bd280e0a46e3b327d94fbd26244a4fdc
+ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609620"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85391564"
 ---
 # <a name="quickstart-recognize-speech-from-a-microphone"></a>快速入门：识别来自麦克风的语音
 

@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 12/19/2019
+ms.date: 06/24/2020
 ms.author: aahi
-ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 272a10e211e99e200b82807b188d828a9ece42d8
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75382321"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85609429"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
 
@@ -27,37 +27,38 @@ ms.locfileid: "75382321"
 - 对必应 Web 搜索 API 进行简单查询
 - 按排名顺序显示查询结果
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要跟随本教程进行学习，你需要：
 
-- Visual Studio。 如果没有，请[下载并安装免费的 Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。
-- 必应 Web 搜索 API 的订阅密钥。 如果没有订阅密钥，可以[注册免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
+* 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 部署后，单击“转到资源”。
+* [Visual Studio IDE](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-a-new-console-app-project"></a>创建新的控制台应用项目
 
 在 Visual Studio 中，使用 `Ctrl`+`Shift`+`N` 创建项目。
 
-在“新建项目”对话框中，单击“Visual C#”>“Windows 经典桌面”>“控制台应用(.NET Framework)”   。
+在“新建项目”对话框中，单击“Visual C#”>“Windows 经典桌面”>“控制台应用(.NET Framework)” 。
 
-将应用程序命名为“MyConsoleSearchApp”，然后单击“确定”   。
+将应用程序命名为“MyConsoleSearchApp”，然后单击“确定” 。
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>向项目添加 JSON.net Nuget 包
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>向项目添加 JSON.net NuGet 包
 
 JSON.net 允许使用 API 返回的 JSON 响应。 将其 NuGet 包添加到项目中：
 
-- 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...”   。
-- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`。 选择最新版本，然后单击“安装”  。
-- 单击“查看更改”窗口中的“确定”按钮   。
-- 关闭标题为“NuGet: MyConsoleSearchApp”的 Visual Studio 选项卡  。
+- 在“解决方案资源管理器”中，右键单击项目并选择“管理 NuGet 包...” 。
+- 在“浏览”选项卡中，搜索 `Newtonsoft.Json`。 选择最新版本，然后单击“安装”。
+- 单击“查看更改”窗口中的“确定”按钮 。
+- 关闭标题为“NuGet: MyConsoleSearchApp”的 Visual Studio 选项卡。
 
 ## <a name="add-a-reference-to-systemweb"></a>添加对 System.Web 的引用
 
 本教程依赖于 `System.Web` 程序集。 将对此程序集的引用添加到项目中：
 
-- 在“解决方案资源管理器”中，右键单击“引用”并选择“添加引用...”   
-- 选择“程序集”>“框架”，然后向下滚动并选中“System.Web”  
-- 选择“确定” 
+- 在“解决方案资源管理器”中，右键单击“引用”并选择“添加引用...”  
+- 选择“程序集”>“框架”，然后向下滚动并选中“System.Web” 
+- 选择“确定”
 
 ## <a name="add-some-necessary-using-statements"></a>添加一些必要的 using 语句
 
@@ -70,7 +71,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>要求用户发出查询
 
-在“解决方案资源管理器”中，打开“Program.cs”   。 更新 `Main()` 方法：
+在“解决方案资源管理器”中，打开“Program.cs” 。 更新 `Main()` 方法：
 
 ```csharp
 static void Main()

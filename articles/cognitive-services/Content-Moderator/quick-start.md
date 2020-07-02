@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/13/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 550cec535343d48ad74dd35e6886af78bdd15701
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79203539"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85563280"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>快速入门：尝试在 Web 上使用内容审查器
 
@@ -32,15 +32,15 @@ ms.locfileid: "79203539"
 
 ## <a name="create-a-review-team"></a>创建评审团队
 
-接下来创建评审团队。 在工作方案中，这是将要手动评审服务审查决策的人员组。 若要创建团队，需要选择一个区域，并提供团队名称和团队 ID    。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
+接下来创建评审团队。 在工作场景中，这是要手动评审服务审查决策的一组人员。 若要创建团队，需要选择一个区域，并提供团队名称和团队 ID  。 若要邀请同事加入团队，可在此处输入他们的电子邮件地址。
 
 > [!NOTE]
-> 团队名称是评审团队的易记名称  。 此名称将显示在 Azure 门户中。 团队 ID 用于程序化标识评审团队  。
+> 团队名称是评审团队的易记名称。 此名称将显示在 Azure 门户中。 团队 ID 用于程序化标识评审团队。
 
 > [!div class="mx-imgBorder"]
 > ![邀请团队成员](images/create-team.png)
 
-如果选择使用客户管理的密钥 (CMK) 加密数据，系统将提示你输入 E0 定价层中内容审查器资源的资源 ID  。 你提供的资源必须是新的。 
+如果选择使用客户管理的密钥 (CMK) 加密数据，系统将提示你输入 E0 定价层中内容审查器资源的资源 ID。 你提供的资源必须是新的。 
 
 > [!div class="mx-imgBorder"]
 > ![使用 CMK 邀请团队成员](images/create-team-cmk.png)
@@ -52,7 +52,7 @@ ms.locfileid: "79203539"
 
 ## <a name="upload-sample-content"></a>上传示例内容
 
-现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。   
+现在，可以上传示例内容。 选择“尝试 > 图像”、“尝试 > 文本”或“尝试 > 视频”。  
 
 ![请尝试图像或文本审核](images/tryimagesortext.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "79203539"
 
 ![查看结果](images/reviewresults_text.png)
 
-在项目中，你或评审团队可以更改这些标记，或根据需要添加更多的标记。 单击“下一步”按钮提交这些更改。  当业务应用程序调用审查器 API 时，标记的内容将在此处排队，等待评审人员团队进行评审。 可以使用此方法快速评审大量内容。
+在项目中，你或评审团队可以更改这些标记，或根据需要添加更多的标记。 单击“下一步”按钮提交这些更改。 当业务应用程序调用审查器 API 时，标记的内容将在此处排队，等待评审人员团队进行评审。 可以使用此方法快速评审大量内容。
 
 现在，你已使用内容审查器评审工具来通过示例了解了内容审查器服务的功能。 接下来，可以详细了解评审工具，以及如何使用评审 API 将它集成到软件项目，或者，可以跳转到[后续步骤](#next-steps)部分来了解如何在应用中单独使用审查 API。
 

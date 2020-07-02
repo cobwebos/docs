@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: fbaa10ec8a0b48d40644bb90144d89f53ab52563
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299477"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513544"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>快速入门：使用 ARM 模板创建认知服务资源
 
-本文介绍如何使用 Azure 资源管理器 (ARM) 模板创建和部署认知服务资源。 借助这个多服务资源可以实现以下操作：
+通过本文使用 Azure 资源管理器 (ARM) 模板创建和部署认知服务资源。 借助这个多服务资源可以实现以下操作：
 * 通过单个密钥和终结点访问多个 Azure 认知服务。
 * 合并所用资源的计费。
 

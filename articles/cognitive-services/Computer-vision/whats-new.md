@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/28/2020
+ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 75d191c9d65cc639522c3fbba5b8c438b8b83448
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589085"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560121"
 ---
 # <a name="whats-new-in-computer-vision"></a>计算机视觉中的新增功能
 
-了解服务中的新增功能。 这些项可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
+了解服务中的新增功能。 这些内容可能包括发布说明、视频、博客文章和其他类型的信息。 请将本页加入书签，以随时了解该服务的最新信息。
 
 ## <a name="may-2020"></a>2020 年 5 月
 计算机视觉 API v3.0 正式发布，并对[读取 API](concept-recognizing-text.md) 进行了更新：
