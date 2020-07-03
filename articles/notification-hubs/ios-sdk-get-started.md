@@ -115,7 +115,7 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 
 1. 向下滚动到选中的“推送通知”选项，然后选择“配置”以创建证书。 ****   ****  
 
-   应用 ID:::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="应用 ID":::
 
 2. 此时将显示“Apple Push Notification 服务 SSL 证书”窗口。 ****   在“开发 SSL 证书”部分中，选择“创建证书”按钮。 ****   ****  
 

@@ -212,7 +212,7 @@ ms.locfileid: "85118286"
 
     添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并选择“应用筛选器”，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的“更改图中某个顶点的目标”。 :::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text=""::: 可能需要扩大窗口才能看到该按钮。
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的:::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="“更改图中某个顶点的目标”。":::   可能需要扩大窗口才能看到该按钮。
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="更改图形中某个顶点的目标 - Azure CosmosDB":::
 
