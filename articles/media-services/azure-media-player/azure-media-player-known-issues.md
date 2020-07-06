@@ -8,7 +8,7 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124629"
@@ -78,7 +78,7 @@ ms.locfileid: "83124629"
 ### <a name="microsoft"></a>Microsoft ###
 
 - 由于与 ECMAScript 5 不兼容，IE8 播放功能目前无法使用
-- 在 IE 和某些版本的 Edge 中，不能通过 Tab 键切换到相关按钮并选择它或使用 F/F 热键来进入全屏。
+- 在 IE 和某些版本的 Microsoft Edge 中，不能通过 Tab 键切换到相关按钮并选择它或使用 F/F 热键来进入全屏。
 
 ## <a name="google"></a>Google ##
 

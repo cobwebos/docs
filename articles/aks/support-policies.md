@@ -8,7 +8,7 @@ ms.date: 01/24/2020
 ms.author: jenoller
 ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
 ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/14/2020
 ms.locfileid: "83402463"
@@ -134,7 +134,7 @@ AKS 代表客户管理工作器节点的生命周期和操作 - **不支持**修
 
 ## <a name="network-ports-access-and-nsgs"></a>网络端口、访问和 NSG
 
-作为托管服务，AKS 具有特定的网络和连接要求。 这些要求的灵活性低于正常 IaaS 组件的要求。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用阻止出站端口 443 的防火墙规则）和将 URL 列入白名单等操作都可能会导致群集不受支持。
+作为托管服务，AKS 具有特定的网络和连接要求。 这些要求的灵活性低于正常 IaaS 组件的要求。 在 AKS 中，自定义 NSG 规则、阻止特定端口（例如，使用阻止出站端口 443 的防火墙规则）和将 URL 列入允许列表等操作都可能会导致群集不受支持。
 
 > [!NOTE]
 > 目前，AKS 不允许完全锁定群集的出口流量。 若要控制可供群集用于出站流量的 URL 和端口的列表，请参阅[限制出口流量](limit-egress-traffic.md)。
