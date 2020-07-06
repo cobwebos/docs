@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: fedec6ea764394d36f5b4d7c883f7cb9f9520a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64869024"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>用于 Azure 媒体服务的 Java 客户端 SDK 入门  
@@ -32,7 +32,7 @@ ms.locfileid: "64869024"
 
 以下是完成本教程所要做好的准备：
 
-* 一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 * 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅 [如何创建媒体服务帐户](media-services-portal-create-account.md)。
 * 当前的 [Azure 媒体服务 Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
@@ -65,7 +65,7 @@ ms.locfileid: "64869024"
 * `clientKey`：Azure AD 应用程序的客户端密钥
 * `restApiEndpoint`：Azure 媒体服务帐户的 REST API 终结点
 
-可以创建一个 Azure AD 应用程序，然后从 Azure 门户获取前面的配置值。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)的“服务主体身份验证”部分。 
+可以创建一个 Azure AD 应用程序，然后从 Azure 门户获取前面的配置值。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)的“服务主体身份验证”部分。
 
 该代码还依赖于本地存储的视频文件。 必须编辑代码，提供自己的要上传的本地文件。
 

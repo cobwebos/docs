@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ecc90e13f49c231d8d3ab0cff1de91443b80f21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65950895"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>确定混合标识解决方案的标识要求
@@ -29,7 +29,7 @@ ms.locfileid: "65950895"
 
 我们需要通盘审视企业的各个主要层面，了解其当前要求，以及公司的将来规划。 如果不清楚混合标识设计的长期策略，解决方案将来有可能无法随着企业的成长和变化而缩放。 下图显示了混合标识体系结构的示例，以及要为用户解除锁定的工作负荷。 此示例只是说明可以通过健全的混合标识策略解锁和提供的各种新机会。 
 
-属于混合标识体系结构![混合标识体系结构的一些组件](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
+属于混合标识体系结构 ![ 混合标识体系结构的一些组件](./media/plan-hybrid-identity-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>确定业务需求
 每家公司都有不同的要求，即使这些公司属于相同的行业，实际的业务要求仍可能有所不同。 可以继续利用行业最佳实践，但最终引导定义混合标识设计要求的仍是公司的业务需求。 

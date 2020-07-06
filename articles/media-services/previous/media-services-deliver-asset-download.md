@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 21fcc6ae09718ffbb22e1d438926586dd3cde71d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61465654"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>如何：通过下载传送资产  
@@ -27,7 +27,7 @@ ms.locfileid: "61465654"
 此示例演示如何将媒体资产从媒体服务下载到本地计算机。 该代码将按作业 ID 查询与媒体服务帐户关联的作业，并访问其 **OutputMediaAssets** 集合（即运行作业后生成的、包含一个或多个输出媒体资产的集）。 此示例演示如何通过作业下载输出媒体资产，但也可应用相同的方法下载其他资产。
 
 >[!NOTE]
->不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，请使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文。
+>不同 AMS 策略的策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。 如果始终使用相同的日期/访问权限，请使用相同的策略 ID，例如，用于要长期就地保留的定位符的策略（非上传策略）。 有关详细信息，请参阅[此](media-services-dotnet-manage-entities.md#limit-access-policies)文章。
 
 ```csharp
     // Download the output asset of the specified job to a local folder.

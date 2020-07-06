@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61436488"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box Blob 存储要求
@@ -46,7 +46,7 @@ Azure Data Box 1.8 及更高版本
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
 - [2015-07-08](/rest/api/storageservices/version-2015-07-08)
-- [2015-04-05](/rest/api/storageservices/version-2015-04-05)|
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05) |
 ## <a name="supported-azure-client-libraries"></a>支持的 Azure 客户端库
 
 对于 Data Box Blob 存储，需要提供特定的客户端库和特定的终结点后缀。 Data Box Blob 存储终结点与最新版本的 Azure Blob 存储 REST API 不完全相同，请参阅 [Azure Data Box 1.8 及更高版本支持的版本](#supported-api-versions)。 对于存储客户端库，需要知道与 REST API 兼容的版本。

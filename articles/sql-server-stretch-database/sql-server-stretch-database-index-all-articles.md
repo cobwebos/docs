@@ -1,6 +1,6 @@
 ---
 title: 有关 SQL Server Stretch Database 服务的所有主题 | Microsoft 文档
-description: 位于 https://azure.microsoft.com/documentation/articles/ 的有关名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和说明。
+description: 位于 https://azure.microsoft.com/documentation/articles/ 且名为 SQL Server Stretch Database 的 Azure 服务的所有主题的表格，包括标题和说明。
 services: sql-server-stretch-database
 documentationcenter: ''
 ms.assetid: b1718024-84d6-4f5c-a912-3a99edb3f632
@@ -14,10 +14,10 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.openlocfilehash: 81f1ac3280381ef08a1daf1fa4e041227a07aeaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66003032"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>有关 Azure SQL Server Stretch Database 服务的所有主题

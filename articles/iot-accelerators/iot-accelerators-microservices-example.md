@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447575"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>自定义和重新部署微服务
@@ -56,7 +56,7 @@ ms.locfileid: "61447575"
 1. 确保终端处于打开状态，切换到远程监视解决方案所克隆到的目录。 
 1. 将目录切换到“azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/Services”。
 1. 在任何文本编辑器或偏好的 IDE 中打开 StatusService.cs。 
-1. 找到以下代码：
+1. 找到下列代码：
 
     ```csharp
     var result = new StatusServiceModel(true, "Alive and well!");
@@ -121,7 +121,7 @@ ms.locfileid: "61447575"
 
 1. 返回终端，并切换到以下目录：“azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local”。
 2. 在任何文本编辑器或偏好的 IDE 中打开 docker-compose.yml。
-3. 找到以下代码：
+3. 找到下列代码：
 
     ```yml
     image: azureiotpcs/iothub-manager-dotnet:testing

@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61442843"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>将 IoT Edge 包导入到远程监视解决方案加速器
@@ -33,7 +33,7 @@ ms.locfileid: "61442843"
 
 1. 单击包含要使用的部署配置的部署。 随即显示“部署详细信息”页面****：![IoT Edge 部署详细信息](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. 单击 "**下载 IoT Edge 清单**： ![下载部署清单](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. 单击 "**下载 IoT Edge 清单**： ![ 下载部署清单](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. 将 JSON 文件另存为名为 **deploymentmanifest.json** 的本地文件。
 

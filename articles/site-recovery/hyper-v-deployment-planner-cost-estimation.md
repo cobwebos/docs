@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60947184"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
@@ -90,7 +90,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 此表显示 Windows 和非 Windows VM 数及其 DR 演练计算成本。
 
 ### <a name="settings"></a>设置 
-**使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为 **"是"**。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。****
+**使用托管磁盘**：此设置指定是否在 DR 演练时使用托管磁盘。 默认值为“是”。 如果已将 **-UseManagedDisks** 设置为“No”，则会使用非托管磁盘价格来计算成本。****
 
 **货币**：生成报表时使用的货币。
 
@@ -119,9 +119,9 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
     f. **每次 DR 演练的持续时间（天）**
 
-    g. **OS 类型**
+    如， **OS 类型**
 
-    h. **数据冗余**
+    h.如果该值不存在，请单击“添加行”。 **数据冗余**
 
     i. **Azure 混合使用权益**
 
@@ -149,7 +149,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **数据冗余**：可以是本地冗余存储、异地冗余存储或读取访问异地冗余存储。 默认为本地冗余存储。 可以根据特定 VM 的存储帐户来更改类型，也可以将新类型应用到所有 VM。 更改顶部行的类型，然后选择“应用到所有项”。**** 根据所选数据冗余的价格来计算复制的存储成本。 
 
-**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。 默认值为 **"是"**。 可以更改特定 VM 的设置，也可以更新所有 VM。 选择“应用到所有项”。****
+**Azure 混合使用权益**：可以在适用情况下将 Azure 混合使用权益应用到 Windows VM。 默认值为“是”。 可以更改特定 VM 的设置，也可以更新所有 VM。 选择“应用到所有项”。****
 
 **总 Azure 使用量**：用于 DR 的计算、存储和 Site Recovery 许可证成本。 此项会根据你的选择显示每月或每年的成本。
 

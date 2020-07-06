@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: e44aa8ade512a6005959e795cb1d4ad861da1338
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "61447040"
 ---
 # <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义服务
@@ -33,7 +33,7 @@ ms.locfileid: "61447040"
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 应先完成[向远程监视解决方案加速器 Web UI 添加自定义页面](iot-accelerators-remote-monitoring-customize-page.md)操作指南中的步骤，然后再继续操作。
 
@@ -118,4 +118,4 @@ const epics = [
 
 现在已定义了服务，下一步是[向远程监视解决方案加速器 Web UI 添加自定义网格](iot-accelerators-remote-monitoring-customize-grid.md)，该网格将显示服务返回的数据。
 
-有关远程监视解决方案加速器的其他概念性信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)。
+有关远程监视解决方案加速器的更多概念信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

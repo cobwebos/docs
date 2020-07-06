@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60878346"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的数据加密
@@ -55,12 +55,12 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 |  | 服务管理的密钥 | 客户管理的密钥 |
 | --- | --- | --- |
 |如何存储数据？|始终在存储前加密。|始终在存储前加密。|
-|在何处存储主加密密钥？|Key Vault|Key Vault|
+|在何处存储主加密密钥？|密钥保管库|密钥保管库|
 |是否可以在 Key Vault 外部存储明文形式的加密密钥？ |否|否|
 |能否通过 Key Vault 检索 MEK？|否。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|否。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|
 |谁拥有 Key Vault 实例和 MEK？|Data Lake Storage Gen1 服务|拥有 Key Vault 实例，该实例属于自己的 Azure 订阅。 Key Vault 中的 MEK 可以通过软件或硬件进行管理。|
-|能否撤消对 Data Lake Storage Gen1 服务的 MEK 的访问权限？|否|是的。 可以管理 Key Vault 中的访问控制列表，删除 Data Lake Storage Gen1 服务的服务标识的访问控制项。|
-|能否永久删除 MEK？|否|是的。 如果从 Key Vault 中删除 MEK，则任何人（包括 Data Lake Storage Gen1 服务）都不能解密 Data Lake Storage Gen1 帐户中的数据。 <br><br> 如果在将 MEK 从 Key Vault 中删除以前对其进行了显式备份，则可将 MEK 还原，然后对数据进行恢复。 但是，如果在将 MEK 从 Key Vault 中删除以前未对其进行备份，则再也不能在以后解密 Data Lake Storage Gen1 帐户中的数据。|
+|能否撤消对 Data Lake Storage Gen1 服务的 MEK 的访问权限？|否|是。 可以管理 Key Vault 中的访问控制列表，删除 Data Lake Storage Gen1 服务的服务标识的访问控制项。|
+|能否永久删除 MEK？|否|是。 如果从 Key Vault 中删除 MEK，则任何人（包括 Data Lake Storage Gen1 服务）都不能解密 Data Lake Storage Gen1 帐户中的数据。 <br><br> 如果在将 MEK 从 Key Vault 中删除以前对其进行了显式备份，则可将 MEK 还原，然后对数据进行恢复。 但是，如果在将 MEK 从 Key Vault 中删除以前未对其进行备份，则再也不能在以后解密 Data Lake Storage Gen1 帐户中的数据。|
 
 
 除了该差异（即谁管理 MEK 及其所在的 Key Vault 实例），该设计的其余部分对两种模式来说都是相同的。
@@ -74,9 +74,9 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 
 设计数据加密时，使用三种类型的密钥。 下表进行了汇总：
 
-| 密钥                   | 缩写 | 关联项 | 存储位置                             | 类型       | 说明                                                                                                   |
+| Key                   | 缩写 | 关联项 | 存储位置                             | 类型       | 注释                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
-| 主加密密钥 | MEK          | Data Lake Storage Gen1 帐户 | Key Vault                              | 非对称 | 可以由 Data Lake Storage Gen1 或你来管理。                                                              |
+| 主加密密钥 | MEK          | Data Lake Storage Gen1 帐户 | 密钥保管库                              | 非对称 | 可以由 Data Lake Storage Gen1 或你来管理。                                                              |
 | 数据加密密钥   | DEK          | Data Lake Storage Gen1 帐户 | 永久性存储，由 Data Lake Storage Gen1 服务管理 | 对称  | DEK 由 MEK 加密。 加密的 DEK 存储在永久性介质上。 |
 | 块加密密钥  | BEK          | 数据块 | 无                                         | 对称  | BEK 派生自 DEK 和数据块。                                                      |
 

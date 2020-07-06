@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60456548"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>将存储资源管理器与 Azure 文件存储配合使用
@@ -203,7 +203,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
         ![上传文件](media/vs-azure-tools-storage-explorer-files/image18.png)
         
-        b. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 (…) 按钮，以选择要上传的文件。   
+        b. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传的文件。 
 
         ![添加文件](media/vs-azure-tools-storage-explorer-files/image19.png)
 
@@ -215,7 +215,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
         ![“上传文件夹”菜单](media/vs-azure-tools-storage-explorer-files/image20.png)
 
-        b. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 (…) 按钮，以选择要上传其内容的文件夹。   
+        b. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传其内容的文件夹。 
 
         c. （可选）指定要将选定文件夹的内容上传到其中的目标文件夹。 如果目标文件夹不存在，系统会创建一个。
 

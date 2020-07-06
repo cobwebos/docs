@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "64685326"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure 市场中发布 HDInsight 应用程序
@@ -91,8 +91,8 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型**。 在 BYOL 方案中�
 3. 输入标题，然后选择“创建新的解决方案模板”****。
 4. 如果尚未注册组织，选择“创建开发人员中心帐户并加入 Azure 计划”****。  有关详细信息，请参阅[创建 Microsoft 开发人员帐户](../marketplace/marketplace-publishers-guide.md)。
 5. 选择“定义一些拓扑以开始使用”****。 解决方案模板是其所有拓扑的“父级”。 可以在一个产品或解决方案模板中定义多个拓扑。 将产品/服务推送到过渡环境时，它会随其所有拓扑一起推送。 
-6. 输入拓扑名称，然后选择**+**。
-7. 输入新版本，然后选择**+**。
+6. 输入拓扑名称，然后选择 **+** 。
+7. 输入新版本，然后选择 **+** 。
 8. 打包应用程序时上传创建的 .zip 文件。  
 9. 选择“请求认证”****。 Microsoft 认证团队将审查该文件并认证拓扑。
 

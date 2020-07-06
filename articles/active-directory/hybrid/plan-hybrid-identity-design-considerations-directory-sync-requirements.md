@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381153"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>确定目录同步要求
@@ -75,6 +75,6 @@ ms.locfileid: "60381153"
 ## <a name="next-steps"></a>后续步骤
 [确定多重身份验证要求](plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)
 

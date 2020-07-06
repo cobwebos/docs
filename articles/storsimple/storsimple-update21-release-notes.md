@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60531049"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 系列更新 2.2 发行说明
@@ -52,11 +52,11 @@ ms.locfileid: "60531049"
 | --- | --- | --- | --- | --- |
 | 1 |主机性能 |在早期版本中，曾发现在本地固定卷的创建过程以及分层卷转换为本地固定卷的过程中存在主机端性能问题。 在此版本中已经修复这些问题，因而提高了在创建和转换卷过程中的主机性能。 |是 |否 |
 | 2 |本地固定卷 |在极少数情况下，系统可能会在创建本地固定卷时崩溃。 此版本中已修复这个 bug。 |是 |否 |
-| 3 |分层 |将 StorSimple 云设备（8010 和 8020）的元数据分层到云中时，会出现偶发性崩溃。 在此版本中已修复了此问题。 |否 |是 |
+| 3 |分层 |将 StorSimple 云设备（8010 和 8020）的元数据分层到云中时，会出现偶发性崩溃。 在此版本中已修复了此问题。 |No |是 |
 | 4 |快照创建 |在卷很大且数据更改量几乎没有的情况下，会遇到和增量快照创建有关的问题。 在此版本中已修复这些问题。 |是 |是 |
 | 5 |Openstack 身份验证 |将 Openstack 用作云服务提供商时，用户可能会遇到和身份验证有关的罕见 bug，即，JSON 分析器会导致崩溃。 在此版本中已修复这一 bug。 |是 |否 |
 | 6 |主机端副本 |在早期版本的软件中，将数据从一个卷复制到另一个卷时，会遇到和 ODX 计时有关的罕见 bug。 此 bug 会导致控制器故障转移，且系统可能会进入恢复模式。 在此版本中已修复这一 bug。 |是 |否 |
-| 7 |Windows Management Instrumentation (WMI) |在以前版本的软件中，存在多个 web 代理失败实例，出现异常 "\<System.management.managementexception> 提供程序加载失败"。 此 bug 属于 WMI 内存泄露问题，现已修复。 |是 |否 |
+| 7 |Windows Management Instrumentation (WMI) |在早期版本的软件中，存在多个发生“\<ManagementException> 提供程序加载失败”异常的 Web 代理失败实例。 此 bug 属于 WMI 内存泄露问题，现已修复。 |是 |否 |
 | 8 |更新 |在某些极少数情况下，用户在早期版本的软件中尝试扫描或安装更新时，会收到“CisPowershellHcsscripterror”。 在此版本中已修复了此问题。 |是 |是 |
 | 9 |支持包 |在此版本中，已改进收集和上传支持包的方式。 |是 |是 |
 
@@ -95,6 +95,6 @@ ms.locfileid: "60531049"
 ## <a name="virtual-device-updates-in-update-22"></a>更新 2.2 中的虚拟设备更新
 此更新不能应用于虚拟设备。 将需要新建虚拟设备。 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 了解如何在 StorSimple 设备上[安装更新 2.2](storsimple-install-update-21.md)。
 

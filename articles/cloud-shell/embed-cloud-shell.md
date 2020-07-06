@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60614308"
 ---
 # <a name="embed-azure-cloud-shell"></a>嵌入 Azure Cloud Shell
@@ -50,7 +50,7 @@ ms.locfileid: "60614308"
 
 通过增加 URL 设置特定 shell 体验。
 
-|体验   |代码   |
+|体验   |URL   |
 |---|---|
 |最近使用的 shell   |[shell.azure.com](https://shell.azure.com)           |
 |Bash                       |[shell.azure.com/bash](https://shell.azure.com/bash)       |

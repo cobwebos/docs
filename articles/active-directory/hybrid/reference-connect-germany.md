@@ -18,14 +18,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62f0d82a543c0ae4e629eda3bca18b0a06322f2c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60381225"
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>德国 Microsoft 云中的 Azure AD Connect - 公共预览版
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间的同步。
 当前， [德国 Microsoft 云](https://azure.microsoft.com/global-infrastructure/germany/
 ) 中的许多方案必须由运营商完成。 使用“德国 Microsoft 云”时，必须注意以下几点：
@@ -54,7 +54,7 @@ Azure AD Connect 提供本地 Active Directory 和 Azure Active Directory 之间
 
 下表描述了边栏选项卡中所示的功能。
 
-| Title | 说明 |
+| 标题 | 说明 |
 | --- | --- |
 | 同步状态 |指示同步处于启用状态，还是处于禁用状态。 |
 | 上次同步 |上次成功执行同步的时间。 |

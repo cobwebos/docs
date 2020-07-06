@@ -16,10 +16,10 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60280397"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
@@ -99,7 +99,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 8. 选择 Concur 实例，然后选择“预配”选项卡****。
 
-9. 将**预配模式**设置为 "**自动**"。 
+9. 将“预配模式”设置为“自动”。 
  
     ![预配](./media/concur-provisioning-tutorial/provisioning.png)
 
@@ -109,7 +109,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 12. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框****。
 
-13. 单击 "**保存"。**
+13. 单击“保存”。
 
 14. 在“映射”部分，选择“将 Azure Active Directory 用户同步到 Concur”****。
 
@@ -117,7 +117,7 @@ Concur 顾问或客户管理员必须创建单独的 Web 服务管理员配置�
 
 16. 若要为 Concur 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”************
 
-17. 单击 "**保存"。**
+17. 单击“保存”。
 
 现可创建测试帐户。 等待最多 20 分钟，验证该帐户是否已同步到 Concur。
 

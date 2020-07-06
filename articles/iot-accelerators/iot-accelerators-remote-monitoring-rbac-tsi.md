@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "65827218"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>为时序见解遥测数据资源浏览器配置访问控制
@@ -25,7 +25,7 @@ ms.locfileid: "65827218"
 
 遵循以下步骤向用户主体授予数据访问权限：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 查找时序见解环境。 在“搜索”框中，键入“时序见解”********。 在搜索结果中选择“时序环境”****。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "65827218"
    - 若要允许用户更改引用数据，以及与环境的其他用户共享保存的查询和透视，请选择“参与者”****。 
    - 否则请选择“读取者”，允许用户查询环境中的数据，以及在环境中保存个人（非共享）查询****。
 
-     选择“确定”确认角色选择****。
+     选择 **"确定"** 以确认角色选择。
 
      ![管理时序见解源 - 选择用户](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access3.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "65827218"
 
 本文介绍如何在远程监视解决方案加速器中为时序见解资源浏览器授予访问控制权限。
 
-有关远程监视解决方案加速器的更多概念信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+有关远程监视解决方案加速器的其他概念性信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
 有关自定义远程监视解决方案的详细信息，请参阅[自定义和重新部署微服务](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

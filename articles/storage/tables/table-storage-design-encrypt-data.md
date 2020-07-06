@@ -9,10 +9,10 @@ ms.date: 04/11/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: f56946702011968a0fcb31f6fbecbaacdc89ea42
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60325997"
 ---
 # <a name="encrypt-table-data"></a>对表数据进行加密
@@ -24,7 +24,7 @@ ms.locfileid: "60325997"
 
 当前不支持合并。 由于一部分属性可能以前已使用不同的密钥加密，因此只合并新属性和更新元数据会导致数据丢失。 合并需要进行额外的服务调用以从服务中读取预先存在的实体，或者需要为属性使用一个新密钥，由于性能方面的原因，这两种方案都不适用。     
 
-若要了解如何加密表数据，请参阅 [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](../common/storage-client-side-encryption.md)。  
+有关对表数据进行加密的信息，请参阅[Microsoft Azure 存储的客户端加密和 Azure Key Vault](../common/storage-client-side-encryption.md)。  
 
 ## <a name="next-steps"></a>后续步骤
 

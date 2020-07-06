@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "60947712"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>将 Azure 流量管理器与 Azure Site Recovery 配合使用
@@ -62,7 +62,7 @@ Azure 流量管理器的[加权](../traffic-manager/traffic-manager-configure-we
 
 对于此示例，我们假设**公司 C** 的所有应用程序基础结构在 Azure 中运行。 出于业务连续性和法规遵从的原因，**公司 C** 决定使用 Azure Site Recovery 来保护其应用程序。
 
-**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 [公司 C](../traffic-manager/traffic-manager-configure-priority-routing-method.md) 客户可以通过**优先级**流量路由方法来轻松实现此故障转移模式。
+**公司 C** 使用公共终结点运行应用程序，希望在发生灾难时能够无缝将流量重定向到不同的 Azure 区域。 **公司 C** 客户可以通过[优先级](../traffic-manager/traffic-manager-configure-priority-routing-method.md)流量路由方法来轻松实现此故障转移模式。
 
 设置如下：
 - **公司 C** 创建[流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。

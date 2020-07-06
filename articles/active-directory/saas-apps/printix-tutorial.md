@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "62111439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>教程：Azure Active Directory 与 Printix 的集成
@@ -60,7 +60,7 @@ ms.locfileid: "62111439"
 
 **若要从库中添加 Printix，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -68,7 +68,7 @@ ms.locfileid: "62111439"
 
     ![应用程序][2]
     
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
@@ -184,7 +184,7 @@ ms.locfileid: "62111439"
 
     c. 选择 "**显示密码**" 并记下 "**密码**" 的值。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
  
 ### <a name="creating-a-printix-test-user"></a>创建 Printix 测试用户
 
@@ -216,7 +216,7 @@ ms.locfileid: "62111439"
 
     ![分配用户][202] 
 
-1. 单击“添加”**** 按钮。 然后在“添加分配”对话框中选择“用户和组”。********
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。********
 
     ![分配用户][203]
 
