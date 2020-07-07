@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab9217229a64605273537fc65cf3a29dcecd20c3
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82128998"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361585"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -113,6 +113,7 @@ spec:
     name: azure-vote-back
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 
+---
 
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
@@ -149,7 +150,7 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 如果在前面的教程中使用命令创建了 Kubernetes 群集，则它具有两个节点。 如果计划在群集上有更多或更少的容器工作负荷，则可以手动调整节点数。
 
-下面的示例将名为 myAKSCluster  的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
+下面的示例将名为 myAKSCluster 的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
 
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3

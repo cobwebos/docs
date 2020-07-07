@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82116275"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中按语言筛选 
@@ -32,7 +32,7 @@ ms.locfileid: "82116275"
 
 在 Azure 认知搜索中，查询以单个索引为目标。 想要在单个搜索体验中提供特定于语言的字符串的开发人员通常会定义专用字段来存储值：一个字段用于存储英语字符串，一个字段用于存储法语字符串，等等。 
 
-下面的示例来自[房地产示例](search-get-started-portal.md)，其中包含多个字符串字段，其中包含不同语言的内容。 请注意此索引中的字段的语言分析器分配。 如果与旨在处理目标语言的语言规则的分析器搭配使用，包含字符串的字段可在全文搜索中更好地发挥作用。
+以下示例来自 [real-estate 示例](search-get-started-portal.md)，该示例具有包含不同语言内容的多个字符串字段。 请注意此索引中字段的语言分析器分配。 如果与旨在处理目标语言的语言规则的分析器搭配使用，包含字符串的字段可在全文搜索中更好地发挥作用。
 
   ![](./media/search-filters-language/lang-fields.png)
 
@@ -58,7 +58,7 @@ parameters =
     };
 ```
 > [!Note]
-> 尽管查询中不存在 $filter 参数，但此用例与筛选器概念密切相关，因此它显示为筛选方案。
+> 尽管查询不包含 $filter 自变量，但此用例与筛选概念密切相关，因此它作为筛选方案进行演示。
 
 ## <a name="see-also"></a>另请参阅
 

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780363"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>将映射数据流参数化
@@ -64,14 +64,14 @@ ms.locfileid: "82780363"
 
 ![设置数据流参数](media/data-flow/string-parameter.png "设置数据流参数")
 
-如果数据流参数`stringParam`引用了值`upper(column1)`为的管道参数，则为。 
+如果数据流参数 `stringParam` 引用了值为的管道参数，则为 `upper(column1)` 。 
 
-- 如果选中 expression， `$stringParam`则计算结果为 column1 的值全部为大写。
-- 如果未选中 expression （默认行为）， `$stringParam`则计算结果为`'upper(column1)'`
+- 如果选中 expression，则 `$stringParam` 计算结果为 column1 的值全部为大写。
+- 如果未选中 expression （默认行为），则 `$stringParam` 计算结果为`'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>传入时间戳
 
-在管道表达式语言中，系统变量（如`pipeline().TriggerTime` ）和函数`utcNow()` （如）以格式 "yyyy-mm-dd\'T\'HH： MM： ss" 的字符串形式返回时间戳。SSSSSSZ'. 若要将它们转换为 timestamp 类型的数据流参数，请使用字符串内插在`toTimestamp()`函数中包含所需的时间戳。 例如，若要将管道触发器时间转换为数据流参数，可以使用`toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`。 
+在管道表达式语言中，系统变量（如）和函数（如）以 `pipeline().TriggerTime` `utcNow()` 格式 "Yyyy-mm-dd \' T \' HH： MM： ss" 的字符串形式返回时间戳。SSSSSSZ'. 若要将它们转换为 timestamp 类型的数据流参数，请使用字符串内插在函数中包含所需的时间戳 `toTimestamp()` 。 例如，若要将管道触发器时间转换为数据流参数，可以使用 `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` 。 
 
 ![设置数据流参数](media/data-flow/parameter-timestamp.png "设置数据流参数")
 
@@ -80,15 +80,15 @@ ms.locfileid: "82780363"
 
 #### <a name="pipeline-parameter-example"></a>管道参数示例
 
-假设有一个整数参数， `intParam`该参数引用 String 类型的管道参数`@pipeline.parameters.pipelineParam`。 
+假设有一个整数参数， `intParam` 该参数引用 String 类型的管道参数 `@pipeline.parameters.pipelineParam` 。 
 
 ![设置数据流参数](media/data-flow/parameter-pipeline-2.png "设置数据流参数")
 
-`@pipeline.parameters.pipelineParam``abs(1)`在运行时为指定了值。
+`@pipeline.parameters.pipelineParam`在运行时为指定了值 `abs(1)` 。
 
 ![设置数据流参数](media/data-flow/parameter-pipeline-4.png "设置数据流参数")
 
-在`$intParam`表达式中引用（如派生列）时，它将计算返回`abs(1)` `1`值。 
+`$intParam`在表达式中引用（如派生列）时，它将计算 `abs(1)` 返回值 `1` 。 
 
 ![设置数据流参数](media/data-flow/parameter-pipeline-3.png "设置数据流参数")
 
@@ -102,9 +102,9 @@ ms.locfileid: "82780363"
 
 ### <a name="passing-in-a-column-name-as-a-parameter"></a>作为参数传入列名
 
-常见的模式是将列名作为参数值传入。 如果该列是在数据流架构中定义的，则可以直接将其作为字符串表达式引用。 如果未在架构中定义列，请使用`byName()`函数。 请记住使用强制转换函数（如） `toString()`将列强制转换为其相应的类型。
+常见的模式是将列名作为参数值传入。 如果该列是在数据流架构中定义的，则可以直接将其作为字符串表达式引用。 如果未在架构中定义列，请使用 `byName()` 函数。 请记住使用强制转换函数（如）将列强制转换为其相应的类型 `toString()` 。
 
-例如，如果您想要基于某个参数`columnName`映射字符串列，则可以添加一个等于的派生列转换。 `toString(byName($columnName))`
+例如，如果您想要基于某个参数映射字符串列 `columnName` ，则可以添加一个等于的派生列转换 `toString(byName($columnName))` 。
 
 ![作为参数传入列名](media/data-flow/parameterize-column-name.png "作为参数传入列名")
 

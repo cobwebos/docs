@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d224f8fa5d696cd55b4f214111280d9210f836e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3f7cdc8dce8a4b30b543c4e332207354697a9e0d
+ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159116"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85367659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>教程：Azure Active Directory 与 Halosys 集成
 
@@ -111,7 +111,7 @@ ms.locfileid: "73159116"
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<company-name>.halosys.com/<instance name>`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Halosys 客户端支持团队](https://halosys.com/halosys#contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Halosys 客户端支持团队](https://www.sonata-software.com/form/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -129,7 +129,7 @@ ms.locfileid: "73159116"
 
 ### <a name="configure-halosys-single-sign-on"></a>配置 Halosys 单一登录
 
-若要在 **Halosys** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Halosys 支持团队](https://halosys.com/halosys#contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Halosys** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Halosys 支持团队](https://www.sonata-software.com/form/contact)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -184,7 +184,7 @@ ms.locfileid: "73159116"
 
 ### <a name="create-halosys-test-user"></a>创建 Halosys 测试用户
 
-在本部分中，会在 Halosys 中创建一个名为“Britta Simon”的用户。 请与  [Halosys 支持团队](https://halosys.com/halosys#contact)协作，将用户添加到 Halosys 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，会在 Halosys 中创建一个名为“Britta Simon”的用户。 请与  [Halosys 支持团队](https://www.sonata-software.com/form/contact)协作，将用户添加到 Halosys 平台中。 使用单一登录前，必须先创建并激活用户。
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 

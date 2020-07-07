@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82779036"
 ---
 # <a name="localization"></a>本地化 #
@@ -35,7 +35,7 @@ Azure Media Player 当前支持以下语言及其相应的语言代码：
 | 捷克语               | cs   | 意大利语                 | it     | 塞尔维亚语 - 拉丁         | sr-latn-rs   |
 | 丹麦语              | da   | 日语                | ja     | 俄语                 | ru           |
 | 德语              | de   | 哈萨克语                  | kk     | 瑞典语                 | sv           |
-| 希腊语               | el   | 朝鲜语                  | ko     | 泰语                    | th           |
+| 希腊语               | el   | 韩语                  | ko     | 泰语                    | th           |
 | 西班牙语             | es   | 立陶宛语              | lt     | 他加禄语                 | tl           |
 | 爱沙尼亚语            | et   | 拉脱维亚语                 | lv     | 土耳其语                 | tr           |
 | 巴斯克语              | eu   | 马来西亚               | ms     | 乌克兰语               | uk           |

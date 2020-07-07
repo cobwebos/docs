@@ -4,19 +4,19 @@ description: Azure Active Directory B2B 协作可让业务合作伙伴有选择�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ff18d3d9cae6e887abbd9fb1845de62386062b2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77195787"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386701"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>用于 Azure AD B2B 协作注册的自助服务
 

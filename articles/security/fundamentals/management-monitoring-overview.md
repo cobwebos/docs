@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73162746"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全管理和监视概述
@@ -130,7 +130,7 @@ Azure 安全中心可帮助防范、检测和应对威胁。 通过安全中心�
 了解详细信息：
 
 * [Azure 安全中心简介](../../security-center/security-center-intro.md)
-* [提高 Azure 安全中心的安全评分](../../security-center/security-center-secure-score.md)
+* [提高 Azure 安全中心中的安全评分](../../security-center/security-center-secure-score.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 
@@ -139,6 +139,6 @@ Intelligent Security Graph 在 Microsoft 产品和服务中提供实时威胁防
 * [Intelligent Security Graph](https://www.microsoft.com/security/intelligence)
 
 ## <a name="next-steps"></a>后续步骤
-了解共享的[责任模型](shared-responsibility.md)以及 Microsoft 处理哪些安全任务以及由您处理哪些任务。
+了解[共担责任模型](shared-responsibility.md)、由 Microsoft 处理的安全任务，以及由你处理的任务。
 
 有关安全管理的详细信息，请参阅 [Azure 中的安全管理](management.md)。

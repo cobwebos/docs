@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82786608"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>规划 Azure HDInsight 的虚拟网络
@@ -118,14 +118,14 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * 在 Internet 上提供的任何资源。 例如，microsoft.com、windowsupdate.com。
 
-* 同一 Azure 虚拟网络中能够使用资源的内部 DNS 名称  连接的的任何资源。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
+* 同一 Azure 虚拟网络中能够使用资源的内部 DNS 名称连接的的任何资源。 例如，在使用默认的名称解析时，下面是分配给 HDInsight 工作器节点的内部 DNS 名称示例：
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     这两个节点均可使用内部 DNS 名称直接相互通信，以及与 HDInsight 中的其他节点通信。
 
- 默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入虚拟网络很常见。 如果仅使用默认名称解析，HDInsight 将无法通过名称访问本地网络中的资源。 相反，本地网络中的资源不能按名称访问虚拟网络中的资源。
+默认名称解析不允许 HDInsight 解析连接到虚拟网络的网络中的资源的名称。 例如，将本地网络加入虚拟网络很常见。 如果仅使用默认名称解析，HDInsight 将无法通过名称访问本地网络中的资源。 相反，本地网络中的资源不能按名称访问虚拟网络中的资源。
 
 > [!WARNING]  
 > 必须在创建 HDInsight 群集之前，先创建自定义 DNS 服务器并将虚拟网络配置为使用该服务器。
@@ -142,7 +142,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
    * 如果远程网络为本地网络，请将 DNS 配置如下：
 
-     *  自定义 DNS（位于虚拟网络中）：
+     * 自定义 DNS（位于虚拟网络中）：
 
          * 将针对虚拟网络 DNS 后缀的请求转发到 Azure 递归解析程序 (168.63.129.16)。 Azure 处理虚拟网络中资源的请求
 
@@ -154,7 +154,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
    * 如果远程网络为另一 Azure 虚拟网络，请将 DNS 配置如下：
 
-     *  自定义 DNS（位于每个虚拟网络中）：
+     * 自定义 DNS（位于每个虚拟网络中）：
 
          * 对虚拟网络 DNS 后缀的请求将转发到自定义 DNS 服务器。 每个虚拟网络中的 DNS 负责解析其网络中的资源。
 
@@ -203,13 +203,13 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 ## <a name="load-balancing"></a>负载均衡
 
-创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型为[基本 SKU 级别](../load-balancer/skus.md)，它具有某些约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+创建 HDInsight 群集时，也会创建一个负载均衡器。 此负载均衡器的类型在[基本 SKU 级别](../load-balancer/skus.md)，该级别有某些约束。 这些约束中的一个是：如果两个虚拟网络位于不同的区域，则无法连接到基本负载均衡器。 有关详细信息，请参阅[虚拟网络常见问题解答：对全局 VNet 对等互连的约束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关演示如何创建 Azure 虚拟网络的代码示例和操作示例，请参阅[为 Azure HDInsight 群集创建虚拟网络](hdinsight-create-virtual-network.md)。
-* 有关将 HDInsight 配置为连接到本地网络的端到端示例，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
+* 如需通过端到端示例来了解如何将 HDInsight 配置为连接到本地网络，请参阅[将 HDInsight 连接到本地网络](./connect-on-premises-network.md)。
 * 有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
 * 有关网络安全组的详细信息，请参阅[网络安全组](../virtual-network/security-overview.md)。
 * 有关用户定义的路由的详细信息，请参阅[用户定义的路由和 IP 转发](../virtual-network/virtual-networks-udr-overview.md)。
-* 有关控制流量的详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
+* 有关如何控制流量的详细信息，请参阅[控制网络流量](./control-network-traffic.md)。

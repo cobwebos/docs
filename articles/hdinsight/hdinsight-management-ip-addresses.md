@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82778254"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
@@ -84,7 +84,7 @@ ms.locfileid: "82778254"
 
 有关详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
 
-如果使用的是用户定义的路由（Udr），则应指定路由，并允许从虚拟网络到上述 Ip 的出站流量，并将下一个跃点设置为 "Internet"。
+如果使用用户定义的路由 (UDR)，则应当指定一个路由并允许来自虚拟网络的出站流量到达下一跃点设置为“Internet”的上述 IP。
 
 ## <a name="next-steps"></a>后续步骤
 

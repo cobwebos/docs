@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: ab846eeb09c4f3d2db71abf58ef5d55dc74962a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82112042"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>如何更新 VM 上的 Azure Linux 代理
@@ -66,14 +66,14 @@ sudo apt-get install walinuxagent
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -87,7 +87,7 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 initctl restart walinuxagent
 ```
 
-#### <a name="restart-agent-for-1604--1704"></a>重新启动 16.04 / 17.04 的代理
+#### <a name="restart-agent-for-1604--1704"></a>重新启动 16.04/17.04 的代理
 
 ```bash
 systemctl restart walinuxagent.service
@@ -123,14 +123,14 @@ sudo yum install WALinuxAgent
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/\# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -170,14 +170,14 @@ sudo yum install WALinuxAgent
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -217,14 +217,14 @@ sudo zypper install python-azure-agent
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -262,14 +262,14 @@ sudo zypper install python-azure-agent
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -304,7 +304,7 @@ sudo apt-get install waagent
 ```
 
 #### <a name="enable-agent-auto-update"></a>启用代理自动更新
-由于此版本的 Debian 没有 > = 2.0.16 的版本，因此 AutoUpdate 对该版本不适用。 上述命令的输出将显示程序包是否为最新版。
+由于此版本的 Debian 没有 >= 2.0.16 的版本，因此 AutoUpdate 对该版本不适用。 上述命令的输出将显示程序包是否为最新版。
 
 
 
@@ -335,14 +335,14 @@ sudo apt-get install waagent
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
@@ -393,11 +393,11 @@ sudo yum update WALinuxAgent
 通常只需要这样做，但如果因某种原因而需要直接从 https://github.com 安装它，请使用以下步骤。
 
 
-## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>没有可用于分发的代理程序包时，请更新 Linux 代理
+## <a name="update-the-linux-agent-when-no-agent-package-exists-for-distribution"></a>分发不存在代理程序包时，请更新 Linux 代理
 
 通过在命令行上键入 `sudo yum install wget` 来安装 wget（某些发行版在默认情况下未安装它，如 Red Hat、CentOS 和 Oracle Linux 6.4 和 6.5 版）。
 
-### <a name="1-download-the-latest-version"></a>1. 下载最新版本
+### <a name="1-download-the-latest-version"></a>1.下载最新版本
 在网页中打开 [GitHub 中的 Azure Linux 代理版本](https://github.com/Azure/WALinuxAgent/releases)，并找到最新的版本号。 （可以通过键入 `waagent --version` 查明当前版本。）
 
 #### <a name="for-version-22x-or-later-type"></a>对于 2.2.x 或更高版本，请键入：
@@ -415,10 +415,10 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>2. 安装 Azure Linux 代理
+### <a name="2-install-the-azure-linux-agent"></a>2.安装 Azure Linux 代理
 
 #### <a name="for-version-22x-use"></a>对于版本 2.2.x，请使用：
-可能需要先安装程序包 `setuptools` -- 详情请参阅[此处](https://pypi.python.org/pypi/setuptools)。 然后运行：
+可能需要先安装程序包 `setuptools` -- 详情请参阅 [此处](https://pypi.python.org/pypi/setuptools)。 运行：
 
 ```bash
 sudo python setup.py install
@@ -432,20 +432,20 @@ sudo python setup.py install
 cat /etc/waagent.conf
 ```
 
-找到“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
+查找“AutoUpdate.Enabled”。 如果看到以下输出，则表示已启用：
 
 ```bash
 # AutoUpdate.Enabled=y
 AutoUpdate.Enabled=y
 ```
 
-若要启用运行：
+若要允许运行：
 
 ```bash
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3. 重启 waagent 服务
+### <a name="3-restart-the-waagent-service"></a>3.重新启动 waagent 服务
 对于大多数 linux 发行版：
 
 ```bash
@@ -464,7 +464,7 @@ sudo service walinuxagent restart
 sudo systemctl restart waagent
 ```
 
-### <a name="4-confirm-the-azure-linux-agent-version"></a>4. 确认 Azure Linux 代理版本
+### <a name="4-confirm-the-azure-linux-agent-version"></a>4.确认 Azure Linux 代理版本
     
 ```bash
 waagent -version

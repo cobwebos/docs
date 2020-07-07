@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: guybo
 ms.openlocfilehash: f700dec6486bad9e7024d7c908a70dd0ff2b342c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066765"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
@@ -64,7 +64,7 @@ Azure 在 Hyper-V 虚拟机监控程序上运行，因此 Linux 需要某些内�
 ### <a name="resizing-vhds"></a>调整 VHD 大小
 Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。  通常情况下，使用 Hyper-V 创建的 VHD 已正确调整。  如果未正确调整 VHD，在尝试基于 VHD 创建映像时，可能会收到如下错误消息：
 
-* VHD http：\//\<mystorageaccount> blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小不受支持21475270656字节。 大小必须是整数（以 MB 为单位）。
+* VHD http： \/ / \<mystorageaccount> . blob.core.windows.net/vhds/MyLinuxVM.vhd 的虚拟大小不受支持21475270656字节。 大小必须是整数（以 MB 为单位）。
 
 在这种情况下，可使用 Hyper-V 管理器控制台或 [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) PowerShell cmdlet 调整 VM 大小。  如果不是在 Windows 环境中运行，我们建议使用 `qemu-img` 转换（如果需要）并调整 VHD 大小。
 

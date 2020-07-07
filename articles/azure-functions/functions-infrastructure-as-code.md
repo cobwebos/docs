@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382527"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
@@ -96,7 +96,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
         },
 ```
 
-此外，需要使用`APPINSIGHTS_INSTRUMENTATIONKEY`应用程序设置向函数应用提供检测密钥。 此属性在`appSettings` `siteConfig`对象的集合中指定：
+此外，需要使用应用程序设置向函数应用提供检测密钥 `APPINSIGHTS_INSTRUMENTATIONKEY` 。 此属性在 `appSettings` 对象的集合中指定 `siteConfig` ：
 
 ```json
 "appSettings": [
@@ -208,7 +208,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 > [!NOTE]
 > 不能显式为 Linux 定义消耗计划。 它将自动创建。
 
-如果明确定义了消耗计划，则需要在应用上设置`serverFarmId`属性，使其指向计划的资源 ID。 你还应当确保函数应用有一个针对该计划的 `dependsOn` 设置。
+如果明确定义了消耗计划，则需要在 `serverFarmId` 应用上设置属性，使其指向计划的资源 ID。 你还应当确保函数应用有一个针对该计划的 `dependsOn` 设置。
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
@@ -261,7 +261,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函数应用必须将其`kind`设置为`functionapp,linux`，并且它必须将`reserved`属性设置为： `true`
+在 Linux 上，函数应用必须将其 `kind` 设置为 `functionapp,linux` ，并且它必须将 `reserved` 属性设置为 `true` ：
 
 ```json
 {
@@ -309,7 +309,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-premium-plan"></a>创建高级计划
 
-高级计划是一种特殊类型的 "服务器场" 资源。 您`EP1`可以使用、或`EP2` `EP3` ，对`Name` `sku` [description 对象](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的属性值指定它。
+高级计划是一种特殊类型的 "服务器场" 资源。 您可以使用 `EP1` 、 `EP2` 或， `EP3` 对 `Name` `sku` [description 对象](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object)中的属性值指定它。
 
 ```json
 {
@@ -334,7 +334,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 
 ### <a name="create-a-function-app"></a>创建函数应用
 
-高级计划中的函数应用必须将`serverFarmId`属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`和`WEBSITE_CONTENTSHARE`。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
+高级计划中的函数应用必须将 `serverFarmId` 属性设置为前面创建的计划的资源 ID。 此外，高级计划还需要站点配置中的两个附加设置： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 这些属性用于配置存储函数应用代码和配置的存储帐户和文件路径。
 
 ```json
 {
@@ -410,7 +410,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-若要在 Linux 上运行应用，还必须将设置`kind`为`Linux`：
+若要在 Linux 上运行应用，还必须将设置 `kind` 为 `Linux` ：
 
 ```json
 {
@@ -470,7 +470,7 @@ Azure Functions 运行时使用 `AzureWebJobsStorage` 连接字符串创建内�
 }
 ```
 
-Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
+Linux 应用还应 `linuxFxVersion` 在下包括属性 `siteConfig` 。 如果只是部署代码，则此值的值由所需的运行时堆栈确定：
 
 | 堆栈            | 示例值                                         |
 |------------------|-------------------------------------------------------|
@@ -516,7 +516,7 @@ Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只�
 }
 ```
 
-如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为`linuxFxVersion` ，并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外，将`WEBSITES_ENABLE_APP_SERVICE_STORAGE`设置`false`为，因为容器本身中提供了应用内容：
+如果要[部署自定义容器映像](./functions-create-function-linux-custom-image.md)，则必须将其指定为， `linuxFxVersion` 并包括允许请求映像的配置，如[用于容器的 Web 应用](/azure/app-service/containers)中所示。 此外，将设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为 `false` ，因为容器本身中提供了应用内容：
 
 ```json
 {
@@ -670,7 +670,7 @@ Linux 应用还应在下`linuxFxVersion` `siteConfig`包括属性。 如果只�
 
 ### <a name="deploy-using-powershell"></a>使用 PowerShell 进行部署
 
-以下 PowerShell 命令创建一个资源组并部署一个模板，该模板创建函数应用及其必需的资源。 若要在本地运行，必须安装 [Azure PowerShell](/powershell/azure/install-az-ps)。 运行[`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount)进行登录。
+以下 PowerShell 命令创建一个资源组并部署一个模板，该模板创建函数应用及其必需的资源。 若要在本地运行，必须安装 [Azure PowerShell](/powershell/azure/install-az-ps)。 运行 [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) 进行登录。
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -693,7 +693,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 深入了解如何开发和配置 Azure Functions。
 
-* [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
+* [Azure Functions 开发人员参考](functions-reference.md)
 * [如何配置 Azure function app 设置](functions-how-to-use-azure-function-app-settings.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
 

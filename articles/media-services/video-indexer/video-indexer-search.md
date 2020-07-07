@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127910"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>在视频中搜索视频索引器的确切时间
@@ -53,8 +53,8 @@ ms.locfileid: "80127910"
 找到要使用的视频中的确切时间后，可以继续处理视频。 有关详细信息，请参阅下列主题：
 
 - [使用视频深入见解](use-editor-create-project.md)
-- [使用视频索引器 REST API 处理内容](video-indexer-use-apis.md)
-- [将视觉小组件嵌入应用程序](video-indexer-embed-widgets.md)
+- [用视频索引器处理内容 REST API](video-indexer-use-apis.md)
+- [在应用程序中嵌入视觉小组件](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>另请参阅
 

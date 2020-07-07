@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100900"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
@@ -81,7 +81,7 @@ msgen status -u URL -k KEY -w ID
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查 standardoutput 的内容 
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. 检查 standardoutput.txt 的内容 
 查找有问题的工作流的输出容器。 每次执行工作流后，MSGEN 会创建一个 `[workflowfilename].logs.zip` 文件夹。 请解压缩该文件夹以查看其内容：
 
 * outputFileList.txt - 工作流运行期间生成的输出文件列表
@@ -107,7 +107,7 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 
 | 错误消息                                                                                                                            | 建议的故障排除步骤                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 发生了内部错误。 请尝试重新提交工作流。 如果再次看到此错误，请联系 Microsoft 基因组学支持人员以获得帮助 | 重新提交工作流。 如果问题持续出现，请通过创建支持[票证](file-support-ticket-genomics.md )来联系 Microsoft 基因组学支持人员，以获得帮助。 |
+| 发生内部错误。 请尝试重新提交工作流。 如果再次看到此错误，请联系 Microsoft 基因组学支持人员以获得帮助 | 重新提交工作流。 如果问题持续出现，请通过创建支持[票证](file-support-ticket-genomics.md )来联系 Microsoft 基因组学支持人员，以获得帮助。 |
 
 ### <a name="2-input-errors"></a>2. 输入错误
 

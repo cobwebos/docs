@@ -11,14 +11,14 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73176020"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>了解 Azure AD Connect 1.4. x. x 和设备消失
-Azure AD Connect 的版本 1.4. x，某些客户可能会看到其所有 Windows 设备从 Azure AD 中消失。 这不应该担心，因为在进行条件访问授权期间，Azure AD 不使用这些设备标识。 此更改不会删除为混合 Azure AD 联接正确注册 Azure AD 的任何 Windows 设备。
+Azure AD Connect 的版本 1.4. x，某些客户可能会看到其所有 Windows 设备从 Azure AD 中消失。 不必担心，因为在条件访问授权期间 Azure AD 不会使用这些设备标识。 此更改不会删除为混合 Azure AD 联接正确注册 Azure AD 的任何 Windows 设备。
 
 如果在 Azure AD 超过导出删除阈值时看到删除了设备对象，则建议客户允许删除操作。 [如何：允许删除超出删除阈值时流动](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 

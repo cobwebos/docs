@@ -4,10 +4,10 @@ description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383596"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
@@ -24,7 +24,7 @@ ms.locfileid: "81383596"
 
 蓝图分配中的项目创建的资源具有四种状态：**未锁定**、**只读**、**无法编辑/删除**或**无法删除**。 每种项目类型都可以处于“未锁定”**** 状态。 下表可以用于确定资源的状态：
 
-|“模式”|项目资源类型|状态|说明|
+|Mode|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受 Azure 蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”**** 或“不要删除”**** 资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”**** 资源。|
@@ -47,7 +47,7 @@ ms.locfileid: "81383596"
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-定义的管理组`{assignmentMG}`必须位于管理组层次结构中，或者是保存蓝图定义的同一管理组。
+定义的管理组 `{assignmentMG}` 必须位于管理组层次结构中，或者是保存蓝图定义的同一管理组。
 
 蓝图分配的请求正文如下所示：
 
@@ -85,7 +85,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 }
 ```
 
-此请求正文中的主要差异和分配给订阅的主要区别是`properties.scope`属性。 此必需属性必须设置为适用于蓝图分配的订阅。 订阅必须是存储蓝图分配的管理组层次结构的直接子项。
+此请求正文中的主要差异和分配给订阅的主要区别是 `properties.scope` 属性。 此必需属性必须设置为适用于蓝图分配的订阅。 订阅必须是存储蓝图分配的管理组层次结构的直接子项。
 
 > [!NOTE]
 > 分配到管理组作用域的蓝图仍作为订阅级别蓝图分配运行。 唯一的区别是，存储蓝图的位置可防止订阅所有者删除分配和关联的锁。
@@ -107,7 +107,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 
-|“模式” |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
+|Mode |权限。操作 |权限。 NotActions |主体 [i]。类别 |ExcludePrincipals [i]。识别 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |只读 |**\*** |**\*/read** |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 |不要删除 |**\*/delete** | |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
@@ -177,7 +177,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 },
 ```
 
-尽管**excludedPrincipals**必须是显式的，但**excludedActions**项可以将`*`与 RBAC 操作的通配符匹配配合使用。
+尽管**excludedPrincipals**必须是显式的，但**excludedActions**项可以将与 `*` RBAC 操作的通配符匹配配合使用。
 
 ## <a name="next-steps"></a>后续步骤
 

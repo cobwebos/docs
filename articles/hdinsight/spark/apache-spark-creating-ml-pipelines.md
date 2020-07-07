@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.openlocfilehash: b0de9103fd022dc74e7c75017a602eb6701686fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73494671"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
@@ -95,7 +95,7 @@ pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
 model = pipeline.fit(training)
 ```
 
-若要查看由 `words` 和 `features` 转换器添加的新的 `Tokenizer` 和 `HashingTF` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
+若要查看由 `Tokenizer` 和 `HashingTF` 转换器添加的新的 `words` 和 `features` 列以及 `LogisticRegression` 估算器示例，在原始数据帧上运行 `PipelineModel.transform()` 方法。 在生产代码中，下一步为传入测试数据帧，以验证培训。
 
 ```python
 peek = model.transform(training)

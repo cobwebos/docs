@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82731877"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>为 Azure Database for MySQL 计算资源预付预留容量
@@ -38,7 +38,7 @@ ms.locfileid: "82731877"
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>购买 Azure Database for MySQL 保留的容量
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 选择 "**所有服务** > **保留**"。
+2. 选择“所有服务” > “预订”。
 3. 选择 "**添加**"，然后在 "购买预订" 窗格中选择 " **Azure Database for MySQL** "，为 MySQL 数据库购买新的保留。
 4. 填写必填字段。 与所选属性匹配的现有或新数据库可以获取预留容量折扣。 获取折扣的 Azure Database for MySQL 服务器的实际数目取决于所选的范围和数量。
 
@@ -51,7 +51,7 @@ ms.locfileid: "82731877"
 | 字段 | 说明 |
 | :------------ | :------- |
 | 订阅   | 用于支付 Azure Database for MySQL 预留容量预留的订阅。 订阅上的付款方式将收取 Azure Database for MySQL 预留容量预留的前期成本。 订阅类型必须是企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）或使用即用即付定价的单个协议（产品/服务编号： MS-BC-OP-NT-AZR-Ms-azr-0003p 或-bc-op-nt-azr）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于使用即用即付定价的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。
-| 作用域 | VCore 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for MySQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for MySQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for MySQL 服务器，以及该订阅内的所选资源组。
+| 范围 | VCore 预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： </br></br> **共享**，vCore 预订折扣应用于计费上下文内任何订阅中运行的 Azure Database for MySQL 服务器。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</br></br> **单个订阅**，vCore 预订折扣将应用到此订阅中的 Azure Database for MySQL 服务器。 </br></br> **单个资源组**，预订折扣应用于所选订阅中的 Azure Database for MySQL 服务器，以及该订阅内的所选资源组。
 | 区域 | Azure Database for MySQL 保留容量保留所涵盖的 Azure 区域。
 | 部署类型 | 要为其购买预订的 Azure Database for MySQL 资源类型。
 | 性能层 | Azure Database for MySQL 服务器的服务层。
@@ -60,7 +60,7 @@ ms.locfileid: "82731877"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅[Azure 预订的自助服务交换和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小灵活性
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82690865"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 HTTP 关联协议还声明 `Correlation-Context` 标头。 但为了简单起见，此处省略了该标头。
 
 ## <a name="queue-instrumentation"></a>队列检测
-尽管存在用于相关的[W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)和[http 协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)来通过 http 请求传递关联详细信息，但每个队列协议都必须定义如何沿队列消息传递相同的详细信息。 某些队列协议（如 AMQP）允许传递附加元数据，而另一些队列协议（如 Azure 存储队列）需要将上下文编码为消息有效负载。
+虽然可以根据 [W3C 跟踪上下文](https://www.w3.org/TR/trace-context/)和 [HTTP 关联协议](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)使用 HTTP 请求传递关联详细信息，但每个队列协议必须定义如何随队列消息传递相同的详细信息。 某些队列协议（如 AMQP）允许传递附加元数据，而另一些队列协议（如 Azure 存储队列）需要将上下文编码为消息有效负载。
 
 > [!NOTE]
 > * **使用 HTTP 的队列尚不支持跨组件跟踪**，如果生产者和使用者将遥测发送到不同的 Application Insights 资源，则“事务诊断体验”和“应用程序映射”将显示事务和端到端映射。 对于队列，尚不支持此项。 
@@ -169,7 +169,7 @@ public async Task Enqueue(string payload)
 }
 ```
 
-#### <a name="process"></a>进程
+#### <a name="process"></a>过程
 ```csharp
 public async Task Process(BrokeredMessage message)
 {
@@ -213,7 +213,7 @@ public async Task Process(BrokeredMessage message)
 #### <a name="enqueue"></a>排队
 由于存储队列支持 HTTP API，因此 Application Insights 会自动跟踪队列的所有操作。 在多数情况下，此检测已足够。 但是，为了将使用者跟踪与生成者跟踪相关联，必须传递某些关联上下文，方法类似于 HTTP 关联协议中所执行的操作。 
 
-此示例演示如何跟踪 `Enqueue` 操作。 可以：
+此示例演示如何跟踪 `Enqueue` 操作。 方法：
 
  - **关联重试（如果有）** ：它们都有一个共同的父级，即 `Enqueue` 操作。 否则，它们都作为传入请求的子级进行跟踪。 如果有多个对队列的逻辑请求，可能很难发现导致重试的调用。
  - **关联存储日志（如果需要）** ：它们与 Application Insights 遥测相关联。
@@ -300,7 +300,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 }
 ```
 
-#### <a name="process"></a>进程
+#### <a name="process"></a>过程
 
 在以下示例中，通过类似于跟踪传入 HTTP 请求的方式跟踪传入消息：
 
@@ -346,7 +346,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>依赖项类型
 
-Application Insights 使用依赖关系类型自定义 UI 体验。 对于队列，它识别出以下可改善`DependencyTelemetry`事务诊断体验[的 ](/azure/azure-monitor/app/transaction-diagnostics) 类型：
+Application Insights 使用依赖关系类型自定义 UI 体验。 对于队列，它识别出以下可改善[事务诊断体验](/azure/azure-monitor/app/transaction-diagnostics)的 `DependencyTelemetry` 类型：
 - `Azure queue` 适用于 Azure 存储队列
 - `Azure Event Hubs` 适用于 Azure 事件中心
 - `Azure Service Bus` 适用于 Azure 服务总线
@@ -390,7 +390,7 @@ async Task BackgroundTask()
 
 在此示例中，`telemetryClient.StartOperation` 创建 `DependencyTelemetry` 并填充相关上下文。 假设有一个父操作，它是由计划操作的传入请求创建的。 只要在与传入请求相同的异步控制流中启动 `BackgroundTask`，它就会与该父操作相关联。 `BackgroundTask` 和所有嵌套的遥测项自动与引发此项的请求相关联，即使请求结束也一样。
 
-从不含与之关联的任何操作 (`Activity`) 的后台线程启动任务时，`BackgroundTask` 没有任何父级。 但是，它可以具有嵌套操作。 从任务报告的所有遥测项与 `DependencyTelemetry` 中创建的 `BackgroundTask` 相关联。
+从不含与之关联的任何操作 (`Activity`) 的后台线程启动任务时，`BackgroundTask` 没有任何父级。 但是，它可以具有嵌套操作。 从任务报告的所有遥测项与 `BackgroundTask` 中创建的 `DependencyTelemetry` 相关联。
 
 ## <a name="outgoing-dependencies-tracking"></a>传出依赖项跟踪
 用户可以跟踪自己的依赖项类型或不受 Application Insights 支持的操作。
@@ -447,7 +447,7 @@ telemetryClient.StopOperation(firstOperation);
 await secondTask;
 ```
 
-请确保始终在同一`StartOperation`异步**方法中调用**  和处理操作，以隔离并行运行的操作。 如果操作是同步的（或非异步的），请包装过程并使用 `Task.Run` 跟踪：
+请确保始终在同一**异步**方法中调用 `StartOperation` 和处理操作，以隔离并行运行的操作。 如果操作是同步的（或非异步的），请包装过程并使用 `Task.Run` 跟踪：
 
 ```csharp
 public void RunMyTask(string name)

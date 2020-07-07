@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382917"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory Azure Red Hat OpenShift 集成
@@ -23,14 +23,14 @@ Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如
 
 在[Azure 门户](https://portal.azure.com)中，确保你的租户显示在门户右上方的用户名下：
 
-![如果显示了错误的租户，请在](./media/howto-create-tenant/tenant-callout.png)右上方列出了租户的门户屏幕截图，单击右上方的用户名，然后单击 "**切换目录**"，然后从 "**所有目录**" 列表中选择正确的租户。
+![如果显示了错误的租户，请在右上方列出了租户的门户屏幕截图 ](./media/howto-create-tenant/tenant-callout.png) ，单击右上方的用户名，然后单击 "**切换目录**"，然后从 "**所有目录**" 列表中选择正确的租户。
 
 创建新的 Azure Active Directory "所有者" 用户登录到 Azure Red Hat OpenShift 群集。
 
 1. 请参阅 "[用户-所有用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)" 边栏选项卡。
 2. 单击 " **+ 新建用户**" 以打开 "**用户**" 窗格。
 3. 输入此用户的**名称**。
-4. 基于创建的租户的名称创建**用户名**，并`.onmicrosoft.com`将其追加到末尾。 例如，`yourUserName@yourTenantName.onmicrosoft.com` 。 记下此用户名。 需要用它登录到群集。
+4. 基于创建的租户的名称创建**用户名**，并 `.onmicrosoft.com` 将其追加到末尾。 例如，`yourUserName@yourTenantName.onmicrosoft.com`。 记下此用户名。 需要用它登录到群集。
 5. 单击 "**目录角色**" 以打开 "目录角色" 窗格，选择 "**所有者**"，然后单击窗格底部的 **"确定"** 。
 6. 在 "**用户**" 窗格中，单击 "**显示密码**" 并记录临时密码。 首次登录后，系统将提示你重置它。
 7. 在窗格底部，单击 "**创建**" 创建用户。
@@ -61,7 +61,7 @@ Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如
 
 ## <a name="create-an-azure-ad-app-registration"></a>创建 Azure AD 应用注册
 
-可以通过省略`--aad-client-app-id` `az openshift create`命令的标志，在创建群集的过程中自动创建 Azure Active Directory （Azure AD）应用注册客户端。 本教程介绍了如何创建 Azure AD 应用注册以实现完整性。
+可以通过省略命令的标志，在创建群集的过程中自动创建 Azure Active Directory （Azure AD）应用注册客户端 `--aad-client-app-id` `az openshift create` 。 本教程介绍了如何创建 Azure AD 应用注册以实现完整性。
 
 如果你的组织尚不具有用作服务主体的 Azure Active Directory （Azure AD）应用注册，请按照以下说明创建一个。
 
