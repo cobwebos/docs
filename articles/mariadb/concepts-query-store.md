@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79527803"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>使用查询存储监视 Azure Database for MariaDB 的性能
@@ -34,7 +34,7 @@ ms.locfileid: "79527803"
 ### <a name="enable-query-store-using-the-azure-portal"></a>使用 Azure 门户启用查询存储
 
 1. 登录到 Azure 门户，选择你的 Azure Database for MariaDB 服务器。
-1. 在菜单的“设置”部分中选择“服务器参数”********。
+1. 在菜单的“设置”部分中选择“服务器参数” 。
 1. 搜索 query_store_capture_mode 参数。
 1. 将值设置为 ALL，然后**保存**。
 
@@ -43,7 +43,7 @@ ms.locfileid: "79527803"
 1. 搜索 query_store_wait_sampling_capture_mode 参数。
 1. 将值设置为 ALL，然后**保存**。
 
-第一批数据可在 mysql 数据库中最长保留 20 分钟。
+留出最多 20 分钟以便第一批数据保存到 mysql 数据库中。
 
 ## <a name="information-in-query-store"></a>查询存储中的信息
 
@@ -75,11 +75,11 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 以下是一些示例，说明如何使用查询存储中的等待统计信息获得有关工作负载的更多见解：
 
-| **观测** | **操作** |
+| **观测** | **Action** |
 |---|---|
 |高锁定等待 | 检查受影响查询的查询文本，并确定目标实体。 在查询存储中查找修改同一实体的其他查询，这些查询经常执行和/或持续很长时间。 确定这些查询后，请考虑更改应用程序逻辑以提高并发性，或使用限制较少的隔离级别。 |
-|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议****。 |
-|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议****。|
+|高缓冲 IO 等待 | 在查询存储中查找具有大量物理读取的查询。 如果它们匹配具有高 IO 等待的查询，考虑在基础实体上引入索引，以便进行搜索而不是扫描。 这将最小化查询的 IO 开销。 检查门户中服务器的“性能建议”，以查看是否存在可优化查询的此服务器的索引建议。 |
+|高内存等待 | 在查询存储中查找消耗内存最多的查询。 这些查询可能会延迟受影响查询的进度。 检查门户中服务器的“性能建议”，以查看是否存在可优化这些查询的索引建议。|
 
 ## <a name="configuration-options"></a>配置选项
 
@@ -89,7 +89,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 | **参数** | **说明** | **默认** | **范围** |
 |---|---|---|---|
-| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果 performance_schema 为 OFF，打开 query_store_capture_mode 将打开 performance_schema，并启用此功能所需的性能架构检测子集。 | ALL | NONE、ALL |
+| query_store_capture_mode | 根据值打开/关闭查询存储功能。 注意：如果 performance_schema 为 OFF，则打开 query_store_capture_mode 会打开 performance_schema，以及此功能所需的一部分性能架构检测。 | ALL | NONE、ALL |
 | query_store_capture_interval | 查询存储捕获时间间隔，以分钟为单位。 允许指定聚合查询指标的时间间隔 | 15 | 5 - 60 |
 | query_store_capture_utility_queries | 打开或关闭捕获系统中正在执行的所有实用工具查询的功能。 | 是 | YES、NO |
 | query_store_retention_period_in_days | 在查询存储中保留数据的时限，以天为单位。 | 7 | 1 - 30 |
@@ -108,7 +108,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="views-and-functions"></a>视图和函数
 
-使用以下视图和函数查看并管理查询存储。 [选择特权公共角色](howto-create-users.md#create-additional-admin-users)中的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
+使用以下视图和函数查看并管理查询存储。 具有[选择权限公共角色](howto-create-users.md#create-additional-admin-users)的任何人都可使用这些视图来查看查询存储中的数据。 这些视图仅在 **mysql** 数据库中提供。
 
 删除文本和常数后，通过查看查询的结构来规范化查询。 如果除文本值之外两个查询相同，则它们将具有相同的哈希值。
 
@@ -116,7 +116,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的所有数据。 每个不同的数据库 ID、用户 ID 和查询 ID 都有一行。
 
-| **Name** | **数据类型** | **IS_NULLABLE** | **说明** |
+| **名称** | **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
 | `schema_name`| varchar(64) | 是 | 架构名称 |
 | `query_id`| bigint(20) | 是| 为特定查询生成的唯一 ID，如果在不同的架构中执行同一个查询，将生成新的 ID |
@@ -132,7 +132,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 | `min_timer_wait` | double| YES| 此查询的最小执行时间|
 | `max_timer_wait` | double| YES| 最大执行时间|
 | `sum_lock_time` | bigint(20)| 是| 在此时间范围内对此查询执行的所有锁花费的总时间|
-| `sum_rows_affected` | bigint(20)| 是| 行数受到影响|
+| `sum_rows_affected` | bigint(20)| 是| 受影响的行数|
 | `sum_rows_sent` | bigint(20)| 是| 发送到客户端的行数|
 | `sum_rows_examined` | bigint(20)| 是| 检查的行数|
 | `sum_select_full_join` | bigint(20)| 是| 完整联接的数目|
@@ -149,7 +149,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 此视图返回查询存储中的等待事件数据。 每个不同的数据库 ID、用户 ID、查询 ID 和事件都有一行。
 
-| **Name**| **数据类型** | **IS_NULLABLE** | **说明** |
+| **名称**| **数据类型** | **IS_NULLABLE** | **说明** |
 |---|---|---|---|
 | `interval_start` | timestamp | 是| 间隔开始时间（15 分钟增量）|
 | `interval_end` | timestamp | 是| 间隔结束时间（15 分钟增量）|
@@ -163,7 +163,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ### <a name="functions"></a>函数
 
-| **名称**| **描述** |
+| **名称**| **说明** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | 清除给定时间戳之前的所有查询存储数据 |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | 清除给定时间戳之前的所有等待事件数据 |
@@ -174,8 +174,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 - 如果 MariaDB 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
-- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 修改频率。
+- 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 来修改频率。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[查询性能见解](concepts-query-performance-insight.md)的详细信息
+- 详细了解 [Query Performance Insight](concepts-query-performance-insight.md)

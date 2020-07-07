@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79530132"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的高级威胁防护
@@ -26,7 +26,7 @@ ms.locfileid: "79530132"
 > 高级威胁防护功能在以下 Azure 政府和主权云区域中不**** 可用：US Gov 德克萨斯州、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 弗吉尼亚州、US DoD 东部、US DoD 中部、德国中部、德国北部、中国东部、中国东部 2。 请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)，以了解常规产品可用性。
 
 ## <a name="set-up-threat-detection"></a>设置威胁检测
-1. 启动 Azure 门户[https://portal.azure.com](https://portal.azure.com)。
+1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com) 。
 2. 导航到要保护的 Azure Database for MariaDB 服务器的 "配置" 页。 在安全设置中，选择“高级威胁防护(预览版)”****。
 3. 在“高级威胁防护(预览版)”配置页上****：
 
@@ -62,5 +62,5 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
 * 有关定价的详细信息，请参阅[Azure Database for MariaDB 定价页](https://azure.microsoft.com/pricing/details/mariadb/)  

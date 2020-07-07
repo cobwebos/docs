@@ -6,7 +6,7 @@ ms.date: 11/27/2018
 ms.author: iainfou
 ms.openlocfilehash: 858bc0814bc798cec31fb2be22608122a95c09db
 ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "77651661"
