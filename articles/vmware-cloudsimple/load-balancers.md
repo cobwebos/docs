@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2fec54c19b9040e7cb44f1a5d2b7909510ab7313
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82734597"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>为 CloudSimple 私有云选择负载平衡解决方案
@@ -25,7 +25,7 @@ ms.locfileid: "82734597"
 
 可以通过 vCenter 接口在 VMware 环境中部署虚拟负载均衡器设备，并将其配置为前端应用程序流量。
 
-一些热门供应商： NginX： http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-流量管理器https://www.f5.com/products/big-ip-services/virtual-editions ： Citrix ADC：https://www.citrix.com/products/citrix-adc/
+一些热门供应商： NginX： http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-流量管理器： https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC：https://www.citrix.com/products/citrix-adc/
 
 ## <a name="azure-l7-load-balancer"></a>Azure L7 负载均衡器
 

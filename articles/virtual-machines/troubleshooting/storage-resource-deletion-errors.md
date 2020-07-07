@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058150"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>排查存储资源删除错误
@@ -89,10 +89,10 @@ Azure 阻止删除附加到 VM 的磁盘，以防发生损坏。 它还会阻止
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在“中心”菜单上，选择“虚拟机”  。
 3. 选择 VHD 附加到的 VM。
-4. 在“虚拟机详细信息”  窗格中，选择“磁盘”  。
+4. 在“虚拟机详细信息”窗格中，选择“磁盘”。
 5. 选择 VHD 附加到的要删除的数据磁盘。 可以检查 VHD 的 URL，从而确定磁盘中附加的 blob。
 6. 可以单击磁盘来检查“VHD URI”  字段中的路径，从而验证 blob 位置。
-7. 选择“磁盘”  窗格顶部的“编辑”  。
+7. 选择“磁盘”窗格顶部的“编辑”。
 8. 单击要删除的数据磁盘的拆离图标  。
 
      ![门户屏幕截图，其中打开了存储“blob 元数据”窗格](./media/troubleshoot-vhds/utd-vm-disks-edit.png)

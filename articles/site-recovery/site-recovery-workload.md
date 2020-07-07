@@ -4,10 +4,10 @@ description: 介绍可以通过将灾难恢复与 Azure Site Recovery 服务配�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062839"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>关于本地应用的灾难恢复
@@ -38,7 +38,7 @@ Site Recovery 与 Microsoft 应用程序集成，例如 SharePoint、Exchange、
 
 站点恢复可复制受支持计算机上运行的任何应用。 我们已经与产品团队合作，为下表中指定的应用进行其他测试。
 
-| **工作负载** |**将 Azure VM 复制到 Azure** |**将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** |
+| **工作负荷** |**将 Azure VM 复制到 Azure** |**将 Hyper-V VM 复制到辅助站点** | **将 Hyper-V VM 复制到 Azure** | **将 VMware VM 复制到辅助站点** | **将 VMware VM 复制到 Azure** |
 | --- | --- | --- | --- | --- |---|
 | Active Directory、DNS |是 |是 |是 |是 |是|
 | Web 应用（IIS、SQL） |是 |是 |是 |是 |是|

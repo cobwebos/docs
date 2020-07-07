@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f72ef8cc5161bd6f885249e7d39344a57fa2368e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311413"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>用于 IoT 事件聚合的 Azure 安全中心
@@ -69,7 +69,7 @@ ms.locfileid: "81311413"
 
 更改**azureiotsecurity**模块的模块克隆标识的[代理配置对象](how-to-agent-configuration.md)内的 IoT 事件聚合的 Azure 安全中心配置。
 
-| 配置名称 | 可能值 | 详细信息 | 备注 |
+| 配置名称 | 可能值 | 详细信息 | 注解 |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | 启用/禁用进程创建事件的事件聚合 |
 | aggregationIntervalProcessCreate | ISO8601 Timespan 字符串 | 进程创建事件的聚合间隔 |
@@ -83,11 +83,11 @@ ms.locfileid: "81311413"
 
 | 配置名称 | 默认值 |
 |:-----------|:---------------|
-| aggregationEnabledProcessCreate | true |
+| aggregationEnabledProcessCreate | 是 |
 | aggregationIntervalProcessCreate | PT1H.JSON|
-| aggregationEnabledConnectionCreate | true |
+| aggregationEnabledConnectionCreate | 是 |
 | aggregationIntervalConnectionCreate | PT1H.JSON|
-| aggregationEnabledProcessTerminate | true |
+| aggregationEnabledProcessTerminate | 是 |
 | aggregationIntervalProcessTerminate | PT1H.JSON|
 |
 

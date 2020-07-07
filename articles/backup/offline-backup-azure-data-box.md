@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Data Box 从 MARS 代理脱机将较大的
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160949"
 ---
-# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure 备份使用 Azure Data Box 进行脱机备份
+# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
 你可以使用[Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview)将大型初始 MICROSOFT AZURE 恢复服务（MARS）备份从脱机状态（无需使用网络）植入恢复服务保管库。 此过程可节省时间和网络带宽，在这种情况下，将在高延迟网络中联机移动大量的备份数据。 此增强功能目前处于预览阶段。 基于 Azure Data Box 的脱机备份在[基于 Azure 导入/导出服务的脱机备份](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)方面提供了两个不同的优点：
 
@@ -25,14 +25,14 @@ ms.locfileid: "82160949"
 
 以下 Windows Sku 支持通过使用 Azure Data Box 从 MARS 代理播种数据的过程。
 
-| 操作系统                                  | **SKU**                                                      |
+| **OS**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **工作站**                        |                                                              |
 | Windows 10 64 位                     | Enterprise、Pro、Home                                       |
 | Windows 8.1 64 位                    | Enterprise、Pro                                             |
 | Windows 8 64 位                      | Enterprise、Pro                                             |
 | Windows 7 64 位                      | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter |
-| **服务器**                             |                                                              |
+| **Server**                             |                                                              |
 | Windows Server 2019 64 位            | Standard、Datacenter、Essentials                            |
 | Windows Server 2016 64 位            | Standard、Datacenter、Essentials                            |
 | Windows Server 2012 R2 64 位         | Standard、Datacenter、Foundation                            |
@@ -51,7 +51,7 @@ ms.locfileid: "82160949"
 | >7.2 TB 和 <= 80 TB * *                                      | [Azure Data Box （100 TB）](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
 * 典型的压缩率在10% 到20% 之间变化。 <br>
-* * 如果你预计单个 MARS 服务器的初始备份数据超过 80 TB，请联系[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+* * 如果你预计单个 MARS 服务器的初始备份数据超过 80 TB，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 >[!IMPORTANT]
 >单个服务器的初始备份数据必须包含在单个 Azure Data Box 实例或 Azure Data Box 磁盘中，并且不能在相同或不同 Sku 的多个设备之间共享。 但 Azure Data Box 设备可以包含来自多个服务器的初始备份。
@@ -124,7 +124,7 @@ ms.locfileid: "82160949"
 
 1. 请确保卸载以前安装的任何 MARS 代理。
 1. 从此[网站](https://aka.ms/azurebackup_agent)下载最新的 MARS 代理。
-1. 运行*marsagentinstaller.exe*，并*仅*执行将[代理安装并注册](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到恢复服务保管库（要在其中存储备份）的步骤。
+1. 运行*MARSAgentInstaller.exe*，并*仅*执行将[代理安装并注册](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到恢复服务保管库（要在其中存储备份）的步骤。
 
    > [!NOTE]
    > 恢复服务保管库必须与 Azure Data Box 作业位于同一订阅中。
@@ -153,8 +153,8 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 若要确保可以使用 NFS 协议将 Data Box 设备装载为本地系统，请执行以下操作：
 
 1. 在安装了 MARS 代理的 Windows server 上启用 NFS 功能的客户端。 指定备用源*WIM： D： \Sources\Install.wim： 4*。
-1. 将 PSExec 从<https://download.sysinternals.com/files/PSTools.zip>下载到安装了 MARS 代理的服务器。
-1. 打开提升的命令提示符，并运行以下命令，并在目录中包含*PSExec*作为当前目录。
+1. 将 PSExec 从下载 <https://download.sysinternals.com/files/PSTools.zip> 到安装了 MARS 代理的服务器。
+1. 打开提升的命令提示符，并运行以下命令，并将包含*PSExec.exe*的目录作为当前目录。
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
@@ -195,7 +195,7 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
 
     ![获取订阅 ID Data Box 作业](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“**下一步**”。
+1. 选择已解压缩、已连接并解锁 Data Box 磁盘的正确 Data Box 顺序。 选择“下一步”。
 
     ![选择 Data Box 订单](./media/offline-backup-azure-data-box/select-databox-order.png)
 
@@ -212,9 +212,9 @@ MARS 代理在本地系统上下文中运行，因此需要向连接 Azure Data 
     >
     >![Azure Data Box 磁盘的根目录](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >例如，如果磁盘的路径`\\mydomain\myserver\disk1\`为，并且*disk1*包含一个名为*PageBlob*的目录，则在 MARS 代理向导页上输入的路径为`\\mydomain\myserver\disk1\`。
+    >例如，如果磁盘的路径为 `\\mydomain\myserver\disk1\` ，并且*disk1*包含一个名为*PageBlob*的目录，则在 MARS 代理向导页上输入的路径为 `\\mydomain\myserver\disk1\` 。
     >
-    >如果[设置 Azure Data Box 100-TB 设备](#set-up-azure-data-box-devices)，请输入`\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`作为设备的网络路径。
+    >如果[设置 Azure Data Box 100-TB 设备](#set-up-azure-data-box-devices)，请输入 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 作为设备的网络路径。
 
 1. 选择 "**下一步**"，然后在下一页上选择 "**完成**"，使用 Azure Data Box 配置脱机备份的配置，以保存备份和保留策略。
 
@@ -269,7 +269,7 @@ Microsoft Azure 备份（MAB）代理在租户中为你创建 Azure Active Direc
 
 1. 打开安装路径中的**临时**文件夹。 默认临时文件夹路径为 " *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*"。查找*CBUICurr*文件，并打开文件。
 
-1. 在*CBUICurr*文件中，滚动到最后一行，查看问题是否与此错误消息中的问题相同： `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`。
+1. 在*CBUICurr*文件中，滚动到最后一行，查看问题是否与此错误消息中的问题相同： `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed` 。
 
 ### <a name="workaround"></a>解决方法
 
@@ -281,10 +281,10 @@ Microsoft Azure 备份（MAB）代理在租户中为你创建 Azure Active Direc
 
 #### <a name="step-2"></a>步骤 2
 
-如果没有其他服务器配置了脱机种子设定，而且没有其他服务器依赖于`AzureOfflineBackup_<Azure User Id>`该应用程序，请删除此应用程序。 选择**Azure 门户** > **Azure Active Directory** > **应用注册**。
+如果没有其他服务器配置了脱机种子设定，而且没有其他服务器依赖于该 `AzureOfflineBackup_<Azure User Id>` 应用程序，请删除此应用程序。 选择**Azure 门户**  >  **Azure Active Directory**  >  **应用注册**。
 
 >[!NOTE]
-> 检查`AzureOfflineBackup_<Azure User Id>`应用程序是否未配置任何其他脱机种子设定，以及其他服务器是否依赖于此应用程序。 中转到 "**公钥**" 部分下的 "**设置** > "**项**。 不应添加任何其他公钥。 有关参考，请参阅以下屏幕截图。
+> 检查 `AzureOfflineBackup_<Azure User Id>` 应用程序是否未配置任何其他脱机种子设定，以及其他服务器是否依赖于此应用程序。 中转到**Settings**  >  "**公钥**" 部分下的 "设置"**项**。 不应添加任何其他公钥。 有关参考，请参阅以下屏幕截图。
 >
 >![公钥](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -292,30 +292,30 @@ Microsoft Azure 备份（MAB）代理在租户中为你创建 Azure Active Direc
 
 在尝试配置脱机备份的服务器上，执行以下操作。
 
-1. 请在 "**管理计算机证书应用程序** > " "**个人**" 选项卡上，查找名称`CB_AzureADCertforOfflineSeeding_<ResourceId>`为的证书。
+1. 请在 "**管理计算机证书应用程序**" "  >  **个人**" 选项卡上，查找名称为的证书 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
 
 2. 选择证书，右键单击 "**所有任务**"，并选择 "**导出**" 而不使用 .cer 格式的私钥。
 
-3. 请参阅步骤2中提到的 Azure 脱机备份应用程序。 选择 "**设置** > " "**密钥** > " "**上传公钥**"。 上传在上一步骤中导出的证书。
+3. 请参阅步骤2中提到的 Azure 脱机备份应用程序。 选择 "**设置**" "密钥" "  >  **Keys**  >  **上传公钥**"。 上传在上一步骤中导出的证书。
 
     ![上传公钥](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. 在服务器中，在 "运行" 窗口中输入**regedit**打开注册表。
 
-5. 请参阅注册表*计算机 \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* 右键单击**CloudBackupProvider**，然后添加名`AzureADAppCertThumbprint_<Azure User Id>`为的新字符串值。
+5. 请参阅注册表*计算机 \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* 右键单击“CloudBackupProvider”并添加名称为 `AzureADAppCertThumbprint_<Azure User Id>` 的新字符串值。
 
     >[!NOTE]
     > 若要获取 Azure 用户 ID，请执行以下操作之一：
     >
-    >- 在 Azure 连接的 PowerShell 中，运行`Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"`命令。
-    > - 请参阅名为`Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *CurrentUserId*的注册表路径。
+    >- 在已连接到 Azure 的 PowerShell 中运行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
+    > - 请参阅名为 CurrentUserId 的注册表路径 `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` 。 *CurrentUserId*
 
-6. 右键单击在上一步中添加的字符串，然后选择 "**修改**"。 在 "值" 中，提供你在步骤2中导出的证书的指纹。 选择“确定”  。
+6. 右键单击在上一步骤中添加的字符串并选择“修改”。 在 "值" 中，提供你在步骤2中导出的证书的指纹。 选择“确定”。
 
-7. 若要获取该指纹的值，请双击该证书。 选择 "**详细信息**" 选项卡，然后向下滚动，直到看到 "指纹" 字段。 选择 "**指纹**" 并复制值。
+7. 若要获取指纹值，请双击该证书。 选择“详细信息”选项卡，并向下滚动，直到看到指纹字段。 选择“指纹”并复制其值。
 
     ![证书的指纹字段](./media/offline-backup-azure-data-box/thumbprint-field.png)
 
 ## <a name="questions"></a>问题
 
-如有任何疑问或对所遇到的任何问题的[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)说明，请联系。
+如有任何疑问或对所遇到的任何问题的说明，请联系 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。

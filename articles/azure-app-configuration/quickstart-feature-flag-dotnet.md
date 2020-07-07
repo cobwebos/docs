@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf2ccd93a94036c6ab5b6224456cd1f5a13239c5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77619322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855012"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入门：向 .NET Framework 应用添加功能标志
 
@@ -105,11 +105,15 @@ ms.locfileid: "77619322"
 
 1. 将名为 ConnectionString 的环境变量设置为应用程序配置存储区的连接字符串  。 如果使用 Windows 命令提示符，请运行以下命令：
 
+    ```console
         setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 Windows PowerShell，请运行以下命令：
 
+    ```powershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
 1. 重启 Visual Studio 以便使所做更改生效。 
 

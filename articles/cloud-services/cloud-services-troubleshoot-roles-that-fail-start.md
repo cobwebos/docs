@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 869453d92f536a62aacc2be52598223158566ae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71122736"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
@@ -102,7 +102,7 @@ DLL 或程序集缺失的症状可能为：
 1. 确认已安装 Azure SDK 1.3 或更高版本。
 2. 使用 Visual Studio 部署解决方案。 在部署期间，请选中“**为 .NET 4 角色启用 IntelliTrace**”复选框。
 3. 实例启动后，打开“**服务器资源管理器**”。
-4. 展开 **Azure\\Cloud Services** 节点并查找部署。
+4. 展开“Azure\\Cloud Services”节点并查找部署。
 5. 展开部署，直至看到角色实例。 右键单击其中一个实例。
 6. 选择“**查看 IntelliTrace 日志**”。 此时会打开“**IntelliTrace 摘要**”。
 7. 查找摘要的异常部分。 如果存在异常，则会将该部分标记为“**异常数据**”。
@@ -122,6 +122,6 @@ DLL 或程序集缺失的症状可能为：
 确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。
 
 ## <a name="next-steps"></a>后续步骤
-查看更多针对云服务的[故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)。
+查看更多针对云服务的 [故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。

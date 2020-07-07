@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: tisande
 ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80063576"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的运算符
@@ -41,23 +41,23 @@ ms.locfileid: "80063576"
 
 **OR 运算符**
 
-当`true`任何一个条件为`true`时返回。
+`true`当任何一个条件为时返回 `true` 。
 
-|  | **True** | **False** | **Undefined** |
+|  | **True** | **False** | **尚未** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
 | **False** |True |False |Undefined |
-| **Undefined** |True |Undefined |Undefined |
+| **未定义** |True |Undefined |Undefined |
 
 **AND 运算符**
 
-当`true`两个表达式都`true`为时返回。
+`true`当两个表达式都为时返回 `true` 。
 
-|  | **True** | **False** | **Undefined** |
+|  | **True** | **False** | **尚未** |
 | --- | --- | --- | --- |
 | **True** |True |False |Undefined |
 | **False** |False |False |False |
-| **Undefined** |Undefined |False |Undefined |
+| **未定义** |Undefined |False |Undefined |
 
 **NOT 运算符**
 
@@ -67,17 +67,17 @@ ms.locfileid: "80063576"
 | --- | --- |
 | **True** |False |
 | **False** |True |
-| **Undefined** |Undefined |
+| **未定义** |未定义 |
 
 **运算符优先级**
 
-逻辑运算符`OR`、 `AND`和`NOT`的优先级如下：
+逻辑运算符 `OR` 、 `AND` 和 `NOT` 的优先级如下：
 
-| **操作员** | **Priority** |
+| **“运算符”** | **Priority** |
 | --- | --- |
 | **NOT** |1 |
-| **与** |2 |
-| **或** |3 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>* 运算符
 
@@ -112,6 +112,6 @@ ms.locfileid: "80063576"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [关键字](sql-query-keywords.md)
 - [SELECT 子句](sql-query-select.md)

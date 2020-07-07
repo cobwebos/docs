@@ -9,21 +9,21 @@ ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
 ms.openlocfilehash: 75fa2071f2ad54292e1cff6856de2091b74d3187
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82101529"
 ---
-# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure 资源管理器中的虚拟机设置 WinRM 访问权限
+# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 
 为 VM 设置 WinRM 连接需执行以下步骤
 
 1. 创建密钥保管库
 2. 创建自签名证书
-3. 获将自签名证书上传到密钥保管库
+3. 将自签名证书上传到密钥保管库
 4. 获取密钥保管库中自签名证书的 URL
-5. 创建 VM 时引用自签名的证书 URL
+5. 创建 VM 时引用自签名证书 URL
 
  
 
@@ -49,7 +49,7 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：获将自签名证书上传到密钥保管库
+## <a name="step-3-upload-your-self-signed-certificate-to-the-key-vault"></a>步骤 3：将自签名证书上传到密钥保管库
 将证书上传到在步骤 1 中创建的密钥保管库之前，需将其转换为 Microsoft.Compute 资源提供程序可识别的格式。 以下 PowerShell 脚本将允许执行该操作
 
 ```
@@ -76,7 +76,7 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 预配 VM 时，Microsoft.Compute 资源提供程序需要指向密钥保管库中密钥的 URL。 这会使 Microsoft.Compute 资源提供程序能够下载密钥，并在 VM 上创建等效证书。
 
 > [!NOTE]
-> 密钥 URL 还需要包含版本。 示例 URL 如下所示： https：\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> 密钥 URL 还需要包含版本。 示例 URL 如下所示： https： \/ /contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>模板
 可使用以下代码获取模板中 URL 的链接
@@ -88,8 +88,8 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
 
     $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>步骤 5：创建 VM 时引用自签名的证书 URL
-#### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
+## <a name="step-5-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>步骤 5：创建 VM 时引用自签名证书 URL
+#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 通过模板创建 VM 时，在密钥部分和 winRM 部分中引用该证书，如下所示：
 
     "osProfile": {
@@ -138,15 +138,15 @@ Set-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValu
     $vm = Add-AzVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
 ## <a name="step-6-connecting-to-the-vm"></a>步骤 6：连接到 VM
-需要先确保你的计算机针对 WinRM 远程管理进行了配置，才能连接到 VM。 以管理员身份启动 PowerShell 并执行以下命令以确保已完成设置。
+需要先确保用户的计算机针对 WinRM 远程管理进行了配置，才能连接到 VM。 以管理员身份启动 PowerShell 并执行以下命令以确保已完成设置。
 
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM` 完成此操作
+> 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM`
 > 
 > 
 
-安装完成后，即可使用以下命令连接到 VM
+设置完成后，即可使用以下命令连接到 VM
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate

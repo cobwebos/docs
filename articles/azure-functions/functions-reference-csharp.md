@@ -7,7 +7,7 @@ ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
 ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/03/2020
 ms.locfileid: "82733390"

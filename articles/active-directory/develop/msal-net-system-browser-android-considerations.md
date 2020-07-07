@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8e37d443d75dccae8704bc1ff7856e1d24131766
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652700"
 ---
 #  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>Xamarin Android 系统浏览器的 MSAL.NET 使用注意事项

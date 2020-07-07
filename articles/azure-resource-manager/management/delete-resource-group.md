@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/03/2019
 ms.custom: seodec18
 ms.openlocfilehash: 7c03296f8bec24da1fc85bae14e91ca742054d02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82136475"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure 资源管理器资源组和资源删除
@@ -55,7 +55,7 @@ ms.locfileid: "82136475"
 对于其他错误代码，它会将删除操作视为失败。
 
 > [!IMPORTANT]
-> 删除资源组不可逆。
+> 资源组删除不可逆。
 
 ## <a name="delete-resource-group"></a>删除资源组
 
@@ -73,11 +73,11 @@ Remove-AzResourceGroup -Name ExampleResourceGroup
 az group delete --name ExampleResourceGroup
 ```
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源组。
 
-1. 选择“删除资源组”  。
+1. 选择“删除资源组”****。
 
    ![删除资源组](./media/delete-resource-group/delete-group.png)
 
@@ -107,11 +107,11 @@ az resource delete \
   --resource-type "Microsoft.Compute/virtualMachines"
 ```
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在[门户](https://portal.azure.com)中，选择要删除的资源。
 
-1. 选择“删除”。  以下屏幕截图显示了虚拟机的管理选项。
+1. 选择“删除” ****。 以下屏幕截图显示了虚拟机的管理选项。
 
    ![删除资源](./media/delete-resource-group/delete-resource.png)
 

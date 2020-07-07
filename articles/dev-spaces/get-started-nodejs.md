@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 Node.js 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 6571e23c3ca9b67d4db3c9c7bcea1e4a3b80e4c1
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3ee8ec8eb78ccb8a7405fd00654ee00ebba8b7c1
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80240519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854983"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Node.js 与 Azure Dev Spaces 结合使用
 
@@ -234,11 +234,11 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 
 在服务器端的代码文件中设置一个断点，例如，在 [`server.js` 的第 13 行](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)上的 `app.get('/api'...` 中设置断点。 
 
-    ```javascript
-    app.get('/api', function (req, res) {
-        res.send('Hello from webfrontend');
-    });
-    ```
+```javascript
+app.get('/api', function (req, res) {
+    res.send('Hello from webfrontend');
+});
+```
 
 刷新浏览器页面，或者按“再说一遍”  按钮，然后即可点击断点对代码进行单步调试。
 

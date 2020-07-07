@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 拒绝分配-Azure RBAC
-description: 了解 azure 拒绝在 Azure 中基于角色的访问控制（RBAC）中的拒绝分配。
+title: 了解 Azure 拒绝分配 - Azure RBAC
+description: 了解 Azure 基于角色的访问控制 (Azure RBAC) 中的 Azure 拒绝分配。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733765"
 ---
 # <a name="understand-azure-deny-assignments"></a>了解 Azure 拒绝分配
@@ -58,21 +58,21 @@ ms.locfileid: "82733765"
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
 > | `Description` | 否 | String | 拒绝分配的说明。 |
-> | `Permissions.Actions` | 至少一个 Actions 或一个 DataActions | string[] | 用于指定拒绝分配阻止访问的管理操作的字符串数组。 |
-> | `Permissions.NotActions` | 否 | string[] | 用于指定要从拒绝分配中排除的管理操作的字符串数组。 |
-> | `Permissions.DataActions` | 至少一个 Actions 或一个 DataActions | string[] | 用于指定拒绝分配阻止访问的数据操作的字符串数组。 |
-> | `Permissions.NotDataActions` | 否 | string[] | 用于指定要从拒绝分配中排除的数据操作的字符串数组。 |
+> | `Permissions.Actions` | 至少一个 Actions 或一个 DataActions | String[] | 用于指定拒绝分配阻止访问的管理操作的字符串数组。 |
+> | `Permissions.NotActions` | 否 | String[] | 用于指定要从拒绝分配中排除的管理操作的字符串数组。 |
+> | `Permissions.DataActions` | 至少一个 Actions 或一个 DataActions | String[] | 用于指定拒绝分配阻止访问的数据操作的字符串数组。 |
+> | `Permissions.NotDataActions` | 否 | String[] | 用于指定要从拒绝分配中排除的数据操作的字符串数组。 |
 > | `Scope` | 否 | String | 用于指定拒绝分配应用到的作用域的字符串。 |
-> | `DoNotApplyToChildScopes` | 否 | Boolean | 指定拒绝分配是否应用到子作用域。 默认值为 false。 |
-> | `Principals[i].Id` | 是 | string[] | 拒绝分配应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 设置为空 GUID `00000000-0000-0000-0000-000000000000` 将表示所有主体。 |
-> | `Principals[i].Type` | 否 | string[] | 由主体 [i]. Id 表示的对象类型的数组。将设置`SystemDefined`为以表示所有主体。 |
-> | `ExcludePrincipals[i].Id` | 否 | string[] | 拒绝分配不会应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 |
-> | `ExcludePrincipals[i].Type` | 否 | string[] | ExcludePrincipals[i].Id 所表示的对象类型的数组。 |
-> | `IsSystemProtected` | 否 | Boolean | 指定此拒绝分配是否由 Azure 创建，且无法编辑或删除。 当前，所有拒绝分配受系统保护。 |
+> | `DoNotApplyToChildScopes` | 否 | 布尔 | 指定拒绝分配是否应用到子作用域。 默认值为 false。 |
+> | `Principals[i].Id` | 是 | String[] | 拒绝分配应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 设置为空 GUID `00000000-0000-0000-0000-000000000000` 将表示所有主体。 |
+> | `Principals[i].Type` | 否 | String[] | Principals[i].Id 所表示的对象类型的数组。设置为 `SystemDefined` 将表示所有主体。 |
+> | `ExcludePrincipals[i].Id` | 否 | String[] | 拒绝分配不会应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 |
+> | `ExcludePrincipals[i].Type` | 否 | String[] | ExcludePrincipals[i].Id 所表示的对象类型的数组。 |
+> | `IsSystemProtected` | 否 | 布尔 | 指定此拒绝分配是否由 Azure 创建，且无法编辑或删除。 当前，所有拒绝分配受系统保护。 |
 
 ## <a name="the-all-principals-principal"></a>“所有主体”主体
 
-为了支持拒绝分配，引入了名为“所有主体”的系统定义的主体。** 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 在 Azure PowerShell 输出中，“所有主体”的外观如下所示：
+为了支持拒绝分配，引入了名为“所有主体”的系统定义的主体。 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 在 Azure PowerShell 输出中，“所有主体”的外观如下所示：
 
 ```azurepowershell
 Principals              : {

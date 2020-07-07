@@ -10,20 +10,20 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72248588"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>使用 SAS 而非存储帐户密钥将工作流提交到 Microsoft 基因组学 
 
-本文演示如何使用包含[共享访问签名（SAS）（](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)而不是存储帐户密钥）的 config.xml 文件将工作流提交到 Microsoft 基因组学服务。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
+本文演示如何使用包含[共享访问签名（SAS）（](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)而不是存储帐户密钥）的 config.txt 文件，将工作流提交到 Microsoft 基因组学服务。 如果担心让存储帐户密钥在 config.txt 文件中可见存在安全问题，则可使用此功能。 
 
 本文假定你已安装和运行 `msgen` 客户端，并且熟悉如何使用 Azure 存储。 如果已使用提供的示例数据成功提交工作流，则可继续阅读本文。 
 
 ## <a name="what-is-a-sas"></a>什么是 SAS？
-[共享访问签名（SAS）](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)用于对存储帐户中的资源进行委托访问。 通过 SAS，可以授予对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
+[共享访问签名 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) 用于对存储帐户中的资源进行委托访问。 通过 SAS，可以授予对存储帐户中资源的访问权限，无需共享帐户密钥。 这是在应用程序中使用共享访问签名的关键之处 - SAS 是用于共享存储资源的一种安全方式，它不会危及帐户密钥。
 
 提交给 Microsoft 基因组学的 SAS 应该是[服务 SAS](https://docs.microsoft.com/rest/api/storageservices/Constructing-a-Service-SAS)，该 SAS 只将访问权限委托给其中存储了输入和输出文件的 Blob 或容器。 
 

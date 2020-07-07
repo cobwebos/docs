@@ -1,15 +1,15 @@
 ---
-author: sptramer
-ms.service: azure
 ms.topic: include
 ms.date: 06/13/2019
-ms.author: sttramer
-ms.openlocfilehash: 7da122465c9842ad580808ff713b75e775bde96b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 40f243ce0044b8e1172fb03a1366f37314a0c550
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76766473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367796"
 ---
 ## <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 

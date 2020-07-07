@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 6fc5b4c901254decdb2d34281a10ababd4d79d45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82127856"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Azure VPN 网关的安全控制
@@ -25,8 +25,8 @@ ms.locfileid: "82127856"
 
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务终结点支持| 不适用 | |
-| VNet 注入支持| 不适用 | |
+| 服务终结点支持| 空值 | |
+| VNet 注入支持| 空值 | |
 | 网络隔离和防火墙支持| 是 | VPN 网关是每个客户虚拟网络的专用 VM 实例  |
 | 强制隧道支持| 是 |  |
 
@@ -34,9 +34,9 @@ ms.locfileid: "82127856"
 
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅[Azure Monitor 日志警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure Monitor 指标警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。  |
+| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 请参阅[Azure Monitor 日志警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)  &  [Azure Monitor 指标警报](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)。  |
 | 控制和管理平面日志记录和审核| 是 | Azure 资源管理器活动日志。 |
-| 数据平面日志记录和审核 | 是 | Azure Monitor VPN 连接日志记录和审核的[活动日志](../azure-resource-manager/management/view-activity-logs.md)。 |
+| 数据平面日志记录和审核 | 是 | [Azure Monitor 活动日志](../azure-resource-manager/management/view-activity-logs.md)，用于 VPN 连接日志记录和审核。 |
 
 ## <a name="identity"></a>标识
 
@@ -49,10 +49,10 @@ ms.locfileid: "82127856"
 
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
-| 服务器端静态加密：Microsoft 管理的密钥 | 不适用 | VPN 网关传输客户数据，不存储客户数据 |
+| 服务器端静态加密：Microsoft 管理的密钥 | 空值 | VPN 网关传输客户数据，不存储客户数据 |
 | 传输中加密（例如 ExpressRoute 加密、VNet 中加密，以及 VNet-VNet 加密）| 是 | VPN 网关加密 Azure VPN 网关和客户本地 VPN 设备之间 (S2S) 或 VPN 客户端之间 (P2S) 的客户数据包。 VPN 网关还支持 VNet 到 VNet 加密。 |
 | 服务器端静态加密：客户管理的密钥 (BYOK) | 否 | 客户指定的预共享密钥进行静态加密，但尚未与 CMK 集成。 |
-| 列级加密（Azure 数据服务）| 不适用 | |
+| 列级加密（Azure 数据服务）| 空值 | |
 | 加密的 API 调用| 是 | 通过 [Azure 资源管理器](../azure-resource-manager/index.yml)和 HTTPS  |
 
 ## <a name="configuration-management"></a>配置管理
@@ -63,4 +63,4 @@ ms.locfileid: "82127856"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[Azure 服务中的内置安全控件](../security/fundamentals/security-controls.md)。
+- 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。

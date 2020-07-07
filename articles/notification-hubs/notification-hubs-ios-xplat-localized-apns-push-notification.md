@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72385655"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 发送本地化推送通知

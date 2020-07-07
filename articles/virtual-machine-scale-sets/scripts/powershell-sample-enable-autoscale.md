@@ -6,14 +6,14 @@ ms.author: jushiman
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 03/27/2018
+ms.date: 06/25/2020
 ms.custom: avverma
-ms.openlocfilehash: 759ebb58afcceade8d52305c6a6a41a782ed4df6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 1db108adfe1a3af562a046160856a38daf990885
+ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701991"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85374893"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 自动缩放虚拟机规模集
 此脚本创建运行 Windows Server 2016 的虚拟机规模集，当 CPU 负载发生变化时，它会使用基于主机的指标自动缩放。
@@ -37,7 +37,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 ## <a name="script-explanation"></a>脚本说明
 此脚本使用以下命令创建部署。 表中的每一项均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzVmss](/powershell/module/az.compute/new-azvmss) | 创建虚拟机规模集和所有支持资源，包括虚拟网络、负载均衡器和 NAT 规则。 |
 | [Get-AzVmss](/powershell/module/az.compute/get-azvmss) | 获取有关虚拟机规模集的信息。 |

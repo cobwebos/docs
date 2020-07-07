@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75433682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856498"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教程：在 .NET Core 应用中使用动态配置
 
@@ -100,23 +100,33 @@ class Program
 
 1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 Windows PowerShell，请运行以下命令：
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 macOS 或 Linux，则请运行以下命令：
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 1. 运行以下命令以生成控制台应用：
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 1. 生成成功完成后，请运行以下命令以在本地运行应用：
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
     ![本地启动应用快速入门](./media/quickstarts/dotnet-core-app-run.png)
 

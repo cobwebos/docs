@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
 ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82735294"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
@@ -22,7 +22,7 @@ ms.locfileid: "82735294"
 Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作为托管位置。 目前，可以使用三种托管计划：
 
 + [消耗](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
++ [高级](functions-scale.md#premium-plan)
 + [专用（应用服务）](functions-scale.md#app-service-plan)
 
 每种计划有不同的行为。 并非所有部署技术都适用于每种风格的 Azure Functions。 以下图表显示了哪些部署技术适用于操作系统和托管计划的每种组合：
@@ -32,7 +32,7 @@ Azure Functions 支持跨平台的本地开发以及使用 Windows 和 Linux 作
 | 外部包 URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | 压缩部署 |✔|✔|✔|✔|✔|✔|
 | Docker 容器 | | | | |✔|✔|
-| Web 部署 |✔|✔|✔| | | |
+| Web Deploy |✔|✔|✔| | | |
 | 源代码管理 |✔|✔|✔| |✔|✔|
 | 本地 Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | 云同步<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -94,7 +94,7 @@ Azure Functions 中提供了以下部署方法。
 
 可以使用外部包 URL 来引用包含函数应用的远程包 (.zip) 文件。 可从提供的 URL 下载该文件，应用将在[“从包运行”](run-functions-from-deployment-package.md)模式下运行。
 
->__如何使用：__ 将`WEBSITE_RUN_FROM_PACKAGE`添加到应用程序设置。 此设置的值应是一个 URL（要运行的特定包文件的位置）。 可以[在门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 来添加设置。 
+>__如何使用：__ 将添加 `WEBSITE_RUN_FROM_PACKAGE` 到应用程序设置。 此设置的值应是一个 URL（要运行的特定包文件的位置）。 可以[在门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 来添加设置。 
 >
 >如果使用 Azure Blob 存储，请结合[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 能够访问该包。 每当应用程序重启时，都会提取内容的副本。 引用必须在应用程序的整个生存期内有效。
 

@@ -4,10 +4,10 @@ description: 了解 Azure Active Directory 租户、用户和角色的概念，�
 ms.date: 04/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7ed5af18efbb0f5b97dcab20093cc45e8bed1d03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144919"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、角色和用户
@@ -43,7 +43,7 @@ Azure 委派资源管理目前支持所有[内置角色](../../role-based-access
 - 确保需要[查看 Azure门户中的“我的客户”页](../how-to/view-manage-customers.md)的所有用户都具有[读者](../../role-based-access-control/built-in-roles.md#reader)角色（或包含读者访问权限的其他内置角色）。
 
 > [!IMPORTANT]
-> 若要为 Azure AD 组添加权限，**组类型**必须是**安全性**而不是**Office 365**。 此选项在创建组时处于选中状态。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组以及添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要为 Azure AD 组添加权限，“组类型”必须是“安全性”而不是“Office 365”  。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

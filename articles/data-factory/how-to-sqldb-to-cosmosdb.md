@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
 ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82691905"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>将规范化的数据库架构从 Azure SQL 数据库迁移到 Azure CosmosDB 不规范容器
@@ -23,7 +23,7 @@ ms.locfileid: "82691905"
 
 使用 Azure 数据工厂，我们将构建一个管道，该管道使用单个映射数据流从包含主键和外键的两个 Azure SQL 数据库中读取作为实体关系。 ADF 将使用数据流 Spark 引擎将这些表加入单个流，将联接行收集到数组中，并生成单独的清理文档用于插入新的 Azure CosmosDB 容器。
 
-本指南将在名为 "orders" 的动态上构建一个新容器，该```SalesOrderHeader```容器```SalesOrderDetail```将使用标准 SQL Server AdventureWorks 示例数据库中的和表。 这些表表示联接的```SalesOrderID```销售事务。 每个唯一的详细信息记录都有其```SalesOrderDetailID```自己的主键。 标头与详细信息之间的```1:M```关系为。 我们将```SalesOrderID```在 ADF 中加入，然后将每个相关的详细记录滚动到名为 "detail" 的数组中。
+本指南将在名为 "orders" 的动态上构建一个新容器，该容器将使用 ```SalesOrderHeader``` ```SalesOrderDetail``` 标准 SQL Server AdventureWorks 示例数据库中的和表。 这些表表示联接的销售事务 ```SalesOrderID``` 。 每个唯一的详细信息记录都有其自己的主键 ```SalesOrderDetailID``` 。 标头与详细信息之间的关系为 ```1:M``` 。 我们将 ```SalesOrderID``` 在 ADF 中加入，然后将每个相关的详细记录滚动到名为 "detail" 的数组中。
 
 本指南的典型 SQL 查询是：
 
@@ -42,7 +42,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 生成的 CosmosDB 容器将内部查询嵌入到单个文档中，如下所示：
 
-![收集](media/data-flow/cosmosb3.png)
+![集合](media/data-flow/cosmosb3.png)
 
 ## <a name="create-a-pipeline"></a>创建管道
 
@@ -56,19 +56,19 @@ FROM SalesLT.SalesOrderHeader o;
 
 ![数据流图表](media/data-flow/cosmosb1.png)
 
-5. 定义 "SourceOrderDetails" 的源。 对于数据集，请创建一个指向```SalesOrderDetail```该表的新的 Azure SQL 数据库数据集。
+5. 定义 "SourceOrderDetails" 的源。 对于数据集，请创建一个指向该表的新的 Azure SQL 数据库数据集 ```SalesOrderDetail``` 。
 
-6. 定义 "SourceOrderHeader" 的源。 对于数据集，请创建一个指向```SalesOrderHeader```该表的新的 Azure SQL 数据库数据集。
+6. 定义 "SourceOrderHeader" 的源。 对于数据集，请创建一个指向该表的新的 Azure SQL 数据库数据集 ```SalesOrderHeader``` 。
 
-7. 在顶部的源中，在 "SourceOrderDetails" 之后添加派生列转换。 调用新的转换 "转换"。 需要对```UnitPrice```列进行舍入，并将其转换为 double 数据类型 CosmosDB。 将公式设置为： ```toDouble(round(UnitPrice,2))```。
+7. 在顶部的源中，在 "SourceOrderDetails" 之后添加派生列转换。 调用新的转换 "转换"。 需要对列进行舍入 ```UnitPrice``` ，并将其转换为 double 数据类型 CosmosDB。 将公式设置为： ```toDouble(round(UnitPrice,2))``` 。
 
-8. 添加另一个派生列并将其称为 "MakeStruct"。 我们将在此处创建一个用于保存详细信息表中的值的层次结构。 请记住，详细信息```M:1```是标头的关系。 为新结构```orderdetailsstruct```命名并以这种方式创建层次结构，并将每个 subcolumn 设置为传入列名：
+8. 添加另一个派生列并将其称为 "MakeStruct"。 我们将在此处创建一个用于保存详细信息表中的值的层次结构。 请记住，详细信息是 ```M:1``` 标头的关系。 为新结构命名 ```orderdetailsstruct``` 并以这种方式创建层次结构，并将每个 subcolumn 设置为传入列名：
 
 ![创建结构](media/data-flow/cosmosb9.png)
 
-9. 现在，我们来看一下销售标题源。 添加联接转换。 对于右侧，选择 "MakeStruct"。 将其设置为 "内联接" ```SalesOrderID``` ，并选择联接条件的两侧。
+9. 现在，我们来看一下销售标题源。 添加联接转换。 对于右侧，选择 "MakeStruct"。 将其设置为 "内联接"，并选择 ```SalesOrderID``` 联接条件的两侧。
 
-10. 在添加的新联接中单击 "数据预览" 选项卡，以便您可以看到结果。 应该会看到所有与详细信息行联接的标头行。 这是从形成联接的结果```SalesOrderID```。 接下来，我们将详细信息从公共行合并到详细信息结构中并聚合公共行。
+10. 在添加的新联接中单击 "数据预览" 选项卡，以便您可以看到结果。 应该会看到所有与详细信息行联接的标头行。 这是从形成联接的结果 ```SalesOrderID``` 。 接下来，我们将详细信息从公共行合并到详细信息结构中并聚合公共行。
 
 ![联接](media/data-flow/cosmosb4.png)
 
@@ -78,23 +78,23 @@ FROM SalesLT.SalesOrderHeader o;
 
 ![列清理器](media/data-flow/cosmosb5.png)
 
-13. 现在再次转换货币列```TotalDue```。 与上面的步骤7类似，将公式设置为： ```toDouble(round(TotalDue,2))```。
+13. 现在再次转换货币列 ```TotalDue``` 。 与上面的步骤7类似，将公式设置为： ```toDouble(round(TotalDue,2))``` 。
 
-14. 在这里，我们将通过通用键```SalesOrderID```进行分组来非规范化行。 添加聚合转换，并将 "分组依据" ```SalesOrderID```设置为。
+14. 在这里，我们将通过通用键进行分组来非规范化行 ```SalesOrderID``` 。 添加聚合转换，并将 "分组依据" 设置为 ```SalesOrderID``` 。
 
-15. 在聚合公式中，添加一个名为 "details" 的新列，并使用此公式收集之前创建的结构中的值```orderdetailsstruct```：。 ```collect(orderdetailsstruct)```
+15. 在聚合公式中，添加一个名为 "details" 的新列，并使用此公式收集之前创建的结构中的值 ```orderdetailsstruct``` ： ```collect(orderdetailsstruct)``` 。
 
 16. 聚合转换将只输出作为聚合或 group by 公式的一部分的列。 那么，我们还需要包含 sales 表头中的列。 为此，请在同一聚合转换中添加列模式。 此模式将在输出中包含所有其他列：
 
 ```instr(name,'OrderQty')==0&&instr(name,'UnitPrice')==0&&instr(name,'SalesOrderID')==0```
 
-17. 在其他属性中使用 "this" 语法，以便我们维护相同的列名称并将```first()```函数用作聚合：
+17. 在其他属性中使用 "this" 语法，以便我们维护相同的列名称并将函数用作 ```first()``` 聚合：
 
 ![聚合](media/data-flow/cosmosb6.png)
 
 18. 我们已准备好通过添加接收器转换来完成迁移流。 单击数据集旁边的 "新建"，并添加指向 CosmosDB 数据库的 CosmosDB 数据集。 对于集合，我们将其称为 "orders"，它将不包含任何架构和文档，因为它将在动态上创建。
 
-19. 在接收器设置中，将键```\SalesOrderID```分区为并将操作集合为 "重新创建"。 请确保 "映射" 选项卡如下所示：
+19. 在接收器设置中，将键分区为 ```\SalesOrderID``` 并将操作集合为 "重新创建"。 请确保 "映射" 选项卡如下所示：
 
 ![接收器设置](media/data-flow/cosmosb7.png)
 

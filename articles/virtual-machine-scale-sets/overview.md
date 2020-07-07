@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: ''
-ms.date: 09/26/2019
+ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 986a2722515ac49aad9e655d1dcef06f5ce2e3dc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7194db473e0171fa3429e3cf6b34c3161493ff23
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856263"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组完全相同的、负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。

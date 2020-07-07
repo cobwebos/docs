@@ -8,10 +8,10 @@ ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71309935"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>对 Azure Data Lake Analytics 使用作业浏览器和作业视图

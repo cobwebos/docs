@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: d598d291612c6e4f58caf77e1b213b2bc3f42820
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311450"
 ---
 # <a name="security-module"></a>安全模块
 
 本文介绍了适用于 IoT 的 Azure 安全中心如何使用设备孪生和模块。
 
-## <a name="device-twins"></a>设备克隆
+## <a name="device-twins"></a>设备孪生
 
 对于在 Azure 中生成的 IoT 解决方案，设备孪生在设备管理和流程自动化方面发挥着关键作用。
 
