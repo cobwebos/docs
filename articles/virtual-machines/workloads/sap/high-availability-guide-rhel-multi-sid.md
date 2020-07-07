@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 4f1bfd58e27f0cd677980ff9351d32d91a68e3e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80247429"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure Red Hat Enterprise Linux Vm 上的 SAP NetWeaver 高可用性多 SID 指南
@@ -87,7 +87,7 @@ ms.locfileid: "80247429"
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP Netweaver in pacemaker cluster](https://access.redhat.com/articles/3150081)（Pacemaker 群集中的 SAP NetWeaver）
@@ -100,7 +100,7 @@ ms.locfileid: "80247429"
 * Azure 特定的 RHEL 文档：
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
-* [使用 Azure NetApp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
+* [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 
 ## <a name="overview"></a>概述
 
@@ -128,17 +128,17 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 使用虚拟主机�
   * NW3 的 IP 地址：10.3.1.54
 
 * 探测端口
-  * 端口 620<strong>&lt;nr&gt;</strong>，因此适用于 NW1、NW2 和 NW3 探测端口 620**00**，620**10**和 620**20**
+  * 端口 620<strong> &lt; nr &gt; </strong>，因此适用于 NW1、NW2 和 NW3 探测端口 620**00**，620**10**和 620**20**
 * 负载均衡规则-为每个实例创建一个规则，即 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
-  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
-  * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 36<strong>&lt;nr&gt; </strong> TCP
-    * 39<strong>&lt;nr&gt; </strong> TCP
-    * 81<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 如果使用“标准负载均衡器”，请选择“HA 端口”
+  * 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
+    * 32&lt;nr&gt; TCP
+    * 36&lt;nr&gt; TCP
+    * 39&lt;nr&gt; TCP
+    * 81&lt;nr&gt; TCP
+    * 5&lt;nr&gt;13 TCP
+    * 5&lt;nr&gt;14 TCP
+    * 5&lt;nr&gt;16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -148,24 +148,24 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS 和 SAP NetWeaver ERS 使用虚拟主机�
   * NW3 10.3.1.55 的 IP 地址
 
 * 探测端口
-  * 端口 621<strong>&lt;nr&gt;</strong>，因此适用于 NW1、NW2 和 N3 探测端口 621**02**，621**12** ，621**22**
+  * 端口 621<strong> &lt; nr &gt; </strong>，因此适用于 NW1、NW2 和 N3 探测端口 621**02**，621**12** ，621**22**
 * 负载均衡规则-为每个实例创建一个规则，即 NW1/ERS、NW2/ERS 和 NW3/ERS。
-  * 如果使用标准负载均衡器，请选择 " **HA 端口**"
-  * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32<strong>&lt;nr&gt; </strong> TCP
-    * 33<strong>&lt;nr&gt; </strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * 如果使用“标准负载均衡器”，请选择“HA 端口”
+  * 如果使用“基本负载均衡器”，请为以下端口创建负载均衡规则
+    * 32&lt;nr&gt; TCP
+    * 33&lt;nr&gt; TCP
+    * 5&lt;nr&gt;13 TCP
+    * 5&lt;nr&gt;14 TCP
+    * 5&lt;nr&gt;16 TCP
 
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 
 > [!Note]
-> 如果没有公共 IP 地址的 Vm 放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，则不会有出站 internet 连接，除非执行其他配置以允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅[使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
+> 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)。  
 
 > [!IMPORTANT]
-> 不要在 azure 负载均衡器后面的 Azure Vm 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数**tcp_timestamps**设置为**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
+> 请勿在放置于 Azure 负载均衡器之后的 Azure VM 上启用 TCP 时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数“net.ipv4.tcp_timestamps”设置为“0”。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)。
 
 ## <a name="sap-shares"></a>SAP 共享
 
@@ -189,9 +189,9 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 在此示例中，我们假定已在群集中部署了系统**NW1** 。 我们将演示如何在群集 SAP 系统**NW2**和**NW3**中进行部署。 
 
-以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2************。
+以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-### <a name="prerequisites"></a>必备条件 
+### <a name="prerequisites"></a>先决条件 
 
 > [!IMPORTANT]
 > 在按照说明在群集中部署其他 SAP 系统之前，请按照说明在群集中部署第一个 SAP 系统，因为在第一次部署系统的过程中，只需要执行一些步骤。  
@@ -206,7 +206,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 1. 按照说明[通过 Azure 门户手动部署 Azure 负载均衡器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#deploy-linux-manually-via-azure-portal)，将新部署的系统（即**NW2**、 **NW3**）的配置添加到现有的 azure 负载均衡器。 调整配置的 IP 地址、运行状况探测端口和负载均衡规则。  
 
-2. **[A]** 为其他 SAP 系统设置名称解析。 可以在所有节点上使用 DNS 服务器`/etc/hosts`或修改。 此示例演示如何使用`/etc/hosts`文件。  根据你的环境调整 IP 地址和主机名。 
+2. **[A]** 为其他 SAP 系统设置名称解析。 可以在所有节点上使用 DNS 服务器或修改 `/etc/hosts` 。 此示例演示如何使用 `/etc/hosts` 文件。  根据你的环境调整 IP 地址和主机名。 
 
     ```
     sudo vi /etc/hosts
@@ -245,7 +245,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 4. **[A]** 为要部署到群集的其他 sap 系统添加/Sapmnt/SID 和/usr/sap/SID/SYS 文件系统的装载条目。 在此示例中， **NW2**和**NW3**。  
 
-   针对要`/etc/fstab`部署到群集的其他 SAP 系统，用文件系统更新文件。  
+   针对要 `/etc/fstab` 部署到群集的其他 SAP 系统，用文件系统更新文件。  
 
    * 如果使用 Azure NetApp 文件，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files#prepare-for-sap-netweaver-installation)的说明进行操作  
    * 如果使用 GlusterFS 群集，请按照[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel#prepare-for-sap-netweaver-installation)的说明进行操作  
@@ -282,7 +282,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
    请确保群集状态为 "正常"，并且所有资源均已启动。 资源在哪个节点上运行并不重要。  
 
-2. [1] 安装 SAP NetWeaver ASCS****  
+2. [1] 安装 SAP NetWeaver ASCS  
 
    使用映射到 ASCS 的负载均衡器前端配置的 IP 地址的虚拟主机，以 root 身份安装 SAP NetWeaver ASCS。 例如，对于 system **NW2**，虚拟主机名为<b>msnw2ascs</b>、 <b>10.3.1.52</b>和用于探测负载均衡器的实例号，例如<b>10</b>。 对于 system **NW3**，虚拟主机名为<b>msnw3ascs</b>、 <b>10.3.1.54</b>和用于探测负载均衡器的实例号，例如<b>20</b>。 记下在哪个群集节点上安装了每个 SAP SID 的 ASCS。  
 
@@ -326,13 +326,13 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
    请确保群集状态为 "正常"，并且所有资源均已启动。  
 
-   接下来，请确保新创建的 ERS 组的资源在群集节点上运行，这与安装了同一 SAP 系统的 ASCS 实例的群集节点相反。  例如，如果在上`rhelmsscl1`安装了 NW2 ASCS，请确保 NW2 ERS 组在上`rhelmsscl2`运行。  若要将 NW2 ERS 组迁移到`rhelmsscl2` ，可以为组中的其中一个群集资源运行以下命令： 
+   接下来，请确保新创建的 ERS 组的资源在群集节点上运行，这与安装了同一 SAP 系统的 ASCS 实例的群集节点相反。  例如，如果在上安装了 NW2 ASCS `rhelmsscl1` ，请确保 NW2 ERS 组在上运行 `rhelmsscl2` 。  若要将 NW2 ERS 组迁移到，可以 `rhelmsscl2` 为组中的其中一个群集资源运行以下命令： 
 
     ```
       pcs resource move fs_NW2_AERS rhelmsscl2
     ```
 
-4. [2] 安装 SAP Netweaver ERS****
+4. [2] 安装 SAP Netweaver ERS
 
    使用映射到 ERS 的负载均衡器前端配置的 IP 地址的虚拟主机名，在另一个节点上以 root 身份安装 SAP NetWeaver ERS。 例如，对于 system **NW2**，虚拟主机名为<b>msnw2ers</b>、 <b>10.3.1.53</b>和用于探测负载均衡器的实例号，例如<b>12</b>。 对于 system **NW3**，为用于探测负载均衡器的虚拟主机名<b>msnw3ers</b>、 <b>10.3.1.55</b>和实例编号（例如<b>22</b>）。 
 
@@ -386,7 +386,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 6. **[A]** 更新 /usr/sap/sapservices 文件
 
-   若要防止 sapinit 启动脚本启动实例，必须从文件中`/usr/sap/sapservices`注释掉 Pacemaker 管理的所有实例。  下面显示的示例适用于 SAP 系统**NW2**和**NW3**。  
+   若要防止 sapinit 启动脚本启动实例，必须从文件中注释掉 Pacemaker 管理的所有实例 `/usr/sap/sapservices` 。  下面显示的示例适用于 SAP 系统**NW2**和**NW3**。  
 
    ```
     # On the node where ASCS was installed, comment out the line for the ASCS instacnes
@@ -444,7 +444,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
     sudo pcs property set maintenance-mode=false
     ```
 
-   SAP 在 SAP NW 7.52 中引入了对排队服务器2（包括复制）的支持。 从 ABAP 平台1809开始，默认情况下会安装排队服务器2。 有关排队服务器2支持，请参阅 SAP 说明[2630416](https://launchpad.support.sap.com/#/notes/2630416) 。
+   从 SAP NW 7.52 开始，SAP 引入了对排队服务器 2 的支持，包括复制。 从 ABAP 平台 1809 开始，系统将默认安装排队服务器 2。 有关排队服务器 2 的支持，请参阅 SAP 说明 [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
    如果使用 "排队服务器2体系结构" （[ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)），请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
 
     ```
@@ -489,7 +489,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
     sudo pcs property set maintenance-mode=false
     ```
 
-   如果从较旧版本升级并切换到排队服务器2，请参阅 SAP 说明[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
+   如果要从旧版本升级并切换到排队服务器 2，请参阅 SAP 说明 [2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
 
    > [!NOTE]
    > 上述配置中的超时只是示例，可能需要适应特定的 SAP 设置。 
@@ -612,7 +612,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 以下测试是 Red Hat 的最佳实践指南中的测试用例的子集。 为了方便起见，已将其包含在内。 有关群集测试的完整列表，请参阅以下文档：
 
 * 如果使用 Azure NetApp 文件 NFS 卷，请遵循[适用于 sap 应用程序的 Azure Netapp 文件的 Azure vm 高可用性 Sap NetWeaver ON RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* 如果使用高可用性`GlusterFS`，请遵循[RHEL for sap 应用程序上的 Sap NetWeaver 的 Azure vm 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)。  
+* 如果使用高可用性 `GlusterFS` ，请遵循[RHEL for sap 应用程序上的 sap NetWeaver 的 Azure vm 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)。  
 
 请始终阅读 Red Hat 最佳实践指南，并执行可能已添加的所有其他测试。  
 所呈现的测试位于两个节点，多 SID 群集中安装了三个 SAP 系统。  
@@ -752,7 +752,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
         rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started rhelmsscl2
    ```
 
-   在节点上以 root 身份运行以下命令，其中至少有一个 ASCS 实例正在运行。 在此示例中，我们在上`rhelmsscl1`执行了命令，其中 NW1、NW2 和 NW3 的 ASCS 实例正在运行。  
+   在节点上以 root 身份运行以下命令，其中至少有一个 ASCS 实例正在运行。 在此示例中，我们在上执行了命令 `rhelmsscl1` ，其中 NW1、NW2 和 NW3 的 ASCS 实例正在运行。  
 
    ```
    echo c > /proc/sysrq-trigger

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 7b77ea9e0e1f322cb5ef0bc63885c3ccce1b76f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158669"
 ---
 # <a name="change-iot-central-application-settings"></a>更改 IoT Central 应用程序设置
@@ -21,7 +21,7 @@ ms.locfileid: "80158669"
 
 本文为管理员介绍如何通过更改应用程序名称和 URL 以及上传图像来管理应用程序，以及在 Azure IoT Central 应用程序中删除应用程序。
 
-只有 Azure IoT Central 应用程序的“管理员”  角色才能访问和使用“管理”  部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”  角色。
+只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”  角色。
 
 ## <a name="change-application-name-and-url"></a>更改应用程序名称和 URL
 

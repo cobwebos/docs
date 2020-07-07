@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: 81df3897dff13823e4b97e10bc91d3a22b0e1b0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128045"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义品牌模型
@@ -33,7 +33,7 @@ ms.locfileid: "80128045"
 
 ## <a name="edit-brands-model-settings"></a>编辑品牌模型设置
 
-可以选择设置是否需要检测必应品牌数据库中的品牌。 若要设置此选项，需要编辑品牌模型的设置。 执行以下步骤:
+可以选择设置是否需要检测必应品牌数据库中的品牌。 若要设置此选项，需要编辑品牌模型的设置。 执行以下步骤：
 
 1. 请参阅[视频索引器](https://www.videoindexer.ai/)网站并登录。
 2. 若要在帐户中自定义模型，请在页面的右上角选择 "**内容模型自定义**" 按钮。

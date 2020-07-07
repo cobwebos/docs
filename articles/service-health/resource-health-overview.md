@@ -4,10 +4,10 @@ description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159245"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
@@ -50,11 +50,11 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ![由于非平台事件虚拟机显示“不可用”状态](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>Unknown
+### <a name="unknown"></a>未知
 
 “未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟**。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
 
-如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”**。
+如果资源按预期运行，则在几分钟后资源的状态将更改为 "*可用*"。
 
 如果资源遇到问题，“未知”运行状态可能意味着平台中的事件正在影响资源**。
 

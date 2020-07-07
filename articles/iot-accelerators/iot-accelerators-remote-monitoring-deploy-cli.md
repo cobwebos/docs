@@ -9,21 +9,21 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80258288"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
 本操作指南介绍如何部署远程监视解决方案加速器。 使用 CLI 部署解决方案。 你还可以在 azureiotsolutions.com 中使用基于 web 的 UI 部署解决方案，若要了解此选项，请参阅[部署远程监视解决方案加速器](quickstart-remote-monitoring-deploy.md)快速入门。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要部署远程监视解决方案加速器，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 要运行 CLI，需在本地计算机上安装 [Node.js](https://nodejs.org/)。
 
@@ -60,7 +60,7 @@ pcs login
 
 本部分汇总基本与标准部署之间的主要差别。
 
-### <a name="basic"></a>基本
+### <a name="basic"></a>Basic
 
 可以从[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)或使用 CLI 执行基本部署。
 
@@ -79,7 +79,7 @@ pcs login
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
 | 1     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
 | 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
+| 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 ### <a name="standard"></a>标准
 
@@ -100,10 +100,10 @@ pcs login
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
 | 1     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
 | 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
-| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
+| 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 > [!NOTE]
-> 可以在[https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing)中找到这些服务的定价信息。 可在 [Azure 门户](https://portal.azure.com/)中找到订阅的用量和计费详细信息。
+> 可以在中找到这些服务的定价信息 [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) 。 可在 [Azure 门户](https://portal.azure.com/)中找到订阅的用量和计费详细信息。
 
 ## <a name="deploy-the-solution-accelerator"></a>部署解决方案加速器
 

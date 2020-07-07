@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 94251dfa2d9fa732912ed20d825e64f542d79188
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055415"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
@@ -82,7 +82,7 @@ Log Analytics 基于工作负荷的管理包生成，提供增值服务。 每�
 4. 在“常规属性”页上的“运行方式帐户类型:”列表中，选择“Windows”。************
 5. 在“显示名称”文本框中键入显示名称，并选择性地在“说明”框中键入说明，单击“下一步”。************
 6. 在“分发安全性”页上，选择“更安全”。********
-7. 单击“创建”。   
+7. 单击**创建**。  
 
 创建运行方式帐户后，需要将管理组中的管理服务器指定为该帐户的目标，并将其关联到某个预定义的运行方式配置文件，以便能够使用凭据运行工作流。  
 
@@ -147,13 +147,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 System Center Operations Manager 运行状况检查解决方案的管理包中包含一个名为“Microsoft System Center Operations Manager 运行运行状况检查规则”的规则。** 此规则负责执行运行状况检查。 若要启用该规则并配置频率，请使用以下过程。
 
-默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 使用以下步骤。
+默认情况下，Microsoft System Center Operations Manager 运行运行状况检查规则已禁用。 若要执行运行状况检查，必须在管理服务器上启用该规则。 请执行以下步骤。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>为特定的管理服务器启用规则
 
 1. 在 Operations Manager Operations 控制台的“创作”工作区的“规则”窗格中，搜索规则“Microsoft System Center Operations Manager 运行运行状况检查规则”。**********
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。**
-3. 右键单击该规则，然后单击 "**替代** > "**作为类： Management Server 的特定对象**。
+3. 右键单击该规则，然后单击 "**替代**"  >  **作为类： Management Server 的特定对象**。
 4.  在可用管理服务器列表中，选择要在其上运行该规则的管理服务器。  这应该是前面配置的，要与运行方式帐户关联的同一个管理服务器。
 5.  请务必将“已启用”参数值的重写值更改为 **True**。****<br><br> ![重写参数](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 1. 在 Operations Manager 控制台的“创作”工作区的“规则”部分中，搜索规则“Microsoft System Center Operations Manager 运行运行状况检查规则”。**********
 2. 在搜索结果中，选择包含“类型: 管理服务器”字样的规则。**
-3. 右键单击该规则，然后单击 "**替代** > **类的所有对象的规则：管理服务器**"。
+3. 右键单击该规则，然后单击 "**替代**  >  **类的所有对象的规则：管理服务器**"。
 4. 将“间隔”参数值更改为所需的间隔值。**** 在以下示例中，该值设置为 1440 分钟（一天）。<br><br> ![间隔参数](./media/scom-assessment/interval.png)<br>  
 
     如果设置的值小于 1440 分钟，该规则将按一天的间隔运行。 在本示例中，规则将忽略间隔值，按一天的频率运行。
@@ -179,9 +179,9 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 权重是基于三个关键因素的聚合值：
 
-- 识别的问题导致其他问题的*概率*。 概率较高相当于建议的总体分数较高。
-- 问题确实会导致其他问题时对组织的*影响*。 影响较大相当于建议的总体分数更高。
-- 实施建议所要付出的*工作量*。 工作量较大相当于建议的总体分数较低。
+- 所发现的问题会导致不良后果的*概率*。 概率较高相当于建议的总体分数较高。
+- 问题对组织的*影响*（如果它确实会导致不良后果）。 影响较大相当于建议的总体分数更高。
+- 实施建议所需的*工作*。 工作量较大相当于建议的总体分数较低。
 
 每一项建议的权重表示为可用于每个重点区域的总分百分比。 例如，如果“可用性和业务连续性”重点区域中的建议评分为 5%，则实施该建议可将总体可用性和业务连续性的评分提高 5%。
 
@@ -208,13 +208,13 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
-1. 登录到 Azure 门户[https://portal.azure.com](https://portal.azure.com)。
-2. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择**Log Analytics**。
+1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
+2. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”****。
 3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“工作区摘要”**** 菜单项。  
 4. 在“概述”页上，单击“System Center Operations Manager 运行状况检查”磁贴。********
 5. 在“System Center Operations Manager 运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。****
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![重点区域](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. 可以采取“建议的操作”**** 中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 纠正的项将显示为“已通过的对象”****。
+7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
 
@@ -242,7 +242,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 1. 创建一个名为 IgnoreRecommendations.txt 的文件。
 2. 在单独的行上粘贴或键入要 Log Analytics 忽略的每个建议的 RecommendationId，保存并关闭该文件。
 3. 将以下文件夹中的文件置于每台要让 Log Analytics 忽略建议的计算机上。
-4. 在 Operations Manager 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server。
+4. 在 Operations Manager 管理服务器上- *SystemDrive*： \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server。
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>验证建议是否已被忽略
 
@@ -268,7 +268,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 - [配置 System Center Operations Manager 运行状况检查规则](#configure-the-health-check-rule)
 
 
-是否有某种方法可配置检查的运行频率？** 是的。 请参阅[配置运行频率](#configure-the-run-frequency)。
+是否有某种方法可配置检查的运行频率？ 是的。 请参阅[配置运行频率](#configure-the-run-frequency)。
 
 如果添加 System Center Operations Manager 运行状况检查解决方案后发现另一台服务器，那么是否会检查它？** 是的，发现之后，即会对它进行检查，默认情况下每隔七天检查一次。
 
@@ -282,7 +282,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 如何知道是否存在不符合先决条件的情况？** 如果执行了运行状况检查但未看到结果，则有可能是检查不符合某些先决条件。 可以在日志搜索中执行查询 `Operation Solution=SCOMAssessment` 和 `SCOMAssessmentRecommendation FocusArea=Prerequisites`，确定不符合哪些先决条件。
 
-*先决条件错误中`Failed to connect to the SQL Instance (….).`会出现一条消息。问题是什么？* 收集数据的进程 AdvisorAssessment.exe 在管理服务器的 HealthService 进程下运行。 在运行状况检查过程中，该进程会尝试连接到 Operations Manager 数据库所在的 SQL Server。 如果防火墙规则阻止与 SQL Server 实例建立连接，则可能会出现此错误。
+*`Failed to connect to the SQL Instance (….).`先决条件错误中会出现一条消息。问题是什么？* 收集数据的进程 AdvisorAssessment.exe 在管理服务器的 HealthService 进程下运行。 在运行状况检查过程中，该进程会尝试连接到 Operations Manager 数据库所在的 SQL Server。 如果防火墙规则阻止与 SQL Server 实例建立连接，则可能会出现此错误。
 
 *收集的数据类型是什么？* 通过 Windows PowerShell、SQL 查询和文件信息收集器收集以下类型的数据：- WMI 数据 - 注册表数据 - EventLog 数据 - Operations Manager 数据。
 

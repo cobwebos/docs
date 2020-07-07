@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
 ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127025"
 ---
 # <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure 通知中心和 Google Firebase 云消息传送迁移
@@ -39,7 +39,7 @@ Google 的 FCM FAQ 指出，无需执行任何操作。 在[FCM FAQ](https://dev
 
 如果你的应用使用 GCM 库，请继续操作并按照 Google 的说明升级到你的应用中的 FCM 库。 我们的 SDK 与兼容，因此你无需在一侧就更新应用程序中的任何内容（只要你使用的 SDK 版本是最新版本）。
 
-## <a name="questions-and-answers"></a>问题和解答
+## <a name="questions-and-answers"></a>问题与解答
 
 下面是我们为客户提供的一些常见问题的解答：
 

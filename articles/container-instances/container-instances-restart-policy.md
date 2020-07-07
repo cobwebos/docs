@@ -4,10 +4,10 @@ description: 了解如何使用 Azure 容器实例来执行一直要运行到完
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80131490"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
@@ -30,7 +30,7 @@ ms.locfileid: "80131490"
 
 ## <a name="specify-a-restart-policy"></a>指定重启策略
 
-重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 `--restart-policy`az container create[ 时指定 ][az-container-create] 参数。
+重启策略的指定方式取决于容器实例的创建方式，例如，是使用 Azure CLI、Azure PowerShell cmdlet 还是 Azure 门户。 在 Azure CLI 中，在调用 [az container create][az-container-create] 时指定 `--restart-policy` 参数。
 
 ```azurecli-interactive
 az container create \

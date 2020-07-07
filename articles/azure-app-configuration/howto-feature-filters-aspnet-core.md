@@ -8,10 +8,10 @@ ms.author: lcozzens
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 181c97615985283011834dcf9145810b1563fb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056998"
 ---
 # <a name="use-feature-filters-to-enable-a-feature-for-a-subset-of-users"></a>使用功能筛选器为一部分用户启用功能
@@ -29,7 +29,7 @@ ms.locfileid: "80056998"
 
 ## <a name="registering-a-feature-filter"></a>注册功能筛选器
 
-可以通过调用`AddFeatureFilter`方法来注册功能筛选器，并指定功能筛选器的名称。 例如，以下代码将注册`PercentageFilter`：
+可以通过调用方法来注册功能筛选器 `AddFeatureFilter` ，并指定功能筛选器的名称。 例如，以下代码将注册 `PercentageFilter` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -41,15 +41,15 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="configuring-a-feature-filter-in-azure-app-configuration"></a>在 Azure 应用配置中配置功能筛选器
 
-某些功能筛选器具有其他设置。 例如， `PercentageFilter`基于百分比激活功能。 它有一个设置用于定义要使用的百分比。
+某些功能筛选器具有其他设置。 例如， `PercentageFilter` 基于百分比激活功能。 它有一个设置用于定义要使用的百分比。
 
-你可以为 Azure 应用配置中定义的功能标志配置这些设置。 例如，请按照以下步骤`PercentageFilter`操作，以对 web 应用的50% 请求启用功能标志：
+你可以为 Azure 应用配置中定义的功能标志配置这些设置。 例如，请按照以下步骤操作，以对 `PercentageFilter` web 应用的50% 请求启用功能标志：
 
 1. 按照[快速入门：向 ASP.NET Core 应用添加功能标志](./quickstart-feature-flag-aspnet-core.md)中的说明创建具有功能标志的 web 应用。
 
 1. 在 Azure 门户中，请切换到配置存储，并单击 "**功能管理器**"。
 
-1. 单击在快速入门中创建的*Beta*功能标志的上下文菜单。 单击 **“编辑”**。
+1. 单击在快速入门中创建的*Beta*功能标志的上下文菜单。 单击 **“编辑”** 。
 
     > [!div class="mx-imgBorder"]
     > ![编辑 Beta 功能标志](./media/edit-beta-feature-flag.png)
@@ -80,7 +80,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="feature-filters-in-action"></a>操作中的功能筛选器
 
-若要查看此功能标志的效果，请启动该应用程序，并多次点击浏览器中的 "**刷新**" 按钮。 你会看到*Beta*项出现在工具栏上约50% 的时间。 它隐藏了剩余时间，因为这会对请求`PercentageFilter`的一个子集停用*Beta 版*功能。 以下视频显示了此行为的操作。
+若要查看此功能标志的效果，请启动该应用程序，并多次点击浏览器中的 "**刷新**" 按钮。 你会看到*Beta*项出现在工具栏上约50% 的时间。 它隐藏了剩余时间，因为这会 `PercentageFilter` 对请求的一个子集停用*Beta 版*功能。 以下视频显示了此行为的操作。
 
 > [!div class="mx-imgBorder"]
 > ![操作中的 PercentageFilter](./media/feature-flags-percentagefilter.gif)

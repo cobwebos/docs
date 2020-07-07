@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79537187"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL 的连接库
@@ -35,5 +35,5 @@ MySQL 提供标准数据库驱动程序连接，以将 MySQL 与符合行业标�
 ## <a name="next-steps"></a>后续步骤
 阅读这些快速入门，了解如何使用所选语言连接和查询 Azure Database for MySQL：
 
-[PHP](./connect-php.md) | [Java](./connect-java.md) | [Node.JS](./connect-nodejs.md) | [Ruby](./connect-ruby.md) | [Go](./connect-go.md) [Python](./connect-python.md) | [.NET (C#)](./connect-csharp.md) | [C++](connect-cpp.md).net （c #） Python node.js Ruby c + + 中转 |  
+[PHP](./connect-php.md)  | [Java](./connect-java.md)  |  [.NET （C #）](./connect-csharp.md)  | [Python](./connect-python.md)  | [Node.JS](./connect-nodejs.md)  | [Ruby](./connect-ruby.md)  | [C + +](connect-cpp.md)  | [开始](./connect-go.md)
 

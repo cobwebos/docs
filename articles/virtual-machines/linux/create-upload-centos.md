@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/25/2019
 ms.author: guybo
 ms.openlocfilehash: 8899249fd284f69fa26bab8cd70aaf6a67fbb83c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066785"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>为 Azure 准备基于 CentOS 的虚拟机
@@ -39,9 +39,9 @@ ms.locfileid: "80066785"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”打开该虚拟机的控制台窗口。****
+2. 单击“连接”打开该虚拟机的控制台窗口。
 
-3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
+3. 在 CentOS 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
 
     ```bash
     sudo rpm -e --nodeps NetworkManager
@@ -217,7 +217,7 @@ ms.locfileid: "80066785"
     logout
     ```
 
-17. 单击 "**操作-> 关闭**" "Hyper-v 管理器"。 Linux VHD 现已准备好上传到 Azure。
+17. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 
 
@@ -235,7 +235,7 @@ ms.locfileid: "80066785"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-2. 单击“连接”打开该虚拟机的控制台窗口。****
+2. 单击“连接”打开该虚拟机的控制台窗口。
 
 3. 创建或编辑文件 `/etc/sysconfig/network` 并添加以下文本：
 
@@ -383,7 +383,7 @@ ms.locfileid: "80066785"
     logout
     ```
 
-14. 单击 "**操作-> 关闭**" "Hyper-v 管理器"。 Linux VHD 现已准备好上传到 Azure。
+14. 在 Hyper-V 管理器中单击“操作”->“关闭”。 Linux VHD 现已准备好上传到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 

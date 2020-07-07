@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128765"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
@@ -136,7 +136,7 @@ ms.locfileid: "80128765"
 - **WorkplaceJoined：** -如果已将 Azure AD 注册帐户添加到当前已上下文中的设备，则设置为 "是"。
 - **WamDefaultSet：** -如果为已登录用户创建 WAM 默认 WebAccount，则设置为 "是"。 如果在提升的命令提示符下运行 dsreg/status，则此字段可能显示错误。 
 - **WamDefaultAuthority：** -设置为 "组织" Azure AD。
-- **WamDefaultId：** -Always "https://login.microsoft.com" Azure AD。
+- **WamDefaultId：** -Always " https://login.microsoft.com " Azure AD。
 - **末尾为：** -默认 WAM WEBACCOUNT 的 WAM 提供程序的（Azure AD/MICROSOFT 帐户） GUID。 
 
 ### <a name="sample-user-state-output"></a>用户状态输出示例

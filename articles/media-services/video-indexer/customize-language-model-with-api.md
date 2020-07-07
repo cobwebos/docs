@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
 ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127980"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义语言模型
@@ -105,7 +105,7 @@ ms.locfileid: "80127980"
 }
 ```
 
-返回`id`的是用于区分语言模型的唯一 ID， `languageModelId`同时用于[上传视频来索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和重新索引[视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api （ `linguisticModelId`在视频索引器上传/重新索引 api 中也称为）。
+返回的 `id` 是用于区分语言模型的唯一 ID，同时 `languageModelId` 用于[上传视频来索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和重新索引[视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api （ `linguisticModelId` 在视频索引器上传/重新索引 api 中也称为）。
 
 ## <a name="delete-a-language-model"></a>删除语言模型
 
@@ -157,11 +157,11 @@ ms.locfileid: "80127980"
 }
 ```
 
-`id`使用响应中返回的文件下载文件的内容。
+使用 `id` 响应中返回的文件下载文件的内容。
 
 ## <a name="update-a-file-from-a-language-model"></a>更新语言模型中的文件
 
-使用[更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)可以更新指定帐户的自定义语言`enable`模型中的文件的名称和状态。
+使用[更新文件](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)可以更新 `enable` 指定帐户的自定义语言模型中的文件的名称和状态。
 
 ### <a name="response"></a>响应
 
@@ -177,7 +177,7 @@ ms.locfileid: "80127980"
 }
 ```
 
-`id`使用在响应中返回的文件的来下载文件的内容。
+使用 `id` 在响应中返回的文件的来下载文件的内容。
 
 ## <a name="get-a-specific-language-model"></a>获取特定的语言模型
 
@@ -213,7 +213,7 @@ ms.locfileid: "80127980"
 }
 ```
 
-`id`使用在响应中返回的文件的来下载文件的内容。
+使用 `id` 在响应中返回的文件的来下载文件的内容。
 
 ## <a name="get-all-the-language-models"></a>获取所有语言模型
 

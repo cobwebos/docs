@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79536983"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>通过百度开始使用通知中心
@@ -29,7 +29,7 @@ ms.locfileid: "79536983"
 
 由于 Google Play 和 FCM (Firebase Cloud Messaging) 在中国不可用，必须使用其他的应用商店和推送服务。 百度就是其中的一个，也是通知中心目前所使用的。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程需要：
 
@@ -37,18 +37,18 @@ ms.locfileid: "79536983"
 * [百度推送 Android SDK]
 
 > [!NOTE]
-> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
+> 要完成本教程，必须有一个有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
 
 若要开始，请执行以下操作：
 
-1. 创建百度帐户。
-2. 创建百度云推送项目，并记下 API 密钥和密钥。
+1. 创建一个百度帐户。
+2. 创建一个百度云推送项目，并记下 API 密钥和密钥。
 
 ## <a name="configure-a-new-notification-hub"></a>配置新通知中心
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6. 在通知中心选择“通知服务”，然后选择“百度(Android China)”。********
+&emsp;&emsp;6. 在通知中心选择“通知服务”，然后选择“百度(Android China)”。  
 
 &emsp;&emsp;&emsp;&emsp;![Azure 通知中心 - 百度](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
@@ -56,7 +56,7 @@ ms.locfileid: "79536983"
 
 &emsp;&emsp;&emsp;&emsp;![Azure 通知中心 - 百度机密](./media/notification-hubs-baidu-get-started/NotificationHubBaiduConfigure.png)
 
-通知中心现在已配置为使用百度。 **** 此外还有连接字符串，用于注册发送和接收推送通知的应用。
+通知中心现在已配置为使用百度。  此外还有连接字符串，用于注册发送和接收推送通知的应用。
 
 记下“访问连接信息”窗口中的 `DefaultListenSharedAccessSignature` 和 `DefaultFullSharedAccessSignature`。
 
@@ -66,9 +66,9 @@ ms.locfileid: "79536983"
 
     ![Azure 通知中心 - 百度“新建项目”](./media/notification-hubs-baidu-get-started/AndroidNewProject.png)
 
-2. 输入应用程序名称，并确保将要求的最低 SDK 版本设为“API 16: Android 4.1”。 **另请确保应用包名与百度云推送门户中的相同**
+2. 输入应用程序名称，并确保将要求的最低 SDK 版本设为“API 16:Android 4.1”。 **另请确保应用包名与百度云推送门户中的相同**
 
-    ![Azure 通知中心-百度 min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![azure 通知中心-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure 通知中心 - 百度 Min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure 通知中心 - 百度 Min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. 单击“下一步”，并继续执行向导，直到显示“创建活动”窗口。 确保选中了“空活动”，最后选择“完成”以创建新的 Android 应用程序。
 
@@ -112,7 +112,7 @@ ms.locfileid: "79536983"
 
     ![Azure 通知中心 - 百度 SDK Libs](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
-7. 在项目的 `libs` 文件夹中，右键单击 `pushervice-x.y.z.jar` 文件，选择“作为库添加”，以便将此库包括在项目中。****
+7. 在项目的 `libs` 文件夹中，右键单击 `pushervice-x.y.z.jar` 文件，选择“作为库添加”，以便将此库包括在项目中。 
 
     ![Azure 通知中心 - 百度“添加为库”](./media/notification-hubs-baidu-get-started/BaiduAddAsALib.jpg)
 
@@ -413,7 +413,7 @@ ms.locfileid: "79536983"
 
 ## <a name="send-notifications-to-your-app"></a>向应用程序发送通知
 
-可以在 [Azure 门户]中快速测试通知接收情况：使用通知中心配置屏幕中的“发送”**** 按钮，如以下屏幕所示：
+可以在 [Azure 门户]中快速测试通知接收情况：使用通知中心配置屏幕中的“发送”  按钮，如以下屏幕所示：
 
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
@@ -432,13 +432,13 @@ ms.locfileid: "79536983"
 
 ## <a name="optional-send-notifications-from-a-net-console-app"></a>（可选）通过 .NET 控制台应用发送通知。
 
-在本部分，我们将演示如何使用 .NET 控制台应用发送通知。
+在本部分，我们演示如何使用 .NET 控制台应用发送通知。
 
 1. 创建新的 Visual C# 控制台应用程序：
 
     ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
-2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：****
+2. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，并在控制台窗口中执行以下命令： 
 
     ```shell
     Install-Package Microsoft.Azure.NotificationHubs
@@ -472,11 +472,11 @@ ms.locfileid: "79536983"
     Console.ReadLine();
     ```
 
-## <a name="test-your-app"></a>测试应用
+## <a name="test-your-app"></a>测试应用程序
 
-要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到计算机。 此操作会将应用加载到连接的手机中。
+要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到你的计算机。 此操作会将应用加载到连接的手机中。
 
-若要使用模拟器测试此应用，请在 Android Studio 顶部工具栏中单击“运行”，然后选择用于启动模拟器、加载和运行应用的应用。****
+若要使用模拟器测试此应用，请在 Android Studio 顶部工具栏中单击“运行”，然后选择用于启动模拟器、加载和运行应用的应用。 
 
 该应用将从百度推送通知服务检索 `userId` 和 `channelId`，并注册到通知中心。
 

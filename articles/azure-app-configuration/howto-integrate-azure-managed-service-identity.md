@@ -8,10 +8,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80056839"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
@@ -33,12 +33,12 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 > * 配置应用以在连接到应用程序配置时使用托管标识。
 > * （可选）将应用配置为在通过应用配置 Key Vault 引用连接到 Key Vault 时使用托管标识。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，必须满足以下先决条件：
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
-* [已配置的 Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
+* [Azure Cloud Shell 配置](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -60,7 +60,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 1. 在[Azure 门户](https://portal.azure.com)中，选择 "**所有资源**"，并选择在快速入门中创建的应用配置存储。
 
-1. 选择 "**访问控制（IAM）**"。
+1. 选择“访问控制 (IAM)”。
 
 1. 在“检查访问权限”选项卡中，选择“添加角色分配”卡 UI 中的“添加”************。
 
@@ -68,7 +68,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 1. 在“订阅”下，选择 Azure 订阅****。 选择应用的应用服务资源。
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
     ![添加托管标识](./media/add-managed-identity.png)
 
@@ -84,7 +84,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 1. 查找应用配置存储的终结点。 此 URL 在 Azure 门户中存储的 "**访问密钥**" 选项卡上列出。
 
-1. 打开“appsettings.json”，并添加以下脚本**。 将* \<service_endpoint>*（包括括号）替换为应用配置存储的 URL。 
+1. 打开“appsettings.json”，并添加以下脚本**。 将 *\<service_endpoint>* URL 替换为你的应用配置存储的 URL，包括括号。 
 
     ```json
     "AppConfig": {
@@ -92,13 +92,13 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
     }
     ```
 
-1. 打开*Program.cs*，并添加对和`Azure.Identity` `Microsoft.Azure.Services.AppAuthentication`命名空间的引用：
+1. 打开*Program.cs*，并添加对 `Azure.Identity` 和 `Microsoft.Azure.Services.AppAuthentication` 命名空间的引用：
 
     ```csharp-interactive
     using Azure.Identity;
     ```
 
-1. 如果只希望访问直接存储在应用程序配置中的值，请`CreateWebHostBuilder`通过替换`config.AddAzureAppConfiguration()`方法来更新方法。
+1. 如果只希望访问直接存储在应用程序配置中的值，请 `CreateWebHostBuilder` 通过替换方法来更新方法 `config.AddAzureAppConfiguration()` 。
 
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
@@ -133,7 +133,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
     ```
     ---
 
-1. 若要同时使用应用配置值和 Key Vault 引用，请按如下所示更新*Program.cs* 。 此代码使用创建一个`KeyVaultClient`新的`AzureServiceTokenProvider` ，并将此引用传递给对`UseAzureKeyVault`方法的调用。
+1. 若要同时使用应用配置值和 Key Vault 引用，请按如下所示更新*Program.cs* 。 此代码使用创建一个新的 `KeyVaultClient` `AzureServiceTokenProvider` ，并将此引用传递给对方法的调用 `UseAzureKeyVault` 。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -181,7 +181,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
     ```
     ---
 
-    你现在可以像访问任何其他应用配置键一样访问 Key Vault 引用。 配置提供程序将使用你`KeyVaultClient`配置的进行身份验证，以便 Key Vault 和检索值。
+    你现在可以像访问任何其他应用配置键一样访问 Key Vault 引用。 配置提供程序将使用 `KeyVaultClient` 你配置的进行身份验证，以便 Key Vault 和检索值。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -202,7 +202,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在[`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) Cloud Shell 中运行。
+若要使用 Kudu 生成服务器为应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -218,13 +218,13 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>部署项目
 
-在_本地终端窗口_中，将 Azure 远程计算机添加到本地 Git 存储库。 将_ \<url>_ 替换为你从使用[Kudu 启用本地 git](#enable-local-git-with-kudu)中获取的 Git 远程 url。
+在_本地终端窗口_中，将 Azure 远程计算机添加到本地 Git 存储库。 _\<url>_ 将替换为你从[启用使用 Kudu 的本地 git](#enable-local-git-with-kudu)中获取的 Git 远程 URL。
 
 ```bash
 git remote add azure <url>
 ```
 
-使用以下命令推送到 Azure 远程功能以部署应用。 当系统提示输入密码时，请输入你在[配置部署用户](#configure-a-deployment-user)中创建的密码。 请勿使用用于登录 Azure 门户的密码。
+使用以下命令推送到 Azure 远程库以部署应用。 当系统提示输入密码时，请输入你在[配置部署用户](#configure-a-deployment-user)中创建的密码。 请勿使用用于登录 Azure 门户的密码。
 
 ```bash
 git push azure master
@@ -244,7 +244,7 @@ http://<app_name>.azurewebsites.net
 
 适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 配置其中一个提供程序时，可以使用存储的 URL 终结点，而不是其完整的连接字符串。 
 
-例如，你可以更新在快速入门中创建的 .NET Framework 控制台应用程序，以在*app.config*文件中指定以下设置：
+例如，可以更新在快速入门中创建的 .NET Framework 控制台应用程序，以在*App.config*文件中指定以下设置：
 
 ```xml
     <configSections>

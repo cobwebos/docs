@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128166"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>在 Azure 上使用 T-SQL 和 Python 的 SQL 数据仓库数据科学演练
@@ -27,11 +27,11 @@ ms.locfileid: "80128166"
 
 ## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>在 SQL 数据仓库中使用 T-SQL 和 IPython 笔记本预测出租车小费
 
-[使用 Sql 数据仓库演练](sqldw-walkthrough.md)展示了如何使用 Sql 数据仓库（sql DW）生成和部署机器学习分类和回归模型。  数据是公开提供的 NYC 出租车行程和费用数据集。
+[“使用 SQL 数据仓库”演练](sqldw-walkthrough.md)展示如何使用 SQL 数据仓库 (SQL DW) 生成和部署机器学习分类模型以及回归模型。  所用数据是公开提供的纽约市出租车行程和费用数据集。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 有关构成 Team Data Science Process 的关键组件的讨论，请参阅 [Team Data Science Process 概述](overview.md)。
 
-有关团队数据科学过程生命周期的讨论，请参阅[团队数据科学过程生命周期](lifecycle.md)。 此生命周期概述了在执行项目时通常遵循的步骤。 
+有关 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 此生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 

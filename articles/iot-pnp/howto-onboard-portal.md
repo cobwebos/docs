@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/26/2019
 ms.author: philmea
 ms.openlocfilehash: 4969c4f10787fa9b2d601d5b12edf823d1987301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159126"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>载入到 Azure IoT 认证门户

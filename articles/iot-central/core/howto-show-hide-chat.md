@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: a8e93ea12f176a4b28f14f5878cc580873d3c7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80157698"
 ---
 # <a name="toggle-live-chat"></a>切换实时聊天
@@ -34,13 +34,13 @@ ms.locfileid: "80157698"
 
 ## <a name="hide-chat"></a>隐藏聊天
 
-若要隐藏聊天，请在“帮助”  面板中选择“隐藏聊天”  ：
+若要隐藏聊天，请在“帮助”面板中选择“隐藏聊天”：
 
  ![隐藏聊天](media/howto-show-hide-chat/hide-chat.png)
 
 ## <a name="enable-chat"></a>启用聊天
 
-若要显示聊天，请在“帮助”  面板中选择“显示聊天”  ：
+若要显示聊天，请在“帮助”面板中选择“显示聊天”：
 
  ![显示聊天](media/howto-show-hide-chat/show-chat.png)
 

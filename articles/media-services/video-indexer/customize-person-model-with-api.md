@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: anzaman
 ms.openlocfilehash: fa41fca7f8ad96cf507aa6f04059b1254c8c3961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80127895"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义人员模型
@@ -75,7 +75,7 @@ ms.locfileid: "80127895"
 ]
 ```
 
-在[上传视频以对视频进行索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或重新索引时，可以`id`通过使用`personModelId`参数的 Person 模型值选择要用于视频的模型。 [reindexing a video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)
+在 `id` `personModelId` [上传视频以对视频进行索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或重新索引时[reindexing a video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)，可以通过使用参数的 Person 模型值选择要用于视频的模型。
 
 ## <a name="update-a-face"></a>更新人脸
 
@@ -87,7 +87,7 @@ ms.locfileid: "80127895"
 
 若要更新图符，请使用[更新视频人脸](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?)API。
 
-名称对于人员模型是唯一的，因此，如果您在同一人员模型中为同一`name`参数值提供两个不同的人脸，则 "视频索引器" 将以相同的方式查看人脸并在对视频重新建立索引后将其聚合起来。
+名称对于人员模型是唯一的，因此，如果您在同一人员模型中为同一参数值提供两个不同的人脸，则 " `name` 视频索引器" 将以相同的方式查看人脸并在对视频重新建立索引后将其聚合起来。
 
 ## <a name="next-steps"></a>后续步骤
 

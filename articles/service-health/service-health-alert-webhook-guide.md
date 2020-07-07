@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
 ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80062861"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>使用 Webhook 为问题管理系统配置运行状况通知
@@ -46,7 +46,7 @@ ms.locfileid: "80062861"
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>针对事件创建服务运行状况仪表板的链接
 通过生成专用 URL，可在桌面或移动设备上创建服务运行状况仪表板的直接链接。 使用 *trackingId* 以及采用以下格式的 *subscriptionId* 的前三个和最后三个数字：
 
-https<i></i>：//*&lt;app.azure.com/h/&gt;trackingId*/*&lt;&gt;订阅的前三位和后三位*
+https：/ <i></i> /app.azure.com/h/* &lt; &gt; trackingId* / * &lt; 订阅 &gt; 的前三位和后三位*
 
 例如，如果 *subscriptionId* 为 bba14129-e895-429b-8809-278e836ecdb3，*trackingId* 为 0DET-URB，则服务运行状况 URL 为：
 
@@ -96,7 +96,7 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="test-your-webhook-integration-via-an-http-post-request"></a>通过 HTTP POST 请求测试 Webhook 集成
 
-执行以下步骤:
+执行以下步骤：
 
 1. 创建要发送的服务运行状况有效负载。 查看 [Azure 活动日志警报的 Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md) 中的示例服务运行状况 Webhook 有效负载。
 
@@ -116,4 +116,4 @@ https<i></i>://app.azure.com/h/0DET-URB/bbadb3
 ## <a name="next-steps"></a>后续步骤
 - 查看[活动日志警报 webhook 架构](../azure-monitor/platform/activity-log-alerts-webhook.md)。 
 - 了解[服务运行状况通知](../azure-monitor/platform/service-notifications.md)。
-- 了解有关[操作组](../azure-monitor/platform/action-groups.md)的详细信息。
+- 详细了解[操作组](../azure-monitor/platform/action-groups.md)。

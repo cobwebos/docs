@@ -14,10 +14,10 @@ caps.latest.revision: 55
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79534365"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure 云服务定义 WorkerRole 架构
@@ -98,7 +98,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [LocalStorage](#LocalStorage)
 
-[终结点](#Endpoints)
+[Endpoints](#Endpoints)
 
 [InputEndpoint](#InputEndpoint)
 
@@ -114,9 +114,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [证书](#Certificates)
 
-[Certificate](#Certificate)
+[证书](#Certificate)
 
-[导](#Imports)
+[导入](#Imports)
 
 [导入](#Import)
 
@@ -124,7 +124,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [环境](#Environment)
 
-[入口](#EntryPoint)
+[EntryPoint](#EntryPoint)
 
 [NetFxEntryPoint](#NetFxEntryPoint)
 
@@ -136,9 +136,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [启动](#Startup)
 
-[任务](#Task)
+[Task](#Task)
 
-[目录](#Contents)
+[Contents](#Contents)
 
 [内容](#Content)
 
@@ -172,7 +172,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 ##  <a name="localresources"></a><a name="LocalResources"></a>LocalResources
 `LocalResources` 元素描述辅助角色的本地存储资源集。 此元素是 `LocalStorage` 元素的父级。
 
-##  <a name="localstorage"></a><a name="LocalStorage"></a> LocalStorage
+##  <a name="localstorage"></a><a name="LocalStorage"></a>LocalStorage
 `LocalStorage` 元素标识用于在运行时为服务提供文件系统空间的本地存储资源。 一个角色可以定义零个或多个本地存储资源。
 
 > [!NOTE]
@@ -183,12 +183,12 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
 |name|字符串|必需。 本地存储的唯一名称。|
-|cleanOnRoleRecycle|布尔值|可选。 指示重启角色时是否应清理本地存储。 默认值是 `true`。|
+|cleanOnRoleRecycle|布尔值|可选。 指示重启角色时是否应清理本地存储。 默认值为 `true`。|
 |sizeInMb|int|可选。 需要为本地存储分配的存储空间量，以 MB 为单位。 如果未指定，则分配的默认存储空间为 100 MB。 可分配的最小存储空间量为 1 MB。<br /><br /> 最大的本地资源大小取决于虚拟机大小。 有关详细信息，请参阅[云服务的虚拟机大小](cloud-services-sizes-specs.md)。|
 
 分配给本地存储资源的目录的名称对应于为名称属性提供的值。
 
-##  <a name="endpoints"></a><a name="Endpoints"></a>终结点
+##  <a name="endpoints"></a><a name="Endpoints"></a> 终结点
 `Endpoints` 元素描述角色的输入（外部）、内部和实例输入终结点的集合。 此元素是 `InputEndpoint`、`InternalEndpoint` 和 `InstanceInputEndpoint` 元素的父级。
 
 输入和内部终结点是单独分配的。 一个服务可共有 25 个输入、内部和实例输入终结点，这些终结点可在一个服务中允许存在的 25 个角色间分配。 例如，如果有 5 个角色，则可以向每个角色分配 5 个输入终结点，或者向一个角色分配 25 个输入终结点，或者可以向 25 个角色中的每个角色分配 1 个输入终结点。
@@ -235,7 +235,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |name|字符串|必需。 终结点的唯一名称。|
 |localPort|int|必需。 指定需要所有角色实例均对其侦听才能接收负载均衡器转发的传入流量的内部端口。 可能的值介于 1 和 65535（含）之间。|
-|protocol|字符串|必需。 内部终结点的传输协议。 可能的值为 `udp` 或 `tcp`。 将 `tcp` 用于基于 http/https 的流量。|
+|protocol|字符串|必需。 内部终结点的传输协议。 可能的值包括 `udp` 或 `tcp`。 将 `tcp` 用于基于 http/https 的流量。|
 
 ##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a>AllocatePublicPortFrom
 `AllocatePublicPortFrom` 元素描述可供外部客户用来访问每个实例输入终结点的公共端口范围。 公共 (VIP) 端口号在此范围中分配，并在租户部署和更新过程中分配给每个单独的角色实例终结点。 此元素是 `FixedPortRange` 元素的父级。
@@ -265,10 +265,10 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|min|int|必需。 范围内的最小端口。 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
+|分钟|int|必需。 范围内的最小端口。 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
 |max|字符串|必需。 范围内的最大端口。 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
 
-##  <a name="certificates"></a><a name="Certificates"></a>礼券
+##  <a name="certificates"></a><a name="Certificates"></a>证书
 `Certificates` 元素描述辅助角色的证书集。 此元素是 `Certificate` 元素的父级。 一个角色可以包含任意数目的关联证书。 有关使用 certificates 元素的详细信息，请参阅[使用证书修改服务定义文件](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files)。
 
 ##  <a name="certificate"></a><a name="Certificate"></a>证书
@@ -281,7 +281,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 |name|字符串|必需。 此证书的名称，用于与 HTTPS `InputEndpoint` 元素关联时进行引用。|
 |storeLocation|字符串|必需。 本地计算机上的证书存储位置，可在其中找到此证书。 可能值为 `CurrentUser` 和 `LocalMachine`。|
 |storeName|字符串|必需。 本地计算机上此证书所在的证书存储的名称。 可能的值包括内置存储名称 `My`、`Root`、`CA`、`Trust`、`Disallowed`、`TrustedPeople`、`TrustedPublisher`、`AuthRoot`、`AddressBook`，或任何自定义存储名称。 如果指定了自定义存储名称，则会自动创建存储。|
-|permissionLevel|字符串|可选。 指定授予角色进程的访问权限。 如果只希望提升的进程访问私钥，则指定 `elevated` 权限。 `limitedOrElevated` 权限允许所有角色进程访问私钥。 可能的值为 `limitedOrElevated` 或 `elevated`。 默认值为 `limitedOrElevated`。|
+|permissionLevel|字符串|可选。 指定授予角色进程的访问权限。 如果只希望提升的进程访问私钥，则指定 `elevated` 权限。 `limitedOrElevated` 权限允许所有角色进程访问私钥。 可能的值包括 `limitedOrElevated` 或 `elevated`。 默认值为 `limitedOrElevated`。|
 
 ##  <a name="imports"></a><a name="Imports"></a>导
 `Imports` 元素描述辅助角色的导入模块集，它会向来宾操作系统添加组件。 此元素是 `Import` 元素的父级。 此元素是可选的，一个角色只能有一个运行时块。
@@ -323,9 +323,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
 |name|字符串|必需。 要设置的环境变量的名称。|
-|值|字符串|可选。 要为环境变量设置的值。 必须包含 value 属性或 `RoleInstanceValue` 元素。|
+|value|string|可选。 要为环境变量设置的值。 必须包含 value 属性或 `RoleInstanceValue` 元素。|
 
-##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a> RoleInstanceValue
+##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a>RoleInstanceValue
 `RoleInstanceValue` 元素指定要从其中检索变量值的 xPath。
 
 下表介绍了 `RoleInstanceValue` 元素的属性。
@@ -334,7 +334,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |xpath|字符串|可选。 实例的部署设置的位置路径。 有关详细信息，请参阅[带有 XPath 的配置变量](cloud-services-role-config-xpath.md)。<br /><br /> 必须包含 value 属性或 `RoleInstanceValue` 元素。|
 
-##  <a name="entrypoint"></a><a name="EntryPoint"></a> EntryPoint
+##  <a name="entrypoint"></a><a name="EntryPoint"></a>入口
 `EntryPoint` 元素指定角色的入口点。 此元素是 `NetFxEntryPoint` 元素的父级。 借助这些元素，可以指定默认 WaWorkerHost.exe 以外的应用程序充当角色入口点。
 
 仅当使用 Azure SDK 1.5 或更高版本时，才提供 `EntryPoint` 元素。
@@ -349,8 +349,8 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|assemblyName|字符串|必需。 包含入口点的程序集的路径和文件名称。 路径相对于文件夹** \\%ROLEROOT%\Approot** （请勿在中`commandLine`指定** \\%ROLEROOT%\Approot** ，它是假定的）。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 %ROLEROOT%\Approot 文件夹表示角色的应用程序文件夹。 ** \\**|
-|targetFrameworkVersion|字符串|必需。 在其上生成程序集的 .NET Framework 的版本。 例如，`targetFrameworkVersion="v4.0"` 。|
+|assemblyName|字符串|必需。 包含入口点的程序集的路径和文件名称。 路径相对于文件夹** \\ %ROLEROOT%\Approot** （请勿在中指定** \\ %ROLEROOT%\Approot** `commandLine` ，它是假定的）。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 ** \\ %ROLEROOT%\Approot**文件夹表示角色的应用程序文件夹。|
+|targetFrameworkVersion|字符串|必需。 在其上生成程序集的 .NET Framework 的版本。 例如，`targetFrameworkVersion="v4.0"`。|
 
 ##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a>ProgramEntryPoint
 `ProgramEntryPoint` 元素指定要为角色运行的程序。 `ProgramEntryPoint` 元素允许你指定不基于 .NET 程序集的程序入口点。
@@ -387,12 +387,12 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 |executionContext|字符串|指定在其中运行脚本的上下文。<br /><br /> -   `limited` [默认] – 使用与托管进程的角色相同的特权运行。<br />-   `elevated` – 使用管理员特权运行。|
 |taskType|字符串|指定命令的执行行为。<br /><br /> -   `simple` [默认] – 系统等待任务退出，然后再启动其他所有任务。<br />-   `background` – 系统不会等待任务退出。<br />-   `foreground` – 与后台相似，但所有前台任务全部退出之前，不会重启角色。|
 
-##  <a name="contents"></a><a name="Contents"></a>目录
+##  <a name="contents"></a><a name="Contents"></a> 内容
 `Contents` 元素描述辅助角色的内容集。 此元素是 `Content` 元素的父级。
 
 仅当使用 Azure SDK 1.5 或更高版本时，才提供 `Contents` 元素。
 
-##  <a name="content"></a><a name="Content"></a>Content
+##  <a name="content"></a><a name="Content"></a>内容
 `Content` 元素定义要复制到 Azure 虚拟机的内容的源位置，以及要复制到的目标路径。
 
 仅当使用 Azure SDK 1.5 或更高版本时，才提供 `Content` 元素。

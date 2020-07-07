@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 NGINX 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155441"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自定义 NGINX 入口控制器并配置 HTTPS
@@ -47,7 +47,7 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-为 NGINX 入口控制器创建 Kubernetes 命名空间，并使用`helm`安装它。
+为 NGINX 入口控制器创建 Kubernetes 命名空间，并使用安装它 `helm` 。
 
 ```console
 kubectl create ns nginx
@@ -55,7 +55,7 @@ helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
 
 > [!NOTE]
-> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set controller。helm install 命令的 kubernetes\\/azure-load--internal "= true 参数。\\\\* *helm install* 例如：
+> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set controller。helm install 命令的 \\ \\ kubernetes \\ /azure-load--internal "= true*参数。 *helm install* 例如：
 > ```console
 > helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
 > ```
@@ -77,7 +77,7 @@ nginx-nginx-ingress-default-backend   ClusterIP      10.0.210.231   <none>      
 nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_IP   80:31314/TCP,443:30521/TCP   26s
 ```
 
-使用[az network DNS record][az-network-dns-record-set-a-add-record]将*a*记录添加到 DNS 区域，使用 NGINX 服务的外部 IP 地址，并设置添加记录。
+使用 [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] 将 *A* 记录添加到使用 NGINX 服务的外部 IP 地址的 DNS 区域。
 
 ```azurecli
 az network dns record-set a add-record \
@@ -100,7 +100,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 * 将 *<REPLACE_ME_WITH_HOST_SUFFIX>* 的所有实例替换为*nginx。MY_CUSTOM_DOMAIN*使用域进行*MY_CUSTOM_DOMAIN*。 
 * 替换*kubernetes.io/ingress.class： traefik-azds # Dev Spaces-特定于* *kubernetes.io/ingress.class： Nginx # 自定义入口*。 
 
-下面是已更新`values.yaml`文件的示例：
+下面是已更新文件的示例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -123,13 +123,13 @@ gateway:
 
 保存更改并关闭该文件。
 
-使用`azds space select`创建使用的示例应用程序的*开发*环境。
+使用创建使用的示例应用程序的*开发*环境 `azds space select` 。
 
 ```console
 azds space select -n dev -y
 ```
 
-使用`helm install`部署示例应用程序。
+使用部署示例应用程序 `helm install` 。
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -137,13 +137,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 上面的示例将示例应用程序部署到*dev*命名空间。
 
-显示使用`azds list-uris`访问示例应用程序的 url。
+显示使用访问示例应用程序的 Url `azds list-uris` 。
 
 ```console
 azds list-uris
 ```
 
-下面的输出显示了来自`azds list-uris`的示例 url。
+下面的输出显示了来自的示例 Url `azds list-uris` 。
 
 ```console
 Uri                                                  Status
@@ -157,14 +157,14 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 > [!NOTE]
 > 如果看到错误页面而不是*bikesharingweb*服务，请验证是否已在*yaml*文件**中更新** *kubernetes.io/ingress.class*批注和主机。
 
-使用`azds space select`命令在 "*开发*" 下创建子空间，并列出用于访问子开发人员空间的 url。
+使用 `azds space select` 命令在 "*开发*" 下创建子空间，并列出用于访问子开发人员空间的 url。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-以下输出显示了中`azds list-uris`的示例 url，可用于访问*azureuser1*子开发人员空间中的示例应用程序。
+以下输出显示了中的示例 Url `azds list-uris` ，可用于访问*azureuser1*子开发人员空间中的示例应用程序。
 
 ```console
 Uri                                                  Status
@@ -173,11 +173,11 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-通过从`azds list-uris`命令中打开公共 URL，导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务。 在上面的示例中， *azureuser1*子开发人员空间中`http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` *bikesharingweb*服务的公共 URL 是。
+通过从命令中打开公共 URL，导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务 `azds list-uris` 。 在上面的示例中， *azureuser1*子开发人员空间中*bikesharingweb*服务的公共 URL 是 `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` 。
 
 ## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>将 NGINX 入口控制器配置为使用 HTTPS
 
-将 NGINX 入口控制器配置为使用 HTTPS 时，请使用[证书管理器][cert-manager]自动管理 TLS 证书。 使用`helm`安装*certmanager*图表。
+将 NGINX 入口控制器配置为使用 HTTPS 时，请使用[证书管理器][cert-manager]自动管理 TLS 证书。 使用 `helm` 安装*certmanager*图表。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace nginx
@@ -187,7 +187,7 @@ helm repo update
 helm install cert-manager --namespace nginx --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-创建一个`letsencrypt-clusterissuer.yaml`文件，并使用您的电子邮件地址更新 "电子邮件" 字段。
+创建一个 `letsencrypt-clusterissuer.yaml` 文件，并使用您的电子邮件地址更新 "电子邮件" 字段。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -209,13 +209,13 @@ spec:
 > [!NOTE]
 > 对于测试，还有一个可用于*ClusterIssuer*的[过渡服务器][letsencrypt-staging-issuer]。
 
-使用`kubectl`应用`letsencrypt-clusterissuer.yaml`。
+使用 `kubectl` 应用 `letsencrypt-clusterissuer.yaml` 。
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-将[yaml][values-yaml]更新为包含使用*证书管理器*和 HTTPS 的详细信息。 下面是已更新`values.yaml`文件的示例：
+将[yaml][values-yaml]更新为包含使用*证书管理器*和 HTTPS 的详细信息。 下面是已更新文件的示例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -246,7 +246,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-使用`helm`以下内容升级示例应用程序：
+使用以下内容升级示例应用程序 `helm` ：
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -276,7 +276,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-使用*url*包的依赖项更新[BikeSharingWeb/package。][package-json]
+使用*url*包的依赖项更新[上的 BikeSharingWeb/package.js][package-json] 。
 
 ```json
 {
@@ -288,7 +288,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-将[BikeSharingWeb/lib/][helpers-js] *getApiHostAsync*中的方法更新为使用 HTTPS：
+更新[BikeSharingWeb/lib/helpers.js][helpers-js]中的*getApiHostAsync*方法，以使用 HTTPS：
 
 ```javascript
 ...
@@ -305,7 +305,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUS
 ...
 ```
 
-导航到`BikeSharingWeb`目录并使用`azds up`运行更新后的*BikeSharingWeb*服务。
+导航到 `BikeSharingWeb` 目录并使用 `azds up` 运行更新后的*BikeSharingWeb*服务。
 
 ```console
 cd ../BikeSharingWeb/

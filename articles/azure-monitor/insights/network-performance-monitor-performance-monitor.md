@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80055688"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
@@ -57,7 +57,7 @@ ms.locfileid: "80055688"
 
 若要创建自定义监视规则，请执行以下操作：
 
-1. 在“监视器”  选项卡中，选择“添加规则”  ，并输入规则名称和说明。
+1. 在“监视器”选项卡中，选择“添加规则”，并输入规则名称和说明。
 2. 从列表中选择要监视的网络或子网链接对。 
 3. 从网络下拉列表中选择包含所需子网的网络。 然后从相应的子网下拉列表中选择子网。 若要监视网络链接中的所有子网，请选择“所有子网”  。 同样，选择其他所需的子网。 若要从已选项中排除对特定子网链接的监视，请选择“添加例外”  。 
 4. 选择 ICMP 或 TCP 协议用于执行综合事务。 

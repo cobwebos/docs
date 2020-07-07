@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245270"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何为高级 Azure Redis 缓存配置数据暂留
@@ -57,7 +57,7 @@ Azure Redis 缓存使用以下模型提供 Redis 暂留：
 
 若要配置备份间隔，请从下拉列表选择“备份频率”  。 选项包括“15 分钟”  、“30 分钟”  、“60 分钟”  、“6 小时”  、“12 小时”  和“24 小时”  。 在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
 
-单击“存储帐户”  以选择要使用的存储帐户，并从“存储密钥”  下拉列表中选择要使用的“主密钥”  或“辅助密钥”  。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”  帐户，因为高级存储的吞吐量较高。 
+单击“存储帐户”以选择要使用的存储帐户，并从“存储密钥”下拉列表中选择要使用的“主密钥”或“辅助密钥”。 必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”  帐户，因为高级存储的吞吐量较高。 
 
 > [!IMPORTANT]
 > 如果重新生成了暂留帐户的存储密钥，必须从“存储密钥”  下拉列表中重新配置所需密钥。

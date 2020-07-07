@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80158140"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
@@ -34,7 +34,7 @@ ms.locfileid: "80158140"
 
 完成本操作方法指南中的步骤需要有效的 Azure 订阅。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ### <a name="iot-central-application"></a>IoT Central 应用程序
 
@@ -136,7 +136,7 @@ ms.locfileid: "80158140"
 
     ![创建 SendGrid API 密钥](media/howto-create-custom-rules/sendgrid-api-keys.png)
 
-1. 在“创建 API 密钥”页上，创建拥有“完全访问权限”的名为 **AzureFunctionAccess** 的密钥。  
+1. 在“创建 API 密钥”页上，创建拥有“完全访问权限”的名为 **AzureFunctionAccess** 的密钥。 
 1. 请记下该 API 密钥，因为在配置函数应用时需要用到。
 
 ## <a name="define-the-function"></a>定义函数

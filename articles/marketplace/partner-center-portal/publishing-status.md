@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80275673"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>检查你的商业应用商店产品/服务的发布状态
@@ -22,11 +22,11 @@ ms.locfileid: "80275673"
 
 | **状态**    | **说明**  |
 | :---------- | :-------------------|
-| **Draft** | 已创建产品/服务，但未发布该产品/服务。 |
+| **草稿** | 已创建产品/服务，但未发布该产品/服务。 |
 | **发布正在进行** | 产品/计划正在执行发布过程的步骤。 |
 | **需要注意** | Microsoft 或任何发布步骤在认证期间发现了严重问题。 |
 | **预览** | 产品/服务已通过 Microsoft 认证，现在等待发布者最终验证。 选择 "上线" 以激活产品/服务。 |
-| **推出** | 产品/服务在 marketplace 中推出，可供客户使用。 |
+| **直播** | 产品/服务在 marketplace 中推出，可供客户使用。 |
 | **等待停止销售** | 发布者选择了 "停止销售" 产品/服务或计划，但该操作尚未完成。 |
 | **在 marketplace 中不可用** | 已删除 marketplace 中以前发布的产品/计划。 |
 

@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
 ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80125088"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool 发行版
@@ -38,11 +38,11 @@ Microsoft Threat Modeling Tool 目前作为免费的[单击下载](https://aka.m
 
 ## <a name="release-notes"></a>发行说明
 
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.3.00316.1](threat-modeling-tool-releases-73003161.md) -22 2020 年3月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.3.00206.1](threat-modeling-tool-releases-73002061.md) -11 2020 年2月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.1.61015.1](threat-modeling-tool-releases-71610151.md) -16 2019 年10月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.1.60702.1](threat-modeling-tool-releases-71607021.md) -2 2019 年7月
-- [MICROSOFT THREAT MODELING TOOL GA 版本 7.1.60408.1](threat-modeling-tool-releases-71604081.md) -9 2019 年4月
+- [Microsoft Threat Modeling Tool 正式发行版 7.3.00316.1](threat-modeling-tool-releases-73003161.md) - 2020 年 3 月 22 日
+- [Microsoft Threat Modeling Tool 正式发行版 7.3.00206.1](threat-modeling-tool-releases-73002061.md) - 2020 年 2 月 11 日
+- [Microsoft Threat Modeling Tool 正式发行版 7.1.61015.1](threat-modeling-tool-releases-71610151.md) - 2019 年 10 月 16 日
+- [Microsoft Threat Modeling Tool 正式发行版 7.1.60702.1](threat-modeling-tool-releases-71607021.md) - 2019 年 7 月 2 日
+- [Microsoft Threat Modeling Tool 正式发行版 7.1.60408.1](threat-modeling-tool-releases-71604081.md) - 2019 年 4 月 9 日
 - [Microsoft Threat Modeling Tool 正式发行版 7.1.60126.1](threat-modeling-tool-releases-71601261.md) - 2019 年 1 月 29 日
 - [Microsoft Threat Modeling Tool 正式发行版 7.1.51023.1](threat-modeling-tool-releases-71510231.md) - 2018 年 11 月 1 日
 - [Microsoft Threat Modeling Tool 正式发行版 7.1.50911.2](threat-modeling-tool-releases-71509112.md) - 2018 年 9 月 12 日

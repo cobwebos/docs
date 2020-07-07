@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80128072"
 ---
 # <a name="stream-content-with-cdn-integration"></a>通过 CDN 集成流式传输内容
@@ -35,7 +35,7 @@ CDN 按每个编解码器、每个流式处理协议、每比特率、每个容�
 
 ## <a name="considerations"></a>注意事项
 
-* 无论是否启用 CDN，[流式处理终结点](streaming-endpoint-concept.md) `hostname`和流 URL 都是相同的。
+* 无论是否启用 CDN，[流式处理终结点](streaming-endpoint-concept.md) `hostname` 和流 URL 都是相同的。
 * 如果你需要能够通过或不通过 CDN 来测试你的内容，请创建另一个不启用 CDN 的流式处理终结点。
 
 ## <a name="enable-azure-cdn-integration"></a>启用 Azure CDN 集成
@@ -58,7 +58,7 @@ CDN 按每个编解码器、每个流式处理协议、每比特率、每个容�
 
 ## <a name="determine-if-a-dns-change-was-made"></a>确定是否进行 DNS 更改
 
-你可以通过使用<https://www.digwebinterface.com>确定是否已在流式处理终结点（流量定向到 Azure CDN）上进行 DNS 更改。 如果在结果中看到 azureedge.net 的域名，则流量现在指向 CDN。
+你可以通过使用确定是否已在流式处理终结点（流量定向到 Azure CDN）上进行 DNS 更改 <https://www.digwebinterface.com> 。 如果在结果中看到 azureedge.net 的域名，则流量现在指向 CDN。
 
 ## <a name="origin-assist-cdn-prefetch"></a>源-协助 CDN-预提取
 
@@ -84,22 +84,22 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 ### <a name="how-it-works"></a>工作原理
 
-适用于`Origin-Assist CDN-Prefetch`标头的 CDN 支持（适用于实时和视频点播流式处理）适用于具有 Akamai CDN 直接协定的客户。 此功能涉及到 Akamai CDN 与媒体服务源之间的以下 HTTP 标头交换：
+适用于标头的 CDN 支持 `Origin-Assist CDN-Prefetch` （适用于实时和视频点播流式处理）适用于具有 AKAMAI CDN 直接协定的客户。 此功能涉及到 Akamai CDN 与媒体服务源之间的以下 HTTP 标头交换：
 
 |HTTP 标头|值|发送方|接收方|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1（默认值）或0 |CDN|源|指示 CDN 已启用预提取。|
-|`CDN-Origin-Assist-Prefetch-Path`| 例如： <br/>片段（视频 = 1400000000，格式 = mpd-cmaf）|源|CDN|提供 CDN 的预回迁路径。|
-|`CDN-Origin-Assist-Prefetch-Request`|1（预提取请求）或0（常规请求）|CDN|源|如果为，则指示 CDN 的请求是预提取。|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1（默认值）或 0 |CDN|源|指示 CDN 已启用预提取。|
+|`CDN-Origin-Assist-Prefetch-Path`| 示例： <br/>Fragments(video=1400000000,format=mpd-time-cmaf)|源|CDN|提供 CDN 的预回迁路径。|
+|`CDN-Origin-Assist-Prefetch-Request`|1（预提取请求）或 0（常规请求）|CDN|源|如果为，则指示 CDN 的请求是预提取。|
 
-若要查看标头交换的一部分，可以尝试执行以下步骤：
+若要查看标头交换部分的实际运行情况，可以尝试执行以下步骤：
 
-1. 使用 Postman 或卷向 Media Services 源发送音频或视频段或片段的请求。 请确保在请求中添加`CDN-Origin-Assist-Prefetch-Enabled: 1`标头。
-2. 在响应中，应会看到标头`CDN-Origin-Assist-Prefetch-Path`的相对路径作为其值。
+1. 使用 Postman 或卷向 Media Services 源发送音频或视频段或片段的请求。 请确保 `CDN-Origin-Assist-Prefetch-Enabled: 1` 在请求中添加标头。
+2. 在响应中，应会看到标头的 `CDN-Origin-Assist-Prefetch-Path` 相对路径作为其值。
 
 ### <a name="supported-streaming-protocols"></a>支持的流式处理协议
 
-此`Origin-Assist CDN-Prefetch`功能支持以下用于实时流式处理和按需流式处理的流式处理协议：
+此 `Origin-Assist CDN-Prefetch` 功能支持以下用于实时流式处理和按需流式处理的流式处理协议：
 
 * HLS v3
 * HLS v4
@@ -108,7 +108,7 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 * 短划线（CMAF）
 * 顺畅流式处理
 
-### <a name="faqs"></a>常见问题解答
+### <a name="faqs"></a>常见问题
 
 * 如果预提取路径 URL 无效以便 CDN 预提取获得404，会发生什么情况？
 
@@ -124,9 +124,9 @@ CDN 缓存是一种反应过程。 如果 CDN 能预测下一个对象将被请�
 
 * 对于实时流式处理，会发生什么情况—协助下一段或片段是否尚不可用？
 
-    在这种情况下，媒体服务源不`CDN-Origin-Assist-Prefetch-Path`会提供标头，且不会进行 CDN 预提取。
+    在这种情况下，媒体服务源不会提供 `CDN-Origin-Assist-Prefetch-Path` 标头，且不会进行 CDN 预提取。
 
-* `Origin-Assist CDN-Prefetch`如何使用动态清单筛选器？
+* 如何 `Origin-Assist CDN-Prefetch` 使用动态清单筛选器？
 
     此功能独立于清单筛选器。 当下一个片段不在筛选器窗口中时，通过查看原始客户端清单并将其作为 CDN 预提取响应标头返回，仍会找到其 URL。 因此，CDN 将获取从破折号/HLS/平滑清单筛选掉的片段的 URL。 不过，播放机将永远不会向 CDN 发出 GET 请求以提取该片段，因为在播放机持有的短划线/HLS/平滑清单中不包含该片段（播放机不知道该片段的存在）。
 

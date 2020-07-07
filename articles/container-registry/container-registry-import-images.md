@@ -4,10 +4,10 @@ description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中�
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80051923"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
@@ -34,7 +34,7 @@ Azure 容器注册表可灵活应对许多常见方案，以便从现有注册�
 > 如果需要在多个 Azure 区域中分布相同的容器映像，则 Azure 容器注册表还支持[异地复制](container-registry-geo-replication.md)。 通过异地复制注册表（需要高级服务层），可以为多个区域提供完全相同的映像名称和标记名称。
 >
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 容器注册表，请创建注册表。 有关步骤，请参阅[快速入门：使用 Azure CLI 创建专用容器注册表](container-registry-get-started-azure-cli.md)。
 
@@ -110,7 +110,7 @@ az acr import \
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>从不同订阅的注册表导入
 
-在下面的示例中，mysourceregistry 与 myregistry 处于同一 Active Directory 租户的不同订阅中****。 使用 `--registry` 参数提供源注册表的资源 ID。 请注意， `--source`参数仅指定源存储库和标记，而不指定注册表登录服务器名称。
+在下面的示例中，mysourceregistry 与 myregistry 处于同一 Active Directory 租户的不同订阅中****。 使用 `--registry` 参数提供源注册表的资源 ID。 请注意， `--source` 参数仅指定源存储库和标记，而不指定注册表登录服务器名称。
 
 ```azurecli
 az acr import \

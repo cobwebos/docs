@@ -10,10 +10,10 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79534739"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure 云服务配置架构（.cscfg 文件）
@@ -56,7 +56,7 @@ ms.locfileid: "79534739"
 
 下表介绍了 `ServiceConfiguration` 元素的属性。 所有属性值均为字符串类型。
 
-| 特性 | 描述 |
+| Attribute | 说明 |
 | --------- | ----------- |
 |serviceName|必需。 云服务的名称。 此处提供的名称需要匹配服务定义文件中指定的名称。|
 |osFamily|可选。 指定要在云服务的角色实例上运行的来宾 OS。 有关支持的来宾 OS 版本的信息，请参阅 [Azure 来宾 OS 版本和 SDK 兼容性对照表](cloud-services-guestos-update-matrix.md)。<br /><br /> 如果不包含 `osFamily` 值，并且未将 `osVersion` 属性设置为特定的来宾 OS 版本，将使用默认值 1。|
