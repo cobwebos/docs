@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 42247cc576e55c7c504e9832017af336439b11b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335556"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 
 可以通过 Azure 门户管理 Azure Maps 帐户。 获得帐户后，可以在你的网站或移动应用程序中实现 API。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前先创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-new-account"></a>创建新帐户
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 门户的左上角，选择“创建资源”****。
+2. 在 Azure 门户的左上角，选择“创建资源”  。
 
-3. 搜索并选择“Maps”****。 然后选择“创建”  。
+3. 搜索并选择“Maps”****。 然后选择“创建”。
 
 4. 输入新帐户的信息。
 

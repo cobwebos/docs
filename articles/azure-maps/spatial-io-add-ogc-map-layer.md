@@ -9,37 +9,37 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334288"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>从开放地理空间信息联盟添加地图层（OGC）
 
 `atlas.layer.OgcMapLayer`类可以覆盖地图上的 Web 地图服务（WMS）图像和 Web 地图磁贴服务（WMTS）图像。 WMS 是由 OGC 开发的一种标准协议，用于通过 internet 提供 georeferenced 地图图像。 Image georeferencing 是将映像关联到地理位置的过程。 WMTS 也是 OGC 开发的标准协议。 它旨在提供预呈现的地图磁贴和 georeferenced 地图图块。
 
-以下部分概述了`OgcMapLayer`类支持的 web 映射服务功能。
+以下部分概述了类支持的 web 映射服务功能 `OgcMapLayer` 。
 
 **Web 映射服务（WMS）**
 
-- 支持的版本`1.0.0`： `1.1.0`、 `1.1.1`、和`1.3.0`
-- 该服务必须支持`EPSG:3857`投影系统或处理 reprojections。
-- GetFeatureInfo 要求服务支持`EPSG:4326`或处理 reprojections。 
+- 支持的版本： `1.0.0` 、 `1.1.0` 、 `1.1.1` 和`1.3.0`
+- 该服务必须支持 `EPSG:3857` 投影系统或处理 reprojections。
+- GetFeatureInfo 要求服务支持 `EPSG:4326` 或处理 reprojections。 
 - 支持的操作：
 
     | | |
     | :-- | :-- |
     | GetCapabilities | 检索有关具有支持的功能的服务的元数据 |
     | GetMap | 检索指定区域的地图图像 |
-    | GetFeatureInfo | 检索`feature_info`，其中包含有关该功能的基本数据 |
+    | GetFeatureInfo | 检索 `feature_info` ，其中包含有关该功能的基本数据 |
 
 **Web 地图磁贴服务（WMTS）**
 
 - 支持的版本：`1.0.0`
-- 磁贴必须是正方形，这样`TileWidth == TileHeight`才能。
-- 支持 CRS： `EPSG:3857`或`GoogleMapsCompatible` 
-- TileMatrix 标识符必须是对应于地图上缩放级别的整数值。 在 azure 地图上，缩放级别是介于和`"0"` `"22"`之间的值。 因此， `"0"`支持，但`"00"`不受支持。
+- 磁贴必须是正方形，这样才能 `TileWidth == TileHeight` 。
+- 支持 CRS： `EPSG:3857` 或`GoogleMapsCompatible` 
+- TileMatrix 标识符必须是对应于地图上缩放级别的整数值。 在 azure 地图上，缩放级别是介于和之间的 `"0"` 值 `"22"` 。 因此， `"0"` 支持，但 `"00"` 不受支持。
 - 支持的操作：
 
     | | |
@@ -55,7 +55,7 @@ ms.locfileid: "80334288"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地图层示例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地图层示例</a>，按 CodePen 上<a href='https://codepen.io/azuremaps'>@azuremaps</a>的 Azure Maps <a href='https://codepen.io'>CodePen</a>（）。
+<iframe height='700' scrolling='no' title='OGC 地图层示例' src='//codepen.io/azuremaps/embed/xxGLZWB/?height=700&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io/azuremaps/pen/xxGLZWB/'>OGC 地图层示例</a>，按 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>上的 Azure Maps （）。
 </iframe>
 
 ## <a name="ogc-map-layer-options"></a>OGC 地图层选项
@@ -64,7 +64,7 @@ ms.locfileid: "80334288"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC 地图层选项' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地图层选项</a>Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>（）。
+<iframe height='700' scrolling='no' title='OGC 地图层选项' src='//codepen.io/azuremaps/embed/abOyEVQ/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/abOyEVQ/'>OGC 地图层选项</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="ogc-web-map-service-explorer"></a>OGC Web 映射服务资源管理器
@@ -73,7 +73,7 @@ ms.locfileid: "80334288"
 
 <br/>
 
-<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 映射服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 映射服务资源管理器</a>，按<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>上的 Azure Maps （）。
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 映射服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 映射服务资源管理器</a>，按 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>上的 Azure Maps （）。
 </iframe>
 
 你还可以指定要使用代理服务的映射设置。 代理服务允许你加载在未启用 CORS 的域上托管的资源。
@@ -91,7 +91,7 @@ ms.locfileid: "80334288"
 请参阅以下文章，其中包含可以添加到映射的代码示例：
 
 > [!div class="nextstepaction"]
-> [连接到 WF 服务](spatial-io-connect-wfs-service.md)
+> [连接到 WFS 服务](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
 > [利用核心操作](spatial-io-core-operations.md)

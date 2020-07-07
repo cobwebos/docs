@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
 ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298774"
 ---
 # <a name="az-spring-cloud"></a>az 春季-cloud
@@ -89,7 +89,7 @@ az spring-cloud create  --name -n
                         --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 此 Azure 春季 Cloud 实例的名称。 |
 | --resource-group -g | 指定此应用程序的资源组。  使用配置默认组`az configure --defaults group=<name>` |
@@ -117,7 +117,7 @@ az spring cloud --name -n
                 --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 要删除的 Azure 春季云实例的名称。 |
 | --resource-group -g | Azure 春季云中所属资源组的名称。 |
@@ -142,7 +142,7 @@ az spring-cloud delete -n MyService -g MyResourceGroup
 az spring-cloud list --resource-group -g
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --resource-group -g | 资源组的名称。 |
 
@@ -155,7 +155,7 @@ az spring-cloud show --name -n
                      -- resource-group -g
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | Azure 春季 Cloud 实例的名称。 |
 | --resource-group -g | Azure 春季 Cloud 实例所属的资源组的名称。
@@ -175,11 +175,11 @@ az spring-cloud app create --name -n
                             --memory
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -213,11 +213,11 @@ az spring cloud app delete  --name -n
                             --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-deploy"></a>az 春季-cloud app deploy
 
@@ -240,11 +240,11 @@ az spring cloud app deploy  --name -n
                             --version
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -253,10 +253,10 @@ az spring cloud app deploy  --name -n
 | --env | "键 [= 值]" 格式的以空格分隔的环境变量。 |
 | --instance-count | 实例数。 |
 | --jar-路径 | 如果提供，则从给定路径部署 jar。 否则，将当前文件夹部署为 tar。 |
-| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m`。 |
+| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m` 。 |
 | --内存 | 每个实例的内存 GB 数。 |
 | --no-wait | 请勿等待长时间运行的操作完成。 |
-| --运行时版本 | 应用中使用的语言的运行时版本。  允许的值`Java_11`： `Java_8`、。 |
+| --运行时版本 | 应用中使用的语言的运行时版本。  允许的值： `Java_11` 、 `Java_8` 。 |
 | --target-module | 要部署的子模块。  在从源代码生成多个 jar 包时是必需的。 |
 | --version | 部署版本。  如果未设置，则保持不变。 |
 
@@ -289,10 +289,10 @@ az spring-cloud app list --resource-group -g
                          --service -s
 ```
 
-|必需的参数 | |
+|必需参数 | |
 | --- | ---: |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-restart"></a>az 春季-cloud app restart
 
@@ -306,11 +306,11 @@ az spring-cloud app restart --name -n
                             --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -332,11 +332,11 @@ az spring-cloud app scale --name -n
                           --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -372,12 +372,12 @@ az spring-cloud app set-deployment --deployment -d
                                    --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --部署-d | 应用的现有部署的名称。 |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -401,11 +401,11 @@ az spring-cloud app show --name -n
                          --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-show-deploy-log"></a>az 春季-cloud app show-deploy-log
 
@@ -418,11 +418,11 @@ az spring-cloud app show-deploy-log --name -n
                                     --deployment -d
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -440,11 +440,11 @@ az spring-cloud app start --name -n
                           --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -463,11 +463,11 @@ az spring-cloud app stop --name -n
                          --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -491,11 +491,11 @@ az spring-cloud app update --name -n
                            --runtime-version
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name-n | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -503,9 +503,9 @@ az spring-cloud app update --name -n
 | --enable-持久存储 | 布尔值。  如果为 true，则使用默认路径装载50GB 磁盘。 |
 | --env | "键 [= 值]" 格式的以空格分隔的环境变量。 |
 | --公有 | 布尔值。  如果为 true，则向应用程序分配公共域。 |
-| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m`。 |
+| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m` 。 |
 | --no-wait | 请勿等待长时间运行的操作完成。 |
-| --运行时版本 | 应用中使用的语言的运行时版本。  允许的值`Java_11`： `Java_8`、。 |
+| --运行时版本 | 应用中使用的语言的运行时版本。  允许的值： `Java_11` 、 `Java_8` 。 |
 
 ### <a name="example"></a>示例
 
@@ -525,11 +525,11 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-binding-remove"></a>az 弹簧-云应用绑定删除
 
@@ -542,12 +542,12 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 要删除的服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-binding-show"></a>az 春季-cloud app binding show
 
@@ -560,12 +560,12 @@ az spring-cloud app binding show --app
                                  --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-binding-cosmos-add"></a>az 春季-cloud app binding cosmos add
 
@@ -590,13 +590,13 @@ az spring-cloud app binding list --app
                                  --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --api 类型 | 使用以下值之一指定 API 类型： cassandra、gremlin、mongo、sql、table。 |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 |可选参数 | |
 | --- | ---: |
@@ -616,12 +616,12 @@ az spring-cloud app binding cosmos update --app
                                           --key-space
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 |可选参数 | |
 | --- | ---: |
@@ -641,7 +641,7 @@ az spring-cloud app binding mysql add --app
                                       --username
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --数据库名称 | 数据库的名称。 |
@@ -649,7 +649,7 @@ az spring-cloud app binding mysql add --app
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
 | --资源 id | 要与之绑定的服务的 Azure 资源 ID。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 | --username | 用于访问数据库的用户名。 |
 
 ## <a name="az-spring-cloud-app-binding-mysql-update"></a>az 春季-cloud app binding mysql update
@@ -666,12 +666,12 @@ az spring-cloud app binding mysql update --add
                                          --username
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -692,13 +692,13 @@ az spring-cloud app binding redis add --app
                                       --disable-ssl
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
 | --资源 id | 要与之绑定的服务的 Azure 资源 ID。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -708,12 +708,12 @@ az spring-cloud app binding redis add --app
 
 为 Redis 更新 Azure 缓存的服务绑定。
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -723,14 +723,14 @@ az spring-cloud app binding redis add --app
 
 创建应用的过渡部署。
 
-若要部署代码或将设置更新到现有部署，请`az spring-cloud app deploy --deployment <staging-deployment>`使用或 "az 春季-cloud 应用更新-- <staging deployment>部署"。
+若要部署代码或将设置更新到现有部署，请使用 `az spring-cloud app deploy --deployment <staging-deployment>` 或 "az 春季-cloud 应用更新--部署" <staging deployment> 。
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 服务绑定的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 | 可选参数 | |
 | --- | ---: |
@@ -738,10 +738,10 @@ az spring-cloud app binding redis add --app
 | --env | "键 [= 值]" 格式的以空格分隔的环境变量。 |
 | --instance-count | 实例数。 默认值：1。 |
 | --jar-路径 | 如果已提供，请部署 jar。  否则，将当前文件夹部署为 tar。 |
-| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m`。 |
+| --jvm 选项 | 包含 JVM 选项的字符串。  使用 "=" 而不是 "" 来避免 shell 分析错误。 例如， `--jvm-options='-Xms1024m -Xmx2048m` 。 |
 | --内存 | 每个实例的内存 GB 数。 |
 | --no-wait | 请勿等待长时间运行的操作完成。 |
-| --运行时版本 | 应用中使用的语言的运行时版本。  允许的值`Java_11`： `Java_8`、。 |
+| --运行时版本 | 应用中使用的语言的运行时版本。  允许的值： `Java_11` 、 `Java_8` 。 |
 | --skip-clone-设置 | 通过克隆当前生产部署设置来创建过渡部署。 |
 | --target-module | 要部署的子模块。  在从源代码生成多个 jar 包时是必需的。 |
 | --version | 部署版本。  如果未设置，则保持不变。 |
@@ -771,12 +771,12 @@ az spring-cloud app deployment delete --app
                                       --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 部署的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-deployment-list"></a>az 春季-cloud app deployment list
 
@@ -788,11 +788,11 @@ az spring-cloud app deployment list --app
                                     --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-app-deployment-show"></a>az 春季-cloud app deployment show
 
@@ -805,12 +805,12 @@ az spring-cloud app deployment show --app
                                     --service -s
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --应用 | 应用的名称。 |
 | --name | 部署的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
-| --service-s | Azure 春季云的名称。  您可以使用`az configure --defaults spring-cloud=<name>`配置默认服务。 |
+| --service-s | Azure 春季云的名称。  您可以使用配置默认服务 `az configure --defaults spring-cloud=<name>` 。 |
 
 ## <a name="az-spring-cloud-config-server-clear"></a>az 春季-cloud config-server clear
 
@@ -821,7 +821,7 @@ az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
@@ -837,7 +837,7 @@ az spring-cloud config-server set --config-file
                                   --no-wait
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --config-file | 配置服务器配置的 YAML 清单的文件路径。 |
 | --name | Azure 春季云的名称。 |
@@ -856,7 +856,7 @@ az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
@@ -880,7 +880,7 @@ az spring-cloud config-server git set --name -n
                                       --username
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
@@ -888,7 +888,7 @@ az spring-cloud config-server git set --name -n
 
 | 可选参数 | |
 | --- | ---: |
-| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用`az cache`查看/清除。 |
+| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用 `az cache` 查看/清除。 |
 | --host 键 | 添加的配置的主机密钥。 |
 | --主机密钥算法 | 添加的配置的主机密钥算法。 |
 | --label | 添加的配置的标签。 |
@@ -917,7 +917,7 @@ az spring-cloud config-server git repo add --name -n
                                            --username
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --存储库-名称 | 存储库的 URI。 |
@@ -926,7 +926,7 @@ az spring-cloud config-server git repo add --name -n
 
 | 可选参数 | |
 | --- | ---: |
-| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用`az cache`查看/清除。 |
+| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用 `az cache` 查看/清除。 |
 | --host 键 | 添加的配置的主机密钥。 |
 | --主机密钥算法 | 添加的配置的主机密钥算法。 |
 | --label | 添加的配置的标签。 |
@@ -947,14 +947,14 @@ az spring-cloud config-server git repo list --name -n
                                        --defer
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
 
 | 可选参数 | |
 | --- | ---: |
-| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用`az cache`查看/清除。 |
+| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用 `az cache` 查看/清除。 |
 
 ## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az 春季-cloud config-server git 存储库删除
 
@@ -967,7 +967,7 @@ az spring-cloud config-server git repo remove --name -n
                                          --defer
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --存储库-名称 | 存储库的 URI。 |
@@ -975,7 +975,7 @@ az spring-cloud config-server git repo remove --name -n
 
 | 可选参数 | |
 | --- | ---: |
-| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用`az cache`查看/清除。 |
+| --延迟 | 暂时将该对象存储在本地缓存中，而不是发送到 Azure。  使用 `az cache` 查看/清除。 |
 
 ## <a name="az-spring-cloud-test-endpoint-disable"></a>az 弹簧-云测试-终结点禁用
 
@@ -986,7 +986,7 @@ az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
@@ -1000,7 +1000,7 @@ az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
@@ -1016,7 +1016,7 @@ az spring-cloud test-endpoint list --name -n
                                    --deployment -d
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |
@@ -1036,7 +1036,7 @@ az spring-cloud test-endpoint renew-key --name -n
                                         --type
 ```
 
-| 必需的参数 | |
+| 必需参数 | |
 | --- | ---: |
 | --name | Azure 春季云的名称。 |
 | --resource-group -g | 资源组的名称。  可以使用 `az configure --defaults group=<name>` 配置默认组。 |

@@ -9,13 +9,13 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335246"
 ---
-# <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
+# <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps 地图控件
 
 Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功能呈现到你的 web 或移动应用程序中。
 
@@ -27,7 +27,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
 
 2. 载入 Azure Maps Web SDK。 您可以选择以下两个选项之一：
 
-    * 通过在 HTML 文件的`<head>`元素中添加对 JavaScript 和样式表的引用，使用 AZURE MAPS Web SDK 的全球托管 CDN 版本：
+    * 通过在 HTML 文件的元素中添加对 JavaScript 和样式表的引用，使用 Azure Maps Web SDK 的全球托管 CDN 版本 `<head>` ：
 
         ```HTML
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
@@ -75,7 +75,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
     </body>
    ```
 
-5. 若要初始化地图控件，请在 html 正文中定义一个新的脚本标记。 `id`在创建`<div>` `Map`类的实例时，传入`HTMLElement`映射的或（ `document.getElementById('myMap')`例如）作为第一个参数。 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 
+5. 若要初始化地图控件，请在 html 正文中定义一个新的脚本标记。 在 `id` 创建类的实例时，传入映射的 `<div>` 或 `HTMLElement` （例如 `document.getElementById('myMap')` ）作为第一个参数 `Map` 。 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 
 
    如果需要创建帐户或查找密钥，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取](quick-demo-map-app.md#get-the-primary-key-for-your-account)主密钥中的说明进行操作。 
 
@@ -183,7 +183,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
 
 ## <a name="localizing-the-map"></a>本地化地图
 
-Azure Maps 提供了两种不同的方法来设置呈现地图的语言和区域视图。 第一种方法是将此信息添加到全局`atlas`命名空间，这会导致应用中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语（"fr"），并将区域视图设置为 "Auto"：
+Azure Maps 提供了两种不同的方法来设置呈现地图的语言和区域视图。 第一种方法是将此信息添加到全局 `atlas` 命名空间，这会导致应用中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语（"fr"），并将区域视图设置为 "Auto"：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -207,7 +207,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!Note]
-> 利用 Web SDK，可以在具有不同语言和区域设置的同一页上加载多个映射实例。 此外，在使用映射的`setStyle`函数加载映射后，可以更新这些设置。 
+> 利用 Web SDK，可以在具有不同语言和区域设置的同一页上加载多个映射实例。 此外，在使用映射的函数加载映射后，可以更新这些设置 `setStyle` 。 
 
 下面是将语言设置为 "fr" 并将区域视图设置为 "自动" 的 Azure Maps 的示例。
 
@@ -219,7 +219,7 @@ map = new atlas.Map('myMap', {
 
 Azure Maps Web SDK 支持 Azure 政府云。 用于访问 Azure Maps Web SDK 的所有 JavaScript 和 CSS Url 保持不变。 需要完成以下任务才能连接到 Azure Maps 平台的 Azure 政府云版本。
 
-使用交互式地图控件时，请在创建`Map`类的实例之前添加以下代码行。 
+使用交互式地图控件时，请在创建类的实例之前添加以下代码行 `Map` 。 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
@@ -227,13 +227,13 @@ atlas.setDomain('atlas.azure.us');
 
 验证地图和服务时，请确保使用 Azure 政府版云平台中 Azure Maps 的身份验证详细信息。
 
-使用 "服务" 模块时，需要在创建 API URL 端点的实例时设置服务的域。 例如，下面的代码创建`SearchURL`类的一个实例，并将该域指向 Azure 政府云。
+使用 "服务" 模块时，需要在创建 API URL 端点的实例时设置服务的域。 例如，下面的代码创建类的一个实例 `SearchURL` ，并将该域指向 Azure 政府云。
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-如果直接访问 Azure Maps REST 服务，请将 URL 域更改为`atlas.azure.us`。 例如，如果使用搜索 API 服务，请将 URL 域从`https://atlas.microsoft.com/search/`更改为。 `https://atlas.azure.us/search/`
+如果直接访问 Azure Maps REST 服务，请将 URL 域更改为 `atlas.azure.us` 。 例如，如果使用搜索 API 服务，请将 URL 域从更改 `https://atlas.microsoft.com/search/` 为 `https://atlas.azure.us/search/` 。
 
 ## <a name="next-steps"></a>后续步骤
 

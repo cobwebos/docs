@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331083"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
@@ -35,10 +35,10 @@ ms.locfileid: "80331083"
 
 下表列出了角色，以及支持的操作系统版本。
 
-|Role| 操作系统/版本|
+|角色| 操作系统/版本|
 |--|--|
 |Active Directory 联合身份验证服务 (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|具有 Azure AD Connect | 版本 1.0.9125 或更高版本|
+|Azure AD Connect | 版本 1.0.9125 或更高版本|
 |Active Directory 域服务 (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 请注意，该服务提供的功能可能因角色和操作系统而有所不同。 换言之，并非所有功能都适用于所有操作系统版本。 有关详细信息，请参阅功能说明。
@@ -52,7 +52,7 @@ ms.locfileid: "80331083"
 
 许可信息还可在 [Azure AD 定价页](https://aka.ms/aadpricing)中找到。
 
-示例：
+例如：
 
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
@@ -107,7 +107,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
 
-1. 打开 internet Explorer >**设置** > **Internet 选项** > " "**连接** > " "**局域网设置**"。
+1. 打开 internet Explorer >**设置**"  >  **Internet 选项**" "连接" "  >  **Connections**  >  **局域网设置**"。
 2. 选择 "**为 LAN 使用代理服务器**"。
 3. 如果针对 HTTP 和 HTTPS/Secure 有不同的代理端口，请选择 "**高级**"。
 
@@ -139,7 +139,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：收到 "运行状况服务数据不是最新" 的警报。如何实现解决该问题？**
 
-如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 [阅读详细信息](how-to-connect-health-data-freshness.md)。
+如果过去两小时内未从服务器收到所有数据点，Azure AD Connect Health 将生成此警报。 [了解详细信息](how-to-connect-health-data-freshness.md)。
 
 ## <a name="operations-questions"></a>操作问题
 **问：我需要在 web 应用程序代理服务器上启用审核吗？**

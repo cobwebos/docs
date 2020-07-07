@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333948"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
@@ -27,12 +27,12 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|Canada     |✓         |✓         |
+|加拿大     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥伦比亚      |✓         |✓         |
 |墨西哥     |✓         |✓         |
 |秘鲁       |✓         |✓         | 
-|United States     |✓         |✓        |
+|美国     |✓         |✓        |
 |+波多黎各     |✓         |✓         |
 |乌拉圭 |✓         |✓         |
 
@@ -52,7 +52,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |新西兰     |✓         |✓         |
 |菲律宾  |✓         |✓         |
 |新加坡     |✓         |✓         |
-|中国台湾     |✓         |✓        |
+|台湾     |✓         |✓        |
 |泰国     |✓         |✓        |
 |越南   |✓         |✓         |
 
@@ -108,7 +108,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |瑞士     |✓         |✓        |
 |土耳其     |✓         |✓         |
 |乌克兰     |✓         |✓         |
-|United Kingdom     |✓         |✓         |
+|英国     |✓         |✓         |
 |+直布罗陀     |✓         |✓         |
 |+ 根西岛 & Jersey     |✓         |✓         |
 |+ Isle     |✓         |✓         |

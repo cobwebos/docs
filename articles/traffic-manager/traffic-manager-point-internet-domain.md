@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
 ms.openlocfilehash: 6c5c5c185063caf8ca258ad70a70903c9b583e07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294846"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>将公司 Internet 域指向 Azure 流量管理器域
@@ -25,7 +25,7 @@ ms.locfileid: "80294846"
 
     `www.contoso.com IN CNAME contoso.trafficmanager.net`
 
-向*\.www contoso.com*发出的所有流量请求都将定向到*contoso.trafficmanager.net*。
+向*www \. contoso.com*发出的所有流量请求都将定向到*contoso.trafficmanager.net*。
 
 > [!IMPORTANT]
 > 无法将第二级域（例如 *contoso.com*）指向流量管理器域。 DNS 协议标准不允许对二级域名使用 CNAME 记录。

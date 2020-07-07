@@ -4,10 +4,10 @@ description: 了解如何使用 Azure Site Recovery 服务为 Azure Stack VM 设
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478511"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
@@ -137,7 +137,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>步骤 2：创建保管库并选择复制目标
 
-1. 在 Azure 门户中，选择 "**创建资源** > **管理工具** > " "**备份" 和 "Site Recovery**"。
+1. 在 Azure 门户中，选择 "**创建资源**  >  **管理工具**" "  >  **备份" 和 "Site Recovery**"。
 2. 在“名称”  中，输入一个友好名称以标识此保管库。
 3. 在“资源”组中，创建或选择资源组  。 我们将使用 contosoRG  。
 4. 在“位置”中，输入 Azure 区域  。 我们将使用“西欧”****。
@@ -282,7 +282,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 
 按如下方式为 VM 运行测试故障转移：
 
-1. 在 "**设置** > " "**复制的项**" 中，单击 VM > **+ 测试故障转移**"。
+1. 在 "**设置**  >  " "复制的**项**" 中，单击 VM > **+ 测试故障转移**"。
 2. 在本演练中，我们将选择使用“最新处理”恢复点  。
 3. 在“测试故障转移”中，选择目标 Azure 网络  。
 4. 单击“确定”  开始故障转移。
@@ -300,7 +300,7 @@ Site Recovery 有助于实现业务连续性和灾难恢复 (BCDR) 策略。 该
 然后按如下所述运行故障转移：
 
 
-1. 在 "**设置** > " "**复制的项**" 中，单击 >**故障转移**的计算机。
+1. 在 "**设置**  >  " "复制的**项**" 中，单击 >**故障转移**的计算机。
 2. 选择要使用的恢复点。
 3. 在“测试故障转移”中，选择目标 Azure 网络  。
 4. 选择“在开始故障转移前关闭计算机”  。 选择此设置后，Site Recovery 会在开始故障转移前尝试关闭源计算机。 但即使关机失败，故障转移也仍会继续。

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
 ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293949"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
@@ -153,7 +153,7 @@ Azure 连接器可以使用服务主体对 Microsoft Azure 进行授权。 遵�
 > [!NOTE]
 > 如果可能，请删除所有虚拟机扩展，因为在从虚拟机分离磁盘时，这些扩展可能导致运行时过长。
 
-确保目标计算机上存在具有相同 ID 和 GID 的用户 \<hanasid>adm、\<sapsid>adm 和组 sapsys，或者使用 LDAP。 在用来运行 SAP NetWeaver (A)SCS 的虚拟机上启用并启动 NFS 服务器。
+请确保 \<hanasid> \<sapsid> 目标计算机上存在具有相同 ID 和 gid 或使用 LDAP 的用户 adm、adm 和组 sapsys。 在用来运行 SAP NetWeaver (A)SCS 的虚拟机上启用并启动 NFS 服务器。
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -163,7 +163,7 @@ SAP LaMa 使用 SAP 主机代理来与虚拟机通信。 如果手动部署了�
 
 使用 SAP 说明 [2343511] 中所列的受支持操作系统之一创建新虚拟机。 为 SAP 实例添加附加的 IP 配置。 每个实例至少需要一个 IP 地址，并且必须使用虚拟主机名安装。
 
-SAP NetWeaver ASCS 实例需要 /sapmnt/\<SAPSID>、/usr/sap/\<SAPSID>、/usr/sap/trans 和 /usr/sap/\<sapsid>adm 的磁盘。 SAP NetWeaver 应用程序服务器不需要其他磁盘。 与 SAP 实例相关的所有内容必须存储在 ASCS 上，并通过 NFS 导出。 否则，目前无法使用 SAP LaMa 添加更多的应用程序服务器。
+SAP NetWeaver ASCS 实例需要用于/sapmnt/ \<SAPSID> 、/usr/sap/ \<SAPSID> 、/usr/sap/trans 和/usr/sap/adm 的磁盘 \<sapsid> 。 SAP NetWeaver 应用程序服务器不需要其他磁盘。 与 SAP 实例相关的所有内容必须存储在 ASCS 上，并通过 NFS 导出。 否则，目前无法使用 SAP LaMa 添加更多的应用程序服务器。
 
 ![Linux 上的 SAP NetWeaver ASCS](media/lama/sap-lama-ascs-app-linux.png)
 
@@ -212,7 +212,7 @@ SAP LaMa 不能重定位 SQL Server 本身，因此，要用于重定位数据�
 
 模板具有以下参数：
 
-* sapSystemId：SAP 系统 ID。 此参数用于创建磁盘布局（例如 /usr/sap/\<sapsid>）。
+* sapSystemId：SAP 系统 ID。 它用于创建磁盘布局（例如/usr/sap/ \<sapsid> ）。
 
 * computerName：新虚拟机的计算机名。 SAP LaMa 也使用此参数。 使用此模板将新虚拟机预配为系统副本的一部分时，SAP LaMa 会一直等到可以访问具有此计算机名的主机为止。
 
@@ -319,7 +319,7 @@ acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
 
 ![已创建 SAP LaMa NetApp 容量池 ](media/lama/sap-lama-capacitypool-list.png)
 
-现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/\<\>sid*、 */usr/sap/\<sid\>* 和 */home/\<SID\>adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
+现在可以定义 NFS 卷。 由于一个池中的多个系统都有卷，因此应选择一个自解释的命名方案。 添加 SID 有助于将相关卷组合在一起。 对于 ASCS 和 AS 实例，需要以下装载： */sapmnt/ \<SID\> *、 */usr/sap/ \<SID\> *和 */home/ \<sid\> adm*。 （可选） */usr/sap/trans*是中心传输目录所必需的，其中至少有一个横向的系统使用。
 
 > [!NOTE]
 > 在测试阶段，卷的名称在订阅中必须是唯一的。
@@ -366,7 +366,7 @@ mkdir -p /usr/sap/trans
 
 对于 ASCS 和 AS 实例，装载点应如下所示：
 
-![LaMa ](media/lama/sap-lama-ascs.png)中的 SAP LaMa 装入点（这是一个示例。 IP 地址和导出路径与之前使用的路径不同）
+![LaMa 中的 SAP LaMa 装入点 ](media/lama/sap-lama-ascs.png) （这是一个示例。 IP 地址和导出路径与之前使用的路径不同）
 
 
 #### <a name="install-sap-hana"></a>安装 SAP HANA
@@ -462,7 +462,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。****
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 
@@ -545,12 +545,12 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
     在 SAP 系统的默认配置文件中设置配置文件参数 OS_UNICODE=uc 即可解决此问题。
 
 * 执行 SAPinst 步骤时出错: dCheckGivenServer
-  * 执行 SAPinst 步骤时出错: dCheckGivenServer" version="1.0" 错误: (步骤报告的最后一个错误: \<p> 用户已取消安装。 \</p>
+  * 执行 SAPinst 步骤时出错： dCheckGivenServer "version =" 1.0 "错误：（该步骤报告的上一个错误： \<p> 用户已取消安装。 \</p>
   * 解决方案  
     确保以有权访问该配置文件的用户身份运行 SWPM。 可在应用程序服务器安装向导中配置此用户
 
 * 执行 SAPinst 步骤时出错: checkClient
-  * 执行 SAPinst 步骤时出错: checkClient" version="1.0" 错误: (步骤报告的最后一个错误: \<p> 用户已取消安装。 \</p>)
+  * 执行 SAPinst 步骤时出错： checkClient "version =" 1.0 "错误：（该步骤报告的上一个错误： \<p> 用户已取消安装。 \</p>)
   * 解决方案  
     确保要安装应用程序服务器的虚拟机上已安装了 Microsoft ODBC Driver for SQL Server
 

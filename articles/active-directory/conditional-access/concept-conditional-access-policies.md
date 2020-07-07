@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 907ad8705742e4b2e38b13c3c675ebd333bd27d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295327"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
@@ -85,7 +85,7 @@ ms.locfileid: "80295327"
 - 要求进行多重身份验证（Azure 多重身份验证）
 - 要求将设备标记为合规 (Intune)
 - 要求使用加入混合 Azure AD 的设备
-- 需要已批准的客户端应用
+- 需要批准的客户端应用
 - 需要应用保护策略
 
 管理员可以使用以下选项选择是需要上述控制之一还是所有已选控制。 多项控制的默认值为全部需要。
@@ -118,7 +118,7 @@ ms.locfileid: "80295327"
 - **分配**
    - 要应用策略的**用户和/或组**。
    - 要应用策略的**云应用或操作**。
-- **访问控制**
+- 访问控制 
    - **授予**或**阻止**控制
 
 ![空白条件访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
@@ -127,7 +127,7 @@ ms.locfileid: "80295327"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
+[使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 

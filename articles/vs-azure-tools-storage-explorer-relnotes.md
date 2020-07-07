@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
 ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80351060"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
@@ -230,7 +230,7 @@ ms.locfileid: "80351060"
 ## <a name="version-1100"></a>版本 1.10.0
 9/12/2019
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 存储资源管理器现在提供专用的“设置”UI。 可以通过“编辑”→“设置”访问该 UI，或者，可以单击左侧垂直工具栏中的“设置”图标（齿轮）。 只有在了解此功能后，才能提供各种[用户请求的设置](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)。 从此版本开始支持以下设置：
     * 主题
@@ -242,7 +242,7 @@ ms.locfileid: "80351060"
     * AzCopy SAS 持续时间
 
     如果要添加其他设置，请[在 GitHub 上打开描述要查看的设置的问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
-* 存储资源管理器现在支持托管磁盘。 可以：
+* 存储资源管理器现在支持托管磁盘。 你可以：
     * 将本地 VHD 上传到新磁盘
     * 下载磁盘
     * 跨资源组和区域复制并粘贴磁盘
@@ -308,7 +308,7 @@ ms.locfileid: "80351060"
 - [适用于 Mac 的 Azure 存储资源管理器 1.9.0](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [适用于 Linux 的 Azure 存储资源管理器 1.9.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 现在可以通过 Azure AD 附加 Blob 容器（RBAC 或 ACL 权限）。 此功能旨在帮助那些可以访问容器但不能访问容器所在的存储帐户的用户。 若要详细了解此功能，请参阅入门指南。
 * 获取和中断租约现在适用于 RBAC。 [#1354](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1354)
@@ -366,7 +366,7 @@ ms.locfileid: "80351060"
 * 在 Windows 上，如果某个文件或文件夹在下载时，文件或文件夹的名称有一个字符对于 Windows 路径无效，则 AzCopy 下载会失败。 此问题已解决。 [#1350](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1350)
 * 在极罕见的情况下，在对文件共享重命名或在文件共享中重命名时，如果重命名的复制失败，或者存储资源管理器无法通过 Azure 确认复制是否成功，则存储资源管理器可能会在复制完成之前删除原始文件。 此问题已解决。
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 集成的 AzCopy 版本已更新为版本 10.1.0。
 * 现在可以使用 Ctrl/Cmd+R 来刷新当前具有焦点的编辑器了。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
@@ -418,7 +418,7 @@ ms.locfileid: "80351060"
 ## <a name="version-180"></a>版本 1.8.0
 2019 年 5 月 1 日
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 集成的 AzCopy 版本已更新为版本 10.1.0。
 * 现在可以使用 Ctrl/Cmd+R 来刷新当前具有焦点的编辑器了。 [#1097](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1097)
@@ -475,7 +475,7 @@ ms.locfileid: "80351060"
 - [适用于 Mac 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [适用于 Linux 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 现在，在管理 ADLS Gen2 容器、文件或文件夹的访问权限时，可以更改所有者和拥有组。
 * 在 Windows 上，从产品内部更新存储资源管理器现在属于增量安装操作。 这样应该可以加快更新的速度。 如果你偏向于全新安装，可以自行下载[安装程序](https://azure.microsoft.com/features/storage-explorer/)并手动安装。 #1089
@@ -557,7 +557,7 @@ ms.locfileid: "80351060"
 * 如果某文件夹的名称包含空格，则尝试从 ADLS Gen2 Blob 容器中下载该文件夹时，AzCopy 会失败。 此问题已解决。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * CosmosDB 编辑器在 1.6.0 版本中出现中断。 现已修复。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
@@ -626,7 +626,7 @@ ms.locfileid: "80351060"
 * 如果某文件夹的名称包含空格，则尝试从 ADLS Gen2 Blob 容器中下载该文件夹时，AzCopy 会失败。 此问题已解决。 [#990](https://www.github.com/Microsoft/AzureStorageExplorer/issues/990)
 * CosmosDB 编辑器在 1.6.0 版本中出现中断。 现已修复。 [#950](https://www.github.com/Microsoft/AzureStorageExplorer/issues/950)
         
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
@@ -681,7 +681,7 @@ ms.locfileid: "80351060"
 ## <a name="version-160"></a>版本 1.6.0
 2018/12/5
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 现在可以使用存储资源管理器以通过 [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409) 访问 Blob 数据。 如果已登录，且存储资源管理器无法检索存储帐户的密钥，那么与数据进行交互时将使用 OAuth 标记进行身份验证。
 * 存储资源管理器现支持 ADLS Gen2 存储帐户。 当存储资源管理器检测到已为存储帐户启用分层命名空间时，存储帐户名称旁边会显示“（ADLS Gen2 预览版）”。 存储资源管理器可以检测登录时是否启用了分层命名空间，或者是否已对存储帐户附加了名称和密钥。 对于 ADLS Gen2 存储帐户，可使用存储资源管理器执行以下操作：
@@ -736,7 +736,7 @@ ms.locfileid: "80351060"
 ## <a name="version-150"></a>版本 1.5.0
 10/29/2018
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 现在可以使用 [AzCopy v10（预览版）](https://github.com/Azure/azure-storage-azcopy)来上传和下载 Blob。 若要启用此功能，请转到“试验”菜单，然后单击“使用 AzCopy 改进 Blob 上传和下载”。 启用后，AzCopy 将在以下方案中使用：
    * 通过工具栏或拖放操作将文件夹和文件上传到 Blob 容器。
@@ -805,12 +805,12 @@ ms.locfileid: "80351060"
 * Azure 资源管理 API 版本已回滚，以对 Azure 美国政府用户解除阻止。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 加载微调控件现使用 CSS 动画来减少存储资源管理器所用的 GPU 数量。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 可以：
+* 存储资源管理器现在支持软删除。 你可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -861,12 +861,12 @@ ms.locfileid: "80351060"
 * Azure 资源管理 API 版本已回滚，以对 Azure 美国政府用户解除阻止。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
 * 加载微调控件现使用 CSS 动画来减少存储资源管理器所用的 GPU 数量。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 可以：
+* 存储资源管理器现在支持软删除。 你可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -916,12 +916,12 @@ ms.locfileid: "80351060"
 ### <a name="hotfixes"></a>修补程序
 * 将 Azure 资源管理 API 版本更新为 2018-07-01，以添加对新 Azure 存储帐户种类的支持。 [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 可以：
+* 存储资源管理器现在支持软删除。 你可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -976,12 +976,12 @@ ms.locfileid: "80351060"
 * 在较慢的 Windows 计算机上，初始屏幕有时需要很长时间才会显示。 [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
 * 即使已存在附加的帐户或服务，连接对话框也会显示。 [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 外部资源附加（例如 SAS 连接和模拟器）已显著改进。 现在可以：
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 可以：
+* 存储资源管理器现在支持软删除。 你可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -1028,7 +1028,7 @@ ms.locfileid: "80351060"
 ## <a name="version-130"></a>版本 1.3.0
 2018/07/09
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 现在支持访问静态网站使用的 $web 容器。 这使你可以轻松上传和管理网站使用的文件和文件夹。 [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
 * macOS 上的应用栏已经重新组织。 更改包括“文件”菜单、一些快捷键更改以及应用菜单下的几个新命令。 [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
 * 用于登录到 Azure 美国政府的颁发机构终结点已更改为 https://login.microsoftonline.us/
@@ -1085,7 +1085,7 @@ ms.locfileid: "80351060"
 ## <a name="version-120"></a>版本 1.2.0
 06/12/2018
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 如果存储资源管理器无法做到只加载一部分租户中的订阅，则会显示所有已成功加载的订阅，此外还会专门针对失败的租户显示一条错误消息。 [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
 * 在 Windows 上，当有更新可用时，现在可以选择“关闭时更新”。 如果选择此选项，将在关闭存储资源管理器后运行更新安装程序。 [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
 * 查看文件共享快照时，“还原快照”会添加到文件共享编辑器的上下文菜单中。[#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
@@ -1142,7 +1142,7 @@ ms.locfileid: "80351060"
 ## <a name="version-110"></a>版本 1.1.0
 2018/05/09
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 存储资源管理器现在支持使用 Azurite。 请注意：与 Azurite 的连接已硬编码到默认开发终结点。
 * 存储资源管理器现在仅支持 Blob 的访问层和 GPV2 存储帐户。 在[此处](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)详细了解访问层。
 * 生成 SAS 时不再需要开始时间。
@@ -1197,12 +1197,12 @@ ms.locfileid: "80351060"
 ## <a name="version-100"></a>版本 1.0.0
 04/16/2018
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 增强的身份验证，允许存储资源管理器使用与 Visual Studio 2017 相同的帐户存储。 若要使用此功能，需要重新登录到帐户并重置已筛选的订阅。
 * 对于由 AAD 提供支持的 Azure Stack 帐户，当已启用“目标 Azure Stack”时，存储资源管理器现在会检索 Azure Stack 订阅。 不再需要创建自定义登录环境。
 * 添加了几个快捷方式以启用更快的导航。 这些快捷方式包括切换各种面板和在编辑器之间移动。 有关更多详细信息，请参阅“视图”菜单。
-* 存储资源管理器反馈现在位于 GitHub 上。 可以通过单击左下角的 "反馈" 按钮或转到来[https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues)访问我们的 "问题" 页。 请随意提出建议、报告问题、提出问题或留下任何其他形式的反馈。
-* 如果运行的是 TLS/SSL 证书问题，但找不到有问题的证书，则可以从命令行中通过`--ignore-certificate-errors`标志启动存储资源管理器。 当用此标志启动时，存储资源管理器将忽略 TLS/SSL 证书错误。
+* 存储资源管理器反馈现在位于 GitHub 上。 可以通过单击左下角的 "反馈" 按钮或转到来访问我们的 "问题" 页 [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) 。 请随意提出建议、报告问题、提出问题或留下任何其他形式的反馈。
+* 如果运行的是 TLS/SSL 证书问题，但找不到有问题的证书，则可以从命令行中通过标志启动存储资源管理器 `--ignore-certificate-errors` 。 当用此标志启动时，存储资源管理器将忽略 TLS/SSL 证书错误。
 * 现在，在 blob 和文件项的上下文菜单中将出现“下载”选项。
 * 改进了辅助功能和屏幕阅读器支持。 如果依赖于辅助功能，请参阅我们的[辅助功能文档](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)了解详细信息。
 * 存储资源管理器现在使用 Electron 1.8.3
@@ -1298,7 +1298,7 @@ ms.locfileid: "80351060"
 ## <a name="version-095"></a>版本 0.9.5
 2018/02/06
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 对文件共享快照的支持：
     * 创建和管理文件共享快照。
@@ -1347,7 +1347,7 @@ ms.locfileid: "80351060"
 ## <a name="version-094-and-093"></a>版本 0.9.4 和 0.9.3
 2018 年 1 月 21 日
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 在以下情况下，将重新使用现有的存储资源管理器窗口：
     * 打开存储资源管理器中生成的直接链接。
     * 从门户打开存储资源管理器。
@@ -1401,7 +1401,7 @@ ms.locfileid: "80351060"
 * 适用于 Azure 美国政府版的终结点域不正确。 此问题已解决。
 * 有时很难单击“管理帐户”面板上的“应用”按钮。 不会再发生此问题。
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
     * [联机文档](./cosmos-db/storage-explorer.md)
     * 创建数据库和集合
@@ -1457,7 +1457,7 @@ ms.locfileid: "80351060"
 
 ## <a name="version-091-and-090"></a>版本 0.9.1 和 0.9.0
 10/20/2017
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 预览版对 Azure Cosmos DB 的支持：
     * [联机文档](./cosmos-db/storage-explorer.md)
     * 创建数据库和集合
@@ -1514,7 +1514,7 @@ ms.locfileid: "80351060"
 ## <a name="version-0816"></a>版本 0.8.16
 8/21/2017
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 * 打开 Blob 时，如果检测到更改，存储资源管理器会提示上传已下载的文件
 * 增强的 Azure Stack 登录体验
 * 改善了同时上传/下载多个小型文件时的性能
@@ -1554,7 +1554,7 @@ ms.locfileid: "80351060"
 ### <a name="version-0814"></a>版本 0.8.14
 2017/06/22
 
-### <a name="new"></a>“新建”
+### <a name="new"></a>新建
 
 * 已将 Electron 版本更新为 1.7.2，以便利用若干关键安全更新
 * 现可从帮助菜单快速访问联机疑难解答指南
@@ -1581,7 +1581,7 @@ ms.locfileid: "80351060"
 ### <a name="version-0813"></a>版本 0.8.13
 05/12/2017
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 存储资源管理器疑难解答[指南][2]
 * 连接到 Azure Stack 订阅相关[说明][3]
@@ -1616,7 +1616,7 @@ ms.locfileid: "80351060"
 ### <a name="version-0812-and-0811-and-0810"></a>版本 0.8.12、0.8.11 和 0.8.10
 2017/04/07
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 如今，如果从更新通知安装更新，存储资源管理器会自动关闭
 * 对使用经常访问的资源而言，就地快速访问提供增强的体验
@@ -1627,7 +1627,7 @@ ms.locfileid: "80351060"
 * 现可登录到基于 Azure Active Directory (AAD) 的 Azure Stack 帐户。
 * 现可将超过 32 MB 的存档文件上传到高级存储帐户
 * 改进的辅助功能支持
-* 你现在可以通过转到编辑-&gt; SSL 证书-&gt;导入证书来添加受信任64的 x.509 TLS/SSL 证书
+* 你现在可以通过转到编辑- &gt; SSL 证书- &gt; 导入证书来添加受信任64的 x.509 TLS/SSL 证书
 
 #### <a name="fixes"></a>修复项
 
@@ -1664,7 +1664,7 @@ ms.locfileid: "80351060"
 >[!VIDEO https://www.youtube.com/embed/SrRPCm94mfE?ecver=1]
 
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 存储资源管理器 0.8.9 自动下载最新版本进行更新。
 * 修补程序：使用门户生成的 SAS URI 附加存储帐户会导致错误。
@@ -1694,7 +1694,7 @@ ms.locfileid: "80351060"
 
 >[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 在“活动”窗口中，可选择如何在更新、下载或复制会话开始时解决冲突
 * 将鼠标悬停在选项卡上，以查看存储资源的完整路径
@@ -1721,7 +1721,7 @@ ms.locfileid: "80351060"
 2016/11/18
 ### <a name="version-086"></a>版本 0.8.6
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 现可将最常用服务固定到快速访问，从而实现轻松导航
 * 现可在不同选项卡中打开多个编辑器。 单击以打开临时选项卡;双击以打开永久选项卡。还可以单击 "临时" 选项卡以使其成为永久选项卡
@@ -1756,10 +1756,10 @@ ms.locfileid: "80351060"
 * 同时上传 3 组以上的 blob 或文件可能导致错误
 * 搜索功能会处理作用范围约 50,000 个节点的搜索操作，之后，如超过此范围，则性能可能会受影响，或导致未经处理的异常
 
-2016/10/03
+10/03/2016
 ### <a name="version-085"></a>版本 0.8.5
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 现可使用门户生成的 SAS 密钥附加到存储帐户和资源
 
@@ -1782,7 +1782,7 @@ ms.locfileid: "80351060"
 
 >[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 生成指向存储帐户、容器、队列、表或文件共享的直接链接，以便共享和轻松访问资源 - Windows 和 Mac 操作系统支持
 * 从搜索框搜索 blob 容器、表、队列、文件共享或存储帐户
@@ -1803,7 +1803,7 @@ ms.locfileid: "80351060"
 
 >[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 重命名容器、表和文件共享
 * 提升了查询生成器体验
@@ -1829,7 +1829,7 @@ ms.locfileid: "80351060"
 
 >[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 存储帐户按订阅分组；通过密钥或 SAS 附加的开发存储和资源显示在（本地和附加）节点下
 * 从“Azure 帐户设置”面板注销帐户
@@ -1856,7 +1856,7 @@ ms.locfileid: "80351060"
 
 >[!VIDEO https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1]
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 文件共享支持：查看、上传、下载、复制文件和目录以及 SAS URI（创建和连接）
 * 改进了使用 SAS URI 或帐户密钥连接到存储的用户体验
@@ -1879,7 +1879,7 @@ ms.locfileid: "80351060"
 2016/05/17
 ### <a name="version-07201605090"></a>版本 0.7.20160509.0
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 更好的应用崩溃错误处理
 
@@ -1899,7 +1899,7 @@ ms.locfileid: "80351060"
 
 >[!VIDEO https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1]
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * 表支持：实体的查看、查询、导出、导入和 CRUD 操作
 * 队列支持：查看、添加消息，以及取消消息排队
@@ -1931,7 +1931,7 @@ ms.locfileid: "80351060"
 
 ### <a name="version-07201601050"></a>版本 0.7.20160105.0
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * Linux 支持（OSX 的奇偶校验功能）
 * 添加具有共享访问签名 (SAS) 密钥的 blob 容器
@@ -1961,7 +1961,7 @@ ms.locfileid: "80351060"
 11/18/2015
 ### <a name="version-07201511160"></a>版本 0.7.20151116.0
 
-#### <a name="new"></a>“新建”
+#### <a name="new"></a>新建
 
 * macOS 和 Windows 版本
 * 登录以查看存储帐户 - 使用组织帐户、Microsoft 帐户、2FA 等。

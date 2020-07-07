@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟机无法启动，因为 windows 启动管理器
-description: 本文介绍了在 Windows 启动管理器阻止启动 Azure 虚拟机时遇到的问题。
+title: Windows 虚拟机因 Windows 启动管理器而无法启动
+description: 本文提供了当 Windows 启动管理器阻止 Azure 虚拟机启动时用于解决问题的步骤。
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,37 +15,37 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80373344"
 ---
-# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 无法启动，因为 Windows 启动管理器
+# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 因 Windows 启动管理器而无法启动
 
-本文提供了解决 Windows 启动管理器阻止启动 Azure 虚拟机（VM）的问题的步骤。
+本文提供了相关步骤，用于解决 Windows 启动管理器阻止 Azure 虚拟机 (VM) 启动的问题。
 
 ## <a name="symptom"></a>症状
 
-VM 会停滞在用户提示下等待，并且除非手动指示，否则不会启动。
+VM 一直在等待用户提示。除非用户手动进行指示，否则 VM 不会启动。
 
-使用 "[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)" 查看 VM 的屏幕截图时，你会看到屏幕截图显示 Windows 启动管理器，其中包含消息 "*选择要启动的操作系统"，或者按 tab 键以选择工具：*。
+使用[启动诊断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)查看 VM 的屏幕截图时，会看到屏幕截图显示 Windows 启动管理器，其中包含消息“请选择要启动的操作系统，或按 TAB 键选择一项工具:”  。
 
 图 1
  
-![Windows 启动管理器指示 "选择要启动的操作系统，或按 TAB 键以选择工具："](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
+![Windows 启动管理器，其中包含消息“请选择要启动的操作系统，或按 TAB 键选择一项工具:”](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
 
 ## <a name="cause"></a>原因
 
-此错误是由于*displaybootmenu*在 Windows 启动管理器中出现 BCD 标志错误引起的。 启用标志后，Windows 启动管理器将在启动过程中提示用户选择要运行的加载程序，从而导致启动延迟。 在 Azure 中，此功能可以添加到启动 VM 所用的时间。
+此错误是由 Windows 启动管理器中的 BCD 标志“displaybootmenu”  导致的。 启用该标志后，Windows 启动管理器会在启动过程中提示用户选择要运行的加载程序，导致启动延迟。 在 Azure 中，此功能可能会增加启动 VM 所需的时间。
 
 ## <a name="solution"></a>解决方案
 
 过程概述：
 
 1. 使用串行控制台配置更快启动时间。
-2. 创建和访问修复 VM。
-3. 配置修复 VM 上的更快启动时间。
+2. 创建并访问修复 VM。
+3. 在修复 VM 上进行配置以缩短启动时间。
 4. **建议**：在重建 VM 之前，启用串行控制台和内存转储收集。
 5. 重新生成 VM。
 
@@ -75,37 +75,37 @@ VM 会停滞在用户提示下等待，并且除非手动指示，否则不会�
       > [!NOTE]
       > 如果在上述步骤中无法使用串行控制台来配置更快的启动时间，则可继续执行以下步骤。 你现在会在脱机模式下进行故障排除，以解决此问题。
 
-### <a name="create-and-access-a-repair-vm"></a>创建和访问修复 VM
+### <a name="create-and-access-a-repair-vm"></a>创建并访问修复 VM
 
-1. 使用[VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)来准备修复 VM。
-2. 使用远程桌面连接连接到修复 VM。
+1. 使用 [VM 修复命令的步骤 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 来准备一个修复 VM。
+2. 使用远程桌面连接来连接到修复 VM。
 
-### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>配置修复 VM 上的更快启动时间
+### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>在修复 VM 上进行配置以缩短启动时间。
 
 1. 打开权限提升的命令提示符。
-2. 输入以下内容来启用 DisplayBootMenu：
+2. 输入以下命令来启用 DisplayBootMenu：
 
-   对于**第1代 vm**，请使用此命令：
+   对于第 1 代 VM  ，请使用以下命令：
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   对于**第2代 vm**，请使用此命令：
+   对于第 2 代 VM  ，请使用以下命令：
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   替换任意大于或小于符号以及其中的文本，例如 "此处 < 文本 >"。
+   替换所有大于号或小于号以及其中的文本，例如“< text here >”。
 
-3. 将超时值更改为5秒：
+3. 将超时值更改为 5 秒：
 
-   对于**第1代 vm**，请使用此命令：
+   对于第 1 代 VM  ，请使用以下命令：
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5`
 
-   对于**第2代 vm**，请使用此命令：
+   对于第 2 代 VM  ，请使用以下命令：
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} timeout 5`
 
-   替换任意大于或小于符号以及其中的文本，例如 "此处 < 文本 >"。
+   替换所有大于号或小于号以及其中的文本，例如“< text here >”。
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建议：在重建 VM 之前，启用串行控制台和内存转储收集
 
@@ -120,13 +120,13 @@ VM 会停滞在用户提示下等待，并且除非手动指示，否则不会�
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   替换任意大于或小于符号以及其中的文本，例如 "此处 < 文本 >"。
+   替换所有大于号或小于号以及其中的文本，例如“< text here >”。
 
-3. 验证 OS 磁盘上的可用空间是否与 VM 上的内存大小（RAM）一样多。
+3. 验证 OS 磁盘上的可用空间是否与 VM 上的内存大小 (RAM) 相当。
 
-   如果 OS 磁盘上没有足够的空间，则应更改内存转储文件的创建位置，并将其引用到任何附加到具有足够可用空间的 VM 的数据磁盘。 要更改位置，请在以下命令中将 "% SystemRoot%" 替换为数据磁盘的驱动器号（例如，"F："）。
+   如果 OS 磁盘上没有足够的空间，则应更改内存转储文件的创建位置，将其指向任何已附加到 VM 且具有足够可用空间的数据磁盘。 若要更改位置，请将以下命令中的“%SystemRoot%”替换为数据磁盘的驱动器号（例如“F:”）。
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>启用 OS 转储的建议配置
+#### <a name="suggested-configuration-to-enable-os-dump"></a>用于启用 OS 转储的建议配置
 
 **加载损坏的 OS 磁盘**：
 
@@ -152,6 +152,6 @@ VM 会停滞在用户提示下等待，并且除非手动指示，否则不会�
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>重新生成原始 VM
+### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用[Vm 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)重新组装 vm。
+使用 [VM 修复命令的步骤 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 重新装配 VM。

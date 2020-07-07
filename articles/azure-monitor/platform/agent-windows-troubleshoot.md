@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
 ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333509"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查 Log Analytics Windows 代理的问题 
@@ -20,7 +20,7 @@ ms.locfileid: "80333509"
 
 * 具有顶级支持权益的客户可以通过[顶级支持](https://premier.microsoft.com/)提出支持请求。
 * 签订了 Azure 支持协议的客户可以在 [Azure 门户](https://manage.windowsazure.com/?getsupport=true)中提出支持请求。
-* 若要查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) ，请访问 Log Analytics 反馈页，或提供新的建议。 
+* 请访问 Log Analytics 反馈页面，查看已提交的想法和 bug [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)或提交新的想法或 bug。 
 
 ## <a name="important-troubleshooting-sources"></a>重要的故障排除源
 
@@ -38,7 +38,7 @@ ms.locfileid: "80333509"
 |*.oms.opinsights.azure.com |端口 443 |出站|是 |  
 |\* .blob.core.windows.net |端口 443 |出站|是 |  
 
-有关 Azure 政府版所需的防火墙信息，请参阅[Azure 政府版管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 如果你计划使用 Azure 自动化混合 Runbook 辅助角色连接到自动化服务并向该服务注册以在你的环境中使用 runbook 或管理解决方案，则它必须有权访问为[混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 url。 
+有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)。 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook 或管理解决方案，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 
 可通过多种方法验证代理是否能够成功与 Azure Monitor 通信。
 
@@ -68,7 +68,7 @@ ms.locfileid: "80333509"
     |2127 |运行状况服务模块 |发送数据失败并收到错误代码 |如果此问题只是在某一天中定期发生，原因可能是出现随机异常；可忽略此问题。 通过监视来了解问题发生的频率。 如果在一整天经常发生，请先检查网络配置和代理设置。 如果说明中包含 HTTP 错误代码 404，并且这是代理首次尝试将数据发送到服务，则错误消息中会包含 500 错误和 404 内部错误代码。 404 表示“未找到”，即，仍在预配新工作区的存储区域。 下次重试时，数据将成功按预期写入到工作区。 HTTP 错误 403 可能表示出现权限或凭据问题。 403 错误会包含更多信息来帮助排查问题。|
     |4000 |服务连接器 |DNS 名称解析失败 |计算机无法解析在向服务发送数据时使用的 Internet 地址。 原因可能是计算机上的 DNS 解析程序设置有问题、代理设置不正确，或者提供商出现了暂时性的 DNS 问题。 如果此错误定期发生，原因可能是存在暂时性的网络相关问题。|
     |4001 |服务连接器 |无法连接到服务。 |如果代理无法直接或者通过防火墙/代理服务器来与 Azure Monitor 服务通信，则可能会发生此错误。 验证该代理程序的代理设置，或者网络防火墙/代理是否允许将该计算机的 TCP 流量发送到服务。|
-    |4002 |服务连接器 |服务返回 HTTP 状态代码 403 以响应查询。 请咨询服务管理员以了解服务的运行状况。 稍后将重试该查询。 |此错误是在代理初始注册阶段写入的，你将看到类似于以下内容的 URL：https://\<workspaceID>.oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest**。 错误代码 403 表示禁止，可能是由于错误键入工作区 ID 或密钥，或者计算机上的数据和时间不正确所致。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要更正此错误，请更新 Windows 计算机的日期和/或时区。|
+    |4002 |服务连接器 |服务返回 HTTP 状态代码 403 以响应查询。 请咨询服务管理员以了解服务的运行状况。 稍后将重试该查询。 |此错误是在代理初始注册阶段写入的，你将看到类似于以下内容的 URL： *https:// \<workspaceID> . oms.opinsights.azure.com/AgentService.svc/AgentTopologyRequest*。 错误代码 403 表示禁止，可能是由于错误键入工作区 ID 或密钥，或者计算机上的数据和时间不正确所致。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要更正此错误，请更新 Windows 计算机的日期和/或时区。|
 
 ## <a name="data-collection-issues"></a>数据收集问题
 

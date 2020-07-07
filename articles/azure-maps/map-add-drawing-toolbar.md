@@ -1,5 +1,5 @@
 ---
-title: 向地图添加绘图工具栏 |Microsoft Azure 映射
+title: 向地图添加绘图工具栏 | Microsoft Azure Maps
 description: 如何使用 Azure Maps Web SDK 将绘图工具栏添加到地图
 author: philmea
 ms.author: philmea
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334503"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>将绘图工具工具栏添加到地图
@@ -38,7 +38,7 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="添加绘图工具栏" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图</a>"<a href='https://codepen.io/azuremaps'>@azuremaps</a>工具栏 Azure Maps （）。
+请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>添加绘图" 工具栏</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
@@ -62,13 +62,13 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="添加多边形绘图工具" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>添加多边形绘图工具</a>。
+请参阅 CodePen 上的 "通过 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>添加多边形绘图工具</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ## <a name="change-drawing-rendering-style"></a>更改绘制呈现样式
 
-通过使用`drawingManager.getLayers()`函数，然后设置各个层上的选项，可以自定义绘制的形状的样式，方法是检索绘图管理器的基础层。 编辑形状时，针对坐标显示的拖动控点为 HTML 标记。 可以通过将 HTML 标记选项传递给绘图管理器的`dragHandleStyle`和`secondaryDragHandleStyle`选项自定义拖动句柄的样式。  
+通过使用 `drawingManager.getLayers()` 函数，然后设置各个层上的选项，可以自定义绘制的形状的样式，方法是检索绘图管理器的基础层。 编辑形状时，针对坐标显示的拖动控点为 HTML 标记。 可以通过将 HTML 标记选项传递给 `dragHandleStyle` 绘图管理器的和选项自定义拖动句柄的样式 `secondaryDragHandleStyle` 。  
 
 下面的代码从绘图管理器中获取呈现层，并修改它们的选项以更改绘图的呈现样式。 在这种情况下，将用蓝色标记图标呈现点。 线条将为红色，四像素宽。 多边形将具有绿色填充颜色和橙色轮廓。 然后将拖动句柄的样式更改为方形图标。 
 
@@ -122,13 +122,13 @@ drawingManager.setOptions({
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="更改绘制呈现样式" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘制呈现样式</a>" Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>更改绘制呈现样式</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 "绘图工具" 模块的其他功能：
+了解如何使用绘图工具模块的其他功能：
 
 > [!div class="nextstepaction"]
 > [获取形状数据](map-get-shape-data.md)
@@ -142,7 +142,7 @@ drawingManager.setOptions({
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [将](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [绘图工具栏](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

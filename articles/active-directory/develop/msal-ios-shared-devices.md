@@ -1,7 +1,7 @@
 ---
 title: 适用于 iOS 设备的共享设备模式
 titleSuffix: Microsoft identity platform | Azure
-description: 了解如何启用共享设备模式以允许 Firstline 工作人员共享 iOS 设备
+description: 了解如何启用共享设备模式，使一线工作人员能够共享 iOS 设备
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80550248"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>适用于 iOS 设备的共享设备模式
@@ -27,11 +27,11 @@ ms.locfileid: "80550248"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Firstline 工作人员（例如零售协会、航班员工和现场服务工作人员）通常使用共享的移动设备来执行工作。 如果用户无意中共享其密码或 Pin 来访问共享设备上的客户和业务数据，则这些共享设备可能会带来安全风险。
+一线工作人员（例如零售职员、机组人员和现场服务工人）通常使用共享移动设备来完成其工作。 如果用户共享其密码或 PIN（不管是有意还是无意）来访问共享设备上的客户和数据业务数据，那么这些共享设备可能会有安全风险。
 
-使用共享设备模式，你可以配置 iOS 13 或更高版本的设备，使其更轻松、更安全地由员工共享。 员工可以登录并快速访问客户信息。 当他们完成了移动或任务后，他们可以从设备注销，并立即供下一名员工使用。
+使用共享设备模式，能够将 iOS 13 或更高版本的设备配置为可由员工更轻松、更安全地共享。 员工可以登录并快速访问客户信息。 当他们完成其班次或任务后，他们可以从设备注销，然后，该设备将立即可供下一名员工使用。
 
-共享设备模式还提供了 Microsoft 的设备支持身份的管理。
+共享设备模式还提供 Microsoft 标识支持的设备管理。
 
 此功能使用[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)来管理设备上的用户，并分发[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。
 
@@ -39,60 +39,60 @@ Firstline 工作人员（例如零售协会、航班员工和现场服务工作�
 
 开发人员和云设备管理员可以共同创建共享设备模式应用：
 
-1. **应用程序开发人员**编写单帐户应用（在共享设备模式下不支持多帐户应用）并编写代码来处理共享设备注销等任务。
+1. 应用程序开发人员编写单帐户应用（共享设备模式不支持多帐户应用），并编写代码来处理共享设备注销等任务  。
 
-1. **设备管理员**使用移动设备管理（MDM）提供程序（如 Microsoft Intune 管理其组织中的设备）准备要共享的设备。 MDM 将 Microsoft Authenticator 应用推送到设备，并通过设备的配置文件更新打开每个设备的 "共享模式"。 此共享模式设置将更改设备上受支持的应用程序的行为。 MDM 提供程序的此配置设置设备的共享设备模式，并为共享设备模式所需的[Apple 设备启用 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。
+1. 设备管理员使用 Microsoft Intune 等移动设备管理 (MDM) 提供程序来管理其组织中的设备，以准备好要共享的设备  。 MDM 将 Microsoft Authenticator 应用推送到设备，并通过设备的配置文件更新来为每台设备启用“共享模式”。 正是此“共享模式”设置更改了设备上受支持应用的行为。 MDM 提供程序中的此项配置为设备设置共享设备模式，并启用共享设备模式所需的[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。
 
 1. [**仅在公共预览期间必需**]具有[云设备管理员](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator)角色的用户必须启动[Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)并将其设备加入组织。
 
-    在 Azure 门户中配置组织角色的成员身份： **Azure Active Directory** > **角色和管理员** > **云设备管理员**
+    若要在 Azure 门户中配置组织角色的成员身份：“Azure Active Directory” > “角色和管理员” > “云设备管理员”   
 
-以下各节可帮助你更新应用程序以支持共享设备模式。
+以下部分将帮助你更新应用程序以支持共享设备模式。
 
-## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>使用 Intune 启用共享设备模式 & SSO 扩展
+## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>使用 Intune 启用共享设备模式和 SSO 扩展
 
 > [!NOTE]
-> 仅在公共预览期间需要执行以下步骤。
+> 仅在公共预览期需要执行以下步骤。
 
-需要将设备配置为支持共享设备模式。 它必须安装了 iOS 13 +，并已注册了 MDM。 MDM 配置还需要为[Apple 设备启用 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。 若要了解有关 SSO 扩展的详细信息，请参阅[Apple 视频](https://developer.apple.com/videos/play/tech-talks/301/)。
+需要将设备配置为支持共享设备模式。 必须在该设备上安装 iOS 13+，并将该设备注册到 MDM。 MDM 配置还需要启用[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)。 若要详细了解 SSO 扩展，请参阅 [Apple 视频](https://developer.apple.com/videos/play/tech-talks/301/)。
 
-1. 在 Intune 配置门户中，告诉设备使用以下配置为[Apple 设备启用 Microsoft 企业 SSO 插件](apple-sso-plugin.md)：
+1. 在 Intune 配置门户中，使用以下配置告知设备要启用[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)：
 
     - **类型**：重定向
-    - **扩展 ID**： azureauthenticator. ssoextension
-    - **团队 ID**： SGGM6D27TK
-    - **Url**：https://login.microsoftonline.com
+    - **扩展 ID**：com.microsoft.azureauthenticator.ssoextension
+    - **团队 ID**：SGGM6D27TK
+    - **URL**： https://login.microsoftonline.com
     - 要配置的其他数据：
-      - 密钥： sharedDeviceMode
-      - 类型：布尔值
-      - 值： True
+      - 密钥：sharedDeviceMode
+      - 键入：布尔
+      - 值：True
 
-    有关配置 Intune 的详细信息，请参阅[intune 配置文档](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
+    有关使用 Intune 进行配置的详细信息，请参阅 [Intune 配置文档](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
 
-1. 接下来，将 MDM 配置为通过 MDM 配置文件将 Microsoft Authenticator 应用推送到设备。
+1. 接下来，配置 MDM 以通过 MDM 配置文件将 Microsoft Authenticator 应用推送到设备。
 
-    设置以下配置选项以打开共享设备模式：
+    设置以下配置选项以启用共享设备模式：
 
     - 配置 1：
-      - 密钥： sharedDeviceMode
-      - 类型：布尔值
-      - 值： True
+      - 密钥：sharedDeviceMode
+      - 键入：布尔
+      - 值：True
 
 ## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>修改 iOS 应用程序以支持共享设备模式
 
-用户需要确保其数据不会泄露给其他用户。 以下各节提供了有用的信号来向应用程序指示更改已发生并且应进行处理。
+用户依赖于你来确保其数据不会泄露给其他用户。 以下部分提供了有用的信号，用于向应用程序指示已发生了需要处理的更改。
 
-每次使用应用程序时，都要负责检查设备上用户的状态，并清除以前的用户数据。 这包括在多任务中从后台重新加载时的情况。
+每次使用应用时，你都要负责检查设备上用户的状态，并清除上一个用户的数据。 这还包括检查应用是不是从正在执行多个任务的后台重新加载的。
 
-用户更改时，应确保已清除上一用户的数据，并且删除应用程序中显示的所有缓存数据。 我们强烈建议您和您的公司在更新应用程序以支持共享设备模式之后执行安全审核过程。
+发生用户更改后，你应确保前一个用户的数据已清除，并且应用程序中显示的所有缓存数据已删除。 我们强烈建议你和你的公司在更新应用以支持共享设备模式之后，执行安全评审过程。
 
 ### <a name="detect-shared-device-mode"></a>检测共享设备模式
 
-检测共享设备模式对于您的应用程序很重要。 当应用程序用于共享设备时，许多应用程序都需要更改用户体验（UX）。 例如，你的应用程序可能有一个 "注册" 功能，该功能不适合 Firstline 工作线程，因为他们可能已经有了一个帐户。 如果你的应用程序的数据处于共享设备模式，则可能还需要为其添加额外的安全性。
+检测共享设备模式对于应用程序而言非常重要。 许多应用程序在共享设备上使用时，都需要对用户体验 (UX) 进行更改。 例如，应用程序可能会提供一个“注册”功能，而该功能并不适用于一线工作人员，因为他们可能已有一个帐户。 如果应用程序处于共享设备模式，你还可能想要为应用程序的数据处理添加额外的安全性。
 
-使用中`getDeviceInformationWithParameters:completionBlock:`的 API `MSALPublicClientApplication`来确定应用是否正在处于共享设备模式的设备上运行。
+使用 `MSALPublicClientApplication` 中的 `getDeviceInformationWithParameters:completionBlock:` API 确定应用是否正在处于共享设备模式的设备上运行。
 
-以下代码片段显示了`getDeviceInformationWithParameters:completionBlock:`使用 API 的示例。
+以下代码片段演示使用 `getDeviceInformationWithParameters:completionBlock:` API 的示例。
 
 #### <a name="swift"></a>Swift
 
@@ -124,11 +124,11 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 }];
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>获取已登录用户并确定是否已在设备上更改了用户
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>获取已登录用户并确定该设备上的用户是否已更改
 
-支持共享设备模式的另一个重要部分是确定设备上用户的状态，并在用户已更改或设备上没有用户时清除应用程序数据。 你负责确保数据不会泄露给其他用户。
+支持共享设备模式的另一个重要部分是确定设备上用户的状态，并在设备上的用户已更改或者设备上根本没有任何用户时清除应用程序数据。 你需要负责确保数据不会泄露给其他用户。
 
-你可以使用`getCurrentAccountWithParameters:completionBlock:` API 来查询设备上当前已登录的帐户。
+可以使用 `getCurrentAccountWithParameters:completionBlock:` API 查询设备上当前已登录的帐户。
 
 #### <a name="swift"></a>Swift
 
@@ -159,7 +159,7 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 
 ### <a name="globally-sign-in-a-user"></a>将用户全局登录
 
-当设备配置为共享设备时，应用程序可以调用`acquireTokenWithParameters:completionBlock:` API 来登录帐户。 首次应用登录帐户后，该帐户将在设备上全局提供给所有符合条件的应用。
+将设备配置为共享设备后，应用程序可以调用 `acquireTokenWithParameters:completionBlock:` API 将帐户登录。 第一个应用将帐户登录后，该帐户将全局性地可供设备上所有符合条件的应用使用。
 
 #### <a name="objective-c"></a>Objective-C
 
@@ -173,14 +173,14 @@ parameters.loginHint = self.loginHintTextField.text;
 
 ### <a name="globally-sign-out-a-user"></a>将用户全局注销
 
-下面的代码将删除已登录的帐户，并清除应用程序中的缓存令牌，还会从共享设备模式下的设备中清除。 不过，它不会清除应用程序中的*数据*。 您必须清除应用程序中的数据，并清除您的应用程序可能会向用户显示的所有缓存数据。
+以下代码将删除已登录的帐户，并且不仅从应用中清除缓存的令牌，而且还从处于共享设备模式下的设备中清除缓存的令牌。 不过，它不会清除应用程序中的数据  。 你必须清除应用程序中的数据，并清除应用程序可能会向用户显示的所有缓存数据。
 
 #### <a name="clear-browser-state"></a>清除浏览器状态
 
 > [!NOTE]
-> 仅在公共预览期间需要执行以下步骤。
+> 仅在公共预览期需要执行以下步骤。
 
-在此公共预览版中， [Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)仅清除应用程序的状态。 它不会在 Safari 浏览器中清除状态。 建议手动清除浏览器会话，以确保不会留下用户状态跟踪。 可以使用下面所示`signoutFromBrowser`的可选属性来清除任何 cookie。 这将导致浏览器在设备上启动。
+在此公共预览版中，[适用于 Apple 设备的 Microsoft 企业 SSO 插件](apple-sso-plugin.md)只会为应用程序清除状态。 它不会清除 Safari 浏览器中的状态。 我们建议手动清除浏览器会话，以确保不会留下用户状态的跟踪信息。 可以使用下面所示的可选 `signoutFromBrowser` 属性来清除任何 Cookie。 这会导致在设备上短暂启动浏览器。
 
 #### <a name="swift"></a>Swift
 
@@ -223,6 +223,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看操作中的共享设备模式，GitHub 上的以下代码示例包含一个示例，该示例在 iOS 设备上以共享设备模式运行 Firstline Worker 应用程序：
+GitHub 上的以下代码示例可帮助你了解共享设备模式的运作方式，该示例演示如何在处于共享设备模式的 iOS 设备上运行某个一线工作人员应用：
 
 [MSAL iOS Swift Microsoft Graph API 示例](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

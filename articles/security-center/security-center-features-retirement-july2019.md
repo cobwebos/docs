@@ -1,6 +1,6 @@
 ---
 title: 停用安全中心功能（2019年7月） |Microsoft Docs
-description: 本文介绍了安全中心在2019年7月31日停用的功能。
+description: 本文介绍 2019 年 7 月 31 日安全中心内停用的功能。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,91 +9,91 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80583222"
 ---
-# <a name="retirement-of-security-center-features-july-2019"></a>停用安全中心功能（2019年7月）
+# <a name="retirement-of-security-center-features-july-2019"></a>停用的安全中心功能（2019 年 7 月）
 
 > [!NOTE]
-> 本文档详细说明了2019年7月31日从 Azure 安全中心停用的功能列表。
+> 本文档详细介绍了 2019 年 7 月 31 日从 Azure 安全中心停用的功能列表。
 >
 >
 
-我们在六个月内对 Azure 安全中心进行了多项[改进](https://azure.microsoft.com/updates/?product=security-center)，导致7月2019。
-通过这些改进的功能，我们在2019年7月31日从安全中心删除了一些冗余的功能和相关的 Api。
+在截至 2019 年 7 月的六个月内，我们对 Azure 安全中心进行了多项[改进](https://azure.microsoft.com/updates/?product=security-center)。
+伴随着这些改进的功能，我们于 2019 年 7 月 31 日从安全中心内删除了一些冗余功能和相关 API。
 
-其中的大多数停用的功能可以替换为 Azure 安全中心或 Azure Log Analytics 中的其他功能。 其他功能可以使用[Azure Sentinel （预览版）](https://azure.microsoft.com/services/azure-sentinel/)来实现。
+大多数停用的功能都可以由 Azure 安全中心或 Azure Log Analytics 中的其他功能所替代。 其他功能可以使用[Azure Sentinel （预览版）](https://azure.microsoft.com/services/azure-sentinel/)来实现。
 
-停用安全中心功能包括：
+停用的安全中心功能包括：
 
 - [事件仪表板](#menu_events)
 - [搜索菜单项](#menu_search)
-- [查看身份验证和访问权限的经典标识 & 访问链接（预览）](#menu_classicidentity)
+- [在“标识和访问”上查看经典标识和访问链接（预览）](#menu_classicidentity)
 - [安全警报映射上的安全事件映射按钮（预览版）](#menu_securityeventsmap)
 - [自定义警报规则（预览）](#menu_customalerts)
 - [威胁防护安全警报中的调查按钮](#menu_investigate)
 - [安全解决方案的一个子集](#menu_solutions)
 - [编辑安全策略的安全配置](#menu_securityconfigurations)
-- [安全和审核仪表板（最初在 OMS 门户中用于 Log Analytics 工作区）](#menu_securityomsdashboard)
+- [Log Analytics 工作区的安全和审核仪表板（最初在 OMS 门户中使用）](#menu_securityomsdashboard)
 
-本文提供了每个已停用功能的详细信息，以及实现替换功能时可以执行的步骤。
+本文提供了每个停用功能的详细信息，以及实现替换功能可以采取的步骤。
 
 ## <a name="events-dashboard"></a>事件仪表板<a name="menu_events"></a>
 
-安全中心使用 Log Analytics 代理从计算机收集各种与安全相关的配置和事件。 它将这些事件存储在工作区中。 [事件仪表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)可让你查看此数据，并提供 Log Analytics 的入口点。
+安全中心使用 Log Analytics 代理收集计算机中各种与安全有关的配置和事件。 它将这些事件存储在工作区中。 [事件仪表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)让你能够查看这些数据，并为你提供 Log Analytics 的入口点。
 
-我们已停用在选择工作区时显示的 "事件" 仪表板：
+我们停用了选择工作区时显示的事件仪表板：
 
 ![事件仪表板][2]
 
-### <a name="events-dashboard---the-new-experience"></a>事件仪表板-新体验
+### <a name="events-dashboard---the-new-experience"></a>事件仪表板 - 新体验
 
-建议使用 Azure Log Analytics 的本机功能，查看工作区中的重要事件。
+我们鼓励你使用 Azure Log Analytics 的本机功能来查看工作区中的重要事件。
 
-如果已在安全中心创建了自定义的值得注意的事件，则可以访问这些事件。 在 Log Analytics 中，请参阅**选择工作区** > **保存的搜索**。 你的数据不会丢失或修改。 Log Analytics 中的同一屏幕也提供了本机重要事件。
+如果已在安全中心中创建了自定义的重要事件，则可以访问这些事件。 在 Log Analytics 中，转到“选择工作区” > “保存的搜索” 。 你的数据不会丢失或被修改。 Log Analytics 中的同一屏幕也提供了本机的重要事件。
 
-![工作区保存的搜索][3]
+![工作区 - 保存的搜索][3]
 
 ## <a name="search-menu-entry"></a>搜索菜单项<a name="menu_search"></a>
 
-Azure 安全中心目前使用 Azure Monitor 日志搜索来检索和分析你的安全数据。 此屏幕可用作 Log Analytics 搜索页面的窗口，并使用户能够在其所选工作区上运行搜索查询。 有关详细信息，请参阅[Azure 安全中心搜索](https://docs.microsoft.com/azure/security-center/security-center-search)。 我们已停用此搜索窗口：
+Azure 安全中心目前使用 Azure Monitor 日志搜索来检索和分析安全数据。 此屏幕用作 Log Analytics 搜索页的窗口，使用户能够在选定的工作区上运行搜索查询。 有关详细信息，请参阅 [Azure 安全中心搜索](https://docs.microsoft.com/azure/security-center/security-center-search)。 我们停用了此搜索窗口：
 
-![搜索页][4]
+![“搜索”页][4]
 
-### <a name="search-menu-entry---the-new-experience"></a>搜索菜单项-新体验
+### <a name="search-menu-entry---the-new-experience"></a>搜索菜单项 - 新体验
 
-建议使用 Azure Log Analytics 本机功能对工作区执行搜索查询。 请参阅 Azure Log Analytics，并选择 "**日志**"。
+我们鼓励你使用 Azure Log Analytics 本机功能在工作区上执行搜索查询。 转到 Azure Log Analytics 并选择“日志”。
 
-![Log Analytics 日志 "页][5]
+![Log Analytics 日志页][5]
 
-## <a name="classic-identity--access-preview"></a>经典身份 & 访问（预览）<a name="menu_classicidentity"></a>
+## <a name="classic-identity--access-preview"></a>经典标识和访问（预览）<a name="menu_classicidentity"></a>
 
-"安全中心" 中的经典身份 & 访问体验目前显示 Log Analytics 中的标识和访问信息的仪表板。 查看此仪表板：
+安全中心中的经典标识和访问体验当前在 Log Analytics 中显示标识和访问信息的仪表板。 若要查看此仪表板：
 
-1. 选择 "**查看经典标识" & 访问**。
+1. 选择“查看经典标识和访问”。
 
    ![标识页][6]
 
-1. 查看**身份 & "访问仪表板**"。
+1. 查看“标识和访问仪表板”。
 
-    ![标识页-工作区选择][7]
+    ![标识页 - 工作区选择][7]
 
-1. 选择工作区以在 Log Analytics 中打开 "**标识" & 访问**仪表板，以查看工作区中的标识和访问信息。
+1. 选择工作区，在 Log Analytics 中打开“标识和访问”仪表板以查看工作区上的标识和访问信息。
 
-   ![标识页面-仪表板][8]
+   ![标识页面 - 仪表板][8]
 
-我们停用了上述步骤中显示的三个屏幕。 你的数据将在 Log Analytics 安全解决方案中保持可用，并且未进行修改或删除。
+我们停用了上述步骤中显示的三个屏幕。 你的数据在 Log Analytics 安全解决方案中仍然可用，并且没有被修改或删除。
 
-### <a name="classic-identity--access-preview---the-new-experience"></a>经典身份 & 访问（预览版）-新体验
+### <a name="classic-identity--access-preview---the-new-experience"></a>经典标识和访问（预览）- 新体验
 
-Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机安全中心功能提供了所有订阅及其关联的所有工作区的可见性。 您可以访问一个易于使用的视图，通过该视图，您可以将重点放在根据其安全分数对建议排名的内容上。
+Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机安全中心功能提供对所有订阅及其关联的所有工作区的可见性。 你可以访问易于使用的视图，该视图根据安全功能分数对建议进行排序，让你专注于重要事项。
 
-可以通过在安全中心内选择 "**标识 & 访问（预览）** " 来访问 Log Analytics 中**标识 & 访问**仪表板的所有功能。
+可以通过在安全中心选择“标识和访问(预览)”来访问 Log Analytics 中的“标识和访问”仪表板的所有功能 。
 
-![标识页-经典体验停用][9]
+![标识页 - 经典体验停用][9]
 
 ## <a name="security-events-map"></a>安全事件映射<a name="menu_securityeventsmap"></a>
 
@@ -167,31 +167,31 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 ## <a name="edit-security-configurations-for-security-policies"></a>编辑安全策略的安全配置<a name="menu_securityconfigurations"></a>
 
-Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)来监视安全配置，以便强化 OS。 这些规则适用于防火墙、审核、密码策略等。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。 "[编辑安全配置" 屏幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)允许客户在安全中心自定义默认 OS 安全配置。
+Azure 安全中心应用 [150 多种建议的规则](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)来监视安全配置，以便强化 OS。 这些规则适用于防火墙、审核、密码策略等。 如果发现计算机中的某项配置有漏洞，则安全中心会生成安全建议。 [编辑安全配置屏幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)使客户能够在安全中心内自定义默认的 OS 安全配置。
 
-我们已停用此预览版功能。 若要在停用日期之后将安全配置重置为其默认值，请按照[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)通过 API 或 Powershell 执行此操作。
+我们停用了此预览功能。 若要在停用日期后将安全配置重置回默认值，请使用[以下说明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)通过 API 和 Powershell 执行此操作。
 
 ![编辑安全配置][17]
 
-### <a name="edit-security-configurations---the-new-experience"></a>编辑安全配置-新体验
+### <a name="edit-security-configurations---the-new-experience"></a>编辑安全配置 - 新体验
 
-我们打算启用安全中心来支持[来宾配置代理](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)。 这种更新将允许更丰富的功能集，其中包括对更多操作系统的支持以及 Azure 来宾配置的来宾内策略集成。 启用这些更改后，你还可以按比例控制配置并将其自动应用到新资源。
+我们打算让安全中心支持[来宾配置代理](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)。 这样的更新将实现更丰富的功能集，包括支持更多操作系统，以及为来宾配置集成 Azure 来宾策略。 启用这些更改后，你还可以大规模控制配置并自动将它们应用于新资源。
 
 ## <a name="security-and-audit-dashboard-for-log-analytics-workspaces"></a>Log Analytics 工作区的安全和审核仪表板<a name="menu_securityomsdashboard"></a>
 
-安全和审核仪表板最初在 OMS 门户中使用。 在 Log Analytics 中，仪表板提供了一个每个工作区，其中概述了重要的安全事件和威胁、威胁智能映射以及保存在工作区中的安全事件的标识和访问评估。 我们删除了仪表板。 如前所述，我们建议你转到 Azure 安全中心。
+安全和审核仪表板最初在 OMS 门户中使用。 在 Log Analytics 中，仪表板提供每个工作区重要安全事件和威胁的概述、威胁情报映射以及保存在工作区中的安全事件的标识和访问评估。 我们删除了该仪表板。 正如仪表板 UI 中提供的建议，我们建议你转到 Azure 安全中心。
 
 ![Log Analytics 安全仪表板][18]
 
-### <a name="security-and-audit-dashboard---the-new-experience"></a>安全和审核仪表板-新体验
+### <a name="security-and-audit-dashboard---the-new-experience"></a>安全和审核仪表板 - 新体验
 
-建议切换到 Azure 安全中心。 它在多个订阅及其关联的工作区中提供了相同的安全性概述，并提供了更丰富的功能集。
+建议切换到 Azure 安全中心。 它跨多个订阅及关联的工作区，提供相同的安全概况以及更丰富的功能集。
 
-可以在安全中心的[GitHub 存储库](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)中获取填充 "安全和审核" 仪表板的原始 Log Analytics 查询。
+你可以在 [GitHub 存储库](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)中获取填充安全和审核仪表板的原始 Log Analytics 查询，并将这些查询用于安全中心。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的详细信息。
+- 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的详细信息。
 - 了解有关[Azure Sentinel](https://docs.microsoft.com/azure/sentinel)的详细信息。
 
 <!--Image references - events-->

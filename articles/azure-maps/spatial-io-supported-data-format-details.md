@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334082"
 ---
 # <a name="supported-data-format-details"></a>支持的数据格式详细信息
@@ -23,7 +23,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下命名空间中的 XML 标记。
 
-| 命名空间前缀 | 命名空间 URI   | 注意                                                                    |
+| 命名空间前缀 | 命名空间 URI   | 备注                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | GeoRSS 文件中的只读支持。           |
@@ -39,22 +39,22 @@ ms.locfileid: "80334082"
 
 ## <a name="supported-xml-elements"></a>支持的 XML 元素
 
-空间 IO 模块支持以下 XML 元素。 不受支持的任何 XML 标记将转换为 JSON 对象。 然后，每个标记将作为属性添加到父形状`properties`或层的字段中。
+空间 IO 模块支持以下 XML 元素。 不受支持的任何 XML 标记将转换为 JSON 对象。 然后，每个标记将作为属性添加到 `properties` 父形状或层的字段中。
 
 ### <a name="kml-elements"></a>KML 元素
 
 空间 IO 模块支持以下 KML 元素。
 
-| 元素名称         | 读取    | 写入   | 注意                                                                                                                      |
+| 元素名称         | 读取    | 写入   | 备注                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | 部分 | 是     | 对象经过分析，但不用于定位形状。                                                                    |
 | `AddressDetails`     | 部分 | 否      | 对象经过分析，但不用于定位形状。                                                                    |
 | `atom:author`        | 是     | 是     |                                                                                                                            |
 | `atom:link`          | 是     | 是     |                                                                                                                            |
 | `atom:name`          | 是     | 是     |                                                                                                                            |
-| `BalloonStyle`       | 部分 | 部分 | 不支持 `displayMode`。 转换为`PopupTemplate`。 若要编写，请`popupTemplate`添加一个属性作为要为其编写的功能的属性。 |
+| `BalloonStyle`       | 部分 | 部分 | 不支持 `displayMode`。 转换为 `PopupTemplate` 。 若要编写，请添加一个 `popupTemplate` 属性作为要为其编写的功能的属性。 |
 | `begin`              | 是     | 是     |                                                                                                                            |
-| `color`              | 是     | 是     | 包括`#AABBGGRR`和`#BBGGRR`。 分析为 CSS 颜色字符串                                                           |
+| `color`              | 是     | 是     | 包括 `#AABBGGRR` 和 `#BBGGRR` 。 分析为 CSS 颜色字符串                                                           |
 | `colorMode`          | 是     | 否      |                                                                                                                            |
 | `coordinates`        | 是     | 是     |                                                                                                                            |
 | `Data`               | 是     | 是     |                                                                                                                            |
@@ -64,16 +64,16 @@ ms.locfileid: "80334082"
 | `drawOrder`          | 部分 | 否      | 阅读地面覆盖，并使用对其进行排序。 
 | `east`               | 是     | 是     |                                                                                                                            |
 | `end`                | 是     | 是     |                                                                                                                            |
-| `ExtendedData`       | 是     | 是     | 支持窗`Data`体`SimpleData` `$[dataName]`的`Schema`非类型化的、或和实体替换。                      |
+| `ExtendedData`       | 是     | 是     | 支持窗体的非类型化的 `Data` 、 `SimpleData` 或 `Schema` 和实体替换 `$[dataName]` 。                      |
 | `extrude`            | 部分 | 部分 | 仅多边形支持。 具有不同高度的多边形的 MultiGeometry 将被分解为单独的功能。 不支持线条样式。 海拔高度为0的多边形将呈现为平面多边形。 在读取时，外部环中第一个坐标的海拔将作为多边形的 height 属性添加。 然后，第一个坐标的海拔将用于呈现地图上的多边形。 |
 | `fill`               | 是     | 是     |                                                                                                                            |
 | `Folder`             | 是     | 是     |                                                                                                                            |
 | `GroundOverlay`      | 是     | 是     | `color`不受支持                                                                                                   |
-| `heading`            | 部分 | 否      | 分析但不呈现`SimpleDataLayer`。 仅当数据存储在形状的属性中时才写入。                 |
+| `heading`            | 部分 | 否      | 分析但不呈现 `SimpleDataLayer` 。 仅当数据存储在形状的属性中时才写入。                 |
 | `hotSpot`            | 是     | 部分 | 仅当数据存储在形状的属性中时才写入。 仅将单元输出为 "像素"。                         |
 | `href`               | 是     | 是     |                                                                                                                            |
-| `Icon`               | 部分 | 部分 | 分析但不呈现`SimpleDataLayer`。 如果形状包含 URI 数据，则仅写入该形状的图标属性。 仅支持 `href`。 |
-| `IconStyle`          | 部分 | 部分 | `icon`会`heading`分析`colorMode`、、 `hotspots`和值，但不会对其进行呈现`SimpleDataLayer`         |
+| `Icon`               | 部分 | 部分 | 分析但不呈现 `SimpleDataLayer` 。 如果形状包含 URI 数据，则仅写入该形状的图标属性。 仅支持 `href`。 |
+| `IconStyle`          | 部分 | 部分 | `icon``heading` `colorMode` 会分析、、和 `hotspots` 值，但不会对其进行呈现`SimpleDataLayer`         |
 | `innerBoundaryIs`    | 是     | 是     |                                                                                                                            |
 | `kml`                | 是     | 是     |                                                                                                                            |
 | `LabelStyle`         | 否      | 否      |                                                                                                                            |
@@ -82,7 +82,7 @@ ms.locfileid: "80334082"
 | `LinearRing`         | 是     | 是     |                                                                                                                            |
 | `LineString`         | 是     | 是     |                                                                                                                            |
 | `LineStyle`          | 是     | 是     | 不支持 `colorMode`。                                                                                         |
-| `Link`               | 是     | 否      | 网络链接`href`仅支持属性。                                                                   |
+| `Link`               | 是     | 否      | `href`网络链接仅支持属性。                                                                   |
 | `MultiGeometry`      | 部分 | 部分 | 读取时可能会分解为单独的功能。                                                                     |
 | `name`               | 是     | 是     |                                                                                                                            |
 | `NetworkLink`        | 是     | 否      | 链接需要位于文档所在的同一域中。                                                                  |
@@ -92,7 +92,7 @@ ms.locfileid: "80334082"
 | `outerBoundaryIs`    | 是     | 是     |                                                                                                                            |
 | `outline`            | 是     | 是     |                                                                                                                            |
 | `overlayXY`          | 否      | 否      |                                                                                                                            |
-| `Pair`               | 部分 | 否      | 仅支持`normal`中`StyleMap`的样式。 不支持 `highlight`。                                   |
+| `Pair`               | 部分 | 否      | 仅 `normal` 支持中的样式 `StyleMap` 。 不支持 `highlight`。                                   |
 | `phoneNumber`        | 是     | 是     |                                                                                                                            |
 | `PhotoOverlay`       | 否      | 否      |                                                                                                                            |
 | `Placemark`          | 是     | 是     |                                                                                                                            |
@@ -114,14 +114,14 @@ ms.locfileid: "80334082"
 | `Snippet`            | 部分 | 部分 | `maxLines`特性被忽略。                                                                                  |
 | `south`              | 是     | 是     |                                                                                                                            |
 | `Style`              | 是     | 是     |                                                                                                                            |
-| `StyleMap`           | 部分 | 否      | 仅支持中`StyleMap`的正常样式。                                                                        |
+| `StyleMap`           | 部分 | 否      | 仅支持中的正常样式 `StyleMap` 。                                                                        |
 | `styleUrl`           | 部分 | 是     | 外部样式 Url 不受支持。                                                                         |
-| `text`               | 是     | 是     | 不支持`$[geDirections]`的替换                                                                          |
+| `text`               | 是     | 是     | `$[geDirections]`不支持的替换                                                                          |
 | `textColor`          | 是     | 是     |                                                                                                                            |
 | `TimeSpan`           | 是     | 是     |                                                                                                                            |
 | `TimeStamp`          | 是     | 是     |                                                                                                                            |
 | `value`              | 是     | 是     |                                                                                                                            |
-| `viewRefreshMode`    | 部分 | 否      |  如果指向 WMS 服务，则仅`onStop`支持地面覆盖。 将追加`BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]`到 URL，并在地图移动时进行更新。  |
+| `viewRefreshMode`    | 部分 | 否      |  如果指向 WMS 服务，则仅 `onStop` 支持地面覆盖。 将追加 `BBOX=[bboxWest],[bboxSouth],[bboxEast],[bboxNorth]` 到 URL，并在地图移动时进行更新。  |
 | `visibility`         | 是     | 是     |                                                                                                                            |
 | `west`               | 是     | 是     |                                                                                                                            |
 | `when`               | 是     | 是     |                                                                                                                            |
@@ -131,7 +131,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 GeoRSS 元素。
 
-| 元素名称             | 读取    | 写入 | 注意                                                                                          |
+| 元素名称             | 读取    | 写入 | 备注                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | 是     | 是   |                                                                                                |
 | `atom:category`          | 是     | 是   |                                                                                                |
@@ -153,10 +153,10 @@ ms.locfileid: "80334082"
 | `atom:title`             | 是     | 是   |                                                                                                |
 | `atom:updated`           | 是     | 是   |                                                                                                |
 | `atom:uri`               | 是     | 是   |                                                                                                |
-| `geo:lat`                | 是     | 否    | 编写为`georss:point`。                                                                   |
-| `geo:lon`                | 是     | 否    | 编写为`georss:point`。                                                                   |
-| `geo:long`               | 是     | 否    | 编写为`georss:point`。                                                                   |
-| `georss:box`             | 是     | 否    | 作为多边形读取并给定`subType`属性 "矩形"                                |
+| `geo:lat`                | 是     | 否    | 编写为 `georss:point` 。                                                                   |
+| `geo:lon`                | 是     | 否    | 编写为 `georss:point` 。                                                                   |
+| `geo:long`               | 是     | 否    | 编写为 `georss:point` 。                                                                   |
+| `georss:box`             | 是     | 否    | 作为多边形读取并给定 `subType` 属性 "矩形"                                |
 | `georss:circle`          | 是     | 是   |                                                                                                |
 | `georss:elev`            | 是     | 是   |                                                                                                |
 | `georss:featurename`     | 是     | 是   |                                                                                                |
@@ -168,34 +168,34 @@ ms.locfileid: "80334082"
 | `georss:radius`          | 是     | 是   |                                                                                                |
 | `georss:relationshiptag` | 是     | 是   |                                                                                                |
 | `georss:where`           | 是     | 是   |                                                                                                |
-| `geourl:latitude`        | 是     | 否    | 编写为`georss:point`。                                                                   |
-| `geourl:longitude`       | 是     | 否    | 编写为`georss:point`。                                                                   |
-| `position`               | 是     | 否    | 某些 XML 源会将 GML 与位置标记一起打包，而不是使用`georss:where`标记来包装。 将读取此标记，但将使用`georss:where`标记写入。 |
+| `geourl:latitude`        | 是     | 否    | 编写为 `georss:point` 。                                                                   |
+| `geourl:longitude`       | 是     | 否    | 编写为 `georss:point` 。                                                                   |
+| `position`               | 是     | 否    | 某些 XML 源会将 GML 与位置标记一起打包，而不是使用 `georss:where` 标记来包装。 将读取此标记，但将使用标记写入 `georss:where` 。 |
 | `rss`                    | 是     | 否    | GeoRSS 以 ATOM 格式编写的。                                                                 |
-| `rss:author`             | 是     | 部分 | 编写为`atom:author`。                                                                 |
-| `rss:category`           | 是     | 部分 | 编写为`atom:category`。                                                               |
+| `rss:author`             | 是     | 部分 | 编写为 `atom:author` 。                                                                 |
+| `rss:category`           | 是     | 部分 | 编写为 `atom:category` 。                                                               |
 | `rss:channel`            | 是     | 否    |                                                                                                |
 | `rss:cloud`              | 是     | 否    |                                                                                                |
 | `rss:comments`           | 是     | 否    |                                                                                                |
-| `rss:copyright`          | 是     | 部分 | 作为`atom:rights` if 形状`rights` `properties`编写时，没有属性。       |
-| `rss:description`        | 是     | 部分 | 作为`atom:content` if 形状`content` `properties`编写时，没有属性。      |
+| `rss:copyright`          | 是     | 部分 | 作为 if 形状编写时，没有 `atom:rights` `rights` `properties` 属性。       |
+| `rss:description`        | 是     | 部分 | 作为 if 形状编写时，没有 `atom:content` `content` `properties` 属性。      |
 | `rss:docs`               | 是     | 否    |                                                                                                |
 | `rss:enclosure`          | 是     | 否    |                                                                                                |
 | `rss:generator`          | 是     | 否    |                                                                                                |
-| `rss:guid`               | 是     | 部分 | 作为`atom:id` if 形状`id` `properties`编写时，没有属性。         |
-| `rss:image`              | 是     | 部分 | 作为`atom:logo` if 形状`logo` `properties`编写时，没有属性。      |
-| `rss:item`               | 是     | 部分 | 编写为`atom:entry`。                                                                  |
+| `rss:guid`               | 是     | 部分 | 作为 if 形状编写时，没有 `atom:id` `id` `properties` 属性。         |
+| `rss:image`              | 是     | 部分 | 作为 if 形状编写时，没有 `atom:logo` `logo` `properties` 属性。      |
+| `rss:item`               | 是     | 部分 | 编写为 `atom:entry` 。                                                                  |
 | `rss:language`           | 是     | 否    |                                                                                                |
-| `rss:lastBuildDate`      | 是     | 部分 | 作为`atom:updated` if 形状`updated` `properties`编写时，没有属性。     |
-| `rss:link`               | 是     | 部分 | 编写为`atom:link`。                                                                   |
-| `rss:managingEditor`     | 是     | 部分 | 编写为`atom:contributor`。                                                            |
-| `rss:pubDate`            | 是     | 部分 | 作为`atom:published` if 形状`published` `properties`编写时，没有属性。  |
+| `rss:lastBuildDate`      | 是     | 部分 | 作为 if 形状编写时，没有 `atom:updated` `updated` `properties` 属性。     |
+| `rss:link`               | 是     | 部分 | 编写为 `atom:link` 。                                                                   |
+| `rss:managingEditor`     | 是     | 部分 | 编写为 `atom:contributor` 。                                                            |
+| `rss:pubDate`            | 是     | 部分 | 作为 if 形状编写时，没有 `atom:published` `published` `properties` 属性。  |
 | `rss:rating`             | 是     | 否    |                                                                                                |
 | `rss:skipDays`           | 是     | 否    |                                                                                                |
 | `rss:skipHours`          | 是     | 否    |                                                                                                |
-| `rss:source`             | 是     | 部分 | 编写为`atom:source`包含的`atom:link`。                                       |
+| `rss:source`             | 是     | 部分 | 编写为 `atom:source` 包含的 `atom:link` 。                                       |
 | `rss:textInput`          | 是     | 否    |                                                                                                |
-| `rss:title`              | 是     | 部分 | 编写为`atom:title`。                                                                  |
+| `rss:title`              | 是     | 部分 | 编写为 `atom:title` 。                                                                  |
 | `rss:ttl`                | 是     | 否    |                                                                                                |
 | `rss:webMaster`          | 是     | 否    |                                                                                                |
 
@@ -203,12 +203,12 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 GML 元素。 
 
-| 元素名称            | 读取 | 写入 | 注意                                                                                  |
+| 元素名称            | 读取 | 写入 | 备注                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
-| `gml:coordinates`       | 是  | 否    | 编写为`gml:posList`。                                                              |
+| `gml:coordinates`       | 是  | 否    | 编写为 `gml:posList` 。                                                              |
 | `gml:curveMember`       | 是  | 否    |                                                                                        |
 | `gml:curveMembers`      | 是  | 否    |                                                                                        |
-| `gml:Box`               | 是  | 否    | 编写为`gml:Envelope`。                                                             |
+| `gml:Box`               | 是  | 否    | 编写为 `gml:Envelope` 。                                                             |
 | `gml:description`       | 是  | 是   |                                                                                        |
 | `gml:Envelope`          | 是  | 是   |                                                                                        |
 | `gml:exterior`          | 是  | 是   |                                                                                        |
@@ -219,20 +219,20 @@ ms.locfileid: "80334082"
 | `gml:geometryMember`    | 是  | 是   |                                                                                        |
 | `gml:geometryMembers`   | 是  | 是   |                                                                                        |
 | `gml:identifier`        | 是  | 是   |                                                                                        |
-| `gml:innerBoundaryIs`   | 是  | 否    | 使用`gml.interior`编写。                                                          |
+| `gml:innerBoundaryIs`   | 是  | 否    | 使用编写 `gml.interior` 。                                                          |
 | `gml:interior`          | 是  | 是   |                                                                                        |
 | `gml:LinearRing`        | 是  | 是   |                                                                                        |
 | `gml:LineString`        | 是  | 是   |                                                                                        |
 | `gml:lineStringMember`  | 是  | 是   |                                                                                        |
 | `gml:lineStringMembers` | 是  | 否    |                                                                                        |
-| `gml:MultiCurve`        | 是  | 否    | 仅读取`gml:LineString`成员。 编写方式`gml.MultiLineString`                  |
+| `gml:MultiCurve`        | 是  | 否    | 仅读取 `gml:LineString` 成员。 编写方式`gml.MultiLineString`                  |
 | `gml:MultiGeometry`     | 部分  | 部分   | 仅读取 FeatureCollection。                                              |
 | `gml:MultiLineString`   | 是  | 是   |                                                                                        |
 | `gml:MultiPoint`        | 是  | 是   |                                                                                        |
 | `gml:MultiPolygon`      | 是  | 是   |                                                                                        |
-| `gml:MultiSurface`      | 是  | 否    | 仅读取`gml:Polygon`成员。 编写方式`gml.MultiPolygon`                        |
+| `gml:MultiSurface`      | 是  | 否    | 仅读取 `gml:Polygon` 成员。 编写方式`gml.MultiPolygon`                        |
 | `gml:name`              | 是  | 是   |                                                                                        |
-| `gml:outerBoundaryIs`   | 是  | 否    | 使用`gml.exterior`编写。                                                          |
+| `gml:outerBoundaryIs`   | 是  | 否    | 使用编写 `gml.exterior` 。                                                          |
 | `gml:Point`             | 是  | 是   |                                                                                        |
 | `gml:pointMember`       | 是  | 是   |                                                                                        |
 | `gml:pointMembers`      | 是  | 否    |                                                                                        |
@@ -254,7 +254,7 @@ ms.locfileid: "80334082"
 
 空间 IO 模块支持以下 .GPX) 元素。
 
-| 元素名称             | 读取    | 写入   | 注意                                                                                       |
+| 元素名称             | 读取    | 写入   | 备注                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | 是     | 是     |                                                                                             |
 | `gpx:author`             | 是     | 是     |                                                                                             |
@@ -287,13 +287,13 @@ ms.locfileid: "80334082"
 | `gpx:vdop`               | 是     | 是     |                                                                                             |
 | `gpx:wpt`                | 是     | 是     |                                                                                             |
 | `gpx_style:color`        | 是     | 是     |                                                                                             |
-| `gpx_style:line`         | 部分 | 部分 | `color`支持`opacity`、 `width`、 `lineCap`和。                                           |
+| `gpx_style:line`         | 部分 | 部分 | `color``opacity`支持、、 `width` 和 `lineCap` 。                                           |
 | `gpx_style:opacity`      | 是     | 是     |                                                                                             |
 | `gpx_style:width`        | 是     | 是     |                                                                                             |
-| `gpxx:DisplayColor`      | 是     | 否      | 用于指定形状的颜色。 写入时， `gpx_style:line`将改为使用颜色。  |
-| `gpxx:RouteExtension`    | 部分 | 否      | 所有属性都读入`properties`。 仅使用 `DisplayColor`。                     |
-| `gpxx:TrackExtension`    | 部分 | 否      | 所有属性都读入`properties`。 仅使用 `DisplayColor`。                     |
-| `gpxx:WaypointExtension` | 部分 | 否      | 所有属性都读入`properties`。 仅使用 `DisplayColor`。                     |
+| `gpxx:DisplayColor`      | 是     | 否      | 用于指定形状的颜色。 写入时， `gpx_style:line` 将改为使用颜色。  |
+| `gpxx:RouteExtension`    | 部分 | 否      | 所有属性都读入 `properties` 。 仅使用 `DisplayColor`。                     |
+| `gpxx:TrackExtension`    | 部分 | 否      | 所有属性都读入 `properties` 。 仅使用 `DisplayColor`。                     |
+| `gpxx:WaypointExtension` | 部分 | 否      | 所有属性都读入 `properties` 。 仅使用 `DisplayColor`。                     |
 | `gpx:keywords`           | 是     | 是     |                                                                                             |
 | `gpx:fix`                | 是     | 是     |                                                                                             |
 
@@ -337,9 +337,9 @@ ms.locfileid: "80334082"
 | GEOMETRYCOLLECTION M | x | x<sup>[2]</sup> | 
 | GEOMETRYCOLLECTION ZM | x<sup>[1]</sup><sup>[2]</sup> | x | 
 
-\[1\]仅捕获 Z 参数，并将其作为第三个值添加到位置值中。
+\[1 \] 仅捕获 Z 参数，并将其作为第三个值添加到位置值中。
 
-\[未\]捕获到2个 M 参数。
+\[未捕获到2个 \] M 参数。
 
 ## <a name="delimited-spatial-data-support"></a>分隔空间数据支持
 
@@ -397,9 +397,9 @@ ms.locfileid: "80334082"
 - int
 - long
 - edm。 double
-- FLOAT
+- float
 - double
-- 数字
+- number
 
 #### <a name="booleans"></a>布尔型
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295474"
 ---
 # <a name="url-redirect"></a>URL 重定向
@@ -40,13 +40,13 @@ ms.locfileid: "80295474"
 - **匹配请求**：此选项保留传入请求使用的协议。 因此，HTTP 请求将保持 HTTP，HTTPS 请求将保持 HTTPS post 重定向。
 
 ## <a name="destination-host"></a>目标主机
-在配置重定向路由的过程中，还可以更改重定向请求的主机名或域。 你可以设置此字段以更改重定向的 URL 中的主机名，或通过其他方式保留传入请求中的主机名。 因此，使用此字段可以将发送到的`https://www.contoso.com/*`所有请求重`https://www.fabrikam.com/*`定向到。
+在配置重定向路由的过程中，还可以更改重定向请求的主机名或域。 你可以设置此字段以更改重定向的 URL 中的主机名，或通过其他方式保留传入请求中的主机名。 因此，使用此字段可以将发送到的所有请求重定向 `https://www.contoso.com/*` 到 `https://www.fabrikam.com/*` 。
 
 ## <a name="destination-path"></a>目标路径
-如果要将 URL 的路径段替换为重定向的一部分，则可以使用新的 "路径" 值来设置此字段。 否则，你可以选择保留路径值作为重定向的一部分。 因此，使用此字段可以将发送到`https://www.contoso.com/\*`的所有请求重定向`https://www.contoso.com/redirected-site`到。
+如果要将 URL 的路径段替换为重定向的一部分，则可以使用新的 "路径" 值来设置此字段。 否则，你可以选择保留路径值作为重定向的一部分。 因此，使用此字段可以将发送到的所有请求重定向 `https://www.contoso.com/\*` 到 `https://www.contoso.com/redirected-site` 。
 
 ## <a name="query-string-parameters"></a>查询字符串参数
-还可以替换重定向 URL 中的查询字符串参数。 为了替换传入请求 URL 中的任何现有查询字符串，请将此字段设置为 "Replace"，并设置相应的值。 否则，可以通过将字段设置为 "保留" 来保留原始查询字符串集。 例如，使用此字段可以将发送到`https://www.contoso.com/foo/bar`的所有流量重定向到。 `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` 
+还可以替换重定向 URL 中的查询字符串参数。 为了替换传入请求 URL 中的任何现有查询字符串，请将此字段设置为 "Replace"，并设置相应的值。 否则，可以通过将字段设置为 "保留" 来保留原始查询字符串集。 例如，使用此字段可以将发送到的所有流量重定向 `https://www.contoso.com/foo/bar` 到 `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` 。 
 
 ## <a name="destination-fragment"></a>目标片段
 目标片段是 "#" 之后的 URL 部分，浏览器通常使用该部分在页面上的特定部分中进行陆地。 您可以设置此字段，以便将片段添加到重定向 URL。

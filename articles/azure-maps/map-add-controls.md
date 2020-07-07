@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334565"
 ---
 # <a name="add-controls-to-a-map"></a>向地图添加控件
@@ -104,10 +104,10 @@ map.controls.add([
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="导航控件选项" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>导航控件选项</a>" Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/LwBZMx/'>导航控件选项</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
 </iframe>
 
-如果要创建自定义的导航控件，请创建一个从`atlas.Control`类扩展的类，或创建一个 HTML 元素，并将其放置在地图 div 上方。 使此 UI 控件调用 maps `setCamera`函数以移动地图。 
+如果要创建自定义的导航控件，请创建一个从类扩展的类， `atlas.Control` 或创建一个 HTML 元素，并将其放置在地图 div 上方。 使此 UI 控件调用 maps `setCamera` 函数以移动地图。 
 
 ## <a name="next-steps"></a>后续步骤
 

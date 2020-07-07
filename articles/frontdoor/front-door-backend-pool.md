@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 18b165d83bfa154348842542bd8323a40330aa2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80293467"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Azure 前门中的后端和后端池
@@ -43,7 +43,7 @@ ms.locfileid: "80293467"
 
 由前门转发到后端的请求包括一个主机标头字段，后端使用它来检索目标资源。 此字段的值通常来自后端 URI，具有主机和端口。
 
-例如，对发出的请求`www.contoso.com`将具有主机标头 www.contoso.com。 如果使用 Azure 门户配置后端，则此字段的默认值为后端的主机名。 如果后端为 contoso-westus.azurewebsites.net，则在 Azure 门户中，后端主机标头的会自动填充值将为 contoso-westus.azurewebsites.net。 但是，如果使用 Azure 资源管理器模板或其他方法而不显式设置此字段，前门会将传入的主机名作为主机标头的值发送。 如果针对 www\.contoso.com 发出了请求，并且后端 contoso-westus.azurewebsites.net 的头字段为空，则前门会将主机标头设置为 www\.contoso.com。
+例如，对发出的请求 `www.contoso.com` 将具有主机标头 www.contoso.com。 如果使用 Azure 门户配置后端，则此字段的默认值为后端的主机名。 如果后端为 contoso-westus.azurewebsites.net，则在 Azure 门户中，后端主机标头的会自动填充值将为 contoso-westus.azurewebsites.net。 但是，如果使用 Azure 资源管理器模板或其他方法而不显式设置此字段，前门会将传入的主机名作为主机标头的值发送。 如果针对 www contoso.com 发出了请求 \. ，并且后端 contoso-westus.azurewebsites.net 的头字段为空，则前门会将主机标头设置为 www \. contoso.com。
 
 大多数应用后端（Azure Web 应用、Blob 存储和云服务）都需要主机标头来匹配后端的域。 但是，路由到后端的前端主机将使用不同的主机名，例如 www.contoso.net。
 
@@ -67,7 +67,7 @@ ms.locfileid: "80293467"
 ### <a name="health-probes"></a>运行状况探测
 前门会将定期 HTTP/HTTPS 探测请求发送到每个已配置的后端。 探测请求会确定每个后端的邻近性和运行状况以对最终用户请求进行负载平衡。 后端池的运行状况探测设置定义我们如何轮询 app 后端的运行状况状态。 以下设置可用于负载平衡配置：
 
-- **路径**：用于对后端池中所有后端的探测请求的 URL。 例如，如果你的某个后端为 contoso-westus.azurewebsites.net，并且路径设置为/probe/test.aspx，则如果将协议设置为 HTTP，则前门环境会将运行状况探测请求发送到 http\://contoso-westus.azurewebsites.net/probe/test.aspx。
+- **路径**：用于对后端池中所有后端的探测请求的 URL。 例如，如果你的某个后端为 contoso-westus.azurewebsites.net，并且路径设置为/probe/test.aspx，则如果将协议设置为 HTTP，则前门环境会将运行状况探测请求发送到 http \: //contoso-westus.azurewebsites.net/probe/test.aspx。
 
 - **协议**：定义是否通过 HTTP 或 HTTPS 协议将运行状况探测请求从前门发送到后端。
 

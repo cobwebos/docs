@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80546260"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>在 Azure 认知搜索中调整容量
@@ -39,13 +39,13 @@ ms.locfileid: "80546260"
 根据惯例，搜索应用程序所需的副本数往往多过分区数，尤其是在服务操作偏向于查询工作负荷的情况下。 [高可用性](#HA)部分将解释原因。
 
 > [!NOTE]
-> 添加更多的副本或分区会增加运行服务的成本，并可能会导致对结果进行排序的方式略有不同。 请务必查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)来了解添加更多节点对计费造成的影响。 [以下图表](#chart)可帮助你交叉参考特定配置所需的搜索单位数。 有关其他副本如何影响查询处理的详细信息，请参阅对[结果进行排序](search-pagination-page-layout.md#ordering-results)。
+> 添加更多的副本或分区会增加运行服务的成本，并可能在结果的排序方式上引入细微变化。 请务必查看[定价计算器](https://azure.microsoft.com/pricing/calculator/)来了解添加更多节点对计费造成的影响。 [以下图表](#chart)可帮助你交叉参考特定配置所需的搜索单位数。 有关其他副本如何影响查询处理的详细信息，请参阅[排序结果](search-pagination-page-layout.md#ordering-results)。
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并选择搜索服务。
 
-1. 在“设置”中，打开“规模”页以修改副本和分区。******** 
+1. 在“设置”中，打开“规模”页以修改副本和分区。   
 
    以下屏幕截图显示了预配有一个副本和分区的标准服务。 底部的公式指示正在使用多少个搜索单位 (1)。 如果单位价格为 $100（非实际价格），则运行此服务的每月成本平均为 $100。
 
@@ -59,7 +59,7 @@ ms.locfileid: "80546260"
 
    ![添加副本和分区](media/search-capacity-planning/2-add-2-each.png "添加副本和分区")
 
-1. 单击“保存”以确认所做的更改。****
+1. 单击“保存”以确认所做的更改。 
 
    ![确认对规模和计费所做的更改](media/search-capacity-planning/3-save-confirm.png "确认对规模和计费所做的更改")
 
@@ -68,9 +68,9 @@ ms.locfileid: "80546260"
    ![门户中的状态消息](media/search-capacity-planning/4-updating.png "门户中的状态消息")
 
 > [!NOTE]
-> 预配服务后，无法将其升级到更高的层。 必须在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅[在门户中创建 Azure 认知搜索服务](search-create-service-portal.md)。
+> 预配服务后，无法升级到更高的层。 必须在新层中创建搜索服务，并重新加载索引。 有关服务预配的帮助，请参阅[在门户中创建 Azure 认知搜索服务](search-create-service-portal.md)。
 >
-> 另外，分区和副本由服务以独占方式进行管理。 没有处理器关联的概念，也没有将工作负荷分配到特定节点。
+> 此外，分区和副本是由服务在内部专门管理的。 不存在处理器关联或者将工作负荷分配到特定节点的概念。
 >
 
 <a id="chart"></a>
@@ -86,10 +86,10 @@ ms.locfileid: "80546260"
 | **1 个副本** |1 个 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 个副本** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 个副本** |3 SU |6 SU |9 SU |12 SU |18 SU |36 个 SU |
-| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |空值 |
-| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |空值 |
-| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |空值 |
-| **12 副本** |12 SU |24 SU |36 个 SU |空值 |空值 |空值 |
+| **4 个副本** |4 SU |8 SU |12 SU |16 SU |24 SU |不适用 |
+| **5 副本** |5 SU |10 SU |15 SU |20 SU |30 SU |不适用 |
+| **6 个副本** |6 SU |12 SU |18 SU |24 SU |36 个 SU |不适用 |
+| **12 副本** |12 SU |24 SU |36 个 SU |不适用 |不适用 |不适用 |
 
 Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请参阅 [Pricing Details](https://azure.microsoft.com/pricing/details/search/)（定价详细信息）。
 
@@ -117,17 +117,17 @@ Azure 认知搜索的服务级别协议 (SLA) 针对查询操作，以及由文�
 
 目前没有任何内置的机制可实现灾难恢复。 添加分区或副本并不是实现灾难恢复目标的正确策略。 最常见的方法是通过在另一区域中设置另一个搜索服务，在服务级别添加冗余。 与索引重建期间的可用性一样，重定向或故障转移逻辑必须来自代码。
 
-## <a name="estimate-replicas"></a>估计副本
+## <a name="estimate-replicas"></a>评估副本
 
-在生产服务中，出于 SLA 目的应分配三个副本。 如果查询性能缓慢，可以添加副本，以便使索引的其他副本联机以支持更大的查询工作负荷，并对多个副本上的请求进行负载均衡。
+在生产服务中，应分配三个副本来满足 SLA 的要求。 如果遇到查询性能缓慢的问题，可以添加副本，使更多的索引副本联机，以支持更大的查询工作负荷，并通过多个副本对请求进行负载均衡。
 
-我们不提供满足查询负载所需的副本数的指导。 查询性能取决于查询复杂性和争用工作负荷。 尽管添加副本会明显提高性能，但结果不一定有线性改善：添加三个副本并不保证带来三倍的吞吐量。
+我们不会提供有关需要多少个副本来适应查询负载的指导。 查询性能取决于查询复杂性和争用资源的工作负荷。 尽管添加副本会明显提高性能，但结果不一定有线性改善：添加三个副本并不保证带来三倍的吞吐量。
 
-有关评估解决方案的 QPS 的指导，请参阅[性能](search-performance-optimization.md)和[监视器查询](search-monitor-queries.md)的缩放
+有关评估解决方案的 QPS 的指导，请参阅[性能缩放](search-performance-optimization.md)和[监视查询](search-monitor-queries.md)
 
-## <a name="estimate-partitions"></a>估计分区
+## <a name="estimate-partitions"></a>评估分区
 
-[你选择的层](search-sku-tier.md)决定分区大小和速度，每个层都围绕一组适用于各种方案的特征进行了优化。 如果选择更高的层级，则可能需要的分区比使用 S1 更少。 你需要通过自行指导测试回答的问题之一是，在较低层预配的服务上，更大和更昂贵的分区产生的性能是否比两个便宜的分区更好。
+[所选的层](search-sku-tier.md)确定了分区大小和速度，每个层已根据一组适合不同方案的特征进行优化。 如果选择更高端的层，所需的分区数可能比使用 S1 时更少。 需要通过自我引导式测试解答的一个问题是，对于性能而言，使用更大且更昂贵的分区，是否比在较低层上预配的服务中使用两个更廉价的分区更好。
 
 需要以近乎实时的速度刷新数据的搜索应用程序，需要的分区数在比例上要多于副本。 添加分区可将读/写操作分配到更多的计算资源。 此外，还能提供更多磁盘空间来存储更多的索引和文档。
 

@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 9c9483af191e5439af0c0b5e433187d6475c178c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335717"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>使用事件网格对 Azure Maps 事件做出响应 
@@ -28,9 +28,9 @@ Azure 事件网格是一种完全托管的事件路由服务，它使用发布-�
 
 ## <a name="azure-maps-events-types"></a>Azure Maps 事件类型
 
-事件网格使用[事件订阅](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)将事件消息路由到订阅方。 Azure Maps 帐户发出以下事件类型： 
+事件网格使用[事件订阅](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)将事件消息路由到订阅服务器。 Azure Maps 帐户发出以下事件类型： 
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | 当接收的坐标从给定地域隔离区内的外部移动到内部时引发 |
 | Microsoft.Maps.GeofenceExited | 当接收的坐标从给定的地域隔离区内中移到外部时引发 |
@@ -81,8 +81,8 @@ Azure 事件网格是一种完全托管的事件路由服务，它使用发布-�
 处理 Azure Maps 地理围栏事件的应用程序应遵循以下建议的做法：
 
 * 将多个订阅配置为将事件路由到同一事件处理程序。 不可假定事件均来自某个特定的源，这很重要。 请始终检查消息主题，以确保消息来自于所需的源。
-* 使用响应`X-Correlation-id`标头中的字段来了解有关对象的信息是否是最新的。 消息可能不按顺序到达，或者延迟达到。
-* 当在将 mode 参数设置为`EnterAndExit`的情况下调用地域隔离区内 API 中的 GET 或 POST 请求时，将为地域隔离区内中的每个几何图形（其状态已从以前的地域隔离区内 API 调用更改）生成一个 Enter 或退出事件。
+* 使用 `X-Correlation-id` 响应标头中的字段来了解有关对象的信息是否是最新的。 消息可能不按顺序到达，或者延迟达到。
+* 当在将 mode 参数设置为的情况下调用地域隔离区内 API 中的 GET 或 POST 请求时，将为 `EnterAndExit` 地域隔离区内中的每个几何图形（其状态已从以前的地域隔离区内 API 调用更改）生成一个 Enter 或退出事件。
 
 ## <a name="next-steps"></a>后续步骤
 

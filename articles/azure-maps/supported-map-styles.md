@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80334041"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps 支持的地图样式
@@ -34,12 +34,12 @@ Azure Maps 支持几种不同的内置地图样式，如下所述。
 **空白**和**blank_accessible**地图样式提供了一个空白画布，可在其上对数据进行可视化处理。 **Blank_accessible**样式将继续提供屏幕阅读器更新和地图的位置详细信息，即使未显示基本地图。
 
 > [!Note]
-> 在 web SDK 中，可以通过设置地图 DIV 元素的 CSS `background-color`样式来更改地图的背景色。
+> 在 web SDK 中，可以通过设置地图 DIV 元素的 CSS 样式来更改地图的背景色 `background-color` 。
 
 **适用 API：**
 * Web SDK 地图控件
 
-## <a name="satellite"></a>卫星 
+## <a name="satellite"></a>satellite 
 **卫星**样式是卫星和航拍图像的组合。
 
 ![卫星磁贴地图样式](./media/supported-map-styles/satellite.png)

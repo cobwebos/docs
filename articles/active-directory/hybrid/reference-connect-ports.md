@@ -1,5 +1,5 @@
 ---
-title: 混合标识所需的端口和协议 - Azure | Microsoft 文档
+title: 混合标识所需的端口和协议 - Azure | Microsoft Docs
 description: 此技术参考页面描述了需要为 Azure AD Connect 打开的端口
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da318840426d1c0b94eab06b89ff3152df9d26fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331091"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>混合标识所需的端口和协议
@@ -35,11 +35,11 @@ ms.locfileid: "80331091"
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |在目标林中进行 DNS 查找。 |
 | Kerberos |88 (TCP/UDP) |对 AD 林进行 Kerberos 身份验证。 |
-| MS-RPC |135 (TCP) |该端口绑定到 AD 林后，会在初始配置 Azure AD Connect 向导期间及密码同步期间使用。 |
-| LDAP |389 (TCP/UDP) |用于从 AD 导入数据。 使用 Kerberos 签名和封装加密数据。 |
+| MS-RPC |135 (TCP) |该端口绑定到 AD 林后，将在初始配置 Azure AD Connect 向导期间及密码同步期间使用。 |
+| LDAP |389 (TCP/UDP) |用于从 AD 导入数据。 数据将使用 Kerberos 签名和签章加密。 |
 | SMB | 445 (TCP) |由无缝 SSO 用于在 AD 林中创建计算机帐户。 |
 | LDAP/SSL |636 (TCP/UDP) |用于从 AD 导入数据。 数据传输经过签名和加密。 仅在使用 TLS 时使用。 |
-| RPC |49152-65535（随机高 RPC 端口）(TCP) |该端口绑定到 AD 林后，会在初始配置 Azure AD Connect 期间及密码同步期间使用。 有关详细信息，请参阅 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
+| RPC |49152-65535（随机高 RPC 端口）(TCP) |该端口绑定到 AD 林后，将在初始配置 Azure AD Connect 期间及密码同步期间使用。 有关详细信息，请参阅 [KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017) 和 [KB224196](https://support.microsoft.com/kb/224196)。 |
 |WinRM  | 5985 (TCP) |仅在通过 Azure AD Connect 向导使用 gMSA 安装 AD FS 时使用|
 |AD DS Web 服务 | 9389 (TCP) |仅在通过 Azure AD Connect 向导使用 gMSA 安装 AD FS 时使用 |
 
@@ -48,7 +48,7 @@ ms.locfileid: "80331091"
 
 | 协议 | 端口 | 说明 |
 | --- | --- | --- |
-| HTTP |80 (TCP) |用于下载 Crl （证书吊销列表）以验证 TLS/SSL 证书。 |
+| HTTP |80 (TCP) |用于下载 CRL（证书吊销列表）以验证 TLS/SSL 证书。 |
 | HTTPS |443(TCP) |用来与 Azure AD 同步。 |
 
 有关需要在防火墙中打开的 URL 和 IP 地址的列表，请参阅 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)和 [Azure AD Connect 连接故障排除](tshoot-connect-connectivity.md#troubleshoot-connectivity-issues-in-the-installation-wizard)。
@@ -58,7 +58,7 @@ ms.locfileid: "80331091"
 
 | 协议 | 端口 | 说明 |
 | --- | --- | --- |
-| HTTP |80 (TCP) |用于下载 Crl （证书吊销列表）以验证 TLS/SSL 证书。 |
+| HTTP |80 (TCP) |用于下载 CRL（证书吊销列表）以验证 TLS/SSL 证书。 |
 | HTTPS |443(TCP) |用来与 Azure AD 同步。 |
 | WinRM |5985 |WinRM 侦听器 |
 
@@ -104,7 +104,7 @@ ms.locfileid: "80331091"
 
 | 协议 | 端口 | 说明 |
 | --- | --- | --- |
-| HTTPS |443（TCP） |出站 |
+| HTTPS |443(TCP) |出站 |
 | Azure 服务总线 |5671（TCP） |出站 |
 
 最新版本的代理不再需要 Azure 服务总线端口5671。 最新 Azure AD Connect Health 代理版本仅需端口443。

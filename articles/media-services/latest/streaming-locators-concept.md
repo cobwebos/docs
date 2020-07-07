@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 41b2d0ad1e072fb2bf5860ae80f8f25f886b37f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582680"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
@@ -24,7 +24,7 @@ ms.locfileid: "80582680"
 
 创建**流定位符**的过程称为发布。 默认情况下，除非配置可选的开始和结束时间，否则调用 API 后，**流定位符**立即生效，并持续到被删除为止。 
 
-创建**流定位器**时，必须指定**资产**名称和**流式处理策略**名称。 有关详细信息，请参阅下列主题：
+创建**流定位器**时，必须指定**资产**名称和**流式处理策略**名称。 有关详细信息，请参阅以下主题：
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
@@ -35,7 +35,7 @@ ms.locfileid: "80582680"
 ## <a name="considerations"></a>注意事项
 
 * **流定位器**不可更新。 
-* 属于日期/时间类型的流式处理定位符**** 的属性始终采用 UTC 格式。
+* 属于日期/时间类型的流式处理定位符  的属性始终采用 UTC 格式。
 * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流式处理定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints.md)。
 
 ## <a name="create-streaming-locators"></a>创建流定位器  
@@ -107,4 +107,4 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ## <a name="next-steps"></a>后续步骤
 
-[如何创建流式处理定位符并生成 Url](create-streaming-locator-build-url.md)
+[如何创建流式处理定位符并生成 URL](create-streaming-locator-build-url.md)

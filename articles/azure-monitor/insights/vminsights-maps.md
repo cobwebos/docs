@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: acb96984a49e4ad8535f87a41da11b3b63ae207b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80283848"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor 的地图功能来了解应用程序组件
@@ -87,7 +87,7 @@ ms.locfileid: "80283848"
 
 若要直接从 VM 访问用于 VM 的 Azure Monitor：
 
-1. 在 Azure 门户中，选择 "**虚拟机**"。 
+1. 在 Azure 门户中，选择“虚拟机”。 
 2. 在列表中选择一个 VM。 在 "**监视**" 部分，选择 "**见解**"。  
 3. 选择“映射”选项卡****。
 
@@ -101,7 +101,7 @@ ms.locfileid: "80283848"
 
 若要直接从虚拟机规模集访问用于 VM 的 Azure Monitor：
 
-1. 在 Azure 门户中选择“虚拟机规模集”****。
+1. 在 Azure 门户中选择“虚拟机规模集”。
 2. 在列表中选择一个 VM。 然后在 "**监视**" 部分选择 "**见解**"。  
 3. 选择“映射”选项卡****。
 
@@ -114,13 +114,13 @@ ms.locfileid: "80283848"
 ![直接 VM 映射概述](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
->也可以从虚拟机规模集的“实例”视图访问特定实例的映射。**** 在 "**设置**" 部分中，请参阅**实例** > **见解**。
+>也可以从虚拟机规模集的“实例”视图访问特定实例的映射。**** 在 "**设置**" 部分中，请参阅**实例**  >  **见解**。
 
 ## <a name="view-a-map-from-azure-monitor"></a>从 Azure Monitor 查看映射
 
 在 Azure Monitor 中，映射功能将提供 VM 及其依赖项的全局视图。 若要在 Azure Monitor 中访问映射功能：
 
-1. 在 Azure 门户中，选择 "**监视器**"。 
+1. 在 Azure 门户中选择“监视”。 
 2. 在 "**见解**" 部分，选择 "**虚拟机**"。
 3. 选择“映射”选项卡****。
 

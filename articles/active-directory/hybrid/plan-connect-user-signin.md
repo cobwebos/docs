@@ -17,35 +17,35 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80331266"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 用户登录选项
-Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，帮助选择登录到 Azure AD 时需要使用的标识。
+Azure Active Directory (Azure AD) Connect 可让用户使用同一组密码登录云和本地资源。 本文介绍每个标识模型的重要概念，以帮助你选择登录到 Azure AD 时想要使用的标识。
 
 如果已熟悉了 Azure AD 标识模型，并且想详细了解某个特定的方法，则请参阅相应的链接：
 
-* 使用[无缝单一登录 (SSO)](how-to-connect-sso.md) 的[密码哈希同步](#password-hash-synchronization)
-* 使用[无缝单一登录 (SSO) ](how-to-connect-sso.md)的[直通身份验证](how-to-connect-pta.md)
-* [（使用 Active Directory 联合身份验证服务 (AD FS)）联合的 SSO](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* 含[无缝单一登录 (SSO)](how-to-connect-sso.md) 的[密码哈希同步](#password-hash-synchronization)
+* 含[无缝单一登录 (SSO)](how-to-connect-sso.md) 的[直通身份验证](how-to-connect-pta.md)
+* [联合 SSO（含 Active Directory 联合身份验证服务 (AD FS)）](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 * [使用 PingFederate 进行联合身份验证](#federation-with-pingfederate)
 
 > [!NOTE] 
-> 请记住，通过为 Azure AD 配置联合，可以建立 Azure AD 租户和联合域之间的信任，这一点很重要。 拥有此信任的联合域用户将有权访问该租户内的 Azure AD 云资源。  
+> 请务必记住，通过为 Azure AD 配置联合，可以在 Azure AD 租户与联合域之间建立信任。 有了此可信的联合域，用户将能够在租户中访问 Azure AD 云资源。  
 >
 
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>为组织选择用户登录方法
-实现 Azure AD Connect 的第一个决策是选择用户用于登录的身份验证方法。 请务必选择符合组织安全性和高级要求的正确方法。 身份验证至关重要，因为它将验证用户的身份是否可访问云中的应用和数据。 若要选择正确身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。
+实施 Azure AD Connect 的第一项决策是选择用户登录时要使用的身份验证方法。 必须确保选择符合组织安全要求和高级要求的适当方法。 身份验证至关重要，因为它用于验证访问云中应用和数据的用户的身份。 若要选择适当的身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。
 
 Azure AD 支持以下身份验证方法： 
 
-* 云身份验证：选择此身份验证方法时，Azure AD 处理用户登录的身份验证过程****。 使用云身份验证时具有两个选择： 
-   * 密码哈希同步 (PHS) - 通过密码哈希同步，用户可使用与其在本地使用的相同用户名和密码，不必部署除 Azure AD Connect 外的任意其他基础结构****。 
+* **云身份验证** - 如果选择此身份验证方法，Azure AD 将处理用户登录时的身份验证过程。 使用云身份验证时具有两个选择： 
+   * **密码哈希同步 (PHS)** - 通过密码哈希同步，用户可以使用与其在本地使用的相同用户名和密码，而无需部署除 Azure AD Connect 以外的其他任何基础结构。 
    * 直通身份验证 (PTA) - 此选项类似于密码哈希同步，但使用本地软件代理为具有强大安全性和合规性策略的组织提供简单的密码验证****。
-* 联合身份验证 - 选择此身份验证方法时，Azure AD 将身份验证过程移交给单独的受信任身份验证系统（例如 AD FS 或第三方联合身份验证系统）来验证用户登录****。 
+* **联合身份验证** - 如果选择此身份验证方法，Azure AD 会将身份验证过程移交给单独的受信任身份验证系统（例如 AD FS 或第三方联合身份验证服务）来验证用户的登录。 
 
 由于大多数组织只想让用户登录 Office 365、SaaS 应用程序和其他基于 Azure AD 的资源，因此，我们建议使用默认的密码哈希同步选项。
  
@@ -68,12 +68,12 @@ Azure AD 支持以下身份验证方法：
 此外，还可以对公司网络中已加入域的计算机上的用户启用单一登录。 通过单一登录，受支持的用户只需输入用户名即可安全访问云资源。
 ![直通身份验证](./media/plan-connect-user-signin/pta.png)
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 - [直通身份验证](how-to-connect-pta.md)
 - [单一登录](how-to-connect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>在 Windows Server 2012 R2 中使用新的或现有 AD FS 场进行联合身份验证
-凭借联合登录，用户可以使用其本地密码登录到 Azure 基于 AD 的服务。 当用户处于企业网络上时，他们甚至无需输入其密码。 使用 AD FS 的联合身份验证选项，可在 Windows Server 2012 R2 中部署新的或现有的 AD FS 场。 如果选择指定现有场，Azure AD Connect 会在场与 Azure AD 之间配置信任，使用户能够登录。
+凭借联合登录，用户可以使用其本地密码登录到 Azure 基于 AD 的服务。 当用户处于企业网络上时，他们甚至无需输入其密码。 使用 AD FS 的联合身份验证选项，可在 Windows Server 2012 R2 中部署新的或现有的 AD FS 场。 如果选择指定现有场，Azure AD Connect 将在场与 Azure AD 之间配置信任，使你的用户能够登录。
 
 <center>
 
@@ -85,13 +85,13 @@ Azure AD 支持以下身份验证方法：
 
 * 用于联合服务器的 Windows Server 2012 R2 服务器。
 * 用于 Web 应用程序代理的 Windows Server 2012 R2 服务器。
-* 一个 .pfx 文件，其中包含一个适用于所需联合身份验证服务名称的 TLS/SSL 证书。 例如：fs.contoso.com。
+* 一个 .pfx 文件，其中包含一个所需联合服务名称的 TLS/SSL 证书。 例如：fs.contoso.com。
 
 如果要部署新场或使用现有场，则需要：
 
 * 联合服务器上的本地管理员凭据。
 * 要将 Web 应用程序代理角色部署在上面的任何工作组服务器（未加入域）上的本地管理员凭据。
-* 在其中运行向导的计算机能够通过 Windows 远程管理连接到要安装 AD FS 或 Web 应用程序代理的任何其他计算机。
+* 运行向导的计算机能够通过 Windows 远程管理连接到要安装 AD FS 或 Web 应用程序代理的任何其他计算机。
 
 有关详细信息，请参阅[使用 AD FS 配置 SSO](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)。
 
@@ -115,7 +115,7 @@ Azure AD 支持以下身份验证方法：
 用户的 UPN 的格式为 username@domain。 例如，对于名为“contoso.com”的 Active Directory 域，名为 John 的用户的 UPN 可能是“john@contoso.com”。 用户的 UPN 基于 RFC 822。 尽管 UPN 和电子邮件共享相同的格式，但用户的 UPN 值与用户的电子邮件地址可能相同，也可能不相同。
 
 ### <a name="user-principal-name-in-azure-ad"></a>Azure AD 中的用户主体名
-Azure AD Connect 向导使用 userPrincipalName 属性，或让你从本地指定（在自定义安装中）要用作 Azure AD 中的用户主体名的属性。 这是用于登录 Azure AD 的值。 如果 userPrincipalName 属性的值不对应于 Azure AD 中已验证的域，则 Azure AD 会将该值替换为默认的 .onmicrosoft.com 值。
+Azure AD Connect 向导使用 userPrincipalName 属性，或让你从本地指定要用作 Azure AD 中的用户主体名的属性（在自定义安装中）。 这是用于登录 Azure AD 的值。 如果 userPrincipalName 属性的值不对应于 Azure AD 中已验证的域，则 Azure AD 会将该值替换为默认的 .onmicrosoft.com 值。
 
 Azure Active Directory 中的每个目录随附内置域名，格式为 contoso.onmicrosoft.com，方便你开始使用 Azure 或其他 Microsoft 服务。 可以使用自定义域来改善和简化登录体验。 有关 Azure AD 中的自定义域名以及如何验证域的信息，请阅读[将自定义域名添加到 Azure Active Directory](../fundamentals/add-custom-domain.md)。
 
@@ -123,7 +123,7 @@ Azure Active Directory 中的每个目录随附内置域名，格式为 contoso.
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>使用 Azure AD Connect 配置 Azure AD 登录
 Azure AD 登录体验取决于 Azure AD是否能够匹配要同步到某个自定义域（在 Azure AD 目录中已验证）的用户的用户主体名后缀。 在配置 Azure AD 登录设置时 Azure AD Connect 将提供帮助，使用户在云中能获得类似于本地登录的登录体验。
 
-Azure AD Connect 列出了为域定义的 UPN 后缀，并尝试在 Azure AD 中将其与自定义域进行匹配。 然后它会帮助执行需要执行的相应操作。
+Azure AD Connect 列出了为域定义的 UPN 后缀，并尝试在 Azure AD 中将其与自定义域进行匹配。 然后它会帮助你执行需要执行的相应操作。
 Azure AD 登录页列出了为本地 Active directory 定义的 UPN 后缀，并根据每个后缀显示相应的状态。 状态值可以是下列其中一项：
 
 | 状态 | 说明 | 所需操作 |
@@ -132,7 +132,7 @@ Azure AD 登录页列出了为本地 Active directory 定义的 UPN 后缀，并
 | 未验证 |Azure AD Connect 在 Azure AD 中找到了匹配的但未验证的自定义域。 如果域未验证，则在同步后此域的用户的 UPN 后缀将更改为默认的 .onmicrosoft.com 后缀。 | [在 Azure AD 中验证自定义域。](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | 未添加 |Azure AD Connect 未找到对应于 UPN 后缀的自定义域。 如果未在 Azure 中添加域且域未进行验证，则此域的用户的 UPN 后缀将更改为默认的 .onmicrosoft.com 后缀。 | [添加和验证与 UPN 后缀相对应的自定义域。](../fundamentals/add-custom-domain.md) |
 
-Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，以及 Azure AD 中对应的自定义域与当前验证状态。 在自定义安装中，现在可以在“Azure AD 登录”**** 页上选择用户主体名的属性。
+Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，以及 Azure AD 中对应的自定义域与当前验证状态。 在自定义安装中，现在可以在“Azure AD 登录”页上选择用户主体名的属性。 
 
 ![Azure AD 登录页](./media/plan-connect-user-signin/custom_azure_sign_in.png)
 
@@ -162,9 +162,9 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 | 已验证 |在这种情况下，我们拥有已在 Azure AD 中为 UPN 后缀添加并验证了的自定义域 contoso.com。 在用户被同步到 Azure AD 后，用户可以使用其本地用户主体名（例如 user@contoso.com）登录到 Azure。 |
 
 ###### <a name="ad-fs-federation"></a>AD FS 联合
-无法创建与 Azure AD 中默认的 .onmicrosoft.com 域或 Azure AD 中未验证的自定义域的联合。 在运行 Azure AD Connect 向导时，如果选择要与未验证的域创建联合，Azure AD Connect 将发出提示，并提供要创建的其中包含为域托管 DNS 位置的所需记录。 有关详细信息，请参阅[验证选择用于联合的 Azure AD 域](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
+无法创建与 Azure AD 中默认的 .onmicrosoft.com 域或 Azure AD 中未验证的自定义域的联合。 在运行 Azure AD Connect 向导时，如果选择使用未验证的域创建联合，则 Azure AD Connect 将发出提示，并指出要为域创建的将托管 DNS 的必需记录。 有关详细信息，请参阅[验证选择用于联合的 Azure AD 域](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
 
-如果选择的用户登录选项为“与 AD FS 联合”****，则必须有一个自定义域才能继续在 Azure AD 中创建联合。 针对我们的讨论，这意味着我们应在 Azure AD 目录中添加自定义域 contoso.com。
+如果选择的用户登录选项为“与 AD FS 联合”，则必须有一个自定义域才能继续在 Azure AD 中创建联合。  针对我们的讨论，这意味着我们应在 Azure AD 目录中添加自定义域 contoso.com。
 
 | 状态 | 对 Azure 用户登录体验的影响 |
 |:---:|:--- |
@@ -173,23 +173,23 @@ Azure AD 登录页列出了针对本地 Active Directory 定义的 UPN 后缀，
 | 已验证 |在这种情况下，可以继续进行配置，而不需要采取任何进一步的操作。 |
 
 ## <a name="changing-the-user-sign-in-method"></a>更改用户登录方法
-可以在使用向导完成 Azure AD Connect 的初始配置后，使用 Azure AD Connect 中的可用任务在“联合”、“密码哈希同步”或“直通身份验证”之间更改用户的登录方法。 再次运行 Azure AD Connect 向导，随后将看到可执行的任务列表。 在任务列表中选择“更改用户登录”。****
+可以在使用向导完成 Azure AD Connect 的初始配置后，使用 Azure AD Connect 中的可用任务在“联合”、“密码哈希同步”或“直通身份验证”之间更改用户的登录方法。 再次运行 Azure AD Connect 向导，随后将看到可执行的任务列表。 在任务列表中选择“更改用户登录”。 
 
 ![更改用户登录](./media/plan-connect-user-signin/changeusersignin.png)
 
-在下一页上，系统将要求提供 Azure AD 的凭据。
+在下一页上，系统将要求你提供 Azure AD 的凭据。
 
 ![连接到 Azure AD](./media/plan-connect-user-signin/changeusersignin2.png)
 
-在“用户登录”**** 页上，选择所需的用户登录选项。
+在“用户登录”  页上，选择所需的用户登录选项。
 
 ![连接到 Azure AD](./media/plan-connect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> 如果只是要暂时切换到密码哈希同步，请选中“请勿切换用户帐户”**** 复选框。 不选中该选项会将每个用户转换为联合用户，并且该操作可能需要花费几小时。
+> 如果只是要暂时切换到密码哈希同步，请选中“请勿切换用户帐户”  复选框。 不选中该选项会将每个用户转换为联合用户，并且该操作可能需要花费几小时。
 >
 >
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
-- 详细了解[Azure AD Connect 的设计概念](plan-connect-design-concepts.md)。
+- 了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+- 了解有关 [Azure AD Connect 设计概念](plan-connect-design-concepts.md)的详细信息。

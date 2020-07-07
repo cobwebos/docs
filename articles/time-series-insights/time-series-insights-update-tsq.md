@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: 23094ec71dac5780def10e16b90de0b818ef3c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80284885"
 ---
 # <a name="data-querying-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据查询
@@ -38,7 +38,7 @@ ms.locfileid: "80284885"
 ## <a name="environment-apis"></a>环境 API
 
 * [获取环境 API](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get)：返回调用方有权访问的环境的列表。
-* [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)：通过事件时间戳`$ts`返回事件计数的分布。 此 API 通过返回被分解为时间间隔（如果有）的事件计数来帮助确定环境中是否存在任何事件。
+* [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)：通过事件时间戳返回事件计数的分布 `$ts` 。 此 API 通过返回被分解为时间间隔（如果有）的事件计数来帮助确定环境中是否存在任何事件。
 * [获取事件架构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)：返回给定搜索范围的事件架构元数据。 此 API 可帮助检索给定搜索范围的架构中可用的所有元数据和属性。
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>时序模型-查询 (TSM-Q) API

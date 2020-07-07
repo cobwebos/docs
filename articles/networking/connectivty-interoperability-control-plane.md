@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518271"
 ---
 # <a name="interoperability-in-azure--control-plane-analysis"></a>Azure 中的互操作性：控制平面分析
@@ -29,7 +29,7 @@ ms.locfileid: "80518271"
 
 ![1][1]
 
-VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由器 (MSEE) 的 ASN。 ExpressRoute 网关使用专用 ASN（值为 65515），而 MSEE 全局使用公共 ASN（值为 12076）   。 配置 ExpressRoute 对等互连时，由于 MSEE 是对等方，因此，需要将 12076 用作对等 ASN  。 在 Azure 端，MSEE 与 ExpressRoute 网关建立 eBGP 对等互连。 MSEE 为每个 ExpressRoute 对等互连建立的双重 eBGP 对等互连在控制平面级别是透明的。 因此，当你查看 ExpressRoute 路由表时，将看到 vnet 的 ExpressRoute 网关 ASN 用于 VNet 的前缀。 
+VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由器 (MSEE) 的 ASN。 ExpressRoute 网关使用专用 ASN（值为 65515），而 MSEE 全局使用公共 ASN（值为 12076）   。 配置 ExpressRoute 对等互连时，由于 MSEE 是对等方，因此，需要将 12076 用作对等 ASN  。 在 Azure 端，MSEE 与 ExpressRoute 网关建立 eBGP 对等互连。 MSEE 为每个 ExpressRoute 对等互连建立的双重 eBGP 对等互连在控制平面级别是透明的。 因此，在查看 ExpressRoute 路由表时，会看到 VNet 的 ExpressRoute 网关 ASN 是 VNet 的前缀。 
 
 下图显示了 ExpressRoute 路由表示例： 
 
@@ -45,7 +45,7 @@ VNet 的 ExpressRoute 网关的 ASN 不同于 Microsoft Enterprise Edge 路由�
 
 ## <a name="on-premises-location-1-and-the-branch-vnet-perspective-via-a-site-to-site-vpn"></a>本地位置 1 和分支 VNet 通过站点到站点 VPN 建立连接的透视图
 
-本地位置1和分支 VNet 通过站点到站点 VPN 连接连接到集线器 VNet 的 VPN 网关。 它们共享同一个拓扑透视图，如下图所示：
+本地位置 1 和分支 VNet 都通过站点到站点 VPN 连接连接到中心 VNet 的 VPN 网关。 它们共享同一个拓扑透视图，如下图所示：
 
 ![3][3]
 

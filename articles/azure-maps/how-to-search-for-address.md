@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335434"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure Maps 搜索服务搜索位置
@@ -27,7 +27,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 * 进行[反向地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，将坐标位置转换为街道地址
 * 使用[搜索地址反向交叉街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)搜索交叉街道
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，你需要先创建一个 Azure Maps 帐户，并向你显示 Maps 帐户订阅密钥。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
@@ -39,7 +39,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
 如果你有一组要地理编码的地址，则可以使用[Post Search 地址批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch)通过单个 API 调用发送一批查询。
 
-1. 在 Postman 中，单击 "**新建请求** | **获取请求**并将其命名为**地址搜索**"。
+1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**并将其命名为**地址搜索**"。
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL，并选择授权协议（如果有）。****
 
@@ -55,11 +55,11 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
 ![地址搜索](./media/how-to-search-for-address/address_search_params.png) 
 
-| 密钥 | 值 | 
+| Key | 值 | 
 |------------------|-------------------------| 
 | api-version | 1.0 | 
-| subscription-key | \<你的 Azure Maps 密钥\> | 
-| query | 400 Broad St, Seattle, WA 98109 | 
+| subscription-key | \<your Azure Maps key\> | 
+| 查询 | 400 Broad St, Seattle, WA 98109 | 
 
 4. 单击“发送”并查看响应正文。**** 
 
@@ -73,9 +73,9 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
 6. 将以下键/值对添加至 Params 部分****，并单击“发送”****： 
 
-| 密钥 | 值 | 
+| Key | 值 | 
 |-----|------------| 
-| typeahead | true | 
+| typeahead | 是 | 
 
 **typeahead** 标志告知地址搜索 API 要将查询视为部分输入，并返回预测值的数组。
 
@@ -105,11 +105,11 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
     ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | 密钥 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | pizza |
+    | subscription-key | \<your Azure Maps key\> |
+    | 查询 | pizza |
 
 4. 单击“发送”并查看响应正文。****
 
@@ -119,7 +119,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
 5. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
 
-    | 密钥 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | countrySet | 美国 |
   
@@ -131,7 +131,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
     ![模糊搜索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | 密钥 | 值 |
+    | Key | 值 |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -143,7 +143,7 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
 如果你有一组要反转地理编码的坐标位置，则可以使用[Post Search 地址反向批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch)通过单个 API 调用发送一批查询。
 
 
-1. 在 Postman 中，单击 "**新建请求** | **获取请求**" 并将其命名为 "**反向地址搜索**"。
+1. 在 Postman 中，单击 "**新建请求**  |  **获取请求**" 并将其命名为 "**反向地址搜索**"。
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。****
   
@@ -159,11 +159,11 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
   
     ![反向地址搜索参数](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | 密钥 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | 47.591180,-122.332700 |
+    | subscription-key | \<your Azure Maps key\> |
+    | 查询 | 47.591180,-122.332700 |
   
 4. 单击“发送”并查看响应正文。****
 
@@ -171,39 +171,39 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
   
 5. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
 
-    | 密钥 | 值 |
+    | Key | 值 |
     |-----|------------|
-    | 数字 | true |
+    | number | 是 |
 
     如果[number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) query 参数与请求一起发送，则响应可能包含街道的一侧（左侧或右侧）以及该数字的偏移位置。
   
 6. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
 
-    | 密钥 | 值 |
+    | Key | 值 |
     |-----|------------|
-    | returnSpeedLimit | true |
+    | returnSpeedLimit | 是 |
   
     设置[returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)查询参数后，响应将返回已发布的速度限制。
 
 7. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
 
-    | 密钥 | 值 |
+    | Key | 值 |
     |-----|------------|
-    | returnRoadUse | true |
+    | returnRoadUse | 是 |
 
     如果设置了 [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 查询参数，响应将返回街道级别的反向地理编码的道路用途数组。
 
 8. 将以下键/值对添加至 Params 部分****，并单击“发送”****：
 
-    | 密钥 | 值 |
+    | Key | 值 |
     |-----|------------|
-    | roadUse | true |
+    | roadUse | 是 |
 
     可以使用[roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)查询参数将反向地理编码查询限制为特定类型的道路。
   
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址跨街道搜索搜索交叉街道
 
-1. 在 Postman 中，单击 "**新建请求** | " "**GET 请求**" 并将其命名为 "**反向地址交叉街道搜索**"。
+1. 在 Postman 中，单击 "**新建请求**" "  |  **GET 请求**" 并将其命名为 "**反向地址交叉街道搜索**"。
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。****
   
@@ -217,11 +217,11 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
   
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：****
   
-    | 密钥 | 值 |
+    | Key | 值 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | subscription-key | \<你的 Azure Maps 密钥\> |
-    | query | 47.591180,-122.332700 |
+    | subscription-key | \<your Azure Maps key\> |
+    | 查询 | 47.591180,-122.332700 |
   
 4. 单击“发送”并查看响应正文。****
 

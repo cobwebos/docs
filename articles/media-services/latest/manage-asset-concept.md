@@ -14,10 +14,10 @@ ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80582200"
 ---
 # <a name="manage-assets"></a>管理资产
@@ -26,7 +26,7 @@ ms.locfileid: "80582200"
 
 * 将媒体文件上传到资产；
 * 将实时传送流引入和存档到资产；
-* 将分析作业的编码结果输出到资产；
+* 将分析作业编码的结果输出到资产，
 * 发布媒体以进行流式处理； 
 * 从资产中下载文件。
 
@@ -58,7 +58,7 @@ ms.locfileid: "80582200"
 
     可以使用媒体服务 API [列出资产容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。
 
-    AssetContainerSas.listContainerSas 采用 [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 参数，在此参数中可以设置 `expiryTime`。  时间应设置为小于 24 小时。
+    AssetContainerSas.listContainerSas 采用 [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 参数，在此参数中可以设置 `expiryTime`。 时间应设置为小于 24 小时。
 
     [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) 返回多个 SAS URL，因为每个存储帐户有两个存储帐户密钥。 存储帐户有两个密钥，因为它有助于进行故障转移并无缝轮换存储帐户密钥。 第一个 SAS URL 表示第一个存储帐户密钥，第二个 SAS URL 表示第二个密钥。
 3. 使用 Azure 存储 API 或 SDK（例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
@@ -116,7 +116,7 @@ curl -X PUT \
 
 ## <a name="output-the-results-of-a-job-to-an-asset"></a>将作业结果输出到资产
 
-在媒体服务中，处理视频（例如编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)结果。
+在媒体服务中，在处理视频（例如，编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)的结果。
 
 有关详细信息，请参阅：
 
@@ -143,7 +143,7 @@ curl -X PUT \
 
 ## <a name="next-steps"></a>后续步骤
 
-查看演示如何上传、编码、分析、流式传输实时流和点播流的完整代码示例： 
+查看演示如何上传、编码、分析、流式传输和按需流式处理的完整代码示例： 
 
 * [Java](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/)； 
 * [.NET](https://docs.microsoft.com/samples/azure-samples/media-services-v3-dotnet/azure-media-services-v3-samples-using-net/)； 

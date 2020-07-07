@@ -15,10 +15,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295442"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>通过 Azure AD 身份验证使用 REST 访问媒体服务 API
@@ -130,7 +130,7 @@ ms.locfileid: "80295442"
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
-4. 选择“标头”选项卡****。
+4. 选择“标头”选项卡。
 5. 使用“密钥/值”数据网格输入“标头”信息****。 
 
     ![数据网格](./media/connect-with-rest/headers-data-grid.png)
@@ -152,7 +152,7 @@ ms.locfileid: "80295442"
         client_secret:{Your client secret that you got from your Azure AD Application's Keys}
         resource:https://rest.media.azure.net
 
-8. 按“发送”。 
+8. 按“发送”。
 
     ![获取令牌](./media/connect-with-rest/connect-with-rest04.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "80295442"
         DataServiceVersion:3.0
         MaxDataServiceVersion:3.0
 
-7. 按“发送”。 
+7. 按“发送”。
 
 返回的响应包含帐户中的资产。
 

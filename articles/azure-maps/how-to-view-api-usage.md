@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 0eb117af712b3b1f63a3f99c96cba9775f8e3996
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335153"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>查看 Azure Maps API 使用情况指标
@@ -42,7 +42,7 @@ ms.locfileid: "80335153"
 
       ![Azure Maps 使用情况指标 "窗格](media/how-to-view-api-usage/portal-metrics.png)
 
-5. 接下来，可通过单击“过去 24 小时(自动)”来选择“时间范围”******。 默认情况下，时间范围设置为 24 小时。 单击后，您将看到所有可选择的时间范围。 可选择“时间粒度”，然后在同一下拉菜单中选择显示“本地”或“GMT”时间******。 单击“应用”  。
+5. 接下来，可通过单击“过去 24 小时(自动)”来选择“时间范围”******。 默认情况下，时间范围设置为 24 小时。 单击后，您将看到所有可选择的时间范围。 可选择“时间粒度”，然后在同一下拉菜单中选择显示“本地”或“GMT”时间******。 单击“应用”。
 
     ![Azure Maps 度量值时间范围](media/how-to-view-api-usage/time-range.png)
 

@@ -16,20 +16,20 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294339"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>适用于 Android 的脱机 Widevine 流式处理  
 
 > [!div class="op_single_selector" title1="选择所使用的媒体服务版本："]
-> * [版本 3](../latest/offline-widevine-for-android.md)
+> * [第 3 版](../latest/offline-widevine-for-android.md)
 > * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本的[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 除了保护联机流式处理的内容之外，媒体内容订阅和租赁服务还提供可下载的内容，供用户在未连接到 Internet 时使用。 可以将内容下载到手机或平板电脑上，以便在飞行中与网络断开连接时，在飞行模式下播放。 可能需要下载内容的其他情况包括：
 
@@ -163,13 +163,13 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
     - 证书必须具备受信任的 CA，自签名开发证书无法使用
     - 该证书必须具备与 Web 服务器或网关的 DNS 名称匹配的 CN
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="question"></a>问题
 
 如何为某些客户端/用户传送永久许可证（允许脱机）并为其他人传送非永久许可证（禁用脱机）？ 是否必须复制内容并使用单独的内容密钥？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>答案
 不需要复制内容。 只需使用一个内容副本和单个 ContentKeyAuthorizationPolicy，但可以使用两个单独的 ContentKeyAuthorizationPolicyOption：
 
 1. IContentKeyAuthorizationPolicyOption 1：使用永久性许可证，并使用包含 license_type = "Persistent" 等声明的 ContentKeyAuthorizationPolicyRestriction 1
@@ -183,7 +183,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 对于 Widevine 安全级别，在 Google 的[WIDEVINE DRM 体系结构概述文档](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)文档中，它定义了三个不同的安全级别。 但是，在 [Widevine 许可证模板上的 Azure 媒体服务文档](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)中，概述了五种不同的安全级别。 这两组不同安全级别之间的关系或映射是什么？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>答案
 
 在 Google 的[WIDEVINE DRM 体系结构概述](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)中，它定义了以下三个安全级别：
 
@@ -211,7 +211,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 为什么下载内容需要很长时间？
 
-### <a name="answer"></a>Answer
+### <a name="answer"></a>答案
 
 可通过两种方法提高下载速度：
 
@@ -224,6 +224,6 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 本文讨论了如何在 Android 设备上实现受 Widevine 保护的 DASH 内容的脱机模式播放。  本文还回答了与对受 Widevine 保护的内容进行脱机流式处理相关的一些常见问题。

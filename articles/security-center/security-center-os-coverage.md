@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心支持的平台 |Microsoft Docs
-description: 本文档提供 Azure 安全中心支持的平台列表。
+description: 本文档列出了 Azure 安全中心支持的平台。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
 ms.openlocfilehash: 3c8bf69b745f5dba8c08556908df4d4ae5b5769f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80521921"
 ---
-# <a name="supported-platforms"></a>受支持的平台 
+# <a name="supported-platforms"></a>支持的平台 
 
 此页面显示 Azure 安全中心支持的平台和环境。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80521921"
 
 Azure 安全中心支持不同类型的混合环境中的虚拟机和服务器：
 
-* 仅 Azure
+* 仅限 Azure
 * Azure 和本地
 * Azure 和其他云
 * Azure、其他云和本地
@@ -47,13 +47,13 @@ Azure 安全中心支持不同类型的混合环境中的虚拟机和服务器�
 > [!TIP]
 > 若要详细了解 Windows 和 Linux 上提供的特定安全中心功能，请参阅[计算机的功能覆盖](security-center-services.md)。
 
-## <a name="managed-virtual-machine-services"></a>托管虚拟机服务<a name="virtual-machine"></a>
+## <a name="managed-virtual-machine-services"></a>托管的虚拟机服务 <a name="virtual-machine"></a>
 
 还会在客户订阅中创建虚拟机，作为某些 Azure 托管服务的一部分，例如 Azure Kubernetes （AKS）、Azure Databricks 等。 安全中心还会发现这些虚拟机，并且可以在支持的操作系统可用时安装和配置 Log Analytics 代理。
 
-## <a name="cloud-services"></a>云服务<a name="cloud-services"></a>
+## <a name="cloud-services"></a>云服务 <a name="cloud-services"></a>
 
-还支持在云服务中运行的虚拟机。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
+此外，云服务中运行的虚拟机也受支持。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
 
 还支持对驻留在 Azure Stack 中的 Vm 进行保护。 有关安全中心与 Azure Stack 的集成的详细信息，请参阅将[Azure Stack 虚拟机加入到安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
 
@@ -61,4 +61,4 @@ Azure 安全中心支持不同类型的混合环境中的虚拟机和服务器�
 
 - 了解[安全中心如何使用 Log Analytics 代理收集数据](security-center-enable-data-collection.md)。
 - 了解[安全中心如何管理和保护数据](security-center-data-security.md)。
-- 了解如何[规划和了解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。
+- 了解如何[规划并理解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。

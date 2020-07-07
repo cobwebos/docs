@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: b0ddf6dda99ee666e3052b5a70e51c7e4208a374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80347106"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全
@@ -68,7 +68,7 @@ API 管理允许你使用客户端证书保护对 API 后端服务的访问。 �
 
 ## <a name="configure-an-api-to-use-a-client-certificate-for-gateway-authentication"></a><a name="step2"> </a>将 API 配置为使用客户端证书进行网关身份验证
 
-1. 单击左侧“API 管理”  菜单中的“API”  ，然后导航至 API。
+1. 单击左侧“API 管理”菜单中的“API”，然后导航至 API。
     ![启用客户端证书](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
 2. 在“设计”  选项卡上，单击“后端”  部分的铅笔图标。

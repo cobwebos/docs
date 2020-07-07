@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: a92e96a835f24ac54fa55b05086a35b9a91d609e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298335"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>在 Azure Monitor 中使用 Log Analytics 网关连接无法访问 Internet 的计算机
@@ -117,14 +117,14 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 或 
 
 1. 在工作区边栏选项卡中的“设置”**** 下方，选择“高级设置”****。
-1. 中转到 "**连接的源** > " "**Windows 服务器**"，选择 "**下载 Log Analytics 网关**"。
+1. 中转到 "**连接的源**" "  >  **Windows 服务器**"，选择 "**下载 Log Analytics 网关**"。
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>使用安装向导安装 Log Analytics 网关
 
 若要使用安装向导安装网关，请执行以下步骤。 
 
 1. 在目标文件夹中，双击“Log Analytics gateway.msi”。****
-1. 在“欢迎”页上，选择“下一步”。  
+1. 在“欢迎”页上，选择“下一步”。 
 
    ![网关安装向导中的“欢迎”页屏幕截图](./media/gateway/gateway-wizard01.png)
 
@@ -136,13 +136,13 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
 
    b. 如果安装网关的服务器需要通过代理通信，请输入网关需要连接到的代理地址， 例如，输入 `http://myorgname.corp.contoso.com:80`。  如果将此地址留空，网关将尝试直接连接到 Internet。  如果代理服务器要求身份验证，请输入用户名和密码。
 
-   c. 选择“下一步”  。
+   c. 选择“**下一步**”。
 
    ![网关代理配置的屏幕截图](./media/gateway/gateway-wizard02.png)
 
 1. 如果尚未启用 Microsoft 更新，会显示“Microsoft 更新”页，可以在其中选择启用 Microsoft 更新。 做出选择，然后选择 "**下一步**"。 否则，继续执行下一步。
-1. 在“目标文件夹”页上，保留默认文件夹 C:\Program Files\OMS Gateway，或输入网关的安装位置。**** 然后选择“下一步”  。
-1. 在 "**准备安装**" 页上，选择 "**安装**"。 如果用户帐户控制请求提供安装权限，请选择“是”。****
+1. 在“目标文件夹”页上，保留默认文件夹 C:\Program Files\OMS Gateway，或输入网关的安装位置。**** 然后，选择“下一步”。
+1. 在“准备安装”页上，选择“安装”。  如果用户帐户控制请求提供安装权限，请选择“是”。****
 1. 安装完成后，选择 "**完成**"。 若要验证该服务是否正在运行，请打开 services.msc 管理单元，并检查服务列表中是否出现“OMS 网关”并且其状态为“正在运行”。********
 
    ![本地服务的屏幕截图，其中显示 OMS 网关正在运行](./media/gateway/gateway-service.png)
@@ -153,7 +153,7 @@ Log Analytics 网关仅支持传输层安全性 (TLS) 1.0、1.1 和 1.2。  它�
  
 下表突出显示了安装程序支持的参数。
 
-|参数| 注意|
+|参数| 备注|
 |----------|------| 
 |PORTNUMBER | 网关侦听的 TCP 端口号 |
 |PROXY | 代理服务器的 IP 地址 |
@@ -248,7 +248,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 首次向 Log Analytics 工作区注册 Operations Manager 管理组时，操作控制台中不会显示为管理组指定代理配置的选项。 只有在成功向服务注册管理组之后，此选项才可用。  
 
-若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤:
+若要配置集成，请在运行操作控制台的系统上，以及管理组中的所有管理服务器上，使用 Netsh 更新系统代理配置。 执行以下步骤：
 
 1. 打开权限提升的命令提示符：
 
@@ -270,7 +270,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
    ![Operations Manager 的屏幕截图，其中显示了代理服务器地址](./media/gateway/scom02.png)
 
-1. 选择“完成”  。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
+1. 选择“完成”。 Operations Manager 管理组现已配置为通过网关服务器与 Log Analytics 服务通信。
 
 ### <a name="configure-operations-manager-where-specific-agents-use-a-proxy-server"></a>配置 Operations Manager，其中的特定代理使用代理服务器
 
@@ -285,7 +285,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 1. 打开 Operations Manager 控制台并选择“创作”工作区。****  
 1. 在“创作”工作区中选择“规则”。**** 
 1. 在 Operations Manager 工具栏上，选择“范围”按钮。**** 如果此按钮不可用，请确保已在“监视”窗格中选择了一个对象而不是文件夹。**** “范围管理包对象”对话框显示了通用目标类、组或对象的列表。**** 
-1. 在“查找”字段中输入“运行状况服务”，并从列表中选择该服务。******** 选择“确定”  。  
+1. 在“查找”字段中输入“运行状况服务”，并从列表中选择该服务。******** 选择“确定”。  
 1. 搜索“顾问代理设置规则”。**** 
 1. 在 Operations Manager 工具栏上，选择 "**替代**"，然后指向 **"覆盖类：运行状况服务的特定对象的规则 \ 针对"** ，然后从列表中选择一个对象。  或者，创建一个自定义组并在其中包含要将此重写应用到的服务器的运行状况服务对象。 然后应用对自定义组的重写。
 1. 在“重写属性”对话框中，勾选“WebProxyAddress”参数旁边的“重写”列。************  在“重写值”**** 字段中，输入 Log Analytics 网关服务器的 URL。 请注意需要以前缀 `http://` 开头。  
@@ -327,9 +327,9 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 如果步骤 3 出错，则表示该模块未导入。 如果 PowerShell 找不到该模块，则可能会发生此错误。 可在 OMS 网关安装路径中找到该模块： *C:\Program FILES\MICROSOFT OMS Gateway\PowerShell\OmsGateway*。
 
-| **Cmdlet** | **Parameters** | **说明** | **示例** |
+| **Cmdlet** | **参数** | **说明** | **示例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |密钥 |获取服务的配置 |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |Key |获取服务的配置 |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |密钥（必需） <br> 值 |更改服务的配置 |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |获取中继（上游）代理的地址 |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |地址<br> 用户名<br> 密码（安全字符串） |设置中继（上游）代理的地址（和凭据） |1. 设置中继代理和凭据：<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2. 设置不需要身份验证的中继代理：`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3. 清除中继代理设置：<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
@@ -340,7 +340,7 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 | `Remove-OMSGatewayAllowedClientCertificate` |使用者（必需） |从允许列表中删除客户端证书使用者 |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |获取当前允许的客户端证书使用者（仅限本地配置的允许使用者，而不是自动下载的允许使用者） |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 若要收集网关记录的事件，应该安装 Log Analytics 代理。
 

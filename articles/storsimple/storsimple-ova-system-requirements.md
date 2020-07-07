@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80298812"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
@@ -45,7 +45,7 @@ ms.locfileid: "80298812"
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| 组件  | **要求** |
+| **组件** | **要求** |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
@@ -58,7 +58,7 @@ ms.locfileid: "80298812"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| 组件  | **Version** | **其他要求/说明** |
+| 组件 | **Version** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |
@@ -67,7 +67,7 @@ ms.locfileid: "80298812"
 ### <a name="supported-storage-clients"></a>受支持的存储客户端
 以下软件要求适用于访问 StorSimple Virtual Array（配置为 iSCSI 服务器）的 iSCSI 发起程序。
 
-| **支持的操作系统** | **所需版本** | **其他要求/说明** |
+| **受支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
@@ -89,15 +89,15 @@ ms.locfileid: "80298812"
 ## <a name="networking-requirements"></a>网络要求
 下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
+| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **备注** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>出站 Web 代理可由用户配置。 |
 | UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
 | UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |
-| TCP 80 (HTTP) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
-| TCP 443 (HTTPS) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
-| TCP 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
+| TCP 80 (HTTP) |在 |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
+| TCP 443 (HTTPS) |在 |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
+| TCP 3260 (iSCSI) |在 |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 

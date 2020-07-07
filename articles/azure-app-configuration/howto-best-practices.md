@@ -13,10 +13,10 @@ ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348662"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用配置最佳实践
@@ -32,7 +32,7 @@ ms.locfileid: "80348662"
 
 可以使用一个或两个选项对密钥进行分组。
 
-*键前缀*是键的开始部分。 您可以通过在名称中使用相同的前缀对一组密钥进行逻辑分组。 前缀可以包含由分隔符连接的多个组件，如`/`类似于 URL 路径，以形成一个命名空间。 当你在一个应用配置存储中存储多个应用程序、组件服务和环境的密钥时，此类层次结构非常有用。
+*键前缀*是键的开始部分。 您可以通过在名称中使用相同的前缀对一组密钥进行逻辑分组。 前缀可以包含由分隔符连接的多个组件，如 `/` 类似于 URL 路径，以形成一个命名空间。 当你在一个应用配置存储中存储多个应用程序、组件服务和环境的密钥时，此类层次结构非常有用。
 
 需要记住的重要一点是，应用程序代码会引用这些密钥来检索相应设置的值。 密钥不应更改，否则每次发生时都必须修改你的代码。
 
@@ -62,7 +62,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 若要访问应用配置存储，可以使用 Azure 门户中提供的连接字符串。 由于连接字符串包含凭据信息，因此它们被视为机密信息。 这些机密需要存储在 Azure Key Vault 中，你的代码必须通过身份验证才能 Key Vault 检索它们。
 
-更好的选择是使用 Azure Active Directory 中的托管标识功能。 使用托管标识，只需使用 "应用配置终结点 URL" 即可启动对应用配置存储的访问。 可以在应用程序代码中嵌入 URL （例如，在*appsettings*文件中）。 有关详细信息，请参阅[与 Azure 托管标识集成](howto-integrate-azure-managed-service-identity.md)。
+更好的选择是使用 Azure Active Directory 中的托管标识功能。 使用托管标识，只需使用 "应用配置终结点 URL" 即可启动对应用配置存储的访问。 可以在应用程序代码中嵌入 URL （例如，在*appsettings.js*文件中）。 有关详细信息，请参阅[与 Azure 托管标识集成](howto-integrate-azure-managed-service-identity.md)。
 
 ## <a name="app-or-function-access-to-app-configuration"></a>应用程序或函数对应用配置的访问
 
@@ -77,7 +77,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 对应用配置的请求过多可能会导致限制或超额收费。 减少发出的请求数：
 
-* 提高刷新超时时间，尤其是在配置值不经常更改的情况下。 使用[ `SetCacheExpiration`方法](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)指定新的刷新超时值。
+* 提高刷新超时时间，尤其是在配置值不经常更改的情况下。 使用[ `SetCacheExpiration` 方法](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)指定新的刷新超时值。
 
 * 监视单个*sentinel 密钥*，而不是监视单个密钥。 仅当 sentinel 密钥更改时才刷新所有配置。 有关示例，请参阅[在 ASP.NET Core 应用中使用动态配置](enable-dynamic-configuration-aspnet-core.md)。
 

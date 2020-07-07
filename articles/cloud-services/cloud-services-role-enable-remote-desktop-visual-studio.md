@@ -13,10 +13,10 @@ ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
 ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80294390"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接
@@ -47,7 +47,7 @@ Visual Studio 为云服务提供的发布向导中包括一个选项，用于在
    > [!Note]
    > 用于建立远程桌面连接的证书与用于其他 Azure 操作的证书不同。 远程访问证书必须有一个私钥。
 
-5. 从列表中选择一个证书，或选择“**创建...&lt;”。&gt;** 如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。  新证书将显示在下拉列表框中。
+5. 从列表中选择一个证书，或选择“&lt;创建...&gt;”。 如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。  新证书将显示在下拉列表框中。
 
 6. 提供用户名和密码。 不能使用现有帐户。 请不要使用“Administrator”作为新帐户的用户名。
 

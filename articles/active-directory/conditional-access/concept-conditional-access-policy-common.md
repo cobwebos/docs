@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80295307"
 ---
 # <a name="common-conditional-access-policies"></a>常用条件访问策略
@@ -33,9 +33,9 @@ ms.locfileid: "80295307"
 
 ## <a name="typical-policies-deployed-by-organizations"></a>组织部署的典型策略
 
-* [阻止旧身份验证](howto-conditional-access-policy-block-legacy.md)\*
-* [需要对管理员的 MFA](howto-conditional-access-policy-admin-mfa.md)\*
-* [需要 MFA 进行 Azure 管理](howto-conditional-access-policy-azure-management.md)\*
+* [阻止旧式身份验证](howto-conditional-access-policy-block-legacy.md)\*
+* [要求对管理员执行 MFA](howto-conditional-access-policy-admin-mfa.md)\*
+* [要求将 MFA 用于 Azure 管理](howto-conditional-access-policy-azure-management.md)\*
 * [要求对所有用户进行 MFA](howto-conditional-access-policy-all-users-mfa.md)\*
 
 \*这四个策略一起配置时，将模拟[安全默认](../fundamentals/concept-fundamentals-security-defaults.md)启用的功能。
