@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight Apache Spark 准则
+title: Azure HDInsight 上的 Apache Spark 准则
 description: 了解在 Azure HDInsight 中使用 Apache Spark 的准则。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562332"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark 准则
 
-本文提供了有关在 Azure HDInsight 上使用 Apache Spark 的各种指导原则。
+本文提供在 Azure HDInsight 上使用 Apache Spark 的各种准则。
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>如何运行或提交 Spark 作业？
 
@@ -30,8 +30,8 @@ ms.locfileid: "82562332"
 | 使用 Livy 进行远程作业提交 | [使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集](./apache-spark-livy-rest-interface.md) |
 |[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie 是一个管理 Hadoop 作业的工作流和协调系统。|
 |[Apache Livy](./apache-spark-livy-rest-interface.md)|可以使用 Livy 运行交互式 Spark shell，或提交要在 Spark 上运行的批处理作业。|
-|[适用于 Apache Spark 的 Azure 数据工厂](../../data-factory/transform-data-using-spark.md)|数据工厂管道中的 Spark 活动在自己的或 [按需 HDInsight 群集上执行 Spark 程序。|
-|[适用于 Apache Hive 的 Azure 数据工厂](../../data-factory/transform-data-using-hadoop-hive.md)|数据工厂管道中的 HDInsight Hive 活动会在自己的或按需 HDInsight 群集上执行 Hive 查询。|
+|[适用于 Apache Spark 的 Azure 数据工厂](../../data-factory/transform-data-using-spark.md)|数据工厂管道中的 Spark 活动在自己或[按需] HDInsight 群集上执行 Spark 程序。|
+|[适用于 Apache Hive 的 Azure 数据工厂](../../data-factory/transform-data-using-hadoop-hive.md)|数据工厂管道中的 HDInsight Hive 活动会在你自己的或按需 HDInsight 群集上执行 Hive 查询。|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>如何监视和调试 Spark 作业？
 

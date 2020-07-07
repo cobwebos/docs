@@ -4,12 +4,12 @@ description: 快速了解如何使用 Azure CLI 运行批处理作业。 从命�
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 1e3becaa8a71fbb0f3c7baea97b57a03722a99cc
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262678"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959817"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Batch 帐户
 
@@ -33,8 +33,8 @@ ms.locfileid: "85262678"
 
 该模板中定义了两个 Azure 资源：
 
-- [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)：创建存储帐户。
-- [Microsoft.Batch/batchAccounts](https://docs.microsoft.com/azure/templates/microsoft.batch/batchaccounts)：创建 Batch 帐户。
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：创建存储帐户。
+- [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts)：创建 Batch 帐户。
 
 ### <a name="deploy-the-template"></a>部署模板
 

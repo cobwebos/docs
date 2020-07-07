@@ -16,7 +16,7 @@ ms.author: ryanwi
 ms.custom: include file
 ms.openlocfilehash: 4e5371a4d2b160b5de8b69b0d25ef0f49f80927b
 ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/04/2020
 ms.locfileid: "82784072"

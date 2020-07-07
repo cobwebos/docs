@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 9/12/2019
 ms.openlocfilehash: 127840738d8fb8db00a7efc0b0d8fe393138488d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580922"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模（Citus）中的防火墙规则
@@ -32,7 +32,7 @@ ms.locfileid: "82580922"
 
 当防火墙阻止连接时，可能会导致应用程序错误。 例如，使用 PostgreSQL JDBC 驱动程序会引发错误，如下所示：
 
-> util： Java.util.concurrent.executionexception： RuntimeException：：：致命：\_主机 "util"，用户 "org.postgresql.util.psqlexception"，数据库 "123.45.67.890"，SSL 的 "postgresql" 条目。
+> java.util.concurrent.ExecutionException： RuntimeException： postgresql. Org.postgresql.util.psqlexception：：严重： \_ 主机 "123.45.67.890"，用户 "citus"，数据库 "citus"，SSL 的 "util" 条目
 
 有关如何定义规则的详细说明，请参阅[创建和管理防火墙规则](howto-hyperscale-manage-firewall-using-portal.md)。
 

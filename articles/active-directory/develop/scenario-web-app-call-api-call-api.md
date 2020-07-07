@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 12802ab6dcfbbe5a1c5576ab672ead864dd0b4ae
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82559882"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>调用 Web API 的 Web 应用：调用 Web API
 
 现在你已有令牌，可以调用受保护的 Web API 了。
 
-## <a name="call-a-protected-web-api"></a>调用受保护的 web API
+## <a name="call-a-protected-web-api"></a>调用受保护的 Web API
 
-调用受保护的 web API 取决于你所选择的语言和框架：
+调用受保护的 Web API 取决于所选的语言和框架：
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 

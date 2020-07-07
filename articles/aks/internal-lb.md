@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 0789a866ebda270f3e5e8b150e072c7aedea7f04
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82790603"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
@@ -17,19 +17,19 @@ ms.locfileid: "82790603"
 若要限制访问 Azure Kubernetes 服务 (AKS) 中的应用程序，可以创建和使用内部负载均衡器。 内部负载均衡使得仅 Kubernetes 群集所在的同一虚拟网络中运行的应用程序能够访问 Kubernetes 服务。 本文介绍如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器。
 
 > [!NOTE]
-> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”   。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
+> Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”** **。 默认情况下，创建 AKS 群集时使用标准 SKU。  创建类型为 LoadBalancer 的服务时，你将获得与预配群集时相同的 LB 类型。 有关详细信息，请参阅 [Azure 负载均衡器 SKU 比较][azure-lb-comparison]。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 通常，将“网络参与者”  角色分配给委派资源上的服务主体。 您可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
+如果使用现有子网或资源组，则 AKS 群集服务主体需要管理网络资源的权限。 通常，将“网络参与者”** 角色分配给委派资源上的服务主体。 您可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 有关权限的详细信息，请参阅[委派 AKS 访问其他 Azure 资源][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>创建内部负载均衡器
 
-若要创建内部负载均衡器，请使用服务类型 LoadBalancer 和 azure-load-balancer-internal 注释创建名为 `internal-lb.yaml` 的服务清单，如以下示例所示****：
+若要创建内部负载均衡器，请使用服务类型 LoadBalancer 和 azure-load-balancer-internal 注释创建名为 `internal-lb.yaml` 的服务清单，如以下示例所示** **：
 
 ```yaml
 apiVersion: v1
@@ -54,7 +54,7 @@ kubectl apply -f internal-lb.yaml
 
 Azure 负载均衡器在节点资源组中创建，并连接到 AKS 群集所在的虚拟网络。
 
-查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中**。 在此上下文中，*External* 是指负载均衡器的外部接口，不是指收到公共的外部 IP 地址。 IP 地址可能需要一到两分钟的时间才能从* \<"挂起\> * " 更改为实际的内部 IP 地址，如以下示例中所示：
+查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中**。 在此上下文中，*External* 是指负载均衡器的外部接口，不是指收到公共的外部 IP 地址。 可能需要一两分钟，IP 地址才会从 \<pending\>** 更改为实际的内部 IP 地址，如以下示例所示：
 
 ```
 $ kubectl get service internal-app

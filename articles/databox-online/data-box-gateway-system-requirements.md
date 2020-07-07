@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82562434"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
@@ -34,7 +34,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 | 虚拟处理器（核心数）   | 最低为 4 核 |
 | 内存  | 最低为 8 GB|
 | 可用性|单节点|
-| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、配置精简，并且必须由 SSD 提供支持|
+| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
 | 网络接口|1 个或多个虚拟网络接口|
 
 
@@ -48,7 +48,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 ## <a name="supported-virtualization-platforms-for-device"></a>设备支持的虚拟化平台
 
-| **操作系统/平台**  |**版本**   |**说明**  |
+| **操作系统/平台**  |**早期**   |**说明**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支持 VMware 工具。         |

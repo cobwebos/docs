@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82733407"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 WebJobs 的形式运行 Durable Functions
@@ -19,7 +19,7 @@ ms.locfileid: "82733407"
 
 在 WebJobs SDK 的版本 3.x 中，主机是 `IHost` 的实现，而在版本 2.x 中，你使用 `JobHost` 对象。
 
-链接 Durable Functions 示例在 Web 作业 SDK 2.x 版本中提供：下载或克隆[Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，并查看*v1*分支，并中转到*\\samples webjobssdk\\链接*文件夹。
+WebJobs SDK 2.x 版中提供了有关链接 Durable Functions 的示例：下载或克隆 [Durable Functions 存储库](https://github.com/azure/azure-functions-durable-extension/)，签出 v1** 分支，然后转到 samples\\webjobssdk\\chaining** 文件夹。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +31,9 @@ ms.locfileid: "82733407"
 
 完成本文中的步骤：
 
-* [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)和**Azure 开发**工作负荷。
+* [安装 Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/)（包含 **Azure 开发**工作负荷）。
 
-  如果已有 Visual Studio，但没有该工作负荷，请选择 "**工具** > " "**获取工具和功能**" 来添加工作负荷。
+  如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具” > “获取工具和功能”以添加该工作负荷。**** ****
 
   可以改用 [Visual Studio Code](https://code.visualstudio.com/)，但某些说明仅适用于 Visual Studio。）
 
@@ -47,9 +47,9 @@ ms.locfileid: "82733407"
 
 若要将 Durable Functions 作为 WebJobs 运行，必须先创建控制台应用。 WebJobs SDK 项目只是一个装有相应 NuGet 包的控制台应用项目。
 
-在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” > “控制台应用(.NET Framework)”。************ 在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
+在 Visual Studio 的“新建项目”对话框中，选择“Windows 经典桌面” > “控制台应用(.NET Framework)”。**** **** **** 在项目文件中，`TargetFrameworkVersion` 应为 `v4.6.1`。
 
-Visual Studio 还具有 web 作业项目模板，可通过选择**云** > **Azure WebJob （.NET Framework）** 来使用。 此模板会安装许多的包，其中一些包可能并不需要。
+Visual Studio 还有一个 WebJob 项目模板，选择“云” > “Azure WebJob (.NET Framework)”即可使用此模板。**** **** 此模板会安装许多的包，其中一些包可能并不需要。
 
 ## <a name="install-nuget-packages"></a>安装 NuGet 包
 
@@ -61,7 +61,7 @@ Install-Package Microsoft.Extensions.Logging -version 2.0.1
 Install-Package Microsoft.Azure.WebJobs.Extensions.DurableTask -version 1.8.3
 ```
 
-还需要日志记录提供程序。 以下命令将安装 Azure 应用程序 Insights 提供程序和`ConfigurationManager`。 使用 `ConfigurationManager` 可从应用设置中获取 Application Insights 检测密钥。
+还需要日志记录提供程序。 以下命令将安装 Azure 应用程序 Insights 提供程序和 `ConfigurationManager` 。 使用 `ConfigurationManager` 可从应用设置中获取 Application Insights 检测密钥。
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -version 2.2.0
@@ -202,11 +202,11 @@ while (true)
 
 1. 创建 Web 应用和存储帐户。
 
-1. 在 web 应用中，将存储连接字符串保存到名为`AzureWebJobsStorage`的应用设置中。
+1. 在 web 应用中，将存储连接字符串保存到名为的应用设置中 `AzureWebJobsStorage` 。
 
 1. 创建一个 Application Insights 资源，并为其使用**一般**应用类型。
 
-1. 将检测密钥保存到名为`APPINSIGHTS_INSTRUMENTATIONKEY`的应用设置中。
+1. 将检测密钥保存到名为的应用设置中 `APPINSIGHTS_INSTRUMENTATIONKEY` 。
 
 1. 部署为 WebJob
 
@@ -216,7 +216,7 @@ while (true)
 
 引入的主要变化是使用 .NET Core 而不是 .NET Framework。 若要创建 Web 作业 SDK 2.x 项目，说明是相同的，但有以下例外：
 
-1. 创建 .NET Core 控制台应用。 在 Visual Studio 的 "**新建项目**" 对话框中，选择 " **.net core** > **控制台应用（.net core）**"。 项目文件指定 `TargetFramework` 为 `netcoreapp2.x`。
+1. 创建 .NET Core 控制台应用。 在 Visual Studio 的 "**新建项目**" 对话框中，选择 " **.net core**  >  **控制台应用（.net core）**"。 项目文件指定 `TargetFramework` 为 `netcoreapp2.x`。
 
 1. 选择以下包的 release 版本 Web 作业 SDK 2.x：
 
@@ -224,7 +224,7 @@ while (true)
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. 使用 .NET Core 配置框架，在*appsettings*文件中设置存储连接字符串和 Application Insights 检测密钥。 下面是一个示例：
+1. 使用 .NET Core 配置框架，在文件*appsettings.js*中设置存储连接字符串和 Application Insights 检测密钥。 以下是一个示例：
 
     ```json
         {
@@ -233,7 +233,7 @@ while (true)
         }
     ```
 
-1. 更改`Main`方法代码以执行此操作。 下面是一个示例：
+1. 更改 `Main` 方法代码以执行此操作。 下面是一个示例：
 
    ```cs
    static void Main(string[] args)

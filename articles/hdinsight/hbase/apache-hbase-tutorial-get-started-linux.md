@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a601d54ebda074a25a988ac2a115f6418dd5c7ee
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390266"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958355"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
@@ -42,22 +42,22 @@ ms.locfileid: "81390266"
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-2. 在“自定义部署”  对话框中输入以下值：
+2. 在“自定义部署”对话框中输入以下值：
 
-    |属性 |说明 |
+    |properties |说明 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|创建 Azure 资源管理组，或使用现有的组。|
     |位置|指定资源组的位置。 |
-    |群集名称|输入 HBase 群集的名称。|
-    |群集登录名和密码|默认登录名为“admin”  。|
-    |SSH 用户名和密码|默认用户名为“sshuser”  。|
+    |ClusterName|输入 HBase 群集的名称。|
+    |群集登录名和密码|默认登录名为“admin”。|
+    |SSH 用户名和密码|默认用户名为“sshuser”。|
 
     其他参数是可选的。  
 
     每个群集都有一个 Azure 存储帐户依赖项。 删除群集后，数据保留在存储帐户中。 群集的默认存储帐户名为群集名称后接“store”。 该名称已在模板 variables 节中硬编码。
 
-3. 选择“我同意上述条款和条件”，然后选择“购买”   。 创建群集大约需要 20 分钟时间。
+3. 选择“我同意上述条款和条件”，然后选择“购买” 。 创建群集大约需要 20 分钟时间。
 
 在删除 HBase 群集后，可以通过使用相同的默认 Blob 容器创建另一个 HBase 群集。 新群集将选取已在原始群集中创建的 HBase 表。 为了避免不一致，建议在删除群集之前先禁用 HBase 表。
 
@@ -138,16 +138,25 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 示例数据文件可在公共 Blob 容器 `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt` 中找到。  该数据文件的内容为：
 
-    8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
-    16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
-    4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta
-    16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.
-    3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive
-    3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle
-    10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street
-    4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street
-    4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
-    16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
+`8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
+
+`16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz`
+
+`4324    Karl Xie         508-555-0163    230-555-0193    4912 La Vuelta`
+
+`16891   Jonn Jackson     674-555-0110    230-555-0194    40 Ellis St.`
+
+`3273    Miguel Miller    397-555-0155    230-555-0195    6696 Anchor Drive`
+
+`3588    Osa Agbonile     592-555-0152    230-555-0196    1873 Lion Circle`
+
+`10272   Julia Lee        870-555-0110    230-555-0197    3148 Rose Street`
+
+`4868    Jose Hayes       599-555-0171    230-555-0198    793 Crawford Street`
+
+`4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.`
+
+`16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive`
 
 可以选择创建一个文本文件并将该文件上传到自己的存储帐户。 有关说明，请参阅[在 HDInsight 中为 Apache Hadoop 作业上传数据](../hdinsight-upload-data.md)。
 
@@ -242,8 +251,8 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
     对 -d 开关中指定的值进行 Base64 编码。 在示例中：
 
    * MTAwMA==：1000
-   * UGVyc29uYWw6TmFtZQ==：Personal:Name
-   * Sm9obiBEb2xl:John Dole
+   * UGVyc29uYWw6TmFtZQ==：Personal:名称
+   * Sm9obiBEb2xl：John Dole
 
      [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) 允许插入多个（批处理）值。
 
@@ -262,14 +271,14 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
 > Thrift 不受 HDInsight 中的 HBase 支持。
 >
 > 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。 此外，还必须使用群集名称作为用来向服务器发送请求的统一资源标识符 (URI) 的一部分：
-> 
->   
->        curl -u <UserName>:<Password> \
->        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
->   
->    应会收到类似于以下响应的响应：
->   
->        {"status":"ok","version":"v1"}
+>
+> `curl -u <UserName>:<Password> \`
+>
+> `-G https://<ClusterName>.azurehdinsight.net/templeton/v1/status`
+>
+> 应会收到类似于以下响应的响应：
+>
+> `{"status":"ok","version":"v1"}`
 
 ## <a name="check-cluster-status"></a>检查群集状态
 
@@ -279,9 +288,9 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 1. 登录到 Ambari Web UI（网址是 `https://CLUSTERNAME.azurehdinsight.net`，其中，`CLUSTERNAME` 是 HBase 群集的名称）。
 
-1. 从左侧菜单中选择“HBase”  。
+1. 从左侧菜单中选择“HBase”。
 
-1. 选择页面顶部的“快速链接”  ，指向活动的 Zookeeper 节点链接，然后选择“HBase Master UI”  。  该 UI 会在另一个浏览器标签页中打开：
+1. 选择页面顶部的“快速链接”，指向活动的 Zookeeper 节点链接，然后选择“HBase Master UI”。  该 UI 会在另一个浏览器标签页中打开：
 
    ![HDInsight Apache HBase HMaster UI](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -298,14 +307,14 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 为了避免不一致，建议在删除群集之前先禁用 HBase 表。 可以使用 HBase 命令 `disable 'Contacts'`。 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 在顶部的“搜索”框中，键入 **HDInsight**。 
-1. 选择“服务”下的“HDInsight 群集”   。
-1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 
+1. 在顶部的“搜索”框中，键入 **HDInsight**。
+1. 选择“服务”下的“HDInsight 群集” 。
+1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。
 1. 单击 **“删除”** 。 单击 **“是”** 。
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何创建 Apache HBase 群集， 以及如何通过 HBase shell 创建表并查看这些表中的数据。 你还学习了如何对 HBase 表中的数据使用 Hive 查询， 以及如何使用 HBase C# REST API 创建一个 HBase 表并从该表中检索数据。 若要了解更多信息，请参阅以下文章：
+在本教程中，你已学习了如何创建 Apache HBase 群集。 以及如何通过 HBase shell 创建表并查看这些表中的数据。 你还学习了如何对 HBase 表中的数据使用 Hive 查询， 以及如何使用 HBase C# REST API 创建一个 HBase 表并从该表中检索数据。 若要了解更多信息，请参阅以下文章：
 
 > [!div class="nextstepaction"]
 > [HDInsight HBase 概述](./apache-hbase-overview.md)

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 63225f6e6daa6b3cdde7aa505c117b43305a4867
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82569077"
 ---
 # <a name="azure-stack-edge-system-requirements"></a>Azure Stack 边缘系统要求
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 必须 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必需 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
@@ -82,7 +82,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式                      | 组件或功能                     |   
 |----------------------------------|---------------------------------------------|
-| https：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
+| https： \/ /mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
 | https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） | 
 | https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             | 
 
@@ -94,9 +94,9 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式                      | 组件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| https：\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.com | Microsoft 容器注册表（必填）               |
-| https://\*. azure-devices.us              | Iot 中心访问权限（必填）           |
-| https://\*. azurecr.us                    | 个人和第三方容器注册表（可选） | 
+| https： \/ /mcr.microsoft.com<br></br>https:// \* . cdn.mscr.com | Microsoft 容器注册表（必填）               |
+| https:// \* . azure-devices.us              | Iot 中心访问权限（必填）           |
+| https:// \* . azurecr.us                    | 个人和第三方容器注册表（可选） | 
 
 ## <a name="internet-bandwidth"></a>Internet 带宽
 
@@ -135,4 +135,4 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 ## <a name="next-step"></a>后续步骤
 
-- [部署 Azure Stack 边缘](azure-stack-edge-deploy-prep.md)
+- [部署 Azure Stack Edge](azure-stack-edge-deploy-prep.md)

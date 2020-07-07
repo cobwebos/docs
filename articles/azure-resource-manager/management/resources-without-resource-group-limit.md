@@ -6,10 +6,10 @@ author: davidsmatlak
 ms.author: v-dasmat
 ms.date: 05/04/2020
 ms.openlocfilehash: 892b59b3d3e980abfcdb9cd692c2598ceb1284ad
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82780923"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>没有每个资源组 800 个实例限制的资源
@@ -76,7 +76,7 @@ ms.locfileid: "82780923"
 
 * 计划-默认情况下限制为800实例。 可以通过联系支持人员来提高该限制。
 
-## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 * services
 
@@ -85,7 +85,7 @@ ms.locfileid: "82780923"
 * clusters
 * namespaces
 
-## <a name="microsoftexperimentation"></a>Microsoft 试验
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
 
 * experimentWorkspaces
 
@@ -111,9 +111,9 @@ ms.locfileid: "82780923"
 
 * netAppAccounts
 * netAppAccounts/capacityPools
-* netAppAccounts/capacityPools/卷
+* netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/卷集/mountTargets
-* netAppAccounts/capacityPools/卷/快照
+* netAppAccounts/capacityPools/volumes/snapshots
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -176,11 +176,11 @@ ms.locfileid: "82780923"
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
-* 服务
+* applications
 * containerGroups
 * gateways
 * networks
-* 机密
+* secrets
 * volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage

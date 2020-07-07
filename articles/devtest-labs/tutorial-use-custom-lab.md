@@ -1,25 +1,15 @@
 ---
 title: 访问 Azure 开发测试实验室中的实验室 | Microsoft Docs
 description: 在本教程中，访问使用 Azure 开发测试实验室创建的实验室，认领虚拟机、使用它们然后取消认领。
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 01/18/2019
+ms.date: 06/26/2020
 ms.author: spelluru
-ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: b4477e0b98ef534b8170ee297edf88ac6fa62dd7
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889120"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85476438"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>教程：访问 Azure 开发测试实验室中的实验室
 本教程使用[教程：在 Azure 开发测试实验室中创建实验室](tutorial-create-custom-lab.md)中创建的实验室。

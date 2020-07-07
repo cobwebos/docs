@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82580662"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
@@ -30,7 +30,7 @@ ms.locfileid: "82580662"
 
 以下部分描述了这些使用方案的概述。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是唯一可扩展且自定义的服务产品/服务，满足行业 IoT 部署的广泛需求。
 
@@ -52,15 +52,15 @@ Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于
 
 与时序见解中存储的数据进行交互主要有三种方式：
 
-* 第一个也是最简单的方法是使用时序见解预览版资源管理器。 可以使用它在一个位置快速显示所有 IoT 数据。 它提供热度地图之类的工具，帮助您发现数据中的异常。 它还提供透视视图。 使用它可以在一个仪表板中比较一个或多个时序见解环境中的多达四个视图。 通过仪表板，可以查看所有位置的时序数据。 了解[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)的详细信息。 要规划时序见解环境，请阅读[时序见解规划](./time-series-insights-update-plan.md)。
+* 第一个也是最简单的方法是使用时序见解预览版资源管理器。 可以使用它在一个位置快速显示所有 IoT 数据。 它提供热度地图等工具，可帮助你发现数据中的异常情况。 它还提供透视视图。 使用它可以在一个仪表板中比较一个或多个时序见解环境中的多达四个视图。 通过仪表板，可以查看所有位置的时序数据。 了解[时序见解预览版资源管理器](./time-series-insights-update-explorer.md)的详细信息。 要规划时序见解环境，请阅读[时序见解规划](./time-series-insights-update-plan.md)。
 
-* 第二种方法是使用 JavaScript SDK 在你的 web 应用程序中快速嵌入功能强大的图表和图形。 只需几行代码，即可编写功能强大的查询。 使用它们可以填充折线图、饼图、条形图、热度地图、数据网格等。 通过使用 SDK，所有这些元素都是现成可用的。 SDK 还提取时序见解查询 API。 可以使用它们来创建类似 SQL 的谓词，用于查询要在仪表板上显示的数据。 对于混合表示层解决方案，时序见解提供参数化 URL。 它们提供与时序见解预览版资源管理器之间的无缝连接点，可帮助深入分析数据。
+* 第二种开始方法是使用 JavaScript SDK 在 Web 应用程序中快速嵌入功能强大的图表和图。 只需几行代码，即可编写功能强大的查询。 可使用这些查询填充折线图、饼图、条形图、热度地图和数据网格等。 通过使用 SDK，所有这些元素都是现成可用的。 SDK 还提取时序见解查询 API。 可以使用它们来创建类似 SQL 的谓词，用于查询要在仪表板上显示的数据。 对于混合表示层解决方案，时序见解提供参数化 URL。 它们提供与时序见解预览版资源管理器之间的无缝连接点，可帮助深入分析数据。
 
   * 请阅读[时序见解 JS 客户端库](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)和[时序见解客户端](https://github.com/Microsoft/tsiclient)文档了解有关 JavaScript SDK 的详细信息。
 
   * 查看[在 Azure 时序见解预览版资源管理器中可视化数据](time-series-insights-update-explorer.md)来详细了解 URL 和新的 UI。
 
-* 第三种方法是使用功能强大的 API 查询存储在时序见解中的数据。 时序见解具有 `from`、`to`、`first` 和 `last` 等时态运算符。 它还具有 `average`、`min`、`max`、`split by`、`order by` 和 `DateHistogram` 等聚合与转换。 它还具有 `has`、`in`、`and`、`or`、`greater than` 和 `REGEX` 等筛选运算符。 所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 使用它们来填充自主开发的可视化效果，以找出异常。
+* 第三种方法是使用功能强大的 API 查询存储在时序见解中的数据。 时序见解具有 `from`、`to`、`first` 和 `last` 等时态运算符。 它还具有 `average`、`min`、`max`、`split by`、`order by` 和 `DateHistogram` 等聚合与转换。 它还具有 `has`、`in`、`and`、`or`、`greater than` 和 `REGEX` 等筛选运算符。 所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 可使用它们填充自生成的可视化效果以发现异常。
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>操作性分析和提高处理效率
 
@@ -86,7 +86,7 @@ Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于
 
 与机器学习和 Azure Databricks 等高级分析服务集成。 时序见解从数百万台设备中引入原始数据。 它添加了可由 Azure 分析服务套件无缝使用的上下文数据。
 
-[![Analytics](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
+[![分析](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
 
 高级分析和机器学习会使用和处理大量数据。 该数据用于制定数据驱动的决策并执行预测分析。 在 IoT 用例中，高级分析算法可以从数百万台设备中收集数据。 这些设备每秒内会多次传输数据。 从 IoT 设备收集的数据是原始数据。 它缺少上下文信息，例如设备的位置和传感器读数的单位。 因此，原始数据很难直接用于高级分析。
 
@@ -96,7 +96,7 @@ Azure 时序见解是一种端到端的平台即服务产品/服务。 它用于
 
     时序见解可以作为整个组织中所有数据的真实来源。 它创建了一个供下游分析工作负荷使用的中央存储库。 由于时序见解是一种近实时存储服务，因此高级分析模型可以利用传入的 IoT 遥测数据不断学习。 这样一来，模型可以更准确地进行预测。
 
-* 其次，机器学习和预测模型的输出可以送入时序见解，以可视化和存储其结果。 此过程可帮助组织优化和调整其模型。 使用时序见解，可轻松直观显示与训练模型输出相同平面上的流式遥测数据。 通过这种方式，它可以帮助数据科学团队发现异常并识别模式。
+* 其次，机器学习和预测模型的输出可以输入到时序见解中，以直观显示并存储其结果。 此过程可帮助组织优化和调整其模型。 使用时序见解，可轻松直观显示与训练模型输出相同平面上的流式遥测数据。 通过这种方式，它可以帮助数据科学团队发现异常并识别模式。
 
 ## <a name="next-steps"></a>后续步骤
 
