@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
 ms.openlocfilehash: 16be3d1695608165405a3490b686a01ba6a2a62c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70080601"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虚拟机的性能诊断
@@ -37,10 +37,10 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 
 ### <a name="linux"></a>Linux
 
-Oracle Linux Server 6.10 [`*``*`]，7.3，7.6，7.5 （Oracle 数据库-Ee 13.8 Marketplace 映像），CentOS 6.5 []，7.6，RHEL 7.2，7.5，8.0 [`*`]，Ubuntu 14.04，16.04，18.04，Debian 8，9，10 [`*`]，SLES 12 SP4 []`*`
+Oracle Linux Server 6.10 [ `*` ]，7.3，7.6，7.5 （Oracle 数据库-Ee 13.8 marketplace 映像），CentOS 6.5 [ `*` ]，7.6，RHEL 7.2，7.5，8.0 [ `*` ]，Ubuntu 14.04，16.04，18.04，Debian 8，9，10 [ `*` ]，SLES 12 SP4 [ `*` ]
 
 >[!Note]
->[`*`] 请参阅[已知问题](how-to-use-perfinsights-linux.md#known-issues)
+>[ `*` ] 请参阅[已知问题](how-to-use-perfinsights-linux.md#known-issues)
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>在 VM 上安装并运行性能诊断
 
@@ -86,7 +86,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
     包括性能分析中的所有检查，并捕获网络跟踪和 SMB 计数器。 使用此方案可以排查 Azure 文件的性能问题。 运行此项分析将花费 30 秒到 15 分钟，具体取决于选择的持续时间。 [了解详细信息](https://aka.ms/perfinsights/azurefiles)
 
 >[!Note]
->[`*`] 仅在 Windows 上支持这些分析方案。
+>[ `*` ] 仅在 Windows 上支持这些分析方案。
 
 ![“性能诊断”边栏选项卡中的“运行诊断”窗格屏幕截图](media/performance-diagnostics/run-diagnostics-pane.png)
 
@@ -109,7 +109,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 分析完成后，以下各项将上传到 Azure 表以及存储帐户中指定的二进制大型对象 (BLOB) 容器：
 
 * 有关运行的所有见解和信息
-* Windows 上的输出压缩（.zip）文件（名为**PerformanceDiagnostics_yyyy dd_hh-mm-ss-fff** ）和包含日志文件的 Linux 上的 tar 球文件（名**dd_hh PerformanceDiagnostics_yyyy 为-mm-ss-fff gz** ）
+* Windows 上的输出压缩（.zip）文件（名为**PerformanceDiagnostics_yyyy-MM-dd_hh-mm-ss-fff.zip** ）和包含日志文件的 Linux 上的 tar 球文件（名**PerformanceDiagnostics_yyyy dd_hh gz** ）
 * 一份 HTML 报告
 
 上传后，Azure 门户中会列出新的诊断报告。
@@ -158,7 +158,7 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 ![“性能诊断”边栏选项卡工具栏的屏幕截图，其中突出显示了“卸载”按钮](media/performance-diagnostics/uninstal-button.png)
 
-## <a name="frequently-asked-questions"></a>常见问题
+## <a name="frequently-asked-questions"></a>常见问题解答
 
 ### <a name="where-is-the-diagnostics-data-from-my-vm-stored"></a>其中存储了 VM 中的诊断数据
 
@@ -201,4 +201,4 @@ Azure 门户中提供了以下分析方案。 根据遇到的性能问题选择�
 
 查看性能诊断见解和报告后，如果仍不能确定问题的原因并需要更多的帮助，可以向 Microsoft 客户支持部门开具支持票证。
 
-如果在本文的任何位置需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

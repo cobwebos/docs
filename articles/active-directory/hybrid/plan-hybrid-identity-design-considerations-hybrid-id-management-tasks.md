@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109381"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>规划混合标识生命周期
@@ -61,7 +61,7 @@ ms.locfileid: "67109381"
 ## <a name="synchronization-management"></a>同步管理
 标识管理员的目标之一是启用所有标识提供者并保持其同步状态。 可以根据权威的主标识提供者保持数据的同步状态。 在混合标识方案中，可以通过同步的管理模型在本地服务器中管理所有用户和设备标识，并将帐户同步到云（以及选择性地同步密码）。 用户在本地中输入的密码与在云中相同，登录时，标识解决方案会验证密码。 此模型使用目录同步工具。
 
-![目录同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)到适当设计混合标识解决方案的同步确保了以下问题的答案：
+![目录同步 ](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png) 到适当设计混合标识解决方案的同步确保了以下问题的答案：
 *    适用于混合标识解决方案的同步解决方案有哪些？
 *    可用的单一登录功能有哪些？
 *    B2B 和 B2C 之间的联合身份验证有哪些选项？

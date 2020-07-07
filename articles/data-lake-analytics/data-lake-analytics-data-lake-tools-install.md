@@ -10,13 +10,13 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: 08f0456b6a8b663f0af68fbb179de14b9e3acf79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70914085"
 ---
-# <a name="install-data-lake-tools-for-visual-studio"></a>安装针对 Visual Studio 的 Data Lake 工具
+# <a name="install-data-lake-tools-for-visual-studio"></a>安装用于 Visual Studio 的 Data Lake 工具
 
 了解如何使用 Visual Studio 创建 Azure Data Lake Analytics 帐户。 可以在[U SQL](data-lake-analytics-u-sql-get-started.md)中定义作业，并将作业提交到 Data Lake Analytics 服务。 有关 Data Lake Analytics 的详细信息，请参阅[Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
@@ -48,7 +48,7 @@ Visual Studio 2017 15.3 或更高版本支持针对 Visual Studio 的 Azure Data
 
 下载并安装[适用于 Visual Studio 的 Microsoft Azure Data Lake 和流分析工具](https://aka.ms/adltoolsvs)。 安装之后，Visual Studio 将进行以下更改：
 
-* **服务器资源管理器** > **Azure**节点包含一个**Data Lake Analytics**节点。
+* **服务器资源管理器**  >  **Azure**节点包含一个**Data Lake Analytics**节点。
 * “工具”菜单中有一个“Data Lake”项********。
 
 ## <a name="next-steps"></a>后续步骤

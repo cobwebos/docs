@@ -16,10 +16,10 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68297784"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>适用于 Azure VM 的 TCP/IP 性能优化
@@ -201,7 +201,7 @@ TCP 窗口缩放可以动态增大 TCP 窗口大小，以便在需要收到确�
 
 #### <a name="support-for-tcp-window-scaling"></a>TCP 窗口缩放支持
 
-Windows 可为不同的连接类型设置不同的缩放因子。 （连接的类包括数据中心、internet 等。）使用`Get-NetTCPConnection` PowerShell 命令可以查看窗口缩放连接类型：
+Windows 可为不同的连接类型设置不同的缩放因子。 （连接的类包括数据中心、internet 等。）使用 `Get-NetTCPConnection` PowerShell 命令可以查看窗口缩放连接类型：
 
 ```powershell
 Get-NetTCPConnection
@@ -224,10 +224,10 @@ Set-NetTCPSetting
 | | | | |
 |-|-|-|-|
 |**AutoTuningLevel**|**缩放因子**|**缩放乘数**|**用于计算<br/>最大窗口大小的公式**|
-|禁用|无|无|窗口大小|
+|已禁用|无|无|窗口大小|
 |受限|4|2^4|窗口大小 * (2^4)|
 |严格限制|2|2^2|窗口大小 * (2^2)|
-|一般|8|2^8|窗口大小 * (2^8)|
+|普通|8|2^8|窗口大小 * (2^8)|
 |实验|14|2^14|窗口大小 * (2^14)|
 
 这些设置很有可能会影响 TCP 性能，但请记住，Internet 中不受 Azure 控制的许多其他因素也可能会影响 TCP 性能。
@@ -255,7 +255,7 @@ Set-NetTCPSetting
 
 - **减少抖动**：虚拟交换机处理取决于需要应用的策略数量，以及正在执行处理的 CPU 工作负荷。 将策略实施卸载到硬件消除了这种可变性，因为可以将数据包直接传送到 VM，消除了主机与 VM 之间的通信，以及所有的软件中断和上下文切换。
 
-- **降低了 cpu 利用率**：绕过主机中的虚拟交换机可以减少处理网络流量的 CPU 利用率。
+- **降低 CPU 利用率**：绕过主机中的虚拟交换机可以减少用于处理流量的 CPU 资源。
 
 若要使用加速网络，需要在每个适用的 VM 上显式启用它。 有关说明，请参阅[创建启用加速网络的 Linux 虚拟机](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)。
 

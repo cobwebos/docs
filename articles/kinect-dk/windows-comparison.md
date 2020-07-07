@@ -9,7 +9,7 @@ ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, 比较, SDK, 差别, 硬件, 软件
 ms.openlocfilehash: ec105cef0c52b02c763487fbe5b2d8c018315f4c
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "67452509"

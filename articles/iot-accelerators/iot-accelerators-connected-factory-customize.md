@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67080483"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
@@ -71,7 +71,7 @@ ms.locfileid: "67080483"
 
 ## <a name="deploy-the-changes"></a>部署更改
 
-完成对**contosotopologydescription.json**文件的更改后，必须将已连接的工厂解决方案重新部署到 Azure 帐户。
+完成对文件的**ContosoTopologyDescription.js**的更改后，必须将已连接的工厂解决方案重新部署到 Azure 帐户。
 
 azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚本可用于重新构建并部署解决方案********。
 
@@ -81,7 +81,7 @@ azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚
 
 * [azureiotsolutions.com 站点权限][lnk-permissions]
 * [连接的工厂常见问题解答](iot-accelerators-faq-cf.md)
-* [常见问题解答][lnk-faq]
+* [常见问题][lnk-faq]
 
 
 [img-oee-kpi]: ./media/iot-accelerators-connected-factory-customize/oeenadkpi.png

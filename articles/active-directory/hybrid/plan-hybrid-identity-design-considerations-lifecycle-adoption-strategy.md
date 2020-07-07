@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 85f600c8bd46e699e80bf7b596574dc01467ef79
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67109315"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>确定混合标识生命周期采用策略
@@ -74,7 +74,7 @@ Azure AD 中基于组的许可证管理允许管理员将用户分配到安全�
 
 ## <a name="integration-with-other-3rd-party-providers"></a>与其他第三方提供程序集成
 
-Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序提供单一登录和增强的应用程序访问安全性。 有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+Azure Active Directory 为数千种 SaaS 应用程序和本地 Web 应用程序提供单一登录和增强的应用程序访问安全性。 有关详细信息，请参阅将[应用程序与 Azure Active Directory 集成](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 
 ## <a name="define-synchronization-management"></a>定义同步管理
 将本地目录与 Azure AD 集成可提供用于访问云和本地资源的通用标识，来提高用户的工作效率。 通过这种集成，用户和组织可以享受到以下好处：

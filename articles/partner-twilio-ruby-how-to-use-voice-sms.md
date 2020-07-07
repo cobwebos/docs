@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69637205"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>如何通过 Ruby 使用 Twilio 实现语音和 SMS 功能
@@ -28,7 +28,7 @@ Twilio 是一种电话 Web 服务 API，可方便用户利用现有 Web 语言�
 利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 应用程序可以使用 **Twilio SMS** 发出和接收 SMS 消息。 应用程序可以通过 **Twilio 客户端**使用现有 Internet 连接（包括移动连接）启用语音通信。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定价和特惠套餐
-[Twilio 定价][twilio_pricing]中提供了有关 Twilio 定价的信息。 Azure 客户可享受[特惠套餐][special_offer]：1000 条信息的免费信用额度或 1000 分钟的入站。 若要注册此优惠或获取详细信息，请访问[https://ahoy.twilio.com/azure][special_offer]。  
+[Twilio 定价][twilio_pricing]中提供了有关 Twilio 定价的信息。 Azure 客户可享受[特惠套餐][special_offer]：1000 条信息的免费信用额度或 1000 分钟的入站。 若要注册此优惠或获取详细信息，请访问 [https://ahoy.twilio.com/azure][special_offer] 。  
 
 ## <a name="concepts"></a><a id="Concepts"></a>概念
 Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][twilio_libraries]。
@@ -46,20 +46,20 @@ TwiML 是一组基于 XML 的指令，可指示 Twilio 如何处理呼叫或短�
 所有 TwiML 文档都将 `<Response>` 作为其根元素。 可以在根元素中使用 Twilio 谓词定义应用程序的行为。
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML 谓词
-Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如， ** &lt;口述&gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。 
+Twilio 谓词是指示 Twilio **执行**哪些操作的 XML 标记。 例如， ** &lt; 口述 &gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。 
 
 下面是 Twilio 谓词的列表。
 
-* 拨：将呼叫方连接到其他电话。 ** &lt;&gt;**
-* 收集：收集在电话键盘上输入的数字。 ** &lt;&gt;**
-* 挂断：结束呼叫。 ** &lt;&gt;**
-* Play：播放音频文件。 ** &lt;&gt;**
-* 暂停：在指定的秒数后自动等待。 ** &lt;&gt;**
-* 记录：记录调用方的声音并返回包含该记录的文件的 URL。 ** &lt;&gt;**
-* **重定向&gt;：将对呼叫或 SMS 的控制转移到不同 URL 处的&lt;** TwiML。
-* 拒绝：拒绝对 Twilio 号码的传入呼叫而不向你计费** &lt;&gt;**
-* 例如：将文本转换为在调用时发出的语音。 ** &lt;&gt;**
-* Sms：发送短信。 ** &lt;&gt;**
+* ** &lt; 拨 &gt; **：将呼叫方连接到其他电话。
+* ** &lt; 收集 &gt; **：收集在电话键盘上输入的数字。
+* ** &lt; 挂断 &gt; **：结束呼叫。
+* ** &lt; Play &gt; **：播放音频文件。
+* ** &lt; 暂停 &gt; **：在指定的秒数后自动等待。
+* ** &lt; 记录 &gt; **：记录调用方的声音并返回包含该记录的文件的 URL。
+* ** &lt; 重 &gt; 定向**：将对呼叫或 SMS 的控制转移到不同 URL 处的 TwiML。
+* ** &lt; 拒绝 &gt; **：拒绝对 Twilio 号码的传入呼叫而不向你计费
+* ** &lt; 例如 &gt; **：将文本转换为在调用时发出的语音。
+* ** &lt; Sms &gt; **：发送短信。
 
 有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][twiml]。 有关 Twilio API 的其他信息，请参阅 [Twilio API][twilio_api]。
 

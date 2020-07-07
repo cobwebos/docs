@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69876807"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
@@ -38,7 +38,7 @@ Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 谓词
-API 利用了 Twilio 谓词;例如， ** &lt;口述&gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。
+API 利用了 Twilio 谓词;例如， ** &lt; 口述 &gt; **谓词指示 Twilio 在调用时呼叫时传递一条消息。
 
 下面是 Twilio 谓词的列表。  通过 [Twilio 标记语言文档](https://www.twilio.com/docs/api/twiml)了解其他谓词和功能。
 
@@ -98,7 +98,7 @@ Twilio 为 .NET 开发人员提供了 5 个库：
 
 这些库可以[使用 NuGet 程序包管理器扩展进行安装](https://www.twilio.com/docs/csharp/install)，该扩展适用于 Visual Studio 2010 到 2015。  源代码托管在 [GitHub][twilio_github_repo] 上，其中的 Wiki 包含有关使用这些库的完整文档。
 
-默认情况下，Microsoft Visual Studio 2010 安装 1.2 版的 NuGet。 安装 Twilio 库需要 1.6 或更高版本的 NuGet。 有关安装或更新 NuGet 的信息，请[https://nuget.org/][nuget]参阅。
+默认情况下，Microsoft Visual Studio 2010 安装 1.2 版的 NuGet。 安装 Twilio 库需要 1.6 或更高版本的 NuGet。 有关安装或更新 NuGet 的信息，请参阅 [https://nuget.org/][nuget] 。
 
 > [!NOTE]
 > 若要安装 NuGet 的最新版本，必须首先使用 Visual Studio Extension Manager 卸载已加载的版本。 为此，必须以管理员的身份运行 Visual Studio。 否则，“卸载”按钮将处于禁用状态。
@@ -108,7 +108,7 @@ Twilio 为 .NET 开发人员提供了 5 个库：
 ### <a name="to-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>向 Visual Studio 项目添加 Twilio 库：
 1. 在 Visual Studio 中打开解决方案。
 2. 右键单击“引用”****。
-3. 单击“管理 NuGet 包”。 
+3. 单击“管理 NuGet 包”。
 4. 单击“联机”。****
 5. 在联机搜索框中，键入 *twilio*。
 6. 单击 Twilio 程序包对应的“安装”。****
@@ -174,7 +174,7 @@ catch (TwilioException ex)
 当应用程序启动对 Twilio API 的调用时（例如通过 **CallResource.Create** 方法），Twilio 会将请求发送到应该返回 TwiML 响应的 URL。 [如何：发起传出呼叫](#howto_make_call)中的示例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 返回该响应。
 
 > [!NOTE]
-> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击[https://twimlets.com/message][twimlet_message_url]以查看空`<Response>`元素;再如， [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World)单击以查看包含 contains `<Response>` &lt;&gt;元素的元素。
+> 虽然 TwiML 专供 Web 服务使用，但可以在浏览器中查看 TwiML。 例如，单击 [https://twimlets.com/message][twimlet_message_url] 以查看空 `<Response>` 元素; 如另一个示例，请单击 [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World) 以查看 `<Response>` 包含 contains 元素的元素 &lt; &gt; 。
 >
 
 可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。 可以使用任何语言创建返回 HTTP 响应的站点。 本主题假设要从 ASP.NET 一般处理程序承载该 URL。
@@ -251,7 +251,7 @@ namespace WebRole1
 }
 ```
 
-有关 TwiML 的详细信息，请[https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)参阅。
+有关 TwiML 的详细信息，请参阅 [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml) 。
 
 在设置提供 TwiML 响应的方法后，可将此 URL 传入 **CallResource.Create** 方法中。 例如，如果将名为 MyTwiML 的 Web 应用程序部署到 Azure 云服务，则 ASP.NET 处理程序的名称将为 mytwiml.ashx，并且可将 URL 传递到 **CallResource.Create**，如以下代码示例中所示：
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673114"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>安全安装和运行 Azure Data Box Heavy
@@ -165,7 +165,7 @@ CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 980
 
 [请求](mailto:CSI_Compliance@microsoft.com)欧盟符合性声明的副本。
 
-![警告图标](./media/data-box-heavy-safety/warning-icon.png) **警告！** 
+![警告图标 ](./media/data-box-heavy-safety/warning-icon.png) **警告！** 
 
 本设备属于 A 类产品。 在室内环境中，本产品可能导致无线电干扰，在这种情况下，用户可能需要采取充分的措施。
 
