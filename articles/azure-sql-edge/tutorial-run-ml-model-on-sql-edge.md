@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 02850b8780e70d402cff2b8fd301c2f79cd6c55e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: f38a973611cb1ab18eead4ec51e6be91ada2cc40
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235064"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318635"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>使用 ONNX 在 Azure SQL Edge 上部署 ML 模型 
 
@@ -32,7 +32,7 @@ ms.locfileid: "84235064"
    |_字段_|_值_|
    |-------|-------|
    |连接类型| Microsoft SQL Server|
-   |服务|为此演示创建的 VM 中提及的公共 IP 地址|
+   |服务器|为此演示创建的 VM 中提及的公共 IP 地址|
    |用户名|sa|
    |密码|创建 Azure SQL Edge 实例时使用的强密码|
    |数据库|默认|

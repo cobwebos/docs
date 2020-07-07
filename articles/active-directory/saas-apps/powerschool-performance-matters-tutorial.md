@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ed2f4fa72617aa20ef085d64759119db650b288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5097292ba722567e16c4573d46a70edb326c3ab5
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094175"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800662"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-powerschool-performance-matters"></a>教程：Azure Active Directory 与 Powerschool Performance Matters 的集成
 
@@ -107,11 +107,10 @@ ms.locfileid: "67094175"
 
     在“登录 URL”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |-|
-    | `https://ola.performancematters.com/ola/?clientcode=<Client Code>`|
-    | `https://unify.performancematters.com/?idp=<IDP>`|
-    | |
+    ```https
+        https://ola.performancematters.com/ola/?clientcode=<Client Code>
+        https://unify.performancematters.com/?idp=<IDP>
+    ```
 
     > [!NOTE]
     > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Powerschool Performance Matters 客户端支持团队](mailto:pmsupport@powerschoo.com)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

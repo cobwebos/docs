@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6423920f5583cf811624a62205a433febddec02e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8529e1ea08707d9a60ec43d3fa569bdc7f5b7bf
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158769"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>教程：Azure Active Directory 与 Brightspace by Desire2Learn 集成
 
@@ -108,10 +108,10 @@ ms.locfileid: "73158769"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |--|
-    | `https://<companyname>.tenants.brightspace.com/samlLogin`|
-    | `https://<companyname>.desire2learn.com/shibboleth-sp`|
+    ```http
+    https://<companyname>.tenants.brightspace.com/samlLogin
+    https://<companyname>.desire2learn.com/shibboleth-sp
+    ```
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
 

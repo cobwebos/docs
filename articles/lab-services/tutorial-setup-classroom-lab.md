@@ -1,25 +1,14 @@
 ---
 title: 使用 Azure 实验室服务设置课堂实验室 | Microsoft Docs
 description: 在本教程中，我们使用 Azure 实验室服务设置带虚拟机的课堂实验室，供学生在课堂上使用。
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 05/19/2020
-ms.author: spelluru
-ms.openlocfilehash: f461f1a48645a60882a91009cef296eeeef1e5dd
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889417"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445128"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  

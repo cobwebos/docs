@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7c2f9b076d831f4d851a964ababb64930a7c7f8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 452f06e1294fad64547e0b04003ae06f80c1d9f4
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68879991"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799796"
 ---
 # <a name="tutorial-integrate-land-gorilla-with-azure-active-directory"></a>教程：将 Land Gorilla 与 Azure Active Directory 集成
 
@@ -84,20 +84,19 @@ ms.locfileid: "68879991"
 
     a. 在“标识符”文本框中，使用以下模式之一键入 URL： 
 
-    | | |
-    |-|-|
-    | `https://<customer domain>.landgorilla.com/`|
-    | `https://www.<customer domain>.landgorilla.com`|
-    | | |
+      ```http
+      https://<customer domain>.landgorilla.com/
+      https://www.<customer domain>.landgorilla.com
+      ```
 
     b. 在“回复 URL”文本框中，使用以下模式之一键入 URL： 
 
-    | | |
-    |-|-|
-    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
-    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php`|
-    | `https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
-    | `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`|
+      ```http
+      https://<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php
+      https://www.<customer domain>.landgorilla.com/simplesaml/module.php/core/authenticate.php
+      https://<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp
+      https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp
+      ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 请联系 [Land Gorilla 客户端支持团队](https://www.landgorilla.com/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

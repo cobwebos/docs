@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 47f3885d9bd71abeb2a1bffe27b3ca1b2aa611ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c7b62a65d3f0b3b4006c55f5323b1feb69cca9f1
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100024"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>教程：Azure Active Directory 与 Insignia SAML SSO 集成
 
@@ -107,12 +107,11 @@ ms.locfileid: "67100024"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
     
-    | |
-    |--|
-    | `https://<customername>.insigniails.com/ils`|
-    | `https://<customername>.insigniails.com/`|
-    | `https://<customername>.insigniailsusa.com/`|
-    | |
+    ```http
+    https://<customername>.insigniails.com/ils
+    https://<customername>.insigniails.com/
+    https://<customername>.insigniailsusa.com/
+    ```
     
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<customername>.insigniailsusa.com/<uniqueid>`
 

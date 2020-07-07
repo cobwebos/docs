@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e8ad669f092fac0cc2e737d93ccc9d225ef57adf
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68823700"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799541"
 ---
 # <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>教程：将 dmarcian 与 Azure Active Directory 集成
 
@@ -85,29 +85,29 @@ ms.locfileid: "68823700"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | |
-    | -- |
-    | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    ```http
+    https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml
+    ```
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
+    ```http
+    https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/
+    https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/
+    https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/
+    ```
 
 5. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |--|
-    | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
-    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
+    ```http
+    https://us.dmarcian.com/login/<ACCOUNT_ID>
+    https://dmarcian-eu.com/login/<ACCOUNT_ID>
+    https://dmarciam-ap.com/login/<ACCOUNT_ID>
+    ```
      
     > [!NOTE] 
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新这些值。

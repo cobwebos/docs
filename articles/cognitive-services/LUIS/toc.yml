@@ -60,6 +60,8 @@
           href: luis-nodejs-tutorial-bf-v4.md
 - name: 概念
   items:
+    - name: 人工智能
+      href: artificial-intelligence.md
     - name: 开发生命周期
       href: luis-concept-app-iteration.md
     - name: 规划应用

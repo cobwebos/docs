@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 259d20474ef075f6247878b2b7798c6fa8e608aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07e6e0d1a7d358deebba7b4857b6afebcfb3be1c
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73161263"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800102"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>教程：Azure Active Directory 与 Nomadic 的集成
 
@@ -109,10 +109,10 @@ ms.locfileid: "73161263"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
-    | |
-    |--|
-    | `https://<company name>.nomadic.fm/auth/saml2/sp` |
-    | `https://<company name>.staging.nomadic.fm/auth/saml2/sp` |
+    ```http
+    https://<company name>.nomadic.fm/auth/saml2/sp
+    https://<company name>.staging.nomadic.fm/auth/saml2/sp
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Nomadic 客户端支持团队](mailto:help@nomadic.fm)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

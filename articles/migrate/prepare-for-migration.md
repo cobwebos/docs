@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行迁移的本地�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: d5ac4ded59a69e57de02779b0ba8ade9d7b48b26
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 01e4a0652d575efd1c40612153be1742cd8e8927
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106372"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341331"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -35,7 +35,7 @@ ms.locfileid: "85106372"
 --- | --- | --- | ---
 **VMware VM** | 最多可在一个 Azure Migrate 项目中发现和评估 35,000 个 VM。 | VMware 的一台 [Azure Migrate 设备](common-questions-appliance.md)最多可发现 10,000 个 VMware VM。 | **无代理迁移**：最多可同时复制 300 个 VM。 为了获得最佳性能，如果 VM 数超过 50 个，建议创建多批 VM。<br/><br/> **基于代理的迁移**：可[横向扩展](./agent-based-migration-architecture.md#performance-and-scaling)[复制设备](migrate-replication-appliance.md)来复制大量 VM。<br/><br/> 在门户中，一次最多可选择 10 台计算机进行复制。 若要复制更多计算机，请分批添加，每次添加 10 台。
 **Hyper-V VM** | 最多可在一个 Azure Migrate 项目中发现和评估 35,000 个 VM。 | 一台 Azure Migrate 设备最多可发现 5,000 个 Hyper-V VM | 设备不用于 Hyper-V 迁移。 Hyper-V 复制提供程序在每个 Hyper-V 主机上运行。<br/><br/> 复制容量受性能因素（例如 VM 改动）和复制数据的上传带宽影响。<br/><br/> 在门户中，一次最多可选择 10 台计算机进行复制。 若要复制更多计算机，请分批添加，每次添加 10 台。
-**物理计算机** | 最多可在一个 Azure Migrate 项目中发现和评估 35,000 台计算机。 | 物理服务器的一台 Azure Migrate 设备最多可发现 250 个物理服务器。 | 可[横向扩展](/agent-based-migration-architecture.md#performance-and-scaling)[复制设备](migrate-replication-appliance.md)来复制大量服务器。<br/><br/> 在门户中，一次最多可选择 10 台计算机进行复制。 若要复制更多计算机，请分批添加，每次添加 10 台。
+**物理计算机** | 最多可在一个 Azure Migrate 项目中发现和评估 35,000 台计算机。 | 物理服务器的一台 Azure Migrate 设备最多可发现 250 个物理服务器。 | 可[横向扩展](./agent-based-migration-architecture.md#performance-and-scaling)[复制设备](migrate-replication-appliance.md)来复制大量服务器。<br/><br/> 在门户中，一次最多可选择 10 台计算机进行复制。 若要复制更多计算机，请分批添加，每次添加 10 台。
 
 ## <a name="select-a-vmware-migration-method"></a>选择 VMware 迁移方法
 

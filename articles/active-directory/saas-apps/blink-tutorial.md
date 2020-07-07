@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c87fe6dce4fa35eaed4ab43d6dcbffeae32e27f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04002cb62190addac2c3d71e320501846c873c87
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "69626059"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799660"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blink"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Blink 集成
 
@@ -85,11 +85,10 @@ ms.locfileid: "69626059"
 
     a. 在“登录 URL”文本框中，使用以下模式之一键入 URL  ：
     
-    | | |
-    |-|-|
-    | `https://app.joinblink.com`|
-    | `https://<SUBDOMAIN>.joinblink.com`|
-    | | |
+    ```http
+    https://app.joinblink.com
+    https://<SUBDOMAIN>.joinblink.com
+    ```
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://api.joinblink.com/saml/o-<TENANTID>` 
 

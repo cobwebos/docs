@@ -1,18 +1,18 @@
 ---
 title: Azure 流分析的内置策略定义
 description: 列出 Azure 流分析的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-samples
-ms.openlocfilehash: f07a55fb62496417f89d84271cb38b0e4eb9a187
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d98cc7cad9338dc6ea5d1460a598f190558618d5
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886998"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318690"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stream-analytics"></a>Azure 流分析的 Azure Policy 内置定义
 

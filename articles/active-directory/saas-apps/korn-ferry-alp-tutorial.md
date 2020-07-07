@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57801403f2d0e29fb32b6919a7078ae3fb895fdf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 83efecea84073020e87b25a83a3a26c6d25ea08c
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159632"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>教程：Azure Active Directory 与 Korn Ferry ALP 的集成
 
@@ -108,19 +108,19 @@ ms.locfileid: "73159632"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` | 
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
-    | |
-    |--|
-    | `https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>` |
-    | `https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>` |
+    ```http
+    https://intappextin01/portalweb/sso/client/audience?guid=<customerguid>
+    https://qaassessment.kfnaqa.com/portalweb/sso/client/audience?guid=<customerguid>
+    https://assessments.kornferry.com/portalweb/sso/client/audience?guid=<customerguid>
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Korn Ferry ALP 客户端支持团队](mailto:noreply@kornferry.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

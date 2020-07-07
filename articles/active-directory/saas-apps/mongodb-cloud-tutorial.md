@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 7a502a8273aef3df3488764ea7b01c21c512ba43
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024504"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800202"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 MongoDB Cloud 的集成
 
@@ -101,11 +101,11 @@ ms.locfileid: "82024504"
 
 1. 除上述属性以外，MongoDB Cloud 应用程序还要求在 SAML 响应中传回其他几个属性。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 | |  源属性|
-    | ---------------| --------------- | --------- |
-    | email | | user.userprincipalname |
-    | firstName | | user.givenname |
-    | lastName | | user.surname |
+    | 名称 | 源属性|
+    | ---------------| --------- |
+    | email | user.userprincipalname |
+    | firstName | user.givenname |
+    | lastName | user.surname |
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“联合元数据 XML”    。 选择“下载”以下载证书，并将其保存在计算机上。 
 
@@ -166,7 +166,7 @@ MongoDB Cloud 支持默认启用的实时用户预配。 无需执行其他操�
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [在 Azure 上注册 MongoDB Atlas](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
+- [在 Azure 上注册 MongoDB Atlas](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
 
 - [尝试通过 Azure AD 使用 MongoDB Cloud](https://aad.portal.azure.com/)
 

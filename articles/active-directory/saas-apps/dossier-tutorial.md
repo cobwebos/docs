@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2feb65384e8586b30840a37a66aaee5375881c22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8b9e65ed634243e60808e91d621cfe8c912b914e
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67103931"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>教程：Azure Active Directory 与 Dossier 的集成
 
@@ -107,11 +107,10 @@ ms.locfileid: "67103931"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |-|-|
-    | `https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn`|
-    | |
+    ```http
+    https://<SUBDOMAIN>.dossiersystems.com/azuresso/account/SignIn
+    https://dossier.<CLIENTDOMAINNAME>/azuresso/account/SignIn
+    ```
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`Dossier/<CLIENTNAME>`
 
@@ -120,11 +119,10 @@ ms.locfileid: "67103931"
 
     c. 在“回复 URL”  文本框中，使用以下模式键入 URL：
     
-    | |
-    |-|-|
-    |  `https://<SUBDOMAIN>.dossiersystems.com/azuresso`|
-    | `https://dossier.<CLIENTDOMAINNAME>/azuresso`|
-    | |
+    ```http
+    https://<SUBDOMAIN>.dossiersystems.com/azuresso
+    https://dossier.<CLIENTDOMAINNAME>/azuresso
+    ```
 
 
     > [!NOTE]

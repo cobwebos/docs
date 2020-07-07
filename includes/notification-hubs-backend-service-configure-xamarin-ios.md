@@ -4,12 +4,12 @@ ms.author: miparker
 ms.date: 06/02/2020
 ms.service: notification-hubs
 ms.topic: include
-ms.openlocfilehash: c13b7ee8c5c0a0d302e4822047ea60f9df120bf8
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 1dc491084f65bc90397b0897de6b6cfe4f2fd410
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85112099"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85448700"
 ---
 ### <a name="configure-infoplist-and-entitlementsplist"></a>配置 Info.plist 和 Entitlements.plist
 
@@ -64,6 +64,9 @@ ms.locfileid: "85112099"
             {
                 if (!NotificationsSupported)
                     throw new Exception(GetNotificationsSupportError());
+
+                if (string.isNullOrWhitespace(Token))
+                    throw new Exception("Unable to resolve token for APNS");
 
                 var installation = new DeviceInstallation
                 {
@@ -138,12 +141,6 @@ ms.locfileid: "85112099"
     using Xamarin.Essentials;
     ```
 
-1. 为设备令牌缓存密钥添加常量。
-
-    ```csharp
-    const string CachedDeviceToken = "cached_device_token";
-    ```
-
 1. 添加专用属性及其各自的支持字段，以存储对 IPushDemoNotificationActionService、INotificationRegistrationService 和 IDeviceInstallationService 实现的引用  。
 
     ```csharp
@@ -189,22 +186,10 @@ ms.locfileid: "85112099"
 1. 添加 CompleteRegistrationAsync 方法以设置 `IDeviceInstallationService.Token` 属性值。 刷新注册并缓存设备令牌（如果它自上次存储以来已发生更新）。
 
     ```csharp
-    async Task CompleteRegistrationAsync(NSData deviceToken)
+    Task CompleteRegistrationAsync(NSData deviceToken)
     {
         DeviceInstallationService.Token = deviceToken.ToHexString();
-
-        var cachedToken = await SecureStorage.GetAsync(CachedDeviceToken)
-            .ConfigureAwait(false);
-
-        if (!string.IsNullOrWhiteSpace(cachedToken) &&
-            cachedToken.Equals(DeviceInstallationService.Token))
-            return;
-
-        await NotificationRegistrationService.RefreshRegistrationAsync()
-            .ConfigureAwait(false);
-
-        await SecureStorage.SetAsync(CachedDeviceToken, DeviceInstallationService.Token)
-            .ConfigureAwait(false);
+        return NotificationRegistrationService.RefreshRegistrationAsync();
     }
     ```
 

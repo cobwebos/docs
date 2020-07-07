@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 0ecce4db01217bc182687818af365dff334e7d10
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 3cd7d880efaa5c69301c25c69d55f4b21dd97242
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84705893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85321839"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中使用示例数据集
 
@@ -303,7 +303,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
 <p></p>
 <b>相关研究：</b>Sterling, D. 和 Buntine, W.(NA)。 UCI 机器学习存储库 <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a>。 加州大学欧文分校的信息与计算机科学学院
 <p></p>
-可访问此处获取有关钢等级的帮助指南：<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
+可访问此处获取有关钢等级的帮助指南：<a href="https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf">https://www.steamforum.com/pictures/Outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
 </tr>
 

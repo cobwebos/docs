@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0141b8e3e0953a1b436b9e3b1da72249dae19eb1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a791fb2e40e46c1081dbb50a85af780d45f528e
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70163383"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-domo"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Domo 集成
 
@@ -87,20 +87,19 @@ ms.locfileid: "70163383"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |--|
-    | `https://<companyname>.domo.com` |
-    | `https://<companyname>.beta.domo.com` |
-    | `https://<companyname>.demo.domo.com` |
-    | `https://<companyname>.dev.domo.com` |
-    | `https://<companyname>.fastage1.domo.com` |
-    | `https://<companyname>.frdev.domo.com` |
-    | `https://<companyname>.gastage.domo.com` |
-    | `https://<companyname>.load.domo.com` |
-    | `https://<companyname>.local.domo.com` |
-    | `https://<companyname>.qa.domo.com` |
-    | `https://<companyname>.stage.domo.com` |
-    | | |
+    ```http
+    https://<companyname>.domo.com
+    https://<companyname>.beta.domo.com
+    https://<companyname>.demo.domo.com
+    https://<companyname>.dev.domo.com
+    https://<companyname>.fastage1.domo.com
+    https://<companyname>.frdev.domo.com
+    https://<companyname>.gastage.domo.com
+    https://<companyname>.load.domo.com
+    https://<companyname>.local.domo.com
+    https://<companyname>.qa.domo.com
+    https://<companyname>.stage.domo.com
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Domo 客户端支持团队](mailto:support@domo.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

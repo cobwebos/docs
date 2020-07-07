@@ -1,18 +1,18 @@
 ---
 title: 密钥保管库的内置策略定义
 description: 列出密钥保管库的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 1ee441651e230132b2602f948ba49c5d81b8d402
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 89b1523a9724901c238cdf59e01ad52bff6b021d
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84885212"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85317844"
 ---
 # <a name="azure-policy-built-in-definitions-for-key-vault"></a>密钥保管库的 Azure Policy 内置定义
 

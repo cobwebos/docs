@@ -1,25 +1,14 @@
 ---
 title: 访问 Azure 实验室服务中的教室实验室 | Microsoft Docs
 description: 在本教程中，你将访问教师在课堂实验室中设置的虚拟机。
-services: devtest-lab, lab-services, virtual-machines
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 05/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 241e20bdaf68c8660f4d78891c2167b56bbbfca0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: dacfa34c0d3ab637ef513342bc5ce5fe81038e11
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84889450"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85443462"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 

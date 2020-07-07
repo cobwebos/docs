@@ -1,20 +1,16 @@
 ---
 title: 教程：通过 Azure CLI 使用发布/订阅频道和主题筛选器更新零售库存分类
 description: 教程：在本教程中，你将了解如何从主题和订阅发送和接收消息，以及如何使用 Azure CLI 添加和使用筛选器规则
-services: service-bus-messaging
-author: spelluru
-manager: timlt
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 06/23/2020
 ms.topic: tutorial
-ms.service: service-bus-messaging
-ms.custom: mvc
-ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+author: spelluru
+ms.author: spelluru
+ms.openlocfilehash: 5340ec8d3d7a479fb349ce5ed1d32f917668d0d8
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718924"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341000"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 

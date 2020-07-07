@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 397fe8c111870f4a1a6489e6502ff4365f80d1e3
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70213600"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799572"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>教程：将 The Cloud Security Fabric 与 Azure Active Directory 集成
 
@@ -85,17 +85,17 @@ ms.locfileid: "70213600"
 
     a. 在“登录 URL”文本框中，键入 URL： 
 
-    | |
-    |--|
-    | `https://platform.cloudlock.com` |
-    | `https://app.cloudlock.com` |
+      ```http
+      https://platform.cloudlock.com
+      https://app.cloudlock.com
+      ```
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
 
-    | |
-    |--|
-    | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
-    | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
+      ```http
+      https://platform.cloudlock.com/gate/saml/sso/<subdomain>
+      https://app.cloudlock.com/gate/saml/sso/<subdomain>
+      ```
 
     > [!NOTE]
     > 标识符非实际值。 请使用实际标识符更新此值。 联系 [Cloud Security Fabric 客户支持团队](mailto:support@cloudlock.com)来获取值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

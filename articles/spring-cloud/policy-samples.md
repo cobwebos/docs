@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 的内置策略定义
 description: 列出 Azure Spring Cloud 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/10/2020
+ms.date: 06/23/2020
 ms.topic: sample
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-samples
-ms.openlocfilehash: f746490c94b27ae25bf413d8ddba5ea72e598355
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 7988c78b651fb3c5db6df47e1793342440b0d724
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84886223"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85321706"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Azure Spring Cloud 的 Azure Policy 内置定义
 

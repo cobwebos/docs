@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 4aa016294f0ef3bd26f7f3ef6fa374e9367b672d
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: HT
+ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85805339"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -29,16 +29,33 @@ az account set --subscription <your-Azure-subscription-ID>
 az provider register --namespace 'Microsoft.DigitalTwins'
 ```
 
-接下来，将[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)添加到 Cloud Shell 以支持用于与 Azure 数字孪生和其他 IoT 服务进行交互的命令。 使用以下命令添加该扩展：
+接下来，将[适用于 Azure CLI 的 Microsoft Azure IoT 扩展](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)添加到 Cloud Shell 以支持用于与 Azure 数字孪生和其他 IoT 服务进行交互的命令。 
 
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
+首先，运行此命令来查看已安装的所有扩展的列表。
 
-如果该扩展之前已经安装，输出可能会显示“azure-iot 扩展已安装”。 这种情况下，请运行以下命令确保具有最新更新： 
+```azurecli-interactive
+az extension list
+```
+
+在输出中，查找 `"name"` 每个列表条目的字段，以查看扩展的名称。
+
+使用输出确定要为扩展安装程序运行的以下哪个命令（可以运行多个）。
+* 如果列表包含 `azure-iot` ：你已有扩展。 运行此命令以确保具有最新更新：
 
    ```azurecli-interactive
    az extension update --name azure-iot
+   ```
+
+* 如果列表**不**包含 `azure-iot` ：你需要安装扩展。 使用此命令：
+
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+* 如果列表包含 `azure-iot-cli-ext` ：这是扩展的旧版本。 一次只能安装一个版本的扩展，因此应卸载旧扩展。 使用此命令：
+
+   ```azurecli-interactive
+   az extension remove --name azure-cli-iot-ext
    ```
 
 现在 Azure 数字孪生已可在 Cloud Shell 中使用。

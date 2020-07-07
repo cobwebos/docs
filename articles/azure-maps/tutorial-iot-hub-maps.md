@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cfea9aa7bfcc9a9698bb93bdf54797481b8539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333962"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85318920"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -36,7 +36,7 @@ ms.locfileid: "80333962"
 
 此解决方案演示以下场景：出租汽车公司打算监视并记录其出租汽车的事件。 出租汽车公司通常面向特定的地理区域出租其汽车。 它们需要跟踪租出的汽车的行程。 必须记录汽车离开所选地理区域的事件实例。 记录数据可确保正确处理政策、费用和其他业务方面的事宜。
 
-在我们的用例中，出租汽车配备了 IoT 设备，可定期将遥测数据发送到 Azure IoT 中心。 遥测数据包括当前位置，指示汽车引擎是否正在运转。 设备位置架构符合 IoT [地理空间数据的即插即用架构](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md)。 出租汽车的设备遥测架构如下所示：
+在我们的用例中，出租汽车配备了 IoT 设备，可定期将遥测数据发送到 Azure IoT 中心。 遥测数据包括当前位置，指示汽车引擎是否正在运转。 设备位置架构符合 IoT [地理空间数据的即插即用架构](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md)。 出租汽车的设备遥测架构如下所示：
 
 ```JSON
 {

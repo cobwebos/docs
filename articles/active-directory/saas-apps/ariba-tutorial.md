@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d151deb3b8f7a5784cd9c22bd124145be092489
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aed7c6ece045ab75571c9146c235c69f5c8d19a0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158900"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>教程：Azure Active Directory 与 Ariba 集成
 
@@ -108,10 +108,10 @@ ms.locfileid: "73158900"
 
     a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
     
-    | |
-    |--|
-    | `https://<subdomain>.sourcing.ariba.com` |
-    | `https://<subdomain>.supplier.ariba.com` |
+    ```http
+    https://<subdomain>.sourcing.ariba.com
+    https://<subdomain>.supplier.ariba.com
+    ```
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<subdomain>.procurement-2.ariba.com`
 

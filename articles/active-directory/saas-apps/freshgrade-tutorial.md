@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 852cd728f17902a83f5efeb3ccfb596f67ba37e5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2bceac127645717947d1da712d1e3699a04bee0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158125"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799201"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>教程：Azure Active Directory 与 FreshGrade 集成
 
@@ -107,17 +107,17 @@ ms.locfileid: "73158125"
 
      a. 在“登录 URL”文本框中，使用以下模式键入 URL  ：
 
-      | |
-      |--|
-      | `https://<subdomain>.freshgrade.com/login` |
-      | `https://<subdomain>.onboarding.freshgrade.com/login` |
+    ```http       
+    https://<subdomain>.freshgrade.com/login
+    https://<subdomain>.onboarding.freshgrade.com/login
+    ```
 
     b. 在“标识符(实体 ID)”  文本框中，使用以下模式键入 URL：
     
-      | |
-      |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
-      | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
+    ```http
+    https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>
+    https://login.freshgrade.com:443/saml/metadata/alias/<instancename>
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [FreshGrade 客户端支持团队](mailto:support@freshgrade.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

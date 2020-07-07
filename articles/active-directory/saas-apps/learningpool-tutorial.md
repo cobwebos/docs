@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 173fab91681943576f9a4afeba8d38a99e22996f
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74229277"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>教程：Azure Active Directory 与 Learningpool Act 的集成
 
@@ -110,11 +110,10 @@ ms.locfileid: "74229277"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL  ：
     
-    | |
-    |--|
-    | `https://<subdomain>.Learningpool.com/shibboleth` |
-    | `https://<subdomain>.preview.Learningpool.com/shibboleth` |
-    | | |
+    ```http
+    https://<subdomain>.Learningpool.com/shibboleth
+    https://<subdomain>.preview.Learningpool.com/shibboleth
+    ```
 
     > [!NOTE]
     > 标识符非实际值。 请使用实际标识符更新此值。 请联系 [Learningpool Act 客户端支持团队](https://www.learningpool.com/support)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

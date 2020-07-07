@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b499c8311e3b8acb1a239acc196ae158692b8716
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: db770e513599aa5da43ffa25463994d887536494
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765298"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-protoio"></a>教程：Azure Active Directory 与 Proto.io 的单一登录 (SSO) 集成
 
@@ -101,11 +101,11 @@ ms.locfileid: "84765298"
 
 1. 除了上述属性，Proto.io 应用程序还要求在 SAML 响应中传递回更多属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 |  |  源属性|
-    | ---------------| --------------- | --------- |
-    | 电子邮件 | | user.mail |
-    | fname | | user.givenname |
-    | lname | | user.surname |
+    | 名称 | 源属性|
+    | --------------- | --------- |
+    | 电子邮件 | user.mail |
+    | fname | user.givenname |
+    | lname | user.surname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 

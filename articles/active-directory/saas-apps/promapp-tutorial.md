@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 581c850801c153996031378cbf470457264cad3d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3caf67ef436093e63683c270f7121a2861242aec
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76984382"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85800875"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Nintex Promapp 的集成
 
@@ -84,14 +84,13 @@ ms.locfileid: "76984382"
 
     1. 在“标识符”框中，输入采用以下模式的 URL： 
 
-        | |
-        |--|
-        | `https://go.promapp.com/TENANTNAME/`|
-        | `https://au.promapp.com/TENANTNAME/`|
-        | `https://us.promapp.com/TENANTNAME/`|
-        | `https://eu.promapp.com/TENANTNAME/`|
-        | `https://ca.promapp.com/TENANTNAME/`|
-        |   |
+        ```https
+        https://go.promapp.com/TENANTNAME/
+        https://au.promapp.com/TENANTNAME/
+        https://us.promapp.com/TENANTNAME/
+        https://eu.promapp.com/TENANTNAME/
+        https://ca.promapp.com/TENANTNAME/
+        ```
 
        > [!NOTE]
        > 目前，Azure AD 与 Nintex Promapp 的集成仅配置用于服务发起的身份验证。 （也就是说，转到 Nintex Promapp URL 即可启动身份验证过程。）但是，“回复 URL”字段是必填字段。 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e078cb7daa787b9fe5e8bc996b36f0fef198f41c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3c8062bf40e8c97e93f237237dcd7c6923d59dd
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68879676"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799634"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>教程：将 Carbonite Endpoint Backup 与 Azure Active Directory 集成
 
@@ -84,36 +84,33 @@ ms.locfileid: "68879676"
 
     a. 在“标识符”文本框中，键入以下 URL 之一： 
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com`|
-    | `https://red-apac.mysecuredatavault.com`|
-    | `https://red-fr.mysecuredatavault.com`|
-    | `https://red-emea.mysecuredatavault.com`|
-    | `https://kamino.mysecuredatavault.com`|
-    | | |
+    ```http
+    https://red-us.mysecuredatavault.com
+    https://red-apac.mysecuredatavault.com
+    https://red-fr.mysecuredatavault.com
+    https://red-emea.mysecuredatavault.com
+    https://kamino.mysecuredatavault.com
+    ```
 
     b. 在“回复 URL”文本框中，键入以下 URL 之一： 
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | `https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx`|
-    | | |
+    ```http
+    https://red-us.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-apac.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-fr.mysecuredatavault.com/AssertionConsumerService.aspx
+    https://red-emea.mysecuredatavault.com/AssertionConsumerService.aspx
+    ```
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，键入以下 URL 之一： 
 
-    | | |
-    |-|-|
-    | `https://red-us.mysecuredatavault.com/`|
-    | `https://red-apac.mysecuredatavault.com/`|
-    | `https://red-fr.mysecuredatavault.com/`|
-    | `https://red-emea.mysecuredatavault.com/`|
-    | | |
+    ```http
+    https://red-us.mysecuredatavault.com/
+    https://red-apac.mysecuredatavault.com/
+    https://red-fr.mysecuredatavault.com/
+    https://red-emea.mysecuredatavault.com/
+    ```
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 

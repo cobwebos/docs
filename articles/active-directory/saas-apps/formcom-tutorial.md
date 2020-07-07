@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: aa6585b981626d3752f2383db20f8e149a2ed007
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 17dc6ef4b1c86e0ae0301783c2c524062e85fb5a
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73156113"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799218"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>教程：Azure Active Directory 与 Form.com 集成
 
@@ -111,10 +111,10 @@ ms.locfileid: "73156113"
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |--|
-    | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
-    | `https://<subdomain>.form.com/Member/UserAccount/SAML2.action` |
+    ```http
+    https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action
+    https://<subdomain>.form.com/Member/UserAccount/SAML2.action
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Form.com 客户端支持团队](https://form.com/about/company/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
