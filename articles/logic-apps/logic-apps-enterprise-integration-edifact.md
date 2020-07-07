@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82115527"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDIFACT 消息以实现 B2B 企业集成
@@ -57,7 +57,7 @@ ms.locfileid: "82115527"
 
    ![选择“添加”](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. 在“添加”下面，输入协议的**名称**。  对于“协议类型”，请选择“EDIFACT”。   为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。    
+6. 在“添加”下面，输入协议的**名称**。 对于“协议类型”，请选择“EDIFACT”。   为协议选择“宿主合作伙伴”，“宿主标识”、“来宾合作伙伴”和“来宾标识”。    
 
    ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "82115527"
 > EDIFACT 连接器仅支持 UTF-8 字符。
 > 如果输出中包含意外的字符，请检查 EDIFACT 消息是否使用 UTF-8 字符集。
 
-1. 在“添加”下面，选择“接收设置”。********
+1. 在“添加”下面，选择“接收设置”。 
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
    “接收设置”划分为以下部分：“标识符”、“确认”、“架构”、“控制编号”、“验证”和“内部设置”。****
@@ -94,21 +94,21 @@ ms.locfileid: "82115527"
 
 ### <a name="identifiers"></a>标识符
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNB6.1 (收件人引用密码) |输入范围在 1 到 14 个字符之间的字母数字值。 |
 | UNB6.2 (收件人引用限定符) |输入包含最少一个字符且最多二个字符的字母数字值。 |
 
-### <a name="acknowledgments"></a>致谢
+### <a name="acknowledgments"></a>鸣谢
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 接收消息(CONTRL) |选中此复选框可向交换发送方返回技术 (CONTRL) 确认。 该确认会基于协议的“发送设置”发送给交换发送方。 |
 | 确认(CONTRL) |选中此复选框可向交换发送方返回功能 (CONTRL) 确认。该确认会基于协议的“发送设置”发送给交换发送方。 |
 
 ### <a name="schemas"></a>架构
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNH2.1 (类型) |选择事务集类型。 |
 | UNH2.2 (版本) |输入消息版本号。 （最少一个字符；最多三个字符）。 |
@@ -120,7 +120,7 @@ ms.locfileid: "82115527"
 
 ### <a name="control-numbers"></a>控制编号
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 不允许交换控制编号重复项 |若要阻止重复交换，请选择此属性。 如果选中，则 EDIFACT 解码操作会检查收到的交换的交换控制编号 (UNB5) 是否与以前处理的交换控制编号不匹配。 如果检测到匹配项，则不处理交换。 |
 | 检查重复的 UNB5 的时间间隔为每(天) |如果选择禁止重复的交换控制编号，可以通过为此设置提供适当的值，来指定执行检查的间隔天数。 |
@@ -132,7 +132,7 @@ ms.locfileid: "82115527"
 
 完成每个验证行后，会自动添加另一行。 如果未指定任何规则，验证将使用“默认”行。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 消息类型 |选择 EDI 消息类型。 |
 | EDI 验证 |根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
@@ -143,7 +143,7 @@ ms.locfileid: "82115527"
 
 ### <a name="internal-settings"></a>内部设置
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 如果允许尾随分隔符，请创建空的 XML 标记 |选中此复选框可使交换发送方包含用于尾随分隔符的空 XML 标记。 |
 | 将交换拆分为事务集 - 出错时暂停事务集|通过将相应信封应用于事务集，将交换中的每个事务集分析为单独 XML 文档。 仅暂停未通过验证的事务集。 |
@@ -155,7 +155,7 @@ ms.locfileid: "82115527"
 
 可以配置此协议如何识别和处理发送给合作伙伴的传出消息。
 
-1.  在“添加”下面，选择“发送设置”。********
+1.  在“添加”下面，选择“发送设置”。 
 根据要与其交换消息的合作伙伴达成的协议来配置这些属性。 有关属性说明，请参阅本部分中的表格。
 
     “发送设置”划分为以下部分：“标识符”、“确认”、“架构”、“字符集和分隔符”、“控制编号”和“验证”。****
@@ -168,7 +168,7 @@ ms.locfileid: "82115527"
 
 ### <a name="identifiers"></a>标识符
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNB1.2 (语法版本) |选择介于 **1** 和 **4** 之间的值。 |
 | UNB2.3 (发件人反向路由地址) |输入包含最少一个字符且最多 14 个字符的字母数字值。 |
@@ -179,7 +179,7 @@ ms.locfileid: "82115527"
 
 ### <a name="acknowledgment"></a>确认
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 接收消息(CONTRL) |如果宿主合作伙伴预期收到技术 (CONTRL) 确认，请选中此复选框。 此设置指定发送消息的主机合作伙伴从来宾合作伙伴请求确认。 |
 | 确认(CONTRL) |如果主机合作伙伴期望收到功能 (CONTRL) 确认，则选中此复选框。 此设置指定发送消息的主机合作伙伴从来宾合作伙伴请求确认。 |
@@ -187,7 +187,7 @@ ms.locfileid: "82115527"
 
 ### <a name="schemas"></a>架构
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNH2.1 (类型) |选择事务集类型。 |
 | UNH2.2 (版本) |输入消息版本号。 |
@@ -196,7 +196,7 @@ ms.locfileid: "82115527"
 
 ### <a name="envelopes"></a>信封
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNB8 (Processing Priority Code) |输入长度不超过一个字符的字母数字值。 |
 | UNB10 (通信协议) |输入包含最少一个字符且最多 40 个字符的字母数字值。 |
@@ -208,7 +208,7 @@ ms.locfileid: "82115527"
 
 除了字符集，可以输入要用于每种消息类型的不同分隔符集。 如果没有为给定消息架构指定字符集，则使用默认字符集。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNB1.1 (系统标识符) |选择要应用于传出交换的 EDIFACT 字符集。 |
 | 架构 |从下拉列表中选择架构。 完成每行后，会自动添加新行。 对于所选的架构，请根据以下分隔符说明选择要使用的分隔符集。 |
@@ -220,7 +220,7 @@ ms.locfileid: "82115527"
 
 ### <a name="control-numbers"></a>控制编号
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | UNB5 (交换控制编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成传出交换。 前缀和后缀是可选的，而控制编号是必需的。 控制编号对于每个新消息递增；前缀和后缀保持不变。 |
 | UNG5 (组控制编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成组控制编号。 前缀和后缀是可选的，而控制编号是必需的。 控制编号对于每个新消息递增，直到达到最大值；前缀和后缀保持不变。 |
@@ -230,7 +230,7 @@ ms.locfileid: "82115527"
 
 完成每个验证行后，会自动添加另一行。 如果未指定任何规则，验证将使用“默认”行。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | 消息类型 |选择 EDI 消息类型。 |
 | EDI 验证 |根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
@@ -254,7 +254,7 @@ ms.locfileid: "82115527"
 有关此连接器的更多技术详细信息（如连接器的 Swagger 文件所述的操作和限制），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/edifact/)。
 
 > [!NOTE]
-> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本使用 Ise 的[B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
+> 对于[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中的逻辑应用，此连接器的 ISE 标记版本使用 [ISE 的 B2B 消息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

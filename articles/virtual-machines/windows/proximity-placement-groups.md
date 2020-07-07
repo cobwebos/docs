@@ -1,6 +1,6 @@
 ---
 title: PowerShell：使用邻近位置组
-description: 了解如何使用 Azure PowerShell 创建和使用邻近感应布局组。
+description: 了解如何通过 Azure PowerShell 创建和使用邻近放置组。
 services: virtual-machines
 ms.service: virtual-machines
 ms.topic: how-to
@@ -9,16 +9,16 @@ ms.date: 01/27/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 2401e8c160fd1c2ee3a734f374f1d4409c52ed16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098520"
 ---
-# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 将 Vm 部署到邻近位置组
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 将 VM 部署到邻近放置组
 
 
-若要尽可能降低 Vm，请尽可能降低延迟，然后将它们部署到[邻近的放置组](co-location.md#proximity-placement-groups)。
+若要让 VM 尽可能靠近，将延迟尽可能降至最低，应将 VM 部署到一个[邻近放置组](co-location.md#proximity-placement-groups)中。
 
 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源在物理上彼此靠近。 邻近放置组用于要求低延迟的工作负荷。
 
@@ -49,7 +49,7 @@ Get-AzProximityPlacementGroup
 
 ## <a name="create-a-vm"></a>创建 VM
 
-使用`-ProximityPlacementGroup $ppg.Id` [new-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)创建 vm 时，请使用引用邻近位置组 ID 在邻近位置组中创建 vm。
+通过 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM 时，请在邻近放置组中创建 VM，使用 `-ProximityPlacementGroup $ppg.Id` 引用邻近放置组 ID。
 
 ```azurepowershell-interactive
 $vmName = "myVM"
@@ -62,16 +62,16 @@ New-AzVm `
   -ProximityPlacementGroup $ppg.Id
 ```
 
-可以使用[AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup)在放置组中查看 VM。
+可以使用 [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get-azproximityplacementgroup) 查看放置组中的 VM。
 
 ```azurepowershell-interactive
 Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
-### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>将现有 VM 移到邻近组
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>将现有 VM 移到邻近放置组中
 
-还可以将现有 VM 添加到邻近位置组。 需要首先 stop\deallocate VM，然后更新 VM 并重新启动。
+还可以将现有 VM 添加到邻近放置组。 需先停止\解除分配 VM，然后更新 VM 并重启。
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -81,9 +81,9 @@ Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacement
 Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
-### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>将现有 VM 移出邻近位置组
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>将现有 VM 移出邻近放置组
 
-要从邻近位置组删除 VM，需要先 stop\deallocate VM，然后更新 VM 并重新启动。
+若要从邻近放置组中删除 VM，需先停止\解除分配 VM，然后更新 VM 并重启。
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
@@ -96,11 +96,11 @@ Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 
 
 ## <a name="availability-sets"></a>可用性集
-你还可以在邻近布局组中创建可用性集。 将同一`-ProximityPlacementGroup`参数与[AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) cmdlet 配合使用来创建可用性集，并且也将在同一邻近布局组中创建可用性集中创建的所有 vm。
+还可以在邻近放置组中创建可用性集。 将同一 `-ProximityPlacementGroup` 参数与 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) cmdlet 一起使用来创建一个可用性集，并且也将在同一邻近放置组中创建在该可用性集中创建的所有 VM。
 
-若要将现有可用性集添加或删除到邻近组，首先需要停止可用性集中的所有 Vm。 
+若要在邻近放置组中添加或删除现有可用性集，需先停止该可用性集中的所有 VM。 
 
-### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>将现有可用性集移动到邻近位置组
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>将现有可用性集移到邻近放置组中
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -122,7 +122,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>将现有可用性集移出邻近位置组
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>将现有可用性集移出邻近放置组
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
@@ -146,12 +146,12 @@ foreach ($vmId in $vmIDs){
 
 ## <a name="scale-sets"></a>规模集
 
-你还可以在邻近布局组中创建规模集。 使用与`-ProximityPlacementGroup` [AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss)相同的参数创建规模集，所有实例都将在相同的邻近布局组中创建。
+还可以在邻近放置组中创建规模集。 将同一 `-ProximityPlacementGroup` 参数与 [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) 一起使用来创建规模集，并且将在同一邻近放置组中创建所有实例。
 
 
-若要将现有规模集添加或删除到邻近组，首先需要停止规模集。 
+若要在邻近放置组中添加或删除现有规模集，需先停止该规模集。 
 
-### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>将现有规模集移至邻近组
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>将现有规模集移到邻近放置组中
 
 ```azurepowershell-interactive
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
@@ -161,7 +161,7 @@ Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupN
 Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
-### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>将现有规模集移出邻近感应布局组
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>将现有规模集移出邻近放置组
 
 ```azurepowershell-interactive
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet

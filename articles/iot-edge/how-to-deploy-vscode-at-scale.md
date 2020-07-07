@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82134359"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大规模部署 IoT Edge 模块
@@ -24,7 +24,7 @@ ms.locfileid: "82134359"
 
 在本文中，你将设置 Visual Studio Code 和 IoT 扩展。 然后，了解如何将模块部署到一组 IoT Edge 设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-visual-studio-code)。
@@ -35,13 +35,13 @@ ms.locfileid: "82134359"
 
 可以使用 Visual Studio Code 的 Azure IoT 扩展来执行与中心相关的操作。 为让操作顺利进行，需登录到 Azure 帐户并选择要使用的 IoT 中心。
 
-1. 在 Visual Studio Code 中打开“资源管理器”视图****。
+1. 在 Visual Studio Code 中打开“资源管理器”视图。
 
-1. 在资源管理器底部，展开“Azure IoT 中心”部分****。
+1. 在资源管理器底部，展开“Azure IoT 中心”部分。
 
-1. 单击“Azure IoT 中心”部分标题中的“...”********。 如果没有看到省略号，请将鼠标悬停在标题处。
+1. 单击“Azure IoT 中心”部分标题中的“...” 。 如果没有看到省略号，请将鼠标悬停在标题处。
 
-1. 选择“选择 IoT 中心”****。
+1. 选择“选择 IoT 中心”。
 
 1. 如果尚未登录 Azure 帐户，请按照提示登录。
 
@@ -126,7 +126,7 @@ ms.locfileid: "82134359"
 }
 ```
 
-如果需要确定当前可以配置哪些 IoT Edge 设备，请运行**IoT Edge：获取设备信息**命令。
+如果需要确定当前可以配置哪些 IoT Edge 设备，请运行“IoT Edge:获取设备信息”命令。
 
 ## <a name="identify-devices-with-target-conditions"></a>使用目标条件标识设备
 
@@ -162,7 +162,7 @@ ms.locfileid: "82134359"
 
 ### <a name="edit-the-device-twin"></a>编辑设备孪生
 
-可以在 Visual Studio Code 中编辑设备孪生，以配置标记。 从 "**视图**" 菜单中，选择 "**命令面板**"，并运行**IoT Edge：编辑设备**克隆命令。 选择 IoT Edge 设备，随即会显示设备孪生。
+可以在 Visual Studio Code 中编辑设备孪生，以配置标记。 在“视图”菜单中，选择“命令面板”并运行“IoT Edge:  编辑设备孪生”命令。 选择 IoT Edge 设备，随即会显示设备孪生。
 
 此示例中未定义任何标记。 将当前的空节 `"tags": {}` 替换为自己的标记定义。
 
@@ -204,17 +204,17 @@ ms.locfileid: "82134359"
 }
 ```
 
-保存本地文件后，请运行**IoT Edge：更新设备**克隆命令。
+保存本地文件后，运行“IoT Edge:更新设备孪生”命令。
 
 ## <a name="create-deployment-at-scale"></a>大规模创建部署
 
 配置部署清单并在设备孪生中配置标记后，便可以开始部署了。
 
-1. 从 "**视图**" 菜单中，选择 "**命令面板**"，然后选择 " **Azure IoT Edge：创建大规模部署**" 命令。
+1. 在“视图”菜单中，选择“命令面板”并选择“Azure IoT Edge:  大规模创建部署”命令。
 
-1. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”****。
+1. 导航至要使用的部署清单 JSON 文件，然后单击“选择 Edge 部署清单”。
 
-1. 按提示提供值，从**部署 ID**开始。
+1. 按提示提供值，从“部署 ID”开始。
 
    ![指定部署 ID](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
 
@@ -223,8 +223,8 @@ ms.locfileid: "82134359"
   | 参数 | 说明 |
   | --- | --- |
   | 部署 ID | 将在 IoT 中心创建的部署的名称。 为部署提供唯一名称（最多包含 128 个小写字母）。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。 |
-  | 目标条件 | 输入目标条件，确定用作此部署的目标的设备。该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。例如 `tags.environment='test' and properties.reported.devicemodel='4000x'`。 |
-  | Priority |  正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。 |
+  | 目标条件 | 输入目标条件，确定用作此部署的目标的设备。 该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。 例如 `tags.environment='test' and properties.reported.devicemodel='4000x'`。 |
+  | 优先级 |  正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。 |
 
   指定优先级后，终端应会显示类似于以下描述内容的输出：
 
@@ -235,7 +235,7 @@ ms.locfileid: "82134359"
 
 ## <a name="monitoring-and-modifying-deployments"></a>监视和修改部署
 
-使用[Azure 门户](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-in-the-azure-portal)或[Azure CLI](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli)来监视、修改和删除部署。 这两个工具都会提供有关部署的指标。
+使用 [Azure 门户](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-in-the-azure-portal)或 [Azure CLI](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli) 来监视、修改和删除部署。 这两个工具都会提供有关部署的指标。
 
 ## <a name="next-steps"></a>后续步骤
 

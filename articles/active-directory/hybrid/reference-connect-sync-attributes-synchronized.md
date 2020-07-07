@@ -1,6 +1,6 @@
 ---
-title: Azure AD Connect 同步的属性 | Microsoft 文档
-description: 列出同步到 Azure Active Directory 的属性。
+title: Azure AD Connect 同步的属性 | Microsoft Docs
+description: 列出与 Azure Active Directory 同步的属性。
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82082112"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
@@ -28,10 +28,10 @@ ms.locfileid: "82082112"
 属性按照相关的 Azure AD 应用进行分组。
 
 ## <a name="attributes-to-synchronize"></a>要同步的属性
-常见的问题是：*必须要同步的属性的列表是什么*。 默认的（也是建议的）方法是保留默认属性，以便可以在云中构造完整的 GAL（全局地址列表），并获取 Office 365 工作负荷中的所有功能。 在某些情况下，组织并不想要将某些属性同步到云中，因为这些属性包含敏感数据或 PII（个人身份信息），如以下示例中所示：  
+常见的问题是：要同步的最小属性的列表是什么。 默认的（也是建议的）方法是保留默认属性，以便可以在云中构造完整的 GAL（全局地址列表），并获取 Office 365 工作负荷中的所有功能。 在某些情况下，组织并不想要将某些属性同步到云中，因为这些属性包含敏感数据或 PII（个人身份信息），如以下示例中所示：  
 ![错误的属性](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
-在此情况下，请从本主题中的属性列表着手，并识别包含敏感数据或 PII 数据、因而不能同步的属性。 然后，在安装期间，使用 [Azure AD 应用程序和属性筛选](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)，取消选择这些属性。
+在此情况下，请从本主题中的属性列表着手，并识别包含敏感数据或 PII 数据、因而不能同步的属性。 然后在安装期间使用 [Azure AD 应用和属性筛选](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering)取消选择这些属性。
 
 > [!WARNING]
 > 取消选择属性时，应该小心，只取消选择那些绝对不能同步的属性。 取消选择其他属性可能会对功能造成负面影响。
@@ -52,11 +52,11 @@ ms.locfileid: "82082112"
 | userPrincipalName |X |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | assistant |X |X | | |
-| altRecipient |X | | |需要 Azure AD Connect 内部版本 1.1.552.0 或更高版本。 |
+| altRecipient |X | | |需要 Azure AD Connect 版本 1.1.552.0 或更高版本。 |
 | authOrig |X |X |X | |
 | c |X |X | | |
 | cn |X | |X | |
@@ -153,7 +153,7 @@ ms.locfileid: "82082112"
 | pager |X |X | | |
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
-| proxyAddresses |X |X |X | |
+| ProxyAddresses |X |X |X | |
 | publicDelegates |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码同步和联合使用。 |
 | reportToOriginator | | |X | |
@@ -175,7 +175,7 @@ ms.locfileid: "82082112"
 | wWWHomePage |X |X | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | authOrig |X |X |X | |
@@ -207,13 +207,13 @@ ms.locfileid: "82082112"
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
-| homephone |X |X | | |
+| homePhone |X |X | | |
 | info |X |X |X | |
-| initials |X |X | | |
+| Initials |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
 | mail |X |X |X | |
-| mailnickname |X |X |X | |
+| mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
 | member | | |X | |
@@ -236,7 +236,7 @@ ms.locfileid: "82082112"
 | postalCode |X |X | | |
 | postOfficeBox |X |X | |SharePoint Online 当前不使用此属性。 |
 | preferredLanguage |X | | | |
-| proxyAddresses |X |X |X | |
+| ProxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
@@ -252,12 +252,12 @@ ms.locfileid: "82082112"
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |机械属性。 用户所在的国家/地区
-。 用于进行许可证分配。 |
+上获取。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 | wWWHomePage |X |X | | |
 
 ## <a name="teams-and-skype-for-business-online"></a>Teams 和 Skype for Business Online
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | c |X |X | | |
@@ -269,7 +269,7 @@ ms.locfileid: "82082112"
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
-| homephone |X |X | | |
+| homePhone |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
 | mail |X |X |X | |
@@ -291,7 +291,7 @@ ms.locfileid: "82082112"
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
-| proxyAddresses |X |X |X | |
+| ProxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
@@ -305,7 +305,7 @@ ms.locfileid: "82082112"
 | wWWHomePage |X |X | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | cn |X | |X |公用名或别名。 大多数情况下是 [mail] 值的前缀。 |
@@ -313,14 +313,14 @@ ms.locfileid: "82082112"
 | mail |X |X |X |完整的电子邮件地址。 |
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
-| proxyAddresses |X |X |X |机械属性。 通过 Azure AD 使用。 包含用户的所有辅助电子邮件地址。 |
+| ProxyAddresses |X |X |X |机械属性。 由 Azure AD 使用。 包含用户的所有辅助电子邮件地址。 |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |此 UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="intune"></a>Intune
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | c |X |X | | |
@@ -328,17 +328,17 @@ ms.locfileid: "82082112"
 | description |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
-| mailnickname |X |X |X | |
+| mailNickname |X |X |X | |
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
-| proxyAddresses |X |X |X | |
+| ProxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
 | usageLocation |X | | |机械属性。 用户所在的国家/地区。 用于进行许可证分配。 |
 | userPrincipalName |X | | |UPN 是用户的登录 ID。 大多数情况下与 [mail] 值相同。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 属性名称 | 用户 | 联系人 | 组 | 注释 |
+| 属性名称 | User | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | c |X |X | | |
@@ -377,7 +377,7 @@ ms.locfileid: "82082112"
 
 如果不使用 Azure AD 目录来支持 Office 365、Dynamics 或 Intune，则可以使用这一组属性。 它包含一小部分核心属性。 请注意，对于某些第三方应用程序的单一登录或预配，还需要配置属性的同步，而不是此处所述的属性。 每个应用程序的[SaaS 应用教程](../saas-apps/tutorial-list.md)介绍了应用程序要求。
 
-| 属性名称 | User | 联系人 | 组 | 注释 |
+| 特性名 | User | 联系人 | 组 | 评论 |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |如果启用了帐户，则进行定义。 |
 | cn |X | |X | |
@@ -386,10 +386,10 @@ ms.locfileid: "82082112"
 | givenName |X |X | | |
 | mail |X | |X | |
 | managedBy | | |X | |
-| mailNickName |X |X |X | |
+| mailNickname |X |X |X | |
 | member | | |X | |
 | objectSID |X | | |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
-| proxyAddresses |X |X |X | |
+| ProxyAddresses |X |X |X | |
 | pwdLastSet |X | | |机械属性。 用于了解使已颁发令牌失效的时间。 由密码哈希同步、直通身份验证和联合身份验证共同使用。 |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |机械属性。 用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。 |
@@ -411,31 +411,31 @@ ms.locfileid: "82082112"
 | operatingSystemVersion |X |也称为 deviceOSVersion。 |
 | userCertificate |X | |
 
-**用户**的这些属性是所选其他应用的补充。  
+**用户** 的这些属性是所选其他应用的补充。  
 
-| 属性名称 | User | 注释 |
+| 属性名称 | 用户 | 注释 |
 | --- |:---:| --- |
 | domainFQDN |X |也称为 dnsDomainName。 例如 contoso.com。 |
 | domainNetBios |X |也称为 netBiosName。 例如 CONTOSO。 |
 | msDS-KeyCredentialLink |X |在用户已注册 Windows Hello for Business 后。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合写回
-选择启用 **Exchange 混合**部署时，这些属性将从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
+选择启用 **Exchange 混合**部署时，这些属性从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
 
-| 属性名称（本地 AD） | 属性名称（连接 UI） | User | 联系人 | 组 | 注释 |
+| 属性名称（本地 AD） | 属性名称（连接 UI） | User | 联系人 | 组 | 评论 |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |派生自 Azure AD 中的 cloudAnchor。 此属性是 Exchange 2016 和 Windows Server 2016 AD 中的新增属性。 |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |联机存档：使客户能够存档邮件。 |
-| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |筛选：从客户端写回本地筛选及在线安全和已阻止的发件人数据。 |
-| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |筛选：从客户端写回本地筛选及在线安全和已阻止的发件人数据。 |
-| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |筛选：从客户端写回本地筛选及在线安全和已阻止的发件人数据。 |
-| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |启用统一消息传送 (UM) - 在线语音邮件：供 Microsoft Lync Server 集成用于向 Lync Server 本地表示用户在在线服务中有语音邮件。 |
-| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |诉讼数据保留：启用云服务来标识哪些用户正处于诉讼数据保留状态。 |
-| proxyAddresses| proxyAddresses |X |X |X |只插入 Exchange Online 中的 x500 地址。 |
-| publicDelegates| ms-Exch-Public-Delegates  |X | | |允许向拥有本地 Exchange 邮箱的用户授予 Exchange Online 邮箱的 SendOnBehalfTo 权限。 需要 Azure AD Connect 内部版本 1.1.552.0 或更高版本。 |
+| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |筛选：从客户端回写本地筛选及在线安全和已阻止的发件人数据。 |
+| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |筛选：从客户端回写本地筛选及在线安全和已阻止的发件人数据。 |
+| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |筛选：从客户端回写本地筛选及在线安全和已阻止的发件人数据。 |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |启用统一消息 (UM) - 在线语音邮件：供 Microsoft Lync Server 集成用于向 Lync Server 本地指示用户在联机服务中有语音邮件。 |
+| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |诉讼数据保留：启用云服务来确定哪些用户正处于诉讼数据保留状态。 |
+| ProxyAddresses| ProxyAddresses |X |X |X |只插入 Exchange Online 中的 x500 地址。 |
+| publicDelegates| ms-Exch-Public-Delegates  |X | | |允许向拥有本地 Exchange 邮箱的用户授予 Exchange Online 邮箱的 SendOnBehalfTo 权限。 需要 Azure AD Connect 版本 1.1.552.0 或更高版本。 |
 
-## <a name="exchange-mail-public-folder"></a>Exchange 邮件公用文件夹
-如果选择启用 Exchange 邮件公用文件夹****，这些属性将从本地 Active Directory 同步到 Azure AD。
+## <a name="exchange-mail-public-folder"></a>Exchange 邮件公共文件夹
+如果选择启用“Exchange 邮件公用文件夹”，这些属性将从本地 Active Directory 同步到 Azure AD。
 
 | 属性名称 | PublicFolder | 注释 |
 | --- | :---:| --- |
@@ -449,7 +449,7 @@ ms.locfileid: "82082112"
 ## <a name="device-writeback"></a>设备写回
 设备对象是在 Active Directory 中创建的。 这些对象可以是加入 Azure AD 的设备，或加入域的 Windows 10 计算机。
 
-| 属性名称 | 设备 | 注释 |
+| 特性名 | 设备 | 评论 |
 | --- |:---:| --- |
 | altSecurityIdentities |X | |
 | displayName |X | |
@@ -466,9 +466,9 @@ ms.locfileid: "82082112"
 | msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
-## <a name="notes"></a>注意
-* 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 替代 ID 属性（例如 mail）将与 Azure AD 属性 userPrincipalName 同步。
-* 在上述列表中，对象类型 **User** 也适用于对象类型 **iNetOrgPerson**。
+## <a name="notes"></a>注释
+* 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。 替代 ID 属性（例如 mail）会与 Azure AD 属性 userPrincipalName 同步。
+* 在上述列表中，对象类型 User 也适用于对象类型 iNetOrgPerson。 
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。

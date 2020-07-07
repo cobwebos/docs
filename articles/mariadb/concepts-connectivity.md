@@ -1,5 +1,5 @@
 ---
-title: 暂时性连接错误-Azure Database for MariaDB
+title: 暂时性连接错误 - Azure Database for MariaDB
 description: 了解如何处理 Azure Database for MariaDB 的暂时性连接错误。
 keywords: mysql 连接, 连接字符串, 连接问题, 暂时性错误, 连接错误
 author: ajlam
@@ -8,10 +8,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 3e6c5c8b6c3f118f1b19c5e2b3455f1f66f7e70e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100798"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>处理 Azure Database for MariaDB 的暂时性连接错误
@@ -36,7 +36,7 @@ ms.locfileid: "82100798"
 * 对于每次后续重试，以指数级增大等待时间，最长为 60 秒。
 * 设置最大重试次数，达到该次数时，应用程序认为操作失败。
 
-活动事务的连接失败时，适当地处理恢复会更困难。 存在两种情况：如果事务在性质上是只读的，则可以安全地重新打开连接并重试事务。 但是，如果事务也在写入数据库，则必须确定事务在发生暂时性错误之前是已回滚还是已成功。 在这种情况下，你可能没有收到来自数据库服务器的提交确认。
+活动事务的连接失败时，适当地处理恢复会更困难。 存在两种情况：如果事务在性质上是只读的，则可以安全地重新打开连接并重试事务。 但是，如果事务也在写入数据库，则必须确定事务在发生暂时性错误之前是已回滚还是已成功。 在这种情况下，你可能尚未从数据库服务器收到提交确认。
 
 解决此问题的方法之一是，在客户端上生成一个用于所有重试的唯一 ID。 将此唯一 ID 作为事务的一部分传递给服务器，并将其存储在具有唯一约束的列中。 这样，便可以安全重试事务。 如果前一事务已回滚，并且客户端生成的唯一 ID 在系统中尚不存在，则重试将会成功。 如果之前已存储该唯一 ID（因为前一事务已成功完成），则重试将会失败，并指示重复键冲突。
 

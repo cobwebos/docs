@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82098894"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
@@ -209,41 +209,41 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive` 只有一个必需的参数：`scopes`。 `scopes` 参数枚举用于定义所需令牌范围的字符串。 如果令牌用于 Microsoft Graph，可以在每个 Microsoft Graph API 的 API 参考文档中找到所需的范围。 参阅参考文档中的“权限”部分。
 
-例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，请使用作用域 "用户读取"、"联系人"。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，请使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
-在 Android 上，你可以在通过使用`PublicClientApplicationBuilder`创建应用时指定父活动。 如果此时未指定父活动，则可以在以后使用`.WithParentActivityOrWindow`来指定父活动，如下一节中所示。 如果指定父活动，则在交互后，该令牌将返回到该父活动。 如果未指定，则`.ExecuteAsync()`调用会引发异常。
+在 Android 上，可以在使用 `PublicClientApplicationBuilder` 创建应用时指定父活动。 如果当时未指定父活动，以后可以使用 `.WithParentActivityOrWindow` 来指定，如以下部分中所述。 如果指定了父活动，交互后，令牌将交回给该父活动。 如果未指定父活动，`.ExecuteAsync()` 调用将引发异常。
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET 中特定的可选参数
 
-以下部分介绍了 MSAL.NET 中的可选参数。
+以下部分介绍 MSAL.NET 中的可选参数。
 
 ##### <a name="withprompt"></a>WithPrompt
 
-`WithPrompt()`参数通过指定 prompt 来控制与用户的交互。
+`WithPrompt()` 参数通过指定提示来控制与用户的交互。
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 该类定义以下常量：
 
-- `SelectAccount`强制 security token service （STS）显示 "帐户选择" 对话框。 此对话框包含用户为其提供会话的帐户。 如果希望允许用户在不同标识之间进行选择，则可以使用此选项。 此选项会驱动 MSAL 向标识提供者发送 `prompt=select_account`。
+- `SelectAccount` 强制安全令牌服务 (STS) 显示帐户选择对话框。 该对话框包含用户与其建立了会话的帐户。 若要让用户在不同的标识之间进行选择，可以使用此选项。 此选项会驱动 MSAL 向标识提供者发送 `prompt=select_account`。
 
-    `SelectAccount`常数是默认值，可根据可用信息有效地提供可能的最佳体验。 可用的信息可能包括帐户、用户的会话状态等。 请勿更改此默认设置，除非你有充分的理由。
-- `Consent`允许用户在同意之前向用户授予同意。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。
+    `SelectAccount` 常量是默认值，它根据可用信息有效提供可能最佳的体验。 可用信息可能包括帐户、用户会话存在性等。 除非有合理的理由，否则请不要更改此默认值。
+- `Consent` 用于提示用户授予许可，即使以前曾经授予过许可。 在这种情况下，MSAL 会将 `prompt=consent` 发送到标识提供者。
 
-    你可能想要在以`Consent`安全为中心的应用程序中使用常量，其中组织监管要求用户在每次使用应用程序时都可以看到同意对话框。
-- `ForceLogin`使服务能够提示用户提供凭据，即使不需要提示也是如此。
+    你可能希望在注重安全的应用程序中使用 `Consent` 常量。在此类应用程序中，组织监管政策要求用户在每次使用该应用程序时都会看到许可对话框。
+- `ForceLogin` 使服务能够提示用户提供凭据，即使并不需要提示。
 
-    如果令牌获取失败并且你想让用户重新登录，则此选项会很有用。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 你可能想要在注重安全的应用程序中使用此选项，在这种应用程序中，组织治理要求用户在每次访问应用程序的特定部分时登录。
-- `Never`仅适用于 .NET 4.5 和 Windows 运行时（WinRT）。 此常量不会提示用户，但会尝试使用存储在隐藏的嵌入式 web 视图中的 cookie。 有关详细信息，请参阅[使用 MSAL.NET 的 web 浏览器](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)。
+    如果令牌获取失败，而你想要让用户重新登录，则此选项会很有用。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 你可能希望在注重安全的应用程序中使用此选项。在此类应用程序中，组织监管政策要求用户在每次访问该应用程序的特定部分时都要登录。
+- `Never` 仅适用于 .NET 4.5 和 Windows 运行时 (WinRT)。 此常量不会提示用户，而是尝试使用隐藏的嵌入式 Web 视图中存储的 Cookie。 有关详细信息，请参阅[在 MSAL.NET 中使用 Web 浏览器](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)。
 
-    如果此选项失败，则`AcquireTokenInteractive`会引发异常，通知你需要 UI 交互。 然后，需要使用另一个`Prompt`参数。
-- `NoPrompt`不会向标识提供程序发送提示。
+    如果此选项失败，则 `AcquireTokenInteractive` 会引发异常，告知需要进行 UI 交互。 然后，需要使用另一个 `Prompt` 参数。
+- `NoPrompt` 不会向标识提供者发送提示。
 
-    此选项仅适用于 Azure Active Directory B2C 中的编辑配置文件策略。 有关详细信息，请参阅[B2C 细节](https://aka.ms/msal-net-b2c-specificities)。
+    此选项仅适用于 Azure Active Directory B2C 中的编辑配置文件策略。 有关详细信息，请参阅 [B2C 细节](https://aka.ms/msal-net-b2c-specificities)。
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-如果希望`WithExtraScopeToConsent`用户对多个资源提供提前同意，请在高级方案中使用修饰符。 如果不想使用增量许可，则可以使用此修饰符，这通常与 MSAL.NET 或 Microsoft 标识平台2.0 一起使用。 有关详细信息，请参阅[让用户提前许可多个资源](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
+在你希望用户提前许可多个资源的高级方案中使用 `WithExtraScopeToConsent` 修饰符。 如果你不想要使用增量许可（这种许可通常与 MSAL.NET 或 Microsoft 标识平台 2.0 配合使用），可以使用此修饰符。 有关详细信息，请参阅[让用户提前许可多个资源](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
 
 下面是代码示例：
 
@@ -255,16 +255,16 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>其他可选参数
 
-若要了解的其他可选参数`AcquireTokenInteractive`，请参阅 AcquireTokenInteractiveParameterBuilder 的[参考文档](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
+若要了解 `AcquireTokenInteractive` 的其他可选参数，请参阅 [AcquireTokenInteractiveParameterBuilder 的参考文档](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)。
 
 ### <a name="acquire-tokens-via-the-protocol"></a>通过协议获取令牌
 
-建议不要直接使用协议来获取令牌。 如果执行此操作，则应用不支持涉及单一登录（SSO）、设备管理和条件性访问的某些方案。
+建议不要直接使用协议来获取令牌。 如果这样做，应用将不支持某些涉及单一登录 (SSO)、设备管理和条件访问的方案。
 
 使用协议获取移动应用的令牌时，请发出两个请求：
 
-* 获取授权代码。
-* 交换令牌的代码。
+* 获取授权代码
+* 用该代码交换令牌。
 
 #### <a name="get-an-authorization-code"></a>获取授权代码
 

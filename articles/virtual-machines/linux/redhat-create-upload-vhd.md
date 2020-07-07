@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
 ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084305"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>为 Azure 准备基于 Red Hat 的虚拟机
@@ -20,13 +20,13 @@ ms.locfileid: "82084305"
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
-### <a name="prerequisites"></a>必备条件
-本部分假定已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+### <a name="prerequisites"></a>先决条件
+本部分假定你已经从 Red Hat 网站获取 ISO 文件并将 RHEL 映像安装到虚拟硬盘 (VHD)。 有关如何使用 Hyper-V 管理器来安装操作系统映像的更多详细信息，请参阅[安装 Hyper-V 角色和配置虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 **RHEL 安装说明**
 
-* Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”****，而不是在创建磁盘时默认动态分配选项。
-* Azure 支持 Gen1 （BIOS 启动） & Gen2 （UEFI boot）虚拟机。
+* Azure 不支持 VHDX 格式。 Azure 仅支持固定 VHD。 可使用 Hyper-V 管理器将磁盘转换为 VHD 格式，也可以使用 convert-vhd cmdlet。 如果使用 VirtualBox，则选择“固定大小”，而不是在创建磁盘时默认动态分配选项。
+* Azure 支持 Gen1（BIOS 引导）和Gen2（UEFI 引导）虚拟机。
 * VHD 允许的最大大小为 1,023 GB。
 * 支持逻辑卷管理器 (LVM)，该管理器可以在 Azure 虚拟机中的 OS 磁盘或数据磁盘上使用。 但是，通常建议在 OS 磁盘上使用标准分区而不是 LVM。 这种做法可以避免 LVM 名称与克隆的虚拟机冲突，尤其是当需要将操作系统磁盘附加到另一台相同的虚拟机进行故障排除时。 另请参阅 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文档。
 * 需要装载通用磁盘格式 (UDF) 文件系统的内核支持。 在 Azure 上首次启动时，附加到来宾的 UDF 格式媒体会将预配配置传递到 Linux 虚拟机。 Azure Linux 代理必须能够装载 UDF 文件系统才能读取其配置和预配虚拟机。
@@ -37,7 +37,7 @@ ms.locfileid: "82084305"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。****
+1. 单击“连接”打开该虚拟机的控制台窗口。
 
 1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
    
@@ -80,7 +80,7 @@ ms.locfileid: "82084305"
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
+    这还可确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
     
     除此之外，建议删除以下参数：
     
@@ -125,14 +125,14 @@ ms.locfileid: "82084305"
 
         # logout
 
-1. 单击 "hyper-v 管理器" 中的 "**操作** > **关闭**"。 Linux VHD 现已准备好上传到 Azure。
+1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备 RHEL 7 虚拟机
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 
-1. 单击“连接”打开该虚拟机的控制台窗口。****
+1. 单击“连接”  以打开该虚拟机的控制台窗口。
 
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
    
@@ -158,11 +158,11 @@ ms.locfileid: "82084305"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
+1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
+   这还可确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
    
         rhgb quiet crashkernel=auto
    
@@ -210,7 +210,7 @@ ms.locfileid: "82084305"
 
         # logout
 
-1. 单击 "hyper-v 管理器" 中的 "**操作** > **关闭**"。 Linux VHD 现已准备好上传到 Azure。
+1. 在 Hyper-V 管理器中单击“操作” > “关闭”。 现在，准备将 Linux VHD 上传到 Azure。
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>从 KVM 准备基于 Red Hat 的虚拟机
@@ -235,7 +235,7 @@ ms.locfileid: "82084305"
 
    将 root 用户的第二个字段从“!!”更改 为加密密码。
 
-1. 在 KVM 中通过 qcow2 映像创建虚拟机。 将磁盘类型设置为 **qcow2**，将虚拟网络接口设备型号设置为 **virtio**。 然后，启动该虚拟机，并以 root 身份登录。
+1. 在 KVM 中通过 qcow2 映像创建虚拟机。 将磁盘类型设置为 **qcow2**，将虚拟网络接口设备型号设置为 **virtio**。 然后启动虚拟机，并以 root 身份登录。
 
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
    
@@ -270,7 +270,7 @@ ms.locfileid: "82084305"
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
+    这还可确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。
     
     除此之外，建议删除以下参数：
     
@@ -312,7 +312,7 @@ ms.locfileid: "82084305"
 
         # chkconfig waagent on
 
-1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf**中修改以下参数：
+1. Azure Linux 代理可使用在 Azure 上预配虚拟机后附加到虚拟机的本地资源磁盘自动配置交换空间。 请注意，本地资源磁盘是临时磁盘，可能在取消预配虚拟机后被清空。 在上一步中安装 Azure Linux 代理后，相应地在 **/etc/waagent.conf** 中修改以下参数：
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -339,7 +339,7 @@ ms.locfileid: "82084305"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 请参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -386,7 +386,7 @@ ms.locfileid: "82084305"
 
    将 root 用户的第二个字段从“!!”更改 为加密密码。
 
-1. 在 KVM 中通过 qcow2 映像创建虚拟机。 将磁盘类型设置为 **qcow2**，将虚拟网络接口设备型号设置为 **virtio**。 然后，启动该虚拟机，并以 root 身份登录。
+1. 在 KVM 中通过 qcow2 映像创建虚拟机。 将磁盘类型设置为 **qcow2**，将虚拟网络接口设备型号设置为 **virtio**。 然后启动虚拟机，并以 root 身份登录。
 
 1. 创建或编辑 `/etc/sysconfig/network` 文件并添加以下文本：
    
@@ -412,11 +412,11 @@ ms.locfileid: "82084305"
 
         # subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此配置，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
+1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 若要执行此配置，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   此命令还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此命令还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
+   此命令还会确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此命令还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
    
         rhgb quiet crashkernel=auto
    
@@ -490,7 +490,7 @@ ms.locfileid: "82084305"
 1. 将 qcow2 映像转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 请参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -517,15 +517,15 @@ ms.locfileid: "82084305"
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>从 VMware 准备基于 Red Hat 的虚拟机
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 本部分假设已在 VMware 中安装了 RHEL 虚拟机。 有关如何在 VMware 中安装操作系统的详细信息，请参阅 [VMware 来宾操作系统安装指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 在安装 Linux 操作系统时，建议使用标准分区而不是 LVM，这通常是许多安装的默认设置。 这种做法可以避免 LVM 名称与克隆的虚拟机名称冲突，尤其是在需要将操作系统磁盘附加到另一台虚拟机进行故障排除时。 如果需要，可以在数据磁盘上使用 LVM 或 RAID。
 * 不要在操作系统磁盘上配置交换分区。 可将 Linux 代理配置为在临时资源磁盘上创建交换文件。 可以在下面的步骤中找到有关此操作的详细信息。
-* 创建虚拟硬盘时，选择“将虚拟磁盘存储为单个文件”****。
+* 创建虚拟硬盘时，选择“将虚拟磁盘存储为单个文件”。
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>从 VMware 准备 RHEL 6 虚拟机
-1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 运行以下命令卸载此包：
+1. 在 RHEL 6 中，NetworkManager 可能会干扰 Azure Linux 代理。 请运行以下命令来卸载该包：
    
         # sudo rpm -e --nodeps NetworkManager
 
@@ -562,11 +562,11 @@ ms.locfileid: "82084305"
 
         # subscription-manager repos --enable=rhel-6-server-extras-rpms
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
+1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 为此，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
    
-   这还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 除此之外，建议删除以下参数：
+   这还可确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 除此之外，建议删除以下参数：
    
         rhgb quiet crashkernel=auto
    
@@ -619,7 +619,7 @@ ms.locfileid: "82084305"
 1. 关闭虚拟机，并将 VMDK 文件转换为 .vhd 文件。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 请参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -670,11 +670,11 @@ ms.locfileid: "82084305"
 
         # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
+1. 在 grub 配置中修改内核引导行，使其包含 Azure 的其他内核参数。 若要执行此修改，请在文本编辑器中打开 `/etc/default/grub` 并编辑 `GRUB_CMDLINE_LINUX` 参数。 例如：
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   此配置还将确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此外，还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
+   此配置还会确保所有控制台消息都发送到第一个串行端口，从而可以协助 Azure 支持人员调试问题。 此外，还会关闭 NIC 的新 RHEL 7 命名约定。 除此之外，建议删除以下参数：
    
         rhgb quiet crashkernel=auto
    
@@ -694,7 +694,7 @@ ms.locfileid: "82084305"
 
         # dracut -f -v
 
-1. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
+1. 请确保已安装 SSH 服务器且将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
 
         ClientAliveInterval 180
 
@@ -735,7 +735,7 @@ ms.locfileid: "82084305"
 1. 关闭虚拟机，将 VMDK 文件转换为 VHD 格式。
 
 > [!NOTE]
-> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 参考： https://bugs.launchpad.net/qemu/+bug/1490611。
+> qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。 QEMU 2.6 中已修复此问题。 建议使用 qemu-img 2.2.0 或更低版本，或者更新到 2.6 或更高版本。 请参考： https://bugs.launchpad.net/qemu/+bug/1490611 。
 >
 
 
@@ -886,11 +886,11 @@ ms.locfileid: "82084305"
 
 1. 将 kickstart 文件放在安装系统可以访问的位置。
 
-1. 在 Hyper-V 管理器中，创建新的虚拟机。 在“连接虚拟硬盘”页上，选择“稍后附加虚拟硬盘”，并完成新建虚拟机向导********。
+1. 在 Hyper-V 管理器中，创建新的虚拟机。 在“连接虚拟硬盘”页上，选择“稍后附加虚拟硬盘”，并完成新建虚拟机向导 。
 
 1. 打开虚拟机设置：
 
-    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小”********。
+    a.  将新的虚拟硬盘附加到虚拟机。 请务必选择“VHD 格式”和“固定大小” 。
 
     b.  将安装 ISO 附加到 DVD 光驱。
 
@@ -898,9 +898,9 @@ ms.locfileid: "82084305"
 
 1. 启动虚拟机。 当安装指南出现时，请按 **Tab** 键来配置启动选项。
 
-1. 在启动选项的末尾输入 `inst.ks=<the location of the kickstart file>`，并按 **Enter**。
+1. 在启动选项的末尾输入 `inst.ks=<the location of the kickstart file>` ，并按 **Enter**键。
 
-1. 等待安装完成。 完成后，虚拟机会自动关闭。 Linux VHD 现已准备好上传到 Azure。
+1. 等待安装完成。 完成后，虚拟机自动关闭。 现在，准备将 Linux VHD 上传到 Azure。
 
 ## <a name="known-issues"></a>已知问题
 ### <a name="the-hyper-v-driver-could-not-be-included-in-the-initial-ram-disk-when-using-a-non-hyper-v-hypervisor"></a>使用非 Hyper-V 虚拟机监控程序时，初始 RAM 磁盘未包含 Hyper-V 驱动程序
@@ -919,7 +919,7 @@ ms.locfileid: "82084305"
 
         # dracut -f -v
 
-有关详细信息，请参阅有关[重新生成 initramfs](https://access.redhat.com/solutions/1958) 的信息。
+有关详细信息，请参阅有关 [重新生成 initramfs](https://access.redhat.com/solutions/1958)的信息。
 
 ## <a name="next-steps"></a>后续步骤
 * 现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure 中创建新的虚拟机。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

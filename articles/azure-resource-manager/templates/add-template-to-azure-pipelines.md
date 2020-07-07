@@ -4,15 +4,15 @@ description: 介绍如何在 Visual Studio 中使用 Azure 资源组部署项目
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82084645"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成
 
-Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器（ARM）模板并将其部署到 Azure 订阅。 可将此项目与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。
+Visual Studio 提供了用于创建 Azure 资源管理器 (ARM) 模板并将其部署到 Azure 订阅的 Azure 资源组项目。 可将此项目与 Azure Pipelines 集成，以实现持续集成和持续部署 (CI/CD)。
 
 可通过两种方式在 Azure Pipelines 中部署模板：
 
@@ -36,11 +36,11 @@ Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器�
 
 ## <a name="create-pipeline"></a>创建管道
 
-1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。  
+1. 如果事先尚未添加管道，需要创建一个新管道。 在 Azure DevOps 组织中，选择“管道”和“新建管道”。**** ****
 
    ![添加新管道](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。 
+1. 指定代码的存储位置。 在下图中，选择的是“Azure Repos Git”。****
 
    ![选择代码源](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -48,7 +48,7 @@ Visual Studio 提供 Azure 资源组项目，用于创建 Azure 资源管理器�
 
    ![选择存储库](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. 选择要创建的管道类型。 可以选择“初学者管道”。 
+1. 选择要创建的管道类型。 可以选择“初学者管道”。****
 
    ![选择管道](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
@@ -122,13 +122,13 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
        azurePowerShellVersion: LatestVersion
    ```
 
-1. 选择“保存”  。
+1. 选择“保存” ****。
 
    ![保存管道](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
 1. 提供要提交的消息，并直接提交到 **master**。
 
-1. 选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
+1. 选择“保存”时，生成管道将自动运行。**** 返回生成管道的摘要并观察状态。
 
    ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -249,11 +249,11 @@ ContainerName: '<container-name>'
         deploymentMode: 'Incremental'
    ```
 
-1. 选择“保存”  。
+1. 选择“保存” ****。
 
 1. 提供要提交的消息，并直接提交到 **master**。
 
-1. 选择“保存”时，生成管道将自动运行。  返回生成管道的摘要并观察状态。
+1. 选择“保存”时，生成管道将自动运行。**** 返回生成管道的摘要并观察状态。
 
    ![查看结果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -261,4 +261,4 @@ ContainerName: '<container-name>'
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Azure Pipelines 与 ARM 模板结合使用的分步过程，请参阅[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](deployment-tutorial-pipeline.md)。
+有关将 Azure Pipelines 与 ARM 模板配合使用的分步过程，请参阅[教程：使用 Azure Pipelines 持续集成 Azure 资源管理器模板](deployment-tutorial-pipeline.md)。

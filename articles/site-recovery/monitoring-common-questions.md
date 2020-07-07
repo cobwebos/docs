@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.topic: conceptual
 ms.author: raynew
 ms.openlocfilehash: 66ce267581d4748ea51a3dcbd7caa61907115cc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131159"
 ---
 # <a name="common-questions-about-site-recovery-monitoring"></a>有关 Site Recovery 监视的常见问题
@@ -52,7 +52,7 @@ Site Recovery 使用多步骤异步过程将计算机复制到 Azure。
 ## <a name="azure-monitor-logging"></a>Azure Monitor 日志记录
 
 
-### <a name="how-often-does-site-recovery-send-resource-logs-to-azure-monitor-log"></a>Site Recovery 将资源日志发送到 Azure Monitor 日志的频率如何？ 
+### <a name="how-often-does-site-recovery-send-resource-logs-to-azure-monitor-log"></a>Site Recovery 每隔多久将资源日志发送到 Azure Monitor 日志？ 
 
 - AzureSiteRecoveryReplicationStats 和 AzureSiteRecoveryRecoveryPoints 每 15 分钟发送一次。  
 - AzureSiteRecoveryReplicationDataUploadRate 和AzureSiteRecoveryProtectedDiskDataChurn 每五分钟发送一次。 
@@ -62,7 +62,7 @@ Site Recovery 使用多步骤异步过程将计算机复制到 Azure。
 
 ### <a name="how-long-is-data-kept-in-azure-monitor-logs"></a>数据保留在 Azure Monitor 日志中多长时间？ 
 
-默认情况下，保留期为 31 天。  可以在 Log Analytics 工作区的“使用情况和估计成本”部分延长该期限。 单击“数据保留期”，然后选择范围。 
+默认情况下，保留期为 31 天。 可以在 Log Analytics 工作区的“使用情况和估计成本”部分延长该期限。 单击“数据保留期”，然后选择范围。
 
 ### <a name="whats-the-size-of-the-resource-logs"></a>资源日志的大小是多少？ 
 

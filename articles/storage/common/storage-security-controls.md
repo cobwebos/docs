@@ -1,7 +1,7 @@
 ---
 title: 安全控件
 titleSuffix: Azure Storage
-description: 用于评估 Azure 存储的安全控件清单。
+description: 用于评估 Azure 存储的安全控制清单。
 services: storage
 author: msmbaldwin
 ms.author: mbaldwin
@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82128023"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure 存储的安全控制
@@ -37,7 +37,7 @@ ms.locfileid: "82128023"
 | 安全控制 | Yes/No | 注释 |
 |---|---|--|
 | 服务终结点支持| 是 |  |
-| 服务标记支持| 是 | 有关 Azure 存储支持的服务标记的详细信息，请参阅[azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 |
+| 服务标记支持| 是 | 有关 Azure 存储支持的服务标记的详细信息，请参阅 [Azure 服务标记概述](../../virtual-network/service-tags-overview.md)。 |
 | VNet 注入支持| 空值 |  |
 | 网络隔离和防火墙支持| 是 | |
 | 强制隧道支持| 空值 |  |
@@ -65,4 +65,4 @@ ms.locfileid: "82128023"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[Azure 服务中的内置安全控件](../../security/fundamentals/security-controls.md)。
+- 详细了解[跨 Azure 服务的内置安全控制](../../security/fundamentals/security-controls.md)。

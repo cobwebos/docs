@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82083416"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 盘作为 Windows VM 上的数据驱动器
@@ -40,7 +40,7 @@ ms.locfileid: "82083416"
 
 ## <a name="change-the-drive-letters"></a>更改驱动器号
 1. VM 重新启动后，重新登录到 VM。
-2. 单击“开始”菜单，键入 **diskmgmt.msc**，并按 Enter  。 此时会启动“磁盘管理”。
+2. 单击“开始”菜单，键入 **diskmgmt.msc**，并按 Enter。 此时会启动“磁盘管理”。
 3. 右键单击 **D**（临时存储驱动器），并选择“更改驱动器号和路径”  。
 4. 在“驱动器号”下，选择一个新驱动器，如 **T**，并单击“确定”  。 
 5. 右键单击数据磁盘，并选择“更改驱动器号和路径”  。

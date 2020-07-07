@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: cynthn
 ms.openlocfilehash: f456af143ac6ec21bcb9b0c3ec75635c51f748ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82099880"
 ---
 # <a name="resize-a-windows-vm"></a>调整 Windows VM 的大小
@@ -27,8 +27,8 @@ ms.locfileid: "82099880"
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
 1. 在虚拟机所对应的页。
-1. 在左侧菜单中，选择“大小”  。
-1. 从可用大小列表中选取新大小，然后选择“重设大小”  。
+1. 在左侧菜单中，选择“大小”。
+1. 从可用大小列表中选取新大小，然后选择“重设大小”。
 
 
 如果虚拟机当前正在运行，更改其大小会导致其重启。 停止虚拟机可能会显示其他大小。

@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
 ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82100883"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>排查 Azure Databases for MySQL 的连接问题
@@ -46,16 +46,16 @@ ms.locfileid: "82100883"
 
 如果应用程序一直无法连接到 Azure Database for MySQL，通常表示下列其中一项出现了问题：
 
-* 服务器防火墙配置：确保 Azure Database for MySQL 服务器防火墙配置为允许来自客户端的连接，包括代理服务器和网关。
-* 客户端防火墙配置：客户端上的防火墙必须允许连接到数据库服务器。 不能访问的服务器的 IP 地址和端口以及一些防火墙中的应用程序名称（如 MySQL）必须被允许。
-* 用户错误：您可能键入了错误的连接参数（例如连接字符串中的服务器名称或用户名中缺少* \@servername*后缀）。
+* 服务器防火墙配置：请确保 Azure Database for MySQL 服务器防火墙配置为允许来自客户端（包括代理服务器和网关）的连接。
+* 客户端防火墙配置：客户端的防火墙必须允许连接到数据库服务器。 不能访问的服务器的 IP 地址和端口以及一些防火墙中的应用程序名称（如 MySQL）必须被允许。
+* 用户失误：例如，你可能错误键入了连接参数（例如，在连接字符串中键入了服务器名称，或者在用户名中遗漏了 *\@servername* 后缀）。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>解决永久性连接问题的步骤
 
-1. 设置[防火墙规则](howto-manage-firewall-using-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这会在所有 IP 地址上打开服务器。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
+1. 设置[防火墙规则](howto-manage-firewall-using-portal.md)以允许客户端 IP 地址。 （仅出于临时测试目的）使用 0.0.0.0 作为起始 IP 地址，使用 255.255.255.255 作为结束 IP 地址，来设置一个防火墙规则。 这样会使服务器向所有 IP 地址开放。 如果这样可以解决连接性问题，请删除此规则，再针对适当限制的 IP 地址或地址范围创建防火墙规则。
 2. 在客户端与 Internet 之间的所有防火墙上，确保为出站连接打开端口 3306。
 3. 验证连接字符串和其他连接设置。 查看[如何将应用程序连接到 Azure Database for MySQL](howto-connection-string.md)。
-4. 在仪表板中检查服务运行状况。 如果你认为存在区域性中断，请参阅[业务连续性概述，并 Azure Database for MySQL](concepts-business-continuity.md)获取恢复到新区域的步骤。
+4. 在仪表板中检查服务运行状况。 如果你认为发生了区域性服务中断，请参阅[有关使用 Azure Database for MySQL 确保业务连续性的概述](concepts-business-continuity.md)了解恢复到新区域所要执行的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

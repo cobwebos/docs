@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131015"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用对称密钥证明创建和预配 IoT Edge 设备
@@ -28,7 +28,7 @@ ms.locfileid: "82131015"
 
 对称密钥证明是一种通过设备预配服务实例对设备进行身份验证的简单方法。 此证明方法表示不熟悉设备预配或不具备严格安全要求的开发人员的“Hello world”体验。 使用 [TPM](../iot-dps/concepts-tpm-attestation.md) 或 [X.509 证书](../iot-dps/concepts-security.md#x509-certificates)的设备证明更加安全，且应该用于更严格的安全要求。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个有效的 IoT 中心
 * 一个物理设备或虚拟设备
@@ -73,15 +73,15 @@ ms.locfileid: "82131015"
    1. 选择“True”，声明该注册适用于 IoT Edge 设备。  对于组注册，所有设备必须是 IoT Edge 设备，或者都不是 IoT Edge 设备。
 
    > [!TIP]
-   > 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)[组或注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用启用了**边缘**的标志来指定设备或设备组是 IoT Edge 设备。
+   > 在 Azure CLI 中，可以创建[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)或[注册组](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group)，并使用“支持 Edge”  标志来指定某个设备或设备组是 IoT Edge 设备。
 
    1. 接受设备预配服务分配策略中有关**如何将设备分配到中心**的默认值，或选择特定于此注册的其他值。
 
-   1. 选择要将设备连接到的链接“IoT 中心”。**** 可以选择多个中心，设备将根据所选的分配策略分配到其中的一个中心。
+   1. 选择要将设备连接到的链接“IoT 中心”。  可以选择多个中心，设备将根据所选的分配策略分配到其中的一个中心。
 
    1. 选择**在首次预配后，重新预配设备请求时如何处理设备数据**。
 
-   1. 根据需要，将标记值添加到“初始设备孪生状态”。**** 可以使用标记将设备组指定为模块部署的目标。 例如：
+   1. 根据需要，将标记值添加到“初始设备孪生状态”。  可以使用标记将设备组指定为模块部署的目标。 例如：
 
       ```json
       {
@@ -94,7 +94,7 @@ ms.locfileid: "82131015"
       }
       ```
 
-   1. 确保“启用项”设置为“启用”。********
+   1. 确保“启用项”设置为“启用”。  
 
    1. 选择“保存”  。
 
@@ -105,7 +105,7 @@ ms.locfileid: "82131015"
 > [!NOTE]
 > 仅当使用组注册时，才需要此部分。
 
-每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥计算设备的唯一注册 ID 的 [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)，并将结果转换为 Base64 格式。
+每个设备将使用其派生的设备密钥和唯一注册 ID，于预配期间在注册中执行对称密钥证明。 若要生成设备密钥，请使用从 DPS 注册复制的密钥来计算设备的唯一注册 ID 的[HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ，并将结果转换为 Base64 格式。
 
 不要在设备代码中包含注册的主密钥或辅助密钥。
 
@@ -113,7 +113,7 @@ ms.locfileid: "82131015"
 
 如果使用的是 Linux 工作站，可以使用 openssl 生成派生的设备密钥，如以下示例中所示。
 
-将“键”**** 值替换为前面记录的“主键”****。
+将“键”  值替换为前面记录的“主键”  。
 
 请将 **REG_ID** 值替换为设备的注册 ID。
 
@@ -133,7 +133,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 如果使用的是基于 Windows 的工作站，可以使用 PowerShell 生成派生的设备密钥，如以下示例中所示。
 
-将“键”**** 值替换为前面记录的“主键”****。
+将“键”  值替换为前面记录的“主键”  。
 
 请将 **REG_ID** 值替换为设备的注册 ID。
 
@@ -158,8 +158,8 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 预配设备时需要以下信息：
 
-* DPS 的“ID 范围”值****
-* 为设备创建的“注册 ID”****
+* DPS 的“ID 范围”值 
+* 为设备创建的“注册 ID” 
 * 从 DPS 注册复制的 **主密钥**
 
 > [!TIP]
@@ -185,7 +185,7 @@ provisioning:
       symmetric_key: "<SYMMETRIC_KEY>"
 ```
 
-请将 `<SCOPE_ID>`、`<REGISTRATION_ID>` 和 `<SYMMETRIC_KEY>` 的占位符值替换为前面收集的数据。 请确保**预配：** 行没有前面的空格，并且嵌套项按两个空格缩进。
+请将 `<SCOPE_ID>`、`<REGISTRATION_ID>` 和 `<SYMMETRIC_KEY>` 的占位符值替换为前面收集的数据。 请确保 **provisioning:** 行前面没有空格，并且嵌套项缩进了两个空格。
 
 ### <a name="windows-device"></a>Windows 设备
 
@@ -204,7 +204,7 @@ provisioning:
 
 1. 此时，IoT Core 设备可能会自动重启。 其他 Windows 10 或 Windows Server 设备可能会提示你重启。 如果是这样，请立即重启设备。 设备准备就绪后，再次以管理员身份运行 PowerShell。
 
-1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时****。 该命令默认为使用 Windows 容器手动预配，除非你使用 `-Dps` 标志以使用自动预配。
+1. Initialize-IoTEdge 命令在计算机上配置 IoT Edge 运行时  。 该命令默认为使用 Windows 容器手动预配，除非你使用 `-Dps` 标志以使用自动预配。
 
    请将 `{scope_id}`、`{registration_id}` 和 `{symmetric_key}` 的占位符值替换为前面收集的数据。
 
@@ -257,7 +257,7 @@ Get-Service iotedge
 iotedge list
 ```
 
-可以验证是否使用了在设备预配服务中创建的个人注册。 在 Azure 门户中导航到设备预配服务实例。 打开创建的个人注册的注册详细信息。 注意注册状态是否为“已分配”并且设备 ID 已列出。****
+可以验证是否使用了在设备预配服务中创建的个人注册。 在 Azure 门户中导航到设备预配服务实例。 打开创建的个人注册的注册详细信息。 注意注册状态是否为“已分配”并且设备 ID 已列出。 
 
 ## <a name="next-steps"></a>后续步骤
 

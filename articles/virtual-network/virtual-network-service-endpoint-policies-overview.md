@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: 495d0bce905a980f840527f4cc8cd9e2116e3e66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133745"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 存储的虚拟网络服务终结点策略
@@ -58,7 +58,7 @@ ms.locfileid: "82133745"
 ]
 ```
 
-## <a name="configuration"></a>配置
+## <a name="configuration"></a>Configuration
 
 -   可以配置终结点策略，将虚拟网络流量限制为特定的 Azure 存储帐户。
 -   终结点策略在虚拟网络中的某个子网上配置。 应在子网上启用 Azure 存储的服务终结点，以应用该策略。

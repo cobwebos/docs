@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 4743fbe84f5d41b4659e13d96868d2f64a473e4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82086071"
 ---
 # <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求实时公共传输数据
@@ -22,7 +22,7 @@ ms.locfileid: "82086071"
 
 在本文中，你将学习如何请求到达给定停止处的所有行的下一个实时到达
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)创建 Azure Maps 帐户中的说明进行操作。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
@@ -34,13 +34,13 @@ ms.locfileid: "82086071"
 
 让我们使用 "522" 作为地铁 ID，这是 "西雅图– Tacoma – Bellevue，WA" 领域的地铁 ID。 使用 "522---2060603" 作为 "stop ID"，此总线将停止在 "Ne 24 日 St & 162nd，Bellevue WA"。 若要请求接下来的五个实时到达数据，则在此停止时，请完成以下步骤：
 
-1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用的顶部附近，选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**集合**"。  将该集合命名为，然后选择 "**创建**" 按钮。
+1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“集合”。  命名集合，然后选择“创建”按钮。
 
-2. 若要创建请求，请再次选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**请求**"。 输入请求的 "**请求名称**"。 选择你在上一步中创建的集合，作为要保存请求的位置。 然后选择 "**保存**"。
+2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择你在上一步中创建的集合，作为要保存请求的位置。 然后选择“保存”。
 
     ![在 Postman 中创建请求](./media/how-to-request-transit-data/postman-new.png)
 
-3. 在 "生成器" 选项卡上选择 "**获取**HTTP" 方法，然后输入以下 URL 创建 GET 请求。 将`{subscription-key}`替换为 Azure Maps 的主键。
+3. 在 "生成器" 选项卡上选择 "**获取**HTTP" 方法，然后输入以下 URL 创建 GET 请求。 `{subscription-key}`将替换为 Azure Maps 的主键。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/realtime/arrivals/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=522---2060603&transitType=bus

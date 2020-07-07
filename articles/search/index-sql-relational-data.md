@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82117563"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>如何为 Azure 认知搜索中要导入和编制索引的 SQL 关系数据建模
@@ -96,7 +96,7 @@ ON Rooms$.HotelID = Hotels$.HotelID
    GO
    ```
 
-   以下屏幕截图显示了生成的视图，底部是 *Rooms* nvarchar 字段。 “客房”字段仅存在于 HotelRooms 视图中。 
+   以下屏幕截图显示了生成的视图，底部是 *Rooms* nvarchar 字段。 “客房”字段仅存在于 HotelRooms 视图中。
 
    ![HotelRooms 视图](media/index-sql-relational-data/hotelsrooms-view.png "HoteRooms 视图")
 

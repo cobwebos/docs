@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82133497"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较
@@ -45,7 +45,7 @@ ms.locfileid: "82133497"
 |JavaScript UDF 和 UDA     |是         |是         |仅限 Windows         |
 |机器学习服务     |是        |是         |否         |
 |机器学习工作室     |是，但无法测试查询        |是 |否         |
-|兼容级别     |1.0</br>1.1</br>1.2（默认值）         |1.0</br>1.1</br>1.2（默认值）           |1.0</br>1.1</br>1.2（默认值）           |
+|兼容性级别     |1.0</br>1.1</br>1.2（默认值）         |1.0</br>1.1</br>1.2（默认值）           |1.0</br>1.1</br>1.2（默认值）           |
 |基于 ML 的内置异常情况检测函数     |是         |是         |是         |
 |内置地理空间函数     |是         |是         |是         |
 
@@ -71,7 +71,7 @@ ms.locfileid: "82133497"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure IoT Edge 流分析](stream-analytics-edge.md)
-* [教程：为 Azure 流分析编写 c # 用户定义函数 IoT Edge 作业（预览）](stream-analytics-edge-csharp-udf.md)
+* [教程：为 Azure 流分析 IoT Edge 作业编写 C# 用户定义函数（预览）](stream-analytics-edge-csharp-udf.md)
 * [使用 Visual Studio 工具开发流分析 IoT Edge 作业](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)
 * [使用 Visual Studio Code（预览版）浏览 Azure 流分析](visual-studio-code-explore-jobs.md)
