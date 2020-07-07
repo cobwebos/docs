@@ -1,6 +1,6 @@
 ---
-title: Azure 安全控制-渗透测试和 Red 团队练习
-description: Azure 安全控制渗透测试和 Red 团队练习
+title: Azure 安全控制 - 渗透测试和红队练习
+description: Azure 安全控制渗透测试和红队练习
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,23 +8,23 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: fe9c672e53ea0f46328320daf75f65fd77f5db29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81408297"
 ---
-# <a name="security-control-penetration-tests-and-red-team-exercises"></a>安全控制：渗透测试和 Red 团队练习
+# <a name="security-control-penetration-tests-and-red-team-exercises"></a>安全控制：渗透测试和红队练习
 
-通过模拟攻击者的目标和操作来测试组织的防御（技术、流程和人员）的总体强度。
+通过模拟攻击者的目标和操作，测试组织防御的整体实力（技术、流程和人员）。
 
-## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：对 Azure 资源进行定期渗透测试，并确保所有关键安全发现的修正
+## <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期对 Azure 资源执行渗透测试，确保修正所有发现的关键安全问题
 
-| Azure ID | CIS Id | 职责 |
+| Azure ID | CIS ID | 责任方 |
 |--|--|--|
-| 11.1 | 20.1、20.2、20.3、20.4、20.5、20.6、20.7、20。8 | Shared |
+| 11.1 | 20.1、20.2、20.3、20.4、20.5、20.6、20.7、20.8 | 共享 |
 
-遵循 Microsoft 交往规则确保你的渗透测试不违反 Microsoft 政策。 针对 Microsoft 托管的云基础结构、服务和应用程序，使用 Microsoft 的战略和对红色组合和活动站点渗透测试的执行。
+请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策。 使用 Microsoft 红队演练策略和执行，以及针对 Microsoft 托管云基础结构、服务和应用程序执行现场渗透测试。
 
 - [参与的渗透测试规则](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
@@ -33,4 +33,4 @@ ms.locfileid: "81408297"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 返回到[Azure 安全基准概述](overview.md)
+- 请返回到 [Azure 安全基准概述](overview.md)

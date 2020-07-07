@@ -12,10 +12,10 @@ manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
 ms.openlocfilehash: 5d74cd0fcd524f00d79eb3fbab386c602a413766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414212"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Azure 数据工厂中的追加变量活动
@@ -24,12 +24,12 @@ ms.locfileid: "81414212"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 必选
+属性 | 说明 | 必须
 -------- | ----------- | --------
 name | 管道中活动的名称 | 是
 description | 描述活动用途的文本 | 否
 type | 活动类型为 AppendVariable | 是
-值 | 用于追加到指定变量的字符串文本或表达式对象值 | 是
+value | 用于追加到指定变量的字符串文本或表达式对象值 | 是
 variableName | 活动将修改的变量的名称，该变量必须是“Array”类型 | 是
 
 ## <a name="next-steps"></a>后续步骤

@@ -4,10 +4,10 @@ description: Service Fabric 有状态服务提供可靠集合让你编写高度�
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81398427"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 有状态服务中的可靠集合简介
@@ -26,7 +26,7 @@ Reliable Collections 与其他高可用性技术（如 Redis、Azure 表服务�
 * 可复制：复制状态更改以实现高可用性。
 * 异步：API 采用异步模式，以确保在产生 IO 时不会阻止线程。
 * 事务性：API 利用事务抽象方法，让可以在某个服务内轻松管理多个可靠集合。
-* 持久化或 Volatile：数据可以持久保存在磁盘中，以实现大规模中断（例如，数据中心断电）。 某些可靠集合还支持易失性模式（带有[注意事项](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)），其中所有数据都保存在内存中，如复制的内存中缓存。
+* 持久化或易失性：数据会保存至磁盘，可在发生大规模中断（例如，数据中心断电）时保障持续性。 某些可靠集合还支持易失性模式（带[警告](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)），在这种模式下，所有数据都保留在内存中，例如复制的内存中缓存。
 
 Reliable Collections 提供全新的非常一致保证，使应用程序状态推断变得更轻松。
 非常一致通过以下方法实现：确保仅对副本的多数仲裁（包括主副本）记录整个事务后，才完成事务提交。

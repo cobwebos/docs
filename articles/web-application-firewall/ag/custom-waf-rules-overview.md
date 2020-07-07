@@ -8,25 +8,25 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81383818"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上 Web 应用程序防火墙 v2 的自定义规则
 
 Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带了一个预配置的、由平台管理的规则集，用于防范多种不同类型的攻击。 这些攻击包括跨站点脚本、SQL 注入，等等。 如果你是 WAF 管理员，则可能想要编写自己的规则来补充核心规则集 (CRS) 规则。 你的规则可以根据匹配条件阻止或允许请求的流量。
 
-自定义规则允许你创建自己的规则，用于对通过 WAF 的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则包含规则名称、规则优先级和一系列匹配条件。 如果满足这些条件，则执行相应的操作（允许或阻止）。
+自定义规则允许你创建自己的规则，用于对通过 WAF 的每个请求进行评估。 这些规则的优先级高于托管规则集中的其他规则。 自定义规则包含规则名称、规则优先级和一系列匹配条件。 如果满足这些条件，则执行相应的操作（允许或阻止）。
 
 例如，可以阻止来自 192.168.5.4/24 范围内的某个 IP 地址的所有请求。 在此规则中，运算符是 *IPMatch*，matchValues 是 IP 地址范围 (192.168.5.4/24)，操作是阻止流量。 还可以设置规则的名称和优先级。
 
 自定义规则支持使用复合逻辑创建更高级的规则来解决安全需求。 例如，（条件 1 **and** 条件 2，**or** 条件 3）。 这意味着，如果满足条件 1 **和**条件 2，**或者**满足条件 3，则 WAF 应执行自定义规则中指定的操作。
 
-同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，阻止来自特定 IP 地址的流量，并且仅当它们使用特定的浏览器时才阻止。
+同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，仅当发送方使用特定浏览器时，才阻止来自特定 IP 地址的流量。
 
-若要对两个不同的条件使用 **or** 运算符，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或者阻止流量（如果它们使用特定的浏览器）。
+若要对两个不同的条件使用 **or** 运算符，这两个条件必须在不同的规则中。 例如，阻止来自特定 IP 地址的流量，或阻止使用特定浏览器的发送方的流量。
 
 > [!NOTE]
 > WAF 自定义规则的最大数目为 100。 有关应用程序网关限制的详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)。
@@ -126,7 +126,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 - IPMatch - 仅当匹配变量为 *RemoteAddr* 时才使用
 - 等于–输入与 MatchValue 相同
-- 包含
+- Contains
 - LessThan
 - GreaterThan
 - LessThanOrEqual
@@ -167,4 +167,4 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="next-steps"></a>后续步骤
 
-了解自定义规则后，可[创建自己的自定义规则](create-custom-waf-rules.md)。
+了解自定义规则后，[创建自己的自定义规则](create-custom-waf-rules.md)。

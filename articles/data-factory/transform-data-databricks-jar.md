@@ -12,16 +12,16 @@ author: nabhishek
 manager: shwang
 ms.date: 03/15/2018
 ms.openlocfilehash: 6b010000a674e351051c664dd5eeacd40e802439
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414609"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Jar 活动在 Azure Databricks 群集中运行 Spark Jar。 本文基于 [数据转换活动](transform-data.md) 一文，其中概述了数据转换和受支持的转换活动。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
+[数据工厂管道](concepts-pipelines-activities.md)中的 Azure Databricks Jar 活动在 Azure Databricks 群集中运行 Spark Jar。 本文基于 [数据转换活动](transform-data.md)   一文，其中概述了数据转换和受支持的转换活动。Azure Databricks 是一个用于运行 Apache Spark 的托管平台。
 
 有关此功能的十一分钟介绍和演示，请观看以下视频：
 
@@ -56,14 +56,14 @@ ms.locfileid: "81414609"
 
 下表描述了 JSON 定义中使用的 JSON 属性：
 
-|属性|说明|必需|
+|properties|说明|必须|
 |:--|---|:-:|
 |name|管道中活动的名称。|是|
 |description|描述活动用途的文本。|否|
 |type|对于 Databricks Jar 活动，活动类型是 DatabricksSparkJar。|是|
-|linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md) 一文。|是|
+|linkedServiceName|Databricks 链接服务的名称，Jar 活动在其上运行。 若要了解此链接服务，请参阅 [计算链接服务](compute-linked-services.md)一   文。|是|
 |mainClassName|类的全名，包含要执行的主要方法。 此类必须包含在作为库提供的 JAR 中。|是|
-|parameters|将传递到主要方法的参数。  这是一个字符串数组。|否|
+|参数|将传递到主要方法的参数。  这是一个字符串数组。|否|
 |库|要安装在将执行作业的群集上的库列表。 它可以是 <string, object> 数组|是（至少有一个包含 mainClassName 方法）|
 
 > [!NOTE]

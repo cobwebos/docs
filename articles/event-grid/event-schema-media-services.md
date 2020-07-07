@@ -1,5 +1,5 @@
 ---
-title: Azure 媒体服务作为事件网格源
+title: 充当事件网格源的 Azure 媒体服务
 description: 介绍为 Azure 事件网格中的媒体服务事件提供的属性
 services: media-services
 documentationcenter: ''
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: spelluru
 ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81394327"
 ---
-# <a name="azure-media-services-as-an-event-grid-source"></a>作为事件网格源的 Azure 媒体服务
+# <a name="azure-media-services-as-an-event-grid-source"></a>充当事件网格源的 Azure 媒体服务
 
 本文介绍媒体服务事件的架构和属性。
 
 ## <a name="job-related-event-types"></a>作业相关事件类型
 
-媒体服务会发出如下所述的**作业**相关事件类型。 **作业**相关事件有两个类别：“监视作业状态更改”和“监视作业输出状态更改”。 
+媒体服务会发出如下所述的**作业**相关事件类型。 有两类作业相关事件  ：“监视作业状态更改”和“监视作业输出状态更改”。 
 
 可通过订阅 JobStateChange 事件来注册所有事件。 或者，可以只订阅特定事件（例如，JobErrored、JobFinished 和 JobCanceled 等最终状态）。   
 
 ### <a name="monitoring-job-state-changes"></a>监视作业状态更改
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobStateChange| 获取所有作业状态更改的事件。 |
 | Microsoft.Media.JobScheduled| 获取当作业转换为已计划状态时的事件。 |
@@ -43,13 +43,13 @@ ms.locfileid: "81394327"
 
 ### <a name="monitoring-job-output-state-changes"></a>监视作业输出状态更改
 
-作业可能包含多个作业输出（如果将转换配置为具有多个作业输出）。如果要跟踪单个作业输出的详细信息，请侦听作业输出更改事件。
+一个作业可能包含多个作业输出（如果将转换配置为具有多个作业输出。）如果要跟踪单个作业输出的详细信息，请侦听作业输出更改事件。
 
-每个**作业**都将处于比**JobOutput**更高的级别，因此作业输出事件会在相应的作业内触发。 
+每个 Job  的级别高于 JobOutput  的级别，因此作业输出事件会在相应的作业内触发。 
 
-中`JobFinished` `JobCanceled`的错误消息将`JobError`输出每个作业输出的聚合结果（当所有作业都完成时）。 而作业输出事件会在每个任务完成时触发。 例如，如果你有一个编码输出，后跟视频分析输出，则会在最后一个 JobFinished 事件引发前将两个事件作为作业输出事件触发，并使用聚合数据。
+中的错误消息 `JobFinished` 将 `JobCanceled` `JobError` 输出每个作业输出的聚合结果（当所有作业都完成时）。 而作业输出事件会在每个任务完成时触发。 例如，如果你有一个编码输出，后跟一个视频分析输出，则在使用聚合数据触发最终 JobFinished 事件之前，你将得到两个作为作业输出事件触发的事件。
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputStateChange| 获取所有作业输出状态更改的事件。 |
 | Microsoft.Media.JobOutputScheduled| 获取当作业输出转换为已计划状态时的事件。 |
@@ -63,7 +63,7 @@ ms.locfileid: "81394327"
 
 ### <a name="monitoring-job-output-progress"></a>监视作业输出进度
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputProgress| 此事件反映了作业处理进度，从 0% 到 100%。 如果进度值增加了 5% 或更多，或者自上次事件（检测信号）以来已超过 30 秒，则服务会尝试发送事件。 无法保证进度值从 0% 开始或达到 100%，也无法保证其随时间推移而以恒定速率增加。 此事件不应用于确定是否已经完成处理 – 要实现此目的，请改用状态更改事件。|
 
@@ -77,7 +77,7 @@ ms.locfileid: "81394327"
 
 按流或连接引发流级事件。 每个事件具有一个用于标识连接或流的 `StreamId` 参数。 每个流或连接具有一个或多个不同类型的轨迹。 例如，来自编码器的一个连接可能具有一个音频轨迹和四个视频轨迹。 流事件类型包括：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
 | Microsoft.Media.LiveEventEncoderConnected | 编码器与直播活动建立连接。 |
@@ -90,17 +90,17 @@ ms.locfileid: "81394327"
 按轨迹引发轨迹级事件。 
 
 > [!NOTE]
-> 所有跟踪级别事件在连接实时编码器后引发。
+> 所有轨迹级事件都在连接实时编码器后引发。
 
-跟踪级别事件类型为：
+轨迹级事件类型包括：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒体服务器删除了数据区块，因为该区块的抵达时间过迟，或者带有重叠的时间戳（新数据区块的时间戳小于前一数据区块的结束时间）。 |
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒体服务器检测到音频和视频流不同步。使用作为警告，因为用户体验可能不会受到影响。 |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒体服务器检测到外部编码器发出的两个视频流中的任何一个都不同步。使用作为警告，因为用户体验可能不会受到影响。 |
-| Microsoft.Media.LiveEventIngestHeartbeat | 当直播活动正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。<br/><br/>编码器最初连接后，检测信号事件会继续每隔20秒发出一次编码器是否仍处于连接状态。 |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒体服务器检测到音频和视频流不同步。用作警告，因为用户体验可能不受影响。 |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒体服务器检测到来自外部编码器的任意两个视频流不同步。用作警告，因为用户体验可能不受影响。 |
+| Microsoft.Media.LiveEventIngestHeartbeat | 当直播活动正在运行时，每隔 20 秒为每个轨迹发布。 提供引入运行状况摘要。<br/><br/>在编码器最初连接后，无论编码器是否仍然处于连接状态，检测信号事件都会继续按 20 秒 1 次的频率发出。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒体服务器检测到传入轨迹中存在不连续的情况。 |
 
 请参阅后面的[架构示例](#event-schema-examples)。
@@ -131,15 +131,15 @@ ms.locfileid: "81394327"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| previousState | 字符串 | 事件发生前的作业状态。 |
-| state | 字符串 | 此事件中通知的作业的新状态。 例如，"已计划：作业已准备就绪，或已完成：作业已完成"。|
+| previousState | string | 事件发生前的作业状态。 |
+| state | string | 此事件中通知的作业的新状态。 例如，“已计划：作业已准备就绪”或“已完成：作业已完成。”|
 
-作业状态可以为以下值之一：已排队、已计划、正在处理、已完成、错误、已取消、正在取消。**************
+作业状态可以是以下任何一个值：已排队、已计划、正在处理、已完成、错误、已取消、正在取消       
 
 > [!NOTE]
-> 已排队仅出现在 previousState 属性中，不出现在 state 属性中**********。
+> 已排队仅出现在 previousState 属性中，不出现在 state 属性中    。
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobScheduled、JobProcessing、JobCanceling
 
@@ -201,9 +201,9 @@ ms.locfileid: "81394327"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| outputs | 数组 | 获取作业输出。|
+| outputs | Array | 获取作业输出。|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -317,13 +317,13 @@ ms.locfileid: "81394327"
 
 数据对象具有以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
-| ingestUrl | 字符串 | 直播活动提供的引入 URL。 |  
-| encoderIp | 字符串 | 编码器的 IP。 |
-| encoderPort | 字符串 | 此流的来源编码器的端口。 |
-| resultCode | 字符串 | 拒绝连接的原因。 下表中列出了结果代码。 |
+| streamId | string | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
+| ingestUrl | string | 直播活动提供的引入 URL。 |  
+| encoderIp | string | 编码器的 IP。 |
+| encoderPort | string | 此流的来源编码器的端口。 |
+| resultCode | string | 拒绝连接的原因。 下表中列出了结果代码。 |
 
 可在[实时事件错误代码](../media-services/latest/live-event-error-codes.md)中找到错误结果代码。
 
@@ -441,9 +441,9 @@ ms.locfileid: "81394327"
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨道名称。 |
-| 比特率 | 整数 | 轨道的比特率。 |
+| 比特率 | integer | 轨道的比特率。 |
 | timestamp | 字符串 | 已删除的数据区块的时间戳。 |
-| 时间刻度 | 字符串 | 时间戳的时间刻度。 |
+| timescale | string | 时间戳的时间刻度。 |
 | resultCode | 字符串 | 删除数据区块的原因。 **FragmentDrop_OverlapTimestamp** 或 **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
@@ -480,13 +480,13 @@ ms.locfileid: "81394327"
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
-| trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
-| 比特率 | 整数 | 轨道的比特率。 |
+| trackName | string | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
+| 比特率 | integer | 轨道的比特率。 |
 | ingestUrl | 字符串 | 直播活动提供的引入 URL。 |
 | encoderIp | 字符串  | 编码器的 IP。 |
 | encoderPort | 字符串 | 此流的来源编码器的端口。 |
 | timestamp | 字符串 | 收到数据区块的第一个时间戳。 |
-| 时间刻度 | 字符串 | 用于表示时间戳的时间刻度。 |
+| timescale | 字符串 | 用于表示时间戳的时间刻度。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -558,7 +558,7 @@ ms.locfileid: "81394327"
 | firstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
 | secondTimestamp | 字符串  | 收到视频类型的其他某个轨迹/质量级别的时间戳。 |
 | secondDuration | 字符串 | 具有第二个时间戳的数据区块的持续时间。 |
-| 时间刻度 | 字符串 | 时间戳和持续时间的时间刻度。|
+| timescale | 字符串 | 时间戳和持续时间的时间刻度。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -598,13 +598,13 @@ ms.locfileid: "81394327"
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
-| 比特率 | 整数 | 轨道的比特率。 |
-| incomingBitrate | 整数 | 基于来自编码器的数据区块计算出的比特率。 |
-| lastTimestamp | 字符串 | 在过去 20 秒收到的轨迹的最新时间戳。 |
-| 时间刻度 | 字符串 | 用于表示时间戳的时间刻度。 |
-| overlapCount | 整数 | 在过去 20 秒数据区块数目包含重叠的时间戳。 |
-| discontinuityCount | 整数 | 在过去 20 秒观察到的不连续性数目。 |
-| nonIncreasingCount | 整数 | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
+| 比特率 | integer | 轨道的比特率。 |
+| incomingBitrate | integer | 基于来自编码器的数据区块计算出的比特率。 |
+| lastTimestamp | string | 在过去 20 秒收到的轨迹的最新时间戳。 |
+| timescale | string | 用于表示时间戳的时间刻度。 |
+| overlapCount | integer | 在过去 20 秒数据区块数目包含重叠的时间戳。 |
+| discontinuityCount | integer | 在过去 20 秒观察到的不连续性数目。 |
+| nonIncreasingCount | integer | 在过去 20 秒收到的具有以往时间戳的数据区块数。 |
 | unexpectedBitrate | bool | 在过去 20 秒，预期和实际比特率之差是否超过了允许的限制。 当且仅当 incomingBitrate >= 2* 比特率，或者 incomingBitrate <= 比特率/2，或者 IncomingBitrate = 0 时，此属性的值才为 true。 |
 | state | 字符串 | 直播活动的状态。 |
 | healthy | bool | 指示引入是否正常（基于计数和标志判断）。 如果 overlapCount = 0 并且 discontinuityCount = 0 并且 nonIncreasingCount = 0 并且 unexpectedBitrate = false，则 Healthy 为 true。 |
@@ -642,11 +642,11 @@ ms.locfileid: "81394327"
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
-| 比特率 | 整数 | 轨道的比特率。 |
+| 比特率 | integer | 轨道的比特率。 |
 | previousTimestamp | 字符串 | 前一个片段的时间戳。 |
 | newTimestamp | 字符串 | 当前片段的时间戳。 |
-| discontinuityGap | 字符串 | 上面两个时间戳之间的差距。 |
-| 时间刻度 | 字符串 | 用于表示时间戳和非连续性差距的时间刻度。 |
+| discontinuityGap | string | 上面两个时间戳之间的差距。 |
+| timescale | 字符串 | 用于表示时间戳和非连续性差距的时间刻度。 |
 
 ### <a name="common-event-properties"></a>自定义事件属性
 
@@ -655,11 +655,11 @@ ms.locfileid: "81394327"
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
-| subject | 字符串 | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
+| subject | string | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| ID | 字符串 | 事件的唯一标识符。 |
-| data | 对象 (object) | 媒体服务事件数据。 |
+| id | 字符串 | 事件的唯一标识符。 |
+| data | object | 媒体服务事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -671,4 +671,4 @@ ms.locfileid: "81394327"
 
 - [包含媒体服务事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒体服务事件的定义](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [直播活动错误代码](../media-services/latest/live-event-error-codes.md)
+- [实时事件错误代码](../media-services/latest/live-event-error-codes.md)

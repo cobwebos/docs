@@ -1,5 +1,5 @@
 ---
-title: 作为事件网格源的 Azure 订阅
+title: 充当事件网格源的 Azure 订阅
 description: 介绍为 Azure 事件网格的订阅事件提供的属性
 services: event-grid
 author: spelluru
@@ -8,13 +8,13 @@ ms.topic: reference
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393230"
 ---
-# <a name="azure-subscription-as-an-event-grid-source"></a>作为事件网格源的 Azure 订阅
+# <a name="azure-subscription-as-an-event-grid-source"></a>充当事件网格源的 Azure 订阅
 
 本文提供 Azure 订阅事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -262,7 +262,7 @@ Azure 订阅从 Azure 资源管理器发出管理事件，例如，在创建 VM 
 | tenantId | string | 资源的租户 ID。 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
-|Title |说明  |
+|标题 |说明  |
 |---------|---------|
 | [教程：Azure 自动化与事件网格和 Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |创建用于发送事件的虚拟机。 此活动触发一个用于标记虚拟机的自动化 Runbook，并触发一条发送到 Microsoft Teams 频道的消息。 |
 | [如何：通过门户订阅事件](subscribe-through-portal.md) | 使用门户订阅 Azure 订阅的事件。 |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81409768"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware VM/物理服务器设置大规模灾难恢复
@@ -85,7 +85,7 @@ ms.locfileid: "81409768"
 
 **Task** | **详细信息** | **操作**
 --- | --- | ---
-**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。  <br/><br/> [详细了解](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)如何提高配额。
+**检查核心数** | 如果可用配额中的核心数少于故障转移时的目标总数，故障转移将会失败。 | 对于 VMware VM，请检查目标订阅中是否有足够的核心，与部署规划器的核心建议相符。<br/><br/> 对于物理服务器，请检查 Azure 核心数是否符合人工估算结果。<br/><br/> 若要检查配额，请在 Azure 门户中依次单击“订阅”、“用量 + 配额”。 <br/><br/> [详细了解](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)如何提高配额。
 **检查故障转移限制** | 故障转移次数不得超过 Site Recovery 的故障转移限制。 |  如果故障转移次数超过限制，你可以添加订阅并故障转移到多个订阅，或者提高订阅的配额。 
 
 
@@ -127,7 +127,7 @@ ms.locfileid: "81409768"
  
 配置服务器容量受启用复制的计算机数目的影响，而不受数据变动率的影响。 若要确定是否需要更多的配置服务器，请参考定义的这些 VM 限制。
 
-**CPU** | **内存** | 缓存磁盘  | **复制的计算机限制**
+**CPU** | **内存** | 缓存磁盘 | **复制的计算机限制**
  --- | --- | --- | ---
 8 个 vCPU<br> 2 个插槽 * 4 个核心 @ 2.5 GHz | 16 GB | 600 GB | 最多 550 台计算机<br> 假设每台计算机有 3 个 100 GB 的磁盘。
 
@@ -153,7 +153,7 @@ ms.locfileid: "81409768"
 - 我们建议添加最高规格的服务器。 
 
 
-**CPU** | **内存** | 缓存磁盘  | **变动率**
+**CPU** | **内存** | 缓存磁盘 | **变动率**
  --- | --- | --- | --- 
 12 个 vCPU<br> 2 个插槽 * 6 个核心 @ 2.5 GHz | 24 GB | 1 GB | 每天最大 2 TB
 
@@ -210,7 +210,7 @@ ms.locfileid: "81409768"
 若要运行大规模故障转移，我们建议：
 
 1. 为工作负荷故障转移创建恢复计划。
-    - 每个恢复计划最多可触发100台计算机的故障转移。
+    - 每个恢复计划最多可以触发 100 台计算机的故障转移。
     - [详细了解](recovery-plan-overview.md)恢复计划。
 2. 将 Azure 自动化 Runbook 脚本添加到恢复计划，以将 Azure 上的任何手动任务自动化。 典型的任务包括配置负载均衡器、更新 DNS，等等。 [了解详细信息](site-recovery-runbook-automation.md)
 2. 在故障转移之前，请准备好 Windows 计算机，使之符合 Azure 环境的条件。 符合条件的计算机的[故障转移限制](#plan-azure-subscriptions-and-quotas)更高。 [详细了解](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) Runbook。

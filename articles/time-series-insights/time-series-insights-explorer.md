@@ -1,5 +1,5 @@
 ---
-title: 使用资源管理器浏览数据-Azure 时序见解 |Microsoft Docs
+title: 使用资源管理器浏览数据 - Azure 时序见解 | Microsoft Docs
 description: 了解如何使用 Azure 时序见解资源管理器查看 IoT 数据。
 ms.service: time-series-insights
 services: time-series-insights
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: b564373780da5bba71bc46ddbac3dc69a0c94a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81382782"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 时序见解资源管理器
@@ -37,12 +37,12 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 >[!NOTE]
 >播放前面的视频<a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"使用 Azure IoT 解决方案加速器开始使用时序见解"。</a>
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在可以使用时序见解资源管理器之前，必须：
 
 - 创建时序见解环境。 有关详细信息，请阅读[如何开始使用时序见解环境](./time-series-insights-get-started.md)。
-- 在环境中提供对帐户的[访问权限](time-series-insights-data-access.md)。
+- 提供对环境中帐户的[访问](time-series-insights-data-access.md)。
 - 向其添加[IoT 中心](time-series-insights-how-to-add-an-event-source-iothub.md)或[事件中心](time-series-insights-how-to-add-an-event-source-eventhub.md)事件源。
 
 ## <a name="explore-and-query-data"></a>浏览和查询数据
@@ -51,9 +51,9 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 若要开始，请在 Web 浏览器中打开[时序见解资源管理器](https://insights.timeseries.azure.com/)。 在窗口左侧选择一个环境。 有权访问的所有环境均按字母顺序列出。
 
-1. 选择环境后，使用顶部的“从”和“到”配置，或者将其选中并拖到所需的时间跨度********。 单击右上角的放大镜，或者右键单击所选时间跨度并选择“搜索”****。
+1. 选择环境后，使用顶部的“从”和“到”配置，或者将其选中并拖到所需的时间跨度   。 单击右上角的放大镜，或者右键单击所选时间跨度并选择“搜索”  。
 
-1. 还可以通过选择“自动打开”**** 按钮，每分钟自动刷新可用性。 “自动打开”按钮仅适用于可用性图表，而不适用于主要可视化效果的内容****。
+1. 还可以通过选择“自动打开”  按钮，每分钟自动刷新可用性。 “自动打开”按钮仅适用于可用性图表，而不适用于主要可视化效果的内容  。
 
 1. 单击 Azure 云图标会转到 Azure 门户中的环境。
 
@@ -61,42 +61,42 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
 1. 接下来，会显示一个图表，该图表显示的是所选时间范围内所有事件的计数。 在此有许多控件：
 
-    - **术语编辑器面板**：术语 "空间" 是指查询环境的位置。 它位于屏幕左侧：
+    - **搜索词编辑器面板**：术语空间是查询环境的位置。 它位于屏幕的左侧：
       - **度量值**：此下拉列表显示所有数值列（**双精度**）。
-      - **拆分依据**：此下拉列表显示分类列（**字符串**）。
-      - 可以在 "**度量值**" 旁边的 "控制面板" 中启用步骤内插、显示最小值和最大值，并调整 y 轴。 还可以调整显示的是数据的计数、平均值还是总和。
-      - 最多可以添加要在同一个 X 轴上查看的五个搜索词。 选择“添加”**** 添加新的搜索词，或者使用“克隆此搜索词”**** 按钮添加现有搜索词的副本。
+      - **拆分依据**：此下拉列表显示类别列（**字符串**）。
+      - 可以启用梯级内插、显示最小值和最大值，以及在“度量值”旁边的控制面板中调整 Y 轴  。 还可以调整显示的是数据的计数、平均值还是总和。
+      - 最多可以添加要在同一个 X 轴上查看的五个搜索词。 选择“添加”  添加新的搜索词，或者使用“克隆此搜索词”  按钮添加现有搜索词的副本。
 
-        [![字词选择、筛选和查询面板](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
+        [![搜索词选择、筛选和查询面板](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
 
-      - **谓词**：使用谓词可以通过使用下表中列出的一组操作数来快速筛选事件。 如果通过选择或单击执行搜索，谓词将基于该搜索自动更新。 支持的操作数类型包括：
+      - **谓词**：使用谓词可以使用下表中列出的操作数集快速筛选事件。 如果通过选择或单击执行搜索，谓词将基于该搜索自动更新。 支持的操作数类型包括：
 
-         |Operation  |支持的类型  |注意  |
+         |操作  |支持的类型  |注释  |
          |---------|---------|---------|
-         |**<**, **>**, **<=**, **>=**    |  **Double**、 **DateTime**、 **TimeSpan**       |         |
-         |**=**, **!=**,**<>**     | **String**、 **Bool**、 **Double**、 **DateTime**、 **TimeSpan**、 **NULL**        |         |
-         |**IN**     | **String**、 **Bool**、 **Double**、 **DateTime**、 **TimeSpan**、 **NULL**        |  所有操作数应为同一类型或为**NULL**常量。        |
+         |**<**, **>**, **<=**, **>=**    |  **双精度**、**DateTime**、**TimeSpan**       |         |
+         |**=** 、 **!=** 、 **<>**     | **字符串**、**布尔**、**双精度**、**DateTime**、**TimeSpan**、**NULL**        |         |
+         |**IN**     | **字符串**、**布尔**、**双精度**、**DateTime**、**TimeSpan**、**NULL**        |  所有操作数应为同一类型或者是 **NULL** 常数。        |
          |**HAS**     | **字符串**        |  右侧只允许使用常量字符串文本。 不允许空字符串和 **NULL**。       |
 
-      - **查询示例**
+      - **示例查询**
 
          [![示例 GA 查询](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
-1. 可以使用“间隔大小”**** 滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以显示并分析数据更精细、分辨率更高的剪切片段。 滑块的默认起始点设置为所选数据的最佳视图，以平衡分辨率、查询速度和粒度。
+1. 可以使用“间隔大小”  滑块工具在相同时间跨度内放大和缩小间隔。 使用该滑块可以更精确地控制在大量时间切片之间的移动，显示平滑的趋势直至小到毫秒的切片，从而可以显示并分析数据更精细、分辨率更高的剪切片段。 滑块的默认起点设置为从你的选择中获得的最佳数据视图，以均衡分辨率、查询速度和粒度。
 
-1. 使用“时间画笔”工具可以轻松从一个时间跨度导航到另一个时间跨度。****
+1. 使用“时间画笔”工具可以轻松从一个时间跨度导航到另一个时间跨度。 
 
-1. 选择“保存”**** 图标可以保存当前查询，并与环境的其他用户共享该查询。 选择“打开”**** 图标时，可以查看所有已保存的查询和有权访问的环境中的其他用户的任何共享查询。
+1. 选择“保存”  图标可以保存当前查询，并与环境的其他用户共享该查询。 选择“打开”  图标时，可以查看所有已保存的查询和有权访问的环境中的其他用户的任何共享查询。
 
    [![查询](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>可视化数据
 
-1. 使用“透视视图”**** 工具可以查看最多四个唯一查询的同步视图。 “透视视图”按钮位于图表右上角****。
+1. 使用“透视视图”  工具可以查看最多四个唯一查询的同步视图。 “透视视图”按钮位于图表右上角  。
 
    [![选择要添加到透视窗格中的查询](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png)](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png#lightbox)
 
-1. 查看图表可以直观浏览数据；使用“图表”工具****：
+1. 查看图表可以直观浏览数据；使用“图表”工具  ：
 
     - **选择**或**单击**特定的时间跨度或单个数据系列。
     - 在选择的时间跨度内可以缩放或浏览事件。
@@ -110,16 +110,16 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 
     [![GA 资源管理器热度地图图表](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
-1. 通过选择或右键单击浏览事件时，会显示“事件”面板****。 在这里，可以查看所有原始事件并可将事件导出为 JSON 或 CSV 文件。 时序见解存储所有原始数据。
+1. 通过选择或右键单击浏览事件时，会显示“事件”面板  。 在这里，可以查看所有原始事件并可将事件导出为 JSON 或 CSV 文件。 时序见解存储所有原始数据。
 
     [![事件](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
-1. 浏览事件以公开模式和列统计信息之后，选择“统计信息”**** 选项卡。
+1. 浏览事件以公开模式和列统计信息之后，选择“统计信息”  选项卡。
 
-    - **模式**：此功能主动地显示所选数据区域中最具统计的数据模式。 无需查看数千个事件来了解最需要花费时间和精力的模式。 使用时序见解可以直接跳到这些具有重大统计意义的模式继续进行分析。 此功能也有助于对历史数据进行事后调查。
-    - **列统计**信息：列统计信息提供图表和表，这些图表和表通过所选 timespan 从所选数据系列的每个列向下细分。
+    - **模式**：此功能主动显示所选数据区域中最具统计意义的模式。 无需查看数千个事件来了解最需要花费时间和精力的模式。 使用时序见解可以直接跳到这些具有重大统计意义的模式继续进行分析。 此功能也有助于对历史数据进行事后调查。
+    - **列统计信息**：列统计信息提供图表和表格，细分选定时间范围内所选数据系列的每列中的数据。
 
-      [![统计信息列图表和选项](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
+      [![“统计信息”列图表和选项](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
 现在，你已了解时序见解资源管理器 Web 应用中可用的关键功能、配置设置和显示选项。
 

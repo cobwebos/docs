@@ -1,5 +1,5 @@
 ---
-title: 作为事件网格源的 Azure 资源组
+title: 充当事件网格源的 Azure 资源组
 description: 介绍针对 Azure 事件网格中的资源组事件提供的属性
 services: event-grid
 author: spelluru
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393254"
 ---
-# <a name="azure-resource-group-as-an-event-grid-source"></a>作为事件网格源的 Azure 资源组
+# <a name="azure-resource-group-as-an-event-grid-source"></a>充当事件网格源的 Azure 资源组
 
 本文提供资源组事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -262,7 +262,7 @@ Azure 订阅和资源组发出相同的事件类型。 这些事件类型与资�
 | tenantId | string | 资源的租户 ID。 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
-|Title  |说明  |
+|标题  |说明  |
 |---------|---------|
 | [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](monitor-virtual-machine-changes-event-grid-logic-app.md) | 逻辑应用可监视对虚拟机的更改并就这些更改发送电子邮件。 |
 | [Azure CLI：订阅资源组的事件](./scripts/event-grid-cli-resource-group.md)| 用于订阅资源组的事件的示例脚本。 它将事件发送到 WebHook。 |

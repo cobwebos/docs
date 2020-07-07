@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 数据工厂的定价示例
+title: 通过示例了解 Azure 数据工厂定价
 description: 本文使用详细的示例介绍并演示 Azure 数据工厂定价模型
 documentationcenter: ''
 author: djpmsft
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: 9d96e3f7d127f4839592e766537cbdb07cc697dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414940"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>通过示例了解数据工厂定价
@@ -155,7 +155,7 @@ ms.locfileid: "81414940"
 | 创建管道 | 3 个读/写实体（1 个用于创建管道，2 个用于数据集引用） |
 | 获取管道 | 1 个读/写实体 |
 | 运行管道 | 2 个活动运行（1 个用于触发器运行，1 个用于活动运行） |
-| 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | 带有\* TTL 10 的一般计算的 10 16 核心 |
+| 数据流假设：执行时间 = 10 分钟 + 10 分钟 TTL | \*带有 TTL 10 的一般计算的 10 16 核心 |
 | 监视管道假设：仅发生 1 次运行 | 重试了 2 个监视运行记录（1 个用于管道运行，1 个用于活动运行） |
 
 **方案总定价： $1.4631**
@@ -163,7 +163,7 @@ ms.locfileid: "81414940"
 - 数据工厂操作 = **$0.0001**
   - 读取/写入 = 10\*00001 = $0.0001 [1 读/写 = $0.50/50000 = 0.00001]
   - 监视  = 2\*000005 = $0.00001 [1 监视 = $0.25/50000 = 0.000005]
-- 管道业务&amp;流程执行 = **$1.463**
+- 管道业务流程 &amp; 执行 = **$1.463**
   - 活动运行 = 001\*2 = 0.002 [1 运行 = $1/1000 = 0.001]
   - 数据流活动 = $1.461 按比例20分钟（执行时间为10分钟 + 10 分钟 TTL）。 Azure Integration Runtime 上的 $ 0.274/小时，具有16个核心一般计算
 
@@ -175,4 +175,4 @@ ms.locfileid: "81414940"
 
 - [Azure 数据工厂简介](introduction.md)
 
-- [Azure 数据工厂中的可视化创作](author-visually.md)
+- [Azure 数据工厂中的视觉对象创作](author-visually.md)

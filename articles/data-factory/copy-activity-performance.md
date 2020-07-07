@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: aedb3df69821d1436b03b2eb1f12873b624d426e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81414173"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>复制活动性能和可伸缩性指南
@@ -46,8 +46,8 @@ ADF 提供一个可在不同级别实现并行度的无服务器体系结构，�
 
 | 数据大小/ <br/> bandwidth | 50 Mbps    | 100 Mbps  | 500 Mbps  | 1 Gbps   | 5 Gbps   | 10 Gbps  | 50 Gbps   |
 | --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
-| **1 GB**                    | 2.7 分钟    | 1.4 分钟   | 0.3 分钟   | 0.1 分钟  | 0.03 分钟 | 0.01 分钟 | 0.0 分钟   |
-| **10 GB**                   | 27.3 分钟   | 13.7 分钟  | 2.7 分钟   | 1.3 分钟  | 0.3 分钟  | 0.1 分钟  | 0.03 分钟  |
+| **1GB**                    | 2.7 分钟    | 1.4 分钟   | 0.3 分钟   | 0.1 分钟  | 0.03 分钟 | 0.01 分钟 | 0.0 分钟   |
+| **10GB**                   | 27.3 分钟   | 13.7 分钟  | 2.7 分钟   | 1.3 分钟  | 0.3 分钟  | 0.1 分钟  | 0.03 分钟  |
 | **100 GB**                  | 4.6 小时    | 2.3 小时   | 0.5 小时   | 0.2 小时  | 0.05 小时 | 0.02 小时 | 0.0 小时   |
 | **1 TB**                    | 46.6 小时   | 23.3 小时  | 4.7 小时   | 2.3 小时  | 0.5 小时  | 0.2 小时  | 0.05 小时  |
 | **10 TB**                   | 19.4 天  | 9.7 天  | 1.9 天  | 0.9 天 | 0.2 天 | 0.1 天 | 0.02 天 |
@@ -59,7 +59,7 @@ ADF 副本可在不同的级别缩放：
 
 ![ADF 副本的缩放方式](media/copy-activity-performance/adf-copy-scalability.png)
 
-- ADF 控制流可以同时启动多个复制活动（例如，使用 [For Each 循环](control-flow-for-each-activity.md)）。
+- ADF 控制流可以并行启动多个复制活动（例如，使用 [For Each 循环](control-flow-for-each-activity.md)）。
 - 单个复制活动可以利用可缩放的计算资源：使用 Azure Integration Runtime 时，能够以无服务器方式为每个复制活动指定[最多 256 个 DIU](#data-integration-units)；使用自承载集成运行时时，可以手动纵向扩展计算机或横向扩展为多个计算机（[最多 4 个节点](create-self-hosted-integration-runtime.md#high-availability-and-scalability)），单个复制活动会在所有节点之间将其文件集分区。
 - 单个复制活动[并行](#parallel-copy)使用多个线程读取和写入数据存储。
 
@@ -84,13 +84,13 @@ ADF 副本可在不同的级别缩放：
 
 3. **如何通过并行运行多项复制来最大化聚合吞吐量：**
 
-   最大化单个复制活动的性能后，如果尚未实现环境（网络、源数据存储和目标数据存储）的吞吐量上限，可以使用 ADF 控制流构造（例如 [For Each 循环](control-flow-for-each-activity.md)）并行运行多个复制活动。 请参阅[从多个容器复制文件、将](solution-template-copy-files-multiple-containers.md)[数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md)或[使用控制表解决方案模板进行大容量复制](solution-template-bulk-copy-with-control-table.md)（如一般示例）。
+   最大化单个复制活动的性能后，如果尚未实现环境（网络、源数据存储和目标数据存储）的吞吐量上限，可以使用 ADF 控制流构造（例如 [For Each 循环](control-flow-for-each-activity.md)）并行运行多个复制活动。 请参阅[从多个容器复制文件](solution-template-copy-files-multiple-containers.md)、[将数据从 Amazon S3 迁移到 ADLS Gen2](solution-template-migration-s3-azure.md) 或[使用控制表进行批量复制](solution-template-bulk-copy-with-control-table.md)解决方案模板，其中提供了一般性的示例。
 
 5. **将配置扩展至整个数据集。** 对执行结果和性能满意时，可以扩展定义和管道以覆盖整个数据集。
 
-## <a name="troubleshoot-copy-activity-performance"></a>复制活动性能疑难解答
+## <a name="troubleshoot-copy-activity-performance"></a>排查复制活动的性能问题
 
-按照[性能优化步骤](#performance-tuning-steps)来规划和执行适用于你的方案的性能测试。 了解如何对 Azure 数据工厂中的每个复制活动运行性能问题进行故障排除，以[解决复制活动性能](copy-activity-performance-troubleshooting.md)问题。
+遵循[性能优化步骤](#performance-tuning-steps)为方案规划并执行性能测试。 了解如何对 Azure 数据工厂中的每个复制活动运行性能问题进行故障排除，以[解决复制活动性能](copy-activity-performance-troubleshooting.md)问题。
 
 ## <a name="copy-performance-optimization-features"></a>复制性能优化功能
 
@@ -111,7 +111,7 @@ Azure 数据工厂提供以下性能优化功能：
 
 ### <a name="parallel-copy"></a>并行复制
 
-你可以设置并行复制，以指示你希望复制活动使用的并行度。 可以将此属性视为复制活动中的最大线程数，这些线程从源读取数据或将数据写入接收器数据存储。 [了解详细信息](copy-activity-performance-features.md#parallel-copy)。
+你可以设置并行复制，以指示你希望复制活动使用的并行度。 可将此属性视为复制活动内，可从源并行读取或并行写入接收器数据存储的最大线程数。 [了解详细信息](copy-activity-performance-features.md#parallel-copy)。
 
 ### <a name="staged-copy"></a>暂存复制
 
@@ -121,7 +121,7 @@ Azure 数据工厂提供以下性能优化功能：
 请参阅其他复制活动文章：
 
 - [复制活动概述](copy-activity-overview.md)
-- [复制活动性能疑难解答](copy-activity-performance-troubleshooting.md)
+- [排查复制活动的性能问题](copy-activity-performance-troubleshooting.md)
 - [复制活动性能优化功能](copy-activity-performance-features.md)
 - [使用 Azure 数据工厂将数据从 Data Lake 或数据仓库迁移到 Azure](data-migration-guidance-overview.md)
 - [将数据从 Amazon S3 迁移到 Azure 存储](data-migration-guidance-s3-azure-storage.md)

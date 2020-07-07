@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81410218"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表复制数据
@@ -29,7 +29,7 @@ ms.locfileid: "81410218"
 此 Web 表连接器、[REST 连接器](connector-rest.md)和 [HTTP 连接器](connector-http.md)之间的区别如下：
 
 - **Web 表连接器**用于从 HTML 网页中提取表内容。
-- **REST 连接器**专门支持从 RESTful api 复制数据。
+- **REST 连接器**专门支持从 RESTful API 复制数据。
 - **HTTP 连接器**是通用的，可从任何 HTTP 终结点检索数据，以执行文件下载等操作。 
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -37,15 +37,15 @@ ms.locfileid: "81410218"
 以下活动支持此 Web 表连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 Web 表数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 Web 表连接器支持**从 HTML 页提取表内容**。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要使用此 Web 表连接器，需要设置自托管集成运行时。 有关详细信息，请参阅[自承载 Integration Runtime](create-self-hosted-integration-runtime.md)文章。
+若要使用此 Web 表连接器，需要设置自托管集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
 
 ## <a name="getting-started"></a>入门
 
@@ -57,11 +57,11 @@ ms.locfileid: "81410218"
 
 Web 表链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Web** |是 |
 | url | Web 源的 URL |是 |
-| authenticationType | 允许的值为：Anonymous****。 |是 |
+| authenticationType | 允许的值为：**Anonymous**。 |是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 如[先决条件](#prerequisites)中所述，需要自承载集成运行时。 |是 |
 
 **示例：**
@@ -85,15 +85,15 @@ Web 表链接的服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Web 表数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Web 表数据集支持的属性列表。
 
-要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”****。 支持以下属性：
+要从 Web 表复制数据，请将数据集的 type 属性设置为“WebTable”  。 支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**WebTable** | 是 |
-| path |包含表的资源的相对 URL。 |不能。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
-| 索引 |资源中表的索引。 请参阅[获取 html 页中表的索引](#get-index-of-a-table-in-an-html-page)部分，了解获取 html 页中表的索引的步骤。 |是 |
+| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
 
@@ -121,7 +121,7 @@ Web 表链接的服务支持以下属性：
 
 ### <a name="web-table-as-source"></a>Web 表作为源
 
-要从 Web 表复制数据，请将复制活动中的源类型设置为“WebSource”****，不支持任何其他属性。
+要从 Web 表复制数据，请将复制活动中的源类型设置为“WebSource”  ，不支持任何其他属性。
 
 **示例：**
 
@@ -158,22 +158,22 @@ Web 表链接的服务支持以下属性：
 
 若要获取表的索引（需要在[数据集属性](#dataset-properties)中进行配置），可以使用例如 Excel 2016 作为工具，如下所示：
 
-1. 启动 **Excel 2016**，并切换到“数据”**** 选项卡。
-2. 单击工具栏中的“新建查询”****，指向“从其他源”****，并单击“从 Web”****。
+1. 启动 **Excel 2016**，并切换到“数据”  选项卡。
+2. 单击工具栏中的“新建查询”  ，指向“从其他源”  ，并单击“从 Web”  。
 
     ![Power Query 菜单](./media/copy-data-from-web-table/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如：https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”************。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如  ：AFI%27s_100_Years...100_Movies），并单击“确定”  。
 
     ![“从 Web”对话框](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    此示例中使用的 URL：https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. 如果出现“访问 Web 内容”**** 对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”****。
+    此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”  。
 
    ![“访问 Web 内容”对话框](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. 单击树视图中的“表”**** 项，查看表中的内容，并单击底部的“编辑”**** 按钮。  
+5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  
 
    ![“导航器”对话框](./media/copy-data-from-web-table/Navigator-DialogBox.png)
-6. 在“查询编辑器”**** 窗口中，单击工具栏上的“高级编辑器”**** 按钮。
+6. 在“查询编辑器”  窗口中，单击工具栏上的“高级编辑器”  按钮。
 
     ![“高级编辑器”按钮](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
 7. 在“高级编辑器”对话框中，“源”旁边的编号为索引。
@@ -188,4 +188,4 @@ Web 表链接的服务支持以下属性：
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

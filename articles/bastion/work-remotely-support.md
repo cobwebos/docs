@@ -1,6 +1,6 @@
 ---
 title: 使用堡垒远程工作： Azure 堡垒
-description: 本页介绍在 COVID-19（新冠病毒）疫情期间如何利用 Azure Bastion 来实现远程工作。
+description: 本页介绍了如何利用 Azure 堡垒来远程工作，因为 COVID-19 流行病。
 services: bastion
 author: mialdrid
 ms.service: bastion
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mialdrid
 ms.openlocfilehash: 182195190fed70b46185f98f595de6b6c32bbffe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80619384"
 ---
 # <a name="working-remotely-using-azure-bastion"></a>使用 Azure 堡垒远程工作

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: e41b7222ca89976674973e1eb700d62765b306f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311334"
 ---
 # <a name="tutorial-configure-security-agents"></a>教程：配置安全代理
@@ -107,7 +107,7 @@ ms.locfileid: "81311334"
     }
     ```
 
-1. 单击 **“保存”** 。
+1. 单击“保存” 。
 
 ### <a name="using-a-default-value"></a>使用默认值
 
@@ -132,7 +132,7 @@ ms.locfileid: "81311334"
 
 |事件名称| PropertyName | 默认值| Snapshot 事件| 详细信息状态  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|诊断事件|eventPriorityDiagnostic| Off| False| 与代理相关的诊断事件。 使用此事件进行详细日志记录。|
+|诊断事件|eventPriorityDiagnostic| 关| False| 与代理相关的诊断事件。 使用此事件进行详细日志记录。|
 |配置错误 |eventPriorityConfigurationError |低 |False |代理无法分析配置。 根据架构验证配置。|
 |删除的事件统计信息 |eventPriorityDroppedEventsStatistics |低 |True|与代理相关的事件统计信息。 |
 |已连接硬件|eventPriorityConnectedHardware |低 |True |连接到设备的所有硬件的快照。|
