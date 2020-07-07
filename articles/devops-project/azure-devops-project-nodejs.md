@@ -1,6 +1,6 @@
 ---
 title: 使用 GatsbyJS 和 Azure DevOps Starter 为 PWA 创建 CI/CD 管道
-description: DevOps Starter 可让你轻松地开始在 Azure 上入门。 使用它可以快速启动所选 Azure 服务上的应用。
+description: 可以通过 DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选 Azure 服务上的应用。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -14,13 +14,13 @@ ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc
 ms.openlocfilehash: 7db4fa2a780a3a1f53ecd73a40c247583cb6a79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233806"
 ---
-# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>使用 Azure DevOps Starter 在用于 node.js 的 Azure Pipelines 中创建 CI/CD 管道
+# <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>使用 Azure DevOps Starter 在 Azure Pipelines 中创建 CI/CD 管道 Node.js
 
 在本快速入门中，你将使用[GatsbyJS](https://www.gatsbyjs.org/)创建 NodeJS 渐进式 web 应用（PWA）以及简化的 Azure DevOps 入门创建体验。 完成此过程后，即已为 Azure Pipelines 中的 PWA 创建了持续集成 (CI) 和持续交付 (CD) 管道。 Azure DevOps Starter 设置开发、部署和监视所需的内容。
 
@@ -31,25 +31,25 @@ ms.locfileid: "82233806"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-DevOps Starter Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Starter 还会在所选的 Azure 订阅中创建 Azure 资源。
+DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps 入门版还将在所选的 Azure 订阅中创建 Azure 资源。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后在左窗格中选择“创建资源”  。 
 
    ![在 Azure 门户中创建 Azure 资源](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-1. 在搜索框中，键入 " **DevOps Starter**"，然后选择。 单击 "**添加**" 以创建一个新的。
+1. 在搜索框中键入“DevOps 入门版”，然后选择。 单击“添加”以新建一个。
 
-    ![DevOps 入门仪表板](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps 入门版仪表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
 
 1. 选择 Node.js 示例应用程序。   
 
-    ![选择 node.js 示例](_img/azure-devops-project-nodejs/select-nodejs.png) 
+    ![选择 Node.js 示例](_img/azure-devops-project-nodejs/select-nodejs.png) 
 
-1. 默认示例框架为**Express**。 将所选内容更改为**简单的 Node.js 应用**，然后选择 "**下一步**"。 
+1. 默认的示例框架是**Express.js**。 将所选内容更改为**简单 Node.js 应用**，然后选择 "**下一步**"。 
 
-    ![选择简单的 node.js 应用](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
+    ![选择简单的 Node.js 应用](_img/azure-devops-project-nodejs/select-nodejs-framework.png) 
 
 1. 此步骤中提供的部署目标取决于在步骤2中选择的应用程序框架。 在此示例中， **Windows Web 应用**是默认的部署目标。 保留**用于容器的 Web 应用**集，然后选择 "**下一步**"。
 
@@ -108,7 +108,7 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 git 存储库。 此示例�
     rmdir Application
     ```
 
-1. 使用 Gatsby CLI 生成示例 PWA。 从`gatsby new`终端运行以开始 PWA 向导，并为初学者`gatsby-starter-blog`模板选择。 它应类似于以下示例：
+1. 使用 Gatsby CLI 生成示例 PWA。 `gatsby new`从终端运行以开始 PWA 向导，并 `gatsby-starter-blog` 为初学者模板选择。 它应类似于以下示例：
 
     ```powershell
     c:\myproject> gatsby new
@@ -120,16 +120,16 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 git 存储库。 此示例�
         (Use a different starter)
     ```
     
-1. 现在有一个名为`my-gatsby-project`的文件夹。 将其重`Application`命名为， `Dockerfile`并将其复制到其中。
+1. 现在有一个名为的文件夹 `my-gatsby-project` 。 将其重命名为 `Application` ，并将其复制 `Dockerfile` 到其中。
     
     ```powershell
     mv my-gatsby-project Application
     mv Dockerfile Application
     ```
     
-1. 在常用编辑器中，打开 Dockerfile，并将第一行从`FROM node:8`更改为`FROM node:12`。 此更改可确保你的容器使用 node.js 版本 12. x 而不是版本2.x。 GatsbyJS 需要更先进的 node.js 版本。
+1. 在常用编辑器中，打开 Dockerfile，并将第一行从更改 `FROM node:8` 为 `FROM node:12` 。 此更改可确保你的容器使用的版本为版本为 Node.js，而不是版本3.x。 GatsbyJS 需要 Node.js 的更多新式版本。
 
-1. 接下来，打开应用程序文件夹中的 package 文件并编辑 "[脚本" 字段](https://docs.npmjs.com/files/package.json#scripts)，以确保开发和生产服务器在所有可用的网络接口（例如0.0.0.0）和端口80上进行侦听。 如果没有这些设置，则容器应用服务无法将流量路由到在容器中运行的 node.js 应用。 `scripts`字段应类似于下面的内容。 具体来说，您需要从默认`develop`值`serve`更改、 `start`和目标。
+1. 接下来，打开应用程序文件夹中的 package.js文件，然后编辑 "[脚本" 字段](https://docs.npmjs.com/files/package.json#scripts)，以确保你的开发和生产服务器在所有可用的网络接口（例如0.0.0.0）和端口80上进行侦听。 如果没有这些设置，则容器应用服务无法将流量路由到在容器中运行的 Node.js 应用。 `scripts`字段应类似于下面的内容。 具体来说，您需要 `develop` `serve` `start` 从默认值更改、和目标。
 
     ```json
       "scripts": {
@@ -145,9 +145,9 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 git 存储库。 此示例�
     
 ## <a name="edit-your-cicd-pipelines"></a>编辑 CI/CD 管道
 
-1. 在提交上一节中的代码之前，请对生成和发布管道进行一些更改。 编辑 "生成管道"，并更新 Node 任务以使用 node.js 版本2.x。 将 "**任务版本**" 字段设置为 "1. x"，将 "**版本**" 字段设置为 "12. x"。
+1. 在提交上一节中的代码之前，请对生成和发布管道进行一些更改。 编辑 "生成管道"，并将节点任务更新为使用版本为版本 Node.js。 将 "**任务版本**" 字段设置为 "1. x"，将 "**版本**" 字段设置为 "12. x"。
 
-    ![将 node.js 更新到12v](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
+    ![将 Node.js 更新为 12. x](_img/azure-devops-project-nodejs/build-pipeline-update-node.png)
 
 1. 在本快速入门中，我们不会创建单元测试，我们将在生成管道中禁用这些步骤。 编写测试时，可以重新启用这些步骤。 右键单击以选择标记为 "**安装测试依赖项**" 和 "**运行单元测试**并禁用它们" 的任务。
 
@@ -165,9 +165,9 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 git 存储库。 此示例�
 
 1. 选择“编辑”，**** 然后对 h2 标题进行更改。  例如，输入**立即开始借助 Azure DevOps Starter**或进行一些其他更改。
 
-1. 选择“提交”并保存更改。****
+1. 选择“提交”并保存更改。
 
-1. 在浏览器中，请切换到 DevOps 入门仪表板。   
+1. 在浏览器中，转到 DevOps 入门版仪表板。   
 此时会看到一个生成正在进行。 通过 CI/CD 管道自动生成并部署所做的更改。
 
 ## <a name="commit-your-changes-and-examine-the-azure-cicd-pipeline"></a>提交更改并检查 Azure CI/CD 管道
@@ -182,13 +182,13 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 git 存储库。 此示例�
     git push
     ```
     
-1. 生成将在`git push`完成后立即启动。 可从**Azure DevOps 仪表板**跟踪进度。
+1. 生成将在完成后立即启动 `git push` 。 可从**Azure DevOps 仪表板**跟踪进度。
 
 3. 几分钟后，生成和发布管道应会完成，PWA 应会部署到容器中。 在上面所示的仪表板中单击“应用程序终结点”链接，此时应会看到博客的 Gatsby 初学者项目。 
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要创建的 Azure 应用服务和其他相关资源时，可将其删除。 使用 DevOps 入门仪表板上的**删除**功能。
+不再需要创建的 Azure 应用服务和其他相关资源时，可将其删除。 请使用 DevOps 入门版仪表板上的“删除”功能。
 
 ## <a name="next-steps"></a>后续步骤
 

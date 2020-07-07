@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: b8a5f6543bc265605361b7875fad5232d428e27e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208986"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>使用 Azure 门户在可用性区域中创建 Windows 虚拟机
@@ -28,7 +28,7 @@ ms.locfileid: "82208986"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户的左上角单击 "**创建资源**"。
+1. 在 Azure 门户的左上角单击“创建资源”。
 
 2. 选择“计算”，然后选择“Windows Server 2016 Datacenter”。******** 
 
@@ -40,7 +40,7 @@ ms.locfileid: "82208986"
 
     ![选择 VM 大小](./media/create-portal-availability-zone/create-windows-vm-portal-sizes.png)  
 
-5. 在 "**设置** > **高可用性**" 下，从 "**可用性区域**" 下拉列表中选择一个编号的区域，保留剩余的默认值，然后单击 **"确定"**。
+5. 在 "**设置**  >  **高可用性**" 下，从 "**可用性区域**" 下拉列表中选择一个编号的区域，保留剩余的默认值，然后单击 **"确定"**。
 
     ![选择可用性区域](./media/create-portal-availability-zone/create-windows-vm-portal-availability-zone.png)
 

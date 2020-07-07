@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6aaaa24535c95e0a0d3f2b67709374c083ab738
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: bc8a416ac930de24e694107bec4f7ac287e15437
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81725211"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>教程：Azure Active Directory 与 AlertMedia 的单一登录 (SSO) 集成
 
@@ -96,12 +96,12 @@ ms.locfileid: "81725211"
     ![图像](common/default-attributes.png)
 
 1. 除了上述属性之外，AlertMedia 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
-    | 名称 |   |  源属性|
-    | ---------------| --------------- | --------- |
-    | email |  | user.userprincipalname |
-    | firstname |  | user.givenname |
-    | lastname |  | user.surname |
+
+| 名称 | 源属性|
+| ---- | --------------- |
+| email | user.userprincipalname |
+| firstname | user.givenname |
+| lastname | user.surname |
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 

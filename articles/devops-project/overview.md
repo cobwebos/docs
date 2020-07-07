@@ -15,15 +15,15 @@ ms.workload: ''
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.openlocfilehash: 99a1fdb8caff9953041c996d0f5581318ce11c66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233680"
 ---
 # <a name="overview-of-azure-devops-starter"></a>Azure DevOps Starter 概述
 
- Azure DevOps Starter 可让你轻松地开始在 Azure 上入门。 有了它，仅需几个简单的步骤即可从 Azure 门户在所选的 Azure 服务上启动最喜爱的应用。 
+ 可以通过 Azure DevOps Starter 轻松地完成 Azure 入门。 有了它，仅需几个简单的步骤即可从 Azure 门户在所选的 Azure 服务上启动最喜爱的应用。 
 
  DevOps Starter 设置开发、部署和监视应用程序所需的一切。 你可以使用 DevOps 入门仪表板来监视代码提交、生成和部署，所有这些都是从 Azure 门户中的单个视图进行的。
 

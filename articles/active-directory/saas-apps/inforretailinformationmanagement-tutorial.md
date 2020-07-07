@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6572560833e6336495b3bec782a096b584be1ec0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 91c48772ae50fd34e822c947687c0366e1d179cc
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100274"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798728"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>教程：Azure Active Directory 与 Infor Retail - Information Management 集成
 
@@ -108,10 +108,10 @@ ms.locfileid: "67100274"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |--|
-    | `https://<company name>.mingle.infor.com` |
-    | `http://<company name>.mingledev.infor.com` |
+    ```http
+    https://<company name>.mingle.infor.com
+    http://<company name>.mingledev.infor.com
+    ```
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<company name>.mingle.infor.com/sp/ACS.saml2`
 

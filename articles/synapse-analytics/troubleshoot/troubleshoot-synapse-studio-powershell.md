@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431470"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>诊断 PowerShell 脚本的 Azure Synapse Studio （预览版）连接问题
@@ -29,7 +29,7 @@ Azure Synapse Studio （预览版）依赖于一组 Web API 终结点才能正�
 
 右键单击以下链接，然后单击 "将目标另存为"：
 
-- [Test-AzureSynapse](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
 或者，您可以直接打开链接，并保存打开的脚本文件。 请勿保存上面的链接地址，因为将来可能会更改。
 
@@ -49,12 +49,12 @@ Azure Synapse Studio （预览版）依赖于一组 Web API 终结点才能正�
 
 ![查看诊断摘要](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-此外，此会话的诊断日志文件将在故障排除脚本所在的文件夹中生成。 它的位置显示在 "常规提示" 部分（`D:\TestAzureSynapse_2020....log`）中。 如果需要，你可以将此文件发送给技术支持人员。
+此外，此会话的诊断日志文件将在故障排除脚本所在的文件夹中生成。 它的位置显示在 "常规提示" 部分（ `D:\TestAzureSynapse_2020....log` ）中。 如果需要，你可以将此文件发送给技术支持人员。
 
 如果你是网络管理员并调整 Azure Synapse Studio 的防火墙配置，则 "摘要" 部分上面显示的技术详细信息可能会有所帮助。
 
 * 所有标记为 "通过" 的测试项（请求）意味着它们已通过连接测试，而不考虑 HTTP 状态代码。
- 对于失败的请求，原因显示为黄色，如`NamedResolutionFailure`或。 `ConnectFailure` 这些原因可能会帮助你确定网络环境是否存在配置错误。
+ 对于失败的请求，原因显示为黄色，如 `NamedResolutionFailure` 或 `ConnectFailure` 。 这些原因可能会帮助你确定网络环境是否存在配置错误。
 
 
 ## <a name="next-steps"></a>后续步骤

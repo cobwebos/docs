@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 06/04/2019
 ms.openlocfilehash: ed849ec928cc09cd0e8911929c4abc6ae54b1536
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208034"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>通过 RDP 连接到 Azure Kubernetes Service （AKS）群集 Windows Server 节点进行维护或故障排除
@@ -18,7 +18,7 @@ ms.locfileid: "82208034"
 
 本文介绍如何使用 AKS 节点通过其专用 IP 地址创建 RDP 连接。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 本文假设你有一个包含 Windows Server 节点的现有 AKS 群集。 如果需要 AKS 群集，请参阅[使用 Azure CLI 创建包含 Windows 容器的 AKS 群集][aks-windows-cli]一文。 你需要用于排查 Windows Server 节点的 Windows 管理员用户名和密码。 还需要一个 RDP 客户端，例如[Microsoft 远程桌面][rdp-mac]。
 

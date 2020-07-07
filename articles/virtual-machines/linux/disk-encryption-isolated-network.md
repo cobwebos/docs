@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81460114"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>隔离网络上的 Azure 磁盘加密
@@ -47,7 +47,7 @@ Azure 磁盘加密取决于多个组件，这些组件通常在启用 ADE 的过
 
 ### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
 
-虚拟机必须能够访问[Azure 实例元数据服务](instance-metadata-service.md)终结点，该终结点使用一个已知不可路由的 IP 地址（`169.254.169.254`），该地址只能从 VM 内部访问。  不支持将本地 HTTP 流量更改为此地址的代理配置（例如，添加 X-Forwarded-For 标头）。
+虚拟机必须能够访问[Azure 实例元数据服务](instance-metadata-service.md)终结点，该终结点使用一个已知不可路由的 IP 地址（）， `169.254.169.254` 该地址只能从 VM 内部访问。  不支持将本地 HTTP 流量更改为此地址的代理配置（例如，添加 X-Forwarded-For 标头）。
 
 ## <a name="next-steps"></a>后续步骤
 

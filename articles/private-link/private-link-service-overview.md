@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
 ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202207"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure 专用链接服务？
@@ -112,7 +112,7 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接驱动的服�
 |  |4        |UINT32（4个字节），表示专用终结点的 LINKID。 编码为 little endian 格式。|
 
  > [!NOTE]
- > 服务提供商负责确保标准负载均衡器后面的服务配置为在专用链接服务上启用代理协议时根据[规范](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)分析代理协议标头。 如果在专用链接服务上启用了代理协议设置，但未将服务提供商的服务配置为分析该标头，则请求将失败。 同样，如果服务提供商的服务需要代理协议标头，而专用链接服务上未启用该设置，则该请求将失败。 一旦启用了代理协议设置，代理协议标头也将包含在从主机到后端虚拟机的 HTTP/TCP 运行状况探测中，即使标头中没有客户端信息也是如此。 
+ > 服务提供商负责确保在专用链接服务上启用代理协议时，将标准负载均衡器后面的服务配置为按照[规范](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)分析代理协议标头。 如果在专用链接服务上启用了代理协议设置，但未将服务提供商的服务配置为分析该标头，则请求会失败。 同样，如果服务提供商的服务需要代理协议标头，而专用链接服务上未启用该设置，则请求会失败。 启用代理协议设置后，代理协议标头也将包含在从主机到后端虚拟机的 HTTP/TCP 运行状况探测中，即使标头中没有客户端信息也是如此。 
 
 ## <a name="limitations"></a>限制
 

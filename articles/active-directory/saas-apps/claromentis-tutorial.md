@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c6eaf23950f83592a33709574be464f4499f0ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b4ae8462a3905c63ece1e010fa021c3ab7b6b0fa
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74823029"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608814"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Claromentis 的集成
 
@@ -91,10 +91,10 @@ ms.locfileid: "74823029"
 
     在“登录 URL”文本框中，使用以下模式键入 URL： 
 
-    | | |
-    |-|-|
-    | `https://<customer_site_url>/login`|
-    | `https://<customer_site_url>/login?no_auto=0`|
+    ```https
+    https://<customer_site_url>/login
+    https://<customer_site_url>/login?no_auto=0
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 本教程稍后将介绍如何使用实际的登录 URL 和标识符来更新这些值。

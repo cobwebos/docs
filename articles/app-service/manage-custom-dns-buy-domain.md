@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535700"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
@@ -20,9 +20,9 @@ ms.locfileid: "81535700"
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
-* [创建应用服务应用](/azure/app-service/)，或使用为另一教程创建的应用。
+* [创建一个应用服务应用](/azure/app-service/)，或者使用为其他教程创建的应用。
 * [移除订阅中的支出限制](../cost-management-billing/manage/spending-limit.md#remove)。 无法购买具有免费订阅信用额度的应用服务域。
 
 ## <a name="prepare-the-app"></a>准备应用
@@ -41,29 +41,29 @@ ms.locfileid: "81535700"
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-custom-domain/select-app.png)
 
-将看到应用服务应用的管理页。  
+可以看到应用服务应用的管理页面。  
 
 ### <a name="check-the-pricing-tier"></a>检查定价层
 
-在应用页的左侧导航窗格中，向下滚动到“设置”  部分，然后选择“增加(应用服务计划)”  。
+在应用页面的左侧导航窗格中，向下滚动到“设置”部分，然后选择“扩展(应用服务计划)”。 
 
 ![扩展菜单](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-蓝色边框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
+蓝色的框突出显示了应用的当前层。 检查以确保应用不在 **F1** 层中。 **F1** 层不支持自定义 DNS。 
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
 如果应用服务计划不在 **F1** 层中，请关闭“纵向扩展”**** 页并跳转到[购买域](#buy-the-domain)。
 
-### <a name="scale-up-the-app-service-plan"></a>增加应用服务计划
+### <a name="scale-up-the-app-service-plan"></a>扩展应用服务计划
 
-选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”  类别中的任何层）。 有关其他选项，请单击“查看其他选项”  。
+选择任何非免费层（**D1**、**B1**、**B2**、**B3**，或“生产”类别中的任何层）。 有关其他选项，请单击“查看其他选项”。
 
-单击“应用”  。
+单击“应用” 。
 
 ![检查定价层](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
-看到以下通知时，说明缩放操作已完成。
+如果看到以下通知，则表示缩放操作已完成。
 
 ![缩放操作确认](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "81535700"
 > 你的自定义域的 "**不安全**" 标签意味着尚未绑定到 TLS/SSL 证书，并且从浏览器到自定义域的任何 HTTPS 请求都将收到错误或警告，具体取决于浏览器。 若要配置 TLS 绑定，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
 >
 
-若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图的示例中，请尝试导航到_kontoso.net_和_www\.kontoso.net_。
+若要测试主机名，请在浏览器中导航到列出的主机名。 在上面的屏幕截图的示例中，请尝试导航到_kontoso.net_和_www \. kontoso.net_。
 
 ## <a name="assign-hostnames-to-app"></a>将主机名分配到应用
 
@@ -165,18 +165,18 @@ ms.locfileid: "81535700"
 >
 >
 
-选择“添加主机名”****。
+选择“添加主机名”。
 
 ### <a name="configure-hostname"></a>配置主机名
 在“添加主机名”对话框中，键入应用服务域或任何子域的完全限定域名。**** 例如：
 
 - kontoso.net
-- www\.kontoso.net
+- www \. kontoso.net
 - abc.kontoso.net
 
 完成后，选择“验证”。**** 系统会自动选择主机名记录类型。
 
-选择“添加主机名”****。
+选择“添加主机名”。
 
 完成该操作后，会看到所分配主机名的成功通知。  
 
@@ -235,7 +235,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 ### <a name="open-app-service-domain"></a>打开“应用服务域”
 
-在 Azure 门户中，从左侧菜单中选择 "**所有服务** > " "**应用服务域**"。
+在 Azure 门户中，从左侧菜单中选择 "**所有服务**" "  >  **应用服务域**"。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -255,7 +255,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 ### <a name="open-app-service-domain"></a>打开“应用服务域”
 
-在 Azure 门户中，从左侧菜单中选择 "**所有服务** > " "**应用服务域**"。
+在 Azure 门户中，从左侧菜单中选择 "**所有服务**" "  >  **应用服务域**"。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -269,7 +269,7 @@ Azure 会处理过期或过期的应用服务域，如下所示：
 
 只有在删除所有主机名绑定之后，才能删除应用服务域。
 
-通过**选择 "** 删除每个主机名" > **删除**。 删除所有绑定后，选择“保存”。****
+通过**选择**  >  "删除每个主机名"**删除**。 删除所有绑定后，选择“保存”。****
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 568bac3c6c80173e38d7b15de17e90cb4fbdab80
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208952"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
@@ -52,7 +52,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。  
+使用 [az group create](/cli/azure/group) 命令创建资源组。  
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”** 区域中创建了名为“myResourceGroupVM”** 的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
 

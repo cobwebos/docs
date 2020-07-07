@@ -4,10 +4,10 @@ description: 介绍 Azure 资源管理器模板的声明性 JSON 语法。
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203822"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
@@ -31,7 +31,7 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 
 在该表达式中，语法 `resourceGroup()` 调用资源管理器提供的、在模板中使用的某个函数。 在本例中，它是 [resourceGroup](template-functions-resource.md#resourcegroup) 函数。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 语法 `.location` 从该函数返回的对象中检索一个属性。
 
-模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能有独立于函数求值方式的大小写要求。
+模板函数及其参数不区分大小写。 例如，资源管理器将 **variables('var1')** 和 **VARIABLES('VAR1')** 解析为相同内容。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数保留大小写。 某些资源类型可能有独立于函数求值方式的大小写要求。
 
 若要将字符串值作为参数传递给函数，请使用单引号。
 
@@ -71,7 +71,7 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 },
 ```
 
-传入参数值时，使用转义符取决于指定参数值的位置。 如果在模板中设置了默认值，则需要额外的左括号。
+传入参数值时，转义字符的使用取决于在何处指定了参数值。 如果在模板中设置默认值，则需要额外的左括号。
 
 ```json
 {
@@ -93,21 +93,21 @@ Azure 资源管理器提供了可在模板中使用的[函数](template-function
 }
 ```
 
-如果使用默认值，则模板返回`[test value]`。
+如果使用默认值，则模板会返回 `[test value]`。
 
-但是，如果通过命令行传递参数值，则将按原义解释这些字符。 部署上一个模板：
+但是，如果通过命令行传入参数值，则将按原义解释这些字符。 使用以下命令部署上一个模板：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
 ```
 
-返回 `[[test value]`。 而应使用：
+返回 `[[test value]`。 请改用：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-在从参数文件传递中的值时，将应用相同的格式设置。 按原义解释字符。 与上述模板一起使用时，以下参数文件将返回`[test value]`：
+从参数文件传入值时，将应用相同的格式设置。 将按原义解释字符。 与上述模板一起使用时，以下参数文件将返回 `[test value]`：
 
 ```json
 {
@@ -123,7 +123,7 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 
 ## <a name="null-values"></a>Null 值
 
-若要将属性设置为 null，可以使用**null**或 **[json （' null '）]**。 作为参数提供`null`时， [json 函数](template-functions-object.md#json)返回一个空对象。 在这两种情况下，资源管理器模板会将其视为不存在属性。
+若要将属性设置为 null，可以使用 **null** 或 **[json('null')]** 。 将 `null` 作为参数提供时，[json 函数](template-functions-object.md#json)返回空对象。 在这两种情况下，资源管理器模板都会按照属性不存在的情况对其进行处理。
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板函数的完整列表，请参阅 [Azure 资源管理器模板函数](template-functions.md)。
+* 有关模板函数的完整列表，请参阅 [Azure Resource Manager 模板函数](template-functions.md)。
 * 有关模板文件的详细信息，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。

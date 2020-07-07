@@ -4,10 +4,10 @@ description: 如何使用 Azure Service Fabric 应用程序代码中的托管标
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461559"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 应用程序的托管标识访问 Azure 服务
@@ -24,18 +24,18 @@ Service Fabric 应用程序可以利用托管标识来访问支持基于 Azure A
 在支持托管标识的群集中，Service Fabric 运行时将公开一个 localhost 终结点，应用程序可使用该终结点获取访问令牌。 该终结点将在群集的每个节点上提供，可供该节点上的所有实体访问。 已获授权的调用方可以通过调用此终结点并提供身份验证代码来获取访问令牌；每次激活不同的服务代码包时，此代码将由 Service Fabric 运行时生成，并且此代码与托管该服务代码包的进程的生存期紧密相关。
 
 具体而言，支持托管标识的 Service Fabric 服务的环境中植入了以下变量：
-- "IDENTITY_ENDPOINT"：与服务的托管标识对应的 localhost 终结点
-- "IDENTITY_HEADER"：表示当前节点上的服务的唯一身份验证代码
-- "IDENTITY_SERVER_THUMBPRINT"： service fabric 托管标识服务器的指纹
+- 'IDENTITY_ENDPOINT'：与服务的托管标识对应的 localhost 终结点
+- 'IDENTITY_HEADER'：表示当前节点上的服务的唯一验证码
+- 'IDENTITY_SERVER_THUMBPRINT'：Service fabric 托管标识服务器的指纹
 
 > [!IMPORTANT]
-> 应用程序代码应将 "IDENTITY_HEADER" 环境变量的值视为敏感数据，而不应记录它或传送。 身份验证代码没有本地节点外部的值，在托管服务的进程终止后，它也不会保留任何值，但它确实代表 Service Fabric 服务的标识，因此，应该像对待访问令牌本身一样对其采取预防措施。
+> 应用程序代码应将 'IDENTITY_HEADER' 环境变量的值视为敏感数据 - 它不应被记录或以其他方式传播。 身份验证代码没有本地节点外部的值，在托管服务的进程终止后，它也不会保留任何值，但它确实代表 Service Fabric 服务的标识，因此，应该像对待访问令牌本身一样对其采取预防措施。
 
 若要获取令牌，客户端将执行以下步骤：
-- 通过将托管标识终结点（IDENTITY_ENDPOINT 值）与令牌所需的 API 版本和资源（受众）串联在一起形成 URI
-- 为指定的 URI 创建 GET http （s）请求
+- 通过将托管标识终结点（IDENTITY_ENDPOINT 值）与令牌所需的 API 版本和资源（受众）进行连接来构成 URI
+- 为指定的 URI 创建 GET http(s) 请求
 - 添加适当的服务器证书验证逻辑
-- 将身份验证代码（IDENTITY_HEADER 值）添加为请求的标头
+- 将验证码（IDENTITY_HEADER 值）添加为请求的标头
 - 提交请求
 
 成功的响应将包含一个 JSON 有效负载，该有效负载表示生成的访问令牌，以及用于描述该令牌的元数据。 失败的响应还包含有关失败的说明。 有关错误处理的更多详细信息，请参阅下文。
@@ -48,12 +48,12 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 ```
 其中：
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `GET` | HTTP 谓词，指示想要从终结点检索数据。 在本例中，该数据为 OAuth 访问令牌。 | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | Service Fabric 应用程序的托管标识终结点，通过 IDENTITY_ENDPOINT 环境变量提供。 |
 | `api-version` | 一个查询字符串参数，指定托管标识令牌服务的 API 版本；目前唯一接受的值为 `2019-07-01-preview`，将来可能会有更改。 |
-| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个令牌访问 Azure Key Vault，其应用 ID URI 为 https：\//vault.azure.net/。 |
+| `resource` | 一个查询字符串参数，表示目标资源的应用 ID URI。 此元素以已颁发令牌的 `aud`（受众）声明形式反映。 此示例请求一个令牌访问 Azure Key Vault，其应用 ID URI 为 https： \/ /vault.azure.net/。 |
 | `Secret` | 一个 HTTP 请求标头字段，Service Fabric 服务的 Service Fabric 托管标识令牌服务需使用该字段对调用方进行身份验证。 此值由 SF 运行时通过 IDENTITY_HEADER 环境变量提供。 |
 
 
@@ -70,7 +70,7 @@ Content-Type: application/json
 ```
 其中：
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | ------- | ----------- |
 | `token_type` | 令牌的类型；在本例中为“持有者”访问令牌，表示此令牌的出示方（“持有者”）是令牌的目标使用者。 |
 | `access_token` | 请求的访问令牌。 调用受保护 REST API 时，该令牌将作为“持有者”令牌嵌入在 `Authorization` 请求标头字段中，使 API 能够对调用方进行身份验证。 | 
@@ -336,7 +336,7 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 | ------- | ----------- |
 | code | 错误代码。 |
 | correlationId | 可用于调试的关联 ID。 |
-| 消息 | 错误的详细说明。 **错误说明随时可能会更改。不要依赖于错误消息本身。**|
+| message | 错误的详细说明。 **错误说明随时可能更改。请不要依赖于错误消息本身。**|
 
 示例错误：
 ```json
@@ -345,7 +345,7 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 
 下面列出了特定于托管标识的典型 Service Fabric 错误：
 
-| 代码 | 消息 | 说明 | 
+| 代码 | Message | 说明 | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | 在请求标头中找不到机密。 | 未在请求中提供身份验证代码。 | 
 | ManagedIdentityNotFound | 找不到指定应用程序主机的托管标识。 | 应用程序没有标识，或者身份验证代码未知。 |
@@ -357,7 +357,7 @@ HTTP 响应标头的“状态代码”字段指示请求的成功状态；“200
 
 通常，唯一可重试错误代码是 429（请求过多）；内部服务器错误/5xx 错误代码也许可重试，不过，原因可能是永久性的。 
 
-限制适用于对托管标识子系统 - 具体而言，是“上游”依赖项（托管标识 Azure 服务或安全令牌服务）发出的调用数。 Service Fabric 在管道中的各个级别缓存令牌，但对于所涉及的组件的分布式性质，调用方可能会遇到不一致的限制响应（即，在应用程序的一个节点/实例上受到限制，而不是在为同一标识请求令牌时在不同的节点上）。设置限制条件后，来自同一应用程序的后续请求可能会失败，并出现 HTTP 状态代码429（请求过多），直到清除该条件。  
+限制适用于对托管标识子系统 - 具体而言，是“上游”依赖项（托管标识 Azure 服务或安全令牌服务）发出的调用数。 Service Fabric 在管道中的不同级别缓存令牌，但由于所涉及组件的分散性，调用方可能会遇到不一致的限制响应（例如，在请求同一标识的令牌时，在应用程序的一个节点/实例上受到限制，但在其他节点上却不会受到限制。）设置限制条件后，来自同一应用程序的后续请求可能会失败并出现 HTTP 状态代码 429（请求过多），直到清除该条件为止。  
 
 建议使用指数退让来重试由于限制而失败的请求，如下所示： 
 

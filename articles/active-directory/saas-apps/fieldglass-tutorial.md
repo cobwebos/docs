@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ada7092fa626987513416f7be0a52f6abeefaeb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 05a5c405095a3c045a3bf1dd7c62486ffda73825
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158189"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798870"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>教程：Azure Active Directory 与 Fieldglass 的集成
 
@@ -110,10 +110,10 @@ ms.locfileid: "73158189"
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
     
-    | |
-    |--|
-    | `https://www.fieldglass.net/<company name>`|
-    | `https://<company name>.fgvms.com/<company name>`|
+    ```http
+    https://www.fieldglass.net/<company name>
+    https://<company name>.fgvms.com/<company name>
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Fieldglass 客户端支持团队](https://www.fieldglass.com/customer-support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

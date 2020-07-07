@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901399"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565830"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教程：从 Power Apps 查询认知搜索索引
 
 利用 Power Apps 的快速应用程序开发环境，针对 Azure 认知搜索中的可搜索内容创建自定义应用。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 连接到 Azure 认知搜索
@@ -74,7 +74,7 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 
    * 选择谓词 `GET`
 
-   * 对于“URL”，请输入对你的搜索索引的示例查询（`search=*` 返回所有文档，`$select=` 可让你选择字段）。 “API 版本”是必需的。 完全指定后，URL 可能如下所示：`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2019-05-06`
+   * 对于“URL”，请输入对你的搜索索引的示例查询（`search=*` 返回所有文档，`$select=` 可让你选择字段）。 “API 版本”是必需的。 完全指定后，URL 可能如下所示：`https://mydemo.search.windows.net/indexes/hotels-sample-index/docs?search=*&$select=HotelName,Description,Address/City&api-version=2020-06-30`
 
    * 对于“标头”，请键入 `Content-Type`。 
 
@@ -94,7 +94,7 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="版本参数元数据" border="true":::
 
-1. 对于 api-version：将 `2019-05-06` 设置为默认值，将 required 设置为 True，将 visibility 设置为 internal。   
+1. 对于 api-version：将 `2020-06-30` 设置为默认值，将 required 设置为 True，将 visibility 设置为 internal。   
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="版本参数元数据" border="true":::
 
@@ -106,7 +106,7 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
     parameters:
       - {name: search, in: query, required: false, type: string, default: '*'}
       - {name: $select, in: query, required: false, type: string, default: 'HotelName,Description,Address/City'}
-      - {name: api-version, in: query, required: true, type: string, default: '2019-05-06',
+      - {name: api-version, in: query, required: true, type: string, default: '2020-06-30',
         x-ms-visibility: internal}
       - {name: Content-Type, in: header, required: false, type: string}
     ```

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450932"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>结合安全信息注册疑难解答
@@ -60,7 +60,7 @@ ms.locfileid: "81450932"
 
 如果管理员启用了预览，用户将通过新体验注册，然后管理员禁用预览版，用户可能也会在不知情的情况下注册多重身份验证。
 
-如果已完成组合注册的用户进入当前的自助服务密码重置（SSPR）注册页[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)，则系统会提示用户执行多重身份验证，然后才能访问该页面。 此步骤应从技术角度来看，但对于之前仅注册了 SSPR 的用户来说，这是新的。 尽管这一额外步骤通过提供另一级别的安全性来改善用户的安全状况，但管理员可能希望回滚用户的用户，使他们不再能够执行多重身份验证。  
+如果已完成组合注册的用户进入当前的自助服务密码重置（SSPR）注册页 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) ，则系统会提示用户执行多重身份验证，然后才能访问该页面。 此步骤应从技术角度来看，但对于之前仅注册了 SSPR 的用户来说，这是新的。 尽管这一额外步骤通过提供另一级别的安全性来改善用户的安全状况，但管理员可能希望回滚用户的用户，使他们不再能够执行多重身份验证。  
 
 ### <a name="how-to-roll-back-users"></a>如何回退用户
 
@@ -150,7 +150,7 @@ ms.locfileid: "81450932"
 若要为用户禁用更新的体验，请完成以下步骤：
 
 1. 以用户管理员身份登录到 Azure 门户。
-2. 中转到**Azure Active Directory** > "**用户设置** > **" "管理访问面板预览功能的设置"**。
+2. 中转到**Azure Active Directory**  >  "**用户设置**  >  **" "管理访问面板预览功能的设置"**。
 3. 在 "**用户可以使用预览功能注册和管理安全信息**" 下，将选择器设置为 "**无**"，然后选择 "**保存**"。
 
 系统将不再提示用户使用更新的体验进行注册。

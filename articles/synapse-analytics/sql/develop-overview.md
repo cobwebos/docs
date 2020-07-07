@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429013"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中 Synapse SQL 功能的设计决策和编码方法
@@ -31,7 +31,7 @@ ms.locfileid: "81429013"
 | [资源类和并发](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 是    | 否 |
 | [事务](develop-transactions.md)              | 是 | 否 |
 | [用户定义的架构](develop-user-defined-schemas.md) | 是 | 是 |
-| [表分发](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | 是 | 否 |
+| [表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | 是 | 否 |
 | [表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | 是 | 否 |
 | [表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | 是 | 否 |
 | [统计信息](develop-tables-statistics.md)            | 是 | 是 |
@@ -51,8 +51,8 @@ ms.locfileid: "81429013"
 | [视图](develop-views.md)                             | 是                | 是                     |
 | [临时表](develop-tables-temporary.md)       | 是                | 是                     |
 | [动态 SQL](develop-dynamic-sql.md)                 | 是                | 是                     |
-| [Hal](develop-loops.md)                         | 是                | 是                     |
-| [Group By 选项](develop-group-by-options.md)       | 是                | 否                      |
+| [循环](develop-loops.md)                         | 是                | 是                     |
+| [Group by 选项](develop-group-by-options.md)       | 是                | 否                      |
 | [变量赋值](develop-variable-assignment.md) | 是                | 是                     |
 
 ## <a name="next-steps"></a>后续步骤

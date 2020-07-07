@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f53b3f8dd2a324e4eb3e4b6c073de478bff97a3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9eadaf21705944a5d6aa8ea6d5ca190a21624ee8
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662130"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798657"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>教程：Azure Active Directory 与 ice Contact Center 的单一登录 (SSO) 集成
 
@@ -86,19 +86,19 @@ ms.locfileid: "83662130"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式之一键入 URL：
 
-    | | |
-    |-|-|
-    | `https://<TENANT>-imrpool.icescape365.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.icescape.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.iceuc.com:PORT/identity`|
+    ```http
+    https://<TENANT>-imrpool.icescape365.com:PORT/identity
+    https://<TENANT>-imrpool.icescape.com:PORT/identity
+    https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```
 
     c. 在“回复 URL”文本框中，使用下面的一种模式键入 URL：
 
-    | | |
-    |-|-|
-    | `https://<TENANT>-imrpool.icescape365.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.icescape.com:PORT/identity`|
-    | `https://<TENANT>-imrpool.iceuc.com:PORT/identity`|
+    ```http
+    https://<TENANT>-imrpool.icescape365.com:PORT/identity
+    https://<TENANT>-imrpool.icescape.com:PORT/identity
+    https://<TENANT>-imrpool.iceuc.com:PORT/identity
+    ```
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [ice Contact Center 客户端支持团队](mailto:support@computer-talk.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。

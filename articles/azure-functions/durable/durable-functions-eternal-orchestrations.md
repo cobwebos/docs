@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478816"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions 中的永久业务流程 (Azure Functions)
@@ -22,12 +22,12 @@ ms.locfileid: "80478816"
 
 ## <a name="resetting-and-restarting"></a>重置和重启
 
-业务流程协调程序函数不使用无限循环，而是通过调用`ContinueAsNew`业务流程触发器绑定`continueAsNew`的 [ (.NET) 或 ](durable-functions-bindings.md#orchestration-trigger) (JavaScript) 方法来重置其状态。 此方法采用单个 JSON 可序列化参数，该参数将成为用于生成下一个业务流程协调程序函数的新输入。
+业务流程协调程序函数不使用无限循环，而是通过调用[业务流程触发器绑定](durable-functions-bindings.md#orchestration-trigger)的 `ContinueAsNew` (.NET) 或 `continueAsNew` (JavaScript) 方法来重置其状态。 此方法采用单个 JSON 可序列化参数，该参数将成为用于生成下一个业务流程协调程序函数的新输入。
 
 当调用 `ContinueAsNew` 时，实例会在其退出之前将一条消息排入其自己的队列。 该消息将使用新的输入值重启实例。 将保持同一实例 ID，但业务流程协调程序函数的历史记录实际上会被截断。
 
 > [!NOTE]
-> Durable Task Framework 会维护同一个实例 ID，但在内部会为由  *重置的业务流程协调程序函数创建一个新的“执行 ID”。* `ContinueAsNew` 此执行 ID 通常不对外公开，但在调试业务流程执行时知道该 ID 可能比较有用。
+> Durable Task Framework 会维护同一个实例 ID，但在内部会为由 `ContinueAsNew` 重置的业务流程协调程序函数创建一个新的“执行 ID”。 此执行 ID 通常不对外公开，但在调试业务流程执行时知道该 ID 可能比较有用。
 
 ## <a name="periodic-work-example"></a>定期工作示例
 
@@ -120,9 +120,9 @@ module.exports = async function (context, req) {
 
 ## <a name="exit-from-an-eternal-orchestration"></a>从永久业务流程退出
 
-如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用  *而是让函数退出。* `ContinueAsNew`
+如果业务流程协调程序函数需要最终完成，则你需要做的全部工作“不是”调用 `ContinueAsNew` 而是让函数退出。
 
-如果业务流程协调程序函数处于无限循环中并且需要停止运行，请使用`TerminateAsync`业务流程客户端绑定`terminate`的 [ (.NET) 或 ](durable-functions-bindings.md#orchestration-client) (JavaScript) 方法来停止它。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
+如果业务流程协调程序函数处于无限循环中并且需要停止运行，请使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)的 `TerminateAsync` (.NET) 或 `terminate` (JavaScript) 方法来停止它。 有关详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

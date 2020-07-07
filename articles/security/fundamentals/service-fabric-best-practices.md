@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure Service Fabric 安全性的最佳做法
+title: Azure Service Fabric 安全性最佳做法
 description: 本文提供有关 Azure Service Fabric 安全性的一套最佳做法。
 author: unifycloud
 ms.author: tomsh
@@ -8,16 +8,16 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81461644"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric 安全性最佳做法
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 将云应用程序部署到生产环境前，请先查看有必要遵照和建议的最佳做法列表，了解最好应如何在应用程序中实现群集安全性。
 
-Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
+Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不仅可以避免复杂的基础结构问题，而且可以专注于实现可缩放、可靠且可管理的要求苛刻的任务关键型工作负荷。
 
 对于每项最佳做法，本文将说明：
 
@@ -57,13 +57,13 @@ Azure Service Fabric 是一种分布式系统平台，适用于打包、部署�
 
 使用各种技术实现群集安全性的[方案](../../service-fabric/service-fabric-cluster-security.md)有三种：
 
--   节点到节点安全性：此方案可保护群集中 VM 与计算机的通信。 这种安全性可确保只有已获授权加入群集的计算机，才能在群集中托管应用程序和服务。
+-   节点到节点安全性：此方案可保护群集中 VM 与计算机之间的通信。 这种安全性可确保只有已获授权加入群集的计算机，才能在群集中托管应用程序和服务。
 在此方案中，Azure 上运行的群集或 Windows 上运行的独立群集可以使用[证书安全性](../../service-fabric/service-fabric-windows-cluster-x509-security.md)或 [Windows 安全性](../../service-fabric/service-fabric-windows-cluster-windows-security.md)（适用于 Windows Server 计算机）。
--   客户端到节点安全性：此方案可保护 Service Fabric 客户端与群集中各个节点的通信。
+-   客户端到节点安全性：此方案可保护 Service Fabric 客户端与群集中各个节点之间的通信。
 -   基于角色的访问控制 (RBAC)：此方案对每个访问群集的管理员和用户客户端角色使用独立标识（证书、Azure AD 等）。 这些角色标识是在创建群集时指定。
 
 >[!NOTE]
->**适用于 Azure 群集的安全性建议**：若要实现节点到节点安全性，请使用 Azure AD 安全性来验证客户端和证书。
+>**适用于 Azure 群集的安全建议：** 使用 Azure AD 安全性对客户端进行身份验证，并使用证书实现节点到节点安全性。
 
 若要配置 Windows 独立群集，请参阅 [Windows 独立群集的配置设置](../../service-fabric/service-fabric-cluster-manifest.md)。
 
@@ -99,7 +99,7 @@ Service Fabric 还可保护应用程序使用的资源。 在应用程序部署�
 
 -   使用 Active Directory 域组或用户：使用 Active Directory 用户或组帐户的凭据运行服务。 请务必在域中使用本地 Active Directory，而不是 Azure Active Directory。 使用域用户或组，访问域中已被授予权限的其他资源。 例如，文件共享等资源。
 
--   为 HTTP 和 HTTPS 终结点分配安全访问策略：指定 SecurityAccessPolicy**** 属性，在服务清单使用 HTTP 协议声明终结点资源时，向服务应用 RunAs**** 策略。 分配给 HTTP 终结点的端口是，运行服务所用的 RunAs 用户帐户的正确访问控制列表。 如果未设置此策略，http.sys 将无权访问服务，并且用户也无法从客户端进行调用。
+-   为 HTTP 和 HTTPS 终结点分配安全访问策略：指定 **SecurityAccessPolicy** 属性，在服务清单使用 HTTP 协议声明终结点资源时，向服务应用 **RunAs** 策略。 分配给 HTTP 终结点的端口是，运行服务所用的 RunAs 用户帐户的正确访问控制列表。 如果未设置此策略，http.sys 将无权访问服务，并且用户也无法从客户端进行调用。
 
 若要了解如何在 Service Fabric 群集中使用安全策略，请参阅[配置应用程序的安全策略](../../service-fabric/service-fabric-application-runas-security.md)。
 
@@ -113,18 +113,18 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 
 在 Service Fabric 中，执行组件是在 Reliable Actors 应用程序框架中实现。 此框架以执行组件模式为依据，在 [Service Fabric Reliable Services](../../service-fabric/service-fabric-reliable-services-introduction.md) 的基础之上构建而成。 编写的每个可靠执行组件服务都是一个已分区的有状态可靠服务。
 
-每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，用于实现计算器功能的执行组件类型**** 可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
+每个执行组件定义为执行组件类型的一个实例，与 .NET 对象是 .NET 类型的一个实例类同。 例如，用于实现计算器功能的执行组件类型可能包含此类型的多个执行组件，这些执行组件跨群集中的各个节点进行分布。 分布的每个执行组件都通过执行组件标识符进行唯一标识。
 
-复制器[安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护在复制过程中使用的信道。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
+[复制器安全配置](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)用于保护在复制过程中使用的信道的安全。 此配置可阻止服务相互窥探复制流量，并确保可用性很高的数据安全。 默认情况下，空的安全配置节会影响复制安全。
 复制器配置用于配置负责使执行组件状态提供程序状态高度可靠的复制器。
 
 ## <a name="configure-tls-for-azure-service-fabric"></a>为 Azure Service Fabric 配置 TLS
-服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供[TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) 。
+服务器身份验证流程向管理客户端[验证](../../service-fabric/service-fabric-cluster-creation-via-arm.md)群集管理终结点。 然后，管理客户端确定它在与真正的群集通信。 此证书还通过 HTTPS 为 HTTPS 管理 API 和 Service Fabric Explorer 提供 [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md)。
 必须获取群集的自定义域名。 从证书颁发机构请求获取证书时，证书的使用者名称必须与用于群集的自定义域名匹配。
 
-若要为应用程序配置 TLS，你首先需要获取已由 CA 签名的 SSL/TLS 证书。 CA 是为 TLS 安全目的颁发证书的受信任的第三方。 如果还没有 SSL/TLS 证书，则需要从销售 SSL/TLS 证书的公司获取一个证书。
+若要为应用程序配置 TLS，首先需要获取已由 CA 签名的 SSL/TLS 证书。 CA 是受信任的第三方，负责颁发证书，以提高 TLS 安全性。 如果尚无 SSL/TLS 证书，需要从销售 SSL/TLS 证书的公司购买一个。
 
-证书必须满足 Azure 中的以下 SSL/TLS 证书要求：
+该证书必须满足 Azure 中的以下 SSL/TLS 证书要求：
 -   证书必须包含私钥。
 
 -   必须创建适用于密钥交换的证书，并且证书必须可导出到个人信息交换 (.pfx) 文件中。
@@ -132,16 +132,16 @@ Service Fabric Reliable Actors 是执行组件设计模式的实现。 与所有
 -   证书的使用者名称必须与用于访问云服务的域名匹配。
 
     - 获取用于访问云服务的自定义域名。
-    - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com****，CA 颁发的证书应包含使用者名称 .contoso.com**** 或 __www__.contoso.com****。
+    - 请求从 CA 获取证书，其中使用者名称与服务的自定义域名匹配。 例如，如果自定义域名为 __contoso__.com，CA 颁发的证书应包含使用者名称 .contoso.com 或 __www__.contoso.com。
 
     >[!NOTE]
-    >不能从 CA 获取用于__p p.__**.NET**域的 SSL/TLS 证书。
+    >无法从 CA 获取 __cloudapp__.net 域的 SSL/TLS 证书。
 
 -   证书至少必须使用 2,048 位加密。
 
 HTTP 协议不安全，容易受到窥探攻击威胁。 通过 HTTP 传输的数据在 Web 浏览器到 Web 服务器之间或其他终结点之间作为纯文本发送。 攻击者可以拦截和查看通过 HTTP 发送的敏感数据，如信用卡详细信息和帐户登录凭据。 如果数据使用 HTTPS 通过浏览器进行发送或发布，SSL 可确保加密和保护敏感信息，防止其被拦截。
 
-若要了解有关使用 SSL/TLS 证书的详细信息，请参阅[在 Azure 中为应用程序配置 TLS](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
+若要详细了解如何使用 SSL/TLS 证书，请参阅[为 Azure 中的应用程序配置 TLS](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>将 Azure Service Fabric 与网络隔离和安全功能结合使用
 将 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)用作示例，设置 nodetype 属性值为 3 的安全群集。 使用此模板和网络安全组控制入站和出站网络流量。
@@ -169,7 +169,7 @@ Service Fabric 使用 X.509 证书保护群集，并提供应用程序安全功�
 若要详细了解如何设置密钥保管库，请参阅[什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)。
 
 ## <a name="assign-users-to-roles"></a>将用户分配到角色
-创建用于表示群集的应用程序后，请将用户分配到 Service Fabric 支持的角色：只读和管理员。您可以使用 Azure 门户分配这些角色。
+创建应用程序以代表群集后，请将用户分配到 Service Fabric 支持的角色，即只读和管理员。可使用 Azure 门户来分配这些角色。
 
 >[!NOTE]
 > 若要详细了解如何在 Service Fabric 使用角色，请参阅[适用于 Service Fabric 客户端的基于角色的访问控制](../../service-fabric/service-fabric-cluster-security-roles.md)。

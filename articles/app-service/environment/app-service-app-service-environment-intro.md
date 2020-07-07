@@ -1,6 +1,6 @@
 ---
 title: ASE v1 简介
-description: 了解应用服务环境 v1 功能。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 了解应用服务环境 v1 功能。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80478726"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>应用服务环境 v1 简介
