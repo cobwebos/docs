@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515438"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-超大规模（Citus）中的备份和还原
@@ -49,12 +49,12 @@ Azure Database for PostgreSQL –超大规模（Citus）自动创建每个节点
 > [!IMPORTANT]
 > 需要打开支持请求来执行超大规模（Citus）群集的时点还原。
 
-### <a name="post-restore-tasks"></a>Post-restore tasks
+### <a name="post-restore-tasks"></a>还原后任务
 
 从任一恢复机制还原后，你应执行以下操作，使你的用户和应用程序恢复正常运行：
 
 * 如果需要使用新服务器来替换原始服务器，则请将客户端和客户端应用程序重定向到新服务器
-* 确保用户可以连接到适当的服务器级防火墙和 VNet 规则。 这些规则不会从原始服务器组复制。
+* 对于要进行连接的用户，请确保设置适当的服务器级防火墙规则和 VNet 规则。 这些规则不会从原始服务器组复制。
 * 根据需要调整 PostgreSQL 服务器参数。 参数不会从原始服务器组复制。
 * 确保设置适当的登录名和数据库级权限
 * 视情况配置警报

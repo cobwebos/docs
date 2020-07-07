@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82144345"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
@@ -37,9 +37,9 @@ ms.locfileid: "82144345"
 * 具有任何 [Azure 逻辑应用支持的电子邮件提供商](../connectors/apis-list.md)的电子邮件帐户
 
   > [!IMPORTANT]
-  > 如果要使用 Gmail 连接器，则只有 G Suite 业务帐户才能在逻辑应用中使用此连接器而不进行限制。 如果你有 Gmail 使用者帐户，则只能将此连接器与特定的 Google 批准服务一起使用，也可以[创建 google 客户端应用以用于通过 Gmail 连接器进行身份验证](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅[Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 若要使用 Visual Studio 而不是 Azure 门户，请确保[设置 Visual Studio 以使用逻辑应用](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "82144345"
    | **发布条件** | 仅适用于“内联”批处理模式，选择在处理每个批之前所要满足的条件：**** <p>- **基于消息计数**：根据批处理收集的消息数释放批处理。 <br>- **基于大小**：根据该批处理收集的所有消息的总大小（以字节为单位）释放该批。 <br>- **计划**：根据定期计划发布批处理，该计划指定时间间隔和频率。 在高级选项中，还可以选择时区，并提供开始日期和时间。 <br>- **全选**：使用所有指定的条件。 | 
    | **消息计数** | 要在批中收集的消息数，例如 10 条消息。 批的限制为 8,000 条消息。 | 
    | **批大小** | 批中要收集的总大小（以字节为单位），例如10 MB。 批的大小上限是 80 MB。 | 
-   | **计划** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 要指定时区或开始日期和时间，请选择“显示高级选项”****。 | 
+   | **“计划”** | 发布批的间隔时间和频率，例如 10 分钟。 最小重复周期为 60 秒或 1 分钟。 分数分钟有效地向上舍入到 1 分钟。 要指定时区或开始日期和时间，请选择“显示高级选项”****。 | 
    ||| 
 
    > [!NOTE]
@@ -97,7 +97,7 @@ ms.locfileid: "82144345"
 
 6. 为添加的操作设置属性。
 
-   * 在“收件人”**** 框中，输入收件人的电子邮件地址。 
+   * 在“收件人”框中，输入收件人的电子邮件地址。 
    为进行测试，可以使用自己的电子邮件地址。
 
    * 在 "**主题**" 框中，当 "动态内容" 列表出现时，选择 "**分区名称**" 字段。
@@ -196,7 +196,7 @@ ms.locfileid: "82144345"
    
    1. 在“分区名称”框中单击，以显示动态内容列表。**** 
 
-   2. 在动态内容列表中，选择“表达式”。****
+   2. 在动态内容列表中，选择“表达式”。
    
    3. 输入表达式 `rand(1,6)`，然后选择“确定”。****
 

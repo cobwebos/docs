@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: b201200ebf6807d7301dfd8c52e3137a29784eb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187205"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>在本地部署远程监视解决方案加速器 - IntelliJ
@@ -27,7 +27,7 @@ ms.locfileid: "82187205"
 
 若要部署远程监视解决方案加速器使用的 Azure 服务，需要一个有效的 Azure 订阅。
 
-如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>计算机设置
 
@@ -98,7 +98,7 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
    该脚本还会将一组环境变量添加到您的本地计算机。 每个变量名称都具有前缀**pc**。 这些环境变量提供的详细信息允许远程监视从 Azure Key Vault 资源读取其配置值。
 
    > [!TIP]
-   > 脚本完成后，它会将环境变量保存到名** \<为主文件夹\>\\的文件中。 pc\\\<解决方案名称\>. env**。 你可以将其用于将来的解决方案加速器部署。 请注意，在运行**docker 撰写**时，在本地计算机上设置的任何环境变量都将覆盖**服务\\\\脚本本地\\env**文件中的值。
+   > 脚本完成后，它会将环境变量保存到名为 " ** \<your home folder\> \\ pc \\ \<solution name\> **" 的文件中。 你可以将其用于将来的解决方案加速器部署。 请注意，在运行**docker 撰写**时，在本地计算机上设置的任何环境变量都将覆盖**服务 \\ 脚本 \\ 本地 \\ env**文件中的值。
 
 1. 关闭命令行环境。
 
@@ -109,7 +109,7 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
 * **PCS_AAD_APPID**： Azure Active Directory （Azure AD）应用程序 ID。
 * **PCS_AAD_APPSECRET**： Azure AD 应用程序密钥。
 
-将从此 Key Vault 资源读取配置值。 这些环境变量可保存在** \<主文件夹\>\\中。 pc\\\<解决方案名称\>。** 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+将从此 Key Vault 资源读取配置值。 这些环境变量可保存在部署中的 " ** \<your home folder\> \\ pc \\ \<solution name\> ** " 文件中。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
 微服务所需的某些配置存储在最初部署时创建的 Key Vault 实例中。 应根据需要修改 key vault 中的相应变量。
 
@@ -159,11 +159,11 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
 
 #### <a name="create-run-configurations"></a>创建运行配置
 
-1. 选择 "**运行** > **编辑配置**"。
-1. 选择 "**添加新配置** > **sbt 任务**"。
+1. 选择 "**运行**  >  **编辑配置**"。
+1. 选择 "**添加新配置**  >  **sbt 任务**"。
 1. 输入**名称**，然后输入 "**运行**" 作为**任务**。
 1. 根据要运行的服务选择**工作目录**。
-1. 选择 "**应用** > **" "确定"** 以保存你的选择。
+1. 选择**Apply**  >  **"应用" "确定"** 以保存你的选择。
 1. 为以下 web 服务创建运行配置：
     * WebService (services\config)
     * WebService (services\device-telemetry)
@@ -176,9 +176,9 @@ Node.js v8 是脚本用来创建 Azure 资源的 PC CLI 的必备组件。 请�
 
 #### <a name="create-a-compound-configuration"></a>创建复合配置
 
-1. 若要将所有服务一起运行，请选择 "**添加新的配置** > **复合**"。
+1. 若要将所有服务一起运行，请选择 "**添加新的配置**  >  **复合**"。
 1. 输入**名称**，然后选择 "**添加 sbt 任务**"。
-1. 选择 "**应用** > **" "确定"** 以保存你的选择。
+1. 选择**Apply**  >  **"应用" "确定"** 以保存你的选择。
 
 例如，下图显示了如何将所有 sbt 任务添加到单个配置中：
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-**开始**命令完成后，浏览器将在该地址`http://localhost:3000/dashboard`显示页面。 此页面上出现的错误在意料之中。 若要查看应用程序但不发生错误，请完成以下步骤。
+**开始**命令完成后，浏览器将在该地址显示页面 `http://localhost:3000/dashboard` 。 此页面上出现的错误在意料之中。 若要查看应用程序但不发生错误，请完成以下步骤。
 
 ### <a name="configure-and-run-nginx"></a>配置和运行 Nginx
 
@@ -226,7 +226,7 @@ npm start
 
 ### <a name="connect-to-the-dashboard"></a>连接到仪表板
 
-若要访问远程监视解决方案仪表板，请`http://localhost:9000`在浏览器中访问。
+若要访问远程监视解决方案仪表板，请 `http://localhost:9000` 在浏览器中访问。
 
 ## <a name="clean-up"></a>清除
 

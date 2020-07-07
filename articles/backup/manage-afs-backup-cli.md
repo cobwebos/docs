@@ -4,10 +4,10 @@ description: 了解如何使用 Azure CLI 管理和监视 Azure 备份备份的 
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 06e1f29874085c3943a5207f36eff313dc670e88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82184106"
 ---
 # <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>用 Azure CLI 管理 Azure 文件共享备份
@@ -132,14 +132,14 @@ fec6f004-0e35-407f-9928-10a163f123e5  azurefiles
 * 停止所有将来的备份作业并*删除*所有恢复点。
 * 停止所有将来的备份作业，但*保留*恢复点。
 
-由于 Azure 备份创建的底层快照将被保留，因此可能会产生与保留存储中的恢复点相关的成本。 保留恢复点的好处是稍后在需要时还原文件共享的选项。 有关保留恢复点的成本的信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/storage/files)。 如果你选择删除所有恢复点，则无法还原文件共享。
+由于 Azure 备份创建的底层快照将被保留，因此可能会产生与保留存储中的恢复点相关的成本。 保留恢复点的好处是稍后在需要时还原文件共享的选项。 如需了解保留恢复点的成本，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/storage/files)。 如果选择删除所有恢复点，则无法还原文件共享。
 
 若要停止对文件共享的保护，请定义以下参数：
 
 * **--container-name**：承载文件共享的存储帐户的名称。 若要检索容器的**名称**或**友好名称**，请使用[az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list)命令。
 * **--项-name**：要停止保护的文件共享的名称。 若要检索已备份项的**名称**或**友好名称**，请使用[az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list)命令。
 
-### <a name="stop-protection-and-retain-recovery-points"></a>停止保护并保留恢复点
+### <a name="stop-protection-and-retain-recovery-points"></a>停止保护但保留恢复点
 
 若要在保留数据的同时停止保护，请使用[az backup protection disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable) cmdlet。
 

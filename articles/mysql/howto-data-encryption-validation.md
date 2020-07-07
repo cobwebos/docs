@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: ee80f50e925bf4545f885d701e70bc21208f1d1f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82515399"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-mysql"></a>验证 Azure Database for MySQL 的数据加密
@@ -23,7 +23,7 @@ ms.locfileid: "82515399"
 
 1. 如果要验证客户的密钥是否用于加密，请执行以下步骤：
 
-    * 在 Azure 门户中，导航到**Azure Key Vault** -> **键**
+    * 在 Azure 门户中，导航到**Azure Key Vault**  ->  **键**
     * 选择用于服务器加密的密钥。
     * 将 "**已启用**密钥" 的状态设置为 "**否**"。
   

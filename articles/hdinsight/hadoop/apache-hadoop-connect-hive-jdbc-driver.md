@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 87350bae282d9d0dccef9cb2121000f7a0473762
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82195479"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
@@ -31,29 +31,29 @@ ms.locfileid: "82195479"
 
 ## <a name="jdbc-connection-string"></a>JDBC 连接字符串
 
-与 Azure 上的 HDInsight 群集的 JDBC 连接是通过端口443进行的。 使用 TLS/SSL 保护流量安全。 公用网关（群集位于其后）会将通信重定向到 HiveServer2 在其上进行实际侦听的端口。 以下连接字符串显示要用于 HDInsight 的格式：
+JDBC 通过端口 443 连接到 Azure 上的 HDInsight 群集。 使用 TLS/SSL 保护流量。 公用网关（群集位于其后）会将通信重定向到 HiveServer2 实际进行侦听的端口。 以下连接字符串显示要用于 HDInsight 的格式：
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 将 `CLUSTERNAME` 替换为 HDInsight 群集的名称。
 
-或者，你可以通过**AMBARI UI 连接 > Hive > 配置 > 高级**。
+或者，可以通过“Ambari UI”>“Hive”>“配置”>“高级”获取连接****。
 
 ![通过 Ambari 获取 JDBC 连接字符串](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
 
 ### <a name="host-name-in-connection-string"></a>连接字符串中的主机名
 
-连接字符串中的主机名 "CLUSTERNAME.azurehdinsight.net" 与群集 URL 相同。 可以通过 Azure 门户获取它。
+连接字符串中的主机名 "CLUSTERNAME.azurehdinsight.net" 与群集 URL 相同。 可以通过 Azure 门户获取主机名。
 
 ### <a name="port-in-connection-string"></a>连接字符串中的端口
 
-只能使用**端口 443**从 Azure 虚拟网络外部的某些位置连接到群集。 HDInsight 是一种托管服务，这意味着与群集的所有连接都通过安全网关进行管理。 不能直接在端口10001或10000上连接到 HiveServer 2。 这些端口不会向外公开。
+只能使用端口 443 从 Azure 虚拟网络外部的某个位置连接到群集****。 HDInsight 是一种托管服务，这意味着与群集的所有连接都通过安全网关进行管理。 不能直接在端口 10001 或 10000 上连接到 HiveServer 2。 这些端口不向外公开。
 
 ## <a name="authentication"></a>身份验证
 
-建立连接时，请使用 HDInsight 群集管理员名称和密码进行身份验证。 从 JDBC 客户端（如 SQuirreL SQL）的 "客户端设置" 中输入管理员名称和密码。
+建立连接时，请使用 HDInsight 群集管理员名称和密码进行身份验证。 在 JDBC 客户端（如 SQuirreL SQL）的客户端设置中输入管理员名称和密码。
 
-从 Java 应用程序建立连接时，必须使用该名称和密码。 例如，以下 Java 代码将打开一个新连接：
+从 Java 应用程序建立连接时，必须使用该名称和密码。 例如，以下 Java 代码会打开新的连接：
 
 ```java
 DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
@@ -61,7 +61,7 @@ DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
 ## <a name="connect-with-squirrel-sql-client"></a>使用 SQuirreL SQL 客户端进行连接
 
-SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程运行 Hive 查询。 下列步骤假定已安装了 SQuirreL SQL。
+SQuirreL SQL 是一个 JDBC 客户端，可用于通过 HDInsight 群集远程运行 Hive 查询。 以下步骤假设已安装 SQuirreL SQL。
 
 1. 创建一个目录来包含要从群集复制的某些文件。
 
@@ -77,24 +77,24 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
     ![窗口左侧的“驱动程序”选项卡](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
-4. 从“驱动程序”**** 对话框顶部的图标中，选择 **+** 图标来创建驱动程序。
+4. 从“驱动程序”**** 对话框顶部的图标中，选择 **+** 图标创建驱动程序。
 
     ![SQuirreL SQL 应用程序驱动程序图标](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. 在“添加驱动程序”对话框中，添加以下信息：
 
-    |properties | 值 |
+    |属性 | 值 |
     |---|---|
     |名称|Hive|
     |示例 URL|`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`|
-    |额外的类路径|使用 "**添加**" 按钮添加之前下载的所有 jar 文件。|
-    |类名|"Org.apache.hive.jdbc.hivedriver"。|
+    |额外类路径|使用“添加”按钮添加此前下载的所有 jar 文件****。|
+    |类名|org.apache.hive.jdbc.HiveDriver|
 
    ![添加包含参数的驱动程序对话框](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    选择“确定”**** 保存这些设置。
 
-6. 在 SQuirreL SQL 窗口左侧，选择“别名”****。 然后选择**+** 图标以创建连接别名。
+6. 在 SQuirreL SQL 窗口左侧，选择“别名”****。 然后选择 **+** 图标来创建连接别名。
 
     !["SQuirreL SQL 添加新别名" 对话框](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
@@ -103,15 +103,15 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
     |properties |值 |
     |---|---|
     |名称|Hive on HDInsight|
-    |驱动程序|使用下拉箭头选择**Hive**驱动程序。|
-    |代码|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. 将**CLUSTERNAME**替换为 HDInsight 群集的名称。|
-    |用户名|HDInsight 群集的群集登录帐户名。 默认值为**admin**。|
+    |驱动程序|使用下拉列表选择 Hive 驱动程序****。|
+    |URL|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. 将 **CLUSTERNAME** 替换为 HDInsight 群集的名称。|
+    |用户名|HDInsight 群集的群集登录帐户名。 默认值为“admin”****。|
     |密码|群集登录帐户的密码。|
 
     ![添加具有参数的别名对话框](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
-    > 使用“测试”**** 按钮验证连接是否有效。 出现“连接到: Hive on HDInsight”**** 对话框时，选择“连接”**** 进行测试。 如果测试成功，会看到“连接成功”**** 对话框。 如果发生错误，请参阅[故障排除](#troubleshooting)。
+    > 使用“测试”**** 按钮验证连接是否有效。 出现“连接到: **** Hive on HDInsight”对话框时，选择“连接”**** 进行测试。 如果测试成功，将会显示“连接成功”**** 对话框。 如果发生错误，请参阅[故障排除](#troubleshooting)。
 
     若要保存连接别名，请使用“添加别名”**** 对话框底部的“确定”**** 按钮。
 
@@ -127,9 +127,9 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
     ![sql 查询对话框，其中包括结果](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-sqlquery-dialog.png)
 
-## <a name="connect-from-an-example-java-application"></a>从示例 Java 应用程序进行连接
+## <a name="connect-from-an-example-java-application"></a>从 Java 应用程序示例进行连接
 
-有关使用 Java 客户端查询 HDInsight 上的 Hive 的示例，请参阅[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)。 按照存储库中的说明生成并运行该示例。
+[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) 上提供了使用 Java 客户端查询 Hive on HDInsight 的示例。 按照存储库中的说明生成并运行该示例。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -143,7 +143,7 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**可能的原因**：此错误由 SQuirreL 随附的较旧版本 commons-codec.jar 文件引起。
+**原因：** 此错误由 SQuirreL 随附的较旧版本 commons-codec.jar 文件引起。
 
 **解决方法**：若要解决此错误，请使用以下步骤：
 
@@ -151,13 +151,13 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 1. 重新启动 SQuirreL。 连接到 HDInsight 上的 Hive 时，应不再会出现该错误。
 
-### <a name="connection-disconnected-by-hdinsight"></a>通过 HDInsight 断开连接
+### <a name="connection-disconnected-by-hdinsight"></a>HDInsight 断开了连接
 
-**症状**：尝试通过 JDBC/ODBC 下载大量数据（如几 gb）时，HDInsight 在下载时意外断开连接。
+**症状**：尝试通过 JDBC/ODBC 下载大量数据（例如数 GB）时，下载过程中 HDInsight 意外地断开了连接。
 
-**原因**：此错误是由于网关节点上的限制引起的。 从 JDBC/ODBC 获取数据时，所有数据都需要通过网关节点。 但是，网关不会下载大量数据，因此，如果网关无法处理流量，就可能会关闭连接。
+**原因：** 此错误是由网关节点上的限制引起的。 从 JDBC/ODBC 获取数据时，所有数据都需要通过网关节点。 但网关并非设计用于下载大量数据，因此，如果网关无法处理该流量，它可能会关闭连接。
 
-**解决方法**：避免使用 JDBC/ODBC 驱动程序下载大量数据。 改为直接从 blob 存储复制数据。
+**解决方法**：避免使用 JDBC/ODBC 驱动程序下载大量数据， 而是直接从 blob 存储复制数据。
 
 ## <a name="next-steps"></a>后续步骤
 

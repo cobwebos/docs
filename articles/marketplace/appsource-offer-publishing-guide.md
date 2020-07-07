@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 60fb95e47831363353e553d8e55c56e812127bfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186180"
 ---
 # <a name="offer-publishing-guide-for-office-365-dynamics-365-power-apps-and-power-bi"></a>提供 Office 365、Dynamics 365、Power Apps 和 Power BI 的发布指南
@@ -24,7 +24,7 @@ AppSource 包含付费的、列出的试用版和试用版，并通过调用操�
 
 有关发布进程的链接和每种产品/服务的指南，请参阅下表：
 
-| Products    | 发布指南  |
+| 产品    | 发布指南  |
 | :------------------- | :-------------------|
 | Office 365 | 查看[发布过程和指导](/office/dev/store/submit-to-appsource-via-partner-center)。 |
 | Dynamics 365 Business Central | 若要在合作伙伴中心发布产品/服务，请参阅[创建新的 Dynamics 365 Business Central 产品/服务](./partner-center-portal/create-new-business-central-offer.md)。 |
@@ -37,6 +37,6 @@ AppSource 包含付费的、列出的试用版和试用版，并通过调用操�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，请了解如何[通过 Azure Marketplace 拓展云业务](https://azuremarketplace.microsoft.com/sell)。
+如果尚未执行此操作，请了解如何[使用 Azure 市场发展云业务](https://azuremarketplace.microsoft.com/sell)。
 
 若要创建新产品/服务或完成现有产品/服务，请参阅[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)。

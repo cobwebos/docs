@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82137699"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报
@@ -25,7 +25,7 @@ ms.locfileid: "82137699"
 * 对 Azure 订阅中的资源进行特定操作时，通常限于特定资源组或资源。 例如，可能会希望在删除 myProductionResourceGroup 中的任何虚拟机时接收通知。 或者，可能会希望在任何新角色分配到订阅中的用户时接收通知。
 * 发生服务运行状况事件。 服务运行状况事件包括应用于订阅中资源的事件和维护事件的通知。
 
-为了理解在活动日志上创建警报规则时可以基于的条件，一个简单的类比是通过 [Azure 门户中的活动日志](activity-log-view.md#azure-portal)来浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报  。
+为了理解在活动日志上创建警报规则时可以基于的条件，一个简单的类比是通过 [Azure 门户中的活动日志](activity-log-view.md#azure-portal)来浏览或筛选事件。 在 Azure Monitor - 活动日志中，可以筛选或查找所需的事件，然后使用“添加活动日志警报”按钮创建警报。
 
 在上述任何情况下，活动日志警报只监视在其中创建该警报的订阅中的事件。
 
@@ -41,7 +41,7 @@ ms.locfileid: "82137699"
 - **资源组**：默认情况下，警报规则保存在“范围”中定义的目标所在的同一资源组中。 用户也可以定义应存储警报规则的资源组。
 - **资源类型**：资源管理器为警报的目标定义的命名空间。
 - **操作名称**：用于基于角色的访问控制的 [Azure 资源管理器操作](../../role-based-access-control/resource-provider-operations.md)名称。 未在 Azure 资源管理器中注册的操作不能在活动日志警报规则中使用。
-- **Level**：事件的严重性级别（信息、警告、错误或严重）。
+- **级别**：事件的严重性级别（信息、警告、错误或严重）。
 - **状态**：事件的状态，通常为“已启动”、“失败”或“成功”。
 - **事件发起者**：也称为“调用方”。 电子邮件地址或执行操作的用户的 Azure Active Directory 标识符。
 

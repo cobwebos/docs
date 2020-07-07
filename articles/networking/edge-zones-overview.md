@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
 ms.openlocfilehash: 90e796c244950d6d374a02757b608099c229c1ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82146948"
 ---
 # <a name="about-azure-edge-zone-preview"></a>关于 Azure Edge 区域预览
@@ -30,13 +30,13 @@ Azure 边缘区域是 Microsoft Azure 中的一系列产品，可使数据处理
 
 有三种类型的 Azure 边缘区域：
 
-- Azure 边缘区域
+- Azure Edge Zone
 - 带有电信公司的 Azure 边缘区域
 - Azure 专用边缘区域
 
-## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure 边缘区域
+## <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge Zone
 
-![Azure 边缘区域](./media/edge-zones-overview/edge-zones.png "Azure 边缘区域")
+![Azure Edge Zone](./media/edge-zones-overview/edge-zones.png "Azure Edge Zone")
 
 Azure 边缘区域是位于离 Azure 区域远离的人口中心中的小型 Azure 扩展。 Azure 边缘区域支持 Vm、容器和所选的一组 Azure 服务，可让你对最终用户近时间运行与吞吐量相关的应用程序。 Azure 边缘区域是 Microsoft 全球网络的一部分。 它们在靠近用户的边缘区域中运行的应用程序之间提供安全、可靠、高带宽的连接。 它们提供了在 Azure 区域内运行的一整套 Azure 服务。 Azure 边缘区域由 Microsoft 拥有和操作。 可以使用相同的 Azure 工具集和相同的门户来管理和部署服务到边缘区域。
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186418"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor 中的 Linux 代理上通过 CollectD 收集数据
@@ -63,7 +63,7 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
     </filter>
 
 > [!NOTE]
-> 默认情况下，CollectD 设置为以10秒的[间隔](https://collectd.org/wiki/index.php/Interval)读取值。 由于这会直接影响发送到 Azure Monitor 日志的数据量，因此您可能需要在 CollectD 配置中调整此时间间隔，以便在监视要求和相关成本与 Azure Monitor 日志的使用情况之间取得良好的平衡。
+> 默认情况下，CollectD 设置为以 10 秒的[间隔](https://collectd.org/wiki/index.php/Interval)读取值。 由于这会直接影响发送到 Azure Monitor 日志的数据量，因此你可能需要在 CollectD 配置中调整此时间间隔，以便在监视要求与 Azure Monitor 日志的相关成本和使用量之间取得良好的平衡。
 
 ## <a name="versions-supported"></a>支持的版本
 - Azure Monitor 当前支持 CollectD 4.8 版及更高版本。
@@ -108,11 +108,11 @@ CollectD 配置使用默认的 `write_http` 插件通过端口 26000 将性能�
 
 | CollectD 指标字段 | Azure Monitor 字段 |
 |:--|:--|
-| `host` | 计算机 |
+| `host` | Computer |
 | `plugin` | 无 |
-| `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null**，则 InstanceName="_Total"** |
+| `plugin_instance` | Instance Name<br>如果 **plugin_instance** 为 null，则 InstanceName="_Total" |
 | `type` | ObjectName |
-| `type_instance` | CounterName<br>如果 **type_instance** 为 null**，则 CounterName=**空白** |
+| `type_instance` | CounterName<br>如果 **type_instance** 为 null，则 CounterName=**空白** |
 | `dsnames[]` | CounterName |
 | `dstypes` | 无 |
 | `values[]` | CounterValue |

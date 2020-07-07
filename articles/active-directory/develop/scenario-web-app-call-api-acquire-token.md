@@ -12,17 +12,17 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181726"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>调用 Web API 的 Web 应用：获取应用的令牌
 
 你已构建了客户端应用程序对象。 现在，你将使用它获取令牌来调用 Web API。 在 ASP.NET 或 ASP.NET Core 中，调用 Web API 是在控制器中完成的。
 
-- 使用令牌缓存获取 Web API 的令牌。 若要获取此标记，请调用 MSAL `AcquireTokenSilent`方法（或在中等效）。
+- 使用令牌缓存获取 Web API 的令牌。 若要获取此令牌，请调用 MSAL `AcquireTokenSilent` 方法（或 Microsoft.Identity.Web 中的等效方法）。
 - 调用受保护的 API，将访问令牌作为参数传递给它。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -63,7 +63,7 @@ public async Task<IActionResult> Profile()
 }
 ```
 
-为了更好地了解此方案所需的代码，请参阅[aspnetcore-webapp](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial)教程的第2阶段（[2-1-Web 应用调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步骤。
+若要更好地了解此方案所需的代码，请参阅 [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) 教程的阶段 2（[2-1-Web 应用调用 Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)）步骤。
 
 还有其他复杂的变化形式，例如：
 

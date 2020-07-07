@@ -10,10 +10,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82176203"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
@@ -30,7 +30,7 @@ ms.locfileid: "82176203"
 
 若要在某个独立云中使用 Azure 存储，需要连接到该云而不是 Azure 公有云。 若要使用某个独立云而不是 Azure 公有云，需要：
 
-* 指定要连接到的环境。 
+* 指定要连接到的环境。
 * 确定并使用可用的区域。
 * 使用正确的终结点后缀，它不同于 Azure 公有云。
 
@@ -91,7 +91,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称****。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
+若要检索指定环境的所有属性，请调用 Get-AzEnvironment 并指定云名称。 此代码片段返回属性列表；请在列表中查找 **StorageEndpointSuffix**。 以下示例适用于德国云。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud
@@ -99,7 +99,7 @@ Get-AzEnvironment -Name AzureGermanCloud
 
 结果类似于以下值：
 
-|属性名称|值|
+|属性名称|Value|
 |----|----|
 | 名称 | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
@@ -152,7 +152,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>设置环境之后
 
-你现在可以使用 PowerShell 管理存储帐户并访问 blob、队列、文件和表数据。 有关详细信息，请参阅[Az. Storage](/powershell/module/az.storage)。
+现在可以使用 PowerShell 来管理存储帐户并访问 blob、队列、文件和表数据。 有关详细信息，请参阅 [Az.Storage](/powershell/module/az.storage)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -167,5 +167,5 @@ Remove-AzResourceGroup -Name $resourceGroup
 * [在不同的 PowerShell 会话中保留用户登录](/powershell/azure/context-persistence)
 * [Azure 政府版存储](../../azure-government/documentation-government-services-storage.md)
 * [Microsoft Azure Government 开发人员指南](../../azure-government/documentation-government-developer-guide.md)
-* [Azure 中国世纪互联应用程序开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [Azure 中国世纪互联应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure 德国版文档](../../germany/germany-welcome.md)

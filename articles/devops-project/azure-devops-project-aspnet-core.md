@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Azure DevOps Starter 创建适用于 .NET 的 CI/CD 管道
-description: Azure DevOps Starter 可让你轻松地开始在 Azure 上入门。 使用它可以快速启动所选 Azure 服务上的 .NET 应用。
+description: 可以通过 Azure DevOps Starter 轻松地完成 Azure 入门。 使用它可以快速启动所选 Azure 服务上的 .NET 应用。
 ms.prod: devops
 ms.technology: devops-cicd
 services: azure-devops-project
@@ -16,10 +16,10 @@ ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 3f0d937737cb261fb81dc4cdad3579ee593b5981
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233290"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>使用 Azure DevOps Starter 创建适用于 .NET 的 CI/CD 管道
@@ -30,13 +30,13 @@ ms.locfileid: "82233290"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Starter 还会在所选的 Azure 订阅中创建 Azure 资源。
+DevOps Starter 在 Azure DevOps 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps 入门版还将在所选的 Azure 订阅中创建 Azure 资源。
 
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
 
-1. 在搜索框中，键入 " **DevOps Starter**"，然后选择。 单击 "**添加**" 以创建一个新的。 
+1. 在搜索框中键入“DevOps 入门版”，然后选择。 单击“添加”以新建一个。 
 
-    ![DevOps 入门仪表板](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps 入门版仪表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
 
@@ -84,7 +84,7 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建了一个 Git 存储库。 �
 
 在上一步中，Azure DevOps Starter 自动配置了完整的 CI/CD 管道。 根据需要浏览和自定义管道。 请执行以下步骤，自行熟悉 Azure DevOps 的生成和发布管道。
 
-1. 在 DevOps 入门仪表板的顶部，选择 "**生成管道**"。 此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps 生成管道。
+1. 在 DevOps 入门版仪表板顶部，选择“生成管道”。 此链接会打开一个浏览器标签页，并打开新项目的 Azure DevOps 生成管道。
 
 1. 选择省略号 (...)。此操作会打开一个菜单，可以在其中启动多项活动，例如将新生成排队、暂停某个生成、编辑生成管道。
 
@@ -106,7 +106,7 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建了一个 Git 存储库。 �
 1. 选择“保留期”。  可以根据方案指定策略，以保留或删除特定数目的生成。
 
 1. 选择“生成和发布”，然后选择“发布”。    
-DevOps Starter 创建发布管道，以管理到 Azure 的部署。
+DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
 1.  在左侧，选择发布管道旁边的省略号 (...)，然后选择“编辑”。  发布管道包含一个管道，用于定义发布过程。  
 
@@ -126,7 +126,7 @@ DevOps Starter 创建发布管道，以管理到 Azure 的部署。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要创建的 Azure 应用服务和其他相关资源时，可将其删除。 使用 DevOps 入门仪表板上的**删除**功能。
+不再需要创建的 Azure 应用服务和其他相关资源时，可将其删除。 请使用 DevOps 入门版仪表板上的“删除”功能。
 
 ## <a name="next-steps"></a>后续步骤
 

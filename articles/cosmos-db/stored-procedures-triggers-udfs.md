@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509663"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>存储过程、触发器和用户定义的函数
@@ -28,11 +28,11 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 * **性能：** JSON 数据在本质上会映射到 JavaScript 语言类型系统。 这种映射可以实现多种优化，例如，在缓冲池中将 JSON 文档惰性具体化，并使其可按需供执行代码使用。 还有其他与传送业务逻辑到数据库相关的性能优势，包括：
 
-   * 批处理：  可将插入等操作分组到一起并批量提交。 用于创建单独事务的网络流量延迟成本和存储开销显著降低。
+   * 批处理：可将插入等操作分组到一起并批量提交。 用于创建单独事务的网络流量延迟成本和存储开销显著降低。
 
-   * 预编译：  存储过程、触发器和 UDF 是隐式预编译成字节代码格式，这是为了避免每次脚本调用时产生编译成本。 预编译使得存储过程的调用速度加快，且占用空间减少。
+   * 预编译：存储过程、触发器和 UDF 是隐式预编译成字节代码格式，这是为了避免每次脚本调用时产生编译成本。 预编译使得存储过程的调用速度加快，且占用空间减少。
 
-   * 定序：  有时，操作需要通过某个触发机制来对数据执行一项或多项更新。 除了原子性以外，在服务器端执行还可以带来性能优势。
+   * 定序：有时，操作需要通过某个触发机制来对数据执行一项或多项更新。 除了原子性以外，在服务器端执行还可以带来性能优势。
 
 * **封装：** 使用存储过程可在一个位置分组逻辑。 封装在数据的顶层添加一个抽象层，使你能够独立于数据改进应用程序。 如果数据无架构，并且你无需管理直接将其他逻辑添加到应用程序的过程，则此抽象层非常有用。 借助这种抽象，可以通过从脚本简化访问来保证数据的安全。
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ## <a name="transactions"></a>事务
 
-典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 属性保证**。 ACID 是一个众所周知的缩写词，表示：原子性、一致性、隔离性和持久性。     
+典型数据库中的事务可以定义为一系列作为单个逻辑单元工作执行的操作。 每个事务提供 **ACID 属性保证**。 ACID 是一个众所周知的缩写词，表示：原子性、一致性、隔离性和持久性。    
 
 * 原子性保证将一个事务内部执行的所有操作视为一个单位，这些操作要么全部提交，要么都不提交。 
 
@@ -55,7 +55,7 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ### <a name="scope-of-a-transaction"></a>事务的范围
 
-存储过程与 Azure Cosmos 容器相关联，并且存储过程执行的作用域限定为逻辑分区键。 存储过程必须在执行期间包括逻辑分区键值，以定义事务作用域的逻辑分区。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partition-data.md)一文。
+存储过程将与 Azure Cosmos 容器关联，存储过程的执行范围限定于一个逻辑分区键。 存储过程必须在执行期间包括一个逻辑分区键值，用于定义事务范围的逻辑分区。 有关详细信息，请参阅 [Azure Cosmos DB 分区](partition-data.md)一文。
 
 ### <a name="commit-and-rollback"></a>提交和回滚
 
@@ -63,10 +63,10 @@ Azure Cosmos DB 提供 JavaScript 的语言集成式事务执行。 在 Azure Co
 
 ### <a name="data-consistency"></a>数据一致性
 
-存储过程和触发器始终在 Azure Cosmos 容器的主要副本上执行。 此功能可确保从存储过程执行的读取提供[非常一致性](consistency-levels-tradeoffs.md)。 使用用户定义的函数的查询可以在主要副本或任何辅助副本上执行。 存储过程和触发器旨在支持事务写入 - 同时，最好是将只读逻辑实现为应用程序端逻辑，使用 [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md) 的查询有助于最大程度地利用数据库吞吐量。 
+存储过程和触发器始终在 Azure Cosmos 容器的主要副本上执行。 此功能可确保从存储过程执行的读取提供[非常一致性](consistency-levels-tradeoffs.md)。 使用用户定义的函数的查询可以在主要副本或任何辅助副本上执行。 存储过程和触发器旨在支持事务写入–同时，只读逻辑最好作为应用程序端逻辑和使用[AZURE COSMOS DB SQL API sdk](sql-api-dotnet-samples.md)的查询来实现，这将有助于您使数据库的吞吐量饱和。 
 
 > [!TIP]
-> 在存储过程或触发器内执行的查询可能看不到对同一脚本事务所做的更改。 此语句同时适用于 SQL 查询（例如`getContent().getCollection.queryDocuments()`）以及集成的语言查询（如）。 `getContext().getCollection().filter()`
+> 在存储过程或触发器中执行的查询可能看不到同一脚本事务对项目所做的更改。 此语句同时适用于 SQL 查询（如 `getContent().getCollection.queryDocuments()`）以及集成语言查询（如 `getContext().getCollection().filter()`）。
 
 ## <a name="bounded-execution"></a>绑定的执行
 
@@ -78,7 +78,7 @@ JavaScript 函数还有[预配的吞吐量容量](request-units.md)方面的约�
 
 ## <a name="triggers"></a>触发器
 
-Azure Cosmos DB 支持两种触发器：
+Azure Cosmos DB 支持两种触发器类型：
 
 ### <a name="pre-triggers"></a>前触发器
 
@@ -86,16 +86,16 @@ Azure Cosmos DB 提供可以通过对 Azure Cosmos 项执行操作来调用的�
 
 ### <a name="post-triggers"></a>后触发器
 
-类似于前触发器，后触发器也与针对 Azure Cosmos 项执行的操作相关联，但它们不需要任何输入参数。 它们在操作完成*后*运行，并且有权访问发送到客户端的响应消息。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
+类似于前触发器，后触发器也与针对 Azure Cosmos 项执行的操作相关联，但它们不需要任何输入参数。 后触发器在操作完成之后运行，且具有对发送到客户端的响应消息的访问权限。 有关示例，请参阅[如何编写触发器](how-to-write-stored-procedures-triggers-udfs.md#triggers)一文。
 
 > [!NOTE]
-> 注册的触发器不会在出现相应的操作（创建/删除/替换/更新）时自动运行。 必须在执行这些操作时显式调用它们。 若要了解详细信息，请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
+> 注册的触发器不会在出现相应的操作（创建/删除/替换/更新）时自动运行。 在执行这些操作时，必须显式调用它们。 若要了解详细信息，请参阅[如何运行触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)一文。
 
-## <a name="user-defined-functions"></a><a id="udfs"></a>用户定义函数
+## <a name="user-defined-functions"></a><a id="udfs"></a>用户定义的函数
 
-[用户定义的函数](sql-query-udfs.md)（udf）用于扩展 SQL API 查询语言语法和轻松实现自定义业务逻辑。 只能在查询中调用 UDF。 UDF 对上下文对象没有访问权限，旨在用作仅限计算的 JavaScript。 因此，UDF 可以在次要副本上运行。 有关示例，请参阅[如何编写用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md#udfs)一文。
+使用[用户定义的函数](sql-query-udfs.md) (UDF) 可以轻松扩展 SQL API 查询语言语法和实现自定义业务逻辑。 只能在查询中调用 UDF。 UDF 对上下文对象没有访问权限，旨在用作仅限计算的 JavaScript。 因此，UDF 可以在次要副本上运行。 有关示例，请参阅[如何编写用户定义的函数](how-to-write-stored-procedures-triggers-udfs.md#udfs)一文。
 
-## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript 语言集成式查询 API
+## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript 语言集成的查询 API
 
 除了使用 SQL API 查询语法发出查询以外，还可以借助[服务器端 SDK](https://azure.github.io/azure-cosmosdb-js-server) 使用 JavaScript 接口来执行查询，使用此方法不需要 SQL 相关的知识。 使用 JavaScript 查询 API 可以通过将谓词函数传入函数调用，来以编程方式生成查询。 查询将由 JavaScript 运行时分析，并在 Azure Cosmos DB 内部有效执行。 若要了解 JavaScript 查询 API 的支持，请参阅[使用 JavaScript 语言集成式查询 API](javascript-query-api.md) 一文。 有关示例，请参阅[如何使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)一文。
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 4936f765052d6993e5a372bde6336e00b19a24f6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82509255"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Azure Database for MySQL 的高级威胁防护
@@ -27,7 +27,7 @@ Azure Database for MySQL 的高级威胁防护可检测异常活动，指出有�
 > Azure 中的所有区域均提供此功能，其中 Azure Database for MySQL 部署用于常规用途和内存优化服务器。
 
 ## <a name="set-up-threat-detection"></a>设置威胁检测
-1. 启动 Azure 门户[https://portal.azure.com](https://portal.azure.com)。
+1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com) 。
 2. 导航到要保护的 Azure Database for MySQL 服务器的配置页。 在安全设置中，选择“高级威胁防护(预览版)”****。
 3. 在“高级威胁防护(预览版)”配置页上****：
 
@@ -63,5 +63,5 @@ SQL 数据库威胁检测功能将其警报与 [Azure 安全中心](https://azur
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
 * 有关定价的详细信息，请参阅 [Azure Database for MySQL 定价页](https://azure.microsoft.com/pricing/details/mysql/)  

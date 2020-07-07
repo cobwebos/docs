@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e2a2f6abfd6b7c644e95649f3c9832e4cc986037
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188440"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>排查 Azure HDInsight 中的脚本操作问题
@@ -21,21 +21,21 @@ ms.locfileid: "82188440"
 
 ## <a name="viewing-logs"></a>查看日志
 
-可以使用 Apache Ambari web UI 查看脚本操作记录的信息。 如果在创建群集期间脚本失败，则日志位于默认群集存储帐户中。 本部分提供有关如何使用这两个选项检索日志的信息。
+可以使用 Apache Ambari web UI 查看脚本操作记录的信息。 如果在创建群集期间脚本失败，可在默认的群集存储帐户中查看相关日志。 本部分提供有关如何使用这两个选项检索日志的信息。
 
 ### <a name="apache-ambari-web-ui"></a>Apache Ambari web UI
 
 1. 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
 
-1. 从页面顶部栏中选择“操作”**** 条目。 此时会显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
+1. 从页面顶部栏中选择“操作”条目 **** 。 此时会显示通过 Ambari 在群集上执行的当前操作和以前操作的列表。
 
     ![选中了“操作”的 Ambari Web UI 栏](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
 1. 查找“操作”**** 列中包含 **run\_customscriptaction** 的条目。 这些条目是在运行脚本操作时创建的。
 
-    ![Apache Ambari 脚本操作操作](./media/troubleshoot-script-action/ambari-script-action.png)
+    ![“Apache Ambari 脚本操作”操作](./media/troubleshoot-script-action/ambari-script-action.png)
 
-    若要查看**STDOUT**和**STDERR**输出，请选择**run\customscriptaction**条目，并向下钻取链接。 此输出是在脚本运行时生成的，可能包含有用的信息。
+    若要查看 **STDOUT** 和 **STDERR** 输出，请选择 **run\customscriptaction** 条目，并通过链接向下钻取。 此输出是在脚本运行时生成的，可能包含有用的信息。
 
 ### <a name="default-storage-account"></a>默认存储器帐户
 
@@ -49,15 +49,15 @@ ms.locfileid: "82188440"
 
     * **头节点**：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **辅助角色节点**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **工作节点**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
     * **Zookeeper 节点**：`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* 相应主机的所有**stdout**和**stderr**都将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
+* 相应主机的所有 **stdout** 和 **stderr** 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
-* 有可能重复创建了同名的脚本操作群集。 在这种情况下，可以根据 **DATE** 文件夹名称来区分相关的日志。 例如，在不同的日期创建的群集（ **mycluster**）的文件夹结构类似于以下日志条目：
+* 有可能重复创建了同名的脚本操作群集。 在这种情况下，可以根据 **DATE** 文件夹名称来区分相关的日志。 例如，在不同日期创建的群集 **mycluster** 的文件夹结构类似于以下日志条目：
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -67,9 +67,9 @@ ms.locfileid: "82188440"
 
 * 将日志上传到默认容器可能需要 5 分钟，特别是对于大型群集。 因此，如果想要访问日志，则不应在脚本操作失败时立即删除群集。
 
-## <a name="ambari-watchdog"></a>Ambari 监视程序
+## <a name="ambari-watchdog"></a>Ambari 监视器
 
-不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 密码更改中断了在 HDInsight 群集上运行新脚本操作的功能。
+不要在基于 Linux 的 HDInsight 群集上更改 Ambari 监视程序 (hdinsightwatchdog) 的密码。 密码更改会破坏在 HDInsight 群集上运行新脚本操作的能力。
 
 ## <a name="cant-import-name-blobservice"></a>无法导入名称 BlobService
 
@@ -112,6 +112,6 @@ sudo pip install azure-storage==0.20.0
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

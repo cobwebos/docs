@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82508117"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>包含托管标识的 Azure 托管应用程序
@@ -21,7 +21,7 @@ ms.locfileid: "82508117"
 
 你的应用程序可以被授予两种类型的标识：
 
-- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除  。 一个应用只能具有一个系统分配的标识。
+- 系统分配的标识与你的应用程序相绑定，如果删除应用，标识也会被删除****。 一个应用只能具有一个系统分配的标识。
 - **用户分配的标识**是可以分配给应用的独立 Azure 资源。 一个应用可以具有多个用户分配的标识。
 
 ## <a name="how-to-use-managed-identity"></a>如何使用托管标识
@@ -68,7 +68,7 @@ ms.locfileid: "82508117"
 
 #### <a name="managed-identity-createuidefinition-control"></a>托管标识 CreateUIDefinition 控件
 
-CreateUIDefinition 支持内置[托管标识控件](./microsoft-managedidentity-identityselector.md)。
+CreateUIDefinition 支持内置的[托管标识控件](./microsoft-managedidentity-identityselector.md)。
 
 ```json
 {
@@ -325,10 +325,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 请求正文参数：
 
-参数 | 必选 | 说明
+参数 | 必须 | 说明
 ---|---|---
-authorizationAudience | *不* | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
-userAssignedIdentities | *不* | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
+authorizationAudience | 否** | 目标资源的应用 ID URI。 它也是颁发的令牌的 `aud`（受众）声明。 默认值为“https://management.azure.com/”
+userAssignedIdentities | 否** | 要检索其令牌的用户分配托管标识的列表。 如果未指定，`listTokens` 将返回系统分配的托管标识的令牌。
 
 
 示例响应可能如下所示：
@@ -361,7 +361,7 @@ expires_in | 访问令牌的有效秒数。
 expires_on | 访问令牌过期的时间范围。 此值以从纪元算起的秒数表示。
 not_before | 访问令牌生效的时间范围。 此值以从纪元算起的秒数表示。
 authorizationAudience | 请求其访问令牌的 `aud`（受众）。 这与 `listTokens` 请求中提供的值相同。
-resourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
+ResourceId | 颁发的令牌的 Azure 资源 ID。 此值为托管应用程序 ID 或用户分配的标识 ID。
 token_type | 令牌的类型。
 
 ## <a name="next-steps"></a>后续步骤

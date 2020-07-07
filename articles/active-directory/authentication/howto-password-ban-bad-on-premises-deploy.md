@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82143221"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>规划和部署本地 Azure Active Directory 密码保护
@@ -44,7 +44,7 @@ ms.locfileid: "82143221"
 
 还可以通过更强的密码验证来影响现有 Active Directory 域控制器部署自动化。 建议在审核期评估过程中至少发生一次 DC 升级和一个 DC 降级，以帮助发现此类问题。 有关详细信息，请参阅下列文章：
 
-* [Ntdsutil 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Ntdsutil.exe 无法设置弱目录服务修复模式密码](howto-password-ban-bad-on-premises-troubleshoot.md#ntdsutilexe-fails-to-set-a-weak-dsrm-password)
 * [由于目录服务修复模式密码弱，域控制器副本升级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [由于本地管理员密码弱，域控制器降级失败](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
@@ -88,7 +88,7 @@ Azure AD 密码保护 DC 代理软件的设计可减轻与高可用性相关的�
     * 默认情况下，RPC 服务器端口是动态 RPC 端口，但可以配置为[使用静态端口](#static)。
 * 将安装 Azure AD 密码保护代理服务的所有计算机必须具有对以下终结点的网络访问权限：
 
-    |**终结点**|**目的**|
+    |**终结点**|**用途**|
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
@@ -140,8 +140,8 @@ Microsoft Azure AD Connect Agent 更新程序服务与 Azure AD 密码保护代�
 
 本地 Azure AD 密码保护部署有两个所需的安装程序：
 
-* Azure AD 密码保护 DC 代理（*AzureADPasswordProtectionDCAgentSetup*）
-* Azure AD 密码保护代理（*AzureADPasswordProtectionProxySetup*）
+* Azure AD 密码保护 DC 代理（*AzureADPasswordProtectionDCAgentSetup.msi*）
+* Azure AD 密码保护代理（*AzureADPasswordProtectionProxySetup.exe*）
 
 从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)下载这两个安装程序。
 
@@ -160,7 +160,7 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
 若要安装 Azure AD 密码保护代理服务，请完成以下步骤：
 
-1. 若要安装 Azure AD 密码保护代理服务，请运行`AzureADPasswordProtectionProxySetup.exe`软件安装程序。
+1. 若要安装 Azure AD 密码保护代理服务，请运行 `AzureADPasswordProtectionProxySetup.exe` 软件安装程序。
 
     软件安装不需要重新启动，并可以使用标准 MSI 过程自动完成，如以下示例所示：
     
@@ -169,13 +169,13 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
     ```
     
     > [!NOTE]
-    > 安装`AzureADPasswordProtectionProxySetup.exe`包之前，必须运行 Windows 防火墙服务，以避免安装错误。
+    > 安装包之前，必须运行 Windows 防火墙服务 `AzureADPasswordProtectionProxySetup.exe` ，以避免安装错误。
     >
     > 如果将 Windows 防火墙配置为不运行，则解决方法是在安装过程中暂时启用并运行防火墙服务。 安装后，代理软件在 Windows 防火墙上没有特定的依赖关系。
     >
     > 如果使用的是第三方防火墙，还必须将其配置为满足部署要求。 其中包括允许对端口135和代理 RPC 服务器端口进行入站访问。 有关详细信息，请参阅上一节的[部署要求](#deployment-requirements)。
 
-1. Azure AD 密码保护代理软件包含新的 PowerShell 模块`AzureADPasswordProtection`。 以下步骤运行此 PowerShell 模块中的各种 cmdlet。
+1. Azure AD 密码保护代理软件包含新的 PowerShell 模块 `AzureADPasswordProtection` 。 以下步骤运行此 PowerShell 模块中的各种 cmdlet。
 
     若要使用此模块，请以管理员身份打开 PowerShell 窗口并按如下所示导入新模块：
     
@@ -191,13 +191,13 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
     结果应显示 "*正在运行*"**状态**。
 
-1. 代理服务正在计算机上运行，但没有凭据与 Azure AD 通信。 使用`Register-AzureADPasswordProtectionProxy` cmdlet 向 Azure AD 注册 Azure AD 密码保护代理服务器。
+1. 代理服务正在计算机上运行，但没有凭据与 Azure AD 通信。 使用 cmdlet 向 Azure AD 注册 Azure AD 密码保护代理服务器 `Register-AzureADPasswordProtectionProxy` 。
 
     此 cmdlet 需要 Azure 租户的全局管理员凭据。 还需要在目录林根级域中本地 Active Directory 域管理员权限。 还必须使用具有本地管理员权限的帐户运行此 cmdlet：
 
     为 Azure AD 密码保护代理服务成功执行此命令后，该命令的其他调用会成功，但这是不必要的。
 
-    `Register-AzureADPasswordProtectionProxy` Cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure 多重身份验证，但第三种模式不支持。
+    `Register-AzureADPasswordProtectionProxy`Cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure 多重身份验证，但第三种模式不支持。
 
     > [!TIP]
     > 在第一次为特定 Azure 租户运行此 cmdlet 时，可能会出现明显的延迟。 除非报告失败，否则不必担心这一延迟。
@@ -239,14 +239,14 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
     只需在服务的生存期内注册 Azure AD 密码保护代理服务。 然后，Azure AD 密码保护代理服务将自动执行任何其他必要的维护。
 
-1. 现在使用`Register-AzureADPasswordProtectionForest` PowerShell cmdlet 向本地 Active Directory 林中注册必要的凭据，以便与 Azure 进行通信。
+1. 现在使用 PowerShell cmdlet 向本地 Active Directory 林中注册必要的凭据，以便与 Azure 进行通信 `Register-AzureADPasswordProtectionForest` 。
 
     > [!NOTE]
     > 如果在你的环境中安装了多个 Azure AD 密码保护代理服务器，则使用哪个代理服务器注册林并不重要。
 
     Cmdlet 需要 Azure 租户的全局管理员凭据。 还必须使用具有本地管理员权限的帐户运行此 cmdlet。 它还需要本地 Active Directory 企业管理员权限。 针对每个林运行此步骤一次。
 
-    `Register-AzureADPasswordProtectionForest` Cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure 多重身份验证，但第三种模式不支持。
+    `Register-AzureADPasswordProtectionForest`Cmdlet 支持以下三种身份验证模式。 前两种模式支持 Azure 多重身份验证，但第三种模式不支持。
 
     > [!TIP]
     > 在第一次为特定 Azure 租户运行此 cmdlet 时，可能会出现明显的延迟。 除非报告失败，否则不必担心这一延迟。
@@ -286,7 +286,7 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
        仅当当前已登录用户也是根域的 Active Directory 域管理员时，这些示例才会成功。 如果不是这种情况，可以通过 *-ForestCredential*参数提供备用的域凭据。
 
-    在林的生存期内，只需注册 Active Directory 林一次。 之后，林中的 Azure AD 密码保护 DC 代理会自动执行任何其他必要的维护。 为`Register-AzureADPasswordProtectionForest`林成功运行后，cmdlet 的其他调用将成功，但不必要。
+    在林的生存期内，只需注册 Active Directory 林一次。 之后，林中的 Azure AD 密码保护 DC 代理会自动执行任何其他必要的维护。 `Register-AzureADPasswordProtectionForest`为林成功运行后，cmdlet 的其他调用将成功，但不必要。
     
     `Register-AzureADPasswordProtectionForest`若要成功，必须在 Azure AD 密码保护代理服务器的域中至少有一个运行 Windows Server 2012 或更高版本的 DC。 在执行此步骤之前，无需在任何域控制器上安装 Azure AD 密码保护 DC 代理软件。
 
@@ -294,7 +294,7 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
 如果你的环境需要使用特定的 HTTP 代理来与 Azure 通信，请使用以下步骤来配置 Azure AD 密码保护服务。
 
-在`%ProgramFiles%\Azure AD Password Protection Proxy\Service`文件夹中创建*AzureADPasswordProtectionProxy*文件。 包括以下内容：
+在文件夹中创建*AzureADPasswordProtectionProxy.exe.config*文件 `%ProgramFiles%\Azure AD Password Protection Proxy\Service` 。 包括以下内容：
 
    ```xml
    <configuration>
@@ -320,11 +320,11 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
    </configuration>
    ```
 
-在这两种情况`http://yourhttpproxy.com:8080`下，请将替换为特定 HTTP 代理服务器的地址和端口。
+在这两种情况下，请 `http://yourhttpproxy.com:8080` 将替换为特定 HTTP 代理服务器的地址和端口。
 
 如果你的 HTTP 代理配置为使用授权策略，则必须向承载用于密码保护的代理服务的计算机的 Active Directory 计算机帐户授予访问权限。
 
-建议你在创建或更新*AzureADPasswordProtectionProxy*文件后，停止并重新启动 Azure AD 密码保护代理服务。
+建议您在创建或更新*AzureADPasswordProtectionProxy.exe.config*文件后，停止并重新启动 Azure AD 密码保护代理服务。
 
 代理服务不支持使用特定凭据连接到 HTTP 代理。
 
@@ -332,7 +332,7 @@ Azure AD 密码保护代理服务通常位于本地 AD DS 环境中的成员服�
 
 Azure AD 密码保护 DC 代理软件使用 RPC over TCP 与代理服务通信。 默认情况下，Azure AD 密码保护代理服务会在任何可用的动态 RPC 终结点上进行侦听。 可以将服务配置为在特定 TCP 端口上侦听，如有必要，因为网络拓扑或环境中的防火墙要求。
 
-<a id="static" /></a>若要将服务配置为在静态端口下运行，请`Set-AzureADPasswordProtectionProxyConfiguration`使用 cmdlet，如下所示：
+<a id="static" /></a>若要将服务配置为在静态端口下运行，请使用 cmdlet，如下所示 `Set-AzureADPasswordProtectionProxyConfiguration` ：
 
 ```powershell
 Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
@@ -352,7 +352,7 @@ Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
 
 在端口配置发生更改后，Azure AD 密码保护代理服务需要手动重启。 进行这些配置更改后，无需在域控制器上重新启动 Azure AD 密码保护 DC 代理服务。
 
-若要查询服务的当前配置，请使用`Get-AzureADPasswordProtectionProxyConfiguration` cmdlet，如以下示例中所示
+若要查询服务的当前配置，请使用 cmdlet， `Get-AzureADPasswordProtectionProxyConfiguration` 如以下示例中所示
 
 ```powershell
 Get-AzureADPasswordProtectionProxyConfiguration | fl
@@ -368,7 +368,7 @@ StaticPort  : 0
 
 ## <a name="install-the-dc-agent-service"></a>安装 DC 代理服务
 
-若要安装 Azure AD 密码保护 DC 代理服务，请运行`AzureADPasswordProtectionDCAgentSetup.msi`包。
+若要安装 Azure AD 密码保护 DC 代理服务，请运行 `AzureADPasswordProtectionDCAgentSetup.msi` 包。
 
 你可以使用标准 MSI 过程来自动完成软件安装，如以下示例中所示：
 
@@ -376,7 +376,7 @@ StaticPort  : 0
 msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart
 ```
 
-如果`/norestart`希望让安装程序自动重新启动计算机，则可以省略标志。
+`/norestart`如果希望让安装程序自动重新启动计算机，则可以省略标志。
 
 软件安装或卸载需要重新启动。 此要求是因为密码筛选器 Dll 仅通过重新启动加载或卸载。
 
@@ -389,29 +389,29 @@ msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart
 
 ## <a name="upgrading-the-proxy-service"></a>升级代理服务
 
-Azure AD Password Protection proxy service 支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 自动升级默认情况下启用，并且可以使用`Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 启用或禁用。
+Azure AD Password Protection proxy service 支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 自动升级默认情况下启用，并且可以使用 cmdlet 启用或禁用 `Set-AzureADPasswordProtectionProxyConfiguration` 。
 
-可以使用`Get-AzureADPasswordProtectionProxyConfiguration` cmdlet 查询当前设置。 建议始终启用自动升级设置。
+可以使用 cmdlet 查询当前设置 `Get-AzureADPasswordProtectionProxyConfiguration` 。 建议始终启用自动升级设置。
 
-`Get-AzureADPasswordProtectionProxy` Cmdlet 可用于查询林中所有当前已安装 Azure AD 密码保护代理服务器的软件版本。
+`Get-AzureADPasswordProtectionProxy`Cmdlet 可用于查询林中所有当前已安装 Azure AD 密码保护代理服务器的软件版本。
 
 ### <a name="manual-upgrade-process"></a>手动升级过程
 
-手动升级是通过运行`AzureADPasswordProtectionProxySetup.exe`软件安装程序的最新版本来完成的。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
+手动升级是通过运行软件安装程序的最新版本来完成的 `AzureADPasswordProtectionProxySetup.exe` 。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
 
-不需要卸载 Azure AD 密码保护代理服务的当前版本-安装程序执行就地升级。 升级代理服务时，不需要重新启动。 可以使用标准 MSI 过程（如）自动执行软件升级`AzureADPasswordProtectionProxySetup.exe /quiet`。
+不需要卸载 Azure AD 密码保护代理服务的当前版本-安装程序执行就地升级。 升级代理服务时，不需要重新启动。 可以使用标准 MSI 过程（如）自动执行软件升级 `AzureADPasswordProtectionProxySetup.exe /quiet` 。
 
 ## <a name="upgrading-the-dc-agent"></a>升级 DC 代理
 
-如果有较新版本的 Azure AD 密码保护 DC 代理软件，则可通过运行最新版本的`AzureADPasswordProtectionDCAgentSetup.msi`软件包来完成升级。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
+如果有较新版本的 Azure AD 密码保护 DC 代理软件，则可通过运行最新版本的软件包来完成升级 `AzureADPasswordProtectionDCAgentSetup.msi` 。 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57071)提供了该软件的最新版本。
 
 不需要卸载最新版本的 DC 代理软件，安装程序将执行就地升级。 升级 DC 代理软件时，始终需要重新启动-此要求由核心 Windows 行为引起。
 
-可以使用标准 MSI 过程（如）自动执行软件升级`msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
+可以使用标准 MSI 过程（如）自动执行软件升级 `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart` 。
 
-如果希望让安装`/norestart`程序自动重新启动计算机，则可以省略标志。
+`/norestart`如果希望让安装程序自动重新启动计算机，则可以省略标志。
 
-`Get-AzureADPasswordProtectionDCAgent` Cmdlet 可用于查询林中所有当前已安装 Azure AD 密码保护 DC 代理的软件版本。
+`Get-AzureADPasswordProtectionDCAgent`Cmdlet 可用于查询林中所有当前已安装 Azure AD 密码保护 DC 代理的软件版本。
 
 ## <a name="next-steps"></a>后续步骤
 

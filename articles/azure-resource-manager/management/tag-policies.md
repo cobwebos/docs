@@ -1,18 +1,18 @@
 ---
 title: 用于标记资源的策略
-description: 介绍可分配的 Azure 策略，以确保标记符合性。
+description: 介绍可分配的用于确保标记符合性的 Azure 策略。
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82147865"
 ---
-# <a name="assign-policies-for-tag-compliance"></a>为标记符合性分配策略
+# <a name="assign-policies-for-tag-compliance"></a>分配用于确保标记符合性的策略
 
-使用[Azure 策略](../../governance/policy/overview.md)来强制标记规则和约定。 通过创建策略，你可以避免将资源部署到你的订阅中没有组织所需的标记的情况。 你创建一个策略，以便在部署过程中自动应用所需的标记，而不是手动应用标记或搜索不合规的资源。 现在，还可以通过新的 [Modify](../../governance/policy/concepts/effects.md#modify) 效果和[修正任务](../../governance/policy/how-to/remediate-resources.md)将标记应用于现有资源。 以下部分展示标记策略示例。
+使用 [Azure Policy](../../governance/policy/overview.md) 强制实施标记规则和约定。 通过创建策略，可以避免将没有组织所需标记的资源部署到订阅。 不要手动应用标记或搜索不符合的资源，请创建一个策略，用于在部署期间自动应用所需标记。 现在，还可以通过新的 [Modify](../../governance/policy/concepts/effects.md#modify) 效果和[修正任务](../../governance/policy/how-to/remediate-resources.md)将标记应用于现有资源。 以下部分展示标记策略示例。
 
 ## <a name="policies"></a>策略
 

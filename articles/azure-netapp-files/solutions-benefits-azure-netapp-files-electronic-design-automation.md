@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82160147"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>使用 Azure NetApp 文件实现电子设计自动化的好处
@@ -31,8 +31,8 @@ ms.locfileid: "82160147"
 
 |    方案    |    卷    |    客户端<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
-|    一个         |    1          |    1                           |
-|    两种         |    6          |    24                          |
+|    One         |    1          |    1                           |
+|    Two         |    6          |    24                          |
 |    三级       |    12         |    24                          |
 
 第一种情况是解决单个卷的驱动情况。  

@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Azure DevOps Starter 为中转编程语言创建 CI/CD 管道
-description: DevOps Starter 可让你轻松地开始在 Azure 上入门。 它可以帮助你通过几个快速步骤，在 Azure 服务中启动 Go 编程语言 Web 应用。
+description: 可以通过 DevOps Starter 轻松地完成 Azure 入门。 它可以帮助你通过几个快速步骤，在 Azure 服务中启动 Go 编程语言 Web 应用。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
@@ -14,10 +14,10 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82233119"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>使用 Azure DevOps Starter 为旅途创建 CI/CD 管道
@@ -28,13 +28,13 @@ ms.locfileid: "82233119"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-DevOps Starter Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Starter 还会在所选的 Azure 订阅中创建 Azure 资源。
+DevOps 入门版在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps 入门版还将在所选的 Azure 订阅中创建 Azure 资源。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 在搜索框中，键入 " **DevOps Starter**"，然后选择。 单击 "**添加**" 以创建一个新的。
+1. 在搜索框中键入“DevOps 入门版”，然后选择。 单击“添加”以新建一个。
 
-    ![DevOps 入门仪表板](_img/azure-devops-starter-aks/search-devops-starter.png)
+    ![DevOps 入门版仪表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-app-and-azure-service"></a>选择示例应用和 Azure 服务
 
@@ -74,49 +74,49 @@ DevOps Starter 在 Azure Repos 或 GitHub 中创建 Git 存储库。 若要查�
 
 ## <a name="examine-the-cicd-pipeline"></a>检查 CI/CD 管道
 
-DevOps Starter 会自动在 Azure Repos 中配置完整的 CI/CD 管道。 根据需要浏览和自定义管道。 若要了解 Azure DevOps 生成和发布管道，请执行以下操作：
+DevOps Starter 会自动在 Azure Repos 中配置一个完整的 CI/CD 管道。 根据需要浏览和自定义管道。 若要了解 Azure DevOps 生成和发布管道，请执行以下操作：
 
-1. 请参阅 DevOps 入门仪表板。
+1. 转到 DevOps Starter 仪表板。
 
 1. 在顶部，选择“生成管道”。  浏览器标签页会显示新项目的生成管道。
 
-1. 指向 "**状态**" 字段，然后选择省略号（...）。菜单将显示多个选项，例如将新的生成排入队列、暂停生成和编辑生成管道。
+1. 指向“状态”字段，然后选择省略号 (...)。菜单中会显示多个选项，例如，将新生成排队、暂停某个生成，以及编辑生成管道。
 
-1. 选择“编辑”  。
+1. 选择“编辑”。
 
 1. 在此窗格中，可以检查生成管道的各种任务。 该生成会执行各种任务，例如，从 Git 存储库提取源、还原依赖项，以及发布用于部署的输出。
 
 1. 在生成管道的顶部，选择生成管道名称。
 
-1. 将生成管道的名称更改为更具描述性的名称，选择 "**保存 & 队列**"，然后选择 "**保存**"。
+1. 将生成管道的名称更改为更具描述性的名称，选择“保存并排队”，然后选择“保存”。 
 
-1. 在生成管道名称下，选择“历史记录”。**** 此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
+1. 在生成管道名称下，选择“历史记录”。 此窗格显示最近针对生成所做的更改的审核线索。 Azure DevOps 会跟踪对生成管道所做的任何更改，并允许进行版本比较。
 
-1. 选择**触发器**。 DevOps Starter 会自动创建 CI 触发器，每次提交到存储库将启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
+1. 选择“触发器”。 DevOps Starter 会自动创建一个 CI 触发器，每次向存储库提交内容都会启动新的生成。 （可选）可以选择在 CI 过程中包括或排除分支。
 
-1. 选择“保留期”。**** 可以根据方案指定策略，以保留或删除特定数目的生成。
+1. 选择“保留期”。 可以根据方案指定策略，以保留或删除特定数目的生成。
 
-1. 选择“生成和发布”，然后选择“发布”。********  DevOps Starter 创建发布管道，以管理到 Azure 的部署。
+1. 选择“生成和发布”，然后选择“发布”。   DevOps Starter 会创建一个发布管道，用于管理到 Azure 的部署。
 
-1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。**** 发布管道包含一个管道，该*管道*定义发布过程。
+1. 选择发布管道旁边的省略号 (...)，然后选择“编辑”。 发布管道包含一个*管道*，用于定义发布过程。
 
-1. 在“项目”下选择“删除”********。 前面检查过的生成管道将生成用于项目的输出。 
+1. 在“项目”下选择“删除” 。 前面检查过的生成管道将生成用于项目的输出。 
 
-1. 在“删除”图标的右侧，选择“持续部署触发器”。******** 此发布管道有一个已启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
+1. 在“删除”图标的右侧，选择“持续部署触发器”。  此发布管道有一个已启用的 CD 触发器，每次有新的生成项目可用时，此触发器就会执行部署。 （可选）可以禁用此触发器，这样就需要手动执行部署。 
 
 1. 在左侧，选择“任务”。**** 任务是部署过程执行的活动。 在此示例中，已创建一个用于将项目部署到 Azure 应用服务的任务。
 
-1. 在右侧选择“查看发布”，以显示发布历史记录。****
+1. 在右侧选择“查看发布”，以显示发布历史记录。
 
-1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。**** 可以浏览多个菜单，例如发布摘要、关联的工作项和测试。
+1. 选择某个发布旁边的省略号 (...)，然后选择“打开”。 可以浏览多个菜单，例如发布摘要、关联的工作项和测试。
 
-1. 选择“提交”。**** 此视图显示与此部署关联的代码提交。 
+1. 选择“提交”。 此视图显示与此部署关联的代码提交。 
 
-1. 选择 "**日志**"。 日志包含有关部署过程的有用信息。 可以在部署期间和之后查看日志。
+1. 选择“日志”。 日志包含有关部署过程的有用信息。 可以在部署期间和之后查看日志。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要本快速入门中创建的 Azure 应用服务实例和相关资源时，可将其删除。 为此，请使用 DevOps 入门仪表板上的**删除**功能。
+不再需要本快速入门中创建的 Azure 应用服务实例和相关资源时，可将其删除。 为此，请使用 DevOps Starter 仪表板上的“删除”功能。
 
 ## <a name="next-steps"></a>后续步骤
 

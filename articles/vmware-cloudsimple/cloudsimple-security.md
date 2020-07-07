@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82187471"
 ---
 # <a name="cloudsimple-security-overview"></a>CloudSimple 安全性概述
@@ -39,7 +39,7 @@ Microsoft 拥有一个用于设计、构建和运营支持 Azure 的物理设施
 
 作为 CloudSimple 服务的一部分，所有 CloudSimple 客户都将获得具有本地附加磁盘的专用裸机主机，这些主机与其他租户硬件物理隔离。 在每个节点上运行包含 vSAN 的 ESXi 虚拟机监控程序。 节点通过客户专用 VMware vCenter 和 NSX 进行管理。 不在租户之间共享硬件还能提供额外的隔离和安全保护层。
 
-## <a name="data-security"></a>数据安全
+## <a name="data-security"></a>数据安全性
 
 客户保持其数据的控制和所有权。 客户数据的数据保管是客户的责任。
 

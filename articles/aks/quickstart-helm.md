@@ -1,23 +1,23 @@
 ---
-title: 通过 Helm 在 Azure Kubernetes Service （AKS）上进行开发
-description: 使用 Helm 和 AKS 和 Azure 容器注册表在群集中打包并运行应用程序容器。
+title: 使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
+description: 结合使用 Helm 与 AKS 和 Azure 容器注册表，打包和运行群集中的应用程序容器。
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: zarhoads
 ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82169562"
 ---
-# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：通过 Helm 在 Azure Kubernetes Service （AKS）上进行开发
+# <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
-[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 *APT* 和 *Yum* 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
+[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与 Linux 包管理器（例如*APT*和*Yum*）类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
-本文介绍如何使用 Helm 在 AKS 上打包并运行应用程序。 有关使用 Helm 安装现有应用程序的更多详细信息，请参阅[在 AKS 中使用 Helm 安装现有应用][helm-existing]程序。
+本文介绍如何使用 Helm 在 AKS 中打包和运行应用程序。 有关使用 Helm 安装现有应用程序的详细信息，请参阅[在 AKS 中通过 Helm 安装现有应用程序][helm-existing]。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "82169562"
 * [已安装 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>创建 Azure 容器注册表
-若要使用 Helm 在 AKS 群集中运行应用程序，需要一个 Azure 容器注册表来存储容器映像。 下面的示例使用[az acr create][az-acr-create]在*MyResourceGroup*资源组中创建名为*MyHelmACR*的 acr，其中包含*基本*SKU。 你应提供自己的唯一注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 “基本”SKU 是一个针对成本优化的入口点，适用于可以对存储和吞吐量进行均衡考虑的开发目的。**
+若要使用 Helm 在 AKS 群集中运行应用程序，需要使用 Azure 容器注册表来存储容器映像。 以下示例使用 [az acr create][az-acr-create] 在位于“基本”SKU 的 MyResourceGroup 资源组中创建名为 MyHelmACR 的 ACR  。 你应提供自己的唯一注册表名称。 注册表名称在 Azure 中必须唯一，并且包含 5-50 个字母数字字符。 “基本”SKU 是用于开发目的的成本优化入口点，可在存储与吞吐量之间实现平衡。
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
@@ -58,23 +58,23 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 }
 ```
 
-若要使用 ACR 实例，必须首先登录。 请使用 [az acr login][az-acr-login] 命令登录。 下面的示例将登录名为*MyHelmACR*的 ACR。
+若要使用 ACR 实例，必须先登录。 请使用 [az acr login][az-acr-login] 命令登录。 以下示例登录到名为 MyHelmACR 的 ACR。
 
 ```azurecli
 az acr login --name MyHelmACR
 ```
 
-完成后，该命令将返回*登录成功*消息。
+完成后，该命令会返回“登录成功”消息。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
-创建 AKS 群集。 以下命令将创建名为 MyAKS 的 AKS 群集，并附加 MyHelmACR。
+创建 AKS 群集。 以下命令将创建名为 MyAKS 的 AKS 群集并附加 MyHelmACR。
 
 ```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelmACR --generate-ssh-keys
 ```
 
-AKS 群集需要访问 ACR 才能拉取容器映像并运行它们。 上述命令还授予*MyAKS*群集对*MyHelmACR* ACR 的访问权限。
+AKS 群集需要访问 ACR 来提取并运行容器映像。 上述命令还授予 MyAKS 群集对 MyHelmACR ACR 的访问权 。
 
 ## <a name="connect-to-your-aks-cluster"></a>连接到 AKS 群集
 
@@ -94,7 +94,7 @@ az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
-本快速入门使用[Azure Dev Spaces 示例存储库中的示例 node.js 应用程序][example-nodejs]。 从 GitHub 克隆该应用程序，然后导航到 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目录。
+本快速入门使用[来自 Azure Dev Spaces 示例存储库的示例 Node.js 应用程序][example-nodejs]。 从 GitHub 克隆该应用程序，然后导航到 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目录。
 
 ```console
 git clone https://github.com/Azure/dev-spaces
@@ -103,7 +103,7 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="create-a-dockerfile"></a>创建 Dockerfile
 
-使用以下内容创建新的*Dockerfile*文件：
+使用以下命令创建新的 Dockerfile 文件：
 
 ```dockerfile
 FROM node:latest
@@ -120,7 +120,7 @@ EXPOSE 80
 CMD ["node","server.js"]
 ```
 
-## <a name="build-and-push-the-sample-application-to-the-acr"></a>生成示例应用程序并将其推送到 ACR
+## <a name="build-and-push-the-sample-application-to-the-acr"></a>生成并将示例应用程序推送到 ACR
 
 使用[az acr list][az-acr-list]命令获取登录服务器地址并查询*loginServer*：
 
@@ -138,13 +138,13 @@ docker push <acrLoginServer>/webfrontend:v1
 
 ## <a name="create-your-helm-chart"></a>创建 Helm 图表
 
-使用`helm create`命令生成 Helm 图表。
+使用 `helm create` 命令生成 Helm 图表。
 
 ```console
 helm create webfrontend
 ```
 
-对*webfrontend/yaml*进行以下更新：
+对 webfrontend/values.yaml 进行以下更新：
 
 * 将 `image.repository` 更改为 `<acrLoginServer>/webfrontend`
 * 将 `service.type` 更改为 `LoadBalancer`
@@ -168,7 +168,7 @@ service:
 ...
 ```
 
-在`appVersion` `v1` *webfrontend/yaml*中更新为。 例如
+在 webfrontend/Chart.yaml 中将 `appVersion` 更新为 `v1`。 例如
 
 ```yml
 apiVersion: v2
@@ -181,7 +181,7 @@ appVersion: v1
 
 ## <a name="run-your-helm-chart"></a>运行 Helm 图表
 
-使用`helm install`命令，使用 Helm 图表安装应用程序。
+使用 `helm install` 命令安装使用 Helm 图表的应用程序。
 
 ```console
 helm install webfrontend webfrontend/
@@ -198,7 +198,7 @@ webfrontend         LoadBalancer  10.0.141.72   <pending>     80:32150/TCP   2m
 webfrontend         LoadBalancer  10.0.141.72   <EXTERNAL-IP> 80:32150/TCP   7m
 ```
 
-使用浏览器在浏览器中导航到应用程序的负载`<EXTERNAL-IP>`均衡器，查看示例应用程序。
+在浏览器中使用 `<EXTERNAL-IP>` 导航到应用程序的负载均衡器，以查看示例应用程序。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

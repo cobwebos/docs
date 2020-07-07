@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seodec18,seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: 2b4756990162817087b0904a764b97526c3545d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82186645"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>在 HDInsight 中企业安全性套餐配置与 Azure Active Directory 域服务
@@ -43,7 +43,7 @@ ms.locfileid: "82186645"
 
 启用安全 LDAP 时，请将域名置于 "使用者名称" 中。 证书中的使用者可选名称。 如果你的域名为*contoso100.onmicrosoft.com*，请确保你的证书使用者名称和使用者备用名称中存在确切的名称。 有关详细信息，请参阅[为 Azure AD DS 托管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)。
 
-下面的示例创建一个自签名证书。 域名*contoso100.onmicrosoft.com*同时`Subject`在（使用者名称）和`DnsName` （使用者备用名称）中。
+下面的示例创建一个自签名证书。 域名*contoso100.onmicrosoft.com*同时在 `Subject` （使用者名称）和 `DnsName` （使用者备用名称）中。
 
 ```powershell
 $lifetime=Get-Date
@@ -62,7 +62,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 使用*用户分配的托管标识*简化安全域服务的操作。 将**HDInsight 域服务参与者**角色分配给托管标识时，它可以读取、创建、修改和删除域服务操作。
 
-HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和服务主体）。 可以在任何订阅中创建托管标识。 有关一般托管标识的详细信息，请参阅[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 有关 Azure HDInsight 中托管标识的工作方式的详细信息，请参阅[Azure hdinsight 中的托管标识](../hdinsight-managed-identities.md)。
+HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和服务主体）。 可以在任何订阅中创建托管标识。 有关一般托管标识的详细信息，请参阅[Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 有关 Azure HDInsight 中托管标识的工作原理的详细信息，请参阅 [Azure HDInsight 中的托管标识](../hdinsight-managed-identities.md)。
 
 若要设置 ESP 群集，请创建用户分配的托管标识（如果尚未安装）。 请参阅 [`Create, list, delete, or assign a role to a user-assigned managed identity by using the Azure portal`](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 
@@ -70,7 +70,7 @@ HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和
 
 ![Azure Active Directory 域服务访问控制](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
-分配**HDInsight 域服务参与者**角色可确保此标识具有对 Azure AD DS`on behalf of`域上的执行域服务操作的适当（）访问权限。 这些操作包括创建和删除 Ou。
+分配**HDInsight 域服务参与者**角色可确保此标识具有对 `on behalf of` Azure AD DS 域上的执行域服务操作的适当（）访问权限。 这些操作包括创建和删除 Ou。
 
 为托管标识指定角色后，Azure AD DS 管理员管理使用该角色的人员。 首先，管理员在门户中选择托管标识。 然后选择 "**概述**" 下的 "**访问控制（IAM）** "。 管理员将管理的**标识操作员**角色分配给要创建 ESP 群集的用户或组。
 
@@ -93,7 +93,7 @@ HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和
 
 将 Azure AD DS 实例和 HDInsight 群集放在同一 Azure 虚拟网络中会更方便。 如果计划使用不同的虚拟网络，则必须对这些虚拟网络对等互连，以便域控制器对 HDInsight Vm 可见。 有关详细信息，请参阅[虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)。
 
-对等互连虚拟网络后，将 HDInsight 虚拟网络配置为使用自定义 DNS 服务器。 并输入 Azure AD DS 专用 Ip 作为 DNS 服务器地址。 当两个虚拟网络都使用相同的 DNS 服务器时，你的自定义域名将解析为正确的 IP，并且可从 HDInsight 访问。 例如，如果你的域名为`contoso.com`，则在此步骤之后， `ping contoso.com`应解析为正确的 Azure AD DS IP。
+对等互连虚拟网络后，将 HDInsight 虚拟网络配置为使用自定义 DNS 服务器。 并输入 Azure AD DS 专用 Ip 作为 DNS 服务器地址。 当两个虚拟网络都使用相同的 DNS 服务器时，你的自定义域名将解析为正确的 IP，并且可从 HDInsight 访问。 例如，如果你的域名为 `contoso.com` ，则在此步骤之后， `ping contoso.com` 应解析为正确的 AZURE AD DS IP。
 
 ![为对等互连虚拟网络配置自定义 DNS 服务器](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
@@ -124,7 +124,7 @@ HDInsight 企业安全性套餐需要某些域服务操作（例如创建 Ou 和
 
 * **群集访问组**：要同步其用户并有权访问群集的安全组应在 Azure AD DS 中可用。 例如，HiveUsers 组。 有关详细信息，请参阅[在 Azure Active Directory 中创建组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-* **LDAPS URL**：例如`ldaps://contoso.com:636`。
+* **LDAPS URL**：例如 `ldaps://contoso.com:636` 。
 
 创建新群集时，可以从 "**用户分配的托管标识**" 下拉列表中选择你创建的托管标识。
 

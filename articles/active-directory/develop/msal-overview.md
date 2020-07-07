@@ -1,7 +1,7 @@
 ---
-title: 了解 MSAL |Microsoft
+title: 了解 MSAL | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft 身份验证库（MSAL）使应用程序开发人员能够获取令牌，以便调用受保护的 web Api。 这些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、第三方 web Api 或你自己的 web API。 MSAL 支持多个应用程序体系结构和平台。
+description: 借助 Microsoft 身份验证库 (MSAL)，应用程序开发人员可以获取令牌，以调用受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API。 MSAL 支持多个应用程序体系结构和平台。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,14 +14,14 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 7aa7dea65df507c0bb35a30bf2a68049a7625137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82181777"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft 身份验证库 (MSAL) 的概述
-Microsoft 身份验证库（MSAL）使开发人员能够从 Microsoft 标识平台终结点获取[令牌](developer-glossary.md#security-token)，以便访问受保护的 web api。 这些 web Api 可以是 Microsoft Graph、其他 Microsoft Api、第三方 web Api 或你自己的 web API。 MSAL 适用于 .NET、JavaScript、Android 和 iOS，支持许多不同的应用程序体系结构和平台。
+借助 Microsoft 身份验证库 (MSAL)，开发人员能够从 Microsoft 标识平台终结点获取[令牌](developer-glossary.md#security-token)，以访问受保护的 Web API。 这些 Web API 可以是 Microsoft Graph、其他 Microsoft API、第三方 Web API 或你自己的 Web API。 MSAL 适用于 .NET、JavaScript、Android 和 iOS，支持许多不同的应用程序体系结构和平台。
 
 MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多平台。 使用 MSAL 具有以下好处：
 
@@ -43,7 +43,7 @@ MSAL 为你提供了许多获取令牌的方法，将一致的 API 用于许多�
 * [保护 Web API，因此仅通过身份验证的用户可以访问它](scenario-protected-web-api-overview.md)
 * [Web API 代表已登录用户调用其他下游 Web API](scenario-web-api-call-api-overview.md)
 * [桌面应用程序代表已登录用户调用 Web API](scenario-desktop-overview.md)
-* [移动应用程序代表以交互方式登录的用户调用 WEB API](scenario-mobile-overview.md)。
+* [代表以交互方式登录的用户调用 Web API 的移动应用程序](scenario-mobile-overview.md)。
 * [桌面/服务守护程序应用程序代表自己调用 Web API](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>语言和框架

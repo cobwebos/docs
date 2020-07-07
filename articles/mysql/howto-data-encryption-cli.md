@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82185823"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI Azure Database for MySQL 的数据加密
@@ -84,7 +84,7 @@ ms.locfileid: "82185823"
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原服务器或副本服务器使用数据加密
 
-使用存储在 Key Vault 中的客户托管密钥对 Azure Database for MySQL 进行加密后，任何新创建的服务器副本也会加密。 你可以通过本地或异地还原操作或通过副本（本地/跨区域）操作进行此新复制。 因此，对于加密的 MySQL 服务器，你可以使用以下步骤来创建加密还原服务器。
+在使用客户存储在 Key Vault 中的托管密钥对 Azure Database for MySQL 进行加密后，还将对服务器的任何新创建的副本进行加密。 你可以通过本地或异地还原操作或通过副本（本地/跨区域）操作进行此新复制。 因此，对于加密的 MySQL 服务器，你可以使用以下步骤来创建加密还原服务器。
 
 ### <a name="creating-a-restoredreplica-server"></a>创建还原/副本服务器
 
@@ -132,7 +132,7 @@ ms.locfileid: "82185823"
 ### <a name="for-an-existing-server"></a>对于现有服务器
 此外，还可以使用 Azure 资源管理器模板在现有 Azure Database for MySQL 服务器上启用数据加密。
 
-* 传递先前在 properties 对象中的`Uri`属性下复制的 Azure Key Vault 密钥的资源 ID。
+* 传递先前在 properties 对象中的属性下复制的 Azure Key Vault 密钥的资源 ID `Uri` 。
 
 * 使用*2020-01-01-preview*作为 API 版本。
 

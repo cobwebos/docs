@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204281"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新旧式 Java Service Fabric 应用程序，以便从 Maven 提取 Java 库
-Service Fabric Java 二进制文件从 Service Fabric Java SDK 迁移到 Maven 托管。 你可以使用**mavencentral**来提取最新 Service Fabric Java 依赖项。 本指南将帮助你使用 Yeoman 模板或 Eclipse 来更新为 Service Fabric Java SDK 创建的现有 Java 应用程序，使其与基于 Maven 的生成兼容。
+Service Fabric Java 二进制文件已从 Service Fabric Java SDK 移至 Maven 托管。 你可以使用 mavencentral 来提取最新的 Service Fabric Java 依赖项。 本指南将帮助你更新使用 Yeoman 模板或 Eclipse 为 Service Fabric Java SDK 创建的现有 Java 应用程序，使其与基于 Maven 的内部版本兼容。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-1. 首先，卸载现有 Java SDK。
+1. 首先，卸载现有的 Java SDK。
 
    ```bash
    sudo dpkg -r servicefabricsdkjava
@@ -25,7 +25,7 @@ Service Fabric Java 二进制文件从 Service Fabric Java SDK 迁移到 Maven �
 
 2. 按照[此处](service-fabric-cli.md)提到的步骤安装最新的 Service Fabric CLI。
 
-3. 若要生成并处理 Service Fabric Java 应用程序，请确保已安装 JDK 1.8 和 Gradle。 如果尚未安装，可运行以下命令来安装 JDK 1.8 (openjdk-8-jdk) 和 Gradle：
+3. 若要生成和使用 Service Fabric Java 应用程序，请确保已安装 JDK 1.8 和 Gradle。 如果尚未安装，可运行以下命令来安装 JDK 1.8 (openjdk-8-jdk) 和 Gradle：
 
    ```bash
    sudo apt-get install openjdk-8-jdk-headless
@@ -39,7 +39,7 @@ Service Fabric Java 二进制文件从 Service Fabric Java SDK 迁移到 Maven �
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 库
 
-Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral  提供的 Service Fabric Java 库。
+Service Fabric Java 库已托管在 Maven 中。 可以在项目的 ``pom.xml`` 或 ``build.gradle`` 中添加依赖项，以便使用 mavenCentral 提供的 Service Fabric Java 库。
 
 ### <a name="actors"></a>执行组件
 
@@ -164,7 +164,7 @@ task copyDeps <<{
 }
 ```
 
-现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
+现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分 -
 
 ```gradle
 repositories {
@@ -243,7 +243,7 @@ dependencies {
 .
 ```
 
-现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
+现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分 -
 
 ```gradle
 repositories {
@@ -318,7 +318,7 @@ task copyDeps<< {
 }
 ```
 
-现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
+现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分 -
 
 ```gradle
 repositories {
@@ -421,7 +421,7 @@ task copyDeps<< {
 }
 ```
 
-现在，若要从 Maven 提取依赖项，更新的  ``build.gradle`` 需包含如下所示的相应部分 -
+现在，若要从 Maven 提取依赖项，更新的 ``build.gradle`` 需包含如下所示的相应部分 -
 
 ```gradle
 repositories {
