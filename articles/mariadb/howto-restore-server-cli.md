@@ -1,5 +1,5 @@
 ---
-title: 备份和还原-Azure CLI-Azure Database for MariaDB
+title: 备份和还原 - Azure CLI - Azure Database for MariaDB
 description: 了解如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器。
 author: ajlam
 ms.author: andrela
@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 6faae80c78fe07d33579cc3fb7c76ce668969992
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80369272"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在 Azure Database for MariaDB 中备份和还原服务器
@@ -82,7 +82,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
-在还原过程中创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 还原原始服务器的防火墙规则。
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -100,7 +100,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-此命令在 East US 创建一台名为 *mydemoserver-georestored* 且将属于 *myresourcegroup* 的新服务器。 它是一台常规用途第 5 代服务器，具有 8 个 vCore。 该服务器是基于也在资源组 *myresourcegroup* 中的 *mydemoserver* 的异地冗余备份创建的。
+此命令在 East US 创建一台名为 *mydemoserver-georestored* 且将属于 *myresourcegroup* 的新服务器。 它是第 5 代常规用途服务器，具有 8 个 vCore。 该服务器是基于也在资源组 *myresourcegroup* 中的 *mydemoserver* 的异地冗余备份创建的。
 
 如果希望在与现有服务器不同的资源组中创建新服务器，则需要如下例所示在 `--source-server` 参数中限定服务器名称：
 
@@ -117,16 +117,16 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 |name | mydemoserver-georestored | 新服务器的名称。 |
 |source-server | mydemoserver | 将使用其异地冗余备份的现有服务器的名称。 |
 |location | eastus | 新服务器的位置。 |
-|sku-name| GP_Gen5_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen5_8 映射为一台第 5 代常规用途服务器，具有 8 个 vCore。|
+|sku-name| GP_Gen5_8 | 此参数设置新服务器的定价层、计算层代和 vCore 数。 GP_Gen5_8 映射为一个第 5 代常规用途服务器，具有 8 个 vCore。|
 
 通过异地还原创建新服务器时，它将继承与源服务器相同的存储大小和定价层。 在创建过程中无法更改这些值。 创建新服务器后，可以纵向扩展其存储大小。
 
-还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”**** 页更改密码。
+还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有在启动还原时对现有服务器有效的相同服务器管理员登录名和密码。 可以从新服务器的“概述”  页更改密码。
 
-在还原过程中创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 还原原始服务器的防火墙规则。
+在还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 需要为此新服务器单独设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解有关服务[备份](concepts-backup.md)的详细信息
+- 详细了解服务的[备份](concepts-backup.md)
 - 了解[副本](concepts-read-replicas.md)
 - 详细了解[业务连续性](concepts-business-continuity.md)选项

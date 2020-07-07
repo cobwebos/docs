@@ -13,36 +13,36 @@ ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
 ms.openlocfilehash: 2870a654faad4e760a9d022488cb2c4c406cbeab
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82203125"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>在 Azure API 管理中预配自承载网关
 
 在 Azure API 管理实例中预配网关资源是部署自承载网关的先决条件。 本文详细介绍如何通过相关步骤在 API 管理中预配网关资源。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成以下快速入门：[创建 AZURE API 管理实例](get-started-create-service-instance.md)
+完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="provision-a-self-hosted-gateway"></a>预配自托管网关
 
-1. 从“设置”下选择“网关”。********
-2. 单击“+ 添加”。 
-3. 输入网关的“名称”和“区域”。********
+1. 从“设置”下选择“网关”。 
+2. 单击“+ 添加”。
+3. 输入网关的“名称”和“区域”。 
 > [!TIP]
-> “区域”指定将要与此网关资源关联的网关节点的预期位置。**** 它在语义上等效于一个与任何 Azure 资源关联的类似属性，但我们可以为其分配任意字符串值。
+> “区域”指定将要与此网关资源关联的网关节点的预期位置。 它在语义上等效于一个与任何 Azure 资源关联的类似属性，但我们可以为其分配任意字符串值。
 
-4. （可选）输入网关资源的“说明”****。
-5. （可选） **+** 在 " **api** " 下选择 "将一个或多个 api 与此网关资源相关联"。
+4. （可选）输入网关资源的“说明”。
+5. （可选）在“API”下选择“+”，将一个或多个 API 与此网关资源相关联。
 > [!IMPORTANT]
 > 默认情况下，现有 API 中的任何一个都不会与新网关资源相关联。 因此，尝试通过新网关调用它们会导致“`404 Resource Not Found`”响应。
 
-6. 单击“添加”  。
+6. 单击“添加” 。
 
 现在已在 API 管理实例中预配网关资源， 可以部署网关了。
 

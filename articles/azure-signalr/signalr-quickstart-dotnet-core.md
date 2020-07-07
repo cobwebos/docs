@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4665666fe56c208b2437a7051bbf9201383365f8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254880"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962129"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入门：使用 SignalR 服务创建聊天室
 
@@ -45,7 +45,9 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 2. 在新文件夹中，运行以下命令以创建项目：
 
-        dotnet new mvc
+    ```dotnetcli
+    dotnet new mvc
+    ```
 
 
 ## <a name="add-secret-manager-to-the-project"></a>向项目添加机密管理器
@@ -74,11 +76,15 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
 1. 通过运行以下命令，添加对 `Microsoft.Azure.SignalR` NuGet 包的引用：
 
-        dotnet add package Microsoft.Azure.SignalR
+    ```dotnetcli
+    dotnet add package Microsoft.Azure.SignalR
+    ```
 
 2. 运行以下命令，还原项目包：
 
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
+    ```
 
 3. 向机密管理器添加名为“Azure: SignalR:ConnectionString”的机密  。 
 
@@ -86,7 +92,7 @@ Azure SignalR 服务是一项 Azure 服务，可帮助开发者轻松生成具�
 
     必须在 *.csproj* 文件所在的同一目录中运行此命令。
 
-    ```
+    ```dotnetcli
     dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
@@ -224,19 +230,25 @@ connection.start()
 
 1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 2. 生成成功完成后，运行以下命令以在本地运行 Web 应用：
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     根据开发运行时配置文件中的配置，该应用将在端口 5000 上本地托管：
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Development
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.    
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Development
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+    Application started. Press Ctrl+C to shut down.    
+    ```
 
 3. 打开两个浏览器窗口。 在每个浏览器中，转到 `http://localhost:5000`。 系统会提示你输入名称。 输入两个客户端的客户端名称，然后使用“发送”按钮测试能否在两个客户端之间推送消息内容  。
 

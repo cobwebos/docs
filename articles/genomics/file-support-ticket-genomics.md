@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72248598"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
@@ -30,7 +30,7 @@ ms.locfileid: "72248598"
 
 然后，选择`New support request`。 
 
-![新的支持请求](./media/file-support-ticket/new-support-request.png "新建支持请求") 
+![新建支持请求](./media/file-support-ticket/new-support-request.png "新建支持请求") 
 
 填写`Basics`，包括`Issue type`和`Subscription`。 选择与问题最相关的`Issue type`；以下图为例，已选择`Technical`。 请务必选择 `Microsoft Genomics`作为相关服务。  将在`Intelligence and Analytics`类别下列出 `Microsoft Genomics`。   选择 `Microsoft Genomics`后，还需要提供`Support plan`类型。
 

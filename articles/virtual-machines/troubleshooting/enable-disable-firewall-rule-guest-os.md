@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422897"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
@@ -93,11 +93,11 @@ ms.locfileid: "80422897"
         netsh advfirewall firewall set rule dir=in name="Remote Desktop - User Mode (TCP-In)" new enable=no
         ```
 
-#### <a name="mitigation-4-remote-registry"></a>缓解措施 4：远程注册表
+#### <a name="mitigation-4-remote-registry"></a>缓解操作 4：远程注册表
 
 如果 VM 处于联机状态且可以在同一虚拟网络中的另一个 VM 上对其进行访问，则可以在另一个 VM 上使用[远程注册表](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上，启动注册表编辑器（regedit.exe），然后选择 "**文件** > " "**连接网络注册表**"。
+1.  在故障排除 VM 上启动注册表编辑器 (regedit.exe)，然后选择“文件” > “连接网络注册表”   。
 
 2.  打开 *TARGET MACHINE*\SYSTEM 分支，然后指定以下值：
 
@@ -129,13 +129,13 @@ ms.locfileid: "80422897"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的系统磁盘的驱动器号。
+3.  确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的系统磁盘的驱动器号。
 
 4.  在进行任何更改之前，请创建 \windows\system32\config 文件夹的副本，以防需要回退更改。
 
 5.  在故障排除 VM 上，启动注册表编辑器 (regedit.exe)。
 
-6.  突出显示 **HKEY_LOCAL_MACHINE** 项，然后从菜单中选择“文件” > “加载配置单元”。********
+6.  突出显示 **HKEY_LOCAL_MACHINE** 项，然后从菜单中选择“文件” > “加载配置单元”。  
 
     ![Regedit](./media/enable-or-disable-firewall-rule-guest-os/load-registry-hive.png)
 
@@ -164,7 +164,7 @@ ms.locfileid: "80422897"
         
         **v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|**
 
-9.  突出显示 BROKENSYSTEM，然后选择菜单中的“文件” > “卸载配置单元”************。
+9.  突出显示 BROKENSYSTEM，然后选择菜单中的“文件” > “卸载配置单元”    。
 
 10. [拆离系统磁盘并重新创建 VM](troubleshoot-recovery-disks-portal-windows.md)。
 

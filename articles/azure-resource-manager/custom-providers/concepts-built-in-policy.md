@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: 00cd1d39c0110aac9ea96f73127e83197976c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190123"
 ---
 # <a name="deploy-associations-for-a-custom-provider-using-azure-policy"></a>使用 Azure 策略部署自定义提供程序的关联
@@ -29,7 +29,7 @@ DeployIfNotExists 评估 它在资源提供程序处理了创建或更新资源�
 
 ## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>如何使用部署关联内置策略 
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 如果自定义提供程序需要策略范围的权限来执行某一操作，则关联资源的策略部署不起作用，无需授予权限。
 
 ### <a name="policy-assignment"></a>策略分配

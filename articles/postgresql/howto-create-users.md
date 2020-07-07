@@ -1,5 +1,5 @@
 ---
-title: 创建用户-Azure Database for PostgreSQL-单服务器
+title: 创建用户 - Azure Database for PostgreSQL（单一服务器）
 description: 本文介绍了如何创建新的用户帐户，用以与 Azure Database for PostgreSQL - 单一服务器进行交互。
 author: rachel-msft
 ms.author: raagyema
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384341"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中创建用户
@@ -31,14 +31,14 @@ ms.locfileid: "80384341"
 
 服务器管理员用户是 azure_pg_admin 角色的成员。 但是，服务器管理员帐户不是 azure_superuser 角色的一部分。 由于此服务是托管的 PaaS 服务，因此只有 Microsoft 是超级用户角色的一部分。
 
-PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [PostgreSQL 产品文档](https://www.postgresql.org/docs/current/static/sql-createrole.html)中所述。 在 Azure Database for PostgreSQL 中，向服务器管理员用户授予了以下权限：LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION
+PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [PostgreSQL 产品文档](https://www.postgresql.org/docs/current/static/sql-createrole.html)中所述。 在 Azure Database for PostgreSQL 中，服务器管理员用户被授予以下权限：LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION
 
 可以使用服务器管理员用户帐户创建其他用户并向这些用户授予 azure_pg_admin 角色。 此外，还可以使用服务器管理员帐户创建只能访问各个数据库和架构的权限较低的用户和角色。
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-postgresql"></a>如何在 Azure Database for PostgreSQL 中创建其他管理员用户
 
 1. 获取连接信息和管理员用户名。
-   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。********
+   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。  
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你喜欢的客户端工具，例如 pgAdmin 或 psql。
    如果不确定如何连接，请参阅[快速入门](./quickstart-create-server-database-portal.md)
@@ -54,7 +54,7 @@ PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [P
 ## <a name="how-to-create-database-users-in-azure-database-for-postgresql"></a>如何在 Azure Database for PostgreSQL 中创建数据库用户
 
 1. 获取连接信息和管理员用户名。
-   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。********
+   若要连接到数据库服务器，需提供完整的服务器名称和管理员登录凭据。 你可以在 Azure 门户的服务器“概述”页或“属性”页中轻松找到服务器名称和登录信息。  
 
 2. 使用管理员帐户和密码连接到你的数据库服务器。 使用你喜欢的客户端工具，例如 pgAdmin 或 psql。
 
@@ -84,6 +84,6 @@ PostgreSQL 引擎使用权限来控制对数据库对象的访问权限，如 [P
 
 ## <a name="next-steps"></a>后续步骤
 
-打开防火墙以允许连接到新用户计算机的 IP 地址：通过 [Azure CLI](howto-manage-firewall-using-cli.md) 或 [使用 Azure 门户创建和管理 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-portal.md)。
+针对新用户计算机的 IP 地址打开防火墙，使其能够连接：[使用 Azure 门户](howto-manage-firewall-using-portal.md)或 [Azure CLI 创建和管理 Azure Database for PostgreSQL 防火墙规则](howto-manage-firewall-using-cli.md)。
 
 有关用户帐户管理的详细信息，请参阅 PostgreSQL 产品文档来了解[数据库角色和权限](https://www.postgresql.org/docs/current/static/user-manag.html)、[GRANT 语法](https://www.postgresql.org/docs/current/static/sql-grant.html)和[权限](https://www.postgresql.org/docs/current/static/ddl-priv.html)。

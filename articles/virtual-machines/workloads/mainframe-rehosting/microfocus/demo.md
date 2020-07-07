@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80411073"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上的微聚焦企业开发人员4.0 设置微焦点 CICS BankDemo
@@ -22,7 +22,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 > [!NOTE]
 > 即将推出：有关在 Azure Vm 上设置[微中心企业服务器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110)的说明。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 包含[企业开发人员](set-up-micro-focus-azure.md)的 VM。 请记住，企业开发人员提供了一个完整的企业服务器实例，以用于开发和测试目的。 此实例是用于演示的企业服务器的实例。
 
@@ -78,7 +78,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 8. 选择所有选项后，单击 "**下一步**" 以安装。
 
-9. 在 Windows 功能后，请参阅 **"控制面板\> " "系统\>和安全" "管理工具**"，然后选择 "**服务**"。 向下滚动并确保以下服务正在运行，并设置为 "**自动**"：
+9. 在 Windows 功能后，请参阅 **"控制面板" " \> 系统和安全" " \> 管理工具**"，然后选择 "**服务**"。 向下滚动并确保以下服务正在运行，并设置为 "**自动**"：
 
     - **NetTcpPortSharing**
     - **Net.Pipe 侦听器适配器**
@@ -98,7 +98,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 2. 在左侧展开 "**安全**" 文件夹，然后选择 "**登录名**"。
 
-3. 选择 " **NT\\机构系统**" 并选择 "**属性**"。
+3. 选择 " **NT 机构 \\ 系统**" 并选择 "**属性**"。
 
 4. 选择 "**服务器角色**" 和 "检查**sysadmin**"。
 
@@ -106,7 +106,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>创建 BankDemo 数据库及其所有对象
 
-1. 打开**Windows 资源管理器**，导航到**\\C\\：\\Users\\公共文档\\微聚焦\\企业\\开发\\人员\\示例\\大型机\\CICS DotNet BankDemo SQL**。
+1. 打开**Windows 资源管理器**，导航到**C： \\ Users \\ 公共 \\ 文档 \\ 微聚焦 \\ 企业开发人员 \\ 示例 \\ 大型机 \\ CICS \\ DotNet \\ BankDemo \\ SQL**。
 
 2. 将**BankDemoCreateAll**文件的内容复制到剪贴板。
 
@@ -132,7 +132,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 1. 打开 Visual Studio 并登录。
 
-2. 在 "**文件**" 菜单选项下，选择 "**打开项目/解决方案**"，导航到**C：\\用户\\\\\\\\\\\\\\\\公共文档\\微聚焦企业开发人员示例大型机 CICS DotNet BankDemo**，然后选择**sln**文件。
+2. 在 "**文件**" 菜单选项下，选择 "**打开项目/解决方案**"，导航到**C： \\ 用户 \\ 公共 \\ 文档 \\ 微聚焦 \\ 企业开发人员 \\ 示例 \\ 大型机 \\ CICS \\ DotNet \\ BankDemo**，然后选择**sln**文件。
 
 3. 需要一些时间来检查对象。 COBOL 程序与 CBL 扩展一起显示在解决方案资源管理器中，同时包含 CopyBooks （CPY）和 JCL。
 
@@ -154,7 +154,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 1. 以管理员身份打开企业开发人员命令提示符（64位）。
 
-2. 导航到**\\% PUBLIC% Documents\\微聚焦\\企业开发人员\\示例\\大型机\\CICS\\DotNet\\BankDemo**。
+2. 导航到 **% PUBLIC% \\ Documents \\ 微聚焦 \\ 企业开发人员 \\ 示例 \\ 大型机 \\ CICS \\ DotNet \\ BankDemo**。
 
 3. 在命令提示符下，执行**bankdemodbdeploy**并包括要部署到的数据库的参数，例如：
 
@@ -163,7 +163,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
     ```
 
 > [!NOTE]
-> 请确保使用正斜杠（/）而不是反斜杠（\\）。 此脚本将运行一段时间。
+> 请确保使用正斜杠（/）而不是反斜杠（ \\ ）。 此脚本将运行一段时间。
 
 ![管理：企业开发人员命令提示窗口](media/06-demo-cmd.png)
 
@@ -171,7 +171,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 1. 打开 "**用于 .Net 管理的企业服务器**" UI。
 
-2. 若要启动 MMC 管理单元，请从 Windows "**开始**" 菜单中选择 "**微企业\>开发\>人员配置适用于 .net 管理员的企业服务器**"。（对于 Windows Server，请选择 "**适用于\> .Net 管理员的微企业开发人员企业服务器**"）。
+2. 若要启动 MMC 管理单元，请从 Windows "**开始**" 菜单中选择 "**微企业开发人员 \> 配置 \> 适用于 .net 管理员的企业服务器**"。（对于 Windows Server，请选择 "**适用于 \> .net 管理员的微企业开发人员企业服务器**"）。
 
 3. 展开左窗格中的 "**区域**" 容器，然后右键单击 " **CICS**"。
 
@@ -181,11 +181,11 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
      !["定义区域" 对话框](media/07-demo-cics.png)
 
-6. 若要选择跨区域数据库的区域定义文件，请在**C\\：\\用户公共\\文档\\微聚焦\\企业开发人员\\示例\\大型机\\CICS\\DotNet\\bankdemo**中找到**区域\_bankdemo\_** 。
+6. 若要选择跨区域数据库的区域定义文件，请在**C： \\ 用户 \\ 公共 \\ 文档 \\ 微聚焦 \\ 企业开发人员 \\ 示例 \\ 大型机 \\ CICS \\ DotNet \\ bankdemo**中找到**区域 \_ bankdemo \_db.config** 。
 
      ![定义区域区域名称： BANKDEMO](media/08-demo-cics.png)
 
-7. 单击 **“完成”** 。
+7. 单击“完成” 。
 
 ## <a name="create-xa-resource-definitions"></a>创建 XA 资源定义
 
@@ -195,13 +195,13 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 3. 在下拉框中，选择 "**数据库服务实例**"。 它将成为本地计算机 SQLEXPRESS。
 
-4. 从 " **XA 资源定义"\\（machinename sqlexpress）** 容器下选择该实例，然后单击 "**添加**"。
+4. 从 " **XA 资源定义" （machinename \\ sqlexpress）** 容器下选择该实例，然后单击 "**添加**"。
 
 5. 选择 "**数据库 XA 资源定义**"，然后键入 " **BANKDEMO** " 作为 "**名称**和**区域**"。
 
      ![新数据库 XA 资源定义屏幕](media/09-demo-xa.png)
 
-6. 单击省略号（**...**）以打开 "连接字符串向导"。 对于 "**服务器名称**"，请键入 **（\\local） SQLEXPRESS**。 对于**登录**，请选择 " **Windows 身份验证**"。 对于 "数据库名称"，请键入**BANKDEMO**
+6. 单击省略号（**...**）以打开 "连接字符串向导"。 对于 "**服务器名称**"，请键入 **（local） \\ SQLEXPRESS**。 对于**登录**，请选择 " **Windows 身份验证**"。 对于 "数据库名称"，请键入**BANKDEMO**
 
      ![编辑连接字符串屏幕](media/10-demo-string.png)
 
@@ -230,7 +230,7 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 1. 在左侧窗格中，展开 "**配置编辑器**"，然后选择 "**侦听器**"。
 
-2. 单击 "**打开文件**" 图标，然后选择 " **seelistener** " 文件。 此文件将被编辑，并在企业服务器每次启动时加载。
+2. 单击 "**打开文件**" 图标，然后选择 " **seelistener.exe.config**文件。 此文件将被编辑，并在企业服务器每次启动时加载。
 
 3. 请注意前面定义的两个区域（ESDEMO 和 JCLDEMO）。
 
@@ -242,9 +242,9 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 7. 对于 "**名称**"，请输入**TN3270**。 对于 "**端口**"，请输入**9024**。 ESDEMO 应用程序使用端口9230，因此你需要使用其他端口。
 
-8. 若要保存文件，请单击 "**保存**" 图标或选择 "**文件** \> " "**保存**"。
+8. 若要保存文件，请单击 "**保存**" 图标或选择 "**文件**" " \> **保存**"。
 
-9. 若要启动侦听器，请单击 "**启动侦听器**" 图标或选择 "**选项** \> " "**启动侦听器**"。
+9. 若要启动侦听器，请单击 "**启动侦听器**" 图标或选择 "**选项**" " \> **启动侦听器**"。
 
      ![侦听器配置编辑器窗口](media/13-demo-listener.png)
 
@@ -265,8 +265,8 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 
 6. 对于 "用户 ID"，键入**B0001** ，为密码键入 "任何内容"。 第一个屏幕 BANK20 将打开。
 
-![大型机显示欢迎屏幕](media/14-demo.png)
-![大型机显示-Rumba-子系统演示屏幕](media/15-demo.png)
+![大型机显示欢迎屏幕 ](media/14-demo.png)
+ ![ 大型机显示-Rumba-子系统演示屏幕](media/15-demo.png)
 
 祝贺你！ 现在，使用微焦点企业服务器在 Azure 中运行 CICS 应用程序。
 
@@ -275,5 +275,5 @@ CICs 代表客户信息控制系统，这是许多在线大型机应用程序使
 - [在 Azure 上的 Docker 容器中运行企业服务器](run-enterprise-server-container.md)
 - [大型机迁移-门户](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [疑难解答](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

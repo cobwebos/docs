@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80382913"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
@@ -38,7 +38,7 @@ ms.locfileid: "80382913"
 
     ![诊断设置部分](media/media-services-diagnostic-logs/logs01.png)
 
-1. 单击“添加诊断设置”****。
+1. 单击“添加诊断设置”。
 
    资源诊断设置是描述应从特定资源中路由哪个监视数据以及此监视数据应传输到何处的一种定义****。
 
@@ -49,13 +49,13 @@ ms.locfileid: "80382913"
 
    ![诊断设置部分](media/media-services-diagnostic-logs/logs02.png)
 1. 将“保留期(天)”滑块移至 30****。 此滑块设置监视数据要在存储帐户中保留的天数。 Azure Monitor 会自动删除早于所述天数的数据。 如果保留期为 0 天，则无限期存储数据。
-1. 单击 **“保存”** 。
+1. 单击“保存” 。
 
 现在，资源的监视数据将流入到存储帐户。
 
 ## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>使用 Azure CLI 将数据路由到存储帐户
 
-若要在存储帐户中存储诊断日志，请运行以下`az monitor diagnostic-settings` Azure CLI 命令：
+若要在存储帐户中存储诊断日志，请运行以下 `az monitor diagnostic-settings` Azure CLI 命令：
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -96,7 +96,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
  现可查看存储帐户中存储的 JSON 事件。
 
-### <a name="examples-of-pt1hjson"></a>PT1H.JSON 的示例
+### <a name="examples-of-pt1hjson"></a>PT1H.js的示例
 
 #### <a name="clear-key-delivery-log"></a>清除密钥传送日志
 

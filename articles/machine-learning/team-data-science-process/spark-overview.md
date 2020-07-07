@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 64caa1228cd073358bef496721c22b17554031d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189277"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>有关在 Azure HDInsight 上使用 Spark 展开数据科研的概述
@@ -133,7 +133,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 | payment_type |付款类型（现金、信用卡等） |
 | fare_amount |费用金额 |
 | surcharge |附加费 |
-| mta_tax |MTA 地铁运输税 |
+| mta_tax |MTA 地铁交通税 |
 | tip_amount |小费金额 |
 | tolls_amount |通行费金额 |
 | total_amount |总金额 |
@@ -141,17 +141,17 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 | tip_class |小费等级（0：0 美元，1：0-5 美元，2：6-10 美元，3：11-20 美元，4：大于 20 美元） |
 
 ## <a name="execute-code-from-a-jupyter-notebook-on-the-spark-cluster"></a>从 Spark 群集上的 Jupyter 笔记本执行代码
-可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 若要打开与 Spark 群集关联的笔记本，请单击 "**群集仪表板** -> "**Jupyter Notebook**。
+可以从 Azure 门户启动 Jupyter 笔记本。 在仪表板上找到 Spark 群集，并单击进入群集管理页面。 若要打开与 Spark 群集关联的笔记本，请单击 "**群集仪表板**"  ->  **Jupyter Notebook**。
 
 ![群集仪表板](./media/spark-overview/spark-jupyter-on-portal.png)
 
-还可以浏览到***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** 以访问 Jupyter 笔记本。 将此 URL 的 CLUSTERNAME 部分替换成自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
+还可以浏览到 `https://CLUSTERNAME.azurehdinsight.net/jupyter` 访问 Jupyter 笔记本******。 将此 URL 的 CLUSTERNAME 部分替换成自己的群集名称。 需要使用管理员帐户密码才能访问笔记本。
 
 ![浏览 Jupyter 笔记本](./media/spark-overview/spark-jupyter-notebook.png)
 
 选择 PySpark 可以查看包含使用 PySpark API 的预打包笔记本示例的目录。 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)中提供了包含此 Spark 主题的代码示例的笔记本
 
-可以将笔记本直接从[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”**** 按钮。 它将打开文件资源管理器。 可以在此处粘贴笔记本的 GitHub（原始内容）URL，并单击“打开”****。
+可将笔记本直接从 [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) 上传到 Spark 群集上的 Jupyter 笔记本服务器。 在 Jupyter 的主页上，单击屏幕右侧的“上传”**** 按钮。 它将打开文件资源管理器。 可以在此处粘贴笔记本的 GitHub（原始内容）URL，并单击“打开”****。
 
 将再次看到文件名显示在 Jupyter 文件列表上，并带有“上传”**** 按钮。 单击此“上传”按钮****。 现在已导入笔记本。 重复上述步骤，上传本演练中的其他笔记本。
 
@@ -164,7 +164,7 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 * 通过单击笔记本查看代码。
 * 通过按 **SHIFT-ENTER** 执行每个单元格。
-* 单击 "**单元格** -> **运行**" 以运行整个笔记本。
+* 通过依次单击“单元格”**** -> “运行”**** 运行整个笔记本。
 * 使用查询的自动可视化。
 
 > [!TIP]
@@ -177,9 +177,9 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 ## <a name="whats-next"></a>后续步骤
 现在，已完成 HDInsight Spark 群集设置并且上传了 Jupyter 笔记本，可以随时完成对应于这三个 PySpark 笔记本的主题。 它们介绍了如何浏览数据以及如何创建和使用模型。 高级数据浏览和建模笔记本介绍了如何包括交叉验证、超参数扫描和模型评估。
 
-**使用 Spark 进行数据浏览和建模：** 通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，浏览数据集并创建、评分和评估机器学习模型。
+**使用 Spark 进行数据探索和建模：** 通过完成[使用 Spark MLlib 工具包为数据创建二元分类和回归模型](spark-data-exploration-modeling.md)主题，探索数据集并创建、评分和评估机器学习模型。
 
-**模型使用：** 若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
+**使用模型：** 若要了解如何评分在本主题中创建的分类和回归模型，请参阅[评分和评估 Spark 生成的机器学习模型](spark-model-consumption.md)。
 
-**交叉验证和超参数扫描**：请参阅使用[Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
+**交叉验证和超参数扫描**：请参阅[使用 Spark 进行高级数据探索和建模](spark-advanced-data-exploration-modeling.md)，了解如何使用交叉验证和超参数扫描训练模型
 

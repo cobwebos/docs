@@ -1,6 +1,6 @@
 ---
 title: Azure 流量分析架构更新-2020 年3月 |Microsoft Docs
-description: 流量分析架构中包含新字段的示例查询。
+description: 在流量分析架构中包含新字段的示例查询。
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80396612"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架构中包含新字段的示例查询（2019年8月版架构更新）
 
 [流量分析日志架构](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)包含以下新字段： **SrcPublicIPs_s**、 **DestPublicIPs_s** **NSGRule_s**。 新字段提供有关源和目标 Ip 的信息，并简化查询。
 
-在接下来的几个月中，将不推荐使用以下旧字段： **VMIP_s**、 **Subscription_g**、 **Region_s**、 **NSGRules_s**、 **Subnet_s**、 **VM_s**、 **NIC_s**、 **PublicIPs_s**、 **FlowCount_d**。
+在接下来的几个月内，以下较旧的字段将弃用：VMIP_s、Subscription_g、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d        。
 
 以下三个示例演示如何将旧字段替换为新字段。
 
@@ -107,7 +107,7 @@ FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_
 
 由于我们不会在 NSG 中将数据俱乐部，因此**FlowCount_d**只是：
 
-**AllowedInFlows_d** + **DeniedInFlows_d**DeniedInFlows_d + **AllowedOutFlows_d**AllowedOutFlows_d + **DeniedOutFlows_d**
+**AllowedInFlows_d**  + **DeniedInFlows_d**  + **AllowedOutFlows_d**  + **DeniedOutFlows_d**
 
 只有这四个字段中的一个为非零。 其他三个字段将为零。 这些字段将填充以指示在其中捕获流的 NIC 中的状态和计数。
 

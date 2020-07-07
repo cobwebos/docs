@@ -1,24 +1,21 @@
 ---
-title: 在 Azure 门户中创建知识存储（预览版）
+title: 在 Azure 门户中创建知识存储
 titleSuffix: Azure Cognitive Search
-description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。 此功能目前处于公开预览状态。
+description: 使用“导入数据”向导创建用于保存扩充内容的知识存储。 连接到知识存储以便从其他应用进行分析，或将扩充内容发送到下游流程。
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 06ddb50173299bbb99518921d1589d2f15b0aa88
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.date: 06/30/2020
+ms.openlocfilehash: 5d21508a794683096009f53314bebca4e4f2ac98
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488675"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85565308"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
-
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
 知识存储是 Azure 认知搜索的一项功能，它可以保存内容处理管道的输出，以进行后续分析或下游处理。 
 

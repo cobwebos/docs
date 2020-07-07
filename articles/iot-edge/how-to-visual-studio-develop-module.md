@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80384851"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio 2019 开发和调试适用于 Azure IoT Edge 的模块
@@ -98,7 +98,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![创建新项目](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. 在“添加 IoT Edge 应用程序和模块”  窗口中，选择“C# 模块”  或“C 模块”  ，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名**自动填充模块名\>** 。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于** _ \<注册表名称\>_. azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果看起来像** \<*注册表名称*\>。 azurecr.io/_\<您的模块名称\>_**。 默认模块名称为“IotEdgeModule1” 
+1. 在“添加 IoT Edge 应用程序和模块”  窗口中，选择“C# 模块”  或“C 模块”  ，然后指定模块名称和模块映像存储库。 Visual Studio 使用“localhost:5000/<模块名\>自动填充模块名。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost  。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器的外观类似于** _\<registry name\>_ azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果如** \<*registry name*\> azurecr.io/ _\<your module name\>_ **。 默认模块名称为“IotEdgeModule1” 
 
    ![添加应用程序和模块](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -139,7 +139,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![设置启动项目](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
-1. 按 F5 或单击下方的按钮以运行模块，首次运行时可能耗时 10**20 秒**&ndash;。
+1. 按 F5 或单击下方的按钮以运行模块，首次运行时可能耗时 10&ndash;20 秒。
 
    ![运行模块](./media/how-to-visual-studio-develop-csharp-module/run-module.png)
 
@@ -147,7 +147,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
    ![运行中的模块](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. 如果以 C# 进行开发，请在 `PipeMessage()`Program.cs**中的** 函数内设置一个断点；如果使用 C，请在 `InputQueue1Callback()`main.c**中的** 函数内设置断点。 然后，可以通过在 **Git Bash** 或 **WSL Bash** shell 中运行以下命令发送消息，来测试断点。 （无法从 PowerShell 或命令提示符运行 `curl` 命令。）
+1. 如果以 C# 进行开发，请在 **Program.cs** 中的 `PipeMessage()` 函数内设置一个断点；如果使用 C，请在 **main.c** 中的 `InputQueue1Callback()` 函数内设置断点。 然后，可以通过在 **Git Bash** 或 **WSL Bash** shell 中运行以下命令发送消息，来测试断点。 （无法从 PowerShell 或命令提示符运行 `curl` 命令。）
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages
@@ -166,9 +166,9 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 开发完单个模块之后，需要运行并调试具有多个模块的整个解决方案。
 
-1. 在“解决方案资源管理器”中右键单击“AzureIoTEdgeApp1”并选择“添加” **“新 IoT Edge 模块”，向解决方案添加另一个模块**    >   。 第二个模块的默认名称为“IotEdgeModule2”，将充当另一个管道模块  。
+1. 在“解决方案资源管理器”中右键单击“AzureIoTEdgeApp1”并选择“添加” > “新 IoT Edge 模块”，向解决方案添加另一个模块。 第二个模块的默认名称为“IotEdgeModule2”，将充当另一个管道模块  。
 
-1. 打开文件 `deployment.template.json`，会看到 IotEdgeModule2 已添加到 **modules** 节中  。 将 routes 部分替换为以下内容  。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
+1. 打开文件 `deployment.template.json`，会看到 IotEdgeModule2 已添加到 **modules** 节中。 将 routes 部分替换为以下内容  。 如果自定义了模块名，请确保更新这些名称以匹配模块名。
 
     ```json
         "routes": {
@@ -192,7 +192,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 1. 请确保启动项目是 AzureIoTEdgeApp1  。 选择“调试”或“发布”作为配置，以生成模块映像   。
 
     > [!NOTE]
-    > 如果选择“调试”，Visual Studio 使用  **生成 Docker 映像**`Dockerfile.(amd64|windows-amd64).debug`。 生成容器映像时，它将在该映像中包含 .NET Core 命令行调试器 VSDBG。 对于生产就绪的 IoT Edge 模块，建议使用“发布”配置，此模块可在没有 VSDBG 的情况下使用  `Dockerfile.(amd64|windows-amd64)`。
+    > 如果选择“调试”，Visual Studio 使用 `Dockerfile.(amd64|windows-amd64).debug` 生成 Docker 映像。 生成容器映像时，它将在该映像中包含 .NET Core 命令行调试器 VSDBG。 对于生产就绪的 IoT Edge 模块，建议使用“发布”配置，此模块可在没有 VSDBG 的情况下使用 `Dockerfile.(amd64|windows-amd64)`。
 
 1. 如果使用的是专用注册表（如 Azure 容器注册表 (ACR)），请使用以下 Docker 命令登录。  可以从 Azure 门户的注册表的“访问密钥”页中获取用户名和密码。  如果使用的是本地注册表，可[运行本地注册表](https://docs.docker.com/registry/deploying/#run-a-local-registry)。
 
@@ -222,7 +222,7 @@ Visual Studio 中的 Azure IoT Edge 项目模板创建了一个项目，它可�
 
 在用于设置 IoT Edge 设备的快速入门文章中，已使用 Azure 门户部署了一个模块。 还可使用 Cloud Explorer for Visual Studio 部署模块。 为方案和 `deployment.json` 文件准备好部署清单后，接下来只需要选择一个设备来接收部署即可。
 
-1. 通过单击“视图” **“Cloud Explorer”打开 Cloud Explorer**   >   。 确保已登录到 Visual Studio 2019。
+1. 通过单击“视图” > “Cloud Explorer”打开 Cloud Explorer。 确保已登录到 Visual Studio 2019。
 
 1. 在 Cloud Explorer 中，展开订阅并找到要部署的 Azure IoT 中心和 Azure IoT Edge 设备  。
 

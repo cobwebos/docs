@@ -1,6 +1,6 @@
 ---
 title: Azure VM 来宾 OS 防火墙阻止入站流量 | Microsoft Docs
-description: 了解如何修复来宾操作系统防火墙阻止入站流量的远程桌面门户（RDP）连接问题。
+description: 了解如何修复来宾操作系统防火墙阻止入站流量的远程桌面门户 (RDP) 连接问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422562"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM 来宾 OS 防火墙阻止入站流量
@@ -45,7 +45,7 @@ ms.locfileid: "80422562"
 
 在执行这些步骤之前，请创建受影响 VM 的系统磁盘快照作为备份。 有关详细信息，请参阅 [创建磁盘快照](../windows/snapshot-copy-managed-disk.md)。
 
-要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量****。
+要解决此问题，请使用[如何使用远程工具解决 Azure VM 问题](remote-tools-troubleshoot-azure-vm-issues.md)中介绍的方法远程连接到 VM，然后将来宾操作系统防火墙规则编辑为“允许”RDP 流量  。
 
 ### <a name="online-troubleshooting"></a>联机故障排除
 
@@ -53,7 +53,7 @@ ms.locfileid: "80422562"
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
-1.  如果 Azure 代理已安装并在 vm 上正常工作，则可以在 "vm" 菜单上的 "**支持和故障排除** > **重置密码**" 下面使用 "仅重置配置" 选项。
+1.  如果 Azure 代理已安装并在 vm 上正常工作，则可以在 "vm" 菜单上的 "**支持和故障排除**  >  **重置密码**" 下面使用 "仅重置配置" 选项。
 
 2.  运行此恢复选项将执行以下操作：
 
@@ -138,7 +138,7 @@ ms.locfileid: "80422562"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  确保磁盘在磁盘管理控制台中标记为“联机”。**** 请留意分配给附加系统磁盘的驱动器号。
+3.  确保磁盘在磁盘管理控制台中标记为“联机”。  请留意分配给附加系统磁盘的驱动器号。
 
 #### <a name="mitigation-1"></a>缓解措施 1
 
@@ -150,7 +150,7 @@ ms.locfileid: "80422562"
 
 2.  开始与恢复 VM 建立远程桌面连接。
 
-3.  将系统磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”****。 请注意分配给附加的 OS 磁盘的驱动器号。
+3.  将系统磁盘附加到恢复 VM 后，请确保磁盘在磁盘管理控制台中标记为“联机”  。 请注意分配给附加的 OS 磁盘的驱动器号。
 
 4.  打开提升后的 CMD 实例，然后运行以下脚本：
 

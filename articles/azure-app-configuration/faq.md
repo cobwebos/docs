@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80348790"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用配置常见问题
@@ -103,7 +103,7 @@ Azure App Service 允许你为每个应用服务实例定义应用设置。 这�
 
 免费层中的配置存储每天限制为1000请求。 当请求速率超过每小时20000请求时，标准层中的配置存储可能会遇到临时限制。
 
-当存储达到其限制时，它将为所有发出的请求返回 HTTP 状态代码429，直到时间段过期。 响应`retry-after-ms`中的标头在重试请求之前提供建议的等待时间（以毫秒为单位）。
+当存储达到其限制时，它将为所有发出的请求返回 HTTP 状态代码429，直到时间段过期。 `retry-after-ms`响应中的标头在重试请求之前提供建议的等待时间（以毫秒为单位）。
 
 如果你的应用程序定期遇到 HTTP 状态代码429响应，请考虑重新设计它以减少发出的请求数。 有关详细信息，请参阅[减少对应用配置发出的请求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 

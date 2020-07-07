@@ -9,15 +9,15 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82190668"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Hadoop HDFS 进行故障排除
 
-使用 Hadoop 分布式文件系统（HDFS）时，请了解最常见的问题和解决方法。 有关完整的命令列表，请参阅[HDFS 命令指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html)和[文件系统 Shell 指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)。
+了解使用 Hadoop 分布式文件系统 (HDFS) 时的常见问题和解决方法。 有关完整的命令列表，请参阅 [HDFS 命令指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html)和[文件系统 Shell 指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)。
 
 ## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>如何从群集内访问本地 HDFS？
 
@@ -72,11 +72,11 @@ ms.locfileid: "82190668"
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
-## <a name="storage-exception-for-write-on-blob"></a>在 Blob 上编写时的存储异常
+## <a name="storage-exception-for-write-on-blob"></a>写入 blob 时的存储异常
 
 ### <a name="issue"></a>问题
 
-使用`hadoop`或`hdfs dfs`命令在 HBase 群集上写入 ~ 12 GB 或更大的文件时，可能会遇到以下错误：
+使用 `hadoop` 或 `hdfs dfs` 命令在 HBase 群集上编写大于或等于 ~12 GB 的文件时，可能会遇到以下错误：
 
 ```error
 ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
@@ -106,17 +106,17 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 ### <a name="resolution"></a>解决方法
 
-使用 `fs.azure.write.request.size` 指定更大的块大小。 可以通过使用`-D`参数按使用情况进行此修改。 以下命令是将此参数用于 `hadoop` 命令的示例：
+使用 `fs.azure.write.request.size` 指定更大的块大小。 可以使用 `-D` 参数基于使用情况执行此修改。 以下命令是将此参数用于 `hadoop` 命令的示例：
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可使用以下步骤在 Ambari Web UI 中更改该值：
+还可使用 Apache Ambari 以全局方式增加 `fs.azure.write.request.size` 的值。 可以使用以下步骤在 Ambari Web UI 中更改该值：
 
-1. 在浏览器中，转到群集的 Ambari Web UI。 URL 为`https://CLUSTERNAME.azurehdinsight.net`，其中`CLUSTERNAME`是群集的名称。 出现提示时，输入群集的管理员名称和密码。
-2. 在屏幕左侧选择“HDFS”****，并选择“配置”**** 选项卡。
-3. 在“筛选...”**** 字段中输入 `fs.azure.write.request.size`。
+1. 在浏览器中，转到群集的 Ambari Web UI。 URL 为 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。 出现提示时，输入群集的管理员名称和密码。
+2. 在屏幕左侧选择“HDFS”，然后选择“配置”选项卡**** ****。
+3. 在“筛选...”字段中输入 `fs.azure.write.request.size`****。
 4. 将值从 262144 (256 KB) 更改为新的值。 例如，4194304 (4 MB)。
 
     ![通过 Ambari Web UI 更改值的图像](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
@@ -153,6 +153,6 @@ hdfs dfs -rm hdfs://mycluster/tmp/testfile
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

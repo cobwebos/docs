@@ -12,15 +12,15 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80346306"
 ---
 # <a name="download-the-results-of-a-job"></a>下载作业结果
 
-在 Azure 媒体服务中，处理视频（例如编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)结果。 然后，可以使用媒体服务和存储 API 将这些结果下载到本地文件夹。 
+在 Azure 媒体服务中，处理视频（例如编码或分析）时，需要创建一个输出[资产](assets-concept.md)来存储[作业](transforms-jobs-concept.md)的结果。 然后，可以使用媒体服务和存储 API 将这些结果下载到本地文件夹。 
 
 本文演示如何使用 Java 和 .NET SDK 下载结果。
 

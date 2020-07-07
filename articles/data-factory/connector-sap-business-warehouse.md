@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418059"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 复制数据
@@ -35,22 +35,22 @@ ms.locfileid: "81418059"
 以下活动支持此 SAP Business Warehouse 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 SAP Business Warehouse 复制到任何受支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 SAP Business Warehouse 连接器支持：
 
-- SAP Business Warehouse 版本 7.x****。
-- 使用 MDX 查询从 InfoCubes 和 QueryCubes****（包括 BEx 查询）复制数据。
+- SAP Business Warehouse 版本 7.x  。
+- 使用 MDX 查询从 InfoCubes 和 QueryCubes  （包括 BEx 查询）复制数据。
 - 使用基本身份验证复制数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 SAP Business Warehouse 连接器，需要：
 
-- 设置自承载集成运行时。 有关详细信息，请参阅[自承载 Integration Runtime](create-self-hosted-integration-runtime.md)文章。
-- 在集成运行时计算机上安装 SAP NetWeaver 库****。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”**** 获取最新版本的下载位置。 请确保选择与 Integration Runtime 安装相匹配的**64 位**SAP NetWeaver 库。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
+- 设置自承载集成运行时。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
+- 在集成运行时计算机上安装 SAP NetWeaver 库  。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”  获取最新版本的下载位置。 请确保选取与集成运行时安装匹配的 64 位 SAP NetWeaver 库  。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
 >[!TIP]
 >要解决 SAP BW 的连接问题，请确保：
@@ -67,9 +67,9 @@ ms.locfileid: "81418059"
 
 SAP Business Warehouse (BW) 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | type 属性必须设置为：SapBw**** | 是 |
+| type | type 属性必须设置为：**SapBw** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
@@ -104,9 +104,9 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW 数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 SAP BW 数据集支持的属性列表。
 
-要从 SAP BW 复制数据，请将数据集的 type 属性设置为“SapBwCube”****。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
+要从 SAP BW 复制数据，请将数据集的 type 属性设置为“SapBwCube”  。 RelationalTable 类型的 SAP BW 数据集不支持任何类型特定的属性。
 
 **示例：**
 
@@ -135,10 +135,10 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 若要从 SAP BW 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
-| type | 复制活动源的 type 属性必须设置为： **SapBwSource** | 是 |
-| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
+| type | 复制活动 source 的 type 属性必须设置为：**SapBwSource** | 是 |
+| 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | 是 |
 
 **示例：**
 
@@ -180,34 +180,34 @@ SAP Business Warehouse (BW) 链接服务支持以下属性：
 
 | SAP BW 数据类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| ACCP | Int |
+| ACCP | int |
 | CHAR | 字符串 |
-| CLNT | 字符串 |
-| CURR | Decimal |
-| CUKY | 字符串 |
-| DEC | Decimal |
+| CLNT | String |
+| CURR | 小数 |
+| CUKY | String |
+| DEC | 小数 |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
-| INT4 | Int |
-| LANG | 字符串 |
-| LCHR | 字符串 |
+| INT4 | int |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | 小数 |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | 字符串 |
-| UNIT | 字符串 |
-| DATS | 字符串 |
-| NUMC | 字符串 |
-| TIMS | 字符串 |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
-## <a name="lookup-activity-properties"></a>Lookup 活动属性
+## <a name="lookup-activity-properties"></a>查找活动属性
 
 若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

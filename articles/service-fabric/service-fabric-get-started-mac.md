@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
 ms.openlocfilehash: c7e2d556c4fb8bebc0b75bdf9d4c209c27f86971
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82193388"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
@@ -22,7 +22,7 @@ ms.locfileid: "82193388"
 
 可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
 
 * 至少 4 GB 的 RAM。
@@ -44,7 +44,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标**，然后选择“首选项”   >   “守护程序” >   “高级”。
+    可以在 Docker 安装路径的 daemon.json 文件中直接更新这些设置。 可直接在 Docker 中修改守护程序配置设置。 选择 **Docker 图标**，然后选择“首选项” > “守护程序” > “高级”。
     
     >[!NOTE]
     >
@@ -52,7 +52,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >
 
     >[!TIP]
-    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标**，然后选择“高级”来调整核心数量和内存量。 
+    >测试大型应用程序时，我们建议增加分配给 Docker 的资源。 为此，可以选择 **Docker 图标**，然后选择“高级”来调整核心数量和内存量。
 
 2. 在新目录中创建名为 `Dockerfile` 的文件，以生成 Service Fabric 映像：
 
@@ -101,7 +101,7 @@ Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Servic
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 群集需要一小段时间来启动。 运行时，可以使用以下命令查看日志，或者通过跳转到仪表板来查看群集运行状况 `http://localhost:19080`：
+5. 群集需要一小段时间来启动。 运行群集时，可以使用以下命令查看日志，或者通过跳转到仪表板来查看群集运行状况 `http://localhost:19080`：
 
     ```bash 
     docker logs sftestcluster

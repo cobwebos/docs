@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72025934"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>&Azure 上的开发/测试环境安装 IBM zD
@@ -62,11 +62,11 @@ Azure 和 Azure Stack 支持以下版本：
 
 3. 通过 "**连接**" 按钮获取 VM 的 "**概述**" 边栏选项卡上显示的 SSH 凭据。 选择 " **ssh** " 选项卡，并将 SSH 登录命令复制到剪贴板。
 
-4. 从本地 PC 登录到[Bash shell](/azure/cloud-shell/quickstart)并粘贴命令。 它采用**ssh\<用户 id\>\@\<IP\>地址**格式。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
+4. 从本地 PC 登录到[Bash shell](/azure/cloud-shell/quickstart)并粘贴命令。 它采用**ssh \<user id\> \@ \<IP Address\> **格式。 系统提示输入凭据时，请输入凭据以建立与主目录的连接。
 
 ## <a name="copy-the-installation-file-to-the-server"></a>将安装文件复制到服务器
 
-Web 服务器的安装文件为**ZDT\_Install\_\_12.0.0.1. tgz**。 它包含在 IBM 提供的媒体中。 必须将此文件上传到 Ubuntu VM。
+Web 服务器的安装文件为**ZDT \_ Install \_ \_ 12.0.0.1. tgz**。 它包含在 IBM 提供的媒体中。 必须将此文件上传到 Ubuntu VM。
 
 1. 在命令行中输入以下命令，确保新创建的映像中的所有内容都是最新的：
 
@@ -91,7 +91,7 @@ Web 服务器的安装文件为**ZDT\_Install\_\_12.0.0.1. tgz**。 它包含在
 
 ## <a name="install-the-enterprise-edition"></a>安装 Enterprise Edition
 
-1. 使用以下命令，中转到 ZDT 目录并\_解压缩\_ZDT\_Install EE 12.0.0.1 tgz 文件：
+1. 使用以下命令，中转到 ZDT 目录并解压缩 ZDT \_ Install \_ EE \_ 12.0.0.1 tgz 文件：
 
     ```
     cd ZDT

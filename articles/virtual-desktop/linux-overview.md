@@ -9,10 +9,10 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80422415"
 ---
 # <a name="linux-support"></a>Linux 支持
@@ -23,7 +23,7 @@ ms.locfileid: "80422415"
 
 以下合作伙伴已批准适用于 Linux 设备的 Windows 虚拟桌面客户端。
 
-|合作伙伴|合作伙伴文档|合作伙伴支持|
+|Partner|合作伙伴文档|合作伙伴支持|
 |:------|:--------------------|:--------------|
 |![IGEL 徽标](./media/partners/igel.png)|[IGEL 客户端文档](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL 支持](https://www.igel.com/support/)|
 
@@ -34,7 +34,7 @@ ms.locfileid: "80422415"
 > [!NOTE]
 > SDK 目前正在开发中。 当 SDK 公开发布时，我们将使用有关访问 SDK 的说明来更新本文档。
 
-### <a name="supported-linux-distributions"></a>支持的 Linux 分发版
+### <a name="supported-linux-distributions"></a>支持的 Linux 分发
 
 SDK 与大多数基于 Ubuntu 18.04 或更高版本的操作系统兼容。 如果你使用的是不同的 Linux 分发版，则可以与你联系，以确定如何最大程度地满足你的需求。
 
@@ -44,7 +44,7 @@ SDK 支持多个到桌面和远程应用程序会话的连接。 支持以下重
 
 | 重定向       | 支持 |
 | :---------------- | :-------: |
-| Keyboard          | &#10004;  |
+| 键盘          | &#10004;  |
 | 鼠标             | &#10004;  |
 | 音频传入          | &#10004;  |
 | 音频输出         | &#10004;  |

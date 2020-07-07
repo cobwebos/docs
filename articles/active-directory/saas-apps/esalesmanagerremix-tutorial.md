@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82202390"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>将 Azure Active Directory 与 E Sales Manager Remix 集成
@@ -65,7 +65,7 @@ ms.locfileid: "82202390"
 
     ![“Azure Active Directory”按钮][1]
 
-1. 选择 "**企业应用程序** > " "**所有应用程序**"。
+1. 选择 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“企业应用程序”窗口][2]
     
@@ -101,9 +101,9 @@ ms.locfileid: "82202390"
 
     ![E Sales Manager Remix 域和 URL 单一登录信息](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. 在“登录 URL”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/esales-pc*****
+    a. 在 "**登录 url** " 框中，键入以下格式的 URL： *https:// \<Server-Based-URL> / \<sub-domain> /esales-pc*。
 
-    b. 在“标识符”文本框中，使用以下格式键入 URL：*https://\<Server-Based-URL>/\<sub-domain>/*****
+    b. 在 "**标识符**" 框中，键入以下格式的 URL： *https:// \<Server-Based-URL> / \<sub-domain> / *。
 
     c. 记下“标识符”值，以便稍后在本教程中使用。****
     
@@ -120,7 +120,7 @@ ms.locfileid: "82202390"
 
     此时会打开“编辑属性”窗口****。
 
-1. 复制“Namespace”和“Name”值。******** * \<>/\<名称>* 中生成模式命名空间中的值，并将其保存供稍后使用。
+1. 复制“Namespace”和“Name”值。******** 在模式中生成值 *\<Namespace>/\<Name>* ，并将其保存供以后在本教程中使用。
 
     ![“编辑属性”窗口](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "82202390"
 
 1. 在“快速参考”部分，复制注销 URL 和 SAML 单一登录服务 URL。****
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
     ![点击“保存”按钮](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "82202390"
 
     ![“到管理员菜单”命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 在左窗格中，选择 "**系统设置** > " "**与外部系统协作**"。
+1. 在左窗格中，选择 "**系统设置**" "  >  **与外部系统协作**"。
 
     ![“系统设置”和“与外部系统协作”链接](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -166,12 +166,12 @@ ms.locfileid: "82202390"
 
     f. 在“标识提供者登录 URL”框中，粘贴前面从 Azure 门户复制的 SAML 单一登录服务 URL****。
 
-    g. 在“标识提供者注销 URL”框中，粘贴前面从 Azure 门户复制的注销 URL 值。****
+    如， 在“标识提供者注销 URL”框中，粘贴前面从 Azure 门户复制的注销 URL 值。****
 
-    h. 选择“设置完成”。****
+    h.如果该值不存在，请单击“添加行”。 选择“设置完成”。****
 
 > [!TIP]
-> 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 在 " **Active Directory** > **企业应用程序**" 部分添加应用后，请选择 "**单一登录**" 选项卡，然后在底部的 "**配置**" 部分访问嵌入式文档。 有关嵌入式文档功能的详细信息，请参阅 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)。
+> 设置应用时，可以在 [Azure 门户](https://portal.azure.com)中阅读前述教程的简洁版本。 在 " **Active Directory**  >  **企业应用程序**" 部分添加应用后，请选择 "**单一登录**" 选项卡，然后在底部的 "**配置**" 部分访问嵌入式文档。 有关嵌入式文档功能的详细信息，请参阅 [Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
@@ -184,7 +184,7 @@ ms.locfileid: "82202390"
 
     ![“Azure Active Directory”链接](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. 若要显示当前用户的列表，请选择 "**用户和组** > " "**所有用户**"。
+1. 若要显示当前用户的列表，请选择 "**用户和组**" "  >  **所有用户**"。
 
     ![“用户和组”以及“所有用户”链接](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -204,7 +204,7 @@ ms.locfileid: "82202390"
 
     c. 选中 "**显示密码**" 复选框，然后记下 "**密码**" 框中显示的值。
 
-    d. 选择“创建”  。
+    d. 选择“创建”。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>创建 E Sales Manager Remix 测试用户
 
@@ -214,7 +214,7 @@ ms.locfileid: "82202390"
 
     ![E Sales Manager Remix 配置](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 选择**公司的** > "**部门和员工**" 的设置维护，然后选择 "**已注册员工**"。
+1. 选择**公司的**  >  "**部门和员工**" 的设置维护，然后选择 "**已注册员工**"。
 
     ![“注册员工”选项卡](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -240,7 +240,7 @@ ms.locfileid: "82202390"
 
 ![分配用户角色][200] 
 
-1. 在 Azure 门户中，打开 "**应用程序**" 视图，中转到 "**目录**" 视图，然后选择 "**企业应用程序** > " "**所有应用程序**"。
+1. 在 Azure 门户中，打开 "**应用程序**" 视图，中转到 "**目录**" 视图，然后选择 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“企业应用程序”和“所有应用程序”链接][201] 
 

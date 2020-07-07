@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80398462"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Azure 自定义资源提供程序概述
@@ -53,11 +53,11 @@ Azure 自定义资源提供程序是通过在 Azure 和终结点之间创建约�
 }
 ```
 
-属性 | 必选 | 说明
+属性 | 必须 | 说明
 ---|---|---
 name | *是的* | 终结点定义的名称。 Azure 会通过其 API 在“/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}”下公开此名称
-routingType | *不* | 确定**终结点**的协定类型。 如果未指定，则会默认为 "Proxy"。
-endpoint | *是的* | 终结点，可向其路由请求。 此项将处理响应以及请求的任何附带作用。
+routingType | 否** | 确定**终结点**的协定类型。 如果未指定，则会默认为 "Proxy"。
+endpoint | *是* | 终结点，可向其路由请求。 此项将处理响应以及请求的任何附带作用。
 
 ### <a name="building-custom-resources"></a>构建自定义资源
 

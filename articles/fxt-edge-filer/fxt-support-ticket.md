@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72255980"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>为 Azure FXT Edge 文件服务器打开支持票证
@@ -26,12 +26,12 @@ ms.locfileid: "72255980"
    ![空白支持请求窗体的屏幕截图](media/fxt-support-blank.png)
 
 1. 填写请求窗体。  
-    1. 在 "**基本**信息" 选项卡中，选择 "**问题类型** ``Technical``"。 
+    1. 在 "**基本**信息" 选项卡中，选择 "**问题类型**" ``Technical`` 。 
     1. 选择订阅。 
     1. 在 "**服务**" 下，选择 " **Azure FXT Edge 文件服务器**"。 您可能需要单击 "**所有服务**" 筛选器控件才能找到它。 
     1. 输入 "**摘要**"，并选择 "**问题类型**"。 
     ![空白支持请求窗体的屏幕截图](media/fxt-support-populated.png) 
-    1. 单击“下一步”继续。 
+    1. 单击 **“下一步”** 以继续。 
 1. 在 "**详细信息**" 选项卡中，添加有关问题的详细信息以及与你联系的方式。 你可以上传与问题相关的文件。 
 1. 在 "查看" 和 "**创建**" 中，查看信息，然后单击 "**创建**" 按钮提交请求。
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71058626"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>将 Windows 虚拟机重新部署到新的 Azure 节点
@@ -30,7 +30,7 @@ ms.locfileid: "71058626"
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
 请确保已在计算机上安装最新的 Azure PowerShell 1.x。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
-以下示例部署 `myVM` 资源组中名为 `myResourceGroup` 的 VM：
+以下示例部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM：
 
 ```powershell
 Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"

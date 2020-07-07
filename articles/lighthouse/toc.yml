@@ -82,23 +82,23 @@
 - name: 参考
   items:
     - name: Azure CLI
-      href: 'https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest'
+      href: /cli/azure/managedservices?view=azure-cli-latest
     - name: Azure PowerShell
-      href: 'https://docs.microsoft.com/powershell/module/az.managedservices/?view=azps-2.4.0#managed_services'
+      href: /powershell/module/az.managedservices/?view=azps-2.4.0#managed_services
     - name: 用于 .NET 的 Azure SDK
-      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet'
+      href: /dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet
     - name: 用于 .NET 的 Azure SDK (NuGet)
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
     - name: 用于 Python 的 Azure SDK
-      href: 'https://docs.microsoft.com/python/api/azure-mgmt-managedservices'
+      href: /python/api/azure-mgmt-managedservices
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/managedservices/'
+      href: /rest/api/managedservices/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
 - name: 资源
   items:
     - name: 有关 Azure Lighthouse 的 Microsoft Q&A
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-lighthouse.html'
+      href: /answers/topics/azure-lighthouse.html
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定价计算器
