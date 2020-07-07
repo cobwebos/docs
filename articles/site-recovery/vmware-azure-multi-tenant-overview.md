@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74083993"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
@@ -120,7 +119,7 @@ vCenter 帐户访问现已完成。 此步骤可满足完成故障回复操作�
 
 1. 在 Azure 门户中，在之前创建的保管库中，使用你创建的 vCenter 帐户将 vCenter 服务器注册到配置服务器。
 2. 按照常规过程完成 Site Recovery 的“准备基础结构”过程。
-3. VM 现在可以进行复制了。 验证 "**复制** > " "**选择虚拟机**" 中仅显示租户的 vm。
+3. VM 现在可以进行复制了。 验证 "**复制**" "  >  **选择虚拟机**" 中仅显示租户的 vm。
 
 ## <a name="dedicated-hosting-solution"></a>专用托管解决方案
 

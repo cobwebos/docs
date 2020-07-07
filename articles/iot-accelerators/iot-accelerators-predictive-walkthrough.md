@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 0661503dce7ac2707065f60c3952da866ce9dcf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73827412"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>预测性维护解决方案加速器概述
@@ -53,7 +52,7 @@ ms.locfileid: "73827412"
 
 模拟设备可以处理在解决方案中通过 IoT 中心发送的以下命令：
 
-| Command | 说明 |
+| Command | 描述 |
 | --- | --- |
 | StartTelemetry |控制模拟的状态。<br/>使设备开始发送遥测 |
 | StopTelemetry |控制模拟的状态。<br/>使设备停止发送遥测 |
@@ -77,7 +76,7 @@ Azure 机器学习模型可用作模板，它展示了如何使用通过 IoT 解
 
 Azure IoT 预测性维护解决方案加速器使用通过此模板创建的回归模型。 该模型将部署到你的 Azure 订阅，并且将通过一个自动生成的 API 使其可用。 该解决方案包含代表 4 个（共 100 个）引擎和 4 个（共 21 个）传感器数据流的测试数据的子集。 该数据可通过已训练模型提供精确的结果。
 
-*\[1\] . Saxena 和 Goebel （2008）。"Turbofan 引擎降级模拟数据集"，NASA 显示 Prognostics 数据存储库https://c3.nasa.gov/dashlink/resources/139/)（，NASA 显示研究中心，Moffett 字段，CA*
+*\[1 \] . Saxena 和 Goebel （2008）。"Turbofan 引擎降级模拟数据集"，NASA 显示 Prognostics 数据存储库（ https://c3.nasa.gov/dashlink/resources/139/) ，NASA 显示研究中心，Moffett 字段，CA*
 
 ## <a name="next-steps"></a>后续步骤
 了解预测性维护解决方案加速器的关键组件后，可对其进行自定义。

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74080102"
 ---
 # <a name="expressroute-qos-requirements"></a>ExpressRoute QoS 要求
@@ -28,10 +27,10 @@ Skype for Business 具有各种工作负荷，它们要求的 QoS 处理方式�
 
 | **流量类** | **处理方式（DSCP 标记）** | **Microsoft 团队和 Skype for business 工作负荷** |
 | --- | --- | --- |
-| **音质** |EF (46) |Skype/Microsoft 团队/Lync 语音 |
-| **Interactive (交互)** |AF41 (34) |视频，VBSS |
+| **语音** |EF (46) |Skype/Microsoft 团队/Lync 语音 |
+| **交互式** |AF41 (34) |视频，VBSS |
 | |AF21 (18) |应用共享 | 
-| **缺省值** |AF11 (10) |文件传输 |
+| **默认值** |AF11 (10) |文件传输 |
 | |CS0 (0) |任何其他项目 |
 
 * 应该将工作负荷分类，并标记正确的 DSCP 值。 遵循 [此处](https://docs.microsoft.com/SkypeForBusiness/manage/network-management/qos/configuring-port-ranges-for-your-skype-clients#configure-quality-of-service-policies-for-clients-running-on-windows-10) 提供的指导，了解如何在网络中设置 DSCP 标记。

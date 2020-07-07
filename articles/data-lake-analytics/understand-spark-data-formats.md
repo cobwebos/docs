@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73648436"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>了解 U SQL 和 Spark 数据格式之间的差异
@@ -43,7 +42,7 @@ Spark 不理解 U-SQL 表。 如果将数据存储在 U SQL 表中，您将运�
 - 数据语义复制文件时，副本将在字节级别进行。 因此， [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)帐户中应显示相同的数据。 但请注意，Spark 可能会以不同的方式解释某些字符。 例如，对于 CSV 文件中的行分隔符，它可能会使用不同的默认值。
     此外，如果您要复制类型化的数据（从表中），则 Parquet 和 Spark 对于某些类型化值（例如 float）可能具有不同的精度和小数位数，并且可能会以不同的方式处理 null 值。 例如，U SQL 具有用于 null 值的 c # 语义，而 Spark 对于 null 值具有三值逻辑。
 
-- 数据组织（分区） U SQL 表提供了两种级别的分区。 外部级别（`PARTITIONED BY`）的值和映射主要是使用文件夹层次结构的 Hive/Spark 分区方案。 你将需要确保将空值映射到正确的文件夹。 U 中的内部`DISTRIBUTED BY`级别（）提供4个分布方案：轮循机制、范围、哈希和直接哈希。
+- 数据组织（分区） U SQL 表提供了两种级别的分区。 外部级别（ `PARTITIONED BY` ）的值和映射主要是使用文件夹层次结构的 Hive/Spark 分区方案。 你将需要确保将空值映射到正确的文件夹。 U 中的内部级别（ `DISTRIBUTED BY` ）提供4个分布方案：轮循机制、范围、哈希和直接哈希。
     Hive/Spark 表仅支持使用与 U SQL 不同的哈希函数的值分区或哈希分区。 输出 U 型表数据时，您可能只能映射到 Spark 的值分区，并可能需要根据您的最终 Spark 查询进一步优化数据布局。
 
 ## <a name="next-steps"></a>后续步骤

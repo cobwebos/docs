@@ -13,10 +13,9 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68841387"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>在 IBM zD&T v1 中设置应用程序开发人员受控分发（ADCD）
@@ -83,7 +82,7 @@ ms.locfileid: "68841387"
 6. 开始上传到所创建的 Azure VM 目录，该目录将成为 zD&T 的映像存储。
 
     > [!NOTE]
-    > 请确保**ADCDTOOLS。XML**包含在上传到**Home/MYUSERID/ZDT/adcd/nov2017**目录中。 稍后需要用到此值。
+    > 请确保在上传到**home/MyUserID/ZDT/adcd/nov2017**目录中包含**ADCDTOOLS.XML** 。 稍后需要用到此值。
 
 7. 等待文件上传，这可能需要一些时间，具体取决于与 Azure 的连接。
 
@@ -105,7 +104,7 @@ ms.locfileid: "68841387"
         /opt/ibm/zDT/bin/startServer
     ```
 2. 记下命令的 URL 输出，并使用此 URL 来访问 web 服务器。 如下所示：
-     > https：//（你的 VM 名称或 IP 地址）： 9443/ZDTMC/index
+     > https：//（你的 VM 名称或 IP 地址）： 9443/ZDTMC/index.html
      >
      > 请记住，web 访问使用端口9443。 使用此登录到 web 服务器。 ZD&T 的用户 ID 是**zdtadmin** ，密码为**密码**。
 
@@ -190,7 +189,7 @@ ms.locfileid: "68841387"
 
 - [大型机迁移：误解和事实](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上的 IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [疑难解答](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [揭密大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

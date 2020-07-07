@@ -9,7 +9,6 @@ ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, visual studio 2017, visual studio 2019, nuget
 ms.openlocfilehash: b0395118481cbaecd5ad0b6a3a6b3e89cc29dfaf
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932224"

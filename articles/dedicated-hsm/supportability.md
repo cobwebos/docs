@@ -13,10 +13,9 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70881017"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 专用 HSM 的支持
@@ -96,5 +95,5 @@ HSM 设备带有冗余且可更换的电源和风扇装置。  但是，风扇�
 * [部署体系结构](deployment-architecture.md)
 * [高可用性](high-availability.md)
 * [物理安全性](physical-security.md)
-* [联网](networking.md)
+* [网络](networking.md)
 

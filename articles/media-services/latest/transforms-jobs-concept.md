@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73571235"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
@@ -50,7 +49,7 @@ ms.locfileid: "73571235"
 **转换**可帮助你一次性创建脚本（步骤 1），然后使用该脚本提交作业（步骤 2）。
 
 > [!NOTE]
-> 属于日期/时间类型的转换  和作业  的属性始终采用 UTC 格式。
+> 属于日期/时间类型的转换和作业的属性始终采用 UTC 格式。
 
 ## <a name="transforms"></a>转换
 
@@ -66,7 +65,7 @@ ms.locfileid: "73571235"
 
 ### <a name="updating-transforms"></a>更新转换
 
-如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。  此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
+如果需要更新[转换](https://docs.microsoft.com/rest/api/media/transforms)，请使用“更新”操作。 此操作旨在对底层 TransformOutputs 的说明或优先级进行更改。 建议在所有正在进行的作业都完成后执行这类更新。 如果你想要重写脚本，则需要创建新的转换。
 
 ### <a name="transform-object-diagram"></a>转换对象关系图
 
@@ -78,7 +77,7 @@ ms.locfileid: "73571235"
 
 ## <a name="jobs"></a>作业
 
-**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息  。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
+**作业**是针对媒体服务的实际请求，目的是将**转换**应用到给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 Job 指定输入视频位置和输出位置等信息。 可以使用以下各项指定输入视频的位置：HTTPS URL、SAS URL 或[资产](https://docs.microsoft.com/rest/api/media/assets)。  
 
 ### <a name="job-input-from-https"></a>来自 HTTPS 的作业输入
 
@@ -94,13 +93,13 @@ ms.locfileid: "73571235"
 
 ### <a name="updating-jobs"></a>更新作业
 
-[作业实体上](https://docs.microsoft.com/rest/api/media/jobs)的更新操作可用于在提交作业后修改*说明*和*优先级*属性。 仅当作业仍处于排队状态时，对优先级** 属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
+对[作业](https://docs.microsoft.com/rest/api/media/jobs)实体进行的更新操作可以用于在作业提交之后修改说明或优先级。 仅当作业仍处于排队状态时，对优先级属性所做的更改才有效。 如果作业已开始处理或已完成，则更改优先级不起作用。
 
 ### <a name="job-object-diagram"></a>作业对象关系图
 
 下图显示了**作业**对象及其引用的对象，包括派生关系。
 
-单击图像可查看其完整大小。  
+单击图像查看其完整大小。  
 
 <a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
 
@@ -124,6 +123,6 @@ ms.locfileid: "73571235"
 - 在开始开发之前，请查看[使用媒体服务 v3 API 进行开发](media-services-apis-overview.md)（包括有关访问 API、命名约定等的信息）
 - 查看以下教程：
 
-    - [教程：根据 URL 编码远程文件并流式传输视频](stream-files-tutorial-with-rest.md)
-    - [教程：上传、编码和流式处理视频](stream-files-tutorial-with-api.md)
+    - [教程：基于 URL 对远程文件进行编码并流式传输视频](stream-files-tutorial-with-rest.md)
+    - [教程：上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
     - [教程：使用媒体服务 v3 来分析视频](analyze-videos-tutorial-with-api.md)

@@ -11,10 +11,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73667652"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
@@ -25,7 +24,7 @@ ms.locfileid: "73667652"
 
 ## <a name="data-factory-system-variables"></a>数据工厂系统变量
 
-| 变量名 | 说明 | 对象作用域 | JSON 作用域和用例 |
+| 变量名 | 描述 | 对象作用域 | JSON 作用域和用例 |
 | --- | --- | --- | --- |
 | WindowStart |当前活动运行窗口的开始时间间隔 |activity |<ol><li>指定数据选择查询。 请参阅[数据移动活动](data-factory-data-movement-activities.md)一文中引用的连接器文章。</li> |
 | WindowEnd |当前活动运行窗口的结束时间间隔 |activity |与 WindowStart 相同。 |
@@ -56,7 +55,7 @@ ms.locfileid: "73667652"
 
 1. 指定数据选择查询（请参阅[数据移动活动](data-factory-data-movement-activities.md)一文引用的连接器文章）。
    
-   调用数据工厂函数的语法是： ** $$ \<函数>** 用于数据选择查询以及活动和数据集中的其他属性。  
+   用于调用数据工厂函数的语法是： **$$\<function>** 用于数据选择查询以及活动和数据集中的其他属性。  
 2. 指定活动输入集合中含数据工厂函数的输入依赖项。
    
     指定输入依赖项表达式不需要 $$。     
@@ -77,12 +76,12 @@ ms.locfileid: "73667652"
 
 | 类别 | 函数 | 参数 | 说明 |
 | --- | --- | --- | --- |
-| 时间 |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例： `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| 时间 |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| 时间 |StartOfHour(X) |X: Datetime |获取由 X 小时部分表示的小时起始时间。 <br/><br/>示例： `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| 时间 |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |向给定时间 X 加 Y 小时。 <br/><br/>示例：`9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| 时间 |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y 分钟。<br/><br/>示例：`9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| 时间 |StartOfHour(X) |X: Datetime |获取由 X 小时部分表示的小时起始时间。 <br/><br/>示例：`StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | 日期 |AddDays(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 天。 <br/><br/>示例：2013/9/15 中午 12:00:00 + 2 天 = 2013/9/17 中午 12:00:00。<br/><br/>也可指定 Y 为负数来减去天数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`。 |
 | 日期 |AddMonths(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 个月。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>也可指定 Y 为负数来减去月数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`。|
-| 日期 |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y * 3 个月。<br/><br/>示例： `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| 日期 |AddQuarters(X,Y) |X: DateTime <br/><br/>Y: int |向 X 加 Y * 3 个月。<br/><br/>示例：`9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | 日期 |AddWeeks(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y * 7 天<br/><br/>示例：2013/9/15 中午 12:00:00 + 1 周 = 2013/9/22 中午 12:00:00<br/><br/>也可指定 Y 为负数来减去周数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`。 |
 | 日期 |AddYears(X,Y) |X: DateTime<br/><br/>Y: int |向 X 加 Y 年。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>也可指定 Y 为负数来减去年数。<br/><br/>示例：`9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`。 |
 | 日期 |Day(X) |X: DateTime |获取 X 的日期号数部分。<br/><br/>示例：`Day of 9/15/2013 12:00:00 PM is 9`。 |
@@ -97,7 +96,7 @@ ms.locfileid: "73667652"
 | Text |Format(X) |X: String variable |设置文本格式（使用 `\\'` 组合转义 `'` 字符）。|
 
 > [!IMPORTANT]
-> 在其他函数中使用函数时，不需要对内部函数使用**$$** 前缀。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\''、Time.AddHours(SliceStart, -6))。 在此示例中，请**$$** 注意**AddHours**函数不使用前缀。 
+> 在其他函数中使用函数时，不需要对 **$$** 内部函数使用前缀。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\''、Time.AddHours(SliceStart, -6))。 在此示例中，请注意 **$$** **AddHours**函数不使用前缀。 
 
 #### <a name="example"></a>示例
 在以下示例中，使用 `Text.Format` 函数和 SliceStart 系统变量决定 Hive 活动的输入和输出参数。 

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73954591"
 ---
 # <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理用于本地灾难恢复到 Azure 的 VM 网络接口
@@ -42,7 +41,7 @@ Azure 中的虚拟机 (VM) 必须附加有至少一个网络接口。 它可以�
 
 ## <a name="select-the-target-interface-type"></a>选择目标接口类型
 
-在“计算和网络”  窗格中的“网络接口”  部分下，可查看和编辑网络接口设置。 还可指定目标网络接口类型。
+在“计算和网络”窗格中的“网络接口”部分下，可查看和编辑网络接口设置。 还可指定目标网络接口类型。
 
 - 故障转移需使用主网络接口  。
 - 所有其他选定的网络接口（若有）为“辅助”  网络接口。

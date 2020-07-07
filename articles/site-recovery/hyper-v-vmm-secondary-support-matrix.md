@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74132965"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
@@ -68,7 +67,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://d
 
 ### <a name="host-storage"></a>主机存储
 
-**存储（主机）** | **受**
+**存储（主机）** | **支持**
 --- | --- 
 NFS | 不适用
 SMB 3.0 |  是
@@ -77,7 +76,7 @@ SAN (ISCSI) | 是
 
 ### <a name="guest-or-physical-server-storage"></a>来宾或物理服务器存储
 
-**配置** | **受**
+**配置** | **支持**
 --- | --- | 
 VMDK |  不适用
 VHD/VHDX | 是（最多 16 个磁盘）
@@ -97,7 +96,7 @@ RDM | 不适用
 
 ## <a name="vaults"></a>保管库
 
-**操作** | **受**
+**操作** | **支持**
 --- | --- 
 跨资源组移动保管库（订阅内或跨订阅移动） |  否
 跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否
@@ -106,7 +105,7 @@ RDM | 不适用
 
 该提供程序协调 VMM 服务器之间的通信。 
 
-**最近** | **更新**
+**最新** | **更新**
 --- | --- 
 5.1.19（[可从门户获取](https://aka.ms/downloaddra)） | [最新功能和修复](https://support.microsoft.com/kb/3155002)
 

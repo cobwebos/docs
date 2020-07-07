@@ -9,7 +9,6 @@ ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 深度, rgb, 设备, 查找, 打开
 ms.openlocfilehash: 67fc93b924d5d663bb43098969c54d1975bd5895
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73931741"

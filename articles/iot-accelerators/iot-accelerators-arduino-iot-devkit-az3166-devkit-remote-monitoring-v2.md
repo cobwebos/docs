@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73888863"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>将 IoT DevKit 设备连接到远程监视解决方案加速器
@@ -36,7 +35,7 @@ ms.locfileid: "73888863"
 
 1. 确保 IoT DevKit 未连接到计算机。 先启动 VS Code，然后将 DevKit 连接到计算机。
 
-1. 单击`F1`打开命令面板，键入并选择 " **Azure IoT 设备工作台：打开示例 ...**"。然后选择 " **IoT DevKit** as 板"。
+1. 单击  以打开命令面板，键入并选择“Azure IoT Device Workbench:**打开示例...” 。然后选择“IoT DevKit”作为开发板。
 
 1. 找到“远程监视”****，然后单击“打开示例”****。 此时会打开一个新的 VS Code 窗口，其中显示项目文件夹：
 
@@ -63,7 +62,7 @@ ms.locfileid: "73888863"
 
 若要生成并上传设备代码，请执行以下操作：
 
-1. 按`F1`打开命令面板，键入并选择 " **Azure IoT 设备工作台：上传设备代码**"：
+1. 按 `F1` 打开命令面板，键入并选择 " **Azure IoT 设备工作台：上传设备代码**"：
 
 1. VS Code 会编译代码并将其上传到 DevKit 设备：
 

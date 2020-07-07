@@ -20,24 +20,23 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113175"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 认知搜索中的 OData 地理空间函数 - `geo.distance` 和 `geo.intersects`
 
-Azure 认知搜索支持使用 [ 和 ](query-odata-filter-orderby-syntax.md) 函数通过 `geo.distance`OData 筛选器表达式`geo.intersects`进行地理空间查询。 `geo.distance` 函数以公里为单位返回两点之间的距离，一个点是字段或范围变量，另一个点是作为筛选器一部分传递的常量。 如果给定的点位于给定的多边形范围内（其中该点是字段或范围变量，多边形指定为作为筛选器一部分传递的常量），`geo.intersects` 函数会返回 `true`。
+Azure 认知搜索支持使用 `geo.distance` 和 `geo.intersects` 函数通过 [OData 筛选器表达式](query-odata-filter-orderby-syntax.md)进行地理空间查询。 `geo.distance` 函数以公里为单位返回两点之间的距离，一个点是字段或范围变量，另一个点是作为筛选器一部分传递的常量。 如果给定的点位于给定的多边形范围内（其中该点是字段或范围变量，多边形指定为作为筛选器一部分传递的常量），`geo.intersects` 函数会返回 `true`。
 
-`geo.distance` 函数也可用在 [ **$orderby** 参数](search-query-odata-orderby.md)中，以便按照与给定点的距离对搜索结果排序。 `geo.distance`$orderby**中** 的语法与其在 **$filter** 中的语法相同。 如果在 `geo.distance`$orderby**中使用**，则它应用到的字段必须为 `Edm.GeographyPoint` 类型，而且它还必须是**可排序的**。
+`geo.distance` 函数也可用在 [ **$orderby** 参数](search-query-odata-orderby.md)中，以便按照与给定点的距离对搜索结果排序。 **$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，则它应用到的字段必须为 `Edm.GeographyPoint` 类型，而且它还必须是**可排序的**。
 
 > [!NOTE]
-> 在 `geo.distance`$orderby**参数中使用** 时，传递给函数的字段只能包含单个地理点。 换言之，它必须是类型 `Edm.GeographyPoint` 而非 `Collection(Edm.GeographyPoint)`。 不可能在 Azure 认知搜索中对集合字段排序。
+> 在 **$orderby** 参数中使用 `geo.distance` 时，传递给函数的字段只能包含单个地理点。 换言之，它必须是类型 `Edm.GeographyPoint` 而非 `Collection(Edm.GeographyPoint)`。 不可能在 Azure 认知搜索中对集合字段排序。
 
 ## <a name="syntax"></a>语法
 
-以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 `geo.distance` 和 `geo.intersects` 函数的语法，以及这些函数运算时依据的地理空间值：
+以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 `geo.distance` 和函数的语法 `geo.intersects` ，以及它们运行时所在的地理空间值：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,7 +60,7 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
@@ -94,10 +93,10 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 
 ### <a name="geo-spatial-functions-and-null"></a>地理空间函数和 `null`
 
-与 Azure 认知搜索中的所有其他非集合字段一样，类型为 `Edm.GeographyPoint` 的字段可以包含 `null` 值。 当 Azure 认知搜索对 `geo.intersects` 字段的 `null` 求值时，结果始终为 `false`。 在这种情况下，`geo.distance` 的行为取决于上下文：
+与 Azure 认知搜索中的所有其他非集合字段一样，类型为 `Edm.GeographyPoint` 的字段可以包含 `null` 值。 当 Azure 认知搜索对 `null` 字段的 `geo.intersects` 求值时，结果始终为 `false`。 在这种情况下，`geo.distance` 的行为取决于上下文：
 
-- 在筛选器中，`geo.distance` 字段的 `null` 会生成 `null`。 这意味着文档不会匹配，因为与任何非 null 值一比较，`null` 的求值结果均为 `false`。
-- 使用 **$orderby** 对结果排序时，`geo.distance` 字段的 `null` 会生成最大的可能距离。 包含此类字段的文档在使用排序方向 `asc`（默认）排序时其位置会低于所有其他文档，在方向为 `desc` 时会高于所有其他文档。
+- 在筛选器中，`null` 字段的 `geo.distance` 会生成 `null`。 这意味着文档不会匹配，因为与任何非 null 值一比较，`null` 的求值结果均为 `false`。
+- 使用 **$orderby** 对结果排序时，`null` 字段的 `geo.distance` 会生成最大的可能距离。 包含此类字段的文档在使用排序方向 `asc`（默认）排序时其位置会低于所有其他文档，在方向为 `desc` 时会高于所有其他文档。
 
 ## <a name="examples"></a>示例
 

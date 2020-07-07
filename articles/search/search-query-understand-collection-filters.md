@@ -20,10 +20,9 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113071"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>了解 Azure 认知搜索中的 OData 集合筛选器
@@ -147,7 +146,7 @@ ms.locfileid: "74113071"
 
 此数据结构旨在快速解答一个问题：给定的字词出现在哪些文档中？ 解答此问题的过程更像是一个普通的相等性检查，而不是基于集合的循环。 事实上，正因如此，对于字符串集合，Azure 认知搜索仅允许使用 `eq` 作为 `any` 的 Lambda 表达式中的比较运算符。
 
-基于相等性，接下来我们将探讨如何使用 `or` 来合并多个针对同一范围变量执行的相等性检查。 此方法得益于代数原理以及[限定符的分布属性](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此表达式：
+基于相等性，接下来我们将探讨如何使用 `or` 来合并多个针对同一范围变量执行的相等性检查。 它的工作方式得益于代数和[限定符的分配律](https://en.wikipedia.org/wiki/Existential_quantification#Negation)。 此表达式：
 
     seasons/any(s: s eq 'winter' or s eq 'fall')
 
@@ -155,7 +154,7 @@ ms.locfileid: "74113071"
 
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
 
-可以使用倒排索引有效执行两个 `any` 子表达式中的每一个。 另外，得益于[限定符的求反法则](https://en.wikipedia.org/wiki/Existential_quantification#Negation)，此表达式：
+可以使用倒排索引有效执行两个 `any` 子表达式中的每一个。 另外，由于[限定符的求反定律](https://en.wikipedia.org/wiki/Existential_quantification#Negation)，此表达式如下所示：
 
     seasons/all(s: s ne 'winter' and s ne 'fall')
 
@@ -174,7 +173,7 @@ ms.locfileid: "74113071"
 >
 > 相反的规则适用于 `all`。
 
-在对支持 `lt`、`gt`、`le` 和 `ge` 运算符的数据类型集合进行筛选时，可以使用更多种表达式，例如 `Collection(Edm.Int32)`。 具体而言，可以在 `any` 中使用 `and` 以及 `or`，前提是使用 `and` 将基础比较表达式合并到**范围比较**，然后使用 `or` 进一步合并。 这种布尔表达式结构称为[析取范式 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也称为“AND 的 OR”。 相反，这些数据类型的 `all` Lambda 表达式必须采用[合取范式 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，也称为“OR 的 AND”。 Azure 认知搜索之所以允许此类范围比较，是因为它可以有效地使用倒排索引执行这些比较，就像它可以针对字符串执行快速字词查找一样。
+在对支持 `lt`、`gt`、`le` 和 `ge` 运算符的数据类型集合进行筛选时，可以使用更多种表达式，例如 `Collection(Edm.Int32)`。 具体而言，可以在 `any` 中使用 `and` 以及 `or`，前提是使用 `and` 将基础比较表达式合并到**范围比较**，然后使用 `or` 进一步合并。 此布尔表达式的结构称为[析取范式 Normal Form （DNF）](https://en.wikipedia.org/wiki/Disjunctive_normal_form)，也称为 "Or of ANDs"。 相反， `all` 针对这些数据类型的 lambda 表达式必须是[联合 Normal 形式（.cnf）](https://en.wikipedia.org/wiki/Conjunctive_normal_form)，也称为 "ANDs of or"。 Azure 认知搜索之所以允许此类范围比较，是因为它可以有效地使用倒排索引执行这些比较，就像它可以针对字符串执行快速字词查找一样。
 
 下面汇总了有关 Lambda 表达式中允许的元素的经验法则：
 

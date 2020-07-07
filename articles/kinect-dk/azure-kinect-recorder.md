@@ -9,7 +9,6 @@ ms.topic: conceptual
 keywords: kinect, 录制, 播放, 读取器, matroska, mkv, 流, 深度, rgb, 相机, 彩色, imu, 音频
 ms.openlocfilehash: 5fb6895d4102956a991c67ffab836a26b7a3abb0
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932222"

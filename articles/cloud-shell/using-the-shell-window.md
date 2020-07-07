@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70860325"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
@@ -47,8 +46,8 @@ ms.locfileid: "70860325"
 ## <a name="upload-and-download-files"></a>上传和下载文件
 单击窗口左上角的 "上传/下载文件" 图标，然后选择 "上传" 或 "下载"。  
 ![上传/下载文件](media/using-the-shell-window/uploaddownload.png)
-* 若要上载文件，请使用弹出窗口浏览到本地计算机上的文件，选择所需的文件，然后单击 "打开" 按钮。  文件将上传到`/home/user`目录。
-* 对于 "下载文件"，请在弹出窗口中输入完全限定的文件路径（即，在默认情况下显示`/home/user`在目录下的路径），然后选择 "下载" 按钮。  
+* 若要上载文件，请使用弹出窗口浏览到本地计算机上的文件，选择所需的文件，然后单击 "打开" 按钮。  文件将上传到 `/home/user` 目录。
+* 对于 "下载文件"，请在弹出窗口中输入完全限定的文件路径（即，在默认情况下显示在目录下的路径 `/home/user` ），然后选择 "下载" 按钮。  
 > [!NOTE] 
 > 文件和文件路径在 Cloud Shell 中区分大小写。 仔细检查文件路径中的大小写。
 

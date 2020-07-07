@@ -17,10 +17,9 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74008269"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的使用情况和见解报告
@@ -41,7 +40,7 @@ ms.locfileid: "74008269"
 
 ## <a name="access-the-usage-and-insights-report"></a>访问使用情况和见解报告
 
-1. 导航到[Azure 门户](https://portal.azure.com)。
+1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 选择正确的目录，然后选择 " **Azure Active Directory** "，然后选择 "**企业应用程序**"。
 3. 从 "**活动**" 部分中，选择 "**使用情况 & insights** " 以打开报表。 
 

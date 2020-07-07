@@ -8,20 +8,19 @@ ms.service: web-application-firewall
 ms.date: 10/31/2019
 ms.author: victorh
 ms.openlocfilehash: 89c863e85d9eab27a47bc1bf7b98cd1c8d89e900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73516859"
 ---
-# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>为 Azure 应用程序网关（预览版）上的 Web 应用程序防火墙配置机器人保护
+# <a name="configure-bot-protection-for-web-application-firewall-on-azure-application-gateway-preview"></a>为 Azure 应用程序网关上的 Web 应用程序防火墙配置机器人防护（预览）
 
 本文介绍如何使用 Azure 门户在 Azure Web 应用程序防火墙（WAF）中为应用程序网关配置机器人保护规则。 
 
-可以为 WAF 启用托管机器人保护规则集，以便阻止或记录来自已知恶意 IP 地址的请求。 IP 地址源自 Microsoft 威胁智能源。 Intelligent Security Graph 为 Microsoft 威胁智能助力，它已得到 Azure Security Center 等多项服务的运用。
+可以为 WAF 启用托管机器人防护规则集，以便阻止或记录来自已知恶意 IP 地址的请求。 IP 地址源自 Microsoft 威胁智能源。 Intelligent Security Graph 为 Microsoft 威胁智能助力，它已得到 Azure Security Center 等多项服务的运用。
 
 > [!NOTE]
-> 机器人保护规则集当前以公共预览版提供，并随预览版服务级别协议一起提供。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 的补充使用条款。
+> 机器人防护规则集当前为公共预览版，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。 有关详细信息，请参阅  [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +30,7 @@ ms.locfileid: "73516859"
 
 1. 在之前创建的**基本**策略页中的 "**设置**" 下，选择 "**规则**"。  
 
-2. 在 "详细信息" 页的 " **管理规则** " 部分下，从下拉菜单中选中 "机器人保护规则" 复选框，然后选择 "**保存**"。
+2. 在 "详细信息" 页的 " **管理规则**"   部分下，从下拉菜单中选中 "机器人保护规则" 复选框，然后选择 "**保存**"。
 
 > [!div class="mx-imgBorder"]
 > ![机器人防护](../media/bot-protection/bot-protection.png)

@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73824117"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 克隆部署到现有项目
@@ -52,7 +51,7 @@ cd azure-iiot-components
 
    输出包括公共终结点的 URL。 
 
-3. 脚本成功完成后，选择是否要保存该`.env`文件。  如果要使用`.env`诸如控制台之类的工具连接到云终结点或部署和调试模块来连接到云终结点，则需要环境文件。
+3. 脚本成功完成后，选择是否要保存该 `.env` 文件。  `.env`如果要使用诸如控制台之类的工具连接到云终结点或部署和调试模块来连接到云终结点，则需要环境文件。
 
 ## <a name="troubleshooting-deployment-failures"></a>部署故障排除
 

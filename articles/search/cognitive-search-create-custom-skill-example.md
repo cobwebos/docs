@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113816"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>示例：使用必应实体搜索 API 创建自定义技能
@@ -311,7 +310,7 @@ namespace SampleSkills
 }
 ```
 
-请确保根据注册必应*key*实体搜索 API 时`key`获得的密钥，在常量中输入自己的密钥值。
+请确保*key* `key` 根据注册必应实体搜索 API 时获得的密钥，在常量中输入自己的密钥值。
 
 为方便起见，此示例在单个文件中包含了所有必需的代码。 可以在 [power skills 存储库](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)中找到该同一技能的结构略好的版本。
 

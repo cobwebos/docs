@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
 ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74122189"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补
@@ -65,7 +64,7 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 
 客户端应用程序遇到的错误数目取决于故障转移时该连接上挂起的操作数目。 通过关闭连接的节点路由的任何连接将遇到错误。 在连接中断时，许多客户端库可能会引发不同类型的错误，包括超时异常、连接异常或套接字异常。 异常的数目和类型取决于当缓存关闭其连接时，请求在代码路径中所处的位置。 例如，在发生故障转移时发送了请求但未收到响应的操作可能会收到超时异常。 对关闭的连接对象发出的新请求将收到连接异常，直到重新连接成功为止。
 
-大多数客户端库会尝试重新连接到缓存（如果采用此配置）。 但是，不可预测的 bug 偶尔会将库对象置于不可恢复状态。 如果出错的持续时间超过了预先配置的时间，则应重新创建连接对象。 在 Microsoft.NET 和其他面向对象的语言中，可以使用 [Lazy\<T\> 模式](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)来重新创建连接，而无需重启应用程序。
+大多数客户端库会尝试重新连接到缓存（如果采用此配置）。 但是，不可预测的 bug 偶尔会将库对象置于不可恢复状态。 如果出错的持续时间超过了预先配置的时间，则应重新创建连接对象。 在 Microsoft.NET 和其他面向对象的语言中，无需重新启动应用程序即可重新创建连接，这可以通过使用[迟缓 \<T\> 模式](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern)来完成。
 
 ### <a name="how-do-i-make-my-application-resilient"></a>如何使应用程序能够复原？
 

@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73666971"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>使用 Azure 门户和 PowerShell 监视和管理 Azure 数据工厂管道
@@ -46,7 +45,7 @@ ms.locfileid: "73666971"
 本部分还介绍数据集切片如何从一个状态转换为另一状态。   
 
 ### <a name="navigate-to-your-data-factory"></a>导航到数据工厂
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧菜单中，单击“数据工厂”****。 如未看到，请单击“更多服务 >”****，并在“智能 + 分析”**** 类别下单击“数据工厂”****。
 
    ![“浏览全部”->“数据工厂”](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -87,7 +86,7 @@ ms.locfileid: "73666971"
 
 <table>
 <tr>
-    <th align="left">状态</th><th align="left">子状态</th><th align="left">说明</th>
+    <th align="left">状态</th><th align="left">子状态</th><th align="left">描述</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行切片的时间。</td>
@@ -121,7 +120,7 @@ ms.locfileid: "73666971"
 <td>正在处理切片。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
+<td rowspan="4">已失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
 </tr>
 <tr>
 <td>已取消</td><td>切片已由用户操作取消。</td>
@@ -135,10 +134,10 @@ ms.locfileid: "73666971"
 <td>就绪</td><td>-</td><td>切片已就绪，可供使用。</td>
 </tr>
 <tr>
-<td>已跳过</td><td>无</td><td>未在处理切片。</td>
+<td>已跳过</td><td>None</td><td>未在处理切片。</td>
 </tr>
 <tr>
-<td>无</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
+<td>None</td><td>-</td><td>切片过去一直以不同状态存在，但已被重置。</td>
 </tr>
 </table>
 
@@ -216,7 +215,7 @@ Azure 数据工厂提供了通过 Azure 门户和 Azure PowerShell 调试和排�
    ![出现错误的“活动运行详细信息”边栏选项卡](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>使用 PowerShell 调试错误
-1. 启动“PowerShell”****。
+1. 启动 **PowerShell**。
 2. 运行**AzDataFactorySlice**命令以查看切片及其状态。 应看到“失败”**** 状态的切片。        
 
     ```powershell   
@@ -305,7 +304,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![打开“警报”页。](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
 
-2.  选择“+ 创建新的预警规则”，创建新的警报****。
+2.  选择“+ 创建新的预警规则”，创建新的警报。
 
     ![新建警报](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
@@ -321,7 +320,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![定义警报详细信息](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-5.  定义操作组****。
+5.  定义**操作组**。
 
     ![定义操作组 - 新建操作组](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 

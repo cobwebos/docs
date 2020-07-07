@@ -9,10 +9,9 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74168363"
 ---
 # <a name="add-an-email-action"></a>添加电子邮件操作
@@ -49,7 +48,7 @@ ms.locfileid: "74168363"
 
 1. 确保“规则状态”设置为“已启用”********。
 
-1. 单击“应用”  。
+1. 单击“应用”。
 
 ## <a name="create-a-new-rule"></a>创建新规则
 
@@ -77,7 +76,7 @@ ms.locfileid: "74168363"
 
 1. 确保“规则状态”设置为“已启用”********。
 
-1. 单击“应用”  。
+1. 单击“应用”。
 
 现已启用包含电子邮件操作的规则。 每次触发操作时，新的电子邮件都会发送给收件人。
 
@@ -96,7 +95,7 @@ ms.locfileid: "74168363"
 
 以下步骤演示了如何手动设置和验证电子邮件操作：
 
-1. 导航到[Azure 门户](https://portal.azure.com)。
+1. 导航到 [Azure 门户](https://portal.azure.com)。
 
 1. 导航到解决方案加速器的资源组。
 
@@ -132,7 +131,7 @@ ms.locfileid: "74168363"
 
 1. 单击“授权”****。 系统会提示你进行登录。 用于登录的帐户应是该应用程序用于发送电子邮件通知的电子邮件地址：
 
-1. 单击“ **保存**”。 返回到解决方案加速器并刷新页面。
+1. 单击“保存” 。 返回到解决方案加速器并刷新页面。
 
 1. 如果已成功配置电子邮件通知，则会显示以下消息：
 

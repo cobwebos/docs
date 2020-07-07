@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889239"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
@@ -67,7 +66,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 1. 请务必将“宿主环境”保留为默认值“云”。****
 
-1. 单击“创建”。 
+1. 单击“创建”。
 
     ![创建流分析作业](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -89,7 +88,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
     ![选择输入](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 
 1. 在“概述”页上单击“输出”。****
 
@@ -118,7 +117,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
     > [!NOTE]
     > 如果弹出窗口中显示错误，请以 Incognito 模式打开新浏览器窗口，然后重试。
 
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 
 ## <a name="edit-the-stream-analytics-query"></a>编辑流分析查询
 
@@ -141,7 +140,7 @@ Azure 流分析使用类似于 SQL 的查询语言来指定用于流式传输数
 
     ![流分析查询](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 1. 单击“是”接受更改。****
 
 ## <a name="start-the-stream-analytics-job"></a>启动流分析作业
@@ -154,7 +153,7 @@ Azure 流分析使用类似于 SQL 的查询语言来指定用于流式传输数
 
 1. 将自定义时间往回设置几个小时，以便从设备开始流式传输时开始拾取数据。
 
-1. 单击“启动”  。
+1. 单击“启动”。
 
     ![选择自定义日期](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 

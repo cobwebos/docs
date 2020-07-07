@@ -20,10 +20,9 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113148"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $orderby 语法
@@ -32,7 +31,7 @@ ms.locfileid: "74113148"
 
 ## <a name="syntax"></a>语法
 
-**$orderby** 参数接受最多 32 个 **order-by 子句**的逗号分隔列表。 order-by 子句的语法由以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）描述：
+**$orderby** 参数接受最多 32 个 **order-by 子句**的逗号分隔列表。 下面的 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）描述了 order by 子句的语法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,13 +41,13 @@ order_by_clause ::= (field_path | sortable_function) ('asc' | 'desc')?
 sortable_function ::= geo_distance_call | 'search.score()'
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#order_by_clause)
 
 > [!NOTE]
-> 请参阅[适用于 Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以获取完整的 EBNF。
+> 请参阅 [Azure 认知搜索的 OData 表达式语法参考](search-query-odata-syntax-reference.md)以了解完整的 EBNF。
 
 每个子句都有排序条件，可以选择后跟排序方向（`asc` 表示升序，或 `desc` 表示降序）。 如果不指定方向，则默认为升序。 排序条件可以是 `sortable` 字段的路径，也可以是对 [`geo.distance`](search-query-odata-geo-spatial-functions.md) 或 [`search.score`](search-query-odata-search-score-function.md) 函数的调用。
 
@@ -56,9 +55,9 @@ sortable_function ::= geo_distance_call | 'search.score()'
 
 可以指定多个排序条件。 表达式的顺序决定最终排序顺序。 例如，若要按分数降序排序，然后按评分排序，语法将为 `$orderby=search.score() desc,Rating desc`。
 
-`geo.distance`$orderby**中** 的语法与其在 **$filter** 中的语法相同。 如果在 `geo.distance`$orderby**中使用**，其应用到的字段必须为 `Edm.GeographyPoint` 类型，且还必须 `sortable`。
+**$orderby** 中 `geo.distance` 的语法与其在 **$filter** 中的语法相同。 如果在 **$orderby** 中使用 `geo.distance`，其应用到的字段必须为 `Edm.GeographyPoint` 类型，且还必须 `sortable`。
 
-`search.score`$orderby**中** 的语法为 `search.score()`。 函数 `search.score` 不接受任何参数。
+**$orderby** 中 `search.score` 的语法为 `search.score()`。 函数 `search.score` 不接受任何参数。
 
 ## <a name="examples"></a>示例
 

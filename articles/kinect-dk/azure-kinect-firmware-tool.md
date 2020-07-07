@@ -9,7 +9,6 @@ ms.topic: conceptual
 keywords: kinect, 固件, 更新
 ms.openlocfilehash: f8b89751d27fb5a4b18d635f45f63f4f36bd05f6
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "73932223"

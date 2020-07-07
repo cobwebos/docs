@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
 ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70279434"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>评估大量要迁移到 Azure 的 Hyper-v Vm
@@ -47,9 +46,9 @@ ms.locfileid: "70279434"
 **规划** | **限制**
 --- | --- 
 **Azure Migrate 项目** | 在项目中评估最多35000个 Vm。
-**Azure Migrate 设备** | 设备最多可以发现 5000 Vm。<br/> 一个设备最多可以连接到300个 Hyper-v 主机。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
+**Azure Migrate 设备** | 设备最多可以发现 5000 Vm。<br/> 一个设备最多可连接到 300 个 Hyper-V 主机。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
 **组** | 最多可以在一个组中添加35000个 Vm。
-**Azure Migrate 评估** | 在单个评估中，最多可以评估 35000 Vm。
+**Azure Migrate 评估** | 一次评估中最多可以评估 35,000 个 VM。
 
 
 
@@ -58,7 +57,7 @@ ms.locfileid: "70279434"
 - 若要从设备启动发现，你必须选择每个 Hyper-v 主机。 
 - 如果正在运行多租户环境，则当前无法仅发现属于特定租户的 Vm。 
 
-## <a name="prepare-for-assessment"></a>准备评估
+## <a name="prepare-for-assessment"></a>准备进行评估
 
 为服务器评估准备 Azure 和 Hyper-v。 
 

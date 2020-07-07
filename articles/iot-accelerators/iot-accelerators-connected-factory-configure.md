@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820120"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
@@ -264,12 +263,12 @@ ms.locfileid: "73820120"
 
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
-* 名称
-* 说明
-* 映像
+* “属性”
+* 描述
+* 图像
 * 位置
-* 单位
-* Visible
+* 单元
+* 可见
 
 ### <a name="internal-topology-tree-addressing"></a>内部拓扑树寻址
 
@@ -282,7 +281,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 * 要包括在计算中的 OPC UA 节点值。
 * 从遥测值计算图表数据的方式。
 
-连接工厂使用由发布的 OEE 公式[http://www.oeefoundation.org](http://www.oeefoundation.org)。
+连接工厂使用由发布的 OEE 公式 [http://www.oeefoundation.org](http://www.oeefoundation.org) 。
 
 工作站中的 OPC UA 节点对象支持在 OEE/KPI 计算中使用标记。 Relevance 属性指示 OPC UA 节点值应用于的 OEE/KPI 图表数据****。 OpCode 属性定义如何在计算中包含值****。
 
@@ -291,7 +290,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 连接的工厂支持基于最小/最大阈值的简单警报生成机制。 可以配置大量的预定义操作以响应这些警报。 此机制由以下属性控制：
 
 * 最大值
-* 最小值
+* 最低配置
 * MaximumAlertActions
 * MinimumAlertActions
 

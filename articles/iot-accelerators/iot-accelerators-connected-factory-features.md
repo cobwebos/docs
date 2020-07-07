@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73820109"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>什么是连接的工厂 IoT 解决方案加速器？
@@ -44,7 +43,7 @@ ms.locfileid: "73820109"
 - 在树拓扑以及互动地图中查看工业资产层次结构。
 - 从云仪表板中查看、确认和关闭警报。
 
-## <a name="azure-time-series-insights"></a>Azure Time Series Insights
+## <a name="azure-time-series-insights"></a>Azure 时序见解
 
 - [Azure 时序见解](../time-series-insights/time-series-insights-overview.md)是为存储、可视化和查询大量时序数据而开发的服务。 连接的工厂利用了此服务。
 - 连接的工厂集成了此服务，从而可以对设备数据执行深入的实时分析。

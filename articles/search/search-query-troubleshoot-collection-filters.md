@@ -20,15 +20,14 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113079"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的 OData 集合筛选器问题
 
-若要根据 Azure 认知搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 [Lambda 表达式`any`使用 `all`](search-query-odata-collection-operators.md) 和  **运算符**。 Lambda 表达式是应用到每个集合元素的子筛选器。
+若要根据 Azure 认知搜索中的集合字段进行[筛选](query-odata-filter-orderby-syntax.md)，可以结合 **Lambda 表达式**使用 [`any` 和 `all` 运算符](search-query-odata-collection-operators.md)。 Lambda 表达式是应用到每个集合元素的子筛选器。
 
 并非每个筛选表达式功能都可在 Lambda 表达式中使用。 可用的功能因要筛选的集合字段的数据类型而异。 如果你尝试在 Lambda 表达式中使用该上下文不支持的某个功能，可能会导致错误。 如果你在尝试基于集合字段编写复杂的筛选器时遇到此类错误，本文可帮助你排查问题。
 
@@ -68,7 +67,7 @@ ms.locfileid: "74113079"
 
 只能在 `any` 的正文中测试相等性，只能在 `all` 的正文中测试不相等性。
 
-还可以通过 `or` 正文中的 `any`，以及通过 `and` 正文中的 `all`，来合并多个表达式。 由于 `search.in` 函数等效于将相等性检查与 `or` 相结合，因此，`any` 的正文中也允许该函数。 相比之下，`not search.in` 的正文中允许 `all`。
+还可以通过 `any` 正文中的 `or`，以及通过 `all` 正文中的 `and`，来合并多个表达式。 由于 `search.in` 函数等效于将相等性检查与 `or` 相结合，因此，`any` 的正文中也允许该函数。 相比之下，`all` 的正文中允许 `not search.in`。
 
 例如，允许以下表达式：
 
@@ -104,7 +103,7 @@ ms.locfileid: "74113079"
 - `flags/all(f: not f)`
 - `flags/all(f: not (f eq true))`
 
-与字符串集合不同，布尔集合对于可在哪种类型的 Lambda 表达式中使用哪个运算符不设限制。 在 `eq` 或 `ne` 的正文中可以使用 `any` 和 `all`。
+与字符串集合不同，布尔集合对于可在哪种类型的 Lambda 表达式中使用哪个运算符不设限制。 在 `any` 或 `all` 的正文中可以使用 `eq` 和 `ne`。
 
 布尔集合不允许如下所示的表达式：
 
@@ -117,7 +116,7 @@ ms.locfileid: "74113079"
 
 ## <a name="rules-for-filtering-geographypoint-collections"></a>有关筛选 GeographyPoint 集合的规则
 
-集合中 `Edm.GeographyPoint` 类型的值不能直接相互比较。 必须将它们用作 `geo.distance` 和 `geo.intersects` 函数的参数。 然后，必须使用 `geo.distance`、`lt`、`le` 或 `gt` 比较运算符将 `ge` 函数与距离值进行比较。 这些规则也适用于非集合 Edm.GeographyPoint 字段。
+集合中 `Edm.GeographyPoint` 类型的值不能直接相互比较。 必须将它们用作 `geo.distance` 和 `geo.intersects` 函数的参数。 然后，必须使用 `lt`、`le`、`gt` 或 `ge` 比较运算符将 `geo.distance` 函数与距离值进行比较。 这些规则也适用于非集合 Edm.GeographyPoint 字段。
 
 与字符串集合一样，`Edm.GeographyPoint` 集合在如何在不同类型的 Lambda 表达式中使用与合并地理空间函数方面也实施了一些规则：
 
@@ -174,7 +173,7 @@ ms.locfileid: "74113079"
   - 涉及 `eq`、`lt`、`le`、`gt` 或 `ge` 的简单比较表达式可与 `and`/`or` 合并。 例如：
     - `ratings/any(r: r gt 2 and r le 5)`
     - `ratings/any(r: r le 5 or r gt 7)`
-  - 使用 `and`（合取）合并的比较表达式可以通过 `or` 进一步合并。 此格式在布尔逻辑中称为“[析取范式](https://en.wikipedia.org/wiki/Disjunctive_normal_form)”(DNF)。 例如：
+  - 使用 `and`（合取）合并的比较表达式可以通过 `or` 进一步合并。 此窗体在布尔逻辑中称为 "[析取范式 Normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form)" （DNF）。 例如：
     - `ratings/any(r: (r gt 2 and r le 5) or (r gt 7 and r lt 10))`
 - 适用于 `all` 的规则：
   - 简单的相等性表达式不能有效地与任何其他表达式合并。 例如，允许以下表达式：
@@ -188,7 +187,7 @@ ms.locfileid: "74113079"
   - 涉及 `ne`、`lt`、`le`、`gt` 或 `ge` 的简单比较表达式可与 `and`/`or` 合并。 例如：
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - 使用 `or`（析取）合并的比较表达式可以通过 `and` 进一步合并。 此格式在布尔逻辑中称为“[合取范式](https://en.wikipedia.org/wiki/Conjunctive_normal_form)”(CNF)。 例如：
+  - 使用 `or`（析取）合并的比较表达式可以通过 `and` 进一步合并。 此窗体在布尔逻辑中称为 "[联合 Normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form)" （.cnf）。 例如：
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

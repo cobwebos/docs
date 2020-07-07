@@ -8,10 +8,9 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74184258"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet 分析器常见问题解答（预览版）
@@ -22,7 +21,7 @@ ms.locfileid: "74184258"
 
 预览版可用于选择客户。 如果你有兴趣加入预览，请执行以下操作：
 
-1. 登录 [Azure 门户](https://ms.portal.azure.com)。
+1. 登录到 [Azure 门户](https://ms.portal.azure.com)。
 2. 导航到 "**订阅**" 页。
 3. 单击计划将 Internet Analyzer 用于的 Azure 订阅。
 4. 请访问订阅的**资源提供程序**设置。

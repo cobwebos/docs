@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70881022"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure 专用 HSM 物理安全性
@@ -56,7 +55,7 @@ HSM 属于硬件设备（HSM 实际是设备内的 PCI 卡），因此可能出�
 建议在进行设备预配、应用程序设计或部署之前，先深入了解此服务的所有重要概念（例如高可用性、安全性和可支持性）。
 
 * [高可用性](high-availability.md)
-* [联网](networking.md)
+* [网络](networking.md)
 * [可支持性](supportability.md)
-* [监视](monitoring.md)
+* [Monitoring](monitoring.md)
 * [部署体系结构](deployment-architecture.md)

@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74079933"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute 的安全控制
@@ -63,4 +62,4 @@ ms.locfileid: "74079933"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[Azure 服务中的内置安全控件](../security/fundamentals/security-controls.md)。
+- 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。

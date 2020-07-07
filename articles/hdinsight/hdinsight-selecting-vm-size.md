@@ -10,10 +10,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73682211"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>为 Azure HDInsight 群集选择适当的 VM 大小
@@ -53,12 +52,12 @@ Azure 中的虚拟机系列经过优化，可以适应不同的用例。 在下�
 
 下表描述了可以使用 Fsv2 系列 VM 创建的群集类型和节点类型。
 
-| 群集类型 | 版本 | 工作器节点 | 头节点 | ZooKeeper 节点 |
+| 群集类型 | Version | 工作器节点 | 头节点 | ZooKeeper 节点 |
 |---|---|---|---|---|
-| Spark | 全部 | F4 和更大 | 否 | 否 |
-| Hadoop | 全部 | F4 和更大 | 否 | 否 |
-| Kafka | 全部 | F4 和更大 | 否 | 否 |
-| HBase | 全部 | F4 和更大 | 否 | 否 |
+| Spark | All | F4 和更大 | 否 | 否 |
+| Hadoop | All | F4 和更大 | 否 | 否 |
+| Kafka | All | F4 和更大 | 否 | 否 |
+| HBase | All | F4 和更大 | 否 | 否 |
 | LLAP | disabled | 否 | 否 | 否 |
 | Storm | disabled | 否 | 否 | 否 |
 | ML 服务 | 仅限 HDI 3。6 | F4 和更大 | 否 | 否 |

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73889346"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用时序见解可视化从设备模拟解决方案加速器发送的遥测数据
@@ -55,15 +54,15 @@ ms.locfileid: "73889346"
 
 [Azure 时序见解](../../articles/time-series-insights/time-series-insights-overview.md)是一种完全托管的分析、存储和可视化服务，用于在云中管理 IoT-缩放时序数据。 若要创建新的时序见解环境：
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择 "**创建资源** > "**物联网** > **时序见解**：
+1. 选择 "**创建资源**"  >  **物联网**  >  **时序见解**：
 
     ![新建时序见解](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
 1. 若要在解决方案加速器所在的同一资源组中创建时序见解环境，请使用下表中的值：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 环境名称 | 以下屏幕截图使用名称 Contoso-TSI****。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
@@ -77,7 +76,7 @@ ms.locfileid: "73889346"
     > [!NOTE]
     > 向解决方案加速器所在的同一资源组中添加时序见解环境意味着删除解决方案加速器时将删除此环境。
 
-1. 单击“创建”。  可能需要花费几分钟时间来创建环境。
+1. 单击“创建”。 可能需要花费几分钟时间来创建环境。
 
 ## <a name="create-event-source"></a>创建事件源
 
@@ -95,7 +94,7 @@ ms.locfileid: "73889346"
 
 1. 若要将 IoT 中心配置为新事件源，请使用下表中的值：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 事件源名称 | 以下屏幕截图使用名称 contoso-iot-hub****。 完成此步骤后，请使用自己的唯一名称。 |
     | 源 | **IoT 中心** |
@@ -110,7 +109,7 @@ ms.locfileid: "73889346"
 
     ![创建事件源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 单击“创建”。 
+1. 单击“创建”。
 
 > [!NOTE]
 > 可以[向其他用户授予访问](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)时序见解资源管理器的权限。
@@ -151,7 +150,7 @@ ms.locfileid: "73889346"
 
     ![时序见解资源管理器中的透视](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. 单击**+** 以将新查询添加到透视：
+1. 单击 **+** 以将新查询添加到透视：
 
     ![时序见解资源管理器中的“添加查询”](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 

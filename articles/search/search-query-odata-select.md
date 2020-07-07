@@ -20,10 +20,9 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74113101"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 OData $select 语法
@@ -32,7 +31,7 @@ ms.locfileid: "74113101"
 
 ## <a name="syntax"></a>语法
 
-**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF（[扩展巴科斯-瑙尔范式](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 **$select** 参数的语法：
+**$select** 参数确定在查询结果集中返回每个文档的哪些字段。 以下 EBNF （[扩展的巴科斯-诺尔范式窗体](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定义 **$select**参数的语法：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -42,7 +41,7 @@ select_expression ::= '*' | field_path(',' field_path)*
 field_path ::= identifier('/'identifier)*
 ```
 
-交互式语法图也可用：
+下面还提供了交互式语法图：
 
 > [!div class="nextstepaction"]
 > [Azure 认知搜索的 OData 语法图](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
@@ -57,11 +56,11 @@ field_path ::= identifier('/'identifier)*
 
 使用第二种形式时，只能在列表中指定可检索字段。
 
-如果列出一个复杂字段而未显式指定其子字段，则所有可检索的子字段都将包含在查询结果集中。 例如，假设索引有一个 `Address` 字段，其中 `Street`、`City` 和 `Country` 子字段都是可检索的。 如果在 `Address`$select**中指定**，查询结果将包括所有三个子字段。
+如果列出一个复杂字段而未显式指定其子字段，则所有可检索的子字段都将包含在查询结果集中。 例如，假设索引有一个 `Address` 字段，其中 `Street`、`City` 和 `Country` 子字段都是可检索的。 如果在 **$select** 中指定 `Address`，查询结果将包括所有三个子字段。
 
 ## <a name="examples"></a>示例
 
-在结果中包括 `HotelId`、`HotelName` 和 `Rating` 顶级字段，以及 `City` 的 `Address` 子字段：
+在结果中包括 `HotelId`、`HotelName` 和 `Rating` 顶级字段，以及 `Address` 的 `City` 子字段：
 
     $select=HotelId, HotelName, Rating, Address/City
 
@@ -78,7 +77,7 @@ field_path ::= identifier('/'identifier)*
 }
 ```
 
-在结果中包括 `HotelName` 顶级字段，以及 `Address` 的所有子字段，以及 `Type` 集合中每个对象的 `BaseRate` 和 `Rooms` 子字段：
+在结果中包括 `HotelName` 顶级字段，以及 `Address` 的所有子字段，以及 `Rooms` 集合中每个对象的 `Type` 和 `BaseRate` 子字段：
 
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
 

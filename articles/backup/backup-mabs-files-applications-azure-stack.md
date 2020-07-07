@@ -4,10 +4,9 @@ description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和�
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74172322"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
@@ -40,7 +39,7 @@ ms.locfileid: "74172322"
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. 在“选择组成员”屏幕中，单击  **展开子项列表。+** 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。 
+3. 在“选择组成员”屏幕中，单击 **+** 展开子项列表。 选中想要保护的所有项对应的复选框。 选择所有项后，单击“下一步”。 
 
     ![“新建保护组”向导打开](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73839167"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>使用视频索引器编辑器创建项目
@@ -109,7 +108,7 @@ ms.locfileid: "73839167"
 
     ![保存](./media/video-indexer-view-edit/save.png)
 
-    将出现一个弹出窗口，告诉你视频索引器将呈现一个文件，然后下载链接将发送到你的电子邮件。 选择“继续”。  
+    将出现一个弹出窗口，告诉你视频索引器将呈现一个文件，然后下载链接将发送到你的电子邮件。 选择“继续”。 
     
     还会看到一条通知，指出项目是在页面顶部呈现的。 完成呈现后，您将看到一条新通知，指出项目已成功呈现。 单击通知以下载项目。 它将按 "格式" 格式下载项目。
 
