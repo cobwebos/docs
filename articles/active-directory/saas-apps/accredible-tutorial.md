@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5be397ca14a90c333e20f0a1a42b63e0c9f0ae0e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7681a60bc5da8d3cae53642096fd2290e63b8f76
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73154144"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85799065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>教程：Azure Active Directory 与 Accredible 集成
 
@@ -108,11 +108,10 @@ ms.locfileid: "73154144"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
 
-    | |
-    |--|
-    |  `https://api.accredible.com/sp/admin/accredible` |
-    | `https://api.accredible.com/sp/user/accredible` |
-    | |
+    ```http
+    https://api.accredible.com/sp/admin/accredible
+    https://api.accredible.com/sp/user/accredible
+    ```
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 

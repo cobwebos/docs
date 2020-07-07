@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518262"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互操作性：数据平面分析
@@ -164,7 +164,7 @@ ms.locfileid: "80518262"
 
     Trace complete.
 
-在此 traceroute 中，第一个跃点是中心 VNet 的 ExpressRoute 网关隧道终结点到 MSEE。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 1 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是本地位置 1 中的 VM。
 
 ### <a name="path-to-on-premises-location-2"></a>本地位置 2 的路径
 
@@ -182,7 +182,7 @@ ms.locfileid: "80518262"
 
     Trace complete.
 
-在此 traceroute 中，第一个跃点是中心 VNet 的 ExpressRoute 网关隧道终结点到 MSEE。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个和第三个跃点为 CE 路由器和本地位置 2 LAN IP。 这些 IP 地址不会在中心/辐射 VNet 中播发。 第四个跃点是在本地位置 2 中的 VM。
 
 ### <a name="path-to-the-remote-vnet"></a>远程 VNet 的路径
 
@@ -198,7 +198,7 @@ ms.locfileid: "80518262"
 
     Trace complete.
 
-在此 traceroute 中，第一个跃点是中心 VNet 的 ExpressRoute 网关隧道终结点到 MSEE。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
+在此跟踪路由中，第一跃点是 MSEE 的中心 VNet ExpressRoute 网关隧道终结点。 第二个跃点是远程 VNet 的网关 IP。 第二个跃点的 IP 范围不会在中心/辐射 VNet 中播发。 第三个跃点是远程 VNet 中的 VM。
 
 ## <a name="data-path-from-the-branch-vnet"></a>分支 VNet 中的数据路径
 
@@ -304,7 +304,7 @@ ms.locfileid: "80518262"
 
 ![4][4]
 
-如前文所述，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 若要测试备份数据路径，让我们在本地位置1主 CE 路由器与相应的 MSEE 之间引发 ExpressRoute 链接故障。 为引发 ExpressRoute 链接故障，请关闭面向 MSEE 的 CE 接口：
+如前文所述，测试设置使用站点到站点 VPN 作为本地位置 1 与中心 VNet 之间的备用 ExpressRoute 连接。 为了测试备份数据路径，让我们在本地位置 1 主要 CE 路由器和相应的 MSEE 之间引发一个 ExpressRoute 链接故障。 为引发 ExpressRoute 链接故障，请关闭面向 MSEE 的 CE 接口：
 
     C:\Users\rb>tracert 10.10.30.4
 

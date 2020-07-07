@@ -14,10 +14,10 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8485f3474da18e052bc0eab6c053be084ef884a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82192410"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
@@ -94,9 +94,9 @@ Azure HANA 大型实例上的 SAP （类型为 I）在升级后可能处于无�
 #### <a name="execution-steps"></a>执行步骤
 
 
-*   执行`multipath -ll`命令。
+*   执行 `multipath -ll` 命令。
 *   获取大小约为50G 的 LUN ID，或者使用命令：`fdisk -l | grep mapper`
-*   用`/etc/default/grub_installdevice`行`/dev/mapper/<LUN ID>`更新文件。 示例：/dev/mapper/3600a09803830372f483f495242534a56
+*   `/etc/default/grub_installdevice`用行更新文件 `/dev/mapper/<LUN ID>` 。 示例：/dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
 >LUN ID 不同于服务器。
 
@@ -115,11 +115,11 @@ lsmod | grep -i edac
 blacklist sb_edac
 blacklist edac_core
 ```
-需要重新启动才能进行更改。 执行`lsmod`命令并验证输出中是否不存在该模块。
+需要重新启动才能进行更改。 执行 `lsmod` 命令并验证输出中是否不存在该模块。
 
 
 ### <a name="kernel-parameters"></a>内核参数
-   请`transparent_hugepage`确保应用了、 `numa_balancing` `processor.max_cstate`、 `ignore_ce`和`intel_idle.max_cstate`的正确设置。
+   请确保应用了、、和的正确设置 `transparent_hugepage` `numa_balancing` `processor.max_cstate` `ignore_ce` `intel_idle.max_cstate` 。
 
 * intel_idle。 max_cstate = 1
 * processor。 max_cstate = 1
@@ -130,7 +130,7 @@ blacklist edac_core
 
 #### <a name="execution-steps"></a>执行步骤
 
-* 将这些参数添加到`GRB_CMDLINE_LINUX`文件中的行`/etc/default/grub`
+* 将这些参数添加到 `GRB_CMDLINE_LINUX` 文件中的行`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```

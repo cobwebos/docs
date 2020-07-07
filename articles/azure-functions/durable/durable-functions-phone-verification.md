@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335749"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
@@ -45,7 +45,7 @@ ms.locfileid: "80335749"
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的， `CurrentUtcDateTime`因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保每次重复调用中`winner`的结果都非常重要`Task.WhenAny`。
+> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的 `CurrentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `Task.WhenAny` 。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的， `currentUtcDateTime`因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保每次重复调用中`winner`的结果都非常重要`context.df.Task.any`。
+> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的 `currentUtcDateTime` ，因为属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保 `winner` 每次重复调用中的结果都非常重要 `context.df.Task.any` 。
 
 ---
 
@@ -83,7 +83,7 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
 > [!NOTE]
-> 需要安装`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行示例代码。
+> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行示例代码。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -120,7 +120,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea
 
 业务流程协调程序函数可接收提供的电话号码，并立即向其发送一条短信，其中包含随机生成的 4 位数验证代码 &mdash; 例如，2168**。 然后函数等待 90 秒，获取响应。
 
-若要使用代码进行回复，可以在另一个函数内使用[ `RaiseEventAsync` `raiseEvent` （.net）或（JavaScript）](durable-functions-instance-management.md) ，或调用上面202响应中引用的**sendEventUrl** HTTP POST webhook `{eventName}` ，并将替换为事件的`SmsChallengeResponse`名称：
+若要使用代码进行回复，可以在另一个函数内使用[ `RaiseEventAsync` （.net）或 `raiseEvent` （JavaScript）](durable-functions-instance-management.md) ，或调用上面202响应中引用的**sendEventUrl** HTTP POST webhook， `{eventName}` 并将替换为事件的名称 `SmsChallengeResponse` ：
 
 ```
 POST http://{host}/runtime/webhooks/durabletask/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -156,7 +156,7 @@ Content-Length: 145
 
 ## <a name="next-steps"></a>后续步骤
 
-此示例演示了一些 Durable Functions 的高级功能，特别`WaitForExternalEvent`是`CreateTimer` api。 你已了解如何将这些功能与 `Task.WaitAny` 结合，实现可靠的超时系统，这通常对与真人进行交互非常有用。 可以通过阅读一系列深入讨论了特定主题的文章来了解有关如何使用 Durable Functions 的详细信息。
+此示例演示了一些 Durable Functions 的高级功能，特别是 `WaitForExternalEvent` `CreateTimer` api。 你已了解如何将这些功能与 `Task.WaitAny` 结合，实现可靠的超时系统，这通常对与真人进行交互非常有用。 可以通过阅读一系列深入讨论了特定主题的文章来了解有关如何使用 Durable Functions 的详细信息。
 
 > [!div class="nextstepaction"]
 > [转到此系列中的第一篇文章](durable-functions-bindings.md)

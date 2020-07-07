@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81418229"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure 认知搜索索引
@@ -42,7 +42,7 @@ ms.locfileid: "81418229"
 
 Azure 认知搜索链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：AzureSearch**** | 是 |
 | url | 搜索服务的 URL。 | 是 |
@@ -76,11 +76,11 @@ Azure 认知搜索链接服务支持以下属性：
 
 ## <a name="dataset-properties"></a>数据集属性
 
-有关可用于定义数据集的各节和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 认知搜索数据集支持的属性列表。
+有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 Azure 认知搜索数据集支持的属性列表。
 
 若要将数据复制到 Azure 认知搜索中，支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：AzureSearchIndex**** | 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
@@ -110,9 +110,9 @@ Azure 认知搜索链接服务支持以下属性：
 
 ### <a name="azure-cognitive-search-as-sink"></a>作为接收器的 Azure 认知搜索
 
-若要将数据复制到 Azure 认知搜索中，请将复制活动中的源类型设置为 " **AzureSearchIndexSink**"。 复制活动接收器部分中支持以下属性****：
+若要将数据复制到 Azure 认知搜索中，请将复制活动中的源类型设置为 " **AzureSearchIndexSink**"。 复制活动接收器部分中支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：AzureSearchIndexSink**** | 是 |
 | writeBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。<br/><br/>允许的值为：**Merge**（默认）和**Upload**。 | 否 |
@@ -171,11 +171,11 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 | Azure 认知搜索数据类型 | 在 Azure 认知搜索接收器中受支持 |
 | ---------------------- | ------------------------------ |
-| 字符串 | Y |
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| 布尔值 | Y |
+| 布尔 | Y |
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
@@ -183,4 +183,4 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 当前不支持其他数据类型，例如 ComplexType。 有关 Azure 认知搜索支持的数据类型的完整列表，请参阅[支持的数据类型（Azure 认知搜索）](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

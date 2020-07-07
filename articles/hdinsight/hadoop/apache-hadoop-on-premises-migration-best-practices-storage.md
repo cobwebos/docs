@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80436911"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight
@@ -94,17 +94,17 @@ Azure Data Lake Storage Gen2 是最新的存储套餐。 它统一了第一代 A
 
 ADLS Gen 2 基于  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)构建，可使用文件系统和对象存储范例与数据进行交互。  [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) 的功能（如文件系统语义、文件级安全性和规模）可与低成本的分层存储、高可用性/灾难恢复功能以及  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)中的大量 SDK/工具生态系统结合使用。 在 Data Lake Storage Gen2 中，在添加针对分析工作负载优化的文件系统接口的优点的同时，还保留了对象存储的所有功能。
 
-Data Lake Storage Gen2 的一项基本功能是将 [层次结构命名空间](../../storage/data-lake-storage/namespace.md) 添加到 Blob 存储服务，该服务将对象/文件组织到目录层次结构中，以实现高性能的数据访问。这种层次结构启用了诸如重命名或删除目录之类的操作在目录上成为单个原子元数据操作，而不是枚举或处理共享目录名称前缀的所有对象。
+Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加一个 [分层命名空间](../../storage/data-lake-storage/namespace.md) ，将对象/文件组织成用于执行数据访问的目录层次结构。 这种层次结构启用了诸如重命名或删除目录之类的操作在目录上成为单个原子元数据操作，而不是枚举或处理共享目录名称前缀的所有对象。
 
 过去，基于云的分析必须在性能、管理和安全性方面做出妥协。 Azure Data Lake Storage (ADLS) Gen2 的主要功能如下：
 
-- **Hadoop 兼容访问**：Azure Data Lake Storage Gen2 允许你管理和访问数据，就像在  [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 中一样。 新的 [ABFS 驱动程序](../../storage/data-lake-storage/abfs-driver.md) 在 [Azure HDInsight](../index.yml)中包含的所有 Apache Hadoop 环境内可用。 通过此驱动程序可访问存储在 Data Lake Storage Gen2 中的数据。
+- **Hadoop 兼容访问**：使用 Azure Data Lake Storage Gen2，可以像使用  [Hadoop 分布式文件系统 (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) 一样管理和访问数据。  [Azure HDInsight](../index.yml) 中包含的所有 Apache Hadoop 环境中都提供了新的  [ABFS 驱动程序](../../storage/data-lake-storage/abfs-driver.md) 。 通过此驱动程序可访问存储在 Data Lake Storage Gen2 中的数据。
 
-- **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
+- **POSIX 权限的超集**：Data Lake Gen2 的安全模型完全支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过管理工具或 Hive 和 Spark 等框架配置设置。
 
-- 成本效益****：Data Lake Storage Gen2 具有低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，账单费率变化通过诸如  [Azure Blob 存储生命周期](../../storage/common/storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
+- **经济高效**：Data Lake Storage Gen2 具有低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，账单费率变化通过诸如  [Azure Blob 存储生命周期](../../storage/common/storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
 
-- 使用 Blob 存储工具、框架和应用****：Data Lake Storage Gen2 可以继续使用目前适用于 Blob 存储的各种工具、框架和应用程序。
+- **使用 Blob 存储工具、框架和应用**：Data Lake Storage Gen2 可以继续使用目前适用于 Blob 存储的各种工具、框架和应用程序。
 
 - **优化的驱动程序**：Azure Blob 文件系统驱动程序 (ABFS) 针对大数据分析进行了 [专门优化](../../storage/data-lake-storage/abfs-driver.md) 。 相应的 REST API 通过 dfs 终结点 dfs.core.windows.net 进行显示。
 
@@ -112,7 +112,7 @@ Data Lake Storage Gen2 的一项基本功能是将 [层次结构命名空间](.
 - `abfs:///`：访问群集的默认 Data Lake Storage。
 - `abfs://file_system@account_name.dfs.core.windows.net`：与非默认 Data Lake Storage 通信时使用。
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 - [Azure Data Lake Storage Gen2 简介](../../storage/data-lake-storage/introduction.md)
 - [Azure Blob FileSystem 驱动程序 (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
@@ -158,9 +158,9 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
     |令牌属性|说明|
     |---|---|
     |policy_name|要创建的存储策略所用的名称。|
-    |storage_account_name|你的存储帐户的名称。|
+    |storage_account_name|存储帐户的名称。|
     |storage_account_key|存储帐户的密钥。|
-    |storage_container_name|存储帐户中你要限制对其的访问的容器。|
+    |storage_container_name|想要限制访问的存储帐户中的容器。|
     |example_file_path|上传到容器的文件的路径。|
 
 2. SASToken.py 文件附带 `ContainerPermissions.READ + ContainerPermissions.LIST` 权限，可以根据用例进行调整。
@@ -173,19 +173,19 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 6. 在“密钥”**** 和“值”**** 字段中使用以下值：
 
-    **Key**： `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值**： Python 应用程序从上述步骤4返回的 SAS 密钥。
+    **密钥**：`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值**：Python 应用程序从上面的步骤 4 返回的 SAS 密钥。
 
 7. 单击“添加”**** 按钮以保存此密钥和值，并单击“保存”**** 按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”****。
 
-8. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项”****。 出现提示时，选择“确认全部重启”****。
+8. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项”****。 出现提示时，选择 "**确认全部重启**"。
 
 9. 对 MapReduce2 和 YARN 重复此过程。
 
-有关在 Azure 中使用 SAS 令牌，请记住以下三个重要事项：
+关于在 Azure 中使用 SAS 令牌，有三个重要事项需要记住：
 
 1. 使用“READ + LIST”权限创建 SAS 令牌时，使用该 SAS 令牌访问 Blob 容器的用户将无法“写入和删除”数据。 使用该 SAS 令牌访问 Blob 容器并尝试写入或删除操作的用户将收到类似 `"This request is not authorized to perform this operation"` 的消息。
 
-2. 当使用 `READ + LIST + WRITE` 权限生成 SAS 令牌（仅限 `DELETE`）时，`hadoop fs -put` 等命令首先写入 `\_COPYING\_` 文件，然后尝试重命名该文件。 此 HDFS 操作映射到 WASB 的 `copy+delete`。 由于未`DELETE`提供权限，因此 "put" 将失败。 `\_COPYING\_` 操作是一个 Hadoop 功能，旨在提供一些并发控制。 目前没有办法限制 "删除" 操作，也不会影响 "写入" 操作。
+2. 当使用 `READ + LIST + WRITE` 权限生成 SAS 令牌（仅限 `DELETE`）时，`hadoop fs -put` 等命令首先写入 `\_COPYING\_` 文件，然后尝试重命名该文件。 此 HDFS 操作映射到 WASB 的 `copy+delete`。 由于未 `DELETE` 提供权限，因此 "put" 将失败。 `\_COPYING\_` 操作是一个 Hadoop 功能，旨在提供一些并发控制。 目前没有办法限制 "删除" 操作，也不会影响 "写入" 操作。
 
 3. 遗憾的是，hadoop 凭据提供程序和解密密钥提供程序（ShellDecryptionKeyProvider）当前无法使用 SAS 令牌，因此当前无法从可见性中保护。
 
@@ -193,11 +193,11 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 ## <a name="use-data-encryption-and-replication"></a>使用数据加密和复制
 
-所有写入 Azure 存储的数据都使用 [存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行自动加密。 始终复制 Azure 存储帐户中的数据以实现高可用性。创建存储帐户时，可以选择以下复制选项之一：
+所有写入 Azure 存储的数据都使用 [存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 进行自动加密。 始终复制 Azure 存储帐户中的数据以实现高可用性。 创建存储帐户时，可以选择以下复制选项之一：
 
-- [本地冗余存储（LRS）](../../storage/common/storage-redundancy-lrs.md)
+- [本地冗余存储 (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [区域冗余存储（ZRS）](../../storage/common/storage-redundancy-zrs.md)
-- [异地冗余存储（GRS）](../../storage/common/storage-redundancy-grs.md)
+- [异地冗余存储 (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [读取访问异地冗余存储 (RA-GRS)](../../storage/common/storage-redundancy.md)
 
 Azure Data Lake Storage 提供本地冗余存储 (LRS)，但还应将关键数据复制到另一个区域中的另一个 Data Lake Storage 帐户，复制频率与灾难恢复计划的需求应保持一致。可以通过不同的方法来复制数据，包括 [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)、 [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)、 [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)或 [Azure 数据工厂](../../data-factory/connector-azure-data-lake-store.md)。还建议为 Data Lake Storage 帐户强制实施访问策略，以防止意外删除。

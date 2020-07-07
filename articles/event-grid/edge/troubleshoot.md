@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73100161"
 ---
 # <a name="common-issues"></a>常见问题
@@ -42,7 +42,7 @@ sudo docker logs eventgridmodule
 
 * 如果其模块到模块的通信，请确保在端口**4438**上进行调用，并且模块的名称与部署的名称相匹配。 
 
-  例如，如果事件网格模块是用名称**eventgridmodule**部署的，则 URL 应为**https://eventgridmodule:4438**。 请确保大小写和端口号正确。
+  例如，如果事件网格模块是用名称**eventgridmodule**部署的，则 URL 应为 **https://eventgridmodule:4438** 。 请确保大小写和端口号正确。
     
 * 如果它来自非 IoT 模块，请确保在部署期间将事件网格端口映射到主机计算机，例如
 
@@ -64,7 +64,7 @@ sudo docker logs eventgridmodule
 
 * 如果其模块到模块的通信，请确保在端口**5888**上进行调用，并且模块的名称与部署的名称相匹配。 
 
-  例如，如果事件网格模块是用名称**eventgridmodule**部署的，则 URL 应为**http://eventgridmodule:5888**。 请确保大小写和端口号正确。
+  例如，如果事件网格模块是用名称**eventgridmodule**部署的，则 URL 应为 **http://eventgridmodule:5888** 。 请确保大小写和端口号正确。
     
 * 如果它来自非 IoT 模块，请确保在部署期间将事件网格端口映射到主机计算机，例如
 
@@ -84,7 +84,7 @@ sudo docker logs eventgridmodule
 
 默认情况下，事件网格模块配置为使用 IoT Edge security daemon 颁发的证书对客户端进行身份验证。 请确保客户端正在提供一个根为此链的证书。
 
-**IoTSecurity**中的[https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) IoTSecurity 类演示如何从 IoT Edge 安全守护程序检索证书，并使用该证书来配置传出呼叫。
+中的**IoTSecurity**类 [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) 演示如何从 IoT Edge 安全守护程序检索证书，并使用该证书来配置传出呼叫。
 
 如果它是非生产环境，则可以选择禁用客户端身份验证。 有关如何执行此操作的详细信息，请参阅[安全性和身份验证](security-authentication.md)。
 
@@ -108,4 +108,4 @@ sudo docker logs eventgridmodule
 
 ## <a name="next-steps"></a>后续步骤
 
-报告任何问题，有关使用中的 IoT Edge 的事件网格[https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)的建议，请参阅。
+报告任何问题，有关使用中的 IoT Edge 的事件网格的建议，请参阅 [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) 。

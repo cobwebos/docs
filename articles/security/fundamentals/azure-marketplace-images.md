@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
 ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80548658"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>适用于 Azure 市场映像的安全建议
@@ -29,7 +29,7 @@ ms.locfileid: "80548658"
 
 |||
 |--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **类别**                                                 | **查阅**                                                                                                                                                                                                                                                                              |
+| **类别**                                                 | **检查**                                                                                                                                                                                                                                                                              |
 | 安全性                                                     | 安装适用于 Linux 分发版的所有最新安全修补程序。                                                                                                                                                                                                              |
 | 安全性                                                     | 遵循行业准则，保护特定 Linux 分发版的 VM 映像。                                                                                                                                                                                     |
 | 安全性                                                     | 限制攻击面，仅保留必要的 Windows Server 角色、功能、服务和网络端口来保持最小的占用空间。                                                                                                                                               |
@@ -41,9 +41,9 @@ ms.locfileid: "80548658"
 | 安全性                                                     | 包含所需库的最新版本： </br> - OpenSSL v1.0 或更高版本 </br> - Python 2.5 或更高版本（强烈建议使用 Python 2.6+） </br> - Python pyasn1 包（如果尚未安装） </br> - d.OpenSSL v 1.0 或更高版本                                                                |
 | 安全性                                                     | 清除 Bash/Shell 历史记录项。                                                                                                                                                                                                                                             |
 | 网络                                                   | 默认情况下包括 SSH 服务器。 将 SSH 保持连接到 sshd config，并提供以下选项： ClientAliveInterval 180。                                                                                                                                                        |
-| 网络                                                   | 从映像中删除任何自定义网络配置。 删除 resolv.conf： `rm /etc/resolv.conf`。                                                                                                                                                                                |
+| 网络                                                   | 从映像中删除任何自定义网络配置。 删除 resolv.conf： `rm /etc/resolv.conf` 。                                                                                                                                                                                |
 | 部署                                                   | 安装最新的 Azure Linux 代理。</br> -使用 RPM 或 Deb 包安装。  </br> - 也可使用手动安装进程，但建议首选安装包。 </br> - 如果要从 GitHub 存储库手动安装代理，首先请将 `waagent` 文件复制到 `/usr/sbin` 中并（以 root 身份）运行： </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>代理配置文件放置在 `/etc/waagent.conf` 中。 |
-| 部署                                                   | 确保 Azure 支持人员可以在需要时为合作伙伴提供串行控制台输出，并为从云存储装载的操作系统磁盘提供足够的超时时间。 将以下参数添加到映像内核引导行： `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`。 |
+| 部署                                                   | 确保 Azure 支持人员可以在需要时为合作伙伴提供串行控制台输出，并为从云存储装载的操作系统磁盘提供足够的超时时间。 将以下参数添加到映像内核引导行： `console=ttyS0 earlyprintk=ttyS0 rootdelay=300` 。 |
 | 部署                                                   | OS 磁盘上无需交换分区。 可通过 Linux 代理在本地资源磁盘上请求创建交换。         |
 | 部署                                                   | 为 OS 磁盘创建一个根分区。      |
 | 部署                                                   | 仅支持 64 位 操作系统。                                                                                                                                                                                                                                                          |
@@ -52,7 +52,7 @@ ms.locfileid: "80548658"
 
 |||
 |-------------| -------------------------|
-| **类别**                                                     | **查阅**                                                                                                                                                                |
+| **类别**                                                     | **检查**                                                                                                                                                                |
 | 安全性                                                         | 使用安全 OS 的基础映像。 用于任何基于 Windows Server 的映像源的 VHD 必须来自 Microsoft Azure 所提供的 Windows Server OS 映像。 |
 | 安全性                                                         | 安装所有最新的安全更新。                                                                                                                                     |
 | 安全性                                                         | 应用程序不应依赖于受限用户名，如管理员、root 或 admin。                                                                |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80518170"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT 即插即用预览限制、配额和限制
@@ -29,10 +29,10 @@ ms.locfileid: "80518170"
 | 每个设备可以注册的最大 DCMs 数 | 1 ||
 | 接口/DCM 文件的最大大小 | 512 KB ||
 | 接口名称的最大大小 | 256个字符 ||
-| 属性名的最大大小  | 64字节，深度为7个级别（为保留第一个级别`$iotin`） | 允许的字符： a-z、a-z、0-9 （不是第一个字符）和下划线。 |
+| 属性名的最大大小  | 64字节，深度为7个级别（为保留第一个级别 `$iotin` ） | 允许的字符： a-z、a-z、0-9 （不是第一个字符）和下划线。 |
 | 属性值的最大大小 | 512 字节 ||
 | 命令名称的最大大小 | 100字节 ||
-| 设备克隆的大小 | 与[IoT 中心限制](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size)相同 ||
+| 设备孪生的大小 | 与[IoT 中心限制](../iot-hub/iot-hub-devguide-device-twins.md#device-twin-size)相同 ||
 | 跨 SKU 的解析 API 调用（与设备无关） | 每秒100请求数 ||
 
 ## <a name="model-repository"></a>模型存储库
