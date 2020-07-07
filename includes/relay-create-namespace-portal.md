@@ -6,7 +6,7 @@ ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 500db9f6d299ea81b1f1b1be864df5d91ba1eae7
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "76021076"
