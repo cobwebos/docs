@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
 ms.openlocfilehash: 8bf887b8d86131e0b358056fc1744a8d144be3fc
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82584109"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 门户为 Azure Database for PostgreSQL 超大规模（Citus）的指标设置警报
@@ -80,7 +80,7 @@ ms.locfileid: "82584109"
 
 12. 选择“创建警报规则”可以创建警报****。
 
-    几分钟后，警报将处于活动状态，并按前面所述进行触发。
+    在几分钟后，警报将如前所述激活并触发。
 
 ### <a name="managing-alerts"></a>管理警报
 
@@ -92,7 +92,7 @@ ms.locfileid: "82584109"
 
 ## <a name="suggested-alerts"></a>建议的警报
 
-### <a name="disk-space"></a>磁盘空间
+### <a name="disk-space"></a>硬盘空间
 
 对于每个生产超大规模（Citus）服务器组，监视和警报都非常重要。 底层 PostgreSQL 数据库要求可用磁盘空间才能正常运行。 如果磁盘已满，则数据库服务器节点将处于脱机状态，并拒绝启动，直到空间可用。 此时，它需要 Microsoft 支持请求来解决这种情况。
 

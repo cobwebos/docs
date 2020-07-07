@@ -4,10 +4,10 @@ description: 了解如何保护 Service Fabric 应用程序中的机密值（与
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583233"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>管理 Service Fabric 应用程序中的已加密机密
@@ -26,7 +26,7 @@ ms.locfileid: "82583233"
 ## <a name="specify-encrypted-secrets-in-an-application"></a>在应用程序中指定加密的机密
 上一步骤介绍了如何使用证书来加密机密，并生成要在应用程序中使用的 base-64 编码的字符串。 可以在服务的 Settings.xml 中将此 base-64 编码的字符串指定为加密的[参数][parameters-link]，也可以在服务的 ServiceManifest.xml 中将其指定为加密的[环境变量][environment-variables-link]。
 
-通过在服务的 Settings.xml 配置文件中将 [ 属性设置为 ][parameters-link] 来指定加密的`IsEncrypted`参数`true`：
+通过在服务的 Settings.xml 配置文件中将 `IsEncrypted` 属性设置为 `true` 来指定加密的[参数][parameters-link]：
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -36,7 +36,7 @@ ms.locfileid: "82583233"
   </Section>
 </Settings>
 ```
-通过在服务的 ServiceManifest.xml 文件中将 [ 属性设置为 ][environment-variables-link] 来指定加密的`Type`环境变量`Encrypted`：
+通过在服务的 ServiceManifest.xml 文件中将 `Type` 属性设置为 `Encrypted` 来指定加密的[环境变量][environment-variables-link]：
 ```xml
 <CodePackage Name="Code" Version="1.0.0">
   <EnvironmentVariables>
@@ -56,12 +56,12 @@ ms.locfileid: "82583233"
 </ApplicationManifest>
 ```
 > [!NOTE]
-> 激活指定了 SecretsCertificate 的应用程序后，Service Fabric 会找到匹配的证书，并向该应用程序运行的标识授予对该证书的私钥的完全权限。 Service Fabric 还会监视证书的更改，并相应地重新应用权限。 若要检测公用名声明的证书更改，Service Fabric 会运行定期任务，该任务将查找所有匹配的证书，并将其与指纹的缓存列表进行比较。 检测到新指纹时，表示已续订该使用者的证书。 该任务每分钟在群集的每个节点上运行一次。
+> 激活可指定 SecretsCertificate 的应用程序后，Service Fabric 将查找匹配的的证书，并向该证书的私钥授予应用程序在完全权限下运行的标识。 Service Fabric 还会监视证书的更改，并重新应用相应的权限。 若要检测由公用名称声明的证书更改，Service Fabric 会运行定期任务，该任务查找所有匹配的证书，并将其与缓存的指纹列表进行对比。 如果检测到新指纹，表示该主题的证书已续订。 该任务每分钟在群集的每个节点上运行一次。
 >
-> 尽管 SecretsCertificate 确实允许使用基于使用者的声明，但请注意，加密的设置会绑定到用于对客户端上的设置进行加密的密钥对。 你必须确保原始加密证书（或等效项）与基于使用者的声明相匹配，并确保在可承载应用程序的群集的每个节点上安装该证书（包括其相应的私钥）。 与基于使用者的声明匹配的所有时间有效的证书和从与原始加密证书相同的密钥对中生成的证书被认为是等效的。
+> 尽管 SecretsCertificate 确实允许使用基于主题的声明，但请注意，加密的设置会绑定到用于对客户端上的设置进行加密的密钥对。 需要确保原始加密证书（或等效证书）与基于主题的声明相匹配，并确保在可承载应用程序的群集的每个节点上安装该证书（包括其相应的私钥）。 与基于主题的声明匹配的且是通过与原始加密证书相同的密钥对生成的所有时间有效的证书均视为等效证书。
 >
 
-### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密插入应用程序实例
+### <a name="inject-application-secrets-into-application-instances"></a>将应用程序机密注入应用程序实例
 理想情况下，部署到不同环境的过程应尽可能自动化。 这可以通过在生成环境中执行机密加密，并在创建应用程序实例时提供加密机密作为参数来实现。
 
 #### <a name="use-overridable-parameters-in-settingsxml"></a>在 Settings.xml 中使用可重写参数
@@ -97,15 +97,15 @@ Settings.xml 配置文件允许使用可在创建应用程序时提供的可重�
   </ServiceManifestImport>
  ```
 
-现在，可以在创建应用程序实例时会值指定为*应用程序参数*。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
+现在，可以在创建应用程序实例时将值指定为*应用程序参数* 。 可以使用 PowerShell 或 C# 编写用于创建应用程序实例的脚本，方便在生成过程中轻松集成。
 
-使用 PowerShell 时，参数以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
+使用 PowerShell 时，参数将以[哈希表](https://technet.microsoft.com/library/ee692803.aspx)的形式提供给 `New-ServiceFabricApplication`：
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
 ```
 
-使用 C# 时，应用程序参数以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
+使用 C# 时，应用程序参数将以 `NameValueCollection` 的形式在 `ApplicationDescription` 中指定：
 
 ```csharp
 FabricClient fabricClient = new FabricClient();
@@ -141,8 +141,8 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* Service Fabric[密钥存储](service-fabric-application-secret-store.md) 
-* 详细了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
+* Service Fabric [机密存储](service-fabric-application-secret-store.md) 
+* 深入了解[应用程序和服务安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->
 [parameters-link]:service-fabric-how-to-parameterize-configuration-files.md

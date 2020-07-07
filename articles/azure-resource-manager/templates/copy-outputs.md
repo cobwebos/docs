@@ -4,15 +4,15 @@ description: 从部署中返回值时，可以在 Azure 资源管理器模板中
 ms.topic: conceptual
 ms.date: 04/17/2020
 ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583429"
 ---
 # <a name="output-iteration-in-arm-templates"></a>ARM 模板中的输出迭代
 
-本文介绍如何为 Azure 资源管理器（ARM）模板中的输出创建多个值。 通过将 **copy** 元素添加到模板的 outputs 节，可以在部署过程中动态返回许多项。
+本文展示了如何为 Azure 资源管理器 (ARM) 模板中的输出创建多个值。 通过将 **copy** 元素添加到模板的 outputs 节，可以在部署过程中动态返回许多项。
 
 还可以将 copy 用于[资源](copy-resources.md)、[资源中的属性](copy-properties.md)，以及[变量](copy-variables.md)。
 
@@ -35,18 +35,18 @@ copy 元素采用以下常规格式：
 
 count 不能超过 800。
 
-count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则可以为零。 具体来说，您必须使用：
+count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则它可以为零。 具体而言，必须使用：
 
-* Azure PowerShell **2.6**或更高版本
-* Azure CLI **2.0.74**或更高版本
-* REST API 版本**2019-05-10**或更高版本
-* 对于部署资源类型，[链接部署](linked-templates.md)必须使用 API 版本**2019-05-10**或更高版本
+* Azure PowerShell 2.6 或更高版本****
+* Azure CLI 2.0.74 或更高版本****
+* REST API 版本 2019-05-10 或更高版本****
+* [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型****
 
 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
 
 ## <a name="outputs-iteration"></a>输出迭代
 
-以下示例创建数量可变的存储帐户，并返回每个存储帐户的终结点：
+以下示例创建可变数量的存储帐户，并返回每个存储帐户的终结点：
 
 ```json
 {
@@ -90,7 +90,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-前面的模板返回具有以下值的数组：
+前面的模板返回包含以下值的数组：
 
 ```json
 [
@@ -99,7 +99,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 ]
 ```
 
-下一个示例返回新存储帐户的三个属性。
+下一示例返回新存储帐户的三个属性。
 
 ```json
 {
@@ -147,7 +147,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-前面的示例返回具有以下值的数组：
+前面的示例返回包含以下值的数组：
 
 ```json
 [

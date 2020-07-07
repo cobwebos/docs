@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/27/2020
 ms.author: danlep
 ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583908"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
@@ -18,7 +18,7 @@ ms.locfileid: "82583908"
 提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。 
 
 > [!NOTE]
-> 在这些资源限制内创建的容器组受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要缓解此类部署失败，请尝试使用较小的资源设置部署实例，或者稍后或在具有可用资源的其他区域中尝试部署。
+> 在这些资源限制内创建的容器组受部署区域内可用性的限制。 某个区域负载较重时，部署实例时可能会失败。 若要减少此类部署失败，请尝试部署具有较低资源设置的实例，或稍后尝试部署，或在具有可用资源的其他区域中进行部署。
 
 若要了解部署中的配额和其他限制，请参阅 [Azure 容器实例的配额和限制](container-instances-quotas.md)。
 
@@ -26,7 +26,7 @@ ms.locfileid: "82583908"
 
 使用 Linux 和[受支持](container-instances-faq.md#what-windows-base-os-images-are-supported)的基于 Windows Server 2016 的容器的容器组提供以下区域和最大资源。
 
-| 区域 | OS | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
+| 区域 | 操作系统 | 最大 CPU | 最大内存 (GB) | 存储器 (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
 | 巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部2、北欧、美国中南部、东南亚、印度、英国南部、西欧、美国西部、美国西部2 | Linux | 4 | 16 | 50 |
 | 澳大利亚东部、日本东部 | Linux | 2 | 8 | 50 |
@@ -53,10 +53,10 @@ ms.locfileid: "82583908"
 
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 资源（预览版）
 
-以下区域和最大资源可用于使用[GPU 资源](container-instances-gpu.md)（预览版）部署的容器组。
+以下是使用 [GPU 资源](container-instances-gpu.md)（预览版）部署的容器组可以使用的区域和最大资源数。
 
 > [!IMPORTANT]
-> GPU 资源仅在请求时可用。 若要请求访问 GPU 资源，请提交[Azure 支持请求][azure-support]。
+> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

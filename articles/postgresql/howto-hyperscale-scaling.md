@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
 ms.openlocfilehash: f8e8e1672f754e843a3bd1c75d496599d31e5f11
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82584001"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模（Citus）服务器组
@@ -42,7 +42,7 @@ SELECT rebalance_table_shards('distributed_table_name');
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>增加或减少节点上的 Vcore
 
 > [!NOTE]
-> 此功能目前以预览版提供。 若要在 Vcore 中为服务器组中的节点请求更改，请[联系 Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+> 此功能目前处于预览状态。 若要在 Vcore 中为服务器组中的节点请求更改，请[联系 Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 除了添加新节点以外，还可以增加现有节点的功能。 向上和向下调整计算容量可用于性能试验，以及对流量需求的短期或长期更改。
 

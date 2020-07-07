@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82591646"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询概述
@@ -80,9 +80,9 @@ Log Analytics 是 Azure 门户中用于编写日志查询以及以交互方式�
 
 可以从 Azure 门户中的多个位置启动 Log Analytics。 Log Analytics 可用的数据范围由其启动方式决定。 有关更多详细信息，请参阅[查询范围](scope.md)。
 
-- 从“Azure Monitor”菜单或“Log Analytics 工作区”菜单中选择“日志”。   
-- 选择 Application Insights 应用程序的 "**概述**" 页中的 "**日志**"。
-- 从 Azure 资源的菜单中选择“日志”。 
+- 从“Azure Monitor”菜单或“Log Analytics 工作区”菜单中选择“日志”。  
+- 从 Application Insights 应用程序的“概述”页中选择“日志”。 
+- 从 Azure 资源的菜单中选择“日志”。
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)
 

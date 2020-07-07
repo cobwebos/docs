@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82791861"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和缩放
@@ -38,7 +38,7 @@ ms.locfileid: "82791861"
 
 ## <a name="vertical-scaling-considerations"></a>垂直缩放注意事项
 
-[垂直缩放](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)Azure 中的节点类型 Service Fabric 需要执行许多步骤和注意事项。 例如：
+[垂直缩放](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out) Azure Service Fabric 中的节点类型需要执行许多步骤并考虑多种因素。 例如：
 
 * 在缩放之前，群集必须处于正常状态。 否则，会进一步破坏群集的稳定性。
 * 托管有状态服务的所有 Service Fabric 群集节点类型需要银级或更高级别的持久性。
@@ -65,10 +65,10 @@ ms.locfileid: "82791861"
 
 声明节点属性和位置约束后，每次在一个 VM 实例上执行以下步骤。 这样，可以在其他位置创建新副本时，让系统服务（以及有状态服务）在要删除的 VM 实例上正常关闭。
 
-1. 在 PowerShell 中， `Disable-ServiceFabricNode`运行并`RemoveNode`通过意向禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
+1. 在 PowerShell 中，运行 `Disable-ServiceFabricNode` 并通过意向 `RemoveNode` 禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，此过程可能需要花费几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 将该节点类型的 VM 数目减少一个。 现在，将会删除编号最大的 VM 实例。
-4. 根据需要重复步骤1到3，但绝不会在主节点类型的实例数小于可靠性层所需的数目范围内进行缩放。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目横向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 5. 所有 VM 都消失（表示为“关闭”）后，fabric:/System/InfrastructureService/[node name] 将显示错误状态。 然后，可以更新群集资源以删除节点类型。 可以使用 ARM 模板部署，也可以通过 [Azure 资源管理器](https://resources.azure.com)编辑群集资源。 这将启动群集升级，从而删除处于错误状态的 fabric:/System/InfrastructureService/[node type] 服务。
  6. 之后，你可以选择删除 VMScaleSet，但仍会从 Service Fabric Explorer 视图中看到节点 "Down"。 最后一步是使用 `Remove-ServiceFabricNodeState` 命令清除它们。
 
@@ -89,7 +89,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-若要手动横向扩展，请更新所需的[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)资源的 "SKU" 属性中的容量。
+若要手动横向扩展，请在所需[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)资源的 SKU 属性中更新容量。
 
 ```json
 "sku": {
@@ -101,19 +101,19 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ### <a name="scaling-in"></a>缩减
 
-缩小时需要考虑更多的考虑因素。例如：
+横向缩减的考虑因素比横向扩展要多一些。例如：
 
-* Service Fabric 系统服务在群集的主节点类型中运行。 切勿关闭或缩放该节点类型的实例数，以便获得的实例数少于可靠性层所需的数目。 
+* Service Fabric 系统服务在群集的主节点类型中运行。 切勿关闭该节点类型的实例，或者将其实例数目横向缩减到少于可靠性层所需的数目。 
 * 对于有状态服务，需要一些始终启动的节点来保持可用性，以及保持服务的状态。 至少需要与分区或服务的目标副本集计数相等的节点数目。
 
 若要手动横向缩减，请执行以下步骤：
 
-1. 在 PowerShell 中， `Disable-ServiceFabricNode`运行并`RemoveNode`通过意向禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
+1. 在 PowerShell 中，运行 `Disable-ServiceFabricNode` 并通过意向 `RemoveNode` 禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个六节点群集，请删除“MyNodeType_5”虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，此过程可能需要花费几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 将该节点类型的 VM 数目减少一个。 现在，将会删除编号最大的 VM 实例。
-4. 视需要重复步骤 1 到 3，直到预配了所需的容量。 不要将主节点类型中的实例数扩展到小于可靠性层所保证的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+4. 视需要重复步骤 1 到 3，直到预配了所需的容量。 请勿将主节点类型的实例数目横向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 
-若要手动缩放，请在所需的[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)资源的 "SKU" 属性中更新容量。
+若要手动横向缩减，请在所需[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)资源的 SKU 属性中更新容量。
 
 ```json
 "sku": {
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> 在群集中缩放时，将在 Service Fabric Explorer 中看到以不正常状态显示的已删除节点/VM 实例。 有关此行为的说明，请参阅[可能会在 Service Fabric Explorer 中观察到的行为](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)。 你可以：
+> 横向缩减群集时，你会发现已删除的节点/VM 实例以不正常状态显示在 Service Fabric Explorer 中。 有关此行为的说明，请参阅[可能会在 Service Fabric Explorer 中观察到的行为](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)。 方法：
 > * 结合相应的节点名称调用 [Remove-ServiceFabricNodeState 命令](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
 > * 在群集上部署 [Service Fabric 自动缩放帮助应用程序](https://github.com/Azure/service-fabric-autoscale-helper/)。 此应用程序可确保从 Service Fabric Explorer 中清除已缩减的节点。
 
@@ -176,10 +176,10 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 可靠性级别决定了主节点类型必须具有的节点数下限。 可靠性层可以采用以下值：
 
-* 白金：运行系统服务，其目标副本集计数为7个和9个种子节点。
-* 金牌：运行系统服务，其目标副本集计数为七到7个种子节点。
-* 银：运行系统服务，其目标副本集计数为5个和5个种子节点。
-* 青铜：运行系统服务，其目标副本集计数为三个和三个种子节点。
+* 白金：运行包含 7 个目标副本集和 9 个种子节点的系统服务。
+* 金：运行包含 7 个目标副本集和 7 个种子节点的系统服务。
+* 银：运行包含 5 个目标副本集和 5 个种子节点的系统服务。
+* 铜：运行包含 3 个目标副本集和 3 个种子节点的系统服务。
 
 建议的最低可靠性级别为“银”级。
 
@@ -194,7 +194,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ## <a name="durability-levels"></a>持久性级别
 
 > [!WARNING]
-> 以青铜级持续性运行的节点类型不具有任何特权__。 不会停止或延迟对无状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 
+> 以青铜级持续性运行的节点类型不具有任何特权。 不会停止或延迟对无状态工作负荷产生影响的基础结构作业，这可能影响工作负荷。 
 >
 > 铜级持久性仅用于运行无状态工作负荷的节点类型。 对于生产工作负荷，运行银级或更高级别可确保状态一致性。 请根据[容量规划文档](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)中的指导选择适当的可靠性级别。
 
@@ -213,7 +213,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 }
 ```
 
-另一个资源位于 [Microsoft.ServiceFabric/clusters 资源](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters)中的 `nodeTypes` 下： 
+其他资源位于 `nodeTypes` [ServiceFabric/群集资源](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2018-02-01/clusters)中： 
 
 ```json
 "nodeTypes": [
@@ -226,8 +226,8 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在运行 Windows Server 的 Vm 或计算机上创建群集：[为 Windows server Service Fabric 群集创建](service-fabric-cluster-creation-for-windows-server.md)。
-* 在运行 Linux 的 Vm 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
+* 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)。
+* 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

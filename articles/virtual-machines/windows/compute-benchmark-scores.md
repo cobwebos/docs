@@ -10,10 +10,10 @@ ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
 ms.openlocfilehash: c3e0fdc398d3b0b851c6f548119858e6c41a5a19
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583921"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
@@ -48,7 +48,7 @@ ms.locfileid: "82583921"
 
 
 > [!NOTE]
-> Av2 系列 Vm 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 其大小受到限制，以便为正在运行的实例提供相对一致的处理器性能，而不管它部署在什么硬件上；但是，利用特定的较新处理器优化的软件可能会在不同的处理器类型之间看到更显著差异。
+> Av2 系列 VM 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 VM 的 CPU 性能和内存配置非常适合部署和测试等入门级工作负荷。 其大小受到限制，以便为正在运行的实例提供相对一致的处理器性能，而不管它部署在什么硬件上；但是，利用特定的较新处理器优化的软件可能会在不同的处理器类型之间看到更显著差异。
 
 ## <a name="b---burstable"></a>B - 可迸发
 
@@ -71,9 +71,9 @@ ms.locfileid: "82583921"
 
 
 >[!NOTE]
-> B 系列 Vm 适用于具有可突增性能要求的工作负荷。 当使用量小于其基线时，VM 实例会累积额度。 在累积了额度的情况下，VM 可以突发到基线之上，全力满足短暂的 CPU 突发需求。 突发时间取决于可用额度，这些额度是 VM 大小和时间的函数。  
+> B 系列 VM 适用于具有可突发性能要求的工作负载。 当使用量小于其基线时，VM 实例会累积额度。 在累积了额度的情况下，VM 可以突发到基线之上，全力满足短暂的 CPU 突发需求。 突发时间取决于可用额度，这些额度是 VM 大小和时间的函数。  
 >
-> SPEC Int 是相当长的运行测试，通常用完可用的突发信用额度。  因此，上面的数字更接近于 VM 的基准性能（尽管它们可能反映了两次运行之间累积的某些突发时间）。  对于 short、突发、工作负荷（通常在 B 系列上），性能通常会更接近 Ds v3 系列。
+> SPEC Int 是一个相当长时间运行的测试，通常会耗尽可用的突发额度。  因此，上面的数字更接近于 VM 的基线性能（尽管它们可能反映了两次运行之间累积的一些突发时间）。  对于短时间突发的工作负荷（通常在 B 系列上），性能通常会更接近 Ds v3 系列的性能。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 通用计算 + 高级存储
 
@@ -389,5 +389,5 @@ ms.locfileid: "82583921"
 Windows 分数是通过在 Windows Server 上运行 [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) 计算得出的。 SPECint 是使用基本速率选项 (SPECint_rate2006) 运行的，每个 vCPU 一个副本。 SPECint 包括 12 项单独的测试，每项测试运行三次，取每次测试的中间值并为值加权，形成综合分数。 然后跨多个 VM 运行这些测试，提供所示的平均分。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅[虚拟机的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅 [Sizes for virtual machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（虚拟机的大小）。
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
 ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82581364"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
@@ -44,17 +44,17 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>如果安装 VMInsights 解决方案，我应该如何处理我的工作区中的性能计数器？
 
-上一种启用用于 VM 的 Azure Monitor 在工作区中使用性能计数器的方法。 当前版本将此数据存储在名为`InsightsMetrics`的表中。 如果不再需要使用这些性能计数器，可以选择在工作区中禁用这些计数器。 
+上一种启用用于 VM 的 Azure Monitor 在工作区中使用性能计数器的方法。 当前版本将此数据存储在名为的表中 `InsightsMetrics` 。 如果不再需要使用这些性能计数器，可以选择在工作区中禁用这些计数器。 
 
 >[!NOTE]
->如果在`Perf`表中有引用这些计数器的警报规则，则需要对其进行更新以引用存储在表中的`InsightsMetrics`新数据。 请参阅我们的文档，以了解可用于引用此表的示例日志查询。
+>如果在表中有引用这些计数器的警报规则 `Perf` ，则需要对其进行更新以引用存储在表中的新数据 `InsightsMetrics` 。 请参阅我们的文档，以了解可用于引用此表的示例日志查询。
 >
 
-如果决定使性能计数器保持启用状态，则将根据 [Log Analytics 定价 [（ `Perf` https://azure.microsoft.com/pricing/details/monitor/)）对数据引入进行计费，并将其存储在表中。
+如果决定使性能计数器保持启用状态，则将 `Perf` 根据 [Log Analytics 定价 [（）对数据引入进行计费，并将其存储在表中 https://azure.microsoft.com/pricing/details/monitor/) 。
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>此更改如何影响我的警报规则？
 
-如果你创建了[日志警报](../platform/alerts-unified-log.md)来查询已`Perf`在工作区中启用的性能计数器表，则应将这些规则更新为引用`InsightsMetrics`该表。 本指南还适用于`ServiceMapComputer_CL`使用和`ServiceMapProcess_CL`的任何日志搜索规则，因为这些数据集会移动`VMComputer`到`VMProcess`和表。
+如果你创建了[日志警报](../platform/alerts-unified-log.md)来查询 `Perf` 已在工作区中启用的性能计数器表，则应将这些规则更新为引用 `InsightsMetrics` 该表。 本指南还适用于使用和的任何日志搜索规则 `ServiceMapComputer_CL` `ServiceMapProcess_CL` ，因为这些数据集会移动到 `VMComputer` 和 `VMProcess` 表。
 
 我们将更新此 FAQ 和我们的文档，以包含我们收集的数据集的示例日志搜索警报规则。
 
@@ -62,31 +62,31 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 计费仍基于数据引入，并保存在 Log Analytics 工作区中。
 
-我们收集的计算机级别性能数据是相同的，它的大小与我们在`Perf`表中存储的数据大小相同，并且成本大致相同。
+我们收集的计算机级别性能数据是相同的，它的大小与我们在表中存储的数据大小相同， `Perf` 并且成本大致相同。
 
 ## <a name="what-if-i-only-want-to-use-service-map"></a>如果我只想使用服务映射，该怎么办？
 
 这是正常的。 查看即将推出的更新用于 VM 的 Azure Monitor 时，你将看到 Azure 门户中的提示。 发布后，你会收到一条提示，要求你将更新为新版本。 如果你只想使用[地图](vminsights-maps.md)功能，则可以选择不升级并继续使用用于 VM 的 Azure Monitor 中的 "地图" 功能和从你的工作区或仪表板磁贴访问的服务映射解决方案。
 
-如果选择手动启用工作区中的性能计数器，则可能会在 Azure Monitor 查看的某些性能图表中看到数据。 新解决方案发布后，我们将更新性能图表以查询存储在`InsightsMetrics`表中的数据。 如果要在这些图表中看到该表中的数据，则需要升级到用于 VM 的 Azure Monitor 的新版本。
+如果选择手动启用工作区中的性能计数器，则可能会在 Azure Monitor 查看的某些性能图表中看到数据。 新解决方案发布后，我们将更新性能图表以查询存储在表中的数据 `InsightsMetrics` 。 如果要在这些图表中看到该表中的数据，则需要升级到用于 VM 的 Azure Monitor 的新版本。
 
-从和`ServiceMapComputer_CL` `ServiceMapProcess_CL`中移动数据所做的更改将同时影响服务映射和用于 VM 的 Azure Monitor，因此仍需要规划此更新。
+从和中移动数据所做的更改 `ServiceMapComputer_CL` `ServiceMapProcess_CL` 将同时影响服务映射和用于 VM 的 Azure Monitor，因此仍需要规划此更新。
 
-如果选择不升级到**VMInsights**解决方案，我们将继续提供引用`Perf`表中数据的旧版本的性能工作簿。  
+如果选择不升级到**VMInsights**解决方案，我们将继续提供引用表中数据的旧版本的性能工作簿 `Perf` 。  
 
 ## <a name="will-the-service-map-data-sets-also-be-stored-in-insightsmetrics"></a>服务映射数据集也会存储在 InsightsMetrics 中吗？
 
-如果同时使用这两种解决方案，则将不会复制数据集。 这两个产品/服务都共享存储在中`VMComputer`的数据集（以前`VMProcess` ServiceMapComputer_CL）、（以前`VMConnection`称为 ServiceMapProcess_CL `VMBoundPort` ）、和表以存储我们收集的地图数据集。  
+如果同时使用这两种解决方案，则将不会复制数据集。 这两个产品/服务都共享存储在中的数据集 `VMComputer` （以前 ServiceMapComputer_CL）、 `VMProcess` （以前称为 ServiceMapProcess_CL）、 `VMConnection` 和 `VMBoundPort` 表以存储我们收集的地图数据集。  
 
-如果`InsightsMetrics`你使用用于 VM 的 AZURE MONITOR 和 VM Insights 解决方案，则该表将存储我们收集并仅填充的 vm、进程和服务数据集。 服务映射解决方案将不会在`InsightsMetrics`表中收集或存储数据。
+`InsightsMetrics`如果你使用用于 VM 的 Azure Monitor 和 VM Insights 解决方案，则该表将存储我们收集并仅填充的 vm、进程和服务数据集。 服务映射解决方案将不会在表中收集或存储数据 `InsightsMetrics` 。
 
 ## <a name="will-i-be-double-charged-if-i-have-the-service-map-and-vminsights-solutions-in-my-workspace"></a>如果我的工作区中有服务映射和 VMInsights 解决方案，是否会向我收费？
 
-不是，这两个解决方案共享我们`VMComputer`存储在中的地图数据集（以前称为`VMProcess` ServiceMapComputer_CL） ServiceMapProcess_CL `VMConnection`、、和`VMBoundPort`。 如果工作区中同时具有两个解决方案，则不会对此数据收费。
+不是，这两个解决方案共享我们存储在中的地图数据集 `VMComputer` （以前称为 ServiceMapComputer_CL） `VMProcess` ServiceMapProcess_CL、、 `VMConnection` 和 `VMBoundPort` 。 如果工作区中同时具有两个解决方案，则不会对此数据收费。
 
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>如果删除服务映射或 VMInsights 解决方案，它将删除我的数据吗？
 
-不是，这两个解决方案共享我们`VMComputer`存储在中的地图数据集（以前称为`VMProcess` ServiceMapComputer_CL） ServiceMapProcess_CL `VMConnection`、、和`VMBoundPort`。 如果删除其中一个解决方案，则这些数据集会注意到，仍存在一个使用数据的解决方案，并且该解决方案仍保留在 Log Analytics 工作区中。 需要从工作区中删除这两个解决方案才能从中删除数据。
+不是，这两个解决方案共享我们存储在中的地图数据集 `VMComputer` （以前称为 ServiceMapComputer_CL） `VMProcess` ServiceMapProcess_CL、、 `VMConnection` 和 `VMBoundPort` 。 如果删除其中一个解决方案，则这些数据集会注意到，仍存在一个使用数据的解决方案，并且该解决方案仍保留在 Log Analytics 工作区中。 需要从工作区中删除这两个解决方案才能从中删除数据。
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>运行状况功能处于有限公共预览状态
 
@@ -100,15 +100,15 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 使用运行状况功能的现有客户将继续具有访问权限，但不会提供给新客户。  
 
-若要访问该功能，可以将以下功能标志`feature.vmhealth=true`添加到 Azure 门户 URL。 [https://portal.azure.com](https://portal.azure.com) 示例`https://portal.azure.com/?feature.vmhealth=true`。
+若要访问该功能，可以将以下功能标志添加 `feature.vmhealth=true` 到 AZURE 门户 URL [https://portal.azure.com](https://portal.azure.com) 。 示例 `https://portal.azure.com/?feature.vmhealth=true` 。
 
-你还可以使用此短 url，它会自动设置功能标志： [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)。
+你还可以使用此短 url，它会自动设置功能标志： [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview) 。
 
 作为现有客户，你可以继续在连接到使用运行状况功能的现有工作区设置的 Vm 上使用运行状况功能。  
 
 ## <a name="i-use-vm-health-now-with-one-environment-and-would-like-to-deploy-it-to-a-new-one"></a>现在，我将 VM 运行状况用于一个环境，并想将其部署到新的环境中
 
-如果你是使用运行状况功能的现有客户，并想要将其用于新的推出，请通过与我们联系vminsights@microsoft.com以请求说明。
+如果你是使用运行状况功能的现有客户，并想要将其用于新的推出，请通过与我们联系 vminsights@microsoft.com 以请求说明。
 
 ## <a name="next-steps"></a>后续步骤
 

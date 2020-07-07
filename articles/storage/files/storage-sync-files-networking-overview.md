@@ -3,16 +3,16 @@ title: Azure 文件同步的网络注意事项 | Microsoft Docs
 description: Azure 文件同步的网络选项概述。
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95fb967fa33a581096df65c3ed77e575aa3f6268
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: HT
+ms.openlocfilehash: af5561a010ca1c2d45cf10a37a3b302d5e224158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466673"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512565"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure 文件同步的网络注意事项
 可以通过两种方式连接到 Azure 文件共享：

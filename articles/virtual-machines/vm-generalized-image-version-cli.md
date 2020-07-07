@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 从一般化映像创建 VM
+title: 使用 Azure CLI 从通用化映像创建 VM
 description: 使用 Azure CLI 从通用化映像版本创建 VM。
 author: cynthn
 ms.service: virtual-machines
@@ -9,20 +9,20 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.openlocfilehash: 5e59872a4da0136232652008a2980601428eeab6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796780"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>使用 CLI 从通用化映像版本创建 VM
 
-使用共享映像库中存储的[通用映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建 VM。 如果要使用专用映像创建 VM，请参阅[从专用映像创建 vm](vm-specialized-image-version-powershell.md)。 
+从[共享映像库](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)中存储的通用化映像版本创建 VM。 若要使用专用化映像创建 VM，请参阅[从专用化映像创建 VM](vm-specialized-image-version-powershell.md)。 
 
 
 ## <a name="get-the-image-id"></a>获取映像 ID
 
-使用[az sig image definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list)列出库中的图像定义，查看定义的名称和 ID。
+使用 [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) 列出库中的映像定义，以查看定义的名称和 ID。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -32,7 +32,7 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>创建 VM
 
-运行 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 若要使用最新版本的映像，请`--image`将设置为映像定义的 ID。 
+运行 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM。 若要使用最新版本的映像，请将 `--image` 设置为映像定义的 ID。 
 
 在此示例中，请根据需要替换资源名称。 
 

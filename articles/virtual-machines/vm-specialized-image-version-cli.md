@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 从专用映像版本创建 VM
-description: 使用 Azure CLI 的共享映像库中的专用映像版本创建 VM。
+title: 使用 Azure CLI 从专用化映像版本创建 VM
+description: 使用 Azure CLI 从共享映像库中的专用化映像版本创建 VM。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,19 +10,19 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 1ccf03deee2a2f72c1eb2008e1acc5bf67d16447
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82796767"
 ---
-# <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用具有 Azure CLI 的专用映像版本创建 VM
+# <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建 VM
 
-使用共享映像库中存储的[专用映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建 VM。 如果要使用通用化映像版本创建 VM，请参阅[从一般化映像版本创建 vm](vm-generalized-image-version-cli.md)。
+从共享映像库中存储的[专用化映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建 VM。 若要使用通用化映像版本创建 VM，请参阅[从通用化映像版本创建 VM](vm-generalized-image-version-cli.md)。
 
 在此示例中，请根据需要替换资源名称。 
 
-使用[az sig image definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list)列出库中的图像定义，查看定义的名称和 ID。
+使用 [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) 列出库中的映像定义，以查看定义的名称和 ID。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -34,11 +34,11 @@ az sig image-definition list \
    --output tsv
 ```
 
-使用[az vm create](/cli/azure/vm#az-vm-create)创建 vm，使用--专门化参数来指示映像是专用映像。 
+结合 --specialized 参数使用 [az vm create](/cli/azure/vm#az-vm-create) 创建 VM 可以指明该映像是专用化映像。 
 
-使用的映像定义 ID `--image`从最新版本的映像创建 VM。 还可以通过为`--image`提供映像版本 ID，从特定版本创建 VM。 
+使用 `--image` 的映像定义 ID 从可用的最新映像版本创建 VM。 还可以通过为 `--image` 提供映像版本 ID 从特定版本创建 VM。 
 
-在此示例中，我们从最新版本的*myImageDefinition*映像创建 VM。
+在此示例中，我们将从 myImageDefinition 映像的最新版本创建 VM。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -55,8 +55,8 @@ az vm create --resource-group myResourceGroup \
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [从映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 

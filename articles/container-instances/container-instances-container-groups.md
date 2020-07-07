@@ -1,23 +1,23 @@
 ---
 title: 容器组简介
-description: 了解 Azure 容器实例中的容器组，它是共享生命周期和资源（如 Cpu、存储和网络）的实例集合。
+description: 了解 Azure 容器实例中的容器组 - 共享生命周期和资源（例如 CPU、存储和网络）的实例集合
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82583835"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
-Azure 容器实例中的顶层资源是容器组。  本文介绍容器组的定义和它们支持的方案类型。
+Azure 容器实例中的顶层资源是容器组。** 本文介绍容器组的定义和它们支持的方案类型。
 
 ## <a name="what-is-a-container-group"></a>什么是容器组？
 
-容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它与 *Kubernetes* 中的 [Pod][kubernetes-pod] 这一概念相似。
+容器组是安排在同一主机上的容器集合。 容器组中的容器共享生命周期、资源、本地网络和存储卷。 它与 [Kubernetes][kubernetes-pod] 中的 *Pod* 这一概念相似。
 
 以下关系图显示了一个包含多个容器的容器组示例：
 
@@ -56,10 +56,10 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
     
 例如，在包含两个容器实例的组中（每个实例请求 1 个 CPU），一个容器运行的工作负荷可能需要运行比其他实例更多的 CPU。
 
-在这种情况下，你可以为容器实例设置最多2个 Cpu 的资源限制。 此配置允许容器实例最多使用2个 Cpu （如果可用）。
+在这种情况下，可将容器实例的资源限制设置为最多 2 个 CPU。 此配置允许该容器实例最多使用 2 个 CPU（如果可用）。
 
 > [!NOTE]
-> 容器组的资源由服务的底层基础结构使用。 你的容器将能够访问最多（而不是分配给组的所有资源）。 出于此原因，在为组中的容器请求资源时，请规划小型资源缓冲区。
+> 服务的底层基础结构使用了容器组的少量资源。 容器将能够访问分配给该组的大部分而不是全部资源。 因此，为组中的容器请求资源时，请规划一个小型资源缓冲区。
 
 ### <a name="minimum-and-maximum-allocation"></a>最小和最大分配
 
@@ -69,7 +69,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 
 ## <a name="networking"></a>网络
 
-容器组可以共享面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及具有完全限定域名 (FQDN) 的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 删除容器组后，会释放容器组的 IP 地址和 FQDN。 
+容器组可以共享面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及具有完全限定域名 (FQDN) 的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 删除容器组后，将释放该容器组的 IP 地址和 FQDN。 
 
 在容器组中，容器实例可以通过任何端口上的本地主机相互访问，即使这些端口未在组的 IP 地址对外公开，或者未从容器公开。
 
@@ -81,7 +81,7 @@ Azure 容器实例通过添加组中实例的[资源请求][resource-requests]�
 * [Azure 文件共享][azure-files]
 * [机密][secret]
 * [空目录][empty-directory]
-* [克隆的 git 存储库][volume-gitrepo]
+* [克隆的 Git 存储库][volume-gitrepo]
 
 可以将这些卷映射到组中单个容器内的特定路径。 
 

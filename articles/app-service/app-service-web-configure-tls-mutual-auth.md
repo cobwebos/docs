@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82592360"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
@@ -24,7 +24,7 @@ ms.locfileid: "82592360"
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为需要客户端证书，可以通过从 Azure 门户中选择 "**配置** > **常规设置**"，在 "需要传入证书"**上**切换， `clientCertEnabled`或者需要将应用的`true`设置设置为。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
+若要将应用设置为需要客户端证书，可以通过从 Azure 门户选择“配置” > “常规设置”将“需要传入证书”切换到“开”，或者需要将应用的 `clientCertEnabled` 设置设为 `true`。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -34,7 +34,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 为应用程序启用相互身份验证时，应用根目录下的所有路径都需要客户端证书才能进行访问。 若要允许某些路径对匿名访问保持开放，可以将排除路径定义为应用程序配置的一部分。
 
-可以通过选择“配置”   > “常规设置”  并定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
+可以通过选择“配置” > “常规设置”并定义排除路径来配置排除路径。 在此示例中，应用程序的 `/public` 路径下的任何内容都不会请求客户端证书。
 
 ![证书排除路径][exclusion-paths]
 
