@@ -272,13 +272,13 @@
     - name: Batch 反馈
       href: 'https://feedback.azure.com/forums/269742-batch'
     - name: 有关 Batch 的 Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-batch.html'
+      href: /answers/topics/azure-batch.html
     - name: Batch Shipyard
       href: 'https://github.com/Azure/batch-shipyard'
     - name: 博客
       href: 'https://blogs.technet.microsoft.com/windowshpc/'
     - name: 基于 Azure 的 HPC
-      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+      href: /azure/architecture/topics/high-performance-computing/
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/batch/'
     - name: 定价计算器

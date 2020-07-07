@@ -4,10 +4,10 @@ description: 获取有关使用 Azure Migrate 服务器迁移迁移计算机的�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744322"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 迁移：常见问题
@@ -21,13 +21,13 @@ ms.locfileid: "82744322"
 
 ## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>哪些地理区域支持 Azure Migrate 迁移？
 
-查看[公有](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
+查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
 ## <a name="how-does-agentless-vmware-replication-work"></a>无代理 VMware 复制的工作原理是什么？
 
 VMware 的无代理复制方法使用 VMware 快照和 VMware 更改的阻止跟踪（CBT）。
 
-流程如下：
+过程如下：
 
 1. 启动复制时，将安排初始复制循环。 在初始循环中，会创建 VM 的快照。 快照用于复制 Vm Vmdk （磁盘）。 
 2. 初始复制周期结束后，将定期计划增量复制循环。
@@ -83,9 +83,9 @@ Azure Migrate 使用带有 TLS 加密的网络块设备（NBD）协议。
 
 可以使用 New-netqospolicy 进行限制。 例如：
 
-要在 New-netqospolicy 中使用的 AppNamePrefix 为 "GatewayWindowsService"。 可以通过创建如下策略，在 Azure Migrate 设备上创建策略，以限制设备的复制流量：
+要在 New-netqospolicy 中使用的 AppNamePrefix 为 "GatewayWindowsService.exe"。 可以通过创建如下策略，在 Azure Migrate 设备上创建策略，以限制设备的复制流量：
  
-New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService"-ThrottleRateActionBitsPerSecond 1MB
+New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService.exe"-ThrottleRateActionBitsPerSecond 1MB
 
 ## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>能否迁移已复制到 Azure 的 Vm？ 
 

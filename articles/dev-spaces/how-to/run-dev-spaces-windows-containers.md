@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 了解如何使用 Windows 容器在现有群集上运行 Azure Dev Spaces
 keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，Windows 容器
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80240480"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 与 Windows 容器交互
@@ -54,14 +54,14 @@ kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 
 在 AKS 群集上运行 Windows 服务，并验证其是否处于*运行*状态。 本文使用[示例应用程序][sample-application]来演示群集上运行的 Windows 和 Linux 服务。
 
-从 GitHub 克隆示例应用程序并导航到该`dev-spaces/samples/existingWindowsBackend/mywebapi-windows`目录：
+从 GitHub 克隆示例应用程序并导航到该 `dev-spaces/samples/existingWindowsBackend/mywebapi-windows` 目录：
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-示例应用程序使用[Helm 3][helm-installed]在群集上运行 Windows 服务。 导航到`charts`目录并使用 Helm 运行 Windows 服务：
+示例应用程序使用[Helm 3][helm-installed]在群集上运行 Windows 服务。 导航到 `charts` 目录并使用 Helm 运行 Windows 服务：
 
 ```console
 cd charts/
@@ -71,7 +71,7 @@ helm install windows-service . --namespace dev
 
 上述命令使用 Helm 在*dev*命名空间中运行你的 Windows 服务。 如果没有名为*dev*的命名空间，则会创建它。
 
-使用`kubectl get pods`命令验证 Windows 服务是否正在群集中运行。 
+使用 `kubectl get pods` 命令验证 Windows 服务是否正在群集中运行。 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -91,9 +91,9 @@ az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 
 ## <a name="update-your-windows-service-for-dev-spaces"></a>更新用于开发人员共享空间的 Windows 服务
 
-如果在具有已运行的容器的现有命名空间中启用 Dev 空间，则默认情况下，Dev 空间将尝试并检测在该命名空间中运行的任何新容器。 开发人员空间还将尝试并检测为已在命名空间中运行的服务创建的任何新容器。 若要阻止 Dev 空间检测命名空间中运行的容器，请将非*代理*标头添加到`deployment.yaml`。
+如果在具有已运行的容器的现有命名空间中启用 Dev 空间，则默认情况下，Dev 空间将尝试并检测在该命名空间中运行的任何新容器。 开发人员空间还将尝试并检测为已在命名空间中运行的服务创建的任何新容器。 若要阻止 Dev 空间检测命名空间中运行的容器，请将非*代理*标头添加到 `deployment.yaml` 。
 
-添加`azds.io/no-proxy: "true"`到`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml`文件：
+添加 `azds.io/no-proxy: "true"` 到 `existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml` 文件：
 
 ```yaml
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-使用`helm list`列出你的 Windows 服务的部署：
+使用 `helm list` 列出你的 Windows 服务的部署：
 
 ```cmd
 $ helm list --namespace dev
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-在上面的示例中，部署的名称为*windows 服务*。 使用新配置更新 Windows 服务，使用`helm upgrade`：
+在上面的示例中，部署的名称为*windows 服务*。 使用新配置更新 Windows 服务，使用 `helm upgrade` ：
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-由于你更新了`deployment.yaml`，因此开发人员空间不会尝试并检测你的服务。
+由于你更新了 `deployment.yaml` ，因此开发人员空间不会尝试并检测你的服务。
 
 ## <a name="run-your-linux-application-with-azure-dev-spaces"></a>运行 Linux 应用程序 Azure Dev Spaces
 
-导航到该`webfrontend`目录，然后使用`azds prep`和`azds up`命令在群集上运行 Linux 应用程序。
+导航到该 `webfrontend` 目录，然后使用 `azds prep` 和 `azds up` 命令在群集上运行 Linux 应用程序。
 
 ```console
 cd ../../webfrontend-linux/
@@ -138,12 +138,12 @@ azds prep --enable-ingress
 azds up
 ```
 
-该`azds prep --enable-ingress`命令生成应用程序的 Helm 图和 dockerfile。
+该 `azds prep --enable-ingress` 命令生成应用程序的 Helm 图和 dockerfile。
 
 > [!TIP]
 > Azure Dev Spaces 使用项目的 [Dockerfile 和 Helm 图表](../how-dev-spaces-works-prep.md#prepare-your-code)来生成和运行代码，但是如果要更改项目的生成和运行方式，则可以修改这些文件。
 
-此`azds up`命令在命名空间中运行你的服务。
+此 `azds up` 命令在命名空间中运行你的服务。
 
 ```console
 $ azds up
@@ -161,7 +161,7 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-可以通过打开公共 URL 来查看正在运行的服务，该 URL 将显示在 azds up 命令的输出中。 在此示例中，公共 URL 为 `http://dev.webfrontend.abcdef0123.eus.azds.io/` 。 在浏览器中导航到服务，然后单击顶部的 "*关于*"。 验证是否显示*mywebapi*服务中包含容器所使用的 Windows 版本的消息。
+可以通过打开公共 URL 来查看正在运行的服务，该 URL 将显示在 azds up 命令的输出中。 在此示例中，公共 URL 为 `http://dev.webfrontend.abcdef0123.eus.azds.io/`。 在浏览器中导航到服务，然后单击顶部的 "*关于*"。 验证是否显示*mywebapi*服务中包含容器所使用的 Windows 版本的消息。
 
 ![显示来自 mywebapi 的 Windows 版本的示例应用](../media/run-dev-spaces-windows-containers/sample-app.png)
 

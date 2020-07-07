@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.openlocfilehash: 877a17327f13e407f86cb3a1a21f051572f74343
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73499722"
 ---
 # <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>用于 IPsec 连接的虚拟 WAN 默认策略
@@ -28,5 +28,5 @@ ms.locfileid: "73499722"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关配置自定义 IPsec 策略的步骤，请参阅为[虚拟 WAN 配置自定义 ipsec 策略](virtual-wan-custom-ipsec-portal.md)。
+有关配置自定义 IPsec 策略的步骤，请参阅[为虚拟 WAN 配置自定义 IPsec 策略](virtual-wan-custom-ipsec-portal.md)。
 有关虚拟 WAN 的详细信息，请参阅[关于 Azure 虚拟 WAN](virtual-wan-about.md) 和 [Azure 虚拟 WAN 常见问题解答](virtual-wan-faq.md)。

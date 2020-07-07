@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80154723"
 ---
 # <a name="what-is-authentication"></a>什么是身份验证？
@@ -42,12 +42,12 @@ ms.locfileid: "80154723"
 
 ![Web 应用程序登录概述](./media/v1-authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
-下面是你需要了解的关于关系图中所示的各种组件的内容：
+下面是你需要了解的示意图中显示的各种组件的相关信息：
 
-* Azure AD 是标识提供程序。 标识提供者负责验证组织目录中存在的用户和应用程序的标识，并在对这些用户和应用程序成功进行身份验证时颁发安全令牌。
+* Azure AD 是标识提供程序。 标识提供程序负责对组织的目录中存在的用户和应用程序的标识进行验证，并在这些用户和应用程序成功通过身份验证时颁发安全令牌。
 * 要将身份验证外包给 Azure AD 的应用程序必须在 Azure Active Directory (Azure AD) 中进行注册。 Azure AD 在目录中注册并唯一标识应用。
 * 开发人员可以使用开源 Azure AD 身份验证库处理协议细节，方便你进行身份验证。 有关详细信息，请参阅 Microsoft 标识平台 [v2.0 身份验证库](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和 [v1.0 身份验证库](active-directory-authentication-libraries.md)。
-* 用户经过身份验证后，应用程序必须验证用户的安全令牌，以确保身份验证成功。 可查找各种语言和框架的快速入门、教程和代码示例，了解应用程序必须执行的操作。
+* 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证是成功的。 可查找各种语言和框架的快速入门、教程和代码示例，了解应用程序必须执行的操作。
   * 要快速构建应用并添加功能（如获取令牌、刷新令牌、进行用户登录、显示某些用户信息），请参阅文档的“快速入门”部分  。
   * 要深入了解顶级身份验证开发人员任务的案例过程，例如获取访问令牌并在调用 Microsoft Graph API 和其他 API 时使用它们，使用 OpenID Connect 通过传统的基于 Web 浏览器的应用实现 Microsoft 登录等，请参阅文档的“教程”部分  。
   * 要下载代码示例，请转到 [GitHub](https://github.com/Azure-Samples?q=active-directory)。
@@ -122,21 +122,21 @@ Azure AD 颁发的安全令牌（访问令牌和 ID 令牌）包含与经过身�
 | 声明 | 说明 |
 | --- | --- |
 | 应用程序 ID | 标识正在使用令牌的应用程序。 |
-| 读者 | 标识令牌所针对的接收方资源。 |
+| 目标受众 | 标识令牌所针对的接收方资源。 |
 | 应用程序身份验证上下文类引用 | 指示客户端的身份验证方式（公共客户端与机密客户端）。 |
-| 即时身份验证 | 记录身份验证发生的日期和时间。 |
+| 身份验证即时 | 记录身份验证发生的日期和时间。 |
 | 身份验证方法 | 指示令牌使用者的身份验证方式（密码、证书等）。 |
-| 名字 | 按照 Azure AD 中的设置提供用户的给定名称。 |
+| 名字 | 按照 Azure AD 中的设置提供用户的名称。 |
 | 组 | 包含用户所属 Azure AD 组的对象 ID。 |
-| 标识提供程序 | 记录对令牌使用者进行身份验证的标识提供程序。 |
+| 标识提供者 | 记录对令牌使用者进行身份验证的标识提供者。 |
 | 颁发时间 | 记录令牌的颁发时间，通常用于计算令牌新鲜度。 |
 | 颁发者 | 标识发出令牌以及 Azure AD 租户的 STS。 |
 | 姓氏 | 按照 Azure AD 中的设置提供用户的姓氏。 |
-| 名称 | 提供了一个用户可读值，用于标识令牌使用者。 |
+| 名称 | 提供一个用户可读值，用于标识令牌使用者。 |
 | 对象 ID | 包含 Azure AD 中的使用者的不可变、唯一标识符。 |
 | 角色 | 包含授予用户的 Azure AD 应用程序角色的友好名称。 |
-| 范围 | 指示授予客户端应用程序的权限。 |
-| 主题 | 指示令牌断言信息的主体。 |
+| 作用域 | 指示授予客户端应用程序的权限。 |
+| 使用者 | 指示令牌断言信息的主体。 |
 | 租户 ID | 包含已颁发令牌的目录租户的不可变、唯一标识符。 |
 | 令牌生存期 | 定义令牌保持有效状态的时间间隔。 |
 | 用户主体名称 | 包含使用者的用户主体名称。 |

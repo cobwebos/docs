@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80066918"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
@@ -37,11 +37,11 @@ Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux �
 
 ## <a name="extension-schema"></a>扩展架构
 
-Azure 磁盘加密（ADE）的扩展架构有两个版本：
+Azure 磁盘加密 (ADE) 的扩展架构有两个版本：
 - 1.1 版-不使用 Azure Active Directory （AAD）属性的较新建议架构。
 - v 0.1-需要 Azure Active Directory （AAD）属性的旧架构。 
 
-若要选择目标架构，必须`typeHandlerVersion`将属性设置为等于要使用的架构版本。
+若要选择目标架构，需要将 `typeHandlerVersion` 属性设置为要使用的架构版本。
 
 ### <a name="schema-v11-no-aad-recommended"></a>架构1.1 版：不使用 AAD （建议）
 
@@ -147,19 +147,19 @@ Azure 磁盘加密（ADE）的扩展架构有两个版本：
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | 字符串 |
 | typeHandlerVersion | 1.1、0。1 | int |
-| （0.1 版架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| （0.1 版架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
 | （0.1 版架构）AADClientSecret | password | string |
 | （0.1 版架构）AADClientCertificate | thumbprint | 字符串 |
 | 可有可无（0.1 架构）密码 | password | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| （可选-默认 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
+| （可选 - 默认 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyVaultURL | url | string |
 | KeyVaultResourceId | url | string |
-| 可有可无KeyEncryptionKeyURL | url | string |
-| 可有可无KekVaultResourceId | url | 字符串 |
-| 可有可无SequenceVersion | uniqueidentifier | 字符串 |
-| VolumeType | OS, Data, All | 字符串 |
+| （可选）KeyEncryptionKeyURL | url | string |
+| （可选）KekVaultResourceId | url | 字符串 |
+| （可选）SequenceVersion | uniqueidentifier | string |
+| VolumeType | OS, Data, All | string |
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -173,17 +173,17 @@ Azure 磁盘加密（ADE）的扩展架构有两个版本：
 > - 在 Linux VM 上，仅支持对数据卷禁用加密。 如果 OS 卷已加密，则不支持对数据卷或 OS 卷禁用加密。 
 
 >[!NOTE]
-> 另外， `VolumeType`如果将参数设置为 All，则仅在正确装入数据磁盘时才对其进行加密。
+> 另外，如果将 `VolumeType` 参数设置为 All，则仅在正确装入数据磁盘时才对其进行加密。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关故障排除，请参阅 [Azure 磁盘加密故障排除指南](../linux/disk-encryption-troubleshooting.md)。
 
 ### <a name="support"></a>支持
 
-如果在本文的任何位置需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)。 
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 
 
 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持](https://azure.microsoft.com/support/options/)并选择 "获取支持"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 

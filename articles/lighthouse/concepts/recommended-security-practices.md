@@ -4,10 +4,10 @@ description: 使用 Azure 委托资源管理时，必须考虑安全性和访问
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: d9b806aaf988fedfde6ce468f3eff948aa8ce344
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246902"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
@@ -25,7 +25,7 @@ ms.locfileid: "80246902"
 为了更轻松地进行管理，我们建议为管理客户的资源所需的每个角色使用 Azure AD 用户组。 这样，你就可以根据需要向组添加或删除单个用户，而不是直接向该用户分配权限。
 
 > [!IMPORTANT]
-> 若要为 Azure AD 组添加权限，**组类型**必须是**安全性**而不是**Office 365**。 此选项在创建组时处于选中状态。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组以及添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+> 若要为 Azure AD 组添加权限，“组类型”必须是“安全性”而不是“Office 365”  。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 创建权限结构时，请确保遵循最低权限原则，以便用户仅具有完成作业所需的权限，这样有助于减少发生意外错误的几率。
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/24/2020
 ms.openlocfilehash: 00f16d11f7a9cd276772eda5e91d6e117ada8c9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80246295"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>将 Azure 认知搜索服务移到另一个 Azure 区域
@@ -48,7 +48,7 @@ ms.locfileid: "80246295"
 完成上述步骤后，可以通过以下链接来找到详细信息。
 
 + [Azure 认知搜索定价和区域](https://azure.microsoft.com/pricing/details/search/)
-+ [选择层](search-sku-tier.md)
++ [选择层级](search-sku-tier.md)
 + [创建搜索服务](search-create-service-portal.md)
 + [加载搜索文档](search-what-is-data-import.md)
 + [启用日志记录](search-monitor-logs.md)

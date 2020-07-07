@@ -8,10 +8,10 @@ ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80245814"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
@@ -32,8 +32,8 @@ ms.locfileid: "80245814"
 
 | 堆栈           | 预期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 用于启动 JAR 应用的命令（例如`java -jar /home/site/wwwroot/app.jar --server.port=80`） |
-| Tomcat          | 用于执行任何所需配置的脚本的位置（例如， `/home/site/deployments/tools/startup_script.sh`）          |
+| Java SE         | 用于启动 JAR 应用的命令（例如 `java -jar /home/site/wwwroot/app.jar --server.port=80` ） |
+| Tomcat          | 用于执行任何所需配置的脚本的位置（例如， `/home/site/deployments/tools/startup_script.sh` ）          |
 | Node.js         | PM2 配置文件或脚本文件                                |
 | .NET Core       | 已编译的 DLL 名称`dotnet <myapp>.dll`                                 |
 | Ruby            | 要用于初始化应用的 Ruby 脚本                     |
@@ -108,9 +108,9 @@ const io = require('socket.io')(server,{
 
 ## <a name="custom-containers"></a>自定义容器
 
-**我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到`/home/`目录中。**
+**我使用的是我自己的自定义容器。我希望平台将 SMB 共享装载到 `/home/` 目录中。**
 
-如果`WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**设置或将其*true*设置为 true `/home/` ，则将跨缩放实例**共享**该目录，并且写入**的文件将**在重新启动后保持。 显式设置`WEBSITES_ENABLE_APP_SERVICE_STORAGE`为*false*将禁用装入。
+如果 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **未指定**设置或将其设置为*true*，则 `/home/` 将跨缩放实例**共享**该目录，并且写入的文件将在重新启动后**保持**。 显式设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 为*false*将禁用装入。
 
 **自定义容器需要很长时间才能启动，并且平台在它完成启动之前便重启了容器。**
 
@@ -122,7 +122,7 @@ const io = require('socket.io')(server,{
 
 **专用注册表选项中的映像名称的格式是什么？**
 
-添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要`docker-custom-image-name`设置，请使用[ `az`命令行工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
+添加完整映像名称，包括专用注册表 URL（例如 myacr.azurecr.io/dotnet:latest）。 使用自定义端口的映像名称[无法通过门户输入](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 若要设置 `docker-custom-image-name` ，请使用[ `az` 命令行工具](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)。
 
 **是否可以在自定义容器映像上公开多个端口？**
 
@@ -153,7 +153,7 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL （完整 URL，例如： `https://<server-name>.azurecr.io`）
+- DOCKER_REGISTRY_SERVER_URL （完整 URL，例如： `https://<server-name>.azurecr.io` ）
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：

@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80277050"
 ---
 # <a name="co-sell-country-and-region-codes"></a>共同销售国家/地区代码
@@ -38,7 +38,7 @@ ms.locfileid: "80277050"
 | 安提瓜和巴布达                 | AG        |
 | 阿根廷                           | AR        |
 | 亚美尼亚                             | AM        |
-| 阿鲁巴岛                               | AW        |
+| 阿鲁巴                               | AW        |
 | 澳大利亚                           | AU        |
 | 奥地利                             | AT        |
 | 阿塞拜疆                          | AZ        |
@@ -74,22 +74,22 @@ ms.locfileid: "80277050"
 | 捷克                             | CZ        |
 | 智利                               | CL        |
 | 中国                               | CN        |
-| 圣延岛                    | CX        |
-| 科科斯群岛             | CC        |
+| 圣诞岛                    | CX        |
+| 科科斯（基林）群岛             | CC        |
 | 哥伦比亚                            | CO        |
 | 科摩罗                             | KM        |
 | 刚果                               | CG        |
-| 刚果（民主共和国）                         | CD        |
+| 刚果（金）                         | CD        |
 | 库克群岛                        | CK        |
 | 哥斯达黎加                          | CR        |
 | 科特迪瓦                       | CI        |
 | 克罗地亚                             | HR        |
 | 古巴                                | CU        |
-| 库拉索岛                             | °        |
+| 库拉索岛                             | CW        |
 | 塞浦路斯                              | CY        |
 | 丹麦                             | DK        |
 | 吉布提                            | DJ        |
-| 多米尼加                            | DM        |
+| 多米尼克                            | DM        |
 | 多米尼加共和国                  | DO        |
 | 厄瓜多尔                             | EC        |
 | 埃及                               | EG        |
@@ -104,7 +104,7 @@ ms.locfileid: "80277050"
 | 芬兰                             | FI        |
 | 法国                              | FR        |
 | 法属圭亚那                       | GF        |
-| 法属玻里尼西亚                    | PF        |
+| 法属波利尼西亚                    | PF        |
 | 法属南部领地         | TF        |
 | 加蓬                               | GA        |
 | 冈比亚                              | GM        |
@@ -115,10 +115,10 @@ ms.locfileid: "80277050"
 | 希腊                              | GR        |
 | 格陵兰                           | GL        |
 | 格林纳达                             | GD        |
-| 瓜德罗普岛                          | GP        |
+| 瓜德罗普                          | GP        |
 | 关岛                                | GU        |
 | 危地马拉                           | GT        |
-| 格恩西岛                            | GG        |
+| 根西岛                            | GG        |
 | 几内亚                              | GN        |
 | 几内亚比绍                       | GW        |
 | 圭亚那                              | GY        |
@@ -133,12 +133,12 @@ ms.locfileid: "80277050"
 | 伊朗                                | IR        |
 | 伊拉克                                | IQ        |
 | 爱尔兰                             | IE        |
-| 曼岛                         | IM        |
+| 马恩岛                         | IM        |
 | 以色列                              | IL        |
 | 意大利                               | IT        |
 | 牙买加                             | JM        |
 | 日本                               | JP        |
-| 泽西                              | JE        |
+| 泽西岛                              | JE        |
 | 约旦                              | JO        |
 | 哈萨克斯坦                          | KZ        |
 | 肯尼亚                               | KE        |
@@ -164,7 +164,7 @@ ms.locfileid: "80277050"
 | 马耳他                               | MT        |
 | 马绍尔群岛                    | MH        |
 | 马提尼克                          | MQ        |
-| 毛里塔尼亚                          | MR        |
+| 毛利塔尼亚                          | MR        |
 | 毛里求斯                           | MU        |
 | 马约特                             | YT        |
 | 墨西哥                              | MX        |
@@ -206,7 +206,7 @@ ms.locfileid: "80277050"
 | 葡萄牙                            | PT        |
 | 波多黎各                         | PR        |
 | 卡塔尔                               | QA        |
-| 留尼汪岛                             | RE        |
+| 留尼汪                             | RE        |
 | 罗马尼亚                             | RO        |
 | 俄罗斯                              | RU        |
 | 卢旺达                              | RW        |
@@ -263,7 +263,7 @@ ms.locfileid: "80277050"
 | United States                       | 美国        |
 | 乌拉圭                             | UY        |
 | 美国本土外小岛屿               | UM        |
-| 美属维尔京群岛                 | VI        |
+| 美国维尔京群岛                 | VI        |
 | 乌兹别克斯坦                          | UZ        |
 | 瓦努阿图                             | VU        |
 | 梵蒂冈                        | VA        |

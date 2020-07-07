@@ -6,19 +6,19 @@ ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
 ms.openlocfilehash: 03076a711041812f7587aa1c388b0889b49725d2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82787127"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 
 [虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型都只设置了一个规模集：多个节点类型不能由同一规模集提供支持，而一个节点类型（在大多数情况下）不应由多个规模集提供支持。 此情况的一个例外是[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)节点类型这一罕见情况，即当副本从原始规模集迁移到已升级规模集时，临时有两个具有相同 `nodeTypeRef` 值的规模集。
 
-规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric  虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
+规模集中每个虚拟机上均通过 Microsoft.Azure.ServiceFabric 虚拟机扩展安装了 Service Fabric 运行时。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
 
-下图显示了一个具有两个节点类型（分别名为“FrontEnd”  和“BackEnd”  ）的群集。 每个节点类型具有五个节点。
+下图显示了一个具有两个节点类型（分别名为“FrontEnd”和“BackEnd”）的群集。 每个节点类型具有五个节点。
 
 ![具有两个节点类型的群集][NodeTypes]
 
@@ -26,11 +26,11 @@ ms.locfileid: "82787127"
 
 如上图中所示，缩放集实例以实例 0 开始，然后以基数 1 递增。 编号反映在节点名称中。 例如，节点 BackEnd_0 是 BackEnd 规模集的实例 0。 此特定规模集具有五个实例，名称分别为 BackEnd_0、BackEnd_1、BackEnd_2、BackEnd_3、BackEnd_4。
 
-横向扩展规模集时，将创建一个新实例。 新的规模集实例名称通常是规模集名称加上下一个实例编号。 在本示例中，即 BackEnd_5。
+横向扩展规模集时，将创建新的实例。 新的规模集实例名称通常是规模集名称加上下一个实例编号。 在本示例中，即 BackEnd_5。
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>将规模集负载均衡器映射到节点类型和规模集
 
-如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;  。 例如，下图中显示的 LB-sfcluster4doc-0：
+如果已在 Azure 门户部署群集，或使用了示例 Azure 资源管理器模板，将列出资源组下所有的资源。 可看到每个规模集或节点类型的负载均衡器。 负载均衡器名称使用以下格式：LB-&lt;节点类型名称&gt;。 例如，下图中显示的 LB-sfcluster4doc-0：
 
 ![资源][Resources]
 

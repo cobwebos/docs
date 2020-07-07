@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 ms.openlocfilehash: fd11b3bbd3f90b75203084ff0753c1485d57a35b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80155423"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自定义 traefik 入口控制器并配置 HTTPS
@@ -47,7 +47,7 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-为 traefik 入口控制器创建 Kubernetes 命名空间，并使用`helm`安装它。
+为 traefik 入口控制器创建 Kubernetes 命名空间，并使用安装它 `helm` 。
 
 > [!NOTE]
 > 如果 AKS 群集未启用 RBAC，请删除 *--set RBAC. enabled = true*参数。
@@ -58,7 +58,7 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set 服务。helm install 命令的 kubernetes\\/azure-load--internal "= true 参数。\\\\* *helm install*
+> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set 服务。helm install 命令的 \\ \\ kubernetes \\ /azure-load--internal "= true*参数。 *helm install*
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
@@ -102,7 +102,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 * 将 *<REPLACE_ME_WITH_HOST_SUFFIX>* 的所有实例替换为*traefik。MY_CUSTOM_DOMAIN*使用域进行*MY_CUSTOM_DOMAIN*。 
 * 替换*kubernetes.io/ingress.class： traefik-azds # Dev Spaces-特定于* *kubernetes.io/ingress.class： Traefik # 自定义入口*。 
 
-下面是已更新`values.yaml`文件的示例：
+下面是已更新文件的示例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -125,13 +125,13 @@ gateway:
 
 保存更改并关闭该文件。
 
-使用`azds space select`创建使用的示例应用程序的*开发*环境。
+使用创建使用的示例应用程序的*开发*环境 `azds space select` 。
 
 ```console
 azds space select -n dev -y
 ```
 
-使用`helm install`部署示例应用程序。
+使用部署示例应用程序 `helm install` 。
 
 ```console
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
@@ -139,13 +139,13 @@ helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 
 上面的示例将示例应用程序部署到*dev*命名空间。
 
-显示使用`azds list-uris`访问示例应用程序的 url。
+显示使用访问示例应用程序的 Url `azds list-uris` 。
 
 ```console
 azds list-uris
 ```
 
-下面的输出显示了来自`azds list-uris`的示例 url。
+下面的输出显示了来自的示例 Url `azds list-uris` 。
 
 ```console
 Uri                                                  Status
@@ -159,14 +159,14 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 > [!NOTE]
 > 如果看到错误页面而不是*bikesharingweb*服务，请验证是否已在*yaml*文件**中更新** *kubernetes.io/ingress.class*批注和主机。
 
-使用`azds space select`命令在 "*开发*" 下创建子空间，并列出用于访问子开发人员空间的 url。
+使用 `azds space select` 命令在 "*开发*" 下创建子空间，并列出用于访问子开发人员空间的 url。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-以下输出显示了中`azds list-uris`的示例 url，可用于访问*azureuser1*子开发人员空间中的示例应用程序。
+以下输出显示了中的示例 Url `azds list-uris` ，可用于访问*azureuser1*子开发人员空间中的示例应用程序。
 
 ```console
 Uri                                                  Status
@@ -175,11 +175,11 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-通过从`azds list-uris`命令中打开公共 URL，导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务。 在上面的示例中， *azureuser1*子开发人员空间中`http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` *bikesharingweb*服务的公共 URL 是。
+通过从命令中打开公共 URL，导航到*azureuser1*子 dev 空间中的*bikesharingweb*服务 `azds list-uris` 。 在上面的示例中， *azureuser1*子开发人员空间中*bikesharingweb*服务的公共 URL 是 `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` 。
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>将 traefik 入口控制器配置为使用 HTTPS
 
-将 traefik 入口控制器配置为使用 HTTPS 时，请使用[证书管理器][cert-manager]自动管理 TLS 证书。 使用`helm`安装*certmanager*图表。
+将 traefik 入口控制器配置为使用 HTTPS 时，请使用[证书管理器][cert-manager]自动管理 TLS 证书。 使用 `helm` 安装*certmanager*图表。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
@@ -189,7 +189,7 @@ helm repo update
 helm install cert-manager --namespace traefik --version v0.12.0 jetstack/cert-manager --set ingressShim.defaultIssuerName=letsencrypt --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-创建一个`letsencrypt-clusterissuer.yaml`文件，并使用您的电子邮件地址更新 "电子邮件" 字段。
+创建一个 `letsencrypt-clusterissuer.yaml` 文件，并使用您的电子邮件地址更新 "电子邮件" 字段。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -211,13 +211,13 @@ spec:
 > [!NOTE]
 > 对于测试，还有一个可用于*ClusterIssuer*的[过渡服务器][letsencrypt-staging-issuer]。
 
-使用`kubectl`应用`letsencrypt-clusterissuer.yaml`。
+使用 `kubectl` 应用 `letsencrypt-clusterissuer.yaml` 。
 
 ```console
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-删除以前的*traefik* *ClusterRole*和*ClusterRoleBinding*，然后将 traefik 升级到使用 HTTPS `helm`。
+删除以前的*traefik* *ClusterRole*和*ClusterRoleBinding*，然后将 traefik 升级到使用 HTTPS `helm` 。
 
 > [!NOTE]
 > 如果 AKS 群集未启用 RBAC，请删除 *--set RBAC. enabled = true*参数。
@@ -261,7 +261,7 @@ az network dns record-set a remove-record \
 
 上面的示例将*MY_CUSTOM_DOMAIN* DNS 区域中的*A*记录更新为使用*PREVIOUS_EXTERNAL_IP*。
 
-将[yaml][values-yaml]更新为包含使用*证书管理器*和 HTTPS 的详细信息。 下面是已更新`values.yaml`文件的示例：
+将[yaml][values-yaml]更新为包含使用*证书管理器*和 HTTPS 的详细信息。 下面是已更新文件的示例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -292,7 +292,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-使用`helm`以下内容升级示例应用程序：
+使用以下内容升级示例应用程序 `helm` ：
 
 ```console
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
@@ -322,7 +322,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_C
 ...
 ```
 
-使用*url*包的依赖项更新[BikeSharingWeb/package。][package-json]
+使用*url*包的依赖项更新[上的 BikeSharingWeb/package.js][package-json] 。
 
 ```json
 {
@@ -334,7 +334,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_C
 ...
 ```
 
-将[BikeSharingWeb/lib/][helpers-js] *getApiHostAsync*中的方法更新为使用 HTTPS：
+更新[BikeSharingWeb/lib/helpers.js][helpers-js]中的*getApiHostAsync*方法，以使用 HTTPS：
 
 ```javascript
 ...
@@ -351,7 +351,7 @@ Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_C
 ...
 ```
 
-导航到`BikeSharingWeb`目录并使用`azds up`运行更新后的 BikeSharingWeb 服务。
+导航到 `BikeSharingWeb` 目录并使用 `azds up` 运行更新后的 BikeSharingWeb 服务。
 
 ```console
 cd ../BikeSharingWeb/

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80239874"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
@@ -45,7 +45,7 @@ az vm image list --publisher RedHat --all
 
 Azure 中的 VM 映像按发布者、产品/服务、SKU 和版本进行组织。 发布者:产品/服务:SKU:版本的组合即为映像 URN，可唯一地标识要使用的映像。
 
-例如， `RedHat:RHEL:8-LVM:8.1.20200318`引用构建于8.1 年3月 18 2020 日的 RHEL LVM 分区映像。
+例如， `RedHat:RHEL:8-LVM:8.1.20200318` 引用构建于8.1 年3月 18 2020 日的 RHEL LVM 分区映像。
 
 此处显示了如何创建 RHEL 8.1 VM 的示例。
 
@@ -57,7 +57,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1
 
 Azure REST API 允许为版本而不是特定版本使用名字对象 "最新"。 使用 "最新" 可为给定的发布者、产品/服务和 SKU 预配最新的可用映像。
 
-例如， `RedHat:RHEL:8-LVM:latest`表示可用的最新 RHEL 8 系列 LVM 分区映像。
+例如， `RedHat:RHEL:8-LVM:latest` 表示可用的最新 RHEL 8 系列 LVM 分区映像。
 
 ```azurecli-interactive
 az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
@@ -80,7 +80,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 
 ## <a name="rhel-7-image-types"></a>RHEL 7 映像类型
 
-对于 RHEL 7、windows 映像，有几种不同的映像类型。 下表显示了我们提供的不同映像集。 若要查看完整列表，请使用 Azure CLI 命令`az vm image list --publisher redhat --all`。
+对于 RHEL 7、windows 映像，有几种不同的映像类型。 下表显示了我们提供的不同映像集。 若要查看完整列表，请使用 Azure CLI 命令 `az vm image list --publisher redhat --all` 。
 
 >[!NOTE]
 > 除非另有说明，否则，将对所有映像进行 LVM 分区，并连接到常规 RHEL 存储库。 也就是说，存储库不扩展更新支持（EUS），也不更新 SAP （E4S）服务。 今后，我们将转到仅发布 LVM 分区的图像，但打开此决定的反馈。 有关 SAP 的扩展更新支持和更新服务的详细信息，请参阅[Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)。
@@ -129,7 +129,7 @@ RedHat:RHEL:7-LVM:7.6.2019062414
 RedHat:RHEL:7.6:7.6.2019102813
 ```
 
-在这种情况`RedHat:RHEL:7.6:7.6.2019102813`下，默认情况下，附加到 EUS 存储库。 SKU 值为7.4。 默认`RedHat:RHEL:7-LVM:7.6.2019062414`情况下，和附加到非 EUS 存储库。 SKU 值为 7-LVM。
+在这种情况下， `RedHat:RHEL:7.6:7.6.2019102813` 默认情况下，附加到 EUS 存储库。 SKU 值为7.4。 `RedHat:RHEL:7-LVM:7.6.2019062414`默认情况下，和附加到非 EUS 存储库。 SKU 值为 7-LVM。
 
 若要使用常规（非 EUS）存储库，请使用 SKU 中不包含次版本号的映像。
 
@@ -146,7 +146,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，EUS 2019 及更高版本发布的映像。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 默认情况下，EUS 2019 及更高版本发布的映像。 |
-RHEL 7。6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
+RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 默认情况下，发布的映像可能为2019和更高版本 EUS。 |
 RHEL 8。0      |空值                            | Red Hat 中没有可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>更新 SAP 服务
@@ -162,7 +162,7 @@ RHEL 8。0      |空值                            | Red Hat 中没有可用的 
 
 ## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 
-可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 示例为 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
+可用产品/服务和 Sku 的完整列表可能包括上表中列出的其他映像。 例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定 marketplace 解决方案提供支持。 也可以将其发布以供预览和测试之用。 它们可能会随时更改或删除，而不会出现警告。 除非 Microsoft 或 Red Hat 公开记录了这些文件，否则不要使用它们。
 
 ## <a name="publishing-policy"></a>发布策略
 

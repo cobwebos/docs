@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944808"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921923"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
 
@@ -143,10 +143,10 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 
 将“已调用函数”中的以下字段添加到图的“值”字段。  根据以下屏幕截图来构建图表。
 
-    * 值
-    * UpperMargins
-    * LowerMargins
-    * ExpectedValues
+* 值
+* UpperMargins
+* LowerMargins
+* ExpectedValues
 
 ![新快速度量屏幕的图像](../media/tutorials/chart-settings.png)
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81407461"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>将事件中心事件源添加到时序见解环境
@@ -25,7 +25,7 @@ ms.locfileid: "81407461"
 > [!NOTE]
 > 本文中介绍的步骤适用于时序见解 GA 版和时序见解预览版环境。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 根据[创建 Azure 时序见解环境](./time-series-insights-update-create-environment.md)中所述创建一个时序见解环境。
 - 创建事件中心。 阅读[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。
@@ -50,7 +50,7 @@ ms.locfileid: "81407461"
 
 1. 在“使用者组”页上，输入一个新的唯一值作为**名称******。  创建新的事件源时，请在时序见解环境中使用此相同名称。
 
-1. 选择“创建”。 
+1. 选择“创建”。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 
@@ -62,7 +62,7 @@ ms.locfileid: "81407461"
 
    [![在“事件源”下选择“添加”按钮](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. 输入此时序见解环境唯一的 "**事件源名称**" 的值，例如`Contoso-TSI-GA-Event-Hub-ES`。
+1. 输入此时序见解环境唯一的 "**事件源名称**" 的值，例如 `Contoso-TSI-GA-Event-Hub-ES` 。
 
 1. 对于“源”，选择“事件中心”********。
 
@@ -76,7 +76,7 @@ ms.locfileid: "81407461"
 
        [![订阅和事件中心详细信息](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
-       | 属性 | 说明 |
+       | properties | 说明 |
        | --- | --- |
        | 订阅 | 所需的事件中心实例和命名空间所属的订阅。 |
        | 事件中心命名空间 | 所需的事件中心实例所属的事件中心命名空间。 |
@@ -88,7 +88,7 @@ ms.locfileid: "81407461"
 
        下表介绍“手动提供事件中心设置”选项**** 所需的属性：
  
-       | 属性 | 说明 |
+       | properties | 说明 |
        | --- | --- |
        | 订阅 ID | 所需的事件中心实例和命名空间所属的订阅。 |
        | 资源组 | 所需的事件中心实例和命名空间所属的资源组。 |
@@ -99,7 +99,7 @@ ms.locfileid: "81407461"
 
     * 这两个选项共享以下配置选项：
 
-       | 属性 | 说明 |
+       | properties | 说明 |
        | --- | --- |
        | 事件中心使用者组 | 从事件中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。 |
        | 事件序列化格式 | 目前，JSON 是唯一可用的序列化格式。 事件消息必须采用此格式，否则将无法读取任何数据。 |
@@ -107,7 +107,7 @@ ms.locfileid: "81407461"
 
 1. 添加已添加到事件中心的专用时序见解使用者组名称。
 
-1. 选择“创建”。 
+1. 选择“创建”。
 
    创建事件源以后，时序见解就会自动开始将数据流式传输到环境中。
 
@@ -115,6 +115,6 @@ ms.locfileid: "81407461"
 
 * [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。
 
-* [发送事件](time-series-insights-send-events.md)到事件源。
+* [向事件源发送事件](time-series-insights-send-events.md)。
 
 * 在[时序见解资源管理器中访问环境](https://insights.timeseries.azure.com)。

@@ -1,6 +1,6 @@
 ---
-title: 常见错误-Azure IoT Edge |Microsoft Docs
-description: 使用本文解决在部署 IoT Edge 解决方案时遇到的常见问题
+title: 常见错误 - Azure IoT Edge | Microsoft Docs
+description: 本文介绍了部署 IoT Edge 解决方案时遇到的问题的常见解决方案
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -12,15 +12,15 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ed93d24bc06a6622a8ace2b0ab6b44582da001c0
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82783742"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
-使用本文查找解决在部署 IoT Edge 解决方案时可能遇到的常见问题的步骤。 如果你需要了解如何从 IoT Edge 设备中查找日志和错误，请参阅对[IoT Edge 设备进行故障排除](troubleshoot.md)。
+还列出了在部署 IoT Edge 解决方案时可能遇到的常见问题的步骤。 如需了解如何从 IoT Edge 设备查找日志和错误，请参阅[对 IoT Edge 设备进行故障排除](troubleshoot.md)。
 
 ## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge 代理在大约一分钟后停止
 
@@ -55,13 +55,13 @@ IoT Edge 运行时会为每个模块设置要在其中进行通信的网络。 �
 
 **根本原因：**
 
-IoT Edge 代理无权访问模块的映像。
+IoT Edge 代理无权访问某个模块的映像。
 
 **解决方法：**
 
-请确保在部署清单中正确指定了注册表凭据。
+确保在部署清单中正确指定了注册表凭据。
 
-## <a name="edge-agent-module-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge 代理模块报告 "空配置文件"，并且在设备上不启动模块
+## <a name="edge-agent-module-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Edge 代理模块报告“配置文件为空”，且设备上不会启动任何模块
 
 **观察到的行为：**
 
@@ -73,9 +73,9 @@ IoT Edge 代理无权访问模块的映像。
 
 **解决方法：**
 
-**选项1：在容器引擎设置中设置 DNS 服务器**
+**选项 1：在容器引擎设置中设置 DNS 服务器**
 
-在容器引擎设置中为你的环境指定 DNS 服务器，这些设置将应用于该引擎启动的所有容器模块。 创建名为 `daemon.json` 的文件，并在其中指定要使用的 DNS 服务器。 例如：
+在容器引擎设置中为环境指定 DNS 服务器，该设置将应用于引擎启动的所有容器模块。 创建名为 `daemon.json` 的文件，并在其中指定要使用的 DNS 服务器。 例如：
 
 ```json
 {
@@ -83,7 +83,7 @@ IoT Edge 代理无权访问模块的映像。
 }
 ```
 
-上面的示例将 DNS 服务器设置为可公开访问的 DNS 服务。 如果边缘设备不能从其环境访问此 IP，请将其替换为可访问的 DNS 服务器地址。
+上面的示例将 DNS 服务器设置为可公开访问的 DNS 服务。 如果边缘设备无法从其所在环境访问此 IP，请将其替换为可访问的 DNS 服务器地址。
 
 将 `daemon.json` 放入平台上的适当位置：
 
@@ -94,14 +94,14 @@ IoT Edge 代理无权访问模块的映像。
 
 如果该位置已包含 `daemon.json` 文件，请在其中添加 **dns** 密钥，然后保存该文件。
 
-重新启动容器引擎以使更新生效。
+重启容器引擎以使更新生效。
 
-| 平台 | Command |
+| 平台 | 命令 |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
-| Windows （管理员 PowerShell） | `Restart-Service iotedge-moby -Force` |
+| Windows (Admin PowerShell) | `Restart-Service iotedge-moby -Force` |
 
-**选项2：在 IoT Edge 部署中为每个模块设置 DNS 服务器**
+**选项 2：在每个模块的 IoT Edge 部署中设置 DNS 服务器**
 
 可以针对 IoT Edge 部署中每个模块的 *createOptions* 设置 DNS 服务器。 例如：
 
@@ -115,13 +115,13 @@ IoT Edge 代理无权访问模块的映像。
 }
 ```
 
-务必同时为*edgeAgent*和*edgeHub*模块设置此配置。
+请确保也为 edgeAgent 和 edgeHub 模块设置此配置。
 
 ## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge 中心未能启动
 
 **观察到的行为：**
 
-EdgeHub 模块无法启动。 可能会在日志中看到一条类似于以下错误的消息：
+edgeHub 模块未能启动。 你可能会在日志中看到一条类似于以下错误的消息：
 
 ```output
 One or more errors occurred.
@@ -141,35 +141,35 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 **根本原因：**
 
-宿主计算机上的其他进程绑定了 edgeHub 模块尝试绑定的端口。 IoT Edge 集线器映射端口443、5671和8883以用于网关方案。 如果另一个进程已绑定了某个端口，则无法启动该模块。
+主机上的其他某个进程绑定了 edgeHub 模块尝试绑定的端口。 用于网关方案的 IoT Edge 中心映射端口 443、5671 和 8883。 如果另一个进程已绑定了其中某个端口，则无法启动该模块。
 
 **解决方法：**
 
-可以通过两种方式解决此问题：
+可通过两种方式解决此问题：
 
-如果 IoT Edge 设备作为网关设备运行，则需要查找并停止使用端口443、5671或8883的进程。 端口443的错误通常表示其他进程是 web 服务器。
+如果 IoT Edge 设备充当网关设备，则你需要查找并停止正在使用端口 443、5671 或 8883 的进程。 端口 443 的错误通常表示另一个进程是 Web 服务器。
 
-如果不需要将 IoT Edge 设备用作网关，则可以从 edgeHub 的模块创建选项中删除端口绑定。 您可以更改 Azure 门户中的 "创建" 选项，或直接在 "deployment" 文件中更改。
+如果不需要将 IoT Edge 设备用作网关，则可以从 edgeHub 的模块创建选项中删除端口绑定。 可以在 Azure 门户中更改创建选项，也可直接在 deployment 文件中进行更改。
 
 在 Azure 门户中：
 
-1. 导航到 IoT 中心，然后选择 " **IoT Edge**"。
+1. 导航到 IoT 中心并选择“IoT Edge”。
 
 2. 选择要更新的 IoT Edge 设备。
 
-3. 选择“设置模块”  。
+3. 选择“设置模块”。
 
-4. 选择 "**运行时设置**"。
+4. 选择“运行时设置”。
 
-5. 在 " **Edge 中心**模块设置" 中，从 "**创建选项**" 文本框中删除所有内容。
+5. 在“Edge Hub”模块设置中，从“创建选项”文本框中删除所有内容。
 
 6. 保存更改并创建部署。
 
-在部署的 json 文件中：
+在 deployment.json 文件中：
 
-1. 打开应用于 IoT Edge 设备的部署文件。
+1. 打开应用到 IoT Edge 设备的 deployment.json 文件。
 
-2. 在 " `edgeHub` edgeAgent 所需属性" 部分中找到设置：
+2. 在 edgeAgent 所需属性部分找到 `edgeHub` 设置：
 
    ```json
    "edgeHub": {
@@ -183,7 +183,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
    }
    ```
 
-3. 删除`createOptions`行，并在`image`行的末尾处删除尾随逗号：
+3. 删除 `createOptions` 行，并删除其前面的 `image` 行的尾随逗号：
 
    ```json
    "edgeHub": {
@@ -202,7 +202,7 @@ warn: edgelet_utils::logging --     caused by: failed to create endpoint edgeHub
 
 **观察到的行为：**
 
-尝试[检查 IoT Edge 安全管理器日志](troubleshoot.md#check-the-status-of-the-iot-edge-security-manager-and-its-logs)失败，并打印以下消息：
+尝试[检查 IoT Edge 安全管理器日志](troubleshoot.md#check-the-status-of-the-iot-edge-security-manager-and-its-logs)失败，并输出以下消息：
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -217,12 +217,12 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 看到此错误时，可以配置虚拟机的 DNS 名称，然后在设置命令中将 DNS 名称设置为主机名。
 
 1. 在 Azure 门户中，导航到虚拟机的概述页面。
-2. 选择 DNS 名称下的“配置”****。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。
+2. 选择 DNS 名称下的“配置”。 如果你的虚拟机已配置 DNS 名称，则不需要再配置。
 
    ![配置虚拟机的 DNS 名称](./media/troubleshoot/configure-dns.png)
 
-3. 为“DNS 名称标签”提供一个值，然后选择“保存”********。
-4. 复制新的 DNS 名称，格式** \<应为\>DNSnamelabel。\<vmlocation\>. cloudapp.azure.com**。
+3. 为“DNS 名称标签”提供一个值，然后选择“保存” 。
+4. 复制新的 DNS 名称，名称格式应为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com。
 5. 在虚拟机中使用下列命令，以 DNS 名称设置 IoT Edge 运行时：
 
    * 在 Linux 上：
@@ -241,7 +241,7 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
 
 **观察到的行为：**
 
-在 Windows 上使用`Get-WinEvent`时，会收到 EventLogException。
+在 Windows 上使用 `Get-WinEvent` 时，会收到 EventLogException。
 
 **根本原因：**
 
@@ -264,7 +264,7 @@ Windows Registry Editor Version 5.00
 
 **观察到的行为：**
 
-你可能会遇到 Raspberry Pi 等资源约束设备的稳定性问题，特别是用作网关时。 IoT Edge 中心模块中出现内存不足异常，下游设备无法连接，或在几个小时后设备未能发送遥测消息。
+你可能会在 Raspberry Pi 等资源受限设备上遇到稳定性问题，尤其是在这些设备用作网关时。 症状包括 IoT Edge 中心模块出现“内存不足”异常、下游设备无法连接或者设备在几小时后无法发送遥测消息。
 
 **根本原因：**
 
@@ -272,11 +272,11 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
 
 **解决方法：**
 
-对于 IoT Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 可以通过两种方法来设置环境变量：
+对于 IoT Edge 中心，请将环境变量 **OptimizeForPerformance** 设置为 **false**。 可以通过两种方式来设置环境变量：
 
 在 Azure 门户中：
 
-在 IoT 中心中，选择 IoT Edge 设备，并从 "设备详细信息" 页中选择 "**设置模块** > **运行时设置**"。 IoT Edge 为名为*OptimizeForPerformance*的中心模块创建一个环境变量，将其设置为*false*。
+在 IoT 中心，选择 IoT Edge 设备，然后从设备详细信息页中依次选择“设置模块” > “运行时设置” 。 为 IoT Edge 中心模块创建名为“OptimizeForPerformance”、设置为“false”的环境变量。
 
 ![设为 false 的 OptimizeForPerformance](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -296,11 +296,11 @@ IoT Edge 中心是 IoT Edge 运行时的一部分，默认情况下已针对性�
   },
 ```
 
-## <a name="iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error"></a>IoT Edge 模块无法将消息发送到 edgeHub，出现404错误
+## <a name="iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error"></a>IoT Edge 模块未能将消息发送到 edgeHub 并出现 404 错误
 
 **观察到的行为：**
 
-自定义 IoT Edge 模块无法将消息发送到 IoT Edge 中心，出现 404 `Module not found`错误。 IoT Edge 守护程序在日志中输出以下消息：
+自定义 IoT Edge 模块未能将消息发送到 IoT Edge 中心并出现 404 `Module not found` 错误。 IoT Edge 守护程序在日志中输出以下消息：
 
 ```output
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
@@ -314,21 +314,21 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 
 从版本 1.0.7 开始，所有模块进程都有权进行连接。 有关详细信息，请参阅 [1.0.7 版本更改日志](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)。
 
-如果无法升级到 1.0.7，请完成以下步骤。 确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 Edge 中心发送消息。 例如，请确保 Docker 文件`ENTRYPOINT`中的`CMD`不是命令。 此`CMD`命令将为模块提供一个进程 id，并为运行主程序的 bash 命令产生另一个进程 id，但`ENTRYPOINT`会产生单个进程 id。
+如果无法升级到 1.0.7，请完成以下步骤。 确保自定义 IoT Edge 模块始终使用相同的进程 ID 向 Edge 中心发送消息。 例如，请确保在 Docker 文件中使用 `ENTRYPOINT`，而不使用 `CMD` 命令。 `CMD` 命令会导致为模块生成一个进程 ID，并为运行主程序的 bash 命令生成另一个进程 ID，但是 `ENTRYPOINT` 只会生成单个进程 ID。
 
-## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>IoT Edge 模块部署成功，则从设备中消失
+## <a name="iot-edge-module-deploys-successfully-then-disappears-from-device"></a>IoT Edge 模块部署成功后，会从设备中消失
 
 **观察到的行为：**
 
-为 IoT Edge 设备设置模块后，这些模块已成功部署，但几分钟后它们将从设备中消失，并从 Azure 门户中的设备详细信息中消失。 除了定义的模块外，还可能会出现在设备上。
+为 IoT Edge 设备设置模块后即表示已成功部署模块，但几分钟后，它们将从设备以及 Azure 门户中的设备详细信息中消失。 除了定义的模块外，其他模块也可能会出现在设备上。
 
 **根本原因：**
 
-如果自动部署面向设备，则其优先级高于手动设置单个设备的模块。 Azure 门户中的 "**设置模块**" 功能或 "在 Visual Studio Code 中**创建单个设备的部署**" 功能将在一段时间内生效。 你会看到你在设备上开始定义的模块。 然后自动部署的优先级，并覆盖设备的所需属性。
+如果针对某个设备进行自动部署，则自动部署的优先级高于为单个设备手动设置模块。 Azure 门户中的“设置模块”功能或 Visual Studio Code 中的“为单个设备创建部署”功能将暂时生效 。 你会看到定义的模块在设备上启动。 然后，自动部署的优先级开始生效，并覆盖该设备的所需属性。
 
 **解决方法：**
 
-对于每个设备，只使用一种类型的部署机制，即自动部署或单个设备部署。 如果有多个目标为设备的自动部署，则可以更改优先级或目标说明，以确保适用于给定设备的正确的部署。 还可以更新设备克隆，使其不再与自动部署的目标说明相匹配。
+每个设备仅使用一种类型的部署机制，即自动部署或单设备部署。 如果你有针对某个设备的多个自动部署，则可以更改优先级或目标说明，以确保正确的部署应用于给定的设备。 还可以更新设备孪生，使其不再与自动部署的目标描述匹配。
 
 有关详细信息，请参阅[了解单个设备或大规模的 IoT Edge 自动部署](module-deployment-monitoring.md)。
 

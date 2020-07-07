@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
 ms.openlocfilehash: 48a72b5ba3819712b9e1d2536ae2dd3a06eaf3f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80238817"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
@@ -51,7 +51,7 @@ ms.locfileid: "80238817"
     sbt assembly
     ```
 
-    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 目录中创建名为 `toketi-kafka-connect-iothub-master\target\scala-2.11` 的文件。
+    该生成可能需要几分钟时间才能完成。 使用此命令在项目的 `toketi-kafka-connect-iothub-master\target\scala-2.11` 目录中创建名为 `kafka-connect-iothub-assembly_2.11-0.7.0.jar` 的文件。
 
 ## <a name="install-the-connector"></a>安装连接器
 
@@ -206,7 +206,7 @@ ms.locfileid: "80238817"
 
 若要将源配置为使用 IoT 中心，请在与边缘节点建立 SSH 连接后执行以下操作：
 
-1. 在 `connect-iot-source.properties` 目录中创建 `/usr/hdp/current/kafka-broker/config/` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
+1. 在 `/usr/hdp/current/kafka-broker/config/` 目录中创建 `connect-iot-source.properties` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-source.properties
@@ -241,7 +241,7 @@ ms.locfileid: "80238817"
 
 若要将接收器连接配置为使用 IoT 中心，请在与边缘节点建立 SSH 连接后执行以下操作：
 
-1. 在 `connect-iothub-sink.properties` 目录中创建 `/usr/hdp/current/kafka-broker/config/` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
+1. 在 `/usr/hdp/current/kafka-broker/config/` 目录中创建 `connect-iothub-sink.properties` 文件的副本。 若要从 toketi-kafka-connect-iothub 项目下载文件，请使用以下命令：
 
     ```bash
     sudo wget -P /usr/hdp/current/kafka-broker/config/ https://raw.githubusercontent.com/Azure/toketi-kafka-connect-iothub/master/connect-iothub-sink.properties

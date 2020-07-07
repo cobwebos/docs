@@ -9,10 +9,10 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80159177"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>安装和使用 Azure IoT 浏览器
@@ -24,12 +24,12 @@ Azure IoT 浏览器是一种图形工具，用于与 IoT 即插即用预览版�
 - 安装和配置 Azure IoT 资源管理器工具。
 - 使用该工具与设备交互并对其进行测试。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用 Azure IoT 资源管理器工具，你需要：
 
 - Azure IoT 中心。 可以通过多种方式将 IoT 中心添加到 Azure 订阅，如[使用 Azure CLI 创建 iot 中心](../iot-hub/iot-hub-create-using-cli.md)。 需要 IoT 中心连接字符串才能运行 Azure IoT 资源管理器工具。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 注册到 IoT 中心的设备。 你可以使用以下 Azure CLI 命令来注册设备。 请确保将`{YourIoTHubName}`和`{YourDeviceID}`占位符替换为值：
+- 在 IoT 中心注册的设备。 你可以使用以下 Azure CLI 命令来注册设备。 请确保将 `{YourIoTHubName}` 和占位符替换为 `{YourDeviceID}` 值：
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -51,13 +51,13 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 
 添加源：
 
-1. 转到 **“设置”**。
+1. 转到“设置”****。
 1. 选择 "**新建**"，然后选择你的源。
 1. 如果要添加公司模型存储库，请提供连接字符串。
 
 删除源：
 
-1. 转到 **“设置”**。
+1. 转到“设置”****。
 1. 查找要删除的源。
 1. 选择 " **X** " 将其删除。 不能删除公共模型存储库，因为公共接口定义来自此存储库。
 
@@ -73,7 +73,7 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 
 - 选择 "**添加**" 以向中心注册新设备。 然后输入设备 ID。 使用默认设置自动生成身份验证密钥，并启用与中心的连接。
 - 选择一个设备，然后选择 "**删除**" 以删除设备标识。 请在完成此操作之前查看设备详细信息，以确保删除正确的设备标识。
-- 按`capabilityID`和`interfaceID`查询。 添加`capabilityID`或`interfaceID`作为参数以查询设备。
+- 按 `capabilityID` 和查询 `interfaceID` 。 添加 `capabilityID` 或 `interfaceID` 作为参数以查询设备。
 
 ## <a name="interact-with-a-device"></a>与设备交互
 
@@ -89,7 +89,7 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 - 可以在 "**直接方法**" 选项卡上的设备上调用[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 - 可以在 "**云到设备的消息**" 选项卡上发送[云到设备的消息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
 
-### <a name="digital-twin"></a>数字输出
+### <a name="digital-twin"></a>数字孪生体
 
 您可以使用该工具来查看设备的数字克隆实例。 对于 IoT 即插即用设备，此工具的此部分中将显示与设备功能模型关联的所有接口。 选择接口以扩展其相应的[IoT 即插即用基元](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)。
 
@@ -118,7 +118,7 @@ IoT 即插即用设备的模型定义存储在公共存储库、公司存储库�
 1. 预览要发送到设备的有效负载。
 1. 提交命令。
 
-#### <a name="telemetry"></a>遥测技术
+#### <a name="telemetry"></a>遥测
 
 若要查看所选接口的遥测数据，请切换到其**遥测**页。
 

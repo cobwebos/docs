@@ -5,10 +5,10 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80153346"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 方法创建和部署 ARM 模板
@@ -39,7 +39,7 @@ ms.locfileid: "80153346"
 
     ![资源管理器模板 - 右键单击以创建部署](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. 配置“部署名称”、“订阅”、“资源组”和“区域”。     此处，我们要将模板部署到新资源组 `testRG`。 然后，选择  **作为**资源模板`azuredeploy.json`的路径，并选择下载的  **作为**资源参数`azuredeploy.parameters.json`。
+1. 配置“部署名称”、“订阅”、“资源组”和“区域”。     此处，我们要将模板部署到新资源组 `testRG`。 然后，选择 `azuredeploy.json` 作为**资源模板**的路径，并选择下载的 `azuredeploy.parameters.json` 作为**资源参数**。
 
     ![资源管理器模板 - 选择用于创建部署的文件](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 

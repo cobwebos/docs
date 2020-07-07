@@ -1,5 +1,5 @@
 ---
-title: 作为事件网格源的 Azure IoT 中心
+title: 充当事件网格源的 Azure IoT 中心
 description: 本文提供 Azure IoT 中心事件的属性和架构。 它列出了可用的事件类型、示例事件和事件属性。
 services: iot-hub
 documentationcenter: ''
@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81393329"
 ---
-# <a name="azure-iot-hub-as-an-event-grid-source"></a>作为事件网格源的 Azure IoT 中心
+# <a name="azure-iot-hub-as-an-event-grid-source"></a>充当事件网格源的 Azure IoT 中心
 本文提供 Azure IoT 中心事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
@@ -148,13 +148,13 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| ID | 字符串 | 事件的唯一标识符。 |
+| id | 字符串 | 事件的唯一标识符。 |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| data | 对象 (object) | IoT 中心事件数据。  |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| 数据 | 对象 (object) | IoT 中心事件数据。  |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 对于所有 IoT 中心事件，数据对象包含以下属性：
@@ -171,7 +171,7 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 | properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | moduleId | 字符串 | 模块的唯一标识符。 此字段是仅适用于模块设备的输出。 此区分大小写的字符串最多可长达 128 个字符，并支持 ASCII 7 位字母数字字符加上以下特殊字符：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
-| deviceConnectionStateEventInfo | 对象 (object) | 设备连接状态事件信息
+| deviceConnectionStateEventInfo | object | 设备连接状态事件信息
 | sequenceNumber | 字符串 | 一个数字，有助于指示设备已连接或设备已断开连接事件的顺序。 最新事件的序列号将大于上一个事件。 此数字可能会变化超过 1，但严格地说，是在增加。 请参阅[如何使用序列号](../iot-hub/iot-hub-how-to-order-connection-state-events.md)。 |
 
 对于**设备遥测** IoT 中心事件，数据对象包含 [IoT 中心消息格式](../iot-hub/iot-hub-devguide-messages-construct.md)的设备到云消息，并具有以下属性：
@@ -184,31 +184,31 @@ DeviceCreated 和 DeviceDeleted 事件的架构具有相同结构。 此示例�
 
 对于**设备已创建**和**设备已删除** IoT 中心事件，数据对象包含以下属性：
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| twin | 对象 (object) | 有关设备孪生（即应用程序设备元数据的云表示形式）的信息。 | 
-| deviceID | 字符串 | 设备孪生的唯一标识符。 | 
-| etag | 字符串 | 用于确保设备孪生更新一致性的验证程序。 每个 etag 保证对于每个设备孪生是唯一的。 |  
+| twin | object | 有关设备孪生（即应用程序设备元数据的云表示形式）的信息。 | 
+| deviceID | string | 设备孪生的唯一标识符。 | 
+| etag | string | 用于确保设备孪生更新一致性的验证程序。 每个 etag 保证对于每个设备孪生是唯一的。 |  
 | deviceEtag| 字符串 | 用于确保设备注册表更新一致性的验证程序。 每个 deviceEtag 保证对于每个设备注册表是唯一的。 |
-| status | 字符串 | 设备孪生是已启用还是已禁用。 | 
+| 状态 | 字符串 | 设备孪生是已启用还是已禁用。 | 
 | statusUpdateTime | 字符串 | 上次设备孪生状态更新的 ISO8601 时间戳。 |
 | connectionState | 字符串 | 设备是已连接还是已断开连接。 | 
 | lastActivityTime | 字符串 | 上次活动的 ISO8601 时间戳。 | 
-| cloudToDeviceMessageCount | 整数 | 发送到此设备的云到设备消息数。 | 
+| cloudToDeviceMessageCount | integer | 发送到此设备的云到设备消息数。 | 
 | authenticationType | 字符串 | 用于此设备的身份验证类型：`SAS`、`SelfSigned` 或 `CertificateAuthority`。 |
 | x509Thumbprint | 字符串 | 指纹是 x509 证书的唯一值，通常用于在证书存储中查找特定证书。 指纹是使用 SHA1 算法动态生成的，并非在证书中实际存在。 | 
 | primaryThumbprint | 字符串 | x509 证书的主要指纹。 |
 | secondaryThumbprint | 字符串 | x509 证书的次要指纹。 | 
-| version | 整数 | 一个整数，每次更新设备孪生时递增 1。 |
-| desired | 对象 (object) | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
-| reported | 对象 (object) | 只能由设备写入并且由应用程序后端读取的属性部分。 |
-| lastUpdated | 字符串 | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
+| 版本 | integer | 一个整数，每次更新设备孪生时递增 1。 |
+| desired | object | 只能由应用程序后端写入并且由设备读取的属性部分。 | 
+| reported | object | 只能由设备写入并且由应用程序后端读取的属性部分。 |
+| lastUpdated | string | 上次设备孪生属性更新的 ISO8601 时间戳。 | 
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
-|Title  |说明  |
+|标题  |说明  |
 |---------|---------|
 | [使用逻辑应用发送有关 Azure IoT 中心事件的电子邮件](publish-iot-hub-events-to-logic-apps.md) | 每次将设备添加到 IoT 中心时，逻辑应用就会发送一封通知电子邮件。 |
-| [通过使用事件网格触发操作来响应 IoT 中心事件](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
+| [使用事件网格来触发操作，对 IoT 中心事件进行响应](../iot-hub/iot-hub-event-grid.md) | 概述 IoT 中心与事件网格的集成。 |
 | [订阅设备已连接和设备已断开连接事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | 显示如何订阅设备连接状态事件。 |
 
 ## <a name="next-steps"></a>后续步骤

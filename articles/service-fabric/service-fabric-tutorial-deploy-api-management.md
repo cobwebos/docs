@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80292137"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>在 Azure 中将 API 管理与 Service Fabric 集成
@@ -160,7 +160,7 @@ az account set --subscription <guid>
 * 用于有状态服务的副本选择。
 * 解析重试条件，允许你指定用于重新解析服务位置并重新发送请求的条件。
 
-“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 `Microsoft.ApiManagement/service/backends`apim.json*模板中定义的* 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+“policyContent”是策略的 JSON 转义 XML 内容  。  对于本文，请创建一个将请求直接路由到以前部署的 .NET 或 Java 无状态服务的后端策略。 在入站策略下添加 `set-backend-service` 策略。  如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。  *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>
@@ -209,7 +209,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-在 *inbound_policy* 中，如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。 *backend-id* 引用一个后端资源，在此示例中为在 `Microsoft.ApiManagement/service/backends`apim.json*模板中定义的* 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
+在 *inbound_policy* 中，如果之前部署了 .NET 后端服务，则将 *sf-service-instance-name* 值替换为 `fabric:/ApiApplication/WebApiService`，如果部署了 Java 服务，则替换为 `fabric:/EchoServerApplication/EchoServerService`。 *backend-id* 引用一个后端资源，在此示例中为在 *apim.json* 模板中定义的 `Microsoft.ApiManagement/service/backends` 资源。 *backend-id* 也可引用使用 API 管理 API 创建的另一后端资源。 对于本文，请将 *backend-id* 设置为 *service_fabric_backend_name* 参数的值。
 
 ```xml
 <policies>
@@ -303,7 +303,7 @@ az group delete --name $ResourceGroupName
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-vice-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apimn
+副结构脚本和模板/blob/主/模板/服务集成/network-apim.parameters.jsn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
