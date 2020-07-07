@@ -13,10 +13,10 @@ ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 29a202b3833bbc6ee550df89b240d95ecb38ef83
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83742048"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>在“我的应用”门户中使用集合

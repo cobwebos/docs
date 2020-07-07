@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: f24b3c9256f759b87c705aae9b93c2d6bc74d30c
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652640"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>注册调用 Web API 的移动应用
@@ -50,7 +50,7 @@ ms.locfileid: "82652640"
 
 应用注册门户提供预览版体验，帮助你计算 iOS 和 Android 应用程序的中转回复 URI：
 
-1. 在应用注册门户中，选择 "**身份验证** > **"，尝试新体验**。
+1. 在应用注册门户中，选择 "**身份验证**  >  **"，尝试新体验**。
 
    !["身份验证" 边栏选项卡，你可以在其中选择新体验](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 

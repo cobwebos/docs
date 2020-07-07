@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, azure, 传感器, sdk, 麦克风, 访问麦克风, 麦克风数据
 ms.openlocfilehash: f2e604d39bc191af095e009c50f3a93e0d695657
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628632"
 ---
 # <a name="access-azure-kinect-dk-microphone-input-data"></a>访问 Azure Kinect DK 麦克风输入数据

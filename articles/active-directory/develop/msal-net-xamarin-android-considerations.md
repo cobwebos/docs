@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82652675"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>将 Xamarin Android 与 MSAL.NET 配合使用时的注意事项
@@ -145,7 +145,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>错误：名称 AuthenticationContinuationHelper 不存在于当前上下文中
 
-如果有错误指出 `AuthenticationContinuationHelper` 不存在于当前上下文中，原因可能是 Visual Studio 错误地更新了 Android.csproj* 文件。 有时， *\<HintPath>* 文件路径会错误地包含 *netstandard13* 而不是 *monoandroid90*。
+如果有错误指出 `AuthenticationContinuationHelper` 不存在于当前上下文中，原因可能是 Visual Studio 错误地更新了 Android.csproj* 文件。 有时， *\<HintPath>* 文件路径不正确地包含*netstandard13* ，而不是*monoandroid90*。
 
 此示例包含正确的文件路径：
 

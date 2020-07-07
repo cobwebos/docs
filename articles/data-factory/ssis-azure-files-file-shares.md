@@ -1,5 +1,5 @@
 ---
-title: 打开并保存在 Azure 中部署的 SSIS 包的文件
+title: 使用 Azure 中部署的 SSIS 包打开并保存文件
 description: 了解将使用本地文件系统的 SSIS 包提升并移动到 Azure 中的 SSIS 时，如何在本地和 Azure 中打开并保存文件
 ms.date: 06/27/2018
 ms.topic: conceptual
@@ -9,10 +9,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 36660854b9a7ae13431545392ef551694b48e97c
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628906"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>使用 Azure 中部署的 SSIS 包在本地和 Azure 中打开并保存文件
@@ -27,7 +27,7 @@ ms.locfileid: "82628906"
 
 ## <a name="use-on-premises-file-shares"></a>使用本地文件共享
 
-要在将使用本地文件系统的包提升和迁移到 Azure 中的 SSIS 时继续使用本地文件共享  ，请执行以下操作：
+要在将使用本地文件系统的包提升和迁移到 Azure 中的 SSIS 时继续使用本地文件共享****，请执行以下操作：
 
 1. 将文件从本地文件系统传输到本地文件共享。
 
@@ -41,7 +41,7 @@ ms.locfileid: "82628906"
 
 ## <a name="use-azure-file-shares"></a>使用 Azure 文件共享
 
-若直接迁移将本地文件系统使用到 Azure 中 SSIS 时要使用 Azure 文件  ，请执行以下操作：
+若直接迁移将本地文件系统使用到 Azure 中 SSIS 时要使用 Azure 文件****，请执行以下操作：
 
 1. 将本地文件系统的文件传输到 Azure 文件。 有关详细信息，请参阅 [Azure 文件](https://azure.microsoft.com/services/storage/files/)。
 
@@ -53,4 +53,4 @@ ms.locfileid: "82628906"
 
 - 部署包。 有关详细信息，请参阅[使用 SSMS 将 SSIS 项目部署到 Azure](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)。
 - 运行包。 有关详细信息，请参阅[使用 SSMS 运行 Azure 中的 SSIS 包](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)。
-- 计划包。 有关详细信息，请参阅[在 Azure 中计划 SSIS 包](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
+- 计划包。 有关详细信息，请参阅[计划 Azure 中的 SSIS 包](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
