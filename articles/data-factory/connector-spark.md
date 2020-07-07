@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: c15241a2508a5d35f8eb84339cc584a651fcd5f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415171"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>使用 Azure 数据工厂从 Spark 复制数据 
@@ -48,7 +48,7 @@ Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需�
 
 Spark 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Spark** | 是 |
 | host | Spark 服务器的 IP 地址或主机名  | 是 |
@@ -59,10 +59,10 @@ Spark 链接服务支持以下属性：
 | username | 用于访问 Spark 服务器的用户名。  | 否 |
 | password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | httpPath | 对应于 Spark 服务器的部分 URL。  | 否 |
-| enableSsl | 指定是否使用 TLS 对到服务器的连接进行加密。 默认值为 false。  | 否 |
-| trustedCertPath | Pem 文件的完整路径，该文件包含在通过 TLS 进行连接时用于验证服务器的受信任的 CA 证书。 仅当在自承载 IR 上使用 TLS 时，才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
+| enableSsl | 指定是否使用 TLS 加密到服务器的连接。 默认值为 false。  | 否 |
+| trustedCertPath | 包含受信任 CA 证书（通过 TLS 进行连接时用于验证服务器）的 .pem 文件的完整路径。 只有在自承载 IR 上使用 TLS 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 false。  | 否 |
-| allowHostNameCNMismatch | 指定在通过 TLS 连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
+| allowHostNameCNMismatch | 指定通过 TLS 进行连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -93,7 +93,7 @@ Spark 链接服务支持以下属性：
 
 要从 Spark 复制数据，请将数据集的 type 属性设置为“SparkObject”  。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：SparkObject  | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -125,7 +125,7 @@ Spark 链接服务支持以下属性：
 
 要从 Spark 复制数据，请将复制活动中的源类型设置为“SparkSource”  。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：SparkSource  | 是 |
 | 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

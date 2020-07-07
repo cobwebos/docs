@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428701"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中用户定义的架构
@@ -22,7 +22,7 @@ ms.locfileid: "81428701"
 
 ## <a name="schemas-for-application-boundaries"></a>应用程序边界的架构
 
-传统分析体系结构通常使用不同的数据库，根据工作负荷、域或安全性来创建应用程序边界。 例如，传统的 SQL Server 分析基础结构可能包括过渡数据库、分析数据库和数据市场数据库。 在此拓扑中，每个数据库均作为体系结构中的工作负荷和安全边界来运行。
+传统分析体系结构通常使用不同的数据库，根据工作负荷、域或安全性来创建应用程序边界。 例如，传统的 SQL Server 分析基础结构可能包括过渡数据库、分析数据库和数据市场数据库。 在此拓扑中，每个数据库均作为体系结构中的工作负载和安全边界来运行。
 
 相反，Synapse SQL 将在一个数据库中运行整个分析工作负荷。 不允许跨数据库联接。 Synapse SQL 要求仓库使用的所有表都存储在一个数据库中。
 
@@ -35,11 +35,11 @@ ms.locfileid: "81428701"
 
 - 使用一个数据库来运行整个分析工作负荷。
 - 合并现有分析环境以使用一个数据库。
-- 利用**用户定义架构**可以提供以前使用数据库实现的边界。
+- 利用 **用户定义的架构** 来提供以前使用数据库实现的边界。
 
 如果以前未使用过用户定义的架构，则可以使用一次干净的。 使用旧数据库名称作为你的 Synapse SQL 数据库中用户定义架构的基础。
 
-如果已使用架构，则可以使用几个选项：
+如果已使用架构，则可采用以下几个选项：
 
 - 删除旧架构名称并重新开始
 - 保留旧架构名称，方法是将旧架构名称预先挂起到表名
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> 架构策略中的任何更改都需要查看数据库的安全模型。 在许多情况下，你可以通过在架构级别分配权限来简化安全模型。
+> 架构策略中的任何更改都需要查看数据库的安全模型。 在许多情况下，可以在架构级别分配权限，以简化安全模型。
 
 如果需要更精细的权限，可以使用数据库角色。 有关数据库角色的详细信息，请参阅[管理数据库角色和用户](../../analysis-services/analysis-services-database-users.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[SYNAPSE SQL 开发概述](develop-overview.md)。
+有关更多开发技巧，请参阅 [Synapse SQL 开发概述](develop-overview.md)。

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 9d1e89919647d9d94b287618da2f9a77278425a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81459077"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for MySQL 的数据加密
@@ -41,7 +41,7 @@ ms.locfileid: "81459077"
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
-1. 在 Key Vault 中，选择 "**访问策略** > " "**添加访问策略**"。
+1. 在 Key Vault 中，选择 "**访问策略**" "  >  **添加访问策略**"。
 
    ![突出显示了 "访问策略" 和 "添加访问策略" Key Vault 屏幕截图](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "81459077"
 
    ![访问策略概述](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 选择“保存”  。
+3. 选择“保存”。
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>设置 Azure Database for MySQL 的数据加密
 
@@ -61,15 +61,15 @@ ms.locfileid: "81459077"
 
    ![Azure Database for MySQL 的屏幕截图，其中突出显示了数据加密选项](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 选择“保存”  。
+3. 选择“保存”。
 
 4. 若要确保所有文件（包括临时文件）都是完全加密的，请重新启动服务器。
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原服务器或副本服务器使用数据加密
 
-使用存储在 Key Vault 中的客户托管密钥对 Azure Database for MySQL 进行加密后，任何新创建的服务器副本也会加密。 你可以通过本地或异地还原操作或通过副本（本地/跨区域）操作进行此新复制。 因此，对于加密的 MySQL 服务器，你可以使用以下步骤来创建加密还原服务器。
+在使用客户存储在 Key Vault 中的托管密钥对 Azure Database for MySQL 进行加密后，还将对服务器的任何新创建的副本进行加密。 你可以通过本地或异地还原操作或通过副本（本地/跨区域）操作进行此新复制。 因此，对于加密的 MySQL 服务器，你可以使用以下步骤来创建加密还原服务器。
 
-1. 在服务器上，选择 "**概述** > **还原**"。
+1. 在服务器上，选择 "**概述**  >  **还原**"。
 
    ![Azure Database for MySQL 的屏幕截图，其中突出显示了概述和还原](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "81459077"
 
    ![突出显示状态为 "不可访问" 的 Azure Database for MySQL 屏幕截图](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. 若要使服务器可访问，请重新验证已还原服务器上的密钥。 选择 "**数据加密** > 重新**验证密钥**"。
+3. 若要使服务器可访问，请重新验证已还原服务器上的密钥。 选择 "**数据加密**重新  >  **验证密钥**"。
 
    > [!NOTE]
    > 重新验证的第一次尝试将失败，因为需要为新服务器的服务主体授予对密钥保管库的访问权限。 若要生成服务主体，请选择 "重新**验证密钥**"，它将显示错误，但会生成服务主体。 之后，请参阅本文前面的[步骤](#set-the-right-permissions-for-key-operations)。

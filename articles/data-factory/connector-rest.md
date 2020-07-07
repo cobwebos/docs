@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
 ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415046"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
@@ -61,7 +61,7 @@ REST 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **RestService**  。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
-| enableServerCertificateValidation | 连接到终结点时是否验证服务器端 TLS/SSL 证书。 | 否<br /> （默认值为 true）  |
+| enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 TLS/SSL 证书。 | 否<br /> （默认值为 true）  |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
 | connectVia | 用于连接到数据存储的 [ Integration Runtime](concepts-integration-runtime.md)。 从[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则此属性使用默认 Azure Integration Runtime。 |否 |
 
@@ -374,77 +374,77 @@ Facebook 图形 API 返回采用以下结构的响应，在此情况下，下一
 ```
 
 ## <a name="use-oauth"></a>使用 OAuth
-本部分介绍如何使用解决方案模板，以使用 OAuth 将数据从 REST 连接器复制到使用 JSON 格式 Azure Data Lake Storage。 
+本部分介绍如何使用解决方案模板通过 OAuth 将 REST 连接器中 JSON 格式的数据复制到 Azure Data Lake Storage。 
 
 ### <a name="about-the-solution-template"></a>关于解决方案模板
 
 该模板包含两个活动：
-- **Web**活动检索持有者令牌，并将其作为授权传递到后续的复制活动。
-- **复制**活动将数据从 REST 复制到 Azure Data Lake Storage。
+- “Web”活动检索持有者令牌，然后将其作为 Authorization 标头传递到后续的“复制”活动  。
+- “复制”活动将数据从 REST 复制到 Azure Data Lake Storage  。
 
 该模板定义两个参数：
-- **SinkContainer**是将数据复制到 Azure Data Lake Storage 的根文件夹路径。 
-- **SinkDirectory**是根下的目录路径，在该目录中的数据将复制到 Azure Data Lake Storage 中。 
+- SinkContainer 是 Azure Data Lake Storage 中的根文件夹路径，可以将数据复制到其中  。 
+- SinkDirectory 是 Azure Data Lake Storage 中的根目录下的目录路径，可以将数据复制到其中  。 
 
 ### <a name="how-to-use-this-solution-template"></a>如何使用此解决方案模板
 
-1. 请**从 REST 或使用 OAuth 的 HTTP**模板中转到该副本。 为源连接创建新连接。 
+1. 转到“使用 OAuth 模板从 REST 或 HTTP 复制”模板  。 对于“源连接”，请创建新连接。 
     ![创建新连接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
-    下面是新链接服务（REST）设置的关键步骤：
+    下面是新链接服务 (REST) 设置的关键步骤：
     
-     1. 在 "**基本 url**" 下，为自己的源 REST 服务指定 URL 参数。 
-     2. 对于 "**身份验证类型**"，选择 "*匿名*"。
+     1. 在“基 URL”下，为自己的源 REST 服务指定 URL 参数  。 
+     2. 对于“身份验证类型”，请选择“匿名”   。
         ![新建 REST 连接](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
 
-2. 为目标连接创建新连接。  
+2. 对于“目标连接”，请创建新连接。  
     ![新建 Gen2 连接](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
 
-3. 选择“使用此模板”****。
+3. 选择“使用此模板”  。
     ![使用此模板](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
 
-4. 你会看到创建的管道，如以下示例中所示![：管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 此时会看到创建的管道，如以下示例所示：![管道](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. 选择 " **Web**活动"。 在 "**设置**" 中，指定相应的**URL**、**方法**、**标头**和**正文**，以便从要从中复制数据的服务的登录 API 中检索 OAuth 持有者令牌。 模板中的占位符展示 Azure Active Directory （AAD） OAuth 的示例。 注意： AAD 身份验证是 REST 连接器的本机支持，这里只是 OAuth flow 的示例。 
+5. 选择“Web”活动  。 在“设置”中，指定相应的“URL”、“方法”、“标头”和“正文”，以便从要从其中复制数据的服务的登录 API 检索 OAuth 持有者令牌      。 模板中的占位符展示了 Azure Active Directory (AAD) OAuth 的示例。 请注意，REST 连接器原生支持 AAD 身份验证，这里只是 OAuth 流的一个示例。 
 
-    | 属性 | 描述 |
+    | 属性 | 说明 |
     |:--- |:--- |:--- |
-    | URL |指定要从中检索 OAuth 持有者令牌的 url。 例如，在示例中，它是https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
-    | 方法 | HTTP 方法。 允许的值为**Post**和**Get**。 | 
-    | 头文件 | 标头是用户定义的，它引用 HTTP 请求中的标头名称。 | 
-    | Body | HTTP 请求的正文。 | 
+    | URL |指定要从其中检索 OAuth 持有者令牌的 URL。 例如，在本示例中，它是 https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |上获取。 
+    | 方法 | HTTP 方法。 允许的值为“Post”和“Get”   。 | 
+    | 头文件 | 标头由用户定义，引用 HTTP 请求中的一个标头名称。 | 
+    | 正文 | HTTP 请求的正文。 | 
 
     ![管道](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. 在 "**复制数据**" 活动中，选择 "*源*" 选项卡，可以看到从上一步检索到的持有者令牌（access_token）将传递到 "在其他标头下作为**授权**复制数据" 活动。 启动管道运行之前，请确认以下属性的设置。
+6. 在“复制数据”活动中选择“源”选项卡。可以看到，从上一步骤检索的持有者令牌 (access_token) 将作为“其他标头”下的 Authorization 标头传递到“复制数据”活动    。 在启动管道运行之前，请确认以下属性的设置。
 
     | 属性 | 说明 |
     |:--- |:--- |:--- | 
-    | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post********。 | 
+    | 请求方法 | HTTP 方法。 允许的值为 Get（默认值）和 Post   。 | 
     | 其他标头 | 附加的 HTTP 请求标头。| 
 
    ![复制源身份验证](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
 
-7. 选择“调试”，输入**参数**，然后选择“完成”。********
+7. 选择“调试”，输入**参数**，然后选择“完成”。  
    ![管道运行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
 
-8. 管道运行成功完成后，会看到类似于以下示例的结果： ![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. 管道运行成功完成后，会看到类似于以下示例的结果：![管道运行结果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
 
-9. 单击 "**操作**" 列中的 WebActivity 的 "输出" 图标，你会看到该服务返回的 access_token。
+9. 在“操作”列中单击 WebActivity 的“输出”图标，会看到服务返回的 access_token  。
 
    ![令牌输出](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
 
-10. 在 "**操作**" 列中单击 "CopyActivity" 的 "输入" 图标，你会看到 WebActivity 检索到的 access_token 传递到 CopyActivity 进行身份验证。 
+10. 在“操作”列中单击 CopyActivity 的“输入”图标，会看到 WebActivity 检索的 access_token 已传递到 CopyActivity 进行身份验证  。 
 
     ![令牌输入](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
         
     >[!CAUTION] 
-    >若要避免以纯文本格式记录令牌，请在 Web 活动中启用 "安全输出"，并在复制活动中启用 "安全输入"。
+    >若要避免以纯文本格式记录令牌，请在“Web”活动中启用“安全输出”，并在“复制”活动中启用“安全输入”。
 
 
 ## <a name="export-json-response-as-is"></a>按原样导出 JSON 响应
 
-可以使用此 REST 连接器将 REST API JSON 响应按原样导出到各种基于文件的存储。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射**。
+可以使用此 REST 连接器将 REST API JSON 响应按原样导出到各种基于文件的存储。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
 
 ## <a name="schema-mapping"></a>架构映射
 

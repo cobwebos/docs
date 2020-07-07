@@ -8,10 +8,10 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536418"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
@@ -35,7 +35,7 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 
 对于 Azure 文件存储，需要考虑三类限制：存储帐户、共享和文件。
 
-例如：使用高级文件共享时，一个共享可以实现 100000 IOPS，一个文件最多可以扩展到 5000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为 15,000。
+例如：使用高级文件共享时，单个共享可以达到 100,000 IOPS，单个文件最多可以扩展到 5,000 IOPS。 因此，如果一个共享中有三个文件，则可以从该共享获取的最大 IOPS 为 15,000。
 
 ### <a name="standard-storage-account-limits"></a>标准存储帐户限制
 
@@ -48,10 +48,10 @@ Azure 文件共享的父资源是 Azure 存储帐户。 存储帐户表示 Azure
 > [!IMPORTANT]
 > 存储帐户限制适用于所有共享。 仅当每个 FileStorage 帐户只有一个共享时，才能实现 FileStorage 帐户的最大扩展。
 
-### <a name="file-share-and-file-scale-targets"></a>文件共享和文件规模目标
+### <a name="file-share-and-file-scale-targets"></a>文件共享和文件缩放目标
 
 > [!NOTE]
-> 超过 5 TiB 的标准文件共享具有某些限制。 有关启用较大文件共享大小的限制和说明的列表，请参阅规划指南中的在[标准文件共享上启用更大的文件](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)共享部分。
+> 超过 5 TiB 的标准文件共享具有某些限制。 有关启用较大文件共享大小的限制和说明的列表，请参阅规划指南的[在标准文件共享上启用较大文件共享](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)部分。
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -78,9 +78,9 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 |-|-|
 | CPU | 64 个带 64 MiB L3 高速缓存的虚拟内核 |
 | 内存 | 128 GiB |
-| 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
+| 磁盘和分区 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
-| 工作负载 | 常规用途文件服务器|
+| 工作负荷 | 常规用途文件服务器|
 
 | 初始的一次性预配  |  |
 |-|-|

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417073"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>在管道活动中使用 Azure Key Vault 机密
@@ -23,7 +23,7 @@ ms.locfileid: "81417073"
 
 可以在 Azure Key Vault 中存储凭据或机密值，并在管道执行过程中将其用于传递到活动。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 此功能依赖于数据工厂托管标识。  了解它如何从[用于数据工厂的托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)进行工作，并确保你的数据工厂有一个关联的。
 
@@ -49,7 +49,7 @@ ms.locfileid: "81417073"
 
 4. 在数据工厂管道中，添加新的 Web 活动，并按如下所示对其进行配置。  
 
-    |属性  |值  |
+    |properties  |值  |
     |---------|---------|
     |安全输出     |True         |
     |代码     |[机密 URI 值]？ api 版本 = 7。0         |
@@ -63,9 +63,9 @@ ms.locfileid: "81417073"
     > 必须将 **？ api 版本 = 7.0**添加到机密 URI 的末尾。  
 
     > [!CAUTION]
-    > 将 Secure Output 选项设置为 true，以防止机密值以纯文本格式记录。  使用此值的任何其他活动都应将其 Secure Input 选项设置为 true。
+    > 将 Secure Output 选项设置为 true，以防止机密值以纯文本格式记录。  使用此值的任何其他活动都应将其“安全输入”选项设置为 true。
 
-5. 若要使用另一个活动中的值，请使用以下代码表达式** @activity（"Web1"）。**
+5. 若要使用另一个活动中的值，请使用以下代码表达式** @activity （"Web1"）。**
 
     ![代码表达式](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

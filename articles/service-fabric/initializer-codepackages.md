@@ -1,34 +1,34 @@
 ---
-title: 初始值设定项 Codepackage Service Fabric
-description: 介绍 Service Fabric 中的初始值设定项 Codepackage。
+title: Service Fabric 中的 Initializer CodePackage
+description: 介绍了 Service Fabric 中的 Initializer CodePackage。
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430625"
 ---
 # <a name="initializer-codepackages"></a>Initializer CodePackage
 
-从7.1 版开始，Service Fabric 支持[容器][containers-introduction-link]和[来宾可执行][guest-executables-introduction-link]应用程序的**codepackage 初始值设定项**。 初始值设定项 Codepackage 提供了在其他 Codepackage 开始执行之前，在 ServicePackage 范围执行初始化的机会。 它们与 ServicePackage 的关系类似于 CodePackage 的[SetupEntryPoint][setup-entry-point-link] 。
+从 7.1 版开始，Service Fabric 支持适用于[容器][containers-introduction-link]应用程序和[来宾可执行文件][guest-executables-introduction-link]应用程序的 **Initializer CodePackage**。 Initializer CodePackage 提供了在其他 Codepackage 开始执行之前在 ServicePackage 范围内执行初始化操作的机会。 它们与 ServicePackage 的关系类似于 [SetupEntryPoint][setup-entry-point-link] 相对于 CodePackage 的关系。
 
-在继续阅读本文之前，建议熟悉[Service Fabric 应用程序模型][application-model-link]和[Service Fabric 托管模型][hosting-model-link]。
+继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型][application-model-link]和 [Service Fabric 托管模型][hosting-model-link]。
 
 > [!NOTE]
-> 使用[Reliable Services][reliable-services-link]编程模型编写的服务目前不支持初始值设定项 codepackage。
+> 使用 [Reliable Services][reliable-services-link] 编程模型编写的服务目前不支持 Initializer CodePackage。
  
 ## <a name="semantics"></a>语义
 
-应运行初始值设定项 CodePackage 才能**成功完成（退出代码0）**。 在成功完成之前，将重新启动失败的初始化表达式 CodePackage。 允许使用多个初始值设定项**codepackage，并**按**指定顺序****按**顺序执行多个初始值设定项。
+正常情况下，Initializer CodePackage 在运行后会成功完成（退出代码为 0）。 失败的 Initializer CodePackage 会重启，直至成功完成。 在 ServicePackage 中的其他 CodePackage 开始执行之前，允许多个 Initializer CodePackage 顺序执行（按指定的顺序），直至成功完成。  
 
-## <a name="specifying-initializer-codepackages"></a>指定初始值设定项 Codepackage
-可以通过在 Servicemanifest.xml 中将**初始值设定项**属性设置为**True** ，将 CodePackage 标记为初始值设定项。 如果有多个初始值设定项 Codepackage，则可以通过**ExecOrder**属性指定其执行顺序。 **ExecOrder**必须为非负整数，且仅对初始值设定项 codepackage 有效。 首先执行具有较小值**ExecOrder**的初始值设定项 codepackage。 如果没有为初始值设定项 CodePackage 指定**ExecOrder** ，则假定默认值为0。 未指定具有相同值的 Codepackage 初始值设定**项的相对**执行顺序。
+## <a name="specifying-initializer-codepackages"></a>指定 Initializer CodePackage
+可以将 CodePackage 标记为 Initializer，方法是在 ServiceManifest 中将 **Initializer** 属性设置为 **true**。 如果有多个 Initializer CodePackage，则可通过 **ExecOrder** 属性指定其执行顺序。 **ExecOrder** 必须为非负整数，仅对 Initializer CodePackage 有效。 **ExecOrder** 值较小的 Initializer CodePackage 先执行。 如果没有为 Initializer CodePackage 指定 **ExecOrder**，则会采用默认值 0。 未指定 **ExecOrder** 值相同的 Initializer CodePackage 的相对执行顺序。
 
-以下 Servicemanifest.xml 代码片段介绍了三个标记为初始值设定项的 Codepackage。 如果激活了此 ServicePackage，则先执行*InitCodePackage0* ，因为它的最小值为**ExecOrder**。 成功完成（退出代码为0） *InitCodePackage0*，将执行*InitCodePackage1* 。 最后，在*InitCodePackage1*成功完成后，将执行*WorkloadCodePackage* 。
+以下 ServiceManifest 代码片段描述了三个 CodePackage，其中的两个标记为 Initializer。 激活此 ServicePackage 时，*InitCodePackage0* 先执行，因为它的 **ExecOrder** 值最小。 InitCodePackage0 成功完成（退出代码为 0）后，系统会执行 InitCodePackage1。 最后，在成功完成 InitCodePackage1 后，会执行 WorkloadCodePackage。
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -43,16 +43,16 @@ ms.locfileid: "81430625"
   ...
 </CodePackage>
 ```
-## <a name="complete-example-using-initializer-codepackages"></a>使用初始值设定项 Codepackage 的完整示例
+## <a name="complete-example-using-initializer-codepackages"></a>使用 Initializer CodePackage 的完整示例
 
-让我们看一个使用初始值设定项 Codepackage 的完整示例。
+让我们看看一个使用 Initializer CodePackage 的完整示例。
 
 > [!IMPORTANT]
-> 以下示例假设熟悉如何[使用 Service Fabric 和 Docker 创建 Windows 容器应用程序][containers-getting-started-link]。
+> 以下示例假定你熟悉如何创建[使用 Service Fabric 和 Docker 的 Windows 容器应用程序][containers-getting-started-link]。
 >
-> 此示例引用 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 此示例引用了 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-下面的 Servicemanifest.xml 基于前面介绍的 Servicemanifest.xml 代码段构建。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是表示容器的 codepackage。 激活时，先执行*InitCodePackage0* 。 它将消息记录到文件中并退出。 接下来，执行*InitCodePackage1* ，它还将消息记录到文件中并退出。 最后， *WorkloadCodePackage*开始执行。 它还将消息记录到一个文件，将该文件的内容输出到**stdout** ，然后将其永久 ping。
+以下 ServiceManifest.xml 在前述 ServiceManifest 代码片段基础上构建。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是表示容器的 codepackage。 激活后，*InitCodePackage0* 先执行。 它将一条消息记录到一个文件中，然后退出。 接下来执行 *InitCodePackage1*，它也将一条消息记录到一个文件中，然后退出。 最后，*WorkloadCodePackage* 开始执行。 它也将一条消息记录到一个文件中，将文件内容输出到 **stdout**，然后一直 ping 下去。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ ms.locfileid: "81430625"
 </ServiceManifest>
 ```
 
-以下 Applicationmanifest.xml 介绍了基于上述 Servicemanifest.xml 的应用程序。 请注意，它为所有容器指定相同的**卷**装入，即**C:\WorkspaceOnHost**在所有三个容器上装载到**C:\WorkspaceOnContainer** 。 最终效果是所有容器都按照它们的激活顺序写入同一日志文件。
+以下 ApplicationManifest.xml 描述了一个基于上述 ServiceManifest.xml 的应用程序。 请注意，它为所有容器指定同一个卷装载。也就是说，在所有三个容器中，**C:\WorkspaceOnHost** 都装载在 **C:\WorkspaceOnContainer** 中。 最终效果是，所有容器都按其激活顺序将内容写入同一日志文件。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ ms.locfileid: "81430625"
   </DefaultServices>
 </ApplicationManifest>
 ```
-成功激活 ServicePackage 后， **C:\WorkspaceOnHost\log.txt**的内容应如下所示。
+成功激活 ServicePackage 后，**C:\WorkspaceOnHost\log.txt** 的内容应如下所示。
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt
@@ -138,10 +138,10 @@ Hi from WorkloadCodePackage.
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章了解相关信息。
+请参阅以下文章，了解相关信息。
 
-* [Service Fabric 和容器。][containers-introduction-link]
-* [Service Fabric 和来宾可执行文件。][guest-executables-introduction-link]
+* [Service Fabric 和容器][containers-introduction-link]。
+* [Service Fabric 和来宾可执行文件][guest-executables-introduction-link]。
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

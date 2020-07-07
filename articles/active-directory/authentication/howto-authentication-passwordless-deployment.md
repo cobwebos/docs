@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81451425"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
@@ -82,7 +82,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 用户将其无密码方法注册为 Azure 多因素身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
 
-### <a name="licensing"></a>授权 
+### <a name="licensing"></a>许可 
 无密码 authentication 无需额外付费，不过某些先决条件可能需要高级订阅。 [Azure Active Directory 许可页面](https://azure.microsoft.com/pricing/details/active-directory/)中提供详细的功能和许可信息。 
 
 ## <a name="develop-a-plan"></a>制定计划
@@ -95,9 +95,9 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 | 区域 | 说明 |
 | --- | --- |
-| **访问** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
+| **Access** | 在公司网络内部或外部的公司或个人设备中，可以使用无密码登录。 |
 | **审核** | 管理员可使用使用情况数据进行近实时审核。 <br> 使用情况数据至少每29天下载到企业系统，或使用 SIEM 工具。 |
-| **调控** | 定义和监视相应身份验证方法和关联组的用户分配生命周期。 |
+| **治理** | 定义和监视相应身份验证方法和关联组的用户分配生命周期。 |
 | **安全性** | 可以通过用户和组分配来控制对适当身份验证方法的访问。 <br> 只有经过授权的用户才能使用无密码登录。 |
 | **性能** | 访问分配传播时间线已记录并被监视。 <br> 为便于使用，对登录时间进行度量。 |
 | **用户体验** | 用户了解移动兼容性。 <br> 用户可以配置无密码登录的验证器应用。 |
@@ -107,9 +107,9 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请[确保你参与了正确的利益干系人](../fundamentals/active-directory-deployment-plans.md#include-the-right-stakeholders)，并且项目中的利益干系人角色非常了解。
 
-### <a name="plan-communications"></a>计划通信
+### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
+沟通对于任何新服务的成功都至关重要。 主动传达用户体验如何更改、何时发生更改，以及如何在遇到问题时获得支持。
 
 与最终用户的通信应包含以下信息：
 
@@ -118,7 +118,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 - [在 Microsoft Authenticator 应用中注册](howto-authentication-passwordless-phone.md)
 - [用手机登录](../user-help/user-help-auth-app-sign-in.md)
 
-Microsoft 提供多重身份验证[通信模板](https://aka.ms/mfatemplates)、自助服务密码重置（SSPR）[通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和[最终用户文档](../user-help/security-info-setup-signin.md)，有助于草拟你的通信。 您可以通过选择该[https://myprofile.microsoft.com](https://myprofile.microsoft.com/)页面上的**安全信息**链接，将用户发送到直接注册。
+Microsoft 提供多重身份验证[通信模板](https://aka.ms/mfatemplates)、自助服务密码重置（SSPR）[通信模板](https://www.microsoft.com/download/details.aspx?id=56768)和[最终用户文档](../user-help/security-info-setup-signin.md)，有助于草拟你的通信。 可以在该页上选择“安全信息”链接，将用户导航到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) 以直接注册。
 
 ### <a name="plan-to-pilot"></a>规划试点
 
@@ -172,7 +172,7 @@ Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下�
 利用安全密钥，你可以访问你的资源，你应该计划对这些物理设备进行管理。
 
 1. **密钥分发**：规划如何为你的组织设置密钥。 您可能有一个集中的设置过程或允许最终用户购买 FIDO 2.0 兼容的密钥。
-1. **密钥激活**：最终用户必须自行激活安全密钥。 最终用户在上[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)注册其安全密钥，并在首次使用时启用第二因素（PIN 或生物识别）。
+1. **密钥激活**：最终用户必须自行激活安全密钥。 最终用户在上注册其安全密钥 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) ，并在首次使用时启用第二因素（PIN 或生物识别）。
 1. **禁用密钥**：尽管安全密钥功能处于预览阶段，但管理员无法从用户帐户中删除密钥。 用户必须将其删除。 如果密钥丢失或被盗：
    1. 从任何启用了无密码 authentication 的组中删除用户。
    1. 验证它们已删除密钥作为身份验证方法。
@@ -228,7 +228,7 @@ Azure AD 将条目添加到审核日志中：
 
 **Azure AD 将大多数审核数据保留30天**，并通过 Azure 管理门户或 API 提供数据以下载到分析系统。 如果需要更长的保留期，请在[Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk 或 sumo logic 逻辑等 SIEM 工具中导出和使用日志。 [了解有关查看访问和使用情况报告的详细信息](../reports-monitoring/overview-reports.md)。
 
-用户可以通过导航到来[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)注册和管理其凭据。 此链接将用户定向到通过组合 SSPR/多重身份验证注册体验启用的最终用户凭据管理体验。 Azure AD 日志注册 FIDO2 安全设备，并将其更改为用户的身份验证方法。
+用户可以通过导航到来注册和管理其凭据 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 此链接将用户定向到通过组合 SSPR/多重身份验证注册体验启用的最终用户凭据管理体验。 Azure AD 日志注册 FIDO2 安全设备，并将其更改为用户的身份验证方法。
 
 ### <a name="plan-security"></a>规划安全性
 作为此推出计划的一部分，Microsoft 建议为所有特权管理员帐户启用无密码 authentication。
@@ -296,7 +296,7 @@ Azure AD 将条目添加到审核日志中：
 | --- | --- |
 | 全局管理员角色|可实现组合注册体验的最小特权角色。 |
 | 身份验证管理员 | 最小特权角色可以实现和管理身份验证方法。 |
-| User | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
+| 用户 | 用于在设备上配置验证器应用的最小特权角色，或用于注册 web 或 Windows 10 登录的安全密钥设备。 |
 
 ### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>部署 Microsoft Authenticator 应用的手机登录
 
@@ -324,7 +324,7 @@ Azure AD 将条目添加到审核日志中：
 | **错误消息**：我们检测到此浏览器或操作系统不支持 FIDO2 安全密钥。 | 无密码 FIDO2 security 设备只能在 Windows 10 版本1809或更高版本上受支持的浏览器（Microsoft Edge，Firefox 版本67）中注册。 |
 | **错误消息**：你的公司策略要求你使用其他方法登录。 | 不确定租户中已启用安全密钥。 |
 | 用户无法在 Windows 10 版本1809上管理我的安全密钥 | 版本1809要求你使用 FIDO2 密钥供应商提供的安全密钥管理软件。 请与供应商联系以获得支持。 |
-| 我认为我的 FIDO2 安全密钥可能有问题，如何对其进行测试。 | 导航到[https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/)，输入测试帐户的凭据，插入可疑安全密钥，选择屏幕右上角的**+** 按钮，单击 "创建"，然后执行创建过程。 如果此方案失败，则设备可能已损坏。 |
+| 我认为我的 FIDO2 安全密钥可能有问题，如何对其进行测试。 | 导航到 [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) ，输入测试帐户的凭据，插入可疑安全密钥，选择屏幕右上角的 **+** 按钮，单击 "创建"，然后执行创建过程。 如果此方案失败，则设备可能已损坏。 |
 
 ## <a name="next-steps"></a>后续步骤
 

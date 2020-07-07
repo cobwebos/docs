@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81415388"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制和转换数据
@@ -37,9 +37,9 @@ ms.locfileid: "81415388"
 
 以下活动支持此 Azure Cosmos DB (SQL API) 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- 包含[支持的源/接收器矩阵](copy-activity-overview.md)的 [Copy 活动](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 
 对于复制活动，此 Azure Cosmos DB(SQL API) 连接器支持：
 
@@ -62,7 +62,7 @@ ms.locfileid: "81415388"
 
 Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDb**。 | 是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 <br/> 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -118,7 +118,7 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
 Azure Cosmos DB (SQL API) 数据集支持以下属性： 
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **CosmosDbSqlApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 文档集合的名称。 |是 |
@@ -152,12 +152,12 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 若要从 Azure Cosmos DB (SQL API) 复制数据，请将复制活动中的 **source** 类型设置为 **DocumentDbCollectionSource**。 
 
-复制活动**源**部分支持以下属性：
+复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **CosmosDbSqlApiSource**。 |是 |
-| query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>例如：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
+| 查询 |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>例如：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
 | preferredRegions | 从 Cosmos DB 检索数据时要连接到的区域的首选列表。 | 否 |
 | pageSize | 查询结果的每页文档数。 默认值为“-1”，表示使用服务端动态页大小，最大为 1000。 | 否 |
 
@@ -204,9 +204,9 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 若要将数据复制到 Azure Cosmos DB (SQL API)，请将复制活动中的 **sink** 类型设置为 **DocumentDbCollectionSink**。 
 
-复制活动**源**部分支持以下属性：
+复制活动 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbSqlApiSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
@@ -265,7 +265,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 源转换的 "**源选项**" 选项卡中提供了特定于 Azure Cosmos DB 的设置。 
 
-**包含系统列：** 如果为 true ```id```， ```_ts```则将在 CosmosDB 中包括、、和其他系统列。 更新集合时，必须包括此项，以便能够获取现有行 id。
+**包含系统列：** 如果为 true，则 ```id``` ```_ts``` 将在 CosmosDB 中包括、、和其他系统列。 更新集合时，必须包括此项，以便能够获取现有行 id。
 
 **页面大小：** 查询结果每页的文档数。 默认值为 "-1"，它使用最多为1000的服务动态页。
 
@@ -289,15 +289,15 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 接收器转换的 "**设置**" 选项卡中提供了特定于 Azure Cosmos DB 的设置。
 
-**更新方法：** 确定对数据库目标允许哪些操作。 默认值为仅允许插入。 若要更新、upsert 或删除行，需要更改行转换才能标记这些操作的行。 对于更新、upsert 和删除，必须设置一个或多个键列，以确定要更改的行。
+**更新方法：** 确定数据库目标上允许哪些操作。 默认设置为仅允许插入。 若要更新、更新插入或删除行，需要进行 alter-row 转换才能标记这些操作的行。 对于更新、更新插入和删除操作，必须设置一个或多个键列，以确定要更改的行。
 
 **集合操作：** 确定在写入之前是否重新创建目标集合。
 * None：不会对集合执行任何操作。
 * 重新创建：将删除并重新创建集合
 
-**批大小**：控制正在每个存储桶中写入的行数。 较大的批处理大小会提高压缩和内存优化，但在缓存数据时可能会导致内存不足异常。
+**批大小**：控制每个 Bucket 中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。
 
-**分区键：** 输入一个字符串，该字符串表示集合的分区键。 示例：```/movies/title```
+**分区键：** 输入一个字符串，该字符串表示集合的分区键。 示例： ```/movies/title```
 
 **吞吐量：** 为每次执行此数据流时要应用到 CosmosDB 集合的 ru 数设置一个可选值。 最小值为400。
 

@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428753"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的临时表
@@ -25,7 +25,7 @@ SQL 池和 SQL 点播（预览版）资源都可以利用临时表。 SQL 点播
 
 ## <a name="what-are-temporary-tables"></a>什么是临时表？
 
-临时表在处理数据时非常有用，尤其是在转换期间，中间结果是暂时性的。 对于 Synapse SQL，临时表存在于会话级别。  它们仅对创建它们的会话可见。 因此，当该会话注销时，它们会自动删除。 
+临时表在处理数据时非常有用，尤其是在具有暂时性中间结果的转换期间。 对于 Synapse SQL，临时表存在于会话级别。  它们仅对其所创建于的会话可见。 因此，会话注销时将自动删除它们。 
 
 ## <a name="temporary-tables-in-sql-pool"></a>SQL 池中的临时表
 
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="dropping-temporary-tables"></a>删除临时表
-创建新会话时，应不存在任何临时表。  但是，如果调用的是使用相同名称创建临时的同一存储过程，则为了确保`CREATE TABLE`语句成功，请使用简单的预存在检查，其中`DROP`包括： 
+创建新会话时，应不存在任何临时表。  但是，如果调用的是使用相同名称创建临时的同一存储过程，则为了确保 `CREATE TABLE` 语句成功，请使用简单的预存在检查，其中包括 `DROP` ： 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,9 +108,9 @@ BEGIN
 END
 ```
 
-为实现编码一致性，最好对表和临时表使用此模式。  在完成临时表后，最好使用`DROP TABLE`将其删除。  
+为了实现编码一致性，好的做法是对表和临时表都使用此模式。  在完成临时表后，最好使用 `DROP TABLE` 将其删除。  
 
-在存储过程开发中，通常会看到在过程结束时捆绑在一起的 drop 命令，以确保清除这些对象。
+在存储过程开发中，通常将 drop 命令捆绑在过程末尾，以确保清除这些对象。
 
 ```sql
 DROP TABLE #stats_ddl
@@ -193,7 +193,7 @@ GO
 
 在此阶段，只会创建一个用于生成 #stats_ddl 临时表的存储过程。  如果存储过程已存在，则该存储过程将删除 #stats_ddl。 此删除可确保在会话内多次运行时，它不会失败。  
 
-由于存储过程的`DROP TABLE`末尾没有，当存储过程完成时，创建的表将保持不变，并且可以在存储过程之外读取。  
+由于 `DROP TABLE` 存储过程的末尾没有，当存储过程完成时，创建的表将保持不变，并且可以在存储过程之外读取。  
 
 与其他 SQL Server 数据库相比，Synapse SQL 允许您在创建该数据库的过程外部使用该临时表。  可以在会话中的**任何位置**使用通过 SQL 池创建的临时表。 因此，你将拥有更多模块化且可管理的代码，如以下示例中所示：
 
@@ -222,7 +222,7 @@ SQL 池对临时表有一些实现限制：
 
 - 仅支持会话范围的临时表。  不支持全局临时表。
 - 不能在临时表上创建视图。
-- 只能使用哈希分布或轮循机制分布来创建临时表。  不支持复制的临时表分布。 
+- 只能通过哈希或轮循机制分布来创建临时表。  不支持重复的临时表分布。 
 
 ## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 点播（预览版）中的临时表
 
@@ -232,5 +232,5 @@ SQL 池对临时表有一些实现限制：
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关开发表的详细信息，请参阅[使用 SYNAPSE SQL 资源设计表](develop-tables-overview.md)一文。
+若要详细了解开发表，请参阅[使用 Synapse SQL 资源设计表](develop-tables-overview.md)一文。
 

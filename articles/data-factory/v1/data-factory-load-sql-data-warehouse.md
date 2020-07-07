@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419300"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>在不到 15 分钟的时间里通过数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库
@@ -29,7 +29,7 @@ ms.locfileid: "81419300"
 现在通过使用 **Azure 数据工厂**，Azure SQL 数据仓库入门变得前所未有地简单。  Azure 数据工厂是一个完全托管的基于云的数据集成服务，它可用于使用现有系统中的数据填充 SQL 数据仓库，在节省宝贵时间的同时评估 SQL 数据仓库并生成分析解决方案。 以下是使用 Azure 数据工厂将数据加载到 Azure SQL 数据仓库的主要优点：
 
 * **轻松设置**：无需脚本的 5 步直观的向导。
-* **丰富的数据存储支持**：对一组丰富的本地和基于云的数据存储的内置支持。
+* **丰富的数据存储支持**：内置支持一组丰富的本地和基于云的数据存储。
 * **安全且合规**：通过 HTTPS 或 ExpressRoute 传输数据，并且全局服务可确保数据不会离开地理边界
 * **通过使用 PolyBase 提供无与伦比的性能** - 使用 Polybase 是将数据移动到 Azure SQL 数据仓库的最高效的方法。 使用临时 blob 功能，可以实现所有类型的数据存储（包括 Azure Blob 存储）的高加载速度，默认情况下，Polybase 支持此功能。
 
@@ -119,12 +119,12 @@ ms.locfileid: "81419300"
        Azure 数据工厂的名称必须全局唯一。 如果收到错误：**数据工厂名称 "LoadIntoSQLDWDataFactory" 不可用**，请更改数据工厂的名称（例如，yournameLoadIntoSQLDWDataFactory），然后重试创建操作。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。  
    2. 选择 **Azure 订阅**。
    3. 对于资源组，请执行以下步骤之一：
-      1. 选择“使用现有资源组”并选择一个现有的资源组。****
-      2. 选择“新建”并输入资源组的名称。****
+      1. 选择“使用现有资源组”并选择一个现有的资源组。
+      2. 选择“新建”并输入资源组的名称。
    4. 选择数据工厂的**位置**。
-   5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。****  
-   6. 单击“创建”。 
-4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：****
+   5. 选中位于边栏选项卡底部的“固定到仪表板”复选框。  
+   6. 单击“创建”。
+4. 完成创建后，将看到如下图所示的“数据工厂”边栏选项卡：
 
    ![数据工厂主页](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
 5. 在“数据工厂”主页上，单击“复制数据”磁贴，启动“复制向导”。********
@@ -137,11 +137,11 @@ ms.locfileid: "81419300"
 ## <a name="step-1-configure-data-loading-schedule"></a>步骤 1：配置数据加载计划
 第一步是配置数据加载计划。  
 
-在“属性” **** 页中：
+在“属性”  页中：
 
 1. 输入 **CopyFromBlobToAzureSqlDataWarehouse** 作为**任务名称**
 2. 选择“立即运行一次”**** 选项。   
-3. 单击“下一步”。   
+3. 单击“下一步”。  
 
     ![复制向导 - 属性页](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -183,7 +183,7 @@ ms.locfileid: "81419300"
 
 ## <a name="step-4-performance-settings"></a>步骤 4：性能设置
 
-默认选中“允许 polybase”****。  单击“下一步”。 
+默认选中“允许 polybase”****。  单击“下一步”。
 
 ![复制向导 - 架构映射页](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

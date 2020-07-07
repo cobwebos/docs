@@ -1,5 +1,5 @@
 ---
-title: 公共和机密客户端应用（MSAL） |Microsoft
+title: 公共客户端和机密客户端应用 (MSAL) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 身份验证库 (MSAL) 中的公共客户端和机密客户端应用程序。
 services: active-directory
@@ -14,21 +14,21 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81534306"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>公共客户端和机密客户端应用程序
 Microsoft 身份验证库 (MSAL) 定义两种类型的客户端：公共客户端和机密客户端。 这两种客户端的区分方式是，它们能否在授权服务器上安全地完成身份验证，以及能否维持客户端凭据的保密性。 相比之下，Azure AD 身份验证库 (ADAL) 使用所谓的“身份验证上下文”（与 Azure AD 建立的连接）。 
 
-- **机密客户端应用程序**是在服务器上运行的应用程序（web 应用程序、web API 应用程序，甚至是服务/守护程序应用）。 它们被认为很难访问，因此能够保守应用程序的机密。 机密客户端可以保存配置时机密。 客户端的每个实例采用不同的配置（包括客户端 ID 和客户端机密）。 最终用户很难提取这些值。 Web 应用是最常见的机密客户端。 客户端 ID 通过 Web 浏览器公开，但机密仅在传回通道中传递，永远不会直接公开。
+- 机密客户端应用程序  是在服务器上运行的应用（Web 应用、Web API 应用，甚至服务/守护程序应用）。 它们被认为很难访问，因此能够保守应用程序的机密。 机密客户端可以保存配置时机密。 客户端的每个实例采用不同的配置（包括客户端 ID 和客户端机密）。 最终用户很难提取这些值。 Web 应用是最常见的机密客户端。 客户端 ID 通过 Web 浏览器公开，但机密仅在传回通道中传递，永远不会直接公开。
 
     机密客户端应用 <BR>
     ![Web 应用](media/msal-client-applications/web-app.png) ![Web API](media/msal-client-applications/web-api.png) ![守护程序/服务](media/msal-client-applications/daemon-service.png)
 
-- **公共客户端应用程序**是在设备、台式计算机或 Web 浏览器中运行的应用。 它们不能安全地保存应用程序机密，因此它们只代表用户访问 web Api。 （它们仅支持公共客户端流。）公共客户端无法保存配置时机密，因此它们没有客户端机密。
+- **公共客户端应用程序**是在设备、台式计算机或 Web 浏览器中运行的应用。 我们并不确信这些应用程序能够安全保守应用程序的机密，因此，它们只是代表用户访问 Web API。 （它们仅支持公共客户端流。）公共客户端无法保存配置时机密，因此它们没有客户端机密。
 
     公共客户端应用 <BR>
     ![桌面应用](media/msal-client-applications/desktop-app.png) ![无浏览器 API](media/msal-client-applications/browserless-app.png) ![移动应用](media/msal-client-applications/mobile-app.png)

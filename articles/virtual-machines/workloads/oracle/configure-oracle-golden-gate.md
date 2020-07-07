@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683718"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
@@ -40,7 +40,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本指南�
 > |  | **主站点** | **复制站点** |
 > | --- | --- | --- |
 > | **Oracle 版本** |Oracle 12c 版本 2 – (12.1.0.2) |Oracle 12c 版本 2 – (12.1.0.2)|
-> | **计算机名** |myVM1 |myVM2 |
+> | **计算机名称** |myVM1 |myVM2 |
 > | **操作系统** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **复制架构** |TEST|TEST |
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署 Azure 资源以及可以从中管理这些资源的逻辑容器。 
 
 以下示例在 `westus` 位置创建名为 `myResourceGroup` 的资源组。
 
@@ -416,7 +416,7 @@ SQL> EXIT;
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 启动 PuTTY。 在 "**类别**" 窗格中，选择 "**连接** > **SSH** > **身份验证**"。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
+6. 启动 PuTTY。 在 "**类别**" 窗格中，选择 "**连接**  >  **SSH**  >  **身份验证**"。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
 
    ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
@@ -439,11 +439,11 @@ SQL> EXIT;
    $ ./runInstaller
    ```
 
-2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择“下一步”**** 继续。
+2. 选择“Oracle GoldenGate for Oracle Database 12c”。 然后选择 "**下一步**" 继续。
 
    ![安装程序中的“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续操作  。
+3. 更改软件位置。 然后选中“启动管理器”**** 框，并输入数据库位置。 选择“下一步”继续操作。
 
    ![“选择安装”页屏幕截图](./media/oracle-golden-gate/golden_gate_install_02.png)
 

@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
 ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535394"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>排查 Azure Migrate 项目问题
@@ -23,7 +23,7 @@ ms.locfileid: "81535394"
 
 ## <a name="what-azure-permissions-are-needed"></a>需要哪些 Azure 权限？
 
-你需要订阅中的 "参与者" 或 "所有者" 权限才能创建 Azure Migrate 项目。
+你需要订阅中的“参与者”或“所有者”权限才能创建 Azure Migrate 项目。
 
 ## <a name="cant-find-a-project"></a>找不到项目
 
@@ -36,7 +36,7 @@ ms.locfileid: "81535394"
 
 ## <a name="what-are-vm-limits"></a>什么是 VM 限制？
 
-可以在单个项目中评估最多35000个 VMware Vm 或最多35000个 Hyper-v Vm。 项目可以包括 VMware Vm 和 Hyper-v Vm，最高可达评估限制。
+可以在单个项目中评估最多35000个 VMware Vm 或最多35000个 Hyper-v Vm。 一个项目可以同时包含 VMware VM 和 Hyper-V VM，只要不超过评估限制即可。
 
 ## <a name="can-i-upgrade-old-project"></a>能否升级旧项目？
 

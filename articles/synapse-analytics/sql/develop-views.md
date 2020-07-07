@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81428649"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>使用 Synapse SQL 的 t-sql 视图
@@ -57,9 +57,9 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-请记住，此方法可能导致表在用户的视图中出现和消失，并提示 "表不存在" 错误消息。 视图可用于向用户提供一致的呈现层，同时将基础对象重命名。
+请记住，此方法可能导致表在用户的视图中出现和消失，并提示 "表不存在" 错误消息。 使用视图可为用户提供一致的呈现层，同时对基础对象重命名。
 
-通过视图提供对数据的访问，用户不需要对基础表的可见性。 除了具有一致的用户体验外，此层还确保分析设计人员可以改进数据模型。 改进基础表的能力意味着，设计人员可以使用 CTAS 在数据加载过程中最大程度地提高性能。
+用户可以借助视图来访问数据，这样就不需要看到基础表。 除了具有一致的用户体验外，此层还确保分析设计人员可以改进数据模型。 改进基础表的能力意味着，设计人员可以使用 CTAS 在数据加载过程中最大程度地提高性能。
 
 ## <a name="performance-optimization"></a>性能优化
 
@@ -69,17 +69,17 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ## <a name="limitations"></a>限制
 
-Synapse SQL 中的视图仅存储为元数据。 因此，下列选项不可用：
+Synapse SQL 中的视图仅存储为元数据。 因此，无法使用以下选项：
 
 * 没有架构绑定选项
-* 不能通过视图更新基表
-* 无法在临时表上创建视图
+* 无法通过视图更新基表
+* 无法基于临时表创建视图
 * 不支持 EXPAND/NOEXPAND 提示
 * Synapse SQL 中没有索引视图
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[SYNAPSE SQL 开发概述](develop-overview.md)。
+有关更多开发技巧，请参阅 [Synapse SQL 开发概述](develop-overview.md)。
 
 
 

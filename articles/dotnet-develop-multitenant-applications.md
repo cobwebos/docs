@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81481836"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure 中的多租户应用程序
@@ -46,7 +46,7 @@ ms.locfileid: "81481836"
 
 Azure 提供了许多功能，使你能够解决在设计多租户系统时遇到的关键问题。
 
-**相互**
+**隔离**
 
 * 使用或不使用 TLS 通信的主机标头对网站租户进行分段
 * 按查询参数对网站租户进行分段

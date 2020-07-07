@@ -11,15 +11,15 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81416998"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
-若要在时序见解资源管理器中共享自定义视图，可以通过编程方式创建自定义视图的参数化 URL。
+若要在时序见解资源管理器中共享自定义视图，可以通过编程方式创建一个自定义视图的参数化 URL。
 
 时序见解资源管理器支持使用 URL 查询参数，在 URL 中直接指定体验中的视图。 例如，只使用 URL 就可以指定目标环境、搜索谓词以及所需的时间跨度。 当用户选择自定义的 URL 时，界面会提供一个链接，直接指向时序见解门户中的相应资产。 数据访问策略适用。
 
@@ -29,7 +29,7 @@ ms.locfileid: "81416998"
 
 ## <a name="environment-id"></a>环境 ID
 
-`environmentId=<guid>` 参数指定目标环境 ID。 这是数据访问 FQDN 的一个组件，可以在 Azure 门户的环境概览的右上角找到。 这就是之前`env.timeseries.azure.com`的所有内容。
+`environmentId=<guid>` 参数指定目标环境 ID。 这是数据访问 FQDN 的一个组件，可以在 Azure 门户的环境概览的右上角找到。 它是 `env.timeseries.azure.com` 之前的所有内容。
 
 例如，`?environmentId=10000000-0000-0000-0000-100000000108` 是环境 ID 参数。
 
@@ -70,7 +70,7 @@ ms.locfileid: "81416998"
 
 | 参数 | URL 项 | 说明 |
 | --- | --- | --- |
-| name  | `\<string>` | 术语的名称。  |
+| **name** | `\<string>` | 术语的名称。  |
 | **splitBy** | `\<string>` | 要按其进行拆分的列名。  |
 | **measureName** | `\<string>` | 度量值的列名。  |
 | **predicate** | `\<string>` | 用于服务器端筛选的  where 子句。 |

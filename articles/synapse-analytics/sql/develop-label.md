@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81430027"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查询标签
@@ -25,7 +25,7 @@ ms.locfileid: "81430027"
 > SQL 点播（预览版）不支持标签查询。
 
 ## <a name="what-are-query-labels"></a>什么是查询标签
-SQL 池支持称为查询标签的概念。 在继续之前，让我们看一个示例：
+SQL 池支持称为“查询标签”的概念。 在继续之前，让我们看一个示例：
 
 ```sql
 SELECT *
@@ -36,9 +36,9 @@ OPTION (LABEL = 'My Query Label')
 
 最后一行将字符串“My Query Label”标记为查询。 此标记特别有用，因为可以通过 DMV 查询标签。 查询标签提供了一种机制，可用于查找问题查询，并有助于通过 ELT 运行来确定进度。
 
-良好的命名约定最为有用。 例如，以 PROJECT、PROCEDURE、语句或注释开始标签会在源代码管理中的所有代码中唯一标识查询。
+良好的命名约定最为有用。 例如，让标签以 PROJECT、PROCEDURE、STATEMENT 或 COMMENT 开头可在源代码管理的所有代码中唯一地标识查询。
 
-下面的查询使用动态管理视图按标签进行搜索：
+以下查询使用动态管理视图按标签进行搜索：
 
 ```sql
 SELECT  *
@@ -53,6 +53,6 @@ WHERE   r.[label] = 'My Query Label'
 > 
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅[开发概述](develop-overview.md)。
+有关更多开发技巧，请参阅 [开发概述](develop-overview.md)。
 
 

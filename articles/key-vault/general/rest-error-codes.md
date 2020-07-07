@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432055"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
@@ -55,7 +55,7 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>令牌缺少关联的适当资源。 
 
-从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的**所有**令牌的资源是*https：\//vault.keyvault.net* （无尾随斜杠）。
+从 Azure OAUTH 终结点请求访问令牌时，必须提供名为“resource”的参数。 该值对于令牌提供程序而言非常重要，因为它限定了令牌的目标使用范围。 用于访问 Key Vault 的**所有**令牌的资源是*https： \/ /vault.keyvault.net* （无尾随斜杠）。
 
 ### <a name="the-token-is-expired"></a>令牌已过期
 
@@ -151,7 +151,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 此外，大多数访问策略不需要按门户中所示使用“已授权的应用程序”。 已授权的应用程序用于“代理”身份验证方案，而这种方案极少出现。 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429：请求太多
+## <a name="http-429-too-many-requests"></a>HTTP 429：请求过多
 
 当请求数超过时间范围规定的最大次数时，将发生限制。 如果发生限制，Key Vault 的响应将是 HTTP 429。 发出的不同类型的请求有规定的最大次数。 例如：创建 HSM 2048 位密钥的请求规定为每 10 秒最多 5 次，但所有其他 HSM 事务的限制为每 10 秒最多 1000 个请求。 因此，在确定限制的原因时，请务必了解所发出的调用类型。
 一般情况下，对 Key Vault 的请求数限制为每 10 秒 2000 个请求。 密钥操作除外，具体请参阅 [Key Vault 服务限制](service-limits.md)
@@ -161,10 +161,10 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 - 确定所请求资源是否存在模式并尝试在调用方应用程序中缓存这些模式，以此减少对 Key Vault 发出的请求数。 
 
-- 发生 Key Vault 限制时，调整请求代码以使用指数退避进行重试。 此算法在此处进行了说明：[如何限制应用](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- 发生 Key Vault 限制时，调整请求代码以使用指数退避进行重试。 以下文章解释了算法：[如何限制应用](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
 - 如果通过缓存无法减少请求数，并且计时退避不起作用，请考虑将密钥拆分到多个 Key Vault 中。 单个订阅的服务限制是单个 Key Vault 限制的 5 倍。 如果使用 5 个以上的 Key Vault，应考虑使用多个订阅。 
 
-可在此处找到包含增加限制的请求的详细指南： [Key Vault 限制指南](overview-throttling.md)
+可在以下文章中找到详细的指导，包括如何请求提高限制：[Azure Key Vault 限制指南](overview-throttling.md)
 
 

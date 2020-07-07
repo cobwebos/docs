@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81417179"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure 数据工厂中的 ForEach 活动
@@ -75,7 +75,7 @@ ForEach 活动在管道中定义重复的控制流。 此活动用于循环访�
 name | For-Each 活动的名称。 | String | 是
 type | 必须设置为 **ForEach** | String | 是
 isSequential | 指定是否应按顺序或并行执行循环。  一次最多可以并行执行 20 个循环迭代。 例如，如果你有 ForEach 活动，在 **isSequential** 设置为 False 的情况下循环访问含有 10 个不同源和接收器数据集的复制活动，所有副本都执行一次。 默认值为 False。 <br/><br/> 如果“isSequential”被设置为 False，则确保有运行多个可执行文件的正确配置。 否则，应谨慎使用此属性，以避免产生写入冲突。 有关详细信息，请参阅[并行执行](#parallel-execution)部分。 | 布尔 | 否。 默认值为 False。
-batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 这是上限并发限制，但每个活动不会始终在此数字执行 | 整数（最大值为 50） | 不能。 默认值为 20。
+batchCount | 要用于控制并行执行数的批计数（当 isSequential 设为 false 时）。 这是并发数上限，但 for-each 活动不会始终按此数量执行 | 整数（最大值为 50） | 否。 默认值为 20。
 Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回 JSON 数组） | 是
 活动 | 要执行的活动。 | 活动列表 | 是
 
@@ -86,7 +86,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 在 ForEach 活动中，为属性 **items** 提供要循环访问的数组。 使用 `@item()` 循环访问 ForEach 活动中的单个枚举。 例如，如果 **items** 是数组：[1, 2, 3]，则 `@item()` 在第一次迭代中返回 1，在第二次迭代中返回 2，在第三次迭代中返回 3。
 
 ## <a name="iterating-over-a-single-activity"></a>循环访问单个活动
-**方案：** 将 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
+**场景：** 从 Azure Blob 中的同一源文件复制到 Azure Blob 中的多个目标文件。
 
 ### <a name="pipeline-definition"></a>管道定义
 
@@ -238,7 +238,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 ```
 
 ### <a name="example"></a>示例
-**方案：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
+**场景：** 在包含执行管道活动的 ForEach 活动中循环访问 InnerPipeline。 内部管道使用参数化的架构定义进行复制。
 
 #### <a name="master-pipeline-definition"></a>主管道定义
 
@@ -475,9 +475,9 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 
 ## <a name="aggregating-outputs"></a>聚合输出
 
-若要聚合__foreach__活动的输出，请使用_变量_并_追加变量_活动。
+若要聚合 foreach  活动的输出，请使用 Variables  和 Append Variable  活动。
 
-首先，在管道中声明  变量`array` __。 然后，在每个 foreach____ 循环内调用追加变量__ 活动。 随后，你可以从数组中检索聚合。
+首先，在管道中声明 `array` 变量  。 然后，在每个 foreach  循环内调用追加变量  活动。 随后，你可以从数组中检索聚合。
 
 ## <a name="limitations-and-workarounds"></a>限制和解决方法
 
@@ -492,7 +492,7 @@ Items | 返回要循环访问的 JSON 数组的表达式。 | 表达式（返回
 ## <a name="next-steps"></a>后续步骤
 查看数据工厂支持的其他控制流活动： 
 
-- [执行管道活动](control-flow-execute-pipeline-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)

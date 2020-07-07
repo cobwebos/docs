@@ -4,10 +4,10 @@ description: 了解基于代理的 VMWare 迁移的 Azure Migrate 复制设备�
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81535207"
 ---
 # <a name="replication-appliance"></a>复制设备
@@ -26,7 +26,7 @@ ms.locfileid: "81535207"
 
 ## <a name="appliance-deployment"></a>设备部署
 
-**用途** | **详细信息**
+**用于** | **详细信息**
 --- |  ---
 **基于 VMware VM 代理的迁移** | 从 Azure Migrate 中心下载 .OVA 模板，并导入到 vCenter Server 以创建设备 VM。
 **基于物理计算机代理的迁移** | 如果没有 VMware 基础结构，或者无法使用 .OVA 模板创建 VMware VM，请从 Azure Migrate 集线器下载软件安装程序，并运行它以设置设备计算机。
@@ -38,7 +38,7 @@ ms.locfileid: "81535207"
 
 当使用 Azure Migrate 中心提供的 .OVA 模板设置复制设备时，设备将运行 Windows Server 2016 并符合支持要求。 如果在物理服务器上手动设置复制设备，请确保它符合要求。
 
-组件  | **要求**
+**组件** | **要求**
 --- | ---
  | **VMware VM 设备**
 PowerCLI | 如果复制设备在 VMware VM 上运行，则应安装[PowerCLI 版本 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) 。
@@ -51,15 +51,15 @@ RAM | 16 GB
 可用磁盘空间（保留磁盘） | 600 GB
 **软件设置** |
 操作系统 | Windows Server 2016 或 Windows Server 2012 R2
-许可 | 该设备附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。<br/><br/> 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
-操作系统区域设置 | 美国英语
+许可证 | 该设备附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。<br/><br/> 如果评估期临近过期，建议下载并部署新设备，或者激活设备 VM 的操作系统许可证。
+操作系统区域设置 | 英语 (en-us)
 TLS | 应启用 TLS 1.2。
-.NET Framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
+.NET framework | 应在计算机上安装 .NET Framework 4.6 或更高版本（启用了强密码。
 MySQL | MySQL 应安装在设备上。<br/> 应安装 MySQL。 可以手动安装，也可以在设备部署期间安装 Site Recovery。
 其他应用 | 请勿在复制设备上运行其他应用。
 Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V
 组策略 | 请勿启用以下组策略： <br> - 阻止访问命令提示符。 <br> - 阻止访问注册表编辑工具。 <br> - 信任文件附件的逻辑。 <br> - 打开脚本执行。 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在的网站/应用程序侦听 <br>- 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -启用[FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)设置
+IIS | - 无预先存在的默认网站 <br> - 端口 443 上没有预先存在的网站/应用程序侦听 <br>- 启用[匿名身份验证](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 启用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 设置
 **网络设置** |
 IP 地址类型 | 静态
 端口 | 443（控制通道协调）<br>9443（数据传输）
@@ -88,7 +88,7 @@ NIC 类型 | VMXNET3
 https:\//management.azure.com | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | 设备安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https： \/ /login.live.com <br/> https： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> https： \/ /www.live.com <br/> https： \/ /www.microsoft.com  | 设备安装程序需要对这些 Url 的访问权限。 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在少数几个区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也是允许的。
 
 
@@ -105,28 +105,28 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 https:\//management.usgovcloudapi.net | 用于复制管理操作和协调
 *.services.visualstudio.com | 用于遥测数据（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https：\//login.live.com <br/> https：\//graph.windows.net <br/> https:\//login.windows.net <br/> https：\//www.live.com <br/> https：\//www.microsoft.com  | 具有 .OVA 的设备设置需要访问这些 Url。 它们用于 Azure Active Directory 的访问控制和标识管理。
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https： \/ /login.live.com <br/> https： \/ /graph.windows.net <br/> https:\//login.windows.net <br/> https： \/ /www.live.com <br/> https： \/ /www.microsoft.com  | 具有 .OVA 的设备设置需要访问这些 Url。 它们用于 Azure Active Directory 的访问控制和标识管理。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在少数几个区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保 CDN URL 也是允许的。
 
 ## <a name="port-access"></a>端口访问
 
-**设备** | **连接**
+**设备** | **Connection**
 --- | ---
 VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站上的本地复制设备（配置服务器）进行通信。<br/><br/> VM 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在配置服务器计算机上运行）。 可以修改此端口。
 复制设备 | 复制设备通过端口 HTTPS 443 出站来协调与 Azure 的复制。
-进程服务器 | 进程服务器接收复制数据，对其进行优化并对其进行加密，并通过端口443出站发送到 Azure 存储。<br/> 默认情况下，进程服务器在复制设备上运行。
+进程服务器 | 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。<br/> 默认情况下，进程服务器在复制设备上运行。
 
 
 ## <a name="replication-process"></a>复制过程
 
-1. 启用 VM 复制时，对 Azure 存储的初始复制将开始（使用指定复制策略）。 
+1. 为某台 VM 启用复制时，将使用指定的复制策略开始到 Azure 存储的初始复制。 
 2. 流量通过 Internet 复制到 Azure 存储公共终结点。 不支持通过站点到站点虚拟专用网络 (VPN) 将流量从本地站点复制到 Azure。
 3. 初始复制完成后，增量复制将会开始。 已记录对计算机所做的更改。
 4. 通信按如下方式发生：
     - Vm 与用于复制管理的端口 HTTPS 443 入站上的复制设备通信。
     - 复制设备通过端口 HTTPS 443 出站来协调与 Azure 的复制。
     - Vm 将复制数据发送到 HTTPS 9443 入站端口上的进程服务器（在复制设备上运行）。 可以修改此端口。
-    - 进程服务器接收复制数据，对其进行优化并对其进行加密，并通过端口443出站发送到 Azure 存储。
+    - 进程服务器接收复制数据、优化和加密数据，然后通过 443 出站端口将其发送到 Azure 存储。
 5. 复制数据首先登陆 Azure 中的缓存存储帐户。 将处理这些日志，并将数据存储在 Azure 托管磁盘中。
 
 ![体系结构](./media/migrate-replication-appliance/architecture.png)
