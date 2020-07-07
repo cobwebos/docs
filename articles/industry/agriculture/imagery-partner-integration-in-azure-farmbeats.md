@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613279"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
@@ -39,15 +39,15 @@ FarmBeats 提供以下功能：
 
 ## <a name="api-development"></a>API 开发
 
-Api 包含 Swagger 技术文档。 有关 Api 和相应的请求或响应的信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+API 包含 Swagger 技术文档。 有关 Api 和相应的请求或响应的信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 ## <a name="authentication"></a>身份验证
 
-FarmBeats 使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。 Azure App Service 提供内置身份验证和授权支持。 
+FarmBeats 使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) （Azure AD）。  Azure 应用服务提供内置的身份验证和授权支持。 
 
 有关 Azure AD 的详细信息，请参阅 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
 
-FarmBeats Datahub 使用持有者身份验证，需要以下凭据：
+FarmBeats 数据中心使用持有者身份验证，该验证方法需要以下凭据：
 
 - 客户端 ID
 - 客户端机密
@@ -87,13 +87,13 @@ access_token = token_response.get('access_token')
 
 ## <a name="http-request-headers"></a>HTTP 请求标头
 
-下面是在对 FarmBeats Datahub 进行 API 调用时需要指定的最常见请求标头。
+下面是在对 FarmBeats 数据中心进行 API 调用时需要指定的最常见请求标头。
 
 **标头** | **说明和示例**
 --- | ---
-Content-Type  | 请求格式（Content-type： application/<format>）。 对于 FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
-授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 <访问令牌>
-Accept  | 响应格式。 对于 FarmBeats Datahub Api，格式为 JSON。 接受： application/json
+Content-Type  | 请求格式 (Content-Type: application/<format>)。 对于 FarmBeats 数据中心 API，格式为 JSON。 Content-Type: application/json
+授权 | 指定进行 API 调用所需的访问令牌。 Authorization:持有者 <Access-Token>
+Accept  | 响应格式。 对于 FarmBeats 数据中心 API，格式为 JSON。 Accept: application/json
 
 
 ## <a name="api-requests"></a>API 请求
@@ -105,7 +105,7 @@ Accept  | 响应格式。 对于 FarmBeats Datahub Api，格式为 JSON。 接�
 - 用于查询、提交数据、更新或删除的资源 URI。
 - 一个或多个 HTTP 请求标头。
 
-或者，您可以在 GET 调用中包含查询参数以筛选、限制的大小，并对响应中的数据进行排序。
+或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
 
 下面的示例请求是获取设备的列表：
 
@@ -117,7 +117,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 大多数 GET、POST 和 PUT 调用都需要 JSON 请求正文。
 
-下面的示例请求是创建设备。 此示例包含一个带有请求正文的输入 JSON。
+下面的示例请求是要创建设备。 此示例包含一个带有请求正文的输入 JSON。
 
 
 ```bash
@@ -130,7 +130,7 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>数据格式
 
-JSON 是一种与语言无关的公共数据格式，提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON org](https://JSON.org)。
+JSON 是一种与语言无关的常见数据格式，该格式提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON org](https://JSON.org)。
 
 ## <a name="ingest-imagery-into-farmbeats"></a>将图像引入 FarmBeats
 

@@ -15,10 +15,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 8fbe8e0cbf2768af973a0ccc9e237fb770b27a74
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612293"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 身份验证可通过 .NET 访问 Azure 媒体服务 API
@@ -138,7 +138,7 @@ ms.locfileid: "82612293"
 
 客户端 ID  和客户端密码  参数的值都可以在 Azure 门户中找到。 有关详细信息，请参阅[使用 Azure 门户进行 Azure AD 身份验证入门](media-services-portal-get-started-with-aad.md)。
 
-以下代码示例使用将 AzureAdClientSymmetricKey  作为参数的 AzureAdTokenCredentials  构造函数创建令牌：
+以下代码示例使用将 AzureAdClientSymmetricKey 作为参数的 AzureAdTokenCredentials 构造函数创建令牌：
 
     var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
                                 new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
@@ -146,7 +146,7 @@ ms.locfileid: "82612293"
 
     var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
-你还可以指定将 AzureAdClientCertificate  作为参数的 AzureAdTokenCredentials  构造函数。
+你还可以指定将 AzureAdClientCertificate 作为参数的 AzureAdTokenCredentials 构造函数。
 
 有关如何在表单中创建和配置可由 Azure AD 使用的证书的说明，请参阅[使用证书在守护程序应用中对 Azure AD 进行身份验证 - 手动配置步骤](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)。
 

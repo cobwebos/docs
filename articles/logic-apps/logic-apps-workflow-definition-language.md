@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611409"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用指南
@@ -57,7 +57,7 @@ ms.locfileid: "82611409"
 
 ## <a name="parameters"></a>parameters
 
-部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 将逻辑应用部署到各种环境时，你可能需要根据你的部署需求来使用不同的值，例如连接字符串。 或者，可能需要在不硬编码或经常发生更改的情况下，在整个逻辑应用中重复使用这些值。 在工作流定义的`parameters`节中，可以定义或编辑逻辑应用在运行时使用的值的参数。 在工作流定义中的其他位置引用这些参数之前，必须先定义这些参数。
+部署生命周期通常有用于开发、测试、过渡和生产的不同环境。 将逻辑应用部署到各种环境时，你可能需要根据你的部署需求来使用不同的值，例如连接字符串。 或者，可能需要在不硬编码或经常发生更改的情况下，在整个逻辑应用中重复使用这些值。 在工作流定义的 `parameters` 节中，可以定义或编辑逻辑应用在运行时使用的值的参数。 在工作流定义中的其他位置引用这些参数之前，必须先定义这些参数。
 
 下面是参数定义的一般结构：
 
@@ -74,10 +74,10 @@ ms.locfileid: "82611409"
 },
 ```
 
-| 特性 | 必须 | 类型 | 说明 |
+| Attribute | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | <*参数-名称*> | 是 | String | 要定义的参数的名称 |
-| <*参数类型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用`securestring`或`secureobject`类型，因为`GET`操作不返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
+| <*参数类型*> | 是 | int、float、string、bool、array、object、securestring、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 或 `secureobject` 类型，因为 `GET` 操作不返回这些类型。 若要详细了解如何保护参数，请参阅[操作和输入参数的安全建议](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)。 | 参数的类型 |
 | <*默认值-参数-值*> | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值。 `defaultValue` 属性是逻辑应用设计器正确显示参数所必需的，但是你可以指定空值。 |
 | <*数组-允许-参数-值*> | 否 | Array | 包含参数可接受的值的数组 |
 | <*参数-说明*> | 否 | JSON 对象 | 任何其他的参数详细信息，例如参数的说明 |
@@ -112,10 +112,10 @@ ms.locfileid: "82611409"
 }
 ```
 
-| 特性 | 必须 | 类型 | 说明 |
+| Attribute | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | <*静态结果定义-名称*> | 是 | String | 操作定义可通过 `runtimeConfiguration.staticResult` 对象引用的静态结果定义的名称。 有关详细信息，请参阅[运行时配置设置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options)。 <p>可以使用所需的任意唯一名称。 默认情况下，此唯一名称的后面会追加一个按需递增的数字。 |
-| <*output-返回的特性和值*> | 是 | 不定 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
+| <*output-返回的特性和值*> | 是 | 多种多样 | 这些特性的要求因条件不同而异。 例如，如果 `status` 为 `Succeeded`，则 `outputs` 特性包含操作作为模拟输出返回的特性和值。 如果 `status` 为 `Failed`，则 `outputs` 特性包含 `errors` 特性，即提供错误信息的一个或多个错误 `message` 对象的数组。 |
 | <*标头值*> | 否 | JSON | 操作返回的任何标头值 |
 | <*返回状态代码*> | 是 | String | 操作返回的状态代码 |
 | <*操作-状态*> | 是 | String | 操作的状态，例如 `Succeeded` 或 `Failed` |
@@ -257,7 +257,7 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 
 <a name="outputs"></a>
 
-## <a name="outputs"></a>Outputs
+## <a name="outputs"></a>输出
 
 在 `outputs` 节中，定义工作流在完成运行时可以返回的数据。 例如，若要跟踪每次运行的特定状态或值，请指定工作流输出应返回该数据。
 
@@ -275,11 +275,11 @@ HTTP 操作在 `staticResults` 内的 `HTTP0` 定义中返回输出。 在此示
 }
 ```
 
-| 特性 | 必须 | 类型 | 说明 |
+| Attribute | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
 | <*项名称*> | 是 | String | 输出返回值的密钥名称 |
 | <*键类型*> | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
-| <*键-值*> | 是 | 与 <*键类型*相同> | 输出返回值 |
+| <*key-value*> | 是 | 与 <*键类型*相同> | 输出返回值 |
 |||||
 
 若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。

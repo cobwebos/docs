@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight 中群集节点的磁盘空间不足
-description: 排查 Azure HDInsight 中 Apache Hadoop 群集节点磁盘空间问题。
+description: 排查 Azure HDInsight 中的 Apache Hadoop 群集节点磁盘空间问题。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82628531"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>方案：Azure HDInsight 中群集节点的磁盘空间不足
@@ -36,17 +36,17 @@ Apache Yarn 应用程序缓存可能占用了所有可用磁盘空间。 Spark �
 
 1. 若要缓解此问题，请终止应用程序，以释放该应用程序使用的磁盘空间。
 
-1. 如果此问题在工作节点上频繁发生，则可以优化群集上的 YARN 本地缓存设置。
+1. 如果此问题在工作器节点上频繁发生，则可以调整群集上的 YARN 本地缓存设置。
 
-    打开 Ambari UI 导航到 YARN--> 配置--> Advanced。  
-    将以下2个属性添加到 "自定义 yarn-site.xml" 部分，并保存：
+    打开 Ambari UI 并导航到 YARN -> 配置 -> 高级。  
+    将以下 2 个属性添加到自定义 yarn-site.xml 部分并进行保存：
 
     ```
     yarn.nodemanager.localizer.cache.target-size-mb=2048
     yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
     ```
 
-1. 如果上述不能永久修复此问题，请优化你的应用程序。
+1. 如果上述方法不能永久解决该问题，请优化应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -54,6 +54,6 @@ Apache Yarn 应用程序缓存可能占用了所有可用磁盘空间。 Spark �
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 与[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户联系，通过将 Azure 社区连接到适当的资源来改进客户体验：答案、支持和专家。
+* 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区与适当的资源（解答、支持人员和专家）相关联来改善客户体验。
 
-* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。
+* 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 在 Microsoft Azure 订阅中可以访问订阅管理和计费支持；通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

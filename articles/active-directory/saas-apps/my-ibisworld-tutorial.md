@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c2f74b8f8ed19fd73b67fdd0465cce81f89321
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: c9ed9dd75f7119268c2d5971e05704e5a4eca4a0
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735912"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798193"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>教程：Azure Active Directory 单一登录 (SSO) 与 My IBISWorld 的集成
 
@@ -96,14 +96,14 @@ ms.locfileid: "82735912"
 
 1. 除上述属性以外，My IBISWorld 应用程序还要求在 SAML 响应中传回其他几个属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 |   |  源属性|
-    | ---------------| --------------- | --------- |
-    | department |  | user.department |
-    | 语言 |  | user.preferredlanguage |
-    | phone |  | user.telephonenumber |
-    | title |  | user.jobtitle |
-    | userid |  | user.employeeid |
-    | country |  | user.country |
+    | 名称 | 源属性|
+    | --------------- | --------- |
+    | department | user.department |
+    | 语言 | user.preferredlanguage |
+    | phone | user.telephonenumber |
+    | title | user.jobtitle |
+    | userid | user.employeeid |
+    | country | user.country |
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 

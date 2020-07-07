@@ -1,5 +1,5 @@
 ---
-title: 混合 Azure Active Directory 联接设备的故障排除
+title: 排查已加入混合 Azure Active Directory 的设备的问题
 description: 排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题。
 services: active-directory
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82611307"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>排查已加入混合 Azure Active Directory 的设备的问题
 
 本文内容适用于运行 Windows 10 或 Windows Server 2016 的设备。
 
@@ -29,7 +29,7 @@ ms.locfileid: "82611307"
 
 - 基于设备的条件访问
 - [企业设置漫游](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello 企业版](../active-directory-azureadjoin-passport-deployment.md)
+- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
 
 本文档提供了用于解决潜在问题的故障排除指导。
 
@@ -132,7 +132,7 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志** > **Microsoft** > **Windows** > **用户设备注册**下
+1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 在以下应对警报304、305、307中查找事件。
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/1.png)
@@ -156,10 +156,10 @@ WamDefaultAuthority: organizations
    - 设备所属的 AD 林中需要有效的 SCP 对象，这些对象指向 Azure AD 中的已验证域名。
    - 详细信息可在[配置服务连接点](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)部分找到。
 - 未能连接并从发现终结点提取发现元数据。
-   - 设备应该能够在系统上下文中`https://enterpriseregistration.windows.net`访问，以便发现注册和授权终结点。
+   - 设备应该能够 `https://enterpriseregistration.windows.net` 在系统上下文中访问，以便发现注册和授权终结点。
    - 如果本地环境需要出站代理，则 IT 管理员必须确保设备的计算机帐户能够发现并以无提示方式向出站代理进行身份验证。
 - 未能连接到用户领域终结点并执行领域发现。 （仅限 Windows 10 版本1809及更高版本）
-   - 设备应该能够在系统上下文中`https://login.microsoftonline.com`访问，以执行已验证域的领域发现，并确定域类型（托管/联合）。
+   - 设备应该能够 `https://login.microsoftonline.com` 在系统上下文中访问，以执行已验证域的领域发现，并确定域类型（托管/联合）。
    - 如果本地环境需要出站代理，则 IT 管理员必须确保设备上的系统上下文能够发现并在出站代理上以无提示方式进行身份验证。
 
 **常见错误代码：**
@@ -172,7 +172,7 @@ WamDefaultAuthority: organizations
    - 解决方法：查找下面的 suberror 以进行进一步调查。
 - **DSREG_AUTOJOIN_DISC_WAIT_TIMEOUT** （0x801c001f/-2145648609）
    - 原因：执行发现时操作超时。
-   - 解决方法：确保`https://enterpriseregistration.windows.net`在系统上下文中可访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)部分。
+   - 解决方法：确保 `https://enterpriseregistration.windows.net` 在系统上下文中可访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)部分。
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** （0x801c0021/-2145648611）
    - 原因：通用领域发现失败。 无法从 STS 确定域类型（托管/联合）。
    - 解决方法：查找下面的 suberror 以进行进一步调查。
@@ -207,7 +207,7 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志** > **Microsoft** > **Windows** > **用户设备注册**下
+1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 查找包含以下应对警报201的事件
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/5.png)
@@ -252,7 +252,7 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找错误代码、suberror 代码、服务器错误代码和服务器错误消息。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志** > **Microsoft** > **Windows** > **用户设备注册**下
+1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 查找具有以下 eventID 305 的事件
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/3.png)
@@ -273,7 +273,7 @@ WamDefaultAuthority: organizations
 
 - **ERROR_ADAL_INTERNET_TIMEOUT** （0xcaa82ee2/-894947614）
    - 原因：常规网络超时。
-   - 解决方法：确保`https://login.microsoftonline.com`在系统上下文中可访问。 确保本地标识提供程序可在系统上下文中访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
+   - 解决方法：确保 `https://login.microsoftonline.com` 在系统上下文中可访问。 确保本地标识提供程序可在系统上下文中访问。 有关详细信息，请参阅[网络连接要求](hybrid-azuread-join-managed-domains.md#prerequisites)。
 - **ERROR_ADAL_INTERNET_CONNECTION_ABORTED** （0xcaa82efe/-894947586）
    - 原因：与身份验证终结点的连接已中止。
    - 解决方法：在一段时间后重试，或者尝试从另一个稳定的网络位置进行联接。
@@ -281,8 +281,8 @@ WamDefaultAuthority: organizations
    - 原因：传输层安全性（TLS）以前称为安全套接字层（SSL），无法验证服务器发送的证书。
    - 解决方法：检查客户端时间偏差。 请在一段时间后重试，或者尝试从备用的稳定网络位置进行联接。
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** （0xcaa82efd/-894947587）
-   - 原因：尝试连接到`https://login.microsoftonline.com`失败。
-   - 解决方法：检查与`https://login.microsoftonline.com`之间的网络连接。
+   - 原因：尝试连接到 `https://login.microsoftonline.com` 失败。
+   - 解决方法：检查与之间的网络连接 `https://login.microsoftonline.com` 。
 
 ##### <a name="other-errors"></a>其他错误
 
@@ -327,7 +327,7 @@ WamDefaultAuthority: organizations
 
 使用事件查看器日志来查找联接失败的阶段和错误代码。
 
-1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志** > **Microsoft** > **Windows** > **用户设备注册**下
+1. 在事件查看器中打开 "**用户设备注册**" 事件日志。 位于**应用程序和服务日志**  >  **Microsoft**  >  **Windows**  >  **用户设备注册**下
 2. 查找包含以下应对警报204的事件
 
 ![故障日志事件](./media/troubleshoot-hybrid-join-windows-current/4.png)
@@ -363,10 +363,10 @@ WamDefaultAuthority: organizations
 
 - **WININET_E_TIMEOUT** （0x80072ee2/-2147012894）
    - 原因：常规网络超时尝试在 DRS 上注册设备
-   - 解决方法：检查与`https://enterpriseregistration.windows.net`之间的网络连接。
+   - 解决方法：检查与之间的网络连接 `https://enterpriseregistration.windows.net` 。
 - **WININET_E_NAME_NOT_RESOLVED** （0x80072ee7/-2147012889）
    - 原因：无法解析服务器名称或地址。
-   - 解决方法：检查与`https://enterpriseregistration.windows.net`之间的网络连接。 确保主机名的 DNS 解析在 n/w 和设备上是准确的。
+   - 解决方法：检查与之间的网络连接 `https://enterpriseregistration.windows.net` 。 确保主机名的 DNS 解析在 n/w 和设备上是准确的。
 - **WININET_E_CONNECTION_ABORTED** （0x80072efe/-2147012866）
    - 原因：与服务器的连接已异常终止。
    - 解决方法：在一段时间后重试，或者尝试从另一个稳定的网络位置进行联接。
@@ -381,18 +381,18 @@ WamDefaultAuthority: organizations
 
 | 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
 | --- | --- | --- | --- |
-| 目录错误 | AADSTS90002：找<UUID>不到租户。 如果租户没有活动的订阅，则可能发生此错误。 请咨询订阅管理员。 | SCP 对象中的租户 ID 不正确 | 请确保 SCP 对象配置了正确的 Azure AD 租户 ID 和活动订阅，并存在于租户中。 |
+| 目录错误 | AADSTS90002： <UUID> 找不到租户。 如果租户没有活动的订阅，则可能发生此错误。 请咨询订阅管理员。 | SCP 对象中的租户 ID 不正确 | 请确保 SCP 对象配置了正确的 Azure AD 租户 ID 和活动订阅，并存在于租户中。 |
 | 目录错误 | 找不到具有给定 ID 的设备对象。 | 需要同步联接的错误。 设备对象尚未从 AD 同步到 Azure AD | 等待 Azure AD Connect 同步完成，同步完成后的下一次加入尝试将解决此问题 |
 | AuthenticationError | 验证目标计算机的 SID | Azure AD 设备上的证书与在同步联接期间用于对 blob 进行签名的证书不匹配。 此错误通常表示同步尚未完成。 |  等待 Azure AD Connect 同步完成，同步完成后的下一次加入尝试将解决此问题 |
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步骤5：收集日志并联系 Microsoft 支持部门
 
-从下载文件身份验证 .zip[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+从下载文件 Auth.zip[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. 解压缩文件并将包含文件**start-auth**和**stop-auth**重命名为**start-auth**和**stop-auth**。
+1. 解压缩文件并将包含的**stop-auth.txt** **start-auth.txt**文件重命名为 " **start-auth** " 和 " **stop-auth**"。
 1. 在提升的命令提示符下，运行**start-auth**。
 1. 使用交换机帐户切换到有问题用户的其他会话。
-1. 重现此问题。
+1. 重现问题。
 1. 使用交换机帐户切换回运行跟踪的管理会话。
 1. 在提升的命令提示符下，运行**stop-auth**。
 1. Zip，并从执行脚本的文件夹**Authlogs**发送文件夹。

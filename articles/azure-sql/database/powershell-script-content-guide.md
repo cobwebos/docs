@@ -2,7 +2,7 @@
 title: Azure PowerShell 脚本示例
 description: 使用 Azure PowerShell 脚本示例，有助于创建和管理 Azure SQL 数据库和 Azure SQL 托管实例资源。
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: development
 ms.custom: sqldbrb=2
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: cb8abf563834e23472589cd65bfe4196131d0138
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 77220fabc78dd10b4299219ef84c1f6eb32ba82e
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718540"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987276"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database 和 Azure SQL 托管实例的 Azure PowerShell 示例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL 数据库和 Azure SQL 托管实例允许使用 Azure PowerShell 配�
 
 下表包括了适用于 Azure SQL 数据库的示例 Azure PowerShell 脚本的链接。
 
-| |  |
+|链接|说明|
 |---|---|
 |创建并配置单一数据库和弹性池||
 | [创建单一数据库并配置服务器级防火墙规则](scripts/create-and-configure-database-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 此 PowerShell 脚本创建单一数据库，并配置服务器级 IP 防火墙规则。 |
@@ -64,7 +64,7 @@ Azure SQL 数据库和 Azure SQL 托管实例允许使用 Azure PowerShell 配�
 
 下表包括了适用于 Azure SQL 托管实例的示例 Azure PowerShell 脚本的链接。
 
-| |  |
+|链接|说明|
 |---|---|
 |**创建和配置托管实例**||
 | [创建和管理托管实例](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | 此 PowerShell 脚本演示如何使用 Azure PowerShell 创建和管理托管实例。 |

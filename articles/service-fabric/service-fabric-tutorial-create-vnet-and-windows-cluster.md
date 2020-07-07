@@ -4,12 +4,12 @@ description: 本教程介绍如何通过使用 PowerShell 将 Windows Service Fa
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756034"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85611656"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>教程：将运行 Windows 的 Service Fabric 群集部署到 Azure 虚拟网络
 
@@ -48,7 +48,7 @@ ms.locfileid: "80756034"
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安装 [Service Fabric SDK 和 PowerShell 模块](service-fabric-get-started.md)。
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+* 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 * 回顾 [Azure 群集](service-fabric-azure-clusters-overview.md)的关键概念。
 * 为生产群集部署[计划并准备](service-fabric-cluster-azure-deployment-preparation.md)。
 
@@ -73,14 +73,14 @@ ms.locfileid: "80756034"
 * 证书保护（可在模板参数中配置）。
 * 已启用[反向代理](service-fabric-reverseproxy.md)。
 * 已启用 [DNS 服务](service-fabric-dnsservice.md)。
-* 铜级[持久性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)（可在模板参数中配置）。
-* 银级[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)（可在模板参数中配置）。
+* 铜级[持久性级别](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)（可在模板参数中配置）。
+* 银级[可靠性级别](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)（可在模板参数中配置）。
 * 客户端连接终结点：19000（可在模板参数中配置）。
 * HTTP 网关终结点：19080（可在模板参数中配置）。
 
 ### <a name="azure-load-balancer"></a>Azure 负载均衡器
 
-在 Microsoft.Network/loadBalancers  资源中配置负载均衡器。 为以下端口设置探测和规则：
+在 Microsoft.Network/loadBalancers 资源中配置负载均衡器。 为以下端口设置探测和规则：
 
 * 客户端连接终结点：19000
 * HTTP 网关终结点：19080
@@ -88,7 +88,7 @@ ms.locfileid: "80756034"
 * 应用程序端口：443
 * Service Fabric 反向代理：19081
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量   。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量 。
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>虚拟网络、子网和网络安全组
 
@@ -108,7 +108,7 @@ ms.locfileid: "80756034"
 * 应用程序端口范围：49152 到 65534（用于测试服务间的通信。 其他端口不会在负载平衡器上打开）。
 * 阻止其他所有端口
 
-如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量   。
+如需其他应用程序端口，则需要调整 Microsoft.Network/loadBalancers 资源和 Microsoft.Network/networkSecurityGroups 资源，以允许传入流量 。
 
 ### <a name="windows-defender"></a>Windows Defender
 默认情况下，[Windows Defender 防病毒程序](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)已安装在 Windows Server 2016 上并在其上运行。 用户界面默认安装在一些 SKU 上，但不是必需的。 对于在模板中声明的每个节点类型/VM 规模集，将会使用 [Azure VM 防病毒扩展](/azure/virtual-machines/extensions/iaas-antimalware-windows)排除 Service Fabric 目录和进程：
@@ -183,11 +183,11 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > 对于区域云（例如，Azure 政府、Azure 中国、Azure 德国），请指定 `-Location` 参数。
 
-可在 [Azure 门户](https://portal.azure.com)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值    。
+可在 [Azure 门户](https://portal.azure.com)中找到 *TenantId* 或目录 ID。 选择“Azure Active Directory” > “属性”并复制“目录 ID”值  。
 
-将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀  。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
+将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀。 无需完全匹配实际的群集名称。 只是为了操作更加简便，可将 Azure AD 项目映射到正在使用的 Service Fabric 群集。
 
-WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点  。 将此终结点设置为群集的 Service Fabric Explorer 的终结点，默认值为：
+WebApplicationReplyUrl 是 Azure AD 在完成登录过程之后返回给用户的默认终结点。 将此终结点设置为群集的 Service Fabric Explorer 的终结点，默认值为：
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -321,7 +321,7 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 }
 ```
 
-下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中    。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（群集中的每个节点类型对应一个规模集）。
+下一步，将 IaaSDiagnostics 扩展名添加到群集中每个 Microsoft.Compute/virtualMachineScaleSets 资源的 VirtualMachineProfile 属性的扩展数组中  。  如果使用的是[示例模板][template]，则有三个虚拟机规模集（群集中的每个节点类型对应一个规模集）。
 
 ```json
 "apiVersion": "2018-10-01",
@@ -401,7 +401,7 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 
 
 
-要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中   ：
+要在群集上启用 EventStore 服务，请将以下内容添加到 Microsoft.ServiceFabric/clusters 资源的 fabricSettings 属性中 ：
 
 ```json
 "apiVersion": "2018-02-01",
@@ -433,7 +433,7 @@ EventStore 服务是 Service Fabric 中的监视选项。 EventStore 提供了�
 
 要监视群集级别的事件，建议使用 Azure Monitor 日志。 要设置 Azure Monitor 日志来监视群集，需要[启用诊断功能以查看群集级别事件](#configure-diagnostics-collection-on-the-cluster)。  
 
-需要将工作区连接到来自群集的诊断数据。  此日志数据存储在 applicationDiagnosticsStorageAccountName 存储帐户、WADServiceFabric*EventTable、WADWindowsEventLogsTable 和 WADETWEventTable 表中  。
+需要将工作区连接到来自群集的诊断数据。  此日志数据存储在 applicationDiagnosticsStorageAccountName 存储帐户、WADServiceFabric*EventTable、WADWindowsEventLogsTable 和 WADETWEventTable 表中。
 
 添加 Azure Log Analytics 工作区并将解决方案添加到该工作区：
 

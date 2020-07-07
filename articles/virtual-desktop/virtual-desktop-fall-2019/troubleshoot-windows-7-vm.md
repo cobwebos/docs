@@ -9,16 +9,16 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82615274"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>排查 Windows 虚拟桌面中的 Windows 7 虚拟机问题
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的秋季2019版本。
+>本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
 
 本文介绍配置 Windows 虚拟桌面会话主机虚拟机（Vm）时遇到的问题。
 
@@ -46,7 +46,7 @@ Windows 虚拟桌面只能虚拟化 Windows 7 的整个桌面。
 1. 打开 Azure 门户。
 2. 选择出现错误消息的虚拟机。
 3. 选择 "**运行命令**"。
-4. 运行以下命令，并`<username>`将其替换为要添加的用户的名称：
+4. 运行以下命令，并将其 `<username>` 替换为要添加的用户的名称：
    
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add

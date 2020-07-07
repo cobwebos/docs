@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
 ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82625317"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
@@ -45,7 +45,7 @@ ms.locfileid: "82625317"
 
 创建[Azure 存储帐户、文件共享和目录](#prerequisites)后，现在可以通过 Azure 存储空间配置应用。
 
-若要在应用服务应用中将存储帐户装载到目录中，请使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 存储类型可以是 AzureBlob 或 AzureFiles。 本示例使用 AzureFiles。 装载路径设置对应于要从 Azure 存储装载的文件夹。 将其设置为 "/" 即可装入整个 Azure 存储。
+若要在应用服务应用中将存储帐户装载到目录中，请使用 [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 存储类型可以是 AzureBlob 或 AzureFiles。 本示例使用 AzureFiles。 装载路径设置对应于要从 Azure 存储装载的文件夹。 将其设置为 "/" 即可装入整个 Azure 存储。
 
 
 > [!CAUTION]
@@ -68,9 +68,9 @@ az webapp config storage-account list --resource-group <resource_group> --name <
 
 ## <a name="use-azure-storage-in-docker-compose"></a>在 Docker Compose 中使用 Azure 存储
 
-可以使用自定义 id 在多容器应用中装载 Azure 存储。若要查看自定义 id 名称，请[`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)运行。
+可以使用自定义 id 在多容器应用中装载 Azure 存储。若要查看自定义 id 名称，请运行 [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) 。
 
-在*docker-compose.yml*文件中，将`volumes`选项映射到。 `custom-id` 例如：
+在*docker-compose.yml*文件中，将 `volumes` 选项映射到 `custom-id` 。 例如：
 
 ```yaml
 wordpress:

@@ -1,23 +1,23 @@
 ---
-title: 有关 Gremlin API 的常见问题 Azure Cosmos DB
-description: 获取有关 Gremlin API 的常见问题的解答 Azure Cosmos DB
+title: 有关 Azure Cosmos DB 中 Gremlin API 的常见问题解答
+description: 获取有关 Azure Cosmos DB 中 Gremlin API 的常见问题的解答
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
 ms.openlocfilehash: 416cf4f027b6f1e72641324be39ba0304301db37
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82614494"
 ---
-# <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>有关 Gremlin API 的常见问题 Azure Cosmos DB
+# <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中 Gremlin API 的常见问题解答
 
-本文介绍 Azure Cosmos DB 中有关 Gremlin API 的一些常见问题的解答。
+本文介绍有关 Azure Cosmos DB 中 Gremlin API 的一些常见问题的解答。
 
-## <a name="how-to-evaluate-the-efficiency-of-gremlin-queries"></a>如何评估 Gremlin 查询的效率
+## <a name="how-to-evaluate-the-efficiency-of-gremlin-queries"></a>如何评估 Gremlin 查询的效率？
 
 **ExecutionProfile()** 预览步骤可用于提供查询执行计划的分析。 此步骤需要添加到任何 Gremlin 查询的末尾，如以下示例所示：
 
@@ -147,4 +147,4 @@ Fluent API 调用尚不受 Azure Cosmos DB Gremlin API 支持。 Fluent API 调�
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Cosmos DB Gremlin 线路协议支持](gremlin-support.md)
-* 使用[Gremlin 控制台](create-graph-gremlin-console.md)创建、查询和遍历 Azure Cosmos DB 图形数据库
+* 使用 [Gremlin 控制台](create-graph-gremlin-console.md)创建、查询和遍历 Azure Cosmos DB 图形数据库

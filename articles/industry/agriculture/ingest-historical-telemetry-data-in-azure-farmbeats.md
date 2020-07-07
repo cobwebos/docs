@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82613262"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
@@ -27,13 +27,13 @@ ms.locfileid: "82613262"
 
 需要启用与 Azure FarmBeats 实例的合作伙伴集成。 此步骤将创建一个客户端，该客户端可以访问作为设备伙伴的 Azure FarmBeats 实例，并提供后续步骤中所需的以下值：
 
-- API 终结点：这是 Datahub URL，例如 https://\<Datahub>. azurewebsites.net
+- API 终结点：这是 Datahub URL，例如 https:// \<datahub> . azurewebsites.net
 - 租户 ID
 - 客户端 ID
 - 客户端机密
 - EventHub 连接字符串
 
-请执行这些步骤：
+执行以下步骤：
 
 > [!NOTE]
 > 您必须是管理员才能执行以下步骤。
@@ -42,7 +42,7 @@ ms.locfileid: "82613262"
 
 2. **如果你使用的是 FarmBeats 版本1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤3。** 可以通过选择 FarmBeats UI 右上角的 "**设置**" 图标来检查 FarmBeats 版本。
 
-      a.  中转到**Azure Active Directory** > **应用注册**
+      a.  中转到**Azure Active Directory**  >  **应用注册**
 
       b. 选择在 FarmBeats 部署过程中创建的**应用注册**。 它的名称与你的 FarmBeats datahub 相同。
 
@@ -70,7 +70,7 @@ ms.locfileid: "82613262"
 
     ```
 
-7. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory** > **概述**"页获取。
+7. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
 
     ```azurepowershell-interactive 
 
@@ -91,25 +91,25 @@ ms.locfileid: "82613262"
  > 作为合作伙伴，你只需读取、创建和更新元数据;**删除选项限制为合作伙伴。**
 
 - /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
-- /**设备**：设备对应于在场上存在的物理设备。
+- /**Device**：Device 对应于存在于场上的物理设备。
 - /**SensorModel**： SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器测量，如环境温度和压力。
-- /**传感器**：传感器对应于记录值的物理传感器。 传感器通常连接到设备 ID 为的设备。
+- /**Sensor**：Sensor 对应于记录值的物理传感器。 传感器通常连接到具有设备 ID 的设备。
 
 
 |        DeviceModel   |  建议   |
 | ------- | -------             |
 |     类型（节点、网关）        |          设备节点或网关的类型      |
 |          制造商            |         制造商的名称    |
-|  ProductCode                    |  设备产品代码或型号名称。 例如，EnviroMonitor # 6800。  |
-|            端口          |     端口名称和类型，它是数字或模拟。
+|  ProductCode                    |  设备产品代码或模型名称或编号。 例如 EnviroMonitor#6800。  |
+|            端口          |     端口名称和类型（数字或模拟）。
 |     名称                 |  用于标识资源的名称。 例如，模型名称或产品名称。
-      说明     | 提供模型的有意义的说明。
+      说明     | 提供对模型的有意义说明。
 |    属性          |    制造商提供的其他属性。   |
 |    **设备**             |                      |
 |   DeviceModelId     |     关联的设备模型的 ID。  |
 |  HardwareId          | 设备的唯一 ID，如 MAC 地址。
-|  ReportingInterval        |   报告间隔（秒）。
-|  位置            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。
+|  ReportingInterval        |   以秒为单位的报告间隔。
+|  位置            |  设备纬度（-90 到 +90）、经度（-180 到 180）和海拔（以米为单位）。
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
 |    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。|
 |     说明       |      提供有意义的说明。 |
@@ -117,22 +117,22 @@ ms.locfileid: "82613262"
 |     **SensorModel**        |          |
 |       类型（模拟、数字）          |      传感器类型，无论是模拟还是数字。       |
 |          制造商            |       传感器的制造商。     |
-|     ProductCode| 产品代码或型号名称。 例如，RS-N01。 |
-|       SensorMeasures > 名称       | 传感器度量值的名称。 仅支持小写。 对于不同深度的度量，请指定深度。 例如，soil_moisture_15cm。 此名称必须与遥测数据一致。  |
+|     ProductCode| 产品代码或模型名称或编号。 例如 RS-CO2-N01。 |
+|       SensorMeasures > 名称       | 传感器度量值的名称。 仅支持小写。 对于不同深度的度量，请指定深度。 例如 soil_moisture_15cm。 此名称必须与遥测数据一致。  |
 |          SensorMeasures > 数据类型       |遥测数据类型。 目前支持 double。|
-|    SensorMeasures > 类型    |传感器遥测数据的度量类型。 系统定义的类型为 AmbientTemperature、CO2、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、压力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、、、、、、、、、、 若要添加更多，请参阅/ExtendedType API。|
-|        SensorMeasures > 单元              | 传感器遥测数据的单位。 系统定义的单位为 NoUnit，摄氏，华氏，开氏，Rankine，Pascal，水星，PSI，毫米，厘米、米、英寸、英尺、英里、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、学位、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、MilliLiter、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour、/ExtendedType、、、、、。|
+|    SensorMeasures > 类型    |传感器遥测数据的度量类型。 系统定义的类型为 AmbientTemperature、CO2、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、压力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、、、、、、、、、、 若要添加更多类型，请参阅 /ExtendedType API。|
+|        SensorMeasures > 单位              | 传感器遥测数据的单位。 系统定义的单位为 NoUnit，摄氏，华氏，开氏，Rankine，Pascal，水星，PSI，毫米，厘米、米、英寸、英尺、英里、KiloMeter、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、学位、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、MilliLiter、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour、/ExtendedType、、、、、。|
 |    SensorMeasures > AggregationType    |  值可以为 "无"、"平均值"、"最大值" 或 "StandardDeviation"。  |
 |          名称            | 用于标识资源的名称。 例如，模型名称或产品名称。  |
-|    说明        | 提供模型的有意义的说明。|
+|    说明        | 提供对模型的有意义说明。|
 |   属性       |  制造商提供的其他属性。|
 |    **传感器**      |          |
 | HardwareId          |   制造商设置的传感器的唯一 ID。|
-|  SensorModelId     |    关联的传感器型号的 ID。|
-| 位置          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
+|  SensorModelId     |    关联的传感器模型的 ID。|
+| 位置          |  传感器纬度（-90 到 +90）、经度（-180 到 180）和海拔（以米为单位）。|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。|
 |    DeviceID  |    传感器连接到的设备的 ID。 |
-| 名称            |   标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。|
+| 名称            |   用于标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。|
 |    说明      | 提供有意义的说明。|
 |    属性        |制造商提供的其他属性。|
 
@@ -140,7 +140,7 @@ ms.locfileid: "82613262"
 
 ### <a name="api-request-to-create-metadata"></a>用于创建元数据的 API 请求
 
-若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （https://\<yourdatahub>. azurewebsites.net）。
+若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （https:// \<yourdatahub> . azurewebsites.net）。
 
 ### <a name="authentication"></a>身份验证
 
@@ -322,7 +322,7 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 ```
 
 > [!NOTE]
-> Api 为创建的每个实例返回唯一 Id。 必须保留 Id 才能发送相应的遥测消息。
+> API 为创建的每个实例返回唯一 ID。 必须保留 Id 才能发送相应的遥测消息。
 
 ### <a name="send-telemetry"></a>发送遥测
 
@@ -330,7 +330,7 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 
 ### <a name="create-a-telemetry-client"></a>创建一个遥测客户端
 
-必须将遥测发送到 Azure 事件中心进行处理。 Azure 事件中心是一项服务，可用于从连接的设备和应用程序引入实时数据（遥测）。 若要将遥测数据发送到 FarmBeats，请创建将消息发送到 FarmBeats 中的事件中心的客户端。 有关发送遥测数据的详细信息，请参阅[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
+必须将遥测发送到 Azure 事件中心进行处理。 Azure 事件中心是一个服务，可用于从连接的设备和应用程序引入实时数据（遥测）。 若要将遥测数据发送到 FarmBeats，请创建一个客户端，将消息发送到 FarmBeats 中的事件中心。 有关发送遥测数据的详细信息，请参阅[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>将遥测消息作为客户端发送
 
@@ -421,13 +421,13 @@ write_client.stop()
 }
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
-### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>从传感器引入历史/流式传输数据后，无法查看遥测数据
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>从传感器引入历史/流数据后无法查看遥测数据
 
-**症状**：设备或传感器已部署，并且你已在 FarmBeats 和引入遥测上为 EventHub 创建了设备/传感器，但无法在 FarmBeats 上获取或查看遥测数据。
+**故障描述**：设备或传感器已部署，你已在 FarmBeats 上创建设备/传感器，并将遥测数据引入到 EventHub 中，但无法获取或查看 FarmBeats 上的遥测数据。
 
-**纠正操作**：
+**纠正措施**：
 
 1. 请确保已完成相应的合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照[此处的步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
 

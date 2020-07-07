@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80055440"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85798249"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教程：Log Analytics 查询入门
 
@@ -37,6 +37,7 @@ ms.locfileid: "80055440"
 如果使用 Azure Monitor 来收集至少一个 Azure 资源中的日志数据，则你也可以使用自己的环境。 若要打开 Log Analytics 工作区，请在 Azure Monitor 的左侧导航栏中选择“日志”。  
 
 ## <a name="understand-the-schema"></a>了解架构
+ 
 架构是分组到逻辑类别下的表集合。  “演示”架构包含监视解决方案中的多个类别。 例如，**LogManagement** 类别包含 Windows 和 Syslog 事件、性能数据与代理检测信号。
 
 架构表显示在 Log Analytics 工作区的“表”选项卡上。  该表包含列，每个列的数据类型按照列名旁边的图标显示。 例如，**Event** 表包含 **Computer** 之类的文本列，以及 **EventCategory** 之类的数字列。
@@ -50,6 +51,7 @@ Log Analytics 在打开时会在**查询编辑器**中显示一个新的空白�
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>编写查询
+
 Azure Monitor 日志查询使用某种版本的 Kusto 查询语言。 查询可以从表名或 [search](/azure/kusto/query/searchoperator) 命令开始。 
 
 以下查询检索 **Event** 表中的所有记录：
@@ -156,6 +158,7 @@ Event
 还可以使用 [render](/azure/kusto/query/renderoperator) 运算符在查询本身中设置首选视图。
 
 ## <a name="pin-results-to-a-dashboard"></a>将结果固定到仪表板
+
 若要将结果表或图表从 Log Analytics 固定到共享的 Azure 仪表板，请在顶部栏上选择“固定到仪表板”。  
 
 ![固定到仪表板](media/get-started-portal/pin-dashboard.png)
@@ -171,9 +174,11 @@ Event
 - 包含许多离散类别的图表会自动将填充内容不多的类别分组到单个“其他”箱中。 
 
 ## <a name="save-load-or-export-queries"></a>保存、加载或导出查询
+
 创建查询后，可以保存查询或结果，或者将其与他人共享。 
 
 ### <a name="save-queries"></a>保存查询
+
 若要保存查询：
 
 1. 在顶部栏上选择“保存”。 

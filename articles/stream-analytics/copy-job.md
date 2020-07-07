@@ -8,20 +8,20 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82612259"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>复制或备份 Azure 流分析作业
 
-可以使用 Visual Studio Code 或 Visual Studio 来复制或备份已部署的 Azure 流分析作业。 将作业复制到其他区域不会复制上次输出时间。 因此，在启动复制的作业时，不能使用 "[**上次停止时间**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options)" 选项。
+可以使用 Visual Studio Code 或 Visual Studio 来复制或备份已部署的 Azure 流分析作业。 将作业复制到其他区域时不会复制上次输出时间。 因此，在启动复制的作业时，不能使用[**上次停止时**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options)选项。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-* 登录 [Azure 门户](https://portal.azure.com/)。
+* 登录到 [Azure 门户](https://portal.azure.com/)。
 
 * 安装[适用于 Visual Studio Code 的 Azure 流分析扩展](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)或[适用于 Visual Studio 的 Azure 流分析工具](quick-create-vs-code.md#install-the-azure-stream-analytics-tools-extension)。  
 
@@ -53,4 +53,4 @@ ms.locfileid: "82612259"
 
 * [快速入门：使用 Visual Studio Code 创建流分析作业](quick-create-vs-code.md)
 * [快速入门：使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [使用 Azure 管道通过 CI/CD 部署 Azure 流分析作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
