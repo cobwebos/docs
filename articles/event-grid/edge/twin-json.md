@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992140"
 ---
 # <a name="module-twin-json-schema"></a>模块克隆 JSON 架构
@@ -21,13 +21,13 @@ ms.locfileid: "72992140"
 IoT Edge 上的事件网格与 IoT Edge 生态系统集成，并支持通过模块克隆创建主题和订阅。 它还将报告所有主题和事件订阅的当前状态报告给模块克隆上的报告属性。
 
 > [!WARNING]
-> 由于 IoT Edge 生态系统中的限制，以下 json 示例中的所有数组元素都编码为 json 字符串。 请`EventSubscription.Filter.EventTypes`参阅`EventSubscription.Filter.AdvancedFilters`以下示例中的和键。
+> 由于 IoT Edge 生态系统中的限制，以下 json 示例中的所有数组元素都编码为 json 字符串。 请 `EventSubscription.Filter.EventTypes` 参阅 `EventSubscription.Filter.AdvancedFilters` 以下示例中的和键。
 
 ## <a name="desired-properties-json"></a>所需属性 JSON
 
-* 在创建主题时，主题部分中每个键值对的值都具有与用于`Topic.Properties` API 的相同的 JSON 架构。
-* 在创建主题时， **EventSubscriptions**部分中每个键值对的值都具有与用于`EventSubscription.Properties` API 的相同的 json 架构。
-* 若要删除某个主题，请将其`null`值设置为所需的属性。
+* 在创建主题时，主题部分中每个键值对的值都具有与用于 API 的相同的 JSON 架构 `Topic.Properties` 。
+* 在创建主题时， **EventSubscriptions**部分中每个键值对的值都具有与用于 API 的相同的 json 架构 `EventSubscription.Properties` 。
+* 若要删除某个主题，请将其值设置为 `null` 所需的属性。
 * 不支持通过所需属性删除事件订阅。
 
 ```json

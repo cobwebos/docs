@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
 ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71672896"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 计划 U-SQL 作业
@@ -93,7 +93,7 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
     
     创建此文件连接：
 
-   1. 在 FileConnection 设置中选择** \<"新建连接 ..." >** 。
+   1. 选择 **\<New Connection...>** FileConnection 设置。
    2. 将“使用类型”**** 设置为“现有文件”****，并将“文件”**** 设置为任何现有文件的文件路径。
 
        ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
@@ -106,7 +106,7 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
 
 3. 将“AzureDataLakeAnalyticsConnection”**** 设置为要向其提交作业的 Azure Data Lake Analytics 帐户。 详细了解 [Azure Data Lake Analytics 连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)。
 
-4. 设置其他作业配置。 [了解更多](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
+4. 设置其他作业配置。 [了解详细信息](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017)。
 
 5. 使用“表达式”**** 动态地设置 U-SQL 作业名称：
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057985"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>由于 netvsc.sys，无法在 Azure 中远程连接到 Windows 10 或 Windows Server 2016 VM
@@ -73,13 +73,13 @@ ms.locfileid: "71057985"
 
 2. 开始与恢复 VM 建立远程桌面连接。
 
-3. 确保磁盘在磁盘管理控制台中标记为“联机”。**** 请留意分配给附加系统磁盘的驱动器号。
+3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请留意分配给附加系统磁盘的驱动器号。
 
 4. 创建 \Windows\System32\config 文件夹的副本，以防需要回滚更改****。
 
 5. 在安全的 VM 中，启动注册表编辑器 (regedit.exe)。
 
-6. 选择 " **HKEY_LOCAL_MACHINE** " 项，然后从菜单中选择 "**文件** > " "**加载配置单元**"。
+6. 选择 " **HKEY_LOCAL_MACHINE** " 项，然后从菜单中选择 "**文件**"  >  "**加载配置单元**"。
 
 7. 查找 \Windows\System32\config 文件夹中的系统文件****。
 

@@ -10,10 +10,10 @@ ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 4689714073047e383a53a04bd0069a8a27afdf9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72966432"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>使用帐户策略管理 Azure Data Lake Analytics
@@ -32,7 +32,7 @@ ms.locfileid: "72966432"
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击 "**限制和策略**"。
 3. 在“最大 AU 数”下，移动滑块选择一个值，或在文本框中输入值。**** 
-4. 单击“ **保存**”。
+4. 单击“保存” 。
 
 > [!NOTE]
 > 如果需要的数量大于默认 AU 数 (250)，在门户中单击“帮助 + 支持”**** 提交支持请求。 可增加 Data Lake Analytics 帐户中可用的 AU 数。
@@ -46,7 +46,7 @@ ms.locfileid: "72966432"
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击 "**限制和策略**"。
 3. 在“运行作业的最大数”**** 下，移动滑块选择一个值，或在文本框中输入值。 
-4. 单击“ **保存**”。
+4. 单击“保存” 。
 
 > [!NOTE]
 > 如果需运行的作业数大于默认作业数 (20)，请在门户中单击“帮助 + 支持”**** 提交支持请求。 可增加 Data Lake Analytics 帐户中可同时运行的作业数。
@@ -60,7 +60,7 @@ ms.locfileid: "72966432"
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击 "**限制和策略**"。
 3. 在“保留作业查询的天数”**** 下，移动滑块选择一个值，或在文本框中输入值。  
-4. 单击“ **保存**”。
+4. 单击“保存” 。
 
 ## <a name="job-level-policies"></a>作业级策略
 

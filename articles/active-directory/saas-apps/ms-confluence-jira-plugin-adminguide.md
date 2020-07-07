@@ -16,10 +16,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73161205"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 单一登录 (SSO) 插件可让 Microsoft Azur
 > [!NOTE]
 > 用户预配不是通过该插件完成的。
 
-## <a name="audience"></a>读者
+## <a name="audience"></a>目标受众
 
 Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进行的 SSO。
 
@@ -72,7 +72,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 * Jira 核心和软件：6.0 到 7.12
 * Jira 服务台：3.0.0 到 3.5.0
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence：5.0 至 5.10
+* Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
 * Confluence：6.2.1
@@ -95,7 +95,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 2. 转到 Jira/Confluence 管理控制台，并选择“加载项”。****
 
-3. 从 microsoft 下载中心下载适用于 Confluence 的 Jira/ [microsoft saml](https://www.microsoft.com/download/details.aspx?id=56503)sso 插件的[microsoft saml sso 插件](https://www.microsoft.com/download/details.aspx?id=56506)。
+3. 从 microsoft 下载中心下载适用于 Confluence 的 Jira microsoft saml sso 插件的[microsoft saml sso 插件](https://www.microsoft.com/download/details.aspx?id=56506) /  [Microsoft SAML SSO Plugin for Confluence](https://www.microsoft.com/download/details.aspx?id=56503)。
 
    相应的插件版本随即显示在搜索结果中。
 
@@ -113,11 +113,11 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **元数据 URL**：用于从 Azure AD 获取联合元数据的 URL。
 
-* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。**** 此插件会自动将此 URL 作为 https://*\<域：端口>*/派生。
+* **标识符**：由 Azure AD 用来验证请求源的 URL。 此值映射到 Azure AD 中的“标识符”元素。**** 插件会将此 URL 自动派生为 https:// *\<domain:port>* /。
 
-* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。**** 插件会将此 URL 自动派生为 https://*\<域： port>*/plugins/servlet/saml/auth。
+* **回复 URL**：启动 SAML 登录的标识提供者 (IdP) 中的回复 URL。 此值映射到 Azure AD 中的“回复 URL”元素。**** 插件会将此 URL 自动派生为 https:// *\<domain:port>* /plugins/servlet/saml/auth。
 
-* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。**** 插件会将此 URL 自动派生为 https://*\<域： port>*/plugins/servlet/saml/auth。
+* **登录 URL**：启动 SAML 登录的 IdP 中的登录 URL。 此值映射到 Azure AD 中的“登录”元素。**** 插件会将此 URL 自动派生为 https:// *\<domain:port>* /plugins/servlet/saml/auth。
 
 * **IdP 实体 ID**：IdP 使用的实体 ID。 解析元数据 URL 时会填充此框。
 
@@ -139,7 +139,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **启用单一注销**：如果希望在用户从 Jira 或 Confluence 注销时你要从 Azure AD 注销，请选中此选项。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 * **收到多个证书错误**：登录到 Azure AD，并删除针对应用提供的多个证书。 确保只存在一个证书。
 
@@ -190,7 +190,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 * Jira 核心和软件：6.0 到 7.12
 * Jira 服务台：3.0.0 到 3.5.0
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence：5.0 至 5.10
+* Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
 * Confluence：6.2.1

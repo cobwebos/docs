@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71057546"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>适用于 Windows 的 Azure 性能诊断 VM 扩展
@@ -69,8 +69,8 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 |   **名称**   |**值/示例**|       **说明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
-|发布者|Microsoft.Azure.Performance.Diagnostics|扩展的发布服务器命名空间。
-|type|AzurePerformanceDiagnostics|VM 扩展的类型。
+|publisher|Microsoft.Azure.Performance.Diagnostics|扩展的发布服务器命名空间。
+|类型|AzurePerformanceDiagnostics|VM 扩展的类型。
 |typeHandlerVersion|1.0|扩展处理程序的版本。
 |performanceScenario|基本|需为其捕获数据的性能方案。 有效值为：“基本”****、“vmslow”****、“azurefiles”**** 和“自定义”****。
 |traceDurationInSeconds|300|在选择任意跟踪选项的情况下的跟踪持续时间。
@@ -80,7 +80,7 @@ Azure 性能诊断 VM 扩展可用于从 Windows VM 收集性能诊断数据。 
 |storPortTrace|s|启用 StorPort 跟踪的选项。 有效值为 **s** 或空值。 如果不希望捕获此跟踪，请将该值留空。
 |srNumber|123452016365929|支持票证编号（如果有）。 将此值留空（如果没有此值）。
 |requestTimeUtc|2017-09-28T22:08:53.736Z|UTC 格式的当前日期时间。 如果使用门户来安装此扩展，则不需要提供此值。
-|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|VM 的唯一标识符。
+|ResourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|VM 的唯一标识符。
 |storageAccountName|mystorageaccount|用于存储诊断日志和结果的存储帐户名称。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|存储帐户的密钥。
 
@@ -233,7 +233,7 @@ PerfInsights 工具将收集各种日志、配置和诊断数据，具体视所�
 
 ## <a name="view-and-share-the-results"></a>查看和共享结果
 
-扩展的输出可以在上传到安装期间指定的存储帐户的 zip 文件中找到，并使用[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共享 30 天。 此 zip 文件包含诊断日志和一个包含发现和建议的报告。 输出 zip 文件的 SAS 链接可以在 **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** 文件夹下名为 *zipfilename*_saslink.txt 的文本文件中找到。 拥有此链接的任何人都可以下载 zip 文件。
+扩展的输出可以在上传到安装期间指定的存储帐户的 zip 文件中找到，并使用[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 共享 30 天。 此 zip 文件包含诊断日志和一个包含发现和建议的报告。 可在文件夹**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **下名为*zipfilename*_saslink.txt 的文本文件中找到指向输出 zip 文件的 SAS 链接。 拥有此链接的任何人都可以下载 zip 文件。
 
 Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支持工作的支持工程师提供帮助。
 
@@ -251,8 +251,8 @@ Microsoft 可能会使用此 SAS 链接下载诊断数据，为从事票证支�
 - 即使已成功预配扩展，（通知区域中的）扩展部署状态可能仍会显示为“正在进行部署”。
 
     只要扩展状态指示已成功预配扩展，就可以放心忽略此问题。
-- 安装过程中的某些问题可使用扩展日志来解决。 扩展执行输出将记录到在以下目录中发现的文件：
+- 安装过程中的某些问题可使用扩展日志来解决。 扩展执行输出记录到在以下目录中发现的文件：
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-如果在本文的任何位置需要更多帮助，可以联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。 有关使用 Azure 支持的信息，请阅读[Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。

@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "71203652"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>管理 OPC 保管库证书服务
@@ -25,17 +25,17 @@ ms.locfileid: "71203652"
 > [!IMPORTANT]
 > 创建或续订颁发者 CA 证书需要管理员角色。
 
-1. 在处`https://myResourceGroup-app.azurewebsites.net`打开证书服务，并登录。
+1. 在处打开证书服务 `https://myResourceGroup-app.azurewebsites.net` ，并登录。
 2. 中转到 "**证书组**"。
-3. 列出了一个默认证书组。 选择“编辑”  。
+3. 列出了一个默认证书组。 选择“编辑”。
 4. 在 "**编辑证书组详细信息**" 中，可以修改 CA 和应用程序证书的使用者名称和生存期。 主题和生存期仅应在颁发第一个 CA 证书之前设置一次。 操作期间的生存期更改可能会导致所颁发证书和 Crl 的生存期不一致。
-5. 输入有效的主题（例如`CN=My CA Root, O=MyCompany, OU=MyDepartment`）。<br>
+5. 输入有效的主题（例如 `CN=My CA Root, O=MyCompany, OU=MyDepartment` ）。<br>
    > [!IMPORTANT]
    > 如果更改了使用者，则必须续订颁发者证书，否则服务将无法对应用程序证书进行签名。 对照活动颁发者证书的使用者检查配置的主题。 如果主题不匹配，则拒绝证书签名。
-6. 选择“保存”。 
+6. 选择“保存”。
 7. 如果此时遇到 "禁止" 错误，则用户凭据无权修改或创建新的根证书。 默认情况下，部署该服务的用户具有该服务的管理员和签名角色。 需要将其他用户添加到审批者、作者或管理员角色，如 Azure Active Directory （Azure AD）应用程序注册中所示。
-8. 选择 "**详细信息**"。 这应显示更新的信息。
-9. 选择 "**续订 CA 证书**" 颁发第一个颁发者 CA 证书，或续订颁发者证书。 然后选择“确定”。 
+8. 选择“详细信息”。 这应显示更新的信息。
+9. 选择 "**续订 CA 证书**" 颁发第一个颁发者 CA 证书，或续订颁发者证书。 然后选择“确定”。
 10. 几秒钟后，你将看到**证书详细信息**。 若要下载最新的 CA 证书和 CRL 以便分发到 OPC UA 应用程序，请选择 "**颁发者**或**crl**"。
 
 现在，OPC UA 证书管理服务已准备好颁发 OPC UA 应用程序的证书。
@@ -51,9 +51,9 @@ CRL 续订是一个更新，应定期分发到应用程序。 OPC UA 设备支�
 > [!IMPORTANT]
 > 需要管理员角色才能续订颁发者 CRL。
 
-1. 在处`https://myResourceGroup.azurewebsites.net`打开证书服务，并登录。
+1. 在处打开证书服务 `https://myResourceGroup.azurewebsites.net` ，并登录。
 2. 中转到 "**证书组**" 页。
-3. 选择 "**详细信息**"。 这应显示当前证书和 CRL 信息。
+3. 选择“详细信息”。 这应显示当前证书和 CRL 信息。
 4. 选择 "**更新 Crl 吊销列表（CRL）** "，为 OPC 保管库存储中的所有活动颁发者证书颁发已更新的 crl。
 5. 几秒钟后，你将看到**证书详细信息**。 若要下载最新的 CA 证书和 CRL 以便分发到 OPC UA 应用程序，请选择 "**颁发者**或**crl**"。
 
@@ -66,20 +66,20 @@ CRL 续订是一个更新，应定期分发到应用程序。 OPC UA 设备支�
 ### <a name="add-user"></a>添加用户
 
 1. 打开 Azure 门户。
-2. 请参阅**Azure Active Directory** > **企业应用程序**。
-3. 选择注册 OPC 保管库微服务（默认情况下为`resourceGroupName-service`）。
+2. 请参阅**Azure Active Directory**  >  **企业应用程序**。
+3. 选择注册 OPC 保管库微服务（默认情况下为 `resourceGroupName-service` ）。
 4. 请参阅 "**用户和组**"。
 5. 选择 "**添加用户**"。
 6. 选择或邀请用户分配到特定角色。
 7. 选择用户的角色。
-8. 选择“分配”。****
+8. 选择“分配”。 
 9. 对于 "管理员" 或 "审批者" 角色中的用户，请继续添加 Azure Key Vault 访问策略。
 
 ### <a name="remove-user"></a>删除用户
 
 1. 打开 Azure 门户。
-2. 请参阅**Azure Active Directory** > **企业应用程序**。
-3. 选择注册 OPC 保管库微服务（默认情况下为`resourceGroupName-service`）。
+2. 请参阅**Azure Active Directory**  >  **企业应用程序**。
+3. 选择注册 OPC 保管库微服务（默认情况下为 `resourceGroupName-service` ）。
 4. 请参阅 "**用户和组**"。
 5. 选择要删除角色的用户，然后选择 "**删除**"。
 6. 对于 "管理员" 或 "审批者" 角色中的已删除用户，还将其从 Azure Key Vault 策略中删除。
@@ -93,10 +93,10 @@ CRL 续订是一个更新，应定期分发到应用程序。 OPC UA 设备支�
 #### <a name="for-an-approver-role-the-following-permissions-must-be-added-to-key-vault"></a>对于审批者角色，必须将以下权限添加到 Key Vault
 
 1. 打开 Azure 门户。
-2. 在部署过程中， `resourceGroupName`请使用 OPC 保管库。
-3. 请参阅 Key Vault `resourceGroupName-xxxxx`。
+2. `resourceGroupName`在部署过程中，请使用 OPC 保管库。
+3. 请参阅 Key Vault `resourceGroupName-xxxxx` 。
 4. 中转到 "**访问策略**"。
-5. 选择“添加新订阅”****。
+5. 选择“添加新订阅”。
 6. 跳过模板。 没有符合要求的模板。
 7. 选择 "**选择主体**"，然后选择要添加的用户，或邀请新用户加入租户。
 8. 选择以下**关键权限**： "**获取**"、"**列出**" 和 "**签名**"。
@@ -107,10 +107,10 @@ CRL 续订是一个更新，应定期分发到应用程序。 OPC UA 设备支�
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>对于管理员角色，必须将以下权限添加到 Key Vault
 
 1. 打开 Azure 门户。
-2. 在部署过程中， `resourceGroupName`请使用 OPC 保管库。
-3. 请参阅 Key Vault `resourceGroupName-xxxxx`。
+2. `resourceGroupName`在部署过程中，请使用 OPC 保管库。
+3. 请参阅 Key Vault `resourceGroupName-xxxxx` 。
 4. 中转到 "**访问策略**"。
-5. 选择“添加新订阅”****。
+5. 选择“添加新订阅”。
 6. 跳过模板。 没有符合要求的模板。
 7. 选择 "**选择主体**"，然后选择要添加的用户，或邀请新用户加入租户。
 8. 选择以下**关键权限**： "**获取**"、"**列出**" 和 "**签名**"。
@@ -121,8 +121,8 @@ CRL 续订是一个更新，应定期分发到应用程序。 OPC UA 设备支�
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>从 Azure Key Vault 删除用户访问策略
 
 1. 打开 Azure 门户。
-2. 在部署过程中， `resourceGroupName`请使用 OPC 保管库。
-3. 请参阅 Key Vault `resourceGroupName-xxxxx`。
+2. `resourceGroupName`在部署过程中，请使用 OPC 保管库。
+3. 请参阅 Key Vault `resourceGroupName-xxxxx` 。
 4. 中转到 "**访问策略**"。
 5. 查找要删除的用户，然后选择 "**删除**"。
 
