@@ -3,14 +3,16 @@ title: 使用 Azure Notebooks 预览版从 GitHub 克隆 Jupyter 笔记本
 description: 快速克隆 GitHub 存储库中的 Jupyter 笔记本并在 Azure Notebooks 帐户中运行它。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064591"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833080"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中克隆笔记本
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在本快速入门中，你将 GitHub 中存储的一个 Jupyter 笔记本复制到 Azure Notebooks 帐户中。 
 
@@ -22,8 +24,6 @@ GitHub 存储库为 Jupyter 笔记本提供存储和版本控制。 协作者维
 无。
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>克隆 Azure 认知服务笔记本
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 

@@ -3,18 +3,18 @@ title: 登录到 Azure Notebooks 预览版
 description: 快速登录到 Azure Notebooks 预览版并设置用户 ID，你将能够访问已保存的项目并与他人共享笔记本。
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: b6572a7c0b965b2b72916db577b47eff4f1921c0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75647010"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85830411"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>快速入门：登录 Azure Notebooks 预览版并设置用户 ID
 
-虽然始终都可以在未登录的情况下查看 Azure Notebooks，但必须登录才能运行笔记本、访问保存的项目和笔记本以及与他人共享笔记本。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+虽然始终都可以在未登录的情况下查看 Azure Notebooks，但必须登录才能运行笔记本、访问保存的项目和笔记本以及与他人共享笔记本。
 
 ## <a name="sign-in"></a>登录
 

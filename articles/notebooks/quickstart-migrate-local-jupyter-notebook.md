@@ -3,14 +3,16 @@ title: 将本地 Jupyter 笔记本迁移到 Azure Notebooks 预览版
 description: 将 Jupyter 笔记本从本地计算机或 Web URL 快速传输到 Azure Notebooks 预览版，然后将其共享以进行协作。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9c961ad67260cee2809e0bba1e79f2c709183dea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77064319"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85832111"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>快速入门：将本地 Jupyter 笔记本迁移到 Azure Notebooks 预览版
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在本快速入门中，我们将 Jupyter 笔记本从本地计算机或其他可访问的文件 URL 迁移到 Azure Notebooks。 
 
@@ -25,8 +27,6 @@ ms.locfileid: "77064319"
 ## <a name="create-a-project-on-azure-notebooks"></a>在 Azure Notebooks 上创建项目
 
 本快速入门演示了如何从本地计算机或其他可访问的文件 URL 迁移笔记本。 若要从 GitHub 存储库迁移笔记本，请参阅[快速入门：克隆笔记本](quickstart-clone-jupyter-notebook.md)。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
 

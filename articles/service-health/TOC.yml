@@ -11,6 +11,7 @@
         - name: Azure 门户
           href: alerts-activity-log-service-notifications-portal.md
         - name: ARM 模板
+          displayName: Resource Manager
           href: alerts-activity-log-service-notifications-arm.md
 - name: 概念
   items:
@@ -20,7 +21,7 @@
       href: service-health-overview.md
     - name: 资源运行状况
       href: resource-health-overview.md
-- name: 操作方式
+- name: 如何
   items:
     - name: 配置服务运行状况事件的警报
       href: alerts-activity-log-service-notifications.md

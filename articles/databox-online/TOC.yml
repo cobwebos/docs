@@ -31,6 +31,8 @@
           href: data-box-gateway-use-cases.md
     - name: 如何
       items:
+        - name: 更新
+          href: data-box-gateway-apply-updates.md
         - name: 管理
           items:
             - name: 共享
@@ -95,7 +97,7 @@
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
     - name: 如何
       items:
-        - name: '开发 C# 模块'
+        - name: 开发 C# 模块
           href: azure-stack-edge-create-iot-edge-module.md
         - name: 管理
           items:
@@ -133,7 +135,7 @@
           href: data-box-gateway-release-notes.md
 - name: 资源
   items:
-    - name: 'Azure Stack Edge C# 模块示例 (.NET)'
+    - name: Azure Stack Edge C# 模块示例 (.NET)
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
     - name: Azure Stack Edge/Data Box Gateway 产品
       href: 'https://azure.microsoft.com/services/storage/databox/edge/'

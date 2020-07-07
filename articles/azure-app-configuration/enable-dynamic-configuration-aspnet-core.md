@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856518"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -310,11 +310,16 @@ sentinel 键  是用于在配置更改时发出信号的特殊键。 应用会�
 
 1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
 
+```console
         dotnet build
+```
 
 1. 生成成功完成后，请运行以下命令以在本地运行 Web 应用：
 
+```console
         dotnet run
+```
+
 1. 打开浏览器窗口，访问 `dotnet run` 输出中显示的 URL。
 
     ![在本地启动快速入门应用](./media/quickstarts/aspnet-core-app-launch-local-before.png)

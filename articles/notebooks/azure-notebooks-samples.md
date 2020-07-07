@@ -3,18 +3,18 @@ title: 适用于 Azure Notebooks 预览版的示例 Jupyter Notebook
 description: 可通过这些示例体验在免费 Azure Notebooks 云服务中运行的 Jupyter Notebook。
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75646307"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85833989"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览版中发现并使用示例笔记本
 
-Internet 上有很多有趣且有用的 Jupyter Notebook，可以轻松将这些笔记本引入 Azure Notebooks。 本文提供了一些值得注意的示例。
-
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+Internet 上有很多有趣且有用的 Jupyter Notebook，可以轻松将这些笔记本引入 Azure Notebooks。 本文提供了一些值得注意的示例。
 
 确定想要浏览的笔记本之后，建议了解以下一些细节：
 

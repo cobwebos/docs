@@ -4,20 +4,20 @@ description: 了解如何在 Azure Notebooks 预览版中创建并运行一个�
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e677fca9291bb5247071c3970b7db3f36a6bdceb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561749"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85834125"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 本教程引导你完成使用 Azure Notebooks 创建一个用于演示简单线性回归的完整 Jupyter Notebook 的过程。 在学习本教程的过程中，你将熟悉 Jupyter Notebook UI，包括创建不同的单元、运行单元，以及以幻灯片的形式演示 Notebook。
 
 可以在 [GitHub - Azure Notebooks 示例](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)中找到已完成的 Notebook。 但是，本教程将从一个新的项目和一个空的 Notebook 开始，让你体验如何逐步创建 Notebook。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在本教程中，你将了解如何执行以下操作：
 

@@ -13,6 +13,8 @@
       items:
         - name: Azure 门户
           href: stream-analytics-quick-create-portal.md
+        - name: Azure CLI
+          href: quick-create-azure-cli.md
         - name: ARM 模板
           displayName: Resource Manager
           href: quick-create-azure-resource-manager.md

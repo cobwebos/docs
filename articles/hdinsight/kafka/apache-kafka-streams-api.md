@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 2885fccd95d09149ae496b80a658f34e5b697d0b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0174c40a0fada0f78cc8d52f5c45b991c3851da0
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850564"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache Kafka Streams API
 
@@ -49,8 +49,8 @@ Kafka 流处理通常使用 Apache Spark 或 Apache Storm 完成。 Kafka 版本
 
 示例应用程序位于 `Streaming` 子目录的 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 中。 应用程序由两个文件组成：
 
-* `pom.xml`设置用户帐户 ：此文件定义项目依赖项、Java 版本和打包方法。
-* `Stream.java`设置用户帐户 ：此文件实现流式处理逻辑。
+* `pom.xml`：此文件定义项目依赖项、Java 版本和打包方法。
+* `Stream.java`：此文件实现流式处理逻辑。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -71,8 +71,8 @@ Kafka 流处理通常使用 Apache Spark 或 Apache Storm 完成。 Kafka 版本
 
 * 插件：Maven 插件提供各种功能。 此项目使用了以下插件：
 
-    * `maven-compiler-plugin`设置用户帐户 ：用于将项目使用的 Java 版本设置为 8。 HDInsight 3.6 需要 Java 8。
-    * `maven-shade-plugin`设置用户帐户 ：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
+    * `maven-compiler-plugin`：用于将项目使用的 Java 版本设置为 8。 HDInsight 3.6 需要 Java 8。
+    * `maven-shade-plugin`：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -199,10 +199,10 @@ public class Stream
 
     主题用于以下目的：
 
-   * `test`设置用户帐户 ：本主题是接收记录的位置。 流式处理应用程序从此处读取。
-   * `wordcounts`设置用户帐户 ：本主题是流式处理应用程序存储其输出的位置。
-   * `RekeyedIntermediateTopic`设置用户帐户 ：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
-   * `wordcount-example-Counts-changelog`设置用户帐户 ：本主题是 `countByKey` 操作使用的状态存储
+   * `test`：本主题是接收记录的位置。 流式处理应用程序从此处读取。
+   * `wordcounts`：本主题是流式处理应用程序存储其输出的位置。
+   * `RekeyedIntermediateTopic`：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
+   * `wordcount-example-Counts-changelog`：本主题是 `countByKey` 操作使用的状态存储
 
     Kafka on HDInsight 也可以配置为自动创建主题。 有关详细信息，请参阅[配置自动主题创建](apache-kafka-auto-create-topics.md)文档。
 
@@ -232,19 +232,21 @@ public class Stream
 
     输出与以下文本类似：
 
-        dwarfs  13635
-        ago     13664
-        snow    13636
-        dwarfs  13636
-        ago     13665
-        a       13803
-        ago     13666
-        a       13804
-        ago     13667
-        ago     13668
-        jumped  13640
-        jumped  13641
-   
+    ```output
+    dwarfs  13635
+    ago     13664
+    snow    13636
+    dwarfs  13636
+    ago     13665
+    a       13803
+    ago     13666
+    a       13804
+    ago     13667
+    ago     13668
+    jumped  13640
+    jumped  13641
+    ```
+
     参数 `--from-beginning` 将使用者配置为从主题中存储的记录开头启动。 每遇到一个字，计数都会递增，主题包含每个字的多个条目，因此计数不断增加。
 
 4. 使用 __Ctrl + C__ 退出 producer。 继续使用 __Ctrl + C__ 退出应用程序和 consumer。
@@ -264,9 +266,9 @@ public class Stream
 
 若要使用 Azure 门户删除资源组，请执行以下操作：
 
-1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。 
-2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。 
-3. 选择“删除资源组”，然后进行确认。 
+1. 在 Azure 门户中展开左侧的菜单，打开服务菜单，然后选择“资源组”以显示资源组的列表。
+2. 找到要删除的资源组，然后右键单击列表右侧的“更多”按钮 (...)。
+3. 选择“删除资源组”，然后进行确认。
 
 ## <a name="next-steps"></a>后续步骤
 

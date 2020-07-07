@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1f6a05fdfc28adf412ffbd1402e37b69d1c51634
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a2d0322436bd91e92a7018552c5827e021ee74e
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79477759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851511"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建标准负载均衡器以对 VM 进行负载均衡
 
@@ -58,10 +58,10 @@ ms.locfileid: "79477759"
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
-使用 `-SKU Basic` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Microsoft 建议将“标准”用于生产工作负载。 
+使用 `-SKU Basic` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Microsoft 建议将“标准”用于生产工作负载。
 
 > [!IMPORTANT]
-> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”SKU。
 
 ## <a name="create-azure-load-balancer"></a>创建 Azure 负载均衡器
 
@@ -73,7 +73,7 @@ ms.locfileid: "79477759"
 
 ### <a name="create-the-load-balancer"></a>创建负载均衡器
 
-使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 `--sku basic` 创建基本公共 IP。 Microsoft 建议将标准 SKU 用于生产工作负载。
+使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) 创建名为 **myLoadBalancer** 的公共 Azure 负载均衡器，该负载均衡器包括名为 **myFrontEnd** 的前端池、名为 **myBackEndPool** 的后端池（与在前一步中创建的公共 IP 地址 **myPublicIP** 相关联）。 使用 `--sku basic` 创建基本负载均衡器。 Microsoft 建议将标准 SKU 用于生产工作负载。
 
 ```azurecli-interactive
   az network lb create \
@@ -86,7 +86,7 @@ ms.locfileid: "79477759"
 ```
 
 > [!IMPORTANT]
-> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”SKU。
 
 ### <a name="create-the-health-probe"></a>创建运行状况探测
 

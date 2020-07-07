@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 2e2e11e1dc16fd99a82bc2fbdc7b72399bc6ae97
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: cb8b3b58f1029a722121f491d202e245300d1aee
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871920"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85801006"
 ---
 # <a name="azure-load-balancer-concepts"></a>Azure 负载均衡器的概念
 
@@ -44,7 +44,7 @@ ms.locfileid: "82871920"
 
   ![基于哈希的分发](./media/load-balancer-overview/load-balancer-distribution.png)
 
-  图：  基于哈希的分发
+  *图：基于哈希的分发*
 
 ## <a name="application-independence-and-transparency"></a>应用程序独立性和透明度
 
@@ -57,7 +57,7 @@ ms.locfileid: "82871920"
 ## <a name="load-balancer-terminology"></a>负载均衡器术语
 | 概念 | 它意味着什么？ | 详细文档 |
 | ---------- | ---------- | ----------|
-出站连接 | 从后端池到公共 IP 的流将映射到前端。 Azure 通过负载均衡出站规则将出站连接转换为公共前端 IP 地址。 此配置具有以下优点。 可以轻松地对服务进行升级和灾难恢复操作，因为前端可以动态映射到服务的其他实例。 简化了访问控制列表 (ACL) 管理。 以前端 IP 表示的 ACL 不会随着服务的缩放或重新部署而更改。 将出站连接转换为较小数量的 IP 地址而不是计算机，可以减少实施安全收件人列表的负担。| 若要详细了解源网络地址转换 (SNAT) 和 Azure 负载均衡器，请参阅 [SNAT 和 Azure 负载均衡器](load-balancer-outbound-connections.md#snat)。
+出站连接 | 从后端池到公共 IP 的流将映射到前端。 Azure 通过负载均衡出站规则将出站连接转换为公共前端 IP 地址。 此配置具有以下优点。 可以轻松地对服务进行升级和灾难恢复操作，因为前端可以动态映射到服务的其他实例。 简化了访问控制列表 (ACL) 管理。 以前端 IP 表示的 ACL 不会随着服务的缩放或重新部署而更改。 将出站连接转换为较小数量的 IP 地址而不是计算机，可以减少实施安全收件人列表的负担。| 若要详细了解源网络地址转换 (SNAT) 和 Azure 负载均衡器，请参阅 [SNAT 和 Azure 负载均衡器](load-balancer-outbound-connections.md)。
 可用性区域 | 在提供可用性区域的区域中，标准负载均衡器可以支持更多功能。 这些功能是对标准负载均衡器提供的所有功能的补充。  可用性区域配置适用于以下两种类型的标准负载均衡器：“公共”和“内部”。通过在所有区域中同时使用专用基础结构，区域冗余的前端将会在发生区域故障后继续正常工作。 此外，可以保证特定区域的前端。 区域前端由单个区域中的专用基础结构提供服务。 后端池可使用跨区域负载均衡。 虚拟网络中的任何虚拟机资源都可以是后端池的一部分。基本负载均衡器不支持区域。| 有关详细信息，请查看[有关可用性区域相关功能的详细讨论](load-balancer-standard-availability-zones.md)和[可用性区域概述](../availability-zones/az-overview.md)。
 | HA 端口 | 你可以配置 HA 端口负载均衡规则，让应用程序可缩放，并且变得高度可靠。 这些规则在内部负载均衡器前端 IP 的短生存期端口上为每个流提供负载均衡。 无法或不需要指定各个端口时，该功能很有用。 HA 端口规则允许创建主动-被动或主动-主动 n+1 方案。 这些方案适用于网络虚拟设备以及任何需要大范围入站端口的应用程序。 可以使用运行状况探测来确定哪些后端应当接收新流。  可使用网络安全组模拟端口范围方案。 基本负载均衡器不支持 HA 端口。 | 请查看[有关 HA 端口的详细讨论](load-balancer-ha-ports-overview.md)
 | 多个前端 | 负载均衡器支持具有多个前端的多个规则。  标准负载均衡器将此功能扩展到了出站方案。 出站规则与入站规则相反。 出站规则创建出站连接的关联。 标准负载均衡器通过负载均衡规则使用与虚拟机资源关联的所有前端。 此外，负载均衡规则中的参数允许为了出站连接取消负载均衡规则，并允许选择特定前端（包括无前端）。 与之相对的是，基本负载均衡器随机选择单个前端。 无法控制选择哪一个前端。|
@@ -67,7 +67,7 @@ ms.locfileid: "82871920"
 
 - 负载均衡器规则不能跨越两个虚拟网络。  前端及其后端实例必须位于同一个虚拟网络中。  
 
-- 没有虚拟网络和其他 Microsoft 平台服务的 Web 辅助角色只能从内部标准负载均衡器后面的实例进行访问。 请勿依赖于这种访问方式，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 如果在使用标准内部负载均衡器时需要出站连接，必须配置[出站连接](load-balancer-outbound-connections.md)。
+- 没有虚拟网络和其他 Microsoft 平台服务的 Web 辅助角色只能从内部标准负载均衡器后面的实例进行访问。 请勿依赖此辅助功能，因为相应的服务本身或底层平台可能会在不通知的情况下进行更改。 如果在使用标准内部负载均衡器时需要出站连接，必须配置[出站连接](load-balancer-outbound-connections.md)。
 
 - 负载均衡器针对特定的 TCP 或 UDP 协议提供了负载均衡和端口转发。 负载均衡规则和入站 NAT 规则支持 TCP 和 UDP，但不支持其他 IP 协议（包括 ICMP）。
 

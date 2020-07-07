@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccdab373be4bab876ef52ba478076b6a8b6e0845
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 87488c05aa5f7503529d2bf24c0af6a12fa92bc8
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76291169"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>教程：Azure Active Directory 与 Jive 的单一登录 (SSO) 集成
 
@@ -43,7 +43,7 @@ ms.locfileid: "76291169"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Jive 支持 SP 发起的 SSO 
+* Jive 支持 SP 发起的 SSO
 * Jive 支持[**自动**用户预配](jive-provisioning-tutorial.md)
 * 配置 Jive 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
@@ -52,11 +52,11 @@ ms.locfileid: "76291169"
 要配置 Jive 与 Azure AD 的集成，需要从库中将 Jive 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分中，在搜索框中键入“Jive”   。
-1. 从结果面板中选择“Jive”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分中，在搜索框中键入“Jive” 。
+1. 从结果面板中选择“Jive”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-jive"></a>配置并测试 Jive 的 Azure AD 单一登录
@@ -76,27 +76,29 @@ ms.locfileid: "76291169"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Jive** 应用程序集成页上，找到“管理”部分并选择“单一登录”   。
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在 **Jive** 应用程序集成页上，找到“管理”部分并选择“单一登录” 。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<instance name>.jivecustom.com` 
+   a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<instance name>.jivecustom.com`
 
-    b. In the **Identifier (Entity ID)** text box, type a URL using the following pattern:
-    `https://<instance name>.jiveon.com`
+   b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
+   ```http
+   https://<instance name>.jiveon.com
+   ```
 
     > [!NOTE]
-    > These values are not real. Update these values with the actual Sign on URL and Identifier. Contact [Jive Client support team](https://www.jivesoftware.com/services-support/) to get these values. You can also refer to the patterns shown in the **Basic SAML Configuration** section in the Azure portal.
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Jive 客户端支持团队](https://www.jivesoftware.com/services-support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
+5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
-6. 在“设置 Jive”部分，根据要求复制相应 URL  。
+6. 在“设置 Jive”部分，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -110,61 +112,61 @@ a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<in
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Jive 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Jive”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Jive”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-jive-sso"></a>配置 Jive SSO
 
-1. 若要在“Jive”  端配置单一登录，请以管理员身份登录到 Jive 租户。
+1. 若要在“Jive”端配置单一登录，请以管理员身份登录到 Jive 租户。
 
-1. 在顶部菜单中，单击“SAML”  。
+1. 在顶部菜单中，单击“SAML”。
 
     ![在应用端配置单一登录](./media/jive-tutorial/tutorial_jive_002.png)
 
-    a. 在“常规”  选项卡下选择“已启用”  。
+    a. 在“常规”选项卡下选择“已启用”。
 
-    b. 单击“保存所有 SAML 设置”  按钮。
+    b. 单击“保存所有 SAML 设置”按钮。
 
-1. 导航到“IDP 元数据”  选项卡。
+1. 导航到“IDP 元数据”选项卡。
 
     ![在应用端配置单一登录](./media/jive-tutorial/tutorial_jive_003.png)
 
-    a. 复制下载的元数据 XML 文件的内容，并将其粘贴到“标识提供者(IDP)元数据”  文本框中。
+    a. 复制下载的元数据 XML 文件的内容，并将其粘贴到“标识提供者(IDP)元数据”文本框中。
 
-    b. 单击“保存所有 SAML 设置”  按钮。
+    b. 单击“保存所有 SAML 设置”按钮。
 
-1. 选择“用户属性映射”  选项卡。
+1. 选择“用户属性映射”选项卡。
 
     ![在应用端配置单一登录](./media/jive-tutorial/tutorial_jive_004.png)
 
-    a. 在“电子邮件”  文本框中，复制并粘贴“mail”  值的属性名称。
+    a. 在“电子邮件”文本框中，复制并粘贴“mail”值的属性名称。
 
-    b. 在“名字”  文本框中，复制并粘贴“givenname”  值的属性名称。
+    b. 在“名字”文本框中，复制并粘贴“givenname”值的属性名称。
 
-    c. 在“姓氏”  文本框中，复制并粘贴“surname”  值的属性名称。
+    c. 在“姓氏”文本框中，复制并粘贴“surname”值的属性名称。
 
 ### <a name="create-jive-test-user"></a>创建 Jive 测试用户
 
