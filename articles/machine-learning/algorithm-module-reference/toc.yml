@@ -146,6 +146,10 @@
       href: preprocess-text.md
     - name: 隐性 Dirichlet 分配
       href: latent-dirichlet-allocation.md
+    - name: 对 Vowpal Wabbit 模型评分
+      href: score-vowpal-wabbit-model.md
+    - name: 训练 Vowpal Wabbit 模型
+      href: train-vowpal-wabbit-model.md
 - name: 计算机视觉
   items:
     - name: 应用图像转换

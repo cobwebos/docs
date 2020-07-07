@@ -15,7 +15,7 @@
           href: search-create-service-portal.md
         - name: 创建索引
           href: search-get-started-portal.md
-        - name: 创建应用
+        - name: 创建演示应用
           href: search-create-app-portal.md
         - name: 创建技能集
           href: cognitive-search-quickstart-blob.md

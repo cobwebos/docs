@@ -86,6 +86,8 @@
           href: container-instances-start-command.md
         - name: 执行命令 (exec)
           href: container-instances-exec.md
+        - name: 运行安装容器 (init)
+          href: container-instances-init-container.md
         - name: 使用托管标识（预览版）
           href: container-instances-managed-identity.md
         - name: 使用 GPU 资源（预览版）
@@ -98,7 +100,7 @@
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: Secret
+        - name: 机密
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md

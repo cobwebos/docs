@@ -99,6 +99,10 @@
     - name: 使用来宾配置审核 VM
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
+    - name: 安全性
+      items:
+        - name: Azure 安全基准的安全基线
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: 操作指南
   items:
     - name: 适用于 VS Code 的 Azure Policy 扩展

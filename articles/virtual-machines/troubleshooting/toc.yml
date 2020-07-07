@@ -200,6 +200,8 @@
       href: storage-resource-deletion-errors.md
     - name: 删除经典存储资源时出错
       href: storage-classic-cannot-delete-storage-account-container-vhd.md
+    - name: 在 Azure 中创建 VM 中不支持 VHD
+      href: vhd-not-supported-vm-azure.md
     - name: 使用嵌套虚拟化
       href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: VM 性能问题

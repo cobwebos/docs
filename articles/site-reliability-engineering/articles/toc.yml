@@ -3,5 +3,7 @@
 - name: 常见问题
   expanded: true
   items:
+    - name: SRE 和编码
+      href: code.md
     - name: SRE 和 DevOps
       href: devops.md

@@ -25,6 +25,8 @@
           href: quickstart-send-telemetry-android.md
         - name: iOS
           href: quickstart-send-telemetry-ios.md
+        - name: Xamarin.Forms
+          href: quickstart-send-telemetry-xamarinforms.md
     - name: 控制设备
       items:
         - name: Node.js
@@ -324,6 +326,8 @@
           href: iot-hub-distributed-tracing.md
         - name: 配置 IP 筛选
           href: iot-hub-ip-filtering.md
+        - name: 管理公用网络访问
+          href: iot-hub-public-network-access.md
         - name: 大规模自动设备管理
           items:
             - name: 使用 Azure 门户

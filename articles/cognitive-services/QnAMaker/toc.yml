@@ -28,6 +28,8 @@
       href: Quickstarts/batch-testing.md
 - name: 概念
   items:
+    - name: 规划知识库
+      href: Concepts/plan.md
     - name: Azure 资源
       href: Concepts/azure-resources.md
     - name: 与他人协作

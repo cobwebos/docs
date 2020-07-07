@@ -389,6 +389,8 @@
               href: log-query/unify-app-resource-data.md
         - name: 示例和指南
           items:
+            - name: 查询示例
+              href: log-query/saved-queries.md
             - name: 日志查询示例
               href: log-query/examples.md
             - name: 智能分析示例
@@ -1125,6 +1127,8 @@
               href: learn/tutorial-logs-dashboards.md
             - name: 使用应用程序数据的仪表板
               href: learn/tutorial-app-dashboards.md
+            - name: 升级 Log Analytics 仪表板
+              href: log-query/dashboard-upgrade.md
         - name: 将数据发送到 Grafana
           href: platform/grafana-plugin.md
     - name: 自定义数据收集和分析
@@ -1200,6 +1204,10 @@
           href: app/custom-endpoints.md
         - name: Azure Functions
           href: app/azure-functions-supported-features.md
+        - name: 发行说明
+          items:
+            - name: Web 应用扩展
+              href: app/web-app-extension-release-notes.md
         - name: 数据模型
           items:
             - name: 概述

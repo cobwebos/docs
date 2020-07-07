@@ -16,6 +16,8 @@
       href: quickstart-migrate-local-jupyter-notebook.md
     - name: 使用自定义环境
       href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: 导出你的项目
+      href: quickstart-export-jupyter-notebook-project.md
 - name: 教程
   items:
     - name: 创建和运行笔记本
@@ -30,7 +32,7 @@
       href: azure-notebooks-user-account.md
     - name: 配置文件
       href: azure-notebooks-user-profile.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 创建和克隆项目
       href: create-clone-jupyter-notebooks.md

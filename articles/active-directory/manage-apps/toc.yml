@@ -7,10 +7,16 @@
       href: what-is-application-management.md
 - name: 快速入门
   items:
-    - name: 查看企业应用程序
+    - name: 查看你的应用
       href: view-applications-portal.md
-    - name: 从库中添加云应用
+    - name: 添加应用
       href: add-application-portal.md
+    - name: 配置应用
+      href: add-application-portal-configure.md
+    - name: 设置单一登录
+      href: add-application-portal-setup-sso.md
+    - name: 删除应用
+      href: delete-application-portal.md
 - name: 教程
   items:
     - name: 集成库应用（例如 ServiceNow、Salesforce、Dropbox）

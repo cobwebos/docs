@@ -261,6 +261,14 @@
       href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
     - name: Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成
       href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
+- name: 适用于 SAP 的 Azure Monitor 解决方案
+  items:
+    - name: 适用于 SAP 的 Azure Monitor 解决方案概述
+      href: azure-monitor-overview.md
+    - name: 适用于 SAP 的 Azure Monitor 解决方案提供商
+      href: azure-monitor-providers.md
+    - name: 适用于 SAP 的 Azure Monitor 解决方案常见问题解答
+      href: azure-monitor-faq.md
 - name: 参考
   items:
     - name: Azure CLI
