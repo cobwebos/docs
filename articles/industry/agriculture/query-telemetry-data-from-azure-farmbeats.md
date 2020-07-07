@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80349805"
 ---
 # <a name="query-ingested-telemetry-data"></a>查询引入的遥测数据
@@ -18,7 +18,7 @@ ms.locfileid: "80349805"
 
 引入（IoT）资源（如设备和传感器）中的物联网数据是 FarmBeats 中常见的方案。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。 当传感器数据在 FarmBeats Datahub 上可用时，我们可以查询相同的来生成可操作的见解或生成模型。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在继续阅读本文之前，请确保已将 IoT 设备中的 FarmBeats 和引入传感器遥测数据安装到 FarmBeats。
 
@@ -115,7 +115,7 @@ FarmBeats 利用[Azure 时序见解（TSI）](https://azure.microsoft.com/servic
 
 按照以下步骤在 TSI 上实现数据可视化：
 
-1. 请访问**Azure 门户** > **FarmBeats DataHub 资源组**> 选择**时序见解**环境（tsi-xxxx） >**数据访问策略**。 添加具有读取者或参与者访问权限的用户。
+1. 请访问**Azure 门户**  >  **FarmBeats DataHub 资源组**> 选择**时序见解**环境（tsi-xxxx） >**数据访问策略**。 添加具有读取者或参与者访问权限的用户。
 2. 请参阅**时序见解**环境（tsi）的 "**概述**" 页，然后选择 "时序**见解资源管理器 URL**"。 现在，你将能够直观显示引入遥测数据。
 
 除了存储、查询和可视化遥测以外，TSI 还支持集成到 Power BI 仪表板。 有关详细信息，请参阅[此处]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)

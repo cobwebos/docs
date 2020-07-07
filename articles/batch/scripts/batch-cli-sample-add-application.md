@@ -3,12 +3,12 @@ title: Azure CLI 脚本示例 - 在 Batch 中添加应用程序
 description: 此示例脚本演示如何添加要与 Azure Batch 池或任务配合使用的应用程序。
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 792af55be17551d1635b6821456c6e8e53e9daea
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 305b6473b4fa149c378e01229b4ad3eea2dbaef4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681934"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964078"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI 示例：向 Azure Batch 帐户添加应用程序
 
@@ -48,4 +48,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

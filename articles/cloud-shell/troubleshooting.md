@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82189456"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
@@ -31,8 +31,8 @@ ms.locfileid: "82189456"
 
 ### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中运行 AzureAD cmdlet 时出错
 
-- **详细信息**：运行 Cloud Shell `Get-AzureADUser`中的 AzureAD cmdlet 时，可能会看到错误： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`。 
-- **解决方法**：运行`Connect-AzureAD` cmdlet。 以前，Cloud Shell 在 PowerShell 启动过程中自动运行此 cmdlet。 为了加快开始时间，该 cmdlet 不再自动运行。 你可以选择通过将添加`Connect-AzureAD`到 PowerShell 中的 $PROFILE 文件来还原以前的行为。
+- **详细信息**：运行 Cloud Shell 中的 AzureAD cmdlet 时 `Get-AzureADUser` ，可能会看到错误： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets` 。 
+- **解决方法**：运行 `Connect-AzureAD` cmdlet。 以前，Cloud Shell 在 PowerShell 启动过程中自动运行此 cmdlet。 为了加快开始时间，该 cmdlet 不再自动运行。 你可以选择通过将添加 `Connect-AzureAD` 到 PowerShell 中的 $PROFILE 文件来还原以前的行为。
 
 ### <a name="early-timeouts-in-firefox"></a>FireFox 中的提前超时
 
@@ -41,8 +41,8 @@ ms.locfileid: "82189456"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在锁定的网络环境中禁用 Cloud Shell
 
-- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用访问`ux.console.azure.com`域的权限，可以拒绝对 Cloud Shell 的 s 的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code azure 帐户扩展和 docs.microsoft.com。 在美国政府版云中，入口点为`ux.console.azure.us`;没有相应的 shell.azure.us。
-- **解决方法**：将网络`ux.console.azure.com`设置`ux.console.azure.us`的访问权限限制为你的环境。 Azure 门户中仍然存在 Cloud Shell 图标，但无法成功连接到该服务。
+- **详细信息**：管理员可能希望禁止其用户访问 Cloud Shell。 Cloud Shell 利用访问域的权限， `ux.console.azure.com` 可以拒绝对 Cloud Shell 的 s 的任何访问，包括 portal.azure.com、shell.azure.com、Visual Studio Code Azure 帐户扩展和 docs.microsoft.com。 在美国政府版云中，入口点为 `ux.console.azure.us` ; 没有相应的 shell.azure.us。
+- **解决方法**：将网络设置的访问权限限制为 `ux.console.azure.com` `ux.console.azure.us` 你的环境。 Azure 门户中仍然存在 Cloud Shell 图标，但无法成功连接到该服务。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 

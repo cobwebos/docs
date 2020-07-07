@@ -1,25 +1,14 @@
 ---
 title: 快速入门：创建包含使用者组的事件中心 - Azure 事件中心
 description: 快速入门：使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间
-services: event-hubs
-documentationcenter: .net
-author: spelluru
-editor: ''
-ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
-ms.service: event-hubs
-ms.devlang: tbd
 ms.topic: quickstart
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/11/2020
-ms.author: spelluru
-ms.custom: subject-armqs
-ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.openlocfilehash: 6ddf17030da8b0ff50f10938221b9c1dba08084d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79528075"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964288"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
@@ -52,7 +41,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 若要部署模板：
 
-1. 从后续代码块中选择“试用”，然后按说明登录到 Azure Cloud Shell。 
+1. 从后续代码块中选择“试用”，然后按说明登录到 Azure Cloud Shell。
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -68,8 +57,8 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
    创建事件中心需要花费片刻时间。
 
-1. 选择“复制”以复制 PowerShell 脚本。 
-1. 右键单击 shell 控制台并选择“粘贴”  。
+1. 选择“复制”以复制 PowerShell 脚本。
+1. 右键单击 shell 控制台并选择“粘贴”。
 
 ## <a name="verify-the-deployment"></a>验证部署
 
@@ -100,12 +89,12 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已创建一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ：
+在本文中，你已创建一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程：
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-java-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)

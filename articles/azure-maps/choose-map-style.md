@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: b1c5d9b5cd2b6b9bfecf8a0af79699061003eec1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335687"
 ---
 # <a name="change-the-style-of-the-map"></a>更改地图的样式
 
-此地图支持多个不同的[样式选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)，这些选项可以在使用 map `setStyle`函数初始化或以后使用 map 函数进行初始化时设置。 本文说明如何使用这些样式选项来自定义地图外观。 了解如何在加载地图时设置样式，并学习如何使用样式选取器控件设置新的地图样式。
+此地图支持多个不同的[样式选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)，这些选项可以在使用 map 函数初始化或以后使用 map 函数进行初始化时设置 `setStyle` 。 本文说明如何使用这些样式选项来自定义地图外观。 了解如何在加载地图时设置样式，并学习如何使用样式选取器控件设置新的地图样式。
 
 ## <a name="set-the-style-options"></a>设置样式选项 
 
-使用 map `setStyle`函数初始化或更新样式选项后，可以将其传递到地图中。
+使用 map 函数初始化或更新样式选项后，可以将其传递到地图中 `setStyle` 。
 
 ```javascript
 //Set the style options when creating the map.
@@ -44,7 +44,7 @@ map.setStyle({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="地图样式选项" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地图样式选项</a>" Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地图样式选项</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
 </iframe>
 
 ## <a name="choose-a-base-map-style"></a>选择基本地图样式
@@ -54,7 +54,7 @@ map.setStyle({
 ### <a name="set-base-map-style-on-map-load"></a>在地图负载上设置基本地图样式
 
 
-通过设置`style`选项来初始化映射时，可以指定地图样式。 在下面的代码中， `style`在初始化时，映射的选项`grayscale_dark`设置为。
+通过设置选项来初始化映射时，可以指定地图样式 `style` 。 在下面的代码中，在 `style` 初始化时，映射的选项设置为 `grayscale_dark` 。
 
 ```javascript
 var map = new atlas.Map('map', {
@@ -71,13 +71,13 @@ var map = new atlas.Map('map', {
 
 ### <a name="update-the-base-map-style"></a>更新基地图样式
 
- 可以使用`setStyle`函数更新地图样式，并将`style`选项设置为所需的地图样式。
+ 可以使用函数更新地图样式 `setStyle` ，并将 `style` 选项设置为所需的地图样式。
 
 ```javascript
 map.setStyle({ style: 'satellite' });
 ```
 
-在下面的代码中，在加载映射实例之后，使用[system.windows.forms.control.setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-)函数将映射样式`road`从`satellite`更新为。
+在下面的代码中，在加载映射实例之后， `road` `satellite` 使用[system.windows.forms.control.setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setstyle-styleoptions-)函数将映射样式从更新为。
 
 <br/>
 
@@ -86,13 +86,13 @@ map.setStyle({ style: 'satellite' });
 
 ### <a name="add-the-style-picker"></a>添加样式选取器
 
-"样式选取器" 控件提供具有飞出面板的 "轻松使用" 按钮，最终用户可以使用该按钮更改地图样式。 样式选择器具有两个不同的布局选项。 默认情况下，样式选取器`icons`使用布局，并将所有地图样式显示为图标的水平行。 
+"样式选取器" 控件提供具有飞出面板的 "轻松使用" 按钮，最终用户可以使用该按钮更改地图样式。 样式选择器具有两个不同的布局选项。 默认情况下，样式选取器使用 `icons` 布局，并将所有地图样式显示为图标的水平行。 
 
 <center>
 
 ![样式选取器图标布局](media/choose-map-style/style-picker-icon-layout.png)</center>
 
-第二个布局选项称为`list` ，并显示地图样式的可滚动列表。  
+第二个布局选项称为 `list` ，并显示地图样式的可滚动列表。  
 
 <center>
 
@@ -119,14 +119,14 @@ map.controls.add(new atlas.control.StyleControl({
 </iframe>
 
 > [!TIP]
-> 默认情况下，使用 Azure Maps 的 S0 定价层时，样式选取器控件将列出所有可用样式。 如果要减少此列表中的样式数量，请将你希望在列表中显示的样式数组传递到样式选取器的`mapStyle`选项中。 如果使用的是 S1 并想要显示所有可用样式，请将样式`mapStyles`选取器的选项设置为`"all"`。
+> 默认情况下，使用 Azure Maps 的 S0 定价层时，样式选取器控件将列出所有可用样式。 如果要减少此列表中的样式数量，请将你希望在列表中显示的样式数组传递到 `mapStyle` 样式选取器的选项中。 如果使用的是 S1 并想要显示所有可用样式，请将 `mapStyles` 样式选取器的选项设置为 `"all"` 。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [将](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)

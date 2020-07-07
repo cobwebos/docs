@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80366489"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
@@ -46,8 +46,8 @@ ms.locfileid: "80366489"
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
 | openSUSE | openSUSE Leap 42.3 |
-| RedHat Enterprise Linux | RHEL 6 和 RHEL 7 | 
-| SUSE Linux Enterprise Server | SLES 12 |
+| RedHat Enterprise Linux 7 | RHEL 6 和 RHEL 7 | 
+| SUSE Linux 企业服务器 | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
 
 
@@ -69,10 +69,10 @@ ms.locfileid: "80366489"
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
-* https：\//device.login.microsoftonline.com
-* https：\//pas.windows.net
+* https： \/ /device.login.microsoftonline.com
+* https： \/ /pas.windows.net
 * https:\//management.azure.com
-* https：\//packages.microsoft.com
+* https： \/ /packages.microsoft.com
 
 > [!NOTE]
 > 目前，不能为启用了 Azure AD 身份验证的 Vm 配置 Azure 网络安全组。
@@ -154,7 +154,7 @@ az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o 
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-系统会提示使用中的一次性代码登录到 Azure AD [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)。 将一次性使用代码复制并粘贴到 "设备登录" 页。
+系统会提示使用中的一次性代码登录到 Azure AD [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) 。 将一次性使用代码复制并粘贴到 "设备登录" 页。
 
 出现提示时，请在登录页中输入 Azure AD 登录凭据。 
 
@@ -162,7 +162,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 关闭浏览器窗口，返回到 SSH 提示符窗口，然后按 **Enter** 键。 
 
-现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。**** 如果为用户帐户分配了*虚拟机管理员登录*角色，则可以使用`sudo`来运行需要 root 权限的命令。
+现在，你已使用分配的角色权限（例如“VM 用户”或“VM 管理员”）登录到 Azure Linux 虚拟机。**** 如果为用户帐户分配了*虚拟机管理员登录*角色，则可以使用 `sudo` 来运行需要 root 权限的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登录名
 
@@ -200,7 +200,7 @@ Access denied
 
 如果你在 Web 浏览器中成功完成了身份验证步骤，系统会立即提示你使用新的代码再次登录。 出现此错误通常是由于在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 若要纠正此问题，请执行以下操作：
 
-- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了*azuresuer\@contoso.onmicrosoft.com*而不*是\@azureuser contoso.onmicrosoft.com*。
+- 验证在 SSH 提示符窗口中指定的登录名是否正确。 登录名拼写错误可能导致在 SSH 提示符窗口中指定的登录名称与登录到 Azure AD 时使用的帐户不符。 例如，你键入了*azuresuer \@ contoso.onmicrosoft.com*而不是*azureuser \@ contoso.onmicrosoft.com*。
 - 如果有多个用户帐户，请确保登录到 Azure AD 时在浏览器窗口中提供的用户帐户是相同的。
 - Linux 是区分大小写的操作系统。 “Azureuser@contoso.onmicrosoft.com”和“azureuser@contoso.onmicrosoft.com”是不同的，会导致不匹配。 请确保在 SSH 提示符窗口中使用正确的大小写指定 UPN。
 

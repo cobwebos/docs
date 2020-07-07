@@ -1,6 +1,6 @@
 ---
-title: 在 Azure HDInsight 中将 SCP 与 Apache Hadoop 配合使用
-description: 本文档提供有关使用 ssh 和 scp 命令连接到 HDInsight 的信息。
+title: 在 Azure HDInsight 中配合使用 SCP 与 Apache Hadoop
+description: 本文档介绍如何使用 ssh 和 scp 命令连接到 HDInsight。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: 559746a817442602c76ba91f12c195be1d7f3cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82188423"
 ---
-# <a name="use-scp-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中将 SCP 与 Apache Hadoop 配合使用
+# <a name="use-scp-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中配合使用 SCP 与 Apache Hadoop
 
-本文介绍如何安全地将文件与 HDInsight 群集传输。
+本文介绍如何安全地与 HDInsight 群集传输文件。
 
 ## <a name="copy-files"></a>复制文件
 
@@ -35,7 +35,7 @@ scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
 scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ```
 
-`scp` 只能访问群集中单个节点的文件系统。 它不能用于访问群集的 HDFS 兼容存储中的数据。
+`scp` 只能访问群集中单个节点的文件系统。 它不能用来访问适用于群集且兼容 HDFS 的存储中的数据。
 
 需要通过 SSH 会话上传要使用的资源时，请使用 `scp`。 例如，上传一个 Python 脚本，然后通过 SSH 会话运行该脚本。
 

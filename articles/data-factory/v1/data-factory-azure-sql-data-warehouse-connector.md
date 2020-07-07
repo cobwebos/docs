@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81419317"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 Azure SQL 数据仓库复制数据/将数据复制到 Azure SQL 数据仓库
@@ -68,7 +68,7 @@ Azure SQL 数据仓库连接器支持基本身份验证。
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Azure SQL 数据仓库链接服务专属 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| properties | 描述 | 必须 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **AzureSqlDW** |是 |
 | connectionString |为 connectionString 属性指定连接到 Azure SQL 数据仓库实例所需的信息。 仅支持基本身份验证。 |是 |
@@ -81,7 +81,7 @@ Azure SQL 数据仓库连接器支持基本身份验证。
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureSqlDWTable** 类型数据集的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Azure SQL 数据仓库数据库中的表名称或视图。 |是 |
 
@@ -98,7 +98,7 @@ Azure SQL 数据仓库连接器支持基本身份验证。
 
 | properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否 |
+| sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
 | storedProcedureParameters |存储过程的参数。 |名称/值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |否 |
 
@@ -142,7 +142,7 @@ GO
 ### <a name="sqldwsink"></a>SqlDWSink
 **SqlDWSink** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| properties | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 有关详细信息，请参阅[可重复性部分](#repeatability-during-copy)。 |查询语句。 |否 |
 | allowPolyBase |指示是否使用 PolyBase（如果适用）而不是 BULKINSERT 机制。 <br/><br/> **使用 PolyBase 是将数据加载到 SQL 数据仓库的建议方式。** 有关约束和详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 |True <br/>False（默认值） |否 |
@@ -152,7 +152,7 @@ GO
 | rejectSampleValue |确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。 |1、2 … |如果 **rejectType** 是**百分比**，则为“是” |
 | useTypeDefault |指定在 PolyBase 从文本文件中检索数据时如何处理带分隔符的文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。 |True、False（默认值） |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表 |整数（行数） |否（默认值：10000） |
-| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例："00:30:00"（30 分钟）。 |否 |
 
 #### <a name="sqldwsink-example"></a>SqlDWSink 示例
 
@@ -200,7 +200,7 @@ SQL 数据仓库 PolyBase 直接支持作为源并具有特定文件格式要求
    2. `nullValue` 设置为**空字符串** ("")，或者 `treatEmptyAsNull` 设置为“true”****。
    3. `encodingName` 设置为“utf-8”****，即**默认**值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。
-   5. `compression`不能为**压缩**、 **GZip**或**Deflate**。
+   5. `compression` 可为**无压缩**、**GZip** 或 **Deflate**。
 
       ```JSON
       "typeProperties": {
@@ -301,20 +301,20 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 
 | 源 SQL 数据库列类型 | 目标 SQL DW 列类型（大小限制） |
 | --- | --- |
-| Int | Int |
+| int | int |
 | BigInt | BigInt |
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | bit | bit |
-| Decimal | Decimal |
-| Numeric | Decimal |
+| 小数 | 小数 |
+| Numeric | 小数 |
 | Float | Float |
 | Money | Money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binary | Binary |
+| 二进制 | 二进制 |
 | Varbinary | Varbinary（最多 8000） |
-| 日期 | 日期 |
+| 日期 | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | 时间 | 时间 |
@@ -322,7 +322,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | SmallDateTime | SmallDateTime |
 | Text | Varchar（最多 8000） |
 | NText | NVarChar（最多 4000） |
-| 映像 | VarBinary（最多 8000） |
+| 图像 | VarBinary（最多 8000） |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -346,18 +346,18 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
+| 小数 |小数 |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |小数 |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
 | numeric |Decimal |
@@ -366,7 +366,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
+| smallmoney |小数 |
 | sql_variant |Object * |
 | text |String, Char[] |
 | time |TimeSpan |

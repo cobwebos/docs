@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429039"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
@@ -29,7 +29,7 @@ SQL 点播支持整组分组选项。 SQL 池支持的 GROUP BY 选项数量有�
 
 ## <a name="group-by-options-supported-in-sql-pool"></a>SQL 池中支持的 GROUP BY 选项
 
-"分组依据" 具有 SQL 池不支持的某些选项。 这些选项有解决方法，如下所示：
+GROUP BY 具有 SQL 池不支持的一些选项。 这些选项有解决方法，如下所示：
 
 * 带 ROLLUP 的 GROUP BY
 * GROUPING SETS
@@ -128,7 +128,7 @@ FROM GrpCube;
 
 ![按多维数据集分组](./media/develop-group-by-options/develop-group-by-cube.png)
 
-第二步是指定目标表用于存储临时结果：
+第二步是指定用于存储临时结果的目标表：
 
 ```sql
 DECLARE
@@ -151,7 +151,7 @@ WITH
 ;
 ```
 
-第三步是遍历执行聚合的列的多维数据集。 查询将对 #Cube 临时表中的每一行运行一次。 结果存储在 #Results 临时表中：
+第三步是遍历执行聚合的列的多维数据集。 此查询将针对 #Cube 临时表中的每一行运行一次。 结果存储在 #Results 临时表中：
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -175,7 +175,7 @@ BEGIN
 END
 ```
 
-最后，您可以通过读取 #Results 临时表来返回结果：
+最后，可以通过从 #Results 临时表进行读取来返回结果：
 
 ```sql
 SELECT *
@@ -184,8 +184,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-通过将代码分解到各个部分并生成循环构造，代码将变得更易于管理和维护。
+将代码拆分成不同的部分并生成循环构造以后，代码就会更易于管理和维护。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[开发概述](develop-overview.md)。
+有关更多开发技巧，请参阅 [开发概述](develop-overview.md)。

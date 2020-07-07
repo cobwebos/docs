@@ -12,10 +12,10 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: b546e6ba6967edcf41e2830a639e69d436827c40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81429598"
 ---
 # <a name="dynamic-sql-in-synapse-sql"></a>Synapse SQL 中的动态 SQL
@@ -41,8 +41,8 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 如果字符串较短，则可以像平时一样使用 [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 > [!NOTE]
-> 作为动态 SQL 执行的语句仍服从所有 T-sql 验证规则。
+> 作为动态 SQL 执行的语句仍会受所有 T-SQL 验证规则的约束。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[开发概述](develop-overview.md)。
+有关更多开发技巧，请参阅 [开发概述](develop-overview.md)。

@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335568"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
@@ -37,7 +37,7 @@ ms.locfileid: "80335568"
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
 * `{subdomain}`-子域值的占位符（如果指定了子域值）。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
 
@@ -48,7 +48,7 @@ ms.locfileid: "80335568"
 
 可以按照以下步骤向地图中添加图块层。
 
-1. 编辑**res > 布局 > activity_main** ，使其看起来像下面这样：
+1. 编辑**res > 布局 > activity_main.xml**如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "80335568"
     </FrameLayout>
     ```
 
-2. 将以下代码片段复制到`MainActivity.java`类的**onCreate （）** 方法。
+2. 将以下代码片段复制到类的**onCreate （）** 方法 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ ms.locfileid: "80335568"
     });
     ```
     
-    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它创建`TileLayer`一个对象，并将带格式的**XYZ**磁`tileUrl`贴 URL 传递到选项中。 层的不透明度设置为`0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递`tileSize`到选项中。 然后，将图块层传递到地图层管理器中。
+    上面的代码段首先使用**onReady （）** 回调方法获取 Azure Maps 映射控件实例。 然后，它创建一个 `TileLayer` 对象，并将带格式的**xyz**磁贴 URL 传递到 `tileUrl` 选项中。 层的不透明度设置为 `0.8` ，因为正在使用的磁贴服务中的磁贴为256像素磁贴，此信息将传递到 `tileSize` 选项中。 然后，将图块层传递到地图层管理器中。
 
-    添加上述代码片段后， `MainActivity.java`应如下所示：
+    添加上述代码片段后，应如下 `MainActivity.java` 所示：
     
     ```Java
     package com.example.myapplication;
@@ -179,4 +179,4 @@ ms.locfileid: "80335568"
 请参阅以下文章，了解有关如何设置地图样式的详细信息
 
 > [!div class="nextstepaction"]
-> [更改 Android maps 中的地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [更改 Android 地图中的地图样式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

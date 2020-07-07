@@ -1,5 +1,5 @@
 ---
-title: 在 IBM 大型机上连接到3270应用
+title: 连接到 IBM 大型机上的 3270 应用
 description: 使用 Azure 逻辑应用和 IBM 3270 连接器在 Azure 中集成并自动化3270 屏幕驱动的应用
 services: logic-apps
 ms.suite: integration
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
 ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80371099"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 Azure 逻辑应用和 IBM 3270 连接器将 IBM 大型机上的 3270 屏幕驱动的应用集成到 Azure
@@ -21,7 +21,7 @@ ms.locfileid: "80371099"
 > [!NOTE]
 > 此连接器目前以[*公共预览版*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)提供。 
 
-使用 Azure 逻辑应用和 IBM 3270 连接器，可以访问并运行通常需要通过浏览 3270 仿真器屏幕来驱动的 IBM 大型机应用。 这样，便可以使用 Azure 逻辑应用创建自动化工作流，将 IBM 大型机应用集成到 Azure、Microsoft、其他应用、服务和系统。 该连接器使用 TN3270 协议来与 IBM 大型机通信，可在除 Azure 政府和 Azure 中国世纪互联以外的所有 Azure 逻辑应用区域中使用。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+使用 Azure 逻辑应用和 IBM 3270 连接器，可以访问和运行通常通过浏览 3270 模拟器屏幕驱动的 IBM 大型机应用。 这样，便可以通过使用 Azure 逻辑应用创建自动化工作流，将 IBM 大型机应用与 Azure、Microsoft 及其他应用、服务和系统集成。 连接器使用 TN3270 协议与 IBM 大型机通信，并在除 Azure 政府和 Azure 中国世纪互联以外的所有 Azure 逻辑应用区域中提供。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 本文介绍 3270 连接器的以下方面： 
 
@@ -43,7 +43,7 @@ ms.locfileid: "80371099"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 建议： [integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) 
 
@@ -81,7 +81,7 @@ ms.locfileid: "80371099"
 
 * **导航**：在此模式中，指定如何在大型机应用程序的屏幕中导航特定任务的计划或路径。
 
-* **方法**：在此模式下，定义用于描述屏幕导航路径的`GetBalance`方法，例如。 还可以选择每个屏幕中要用作方法的输入和输出参数的字段。
+* **方法**：在此模式下，定义 `GetBalance` 用于描述屏幕导航路径的方法，例如。 还可以选择每个屏幕中要用作方法的输入和输出参数的字段。
 
 ### <a name="unsupported-elements"></a>不支持的元素
 
@@ -182,11 +182,11 @@ ms.locfileid: "80371099"
 
 1. 在“选择新计划名称”下，输入计划的名称。**** 从“类型”列表中选择计划类型：****
 
-   | 计划类型 | 说明 |
+   | 计划类型 | 描述 |
    |-----------|-------------|
-   | **进程** | 适用于独立计划或组合计划 |
+   | **Process** | 适用于独立计划或组合计划 |
    | **“连接”** | 适用于连接计划 |
-   | **取消** | 适用于断开连接计划 |
+   | **断开连接** | 适用于断开连接计划 |
    |||
 
 1. 在“主机屏幕”窗格中，将捕获的缩略图拖放到“导航”窗格中的导航计划图面。********
@@ -354,21 +354,21 @@ ms.locfileid: "80371099"
    ![选择 3270 操作](./media/connectors-create-api-3270/select-3270-action.png)
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 
-   选择出现的加号（**+**），然后选择 "**添加操作**"。
+   选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 如果尚不存在任何连接，请提供连接的所需信息，然后选择“创建”。****
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | **连接名称** | 是 | <*连接-名称*> | 连接名称 |
+   | **连接名称** | 是 | <*connection-name*> | 连接名称 |
    | **集成帐户 ID** | 是 | <*集成帐户-名称*> | 集成帐户的名称 |
    | **集成帐户 SAS URL** | 是 | <*集成--SAS-URL*> | 集成帐户的共享访问签名 (SAS) URL，可以在 Azure 门户中基于集成帐户的设置生成此 URL。 <p>1. 在集成帐户菜单的 "**设置**" 下，选择 "**回调 URL**"。 <br>2. 在右侧窗格中，复制 "生成的**回调 URL** " 值。 |
-   | **服务器** | 是 | <*TN3270-名称*> | TN3270 服务的服务器名称 |
-   | 端口  | 否 | <*TN3270-端口*> | TN3270 服务器使用的端口。 如果留空，则连接器将使用 `23` 作为默认值。 |
+   | **Server** | 是 | <*TN3270-名称*> | TN3270 服务的服务器名称 |
+   | 端口 | 否 | <*TN3270-端口*> | TN3270 服务器使用的端口。 如果留空，则连接器将使用 `23` 作为默认值。 |
    | **设备类型** | 否 | <*IBM-终端模型*> | 要仿真的 IBM 终端的机型名称或型号。 如果留空，则连接器将使用默认值。 |
    | **代码页** | 否 | <*代码-页码*> | 主机的代码页号。 如果留空，则连接器将使用 `37` 作为默认值。 |
    | **逻辑单元名称** | 否 | <*逻辑单元名称*> | 要从主机请求的特定逻辑单元名称 |
-   | **启用 SSL？** | 否 | 打开或关闭 | 启用或禁用 TLS 加密。 |
+   | **启用 SSL?** | 否 | 打开或关闭 | 启用或禁用 TLS 加密。 |
    | **验证主机 SSL 证书?** | 否 | 打开或关闭 | 打开或关闭服务器证书验证。 |
    ||||
 
@@ -378,7 +378,7 @@ ms.locfileid: "80371099"
 
 1. 提供操作的所需信息：
 
-   | 属性 | 必选 | Value | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **Hidx 名称** | 是 | <*HIDX*> | 选择要使用的 3270 HIDX 文件。 |
    | **方法名称** | 是 | <*方法名*> | 选择要使用的 HIDX 文件中的方法。 选择方法后，“添加新参数”列表将会显示，可以从中选择要对该方法使用的参数。**** |
@@ -409,7 +409,7 @@ ms.locfileid: "80371099"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/si3270/)。
+有关此连接器的更多技术详细信息，例如触发器、操作和限制（如此连接器的 Swagger 文件所述），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/si3270/)。
 
 > [!NOTE]
 > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: 077f127648688b25d45b433fa2bc94ee011b3f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80336077"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用 Azure 前门的 Web 应用程序防火墙配置 IP 限制规则
@@ -24,14 +24,14 @@ ms.locfileid: "80336077"
 
 ## <a name="configure-a-waf-policy-with-the-azure-portal"></a>使用 Azure 门户配置 WAF 策略
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 按照[快速入门：为高度可用的全局 web 应用程序创建前门](../../frontdoor/quickstart-create-front-door.md)中所述的说明创建 Azure 前门配置文件。
 
 ### <a name="create-a-waf-policy"></a>创建 WAF 策略
 
 1. 在 Azure 门户上，选择 "**创建资源**"，在搜索框中键入 " **web 应用程序防火墙**"，然后选择 " **WEB 应用程序防火墙（WAF）**"。
-2. 选择“创建”。 
+2. 选择“创建”。
 3. 在 "**创建 WAF 策略**" 页上，使用以下值完成 "**基本**信息" 选项卡：
    
    |设置  |值  |
@@ -40,7 +40,7 @@ ms.locfileid: "80336077"
    |订阅     |选择订阅|
    |资源组     |选择前门所在的资源组。|
    |策略名称     |键入策略的名称|
-   |策略状态     |已启用|
+   |策略状态     |Enabled|
 
    选择**下一步：策略设置**
 
@@ -53,22 +53,22 @@ ms.locfileid: "80336077"
    |设置  |值  |
    |---------|---------|
    |自定义规则名称     |FdWafCustRule|
-   |状态     |已启用|
+   |状态     |Enabled|
    |规则类型     |匹配|
-   |Priority    |100|
+   |优先度    |100|
    |匹配类型     |IP 地址|
    |Match 变量|RemoteAddr|
-   |Operation|不包含|
+   |操作|不包含|
    |IP 地址或范围|10.10.10.0/24|
-   |则|拒绝流量|
+   |Then|拒绝流量|
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="自定义规则":::
 
-   选择 **添加** 。
+   选择“添加”。
 6. 选择**下一步：关联**。
 7. 选择 "**添加前端主机**"。
 8. 对于 "**前端主机**"，请选择前端主机，然后选择 "**添加**"。
-9. 选择“查看 + 创建”  。
+9. 选择“查看 + 创建”。
 10. 策略验证通过后，选择 "**创建**"。
 
 ### <a name="test-your-waf-policy"></a>测试 WAF 策略
@@ -83,12 +83,12 @@ ms.locfileid: "80336077"
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>使用 Azure CLI 配置 WAF 策略
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 在开始配置 IP 限制策略之前，请设置 CLI 环境并创建 Azure 前门配置文件。
 
 #### <a name="set-up-the-azure-cli-environment"></a>设置 Azure CLI 环境
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入`az extension add --name front-door`以添加 Azure 前门扩展。
- 2. 如果在 Bash 本地使用 CLI，请使用`az login`登录到 Azure。
+1. 安装[Azure CLI](/cli/azure/install-azure-cli)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择以下 CLI 命令中的 "**试用**" 按钮，然后在打开的 Cloud Shell 会话中登录到 Azure 帐户。 会话启动后，输入 `az extension add --name front-door` 以添加 Azure 前门扩展。
+ 2. 如果在 Bash 本地使用 CLI，请使用登录到 Azure `az login` 。
 
 #### <a name="create-an-azure-front-door-profile"></a>创建 Azure 前门配置文件
 按照[快速入门：为高度可用的全局 web 应用程序创建前门](../../frontdoor/quickstart-create-front-door.md)中所述的说明创建 Azure 前门配置文件。
@@ -162,7 +162,7 @@ az network front-door waf-policy rule match-condition add \
 
 ## <a name="configure-a-waf-policy-with-azure-powershell"></a>使用 Azure PowerShell 配置 WAF 策略
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 在开始配置 IP 限制策略之前，请设置 PowerShell 环境，并创建 Azure 前门配置文件。
 
 #### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
@@ -212,7 +212,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 ### <a name="configure-a-waf-policy"></a>配置 WAF 策略
-使用`Get-AzResourceGroup`查找包含 Azure 前门配置文件的资源组的名称。 接下来，使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)将 WAF 策略配置为 IP 规则。
+使用查找包含 Azure 前门配置文件的资源组的名称 `Get-AzResourceGroup` 。 接下来，使用[AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)将 WAF 策略配置为 IP 规则。
 
 ```azurepowershell
   $IPAllowPolicyExamplePS = New-AzFrontDoorWafPolicy `
