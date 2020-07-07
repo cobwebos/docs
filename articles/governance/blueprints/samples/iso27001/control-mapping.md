@@ -3,21 +3,21 @@ title: ISO 27001 蓝图示例控件
 description: ISO 27001 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 501884491dbef85cdf8a29cb5fdcef44a68235a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f4998a84d7079b55e2668a43b7e7359429d54d8
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75920576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919201"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图 ISO 27001 蓝图示例如何映射到 ISO 27001 控制措施。 有关控制措施的详细信息，请参阅 [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 
-以下映射适用于 **ISO 27001:2013** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。   然后，找到并选择“\[预览\] 审核 ISO 27001:2013 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。 
+以下映射适用于 **ISO 27001:2013** 控制措施。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“\[预览\] 审核 ISO 27001:2013 控制措施并部署特定 VM 扩展以支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
-> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性  仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)。
+> 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。 若要查看更改历史记录，请参阅 [GitHub 提交历史记录](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/iso27001/control-mapping.md)。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 职责分离
 
@@ -28,7 +28,7 @@ ms.locfileid: "75920576"
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 信息分类
 
-Azure 的 [SQL 漏洞评估服务](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)可以帮助你发现数据库中存储的敏感数据并提供用于对该数据进行分类的建议。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义来审核在 SQL 漏洞评估过程中查明的漏洞是否已更正。
+Azure 的 [SQL 漏洞评估服务](/azure/sql-database/sql-vulnerability-assessment)可以帮助你发现数据库中存储的敏感数据并提供用于对该数据进行分类的建议。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义来审核在 SQL 漏洞评估过程中查明的漏洞是否已更正。
 
 - \[预览\]：监视 Azure 安全中心的 SQL 漏洞评估结果
 

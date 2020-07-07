@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0fc56fe040528df5b4bd5e9217bd614c4a640c15
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074757"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85608041"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -58,11 +58,11 @@ ms.locfileid: "74074757"
 若要配置 F5 与 Azure AD 的集成，需要从库中将 F5 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **F5**。 
-1. 在结果面板中选择“F5”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入 **F5**。
+1. 在结果面板中选择“F5”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>配置并测试 F5 的 Azure AD 单一登录
 
@@ -81,30 +81,30 @@ ms.locfileid: "74074757"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [F5 客户端支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [F5 客户端支持团队](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 F5”部分，根据要求复制相应的 URL。 
+1. 在“设置 F5”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -112,31 +112,31 @@ ms.locfileid: "74074757"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 F5 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在“应用程序”列表中选择“F5”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在“应用程序”列表中选择“F5”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
+1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-f5-sso"></a>配置 F5 SSO
 
@@ -148,11 +148,11 @@ ms.locfileid: "74074757"
 
 1. 打开新的 Web 浏览器窗口，以管理员身份登录到 F5 (Advanced Kerberos) 公司站点并执行以下步骤：
 
-1. 需要将元数据证书导入到 F5 (Advanced Kerberos) 中，该证书将在稍后的设置过程中使用。 转到“系统”>“证书管理”>“流量证书管理”>>“SSL 证书列表”  。 单击右下角的“导入” 
+1. 需要将元数据证书导入到 F5 (Advanced Kerberos) 中，该证书将在稍后的设置过程中使用。 转到“系统”>“证书管理”>“流量证书管理”>>“SSL 证书列表”。 单击右下角的“导入”
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure01.png)
  
-1. 若要设置 SAML IDP，请转到“访问”>“联合”>“SAML 服务提供程序”>“创建”>“从元数据”。 
+1. 若要设置 SAML IDP，请转到“访问”>“联合”>“SAML 服务提供程序”>“创建”>“从元数据”。
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure02.png)
 
@@ -168,22 +168,22 @@ ms.locfileid: "74074757"
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure07.png)
 
- 1. 若要设置 SAML SP，请转到“访问”>“联合”>“SAML 服务联合”>“本地 SP 服务”>“创建”。 
+ 1. 若要设置 SAML SP，请转到“访问”>“联合”>“SAML 服务联合”>“本地 SP 服务”>“创建”。
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure08.png)
  
-1. 单击“确定”。 
+1. 单击“确定”。
 
-1. 选择 SP 配置，并单击“绑定/取消绑定 IdP 连接器”。 
+1. 选择 SP 配置，并单击“绑定/取消绑定 IdP 连接器”。
 
      ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure09.png)
  
  
-1. 单击“添加新行”，并选择在上一步骤中创建的**外部 IdP 连接器**。 
+1. 单击“添加新行”，并选择在上一步骤中创建的**外部 IdP 连接器**。
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure10.png)
  
-1. 若要配置 Kerberos SSO，请转到“访问”>“单一登录”>“Kerberos” 
+1. 若要配置 Kerberos SSO，请转到“访问”>“单一登录”>“Kerberos”
 
     >[!Note]
     >需要创建并指定 Kerberos 委托帐户。 参阅 KCD 部分（参阅附录中的“变量参考”）
@@ -194,7 +194,7 @@ ms.locfileid: "74074757"
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure11.png)
 
-1. 若要配置访问配置文件，请转到“访问”>“配置文件/策略”>“访问配置文件(按会话策略)”。 
+1. 若要配置访问配置文件，请转到“访问”>“配置文件/策略”>“访问配置文件(按会话策略)”。
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure12.png)
 
@@ -225,15 +225,15 @@ ms.locfileid: "74074757"
     * mcget {session.logon.last.username}
     * mcget {session.logon.last.password}
 
-1. 若要添加新节点，请转到“本地流量”>“节点”>“节点列表”>“+”。 
+1. 若要添加新节点，请转到“本地流量”>“节点”>“节点列表”>“+”。
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure21.png)
  
-1. 若要创建新池，请转到“本地流量”>“池”>“池列表”>“创建”。 
+1. 若要创建新池，请转到“本地流量”>“池”>“池列表”>“创建”。
 
      ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure22.png)
 
- 1. 若要创建新的虚拟服务器，请转到“本地流量”>“虚拟服务器”>“虚拟服务器列表”>“+”。 
+ 1. 若要创建新的虚拟服务器，请转到“本地流量”>“虚拟服务器”>“虚拟服务器列表”>“+”。
 
     ![F5 (Advanced Kerberos) 配置](./media/advance-kerbf5-tutorial/configure23.png)
 
@@ -281,7 +281,7 @@ ms.locfileid: "74074757"
 1. 下面是默认 SAML 属性的完整列表。 GivenName 使用以下字符串表示。
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-| | |
+| 会话 | Attribute |
 | -- | -- |
 | eb46b6b6.session.saml.last.assertionID | `<TENANT ID>` |
 | eb46b6b6.session.saml.last.assertionIssueInstant  | `<ID>` |

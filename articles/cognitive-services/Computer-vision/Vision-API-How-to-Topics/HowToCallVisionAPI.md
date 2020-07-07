@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 0d2ef4af8af8ad9545277202f0aa7842ac05ea67
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84983453"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957896"
 ---
 # <a name="call-the-computer-vision-api"></a>调用计算机视觉 API
 
@@ -254,4 +254,4 @@ categories[].detail     | `object?`      | （可选）详细信息对象。
 
 ## <a name="next-steps"></a>后续步骤
 
-要使用 REST API，请转到[计算机视觉 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)。
+要使用 REST API，请转到[计算机视觉 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/56f91f2e778daf14a499f21b)。

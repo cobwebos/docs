@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 47af78e562329a7221dcba865fc7304543a282df
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856769"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>与 CI/CD 管道集成
 
@@ -69,23 +69,33 @@ ms.locfileid: "82790756"
 1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥。 
     如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```console
+     setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 Windows PowerShell，请运行以下命令：
 
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```powershell
+     $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    ```
 
     如果使用 macOS 或 Linux，则请运行以下命令：
 
-        export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```console
+     export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
 
-        dotnet build
+    ```console
+     dotnet build
+    ```
 
 3. 生成成功完成后，请运行以下命令以在本地运行 Web 应用：
 
-        dotnet run
+    ```console
+     dotnet run
+    ```
 
 4. 启动浏览器窗口并转到 `http://localhost:5000`，即本地托管的 Web 应用的默认 URL。
 

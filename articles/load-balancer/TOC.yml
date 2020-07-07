@@ -103,6 +103,8 @@
           displayName: ARM
     - name: 配置内部负载均衡器
       items:
+        - name: Azure 门户
+          href: tutorial-load-balancer-standard-internal-portal.md
         - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
@@ -121,8 +123,6 @@
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: 为内部负载均衡器配置高可用性端口
-      href: load-balancer-configure-ha-ports.md
     - name: 跨区域移动
       items:
         - name: 外部负载均衡器 - 门户

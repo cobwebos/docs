@@ -103,7 +103,7 @@ ms.locfileid: "83860046"
 >|Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common**。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为 **consumers**。 |
 >|Enter_the_Redirect_Uri_Here|替换为 http://localhost:4200。|
 >|cacheLocation  | （可选）针对身份验证状态设置浏览器存储。 默认值为 sessionStorage。   |
->|storeAuthStateInCookie  | （可选）标识用于存储身份验证请求状态的库。 在浏览器 Cookie 中验证身份验证流时需要此状态。 此 Cookie 为 Internet Explorer 和 Edge 设置，可以适应这两个浏览器。 有关更多详细信息，请参阅[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
+>|storeAuthStateInCookie  | （可选）标识用于存储身份验证请求状态的库。 在浏览器 Cookie 中验证身份验证流时需要此状态。 此 Cookie 为 Internet Explorer 和 Microsoft Edge 设置，可以适应这两个浏览器。 有关更多详细信息，请参阅[已知问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues)。 |
 > > [!TIP]
 > > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
 

@@ -20,7 +20,7 @@ ms.locfileid: "83698304"
 ### <a name="bug-fixes-224"></a>Bug 修复 2.2.4 ###
 
 - [Bug 修复][AMP][辅助功能] 删除了显示错误屏幕时提供的可访问虚拟选项卡
-- [Bug 修复][AMP] 修复了 IE11 和 Edge 的热键“M”
+- [Bug 修复][AMP] 修复了 IE11 和 Microsoft Edge 的热键“M”
 - [Bug 修复][AMP] 修复了 CEA708 字幕的异常
 - [Bug 修复][AMP] 修复了 Edge 浏览器的视频冻结问题
 
@@ -82,7 +82,7 @@ ms.locfileid: "83698304"
 
 ### <a name="bug-fixes-220"></a>Bug 修复 2.2.0 ###
 
-- [Bug 修复] Flash 版本检测在 Chrome/Edge 中不起作用
+- [Bug 修复] Flash 版本检测在 Chrome/Microsoft Edge 中不起作用
 
 ### <a name="changes-220"></a>更改 2.2.0 ###
 
@@ -357,7 +357,7 @@ ms.locfileid: "83698304"
 - [Bug 修复] 对 manifestPlayableWindowLength() 引发异常
 - [Bug 修复] 结束视频后重新观看时，观看者不一定能在视频中单击“播放”
 - [Bug 修复] 响应式大小调整不符合快速更改窗口大小的要求
-- [Bug 修复][Edge|IE] 响应式大小调整不在 width=x, height=auto 的页面加载时生效
+- [Bug 修复][Microsoft Edge|IE] 响应式大小调整不在 width=x, height=auto 的页面加载时生效
 - [Bug 修复][Android|Chrome] Chrome 在内容未加密时，请求获取播放 DRM 内容的权限
 - [Bug 修复][辅助功能][Edge] 键盘控件不正确选择上下文菜单项
 - [Bug 修复][辅助功能] 在高对比度模式下缺少显示的边框
@@ -439,7 +439,7 @@ ms.locfileid: "83698304"
 
 ### <a name="bug-fixes-161"></a>Bug 修复 1.6.1 ###
 
-- [Bug 修复][FlashSS|Edge、IE][SilverlightSS|IE] 无法将焦点置于其他 UI 元素上以在 IE/Edge 中执行输入或其他操作
+- [Bug 修复][FlashSS|Edge、IE][SilverlightSS|IE] 无法将焦点置于其他 UI 元素上以在 IE/Microsoft Edge 中执行输入或其他操作
 - [Bug 修复] 当 forge 未定义时，AES 播放失败
 - [Bug 修复][Android][AzureHtml5JS|Chrome] 在处于运行状况检查循环中时，旋转图标一直旋转而不播放内容
 - [Bug 修复][IE9] IE 9 不支持 console.log() 而导致异常
@@ -460,8 +460,8 @@ ms.locfileid: "83698304"
 - [Bug 修复] 鼠标移动时比特率选择框重置，导致通过鼠标控件选择较低的比特率时出现问题
 - [Bug 修复] 执行 DRM 检查时，应用中的 Mac Office 崩溃
 - [Bug 修复] 很容易意外覆盖 CSS 类
-- [Bug 修复][Chrome] user-agent 字符串浏览器的更新标识为 Edge
-- [Bug 修复][AzureHtml5JS] 字幕按钮未显示在 Edge (Win10) 或 Chrome (Mac) 中的工具栏中
+- [Bug 修复][Chrome] user-agent 字符串浏览器的更新标识为 Microsoft Edge
+- [Bug 修复][AzureHtml5JS] 字幕按钮未显示在 Microsoft Edge (Win10) 或 Chrome (Mac) 中的工具栏中
 - [Bug 修复][Android][AzureHtml5JS|Chrome] 对短视频调用 endOfStream() 时发生 InvalidStateError 异常
 - [Bug 修复][Firefox] 删除了在检查浏览器功能时 Firefox 所导致的 DRM 警告
 - [Bug 修复][Html5] 不显示渐进式 mp4 内容的对白字幕/隐藏式字幕

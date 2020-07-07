@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 588751c178205ceb21617f8d9271bfa9ed76193d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85603343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921941"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>教程：构建自定义搜索网页
 
@@ -60,11 +60,11 @@ ms.locfileid: "85603343"
 
 要包含来自特定网站或 URL 的结果，可将其添加到“活动”选项卡。
 
-1.       在“配置”页上，单击“活动”选项卡，输入要纳入搜索范围的一个或多个网站的 URL。
+1. 在“配置”页上，单击“活动”选项卡，输入要纳入搜索范围的一个或多个网站的 URL。
 
     ![“定义编辑器”的“活动”选项卡的屏幕截图](../media/customSrchEditor.png)
 
-2.       若要确保实例会返回结果，请在右侧的预览窗格中输入查询。 必应仅返回已编入索引的公共网站的结果。
+2. 若要确保实例会返回结果，请在右侧的预览窗格中输入查询。 必应仅返回已编入索引的公共网站的结果。
 
 ## <a name="add-blocked-entries"></a>添加阻止条目
 
