@@ -7,13 +7,13 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598413"
 ---
-# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中管理集成服务环境（ISE）
+# <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中管理集成服务环境 (ISE)
 
 本文介绍如何为[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)执行管理任务，例如：
 
@@ -132,7 +132,7 @@ ms.locfileid: "82598413"
 
    ![选择所需的缩放类型](./media/ise-manage-integration-service-environment/select-manual-scale-out-units.png)
 
-1. 完成后，选择“保存”****。
+1. 完成后，选择“保存”。
 
 <a name="custom-autoscale"></a>
 
@@ -166,7 +166,7 @@ ms.locfileid: "82598413"
 
 ## <a name="restart-ise"></a>重新启动 ISE
 
-如果更改 DNS 服务器或 DNS 服务器设置，则必须重启 ISE，以便 ISE 可以选取这些更改。 重新启动高级 SKU ISE 不会导致停机，因为冗余和组件会在回收期间一次重新启动一个。 但是，开发人员 SKU ISE 会经历停机，因为没有冗余存在。 有关详细信息，请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
+如果更改 DNS 服务器或 DNS 服务器设置，则必须重启 ISE，使 ISE 可以接收这些更改。 重新启动高级 SKU ISE 不会导致停机，因为冗余和组件会在回收期间一次重新启动一个。 但是，开发人员 SKU ISE 会经历停机，因为没有冗余存在。 有关详细信息，请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。
 
 1. 在[Azure 门户](https://portal.azure.com)中，请前往 ISE。
 

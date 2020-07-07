@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594859"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
@@ -164,7 +164,7 @@ VAST 文件指定要显示的广告。 以下 XML 是线性广告 VAST 文件的
 
 Image/gif、image/jpeg、image/png - 资源显示在 HTML <**img**> 标记中。
 
-应用程序/x-javascript - 资源显示在 HTML <脚本  > 标记中。
+应用程序/x-javascript - 资源显示在 HTML <脚本> 标记中。
 
 Application/x-shockwave-flash – 资源显示在 Flash Player 中。
 
@@ -231,13 +231,13 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
 3. 开始/结束 - 指定应在播放视频之前或之后显示广告
 4. 位置 - 指定广告中断的计时未知时（例如，实时流式处理过程中）的广告中断顺序。 采用 #n 格式指定每次广告中断的顺序，其中 n 为整数 1 或更大整数。 1 表示应在第一个机会时播放广告，2 表示应在第二个机会时播放广告，以此类推。
 
-`<AdBreak>` 元素中可以有一个 <**AdSource**> 元素。 <AdSource  > 元素包含以下属性：
+`<AdBreak>` 元素中可以有一个 <**AdSource**> 元素。 <AdSource> 元素包含以下属性：
 
 1. Id - 指定广告源的标识符
 2. allowMultipleAds – 一个布尔值，指定是否可以在广告中断期间显示多个广告
 3. followRedirects – 一个可选布尔值，指定视频播放器是否应遵循广告响应中的重定向
 
-<AdSource  > 元素为播放器提供内联的广告响应或对广告响应的引用。 它可包含以下元素之一：
+<AdSource> 元素为播放器提供内联的广告响应或对广告响应的引用。 它可包含以下元素之一：
 
 * `<VASTAdData>` 表示 VMAP 文件中嵌入了一个 VAST 广告响应
 * `<AdTagURI>` 引用另一个系统中的广告响应的 URI
@@ -245,7 +245,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
 
 在此示例中，线内广告响应是使用包含 VAST 广告响应的 `<VASTAdData>` 元素指定的。 有关其他元素的详细信息，请参阅 [VMAP](https://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)。
 
-<AdBreak  > 元素还可以包含一个 <TrackingEvents  > 元素。 <TrackingEvents  > 元素允许跟踪广告中断的开始或结束时间，或广告中断期间是否发生了错误。 <TrackingEvents  > 元素包含一个或多个 <Tracking  > 元素，其中每一个均指定一个跟踪事件和一个跟踪 URI。 可能的跟踪事件是：
+<AdBreak> 元素还可以包含一个 <TrackingEvents> 元素。 <TrackingEvents> 元素允许跟踪广告中断的开始或结束时间，或广告中断期间是否发生了错误。 <TrackingEvents> 元素包含一个或多个 <Tracking> 元素，其中每一个均指定一个跟踪事件和一个跟踪 URI。 可能的跟踪事件是：
 
 1. breakStart - 跟踪广告中断的开始
 2. breakEnd - 跟踪广告中断的完成

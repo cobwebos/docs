@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
 ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598430"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
@@ -160,7 +160,7 @@ ms.locfileid: "82598430"
 
 1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
 
-1. 在解决方案资源管理器中，打开`<logic-app-name>.json`文件的快捷菜单，然后选择 "**打开并逻辑应用设计器**"。 （键盘： Ctrl + L）
+1. 在解决方案资源管理器中，打开 `<logic-app-name>.json` 文件的快捷菜单，然后选择 "**打开并逻辑应用设计器**"。 （键盘： Ctrl + L）
 
    ![使用逻辑应用设计器打开逻辑应用的 .json 文件](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -202,7 +202,7 @@ ms.locfileid: "82598430"
 
 * 在 Visual Studio 中的逻辑应用设计器工具栏上，选择“刷新”。****
 
-  -或-
+  \- 或 -
 
 * 在 Visual Studio Cloud Explorer 中打开逻辑应用的快捷菜单，选择“刷新”。****
 
@@ -265,7 +265,7 @@ ms.locfileid: "82598430"
 > 如果删除并重新创建子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用程序将具有不同的元数据。
 > 如果在重新创建父逻辑应用的子逻辑应用后不重新保存父逻辑应用，则对子逻辑应用的调用将失败并出现 "未授权" 错误。 此行为适用于父子逻辑应用，例如，使用集成帐户中的项目或调用 Azure 函数。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 在逻辑应用设计器中打开逻辑应用项目时，可能无法获取用于选择 Azure 订阅的选项。 而在逻辑应用打开时，Azure 订阅并非所要使用的订阅。 之所以发生此行为，原因在于当你打开逻辑应用的 .json 文件后，Visual Studio 将缓存首次选择的订阅，以供将来使用。 若要解决该问题，请尝试执行以下步骤之一：
 

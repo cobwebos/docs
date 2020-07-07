@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef19c8eb747432a2eea3880b094f77747890c0d9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78190716"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984005"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -140,7 +140,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **POST** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
 1. 在请求的**正文**中复制以下 JSON 定义（请将 `connectionString` 替换为存储帐户的实际连接）。 
@@ -161,7 +161,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
     ```
 1. 发送请求。 应会看到状态代码 201（确认成功）。 
 
-如果收到 403 或 404 错误，请检查请求构造：`api-version=2019-05-06` 应位于终结点上，`api-key` 应位于标头中的 `Content-Type` 后面，并且其值必须对搜索服务有效。 可以通过联机 JSON 验证程序运行 JSON 文档，以确保语法正确。 
+如果收到 403 或 404 错误，请检查请求构造：`api-version=2020-06-30` 应位于终结点上，`api-key` 应位于标头中的 `Content-Type` 后面，并且其值必须对搜索服务有效。 可以通过联机 JSON 验证程序运行 JSON 文档，以确保语法正确。 
 
 ### <a name="step-2-create-a-skillset"></a>步骤 2：创建技能集
 
@@ -170,7 +170,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）。
 
     ```http
-    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-ss?api-version=2019-05-06
+    https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
 1. 在请求的**正文**中复制以下 JSON 定义。 此技能集包括以下内置技能。
@@ -255,7 +255,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
 1. 在请求的**正文**中复制以下 JSON 定义。 `content` 字段存储文档本身。 `languageCode`、`keyPhrases` 和 `organizations` 的附加字段表示技能集创建的新信息（字段和值）。
@@ -339,7 +339,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **PUT** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引器。
 
    ```http
-   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+   https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
 1. 在请求的**正文**中复制以下 JSON 定义。 请注意字段映射元素；这些映射非常重要，因为它们定义了数据流。 
@@ -432,7 +432,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **GET** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来命名索引器。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr/status?api-version=2020-06-30
    ```
 
 1. 检查响应，以了解索引器是否正在运行，或者查看错误和警告信息。  
@@ -451,7 +451,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 使用 **GET** 和以下 URL（请将 YOUR-SERVICE-NAME 替换为实际的服务名称）来搜索某个字或短语的实例，并返回 `content` 字段和匹配文档的计数。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?search=*&$count=true&$select=content?api-version=2020-06-30
    ```
    
    此查询的结果将返回文档内容，这与使用 Blob 索引器但不使用认知搜索管道时获取的结果相同。 此字段是可搜索的，但若要使用分面、筛选器或自动完成，则此字段不起作用。
@@ -461,7 +461,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 第二个查询返回管道创建的一些新字段（人员、组织、位置、languageCode）。 为简洁起见，我们省略了关键短语，但若要查看这些值，应包含关键短语。
 
    ```http
-   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2019-05-06
+   https://mydemo.search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$count=true&$select=metadata_storage_name,persons,organizations,locations,languageCode&api-version=2020-06-30
    ```
    $select 语句中的字段包含认知服务的自然语言处理功能创建的新信息。 如你所料，结果中出现了一些干扰信息，并且各个文档的返回信息有差异，但在许多情况下，分析模型会生成准确的结果。
 
@@ -472,7 +472,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 若要了解如何利用这些字段，请添加一个分面参数以按位置返回匹配文档的聚合。
 
    ```http
-   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2019-05-06
+   https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&facet=locations&api-version=2020-06-30
    ``` 
 
    在此示例中，每个位置有 2 个或 3 个匹配项。
@@ -483,7 +483,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 1. 此最终示例对组织集合应用一个筛选器，以基于 NASDAQ 返回筛选条件的两个匹配项。
 
    ```http
-   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
+   cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
 这些查询演示了对认知搜索创建的新字段使用查询语法和筛选器的多种方式。 有关更多查询示例，请参阅[搜索文档 REST API 中的示例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[简单语法查询示例](search-query-simple-examples.md)和[完整 Lucene 查询示例](search-query-lucene-examples.md)。
@@ -501,7 +501,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 或者使用 **DELETE** 并提供每个对象的 URL。 以下命令删除一个索引器。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
 ```
 
 成功删除后会返回状态代码 204。

@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e624be8103097a8356ae4167cb8f21cce819649
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 57efd88b9d194442920496107d4c37ba2baf94d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84760162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554987"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD 应用程序代理的 Azure AD PowerShell 示例
 
@@ -26,7 +26,7 @@ ms.locfileid: "84760162"
 
 有关这些示例中使用的 cmdlet 的详细信息，请参阅[应用程序代理应用程序管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)和[应用程序代理连接器管理](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_connector_management)。
 
-| | |
+| 链接 | 说明 |
 |---|---|
 |应用程序代理应用||
 | [列出所有应用程序代理应用的基本信息](scripts/powershell-get-all-app-proxy-apps-basic.md) | 列出有关目录中所有应用程序代理应用的基本信息（AppId、DisplayName、ObjId）。 |

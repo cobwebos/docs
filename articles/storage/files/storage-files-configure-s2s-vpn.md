@@ -3,16 +3,16 @@ title: 配置站点到站点 (S2S) VPN 以与 Azure 文件存储一起使用 | M
 description: 如何配置站点到站点 (S2S) VPN 以与 Azure 文件存储一起使用
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 4d1d0f9e2a86da8213a9662b68c791a117dcc7fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515332"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>配置站点到站点 VPN 以与 Azure 文件存储一起使用
 你可以使用站点到站点 (S2S) VPN 连接从本地网络中通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 你可以使用 [Azure VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)设置站点到站点 VPN，该网关是提供 VPN 服务的 Azure 资源，与存储帐户或其他 Azure 资源一起部署在资源组中。

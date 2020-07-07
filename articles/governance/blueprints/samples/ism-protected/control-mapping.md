@@ -3,12 +3,12 @@ title: 澳大利亚政府 ISM PROTECTED 蓝图示例概述
 description: 澳大利亚政府 ISM PROTECTED 蓝图示例的概述。 此蓝图示例帮助客户评估特定的 ISM PROTECTED 控制措施。
 ms.date: 03/10/2020
 ms.topic: sample
-ms.openlocfilehash: e2f64943e9db207feb3f59a905cad994553a6cd6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595352"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517093"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亚政府 ISM PROTECTED 蓝图示例的控制映射
 
@@ -349,7 +349,7 @@ ms.locfileid: "82595352"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。

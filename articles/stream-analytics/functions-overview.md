@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82598362"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中的用户定义函数
@@ -45,11 +45,11 @@ Azure 流分析不会记录所有函数调用和返回结果。 为了保证可�
 
 ## <a name="resource-logs"></a>资源日志
 
-所有运行时错误被视为严重错误，并通过活动和资源日志进行呈现。 建议让函数处理所有异常和错误，并将有效结果返回到查询。 这会阻止作业进入[“失败”状态](job-states.md)。  
+任何运行时错误都会被视为严重错误，可通过活动和资源日志查看。 建议让函数处理所有异常和错误，并将有效结果返回到查询。 这会阻止作业进入[“失败”状态](job-states.md)。  
 
 ## <a name="exception-handling"></a>异常处理
 
-在 Azure 流分析中使用数据时，数据处理过程中的任何异常都被视为灾难性故障。 用户定义函数可能会引发异常并导致处理停止。 若要避免此问题，请使用 JavaScript 或 c # 中的 try-catch 块来捕获代码执行过程*中的异常*。 可以记录和处理捕获的异常，而不会导致系统故障。 建议你始终将自定义代码包装在*try-catch*块中，以避免向处理引擎引发意外的异常。
+在 Azure 流分析中使用数据时，数据处理过程中的任何异常都被视为灾难性故障。 用户定义的函数更有可能会引发异常并导致处理停止。 若要避免此问题，请以 JavaScript 或 C# 使用 try-catch 块来捕获代码执行期间的异常**。 可以记录和处理捕获的异常，而不会导致系统故障。 建议你始终将自定义代码包装在 try-catch 块中，以避免引发处理引擎的意外异常**。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82594944"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>存在视频索引器的 Azure 区域
@@ -23,7 +23,7 @@ ms.locfileid: "82594944"
 
 ## <a name="locations"></a>位置
 
-必须`location`为参数提供 Azure 区域代码名称作为其值。 如果在预览模式下使用视频索引器，应将`"trial"`作为值。 `trial``location`参数的默认值。 否则，若要获取你的帐户所在的并且应当将你的调用路由到的 Azure 区域的代码名称，可以在 [Azure CLI](/cli/azure) 中运行以下命令行：
+`location`必须为参数提供 Azure 区域代码名称作为其值。 如果在预览模式下使用视频索引器，应将 `"trial"` 作为值。 `trial`参数的默认值 `location` 。 否则，若要获取你的帐户所在的并且应当将你的调用路由到的 Azure 区域的代码名称，可以在 [Azure CLI](/cli/azure) 中运行以下命令行：
 
 ```azurecli-interactive
 az account list-locations

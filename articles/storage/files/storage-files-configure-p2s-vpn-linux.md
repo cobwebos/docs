@@ -3,16 +3,16 @@ title: 在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起
 description: 如何在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 author: roygara
 ms.service: storage
-ms.topic: overview
+ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 685373203da14a6aa83c608d90d6416ab2b30ae4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515311"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
@@ -117,7 +117,9 @@ Azure 虚拟网络网关是本地 Linux 计算机将连接到的服务。 部署
 请记得将 `<desired-vpn-name-here>` 替换为要为这些资源使用的名称。
 
 > [!Note]  
-> 部署 Azure 虚拟网络网关最多需要 45 分钟。 部署此资源时，此 bash script 脚本将阻止部署完成。 这是正常情况。
+> 部署 Azure 虚拟网络网关最多需要 45 分钟。 部署此资源时，此 bash script 脚本将阻止部署完成。
+>
+> **基本**SKU 不支持 P2S IKEv2/OpenVPN 连接。 此脚本将对虚拟网络网关使用**VpnGw1** SKU。
 
 ```bash
 vpnName="<desired-vpn-name-here>"

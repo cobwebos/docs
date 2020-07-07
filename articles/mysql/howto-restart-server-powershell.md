@@ -1,25 +1,25 @@
 ---
-title: 重新启动服务器-Azure PowerShell-Azure Database for MySQL
-description: 本文介绍如何使用 PowerShell 重新启动 Azure Database for MySQL 服务器。
+title: 重启服务器 - Azure PowerShell - Azure Database for MySQL
+description: 本文介绍了如何使用 PowerShell 重启 Azure Database for MySQL 服务器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/28/2020
 ms.openlocfilehash: 935459a398c07d3b4f61c76dec75b083a2354720
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82608977"
 ---
-# <a name="restart-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 重新启动 Azure Database for MySQL 服务器
+# <a name="restart-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 重启 Azure Database for MySQL 服务器
 
-本主题介绍如何重启 Azure Database for MySQL 服务器。 出于维护原因，可能需要重新启动服务器，这会导致在操作过程中发生短暂的中断。
+本主题介绍如何重启 Azure Database for MySQL 服务器。 出于维护原因，可能需要重启服务器，这会在操作期间导致短暂中断。
 
-如果服务忙，则服务器重新启动被阻止。 例如，服务可以处理缩放 vCores 等先前请求的操作。
+如果服务处于繁忙状态，则会阻止重启服务器。 例如，服务可能正在处理先前请求的操作（例如缩放 vCore）。
 
-完成重新启动所需的时间取决于 MySQL 恢复过程。 为了减少重新启动时间，我们建议在重新启动之前最大程度地减少服务器上发生的活动量。
+完成重启所需的时间量取决于 MySQL 恢复过程。 若要减少重启时间，建议在重启之前尽量减少服务器上发生的活动量。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,8 +29,8 @@ ms.locfileid: "82608977"
 - [Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> 尽管 Az PowerShell 模块处于预览阶段，但你必须使用以下命令从 Az PowerShell 模块单独安装它： `Install-Module -Name Az.MySql -AllowPrerelease`。
-> Az PowerShell 模块公开发布后，它将成为未来 Az PowerShell 模块版本的一部分，并从 Azure Cloud Shell 中的本机提供。
+> 尽管 Az.MySql PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.MySql -AllowPrerelease`。
+> Az.MySql PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
 如果选择在本地使用 PowerShell，请使用[AzAccount](/powershell/module/az.accounts/Connect-AzAccount) cmdlet 连接到 Azure 帐户。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: fd006e836432ce775be8cbbefea6d9219e8b13b3
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 0330e72ad74726f97bfdfd78ef8d5f9b24a5d172
+ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253454"
+ms.lasthandoff: 06/28/2020
+ms.locfileid: "85513311"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>数据工厂管道中的分支和链接活动
 
@@ -54,7 +54,7 @@ ms.locfileid: "85253454"
 
 有关当前可以使用数据工厂的 Azure 区域列表，请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)。 数据存储和计算可以位于其他区域。 存储包括 Azure 存储和 Azure SQL 数据库。 计算包括数据工厂使用的 HDInsight。
 
-根据[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)中所述创建一个应用程序。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。 需要获取多个值（例如“应用程序(客户端) ID”和“目录(租户) ID”），以便在本教程的后续部分中使用。 
+根据[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中所述创建一个应用程序。 按照同一文章中的以下说明将应用程序分配到“参与者”角色。 需要获取多个值（例如“应用程序(客户端) ID”和“目录(租户) ID”），以便在本教程的后续部分中使用。 
 
 ### <a name="create-a-blob-table"></a>创建 Blob 表
 

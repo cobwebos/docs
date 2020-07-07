@@ -3,12 +3,12 @@ title: FedRAMP High 蓝图示例控制
 description: FedRAMP High 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: f57f753c405e736a4c83dd6f10b6f38184ce74b6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: cf9db71a18654f973306637831ae1bcdf8dbef9e
+ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168873"
+ms.lasthandoff: 06/29/2020
+ms.locfileid: "85517195"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例的控制映射
 
@@ -312,7 +312,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 恶意代码防护
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理 Endpoint Protection，包括恶意代码防护。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护并在 Windows 虚拟机上强制执行 Microsoft 反恶意软件解决方案，从而帮助管理终结点防护，包括恶意代码防护。
 
 - 为 Windows Server 部署默认 Microsoft IaaSAntimalware 扩展
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
@@ -320,7 +320,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 ## <a name="si-3-1-malicious-code-protection--central-management"></a>SI-3 (1) 恶意代码防护 | 集中管理
 
-此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护，从而帮助 Endpoint Protection，包括恶意代码防护。 Azure 安全中心提供集中管理和报告功能，用于实时洞察已部署的 Azure 资源的安全状态。
+此蓝图分配 [Azure Policy](../../../policy/overview.md) 定义用于监视 Azure 安全中心中虚拟机上缺失的终结点防护，从而帮助管理终结点防护，包括恶意代码防护。 Azure 安全中心提供集中管理和报告功能，用于实时洞察已部署的 Azure 资源的安全状态。
 
 - 应在虚拟机规模集上安装 Endpoint Protection 解决方案
 - 监视 Azure 安全中心 Endpoint Protection 的缺失情况
@@ -363,7 +363,7 @@ Azure 存储高级威胁防护会检测试图访问或利用存储帐户的异�
 > [FedRAMP High 蓝图 - 概述](./index.md)
 > [FedRAMP High 蓝图 - 部署步骤](./deploy.md)
 
-有关蓝图和如何使用这些蓝图的更多文章：
+有关蓝图及其使用方式的更多文章：
 
 - 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。
