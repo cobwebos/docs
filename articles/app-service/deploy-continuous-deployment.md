@@ -7,10 +7,10 @@ ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80437229"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
@@ -69,22 +69,22 @@ ms.locfileid: "80437229"
    - 对于 GitHub，请下拉菜单，然后选择要连续部署的**组织**、**存储库**和**分支**。
      
      > [!NOTE]
-     > 如果看不到任何存储库，可能需要在 GitHub 中授权 Azure App Service。 浏览到 GitHub 存储库，转到 "**设置** > " "**应用程序** > " "已**授权 OAuth 应用**"。 选择 " **Azure App Service**"，然后选择 "**授予**"。 对于组织存储库，你必须是组织的所有者才能授予权限。
+     > 如果看不到任何存储库，可能需要在 GitHub 中授权 Azure App Service。 浏览到 GitHub 存储库，转到 "**设置**" "  >  **应用程序**" "已  >  **授权 OAuth 应用**"。 选择 " **Azure App Service**"，然后选择 "**授予**"。 对于组织存储库，你必须是组织的所有者才能授予权限。
      
    - 对于 Bitbucket，选择要连续部署的 Bitbucket**团队**、**存储库**和**分支**。
      
    - 对于 "Azure Repos"，请选择要连续部署的**Azure DevOps 组织**、**项目**、**存储库**和**分支**。
      
      > [!NOTE]
-     > 如果 Azure DevOps 组织未列出，请确保它已链接到 Azure 订阅。 有关详细信息，请参阅[设置 Azure DevOps Services 帐户，以便它可以部署到 web 应用](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
+     > 如果未列出 Azure DevOps 组织，请确保已将它链接到 Azure 订阅。 有关详细信息，请参阅[设置 Azure DevOps Services 帐户，以便它可以部署到 web 应用](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
      
-1. 选择**继续**。
+1. 选择“继续”。
    
    ![填写 "存储库信息"，然后选择 "继续"。](media/app-service-continuous-deployment/configure-kudu.png)
    
 1. 配置生成提供程序之后，查看 "**摘要**" 页上的设置，然后选择 "**完成**"。
    
-1. 选定存储库和分支中的新提交现在将持续部署到应用服务应用中。 可以在“部署中心”  页上跟踪提交和部署。
+1. 选定存储库和分支中的新提交现在将持续部署到应用服务应用中。 可以在“部署中心”页上跟踪提交和部署。
    
    ![在部署中心跟踪提交和部署](media/app-service-continuous-deployment/github-finished.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "80437229"
 
 如果帐户具有所需的权限，则可以设置 Azure Pipelines 从 GitHub 或 Azure Repos 持续部署。 有关通过 Azure Pipelines 部署的详细信息，请参阅[将 web 应用部署到 Azure 应用服务](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
 
-#### <a name="prerequisites"></a>必备条件
+#### <a name="prerequisites"></a>先决条件
 
 若要 Azure App Service 使用 Azure Pipelines 创建持续交付，Azure DevOps 组织应具有以下权限： 
 
@@ -119,7 +119,7 @@ ms.locfileid: "80437229"
 1. 在 "**配置**" 页上的 "**代码**" 部分中，选择要连续部署的**组织**、**存储库**和**分支**，然后选择 "**继续**"。
      
      > [!NOTE]
-     > 如果看不到任何存储库，可能需要在 GitHub 中授权 Azure App Service。 浏览到 GitHub 存储库，转到 "**设置** > " "**应用程序** > " "已**授权 OAuth 应用**"。 选择 " **Azure App Service**"，然后选择 "**授予**"。 对于组织存储库，你必须是组织的所有者才能授予权限。
+     > 如果看不到任何存储库，可能需要在 GitHub 中授权 Azure App Service。 浏览到 GitHub 存储库，转到 "**设置**" "  >  **应用程序**" "已  >  **授权 OAuth 应用**"。 选择 " **Azure App Service**"，然后选择 "**授予**"。 对于组织存储库，你必须是组织的所有者才能授予权限。
        
     在 "**生成**" 部分中，指定 Azure Pipelines 应用于运行生成任务的 Azure DevOps 组织、项目、语言框架，然后选择 "**继续**"。
 
@@ -129,7 +129,7 @@ ms.locfileid: "80437229"
 
    ![生成提供程序](media/app-service-continuous-deployment/summary.png)
    
-1. 所选存储库和分支中的新提交现在会连续部署到应用服务中。 可以在“部署中心”  页上跟踪提交和部署。
+1. 所选存储库和分支中的新提交现在会连续部署到应用服务中。 可以在“部署中心”页上跟踪提交和部署。
    
    ![在部署中心跟踪提交和部署](media/app-service-continuous-deployment/github-finished.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "80437229"
      
    ![生成提供程序](media/app-service-continuous-deployment/summary-azure-pipelines.png)
 
-1. 所选存储库和分支中的新提交现在会连续部署到应用服务中。 可以在“部署中心”  页上跟踪提交和部署。
+1. 所选存储库和分支中的新提交现在会连续部署到应用服务中。 可以在“部署中心”页上跟踪提交和部署。
 
 ## <a name="disable-continuous-deployment"></a>禁用持续部署
 

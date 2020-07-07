@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d3f2381f2fdce123511caa2339d41b0641b077
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4889fe0b482bd1485f6f05b8e0369823561f094d
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690643"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85606454"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>教程：Azure Active Directory 与 Float 的单一登录 (SSO) 集成
 
@@ -100,9 +100,9 @@ ms.locfileid: "82690643"
 
 1. 除了上述属性，Float 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
     
-    | 名称 |  |  源属性|
-    | ---------------| --------------- | --------- |
-    | 电子邮件 | | user.userprincipalname |
+    | 名称 | 源属性|
+    | ---------------| --------- |
+    | 电子邮件 | user.userprincipalname |
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 

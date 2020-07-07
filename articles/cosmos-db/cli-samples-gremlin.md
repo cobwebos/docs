@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1f927823fd7984014e2b8dd4d2ab90d83f144605
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 01e46d144c287569687bb79e7e9cb67b4923b78a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262950"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552896"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-gremlin-api"></a>适用于 Azure Cosmos DB Gremlin API 的 Azure CLI 示例
 
 下表包括适用于 Azure Cosmos DB Gremlin API 的示例 Azure CLI 脚本的链接。 [Azure CLI 参考](/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 可以在 [Azure Cosmos DB CLI GitHub 存储库](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)中找到所有 Azure Cosmos DB CLI 脚本示例。
 
-| |  |
+|任务 | 说明 |
 |---|---|
 | [创建 Azure Cosmos 帐户、数据库和图](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| 为 Gremlin API 创建 Azure Cosmos DB 帐户、数据库和图。 |
 | [更改吞吐量](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | 更新数据库和图的 RU/秒。|

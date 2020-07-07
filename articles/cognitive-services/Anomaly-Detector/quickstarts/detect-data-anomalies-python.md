@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: fd632e267e087c6489567c51e731d81cf9511ccb
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 81145dd6409bf93195f6b805ed260d945e7738f2
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606694"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982027"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 检测时序数据的异常
 
@@ -31,16 +31,16 @@ ms.locfileid: "84606694"
 
 ## <a name="prerequisites"></a>先决条件
 
+- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+- 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    - 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 - [Python 2.x 或 3.x](https://www.python.org/downloads/)
-- 异常检测器密钥和终结点
 - Python 的[请求库](https://pypi.org/project/requests/)
 
 - 包含时序数据点的 JSON 文件。 可在 [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json) 上找到本快速入门的示例数据。
 
-### <a name="create-an-anomaly-detector-resource"></a>创建异常检测器资源
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
-
+[!INCLUDE [anomaly-detector-environment-variables](../includes/environment-variables.md)]
 
 ## <a name="create-a-new-application"></a>创建新应用程序
 

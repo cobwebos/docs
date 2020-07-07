@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
 ms.openlocfilehash: 19a1883685193e80da5f1365ec2a30db0b8754f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81450133"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>使用证书提高 B2B 消息的安全性

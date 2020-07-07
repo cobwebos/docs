@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题解答-关于虚拟机的问题
-description: 有关 Azure 安全中心中的虚拟机的常见问题，一种可帮助防止、检测和响应威胁的产品
+title: Azure 安全中心常见问题解答 - 有关虚拟机的问题
+description: 有关 Azure 安全中心中的虚拟机的常见问题解答，Azure 安全中心有助于你预防、检测和响应威胁
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80436010"
 ---
-# <a name="faq---questions-about-virtual-machines"></a>常见问题解答-关于虚拟机的问题
+# <a name="faq---questions-about-virtual-machines"></a>常见问题解答 - 关于虚拟机的问题
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支持哪些类型的虚拟机？

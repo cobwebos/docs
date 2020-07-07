@@ -4,10 +4,10 @@ description: 本文介绍如何通过 Azure Monitor 容器停止监视 Azure Red
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.openlocfilehash: 768c4db8d72778b555a4f343cf2e23b8fa861991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82196434"
 ---
 # <a name="how-to-stop-monitoring-your-azure-and-red-hat-openshift-v4-cluster"></a>如何停止监视 Azure 和 Red Hat OpenShift v4 群集
@@ -35,17 +35,17 @@ ms.locfileid: "82196434"
 
     `helm delete <releaseName>`
 
-    示例：
+    例如：
 
     `helm delete azmon-containers-release-1`
 
-    这将从群集中删除发布。 可以通过运行以下`helm list`命令进行验证：
+    这将从群集中删除发布。 可以通过运行 `helm list` 以下命令进行验证：
 
     ```
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-配置更改可能需要几分钟才能完成。 因为 Helm 会在你删除发布后对其进行跟踪，因此你可以审核群集的历史记录，甚至还可以使用`helm rollback`撤消删除发布。
+配置更改可能需要几分钟才能完成。 因为 Helm 会在你删除发布后对其进行跟踪，因此你可以审核群集的历史记录，甚至还可以使用撤消删除发布 `helm rollback` 。
 
 ## <a name="next-steps"></a>后续步骤
 

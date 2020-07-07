@@ -1,15 +1,15 @@
 ---
-title: 网络资源的最佳做法
+title: 针对网络资源的最佳做法
 titleSuffix: Azure Kubernetes Service
 description: 了解 Azure Kubernetes 服务 (AKS) 中虚拟网络资源和连接的群集运算符的最佳实践
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82208051"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的网络连接和安全的最佳做法
@@ -43,9 +43,9 @@ ms.locfileid: "82208051"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 你还可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
+有关 AKS 服务主体委托的详细信息，请参阅[委托对其他 Azure 资源的访问权限][sp-delegation]。 你还可以使用系统分配的托管标识来获得权限，而非使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
-每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理 scale out 事件或群集升级，还需要可用于分配的子网的其他 IP 地址。 如果使用 Windows Server 容器，此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
+每个节点和 Pod 在接收自己的 IP 地址时，请规划 AKS 子网的地址范围。 子网必须大到足以为每个部署的节点、Pod 和网络资源提供 IP 地址。 每个 AKS 群集必须位于自己的子网中。 要允许连接到 Azure 中的本地网络或对等互连网络，请勿使用与现有网络资源重叠的 IP 地址范围。 每个节点使用 kubenet 和 Azure CNI 网络运行的 Pod 数量存在默认限制。 若要处理横向扩展事件或群集升级，还需要其他可以在分配的子网中使用的 IP 地址。 如果使用 Windows Server 容器，此额外的地址空间尤其重要，因为这些节点池需要升级才能应用最新的安全修补程序。 有关 Windows Server 节点的详细信息，请参阅[在 AKS 中升级节点池][nodepool-upgrade]。
 
 若要计算所需的 IP 地址，请参阅[在 AKS 中配置 Azure CNI 网络][advanced-networking]。
 
@@ -68,10 +68,10 @@ Azure 负载均衡器可以将客户流量分配到 AKS 群集中的各个应用
 
  入口有两个组件：
 
- * 入口资源，和**
- * 入口控制器**
+ * 入口资源，和
+ * 入口控制器
 
-入口资源是 `kind: Ingress` 的 YAML 清单，它定义了将流量路由到 AKS 群集中运行的服务的主机、证书和规则。 以下示例 YAML 清单会将 myapp.com 的流量分配到 blogservice 或 storeservice 两个服务中的一个******。 客户根据他们访问的 URL，被定向到一个或另一个服务。
+入口资源是 `kind: Ingress` 的 YAML 清单，它定义了将流量路由到 AKS 群集中运行的服务的主机、证书和规则。 以下示例 YAML 清单会将 myapp.com 的流量分配到 blogservice 或 storeservice 两个服务中的一个  。 客户根据他们访问的 URL，被定向到一个或另一个服务。
 
 ```yaml
 kind: Ingress
@@ -97,28 +97,28 @@ spec:
          servicePort: 80
 ```
 
-入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制于特定的控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
+入口控制器是在 AKS 节点上运行的守护程序并监视传入请求。 然后根据入口资源中定义的规则分配流量。 最佳常见的入口控制器基于 [NGINX]。 AKS 不会限制你使用特定控制器，因此可以使用其他控制器，例如 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik]。
 
-必须在 Linux 节点上计划入口控制器。 Windows Server 节点不应运行入口控制器。 使用 YAML 清单中的节点选择器或 Helm 图表部署来指示该资源应在基于 Linux 的节点上运行。 有关详细信息，请参阅[使用节点选择器控制在 AKS 中计划 pod 的位置][concepts-node-selectors]。
+必须在 Linux 节点上计划入口控制器。 Windows Server 节点不应运行入口控制器。 在 YAML 清单或 Helm 图表部署中使用节点选择器来指示资源应在基于 Linux 的节点上运行。 有关详细信息，请参阅[使用节点选择器控制在 AKS 中计划 Pod 的位置][concepts-node-selectors]。
 
 入口有许多方案，包括以下操作指南：
 
-* [使用外部网络连接创建基本入口控制器][aks-ingress-basic]
+* [创建具有外部网络连接的基本入口控制器][aks-ingress-basic]
 * [创建使用内部、专用网络和 IP 地址的入口控制器][aks-ingress-internal]
 * [创建使用你自己的 TLS 证书的入口控制器][aks-ingress-own-tls]
 * 创建一个使用 Let's Encrypt 的入口控制器，以自动生成[具有动态公共 IP 地址][aks-ingress-tls]或[具有静态公共 IP 地址][aks-ingress-static-tls]的 TLS 证书
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>使用 Web 应用程序防火墙 (WAF) 保护流量
 
-**最佳做法指南** - 要扫描传入流量是否存在潜在攻击，请使用 Web 应用程序防火墙 (WAF)，例如 [Barracuda WAF for Azure][barracuda-waf] 或 Azure 应用程序网关。 这些更高级的网络资源还可以将流量路由到 HTTP 和 HTTPS 连接之外，或者只路由基本 TLS 终止。
+**最佳做法指南** - 要扫描传入流量是否存在潜在攻击，请使用 Web 应用程序防火墙 (WAF)，例如 [Barracuda WAF for Azure][barracuda-waf] 或 Azure 应用程序网关。 这些更高级的网络资源还可以路由 HTTP 和 HTTPS 连接或基本 TLS 终止之外的流量。
 
 将流量分配到服务和应用程序的入口控制器通常是 AKS 群集中的 Kubernetes 资源。 控制器作为守护程序在 AKS 节点上运行，并使用一些节点资源（例如 CPU、内存和网络带宽）。 在较大的环境中，通常需要将部分流量路由或 TLS 终端卸载到 AKS 群集之外的网络资源。 还需要扫描传入流量是否存在潜在攻击。
 
 ![Azure 应用程序网关等 Web 应用程序防火墙 (WAF) 可以保护和分配 AKS 群集的流量](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Web 应用程序防火墙 (WAF) 通过筛选传入流量提供额外的安全层。 开放式 Web 应用程序安全项目 (OWASP) 提供了一套规则来监视跨网站脚本或 cookie 中毒之类的攻击。 [Azure 应用程序网关][app-gateway]（目前在 AKS 中预览）是一种 WAF，可在流量到达 AKS 群集和应用程序之前与 AKS 群集集成以提供这些安全功能。 其他第三方解决方案也可以执行这些功能，因此可以在给定的产品中继续使用现有的资源和专业知识。
+Web 应用程序防火墙 (WAF) 通过筛选传入流量提供额外的安全层。 开放式 Web 应用程序安全项目 (OWASP) 提供了一套规则来监视跨网站脚本或 cookie 中毒之类的攻击。 [Azure 应用程序网关][app-gateway]（目前在 AKS 中处于预览状态）是一种 WAF，可在流量到达 AKS 群集和应用程序之前与 AKS 群集集成以提供这些安全功能。 其他第三方解决方案也可以执行这些功能，因此可以在给定的产品中继续使用现有的资源和专业知识。
 
-负载均衡器或入口资源继续在 AKS 群集中运行以进一步优化流量分配。 通过资源定义，可以将应用程序网关可以作为入口控制器进行集中管理。 要快速入门，请[创建应用程序网关入口控制器][app-gateway-ingress]。
+负载均衡器或入口资源继续在 AKS 群集中运行以进一步优化流量分配。 通过资源定义，可以将应用程序网关可以作为入口控制器进行集中管理。 首先，[创建应用程序网关入口控制器][app-gateway-ingress]。
 
 ## <a name="control-traffic-flow-with-network-policies"></a>使用网络策略控制流量流
 

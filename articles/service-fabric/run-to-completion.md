@@ -6,23 +6,23 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81431288"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
-从7.1 版开始，Service Fabric 支持[容器][containers-introduction-link]和[来宾可执行][guest-executables-introduction-link]应用程序的**RunToCompletion**语义。 这些语义启用了完成任务并退出的应用程序和服务，而不是始终运行应用程序和服务。
+从 7.1 版开始，Service Fabric 支持适用于[容器][containers-introduction-link]应用程序和[来宾可执行文件][guest-executables-introduction-link]应用程序的 RunToCompletion 语义。 这些语义使应用程序和服务一完成任务就退出，不需始终运行应用程序和服务。
 
-在继续阅读本文之前，建议熟悉[Service Fabric 应用程序模型][application-model-link]和[Service Fabric 托管模型][hosting-model-link]。
+继续阅读本文之前，建议先熟悉 [Service Fabric 应用程序模型][application-model-link]和 [Service Fabric 托管模型][hosting-model-link]。
 
 > [!NOTE]
-> RunToCompletion 语义当前不支持使用[Reliable Services][reliable-services-link]编程模型编写的服务。
+> 使用 [Reliable Services][reliable-services-link] 编程模型编写的服务目前不支持 RunToCompletion 语义。
  
 ## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion 语义和规范
-[导入 servicemanifest.xml][application-and-service-manifests-link]时，可以将 RunToCompletion 语义指定为**set-executionpolicy** 。 指定的策略由包含 Servicemanifest.xml 的所有 Codepackage 继承。 以下 Applicationmanifest.xml 代码片段提供了一个示例。
+[导入 ServiceManifest][application-and-service-manifests-link]时，可以将 RunToCompletion 语义指定为 ExecutionPolicy。 指定的策略由构成该 ServiceManifest 的所有 CodePackage 继承。 以下 ApplicationManifest.xml 代码片段提供了一个示例。
 
 ```xml
 <ServiceManifestImport>
@@ -32,22 +32,22 @@ ms.locfileid: "81431288"
   </Policies>
 </ServiceManifestImport>
 ```
-**Set-executionpolicy**允许以下两个属性：
-* **类型：** **RunToCompletion**当前是此属性的唯一允许值。
-* **重新启动：** 此属性指定在失败时应用于由 ServicePackage 组成的 Codepackage 的重新启动策略。 使用**非零退出代码**的 CodePackage 退出被视为已失败。 此属性的允许值为**OnFailure** ，**且** **OnFailure**为默认值。
+ExecutionPolicy 允许以下两个属性：
+* **类型：** RunToCompletion 当前是此属性的唯一允许值。
+* **Restart:** 此属性指定在失败时应用于构成该 ServicePackage 的 Codepackage 的重启策略。 以“非零退出代码”退出的 CodePackage 被视为已失败。 此属性的允许值为 **OnFailure** 和 **Never**，默认值为 **OnFailure**。
 
-如果将重启策略设置为**OnFailure**，则如果任何 CodePackage 失败 **（非零退出代码）**，则会重新启动，并在重复失败之间来回切换。 如果将重启策略设置为 "**从不**"，则在任何 CodePackage 失败的情况下，DeployedServicePackage 的部署状态将标记为 "**失败**"，但允许继续执行其他 codepackage。 如果包含 ServicePackage 运行的所有 Codepackage 成功完成 **（退出代码0）**，则 DeployedServicePackage 的部署状态将标记为**RanToCompletion**。 
+当重启策略设置为 **OnFailure** 时，如果有任何 CodePackage 失败 **（退出代码为非零值）** ，则会重启，在反复失败的情况下会进行回退。 当重启策略设置为 **Never** 时，如果有任何 CodePackage 失败，则 DeployedServicePackage 的部署状态会被标记为“失败”，但其他 CodePackage 可以继续执行。 如果构成该 ServicePackage 的所有 CodePackage 都运行至成功完成 **（退出代码为 0）** ，则 DeployedServicePackage 的部署状态会被标记为“RanToCompletion”。 
 
-## <a name="complete-example-using-runtocompletion-semantics"></a>使用 RunToCompletion 语义的完整示例
+## <a name="complete-example-using-runtocompletion-semantics"></a>使用了 RunToCompletion 语义的完整示例
 
-让我们看一个使用 RunToCompletion 语义的完整示例。
+让我们看一个使用了 RunToCompletion 语义的完整示例。
 
 > [!IMPORTANT]
-> 以下示例假设熟悉如何[使用 Service Fabric 和 Docker 创建 Windows 容器应用程序][containers-getting-started-link]。
+> 以下示例假定你熟悉如何创建[使用 Service Fabric 和 Docker 的 Windows 容器应用程序][containers-getting-started-link]。
 >
-> 此示例引用 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 此示例引用了 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器并非在所有主机 OS 版本间都兼容。 若要了解详细信息，请参阅 [Windows 容器版本兼容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-以下 Servicemanifest.xml 描述了一个 ServicePackage，其中包含表示容器的两个 Codepackage。 *RunToCompletionCodePackage1*只是将消息记录到**stdout** ，然后退出。 *RunToCompletionCodePackage2* ping 环回地址一段时间后，退出代码为**0**、 **1**或**2**。
+以下 ServiceManifest.xml 描述了一个 ServicePackage，其中包含表示容器的两个 Codepackage。 RunToCompletionCodePackage1 直接将消息记录到 stdout 并退出。 RunToCompletionCodePackage2 将在一段时间内对环回地址执行 ping 操作，然后以退出代码 **0**、**1** 或 **2** 退出。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ ms.locfileid: "81431288"
 </ServiceManifest>
 ```
 
-以下 Applicationmanifest.xml 介绍了基于上述 Servicemanifest.xml 的应用程序。 它为*WindowsRunToCompletionServicePackage*指定**RunToCompletion** **set-executionpolicy** ，重新启动策略为**OnFailure**。 *WindowsRunToCompletionServicePackage*激活时，将启动其组成的 codepackage。 第一次激活时， *RunToCompletionCodePackage1*应成功退出。 但是， *RunToCompletionCodePackage2*可能会失败 **（非零退出代码）**，在这种情况下，将重新启动，因为重新启动策略为**OnFailure**。
+下面的 ApplicationManifest.xml 描述了一个基于上述 ServiceManifest.xml 的应用程序。 它为 WindowsRunToCompletionServicePackage 指定了 **RunToCompletion** **ExecutionPolicy**，使用的重启策略为 **OnFailure**。 当激活 WindowsRunToCompletionServicePackage 时，构成它的那些 CodePackage 会启动。 RunToCompletionCodePackage1 在首次激活时应该会成功退出。 但是，RunToCompletionCodePackage2 可能会失败 **（退出代码为非零值）** 。在这种情况下，它会重启，因为重启策略为 **OnFailure**。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -103,21 +103,21 @@ ms.locfileid: "81431288"
 </ApplicationManifest>
 ```
 ## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>查询 DeployedServicePackage 的部署状态
-可以使用[ServiceFabricDeployedServicePackage][deployed-service-package-link]在 PowerShell 中查询 DeployedServicePackage 的部署状态，也可以从 c # 使用[FabricClient][fabric-client-link] API [fabricclient.queryclient.getdeployedservicepackagelistasync （string，Uri，String）][deployed-service-package-fabricclient-link]查询
+可以通过 PowerShell 使用 [Get-ServiceFabricDeployedServicePackage][deployed-service-package-link] 或通过 C# 使用 [FabricClient][fabric-client-link] API [GetDeployedServicePackageListAsync(String, Uri, String)][deployed-service-package-fabricclient-link] 来查询 DeployedServicePackage 的部署状态
 
 ## <a name="considerations-when-using-runtocompletion-semantics"></a>使用 RunToCompletion 语义时的注意事项
 
 对于当前的 RunToCompletion 支持，应注意以下几点。
-* 仅[容器][containers-introduction-link]和[来宾可执行][guest-executables-introduction-link]应用程序支持这些语义。
-* 不允许使用具有 RunToCompletion 语义的应用程序的升级方案。 如果需要，用户应删除并重新创建此类应用程序。
-* 故障转移事件会导致 Codepackage 在成功完成后、同一节点或群集的其他节点上重新执行。 故障转移事件的示例包括节点重启和 Service Fabric 运行时升级。
+* 只有[容器][containers-introduction-link]应用程序和[来宾可执行文件][guest-executables-introduction-link]应用程序支持这些语义。
+* 不允许对包含 RunToCompletion 语义的应用程序执行升级方案。 必要时，用户应删除并重新创建此类应用程序。
+* 故障转移事件可能会导致 Codepackage 在成功完成后在同一节点上或群集的其他节点上重新执行。 故障转移事件的示例包括：节点重启和节点上的 Service Fabric 运行时升级。
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章了解相关信息。
+请参阅以下文章，了解相关信息。
 
-* [Service Fabric 和容器。][containers-introduction-link]
-* [Service Fabric 和来宾可执行文件。][guest-executables-introduction-link]
+* [Service Fabric 和容器][containers-introduction-link]。
+* [Service Fabric 和来宾可执行文件][guest-executables-introduction-link]。
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

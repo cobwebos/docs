@@ -7,18 +7,18 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 04bbfe3ee38c5ce37c36ab2f85467ce68e7335be
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 093d8cdd97f28a419788070e674d80aad595f46a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556310"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>适用于 Azure Cosmos DB Cassandra API 的 Azure CLI 示例
 
 下表包括适用于 Azure Cosmos DB Cassandra API 的示例 Azure CLI 脚本的链接。 [Azure CLI 参考](/cli/azure/cosmosdb)中收录了所有 Azure Cosmos DB CLI 命令的参考页。 可以在 [Azure Cosmos DB CLI GitHub 存储库](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)中找到所有 Azure Cosmos DB CLI 脚本示例。
 
-| |  |
+|任务 | 说明 |
 |---|---|
 | [创建 Azure Cosmos 帐户、密钥空间和表](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| 为 Cassandra API 创建 Azure Cosmos DB 帐户、密钥空间和表。 |
 | [更改吞吐量](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | 更新密钥空间和表的 RU/秒。|

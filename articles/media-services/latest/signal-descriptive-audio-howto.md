@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72392184"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>指示描述性音频轨道
@@ -219,7 +219,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 
 ### <a name="get-streaming-urls"></a>获取流式 URL
 
-创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**  。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**  。
+创建[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)后，可以获取流 URL，如 **GetStreamingURLs** 中所示。 若要生成 URL，需要连接[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)的主机名和**流定位符**路径。 此示例使用默认的**流式处理终结点**。 首次创建媒体服务帐户时，此默认的**流式处理终结点**处于停止状态，因此需要调用 **Start**。
 
 > [!NOTE]
 > 在此方法中，需要指定在创建输出资产的**流定位符**时所用的 locatorName。
@@ -237,7 +237,7 @@ await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName
 2. 在“URL:”框中，粘贴从应用程序获取的某个流式处理 URL 值****。 
  
      可以粘贴 HLS、Dash 或 Smooth 格式的 URL，Azure Media Player将切换到适当的流协议，以便在你的设备上自动播放。
-3. 按“更新播放器”****。
+3. 按“更新播放器”。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 

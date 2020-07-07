@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
 ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72595406"
 ---
 # <a name="azure-infrastructure-security"></a>Azure 基础结构安全性
@@ -41,6 +41,6 @@ Microsoft Azure 在由 Microsoft 管理和运营的数据中心运行。 这些�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解你[在云中的共同责任](shared-responsibility.md)。
+- 了解[云中责任分担](shared-responsibility.md)。
 
-- 了解[Azure 安全中心](https://azure.microsoft.com/services/security-center/)如何帮助你预防、检测和响应威胁，同时提高 azure 资源的可见性并控制其安全性。
+- 了解 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)如何有助于预防、检测和应对威胁，同时提高了 Azure 资源安全性的可见性和可控性。

@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80383984"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
@@ -20,7 +20,7 @@ ms.locfileid: "80383984"
 
 目前，使用支持 GPU 的节点池这一功能仅适用于 Linux 节点池。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集，其中包含支持 GPU 的节点。 AKS 群集须运行 Kubernetes 1.10 或更高版本。 如果需要满足这些要求的 AKS 群集，请参阅本文第一部分来[创建 AKS 群集](#create-an-aks-cluster)。
 

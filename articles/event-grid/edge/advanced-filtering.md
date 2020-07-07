@@ -10,14 +10,14 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "72992556"
 ---
 # <a name="advanced-filtering"></a>高级筛选
-事件网格允许在 json 有效负载中的任何属性上指定筛选器。 这些筛选器将建模为`AND`条件集，每个外部条件都有可选`OR`的内部条件。 对于每`AND`个条件，请指定以下值：
+事件网格允许在 json 有效负载中的任何属性上指定筛选器。 这些筛选器将建模为 `AND` 条件集，每个外部条件都有可选的内部 `OR` 条件。 对于每个 `AND` 条件，请指定以下值：
 
 * `OperatorType`-比较的类型。
 * `Key`-要对其应用筛选器的属性的 json 路径。
@@ -50,18 +50,18 @@ ms.locfileid: "72992556"
 
 ## <a name="and-or-not-semantics"></a>和-或-NOT 语义
 
-请注意，在前面给出的 json `AdvancedFilters`示例中，是一个数组。 将每个`AdvancedFilter`数组元素视为一个`AND`条件。
+请注意，在前面给出的 json 示例中， `AdvancedFilters` 是一个数组。 将每个 `AdvancedFilter` 数组元素视为一个 `AND` 条件。
 
-对于支持多个值（ `NumberIn`如、 `NumberNotIn` `StringIn`、等）的运算符，每个值都被视为一个`OR`条件。 因此， `StringBeginsWith("a", "b", "c")`将匹配以`a`或`b`或`c`开头的任何字符串值。
+对于支持多个值（如、、等 `NumberIn` ）的运算符 `NumberNotIn` `StringIn` ，每个值都被视为一个 `OR` 条件。 因此， `StringBeginsWith("a", "b", "c")` 将匹配以或或开头的任何字符串值 `a` `b` `c` 。
 
 > [!CAUTION]
-> NOT 运算符- `NumberNotIn`并`StringNotIn`在`Values`字段中给定的每个值上表现为和条件。
+> NOT 运算符- `NumberNotIn` 并 `StringNotIn` 在字段中给定的每个值上表现为和条件 `Values` 。
 >
 > 如果不这样做，会使筛选器成为全部接受筛选器并使筛选的目的失效。
 
 ## <a name="floating-point-rounding-behavior"></a>浮点舍入行为
 
-事件网格使用`decimal` .net 类型处理所有数字值。 在事件订阅 JSON 中指定的数值不受浮点舍入行为限制。
+事件网格使用 `decimal` .net 类型处理所有数字值。 在事件订阅 JSON 中指定的数值不受浮点舍入行为限制。
 
 ## <a name="case-sensitivity-of-string-filters"></a>字符串筛选器的区分大小写
 
@@ -71,7 +71,7 @@ ms.locfileid: "72992556"
 
 `Key`属性可以是已知的顶级属性，也可以是具有多个点的 json 路径，其中每个点表示单步执行嵌套 json 对象。
 
-与 JSONPath 规范不同，事件网格对密钥`$`中的字符没有任何特殊含义。
+`$`与 JSONPath 规范不同，事件网格对密钥中的字符没有任何特殊含义。
 
 ### <a name="event-grid-schema"></a>事件网格架构
 
@@ -79,7 +79,7 @@ ms.locfileid: "72992556"
 
 * ID
 * 主题
-* Subject
+* 使用者
 * EventType
 * DataVersion
 * Data. Prop1
@@ -87,7 +87,7 @@ ms.locfileid: "72992556"
 
 ### <a name="custom-event-schema"></a>自定义事件架构
 
-自定义事件架构中没有`Key`任何限制，因为事件网格不会在有效负载上强制任何信封架构。
+`Key`自定义事件架构中没有任何限制，因为事件网格不会在有效负载上强制任何信封架构。
 
 ## <a name="numeric-single-value-filter-examples"></a>单值数值筛选器示例
 

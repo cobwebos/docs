@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
 ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82204094"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>在 Azure 安全中心提供安全联系人详细信息
@@ -39,32 +39,32 @@ Azure 安全中心建议对 Azure 订阅提供安全联系人的详细信息（�
 > [!IMPORTANT]
 > 本文档将使用示例部署介绍该服务。  这并非一份循序渐进的指南。
 
-## <a name="set-up-email-notifications-for-alerts"></a>为警报设置电子邮件通知<a name="email"></a>
+## <a name="set-up-email-notifications-for-alerts"></a>为警报设置电子邮件通知 <a name="email"></a>
 
-1. 作为具有角色安全管理员或订阅所有者的用户，请打开 "**电子邮件通知**" 页：
+1. 作为具有“安全管理员”或“订阅所有者”角色的用户，打开“电子邮件通知”页：
 
-    - 对于警报，打开**定价 & 设置**，选择相关订阅，并选择 "**电子邮件通知**"。
+    - 对于警报，请打开“定价 & 设置”，选择相关订阅，并选择“电子邮件通知” 。
 
-    - 如果要实施建议，请在 "**建议**" 下选择 "**提供安全联系人详细信息**"，选择要在其上提供联系人信息的 Azure 订阅。 这将打开“电子邮件通知”****。
+    - 如果要实施建议，请在“建议”下选择“提供安全联系人详细信息”，选择要在其上提供联系人信息的 Azure 订阅 。 这将打开“电子邮件通知”。
 
    ![提供安全联系人详细信息][2]
 
-1. 输入安全联系人的电子邮件地址或地址，用逗号隔开。 您可以输入的电子邮件地址数没有限制。
+1. 输入安全联系人的电子邮件地址或地址，用逗号隔开。 可输入的电子邮件地址数量无限制。
 
-1. 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”****。 对于其他严重性级别，请使用 "[工作流自动化](workflow-automation.md)" 中所述的逻辑应用。
+1. 若要接收有关于高严重级别警报的电子邮件，请打开选项“通过电子邮件向我发送警报”。 对于其他严重性级别，请使用 "[工作流自动化](workflow-automation.md)" 中所述的逻辑应用。
 
 1. 你可以向订阅所有者发送电子邮件通知（经典服务管理员和协同管理员，以及订阅范围内的 RBAC 所有者角色）。
 
-1. 若要将安全联系人信息应用到订阅，请选择 "**保存**"。
+1. 若要将安全联系人信息应用到订阅，请选择“保存”。
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)-了解如何配置 azure 订阅和资源组的安全策略。
-* [在 Azure 安全中心管理安全建议](security-center-recommendations.md)-了解建议如何帮助你保护 azure 资源。
-* [Azure 安全中心的安全运行状况监视](security-center-monitoring.md)-了解如何监视 azure 资源的运行状况。
-* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)-了解如何管理和响应安全警报。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)-了解如何监视合作伙伴解决方案的运行状况状态。
+* [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
+* [在 Azure 安全中心中管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助保护 Azure 资源。
+* [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) -- 了解如何监视 Azure 资源的运行状况。
+* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
+* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) -- 了解如何监视合作伙伴解决方案的运行状态。
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81432081"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
@@ -34,21 +34,21 @@ Key Vault 最初是根据 [Azure Key Vault 服务限制](service-limits.md)中�
 1. 在内存中缓存从 Azure Key Vault 检索的机密，并尽可能地从内存中重新使用机密。  仅当缓存的副本停止工作（例如，因为它已在源中轮换）时，才从 Azure Key Vault 重新读取。 
 1. Key Vault 是为你自己的服务机密设计的。   如果存储客户的机密（尤其是对于高吞吐量密钥存储方案），请考虑将密钥放在支持加密的数据库中或存储帐户中，并只将主密钥存储在 Azure Key Vault 中。
 1. 可以在不访问 Key Vault 的情况下加密、包装和验证公钥操作，这不仅可以降低限制的风险，而且还能提高可靠性（前提是正确缓存公钥材料）。
-1. 如果使用 Key Vault 存储服务的凭据，请检查该服务是否支持 Azure AD 身份验证直接进行身份验证。 这会减少 Key Vault 上的负载、提高可靠性并简化代码，因为 Key Vault 现在可以使用 Azure AD 标记。  许多服务已移动到使用 Azure AD 身份验证。 请参阅[支持 Azure 资源的托管标识的服务](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)中的当前列表。
+1. 如果使用 Key Vault 存储服务的凭据，请检查该服务是否支持使用 Azure AD 身份验证直接进行身份验证。 这可以减少 Key Vault 中的负载，提高可靠性并简化代码，因为 Key Vault 现在可以使用 Azure AD 令牌。  许多服务已改用 Azure AD 身份验证。在[支持 Azure 资源托管标识的 Azure 服务](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)中查看最新列表。
 1. 考虑在一个较长的时间段内错开负载/部署，使其不会超过当前的 RPS 限制。
 1. 如果应用包含多个需要读取相同机密的节点，请考虑使用扇出模式，让一个实体从 Key Vault 读取机密，并扇出到所有节点。   仅在内存中缓存检索的机密。
 如果你发现上述方案仍不能满足需求，请填写下表并联系我们，以确定可以添加多少附加容量（例如，以下示例仅供演示目的）。
 
 | 保管库名称 | 保管库区域 | 对象类型（机密、密钥或证书） | 操作* | 键类型 | 密钥长度或曲线 | HSM 密钥？| 所需的稳定状态 RPS | 所需的峰值 RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | 密钥 | 签名 | EC | P-256 | 否 | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | 键 | 签名 | EC | P-256 | 否 | 200 | 1000 |
 
 \* 有关可能值的完整列表，请参阅 [Azure Key Vault 操作](/rest/api/keyvault/key-operations)。
 
 如果增加容量已获批准，请注意容量增加后的以下考虑因素：
 1. 数据一致性模型更改。 将吞吐量容量更高的保管库加入允许列表后，Key Vault 服务数据一致性保证会发生更改（需要满足更大量的 RPS，因为底层 Azure 存储服务无法跟进）。  简而言之：
-  1. **不带允许列表**： Key Vault 服务将反映写操作的结果（例如 SecretGet、KeySign）中会立即反映写入操作（例如 SecretSet、CreateKey）的结果。
-  1. **使用允许列表**： Key Vault 服务将反映写入操作的结果（例如 SecretGet、KeySign）中反映写入操作（例如 SecretSet、CreateKey）的结果。
+  1. **不使用允许列表**：Key Vault 服务在后续调用（例如 SecretGet、KeySign）中会立即反映写入操作（例如 SecretSet、CreateKey）的结果。
+  1. **使用允许列表**：Key Vault 服务在 60 秒内在后续调用（例如 SecretGet、KeySign）中反映写入操作（例如 SecretSet、CreateKey）的结果。
 1. 客户端代码必须遵循 429 次重试的退避策略。 调用 Key Vault 服务的客户端代码在收到 429 响应代码时，不得立即重试 Key Vault 请求。  此处发布的 Azure Key Vault 限制指导建议在收到 429 Http 响应代码时立即应用指数退避。
 
 如果出现限制值较高的有效业务用例，请与我们联系。
