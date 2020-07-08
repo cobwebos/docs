@@ -9,10 +9,9 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944302"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 开发和调试 Azure IoT Edge 模块
@@ -28,7 +27,7 @@ ms.locfileid: "78944302"
 >[!NOTE]
 >开发和调试对 Linux ARM64 设备的支持是[公开预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关详细信息，请参阅[在 Visual Studio Code（预览版）中开发和调试 ARM64 IoT Edge 模块](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 可以使用运行 Windows、macOS 或 Linux 的计算机或虚拟机作为开发计算机。 在 Windows 计算机上，可以开发 Windows 或 Linux 模块。 若要开发 Windows 模块，请使用运行版本 1809/内部版本 17763 或更高版本的 Windows 计算机。 若要开发 Linux 模块，请使用符合 [Docker Desktop 要求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 计算机。
 
@@ -48,7 +47,7 @@ ms.locfileid: "78944302"
 
 - Python： [python](https://www.python.org/downloads/)和[Pip](https://pip.pypa.io/en/stable/installing/#installation)用于安装 python 包（通常包含在 Python 安装中）。
 
-- Node.js [： node.js。](https://nodejs.org) 还需要安装 [Yeoman](https://www.npmjs.com/package/yo) 和 [Azure IoT Edge Node.js 模块生成器](https://www.npmjs.com/package/generator-azure-iot-edge-module)。
+- Node.js： [Node.js](https://nodejs.org)。 还需要安装 [Yeoman](https://www.npmjs.com/package/yo) 和 [Azure IoT Edge Node.js 模块生成器](https://www.npmjs.com/package/generator-azure-iot-edge-module)。
 
 - Java： [Java SE 开发工具包 10](https://aka.ms/azure-jdks)和[Maven](https://maven.apache.org/)。 需要[设置`JAVA_HOME`环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)，使其指向 JDK 安装项目。
 
@@ -92,7 +91,7 @@ ms.locfileid: "78944302"
 
 1. 输入模块的名称。 选择容器注册表中唯一的名称。
 
-1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名****。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost****。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器类似于** _ \<注册表名称\>_. azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果看起来像** \<*注册表名称*\>。 azurecr.io/_\<您的模块名称\>_**。
+1. 提供模块的映像存储库的名称。 Visual Studio Code 使用“localhost:5000/<你的模块名称\>”自动填充模块名****。 将其替换为你自己的注册表信息。 如果使用本地 Docker 注册表进行测试，则可以使用 localhost****。 如果使用 Azure 容器注册表，那么请从注册表的设置中使用登录服务器。 登录服务器的外观类似于** _\<registry name\>_ azurecr.io**。 仅替换字符串中的**localhost： 5000**部分，使最终结果如** \<*registry name*\> azurecr.io/ _\<your module name\>_ **。
 
    ![提供 Docker 映像存储库](./media/how-to-develop-csharp-module/repository.png)
 
@@ -121,7 +120,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 解决方案附带的默认 C# 模块代码位于以下位置：
 
-- Azure Function （c #）：模块 **> * &lt;模块命名&gt;* > *&lt;模块名称&gt;*.cs**
+- Azure Function （c #）：模块 **> 模块* &lt; 命名 &gt; *  >  * &lt; 模块名称 &gt; *.cs**
 - C#：modules > &lt;你的模块名称&gt; > Program.cs******
 - Python：modules > &lt;你的模块名称&gt; > main.py******
 - Node.js：modules > &lt;你的模块名称&gt; > app.js******
@@ -159,7 +158,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
 1. 根据开发语言的要求准备环境以进行调试，在模块中设置断点，并选择要使用的调试配置：
    - **C#**
-     - 在 Visual Studio Code 集成终端中，将目录更改为*** &lt;你的模块名称&gt; ***文件夹，然后运行以下命令以生成 .net Core 应用程序。
+     - 在 Visual Studio Code 集成终端中，将目录更改为*** &lt; 你的模块名称 &gt; ***文件夹，然后运行以下命令以生成 .net Core 应用程序。
 
        ```cmd
        dotnet build
@@ -167,13 +166,13 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
      - 打开 `Program.cs` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图****。 从下拉列表中选择 "调试配置** * &lt;模块名称&gt; *本地调试（.net Core）** "。
+     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图****。 从下拉列表中选择 "调试配置** * &lt; 模块名称 &gt; *本地调试（.net Core）** "。
 
         > [!NOTE]
-        > 如果你的 .NET `TargetFramework` Core 与中`launch.json`的程序路径不一致，你将需要手动更新中`launch.json`的程序路径以匹配 .csproj 文件`TargetFramework`中的，以便 Visual Studio Code 能够成功启动此程序。
+        > 如果你的 .NET Core `TargetFramework` 与中的程序路径不一致 `launch.json` ，你将需要手动更新中的程序路径 `launch.json` 以匹配 `TargetFramework` .csproj 文件中的，以便 Visual Studio Code 能够成功启动此程序。
 
    - **Node.js**
-     - 在 Visual Studio Code 集成终端中，将目录更改为*** &lt;你的模块名称&gt; ***文件夹，然后运行以下命令以安装节点包
+     - 在 Visual Studio Code 集成终端中，将目录更改为*** &lt; 你的模块名称 &gt; ***文件夹，然后运行以下命令以安装节点包
 
        ```cmd
        npm install
@@ -181,11 +180,11 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
      - 打开 `app.js` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图****。 从下拉列表中选择 "调试配置** * &lt;模块名称&gt; * " 本地调试（node.js）** 。
+     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图****。 从下拉列表中选择 "调试配置** * &lt; 模块名称 &gt; *本地调试（Node.js）** "。
    - **Java**
      - 打开 `App.java` 文件并添加断点。
 
-     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图****。 从下拉列表中选择 "调试配置** * &lt;模块名称&gt; *本地调试（Java）** "。
+     - 通过选择“视图”>“调试”以导航到 Visual Studio Code 调试视图****。 从下拉列表中选择 "调试配置** * &lt; 模块名称 &gt; *本地调试（Java）** "。
 
 1. 单击“开始调试”或按“F5”开始调试会话********。
 
@@ -233,7 +232,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
    ![监视变量](media/how-to-vs-code-develop-module/view-log.png)
 
-1. 导航至 Visual Studio Code 调试视图，并选择模块的调试配置文件。 调试选项名称应类似于** * &lt;模块名称&gt; *远程调试**
+1. 导航至 Visual Studio Code 调试视图，并选择模块的调试配置文件。 调试选项名称应类似于** * &lt; 模块名称 &gt; *远程调试**
 
 1. 选择“开始调试”或按“F5”********。 选择要附加到的进程。
 
@@ -301,7 +300,7 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
    1. 右键单击 IoT Edge 设备 ID，然后选择 "**创建单个设备的部署**"。
 
       > [!TIP]
-      > 若要确认已选择的设备为 IoT Edge 设备，请选择它以展开模块列表并验证是否存在“$ edgeHub”和“$ edgeAgent”********。 每个 IoT Edge 设备都包含这两个模块。
+      > 若要确认已选择的设备为 IoT Edge 设备，请选择它以展开模块列表并验证是否存在“$ edgeHub”和“$ edgeAgent” 。 每个 IoT Edge 设备都包含这两个模块。
 
    1. 导航到解决方案的“config”文件夹，选择 `deployment.debug.amd64.json` 文件，然后选择“选择 Edge 部署清单”********。
 
@@ -321,13 +320,13 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
   - 请确保计算机上要调试的模块正在运行并可供调试程序附加，且可以从外部访问端口 9229。 可以通过在调试程序计算机上打开 `http://<target-machine-IP>:9229/json` 对此进行验证。 此 URL 应显示有关要调试的 Node.js 模块的信息。
   
-  - 在您的开发计算机上，打开 Visual Studio Code， `launch.json`然后编辑，以便** * &lt;您的模块&gt;名称*远程调试（node.js）** 配置文件（或** * &lt;您的模块名称&gt; *远程调试（Windows 容器中的 node.js）** 配置文件的 address 值（如果该模块作为 windows 容器运行）是正在调试的计算机的 IP。
+  - 在您的开发计算机上，打开 Visual Studio Code，然后编辑， `launch.json` 以便** * &lt; 您的模块名称 &gt; *远程调试（Node.js）** 配置文件（或** * &lt; 模块名称 &gt; *远程调试（Windows 容器中的 Node.js）** 配置文件（如果该模块作为 windows 容器运行）的地址值是正在调试的计算机的 IP。
 
 - **Java**
 
   - 通过运行 `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N` 将 SSH 隧道生成到要调试的计算机。
   
-  - 在开发计算机上，打开 Visual Studio Code 并在中`launch.json`编辑** * &lt;模块名称&gt; *远程调试（Java）** 配置文件，以便可以附加到目标计算机。 若要了解如何编辑 `launch.json` 和使用 Visual Studio Code 调试 Java 的详细信息，请参阅[配置调试程序](https://code.visualstudio.com/docs/java/java-debugging#_configuration)中的部分。
+  - 在开发计算机上，打开 Visual Studio Code 并在中编辑** * &lt; 模块名称 &gt; *远程调试（Java）** 配置文件， `launch.json` 以便可以附加到目标计算机。 若要了解如何编辑 `launch.json` 和使用 Visual Studio Code 调试 Java 的详细信息，请参阅[配置调试程序](https://code.visualstudio.com/docs/java/java-debugging#_configuration)中的部分。
 
 - **Python**
 
@@ -335,20 +334,20 @@ Visual Studio Code 采用你提供的信息，创建一个 IoT Edge 解决方案
 
   - 在之前插入 `main.py` 中的代码 `ptvsd.enable_attach(('0.0.0.0', 5678))` 中，将“0.0.0.0”更改为要调试的计算机的 IP 地址****。 再次生成、推送和部署 IoT Edge 模块。
 
-  - 在您的开发计算机上，打开 Visual Studio Code， `launch.json`然后编辑， `host`以便** * &lt;您的模块名称&gt; *远程调试（Python）** 配置文件的值使用目标计算机的 IP 地址而不`localhost`是。
+  - 在您的开发计算机上，打开 Visual Studio Code，然后编辑， `launch.json` 以便 `host` 您的** * &lt; 模块名称 &gt; *远程调试（Python）** 配置文件的值使用目标计算机的 IP 地址而不是 `localhost` 。
 
 ### <a name="debug-your-module"></a>调试模块
 
-1. 在 Visual Studio Code 调试视图中，选择模块的调试配置文件。 调试选项名称应类似于** * &lt;模块名称&gt; *远程调试**
+1. 在 Visual Studio Code 调试视图中，选择模块的调试配置文件。 调试选项名称应类似于** * &lt; 模块名称 &gt; *远程调试**
 
 1. 打开开发语言的模块文件并添加断点：
 
-   - **Azure 函数（c #）**：将断点添加到文件`<your module name>.cs`。
-   - **C #**：将断点添加到文件`Program.cs`。
-   - **Node.js**：将断点添加到文件`app.js`。
-   - **Java**：将断点添加到文件`App.java`。
-   - **Python**：在添加`ptvsd.break_into_debugger()`行的回调方法`main.py`中，将断点添加到文件。
-   - **C**：将断点添加到文件`main.c`。
+   - **Azure 函数（c #）**：将断点添加到文件 `<your module name>.cs` 。
+   - **C #**：将断点添加到文件 `Program.cs` 。
+   - **Node.js**：将断点添加到文件 `app.js` 。
+   - **Java**：将断点添加到文件 `App.java` 。
+   - **Python**： `main.py` 在添加行的回调方法中，将断点添加到文件 `ptvsd.break_into_debugger()` 。
+   - **C**：将断点添加到文件 `main.c` 。
 
 1. 选择“开始调试”或选择 F5********。 选择要附加到的进程。
 

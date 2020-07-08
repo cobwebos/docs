@@ -4,10 +4,9 @@ description: 本教程介绍如何通过设置一个或多个计时器触发器�
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402885"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
@@ -202,7 +201,7 @@ cron 表达式使用的时区为协调世界时 (UTC)。 时间为 24 小时制�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-若要删除在本系列教程中创建的所有资源，包括容器注册表、注册表、容器实例、key vault 和服务主体，请发出以下命令：
+若要删除本系列教程中创建的所有资源（包括容器注册表、容器实例、密钥保管库和服务主体），请发出以下命令：
 
 ```azurecli
 az group delete --resource-group $RES_GROUP
@@ -215,7 +214,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 有关使用计划任务清理注册表中的存储库的示例，请参阅[自动清除 Azure 容器注册表](container-registry-auto-purge.md)中的映像。
 
-有关由源代码提交或基本映像更新触发的任务的示例，请参阅[ACR 任务教程系列](container-registry-tutorial-quick-task.md)中的其他文章。
+有关由源代码提交或基础映像更新触发的任务的示例，请参阅 [ACR 任务系列教程](container-registry-tutorial-quick-task.md)中的其他文章。
 
 
 

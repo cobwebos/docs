@@ -14,10 +14,9 @@ ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78934188"
 ---
 # <a name="media-services-high-availability-encoding"></a>媒体服务高可用性编码 
@@ -34,7 +33,7 @@ Azure 媒体服务编码服务是一个区域批处理平台，当前不是针�
 * 将你的媒体上传到计划从中提交作业的同一区域。 有关如何开始编码的详细信息，请参阅[从 HTTPS URL 创建作业输入](job-input-from-http-how-to.md)或[从本地文件创建作业输入](job-input-from-local-file-how-to.md)。
 
     如果接下来需要将[作业](transforms-jobs-concept.md)重新提交到另一个区域，则可以使用 JobInputHttp 或使用 "[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) " 将源资产容器中的数据复制到备用区域中的资产容器。
-* 通过 Azure 事件网格订阅每个帐户中的 JobStateChange 消息。 有关详细信息，请参见:
+* 通过 Azure 事件网格订阅每个帐户中的 JobStateChange 消息。 有关详情，请参阅：
 
     * [音频分析示例](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)，演示如何使用 Azure 事件网格监视作业，包括添加回退以防 Azure 事件网格消息由于某种原因而延迟。
     * [媒体服务事件的 Azure 事件网格架构](media-services-event-schemas.md)

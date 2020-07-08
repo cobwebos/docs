@@ -10,10 +10,9 @@ ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
 ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672141"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 将 Azure 应用程序配置事件路由到 Web 终结点
@@ -34,7 +33,7 @@ ms.locfileid: "78672141"
 
 事件网格主题是 Azure 资源，必须放置在 Azure 资源组中。 该资源组是在其中部署和管理 Azure 资源的逻辑集合。
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 
+使用 [az group create](/cli/azure/group) 命令创建资源组。 
 
 以下示例在 *westus* 位置创建名为 `<resource_group_name>` 的资源组。  将 `<resource_group_name>` 替换为资源组的唯一名称。
 
@@ -44,7 +43,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
-将`<appconfig_name>`替换为配置存储的唯一名称， `<resource_group_name>`将替换为之前创建的资源组。 该名称必须唯一，因为它将用作 DNS 名称。
+将替换为 `<appconfig_name>` 配置存储的唯一名称，将替换为 `<resource_group_name>` 之前创建的资源组。 该名称必须唯一，因为它将用作 DNS 名称。
 
 ```azurecli-interactive
 az appconfig create \

@@ -8,10 +8,9 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303692"
 ---
 # <a name="substring-azure-cosmos-db"></a>SUBSTRING (Azure Cosmos DB)
@@ -36,17 +35,17 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 
 ## <a name="return-types"></a>返回类型
   
-  返回字符串表达式。  
+  返回一个字符串表达式。  
   
 ## <a name="examples"></a>示例
   
-  以下示例将返回 "abc" 中从位置 1 开始且长度为 1 个字符的子字符串。  
+  以下示例返回“abc”中从位置 1 开始且长度为 1 个字符的子字符串。  
   
 ```sql
 SELECT SUBSTRING("abc", 1, 1) AS substring  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"substring": "b"}]  
@@ -54,7 +53,7 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>备注
 
-如果起始位置为`0`，则此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益（如果起始位置是 `0`）。
 
 ## <a name="next-steps"></a>后续步骤
 

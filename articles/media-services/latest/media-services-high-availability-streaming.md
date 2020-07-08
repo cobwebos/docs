@@ -14,17 +14,16 @@ ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: 1492dd392eabc4331f8e3d4604fb245a89dedff5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78899225"
 ---
 # <a name="media-services-high-availability-streaming"></a>媒体服务高可用性流式处理
 
 如果存在区域性数据中心服务中断或基础组件或从属服务故障，Azure 媒体服务当前不提供服务的即时故障转移。 本文提供了有关如何构建点播视频点播跨区域流式处理的指导。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 查看[如何构建跨区域编码系统](media-services-high-availability-encoding.md)
 
@@ -40,5 +39,5 @@ ms.locfileid: "78899225"
 
 退房：
 
-* [教程：根据 URL 编码远程文件并流式传输视频](stream-files-dotnet-quickstart.md)
+* [教程：基于 URL 对远程文件进行编码并流式传输视频](stream-files-dotnet-quickstart.md)
 * [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-media-services)

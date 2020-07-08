@@ -10,10 +10,9 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402818"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
@@ -73,7 +72,7 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 1. 在 [Azure 门户](https://portal.azure.com)中，选择工作区。
 1. 选择“试验”，然后选择一个试验  。
 1. 从“运行号”列中选择一个运行  。
-1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“ __###azure”开头的链接\___ 。
+1. 选择“日志”，然后展开“日志”和“azureml”条目    。 选择以“###\_azure”开头的链接。
 
     ![门户中的 ###_azure 条目](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 

@@ -8,10 +8,9 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 073efbd91e637a17693617b16c7787d61e150ad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304236"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM (Azure Cosmos DB)
@@ -30,7 +29,7 @@ TRIM(<str_expr>)
   
 ## <a name="return-types"></a>返回类型
   
-  返回字符串表达式。  
+  返回一个字符串表达式。  
   
 ## <a name="examples"></a>示例
   
@@ -40,7 +39,7 @@ TRIM(<str_expr>)
 SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"t1": "abc", "t2": "abc", "t3": "abc", "t4": "abc"}]  

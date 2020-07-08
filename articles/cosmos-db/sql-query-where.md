@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898781"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
@@ -29,17 +28,17 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   指定返回的文档需满足的条件。  
+   指定需要满足什么条件才会返回文档。  
   
 - `<scalar_expression>`  
   
-   表示要计算的值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)。  
+   表示待计算值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)。  
   
 ## <a name="remarks"></a>备注
   
-  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有布尔值`true`满足条件，任何其他值：未定义、null、False、数字、数组或对象将不满足条件。
+  指定为筛选条件的表达式的求值结果必须为 true，才会返回文档。 只有布尔值 `true` 会满足条件，其他任何值（undefined、null、false、数字、数组或对象）都不会满足条件。
 
-  如果在`WHERE`子句中包含分区键作为相等筛选器的一部分，则查询将自动仅筛选相关的分区。
+  如果将分区键作为等式筛选器的一部分包含在 `WHERE` 子句中，则查询将仅自动筛选出相关分区。
 
 ## <a name="examples"></a>示例
 
@@ -75,7 +74,7 @@ WHERE <filter_condition>
 |位    | \|、&、^、<<、>>、>>>（补零右移） |
 |逻辑    | AND、OR、NOT      |
 |比较 | =、!=、&lt;、&gt;、&lt;=、&gt;=、<> |
-|字符串     |  \|\|（连接） |
+|String     |  \|\|（连接） |
 
 以下查询使用二元运算符：
 

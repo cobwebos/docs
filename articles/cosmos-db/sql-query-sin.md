@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 25e7cf66fdd55a0b641c35443e38b0a67cbe365d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78303097"
 ---
 # <a name="sin-azure-cosmos-db"></a>SIN (Azure Cosmos DB)
@@ -26,11 +25,11 @@ SIN(<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
-  返回数值表达式。  
+  返回一个数值表达式。  
   
 ## <a name="examples"></a>示例
   
@@ -40,7 +39,7 @@ SIN(<numeric_expr>)
 SELECT SIN(45.175643) AS sin  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"sin": 0.929607286611012}]  

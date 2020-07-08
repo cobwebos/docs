@@ -8,14 +8,13 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 899c94a939be7825dca82522eab235bde9252896
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302672"
 ---
 # <a name="atan-azure-cosmos-db"></a>ATAN (Azure Cosmos DB)
- 返回角度（弧度），其正切是指定的数值表达式。 它也称为反正切函数。  
+ 返回角度（弧度），其正切是指定的数值表达式。 这也被称为反正切。  
   
 ## <a name="syntax"></a>语法
   
@@ -26,11 +25,11 @@ ATAN(<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
-  返回数值表达式。  
+  返回一个数值表达式。  
   
 ## <a name="examples"></a>示例
   
@@ -40,7 +39,7 @@ ATAN(<numeric_expr>)
 SELECT ATAN(-45.01) AS atan  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"atan": -1.5485826962062663}]  

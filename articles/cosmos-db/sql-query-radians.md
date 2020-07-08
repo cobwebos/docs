@@ -8,14 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302230"
 ---
 # <a name="radians-azure-cosmos-db"></a>RADIANS (Azure Cosmos DB)
- 对于在数值表达式中输入的度数值返回弧度值。  
+ 返回输入的数值表达式（度）的弧度。  
   
 ## <a name="syntax"></a>语法
   
@@ -26,21 +25,21 @@ RADIANS (<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
-  返回数值表达式。  
+  返回一个数值表达式。  
   
 ## <a name="examples"></a>示例
   
-  以下示例将几个角作为输入，然后返回其对应的弧度值。  
+  以下示例采用几个角度作为输入并返回其对应的弧度值。  
   
 ```sql
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
-  下面是结果集：  
+  下面是结果集。  
   
 ```json
 [{  

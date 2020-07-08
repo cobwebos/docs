@@ -17,10 +17,9 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a7a92bef85cd4ee7530940a065135e88c7530781
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78675607"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
@@ -58,7 +57,7 @@ SAP 应用程序层部署在一个 Azure[可用性集](https://docs.microsoft.co
 - 部署到 Azure 可用性区域时必须使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 
 - 区域枚举到物理区域的映射限定为 Azure 订阅。 如果使用不同的订阅部署 SAP 系统，则需要为每个订阅定义理想的区域。
 - 除非使用[Azure 邻近度放置组](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅[Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
-- 不能使用 [Azure 基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 需要使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。
+- 不能使用 [Azure 基本负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用[Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)。
 
 
 

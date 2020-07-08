@@ -10,10 +10,9 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: aa0b789b31f50c8b1ccf5450700874a02ad4664c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78304519"
 ---
 # <a name="plan-and-manage-costs-for-azure-storage"></a>规划和管理 Azure 存储的成本
@@ -46,17 +45,17 @@ ms.locfileid: "78304519"
 
 ## <a name="use-budgets-and-cost-alerts"></a>使用预算和成本警报
 
-可以创建[预算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md)来管理成本，并创建警报以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，因此它们在总体成本监视策略中非常有用。 但是，它们可能会受到有限的功能来管理单个 Azure 服务成本（如 Azure 存储成本），因为它们旨在跟踪更高级别的成本。
+可以创建[预算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md)来管理成本，并创建警报以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 但是，它们可能会受到有限的功能来管理单个 Azure 服务成本（如 Azure 存储成本），因为它们旨在跟踪更高级别的成本。
 
 ## <a name="monitor-costs"></a>监视成本
 
 在 Azure 存储中使用 Azure 资源时，会产生成本。 资源使用情况单位成本因时间间隔（秒、分钟、小时和天）或单位使用量（字节、mb 等）而异。一旦开始使用 Azure 存储，就会产生成本。 您可以在 "[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md)" 窗格的 "Azure 门户" 中查看成本。
 
-使用成本分析时，可以在关系图和表中查看不同时间间隔的 Azure 存储成本。 有些示例是按天、当前和上个月和年。 你还可以查看预算和预测成本的成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势并了解超支可能发生的位置。 如果您已经创建了预算，还可以轻松地查看他们超出的位置。
+使用成本分析时，可以在关系图和表中查看不同时间间隔的 Azure 存储成本。 有些示例是按天、当前和上个月和年。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势并了解超支可能发生的位置。 如果您已经创建了预算，还可以轻松地查看他们超出的位置。
 
 若要查看成本分析中的 Azure 存储成本：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 打开 "**成本管理 + 计费**" 窗口，从菜单中选择 "**成本管理**"，然后选择 "**成本分析**"。 然后，可以从 "**作用域**" 下拉列表中更改特定订阅的作用域。
 

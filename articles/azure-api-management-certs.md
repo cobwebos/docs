@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
 ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78329113"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上传 Azure Service Management 证书
@@ -35,12 +34,12 @@ ms.locfileid: "78329113"
 创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在底部的 Azure 服务列表中，单击“所有服务”  ，然后在“常规”  服务组中选择“订阅”  。
+2. 在底部的 Azure 服务列表中，单击“所有服务”，然后在“常规”服务组中选择“订阅”。
 
     ![订阅菜单](./media/azure-api-management-certs/subscriptions_menu.png)
 
 3. 请确保选择要与证书关联的正确订阅。     
-4. 选择了正确的订阅后，点按“设置”  组中的“管理证书”  。
+4. 选择了正确的订阅后，点按“设置”组中的“管理证书”。
 
     ![设置](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
