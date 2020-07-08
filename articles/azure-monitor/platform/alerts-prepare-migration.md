@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114413"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>准备逻辑应用和 Runbook 以迁移经典警报规则
@@ -71,7 +70,7 @@ ms.locfileid: "81114413"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改逻辑应用以接收指标警报通知
 
-如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 执行以下步骤:
+如果将逻辑应用与经典警报配合使用，则必须修改逻辑应用代码，以分析新指标警报有效负载。 请执行这些步骤：
 
 1. 创建新的逻辑应用。
 

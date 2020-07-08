@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81011117"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的用户定义函数 (UDF)
@@ -19,16 +18,16 @@ SQL API 支持用户定义函数 (UDF)。 使用标量 UDF，可以传入零个�
 
 ## <a name="udf-use-cases"></a>UDF 用例
 
-API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 与存储过程和触发器不同的是，Udf 为只读。
+API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 与存储过程和触发器不同，UDF 为只读。
 
-使用 Udf 可以扩展 Azure Cosmos DB 的查询语言。 Udf 是在查询投影中表达复杂业务逻辑的好方法。
+使用 UDF 可以扩展 Azure Cosmos DB 的查询语言。 UDF 是在查询投影中表达复杂业务逻辑的好方法。
 
-但是，我们建议在以下情况下避免 Udf：
+但是，我们建议在以下情况下避免使用 UDF：
 
 - Azure Cosmos DB 中已存在等效的[系统函数](sql-query-system-functions.md)。 系统函数将始终使用比等效 UDF 更少的 RU。
-- UDF 是查询`WHERE`子句中的唯一筛选器。 UDF 不利用索引，因此，计算 UDF 需要加载文档。 将使用索引的附加筛选器谓词与 UDF 结合使用`WHERE`子句会减少 udf 处理的文档数。
+- UDF 是查询的 `WHERE` 子句中唯一的筛选器。 UDF 不利用索引，因此，计算 UDF 需要加载文档。 在 `WHERE` 子句中将使用索引的附加筛选器谓词与 UDF 组合在一起可减少 UDF 处理的文档数。
 
-如果在查询中必须多次使用同一 UDF，则应在[子查询](sql-query-subquery.md#evaluate-once-and-reference-many-times)中引用 udf，使您可以使用联接表达式来计算 udf 一次，但多次引用。
+如果在查询中必须多次使用同一 UDF，则应该引用[子查询](sql-query-subquery.md#evaluate-once-and-reference-many-times)中的 UDF，这样可使用 JOIN 表达式计算 UDF 一次，但引用它多次。
 
 ## <a name="examples"></a>示例
 

@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114582"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
@@ -20,29 +19,29 @@ Azure Monitor 中的经典指标警报提供了一种在指标超出阈值时获
 
 1. 在[门户](https://portal.azure.com/)中，找到要监视的资源，然后选择它。
 
-2. 在“监视”部分中，选择“警报(经典)”   。 对于不同的资源，文本和图标可能会略有不同。 如果在此处未找到“警报(经典)”，则它可能位于“警报”或“警报规则”中    。
+2. 在“监视”部分中，选择“警报(经典)” 。 对于不同的资源，文本和图标可能会略有不同。 如果在此处未找到“警报(经典)”，则它可能位于“警报”或“警报规则”中  。
 
     ![监视](media/alerts-classic-portal/AlertRulesButton.png)
 
-3. 选择“添加指标警报(经典)”  命令，并填写字段。
+3. 选择“添加指标警报(经典)”命令，并填写字段。
 
     ![添加警报](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. **命名**警报规则。 然后选择也在通知电子邮件中显示的“说明”  。
+4. **命名**警报规则。 然后选择也在通知电子邮件中显示的“说明”。
 
-5. 选择要监视的指标  。 然后为该指标选择“条件”和“阈值”值   。 还选择触发警报前指标规则必须满足的时间段。  例如，如果使用时间段“过去 5 分钟”，且警报针对 CPU 高于 80% 的情况，则 CPU 持续高于 80% 达到 5 分钟时将触发警报。 第一次触发后，CPU 5 分钟内持续低于 80% 时会再次触发警报。 CPU 指标度量每分钟进行一次。
+5. 选择要监视的指标。 然后为该指标选择“条件”和“阈值”值 。 还选择触发警报前指标规则必须满足的时间段。 例如，如果使用时间段“过去 5 分钟”，且警报针对 CPU 高于 80% 的情况，则 CPU 持续高于 80% 达到 5 分钟时将触发警报。 第一次触发后，CPU 5 分钟内持续低于 80% 时会再次触发警报。 CPU 指标度量每分钟进行一次。
 
-6. 如果希望在触发警报时管理员和共同管理员收到电子邮件通知，则选择“向所有者发送电子邮件...”  。
+6. 如果希望在触发警报时管理员和共同管理员收到电子邮件通知，则选择“向所有者发送电子邮件...”。
 
-7. 如果希望在触发警报时向其他电子邮件发送通知，请将其添加到“其他管理员电子邮件”字段****。 用分号分隔多个电子邮件，格式如下： *email\@contoso .com;\@email2 contoso.com*
+7. 如果希望在触发警报时向其他电子邮件发送通知，请将其添加到“其他管理员电子邮件”字段****。 用分号分隔多个电子邮件，格式如下： *email \@ contoso .com; email2 \@ contoso.com*
 
-8. 如果希望在触发警报时调用有效的 URI，请将其放入“Webhook”**** 字段中。
+8. 如果希望在触发警报时调用有效的 URI，请将其放入“Webhook”字段中。
 
 9. 如果使用 Azure 自动化时，则可选择在触发警报时要运行的 Runbook。
 
-10. 选择“确定”**** 以创建警报。
+10. 选择“确定”以创建警报。
 
-几分钟后，警报将处于活动状态，并按前面所述进行触发。
+在几分钟后，警报将如前所述激活并触发。
 
 创建警报后，可以选择它并执行以下任务之一：
 
@@ -88,7 +87,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 本部分展示了如何使用 PowerShell 命令创建、查看和管理经典指标警报。本文中的示例展示了如何将 Azure Monitor cmdlet 用于经典指标警报。
 
-1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
+1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。 还可以在 [Azure Monitor (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
 
 2. 首先，登录到 Azure 订阅。
 

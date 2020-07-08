@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114364"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切换日志警报的 API 首选项
@@ -50,7 +49,7 @@ ms.locfileid: "81114364"
 从[旧 Log Analytics 警报 API](api-alerts.md) 移动警报规则的过程不涉及以任何方式更改警报定义、查询或配置。 你的警报规则和监视不受影响，警报不会在切换期间或之后停止或停滞。 唯一的更改是：
 
 - 更改 API 首选项，并通过新的 API 访问规则。
-- 一个修改后的警报规则资源 URI，其中包含在此结构`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`中的[旧 Log Analytics 警报 API](api-alerts.md)中使用的 id，而不是警报规则名称。 警报规则的显示名称将保持不变。
+- 一个修改后的警报规则资源 URI，其中包含在此结构中的[旧 Log Analytics 警报 API](api-alerts.md)中使用的 id，而不是警报规则名称 `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` 。 警报规则的显示名称将保持不变。
 
 希望自愿切换到新 [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 和阻止使用 [旧 Log Analytics 警报 API](api-alerts.md) 的任何客户可以通过对下面的 API 执行 PUT 调用以切换与特定 Log Analytics 工作区关联的所有警报规则来做到这一点。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 P2S：Azure VPN 网关
-description: 本页介绍如何使用 VPN 网关来远程工作，因为 COVID-19 流行病。
+description: 本页介绍如何在 COVID-19 疫情下利用 VPN 网关完成远程工作。
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: alzam
 ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886579"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>使用 Azure VPN 网关点到站点连接实现远程工作
@@ -20,9 +19,9 @@ ms.locfileid: "80886579"
 >本文介绍如何利用 Azure VPN 网关、Azure、Microsoft 网络和 Azure 合作伙伴生态系统远程进行工作，以及如何缓解因 COVID-19（新冠病毒）危机而面临的网络问题。
 >
 
-本文介绍了一些选项，这些选项可供组织为其用户设置远程访问，或在 COVID-19 epidemic 期间使用额外容量补充现有解决方案。
+本文将介绍可供组织用来为其用户设置远程访问的选项，或者在 COVID-19 疫情期间通过附加容量补充其现有解决方案的选项。
 
-Azure 点到站点解决方案是基于云的解决方案，可快速进行设置，以满足用户在家中工作的需求。 可以轻松纵向扩展该解决方案，不再需要多出的容量时，同样可以快速轻松地将其关闭。
+Azure 点到站点解决方案基于云且可快速预配，以满足在家办公用户的不断增长需求。 可以轻松纵向扩展该解决方案，不再需要多出的容量时，同样可以快速轻松地将其关闭。
 
 ## <a name="about-point-to-site-vpn"></a><a name="p2s"></a>关于点到站点 VPN
 
@@ -32,7 +31,7 @@ Azure 点到站点解决方案是基于云的解决方案，可快速进行设�
 
 ![点到站点](./media/working-remotely-support/ostable.png "操作系统")
 
-## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>方案 1-用户只需要访问 Azure 中的资源
+## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>方案 1 - 用户只需访问 Azure 中的资源
 
 在此场景中，远程用户只需访问 Azure 中的资源。
 
@@ -40,18 +39,18 @@ Azure 点到站点解决方案是基于云的解决方案，可快速进行设�
 
 从较高层面讲，需要执行以下步骤才能使用户安全连接到 Azure 资源：
 
-1. 创建虚拟网络网关（如果不存在）。
+1. 创建虚拟网关（如果该网关不存在）。
 2. 在网关上配置点到站点 VPN。
 
-   * 对于证书身份验证，请单击[以下链接](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw)。
-   * 对于 OpenVPN，请单击[此链接](vpn-gateway-howto-openvpn.md)。
-   * 若要进行 Azure AD 身份验证，请单击[此链接](openvpn-azure-ad-tenant.md)。
-   * 若要解决点到站点连接问题，请单击[此链接](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。
+   * 对于证书身份验证，请打开[此链接](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw)。
+   * 对于 OpenVPN，请打开[此链接](vpn-gateway-howto-openvpn.md)。
+   * 对于 Azure AD 身份验证，请打开[此链接](openvpn-azure-ad-tenant.md)。
+   * 若要排查点到站点连接问题，请打开[此链接](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。
 3. 下载并分发 VPN 客户端配置。
 4. 向客户端分发证书（如果选择了证书身份验证）。
 5. 连接到 Azure VPN。
 
-## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>方案 2-用户需要访问 Azure 中的资源和/或本地资源
+## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>场景 2 - 用户需要访问 Azure 中的资源和/或本地资源
 
 在此场景中，远程用户需要访问 Azure 中以及本地数据中心内的资源。
 
@@ -59,10 +58,10 @@ Azure 点到站点解决方案是基于云的解决方案，可快速进行设�
 
 从较高层面讲，需要执行以下步骤才能使用户安全连接到 Azure 资源：
 
-1. 创建虚拟网络网关（如果不存在）。
-2. 在网关上配置点到站点 VPN （请参阅[方案 1](#scenario1)）。
-3. 在启用了 BGP 的 Azure 虚拟网络网关上配置站点到站点隧道。
-4. 将本地设备配置为连接到 Azure 虚拟网络网关。
+1. 创建虚拟网关（如果该网关不存在）。
+2. 在网关上配置点到站点 VPN（请参阅[方案 1](#scenario1)）。
+3. 在启用了 BGP 的 Azure 虚拟网关上配置站点到站点隧道。
+4. 配置本地设备以连接到 Azure 虚拟网关。
 5. 从 Azure 门户下载点到站点配置文件并将其分发到客户端
 
 若要了解如何设置站点到站点 VPN 隧道，请参阅[此链接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)。

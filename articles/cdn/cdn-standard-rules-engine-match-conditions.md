@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259914"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN 的标准规则引擎中的匹配条件
@@ -36,7 +35,7 @@ ms.locfileid: "81259914"
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 支持的值
+运算符 | 支持的值
 ---------|----------------
 等于，不等于 | 移动、桌面
 
@@ -46,7 +45,7 @@ ms.locfileid: "81259914"
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 支持的值
+运算符 | 支持的值
 ---------|----------------
 等于，不等于 | 2.0、1.1、1.0、0.9、全部
 
@@ -56,13 +55,13 @@ ms.locfileid: "81259914"
 
 #### <a name="required-fields"></a>Required fields
 
-Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
+Cookie 名称 | 运算符 | Cookie 值 | 大小写转换
 ------------|----------|--------------|---------------
-字符串 | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
+String | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 #### <a name="key-information"></a>重要信息
 
-- 指定 cookie 名称时不能使用通配符（\*包括星号（））;必须使用精确的 cookie 名称。
+- 指定 cookie 名称时不能使用通配符（包括星号（ \* ））; 必须使用精确的 cookie 名称。
 - 对于此匹配条件的每个实例，只能指定一个 cookie 名称。
 - Cookie 名称比较不区分大小写。
 - 若要指定多个 cookie 值，请在每个 cookie 值之间使用一个空格。 
@@ -75,9 +74,9 @@ Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
 
 #### <a name="required-fields"></a>Required fields
 
-参数名称 | 操作员 | 参数值 | 大小写转换
+参数名称 | 运算符 | 参数值 | 大小写转换
 --------------|----------|----------------|---------------
-字符串 | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
+String | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 ### <a name="query-string"></a>查询字符串
 
@@ -85,7 +84,7 @@ Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 查询字符串 | 大小写转换
+运算符 | 查询字符串 | 大小写转换
 ---------|--------------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
@@ -95,12 +94,12 @@ Cookie 名称 | 操作员 | Cookie 值 | 大小写转换
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 支持的值
+运算符 | 支持的值
 ---------|-----------------
-Any | 空值
+Any | 不适用
 地域匹配 | 国家/地区代码
 IP 匹配 | IP 地址（以空格分隔）
-不是任何 | 空值
+不是任何 | 不适用
 非地理匹配 | 国家/地区代码
 不匹配 IP | IP 地址（以空格分隔）
 
@@ -120,19 +119,19 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 请求正文 | 大小写转换
+运算符 | 请求正文 | 大小写转换
 ---------|--------------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
-### <a name="request-header"></a>请求头
+### <a name="request-header"></a>请求标头
 
 标识在请求中使用特定标头的请求。
 
 #### <a name="required-fields"></a>Required fields
 
-标头名称 | 操作员 | 标头值 | 大小写转换
+标头名称 | 运算符 | 标头值 | 大小写转换
 ------------|----------|--------------|---------------
-字符串 | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
+String | [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 ### <a name="request-method"></a>请求方法
 
@@ -140,7 +139,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 支持的值
+运算符 | 支持的值
 ---------|----------------
 等于，不等于 | GET、POST、PUT、DELETE、HEAD、OPTIONS、TRACE
 
@@ -154,7 +153,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 支持的值
+运算符 | 支持的值
 ---------|----------------
 等于，不等于 | HTTP、HTTPS
 
@@ -164,13 +163,13 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 请求 URL | 大小写转换
+运算符 | 请求 URL | 大小写转换
 ---------|-------------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
 #### <a name="key-information"></a>重要信息
 
-- 使用此规则条件时，请确保包含协议信息。 例如： *https://www.\<yourdomain\>.com*。
+- 使用此规则条件时，请确保包含协议信息。 例如： .. * https://www \<yourdomain\>com*。
 
 ### <a name="url-file-extension"></a>URL 文件扩展名
 
@@ -178,7 +177,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 扩展名 | 大小写转换
+运算符 | 分机 | 大小写转换
 ---------|-----------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 
@@ -192,7 +191,7 @@ IP 匹配 | IP 地址（以空格分隔）
 
 #### <a name="required-fields"></a>Required fields
 
-操作员 | 文件名 | 大小写转换
+运算符 | 文件名 | 大小写转换
 ---------|-----------|---------------
 [标准操作员列表](#standard-operator-list) | String、Int | 无转换，转换为大写，到小写
 

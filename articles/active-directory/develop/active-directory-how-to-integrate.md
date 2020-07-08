@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ms.openlocfilehash: 4eaca7350ac006a2fcf2eed8d3eb0cb8ef274841
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885695"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
@@ -71,7 +70,7 @@ ms.locfileid: "80885695"
 
 ### <a name="advanced-security-features"></a>高级安全功能
 
-**多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 深入了解[多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)。
+**多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 了解有关[多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)的详细信息。
 
 **异常登录检测。**  Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。 通过支持 Azure AD 登录，应用程序将从这种保护中受益。 深入了解如何[查看 Azure Active Directory 访问报告](../active-directory-view-access-usage-reports.md)。
 

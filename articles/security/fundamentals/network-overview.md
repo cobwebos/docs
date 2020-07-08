@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811109"
 ---
 # <a name="azure-network-security-overview"></a>Azure 网络安全概述
@@ -60,7 +59,7 @@ Azure 支持多种类型的网络访问控制，例如：
 
 ### <a name="network-layer-control"></a>网络层控制
 
-任何安全部署都需要一定程度的网络访问控制。 网络访问控制的目的是将虚拟机通信限制为必要的系统。 将阻止其他通信尝试。
+任何安全部署都需要某种程度的网络访问控制。 网络访问控制的目的是将虚拟机通信限制为必要的系统。 将阻止其他通信尝试。
 
 > [!NOTE]
 > 要了解存储防火墙，请参阅 [Azure 存储安全概述](storage-overview.md)一文
@@ -81,7 +80,7 @@ NSG 不提供应用程序层检查或经过身份验证的访问控制。
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC 实时 VM 访问
 
-[Azure 安全中心](../../security-center/security-center-intro.md)可以管理 VM 上的 NSG，并将 VM 的访问权限锁定到具有相应基于角色的访问控制 ([RBAC](/azure/role-based-access-control/overview)) 权限的用户请求访问为止。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
+[Azure 安全中心](../../security-center/security-center-intro.md)可以管理 vm 上的 nsg 并锁定对 vm 的访问，直到具有适当的基于角色的访问控制[RBAC](/azure/role-based-access-control/overview)权限的用户请求访问。 如果成功为该用户授权，则 ASC 会对 NSG 进行修改，以允许在指定的时间访问选定的端口。 该时间过后，NSG 将还原到其以前的受保护状态。
 
 了解详细信息：
 
@@ -103,11 +102,11 @@ Azure 网络支持在虚拟网络上为流量自定义路由行为。 由此可�
 
 例如，虚拟网络上可能有虚拟网络安全设备。 想要确保与虚拟网络之间的所有流量都通过该虚拟安全设备。 可以通过在 Azure 中配置[用户定义的路由](../../virtual-network/virtual-networks-udr-overview.md) (UDR) 实现此操作。
 
-[强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动与 Internet 上设备的连接。 请注意，这不同于接受传入连接然后对其作出响应。 前端 Web 服务器需要响应来自 Internet 主机的请求，因此允许源自 Internet 的流量传入到这些 Web 服务器，并允许 Web 服务器作出响应。
+[强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保不允许服务启动与 Internet 上设备的连接。 请注意，这与接受并响应传入连接不同。 前端 Web 服务器需要响应来自 Internet 主机的请求，因此允许源自 Internet 的流量传入到这些 Web 服务器，并允许 Web 服务器作出响应。
 
-不想允许前端 Web 服务器启动出站请求。 此类请求可能带来安全风险，因为这些连接可用于下载恶意软件。 即使想要这些前端服务器启动对 Internet 的出站请求，你可能想要强制它们通过本地 Web 代理服务器。 由此可利用 URL 筛选和日志记录。
+不想要允许的是前端 Web 服务器发起出站请求。 此类请求可能带来安全风险，因为这些连接可用于下载恶意软件。 即使想要这些前端服务器启动对 Internet 的出站请求，你可能想要强制它们通过本地 Web 代理服务器。 由此可利用 URL 筛选和日志记录。
 
-相反，你想要使用强制隧道来防止这种情况。 启用强制隧道后，会强制与 Internet 的所有连接通过本地网关。 可以利用 UDR 配置强制隧道。
+可以使用强制隧道来避免此问题。 启用强制隧道后，会强制与 Internet 的所有连接通过本地网关。 可以利用 UDR 配置强制隧道。
 
 了解详细信息：
 
@@ -124,11 +123,11 @@ Azure 网络支持在虚拟网络上为流量自定义路由行为。 由此可�
 * 高级别协议的应用程序层检查
 * URL 筛选
 * 网络级别防病毒和反恶意软件
-* 防自动程序保护
+* 防 Bot 保护
 * 应用程序访问控制
 * 其他 DDoS 防护（除了 Azure 结构自身提供的 DDoS 防护以外）
 
-可以使用 Azure 合作伙伴解决方案访问这些增强的网络安全功能。 通过访问[Azure Marketplace](https://azure.microsoft.com/marketplace/)并搜索 "安全" 和 "网络安全"，可以找到最新的 azure 合作伙伴网络安全解决方案。
+可以使用 Azure 合作伙伴解决方案来访问这些增强的网络安全功能。 通过访问 [Azure 市场](https://azure.microsoft.com/marketplace/)并搜索“安全”和“网络安全”，可以找到最新的 Azure 合作伙伴网络安全解决方案。
 
 ## <a name="azure-firewall"></a>Azure 防火墙
 
@@ -145,7 +144,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>安全远程访问和跨界连接
 
-安装、配置和管理 Azure 资源需要远程完成。 此外，你可能想要部署在本地和 Azure 公有云中具有组件的[混合 IT](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) 解决方案。 这些方案要求安全远程访问。
+安装、配置和管理 Azure 资源需要远程完成。 此外，你可能想要部署在本地和 Azure 公有云中具有组件的[混合 IT](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) 解决方案。 这些方案需要安全远程访问权限。
 
 Azure 网络支持以下安全远程访问方案：
 
@@ -158,7 +157,7 @@ Azure 网络支持以下安全远程访问方案：
 
 你可能想要让各个开发者或操作人员在 Azure 中管理虚拟机和服务。 例如，假设需要访问虚拟网络上的虚拟机。 但你的安全策略不允许 RDP 或 SSH 远程访问单独的虚拟机。 在这种情况下，可以使用[点到站点 VPN](../../vpn-gateway/point-to-site-about.md) 连接。
 
-点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 （假定用户可以进行身份验证和授权。）点到站点 VPN 支持：
+点到站点 VPN 连接允许你在用户和虚拟网络之间设置专用的安全连接。 建立 VPN 连接后，用户可通过 VPN 链接将 RDP 或 SSH 连接到虚拟网络上的任何虚拟机。 （假设用户可以进行身份验证并获得授权。）点到站点 VPN 支持以下项：
 
 * 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 SSL VPN 解决方案可以穿透防火墙，因为大多数防火墙都打开了 TLS/SSL 使用的 TCP 端口443。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
@@ -174,7 +173,7 @@ Azure 网络支持以下安全远程访问方案：
 
 你可能想要将整个企业网络或其中的某些部分连接到虚拟网络。 这是常见的混合 IT 方案，通过该方案组织可以[将其本地数据中心扩展到 Azure](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)。 在许多情况下，组织在 Azure 和本地中各托管部分服务。 例如，当解决方案包括 Azure 中的前端 Web 服务器和本地后端数据库时，他们可能会执行此操作。 这些类型的“跨界”连接还使得位于 Azure 的资源的管理更加安全，并且能够启用方案，如将 Active Directory 域控制器扩展到 Azure 中。
 
-完成此操作的一种方法是使用 [site-to-site VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn)（站点到站点 VPN）。 站点到站点 VPN 和点到站点 VPN 的区别在于后者将单个设备连接到虚拟网络。 站点到站点 VPN 将整个网络（如本地网络）连接到虚拟网络。 连接到 Azure 虚拟网络的站点到站点 VPN 使用高度安全的 IPsec 隧道模式 VPN 协议。
+实现此目的的方法之一是使用 [站点到站点 VPN](https://www.techopedia.com/definition/30747/site-to-site-vpn)。 站点到站点 VPN 和点到站点 VPN 的区别在于后者将单个设备连接到虚拟网络。 站点到站点 VPN 将整个网络（如本地网络）连接到虚拟网络。 连接到 Azure 虚拟网络的站点到站点 VPN 使用高度安全的 IPsec 隧道模式 VPN 协议。
 
 了解详细信息：
 
@@ -183,17 +182,17 @@ Azure 网络支持以下安全远程访问方案：
 
 ### <a name="connect-your-on-premises-network-to-a-virtual-network-with-a-dedicated-wan-link"></a>通过专用的 WAN 链接将本地网络连接到虚拟网络
 
-点到站点和站点到站点 VPN 连接对启用跨界连接有效。 但是，有些组织认为它们具有以下缺点：
+点到站点和站点到站点 VPN 连接可以有效地启用跨界连接。 但是，某些组织认为它们存在以下缺点：
 
 * VPN 连接通过 Internet 移动数据。 这会导致这些连接存在通过公用网络移动数据所涉及的潜在安全问题。 此外，不能保证 Internet 连接的可靠性和可用性。
 * 到虚拟网络的 VPN 连接可能没有用于某些应用程序和目的带宽，因为它们达到的最高极限约为 200 Mbps。
 
-对于其跨界连接需要最高级别的安全性和可用性的组织通常使用专用的 WAN 链路连接到远程站点。 凭借 Azure，可使用专用的 WAN 链接将本地网络连接到虚拟网络。 Azure ExpressRoute、Express Route Direct 和 Express Route Global Reach 实现了此功能。
+需要最高安全性和可用性级别进行其跨界连接的组织通常使用专用 WAN 链路连接到远程网站。 凭借 Azure，可使用专用的 WAN 链接将本地网络连接到虚拟网络。 Azure ExpressRoute、Express Route Direct 和 Express Route Global Reach 实现了此功能。
 
 了解详细信息：
 
 * [ExpressRoute 技术概述](../../expressroute/expressroute-introduction.md)
-* [ExpressRoute Direct](../../expressroute/expressroute-erdirect-about.md)
+* [ExpressRoute 直接](../../expressroute/expressroute-erdirect-about.md)
 * [Express Route Global Reach](../../expressroute/expressroute-global-reach.md)
 
 ### <a name="connect-virtual-networks-to-each-other"></a>将虚拟网络相互连接
@@ -202,28 +201,28 @@ Azure 网络支持以下安全远程访问方案：
 
 一个选择是通过 Internet 以“环回”方式将一个虚拟网络上的服务连接到另一个虚拟网络上的服务。 该连接将在一个虚拟网络上开始，通过 Internet，再回到目标虚拟网络。 此选项会导致连接存在任何基于 Internet 的通信所固有的安全问题。
 
-创建两个虚拟网络之间相互连接的站点到站点 VPN 可能是最佳选择。 此方法使用与上面提到的跨界站点到站点 VPN 连接相同的[IPSec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)协议。
+创建两个虚拟网络之间相互连接的站点到站点 VPN 可能是最佳选择。 此方法与上述的跨界站点到站点 VPN 连接使用相同的 [IPSec 隧道模式](https://technet.microsoft.com/library/cc786385.aspx)协议。
 
 此方法的优点是通过 Azure 网络结构建立 VPN 连接，而不是通过 Internet 进行连接。 与通过 Internet 连接的站点到站点 VPN 相比，这提供了额外的安全层。
 
 了解详细信息：
 
-* [使用 Azure 资源管理器和 PowerShell 配置 VNet 到 VNet 连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+* [使用 Azure Resource Manager 和 PowerShell 配置 VNet 到 VNet 连接](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 连接到虚拟网络的另一种方式是使用 [VNET 对等互连](../../virtual-network/virtual-network-peering-overview.md)。 使用此功能可以连接两个 Azure 网络，使两者之间的通信通过 Microsoft 主干基础结构进行，而永远无需通过 Internet。 VNET 对等互连可以连接到同一区域中的两个 VNET，或者两个跨 Azure 区域的 VNET。 可以使用 NSG 来限制不同子网或系统之间的连接。
 
 ## <a name="availability"></a>可用性
 
-可用性是任何安全程序的一个重要组成部分。 如果用户和系统无法访问他们需要通过网络访问的内容，可视为该服务已遭到入侵。 Azure 具有支持以下高可用性机制的网络技术：
+可用性是任何安全程序的重要组件。 如果用户和系统无法通过网络访问需要访问的内容，则可以认为服务已遭入侵。 Azure 的网络技术支持以下高可用性机制：
 
 * 基于 HTTP 的负载均衡
-* 网络级别的负载均衡
+* 网络级别负载均衡
 * 全局负载均衡
 
-负载均衡是专为在多个设备之间均匀分布连接而设计的机制。 负载均衡的目标是：
+负载均衡是一种机制，旨在将连接平均分布到多个设备。 负载均衡的目标如下：
 
 * 提高可用性。 在跨多个设备对连接进行负载均衡时，一个或多个设备可能变得不可用，但不影响服务。 在剩余的联机设备上运行的服务可继续提供服务中的内容。
-* 提高性能。 在跨多个设备对连接进行负载均衡时，单个设备不必负责所有处理。 相反，提供内容的处理和内存需求遍布多个设备。
+* 提高性能。 在跨多个设备对连接进行负载均衡时，单个设备不必负责所有处理。 提供内容的处理和内存需求分散在多个设备之间。
 
 ### <a name="http-based-load-balancing"></a>基于 HTTP 的负载均衡
 
@@ -233,13 +232,13 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 * 基于 Cookie 的会话关联。 此功能可确保建立到负载均衡器后面的某个服务器的连接在客户端和服务器之间保持不变。 此操作确保了事务的稳定性。
 * TLS 卸载。 当客户端与负载均衡器连接时，该会话将使用 HTTPS （TLS）协议进行加密。 但是，为了提高性能，可以使用 HTTP（未加密）协议在负载均衡器和该负载均衡器后面的 Web 服务器之间进行连接。 这称为 "TLS 卸载"，因为负载均衡器后面的 web 服务器不会遇到加密所涉及的处理器开销。 因此 Web 服务器可更快地为请求提供服务。
-* 基于 URL 的内容路由。 此功能可使负载均衡器决定在哪里转接基于目标 URL 的连接。 与基于 IP 地址做出负载均衡决策的解决方案相比，这提供了更多的灵活性。
+* 基于 URL 的内容路由。 此功能可使负载均衡器决定在哪里转接基于目标 URL 的连接。 它提供的弹性大于基于 IP 地址做出负载均衡决策的解决方案。
 
 了解详细信息：
 
 * [应用程序网关概述](/azure/application-gateway/application-gateway-introduction)
 
-### <a name="network-level-load-balancing"></a>网络级别的负载均衡
+### <a name="network-level-load-balancing"></a>网络级别负载均衡
 
 与基于 HTTP 的负载均衡相比，网络级别负载均衡基于 IP 地址和端口（TCP 或 UDP）号做出决策。
 使用 Azure 负载均衡器，可以在 Azure 中获得网络级别负载均衡的优点。 负载均衡器的一些主要特征包括：
@@ -253,15 +252,15 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 了解详细信息：
 
 * [多个虚拟机或服务之间的面向 Internet 的负载均衡器](/azure/load-balancer/load-balancer-internet-overview)
-* [Internal load balancer overview（内部负载均衡器概述）](/azure/load-balancer/load-balancer-internal-overview)
+* [内部负载均衡器概述](/azure/load-balancer/load-balancer-internal-overview)
 
 ### <a name="global-load-balancing"></a>全局负载均衡
 
-某些组织可能想要最高级别的可用性。 实现此目标的一种方法是在全球分布的数据中心中托管应用程序。 在分布于世界各地的数据中心中托管应用程序时，整个地缘政治区域可能会变得不可用，并且应用程序仍可启动和运行。
+某些组织可能想要最高级别的可用性。 实现此目标的方法之一是将应用程序托管到全球分布的数据中心。 在分布于世界各地的数据中心托管应用程序时，即使整个地缘政治区域变得不可用，应用程序也可以启动并运行。
 
 此负载平衡策略也可暂停性能优势。 可直接向距离提出请求的设备最近的数据中心请求服务。
 
-在 Azure 中，可以使用 Azure 流量管理器获得全局负载均衡的优点。
+在 Azure 中，使用 Azure 流量管理器可以获得全局负载均衡的优点。
 
 了解详细信息：
 
@@ -269,14 +268,14 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 
 ## <a name="name-resolution"></a>名称解析
 
-名称解析是在 Azure 中托管的所有服务的一个重要功能。 从安全角度看，名称解析功能的泄漏可能会导致攻击者将来自站点的请求重定向到攻击者的站点。 安全的名称解析是所有云托管的服务的要求。
+名称解析是对 Azure 中托管的所有服务而言至关重要的功能。 从安全角度看，入侵名称解析功能可能会导致攻击者将你站点的请求重定向到攻击者的站点。 安全名称解析是所有云托管服务的要求。
 
-需要解决以下两种类型的名称解析：
+需要解决两种类型的名称解析：
 
-* 内部名称解析。 虚拟网络和/或本地网络上的服务使用此名称解析。 用于内部名称解析的名称无法通过 Internet 访问。 为获得最佳的安全性，重要的是内部名称解析方案对于外部用户不可访问。
+* 内部名称解析。 虚拟网络和/或本地网络上的服务使用此名称解析。 用于内部名称解析的名称无法通过 Internet 访问。 为了获取最高安全性，外部用户不能访问内部名称解析方案，这一点非常重要。
 * 外部名称解析。 本地网络和虚拟网络之外的人员和设备使用此名称解析。 这些是对 Internet 可见且用于将连接定向到基于云的服务的名称。
 
-对于内部名称解析，有两个选项：
+对于内部名称解析，可以使用两个选项：
 
 * 虚拟网络 DNS 服务器。 创建新的虚拟网络时，会为你创建 DNS 服务器。 此 DNS 服务器可以解析位于该虚拟网络上的计算机的名称。 此 DNS 服务器是不可配置的，而且由 Azure 结构管理器进行管理，从而帮助对名称解析解决方案进行安全保护。
 * 自带 DNS 服务器。 可选择将自己选择的 DNS 服务器放置在虚拟网络上。 此 DNS 服务器可以是 Active Directory 集成的 DNS 服务器或由 Azure 合作伙伴提供的专用 DNS 服务器解决方案，两者均可从 Azure 市场中获得。
@@ -291,11 +290,11 @@ Azure 应用程序网关为基于 Web 的服务提供了基于 HTTP 的负载均
 * 在本地托管自己的外部 DNS 服务器。
 * 通过服务提供程序托管自己的外部 DNS 服务器。
 
-许多大型组织在本地托管自己的 DNS 服务器。 之所以可以这样做，是因为他们具有可以这样做的网络专业知识和全球影响力。
+许多大型组织在本地托管自己的 DNS 服务器。 可以这样做的原因是它们具有相应的网络专业技术，并且在全球运营。
 
-在大多数情况下，最好通过服务提供商托管 DNS 名称解析服务。 这些服务提供商具有网络专业知识和全球影响力，以确保名称解析服务的超高可用性。 可用性是 DNS 服务所必需的，因为如果名称解析服务失败，则任何人都将无法访问面向 Internet 的服务。
+在大多数情况下，最好在服务提供商那里托管 DNS 名称解析服务。 这些服务提供商具有网络专业技术并在全球运营，可确保名称解析服务具有极高的可用性。 可用性是 DNS 服务所必需的，因为如果名称解析服务失败，则任何人都将无法访问面向 Internet 的服务。
 
-Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS 解决方案。 此外部名称解析解决方案利用全球 Azure DNS 基础结构。 由此可使用与其他 Azure 服务相同的凭据、API、工具和计费在 Azure 中托管域。 作为 Azure 的一部分，它还继承了内置在平台中的强大的安全控件。
+Azure 以 Azure DNS 的形式提供一个高可用性且高性能的外部 DNS 解决方案。 此外部名称解析解决方案利用全球 Azure DNS 基础结构。 由此可使用与其他 Azure 服务相同的凭据、API、工具和计费在 Azure 中托管域。 由于属于 Azure 的一部分，它还会继承平台内置的强大安全控制。
 
 了解详细信息：
 
@@ -367,11 +366,11 @@ Azure 网络观察程序 可帮助进行排除故障，并提供一套全新的�
 若要深入了解网络观察程序以及如何开始测试实验室中的一些功能，请参阅 [Azure 网络观察程序监视概述](../../network-watcher/network-watcher-monitoring-overview.md)。
 
 > [!NOTE]
-> 有关此服务可用性和状态的最新通知，请查看[Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)。
+> 有关此服务可用性和状态方面的最新通知，请参阅 [Azure 更新页](https://azure.microsoft.com/updates/?product=network-watcher)。
 
 ### <a name="azure-security-center"></a>Azure 安全中心
 
-Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于大量的安全解决方案。
+Azure 安全中心帮助你预防、检测和响应威胁，同时提高 Azure 资源的可见性并控制其安全性。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于大量的安全解决方案。
 
 安全中心通过以下方式来帮助优化和监视网络安全：
 
@@ -389,11 +388,11 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 
 了解详细信息：
 
-* [虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)
+* [虚拟网络点击](../../virtual-network/virtual-network-tap-overview.md)
 
 ### <a name="logging"></a>日志记录
 
-对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，可以从以下日志中获取信息：
+网络级别的日志记录是任何网络安全方案的重要功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录可从以下来源获取信息：
 
 * [活动日志](../../azure-monitor/platform/platform-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
@@ -402,4 +401,4 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/) 来查看和分析这些日志。
 了解详细信息：
 
-* [网络安全组（Nsg）的 Azure Monitor 日志](../../virtual-network/virtual-network-nsg-manage-log.md)
+* [网络安全组 (NSG) 的 Azure Monitor 日志](../../virtual-network/virtual-network-nsg-manage-log.md)

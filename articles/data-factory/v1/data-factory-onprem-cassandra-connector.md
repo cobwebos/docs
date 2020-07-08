@@ -13,10 +13,9 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991495"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
@@ -63,7 +62,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供特定于 Cassandra 链接服务的 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |“type”属性必须设置为：OnPremisesCassandra**** |是 |
 | host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
@@ -82,7 +81,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 CassandraTable 数据集类型的 typeProperties 节具有以下属性****
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）********。 |
 | tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）********。 |
@@ -94,10 +93,10 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 源类型为 CassandraSource 时，以下属性在 typeProperties 节中可用****：
 
-| properties | 说明 | 允许的值 | 必须 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表****。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
-| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |否。 默认值为 ONE。 |
+| 查询 |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表  。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
+| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |不能。 默认值为 ONE。 |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON 示例：将数据从 Cassandra 复制到 Azure Blob
 此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 其中演示如何将数据从本地 Cassandra 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -261,21 +260,21 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ### <a name="type-mapping-for-cassandra"></a>Cassandra 的类型映射
 | Cassandra 类型 | 基于.NET 的类型 |
 | --- | --- |
-| ASCII |字符串 |
+| ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |Boolean |
-| DECIMAL |Decimal |
+| BOOLEAN |布尔 |
+| DECIMAL |小数 |
 | DOUBLE |Double |
 | FLOAT |Single |
-| INET |字符串 |
+| INET |String |
 | INT |Int32 |
-| TEXT |字符串 |
+| TEXT |String |
 | TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |字符串 |
-| VARINT |Decimal |
+| VARCHAR |String |
+| VARINT |小数 |
 
 > [!NOTE]
 > 对于集合类型（映射、集、列表等），请参阅[通过虚拟表使用 Cassandra 集合类型](#work-with-collections-using-virtual-table)部分。
@@ -289,8 +288,8 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ## <a name="work-with-collections-using-virtual-table"></a>通过虚拟表使用集合
 Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库，并从其中复制数据。 对于包括映射、集和列表在内的集合类型，该驱动程序会将数据重新规范化到相应的虚拟表中。 具体而言，如果表中包含任何集合列，则该驱动程序会生成以下虚拟表：
 
-* 基表，其中包含与实际表相同的数据（集合列除外）****。 基表使用与其所表示的实际表相同的名称。
-* 对于每个集合列都会生成一个虚拟表，这会扩展嵌套数据****。 使用实际表名称、分隔符“vt”和列名称命名表示集合的虚拟表**。
+* 基表，其中包含与实际表相同的数据（集合列除外）  。 基表使用与其所表示的实际表相同的名称。
+* 对于每个集合列都会生成一个虚拟表，这会扩展嵌套数据  。 使用实际表名称、分隔符 "*vt*" 和列名称命名表示集合的虚拟表。
 
 虚拟表引用实际表中的数据，以使驱动程序能访问非规范化的数据。 有关详细信息，请参阅示例部分。 通过查询和联接虚拟表，可访问 Cassandra 集合的内容。
 
@@ -299,7 +298,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 ### <a name="example"></a>示例
 例如，下面的“ExampleTable”是一个 Cassandra 数据库表，其中包含名为“pk_int”的整数主键列、文本列命名值、列表列、映射列和名为“StringSet”的集列。
 
-| pk_int | 值 | 列出 | 映射 | StringSet |
+| pk_int | Value | 列出 | 映射 | StringSet |
 | --- | --- | --- | --- | --- |
 | 1 |“示例值 1” |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |“示例值 3” |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
@@ -308,7 +307,7 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 
 第一个虚拟表是名为“ExampleTable”的基表，如下表所示。 除了会在此表中被省略但在其他虚拟表中展开的集合外，该基表包含与原始数据库表相同的数据。
 
-| pk_int | 值 |
+| pk_int | Value |
 | --- | --- |
 | 1 |“示例值 1” |
 | 3 |“示例值 3” |

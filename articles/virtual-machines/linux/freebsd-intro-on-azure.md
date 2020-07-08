@@ -9,7 +9,6 @@ ms.date: 09/13/2017
 ms.author: mimckitt
 ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261629"

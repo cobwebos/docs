@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114255"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自愿性迁移工具迁移经典警报规则
@@ -76,7 +75,7 @@ ms.locfileid: "81114255"
 
 1. 迁移完成或者需要你采取措施时，前面提供的地址会收到电子邮件。 也可以在门户中的迁移登陆页上定期检查状态。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="why-is-my-subscription-listed-as-not-ready-for-migration"></a>我的订阅为何列为未准备好迁移？
 

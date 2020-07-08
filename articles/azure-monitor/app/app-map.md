@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80989521"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
@@ -43,7 +42,7 @@ ms.locfileid: "80989521"
 
 ### <a name="investigate-failures"></a>调查故障
 
-选择“调查故障”  以启动故障窗格。
+选择“调查故障”以启动故障窗格。
 
 ![“调查故障”按钮的屏幕截图](media/app-map/investigate-failures.png)
 
@@ -51,7 +50,7 @@ ms.locfileid: "80989521"
 
 ### <a name="investigate-performance"></a>调查性能
 
-若要排查性能问题，请选择“调查性能”  。
+若要排查性能问题，请选择“调查性能”。
 
 ![“调查性能”按钮的屏幕截图](media/app-map/investigate-performance.png)
 
@@ -59,7 +58,7 @@ ms.locfileid: "80989521"
 
 ### <a name="go-to-details"></a>转到详细信息
 
-选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。 
+选择“转到详细信息”可探索端到端事务体验，从而可以深入到调用堆栈级别的信息。
 
 ![“转到详细信息”按钮的屏幕截图](media/app-map/go-to-details.png)
 
@@ -67,7 +66,7 @@ ms.locfileid: "80989521"
 
 ### <a name="view-logs-analytics"></a>查看日志（分析）
 
-若要进一步查询和调查应用程序数据，请单击“在日志(分析)中查看”。 
+若要进一步查询和调查应用程序数据，请单击“在日志(分析)中查看”。
 
 ![“在 Analytics 中查看”按钮的屏幕截图](media/app-map/view-logs.png)
 
@@ -75,7 +74,7 @@ ms.locfileid: "80989521"
 
 ### <a name="alerts"></a>警报
 
-若要查看活动警报和导致警报触发的基础规则，请选择“警报”。 
+若要查看活动警报和导致警报触发的基础规则，请选择“警报”。
 
 ![“警报”按钮的屏幕截图](media/app-map/alerts.png)
 
@@ -85,7 +84,7 @@ ms.locfileid: "80989521"
 
 应用程序映射使用**云角色名称**属性来标识映射上的组件。 Application Insights SDK 会自动将云角色名称属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改要在应用程序映射上显示的内容，请如下所示进行操作：
 
-# <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **按如下所示编写自定义 TelemetryInitializer。**
 
@@ -157,7 +156,7 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 
 **Java 代理**
 
-对于[Java agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) ，按如下所示设置云角色名称：
+对于 [Java 代理 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)，云角色名称设置如下：
 
 ```json
 {
@@ -169,11 +168,11 @@ ASP.NET Web 应用程序的另一种方法是在代码中（例如在 Global.asp
 }
 ```
 
-你还可以使用环境变量```APPLICATIONINSIGHTS_ROLE_NAME```设置云角色名称。
+还可以使用环境变量 ```APPLICATIONINSIGHTS_ROLE_NAME``` 设置云角色名称。
 
 **Java SDK**
 
-如果你使用的是 SDK，则从 Application Insights Java SDK 2.5.0 开始，你可以通过将添加`<RoleName>`到`ApplicationInsights.xml`文件来指定云角色名称，例如
+如果使用的是 SDK，从 Application Insights Java SDK 2.5.0 开始，可以通过将 `<RoleName>` 添加到 `ApplicationInsights.xml` 文件来指定云角色名称，例如
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -249,9 +248,9 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 另一个方案是，应用在容器化环境中运行，仅仅了解单个服务器可能无法获得足够的信息来找出给定的问题，因此需要替代云角色实例的值。
 
-若要详细了解如何用遥测初始化表达式替代 "云角色名称" 属性，请参阅[添加属性： ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。
+有关如何使用遥测数据初始化表达式替代云角色名称属性的详细信息，请参阅[添加属性：ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果无法让应用程序映射按预期方式工作，请尝试以下步骤：
 
@@ -259,11 +258,11 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 1. 请确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
 
-    有关受支持的 Sdk 列表，请参阅此[文](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
+    有关受支持的 SDK 的列表，请参考此[文章](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)。
 
 2. 将所有组件都升级到最新 SDK 版本。
 
-3. 如果使用的是 c # Azure Functions，请升级到[函数 V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
+3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
 
 4. 确认[云角色名称](#set-cloud-role-name)已正确配置。
 
@@ -277,7 +276,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 若要解决此问题，需要更改检测，以正确设置云角色名称、依赖项类型和依赖项目标字段。
 
-* 依赖项目标应代表依赖项的逻辑名称。 在许多情况下，它等效于依赖项的服务器或资源名称。 例如，对于 HTTP 依赖项，其目标将设置为主机名。 依赖项目标不应包含会在不同的请求中发生变化的唯一 ID 或参数。
+* 依赖项目标应代表依赖项的逻辑名称。 在许多情况下，它相当于依赖项的服务器或资源名称。 例如，对于 HTTP 依赖项，其目标将设置为主机名。 依赖项目标不应包含会在不同的请求中发生变化的唯一 ID 或参数。
 
 * 依赖项类型应代表依赖项的逻辑类型。 例如，HTTP、 SQL 或 Azure Blob 就是典型的依赖项类型。 它不应包含唯一 ID。
 
@@ -291,6 +290,6 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解相关工作原理 Application Insights 参阅[遥测相关文章](correlation.md)。
-* [端到端事务诊断体验](transaction-diagnostics.md)将所有 Application Insights 监视的组件中的服务器端遥测关联到一个视图中。
-* 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。
+* 要详细了解关联在 Application Insights 中的工作原理，请参阅[遥测关联文章](correlation.md)。
+* [端到端事务诊断体验](transaction-diagnostics.md)将所有受 Application Insights 监视的组件中的服务器端遥测关联到单个视图中。
+* 对于 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)一文。

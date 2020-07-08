@@ -15,18 +15,17 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2475bdce3ab8f153cc837601964bf4a2e90a470c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260405"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>调试 Microsoft Azure CDN 的 HTTP 标头
-调试响应标头`X-Cache`提供有关内容所提供的 CDN 堆栈层的详细信息。 此标头特定于 Microsoft Azure CDN。
+调试响应标头 `X-Cache` 提供有关内容所提供的 CDN 堆栈层的详细信息。 此标头特定于 Microsoft Azure CDN。
 
 ### <a name="response-header-format"></a>响应标头格式
 
-Header | 说明
+Header | 描述
 -------|------------
 X 缓存： TCP_HIT | 从 CDN 边缘缓存提供内容时，将返回此标头。 
 X 缓存： TCP_REMOTE_HIT | 当通过 CDN 区域缓存（源盾牌层）提供内容时，将返回此标头

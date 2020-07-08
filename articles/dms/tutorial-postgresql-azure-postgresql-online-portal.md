@@ -13,17 +13,16 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 04/11/2020
 ms.openlocfilehash: e01cc1c07d720c4743a03b5001e640f8b851dd5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114008"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户将 PostgreSQL 迁移到 Azure DB for PostgreSQL online
 
 可以使用 Azure 数据库迁移服务将数据库从本地 PostgreSQL 实例迁移到[Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) ，并使应用程序的停机时间最短。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **DVD Rental** 示例数据库从 PostgreSQL 9.6 的本地实例迁移到 Azure Database for PostgreSQL。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 > [!div class="checklist"]
 >
 > * 使用 pg_dump 实用程序迁移示例架构。
@@ -31,7 +30,7 @@ ms.locfileid: "81114008"
 > * 在 Azure 数据库迁移服务中创建迁移项目。
 > * 运行迁移。
 > * 监视迁移。
-> * 执行迁移转换。
+> * 执行直接转换迁移。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 我们加密磁盘以防止在迁移过程中发生数据被盗
@@ -67,8 +66,8 @@ ms.locfileid: "81114008"
 * 在 postgresql.config 文件中启用逻辑复制，并设置以下参数：
 
   * wal_level = **logical**
-  * max_replication_slots = [槽数]，建议设置为“5 个槽”****
-  * max_wal_senders =[并发任务数] - max_wal_senders 参数设置可以运行的并发任务数，建议设置为“10 个任务”****
+  * max_replication_slots = [槽数]，建议设置为“5 个槽” 
+  * max_wal_senders =[并发任务数] - max_wal_senders 参数设置可以运行的并发任务数，建议设置为“10 个任务” 
 
 > [!IMPORTANT]
 > 现有数据库中的所有表都需要主键，以确保可以将更改同步到目标数据库。
@@ -161,15 +160,15 @@ ms.locfileid: "81114008"
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”****，然后选择“订阅”****。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
    ![显示门户订阅](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
 
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”****。
+2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
 
     ![显示资源提供程序](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
 
-3. 搜索 "迁移"，然后在 " **microsoft.datamigration**" 右侧选择 "**注册**"。
+3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
 
     ![注册资源提供程序](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
 
@@ -179,7 +178,7 @@ ms.locfileid: "81114008"
 
     ![Azure 市场](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”********。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建” 。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-create1.png)
   
@@ -205,7 +204,7 @@ ms.locfileid: "81114008"
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”****，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”****。
+1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
 
       ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-search.png)
 
@@ -213,22 +212,22 @@ ms.locfileid: "81114008"
 
 3. 在 "**新建迁移项目**" 屏幕上，指定项目的名称，在 "**源服务器类型**" 文本框中，选择 " **PostgresSQL**"，在 "**目标服务器类型**" 文本框中，选择**Azure Database for PostgreSQL**。
 
-4. 在“选择活动类型”部分选择“联机数据迁移”。********
+4. 在“选择活动类型”部分选择“联机数据迁移”。 
 
     ![创建 Azure 数据库迁移服务项目](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-create-project.png)
 
     > [!NOTE]
-    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。****
+    > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
 5. 选择 "**保存**"，注意成功使用 Azure 数据库迁移服务迁移数据的要求，然后选择 "**创建和运行活动**"。
 
 ## <a name="specify-source-details"></a>指定源详细信息
 
-1. 在 "**添加源详细信息**" 屏幕上，为源 PostgreSQL 实例指定连接详细信息。
+1. 在“添加源详细信息”  屏幕上，指定源 PostgreSQL 实例的连接详细信息。
 
     ![“添加源详细信息”屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-source-details.png)
 
-2. 选择“保存”。 
+2. 选择“保存” 。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
@@ -236,7 +235,7 @@ ms.locfileid: "81114008"
 
     ![“目标详细信息”屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-target-details.png)
 
-2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。********
+2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。 
 
     如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务默认会选择目标数据库。
 
@@ -246,13 +245,13 @@ ms.locfileid: "81114008"
 
     !["迁移设置" 屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-migration-settings.png)
 
-4. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符************。
+4. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符  。
 
     ![迁移摘要屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”****。
+* 选择“运行迁移”。
 
     此时将显示 "迁移活动" 窗口，并且活动的**状态**将更新为 **"正在进行备份"**。
 
@@ -265,7 +264,7 @@ ms.locfileid: "81114008"
 2. 迁移完成后，在 "**数据库名称**" 下，选择特定数据库以获取**完整数据加载**和**增量数据同步**操作的迁移状态。
 
    > [!NOTE]
-   > “完整数据加载”会显示初始加载迁移状态，而“增量数据同步”则会显示变更数据捕获 (CDC) 状态。********
+   > “完整数据加载”会显示初始加载迁移状态，而“增量数据同步”则会显示变更数据捕获 (CDC) 状态。 
 
      ![完整数据加载详细信息](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-full-data-load-details.png)
 
@@ -273,13 +272,13 @@ ms.locfileid: "81114008"
 
 ## <a name="perform-migration-cutover"></a>执行迁移直接转换
 
-完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。****
+完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。****
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。 
 
-2. 等待 "**挂起的更改**" 计数器显示**0** ，以确保停止源数据库的所有传入事务，选中 "**确认**" 复选框，然后选择 "**应用**"。
+2. 等到“挂起的更改”  计数器显示“0”  以确保源数据库的所有传入事务都已停止，选中“确认”  复选框，然后选择“应用”  。
 
-    ![完成切换屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
+    ![“完成直接转换”屏幕](media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-complete-cutover.png)
 
 3. 数据库迁移状态显示为 "**已完成**" 时，将应用程序连接到 Azure Database for PostgreSQL 的新目标实例。
 

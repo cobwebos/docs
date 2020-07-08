@@ -10,7 +10,6 @@ services: azure-maps
 manager: cpendle
 ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804667"

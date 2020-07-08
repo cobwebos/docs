@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882465"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 Web API：代码配置
@@ -150,7 +149,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 下表描述了验证程序：
 
-| 验证程序 | 说明 |
+| 验证程序 | 描述 |
 |---------|---------|
 | **ValidateAudience** | 确保该令牌适用于为你验证令牌的应用程序。 |
 | **ValidateIssuer** | 确保令牌由受信任的 STS 颁发，即，令牌来自你信任的某人。 |

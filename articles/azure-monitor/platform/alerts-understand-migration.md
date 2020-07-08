@@ -7,10 +7,9 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114304"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
@@ -134,7 +133,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 对于 Blob、表、文件和队列等存储帐户服务，以下指标将映射到等效的指标，如下所示：
 
-| 经典警报中的指标 | 新警报中的等效指标 | 说明|
+| 经典警报中的指标 | 新警报中的等效指标 | 注释|
 |--------------------------|---------------------------------|---------|
 | AnonymousAuthorizationError| 包含维度 "ResponseType"="AuthorizationError" 和 "Authentication"="Anonymous" 的事务指标| |
 | AnonymousClientOtherError | 包含维度 "ResponseType"="ClientOtherError" 和 "Authentication"="Anonymous" 的事务指标 | |
@@ -171,7 +170,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 对于 Application Insights，等效的指标如下所示：
 
-| 经典警报中的指标 | 新警报中的等效指标 | 说明|
+| 经典警报中的指标 | 新警报中的等效指标 | 注释|
 |--------------------------|---------------------------------|---------|
 | availability.availabilityMetric.value | availabilityResults/availabilityPercentage|   |
 | availability.durationMetric.value | availabilityResults/duration| 将原始阈值乘以 1000，因为经典指标的单位为秒，而新指标的单位为毫秒。  |
@@ -201,7 +200,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 对于 Cosmos DB，等效指标如下所示：
 
-| 经典警报中的指标 | 新警报中的等效指标 | 说明|
+| 经典警报中的指标 | 新警报中的等效指标 | 注释|
 |--------------------------|---------------------------------|---------|
 | AvailableStorage     |AvailableStorage|   |
 | 数据大小 | DataUsage| |

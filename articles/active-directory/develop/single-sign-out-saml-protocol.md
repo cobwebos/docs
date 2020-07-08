@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881259"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
@@ -66,9 +65,9 @@ Azure AD 在响应 `LogoutRequest` 元素时发送 `LogoutResponse`。 以下摘
 Azure AD 将设置 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它还将 `InResponseTo` 元素设置为获取响应的 `LogoutRequest` 的 `ID` 属性值。
 
 ### <a name="issuer"></a>颁发者
-Azure AD 将此值设置`https://login.microsoftonline.com/<TenantIdGUID>/`为\<，其中 TenantIdGUID> 是 AZURE AD 租户的租户 ID。
+Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，其中，\<TenantIdGUID> 是 Azure AD 租户的租户 ID。
 
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的**应用 ID URI** 值。
 
 ### <a name="status"></a>状态
-Azure AD 使用`Status`元素`StatusCode`中的元素指示注销的成功或失败。当注销尝试失败时， `StatusCode`元素还可以包含自定义错误消息。
+Azure AD 使用 `StatusCode` 元素中的元素 `Status` 指示注销的成功或失败。当注销尝试失败时， `StatusCode` 元素还可以包含自定义错误消息。

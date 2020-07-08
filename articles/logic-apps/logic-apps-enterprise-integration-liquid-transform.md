@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879167"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
@@ -25,7 +24,7 @@ ms.locfileid: "80879167"
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 基本[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
@@ -57,7 +56,7 @@ ms.locfileid: "80879167"
    }
    ```
 
-1. 在[Azure 门户](https://portal.azure.com)的 "Azure 搜索" 框中，输入`integration accounts`，然后选择 "**集成帐户**"。
+1. 在[Azure 门户](https://portal.azure.com)的 "Azure 搜索" 框中，输入 `integration accounts` ，然后选择 "**集成帐户**"。
 
    ![查找 "集成帐户"](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -71,11 +70,11 @@ ms.locfileid: "80879167"
 
 1. 在 "**地图**" 窗格中，选择 "**添加**"，并为地图提供以下详细信息：
 
-   | 属性 | 值 | 说明 | 
+   | Property | “值” | 描述 | 
    |----------|-------|-------------|
    | **名称** | `JsonToJsonTemplate` | 映射的名称，在此示例中为“JsonToJsonTemplate” | 
    | **映射类型** | **liquid** | 你的映射的类型。 对于 JSON 到 JSON 转换，必须选择“liquid”****。 | 
-   | **将** | `SimpleJsonToJsonTemplate.liquid` | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 有关地图大小限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)。 |
+   | **Map** | `SimpleJsonToJsonTemplate.liquid` | 用于转换的现有 Liquid 模板或映射文件，在此示例中为“SimpleJsonToJsonTemplate.liquid”。 若要查找此文件，可使用文件选取器。 有关地图大小限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)。 |
    ||| 
 
    ![添加液体模板](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
@@ -86,7 +85,7 @@ ms.locfileid: "80879167"
 
 1. 在逻辑应用设计器中，向逻辑应用中添加[请求触发器](../connectors/connectors-native-reqres.md#add-request)。
 
-1. 在触发器下，选择“新建步骤”。**** 在搜索框中，输入`liquid`作为筛选器，然后选择此操作：**将 JSON 转换为 json-液体**
+1. 在触发器下，选择“新建步骤”。 在搜索框中，输入 `liquid` 作为筛选器，然后选择此操作：**将 JSON 转换为 Json-液体**
 
    ![查找并选择 Liquid 操作](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 

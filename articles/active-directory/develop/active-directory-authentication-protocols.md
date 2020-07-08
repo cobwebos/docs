@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 41ea41b4d7c181dad9246653a68c329387ac5381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80884675"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft 标识平台身份验证协议
@@ -33,7 +32,7 @@ Microsoft 标识平台支持多个最广泛使用的身份验证和授权协议�
 * [使用代理流的服务间调用](v2-oauth2-on-behalf-of-flow.md) - 了解如何对服务到服务调用使用 OAuth 2.0 代理流。
 * [SAML 协议参考](active-directory-saml-protocol-reference.md)-了解 Microsoft 标识平台的单一登录和单一注销 SAML 配置文件。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Microsoft 标识平台概述](v2-overview.md)
 * [Active Directory 代码示例](sample-v2-code.md)

@@ -4,10 +4,9 @@ description: Azure Service Fabric 允许指定在容器内部或外部运行的�
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115149"
 ---
 # <a name="resource-governance"></a>资源调控
@@ -32,7 +31,7 @@ ms.locfileid: "81115149"
 * [描述群集](service-fabric-cluster-resource-manager-cluster-description.md)时，可为这两个指标设置缓冲容量。
 
 > [!NOTE]
-> 这些指标不支持[动态负载报告](service-fabric-cluster-resource-manager-metrics.md);这些指标的负载是在创建时定义的。
+> 这些指标不支持[动态负载报告](service-fabric-cluster-resource-manager-metrics.md)；在创建时即定义了这些指标的负载。
 
 ## <a name="resource-governance-mechanism"></a>资源治理机制
 
@@ -109,8 +108,8 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
 >
 > 我们已更改了关于 Service Fabric 用户服务可用容量的规则计算方式，内容如下：
 >
-> * 在 Service Fabric 7.0 之前，用户服务的可用容量将计算为 5 个核心数（忽略 20% 的容量缓冲区） 
-> * 从 Service Fabric 7.0 开始，用户服务的可用容量将计算为 4 个核心数（不忽略 20% 的容量缓冲区） 
+> * 在 Service Fabric 7.0 之前，用户服务的可用容量将计算为 5 个核心数（忽略 20% 的容量缓冲区）
+> * 从 Service Fabric 7.0 开始，用户服务的可用容量将计算为 4 个核心数（不忽略 20% 的容量缓冲区）
 
 ## <a name="specify-resource-governance"></a>指定资源治理
 
@@ -135,7 +134,7 @@ Service Fabric 运行时当前不提供资源预留。 当进程或容器打开�
   </ServiceManifestImport>
 ```
 
-在此示例中，服务包 ServicePackageA  在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1  和 CodeA2  ），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
+在此示例中，服务包 ServicePackageA 在驻留的节点上拥有一个内核的资源。 此服务包有两个代码包（CodeA1 和 CodeA2），并且都指定了 `CpuShares` 参数。 CpuShares 512:256 的比例将核心划分到两个代码包中。
 
 因此，在此示例中，CodeA1 分得三分之二个内核，CodeA2 分得三分之一个内核（和相同的软保证预留）。 如果没有为代码包指定 CpuShares，Service Fabric 会在这两个代码包之间平分内核。
 

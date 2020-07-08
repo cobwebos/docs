@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: willzhan
 ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80887191"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>适用于 Android 的脱机 Widevine 流式处理媒体服务 v3
@@ -42,14 +41,14 @@ ms.locfileid: "80887191"
 > [!NOTE]
 > 下载内容时，脱机 DRM 仅针对发出单个许可证请求进行计费。 任何错误都不收费。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 在 Android 设备上为 Widevine 实现脱机 DRM 之前，首先应：
 
 - 熟悉为使用 Widevine DRM 的联机内容保护引入的概念。 以下文档/示例对此进行了详细介绍：
     - [设计带访问控制的多 DRM 内容保护系统](design-multi-drm-system-with-access-control.md)
     - [使用 DRM 动态加密和许可证传送服务](protect-with-drm.md)
-- 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git。
+- 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git 。
 
     需要修改[使用 .NET 加密 DRM ](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 Widevine 配置。  
 - 熟悉适用于 Android 的 Google ExoPlayer SDK，此开源视频播放器 SDK 能够支持脱机 Widevine DRM 播放。 
@@ -153,7 +152,7 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
     - 证书必须具备受信任的 CA，自签名开发证书无法使用
     - 该证书必须具备与 Web 服务器或网关的 DNS 名称匹配的 CN
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 有关详细信息，请参阅[Widevine faq](frequently-asked-questions.md#widevine-streaming-for-android)。
 
@@ -161,6 +160,6 @@ Android 5.0 Lollipop 或更高版本中不会出现此问题，因为 Android 5.
 
 Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>总结
 
 本文讨论了如何在 Android 设备上实现受 Widevine 保护的 DASH 内容的脱机模式播放。  本文还回答了与对受 Widevine 保护的内容进行脱机流式处理相关的一些常见问题。

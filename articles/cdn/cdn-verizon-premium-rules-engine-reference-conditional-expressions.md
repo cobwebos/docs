@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81253503"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Verizon 高级规则引擎条件表达式中的 Azure CDN
@@ -20,13 +19,13 @@ ms.locfileid: "81253503"
 
 规则的第一部分是条件表达式。
 
-条件表达式 | 说明
+条件表达式 | 描述
 -----------------------|-------------
 IF | IF 表达式始终是规则中第一个声明的一部分。 与其他所有条件表达式一样，这个 IF 声明必须与匹配项关联。 如果未定义任何其他条件表达式，则此匹配项将确定在将一组功能应用于请求之前必须满足的条件。
 AND IF | AND IF 表达式仅可添加在以下类型的条件表达式之后：IF、AND IF。 它指示初始 IF 语句必须满足其他条件。
 ELSE IF| ELSE IF 表达式指定在一组特定于此 ELSE IF 语句的功能发生之前必须满足的替代条件。 存在 ELSE IF 语句即表示之前语句已结束。 可放在 ELSE IF 语句之后的唯一条件表达式是其他 ELSE IF 语句。 这意味着 ELSE IF 语句仅可用于指定必须满足的单个附加条件。
 
-**示例**： ![CDN 匹配条件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
+**示例**： ![ CDN 匹配条件](./media/cdn-rules-engine-reference/cdn-rules-engine-conditional-expression.png)
 
  > [!TIP]
    > 后一个规则可能会覆盖前一个规则所指定的操作。

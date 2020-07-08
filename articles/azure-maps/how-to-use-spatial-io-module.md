@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804633"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure Maps 空间 IO 模块
@@ -37,7 +36,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
 > [!WARNING]
 > 仅使用来自你信任的源的数据和服务，尤其是在从另一个域中引用它的情况下。 空间 IO 模块执行一些步骤来最大程度地降低风险，不过，最安全的方法不允许将任何 danagerous 的数据从开始到你的应用程序。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 使用空间 IO 模块之前，需要先[创建一个 Azure Maps 帐户](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps)，并[获取帐户的主要订阅密钥](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)。
 
@@ -45,7 +44,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
 
 可以使用以下两个选项之一加载 Azure Maps 空间 IO 模块：
 
-* Azure Maps 空间 IO 模块的全局托管 Azure CDN。 对于此选项，请将对 JavaScript 的引用添加到 HTML `<head>`文件的元素中。
+* Azure Maps 空间 IO 模块的全局托管 Azure CDN。 对于此选项，请将对 JavaScript 的引用添加到 `<head>` HTML 文件的元素中。
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
@@ -57,7 +56,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
     npm install azure-maps-spatial-io
     ```
 
-    然后，在 HTML 文档的`<head>`元素中添加对 JavaScript 的引用：
+    然后，在 HTML 文档的元素中添加对 JavaScript 的引用 `<head>` ：
 
     ```html
     <script src="node_modules/azure-maps-spatial-io/dist/atlas-spatial.min.js"></script>
@@ -121,19 +120,19 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
     </html>
     ```
 
-2. 加载 Azure Maps 空间 IO 模块。 对于本练习，请对 Azure Maps 空间 IO 模块使用 CDN。 将以下引用添加到 HTML `<head>`文件的元素中：
+2. 加载 Azure Maps 空间 IO 模块。 对于本练习，请对 Azure Maps 空间 IO 模块使用 CDN。 将以下引用添加到 `<head>` HTML 文件的元素中：
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. 初始化`datasource`，并将数据源添加到映射。 初始化`layer`，并将数据源添加到地图层。 然后，呈现数据源和层。 在下一步中向下滚动以查看完整的代码之前，请考虑放置数据源和层代码片段的最佳位置。 请注意，在以编程方式操作地图之前，应该等到地图资源准备就绪。
+3. 初始化 `datasource` ，并将数据源添加到映射。 初始化 `layer` ，并将数据源添加到地图层。 然后，呈现数据源和层。 在下一步中向下滚动以查看完整的代码之前，请考虑放置数据源和层代码片段的最佳位置。 请注意，在以编程方式操作地图之前，应该等到地图资源准备就绪。
 
     ```javascript
     var datasource, layer;
     ```
 
-    and
+    和
 
     ```javascript
     //Create a data source and add it to the map.
@@ -222,7 +221,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
     </html>
     ```
 
-5. 请记住将`<Your Azure Maps Key>`替换为主键。 打开 HTML 文件，您将看到类似于下图的结果：
+5. 请记住将替换 `<Your Azure Maps Key>` 为主键。 打开 HTML 文件，您将看到类似于下图的结果：
 
     <center>
 
@@ -244,7 +243,7 @@ Azure Maps Web SDK 提供**空间 IO 模块**，该模块使用 JavaScript 或 T
 > [添加 OGC 地图层](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [连接到 WF 服务](spatial-io-connect-wfs-service.md)
+> [连接到 WFS 服务](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
 > [利用核心操作](spatial-io-core-operations.md)

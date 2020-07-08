@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80878045"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>从 MongoDB 迁移到 Azure Cosmos DB API for MongoDB 时的已知问题/迁移限制
@@ -45,7 +44,7 @@ ms.locfileid: "80878045"
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 你试图从不受支持的 MongoDB 版本迁移到 Azure Cosmos DB。 | 发布新版本的 MongoDB 时，对其进行测试，以确保与 Azure 数据库迁移服务兼容，并且定期更新服务以接受最新版本。 如果立即需要迁移，作为一种解决方法，可以将数据库/集合导出到 Azure 存储，然后将源指向生成的转储。 在存储资源管理器中的 blob 容器中创建 SAS，然后将 URL 与容器 SAS 用作源详细信息连接字符串。<br><br> |
+| 你试图从不受支持的 MongoDB 版本迁移到 Azure Cosmos DB。 | 发布新版本的 MongoDB 时，对其进行测试，以确保与 Azure 数据库迁移服务兼容，并且定期更新服务以接受最新版本。 如果需要立即迁移，作为解决方法，你可以将数据库/集合导出到 Azure 存储，并将源指向生成的转储。 在存储资源管理器中的 blob 容器中创建 SAS，然后将 URL 与容器 SAS 用作源详细信息连接字符串。<br><br> |
 
 ## <a name="next-steps"></a>后续步骤
 

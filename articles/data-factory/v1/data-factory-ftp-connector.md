@@ -13,10 +13,9 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80992039"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 FTP 服务器移动数据
@@ -62,9 +61,9 @@ ms.locfileid: "80992039"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表描述了特定于 FTP 链接服务的 JSON 元素。
 
-| properties | 说明 | 必需 | 默认 |
+| Property | 描述 | 必须 | 默认 |
 | --- | --- | --- | --- |
-| type |将此类型设置为 FtpServer。 |是 |&nbsp; |
+| 类型 |将此类型设置为 FtpServer。 |是 |&nbsp; |
 | host |指定 FTP 服务器的名称或 IP 地址。 |是 |&nbsp; |
 | authenticationType |指定身份验证类型。 |是 |基本、匿名 |
 | username |指定有权访问 FTP 服务器的用户。 |否 |&nbsp; |
@@ -72,8 +71,8 @@ ms.locfileid: "80992039"
 | encryptedCredential |指定访问 FTP 服务器的加密凭据。 |否 |&nbsp; |
 | gatewayName |指定数据管理网关中用于连接到本地 FTP 服务器的网关名称。 |否 |&nbsp; |
 | port |指定 FTP 服务器侦听的端口。 |否 |21 |
-| enableSsl |指定是否通过 SSL/TLS 通道使用 FTP。 |否 |true |
-| enableServerCertificateValidation |指定在通过 SSL/TLS 通道使用 FTP 时是否启用服务器 TLS/SSL 证书验证。 |否 |true |
+| enableSsl |指定是否通过 SSL/TLS 通道使用 FTP。 |否 |是 |
+| enableServerCertificateValidation |指定在通过 SSL/TLS 通道使用 FTP 时，是否要启用服务器 TLS/SSL 证书验证。 |否 |是 |
 
 >[!NOTE]
 >FTP 连接器支持在不使用加密或使用显式 SSL/TLS 加密的情况下访问 FTP 服务器；不支持隐式 SSL/TLS 加密。
@@ -152,13 +151,13 @@ ms.locfileid: "80992039"
 
 每个数据集类型的 **typeProperties** 节都不同。 它提供特定于数据集类型的信息。 **FileShare** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | folderPath |文件夹的子路径。 请对字符串中的特殊字符使用转义符“\”。 有关示例，请参阅“链接服务和数据集定义示例”。<br/><br/>可将此属性与 **partitionBy** 组合在一起，基于切片开始和结束的日期时间构成文件夹路径。 |是 |
 | fileName |指定 **folderPath** 中的文件的名称（如果你想要引用该文件夹中的特定文件）。 如果没有为此属性指定任何值，表将指向文件夹中的所有文件。<br/><br/>如果没有为输出数据集指定 **fileName**，生成文件的名称会采用以下格式： <br/><br/>`Data.<Guid>.txt`（示例：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
 | fileFilter |指定在 **folderPath** 中选择一部分文件而不是所有文件时要使用的筛选器。<br/><br/>允许的值为：`*`（多个字符）和 `?`（单个字符）。<br/><br/>示例 1：`"fileFilter": "*.log"`<br/>示例 2：`"fileFilter": 2014-1-?.txt"`<br/><br/> **fileFilter**适用于输入文件共享数据集。 Hadoop 分布式文件系统 (HDFS) 不支持此属性。 |否 |
 | partitionedBy |用于指定时序数据的动态 **folderPath** 和 **fileName**。 例如，可以指定每小时参数化以形成数据的 **folderPath**。 |否 |
-| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一****。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式部分。 |否 |
+| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、 [Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、 [Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和[Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式部分。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型为**GZip**、 **Deflate**、 **BZip2**和**ZipDeflate**，并且支持的级别为**最佳**和**最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 | useBinaryTransfer |指定是否使用二进制传输模式。 这些值在二进制模式下为 true（这是默认值），在 ASCII 模式下为 false。 仅当关联的链接服务类型为 FtpServer 时，才可以使用此属性。 |否 |
 
@@ -203,7 +202,7 @@ ms.locfileid: "80992039"
 
 在复制活动中，如果源的类型为 **FileSystemSource**，则 **typeProperties** 部分将具有以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 |True、False（默认值） |否 |
 

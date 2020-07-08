@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985059"
 ---
 # <a name="monitor-performance-in-web-applications"></a>在 Web 应用程序中监视性能
@@ -45,7 +44,7 @@ Application Insights 可监视 Java 和 ASP.NET Web 应用程序和服务、WCF 
 ## <a name="what-does-it-all-mean-performance-tiles-and-reports"></a><a name="metrics"></a>这一切意味着什么？ 性能磁贴和报表
 有多个性能指标可供获取。 让我们先从默认在应用程序边栏选项卡上显示的指标开始。
 
-### <a name="requests"></a>Requests
+### <a name="requests"></a>请求
 指定时间段内收到的 HTTP 请求数。 将此结果与其他报表中的结果比较，查看应用行为如何因负载而异。
 
 HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
@@ -102,11 +101,11 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 * 将请求计数与其他指标比较，查看故障或响应缓慢是否与负载有关。
 * 在代码中[插入和搜索跟踪语句][diagnostic]以帮助查明问题。
 * 使用[实时指标流][livestream]监视正在运行的 Web 应用。
-* 通过[Snapshot Debugger][snapshot]捕获 .net 应用程序的状态。
+* 使用[快照调试器][snapshot]捕获 .NET 应用程序的状态。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>通过性能调查体验来发现和修复性能瓶颈
 
-可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 可以快速选择一个特定的性能低下的操作，并使用[探查器](../../azure-monitor/app/profiler.md)深入到代码中来查明导致操作性能低下的根源。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
+可以使用新的性能调查体验来审查 Web 应用中性能低下的操作。 您可以快速选择特定的慢速操作并使用[探查器](../../azure-monitor/app/profiler.md)使操作缓慢地降低到代码的速度。 使用新的为选定操作显示的持续时间分布，只需一瞥，便可快速评估客户的体验有多糟糕。 你可以看到每个性能低下的操作影响了多少用户交互。 在下面的示例中，我们决定更详细地查看“GET Customers/Details”操作的体验。 在持续时间分布中，我们可以看到有三个峰值。 最左侧的峰值约为 400 ms，表示响应体验很棒。 中间峰值约为 1.2 s，表示体验一般。 最后一个是 3.6 s，这里出现一个小的峰值，表示 99% 的体验，这可能会导致我们的客户因不满意而离开。 该体验比同一操作的很棒体验慢十倍。 
 
 ![“GET Customers/Details”三个持续时间峰值](./media/web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -132,7 +131,7 @@ HTTP 请求包括对页面、数据和图像的所有 GET 或 POST 请求。
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 [Web 测试][availability] - 使 Web 请求按固定间隔从世界各地发送到应用程序。
 
-[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛查结果以查明问题。
+[捕获和搜索诊断跟踪][diagnostic] - 插入跟踪调用并筛选结果以查明问题。
 
 [使用情况跟踪][usage] - 查明用户使用应用程序的方式。
 

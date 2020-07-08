@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80876286"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
@@ -31,7 +30,7 @@ ms.locfileid: "80876286"
 
 管理 Azure Active Directory 需要持续执行关键操作任务和进程，这可能不是一个部署项目的一部分。 设置这些任务以优化环境仍非常重要。 关键任务及其建议所有者包括：
 
-| 任务 | “所有者” |
+| 任务 | 所有者 |
 | :- | :- |
 | 管理 Azure AD 中的单一登录（SSO）配置生命周期 | IAM 操作团队 |
 | 为 Azure AD 应用程序设计条件性访问策略 | InfoSec 体系结构团队 |
@@ -128,7 +127,7 @@ ms.locfileid: "80876286"
 可以通过使用以下方法之一在 Azure AD 中引入设备标识并对其进行管理，从而执行此目标：
 
 - 组织可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)来管理设备并强制实施符合性策略、证明设备运行状况，并根据设备是否符合来设置条件性访问策略。 Microsoft Intune 可以管理 iOS 设备、Mac 桌面（通过 JAMF 集成）、Windows 桌面（本机使用适用于 Windows 10 的移动设备管理以及与 Microsoft 端点 Configuration Manager 的共同管理）和 Android 移动设备。
-- [混合 Azure AD 联接](../devices/hybrid-azuread-join-managed-domains.md)在具有 Active Directory 加入域的计算机设备的环境中，通过组策略或 Microsoft 终结点 Configuration Manager 提供管理。 组织可以通过无缝 SSO 的 PHS 或 PTA 部署托管环境。 通过使你的设备 Azure AD 跨云和本地资源的 SSO 提高用户工作效率，同时使你能够使用 [条件访问](../conditional-access/overview.md) 同时保护对云和本地资源的访问。
+- [混合 Azure AD 联接](../devices/hybrid-azuread-join-managed-domains.md)在具有 Active Directory 加入域的计算机设备的环境中，通过组策略或 Microsoft 终结点 Configuration Manager 提供管理。 组织可以通过无缝 SSO 的 PHS 或 PTA 部署托管环境。 通过使你的设备 Azure AD 跨云和本地资源的 SSO 提高用户工作效率，同时使你能够使用 [条件访问](../conditional-access/overview.md)同时保护对云和本地资源的访问   。
 
 如果已加入域且未在云中注册的 Windows 设备或在云中注册但没有条件访问策略的已加入域的 Windows 设备，则应注册未注册的设备，并且在任一情况下，都应[使用混合 Azure AD 联接作为](../conditional-access/require-managed-devices.md)条件性访问策略中的控件。
 
@@ -140,7 +139,7 @@ ms.locfileid: "80876286"
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>设备信任访问策略建议阅读
 
-- [如何：规划混合 Azure Active Directory 联接实现](../devices/hybrid-azuread-join-plan.md)
+- [如何：规划混合 Azure Active Directory 加入的实施](../devices/hybrid-azuread-join-plan.md)
 - [标识和设备访问权限配置](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello for Business
@@ -199,7 +198,7 @@ ms.locfileid: "80876286"
 在 Azure AD 中的[命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)，可以标记组织中受信任的 IP 地址范围。 Azure AD 使用命名位置以：
 
 - 防止风险事件中出现误报。 从受信任的网络位置登录会降低用户的登录风险。
-- 配置[基于位置的条件性访问](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)。
+- 配置[基于位置的条件访问](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)。
 
 ![命名位置](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -258,7 +257,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 - [Azure Active Directory 中的条件性访问的最佳做法](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
 - [标识和设备访问权限配置](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory 条件访问设置参考](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
-- [常见的条件访问策略](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
+- [常见条件访问策略](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
 ## <a name="access-surface-area"></a>访问外围应用
 
@@ -296,7 +295,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 下面列出了你可能想要通过 Microsoft 云服务进行查看的权限：
 
-- 应用或委托\*应用。ReadWrite 权限
+- 应用或委托应用 \* 。ReadWrite 权限
 - 具有委托权限的应用可以代表用户读取、发送或管理电子邮件
 - 向授予的应用使用以下权限：
 

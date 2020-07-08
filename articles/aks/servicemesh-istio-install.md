@@ -7,10 +7,9 @@ ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80877688"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
@@ -22,7 +21,7 @@ ms.locfileid: "80877688"
 > [!NOTE]
 > 以下说明引用 Istio 版本 `1.4.0`。
 >
-> Istio 团队已针对 Kubernetes 版本 `1.4.x`、`1.13` 和 `1.14` 测试了 `1.15` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
+> Istio 团队已针对 Kubernetes 版本 `1.13`、`1.14` 和 `1.15` 测试了 `1.4.x` 版本。 可以在 [GitHub - Istio 版本][istio-github-releases]中找到其他 Istio 版本，在 [Istio 新闻][istio-release-notes]中找到有关每个版本的信息，在[一般的 Istio 常见问题解答][istio-faq]中找到支持的 Kubernetes 版本。
 
 在本文中，学习如何：
 
@@ -33,7 +32,7 @@ ms.locfileid: "80877688"
 > * 访问加载项
 > * 从 AKS 中卸载 Istio
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
 
@@ -63,7 +62,7 @@ ms.locfileid: "80877688"
 
 我们将安装 [Grafana][grafana] 和 [Kiali][kiali] 作为 Istio 安装的一部分。 Grafana 提供分析和监视仪表板，Kiali 提供服务网格观察仪表板。 在设置中，上述每个组件都需要凭据，必须以[机密][kubernetes-secrets]的形式提供这些凭据。
 
-在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建该命名空间。 在通过 `--save-config` 创建命名空间时，需要使用 `kubectl create` 选项，以便 Istio 安装程序将来可以在此对象上运行 `kubectl apply`。
+在安装 Istio 组件之前，必须为 Grafana 和 Kiali 创建机密。 需要将这些机密安装到 Istio 将使用的 `istio-system` 命名空间中，因此我们还需要创建该命名空间。 在通过 `kubectl create` 创建命名空间时，需要使用 `--save-config` 选项，以便 Istio 安装程序将来可以在此对象上运行 `kubectl apply`。
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -99,7 +98,7 @@ kubectl create namespace istio-system --save-config
 > [!CAUTION]
 > [SDS（机密发现服务）][istio-feature-sds]和 [Istio CNI][istio-feature-cni] Istio 功能目前为 [Alpha][istio-feature-stages] 版，因此在启用它们之前应谨慎。 
 >
-> 请注意，现在已为 AKS 上的所有 Kubernetes 1.13 和更高版本**启用**了[服务帐户标记量预测][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的要求）。
+> 请注意，对于 AKS 中的所有 Kubernetes 1.13 以及更高版本，现在已启用[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume] Kubernetes 功能（SDS 所必需的）。
 
 使用以下内容创建名为 `istio.aks.yaml` 的文件。 此文件将保存用于配置 Istio 的 [Istio 控制平面规范][istio-control-plane]详细信息。
 

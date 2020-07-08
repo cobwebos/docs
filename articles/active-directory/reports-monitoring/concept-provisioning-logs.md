@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113321"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表（预览）
@@ -29,8 +28,8 @@ ms.locfileid: "81113321"
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
 - **活动** 
-    - **登录** - 有关托管应用程序的使用情况和用户登录活动的信息。
-    - **审核日志** - [审核日志](concept-audit-logs.md)提供有关用户和组管理、托管应用程序和目录活动的系统活动信息。
+    - **登录**–有关托管应用程序和用户登录活动的使用情况的信息。
+    - **审核日志**  - [审核日志](concept-audit-logs.md)提供有关用户和组管理、托管应用程序和目录活动的系统活动信息。
     - **设置日志**-提供有关由 Azure AD 预配服务设置的用户、组和角色的系统活动。 
 
 - **安全性** 
@@ -39,7 +38,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本主题简要介绍预配报表。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 * 安全管理员、安全读者、报表读者、应用程序管理员和云应用程序管理员角色中的用户
@@ -75,7 +74,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![默认列](./media/concept-provisioning-logs/default-columns.png "默认列")
 
-您可以通过单击工具栏中的 "**列**" 自定义列表视图。
+单击工具栏中的“列”即可自定义列表视图。 
 
 ![列选择器](./media/concept-provisioning-logs/column-chooser.png "列选择器")
 
@@ -99,13 +98,13 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 操作
 
 
-![筛选器](./media/concept-provisioning-logs/default-filter.png "筛选器")
+![Filter](./media/concept-provisioning-logs/default-filter.png "筛选器")
 
 **标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
 
 “日期”筛选器用于定义已返回数据的时间范围。****  
-可能的值为：
+可能的值有：
 
 - 1 个月
 - 7 天
@@ -118,8 +117,8 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 使用“状态”**** 筛选器，可以选择：
 
-- 全部
-- 成功
+- All
+- Success
 - 失败
 - 已跳过
 
@@ -172,10 +171,10 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - 修改的属性
 
-- “摘要”
+- 总结
 
 
-![筛选器](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
+![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "制表符")
 
 
 
@@ -190,7 +189,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 
 
-![筛选器](./media/concept-provisioning-logs/steps.png "筛选器")
+![Filter](./media/concept-provisioning-logs/steps.png "筛选器")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议
@@ -204,11 +203,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 **修改后的属性**显示旧值和新值。 在没有旧值的情况下，"旧值" 列为空白。 
 
 
-### <a name="summary"></a>“摘要”
+### <a name="summary"></a>总结
 
 "**摘要**" 选项卡概述源系统和目标系统中的对象发生了什么情况和标识符。 
 
-## <a name="what-you-should-know"></a>应了解的内容
+## <a name="what-you-should-know"></a>要点
 
 - 如果有高级版，Azure 门户将报告的预配数据存储30天，如果有免费版，则存储7天。
 

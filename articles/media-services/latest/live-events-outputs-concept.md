@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010573"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
@@ -107,16 +106,16 @@ ms.locfileid: "81010573"
 
     在媒体服务 v3 中，非虚 URL 是默认模式。 可以快速获取直播活动，但只有在直播活动启动后，才会知道引入 URL。 如果停止/启动直播活动，此 URL 会更改。 <br/>非虚 URL 适用于这样的情况：最终用户希望使用应用进行流式处理，而应用希望尽快获取实时事件，并且可以使用动态引入 URL。
 
-    如果客户端应用在创建实时事件之前不需要预先生成摄取 URL，则让媒体服务自动生成实时事件的访问令牌。
+    如果客户端应用在创建直播活动之前不需要预生成引入 URL，请让媒体服务自动生成直播活动的访问令牌。
 
 * 虚 URL
 
-    对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 这些广播公司需要一个不会随时间变化的预测摄取 URL。
+    对于使用硬件广播编码器且不希望在启动实时事件时重新配置其编码器的大型媒体广播者来说，虚模式是首选。 这些广播公司需要一个不随时间变化的预测性引入 URL。
     
     > [!NOTE]
-    > 在 Azure 门户中，虚 URL 的名称为 "*永久性输入 URL*"。
+    > 在 Azure 门户中，虚 URL 名为“持久性输入 URL”  。
 
-    若要在 API 中指定此模式， `vanityUrl`请`true`在创建时将设置为`false`（默认值为）。 还需要在创建时传递自己的访问令牌 (`LiveEventInput.accessToken`)。 指定令牌值可避免 URL 中出现随机令牌。 访问令牌必须是有效的 GUID 字符串（带或不带连字符）。 一旦设置模式，就无法将其更新。
+    若要在 API 中指定此模式，请在创建时将 `vanityUrl` 设为 `true`（默认值为 `false`）。 还需要在创建时传递自己的访问令牌 (`LiveEventInput.accessToken`)。 指定令牌值可避免 URL 中出现随机令牌。 访问令牌必须是有效的 GUID 字符串（带或不带连字符）。 一旦设置模式，就无法将其更新。
 
     访问令牌在数据中心内必须是唯一的。 如果应用需要使用虚 URL，我们建议始终为访问令牌创建新的 GUID 实例（而不要重复使用任何现有的 GUID）。
 
@@ -125,14 +124,14 @@ ms.locfileid: "81010573"
     |语言|启用虚 URL|设置访问令牌|
     |---|---|---|
     |REST|[properties.vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--访问令牌](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |CLI|[--vanity-url](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>实时引入 URL 命名规则
 
-* 下面的随机** 字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。
-* *你的访问令牌*：使用虚模式时设置的有效 GUID 字符串。 例如，`"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` 。
-* *流名称*：指示特定连接的流名称。 流名称值通常由使用的实时编码器添加。 可以将实时编码器配置为使用任何名称来描述连接，例如： "video1_audio1"、"video2_audio1"、"流"。
+* 下面的随机  字符串是一个 128 位的十六进制数字（由 32 个 0-9 a-f 字符组成）。
+* *访问令牌*：使用虚模式时设置的有效 GUID 字符串。 例如，`"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`。
+* *流名称*：指示特定连接的流名称。 流名称值通常由使用的实时编码器添加。 可将实时编码器配置为使用任何名称来描述连接，例如：“video1_audio1”、“video2_audio1”、“stream”。
 
 #### <a name="non-vanity-url"></a>非虚 URL
 
@@ -175,11 +174,11 @@ ms.locfileid: "81010573"
 
 ## <a name="live-outputs"></a>实时输出
 
-将流传输到直播活动后，可以通过创建资产、实时输出和流式处理定位符来启动流式传输活动。[](https://docs.microsoft.com/rest/api/media/assets)[](https://docs.microsoft.com/rest/api/media/liveoutputs)[](https://docs.microsoft.com/rest/api/media/streaminglocators) 实时输出会存档流，并使观看者可通过[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使用该流。  
+将流传输到[实时事件](https://docs.microsoft.com/rest/api/media/liveoutputs)后，可以通过创建[资产](https://docs.microsoft.com/rest/api/media/assets)、实时输出和[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators)来启动流事件。 实时输出会存档流，并使观看者可通过[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints)使用该流。  
 
 有关实时输出的详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 请参阅[常见问题解答](frequently-asked-questions.md#live-streaming)一文。
 

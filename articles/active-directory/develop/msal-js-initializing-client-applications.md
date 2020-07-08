@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010148"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化客户端应用程序
@@ -33,9 +32,9 @@ ms.locfileid: "81010148"
 
 ## <a name="initializing-applications"></a>初始化应用程序
 
-在单纯的 JavaScript/Typescript 应用程序中，可按如下所示使用 MSAL.js。 通过使用配置对象实例化 `UserAgentApplication` 来初始化 MSAL 身份验证上下文。 用于初始化 MSAL 的最低要求配置是应用程序的 clientID，你应该从应用程序注册门户获取此配置。
+在单纯的 JavaScript/Typescript 应用程序中，可按如下所示使用 MSAL.js。 通过使用配置对象实例化 `UserAgentApplication` 来初始化 MSAL 身份验证上下文。 要初始化 MSAL.js 所需的最小配置是应用程序（应从应用程序注册门户获取）的 clientID。
 
-对于具有重定向流（`loginRedirect`和`acquireTokenRedirect`）的身份验证方法，在 MSAL 或更早版本中，你将需要通过`handleRedirectCallback()`方法显式注册一个成功或错误的回调。 之所以需要这样做，是因为重定向流不会像弹出窗口体验中的方法那样返回约定。 这在 MSAL 版本1.3.0 中是可选的。
+在 MSAL.js 1.2.x 或更早版本中，对于使用重定向流的身份验证方法（`loginRedirect` 和 `acquireTokenRedirect`），需要通过 `handleRedirectCallback()` 方法显式注册一个返回成功或错误结果的回调。 之所以需要这样做，是因为重定向流不会像弹出窗口体验中的方法那样返回约定。 这在 MSAL.js 1.3.0 版中是可选项。
 
 ```javascript
 // Configuration object constructed
@@ -107,32 +106,32 @@ export type Configuration = {
 
 下面是配置对象中当前支持的整个可配置选项集：
 
-- **clientID**：必填。 应用程序的 clientID，你应该从应用程序注册门户获取此应用程序。
+- **clientID**：必需。 应用程序的 clientID，你应该从应用程序注册门户获取此应用程序。
 
-- **颁发机构**：可选。 一个 URL，表示 MSAL 可从中请求令牌的目录。 默认值为 `https://login.microsoftonline.com/common`。
+- **authority**：可选。 一个 URL，表示 MSAL 可从中请求令牌的目录。 默认值为 `https://login.microsoftonline.com/common`。
     * 在 Azure AD 中，该 URL 采用 https://&lt;instance&gt;/&lt;audience&gt; 格式，其中，&lt;instance&gt; 是标识提供者域（例如 `https://login.microsoftonline.com`），&lt;audience&gt; 是表示登录受众的标识符。 可设置为以下值：
-        * `https://login.microsoftonline.com/<tenant>`-租户是与租户关联的域，如 contoso.onmicrosoft.com 或 GUID，它表示仅用于登录`TenantID`特定组织用户的目录的属性。
+        * `https://login.microsoftonline.com/<tenant>`-租户是与租户关联的域，如 contoso.onmicrosoft.com 或 GUID，它表示 `TenantID` 仅用于登录特定组织用户的目录的属性。
         * `https://login.microsoftonline.com/common`-用于使用工作和学校帐户或 Microsoft 个人帐户来登录用户。
         * `https://login.microsoftonline.com/organizations/` - 用于通过工作和学校帐户将用户登录。
         * `https://login.microsoftonline.com/consumers/`-用于仅使用个人 Microsoft 帐户（live）登录用户。
-    * 在 Azure AD B2C 中，它的形式`https://<instance>/tfp/<tenant>/<policyName>/`为，其中实例是 Azure AD B2C 域，即 {b2clogin}。 "租户" 是 Azure AD B2C 租户的名称，即 "onmicrosoft"，"policyName" 是要应用的 B2C 策略的 "名称"。
+    * 在 Azure AD B2C 中，它的形式为 `https://<instance>/tfp/<tenant>/<policyName>/` ，其中实例是 Azure AD B2C 域，即 {b2clogin}。 "租户" 是 Azure AD B2C 租户的名称，即 "onmicrosoft"，"policyName" 是要应用的 B2C 策略的 "名称"。
 
 
 - **validateAuthority**：可选。  验证令牌的颁发者。 默认值为 `true`。 对于 B2C 应用程序，由于颁发机构值是已知的，并且根据不同的策略而异，因此，颁发机构验证不起作用，必须设置为 `false`。
 
-- **redirectUri**：可选。  应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须完全符合在门户中注册的其中一个重定向 URI。 默认为 `window.location.href`。
+- **redirectUri**：可选。  应用的重定向 URI，应用可在其中发送和接收身份验证响应。 它必须完全符合在门户中注册的其中一个重定向 URI。 默认为 `window.location.href`。
 
-- **postLogoutRedirectUri**：可选。  在注销后将`postLogoutRedirectUri`用户重定向到。默认值为`redirectUri`。
+- **postLogoutRedirectUri**：可选。  注销后将用户重定向到 `postLogoutRedirectUri`。默认为 `redirectUri`。
 
 - **navigateToLoginRequestUrl**：可选。 登录后可以关闭默认导航到起始页的行为。 默认值为 true。 这仅适用于重定向流。
 
-- **cacheLocation**：可选。  将浏览器存储设置为 `localStorage` 或 `sessionStorage`。 默认值为 `sessionStorage`。
+- **cacheLocation**：可选。  将浏览器存储设置为 `localStorage` 或 `sessionStorage`。 默认为 `sessionStorage`。
 
 - **storeAuthStateInCookie**：可选。  此标志已在 MSAL.js v0.2.2 中引入，修复了 Microsoft Internet Explorer 和 Microsoft Edge 中的[身份验证循环问题](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#1-issues-due-to-security-zones)。 将标志 `storeAuthStateInCookie` 设置为 true（启用）可以利用此修复措施。 启用此标志后，MSAL.js 将存储身份验证请求状态，在浏览器 Cookie 中验证身份验证流时需要此状态。 此标志默认设置为 `false`。
 
-- **记录器**：可选。  一个包含回调实例的记录器对象。开发人员可以提供该实例以自定义方式使用和发布日志。 有关传递记录器对象的详细信息，请参阅[使用 MSAL.js 进行日志记录](msal-logging.md)。
+- **logger**：可选。  一个包含回调实例的记录器对象。开发人员可以提供该实例以自定义方式使用和发布日志。 有关传递记录器对象的详细信息，请参阅[使用 MSAL.js 进行日志记录](msal-logging.md)。
 
-- **loadFrameTimeout**：可选。  应将 Azure AD 令牌续订响应之前处于非活动状态的时间（以毫秒为单位）视为超时。默认值为6秒。
+- **loadFrameTimeout**：可选。  处于非活动状态的毫秒数，如果 Azure AD 在此时限内未返回令牌续订响应，则被视为超时。默认值为 6 秒。
 
 - **tokenRenewalOffsetSeconds**：可选。 在令牌过期之前续订令牌的偏差时限，以毫秒为单位。 默认值为 300 毫秒。
 
@@ -141,4 +140,4 @@ export type Configuration = {
 这些值只适合从 MSAL Angular 包装器库向下传递：
 - **unprotectedResources**：可选。  不受保护资源的 URI 数组。 MSAL 不会将令牌附加到包含这些 URI 的传出请求。 默认为 `null`。
 
-- **protectedResourceMap**：可选。  资源到范围的映射，MSAL 在 Web API 调用中使用这种映射自动附加访问令牌。 将获取资源的单个访问令牌。 因此，可以按如下所示映射特定的资源路径：https://graph.microsoft.com/v1.0/me{""、["用户读取"]} 或资源的应用程序 URL： {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 对于 CORS 调用，必须进行这种映射。 默认为 `null`。
+- **protectedResourceMap**：可选。  资源到范围的映射，MSAL 在 Web API 调用中使用这种映射自动附加访问令牌。 将获取资源的单个访问令牌。 因此，可以按如下所示映射特定的资源路径： {"" https://graph.microsoft.com/v1.0/me 、["用户读取"]} 或资源的应用程序 URL： {" https://graph.microsoft.com/ "、["用户读取"、"邮件发送"]}。 对于 CORS 调用，必须进行这种映射。 默认为 `null`。

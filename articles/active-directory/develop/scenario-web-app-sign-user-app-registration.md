@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881573"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
@@ -117,7 +116,7 @@ ms.locfileid: "80881573"
 > - MyOrg（仅限此组织目录中的帐户）
 > - AnyOrg（任何组织目录中的帐户）
 >
-> 你可以创建一个应用程序，该应用程序使用其 Microsoft 个人帐户（例如 Skype、Xbox 或 Outlook.com）来登录用户。 首先，创建一个多租户应用程序。 支持的帐户类型是任何组织目录中的帐户。 然后，从 Azure 门户`signInAudience`更改应用程序清单中的属性。 有关详细信息，请参阅 ASP.NET Core 教程中的[步骤 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 可以采用任何语言将此步骤通用化到 web 应用。
+> 你可以创建一个应用程序，该应用程序使用其 Microsoft 个人帐户（例如 Skype、Xbox 或 Outlook.com）来登录用户。 首先，创建一个多租户应用程序。 支持的帐户类型是任何组织目录中的帐户。 然后， `signInAudience` 从 Azure 门户更改应用程序清单中的属性。 有关详细信息，请参阅 ASP.NET Core 教程中的[步骤 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 可以采用任何语言将此步骤通用化到 web 应用。
 
 ## <a name="next-steps"></a>后续步骤
 

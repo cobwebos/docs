@@ -1,31 +1,30 @@
 ---
-title: 在 Visual Studio 中删除 Application Insights-Azure Monitor
-description: 如何在 Visual Studio 中删除 ASP.NET 和 ASP.NET Core Application Insights SDK。
+title: 在 Visual Studio 中删除 Application Insights - Azure Monitor
+description: 如何在 Visual Studio 中删除用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK。
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80805100"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>如何在 Visual Studio 中删除 Application Insights
 
 本文介绍如何在 Visual Studio 中删除 ASP.NET 和 ASP.NET Core Application Insights SDK。
 
-若要删除 Application Insights，需要从应用程序中的 API 删除 NuGet 包和引用。 你可以使用包管理控制台卸载 NuGet 包，或在 Visual Studio 中管理 NuGet 解决方案。 以下各节将介绍两种删除 NuGet 包的方法以及项目中自动添加的内容。 请确保已在您自己的代码中删除已添加的文件，以及您在其中创建了对 API 的调用的区域。
+要删除 Application Insights，需要从应用程序中的 API 删除 NuGet 包和引用。 可在 Visual Studio 中使用“包管理控制台”或“管理 NuGet 解决方案”卸载 NuGet 包。 以下各部分将介绍两种删除 NuGet 包的方法以及项目中自动添加的内容。 务必要确认已删除添加的文件以及代码中对 API 进行调用的区域。
 
 ## <a name="uninstall-using-the-package-management-console"></a>使用包管理控制台卸载
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. 若要打开包管理控制台，请在顶部菜单中选择 "工具" > "NuGet 包管理器 > 程序包管理器控制台"。
+1. 要打开“包管理器控制台”，请在顶部菜单中依次选择“工具”->“NuGet 包管理器”->“包管理器控制台”。
      
-    ![在顶部菜单中，单击 "工具" > NuGet 包管理器 > 程序包管理器控制台](./media/remove-application-insights/package-manager.png)
+    ![在顶部菜单中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”](./media/remove-application-insights/package-manager.png)
 
     > [!NOTE]
-    > 如果启用了跟踪收集，则需要先卸载 Applicationinsights.config。 TraceListener。 输入`Uninstall-package Microsoft.ApplicationInsights.TraceListener` ，然后执行以下步骤以删除 applicationinsights.config。
+    > 如果启用了跟踪信息收集，则需要先卸载 Microsoft.ApplicationInsights.TraceListener。 输入 `Uninstall-package Microsoft.ApplicationInsights.TraceListener` 然后按照以下步骤删除 Microsoft.ApplicationInsights.Web。
 
 1. 输入以下命令： `Uninstall-Package Microsoft.ApplicationInsights.Web -RemoveDependencies`
 
@@ -35,9 +34,9 @@ ms.locfileid: "80805100"
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. 若要打开包管理控制台，请在顶部菜单中选择 "工具" > "NuGet 包管理器 > 程序包管理器控制台"。
+1. 要打开“包管理器控制台”，请在顶部菜单中依次选择“工具”->“NuGet 包管理器”->“包管理器控制台”。
 
-    ![在顶部菜单中，单击 "工具" > NuGet 包管理器 > 程序包管理器控制台](./media/remove-application-insights/package-manager.png)
+    ![在顶部菜单中，单击“工具”>“NuGet 包管理器”>“包管理器控制台”](./media/remove-application-insights/package-manager.png)
 
 1. 输入以下命令： ` Uninstall-Package Microsoft.ApplicationInsights.AspNetCore -RemoveDependencies`
 
@@ -49,65 +48,65 @@ ms.locfileid: "80805100"
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. 在右侧的 " *解决方案资源管理器* 中，右键单击" **解决方案** "，然后选择" **管理解决方案的 NuGet 包**"。
+1. 在右侧的“解决方案资源管理器”中，右键单击“解决方案”并选择“管理解决方案的 NuGet 包”。 **   ****   ****
 
-    然后，你将看到一个屏幕，该屏幕允许你编辑属于项目的所有 NuGet 包。
+    然后，会显示一个屏幕，可在其中编辑属于项目的所有 NuGet 包。
     
-     ![右键单击 "解决方案"，然后在 "解决方案资源管理器" 中，选择 "管理解决方案的 NuGet 包"](./media/remove-application-insights/manage-nuget-framework.png)
+     ![在“解决方案资源管理器”中，右键单击“解决方案”，并选择“管理解决方案的 NuGet 包”](./media/remove-application-insights/manage-nuget-framework.png)
 
     > [!NOTE]
-    > 如果启用了跟踪收集，则需要先卸载 Applicationinsights.config，并选择 "删除依赖项"，然后按照以下步骤卸载 Applicationinsights.config，并选中 "删除依赖项"。
+    > 如果启用了跟踪信息收集，需要在未选中“删除依赖项”的情况下，先卸载 Microsoft.ApplicationInsights.TraceListener，然后在选中“删除依赖项”的情况下，按照以下步骤卸载 Microsoft.ApplicationInsights.Web。
     
-1. 单击 "Applicationinsights.config" 包。在右侧选中 " *项目* " 旁边的复选框以选择所有项目。
+1. 单击“Microsoft.ApplicationInsights.Web”包。 在右侧选中“项目”旁边的复选框以选择所有项目。 **  
     
-1. 若要在卸载时删除所有依赖项，请在选择了 "项目" 的部分下选择 " **选项** " 下拉按钮。
+1. 要在卸载时删除所有依赖项，请在所选项目部分下选择“选项”下拉按钮。 ****  
 
-    在 " *卸载选项*" 下，选中 " *删除依赖项*" 旁边的复选框。
+    在“卸载选项”下，选中“删除依赖项”旁边的复选框 **  ** 。
 
-1. 选择“卸载”  。
+1. 选择“卸载” 。
     
-    ![选中 "删除依赖项"，然后选择 "卸载"](./media/remove-application-insights/uninstall-framework.png)
+    ![选中“删除依赖项”，然后卸载](./media/remove-application-insights/uninstall-framework.png)
 
-    将显示一个对话框，显示要从应用程序中删除的所有依赖项。选择 **"确定"** 以卸载。
+    随即出现一个对话框，显示要从应用程序中删除的所有依赖项。 选择“确定”以卸载 ****  。
     
-    ![选中 "删除依赖项"，然后选择 "卸载"](./media/remove-application-insights/preview-uninstall-framework.png)
+    ![选中“删除依赖项”，然后卸载](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  卸载所有内容后，你可能仍会在 *解决方案资源管理器*中看到 "applicationinsights.config" 和 "AiHandleErrorAttribute.cs"。您可以手动删除这两个文件。
+1.  卸载所有内容后，可能仍会在“解决方案资源管理器”中看到“ApplicationInsights.config”和“AiHandleErrorAttribute.cs” ** 。 可手动删除这两个文件。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. 在右侧的 " *解决方案资源管理器* 中，右键单击" **解决方案** "，然后选择" **管理解决方案的 NuGet 包**"。
+1. 在右侧的“解决方案资源管理器”中，右键单击“解决方案”并选择“管理解决方案的 NuGet 包”。 **   ****   ****
 
-    然后，你将看到一个屏幕，该屏幕允许你编辑属于项目的所有 NuGet 包。
+    然后，会显示一个屏幕，可在其中编辑属于项目的所有 NuGet 包。
 
-    ![右键单击 "解决方案"，然后在 "解决方案资源管理器" 中，选择 "管理解决方案的 NuGet 包"](./media/remove-application-insights/manage-nuget-core.png)
+    ![在“解决方案资源管理器”中，右键单击“解决方案”，并选择“管理解决方案的 NuGet 包”](./media/remove-application-insights/manage-nuget-core.png)
 
-1. 单击 "Applicationinsights.config. AspNetCore" 包。 在右侧选中 "*项目*" 旁边的复选框以选择所有项目，然后选择 "**卸载**"。
+1. 单击“Microsoft.ApplicationInsights.AspNetCore”包。 在右侧选中“项目”旁边的复选框以选择所有项目，然后选择“卸载”。
 
-    ![选中 "删除依赖项"，然后选择 "卸载"](./media/remove-application-insights/uninstall-core.png)
+    ![选中“删除依赖项”，然后卸载](./media/remove-application-insights/uninstall-core.png)
 
 ---
 
 ## <a name="what-is-created-when-you-add-application-insights"></a>添加 Application Insights 时创建的内容
 
-将 Application Insights 添加到项目时，它将创建文件并将代码添加到一些文件中。 仅卸载 NuGet 包并不会总是丢弃文件和代码。 若要完全删除 Application Insights，你应该检查并手动删除添加的代码或文件以及你在项目中添加的任何 API 调用。
+将 Application Insights 添加到项目时，它会创建文件并在某些文件中添加代码。 仅卸载 NuGet 包并不会总是丢弃文件和代码。 若要完全删除 Application Insights，应检查并手动删除添加的代码或文件以及在项目中添加的所有 API 调用。
 
 # <a name="net"></a>[.NET](#tab/net)
 
-将 Application Insights 遥测添加到 Visual Studio ASP.NET 项目时，它将添加以下文件：
+将 Application Insights 遥测添加到 Visual Studio ASP.NET 项目时，它会添加以下文件：
 
 - ApplicationInsights.config
 - AiHandleErrorAttribute.cs
 
 添加了以下代码片段：
 
-- [项目的名称] .csproj
+- [项目名称].csproj
 
     ```C#
      <ApplicationInsightsResourceId>/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WebApplication4</ApplicationInsightsResourceId>
     ```
 
-- 包 .config
+- Packages.config
 
     ```xml
     <packages>
@@ -132,9 +131,9 @@ ms.locfileid: "80805100"
     </packages>
     ```
 
-- Layout。 cshtml
+- Layout.cshtml
 
-    如果你的项目包含一个布局 cshtml 文件，则将添加以下代码。
+    如果项目包含一个 Layout.cshtml 文件，会添加以下代码。
     
     ```html
     <head>
@@ -180,7 +179,7 @@ ms.locfileid: "80805100"
 
 将 Application Insights 遥测添加到 Visual Studio ASP.NET Core 模板项目时，它会添加以下代码：
 
-- [项目的名称] .csproj
+- [项目名称].csproj
 
     ```csharp
       <PropertyGroup>
@@ -197,7 +196,7 @@ ms.locfileid: "80805100"
       </ItemGroup>
     ```
 
-- Appsettings：
+- Appsettings.json：
 
     ```json
     "ApplicationInsights": {

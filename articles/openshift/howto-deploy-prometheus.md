@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: prometheus，aro，openshift，指标，red hat
 ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886882"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中部署独立的 Prometheus 实例
@@ -30,13 +29,13 @@ ms.locfileid: "80886882"
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>使用 OC 工具登录到群集
 
-1. 打开 web 浏览器，然后前往群集的 web 控制台（https://openshift。*随机 id*。*region*azmosa.io）。
+1. 打开 web 浏览器，然后前往群集的 web 控制台（ https://openshift 。*随机 id*。*region*azmosa.io）。
 2. 使用 Azure 凭据登录。
 3. 在右上角选择你的用户名，然后选择 "**复制登录命令**"。
 4. 将用户名粘贴到将使用的终端。
 
 > [!NOTE]
-> 若要查看是否登录到了正确的群集，请运行`oc whoami -c`命令。
+> 若要查看是否登录到了正确的群集，请运行 `oc whoami -c` 命令。
 
 ## <a name="prepare-the-projects"></a>准备项目
 
@@ -49,7 +48,7 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> 您可以使用`-n`或`--namespace`参数，也可以通过运行`oc project`命令来选择活动项目。
+> 您可以使用 `-n` 或 `--namespace` 参数，也可以通过运行命令来选择活动项目 `oc project` 。
 
 ## <a name="prepare-the-prometheus-configuration-file"></a>准备 Prometheus 配置文件
 通过输入以下内容来创建 prometheus docker-compose.override.yml 文件：
@@ -110,7 +109,7 @@ oc create secret generic prom-alerts --from-file=alertmanager.yml -n prometheus-
 Alertmanager. docker-compose.override.yml 是警报管理器配置文件。
 
 > [!NOTE]
-> 若要验证前面的两个步骤， `oc get secret -n prometheus-project`请运行命令。
+> 若要验证前面的两个步骤，请运行 `oc get secret -n prometheus-project` 命令。
 
 ## <a name="start-prometheus-and-alertmanager"></a>启动 Prometheus 和 Alertmanager
 请参阅[openshift/源存储库](https://github.com/openshift/origin/tree/release-3.11/examples/prometheus)并下载[prometheus yaml](
@@ -118,10 +117,10 @@ https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometh
 ```
 oc process -f https://raw.githubusercontent.com/openshift/origin/release-3.11/examples/prometheus/prometheus-standalone.yaml | oc apply -f - -n prometheus-project
 ```
-Prometheus yaml 文件是一个 OpenShift 模板。 它将创建一个 Prometheus 实例，并在其前面创建一个具有 oauth 代理的实例和一个 Alertmanager 实例，该实例也使用 oauth 代理进行保护。 在此模板中，oauth 代理配置为允许任何可 "获取" prometheus 命名空间的用户（请参阅`-openshift-sar`标志）。
+Prometheus yaml 文件是一个 OpenShift 模板。 它将创建一个 Prometheus 实例，并在其前面创建一个具有 oauth 代理的实例和一个 Alertmanager 实例，该实例也使用 oauth 代理进行保护。 在此模板中，oauth 代理配置为允许任何可 "获取" prometheus 命名空间的用户（请参阅 `-openshift-sar` 标志）。
 
 > [!NOTE]
-> 若要验证 prom StatefulSet 是否具有相同的所需和当前数量的副本`oc get statefulset -n prometheus-project` ，请运行命令。 若要检查项目中的所有资源，请`oc get all -n prometheus-project`运行命令。
+> 若要验证 prom StatefulSet 是否具有相同的所需和当前数量的副本，请运行 `oc get statefulset -n prometheus-project` 命令。 若要检查项目中的所有资源，请运行 `oc get all -n prometheus-project` 命令。
 
 ## <a name="add-permissions-to-allow-service-discovery"></a>添加权限以允许服务发现
 
@@ -178,11 +177,11 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
 
 > [!NOTE]
-> 若要验证是否正确创建了 Role 和 RoleBinding，请`oc get role`运行`oc get rolebinding`和命令。
+> 若要验证是否正确创建了 Role 和 RoleBinding，请运行 `oc get role` 和 `oc get rolebinding` 命令。
 
 ## <a name="optional-deploy-example-application"></a>可选：部署示例应用程序
 
-一切正常，但没有度量值源。 中转到 Prometheus URL （https://prom-prometheus-project.apps.*随机 id*。*region*azmosa.io/）。 可以使用以下命令找到它：
+一切正常，但没有度量值源。 中转到 Prometheus URL （ https://prom-prometheus-project.apps .*随机 id*。*region*azmosa.io/）。 可以使用以下命令找到它：
 
 ```
 oc get route prom -n prometheus-project
@@ -200,7 +199,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 ```
 部署后，新应用程序应在30秒内出现在服务发现页上的有效目标。
 
-有关更多详细信息，请选择 "**状态** > **目标**"。
+有关更多详细信息，请选择 "**状态**  >  **目标**"。
 
 > [!NOTE]
 > 对于每个成功的擦除目标，Prometheus 将在 up 度量值中添加一个数据点。 选择左上角的 " **Prometheus** " **，输入作为**表达式，然后选择 "**执行**"。

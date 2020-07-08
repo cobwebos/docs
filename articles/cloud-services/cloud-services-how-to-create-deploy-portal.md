@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811338"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>如何创建和部署云服务
@@ -38,11 +37,11 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 可以通过[此处](cloud-services-model-and-package.md)了解有关这些内容以及如何创建包的详细信息。
 
 ## <a name="prepare-your-app"></a>准备应用
-部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/)页安装 SDK，并使用要用于开发应用程序代码的语言。
+部署云服务之前，必须根据应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。 Azure SDK 提供了用于准备这些必需的部署文件的工具。 可以从 [Azure 下载](https://azure.microsoft.com/downloads/) 页安装 SDK，并使用希望用于开发应用程序代码的语言。
 
 导出服务包之前，三种云服务功能需要特殊的配置：
 
-* 如果要部署使用传输层安全性（TLS）的云服务（以前称为安全套接字层（SSL））进行数据加密，请[将应用程序配置](cloud-services-configure-ssl-certificate-portal.md#modify)为 TLS。
+* 若要部署使用传输层安全性 (TLS)（以前称为“安全套接字层”(SSL)）进行数据加密的云服务，请为 TLS [配置应用程序](cloud-services-configure-ssl-certificate-portal.md#modify)。
 * 如果要配置与角色实例的远程桌面连接，请为远程桌面[配置角色](cloud-services-role-enable-remote-desktop-new-portal.md)。
 * 如果要为云服务配置详细监视，请为云服务启用 Azure 诊断。 最少监视（默认监视级别）使用从角色实例（虚拟机）的主机操作系统中收集到的性能计数器  。  根据角色实例中的性能数据收集其他度量信息，以便对处理应用程序期间出现的问题进行进一步分析。 若要了解如何启用 Azure 诊断，请参阅[在 Azure 中启用诊断](cloud-services-dotnet-diagnostics.md)。
 
@@ -70,7 +69,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 ## <a name="upload-a-certificate"></a>上传证书
 如果部署包已 [配置为使用证书](cloud-services-configure-ssl-certificate-portal.md#modify)，现在就可以上传证书。
 
-1. 选择 "**证书**"，然后在 "**添加证书**" 窗格中，选择 TLS/SSL 证书 .pfx 文件，然后提供证书的**密码**，
+1. 选择“证书”  ，并在“添加证书”  窗格中，选择 TLS/SSL 证书 .pfx 文件，并提供证书的密码  ，
 2. 单击“附加证书”  ，然后在“添加证书”  窗格上单击“确定”  。
 3. 在“云服务”  窗格上单击“创建”  。 当部署达到“就绪”  状态时，可以继续执行后续步骤。
 
@@ -90,7 +89,7 @@ Azure 门户提供了两种创建和部署云服务的方法：*快速创建*和
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 配置 [自定义域名](cloud-services-custom-domain-name-portal.md)。
 * [管理云服务](cloud-services-how-to-manage-portal.md)。
-* 配置[TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+* 配置 [TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
 
 
 

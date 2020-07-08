@@ -1,15 +1,14 @@
 ---
-title: 将静态 IP 与负载均衡器配合使用
+title: 将静态 IP 用于负载均衡器
 titleSuffix: Azure Kubernetes Service
 description: 了解如何创建静态 IP 地址并将其用于 Azure Kubernetes 服务 (AKS) 负载均衡器。
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886732"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>将静态公共 IP 地址和 DNS 标签用于 Azure Kubernetes 服务 (AKS) 负载均衡器
@@ -18,13 +17,13 @@ ms.locfileid: "80886732"
 
 本文介绍如何创建静态公共 IP 地址并将其分配给 Kubernetes 服务。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
-本文介绍如何将标准 SKU IP 与 标准 SKU 负载均衡器结合使用。   有关详细信息，请参阅 [Azure 中的 IP 地址类型和分配方法][ip-sku]。
+本文介绍如何将标准 SKU IP 与 标准 SKU 负载均衡器结合使用。  有关详细信息，请参阅 [Azure 中的 IP 地址类型和分配方法][ip-sku]。
 
 ## <a name="create-a-static-ip-address"></a>创建静态 IP 地址
 
@@ -39,7 +38,7 @@ az network public-ip create \
 ```
 
 > [!NOTE]
-> 如果在 AKS 群集中使用基本 SKU 负载平衡器，请在定义公共 IP 时对 *sku* 参数使用 *Basic*。  仅基本 SKU IP 兼容基本 SKU 负载均衡器，仅标准 SKU IP 兼容标准 SKU 负载均衡器。     
+> 如果在 AKS 群集中使用基本 SKU 负载平衡器，请在定义公共 IP 时对 *sku* 参数使用 *Basic*。 仅基本 SKU IP 兼容基本 SKU 负载均衡器，仅标准 SKU IP 兼容标准 SKU 负载均衡器。    
 
 将显示 IP 地址，如以下精简版示例输出中所示：
 
@@ -53,7 +52,7 @@ az network public-ip create \
 }
 ```
 
-稍后可以使用 [az network public-ip list][az-network-public-ip-list] 命令获取公共 IP 地址。 指定节点资源组的名称和创建的公共 IP 地址，然后查询 ipAddress  ，如以下示例中所示：
+稍后可以使用 [az network public-ip list][az-network-public-ip-list] 命令获取公共 IP 地址。 指定节点资源组的名称和创建的公共 IP 地址，然后查询 ipAddress，如以下示例中所示：
 
 ```azurecli-interactive
 $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
@@ -74,7 +73,7 @@ az role assignment create \
 
 或者，可以使用系统分配的托管标识作为权限，而不是使用服务主体。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。
 
-若要创建具有静态公共 IP 地址的*LoadBalancer*服务，请将`loadBalancerIP`静态公共 ip 地址的属性和值添加到 YAML 清单。 创建名为 `load-balancer-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公共 IP 地址。 以下示例还将批注设置为名为*myResourceGroup*的资源组。 提供自己的资源组名称。
+若要使用静态公共 IP 地址创建 *LoadBalancer* 服务，请将 `loadBalancerIP` 属性和静态公共 IP 地址的值添加到 YAML 清单。 创建名为 `load-balancer-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公共 IP 地址。 以下示例还将注释设置为名为 *myResourceGroup* 的资源组。 提供自己的资源组名称。
 
 ```yaml
 apiVersion: v1
@@ -100,9 +99,9 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>向服务应用 DNS 标签
 
-如果服务使用动态或静态公共 IP 地址，则可以使用 "服务批注`service.beta.kubernetes.io/azure-dns-label-name` " 设置面向公众的 DNS 标签。 这将使用 Azure 的公共 DNS 服务器和顶级域为你的服务发布完全限定的域名。 批注值在 Azure 位置中必须是唯一的，因此建议使用完全限定的标签。   
+如果服务使用动态或静态公共 IP 地址，则可使用服务批注 `service.beta.kubernetes.io/azure-dns-label-name` 来设置面向公众的 DNS 标签。 这将使用 Azure 的公共 DNS 服务器和顶级域为你的服务发布完全限定的域名。 批注值在 Azure 位置中必须唯一，因此建议使用进行了足够限定的标签。   
 
-然后，Azure 会自动将一个默认子网（ `<location>.cloudapp.azure.com`例如，location 是所选区域）追加到你提供的名称，以创建完全限定的 DNS 名称。 例如：
+然后，Azure 会自动将 `<location>.cloudapp.azure.com`（其中的 location 是所选的区域）之类的默认子网追加到提供的名称后面，以创建完全限定的 DNS 名称。 例如：
 
 ```yaml
 apiVersion: v1
@@ -120,17 +119,17 @@ spec:
 ```
 
 > [!NOTE] 
-> 若要在自己的域中发布服务，请参阅[Azure DNS][azure-dns-zone]和[外部 DNS][external-dns]项目。
+> 若要在自己的域中发布服务，请参阅 [Azure DNS][azure-dns-zone] 和 [external-dns][external-dns] 项目。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
-如果 Kubernetes 服务清单的 *loadBalancerIP* 属性中定义的静态 IP 地址不存在或尚未在节点资源组中创建，并且尚未配置其他托管，则负载均衡器服务创建将失败。 若要排除此故障，请用 [kubectl describe][kubectl-describe] 命令复查服务创建事件。 提供 YAML 清单中指定的服务的名称，如以下示例中所示：
+如果 Kubernetes 服务清单的 *loadBalancerIP* 属性中定义的静态 IP 地址不存在或尚未在节点资源组中创建，并且尚未配置其他托管，则负载均衡器服务创建将失败。 若要排除此故障，请用 [kubectl describe][kubectl-describe] 命令查看服务创建事件。 提供 YAML 清单中指定的服务的名称，如以下示例中所示：
 
 ```console
 kubectl describe service azure-load-balancer
 ```
 
-将显示有关 Kubernetes 服务资源的信息。 以下示例输出末尾的“事件”** 指示“找不到用户提供的 IP 地址”**。 在这些情况下，请验证是否已在节点资源组中创建静态公共 IP 地址，以及在 Kubernetes 服务清单中指定的 IP 地址是否正确。
+将显示有关 Kubernetes 服务资源的信息。 以下示例输出末尾的“事件”指示“找不到用户提供的 IP 地址”。 在这些情况下，请验证是否已在节点资源组中创建静态公共 IP 地址，以及在 Kubernetes 服务清单中指定的 IP 地址是否正确。
 
 ```
 Name:                     azure-load-balancer

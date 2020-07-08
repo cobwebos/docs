@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261017"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD 中的活动日志 Azure Monitor
@@ -48,14 +47,14 @@ ms.locfileid: "81261017"
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * 在 Azure 门户中访问 Azure AD 审核日志所需的 Azure AD Free、Basic、Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
 * Azure AD 租户。
-* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。********
+* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。 
 * 在 Azure 门户中访问 Azure AD 登录日志所需的 Azure AD Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
 
 根据审核日志数据要路由到的位置，需满足以下条件之一:
@@ -128,7 +127,7 @@ ms.locfileid: "81261017"
 
 若要查看与管理 Azure Monitor 日志相关的成本，请参阅[通过在 Azure Monitor 日志中控制数据量和保留期管理成本](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage)。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 此部分回答 Azure Monitor 中 Azure AD 日志的常见问题并讨论其已知问题。
 
@@ -198,7 +197,7 @@ ms.locfileid: "81261017"
 
 **问: 是否可以在不使用外部 SIEM 工具的情况下，从事件中心访问数据？** 
 
-**答**：是。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**：是的。 若要通过自定义应用程序来访问日志，可以使用[事件中心 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

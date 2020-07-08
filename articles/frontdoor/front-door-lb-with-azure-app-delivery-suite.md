@@ -12,10 +12,9 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 44af14a01e7b045b7abb6a84db89a67f3dd22445
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80875276"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的应用程序传送套件进行负载均衡
@@ -32,7 +31,7 @@ Microsoft Azure 提供了多个全局和区域服务，用于管理网络流量�
 在应用程序中结合使用全局和区域服务可提供端到端的可靠、高性能和安全的方法，将用户的流量路由到 IaaS、PaaS 或本地服务。 下一部分介绍上述各项服务。
 
 ## <a name="global-load-balancing"></a>全局负载均衡
-**流量管理器**提供全局 DNS 负载均衡。 它着眼于传入的 DNS 请求，并根据客户选择的路由策略使用正常的后端进行响应。 路由方法选项包括：
+**流量管理器** 提供全局 DNS 负载均衡。 它着眼于传入的 DNS 请求，并根据客户选择的路由策略使用正常的后端进行响应。 路由方法选项包括：
 - 性能路由 - 根据延迟将请求者发送到最近的后端。
 - 优先级路由，将所有流量定向到后端，并使用其他后端作为备份。
 - 加权轮循机制路由 - 根据分配给每个后端的权重进行流量分布。
@@ -45,7 +44,7 @@ Microsoft Azure 提供了多个全局和区域服务，用于管理网络流量�
 Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测以检测应用程序或基础结构在运行状况或延迟方面的变化。  然后始终将流量路由到可用（正常运行）的最远后端。 参阅 Front Door 的[路由基础结构](front-door-routing-architecture.md)详细信息以及[流量路由方法](front-door-routing-methods.md)深入了解该服务。
 
 ## <a name="regional-load-balancing"></a>区域负载均衡
-应用程序网关以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供许多第 7 层负载均衡功能。 它使客户能够通过将 CPU 密集型 TLS 终止功能卸载到应用程序网关来优化 web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
+应用程序网关以服务形式提供应用程序传送控制器 (ADC)，借此为应用程序提供许多第 7 层负载均衡功能。 客户可以用它将 CPU 密集型 TLS 终止卸载到应用程序网关，优化 Web 场工作效率。 其他第 7 层路由功能包括传入流量的轮循机制分布、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后托管多个网站的功能。 可以将应用程序网关配置为面向 Internet 的网关、仅限内部访问的网关或二者合一的网关。 应用程序网关完全受 Azure 管理，可缩放且高度可用。 它提供丰富的诊断和日志记录功能以改进可管理性。
 负载均衡器是 Azure SDN 堆栈的组成部分，为所有 UDP 和 TCP 协议提供高性能、低延迟的第 4 层负载均衡服务。 它管理入站和出站连接。 可以配置公共和内部负载均衡终结点，定义规则将入站连接映射到后端池目标，并在其中包含 TCP 和 HTTP 运行状况探测选项来管理服务的可用性。
 
 
@@ -71,9 +70,9 @@ Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测�
 
 在区域中，应用程序开发人员决定通过一个专用的 VM 池（不同于 Web 场中的其他池）来为其 IaaS 服务提供与模式 /images/* 匹配的所有 URL。
 
-此外，提供动态内容的默认 VM 池需要与高可用性群集上托管的后端数据库通信。 整个部署是通过 Azure 资源管理器设置的。
+此外，提供动态内容的默认 VM 池需要与高可用性群集上托管的后端数据库通信。 整个部署是通过 Azure Resource Manager 设置的。
 
-下图展示了此方案的体系结构：
+下图显示了此方案的体系结构：
 
 ![应用程序传送套件详细体系结构][2] 
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010301"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
@@ -74,7 +73,7 @@ ms.locfileid: "81010301"
 
 访问控制 (IAM) 部分在 Azure 门户中为基于角色的访问控制 (RBAC) 提供支持  。 此配置有助于组织轻松准确地满足其访问管理要求。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>标记
 
 “标记”  部分可帮助用户整理资源。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
@@ -117,10 +116,10 @@ ms.locfileid: "81010301"
 * [密钥空间通知（高级设置）](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>访问端口
-默认情况下，为新缓存禁用非 TLS/SSL 访问。 要启用非 TLS 端口，请单击 "**高级设置**" 边栏选项卡**上的 "** **仅允许通过 SSL 访问**"，然后单击 "**保存**"。
+默认情况下，将为新缓存禁用非 TLS/SSL 访问。 要启用非 TLS 端口，请对“高级设置”  边栏选项卡中的“仅允许通过 SSL 访问”  单击“否”  ，并单击“保存”  。
 
 > [!NOTE]
-> 对于 Redis 的 Azure 缓存，TLS 访问目前支持 TLS 1.0、1.1 和1.2，但版本1.0 和1.1 即将停用。  有关更多详细信息，请阅读我们的[“删除 TLS 1.0 和 1.1”页](cache-remove-tls-10-11.md)。
+> 对 Azure Cache for Redis 的 TLS 访问目前支持 TLS 1.0、1.1 和 1.2，但 1.0 和 1.1 版本即将停用。  有关更多详细信息，请阅读我们的[“删除 TLS 1.0 和 1.1”页](cache-remove-tls-10-11.md)。
 
 ![Azure Redis 缓存访问端口](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -278,7 +277,7 @@ Redis 密钥空间通知是在“高级设置”  边栏选项卡上配置的。
 
 ![Azure Redis 缓存属性](./media/cache-configure/redis-cache-properties.png)
 
-### <a name="locks"></a>锁
+### <a name="locks"></a>锁定
 “锁定”  部分可用来锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 更多信息请参阅 [使用 Azure Resource Manager 锁定资源](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="automation-script"></a>自动化脚本

@@ -6,10 +6,9 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811699"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务中通过代码使用 TLS/SSL 证书
@@ -29,7 +28,7 @@ ms.locfileid: "80811699"
 
 ## <a name="find-the-thumbprint"></a>查找指纹
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
+在<a href="https://portal.azure.com" target="_blank">Azure 门户</a>中，从左侧菜单中选择 "**应用服务**"  >  **\<app-name>** 。
 
 在应用的左侧导航栏中选择“TLS/SSL 设置”，然后选择“私钥证书(.pfx)”或“公钥证书(.cer)”。   
 
@@ -39,7 +38,7 @@ ms.locfileid: "80811699"
 
 ## <a name="make-the-certificate-accessible"></a>使证书可供访问
 
-若要在应用代码中访问证书，请在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行`WEBSITE_LOAD_CERTIFICATES`以下命令，将其指纹添加到应用设置：
+若要在应用代码中访问证书，请 `WEBSITE_LOAD_CERTIFICATES` 在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中运行以下命令，将其指纹添加到应用设置：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -111,8 +110,8 @@ PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCha
 
 `WEBSITE_LOAD_CERTIFICATES`应用设置使指定证书可供 Linux 托管应用（包括自定义容器应用）作为文件访问。 这些文件位于以下目录中：
 
-- 专用证书- `/var/ssl/private` （ `.p12`文件）
-- 公共证书- `/var/ssl/certs` （ `.der`文件）
+- 专用证书- `/var/ssl/private` （ `.p12` 文件）
+- 公共证书- `/var/ssl/certs` （ `.der` 文件）
 
 证书文件名是证书指纹。 以下 c # 代码演示了如何在 Linux 应用程序中加载公共证书。
 
@@ -128,7 +127,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-若要了解如何从 node.js、PHP、Python、Java 或 Ruby 中的文件加载 TLS/SSL 证书，请参阅相应语言或 web 平台的文档。
+若要查看如何从 Node.js、PHP、Python、Java 或 Ruby 中的文件加载 TLS/SSL 证书，请参阅相应语言或 web 平台的文档。
 
 ## <a name="load-certificate-from-file"></a>从文件加载证书
 
@@ -157,7 +156,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-若要了解如何从 node.js、PHP、Python、Java 或 Ruby 中的文件加载 TLS/SSL 证书，请参阅相应语言或 web 平台的文档。
+若要查看如何从 Node.js、PHP、Python、Java 或 Ruby 中的文件加载 TLS/SSL 证书，请参阅相应语言或 web 平台的文档。
 
 ## <a name="more-resources"></a>更多资源
 

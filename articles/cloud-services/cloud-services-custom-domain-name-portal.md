@@ -9,14 +9,13 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811646"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
-创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net` ）上访问应用程序。 Azure 还会分配一个虚拟 IP 地址。
+创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 `http://contoso.cloudapp.net`）上访问应用程序。 Azure 还会分配一个虚拟 IP 地址。
 
 但是，还可以在自己的域名（例如 **contoso.com**）上公开应用程序。 此文章介绍了如何保留或配置云服务 Web 角色的自定义域名称。
 
@@ -30,7 +29,7 @@ ms.locfileid: "80811646"
 <p/>
 
 > [!TIP]
-> 快速入门 - 使用全新的 Azure [操作实例指南](https://support.microsoft.com/kb/2990804)！  它通过快照将自定义域名与 Azure 云服务或 Azure 网站关联起来。
+> 快速入门 - 使用全新的 Azure [操作实例指南](https://support.microsoft.com/kb/2990804)！  通过该快速入门，可轻松将自定义域名与 Azure 云服务或 Azure 网站关联起来并确保通信安全 (TLS)。
 > 
 > 
 
@@ -75,14 +74,14 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 4. 若要为 **www\.customdomain.com** 创建别名，还必须为 CNAME 提供域或子域别名，例如 **www**。 如果希望为根域创建别名，它可能在注册机构的 DNS 工具中以符号“ **\@** ”的形式列出。
 5. 然后，必须提供一个规范主机名，在此示例中它是应用程序的“cloudapp.net”**** 域。
 
-例如，以下 CNAME 记录会将**\.www contoso.com**中的所有流量转发到**contoso.cloudapp.net**（已部署的应用程序的自定义域名）：
+例如，以下 CNAME 记录会将**www \. contoso.com**中的所有流量转发到**contoso.cloudapp.net**（已部署的应用程序的自定义域名）：
 
 | 别名/主机名/子域 | 规范域 |
 | --- | --- |
 | www |contoso.cloudapp.net |
 
 > [!NOTE]
-> **Www\.contoso.com**的访问者将不会看到真正的主机（contoso.cloudapp.net），因此，转发过程对最终用户不可见。
+> **Www \. contoso.com**的访问者将不会看到真正的主机（contoso.cloudapp.net），因此，转发过程对最终用户不可见。
 > 
 > 上述示例仅适用于 **www** 子域的流量。 因为无法为 CNAME 记录使用通配符，所以必须为每个域/子域创建一个 CNAME。 如果希望将子域（例如 .*.contoso.com）的流量定向到 cloudapp.net 地址，则可以在 DNS 设置中配置“URL 重定向”**** 或“URL 转发”**** 条目，或者创建一条 A 记录。
 
@@ -128,7 +127,7 @@ A 记录将域（例如 **contoso.com** 或 **www\.contoso.com**）或通配符�
 * [如何将 CDN 内容映射到自定义域](../cdn/cdn-map-content-to-custom-domain.md)
 * [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
 * 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
-* 配置[TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
+* 配置 [TLS/SSL 证书](cloud-services-configure-ssl-certificate-portal.md)。
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname

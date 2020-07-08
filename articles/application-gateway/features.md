@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
 ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80810227"
 ---
 # <a name="azure-application-gateway-features"></a>Azure 应用程序网关功能
@@ -69,13 +68,13 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 ## <a name="ingress-controller-for-aks"></a>AKS 的入口控制器
 应用程序网关入口控制器 (AGIC) 允许你使用应用程序网关作为 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/) 群集的入口。 
 
-入口控制器在 AKS 群集中运行为 pod，并使用[Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/)，并将其转换为应用程序网关配置，使网关能够将流量负载均衡到 Kubernetes pod。 入口控制器仅支持应用程序网关 Standard_v2 和 WAF_v2 SKUs。 
+入口控制器在 AKS 群集中以 pod 的形式运行，使用 [Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/) 并将其转换为应用程序网关配置，使网关可以将流量负载平衡到 Kubernetes pod。 入口控制器仅支持应用程序网关 Standard_v2 和 WAF_v2 SKUs。 
 
 有关详细信息，请参阅[应用程序网关入口控制器 (AGIC)](ingress-controller-overview.md)。
 
 ## <a name="url-based-routing"></a>基于 URL 的路由
 
-基于 URL 路径的路由用于根据请求的 URL 路径，将流量路由到后端服务器池。 方案之一是将不同内容类型的请求路由到不同的池。
+基于 URL 路径的路由可让你根据请求的 URL 路径，将流量路由到后端服务器池。 方案之一是将不同内容类型的请求路由到不同的池。
 
 例如，将 `http://contoso.com/video/*` 的请求路由到 VideoServerPool，将 `http://contoso.com/images/*` 的请求路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
@@ -83,7 +82,7 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 ## <a name="multiple-site-hosting"></a>多站点托管
 
-使用多站点托管可以在同一应用程序网关实例上配置多个网站。 此功能使你可以为部署配置更有效的拓扑，方法是将最多100个网站添加到一个应用程序网关（以获得最佳性能）。 每个网站都可以定向到自己的池。 例如，应用程序网关可以通过两个名为 ContosoServerPool 和 FabrikamServerPool 的服务器池分别处理 `contoso.com` 和 `fabrikam.com` 的流量。
+使用多站点托管可以在同一应用程序网关实例上配置多个网站。 此功能可以将多达 100 个网站添加到一个应用程序网关中（以获得最佳性能），从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的池。 例如，应用程序网关可以通过两个名为 ContosoServerPool 和 FabrikamServerPool 的服务器池分别处理 `contoso.com` 和 `fabrikam.com` 的流量。
 
 对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 
@@ -109,19 +108,19 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 需要在同一服务器上保留用户会话时，可以使用基于 Cookie 的会话相关性功能。 借助网关托管的 Cookie，应用程序网关可以将来自用户会话的后续流量定向到同一服务器进行处理。 在用户会话的会话状态在服务器上进行本地保存的情况下，此功能十分重要。
 
-有关详细信息，请参阅[应用程序网关的工作](how-application-gateway-works.md#modifications-to-the-request)原理。
+有关详细信息，请参阅[应用程序网关的工作原理](how-application-gateway-works.md#modifications-to-the-request)。
 
 ## <a name="websocket-and-http2-traffic"></a>Websocket 和 HTTP/2 流量
 
 应用程序网关为 WebSocket 和 HTTP/2 协议提供本机支持。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。
 
-WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 与 HTTP 不同，这些协议的开销较低，并且可以对多个请求/响应重复使用同一 TCP 连接，从而提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
+WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和客户端之间实现全双工通信。 此功能让 Web 服务器和客户端之间能够进行交互性更强的通信。这种通信可以是双向的，而且不像基于 HTTP 的实现那样需要轮询。 不同于 HTTP，这些协议的开销很低，并且可以对多个请求/响应重复使用同一 TCP 连接，提高资源利用率。 这些协议设计为通过传统 HTTP 端口 80 和 443 运行。
 
 有关详细信息，请参阅 [WebSocket 支持](application-gateway-websocket.md)和 [HTTP/2 支持](configuration-overview.md#http2-support)。
 
 ## <a name="connection-draining"></a>连接清空
 
-连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 此设置是通过后端 http 设置启用的，并且可以在创建规则期间应用于后端池的所有成员。 启用后，应用程序网关可确保后端池的所有取消注册实例不会收到任何新请求，同时允许现有请求在配置的时间限制内完成。 这适用于通过用户配置更改显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。 这种情况的唯一例外是绑定到已显式取消注册的注销实例的请求，因为网关托管会话相关性，并继续代理到注销实例。
+连接清空可帮助你在计划内服务更新期间正常删除后端池成员。 此设置是通过后端 http 设置启用的，并且可以在创建规则期间应用于后端池的所有成员。 启用后，应用程序网关可确保后端池的所有已取消注册实例不再收到任何新请求，同时允许现有请求在所配置的时间限制内完成。 这适用于通过用户配置更改显式从后端池中删除的后端实例，以及所报告的由运行状况探测确定为不正常的后端实例。 唯一的例外情况是限定为取消注册实例的请求，这些实例由于网关托管会话相关性的原因而取消注册，将继续代理到取消注册实例。
 
 有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#connection-draining)。
 
@@ -143,17 +142,17 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 有关详细信息，请参阅[重写 HTTP 标头](rewrite-http-headers.md)。
 
-## <a name="sizing"></a>调整大小
+## <a name="sizing"></a>大小调整
 
-可以为自动缩放或固定大小部署配置应用程序网关 Standard_v2。 此 SKU 不提供不同的实例大小。 有关 v2 性能和定价的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing)。
+可以配置应用程序网关的 Standard_v2，以便进行自动缩放的或固定大小的部署。 此 SKU 不提供不同的实例大小。 有关 v2 性能和定价的详细信息，请参阅[自动缩放 v2 SKU](application-gateway-autoscaling-zone-redundant.md#pricing)。
 
-应用程序网关标准提供三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
+应用程序网关标准版有三种大小：**小型**、**中型**和**大型**。 小型实例大小适用于开发和测试方案。
 
 有关应用程序网关限制的完整列表，请参阅[应用程序网关服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)。
 
 下表显示了已启用 SSL 卸载的每个应用程序网关 v1 实例的平均性能吞吐量：
 
-| 平均后端页面响应大小 | 小型 | 中 | 大型 |
+| 平均后端页面响应大小 | 小型 | 中型 | 大型 |
 | --- | --- | --- | --- |
 | 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
 | 100 KB |35 Mbps |100 Mbps |200 Mbps |
@@ -163,8 +162,8 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 ## <a name="version-feature-comparison"></a>版本功能比较
 
-对于应用程序网关 v1-v2 功能比较，请参阅自动[缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
+有关应用程序网关 v1-v2 功能比较，请参阅[自动缩放和区域冗余应用程序网关 v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解应用程序网关的工作原理-[应用程序网关的工作](how-application-gateway-works.md)原理
+- 了解应用程序网关的工作原理 - [应用程序网关的工作原理](how-application-gateway-works.md)
