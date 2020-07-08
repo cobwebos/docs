@@ -10,7 +10,6 @@ ms.topic: article
 manager: carmonm
 ms.openlocfilehash: a14fafde8ecea0370c74cdbfd39a85d8dfb15612
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83651069"

@@ -8,7 +8,6 @@ ms.date: 04/29/2020
 ms.author: alkarche
 ms.openlocfilehash: ffb6378d3dc4cc3fb23ea62157aad393d8ae6642
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83122805"

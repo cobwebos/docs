@@ -14,10 +14,9 @@ ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117115"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
@@ -144,8 +143,8 @@ Azure 上的 SAP HANA （大型实例）的存储布局是通过 Azure 上的 SA
 
 | 存储用途 | 装入点名称 | 卷名 | 
 | --- | --- | ---|
-| HANA 数据 | /hana/data/SID/mnt0000 \< m> | 存储 IP：/hana_data_SID_mnt00001_tenant_vol |
-| HANA 日志 | /hana/log/SID/mnt0000 \< m> | 存储 IP：/hana_log_SID_mnt00001_tenant_vol |
+| HANA 数据 | /hana/data/SID/mnt0000\<m> | 存储 IP：/hana_data_SID_mnt00001_tenant_vol |
+| HANA 日志 | /hana/log/SID/mnt0000\<m> | 存储 IP：/hana_log_SID_mnt00001_tenant_vol |
 | HANA 日志备份 | /hana/log/backups | 存储 IP：/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA 共享 | /hana/shared/SID | 存储 IP：/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | 存储 IP：/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -198,7 +197,7 @@ S72m HANA 大型实例单元上的命令 df -h 的输出如下所示：
 HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每个文件 16 TB。 不同于 EXT3 文件系统中的文件大小限制，HANA 不会隐式识别 HANA 大型实例存储所强制执行的存储限制。 因此，当达到16TB 的文件大小限制时，HANA 不会自动创建新的数据文件。 由于 HANA 尝试将文件增长到超过 16 TB，因此，HANA 将报告错误，并且索引服务器将在结尾崩溃。
 
 > [!IMPORTANT]
-> 为了防止 HANA 尝试将数据文件增长到 HANA 大型实例存储的 16 TB 文件大小限制之外，需要在 SAP HANA 的 global.asa 配置文件中设置以下参数
+> 为了防止 HANA 尝试将数据文件增长到 HANA 大型实例存储的 16 TB 文件大小限制之外，需要在 SAP HANA global.ini 配置文件中设置以下参数
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000

@@ -5,10 +5,9 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: e49c235e11eea17fdd1a7ff7751cc0493934d725
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123649"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
@@ -51,9 +50,9 @@ Azure 中函数的部署单位是 function app。 函数应用中的所有函数
     * **应用服务生成服务**：在不需要生成或需要泛型生成时最好。
     * **Azure Pipelines （预览版）**：当需要更好地控制生成时，最好这样做。 此提供程序当前处于预览阶段。
 
-    选择“继续”。 
+    选择“继续”。
 
-5. 配置特定于指定的源代码管理选项的信息。 对于 GitHub，必须输入或选择 "**组织**"、"**存储库**" 和 "**分支**" 的值。 这些值基于您的代码的位置。 然后选择 "**继续**"。
+5. 配置特定于指定的源代码管理选项的信息。 对于 GitHub，必须输入或选择 "**组织**"、"**存储库**" 和 "**分支**" 的值。 这些值基于您的代码的位置。 然后选择“继续”。
 
     :::image type="content" source="./media/functions-continuous-deployment/github-specifics.png" alt-text="配置 GitHub":::
 
@@ -67,4 +66,4 @@ Azure 中函数的部署单位是 function app。 函数应用中的所有函数
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [Azure Functions 最佳做法](functions-best-practices.md)
+> [Azure Functions 最佳实践](functions-best-practices.md)

@@ -15,10 +15,9 @@ ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
 ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201116"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API - .NET
@@ -36,15 +35,15 @@ ms.locfileid: "83201116"
 ## <a name="create-a-console-application"></a>创建控制台应用程序
 
 1. 启动 Visual Studio。 
-1. 在“文件”菜单中，单击“新建” > “项目”。    
+1. 在“文件”菜单中，单击“新建” > “项目”。   
 1. 创建 **.NET Core** 控制台应用程序。
 
 本主题中的示例应用面向 `netcoreapp2.0`。 代码使用从 C# 7.1 开始提供的“async main”。 有关更多详细信息，请参阅[此博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)。
 
 ## <a name="add-required-nuget-packages"></a>添加所需的 NuGet 包
 
-1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “NuGet 管理器控制台”。   
-2. 在“包管理器控制台”窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。  例如，`Install-Package Microsoft.Azure.Management.Media`。
+1. 在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “NuGet 管理器控制台”。  
+2. 在“包管理器控制台”窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。 例如，`Install-Package Microsoft.Azure.Management.Media`。
 
 |程序包|说明|
 |---|---|
@@ -58,7 +57,7 @@ ms.locfileid: "83201116"
 
 ### <a name="create-appsettingsjson"></a>创建 appsettings.json
 
-1. 转到“常规” > “文本文件”。  
+1. 转到“常规” > “文本文件”。 
 1. 将其命名为“appsettings.json”。
 1. 将此 .json 文件的“复制到输出目录”属性设置为“如果较新则复制”（使应用程序能够在发布时访问此文件）。
 
@@ -144,7 +143,7 @@ namespace ConsoleApp1
 
 ## <a name="connect-to-the-net-client"></a>连接到 .NET 客户端
 
-若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象  。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在以下代码中，GetCredentialsAsync 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
+若要开始将媒体服务 API 与 .NET 结合使用，需要创建 AzureMediaServicesClient 对象。 若要创建对象，需要提供客户端所需凭据以使用 Azure AD 连接到 Azure。 在以下代码中，GetCredentialsAsync 函数根据本地配置文件中提供的凭据创建 ServiceClientCredentials 对象。
 
 1. 打开 `Program.cs`。
 1. 粘贴以下代码：
@@ -231,7 +230,7 @@ namespace ConsoleApp1
 
 - [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
 - [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
-- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+- [教程：通过媒体服务 v3-.NET 分析视频](analyze-videos-tutorial-with-api.md)
 - [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
 - [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
 - [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)

@@ -11,7 +11,6 @@ manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83648226"

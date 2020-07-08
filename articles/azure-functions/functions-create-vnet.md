@@ -7,10 +7,9 @@ ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
 ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122620"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教程：将 Functions 与 Azure 虚拟网络集成
@@ -32,9 +31,9 @@ ms.locfileid: "83122620"
 
 高级计划中运行的函数与 Azure App Service 中的 web 应用具有相同的承载功能，其中包括 VNet 集成功能。 若要了解有关 VNet 集成的详细信息，包括疑难解答和高级配置，请参阅将[应用与 Azure 虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-对于本教程，请务必了解 IP 寻址和子网。 可以从本文开始[，其中介绍了寻址和子网的基本知识](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 其他更多的文章和视频可在线获得。
+若要学习本教程，必须了解 IP 寻址和子网划分。 可以从[这篇介绍了寻址和子网划分基础知识的文章](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)入手。 网上还有其他许多相关文章和视频。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -54,39 +53,39 @@ ms.locfileid: "83122620"
 
 1. 在搜索结果中选择 " **WORDPRESS LEMP Max 性能**"。 选择**WORDPRESS LEMP Max Performance For CentOS**的**软件计划，并选择 "** **创建**"。
 
-1. 在 "**基本**信息" 选项卡中，使用映像下下表中指定的 VM 设置：
+1. 在“基本信息”选项卡中，根据插图下面的表格中的明确说明来使用 VM 设置：
 
     ![用于创建 VM 的 "基本信息" 选项卡](./media/functions-create-vnet/create-vm-1.png)
 
-    | 设置      | 建议的值  | 说明      |
+    | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
-    | **订阅** | 你的订阅 | 用于创建资源的订阅。 | 
+    | **订阅** | 订阅 | 要在其下创建资源的订阅。 | 
     | **[资源组](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 选择 `myResourceGroup` 或你用 function app 创建的资源组。 对于 function app、WordPress VM 和托管计划使用同一资源组，可以在完成本教程后更轻松地清理资源。 |
-    | **虚拟机名称** | VNET-Wordpress | VM 名称在资源组中必须是唯一的 |
+    | **虚拟机名称** | VNET-Wordpress | VM 名称在资源组中需保持唯一 |
     | **[区域](https://azure.microsoft.com/regions/)** | 东欧西欧 | 在访问 VM 的函数附近或附近选择一个区域。 |
     | **大小** | B1s | 选择 "**更改大小**"，然后选择 B1s 标准映像，其中包含1个 vCPU 和 1 GB 的内存。 |
     | **身份验证类型** | 密码 | 若要使用密码身份验证，还必须指定**用户名**、安全**密码**，然后**确认密码**。 对于本教程，无需登录到 VM，除非需要进行故障排除。 |
 
 1. 选择 "**网络**" 选项卡，然后在 "配置虚拟网络" 下选择 "**新建**"。
 
-1. 在 "**创建虚拟网络**" 中，使用映像下表中的设置：
+1. 在“创建虚拟网络”中，使用插图下面的表格中的设置：
 
     ![创建 VM 的 "网络" 选项卡](./media/functions-create-vnet/create-vm-2.png)
 
-    | 设置      | 建议的值  | 说明      |
+    | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
-    | **名称** | myResourceGroup-vnet | 你可以使用为虚拟网络生成的默认名称。 |
+    | **名称** | myResourceGroup-vnet | 可以使用为虚拟网络生成的默认名称。 |
     | **地址范围** | 10.10.0.0/16 | 为虚拟网络使用单个地址范围。 |
     | **子网名称** | 教程-网络 | 子网的名称。 |
-    | **地址范围**（子网） | 10.10.1.0/24   | 子网大小定义可向子网添加多少个接口。 此子网由 WordPress 站点使用。  `/24`子网提供254主机地址。 |
+    | **地址范围**（子网） | 10.10.1.0/24   | 子网大小定义了可将多少个接口添加到子网。 此子网由 WordPress 站点使用。  `/24`子网提供254主机地址。 |
 
-1. 选择 **"确定"** 以创建虚拟网络。
+1. 选择“确定”以创建虚拟网络。
 
 1. 返回 "**网络**" 选项卡，选择 "**无**" 作为**公共 IP**。
 
 1. 选择 "**管理**" 选项卡，然后在 "**诊断存储帐户**" 中，选择你用 Function app 创建的存储帐户。
 
-1. 选择“查看 + 创建”  。 验证完成后，选择 "**创建**"。 VM 创建过程需花费几分钟时间。 创建的 VM 只能访问虚拟网络。
+1. 选择“查看 + 创建”。 验证完成后，选择“创建”。 VM 创建过程需要花费几分钟时间。 创建的 VM 只能访问虚拟网络。
 
 1. 创建 VM 后，选择 "**前往资源**" 查看新 vm 的页面，然后在 "**设置**" 下选择 "**网络**"。
 
@@ -102,7 +101,7 @@ ms.locfileid: "83122620"
 
 1. 在新的函数应用中，选择左侧菜单中的 "**网络**"。
 
-1. 在 " **VNet 集成**" 下，选择 **"单击此处进行配置**"。
+1. 在“VNet 集成”下，选择“单击此处进行配置”。 
 
     :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="在 function app 中选择网络":::
 
@@ -114,7 +113,7 @@ ms.locfileid: "83122620"
 
     ![定义函数应用虚拟网络](./media/functions-create-vnet/networking-3.png)
 
-    | 设置      | 建议的值  | 说明      |
+    | 设置      | 建议的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
     | **虚拟网络** | MyResourceGroup-vnet | 此虚拟网络是你之前创建的网络。 |
     | **子网** | 创建新子网 | 在虚拟网络中创建一个子网，以便函数应用使用。 必须将 VNet 集成配置为使用空子网。 函数使用不同于 VM 的子网并不重要。 虚拟网络自动在两个子网之间路由流量。 |
@@ -134,7 +133,7 @@ ms.locfileid: "83122620"
 
     :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="定义代理设置":::
 
-    | 设置  | 建议的值  | 说明      |
+    | 设置  | 建议的值  | 描述      |
     | -------- | ---------------- | ---------------- |
     | **名称** | PlAnT | 该名称可以是任何值。 它用于标识代理。 |
     | **路由模板** | /plant | 映射到 VM 资源的路由。 |
@@ -142,7 +141,7 @@ ms.locfileid: "83122620"
 
 1. 选择 "**创建**"，将代理添加到 function app。
 
-## <a name="try-it-out"></a>试试看
+## <a name="try-it-out"></a>试用
 
 1. 在浏览器中，尝试访问用作**后端 url**的 URL。 如预期那样，请求会超时。发生超时的原因是你的 WordPress 站点仅连接到你的虚拟网络而不是 internet。
 
@@ -161,6 +160,6 @@ ms.locfileid: "83122620"
 高级计划中运行的函数在 PremiumV2 计划上共享与 web 应用相同的基础应用服务基础结构。 [Azure App Service 中的 web 应用](../app-service/overview.md)的所有文档都适用于高级计划功能。
 
 > [!div class="nextstepaction"]
-> [了解有关函数中的网络选项的详细信息](./functions-networking-options.md)
+> [详细了解 Functions 中的网络选项](./functions-networking-options.md)
 
 [高级计划]: functions-scale.md#premium-plan

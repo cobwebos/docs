@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 07210350826001bd3e0be6e04be211c9de43695a
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997251"
 ---
 # <a name="enterprise-security-package-for-azure-hdinsight"></a>Azure HDInsight 企业安全性套餐
@@ -22,7 +21,7 @@ Enterprise Security 是一种可选包，可在 HDInsight 群集上作为创建�
 
     过去，你创建了包含本地管理员用户和本地 SSH 用户的 HDInsight 群集。 本地管理员用户可以访问所有文件、文件夹、表和列。  使用企业安全性套餐，可以通过将 HDInsight 与 Active Directory 集成来启用基于角色的访问控制。 其中包括本地 Active Directory Azure Active Directory 域服务。 或 Active Directory。 群集上的域管理员可以授予用户使用其自己的公司（域）用户名和密码的权限。
 
-       有关详细信息，请参阅：
+    有关详情，请参阅：
 
     * [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](./domain-joined/hdinsight-security-overview.md)
 

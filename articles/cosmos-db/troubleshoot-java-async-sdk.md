@@ -11,7 +11,6 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83651891"

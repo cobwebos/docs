@@ -8,15 +8,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: c8265f641afb4164f26b8b2663b9f904f95b2b67
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201454"
 ---
 # <a name="co-sell-option-in-partner-center"></a>合作伙伴中心的联合销售选项
 
-提供有关共同销售选项卡的信息是完全可选的。 需要实现合作销售就绪和 IP 共同销售就绪状态。 Microsoft 销售团队将使用您提供的信息来了解有关您的解决方案的详细信息。 不会直接向客户提供此功能。 有关详细信息，请参阅[通过 Microsoft 进行销售](https://partner.microsoft.com/membership/sell-with-microsoft)。
+提供有关共同销售选项卡的信息是完全可选的。 需要实现联合销售就绪和 IP 联合销售就绪状态。 Microsoft 销售团队在评估你的解决方案是否满足客户需求时，将使用你提供的信息详细了解你的解决方案。 它不会直接提供给客户。 有关详细信息，请参阅[通过 Microsoft 进行销售](https://partner.microsoft.com/membership/sell-with-microsoft)。
 
 合作伙伴中心的共同销售选项目前可用于某些产品/服务类型。 随着时间的推移，将提供对其他产品/服务类型的支持。
 
@@ -34,7 +33,7 @@ ms.locfileid: "83201454"
 | Power BI 服务应用     |     即将公布       |
 |  |
 
-## <a name="listing"></a>商品
+## <a name="listing"></a>正在列出
 
 共同销售列表将帮助 Microsoft 销售团队向更广泛的受众推销你的解决方案。
 
@@ -64,7 +63,7 @@ ms.locfileid: "83201454"
 
 你可以为 Microsoft 提供可用于评估你的客户需求的宣传品。
 
-| **文档**    | **说明**  |
+| 文档    | **说明**  |
 | :------------------- | :-------------------|
 | *单客户-寻呼* | 客户对你的产品/服务的说明。 Microsoft 销售团队可能与客户共享此信息，以帮助确定你的产品/服务是否合适，以及确保客户已准备就绪。 <br> <br> 使用合作伙伴中心提供的相关模板之一： <br> <ul> <li> Microsoft Azure 单页导航模板 </li> <li> Microsoft Dynamics 365 1-寻呼程序模板 </li> <li> Office 365 1-寻呼程序模板 </li> <li> Windows 10 1-寻呼程序模板 </li> </ul> |
 | *客户演示* | 将您的解决方案与其价值主张一起滑出。 确保你的产品/服务可供客户使用后，Microsoft 销售团队可能与客户共享此演示文稿，以清楚地说明两家公司在部署联合解决方案时带来的价值。 该演示文稿应涵盖你的解决方案的功能、它可以如何帮助客户、解决方案适用的行业以及它如何与竞争性解决方案进行比较。 <br> <br> 使用合作伙伴中心提供的模板。|
@@ -88,7 +87,7 @@ ms.locfileid: "83201454"
 * 职务 *（必需）*：职务。
 * *Role （必需）*：在模板的此字段中使用以下角色之一。
 
-    | **Role**    | **说明**  |
+    | **角色**    | **说明**  |
     | :------------------- | :-------------------|
     | *:::no-loc text="Partner marketing":::* | 此角色重点介绍解决方案营销，并与 Microsoft 销售团队和渠道分销商合作开展市场营销工作。 市场营销活动与产品/服务的主要联系点，如产品说明、图像和视频。 |
     | *:::no-loc text="Partner sales":::* | 此角色侧重于销售解决方案，并与 Microsoft 销售团队和渠道分销商合作。 对于共同销售的解决方案，表示每个区域至少有一个合作伙伴销售联系人，你希望在其中共同销售就绪。 同一合作伙伴销售联系人可能涵盖多个区域。 |

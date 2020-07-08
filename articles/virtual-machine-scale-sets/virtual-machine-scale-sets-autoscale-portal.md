@@ -11,7 +11,6 @@ ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: ea9d243e46aace9030c25222217ac3ad09a31c38
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83124935"

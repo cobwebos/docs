@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005861"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
 FROM (`FROM <from_specification>`) 子句是可选的，除非稍后在查询中对源进行筛选或投影。 `SELECT * FROM Families` 之类的查询枚举整个 `Families` 容器。 还可以对容器使用特殊标识符 ROOT，而无需使用容器名称。
 
-`FROM`子句强制执行每个查询的以下规则：
+`FROM` 子句对每个查询强制实施以下规则：
 
 * 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的[别名](sql-query-working-with-json.md#aliasing)。  
 

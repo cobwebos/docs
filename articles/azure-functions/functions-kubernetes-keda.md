@@ -7,7 +7,6 @@ ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: eab0a54d30f2cd2829779dbfc6081445f5be0a71
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83648843"

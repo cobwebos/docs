@@ -13,10 +13,9 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
 ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124782"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中创建、重启 VM 或重设其大小时排查分配失败

@@ -17,10 +17,9 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref
 ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83198864"
 ---
 # <a name="security-frame-session-management"></a>安全框架：会话管理
@@ -31,7 +30,7 @@ ms.locfileid: "83198864"
 | **Azure Document DB** | <ul><li>[对生成的资源令牌使用最短的令牌生存期](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[使用 ADFS 时借助 WsFederation 方法实现适当的注销](#wsfederation-logout)</li></ul> |
 | **标识服务器** | <ul><li>[使用标识服务器时实现适当的注销](#proper-logout)</li></ul> |
-| **Web 应用程序** | <ul><li>[可通过 HTTPS 使用的应用程序必须使用安全 Cookie](#https-secure-cookies)</li><li>[所有基于 HTTP 的应用程序只应为 Cookie 定义指定 HTTP](#cookie-definition)</li><li>[缓解针对 ASP.NET 网页的跨站点请求伪造 (CSRF) 攻击](#csrf-asp)</li><li>[设置会话的非活动生存期](#inactivity-lifetime)</li><li>[从应用程序实现适当的注销](#proper-app-logout)</li></ul> |
+| **Web 应用程序** | <ul><li>[可通过 HTTPS 使用的应用程序必须使用安全 Cookie](#https-secure-cookies)</li><li>[所有基于 HTTP 的应用程序只应为 Cookie 定义指定 HTTP](#cookie-definition)</li><li>[缓解针对 ASP.NET 网页的跨站点请求伪造 (CSRF) 攻击](#csrf-asp)</li><li>[设置会话的非活动生存期](#inactivity-lifetime)</li><li>[通过应用程序实现适当的注销](#proper-app-logout)</li></ul> |
 | **Web API** | <ul><li>[缓解针对 ASP.NET Web API 的跨站点请求伪造 (CSRF) 攻击](#csrf-api)</li></ul> |
 
 ## <a name="implement-proper-logout-using-adal-methods-when-using-azure-ad"></a><a id="logout-adal"></a>使用 Azure AD 时借助 ADAL 方法实现适当的注销
@@ -41,8 +40,8 @@ ms.locfileid: "83198864"
 | **组件**               | Azure AD | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **属性**              | 空值  |
+| **参考**              | 空值  |
 | **步骤** | 如果应用程序依赖于 Azure AD 颁发的访问令牌，注销事件处理程序应调用 |
 
 ### <a name="example"></a>示例
@@ -76,8 +75,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | IoT 设备 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **属性**              | 空值  |
+| **参考**              | 空值  |
 | **步骤** | 为了向 Azure IoT 中心进行身份验证而生成的 SaS 令牌应该附带有限的过期时间。 请尽量缩短 SaS 令牌的生存期，以便在令牌泄露的情况下，限制这些令牌的可重放时间。|
 
 ## <a name="use-minimum-token-lifetimes-for-generated-resource-tokens"></a><a id="resource-tokens"></a>对生成的资源令牌使用最短的令牌生存期
@@ -87,8 +86,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Azure Document DB | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **属性**              | 空值  |
+| **参考**              | 空值  |
 | **步骤** | 将资源令牌的时间跨度减至所需的最小值。 资源令牌的有效时间跨度默认为 1 小时。|
 
 ## <a name="implement-proper-logout-using-wsfederation-methods-when-using-adfs"></a><a id="wsfederation-logout"></a>使用 ADFS 时借助 WsFederation 方法实现适当的注销
@@ -98,8 +97,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | ADFS | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **属性**              | 空值  |
+| **参考**              | 空值  |
 | **步骤** | 如果应用程序依赖于 ADFS 颁发的 STS 令牌，注销事件处理程序应调用 WSFederationAuthenticationModule.FederatedSignOut() 方法来注销用户。 此外，应销毁当前会话，重置会话令牌值并将其设为 null。|
 
 ### <a name="example"></a>示例
@@ -147,9 +146,9 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | 标识服务器 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
+| **属性**              | 空值  |
 | **参考**              | [IdentityServer3 - 联合注销](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
-| **步骤** | IdentityServer 支持与外部标识提供者联合。 当用户从上游标识提供者注销时，根据所使用的协议，当用户注销时，可能会收到通知。它允许 IdentityServer 通知其客户端，以便他们也可以注销用户。有关实现的详细信息，请参阅参考部分中的文档。|
+| **步骤** | IdentityServer 支持与外部标识提供者联合。 如果用户从某个上游标识提供者注销，根据所用的协议，当该用户注销时，可能会出现通知。这样，IdentityServer 便可以通知其客户端，使这些客户端也将该用户注销。请参阅参考部分中的文档了解实施详细信息。|
 
 ## <a name="applications-available-over-https-must-use-secure-cookies"></a><a id="https-secure-cookies"></a>可通过 HTTPS 使用的应用程序必须使用安全 Cookie
 
@@ -158,7 +157,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | EnvironmentType - OnPrem |
+| **属性**              | EnvironmentType - OnPrem |
 | **参考**              | [httpCookies 元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/ms228262(v=vs.100).aspx)、[HttpCookie.Secure 属性](https://msdn.microsoft.com/library/system.web.httpcookie.secure.aspx) |
 | **步骤** | 通常只能从 Cookie 限定到的域访问这些 Cookie。 遗憾的是，“域”的定义不包括协议，因此，通过 HTTPS 创建的 Cookie 可通过 HTTP 访问。 “secure”特性可向浏览器指明，只能通过 HTTPS 使用 Cookie。 请确保通过 HTTPS 设置的所有 Cookie 使用 **secure** 特性。 可在 web.config 文件通过将 requireSSL 属性设置为 true，来强制实施此要求。 这是一种首选方法，因为它会强制所有当前和未来的 Cookie 使用 **secure** 属性，而无需对代码进一步进行更改。|
 
@@ -177,8 +176,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
-| **特性**              | EnvironmentType - OnPrem |
-| **参考**              | N/A  |
+| **属性**              | EnvironmentType - OnPrem |
+| **参考**              | 空值  |
 | **步骤** | 如果 Web 应用程序是信赖方，IdP 是 ADFS 服务器，则可以通过在 web.config 的 `system.identityModel.services` 节中将 requireSSL 设置为 True，来配置 FedAuth 令牌的 secure 特性：|
 
 ### <a name="example"></a>示例
@@ -199,8 +198,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | [Secure Cookie 特性](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
+| **属性**              | 空值  |
+| **参考**              | [安全 Cookie 特性](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) |
 | **步骤** | 为了缓解跨站点脚本 (XSS) 攻击造成的信息泄露风险，Cookie 中引入了新特性 httpOnly，所有主流浏览器都支持此特性。 此属性指定不能通过脚本访问 Cookie。 Web 应用程序可以使用 HttpOnly Cookie 来减少通过脚本窃取 Cookie 中包含的敏感信息并将其发送到攻击者网站的可能性。 |
 
 ### <a name="example"></a>示例
@@ -220,9 +219,9 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
-| **特性**              | N/A  |
+| **属性**              | 空值  |
 | **参考**              | [FormsAuthentication.RequireSSL 属性](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **步骤** | 可以使用配置元素的 requireSSL 特性，在 ASP.NET 应用程序的配置文件中设置 RequireSSL 属性值。 你可以在 ASP.NET 应用程序的 web.config 文件中指定传输层安全（TLS）（以前称为 SSL （安全套接字层））是否需要通过设置 requireSSL 属性将 forms 身份验证 cookie 返回到服务器。|
+| **步骤** | 可以使用配置元素的 requireSSL 特性，在 ASP.NET 应用程序的配置文件中设置 RequireSSL 属性值。 可通过设置 requireSSL 特性，在 ASP.NET 应用程序的 Web.config 文件中指定是否需要使用传输层安全性 (TLS)（以前称为 SSL（安全套接字层））将窗体身份验证 Cookie 返回到服务器。|
 
 ### <a name="example"></a>示例 
 以下代码示例在 Web.config 文件中设置 requireSSL 特性。
@@ -237,7 +236,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5 |
-| **特性**              | EnvironmentType - OnPrem |
+| **属性**              | EnvironmentType - OnPrem |
 | **参考**              | [Windows Identity Foundation (WIF) 配置 – 第 II 部分](https://blogs.msdn.microsoft.com/alikl/2011/02/01/windows-identity-foundation-wif-configuration-part-ii-cookiehandler-chunkedcookiehandler-customcookiehandler/) |
 | **步骤** | 要为 FedAuth Cookie 设置 httpOnly 特性，应将 hideFromCsript 特性值应设置为 True。 |
 
@@ -262,8 +261,8 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **属性**              | 空值  |
+| **参考**              | 空值  |
 | **步骤** | 跨站点请求伪造（CSRF 或 XSRF）攻击是指在在不同用户与网站建立的会话的安全上下文中执行操作。 其企图是在目标网站专门依赖使用会话 Cookie 对收到的请求进行身份验证的情况下修改或删除内容。 攻击者可能会利用此漏洞，获取不同用户的浏览器并在用户已登录到的有漏洞站点中使用某个命令加载 URL。 攻击者可以使用多种方式实现此目的，例如，托管一个不同的网站用于从有漏洞的服务器加载资源，或者诱骗用户点击某个链接。 如果服务器向客户端发送一个附加令牌，要求客户端在将来的所有请求中包含该令牌，并验证将来的所有请求是否包含与当前会话相关的令牌（例如，使用 ASP.NET AntiForgeryToken 或 ViewState），则可以避免这种攻击。 |
 
 | 标题                   | 详细信息      |
@@ -271,7 +270,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
-| **特性**              | N/A  |
+| **属性**              | 空值  |
 | **参考**              | [ASP.NET MVC 和网页中的 XSRF/CSRF 预防](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
 | **步骤** | 反 CSRF 和 ASP.NET MVC 窗体 - 例如，在视图中使用 `AntiForgeryToken` 帮助器方法；将 `Html.AntiForgeryToken()` 放入窗体。|
 
@@ -357,7 +356,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
-| **特性**              | N/A  |
+| **属性**              | 空值  |
 | **参考**              | [利用 ASP.NET 内置功能来防范 Web 攻击](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
 | **步骤** | 可以通过将 ViewStateUserKey 设置为某个随机字符串（该字符串因用户而异，可根据用户 ID 设置，最好是根据会话 ID 设置），来缓解基于 Web 窗体的应用程序中的 CSRF 攻击。 出于技术和社会方面的多种原因，根据会话 ID 设置此属性要好得多，因为会话 ID 不可预测、会超时，并且根据不同的用户而异。|
 
@@ -377,9 +376,9 @@ void Page_Init (object sender, EventArgs e) {
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
+| **属性**              | 空值  |
 | **参考**              | [HttpSessionState.Timeout 属性](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
-| **步骤** | 会话超时表示用户在某个时间间隔（由 web 服务器定义）内未在网站上执行任何操作时出现的事件。 服务器端发生该事件时，会将用户会话的状态更改为“invalid”（即，“不再使用”），并指示 Web 服务器销毁该会话（删除其中包含的所有数据）。 以下代码示例在 Web.config 文件中将超时会话特性设置为 15 分钟。|
+| **步骤** | 会话超时是指由于用户在某个间隔时间（由 Web 服务器定义）内未在网站上执行任何操作而发生的事件。 服务器端发生该事件时，会将用户会话的状态更改为“invalid”（即，“不再使用”），并指示 Web 服务器销毁该会话（删除其中包含的所有数据）。 以下代码示例在 Web.config 文件中将超时会话特性设置为 15 分钟。|
 
 ### <a name="example"></a>示例
 ```XML 
@@ -397,7 +396,7 @@ void Page_Init (object sender, EventArgs e) {
 | **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体 |
-| **特性**              | N/A  |
+| **属性**              | 空值  |
 | **参考**              | [Authentication 的 Forms 元素（ASP.NET 设置架构）](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
 | **步骤** | 将窗体身份验证票证 Cookie 超时设置为 15 分钟|
 
@@ -409,10 +408,10 @@ void Page_Init (object sender, EventArgs e) {
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | Web 窗体、MVC5 |
-| **特性**              | EnvironmentType - OnPrem |
+| **属性**              | EnvironmentType - OnPrem |
 | **参考**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
 | **步骤** | 当 Web 应用程序是信赖方且 ADFS 是 STS 时，可以通过 web.config 中的以下配置设置身份验证 cookie FedAuth 令牌的生存期：|
 
@@ -444,30 +443,30 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web 应用程序 | 
+| 组件               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **特性**              | 不适用  |
+| **参考**              | 空值  |
 | **步骤** | 当用户按下注销按钮时，从应用程序执行适当的注销。 注销后，应用程序应销毁用户的会话，重置会话 Cookie 值并将其设置为 null，同时重置身份验证 Cookie 值并将其设置为 null。 此外，如果多个会话绑定到单个用户标识，在超时或注销时，必须在服务器端统一终止这些会话。 最后，确保可在每个页面上使用注销功能。 |
 
 ## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-apis"></a><a id="csrf-api"></a>缓解针对 ASP.NET Web API 的跨站点请求伪造 (CSRF) 攻击
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
-| **特性**              | N/A  |
-| **参考**              | N/A  |
+| **特性**              | 不适用  |
+| **参考**              | 空值  |
 | **步骤** | 跨站点请求伪造（CSRF 或 XSRF）攻击是指在在不同用户与网站建立的会话的安全上下文中执行操作。 其企图是在目标网站专门依赖使用会话 Cookie 对收到的请求进行身份验证的情况下修改或删除内容。 攻击者可能会利用此漏洞，获取不同用户的浏览器并在用户已登录到的有漏洞站点中使用某个命令加载 URL。 攻击者可以使用多种方式实现此目的，例如，托管一个不同的网站用于从有漏洞的服务器加载资源，或者诱骗用户点击某个链接。 如果服务器向客户端发送一个附加令牌，要求客户端在将来的所有请求中包含该令牌，并验证将来的所有请求是否包含与当前会话相关的令牌（例如，使用 ASP.NET AntiForgeryToken 或 ViewState），则可以避免这种攻击。 |
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
-| **特性**              | N/A  |
+| **特性**              | 不适用  |
 | **参考**              | [防止 ASP.NET Web API 中的跨站点请求伪造 (CSRF) 攻击](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
 | **步骤** | 反 CSRF 和 AJAX：窗体令牌可能对 AJAX 请求造成问题，因为 AJAX 请求可以发送 JSON 数据，但不能发送 HTML 窗体数据。 一种解决方法是在自定义 HTTP 标头中发送令牌。 以下代码使用 Razor 语法生成令牌，然后将令牌添加到 AJAX 请求。 |
 
@@ -551,10 +550,10 @@ public ViewResult SubmitUpdate()
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | Web API | 
+| 组件               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC5、MVC6 |
-| **特性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |
+| **属性**              | 标识提供者 - ADFS，标识提供者 - Azure AD |
 | **参考**              | [在 ASP.NET Web API 2.2 中使用单个帐户和本地登录名保护 Web API](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
 | **步骤** | 如果 Web API 是使用 OAuth 2.0 保护的，则它需要在授权请求标头中包含一个持有者令牌，仅当该令牌有效时，才向请求授予访问权限。 与基于 Cookie 的身份验证不同，浏览器不会将持有者令牌附加到请求。 请求方客户端需要在请求标头中显式附加持有者令牌。 因此，对于使用 OAuth 2.0 保护的 ASP.NET Web API，持有者令牌被视为一种防范 CSRF 攻击的措施。 请注意，如果应用程序的 MVC 部分使用窗体身份验证（即，使用 Cookie），则 MVC Web 应用必须使用防伪令牌。 |
 

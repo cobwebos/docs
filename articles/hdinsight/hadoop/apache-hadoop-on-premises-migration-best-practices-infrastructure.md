@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 8407aafdb9b9dadcbc8e220ac42e5d7856116959
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996779"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
@@ -152,7 +151,7 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>使用群集的纵向扩展和缩减功能
 
-HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 使用此功能可在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。    有关详细信息，请参阅：
+HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 使用此功能可在若干小时后或者在周末收缩群集，或者在业务高峰期扩展群集。 有关详情，请参阅：
 
 * [缩放 HDInsight 群集](../hdinsight-scaling-best-practices.md)。
 * [缩放群集](../hdinsight-administer-use-portal-linux.md#scale-clusters)。
@@ -164,7 +163,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 对 HDInsight 使用 Azure 虚拟网络可实现以下方案：
 
 - 直接从本地网络连接到 HDInsight。
-- 将 HDInsight 连接到 Azure 虚拟网络中的数据存储。
+- 在 Azure 虚拟网络中将 HDInsight 连接到数据存储。
 - 直接访问无法通过 Internet 公开访问的 Hadoop 服务。 例如，Kafka API 或 HBase Java API。
 
 可将 HDInsight 添加到新的或现有的 Azure 虚拟网络。 如果将 HDInsight 添加到现有的虚拟网络，则需要更新现有的网络安全组和用户定义的路由，以便能够不受限制地访问 Azure 数据中心内的[多个 IP 地址](../hdinsight-management-ip-addresses.md)。 此外，请确保不要阻止对 HDInsight 服务使用的[端口](../control-network-traffic.md#required-ports)的流量。

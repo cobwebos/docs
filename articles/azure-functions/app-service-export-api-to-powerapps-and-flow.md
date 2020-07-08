@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
 ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83115808"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
@@ -58,7 +57,7 @@ ms.locfileid: "83115808"
 
 2. 使用表中指定的设置。
 
-    |设置|说明|
+    |设置|描述|
     |--------|------------|
     |**环境**|选择自定义连接器应保存到的环境。 有关详细信息，请参阅[环境概述](https://powerapps.microsoft.com/tutorials/environments-overview/)。|
     |**自定义 API 名称**|输入名称，PowerApps 和 Microsoft Flow 生成器将在其连接器列表中看到。|
@@ -66,7 +65,7 @@ ms.locfileid: "83115808"
  
     ![快速导出到 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 单击" **确定**"。 现在自定义连接器已生成并添加到了指定的环境中。
+3. 单击“确定”。 现在自定义连接器已生成并添加到了指定的环境中。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>使用手动导出
@@ -103,7 +102,7 @@ ms.locfileid: "83115808"
 
 4. 在“常规”**** 选项卡上，查看来自 OpenAPI 定义的信息。
 
-5. 在“安全”选项卡上，如果系统提示提供身份验证详细信息，请输入适合身份验证类型的值。**** 单击“继续”  。
+5. 在“安全”选项卡上，如果系统提示提供身份验证详细信息，请输入适合身份验证类型的值。**** 单击 **“继续”** 。
 
     ![“安全”选项卡](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982949"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
@@ -32,7 +31,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是一组 1+n 个独立服务器（节点），这些服务器相互配合，共同提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在开始本文中的任务之前，请先查看以下文章：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -60,15 +59,15 @@ _图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配�
 SAP ASCS/SCS 实例具有以下组件：
 
 * SAP 中心服务：
-    * 两个进程（一种消息和排队服务器） \<，以及用于访问这两个进程的 ASCS/SCS 虚拟主机名>。
-    * 文件结构：S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<instance number\>
+    * 两个进程：消息和排队服务器，以及 \<ASCS/SCS virtual host name> 用于访问这两个进程的。
+    * 文件结构： S:\usr\sap \\ &lt; SID &gt; \ ASCS/SCS\<instance number\>
 
 
 * SAP 全局主机文件：
   * 文件结构：S:\usr\sap\\&lt;SID&gt;\SYS\..
   * sapmnt 文件共享，可通过使用以下 UNC 路径实现对这些全局 S:\usr\sap\\&lt;SID&gt;\SYS\..文件的访问：
 
-    \\\\<\>ASCS/SCS 虚拟主机名 \sapmnt\\&lt;SID&gt;\SYS。\.
+    \\\\<ASCS/SCS 虚拟主机名 \> \Sapmnt \\ &lt; SID &gt; \SYS \. 。
 
 
 ![图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享][sap-ha-guide-figure-8001]
@@ -83,7 +82,7 @@ _**图3：** 包含共享磁盘的 SAP ASCS/SCS HA 体系结构_
 
 > [!IMPORTANT]
 > 由于这两个组件在相同的 SAP ASCS/SCS 实例下运行，因此：
->* 相同\<的 ASCS/SCS 虚拟主机名> 用于通过 sapmnt 文件共享访问 sap 消息和排队服务器进程，以及 sap 全局主机文件。
+>* 此相同 \<ASCS/SCS virtual host name> 用于通过 sapmnt 文件共享访问 sap 消息和排队服务器进程，以及 sap 全局主机文件。
 >* 它们共用同一个群集共享磁盘驱动器 S。
 >
 

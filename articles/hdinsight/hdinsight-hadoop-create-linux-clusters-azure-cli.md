@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
 ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82994183"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
@@ -44,7 +43,7 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
 
 2. 设置环境变量。 本文中的变量用法基于 Bash。 在其他环境中需要进行细微的更改。 有关用于群集创建的可能参数的完整列表，请参见 [az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
 
-    |参数 | 说明 |
+    |参数 | 描述 |
     |---|---|
     |`--workernode-count`| 群集中的工作器节点数。 本文使用变量 `clusterSizeInNodes` 作为传递给 `--workernode-count` 的值。 |
     |`--version`| HDInsight 群集版本。 本文使用变量 `clusterVersion` 作为传递给 `--version` 的值。 另请参阅：[支持的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
@@ -130,7 +129,7 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
     ```
 
     > [!IMPORTANT]  
-    > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 没有任何方法支持创建组合多种类型的群集，如一个群集同时具有 Storm 和 HBase 类型。
+    > HDInsight 群集具有各种不同的类型，与该群集进行优化的工作负荷或技术相对应。 不支持在一个群集上创建合并了多个类型（如 Storm 和 HBase）的群集。
 
     群集创建过程可能需要几分钟才能完成。 通常大约为 15 分钟。
 

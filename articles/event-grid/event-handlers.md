@@ -9,7 +9,6 @@ ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: c29526bdee5ad70b3acb23117ee003877f52a55e
 ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83592451"

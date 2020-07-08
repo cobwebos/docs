@@ -13,7 +13,6 @@ ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another region.
 ms.openlocfilehash: 4f9f43b3d0aa0af8696300933c08c140951e5e52
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83651222"

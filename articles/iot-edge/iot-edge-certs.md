@@ -11,7 +11,6 @@ services: iot-edge
 ms.custom: mqtt
 ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
 ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/08/2020
 ms.locfileid: "82982722"

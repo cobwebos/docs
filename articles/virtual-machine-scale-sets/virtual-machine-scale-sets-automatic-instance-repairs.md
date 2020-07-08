@@ -10,13 +10,12 @@ ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197040"
 ---
-# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的自动实例修复
+# <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>适用于 Azure 虚拟机规模集的自动实例修复
 
 为 Azure 虚拟机规模集启用自动实例修复有助于通过维护一组正常运行的实例来实现应用程序的高可用性。 如果发现规模集在[应用程序运行状况扩展](./virtual-machine-scale-sets-health-extension.md)或[负载均衡器运行状况探测](../load-balancer/load-balancer-custom-probe-overview.md)报告时不正常，则此功能会通过删除不正常的实例并创建一个新实例来替换它来自动执行实例修复。
 
@@ -96,15 +95,15 @@ Service fabric 规模集当前不支持此功能。
  
 以下步骤将在创建新规模集时启用自动修复策略。
  
-1. 请参阅**虚拟机规模集**。
-1. 选择 " **+ 添加**" 创建新的规模集。
+1. 转到“虚拟机规模集”。
+1. 选择“+ 添加”，创建新的规模集。
 1. 请在 "**运行状况**" 选项卡上执行。 
 1. 找到 "**运行状况**" 部分。
 1. 启用 "**监视应用程序运行状况**" 选项。
 1. 找到**自动修复策略**部分。
 1. 启用 **"** **自动修复**" 选项。
 1. 在 "**宽限期（分钟）**" 中，指定允许值介于30到90分钟之间的宽限期（分钟）。 
-1. 创建新规模集后，请选择 "**查看 + 创建**" 按钮。
+1. 创建完新的规模集后，选择“查看 + 创建”按钮。
 
 ### <a name="rest-api"></a>REST API
 
@@ -127,7 +126,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-使用[AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 创建新的规模集时，可以启用自动实例修复功能。 此示例脚本演示如何使用配置文件创建规模集和关联的资源：[创建一个完整的虚拟机规模集](./scripts/powershell-sample-create-complete-scale-set.md)。 可以通过将参数*EnableAutomaticRepair*和*AutomaticRepairGracePeriod*添加到用于创建规模集的配置对象来配置自动实例修复策略。 以下示例启用此功能，宽限期为30分钟。
+使用[AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 创建新的规模集时，可以启用自动实例修复功能。 此示例脚本使用配置文件演示如何创建模集和相关资源：[创建完整的虚拟机规模集](./scripts/powershell-sample-create-complete-scale-set.md)。 可以通过将参数*EnableAutomaticRepair*和*AutomaticRepairGracePeriod*添加到用于创建规模集的配置对象来配置自动实例修复策略。 以下示例启用此功能，宽限期为30分钟。
 
 ```azurepowershell-interactive
 New-AzVmssConfig `
@@ -168,13 +167,13 @@ az vmss create \
 
 可以通过 Azure 门户修改现有规模集的自动修复策略。 
  
-1. 请参阅现有虚拟机规模集。
+1. 转到现有虚拟机规模集。
 1. 在左侧菜单的 "**设置**" 下，选择 "**运行状况和修复**"。
 1. 启用 "**监视应用程序运行状况**" 选项。
 1. 找到**自动修复策略**部分。
 1. 启用 **"** **自动修复**" 选项。
 1. 在 "**宽限期（分钟）**" 中，指定允许值介于30到90分钟之间的宽限期（分钟）。 
-1. 完成后，选择“保存”****。 
+1. 完成后，选择“保存”。 
 
 ### <a name="rest-api"></a>REST API
 

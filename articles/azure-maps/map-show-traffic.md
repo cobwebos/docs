@@ -11,7 +11,6 @@ manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 9c17c3cc22d478d81ed3c2b2ae9f61c173aad6cd
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83123915"

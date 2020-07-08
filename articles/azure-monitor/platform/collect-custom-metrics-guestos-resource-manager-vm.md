@@ -9,7 +9,6 @@ ms.author: bwren
 ms.subservice: metrics
 ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83650539"

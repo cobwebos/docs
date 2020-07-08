@@ -16,10 +16,9 @@ ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995530"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>适用于 iOS 的脱机 FairPlay Streaming 
@@ -29,7 +28,7 @@ ms.locfileid: "82995530"
 > * [第 2 版](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本的[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务提供一套设计良好的[内容保护服务](https://azure.microsoft.com/services/media-services/content-protection/)，包括：
 
@@ -208,10 +207,10 @@ func requestApplicationCertificate() throws -> Data {
 - **为什么添加 audio-only=false 之后，在脱机模式期间仍只播放音频而不播放视频？** 根据内容分发网络 (CDN) 缓存键的设计，可能会缓存该内容。 请清除缓存。
 - **除 iOS 10 之外，iOS 11 是否也支持 FPS 脱机模式？** 是的。 iOS 10 和 iOS 11 支持 FPS 脱机模式。
 - **为什么在 FPS Server SDK 中，无法使用 FairPlay Streaming 和 HTTP Live Streaming 找到文档“脱机播放”？** 从 FPS Server SDK 版本 4 开始，此文档已合并到“FairPlay Streaming 编程指南”。
-- **以下用于 FPS 脱机模式的 API 中的最后一个参数是什么？**
+- **FPS 脱机模式的以下 API 中最后一个参数代表什么？** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)。 参数表示脱机租赁的持续时间，以秒为单位。
+    有关此 API 的文档，请参阅 [FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration 方法](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)。 该参数代表脱机租赁的持续时间（秒）。
 - **iOS 设备上的已下载/脱机文件结构是什么？** iOS 设备上的已下载文件结构如下屏幕截图所示。 `_keys` 文件夹存储已下载的 FPS 许可证，每个许可证服务主机一个存储文件。 `.movpkg` 文件夹存储音频和视频内容。 第一个文件夹（文件名以破折号加数字结尾）包含视频内容。 数值是“PeakBandwidth”视频呈现形式。 第二个文件夹（文件名以破折号加 0 结尾）包含音频内容。 第三个文件夹（文件名为“Data”）包含 FPS 内容的主播放列表。 最后，boot.xml 提供 `.movpkg` 文件夹内容的完整说明。 
 
 ![脱机 FairPlay iOS 示例应用文件结构](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
@@ -249,7 +248,7 @@ func requestApplicationCertificate() throws -> Data {
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 本文档包含以下步骤，并提供了可用于实现 FPS 脱机模式的信息：
 
 * 通过媒体服务 .NET API 的媒体服务内容保护配置在媒体服务中配置动态 FairPlay 加密和 FairPlay 许可证传送。

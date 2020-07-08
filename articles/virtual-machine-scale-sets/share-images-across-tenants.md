@@ -11,7 +11,6 @@ ms.reviewer: akjosh
 ms.custom: akjosh
 ms.openlocfilehash: 5b86335ab8bcc3af75dbd8af39e3d913f2461e58
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83119835"

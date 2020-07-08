@@ -11,7 +11,6 @@ ms.date: 05/12/2020
 ms.author: shvija
 ms.openlocfilehash: decfc6659ea38ea35ab41615ff5077492cfa03b5
 ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83595636"

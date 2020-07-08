@@ -14,7 +14,6 @@ ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: 148a8bf7626d8b8ee687658990fdaf2fce9f7de7
 ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83590088"

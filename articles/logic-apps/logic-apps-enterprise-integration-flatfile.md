@@ -9,13 +9,12 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
 ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005379"
 ---
-# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 在 Azure 逻辑应用中对平面文件进行编码和解码
+# <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 对 Azure 逻辑应用中的平面文件进行编码或解码
 
 在企业到企业（B2B）方案中将 XML 内容发送给业务合作伙伴之前，您可能需要先对该内容进行编码。 通过生成逻辑应用，可以使用**平面文件**连接器对平面文件进行编码和解码。 逻辑应用可以从各种源获取此 XML 内容，例如请求触发器、其他应用或[Azure 逻辑应用支持的其他连接器](../connectors/apis-list.md)。 有关详细信息，请参阅[什么是 Azure 逻辑应用](logic-apps-overview.md)？
 
@@ -35,12 +34,12 @@ ms.locfileid: "83005379"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用中的触发器或操作下，选择 "**新建步骤** > " "**添加操作**"。 此示例使用请求触发器，该触发器在**收到 HTTP 请求时**命名，并处理来自逻辑应用外部的入站请求。
+1. 在逻辑应用中的触发器或操作下，选择 "**新建步骤**" "  >  **添加操作**"。 此示例使用请求触发器，该触发器在**收到 HTTP 请求时**命名，并处理来自逻辑应用外部的入站请求。
 
    > [!TIP]
    > 提供 JSON 架构是可选的。 如果有来自入站请求的示例有效负载，请选择 "**使用示例有效负载生成架构**"，输入示例负载，然后选择 "**完成**"。 架构将出现在 "**请求正文 JSON 架构**" 框中。
 
-1. 在 "**选择操作**" 下`flat file`，输入。 从 "操作" 列表中，选择此操作：**平面文件编码**
+1. 在 "**选择操作**" 下，输入 `flat file` 。 从 "操作" 列表中，选择此操作：**平面文件编码**
 
    ![选择 "平面文件编码" 操作](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-encoding.png)
 
@@ -67,12 +66,12 @@ ms.locfileid: "83005379"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 在逻辑应用中的触发器或操作下，选择 "**新建步骤** > " "**添加操作**"。 此示例使用请求触发器，该触发器在**收到 HTTP 请求时**命名，并处理来自逻辑应用外部的入站请求。
+1. 在逻辑应用中的触发器或操作下，选择 "**新建步骤**" "  >  **添加操作**"。 此示例使用请求触发器，该触发器在**收到 HTTP 请求时**命名，并处理来自逻辑应用外部的入站请求。
 
    > [!TIP]
    > 提供 JSON 架构是可选的。 如果有来自入站请求的示例有效负载，请选择 "**使用示例有效负载生成架构**"，输入示例负载，然后选择 "**完成**"。 架构将出现在 "**请求正文 JSON 架构**" 框中。
 
-1. 在 "**选择操作**" 下`flat file`，输入。 从 "操作" 列表中，选择此操作：**平面文件解码**
+1. 在 "**选择操作**" 下，输入 `flat file` 。 从 "操作" 列表中，选择此操作：**平面文件解码**
 
    ![选择 "平面文件解码" 操作](./media/logic-apps-enterprise-integration-flatfile/select-flat-file-decoding.png)
 

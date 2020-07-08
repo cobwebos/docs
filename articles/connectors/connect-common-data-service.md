@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82997095"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Common Data Service 中的记录
@@ -49,11 +48,11 @@ ms.locfileid: "82997095"
 
    ![用于监视环境的触发器信息](./media/connect-common-data-service/when-record-created-trigger-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必须 | 描述 |
    |----------|----------|-------------|
    | **环境** | 是 | 要监视的环境，例如 "Fabrikam 销售生产"。 有关详细信息，请参阅[Power Platform-环境概述](https://docs.microsoft.com/power-platform/admin/environments-overview)。 |
    | **实体名称** | 是 | 要监视的实体，例如 "Lead" |
-   | **Scope** | 是 | 创建新记录的源，例如，业务部门中的用户或组织中的任何用户。 此示例使用 "Business unit"。 |
+   | **范围** | 是 | 创建新记录的源，例如，业务部门中的用户或组织中的任何用户。 此示例使用 "Business unit"。 |
    ||||
 
 ## <a name="add-common-data-service-action"></a>添加 Common Data Service 操作
@@ -70,7 +69,7 @@ ms.locfileid: "82997095"
 
    ![要在其中创建记录的环境的操作信息](./media/connect-common-data-service/create-new-record-action-details.png)
 
-   | 属性 | 必须 | 说明 |
+   | properties | 必须 | 描述 |
    |----------|----------|-------------|
    | **组织名称** | 是 | 要在其中创建记录的环境，该记录在触发器中不必是相同的环境，而是在此示例中为 "Fabrikam 销售生产" |
    | **实体名称** | 是 | 要在其中创建记录的实体，例如“Tasks” |
@@ -87,9 +86,9 @@ ms.locfileid: "82997095"
 
       ![选择要在任务记录中使用的触发器输出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 触发器输出 | 说明 |
+      | 触发器输出 | 描述 |
       |----------------|-------------|
-      | **名字** | 要用作任务记录中主要联系人的潜在顾客记录的名字 |
+      | **First Name** | 要用作任务记录中主要联系人的潜在顾客记录的名字 |
       | **姓氏** | 要用作任务记录中主要联系人的潜在客户记录的姓氏 |
       | **说明** | 要包括在任务记录中的其他输出，如电子邮件地址和办公电话号码 |
       |||
@@ -98,7 +97,7 @@ ms.locfileid: "82997095"
 
    ![已完成 "创建新记录" 操作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 1. 若要手动启动逻辑应用，请在设计器工具栏上选择 "**运行**"。 若要测试逻辑应用，请创建新的 "潜在顾客" 记录。
 
@@ -126,7 +125,7 @@ ms.locfileid: "82997095"
 
    ![输入用于筛选记录的 ODATA 筛选器查询](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-有关`$filter`系统查询选项的详细信息，请参阅[Common Data Service-Filter results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
+有关 `$filter` 系统查询选项的详细信息，请参阅[Common Data Service-Filter results](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
 
 ## <a name="list-records-based-on-an-order"></a>基于订单列出记录
 
@@ -140,7 +139,7 @@ ms.locfileid: "82997095"
 
    ![输入用于对记录进行排序的 ODATA 筛选器查询](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-有关`$orderby`系统查询选项的详细信息，请参阅[Common Data Service 顺序结果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
+有关 `$orderby` 系统查询选项的详细信息，请参阅[Common Data Service 顺序结果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
 
 ## <a name="field-data-types"></a>字段数据类型
 
@@ -153,14 +152,14 @@ ms.locfileid: "82997095"
 | 文本字段 | 单个文本行 | 需要具有文本数据类型的一行文本或动态内容，例如，以下属性： <p><p>- **2008** <br>- **类别** |
 | 整数字段 | 整数 | 需要具有整数数据类型的整数或动态内容，例如，以下属性： <p><p>- **完成百分比** <br>- **持续时间** |
 | 日期字段 | 日期和时间 | 需要采用 MM/DD/YYY 格式的日期或具有日期数据类型的动态内容，例如，以下属性： <p><p>- **创建于** <br>- **开始日期** <br>- **实际开始时间** <br>- **实际结束** <br>- **截止日期** |
-| 引用其他实体记录的字段 | 主密钥 | 要求使用记录 ID （如 GUID）和查找类型，这意味着动态内容列表中的值将不起作用，例如，以下属性： <p><p>- **所有者**：必须是有效的用户 id 或团队记录 ID。 <br>- **所有者类型**：必须分别是查找类型，如`systemusers`或`teams`。 <p><p>- **相关**：必须是有效的记录 id，如帐户 id 或联系人记录 id。 <br>- **相关类型**：必须分别是查找类型，如`accounts`或`contacts`。 <p><p>- **Customer**：必须是有效的记录 id，如帐户 id 或联系人记录 id。 <br>- **Customer type**：必须分别是查找类型，如`accounts`或。 `contacts` |
+| 引用其他实体记录的字段 | 主密钥 | 要求使用记录 ID （如 GUID）和查找类型，这意味着动态内容列表中的值将不起作用，例如，以下属性： <p><p>- **所有者**：必须是有效的用户 id 或团队记录 ID。 <br>- **所有者类型**：必须分别是查找类型，如 `systemusers` 或 `teams` 。 <p><p>- **相关**：必须是有效的记录 id，如帐户 id 或联系人记录 id。 <br>- **相关类型**：必须分别是查找类型，如 `accounts` 或 `contacts` 。 <p><p>- **Customer**：必须是有效的记录 id，如帐户 id 或联系人记录 id。 <br>- **Customer type**：必须分别是查找类型，如 `accounts` 或 `contacts` 。 |
 ||||
 
 此示例演示了 "**创建新记录**" 操作如何创建与其他实体记录关联的新 "任务" 记录，特别是用户记录和帐户记录。 操作通过使用与相关属性的预期数据类型匹配的值来指定这些实体记录的 Id 和查找类型。
 
-* "所有者" 属性（指定 "用户 ID"）和 "**所有者类型**" 属性（指定`systemusers`查找类型）基于 "**所有者**" 属性，该操作将新的 "任务" 记录与特定用户相关联。
+* "所有者" 属性（指定 "用户 ID"）和 "**所有者类型**" 属性（指定查找类型）基于 "**所有者**" 属性，该 `systemusers` 操作将新的 "任务" 记录与特定用户相关联。
 
-* 基于**相关**属性（指定记录 ID）和 "**相关类型**" 属性（指定`accounts`查找类型），操作将新 "任务" 记录与特定帐户关联。
+* 基于**相关**属性（指定记录 ID）和 "**相关类型**" 属性（指定 `accounts` 查找类型），操作将新 "任务" 记录与特定帐户关联。
 
 ![创建与 Id 和查找类型关联的 "任务" 记录](./media/connect-common-data-service/create-new-record-task-properties.png)
 

@@ -10,10 +10,9 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 1cde1aaa7c9dba3e28407439a46b0e0a3326e4fc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83123966"
 ---
 # <a name="show-directions-from-a-to-b"></a>显示从 A 到 B 的路线
@@ -29,7 +28,7 @@ ms.locfileid: "83123966"
 
 在上面的代码中，第一个块构造一个 map 对象，并将身份验证机制设置为使用访问令牌。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个代码块创建 `TokenCredential` ，使用访问令牌对要 Azure Maps 的 HTTP 请求进行身份验证。 然后，它将传递 `TokenCredential` 给 `atlas.service.MapsURL.newPipeline()` 并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
+第二个代码块创建一个 `TokenCredential`，以使用访问令牌验证对 Azure Maps 的 HTTP 请求。 然后它将 `TokenCredential` 传递给 `atlas.service.MapsURL.newPipeline()`，并创建一个 [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) 实例。 `routeURL` 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
 
 第三个代码块创建[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)对象并将其添加到该映射。
 
@@ -50,7 +49,7 @@ ms.locfileid: "83123966"
 <iframe height='500' scrolling='no' title='在地图上显示从 A 到 B 的路线' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>Show directions from A to B on a map</a>（在地图上显示从 A 到 B 的方向）。
 </iframe>
 
-在上面的代码中，第一个代码块构造一个 map 对象，并将身份验证机制设置为使用访问令牌。 有关说明，可以参阅[创建地图](./map-create.md)。
+在上面的代码中，第一个代码块构造一个地图对象，并通过设置身份验证机制来使用访问令牌。 有关说明，可以参阅[创建地图](./map-create.md)。
 
 第二个代码块创建 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 对象并将其添加到地图。
 
@@ -74,7 +73,7 @@ ms.locfileid: "83123966"
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [映射](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 有关完整代码示例，请参阅以下文章：
 
@@ -82,4 +81,4 @@ ms.locfileid: "83123966"
 > [在地图上显示交通信息](./map-show-traffic.md)
 
 > [!div class="nextstepaction"]
-> [与地图交互 - 鼠标事件](./map-events.md)
+> [与地图鼠标事件交互](./map-events.md)

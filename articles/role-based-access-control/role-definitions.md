@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 角色定义-Azure RBAC
-description: 在 azure 基于角色的访问控制（Azure RBAC）中了解 azure 角色定义，以便对 Azure 资源进行精细的访问管理。
+title: 了解 Azure 角色定义 - Azure RBAC
+description: 了解 Azure 基于角色的访问控制 (Azure RBAC) 中的 Azure 角色定义，以便对 Azure 资源进行精细的访问管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,21 +16,20 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82996614"
 ---
 # <a name="understand-azure-role-definitions"></a>了解 Azure 角色定义
 
-如果你正在尝试了解 Azure 角色的工作方式，或如果你要创建自己的[azure 自定义角色](custom-roles.md)，则了解如何定义角色会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
+如果想要了解 Azure 角色是如何工作的，或者要创建自己的 [Azure 自定义角色](custom-roles.md)，那么了解角色的定义方法会很有帮助。 本文介绍角色定义的详细信息，并提供了一些示例。
 
 ## <a name="role-definition"></a>角色定义
 
-角色定义是权限的集合。  它有时简称为“角色”  。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出从允许的操作或与基础数据相关的操作中排除的操作。
+角色定义是权限的集合。 它有时简称为“角色”。 角色定义列出可以执行的操作，例如读取、写入和删除。 它还可以列出允许操作之外的操作，或者与基础数据相关的操作。
 
-以下示例显示了使用 Azure PowerShell 显示的角色定义中的属性：
+以下示例展示了在 Azure PowerShell 中显示的角色定义属性：
 
 ```
 Name
@@ -44,7 +43,7 @@ NotDataActions []
 AssignableScopes []
 ```
 
-下面显示了使用 Azure 门户、Azure CLI 或 REST API 显示角色定义中的属性的示例：
+以下示例展示了在 Azure 门户、Azure CLI 或 REST API 中显示的角色定义属性：
 
 ```
 roleName
@@ -58,19 +57,19 @@ notDataActions []
 assignableScopes []
 ```
 
-下表描述了角色属性的含义。
+下表说明了角色属性的含义。
 
 | 属性 | 说明 |
 | --- | --- |
 | `Name`</br>`roleName` | 角色的显示名称。 |
 | `Id`</br>`name` | 角色的唯一 ID。 |
-| `IsCustom`</br>`roleType` | 指示此角色是否为自定义角色。 对于自`true`定义`CustomRole`角色，设置为或。 为内置`false`角色`BuiltInRole`设置或。 |
+| `IsCustom`</br>`roleType` | 指示此角色是否为自定义角色。 对于自定义角色，设置为 `true` 或 `CustomRole`。 对于内置角色，设置为 `false` 或 `BuiltInRole`。 |
 | `Description`</br>`description` | 角色的说明。 |
 | `Actions`</br>`actions` | 一个字符串数组，指定该角色允许执行的管理操作。 |
 | `NotActions`</br>`notActions` | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 |
 | `DataActions`</br>`dataActions` | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 |
 | `NotDataActions`</br>`notDataActions` | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 |
-| `AssignableScopes`</br>`assignableScopes` | 一个字符串数组，该数组指定角色可用于分配的范围。 |
+| `AssignableScopes`</br>`assignableScopes` | 一个字符串数组，指定角色可用于分配的范围。 |
 
 ### <a name="operations-format"></a>操作格式
 
@@ -162,7 +161,7 @@ Azure CLI 中显示的参与者角色：
 
 以前，基于角色的访问控制不用于数据操作。 数据操作的授权根据资源提供程序的不同而异。 用于管理操作的同一基于角色的访问控制授权模型已扩展到数据操作。
 
-为了支持数据操作，新的数据属性已添加到角色定义。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
+为了支持数据操作，已将新的数据属性添加到角色定义。 数据操作在 `DataActions` 和 `NotDataActions` 属性中指定。 通过添加这些数据属性，可在管理与数据之间保持隔离。 这可以防止包含通配符 (`*`) 的当前角色分配突然访问数据。 下面是可在 `DataActions` 和 `NotDataActions` 中指定的一些数据操作：
 
 - 读取容器中的 Blob 列表
 - 在容器中写入存储 Blob
@@ -170,7 +169,7 @@ Azure CLI 中显示的参与者角色：
 
 下面是[存储 Blob 数据读取者](built-in-roles.md#storage-blob-data-reader)角色定义，其中包含 `Actions` 和 `DataActions` 属性中的操作。 使用此角色可以读取 Blob 容器以及基础 Blob 数据。
 
-Azure PowerShell 中显示的 "存储 Blob 数据读取器" 角色：
+Azure PowerShell 中显示的存储 Blob 数据读取者角色：
 
 ```json
 {
@@ -193,7 +192,7 @@ Azure PowerShell 中显示的 "存储 Blob 数据读取器" 角色：
 }
 ```
 
-Azure CLI 中显示的 "存储 Blob 数据读取器" 角色：
+Azure CLI 中显示的存储 Blob 数据读取者角色：
 
 ```json
 {
@@ -234,7 +233,7 @@ Azure CLI 中显示的 "存储 Blob 数据读取器" 角色：
 
 Alice 的[所有者](built-in-roles.md#owner)角色和 Bob 的[存储 Blob 数据参与者](built-in-roles.md#storage-blob-data-contributor)角色具有以下操作：
 
-“所有者”
+所有者
 
 &nbsp;&nbsp;&nbsp;&nbsp;操作<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
@@ -299,7 +298,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="dataactions"></a>DataActions
 
-`DataActions` 权限指定此角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
+`DataActions` 权限指定该角色允许对该对象中的数据执行的数据操作。 例如，如果某个用户对某个存储帐户拥有读取 Blob 数据的访问权限，则该用户可以读取该存储帐户中的 Blob。 下面是可在 `DataActions` 中使用的一些数据操作的示例。
 
 > [!div class="mx-tableFixed"]
 > | 操作字符串    | 说明         |
@@ -319,7 +318,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes`属性指定具有此角色定义的作用域（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须至少使用一个管理组、订阅或资源组。
+`AssignableScopes` 属性指定可使用此角色定义的范围（管理组、订阅或资源组）。 只能在需要此角色的管理组、订阅或资源组中分配此角色。 必须使用至少一个管理组、订阅或资源。
 
 内置角色已将 `AssignableScopes` 设置为根范围 (`"/"`)。 根范围指示角色可供在所有范围中进行分配。 有效的可分配范围的示例包括：
 
@@ -333,7 +332,7 @@ Bob 的权限限制为[存储 Blob 数据参与者](built-in-roles.md#storage-bl
 > | 管理组和订阅 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | 所有范围（仅适用于内置角色） | `"/"` |
 
-有关自定义`AssignableScopes`角色的详细信息，请参阅[Azure 自定义角色](custom-roles.md)。
+要了解自定义角色的 `AssignableScopes`，请参阅 [Azure 自定义角色](custom-roles.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

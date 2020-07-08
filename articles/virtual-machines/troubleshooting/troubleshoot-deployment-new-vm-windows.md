@@ -16,10 +16,9 @@ ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83120957"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>排查在 Azure 中新建 Windows VM 时遇到的部署问题
@@ -75,7 +74,7 @@ ms.locfileid: "83120957"
 * 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
   * 停止可用性集中的所有 VM。
-    单击“资源组”  资源组 >  *“资源”*  > 可用性集  “虚拟机” > *虚拟机* > “停止”。   >    >  
+    单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
   * 所有 VM 都停止后，创建所需大小的新 VM。
   * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。 
 

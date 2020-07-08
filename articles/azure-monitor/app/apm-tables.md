@@ -1,15 +1,14 @@
 ---
-title: 基于工作区的资源架构 Azure Monitor Application Insights
+title: 基于工作区的 Azure Monitor Application Insights 资源架构
 description: 了解 Azure Monitor Application Insights 基于工作区的资源的新表结构和架构。
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83210536"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>基于工作区的资源更改（预览）
@@ -24,14 +23,14 @@ ms.locfileid: "83210536"
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  可用性测试中的摘要数据。|
 | browserTimings | AppBrowserTimings | 有关客户端性能的数据，例如处理传入数据所用的时间。|
-| dependencies | AppDependencies | 从应用程序调用到通过 TrackDependency （）记录的其他组件（包括外部组件）-例如，对 REST API、数据库或文件系统的调用。  |
+| dependencies | AppDependencies | 从应用程序到通过 TrackDependency() 记录的其他组件（包括外部组件）的调用 - 例如，对 REST API、数据库或文件系统的调用。  |
 | customEvents | AppEvents | 应用程序创建的自定义事件。 |
 | customMetrics | AppMetrics | 应用程序创建的自定义指标。 |
 | pageViews | AppPageViews| 每个网站的浏览情况数据，以及浏览器信息。 |
 | performanceCounters | AppPerformanceCounters | 支持应用程序的计算资源的性能度量，例如 Windows 性能计数器。 |
-| 请求 | AppRequests | 应用程序收到的请求。 例如，将为 web 应用接收的每个 HTTP 请求记录一个单独的请求记录。  |
+| 请求 | AppRequests | 应用程序收到的请求。 例如，为 Web 应用接收到的每个 HTTP 请求记录一条单独的请求记录。  |
 | exceptions | AppSystemEvents | 应用程序运行时引发的异常捕获服务器端和客户端（浏览器）异常。 |
-| traces | AppTraces | 通过 TrackTrace （）记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。 |
+| traces | AppTraces | 通过 TrackTrace () 记录的应用程序代码/日志记录框架发出的详细日志（跟踪）。 |
 
 ## <a name="table-schemas"></a>表架构
 
@@ -45,43 +44,43 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
 |duration|real|DurationMs|real|
-|`id`|string|`Id`|string|
-|iKey|string|IKey|string|
+|`id`|string|`Id`|字符串|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
-|位置|string|位置|string|
-|message|string|消息|string|
-|name|string|名称|字符串|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|performanceBucket|string|PerformanceBucket|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|String|
+|location|string|位置|字符串|
+|message|字符串|消息|字符串|
+|name|字符串|名称|字符串|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|performanceBucket|字符串|PerformanceBucket|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |大小|real|大小|real|
-|success|string|Success|Bool|
+|success|字符串|成功|Bool|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="appbrowsertimings"></a>AppBrowserTimings
 
@@ -89,43 +88,43 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
-|iKey|string|IKey|string|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|string|
-|name|string|名称|datetime|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|字符串|
+|name|字符串|“属性”|datetime|
 |networkDuration|real|NetworkDurationMs|real|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|performanceBucket|string|PerformanceBucket|string|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|performanceBucket|字符串|PerformanceBucket|字符串|
 |processingDuration|real|ProcessingDurationMs|real|
 |receiveDuration|real|ReceiveDurationMs|real|
-|sdkVersion|string|SdkVersion|string|
+|sdkVersion|字符串|SdkVersion|字符串|
 |sendDuration|real|SendDurationMs|real|
-|session_Id|string|SessionId|string|
+|session_Id|字符串|SessionId|字符串|
 |timestamp|datetime|TimeGenerated|datetime|
 |totalDuration|real|TotalDurationMs|real|
-|url|string|URL|string|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|url|字符串|Url|字符串|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="appdependencies"></a>AppDependencies
 
@@ -133,44 +132,44 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
-|data|string|数据|string|
+|data|字符串|数据|字符串|
 |duration|real|DurationMs|real|
-|`id`|string|`Id`|string|
-|iKey|string|IKey|string|
+|`id`|string|`Id`|字符串|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
-|name|string|名称|字符串|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|performanceBucket|string|PerformanceBucket|string|
-|resultCode|string|ResultCode|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
-|success|string|Success|Bool|
-|目标|string|目标|string|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|String|
+|name|字符串|名称|字符串|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|performanceBucket|字符串|PerformanceBucket|字符串|
+|resultCode|string|ResultCode|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
+|success|字符串|成功|Bool|
+|目标|字符串|目标|字符串|
 |timestamp|datetime|TimeGenerated|datetime|
-|type|string|DependencyType|string|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|类型|字符串|DependencyType|字符串|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="appevents"></a>AppEvents
 
@@ -178,36 +177,36 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
-|iKey|string|IKey|string|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|string|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|字符串|
 |name|string|名称|字符串|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="appmetrics"></a>AppMetrics
 
@@ -215,34 +214,34 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
-|iKey|string|IKey|string|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|string|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
+|iKey|字符串|IKey|字符串|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|字符串|
 |name|string|名称|字符串|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 |value|real|删除||
 |valueCount|int|ValueCount|int|
 |valueMax|real|ValueMax|real|
@@ -256,40 +255,40 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
 |duration|real|DurationMs|real|
 |`id`|string|`Id`|string|
-|iKey|string|IKey|string|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
-|name|string|名称|字符串|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|performanceBucket|string|PerformanceBucket|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|String|
+|name|字符串|名称|字符串|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|performanceBucket|字符串|PerformanceBucket|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |timestamp|datetime|TimeGenerated|datetime|
-|url|string|URL|string|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|url|字符串|Url|字符串|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="appperformancecounters"></a>AppPerformanceCounters
 
@@ -297,38 +296,38 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|category|string|类别|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|counter|string|删除||
-|customDimensions|动态|“属性”|动态|
-|iKey|string|IKey|string|
-|instance|string|实例|string|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|string|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|category|字符串|类别|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|counter|字符串|删除||
+|customDimensions|动态|属性|动态|
+|iKey|字符串|IKey|字符串|
+|实例|字符串|实例|字符串|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|字符串|
 |name|string|名称|字符串|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
-|value|real|值|real|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
+|value|real|“值”|real|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -336,43 +335,43 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
 |duration|real|DurationMs|Real|
-|`id`|string|`Id`|String|
-|iKey|string|IKey|string|
+|`id`|字符串|`Id`|String|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|String|
-|name|string|名称|String|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|performanceBucket|string|PerformanceBucket|String|
-|resultCode|string|ResultCode|String|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
-|源|string|Source|String|
-|success|string|Success|Bool|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|String|
+|name|字符串|“属性”|String|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|performanceBucket|字符串|PerformanceBucket|String|
+|resultCode|字符串|ResultCode|String|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
+|source|字符串|源|String|
+|success|字符串|成功|Bool|
 |timestamp|datetime|TimeGenerated|datetime|
-|url|string|URL|String|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|url|string|Url|String|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="appsystemevents"></a>AppSystemEvents
 
@@ -380,51 +379,51 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|程序集 (assembly)|string|Assembly|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|程序集|字符串|程序集|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
 |详细信息|动态|详细信息|动态|
-|handledAt|string|HandledAt|string|
-|iKey|string|IKey|string|
-|innermostAssembly|string|InnermostAssembly|string|
-|innermostMessage|string|InnermostMessage|string|
-|innermostMethod|string|InnermostMethod|string|
-|innermostType|string|InnermostType|string|
+|handledAt|字符串|HandledAt|字符串|
+|iKey|字符串|IKey|字符串|
+|innermostAssembly|字符串|InnermostAssembly|字符串|
+|innermostMessage|字符串|InnermostMessage|字符串|
+|innermostMethod|字符串|InnermostMethod|字符串|
+|innermostType|字符串|InnermostType|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|string|
-|message|string|消息|string|
-|method|string|方法|string|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|outerAssembly|string|OuterAssembly|string|
-|outerMessage|string|OuterMessage|string|
-|outerMethod|string|OuterMethod|string|
-|outerType|string|OuterType|string|
-|problemId|string|ProblemId|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|字符串|
+|message|字符串|消息|字符串|
+|method|字符串|方法|字符串|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|outerAssembly|字符串|OuterAssembly|字符串|
+|outerMessage|字符串|OuterMessage|字符串|
+|outerMethod|字符串|OuterMethod|字符串|
+|outerType|字符串|OuterType|字符串|
+|problemId|字符串|ProblemId|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |severityLevel|int|SeverityLevel|int|
 |timestamp|datetime|TimeGenerated|datetime|
-|type|字符串|ExceptionType|string|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|类型|字符串|ExceptionType|字符串|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ### <a name="apptraces"></a>AppTraces
 
@@ -432,37 +431,37 @@ ms.locfileid: "83210536"
 
 |ApplicationInsights|类型|LogAnalytics|类型|
 |:---|:---|:---|:---|
-|appId|string|\_ResourceGUID|string|
-|application_Version|string|AppVersion|string|
-|appName|string|\_ResourceId|string|
-|client_Browser|string|ClientBrowser|string|
-|client_City|string|ClientCity|string|
-|client_CountryOrRegion|string|ClientCountryOrRegion|string|
-|client_IP|string|ClientIP|string|
-|client_Model|string|ClientModel|string|
-|client_OS|string|ClientOS|string|
-|client_StateOrProvince|string|ClientStateOrProvince|string|
-|client_type|string|ClientType|string|
-|cloud_RoleInstance|string|AppRoleInstance|string|
-|cloud_RoleName|string|AppRoleName|string|
-|customDimensions|动态|“属性”|动态|
+|appId|字符串|\_ResourceGUID|字符串|
+|application_Version|字符串|AppVersion|字符串|
+|appName|字符串|\_ResourceId|字符串|
+|client_Browser|字符串|ClientBrowser|字符串|
+|client_City|字符串|ClientCity|字符串|
+|client_CountryOrRegion|字符串|ClientCountryOrRegion|字符串|
+|client_IP|字符串|ClientIP|字符串|
+|client_Model|字符串|ClientModel|字符串|
+|client_OS|字符串|ClientOS|字符串|
+|client_StateOrProvince|字符串|ClientStateOrProvince|字符串|
+|client_type|字符串|ClientType|字符串|
+|cloud_RoleInstance|字符串|AppRoleInstance|字符串|
+|cloud_RoleName|字符串|AppRoleName|字符串|
+|customDimensions|动态|属性|动态|
 |customMeasurements|动态|度量|动态|
-|iKey|string|IKey|string|
+|iKey|字符串|IKey|字符串|
 |itemCount|int|ItemCount|int|
-|itemId|string|\_ItemId|string|
-|itemType|string|类型|字符串|
-|message|string|消息|string|
-|operation_Id|string|OperationId|string|
-|operation_Name|string|OperationName|string|
-|operation_ParentId|string|OperationParentId|string|
-|operation_SyntheticSource|string|OperationSyntheticSource|string|
-|sdkVersion|string|SdkVersion|string|
-|session_Id|string|SessionId|string|
+|itemId|字符串|\_ItemId|字符串|
+|itemType|字符串|类型|字符串|
+|message|字符串|消息|字符串|
+|operation_Id|字符串|OperationId|字符串|
+|operation_Name|字符串|OperationName|字符串|
+|operation_ParentId|字符串|OperationParentId|字符串|
+|operation_SyntheticSource|字符串|OperationSyntheticSource|字符串|
+|sdkVersion|字符串|SdkVersion|字符串|
+|session_Id|字符串|SessionId|字符串|
 |severityLevel|int|SeverityLevel|int|
 |timestamp|datetime|TimeGenerated|datetime|
-|user_AccountId|string|UserAccountId|string|
-|user_AuthenticatedId|string|UserAuthenticatedId|string|
-|user_Id|string|UserId|string|
+|user_AccountId|字符串|UserAccountId|字符串|
+|user_AuthenticatedId|字符串|UserAuthenticatedId|字符串|
+|user_Id|字符串|UserId|字符串|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197166"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>适用于 iOS 的脱机 FairPlay 流式处理与媒体服务 v3

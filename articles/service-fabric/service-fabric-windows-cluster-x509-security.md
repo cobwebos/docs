@@ -7,7 +7,6 @@ ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83653640"

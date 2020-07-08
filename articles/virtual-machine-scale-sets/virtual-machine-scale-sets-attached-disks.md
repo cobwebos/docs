@@ -10,10 +10,9 @@ ms.date: 4/25/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: e5bdb30929b4d93b05d850a56c9a6baf32f9856b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83125003"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 虚拟机规模集和附加数据磁盘
@@ -33,7 +32,7 @@ ms.locfileid: "83125003"
 
 
 ## <a name="create-a-service-fabric-cluster-with-attached-data-disks"></a>使用附加的数据磁盘创建 Service Fabric 群集
-在 Azure 中运行的 [Service Fabric](../service-fabric/service-fabric-cluster-nodetypes.md) 群集中的每个[节点类型](/azure/service-fabric)都受虚拟机规模集的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。 可以使用[现有模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)作为起点。 在模板中包括 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _storageProfile_ 中的 _dataDisks_ 节，然后部署模板。 以下示例附加一个 128 GB 的数据磁盘：
+在 Azure 中运行的 [Service Fabric](/azure/service-fabric) 群集中的每个[节点类型](../service-fabric/service-fabric-cluster-nodetypes.md)都受虚拟机规模集的支持。 可以使用 Azure 资源管理器模板将数据磁盘附加到组成 Service Fabric 群集的规模集。 可以使用[现有模板](https://github.com/Azure-Samples/service-fabric-cluster-templates)作为起点。 在模板中包括 _Microsoft.Compute/virtualMachineScaleSets_ 资源的 _storageProfile_ 中的 _dataDisks_ 节，然后部署模板。 以下示例附加一个 128 GB 的数据磁盘：
 
 ```json
 "dataDisks": [

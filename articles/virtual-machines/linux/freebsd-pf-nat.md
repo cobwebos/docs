@@ -10,7 +10,6 @@ ms.date: 02/20/2017
 ms.author: kyliel
 ms.openlocfilehash: eeeb60cc41f96edbf8733468ca0cfd18d2939af7
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83652533"

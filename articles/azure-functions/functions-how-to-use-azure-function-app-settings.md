@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83122285"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
@@ -27,21 +26,21 @@ ms.locfileid: "83122285"
 
 ## <a name="get-started-in-the-azure-portal"></a>在 Azure 门户中开始
 
-1. 要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶部的搜索栏中，输入函数应用的名称，并从列表中选择它。 
+1. 要开始，请转到 [Azure 门户]，并使用 Azure 帐户登录。 在门户顶端的搜索栏中，输入函数应用的名称，并从列表中将其选中。 
 
-2. 在左窗格中的 "**设置**" 下，选择 "**配置**"。
+2. 在左窗格的“配置”下，选择“配置”**** ****。
 
-    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 门户中 Function App 的概述":::
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 门户中的函数应用概述":::
 
 可以从概述页导航到管理函数应用所需的所有内容，特别是 **[应用程序设置](#settings)** 和 **[平台功能](#platform-features)** 。
 
 ## <a name="application-settings"></a><a name="settings"></a>应用程序设置
 
-"**应用程序设置**" 选项卡维护函数应用使用的设置。 这些设置是加密存储的，必须选择“显示值”  才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
+“应用程序设置”选项卡维护函数应用使用的设置****。 这些设置是加密存储的，必须选择“显示值”**** 才能查看门户中的值。 也可使用 Azure CLI 访问应用程序设置。
 
 ### <a name="portal"></a>门户
 
-若要在门户中添加设置，请选择“新建应用程序设置”  并添加新的键值对。
+若要在门户中添加设置，请选择“新建应用程序设置”**** 并添加新的键值对。
 
 ![Azure 门户中的函数应用设置。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
@@ -71,7 +70,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 ## <a name="platform-features"></a>平台功能
 
-函数应用在中运行，并由 Azure App Service 平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 在左侧窗格中，可以访问可在函数应用中使用的应用服务平台的许多功能。 
+函数应用在 Azure 应用服务平台中运行，并由该平台维护。 在这种情况下，Function App 有权访问 Azure 核心 Web 托管平台的大多数功能。 可在左侧窗格中访问可用于函数应用的应用服务平台中的许多功能。 
 
 > [!NOTE]
 > Function App 运行于消耗托管计划中时，并非所有应用服务功能均可用。
@@ -79,8 +78,8 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 本文的其余部分侧重于 Azure 门户中以下可用于 Functions 的应用服务功能：
 
 + [应用服务编辑器](#editor)
-+ [控制台](#console)
-+ [高级工具（Kudu）](#kudu)
++ [Console](#console)
++ [高级工具 (Kudu)](#kudu)
 + [部署选项](#deployment)
 + [CORS](#cors)
 + [身份验证](#auth)
@@ -126,7 +125,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 使用星号 (`*`) 时，会忽略所有其他的域。 
 
-使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令将域添加到 "允许的来源" 列表中。 以下示例添加 contoso.com 域：
+使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令将域添加到“允许的域”列表。 以下示例添加 contoso.com 域：
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,7 +133,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令列出当前允许的来源。
+使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令列出目前允许的域。
 
 ### <a name="authentication"></a><a name="auth"></a>身份验证
 

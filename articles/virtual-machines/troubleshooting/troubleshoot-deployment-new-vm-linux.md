@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
 ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83118218"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>排查在 Azure 中新建 Linux 虚拟机时遇到的 Resource Manager 部署问题
@@ -74,7 +73,7 @@ ms.locfileid: "83118218"
 * 以更小的 VM 大小重试请求。
 * 如果无法更改请求的 VM 大小：
   * 停止可用性集中的所有 VM。
-    单击“资源组”  资源组 >  *“资源”*  > 可用性集  “虚拟机” > *虚拟机* > “停止”。   >    >  
+    单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
   * 所有 VM 都停止后，创建所需大小的新 VM。
   * 先启动新 VM，选择每个已停止的 VM，并单击“启动”。 
 

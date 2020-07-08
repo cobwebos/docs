@@ -4,10 +4,9 @@ description: 使用 Azure Monitor Application Insights 监视 .NET Core/.NET Fra
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 1f9b35022e63c4c3fe671237149602f8db465466
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83117871"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>适用于辅助角色服务应用程序（非 HTTP 应用）的 Application Insights
@@ -312,7 +311,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 [EventCounter](eventcounters.md)教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
+`EventCounterCollectionModule` 默认已启用，它会从 .NET Core 3.0 应用收集默认的计数器集。 [EventCounter](eventcounters.md) 教程列出了收集的默认计数器集。 它还包含有关自定义列表的说明。
 
 ### <a name="manually-tracking-additional-telemetry"></a>手动跟踪附加遥测数据
 
@@ -382,7 +381,7 @@ Application Insights 正在发布名为 `Microsoft.ApplicationInsights.WorkerSer
 
 ### <a name="removing-telemetryinitializers"></a>删除 TelemetryInitializer
 
-默认已提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用 `AddApplicationInsightsTelemetryWorkerService()` 之后使用以下示例代码。**
+默认已提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用 `AddApplicationInsightsTelemetryWorkerService()` 之后使用以下示例代码。
 
 ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -425,7 +424,7 @@ Application Insights 使用遥测模块自动收集有关特定工作负荷的�
 * `DependencyTrackingTelemetryModule`
 * `PerformanceCollectorModule`
 * `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`-（目前涉及此遥测模块的问题。 有关临时解决方法，请参阅[GitHub 问题 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
+* `AppServicesHeartbeatTelemetryModule` -（关于此遥测模块，目前存在问题。 有关临时解决方法，请参阅 [GitHub 问题 1689](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1689
 )。）
 * `AzureInstanceMetadataTelemetryModule`
 
@@ -503,7 +502,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
 
-不是。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
+否。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) 目前仅支持 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果在 Linux 中运行应用程序，是否支持所有功能？
 
@@ -538,11 +537,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-[阅读并参与编写代码](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)。
+[阅读代码或为其做出贡献](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
 ## <a name="next-steps"></a>后续步骤
 
 * [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 发送自己的事件和指标，以获取应用性能和使用情况的详细视图。
 * [跟踪系统不会自动跟踪的附加依赖项](../../azure-monitor/app/auto-collect-dependencies.md)。
 * [扩充或筛选自动收集的遥测数据](../../azure-monitor/app/api-filtering-sampling.md)。
-* [ASP.NET Core 中的依赖关系注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。
+* [ASP.NET Core 中的依赖项注入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)。

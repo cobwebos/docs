@@ -11,15 +11,14 @@ ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
 ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83005933"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
-创建视频索引器帐户时，可以选择一个免费试用帐户（在其中获得特定数量的可用索引分钟数）或付费选项（不受配额限制）。 使用免费试用版，视频索引器可向网站用户提供最多600分钟的免费索引，最多可向 API 用户提供2400分钟的免费索引。 使用付费选项，可以创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 你需要为索引分钟数和与媒体帐户相关的费用付费。
+创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项，可以创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 你需要为索引分钟数和与媒体帐户相关的费用付费。
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
 
@@ -131,7 +130,7 @@ ms.locfileid: "83005933"
     2. 选择[服务主体身份验证方法](../previous/media-services-portal-get-started-with-aad.md)。
     3. 获取客户端 ID 和客户端密码
 
-        选择 "**设置**->**密钥**" 后，添加 "**说明**"，按 "**保存**"，然后填充 "密钥" 值。
+        选择 "**设置** -> **密钥**" 后，添加 "**说明**"，按 "**保存**"，然后填充 "密钥" 值。
 
         如果密钥过期，则帐户所有者必须联系视频索引器支持来续订密钥。
 
@@ -144,7 +143,7 @@ ms.locfileid: "83005933"
 
 在对话框中提供以下信息：
 
-|设置|说明|
+|设置|描述|
 |---|---|
 |视频索引器帐户区域|视频索引器帐户区域的名称。 为了获得更好的性能和更低的成本，强烈建议指定 Azure 媒体服务资源和 Azure 存储帐户所在的区域的名称。 |
 |Azure AD 租户|Azure AD 租户的名称，例如“contoso.onmicrosoft.com”。 可以在 Azure 门户中检索租户信息。 将光标悬停在右上角的登录用户名上。 找到“域”右侧的名称****。|

@@ -10,7 +10,6 @@ ms.date: 04/17/2019
 ms.author: joelpell
 ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83652599"

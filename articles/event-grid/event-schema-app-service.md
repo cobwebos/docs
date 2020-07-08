@@ -9,7 +9,6 @@ ms.date: 05/11/2020
 ms.author: jafreebe
 ms.openlocfilehash: 0a24e8ba84739dbc1b5de5e0546a8fe0d2e826f1
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83650707"

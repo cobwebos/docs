@@ -4,10 +4,9 @@ description: 本文介绍如何使用 Azure Service Fabric 中的中心机密存
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83197763"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric 中的中心机密存储 
@@ -47,9 +46,9 @@ ms.locfileid: "83197763"
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>声明机密资源
-您可以使用 REST API 创建机密资源。
+可以使用 REST API 创建机密资源。
   > [!NOTE] 
-  > 如果群集使用 windows 身份验证，则会通过不安全的 HTTP 通道发送 REST 请求。 建议使用具有安全终结点的基于 X509 的群集。
+  > 如果群集使用 Windows 身份验证，则 REST 请求会通过不安全的 HTTP 通道发送。 建议使用具有安全终结点的基于 X509 的群集。
 
 若要使用 REST API 创建 `supersecret` 机密资源，请向 `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview` 发出 PUT 请求。 需要提供群集证书或管理客户端证书来创建机密资源。
 

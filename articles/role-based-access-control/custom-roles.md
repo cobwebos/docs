@@ -1,6 +1,6 @@
 ---
-title: Azure 自定义角色-Azure RBAC
-description: 了解如何使用 Azure 基于角色的访问控制（Azure RBAC）创建 Azure 自定义角色，以便进行 Azure 资源的精细访问管理。
+title: Azure 自定义角色 - Azure RBAC
+description: 了解如何使用 Azure 基于角色的访问控制 (Azure RBAC) 创建 Azure 自定义角色，以便对 Azure 资源进行精细的访问权限管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,26 +16,25 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a30ea70c623c8456ae97c8ca9475e4989784edf
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82995848"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
 > [!IMPORTANT]
-> 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。
+> 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-如果[Azure 内置角色](built-in-roles.md)不能满足组织的特定需求，则可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
 
 自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。 （对于 Azure 德国和 Azure 中国世纪互联，此限制为2000个自定义角色。）可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
 ## <a name="custom-role-example"></a>自定义角色示例
 
-下面显示了使用 JSON 格式 Azure PowerShell 显示的自定义角色。 自定义角色可以用于监视和重新启动虚拟机。
+下面展示了使用 Azure PowerShell 以 JSON 格式显示的自定义角色。 自定义角色可以用于监视和重新启动虚拟机。
 
 ```json
 {
@@ -67,7 +66,7 @@ ms.locfileid: "82995848"
 }
 ```
 
-下面显示了使用 Azure CLI 显示的相同自定义角色。
+下面展示了使用 Azure CLI 显示的相同自定义角色。
 
 ```json
 [
@@ -113,35 +112,35 @@ ms.locfileid: "82995848"
 
 ## <a name="custom-role-properties"></a>自定义角色属性
 
-下表描述了自定义角色属性的含义。
+下表说明了自定义角色属性的含义。
 
-| 属性 | 必须 | 类型 | 描述 |
+| 属性 | 必须 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| `Name`</br>`roleName` | 是 | String | 自定义角色的显示名称。 角色定义是管理组或订阅级别的资源，而角色定义可用于共享同一 Azure AD 目录的多个订阅。 此显示名称在 Azure AD 目录范围内必须是唯一的。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
+| `Name`</br>`roleName` | 是 | String | 自定义角色的显示名称。 虽然角色定义是管理组或订阅级资源，但角色定义可以在共享同一 Azure AD 目录的多个订阅中使用。 此显示名称在 Azure AD 目录范围内必须是唯一的。 可以包含字母、数字、空格和特殊字符。 最多包含 128 个字符。 |
 | `Id`</br>`name` | 是 | String | 自定义角色的唯一 ID。 如果使用 Azure PowerShell 和 Azure CLI，在创建新角色时会自动生成此 ID。 |
-| `IsCustom`</br>`roleType` | 是 | String | 指示此角色是否为自定义角色。 对于自`true`定义`CustomRole`角色，设置为或。 为内置`false`角色`BuiltInRole`设置或。 |
+| `IsCustom`</br>`roleType` | 是 | String | 指示此角色是否为自定义角色。 对于自定义角色，设置为 `true` 或 `CustomRole`。 对于内置角色，设置为 `false` 或 `BuiltInRole`。 |
 | `Description`</br>`description` | 是 | String | 自定义角色的说明。 可以包含字母、数字、空格和特殊字符。 最多包含 1024 个字符。 |
-| `Actions`</br>`actions` | 是 | string[] | 一个字符串数组，指定该角色允许执行的管理操作。 有关详细信息，请参阅 [Actions](role-definitions.md#actions)。 |
-| `NotActions`</br>`notActions` | 否 | string[] | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 有关详细信息，请参阅 [NotActions](role-definitions.md#notactions)。 |
-| `DataActions`</br>`dataActions` | 否 | string[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 如果使用`DataActions`创建自定义角色，则无法在管理组范围内分配该角色。 有关详细信息，请参阅 [DataActions](role-definitions.md#dataactions)。 |
-| `NotDataActions`</br>`notDataActions` | 否 | string[] | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 有关详细信息，请参阅 [NotDataActions](role-definitions.md#notdataactions)。 |
-| `AssignableScopes`</br>`assignableScopes` | 是 | string[] | 一个字符串数组，指定自定义角色的可分配范围。 只能在自定义角色的中`AssignableScopes`定义一个管理组。 将管理组添加到`AssignableScopes`目前处于预览阶段。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes)。 |
+| `Actions`</br>`actions` | 是 | String[] | 一个字符串数组，指定该角色允许执行的管理操作。 有关详细信息，请参阅 [Actions](role-definitions.md#actions)。 |
+| `NotActions`</br>`notActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `Actions` 中排除的管理操作。 有关详细信息，请参阅 [NotActions](role-definitions.md#notactions)。 |
+| `DataActions`</br>`dataActions` | 否 | String[] | 一个字符串数组，指定该角色允许对该对象中的数据执行的数据操作。 如果使用 `DataActions` 来创建自定义角色，则无法在管理组范围内分配该角色。 有关详细信息，请参阅 [DataActions](role-definitions.md#dataactions)。 |
+| `NotDataActions`</br>`notDataActions` | 否 | String[] | 一个字符串数组，指定要从允许的 `DataActions` 中排除的数据操作。 有关详细信息，请参阅 [NotDataActions](role-definitions.md#notdataactions)。 |
+| `AssignableScopes`</br>`assignableScopes` | 是 | String[] | 一个字符串数组，指定自定义角色的可分配范围。 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前处于预览状态。 有关详细信息，请参阅 [AssignableScopes](role-definitions.md#assignablescopes)。 |
 
 ## <a name="steps-to-create-a-custom-role"></a>创建自定义角色的步骤
 
-若要创建自定义角色，请遵循以下基本步骤。
+要创建自定义角色，请遵循以下基本步骤。
 
-1. 确定要如何创建自定义角色。
+1. 确定如何创建自定义角色。
 
-    您可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
+    可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
 1. 确定所需的权限。
 
-    创建自定义角色时，需要知道可用于定义权限的操作。 若要查看操作列表，请参阅 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。 你将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
+    创建自定义角色时，需要清楚可以执行的操作以定义权限。 若要查看操作列表，请参阅 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。 你将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
 
 1. 创建自定义角色。
 
-    通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 最简单的方法是使用 Azure 门户。 有关如何使用 Azure 门户创建自定义角色的步骤，请参阅[使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md)。
+    通常，我们会从一个现有的内置角色着手，并根据需要对其进行修改。 最简单的方法是使用 Azure 门户。 要查看使用 Azure 门户创建自定义角色的步骤，请参阅[使用 Azure 门户创建或更新 Azure 自定义角色](custom-roles-portal.md)。
 
 1. 测试自定义角色。
 
@@ -162,21 +161,21 @@ ms.locfileid: "82995848"
 以下列表描述了对自定义角色的限制。
 
 - 每个目录最多可以有 **5000** 个自定义角色。
-- Azure 德国和 Azure 中国世纪互联的每个目录最多可以有2000个自定义角色。
-- 不能将`AssignableScopes`设置为根范围（`"/"`）。
-- 只能在自定义角色的中`AssignableScopes`定义一个管理组。 将管理组添加到`AssignableScopes`目前处于预览阶段。
-- 无法在管理`DataActions`组范围内分配具有的自定义角色。
-- Azure 资源管理器不会验证管理组是否存在于角色定义的可分配范围中。
+- Azure 德国和 Azure 中国世纪互联的每个目录最多可以有 2000 个自定义角色。
+- 不能将 `AssignableScopes` 设置为根范围 (`"/"`)。
+- 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
+- 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
+- Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
 
-有关自定义角色和管理组的详细信息，请参阅[通过 Azure 管理组来组织资源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
+若要详细了解自定义角色和管理组，请参阅[使用 Azure 管理组来组织资源](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)。
 
 ## <a name="input-and-output-formats"></a>输入和输出格式
 
-若要使用命令行创建自定义角色，通常使用 JSON 来指定要用于自定义角色的属性。 根据所使用的工具，输入和输出格式看起来会稍有不同。 本部分列出了根据工具的输入和输出格式。
+要使用命令行创建自定义角色，通常使用 JSON 来指定自定义角色的属性。 根据所使用的工具，输入和输出格式看起来会稍有不同。 本部分列出了不同工具的输入和输出格式。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-若要使用 Azure PowerShell 创建自定义角色，必须提供以下输入。
+要使用 Azure PowerShell 创建自定义角色，必须提供以下输入。
 
 ```json
 {
@@ -190,7 +189,7 @@ ms.locfileid: "82995848"
 }
 ```
 
-若要使用 Azure PowerShell 更新自定义角色，必须提供以下输入。 请注意， `Id`已添加属性。 
+要使用 Azure PowerShell 更新自定义角色，必须提供以下输入。 请注意，已添加 `Id` 属性。 
 
 ```json
 {
@@ -205,7 +204,7 @@ ms.locfileid: "82995848"
 }
 ```
 
-下面显示了使用 Azure PowerShell 和[convertto-html-Json](/powershell/module/microsoft.powershell.utility/convertto-json)命令列出自定义角色时的输出示例。 
+下面显示了使用 Azure PowerShell 和 [ConvertTo-Json](/powershell/module/microsoft.powershell.utility/convertto-json) 命令列出自定义角色时的输出示例。 
 
 ```json
 {
@@ -223,7 +222,7 @@ ms.locfileid: "82995848"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 Azure CLI 创建或更新自定义角色，必须提供以下输入。 使用 Azure PowerShell 创建自定义角色时，此格式是相同的格式。
+要使用 Azure CLI 创建或更新自定义角色，必须提供以下输入。 此格式与使用 Azure PowerShell 创建自定义角色时生成的格式相同。
 
 ```json
 {
@@ -263,7 +262,7 @@ ms.locfileid: "82995848"
 
 ### <a name="rest-api"></a>REST API
 
-若要使用 REST API 创建或更新自定义角色，必须提供以下输入。 此格式与使用 Azure 门户创建自定义角色时生成的格式相同。
+要使用 REST API 创建或更新自定义角色，必须提供以下输入。 此格式与使用 Azure 门户创建自定义角色时生成的格式相同。
 
 ```json
 {

@@ -17,7 +17,6 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83650080"

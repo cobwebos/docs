@@ -8,7 +8,6 @@ ms.author: v-jysur
 ms.date: 05/12/2020
 ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83655926"

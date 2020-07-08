@@ -14,7 +14,6 @@ ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
 ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83196390"

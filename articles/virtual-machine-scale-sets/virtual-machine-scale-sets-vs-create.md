@@ -10,10 +10,9 @@ ms.date: 09/09/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83124357"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 创建虚拟机规模集
@@ -64,7 +63,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
 
 部署 Azure 资源管理器模板来创建虚拟机规模集资源：
 
-1. 在“解决方案资源管理器”  中，右键单击该项目并选择“部署” **“新建”**  >   。
+1. 在“解决方案资源管理器”中，右键单击该项目并选择“部署” > “新建”。
 
     ![部署项目](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 

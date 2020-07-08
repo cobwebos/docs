@@ -4,10 +4,9 @@ description: 本文介绍如何使用 Azure 备份服务和 PowerShell 还原 Az
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201949"
 ---
 # <a name="restore-azure-files-with-powershell"></a>通过 PowerShell 还原 Azure 文件
@@ -17,7 +16,7 @@ ms.locfileid: "83201949"
 可以还原整个文件共享，或共享中的特定文件。 可以还原到原始位置或备用位置。
 
 > [!WARNING]
-> 请确保将 PS 版本升级到最小版本的 Microsoft.recoveryservices 2.6.0。 有关详细信息，请参阅概述此更改要求的[部分](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
+> 确保 PS 版本已升级到 AFS 备份的最低版本“Az.RecoveryServices 2.6.0”。 有关详细信息，请参阅概述此更改要求的[部分](backup-azure-afs-automation.md#important-notice-backup-item-identification)。
 
 >[!NOTE]
 >Azure 备份现在支持使用 PowerShell 将多个文件或文件夹还原到原始或备用位置。 要了解如何操作，请参阅文档的[此部分](#restore-multiple-files-or-folders-to-original-or-alternate-location)。
@@ -125,7 +124,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ### <a name="restore-multiple-files"></a>还原多个文件
 
-在下面的脚本中，我们将尝试还原*FileSharePage*和*mytestfile.dll*文件。
+在下面的脚本中，我们将尝试还原*FileSharePage.png*和*MyTestFile.txt*文件。
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"

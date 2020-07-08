@@ -14,10 +14,9 @@ ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
 ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83201350"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM 上的 BitLocker 启动错误
@@ -48,7 +47,7 @@ ms.locfileid: "83201350"
 如果此方法未能解决此问题，请执行以下步骤，手动还原 BEK 文件：
 
 1. 拍摄受影响的 VM 的系统磁盘的快照作为备份。 有关详细信息，请参阅[拍摄磁盘快照](../windows/snapshot-copy-managed-disk.md)。
-2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”  功能。
+2. [将系统磁盘附加到恢复 VM](troubleshoot-recovery-disks-portal-windows.md)。 若要在步骤 7 中运行 [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) 命令，必须在恢复 VM 中启用“BitLocker 驱动器加密”功能。
 
     附加托管磁盘时，可能会收到“包含加密设置，因此不能用作数据磁盘”错误消息。 在此情况下，运行以下脚本，重试附加磁盘：
 
@@ -104,7 +103,7 @@ ms.locfileid: "83201350"
 
     如果看到两个重复的卷，具有较新时间戳的卷为恢复 VM 使用的当前 BEK 文件。
 
-    如果“内容类型”  值为“包装的 BEK”  ，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
+    如果“内容类型”值为“包装的 BEK”，请转到[密钥加密密钥 (KEK) 方案](#key-encryption-key-scenario)。
 
     获取驱动器的 BEK 文件名称后，须创建 secret-file-name.BEK 文件以解锁驱动器。
 
@@ -146,7 +145,7 @@ ms.locfileid: "83201350"
 
 对于密钥加密密钥方案，请执行以下步骤：
 
-1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”  中 Key Vault 访问策略中的“解包”权限。
+1. 请确保登录的用户帐户需要“用户|密钥权限|加密操作|解包密钥”中 Key Vault 访问策略中的“解包”权限。
 2. 将以下脚本保存到 .PS1 文件：
 
     ```powershell
