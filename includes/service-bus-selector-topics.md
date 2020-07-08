@@ -6,7 +6,7 @@ ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 405e9c1baeffd261c45e5e49c42f625ad460b0b9
 ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "67173032"

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173287"
 ---
 ## <a name="transfer-local-files-to-cloud-shell"></a>将本地文件传输到 Cloud Shell
@@ -25,7 +25,7 @@ ms.locfileid: "67173287"
 
 ![要上传的本地文件](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
 1. 请转到已装在的文件共享。
-2. 选择“上载”**** 按钮。
+2. 选择“上传”按钮。
 3. 选择要上传的文件。
 4. 确认上传。
 

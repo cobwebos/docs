@@ -6,7 +6,7 @@ ms.date: 03/12/2020
 ms.author: dacurwin
 ms.openlocfilehash: b8941bb4fa77cb0008cb7271681e972bc21d6588
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83659544"

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 610bac5c08d7f3aa3c93e273bc6573a08ca1239f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680756"
 ---
 下面的示例演示如何在西雅图中创建 10 Gbps 直接对等互连。
@@ -32,7 +32,7 @@ $connection1 = New-AzPeeringDirectConnectionObject `
 ```
 
 > [!NOTE]
-> 上一示例<index>中 **$peeringLocation []** <index>的值应对应于所选的对等互连位置。
+> <index>上一示例中 **$peeringLocation []** 的值应对应于所选的对 <index> 等互连位置。
 
 如果在给定对等位置需要冗余，请创建另一个连接。
 

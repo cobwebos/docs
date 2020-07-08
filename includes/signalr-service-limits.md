@@ -15,7 +15,7 @@ ms.date: 05/11/2020
 ms.author: zhshang
 ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83673537"

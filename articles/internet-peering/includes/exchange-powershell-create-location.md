@@ -1,7 +1,7 @@
 ---
-title: 包含文件
+title: include 文件
 titleSuffix: Azure
-description: 包含文件
+description: include 文件
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: fa8d8ccef7d6ad6e1b5d9f19de61e45ee8c439fa
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82587834"
 ---
-PowerShell cmdlet **AzPeeringLocation**返回具有必需参数的对等互连位置的列表，你`Kind`将在后续步骤中使用该参数。
+PowerShell cmdlet **AzPeeringLocation**返回具有必需参数的对等互连位置的列表 `Kind` ，你将在后续步骤中使用该参数。
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"

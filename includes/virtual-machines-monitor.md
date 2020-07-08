@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 09/30/2019
 ms.author: cynthn
 ms.openlocfilehash: feea9696316723a2750be6fc1e13001224320324
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81865625"
 ---
 随着托管在 Azure 中的 VM 数目的显著增长，必须确定影响它们支持的应用程序和基础结构服务的性能和运行状况问题。 默认情况下，会在 Azure 中通过各种指标类型（由主机监控程序收集的 CPU 使用率、磁盘使用率、内存使用率和网络流量）进行基本的监视。 可以使用[扩展](../articles/virtual-machines/windows/extensions-features.md)收集其他指标和日志数据，以便在来宾操作系统的 VM 上配置诊断。
@@ -19,7 +19,7 @@ ms.locfileid: "81865625"
 
 ## <a name="diagnostics-and-metrics"></a>诊断和指标 
 
-可以在 Azure 门户、Azure CLI、Azure PowerShell 和编程应用程序编程接口 (API) 中使用[指标](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)来设置和监视[诊断数据](https://docs.microsoft.com/cli/azure/vm/diagnostics)收集。 例如，你能够：
+可以在 Azure 门户、Azure CLI、Azure PowerShell 和编程应用程序编程接口 (API) 中使用[指标](../articles/monitoring-and-diagnostics/monitoring-overview-metrics.md)来设置和监视[诊断数据](https://docs.microsoft.com/cli/azure/vm/diagnostics)收集。 例如，你可以：
 
 - **观察 VM 的基本指标。** Azure 门户的“概述”屏幕上显示的基本指标包括 CPU 使用率、网络使用情况、总磁盘字节数以及每秒的磁盘操作数。
 
@@ -35,15 +35,15 @@ ms.locfileid: "81865625"
 
 ## <a name="alerts"></a>警报
 
-您可以根据特定性能指标创建[警报](../articles/azure-monitor/platform/alerts-overview.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以通过 [Azure 门户](../articles/azure-monitor/platform/alerts-metric.md#create-with-azure-portal)、[Azure 资源管理器模板](../articles/azure-monitor/platform/alerts-metric-create-templates.md)或 [Azure CLI](../articles/azure-monitor/platform/alerts-metric.md#with-azure-cli) 配置警报。
+您可以基于特定的性能指标创建[警报](../articles/azure-monitor/platform/alerts-overview.md)。 举例来说，可以根据以下问题生成警报，平均 CPU 使用率超过特定的阈值，或者可用磁盘空间低于特定的空间量。 可以通过 [Azure 门户](../articles/azure-monitor/platform/alerts-metric.md#create-with-azure-portal)、[Azure 资源管理器模板](../articles/azure-monitor/platform/alerts-metric-create-templates.md)或 [Azure CLI](../articles/azure-monitor/platform/alerts-metric.md#with-azure-cli) 配置警报。
 
 ## <a name="azure-service-health"></a>Azure 服务运行状况
 
-当 Azure 服务中的问题影响您时[，Azure 服务运行状况](../articles/service-health/service-health-overview.md)提供个性化指导和支持，并帮助您为即将到来的计划维护做好准备。 Azure 服务运行状况使用具有针对性和灵活性的通知提醒你和你的团队。
+Azure[服务运行状况](../articles/service-health/service-health-overview.md)在 azure 服务中的问题影响你时提供个性化的指导和支持，并帮助你为即将到来的计划内维护做好准备。 Azure 服务运行状况使用具有针对性和灵活性的通知提醒你和你的团队。
 
 ## <a name="azure-resource-health"></a>Azure 资源运行状况
 
-[Azure 资源运行状况](../articles/service-health/resource-health-overview.md)可帮助您在 Azure 问题影响资源时诊断并获得支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
+[Azure 资源运行状况](../articles/service-health/resource-health-overview.md)有助于在 azure 问题影响资源时进行诊断和获取支持。 它通知你有关资源的当前和过去运行状况的信息，并帮助你缓解问题。 在需要有关 Azure 服务问题的帮助时，资源运行状况将提供技术支持。
 
 ## <a name="azure-activity-log"></a>Azure 活动日志
 
@@ -51,24 +51,24 @@ ms.locfileid: "81865625"
 
 可以对活动日志执行的部分操作包括：
 
-- 在[活动日志事件上创建警报](../articles/azure-monitor/platform/platform-logs-overview.md)。
+- [针对活动日志事件创建警报](../articles/azure-monitor/platform/platform-logs-overview.md)。
 - [将活动日志流式传输到事件中心](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 Power BI）引入。
-- 使用[Power BI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)在 Power BI 中分析它。
-- [将其保存到存储帐户以](../articles/azure-monitor/platform/archive-activity-log.md)进行存档或手动检查。 可以使用“日志配置文件”指定保留时间（天）。
+- 使用[Power BI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)在 Power BI 中进行分析。
+- [将其保存到存储帐户](../articles/azure-monitor/platform/archive-activity-log.md)进行存档或手动检查。 可以使用“日志配置文件”指定保留时间（天）。
 
 还可以通过使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor) 或[监视 REST API](https://docs.microsoft.com/rest/api/monitor/) 访问活动日志数据。
 
-[Azure 资源日志](../articles/azure-monitor/platform/platform-logs-overview.md)是 VM 发出的日志，提供有关其操作的丰富、频繁的数据。 资源日志与活动日志不同，提供有关在 VM 中执行的操作的见解。
+[Azure 资源日志](../articles/azure-monitor/platform/platform-logs-overview.md)是 VM 发出的日志，提供有关其操作的丰富、频繁的数据。 资源日志不同于活动日志，通过提供有关在 VM 中执行的操作的见解。
 
 可以对诊断日志执行的部分操作包括：
 
-- [将它们保存到存储帐户以](../articles/azure-monitor/platform/archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
-- [将它们流式传输到事件中心](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md)，以便由第三方服务或自定义分析解决方案（如 Power BI）引入。
+- [将它们保存到存储帐户](../articles/azure-monitor/platform/archive-diagnostic-logs.md)进行审核或手动检查。 可以使用“资源诊断设置”指定保留时间（天）。
+- [将它们流式传输到事件中心](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md)，以供第三方服务或自定义分析解决方案（例如 Power BI）引入。
 - 使用 [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) 对诊断日志进行分析。
 
 ## <a name="advanced-monitoring"></a>高级监视
 
-有关 Azure VM 和虚拟机规模集支持的应用程序或服务的可见性，请识别 VM 中运行的来宾操作系统或工作负载的问题，以了解其是否影响应用程序的可用性或性能，或者应用程序有问题，请同时启用[Azure 监视器 VM](../articles/azure-monitor/insights/vminsights-overview.md)和[应用程序见解](../articles/azure-monitor/app/app-insights-overview.md)。
+若要查看 Azure VM 和虚拟机规模集支持的应用程序或服务，识别 VM 中运行的来宾操作系统或工作负荷的问题，以了解它是否会影响应用程序的可用性或性能，或者是否存在应用程序问题，同时启用[用于 VM 的 Azure Monitor](../articles/azure-monitor/insights/vminsights-overview.md)和[Application Insights](../articles/azure-monitor/app/app-insights-overview.md)。
 
 用于 VM 的 Azure Monitor 分析 Windows 和 Linux VM 的性能与运行状况，包括不同的进程以及与它发现的其他资源和外部进程之间的相互依赖关系，可以大规模监视 Azure 虚拟机 (VM)。 它包含多个趋势性能图表，用于调查问题和评估 VM 的容量。 依赖项映射显示受监视的和不受监视的计算机、进程和这些计算机之间的失败网络连接和有效网络连接，并显示趋势图表，其中包含标准的网络连接指标。 通过组合使用 Application Insights，可以监视应用程序并捕获遥测数据（例如 HTTP 请求、异常等），这样就可以将 VM 和应用程序之间的问题关联起来。 请配置 [Azure Monitor 警报](../articles/azure-monitor/platform/alerts-overview.md)，这样，当系统从用于 VM 的 Azure Monitor 收集的监视数据中检测到重要情况时，就会提醒你。
 

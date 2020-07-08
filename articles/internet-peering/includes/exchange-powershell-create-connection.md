@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678616"
 ---
 下面的示例演示如何在西雅图的 Equinix Internet Exchange 上创建 Exchange 连接。 如果使用的是其他提供商和其他设置，请在发出请求时替换该信息。
@@ -73,7 +73,7 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft 开始预配请求的对等`ConnectionState`互连，并反映进度。
+> Microsoft 开始预配请求的对等互连，并 `ConnectionState` 反映进度。
 > 有关预配相关步骤的详细信息，请参阅[Exchange 对等互连演练](../walkthrough-exchange-all.md)。
 
 可以按如下所示检查连接状态。

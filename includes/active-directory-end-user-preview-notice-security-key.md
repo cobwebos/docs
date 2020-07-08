@@ -10,7 +10,7 @@ ms.author: lizross
 ms.custom: include file
 ms.openlocfilehash: 4e2fec5ab8ab8057fb6f6b4db06804664226041e
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "68386481"

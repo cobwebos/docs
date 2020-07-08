@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: e5804aa1b005e670d8b430b1c0a3bd62efd0bb06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687046"
 ---
-1. 选择要为 Azure 对等互连服务启用的对等连接。 然后选择 **...** > **编辑连接**。
+1. 选择要为 Azure 对等互连服务启用的对等连接。 然后选择 **...**  > **编辑连接**。
     > [!div class="mx-imgBorder"]
     > ![对等连接编辑连接](../media/setup-direct-modify-editconnection.png)
 1. 在 "用于**对等互连服务**" 下选择 "**已启用**"，然后选择 "**保存**"。

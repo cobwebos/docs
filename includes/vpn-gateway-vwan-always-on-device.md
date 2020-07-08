@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: feaf72de1d2c578d2b2d0df9e86ec0fbe0b49445
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371706"
 ---
 必须满足以下要求才能成功建立设备隧道：
@@ -80,7 +80,7 @@ ms.locfileid: "79371706"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 复制以下文本，并在 ***devicecert.ps1*** 所在的同一文件夹中将文件保存为 **VPNProfile.xml**。 编辑以下文本，使之与你的环境相匹配。
+1. 复制以下文本，并在 **devicecert.ps1** 所在的同一文件夹中将文件保存为 ***VPNProfile.xml***。 编辑以下文本，使之与你的环境相匹配。
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,7 +115,7 @@ ms.locfileid: "79371706"
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. 从 **Sysinternals** 下载 [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)，并将文件解压缩到 **C:\PSTools**。
+1. 从 [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 下载 **PsExec**，并将文件解压缩到 **C:\PSTools**。
 1. 在管理员命令提示符下，运行以下命令启动 PowerShell：
 
    ```

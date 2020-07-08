@@ -9,10 +9,10 @@ ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 3c18efa7eb520b765c9bb3c2aff00104f971f5a8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173188"
 ---
 ### <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
@@ -27,7 +27,7 @@ ms.locfileid: "67173188"
 
 ### <a name="write-some-code-to-send-messages"></a>编写一些代码来发送消息
 
-1. 在 `constants` 文件的顶部，添加以下`sender.js`。
+1. 在 `sender.js` 文件的顶部，添加以下`constants`。
    
     ```js
     const https = require('hyco-https');

@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83343314"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。  这些虚拟机大小非常适合于与其他客户的工作负载（涉及符合性和法规要求等元素）高度隔离的工作负载。  客户还可以选择利用[对嵌套虚拟机的 Azure 支持](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)，对这些独立的虚拟机资源进一步细分。
@@ -51,7 +51,7 @@ Azure 专用主机现已正式发布，使你能够在单租户物理服务器�
 有关详细信息，请参阅以下内容：
 
 ## <a name="timeline"></a>时间线
-| Date | 操作 | 
+| 日期 | 操作 | 
 | --- | --- |
 | 2019 年 11 月 18 日 | D/DS15i_v2 （PAYG，1年 RI）的可用性 |
 | 5月14日2020  | 第一天购买 D/DS15i_v2 1 年 RI | 
@@ -86,9 +86,9 @@ Azure 专用主机现已正式发布，使你能够在单租户物理服务器�
 
 | RI |  实例大小灵活性 | 权益资格 |   
 | --- | --- | --- |
-|   D15_v2  |   关闭     |   D15_v2 和 D15i_v2 |    
-|   D15_v2  |   启用  |   D15_v2 系列和 D15i_v2 将获得 RI 权益。 |    
-|   D14_v2  |   启用  |   D15_v2 系列和 D15i_v2 将获得 RI 权益。 |    
+|   D15_v2  |   关     |   D15_v2 和 D15i_v2 |    
+|   D15_v2  |   开  |   D15_v2 系列和 D15i_v2 将获得 RI 权益。 |    
+|   D14_v2  |   开  |   D15_v2 系列和 D15i_v2 将获得 RI 权益。 |    
  
 同样，对于 Dsv2 系列也是如此。
  
@@ -97,10 +97,10 @@ Azure 专用主机现已正式发布，使你能够在单租户物理服务器�
 
 | RI |  实例大小灵活性 | 权益资格 |   
 | --- | --- | --- |
-| D15_v2 |  关闭 |   仅 D15_v2  
-| D15_v2 |  启用 |    D15_v2 系列将获得 RI 权益。 新的 D15i_v2 将不能从此 RI 类型获得 RI 权益。 | 
-| D15i_v2 |     关闭 | 仅 D15i_v2 |  
-| D15i_v2 |     启用  | 仅 D15i_v2 | 
+| D15_v2 |  关 |   仅 D15_v2  
+| D15_v2 |  开 |    D15_v2 系列将获得 RI 权益。 新的 D15i_v2 将不能从此 RI 类型获得 RI 权益。 | 
+| D15i_v2 |     关 | 仅 D15i_v2 |  
+| D15i_v2 |     开  | 仅 D15i_v2 | 
  
 实例大小灵活性不能应用于任何其他大小，如 D2_v2、D4_v2 或 D15_v2。 同样，对于 Dsv2 系列也是如此。  
  

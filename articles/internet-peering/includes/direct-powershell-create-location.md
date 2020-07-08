@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: dbaa0b5fc87cb5393b323b8a9b7a38b72efe9518
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680770"
 ---
-PowerShell cmdlet **AzPeeringLocation**返回具有必需参数的对等互连位置的列表，你`Kind`将在后续步骤中使用该参数。
+PowerShell cmdlet **AzPeeringLocation**返回具有必需参数的对等互连位置的列表 `Kind` ，你将在后续步骤中使用该参数。
 
 ```powershell
 Get-AzPeeringLocation -Kind Direct

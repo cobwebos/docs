@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81681080"
 ---
 本部分介绍如何执行以下修改操作以实现直接对等互连。
@@ -31,7 +31,7 @@ ms.locfileid: "81681080"
 Azure 门户当前不支持删除连接。 有关详细信息，请联系[Microsoft 对等互连](mailto:peeringexperience@microsoft.com)。
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>升级或降级活动连接上的带宽
-1. 选择要修改的对等互连连接，然后选择 " **...** " > **编辑连接**。
+1. 选择要修改的对等互连连接，然后选择 " **...**  >  "**编辑连接**。
     > [!div class="mx-imgBorder"]
     > ![编辑连接](../media/setup-direct-modify-editconnection.png)
 
@@ -40,7 +40,7 @@ Azure 门户当前不支持删除连接。 有关详细信息，请联系[Micros
     > ![修改带宽](../media/setup-direct-modify-editconnectionsettings.png)
 
 ### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>在活动连接上添加 IPv4 或 IPv6 会话信息
-1. 选择要修改的对等互连连接，然后选择 " **...** " > **编辑连接**，如步骤1中所示。
+1. 选择要修改的对等互连连接，然后选择 " **...**  >  "**编辑连接**，如步骤1中所示。
 1. 输入**会话 IPv4 前缀**或**会话 IPv6 前缀**信息，然后选择 "**保存**"。
 
 ### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>删除活动连接上的 IPv4 或 IPv6 会话信息
