@@ -7,22 +7,22 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477849"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
-如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为使应用程序成为多租户应用程序  。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
+如果你向许多组织提供软件即服务 (SaaS) 应用程序，则可以将应用程序配置为接受来自任何 Azure Active Directory (Azure AD) 租户的登录。 此配置称为*使应用程序成为多租户应用程序*。 任何 Azure AD 租户中的用户在同意配合应用程序使用其帐户之后，便可登录到应用程序。
 
 如果现有应用程序具有自己的帐户系统，或者支持来自其他云提供程序的其他类型的登录，则从任何租户添加 Azure AD 登录都非常简单。 只需要注册应用，通过 OAuth2、OpenID Connect 或 SAML 添加登录代码，并按下应用程序中的[“使用 Microsoft 登录”按钮][AAD-App-Branding]。
 
@@ -55,7 +55,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 通过在 [Azure 门�
 
 使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
-当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /common 终结点可与 Azure AD 支持的所有身份验证协议配合使用：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
+当 Microsoft 标识平台在 /common 终结点上收到请求时，会使用户登录，因而可以发现用户来自哪个租户。 /Common 终结点可与 Azure AD 支持的所有身份验证协议配合使用： OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 
 然后，对应用程序做出的登录响应会包含代表该用户的令牌。 令牌中的颁发者值告知应用程序该用户来自哪个租户。 从 /common 终结点返回响应时，令牌中的颁发者值将与用户的租户相对应。
 
@@ -160,26 +160,26 @@ Web 应用程序和 Web API 接收并验证 Microsoft 标识平台发送的令�
 
 用户和管理员可以随时吊销对应用程序的同意：
 
-* 用户可通过将单个应用程序从其[访问面板应用程序][AAD-Access-Panel]列表中删除，来吊销对这些应用程序的访问权限。
+* 用户可通过将单个应用程序从其[访问面板应用程序][AAD-Access-Panel]列表中删除，来吊销对该应用程序的访问权限。
 * 管理员可以通过使用 [Azure 门户][AZURE-portal]的[企业应用程序](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)部分删除应用程序，来撤销对这些应用程序的访问权限。
 
 如果是由管理员代表租户中的所有用户对应用程序行使同意权，用户就不能单独吊销访问权限。 只有管理员才能吊销访问权限，并且只能针对整个应用程序吊销。
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>多租户应用程序和缓存访问令牌
 
-多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。 配合多租户应用程序使用 Active Directory 身份验证库 (ADAL) 时经常会出现一个错误，就是一开始即使用 /common 来为用户请求令牌、接收响应，然后同样使用 /common 来为同一用户请求后续令牌。 由于从 Azure AD 返回的响应来自租户而不是 /common，因此 ADAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用将错过缓存项，因此系统会再次提示用户登录。 为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
+多租户应用程序也可以获取访问令牌来调用受 Azure AD 保护的 API。 配合多租户应用程序使用 Active Directory 身份验证库 (ADAL) 时经常会出现一个错误，就是一开始即使用 /common 来为用户请求令牌、接收响应，然后同样使用 /common 来为同一用户请求后续令牌。 由于从 Azure AD 返回的响应来自租户而不是 /common，因此 ADAL 缓存令牌时将它视为来自租户。 后续为了为用户获取访问令牌而执行的 /common 调用会错过缓存项，因此系统会再次提示用户登录。 为了避免缓存未命中，请确保后续为登录用户执行的调用是针对租户的终结点发出的。
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要了解有关对 Azure AD 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用的详细信息，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
+本文介绍了如何构建可使用户从任何 Azure AD 租户进行登录的应用程序。 在应用与 Azure AD 之间启用单一登录 (SSO) 后，还可以更新应用程序以访问 Microsoft 资源（如 Office 365）公开的 API。 从而可以在应用程序中提供个性化体验，例如向用户显示上下文信息（例如个人资料图片或下一个日历约会）。 若要详细了解如何对 Azure AD 和 Office 365 服务（如 Exchange、SharePoint、OneDrive、OneNote 等）进行 API 调用，请访问：[Microsoft Graph API][MSFT-Graph-overview]。
 
 ## <a name="related-content"></a>相关内容
 
-* [多租户应用程序示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
+* [Multi-tenant application sample](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)（多租户应用程序示例）
 * [适用于应用程序的品牌准则][AAD-App-Branding]
 * [应用程序对象和服务主体对象][AAD-App-SP-Objects]
 * [将应用程序与 Azure Active Directory 集成][AAD-Integrating-Apps]
-* [许可框架概述][AAD-Consent-Overview]
+* [同意框架概述][AAD-Consent-Overview]
 * [Microsoft Graph API 权限范围][MSFT-Graph-permission-scopes]
 
 <!--Reference style links IN USE -->

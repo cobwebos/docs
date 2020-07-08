@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f72e16afd61d364a2dad634f3502c801f1b99380
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478138"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>新的 Azure 门户应用注册培训指南
 
@@ -57,8 +57,8 @@ ms.locfileid: "80154570"
 - **名称**
 - **对象 ID**
 - **应用程序 ID**
-- 应用 ID URI****
-- **徽标键**
+- **应用 ID URI**
+- **徽标**
 - **主页 URL**
 - **注销 URL**
 - **服务条款 URL**
@@ -73,13 +73,13 @@ ms.locfileid: "80154570"
 - 旧体验中由“多租户”切换开关控制的功能已由“身份验证”页上的“支持的帐户类型”取代。************ 有关详细信息，请参阅[快速入门：修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)。
 - “注销 URL”现在位于“身份验证”页上。********
 - “应用程序类型”不再是有效字段。**** 相反，可以在 "**身份验证**" 页上找到的重定向 uri，确定支持哪些应用类型。
-- **应用 ID uri**现在称为**应用程序 id uri** ，你可以在**公开 API**时找到它。 在旧体验中，此属性是使用以下格式 autoregistered 的： `https://{tenantdomain}/{appID}`，例如`https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`。 在新体验中，它自动生成为`api://{appID}`，但需要显式保存。 在 Azure AD B2C 租户中， `https://{tenantdomain}/{appID}`仍使用格式。
+- **应用 ID uri**现在称为**应用程序 id uri** ，你可以在**公开 API**时找到它。 在旧体验中，此属性是使用以下格式 autoregistered 的： `https://{tenantdomain}/{appID}` ，例如 `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b` 。 在新体验中，它自动生成为 `api://{appID}` ，但需要显式保存。 在 Azure AD B2C 租户中， `https://{tenantdomain}/{appID}` 仍使用格式。
 
 ### <a name="reply-urlsredirect-urls"></a>回复 URL/重定向 URI
 
 在旧体验中，应用包含“回复 URL”页。**** 在新体验中，可以在应用的 "**身份验证**" 页上找到 "回复 url"。 它们现在称为**重定向 uri**。
 
-重定向 Uri 的格式已更改。 它们需要与应用类型（web 或公共）相关联。 出于安全原因，不支持`http://`通配符和方案，但除外*http://localhost*。
+重定向 Uri 的格式已更改。 它们需要与应用类型（web 或公共）相关联。 出于安全原因， `http://` 不支持通配符和方案，但除外 *http://localhost* 。
 
 ### <a name="keyscertificates--secrets"></a>密钥/证书和机密
 

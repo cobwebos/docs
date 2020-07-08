@@ -6,16 +6,16 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79318ab67ec58ed10520365a366785ea0de41666
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476268"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>关于使用 Azure Synapse Analytics 中 SQL On-Demand（预览）的最佳做法
 
@@ -52,7 +52,7 @@ ms.locfileid: "83836322"
 
 ## <a name="push-wildcards-to-lower-levels-in-the-path"></a>将通配符推送到路径中的较低级别
 
-可以在路径中使用通配符来[查询多个文件和文件夹](develop-storage-files-overview.md#query-multiple-files-or-folders)。 SQL On-Demand 使用存储 API 从第一个 * 开始列出存储帐户中的文件。 它排除了与指定路径不匹配的文件。 如果有多个文件与第一个通配符后面的指定路径匹配，减少初始文件列表可以提升性能。
+可以在路径中使用通配符来[查询多个文件和文件夹](query-data-storage.md#query-multiple-files-or-folders)。 SQL On-Demand 使用存储 API 从第一个 * 开始列出存储帐户中的文件。 它排除了与指定路径不匹配的文件。 如果有多个文件与第一个通配符后面的指定路径匹配，减少初始文件列表可以提升性能。
 
 ## <a name="use-appropriate-data-types"></a>使用适当的数据类型
 
@@ -113,7 +113,7 @@ FROM
 
 数据通常是以分区形式组织。 可以指示 SQL On-Demand 查询特定文件夹和文件。 这样做可减少查询需要读取和处理的文件数和数据量。 额外的好处是，将会提升性能。
 
-有关详细信息，请阅读 [filename](develop-storage-files-overview.md#filename-function) 和 [filepath](develop-storage-files-overview.md#filepath-function) 函数，并查看[查询特定文件](query-specific-files.md)的示例。
+有关详细信息，请阅读 [filename](query-data-storage.md#filename-function) 和 [filepath](query-data-storage.md#filepath-function) 函数，并查看[查询特定文件](query-specific-files.md)的示例。
 
 > [!TIP]
 > 请始终将 filepath 和 filename 函数的结果强制转换为适当的数据类型。 如果使用字符数据类型，请确保使用适当的长度。

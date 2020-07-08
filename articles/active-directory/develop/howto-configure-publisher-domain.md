@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 408d8856130947e9be9c6d2714310332d9935cdd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76697126"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477985"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域
 

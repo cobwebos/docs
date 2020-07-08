@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1a520c5a1002e401f880fba84f8fc02a0a678133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76935c5b826f8aa686167f702f7170522744155
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477458"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化机密客户端应用程序
 
@@ -60,7 +60,7 @@ MSAL.NET 中选项的属性名称与 ASP.NET Core 中 `AzureADOptions` 的属性
 
 从 MSAL.NET v3.x 开始，可以根据配置文件配置机密客户端应用程序。
 
-在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 `IConfigurationRoot.Bind()`Microsoft.Extensions.Configuration.Binder nuget 包[ 中的 ](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
+在需要配置和实例化应用程序的类中，需声明 `ConfidentialClientApplicationOptions` 对象。  使用 [Microsoft.Extensions.Configuration.Binder nuget 包](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) 中的 `IConfigurationRoot.Bind()` 方法，将从源读取的配置（包括 appconfig.json 文件）绑定到应用程序选项的实例：
 
 ```csharp
 using Microsoft.Identity.Client;

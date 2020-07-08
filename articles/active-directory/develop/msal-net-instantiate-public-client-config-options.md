@@ -7,18 +7,18 @@ author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1dd06e139f931bbf8554f05f05c5d9b9ccf200e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 171b4ddf9a6f3cb5868f2300ea892ad785cbaf22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477424"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>通过 MSAL.NET 使用配置选项实例化公共客户端应用程序
 

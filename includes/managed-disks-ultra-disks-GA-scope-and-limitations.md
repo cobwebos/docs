@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/11/2020
+ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85448771"
 ---
 目前，超磁盘有其他限制，如下所示：
 
@@ -26,10 +26,10 @@ ms.locfileid: "83196945"
 
 |区域  |支持超磁盘的可用性区域数  |
 |---------|---------|
-|US Gov 弗吉尼亚州     |无         |
-|美国中南部     |无         |
+|US Gov 弗吉尼亚州     |None         |
+|美国中南部     |None         |
 |美国中部     |三个区域         |
-|美国西部     |无         |
+|美国西部     |None         |
 |美国西部 2    |三个区域         |
 |美国东部     |三个区域         |
 |美国东部 2     |两个区域         |
@@ -38,7 +38,7 @@ ms.locfileid: "83196945"
 |西欧     |三个区域          |
 |英国南部     |三个区域          |
 |日本东部     |两个区域         |
-
+|法国中部    |两个区域        |
 
 
 - 仅支持以下 VM 系列：
@@ -53,6 +53,7 @@ ms.locfileid: "83196945"
 - 只能以空磁盘的形式创建  
 - 当前不支持磁盘快照、VM 映像、可用性集、Azure 专用主机或 Azure 磁盘加密
 - 当前不支持与 Azure 备份或 Azure Site Recovery 的集成
+- 仅支持未缓存的读取和非缓存写入
 - GA Vm 上的 IOPS 的当前最大限制为80000。
 
 默认情况下，每个订阅每个区域最多支持16个 TiB 若要请求增加容量，请联系 Azure 支持。

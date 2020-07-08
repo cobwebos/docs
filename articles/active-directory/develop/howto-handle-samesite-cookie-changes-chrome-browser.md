@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f28d3722d56582bd925d31b43b4a0219bca2ae30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477798"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>在 Chrome 浏览器中处理 SameSite Cookie 更改
 
@@ -35,7 +35,7 @@ ms.locfileid: "81534595"
 
 最近[对 SameSite 标准所做的更新](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00)提议在未将任何值设置为 Lax 时，通过产生默认的 `SameSite` 行为来保护应用。 此缓解措施意味着，HTTP 请求（从其他站点发出的 GET 除外）中的 Cookie 将受到限制。 此外，引入了 **None** 值来消除对所发送 Cookie 的限制。 这些更新即将在下一个 Chrome 浏览器版本中发布。
 
-当 Web 应用使用响应模式“form_post”通过 Microsoft 标识平台进行身份验证时，登录服务器将使用 HTTP POST 来响应应用程序，以发送令牌或授权代码。 由于此请求是跨域请求（从`login.microsoftonline.com`到你的域`https://contoso.com/auth`），因此，你的应用设置的 cookie 现在低于 Chrome 中的新规则。 需要在跨站点方案中使用的 Cookie 是保留 *state* 和 *nonce* 值的 Cookie，它们也在登录请求中发送。 Azure AD 会丢弃其他一些 Cookie 来保留会话。
+当 Web 应用使用响应模式“form_post”通过 Microsoft 标识平台进行身份验证时，登录服务器将使用 HTTP POST 来响应应用程序，以发送令牌或授权代码。 由于这是一个跨域请求（从 `login.microsoftonline.com` 发送到域 - 例如 ）`https://contoso.com/auth`，因此应用设置的 Cookie 现在需要遵守 Chrome 中的新规则。 需要在跨站点方案中使用的 Cookie 是保留 *state* 和 *nonce* 值的 Cookie，它们也在登录请求中发送。 Azure AD 会丢弃其他一些 Cookie 来保留会话。
 
 如果不更新 Web 应用，这种新行为会导致身份验证失败。
 
@@ -53,8 +53,8 @@ ms.locfileid: "81534595"
 
 | 示例 | 拉取请求 |
 | ------ | ------------ |
-|  [ASP.NET Core web 应用增量教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [SameSite Cookie 修复 #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [ASP.NET MVC web 应用示例](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [SameSite Cookie 修复 #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [ASP.NET Core Web 应用增量教程](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [SameSite Cookie 修复 #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [ASP.NET MVC Web 应用示例](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [SameSite Cookie 修复 #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
 |  [active-directory-dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [SameSite Cookie 修复 #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
 有关如何处理 ASP.NET 和 ASP.NET Core 中的 SameSite Cookie 的详细信息，另请参阅：

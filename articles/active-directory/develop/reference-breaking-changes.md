@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871534"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85477237"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
@@ -47,9 +47,9 @@ ms.locfileid: "82871534"
 
 **受影响的协议**：所有流
 
-2018年6月1日，Azure 政府版的官方 Azure Active Directory （AAD）机构`https://login-us.microsoftonline.com`已`https://login.microsoftonline.us`从更改为。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到`.us`终结点上的用户。  
+2018年6月1日，Azure 政府版的官方 Azure Active Directory （AAD）机构已从更改 `https://login-us.microsoftonline.com` 为 `https://login.microsoftonline.us` 。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到终结点上的用户 `.us` 。  
 
-从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点（`microsoftonline.com`）登录美国政府租户中托管的应用。  受影响的应用将开始显示`AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`错误。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。 这可能需要在美国政府云中创建新的应用注册。 
+从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点（）登录美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。 这可能需要在美国政府云中创建新的应用注册。 
 
 此更改的执行将通过以下方式进行：使用逐步推出：美国政府版中的用户登录到应用程序时，不经常会看到强制执行，而美国政府用户经常使用的应用将在最后应用强制实施。 预计会在6月2020的所有应用中完成强制。 
 

@@ -8,23 +8,23 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 4180f62e589ef79227d8e60ca19661e1c65f0097
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773315"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85445519"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Windows 虚拟机映像
-Azure 中的每个虚拟机 (VM) 都创建至定义 Windows 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
+Azure 中的每个虚拟机 (VM) 都是基于定义 Windows 分发和操作系统版本的映像创建的。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的操作系统和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
-本文最后于 2019 年 2 月 21 日通过使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.3.0 版本和 [Packer](https://www.packer.io/docs/install/index.html) 1.3.4 版本进行了测试。
+本文最后一次使用 [Az PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)版本 1.3.0 和 [Packer](https://www.packer.io/docs/install) 版本 1.3.4 在 2019 年 2 月 21 日进行了测试。
 
 > [!NOTE]
 > Azure 现推出一项服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器基于 Packer 构建，因此你可以将现有 Packer shell 配置程序脚本与之配合使用。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 Windows VM](image-builder.md)。
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
-在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
+生成过程中，Packer 将在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
@@ -35,9 +35,9 @@ New-AzResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
-Packer 使用服务主体向 Azure 进行身份验证。 Azure 服务主体是可用于应用、服务和 Packer 等自动化工具的安全标识。 控制和定义服务主体可在 Azure 中执行哪些操作的权限。
+使用服务主体通过 Azure 对 Packer 进行身份验证。 Azure 服务主体是可与应用、服务和自动化工具（如 Packer）结合使用的安全性标识。 用户控制和定义服务主体可在 Azure 中执行的操作的权限。
 
-使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 创建服务主体，并为服务主体分配权限，以使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 创建和管理资源。 `-DisplayName` 的值必须唯一；请根据需要替换为你自己的值。  
+使用 [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) 创建服务主体，并为服务主体分配权限，以使用 [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) 创建和管理资源。 `-DisplayName` 的值必须唯一；请根据需要将其替换为你自己的值。  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -62,18 +62,18 @@ Get-AzSubscription
 
 
 ## <a name="define-packer-template"></a>定义 Packer 模板
-若要生成映像，需创建一个模板作为 JSON 文件。 在模板中，定义执行实际生成过程的生成器和配置器。 Packer 具有[用于 Azure 的生成器](https://www.packer.io/docs/builders/azure.html)，可用于定义 Azure 资源，如在前面创建的服务主体凭据。
+若要生成映像，请创建一个模板作为 JSON 文件。 在模板中，定义执行实际生成过程的生成器和设置程序。 Packer 具有[用于 Azure 的生成器](https://www.packer.io/docs/builders/azure.html)，可用于定义 Azure 资源，如在前面创建的服务主体凭据。
 
 创建名为 windows.json 的文件并粘贴以下内容。 为以下内容输入自己的值：
 
 | 参数                           | 获取位置 |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | 使用 `$sp.applicationId` 查看服务主体 ID |
+| client_id                         | 通过 `$sp.applicationId` 查看服务主体 ID |
 | client_secret                     | 使用 `$plainPassword` 查看自动生成的密码 |
 | tenant_id                         | `$sub.TenantId` 命令的输出 |
 | subscription_id                   | `$sub.SubscriptionId` 命令的输出 |
-| managed_image_resource_group_name | 在第一步中创建的资源组的名称 |
-| managed_image_name                | 创建的托管磁盘映像的名称 |
+| *managed_image_resource_group_name* | 在第一步中创建的资源组的名称 |
+| *managed_image_name*                | 创建的托管磁盘映像的名称 |
 
 ```json
 {
@@ -122,15 +122,15 @@ Get-AzSubscription
 
 
 ## <a name="build-packer-image"></a>生成 Packer 映像
-如果尚未在本地计算机上安装 Packer，[请按照 Packer 安装说明进行安装](https://www.packer.io/docs/install/index.html)。
+如果本地计算机上尚未安装 Packer，请[按照 Packer 安装说明](https://learn.hashicorp.com/packer/getting-started/install)进行安装。
 
-打开 cmd 提示符并指定 Packer 模板文件以生成映像，如下所示：
+按如下所述打开 cmd 提示并指定 Packer 模板文件，以便生成映像：
 
 ```
 ./packer build windows.json
 ```
 
-前述命令的输出示例如下所示：
+前面命令的输出示例如下所示：
 
 ```bash
 azure-arm output will be in this color.
@@ -204,7 +204,7 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
+Packer 需要几分钟时间来生成 VM、运行设置程序并清理部署。
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>基于 Packer 映像创建 VM
@@ -225,7 +225,7 @@ New-AzVm `
 
 如果你希望在与 Packer 映像不同的资源组或区域中创建虚拟机，请指定映像 ID 而不是映像名称。 可以使用 [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage) 获取映像 ID。
 
-从 Packer 映像创建 VM 需要几分钟时间。
+基于 Packer 映像创建 VM 需要几分钟时间。
 
 
 ## <a name="test-vm-and-webserver"></a>测试 VM 和 Web 服务器

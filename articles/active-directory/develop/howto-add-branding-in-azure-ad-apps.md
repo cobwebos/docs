@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478189"
 ---
 # <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
 
@@ -63,7 +63,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 “获取应用程序”链接必须将用户重定向到 Azure AD 的访问权限授予（授权）页，以方便组织的管理员对应用程序进行授权，使其有权访问 Microsoft 托管的组织数据。 有关如何请求访问权限的详细信息，请参阅[将应用程序与 Azure Active Directory 集成](quickstart-v1-integrate-apps-with-azure-ad.md)一文。
 
-在管理员同意你的应用程序后，他们可以选择将其添加到其用户的 Office 365 应用程序启动器体验（可从 waffle [https://portal.office.com/myapps](https://portal.office.com/myapps)和进行访问）。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
+在管理员同意你的应用程序后，他们可以选择将其添加到其用户的 Office 365 应用程序启动器体验（可从 waffle 和进行访问 [https://portal.office.com/myapps](https://portal.office.com/myapps) ）。 如果想要广告此功能，可以使用类似于“将此应用程序添加到组织”词语，并显示类似于以下示例的按钮：
 
 ![显示 Microsoft 徽标和“添加到我的组织”文本的按钮](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 

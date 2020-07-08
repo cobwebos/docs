@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85476829"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>基于用户启用 Azure 多重身份验证来保护登录事件
 
 有两种方法可用于通过在 Azure AD 中要求多重身份验证来保护用户登录事件。 第一个方法（推荐方法）是设置条件访问策略以要求在某些条件下进行多重身份验证。 第二个方法是为每个用户启用 Azure 多重身份验证。 为各个用户启用此功能后，他们每次登录时都需要进行多重身份验证（有一些例外情况，例如，当他们从受信任的 IP 地址登录或已开启了“记住的设备”功能）。
 
 > [!NOTE]
-> 建议通过应用条件访问策略来启用 Azure 多重身份验证。 不再建议更改用户状态，除非你的许可证不包含条件访问，因为它会要求用户在每次登录时执行 MFA。
+> 建议通过应用条件访问策略来启用 Azure 多重身份验证。 不再建议更改用户状态，除非你的许可证不包含条件访问，因为它会要求用户在每次登录时执行 MFA。 若要开始使用条件访问，请参阅[教程：使用 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
 >
-> 若要开始使用条件访问，请参阅[教程：使用 Azure 多重身份验证保护用户登录事件](tutorial-enable-azure-mfa.md)。
+> 对于没有条件性访问的 Azure AD 免费租户，可以[使用安全默认值来保护用户](../fundamentals/concept-fundamentals-security-defaults.md)。
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure 多重身份验证用户状态
 
@@ -39,7 +39,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 | 状态 | 说明 | 受影响的非浏览器应用 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:| --- |:---:|:--:|:--:|
 | 已禁用 | 未加入 Azure 多重身份验证的新用户的默认状态。 | 否 | 否 | 否 |
-| 已启用 | 用户已加入 Azure 多重身份验证，但尚未注册。 在用户下次登录时会提示他们进行注册。 | 不是。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后需要进行 Azure 多重身份验证注册。| 是的。 访问令牌过期后，会要求进行 Azure 多重身份验证注册。 |
+| 已启用 | 用户已在 Azure 多重身份验证中注册，但尚未注册身份验证方法。 在用户下次登录时会提示他们进行注册。 | 否。  它们继续工作，直到注册过程完成。 | 是的。 会话过期后需要进行 Azure 多重身份验证注册。| 是的。 访问令牌过期后，会要求进行 Azure 多重身份验证注册。 |
 | 强制 | 用户已加入，并已完成 Azure 多重身份验证的注册过程。 | 是的。 应用需要应用密码。 | 是的。 登录时需要执行 Azure 多重身份验证。 | 是的。 登录时需要执行 Azure 多重身份验证。 |
 
 用户的状态反映管理员是否已在 Azure 多重身份验证中登记用户以及用户是否已完成注册过程。
@@ -84,7 +84,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 * 强制
 * *已禁用*  
 
-不要直接将用户移动到“强制”状态。 否则，非基于浏览器的应用将停止工作，因为用户尚未完成 Azure 多重身份验证注册且未获得[应用密码](howto-mfa-mfasettings.md#app-passwords)。
+不要直接将用户移动到“强制”状态。 否则，非基于浏览器的应用将停止工作，因为用户尚未完成 Azure 多重身份验证注册且未获得[应用密码](howto-mfa-app-passwords.md)。
 
 若要开始操作，请使用 [Install-Module](/powershell/module/powershellget/install-module) 安装 MSOnline 模块，如下所示：
 
