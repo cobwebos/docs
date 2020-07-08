@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26376c6b20816d2e7302403c8391195e16092fa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504314"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "80478304"
 
 安装移动代理时，源计算机将注册到配置服务器。 可遵循以下指导原则调试执行此步骤期间发生的任何失败：
 
-1. 打开 C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。    失败可能是多个问题造成的。
+1. 打开 C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。  失败可能是多个问题造成的。
 
 2. 搜索字符串 **No Valid IP Address found**。 如果找到了该字符串：
    1. 验证请求的主机 ID 是否与源计算机的主机 ID 相同。
@@ -34,7 +34,7 @@ ms.locfileid: "80478304"
 3. 如果找不到字符串 **No Valid IP Address found**，请搜索字符串 **Reason=>NULL**。 如果源计算机使用空主机注册到配置服务器，则会发生此错误。 如果找到了该字符串：
     - 解决问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试手动注册。
 
-4. 如果找不到字符串 **Reason=>NULL**，请在源计算机上打开 C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。    失败可能是多个问题造成的。 
+4. 如果找不到字符串 **Reason=>NULL**，请在源计算机上打开 C:\ProgramData\ASRSetupLogs\UploadedLogs\ASRUnifiedAgentInstaller.log 文件。 （ProgramData 文件夹可能已隐藏。 如果未看到 ProgramData 文件夹，请在文件资源管理器的“查看”选项卡上的“显示/隐藏”部分，选中“隐藏的项目”复选框）。  失败可能是多个问题造成的。 
 
 5. 搜索字符串 **post request:(7) - Couldn't connect to server**。 如果找到了该字符串：
     1. 解决源计算机与配置服务器之间的网络问题。 验证是否可以使用 ping、traceroute 或 Web 浏览器等网络工具从源计算机访问配置服务器。 确保源计算机可以通过端口 443 访问配置服务器。
@@ -42,7 +42,7 @@ ms.locfileid: "80478304"
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。
     4. 解决网络问题后，遵照[将源计算机注册到配置服务器](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)中的指导原则重试注册。
 
-6. 如果未找到字符串 **post request:(7) - Couldn't connect to server**，请在同一日志文件中查找字符串 **request:(60) - Peer certificate cannot be authenticated with given CA certificates**。 发生此错误的原因可能是配置服务器证书已过期或源计算机不支持 TLS 1.0 或更高版本的协议。 如果防火墙阻止源计算机与配置服务器之间的 TLS 通信，则也可能会发生这种情况。 如果找到了该字符串： 
+6. 如果未找到字符串 **post request:(7) - Couldn't connect to server**，请在同一日志文件中查找字符串 **request:(60) - Peer certificate cannot be authenticated with given CA certificates**。 如果配置服务器证书已过期，或者源计算机不支持 TLS 1.0 或更高版本的协议，则可能会发生此错误。 如果防火墙阻止了源计算机与配置服务器之间的 TLS 通信，则也可能会发生此错误。 如果找到了该字符串： 
     1. 若要解决此问题，请在源计算机上使用 Web 浏览器连接到配置服务器 IP 地址。 请使用 URI https:\/\/<配置服务器 IP 地址\>:443/。 确保源计算机可以通过端口 443 访问配置服务器。
     2. 检查是否需要在源计算机上添加或删除任何防火墙规则，使源计算机能够与配置服务器通信。 由于使用的防火墙软件多种多样，我们无法列出全部所需的防火墙配置。 咨询网络管理员来消除任何连接问题。
     3. 确保从防病毒软件中排除[要从防病毒程序中排除的 Site Recovery 文件夹](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)中列出的文件夹。  
@@ -52,6 +52,8 @@ ms.locfileid: "80478304"
     b. 打开 Installation_Directory/Vx/bin/uninstall.sh 文件，并注释掉对 **stop_services** 函数的调用。
     c. 打开 Installation_Directory/Fx/uninstall.sh 文件，并注释掉尝试停止 Fx 服务的整个节。
     d. [卸载](vmware-physical-manage-mobility-service.md#uninstall-mobility-service)移动服务。 成功卸载后，重新启动系统，然后尝试安装移动代理。
+
+8. 确保未为用户帐户启用多重身份验证。 目前，Azure Site Recovery 不支持对用户帐户进行多重身份验证。 在没有启用多重身份验证的用户帐户的情况下注册配置服务器。  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>安装失败：无法加载帐户
 
@@ -145,7 +147,7 @@ ms.locfileid: "80478304"
    
     `Syntax: Unregister-ASRComponent.pl -IPAddress <IP_ADDRESS_OF_MACHINE_TO_UNREGISTER> -Component <Source/ PS / MT>`
  
-    如果源服务器条目为 "OnPrem-VM01"，ip 地址为10.0.0.4，则使用以下命令。
+    如果源服务器条目为“OnPrem-VM01”且 ip-address 为 10.0.0.4，则改为使用以下命令。
  
     `perl Unregister-ASRComponent.pl -IPAddress 10.0.0.4 -Component Source`
  
@@ -191,7 +193,7 @@ ms.locfileid: "80478304"
 若要解决问题，请登录 Azure 门户并执行以下操作之一：
 
 - 在 AAD 中请求应用程序开发人员角色。 有关应用程序开发人员角色的详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
-- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”   。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+- 验证并确保 AAD 中的“用户可以创建应用程序”标志设置为“true”。 有关更多信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>进程服务器/主目标无法与配置服务器通信 
 
@@ -203,7 +205,7 @@ ms.locfileid: "80478304"
 
 若要验证并确保主目标代理可以为配置服务器 IP 创建 TCP 会话，请在主目标代理日志中查找类似于以下内容的跟踪：
 
-TCP \<将 IP 替换为此处的 CS IP>:52739 \<将 IP 替换为此处的 CS IP>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here>:52739 \<Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 此处将 IP 替换为 CS IP
 

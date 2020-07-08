@@ -5,17 +5,17 @@ description: 了解如何更改工作区使用的 Azure 存储帐户的访问密
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/19/2020
+ms.openlocfilehash: 3a99bff20eb7135b384bfef5be4ece9c5fff0461
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80296939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483306"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新生成存储帐户访问密钥
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,6 +23,9 @@ ms.locfileid: "80296939"
 了解如何更改 Azure 机器学习使用的 Azure 存储帐户的访问密钥。 Azure 机器学习可以使用存储帐户来存储数据或训练后的模型。
 
 出于安全考虑，你可能需要更改 Azure 存储帐户的访问密钥。 重新生成访问密钥时，必须更新 Azure 机器学习以使用新密钥。 Azure 机器学习可以将存储帐户同时用作模型存储和数据存储。
+
+> [!IMPORTANT]
+> Registred with 数据存储的凭据保存在与工作区关联的 Azure Key Vault 中。 如果为 Key Vault 启用[软删除](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)，请确保按照本文中的步骤更新凭据。 取消注册数据存储区并将其在同一名称中重新注册将失败。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -85,7 +88,7 @@ for name, ds in datastores.items():
 
 1. 重新生成密钥。 有关重新生成访问密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。 保存新密钥。
 
-1. 若要更新工作区以使用新密钥，请执行以下步骤：
+1. Azure 机器学习工作区将自动同步新密钥并在一小时后开始使用。 若要强制工作区立即同步到新密钥，请执行以下步骤：
 
     1. 使用以下 Azure CLI 命令登录到包含你的工作区的 Azure 订阅：
 
@@ -105,27 +108,35 @@ for name, ds in datastores.items():
 
         此命令自动为工作区使用的 Azure 存储帐户同步新密钥。
 
-1. 若要重新注册使用存储帐户的数据存储，请使用以下代码并使用[需要更新的内容](#whattoupdate)部分中的值以及步骤 1 中的密钥：
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. 可以通过 SDK 或 [Azure 机器学习工作室](https://ml.azure.com)重新注册使用存储帐户的数据存储。
+    1. 若要通过 Python SDK 重新注册数据存储，请在以下代码中使用[需要更新的内容](#whattoupdate)部分中的值以及步骤 1 中的密钥。 
+    
+        因为指定了 `overwrite=True`，所以此代码将覆盖现有注册，并对其进行更新以使用新密钥。
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    因为指定了 `overwrite=True`，所以此代码将覆盖现有注册，并对其进行更新以使用新密钥。
+    1. 若要通过工作室重新注册数据存储，请从工作室的左窗格中选择“数据存储”。 
+        1. 选择要更新的数据存储。
+        1. 选择左上角的“更新凭据”按钮。 
+        1. 使用步骤 1 中的新访问密钥填充窗体，然后单击“保存”。
+        
+            若要更新默认数据存储的凭据，请完成此步骤，并重复步骤 2b，以将新密钥与工作区的默认数据存储重新同步。 
 
 ## <a name="next-steps"></a>后续步骤
 

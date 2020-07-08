@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/11/2020
-ms.openlocfilehash: 6f65ba96f768a4b88aa13c073cc66920b8c5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506984"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>什么是用于 VM 的 Azure Monitor？
 
-用于 VM 的 Azure Monitor 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 它支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。 以下主要功能提供了深入了解：
+用于 VM 的 Azure Monitor 按比例监视虚拟机、虚拟机规模集和 Azure Arc 计算机。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 它支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖项。 以下主要功能提供了深入了解：
 
 - **预定义的趋势性能图表**：显示来宾 VM 操作系统中的核心性能指标。
 
@@ -31,7 +31,7 @@ ms.locfileid: "79480481"
 
 适用于 VM 的 Azure Monitor 可以提供可预测的性能和重要应用程序的可用性。 它确定性能瓶颈和网络问题，还可以帮助您了解问题是否与其他依赖关系相关。  
 
-## <a name="data-usage"></a>数据使用情况
+## <a name="data-usage"></a>数据用途
 
 部署用于 VM 的 Azure Monitor 时，系统会引入 VM 收集的数据并将其存储在 Azure Monitor 中。 收集的性能和依赖关系数据存储在 Log Analytics 工作区中。 根据在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)上发布的定价，将针对以下内容对用于 VM 的 Azure Monitor 进行计费：
 

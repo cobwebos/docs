@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504451"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 
@@ -43,7 +43,7 @@ StorSimple 诊断工具可诊断 StorSimple 设备的系统、性能、网络和
 连接到设备的 Windows PowerShell 界面后，请执行以下步骤来运行 cmdlet。
 1. 按照[使用 PuTTY 连接到设备串行控制台](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)中的步骤登录到设备串行控制台。
 
-2. 键入下列命令：
+2. 键入以下命令：
 
     `Invoke-HcsDiagnostics`
 
@@ -378,7 +378,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
 1.  首先，同时创建分层卷以及选中存档选项的分层卷。 此操作可确保该工具同时针对 64 KB 和 512 KB Blob 大小运行测试。
 
-2. 创建并配置卷后，请运行 cmdlet。 键入：
+2. 创建并配置卷后，请运行 cmdlet。 类型：
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
@@ -414,10 +414,10 @@ Controller0>
 
 下表描述了系统信息中 Windows PowerShell 参数的含义。 
 
-| PowerShell 参数    | 说明  |
+| PowerShell 参数    | 描述  |
 |-------------------------|------------------|
 | 实例 ID             | 每个控制器都有一个关联的唯一标识符或 GUID。|
-| 名称                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
+| “属性”                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
 | 型号                   | StorSimple 8000 系列设备的型号。 型号可能是 8100 或 8600。|
 | SerialNumber            | 设备序列号是出厂分配的，长度为 15 个字符。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 设备型号。<br>SHX – 制造地。<br> 0991003 – 具体的产品。 <br> G44HT – 最后 5 位是递增的，确保构成唯一的序列号。 这组编号不一定是按顺序递增的。|
 | TimeZone                | 部署设备期间在 Azure 门户中配置的设备时区。|

@@ -4,29 +4,37 @@ description: include 文件
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 06/26/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4063751a71cd9cecc424dfe3daddaecfd9ea4071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ee5973afb9312688178abd9a186c5319032c493
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85506033"
 ---
 使用污点 Vm，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
-可用容量可能因大小、区域、时间等而有所不同。 部署专色 Vm 时，如果有可用的容量，Azure 将分配 Vm，但这些 Vm 没有 SLA。 点 VM 不提供高可用性保证。 当 Azure 需要恢复容量时，Azure 基础结构会在30秒的时间内逐出点 Vm。 
+可用容量可能因大小、区域、一天内的时间等因素而异。 部署专色 Vm 时，如果有可用的容量，Azure 将分配 Vm，但这些 Vm 没有 SLA。 点 VM 不提供高可用性保证。 当 Azure 需要恢复容量时，Azure 基础结构会在30秒的时间内逐出点 Vm。 
 
 
 ## <a name="eviction-policy"></a>逐出策略
 
-Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会将逐出策略设置为*解除分配*，这会将逐出的 vm 移到停止解除分配状态，从而使你可以在以后重新部署逐出的 vm。 但是，重新分配点 Vm 将取决于是否存在可用的点容量。 已释放的 Vm 将计入你的 vCPU 配额，你将按你的基础磁盘收费。 
+Vm 可根据容量或设置的最大价格进行逐出。 创建点 VM 时，可以将逐出策略设置为 "*解除分配*" （默认）或 "*删除*"。 
 
-用户可以选择通过[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)接收 VM 内通知。 这会在你的 Vm 被逐出时通知你，你将有30秒的时间完成任何作业并在逐出之前执行关闭任务。 
+*解除分配*策略会将 VM 移到停止解除分配状态，以便以后重新部署它。 但是，不保证分配将成功。 已释放的 Vm 将计入你的配额，并将对基础磁盘的存储成本进行收费。 
+
+如果希望在逐出 VM 时删除 VM，可以将逐出策略设置为 "*删除*"。 逐出的 Vm 将连同它们的基础磁盘一起删除，因此你不会继续为存储付费。 
+
+> [!NOTE]
+>
+> 门户目前不支持 `Delete` 作为逐出选项，只能 `Delete` 使用 POWERSHELL、CLI 和模板进行设置。
+
+你可以选择通过[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
 
 
-| 选项 | 结果 |
+| 选项 | 业务成效 |
 |--------|---------|
 | 最大价格设置为 >= 当前价格。 | 如果容量和配额可用，则部署 VM。 |
 | 最大价格设置为 < 当前价格。 | VM 未部署。 您将收到一条错误消息，指出最大价格需要 >= 当前价格。 |
@@ -37,66 +45,63 @@ Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会�
 | 如果最大价格设置为`-1` | 出于定价原因，不会逐出 VM。 最大价格为当前价格，最高可达标准 Vm 的价格。 永远不会按标准价格收费。| 
 | 更改最大价格 | 需要解除分配 VM 以更改最大价格。 解除分配 VM，设置新的最大价格，并更新 VM。 |
 
+
 ## <a name="limitations"></a>限制
 
 对于污点 Vm，不支持以下 VM 大小：
  - B 系列
  - 任意大小的促销版本（如 Dv2、NV、NC、H 促销大小）
 
-污点 Vm 当前无法使用临时 OS 磁盘。
-
 污点 Vm 可以部署到任何区域，但 Microsoft Azure 中国世纪互联。
+
+不支持某些订阅通道：
+
+<a name="channel"></a>
+
+| Azure 渠道               | Azure Spot VM 的可用性       |
+|------------------------------|-----------------------------------|
+| 企业协议         | 是                               |
+| 即用即付                | 是                               |
+| 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| 优点                     | 不可用                     |
+| 赞助                    | 是                               |
+| 免费试用版                   | 不可用                     |
+
+
 
 ## <a name="pricing"></a>定价
 
 基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 
 
 
-使用可变定价，可以选择设置最大价格（美元），最多可使用5个小数位数。 例如，该值`0.98765`的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为`-1`，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
+使用可变定价，你可以设置最高价格，以美元 (USD) 为单位，最多可使用 5 个小数位。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
 
 
-##  <a name="frequently-asked-questions"></a>常见问题解答
+##  <a name="frequently-asked-questions"></a>常见问题
 
 **问：** 创建后，点 VM 与常规标准 VM 是否相同？
 
-**答：** 是，但没有用于发现点 Vm 的 SLA，可以随时将其逐出。
+**答:** 是，但 Spot VM 没有 SLA，可以随时将其逐出。
 
 
-**问：** 当你收回但仍需要容量时，该怎么办？
+**问：** 当被逐出但仍然需要容量时，该怎么办？
 
-**答：** 如果需要立即使用容量，建议使用标准 Vm，而不是使用虚拟机。
+**答:** 如果马上需要容量，建议使用标准 VM，而不要使用 Spot VM。
 
 
 **问：** 如何为专色 Vm 管理配额？
 
-**答：** 污点 Vm 将有单独的配额池。 将在 Vm 与规模集实例之间共享点配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+**答：** 污点 Vm 将有单独的配额池。 将在 VM 与规模集实例之间共享 Spot 配额。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 
-**问：** 能否为查找附加的配额？
+**问：** 是否可以为 Spot 申请额外的配额？
 
-**答：** 是的，你将能够提交请求，以通过[标准配额请求过程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)增加对污点 vm 的配额。
-
-
-**问：** 哪些通道支持污点 Vm？
-
-**答：** 有关点 VM 可用性，请参阅下表。
-
-<a name="channel"></a>
-
-| Azure 通道               | Azure 点 Vm 可用性       |
-|------------------------------|-----------------------------------|
-| 企业协议         | 是                               |
-| Pay As You Go                | 是                               |
-| 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Microsoft 客户协议 | 是                               |
-| 优点                     | 不可用                     |
-| 赞助                    | 不可用                     |
-| 免费试用版                   | 不可用                     |
+**答:** 是的，你可以通过[标准配额申请流程](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)提交申请，请求提高 Spot VM 的配额。
 
 
-**问：** 可以在何处发布问题？
+**问：** 我可以在何处发布问题？
 
-**答：** 您可以使用`azure-spot` [Q&](https://docs.microsoft.com/answers/topics/azure-spot.html)来发布和标记问题。 
+**答:** 你可以在[问答](https://docs.microsoft.com/answers/topics/azure-spot.html)中发布问题并使用 `azure-spot` 来标记问题。 
 
 
 

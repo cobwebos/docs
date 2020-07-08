@@ -3,15 +3,15 @@ title: 配置 Azure HPC 缓存设置
 description: 说明如何为缓存配置其他设置，如 MTU 和无 squash，以及如何从 Azure Blob 存储目标访问快速快照。
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505301"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>配置其他 Azure HPC 缓存设置
 
@@ -22,6 +22,9 @@ Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大�
 若要查看设置，请在 Azure 门户中打开缓存的 "**配置**" 页。
 
 ![Azure 门户中的 "配置" 页的屏幕截图](media/configuration.png)
+
+> [!TIP]
+> [管理 AZURE HPC 缓存视频](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)显示配置页及其设置。
 
 ## <a name="adjust-mtu-value"></a>调整 MTU 值
 <!-- linked from troubleshoot-nas article -->
@@ -48,9 +51,9 @@ Azure 门户中的 "**配置**" 页具有自定义多个设置的选项。 大�
 
 如果已禁用 root squash，则客户端根用户（UID 0）发出的请求会作为根传递到后端 NFS 存储系统。 此配置可能会允许不适当的文件访问。
 
-在缓存上设置根 squash 有助于补偿用作存储目标的``no_root_squash`` NAS 系统上所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prereqs.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
+在缓存上设置根 squash 有助于补偿 ``no_root_squash`` 用作存储目标的 NAS 系统上所需的设置。 （了解有关[NFS 存储目标先决条件](hpc-cache-prereqs.md#nfs-storage-requirements)的详细信息。）与 Azure Blob 存储目标一起使用时，它还可以提高安全性。
 
-默认设置为 **"是"**。 （2020年4月之前创建的缓存可能会默认设置为 "**否**"。）
+默认设置为“是”。 （2020年4月之前创建的缓存可能会默认设置为 "**否**"。）
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 存储目标的快照
 
@@ -73,4 +76,4 @@ Azure HPC 缓存会存储每日、每周和每月快照，直到它们被新的�
 * 最多8个每周快照
 * 最多3个月快照
 
-从 blob 存储目标的`.snapshot`命名空间的目录中访问快照。
+从 `.snapshot` blob 存储目标的命名空间的目录中访问快照。

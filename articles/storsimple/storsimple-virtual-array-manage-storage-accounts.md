@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 5cedde1e7daa49aaa7a2786c9ad8a65fb8e452f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507494"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>使用 StorSimple Device Manager 管理 StorSimple 虚拟阵列的存储帐户凭据
 
@@ -69,13 +69,13 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”**** 边栏选项卡。
 2. 在“配置”**** 部分中，选择“存储帐户凭据”****。
-3. 单击“添加”  。
+3. 单击“添加” 。
 4. 在“添加存储帐户”**** 边栏选项卡中，执行以下操作：
    
     1. 对于“订阅”****，选择“当前”****。
     2. 提供 Azure 存储帐户的名称。
     3. 选择“启用”，创建用于在 StorSimple 设备和云之间传输网络通信的安全通道。**** 仅当要在私有云中操作时，才选择“禁用”****。
-    4. 单击“添加”  。 成功创建存储帐户后，将收到通知。<br></br>
+    4. 单击“添加” 。 成功创建存储帐户后，将收到通知。<br></br>
    
         ![添加现有的存储帐户凭据](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
@@ -83,7 +83,7 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
 
 1. 导航到 Device Manager 服务，选择并双击它。 这会打开“概述”**** 边栏选项卡。
 2. 在“配置”**** 部分中，选择“存储帐户凭据”****。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
-3. 单击“添加”  。
+3. 单击“添加” 。
 4. 在“添加存储帐户”**** 边栏选项卡中，执行以下操作：
    
     1. 对于“订阅”****，选择“其他”****。
@@ -94,7 +94,7 @@ StorSimple 虚拟阵列的 StorSimple Device Manager 服务边栏选项卡的“
    
     4. 若要启用 TLS，请单击 "**启用**" 按钮，为 StorSimple 设备管理器服务与云之间的网络通信创建一个安全通道。 仅当要在私有云中操作时，才单击“禁用”**** 按钮。
    
-    5. 单击“添加”  。 成功创建存储帐户凭据后，将收到通知。
+    5. 单击“添加” 。 成功创建存储帐户凭据后，将收到通知。
 
 5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”**** 下。
    

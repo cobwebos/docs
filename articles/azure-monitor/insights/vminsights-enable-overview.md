@@ -5,26 +5,32 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bb5d5dd5110f176b59a99f6a3aa223184158da5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507069"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>启用用于 VM 的 Azure Monitor 概述
 
-本文概述了可用于在虚拟机上启用用于 VM 的 Azure Monitor 的选项，以监视运行状况和性能。 发现 Azure 虚拟机 (VM) 和虚拟机规模集、本地 VM 或其他云环境中托管的 VM 上运行的应用程序依赖项。  
+本文概述了可用于启用用于 VM 的 Azure Monitor 来监视以下各项的运行状况和性能的选项：
+
+- Azure 虚拟机 
+- Azure 虚拟机规模集
+- 与 Azure Arc 连接的混合虚拟机
+- 本地虚拟机
+- 托管在其他云环境中的虚拟机。  
 
 若要设置用于 VM 的 Azure Monitor：
 
-* 直接从 VM 或虚拟机规模集中选择 "**见解**"，启用单个 Azure VM 或虚拟机规模集。
-* 使用 Azure Policy 启用两个或更多个 Azure VM 和虚拟机规模集。 此方法可确保在现有和新的 VM 与规模集上安装并正确配置所需的依赖项。 系统会报告不合规的 VM 和规模集，因此你可以决定是否要启用和修正它们。
-* 使用 PowerShell 跨指定的订阅或资源组启用两个或更多 Azure VM，或启用虚拟机规模集。
+* 通过在 Azure 门户中直接从菜单中选择 "**见解**"，启用单个 azure VM、azure VMSS 或 azure Arc 计算机。
+* 使用 Azure 策略启用多个 Azure Vm、Azure VMSS 或 Azure Arc 计算机。 此方法可确保在现有和新的 VM 与规模集上安装并正确配置所需的依赖项。 系统会报告不合规的 VM 和规模集，因此你可以决定是否要启用和修正它们。
+* 使用 PowerShell 在指定的订阅或资源组中启用多个 Azure Vm、Azure Arc Vm、Azure VMSS 或 Azure Arc 计算机。
 * 启用用于 VM 的 Azure Monitor，以监视企业网络或其他云环境中托管的 VM 或物理计算机。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保理解以下部分中的信息。 
 
@@ -43,6 +49,8 @@ ms.locfileid: "80982304"
 - 美国东部 2
 - 美国中部
 - 美国中北部
+- US Gov Az
+- US Gov Va
 - 加拿大中部
 - 英国南部
 - 北欧
@@ -62,19 +70,17 @@ ms.locfileid: "80982304"
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 还可以在 Azure 门户中为单个 Azure VM 或虚拟机规模集启用监视时创建工作区。
 
-若要在 Log Analytics 工作区中设置使用 Azure Policy、Azure PowerShell 或 Azure 资源管理器模板的大规模方案：
-
-* 安装*ServiceMap*和*InfrastructureInsights*解决方案。 可以使用提供的 Azure 资源管理器模板来完成此安装。 或者，在 Azure 门户的 "**入门**" 选项卡中，选择 "**配置工作区**"。
-* 配置 Log Analytics 工作区以收集性能计数器。
-
-若要配置大规模方案的工作区，请使用以下方法之一：
+若要设置使用 Azure 策略、Azure PowerShell 或 Azure 资源管理器模板的大规模方案，必须安装*VMInsights*解决方案。 可以通过以下方法之一执行此操作：
 
 * 使用[Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace)。
 * 在用于 VM 的 Azure Monitor 的[“策略覆盖范围”](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview)页上，选择“配置工作区”。******** 
+
+### <a name="azure-arc-machines"></a>Azure Arc 计算机
+用于 VM 的 Azure Monitor 可用于可用 Arc 扩展服务的区域中启用了 Azure Arc 的服务器。 用户必须运行版本0.9 或更高版本的 Arc 代理，才能启用启用了 Arc 的服务器上的用于 VM 的 Azure Monitor。
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -82,7 +88,7 @@ ms.locfileid: "80982304"
 
 |OS 版本 |性能 |地图 |
 |-----------|------------|-----|
-|Windows Server Standard 2012 R2 | X | X |
+|Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
 |Windows Server 2016 | X | X |
 |Windows Server 2012 R2 | X | X |
@@ -134,7 +140,7 @@ ms.locfileid: "80982304"
 
 | OS 版本 | 内核版本 |
 |:--|:--|
-| 18.04 | 5.0（包括 Azure 优化内核）<br>4.18*<br>4.15* |
+| 18.04 | 5.3.0-1020<br>5.0（包括 Azure 优化内核）<br>4.18* <br> 4.15* |
 | 16.04.3 | 4.15.* |
 | 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
@@ -175,8 +181,8 @@ ms.locfileid: "80982304"
 
 | 文件 | (OS) | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.3.9380 | 40763BD0A5B60707DF3F9E7BCC17D917F5CE995F2F5A4633D8B733F3BE143921  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.3.9380 | BB41BB59BDD293968F02A9EF821F9639406AA1BDF1F67925DB9EE00D54AA7F0B |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
@@ -188,12 +194,12 @@ ms.locfileid: "80982304"
 
 使用下表中所述的方法之一启用用于 VM 的 Azure Monitor：
 
-| 部署状态 | 方法 | 说明 |
+| 部署状态 | 方法 | 描述 |
 |------------------|--------|-------------|
-| 单个 Azure VM 或虚拟机规模集 | [从 VM 启用](vminsights-enable-single-vm.md) | 可以通过直接从 VM 或虚拟机规模集中选择 " **Insights** " 来启用单个 Azure VM。 |
-| 多个 Azure VM 或虚拟机规模集 | [通过 Azure Policy 启用](vminsights-enable-at-scale-policy.md) | 可以使用 Azure Policy 和可用的策略定义来启用多个 Azure VM。 |
-| 多个 Azure VM 或虚拟机规模集 | [通过 Azure PowerShell 或 Azure 资源管理器模板启用](vminsights-enable-at-scale-powershell.md) | 通过使用 Azure PowerShell 或 Azure 资源管理器模板启用指定订阅或资源组中的多个 Azure VM 或虚拟机规模集。 |
-| 混合云 | [为混合环境启用](vminsights-enable-hybrid-cloud.md) | 可以部署到数据中心或其他云环境中托管的 VM 或物理计算机。 |
+| 单个 Azure VM、Azure VMSS 或 Azure Arc 计算机 | [从门户启用](vminsights-enable-single-vm.md) | 直接从 Azure 门户的菜单中选择 "**见解**"。 |
+| 多个 Azure VM、Azure VMSS 或 Azure Arc 计算机 | [通过 Azure Policy 启用](vminsights-enable-at-scale-policy.md) | 创建 VM 或 VMSS 时，使用 Azure 策略自动启用。 |
+| | [通过 Azure PowerShell 或 Azure 资源管理器模板启用](vminsights-enable-at-scale-powershell.md) | 使用 Azure PowerShell 或 Azure 资源管理器模板，可以通过指定的订阅或资源组启用多个 Azure VM、Azure Arc VM 或 Azure VMSS。 |
+| 混合云 | [为混合环境启用](vminsights-enable-hybrid-cloud.md) | 部署到你的数据中心或其他云环境中托管的 Vm 或物理计算机。 |
 
 ## <a name="management-packs"></a>管理包
 

@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fb49802adf6242f445b700d06622d7e6aa336b4d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67357042"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504331"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期数据传输解决方案
  
@@ -45,7 +45,7 @@ ms.locfileid: "67357042"
 | 功能                  | AzCopy                                 | Azure 存储 REST API       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | 外形规格                 | Microsoft 提供的命令行工具       | 客户对照存储 <br> REST API 使用 Azure 客户端库进行开发 |
-| 初始一次性设置     | 轻微                                | 开发工作量中等、可变    |
+| 初始一次性设置     | 最小                                | 开发工作量中等、可变    |
 | 数据格式                 | Azure Blob、Azure 文件、Azure 表 | Azure Blob、Azure 文件、Azure 表   |
 | 性能                 | 已优化                      | 随开发优化                  |
 | 定价                     | 免费，收取数据出口费用      | 免费，收取数据出口费用        |
@@ -55,11 +55,11 @@ ms.locfileid: "67357042"
 | 功能                                       | Data Box Gateway | Data Box Edge   | Azure 数据工厂        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | 外形规格                                   | 虚拟设备             | 物理设备          | Azure 门户中的服务，本地代理                                                            |
-| 硬件                                      | 虚拟机监控程序            | 由 Microsoft 提供    | NA                                                            |
+| 硬件                                      | 虚拟机监控程序            | 由 Microsoft 提供    | 不可用                                                            |
 | 初始设置工作量                          | 小（少于 30 分钟）            | 中（约数小时） | 大（约数天）                                                 |
 | 数据格式                                   | Azure Blob、Azure 文件   | Azure Blob、Azure 文件 | [支持 70 多个用于数据存储和格式的数据连接器](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | 数据预处理                           | 否                         | 是，通过 Edge 计算进行    | 是                                                           |
-| 本地缓存<br>（存储本地数据）    | 是                        | 是                      | 否                                                            |
+| 本地缓存<br>（存储本地数据）    | 是                        | 是                      | No                                                            |
 | 从其他云传输                    | 否                         | 否                       | 是                                                           |
 | 定价                                       | [定价](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定价](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定价](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 

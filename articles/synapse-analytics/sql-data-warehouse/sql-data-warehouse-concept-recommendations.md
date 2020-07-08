@@ -6,23 +6,23 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
-ms.date: 04/30/2020
+ms.subservice: sql-dw
+ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653025"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482847"
 ---
 # <a name="synapse-sql-recommendations"></a>Synapse SQL 建议
 
-本文介绍 Synapse SQL 通过 Azure 顾问提供的建议。  
+本文介绍了通过 Azure 顾问提供的 Synapse SQL 建议。  
 
-Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负荷的性能。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中提供最佳做法。 Synapse SQL 每天收集一次活动工作负荷的遥测和外围应用建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
+Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负荷的性能。 建议与 [Azure 顾问](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)紧密集成，直接在 [Azure 门户](https://aka.ms/Azureadvisor)中为你提供最佳做法。 Synapse SQL 每天收集一次活动工作负荷的遥测和外围应用建议。 下面概述了支持的建议方案，以及如何应用建议的操作。
 
 可以立即[查看你的建议](https://aka.ms/Azureadvisor)！ 
 
@@ -34,7 +34,7 @@ Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负�
 
 ## <a name="no-or-outdated-statistics"></a>无统计信息或统计信息过时
 
-拥有欠佳的统计信息会严重影响查询性能，因为它会导致 SQL 查询优化器生成欠佳的查询计划。 以下文档介绍了有关创建和更新统计信息的最佳做法：
+统计信息欠佳可能严重影响查询性能，因为它可能导致 SQL 查询优化器生成欠佳的查询计划。 以下文档介绍了有关创建和更新统计信息的最佳做法：
 
 - [创建和更新表统计信息](sql-data-warehouse-tables-statistics.md)
 
@@ -70,3 +70,7 @@ Synapse SQL 提供建议，确保以一致的方式优化数据仓库工作负�
 ## <a name="tempdb-contention"></a>tempdb 争用
 
 当存在高 tempdb 争用时，查询性能可能会降低。  tempdb 争用可以通过用户定义的临时表或在发生大量数据移动时发生。 对于这种情况，可以进行扩展以分配更多的 tempdb，并[配置资源类和工作负荷管理](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management)以便为查询提供更多内存。 
+
+## <a name="data-loading-misconfiguration"></a>数据加载配置错误
+
+应始终从与 SQL 池相同的区域中的存储帐户加载数据，以最大程度地减少延迟。 使用[COPY 语句实现高吞吐量数据引入](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，并拆分存储帐户中的暂存文件，以最大限度地提高吞吐量。 如果不能使用 COPY 语句，则可以使用 SqlBulkCopy API 或 bcp，使用较高的批大小，以获得更好的吞吐量。 有关其他数据加载指南，请访问以下[文档](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 

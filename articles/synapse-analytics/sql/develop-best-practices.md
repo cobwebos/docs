@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9a291971ce0edead9ca28a47f7ad0689b0f65547
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ff4781109b2572d5555ec0a03c65359ef5a89d8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834945"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482507"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 开发最佳做法
 本文介绍在开发数据仓库解决方案时的指导和最佳做法。 
@@ -106,7 +106,7 @@ ms.locfileid: "83834945"
 由于列存储表通常要等到每个表中的行数超过 100 万且每个 SQL 池表分区成 60 个表之后，才会数据推送到压缩的列存储段，因此除非列存储表中的行数超过 6000 万，否则这种表对查询无益。  
 
 > [!TIP]
-> 对于少于 6000 万行的表，列存储索引可能不是最佳解决方案。  
+> 对于少于 6,000 万行的表，列存储索引可能不是最佳解决方案。  
 
 此外，如果将分区，则要考虑的是每个分区必须有 1 百万个行，使用聚集列存储索引才有益。  如果表有 100 个分区，则它至少必须有 60 亿行才能受益于聚集列存储（60 个分，100 个分区，100 万行）。  
 
@@ -150,7 +150,7 @@ ms.locfileid: "83834945"
 
 数据通常是以分区形式组织。 可以指示 SQL On-Demand 查询特定文件夹和文件。 这样可以减少查询需要读取和处理的文件数和数据量。 
 
-因此，将获得更好的性能。 有关详细信息，请查看 [filename](develop-storage-files-overview.md#filename-function) 和 [filepath](develop-storage-files-overview.md#filepath-function) 函数，以及有关如何[查询特定文件](query-specific-files.md)的示例。
+因此，将获得更好的性能。 有关详细信息，请查看 [filename](query-data-storage.md#filename-function) 和 [filepath](query-data-storage.md#filepath-function) 函数，以及有关如何[查询特定文件](query-specific-files.md)的示例。
 
 如果存储中的数据没有进行分区，可以考虑对其进行分区，以便使用这些函数来优化以这些文件为目标的查询。
 

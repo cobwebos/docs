@@ -3,15 +3,15 @@ title: 部署 Avere vFXT for Azure
 description: 在 Azure 中部署 Avere vFXT 群集的步骤
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c42abdbfaf5c867a9d8d4cbc6b4519a86adaac0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505641"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -87,7 +87,7 @@ ms.locfileid: "79252592"
 
 * **Avere vFXT 群集节点计数**-选择群集中的节点数。 至少 3 个节点，至多 12 个节点。
 
-* **群集管理密码** - 创建用于群集管理的密码。 此密码与用户名```admin```一起用于登录到群集控制面板，你可以在其中监视群集并配置群集设置。
+* **群集管理密码** - 创建用于群集管理的密码。 此密码与用户名一起用于 ```admin``` 登录到群集控制面板，你可以在其中监视群集并配置群集设置。
 
 * **Avere vFXT 群集名称** - 为群集提供唯一名称。
 

@@ -3,15 +3,15 @@ title: Azure Data Lake Storage Gen1 性能优化-PowerShell
 description: 有关在将 Azure PowerShell 用于 Azure Data Lake Storage Gen1 时如何提高性能的提示。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504689"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南
 
@@ -21,7 +21,7 @@ ms.locfileid: "73904564"
 
 ## <a name="performance-related-properties"></a>性能相关属性
 
-| properties            | 默认 | 说明 |
+| 属性            | 默认 | 说明 |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | 使用此参数可以选择用于上传或下载每个文件的并行线程数。 此数字表示可以针对每个文件分配的最大线程数，但根据具体的方案，获得的线程可能少于此数目（例如，如果只是上传 1 KB 的文件，则即使请求了 20 个线程，也只能获得 1 个线程）。  |
 | ConcurrentFileCount | 10      | 此参数专门为上传或下载文件夹。 此参数确定可上传或下载的并发文件数。 此数字表示一次性可上传或下载的最大并发文件数，但根据具体的方案，上传或下载的并发文件数可能少于此数目（例如，如果只是上传 2 个文件，则即使请求上传 15 个并发文件，也只能上传 2 个）。 |

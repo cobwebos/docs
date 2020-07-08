@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60397271"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504297"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>适用于小型数据集以及中低速网络带宽的数据传输
  
@@ -49,7 +49,7 @@ ms.locfileid: "60397271"
 
 下表汇总了各项关键功能方面的差异。
 
-| Feature | Azure 存储资源管理器 | Azure 门户 | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure 存储 REST API 或 SDK |
+| 功能 | Azure 存储资源管理器 | Azure 门户 | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure 存储 REST API 或 SDK |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | 可用性 | 下载并安装 <br>独立工具 | Azure 门户中基于 Web 的浏览工具 | 命令行工具 |在 .NET、Java、Python、JavaScript、C++、Go、Ruby 和 PHP 中的可编程接口 |
 | 图形界面 | 是 | 是 | 否 | 否 |

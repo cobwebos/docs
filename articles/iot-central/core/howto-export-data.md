@@ -4,16 +4,16 @@ description: 如何将数据从 Azure IoT Central 应用程序导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: c83c97aab43b6978922202cc96ff92e1e046a7e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483918"
 ---
 # <a name="export-iot-data-to-destinations-in-azure"></a>将 IoT 数据导出到 Azure 中的目标
 
@@ -27,7 +27,7 @@ ms.locfileid: "80811626"
 > [!Note]
 > 当你打开数据导出时，你只会获得那一刻的数据。 当前，数据导出关闭时无法检索数据。 若要保留更多的历史数据，请及早打开数据导出。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 您必须是 IoT Central 应用程序中的管理员或具有数据导出权限。
 
@@ -67,7 +67,7 @@ ms.locfileid: "80811626"
     |标准|常规用途 V2|
     |标准|常规用途 V1|
     |标准|Blob 存储|
-    |Premium|块 Blob 存储|
+    |高级|块 Blob 存储|
 
 2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”********。 选择顶部的“+ 容器”以创建新容器。****
 
@@ -82,31 +82,35 @@ ms.locfileid: "80811626"
     > [!Tip]
     > 如果左窗格中未显示 "**数据导出**"，则没有权限在应用中配置数据导出。 请与管理员联系以设置数据导出。
 
-3. 选择右上角的“+ 新建”按钮。**** 选择某个 **Azure 事件中心**、**Azure 服务总线**或 **Azure Blob 存储**作为导出目标。 每个应用程序的最大导出数目是 5。
+3. 选择“+ 新建”按钮。**** 选择一个**Azure Blob 存储**、 **azure 事件中心**、 **Azure 服务总线队列**或**azure 服务总线主题**作为导出目标。 每个应用程序的最大导出数目是 5。
 
-    ![创建新的数据导出](media/howto-export-data/new-export-definition.png)
+4. 输入导出的名称。 在下拉列表框中，选择**命名空间**，或**输入连接字符串**。
 
-4. 在下拉列表框中，选择自己的**事件中心命名空间**、**服务总线命名空间**、**存储帐户命名空间**，或**输入连接字符串**。
-
-    - 您只能在与 IoT Central 应用程序相同的订阅中查看存储帐户、事件中心命名空间和服务总线命名空间。 如果要导出到此订阅之外的目标，请选择 "**输入连接字符串**" 并查看下一步。
+    - 您只能在与 IoT Central 应用程序相同的订阅中查看存储帐户、事件中心命名空间和服务总线命名空间。 如果要导出到此订阅之外的目标，请选择 "**输入连接字符串**" 并查看步骤6。
     - 对于使用免费定价计划创建的应用，配置数据导出的唯一方法是使用连接字符串。 免费定价计划中的应用没有关联的 Azure 订阅。
 
     ![创建新的事件中心](media/howto-export-data/export-event-hub.png)
 
-5. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。**** 若要获取连接字符串，请执行以下操作：
-    - 事件中心或服务总线，请中转到 Azure 门户中的命名空间：
-        - 在 "**设置**" 下，选择 "**共享访问策略**"
-        - 选择默认的 **RootManageSharedAccessKey**，或者创建一个新的
-        - 复制主连接字符串或辅助连接字符串
-    - 存储帐户，请在 Azure 门户中找到存储帐户：
-        - 在 "**设置**" 下，选择 "**访问密钥**"
-        - 复制密钥 1 连接字符串或密钥 2 连接字符串
+5. 从下拉列表框中选择一个事件中心、队列、主题或容器。
 
-6. 从下拉列表框中选择一个事件中心、队列、主题或容器。
+6. （可选）如果选中了“输入连接字符串”，则会出现一个用于粘贴连接字符串的新框。**** 若要获取连接字符串，请执行以下操作：
+
+    - 事件中心或服务总线，请中转到 Azure 门户中的命名空间：
+        - 若要对整个命名空间使用连接字符串：
+            1. 在 "**设置**" 下，选择 "**共享访问策略**"
+            2. 创建新的密钥或选择具有 "**发送**" 权限的现有密钥。
+            3. 复制主连接字符串或辅助连接字符串
+        - 若要将连接字符串用于特定的事件中心实例或服务总线队列或主题，请参阅**实体 > 事件中心**或**实体 > 队列**或**实体 > 主题**。 选择特定的实例，然后执行上述相同步骤以获取连接字符串。
+    - 存储帐户，请在 Azure 门户中找到存储帐户：
+        - 只支持整个存储帐户的连接字符串。 不支持作用域为单个容器的连接字符串。
+          1. 在 "**设置**" 下，选择 "**访问密钥**"
+          2. 复制密钥 1 连接字符串或密钥 2 连接字符串
+
+    粘贴到连接字符串中。 键入实例或**容器名称**，请记住，这区分大小写。
 
 7. 在“要导出的数据”下，通过将相应类型设置为“打开”来指定要导出的数据类型。********
 
-8. 若要启用数据导出，请确保启用的切换为**打开****状态**。 选择“保存”  。
+8. 若要启用数据导出，请确保启用的切换为**打开****状态**。 选择“保存”。
 
 9. 几分钟后，数据便会出现在所选目标中。
 
@@ -114,7 +118,7 @@ ms.locfileid: "80811626"
 
 导出的遥测数据包含设备发送到 IoT Central 的整个消息，而不仅仅是遥测值本身。 导出的设备数据包含对所有设备的属性和元数据的更改，而导出的设备模板则包含对所有设备模板的更改。
 
-对于事件中心和服务总线，数据将以近实时的速度导出。 数据在`body`属性中，采用 JSON 格式。 有关示例，请参阅下面的示例。
+对于事件中心和服务总线，数据将以近实时的速度导出。 数据在 `body` 属性中，采用 JSON 格式。 有关示例，请参阅下面的示例。
 
 对于 Blob 存储，将每分钟导出一次数据，其中每个文件包含自上次导出的文件以来发生的一批更改。 导出的数据以 JSON 格式放置在三个文件夹中。 存储帐户中的默认路径是：
 
@@ -124,14 +128,14 @@ ms.locfileid: "80811626"
 
 若要浏览 Azure 门户中的已导出文件，请导航到该文件，然后选择 "**编辑 blob** " 选项卡。
 
-## <a name="telemetry"></a>遥测技术
+## <a name="telemetry"></a>遥测
 
 对于事件中心和服务总线，IoT Central 在接收到来自设备的消息之后迅速导出一条新消息。 每个导出的消息都包含在正文属性中以 JSON 格式发送的完整消息。
 
 对于 Blob 存储，将每分钟分批和导出一次消息。 导出的文件使用的格式与[IoT 中心消息路由](../../iot-hub/tutorial-routing.md)到 blob 存储导出的消息文件相同。
 
 > [!NOTE]
-> 对于 Blob 存储，请确保你的设备正在发送`contentType: application/JSON`具有和`contentEncoding:utf-8` （或`utf-16` `utf-32`）的消息。 有关示例，请参阅 [IoT 中心文档](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
+> 对于 Blob 存储，请确保你的设备正在发送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` （或 `utf-16` ） `utf-32` 的消息。 有关示例，请参阅 [IoT 中心文档](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
 
 发送遥测数据的设备由设备 ID 表示（请参阅以下部分）。 若要获取设备的名称，请导出设备数据并使用与设备消息的 **deviceId** 匹配的 **connectionDeviceId** 来关联每条消息。
 
@@ -295,7 +299,7 @@ ms.locfileid: "80811626"
 
 每条消息或快照记录表示自上次导出的消息以来对已发布设备模板进行的一项或多项更改。 在每条消息或记录中发送的信息包括：
 
-- `id`与上面的设备流匹配`instanceOf`的设备模板
+- `id`与 `instanceOf` 上面的设备流匹配的设备模板
 - 设备模板的 `displayName`
 - 设备的 `capabilityModel`，包括其 `interfaces`、遥测数据、属性和命令定义
 - `cloudProperties` 定义
@@ -553,7 +557,7 @@ ms.locfileid: "80811626"
 自2020年2月3日起，启用了设备和设备模板的应用程序中的所有新导出都将具有上面所述的数据格式。 在此日期之前创建的所有导出都将保留在2020年6月30日之前的旧数据格式，此时，这些导出会自动迁移到新的数据格式。 新数据格式与 IoT Central 公共 API 中的[设备](https://docs.microsoft.com/rest/api/iotcentral/devices/get)、[设备属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties)、[设备云属性](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties)和[设备模板](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get)对象匹配。
 
 对于**设备**，旧数据格式和新数据格式之间的显著差异包括：
-- `@id`对于删除的设备， `deviceId`将重命名为`id` 
+- `@id`对于删除的设备， `deviceId` 将重命名为`id` 
 - `provisioned`添加了标记以描述设备的设置状态
 - `approved`添加了标记以描述设备的审批状态
 - `properties`包括设备和云属性，与公共 API 中的实体匹配
@@ -561,7 +565,7 @@ ms.locfileid: "80811626"
 对于**设备模板**，旧数据格式和新数据格式之间的显著差异包括：
 
 - `@id`对于设备模板已重命名为`id`
-- `@type`对于设备模板，将重命名`types`为，现在为数组
+- `@type`对于设备模板，将重命名为 `types` ，现在为数组
 
 ### <a name="devices-format-deprecated-as-of-3-february-2020"></a>设备（从2020年2月3日开始的格式）
 
@@ -748,4 +752,4 @@ ms.locfileid: "80811626"
 了解如何将数据导出到 Azure 事件中心、Azure 服务总线和 Azure Blob 存储后，请继续执行下一步：
 
 > [!div class="nextstepaction"]
-> [如何创建 webhook](./howto-create-webhooks.md)
+> [如何通过 Databricks 运行自定义分析](./howto-create-custom-analytics.md)

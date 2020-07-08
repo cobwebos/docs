@@ -6,14 +6,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/18/2019
-ms.openlocfilehash: b96fca3a5627a1c6c96c8db5c1c209a51c5e102a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75551552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483646"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
 
@@ -33,7 +33,7 @@ ms.locfileid: "75551552"
         * IPv4 地址，例如 `10.1.12.24` 
         * 带有以位数表示的子网掩码的 IPv4 地址，例如 `10.1.12.10/4`
 
-    * **访问**  
+    * **Access**  
         选择以下访问权限类型之一：  
         * 无访问权限 
         * 读取和写入

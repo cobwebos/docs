@@ -3,15 +3,15 @@ title: 更改默认的 blob 路径
 description: 了解如何设置 Azure 函数以重命名 blob 文件路径
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85504825"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
@@ -27,11 +27,11 @@ ms.locfileid: "76270629"
 
 1. 转到 [Azure 门户](https://portal.azure.com/)。
 
-2. 单击“+ 创建资源”****。 在“搜索”**** 框中，输入“Function App”****，并按 Enter****。 在显示的应用列表中，选中并单击“Function App”****。
+2. 单击“+ 创建资源”  。 在“搜索”**** 框中，输入“Function App”****，并按 Enter****。 在显示的应用列表中，选中并单击“Function App”****。
 
     ![在搜索框中输入“Function App”](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. 单击“创建”。 
+3. 单击“创建”。
 
     ![“Function App”窗口“创建”按钮](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "76270629"
 
         ![输入新的 Function App 配置数据](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. 单击“创建”。  随即创建函数应用。
+    7. 单击“创建”。 随即创建函数应用。
      
         ![创建的 Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "76270629"
 
         ![创建新的 C# 函数](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. 单击“创建”。  随即创建函数****。
+    4. 单击“创建”。 随即创建函数****。
 
      
 10. 在“函数”窗口中，运行 _.csx_ 文件。
@@ -189,11 +189,11 @@ ms.locfileid: "76270629"
 
        ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
-    2. 单击“+ 添加”。 
+    2. 单击“+ 添加”。
         
         ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. 键入 **""**，然后按**enter**。 在 **project.json** 文件中，粘贴以下代码：
+    3. 键入 " **project.js**，然后按**enter**。 在 **project.json** 文件中，粘贴以下代码：
 
         ```
         {
@@ -209,7 +209,7 @@ ms.locfileid: "76270629"
         ```
 
     
-    4. 单击“ **保存**”。
+    4. 单击“保存” 。
 
         ![“查看文件”链接](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 

@@ -11,21 +11,21 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: b-juche
-ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d76af4901103b0eed8cd1cffac744f8fb41d9689
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483493"
 ---
 # <a name="set-up-a-capacity-pool"></a>设置容量池
 
 设置容量池可以在其中创建卷。  
 
-## <a name="before-you-begin"></a>在开始之前 
+## <a name="before-you-begin"></a>开始之前 
 
 必须已经创建了一个 NetApp 帐户。   
 
@@ -41,7 +41,7 @@ ms.locfileid: "80616435"
     此时将显示“新建容量池”窗口。
 
 3. 提供新容量池的以下信息：  
-   * **Name**  
+   * **名称**  
      指定容量池的名称。  
      容量池名称对于每个 NetApp 帐户必须是唯一的。
 
@@ -55,7 +55,7 @@ ms.locfileid: "80616435"
       
      ![新建容量池](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
-4. 单击" **确定**"。
+4. 单击 **“确定”** 。
 
 ## <a name="next-steps"></a>后续步骤 
 

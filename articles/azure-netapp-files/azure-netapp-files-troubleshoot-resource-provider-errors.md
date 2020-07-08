@@ -12,15 +12,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72597213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85483459"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>排查 Azure NetApp 文件资源提供程序错误 
 
@@ -30,12 +30,12 @@ ms.locfileid: "72597213"
 
 ***无法更改 BareMetalTenantId。***  
 
-当您尝试更新或修补某个卷并且属性具有更改的值`BaremetalTenantId`时，将发生此错误。
+当您尝试更新或修补某个卷并且属性具有更改的值时，将发生此错误 `BaremetalTenantId` 。
 
 * 原因：   
-你正在尝试更新卷，而属性的`BaremetalTenantId`值不同于 Azure 中存储的值。
+你正在尝试更新卷，而属性的值 `BaremetalTenantId` 不同于 Azure 中存储的值。
 * 解决方案：   
-不要包含`BaremetalTenantId`在修补和更新（put）请求中。 或者，确保`BaremetalTenantId`请求中的是相同的。
+不要包含 `BaremetalTenantId` 在修补和更新（put）请求中。 或者，确保 `BaremetalTenantId` 请求中的是相同的。
 
 ***无法更改 ServiceLevel。***  
 
@@ -50,32 +50,32 @@ ms.locfileid: "72597213"
 
 ***无法更改 PoolId***  
 
-当你尝试使用已更改`PoolId`的属性更新或修补容量池时，将发生此错误。
+当你尝试使用已更改的属性更新或修补容量池时，将发生此错误 `PoolId` 。
 
 * 原因：   
-你正在尝试更新容量池`PoolId`属性。 `PoolId`属性为只读属性，无法更改。
+你正在尝试更新容量池 `PoolId` 属性。 `PoolId`属性为只读属性，无法更改。
 * 解决方案：   
-不要包含`PoolId`在修补和更新（put）请求中。  或者，确保`PoolId`请求中的是相同的。
+不要包含 `PoolId` 在修补和更新（put）请求中。  或者，确保 `PoolId` 请求中的是相同的。
 
 ***无法更改 CreationToken。***
 
-如果在创建卷后尝试更改文件路径（`CreationToken`），则会发生此错误。 创建卷时`CreationToken`，必须设置文件路径（），并且不能在以后更改。
+如果在创建卷后尝试更改文件路径（），则会发生此错误 `CreationToken` 。 `CreationToken`创建卷时，必须设置文件路径（），并且不能在以后更改。
 
 * 原因：   
-创建卷后，尝试更改文件路径（`CreationToken`），这是不受支持的操作。 
+创建卷后，尝试更改文件路径（ `CreationToken` ），这是不受支持的操作。 
 * 解决方案：   
 如果不需要更改文件路径，则考虑删除请求中的参数以消除错误消息。
 * 解决方法：   
-如果需要更改文件路径（`CreationToken`），可以使用新的文件路径创建新卷，然后将数据迁移到新卷。
+如果需要更改文件路径（ `CreationToken` ），可以使用新的文件路径创建新卷，然后将数据迁移到新卷。
 
 ***CreationToken 的长度必须至少为16个字符。***
 
-如果文件路径（`CreationToken`）不满足长度要求，则会出现此错误。 文件路径的长度必须至少为一个字符。
+如果文件路径（ `CreationToken` ）不满足长度要求，则会出现此错误。 文件路径的长度必须至少为一个字符。
 
 * 原因：   
 文件路径为空。  使用 API 创建卷时，需要创建令牌。 如果使用 Azure 门户，则将自动生成文件路径。
 * 解决方案：   
-输入至少一个字符作为文件路径（`CreationToken`）。
+输入至少一个字符作为文件路径（ `CreationToken` ）。
 
 ***不能更改域名。***
 
@@ -101,7 +101,7 @@ ms.locfileid: "72597213"
 
 ***错误 {操作} {resourceTypeName}***
 
-如果在对资源执行操作时其他错误处理无法处理此错误，则会显示此错误。   它包含文本 "Error"。 `{action}`可以是任何`getting`（、 `creating`、 `updating`或`deleting`）。  `{resourceTypeName}`为`resourceTypeName` （例如`netAppAccount` `capacityPool`，、、 `volume`等）。
+如果在对资源执行操作时其他错误处理无法处理此错误，则会显示此错误。   它包含文本 "Error"。 `{action}`可以是任何（ `getting` 、 `creating` 、 `updating` 或 `deleting` ）。  `{resourceTypeName}`为（例如，、、 `resourceTypeName` `netAppAccount` `capacityPool` `volume` 等）。
 
 * 原因：   
 此错误是一个未经处理的异常，其中原因未知。
@@ -123,43 +123,43 @@ ms.locfileid: "72597213"
 
 ***无法更改 FileSystemId。***
 
-如果尝试更改`FileSystemId`，则会出现此错误。  不`FileSystemdId`支持更改操作。 
+如果尝试更改，则会出现此错误 `FileSystemId` 。  `FileSystemdId`不支持更改操作。 
 
 * 原因：   
 创建卷时，将设置文件系统的 ID。 `FileSystemId`以后无法更改。
 * 解决方案：   
-不要包含`FileSystemId`在修补和更新（put）请求中。  另外，请确保`FileSystemId`该请求中的相同。
+不要包含 `FileSystemId` 在修补和更新（put）请求中。  另外，请确保该 `FileSystemId` 请求中的相同。
 
 ***Id 为 "{string}" 的 ActiveDirectory 不存在。***
 
-`{string}`部分是在 Active Directory 连接的`ActiveDirectoryId`属性中输入的值。
+`{string}`部分是在 Active Directory 连接的属性中输入的值 `ActiveDirectoryId` 。
 
 * 原因：   
-使用 Active Directory 配置创建帐户时，输入的值`ActiveDirectoryId`应为空。
+使用 Active Directory 配置创建帐户时，输入的值应为 `ActiveDirectoryId` 空。
 * 解决方案：   
-不要包含`ActiveDirectoryId`在创建（put）请求中。
+不要包含 `ActiveDirectoryId` 在创建（put）请求中。
 
 ***Api 版本无效。***
 
 API 版本未提交或包含无效的值。
 
 * 原因：   
-查询参数`api-version`中的值包含无效的值。
+查询参数中的值 `api-version` 包含无效的值。
 * 解决方案：   
 使用正确的 API 版本值。  资源提供程序支持许多 API 版本。 值的格式为 yyyy-mm-dd。
 
-***收到了无效的值 "{value}" {1}。***
+***收到了无效的值 "{value}" {1} 。***
 
-此`RuleIndex`消息指示、 `AllowedClients`、 `UnixReadOnly`、 `UnixReadWrite`、 `Nfsv3`和`Nfsv4`的字段中的错误。
+此消息指示 `RuleIndex` 、、 `AllowedClients` `UnixReadOnly` 、 `UnixReadWrite` 、 `Nfsv3` 和 `Nfsv4` 的字段中的错误。
 
 * 原因：   
-对于以下至少一个字段，输入验证请求`RuleIndex`失败：、 `AllowedClients`、 `UnixReadOnly`、 `UnixReadWrite`、 `Nfsv`3 和。 `Nfsv4`
+对于以下至少一个字段，输入验证请求失败： `RuleIndex` 、 `AllowedClients` 、 `UnixReadOnly` 、 `UnixReadWrite` 、 `Nfsv` 3 和 `Nfsv4` 。
 * 解决方案：   
-请确保在命令行上设置所有必需的和 nonconflicting 参数。 例如，不能同时设置`UnixReadOnly`和`UnixReadWrite`参数。
+请确保在命令行上设置所有必需的和 nonconflicting 参数。 例如，不能同时设置 `UnixReadOnly` 和 `UnixReadWrite` 参数。
 * 解决方法：   
 请参阅上述解决方案。
 
-***{1} VLAN {2}的{0} IP 范围已在使用中***
+***{0} {1} VLAN 的 IP 范围 {2} 已在使用中***
 
 之所以发生此错误，是因为所使用的 IP 范围的内部记录与新分配的 IP 地址发生冲突。
 
@@ -183,9 +183,9 @@ API 版本未提交或包含无效的值。
 当用户尝试更新或修补 volume MountTargets 属性时，会出现此错误。
 
 * 原因：   
-你正在尝试更新卷`MountTargets`属性。 不支持更改此属性。
+你正在尝试更新卷 `MountTargets` 属性。 不支持更改此属性。
 * 解决方案：   
-不要包含`MountTargets`在修补和更新（put）请求中。  另外，请确保该`MountTargets`请求中的相同。
+不要包含 `MountTargets` 在修补和更新（put）请求中。  另外，请确保该 `MountTargets` 请求中的相同。
 
 ***名称已在使用中。***
 
@@ -252,14 +252,14 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 * 解决方法：   
 无。 基础 API 是管理卷所必需的。
 
-***找不到 "{0}" 的操作结果 id。***
+***找不到 "" 的操作结果 id {0} 。***
 
 此错误表示内部错误正在阻止操作完成。
 
 * 原因：   
 发生了内部错误，无法完成操作。
 * 解决方案：   
-此错误可能是暂时性的。 请等候几分钟，然后重试。 如果问题仍然存在，请创建一个票证，让技术支持部门调查问题。
+此错误可能是暂时性的。 请稍等几分钟，然后重试。 如果问题仍然存在，请创建一个票证，让技术支持部门调查问题。
 * 解决方法：   
 请稍等几分钟，然后检查问题是否仍然存在。
 
@@ -310,9 +310,9 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 尝试更改卷的 OwnerId 属性时，会出现此错误。 不支持更改 OwnerId。 
 
 * 原因：   
-创建`OwnerId`卷时，将设置属性。 以后不能更改该属性。
+`OwnerId`创建卷时，将设置属性。 以后不能更改该属性。
 * 解决方案：   
-不要包含`OwnerId`在修补和更新（put）请求中。 另外，请确保该`OwnerId`请求中的相同。
+不要包含 `OwnerId` 在修补和更新（put）请求中。 另外，请确保该 `OwnerId` 请求中的相同。
 
 ***找不到父池***
 
@@ -335,7 +335,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 
 ***池大小太小，无法占总卷大小。***
 
-当你更新容量池的大小，并且其大小小于该容量池中所有卷的总`usedBytes`值时，将出现此错误。  当你创建新卷或调整现有卷的大小时，以及新卷大小超出容量池中的可用空间时，也会发生此错误。
+当你更新容量池的大小，并且其大小小于 `usedBytes` 该容量池中所有卷的总值时，将出现此错误。  当你创建新卷或调整现有卷的大小时，以及新卷大小超出容量池中的可用空间时，也会发生此错误。
 
 * 原因：   
 尝试将容量池更新为比容量池内所有卷中的 usedBytes 更小的大小。  或者，试图创建一个大于容量池中可用空间的卷。  或者，尝试调整卷的大小，新大小超出容量池中的可用空间。
@@ -355,30 +355,30 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 
 ***{ResourceType} 名称必须与资源标识符名称相同。***
 
-创建资源时出现此错误，并且在 "名称" 属性中填入的 "名称" 属性以外的其他值`resourceId`。
+创建资源时出现此错误，并且在 "名称" 属性中填入的 "名称" 属性以外的其他值 `resourceId` 。
 
 * 原因：   
 创建资源时，name 属性中的值无效。
 * 解决方案：   
-将 "名称" 属性保留为空，或允许其使用与中的 "名称" 属性（在`resourceId`最后一个反斜杠 "/" 和问号 "？" 之间）相同的值。
+将 "名称" 属性保留为空，或允许其使用与中的 "名称" 属性（在最后一个反斜杠 "/" 和问号 "？" 之间）相同的值 `resourceId` 。
 
 ***协议类型 {值} 未知***
 
 如果创建的卷的协议类型未知，则会发生此错误。  有效值为 "NFSv3"、"NFSv4" 和 "CIFS"。
 
 * 原因：   
-您尝试在 volume `protocolType`属性中设置无效的值。
+您尝试在 volume 属性中设置无效的值 `protocolType` 。
 * 解决方案：   
-在中`protocolType`设置有效的字符串。
+在中设置有效的字符串 `protocolType` 。
 * 解决方法：   
-设置`protocolType`为 null。
+设置 `protocolType` 为 null。
 
 ***无法更改协议类型***
 
-当你尝试更新或修补`ProtocolType`卷时，会发生此错误。  不支持更改 ProtocolType。
+当你尝试更新或修补卷时，会发生此错误 `ProtocolType` 。  不支持更改 ProtocolType。
 
 * 原因：   
-创建`ProtocolType`卷时，将设置属性。  不能更新它。
+`ProtocolType`创建卷时，将设置属性。  不能更新它。
 * 解决方案：   
 无。
 * 解决方法：   
@@ -386,10 +386,10 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示 API 
 
 ***创建 {resourceType} 类型的资源将超过 {quota} 个 {parentResourceType} 类型的 {quota} 资源的配额。当前资源计数为 {currentCount}，请先删除此类型的一些资源，然后再创建一个新的资源。***
 
-当你尝试创建资源`NetAppAccount`（、 `CapacityPool`、 `Volume`或`Snapshot`），但你的配额已达到其限制时，将发生此错误。
+当你尝试创建资源（ `NetAppAccount` 、 `CapacityPool` 、 `Volume` 或 `Snapshot` ），但你的配额已达到其限制时，将发生此错误。
 
 * 原因：   
-你正在尝试创建资源，但达到了配额限制（例如： `NetAppAccounts`每个订阅或`CapacityPools`每个`NetAppAccount`订阅）。
+你正在尝试创建资源，但达到了配额限制（例如： `NetAppAccounts` 每个订阅或 `CapacityPools` 每个订阅 `NetAppAccount` ）。
 * 解决方案：   
 增加配额限制。
 * 解决方法：   
@@ -439,34 +439,34 @@ SMB 服务器名称的长度超过10个字符。
 
 ***无法更改 SubnetId。***
 
-如果在创建卷后尝试更改， `subnetId`则会出现此错误。  `SubnetId`创建卷时必须设置，以后无法更改。
+如果在创建卷后尝试更改，则会出现此错误 `subnetId` 。  `SubnetId`创建卷时必须设置，以后无法更改。
 
 * 原因：   
-创建卷后，你尝试`subnetId`更改，这不是受支持的操作。 
+`subnetId`创建卷后，你尝试更改，这不是受支持的操作。 
 * 解决方案：   
-如果不需要`subnetId`更改，则考虑删除请求中的参数以消除错误消息。
+如果 `subnetId` 不需要更改，则考虑删除请求中的参数以消除错误消息。
 * 解决方法：   
-如果需要更改`subnetId`，可以使用新`subnetId`的创建新卷，然后将数据迁移到新卷。
+如果需要更改 `subnetId` ，可以使用新的创建新卷 `subnetId` ，然后将数据迁移到新卷。
 
 ***SubnetId 的格式无效。***
 
-当你尝试创建新卷，但不`subnetId` `resourceId`是子网的时，会发生此错误。
+当你尝试创建新卷，但 `subnetId` 不是子网的时，会发生此错误 `resourceId` 。
 
 * 原因：   
-当你尝试创建新卷，但不`subnetId`是`resourceId`子网的时，会发生此错误。 
+当你尝试创建新卷，但不 `subnetId` 是子网的时，会发生此错误 `resourceId` 。 
 * 解决方案：   
-检查的`subnetId`值，以确保它包含`resourceId`用于所使用的子网的。
+检查的值， `subnetId` 以确保它包含 `resourceId` 用于所使用的子网的。
 * 解决方法：   
 无。 请参阅上述解决方案。 
 
 ***子网必须具有 "Microsoft-NetApp/卷" 委托。***
 
-创建卷时，如果未将所选子网委派到`Microsoft.NetApp/volumes`，则会发生此错误。
+创建卷时，如果未将所选子网委派到，则会发生此错误 `Microsoft.NetApp/volumes` 。
 
 * 原因：   
-你尝试创建卷，但你选择的子网未被委派`Microsoft.NetApp/volumes`。
+你尝试创建卷，但你选择的子网未被委派 `Microsoft.NetApp/volumes` 。
 * 解决方案：   
-选择另一个委托给`Microsoft.NetApp/volumes`的子网。
+选择另一个委托给的子网 `Microsoft.NetApp/volumes` 。
 * 解决方法：   
 向子网添加正确的委派。
 
@@ -681,4 +681,4 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误表示与 A
  
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 REST API 进行 Azure NetApp 文件开发](azure-netapp-files-develop-with-rest-api.md)
+* [使用 REST API 开发 Azure NetApp 文件](azure-netapp-files-develop-with-rest-api.md)

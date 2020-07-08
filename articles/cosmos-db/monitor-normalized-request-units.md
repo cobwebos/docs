@@ -2,22 +2,22 @@
 title: 监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 description: 了解如何在 Azure Cosmos DB 中监视某个操作的规范化请求单位使用量。 Azure Cosmos DB 帐户的所有者可以了解哪些操作消耗了较多的请求单位。
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 05/10/2020
-ms.openlocfilehash: 23001bdaab0732dbeb088ebadefa90a27e622b19
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.date: 06/25/2020
+ms.openlocfilehash: 8709389208ba1320685b1834b20893f08ef33ed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118823"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482898"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 
 适用于 Azure Cosmos DB 的 Azure Monitor 提供了用来监视帐户和创建仪表板的指标视图。 Azure Cosmos DB 指标是默认收集的，此功能不需要你显式启用或配置任何项。
 
-**规范化 RU 消耗**指标用于查看副本是否能够满足各个分区键范围的请求单位消耗。 Azure Cosmos DB 在所有物理分区之间平均分配吞吐量。 此指标提供某个副本集内最大吞吐量利用率的每秒视图。 使用此指标，如果你看到请求单位利用率很高，则应该增大吞吐量以满足工作负荷的需要。
+**规范化 RU 消耗**指标用于查看副本相对于分区键范围内的请求单位消耗的饱和程度。 Azure Cosmos DB 在所有物理分区之间平均分配吞吐量。 此指标提供某个副本集内最大吞吐量利用率的每秒视图。 使用此度量值可以计算给定容器的分区之间的 RU/秒使用量。 使用此指标，如果你看到请求单位利用率很高，则应该增大吞吐量以满足工作负荷的需要。
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>规范化 RU/秒较高时会发生的事情和应该做的事情
 
@@ -35,19 +35,19 @@ ms.locfileid: "83118823"
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 从左侧导航栏中选择“监视器”，然后选择“指标”。
+2. 在左侧导航栏中选择“监视”，然后选择“指标”。 
 
-   ![Azure Monitor 中的“指标”窗格](./media/monitor-normalized-request-units/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure Monitor 中的“指标”窗格":::
 
-3. 从“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。  对于“资源类型”，请选择“Azure Cosmos DB 帐户”，接着选择你的现有 Azure Cosmos 帐户之一，然后选择“应用”。
+3. 在“指标”窗格中选择一个资源，然后选择所需的订阅和资源组。    对于“资源类型”，请选择“Azure Cosmos DB 帐户”，选择一个现有的 Azure Cosmos 帐户，然后选择“应用”。  
 
-   ![选择一个 Azure Cosmos 帐户来查看指标](./media/monitor-normalized-request-units/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="选择一个 Azure Cosmos 帐户来查看指标":::
 
-4. 接下来，可以从可用指标的列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 和其他方面的指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别列出的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，我们选择“规范化 RU 消耗”指标，并选择“最大值”作为聚合值。
+4. 接下来，可以从可用指标列表中选择一个指标。 可以选择特定于请求单位、存储、延迟、可用性、Cassandra 和其他方面的指标。 若要详细了解此列表中的所有可用指标，请参阅[按类别列出的指标](monitor-cosmos-db-reference.md)一文。 在此示例中，我们选择“规范化 RU 消耗”指标，并选择“最大值”作为聚合值。
 
-   除了这些详细信息之外，还可以选择指标的时间范围和时间粒度。 最多可以查看过去 30 天的指标。  在你应用筛选器后，系统会根据筛选器显示一个图表。
+   除了这些详细信息之外，还可以选择指标的时间范围和时间粒度。 可以查看过去最长 30 天的指标。  应用筛选器后，系统会根据该筛选器显示图表。
 
-   ![从 Azure 门户中选择一个指标](./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png)
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="从 Azure 门户中选择一个指标":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>针对规范化请求单位消耗的筛选器
 
@@ -57,9 +57,9 @@ ms.locfileid: "83118823"
 
 将会显示每个容器的规范化请求单位消耗指标，如下图所示：
 
-![对规范化请求单位消耗指标应用筛选器](./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png)
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="对规范化请求单位消耗指标应用筛选器":::
 
 ## <a name="next-steps"></a>后续步骤
 
-* 使用 Azure 中的“诊断设置”[](cosmosdb-monitor-resource-logs.md)监视 Azure Cosmos DB 数据。
+* 使用 Azure 中的[诊断设置](cosmosdb-monitor-resource-logs.md)监视 Azure Cosmos DB 数据。
 * [审核 Azure Cosmos DB 控制平面操作](audit-control-plane-logs.md)

@@ -3,15 +3,15 @@ title: 管理 Avere vFXT 群集 - Azure
 description: 如何管理 Avere 群集 - 添加或删除节点、重启、停止或销毁 vFXT 群集
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4135bfe528c33a2beaeb21438181deb5b19ad12e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505488"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
@@ -141,7 +141,7 @@ vfxt.py --cloud-type azure --from-environment --start --resource-group GROUPNAME
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-如果你``--quick-destroy``不想保存群集缓存中的已更改数据，则可以使用选项。
+``--quick-destroy``如果你不想保存群集缓存中的已更改数据，则可以使用选项。
 
 请参阅 [vfxt.py 用法指南](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>)，了解其他信息。
 

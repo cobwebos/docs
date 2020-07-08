@@ -3,15 +3,15 @@ title: Avere vFXT 先决条件 - Azure
 description: Avere vFXT for Azure 的先决条件
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1828bcde5c26c5605b867c115127eb2502bdd86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252540"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505335"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -98,7 +98,7 @@ ms.locfileid: "79252540"
 1. 选择群集的虚拟网络。
 1. 在左侧菜单中单击 "**服务终结点**"。
 1. 单击顶部的“添加”****。
-1. 选择服务``Microsoft.Storage``。
+1. 选择服务 ``Microsoft.Storage`` 。
 1. 选择群集的子网。
 1. 在底部单击“添加”****。
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 0a799c83-fde5-4f3f-af0e-67535d1882b6
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 82a6cdb6c9a39a0d196049a7ba662681ea06b36a
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62116860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507528"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理共享
 
@@ -88,7 +88,7 @@ StorSimple 服务摘要边栏选项卡上的“共享”**** 菜单显示给定 
 
    4. 在“容量”**** 字段中，指定共享的大小。 分层共享的大小必须介于 500 GB 到 20 TB 之间，本地固定共享的大小必须介于 50 GB 到 2 TB 之间。
 
-   5. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。**** 以_john@contoso.com_格式指定用户或用户组的名称。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+   5. 在“将默认完全权限设置给”字段中，将权限分配给要访问此共享的用户或组。**** 以格式指定用户或用户组的名称 _john@contoso.com_ 。 若要启用访问这些共享所需的管理员权限，建议使用用户组（而非单个用户）。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
 3. 完成配置共享后，单击“创建”****。 此时会使用指定的设置创建共享，会看到一条通知。 默认情况下，将为共享启用备份功能。
 4. 若要确认已成功创建共享，请转到“共享”边栏选项卡****。 应看到列出该共享。
    

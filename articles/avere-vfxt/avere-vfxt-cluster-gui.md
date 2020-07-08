@@ -3,15 +3,15 @@ title: 访问 Avere vFXT 控制面板 - Azure
 description: 如何连接到 vFXT 群集和基于浏览器的 Avere 控制面板以配置 Avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
-ms.openlocfilehash: fe2fc062f690498f3d1f588887279aa33d2434b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69395a27500b8e7bd066536b367b8e6cb385602c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75416150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505607"
 ---
 # <a name="access-the-vfxt-cluster"></a>访问 vFXT 群集
 
@@ -55,7 +55,7 @@ ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 
   你在创建隧道时已连接到群集 IP 地址，因此只需要在浏览器中使用 localhost IP 地址。 如果你使用了 8443 之外的本地端口，请改用你的端口号。
 
-* 如果你使用 VPN 或 ExpressRoute 来访问群集，请在浏览器中导航到群集管理 IP 地址。 示例： ``https://203.0.113.51``
+* 如果你使用 VPN 或 ExpressRoute 来访问群集，请在浏览器中导航到群集管理 IP 地址。 示例：``https://203.0.113.51``
 
 可能需要单击“高级”并确认是否可以安全地继续浏览该页面****，具体取决于浏览器。
 

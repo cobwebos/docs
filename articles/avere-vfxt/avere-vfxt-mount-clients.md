@@ -3,15 +3,15 @@ title: 装载 Avere vFXT - Azure
 description: 如何使用 Avere vFXT for Azure 装载客户端
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76153405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85505437"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>装载 Avere vFXT 群集
 
@@ -78,7 +78,7 @@ vserver 路径是其 IP 地址加上命名空间交接点的路径的组合****�
 
 如果群集是通过 Blob 存储创建的，则该容器的命名空间路径为`/msazure`
 
-示例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
+示例：``mount 10.0.0.12:/msazure /mnt/vfxt``
 
 如果在创建群集后添加了存储，则命名空间接合路径是在创建联接时在 "**命名空间路径**" 中设置的值。 例如，如果使用 ``/avere/files`` 作为命名空间路径，则客户端会将 IP_address:/avere/files 装载到其本地装载点**。
 

@@ -4,15 +4,15 @@ description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
 services: vpn-gateway
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 03/27/2020
+ms.topic: how-to
+ms.date: 06/26/2020
 ms.author: alzam
-ms.openlocfilehash: edb509d43742aeecf74107ae8cb625aeafbccb9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf507ff75d88ac4c549233e50a44ea60ab212886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482983"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
@@ -158,7 +158,7 @@ ms.locfileid: "80385618"
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何将 DNS 后缀添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件，并添加 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> **标记
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ ms.locfileid: "80385618"
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何将自定义 DNS 服务器添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件，并添加 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> **标记
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ ms.locfileid: "80385618"
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
 
-可以修改下载的 XML 配置文件，并添加 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **标记
 
 ```
 <azvpnprofile>
@@ -212,10 +212,30 @@ ms.locfileid: "80385618"
 </clientconfig>
 </azvpnprofile>
 ```
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何实现将所有流量定向到 VPN 隧道（强制隧道）？
+
+您可以修改下载的配置文件 XML 文件并添加** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **标记
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>0.0.0.0</destination><mask>1</mask>
+        </route>
+        <route>
+            <destination>128.0.0.0</destination><mask>1</mask>
+        </route>
+    </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何在 VPN 客户端中阻止（排除）路由？
 
-可以修改下载的 XML 配置文件，并添加 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> **标记
 
 ```
 <azvpnprofile>

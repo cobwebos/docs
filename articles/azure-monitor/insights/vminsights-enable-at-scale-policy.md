@@ -5,17 +5,17 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/12/2020
-ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 7d3c4e0f4bd34f996bb39426af39a692a6f79c5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507171"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure Policy 启用用于 VM 的 Azure Monitor
 
-本文介绍如何使用 Azure 策略为 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。 在此过程结束时，即已成功配置并启用 Log Analytics 和依赖项代理，同时已识别不合规的虚拟机。
+本文介绍如何使用 Azure 策略为 Azure 虚拟机、Azure 虚拟机规模集和 Azure Arc 计算机启用用于 VM 的 Azure Monitor。 在此过程结束时，即已成功配置并启用 Log Analytics 和依赖项代理，同时已识别不合规的虚拟机。
 
 若要为所有 Azure 虚拟机或虚拟机规模集发现、管理和启用用于 VM 的 Azure Monitor，可以使用 Azure Policy 或 Azure PowerShell。 我们建议使用 Azure Policy 方法，因为这样可以管理策略定义，以便有效地监管订阅，确保始终保持合规，并自动启用新预配的 VM。 这些策略定义：
 
@@ -25,7 +25,7 @@ ms.locfileid: "81767253"
 
 如果你有兴趣使用 Azure PowerShell 或 Azure 资源管理器模板来完成这些任务，请参阅[使用 Azure PowerShell 或 azure 资源管理器模板启用用于 VM 的 Azure Monitor](vminsights-enable-at-scale-powershell.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在使用策略将 Azure 虚拟机和虚拟机规模集载入 azure 监视虚拟机之前，必须在将用于存储监视数据的工作区上启用 VMInsights 解决方案。 此任务可从 "**其他载入选项**" 选项卡上的 "Azure Monitor 中的"**入门**"页完成。 选择 "**配置工作区**"，将提示您选择要配置的工作区。
 
 ![配置工作区](media/vminsights-enable-at-scale-policy/configure-workspace.png)
@@ -46,10 +46,7 @@ ms.locfileid: "81767253"
 
 此信息可帮助你在一个中心位置规划和执行用于 VM 的 Azure Monitor 的监管方案。 尽管在将某个策略或方案分配到某个范围时 Azure Policy 会提供合规性视图，但在此新页面中，可以查看尚未分配的策略或计划，并就地进行分配。 所有操作（例如分配、查看和编辑）将直接重定向到 Azure Policy。 “用于 VM 的 Azure Monitor 策略覆盖范围”页是一个扩展的集成式体验，仅适用于“启用用于 VM 的 Azure Monitor”计划。********
 
-从此页中，还可以配置用于 VM 的 Azure Monitor 的 Log Analytics 工作区，包括：
-
-- 安装服务映射解决方案。
-- 启用性能图表、工作簿和自定义日志查询与警报使用的操作系统性能计数器。
+在此页上，还可以配置用于安装*VMInsights*解决方案的用于 VM 的 Azure Monitor 的 Log Analytics 工作区。
 
 ![用于 VM 的 Azure Monitor - 配置工作区](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
@@ -59,10 +56,10 @@ ms.locfileid: "81767253"
 
 下表详细提供了策略覆盖范围页上显示的信息及其解释。
 
-| 函数 | 说明 | 
+| 函数 | 描述 | 
 |----------|-------------| 
-| **Scope** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
-| **Role** | 你在该范围内的角色，可能是读取者、所有者或参与者。 在某些情况下，此项可能显示为空白，表示你可能有权访问订阅，但无权访问该订阅所属的管理组。 其他列中的信息根据角色的不同而异。 在确定可以查看哪些数据和执行哪些操作（包括分配策略或计划（所有者）、对其进行编辑，或查看合规性）时，角色非常关键。 |
+| **范围** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
+| **角色** | 你在该范围内的角色，可能是读取者、所有者或参与者。 在某些情况下，此项可能显示为空白，表示你可能有权访问订阅，但无权访问该订阅所属的管理组。 其他列中的信息根据角色的不同而异。 在确定可以查看哪些数据和执行哪些操作（包括分配策略或计划（所有者）、对其进行编辑，或查看合规性）时，角色非常关键。 |
 | **VM 总数** | 该范围内的 VM 数目。 对于管理组，该数目是嵌套在订阅或子管理组下的 VM 数之和。 |
 | **分配覆盖范围** | 策略或计划覆盖的 VM 百分比。 |
 | **分配状态** | 有关策略或计划分配状态的信息。 |
@@ -85,7 +82,7 @@ ms.locfileid: "81767253"
 
 下表列出了 Azure VM 的策略定义：
 
-|名称 |说明 |类型 |
+|“属性” |描述 |类型 |
 |-----|------------|-----|
 |启用用于 VM 的 Azure Monitor |在指定范围（管理组、订阅或资源组）中启用用于虚拟机的 Azure Monitor。 将 Log Analytics 工作区用作参数。 |计划 |
 |审核依赖项代理部署 - VM 映像 (OS) 未列出 |如果 VM 映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
@@ -95,13 +92,28 @@ ms.locfileid: "81767253"
 |为 Linux VM 部署 Log Analytics 代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Linux VM 部署 Log Analytics 代理。 |策略 |
 |为 Windows VM 部署 Log Analytics 代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Windows VM 部署 Log Analytics 代理。 |策略 |
 
+
+### <a name="policies-for-hybrid-azure-arc-machines"></a>混合 Azure Arc 计算机的策略
+
+下表列出了混合 Azure Arc 计算机的策略定义。
+
+|“属性” |描述 |类型 |
+|-----|------------|-----|
+| [预览]：应在 Linux Azure Arc 计算机上安装 Log Analytics 代理 |如果在列表中定义了 VM 映像（OS），并且未安装代理，则会报告混合 Azure Arc 计算机不符合 Linux Vm 的要求。 |策略 |
+| [预览]：应在 Windows Azure Arc 计算机上安装 Log Analytics 代理 |如果在列表中定义了 VM 映像（OS），并且未安装代理，则会将混合 Azure Arc 计算机报告为不符合 Windows Vm。 |策略 |
+| [预览]：在混合 Linux Azure Arc 计算机上部署依赖关系代理 |如果在列表中定义了 VM 映像（OS），并且未安装代理，则部署适用于 Linux 混合 Azure Arc 计算机的依赖关系代理。 |策略 |
+| [预览]：将依赖关系代理部署到混合 Windows Azure Arc 计算机 |如果在列表中定义了 VM 映像（OS），并且未安装代理，则部署适用于 Windows 混合 Azure Arc 计算机的依赖关系代理。 |策略 |
+| [预览]：将 Log Analytics 代理部署到 Linux Azure Arc 计算机 |如果在列表中定义了 VM 映像（OS），并且未安装代理，则部署适用于 Linux 混合 Azure Arc 计算机的 Log Analytics 代理。 |策略 |
+| [预览]：将 Log Analytics 代理部署到 Windows Azure Arc 计算机 |如果在列表中定义了 VM 映像（OS），并且未安装代理，则部署适用于 Windows 混合 Azure Arc 计算机的 Log Analytics 代理。 |策略 |
+
+
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的策略
 
 下表列出了 Azure 虚拟机规模集的策略定义：
 
-|名称 |说明 |类型 |
+|“属性” |描述 |类型 |
 |-----|------------|-----|
-|为虚拟机规模集启用 Azure Monitor |在指定范围（管理组、订阅或资源组）中为虚拟机规模集启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意：如果规模集升级策略设置为 "手动"，则通过对其调用升级来将扩展应用到集中的所有 Vm。 在 CLI 中，这是`az vmss update-instances`。 |计划 |
+|为虚拟机规模集启用 Azure Monitor |在指定范围（管理组、订阅或资源组）中为虚拟机规模集启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意：如果规模集升级策略设置为 "手动"，则通过对其调用升级来将扩展应用到集中的所有 Vm。 在 CLI 中，这是 `az vmss update-instances` 。 |计划 |
 |审核虚拟机规模集中的依赖项代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
 |审核虚拟机规模集中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出 |如果虚拟机规模集映像 (OS) 未在列表中定义且未安装代理，则报告 VM 不合规。 |策略 |
 |为 Linux 虚拟机规模集部署依赖项代理 |如果 VM 映像 (OS) 在列表中定义但未安装代理，请为 Linux 虚拟机规模集部署依赖项代理。 |策略 |
@@ -111,7 +123,7 @@ ms.locfileid: "81767253"
 
 以下介绍独立策略（未包含在计划中）：
 
-|名称 |说明 |类型 |
+|“属性” |描述 |类型 |
 |-----|------------|-----|
 |审核 VM 的 Log Analytics 工作区 — 报告不匹配 |如果 VM 未登录到策略或计划分配中指定的 Log Analytics 工作区，则报告 VM 不合规。 |策略 |
 
@@ -121,9 +133,9 @@ ms.locfileid: "81767253"
 
 分配策略或计划时，在分配中选择的范围可能是此处列出的范围或者其子集。 例如，你可能为订阅创建了分配（策略范围），但没有为管理组创建分配（覆盖范围）。 在这种情况下，覆盖范围百分比表示策略或计划范围内的 VM 数除以覆盖范围内的 VM 数。 另举一例。你可能从策略范围中排除了一些 VM、资源组或订阅。 如果该值为空白，表示策略或计划不存在，或者你没有权限。 “分配状态”下会提供信息。****
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 门户中，选择 "**监视器**"。 
+2. 在 Azure 门户中选择“监视”。 
 
 3. 选择 " **Insights** " 部分中的 "**虚拟机**"。
  
@@ -139,38 +151,38 @@ ms.locfileid: "81767253"
 8. 在受支持区域的“Log Analytics 工作区”下拉列表中，选择一个工作区****。
 
    > [!NOTE]
-   > 如果工作区超出分配范围，则将 *Log Analytics 参与者*权限授予策略分配的主体 ID。 如果不这样做，可能会看到部署失败，如`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`授予访问权限，请查看[如何手动配置托管标识](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)。
+   > 如果工作区超出分配范围，则将 *Log Analytics 参与者*权限授予策略分配的主体 ID。 如果不这样做，可能会看到部署失败 `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` ，如授予访问权限，请查看[如何手动配置托管标识](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)。
    > 
    >  "**托管标识**" 复选框处于选中状态，因为指定的计划包括具有*deployIfNotExists*效果的策略。
     
 9. 在“管理标识位置”下拉列表中，选择适当的区域****。
 
-10. 选择“分配”。****
+10. 选择“分配”。 
 
 创建分配后，“用于 VM 的 Azure Monitor 策略覆盖范围”页会更新“分配覆盖范围”、“分配状态”、“合规的 VM 数”和“合规状态”，以反映所做的更改。******************** 
 
 以下矩阵映射了计划每种可能的合规状态。  
 
-| 符合性状态 | 说明 | 
+| 符合性状态 | 描述 | 
 |------------------|-------------|
 | **要求** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
 | **不合规** | 该范围内并非所有 VM 都部署了 Log Analytics 和依赖项代理，可能需要修正。|
 | **未启动** | 添加了新的分配。 |
-| **住** | 你对管理组没有足够的特权。<sup>1</sup> | 
-| **空白** | 未分配策略。 | 
+| **Lock** | 你对管理组没有足够的特权。<sup>1</sup> | 
+| **空** | 未分配策略。 | 
 
 <sup>1</sup>如果您无权访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看合规性和管理分配。 
 
 下表映射了计划的每种可能的分配状态。
 
-| 分配状态 | 说明 | 
+| 分配状态 | 描述 | 
 |------------------|-------------|
-| **成功** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
+| **Success** | 该范围内的所有 VM 都部署了 Log Analytics 和依赖项代理。|
 | **警告** | 订阅不在管理组下。|
 | **未启动** | 添加了新的分配。 |
-| **住** | 你对管理组没有足够的特权。<sup>1</sup> | 
-| **空白** | 没有 VM，或者未分配策略。 | 
-| **操作** | 分配策略或编辑分配。 | 
+| **Lock** | 你对管理组没有足够的特权。<sup>1</sup> | 
+| **空** | 没有 VM，或者未分配策略。 | 
+| **Action** | 分配策略或编辑分配。 | 
 
 <sup>1</sup>如果您无权访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看合规性和管理分配。
 
@@ -203,7 +215,7 @@ ms.locfileid: "81767253"
 将计划分配到管理组或订阅后，随时可以编辑该计划，以修改以下属性：
 
 - 分配名称
-- 说明
+- 描述
 - 分配者
 - Log Analytics 工作区
 - 例外
