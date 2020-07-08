@@ -114,7 +114,7 @@ http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 在前面的步骤中，在资源组中创建了 CDN 配置文件和终结点。 若要转到[后续步骤](#next-steps)，以便了解如何向终结点添加自定义域，请保存这些资源。 但是，如果认为将来不需要这些资源，可以通过删除资源组来删除它们，避免额外付费：
 
-1. 在 Azure 门户的左侧菜单中，选择“资源组”，然后选择“CDNQuickstart-rg”。***
+1. 在 Azure 门户的左侧菜单中，选择“资源组”，然后选择“CDNQuickstart-rg”。
 
 2. 在“资源组”页上选择“删除资源组”，在文本框中输入“CDNQuickstart-rg”，然后选择“删除”。 
 
