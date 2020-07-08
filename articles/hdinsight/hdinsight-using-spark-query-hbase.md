@@ -1,19 +1,19 @@
 ---
-title: 使用 Spark 读取和写入 HBase 数据 - Azure HDInsight
+title: 使用 Spark 来读写 HBase 数据 - Azure HDInsight
 description: 使用 Spark HBase 连接器将 Spark 群集中的数据读写到 HBase 群集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: e5d9d4f215752d95ee1d676e8a5b126b6d0d3ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ddb8734a3d15a6cd5f4a43ee069d6364f7523ed
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190616"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087476"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -21,9 +21,9 @@ ms.locfileid: "82190616"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中部署了两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
+* 部署在同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-* 群集主存储的 URI 方案。 此方案将 wasb://用于 Azure Blob 存储， `abfs://`适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 如果为 Blob 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 URI 方案。 此方案将 wasb://用于 Azure Blob 存储， `abfs://` 适用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://。 如果为 Blob 存储启用了安全传输，则 URI 将为 `wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="overall-process"></a>整体进程
 
@@ -113,13 +113,49 @@ exit
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>运行 Spark Shell，引用 Spark HBase 连接器
 
-1. 在与 Spark 群集建立的 SSH 会话中，输入以下命令以启动 Spark shell：
+完成上述步骤后，应能够运行 Spark shell，并引用相应版本的 Spark HBase 连接器。 若要为群集方案查找最新的适当 Spark HBase 连接器核心版本，请参阅[SHC Core Repository](https://repo.hortonworks.com/content/groups/public/com/hortonworks/shc/shc-core/)。
+
+例如，下表列出了 HDInsight 团队当前使用的两个版本和相应的命令。 如果 HBase 和 Spark 的版本与表中所示的相同，则可为群集使用相同的版本。 
+
+
+1. 在打开的到 Spark 群集的 SSH 会话中，输入以下命令以启动 Spark shell：
+
+    |Spark 版本| HDI HBase 版本  | SHC 版本    |  Command  |
+    | :-----------:| :----------: | :-----------: |:----------- |
+    |      2.1    | HDI 3.6 （HBase 1.1） | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4.0 （HBase 2.0） | 1.1.1-2.1-s_2  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+
+2. 使此 Spark shell 实例保持打开状态并继续[定义目录和查询](#define-a-catalog-and-query)。 如果找不到对应于 SHC Core 存储库中版本的 jar，请继续阅读。 
+
+可以直接从[spark--连接器](https://github.com/hortonworks-spark/shc)GitHub 分支生成 jar。 例如，如果运行的是 Spark 2.3 和 HBase 1.1，请完成以下步骤：
+
+1. 克隆存储库：
 
     ```bash
-    spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
-    ```  
+    git clone https://github.com/hortonworks-spark/shc
+    ```
+    
+2. 中转到分支-2.3：
 
-2. 保持此 Spark Shell 实例处于打开状态，并继续执行下一步操作。
+    ```bash
+    git checkout branch-2.3
+    ```
+
+3. 从分支生成（创建 .jar 文件）：
+
+    ```bash
+    mvn clean package -DskipTests
+    ```
+    
+3. 运行以下命令（请确保更改对应于所生成的 .jar 文件的 .jar 名称）：
+
+    ```bash
+    spark-shell --jars <path to your jar>,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar,/usr/hdp/current/hbase-client/lib/hbase-client.jar,/usr/hdp/current/hbase-client/lib/hbase-common.jar,/usr/hdp/current/hbase-client/lib/hbase-server.jar,/usr/hdp/current/hbase-client/lib/hbase-protocol.jar,/usr/hdp/current/hbase-client/lib/htrace-core-3.1.0-incubating.jar
+    ```
+    
+4. 使此 Spark shell 实例保持打开状态，然后继续下一部分。 
+
+
 
 ## <a name="define-a-catalog-and-query"></a>定义目录和查询
 
@@ -150,11 +186,11 @@ exit
     |}""".stripMargin
     ```
 
-    代码执行以下操作：  
+    代码：  
 
-     a. 定义名为 `Contacts` 的 HBase 表的目录架构。  
-     b. 将 rowkey 标识为 `key`，并将 Spark 中使用的列名映射到 HBase 中使用的列族、列名和列类型。  
-     c. Rowkey 还必须详细定义为具有 `rowkey` 的特定列族 `cf` 的命名列 (`rowkey`)。  
+    1. 定义名为的 HBase 表的目录架构 `Contacts` 。  
+    1. 将 rowkey 标识为 `key` ，并将 Spark 中使用的列名映射到在 HBase 中使用的列系列、列名称和列类型。  
+    1. 将 rowkey 定义为详细的命名列（ `rowkey` ），该列具有特定的列系列 `cf` `rowkey` 。  
 
 1. 输入以下命令，以定义一个在 HBase 中提供围绕 `Contacts` 表的 DataFrame 的方法：
 

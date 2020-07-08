@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a5a46957c92fb2c14907db728216481f3f57aac
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71123568"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087684"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
@@ -23,7 +23,7 @@ ms.locfileid: "71123568"
 
 * HDInsight 上的机器学习服务群集。 参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)，并选择“机器学习服务”作为“群集类型”。********
 
-* 安全外壳 (SSH) 客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 安全外壳 (SSH) 客户端：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>使用单机配置操作 ML Services 群集
 
@@ -32,7 +32,9 @@ ms.locfileid: "71123568"
 
 1. 通过 SSH 登录到边缘节点。
 
-        ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```bash
+    ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+    ```
 
     有关如何将 SSH 与 Azure HDInsight 配合使用的说明，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -40,13 +42,17 @@ ms.locfileid: "71123568"
 
     - 对于 Microsoft ML Server 9.1：
 
-            cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
-            sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
+        sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
+        ```
 
     - 对于 Microsoft R Server 9.0：
 
-            cd /usr/lib64/microsoft-deployr/9.0.1
-            sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```bash
+        cd /usr/lib64/microsoft-deployr/9.0.1
+        sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+        ```
 
 1. 将提供选项供你选择。 选择第一个选项（如以下屏幕截图所示）“配置 ML Server 的操作化”****。
 
@@ -82,19 +88,20 @@ ms.locfileid: "71123568"
 
 如果在尝试使用 Web 服务时遇到长时间的延迟，而这些服务是在 Apache Spark 计算上下文中使用 mrsdeploy 函数创建的，则可能需要添加一些缺失的文件夹。 Spark 应用程序属于名为“rserve2”的用户，不论何时使用 mrsdeploy 函数从 Web 服务调用它。** 若要解决此问题，请执行以下操作：
 
-    # Create these required folders for user 'rserve2' in local and hdfs:
+```r
+# Create these required folders for user 'rserve2' in local and hdfs:
 
-    hadoop fs -mkdir /user/RevoShare/rserve2
-    hadoop fs -chmod 777 /user/RevoShare/rserve2
+hadoop fs -mkdir /user/RevoShare/rserve2
+hadoop fs -chmod 777 /user/RevoShare/rserve2
 
-    mkdir /var/RevoShare/rserve2
-    chmod 777 /var/RevoShare/rserve2
+mkdir /var/RevoShare/rserve2
+chmod 777 /var/RevoShare/rserve2
 
 
-    # Next, create a new Spark compute context:
- 
-    rxSparkConnect(reset = TRUE)
+# Next, create a new Spark compute context:
 
+rxSparkConnect(reset = TRUE)
+```
 
 在此阶段，操作化的配置已完成。 现在，可以使用 RClient 上的 `mrsdeploy` 包连接到边缘节点上的操作化，并开始使用其功能（如[远程执行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)和 [Web 服务](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)）。 可能需要通过 SSH 登录设置端口转发隧道，具体取决于群集是否设置在虚拟网络上。 以下部分介绍如何设置此隧道。
 
@@ -102,15 +109,15 @@ ms.locfileid: "71123568"
 
 请确保允许流量通过端口 12800 到达边缘节点。 这样，便可以使用边缘节点连接到操作化功能。
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://[your-cluster-name]-ed-ssh.azurehdinsight.net:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 如果 `remoteLogin()` 无法连接到边缘节点，但你可以使用 SSH 连接到边缘节点，则需验证是否已正确设置允许端口 12800 上的流量的规则。 如果仍遇到此问题，则解决方法是通过 SSH 设置端口转发隧道。 有关说明，请参阅以下部分：
 
@@ -118,19 +125,21 @@ ms.locfileid: "71123568"
 
 如果群集未设置在 vnet 上，或者如果通过 vnet 连接时遇到问题，可以使用 SSH 端口转发隧道：
 
-    ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```bash
+ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
+```
 
 SSH 会话处于活动状态后，来自本地计算机端口 12800 的流量将通过 SSH 会话转发到边缘节点的端口 12800。 请确保在 `remoteLogin()` 方法中使用 `127.0.0.1:12800`。 这样将通过“端口转移”功能登录到边缘节点的操作化功能。
 
+```r
+library(mrsdeploy)
 
-    library(mrsdeploy)
-
-    remoteLogin(
-        deployr_endpoint = "http://127.0.0.1:12800",
-        username = "admin",
-        password = "xxxxxxx"
-    )
-
+remoteLogin(
+    deployr_endpoint = "http://127.0.0.1:12800",
+    username = "admin",
+    password = "xxxxxxx"
+)
+```
 
 ## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>对 HDInsight 工作节点上的计算节点进行缩放操作
 
@@ -146,17 +155,17 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 选择（要解除授权）的工作节点。
 
-1.  > 单击 "**所选主机** > **Hosts** >  **" "主机****" "打开维护模式"**。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
+1. 单击 **"**  >  **所选主机**" "主机  >  **Hosts**  >  **" "打开维护模式"**。 例如，下图中，选择了对 wn3 和 wn4 解除授权。  
 
    ![Apache Ambari 启用维护模式](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* 选择**操作** > **选定的主机** > **DataNodes** > 单击 "**解除**授权"。
-* 选择**操作** > **选定的主机** > **NodeManagers** > 单击 "**解除**授权"。
-* 选择**操作** > 已**选择** > "**DataNodes**主机" > 单击 "**停止**"。
-* 选择**操作** > **选定的主机** > **NodeManagers** > 单击 "**停止**"。
-* 选择 "**所选** > **操作** > "**主机 > 单击**"**停止所有组件**"。
+* 选择**操作**  >  **选定的主机**  >  **DataNodes** > 单击 "**解除**授权"。
+* 选择**操作**  >  **选定的主机**  >  **NodeManagers** > 单击 "**解除**授权"。
+* 选择**操作**已  >  **选择**  >  "**DataNodes**主机" > 单击 "**停止**"。
+* 选择**操作**  >  **选定的主机**  >  **NodeManagers** > 单击 "**停止**"。
+* 选择**Actions**  >  "**所选**操作" 主机  >  **Hosts** > 单击 "**停止所有组件**"。
 * 取消选择辅助角色节点并选择头节点。
-* 选择**操作** > 选择的**主机**> "**主机** > **重新启动所有组件**。
+* 选择**操作**选择  >  的**主机**> "**主机**  >  **重新启动所有组件**。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的工作节点上配置计算节点
 
@@ -164,7 +173,9 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 使用所用 ML Services 群集的相关 DLL 运行管理实用程序。 对于 ML Server 9.1，运行以下命令：
 
-        dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```bash
+    dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
+    ```
 
 1. 输入“1”，选择“配置 ML Server 的操作化”选项********。
 
@@ -182,12 +193,14 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 找到“Uris”部分，并添加工作节点的 IP 和端口详细信息。
 
-       "Uris": {
-         "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
-         "Values": [
-           "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
-         ]
-       }
+    ```json
+    "Uris": {
+        "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
+        "Values": [
+            "http://localhost:12805", "http://[worker-node1-ip]:12805", "http://[workder-node2-ip]:12805"
+        ]
+    }
+    ```
 
 ## <a name="next-steps"></a>后续步骤
 

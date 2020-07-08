@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 218ec6a5beab32729e106a7397d58ebaa2a30123
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735092"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086919"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
@@ -61,7 +61,7 @@ Azure 库包含多个版本，包括 Windows 10 企业多会话、版本1809和 
  
 ## <a name="which-windows-10-enterprise-multi-session-versions-are-supported"></a>支持哪些 Windows 10 企业多会话版本？
 
-Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure 库中提供。 这些版本遵循与 Windows 10 企业版相同的支持生命周期策略，这意味着该春季版本支持18个月，而秋季发行版为30个月。
+Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure 库中提供。 这些版本遵循与 Windows 10 企业版相同的支持生命周期策略，这意味着，3月版支持18个月，9月发行版为30个月。
  
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>对于 Windows 10 企业多会话，应该使用哪种配置文件管理解决方案？
 

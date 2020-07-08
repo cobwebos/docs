@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 09026d7f2aeb25f9a7c4a3c31c4f8d0b4cdb223a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117817"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086103"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
 
@@ -99,11 +99,15 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 转换此数据的方法有很多。 一种方法是使用以下 Windows PowerShell 命令：   
 
-    cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```powershell
+cat german.data | %{$_ -replace " ",","} | sc german.csv  
+```
 
 另一种方法是使用 Unix sed 命令：  
 
-    sed 's/ /,/g' german.data > german.csv  
+```console
+sed 's/ /,/g' german.data > german.csv
+```
 
 在任一情况下，我们已在可在试验中使用的名为 **german.csv** 的文件中创建了逗号分隔版的数据。
 
@@ -256,11 +260,13 @@ UCI 网站上的数据集说明提及了如果我们对人员的信用风险进�
 
 1. 在“属性”  窗格中，删除 **R 脚本**参数中的默认文本，并输入以下脚本：
    
-       dataset1 <- maml.mapInputPort(1)
-       data.set<-dataset1[dataset1[,21]==1,]
-       pos<-dataset1[dataset1[,21]==2,]
-       for (i in 1:5) data.set<-rbind(data.set,pos)
-       maml.mapOutputPort("data.set")
+    ```r
+    dataset1 <- maml.mapInputPort(1)
+    data.set<-dataset1[dataset1[,21]==1,]
+    pos<-dataset1[dataset1[,21]==2,]
+    for (i in 1:5) data.set<-rbind(data.set,pos)
+    maml.mapOutputPort("data.set")
+    ```
 
     ![“执行 R 脚本”模块中的 R 脚本](./media/tutorial-part1-credit-risk/execute-r-script.png)
 

@@ -3,12 +3,12 @@ title: Apprentice 模式-Personalizer
 description: ''
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 2697ab4b32edbd4841f2b11725fda46e90e7ae7e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ee8242fbc9ab5bed4e3eed8997feb122b131062
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599399"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087191"
 ---
 # <a name="use-apprentice-mode-to-train-personalizer-without-affecting-your-existing-application"></a>使用 Apprentice 模式训练 Personalizer，而不影响现有应用程序
 
@@ -30,7 +30,7 @@ Apprentice 模式为你提供了 Personalizer 服务及其机器学习功能的�
 
 使用 Apprentice 模式的两个主要原因是：
 
-* 缓解**冷启动**： Apprentice 模式可帮助管理和评估 "新" 模型的学习时间的成本-当它没有返回最佳操作，并且未实现约75-85% 的令人满意的有效性级别时。
+* 缓解**冷启动**： Apprentice 模式可帮助管理和评估 "新" 模型的学习时间的成本-当它没有返回最佳操作，并且未实现约60-80% 的令人满意的有效性级别时。
 * **验证操作和上下文功能**：在操作和上下文中发送的功能可能不足或不准确-太少、过多、不正确或因太少而无法定型 Personalizer 来获得理想的有效性率。 使用[功能评估](concept-feature-evaluation.md)查找并修复功能问题。
 
 ## <a name="when-should-you-use-apprentice-mode"></a>何时应使用 Apprentice 模式？
@@ -57,7 +57,7 @@ Apprentice 模式适用于开发人员、数据科学家和业务决策者：
 
 在 Apprentice 模式下学习在以下方面不同于联机模式。
 
-|分区图|Apprentice 模式|“联机” 模式|
+|区域|学徒模式|“联机” 模式|
 |--|--|--|
 |对用户体验的影响|您可以使用现有的用户行为来培训 Personalizer，方法是让其观察（不影响）您的**默认操作**以及获得的奖励。 这意味着用户的体验和业务结果不受影响。|显示从排名调用返回的顶部操作以影响用户行为。|
 |学习速度|在 Apprentice 模式下，Personalizer 的学习速度会比在联机模式下学习时更慢。 Apprentice 模式只能通过观察你的**默认操作**获得的奖励来了解，这会限制学习速度，因为无法执行任何浏览。|更快地学习，因为它可以利用当前模型并探索新的趋势。|
@@ -68,7 +68,7 @@ Apprentice 模式适用于开发人员、数据科学家和业务决策者：
 有关 apprentice 模式有效性的说明：
 
 * Personalizer 在 Apprentice 模式下的有效性极少达到应用程序基线的 100%;并且永远不会超过它。
-* 最佳做法是不尝试获得100% 的实现;但75–85% 的范围应根据用例进行定向。
+* 最佳做法是不尝试获得100% 的实现;但60% –80% 的范围应根据用例进行定向。
 
 ## <a name="using-apprentice-mode-to-train-with-historical-data"></a>使用 Apprentice 模式训练历史数据
 

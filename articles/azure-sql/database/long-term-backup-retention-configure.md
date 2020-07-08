@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库：管理长期备份保留
-description: 了解如何使用 Azure 门户和 PowerShell 为 Azure SQL 数据库中的单个或共用数据库存储和恢复自动备份（最多10年）
+description: 了解如何使用 Azure 门户和 PowerShell 在 Azure 存储中存储和恢复 Azure SQL 数据库的自动备份（最多10年）
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
@@ -11,11 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/14/2020
-ms.openlocfilehash: e3abe203c32994c63ddd1cecc45cbcc8b566c45a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 713ac569acb7866b4c7431b80e2afb1e7953ce08
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027902"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087344"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -186,7 +187,7 @@ Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 
 ### <a name="restore-from-ltr-backups"></a>从 LTR 备份进行还原
 
-此示例展示了如何从 LTR 备份进行还原。 请注意，此接口没有更改，但是资源 ID 参数现在要求提供 LTR 备份资源 ID。
+此示例展示了如何从 LTR 备份进行还原。 请注意，此接口未发生更改，但资源 ID 参数现在需要 LTR 备份资源 ID。
 
 ```powershell
 # restore a specific LTR backup as an P1 database on the server $serverName of the resource group $resourceGroup

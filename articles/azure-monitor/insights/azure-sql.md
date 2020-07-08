@@ -7,11 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249408"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087174"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -71,7 +72,7 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 ![Azure SQL Analytics“摘要”磁贴](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-加载后，该磁贴会显示 SQL 数据库中的数据库和弹性池的数量，以及 SQL 托管实例中的托管实例和实例数据库，Azure SQL Analytics 接收诊断遥测。
+加载后，该磁贴会显示 SQL 数据库中的数据库和弹性池的数量，以及 SQL 托管实例中的实例和实例数据库，Azure SQL Analytics 接收的是诊断遥测。
 
 ![“Azure SQL Analytics”磁贴](./media/azure-sql/azure-sql-sol-tile-02.png)
 
@@ -105,7 +106,7 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视 SQL 数�
 
 选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，可看到向下钻取报表。
 
-选择 "SQL 托管实例" 视图，将显示有关托管实例利用率、其包含的数据库和通过实例执行的查询的遥测数据的详细信息。
+选择 SQL 托管实例视图，将显示有关在托管实例中执行的查询的实例利用率、实例数据库和遥测数据的详细信息。
 
 ![Azure SQL Analytics 超时](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
@@ -268,7 +269,7 @@ AzureDiagnostics
 
 > [!NOTE]
 >
-> - 设置此警报的先决条件在于，监视托管实例是否已启用 ResourceUsageStats 日志流式处理，以便 Azure SQL Analytics。
+> - 设置此警报的先决条件是监视的托管实例已启用 ResourceUsageStats 日志流式处理，以 Azure SQL Analytics。
 > - 此查询需要设置警报规则，以便在查询中存在现有结果（> 结果）时发出警报，这表示该条件存在于托管实例上。 输出是托管实例上的存储占用百分比。
 
 #### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>CPU 平均消耗在过去1小时内超过95%

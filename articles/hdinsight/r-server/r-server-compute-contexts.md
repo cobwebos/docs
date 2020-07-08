@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: b67bd5b6310e1f8ce35dc14690757209ef62c9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75660250"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087599"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>适用于 HDInsight 上的 ML Services 的计算上下文选项
 
@@ -57,7 +57,7 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式*****
 
 鉴于这些原则，有一些用于选择计算上下文的常规经验规则，如下面部分所示。
 
-### <a name="local"></a>本地
+### <a name="local"></a>Local
 
 - 如果要分析的数据量较小，并且不需要重复的分析，请使用*local*或*localpar*将其直接流式传输到分析例程。
 - 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过 local 或 localpar 进行分析****。
@@ -73,7 +73,9 @@ local 和 localpar 选项的区别只体现在 rxExec 调用的执行方式*****
 ## <a name="inline-help-on-rxsetcomputecontext"></a>关于 rxSetComputeContext 的内联帮助
 有关 RevoScaleR 计算上下文的详细信息和示例，请参阅 R 中关于 rxSetComputeContext 方法的内联帮助，例如：
 
-    > ?rxSetComputeContext
+```console
+> ?rxSetComputeContext
+```
 
 也可以参阅 [Machine Learning Server 文档](https://docs.microsoft.com/machine-learning-server/)中的[分布式计算概述](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
 

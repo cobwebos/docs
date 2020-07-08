@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: f3705170be28f33e5994bd00e363dc7ec7f94642
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75435620"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086715"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
 
@@ -36,7 +37,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
    | 字段 | 值 |
    |--- |--- |
    | 名称 |MyHDInsightApp |
-   | 描述 |MyHDInsightApp |
+   | 说明 |MyHDInsightApp |
    | 网站 |`https://www.myhdinsightapp.com` |
 
 4. 选择 **"是，我同意**"，然后选择 "**创建 Twitter 应用程序**"。

@@ -11,14 +11,82 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 13a7250bc89b1c9f81996dfa4e15d7d4469779ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607867"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086276"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="text-to-speech-2020-july-release"></a>文本到语音 2020-7 月发行版
+
+### <a name="new-features"></a>新增功能
+
+* **神经 tts，15个新的神经语音**：添加到神经 tts 公文包中的新语音为阿拉伯语（埃及）、Zariyah （Salma）、（西班牙）、Alba in 加泰罗尼亚语（西班牙）、Christel In 丹麦语（丹麦）、英语（印度）印地语（印度） Swara，Colette in 荷兰语（荷兰），Zofia In 波兰语（波兰），Fernanda in 葡萄牙语（葡萄牙），，俄罗斯语（俄罗斯），Dariya in 瑞典语（瑞典），Hillevi in，Achara，Iselin，HiuGaai，Hongkong，HsiaoYu，，中文（台湾）。 检查所有[支持的语言](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)。  
+
+* **自定义语音、使用训练流简化语音测试以简化用户体验**：借助新的测试功能，每个语音都将自动使用针对每种语言进行了优化的预定义测试集来覆盖一般和语音助手方案。 这些测试集经过仔细选择并经过测试，可在语言中包含典型用例和音素。 除此之外，用户还可以选择在训练模型时上传自己的测试脚本。
+
+* **音频内容创建：发布了一组新功能，可实现更强大的语音调整和音频管理功能**
+
+    * `Pitch`增强了、 `rate` 和， `volume` 以支持使用预定义的值（如慢速、中型和 fast）进行优化。 现在，用户可以选择 "常量" 值进行音频编辑。
+
+    ![音频优化](media/release-notes/audio-tuning.png)
+
+    * 用户现在可以查看 `Audio history` 其工作文件。 使用此功能，用户可以轻松地跟踪与工作文件相关的所有生成的音频。 他们可以检查历史记录版本并在优化时比较质量。 
+
+    ![音频历史记录](media/release-notes/audio-history.png)
+
+    * 此 `Clear` 功能现在更加灵活。 用户可以清除特定的优化参数，同时保留可用于所选内容的其他参数。  
+
+    * 在[登陆页面](https://speech.microsoft.com/audiocontentcreation)上添加了一个教程视频，帮助用户快速开始使用 TTS 语音微调和音频管理。 
+
+### <a name="general-tts-voice-quality-improvements"></a>一般 TTS 语音质量改进
+
+* 改进了的 TTS vocoder 以提高保真度并降低延迟。
+
+    * 使用意大利语将 Elsa 更新为新的 vocoder，它实现 + 0.464 CMOS （比较平均观点），合成速度提高40%，在首次字节延迟时速度提高30%。 
+    * 已将中文版中的 Xiaoxiao 更新为新的 0148 vocoder，并将其用于常规域，+ 0.348 用于 newscast 样式，+ 0.195 适用于 lyrical 样式。 
+
+* 更新 `de-DE` 和 `ja-JP` 语音模型，使 TTS 输出更自然。
+    
+    * 通过最新的诗体论建模方法更新了德语的 Katja，MOS （平均观点评分）收益为 + 0.13。 
+    * 使用全新的音调强调诗体论模型更新了日语的 Nanami，MOS （平均观点评分）收益为 + 0.19;  
+
+* 5种语言改进了单词级别的读音准确性。
+
+    | 语言 | 读音错误缩减 |
+    |---|---|
+    | en-GB | 51% |
+    | ko-KR | 17% |
+    | pt-BR | 39% |
+    | pt-PT | 77% |
+    | id-ID | 46% |
+
+### <a name="bug-fixes"></a>Bug 修复
+
+* 货币读数
+    * 解决了和的货币阅读问题 `es-ES``es-MX`
+     
+    | 语言 | 输入 | 改进后读出 |
+    |---|---|---|
+    | es-MX | $1.58 | un 比索 cincuenta y ocho centavos |
+    | es-ES | $1.58 | 取消 dólar cincuenta y ocho centavos |
+
+    * 支持以下区域设置中的负货币（如 "-€325"）： `en-US` 、 `en-GB` 、、、 `fr-FR` `it-IT` `en-AU` 和 `en-CA` 。
+
+* 改进了中的地址读取 `pt-PT` 。
+* 修复 `en-AU` `en-UK` 了单词 "for" 和 "4" 的 Natasha （）和 Libby （）发音问题。  
+* 修复了有关音频内容创建工具的 bug
+    * 在第二段修复后，出现了附加的和意外的暂停。  
+    * 从回归 bug 添加回 "无中断" 功能。 
+    * 语音 Studio 的随机刷新问题已修复。  
+
+### <a name="samplessdk"></a>示例/SDK
+
+* JavaScript：修复 FireFox 中的播放问题，并修复 macOS 和 iOS 上的 Safari。 
+
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1： 2020-6 月发行版
 **语音 CLI （也称为 SPX）**
 -   添加了 CLI 帮助搜索功能：
@@ -87,7 +155,7 @@ ms.locfileid: "84607867"
 - C#、C++：在 `ConversationTranscriptionResult` 中添加了 `UtteranceId`，这是在所有中间产物和最终的语音识别结果中保持一致的一个 ID。 请参阅适用于 [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet)、[C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult) 的详细信息。
 - Python:增加了对 `Language ID` 的支持。 请参阅 [GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)中的 speech_sample.py。
 - Windows:在 Windows 平台上为所有 win32 控制台应用程序增加了对压缩的音频输入格式的支持。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)。 
-- JavaScript：在 NodeJS 中支持语音合成（文本转语音）。 在[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)了解详细信息。 
+- JavaScript：在 NodeJS 中支持语音合成（文本转语音）。 在[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)了解更多信息。 
 - JavaScript：添加了新的 API，用于检查发送和接收的所有消息。 在[此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)了解更多信息。 
         
 **Bug 修复**
@@ -138,7 +206,7 @@ ms.locfileid: "84607867"
 
 ## <a name="speech-sdk-190-2020-january-release"></a>语音 SDK 1.9.0：2020 年 1 月版
 
-**新增功能**
+**新功能**
 
 - 多设备对话：将多个设备连接到相同的语音或基于文本的对话，并选择性地转换在它们之间发送的消息。 请参阅[本文](multi-device-conversation.md)中的详细信息。 
 - 已为 aar 包添加关键字识别支持，并为 x86 和 x64 风格添加了支持。 
@@ -215,7 +283,7 @@ ms.locfileid: "84607867"
 - 添加了对 Android、iOS 和 Linux 上的 ALaw、Mulaw、FLAC 的 `Compressed` 输入支持
 - 在 `Connection` 类中添加了 `SendMessageAsync`，用于向服务发送消息
 - 在用于设置消息属性 `Connection` 类中添加了 `SetMessageProperty`
-- TTS 为 Java（Jre 和 Android）、Python、Swift 和 Objective-C 添加了绑定
+- TTS 为 Java 添加了绑定（JRE 和 Android）、Python、Swift 和目标-C
 - TTS 添加了对 macOS、iOS 和 Android 的播放支持。
 - 为 TTS 添加了“字边界”信息。
 
@@ -378,7 +446,7 @@ ms.locfileid: "84607867"
   - SDK 现在是基于 iOS SDK 版本 12.1 构建的。
   - SDK 现在支持 iOS 版本 9.2 及更高版本。
   - 改进了参考文档并修复了多个属性名称。
-- JavaScript
+- Javascript
   - 添加 `Connection` 对象的支持。
   - 添加了捆绑的 JavaScript 的类型定义文件
   - 首次支持并实现了短语提示。

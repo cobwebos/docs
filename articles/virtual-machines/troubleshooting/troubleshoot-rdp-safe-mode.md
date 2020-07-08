@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ffd26a243d15f7ee6e06d6c52406a16327b4a0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918200"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086766"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因 VM 启动到安全模式而无法通过 RDP 连接到该 VM
 
@@ -46,7 +47,9 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
    )。 如果 VM 上未启用串行控制台，请参阅[脱机修复 VM](#repair-the-vm-offline)。
 2. 检查启动配置数据：
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
     如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为 **safeboot** 的额外标志  。 如果未看到“安全启动”标志，则 VM 未处于安全模式****。 本文不适用于这种情况。
 
@@ -60,11 +63,15 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 
 3. 删除“安全模式”标志，使 VM 启动到正常模式****：
 
-        bcdedit /deletevalue {current} safeboot
+    ```console
+    bcdedit /deletevalue {current} safeboot
+    ```
 
 4. 检查启动配置数据，确保删除“安全启动”标志  ：
 
-        bcdedit /enum
+    ```console
+    bcdedit /enum
+    ```
 
 5. 重启 VM，然后检查问题是否已解决。
 
@@ -114,7 +121,10 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 1. 打开权限提升的命令提示符会话（“以管理员身份运行”）。 
 2. 检查启动配置数据。 在以下命令中，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 的相应值。
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
     记下具有 **\windows** 文件夹的分区的标识符名称。 默认情况下，该标识符名称为“Default”。
 
     如果 VM 配置为启动到安全模式，则可在“Windows 启动加载程序”部分下看到一个名为 **safeboot** 的额外标志  。 如果未看到“安全启动”  标志，则本文不适用于你的方案。
@@ -123,8 +133,14 @@ RDP 服务在安全模式下不可用。 VM 启动到安全模式时，只会加
 
 3. 删除“安全启动”标志，使 VM 启动到正常模式  ：
 
-        bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```console
+    bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
+    ```
+
 4. 检查启动配置数据，确保删除“安全启动”标志  ：
 
-        bcdedit /store F:\boot\bcd /enum
+    ```console
+    bcdedit /store F:\boot\bcd /enum
+    ```
+
 5. [分离 OS 磁盘并重新创建 VM](../windows/troubleshoot-recovery-disks-portal.md)。 然后检查是否解决了问题。

@@ -1,22 +1,23 @@
 ---
-title: Azure HDInsight 中的开源软件支持
+title: Azure HDInsight 中的开放源代码软件支持
 description: Microsoft Azure 为开源技术提供常规级别的支持。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: dd32d176b3e8821236f39dd1677d6dbe78b40adb
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: f1e1518cce060374f14f1db7d5f4e594e3de8f85
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836067"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086256"
 ---
-# <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的开源软件支持
+# <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的开放源代码软件支持
 
-Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开放源代码技术环境。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)的“支持范围”部分。 HDInsight 服务为内置组件提供附加的支持级别。
+Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开源技术环境。 Microsoft Azure 为开源技术提供常规级别的支持。 有关详细信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)的“支持范围”部分。**** HDInsight 服务为内置组件提供附加的支持级别。
 
 ## <a name="components"></a>组件
 
@@ -37,7 +38,7 @@ Microsoft Azure HDInsight 服务使用围绕 Apache Hadoop 构建的开放源代
 群集用户可以安装或者在工作负荷中使用由社区提供的或自己创建的任何组件。
 
 > [!WARNING]  
-> HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
+> 完全支持通过 HDInsight 群集提供的组件。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
 > 自定义组件可获得合理范围的支持，以帮助进一步排查问题。 Microsoft 支持部门也许能够解决问题。 支持人员可能要求你参与可用的开源技术渠道，在该处可以找到该技术的深入专业知识。 可以使用许多社区站点， 示例包括[有关 HDInsight 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)和[堆栈溢出](https://stackoverflow.com)。
 >

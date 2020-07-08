@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83020af17758b570030a4c6129ffdd7dec58094
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188310"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087072"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -246,7 +247,9 @@ ms.locfileid: "84188310"
 
 如果正在使用第三方防火墙，则可以手动打开端口 8050。 如果在网关安装过程中遇到防火墙问题，可以尝试使用以下命令在不配置防火墙的情况下安装网关。
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
 如果选择不打开网关计算机上的端口 8050，则使用机制（而不是使用“设置凭据”**** 应用程序）来配置数据存储凭据。 例如，你可以使用[AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell cmdlet。 请参阅“设置凭据和安全”部分，了解如何设置数据存储凭据。
 
@@ -304,7 +307,7 @@ ms.locfileid: "84188310"
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on -AuthKey <your auth key>
     ```
 
-## <a name="configuration-manager"></a>配置管理器
+## <a name="configuration-manager"></a>Configuration Manager
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
 1. 在“搜索”**** 窗口中，键入“数据管理网关”****，以访问此实用程序。
@@ -361,11 +364,11 @@ ms.locfileid: "84188310"
 
 下表介绍“网关节点”列表中的列****：
 
-监视属性 | 描述
+监视属性 | 说明
 :------------------ | :----------
-“属性” | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
+名称 | 逻辑网关和与网关关联的节点的名称。 节点是已在其上安装网关的本地 Windows 计算机。 有关在单个逻辑网关中采用多个节点（最多 4 个）的信息，请参阅[数据管理网关 - 高可用性和可伸缩性](data-factory-data-management-gateway-high-availability-scalability.md)。
 状态 | 逻辑网关和网关节点的状态。 示例：联机/脱机/受限/等。有关这些状态的信息，请参阅[网关状态](#gateway-status)部分。
-Version | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
+版本 | 显示逻辑网关和每个网关节点的版本。 逻辑网关的版本根据组中多数节点的版本而决定。 如果逻辑网关安装程序中的节点版本不同，只有与逻辑网关的版本号相同的节点能正常运行。 其他节点将处于受限模式，需要手动进行更新（仅当自动更新失败时）。
 可用内存 | 网关节点上的可用内存。 此值为近实时快照。
 CPU 使用率 | 网关节点的 CPU 使用率。 此值为近实时快照。
 网络（进/出） | 网关节点的网络利用率。 此值为近实时快照。
@@ -419,7 +422,7 @@ Offline | 没有节点处于联机状态。
     ![“配置”页](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. 将“Microsoft 数据管理网关配置管理器”**** 保持为打开状态。
 
-    ![配置管理器](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    ![Configuration Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. 在门户中的“配置”页中，单击命令栏上的“重新创建密钥”，并对警告消息单击“是”************。 单击密钥文本旁边的“复制”**** 按钮，将密钥复制到剪贴板。 重新创建密钥后，旧计算机上的网关立即停止工作。
 
     ![重新创建密钥](./media/data-factory-data-management-gateway/RecreateKey.png)

@@ -4,11 +4,12 @@ description: 监视 Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.reviewer: lmolkova
-ms.openlocfilehash: 302d96544a719f0e818d942bff1011c6a4368ef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3d1d8aafaea8dcb9e67b842acfbd493e02e4854
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807309"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086239"
 ---
 # <a name="application-insights-for-net-console-applications"></a>适用于 .NET 控制台应用程序的 Application Insights
 
@@ -17,7 +18,7 @@ ms.locfileid: "85807309"
 需要 [Microsoft Azure](https://azure.com) 订阅。 使用 Microsoft 帐户登录，该帐户可能适用于 Windows、XBox Live 或其他 Microsoft 云服务。 团队可能拥有 Azure 组织订阅：要求所有者使用 Microsoft 帐户你将加入其中。
 
 > [!NOTE]
-> 有一个名为 [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) 的新 Application Insights SDK，可用于为任何控制台应用程序启用 Application Insights。 建议通过[此处](../../azure-monitor/app/worker-service.md)使用此包并查看相关说明。 此包面向 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)，因此可在 .NET Core 2.0 或更高版本以及 .NET Framework 4.7.2 或更高版本中使用。
+> *强烈建议*为任何控制台应用程序使用[此处](../../azure-monitor/app/worker-service.md)的[applicationinsights.config WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)包和相关说明。 此包面向 [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) ，因此可在 .Net Core 2.1 或更高版本中使用，并 .NET Framework 4.7.2 或更高版本。
 
 ## <a name="getting-started"></a>入门
 

@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 47f766e8e5c1ea43d0c9bde8138c0ab17533f539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708637"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087565"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server 实例迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本文介绍将 SQL Server 2005 或更高版本实例迁移到[AZURE SQL 托管实例](sql-managed-instance-paas-overview.md)的方法。 有关迁移到单一数据库或弹性池的信息，请参阅[迁移到单一数据库或入池数据库](../database/migrate-to-database-from-sql-server.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
+本文介绍将 SQL Server 2005 或更高版本实例迁移到[AZURE SQL 托管实例](sql-managed-instance-paas-overview.md)的方法。 有关迁移到单个数据库或弹性池的信息，请参阅[迁移到 SQL 数据库](../database/migrate-to-database-from-sql-server.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
 > [!NOTE]
 > 若要快速启动和试用 Azure SQL 托管实例，你可能需要转到[快速入门指南](quickstart-content-reference-guide.md)，而不是此页。

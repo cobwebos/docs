@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/19/2020
 ms.author: banders
-ms.openlocfilehash: 91f11502a136ca08d62072808d270f8e840a8710
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 925a69f1f3a408e50cb9dc1d03cb5c1cf673ef41
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106426"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102678"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在订阅者与 CSP 之间转移 Azure 订阅
 
@@ -67,4 +67,4 @@ ms.locfileid: "85106426"
 
 ## <a name="next-steps"></a>后续步骤
 - [获取 MPA 帐户的 Azure 订阅的计费所有权](mpa-request-ownership.md)。
-- 了解如何[使用 Azure 计费管理帐户和订阅](index.yml)。
+- 了解如何[使用 Azure 计费管理帐户和订阅](../index.yml)。

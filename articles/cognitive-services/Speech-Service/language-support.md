@@ -11,11 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 148b344d469c78936b56b96090c76e379bb63731
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027488"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087140"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -100,27 +101,42 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 |Locale  | 语言            | 性别 | 语音名称 | 风格支持 |
 |--|--|--|--|--|
+| `ar-EG` | 阿拉伯语（埃及）                  | 女 | `ar-EG-SalmaNeural`      | 常规 |
+| `ar-SA` | 阿拉伯语(沙特阿拉伯)           | 女 | `ar-SA-ZariyahNeura`     | 常规 |
+| `ca-ES` | 加泰罗尼亚语(西班牙)                 | 女 | `ca-ES-AlbaNeural`       | 常规 |
+| `da-DK` | 丹麦语(丹麦)                | 女 | `da-DK-ChristelNeural`   | 常规 |
 | `de-DE` | 德语（德国）                | 女 | `de-DE-KatjaNeural`      | 常规 |
 | `en-AU` | 英语（澳大利亚）             | 女 | `en-AU-NatashaNeural`    | 常规 |
 | `en-CA` | 英语（加拿大）                | 女 | `en-CA-ClaraNeural`      | 常规 |
 | `en-GB` | 英语(英国)                    | 女 | `en-GB-LibbyNeural`      | 常规 |
 |         |                                 | 女 | `en-GB-MiaNeural`        | 常规 |
+| `en-IN` | 英语（印度）                 | 女 | `en-IN-NeerjaNeural`     | 常规 |
 | `en-US` | 英语(美国)                    | 女 | `en-US-AriaNeural`       | 常规，提供了多种语音风格 |
 |         |                                 | 男   | `en-US-GuyNeural`        | 常规 |
 | `es-ES` | 西班牙语(西班牙)                 | 女 | `es-ES-ElviraNeural`     | 常规 |
 | `es-MX` | 西班牙语（墨西哥）                | 女 | `es-MX-DaliaNeural`      | 常规 |
+| `fi-FI` | 芬兰语(芬兰)               | 女 | `fi-FI-NooraNeural`      | 常规 |
 | `fr-CA` | 法语（加拿大）                 | 女 | `fr-CA-SylvieNeural`     | 常规 |
 | `fr-FR` | 法语（法国）                 | 女 | `fr-FR-DeniseNeural`     | 常规 |
+| `hi-IN` | 印地语（印度）                   | 女 | `hi-IN-SwaraNeural`      | 常规 |
 | `it-IT` | 意大利语（意大利）                 | 女 | `it-IT-ElsaNeural`       | 常规 |
 | `ja-JP` | 日语                        | 女 | `ja-JP-NanamiNeural`     | 常规 |
 | `ko-KR` | 韩语                          | 女 | `ko-KR-SunHiNeural`      | 常规 |
 | `nb-NO` | 挪威语                       | 女 | `nb-NO-IselinNeural`     | 常规 |
-| `pt-BR` | 葡萄牙语（巴西）             | 女 | `pt-BR-FranciscaNeural`  | 常规 |
+| `nl-NL` | 荷兰语（Netherland）              | 女 | `nl-NL-ColetteNeural`    | 常规 |
+| `pl-PL` | 波兰语（波兰）                 | 女 | `pl-PL-ZofiaNeural`      | 常规 |
+| `pt-BR` | 葡萄牙语（巴西）             | 女 | `pt-BR-FranciscaNeural`  | 常规，提供了多种语音风格 |
 | `tr-TR` | 土耳其语                         | 女 | `tr-TR-EmelNeural`       | 常规 |
+| `pt-PT` | 葡萄牙语(葡萄牙)           | Female | `pt-PT-FernandaNeural`   | 常规 |
+| `ru-RU` | 俄语（俄罗斯）                | 女 | `ru-RU-DariyaNeural`     | 常规 |
+| `sv-SE` | 瑞典语（瑞典）                | 女 | `sv-SE-HilleviNeural`    | 常规 |
+| `th-TH` | 泰语(泰国)                 | 女 | `th-TH-AcharaNeural`     | 常规 |
 | `zh-CN` | 中文(普通话，简体)  | 女 | `zh-CN-XiaoxiaoNeural`   | 常规，提供了多种语音风格 |
 |         |                                 | 女 | `zh-CN-XiaoyouNeural`    | 儿童语音，针对讲故事进行了优化 |
 |         |                                 | 男   | `zh-CN-YunyangNeural`    | 针对新闻朗读进行了优化，提供了多种语音风格 |
 |         |                                 | 男   | `zh-CN-YunyeNeural`      | 针对讲故事进行了优化 |
+| `zh-HK` | 中文（粤语，tranditional）   | 女 | `zh-HK-HiuGaaiNeural`| 常规 |
+| `zh-TW` | 中文(台湾普通话)   | Female | `zh-TW-HsiaoYuNeural`    | 常规 |
 
 > [!IMPORTANT]
 > `en-US-JessaNeural` 语音已更改为 `en-US-AriaNeural`。 如果以前使用的是“Jessa”，请转换为“Aria”。
@@ -139,7 +155,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | <sup>1</sup>`ar-EG` | 阿拉伯语（埃及） | 女 | "ar-EG-Hoda" |
 | `ar-SA` | 阿拉伯语（沙特阿拉伯） | 男 | "ar-SA-Naayf" |
 | `bg-BG` | 保加利亚语 | 男 |  "bg-BG-Ivan" |
-| `ca-ES` | 加泰罗尼亚语 | Female |  "ca-ES-HerenaRUS" |
+| `ca-ES` | 加泰罗尼亚语 | 女 |  "ca-ES-HerenaRUS" |
 | `cs-CZ` | 捷克语 | 男 | "cs-CZ-Jakub" |
 | `da-DK` | 丹麦语 | 女 |  "da-DK-HelleRUS" |
 | `de-AT` | 德语（奥地利） | 男 | "de-AT-Michael" |
@@ -160,7 +176,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 |  |  | 女 |  "en-IN-PriyaRUS" |
 |  |  | 男 |  "en-IN-Ravi-Apollo" |
 | `en-US` | 英语(美国) | 女 |  "en-US-ZiraRUS" |
-|  |  | 女 | "en-US-AriaRUS" |
+|  |  | Female | "en-US-AriaRUS" |
 |  |  | 男 | "en-US-BenjaminRUS" |
 |  |  | 男 |  "en-US-Guy24kRUS" |
 | `es-ES` | 西班牙语(西班牙) | 女 |  "es-ES-Laura-Apollo" |
@@ -177,7 +193,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 |  |  | 男 |  "fr-FR-Paul-Apollo" |
 | `he-IL` | 希伯来语（以色列） | 男 |  "he-IL-Asaf" |
 | `hi-IN` | 印地语（印度） | 女 | "hi-IN-Kalpana-Apollo" |
-|  |  | Female |  "hi-IN-Kalpana" |
+|  |  | 女 |  "hi-IN-Kalpana" |
 |  |  | 男 |  "hi-IN-Hemant" |
 | `hr-HR` | 克罗地亚语 | 男 | "hr-HR-Matej" |
 | `hu-HU` | 匈牙利语 | 男 |  "hu-HU-Szabolcs" |
@@ -198,7 +214,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | `ro-RO` | 罗马尼亚语 | 男 | "ro-RO-Andrei" |
 | `ru-RU` | 俄语 | 女 |  "ru-RU-Irina-Apollo" |
 |  |  | 男 | "ru-RU-Pavel-Apollo" |
-|  |  | 女 |  ru-RU-EkaterinaRUS |
+|  |  | Female |  ru-RU-EkaterinaRUS |
 | `sk-SK` | 斯洛伐克语 | 男 | "sk-SK-Filip" |
 | `sl-SI` | 斯洛文尼亚语 | 男 |  "sl-SI-Lado" |
 | `sv-SE` | 瑞典语 | 女 | "sv-SE-HedvigRUS" |

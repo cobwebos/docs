@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086970"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -23,26 +24,26 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 本文介绍如何配合使用 Azure 存储和 HDInsight 群集。 若要了解 Data Lake Storage Gen 1 与 HDInsight 群集如何配合工作，请参阅[将 Azure Data Lake Storage 与 Azure HDInsight 群集配合使用](hdinsight-hadoop-use-data-lake-store.md)。 若要深入了解如何创建 HDInsight 群集，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 > [!IMPORTANT]  
-> 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器。
+> 存储帐户类型 BlobStorage 仅可用作 HDInsight 群集的辅助存储器****。
 
 | 存储帐户类型 | 支持的服务 | 支持的性能层 |不支持的性能层| 支持的访问层 |
 |----------------------|--------------------|-----------------------------|---|------------------------|
-| StorageV2（常规用途 v2）  | Blob     | Standard                    |Premium| 热、冷、存档\*   |
-| 存储（常规用途 v1）   | Blob     | Standard                    |Premium| 空值                    |
-| BlobStorage                    | Blob     | Standard                    |Premium| 热、冷、存档\*   |
+| StorageV2（常规用途 v2）  | Blob     | 标准                    |高级| 热、冷、存档\*   |
+| 存储（常规用途 v1）   | Blob     | 标准                    |高级| 空值                    |
+| BlobStorage                    | Blob     | 标准                    |高级| 热、冷、存档\*   |
 
-建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
+建议不要使用默认 blob 容器来存储业务数据。 最佳做法是每次使用之后删除默认 Blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 
 不支持将单个 blob 容器共享为多个群集的默认文件系统。
 
 > [!NOTE]  
 > 存档访问层是一个离线层，具有几小时的检索延迟，不建议与 HDInsight 一起使用。 有关详细信息，请参阅[存档访问层](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)。
 
-## <a name="access-files-from-within-cluster"></a>从群集内访问文件
+## <a name="access-files-from-within-cluster"></a>从群集中访问文件
 
-可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 wasb: 前缀的未加密访问和使用 wasbs 的 TLS 加密访问 。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
+可以通过多种方法从 HDInsight 群集访问 Data Lake Storage 中的文件。 URI 方案提供了使用 wasb: 前缀的未加密访问和使用 wasbs 的 TLS 加密访问** **。 建议尽量使用 *wasbs* ，即使在访问位于同一 Azure 区域内的数据时也是如此。
 
-* **使用完全限定的名称**。 使用此方法时，需要提供要访问的文件的完整路径。
+* **使用完全限定的名称**。 使用此方法时，需提供要访问的文件的完整路径。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
@@ -64,11 +65,11 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 
 ### <a name="data-access-examples"></a>数据访问示例
 
-示例基于与群集的头节点之间存在 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用了所有三种 URI 方案。 将 `CONTAINERNAME` 和 `STORAGEACCOUNT` 替换为相关值
+示例基于到群集的头节点的 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用所有三个 URI 方案。 将 `CONTAINERNAME` 和 `STORAGEACCOUNT` 替换为相关值
 
 #### <a name="a-few-hdfs-commands"></a>几个 hdfs 命令
 
-1. 在本地存储中创建文件。
+1. 在本地存储上创建一个文件。
 
     ```bash
     touch testFile.txt
@@ -90,7 +91,7 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
     hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
     ```
 
-1. 列出群集存储中的目录内容。
+1. 列出群集存储上的目录内容。
 
     ```bash
     hdfs dfs -ls wasbs://CONTAINERNAME@STORAGEACCOUNT.blob.core.windows.net/sampledata1/
@@ -99,11 +100,11 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
     ```
 
 > [!NOTE]  
-> 在 HDInsight 外部使用 Blob 时，大多数实用程序无法识别 WASB 格式，应该改用基本的路径格式，如 `example/jars/hadoop-mapreduce-examples.jar`。
+> 在 HDInsight 外部使用 Blob 时，大多数实用程序无法识别 WASB 格式，应改用基本路径格式，如 `example/jars/hadoop-mapreduce-examples.jar`。
 
 #### <a name="creating-a-hive-table"></a>创建 Hive 表
 
-为便于说明，显示了三个文件位置。 在实际执行中，只使用其中一个 `LOCATION` 条目。
+但为了便于说明，显示了三个文件位置。 在实际执行中，只使用其中一个 `LOCATION` 条目。
 
 ```hql
 DROP TABLE myTable;
@@ -122,7 +123,7 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="access-files-from-outside-cluster"></a>从外部群集访问文件
+## <a name="access-files-from-outside-cluster"></a>从群集外部访问文件
 
 Microsoft 提供以下工具用于操作 Azure 存储：
 
@@ -137,11 +138,11 @@ Microsoft 提供以下工具用于操作 Azure 存储：
 
 * 若要标识指向配置的默认存储的完整路径，请导航至：
 
-    HDFS > Configs，并在筛选器输入框中输入 `fs.defaultFS` 。
+    “HDFS”**** > ****“配置”，然后在筛选器输入框中输入 `fs.defaultFS`。
 
-* 若要检查 wasb 存储是否配置为辅助存储，请导航至：
+* 若要检查是否已将 wasb 存储配置为辅助存储器，请导航到
 
-    HDFS > Configs 并在筛选器输入框输入 `blob.core.windows.net` 。
+    HDFS > Configs 并在筛选器输入框输入 `blob.core.windows.net`**** ****。
 
 若要使用 Ambari REST API 获取路径，请参阅[获取默认存储](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
 
@@ -164,7 +165,7 @@ Microsoft 提供以下工具用于操作 Azure 存储：
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍如何将与 HDFS 兼容的 Azure 存储和 HDInsight 配合使用。 通过该存储可以生成自适应、长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
+本文已介绍如何将 HDFS 兼容的 Azure 存储与 HDInsight 配合使用。 通过该存储可以生成自适应、长期存档数据采集解决方案，并使用 HDInsight 来解锁所存储结构化和非结构化数据内的信息。
 
 有关详细信息，请参阅：
 
