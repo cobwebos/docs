@@ -16,7 +16,6 @@ ms.topic: conceptual
 ms.workload: identity
 ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83771071"

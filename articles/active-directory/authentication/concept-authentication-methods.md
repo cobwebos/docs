@@ -13,7 +13,6 @@ ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 642f2705f54fe8f84cfde7ff039c9a723be59595
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83770953"

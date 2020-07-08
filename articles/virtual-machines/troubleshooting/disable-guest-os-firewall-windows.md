@@ -16,7 +16,6 @@ ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 5d8aa456a6454dd511b7dcda5d3f74a739033356
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83774342"

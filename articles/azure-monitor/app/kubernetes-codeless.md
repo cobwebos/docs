@@ -7,7 +7,6 @@ ms.author: jgol
 ms.date: 05/13/2020
 ms.openlocfilehash: 76f9f922697ef6be6c959ea7f9bafd0872dba6ff
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83773761"

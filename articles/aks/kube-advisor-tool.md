@@ -9,7 +9,6 @@ ms.date: 11/05/2018
 ms.author: seanmck
 ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
 ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83773801"
