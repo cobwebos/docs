@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 77145c691f5b2b6364de64e491aac3c84495d464
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 3b32468c9795f603ac38854415bca9d653d7c101
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726122"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84674971"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -75,11 +74,9 @@ IoT 中心消息由以下部分组成：
 
 系统属性名称根据消息要路由到的终结点而有所不同。 有关这些名称的详细信息，请参阅下表。
 
-
 |系统属性名称|事件中心|Azure 存储|服务总线|事件网格|
 |--------------------|----------|-------------|-----------|----------|
 |消息 ID|message-id|messageId|MessageId|message-id|
-|Iot 中心排队时间|iothub-enqueuedtime|enqueuedTime|iothub-enqueuedtime|iothub-enqueuedtime|
 |用户 id|user-id|userId|UserId|user-id|
 |连接设备 id|iothub-connection-device-id| connectionDeviceId|iothub-connection-device-id|iothub-connection-device-id|
 |连接模块 id|iothub-connection-module-id|connectionModuleId|iothub-connection-module-id|iothub-connection-module-id|
@@ -87,7 +84,7 @@ IoT 中心消息由以下部分组成：
 |连接身份验证方法|iothub-connection-auth-method|connectionAuthMethod|iothub-connection-auth-method|iothub-connection-auth-method|
 |contentType|content-type|contentType|ContentType|iothub-content-type|
 |contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
-|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime|     |iothub-enqueuedtime|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| 不适用 |iothub-enqueuedtime|
 |iothub-interface-name|iothub-interface-name|interfaceName|Iothub-interface-name|iothub-interface-name|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 

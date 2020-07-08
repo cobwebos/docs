@@ -3,15 +3,14 @@ title: 使用 Azure PowerShell 将 Azure 网络安全组 (NSG) 移到另一个 A
 description: 使用 Azure 资源管理器模板，通过 Azure PowerShell 将 Azure 网络安全组从一个 Azure 区域移到另一个 Azure 区域。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75641462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688443"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>使用 Azure PowerShell 将 Azure 网络安全组 (NSG) 移到另一个区域
 
@@ -43,7 +42,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>通过脚本导出模板并进行部署
 
-1. 通过[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0)命令登录到 Azure 订阅，并按照屏幕上的说明操作：
+1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登录到 Azure 订阅，然后按屏幕说明操作：
     
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -61,7 +60,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. 已下载的文件将根据从其导出了资源的资源组来命名。  找到通过名为 **\<resource-group-name>.json** 的命令导出的文件，在所选编辑器中将其打开：
+4. 已下载的文件将根据从其导出了资源的资源组来命名。  找到通过命令导出的名为 \<resource-group-name>.json 的文件，在所选编辑器中将其打开：
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +105,9 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
     Get-AzLocation | format-table
     
     ```
-8. 也可选择更改 **\<resource-group-name>.json** 中的其他参数，这些参数是可选的，具体取决于你的要求：
+8. 如果你选择，则还可以更改** \<resource-group-name> json**中的其他参数，并根据你的要求进行选择：
 
-    * **安全规则** - 可以通过编辑的方式设置哪些规则能够部署到目标 NSG 中，只需在  resource-group-name>.json **文件的 \<securityRules** 节中添加或删除规则即可：
+    * **安全规则**-你可以通过在**securityRules**部分中添加或删除规则，来编辑要部署到目标** \<resource-group-name> NSG 的规则**：
 
         ```json
            "resources": [
@@ -144,7 +143,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
             
         ```
 
-        若要完成在目标 NSG 中添加或删除规则的操作，还需编辑 **\<resource-group-name>.json** 文件末尾的自定义规则类型，具体格式见下面的示例：
+        若要完成添加或删除目标 NSG 中的规则，还必须按以下示例格式在** \<resource-group-name> json**文件末尾编辑自定义规则类型：
 
         ```json
            {
@@ -171,7 +170,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
             }
         ```
 
-9. 保存 **\<resource-group-name>.json** 文件。
+9. 保存 \<resource-group-name>.json 文件。
 
 10. 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) 在目标区域创建资源组，以便部署目标 NSG：
     
@@ -179,7 +178,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 使用 **New-AzResourceGroupDeployment\< 将编辑的** [resource-group-name>.json](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 文件部署到在上一步创建的资源组：
+11. 使用 [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) 将编辑的 \<resource-group-name>.json 文件部署到在上一步创建的资源组：
 
     ```azurepowershell-interactive
 

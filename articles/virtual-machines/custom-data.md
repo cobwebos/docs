@@ -7,18 +7,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: HT
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678352"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>在 Azure 虚拟机上使用自定义数据和云初始化
 
-## <a name="what-is-custom-data"></a>什么是自定义数据？
-
-客户经常会询问如何在预配时将脚本或其他元数据注入到 Microsoft Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Microsoft Azure 中，我们有一个称为自定义数据的类似功能。 
+在设置时，可能需要将一个脚本或其他元数据注入到 Microsoft Azure 虚拟机。  在其他云中，此概念通常称为用户数据。  在 Microsoft Azure 中，我们有一个称为自定义数据的类似功能。 
 
 自定义数据仅在第一次启动/初始设置期间可用于 VM，我们称之为“预配”。 预配是 VM 创建参数（例如，主机名、用户名、密码、证书、自定义数据、密钥等）可供 VM 使用的过程，预配代理会对其进行处理，如 [Linux 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)和[云初始化](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)。 
 

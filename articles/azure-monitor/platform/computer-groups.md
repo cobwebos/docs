@@ -7,11 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
 ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689004"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
@@ -86,7 +85,7 @@ ms.locfileid: "79274770"
 ## <a name="managing-computer-groups"></a>管理计算机组
 可以查看通过日志查询或通过 Azure 门户上 Log Analytics 工作区“高级设置”中的日志搜索 API 创建的计算机组。   选择“计算机组”，然后选择“已保存的组”。    
 
-单击“删除”  列中的“x”  可删除计算机组。  单击组的“查看成员”  图标可运行返回其成员的组的日志搜索。  无法修改计算机组，而是必须删除该组，然后使用修改的设置重新创建它。
+单击“删除”列中的“x”可删除计算机组。  单击组的“查看成员”  图标可运行返回其成员的组的日志搜索。  无法修改计算机组，而是必须删除该组，然后使用修改的设置重新创建它。
 
 ![已保存的计算机组](media/computer-groups/configure-saved.png)
 
@@ -127,7 +126,7 @@ ms.locfileid: "79274770"
 | `GroupFullName` |包括源和源名称的组的完整路径。 |
 | `GroupSource` |从中收集组的源。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |从中收集组的源名称。  对于 Active Directory，这是域名。 |
-| `ManagementGroupName` |SCOM 代理的管理组名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
+| `ManagementGroupName` |SCOM 代理的管理组名称。  对于其他代理，这是 AOI-\<workspace ID\> |
 | `TimeGenerated` |创建或更新计算机组的日期和时间。 |
 
 ## <a name="next-steps"></a>后续步骤

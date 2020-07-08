@@ -17,11 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261835"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84692132"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>委托和角色 Azure AD 的权利管理
 
@@ -65,18 +64,18 @@ ms.locfileid: "79261835"
 
 委派后，市场部的角色可能与下表类似。
 
-| User | 作业角色 | Azure AD 角色 | 权利管理角色 |
+| 用户 | 作业角色 | Azure AD 角色 | 权利管理角色 |
 | --- | --- | --- | --- |
 | Hana | IT 管理员 | 全局管理员或用户管理员 |  |
-| Mamta | 市场营销经理 | User | 目录创建者和目录所有者 |
-| Bob | 市场营销负责人 | User | 目录所有者 |
-| Jessica | 营销项目经理 | User | 访问包管理者 |
+| Mamta | 市场营销经理 | 用户 | 目录创建者和目录所有者 |
+| Bob | 市场营销负责人 | 用户 | 目录所有者 |
+| Jessica | 营销项目经理 | 用户 | 访问包管理者 |
 
 ## <a name="entitlement-management-roles"></a>权利管理角色
 
 权利管理具有以下特定的角色。
 
-| 权利管理角色 | 说明 |
+| 权利管理角色 | 描述 |
 | --- | --- |
 | 目录创建者 | 创建和管理目录。 通常，该角色是不充当全局管理员的 IT 管理员，或者是资源集合的资源所有者。 创建目录的人员将自动成为该目录的第一个目录所有者，并可以添加其他目录所有者。 目录创建者无法管理或查看他们不拥有的目录，也无法将他们不拥有的资源添加到目录中。 如果目录创建者需要管理其他目录或添加不拥有的资源，则他们可以请求成为该目录或资源的共同所有者。 |
 | 目录所有者 | 编辑和管理现有目录。 通常，该角色是 IT 管理员或资源所有者，或者是目录所有者指定的用户。 |
@@ -84,14 +83,14 @@ ms.locfileid: "79261835"
 
 此外，访问包的指定审批者和请求者也拥有权限，但他们不是角色。
 
-| Right | 说明 |
+| 权限 | 描述 |
 | --- | --- |
 | 审批者 | 由策略授权，可以批准或拒绝对访问包的请求，但无法更改访问包定义。 |
 | 请求者 | 由访问包的策略授权，可以请求该访问包。 |
 
 下表列出了授权管理角色可以执行的任务。
 
-| 任务 | 管理 | 目录创建者 | 目录所有者 | 访问包管理者 |
+| 任务 | 管理员 | 目录创建者 | 目录所有者 | 访问包管理者 |
 | --- | :---: | :---: | :---: | :---: |
 | [委托给目录创建者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [添加连接的组织](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
@@ -130,7 +129,7 @@ ms.locfileid: "79261835"
 | [SharePoint 管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
 | [应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | [云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
-| User | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
+| 用户 | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
 
 若要确定任务的最小特权角色，还可以参考[按 Azure Active Directory 中的管理员任务划分的管理员角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
 

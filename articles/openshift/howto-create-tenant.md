@@ -7,11 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243687"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694899"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>创建适用于 Azure Red Hat OpenShift 的 Azure AD 租户
 
@@ -28,7 +27,7 @@ Microsoft Azure Red Hat OpenShift 需要一个用于创建群集的[Azure Active
 3. 提供**组织名称**。
 4. 提供一个**初始域名**。 这会在其中追加*onmicrosoft.com* 。 可在此处重复使用*组织名称*的值。
 5. 选择将在其中创建租户的国家或地区。
-6. 单击 **“创建”** 。
+6. 单击“创建”。
 7. 创建 Azure AD 租户后，请选择 "**单击此处以管理新目录**" 链接。 新租户名称应显示在 Azure 门户的右上方：  
 
     ![显示右上方的租户名称的门户屏幕截图][tenantcallout]  

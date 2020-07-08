@@ -9,11 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687491"
 ---
 # <a name="extended-geojson-geometries"></a>扩展的 GeoJSON 几何图形
 
@@ -35,13 +34,13 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 
 ## <a name="circle"></a>圆形
 
-`Circle` [GeoJSON 规范][1]不支持该几何图形。我们使用`GeoJSON Point Feature`对象来表示圆。
+`Circle` [GeoJSON 规范][1]不支持该几何图形。我们使用 `GeoJSON Point Feature` 对象来表示圆。
 
-使用`Circle` `GeoJSON Feature`对象表示的几何图形__必须__包含以下坐标和属性：
+`Circle`使用对象表示的几何图形 `GeoJSON Feature` __必须__包含以下坐标和属性：
 
 - 中心
 
-    圆的中心使用`GeoJSON Point`对象表示。
+    圆的中心使用 `GeoJSON Point` 对象表示。
 
 - 半径
 
@@ -49,11 +48,11 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 
 - 子类型
 
-    圆形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分`GeoJSON Feature`，并且其值应为_圆圈_
+    圆形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分 `GeoJSON Feature` ，并且其值应为_圆圈_
 
 #### <a name="example"></a>示例
 
-下面是使用`GeoJSON Feature`对象表示圆的方式。 让我们将圆圈置于纬度：47.639754 和经度：-122.126986，并为其分配一个等于100计量的半径：
+下面是使用对象表示圆的方式 `GeoJSON Feature` 。 让我们将圆圈置于纬度：47.639754 和经度：-122.126986，并为其分配一个等于100计量的半径：
 
 ```json            
 {
@@ -69,19 +68,19 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 }          
 ```
 
-## <a name="rectangle"></a>Rectangle
+## <a name="rectangle"></a>矩形
 
-`Rectangle` [GeoJSON 规范][1]不支持该几何图形。我们使用`GeoJSON Polygon Feature`对象来表示矩形。 矩形扩展主要由 Web SDK 的 "绘图工具" 模块使用。
+`Rectangle` [GeoJSON 规范][1]不支持该几何图形。我们使用 `GeoJSON Polygon Feature` 对象来表示矩形。 矩形扩展主要由 Web SDK 的 "绘图工具" 模块使用。
 
-使用`Rectangle` `GeoJSON Polygon Feature`对象表示的几何图形__必须__包含以下坐标和属性：
+`Rectangle`使用对象表示的几何图形 `GeoJSON Polygon Feature` __必须__包含以下坐标和属性：
 
 - 内角
 
-    使用`GeoJSON Polygon`对象的坐标表示矩形的角。 应该有五个坐标，每个角一个。 与第五个坐标相同，用于关闭多边形环。 假定这些坐标对齐，开发人员可以根据需要对其进行旋转。
+    使用对象的坐标表示矩形的角 `GeoJSON Polygon` 。 应该有五个坐标，每个角一个。 与第五个坐标相同，用于关闭多边形环。 假定这些坐标对齐，开发人员可以根据需要对其进行旋转。
 
 - 子类型
 
-    矩形几何图形还必须包含`subType`属性。 此属性必须是的属性的一部分`GeoJSON Feature`，并且其值应为_矩形_
+    矩形几何图形还必须包含 `subType` 属性。 此属性必须是的属性的一部分 `GeoJSON Feature` ，并且其值应为_矩形_
 
 ### <a name="example"></a>示例
 

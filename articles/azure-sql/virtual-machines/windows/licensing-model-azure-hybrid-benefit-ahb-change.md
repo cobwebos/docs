@@ -4,7 +4,6 @@ description: 了解如何使用 Azure 混合权益在 Azure 中将 SQL Server VM
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -14,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 07f5896ab43cd02abc9c83667763c1989355b8bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: f02f31e0fc8943682af77ca6f506d15f36e88146
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668893"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>在 Azure 中更改 SQL 虚拟机的许可模式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

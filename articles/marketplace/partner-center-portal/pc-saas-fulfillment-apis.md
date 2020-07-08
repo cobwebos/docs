@@ -5,31 +5,54 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/18/2020
 ms.author: dsindona
-ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 70515ca04e870fa435f8e9f46122a8e0dcb9b588
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691350"
 ---
 # <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的 SaaS 履单 Api
 
-SaaS 履单 Api 使独立软件供应商（Isv）能够将其 SaaS 应用程序集成到 Microsoft AppSource 和 Azure Marketplace 中。 这些 Api 使 ISV 应用程序能够参与所有启用了商业功能的频道：直接、伙伴 led （经销商）和现场 led。 它们需要列出 Microsoft AppSource 和 Azure Marketplace 中的事务 SaaS 产品/服务。
+SaaS 履单 Api 允许发布者（也称为独立软件供应商（Isv））在 Microsoft AppSource、Azure Marketplace 和 Azure 门户中发布和销售其 SaaS 应用程序。 这些 Api 使 ISV 应用程序能够参与所有启用了商业功能的频道：直接、伙伴 led （经销商）和现场 led。  与这些 Api 集成是在合作伙伴中心创建和发布事务 SaaS 产品/服务的一项要求。
 
-> [!WARNING]
-> 此 API 的当前版本是版本2，适用于所有新的 SaaS 产品/服务。  API 的版本1已弃用，并将进行维护以支持现有的产品/服务。
+Isv 必须实现以下 API 流，方法是将添加到其 SaaS 服务代码，以便为 Isv 和 Microsoft 维护相同的订阅状态：
 
-## <a name="business-model-support"></a>业务模型支持
+* 登陆页面流： Microsoft 通知发布者，发布者已在 marketplace 中购买了发布者的 SaaS 优惠。
+* 激活流：发布者通知 Microsoft 已在发布者端配置了新购买的 SaaS 帐户。
+* 更新流：更改购买的计划和/或购买的座位数。
+* 挂起和恢复流：如果客户的付款方式不再有效，则暂停购买的 SaaS 产品/服务。 解决了付款方式问题后，可以恢复暂停的产品/服务。
+* Webhook 流： Microsoft 将通知发布者来自 Microsoft 端的客户触发的 SaaS 订阅更改和取消。
 
-此 API 支持以下业务模型功能;您可以：
+对于已购买的 SaaS 订阅，集成是可选的，因为它可由 Microsoft 端的客户进行。
 
-* 为产品/服务指定多个计划。 这些计划具有不同的功能，并且价格可能不同。
-* 针对每个站点或按用户计费模型提供产品/服务。
-* 提供每月和每年（付费）计费选项。
-* 根据协商的业务协议为客户提供专用定价。
+与 SaaS 履单 Api 的正确集成对于确保
 
+* 购买发布者的 SaaS 产品/服务的最终客户将由 Microsoft 进行正确计费。
+* 最终客户将获得正确的用户体验，并使用和管理在 Marketplace 中购买的 SaaS 订阅。
+
+通过这些 Api，发布者的产品/服务可以参与所有启用了商务的频道：
+
+* 直通
+* 伙伴 led （经销商、CSP）
+* 现场 led
+
+在经销商（CSP）方案中，CSP 代表最终客户购买 SaaS 产品/服务。 客户应使用 SaaS 产品/服务，但 CSP 是执行以下操作的实体：
+
+* 向客户计费
+* 更改订阅计划/购买的座位数量
+* 取消订阅
+
+对于此方案，发布服务器不需要实现任何不同的 API 调用流。
+
+有关 CSP 的详细信息，请参阅 https://partner.microsoft.com/en-us/licensing 。
+
+>[!Warning]
+>此 API 的当前版本是版本2，适用于所有新的 SaaS 产品/服务。 API 的版本1已弃用，并将进行维护以支持现有的产品/服务。
+
+>[!Note]
+>SaaS 履单 Api 只应从发布者的后端服务中调用。 不支持直接从发布者的网页与 Api 集成。 只应使用服务到服务的身份验证流。
 
 ## <a name="next-steps"></a>后续步骤
 

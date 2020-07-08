@@ -6,11 +6,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687644"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
 
@@ -50,7 +49,7 @@ ms.locfileid: "79276499"
 
 在 .NET 中，参数类型定义了输入数据的数据类型。 例如，使用 `string` 绑定到队列触发器的文本、一个要读取为二进制内容的字节数组，以及一个要反序列化为对象的自定义类型。
 
-对于动态键入的语言（如 JavaScript），请在 function.json `dataType`*文件中使用*  属性。 例如，若要以二进制格式读取 HTTP 请求的内容，将 `dataType` 设置为 `binary`：
+对于动态键入的语言（如 JavaScript），请在 function.json 文件中使用 `dataType` 属性。 例如，若要以二进制格式读取 HTTP 请求的内容，将 `dataType` 设置为 `binary`：
 
 ```json
 {
@@ -65,7 +64,7 @@ ms.locfileid: "79276499"
 
 ## <a name="binding-direction"></a>绑定方向
 
-所有触发器和绑定在 `direction`function.json[ 文件中都有一个 ](./functions-reference.md) 属性：
+所有触发器和绑定在 [function.json](./functions-reference.md) 文件中都有一个 `direction` 属性：
 
 - 对于触发器，方向始终为 `in`
 - 输入和输出绑定使用 `in` 和 `out`

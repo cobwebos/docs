@@ -1,21 +1,20 @@
 ---
 title: 导出和删除数据
 titleSuffix: ML Studio (classic) - Azure
-description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室（经典版）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍相关实现方法。
+description: 通过 Azure 门户或经过身份验证的 REST API，可导出和删除 Azure 机器学习工作室（经典版）存储的产品内数据。 可通过 Azure 隐私门户访问遥测数据。 本文介绍如何进行此操作。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: c380d10d0c68794ec3810cea25341d68bb41400d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9f623357dfbc8fab8a2967df65cc53abc4bc9d57
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696127"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习工作室（经典版）中导出和删除产品内用户数据
 
@@ -66,8 +65,8 @@ ms.locfileid: "79251682"
 ### <a name="delete-an-entire-workspace"></a>删除整个工作区
 
 用户也可以删除其整个工作区：
-- 付费工作区：通过 Azure 门户删除。
-- 免费工作区：使用“设置”窗格中的删除按钮  。
+- 付费工作区：通过 Azure 门户进行删除。
+- 免费工作区：使用“设置”窗格中的“删除”按钮****。
 
 ![删除机器学习工作室（经典版）中的免费工作区](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  

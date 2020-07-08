@@ -11,16 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689038"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
-## <a name="general-faq"></a>一般常见问题解答
+## <a name="general-faq"></a>常见问题解答
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备， 为什么我看不到 Azure 门户中的用户信息下的设备？ 或对于加入混合Azure Active Directory (Azure AD) 的设备，为什么设备所有者标记为 N/A？
 
@@ -43,7 +42,7 @@ ms.locfileid: "79497517"
 - 对于低级别操作系统版本，请运行 `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`。
 
 **答：** 有关疑难解答信息，请参阅以下文章：
-- [使用 dsregcmd.exe 命令对设备进行故障排除](troubleshoot-device-dsregcmd.md)
+- [使用 dsregcmd 命令排查设备问题](troubleshoot-device-dsregcmd.md)
 - [排查已加入混合 Azure Active Directory 的 Windows 10 和 Windows Server 2016 设备问题](troubleshoot-hybrid-join-windows-current.md)
 - [排查已加入混合 Azure Active Directory 的下层设备问题](troubleshoot-hybrid-join-windows-legacy.md)
 
@@ -69,7 +68,7 @@ ms.locfileid: "79497517"
 
 ---
 
-### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态仍显示为已注册。   应采取何种操作？
+### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>问：我在 Azure 门户或使用 Windows PowerShell 中禁用或删除了我的设备。 但设备上的本地状态仍显示为已注册。 我该怎么办？
 
 **答：** 此操作是由设计决定的。 在这种情况下，设备无法访问云中的资源。 管理员可以对过时的、丢失或被盗的设备执行此操作，以防止未经授权的访问。 如果无意中执行了此操作，则需要重新启用或重新注册设备，如下所述
 
@@ -100,7 +99,7 @@ ms.locfileid: "79497517"
 
       对于 Azure AD 注册的 Windows 10 设备，请执行以下步骤：
 
-      1. 中转到 "**设置** > " "**帐户** > " "**访问工作单位或学校**"。 
+      1. 中转到 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作单位或学校**"。 
       1. 选择该帐户，然后选择 "**断开连接**"。
       1. 单击 "+ 连接"，然后通过登录过程再次注册设备。
 
@@ -148,13 +147,13 @@ ms.locfileid: "79497517"
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>问：如何实现在设备本地脱离 Azure AD 已加入设备？
 
-**答：** 对于纯 Azure AD 联接设备，请确保具有脱机的本地管理员帐户或创建一个。 无法使用 Azure AD 用户凭据登录。 接下来，请访问 "**设置** > " "**帐户** > " "**访问工作或学校**"。 选择帐户，然后选择“断开连接”****。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
+**答：** 对于纯 Azure AD 联接设备，请确保具有脱机的本地管理员帐户或创建一个。 无法使用 Azure AD 用户凭据登录。 接下来，请访问 "**设置**" "帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”****。 按照提示操作，并在出现提示时提供本地管理员凭据。 重新启动设备以完成取消加入过程。
 
 ---
 
 ### <a name="q-can-my-users-sign-in-to-azure-ad-joined-devices-that-are-deleted-or-disabled-in-azure-ad"></a>问：我的用户是否可以登录到 Azure AD 中删除或禁用的 Azure AD 联接设备？
 
-**答：** 是的。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
+**答:** 是的。 Windows 具有缓存用户名和密码功能，该功能允许先前登录的用户即使没有网络连接也能快速访问桌面。 
 
 设备在 Azure AD 中已删除或禁用时，Windows 设备不会知道此情况。 因此，先前登录的用户继续使用缓存的用户名和密码访问桌面。 但在删除或禁用设备后，用户将无法访问受基于设备的条件访问保护的任何资源。 
 
@@ -175,6 +174,8 @@ ms.locfileid: "79497517"
 ### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>问：为什么我的用户在更改其 UPN 后在 Azure AD 联接设备上遇到问题？
 
 **答：** 目前，Azure AD 联接的设备上不完全支持 UPN 更改。 因此，在更改其 UPN 后，他们的 Azure AD 身份验证会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，用户需要使用其新 UPN 通过“其他用户”磁贴来登录 Windows，以解决此问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
+
+Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新的设备上的用户将不会有任何问题
 
 ---
 
@@ -267,6 +268,8 @@ ms.locfileid: "79497517"
 
 **答：** 目前，混合 Azure AD 联接设备不完全支持 UPN 更改。 虽然用户可以登录到设备并访问其本地应用程序，但在 UPN 更改后，他们的 Azure AD 身份验证仍会失败。 这样一来，用户的设备上会存在 SSO 和条件访问问题。 此时，需要从 Azure AD 中脱离设备（以提升的权限运行 "dsregcmd.exe/leave"），并重新加入（自动发生）以解决此问题。 我们目前正致力于解决此问题。 但是，使用 Windows Hello 企业版登录的用户不会遇到这个问题。 
 
+Windows 10 2004 更新支持 UPN 更改。 更改其 Upn 后，具有此更新的设备上的用户将不会有任何问题
+
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>问：是否需要对域控制器进行 Windows 10 混合 Azure AD 连接的设备才能访问云资源？
@@ -286,8 +289,8 @@ ms.locfileid: "79497517"
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>问：如何实现删除设备在本地 Azure AD 注册状态吗？
 
 **的** 
-- 对于 Windows 10 Azure AD 注册的设备，请访问**设置** > "**帐户** > " "**访问工作或学校**"。 选择帐户，然后选择“断开连接”****。 设备注册为 Windows 10 上的每个用户配置文件。
-- 对于 iOS 和 Android，你可以使用 Microsoft Authenticator 应用程序**设置** > "**设备注册**"，然后选择 "**注销设备**"。
+- 对于 Windows 10 Azure AD 注册的设备，请访问**设置**"帐户" "  >  **Accounts**  >  **访问工作或学校**"。 选择帐户，然后选择“断开连接”****。 设备注册为 Windows 10 上的每个用户配置文件。
+- 对于 iOS 和 Android，你可以使用 Microsoft Authenticator 应用程序**设置**"  >  **设备注册**"，然后选择 "**注销设备**"。
 - 对于 macOS，可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 
 
 ---
@@ -307,7 +310,7 @@ ms.locfileid: "79497517"
 
 **答：** 执行以下步骤：
 
-1.    [创建符合性策略](/intune/compliance-policy-create-mac-os)
+1.    [创建合规性策略](/intune/compliance-policy-create-mac-os)
 1.    [定义 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 
 
 **标记**

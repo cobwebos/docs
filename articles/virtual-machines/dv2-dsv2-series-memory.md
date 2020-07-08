@@ -1,26 +1,25 @@
 ---
 title: 内存优化的 Dv2 和 DSv2 系列 VM - Azure 虚拟机
 description: Dv2 和 DSv2 系列 VM 的规范。
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 7dbc1f111225ecbe40329594479a8469f8bd8418
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914035"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694702"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>内存优化的 Dv2 和 Dsv2 系列
 
-Dv2 和 Dsv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 DSv2 系列大小在 Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+Dv2 和 Dsv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 DSv2 系列大小运行于 Intel®强®白金8272CL （级联 Lake）、Intel®8171M® 2.1 GHz （Skylake）或 Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®到强® E5-2673 v3 2.4 GHz （Haswell）处理器。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
 ## <a name="dv2-series-11-15"></a>Dv2 系列 11-15
 
-Dv2 系列大小在 Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。
+Dv2 系列大小运行于 Intel®强®白金8272CL （级联 Lake）、Intel®8171M® 2.1 GHz （Skylake）或 Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®到强® E5-2673 v3 2.4 GHz （Haswell）处理器。
 
 ACU：210 - 250
 
@@ -41,7 +40,7 @@ ACU：210 - 250
 
 ## <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
 
-DSv2 系列大小在 Intel® Xeon® 8171M 2.1 GHz (Skylake) 或 Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。
+DSv2 系列大小运行于 Intel®强®白金8272CL （级联 Lake）、Intel®8171M® 2.1 GHz （Skylake）或 Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®到强® E5-2673 v3 2.4 GHz （Haswell）处理器。
 
 ACU：210 - 250 <sup>1</sup>
 

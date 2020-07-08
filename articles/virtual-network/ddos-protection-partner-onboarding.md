@@ -5,15 +5,14 @@ ms.service: virtual-network
 documentationcenter: na
 author: anupamvi
 mms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: kumud
-ms.openlocfilehash: 39cb2f90b49725c78746df69505fad7160e1db92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8136ea2a567ac823f03941ebd4a67bed043ada07
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689345"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>与 Azure DDoS 保护标准的合作
 本文介绍 Azure DDoS 保护标准启用的合作机会。 本文旨在帮助产品经理和业务开发角色理解投资途径，并深入了解合作价值主张。

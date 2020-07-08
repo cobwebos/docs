@@ -6,13 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/24/2020
-ms.openlocfilehash: 0a83117d6d58f45d6ee1de2b8d61c2157738fc75
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.date: 06/10/2020
+ms.openlocfilehash: feb1cc132bf5463550a2e7921f347c8f2f48260e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830985"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667992"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板启用“更新管理”
 
@@ -23,12 +22,9 @@ ms.locfileid: "83830985"
 * 将自动化帐户链接到 Log Analytics 工作区（如果尚未链接）。
 * 启用更新管理。
 
-该模板不会自动启用一个或多个 Azure VM 或非 Azure VM。
+该模板不会自动启用一个或多个 Azure 或非 Azure Vm 上的更新管理。
 
-如果已在订阅中支持的区域中部署了 Log Analytics 工作区和自动化帐户，则不会链接该工作区和帐户。 该工作区尚未启用更新管理。 使用此模板可以成功创建链接并为 VM 部署更新管理。 
-
->[!NOTE]
->作为 Linux 更新管理的一部分启用的 nxautomation 用户仅执行签名的 runbook。
+如果已在订阅中支持的区域中部署了 Log Analytics 工作区和自动化帐户，则不会链接该工作区和帐户。 使用此模板将成功创建链接并部署更新管理。
 
 ## <a name="api-versions"></a>API 版本
 
@@ -36,8 +32,8 @@ ms.locfileid: "83830985"
 
 | 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区 | workspaces | 2017-03-15-preview |
-| 自动化帐户 | automation | 2015-10-31 | 
+| 工作区 | workspaces | 2020-03-01-预览 |
+| 自动化帐户 | automation | 2018-06-30 | 
 | 解决方案 | solutions | 2015-11-01-preview |
 
 ## <a name="before-using-the-template"></a>使用模板之前
@@ -48,10 +44,11 @@ ms.locfileid: "83830985"
 
 已配置 JSON 模板，以提示你输入：
 
-* 工作区的名称
-* 要在其中创建工作区的区域
-* 自动化帐户的名称
-* 要在其中创建帐户的区域
+* 工作区的名称。
+* 要在其中创建工作区的区域。
+* 启用资源或工作区权限。
+* 自动化帐户的名称。
+* 要在其中创建帐户的区域。
 
 JSON 模板可为其他参数指定默认值，这些参数可能用作环境中的标准配置。 可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的更多信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)。
 
@@ -59,7 +56,6 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
 
 * sku - 默认为新的“按 GB”定价层，该层已在 2018 年 4 月的定价模型中发布
 * 数据保留 - 默认为 30 天
-* 产能预留 - 默认为 100 GB
 
 >[!WARNING]
 >如果在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的新定价模型，则唯一有效的 Log Analytics 定价层为 **PerGB2018**。
@@ -114,18 +110,17 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
                 "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
             }
         },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -150,13 +145,11 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -168,7 +161,7 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
             "resources": [
                 {
                     "apiVersion": "2015-11-01-preview",
-                    "location": "[resourceGroup().location]",
+                    "location": "[parameters('location')]",
                     "name": "[variables('Updates').name]",
                     "type": "Microsoft.OperationsManagement/solutions",
                     "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
@@ -189,7 +182,7 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
         },
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [],
@@ -201,10 +194,10 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
             },
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -242,8 +235,7 @@ JSON 模板可为其他参数指定默认值，这些参数可能用作环境中
 ## <a name="next-steps"></a>后续步骤
 
 * 若要将更新管理用于 VM，请参阅[管理 Azure VM 的更新和修补程序](automation-tutorial-update-management.md)。
+
 * 如果不再需要 Log Analytics 工作区，请参阅[为更新管理取消工作区与自动化帐户的链接](automation-unlink-workspace-update-management.md)中的说明。
+
 * 若要从更新管理中删除 VM，请参阅[从更新管理中删除 VM](automation-remove-vms-from-update-management.md)。
-* 若要对常规更新管理错误进行故障排除，请参阅[排查更新管理问题](troubleshoot/update-management.md)。
-* 若要对 Windows 更新代理的问题进行故障排除，请参阅[排查 Windows 更新代理问题](troubleshoot/update-agent-issues.md)。
-* 若要对 Linux 更新代理的问题进行故障排除，请参阅[排查 Linux 更新代理问题](troubleshoot/update-agent-issues-linux.md)。

@@ -7,11 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696960"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -29,28 +28,28 @@ ms.locfileid: "79274575"
 ### <a name="azure-cloud-services"></a>Azure 云服务
 | 项目 | `Path` |
 | --- | --- |
-| **Azure 诊断配置文件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
+| **Azure 诊断配置文件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version>\Config.txt |
 | **日志文件** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
-| **诊断数据的本地存储** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Tables |
-| **监视代理配置文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **诊断数据的本地存储** | C:\Resources\Directory \<CloudServiceDeploymentID> \<RoleName>DiagnosticStore\WAD0107\Tables |
+| **监视代理配置文件** | C:\Resources\Directory \<CloudServiceDeploymentID> \<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Azure 诊断扩展包** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
 | **日志收集实用工具路径** | %SystemDrive%\Packages\GuestAgent\ |
-| **MonAgentHost 日志文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
+| **MonAgentHost 日志文件** | C:\Resources\Directory \<CloudServiceDeploymentID> \<RoleName>DiagnosticStore\WAD0107\Configuration\MonAgentHost. <seq_num> |
 
 ### <a name="virtual-machines"></a>虚拟机
 | 项目 | `Path` |
 | --- | --- |
-| **Azure 诊断配置文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
+| **Azure 诊断配置文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \RuntimeSettings |
 | **日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
-| **诊断数据的本地存储** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Tables |
-| **监视代理配置文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
-| **状态文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
-| **Azure 诊断扩展包** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
+| **诊断数据的本地存储** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Tables |
+| **监视代理配置文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
+| **状态文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \Status |
+| **Azure 诊断扩展包** | C：\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
 | **日志收集实用工具路径** | C:\WindowsAzure\Logs\WaAppAgent.log |
-| **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
+| **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num> |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>指标数据不显示在 Azure 门户中
-Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户中查看数据时遇到问题，请查看 Azure 诊断\*存储帐户中的 WADMetrics 表，以查看是否存在相应的指标记录，并确保注册了[资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
+Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户中查看数据时遇到问题，请查看 \* Azure 诊断存储帐户中的 WADMetrics 表，以查看是否存在相应的指标记录，并确保注册了[资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
 此处，表的 PartitionKey 是资源 ID、虚拟机或虚拟机规模集  。 RowKey 是指标名称（也称为性能计数器名称）  。
 

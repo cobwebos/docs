@@ -4,11 +4,10 @@ description: 本文介绍如何还原 Azure VM 上运行的、使用 Azure 备�
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252449"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687423"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -114,13 +113,13 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
     >若要将数据库备份文件还原到安装在目标注册 VM 上的 Azure 文件共享上，请确保 NT AUTHORITY\SYSTEM 有权访问该文件共享。 你可以执行以下步骤来向 VM 上装载的 AFS 授予读取/写入权限：
     >
-    >- 运行`PsExec -s cmd`以进入 NT AUTHORITY\SYSTEM shell
+    >- 运行 `PsExec -s cmd` 以进入 NT AUTHORITY\SYSTEM shell
     >   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
     >   - 使用验证访问`dir \\<storageacct>.file.core.windows.net\<filesharename>`
-    >- 将备份保管库中的文件作为路径进行`\\<storageacct>.file.core.windows.net\<filesharename>`还原<BR>
+    >- 将备份保管库中的文件作为路径进行还原 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
     可以通过下载 Psexec<https://docs.microsoft.com/sysinternals/downloads/psexec>
 
-4. 选择“确定”  。
+4. 选择“确定”。
 
     ![选择“作为文件还原”](./media/backup-azure-sql-database/restore-as-files.png)
 
@@ -142,13 +141,13 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 选择日期后，时间线图会显示连续范围内的可用恢复点。
-1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”  。
+1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”。
 
     ![选择还原点](./media/backup-azure-sql-database/recovery-point-logs-graph.png)
 
 1. 在 "**高级配置**" 菜单上，如果要在还原后保留数据库 nonoperational，请启用 "**使用 NORECOVERY 还原**"。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。
-1. 选择“确定”  。
+1. 选择“确定”。
 
     ![高级配置菜单](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 
@@ -170,7 +169,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
 1. 在 "**高级配置**" 菜单上，如果要在还原后保留数据库 nonoperational，请启用 "**使用 NORECOVERY 还原**"。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。
-1. 选择“确定”  。
+1. 选择“确定”。
 
     ![高级配置菜单](./media/backup-azure-sql-database/restore-point-advanced-configuration.png)
 

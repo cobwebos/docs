@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699050"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>运行测试故障转移（灾难恢复演练）到 Azure 
 

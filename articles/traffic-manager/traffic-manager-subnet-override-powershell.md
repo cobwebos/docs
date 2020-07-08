@@ -4,17 +4,15 @@ description: 本文帮助你了解如何使用流量管理器子网替代来替�
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
-ms.topic: article
+ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: rohink
-ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3b58a0aef4df71649e657c04b44c31b6bbfe019c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938420"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689565"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure PowerShell 的流量管理器子网替代
 

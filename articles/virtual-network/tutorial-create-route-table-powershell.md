@@ -4,25 +4,24 @@ description: 本文介绍了如何使用 PowerShell 通过路由表来路由网�
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 986371e479f7718fff2e1699401987cb0ca8f623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b08a5e63bc78b5b86b1802e7c8f334bad43167fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73163990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688351"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>使用 PowerShell 通过路由表路由网络流量
 
@@ -114,7 +113,7 @@ $subnetConfigDmz = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public  子网，然后使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
+使用 [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) 将 *myRouteTablePublic* 路由表关联到 Public 子网，然后使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 将子网配置写入虚拟网络。
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -194,7 +193,7 @@ $vmNva = New-AzVM `
 
 在虚拟网络中创建两个 VM，以便可以在后续步骤中验证来自公共子网的流量是否通过网络虚拟设备路由到专用子网。  
 
-使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。  以下示例在 *myVirtualNetwork* 虚拟网络的公共  子网中创建名为 *myVmPublic* 的 VM。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在 Public 子网中创建一个 VM。 以下示例在 *myVirtualNetwork* 虚拟网络的公共子网中创建名为 *myVmPublic* 的 VM。
 
 ```azurepowershell-interactive
 New-AzVm `

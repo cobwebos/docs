@@ -11,18 +11,17 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688222"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>在 Azure CLI 中使用网络安全组筛选网络流量
 
@@ -196,7 +195,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>测试流量筛选器
 
-使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将 *publicIpAddress>\<* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令来与 *myVmMgmt* VM 建立 SSH 会话。 将替换 *\<publicIpAddress>* 为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -224,7 +223,7 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 `username@myVmMgmt:~$`myVmMgmt*VM 的* 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
+允许 *myVmWeb* VM 向 Internet 发送出站流量以检索 nginx，因为默认安全规则允许发往 Internet 的所有出站流量。 退出 *myVmWeb* SSH 会话。随即会在 *myVmMgmt* VM 的 `username@myVmMgmt:~$` 提示符下退出。 若要从 *myVmWeb* VM 检索 nginx 欢迎屏幕，请输入以下命令：
 
 ```bash
 curl myVmWeb

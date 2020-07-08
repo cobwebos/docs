@@ -5,17 +5,16 @@ description: 使用 Azure 机器学习工作室（经典）可以轻松地直接
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 76023a0d269d892b1e3fda5e5279f83819b49c6e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: HT
+ms.openlocfilehash: 8f9e0fb900bb3265c6ec79a85fb19efd76e719ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84696552"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>从 Excel 使用 Azure 机器学习工作室（经典）Web 服务
 

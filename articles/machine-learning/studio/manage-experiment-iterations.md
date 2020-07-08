@@ -5,21 +5,18 @@ description: 管理 Azure 机器学习 Studio 中的试验运行（经典）。 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: d2ace48ff1b2027a95aef2100540edc10aebb4cc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208408"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687389"
 ---
-# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio 中管理试验运行（经典）
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+# <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中管理试验运行
 
 开发预测分析模型是一个迭代过程 - 在修改试验的各种函数和参数时，结果会不断聚合，直到对经过培训的有效模型感到满意为止。 此过程的关键是跟踪试验参数和配置的各种迭代。
 
@@ -30,7 +27,7 @@ ms.locfileid: "82208408"
 > 
 > 
 
-## <a name="view-the-prior-run"></a>查看以前的运行
+## <a name="view-the-prior-run"></a>查看前一次运行
 如果有一个你至少运行过一次的试验处于打开状态，可以通过单击属性窗格中的“**前一次运行**”来查看之前运行的试验。
 
 例如，假设创建了一个试验，并在 11:23、11:42 和 11:55 分别运行了该试验版本。 如果打开了最后一次运行的试验 (11:55)，则可以单击“**前一次运行**”打开在 11:42 运行的版本。
@@ -38,7 +35,7 @@ ms.locfileid: "82208408"
 ## <a name="view-the-run-history"></a>查看运行历史记录
 可以通过单击已打开试验中的“**查看运行历史记录**”来查看该试验的所有以前的版本。
 
-例如，假设使用[线性回归][linear-regression]模块创建了一个试验，并且要观察在更改了试验结果的“学习率”值后的效果  。 可以为此参数使用不同的值多次运行此试验，如下所示：
+例如，假设使用[线性回归][linear-regression]模块创建了一个试验，并且要观察在更改了试验结果的“学习率”值后的效果****。 可以为此参数使用不同的值多次运行此试验，如下所示：
 
 | 学习速率值 | 运行开始时间 |
 | --- | --- |
@@ -58,12 +55,12 @@ ms.locfileid: "82208408"
 > 
 > 
 
-在机器学习工作室（经典）中，位于“试验”选项卡中的实验列表将始终显示实验的最新版本  。 如果打开了前一次运行的试验（使用“**前一次运行**”或“**查看运行历史记录**”），可以通过单击“**查看运行历史记录**”并选择“**状态**”为“**可编辑**”的迭代返回草稿版本。
+在机器学习工作室（经典）中，位于“试验”选项卡中的实验列表将始终显示实验的最新版本****。 如果打开了前一次运行的试验（使用“**前一次运行**”或“**查看运行历史记录**”），可以通过单击“**查看运行历史记录**”并选择“**状态**”为“**可编辑**”的迭代返回草稿版本。
 
-## <a name="run-a-previous-experiment"></a>运行以前的试验
+## <a name="run-a-previous-experiment"></a>运行前一次试验
 在单击“**前一次运行**”或“**查看运行历史记录**”打开前一次运行后，可以在只读模式下查看已完成的试验。
 
-如果想要从为前一次运行配置迭代的方式开始试验的迭代，可以通过打开运行并单击“**另存为**”来进行。 这会创建一个新的试验，包含新的标题、空的运行历史记录以及前一次运行的所有组件和参数值。 此新试验将列在机器学习工作室（经典）主页的“试验”选项卡中，可以修改和运行它，为此试验迭代启动一个新的运行历史记录  。 
+如果想要从为前一次运行配置迭代的方式开始试验的迭代，可以通过打开运行并单击“**另存为**”来进行。 这会创建一个新的试验，包含新的标题、空的运行历史记录以及前一次运行的所有组件和参数值。 此新试验将列在机器学习工作室（经典）主页的“试验”选项卡中，可以修改和运行它，为此试验迭代启动一个新的运行历史记录****。 
 
 例如，假设有上一部分中所示的试验运行历史记录。 想要观察在将”**学习率**“设置为 0.4 以及为”**培训时期数**”参数尝试不同的值时会发生的情况。
 

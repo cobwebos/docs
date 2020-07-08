@@ -5,20 +5,19 @@ description: 本文介绍如何使用 Azure Powershell 将 IPv6 地址部署到 
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 82c8b71c154336cf59610d8f0b99e70eccee266f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420760"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84688545"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>在 Azure 虚拟网络中将 IPv4 应用程序升级到 IPv6 - PowerShell
 
@@ -26,7 +25,7 @@ ms.locfileid: "80420760"
 - 虚拟网络和子网的 IPv6 地址空间
 - 采用 IPv4 和 IPV6 前端配置的标准负载均衡器
 - 包含采用 IPv4 + IPv6 配置的 NIC 的 VM
-- IPv6 公共 IP，因此负载均衡器具有面向 Internet 的 IPv6 连接
+- IPv6 公共 IP，使负载均衡器能够建立面向 Internet 的 IPv6 连接
 
 
 
@@ -36,7 +35,7 @@ ms.locfileid: "80420760"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你按[快速入门：创建标准负载均衡器-Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)中所述部署了标准负载均衡器。
+本文假设已根据以下文章所述部署了一个标准负载均衡器：[快速入门：创建标准负载均衡器 - Azure PowerShell](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)。
 
 ## <a name="retrieve-the-resource-group"></a>检索资源组
 

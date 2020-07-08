@@ -1,5 +1,5 @@
 ---
-title: 单一登录（MSAL） |Microsoft
+title: 单一登录（MSAL.js） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 构建单一登录体验。
 services: active-directory
@@ -14,11 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 8080d4cf4c3f0091f7837b3fccead5474c42db55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84690772"
 ---
 # <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 进行单一登录
 

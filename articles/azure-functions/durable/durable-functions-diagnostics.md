@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79278189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84697996"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -44,7 +43,7 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 * **extensionVersion**：持久任务扩展的版本。 当报告扩展中的可能 bug 时，版本信息尤其重要。 如果长时间运行的实例在运行时发生更新，它可能会报告多个版本。
 * **sequenceNumber**：事件的执行序列号。 与时间戳组合使用可以帮助按执行时间对事件进行排序。 *请注意，如果主机在实例正在运行时重新启动，则此数字将重置为零，因此始终先按时间戳然后按 sequenceNumber 排序很重要。*
 
-可以在`logger` `logging` `host.json`文件的（函数1.x）或（函数2.0）部分中配置发出到 Application Insights 的跟踪数据的详细级别。
+可以在 `logger` 文件的（函数1.x）或 `logging` （函数2.0）部分中配置发出到 Application Insights 的跟踪数据的详细级别 `host.json` 。
 
 #### <a name="functions-10"></a>Functions 1.0
 
@@ -150,7 +149,7 @@ traces
 
 ![Application Insights 查询](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 
 直接从业务流程协调程序函数写入日志时，必须注意业务流程协调程序的重播行为。 例如，考虑以下业务流程协调程序函数：
 
@@ -276,7 +275,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-从 Durable Functions 2.0 开始，.NET orchestrator 函数还可以选择创建一个`ILogger` ，以便在重播期间自动筛选出日志语句。 此自动筛选是使用`IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API 完成的。
+从 Durable Functions 2.0 开始，.NET orchestrator 函数还可以选择创建一个 `ILogger` ，以便在重播期间自动筛选出日志语句。 此自动筛选是使用 API 完成的 `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` 。
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -305,7 +304,7 @@ Done!
 ```
 
 > [!NOTE]
-> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 ## <a name="custom-status"></a>自定义状态
 
@@ -328,7 +327,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 ### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
 
@@ -374,12 +373,12 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 Azure Functions 支持直接调试函数代码，Durable Functions 承袭了这项支持，不管它是在 Azure 中还是在本地运行。 但是，调试时需注意几种行为：
 
 * **重播**：收到新输入时，Orchestrator 函数定期[重播](durable-functions-orchestrations.md#reliability)。 此行为意味着，业务流程协调程序函数的单个*逻辑*执行可能导致多次命中同一个断点，尤其是在函数代码早期设置的情况下。
-* **Await**：每当在`await`业务流程协调程序函数中遇到时，它都会向持久任务框架调度程序返回控制权。 如果是第一次遇到特定`await`的任务，则*不*会恢复关联的任务。 由于任务永远不会恢复，因此*无法逐过程执行 await* （Visual Studio 中的 F10）。 仅当任务正在重播时，才能跳过。
+* **Await**：每当在业务流程 `await` 协调程序函数中遇到时，它都会向持久任务框架调度程序返回控制权。 如果是第一次遇到特定的 `await` 任务，则*不*会恢复关联的任务。 由于任务永远不会恢复，因此*无法逐过程执行 await* （Visual Studio 中的 F10）。 仅当任务正在重播时，才能跳过。
 * **消息超时**： Durable Functions 在内部使用队列消息来驱动 orchestrator、活动和实体函数的执行。 在多 VM 环境中，长时间中断调试可能会使另一个 VM 拾取消息，从而导致重复执行。 正则队列触发器函数也存在此行为，但必须在此上下文中指出，因为队列属于实现细节。
 * **停止和启动**：持久性函数中的消息在调试会话之间保持不变。 如果在执行持久函数时停止调试并终止本地主机进程，则该函数可能会在将来的调试会话中自动重新执行。 如果不需要，此行为可能会造成混淆。 在调试会话之间从[内部存储队列](durable-functions-perf-and-scale.md#internal-queue-triggers)中清除所有消息是一种避免此行为的方法。
 
 > [!TIP]
-> 在业务流程协调程序函数中设置断点时，如果只想在非重播执行时中断，则可以设置仅当`IsReplaying`为时`false`中断的条件断点。
+> 在业务流程协调程序函数中设置断点时，如果只想在非重播执行时中断，则可以设置仅当为时中断的条件断点 `IsReplaying` `false` 。
 
 ## <a name="storage"></a>存储
 

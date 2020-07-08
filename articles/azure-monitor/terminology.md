@@ -7,11 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84691810"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor 命名和术语更改
 最近对 Azure Monitor 进行了重要更改，整合了不同的服务，目的是为 Azure 客户简化监视过程。 本文介绍最近在 Azure Monitor 文档中所做的名称和术语更改。
@@ -28,7 +27,7 @@ Azure Monitor 日志数据仍然存储在 Log Analytics 工作区中，并仍然
 术语 _Log Analytics_ 现在主要应用于 Azure 门户中的页面，用于编写和运行查询以及分析日志数据。 它在功能上相当于[指标资源管理器](platform/metrics-charts.md)，后者是 Azure 门户中的页面，用于分析指标数据。
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics 工作区
-在 Azure Monitor 中保存日志数据的[工作区](platform/manage-access.md)仍然称为 Log Analytics 工作区。 Azure 门户中的“Log Analytics”菜单已重命名为“Log Analytics 工作区”，是[创建新工作区](learn/quick-create-workspace.md)和配置数据源的地方   。 在 **Azure Monitor** 中分析日志和其他监视数据，在 **Log Analytics 工作区**中配置工作区。
+在 Azure Monitor 中保存日志数据的[工作区](platform/manage-access.md)仍然称为 Log Analytics 工作区。 Azure 门户中的“Log Analytics”菜单已重命名为“Log Analytics 工作区”，是[创建新工作区](learn/quick-create-workspace.md)和配置数据源的地方 。 在 **Azure Monitor** 中分析日志和其他监视数据，在 **Log Analytics 工作区**中配置工作区。
 
 ### <a name="management-solutions"></a>管理解决方案
 [管理解决方案](insights/solutions.md)已重命名为“监视解决方案”  ，以便更好地描述其功能。

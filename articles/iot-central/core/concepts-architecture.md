@@ -9,11 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84695328"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
@@ -168,7 +167,7 @@ Azure IoT Central 中的安全功能包括：
 UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度快。
 管理员可以通过应用自定义主题，并将帮助链接修改为指向你自己的自定义帮助资源，来自定义应用程序的 UI。 若要详细了解 UI 自定义，请参阅[自定义 Azure IoT Central UI](howto-customize-ui.md) 一文。
 
-操作员可以创建个性化的应用程序仪表板。 可以创建多个仪表板用于显示不同的数据，并可以切换这些仪表板。
+操作员可以创建个性化的应用程序仪表板。 可以设置多个仪表板，用于显示不同的数据，并可以在它们之间进行切换。
 
 ## <a name="next-steps"></a>后续步骤
 

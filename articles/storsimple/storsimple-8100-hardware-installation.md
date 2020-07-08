@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699101"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打开 StorSimple 8100 设备的包装并进行机架安装和布线
 
@@ -144,7 +143,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **安装法兰帽**
    
-   | Label | 说明 |
+   | Label | 描述 |
    | --- | --- |
    |   1 |机箱紧固螺丝 |
 
@@ -153,7 +152,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 ## <a name="cable-your-storsimple-8100-device"></a>进行 StorSimple 8100 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8100 设备布线。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 在开始进行设备布线之前，需要：
 
 * 存储设备已完全打开包装并已完成机架安装。

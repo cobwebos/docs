@@ -13,11 +13,10 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689752"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +33,7 @@ ms.locfileid: "79265709"
 > [!IMPORTANT]
 > 此 Web 连接器目前仅支持从 HTML 页提取表内容。 若要从 HTTP/s 终结点中检索数据，请改用 [HTTP 连接器](data-factory-http-connector.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此 Web 表连接器，需要设置自托管集成运行时（又称数据管理网关）和配置接收器链接服务中的 `gatewayName` 属性。 例如，若要从 Web 表复制到 Azure Blob 存储，请按如下所示配置 Azure 存储链接服务：
 
@@ -70,10 +69,10 @@ ms.locfileid: "79265709"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
-| URL |Web 源的 URL |是 |
+| Url |Web 源的 URL |是 |
 | authenticationType |匿名。 |是 |
 
 ### <a name="using-anonymous-authentication"></a>使用匿名身份验证
@@ -98,11 +97,11 @@ ms.locfileid: "79265709"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
-| path |包含表的资源的相对 URL。 |不能。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
-| 索引 |资源中表的索引。 请参阅[获取 html 页中表的索引](#get-index-of-a-table-in-an-html-page)部分，了解获取 html 页中表的索引的步骤。 |是 |
+| path |包含表的资源的相对 URL。 |否。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| index |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
 
@@ -181,7 +180,7 @@ ms.locfileid: "79265709"
 **WebTable 输入数据集** 将“external”**** 设置为“true”**** 会告知数据工厂服务数据集位于数据工厂外，且不由数据工厂中的活动生成。
 
 > [!NOTE]
-> 请参阅[获取 html 页中表的索引](#get-index-of-a-table-in-an-html-page)部分，了解获取 html 页中表的索引的步骤。  
+> 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。  
 >
 >
 
@@ -284,22 +283,22 @@ ms.locfileid: "79265709"
 ```
 
 ## <a name="get-index-of-a-table-in-an-html-page"></a>获取 HTML 页中表的索引
-1. 启动 **Excel 2016**，并切换到“数据”**** 选项卡。  
-2. 单击工具栏中的“新建查询”****，指向“从其他源”****，并单击“从 Web”****。
+1. 启动 **Excel 2016**，并切换到“数据”  选项卡。  
+2. 单击工具栏中的“新建查询”  ，指向“从其他源”  ，并单击“从 Web”  。
 
     ![Power Query 菜单](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如：https://en.wikipedia.org/wiki/)）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”************。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 **URL**（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如  ：AFI%27s_100_Years...100_Movies），并单击“确定”  。
 
     ![“从 Web”对话框](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 
-    此示例中使用的 URL：https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
-4. 如果出现“访问 Web 内容”**** 对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”****。
+    此示例中使用的 URL： https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+4. 如果出现“访问 Web 内容”  对话框，请选择正确的 **URL** 和**身份验证**，并单击“连接”  。
 
    ![“访问 Web 内容”对话框](./media/data-factory-web-table-connector/AccessWebContentDialog.png)
-5. 单击树视图中的“表”**** 项，查看表中的内容，并单击底部的“编辑”**** 按钮。  
+5. 单击树视图中的“表”  项，查看表中的内容，并单击底部的“编辑”  按钮。  
 
    ![“导航器”对话框](./media/data-factory-web-table-connector/Navigator-DialogBox.png)
-6. 在“查询编辑器”**** 窗口中，单击工具栏上的“高级编辑器”**** 按钮。
+6. 在“查询编辑器”  窗口中，单击工具栏上的“高级编辑器”  按钮。
 
     ![“高级编辑器”按钮](./media/data-factory-web-table-connector/QueryEditor-AdvancedEditorButton.png)
 7. 在“高级编辑器”对话框中，“源”旁边的编号为索引。

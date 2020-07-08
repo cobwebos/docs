@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: af541faaf9529cec81c60cb1a879161d66e34a7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694376"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
@@ -52,7 +51,7 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（
 
 ## <a name="use-the-red-hat-gold-images-from-the-azure-portal"></a>使用 Azure 门户中的 Red Hat 黄金映像
 
-1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在[Azure 门户](https://portal.azure.com)中找到它们。 请参阅**创建资源** > **See all**。
+1. Azure 订阅收到对 Red Hat 黄金映像的访问权限后，可以在[Azure 门户](https://portal.azure.com)中找到它们。 请参阅**创建资源**  >  **See all**。
 
 1. 在页面顶部，你会看到你拥有专用产品/服务。
 
@@ -96,7 +95,7 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（
 
     OR
 
-    az vm image terms accept --urn RedHat:rhel-byos:rhel-lvm8:8.0.20190620
+    az vm image terms accept --urn redhat:rhel-byos:rhel-lvm8:8.0.20190620
     ```
 
     >[!NOTE]
@@ -108,23 +107,26 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（
     az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
 
     # Example:
-    az vm create -n rhel-byos-vm -g rhel-byos-group --image RedHat:rhel-byos:rhel-lvm75:7.5.20190620
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest --validate
     ```
 
-1. 通过运行上一示例中所示的相同命令来预配 VM， `--validate`而无需参数。
+1. 通过运行上一示例中所示的相同命令来预配 VM，而无需 `--validate` 参数。
 
     ```azurecli
-    az vm create -n <VM name> -g <resource group name> --image <image urn> --validate
+    az vm create -n <VM name> -g <resource group name> --image <image urn>
+
+    # Example:
+    az vm create -n rhel-byos-vm -g rhel-byos-group --image redhat:rhel-byos:rhel-lvm8:latest
     ```
 
-1. 通过 SSH 连接到 VM，并验证是否有未获授权映像。 若要执行此步骤， `sudo yum repolist`请运行。 对于 RHEL 8，请`sudo dnf repolist`使用。 输出要求你使用订阅管理器将 VM 注册到 Red Hat。
+1. 通过 SSH 连接到 VM，并验证是否有未获授权映像。 若要执行此步骤，请运行 `sudo yum repolist` 。 对于 RHEL 8，请使用 `sudo dnf repolist` 。 输出要求你使用订阅管理器将 VM 注册到 Red Hat。
 
 >[!NOTE]
->在 RHEL 8 上`dnf` ， `yum`和是可互换的。 有关详细信息，请参阅[RHEL 8 管理员指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)。
+>在 RHEL 8 上， `dnf` 和 `yum` 是可互换的。 有关详细信息，请参阅[RHEL 8 管理员指南](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)。
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>在 PowerShell 中使用 Red Hat 黄金映像
 
-以下脚本是一个示例。 将资源组、位置、VM 名称、登录信息和其他变量替换为所选的配置。 发布服务器和计划信息必须为小写。
+下面的脚本就是一个示例。 将资源组、位置、VM 名称、登录信息和其他变量替换为所选的配置。 发布服务器和计划信息必须为小写。
 
 ```powershell-interactive
     # Variables for common values
@@ -135,7 +137,7 @@ Red Hat Enterprise Linux （RHEL）映像可通过即用即付或自带订阅（
     # Define user name and blank password
     $securePassword = ConvertTo-SecureString 'TestPassword1!' -AsPlainText -Force
     $cred = New-Object System.Management.Automation.PSCredential("azureuser",$securePassword)
-    Get-AzureRmMarketplaceTerms -Publisher RedHat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
+    Get-AzureRmMarketplaceTerms -Publisher redhat -Product rhel-byos -Name rhel-lvm75 | SetAzureRmMarketplaceTerms -Accept
 
     # Create a resource group
     New-AzureRmResourceGroup -Name $resourceGroup -Location $location

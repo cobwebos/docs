@@ -6,11 +6,10 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84697351"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -203,7 +202,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示了一个使用 SendGrid 绑定发送电子邮件的 HTTP 触发的函数。 可以在绑定配置中提供默认值。 例如，"*发件人*电子邮件地址" 在*函数 json*中进行配置。 
+下面的示例演示了一个使用 SendGrid 绑定发送电子邮件的 HTTP 触发的函数。 可以在绑定配置中提供默认值。 例如，中的 "*发件*人" 电子邮件地址在*function.js上*配置。 
 
 ```json
 {
@@ -330,9 +329,9 @@ public static void Run(
 }
 ```
 
-有关完整示例，请参阅 [C# 示例](#example)。
+有关完整示例，请参阅[c # 示例](#example)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -354,15 +353,15 @@ Python 不支持特性。
 
 下表列出了在 function.json 文件和 `SendGrid` 特性/注释中可用的绑定配置属性**。
 
-| *函数 json*属性 | 特性/注释属性 | 说明 | 可选 |
+| 属性*function.js* | 特性/注释属性 | 描述 | 可选 |
 |--------------------------|-------------------------------|-------------|----------|
-| type |n/a| 必须设置为 `sendGrid`。| 否 |
-| direction |n/a| 必须设置为 `out`。| 否 |
-| name |n/a| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
+| 类型 |不适用| 必须设置为 `sendGrid`。| 否 |
+| direction |不适用| 必须设置为 `out`。| 否 |
+| name |不适用| 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 `$return`。 | 否 |
 | apiKey | ApiKey | 包含 API 密钥的应用设置的名称。 如果未设置，则默认应用设置名称为*AzureWebJobsSendGridApiKey*。| 否 |
 | to| 功能 | 收件人的电子邮件地址。 | 是 |
-| 从| From | 发件人的电子邮件地址。 |  是 |
-| subject| Subject | 电子邮件主题。 | 是 |
+| from| From | 发件人的电子邮件地址。 |  是 |
+| subject| 使用者 | 电子邮件主题。 | 是 |
 | text| Text | 电子邮件内容。 | 是 |
 
 在绑定中可能会定义可选属性的默认值，并以编程方式添加或重写这些值。
@@ -389,9 +388,9 @@ Python 不支持特性。
 }
 ```  
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
-|从|n/a|所有函数的发件人电子邮件地址。| 
+|from|不适用|所有函数的发件人电子邮件地址。| 
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,15 +3,14 @@ title: 使用 Azure 门户将 Azure 网络安全组 (NSG) 移到另一个 Azure 
 description: 使用 Azure 资源管理器模板，通过 Azure 门户将 Azure 网络安全组从一个 Azure 区域移到另一个 Azure 区域。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a22dc6dc0c4fc199d3f262b18aeeae5090a06dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84689310"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 网络安全组 (NSG) 移到另一个区域
 
@@ -84,7 +83,7 @@ Azure 安全组不能从一个区域移到另一个区域。 但是，可以使�
 
     ```
 
-11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 12. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 

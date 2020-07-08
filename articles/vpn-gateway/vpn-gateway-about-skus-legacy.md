@@ -8,11 +8,10 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687780"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网关 SKU（传统 SKU）
 
@@ -22,7 +21,7 @@ ms.locfileid: "79279385"
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-可以在“虚拟网关”部分（位于 [ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)上）查看旧版网关定价。 
+可以在“虚拟网关”部分（位于 [ExpressRoute 定价页](https://azure.microsoft.com/pricing/details/expressroute)上）查看旧版网关定价。
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>按 SKU 列出的估计聚合吞吐量
 

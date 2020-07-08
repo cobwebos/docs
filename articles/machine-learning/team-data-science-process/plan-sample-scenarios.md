@@ -12,11 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251617"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84687440"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -35,7 +34,7 @@ ms.locfileid: "79251617"
 > 
 > 
 
-## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>方案\#1：本地文件中的小型到中型表格数据集
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>方案 \# 1：本地文件中的小型到中型表格数据集
 ![小型到中型本地文件][1]
 
 #### <a name="additional-azure-resources-none"></a>其他 Azure 资源：无
@@ -101,7 +100,7 @@ ms.locfileid: "79251617"
 1. 使用[导入数据][import-data]模块直接从 SQL Server 中读取数据。 如果需要直接在[导入数据][import-data]查询中提取字段、创建功能和示例数据，请粘贴必要的查询。
 1. 开始使用引入的数据集生成 Azure 机器学习实验流。
 
-## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>方案\#5：本地文件中的大型数据集，目标 SQL Server 在 Azure VM 中
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>方案 \# 5：本地文件中的大型数据集，目标 SQL Server 在 AZURE VM 中
 ![Azure 中 SQL DB 的大型本地文件][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>其他 Azure 资源：Azure 虚拟机（SQL Server/IPython Notebook 服务器）

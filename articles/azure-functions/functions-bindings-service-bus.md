@@ -7,15 +7,14 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277409"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84697164"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
-Azure Functions 通过[触发器和绑定](https://azure.microsoft.com/services/service-bus)与 [Azure 服务总线](./functions-triggers-bindings.md)集成。 与服务总线集成后，你可以构建响应和发送队列或主题消息的函数。
+Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 [Azure 服务总线](https://azure.microsoft.com/services/service-bus)集成。 与服务总线集成后，你可以构建响应和发送队列或主题消息的函数。
 
 | 操作 | 类型 |
 |---------|---------|

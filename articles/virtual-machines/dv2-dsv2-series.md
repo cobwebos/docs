@@ -1,26 +1,25 @@
 ---
 title: Dv2 和 Dsv2 系列 - Azure 虚拟机
 description: Dv2 和 Dsv2 系列 VM 的规范。
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 71d00da5cc0021aacbe849a541ff386cc6414ff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84694631"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列
 
-Dv2 和 Dsv2 系列是原 D 系列的后续产品，具有更强大的 CPU 和最优 CPU 到内存配置，使其适合于大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，并采用 Intel Turbo Boost Technology 2.0。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+Dv2 和 Dsv2 系列是原 D 系列的后续产品，具有更强大的 CPU 和最优 CPU 到内存配置，使其适合于大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列运行在 Intel®强®白金8272CL （级联 Lake）、Intel®8171M® 2.1 GHz （Skylake）、Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®至强® E5-2673 v3 2.0 2。4 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
 ## <a name="dv2-series"></a>Dv2 系列
 
-Dv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。
+Dv2 系列大小运行于 Intel®强®白金8272CL （级联 Lake）、Intel®强® 8171M 2.1 GHz （Skylake）或 Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 intel®至强® E5-2673 v3 2.0 2。4
 
 ACU：210-250
 
@@ -42,7 +41,7 @@ ACU：210-250
 
 ## <a name="dsv2-series"></a>DSv2 系列
 
-DSv2 系列大小在采用 Intel Turbo Boost Technology 2.0 的 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，并使用高级存储。
+DSv2 系列大小运行于 Intel®强®白金8272CL （级联 Lake）、Intel®8171M® 2.1 GHz （Skylake）或 Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®至强® E5 2.4-（2673）处理器，其中包含 Intel Turbo 提升技术2.0 并使用高级存储。
 
 ACU：210-250
 

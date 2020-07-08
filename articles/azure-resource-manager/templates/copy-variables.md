@@ -3,16 +3,15 @@ title: 定义变量的多个实例
 description: 在创建变量时，可以使用 Azure 资源管理器模板中的复制操作进行多次迭代。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678437"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 模板中的变量迭代
 
-本文介绍如何为 Azure 资源管理器（ARM）模板中的变量创建多个值。 通过将 **copy** 元素添加到模板的 variables 节，可以在部署过程中动态设置变量的项数。 还可以避免重复模板语法。
+本文展示了如何为 Azure 资源管理器 (ARM) 模板中的变量创建多个值。 通过将 **copy** 元素添加到模板的 variables 节，可以在部署过程中动态设置变量的项数。 还可以避免重复模板语法。
 
 还可以将 copy 用于[资源](copy-resources.md)、[资源中的属性](copy-properties.md)，以及[输出](copy-outputs.md)。
 
@@ -38,18 +37,18 @@ copy 元素采用以下常规格式：
 
 count 不能超过 800。
 
-count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则可以为零。 具体来说，您必须使用：
+count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 REST API 部署模板，则它可以为零。 具体而言，必须使用：
 
-* Azure PowerShell **2.6**或更高版本
-* Azure CLI **2.0.74**或更高版本
-* REST API 版本**2019-05-10**或更高版本
-* 对于部署资源类型，[链接部署](linked-templates.md)必须使用 API 版本**2019-05-10**或更高版本
+* Azure PowerShell 2.6 或更高版本
+* Azure CLI 2.0.74 或更高版本
+* REST API 版本 2019-05-10 或更高版本
+* [链接的部署](linked-templates.md)必须将 API 版本 2019-05-10 或更高版本用于部署资源类型
 
 更早版本的 PowerShell、CLI 和 REST API 不支持将 count 设为零。
 
 ## <a name="variable-iteration"></a>变量迭代
 
-下面的示例演示如何创建字符串值数组：
+以下示例展示了如何创建字符串值的数组：
 
 ```json
 {
@@ -80,7 +79,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-前面的模板返回具有以下值的数组：
+前面的模板返回包含以下值的数组：
 
 ```json
 [
@@ -92,7 +91,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 ]
 ```
 
-下一个示例演示如何创建一个具有三个属性-name、diskSizeGB 和 diskIndex 的对象数组。
+下一个示例展示了如何创建具有三个属性（name、diskSizeGB 和 diskIndex）的对象的数组。
 
 ```json
 {
@@ -127,7 +126,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-前面的示例返回具有以下值的数组：
+前面的示例返回包含以下值的数组：
 
 ```json
 [
@@ -160,10 +159,10 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 ```
 
 > [!NOTE]
-> 变量迭代支持 offset 参数。 偏移量必须晚于迭代的名称，如 copyIndex （' diskNames '，1）。 如果不提供 offset 值，则第一个实例的默认值将默认为0。
+> 变量迭代支持偏移量参数。 偏移量必须在迭代名称之后，例如 copyIndex('diskNames', 1)。 如果未提供偏移量值，对于第一个实例，它将默认为 0。
 >
 
-还可以在变量中使用 copy 元素。 下面的示例创建一个对象，该对象将数组作为其值之一。
+还可以在变量内使用 copy 元素。 以下示例创建一个使用数组作为其值之一的对象。
 
 ```json
 {
@@ -201,7 +200,7 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-前面的示例返回具有以下值的对象：
+前面的示例返回包含以下值的对象：
 
 ```json
 {
@@ -236,11 +235,11 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 }
 ```
 
-下一个示例显示了可以使用变量的不同方式。
+下一示例显示了可以将 copy 用于变量的各种方式。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {
@@ -312,12 +311,12 @@ count 不能为负数。 如果使用最新版本的 Azure CLI、PowerShell 或 
 
 ## <a name="example-templates"></a>示例模板
 
-下面的示例演示了为变量创建多个值的常见方案。
+以下示例显示了为一个变量创建多个值的常见方案。
 
 |模板  |说明  |
 |---------|---------|
-|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示对变量进行迭代的不同方法。 |
-|[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
+|[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示循环访问变量的不同方式。 |
+|[多项安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 它从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>后续步骤
 
