@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975068"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 设备预配服务 SDK 管理设备注册
@@ -24,7 +23,7 @@ ms.locfileid: "74975068"
         * 单个注册：来自物理设备或 TPM 模拟器的注册 ID 和 TPM 认可密钥。
         * 注册组不适用于 TPM 证明。
     * [**X.509**](/azure/iot-dps/concepts-security)：
-        * 单个注册：来自物理设备或 SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 仿真器的[叶证书](/azure/iot-dps/concepts-security)。
+        * 个人注册：来自物理设备或 SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 仿真器的[叶证书](/azure/iot-dps/concepts-security)。
         * 注册组：[CA/根证书](/azure/iot-dps/concepts-security#root-certificate)或[中间证书](/azure/iot-dps/concepts-security#intermediate-certificate)，用于在物理设备上生成设备证书。  它还可以通过 SDK DICE 仿真器生成。
 * 具体的 API 调用可能会因语言的不同而有所不同。 有关详细信息，请查看 GitHub 上提供的示例：
    * [Java 预配服务客户端示例](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
@@ -34,7 +33,7 @@ ms.locfileid: "74975068"
 ## <a name="create-a-device-enrollment"></a>创建设备注册
 可通过两种方法向预配服务注册设备：
 
-* 注册组是共享 X.509 证书的常见证明机制的一组设备的条目，由[根证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中间证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)签名  。 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
+* 注册组是共享 X.509 证书的常见证明机制的一组设备的条目，由[根证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)或[中间证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)签名。 建议对共享所需初始配置的大量设备，或者全部转到同一租户的设备使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
 
     可按以下工作流使用 SDK 创建注册组：
 
@@ -72,8 +71,8 @@ ms.locfileid: "74975068"
 
 ## <a name="remove-an-enrollment-entry"></a>删除注册条目
 
-* 可通过使用 ```registrationId``` 调用服务 SDK API ```deleteIndividualEnrollment``` 来删除单个注册  。
-* 可通过使用 ```enrollmentGroupId``` 调用服务 SDK API ```deleteEnrollmentGroup``` 来删除组注册  。
+* 可通过使用 ```registrationId``` 调用服务 SDK API ```deleteIndividualEnrollment``` 来删除单个注册。
+* 可通过使用 ```enrollmentGroupId``` 调用服务 SDK API ```deleteEnrollmentGroup``` 来删除组注册。
 
 [前面提到的](#prerequisites)示例中演示了此工作流。
 

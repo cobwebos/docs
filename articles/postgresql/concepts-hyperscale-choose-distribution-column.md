@@ -8,10 +8,9 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 8ced9767d81affceef851820ee587f4f3dd24deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74975663"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>在 Azure Database for PostgreSQL 中选择分布列–超大规模（Citus）
@@ -28,18 +27,18 @@ ms.locfileid: "74975663"
 
 超大规模（Citus）检查查询以查看其所涉及的租户 ID，并找到匹配表分片。 它将查询路由到包含分片的单个工作节点。 在同一节点上运行包含所有相关数据的查询称为归置。
 
-下图说明了多租户数据模型中的归置。 它包含两个表：帐户和活动，每个`account_id`表由分发。 带阴影的框代表分片。 绿色分片存储在一个工作节点上，而蓝色分片存储在另一个辅助节点上。 请注意，当两个表限制为同一帐户\_id 时，帐户和市场活动之间的联接查询如何将所有必要的数据一起包含在同一个节点上。
+下图说明了多租户数据模型中的归置。 它包含两个表：帐户和活动，每个表由分发 `account_id` 。 带阴影的框代表分片。 绿色分片存储在一个工作节点上，而蓝色分片存储在另一个辅助节点上。 请注意，当两个表限制为同一帐户 id 时，帐户和市场活动之间的联接查询如何将所有必要的数据一起包含在同一个节点上 \_ 。
 
 ![多租户归置](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见实例包括公司、帐户、组织或客户。 列名类似于`company_id`或`customer_id`。 检查每个查询并问自己，如果它有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
+若要在自己的架构中应用此设计，请确定在应用程序中构成租户的内容。 常见实例包括公司、帐户、组织或客户。 列名类似于 `company_id` 或 `customer_id` 。 检查每个查询并问自己，如果它有其他 WHERE 子句来将涉及的所有表限制为具有相同租户 ID 的行，它是否起作用？
 多租户模型中的查询的作用域限定为租户。 例如，针对销售或库存的查询在特定商店内的范围内。
 
 #### <a name="best-practices"></a>最佳做法
 
--   **按常见租户\_id 列分区分布式表。** 例如，在租户为公司的 SaaS 应用程序中，租户\_id 很可能是公司\_id。
+-   **按常见租户 id 列分区分布式表 \_ 。** 例如，在租户为公司的 SaaS 应用程序中，租户 \_ id 很可能是公司 \_ id。
 -   **将小型跨租户表转换为引用表。** 当多个租户共享一个较小的信息表时，将它作为引用表进行分发。
--   **按租户\_id 限制筛选所有应用程序查询。** 每个查询一次应请求一个租户的信息。
+-   **按租户 id 限制筛选所有应用程序查询 \_ 。** 每个查询一次应请求一个租户的信息。
 
 有关如何生成此类应用程序的示例，请参阅[多租户教程](./tutorial-design-database-hyperscale-multi-tenant.md)。
 

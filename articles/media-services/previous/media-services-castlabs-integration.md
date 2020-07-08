@@ -16,10 +16,9 @@ ms.date: 03/14/2019
 ms.author: Juliako
 ms.reviewer: willzhan
 ms.openlocfilehash: 29a344c739d8d99da2e5c81d41a11c601e48022e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74969133"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>使用 castLabs 将 Widevine 许可证传送到 Azure 媒体服务 
@@ -58,7 +57,7 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 | 颁发者 | 所选安全令牌服务 (STS) 中的颁发者字符串 |
 | --- | --- |
-| 读者 |所用 STS 中的受众字符串 |
+| 目标受众 |所用 STS 中的受众字符串 |
 | 声明 |一组声明 |
 | NotBefore |令牌的有效起始日期 |
 | Expires |令牌的有效结束日期 |
@@ -68,7 +67,7 @@ castLabs 和 AMS 均支持用于授予许可证的 JWT（JSON Web 令牌）令�
 
 下表描述了 castLabs 中的 JWT 令牌。 
 
-| 名称 | 说明 |
+| “属性” | 描述 |
 | --- | --- |
 | optData |一个包含相关信息的 JSON 字符串。 |
 | crt |一个包含有关资源、其许可证信息和播放权限的信息的 JSON 字符串。 |

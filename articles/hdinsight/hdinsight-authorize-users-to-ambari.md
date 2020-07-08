@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435647"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授权用户访问 Apache Ambari 视图
@@ -46,7 +45,7 @@ Active Directory 用户可以使用其域凭据登录到群集节点。 他们�
 
 ### <a name="add-users-through-powershell"></a>通过 PowerShell 添加用户
 
-使用适当的值替换`CLUSTERNAME`、 `NEWUSER`和`PASSWORD`来编辑下面的变量。
+`CLUSTERNAME` `NEWUSER` 使用适当的值替换、和来编辑下面的变量 `PASSWORD` 。
 
 ```powershell
 # Set-ExecutionPolicy Unrestricted
@@ -135,7 +134,7 @@ Write-Output $zookeeperHosts
 
 ### <a name="add-users-through-curl"></a>通过卷添加用户
 
-使用适当的值`CLUSTERNAME`替换、 `ADMINPASSWORD`、 `NEWUSER`和`USERPASSWORD`来编辑下面的变量。 此脚本设计为与 bash 一起执行。 在 Windows 命令提示符下，需要进行少许修改。
+`CLUSTERNAME` `ADMINPASSWORD` `NEWUSER` 使用适当的值替换、、和来编辑下面的变量 `USERPASSWORD` 。 此脚本设计为与 bash 一起执行。 在 Windows 命令提示符下，需要进行少许修改。
 
 ```bash
 export clusterName="CLUSTERNAME"

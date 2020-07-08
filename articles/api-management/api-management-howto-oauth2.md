@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75430677"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
@@ -68,7 +67,7 @@ ms.locfileid: "75430677"
 
     ![OAuth 2.0 新服务器](./media/api-management-howto-oauth2/oauth-03.png)
 
-    对于 Azure Active Directory OAuth 2.0 服务器，“令牌终结点 URL”将具有如下格式，其中 **的格式为**。`<TenantID>``yourapp.onmicrosoft.com`
+    对于 Azure Active Directory OAuth 2.0 服务器，“令牌终结点 URL”将具有如下格式，其中 `<TenantID>` 的格式为 `yourapp.onmicrosoft.com`。
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
@@ -84,7 +83,7 @@ ms.locfileid: "75430677"
 
 ## <a name="configure-an-api-to-use-oauth-20-user-authorization"></a><a name="step2"> </a>配置 API 以使用 OAuth 2.0 用户授权
 
-1. 单击左侧“API 管理”  菜单中的“API”  。
+1. 单击左侧“API 管理”菜单中的“API”。
 
     ![OAuth 2.0 API](./media/api-management-howto-oauth2/oauth-05.png)
 
@@ -120,7 +119,7 @@ ms.locfileid: "75430677"
 
 ![登录][api-management-oauth2-signin]
 
-登录后，“请求标头”中会填充用于对请求授权的  **标头。** `Authorization : Bearer`
+登录后，“请求标头”中会填充用于对请求授权的 `Authorization : Bearer` 标头。
 
 ![请求标头令牌][api-management-request-header-token]
 

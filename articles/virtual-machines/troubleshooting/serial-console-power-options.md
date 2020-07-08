@@ -15,17 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451202"
 ---
 # <a name="power-options-available-from-the-azure-serial-console"></a>可从 Azure 串行控制台获得的电源选项
 
 Azure 串行控制台为 VM 或虚拟机规模集上的电源管理提供了几个强大的工具。 这些电源管理选项可能令人困惑，因此，这是每个工具及其预期用例的概述。
 
-串行控制台功能 | 说明 | 用例
+串行控制台功能 | 描述 | 用例
 :----------------------|:------------|:---------
 重新启动 VM | 虚拟机或虚拟机规模集实例的正常重新启动。 此操作与调用 "概述" 页中提供的重新启动功能相同。 | 在大多数情况下，此选项应是尝试重新启动 VM 的第一个工具。 串行控制台连接将会经历短暂的中断，并且会在 VM 重新启动后立即自动恢复。
 重置 VM | Azure 平台的 VM 或虚拟机规模集的强制性动力周期。 | 此选项用于立即重新启动操作系统，而不考虑其当前状态。 由于此操作不正常，导致数据丢失或损坏的风险。 串行控制台连接不会中断，这可能会在启动时（例如，在 Linux VM 或 Windows VM 的安全模式下进入 GRUB）发送命令时非常有用。

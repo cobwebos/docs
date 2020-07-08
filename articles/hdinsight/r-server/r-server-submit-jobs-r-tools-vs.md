@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75435250"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>从针对 Visual Studio 的 R 工具提交作业
@@ -21,7 +20,7 @@ ms.locfileid: "75435250"
 
 RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、Intellisense（代码完成）、通过 ggplot2 和 ggviz 等 R 库[绘制可视化效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R 代码调试](https://docs.microsoft.com/visualstudio/rtvs/debugging)等等。
 
-## <a name="set-up-your-environment"></a>设置你的环境
+## <a name="set-up-your-environment"></a>设置环境
 
 1. 安装[针对 Visual Studio 的 R 工具](/visualstudio/rtvs/installing-r-tools-for-visual-studio)。
 
@@ -32,7 +31,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 3. 需要有用于 SSH 身份验证的公钥和私钥。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. 在计算机上安装 [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler)和`RxSpark`函数。
+4. 在计算机上安装 [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供 [`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler) 和 `RxSpark` 函数。
 
 5. 安装 [PuTTY](https://www.putty.org/) 以提供计算上下文，用于从本地客户端针对 HDInsight 群集运行 `RevoScaleR` 函数。
 
@@ -66,7 +65,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
 通过从安装有 PuTTY 的 Windows 计算机使用 Microsoft ML Server/Microsoft R Client，可以创建计算上下文，用于从本地客户端针对 HDInsight 群集运行分布式 `RevoScaleR` 函数。 使用 `RxSpark` 创建计算上下文，并指定用户名、Apache Hadoop 群集的边缘节点、SSH 交换机等等。
 
-1. HDInsight 上的 ML 服务边缘节点地址为`CLUSTERNAME-ed-ssh.azurehdinsight.net` ， `CLUSTERNAME`其中是 ml 服务群集的名称。
+1. HDInsight 上的 ML 服务边缘节点地址为 `CLUSTERNAME-ed-ssh.azurehdinsight.net` ，其中 `CLUSTERNAME` 是 ml 服务群集的名称。
 
 1. 将以下代码粘贴到 Visual Studio 中的 R 交互窗口，并更改设置变量的值以匹配用户环境。
 
@@ -108,7 +107,7 @@ RTVS 通过提供以下工具来增强 R 工作流：[R 交互窗口](https://do
 
     应该会看到与下面类似的输出：
 
-    ![成功的 rx 命令](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)执行
+    ![成功的 rx 命令执行 ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
 1. 确保 `rxHadoopCopy` 已将 `people.json` 文件从示例数据文件夹成功复制到新创建的 `/user/RevoShare/newUser` 文件夹：
 
     1. 从 Azure 的 HDInsight ML Services 群集窗格中，选择左侧菜单中的“存储帐户”****。

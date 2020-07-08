@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75370453"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>实现 Reliable Actors 备份和还原
@@ -94,7 +93,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，并由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `IMyActorService` 创建远程代理，现在 `ActorServiceProxy` 的方法也可用于客户端：
+在本示例中，`IMyActorService` 是一个实现 `IService` (C#) 和 `Service` (Java)，并由 `MyActorService` 实现的远程协定。 通过添加此远程协定，并通过 `ActorServiceProxy` 创建远程代理，现在 `IMyActorService` 的方法也可用于客户端：
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(

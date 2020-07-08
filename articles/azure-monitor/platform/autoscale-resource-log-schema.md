@@ -1,26 +1,25 @@
 ---
 title: Azure 自动缩放日志事件架构
-description: 用于监视和解决自动缩放操作的日志的格式
+description: 用于对自动缩放操作进行监视和故障排除的日志的格式
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75395949"
 ---
 # <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Monitor 自动缩放操作资源日志架构
 
-下面是包含示例数据的自动缩放资源日志的常规格式。 并非下面的所有示例都是格式正确的 JSON，因为它们可能包含多个对给定字段有效的值。 
+下面是包含示例数据的自动缩放资源日志的一般格式。 下面的所有示例并非都是格式正确的 JSON，因为它们可能包含对给定字段有效的多个值。 
 
-使用此类型的事件来解决使用自动缩放时可能遇到的问题。 有关详细信息，请参阅[自动缩放问题疑难解答](autoscale-troubleshoot.md)。
+使用此类事件排查自动缩放时可能会遇到的问题。 有关详细信息，请参阅[排查自动缩放问题](autoscale-troubleshoot.md)。
 
 
-## <a name="profile-evaluation"></a>分析评估
+## <a name="profile-evaluation"></a>配置文件评估
 
-自动缩放首次查看自动缩放配置文件时录制
+在自动缩放首次查看自动缩放配置文件时记录
 
 ```json
 {
@@ -37,9 +36,9 @@ ms.locfileid: "75395949"
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>配置文件 cooldown 评估
+## <a name="profile-cooldown-evaluation"></a>配置文件冷却评估
 
-当自动缩放因冷却时间段而不应执行缩放时进行计算时进行记录。 
+在自动缩放对是否因冷却期而不应缩放进行评估时记录。 
 
 ```json
 {
@@ -62,7 +61,7 @@ ms.locfileid: "75395949"
 
 ## <a name="rule-evaluation"></a>规则评估
 
-当自动缩放第一次开始计算特定缩放规则时记录。 
+在自动缩放首次开始评估特定缩放规则时记录。 
 
 ```json
 {
@@ -89,7 +88,7 @@ ms.locfileid: "75395949"
 
 ## <a name="metric-evaluation"></a>指标评估
 
-当自动缩放计算用于触发缩放操作的度量值时记录。 
+在自动缩放评估用于触发缩放操作的指标时记录。 
 
 ```json
 {
@@ -111,9 +110,9 @@ ms.locfileid: "75395949"
 }
 ```
 
-## <a name="instance-count-evaluation"></a>实例计数计算
+## <a name="instance-count-evaluation"></a>实例计数评估
 
-当自动缩放计算正在运行的实例数以便决定是否应启动更多、关闭某些实例或不执行任何操作时进行记录。 
+在自动缩放评估正在运行的实例数以便决定是否应启动更多实例、关闭某些实例或不执行任何操作时记录。 
 
 ```json
 {
@@ -134,7 +133,7 @@ ms.locfileid: "75395949"
 
 ## <a name="scale-action-evaluation"></a>缩放操作评估
 
-如果缩放操作应该发生，则自动缩放开始计算时记录。 
+在自动缩放开始评估是否应执行某个缩放操作时记录。 
 
 ```json
 {
@@ -154,7 +153,7 @@ ms.locfileid: "75395949"
 
 ## <a name="instance-update-evaluation"></a>实例更新评估
 
-当自动缩放更新运行（向上或向下）的计算实例的数目时进行记录。
+在自动缩放更新正在运行的计算实例数（扩展或缩减）时记录。
 
 ```json
 {
@@ -175,7 +174,7 @@ ms.locfileid: "75395949"
 
 ## <a name="scale-action"></a>缩放操作
 
-当自动缩放启动缩放操作时录制（向上或向下）。 
+在自动缩放启动某个缩放操作（扩展或缩减）时记录。 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -198,7 +197,7 @@ ms.locfileid: "75395949"
 
 ## <a name="scale-action-tracking"></a>缩放操作跟踪
 
-按实例缩放操作的不同间隔记录。
+按实例缩放操作的不同时间间隔进行记录。
 
 ```json
 {

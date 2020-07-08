@@ -13,10 +13,9 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74927907"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>通过在 Azure Data Lake Analytics 上运行 U-SQL 脚本来转换数据 
@@ -45,12 +44,12 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 下表介绍了 JSON 定义中使用的一般属性。 可以进一步选择服务主体身份验证，还是用户凭据身份验证。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必须 |
 | --- | --- | --- |
-| **type** |类型属性应设置为 **AzureDataLakeAnalytics**。 |是 |
-| **名** |Azure Data Lake Analytics 帐户名。 |是 |
+| type |类型属性应设置为：AzureDataLakeAnalytics。 |是 |
+| **accountName** |Azure Data Lake Analytics 帐户名。 |是 |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
-| **订阅** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
+| **subscriptionId** |Azure 订阅 ID |否（如果未指定，则使用数据工厂的订阅）。 |
 | **resourceGroupName** |Azure 资源组名称 |否（如果未指定，则使用数据工厂的资源组）。 |
 
 ### <a name="service-principal-authentication-recommended"></a>服务主体身份验证（推荐）
@@ -61,11 +60,11 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 
 通过指定以下属性使用服务主体身份验证：
 
-| properties | 说明 | 必需 |
+| properties | 描述 | 必需 |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | 指定应用程序的客户端 ID。 | 是 |
 | **servicePrincipalKey** | 指定应用程序的密钥。 | 是 |
-| **组织** | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+| **tenant** | 指定应用程序的租户信息（域名或租户 ID）。 可将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
 
 **示例：服务主体身份验证**
 ```json
@@ -89,7 +88,7 @@ U-SQL 活动支持对 Data Lake Analytics 进行以下类型的身份验证：
 ### <a name="user-credential-authentication"></a>用户凭据身份验证
 也可以指定下列属性，对 Data Lake Analytics 使用用户凭据身份验证：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
 | **授权** | 单击数据工厂编辑器中的“授权”**** 按钮，并输入凭据以会自动生成的授权 URL 分配给此属性。 | 是 |
 | **sessionId** | OAuth 授权会话中的 OAuth 会话 ID。 每个会话 ID 都是唯一的，并且只能使用一次。 使用数据工厂编辑器时会自动生成此设置。 | 是 |
@@ -205,7 +204,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 下表描述了此活动特有的属性的名称和描述。 
 
-| properties            | 说明                              | 必需                                 |
+| properties            | 描述                              | 必需                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
 | type                | type 属性必须设置为 **DataLakeAnalyticsU SQL**。 | 是                                      |
 | linkedServiceName   | 引用在数据工厂中注册为链接服务的 Azure Data Lake Analytics | 是                                      |
@@ -316,7 +315,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-使用 "parameters" 节，ADF 使用 "parameters" 部分动态传递 U 脚本中** \@in**和** \@out**参数的值。 请参阅管道定义中的“parameters”部分。
+使用 "parameters" 节，ADF 使用 "parameters" 部分动态传递 U 脚本中** \@ in**和** \@ out**参数的值。 请参阅管道定义中的“parameters”部分。
 
 也可在 Azure Data Lake Analytics 服务上运行的作业的管道定义中指定其他属性，如 degreeOfParallelism 和 priority。
 

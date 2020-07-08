@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
 ms.openlocfilehash: 66cda98f272e7353b620059a731972714db585ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75374126"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>通过使用 Azure PowerShell 将 OS 磁盘附加到恢复 VM 来对 Windows VM 进行故障排除
@@ -51,7 +50,7 @@ Connect-AzAccount
 在以下示例中，请将参数名称替换为自己的值。 
 
 ## <a name="determine-boot-issues"></a>确定启动问题
-用户可以通过查看 Azure 中 VM 的屏幕快照来排查启动问题。 此屏幕快照有助于确定为何 VM 无法启动。 以下示例从名为 `myVM` 的资源组中名为 `myResourceGroup` 的 Windows VM 获取屏幕快照：
+用户可以通过查看 Azure 中 VM 的屏幕快照来排查启动问题。 此屏幕快照有助于确定为何 VM 无法启动。 以下示例从名为 `myResourceGroup` 的资源组中名为 `myVM` 的 Windows VM 获取屏幕快照：
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
@@ -62,7 +61,7 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-以下示例在名为 `myVM` 的资源组中停止名为 `myResourceGroup` 的 VM：
+以下示例在名为 `myResourceGroup` 的资源组中停止名为 `myVM` 的 VM：
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -103,7 +102,7 @@ New-AzSnapshot `
 
 ## <a name="create-a-disk-from-the-snapshot"></a>从快照创建磁盘
 
-此脚本从名为 `newOSDisk` 的快照创建名为 `mysnapshot` 的托管磁盘。  
+此脚本从名为 `mysnapshot` 的快照创建名为 `newOSDisk` 的托管磁盘。  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -165,7 +164,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>连接到恢复 VM，并修复所附加的磁盘上的问题
 
-1. 使用相应的凭据通过 RDP 连接到恢复 VM。 以下示例为名为 `RecoveryVM` 的资源组中名为 `myResourceGroup` 的 VM 下载 RDP 连接文件，并将其下载到 `C:\Users\ops\Documents`。
+1. 使用相应的凭据通过 RDP 连接到恢复 VM。 以下示例为名为 `myResourceGroup` 的资源组中名为 `RecoveryVM` 的 VM 下载 RDP 连接文件，并将其下载到 `C:\Users\ops\Documents`。
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
@@ -247,7 +246,7 @@ Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>验证和启用启动诊断
 
-以下示例在名为 `myVMDeployed` 的资源组中名为 `myResourceGroup` 的 VM 上启用诊断扩展：
+以下示例在名为 `myResourceGroup` 的资源组中名为 `myVMDeployed` 的 VM 上启用诊断扩展：
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"

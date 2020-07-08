@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74951473"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的限制
@@ -45,7 +44,7 @@ Cloud Shell 支持最新版本的 Microsoft Edge、Microsoft Internet Explorer�
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>对于一个给定的用户，只有一个 shell 可处于活动状态
 
-不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 使用菜单在 Bash 或 PowerShell 之间进行交换会导致 Cloud Shell 重新启动，这将终止现有会话。 或者，你可以通过键入`bash`在 PowerShell 中运行 bash，并通过键入`pwsh`在 bash 中运行 powershell。
+不管是在 **Bash** 还是 **PowerShell** 中，用户每次只能启动一种类型的 shell。 但是，每次可以运行 Bash 或 PowerShell 的多个实例。 使用菜单在 Bash 或 PowerShell 之间进行交换会导致 Cloud Shell 重新启动，这将终止现有会话。 或者，你可以通过键入在 PowerShell 中运行 bash， `bash` 并通过键入在 bash 中运行 powershell `pwsh` 。
 
 ### <a name="usage-limits"></a>使用限制
 
@@ -77,11 +76,11 @@ Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预�
 
 ### <a name="gui-applications-are-not-supported"></a>不支持 GUI 应用程序
 
-如果用户运行的命令将创建一个 Windows 对话框，则会看到一条错误消息，例如： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`。
+如果用户运行的命令将创建一个 Windows 对话框，则会看到一条错误消息，例如： `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` 。
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距型
 
-如果用户执行了显示进度栏的操作，例如在`Azure:`驱动器中完成的选项卡，则可能是游标设置不正确，并且在进度栏之前出现间隔。
+如果用户执行了显示进度栏的操作，例如在驱动器中完成的选项卡，则 `Azure:` 可能是游标设置不正确，并且在进度栏之前出现间隔。
 
 ## <a name="next-steps"></a>后续步骤
 

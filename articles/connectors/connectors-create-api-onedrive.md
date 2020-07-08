@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75378426"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 OneDrive 连接器中的文件
@@ -38,7 +37,7 @@ ms.locfileid: "75378426"
 
 触发器是用于启动在逻辑应用中定义的工作流的事件。 触发器以希望的间隔和频率“轮询”服务。 [了解有关触发器的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 在逻辑应用设计器中， `onedrive`键入以获取触发器列表：  
+1. 在逻辑应用设计器中，键入 `onedrive` 以获取触发器列表：  
 
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 
@@ -66,7 +65,7 @@ ms.locfileid: "75378426"
 
 2. 选择“添加操作”****。
 
-3. 在 "搜索" 框中`onedrive` ，键入以获取所有可用操作的列表。
+3. 在 "搜索" 框中，键入 `onedrive` 以获取所有可用操作的列表。
 
    ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
@@ -88,4 +87,4 @@ ms.locfileid: "75378426"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure 逻辑应用的连接器](apis-list.md)
+* [适用于 Azure 逻辑应用的连接器](apis-list.md)

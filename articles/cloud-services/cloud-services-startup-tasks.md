@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75360304"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
@@ -27,7 +26,7 @@ ms.locfileid: "75360304"
 
 环境变量将信息传递给启动任务，而本地存储可用于从启动任务中传出信息。 例如，环境变量可以指定要安装的程序的路径，并可以将文件写入到本地存储，然后角色可以稍后读取这些文件。
 
-启动任务可以将信息和错误记录到 **TEMP** 环境变量指定的目录。 在云中运行时，在启动任务期间，**TEMP** 环境变量将解析为 *C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp* 目录。
+启动任务可以将信息和错误记录到 **TEMP** 环境变量指定的目录。 在云中运行时，在启动任务期间，TEMP 环境变量将解析为 C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp 目录。
 
 此外，启动任务还可以在重新启动之间执行多次。 例如，每次角色回收时都会运行启动任务，但角色回收可能并非始终包括重新启动。 应以这样的方式编写启动任务：使其能够多次运行而不会出现问题。
 
@@ -76,12 +75,12 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> 在 Visual Studio 中，启动批处理文件的“**复制到输出目录**”属性应设为“**始终复制**”，以确保将启动批处理文件正确部署到 Azure 上的项目（对于 Web 角色，为 **approot\\bin**；对于辅助角色，为 **approot**）。
+> 在 Visual Studio 中，启动批处理文件的“复制到输出目录”属性应设为“始终复制”，确保将启动批处理文件正确部署到 Azure 上的项目（对于 Web 角色，为 approot\\bin；对于辅助角色，为 approot）   。
 > 
 > 
 
 ## <a name="description-of-task-attributes"></a>任务属性的说明
-下面介绍 **ServiceDefinition.csdef** 文件中的 [ServiceDefinition.csdef] 元素的属性：
+下面介绍 [ServiceDefinition.csdef] 文件中的 **任务** 元素的属性：
 
 **commandLine** - 为启动任务指定命令行：
 
@@ -93,7 +92,7 @@ EXIT /B 0
 **executionContext** - 为启动任务指定权限级别。 权限级别可以为 limited 或 elevated：
 
 * **limited**  
-  启动任务以与角色相同的权限运行。 当 **运行时** 元素的 [executionContext] 属性也是 **limited** 时，则使用用户权限。
+  启动任务以与角色相同的权限运行。 当 [executionContext] 元素的 **executionContext** 属性也是 **limited** 时，则使用用户权限。
 * **elevated**  
   启动任务以管理员特权运行。 这会允许启动任务安装程序、更改 IIS 配置、执行注册表更改和其他管理员级别任务，而不会提高角色本身的权限级别。  
 
@@ -112,7 +111,7 @@ EXIT /B 0
   > 
   > 
   
-    要确保批处理文件以为零的 **errorlevel** 结束，请在批处理文件进程结束时执行命令 `EXIT /B 0`。
+    若要确保批处理文件以为零的 errorlevel 结束，请在批处理文件进程结束时执行命令 `EXIT /B 0`。
 * **background**  
   任务与角色同时启动，并以异步方式执行。
 * **foreground**  
@@ -121,13 +120,13 @@ EXIT /B 0
 ## <a name="environment-variables"></a>环境变量
 环境变量是一种将信息传递给启动任务的方法。 例如，可以放置一个 blob 的路径，该 blob 包含要安装的程序或角色将使用的端口号或用于控制启动任务的功能的设置。
 
-启动任务有两种类型的环境变量；静态环境变量和基于 [RoleEnvironment] 类的成员的环境变量。 这两种环境变量都在 [ServiceDefinition.csdef] 文件的 [ServiceDefinition.csdef] 节中，并且都使用 [value] 元素和 **name** 属性。
+启动任务有两种类型的环境变量；静态环境变量和基于 [RoleEnvironment] 类的成员的环境变量。 这两种环境变量都在 [ServiceDefinition.csdef] 文件的 [ServiceDefinition.csdef] 节中，并且都使用 [变量] 元素和 **name** 属性。
 
-静态环境变量使用 **变量** 元素的 [value] 属性。 上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值“**1.0.0.0**”。 另一个示例就是创建 **StagingOrProduction** 环境变量，可以手动将该变量设置为值“**staging**”或“**production**”，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
+静态环境变量使用 [变量] 元素的 **value** 属性。 上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值“**1.0.0.0**”。 另一个示例就是创建 **StagingOrProduction** 环境变量，可以手动将该变量设置为值“**staging**”或“**production**”，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
 
-基于 RoleEnvironment 类的成员的环境变量不使用 **变量** 元素的 [value] 属性。 而是使用具有相应 [RoleInstanceValue] 属性值的 **RoleInstanceValue** 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 **RoleEnvironment** 值的 [RoleEnvironment] 属性值可以在[此处](cloud-services-role-config-xpath.md)找到。
+基于 RoleEnvironment 类的成员的环境变量不使用 [变量] 元素的 **value** 属性。 而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。 用于访问各种 [RoleEnvironment] 值的 **XPath** 属性值可以在[此处](cloud-services-role-config-xpath.md)找到。
 
-例如，若要创建这样一个环境变量（当实例在计算模拟器中运行时为“**true**”，在云中运行时为“**false**”），请使用以下 [value] 和 [RoleInstanceValue] 元素：
+例如，若要创建这样一个环境变量（当实例在计算模拟器中运行时为“true”，在云中运行时为“false”），请使用以下 [变量] 和 [RoleInstanceValue] 元素 ：
 
 ```xml
 <Startup>
@@ -154,11 +153,11 @@ EXIT /B 0
 [打包](cloud-services-model-and-package.md)云服务。  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[启动]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
+[任务]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[启动]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [executionContext]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [ServiceDefinition.csdef]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[value]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 

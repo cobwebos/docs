@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900882"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>使用 Azure 门户管理流式处理终结点 
@@ -75,7 +74,7 @@ ms.locfileid: "74900882"
 可通过执行以下操作配置流式处理终结点：
 
 1. 选择要配置的流式处理终结点。
-2. 单击“设置”  。
+2. 单击“设置”****。
 
 后面提供了字段的简要说明。
 
@@ -87,7 +86,7 @@ ms.locfileid: "74900882"
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>缩放高级流式处理终结点
 
-有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文。
+有关详细信息，请参阅[此](media-services-portal-scale-streaming-endpoints.md)文章。
 
 ## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>启用 Azure CDN 集成
 

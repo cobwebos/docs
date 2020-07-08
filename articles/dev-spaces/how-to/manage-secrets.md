@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: 了解如何在使用 Azure Dev Spaces 开发应用程序时，在运行或生成时使用 Kubernetes 机密
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: d9dd0de348612bbb3baf5fb351c1c9af1c228c1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75438458"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>使用 Azure Dev Space 时如何管理机密
@@ -18,14 +17,14 @@ ms.locfileid: "75438458"
 
 ## <a name="storing-and-using-runtime-secrets"></a>存储和使用运行时机密
 
-Azure Dev Spaces 提供了两个建议的简化选项，用于在 Azure Dev Spaces 客户端工具生成的 Helm 图表中存储`values.dev.yaml`机密：在文件中， `azds.yaml`并且直接内联。 不建议在中`values.yaml`存储机密。
+Azure Dev Spaces 提供了两个建议的简化选项，用于在 Azure Dev Spaces 客户端工具生成的 Helm 图表中存储机密：在 `values.dev.yaml` 文件中，并且直接内联 `azds.yaml` 。 不建议在中存储机密 `values.yaml` 。
 
 > [!NOTE]
 > 以下方法说明了如何存储和使用客户端工具生成的 Helm 图表的机密。 如果创建自己的 Helm 图表，则可以直接使用 Helm 图表来管理和存储机密。
 
 ### <a name="using-valuesdevyaml"></a>使用 yaml
 
-在已准备好 Azure Dev Spaces 的项目中，在与相同的`values.dev.yaml`文件夹中创建文件`azds.yaml`以定义机密密钥和值。 例如：
+在已准备好 Azure Dev Spaces 的项目中，在与 `values.dev.yaml` 相同的文件夹中创建文件 `azds.yaml` 以定义机密密钥和值。 例如：
 
 ```yaml
 secrets:
@@ -35,7 +34,7 @@ secrets:
     key: "secretkeyhere"
 ```
 
-使用验证`azds.yaml`文件引用`values.dev.yaml`是否为可选`?`。 例如：
+使用验证 `azds.yaml` 文件引用是否 `values.dev.yaml` 为可选 `?` 。 例如：
 
 ```yaml
 install:
@@ -54,24 +53,24 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-使用`azds up`运行更新后的服务。
+使用运行更新后 `azds up` 的服务。
 
 ```console
 azds up
 ```
  
-使用`kubectl`验证是否已创建你的机密。
+使用 `kubectl` 验证是否已创建你的机密。
 
 ```console
 kubectl get secret --namespace default -o yaml 
 ```
 
 > [!IMPORTANT]
-> 不建议在源代码管理中存储机密。 如果使用 Git，请`values.dev.yaml`将添加`.gitignore`到文件中，以避免在源代码管理中提交机密。
+> 不建议在源代码管理中存储机密。 如果使用 Git，请将添加 `values.dev.yaml` 到 `.gitignore` 文件中，以避免在源代码管理中提交机密。
 
 ### <a name="using-azdsyaml"></a>使用 azds. yaml
 
-在已准备好 Azure Dev Spaces 的项目中，使用 *$PLACEHOLDER*语法在 "*配置*" 下添加 "密钥和值"。在中`azds.yaml`设置。 例如：
+在已准备好 Azure Dev Spaces 的项目中，使用 *$PLACEHOLDER*语法在 "*配置*" 下添加 "密钥和值"。在中设置。 `azds.yaml` 例如：
 
 ```yaml
 configurations:
@@ -87,9 +86,9 @@ configurations:
 ```
 
 > [!NOTE]
-> 你可以直接输入机密值，而 *$PLACEHOLDER*无需在`azds.yaml`中使用 $PLACEHOLDER 语法。 但是，不建议使用此方法， `azds.yaml`因为它存储在源代码管理中。
+> 你可以直接输入机密值，而无需在中使用 *$PLACEHOLDER*语法 `azds.yaml` 。 但是，不建议使用此方法，因为 `azds.yaml` 它存储在源代码管理中。
      
-在与`.env`定义 $PLACEHOLDER 值相同的文件夹`azds.yaml`中创建文件 *$PLACEHOLDER* 。 例如：
+在与 `.env` `azds.yaml` 定义 *$PLACEHOLDER*值相同的文件夹中创建文件。 例如：
 
 ```
 REDIS_PORT=3333
@@ -98,7 +97,7 @@ REDIS_KEY=myrediskey
 ```
 
 > [!IMPORTANT]
-> 不建议在源代码管理中存储机密。 如果使用 Git，请`.env`将添加`.gitignore`到文件中，以避免在源代码管理中提交机密。
+> 不建议在源代码管理中存储机密。 如果使用 Git，请将添加 `.env` 到 `.gitignore` 文件中，以避免在源代码管理中提交机密。
 
 更新或验证你的服务是否引用你的机密作为环境变量。 例如：
 
@@ -108,13 +107,13 @@ var host = process.env.REDIS_HOST
 var theKey = process.env.REDIS_KEY
 ```
     
-使用`azds up`运行更新后的服务。
+使用运行更新后 `azds up` 的服务。
 
 ```console
 azds up
 ```
  
-使用`kubectl`验证是否已创建你的机密。
+使用 `kubectl` 验证是否已创建你的机密。
 
 ```console
 kubectl get secret --namespace default -o yaml 
@@ -122,9 +121,9 @@ kubectl get secret --namespace default -o yaml
 
 ## <a name="using-secrets-as-build-arguments"></a>使用机密作为生成参数
 
-上一部分介绍了如何在容器运行时存储和使用机密。 你还可以在容器构建时使用任何机密，如专用 NuGet 的密码，使用`azds.yaml`。
+上一部分介绍了如何在容器运行时存储和使用机密。 你还可以在容器构建时使用任何机密，如专用 NuGet 的密码，使用 `azds.yaml` 。
 
-在`azds.yaml`中，使用`<variable name>: ${secret.<secret name>.<secret key>}`语法在*配置*中设置生成时间机密。使用语法。 例如：
+在中 `azds.yaml` ，使用语法在*配置*中设置生成时间机密。使用 `<variable name>: ${secret.<secret name>.<secret key>}` 语法。 例如：
 
 ```yaml
 configurations:
@@ -140,7 +139,7 @@ configurations:
 在上面的示例中， *mynugetsecret*是一个现有的机密， *pattoken*是一个现有密钥。
 
 >[!NOTE]
-> 机密名称和密钥可能包含`.`字符。 在`\`将机密`.`作为生成参数传递时，使用进行转义。 例如，若要传递名为*foo*的机密，请使用*令牌*的密钥： `MYTOKEN: ${secret.foo\.bar.token}`。 此外，还可以通过前缀和后缀文本来评估机密。 例如，`MYURL: eus-${secret.foo\.bar.token}-version1` 。 此外，可以将父代和祖父空间中提供的机密作为生成参数进行传递。
+> 机密名称和密钥可能包含 `.` 字符。 `\` `.` 在将机密作为生成参数传递时，使用进行转义。 例如，若要传递名为*foo*的机密，请使用*令牌*的密钥： `MYTOKEN: ${secret.foo\.bar.token}` 。 此外，还可以通过前缀和后缀文本来评估机密。 例如 `MYURL: eus-${secret.foo\.bar.token}-version1`。 此外，可以将父代和祖父空间中提供的机密作为生成参数进行传递。
 
 在 Dockerfile 中，使用*ARG*指令来使用机密，并稍后在 Dockerfile 中使用该相同的变量。 例如：
 

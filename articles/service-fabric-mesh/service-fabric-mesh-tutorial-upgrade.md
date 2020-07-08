@@ -7,10 +7,9 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75351719"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教程：了解如何使用 Visual Studio 升级 Service Fabric 应用程序
@@ -55,13 +54,13 @@ ms.locfileid: "75351719"
 
 2. 在“WebFrontEnd”**** > “服务资源”**** 下打开 WebFrontEnd**** 项目的 service.yaml**** 文件。
 
-    请注意，在 `resources:` 部分中，`cpu:` 将设置为 `"[parameters('WebFrontEnd_cpu')]"`。 如果`'WebFrontEnd_cpu`为云生成项目，则将从**环境** > **Cloud** > **yaml**文件中获取的值，并将为`1.5`。 如果正在生成项目以在本地运行，则将从**环境** > **本地** > **yaml**文件中获取该值，并将是 "0.5"。
+    请注意，在 `resources:` 部分中，`cpu:` 将设置为 `"[parameters('WebFrontEnd_cpu')]"`。 如果为云生成项目，则 `'WebFrontEnd_cpu` 将从**环境**  >  **Cloud**  >  **yaml**文件中获取的值，并将为 `1.5` 。 如果正在生成项目以在本地运行，则将从**环境**  >  **本地**  >  **yaml**文件中获取该值，并将是 "0.5"。
 
 > [!Tip]
 > 默认情况下，与 profile.yaml 文件对等的参数文件将用于提供该 profile.yaml 文件的值。
 > 例如，“环境”>“云”>“parameters.yaml”提供了“环境”>“云”>“profile.yaml”的参数值。
 >
-> 可以通过将以下内容添加到 yaml 文件来替代此项：`parametersFilePath=”relative or full path to the parameters file”`例如，或`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”``parametersFilePath=”..\CommonParameters.yaml”`
+> 可以通过将以下内容添加到 yaml 文件来替代此项： `parametersFilePath=”relative or full path to the parameters file”` 例如， `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` 或`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 
@@ -157,6 +156,6 @@ The application was deployed successfully and it can be accessed at http://10.00
 > [!div class="checklist"]
 > * 如何使用 Visual Studio 升级 Service Fabric 网格应用
 
-转到下一教程：
+进入下一教程：
 > [!div class="nextstepaction"]
 > [清理 Service Fabric 网格资源](service-fabric-mesh-tutorial-cleanup-resources.md)

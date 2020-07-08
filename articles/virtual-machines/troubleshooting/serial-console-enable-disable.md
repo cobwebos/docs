@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75451300"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>启用和禁用 Azure 串行控制台
@@ -34,7 +33,7 @@ ms.locfileid: "75451300"
 ## <a name="subscription-level-enabledisable"></a>订阅级别的启用/禁用
 
 > [!NOTE]
-> 运行此命令之前，请确保位于正确的云中（Azure 公有云、Azure US 政府云）。 你可以通过检查`az cloud list`并将你的云`az cloud set -n <Name of cloud>`设置为。
+> 运行此命令之前，请确保位于正确的云中（Azure 公有云、Azure US 政府云）。 你可以通过检查 `az cloud list` 并将你的云设置为 `az cloud set -n <Name of cloud>` 。
 
 ### <a name="azure-cli"></a>Azure CLI
 

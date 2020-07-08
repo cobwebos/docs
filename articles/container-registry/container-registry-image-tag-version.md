@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75445734"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>有关对容器映像进行标记和版本控制的建议
@@ -57,7 +56,7 @@ ms.locfileid: "75445734"
 
 ### <a name="lock-deployed-image-tags"></a>锁定部署的图像标记
 
-作为最佳做法，我们建议你将其[lock](container-registry-image-lock.md) `write-enabled`属性设置为，以`false`锁定任何已部署的图像标记。 这种做法可防止无意中从注册表中删除映像，并可能会中断部署。 你可以在发布管道中包含锁定步骤。
+作为最佳做法，我们建议你将其属性设置为，以[锁定](container-registry-image-lock.md)任何已部署的图像标记 `write-enabled` `false` 。 这种做法可防止无意中从注册表中删除映像，并可能会中断部署。 你可以在发布管道中包含锁定步骤。
 
 锁定已部署的映像仍然允许使用 Azure 容器注册表功能从注册表中删除其他未部署的映像，以维护注册表。 例如，在指定的持续时间之前[自动清除](container-registry-auto-purge.md)未标记的清单或解锁的图像，或为未标记的清单设置[保留策略](container-registry-retention-policy.md)。
 

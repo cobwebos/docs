@@ -7,10 +7,9 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75428709"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>使用 Azure Functions 和 Azure 服务总线调用或触发逻辑应用
@@ -47,7 +46,7 @@ ms.locfileid: "75428709"
 
    如果你没有架构，但有一个 JSON 格式的示例有效负载，则可以基于该有效负载生成一个架构。
 
-   1. 在请求触发器中，选择“使用示例有效负载生成架构”。****
+   1. 在请求触发器中，选择“使用示例有效负载生成架构”。
 
    1. 在 "**输入或粘贴示例 JSON 负载**" 下，输入示例负载，然后选择 "**完成**"。
 

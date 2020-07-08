@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74931791"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
@@ -78,15 +77,15 @@ ms.locfileid: "74931791"
 ## <a name="db2-linked-service-properties"></a>DB2 链接服务的属性
 下表列出了特定于 DB2 链接服务的 JSON 属性。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必须 |
 | --- | --- | --- |
 | **type** |必须将此属性设置为 **OnPremisesDb2**。 |是 |
-| **服务** |DB2 服务器的名称。 |是 |
+| 服务器 |DB2 服务器的名称。 |是 |
 | **database** |DB2 数据库的名称。 |是 |
 | **架构** |DB2 数据库中架构的名称。 此属性区分大小写。 |否 |
 | **authenticationType** |用于连接 DB2 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
-| **用户名** |如果使用 Basic 或 Windows 身份验证，则表示用户帐户的名称。 |否 |
-| password  |用户帐户的密码。 |否 |
+| **username** |如果使用 Basic 或 Windows 身份验证，则表示用户帐户的名称。 |否 |
+| **password** |用户帐户的密码。 |否 |
 | **gatewayName** |应该由数据工厂服务用来连接到本地 DB2 数据库的网关的名称。 |是 |
 
 ## <a name="dataset-properties"></a>数据集属性
@@ -94,7 +93,7 @@ ms.locfileid: "74931791"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | **tableName** |链接服务引用的 DB2 数据库实例中表的名称。 此属性区分大小写。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
@@ -103,9 +102,9 @@ ms.locfileid: "74931791"
 
 对于复制活动，当源的类型为 **RelationalSource**（包括 DB2）时，以下属性在 **typeProperties** 节中可用：
 
-| properties | 说明 | 允许的值 | 必须 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| **查询** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
+| **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询语句中，应使用 ""（双引号）括住属性名称。
@@ -313,40 +312,40 @@ ms.locfileid: "74931791"
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| 日期 |DateTime |
+| 小数 |小数 |
+| DecimalFloat |小数 |
+| Numeric |小数 |
+| Date |DateTime |
 | 时间 |TimeSpan |
-| 时间戳 |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte[] |
-| Char |字符串 |
-| VarChar |字符串 |
-| LongVarChar |字符串 |
-| DB2DynArray |字符串 |
-| Binary |Byte[] |
+| Char |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
+| 二进制 |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
 | Graphic |字符串 |
-| VarGraphic |字符串 |
-| LongVarGraphic |字符串 |
-| Clob |字符串 |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| Clob |String |
 | Blob |Byte[] |
-| DbClob |字符串 |
+| DbClob |String |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numeric |Decimal |
-| 日期 |DateTime |
+| 小数 |小数 |
+| DecimalFloat |小数 |
+| Numeric |小数 |
+| Date |DateTime |
 | 时间 |TimeSpan |
-| 时间戳 |DateTime |
+| Timestamp |DateTime |
 | Xml |Byte[] |
-| Char |字符串 |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 若要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

@@ -9,10 +9,9 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74974932"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>如何通过 Azure 门户管理设备注册
@@ -24,7 +23,7 @@ ms.locfileid: "74974932"
 
 可通过两种方法向预配服务注册设备：
 
-* “注册组”是共享 X.509 证书共同认证机制的一组设备，由同一个签名证书（可以是[根证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)，也可以是[中间证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)）签名，并用于在物理设备上生成设备证书。  对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
+* “注册组”是共享 X.509 证书共同认证机制的一组设备，由同一个签名证书（可以是[根证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate)，也可以是[中间证书](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)）签名，并用于在物理设备上生成设备证书。 对于共享所需初始配置的大量设备，或者全部转到同一租户的设备，建议使用注册组。 请注意，只能注册使用 X.509 证明机制作为“注册组”的设备  。 
 
     执行以下步骤可在门户中为一组设备创建注册组。
 
@@ -33,7 +32,7 @@ ms.locfileid: "74974932"
   1. 在预配服务中：  
      a. 单击“管理注册”，然后选择“注册组”选项卡   。  
      b. 单击顶部的“添加”按钮  。  
-     c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。   
+     c. 当“添加注册组”面板出现时，输入注册列表项的信息。  **组名**是必需的。 另外，对于“证书类型”，请选择“CA 证书”或“中间证书”，并为设备组上传根**主证书**。  
      d. 单击“保存”  。 注册组创建成功后，应可在“注册组”选项卡下看到组名称  。  
 
      [![门户中的注册组](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)

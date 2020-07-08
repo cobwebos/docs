@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75422949"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 常规操作指南参考
@@ -31,7 +30,7 @@ ms.locfileid: "75422949"
 
 管理 Azure Active Directory 需要持续执行关键操作任务和进程，这可能不是一个部署项目的一部分。 设置这些任务以优化环境仍非常重要。 关键任务及其建议所有者包括：
 
-| 任务 | “所有者” |
+| 任务 | 所有者 |
 | :- | :- |
 | 提高了对标识安全分数的改进 | InfoSec 运营团队 |
 | 维护 Azure AD Connect 服务器 | IAM 操作团队 |
@@ -60,7 +59,7 @@ ms.locfileid: "75422949"
 
 这些组件包括：
 
-- 具有 Azure AD Connect
+- Azure AD Connect
 - Azure AD 应用程序代理连接器
 - Azure AD 传递身份验证代理
 - Azure AD Connect Health 代理
@@ -127,7 +126,7 @@ ms.locfileid: "75422949"
 
 Microsoft 向管理员发送电子邮件通信，通知服务中的各种更改、所需的配置更新以及需要管理员干预的错误。 重要的是，客户必须设置通知电子邮件地址，以便将通知发送到正确的团队成员，这些成员可以确认并操作所有通知。 建议将多个收件人添加到[Office 365 消息中心](https://docs.microsoft.com/office365/admin/manage/message-center)，并请求将通知（包括 Azure AD Connect Health 通知）发送到通讯组列表或共享邮箱。 如果只有一个具有电子邮件地址的全局管理员帐户，请确保至少配置两个支持电子邮件的帐户。
 
-Azure AD： <o365mc@email2.microsoft.com>（发送 Office 365 消息中心通知）使用两个 "发件人" 地址;和<azure-noreply@microsoft.com>，发送与以下内容相关的通知：
+Azure AD 提供了两个 "发件人" 地址： <o365mc@email2.microsoft.com> ，用于发送 Office 365 消息中心通知; 以及 <azure-noreply@microsoft.com> 发送与以下内容相关的通知：
 
 - [Azure AD 访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
@@ -166,9 +165,9 @@ Active Directory 的管理层模型旨在使用一组缓冲区域来保护标识
 
 [层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)由三个级别组成，只包括管理帐户，而不包括标准用户帐户。
 
-- **第 0** 层-对环境中企业标识的直接控制。 第 0 层包括帐户、组以及对 Active Directory 林、域或域控制器及其中的所有资产具有直接或间接管理控制权的其他资产。 第 0 层中所有资产的安全敏感性是等同的，因为它们均可以有效地相互控制。
-- **第 1** 层-控制企业服务器和应用程序。 第 1 层资产包括服务器操作系统、云服务和企业应用程序。 第 1 层的管理员帐户能够管理控制这些资产上托管的大量业务价值。 常见的示例角色是服务器管理员，此角色可维护这些操作系统并能够影响所有企业服务。
-- **第 2** 层-控制用户工作站和设备。 第 2 层的管理员帐户对用户工作站和设备上托管的大量业务价值具有管理控制权。 示例包括技术支持和计算机支持管理员，因为它们可以影响几乎任何用户数据的完整性。
+- **第0层**  -在环境中直接控制企业标识。 第 0 层包括帐户、组以及对 Active Directory 林、域或域控制器及其中的所有资产具有直接或间接管理控制权的其他资产。 第 0 层中所有资产的安全敏感性是等同的，因为它们均可以有效地相互控制。
+- **第1层**  -控制企业服务器和应用程序。 第 1 层资产包括服务器操作系统、云服务和企业应用程序。 第 1 层的管理员帐户能够管理控制这些资产上托管的大量业务价值。 常见的示例角色是服务器管理员，此角色可维护这些操作系统并能够影响所有企业服务。
+- **第2层**  -控制用户工作站和设备。 第 2 层的管理员帐户对用户工作站和设备上托管的大量业务价值具有管理控制权。 示例包括技术支持和计算机支持管理员，因为它们可以影响几乎任何用户数据的完整性。
 
 使用与域控制器相同的方式锁定对本地标识组件（例如 Azure AD Connect、AD FS 和 SQL 服务）的访问。
 

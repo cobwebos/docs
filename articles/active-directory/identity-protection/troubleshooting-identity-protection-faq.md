@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 140ad45d9c4f6b6f49a4ea4aefb9298e58a2cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443568"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 中的常见问题标识保护
@@ -24,7 +23,7 @@ ms.locfileid: "75443568"
 
 消除经典 Identity Protection 中的**用户风险**将标识保护的用户风险历史记录中的执行组件设置为**Azure AD**。
 
-消除 identity protection 中的**用户风险**将标识保护中用户的风险历史记录中的参与者设置为** \<管理员的名称，并将超链接指向\>用户的边栏选项卡**。
+消除 Identity Protection 中的**用户风险**将标识保护的用户风险历史记录中的执行组件设置为 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
 当前已知问题导致用户风险消除流中的延迟。 如果具有“用户风险策略”，则该策略将在单击“消除用户风险”后的几分钟内阻止应用于已消除的用户。 但是，UX 刷新已消除用户的“风险状态”时，存在已知延迟。 要解决此问题，请在浏览器级刷新页面以查看最新的用户“风险状态”。
 

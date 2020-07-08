@@ -10,7 +10,6 @@ ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 关节, 层次结构, 骨骼, 连接
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "74978314"

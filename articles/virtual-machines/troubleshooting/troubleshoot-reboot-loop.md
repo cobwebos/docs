@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
 ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75443587"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM 上的 Windows 重启循环
@@ -62,7 +61,7 @@ ms.locfileid: "75443587"
 
 4. 在安全的 VM 中，打开 Windows 注册表编辑器 (regedit)。
 
-5. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” **“加载配置单元”**   >   。
+5. 选择 HKEY_LOCAL_MACHINE 键，然后选择菜单中的“文件” > “加载配置单元”。
 
 6. 浏览到 \Windows\System32\config 文件夹中的系统文件  。
 
@@ -86,7 +85,7 @@ ms.locfileid: "75443587"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. 选择 BROKENSYSTEM 项，然后从菜单中选择“文件” **“卸载配置单元”**   >   。
+13. 选择 BROKENSYSTEM 项，然后从菜单中选择“文件” > “卸载配置单元”。
 
 14. 从故障排除 VM 中分离 OS 磁盘。
 

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74900369"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
@@ -73,7 +72,7 @@ ms.locfileid: "74900369"
 - [为联合环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
 - [为托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
-如果你依赖于系统准备工具（sysprep.inf），并且如果你使用的是 Windows 之前 10 1809 映像进行安装，请确保映像不是来自已在 Azure AD 中注册的设备，因为已加入混合 Azure AD。
+如果你依赖于系统准备工具（sysprep.exe），并且如果你使用的是 Windows 之前的 10 1809 映像进行安装，请确保映像不是从已注册为混合 Azure AD Azure AD 的设备注册的。
 
 如果你依赖于虚拟机（VM）快照来创建其他 Vm，请确保快照不是来自已注册到 Azure AD 的 VM，因为混合 Azure AD 加入。
 
@@ -81,7 +80,7 @@ ms.locfileid: "74900369"
 
 - 为计算机的显示名称创建并使用一个前缀，将桌面指定为基于 VDI 的计算机。
 - 在注销脚本中实现以下命令。 此命令将触发对 Azure AD 删除设备的尽力操作调用。
-   - 对于 Windows 下层设备–了 autoworkplace.exe/leave
+   - 对于 Windows 下层设备-autoworkplace.exe/leave
 - 定义并实现[管理过时设备](manage-stale-devices.md)的过程。
    - 一旦你有策略来识别你的非持久性混合 Azure AD 联接设备，你就可以更积极地在这些设备上进行清理，以确保你的目录不会被大量过时设备使用。
  
