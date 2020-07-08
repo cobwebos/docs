@@ -9,7 +9,6 @@ ms.topic: conceptual
 keywords: azure, kinect, sdk, 下载更新, 最新, 可用, 安装
 ms.openlocfilehash: 2c23977c7e01a9137b72b44d1bdc0e1373bafa0a
 ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2020
 ms.locfileid: "80632738"

@@ -15,19 +15,18 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79476009"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>在 Azure Sentinel 中使用多个租户 
 
 如果你是托管安全服务提供商（MSSP），并且你正在使用[Azure Lighthouse](../lighthouse/overview.md)来管理客户的安全运营中心（SOC），则可以管理客户的 azure Sentinel 资源，而无需直接连接到客户的租户，只需从你自己的 azure 租户。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - [载入 Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
-- 为了使其正常工作，必须至少在一个订阅上向 Azure Sentinel 资源提供程序注册你的租户。 如果租户中有已注册的 Azure Sentinel，就可以开始使用了。 否则，请从 Azure 门户中选择 "**订阅**"，然后选择 "**资源提供程序**"。  然后，在 " **SOC-资源提供程序**" 屏幕上，搜索`Microsoft.OperationalInsights`并`Microsoft.SecurityInsights`选择 "和"，并选择 "**注册**"。
+- 为了使其正常工作，必须至少在一个订阅上向 Azure Sentinel 资源提供程序注册你的租户。 如果租户中有已注册的 Azure Sentinel，就可以开始使用了。 否则，请从 Azure 门户中选择 "**订阅**"，然后选择 "**资源提供程序**"。  然后，在 " **SOC-资源提供程序**" 屏幕上，搜索并选择 `Microsoft.OperationalInsights` `Microsoft.SecurityInsights` "和"，并选择 "**注册**"。
    ![检查资源提供程序](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>如何从其他租户访问 Azure Sentinel
 1. 在 "**目录和订阅**" 下，选择委托的目录，以及客户的 Azure Sentinel 工作区所在的订阅。

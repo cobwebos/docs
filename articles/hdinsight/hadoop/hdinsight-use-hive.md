@@ -9,21 +9,20 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
 ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471347"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 中的 Apache Hive 和 HiveQL 是什么？
 
 [Apache Hive](https://hive.apache.org/)是 Apache Hadoop 的数据仓库系统。 使用 Hive 可以汇总、查询和分析数据。 Hive 查询使用 HiveQL 编写，它是类似于 SQL 的查询语言。
 
-Hive 允许在很大程度上未结构化的数据上投影结构。 定义结构后，可以使用 HiveQL 来查询这些数据，而无需具备 Java 或 MapReduce 方面的知识。
+Hive 可以实现将结构投影到很大程度上未结构化的数据上。 定义结构后，可以使用 HiveQL 来查询这些数据，而无需具备 Java 或 MapReduce 方面的知识。
 
 HDInsight 提供已针对特定工作负荷进行优化的多种群集类型。 以下群集类型最常用于 Hive 查询：
 
-|群集类型 |说明|
+|群集类型 |描述|
 |---|---|
 |交互式查询|提供[低延迟分析处理 (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) 功能的 Hadoop 群集，可改善交互式查询的响应时间。 有关详细信息，请参阅 [HDInsight 中的交互式查询入门](../interactive-query/apache-interactive-query-get-started.md)文档。|
 |Hadoop|针对批处理工作负荷进行优化的 Hadoop 群集。 有关详细信息，请参阅 [HDInsight 中的 Apache Hadoop 入门](../hadoop/apache-hadoop-linux-tutorial-get-started.md)文档。|
@@ -135,10 +134,10 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |---|---|
 |DROP TABLE|如果该表已存在，则删除它。|
 |CREATE EXTERNAL TABLE|在 Hive 中创建一个新的**外部**表。 外部表只会在 Hive 中存储表定义。 数据以原始格式的形式保留在原始位置中。|
-|行格式|让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。|
-|存储为 TEXTFILE 位置|告知 Hive 存储数据的位置（ `example/data`目录），并将其存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。|
+|ROW FORMAT|让 Hive 知道数据的格式已如何进行了设置。 在此情况下，每个日志中的字段以空格分隔。|
+|STORED AS TEXTFILE LOCATION|告知 Hive 存储数据的位置（ `example/data` 目录），并将其存储为文本。 数据可以在一个文件中，也可以分散在目录的多个文件内。|
 |SELECT|选择“t4”列中包含值“[ERROR]”的所有行的计数********。 此语句返回的值为 **3**，因为有三行包含此值。|
-|INPUT__FILE__NAME 如 "% .log"|Hive 尝试将架构应用到目录中的所有文件。 在这种情况下，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。|
+|INPUT__FILE__NAME LIKE '%.log'|Hive 会尝试对目录中的所有文件应用架构。 在此示例中，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。|
 
 > [!NOTE]  
 > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传过程或 MapReduce 操作。
@@ -162,13 +161,13 @@ SELECT t1, t2, t3, t4, t5, t6, t7
     FROM log4jLogs WHERE t4 = '[ERROR]';
 ```
 
-这些语句将执行以下操作：
+这些语句执行以下操作：
 
 |语句 |说明 |
 |---|---|
-|CREATE TABLE （如果不存在）|如果该表不存在，则创建它。 因为不使用**EXTERNAL**关键字，所以此语句创建一个内部表。 该表存储在 Hive 数据仓库中，并完全由 Hive 管理。|
-|存储为 ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。|
-|插入覆盖 .。。单击|从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中************。|
+|CREATE TABLE IF NOT EXISTS|如果该表不存在，则创建它。 因为不使用**EXTERNAL**关键字，所以此语句创建一个内部表。 该表存储在 Hive 数据仓库中，并完全由 Hive 管理。|
+|STORED AS ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 是高度优化且有效的 Hive 数据存储格式。|
+|INSERT OVERWRITE ...SELECT|从包含“[ERROR]”的“log4jLogs”表中选择行，然后将数据插入“errorLogs”表中************。|
 
 > [!NOTE]  
 > 与外部表不同，删除内部表会同时删除基础数据。

@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499835"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
@@ -25,14 +24,14 @@ ms.locfileid: "79499835"
 
 媒体服务帐户和所有关联的存储帐户必须位于同一 Azure 订阅中。 强烈建议在媒体服务帐户所在的位置使用存储帐户，避免额外的延迟和数据出口成本。
 
-必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户   。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户   。 不允许将仅限 Blob 的帐户作为主帐户  。
+必须具有一个主存储帐户，并且可以拥有任意数量的与媒体服务帐户关联的辅助存储帐户 。 媒体服务支持常规用途 v2 (GPv2) 或常规用途 v1 (GPv1) 帐户 。 不允许将仅限 Blob 的帐户作为主帐户。
 
 我们建议你使用 GPv2，以便可以利用最新的功能和性能。 若要了解存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../../storage/common/storage-account-overview.md)。
 
 > [!NOTE]
 > 仅热访问层支持与 Azure 媒体服务配合使用，尽管其他访问层可用于降低未活跃使用的内容的存储成本。
 
-可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在为生产选择 SKU 时，应考虑`--sku Standard_RAGRS`，它提供了地理复制以实现业务连续性。
+可以为存储帐户选择不同的 SKU。 有关详细信息，请参阅[存储帐户](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)。 若要通过存储帐户进行试验，请使用 `--sku Standard_LRS`。 但是，在为生产选择 SKU 时，应考虑 `--sku Standard_RAGRS` ，它提供了地理复制以实现业务连续性。
 
 ## <a name="assets-in-a-storage-account"></a>存储帐户中的资产
 
@@ -48,7 +47,7 @@ ms.locfileid: "79499835"
 |加密选项|说明|媒体服务 v3|
 |---|---|---|
 |媒体服务存储加密| AES-256 加密，媒体服务管理的密钥。 |不支持。<sup>(1)</sup>|
-|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户托管的密钥。|支持。|
+|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户托管的密钥。|。|
 |[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户托管密钥。|不支持。|
 
 <sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性，这意味着 v3 适用于现有存储加密的资产，但不允许创建新资产。

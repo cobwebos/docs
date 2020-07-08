@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79464455"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聚合函数
 
-聚合函数对`SELECT`子句中的一组值执行计算，并返回单个值。 例如，以下查询返回 `Families` 容器中的项计数。
+聚合函数对 `SELECT` 子句中的一组值执行计算，并返回单个值。 例如，以下查询返回 `Families` 容器中的项计数。
 
 ## <a name="examples"></a>示例
 
@@ -61,14 +60,14 @@ ms.locfileid: "79464455"
 
 ## <a name="types-of-aggregate-functions"></a>聚合函数的类型
 
-SQL API 支持以下聚合函数。 `SUM`和`AVG`对数字值进行操作， `COUNT`以及`MIN`、和`MAX`处理数值、字符串、布尔值和 null 值。
+SQL API 支持以下聚合函数。 `SUM` 和 `AVG` 对数值执行运算，`COUNT`、`MIN` 和 `MAX` 可以处理数字、字符串、布尔值和 null。
 
 | 函数 | 说明 |
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
-| 最小值   | 返回表达式中的最小值。 |
-| MAX   | 返回表达式中的最大值。 |
+| 最小值   | 在表达式中返回最小值。 |
+| MAX   | 在表达式中返回最大值。 |
 | 平均值   | 在表达式中返回多个值的平均值。 |
 
 还可以基于数组迭代的结果进行聚合。
@@ -78,10 +77,10 @@ SQL API 支持以下聚合函数。 `SUM`和`AVG`对数字值进行操作， `CO
 
 ## <a name="remarks"></a>备注
 
-这些聚合系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。 如果希望在属性中执行`COUNT`、 `SUM`、 `MIN`、 `MAX`或`AVG` ，应在[索引策略中包含相关路径](index-policy.md#includeexclude-strategy)。
+这些聚合系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中获益。 如果希望对某个属性执行 `COUNT`、`SUM`、`MIN`、`MAX` 或 `AVG` 运算，则应[在索引策略中包含相关路径](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Cosmos DB 简介](introduction.md)
 - [系统函数](sql-query-system-functions.md)
-- [用户定义函数](sql-query-udfs.md)
+- [用户定义的函数](sql-query-udfs.md)

@@ -7,17 +7,16 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79471024"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季云中设置过渡环境
 
 本文介绍如何使用 Azure 春季云中的蓝绿色部署模式设置过渡部署。 蓝/绿部署是一种 Azure DevOps 持续交付模式，它依赖于在部署新（绿色）版本时保持现有（蓝色）版本的活动性。 本文介绍如何将此过渡部署置于生产环境中，而无需直接更改生产部署。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设你已部署了[有关启动 Azure 春季云应用程序的教程](spring-cloud-quickstart-launch-app-portal.md)中的 PiggyMetrics 应用程序。 PiggyMetrics 由三个应用程序组成： "网关"、"帐户-服务" 和 "身份验证服务"。  
 
@@ -67,10 +66,10 @@ az extension add --name spring-cloud
 
 >[!TIP]
 > * 确认测试终结点以斜杠（/）结尾，以确保正确加载 CSS 文件。  
-> * 如果浏览器要求在查看该页之前输入登录凭据，请使用 [URL decode](https://www.urldecoder.org/) 来解码测试终结点。 URL decode 将返回“https://\<用户名>:\<密码>@\<群集名称>.test.azureapps.io/gateway/green”格式的 URL。  使用此窗体可访问终结点。
+> * 如果浏览器要求在查看该页之前输入登录凭据，请使用 [URL decode](https://www.urldecoder.org/) 来解码测试终结点。 Url 解码返回格式为 "https:// \<username> ： \<password> @ \<cluster-name> . test.azureapps.io/gateway/green" 的 url。  使用此窗体可访问终结点。
 
 >[!NOTE]    
-> 配置服务器设置同时适用于过渡环境和生产环境。 例如，如果在配置服务器中将应用程序`server.servlet.context-path`网关的上下文路径（）设置为*somepath*，则绿色部署的路径将更改为 "https://\<username>：\<password>>\<@ test.azureapps.io/gateway/green/somepath/..."。
+> 配置服务器设置同时适用于过渡环境和生产环境。 例如，如果在 `server.servlet.context-path` 配置服务器中将应用程序网关的上下文路径（）设置为*somepath*，则绿色部署的路径将更改为 "https:// \<username> ： \<password> @ \<cluster-name> test.azureapps.io/gateway/green/somepath/..."。
  
  如果此时访问面向公众的应用网关，则应该会看到旧页面而不进行新的更改。
     

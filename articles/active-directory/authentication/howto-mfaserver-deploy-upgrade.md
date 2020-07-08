@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653103"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升级到最新的 Azure 多重身份验证服务器
@@ -25,7 +24,7 @@ ms.locfileid: "80653103"
 如果要从 v6.x 或更低版本升级到 v7.x 或更高版本，所有组件都需从 .NET 2.0 更改为 .NET 4.5。 所有组件还需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本。 MFA 服务器安装程序将安装这些组件的 x86 和 x64 版本（如果尚未安装）。 如果用户门户和移动应用 Web 服务在不同的服务器上运行，则需要先安装这些包，才能对这些组件升级。 可以在 [Microsoft 下载中心](https://www.microsoft.com/download/)搜索最新的 Microsoft Visual C++ 2015 Redistributable 更新。 
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
 升级步骤速览：
 
@@ -98,7 +97,7 @@ ms.locfileid: "80653103"
 
    如果看到内容为“需要 Microsoft Visual C++ 2015 Redistributable Update 1 或更高版本”的错误消息，请从 [Microsoft 下载中心](https://www.microsoft.com/download/)下载并安装最新的更新程序包。 同时安装 x86 和 x64 版本。
 
-3. 请参阅 " **AD FS** > **身份验证策略** > " "**编辑全局多重身份验证策略**"。 取消选中“WindowsAzureMultiFactorAuthentication”**** 或“AzureMFAServerAuthentication”****（具体取决于当前安装的版本）。
+3. 请参阅 " **AD FS**  >  **身份验证策略**" "  >  **编辑全局多重身份验证策略**"。 取消选中“WindowsAzureMultiFactorAuthentication”**** 或“AzureMFAServerAuthentication”****（具体取决于当前安装的版本）。
 
    完成这一步后，便无法在此 AD FS 群集中通过 MFA 服务器进行双重验证，除非完成到第 8 步。
 
@@ -106,7 +105,7 @@ ms.locfileid: "80653103"
 5. 通过运行 Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 脚本注册新的 AD FS 适配器。 这一点适用于同一 AD FS 群集中的所有服务器，因为这些服务器进行了集中配置。
 6. 在从 AD FS 场中删除的每个服务器上重新启动 AD FS 服务。
 7. 将更新后的服务器重新添加到 AD FS 场，并删除场中的其他服务器。
-8. 请参阅 " **AD FS** > **身份验证策略** > " "**编辑全局多重身份验证策略**"。 选中“AzureMfaServerAuthentication”****。
+8. 请参阅 " **AD FS**  >  **身份验证策略**" "  >  **编辑全局多重身份验证策略**"。 选中“AzureMfaServerAuthentication”****。
 9. 重复步骤 2，以更新刚从 AD FS 场中删除的服务器，并重新启动这些服务器上的 AD FS 服务。
 10. 将这些服务器重新添加到 AD FS 场。
 

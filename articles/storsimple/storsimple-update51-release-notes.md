@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: 27778ea232353dcaa6a38fa19abbd64b11c809e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657918"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 系列更新5.1 发行说明
@@ -44,6 +43,6 @@ ms.locfileid: "80657918"
 
 此更新不能应用于 StorSimple 云工具（也称为虚拟设备）。 需要使用更新5.1 映像创建新的云设备。 有关如何创建 StorSimple 云设备的信息，请转到[部署和管理 StorSimple 云设备](storsimple-8000-cloud-appliance-u2.md)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 了解如何在 StorSimple 设备上[安装更新 5.1](storsimple-8000-install-update-51.md) 。

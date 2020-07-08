@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79479580"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>用于 Go 的 HDInsight SDK（预览版）
@@ -27,8 +26,8 @@ ms.locfileid: "79479580"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [ `go get`工具](https://github.com/golang/go/wiki/GoGetTools)。
-* [继续](https://golang.org/dl/)。
+* [`go get` 工具](https://github.com/golang/go/wiki/GoGetTools)。
+* [Go](https://golang.org/dl/)。
 
 ## <a name="sdk-installation"></a>SDK 安装
 
@@ -36,7 +35,7 @@ ms.locfileid: "79479580"
 
 ## <a name="authentication"></a>身份验证
 
-首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，你将拥有一个`ClustersClient`实例，该实例包含可用于执行管理操作的许多函数（如下部分所述）。
+首先需要使用 Azure 订阅对该 SDK 进行身份验证。  请遵循以下示例创建服务主体，然后使用该服务主体进行身份验证。 完成此操作后，你将拥有一个实例 `ClustersClient` ，该实例包含可用于执行管理操作的许多函数（如下部分所述）。
 
 > [!NOTE]  
 > 除了以下示例中所示的方法以外，还有其他一些身份验证方法可能更符合你的需要。 此处概述了所有函数：[Azure SDK for Go 中的身份验证函数](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
@@ -263,7 +262,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>示例
 
-可以使用`get`确认是否已成功创建了群集。
+可以使用 `get` 确认是否已成功创建了群集。
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -352,7 +351,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 使用 HDInsight 管理 SDK 还可以通过 Operations Management Suite (OMS) 来管理群集的监视。
 
-与创建 `ClusterClient` 以用于管理操作类似，你需要创建一个 `ExtensionClient` 来用于监视操作。 完成上述身份验证部分后，可以创建`ExtensionClient`如下所示的：
+与创建 `ClusterClient` 以用于管理操作类似，你需要创建一个 `ExtensionClient` 来用于监视操作。 完成上述身份验证部分后，可以创建如下所示的 `ExtensionClient` ：
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -365,7 +364,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>启用 OMS 监视
 
 > [!NOTE]  
-> 若要启用 OMS 监视，必须已有一个 Log Analytics 工作区。 如果尚未创建此工作区，可以参阅[在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)了解相关操作。
+> 若要启用 OMS 监视，必须已有一个 Log Analytics 工作区。 如果尚未创建工作区，可在此了解创建方法：[在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 
 在群集上启用 OMS 监视：
 
@@ -405,7 +404,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-对于“删除脚本操作”和“列出持久化脚本操作”操作，你需要创建一个 `ScriptActionsClient`，类似于创建 `ClusterClient` 以用于管理操作。 完成上述身份验证部分后，可以创建如下所示的`ScriptActionsClient` ：
+对于“删除脚本操作”和“列出持久化脚本操作”操作，你需要创建一个 `ScriptActionsClient`，类似于创建 `ClusterClient` 以用于管理操作。 完成上述身份验证部分后，可以创建如下所示的 `ScriptActionsClient` ：
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -453,7 +452,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>列出所有脚本的执行历史记录
 
-对于此操作，与创建 `ScriptExecutionHistoryClient` 以用于管理操作的方式类似，你需要创建一个 `ClusterClient`。 完成上述身份验证部分后，可以创建如下所示的`ScriptActionsClient` ：
+对于此操作，与创建 `ScriptExecutionHistoryClient` 以用于管理操作的方式类似，你需要创建一个 `ClusterClient`。 完成上述身份验证部分后，可以创建如下所示的 `ScriptActionsClient` ：
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)

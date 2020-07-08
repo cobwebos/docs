@@ -8,17 +8,16 @@ ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80657446"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>在加密设备上配置 LVM 和 RAID
 
 本文分步介绍了如何在加密设备上执行逻辑卷管理（LVM）和 RAID。 此过程适用于以下环境：
 
-- Linux 分布
+- Linux 发行版
     - RHEL 7.6 +
     - Ubuntu 18.04 +
     - SUSE 12 +
@@ -88,7 +87,7 @@ az vm create \
 -o table
 ```
 ### <a name="attach-disks-to-the-vm"></a>将磁盘附加到 VM
-对于`$N`要附加到 VM 的新磁盘数，重复以下命令。
+对于 `$N` 要附加到 VM 的新磁盘数，重复以下命令。
 
 PowerShell：
 

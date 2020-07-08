@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656233"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>提高从 Azure 逻辑应用调用自定义 Api 的安全性
@@ -51,9 +50,9 @@ ms.locfileid: "80656233"
 2. 确认所在目录与 Web 应用或 API 应用相同。
 
    > [!TIP]
-   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” **“切换目录”**  >   。
+   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” > “切换目录”。
 
-3. 在目录菜单的“管理”下，选择“应用注册” **“新建应用程序注册”**   >   。
+3. 在目录菜单的“管理”下，选择“应用注册” > “新建应用程序注册”。
 
    > [!TIP]
    > 默认情况下，应用注册列表显示目录中的所有应用注册。 若要仅查看应用注册，请在搜索框旁选择“我的应用”  。 
@@ -250,7 +249,7 @@ ms.locfileid: "80656233"
 
 | properties | 必选 | 说明 |
 | -------- | -------- | ----------- |
-| `type` | 是 | 身份验证类型。 对于 TLS/SSL 客户端证书，该值必须为`ClientCertificate`。 |
+| `type` | 是 | 身份验证类型。 对于 TLS/SSL 客户端证书，该值必须为 `ClientCertificate` 。 |
 | `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
 | `pfx` | 是 | 客户端证书（PFX 文件）的 base64 编码内容 |
 ||||

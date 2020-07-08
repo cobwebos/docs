@@ -8,10 +8,9 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477028"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>设置 Azure Red Hat OpenShift 开发环境
@@ -19,7 +18,7 @@ ms.locfileid: "79477028"
 若要生成并运行 Microsoft Azure Red Hat OpenShift 应用程序，需要：
 
 * 安装 Azure CLI 的版本2.0.65 （或更高版本）（或使用 Azure Cloud Shell）。
-* 注册`AROGA`功能和关联的资源提供程序。
+* 注册 `AROGA` 功能和关联的资源提供程序。
 * 创建 Azure Active Directory （Azure AD）租户。
 * 创建 Azure AD 应用程序对象。
 * 创建 Azure AD 用户。
@@ -34,7 +33,7 @@ Azure Red Hat OpenShift 要求 Azure CLI 2.0.65 或更高版本。 如果你已�
 az --version
 ```
 
-例如`azure-cli (2.0.65)`，输出的第一行将包含 CLI 版本。
+例如，输出的第一行将包含 CLI 版本 `azure-cli (2.0.65)` 。
 
 如果需要全新安装或升级，请参阅以下[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)说明。
 
@@ -42,7 +41,7 @@ az --version
 
 ## <a name="register-providers-and-features"></a>注册提供程序和功能
 
-在`Microsoft.ContainerService AROGA`部署第`Microsoft.Solutions`一个`Microsoft.Compute`Azure `Microsoft.Storage`Red `Microsoft.KeyVault` Hat `Microsoft.Network` OpenShift 群集之前，必须将功能、、、和提供程序手动注册到你的订阅。
+在 `Microsoft.ContainerService AROGA` `Microsoft.Solutions` `Microsoft.Compute` `Microsoft.Storage` `Microsoft.KeyVault` `Microsoft.Network` 部署第一个 Azure Red Hat OpenShift 群集之前，必须将功能、、、和提供程序手动注册到你的订阅。
 
 若要手动注册这些提供程序和功能，请使用 Bash shell 中的以下说明（如果已安装 CLI），或从 Azure 门户中的 Azure Cloud Shell （Bash）会话使用：
 

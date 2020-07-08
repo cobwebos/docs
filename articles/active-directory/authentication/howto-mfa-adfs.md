@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80654025"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>将 Azure 多重身份验证与 AD FS 配合使用来保护云资源
@@ -27,24 +26,24 @@ ms.locfileid: "80654025"
 若要保护云资源，请设置声明规则，以便在用户成功执行双重验证之后，Active Directory 联合身份验证服务能够发出多重身份验证声明。 此声明将传递到 Azure AD。 按照以下过程完成各步骤：
 
 1. 打开“AD FS 管理”。
-2. 在左侧选择“信赖方信任”****。
+2. 在左侧选择“信赖方信任”。
 3. 右键单击**Microsoft Office 365 标识平台**"，然后选择"**编辑声明规则**"。
 
    ![ADFS 控制台-信赖方信任](./media/howto-mfa-adfs/trustedip1.png)
 
-4. 在“颁发转换规则”上，单击 **添加规则**。
+4. 在 "颁发转换规则" 上，单击 "**添加规则**"。
 
    ![编辑颁发转换规则](./media/howto-mfa-adfs/trustedip2.png)
 
-5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”****，并单击“下一步”****。
+5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
 
    ![添加转换声明规则向导](./media/howto-mfa-adfs/trustedip3.png)
 
 6. 为规则提供一个名称。 
-7. 选择“身份验证方法引用”作为传入声明类型。****
-8. 选择“传递所有声明值”****。
+7. 选择“身份验证方法引用”作为传入声明类型。
+8. 选择“传递所有声明值”。
     ![添加转换声明规则向导](./media/howto-mfa-adfs/configurewizard.png)
-9. 单击 **“完成”** 。 关闭 AD FS 管理控制台。
+9. 单击“完成”。 关闭 AD FS 管理控制台。
 
 ## <a name="trusted-ips-for-federated-users"></a>联合用户的受信任 IP
 
@@ -57,18 +56,18 @@ ms.locfileid: "80654025"
 我们要做的第一件事是配置 AD FS 声明。 创建两个声明规则，一个用于“公司网络内部”声明类型，另一个用于保持用户登录。
 
 1. 打开“AD FS 管理”。
-2. 在左侧选择“信赖方信任”****。
-3. 右键单击**Microsoft Office 365 标识平台**"，然后选择"**编辑声明规则 ...** "
-   ADFS 控制台-编辑![声明规则](./media/howto-mfa-adfs/trustedip1.png)
-4. 在 "颁发转换规则" 上，单击 "**添加规则"。**
-    ![](./media/howto-mfa-adfs/trustedip2.png)
-5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”****，并单击“下一步”****。
+2. 在左侧选择“信赖方信任”。
+3. 右键单击**Microsoft Office 365 标识平台**"，然后选择"**编辑声明规则 ... "** 
+    ![ADFS 控制台-编辑声明规则](./media/howto-mfa-adfs/trustedip1.png)
+4. 在 "颁发转换规则" 上，单击 "**添加规则"。** 
+    ![添加声明规则](./media/howto-mfa-adfs/trustedip2.png)
+5. 在“添加转换声明规则向导”上，从下拉列表中选择“传递或筛选传入声明”，并单击“下一步”。
    ![添加转换声明规则向导](./media/howto-mfa-adfs/trustedip3.png)
 6. 在“声明规则名称”旁边的框中，为规则指定名称。 例如：InsideCorpNet。
 7. 从“传入声明类型”旁边的下拉列表中，选择“公司网络内部”****。
    ![添加内部公司网络声明](./media/howto-mfa-adfs/trustedip4.png)
-8. 单击 **“完成”** 。
-9. 在“颁发转换规则”上，单击 **添加规则**。
+8. 单击“完成”。
+9. 在 "颁发转换规则" 上，单击 "**添加规则**"。
 10. 在“添加转换声明规则向导”上，从下拉列表中选择“使用自定义规则发送声明”****，并单击“下一步”****。
 11. 在“声明规则名称”下的框中：输入“保持用户登录状态”**。
 12. 在“自定义规则”框中，输入：
@@ -76,8 +75,8 @@ ms.locfileid: "80654025"
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
     ![创建自定义声明，使用户保持登录](./media/howto-mfa-adfs/trustedip5.png)
-13. 单击 **“完成”** 。
-14. 单击“应用”  。
+13. 单击“完成”。
+14. 单击“应用”。
 15. 单击“确定”  。
 16. 关闭“AD FS 管理”。
 
@@ -85,8 +84,8 @@ ms.locfileid: "80654025"
 
 创建声明后，可以开始配置受信任的 IP。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 选择**Azure Active Directory** > **安全** > **条件性访问** > **命名位置**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 选择**Azure Active Directory**  >  **安全**  >  **条件性访问**  >  **命名位置**"。
 3. 在 "**条件访问-命名位置**" 边栏选项卡中，选择 "**配置 MFA 受信任的 ip** "
 
    ![Azure AD 条件访问命名位置配置 MFA 受信任的 Ip](./media/howto-mfa-adfs/trustedip6.png)

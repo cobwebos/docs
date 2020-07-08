@@ -16,15 +16,14 @@ ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79461106"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>使用媒体服务动态加密保护内容
 
-借助 Azure 媒体服务，在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容是使用 AES 明文密钥加密的，并且是通过 HTTPS 发送的，则它在到达客户端之前不会以明文形式发送。 
+使用 Azure 媒体服务在媒体从计算机离开一直到存储、处理和传送的整个过程中帮助保护其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 如果内容是使用 AES 明文密钥加密的，并且是通过 HTTPS 发送的，则它在到达客户端之前不会以明文形式发送。 
 
 在媒体服务 v3 中，内容密钥与流定位符相关联（参阅[此示例](protect-with-aes128.md)）。 如果使用媒体服务密钥传送服务，可让 Azure 媒体服务自动生成内容密钥。 如果使用自己的密钥传送服务，或者需要处理高可用性方案（需要在两个数据中心使用相同的内容密钥），则应自行生成内容密钥。
 
@@ -163,7 +162,7 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 |---|---|
 |Chrome|Widevine|
 |Microsoft Edge、Internet Explorer 11|PlayReady|
-|FireFox|Widevine|
+|Firefox|Widevine|
 |Opera|Widevine|
 |Safari|FairPlay|
 
@@ -184,7 +183,7 @@ MPEG-DASH 协议支持以下容器格式和加密方案：
 
 ### <a name="token-replay-prevention"></a>令牌重放防护
 
-*令牌重放防护*功能允许媒体服务客户对同一令牌可用于请求密钥或许可证的次数设置限制。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
+令牌重放预防功能允许媒体服务客户设置一个限制，以限制可使用同一令牌请求密钥或许可证的次数。 客户可以在令牌中添加 `urn:microsoft:azure:mediaservices:maxuses` 类型的声明，其中值是令牌可用于获取许可证或密钥的次数。 对密钥传送服务使用同一令牌的所有后续请求都将返回未经授权的响应。 请参阅“如何在 [DRM 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601)中添加声明”。
  
 #### <a name="considerations"></a>注意事项
 
@@ -253,7 +252,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 如果收到 `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` 错误，请确保指定适当的流式处理策略。
 
-如果收到以 `_NOT_SPECIFIED_IN_URL` 结尾的错误，请确保在 URL 中指定加密格式。 示例为 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
+如果收到以 `_NOT_SPECIFIED_IN_URL` 结尾的错误，请确保在 URL 中指定加密格式。 例如 `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

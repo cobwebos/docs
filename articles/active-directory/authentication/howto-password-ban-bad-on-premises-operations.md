@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652624"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>启用本地 Azure Active Directory 密码保护
@@ -32,13 +31,13 @@ ms.locfileid: "80652624"
 
 ## <a name="enable-on-premises-password-protection"></a>启用本地密码保护
 
-1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory** > **安全** > **身份验证方法** > "**密码保护**"。
+1. 登录到[Azure 门户](https://portal.azure.com)并浏览到**Azure Active Directory**  >  **安全**  >  **身份验证方法**"  >  **密码保护**"。
 1. 将**Windows Server Active Directory 上的 "启用密码保护**" 选项设置为 *"是"*。
 
     如果此设置设置为 "*否*"，则所有部署 Azure AD 密码保护 DC 代理将进入静态模式，其中所有密码都按原样接受。 不执行任何验证活动，并且不生成审核事件。
 
 1. 建议最初将**模式**设置为 "*审核*"。 在你熟悉此功能以及对你组织中的用户产生的影响后，可以将**模式**切换为 "*强制*"。 有关详细信息，请参阅以下有关[操作模式](#modes-of-operation)的部分。
-1. 准备就绪后，选择“保存”。 
+1. 准备就绪后，选择“保存”。
 
     [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 

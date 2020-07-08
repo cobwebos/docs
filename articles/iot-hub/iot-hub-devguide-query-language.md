@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632933"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
@@ -181,7 +180,7 @@ SELECT * FROM devices.modules
 
 ### <a name="c-example"></a>C# 示例
 
-查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开  。
+查询功能由 [C# 服务 SDK](iot-hub-devguide-sdks.md) 在 RegistryManager 类中公开。
 
 下面是一个简单的查询示例：
 
@@ -197,13 +196,13 @@ while (query.HasMoreResults)
 }
 ```
 
-“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面  。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 GetNextAsTwinAsync 方法来检索多个页面。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="nodejs-example"></a>Node.js 示例
 
-查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开  。
+查询功能由[适用于 Node.js 的 Azure IoT 服务 SDK](iot-hub-devguide-sdks.md) 在 Registry 对象中公开。
 
 下面是一个简单的查询示例：
 
@@ -226,20 +225,20 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-“查询”对象实例化为页面大小（最大为 100）  。 然后通过多次调用 nextAsTwin 方法来检索多个页面  。
+“查询”对象实例化为页面大小（最大为 100）。 然后通过多次调用 nextAsTwin 方法来检索多个页面。
 
-查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项  。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
+查询对象公开多个“下一步”值，具体取决于该查询所需的反序列化选项。 例如，设备孪生或作业对象，或使用投影时的普通 JSON。
 
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[get 双子 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并具有更高的限制。 可以直接发出 REST API 或在[Azure IoT 中心服务 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)之一中使用等效的功能。
+> 关于设备孪生中的最新值，查询结果可能有几分钟的延迟。 如果按 ID 查询单个设备孪生，请使用[获取孪生 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始终返回最新值，并具有更高的节流限制。 可以直接发出 REST API 或使用 [Azure IoT 中心服务 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) 之一中的等效功能。
 
 目前，仅支持在基元类型（无对象）之间进行比较，例如，仅在这些属性具有基元值时才支持 `... WHERE properties.desired.config = properties.reported.config`。
 
 ## <a name="get-started-with-jobs-queries"></a>作业查询入门
 
-使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为**作业**的集合中该设备参与的作业的信息。
+使用[作业](iot-hub-devguide-jobs.md)可对一组设备执行操作。 每个设备孪生包含名为 **作业**的集合中该设备参与的作业的信息。
 
 ```json
 {
@@ -326,7 +325,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-**From <from_specification>** 子句只能假设三个值：**从**设备到查询设备孪生、**从**设备到查询模块孪生，或**从 devices.jobs**到查询作业的每设备详细信息。
+FROM <from_specification> 子句只能假定三个值：用于查询设备孪生的“FROM devices”、用于查询模块孪生的“FROM devices.modules”或用于根据设备详情查询作业“FROM devices.jobs”  。
 
 ## <a name="where-clause"></a>WHERE 子句
 
@@ -402,7 +401,7 @@ GROUP BY <group_by_element>
 * 求值结果为 JSON 类型的实例（例如布尔值、数字、字符串、数组或对象）。
 * 由设备 JSON 文档中的操作数据以及使用内置运算符和函数的常量定义。
 
-条件** 是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false”********。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”************。
+条件是求值为布尔值的表达式。 将任何不同于布尔值“true”的常数视为“false” 。 此规则包括“Null”、“undefined”、任何对象或数组实例、任何字符串和布尔值“false”  。
 
 表达式的语法为：
 
@@ -440,14 +439,14 @@ GROUP BY <group_by_element>
 | binary_operator | [运算符](#operators)部分列出的任意二进制运算符。 |
 | function_name| [函数](#functions)部分列出的任一函数。 |
 | decimal_literal |以十进制表示法表示的浮点数。 |
-| hexadecimal_literal |由字符串 "0x" 后跟十六进制数字字符串表示的数字。 |
+| hexadecimal_literal |以字符串“0x”后接十六进制数字符串表示的数字。 |
 | string_literal |字符串文本是以零个或多个 Unicode 字符序列或转义符序列表示的 Unicode 字符串。 字符串文本括在单引号或双引号中。 允许的转义符：`\'`、`\"`、`\\`、`\uXXXX`（由 4 个十六进制数字定义的 Unicode 字符）。 |
 
 ### <a name="operators"></a>运算符
 
 支持以下运算符：
 
-| 家庭 | 运算符 |
+| 系列 | 运算符 |
 | --- | --- |
 | 算术 |+, -, *, /, % |
 | 逻辑 |AND、OR、NOT |
@@ -481,7 +480,7 @@ GROUP BY <group_by_element>
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
 | IS_BOOL | 返回一个布尔值，指示指定表达式的类型是否为布尔表达式。 |
-| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此值。 基元类型包括字符串、布尔值、数字或`null`。 DateTime、对象类型和数组不受支持。 |
+| IS_DEFINED | 返回一个布尔，它指示属性是否已经分配了值。 仅当该值为基元类型时才支持此功能。 基元类型包括字符串、布尔值、数字或 `null`。 不支持日期/时间、对象类型和数组。 |
 | IS_NULL | 返回一个布尔值，指示指定表达式的类型是否为 null。 |
 | IS_NUMBER | 返回一个布尔值，指示指定表达式的类型是否为数字。 |
 | IS_OBJECT | 返回一个布尔值，指示指定表达式的类型是否为 JSON 对象。 |

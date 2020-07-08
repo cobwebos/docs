@@ -4,10 +4,9 @@ description: 了解如何查找函数应用的入站和出站 IP 地址，以及
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80656769"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
@@ -27,8 +26,8 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 选择“平台功能”。 
-4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。  
+3. 选择“平台功能”。****
+4. 选择“属性”，然后选择“虚拟 IP 地址”下面显示的入站 IP 地址。**** ****
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
@@ -54,7 +53,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>数据中心出站 IP 地址
 
-如果需要将函数应用使用的出站 IP 地址加入允许列表，另一种做法是将函数应用的数据中心（Azure 区域）加入允许列表。 可以[下载列出所有 Azure 数据中心的 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，查找应用于函数应用所在运行区域的 JSON 片段。
+如果需要将函数应用使用的出站 IP 地址加入允许列表，另一种做法是将函数应用的数据中心（Azure 区域）加入允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
 
 例如，应用于西欧区域的 JSON 片段可能如下所示：
 
@@ -86,7 +85,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 删除函数应用，然后在不同的资源组中重新创建它。
 - 删除资源组和区域组合中的最后一个函数应用，然后重新创建它。
-- 删除 TLS 绑定，如[证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间。
+- 删除 TLS 绑定（例如，在[证书续订](../app-service/configure-ssl-certificate.md#renew-certificate)期间）。
 
 当函数应用在[消耗计划](functions-scale.md#consumption-plan)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），入站 IP 地址也可能会更改。
 
@@ -115,9 +114,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 确定函数应用是否在应用服务环境中运行：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
-3. 单击“概述”  选项卡。
+3. 选择“概述”选项卡。****
 4. 应用服务计划层显示在“应用服务计划/定价层”下面。**** 应用服务环境定价层为“隔离”。****
  
 或者，可以使用 [Cloud Shell](../cloud-shell/quickstart.md)：

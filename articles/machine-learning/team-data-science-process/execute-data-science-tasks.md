@@ -11,15 +11,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e69a03cd142fdbcc5864ee38a4843e1c2e44a124
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79477147"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>执行数据科学任务：探索、建模和部署
 
-典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 用于将模型部署到生产环境中的选项可能包括：
+典型的数据科学任务包括数据探索、建模和部署。 本文介绍如何使用**交互式数据探索、分析和报告 (IDEAR)** 与**自动建模和报告 (AMAR)** 实用工具来完成多个常见数据科学任务，例如交互式数据探索、数据分析、报告和建模。 若要将模型部署到生产环境，可使用以下方法：
 
 - [Azure 机器学习](../index.yml)
 - [包含机器学习服务的 SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)

@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460443"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>有关 Azure NetApp 文件的 SMB 性能的常见问题解答
@@ -44,7 +43,7 @@ Windows 支持 SMB 多通道，因为 Windows 2012 可以实现最佳性能。  
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>我的 Azure 虚拟机是否支持 RSS？
 
-若要查看你的 Azure 虚拟机 Nic 是否支持 RSS，请`Get-SmbClientNetworkInterface`按如下所示运行命令`RSS Capable`并检查字段： 
+若要查看你的 Azure 虚拟机 Nic 是否支持 RSS，请按如下所示运行命令 `Get-SmbClientNetworkInterface` 并检查字段 `RSS Capable` ： 
 
 ![Azure 虚拟机的 RSS 支持](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
@@ -60,7 +59,7 @@ Windows 支持 SMB 多通道，因为 Windows 2012 可以实现最佳性能。  
 
 不能。 SMB 客户端将匹配 SMB 服务器返回的 NIC 计数。  每个存储卷只能从一个存储终结点进行访问。  这意味着，对于任何给定的 SMB 关系，只使用一个 NIC。  
 
-由于`Get-SmbClientNetworkInterace`下面的输出所示，虚拟机有两个网络接口--15 和12。  如下面的命令`Get-SmbMultichannelConnection`中所示，即使有两个支持 RSS 的 nic，也只会在连接到 SMB 共享时使用 interface 12;接口15未被使用。
+由于下面的输出所 `Get-SmbClientNetworkInterace` 示，虚拟机有两个网络接口--15 和12。  如下面的命令中所示，尽管有 `Get-SmbMultichannelConnection` 两个支持 RSS 的 nic，但与 SMB 共享的连接中仅使用了 interface 12; 接口15未在使用中。
 
 ![支持 RSS 的 NIC](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
@@ -74,9 +73,9 @@ Azure 中不支持 NIC 组合。 虽然 Azure 虚拟机支持多个网络接口�
 
 ### <a name="random-io"></a>随机 i/o  
 
-如果在客户端上禁用 SMB 多通道，则使用 FIO 和 40-GiB 工作集执行纯 8 KiB 读写测试。  SMB `1`共享已在每个测试之间分离，同时每个 RSS 网络接口设置为、`4``8`、、`16`、 `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`、、、、和。 测试表明的默认设置`4`足以满足 i/o 密集型工作负荷的要求;递增到`8`且`16`不起作用。 
+如果在客户端上禁用 SMB 多通道，则使用 FIO 和 40-GiB 工作集执行纯 8 KiB 读写测试。  SMB 共享已在每个测试之间分离，同时每个 RSS 网络接口设置为、、、、、、、、和 `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` 。 测试表明的默认设置 `4` 足以满足 i/o 密集型工作负荷的需求; 递增到 `8` 并且 `16` 不起作用。 
 
-此命令`netstat -na | findstr 445`证明，已建立了`1`其他连接， `4` `8`并递增了到到`16`和之间的连接。  根据 perfmon `Per Processor Network Activity Cycles`统计信息（不包括在本文中）的不同，在每次测试期间，为 SMB 充分利用了四个 CPU 内核。
+此命令 `netstat -na | findstr 445` 证明，已建立了其他连接，并递增了到到和之间的连接 `1` `4` `8` `16` 。  根据 perfmon `Per Processor Network Activity Cycles` 统计信息（不包括在本文中）的不同，在每次测试期间，为 SMB 充分利用了四个 CPU 内核。
 
 ![随机 i/o 测试](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 

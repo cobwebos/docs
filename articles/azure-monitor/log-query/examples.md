@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480277"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor 日志查询示例
@@ -31,7 +30,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>搜索拆收相关的事件
-在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录********__。
+在 Event 和 SecurityEvents 表中搜索提到了 unmashaling 的记录    。
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
@@ -113,7 +112,7 @@ union withsource=sourceTable *
 ```
 
 ### <a name="count-all-logs-collected-over-the-last-hour-by-type"></a>按类型统计过去一小时收集的所有日志
-以下示例搜索过去一小时内报告的任何内容，并按“类型”统计每个表的记录数。**** 结果将在条形图中显示。
+以下示例搜索过去一小时内报告的任何内容，并按“类型”统计每个表的记录数。  结果将在条形图中显示。
 
 ```Kusto
 search *
@@ -229,7 +228,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>按活动 ID 统计安全事件数
 
 
-此示例依赖于**活动**列的固定结构\<： ID\>-\<名称。\>
+此示例依赖于**活动**列的固定结构： \<ID\> - \<Name\> 。
 它将 **Activity** 值分析为两个新列，并统计每个 **activityID** 的出现次数。
 
 ```Kusto
@@ -270,7 +269,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>分析活动名称和 ID
-下面的两个示例依赖于**活动**列的固定结构\<： ID\>-\<名称。\> 第一个示例使用 **parse** 运算符将值分配给两个新列：**activityID** 和 **activityDesc**。
+下面的两个示例依赖于**活动**列的固定结构： \<ID\> - \<Name\> 。 第一个示例使用 **parse** 运算符将值分配给两个新列：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -379,7 +378,7 @@ suspicious_users_that_later_logged_in
 
 #### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
 
-用于按解决方案查看上个月（最后一个部分除外）的计费数据量的查询是：
+用于按解决方案查看上个月（不包括最后不完整的一天）的计费数据量的查询是：
 
 ```kusto
 Usage 
@@ -389,11 +388,11 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-请注意，子句`where IsBillable = true`筛选出了某些解决方案中没有引入费用的数据类型。  和`TimeGenerated`的子句仅用于确保 Azure 门户中的查询体验在默认的24小时内将会恢复。 使用 "使用情况" 数据类型`StartTime`时`EndTime` ，表示显示结果的时间桶。 
+请注意，子句 `where IsBillable = true` 从某些解决方案中筛选掉没有引入费用的数据类型。  和的子句 `TimeGenerated` 仅用于确保 Azure 门户中的查询体验在默认的24小时内将会恢复。 使用“使用情况”数据类型时，`StartTime` 和 `EndTime` 表示显示结果的时间存储桶。 
 
 #### <a name="data-volume-by-type"></a>按类型的数据量
 
-您可以进一步钻取，以查看数据类型的数据趋势：
+可以进一步钻取，按数据类型查看数据趋势：
 
 ```kusto
 Usage 
@@ -403,7 +402,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-或者查看上个月的按解决方案和类型显示的表，
+或者按解决方案和类型查看上个月的表，
 
 ```kusto
 Usage 

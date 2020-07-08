@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652946"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>将 RADIUS 身份验证与 Azure 多重身份验证服务器集成
@@ -25,7 +24,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 > [!IMPORTANT]
 > 本文仅适用于 Azure MFA 服务器的用户。 如果你使用基于云的 Azure MFA，请参阅如何[与 AZURE mfa 的 RADIUS 身份验证集成](howto-mfa-nps-extension.md)。
 >
-> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 
 > [!NOTE]
 > MFA 服务器仅支持 PAP（密码身份验证协议），充当 RADIUS 服务器时，还支持 MSCHAPv2（Microsoft 的质询握手身份验证协议）RADIUS 协议。  当 MFA 服务器充当其他 RADIUS 服务器的 RADIUS 代理时，可使用 EAP（可扩展身份验证协议）等协议，但前提是该 RADIUS 服务器支持该协议。
@@ -41,7 +40,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 1. 在 Azure 多重身份验证服务器内，单击左侧菜单中的“RADIUS 身份验证”图标。
 2. 选中“启用 RADIUS 身份验证”**** 复选框。
 3. 在客户端选项卡上，如果 Azure MFA RADIUS 服务需要侦听非标准端口上的 RADIUS 请求，则更改身份验证端口和计帐端口。
-4. 单击 **“添加”** 。
+4. 单击“添加” 。
 5. 输入将向 Azure 多重身份验证服务器进行身份验证的设备/服务器的 IP 地址、应用程序名称（可选）和共享机密。
 
    应用程序名称将出现在报告中，并可能会显示在短信或移动应用身份验证消息中。
@@ -50,7 +49,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
 6. 如果所有用户均已导入到该服务器并接受多重身份验证，请选中“需要多重身份验证用户匹配”框。**** 如果大量用户尚未导入到该服务器或者将免除进行双重验证，请使该框处于未选中状态。
 7. 如果想使用移动身份验证应用中的 OATH 密码作为备份方法，请选中“启用回退 OATH 令牌”**** 框。
-8. 单击“确定”。 
+8. 单击“确定”。
 
 重复执行步骤 4 到步骤 8，添加所需的其他 RADIUS 客户端。
 
@@ -66,7 +65,7 @@ RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请�
 
    Azure多重身份验证服务器和 RADIUS 服务器上的共享机密必须相同。 如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
 
-1. 单击“确定”。 
+1. 单击“确定”。
 1. 在其他 RADIUS 服务器中将 Azure MFA 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure MFA 服务器发送给它的访问请求。 使用 Azure 多重身份验证服务器中配置的共享机密。
 
 重复上述步骤，添加更多 RADIUS 服务器。 使用“上移”**** 和“下移”**** 按钮配置 Azure MFA 服务器调用这些 RADIUS 服务器时应使用的顺序。

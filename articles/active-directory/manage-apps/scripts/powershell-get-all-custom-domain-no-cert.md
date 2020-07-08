@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc46a34e1bb5bb85dcb771a9720a19d356e6f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79481205"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>获取已发布但未上传任何证书的所有 Azure AD 代理应用程序
+# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>获取已发布但未上传任何证书的所有 Azure AD 代理应用程序应用
 
 此 PowerShell 脚本示例列出了使用自定义域但尚未上传有效的 TLS/SSL 证书的所有 Azure Active Directory （Azure AD）应用程序代理应用。
 

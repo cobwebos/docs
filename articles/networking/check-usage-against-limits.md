@@ -13,10 +13,9 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79455556"
 ---
 # <a name="check-resource-usage-against-limits"></a>根据限制检查资源使用情况
@@ -31,9 +30,9 @@ ms.locfileid: "79455556"
 4. 选择要查看其使用情况信息的订阅的名称。
 5. 在“设置”  下选择“使用情况 + 配额”  。
 6. 可以选择以下选项：
-   - **资源类型**：可选择所有资源类型，也可选择要查看的特定资源类型。
-   - **提供程序**：可选择所有资源提供程序，也可选择“计算”  、“网络”  或“存储”  。
-   - **位置**：可以选择所有 Azure 位置，也可选择特定位置。
+   - **资源类型**：可以选择所有资源类型，也可以选择要查看的特定资源类型。
+   - **提供程序**：可以选择所有资源提供程序，也可以选择“计算”  、“网络”  或“存储”  。
+   - **位置**：可以选择所有 Azure 位置，也可以选择特定位置。
    - 可以选择显示所有资源，也可只显示至少部署了一个资源的资源。
 
      下图中的示例显示了在美国东部至少部署了一个资源的所有网络资源：
@@ -46,7 +45,7 @@ ms.locfileid: "79455556"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以登录到 Azure。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Login-AzAccount` 以登录到 Azure。
 
 使用 [Get-AzNetworkUsage](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkusage) 根据限制查看使用情况。 以下示例获取在“美国东部”位置至少部署了一个资源的资源的使用情况：
 

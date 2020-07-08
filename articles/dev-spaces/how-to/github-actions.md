@@ -7,10 +7,9 @@ description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
 ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80637946"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
@@ -25,7 +24,7 @@ Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请�
 * 在完整应用程序的上下文中的隔离开发空间内测试单个微服务。
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,7 +55,7 @@ az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
-保存 JSON 输出，因为后面的步骤中会用到它。
+保存 JSON 输出，因为在稍后的步骤中需要使用它。
 
 使用[az aks show][az-aks-show]显示 aks 群集的*ID* ：
 
@@ -109,14 +108,14 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 
 ## <a name="create-a-new-branch-for-code-changes"></a>为代码更改创建新分支
 
-导航到`BikeSharingApp/`并创建一个名为 "*自行车-映像*" 的新分支。
+导航到 `BikeSharingApp/` 并创建一个名为 "*自行车-映像*" 的新分支。
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-编辑[自行车/node.js][bikes-server-js]以删除行232和233：
+编辑[自行车/server.js][bikes-server-js]以删除232和233行：
 
 ```javascript
     // Hard code image url *FIX ME*
@@ -131,7 +130,7 @@ git checkout -b bike-images
     delete theBike._id;
 ```
 
-保存文件，然后使用`git add`和`git commit`暂存更改。
+保存文件，然后使用 `git add` 和 `git commit` 暂存更改。
 
 ```cmd
 git add Bikes/server.js 
@@ -140,7 +139,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 
 ## <a name="push-your-changes"></a>推送更改
 
-使用`git push`将新分支推送到分叉存储库：
+使用 `git push` 将新分支推送到分叉存储库：
 
 ```cmd
 git push origin bike-images

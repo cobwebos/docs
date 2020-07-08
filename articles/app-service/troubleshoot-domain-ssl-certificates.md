@@ -1,6 +1,6 @@
 ---
-title: 域和 TLS/SSL 证书疑难解答
-description: 查找在 Azure App Service 中配置域或 TLS/SSL 证书时可能会遇到的常见问题的解决方案。
+title: 排查域和 TLS/SSL 证书问题
+description: 查找在 Azure 应用服务中配置域或 TLS/SSL 证书时可能遇到的常见问题的解决方案。
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -9,34 +9,33 @@ ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80668023"
 ---
-# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure App Service 中的域和 TLS/SSL 证书问题
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 TLS/SSL 证书问题
 
-本文列出了在 Azure App Service 中为 web 应用配置域或 TLS/SSL 证书时可能会遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方案。
+本文列出了为 Azure 应用服务中的 Web 应用配置域或 TLS/SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方案。
 
-对于本文中的任何内容，如果需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 
+对于本文中的任何内容，如果需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>证书问题
 
-### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>无法将 TLS/SSL 证书绑定添加到应用 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>无法向应用添加 TLS/SSL 证书绑定 
 
 #### <a name="symptom"></a>症状
 
-添加 TLS 绑定时，会收到以下错误消息：
+添加 TLS 绑定时收到以下错误消息：
 
 “未能添加 SSL 绑定。 无法设置现有 VIP 的证书，因为另一个 VIP 已使用该证书。”
 
 #### <a name="cause"></a>原因
 
-如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 SSL。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新应用 TLS 绑定时，它会失败并出现此错误，因为另一个应用正在使用相同的 IP 地址。 
+如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 SSL。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新应用 TLS 绑定时，失败并显示此错误，因为同一个 IP 地址已用于另一应用。 
 
 #### <a name="solution"></a>解决方案 
 
@@ -51,7 +50,7 @@ ms.locfileid: "80668023"
 
 尝试删除证书时出现以下错误消息：
 
-"无法删除证书，因为它当前正在 TLS/SSL 绑定中使用。 必须先删除 TLS 绑定，然后才能删除证书。 "
+“无法删除证书，因为它当前正用于 TLS/SSL 绑定。 必须先删除 TLS 绑定，然后才能删除证书。”
 
 #### <a name="cause"></a>原因
 
@@ -89,8 +88,8 @@ ms.locfileid: "80668023"
     **解决方案**：如果证书标记为欺诈，并且在 24 小时后未得到解决，请执行以下步骤：
 
     1. 登录到 [Azure 门户](https://portal.azure.com)。
-    2. 转到“应用服务证书”，选择该证书。 
-    3. 选择  “证书配置” > “步骤 2：  验证” > “域验证”。  此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
+    2. 转到“应用服务证书”，选择该证书。
+    3. 选择“证书配置” > “步骤 2：验证” > “域验证”。 此步骤会向 Azure 证书提供者发送一份电子邮件通知，让他们解决问题。
 
 ## <a name="custom-domain-problems"></a>自定义域问题
 
@@ -165,7 +164,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 ## <a name="domain-problems"></a>域问题
 
-### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>你为错误的域购买了 TLS/SSL 证书
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>为错误的域购买了 TLS/SSL 证书
 
 #### <a name="symptom"></a>症状
 
@@ -190,14 +189,14 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 可以强制同步证书：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。 
-2. 选择“重新生成密钥并同步”，然后选择“同步”。   同步过程需要一段时间才能完成。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 选择“应用服务证书”，然后选择该证书。
+2. 选择“重新生成密钥并同步”，然后选择“同步”。 同步过程需要一段时间才能完成。 
 3. 同步完成后，会看到以下通知：“已成功使用最新的证书更新了所有资源。”
 
 ### <a name="domain-verification-is-not-working"></a>域验证无法进行 
 
 #### <a name="symptom"></a>症状 
-应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。 
+应用服务证书要求先经过域验证，然后该证书才可供使用。 选择“验证”时，验证过程失败。
 
 #### <a name="solution"></a>解决方案
 通过添加 TXT 记录来手动验证域：
@@ -205,13 +204,13 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 1.  转到托管域名的域名服务 (DNS) 提供商站点。
 2.  添加域的 TXT 记录，该记录使用 Azure 门户中显示的域令牌的值。 
 
-等待几分钟以运行 DNS 传播，然后选择“刷新”按钮以触发验证。  
+等待几分钟以运行 DNS 传播，然后选择“刷新”按钮以触发验证。 
 
 另一种做法是使用 HTML 网页方法来手动验证域。 此方法可让证书颁发机构确认为其颁发证书的域的域所有权。
 
 1.  创建名为 {域验证令牌}.html 的 HTML 文件。 此文件的内容应为域验证令牌的值。
 3.  将此文件上传到托管域的 Web 服务器的根目录。
-4.  选择“刷新”，检查证书状态。  验证可能需要几分钟才能完成。
+4.  选择“刷新”，检查证书状态。 验证可能需要几分钟才能完成。
 
 例如，如果为 azure.com 购买了域验证令牌为 1234abcd 的标准证书，则对 https://azure.com/1234abcd.html 发出的 Web 请求应返回 1234abcd。 
 
@@ -266,7 +265,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
     |TXT|@|`<app-name>.azurewebsites.net`|
     |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题
 
 **购买网站的自定义域后是否必须配置该域？**
 
@@ -276,11 +275,11 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 是的，可将该域指向 VM。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
-**我的域是由 GoDaddy 还是由 Azure DNS 托管？**
+**我的域是由 GoDaddy 还是 Azure DNS 托管？**
 
 应用服务域使用 GoDaddy 进行域注册，使用 Azure DNS 来托管域。 
 
-**我已启用自动续订，但仍通过电子邮件收到域的续订通知。我该怎么办？**
+**我已启用自动续订，但仍收到了有关域续订的电子邮件通知。**
 
 如果你已启用自动续订，则不需要执行任何操作。 电子邮件通知旨在告诉你该域即将过期，如果未启用自动续订，则需要手动续订。
 
@@ -288,7 +287,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 最初的域购买费用仅适用于域注册。 除了注册费用以外，Azure DNS 还会根据用量收费。 有关详细详细，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 
-**我之前从 Azure 门户购买了域，并希望从 GoDaddy 托管到 Azure DNS 托管。如何执行此操作？**
+**我的域是之前在 Azure 门户中购买的，现在想要从 GoDaddy 托管改为 Azure DNS 托管。该如何处理？**
 
 不一定非要迁移到 Azure DNS 托管。 如果你确实想要迁移到 Azure DNS，Azure 门户中的域管理体验会提供有关转移到 Azure DNS 的步骤信息。 如果域通过应用服务购买的，则从 GoDaddy 托管迁移到 Azure DNS 的过程相对较为顺畅。
 
@@ -306,7 +305,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **是否可以在订阅中的另一个 Azure 应用服务应用中使用域？**
 
-是的。 在 Azure 门户中访问 "自定义域和 TLS" 边栏选项卡时，将看到已购买的域。 可将应用配置为使用其中的任何域。
+是的。 在 Azure 门户中访问“自定义域和 TLS”边栏选项卡时，会看到已购买的域。 可将应用配置为使用其中的任何域。
 
 **是否可将域从一个订阅转移到另一个订阅？**
 
@@ -314,7 +313,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 
 **如果我当前没有 Azure 应用服务应用，该如何管理自定义域？**
 
-即使没有应用服务 Web 应用，也可以管理域。 域可用于 Azure 服务，例如虚拟机、存储等。如果要将域用于应用服务 Web 应用，则需要包含不在免费应用服务计划中的 Web 应用，以便将域绑定到你的 Web 应用。
+即使没有应用服务 Web 应用，也可以管理域。 域可用于虚拟机、存储等 Azure 服务。如果你打算将域用于应用服务 Web 应用，则需要添加一个未包含在免费应用服务计划中的 Web 应用才能将域绑定到 Web 应用。
 
 **是否可将使用自定义域的 Web 应用移到另一个订阅，或者将其从应用服务环境 v1 移到 v2？**
 

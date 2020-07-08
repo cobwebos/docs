@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79480736"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>为混合环境启用用于 VM 的 Azure Monitor
@@ -48,7 +47,7 @@ ms.locfileid: "79480736"
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:--|:--|
 | /? | 返回命令行选项的列表。 |
 | /S | 执行无需用户交互的无提示安装。 |
@@ -65,7 +64,7 @@ ms.locfileid: "79480736"
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -S | 执行无提示安装，无用户提示。 |
@@ -233,7 +232,7 @@ configuration VMInsights {
 
     **Windows**：查找名为 "Microsoft 依赖关系代理" 的服务。
 
-    **Linux**：查找正在运行的进程“microsoft-dependency-agent”
+    **Linux**：查找正在运行的进程 "microsoft 依赖关系代理"。
 
 2. 是否处于 [Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)？ 免费计划最多允许五台仅有的计算机。 任何后续的计算机都不会出现在映射上，即使之前的五台计算机不再发送数据，也是如此。
 

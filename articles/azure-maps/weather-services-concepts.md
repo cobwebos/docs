@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80333818"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
@@ -23,7 +22,7 @@ ms.locfileid: "80333818"
 
 某些天气服务 Api 允许用户指定是以公制单位还是以英制单位返回数据。 这些 Api 返回的响应包括 Unittype.pixel 度量和可用于单位转换的数值。 请参阅下表以解释这些值。
 
-|Unittype.pixel 度量|说明         |
+|Unittype.pixel 度量|描述         |
 |--------|--------------------|
 |0       |离                |
 |1       |×              |
@@ -46,15 +45,15 @@ ms.locfileid: "80333818"
 |18      |华氏温度          |
 |19      |开氏温度              |
 |20      |%             |
-|21      |FLOAT               |
-|22      |整数             |
+|21      |float               |
+|22      |integer             |
 
 
 ## <a name="weather-icons"></a>天气图标
 
-某些天气服务 Api `iconCode`在响应中返回。 `iconCode`是用于定义图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
+某些天气服务 Api `iconCode` 在响应中返回。 `iconCode`是用于定义图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
 
-| 图标编号 |图标| 日期 | 高枕无忧 | Text |
+| 图标编号 |图标| 天 | 高枕无忧 | Text |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | 是 |  否    | 主要 Sunny|
@@ -66,25 +65,25 @@ ms.locfileid: "80333818"
 | 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | 是 |  是   | Dreary (Overcast)|
 | 11           |![](./media/weather-services-concepts/fog-i.png)                       | 是 |  是   | 雾化|
 | 12           |![](./media/weather-services-concepts/showers-i.png)                   | 是 |  是   | 淋浴|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | 是 |  否    | 大多数云与淋浴|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | 是 |  否    | 部分 Sunny 与淋浴|
+| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | 是 |  No    | 大多数云与淋浴|
+| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | 是 |  No    | 部分 Sunny 与淋浴|
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | 是 |  是   | Thunderstorms|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | 是 |  否    | 大多数云与 Thunderstorms|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | 是 |  否    | 部分 Sunny 与 Thunderstorms|
+| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | 是 |  No    | 大多数云与 Thunderstorms|
+| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | 是 |  No    | 部分 Sunny 与 Thunderstorms|
 | 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  是   | 采用|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | 是 |  是   | Flurries|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | 是 |  否    | 大多数云与 Flurries|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 与 Flurries|
+| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | 是 |  No    | 大多数云与 Flurries|
+| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  No    | 部分 Sunny 与 Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | 是 |  是   | 雪花|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 是 |  否    | 大多数具有雪的云|
+| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | 是 |  No    | 大多数具有雪的云|
 | 24           |![](./media/weather-services-concepts/ice-i.png)                       | 是 |  是   | Ice |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | 是 |  是   | Sleet|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | 是 |  是   | 冻结 Rain|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | 是 |  是   | Rain 和雪|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | 是 |  是   | 热|
 | 31           |![](./media/weather-services-concepts/cold-i.png)                      | 是 |  是   | 冷|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | 是 |  是   | 风|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | Clear|
+| 32           |![](./media/weather-services-concepts/windy-i.png)                     | 是 |  是   | Windy|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | 清除|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | 否  |  是   | 大多数情况下清除|
 | 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | 否  |  是   | 部分云|
 | 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | 否  |  是   | 间歇性云|

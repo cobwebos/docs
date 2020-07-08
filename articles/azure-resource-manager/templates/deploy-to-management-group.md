@@ -4,10 +4,9 @@ description: 介绍如何通过 Azure 资源管理器模板在管理组范围部
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: 863d1330412fa238b820eb0f1f05351fc723de6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79460307"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
@@ -79,8 +78,8 @@ New-AzManagementGroupDeployment `
 
 对于管理组部署，在使用模板函数时有一些重要注意事项：
 
-* 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。****
-* **不**支持 [subscription()](template-functions-resource.md#subscription) 函数。
+* 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
+* 不支持 [subscription()](template-functions-resource.md#subscription) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
 * 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在管理组级别部署中使用的资源的资源 ID。 不要为资源组参数提供值。
 

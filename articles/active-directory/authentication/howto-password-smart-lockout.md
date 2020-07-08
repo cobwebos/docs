@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61ae942ed189dc4245a9a0b282daf4cad5323536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80652586"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory 智能锁定
@@ -56,7 +55,7 @@ ms.locfileid: "80652586"
 
 1. 打开“组策略管理”工具。
 2. 编辑包含组织帐户锁定策略的组策略，例如默认域策略****。
-3. 浏览到 "**计算机配置** > **策略** > " "**Windows 设置** > **Security Settings** > " "**帐户** > " "帐户**锁定策略**"。
+3. 浏览到 "**计算机配置**  >  **策略**" "  >  **Windows 设置**" "帐户" "帐户  >  **Security Settings**  >  **Account Policies**  >  **锁定策略**"。
 4. 验证 "**帐户锁定阈值**" 和 "**重置帐户锁定计数器**" 值。
 
 ![修改本地 Active Directory 帐户锁定策略](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -67,8 +66,8 @@ ms.locfileid: "80652586"
 
 要检查或修改组织的智能锁定值，请按以下步骤操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”  。 选择 "**安全** > **身份验证方法** > " "**密码保护**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索并选择“Azure Active Directory”。 选择 "**安全**  >  **身份验证方法**" "  >  **密码保护**"。
 1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”****。 默认值为 10。
 1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）****。 默认值为 60 秒（一分钟）。
 

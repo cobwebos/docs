@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: f29e651f5c8542722f0dc2c9878184ac0d2a6a1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79499972"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义人员模型
@@ -93,7 +92,7 @@ ms.locfileid: "79499972"
 
 可以删除在帐户中创建的任何人员模型。 但是，您不能删除您的默认用户模型。
 
-1. 从菜单中选择“删除”****。
+1. 从菜单中选择“删除”。
 
     ![删除人员模型](./media/customize-face-model/delete-person.png)
 

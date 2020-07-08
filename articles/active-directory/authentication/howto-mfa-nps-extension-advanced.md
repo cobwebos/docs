@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34d92af88106151e7efba679c53c5b5bd1c07dcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80653789"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>用于多重身份验证的 NPS 扩展的高级配置选项
@@ -42,7 +41,7 @@ ms.locfileid: "80653789"
 
 如果需要监视服务器的可用性（例如，负载均衡器是否在发送工作负荷前验证了哪个服务器正在运行），则并不希望验证请求阻止这些检查。 而是创建已知由服务帐户使用的 IP 地址列表，并为该列表禁用多重身份验证要求。
 
-若要配置 IP 允许列表，请参阅`HKLM\SOFTWARE\Microsoft\AzureMfa`并配置以下注册表值：
+若要配置 IP 允许列表，请参阅 `HKLM\SOFTWARE\Microsoft\AzureMfa` 并配置以下注册表值：
 
 | 名称 | 类型 | 默认值 | 说明 |
 | ---- | ---- | ------------- | ----------- |
@@ -51,7 +50,7 @@ ms.locfileid: "80653789"
 > [!NOTE]
 > 此注册表项不是由安装程序默认创建的，并且在重新启动该服务时，AuthZOptCh 日志中会出现错误。 可能会忽略日志中的此错误，但如果创建了此注册表项并在不需要时保留为空，则不会返回错误消息。
 
-当请求传入来自中存在的 IP 地址时`IP_WHITELIST`，将跳过双重验证。 IP 列表与 RADIUS 请求的*包含 ratnasipaddress*属性中提供的 ip 地址进行比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
+当请求传入来自中存在的 IP 地址时 `IP_WHITELIST` ，将跳过双重验证。 IP 列表与 RADIUS 请求的*包含 ratnasipaddress*属性中提供的 ip 地址进行比较。 如果收到的 RADIUS 请求不包含 ratNASIPAddress 属性，则将记录以下警告：“P_WHITE_LIST_WARNING::IP 允许列表被忽略，因为 RADIUS 请求中的 NasIpAddress 属性缺少源 IP。”
 
 ## <a name="next-steps"></a>后续步骤
 

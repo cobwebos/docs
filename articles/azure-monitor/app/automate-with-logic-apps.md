@@ -4,10 +4,9 @@ description: 了解如何通过将 Application Insights 连接器添加到逻辑
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79473160"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
@@ -26,7 +25,7 @@ ms.locfileid: "79473160"
 本教程介绍如何创建使用 Analytics autocluster 算法对 Web 应用程序的数据中的属性进行分组的逻辑应用。 此流自动通过电子邮件发送结果，这只是如何结合使用 Application Insights Analytics 和逻辑应用的一个示例。 
 
 ### <a name="step-1-create-a-logic-app"></a>步骤 1：创建逻辑应用
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 单击“创建资源”****，选择“Web + 移动”****，然后选择“逻辑应用”****。
 
     ![新建逻辑应用窗口](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -118,7 +117,7 @@ ms.locfileid: "79473160"
       ![“Office 365 电子邮件配置”屏幕](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>步骤 7：保存并测试逻辑应用
-* 单击 "**保存**" 以保存所做的更改。
+* 单击“保存”以保存更改。
 
 可以等待触发器运行逻辑应用，也可以通过选择“运行”**** 立即运行逻辑应用。
 
