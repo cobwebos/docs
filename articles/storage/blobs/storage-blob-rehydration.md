@@ -11,6 +11,7 @@ ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: cbaa1d34eb8fe44b1c367d8fa3f84687fe7568e2
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84433179"
