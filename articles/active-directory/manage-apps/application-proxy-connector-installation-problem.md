@@ -3,25 +3,24 @@ title: 安装应用程序代理程序连接器时出现问题 | Microsoft Docs
 description: 如何排除在安装应用程序代理程序连接器时可能遇到的问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764683"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
@@ -67,7 +66,7 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 **验证客户端证书：**
 
-验证当前客户端证书的指纹。 可在%ProgramData%\microsoft\Microsoft AAD Application Proxy Connector\Config\TrustSettings.xml 中找到证书存储区。
+验证当前客户端证书的指纹。 可在%ProgramData%\microsoft\Microsoft AAD 应用程序代理中找到证书存储 Connector\Config\TrustSettings.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,8 +92,8 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 按照以下步骤验证证书：
 
-1. 下载[PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools)
-2. 从包中提取[psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，并从提升的命令提示符运行**psexec-i-u "nt authority\network service" cmd.exe** 。
+1. 下载[PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
+2. 从包中提取[psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) ，然后在提升的命令提示符下运行**psexec-i-u "nt authority\network service" cmd.exe** 。
 3. 在新出现的命令提示符下运行**certmgr.msc**
 2. 在管理控制台中，展开 "个人" 容器，然后单击 "证书"
 3. 查找**connectorregistrationca.msappproxy.net**颁发的证书
@@ -120,7 +119,7 @@ Register-AppProxyConnector
 
 **若要验证凭据是否正确：**
 
-连接到 `https://login.microsoftonline.com` 并使用相同的凭据。 确保登录成功。 可以通过转到 " **Azure Active Directory**  - &gt; **用户和组** - &gt; " "**所有用户**" 来检查用户角色。 
+连接到 `https://login.microsoftonline.com` 并使用相同的凭据。 确保登录成功。 可以通过转到 " **Azure Active Directory**  - &gt; **用户和组**" "  - &gt; **所有用户**" 来检查用户角色。 
 
 选择用户帐户，然后在生成的菜单中选择 "目录角色"。 验证所选角色是否为 "应用程序管理员"。 如果按这些步骤操作无法访问任何页，则表示你不具有所需的角色。
 

@@ -2,21 +2,20 @@
 title: 如何为 Azure AD 应用配置密码单一登录 |Microsoft Docs
 description: 如何将密码单一登录（SSO）配置到 Microsoft 标识平台（Azure AD）中的 Azure AD 企业应用程序
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763493"
 ---
 # <a name="configure-password-single-sign-on"></a>配置密码单一登录
 
@@ -44,13 +43,13 @@ ms.locfileid: "77063520"
 
 1. 以 Azure AD 租户的云应用程序管理员或应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到**Azure Active Directory** > **企业应用程序**。 此时会显示 Azure AD 租户中应用程序的随机示例。 
+2. 导航到**Azure Active Directory**  >  **企业应用程序**。 此时会显示 Azure AD 租户中应用程序的随机示例。 
 
 3. 在“应用程序类型”菜单中选择“所有应用程序”，然后选择“应用”************。
 
 4. 在“搜索”框中输入应用程序的名称，然后从结果中选择该应用程序。
 
-5. 在“管理”部分选择“单一登录”。******** 
+5. 在“管理”部分选择“单一登录”。  
 
 6. 选择 "**基于密码**"。
 
@@ -58,7 +57,7 @@ ms.locfileid: "77063520"
 
    ![基于密码的单一登录](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
 
-8. 选择“保存”。  Azure AD 尝试分析用户名输入和密码输入的登录页。 如果尝试成功，则已完成。 
+8. 选择“保存”。 Azure AD 尝试分析用户名输入和密码输入的登录页。 如果尝试成功，则已完成。 
  
 > [!NOTE]
 > 下一步是[将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时代表用户使用。 选择 "**用户和组**"，选中用户或组所在行的复选框，然后单击 "**更新凭据**"。 然后，输入代表用户或组使用的用户名和密码。 否则，系统将在启动时提示用户输入凭据。
@@ -68,7 +67,7 @@ ms.locfileid: "77063520"
 
 如果 Azure AD 的分析尝试失败，你可以手动配置登录。
 
-1. 在 " ** \<应用程序名称> 配置**" 下，选择 "**配置\<应用程序名称"> "密码单一登录设置**" 以显示 "**配置登录**" 页。 
+1. 在 " ** \<application name> 配置**" 下，选择 "**配置 \<application name> 密码" "单一登录设置**" 以显示 "**配置登录**" 页。 
 
 2. 选择 **"手动检测登录字段"**。 将显示说明手动检测登录字段的其他说明。
 
@@ -81,11 +80,11 @@ ms.locfileid: "77063520"
 5. 在包含所输入 URL 的选项卡中，完成登录过程。 填写 "用户名" 和 "密码" 字段，然后尝试登录。 （不需要提供正确的密码。）
 
    会出现一个提示，要求您保存捕获的登录字段。
-6. 选择“确定”  。 浏览器扩展更新 "捕获状态" 页，其中包含**为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
+6. 选择“确定”。 浏览器扩展更新 "捕获状态" 页，其中包含**为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
 
 7. 在 Azure AD**配置登录**"页上，选择 **" 确定 "，我可以成功登录到应用**。
 
-8. 选择“确定”  。
+8. 选择“确定”。
 
 捕获登录页后，可以分配用户和组，并且可以设置凭据策略，就像常规[密码 SSO 应用程序](what-is-single-sign-on.md)一样。
 
@@ -95,4 +94,4 @@ ms.locfileid: "77063520"
 ## <a name="next-steps"></a>后续步骤
 
 - [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)
-- [配置自动用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+- [配置用户帐户自动预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -3,24 +3,23 @@ title: 为非库应用配置密码 SSO 的问题
 description: 为不在 Azure AD 应用程序库中的自定义应用配置密码单一登录（SSO）时出现的常见问题。
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274136"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763442"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>为非库应用程序配置密码单一登录时遇到的问题
 
@@ -63,7 +62,7 @@ ms.locfileid: "74274136"
 
 9. 输入 "**登录 url**"，它是用户在其中输入用户名和密码以登录的页面的 url。 *确保登录字段在提供的 URL 的页面上可见*。
 
-10. 选择“保存”。 
+10. 选择“保存”。
 
     对于 "用户名" 和 "密码" 输入框，会自动擦除页面。 你现在可以使用 Azure AD 通过访问面板浏览器扩展安全地将密码传输到该应用程序。
 
@@ -96,17 +95,17 @@ ms.locfileid: "74274136"
 
 9. 输入 "**登录 URL**"，用户可在其中输入用户名和密码进行登录。 *确保登录字段在提供的 URL 的页面上可见*。
 
-10. 选择 **" * &lt;配置&gt; appname*密码单一登录设置"**。
+10. 选择 "**配置* &lt; &gt; Appname*密码单一登录设置"**。
 
 11. 选择 **"手动检测登录字段"**。
 
-14. 选择 **"确定"**。
+14. 选择“确定”。
 
-15. 选择“保存”。 
+15. 选择“保存”。
 
 16. 按照说明使用访问面板。
 
-## <a name="troubleshoot-problems"></a>疑难解答问题
+## <a name="troubleshoot-problems"></a>排查问题
 
 ### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>我收到 "找不到任何登录字段的 URL" 错误
 
@@ -140,15 +139,15 @@ ms.locfileid: "74274136"
 
 - 再次尝试手动捕获进程。 请确保红色标记在正确的字段上。
 
-- 如果手动捕获进程似乎停止响应或登录页面未响应，请再次尝试手动捕获进程。 但这一次，在完成此过程后，按 F12 键即可打开浏览器的开发人员控制台。 选择 "**控制台**" 选项卡。键入**window。 location = "*&lt;配置应用&gt;时指定的登录 URL*"**，然后按 enter。 这会强制执行页面重定向，以结束捕获过程并存储已捕获的字段。
+- 如果手动捕获进程似乎停止响应或登录页面未响应，请再次尝试手动捕获进程。 但这一次，在完成此过程后，按 F12 键即可打开浏览器的开发人员控制台。 选择 "**控制台**" 选项卡。键入**window。 location = "* &lt; 配置应用 &gt; 时指定的登录 URL*"**，然后按 enter。 这会强制执行页面重定向，以结束捕获过程并存储已捕获的字段。
 
-### <a name="contact-support"></a>联系支持人员
+### <a name="contact-support"></a>联系支持
 
 如果仍有问题，请使用 Microsoft 支持部门打开案例。 描述您尝试的操作。 请包括 "[查看门户通知详细信息](#view-portal-notification-details)" 和 "向[支持工程师发送通知详细](#send-notification-details-to-a-support-engineer-to-get-help)信息" 中所述的详细信息（如果适用）。
 
 ## <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
-请执行下列步骤：
+请执行这些步骤：
 
 1. 在支持的浏览器中打开[访问面板](https://myapps.microsoft.com)。 以*用户*身份登录到 Azure AD。
 
@@ -219,7 +218,7 @@ ms.locfileid: "74274136"
 
 - **UPN**：运行操作的用户。
 
-    示例： *tperkins\@f128.info*
+    示例： *tperkins \@ f128.info*
 
 - **租户 ID**：运行操作的用户所属的租户的唯一 ID。
 
@@ -245,7 +244,7 @@ ms.locfileid: "74274136"
 
 - **详细信息**：操作导致的操作的详细说明。
 
-    示例：*内部 url "<https://bing.com/>" 无效，因为它已在使用中。*
+    示例：*内部 url " <https://bing.com/> " 无效，因为它已在使用中。*
 
 - **复制错误**：使你能够选择 "**复制错误**" 文本框右侧的 "**复制" 图标**，复制通知详细信息以帮助提供支持。
 

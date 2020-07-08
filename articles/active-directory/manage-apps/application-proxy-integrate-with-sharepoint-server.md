@@ -3,25 +3,24 @@ title: Azure AD 应用程序代理启用对 SharePoint 的远程访问
 description: 概要介绍如何将本地 SharePoint 服务器与 Azure AD 应用程序代理相集成。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/02/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983470994c103cb25d0d2aff96ae8544080e6288
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481290"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764530"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理启用对 SharePoint 的远程访问
 
@@ -56,7 +55,7 @@ ms.locfileid: "79481290"
 在此步骤中，会在使用应用程序代理的 Azure Active Directory 租户中创建应用程序。 设置外部 URL，并指定内部 URL，这两个 URL 将在以后的 SharePoint 中使用。
 
 1. 按照以下设置所述创建应用。 有关分步说明，请参阅[使用 Azure AD 应用程序代理发布应用程序](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)。
-   * **内部 url**：将在 sharepoint 中稍后设置的 SHAREPOINT 内部 url，如`https://sharepoint`。
+   * **内部 url**：将在 sharepoint 中稍后设置的 SHAREPOINT 内部 url，如 `https://sharepoint` 。
    * **预身份验证**： Azure Active Directory
    * **转换标头中的 url**：否
    * **转换应用程序主体中的 url**：否
@@ -65,14 +64,14 @@ ms.locfileid: "79481290"
 
 1. 发布应用后，请按照以下步骤配置单一登录设置：
 
-   1. 在门户中的应用程序页上，选择“单一登录”****。
-   1. 对于**单一登录模式**，请选择 "**集成 Windows 身份验证**"。
-   1. 将 "**内部应用程序 SPN** " 设置为之前设置的值。 对于本示例，值为`HTTP/sharepoint`。
+   1. 在门户中的应用程序页上，选择“单一登录”。
+   1. 对于“单一登录模式”，选择“集成 Windows 身份验证”。
+   1. 将 "**内部应用程序 SPN** " 设置为之前设置的值。 对于本示例，值为 `HTTP/sharepoint` 。
    1. 在 "**委派的登录标识**" 下，为 Active Directory 林配置选择最适合的选项。 例如，如果林中有单个 Active Directory 域，请选择 **"本地 SAM 帐户名称"** （如以下屏幕截图所示）。 但如果用户与 SharePoint 和应用程序代理连接器服务器不在同一个域中，请选择 **"本地用户主体名称**" （屏幕截图中未显示）。
 
    ![为 SSO 配置集成 Windows 身份验证](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
-1. 要完成应用程序设置，请转到“用户和组”部分，分配要访问此应用程序的用户****。 
+1. 要完成应用程序设置，请转到“用户和组”部分，分配要访问此应用程序的用户。 
 
 ## <a name="step-2-configure-the-sharepoint-web-application"></a>步骤2：配置 SharePoint web 应用程序
 
@@ -145,7 +144,7 @@ ms.locfileid: "79481290"
 
 ### <a name="make-sure-that-an-https-certificate-is-configured-for-the-iis-site-of-the-extranet-zone"></a>确保为 Extranet 区域的 IIS 站点配置了 HTTPS 证书
 
-由于内部 URL 使用 HTTPS 协议（`https://SharePoint/`），因此必须在 INTERNET INFORMATION SERVICES （IIS）站点上设置证书。
+由于内部 URL 使用 HTTPS 协议（ `https://SharePoint/` ），因此必须在 Internet Information Services （IIS）站点上设置证书。
 
 1. 打开 Windows PowerShell 控制台。
 1. 运行以下脚本来生成自签名证书，并将其添加到计算机的 "我的存储" 中：
@@ -171,12 +170,12 @@ ms.locfileid: "79481290"
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>为 SharePoint 服务帐户设置 SPN
 
-在本文中，内部 URL 为`https://sharepoint`，因此服务主体名称（SPN）为。 `HTTP/sharepoint` 您必须将这些值替换为与您的环境相对应的值。
-若要为`HTTP/sharepoint` SharePoint 应用程序池帐户`Contoso\spapppool`注册 SPN，请在命令提示符下以域管理员身份运行以下命令：
+在本文中，内部 URL 为 `https://sharepoint` ，因此服务主体名称（SPN）为 `HTTP/sharepoint` 。 您必须将这些值替换为与您的环境相对应的值。
+若要为 `HTTP/sharepoint` SharePoint 应用程序池帐户注册 SPN `Contoso\spapppool` ，请在命令提示符下以域管理员身份运行以下命令：
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-`Setspn`命令会在添加 SPN 之前搜索该 SPN。 如果 SPN 已存在，则会出现 "**重复 Spn 值**" 错误。 在这种情况下，如果未在正确的应用程序池帐户下设置现有 SPN，请考虑删除该 SPN。 可以通过使用-L 选项运行`Setspn`命令来验证 SPN 是否已成功添加。 若要详细了解该命令，请参阅 [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))。
+`Setspn`命令会在添加 SPN 之前搜索该 SPN。 如果 SPN 已存在，则会出现 "**重复 Spn 值**" 错误。 在这种情况下，如果未在正确的应用程序池帐户下设置现有 SPN，请考虑删除该 SPN。 可以通过 `Setspn` 使用-L 选项运行命令来验证 SPN 是否已成功添加。 若要详细了解该命令，请参阅 [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))。
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>确保连接器受信任，可委派给添加到 SharePoint 应用程序池帐户的 SPN
 
@@ -186,8 +185,8 @@ ms.locfileid: "79481290"
 
 1. 以域管理员身份登录到域控制器，然后打开 Active Directory 用户和计算机 "。
 1. 查找运行 Azure AD 代理连接器的计算机。 在此示例中，它是 SharePoint 服务器本身。
-1. 双击计算机，然后选择 "**委派**" 选项卡。
-1. 请确保 "委派选项" 设置为 **"仅信任此计算机来委派指定的服务"**。 然后，选择“使用任意身份验证协议”。****
+1. 双击此计算机，然后选择“委派”选项卡。
+1. 请确保 "委派选项" 设置为 **"仅信任此计算机来委派指定的服务"**。 然后，选择 "**使用任何身份验证协议**"。
 1. 选择 "**添加**" 按钮，选择 "**用户或计算机**"，然后找到 SharePoint 应用程序池帐户。 例如：`Contoso\spapppool`。
 1. 在 SPN 列表中，选择此前为服务帐户创建的 SPN。
 1. 选择 **"确定"** ，然后再次选择 **"确定"** 以保存所做的更改。
@@ -198,7 +197,7 @@ ms.locfileid: "79481290"
 
 ## <a name="troubleshoot-sign-in-errors"></a>排查登录错误
 
-如果登录站点不起作用，则可以从运行连接器的计算机获取有关该问题的详细信息，打开事件查看器，转到 "**应用程序和服务日志** > " "**Microsoft** > **AadApplicationProxy** > **连接器**"，然后检查**管理**日志。
+如果登录站点不起作用，则可以从运行连接器的计算机获取有关该问题的详细信息，打开事件查看器，转到 "**应用程序和服务日志**" "  >  **Microsoft**  >  **AadApplicationProxy**  >  **连接器**"，然后检查**管理**日志。
 
 ## <a name="next-steps"></a>后续步骤
 

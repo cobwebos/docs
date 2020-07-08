@@ -1,15 +1,14 @@
 ---
-title: Azure 应用程序 Insights .Net 代理 API 参考
+title: Azure Application Insights .Net 代理 API 参考
 description: Application Insights 代理 API 参考。 无需重新部署网站即可监视网站性能。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733669"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights 代理 API 参考
@@ -32,7 +31,7 @@ ms.locfileid: "81733669"
 重启 IIS 以使这些更改生效。
 
 检测引擎可以补充 .NET SDK 收集的数据。
-它收集描述托管进程执行的事件和消息。 这些事件和消息包括依赖项结果代码、HTTP 谓词和[SQL 命令文本](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)。
+它收集描述托管进程执行的事件和消息。 这些事件和消息包括依赖项结果代码、HTTP 谓词和 [SQL 命令文本](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)。
 
 在以下情况下启用检测引擎：
 - 已使用 Enable cmdlet 启用了监视，但未启用检测引擎。
@@ -44,13 +43,13 @@ ms.locfileid: "81733669"
 PS C:\> Enable-InstrumentationEngine
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
 **可选。** 使用此开关可在无外设安装中接受许可条款和隐私声明。
 
 #### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关输出详细的日志。
+**通用参数。** 使用此开关可输出详细日志。
 
 ### <a name="output"></a>输出
 
@@ -83,7 +82,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>使用检测密钥映射的示例
-在此示例中：
+在本示例中：
 - `MachineFilter` 使用 `'.*'` 通配符匹配当前计算机。
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用分配唯一的检测密钥。
@@ -101,13 +100,13 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ```
 
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 #### <a name="-instrumentationkey"></a>-InstrumentationKey
-**必填。** 使用此参数提供单个检测密钥以供目标计算机上的所有应用使用。
+**必需。** 使用此参数提供单个检测密钥以供目标计算机上的所有应用使用。
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**必填。** 使用此参数可提供多个检测密钥以及每个应用使用的检测密钥映射。
+**必需。** 使用此参数可提供多个检测密钥以及每个应用使用的检测密钥映射。
 通过设置 `MachineFilter`，可以为多台计算机创建单个安装脚本。
 
 > [!IMPORTANT]
@@ -192,10 +191,10 @@ Successfully enabled Application Insights Status Monitor
 PS C:\> Disable-InstrumentationEngine
 ```
 
-### <a name="parameters"></a>参数 
+### <a name="parameters"></a>parameters 
 
 #### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关输出详细的日志。
+**通用参数。** 使用此开关可输出详细日志。
 
 ### <a name="output"></a>输出
 
@@ -221,7 +220,7 @@ Configuring registry for instrumentation engine...
 PS C:\> Disable-ApplicationInsightsMonitoring
 ```
 
-### <a name="parameters"></a>参数 
+### <a name="parameters"></a>parameters 
 
 #### <a name="-verbose"></a>-Verbose
 **通用参数。** 使用此开关可显示详细日志。
@@ -263,7 +262,7 @@ Successfully disabled Application Insights Status Monitor
 PS C:\> Get-ApplicationInsightsMonitoringConfig
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 不需要参数。
 
@@ -327,13 +326,13 @@ AppAlreadyInstrumented : true
 
 在此示例中，
 - **计算机标识符**是一个匿名 ID，用于唯一标识服务器。 如果你创建支持请求，我们需要该 ID 来查找你的服务器的日志。
-- “默认网站”在 IIS 中处于“已停止”状态****
+- “默认网站”在 IIS 中处于“已停止”状态
 - **DemoWebApp111** 已在 IIS 中启动，但尚未收到任何请求。 此报告显示没有正在运行的进程（ProcessId：找不到）。
 - **DemoWebApp222** 正在运行且正受监视（已检测：是）。 根据用户配置，此站点的检测密钥 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 匹配。
 - **DemoWebApp333** 已使用 Application Insights SDK 进行手动检测。 状态监视器检测到 SDK，不会监视此站点。
 
 
-#### <a name="example-powershell-module-information"></a>示例： PowerShell 模块信息
+#### <a name="example-powershell-module-information"></a>示例：PowerShell 模块信息
 
 运行 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 命令可显示有关当前模块的信息：
 
@@ -426,7 +425,7 @@ listdlls64.exe -accepteula w3wp
 0x000000000ad60000  0x108000  C:\Windows\TEMP\2.4.0.0.Microsoft.ApplicationInsights.Extensions.Intercept_x64.dll
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 #### <a name="no-parameters"></a>（不带参数）
 
@@ -436,12 +435,12 @@ listdlls64.exe -accepteula w3wp
 
 
 #### <a name="-powershellmodule"></a>-PowerShellModule
-**可选**。 使用此开关报告监视所需的 DLL 的版本号和路径。
+可选。 使用此开关报告监视所需的 DLL 的版本号和路径。
 如果需要标识任何 DLL 的版本（包括 Application Insights SDK），请使用此选项。
 
 #### <a name="-inspectprocess"></a>-InspectProcess
 
-**可选**。 使用此开关报告 IIS 是否正在运行。
+可选。 使用此开关报告 IIS 是否正在运行。
 它还将下载外部工具，以确定是否将必要的 DLL 加载到 IIS 运行时。
 
 
@@ -453,7 +452,7 @@ listdlls64.exe -accepteula w3wp
 
 #### <a name="-force"></a>-Force
 
-**可选**。 仅与 InspectProcess 一起使用。 使用此开关可跳过在下载其他工具之前出现的用户提示。
+可选。 仅与 InspectProcess 一起使用。 使用此开关可跳过在下载其他工具之前出现的用户提示。
 
 
 ## <a name="set-applicationinsightsmonitoringconfig"></a>Set-ApplicationInsightsMonitoringConfig
@@ -475,7 +474,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>使用检测密钥映射的示例
-在此示例中：
+在本示例中：
 - `MachineFilter` 使用 `'.*'` 通配符匹配当前计算机。
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用分配唯一的检测密钥。
@@ -491,13 +490,13 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
           @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 #### <a name="-instrumentationkey"></a>-InstrumentationKey
-**必填。** 使用此参数提供单个检测密钥以供目标计算机上的所有应用使用。
+**必需。** 使用此参数提供单个检测密钥以供目标计算机上的所有应用使用。
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**必填。** 使用此参数可提供多个检测密钥以及每个应用使用的检测密钥映射。
+**必需。** 使用此参数可提供多个检测密钥以及每个应用使用的检测密钥映射。
 通过设置 `MachineFilter`，可以为多台计算机创建单个安装脚本。
 
 > [!IMPORTANT]
@@ -582,7 +581,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 4. 默认情况下，如果未指定任何开关，将收集这两种事件类型。
 
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
 #### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
 **可选。** 使用此参数可设置此脚本应收集事件的时长。 默认值为 5 分钟。
@@ -598,7 +597,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 **可选。** 使用此开关可从状态监视器和 Redfield 运行时收集事件。
 
 #### <a name="-verbose"></a>-Verbose
-**通用参数。** 使用此开关输出详细的日志。
+**通用参数。** 使用此开关可输出详细日志。
 
 
 
@@ -637,13 +636,13 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>后续步骤
 
   查看遥测：
- - [探索指标](../../azure-monitor/app/metrics-explorer.md)来监视性能和使用情况。
+ - [浏览指标](../../azure-monitor/app/metrics-explorer.md)，以便监视性能和使用情况。
 - [搜索事件和日志](../../azure-monitor/app/diagnostic-search.md)以诊断问题。
 - 使用[分析](../../azure-monitor/app/analytics.md)，以便进行更高级的查询。
 - [创建仪表板](../../azure-monitor/app/overview-dashboard.md)。
  
  添加更多遥测：
- - [创建 Web 测试](monitor-web-app-availability.md)，确保站点保持活动状态。
+ - [创建 Web 测试](monitor-web-app-availability.md)，以确保站点保持活动状态。
 - [添加 Web 客户端遥测](../../azure-monitor/app/javascript.md)，以查看网页代码中的异常并启用跟踪调用。
 - [将 Application Insights SDK 添加到代码](../../azure-monitor/app/asp-net.md)，以便插入跟踪和日志调用。
  

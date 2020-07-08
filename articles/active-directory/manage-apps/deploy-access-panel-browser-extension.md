@@ -3,8 +3,8 @@ title: 使用 GPO 为 IE 部署 Azure 访问面板扩展 | Microsoft 文档
 description: 如何使用组策略为我的应用门户部署 Internet Explorer 加载项。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67807683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763425"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 
@@ -44,7 +43,7 @@ ms.locfileid: "67807683"
 
     ![打开文件和存储服务](./media/deploy-access-panel-browser-extension/files-services.png)
 
-1. 请参阅 "**共享**" 选项卡。然后单击 "**任务** > " "**新建共享 ...** "
+1. 请参阅 "**共享**" 选项卡。然后单击 "**任务**" "  >  **新建共享 ...** "
 
     ![屏幕截图显示从 "任务" 屏幕中查找新共享的位置](./media/deploy-access-panel-browser-extension/shares.png)
 
@@ -59,14 +58,14 @@ ms.locfileid: "67807683"
 ## <a name="step-2-create-the-group-policy-object"></a>步骤2：创建组策略对象
 
 1. 登录到承载 Active Directory 域服务（AD DS）安装的服务器。
-1. 在服务器管理器中，请参阅 "**工具** > "**组策略管理**"。
+1. 在服务器管理器中，请参阅 "**工具**"  >  **组策略管理**"。
 
     ![转到“工具”>“组策略管理”](./media/deploy-access-panel-browser-extension/tools-gpm.png)
 
 1. 在“组策略管理”窗口的左窗格中，查看组织单位 (OU) 层次结构并确定想要应用组策略的范围。**** 例如，可以选择一个小型 OU 并将其部署到少量用户以进行测试，或者选择一个顶级 OU 并将其部署到整个组织。
 
    > [!NOTE]
-   > 如果你想要创建或编辑你的组织单位（ou），请切换回服务器管理器，然后转到 "**工具** > "**Active Directory 用户和计算机**"。
+   > 如果你想要创建或编辑你的组织单位（ou），请切换回服务器管理器，然后转到 "**工具**"  >  **Active Directory 用户和计算机**"。
 
 1. 选择 OU 后，请右键单击它，并选择“在这个域中创建 GPO 并在此处链接它...”****
 
@@ -91,7 +90,7 @@ ms.locfileid: "67807683"
 
     ![从共享文件夹中选择安装包](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。********  。
+1. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。******** 。
 
 扩展现已部署到选定的 OU。 [了解有关组策略软件安装的详细信息。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 

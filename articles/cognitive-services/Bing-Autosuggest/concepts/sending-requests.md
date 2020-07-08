@@ -10,12 +10,11 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072848"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921150"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>将请求发送到必应自动建议 API。
 
@@ -68,15 +67,21 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
 CORS 代理安装起来很简单，可便于[教程应用](../tutorials/autosuggest.md)访问可选的客户端标头。 首先，如果尚未安装 Node.js，请先[安装](https://nodejs.org/en/download/)。 然后，在命令提示符处输入以下命令。
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 接下来，在 HTML 文件中将必应自动建议 API 终结点更改为：
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```http
+http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```
 
 最后，运行下面的命令，启动 CORS 代理：
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 使用教程应用期间，不要关闭命令窗口；关闭窗口会导致代理停止运行。 在搜索结果下的可展开 HTTP 响应头部分中，现在可以看到 `X-MSEdge-ClientID` 响应头（以及其他响应头），并验证此响应头是否对所有请求都相同。
 

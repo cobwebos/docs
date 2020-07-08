@@ -11,13 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/01/2019
-ms.openlocfilehash: 4dd82eea0a80ef81a0f972d1964a62e6c17a80c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/12/2020
+ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982690"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Dynamics AX 中复制数据
 
@@ -143,6 +142,7 @@ Dynamics AX 链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **DynamicsAXSource**。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"?$select=Name,Description&$top=5"`。<br/><br/>**注意**：连接器会从以下组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
+| httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）  。 该值是获取响应而不是读取响应数据的超时。 如果未指定，则默认值为**00:30:00** （30分钟）。 | 否 |
 
 **示例**
 
@@ -179,7 +179,7 @@ Dynamics AX 链接的服务支持以下属性：
 
 ## <a name="lookup-activity-properties"></a>“查找”活动属性
 
-若要详细了解这些属性，请查看[“查找”活动](control-flow-lookup-activity.md)。
+若要了解有关属性的详细信息，请查看 [Lookup 活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

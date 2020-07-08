@@ -2,22 +2,21 @@
 title: 管理对应用程序的同意并评估同意请求-Azure AD
 description: 了解如何在禁用或限制用户同意的情况下管理同意请求，以及如何评估对应用程序的租户范围内管理员许可的请求。
 services: active-directory
-author: psignoret
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5a725eefd678720f2d9b8763277b02452819155b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763187"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理对应用程序的同意并评估同意请求
 
@@ -112,9 +111,9 @@ Microsoft[建议](https://docs.microsoft.com/azure/security/fundamentals/steps-s
 
 [保护标识基础结构的五个步骤](https://docs.microsoft.com/azure/security/fundamentals/steps-secure-identity#before-you-begin-protect-privileged-accounts-with-mfa)
 
-[配置管理员许可工作流](configure-admin-consent-workflow.md)
+[配置管理员同意工作流](configure-admin-consent-workflow.md)
 
-[配置最终用户同意应用程序的方式](configure-user-consent.md)
+[配置最终用户如何对应用程序表示同意](configure-user-consent.md)
 
 [Microsoft 标识平台中的权限和许可](../develop/active-directory-v2-scopes.md)
 

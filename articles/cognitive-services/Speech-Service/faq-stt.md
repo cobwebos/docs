@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921023"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -71,7 +70,7 @@ ms.locfileid: "85561563"
 
 **问：是否会记录我的请求？**
 
-**答**：在创建部署时你可以选择关闭跟踪。 此时，不会记录任何音频或听录。 否则，通常会将请求以安全存储方式记录在 Azure 中。
+**答**：默认情况下不会记录请求（音频和脚本）。 如果需要，你可以在[创建自定义终结点](how-to-custom-speech-deploy-model.md)时选择 "从此*终结点中记录内容*" 选项以启用跟踪。 然后，请求将记录在 Azure 的安全存储中。
 
 **问：我的请求是否受到限制？**
 
@@ -118,6 +117,10 @@ ms.locfileid: "85561563"
   - 从显示的服务中，选取需要增加其并发性的语音服务；
   - 显示此服务的 `Properties`；
   - 复制完整的 `Resource ID`。
+  
+**问：增加并发限制会增加成本吗？**
+
+**答**：不能，成本取决于使用情况。 增加并发性不会导致更高的成本。 有关成本的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 
   
 >[!NOTE]
 >[容器](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)不需要增加并发限制，因为容器只受承载它们的硬件的 cpu 的约束。

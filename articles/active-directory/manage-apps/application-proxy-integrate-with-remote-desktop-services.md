@@ -3,25 +3,24 @@ title: 使用 Azure AD 应用代理发布远程桌面 | Microsoft Docs
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764513"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理发布远程桌面
 
@@ -75,7 +74,7 @@ ms.locfileid: "67108462"
 3. 将应用程序的单一登录方法保留为“已禁用 Azure AD 单一登录”。**** 用户必须在 Azure AD 和 RD Web 上各执行身份验证一次，但可以单一登录到 RD 网关。
 4. 选择 " **Azure Active Directory**"，然后选择 "**应用注册**"。 从列表中选择应用。
 5. 在 "**管理**" 下，选择 "**品牌**"。
-6. 将 "**主页 URL** " 字段更新为指向 RD Web 终结点（如`https://\<rdhost\>.com/RDWeb`）。
+6. 将 "**主页 URL** " 字段更新为指向 RD Web 终结点（如 `https://\<rdhost\>.com/RDWeb` ）。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>将 RDS 流量定向到应用程序代理
 
@@ -84,14 +83,14 @@ ms.locfileid: "67108462"
 1. 连接到运行 RD 连接代理角色的 RDS 服务器。
 2. 启动**服务器管理器**。
 3. 在左侧窗格中选择“远程桌面服务”。****
-4. 选择“概述”。 
+4. 选择“概述”。
 5. 在“部署概述”部分中，选择下拉菜单并选择“编辑部署属性”。****
 6. 在“RD 网关”选项卡中，将“服务器名称”字段更改为针对应用程序代理中的 RD 主机终结点设置的外部 URL。****
 7. 将“登录方法”字段更改为“密码身份验证”。********
 
    ![RDS 上的“部署属性”屏幕](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. 为所有集合运行此命令。 将* \<yourcollectionname\> * *和\<proxyfrontendurl\> *替换为自己的信息。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
+8. 为所有集合运行此命令。 *\<yourcollectionname\>* 将和替换 *\<proxyfrontendurl\>* 为自己的信息。 此命令在 RD Web 与 RD 网关之间启用单一登录并优化性能：
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

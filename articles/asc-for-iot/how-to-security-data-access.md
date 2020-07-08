@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: bbea0accc79cafb6fea3f1438a71250dc02f4d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311009"
 ---
 # <a name="access-your-security-data"></a>访问安全数据
@@ -66,9 +65,9 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 说明                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 描述                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2018-11-18T18：10：29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 强力攻击成功           | 已成功对设备执行暴力攻击        |    {"完整源地址"： "[\"10.165.12.18：\"]"，"用户名"： "[\"\"]"，"DeviceId"： "IoT-设备-Linux"}                                                                       |
+| 2018-11-18T18：10：29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 强力攻击成功           | 已成功对设备执行暴力攻击        |    {"完整源地址"： "[ \" 10.165.12.18： \" ]"，"用户名"： "[ \" \" ]"，"DeviceId"： "IoT-设备-Linux"}                                                                       |
 | 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 设备上的本地登录成功      | 检测到成功的本地登录到设备     | {"远程地址"： "？"、"远程端口"： ""、"本地端口"： ""、"登录 Shell"： "/bin/su"、"登录过程 Id"： "28207"、"用户名"： "攻击者"、"DeviceId"： "IoT-设备-Linux"} |
 | 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 高          | 设备上的本地登录尝试失败  | 检测到设备的本地登录尝试失败 |    {"远程地址"： "？"、"远程端口"： ""、"本地端口"： ""、"登录 Shell"： "/bin/su"、"登录过程 Id"： "22644"、"用户名"： "攻击者"、"DeviceId"： "IoT-设备-Linux"} |
 
@@ -146,10 +145,10 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 说明 | RecommendationAdditionalData |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 描述 | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
-| 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中 | 活动 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{\"SourceAddress\"：\"\"，\"SourcePort\"：\"\"，\"DestinationAddress\"：\"\"，\"DestinationPort\"：\"1337\"}]"} |
-| 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中 | 活动 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{\"SourceAddress\"：\"\"，\"SourcePort\"：\"\"，\"DestinationAddress\"：\"\"，\"DestinationPort\"：\"1337\"}]"} |
+| 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中 | 活动 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
+| 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group> <iot_hub> | <device_name> | 中 | 活动 | 找到输入链中的可许可防火墙规则 | 已发现防火墙中包含广泛 IP 地址或端口的许可模式的规则 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
 
 ### <a name="device-summary"></a>设备摘要
 

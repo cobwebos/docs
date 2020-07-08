@@ -4,18 +4,17 @@ description: 了解如何在 Azure 门户中为 Azure Synapse Analytics 创建�
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/10/2020
 author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212269"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>请求增加配额并获取 Azure Synapse Analytics 支持
 
@@ -53,59 +52,89 @@ ms.locfileid: "83835455"
 
    ![选择配额类型](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. 在“详细信息”窗口中，选择“提供详细信息”以输入其他信息 。
+1. 在**详细信息**窗口中，选择 "**输入详细**信息" 以输入其他信息。
 
    ![“提供详细信息”链接](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>配额请求类型
 
-单击“提供详细信息”将显示“配额详细信息”窗口，可在其中添加其他信息。 以下各节介绍可用于 Azure Synapse Analytics 的不同配额请求。
+选择 "**输入详细信息**" 将显示 "**配额详细信息**" 窗口，允许您添加其他信息。 以下各节介绍可用于 Azure Synapse Analytics 的不同配额请求。
 
-### <a name="data-warehouse-units-dwus-per-server"></a>数据仓库单位(DWU)/服务器
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>Synapse SQL 池每个服务器的数据仓库单位（Dwu）
 
 使用以下步骤来请求增加每个服务器的 DWU。
 
-1. 选择“数据仓库单位 (DWU)/服务器”配额类型。
+1. 选择 " **SYNAPSE SQL 池 dwu 每服务器**" 配额类型。
 
-1. 在“资源”列表中，选择要作为目标的资源。
+1. 使用下拉列表选择要将配额增加到的**资源**。
 
-1. 在“请求配额”字段中，输入你请求的新 DWU 限制。
+1. 将新配额输入到 "**请求配额**" 部分。
+
+1. 选择“保存并继续”。
 
    ![DWU 配额详细信息](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>每个订阅的服务器数
 
-使用以下步骤来请求增加每个订阅的服务器数。
+若要请求增加每个订阅的服务器数量，需要完成以下步骤：
 
-1. 选择“每个订阅的服务器数”配额类型。
+1. 选择 "**每个订阅的 SQL server** " 作为配额类型。
 
 1. 在“位置”列表中，选择要使用的 Azure 区域。 配额按每个区域的每个订阅设置。
 
-1. 在“新配额”字段中，输入对该区域中服务器的最大数量的请求。
+1. 在 "**请求配额**" 字段中，输入对该区域中服务器的最大数量的请求。
 
    ![服务器配额详细信息](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. 选择“保存并继续”。
+
+某些产品/服务类型在每个区域中都不可用。 你可能会看到以下错误：
+
+![区域访问错误](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>启用对区域的订阅访问
 
-某些产品/服务类型在每个区域中都不可用。 你可能会看到如下所示的错误：
+若要为订阅启用区域访问，需要完成以下步骤：  
 
-`This location is not available for subscription`
+1. 选择**SYNAPSE SQL 池（数据仓库）区域访问**配额类型。
 
-如果你的订阅需要特定区域的访问权限，请使用“其他配额请求”选项来请求访问权限。 在请求中，指定要为区域启用的产品/服务和 SKU 详细信息。 若要浏览产品/服务和 SKU 选项，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
+1. 通过从下拉列表中选择一个**位置**来选择区域。
+
+1. 在 "**所需的 DWU** " 部分中指明 DWU 性能要求。
+
+1. 输入**业务要求的说明**。 
+
+1. 选择“保存并继续”。
+
+![区域访问](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>对于其他配额请求
+
+从其他配额请求类型的 "配额类型" 下拉菜单中选择 "**其他配额请求**"：
 
 ![其他配额详细信息](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>提交请求
 
-最后一步是填写 SQL 数据库支持请求的剩余详细信息。 然后选择“下一步:查看 + 创建 >>”，在查看请求详细信息后，单击“创建”以提交请求。
+最后一步是填写 SQL 数据库支持请求的剩余详细信息。 然后选择 "**下一步"：查看 + 创建>>**。
+
+![查看创建详细信息](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+查看请求详细信息后，选择 "**创建**" 以提交请求。
+
+![创建票证](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>监视支持票证
 
-在提交支持请求后，Azure 支持团队将与你取得联系。 若要查看请求状态和详细信息，请单击仪表板上的“所有支持请求”。
+在提交支持请求后，Azure 支持团队将与你取得联系。 若要查看请求状态和详细信息，请在仪表板上选择 "**所有支持请求**"。
 
 ![查看状态](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>其他资源
 
-你还可以通过 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上的 Azure Synapse Analytics 社区或通过 [Azure SQL 数据仓库的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)进行连接。
+你还可以通过 azure Synapse Analytics [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse)上或通过[Microsoft Q&问题页面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)连接到 azure Synapse Analytics 社区。
 

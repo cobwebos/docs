@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756668"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
@@ -61,7 +60,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>获取 IoT Central 应用的应用程序 ID
-在“管理/应用程序设置”中，复制**应用程序 ID**  。 可在后续步骤中使用此值。
+在“管理/应用程序设置”中，复制**应用程序 ID** 。 可在后续步骤中使用此值。
 
 ### <a name="monitor-messages"></a>监视消息
 监视从设备发送到 IoT Central 应用的消息。 输出包含所有标头和批注。

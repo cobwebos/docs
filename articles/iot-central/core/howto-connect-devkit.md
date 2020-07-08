@@ -9,25 +9,24 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756808"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
-*本文适用于设备开发人员。*
+本文适用于设备开发人员。
 
 本文介绍如何将 MXChip IoT DevKit (DevKit) 设备连接到 Azure IoT Central 应用程序。 设备使用 DevKit 设备的认证 IoT 即插即用（预览版）模型将其连接配置为 IoT Central。
 
-在本操作指南文章中，你将：
+通过本操作说明文章，你可以：
 
 - 从 IoT Central 应用程序获取连接详细信息。
 - 准备设备并将其连接到 IoT Central 应用程序。
 - 在 IoT Central 中查看来自设备的遥测数据和属性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，需要准备好以下资源：
 
@@ -36,7 +35,7 @@ ms.locfileid: "81756808"
 
 ## <a name="get-device-connection-details"></a>获取设备连接详细信息
 
-1. 在 Azure IoT Central 应用程序中，选择 "**设备模板**" 选项卡，然后选择 " **+ 新建**"。 在 "**使用预配置的设备模板**" 部分中，选择 " **MXChip IoT DevKit**"。
+1. 在 Azure IoT Central 应用程序中，选择“设备模板”选项卡，并选择“+ 新建”。  在 "**使用预配置的设备模板**" 部分中，选择 " **MXChip IoT DevKit**"。
 
     ![MXChip IoT DevKit 的设备模板](media/howto-connect-devkit/device-template.png)
 
@@ -46,7 +45,7 @@ ms.locfileid: "81756808"
 
     ![新设备](media/howto-connect-devkit/new-device.png)
 
-1. 在弹出窗口中，输入作为`SampleDevKit`的**设备 ID**和**设备名称** `MXChip IoT DevKit - Sample`。 请确保已关闭**模拟**选项。 然后选择“创建”  。
+1. 在弹出窗口中，输入作为的**设备 ID** `SampleDevKit` 和**设备名称** `MXChip IoT DevKit - Sample` 。 请确保已关闭**模拟**选项。 然后选择“创建”。
 
     ![设备 ID 和名称](media/howto-connect-devkit/device-id-name.png)
 
@@ -69,7 +68,7 @@ ms.locfileid: "81756808"
 
 1. 在计算机或平板电脑上，连接到设备屏幕上显示的 WiFi 网络名称。 WiFi 网络以 **AZ-** 开头，后接 MAC 地址。 连接到此网络时，不需要通过 Internet 访问。 此状态符合预期，只是在配置设备时才要与此网络保持短时间的连接。
 
-1. 打开 web 浏览器并导航到[http://192.168.0.1/](http://192.168.0.1/)。 将显示以下网页：
+1. 打开 web 浏览器并导航到 [http://192.168.0.1/](http://192.168.0.1/) 。 将显示以下网页：
 
     ![配置 UI](media/howto-connect-devkit/config-ui.png)
 
@@ -106,7 +105,7 @@ DevKit 首先在 IoT Central 应用程序中注册新设备，然后开始发送
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是一名设备开发人员，我们建议执行以下后续步骤：
+如果你是设备开发人员，则建议执行以下后续步骤：
 
-- 了解[Azure 中的设备连接 IoT Central](./concepts-get-connected.md)
+- 阅读有关 [Azure IoT Central 中的设备连接](./concepts-get-connected.md)的信息
 - 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)

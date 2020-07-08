@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/01/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603921"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 还原或删除最近删除的用户
 删除用户后，帐户将保持挂起状态 30 天。 在此 30 天期间，可以还原用户帐户及其所有属性。 30 天期限过后，将自动且永久删除用户。
@@ -59,7 +58,7 @@ ms.locfileid: "75422863"
 > 还原用户后，在删除时已分配到该用户的许可证也会还原，即使这些许可证没有可用的席位。 如果随后使用的许可证超过了购买的许可证数目，则你的组织可能暂时不符合许可证的用法规则。
 
 ### <a name="to-restore-a-user"></a>还原用户
-1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户****。 例如， _Mary Parker_。
+1. 在“用户 - 已删除的用户”页上，搜索并选择一个可用用户****。 例如，_Mary Parker_。
 
 2. 选择“还原用户”****。
 
@@ -86,7 +85,7 @@ ms.locfileid: "75422863"
 
 - [向用户分配角色](active-directory-users-assign-role-azure-portal.md)
 
-- [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
+- [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
 
 - [添加另一个组织中的来宾用户](../b2b/what-is-b2b.md)
 

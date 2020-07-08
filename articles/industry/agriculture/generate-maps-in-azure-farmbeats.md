@@ -6,11 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 92228c691c323bc0b9621dfc7413d86c5c2669e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271767"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709056"
 ---
 # <a name="generate-maps"></a>生成地图
 
@@ -26,7 +25,7 @@ FarmBeats 传感器放置图可帮助放置土料湿度传感器。 地图输出
 
 此地图是通过将 canopy 划分为一年中的多个日期来进行的。 即使是 canopy 的一部分， 您可以删除该位置上不需要的传感器。 此地图适用于指南，你可以根据自己的自定义知识略微改变位置和数量。 添加传感器不会回退土湿度热度地图的结果，但如果传感器号降低，就有可能有损坏的热度地图准确性。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在尝试生成传感器放置图之前，请满足以下先决条件：
 
@@ -51,7 +50,7 @@ FarmBeats 传感器放置图可帮助放置土料湿度传感器。 地图输出
 > [!NOTE]
 > 你可以从 "**映射**" 页或从 "**场详细信息**" 页上的 "**生成精度映射**" 下拉菜单启动传感器布局映射。
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 在主页上，从左侧导航菜单中转到 "**地图**"。
 2. 选择 "**创建映射**"，然后从下拉菜单中选择 "**传感器位置**"。
@@ -75,7 +74,7 @@ FarmBeats 传感器放置图可帮助放置土料湿度传感器。 地图输出
 
 ### <a name="view-and-download-a-sensor-placement-map"></a>查看和下载传感器放置图
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 在主页上，从左侧导航菜单中转到 "**地图**"。
 
@@ -110,7 +109,7 @@ FarmBeats 使你能够为场生成 NDVI、增强的 Vegetation 索引（EVI）�
 
 ## <a name="create-a-satellite-indices-map"></a>创建附属索引映射
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 在主页上，从左侧导航菜单中转到 "**地图**"。
 2. 选择 "**创建映射**"，然后从下拉菜单中选择 "**附属索引**"。
@@ -136,7 +135,7 @@ FarmBeats 使你能够为场生成 NDVI、增强的 Vegetation 索引（EVI）�
 
 ### <a name="view-and-download-a-map"></a>查看和下载地图
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 在主页上，从左侧导航菜单中转到 "**地图**"。
 
@@ -163,7 +162,7 @@ FarmBeats 使你能够为场生成 NDVI、增强的 Vegetation 索引（EVI）�
 
 土料湿气指的是在两个上料粒子之间的空格。在您的场中，您可以在任何深度以高分辨率了解土里湿气数据。 若要生成准确且可用的土料湿气热度地图，需要对传感器进行统一部署。 所有传感器都必须来自同一个提供程序。 不同的提供程序的测量方式与上料湿气的测量方式不同，而校准的差别也不同。 使用在该深度部署的传感器为特定深度生成热度地图。
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 在尝试生成土潮湿热度地图之前，应满足以下先决条件：
 
@@ -175,7 +174,7 @@ FarmBeats 使你能够为场生成 NDVI、增强的 Vegetation 索引（EVI）�
 
 ## <a name="create-a-soil-moisture-heatmap"></a>创建土潮湿热度地图
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 在主页上，从左侧导航菜单中转到 **"映射"** ，以查看 "**映射**" 页。
 2. 选择 "**创建地图**"，然后从下拉菜单中选择 "**土料湿气**"。
@@ -203,7 +202,7 @@ FarmBeats 使你能够为场生成 NDVI、增强的 Vegetation 索引（EVI）�
 
 ### <a name="view-and-download-a-map"></a>查看和下载地图
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 在主页上，从左侧导航菜单中转到 "**地图**"。
 

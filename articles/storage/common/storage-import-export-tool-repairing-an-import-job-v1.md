@@ -4,16 +4,15 @@ description: 了解如何修复使用 Azure 导入/导出服务创建和运行�
 author: twooley
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f5db321d8c4a6e42591a82b0ed8eb6bc6e93bad4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a5c0e9bf94a9953e107de148792af2e39f8bac24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74973877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512300"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
 Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的部分内容复制到 Windows Azure Blob 服务。 失败的部分原因包括：  
@@ -68,7 +67,7 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
 </DriveLog>  
 ```
   
-将此复制日志传递给 Azure 导入/导出工具后，该工具将尝试通过网络复制缺少的内容来完成此文件的导入。 根据上面的示例，该工具会在两个目录（`\animals\koala.jpg` 和 `C:\Users\bob\Pictures`）中查找原始文件 `X:\BobBackup\photos`。 如果文件 `C:\Users\bob\Pictures\animals\koala.jpg` 存在，Azure 导入/导出工具会将缺少的数据部分复制到对应的 Blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`。  
+将此复制日志传递给 Azure 导入/导出工具后，该工具将尝试通过网络复制缺少的内容来完成此文件的导入。 根据上面的示例，该工具会在两个目录（`C:\Users\bob\Pictures` 和 `X:\BobBackup\photos`）中查找原始文件 `\animals\koala.jpg`。 如果文件 `C:\Users\bob\Pictures\animals\koala.jpg` 存在，Azure 导入/导出工具会将缺少的数据部分复制到对应的 Blob `http://bobmediaaccount.blob.core.windows.net/pictures/animals/koala.jpg`。  
   
 ## <a name="resolving-conflicts-when-using-repairimport"></a>使用 RepairImport 时解决冲突  
 在某些情况下，可能会出于以下原因之一，工具无法找到或打开所需的文件：找不到该文件、文件不可访问、文件名不明确，或文件内容不再正确。  

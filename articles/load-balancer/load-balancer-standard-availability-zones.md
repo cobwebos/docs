@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 6deb5714a43d61f5ceb793757d49bd099f09f2b7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977630"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027556"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
@@ -50,7 +49,9 @@ Azure 标准负载均衡器支持可用性区域方案。 你可以使用标准�
 
 前端的 IP 地址由多个可用性区域中的多个独立基础结构部署同时提供服务。 任何重试或重新建立都将在不受区域故障影响的其他区域成功完成。 
 
-:::image type="content" source="./media/az-zonal/zone-redundant-lb-1.svg" alt-text="区域冗余" border="true":::
+<p align="center">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="虚拟网络 NAT">
+</p>
 
 *图：区域冗余负载均衡器*
 
@@ -60,7 +61,12 @@ Azure 标准负载均衡器支持可用性区域方案。 你可以使用标准�
 
 此外，还支持在每个区域中直接对负载平衡终结点使用区域前端。 可以使用此配置来公开每个区域负载均衡的终结点，以单独监视每个区域。 对于公用终结点，你可以将它们与[流量管理器](../traffic-manager/traffic-manager-overview.md)等 dns 负载平衡产品集成，并使用单个 DNS 名称。
 
-:::image type="content" source="./media/az-zonal/zonal-lb-1.svg" alt-text="区域冗余" border="true":::
+
+<p align="center">
+  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="虚拟网络 NAT">
+</p>
+
+*图：区域性冗余负载均衡器*
 
 如果想要混合使用这些概念（对同一个后端使用区域冗余和局域性配置），请查看 [Azure 负载均衡器的多个前端](load-balancer-multivip-overview.md)。
 
@@ -98,7 +104,7 @@ SNAT 端口预先分配算法与或没有可用性区域相同。
 
 负载均衡器在可用性区域的上下文中是灵活的。 您可以选择为每个规则调整区域或区域冗余。 提高可用性的代价是增加了复杂性。 设计可用性以获得最佳性能。
 
-### <a name="automatic-zone-redundancy"></a>自动区域冗余
+### <a name="zone-redundancy"></a>区域冗余
 
 使用负载均衡器可以轻松地将一个 IP 用作区域冗余的前端。 区域冗余 IP 地址可以为任何区域中的区域性资源提供服务。  只要一个区域在该区域中保持正常，则 IP 可能会经受一个或多个区域故障。  相反，区域性前端将服务缩减为单个区域，并与各自的区域共享命运。
 

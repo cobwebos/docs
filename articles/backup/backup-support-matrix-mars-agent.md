@@ -4,11 +4,10 @@ description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709872"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -94,7 +93,7 @@ MARS 代理需要以下 URL 的访问权限：
 
 **功能** | **详细信息**
 --- | ---
-带宽控制 | 支持。 在 MARS 代理中，使用“更改属性”来调整带宽。****
+带宽控制 | 。 在 MARS 代理中，使用“更改属性”来调整带宽。****
 网络限制 | 不适用于运行 Windows Server 2008 R2、Windows Server 2008 SP2 或 Windows 7 的备份计算机。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
@@ -156,12 +155,12 @@ Windows 7| 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
-**类型** | **支持**
+**Type** | **支持**
 --- | ---
-过<sup>*</sup>| 支持。
-Compressed | 支持。
-稀疏 | 支持。
-压缩和稀疏 |支持。
+过<sup>*</sup>| 。
+压缩 | 。
+稀疏 | 。
+压缩和稀疏 |。
 硬链接| 不支持。 跳过。
 重分析点| 不支持。 跳过。
 加密和稀疏 |不支持。 跳过。

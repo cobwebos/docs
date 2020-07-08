@@ -3,16 +3,15 @@ title: 在运行 Linux 的虚拟机上配置 LVM
 description: 了解如何在 Azure 中的 Linux 上配置 LVM。
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
-ms.openlocfilehash: 7f560a1e6266b5f2452bf9442d2d4c983de1236e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9a3498939ddf57e2520a140ff693a30de913fae0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066790"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84658296"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>在 Azure 中的 Linux VM 上配置 LVM
 本文介绍如何在 Azure 虚拟机中配置逻辑卷管理器 (LVM)。 LVM 可以在 Azure VM 中的 OS 磁盘或数据磁盘上使用，但是，默认情况下，大多数云映像都不会在 OS 磁盘上配置 LVM。 以下步骤将重点介绍如何为数据磁盘配置 LVM。
@@ -149,7 +148,7 @@ LVM 可用于将多个物理磁盘合并成单个存储卷。 默认情况下，
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-- 在 `discard` 中使用 `/etc/fstab` 装载选项，例如：
+- 在 `/etc/fstab` 中使用 `discard` 装载选项，例如：
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2

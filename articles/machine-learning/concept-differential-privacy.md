@@ -9,18 +9,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 09ac31f31f42f5aed9e7dd464e1fce1436cfe581
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982656"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>使用差异隐私和 WhiteNoise 包来保留数据隐私
 
 了解什么是差异隐私，以及 WhiteNoise 包如何帮助你实现差异隐私系统。
 
 随着组织收集并用于分析的数据量的增加，隐私和安全问题也逐渐增多。 分析需要数据。 通常，用于训练模型的数据越多，模型就越精确。 当个人信息用于这些分析时，在整个使用过程中数据保密尤为重要。
+
+> [!NOTE]
+> 请注意，我们将重命名该工具包，并将在未来几周引入新名称。 
 
 ## <a name="how-differential-privacy-works"></a>差异隐私的工作原理
 
@@ -29,25 +31,25 @@ ms.locfileid: "83594986"
 > [!div class="mx-imgBorder"]
 > ![差异隐私过程](./media/concept-differential-privacy/differential-privacy-process.jpg)
 
-在传统场景中，原始数据存储在文件和数据库中。 用户分析数据时，通常使用原始数据。 这是一个问题，因为它可能会侵犯个人隐私。 差异隐私尝试通过对数据添加“干扰”或随机性来处理此问题，这样用户就无法识别任何单个数据点。 至少，此类系统提供了合理的可否认性。
+在传统场景中，原始数据存储在文件和数据库中。 用户通常在分析数据时使用原始数据。 这是一个问题，因为可能会侵犯个人隐私。 差异隐私尝试通过对数据添加“干扰”或随机性来处理此问题，这样用户就无法识别任何单个数据点。 至少，此类系统提供了合理的可否认性。
 
-在差异隐私系统中，可通过称为“查询”的请求来共享数据。 当用户提交数据查询时，称为“隐私机制”的操作将向请求的数据添加干扰。 隐私机制返回近似数据，而不是原始数据。 此隐私保留结果出现在报表中。 报表包含两个部分：计算的实际数据，以及有关如何创建数据的说明。
+在差异隐私系统中，可通过称为“查询”**** 的请求来共享数据。 当用户提交数据查询时，称为“隐私机制”**** 的操作将向请求的数据添加干扰。 隐私机制返回近似数据**，而不是原始数据。 此隐私保留结果出现在报表**** 中。 报表包含两个部分：计算的实际数据，以及有关如何创建数据的说明。
 
 ## <a name="differential-privacy-metrics"></a>差异隐私指标
 
-差异隐私尝试防止用户产生数量不定的报表，而最终泄露敏感数据。 称为“epsilon”的值度量报表的干扰或隐私程度。 epsilon 与干扰或隐私的关系是相反的。 epsilon 越低，数据的干扰（以及隐私）程度就越高。
+差异隐私尝试防止用户产生数量不定的报表，而最终泄露敏感数据。 称为“epsilon”**** 的值度量报表的干扰或隐私程度。 epsilon 与干扰或隐私的关系是相反的。 epsilon 越低，数据的干扰（以及隐私）程度就越高。
 
 epsilon 值为非负数。 小于 1 的值提供了完全合理的可否认性。 任何大于 1 的值会导致公开实际数据的风险更高。 实现差异隐私系统时，你会希望生成一个 epsilon 值介于 0 和 1 之间的报表。
 
-与 epsilon 直接关联的另一个值是 delta。 delta 度量报表不具备完整隐私性的概率。 delta 越高，epsilon 就越高。 由于这些值是关联的，因此使用 epsilon 的频率更高。
+与 epsilon 直接关联的另一个值是 delta****。 delta 度量报表不具备完整隐私性的概率。 delta 越高，epsilon 就越高。 由于这些值是关联的，因此使用 epsilon 的频率更高。
 
 ## <a name="privacy-budget"></a>隐私预算
 
-为了确保允许多个查询的系统中的隐私，差异隐私定义了速率限制。 此限制称为“隐私预算”。 隐私预算分配了一个 epsilon 值，通常介于 1 和 3 之间，以限制重新识别的风险。 在生成报表时，隐私预算将跟踪单个报表的 epsilon 值以及所有报表的汇总值。 在隐私预算用完或用尽后，用户将无法再访问数据。  
+为了确保允许多个查询的系统中的隐私，差异隐私定义了速率限制。 此限制称为“隐私预算”****。 隐私预算分配了一个 epsilon 值，通常介于 1 和 3 之间，以限制重新识别的风险。 在生成报表时，隐私预算将跟踪单个报表的 epsilon 值以及所有报表的汇总值。 在隐私预算用完或用尽后，用户将无法再访问数据。  
 
 ## <a name="reliability-of-data"></a>数据的可靠性
 
-虽然保护隐私应该是我们的目标，但是当涉及到数据的可用性和可靠性时，就需要进行权衡。 在数据分析中，准确性可以被视为对采样误差带来的不确定性的度量。 这种不确定性往往在一定范围内。 从差异隐私角度来看，准确性改为衡量数据的可靠性，而可靠性受到隐私机制所引入的不确定性的影响。 简而言之，更高级别的干扰或隐私会转换为具有较低 epsilon、准确性和可靠性的数据。 尽管数据具有更高隐私性，但它不可靠，因此被使用的可能性就越小。
+虽然保护隐私应该是我们的目标，但是当涉及到数据的可用性和可靠性时，就需要进行权衡。 在数据分析中，准确性可以被视为对采样误差带来的不确定性的度量。 这种不确定性往往在一定范围内。 从差异隐私角度来看，准确性**** 改为衡量数据的可靠性，而可靠性受到隐私机制所引入的不确定性的影响。 简而言之，更高级别的干扰或隐私会转换为具有较低 epsilon、准确性和可靠性的数据。 尽管数据具有更高隐私性，但它不可靠，因此被使用的可能性就越小。
 
 ## <a name="implementing-differentially-private-systems"></a>实现差异隐私系统
 
@@ -79,4 +81,6 @@ epsilon 值为非负数。 小于 1 的值提供了完全合理的可否认性�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何使用 WhiteNoise 组件，请查看 GitHub 存储库中的 [WhiteNoise 核心包](https://github.com/opendifferentialprivacy/whitenoise-core)、[WhiteNoise 系统包](https://github.com/opendifferentialprivacy/whitenoise-system) 和 [WhiteNoise 示例](https://github.com/opendifferentialprivacy/whitenoise-samples)。
+在 Azure 机器学习中[保留数据隐私](how-to-differential-privacy.md)。
+
+若要了解有关 WhiteNoise 组件的详细信息，请查看 GitHub 存储库中的 [WhiteNoise 核心包](https://github.com/opendifferentialprivacy/whitenoise-core)、[WhiteNoise 系统包](https://github.com/opendifferentialprivacy/whitenoise-system)和 [WhiteNoise 示例](https://github.com/opendifferentialprivacy/whitenoise-samples)。

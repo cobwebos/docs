@@ -3,12 +3,11 @@ title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
-ms.translationtype: HT
+ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920595"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -33,9 +32,9 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 
 可以直接在门户中对委派资源执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）对委派资源执行管理任务。 在处理委托的资源时，只要跨租户管理支持该功能，并且用户具有相应的权限，可以使用所有现有 API。
 
-Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) 会显示每个订阅的 tenantID，让你可以标识某个返回的订阅是属于服务提供商租户还是托管客户租户。
+Azure PowerShell [Get-AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) 会显示每个订阅的 tenantID，让你可以标识某个返回的订阅是属于服务提供商租户还是托管客户租户。
 
-同样，Azure CLI 命令（例如 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)）会显示 homeTenantId 和 managedByTenants 属性。
+同样，Azure CLI 命令（例如 [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)）会显示 homeTenantId 和 managedByTenants 属性。
 
 > [!TIP]
 > 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
@@ -60,6 +59,10 @@ Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/powershe
 - 备份并还原客户租户中的客户数据
 - 使用[备份资源管理器](../../backup/monitor-azure-backup-with-backup-explorer.md)可以查看备份项（包括尚未配置用于备份的 Azure 资源）的操作信息以及委托订阅的监视信息（作业和警报）。 备份资源管理器当前仅可用于 Azure VM 数据。
 - 跨委托订阅使用[备份报告](../../backup/configure-reports.md)来跟踪历史趋势、分析备份存储消耗，以及审核备份和还原。
+
+[Azure 成本管理 + 计费](../../cost-management-billing/index.yml)：
+
+- 从管理租户中，CSP 合作伙伴可以查看、管理和分析 Azure 计划下的客户的预税消耗成本（不包括购买）。 费用将基于零售费率和合作伙伴对客户订阅的 Azure RBAC 访问权限。
 
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 
@@ -143,7 +146,6 @@ Azure PowerShell [Get-AzSubscription cmdlet](https://docs.microsoft.com/powershe
 - 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](../../role-based-access-control/built-in-roles.md)。 除了所有者或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
 - 尽管你可以加入使用 Azure Databricks 的订阅，但管理租户中的用户目前无法在委托订阅上启动 Azure Databricks 工作区。
 - 虽然可以为具有资源锁的 Azure 委托资源管理加入订阅和资源组，但这些锁不会阻止管理租户中的用户执行操作。 用于保护系统管理资源（例如由 Azure 托管应用程序或 Azure 蓝图创建的资源）的[拒绝分配](../../role-based-access-control/deny-assignments.md)（系统分配的拒绝分配）会阻止管理租户中的用户对这些资源进行操作；但是，目前客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
-- 管理租户中的用户将无权查看委托客户订阅的计费信息，即使他们具有通常允许访问的内置角色，也是如此。 这是因为访问计费信息需要其他步骤，而目前仅同一租户内的用户支持这些步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,25 +3,24 @@ title: 在 Teams 中访问 Azure AD 应用代理应用 | Microsoft Docs
 description: 使用 Azure AD 应用程序通过 Microsoft Teams 代理访问本地应用程序。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67807763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764479"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>通过 Microsoft Teams 访问本地应用程序
 
@@ -33,13 +32,13 @@ ms.locfileid: "67807763"
 
 如果尚未执行，请[为租户配置应用程序代理并安装连接器](application-proxy-add-on-premises-application.md)。 然后[发布进行远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。 发布应用时，请记下外部 URL，用于将应用添加到 Teams。
 
-如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到 " **Azure Active Directory** > **企业应用** > 程序" "**所有应用**程序" > 选择你的应用 >**应用程序代理**。
+如果已发布应用，但忘记了其外部 URL，请在 [Azure 门户](https://portal.azure.com)中查找。 登录，然后导航到 " **Azure Active Directory**  >  **企业应用**程序" "  >  **所有应用**程序" > 选择你的应用 >**应用程序代理**。
 
 ## <a name="add-your-app-to-teams"></a>将应用添加到 Teams 中
 
 通过应用程序代理发布应用后，让用户知道他们可以直接在 Teams 通道中将该应用添加为选项卡，然后团队中的所有人便都可以使用该应用。 让用户按照以下三个步骤进行操作：
 
-1. 导航到要在其中添加此应用的团队频道，然后选择**+** "添加选项卡"。
+1. 导航到要在其中添加此应用的团队频道，然后选择 " **+** 添加选项卡"。
 
    ![选择 "+" 以在团队中添加选项卡](./media/application-proxy-integrate-with-teams/add-tab.png)
 

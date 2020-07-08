@@ -7,15 +7,14 @@ ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 30487eebed361e5b010df023a9b1a44f96590b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81271074"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中基于日志的指标和预先聚合的指标
 
-本文介绍基于日志的 "传统" Application Insights 度量值与当前公共预览版中的预聚合度量值之间的差异。 这两种类型的指标都可供 Application Insights 用户使用，每种指标在监视应用程序运行状况、诊断和分析方面发挥了独特的作用。 检测应用程序的开发人员可以根据应用程序的大小、预期遥测量以及指标精度和警报方面的业务要求，确定哪种类型的指标最适合特定的方案。
+本文介绍基于日志的“传统”Application Insights 指标与目前以公共预览版提供的预先聚合指标之间的差别。 这两种类型的指标都可供 Application Insights 用户使用，每种指标在监视应用程序运行状况、诊断和分析方面发挥了独特的作用。 检测应用程序的开发人员可以根据应用程序的大小、预期遥测量以及指标精度和警报方面的业务要求，确定哪种类型的指标最适合特定的方案。
 
 ## <a name="log-based-metrics"></a>基于日志的指标
 
@@ -23,21 +22,21 @@ ms.locfileid: "81271074"
 
 使用日志保留完整事件集能够为分析和诊断带来很大的帮助。 例如，可以获取对特定 URL 发出的确切请求计数，以及发出这些调用的非重复用户数。 或者，可以获取详细的诊断跟踪，包括任何用户会话的异常和依赖项调用。 获取此类信息能够明显提高应用程序运行状况和使用情况的可见性，从而可以缩短诊断应用问题所需的时间。
 
-同时，对于生成大量遥测数据的应用程序，收集完整的一组事件可能不切实际（甚至不可能）。 如果事件量过高，Application Insights 会实施多种遥测数据量缩减技术（例如[采样](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)和[筛选](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)），以减少收集和存储的事件数量。 遗憾的是，降低存储事件数量也会降低指标的准确性，因此，在幕后必须对日志中存储的事件执行查询时聚合。
+同时，对于生成大量遥测数据的应用程序而言，收集完整事件集可能不切实际（甚至不可能）。 如果事件量过高，Application Insights 会实施多种遥测数据量缩减技术（例如[采样](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)和[筛选](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)），以减少收集和存储的事件数量。 遗憾的是，降低存储事件数量也会降低指标的准确性，因此，在幕后必须对日志中存储的事件执行查询时聚合。
 
 > [!NOTE]
 > 在 Application Insights 中，基于日志中存储的事件和测量值查询时聚合的指标称为基于日志的指标。 这些指标通常在事件属性中具有许多维度，因此非常适合用于分析，但这些指标的准确性受到采样和筛选的负面影响。
 
 ## <a name="pre-aggregated-metrics"></a>预先聚合的指标
 
-除了基于日志的指标，在2018年底，Application Insights 团队提供了一个公共的指标预览，这些指标存储在为时序优化的专用存储库中。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)、响应能力更强的[仪表板](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)等方案。
+除了基于日志的指标以外，在 2018 年年底，Application Insights 团队交付了存储在专用存储库（已针对时序进行优化）中的指标的公共预览版。 新指标不再作为包含大量属性的单个事件进行保存。 它们存储为预先聚合的时序，并且仅包含键维度。 这使得新指标在查询时间方面非常出色：检索数据的速度要快得多，而且所需的计算能力更低。 因此，可以实现[针对指标维度发出近实时警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)、响应能力更强的[仪表板](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)等方案。
 
 > [!IMPORTANT]
-> 基于日志的指标和预先聚合的指标可在 Application Insights 中共存。 为区分这两者，在 Application Insights UX 中，预先聚合的指标现在称为 "标准指标（预览）"，而事件的传统指标已重命名为 "基于日志的指标"。
+> 基于日志的指标和预先聚合的指标可在 Application Insights 中共存。 为了区分两者，在 Application Insights UX 中，预先聚合的指标现在称为“标准指标(预览版)”，而事件中的传统指标已重命名为“基于日志的指标”。
 
-较新的 SDK（适用于 .NET 的 [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 或更高版本）会在收集期间预先聚合指标，然后，遥测量缩减技术将会介入。 这意味着，使用最新的 Application Insights Sdk 时，新度量值的准确性不受采样和筛选的影响。
+较新的 SDK（适用于 .NET 的 [Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK 或更高版本）会在收集期间预先聚合指标，然后，遥测量缩减技术将会介入。 这意味着，使用最新 Application Insights SDK 时，新指标的准确性不受采样和筛选的影响。
 
-对于不实现预聚合的 Sdk （即，Application Insights Sdk 的早期版本或浏览器检测），Application Insights 后端仍将通过聚合 Application Insights 事件收集终结点接收的事件来填充新的度量值。 这意味着，尽管不能从通过网络传输的缩减数据量中获益，但仍可以使用预先聚合的度量值，并通过不在收集过程中预先聚合度量值的 Sdk 获得近乎实时的维度警报。
+对于不实施预先聚合的 SDK（即，早期版本的 Application Insights SDK 或用于浏览器检测的 SDK），Application Insights 后端仍会通过聚合 Application Insights 事件收集终结点收到的事件来填充新指标。 这意味着，尽管不能减少通过网络传输的数据量，但仍可以使用预先聚合的指标并改善性能，同时，在收集期间，可以使用不预先聚合指标的 SDK 来支持近实时维度警报。
 
 值得一提的是，收集终结点会在引入采样之前预先聚合事件，这意味着，[引入采样](https://docs.microsoft.com/azure/application-insights/app-insights-sampling)永远不会影响预先聚合的指标，不管对应用程序使用哪个 SDK 版本。  
 
@@ -65,9 +64,9 @@ ms.locfileid: "81271074"
 
 ## <a name="pricing-models-for-application-insights-metrics"></a>Application Insights 指标的定价模型
 
-引入指标到 Application Insights，无论是基于日志的还是预聚合的，都将基于引入数据的大小生成开销，如[此处](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)所述。 自定义指标（包括其所有维度）始终存储在 Application Insights 日志存储中;此外，默认情况下，自定义指标（不包含维度）的预聚合版本将转发到指标存储区。
+如果将指标引入 Application Insights（无论是基于日志的还是预聚合的），将产生基于引入数据的大小的成本，如[此处](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)所述。 自定义指标（包括其所有维度）始终存储在 Application Insights 日志存储中；此外，默认情况下，会将自定义指标（不包含维度）的预聚合版本转发到指标存储。
 
-选择 "[对自定义指标维度启用警报](#custom-metrics-dimensions-and-pre-aggregation)" 选项可在指标存储中存储预聚合度量值的所有维度，可以根据[自定义指标定价](https://azure.microsoft.com/pricing/details/monitor/)产生**额外**的成本。
+如果为了在指标存储中存储预聚合指标的所有维度而选择[在自定义指标维度上启用警报](#custom-metrics-dimensions-and-pre-aggregation)选项，会产生基于[自定义指标定价](https://azure.microsoft.com/pricing/details/monitor/)的额外成本。
 
 ## <a name="next-steps"></a>后续步骤
 

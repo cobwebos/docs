@@ -5,7 +5,6 @@ ms.date: 05/20/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83683231"

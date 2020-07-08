@@ -2,22 +2,21 @@
 title: 配置管理员许可工作流-Azure Active Directory |Microsoft Docs
 description: 了解如何为最终用户配置请求访问需要管理员同意的应用程序的方式。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430205"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763612"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>配置管理员许可工作流（预览）
 
@@ -33,7 +32,7 @@ ms.locfileid: "75430205"
 
 若要启用管理员许可工作流并选择审阅者：
 
-1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 以全局管理员身份登录到[Azure 门户](https://portal.azure.com)。
 2. 在左侧导航菜单的顶部单击“所有服务”。**** 此时会打开“Azure Active Directory 扩展”。****
 3. 在筛选器搜索框中键入 "**Azure Active Directory**"，并选择**Azure Active Directory**项。
 4. 在导航菜单中，单击“企业应用程序”****。 
@@ -49,7 +48,7 @@ ms.locfileid: "75430205"
    * **选定的用户将收到请求到期提醒**。 当请求即将过期时，启用或禁用提醒电子邮件通知到审阅者。  
    * **同意请求将在（天）后过期**。 指定请求保持有效的时间长度。
 
-7. 选择“保存”。  此功能可能需要长达一小时的时间才会启用。
+7. 选择“保存”。 此功能可能需要长达一小时的时间才会启用。
 
 > [!NOTE]
 > 可以通过修改 "**选择管理员同意请求审阅者**" 列表，添加或删除此工作流的审阅者。 请注意，此功能的当前限制是，审阅者可以保留查看在指定为审阅者时所进行的请求的功能。
@@ -131,7 +130,7 @@ ms.locfileid: "75430205"
 
 **我打开了此工作流，但在测试功能时，为什么看不到允许我请求访问的新 "需要审批" 提示？**
 
-启用该功能后，最终用户可能需要长达60分钟的时间来查看更新。 可以通过查看`https://graph.microsoft.com/beta/settings` API 中的**EnableAdminConsentRequests**值来验证配置是否已正确生效。
+启用该功能后，最终用户可能需要长达60分钟的时间来查看更新。 可以通过查看 API 中的**EnableAdminConsentRequests**值来验证配置是否已正确生效 `https://graph.microsoft.com/beta/settings` 。
 
 **作为审阅者，为什么看不到所有待定的请求？**
 
@@ -153,9 +152,9 @@ ms.locfileid: "75430205"
 
 有关许可应用程序的详细信息，请参阅 [Azure Active Directory 许可框架](../develop/consent-framework.md)。
 
-[配置最终用户同意应用程序的方式](configure-user-consent.md)
+[配置最终用户如何对应用程序表示同意](configure-user-consent.md)
 
-[向应用程序授予租户范围的管理员许可](grant-admin-consent.md)
+[向应用程序授予租户范围的管理许可](grant-admin-consent.md)
 
 [Microsoft 标识平台中的权限和许可](../develop/active-directory-v2-scopes.md)
 

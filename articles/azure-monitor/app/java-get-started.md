@@ -6,13 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
 ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537502"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：在 Java web 项目中开始使用 Application Insights
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：Java Web 项目中的 Application Insights 入门
 
 在本快速入门中，你将使用 Application Insights 自动检测请求，跟踪依赖项并收集性能计数器、诊断性能问题和异常，并编写代码以跟踪用户对应用执行的操作。
 
@@ -25,7 +24,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>获取 Application Insights 检测密钥
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在 Azure 门户中，创建 Application Insights 资源。 将应用程序类型设置为 Java Web 应用程序。
 
 3. 查找新资源的检测密钥。 稍后需要将此密钥粘贴到代码项目中。
@@ -34,11 +33,11 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 ## <a name="add-the-application-insights-sdk-for-java-to-your-project"></a>将用于 Java 的 Application Insights SDK 添加到项目
 
-选择项目类型。 
+选择项目类型。
 
 # <a name="maven"></a>[Maven](#tab/maven)
 
-如果项目已设置为使用 Maven 生成，请将以下代码合并到 pom.xml  文件。
+如果项目已设置为使用 Maven 生成，请将以下代码合并到 pom.xml 文件。
 
 然后刷新项目依赖项，以下载库。
 
@@ -56,7 +55,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 
 # <a name="gradle"></a>[Gradle](#tab/gradle)
 
-如果项目已设置为使用 Gradle 生成，请将以下代码合并到 build.gradle  文件。
+如果项目已设置为使用 Gradle 生成，请将以下代码合并到 build.gradle 文件。
 
 然后刷新项目依赖项，以下载库。
 
@@ -75,19 +74,19 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 ---
 
 ### <a name="questions"></a>问题
-* `-web-auto`、`-web` 与 `-core` 组件之间有怎样的关系？ 
+* `-web-auto`、`-web` 与 `-core` 组件之间有怎样的关系？
   * `applicationinsights-web-auto` 通过在运行时自动注册 Application Insights servlet 筛选器，为你提供跟踪 HTTP servlet 请求计数和响应时间的指标。
   * `applicationinsights-web` 也为你提供跟踪 HTTP servlet 请求计数和响应时间的指标，但需要在应用程序中手动注册 Application Insights servlet 筛选器。
   * 例如，如果应用程序不是基于 servlet 的应用程序，则 `applicationinsights-core` 仅提供单纯的 API。
   
-*  应怎样将 SDK 更新到最新版本？
+* 应怎样将 SDK 更新到最新版本？
   * 如果使用的是 Gradle 或 Maven...
     * 更新生成文件以指定最新版本。
   * 如果是手动管理依赖项...
     * 下载最新的 [用于 Java 的 Application Insights SDK](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) 并替换旧版本。 [SDK release notes](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)（SDK 发行说明）中描述了更改。
 
-## <a name="add-an-applicationinsightsxml-file"></a>添加 ApplicationInsights.xml  文件
-将*applicationinsights.config*添加到项目中的 resources 文件夹，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
+## <a name="add-an-applicationinsightsxml-file"></a>添加 ApplicationInsights.xml 文件
+在项目的 resources 文件夹中添加 ApplicationInsights.xml，或确保将其添加到项目的部署类路径。 将以下 XML 复制到其中。
 
 将检测密钥替换为从 Azure 门户获得的密钥。
 
@@ -118,7 +117,7 @@ Application Insights 是面向 Web 开发人员的可扩展分析服务，可帮
 </ApplicationInsights>
 ```
 
-或者，配置文件可以位于应用程序可访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml  所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
+或者，配置文件可以位于应用程序可访问的任何位置。  系统属性 `-Dapplicationinsights.configurationDirectory` 指定 ApplicationInsights.xml 所在的目录。 例如，位于 `E:\myconfigs\appinsights\ApplicationInsights.xml` 的配置文件可以通过属性 `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` 进行配置。
 
 * 检测密钥随遥测的每个项一起发送，并告知 Application Insights 在资源中显示它。
 * HTTP 请求组件是可选的。 它自动将请求和响应时间的遥测数据发送到门户。
@@ -129,7 +128,7 @@ Application Insights SDK 按以下顺序查找密钥：
 
 1. 系统属性：-DAPPINSIGHTS_INSTRUMENTATIONKEY=your_ikey
 2. 环境变量：APPINSIGHTS_INSTRUMENTATIONKEY
-3. 配置文件：ApplicationInsights.xml 
+3. 配置文件：ApplicationInsights.xml
 
 也可以 [在代码中设置方法](../../azure-monitor/app/api-custom-events-metrics.md#ikey)：
 
@@ -228,12 +227,12 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 [AI-Agent.xml](java-agent.md) 文件中定义了传出 SDK 配置。
 
 ## <a name="performance-counters"></a>性能计数器
-打开“调查”、“指标”，查看一系列性能计数器   。
+打开“调查”、“指标”，查看一系列性能计数器 。
 
 ![已选中进程专用字节的指标窗格的屏幕截图](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>自定义性能计数器收集
-若要禁用收集标准性能计数器集，请将以下代码添加到 ApplicationInsights.xml  文件的根节点下：
+若要禁用收集标准性能计数器集，请将以下代码添加到 ApplicationInsights.xml 文件的根节点下：
 
 ```XML
     <PerformanceCounters>
@@ -258,7 +257,7 @@ Application Insights Java SDK 现支持 [W3C 分布式跟踪](https://w3c.github
 * `displayName` – Application Insights 门户中显示的名称。
 * `objectName` – JMX 对象名称。
 * `attribute` – 提取的 JMX 对象名称属性
-* `type`（可选）-JMX 对象的属性的类型：
+* `type`（可选）- JMX 对象的属性类型：
   * 默认值：简单类型，例如 int 或 long。
   * `composite`：性能计数器数据采用“Attribute.Data”格式
   * `tabular`：性能计数器数据采用表行格式

@@ -5,12 +5,11 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 770187693e5bac6e059dfd20455099fcc695b74b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76715028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322509"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions 的 Microsoft Graph 绑定
 
@@ -40,11 +39,11 @@ Microsoft Graph 扩展提供了以下绑定：
 
 可通过绑定扩展  获取 Microsoft Graph 绑定。 绑定扩展是 Azure Functions 运行时的可选组件。 本部分介绍如何设置 Microsoft Graph 扩展和身份验证令牌扩展。
 
-### <a name="enabling-functions-20-preview"></a>启用 Functions 2.0 预览版
+### <a name="enabling-functions-20"></a>启用函数2。0
 
-绑定扩展仅适用于 Azure Functions 2.0 预览版。 
+绑定扩展仅适用于 2.0 Azure Functions。 
 
-有关如何将函数应用设置为使用 Functions 运行时预览版 2.0 的信息，请参阅[如何面向 Azure Functions 运行时版本](set-runtime-version.md)。
+有关如何将函数应用设置为使用2.0 版本的函数运行时的信息，请参阅[如何以 Azure Functions 运行时版本为目标](set-runtime-version.md)。
 
 ### <a name="installing-the-extension"></a>安装扩展
 

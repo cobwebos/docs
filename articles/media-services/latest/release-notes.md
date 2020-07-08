@@ -9,18 +9,17 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 6abb44012035f31f970a347687964afb0c715d29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84983369"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
->通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中，获取有关何时重新访问此页以获得更新的通知。
+>通过将此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us`) 复制并粘贴到 RSS 源阅读器中获取有关何时重新访问此页以获得更新的通知。
 
 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -32,9 +31,17 @@ ms.locfileid: "83647638"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 可以使用 [Azure 门户](https://portal.azure.com/)执行以下操作：管理 v3 [直播活动](live-events-outputs-concept.md)、查看 v3 [资产](assets-concept.md)、获取有关访问 API 的信息。 对于其他所有管理任务（例如，转换和作业），请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或某个受支持的 [SDK](media-services-apis-overview.md#sdks)。
+> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 v3[实时事件](live-events-outputs-concept.md)、查看 v3[资产](assets-concept.md)和作业、获取有关访问 api 的信息、加密内容。 对于所有其他管理任务（例如，管理转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
+>
+> 有关详细信息，请参阅：[媒体服务 v3 的 Azure 门户限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
-有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
+## <a name="june-2020"></a>2020 年 6 月
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>IoT Edge 预览版的实时视频分析
+
+IoT Edge 公开的实时视频分析预览。 有关详细信息，请参阅[发行说明](../live-video-analytics-edge/release-notes.md)。
+
+IoT Edge 上的实时视频分析是 Media Service 系列的扩展。 利用它，你可以在自己的边缘设备上分析你所选的 AI 模型的实时视频，还可以选择捕获并录制该视频。 你现在可以在边缘使用实时视频分析构建应用，而无需担心生成和操作实时视频管道的复杂性。
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -48,7 +55,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ## <a name="january-2020"></a>2020 年 1 月
 
-### <a name="improvements-in-media-processors"></a>媒体处理器改进
+### <a name="improvements-in-media-processors"></a>媒体处理器中的改进
 
 - 改进了对视频分析中隔行扫描源的支持 - 现在，在将此类内容发送到推理引擎之前，会对其正确取消隔行扫描。
 - 使用“最佳”模式生成缩略图时，编码器现在会搜索超过 30 秒，以选择非单色的帧。
@@ -85,22 +92,22 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="content-protection"></a>内容保护
 
-九月份在有限区域发布的令牌重放防护功能现已在所有区域推出。
-现在，对于可使用同一令牌请求密钥或许可证的次数，媒体服务客户可以设置一个限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
+9 月份在有限区域发布的“令牌重放防护”功能现在已在所有区域提供。
+媒体服务客户现在可以对同一令牌用于请求密钥或许可证的次数设置限制。 有关详细信息，请参阅[令牌重放防护](content-protection-overview.md#token-replay-prevention)。
 
 ### <a name="new-recommended-live-encoder-partners"></a>新推荐的实时编码器合作伙伴
 
-添加了对以下新推荐的用于 RTMP 实时流式处理的合作伙伴编码器的支持：
+添加的支持针对用于 RTMP 实时流式处理的以下新推荐合作伙伴编码器：
 
 - [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
-- [GoPro Hero7/8 和 Max 运动型摄像机](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [GoPro Hero7/8 和 Max 运动摄像头](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>文件编码增强功能
 
-- 现在提供了一个新的内容感知编码预设。 它使用内容感知编码来生成一组已进行 GOP 调整的 MP4。 给定任何输入内容，该服务将对输入内容进行初始轻量级分析。 它使用这些结果来确定最佳层数、适当的比特率和分辨率设置，以便于自适应流式处理进行传输。 此预设对于中低等复杂度的视频特别有效，这些视频的输出文件的比特率较低，但质量仍可为观看者带来良好的体验。 输出将包含视频和音频交错的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
-- 改进了标准编码器中调整器的性能和多线程处理。 在特定条件下，客户应看到 5-40% 的 VOD 编码获得性能提升。 编码为多种比特率的低复杂度内容将获得最高的性能提升。 
-- 现在，当使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间为可变帧速率 (VFR) 内容保持常规的 GOP 频率。  这意味着，提交混合帧速率内容（例如在 15-30 fps 之间变化）的客户现在应该可以看到根据自适应比特率流式处理 MP4 文件输出计算得出的常规 GOP 距离。 通过 HLS 或 DASH 进行传输时，这将提高在曲目之间无缝切换的能力。 
+- 现在可以使用新的内容感知编码预设。 它使用内容感知编码生成一组符合 GOP 标准的 MP4。 不管输入内容是什么，该服务都会对输入内容执行初始的轻型分析。 它使用这些结果来确定最佳层数，以及适当的比特率和分辨率设置，方便通过自适应流式处理进行传递。 此预设特别适用于低复杂性和中复杂性的视频，其中的输出文件比特率较低，但其质量仍会为观众提供良好的体验。 输出将包含视频和音频交错的 MP4 文件。 有关详细信息，请参阅[开放式 API 规范](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)。
+- 改善了标准编码器中大小重设器的性能和多线程处理。 在特定条件下，客户应看到 5-40% 的 VOD 编码获得性能提升。 编码成多比特率的低复杂性内容会显示最高的性能提升。 
+- 现在，在使用基于时间的 GOP 设置时，标准编码会在 VOD 编码期间针对可变帧速率 (VFR) 内容维持常规 GOP 节奏。  这意味着，如果提交的混合帧速率内容存在差异（例如 15-30 fps），客户现在会看到常规的 GOP 距离，此类距离根据自适应比特率流式处理 MP4 文件的输出进行计算。 这会提高通过 HLS 或 DASH 进行交付时在跟踪之间无缝切换的功能。 
 -  改进了可变帧速率 (VFR) 源内容的 AV 同步
 
 ### <a name="video-indexer-video-analytics"></a>视频索引器，视频分析
@@ -111,7 +118,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ###  <a name="media-services-v3"></a>媒体服务 v3  
 
-#### <a name="live-linear-encoding-of-live-events"></a>实时事件的实时线性编码
+#### <a name="live-linear-encoding-of-live-events"></a>直播活动的实时线性编码
 
 媒体服务 v3 宣布推出实时事件的实时线性编码的全天候预览。
 
@@ -137,7 +144,7 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 #### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
 
-我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，它们即将被停用 。 有关停用日期，请参阅此[旧版组件](../previous/legacy-components.md)主题。
+我们宣布弃用 Windows Azure 媒体编码器 (WAME) 和 Azure 媒体编码器 (AME) 媒体处理器，这两个处理器将停用。 有关停用日期，请参阅此[旧组件](../previous/legacy-components.md)主题。
 
 有关详细信息，请参阅[将 WAME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) 和[将 AME 迁移到 Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)。
  
@@ -153,22 +160,22 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="video-subclipping"></a>视频子剪辑
 
-现在，使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
+现在，在使用[作业](https://docs.microsoft.com/rest/api/media/jobs)对视频进行编码时，可以对其进行剪裁或子剪辑。 
 
-此功能适用于使用 [BuiltInStandardEncoderPreset ](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset)预设或 [StandardEncoderPreset ](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
+此功能适用于使用 [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) 预设或 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 预设生成的任何[转换](https://docs.microsoft.com/rest/api/media/transforms)。 
 
-请参阅以下示例：
+请参阅示例：
 
-* [使用 .NET 对视频进行子剪辑](subclip-video-dotnet-howto.md)
+* [使用 .NET 创建视频的子剪辑](subclip-video-dotnet-howto.md)
 * [使用 REST 对视频进行子剪辑](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor 对媒体服务诊断日志和指标的支持
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>针对媒体服务诊断日志和指标的 Azure Monitor 支持
 
 现在可以使用 Azure Monitor 查看媒体服务发出的遥测数据。
 
-* 使用 Azure Monitor 诊断日志来监视由媒体服务密钥传输终结点发送的请求。 
+* 使用 Azure Monitor 诊断日志来监视媒体服务密钥传送终结点发送的请求。 
 * 监视媒体服务[流式处理终结点](streaming-endpoint-concept.md)发出的指标。   
 
 有关详细信息，请参阅[监视媒体服务指标和诊断日志](media-services-metrics-diagnostic-logs.md)。
@@ -185,23 +192,23 @@ Azure Media Player 文档已迁移到 [Azure 文档](../azure-media-player/azure
 
 ### <a name="performance-improvements"></a>性能改进
 
-添加了包括媒体服务性能改进在内的更新。
+添加了包括媒体服务性能改进的更新。
 
 * 更新了支持处理的最大文件大小。 请参阅[配额和限制](limits-quotas-constraints.md)。
 * [编码速度改进](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)。
 
 ## <a name="april-2019"></a>2019 年 4 月
 
-### <a name="new-presets"></a>新预设
+### <a name="new-presets"></a>新增预设
 
 * [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) 已添加到内置分析器预设中。
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) 已添加到内置编码器预设中。 有关详细信息，请参阅[内容感知编码](content-aware-encoding.md)。 
+* 向内置编码器预设添加了 [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。 有关详细信息，请参阅[内容感知型编码](content-aware-encoding.md)。 
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs)。
+动态打包现在支持 Dolby Atmos。 有关详细信息，请参阅[动态打包支持的音频编解码器](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
 
-现在可以指定将应用于流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[将筛选器与流式处理定位符相关联](filters-concept.md#associating-filters-with-streaming-locator)。
+现在，可以指定资产或帐户筛选器的列表，这些筛选器将应用于流定位器。 有关详细信息，请参阅[将筛选器与流定位器相关联](filters-concept.md#associating-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
@@ -351,7 +358,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="net-sdk"></a>.NET SDK
 
-.NET SDK 具有以下功能：
+.NET SDK 中提供了以下功能：
 
 * 转换和作业，用于对媒体内容来进行编码或分析 。 有关示例，请参阅[流式传输文件](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
 * **流式处理定位符**，用于发布内容并将其流式传输到最终用户设备
@@ -362,11 +369,15 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="known-issues"></a>已知问题
 
-* 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
+* 提交作业时，可以指定使用 HTTPS URL、SAS URL 或位于 Azure Blob 存储中的文件路径引入源视频。 媒体服务 v3 目前不支持基于 HTTPS URL 的块式传输编码。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
+
+## <a name="see-also"></a>另请参阅
+
+[从 Media Services V2 迁移到 v3 的迁移指南](migrate-from-v2-to-v3.md#known-issues)。
 
 ## <a name="next-steps"></a>后续步骤
 

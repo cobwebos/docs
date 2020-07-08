@@ -9,11 +9,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710263"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署规划器报告
 本文介绍 Azure Site Recovery 部署规划器针对 Hyper-V 到 Azure 方案生成的 Excel 报表中包含的工作表。
@@ -179,7 +178,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 
 **VM 名称**：生成报表时在 VMListFile 中使用的 VM 名称。 此列还列出附加到 VM 的磁盘 (VHD)。 这些名称包括 Hyper-V 主机名，其中的 VM 是此工具在分析期间发现它们时放置的。
 
-**VM 兼容性**：值为“是”和“是\*”。 ******** **"是"** \*适用于 VM 适合[高级 ssd](../virtual-machines/windows/disks-types.md)的实例。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
+**VM 兼容性**：值为“是”和“是\*”。 ******** **是** \*适用于 VM 适合[高级 ssd](../virtual-machines/windows/disks-types.md)的实例。 在这里，所分析的高变动量磁盘或 IOPS 磁盘适合的高级磁盘大小大于映射到磁盘的大小。 存储帐户决定了根据大小对磁盘分类时，可将磁盘归入哪种高级存储磁盘类型： 
 * <128 GB 为 P10。
 * 128 GB 到 256 GB 为 P15。
 * 256 GB 到 512 GB 为 P20。
@@ -187,7 +186,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 * 1,025 GB 到 2,048 GB 为 P40。
 * 2,049 GB 到 4,095 GB 为 P50。
 
-例如，如果某个磁盘的工作负荷特征将其放入 P20 或 P30 类别，但其大小将映射到较低的高级存储磁盘类型，则该工具会将该 VM 标记为 **"是"**\*。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
+例如，如果某个磁盘的工作负荷特征将其放入 P20 或 P30 类别，但其大小将映射到较低的高级存储磁盘类型，则该工具会将该 VM 标记为 **"是"** \* 。 该工具还建议根据建议的高级存储磁盘类型更改源磁盘大小，或者在故障转移后更改目标磁盘类型。
 
 **存储类型**：标准或高级。
 
@@ -271,7 +270,7 @@ Hyper-V 到 Azure 报表的建议表根据选定的所需 RPO 提供以下详细
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery 限制
 下表提供了 Site Recovery 限制。 这些限制基于测试，但无法涵盖所有可能的应用程序 I/O 组合。 实际结果可能因应用程序 I/O 组合而异。 为获得最佳结果，请通过测试性故障转移执行广泛的应用程序测试，获取应用程序的真实性能视图，即使在规划部署后，也应如此。
  
-**复制存储目标** | **源 VM 平均 I/O 大小** |**源 VM 平均数据变动量** | **每天的总源 VM 数据变动量**
+**复限制复制存储目标** | **源 VM 平均 I/O 大小** |**源 VM 平均数据变动量** | **每天的总源 VM 数据变动量**
 ---|---|---|---
 标准存储 | 8 KB | 每个 VM 2 MB/秒 | 每个 VM 168 GB
 高级存储 | 8 KB  | 每个 VM 5 MB/秒 | 每个 VM 421 GB

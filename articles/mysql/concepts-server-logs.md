@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81271975"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的慢查询日志
@@ -23,7 +22,7 @@ ms.locfileid: "81271975"
 
 可以调整的其他参数包括：
 
-- **long_query_time**：如果某个查询花费的时间超过了 long_query_time（以秒为单位），则会记录该查询。 默认值为 10 秒。
+- **long_query_time**：如果某个查询花费的时间超过了 long_query_time（以秒为单位），则会记录该查询。 默认为 10 秒。
 - **log_slow_admin_statements**：如果为 ON，则会在写入到 slow_query_log 的语句中包括管理性语句，例如 ALTER_TABLE 和 ANALYZE_TABLE。
 - **log_queries_not_using_indexes**：确定是否将未使用索引的查询记录到 slow_query_log 中
 - **log_throttle_queries_not_using_indexes**：此参数限制可以写入到慢查询日志的非索引查询的数目。 当 log_queries_not_using_indexes 设置为 ON 时，此参数生效。
@@ -36,31 +35,31 @@ ms.locfileid: "81271975"
 有关慢查询日志参数的完整说明，请参阅 MySQL [慢查询日志文档](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)。
 
 ## <a name="access-slow-query-logs"></a>访问慢查询日志
-可以通过两种方法访问 Azure Database for MySQL 中的慢速查询日志：本地服务器存储或 Azure Monitor 诊断日志。 这是使用参数设置`log_output`的。
+可以通过两种方法访问 Azure Database for MySQL 中的慢查询日志：本地服务器存储或 Azure Monitor 诊断日志。 此项使用 `log_output` 参数进行设置。
 
-对于本地服务器存储，可以使用 Azure 门户或 Azure CLI 来列出和下载缓慢查询日志。 在 Azure 门户中，导航到 Azure 门户中的服务器。 在“监视”标题下，选择“服务器日志”页面。******** 有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问慢查询日志](howto-configure-server-logs-in-cli.md)。 
+对于本地服务器存储，可以使用 Azure 门户或 Azure CLI 列出并下载慢查询日志。 在 Azure 门户中导航到你的服务器。 在“监视”标题下，选择“服务器日志”页面。   有关 Azure CLI 的详细信息，请参阅[使用 Azure CLI 配置和访问慢查询日志](howto-configure-server-logs-in-cli.md)。 
 
-Azure Monitor 诊断日志使你可以通过管道将慢速查询日志传输到 Azure Monitor 日志（Log Analytics）、Azure 存储或事件中心。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
+使用 Azure Monitor 诊断日志可以通过管道将慢查询日志传输到 Azure Monitor 日志 (Log Analytics)、Azure 存储或事件中心。 有关详细信息，请参阅[下文](concepts-server-logs.md#diagnostic-logs)。
 
 ## <a name="local-server-storage-log-retention"></a>本地服务器存储日志保留期
-当记录到服务器的本地存储时，日志的创建时间最多可达7天。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
+将日志记录到服务器的本地存储时，日志在创建后的七天内可用。 如果可用日志的总大小超过了 7 GB，则会删除最旧的文件，直到有空间可用。
 
 日志每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
 
 > [!Note]
-> 以上日志保留期不适用于使用 Azure Monitor 诊断日志进行管道传输的日志。 您可以更改发出的数据接收器的保持期（例如 Azure 存储空间）。
+> 上述日志保留期不适用于使用 Azure Monitor 诊断日志通过管道传输的日志。 可以更改日志所发送到的数据接收器（例如 Azure 存储）的保留期。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 Azure Database for MySQL 集成了 Azure Monitor 诊断日志。 在 MySQL 服务器上启用慢查询日志后，可以选择将它们发送到 Azure Monitor 日志、事件中心或 Azure 存储。 若要详细了解如何启用诊断日志，请参阅[诊断日志文档](../azure-monitor/platform/platform-logs-overview.md)中的操作说明部分。
 
-下表介绍了每个日志中的内容。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
+下表介绍了每个日志中的内容。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
 | **属性** | **说明** |
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated` [UTC] | 记录日志时的时间戳 (UTC) |
-| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `Type` | 日志的类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
 | `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
@@ -78,7 +77,7 @@ Azure Database for MySQL 集成了 Azure Monitor 诊断日志。 在 MySQL 服�
 | `rows_examined_s` | 检查的行数 |
 | `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
 | `insert_id_s` | 插入 ID |
-| `sql_text_s` | 完整的查询 |
+| `sql_text_s` | 完整查询 |
 | `server_id_s` | 服务器 ID |
 | `thread_id_s` | 线程 ID |
 | `\_ResourceId` | 资源 URI |
@@ -143,4 +142,4 @@ Azure Database for MySQL 集成了 Azure Monitor 诊断日志。 在 MySQL 服�
     
 ## <a name="next-steps"></a>后续步骤
 - [如何通过 Azure 门户配置慢速查询日志](howto-configure-server-logs-in-portal.md)
-- [如何从 Azure CLI 配置慢查询日志](howto-configure-server-logs-in-cli.md)。
+- [如何通过 Azure CLI 配置慢速查询日志](howto-configure-server-logs-in-cli.md)。

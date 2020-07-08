@@ -1,6 +1,6 @@
 ---
-title: 列出 Azure 角色定义-Azure RBAC
-description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure 内置和自定义角色。
+title: 列出 Azure 角色定义 - Azure RBAC
+description: 了解如何使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 列出 Azure 内置角色和自定义角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,22 +8,21 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982486"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定义
 
-角色定义是可执行特权的集合，例如读取、写入和删除。 它通常直接称为“角色”。 [Azure 基于角色的访问控制（AZURE RBAC）](overview.md)具有超过120个[内置角色](built-in-roles.md)，也可以创建自己的自定义角色。 本文介绍如何列出可用于授予 Azure 资源访问权限的内置角色和自定义角色。
+角色定义是可执行特权的集合，例如读取、写入和删除。 它通常直接称为“角色”。 [Azure 基于角色的访问控制 (Azure RBAC)](overview.md) 具有超过 120 种[内置角色](built-in-roles.md)，也可以创建自己的自定义角色。 本文介绍如何列出可用于授予 Azure 资源访问权限的内置角色和自定义角色。
 
 若要查看 Azure Active Directory 的管理员角色列表，请参阅 [Azure Active Directory 中的管理员角色权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
@@ -33,13 +32,13 @@ ms.locfileid: "82891256"
 
 按照以下步骤在 Azure 门户中列出所有角色。
 
-1. 在 Azure 门户中单击“所有服务”，然后选择任意范围  。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源    。
+1. 在 Azure 门户中单击“所有服务”，然后选择任意范围。 例如，可以选择“管理组”、“订阅”、“资源组”或某个资源  。
 
 1. 单击特定的资源。
 
-1. 单击“访问控制(IAM)”  。
+1. 单击“访问控制(IAM)”。
 
-1. 单击“角色”选项卡以查看包含所有内置角色和自定义角色的列表  。
+1. 单击“角色”选项卡以查看包含所有内置角色和自定义角色的列表。
 
    可以看到在当前范围分配到每个角色的用户和组的数目。
 
@@ -175,50 +174,56 @@ az role definition list
 以下示例列出了所有可用的角色定义的名称和说明：
 
 ```azurecli
-az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
+az role definition list --output json --query '[].{roleName:roleName, description:description}'
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs"
-}
+```json
+[
+  {
+    "description": "Can manage service and the APIs",
+    "roleName": "API Management Service Contributor"
+  },
+  {
+    "description": "Can manage service but not the APIs",
+    "roleName": "API Management Service Operator Role"
+  },
+  {
+    "description": "Read-only access to service and APIs",
+    "roleName": "API Management Service Reader Role"
+  },
 
-...
+  ...
+
+]
 ```
 
 下面的示例列出了所有内置角色。
 
 ```azurecli
-az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
+az role definition list --custom-role-only false --output json --query '[].{roleName:roleName, description:description, roleType:roleType}'
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs",
-  "roleType": "BuiltInRole"
-}
+```json
+[
+  {
+    "description": "Can manage service and the APIs",
+    "roleName": "API Management Service Contributor",
+    "roleType": "BuiltInRole"
+  },
+  {
+    "description": "Can manage service but not the APIs",
+    "roleName": "API Management Service Operator Role",
+    "roleType": "BuiltInRole"
+  },
+  {
+    "description": "Read-only access to service and APIs",
+    "roleName": "API Management Service Reader Role",
+    "roleType": "BuiltInRole"
+  },
+  
+  ...
 
-...
+]
 ```
 
 ### <a name="list-a-role-definition"></a>列出角色定义
@@ -226,36 +231,36 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 若要列出角色的详细信息，请使用 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。
 
 ```azurecli
-az role definition list --name <role_name>
+az role definition list --name {roleName}
 ```
 
-下面的示例列出了“参与者”  角色定义：
+下面的示例列出了“参与者”角色定义：
 
 ```azurecli
 az role definition list --name "Contributor"
 ```
 
-```Output
+```json
 [
   {
-    "additionalProperties": {},
     "assignableScopes": [
       "/"
     ],
     "description": "Lets you manage everything except access to resources.",
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
     "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
     "permissions": [
       {
         "actions": [
           "*"
         ],
-        "additionalProperties": {},
         "dataActions": [],
         "notActions": [
           "Microsoft.Authorization/*/Delete",
           "Microsoft.Authorization/*/Write",
-          "Microsoft.Authorization/elevateAccess/Action"
+          "Microsoft.Authorization/elevateAccess/Action",
+          "Microsoft.Blueprint/blueprintAssignments/write",
+          "Microsoft.Blueprint/blueprintAssignments/delete"
         ],
         "notDataActions": []
       }
@@ -269,46 +274,57 @@ az role definition list --name "Contributor"
 
 ### <a name="list-permissions-of-a-role-definition"></a>列出角色定义的特权
 
-以下示例仅列出“参与者”角色的“actions”和“notActions”    。
+以下示例仅列出“参与者”角色的“actions”和“notActions”  。
 
 ```azurecli
-az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
+az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
 ```
 
-```Output
-{
-  "actions": [
-    "*"
-  ],
-  "notActions": [
-    "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
-  ]
-}
-```
-
-以下示例仅列出了“虚拟机参与者”角色的“actions”  。
-
-```azurecli
-az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
-```
-
-```Output
+```json
 [
-  "Microsoft.Authorization/*/read",
-  "Microsoft.Compute/availabilitySets/*",
-  "Microsoft.Compute/locations/*",
-  "Microsoft.Compute/virtualMachines/*",
-  "Microsoft.Compute/virtualMachineScaleSets/*",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-  "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+  {
+    "actions": [
+      "*"
+    ],
+    "notActions": [
+      "Microsoft.Authorization/*/Delete",
+      "Microsoft.Authorization/*/Write",
+      "Microsoft.Authorization/elevateAccess/Action",
+      "Microsoft.Blueprint/blueprintAssignments/write",
+      "Microsoft.Blueprint/blueprintAssignments/delete"
+    ]
+  }
+]
+```
 
-  ...
+以下示例仅列出了“虚拟机参与者”角色的“actions”。
 
-  "Microsoft.Storage/storageAccounts/listKeys/action",
-  "Microsoft.Storage/storageAccounts/read"
+```azurecli
+az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'
+```
+
+```json
+[
+  [
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Compute/availabilitySets/*",
+    "Microsoft.Compute/locations/*",
+    "Microsoft.Compute/virtualMachines/*",
+    "Microsoft.Compute/virtualMachineScaleSets/*",
+    "Microsoft.Compute/disks/write",
+    "Microsoft.Compute/disks/read",
+    "Microsoft.Compute/disks/delete",
+    "Microsoft.DevTestLab/schedules/*",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+
+    ...
+
+    "Microsoft.Storage/storageAccounts/listKeys/action",
+    "Microsoft.Storage/storageAccounts/read",
+    "Microsoft.Support/*"
+  ]
 ]
 ```
 
@@ -324,10 +340,10 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
     ```
 
-1. 在 URI 中，将“{scope}”  替换为要列出角色定义的范围。
+1. 在 URI 中，将“{scope}”替换为要列出角色定义的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
@@ -339,7 +355,7 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 1. 将 *{filter}* 替换为筛选角色定义列表时要应用的条件。
 
     > [!div class="mx-tableFixed"]
-    > | “筛选器” | 说明 |
+    > | 筛选器 | 说明 |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | 列出指定范围和任何子范围的角色定义。 |
     > | `$filter=type+eq+'{type}'` | 列出指定类型的角色定义。 角色的类型可以是 `CustomRole` 或 `BuiltInRole`。 |
@@ -395,7 +411,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
 
 ### <a name="list-a-role-definition"></a>列出角色定义
 
-若要列出特定角色的详细信息，请使用[角色定义-获取](/rest/api/authorization/roledefinitions/get)或[角色定义-按 Id 获取](/rest/api/authorization/roledefinitions/getbyid)REST API。
+若要列出特定角色的详细信息，请使用[角色定义 - 获取](/rest/api/authorization/roledefinitions/get)或[角色定义 - 按 ID 获取](/rest/api/authorization/roledefinitions/getbyid) REST API。
 
 1. 从下面的请求开始：
 
@@ -409,7 +425,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. 在 URI 中，将 *{scope}* 替换为要列出其角色定义的范围。
+1. 在 URI 中，将“{scope}”替换为要列出角色定义的范围。
 
     > [!div class="mx-tableFixed"]
     > | 作用域 | 类型 |
@@ -419,9 +435,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | 资源 |
      
-1. 将“{roleDefinitionId}”** 替换为角色定义标识符。
+1. 将“{roleDefinitionId}”替换为角色定义标识符。
 
-以下请求列出了 "[读者](built-in-roles.md#reader)" 角色定义：
+以下请求列出了[读取者](built-in-roles.md#reader) 角色定义：
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01

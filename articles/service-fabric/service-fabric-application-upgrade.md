@@ -4,11 +4,10 @@ description: 本文介绍如何升级 Service Fabric 应用程序，包括选择
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259040"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710314"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric 应用程序升级
 Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，Service Fabric 将新的[应用程序清单](service-fabric-application-and-service-manifests.md)与以前的版本进行比较，并确定应用程序中的哪些服务需要升级。 Service Fabric 会将服务清单中的版本号与前一版中的版本号进行比较。 如果服务未更改，则不升级服务。
@@ -49,7 +48,7 @@ Azure Service Fabric 应用程序是多个服务的集合。 在升级期间，S
 > [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) 群集配置设置必须为 *true* 才能启用上面的规则 2) 和 3)（默认服务更新和删除）。 从 Service Fabric 版本 5.5 开始，将支持此功能。
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>使用 HTTPS 终结点升级多个应用程序
-请注意，使用 HTTPS  时，不要将相同端口  用于同一应用程序的不同实例。 原因是，Service Fabric 无法升级应用程序实例之一的证书。 例如，如果应用程序 1 或应用程序 2 都要将证书 1 升级为证书 2。 升级时，Service Fabric 可能已使用 http.sys 清除了证书 1 注册，即使其他应用程序仍在使用它，也不例外。 为了防止发生这种情况，Service Fabric 检测到另一个应用程序实例已在带证书的端口上注册（由于 http.sys），导致操作失败。
+请注意，使用 HTTPS 时，不要将相同端口用于同一应用程序的不同实例。 原因是，Service Fabric 无法升级应用程序实例之一的证书。 例如，如果应用程序 1 或应用程序 2 都要将证书 1 升级为证书 2。 升级时，Service Fabric 可能已使用 http.sys 清除了证书 1 注册，即使其他应用程序仍在使用它，也不例外。 为了防止发生这种情况，Service Fabric 检测到另一个应用程序实例已在带证书的端口上注册（由于 http.sys），导致操作失败。
 
 因此，Service Fabric 不支持通过以下方法升级两个不同的服务：在不同的应用程序实例中使用同一端口  。 也就是说，不能对同一端口上的不同服务使用同一证书。 如果需要在同一端口上使用共享证书，请务必将服务放置在具有放置约束的不同计算机上。 或者，如果可以，考虑将 Service Fabric 动态端口用于每个应用程序实例中的各个服务。 
 

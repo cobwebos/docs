@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7aa59f8181ad60b3d43846a3f4f1f471a050b238
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733443"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>将 IoT 设备连接到 Azure：IoT 中心和事件中心
@@ -32,16 +31,16 @@ Azure IoT 中心是连接 IoT 设备的云网关，它会收集数据并促成�
 
 | IoT 功能 | IoT 中心标准层 | IoT 中心基本层 | 事件中心 |
 | --- | --- | --- | --- |
-| 设备到云的消息传递 | ![勾选标记][checkmark] | ![勾选标记][checkmark] | ![勾选标记][checkmark] |
+| 设备到云的消息传送 | ![勾选标记][checkmark] | ![勾选标记][checkmark] | ![勾选标记][checkmark] |
 | 协议：HTTPS、AMQP、基于 WebSocket 的 AMQP | ![勾选标记][checkmark] | ![勾选标记][checkmark] | ![勾选标记][checkmark] |
 | 协议：MQTT、基于 WebSocket 的 MQTT | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 每设备标识 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 从设备上传文件 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
 | 设备预配服务 | ![勾选标记][checkmark] | ![勾选标记][checkmark] |  |
-| 云到设备的消息传递 | ![检查][checkmark] |  |  |
-| 设备孪生和设备管理 | ![检查][checkmark] |  |  |
-| 设备流（预览版） | ![检查][checkmark] |  |  |
-| IoT Edge | ![检查][checkmark] |  |  |
+| 云到设备的消息传送 | ![勾选标记][checkmark] |  |  |
+| 设备孪生和设备管理 | ![勾选标记][checkmark] |  |  |
+| 设备流（预览版） | ![勾选标记][checkmark] |  |  |
+| IoT Edge | ![勾选标记][checkmark] |  |  |
 
 即使唯一的用例是设备到云数据引入，我们也强烈建议使用 IoT 中心，因为它提供专用于 IoT 设备连接的服务。 
 

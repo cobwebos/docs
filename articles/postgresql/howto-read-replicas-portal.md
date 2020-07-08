@@ -5,59 +5,62 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: c7d55a7b10f0c874fd84f32db1dcf21fb60c231f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768950"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636611"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL（单一服务器）中的只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
+## <a name="azure-replication-support"></a>Azure 复制支持
+
+[读取副本](concepts-read-replicas.md)和[逻辑解码](concepts-logical.md)都依赖于 "Postgres 写入" 日志（WAL）来获取详细信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要比读取副本更高的日志记录级别。
+
+若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
+
+* **Off** -将最少的信息放在 WAL 中。 在大多数 Azure Database for PostgreSQL 服务器上，此设置不可用。  
+* **副本**-比**Off**更详细。 这是[读取副本](concepts-read-replicas.md)运行所需的最小日志记录级别。 在大多数服务器上，此设置是默认设置。
+* **逻辑**上比**副本**更详细。 这是要运行的逻辑解码的最小日志记录级别。 读取副本也可以通过此设置运行。
+
+需要在更改此参数后重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
+
 ## <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。 可以通过设置 azure.replication_support 参数对主服务器进行复制准备。 更改此复制参数后，需重启服务器才能使更改生效。 在 Azure 门户中，可以通过单个“启用复制支持”按钮执行这两个步骤。****
 
-1. 在 Azure 门户中，选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。
+1. 在 Azure 门户中，选择要用作主服务器的现有 Azure Database for PostgreSQL 服务器。
 
-2. 在服务器边栏中的“设置”下，选择“复制”。********
+2. 从服务器的菜单中，选择 "**复制**"。 如果 Azure 复制支持至少设置为**副本**，则可以创建读取副本。 
 
-> [!NOTE] 
-> 如果看到“禁用复制支持”**** 灰显，则默认情况下复制设置已在服务器上设置。 可以跳过以下步骤，转去创建只读副本。 
+3. 如果 Azure 复制支持至少设置为**副本**，请设置。 选择“保存”。
 
-3. 选择“启用复制支持”。**** 
+   ![Azure Database for PostgreSQL 复制-设置副本并保存](./media/howto-read-replicas-portal/set-replica-save.png)
 
-   ![启用复制支持](./media/howto-read-replicas-portal/enable-replication-support.png)
+4. 通过选择 **"是"** 重新启动服务器以应用更改。
 
-4. 确认你需要启用复制支持。 此操作会重启主服务器。 
+   ![Azure Database for PostgreSQL-复制-确认重新启动](./media/howto-read-replicas-portal/confirm-restart.png)
 
-   ![确认启用复制支持](./media/howto-read-replicas-portal/confirm-enable-replication.png)
-   
 5. 操作完成后，会收到两个 Azure 门户通知。 一个通知是关于更新服务器参数的。 另一个通知是关于随后立即进行的服务器重启的。
 
-   ![成功通知 - 启用](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![成功通知](./media/howto-read-replicas-portal/success-notifications.png)
 
 6. 刷新 Azure 门户页，更新“复制”工具栏。 现在可以为此服务器创建只读副本。
-
-   ![更新的工具栏](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-启用复制支持是在每个主服务器上进行的一次性操作。 提供“禁用复制支持”按钮是为了方便用户操作。**** 不建议禁用复制支持，除非你确定再也不会在此主服务器上创建副本。 如果主服务器有现有的副本，则不能禁用复制支持。
-
 
 ## <a name="create-a-read-replica"></a>创建只读副本
 若要创建只读副本，请遵循以下步骤：
 
-1. 选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。 
+1. 选择要用作主服务器的现有 Azure Database for PostgreSQL 服务器。 
 
 2. 在服务器边栏中的“设置”下，选择“复制”。********
 
-3. 选择“添加副本”****。
+3. 选择“添加副本”。
 
    ![添加副本](./media/howto-read-replicas-portal/add-replica.png)
 
@@ -100,7 +103,7 @@ ms.locfileid: "76768950"
 
    ![选择副本](./media/howto-read-replicas-portal/select-replica.png)
  
-4. 选择“停止复制”****。
+4. 选择“停止复制”。
 
    ![选择停止复制](./media/howto-read-replicas-portal/select-stop-replication.png)
  
@@ -119,7 +122,7 @@ ms.locfileid: "76768950"
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器。
 
-2. 此时会打开该服务器的“概述”页。**** 选择“删除”。 
+2. 此时会打开该服务器的“概述”页。**** 选择“删除”。
 
    ![在服务器的“概述”页上，选择删除主服务器](./media/howto-read-replicas-portal/delete-server.png)
  
@@ -131,7 +134,7 @@ ms.locfileid: "76768950"
 ## <a name="delete-a-replica"></a>删除副本
 可以像删除主服务器一样删除只读副本。
 
-- 在 Azure 门户中，打开只读副本的“概述”页。**** 选择“删除”。 
+- 在 Azure 门户中，打开只读副本的“概述”页。**** 选择“删除”。
 
    ![在副本的“概述”页上，选择删除该副本](./media/howto-read-replicas-portal/delete-replica.png)
  
@@ -162,7 +165,7 @@ ms.locfileid: "76768950"
 
 1.  在 Azure 门户中，选择 Azure Database for PostgreSQL 主服务器。
 
-2.  选择“指标”****。 在 "**指标**" 窗口中，选择**跨副本的最大延迟**。
+2.  选择“指标”。 在 "**指标**" 窗口中，选择**跨副本的最大延迟**。
 
     ![监视副本的最大滞后时间](./media/howto-read-replicas-portal/select-max-lag.png)
  
@@ -174,7 +177,7 @@ ms.locfileid: "76768950"
 
 1. 在 Azure 门户中，选择 Azure Database for PostgreSQL 只读副本。
 
-2. 选择“指标”****。 在 "**指标**" 窗口中，选择 "**副本滞后**时间"。
+2. 选择“指标”。 在 "**指标**" 窗口中，选择 "**副本滞后**时间"。
 
    ![监视副本滞后时间](./media/howto-read-replicas-portal/select-replica-lag.png)
  

@@ -7,7 +7,6 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83684021"

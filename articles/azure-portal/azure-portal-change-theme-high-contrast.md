@@ -6,16 +6,15 @@ keywords: ''
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: ae135e0d7ac613d78b1c1f76e233503a60570f0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7d17a956faf4080f419bc859c8259018b98626a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764054"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>在 Azure 门户中启用高对比度或更改主题
 

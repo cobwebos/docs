@@ -4,15 +4,14 @@ description: 增加对污点 Vm 的配额限制，提供 Azure 使用情况模�
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 3e6dddfc458f390f5648e23a8a2af8d714de4bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 513bde930f9c7c8892164c50c3866ff6e948ed4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763867"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>污点配额：增加所有 VM 序列的限制
 
@@ -40,15 +39,15 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 > [!NOTE]
 > 你还可以通过单个支持案例为多个区域请求增加配额限制。 有关详细信息，请参阅步骤8。
 
-1. 从 " [Azure 门户](https://portal.azure.com)" 菜单中，选择 "**帮助 + 支持**"。
+1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“帮助和支持”。
 
-   !["帮助 + 支持" 链接](./media/resource-manager-core-quotas-request/help-plus-support.png)
+   ![“帮助 + 支持”链接](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. 在 "**帮助 + 支持**" 中，选择 "**新建支持请求**"。
+1. 在“帮助 + 支持”中，选择“新建支持请求” 。
 
     ![创建新的支持请求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 对于“问题类型”，选择“服务和订阅限制(配额)”********。
+1. 对于 "**问题类型**"，请选择 "**服务和订阅限制（配额）**"。
 
    ![选择问题类型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
@@ -62,7 +61,7 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
 1. 选择 "**下一步：** 用于打开**问题详细信息**的解决方案"。 选择 "**提供详细**信息" 以输入其他信息。
 
-   !["提供详细信息" 链接](./media/resource-manager-core-quotas-request/provide-details-link.png)
+   ![“提供详细信息”链接](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
 1. 在 "**配额详细信息**" 中，执行以下步骤：
 

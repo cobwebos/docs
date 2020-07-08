@@ -14,7 +14,6 @@ ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83682391"

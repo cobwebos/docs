@@ -1,22 +1,21 @@
 ---
 title: 将本地应用与 Cloud App Security Azure AD 集成
 description: 在 Azure Active Directory 中配置本地应用程序，以便与 Microsoft Cloud App Security (MCAS) 配合使用。 使用 MCAS 条件访问应用控制可以基于条件性访问策略实时监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 889168782acabaafa4200a8ebd097e431a68ede3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764564"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>使用 Microsoft Cloud App Security 和 Azure Active Directory 配置实时应用程序访问监视
 在 Azure Active Directory (Azure AD) 中配置本地应用程序，以使用 Microsoft Cloud App Security (MCAS) 进行实时监视。 MCAS 使用条件访问应用控制基于条件性访问策略实时监视和控制会话。 可以将这些策略应用于 Azure Active Directory (Azure AD) 中使用应用程序代理的本地应用程序。

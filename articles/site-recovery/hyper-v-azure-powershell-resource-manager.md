@@ -7,11 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710229"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>使用 PowerShell 和 Azure 资源管理器对 Hyper-V VM 设置到 Azure 的灾难恢复
 
@@ -34,7 +33,7 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 确保已满足以下先决条件：
 
-- 一个 [Microsoft Azure](https://azure.microsoft.com/) 帐户。 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 此外，可以阅读 [Azure Site Recovery Manager 定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
+- [Microsoft Azure](https://azure.microsoft.com/)帐户。 可以从 [免费试用版](https://azure.microsoft.com/pricing/free-trial/)开始。 此外，可以阅读 [Azure Site Recovery Manager 定价](https://azure.microsoft.com/pricing/details/site-recovery/)。
 - Azure PowerShell。 若要深入了解此版本及其安装方法，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。
 
 此外，本文中提及的特定示例要求满足以下先决条件：
@@ -44,9 +43,9 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>步骤 1：登录到 Azure 帐户
 
-1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示输入帐户凭据： `Connect-AzAccount`。
-   - 或者，可以使用**Credential**参数将帐户凭据作为参数包含在`Connect-AzAccount` cmdlet 中。
-   - 如果你是代表租户的 CSP 合作伙伴，请使用其 tenantID 或租户主域名将客户指定为租户。 例如：`Connect-AzAccount -Tenant "fabrikam.com"`
+1. 打开 PowerShell 控制台，并运行以下命令以登录到 Azure 帐户。 该 cmdlet 会打开一个网页，提示输入帐户凭据： `Connect-AzAccount` 。
+   - 或者，可以 `Connect-AzAccount` 使用**Credential**参数将帐户凭据作为参数包含在 cmdlet 中。
+   - 如果你是代表租户的 CSP 合作伙伴，请使用其 tenantID 或租户主域名将客户指定为租户。 例如： `Connect-AzAccount -Tenant "fabrikam.com"`
 1. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
 
    ```azurepowershell
@@ -79,14 +78,14 @@ Azure PowerShell 提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet�
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
    ```
 
-1. 若要获取订阅中资源组的列表，请运行`Get-AzResourceGroup` cmdlet。
+1. 若要获取订阅中资源组的列表，请运行 `Get-AzResourceGroup` cmdlet。
 1. 创建如下所示的新的 Azure 恢复服务保管库：
 
    ```azurepowershell
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-可以使用`Get-AzRecoveryServicesVault` cmdlet 检索现有保管库的列表。
+可以使用 cmdlet 检索现有保管库的列表 `Get-AzRecoveryServicesVault` 。
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>步骤 3：设置恢复服务保管库上下文
 
@@ -106,7 +105,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    ```
 
 1. 此 cmdlet 会启动一个创建该站点所需的站点恢复作业，并返回一个站点恢复作业对象。 等待作业完成，并验证作业已成功完成。
-1. 使用`Get-AzRecoveryServicesAsrJob` cmdlet 检索作业对象，并查看作业的当前状态。
+1. 使用 `Get-AzRecoveryServicesAsrJob` cmdlet 检索作业对象，并查看作业的当前状态。
 1. 生成和下载站点的注册密钥，如下所示：
 
    ```azurepowershell
@@ -130,13 +129,13 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 如果运行的是 Hyper-V 核心服务器，请下载安装程序文件并执行以下操作：
 
-1. 通过运行以下命令，将文件从_azuresiterecoveryprovider.exe_解压缩到本地目录：
+1. 通过运行以下命令，将文件从_AzureSiteRecoveryProvider.exe_提取到本地目录：
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
    ```
 
-1. 运行以下命令：
+1. 运行下面的命令：
 
    ```console
    .\setupdr.exe /i
@@ -216,7 +215,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
    Completed
    ```
 
-1. 更新恢复属性（例如 VM 角色大小），以及在故障转移后将 VM NIC 附加到的 Azure 网络。
+1. 更新各种恢复属性（例如 VM 角色大小），以及进行故障转移后需要将 VM NIC 连接到的 Azure 网络。
 
    ```console
    PS C:\> $nw1 = Get-AzVirtualNetwork -Name "FailoverNw" -ResourceGroupName "MyRG"
@@ -240,9 +239,9 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 > 如果要复制到 Azure 中启用了 CMK 的托管磁盘，请使用 Az PowerShell 3.3.0 向上执行以下步骤：
 >
 > 1. 通过更新 VM 属性启用到托管磁盘的故障转移
-> 1. 使用`Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
-> 1. 使用`New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` cmdlet 创建字典对象，以包含磁盘 ID 到磁盘加密集的映射。 这些磁盘加密集将在目标区域中预先创建。
-> 1. 通过在 DiskIdToDiskEncryptionSetMap 参数中`Set-AzRecoveryServicesAsrReplicationProtectedItem`传递字典对象，使用 CMDLET 更新**DiskIdToDiskEncryptionSetMap** VM 属性。
+> 1. 使用 `Get-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 获取受保护项的每个磁盘的磁盘 ID
+> 1. 使用 cmdlet 创建字典对象 `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` ，以包含磁盘 ID 到磁盘加密集的映射。 这些磁盘加密集将在目标区域中预先创建。
+> 1. `Set-AzRecoveryServicesAsrReplicationProtectedItem`通过在**DiskIdToDiskEncryptionSetMap**参数中传递字典对象，使用 cmdlet 更新 VM 属性。
 
 ## <a name="step-8-run-a-test-failover"></a>步骤 8：运行测试故障转移
 

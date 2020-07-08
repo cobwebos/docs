@@ -6,13 +6,12 @@ ms.author: mhopkins
 ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
-ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512173"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 

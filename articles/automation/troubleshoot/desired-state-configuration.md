@@ -11,7 +11,6 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6e057f5c9525f3b4ca373897c865990eb29835c0
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83681371"
