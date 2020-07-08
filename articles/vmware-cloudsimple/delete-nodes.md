@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024732"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>通过 CloudSimple 从 Azure VMware 解决方案中删除节点
 
 创建 CloudSimple 节点后，将对其进行计量。  必须删除节点以停止对节点进行计数。  删除 Azure 门户中未使用的节点。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 仅在以下条件下才能删除节点：
 
@@ -32,7 +31,7 @@ ms.locfileid: "77024732"
 
 ## <a name="delete-cloudsimple-node"></a>删除 CloudSimple 节点
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”****。
 
 2. 搜索**CloudSimple 节点**。
 

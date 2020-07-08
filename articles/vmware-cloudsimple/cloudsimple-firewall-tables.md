@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025038"
 ---
 # <a name="firewall-tables-overview"></a>防火墙表概述
@@ -23,14 +22,14 @@ ms.locfileid: "77025038"
 
 下表描述了防火墙规则中的参数。
 
-| properties | 详细信息 |
+| Property | 详细信息 |
 | ---------| --------|
-| **Name** | 唯一标识防火墙规则及其用途的名称。 |
+| **名称** | 唯一标识防火墙规则及其用途的名称。 |
 | **Priority** | 介于100和4096之间的数字，其中100是最高优先级。 规则按优先顺序处理。 当流量遇到规则匹配时，将停止规则处理。 因此，优先级较低的规则不会处理具有较高优先级的规则。  请注意避免规则冲突。 |
 | **状态跟踪** | 跟踪可以是无状态（私有云、Internet 或 VPN），也可以是有状态的（公共 IP）。  |
-| 协议  | 选项包括 Any、TCP 或 UDP。 如果需要 ICMP，请使用 Any。 |
+| **协议** | 选项包括 Any、TCP 或 UDP。 如果需要 ICMP，请使用 Any。 |
 | **方向** | 该规则是应用到入站还是出站流量。 |
-| **操作** | 允许或拒绝规则中定义的流量类型。 |
+| **Action** | 允许或拒绝规则中定义的流量类型。 |
 | **源** | IP 地址、无类域间路由（CIDR）块（例如 10.0.0.0/24）或任何。  通过指定范围、服务标记或应用程序安全组，您可以创建更少的安全规则。 |
 | **源端口** | 从中产生网络流量的端口。  可以指定单个端口或端口范围，例如443或8000-8080。 指定范围可以减少创建的安全规则数。 |
 | **目标** | IP 地址、无类域间路由（CIDR）块（例如 10.0.0.0/24）或任何。  通过指定范围、服务标记或应用程序安全组，您可以创建更少的安全规则。  |
@@ -53,12 +52,12 @@ ms.locfileid: "77025038"
 
 将在每个防火墙表上创建以下默认规则。
 
-|Priority|名称|状态跟踪|方向|流量类型|协议|源|Source Port|目标|Destination Port|操作|
+|优先度|“属性”|状态跟踪|方向|流量类型|协议|源|Source Port|目标|Destination Port|操作|
 |--------|----|--------------|---------|------------|--------|------|-----------|-----------|----------------|------|
-|65000|允许-全到 internet|有状态|出站|公共 IP 或 internet 流量|全部|Any|Any|Any|Any|Allow|
-|65001|拒绝-从 internet|有状态|入站|公共 IP 或 internet 流量|全部|Any|Any|Any|Any|拒绝|
-|65002|允许-全部到 intranet|无状态|出站|私有云内部或 VPN 流量|全部|Any|Any|Any|Any|Allow|
-|65003|allow-内部-intranet|无状态|入站|私有云内部或 VPN 流量|全部|Any|Any|Any|Any|Allow|
+|65000|允许-全到 internet|有状态|出站|公共 IP 或 internet 流量|All|Any|任意|任意|任意|允许|
+|65001|拒绝-从 internet|有状态|入站|公共 IP 或 internet 流量|All|Any|任意|任意|任意|拒绝|
+|65002|允许-全部到 intranet|无状态|出站|私有云内部或 VPN 流量|All|Any|任意|任意|任意|允许|
+|65003|allow-内部-intranet|无状态|入站|私有云内部或 VPN 流量|All|Any|任意|任意|任意|允许|
 
 ## <a name="next-steps"></a>后续步骤
 

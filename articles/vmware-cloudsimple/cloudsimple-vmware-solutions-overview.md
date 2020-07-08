@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024868"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>什么是 Azure VMware 解决方案（通过 CloudSimple）
@@ -34,7 +33,7 @@ ms.locfileid: "77024868"
 * 管理功能，例如活动管理、使用情况、计费/计量和用户管理。
 * 全天候客户支持。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 
 * **操作连续性**。 CloudSimple 提供对 VMware 平台的本机访问。 CloudSimple 体系结构与现有的兼容：
     * 应用程序
@@ -47,7 +46,7 @@ ms.locfileid: "77024868"
     * 进程
 * **无**重新训练。 VMware 平台兼容性使您可以使用现有的技能和知识。
 * **基础结构灵活性**。 您不必再预测所有容量需求，最终会浪费容量或基础结构。 CloudSimple 作为云服务提供，你可以随时添加或减少容量
-* **安全性。** 通过 Azure 访问 CloudSimple 环境提供内置 DDoS 防护和安全监视功能。
+* **安全性**。 通过 Azure 访问 CloudSimple 环境提供内置 DDoS 防护和安全监视功能。
 * **成本较低**。 CloudSimple 平台经过高度设计，提供了高水平的自动化、运营效率和规模经济。 此外，CloudSimple 发布了一个解决方案体系结构，该体系结构利用了公有云中的 VMware，降低了成本。 例如 Azure AD、备份到 Azure 存储、应用程序网关、负载均衡器和其他。
 * **新的混合平台**。 利用该服务，可以对 Azure 的其余部分进行高速、低延迟的访问。 此外，通过 CloudSimple 管理，可以使用相同的 UI 和 API 来统一管理 VMware 虚拟机以及其他 Azure 的 Azure。 你的开发团队可以采用集成、一致的方式利用公共和私有平台。
 * **基础结构监视、故障排除和支持**。 CloudSimple 将底层基础结构作为一种服务运行。 将自动替换失败的硬件。 你可以专注于消耗，同时 CloudSimple 可以确保环境顺利运行。

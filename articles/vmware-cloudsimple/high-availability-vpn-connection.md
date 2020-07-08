@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025259"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple 的 VPN 网关的高可用性连接
@@ -21,7 +20,7 @@ ms.locfileid: "77025259"
 
 本指南介绍为 IPsec 站点到站点 VPN 高可用性连接配置本地防火墙的步骤。 详细步骤特定于本地防火墙的类型。 作为示例，本指南提供了两种类型的防火墙的步骤： Cisco ASA 和 Palo Alto 网络。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在配置本地防火墙之前，请完成以下任务。
 
@@ -97,7 +96,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. 配置转换集
 
-配置转换集（TS），其中必须包含关键字```ikev1```。 TS 中指定的加密和哈希属性必须与[CLOUDSIMPLE VPN 网关的默认配置](cloudsimple-vpn-gateways.md)中列出的参数匹配。
+配置转换集（TS），其中必须包含关键字 ```ikev1``` 。 TS 中指定的加密和哈希属性必须与[CLOUDSIMPLE VPN 网关的默认配置](cloudsimple-vpn-gateways.md)中列出的参数匹配。
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -147,7 +146,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. 创建主要和辅助隧道接口
 
-登录到 Palo Alto 防火墙，选择 "**网络** > **接口** > " "**隧道** > " "**添加**"，配置以下字段，然后单击 **"确定"**。
+登录到 Palo Alto 防火墙，选择 "**网络**接口" "隧道" "  >  **Interfaces**  >  **Tunnel**  >  **添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 接口名称。 第一个字段为会自动填充，关键字为 "隧道"。 在相邻字段中输入介于1到9999之间的任意数字。 此接口将用作主隧道接口，用于在本地数据中心和私有云之间传输站点到站点通信。
 * 备注。 输入注释以方便识别隧道的用途
@@ -162,12 +161,12 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 若要访问 CloudSimple 私有云子网，需要路由到本地子网。
 
-选择 **"网络** > **虚拟路由器** > *默认* > **静态路由** > " "**添加**"，配置以下字段，然后单击 **"确定"**。
+选择 "**网络**  >  **虚拟路由器**  >  *默认*  >  **静态路由**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 名称： 输入任意名称，以便轻松识别路由的用途。
 * 目标。 指定要从本地通过 S2S 隧道接口访问的 CloudSimple 私有云子网
 * 接口。 从下拉列表中选择在步骤1中创建的主隧道接口（第2部分）。 在此示例中，它是隧道。
-* 下一个跃点。 选择 "**无**"。
+* 下一个跃点。 选择“无”。
 * 管理距离。 保留默认值。
 * 跃点数。 输入介于1到65535之间的任何值。 关键是要为与主隧道接口对应的路由输入较低的跃点数，与使以前的路由首选的路由对应的辅助隧道接口相比。 如果隧道的指标值为20，而对于隧道的指标值为30，则优先级值为30。
 * 路由表。 保留默认值。
@@ -180,7 +179,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 定义一个加密配置文件，该配置文件指定用于在 IKEv1 阶段1中设置 VPN 隧道的标识、身份验证和加密的协议和算法。
 
-选择**网络** > **展开 "网络配置文件** > " "**IKE 加密** > " "**添加**"，配置以下字段，然后单击 **"确定"**。
+选择**网络**  >  **展开 "网络配置文件**  >  " "**IKE 加密**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 名称： 输入任何 IKE 加密配置文件的名称。
 * DH 组。 单击 "**添加**"，然后选择相应的 DH 组。
@@ -193,13 +192,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 定义 IKE 网关，以在每个 VPN 隧道端之间建立对等节点之间的通信。
 
-选择 "**网络** > **展开网络配置文件** > **IKE Gateways** > " "**添加**"，配置以下字段，然后单击 **"确定"**。
+选择 "**网络**  >  **展开网络配置文件**  >  **IKE Gateways**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
 
 常规选项卡：
 
 * 名称： 输入要与主 CloudSimple VPN 对等机对等互连的 IKE 网关的名称。
 * 版本。 选择 "**仅限 IKEv1" 模式**。
-* 地址类型。 选择“IPv4”。 
+* 地址类型。 选择“IPv4”。
 * 接口。 选择面向公众的或外部接口。
 * 本地 IP 地址。 保留默认值。
 * 对等 IP 地址类型。 选择**IP**。
@@ -224,7 +223,7 @@ IKEv1
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. 定义 IPSEC 加密配置文件
 
-选择**网络** > **展开 "网络配置文件** > " "**IPSEC 加密** > **添加**"，配置以下字段，然后单击 **"确定"**。
+选择**网络**  >  **展开 "网络配置文件**  >  " "**IPSEC 加密**  >  **添加**"，配置以下字段，然后单击 **"确定"**。
 
 * 名称： 输入 IPsec 加密配置文件的名称。
 * IPsec 协议。 选择 " **ESP**"。
@@ -238,7 +237,7 @@ IKEv1
 
 ### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. 为隧道监视定义监视器配置文件
 
-选择**网络** > **展开网络配置文件** > **监视器** > **添加**，配置以下字段，然后单击**确定**。
+选择**网络**  >  **展开网络配置文件**  >  **监视器**  >  **添加**，配置以下字段，然后单击**确定**。
 
 * 名称： 输入要用于隧道监视的监视配置文件的任何名称，以主动反应故障。
 * 采取. 选择 "**故障转移**"。
@@ -247,14 +246,14 @@ IKEv1
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. 设置主和辅助 IPsec 隧道。
 
-选择 "**网络** > **IPsec 隧道** > " "**添加**"，配置以下字段，然后单击 **"确定"**。
+选择 "**网络**  >  **IPsec 隧道**  >  " "**添加**"，配置以下字段，然后单击 **"确定"**。
 
 常规选项卡：
 
 * 名称： 输入要与 primary CloudSimple VPN 对等节点对等互连的主 IPSEC 隧道的名称。
 * 隧道接口。 选择主隧道接口。
 * 键入 。 保留默认值。
-* 地址类型。 选择“IPv4”。 
+* 地址类型。 选择“IPv4”。
 * IKE 网关。 选择主 IKE 网关。
 * IPsec 加密配置文件。 选择主 IPsec 配置文件。 选择 "**显示高级选项**"。
 * 启用重放保护。 保留默认值。
@@ -263,7 +262,7 @@ IKEv1
 * 目标 IP。 输入任意 IP 地址，该地址属于允许通过站点到站点连接的 CloudSimple 私有云子网。 请确保允许在 Palo Alto 上的隧道接口（如 10.64.5.2/32 和 10.64.6.2/32）通过站点到站点 VPN 访问 CloudSimple 私有云 IP 地址（例如）。 请参阅以下配置以获取代理 Id。
 * 个人资料。 选择监视配置文件。
 
-"代理 id" 选项卡：单击 " **IPv4** > **添加**" 并配置以下各项：
+"代理 id" 选项卡：单击 " **IPv4**  >  **添加**" 并配置以下各项：
 
 * 代理 ID。 为感兴趣的流量输入任意名称。 一个 IPsec 隧道内可能会有多个代理 Id。
 * Local。 指定允许通过站点到站点 VPN 与私有云子网通信的本地本地子网。

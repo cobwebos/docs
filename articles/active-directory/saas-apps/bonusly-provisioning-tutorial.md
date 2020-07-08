@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7694e441a59680a9b9544d3479100c1f779964ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058818"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>教程：为 Bonusly 配置自动用户预配
@@ -30,7 +29,7 @@ ms.locfileid: "77058818"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中所述的方案假定你已具备以下项：
 
@@ -47,15 +46,15 @@ ms.locfileid: "77058818"
 
 **若要从 Azure AD 应用程序库中添加 Bonusly，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+2. 转到“企业应用”，并选择“所有应用”选项 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
@@ -75,7 +74,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 Bonusly 以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 如果将用户分配到 Bonusly，必须在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 将从设置中排除具有**默认访问**角色的用户。
+* 如果将用户分配到 Bonusly，必须在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>配置 Bonusly 的自动用户预配
 
@@ -94,11 +93,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![应用程序列表中的 Bonusly 链接](common/all-applications.png)
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
 
-4. 将**预配模式**设置为 "**自动**"。
+4. 将“预配模式”设置为“自动”。
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
 
@@ -128,13 +127,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
-10. 单击 **“保存”** 。
+10. 单击“保存” 。
 
 11. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Bonusly”********。
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/UserMappings.png)
 
-12. 在“属性映射”部分中，查看从 Azure AD 同步到 Bonusly 的用户属性****。 选为“匹配”**** 属性的特性用于匹配 Bonusly 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改****。
+12. 在“属性映射”部分中，查看从 Azure AD 同步到 Bonusly 的用户属性****。 选为“匹配”**** 属性的特性用于匹配 Bonusly 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
@@ -148,7 +147,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/ScopeSync.png)
 
-16. 已准备好预配时，单击“保存”****。
+16. 已准备好预配时，单击“保存”。
 
     ![Bonusly 预配](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
 

@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057799"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为 Foodee 配置自动用户预配
@@ -31,7 +30,7 @@ ms.locfileid: "77057799"
 >
 > 此连接器目前提供预览版。 有关预览版功能的 Azure 使用条款功能的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程假定你满足以下先决条件：
 
@@ -49,7 +48,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 分配用户时，请记住以下提示：
 
-* 建议仅将一个 Azure AD 用户分配到 Foodee 以测试自动用户预配的配置。 稍后可以分配其他用户或组。
+* 建议仅将一个 Azure AD 用户分配到 Foodee 以测试自动用户预配的配置。 可稍后再分配其他用户或组。
 
 * 将用户分配到 Foodee 时，请在 "**分配**" 窗格中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有*默认访问*角色的用户。
 
@@ -79,7 +78,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
     ![Azure Active Directory 命令](common/select-azuread.png)
 
-1. 选择 "**企业应用程序** > " "**所有应用程序**"。
+1. 选择 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -100,7 +99,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 通过执行以下操作，在 Azure AD 中配置 Foodee 的自动用户预配：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序** > " "**所有应用程序**"。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -108,17 +107,17 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
     ![应用程序列表中的 Foodee 链接](common/all-applications.png)
 
-1. 选择“预配”**** 选项卡。
+1. 选择“预配”选项卡。
 
-    ![设置选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 1. 在 "**预配模式**" 下拉列表中，选择 "**自动**"。
 
-    ![设置选项卡](common/provisioning-automatic.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
 1. 在 "**管理员凭据**" 下，执行以下操作：
 
-   a. 在 "**租户 URL** " 框中，输入之前检索到的**https：\//concierge.food.ee/scim/v2**值。
+   a. 在 "**租户 URL** " 框中，输入之前检索到的**https： \/ /concierge.food.ee/scim/v2**值。
 
    b. 在 "**机密令牌**" 框中，输入之前检索到的**API 令牌**值。
    
@@ -130,7 +129,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
     !["通知电子邮件" 文本框](common/provisioning-notification-email.png)
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
 1. 在 "**映射**" 下，选择 "**将 Azure Active Directory 用户同步到 Foodee**"。
 
@@ -160,13 +159,13 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
     !["设置作用域" 下拉列表](common/provisioning-scope.png)
 
-1. 准备好进行预配时，请选择 "**保存**"。
+1. 准备好预配时，选择“保存”。
 
     ![设置配置保存按钮](common/provisioning-configuration-save.png)
 
 前面的操作将启动在 "**作用域**" 下拉列表中定义的用户或组的初始同步。 初始同步执行的时间比后续同步长。 有关详细信息，请参阅[预配用户需要多长时间？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 该报告描述了 Azure AD 预配服务对 Foodee 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 该报告描述了 Azure AD 预配服务对 Foodee 执行的所有操作。 有关详细信息，请参阅[检查用户预配状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

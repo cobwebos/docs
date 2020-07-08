@@ -9,17 +9,16 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024834"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>在私有云上为 VMware vRealize Automation 设置 vCenter
 
 可以将 CloudSimple 私有云上的 VMware vCenter 服务器设置为 VMware vRealize 自动化的终结点。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在配置 vCenter 服务器之前完成以下任务：
 
@@ -27,12 +26,12 @@ ms.locfileid: "77024834"
 * [将本地 dns 请求的 dns 转发](on-premises-dns-setup.md)到私有云的 dns 服务器。
 * 提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，使用下表中列出的权限集创建 VRealize Automation IaaS 管理用户。
 
-| 属性值 | 权限 |
+| 特性值 | 权限 |
 ------------ | ------------- |  
 | 数据存储 |  分配空间 <br> 浏览数据存储 |
 | 数据存储群集 | 配置数据存储群集 |
-| Folder | 创建文件夹 <br>删除文件夹 |
-| Global |  管理自定义属性<br>设置自定义属性 |
+| 文件夹 | 创建文件夹 <br>删除文件夹 |
+| 全球 |  管理自定义属性<br>设置自定义属性 |
 | 网络 | 分配网络 |
 | 权限 | 修改权限 |
 | 资源 | 将 VM 分配到资源池<br>迁移关闭的虚拟机<br>迁移已启动的虚拟机 |
@@ -48,14 +47,14 @@ ms.locfileid: "77024834"
 2. 为 vRealize 自动化终结点部署 vSphere 代理。
     1. 中转到 https://*vra-url*： 5480/installer，其中*vra*是用于访问 vRealize 自动化管理 UI 的 url。
     2. 单击**IaaS 安装**程序以下载安装程序。<br>
-    安装程序文件的命名约定为 setup_*vra-url*@5480.exe。
+    安装程序文件的命名约定为 setup_*vra-url* @5480.exe 。
     3. 运行安装程序。 在欢迎屏幕上，单击 "**下一步**"。
     4. 接受 EULA，并单击 "**下一步**"。
     5. 提供登录信息，单击 "**接受证书**"，然后单击 "**下一步**"。
     ![vRA 凭据](media/configure-vra-endpoint-login.png)
     6. 选择 "**自定义安装**和**代理**代理" 并单击 "**下一步**"。
     ![vRA 安装类型](media/configure-vra-endpoint-install-type.png)
-    7. 输入 IaaS 服务器登录信息，然后单击 "**下一步**"。 如果使用 Active Directory，请以**domain\user**格式输入用户名。 否则，使用**user@domain**格式。
+    7. 输入 IaaS 服务器登录信息，然后单击 "**下一步**"。 如果使用 Active Directory，请以**domain\user**格式输入用户名。 否则，使用 **user@domain** 格式。
     ![vRA 登录信息](media/configure-vra-endpoint-account.png)
     8. 对于 "代理设置"，输入**vSphere**作为**代理类型**。 输入代理名称。
     9. 在**管理器服务主机**和 "**模型管理器 Web 服务主机**" 字段中输入 IaaS 服务器 FQDN。 单击 "**测试**" 以测试每个 FQDN 值的连接。 如果测试失败，请修改你的 DNS 设置，以便解析 IaaS 服务器主机名。
@@ -63,14 +62,14 @@ ms.locfileid: "77024834"
 
         ![vRA 安装代理](media/configure-vra-endpoint-proxy.png)
 
-    11. 单击“下一步”。 
-    12. 单击“安装”  。
+    11. 单击“下一步” 。
+    12. 单击“安装” 。
 
 ## <a name="configure-the-vsphere-agent"></a>配置 vSphere 代理
 
 1. 请参阅 https://*vra-url*/vcac 并以**ConfigurationAdmin**身份登录。
-2. 选择**基础结构** > **终结** > **点**。
-3. 选择 "**新建** > **虚拟** > **vSphere**"。
+2. 选择**基础结构**  >  **终结**  >  **点**。
+3. 选择 "**新建**  >  **虚拟**  >  **vSphere**"。
 4. 输入在前面的过程中指定的 vSphere 终结点名称。
 5. 对于 "**地址**"，以 https://*vcenter-fqdn*/Sdk 格式输入私有云 vCenter Server URL，其中*vcenter-fqdn*是 vcenter 服务器的名称。
 6. 输入 CloudSimple 支持为你创建的 vRealize Automation IaaS 管理用户的凭据。
@@ -90,7 +89,7 @@ ms.locfileid: "77024834"
 ..\..\Server\DynamicOps.Vrm.VRMencrypt.exe VRMAgent.exe.config get
 ```
 
-输出如下所示。 该`managementEndpointName`字段的值为终结点名称。
+输出如下所示。 该字段的值 `managementEndpointName` 为终结点名称。
 
 ```
 managementEndpointName: cslab1pc3-vc

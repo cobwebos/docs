@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
 ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77057800"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为自动用户预配配置工具
@@ -41,7 +40,7 @@ ms.locfileid: "77057800"
 
 ## <a name="assign-users-to-harness"></a>将用户分配到工具
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
+Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
 在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问功能。 然后，你可以按照[向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)中的说明分配这些用户或组。
 
@@ -49,11 +48,11 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 * 建议分配单个 Azure AD 用户来测试自动用户预配配置。 稍后可以分配其他用户或组。
 
-* 将用户分配到工具时，必须在**分配**对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有*默认访问*角色的用户。
+* 将用户分配到工具时，必须在**分配**对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="set-up-harness-for-provisioning"></a>设置用于预配的工具
 
-1. 登录到你的[工具管理控制台](https://app.harness.io/#/login)，然后再进入 "**持续安全** > **访问管理**"。
+1. 登录到你的[工具管理控制台](https://app.harness.io/#/login)，然后再进入 "**持续安全**  >  **访问管理**"。
 
     ![工具管理控制台](media/harness-provisioning-tutorial/admin.png)
 
@@ -72,7 +71,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
    a. 在 "**名称**" 框中，为密钥提供名称。  
    b. 在 "**继承自**" 下拉列表中，选择一个选项。 
    
-1. 选择“提交”。 
+1. 选择“提交”。
 
 1. 复制**密钥**以便以后在本教程中使用。
 
@@ -86,7 +85,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 选择 "**企业应用程序** > " "**所有应用程序**"。
+1. 选择 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“所有应用程序”链接](common/enterprise-applications.png)
 
@@ -110,7 +109,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 若要为 Azure AD 中的工具配置自动用户预配，请执行以下操作：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序** > " "**所有应用程序**"。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -130,7 +129,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
  
-   a. 在 "**租户 URL** " 框中**`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`**，输入。  
+   a. 在 "**租户 URL** " 框中，输入 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 。  
    b. 在 "**机密令牌**" 框中，输入你在 "设置用于预配的工具" 部分的步骤6中保存的 SCIM Authentication 令牌值。  
    c. 选择 "**测试连接**" 以确保 Azure AD 可以连接到工具。 如果连接失败，请确保你的工具帐户具有*管理员*权限，然后重试。
 
@@ -138,13 +137,13 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     !["通知电子邮件" 框](common/provisioning-notification-email.png)
 
-1. 选择“保存”。 
+1. 选择“保存”。
 
 1. 在 "**映射**" 下，选择 "**同步用户要利用的 Azure Active Directory**。
 
     ![利用 "将 Azure Active Directory 用户同步到工具" 链接](media/harness-provisioning-tutorial/usermappings.png)
 
-1. 在 "**属性映射**" 下，查看从 Azure AD 同步到工具的用户属性。 选为 "*匹配*" 的属性用于匹配用于更新操作的工具中的用户帐户。 选择“保存”，提交所有更改****。
+1. 在 "**属性映射**" 下，查看从 Azure AD 同步到工具的用户属性。 选为 "*匹配*" 的属性用于匹配用于更新操作的工具中的用户帐户。 选择“保存”，提交所有更改。
 
     ![工具用户 "属性映射" 窗格](media/harness-provisioning-tutorial/userattributes.png)
 
@@ -152,7 +151,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![利用 "将 Azure Active Directory 组同步到工具" 链接](media/harness-provisioning-tutorial/groupmappings.png)
 
-1. 在 "**属性映射**" 下，查看从 Azure AD 同步到工具的组属性。 选为 "*匹配*" 属性的属性用于匹配用于更新操作的工具中的组。 选择“保存”，提交所有更改****。
+1. 在 "**属性映射**" 下，查看从 Azure AD 同步到工具的组属性。 选为 "*匹配*" 属性的属性用于匹配用于更新操作的工具中的组。 选择“保存”，提交所有更改。
 
     ![工具组 "属性映射" 窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
@@ -166,7 +165,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![预配范围](common/provisioning-scope.png)
 
-1. 准备好进行预配时，请选择 "**保存**"。
+1. 准备好预配时，选择“保存”。
 
     !["设置" "保存" 按钮](common/provisioning-configuration-save.png)
 

@@ -17,10 +17,9 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4aa60fb565552961a3c85346c39c318a90c8adc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061288"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>教程：为 MerchLogix 配置自动用户预配
@@ -30,7 +29,7 @@ ms.locfileid: "77061288"
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -48,7 +47,7 @@ ms.locfileid: "77061288"
 
     ![“Azure Active Directory”按钮][1]
 
-2. 导航到 "**企业应用程序** > " "**所有应用程序**"。
+2. 导航到 "**企业应用程序**" "  >  **所有应用程序**"。
 
     ![“企业应用程序”部分][2]
 
@@ -74,7 +73,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 MerchLogix 以测试初始自动用户预配配置。 测试成功后，可以稍后分配其他用户和/或组。
 
-* 将用户分配到 MerchLogix 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有**默认访问**角色的用户。
+* 将用户分配到 MerchLogix 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>配置 MerchLogix 的自动用户预配 
 
@@ -89,9 +88,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 2. 从 SaaS 应用程序列表中选择 "MerchLogix"。
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
-4. 将**预配模式**设置为 "**自动**"。
+4. 将“预配模式”设置为“自动”。
 
     ![MerchLogix 预配](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
@@ -105,19 +104,19 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 7. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
-8. 单击 **“保存”** 。
+8. 单击“保存” 。
 
 9. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 MerchLogix**"。
 
-10. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 MerchLogix 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 MerchLogix 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改****。
+10. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 MerchLogix 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 MerchLogix 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
 11. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 MerchLogix**"。
 
-12. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 MerchLogix 的组属性。 选为 "**匹配**" 属性的特性用于匹配 MerchLogix 中的组以执行更新操作。 选择“保存”按钮以提交任何更改****。
+12. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 MerchLogix 的组属性。 选为 "**匹配**" 属性的特性用于匹配 MerchLogix 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
 13. 若要为 MerchLogix 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-14. 已准备好预配时，单击“保存”****。
+14. 已准备好预配时，单击“保存”。
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步********。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 MerchLogix 执行的所有操作。
 

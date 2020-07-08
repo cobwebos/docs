@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024885"
 ---
 # <a name="vlans-and-subnets-overview"></a>Vlan 和子网概述
@@ -68,7 +67,7 @@ CloudSimple 提供了每个区域的网络，其中部署了 CloudSimple 服务�
 
 指定的 vSphere/vSAN 子网 CIDR 范围分为多个子网。  下表显示了允许的前缀细目的示例。  该示例使用192.168.0.0 作为 CIDR 范围。
 
-例如：
+示例：
 
 | 指定的 vSphere/vSAN 子网 CIDR/prefix | 192.168.0.0/21 | 192.168.0.0/22 | 192.168.0.0/23 | 192.168.0.0/24 |
 |---------------------------------|----------------|----------------|----------------|----------------|

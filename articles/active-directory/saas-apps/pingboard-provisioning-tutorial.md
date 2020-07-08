@@ -16,17 +16,16 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77061269"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
 本教程的目的在于介绍将用户帐户从 Azure Active Directory (Azure AD) 自动预配到 Pingboard 和取消其预配时所要遵循的步骤。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
@@ -64,7 +63,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 选择 Pingboard 实例，并选择“预配”选项卡****。
 
-1. 将“预配模式”**** 设置为“自动”****。
+1. 将“预配模式”设置为“自动”。
 
     ![Pingboard 预配](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
 
@@ -74,7 +73,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
     b. 使用管理员帐户登录到 [Pingboard](https://pingboard.com/)。
 
-    c. 选择 **"外接程序** > **集成** > "**Azure Active Directory**。
+    c. 选择 "**外接程序**  >  **集成**"  >  **Azure Active Directory**。
 
     d. 单击“配置”选项卡并选择“从 Azure 启用用户预配”********。
 
@@ -84,11 +83,11 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址****。 然后选中复选框。
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
 1. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Pingboard**"。
 
-1. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”**** 属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改****。 有关详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
+1. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”**** 属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要为 Pingboard 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”************。
 

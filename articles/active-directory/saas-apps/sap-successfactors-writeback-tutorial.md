@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
 ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77060042"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性写回（预览版）
@@ -63,7 +62,7 @@ ms.locfileid: "77060042"
 * 在同一框中向下滚动，然后选择 "**员工中心 API**"。 添加权限，如下所示，使用 odata api 并使用 ODATA API 进行编辑。 如果你计划使用同一帐户进行写回 SuccessFactors 方案，请选择 "编辑" 选项。 
   > [!div class="mx-imgBorder"]
   > ![读取写入权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* 单击“完成”****。 单击 **“保存更改”** 。
+* 单击“完成”。 单击 **“保存更改”** 。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
@@ -110,19 +109,19 @@ ms.locfileid: "77060042"
 
 2. 在左侧导航栏中选择“Azure Active Directory”。****
 
-3. 依次选择“企业应用程序”、“所有应用程序”。********
+3. 依次选择“企业应用程序”、“所有应用程序”。 
 
-4. 依次选择“添加应用程序”、“所有”类别。********
+4. 依次选择“添加应用程序”、“所有”类别。 
 
 5. 搜索**SuccessFactors 写回**，并从库中添加该应用。
 
-6. 添加应用并显示应用详细信息屏幕后，请选择“预配”****
+6. 添加应用并显示 "应用详细信息" 屏幕后，选择 "**预配**"
 
-7. 将“预配模式”更改为“自动”**** ********
+7. 将**设置****模式**更改为**自动**
 
-8. 按如下所述完成“管理员凭据”部分：****
+8. 按如下所述完成“管理员凭据”部分：
 
-   * **管理员用户名**–输入 SuccessFactors API 用户帐户的用户名，并追加公司 ID。 它采用以下格式： **username\@companyID**
+   * **管理员用户名**–输入 SuccessFactors API 用户帐户的用户名，并追加公司 ID。 它采用以下格式： **username \@ companyID**
 
    * **管理员密码–** 输入 SuccessFactors API 用户帐户的密码。 
 
@@ -132,7 +131,7 @@ ms.locfileid: "77060042"
     > [!NOTE]
     > 如果预配作业进入[隔离](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状态，Azure AD 预配服务将发送电子邮件通知。
 
-   * 单击“测试连接”按钮。**** 如果连接测试成功，请单击顶部的 "**保存**" 按钮。 如果失败，请仔细检查 SuccessFactors 凭据和 URL 是否有效。
+   * 单击“测试连接”按钮。 如果连接测试成功，请单击顶部的“保存”按钮。 如果失败，请仔细检查 SuccessFactors 凭据和 URL 是否有效。
     >[!div class="mx-imgBorder"]
     >![Azure 门户](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
@@ -157,7 +156,7 @@ ms.locfileid: "77060042"
    >[!NOTE]
    >SuccessFactors 写回只支持 email 属性。 请不要使用 "**添加新映射**" 来添加新属性。 
 
-1. 若要保存映射，请单击 "属性映射" 部分顶部的 "**保存**"。
+1. 要保存映射，请单击“属性-映射”部分顶部的“保存”。
 
 属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
 
@@ -166,17 +165,17 @@ ms.locfileid: "77060042"
 SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预配服务。
 
 > [!TIP]
-> 默认情况下，启用预配服务时，它会为范围中的所有用户启动预配操作。 如果映射出错或存在 Workday 数据问题，则预配作业可能会失败并转入隔离状态。 要避免这种情况，最佳做法是先配置“源对象范围”筛选器并使用少量测试用户来测试属性映射，然后再为所有用户启动完全同步****。 验证确保映射正常工作且获得所需结果后，可删除筛选器或逐渐扩大范围以包含更多用户。
+> 默认情况下，启用预配服务时，它会为范围中的所有用户启动预配操作。 如果映射出错或存在 Workday 数据问题，则预配作业可能会失败并转入隔离状态。 要避免这种情况，最佳做法是先配置“源对象范围”筛选器并使用少量测试用户来测试属性映射，然后再为所有用户启动完全同步。 验证确保映射正常工作且获得所需结果后，可删除筛选器或逐渐扩大范围以包含更多用户。
 
-1. 在“预配”选项卡中，将“预配状态”设置为“打开”。************
+1. 在“预配”选项卡中，将“预配状态”设置为“打开”。  
 
-2. 单击 **“保存”** 。
+2. 单击“ **保存**”。
 
 3. 此操作将启动初始同步，这可能会花费几小时的时间，具体取决于 SuccessFactors 租户中的用户数量。 您可以查看进度栏，以跟踪同步周期的进度。 
 
-4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。**** 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 
+4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志列出预配服务执行的所有同步事件，例如，正在从 Workday 中读出哪些用户，随后将其添加或更新到 Active Directory。 
 
-5. 完成初始同步后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示****。
+5. 完成初始同步后，系统会在“预配”选项卡中写入一份审核摘要报告，如下所示。
 
    > [!div class="mx-imgBorder"]
    > ![设置进度栏](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77048893"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区-开源项目
@@ -22,7 +21,7 @@ ms.locfileid: "77048893"
 
 下面列出了一些最常用的 Azure Maps 开源项目和示例。
 
-| 项目名称 | 说明 |
+| 项目名称 | 描述 |
 |-|-|
 | [Azure Maps 代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于在基于 web 的应用中使用 Azure Maps 的代码示例的集合。 |
 | [Azure Maps Gov 云代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于通过 Azure 政府云使用 Azure Maps 的代码示例的集合。 |

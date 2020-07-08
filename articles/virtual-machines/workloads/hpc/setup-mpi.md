@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 469e926932ffa11ef9f2a262b78a587ba435549e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77023984"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>设置 HPC 的消息传递接口
@@ -120,7 +119,7 @@ sudo ./platform_mpi-09.01.04.03r-ce.bin
 
 [下载 INTEL MPI](https://software.intel.com/mpi-library/choose-download)。
 
-根据版本更改 I_MPI_FABRICS 环境变量。 对于 Intel MPI 2018，使用`I_MPI_FABRICS=shm:ofa`适用于2019的， `I_MPI_FABRICS=shm:ofi`使用。
+根据版本更改 I_MPI_FABRICS 环境变量。 对于 Intel MPI 2018，使用 `I_MPI_FABRICS=shm:ofa` 适用于2019的，使用 `I_MPI_FABRICS=shm:ofi` 。
 
 默认情况下，进程固定适用于15、30和 60 PPN。
 
@@ -141,7 +140,7 @@ CC=<mpi-install-path/bin/mpicc>CXX=<mpi-install-path/bin/mpicxx> ./configure
 make
 ```
 
-MPI 基准位于文件夹`mpi/`下。
+MPI 基准位于 `mpi/` 文件夹下。
 
 
 ## <a name="discover-partition-keys"></a>发现分区键

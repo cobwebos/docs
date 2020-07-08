@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025361"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>通过 CloudSimple 门户管理 Azure VMware 解决方案上的帐户
@@ -35,6 +34,6 @@ ms.locfileid: "77025361"
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple 运算符访问
 
-操作员访问设置允许支持工程师登录到 CloudSimple 门户，从而帮助你进行故障排除。  默认情况下，此设置处于启用状态。 支持工程师在登录到你的客户帐户后执行的所有操作都将记录下来，可供你在**活动** > **审核**页上查看。
+操作员访问设置允许支持工程师登录到 CloudSimple 门户，从而帮助你进行故障排除。  默认情况下，此设置处于启用状态。 支持工程师在登录到你的客户帐户后执行的所有操作都将记录下来，可供你在**活动**  >  **审核**页上查看。
 
 单击 " **CloudSimple 操作员访问已启用**" 切换，打开或关闭访问权限。

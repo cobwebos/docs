@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019751"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>使用 Azure Data Box 将数据迁移到 Azure VMware 解决方案
@@ -21,7 +20,7 @@ ms.locfileid: "77019751"
 
 通过使用 Data Box，你可以将 VMware 数据大容量迁移到私有云。 通过网络文件系统（NFS）协议将本地 VMware vSphere 环境中的数据复制到 Data Box。 大容量数据迁移涉及将虚拟机、配置和关联数据的时间点副本保存到 Data Box，然后手动将其传送到 Azure。
 
-本文介绍以下内容：
+本文介绍：
 
 * 设置 Data Box。
 * 通过 NFS 将数据从本地 VMware 环境复制到 Data Box。
@@ -38,7 +37,7 @@ ms.locfileid: "77019751"
 * 迁移虚拟机数据以设置开发和测试环境。
 * 迁移大量虚拟机模板、ISO 文件和虚拟机磁盘。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 * 检查先决条件，并[按 Azure 门户顺序 Data Box](../databox/data-box-deploy-ordered.md) 。 在订单过程中，你必须选择启用 Blob 存储的存储帐户。 收到 Data Box 设备后，将其连接到本地网络，并使用可从 vSphere 管理网络访问的 IP 地址[设置设备](../databox/data-box-deploy-set-up.md)。
 
@@ -54,7 +53,7 @@ ms.locfileid: "77019751"
 
     ![配置 NFS 客户端访问 1](media/nfs-client-access.png)
 
-2. 输入 VMware ESXi 主机的 IP 地址，然后选择 "**添加**"。 可以通过重复此步骤来配置 vSphere 群集中所有主机的访问权限。 选择“确定”  。
+2. 输入 VMware ESXi 主机的 IP 地址，然后选择 "**添加**"。 可以通过重复此步骤来配置 vSphere 群集中所有主机的访问权限。 选择“确定”。
 
     ![配置 NFS 客户端访问 2](media/nfs-client-access2.png)
 > [!IMPORTANT]
@@ -91,7 +90,7 @@ ms.locfileid: "77019751"
 
    ![添加新的数据存储-NFS 版本](media/databox-migration-add-datastore-nfs-version.png)
 
-5. 在向导的步骤3中，指定数据存储、路径和服务器的名称。 你可以使用服务器的 Data Box 的 IP 地址。 文件夹路径将采用`/<StorageAccountName_BlockBlob>/<ContainerName>/`格式。
+5. 在向导的步骤3中，指定数据存储、路径和服务器的名称。 你可以使用服务器的 Data Box 的 IP 地址。 文件夹路径将采用 `/<StorageAccountName_BlockBlob>/<ContainerName>/` 格式。
 
    ![添加新的数据存储-NFS 配置](media/databox-migration-add-datastore-nfs-configuration.png)
 
@@ -133,7 +132,7 @@ ms.locfileid: "77019751"
 
 ### <a name="clone-a-virtual-machine-or-a-virtual-machine-template-to-the-data-box-datastore"></a>将虚拟机或虚拟机模板克隆到 Data Box 的数据存储
 
-1. 右键单击要克隆的虚拟机或虚拟机模板。 选择 "**克隆** > **到虚拟机**"。
+1. 右键单击要克隆的虚拟机或虚拟机模板。 选择 "**克隆**  >  **到虚拟机**"。
 
     ![虚拟机克隆](media/databox-migration-vm-clone.png)
 
@@ -227,12 +226,12 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
 
 4. [在 Linux 虚拟机上安装 AzCopy](../storage/common/storage-use-azcopy-v10.md)。
 
-5. 使用 AzCopy 将数据从 Azure Blob 存储下载到托管磁盘。  命令语法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"`。  将`<storage-account-name>`替换为你的 Azure 存储帐户`<container-name>`名称，将替换为保存通过 Data Box 复制的数据的容器。
+5. 使用 AzCopy 将数据从 Azure Blob 存储下载到托管磁盘。  命令语法： `azcopy copy "https://<storage-account-name>.blob.core.windows.net/<container-name>/*" "<local-directory-path>/"` 。  将替换 `<storage-account-name>` 为你的 Azure 存储帐户名称，将替换为 `<container-name>` 保存通过 Data Box 复制的数据的容器。
 
 6. 在 Linux 虚拟机上安装 NFS 服务器：
 
-    - 在 Ubuntu/Debian 分发上： `sudo apt install nfs-kernel-server`。
-    - 在企业 Linux 发行版上`sudo yum install nfs-utils`：。
+    - 在 Ubuntu/Debian 分发上： `sudo apt install nfs-kernel-server` 。
+    - 在企业 Linux 发行版上： `sudo yum install nfs-utils` 。
 
 7. 更改已复制 Azure Blob 存储中的数据的托管磁盘上文件夹的权限。  更改要作为 NFS 共享导出的所有文件夹的权限。
 
@@ -241,7 +240,7 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
     chown nfsnobody:nfsnobody /<folder>/<subfolder>
     ```
 
-8. 通过编辑`/etc/exports`文件为客户端 IP 地址分配权限，以访问 NFS 共享。
+8. 通过编辑文件为客户端 IP 地址分配权限，以访问 NFS 共享 `/etc/exports` 。
 
     ```bash
     sudo vi /etc/exports
@@ -256,9 +255,9 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
     .
     ```
 
-9. 使用`sudo exportfs -a`命令导出 NFS 共享。
+9. 使用命令导出 NFS 共享 `sudo exportfs -a` 。
 
-10. 使用`sudo systemctl restart nfs-kernel-server`命令重新启动 NFS 内核服务器。
+10. 使用命令重新启动 NFS 内核服务器 `sudo systemctl restart nfs-kernel-server` 。
 
 
 ### <a name="mount-the-linux-virtual-machine-nfs-share-as-a-datastore-on-a-private-cloud-vcenter-cluster-and-then-copy-data"></a>在私有云 vCenter 群集上装载 Linux 虚拟机 NFS 共享作为数据存储，然后复制数据
@@ -279,7 +278,7 @@ Data Box 的订单状态显示为 "已完成" 后，将在 Azure 存储帐户中
 
    ![添加新的数据存储-NFS 版本](media/databox-migration-add-datastore-nfs-version.png)
 
-5. 在向导的步骤3中，指定数据存储、路径和服务器的名称。  你可以为服务器使用 Linux 虚拟机的 IP 地址。  文件夹路径将采用`/<folder>/<subfolder>/`格式。
+5. 在向导的步骤3中，指定数据存储、路径和服务器的名称。  你可以为服务器使用 Linux 虚拟机的 IP 地址。  文件夹路径将采用 `/<folder>/<subfolder>/` 格式。
 
    ![添加新的数据存储-NFS 配置](media/databox-migration-add-datastore-nfs-configuration.png)
 

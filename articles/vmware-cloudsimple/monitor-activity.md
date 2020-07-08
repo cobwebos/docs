@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019666"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>按 CloudSimple 活动监视 VMware 解决方案
@@ -26,7 +25,7 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-访问[CloudSimple 门户](access-cloudsimple-portal.md)。
+访问 [CloudSimple 门户](access-cloudsimple-portal.md)。
 
 ## <a name="activity-information"></a>活动信息
 
@@ -46,15 +45,15 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 
 以下信息列可用于警报。 单击 "**编辑列**"，然后选择要查看的列。
 
-| 列 | 说明 |
+| 列 | 描述 |
 ------------ | ------------- |
 | 警报类型 | 警报的类别。|
 | 时间 | 警报发生的时间。 |
-| 严重性 | 警报的重要性。|
+| severity | 警报的重要性。|
 | 资源名称 | 分配给资源的名称，如私有云名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 资源 ID | 资源的标识符。 |
-| 说明 | 触发警报的说明。 |
+| 描述 | 触发警报的说明。 |
 | 已确认 | 指示是否确认了警报。 |
 
 ## <a name="events"></a>事件
@@ -67,10 +66,10 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 ------------ | ------------- |
 | 时间 | 事件发生的日期和时间。 |
 | 事件类型 | 标识事件的数值代码。 |
-| 严重性 | 事件严重性。|
+| severity | 事件严重性。|
 | 资源名称 | 分配给资源的名称，如私有云名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
-| 说明 | 触发警报的说明。 |
+| 描述 | 触发警报的说明。 |
 
 ## <a name="tasks"></a>任务
 
@@ -78,19 +77,19 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 
 以下信息列可用于警报。 单击 "**编辑列**"，然后选择要查看的列。
 
-| 列 | 说明 |
+| 列 | 描述 |
 ------------ | ------------- |
 | 任务 ID | 任务的唯一标识符。 |
-| Operation | 任务执行的操作。 |
-| User | 用户已分配完成任务。 |
+| 操作 | 任务执行的操作。 |
+| 用户 | 用户已分配完成任务。 |
 | 资源名称 | 分配给资源的名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 资源 ID | 资源的标识符。 |
-| 开始 | 任务的开始时间。 |
+| Start | 任务的开始时间。 |
 | 结束 | 任务的结束时间。 |
 | 状态 | 当前任务状态。 |
 | 已用时间 | 完成任务所用的时间（如果已完成）或当前正在进行（如果正在进行）。 |
-| 说明 | 任务说明。 |
+| 描述 | 任务说明。 |
 
 ## <a name="audit"></a>审核
 
@@ -101,14 +100,14 @@ CloudSimple 活动日志提供对 CloudSimple 门户上完成的操作的见解�
 | 列 | 说明 |
 ------------ | ------------- |
 | 时间 | 审核条目的时间。 |
-| Operation | 任务执行的操作。 |
-| User | 分配给任务的用户。 |
+| 操作 | 任务执行的操作。 |
+| 用户 | 分配给任务的用户。 |
 | 资源名称 | 分配给资源的名称。 |
 | 资源类型 | 资源类别：私有云、云架。 |
 | 资源 ID | 资源的标识符。 |
 | 结果 | 活动的结果，如**Success**。 |
 | 所用时间 | 完成任务的时间。 |
-| 说明 | 操作的说明。 |
+| 描述 | 操作的说明。 |
 
 ## <a name="next-steps"></a>后续步骤
 

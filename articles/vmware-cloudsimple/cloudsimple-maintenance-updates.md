@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025021"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple 维护和更新
@@ -39,8 +38,8 @@ CloudSimple 还会持续监视以下故障：
 * 物理 NIC 端口
 * 服务器
 * 转动
-* 电源
-* 交换机
+* 强力
+* 开关
 * 交换机端口
 
 如果某个磁盘或节点发生故障，则会自动将新的节点添加到受影响的 VMware 群集，以使其立即返回到运行状况。
@@ -97,7 +96,7 @@ CloudSimple 负责在私有云中对 VMware 软件（ESXi、vCenter、PSC 和 NS
 软件更新包括：
 
 * **修补程序**。 VMware 发布的安全修补程序或 bug 修复。
-* **更新**。 VMware stack 组件的次要版本更改。
+* 更新。 VMware stack 组件的次要版本更改。
 * **升级**。 VMware stack 组件的主版本更改。
 
 CloudSimple 可从 VMware 获取关键安全修补程序后立即将其测试。 按照 SLA，CloudSimple 将安全修补程序推出到一周内的私有云环境中。

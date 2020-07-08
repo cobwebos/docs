@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: 9f39277644547a625d87a39681f0c5520996cbd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058332"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>教程：为 Dialpad 配置自动用户预配
@@ -31,7 +30,7 @@ ms.locfileid: "77058332"
 
 > 此连接器目前提供预览版。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -40,7 +39,7 @@ ms.locfileid: "77058332"
 * Dialpad 中具有管理员权限的用户帐户。
 
 ## <a name="assign-users-to-dialpad"></a>将用户分配到 Dialpad
-Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
 在配置和启用自动用户预配之前，应确定 Azure AD 中哪些用户和/或组需要访问 Dialpad。 确定后，可按照此处的说明将这些用户和/或组分配到 Dialpad：
  
@@ -50,7 +49,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
  * 建议将单个 Azure AD 用户分配到 Dialpad 以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 将用户分配到 Dialpad 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有默认访问角色的用户。
+* 将用户分配到 Dialpad 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="setup-dialpad-for-provisioning"></a>设置 Dialpad 以进行预配
 
@@ -80,7 +79,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 中转到 "**企业应用程序**"，然后选择 "**所有应用程序**"。
+2. 转到“企业应用程序”，并选择“所有应用程序”。 
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -113,7 +112,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
 ### <a name="to-configure-automatic-user-provisioning-for-dialpad-in-azure-ad"></a>若要在 Azure AD 中配置 Dialpad 的自动用户预配：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -121,15 +120,15 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![应用程序列表中的 Dialpad 链接](common/all-applications.png)
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
-    ![设置选项卡](common/provisioning.png)
+    ![预配选项卡](common/provisioning.png)
 
-4. 将**预配模式**设置为 "**自动**"。
+4. 将“预配模式”设置为“自动”。
 
-    ![设置选项卡](common/provisioning-automatic.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中`https://dialpad.com/scim` ，输入 "**租户 URL**"。 输入先前从 Dialpad 中的 "**机密令牌**" 中检索并保存的值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Dialpad。 如果连接失败，请确保 Dialpad 帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分中，输入 " `https://dialpad.com/scim` **租户 URL**"。 输入先前从 Dialpad 中的 "**机密令牌**" 中检索并保存的值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Dialpad。 如果连接失败，请确保 Dialpad 帐户具有管理员权限，然后重试。
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -137,13 +136,13 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击 **“保存”** 。
+7. 单击“保存” 。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Dialpad**"。
 
     ![Dialpad 用户映射](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Dialpad 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Dialpad 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改****。
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Dialpad 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Dialpad 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Dialpad 用户属性](media/dialpad-provisioning-tutorial/dialpad07.png)
 
@@ -157,7 +156,7 @@ Azure Active Directory 使用称为 "分配" 的概念来确定哪些用户应�
 
     ![预配范围](common/provisioning-scope.png)
 
-13. 已准备好预配时，单击“保存”****。
+13. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

@@ -9,27 +9,26 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77024817"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>通过 CloudSimple 服务创建 Azure VMware 解决方案
 
 若要通过 CloudSimple 开始使用 Azure VMware 解决方案，请在 Azure 门户中创建 Azure VMware 解决方案 by CloudSimple 服务。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 为网关子网分配 a/28 CIDR 块。 网关子网是每个 CloudSimple 服务所必需的，并且对其创建的区域是唯一的。 网关子网用于边缘网络服务，需要一个/28 个 CIDR 块。 网关子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。 与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”****。
 2. 搜索 " **CloudSimple Services**"。
     ![搜索 CloudSimple 服务](media/create-cloudsimple-service-search.png)
 3. 选择**CloudSimple Services**。
@@ -41,7 +40,7 @@ ms.locfileid: "77024817"
 8. 输入服务网关的 CIDR。 指定不与任何本地子网、Azure 子网或计划 CloudSimple 子网重叠的 a/28 子网。 创建服务后无法更改 CIDR。
 
     ![创建 CloudSimple 服务](media/create-cloudsimple-service.png)
-9. 单击" **确定**"。
+9. 单击“确定”。
 
 创建服务并将其添加到服务列表中。
 

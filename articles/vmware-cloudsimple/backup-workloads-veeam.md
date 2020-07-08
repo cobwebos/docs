@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025123"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 在 CloudSimple 私有云上备份工作负荷 Vm
@@ -98,7 +97,7 @@ Veeam 解决方案要求你执行以下操作：
 8. [Veeam 控制台：配置 Veeam Backup & 恢复软件](#veeam-console-install-veeam-backup-and-recovery-software)
 9. [CloudSimple 门户：设置 Veeam 访问权限和取消提升权限](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
-### <a name="before-you-begin"></a>在开始之前
+### <a name="before-you-begin"></a>开始之前
 
 在开始 Veeam 部署之前，需要满足以下要求：
 
@@ -136,7 +135,7 @@ Veeam 解决方案要求你执行以下操作：
 
 下表提供了端口列表。
 
-| 图标 | 说明 | 图标 | 说明 |
+| 图标 | 描述 | 图标 | 描述 |
 | ------------ | ------------- | ------------ | ------------- |
 | 备份服务器  | vCenter  | HTTPS/TCP  | 443 |
 | 备份服务器 <br> *部署 Veeam 备份 & 复制组件所必需的* | 备份代理  | TCP/UDP  | 135、137到139和445 |
@@ -196,7 +195,7 @@ Veeam 解决方案要求你执行以下操作：
 
 1. 按照[使用 Azure 存储](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)的 Microsoft 视频入门中所述，创建标准类型和 blob 容器的常规用途存储帐户（GPv2）。
 2. 创建 Azure 存储容器，如[创建容器](https://docs.microsoft.com/rest/api/storageservices/create-container)引用中所述。
-2. 从 Microsoft `azcopy`下载适用于 Linux 的命令行实用工具。 你可以在 CentOS 7.5 的 bash shell 中使用以下命令。
+2. `azcopy`从 Microsoft 下载适用于 Linux 的命令行实用工具。 你可以在 CentOS 7.5 的 bash shell 中使用以下命令。
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,7 +205,7 @@ Veeam 解决方案要求你执行以下操作：
     sudo yum -y install icu
     ```
 
-3. 使用`azcopy`命令将备份文件复制到 blob 容器和 blob 容器。  请参阅[在 Linux 上通过 AzCopy 传输数据](../storage/common/storage-use-azcopy-linux.md)了解详细命令。
+3. 使用 `azcopy` 命令将备份文件复制到 blob 容器和 blob 容器。  请参阅[在 Linux 上通过 AzCopy 传输数据](../storage/common/storage-use-azcopy-linux.md)了解详细命令。
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>私有云的 vCenter 控制台：安装 Veeam B&R
 
@@ -276,7 +275,7 @@ Veeam 解决方案要求你执行以下操作：
 ### <a name="veeam-references"></a>Veeam 引用
 
 * [使用的端口](https://helpcenter.veeam.com/docs/backup/vsphere/used_ports.html?ver=95)
-* [必需的权限](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
+* [所需的权限](https://helpcenter.veeam.com/docs/backup/vsphere/required_permissions.html?ver=95)
 * [系统要求](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)
 * [& 复制安装 Veeam 备份](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)
 * [适用于 Linux 的多 OS FLR 和存储库支持所需的模块和权限](https://www.veeam.com/kb2216)
@@ -291,7 +290,7 @@ Veeam 解决方案要求你执行以下操作：
 * [在 Azure 门户中创建 Linux 虚拟机](../virtual-machines/linux/quick-create-portal.md)
 * [如何在 Azure 门户中将托管的数据磁盘附加到 Windows VM](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [通过 Azure 存储入门-视频](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Create Container](https://docs.microsoft.com/rest/api/storageservices/create-container)
+* [创建容器](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [使用 AzCopy on Linux 传输数据](../storage/common/storage-use-azcopy-linux.md)
 
 ### <a name="vmware-references"></a>VMware 引用

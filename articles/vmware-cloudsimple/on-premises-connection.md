@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77019615"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>使用 ExpressRoute 从本地连接到 CloudSimple
@@ -21,11 +20,11 @@ ms.locfileid: "77019615"
 
 [![本地 ExpressRoute 连接-Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 从本地建立 Global Reach 连接需要一个 **/29**网络地址块。  /29 地址空间用于 ExpressRoute 线路之间的传输网络。  传输网络不应与任何 Azure 虚拟网络、本地网络或 CloudSimple 私有云网络重叠。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 需要使用 Azure ExpressRoute 线路，然后才能建立线路与 CloudSimple 私有云网络之间的连接。
 * 需要用户有权在 ExpressRoute 线路上创建授权密钥。
@@ -61,7 +60,7 @@ ms.locfileid: "77019615"
     [![ExpressRoute 线路授权复制](media/azure-expressroute-transit-authorization-copy.png)](media/azure-expressroute-transit-authorization-copy.png)
 
     > [!IMPORTANT]
-    > 必须从 UI 复制**资源 ID** ，并在提供支持时将其```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>```设置为格式。
+    > 必须从 UI 复制**资源 ID** ，并在 ```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` 提供支持时将其设置为格式。
 
 6. 为要创建的连接提供<a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">支持</a>的票证。
     * 问题类型：**技术**

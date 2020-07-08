@@ -16,10 +16,9 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77058310"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
@@ -93,7 +92,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 7. 选择 Cerner Central 的实例，然后选择“预配”**** 选项卡。
 
-8. 将**预配模式**设置为 "**自动**"。
+8. 将“预配模式”设置为“自动”。
 
    ![Cerner Central 预配](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
@@ -111,13 +110,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在“通知电子邮件”**** 字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 
 1. 在“属性映射”部分中，查看要从 Azure AD 同步到 Cerner Central 的用户和组属性****。 选为“匹配”属性的特性将用于匹配 Cerner Central 中的用户帐户和组以执行更新操作****。 选择“保存”按钮以提交任何更改。
 
 1. 若要为 Cerner Central 启用 Azure AD 预配服务，请在“设置”**** 部分中将“预配状态”更改**** 为“启用”****
 
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 
 这将开始对在“用户和组”部分中分配给 Cerner Central 的任何用户和/或组进行初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”**** 部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Cerner Central 应用执行的所有操作。
 

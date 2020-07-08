@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77025055"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple 有关 VMware 解决方案的常见问题
@@ -33,7 +32,7 @@ CloudSimple 在美国东部、美国西部和西欧地区提供，即将推出�
 
 **如何实现为 CloudSimple 启用我的订阅？**
 
-你可以在上[azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com)联系你的 Microsoft 帐户代表，为 CloudSimple 服务启用订阅。 在要为其启用 CloudSimple 服务的电子邮件中提供订阅 ID。  
+你可以在上联系你的 Microsoft 帐户代表 [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) ，为 CloudSimple 服务启用订阅。 在要为其启用 CloudSimple 服务的电子邮件中提供订阅 ID。  
 
 **如何实现访问 CloudSimple 门户？**
 

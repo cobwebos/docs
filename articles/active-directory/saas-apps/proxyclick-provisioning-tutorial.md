@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: 95cb0371c4b2181d8f09991fe6e652c0e939f3e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77063350"
 ---
 # <a name="tutorial-configure-proxyclick-for-automatic-user-provisioning"></a>教程：为 Proxyclick 配置自动用户预配
@@ -31,7 +30,7 @@ ms.locfileid: "77063350"
 >
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -49,7 +48,7 @@ ms.locfileid: "77063350"
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 中转到 "**企业应用程序**"，然后选择 "**所有应用程序**"。
+2. 转到“企业应用程序”，并选择“所有应用程序”。 
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -63,7 +62,7 @@ ms.locfileid: "77063350"
 
 ## <a name="assigning-users-to-proxyclick"></a>将用户分配到 Proxyclick
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
 在配置和启用自动用户预配之前，应确定 Azure AD 中哪些用户和/或组需要访问 Proxyclick。 确定后，可按照此处的说明将这些用户和/或组分配到 Proxyclick：
 
@@ -73,7 +72,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 Proxyclick 以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 将用户分配到 Proxyclick 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有**默认访问**角色的用户。
+* 将用户分配到 Proxyclick 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="configuring-automatic-user-provisioning-to-proxyclick"></a>配置 Proxyclick 的自动用户预配 
 
@@ -84,7 +83,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-proxyclick-in-azure-ad"></a>若要在 Azure AD 中配置 Proxyclick 的自动用户预配：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -92,17 +91,17 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![应用程序列表中的 Proxyclick 链接](common/all-applications.png)
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
-    ![设置选项卡](common/provisioning.png)
+    ![预配选项卡](common/provisioning.png)
 
-4. 将**预配模式**设置为 "**自动**"。
+4. 将“预配模式”设置为“自动”。
 
-    ![设置选项卡](common/provisioning-automatic.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
 5. 若要检索 Proxyclick 帐户的**租户 URL**和**机密令牌**，请按照步骤6中所述的演练进行操作。
 
-6. 登录到[Proxyclick 管理控制台](https://app.proxyclick.com/login//?destination=%2Fdefault)。 导航到 "**设置** > " "**集成** > " "**浏览 Marketplace**"。
+6. 登录到[Proxyclick 管理控制台](https://app.proxyclick.com/login//?destination=%2Fdefault)。 导航到 "**设置**" "集成" "  >  **Integrations**  >  **浏览 Marketplace**"。
 
     ![Proxyclick 设置](media/proxyclick-provisioning-tutorial/proxyclick09.png)
 
@@ -120,7 +119,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![Proxyclick 用户预配](media/proxyclick-provisioning-tutorial/proxyclick05.png)
 
-    适当的设置配置 UI 现在应显示在 "**设置** > " "**集成**" 下。 选择**Azure AD （用户预配）** 下的**设置**。
+    适当的设置配置 UI 现在应显示在 "**设置**" "  >  **集成**" 下。 选择**Azure AD （用户预配）** 下的**设置**。
 
     ![Proxyclick 创建](media/proxyclick-provisioning-tutorial/proxyclick06.png)
 
@@ -130,19 +129,19 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 7. 填充步骤5中所示的字段后，单击 "**测试连接**" 以确保 Azure AD 可以连接到 Proxyclick。 如果连接失败，请确保 Proxyclick 帐户具有管理员权限，然后重试。
 
-    ![Token](common/provisioning-testconnection-tenanturltoken.png)
+    ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
 8. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”********。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-9. 单击 **“保存”** 。
+9. 单击“保存” 。
 
 10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Proxyclick**"。
 
     ![Proxyclick 用户映射](media/proxyclick-provisioning-tutorial/Proxyclick-user-mappings.png)
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Proxyclick 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Proxyclick 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改****。
+11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Proxyclick 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Proxyclick 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Proxyclick 用户属性](media/proxyclick-provisioning-tutorial/Proxyclick-user-attribute.png)
 
@@ -156,7 +155,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![预配范围](common/provisioning-scope.png)
 
-16. 已准备好预配时，单击“保存”****。
+16. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

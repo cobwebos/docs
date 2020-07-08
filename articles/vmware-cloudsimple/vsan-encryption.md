@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77020635"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>为 CloudSimple 私有云配置 vSAN 加密
@@ -78,8 +77,8 @@ KMS 服务器群集在 Azure 虚拟网络中运行，可通过配置的 Azure Ex
 3. 从 Azure Marketplace 中的映像部署初始 KeyControl 节点。  使用生成的密钥对的公钥，并选择**nsg-hytrust**作为 KeyControl 节点的网络安全组。
 4. 将 KeyControl 的专用 IP 地址转换为静态 IP 地址。
 5. 使用 SSH 连接到 KeyControl VM，使用以前提到的密钥对的公共 IP 地址和私钥。
-6. 当在 SSH shell 中出现提示时`No` ，选择将节点设置为初始 KeyControl 节点。
-7. 通过重复此过程的步骤3-5 添加其他 KeyControl 节点，并`Yes`选择 "添加到现有群集时提示"。
+6. 当在 SSH shell 中出现提示时，选择将 `No` 节点设置为初始 KeyControl 节点。
+7. 通过重复此过程的步骤3-5 添加其他 KeyControl 节点，并选择 " `Yes` 添加到现有群集时提示"。
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI：配置 KMIP 服务器
 
