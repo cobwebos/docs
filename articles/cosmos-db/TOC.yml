@@ -123,7 +123,7 @@
           href: partitioning-overview.md
         - name: 分区和水平扩展
           href: partition-data.md
-        - name: 创建合成分区键
+        - name: 合成分区键
           href: synthetic-partition-keys.md
     - name: 预配的吞吐量
       items:

@@ -5,15 +5,15 @@ author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2d21e081b274bd985c48dac91fff5203a6b5b8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d62f87a6bf33bbbd85b68c9d2e0c6f4a93adf16
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75425995"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044424"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服务更新期间保证流分析作业可靠性
 
@@ -33,6 +33,6 @@ _除了印度中部以外_（其配对区域（即印度南部）不存在流分
 
 * [流分析简介](stream-analytics-introduction.md)
 * [流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [扩展流分析作业](stream-analytics-scale-jobs.md)
+* [缩放流分析作业](stream-analytics-scale-jobs.md)
 * [流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

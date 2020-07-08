@@ -3,13 +3,13 @@ title: 排查常见的 Azure Kubernetes 服务问题
 description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 时遇到的常见问题
 services: container-service
 ms.topic: troubleshooting
-ms.date: 05/16/2020
-ms.openlocfilehash: f9831077d1f2850d39e4ef5e5ba35245f16cd683
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.date: 06/20/2020
+ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724988"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054383"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -31,11 +31,34 @@ ms.locfileid: "83724988"
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 insufficientSubnetSize 错误。 我该怎么办？
 
-使用 Azure CNI 网络插件时，AKS 根据每个节点的“--max-pods”参数来分配 IP 地址。 子网大小必须大于节点数乘以每个节点设置的最大 Pod 数的积。 请参考下面的公式：
+此错误表示某个群集使用的子网在其 CIDR 中不再具有可用的 Ip，因此无法成功分配资源。 对于 Kubenet 群集，要求对于群集中的每个节点都有足够的 IP 空间。 对于 Azure CNI 群集，要求群集中的每个节点和盒的 IP 空间充足。
+详细了解[AZURE CNI 的设计，以便将 ip 分配给](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)pod。
 
-子网大小 > 群集中的节点数（考虑到未来的缩放要求）* 每个节点设置的最大 Pod 数。
+这些错误还会在[AKS 诊断](https://docs.microsoft.com/azure/aks/concepts-diagnostics)中出现，这会主动地显示子网大小不足等问题。
 
-有关详细信息，请参阅[规划群集的 IP 地址](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
+以下三（3）个事例导致子网大小不足错误：
+
+1. AKS Scale 或 AKS Nodepool scale
+   1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of new nodes requested` 。
+   1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
+
+1. AKS Upgrade 或 AKS Nodepool upgrade
+   1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of buffer nodes needed to upgrade` 。
+   1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` 。
+   
+   默认情况下，AKS 群集设置一（1）的 max 电涌（升级缓冲器）值，但可以通过设置[节点池的最大电涌值](upgrade-cluster.md#customize-node-surge-upgrade-preview)来自定义此升级行为，此值将增加完成升级所需的可用 ip 的数量。
+
+1. AKS create 或 AKS Nodepool add
+   1. 如果使用的是 Kubenet，则在 `number of free IPs in the subnet` **小于**时，会发生这种情况 `number of nodes requested for the node pool` 。
+   1. 如果使用 Azure CNI，则在小于时，会发生这种情况 `number of free IPs in the subnet` **less than** `number of nodes requested times (*) the node pool's --max-pod value` 。
+
+可以通过创建新的子网来执行以下缓解措施。 由于无法更新现有子网的 CIDR 范围，需要创建新的子网的权限才能进行缓解。
+
+1. 重建更大 CIDR 范围的新子网是否足以满足操作目标：
+   1. 使用新的所需非重叠范围创建新的子网。
+   1. 在新子网上创建新的 nodepool。
+   1. 排出旧子网中的旧 nodepool 的箱，以将其替换。
+   1. 删除旧的子网和旧的 nodepool。
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。 我该怎么办？
 
@@ -46,6 +69,19 @@ ms.locfileid: "83724988"
 
 有关如何对 Pod 的问题进行故障排除的详细信息，请参阅[调试应用程序](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)。
 
+## <a name="im-receiving-tcp-timeouts-when-using-kubectl-or-other-third-party-tools-connecting-to-the-api-server"></a>`TCP timeouts`当使用 `kubectl` 或其他第三方工具连接到 API 服务器时接收
+AKS 具有 HA 控制平面，可根据内核数垂直缩放，以确保其服务级别目标（Slo）和服务级别协议（Sla）。 如果连接超时，请检查以下内容：
+
+- **所有 API 命令的超时时间是否一致，或只是几次？** 如果只是少数是 `tunnelfront` pod 或 `aks-link` pod，负责节点 > 的控制平面通信，则可能不处于运行状态。 请确保托管此 pod 的节点不会过度使用或在压力下。 请考虑将它们移动到其自己的[ `system` 节点池](use-system-pools.md)。
+- **是否打开了[AKS 限制传出流量文档](limit-egress-traffic.md)中所述的所有所需端口、Fqdn 和 ip？** 否则，多个命令调用可能会失败。
+- **当前 IP 是否包含在[API Ip 授权范围内](api-server-authorized-ip-ranges.md)？** 如果你正在使用此功能，并且你的 IP 未包含在你的调用将被阻止的范围内。 
+- **你的客户端或应用程序是否泄漏了对 API 服务器的调用？** 请确保使用监视而不是频繁的 get 调用，并且第三方应用程序不会泄露此类调用。 例如，Istio 混音器中的 bug 会导致在每次读取机密时都会创建一个新的 API 服务器监视连接。 由于此行为是定期发生的，因此，手表连接会迅速累积，并最终导致 API 服务器无论缩放模式如何都处于过载状态。 https://github.com/istio/istio/issues/19481
+- **Helm 部署中是否有多个发布？** 这种情况可能会导致 tiller 在节点上使用过多的内存，以及大量的 `configmaps` ，这会导致 API 服务器上出现不必要的高峰。 请考虑 `--history-max` 配置 `helm init` ，并利用新的 Helm 3。 有关以下问题的详细信息： 
+    - https://github.com/helm/helm/issues/4821
+    - https://github.com/helm/helm/issues/3500
+    - https://github.com/helm/helm/issues/4543
+
+
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>我想尝试在现有群集上启用基于角色的访问控制 (RBAC)。 该如何操作？
 
 目前不支持在现有群集上启用基于角色的访问控制 (RBAC)，必须在创建新群集时对其进行设置。 在使用 CLI、门户或 `2020-03-01` 之后的 API 版本时，默认会启用 RBAC。
@@ -53,12 +89,6 @@ ms.locfileid: "83724988"
 ## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>我创建了启用了 RBAC 的群集，现在，我在 Kubernetes 仪表板上看到了很多警告。 仪表板以前在没有任何警告的情况下工作。 我该怎么办？
 
 出现警告的原因是群集启用了 RBAC，并且现在默认限制对仪表板的访问。 一般来说，此方法比较棒，因为仪表板默认公开给群集的所有用户可能会导致安全威胁。 如果仍想要启用仪表板，请遵循此[博客文章](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)中的步骤进行操作。
-
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我无法连接到仪表板。 我该怎么办？
-
-要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`。
-
-如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` Pod 是否在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 我收到“来自服务器的错误: 后端拨号错误: 拨打 tcp...”。 我该怎么办？
 
@@ -119,6 +149,7 @@ AgentPool `<agentpoolname>` 已将自动缩放设置为启用状态，但它不�
 * AKS 节点/MC_ 资源组名称由资源组名称和资源名称组成。 自动生成的 `MC_resourceGroupName_resourceName_AzureRegion` 语法长度不能超过 80 个字符。 如果需要，请缩短资源组名称或 AKS 群集名称的长度。 也可以[自定义节点资源组名称](cluster-configuration.md#custom-resource-group-name)
 * dnsPrefix 必须以字母数字值开头和结尾，并且必须介于 1-54 个字符之间。 有效字符包括字母数字值和连字符 (-)。 dnsPrefix 不能包含特殊字符，例如句点 (.)。
 * AKS 节点池名称必须全部为小写形式，对于 Linux 节点池，长度为 1-11 个字符；对于 Windows 节点池，长度为 1-6 个字符。 名称必须以字母开头，并且仅允许使用字母和数字字符。
+* *管理员用户名*（用于设置 Linux 节点的管理员用户名）必须以字母开头，只能包含字母、数字、连字符和下划线，且最大长度为64个字符。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>在尝试创建、更新、缩放、删除或升级群集时收到错误：不允许执行该操作，因为正在执行其他操作。
 
@@ -255,7 +286,7 @@ initContainers:
 
 在某些边界情况下，Azure 磁盘分离可能会部分失败，并导致节点 VM 处于失败状态。
 
-此问题在以下版本的 Kubernetes 中已得到修复：
+此问题已在以下版本的 Kubernetes 中得到解决：
 
 | Kubernetes 版本 | 已修复问题的版本 |
 |--|:--:|

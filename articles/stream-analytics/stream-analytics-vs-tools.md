@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: ad35ed342dfd40b98d61919749479ec5612cdd4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75369620"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045546"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
 
@@ -70,7 +70,7 @@ ms.locfileid: "75369620"
 
 ## <a name="test-connections"></a>测试连接
 
-通过在“测试连接”  下拉框中选择一个选项，可从“作业视图”  中测试输入和输出连接。
+通过在“测试连接”下拉框中选择一个选项，可从“作业视图”中测试输入和输出连接。
 
    ![“测试连接”下拉框](./media/stream-analytics-vs-tools/stream-analytics-test-connection-dropdown.png)
 

@@ -566,12 +566,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
-            - name: ASP.NET 控制台
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: 非 HTTP 应用/后台应用
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
+            - name: .NET 控制台
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: Java
               items:
                 - name: Web 应用

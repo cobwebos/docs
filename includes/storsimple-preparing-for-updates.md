@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4e262c9e5bb88e77bc9c09853c06f4cdb41eedaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c60e0275853f3c879db22f5414f0fbbbdb47b85
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67173143"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050315"
 ---
 ## <a name="preparing-for-updates"></a>准备更新
 在扫描和应用更新之前需要执行以下步骤：
@@ -21,23 +21,25 @@ ms.locfileid: "67173143"
    
     **当固定 IP 可连接到 Internet 时 Test-Connection 的示例输出**
 
-        Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
+    ```output
+    Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
 
-        Source      Destination     IPV4Address      IPV6Address
-        ----------------- -----------  -----------
-        HCSNODE0  bing.com        204.79.197.200
-        HCSNODE0  bing.com        204.79.197.200
-        HCSNODE0  bing.com        204.79.197.200
-        HCSNODE0  bing.com        204.79.197.200
+    Source      Destination     IPV4Address      IPV6Address
+    ----------------- -----------  -----------
+    HCSNODE0  bing.com        204.79.197.200
+    HCSNODE0  bing.com        204.79.197.200
+    HCSNODE0  bing.com        204.79.197.200
+    HCSNODE0  bing.com        204.79.197.200
 
-        Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
+    Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
 
-        Source      Destination       IPV4Address    IPV6Address
-        ----------------- -----------  -----------
-        HCSNODE0  204.79.197.200  204.79.197.200
-        HCSNODE0  204.79.197.200  204.79.197.200
-        HCSNODE0  204.79.197.200  204.79.197.200
-        HCSNODE0  204.79.197.200  204.79.197.200
+    Source      Destination       IPV4Address    IPV6Address
+    ----------------- -----------  -----------
+    HCSNODE0  204.79.197.200  204.79.197.200
+    HCSNODE0  204.79.197.200  204.79.197.200
+    HCSNODE0  204.79.197.200  204.79.197.200
+    HCSNODE0  204.79.197.200  204.79.197.200
+    ```
 
 在成功完成这些手动预先检查之后，便可以继续扫描和安装更新。
 

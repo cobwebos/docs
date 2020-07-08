@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731672"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045461"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp 文件 SDK 和 CLI 工具
 
@@ -49,12 +49,7 @@ ms.locfileid: "82731672"
 
 ## <a name="code-samples"></a>代码示例
 
-下表列出了参考的代码示例。   
-
-|    语言/工具    |    代码示例文档    |
-|------------------|--------------------------------------------|
-|    .NET   |    [适用于的 Azure NetApp 文件 SDK 示例。NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [适用于 Python 的 Azure NetApp 文件 SDK 示例](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+请参阅[Azure NetApp 文件的代码示例](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files)。
 
 ## <a name="next-steps"></a>后续步骤   
  [下载 Azure Sdk](https://azure.microsoft.com/downloads/)

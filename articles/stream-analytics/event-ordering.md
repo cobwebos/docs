@@ -5,18 +5,18 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2019
-ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75461189"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044560"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>为 Azure 流分析配置事件排序策略
 
-本文介绍如何在 Azure 流分析中设置和使用延期抵达和失序事件策略。 仅当在查询中使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句时，才会应用这些策略。
+本文介绍如何在 Azure 流分析中设置和使用延期抵达和失序事件策略。 仅当你在查询中使用[TIMESTAMP by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)子句并且它们仅适用于云输入源时，才应用这些策略。
 
 ## <a name="event-time-and-arrival-time"></a>事件时间和抵达时间
 

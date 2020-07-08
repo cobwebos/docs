@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/17/2020
+ms.date: 07/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
-ms.openlocfilehash: 00de9c803ef796eda8da609a4009e0a8cfcb3664
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b1cf72a75349c420e2d789b435e049ab824446
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455361"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054400"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -119,7 +119,7 @@ SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建
 从设备注册是最简单的方法，但存在一些缺点：
 
 - 客户端应用只能在它处于活动状态时更新其标记。 例如，如果用户有两台设备要注册与体育团队相关的标记，则当第一台设备注册附加标记（例如，Seahawks）时，第二台设备将不会收到有关 Seahawks 的通知，直到第二次在第二台设备上执行应用程序为止。 更概括地说，如果标记受多个设备的影响，则从后端管理标记是理想的选择。
-- 由于应用可能会受到攻击，因此保护特定标记的注册需要格外小心，如[安全](notification-hubs-push-notification-security.md)一文中所述。
+- 由于应用可能会受到黑客攻击，因此保护特定标记的注册需要格外小心，如[安全性](notification-hubs-push-notification-security.md)一文中所述。
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>使用安装从设备向通知中心注册的示例代码
 
@@ -134,73 +134,73 @@ class DeviceInstallation
     public string platform { get; set; }
     public string pushChannel { get; set; }
     public string[] tags { get; set; }
-}
 
-private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
+    private async Task<HttpStatusCode> CreateOrUpdateInstallationAsync(DeviceInstallation deviceInstallation,
         string hubName, string listenConnectionString)
-{
-    if (deviceInstallation.installationId == null)
-        return HttpStatusCode.BadRequest;
-
-    // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
-    ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
-    string hubResource = "installations/" + deviceInstallation.installationId + "?";
-    string apiVersion = "api-version=2015-04";
-
-    // Determine the targetUri that we will sign
-    string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
-
-    //=== Generate SaS Security Token for Authorization header ===
-    // See, https://msdn.microsoft.com/library/azure/dn495627.aspx
-    string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
-
-    using (var httpClient = new HttpClient())
     {
-        string json = JsonConvert.SerializeObject(deviceInstallation);
+        if (deviceInstallation.installationId == null)
+            return HttpStatusCode.BadRequest;
 
-        httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+        // Parse connection string (https://msdn.microsoft.com/library/azure/dn495627.aspx)
+        ConnectionStringUtility connectionSaSUtil = new ConnectionStringUtility(listenConnectionString);
+        string hubResource = "installations/" + deviceInstallation.installationId + "?";
+        string apiVersion = "api-version=2015-04";
 
-        var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
-        return response.StatusCode;
+        // Determine the targetUri that we will sign
+        string uri = connectionSaSUtil.Endpoint + hubName + "/" + hubResource + apiVersion;
+
+        //=== Generate SaS Security Token for Authorization header ===
+        // See https://msdn.microsoft.com/library/azure/dn495627.aspx
+        string SasToken = connectionSaSUtil.getSaSToken(uri, 60);
+
+        using (var httpClient = new HttpClient())
+        {
+            string json = JsonConvert.SerializeObject(deviceInstallation);
+
+            httpClient.DefaultRequestHeaders.Add("Authorization", SasToken);
+
+            var response = await httpClient.PutAsync(uri, new StringContent(json, System.Text.Encoding.UTF8, "application/json"));
+            return response.StatusCode;
+        }
     }
-}
 
-var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+    var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-string installationId = null;
-var settings = ApplicationData.Current.LocalSettings.Values;
+    string installationId = null;
+    var settings = ApplicationData.Current.LocalSettings.Values;
 
-// If we have not stored an installation ID in application data, create and store as application data.
-if (!settings.ContainsKey("__NHInstallationId"))
-{
-    installationId = Guid.NewGuid().ToString();
-    settings.Add("__NHInstallationId", installationId);
-}
+    // If we have not stored an installation ID in application data, create and store as application data.
+    if (!settings.ContainsKey("__NHInstallationId"))
+    {
+        installationId = Guid.NewGuid().ToString();
+        settings.Add("__NHInstallationId", installationId);
+    }
 
-installationId = (string)settings["__NHInstallationId"];
+    installationId = (string)settings["__NHInstallationId"];
 
-var deviceInstallation = new DeviceInstallation
-{
-    installationId = installationId,
-    platform = "wns",
-    pushChannel = channel.Uri,
-    //tags = tags.ToArray<string>()
-};
+    var deviceInstallation = new DeviceInstallation
+    {
+        installationId = installationId,
+        platform = "wns",
+        pushChannel = channel.Uri,
+        //tags = tags.ToArray<string>()
+    };
 
-var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
+    var statusCode = await CreateOrUpdateInstallationAsync(deviceInstallation, 
                     "<HUBNAME>", "<SHARED LISTEN CONNECTION STRING>");
 
-if (statusCode != HttpStatusCode.Accepted)
-{
-    var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
-}
-else
-{
-    var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
+    if (statusCode != HttpStatusCode.Accepted)
+    {
+        var dialog = new MessageDialog(statusCode.ToString(), "Registration failed. Installation Id : " + installationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
+    else
+    {
+        var dialog = new MessageDialog("Registration successful using installation Id : " + installationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
 }
 ```
 

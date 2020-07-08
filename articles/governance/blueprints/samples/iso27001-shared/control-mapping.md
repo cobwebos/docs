@@ -3,12 +3,12 @@ title: ISO 27001 共享服务蓝图示例控制
 description: ISO 27001 共享服务蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 448808a54cd313ca0acf0b8db40172bc8e0f1e06
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 0c400ebde894e03116c1b87c1c3655f9efa1ce0a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919845"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044730"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的控制映射
 
@@ -28,7 +28,7 @@ ms.locfileid: "85919845"
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 信息分类
 
-Azure 的 [SQL 漏洞评估服务](/azure/sql-database/sql-vulnerability-assessment)可以帮助你发现数据库中存储的敏感数据并提供用于对该数据进行分类的建议。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义来审核在 SQL 漏洞评估过程中查明的漏洞是否已更正。
+Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerability-assessment.md)可以帮助你发现数据库中存储的敏感数据并提供用于对该数据进行分类的建议。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义来审核在 SQL 漏洞评估过程中查明的漏洞是否已更正。
 
 - \[预览\]：监视 Azure 安全中心的 SQL 漏洞评估结果
 

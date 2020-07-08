@@ -11,6 +11,10 @@
       href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
+    - name: 启动沉浸式阅读器 (Android)
+      href: tutorial-android.md
+    - name: 启动沉浸式阅读器 (iOS)
+      href: tutorial-ios.md
     - name: 启动沉浸式阅读器 (Python)
       href: tutorial-python.md
     - name: 使用多个沉浸式阅读器资源

@@ -3,12 +3,12 @@ title: CAF 迁移登陆区域蓝图示例概述
 description: 适用于 Azure 的云采用框架 (CAF) 迁移登陆区域蓝图示例的概述和体系结构。
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459859"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044815"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>适用于 Azure 的 Microsoft 云采用框架迁移登陆区域蓝图示例概述
 
@@ -28,7 +28,7 @@ CAF 迁移登陆区域蓝图示例在 Azure 中部署基础结构资源，这些
 - 部署 [Log Analytics](../../../../azure-monitor/overview.md)，以便确保从开始迁移起所有操作和服务都记录到一个中心位置
 - 部署 [Azure 安全中心](../../../../security-center/security-center-intro.md)（标准版），从而为已迁移的工作负荷提供威胁防护。
 - 部署 [Azure 虚拟网络](../../../../virtual-network/virtual-networks-overview.md)，以便为虚拟机提供隔离的网络和子网。
-- 部署 [Azure Migrate 项目](../../../..//migrate/migrate-overview.md)以用于发现和评估。 我们正在添加用于服务器评估、服务器迁移、数据库评估和数据库迁移的工具。  
+- 部署 [Azure Migrate 项目](../../../../migrate/migrate-services-overview.md)以用于发现和评估。 我们正在添加用于服务器评估、服务器迁移、数据库评估和数据库迁移的工具。  
 
 
 所有这些元素遵守 [Azure 体系结构中心 - 参考体系结构](/azure/architecture/reference-architectures/)中发布的行之有效的做法。

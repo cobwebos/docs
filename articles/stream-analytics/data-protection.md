@@ -4,14 +4,14 @@ description: 本文介绍如何加密 Azure 流分析作业使用的专用数据
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
-ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857292"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045342"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -36,7 +36,7 @@ Azure 流分析是一种完全托管的平台即服务，可用于构建实时�
 
 1. 在 Azure 门户的左上角选择“创建资源”。  
 
-1. 从 "结果" 列表中选择 " **分析** > **流分析作业** "。 
+1.  **Analytics**   > 从 "结果" 列表中选择 "分析 **流分析作业**   "。 
 
 1. 在 "流分析作业" 页中填写必要的详细信息，如名称、区域和缩放。 
 

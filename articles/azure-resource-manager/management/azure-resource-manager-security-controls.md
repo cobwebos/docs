@@ -3,12 +3,12 @@ title: 安全控件
 description: 用于评估 Azure 资源管理器服务的内置安全控制的清单。
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: d0a0625153e428a0d261e52d40b31ef5142eddfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb8742c38fae88dc1fd1fd1ec175b248f30df3a0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75485619"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054451"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure 资源管理器的安全控制
 
@@ -47,7 +47,7 @@ ms.locfileid: "75485619"
 
 | 安全控制 | Yes/No | 注释|
 |---|---|--|
-| 身份验证| 是 | 基于 [Azure Active Directory](/azure/active-directory)。|
+| 身份验证| 是 | 基于 [Azure Active Directory](../../active-directory/index.yml)。|
 | 授权| 是 | |
 
 ## <a name="configuration-management"></a>配置管理
@@ -58,4 +58,4 @@ ms.locfileid: "75485619"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[Azure 服务中的内置安全控件](../../security/fundamentals/security-controls.md)。
+- 详细了解[跨 Azure 服务的内置安全控制](../../security/fundamentals/security-controls.md)。

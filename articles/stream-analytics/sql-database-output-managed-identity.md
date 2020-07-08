@@ -4,14 +4,14 @@ description: 本文介绍如何使用托管标识对 Azure 流分析作业的 Az
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651980"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045614"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用托管标识访问 Azure 流分析作业的 Azure SQL 数据库（预览）
 
@@ -70,7 +70,7 @@ Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识�
 
 接下来，在 SQL 数据库中创建包含的数据库用户，该用户将映射到 Azure Active Directory 标识。 包含的数据库用户在 master 数据库中没有登录名，但它映射到与数据库关联的目录中的标识。 Azure Active Directory 标识可以是单独的用户帐户，也可以是组。 在这种情况下，你需要为流分析作业创建包含的数据库用户。 
 
-1. 使用 SQL Server Management Studio 连接 SQL 数据库。 “用户名”是具有 ALTER ANY USER 权限的 Azure Active Directory 用户。 在 SQL Server 上设置的管理员是一个示例。 使用“Azure Active Directory - 通用且具有 MFA”身份验证。 
+1. 使用 SQL Server Management Studio 连接到 SQL 数据库。 “用户名”是具有 ALTER ANY USER 权限的 Azure Active Directory 用户。 在 SQL Server 上设置的管理员是一个示例。 使用“Azure Active Directory - 通用且具有 MFA”身份验证。 
 
    ![连接到 SQL Server](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -96,7 +96,7 @@ Azure 流分析支持对 Azure SQL 数据库输出接收器进行[托管标识�
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. 为了让 Microsoft 的 Azure Active Directory 验证流分析作业是否具有对 SQL 数据库的访问权限，我们需要授予 Azure Active Directory 与数据库进行通信的权限。 为此，请再次转到 Azure 门户的“防火墙和虚拟网络”页面，并启用“允许 Azure 服务和资源访问此服务器”。 
+1. 为了让 Microsoft 的 Azure Active Directory 验证流分析作业是否具有对 SQL 数据库的访问权限，我们需要授予 Azure Active Directory 与数据库进行通信的权限。 为此，请在 Azure 门户中再次访问 "防火墙和虚拟网络" 页，并启用 "允许 Azure 服务和资源访问此服务器"。 
 
    ![防火墙和虚拟网络](./media/sql-db-output-managed-identity/allow-access.png)
 

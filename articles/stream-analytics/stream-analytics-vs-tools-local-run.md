@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76834899"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045631"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>使用 Visual Studio 在本地测试流分析查询
 
@@ -74,6 +74,6 @@ ms.locfileid: "76834899"
 
 * [快速入门：使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 查看 Azure 流分析作业](stream-analytics-vs-tools.md)
-* [使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览版）](stream-analytics-live-data-local-testing.md)
+* [使用用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据（预览）](stream-analytics-live-data-local-testing.md)
 * [教程：使用 Azure DevOps 通过 CI/CD 部署 Azure 流分析作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [使用流分析工具进行持续集成和开发](stream-analytics-tools-for-visual-studio-cicd.md)

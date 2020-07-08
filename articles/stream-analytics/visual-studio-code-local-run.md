@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
-ms.topic: conceptual
-ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75486464"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044356"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 通过示例数据在本地测试流分析查询
 

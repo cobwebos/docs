@@ -4,18 +4,18 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 8ca054b3a3d5147b7d98a021ce1e26d02d5581b0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73832051"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050230"
 ---
 ### <a name="record-names"></a>记录名称
 
-在 Azure DNS 中，记录使用相对名称指定。 完全限定的  域名 (FQDN) 包括区域名称，而相对  域名则不包括。 例如，区域`www` `contoso.com`中的相对记录名称将提供完全限定的记录名称`www.contoso.com`。
+在 Azure DNS 中，记录使用相对名称指定。 完全限定的  域名 (FQDN) 包括区域名称，而相对  域名则不包括。 例如，区域中的相对记录名称将 `www` `contoso.com` 提供完全限定的记录名称 `www.contoso.com` 。
 
-顶点  记录是位于 DNS 区域的根（或顶点  ）中的 DNS 记录。 例如，在 DNS 区域`contoso.com`中，顶点记录还具有完全限定的名称`contoso.com` （这有时称为*裸*域）。  按照惯例，相对名称“\@”用于表示顶点记录。
+顶点  记录是位于 DNS 区域的根（或顶点  ）中的 DNS 记录。 例如，在 DNS 区域中 `contoso.com` ，顶点记录还具有完全限定的名称 `contoso.com` （这有时称为*裸*域）。  按照惯例，相对名称“\@”用于表示顶点记录。
 
 ### <a name="record-types"></a>记录类型
 
@@ -27,8 +27,10 @@ Azure DNS 支持所有常见 DNS 记录类型：A、AAAA、CAA、CNAME、MX、NS
 
 有时，需要创建具有给定名称和类型的多个 DNS 记录。 例如，假设在两个不同的 IP 地址上托管“www.contoso.com”网站。 该网站需要两个不同的 A 记录，每个 IP 地址一个。 这就是记录集的示例：
 
-    www.contoso.com.        3600    IN    A    134.170.185.46
-    www.contoso.com.        3600    IN    A    134.170.188.221
+```dns
+www.contoso.com.        3600    IN    A    134.170.185.46
+www.contoso.com.        3600    IN    A    134.170.188.221
+```
 
 Azure DNS 使用记录集  管理所有 DNS 记录。 记录集（也称为资源  记录集）是某个区域中具有相同名称、相同类型的 DNS 记录的集合。 大多数记录集包含单个记录。 但是，上面所示的示例一个记录集包含多个记录，这并不少见。
 

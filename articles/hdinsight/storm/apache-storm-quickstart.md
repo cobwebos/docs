@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73241223"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045019"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>快速入门：在 Azure HDInsight 中创建和监视 Apache Storm 拓扑
 
@@ -82,16 +82,18 @@ Storm 提供一个 Web 界面用于处理正在运行的拓扑，并包含在 HD
 
 4. 在查看 spout 或 bolt 的详细信息时，从“执行器”  部分中的“端口”  列中选择一个条目可以查看组件特定实例的详细信息。
 
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [snow, 747293]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [white]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
+```output
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [snow, 747293]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [white]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
+```
 
-    在此示例中，**seven** 一词出现了 1493957 次。 此计数就是自从启动此拓扑以来该单词出现的次数。
+在此示例中，**seven** 一词出现了 1493957 次。 此计数就是自从启动此拓扑以来该单词出现的次数。
 
 ## <a name="stop-the-topology"></a>停止拓扑
 

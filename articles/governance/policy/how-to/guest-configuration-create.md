@@ -3,12 +3,12 @@ title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835948"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045121"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -84,11 +84,14 @@ ms.locfileid: "83835948"
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>来宾配置模块与 Windows PowerShell DSC 模块的区别
 
-当来宾配置审核计算机时：
+当来宾配置审核计算机时，事件的顺序不同于 Windows PowerShell DSC 中的事件。
 
 1. 代理首先运行 `Test-TargetResource` 以确定配置是否处于正确状态。
 1. 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。
 1. 提供程序运行 `Get-TargetResource` 以返回每个设置的当前状态，因此，会获得有关计算机为何不合规的详细信息，以及用于确认当前状态是否合规的详细信息。
+
+将值传递给来宾配置分配的 Azure 策略中的参数必须是_字符串_类型。
+即使 DSC 资源支持数组，也无法通过参数传递数组。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 要求
 
@@ -138,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>配置要求
 
-自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件名、MOF 文件中的配置名称和资源管理器模板中的来宾分配名称必须相同。
+自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件的名称、MOF 文件中的配置名称以及 Azure 资源管理器模板（ARM 模板）中的来宾分配名称必须相同。
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>搭建来宾配置项目
 
@@ -163,7 +166,7 @@ PowerShell cmdlet 可帮助创建包。
 ### <a name="storing-guest-configuration-artifacts"></a>存储来宾配置项目
 
 .zip 包必须存储在可由托管虚拟机访问的位置。
-示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包公开，则可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包公开，则可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-sas-overview.md)。
 还可以为专用网络中的计算机实现[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，不过此配置仅适用于访问包，而不适用于与服务通信。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>逐步创建适用于 Windows 的自定义来宾配置审核策略
@@ -197,7 +200,7 @@ AuditBitLocker ./Config
 
 从技术上讲，`Node AuditBitlocker` 命令不是必需的，但它会生成一个名为 `AuditBitlocker.mof`（而不是默认的 `localhost.mof`）的文件。 让 .mof 文件名遵循配置，可以在大规模操作时轻松地组织许多文件。
 
-编译 MOF 后，支持文件必须打包在一起。 来宾配置使用已完成的包来创建 Azure Policy 定义。
+编译 MOF 后，支持文件必须打包在一起。 Guest Configuration 使用已完成的包来创建 Azure Policy 定义。
 
 `New-GuestConfigurationPackage` cmdlet 创建包。 配置所需的模块必须在 `$Env:PSModulePath` 中提供。 创建 Windows 内容时 `New-GuestConfigurationPackage` cmdlet 的参数：
 
@@ -408,7 +411,7 @@ New-AzRoleDefinition -Role $role
 
 来宾配置支持在运行时替代配置属性。 此功能意味着包中 MOF 文件内的值不必被认为是静态的。 替代值是通过 Azure Policy 提供的，并不影响配置的创作或编译方式。
 
-cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包括名为“Parameters”的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表定义，并创建用于 Azure Policy 定义的每个文件的必需部分。
+Cmdlet `New-GuestConfigurationPolicy` 并 `Test-GuestConfigurationPolicyPackage` 包括一个名为**参数**的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表定义，并创建用于 Azure Policy 定义的每个文件的必需部分。
 
 下面的示例创建策略定义来审核服务，其中用户在策略分配时从列表中进行选择。
 
@@ -431,15 +434,15 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>使用第三方工具扩展来宾配置
 
 > [!Note]
-> 此功能处于预览状态，需要来宾配置模块版本 1.20.1（可以使用 `Install-Module GuestConfiguration -AllowPrerelease` 来安装）。
-> 在版本 1.20.1 中，此功能仅适用于审核 Windows 计算机的策略定义
+> 此功能处于预览阶段，需要来宾配置模块版本1.20.3，可以使用安装该模块 `Install-Module GuestConfiguration -AllowPrerelease` 。
+> 在版本1.20.3 中，此功能仅适用于审核 Windows 计算机的策略定义
 
 可以扩展来宾配置的项目包以包含第三方工具。
 扩展来宾配置要求开发两个组件。
@@ -465,7 +468,14 @@ New-GuestConfigurationPolicy
 在开发环境中安装所需模块：
 
 ```azurepowershell-interactive
-Install-Module GuestConfiguration, gcInSpec
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
 ```
 
 首先，创建 InSpec 使用的 YaML 文件。 此文件提供了环境的基本信息。 下面给出了一个示例：
@@ -482,7 +492,7 @@ supports:
   - os-family: windows
 ```
 
-将此文件保存到项目目录中名为 `wmi_service` 的文件夹中。
+将名为的文件保存 `wmi_service.yml` 在 `wmi_service` 项目目录中名为的文件夹中。
 
 接下来，使用用于审核计算机的 InSpec 语言抽象来创建 Ruby 文件。
 
@@ -501,7 +511,7 @@ end
 
 ```
 
-将此文件保存到 `wmi_service` 目录内名为 `controls` 的新文件夹中。
+将此文件保存 `wmi_service.rb` 在目录中名为的新文件夹中 `controls` `wmi_service` 。
 
 最后，创建配置，导入 GuestConfiguration 资源模块，并使用 `gcInSpec` 资源设置 InSpec 配置文件的名称。
 
@@ -509,7 +519,7 @@ end
 # Define the configuration and import GuestConfiguration
 Configuration wmi_service
 {
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
     node 'wmi_service'
     {
         gcInSpec wmi_service
@@ -552,7 +562,8 @@ wmi_service -out ./Config
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>策略生命周期

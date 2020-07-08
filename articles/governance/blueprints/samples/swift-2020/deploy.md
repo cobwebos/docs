@@ -3,12 +3,12 @@ title: 部署 SWIFT CSP-CSCF v2020 蓝图示例
 description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 971b69dcc5c64d7e51e9237e09ee8474551ac43a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 84d219f47df99e5bb87bab13b9ff43b79484117f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657065"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044254"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 
@@ -67,7 +67,7 @@ ms.locfileid: "83657065"
      - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
        请根据需要更改该名称，或保留原样。
-     - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
+     - 位置：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
 
    - 锁分配
@@ -93,7 +93,7 @@ ms.locfileid: "83657065"
 
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
+|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|连接的工作区 ID|Log Analytics 代理应连接到的工作区 ID 的列表（以分号分隔）|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|域名 (FQDN)|Windows VM 应加入到的完全限定域名 (FQDN)|

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79472990"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054485"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>教程：在市场中发布 Azure 托管应用程序
 
@@ -172,6 +172,6 @@ SKU 在市场中显示在父级产品/服务下。 它在 Azure 门户中显示�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关单击“发布”  后发生的情况的信息，请参阅[发布 Azure 应用程序产品/服务](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+* 有关单击“发布”  后发生的情况的信息，请参阅[发布 Azure 应用程序产品/服务](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 * 有关托管应用程序的简介，请参阅[托管应用程序概述](overview.md)。
 * 有关发布服务目录托管应用程序的信息，请参阅[创建和发布服务目录托管应用程序](publish-service-catalog-app.md)。

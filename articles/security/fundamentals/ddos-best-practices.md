@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548682"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054434"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护-设计复原解决方案
 
@@ -97,7 +97,7 @@ Azure DDoS 防护基本服务可帮助保护客户，并防止影响其他客户
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS 缓解策略
 
-在 Azure 门户中，选择 "**监视** > **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。******** DDoS 指标将显示在“可用指标”窗格中。****
+在 Azure 门户中，选择 "**监视**  >  **指标**"。 在“指标”窗格上，依次选择资源组、“公共 IP 地址”资源类型和 Azure 公共 IP 地址。******** DDoS 指标将显示在“可用指标”窗格中。****
 
 标准 DDoS 防护针对已启用 DDoS 的虚拟网络中受保护资源的每个公共 IP，应用三个自动优化的缓解策略（TCP SYN、TCP 和 UDP）。 可以选择“触发 DDoS 缓解措施的入站数据包数”指标来查看策略阈值。****
 
@@ -235,7 +235,7 @@ Microsoft 部署了广泛的威胁情报网络。 此网络利用了为 Microsof
 
 #### <a name="paas-web-application"></a>PaaS Web 应用程序
 
-此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了一组适用于使用 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) 和 [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 web 应用程序的经过验证的做法。
+此参考体系结构显示了在单个区域中运行 Azure 应用服务应用程序。 此体系结构显示了一组适用于使用 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)   和 [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)的 web 应用程序的经过验证的做法。
 已针对故障转移场景设置了备用区域。
 
 ![PaaS Web 应用程序的参考体系结构示意图](./media/ddos-best-practices/image11.png)
@@ -269,7 +269,5 @@ Azure 流量管理器将传入的请求路由到某个区域中的应用程序�
 ## <a name="next-steps"></a>后续步骤
 
 * [云中责任分担](shared-responsibility.md)
-
 * [Azure DDoS 防护产品页](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Azure DDoS 防护文档](/azure/virtual-network/ddos-protection-overview)

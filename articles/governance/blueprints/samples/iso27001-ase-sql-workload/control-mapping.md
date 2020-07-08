@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL 工作负荷蓝图示例控件
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例到 Azure Policy 和 RBAC 的控制映射。
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6311d5090c884c70bded7fcf754bc968a5b47b32
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 518c6b86ac658273d428a328b433b35d667d7056
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918605"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044747"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作负荷蓝图示例的控制映射
 
@@ -28,7 +28,7 @@ ms.locfileid: "85918605"
 
 ## <a name="a821-classification-of-information"></a>A.8.2.1 信息分类
 
-Azure 的 [SQL 漏洞评估服务](/azure/sql-database/sql-vulnerability-assessment)可以帮助你发现数据库中存储的敏感数据并提供用于对该数据进行分类的建议。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义来审核在 SQL 漏洞评估过程中查明的漏洞是否已更正。
+Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerability-assessment.md)可以帮助你发现数据库中存储的敏感数据并提供用于对该数据进行分类的建议。 此蓝图分配了一个 [Azure Policy](../../../policy/overview.md) 定义来审核在 SQL 漏洞评估过程中查明的漏洞是否已更正。
 
 - \[预览\]：监视 Azure 安全中心的 SQL 漏洞评估结果
 

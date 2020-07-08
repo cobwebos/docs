@@ -5,14 +5,14 @@ author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: how-to
+ms.date: 07/06/2020
+ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610847"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045648"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
@@ -26,11 +26,11 @@ ms.locfileid: "82610847"
 
     ![装载说明 NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![装载说明 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
-    
-    如果使用的是 NFSv 4.1，请使用以下命令来装载文件系统：`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    ![装载说明 SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
+    * 如果要装载 NFS 卷，请确保使用 `vers` 命令中的选项 `mount` 来指定与要装载的卷相对应的 NFS 协议版本。 
+    * 如果使用的是 NFSv 4.1，请使用以下命令来装载文件系统：`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
-3. 如果希望在启动或重新启动 Azure VM 时自动装载 NFS 卷，请将条目添加到主机上的`/etc/fstab`文件中。 
+3. 如果希望在启动或重新启动 Azure VM 时自动装载 NFS 卷，请将条目添加到 `/etc/fstab` 主机上的文件中。 
 
     例如：`$ANFIP:/$FILEPATH        /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -41,11 +41,11 @@ ms.locfileid: "82610847"
 4. 如果要使用 NFS 将卷装载到 Windows，请执行以下操作：
 
     a. 首先将卷装载到 Unix 或 Linux VM。  
-    b. 对该`chmod 777`卷`chmod 775`运行或命令。  
+    b. `chmod 777` `chmod 775` 对该卷运行或命令。  
     c. 通过 Windows 上的 NFS 客户端装载卷。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [为 Azure NetApp 文件配置 NFSv 4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
-* [NFS 常见问题](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
+* [为 Azure NetApp 文件配置 NFSv4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
+* [NFS 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

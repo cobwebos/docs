@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 8e5c03876de8ca078c6e89b8ca101602e4e4cf52
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460437"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045733"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 为 Linux 虚拟机创建和管理 Azure 虚拟网络
 
@@ -32,7 +32,7 @@ Azure 虚拟机使用 Azure 网络进行内部和外部网络通信。 本教程
 > * 保护网络流量的安全
 > * 创建后端 VM
 
-本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”  。
+本教程在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 CLI，后者已不断更新到最新版本。 若要打开 Cloud Shell，请从任何代码块的顶部选择“试一试”。
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.30 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 

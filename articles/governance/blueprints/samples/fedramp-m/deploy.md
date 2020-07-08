@@ -3,12 +3,12 @@ title: 部署 FedRAMP Moderate 蓝图示例
 description: FedRAMP Moderate 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
 ms.date: 05/14/2020
 ms.topic: sample
-ms.openlocfilehash: af29dafe071bcd50c24c7ff7dc1aaf4a2d60ae4c
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 80c33fc854b00aa9fc33d288b8b466c80596a078
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816244"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044781"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>部署 FedRAMP Moderate 蓝图示例
 
@@ -67,7 +67,7 @@ ms.locfileid: "83816244"
      - **订阅**：在蓝图示例副本所保存到的管理组中选择一个或多个订阅。 如果选择多个订阅，将使用输入的参数为每个订阅创建一个分配。
      - **分配名称**：系统会根据蓝图的名称预先填充该名称。
        请根据需要更改该名称，或保留原样。
-     - **位置**：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
+     - 位置：选择要在其中创建托管标识的区域。 Azure 蓝图使用此托管标识在分配的蓝图中部署所有项目。 若要了解详细信息，请参阅 [Azure 资源的托管标识](../../../../active-directory/managed-identities-azure-resources/overview.md)。
      - **蓝图定义版本**：选择蓝图示例副本的**已发布**版本。
 
    - 锁分配
@@ -94,7 +94,7 @@ ms.locfileid: "83816244"
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
 |\[预览\]：审核 FedRAMP Moderate 控件，并部署特定 VM 扩展以支持审核要求|策略分配|应为 VM 配置的 Log Analytics 工作区 ID|这是应为 VM 配置的 Log Analytics 工作区的 ID (GUID)。|
-|\[预览\]：审核 FedRAMP Moderate 控件，并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
+|\[预览\]：审核 FedRAMP Moderate 控件，并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。|
 |\[预览\]：审核 FedRAMP Moderate 控件，并部署特定 VM 扩展以支持审核要求|策略分配|应该从 Windows VM 管理员组中排除的用户的列表|以分号分隔的应从管理员本地组中排除的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：审核 FedRAMP Moderate 控件，并部署特定 VM 扩展以支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Linux VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|

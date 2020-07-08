@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 4601a7f5da8d6e4eda2ee433fe52d08a6341ce6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186010"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045495"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -61,7 +61,7 @@ ms.locfileid: "82186010"
 - 在虚拟网络的地址空间内，每个子网必须具有唯一的地址范围，且以 CIDR 格式指定。 其地址范围不能与虚拟网络中其他子网重叠。
 - 如果计划将某些 Azure 服务资源部署到虚拟网络中，则他们可能需要或创建自己的子网，因此必须有足够的未分配空间才能进行此操作。 若要确定 Azure 服务是否创建自己的子网，请参阅每个[可部署到虚拟网络中的 Azure 服务](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的信息。 例如，如果使用 Azure VPN 网关将虚拟网络连接到本地网络，虚拟网络必须具有该网关的专用子网。 详细了解[网关子网](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)。
 - 默认情况下，Azure 在虚拟网络中的所有子网之间路由流量。 例如，可替代 Azure 的默认路由以防止在子网之间进行 Azure 路由，或通过网络虚拟设备在子网之间路由流量。 如果要求相同虚拟网络中资源之间的流量流经网络虚拟设备 (NVA)，请将资源部署到不同的子网。 有关详细信息，请参阅[安全性](#security)。
-- 可将对 Azure 资源（例如 Azure 存储帐户或 Azure SQL 数据库）的访问权限限制为具有虚拟网络服务终结点的特定子网。 此外，可拒绝通过 Internet 访问资源。 可创建多个子网，并为某些子网启用服务终结点，但不启用其他项。 详细了解[服务终结点](virtual-network-service-endpoints-overview.md)，以及可为其启用的 Azure 资源。
+- 你可以使用虚拟网络服务终结点限制对 azure 资源（例如 Azure 存储帐户或 Azure SQL 数据库）的访问。 此外，可拒绝通过 Internet 访问资源。 可创建多个子网，并为某些子网启用服务终结点，但不启用其他项。 详细了解[服务终结点](virtual-network-service-endpoints-overview.md)，以及可为其启用的 Azure 资源。
 - 可将零个或一个网络安全组与虚拟网络中的每个子网相关联。 可将相同或不同的网络安全组关联到每个子网。 每个网络安全组都包含规则，允许或拒绝到达和来自源和目标的流量。 详细了解[网络安全组](#traffic-filtering)。
 
 ## <a name="security"></a>安全性

@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: 内置安全控件
       href: load-balancer-security-controls.md
+    - name: 后端池管理
+      href: backend-pool-management.md
 - name: 如何
   items:
     - name: 虚拟机规模集

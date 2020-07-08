@@ -3,12 +3,12 @@ title: Service Fabric 服务分区
 description: 介绍如何对 Service Fabric 有状态服务进行分区。 使用分区可以将数据存储在本地计算机上，以便数据和计算可以一起扩展。
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115163"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045410"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上获取。
@@ -21,11 +21,11 @@ ms.locfileid: "81115163"
 
 ![无状态服务](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-实际上有两种类型的无状态服务解决方案。 第一种是在外部（例如在 Azure SQL 数据库中）保持其状态的服务（如存储会话信息和数据的网站）。 第二种是不管理任何持久状态的仅计算服务（如计算器或图像缩略）。
+实际上有两种类型的无状态服务解决方案。 第一个服务是在外部保持其状态的服务，例如，在 Azure SQL 数据库中的数据库中（如存储会话信息和数据的网站）。 第二种是不管理任何持久状态的仅计算服务（如计算器或图像缩略）。
 
 在任一情况下，对无状态服务进行分区都是非常少见的方案 — 通常通过添加更多实例实现可伸缩性和可用性。 对于无状态服务实例要考虑多个分区的唯一情况是在需要满足特殊路由请求时。
 
-例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 可对无状态服务进行分区的情况的另一个示例是在用户具有真正分区的后端（例如分片 SQL 数据库）并且要控制哪个服务实例应写入数据库分片（或是在无状态服务中执行的其他准备工作需要的分区信息与后端中使用的信息相同）时。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
+例如，考虑以下这种情况：ID 处于特定范围内的用户只应该由特定服务实例提供服务。 如果你可以对无状态服务进行分区，另一个示例是当你具有真正分区的后端（例如，SQL 数据库中的分片数据库），并且你想要控制哪个服务实例应写入数据库分片，或在无状态服务中执行其他需要与后端中使用的分区信息相同的准备工作。 这些类型的情况也可以通过其他方式进行解决，并不一定需要服务分区。
 
 本演练的其余部分侧重于有状态服务。
 
@@ -115,10 +115,10 @@ Service Fabric 提供了三个分区方案可供选择：
 > 
 > 
 
-1. 打开“Visual Studio” > “文件” > “新建” > “项目”     。
-2. 在“新建项目”对话框中，选择 Service Fabric 应用程序  。
+1. 打开“Visual Studio” > “文件” > “新建” > “项目”   。
+2. 在“新建项目”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
-4. 在“创建服务”  对话框中，选择“有状态”  服务并将它称为“Alphabet.Processing”。
+4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”。
 5. 设置分区数。 打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing_PartitionCount 更新为 26，如下所示。
    
     ```xml
@@ -228,7 +228,7 @@ Service Fabric 提供了三个分区方案可供选择：
 10. 让我们将一个无状态服务添加到项目，以查看如何调用特定分区。
     
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，并将它发送到 Alphabet.Processing 服务进行处理。
-11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示   。
+11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示 。
     
     ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)上获取。
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。

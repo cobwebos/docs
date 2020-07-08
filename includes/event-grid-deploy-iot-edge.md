@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844576"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050310"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>部署事件网格 IoT Edge 模块
 
@@ -31,11 +31,11 @@ ms.locfileid: "76844576"
 1. 导航到 IoT 中心。
 1. 从 "**自动设备管理**" 部分的菜单中选择 " **IoT Edge** "。 
 1. 从设备列表中单击目标设备的 ID
-1. 选择 "**设置模块**"。 使页面保持打开状态。 你将继续执行下一节中的步骤。
+1. 选择“设置模块”。 使页面保持打开状态。 你将继续执行下一节中的步骤。
 
 ### <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。  创建分为三步：添加模块、指定路由和评审部署************。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。  它分为三步：添加模块、指定路由和评审部署  。
 
 ### <a name="add-modules"></a>添加模块
 
@@ -49,25 +49,25 @@ ms.locfileid: "76844576"
    * **映像 URI**：`mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **容器创建选项**：
 
-    ```json
-        {
-          "Env": [
-            "inbound__clientAuth:clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
-          ],
-          "HostConfig": {
-            "PortBindings": {
-              "4438/tcp": [
-                {
-                  "HostPort": "4438"
-                }
-              ]
+```json
+    {
+      "Env": [
+        "inbound__clientAuth:clientCert__enabled=false",
+        "outbound__webhook__httpsOnly=false"
+      ],
+      "HostConfig": {
+        "PortBindings": {
+          "4438/tcp": [
+            {
+              "HostPort": "4438"
             }
-          }
+          ]
         }
-    ```
+      }
+    }
+```
 
- 1. 单击“保存” 
+ 1. 单击“保存”
  1. 单击 "**下一步**" 以继续转到 "路由" 部分
 
     > [!NOTE]

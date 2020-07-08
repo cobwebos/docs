@@ -182,6 +182,10 @@
           href: service-bus-nodejs-how-to-use-queues.md
         - name: 发布和订阅消息（旧版 azure-sb）
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: 集成
+      items:
+        - name: 与 RabbitMQ 集成
+          href: service-bus-integrate-with-rabbitmq.md
     - name: 管理
       items:
         - name: 自动更新消息传送单元

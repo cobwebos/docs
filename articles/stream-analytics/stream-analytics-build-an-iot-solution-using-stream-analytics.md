@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426441"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044577"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析生成 IoT 解决方案
 

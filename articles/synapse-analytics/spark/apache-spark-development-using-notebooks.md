@@ -1,24 +1,25 @@
 ---
-title: 创建、开发和维护 Azure Synapse Studio（预览版）笔记本
+title: Synapse Studio 笔记本
 description: 本文介绍如何创建和开发 Azure Synapse Studio （预览版）笔记本，以便进行数据准备和可视化。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702097"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045682"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>创建、开发和维护 Azure Synapse Studio（预览版）笔记本
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio （预览版）笔记本
 
-Azure Synapse Studio（预览版）笔记本是一个 Web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
+Synapse Studio （预览版）笔记本是一个 web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
 
 借助 Azure Synapse Studio 笔记本，可以：
 
@@ -109,7 +110,7 @@ Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
 
 ### <a name="ide-style-intellisense"></a>IDE 样式 IntelliSense
 
-Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 IntelliSense 引入到了单元格编辑器中。 语法突出显示、错误标记和自动代码补全功能有助于你编写代码并更快地找出问题。
+Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 IntelliSense 引入到了单元格编辑器中。 语法突出显示、错误标记和自动代码完成有助于您编写代码并更快地确定问题。
 
 对于不同的语言，IntelliSense 功能处于不同的成熟度级别。 请参阅下表了解支持的功能。
 
@@ -343,7 +344,7 @@ displayHTML(html)
 
    ![command-mode](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，不能在单元格中键入。 按 `Enter` 或使用鼠标单击单元格编辑器区域，进入编辑模式。
+2. 编辑模式由文本光标指示，提示你在编辑器区域中键入内容。 当单元格处于编辑模式时，您可以在单元格中键入。 按 `Enter` 或使用鼠标单击单元格编辑器区域，进入编辑模式。
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 

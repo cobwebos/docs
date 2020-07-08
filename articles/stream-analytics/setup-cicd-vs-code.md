@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76962137"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045818"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>使用 CI/CD npm 包部署 Azure 流分析作业 
 
@@ -25,7 +25,7 @@ ms.locfileid: "76962137"
 
 可使用 **asa-streamanalytics-cicd** npm 包启用 Azure 流分析作业的持续集成和部署。 npm 包提供了用于生成[流分析 Visual Studio Code 项目](quick-create-vs-code.md)的 Azure 资源管理器模板的工具。 它可以在 Windows、macOS 和 Linux 上使用，而无需安装 Visual Studio Code。
 
-可以直接[下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd)，也可以通过`npm install -g azure-streamanalytics-cicd`命令[全局](https://docs.npmjs.com/downloading-and-installing-packages-globally)安装包。 这是建议的方法，也可在**Azure Pipelines**中生成管道的 PowerShell 或 Azure CLI 脚本任务中使用。
+可以直接[下载包](https://www.npmjs.com/package/azure-streamanalytics-cicd)，也可以通过命令[全局](https://docs.npmjs.com/downloading-and-installing-packages-globally)安装包 `npm install -g azure-streamanalytics-cicd` 。 这是建议的方法，也可在**Azure Pipelines**中生成管道的 PowerShell 或 Azure CLI 脚本任务中使用。
 
 安装包后，请使用以下命令输出 Azure 资源管理器模板。 **scriptPath** 参数是项目中 **asaql** 文件的绝对路径。 请确保 asaproj.json 和 JobConfig.json 文件与脚本文件位于同一文件夹中。 如果未指定 **outputPath**，则模板将放置在项目的 **bin** 文件夹下的 **Deploy** 文件夹中。
 
@@ -39,13 +39,17 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 成功生成流分析 Visual Studio Code 项目后，会在 bin/[Debug/Retail]/Deploy 文件夹下生成以下两个 Azure 资源管理器模板文件****： 
 
-*  资源管理器模板文件
+* 资源管理器模板文件
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  资源管理器参数文件
+* 资源管理器参数文件
 
-       [ProjectName].JobTemplate.parameters.json   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```   
 
 parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的设置。 如果要部署到其他环境，请相应地替换参数。
 
@@ -70,7 +74,7 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 
 2. 选择 **"使用经典编辑器**创建无 YAML 的管道"。
 
-3. 选择 "源类型"、"团队项目" 和 "存储库"。 然后，选择“继续”  。
+3. 选择 "源类型"、"团队项目" 和 "存储库"。 然后选择“继续”。
 
    ![选择 Azure 流分析项目](./media/setup-cicd-vs-code/select-repo.png)
 
@@ -147,7 +151,7 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 
 2. 选择 " **+** **代理作业**" 旁边的，搜索 " *Azure 资源组部署*"。 输入以下参数：
 
-   |设置|值|
+   |设置|“值”|
    |-|-|
    |显示名称| *部署 myASAJob*|
    |Azure 订阅| 选择订阅。|
@@ -155,8 +159,8 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
    |资源组| 选择将包含流分析作业的测试资源组的名称。|
    |位置|选择测试资源组的位置。|
    |模板位置| *链接的项目*|
-   |模板| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.json |
-   |模板参数|（$ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.json|
+   |模板| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js |
+   |模板参数|（$ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js|
    |重写模板参数|-Input_IoTHub1_iotHubNamespace $ （test_eventhubname）|
    |部署模式|增量|
 
@@ -164,7 +168,7 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
 
 4. 选择 " **+** **代理作业**" 旁边的，搜索 " *Azure 资源组部署*"。 输入以下参数：
 
-   |设置|值|
+   |设置|“值”|
    |-|-|
    |显示名称| *部署 myASAJob*|
    |Azure 订阅| 选择订阅。|
@@ -172,8 +176,8 @@ parameters.json 文件中的默认参数来自 Visual Studio Code 项目中的�
    |资源组| 选择将包含流分析作业的生产资源组的名称。|
    |位置|选择生产资源组的位置。|
    |模板位置| *链接的项目*|
-   |模板| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.json |
-   |模板参数|（$ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.json|
+   |模板| $ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.js |
+   |模板参数|（$ （ArtifactStagingDirectory） \drop\myASAJob.JobTemplate.parameters.js|
    |重写模板参数|-Input_IoTHub1_iotHubNamespace $ （eventhubname）|
    |部署模式|增量|
 

@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76847194"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045393"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>在 Visual Studio 中使用作业关系图在本地调试 Azure 流分析查询
 

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 594e6092483e86f579ae980e56f42c1a4bad7cbd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77604916"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044628"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -66,37 +66,37 @@ ms.locfileid: "77604916"
         1. 在命令窗口中，导航到文件夹 **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** 。
         2. 通过运行以下命令来生成工具：
 
-                ```cmd\sh
-                mvn clean install
-                ```
+            ```cmd\sh
+            mvn clean install
+            ```
 
         4. 使用以下命令来运行工具：
 
-                ```cmd\sh
-                cd target
-                java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
-                ```
+            ```cmd\sh
+            cd target
+            java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
+            ```
 
         5. 出现提示时，可以选择性地为证书输入“公用名称”  。
         6. 此工具在本地生成“客户端证书”、“客户端证书私钥”和“根证书”。   
         7. 复制“根证书”，  包括 **_-----BEGIN CERTIFICATE-----_** 行和 **_-----END CERTIFICATE-----_** 行。 
         8. 将“根证书”的值指定给  参数 **PUBLIC_KEY_CERTIFICATE_STRING**，如下所示：
 
-                ```Java
-                private static final String PUBLIC_KEY_CERTIFICATE_STRING =
-                        "-----BEGIN CERTIFICATE-----\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
-                        "-----END CERTIFICATE-----\n";
-                ```
+            ```Java
+            private static final String PUBLIC_KEY_CERTIFICATE_STRING =
+            "-----BEGIN CERTIFICATE-----\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" +
+            "-----END CERTIFICATE-----\n";
+            ```
 
         9. 关闭命令窗口，或者在系统提示输入“验证码”时输入   。 
  

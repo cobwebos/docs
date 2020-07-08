@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066857"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045903"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -150,7 +150,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自一个资源管理器模板，该模板会在每个 VM 上部署一组负载均衡的 VM、一个 Azure SQL 数据库，然后安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用模板部署扩展时，可以创建完全配置的 Azure 部署。 例如，以下 JSON 取自资源管理器模板，用于部署一组负载均衡的 Vm 和一个 Azure SQL 数据库，然后在每个 VM 上安装一个 .NET Core 应用程序。 VM 扩展负责安装软件。
 
 有关详细信息，请参阅完整的 [Resource Manager 模板](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)。
 
