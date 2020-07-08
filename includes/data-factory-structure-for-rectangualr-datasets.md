@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173620"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形数据集的结构定义
@@ -16,7 +16,7 @@ ms.locfileid: "67173620"
 
 每个列包含以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | name |列的名称。 |是 |
 | type |列的数据类型。 有关何时应指定类型信息，请参阅下面的类型转换部分 |否 |
@@ -51,12 +51,12 @@ ms.locfileid: "67173620"
 * Int64
 * Single
 * Double
-* Decimal
+* 小数
 * Byte[]
 * Bool
-* 字符串 
+* String 
 * Guid
-* Datetime
+* datetime
 * Datetimeoffset
 * Timespan 
 
