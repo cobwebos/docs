@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77468756"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
@@ -40,13 +39,13 @@ ms.locfileid: "77468756"
 - 请求 URL 长度限制为6144个字符，其中查询字符串 URL 长度限制为4096个字符。
 - 具有字节数组选项的上传大小限制为2GB。
 - 字节数组选项在30分钟后超时。
-- `videoURL`参数中提供的 URL 需要进行编码。
+- 参数中提供的 URL `videoURL` 需要进行编码。
 - 为媒体服务资产编制索引与从 URL 进行索引的限制相同。
 - 对于单个文件，视频索引器的最大持续时间限制为4小时。
 - URL 需要可访问（例如，公共 URL）。 
 
     如果它是专用 URL，则需要在请求中提供访问令牌。
-- URL 必须指向有效的媒体文件，而不是指向网页的链接，例如指向`www.youtube.com`页面的链接。
+- URL 必须指向有效的媒体文件，而不是指向网页的链接，例如指向页面的链接 `www.youtube.com` 。
 - 在付费帐户中，最多可以上传50个电影，每分钟最多上载5个电影。
 
 > [!Tip]
@@ -93,31 +92,31 @@ ms.locfileid: "77468756"
 - 索引状态更改： 
     - 属性:    
     
-        |名称|说明|
+        |“属性”|说明|
         |---|---|
-        |ID|视频 ID|
+        |id|视频 ID|
         |state|视频状态|  
-    - 示例： https：\//test.com/notifyme?projectName=MyProject&id = 1234abcd&状态 = 已处理
+    - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&状态 = 已处理
 - 在视频中标识的人：
   - 属性
     
       |名称|说明|
       |---|---|
-      |ID| 视频 ID|
+      |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
       |knownPersonId|在人脸模型中唯一的个人 ID|
       |personName|人名|
         
-    - 示例： https：\//test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+    - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>注意
+##### <a name="notes"></a>说明
 
 - 视频索引器返回在原始 URL 中提供的任何现有参数。
 - 提供的 URL 必须进行编码。
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
+如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 你可以指定以下值：
 
 - `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
 - `VideoOnly`-仅使用视频编制索引并提取见解（忽略音频）
@@ -126,7 +125,7 @@ ms.locfileid: "77468756"
 
 > [!NOTE]
 > 视频索引器最多包含两个音频轨道。 如果文件中有更多的音频曲目，它们将被视为一个轨迹。<br/>
-如果要单独为曲目编制索引，则需要提取相关音频文件并将其作为`AudioOnly`索引。
+如果要单独为曲目编制索引，则需要提取相关音频文件并将其作为索引 `AudioOnly` 。
 
 价格取决于所选索引编制选项。  
 
@@ -166,7 +165,7 @@ ms.locfileid: "77468756"
 
     * 导航到 https://api-portal.videoindexer.ai/
     * 登录
-    * 中转到**产品** -> **授权** -> **授权订阅**
+    * 中转到**产品**  ->  **授权**  ->  **授权订阅**
     * 复制**主密钥**
 * 视频 URL-要编制索引的视频/音频文件的 URL。 该 URL 必须指向媒体文件（不支持 HTML 页面）。 该文件可以通过作为 URI 的一部分提供的访问令牌进行保护，并且为该文件提供服务的终结点必须使用 TLS 1.2 或更高版本进行保护。 需要对 URL 进行编码。
 
@@ -348,7 +347,7 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|说明|
+|状态代码|ErrorType（在响应正文中）|描述|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|

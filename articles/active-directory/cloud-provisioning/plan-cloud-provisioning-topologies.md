@@ -12,10 +12,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77620875"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 云预配支持的拓扑和方案
@@ -50,7 +49,7 @@ ms.locfileid: "77620875"
 这种情况下，拓扑类似于多林方案，但这种情况涉及到现有 Azure AD Connect 环境，然后使用 Azure AD Connect 云预配引入新的林。  有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的现有林](tutorial-existing-forest.md)
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>试验 Azure AD Connect 现有混合 AD 林中的云预配
-![单个林和单个租户](media/plan-cloud-provisioning-topologies/migrate.png)的拓扑，试验方案涉及同一林中的 Azure AD Connect 和 Azure AD Connect 云预配，并相应地设置用户和组的作用域。 注意：对象只应位于其中一个工具的范围内。 
+![单个林和单个租户 ](media/plan-cloud-provisioning-topologies/migrate.png) 的拓扑，试验方案涉及同一林中的 Azure AD Connect 和 Azure AD Connect 云预配，并相应地设置用户和组的作用域。 注意：对象只应位于其中一个工具的范围内。 
 
 有关此方案的示例，请参阅[教程：在现有同步的 AD 林中试点 Azure AD Connect 云预配](tutorial-pilot-aadc-aadccp.md)
 

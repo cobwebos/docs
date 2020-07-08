@@ -1,5 +1,5 @@
 ---
-title: Linux VM 启动到 Grub 的修复
+title: Linux VM 启动到 Grub 救援
 description: 虚拟机因进入救援控制台而无法启动
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,13 +14,12 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77561943"
 ---
-# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 启动到 Grub 的修复
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 启动到 Grub 救援
 
 我们确定你的虚拟机 (VM) 已进入救援控制台。 如果你的 Linux VM 最近应用了内核更改（例如内核升级），在启动过程中因内核错误而无法正常启动，则会发生此问题。 在启动过程中，当启动加载程序尝试查找 Linux 内核并将启动控制移交给它时，如果移交失败，则 VM 会进入救援控制台。
 

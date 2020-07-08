@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564578"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作为 CloudSimple 私有云上的 vCenter 的标识提供者
@@ -32,7 +31,7 @@ ms.locfileid: "77564578"
 
 Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  Azure AD 提供了一个可缩放、一致和可靠的身份验证机制，使用户能够在 Azure 上进行身份验证和访问不同的服务。  它还为任何第三方服务提供安全 LDAP 服务，以将 Azure AD 用作身份验证/标识源。  Azure AD 结合了核心目录服务、高级标识监管和应用程序访问管理，可用于为管理私有云的用户提供对私有云的访问权限。
 
-若要将 Azure AD 用作包含 vCenter 的标识源，必须设置 Azure AD 和 Azure AD 的域服务。 请按照以下说明执行操作：
+若要将 Azure AD 用作包含 vCenter 的标识源，必须设置 Azure AD 和 Azure AD 的域服务。 按照以下说明操作：
 
 1. [如何设置 Azure AD 和 Azure AD 域服务](#set-up-azure-ad-and-azure-ad-domain-services)
 2. [如何在私有云 vCenter 上设置标识源](#set-up-an-identity-source-on-your-private-cloud-vcenter)
@@ -85,14 +84,14 @@ Azure AD 是 Microsoft 多租户、基于云的目录和标识管理服务。  A
 
     | **选项** | **说明** |
     |------------|-----------------|
-    | **Name** | 标识源的名称。 |
-    | **用户的基本 DN** | 用户的基本可分辨名称。  对于 Azure AD，请使用`OU=AADDC Users,DC=<domain>,DC=<domain suffix>` ：示例`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`：。|
+    | **名称** | 标识源的名称。 |
+    | **用户的基本 DN** | 用户的基本可分辨名称。  对于 Azure AD，请使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` 示例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` 。|
     | **域名** | 域的 FQDN，例如，example.com。 不要在此文本框中提供 IP 地址。 |
     | **域别名** | *（可选）* 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
-    | **组的基本 DN** | 组的基本可分辨名称。 对于 Azure AD，请使用`OU=AADDC Users,DC=<domain>,DC=<domain suffix>` ：示例：`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldaps://hostname:port`。 对于 LDAPS 连接，此端口通常为636。 <br><br>在主或辅助 LDAP URL 中使用 `ldaps://` 时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
+    | **组的基本 DN** | 组的基本可分辨名称。 对于 Azure AD，请使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` 示例：`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldaps://hostname:port`。 对于 LDAPS 连接，此端口通常为636。 <br><br> `ldaps://`   在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
     | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
-    | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请在 "URL" 文本框中键入 `ldaps://` 后显示 "选择证书" 按钮。 不需要辅助 URL。 |
+    | **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请  `ldaps://`   在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
     | **用户名** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
     | **密码** | Username 指定的用户的密码。 |
 

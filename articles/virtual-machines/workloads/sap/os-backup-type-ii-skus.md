@@ -14,10 +14,9 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616866"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>修订版3中的 II 类 Sku 的操作系统备份和还原
@@ -31,7 +30,7 @@ ms.locfileid: "77616866"
 >[!NOTE]
 >OS 备份脚本使用预安装在服务器中的 ReaR 软件。  
 
-Microsoft `Service Management`团队完成预配后，默认情况下，服务器配置了两个备份计划以备份操作系统的文件系统级别。 可以使用以下命令检查备份作业的计划：
+Microsoft 团队完成预配后 `Service Management` ，默认情况下，服务器配置了两个备份计划以备份操作系统的文件系统级别。 可以使用以下命令检查备份作业的计划：
 ```
 #crontab –l
 ```
@@ -99,4 +98,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-以下屏幕截图显示了完整备份的还原： ![RearToolConfiguration](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+以下屏幕截图显示了完整备份的还原： ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

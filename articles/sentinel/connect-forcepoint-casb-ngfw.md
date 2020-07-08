@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: eb099a786a84f9b7d0a6f0dc6e6df9c3459af295
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588223"
 ---
 # <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>将 Forcepoint 产品连接到 Azure Sentinel
@@ -44,7 +43,7 @@ Forcepoint 数据连接器允许使用 Azure Sentinel 连接 Forcepoint Cloud Ac
 
 2. 搜索 "CommonSecurityLog" 以在 Log Analytics 中使用相关架构，其中 DeviceVendor 名称包含 "Forcepoint"。 
 
-3. 继续执行[步骤3：验证连接性](connect-cef-verify.md)。
+3. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 
 
 

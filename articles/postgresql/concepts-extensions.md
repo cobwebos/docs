@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77201265"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
@@ -215,7 +214,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到其他 Azure Database for PostgreSQL 服务器的情况除外。
 
 ## <a name="uuid"></a>uuid
-如果计划使用 `uuid_generate_v4()`uuid-ossp 扩展[中的 ](https://www.postgresql.org/docs/current/uuid-ossp.html)，请考虑将其与 `gen_random_uuid()`pgcrypto 扩展[中的 ](https://www.postgresql.org/docs/current/pgcrypto.html) 进行比较，以了解性能优势。
+如果计划使用 [uuid-ossp 扩展](https://www.postgresql.org/docs/current/uuid-ossp.html)中的 `uuid_generate_v4()`，请考虑将其与 [pgcrypto 扩展](https://www.postgresql.org/docs/current/pgcrypto.html)中的 `gen_random_uuid()` 进行比较，以了解性能优势。
 
 ## <a name="pgaudit"></a>pgAudit
 [pgAudit 扩展](https://github.com/pgaudit/pgaudit/blob/master/README.md)提供会话和对象审核日志记录。 若要了解如何在 Azure Database for PostgreSQL 中使用此扩展，请访问[“审核概念”一文](concepts-audit.md)。 

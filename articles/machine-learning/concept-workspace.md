@@ -10,10 +10,9 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77505571"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
@@ -79,7 +78,7 @@ ms.locfileid: "77505571"
 | 创建笔记本 VM |   | **&check;** | |     |
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移到另一个订阅，也不支持将拥有的订阅移到新租户。 这样做可能会导致错误。
 
 ## <a name="create-a-workspace"></a><a name='create-workspace'></a>创建工作区
 

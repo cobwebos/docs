@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77560076"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中具有安全传输存储帐户的 Apache Hadoop 群集
@@ -20,7 +19,7 @@ ms.locfileid: "77560076"
 [需要安全传输](../storage/common/storage-require-secure-transfer.md)功能强制提交到帐户的所有请求都通过安全连接来进行，从而增强 Azure 存储帐户的安全性。 仅 HDInsight 群集 3.6 或更高版本支持此功能和 wasbs 方案。
 
 > [!IMPORTANT]
-> 如果在创建群集后启用安全存储传输，则可能会导致使用存储帐户时出现错误，不建议使用此项。 最好使用已启用安全传输的存储帐户创建新群集。
+> 在创建群集后启用安全存储传输可能会导致使用存储帐户时出错，因此不建议这样做。 最好使用已启用安全传输的存储帐户创建新群集。
 
 ## <a name="storage-accounts"></a>存储帐户
 
@@ -32,13 +31,13 @@ ms.locfileid: "77560076"
 
 ### <a name="powershell"></a>PowerShell
 
-对于 PowerShell cmdlet [AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，请确保将参数`-EnableHttpsTrafficOnly`设置为。 `1`
+对于 PowerShell cmdlet [AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，请确保 `-EnableHttpsTrafficOnly` 将参数设置为 `1` 。
 
 若要使用 PowerShell 更新现有的存储帐户，请参阅[要求使用 powershell 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-对于 Azure CLI 命令[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，请确保将`--https-only`参数设置为`true`。
+对于 Azure CLI 命令[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，请确保 `--https-only` 将参数设置为 `true` 。
 
 若要使用 Azure CLI 更新现有的存储帐户，请参阅[需要安全传输与 Azure CLI](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
 

@@ -7,10 +7,9 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 543b566300ce56bc2d765087f9a9e269c5b0cc99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77586166"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件中心触发器和绑定
@@ -19,7 +18,7 @@ ms.locfileid: "77586166"
 
 | 操作 | 类型 |
 |--------|------|
-| 响应发送到事件中心事件流的事件。 | [触发器](./functions-bindings-event-hubs-trigger.md) |
+| 响应发送到事件中心事件流的事件。 | 触发器 |
 | 将事件写入事件流 | [输出绑定](./functions-bindings-event-hubs-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]

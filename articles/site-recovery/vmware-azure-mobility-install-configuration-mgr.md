@@ -6,10 +6,9 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77252221"
 ---
 # <a name="automate-mobility-service-installation"></a>自动执行移动服务安装
@@ -77,7 +76,7 @@ ms.locfileid: "77252221"
 
 1. 将以下安装文件复制到网络共享：
 
-   - 对于 Windows，将_ASR_UA_version_Windows_GA_date_Release_复制到_MobSvcWindows_。
+   - 对于 Windows，将_Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_复制到_MobSvcWindows_。
    - 对于 Linux，将以下文件复制到_MobSvcLinux_：
      - _Microsoft-ASR_UARHEL6-64release.tar.gz_
      - _Microsoft-ASR_UARHEL7-64release.tar.gz_
@@ -95,7 +94,7 @@ ms.locfileid: "77252221"
 
 复制以下代码：
 
-- 将_MobSvcWindows_文件夹中的代码另存为_install_。
+- 将_MobSvcWindows_文件夹中的代码另存为_install.bat_。
 - 将此脚本中的 `[CSIP]` 占位符替换为配置服务器的实际 IP 地址值。
 - 此脚本支持移动服务代理的全新安装和已安装代理的更新。
 
@@ -392,7 +391,7 @@ cd /tmp
    - 为了避免不必要的重新启动，请在每月的维护时段或软件更新时段计划包安装。
 
 1. 在“分发点”页上，配置设置并完成向导  。
-1. 在 Configuration Manager 控制台中监视部署进度。 转到“监视” > “部署” >  _\<你的包名称\>_ 。  
+1. 在 Configuration Manager 控制台中监视部署进度。 请参阅**监视**  >  **部署**  >  _\<your package name\>_ 。
 
 ### <a name="uninstall-the-mobility-service"></a>卸载移动服务
 

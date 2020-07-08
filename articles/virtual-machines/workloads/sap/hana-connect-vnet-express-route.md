@@ -14,10 +14,9 @@ ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f7ac8e69c4e149fdd0f365e19f7a0282a547af43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617189"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>将虚拟网络连接到 HANA 大型实例
@@ -35,7 +34,7 @@ ms.locfileid: "77617189"
   - 如果使用 Azure 门户，请添加新的**虚拟网络网关**，并选择**ExpressRoute**作为网关类型。
   - 如果使用 PowerShell，请首先下载并使用最新版 [Azure PowerShell SDK](https://azure.microsoft.com/downloads/)。 
  
-以下命令创建 ExpressRoute 网关。 前面带有的_$_ 文本是用户定义的变量，应使用特定信息进行更新。
+以下命令创建 ExpressRoute 网关。 前面带有的文本 _$_ 是用户定义的变量，应使用特定信息进行更新。
 
 ```powershell
 # These Values should already exist, update to match your environment

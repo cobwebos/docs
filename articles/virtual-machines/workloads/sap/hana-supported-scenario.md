@@ -14,10 +14,9 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617177"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
@@ -68,9 +67,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | STONITH |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 节点到节点|
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | STONITH |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点|
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
 
 可以根据在 B-HLI 设备上配置的拓扑来选择接口。 例如，接口 "B" 设置为节点到节点的通信，这在配置了扩展拓扑时非常有用。 此接口不用于单节点、纵向扩展配置。 有关接口用法的详细信息，请查看所需方案（本文后面的部分）。 
 
@@ -100,7 +99,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 存储基于请求的拓扑进行预配置。 根据服务器的数量、Sku 数量和配置的拓扑，卷大小和装入点会有所不同。 有关详细信息，请查看所需的方案（本文后面的部分）。 如果需要更多存储空间，可以按 1 TB 的增量购买。
 
 >[!NOTE]
->装入点/usr/sap/\<SID> 是指向/hana/shared 装入点的符号链接。
+>装入点/usr/sap/ \<SID> 是/hana/shared 装入点的符号链接。
 
 
 ## <a name="supported-scenarios"></a>支持的方案
@@ -140,9 +139,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -154,7 +153,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/SID/mnt00001 | 日志文件安装 | 
 |/hana/logbackups/SID | 重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 
 ## <a name="single-node-mcos"></a>单节点 MCOS
@@ -175,9 +174,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -193,7 +192,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/SID2/mnt00001 | SID2 的日志文件安装 | 
 |/hana/logbackups/SID2 | SID2 的重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 
@@ -215,9 +214,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -230,7 +229,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/logbackups/SID | SID 的重做日志 |
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
@@ -256,9 +255,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -279,7 +278,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/QA-SID/mnt00001 | 问答 SID 的日志文件安装 |
 |/hana/logbackups/QA-SID | QA SID 的重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
@@ -311,9 +310,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 用于 STONITH |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 用于 STONITH |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 用于 STONITH |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -331,7 +330,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/SID/mnt00001 | 辅助 SID 的日志文件安装 | 
 |/hana/logbackups/SID | 辅助 SID 的重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 - STONITH：为 STONITH 设置配置 SBD。 但是，STONITH 的使用是可选的。
@@ -357,9 +356,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 用于 STONITH |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 用于 STONITH |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 用于 STONITH |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -385,7 +384,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/QA-SID/mnt00001 | 问答 SID 的日志文件安装 |
 |/hana/logbackups/QA-SID | QA SID 的重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 - STONITH：为 STONITH 设置配置 SBD。 但是，STONITH 的使用是可选的。
@@ -416,9 +415,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -433,7 +432,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 备用：在备用设备上为 HANA 实例安装配置（标记为 "HANA 安装必需"）的卷和装入点。
  
@@ -457,9 +456,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -493,9 +492,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -509,7 +508,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/logbackups/SID | 生产 SID 的重做日志 |
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 
 ## <a name="scale-out-with-dr-using-storage-replication"></a>使用存储复制进行 DR 扩展
@@ -532,9 +531,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -552,7 +551,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 -  在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点（对于 HANA 安装，标记为 "必需"）。 
 - 在 DR 站点上：数据、日志备份和共享卷（标记为 "存储复制"）通过生产站点的快照进行复制。 仅在故障转移期间装入这些卷。 有关详细信息，请参阅[灾难恢复故障转移过程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
@@ -577,9 +576,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点在每个机架单元（主和灾难恢复）上预先配置：
@@ -592,7 +591,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/logbackups/SID | SID 的重做日志 |
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 - 主节点通过使用 HANA 系统复制与 DR 节点同步。 
@@ -618,9 +617,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -642,7 +641,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/QA-SID/mnt00001 | 问答 SID 的日志文件安装 |
 |/hana/logbackups/QA-SID | QA SID 的重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 对于 MCOS：卷大小分布基于内存中的数据库大小。 若要了解多 SID 环境中支持的内存中的数据库大小，请参阅[概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 - 在灾难恢复站点：在 DR 中安装生产 HANA 实例的卷和装入点，并将其标记为 "在 DR 站点上生产实例"。 
@@ -668,9 +667,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -689,7 +688,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/logbackups/SID | 生产 SID 的重做日志 |
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 在灾难恢复站点：在 DR B-HLI 单位为生产 HANA 实例安装配置（标记为 "生产 DR 实例"）卷和装入点。 
 - 主站点节点通过使用 HANA 系统复制与 DR 节点同步。 
@@ -713,9 +712,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -737,7 +736,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/log/QA-SID/mnt00001 | 问答 SID 的日志文件安装 |
 |/hana/logbackups/QA-SID | QA SID 的重做日志 |
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 在灾难恢复站点：在 DR B-HLI 单位为生产 HANA 实例安装配置（标记为 "生产 DR 实例"）卷和装入点。 
 - 在 DR 站点上：为 qa 实例安装配置了用于 QA 的数据、日志备份、日志和共享卷（标记为 "QA 实例安装"）。
@@ -764,9 +763,9 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
 | A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo + 2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo + 1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo + 3> | team0.tenant+3 | 已配置但未使用 |
+| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
 
 ### <a name="storage"></a>存储
 以下装入点已预配置：
@@ -785,7 +784,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 |/hana/logbackups/SID | 生产 SID 的重做日志 |
 
 
-### <a name="key-considerations"></a>重要注意事项
+### <a name="key-considerations"></a>关键注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
 - 在灾难恢复站点：在 DR B-HLI 单元中为生产 HANA 实例安装配置卷和装入点。 
 - 主站点节点通过使用 HANA 系统复制与 DR 节点同步。 

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588172"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>连接来自 Microsoft web 应用程序防火墙的数据
@@ -23,7 +22,7 @@ ms.locfileid: "77588172"
 你可以通过 Azure 应用程序网关的 Microsoft web 应用程序防火墙（WAF）对日志进行流式处理。 此 WAF 保护应用程序免受常见 web 漏洞的影响，例如 SQL 注入和跨站点脚本，并允许你自定义规则以减少误报。 按照以下说明将 Microsoft Web 应用程序防火墙日志流式传输到 Azure Sentinel。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 现有的应用程序网关资源
 
@@ -34,8 +33,8 @@ ms.locfileid: "77588172"
     
 1. 在 Azure Sentinel 门户中，选择 "**数据连接器**"。
 1. 在 "数据连接器" 页上，选择 " **WAF** " 磁贴。
-1. 中转到 "[应用程序网关资源](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) "，然后选择你的 WAF。
-    1. 选择“诊断设置”****。
+1. 中转到 "[应用程序网关资源](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)"   ，然后选择你的 WAF。
+    1. 选择“诊断设置”。
     1. 选择表下的 " **+ 添加诊断设置**"。
     1. 在 "**诊断设置**" 页中，键入**名称**，然后选择 "**发送到 Log Analytics**"。
     1. 在**Log Analytics 工作区**中，选择 Azure Sentinel 工作区。

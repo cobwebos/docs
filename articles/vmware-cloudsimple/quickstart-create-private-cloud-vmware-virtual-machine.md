@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566142"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在私有云上创建 VMware 虚拟机
@@ -25,7 +24,7 @@ ms.locfileid: "77566142"
 
 ## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”****。
 2. 搜索 " **CloudSimple Services**"。
 3. 选择要在其上创建私有云的 CloudSimple 服务。
 4. 在 "**概述**" 页上，单击 **"CloudSimple 门户"** ，打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示，请用 Azure 登录凭据登录。  
@@ -96,13 +95,13 @@ VM 现在已添加到工作负荷计算资源，可供使用。
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>将用户和标识源添加到 vCenter （可选）
 
-CloudSimple 将使用用户名`cloudowner@cloudsimple.local`分配默认 vCenter 用户帐户。 不需要额外的帐户设置即可开始。  CloudSimple 通常为管理员分配执行正常操作所需的特权。  将本地 active directory 或 Azure AD 设置为私有云上的[其他标识源](set-vcenter-identity.md)。
+CloudSimple 将使用用户名分配默认 vCenter 用户帐户 `cloudowner@cloudsimple.local` 。 不需要额外的帐户设置即可开始。  CloudSimple 通常为管理员分配执行正常操作所需的特权。  将本地 active directory 或 Azure AD 设置为私有云上的[其他标识源](set-vcenter-identity.md)。
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>创建 DNS 和 DHCP 服务器（可选）
 
-在私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。 需要适当的 DHCP 和 DNS 基础结构才能提供这些服务。 可以在 vCenter 中配置虚拟机，以在私有云环境中提供这些服务。
+在私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。 需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。 可以在 vCenter 中配置虚拟机，以在私有云环境中提供这些服务。
 
-必备条件
+先决条件
 
 * 配置了 VLAN 的分布式端口组
 
@@ -139,7 +138,7 @@ CloudSimple 门户中的 "网络" 页允许您为 Vm 指定防火墙表和公共
 5. 如果需要，请使用滑块更改空闲超时。
 6. 输入要为其分配公共 IP 地址的本地 IP 地址。
 7. 如果需要，请输入关联的 DNS 名称。
-8. 单击“Done”（完成）  。
+8. 单击“完成”。
 
     ![公共 IP](media/quick-create-pc-public-ip.png)
 

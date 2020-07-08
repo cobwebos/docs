@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617078"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
@@ -147,11 +146,11 @@ ms.locfileid: "77617078"
 
 示例输出：
 
-用于常规 SAP HANA 检查的**HANA\_配置\_MiniChecks\_rev rev102.01 + 1** 。
+**HANA \_配置 \_ MiniChecks \_ rev rev102.01 + 1**用于常规 SAP HANA 检查。
 
 ![用于常规 SAP HANA 检查的 HANA\_Configuration\_MiniChecks\_Rev102.01+1](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**HANA\_服务\_概述**SAP HANA 当前正在运行的服务的概述。
+**HANA \_服务 \_ 概述**概述当前正在运行的 SAP HANA 服务的概述。
 
 ![用于概述哪些 SAP HANA 服务当前正在运行的 HANA\_Services\_Overview](./media/troubleshooting-monitoring/image12-services-overview.png)
 
@@ -159,11 +158,11 @@ ms.locfileid: "77617078"
 
 ![用于显示 SAP HANA 服务信息的 HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**HANA\_配置\_概述\_Rev110 +** ，获取有关 SAP HANA 实例的一般信息。
+**HANA \_有关 SAP HANA 实例的常规信息，请 \_ 参见配置概述 \_ Rev110 +** 。
 
 ![用于显示有关 SAP HANA 实例的常规信息的 HANA\_Configuration\_Overview\_Rev110+](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-用于检查 SAP HANA 参数的**HANA\_配置\_\_参数 Rev70 +** 。
+**HANA \_用于检查 SAP HANA 参数的配置 \_ 参数 \_ Rev70** 。
 
 ![用于检查 SAP HANA 参数的 HANA\_Configuration\_Parameters\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

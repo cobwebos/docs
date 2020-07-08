@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588495"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>连接 Barracuda CloudGen 防火墙
@@ -28,7 +27,7 @@ Barracuda CloudGen Firewall （CGFW）连接器可让你轻松地将 Barracuda C
 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure Sentinel 工作区的读取和写入权限。
 
@@ -36,7 +35,7 @@ Barracuda CloudGen Firewall （CGFW）连接器可让你轻松地将 Barracuda C
 
 ## <a name="connect-azure-sentinel-to-barracuda-cloudgen-firewall"></a>将 Azure Sentinel 连接到 Barracuda CloudGen Firewall
 
-1. 在 Azure 门户中，导航到 " **Azure Sentinel** > **数据连接器**"，然后选择**Barracuda CloudGen Firewall**连接器。
+1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择**Barracuda CloudGen Firewall**连接器。
 
 2. 选择 "**打开连接器" 页面**。
 

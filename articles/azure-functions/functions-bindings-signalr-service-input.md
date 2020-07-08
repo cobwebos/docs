@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530258"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输入绑定
@@ -94,7 +93,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示了*函数 json*文件中的 SignalR 连接信息输入绑定，以及使用绑定返回连接信息的[Python 函数](functions-reference-python.md)。
+下面的示例显示了文件*function.js*中的 SignalR 连接信息输入绑定，以及使用绑定返回连接信息的[Python 函数](functions-reference-python.md)。
 
 下面是 *function.json* 文件中的绑定数据：
 
@@ -151,7 +150,7 @@ public SignalRConnectionInfo negotiate(
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`UserId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
+您可以 `UserId` 使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的属性设置为任一标头的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,9 +165,9 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
+您可以 `userId` 使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的属性设置为任一标头的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 示例 function.json：
 
@@ -199,7 +198,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
+您可以 `userId` 使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的属性设置为任一标头的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 示例 function.json：
 
@@ -226,7 +225,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
+您可以 `userId` 使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的属性设置为任一标头的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 示例 function.json：
 
@@ -258,7 +257,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-您可以使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的`userId`属性设置为任一标头的值： `{headers.x-ms-client-principal-id}`或`{headers.x-ms-client-principal-name}`。
+您可以 `userId` 使用[绑定表达式](./functions-bindings-expressions-patterns.md)将绑定的属性设置为任一标头的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 ```java
 @FunctionName("negotiate")

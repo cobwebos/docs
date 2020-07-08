@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617124"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
@@ -656,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>故障转移或接管
 
-如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是运行 crm \<node\> standby 命令****。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
+如[重要说明](#important-notes)中所述，不应使用标准的正常关机来测试群集故障转移或 SAP HANA HSR 接管。 我们建议触发内核崩溃或强制资源迁移等操作，或者在 VM 的 OS 级别关闭所有网络。 另一种方法是**crm \<node\> 备用**命令。 请参阅 [SUSE 文档][sles-12-ha-paper]。 
 
 下面的三个示例命令可以强制群集故障转移：
 
@@ -682,7 +681,7 @@ watch SAPHanaSR-showAttr
 
 它会重试几次，以避免不必要的故障转移。 仅当状态从“正常”（返回值 4）更改为“错误”（返回值 1）时，群集才会做出反应****************。 因此，如果 SAPHanaSR showAttr 的输出显示了状态为 offline 的 VM，这便是正常状况********。 但是，没有任何活动能够切换主要站点和辅助站点。 只要 SAP HANA 不返回错误，就不会触发群集活动。
 
-可以通过调用 SAP Python 脚本，按如下所示来监视 SAP HANA 横向运行状况状态为用户** \<HANA SID\>adm** 。 可能必须调整路径：
+可以通过调用 SAP Python 脚本，按如下所示，将 SAP HANA 横向运行状况作为用户** \<HANA SID\> adm**来监视。 可能必须调整路径：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -945,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 群集解决方案还提供浏览器界面，该界面为偏向于使用菜单和图形界面而不是 shell 级所有命令的用户提供 GUI。
-若要使用浏览器界面，请将** \<节点\> **替换为以下 URL 中的实际 SAP HANA 节点。 然后输入群集（用户群集）的凭据****：
+若要使用浏览器界面，请将替换 **\<node\>** 为以下 URL 中的实际 SAP HANA 节点。 然后输入群集（用户群集）的凭据****：
 
 <pre><code>
 https://&ltnode&gt:7630

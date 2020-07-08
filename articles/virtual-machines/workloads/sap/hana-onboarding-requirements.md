@@ -14,10 +14,9 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617009"
 ---
 # <a name="onboarding-requirements"></a>加入要求
@@ -61,7 +60,7 @@ ms.locfileid: "77617009"
 > 对于类型 II 设备，目前仅支持 SLES 12 SP2 OS 版本。 
 
 
-**Database**
+**数据库**
 
 - SAP HANA（平台版或企业版）的许可证和软件安装组件。
 

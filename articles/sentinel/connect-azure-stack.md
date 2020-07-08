@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588512"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>将 Azure Stack 虚拟机连接到 Azure Sentinel
@@ -36,7 +35,7 @@ ms.locfileid: "77588512"
 
 1. 在新的浏览器选项卡中，登录到[Azure Stack 门户](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)。
 2. 请在 "**虚拟机**" 页上，选择要用 Azure Sentinel 保护的虚拟机。 有关如何在 Azure Stack 上创建虚拟机的信息，请参阅[使用 Azure Stack 门户创建 Windows SERVER vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)或[使用 Azure Stack 门户创建 Linux 服务器 vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)。
-3. 选择 "**扩展**"。 此时将显示此虚拟机上安装的虚拟机扩展列表。
+3. 选择“扩展”****。 此时将显示此虚拟机上安装的虚拟机扩展列表。
 4. 单击 "**添加**" 选项卡。此时将打开 "**新建资源**菜单" 边栏选项卡，其中显示可用虚拟机扩展的列表。 
 5. 选择**Azure Monitor、更新和配置管理**扩展，并单击 "**创建**"。 此时将打开 "**安装扩展**配置" 窗口。
 

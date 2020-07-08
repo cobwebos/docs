@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190797"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>为多层 SAP NetWeaver 应用部署设置灾难恢复
@@ -138,7 +137,7 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 
 可以选择“部署到 Azure”，将最常用的 Site Recovery 脚本部署到 Azure 自动化帐户中。  使用任何已发布的脚本时，请遵循脚本中的指导。
 
-[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. 将操作前脚本添加到组1以对 SQL Server 可用性组进行故障转移。 使用在示例脚本中发布的 Asr-sql-failoverag 脚本。 按照脚本中的指导进行操作并对脚本中所需的更改进行相应的更改。
 1. 添加操作后脚本，将负载均衡器连接到 Web 层的故障转移虚拟机（组1）。 使用在示例脚本中发布的 AddSingleLoadBalancer 脚本。 按照脚本中的指南进行操作，并根据需要在脚本中进行所需的更改。
@@ -150,7 +149,7 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 
 1. 在 Azure 门户中，选择恢复服务保管库。
 1. 选择针对 SAP 应用程序创建的恢复计划。
-1. 选择“测试故障转移”****。
+1. 选择“测试故障转移”。
 1. 若要启动测试故障转移过程，请选择恢复点和 Azure 虚拟网络。
 1. 当辅助环境启动时，执行验证。
 1. 验证完成后，通过选择 "**清理测试故障转移**" 清理故障转移环境。
@@ -161,7 +160,7 @@ SMLG 事务管理 ABAP 应用程序服务器的登录组。 该事务使用 Cent
 
 1. 在 Azure 门户中，选择恢复服务保管库。
 1. 选择针对 SAP 应用程序创建的恢复计划。
-1. 选择“故障转移”。****
+1. 选择“故障转移”。
 1. 若要启动故障转移过程，请选择恢复点。
 
 有关详细信息，请参阅 [Site Recovery 中的故障转移](site-recovery-failover.md)。

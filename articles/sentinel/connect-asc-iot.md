@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 3af51110a4c4604444573f62be65077c786db606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588631"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>将数据从 Azure 安全中心连接到 Azure Sentinel 
@@ -29,7 +28,7 @@ ms.locfileid: "77588631"
 
 使用适用于 IoT 连接器的 Azure 安全中心将 IoT 事件的所有 Azure 安全中心流式传输到 Azure Sentinel。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 对部署了 Azure Sentinel 的工作区的**读取**和**写入**权限
 - 必须在相关 IoT 中心**启用****用于 IoT 的 Azure 安全中心**
@@ -45,7 +44,7 @@ ms.locfileid: "77588631"
 1. 在右下方的窗格中，单击 "**打开连接器页面**"。 
 1. 单击要流式传输到 Azure Sentinel 的每个 IoT 中心订阅旁边的 "**连接**"。 
     - 如果未在该集线器上启用 Azure 安全中心的 IoT，你会看到 "**启用**警告" 消息。 单击 "**启用**" 链接以启动该服务。 
-1. 你可以决定是否希望来自 Azure 安全中心的警报在 Azure Sentinel 中自动生成事件。 在 "**创建事件**" 下，选择 "**启用**" 以启用默认分析规则，以便根据连接的安全服务中生成的警报自动创建事件。可以在 "**分析** > **活动**规则" 下更改或编辑此规则。
+1. 你可以决定是否希望来自 Azure 安全中心的警报在 Azure Sentinel 中自动生成事件。 在 "**创建事件**" 下，选择 "**启用**" 以启用默认分析规则，以便根据连接的安全服务中生成的警报自动创建事件。可以在 "**分析**  >  **活动**规则" 下更改或编辑此规则。
 
 > [!NOTE]
 > 更改连接后，会需要一段时间才能刷新中心列表。 
@@ -54,7 +53,7 @@ ms.locfileid: "77588631"
 
 若要使用 Log Analytics 中的相关架构来显示 Azure 安全中心的 IoT 警报，请执行以下操作：
 
-1. 打开**Logs** > **SecurityInsights**SecurityInsights > **SecurityAlert**的日志，或搜索**SecurityAlert**。 
+1. 打开**Logs**  >  **SecurityInsights**  >  **SecurityAlert**的日志，或搜索**SecurityAlert**。 
 2. 使用以下 kql 筛选器，筛选为仅查看 IoT 生成的警报的 Azure 安全中心：
 
 ```kusto

@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
 ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591347"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>适用于 SAP 应用程序的 azure 虚拟机上的 SAP NetWeaver 的高可用性，适用于 SAP 应用程序的 Azure NetApp 文件（SMB）
@@ -59,7 +58,7 @@ ms.locfileid: "77591347"
 
 本文介绍如何在[Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)上部署、配置虚拟机、安装群集框架，以及在 Windows vm 上安装高度[可用的 SAP](https://docs.microsoft.com/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) NetWeaver 7.50 系统。  
 
-本文不详细介绍数据库层。 假设已创建 Azure[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。  
+文本不会详细介绍数据库层。 假设已创建 Azure[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。  
 
 请先阅读以下 SAP 说明和文档：
 
@@ -81,13 +80,13 @@ ms.locfileid: "77591347"
 * [在 ASCS 群集配置中添加探测端口](sap-high-availability-installation-wsfc-file-share.md)
 * [在故障转移群集上安装（A） SCS 实例](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [创建用于 Azure NetApp 文件的 SMB 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
-* [使用 Azure NetApp 文件 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
+* [使用 Azure NetApp 文件的 Microsoft Azure 上的 NetApp SAP 应用程序][anf-sap-applications-azure]
 
 ## <a name="overview"></a>概述
 
 SAP 开发了可以取代群集共享磁盘的新方法和新方案，用于将 Windows 故障转移群集上的 SAP ASCS/SCS 实例群集化。 可以使用 SMB 文件共享来部署 SAP 全局主机文件，而不是使用群集共享磁盘。 Azure NetApp 文件使用 Active Directory 支持 SMBv3 （连同 NFS）和 NTFS ACL。 Azure NetApp 文件自动可用（因为它是一种 PaaS 服务）。 这些功能使得 Azure NetApp 文件非常适合用于托管 SAP 全局文件共享。  
 支持[Azure Active Directory （AD）域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory 域服务（AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 可以将现有 Active Directory 域控制器与 Azure NetApp 文件一起使用。 域控制器可以在 Azure 中作为虚拟机，也可以在本地通过 ExpressRoute 或 S2S VPN。 在本文中，我们将在 Azure VM 中使用域控制器。  
-SAP Netweaver central services 的高可用性（HA）需要共享存储。 若要在 Windows 上实现此目的，目前需要构建 SOFS 群集，或使用类似于 SIOS 的群集共享磁盘 s/w。 现在，可以使用共享存储实现 SAP Netweaver HA，并将其部署在 Azure NetApp 文件中。 将 Azure NetApp 文件用于共享存储无需使用 SOFS 或 SIOS。  
+SAP Netweaver 中心服务的高可用性 (HA) 需要共享存储。 若要在 Windows 上实现此目的，目前需要构建 SOFS 群集，或使用类似于 SIOS 的群集共享磁盘 s/w。 现在，可以使用部署在 Azure NetApp 文件上的共享存储来实现 SAP Netweaver HA。 将 Azure NetApp 文件用于共享存储无需使用 SOFS 或 SIOS。  
 
 > [!NOTE]
 > 将 SAP NetWeaver 7.40（及更高版本）与 SAP 内核 7.49（及更高版本）配合使用时，即可通过文件共享来群集化 SAP ASCS/SCS 实例。  
@@ -113,7 +112,7 @@ SMB 文件共享的先决条件包括：
 4. Azure NetApp 文件资源必须位于委托子网中。 按照将[子网委托给 Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)中的说明创建委托子网。  
 
 > [!IMPORTANT]
-> 创建 SMB 卷之前，需要创建 Active Directory 连接。 查看[Active Directory 连接的要求](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)。  
+> 在创建 SMB 卷之前，需要创建 Active Directory 连接。 查看[Active Directory 连接的要求](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)。  
 
 5. 如[创建 Active Directory 连接](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#create-an-active-directory-connection)中所述，创建 Active Directory 连接  
 6. 按照[添加 smb 卷](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#add-an-smb-volume)中的说明创建 Smb Azure NETAPP 文件 smb 卷  
@@ -147,7 +146,7 @@ SMB 文件共享的先决条件包括：
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>在第一个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到： > 高可用性系统 > ASCS/SCS 实例 > 第一个群集节点的**产品** > **DBMS** > 安装 > 的应用程序服务器。  
+1. 在第一个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到： **Product**  >  > 高可用性系统 > ASCS/SCS 实例 > 第一个群集节点的产品**DBMS** > 安装 > 的应用程序服务器。  
 
 2. 在 SWPM 中选择 "**文件共享群集**" 作为群集共享配置。  
 3. 出现步骤**SAP 系统群集参数**时，请输入已创建为**文件共享主机名**的 Azure NetApp 文件的主机名。  在此示例中，SMB 共享主机名为**anfsmb-9562**。 
@@ -158,11 +157,11 @@ SMB 文件共享的先决条件包括：
 > [!TIP]
 > 如果必备组件检查器导致 SWPM 显示 "未满足交换大小" 条件，则可以通过导航到我的电脑>系统属性>性能设置> 高级> 虚拟内存> 更改来调整交换大小。  
 
-4. 使用 PowerShell 配置 SAP 群集资源和`SAP-SID-IP`探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此配置，如[配置探测端口](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761)中所述。
+4. 使用 PowerShell 配置 SAP 群集资源和 `SAP-SID-IP` 探测端口。 在其中一个 SAP ASCS/SCS 群集节点上执行此配置，如[配置探测端口](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761)中所述。
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>在第二个 ASCS/SCS 群集节点上安装 ASCS/SCS 实例
 
-1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到**产品** > **DBMS** > 安装 > 应用程序服务器 ABAP （或 Java） > 高可用性系统 > ASCS/SCS 实例 > 附加群集节点。  
+1. 在第二个群集节点上安装 SAP ASCS/SCS 实例。 启动 SAP SWPM 安装工具，然后导航到**产品**  >  **DBMS** > 安装 > 应用程序服务器 ABAP （或 Java） > 高可用性系统 > ASCS/SCS 实例 > 附加群集节点。  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>安装 DBMS 实例和 SAP 应用程序服务器
 
@@ -177,9 +176,9 @@ SMB 文件共享的先决条件包括：
 ### <a name="fail-over-from-cluster-node-a-to-cluster-node-b-and-back"></a>从群集节点 A 故障转移到群集节点 B 和备份
 在此测试方案中，我们将群集节点 sapascs1 称为节点 A，并将群集节点 sapascs2 称为节点 B。
 
-1. 验证群集资源是否正在节点 A 上运行。 ![图1：在故障转移测试之前，在节点 a 上运行的 Windows Server 故障转移群集资源](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
+1. 验证群集资源是否正在节点 A 上运行。 ![图1：在故障转移测试之前，在节点 A 上运行的 Windows Server 故障转移群集资源](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
 
-2. 重新启动群集节点 A。SAP 群集资源将移到群集节点 B。 ![图2：在故障转移测试后，在节点 B 上运行的 Windows Server 故障转移群集资源](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
+2. 重新启动群集节点 A。SAP 群集资源将迁移到群集节点 B。 ![图2：在故障转移测试后，在节点 B 上运行的 Windows Server 故障转移群集资源](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
 
 
 ## <a name="lock-entry-test"></a>锁定条目测试

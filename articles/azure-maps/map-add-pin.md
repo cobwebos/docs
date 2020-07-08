@@ -10,10 +10,9 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77209692"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
@@ -23,7 +22,7 @@ ms.locfileid: "77209692"
 符号层是使用 WebGL 呈现的。 使用符号层可在地图上呈现大型点集合。 与 HTML 标记相比，符号层在地图上呈现大量的点数据，从而提高性能。 但是，符号层不支持传统的 CSS 和 HTML 元素进行样式设置。  
 
 > [!TIP]
-> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征，请将`filter`层的属性设置为`['==', ['geometry-type'], 'Point']` ， `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`或者如果需要，还可以包含 MultiPoint 功能。
+> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征 `filter` ，请将层的属性设置为 `['==', ['geometry-type'], 'Point']` `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` ，或者如果需要，还可以包含 MultiPoint 功能。
 
 地图图像动画管理器加载符号层使用的自定义图像。 它支持以下图像格式：
 
@@ -56,12 +55,12 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 可向地图添加四种不同类型的点数据：
 
-- GeoJSON 点几何-此对象只包含一个点的坐标，而不包含其他任何内容。 `atlas.data.Point` Helper 类可用于轻松创建这些对象。
-- GeoJSON MultiPoint geometry-此对象包含多个点的坐标，而不包含其他任何点。 `atlas.data.MultiPoint` Helper 类可用于轻松创建这些对象。
-- GeoJSON 功能-此对象包含任何 GeoJSON 几何和一组属性，其中包含与几何图形关联的元数据。 `atlas.data.Feature` Helper 类可用于轻松创建这些对象。
+- GeoJSON 点几何-此对象只包含一个点的坐标，而不包含其他任何内容。 `atlas.data.Point`Helper 类可用于轻松创建这些对象。
+- GeoJSON MultiPoint geometry-此对象包含多个点的坐标，而不包含其他任何点。 `atlas.data.MultiPoint`Helper 类可用于轻松创建这些对象。
+- GeoJSON 功能-此对象包含任何 GeoJSON 几何和一组属性，其中包含与几何图形关联的元数据。 `atlas.data.Feature`Helper 类可用于轻松创建这些对象。
 - `atlas.Shape`类类似于 GeoJSON 功能。 两者都包含一个 GeoJSON 几何和一组属性，这些属性包含与几何关联的元数据。 如果将 GeoJSON 对象添加到数据源，则可以轻松地在层中呈现它。 但是，如果更新了该 GeoJSON 对象的坐标属性，则数据源和映射不会更改。 这是因为 JSON 对象中没有用于触发更新的机制。 Shape 类提供用于更新其包含的数据的函数。 进行更改时，将自动通知和更新数据源和映射。 
 
-下面的代码示例创建一个 GeoJSON 点几何，并将其传递`atlas.Shape`给类以使其易于更新。 地图的中心最初用于呈现符号。 将一个 click 事件添加到地图中，以便在其触发时，将鼠标坐标用于 shapes `setCoordinates`函数。 鼠标坐标在单击事件时记录。 然后， `setCoordinates`更新地图上符号的位置。
+下面的代码示例创建一个 GeoJSON 点几何，并将其传递给 `atlas.Shape` 类以使其易于更新。 地图的中心最初用于呈现符号。 将一个 click 事件添加到地图中，以便在其触发时，将鼠标坐标用于 shapes `setCoordinates` 函数。 鼠标坐标在单击事件时记录。 然后， `setCoordinates` 更新地图上符号的位置。
 
 <br/>
 
@@ -69,7 +68,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 </iframe>
 
 > [!TIP]
-> 默认情况下，符号层通过隐藏重叠的符号来优化符号的呈现。 放大时，隐藏的符号将变为可见。 若要禁用此功能并始终呈现所有符号，请将`allowOverlap` `iconOptions`选项的属性设置为。 `true`
+> 默认情况下，符号层通过隐藏重叠的符号来优化符号的呈现。 放大时，隐藏的符号将变为可见。 若要禁用此功能并始终呈现所有符号，请将 `allowOverlap` 选项的属性设置 `iconOptions` 为 `true` 。
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>将自定义图标添加到符号层
 
@@ -81,7 +80,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 </iframe>
 
 > [!TIP]
-> Azure Maps web SDK 提供了几个可自定义的图像模板，你可以将其用于符号层。 有关详细信息，请参阅[如何使用映像模板](how-to-use-image-templates-web-sdk.md)文档。
+> Azure Maps Web SDK 提供了多个可与符号层一起使用的可自定义的图像模板。 有关详细信息，请参阅[如何使用图像模板](how-to-use-image-templates-web-sdk.md)文档。
 
 ## <a name="customize-a-symbol-layer"></a>自定义符号层 
 
@@ -93,7 +92,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 </iframe>
 
 > [!TIP]
-> 如果只希望使用符号层呈现文本，则可以通过将图标选项的`image`属性设置为来`'none'`隐藏该图标。
+> 如果只希望使用符号层呈现文本，则可以通过将 `image` 图标选项的属性设置为来隐藏该图标 `'none'` 。
 
 ## <a name="next-steps"></a>后续步骤
 

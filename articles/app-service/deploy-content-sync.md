@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77482966"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
@@ -22,7 +21,7 @@ ms.locfileid: "77482966"
 
 若要启用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击 "**部署中心** > **OneDrive**或**Dropbox** > **授权**"。 按照授权提示进行操作。 
+在左侧菜单中，单击 "**部署中心**  >  **OneDrive**或**Dropbox**  >  **授权**"。 按照授权提示进行操作。 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
@@ -54,7 +53,7 @@ ms.locfileid: "77482966"
 
 若要禁用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击 "**部署中心** > **断开连接**"。
+在左侧菜单中，单击 "**部署中心**  >  **断开连接**"。
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

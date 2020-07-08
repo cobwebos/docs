@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605226"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT 即插即用预览版建模开发人员指南
@@ -67,7 +66,7 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 使用 DTDL，可以使用接口描述设备的功能。 接口描述设备的一部分实现的_属性_、_遥测_和_命令_：
 
-- `Properties`. 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 可以将属性声明为只读或可写。
+- `Properties`. 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 你可以将属性声明为只读或可写。
 - `Telemetry`. 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
 - `Commands`. 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
 
@@ -97,7 +96,7 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 在这个简单的示例中，只有一个遥测字段。 最小字段说明具有：
 
-- `@type`：指定功能类型： `Telemetry`、 `Property`或。 `Command`
+- `@type`：指定功能类型： `Telemetry` 、 `Property` 或 `Command` 。
 - `name`：提供遥测值的名称。
 - `schema`：指定遥测数据类型。 此值可以是基元类型，如 double、integer、boolean 或 string。 还支持复杂的对象类型、数组和映射。
 
@@ -111,11 +110,11 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 设备无需连接即可设置属性值。 当设备下一次连接到中心时，将传输更新的值。 此行为同时适用于只读属性和可写属性。
 
-不要使用属性从设备发送遥测数据。 例如，readonly 属性（如） `temperatureSetting=80`应意味着设备温度已设置为80，并且设备尝试进入或停留在此温度上。
+不要使用属性从设备发送遥测数据。 例如，readonly 属性（如） `temperatureSetting=80` 应意味着设备温度已设置为80，并且设备尝试进入或停留在此温度上。
 
 对于可写属性，设备应用程序会返回所需状态状态代码、版本和说明，以指示是否已收到并应用属性值。
 
-### <a name="telemetry"></a>遥测技术
+### <a name="telemetry"></a>遥测
 
 默认情况下，IoT 中心会将来自设备的所有遥测消息路由到与[事件中心](https://azure.microsoft.com/documentation/services/event-hubs/)兼容的[内置面向服务的终结点（**消息/事件**）](../iot-hub/iot-hub-devguide-messages-read-builtin.md) 。
 
@@ -127,11 +126,11 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 为长时间运行的操作使用异步命令。 设备使用遥测消息发送进度信息。 这些进度消息具有以下标头属性：
 
-- `iothub-command-name`：例如`UpdateFirmware`，命令名称。
+- `iothub-command-name`：例如，命令名称 `UpdateFirmware` 。
 - `iothub-command-request-id`：在服务器端生成并在初始调用中发送到设备的请求 ID。
-- `iothub-interface-id`：例如`urn:example:AssetTracker:1`，在其上定义此命令的接口的 ID。
- `iothub-interface-name`：例如`myAssetTracker`，此接口的实例名称。
-- `iothub-command-statuscode`：例如`202`，从设备返回的状态代码。
+- `iothub-interface-id`：例如，在其上定义此命令的接口的 ID `urn:example:AssetTracker:1` 。
+ `iothub-interface-name`：例如，此接口的实例名称 `myAssetTracker` 。
+- `iothub-command-statuscode`：例如，从设备返回的状态代码 `202` 。
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -182,35 +181,35 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT 即插即用允许你使用已在 IoT 中心注册其功能的设备。 例如，你可以直接访问设备的属性和命令。
 
-若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 中心 REST API 或 IoT 语言 Sdk 之一。 以下示例使用 IoT 中心 REST API。 该 API 的当前版本为`2019-07-01-preview`。 追加`?api-version=2019-07-01-preview`到 REST PI 调用。
+若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 中心 REST API 或 IoT 语言 Sdk 之一。 以下示例使用 IoT 中心 REST API。 该 API 的当前版本为 `2019-07-01-preview` 。 追加 `?api-version=2019-07-01-preview` 到 REST PI 调用。
 
-若要在恒温器的`fwVersion` `DeviceInformation`接口中获取设备属性的值，如固件版本（），请使用数字孪生 REST API。
+若要在恒温器的接口中获取设备属性的值，如固件版本（ `fwVersion` ）， `DeviceInformation` 请使用数字孪生 REST API。
 
-如果调用`t-123`恒温器设备，你将获得设备使用 REST API get 调用实现的所有接口的所有属性：
+如果调用恒温器设备 `t-123` ，你将获得设备使用 REST API get 调用实现的所有接口的所有属性：
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-一般来说，所有接口上的所有属性都是通过此 REST API 模板访问`{device-id}`的，其中，是设备的标识符：
+一般来说，所有接口上的所有属性都是通过此 REST API 模板访问的，其中 `{device-id}` ，是设备的标识符：
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-如果你知道接口的名称（如`deviceInformation`），并且想要获取该特定接口的属性，请按名称将请求按名称限定到特定的接口：
+如果你知道接口的名称（如 `deviceInformation` ），并且想要获取该特定接口的属性，请按名称将请求按名称限定到特定的接口：
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
-更常见的情况是，可以通过此 REST API 模板访问特定接口的属性`device-id` ，其中是设备的标识符， `{interface-name}`是接口的名称：
+更常见的情况是，可以通过此 REST API 模板访问特定接口的属性，其中 `device-id` 是设备的标识符， `{interface-name}` 是接口的名称：
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-可以直接调用 IoT 即插即用设备命令。 如果`Thermostat` `t-123`设备中的接口有`restart`命令，则可以使用 REST API POST 调用来调用它：
+可以直接调用 IoT 即插即用设备命令。 如果 `Thermostat` 设备中的接口 `t-123` 有 `restart` 命令，则可以使用 REST API POST 调用来调用它：
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart

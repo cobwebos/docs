@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585101"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>教程：创建自定义分析规则以检测可疑威胁
 
-将 [数据源](quickstart-onboard.md) 连接到 Azure Sentinel 后，你可以创建自定义规则，这些规则可以在你的环境中搜索特定的条件，并在符合条件时生成事件，以便你可以对其进行调查。 本教程将帮助你创建自定义规则，以检测 Azure Sentinel 的威胁。
+将 [数据源连接](quickstart-onboard.md)   到 Azure Sentinel 后，你可以创建自定义规则，这些规则可以在你的环境中搜索特定的条件，并在符合条件时生成事件，以便你可以对其进行调查。 本教程将帮助你创建自定义规则，以检测 Azure Sentinel 的威胁。
 
 本教程可帮助你检测 Azure Sentinel 的威胁。
 > [!div class="checklist"]
@@ -34,7 +33,7 @@ ms.locfileid: "77585101"
 
 你可以创建自定义分析规则，以帮助你搜索环境中可疑的威胁类型和异常。 此规则可确保你立即收到通知，以便你可以对威胁进行会审、调查和修正。
 
-1. 在 Azure 门户的 Azure Sentinel 下，选择“分析”。****
+1. 在 Azure 门户的 Azure Sentinel 下，选择“分析”。
 
 1. 在顶部菜单栏中，选择 " **+ 创建**"，并选择 "**计划的查询规则**"。 这会打开**分析规则向导**。
 
@@ -59,7 +58,7 @@ ms.locfileid: "77585101"
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > 查询长度应介于1到10000个字符之间，并且不能包含\*"search" 或\*"union"。
+      > 查询长度应介于1到10000个字符之间，并且不能包含 "search \* " 或 "union \* "。
 
     1. 使用 "**地图实体**" 部分可将参数从查询结果链接到 Azure Sentinel 识别的实体。 这些实体构成进一步分析的基础，包括 "**事件设置**" 选项卡中的警报分组到事件。
     1. 在 "**查询计划**" 部分中，设置以下参数：

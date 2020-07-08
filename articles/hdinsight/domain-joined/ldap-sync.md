@@ -8,17 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77463214"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight 中的 Ranger 和 Apache Ambari 中的 LDAP 同步
 
 HDInsight 企业安全性套餐（ESP）群集使用 Ranger 进行授权。 Apache Ambari 和 Ranger 分别同步用户和组并以不同的方式工作。 本文旨在解决 Ranger 和 Ambari 中的 LDAP 同步。
 
-## <a name="general-guidelines"></a>一般性指导
+## <a name="general-guidelines"></a>一般指南
 
 * 始终通过组部署群集。
 * 不是在 Ambari 和 Ranger 中更改组筛选器，而是尝试在 Azure AD 中管理所有这些筛选器，并使用嵌套组来引入所需的用户。
@@ -33,9 +32,9 @@ Ambari 和 Ranger 不共享用户数据库，因为它们提供两个不同的�
 
 ## <a name="ambari-user-sync-and-configuration"></a>Ambari 用户同步和配置
 
-在头节点中，cron 作业`/opt/startup_scripts/start_ambari_ldap_sync.py`每小时运行一次，以便计划用户同步。Cron 作业将调用 Ambari rest Api 来执行同步。脚本将提交要同步的用户和组的列表（因为用户可能不属于指定的组，这两者都是单独指定的）。 Ambari 将 sAMAccountName 作为用户名和所有组成员按方式同步。
+在头节点中，cron 作业 `/opt/startup_scripts/start_ambari_ldap_sync.py` 每小时运行一次，以便计划用户同步。Cron 作业将调用 Ambari rest Api 来执行同步。脚本将提交要同步的用户和组的列表（因为用户可能不属于指定的组，这两者都是单独指定的）。 Ambari 将 sAMAccountName 作为用户名和所有组成员按方式同步。
 
-日志应该在中`/var/log/ambari-server/ambari-server.log`。 有关详细信息，请参阅[Configure Ambari 日志记录级别](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)。
+日志应该在中 `/var/log/ambari-server/ambari-server.log` 。 有关详细信息，请参阅[Configure Ambari 日志记录级别](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html)。
 
 在 Data Lake 群集中，后期用户创建挂钩用于为同步的用户创建主文件夹，并将其设置为主文件夹的所有者。 如果用户未正确同步到 Ambari，则用户可能会面临访问过渡和其他临时文件夹的故障。
 
@@ -64,16 +63,16 @@ Ranger 支持组同步选项，但它可作为与用户筛选器的交集一起�
 
 ### <a name="update-ranger-sync-filter"></a>更新 Ranger 同步筛选器
 
-可以在 Ambari UI 中的 "Ranger 用户-同步配置" 部分下找到 LDAP 筛选器。 现有筛选器将采用形式`(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`。 确保在末尾添加谓词，并使用`net ads` "搜索命令" 或 "ldp.exe" 或类似的内容来测试筛选器。
+可以在 Ambari UI 中的 "Ranger 用户-同步配置" 部分下找到 LDAP 筛选器。 现有筛选器将采用形式 `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))` 。 确保在末尾添加谓词，并使用 " `net ads` 搜索" 命令或 ldp.exe 或类似的内容来测试筛选器。
 
 ## <a name="ranger-user-sync-logs"></a>Ranger 用户同步日志
 
-Ranger 用户同步可能会在头节点中发生。 日志位于中`/var/log/ranger/usersync/usersync.log`。 若要增加日志的详细级别，请执行以下步骤：
+Ranger 用户同步可能会在头节点中发生。 日志位于中 `/var/log/ranger/usersync/usersync.log` 。 若要增加日志的详细级别，请执行以下步骤：
 
 1. 登录到 Ambari。
 1. 请参阅 Ranger 配置部分。
 1. 请参阅 Advanced **usersync-log4j**部分。
-1. 将更改`log4j.rootLogger`为`DEBUG` "级别" （更改后应显示`log4j.rootLogger = DEBUG,logFile,FilterLog`为）。
+1. 将更改 `log4j.rootLogger` 为 " `DEBUG` 级别" （更改后应显示为 `log4j.rootLogger = DEBUG,logFile,FilterLog` ）。
 1. 保存配置并重新启动 ranger。
 
 ## <a name="next-steps"></a>后续步骤

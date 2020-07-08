@@ -1,6 +1,6 @@
 ---
 title: 帮助进行标识管理的 Azure 安全功能 | Microsoft Docs
-description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问，从而支持附加的验证级别，例如多重身份验证和条件性访问策略。 "
+description: " 本文概述了可帮助进行标识管理的核心 Azure 安全功能。 Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问，因此支持附加的验证级别，比如多重身份验证和条件访问策略。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -17,15 +17,14 @@ ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
 ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565887"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 标识管理安全概述
 
- 标识管理是对[安全主体](/windows/security/identity-protection/access-control/security-principals)进行身份验证和授权的过程。 它还包括控制有关这些主体（标识）的信息。 安全主体（标识）可能包括服务、应用程序、用户、组等。Microsoft 标识和访问管理解决方案可帮助 IT 保护对企业数据中心和云中的应用程序和资源的访问。 此类保护支持附加的验证级别，例如多重身份验证和条件性访问策略。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
+ 标识管理是对[安全主体](/windows/security/identity-protection/access-control/security-principals)进行身份验证和授权的过程。 它还包括控制有关这些主体（标识）的信息。 安全主体（标识）可能包括服务、应用程序、用户和组等等。Microsoft 标识和访问管理解决方案可帮助 IT 部门保护对企业数据中心和云中的应用程序和资源的访问。 此类保护支持附加的验证级别，比如多重身份验证和条件访问策略。 通过高级安全报告、审核和警报来监视可疑活动，以便减少潜在的安全问题。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) 向数千个云软件即服务 (SaaS) 应用提供单一登录 (SSO)，并且可以用来访问在本地运行的 Web 应用。
  
 利用 Azure Active Directory (Azure AD) 的安全优势，可以实现以下目的：
 
@@ -34,7 +33,7 @@ ms.locfileid: "77565887"
 * 通过对本地应用程序和云应用程序实施基于规则的多重身份验证，启用应用程序访问安全措施。
 * 通过 Azure AD 应用程序代理预配对本地 Web 应用程序的安全远程访问。
 
-本文旨在概述可帮助进行标识管理的核心 Azure 安全功能。 我们还提供了一些文章链接，其中每篇文章都包含每个功能的详细信息，以便可以了解更多内容。  
+本文旨在概述可帮助进行标识管理的核心 Azure 安全功能。 此外还提供了文章链接，更详细说明每项功能。  
 
 本文重点介绍以下核心 Azure 标识管理功能︰
 
@@ -102,8 +101,8 @@ RBAC 是在 Azure 资源管理器基础上构建的授权系统，针对 Azure �
 
 在 Azure 门户中，报告分为以下类别：
 
-* **异常报告**：包含我们认为异常的登录事件。 我们的目标是让你知道这类活动，并让你能够确定事件是否可疑。
-* **集成应用程序报告**：说明云应用程序在你所在组织中的使用情况。 Azure AD 提供与数千个云应用程序的集成。
+* **异常报告**：包含我们发现存在异常的登录事件。 我们的目标是让你知道这类活动，并让你能够确定事件是否可疑。
+* **集成式应用程序报告**：就组织如何使用云应用程序提供见解。 Azure AD 提供与数千个云应用程序的集成。
 * **错误报告**：指示在为外部应用程序预配帐户时可能发生的错误。
 * **用户特定的报告**：显示特定用户的设备登录活动数据。
 * **活动日志**：包含过去 24 小时、过去 7 天或过去 30 天内的所有已审核事件的记录，以及组活动更改记录、密码重置和注册活动记录。
@@ -126,7 +125,7 @@ Azure AD B2C 是一项高度可用的全局性标识管理服务，适用于面�
 
 * [什么是 Azure Active Directory B2C？](https://azure.microsoft.com/services/active-directory-b2c/)
 * [Azure Active Directory B2C 预览版：在应用程序中注册用户和让用户登录](../../active-directory-b2c/overview.md)
-* [Azure Active Directory B2C 预览：应用程序的类型](../../active-directory-b2c/application-types.md)
+* [Azure Active Directory B2C 预览版：应用程序的类型](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>设备注册
 
@@ -160,7 +159,7 @@ Azure AD 设备注册是基于设备的[条件性访问](/azure/active-directory
 
 ## <a name="identity-protection"></a>标识保护
 
-Azure AD Identity Protection 是一种安全服务，可提供对风险检测和影响组织标识的潜在漏洞的合并视图。 “标识保护”使用现有的 Azure AD 异常检测功能，该功能可通过 Azure AD 异常活动报告得到。 标识保护还引入了新的风险检测类型，这些类型可以实时检测异常。
+Azure AD 标识保护是一种安全服务，它提供一个综合视图，你可以在其中查看影响组织标识的风险检测和潜在漏洞。 “标识保护”使用现有的 Azure AD 异常检测功能，该功能可通过 Azure AD 异常活动报告得到。 “标识保护”还引入了新的可以实时检测异常的风险检测类型。
 
 了解详细信息：
 
@@ -171,7 +170,7 @@ Azure AD Identity Protection 是一种安全服务，可提供对风险检测和
 
 Microsoft 的标识解决方案跨越本地和基于云的功能，创建单一用户标识对所有资源进行身份验证和授权，而不考虑其位置。 我们称此为混合标识。 Azure AD Connect 专用于满足和完成混合标识目标的 Microsoft 工具。 这样便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。 它提供以下功能：
 
-* Synchronization
+* 同步
 * AD FS 和联合集成
 * 直通身份验证
 * 运行状况监视

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564017"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>设置要使用的 vCenter 标识源 Active Directory
@@ -53,14 +52,14 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 
 | **选项** | **说明** |
 |------------|-----------------|
-| **Name** | 标识源的名称。 |
+| **名称** | 标识源的名称。 |
 | **用户的基本 DN** | 用户的基本可分辨名称。 |
 | **域名** | 域的 FQDN，例如，example.com。 不要在此文本框中提供 IP 地址。 |
 | **域别名** | 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
 | **组的基本 DN** | 组的基本可分辨名称。 |
-| **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式 `ldap://hostname:port` 或 `ldaps://hostname:port`。 端口通常为389，适用于 LDAP 连接，636用于 LDAPS 连接。 对于 Active Directory 多域控制器部署，端口通常为3268，适用于 LDAP，3269用于 LDAPS。<br><br>在主或辅助 LDAP URL 中使用 `ldaps://` 时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
+| **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用格式  `ldap://hostname:port`   或  `ldaps://hostname:port` 。 端口通常为389，适用于 LDAP 连接，636用于 LDAPS 连接。 对于 Active Directory 多域控制器部署，端口通常为3268，适用于 LDAP，3269用于 LDAPS。<br><br> `ldaps://`   在主或辅助 LDAP URL 中使用时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
 | **辅助服务器 URL** | 用于故障转移的辅助域控制器 LDAP 服务器的地址。 |
-| **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请在 "URL" 文本框中键入 `ldaps://` 后显示 "选择证书" 按钮。 不需要辅助 URL。 |
+| **选择证书** | 如果要将 LDAPS 用于 Active Directory LDAP 服务器或 OpenLDAP 服务器标识源，请  `ldaps://`   在 "URL" 文本框中键入后显示 "选择证书" 按钮。 不需要辅助 URL。 |
 | **用户名** | 域中用户的 ID，这些用户和组的基本 DN 至少具有只读访问权限。 |
 | **密码** | Username 指定的用户的密码。 |
 
@@ -118,7 +117,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 
     ![单一登录](media/OnPremAD02.png)
 
-5. 打开 "**标识源**" 选项卡**+** ，然后单击 "添加新的标识源"。
+5. 打开 "**标识源**" 选项卡，然后单击 " **+** 添加新的标识源"。
 
     ![标识源](media/OnPremAD03.png)
 
@@ -130,4 +129,4 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 
     ![Active Directory](media/OnPremAD05.png)
 
-8. 查看设置，然后单击 "**完成**"。
+8. 检查设置，并单击“完成”。

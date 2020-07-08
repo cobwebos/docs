@@ -4,10 +4,9 @@ description: 使用 Azure 备份服务器 (MABS) 还原 VMware vCenter/ESXi 服�
 ms.topic: conceptual
 ms.date: 08/18/2019
 ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77212348"
 ---
 # <a name="restore-vmware-virtual-machines"></a>还原 VMware 虚拟机

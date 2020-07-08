@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539104"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>方案：Azure HDInsight 中的 Apache Ambari 过时警报
@@ -74,7 +73,7 @@ Ambari 代理持续监视多个资源的运行状况。 可以将*警报*配置�
 
 在 Ambari 代理报告已配置的警报丢失其计划之前有一个宽限期。 如果警报丢失了计划时间，但在宽限期内运行，则不会生成过时警报。
 
-默认`alert_grace_period`值为5秒。 可以在/etc/ambari-agent/conf/ambari-agent.ini. 中配置此设置。 对于定期发生陈旧警报的主机，请尝试将该值增加到10。 然后，重新启动 Ambari 代理。
+默认 `alert_grace_period` 值为5秒。 可以在/etc/ambari-agent/conf/ambari-agent.ini 中配置此设置。 对于定期发生陈旧警报的主机，请尝试将该值增加到10。 然后，重新启动 Ambari 代理。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -82,7 +81,7 @@ Ambari 代理持续监视多个资源的运行状况。 可以将*警报*配置�
 
 * 在 azure[社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 连接到[@AzureSupport](https://twitter.com/azuresupport) Twitter 上的。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到适当的资源：答案、支持和专家。
+* 连接到 [@AzureSupport](https://twitter.com/azuresupport) Twitter 上的。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到适当的资源：答案、支持和专家。
 
 * 如果需要更多帮助，请从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 若要实现此功能，请从门户菜单中选择 "帮助（**？**）"，或打开 "**帮助 + 支持**" 窗格。 有关详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 
 

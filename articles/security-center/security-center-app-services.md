@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
 ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616485"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保护 Azure 应用服务 Web 应用和 API
@@ -63,5 +62,5 @@ Azure 应用服务是一种完全托管的平台，用于生成和托管 Web 应
 * [在 Azure 安全中心设置安全策略](tutorial-security-policy.md)：了解如何在 Azure 安全中心配置安全设置。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
 * [应用服务](security-center-virtual-machine-protection.md#app-services)：查看具有运行状况摘要的应用服务环境的列表。
-* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
+* [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状况。
 * [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)：查找有关 Azure 安全性和符合性的博客文章。

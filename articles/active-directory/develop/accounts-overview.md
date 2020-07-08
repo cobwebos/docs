@@ -14,10 +14,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: d0497ad68e7b29e6d8c83dd860ba8f509e229579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77611882"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
@@ -69,7 +68,7 @@ Microsoft 标识平台中的帐户包括：
   - `tom@live.com` 的租户配置文件在上述每个租户中存在。
 - 其他租户中有关 Tom 和 Bob 的信息可能与记录系统中的信息不同。 他们在职务、办公地点等属性方面可能不同。 他们可能是每个组织（Azure Active Directory 租户）中的组和/或角色的成员。 我们将此信息称为 bob@contoso.com 租户配置文件。
 
-在示意图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 AZURE ACTIVE DIRECTORY B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
+在示意图中，bob@contoso.com 和 tom@live.com 有权访问不同 Azure Active Directory 租户中的资源。 有关详细信息，请参阅[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
 
 ## <a name="accounts-and-single-sign-on-sso"></a>帐户和单一登录 (SSO)
 
@@ -97,7 +96,7 @@ IAccount account = app.getAccount("<tom@live.com woodgrovebank user object id>")
 除了请求访问令牌以外，MSAL 还始终从每个租户请求 ID 令牌。 为此，它始终请求以下范围：
 
 - openid
-- profile
+- 个人资料
 
 ID 令牌包含声明列表。 `Claims` 是有关帐户的名称/值对，用于发出请求。
 

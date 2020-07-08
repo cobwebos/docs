@@ -7,10 +7,9 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523758"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
@@ -72,7 +71,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择 "**应用**"。
 
-1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 您可以按原样保留默认时间值 **，并将两个**值都**设置为相同**的值。 选择“应用”。 
+1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 您可以按原样保留默认时间值 **，并将两个**值都**设置为相同**的值。 选择“应用”。
 
 1. 针对所有配置更改重复执行上述步骤。
 

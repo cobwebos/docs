@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562116"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的监视场景 - 天气观察程序示例
@@ -38,7 +37,7 @@ ms.locfileid: "77562116"
 
 此示例涉及到使用 Weather Underground API 来检查某个地点的当前天气状况。
 
-首先需要创建一个 Weather Underground 帐户。 可以免费创建一个[https://www.wunderground.com/signup](https://www.wunderground.com/signup)。 创建帐户后，需要获取 API 密钥。 可以通过访问[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)，然后选择 "密钥设置" 来执行此操作。 Stratus Developer 计划是免费的，足以用于运行此示例。
+首先需要创建一个 Weather Underground 帐户。 可以免费创建一个 [https://www.wunderground.com/signup](https://www.wunderground.com/signup) 。 创建帐户后，需要获取 API 密钥。 可以通过访问 [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) ，然后选择 "密钥设置" 来执行此操作。 Stratus Developer 计划是免费的，足以用于运行此示例。
 
 获取 API 密钥后，将以下**应用设置**添加到函数应用。
 
@@ -50,7 +49,7 @@ ms.locfileid: "77562116"
 
 本文介绍示例应用中的以下函数：
 
-* `E3_Monitor`：定期[orchestrator function](durable-functions-bindings.md#orchestration-trigger)调用`E3_GetIsClear`的业务流程协调程序函数。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
+* `E3_Monitor`：定期调用的业务流程[协调程序函数](durable-functions-bindings.md#orchestration-trigger) `E3_GetIsClear` 。 如果 `E3_GetIsClear` 返回 true，则此函数会调用 `E3_SendGoodWeatherAlert`。
 * `E3_GetIsClear`：一个[活动函数](durable-functions-bindings.md#activity-trigger)，用于检查位置的当前天气情况。
 * `E3_SendGoodWeatherAlert`：通过 Twilio 发送短信的活动函数。
 
@@ -60,7 +59,7 @@ ms.locfileid: "77562116"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
 
-Orchestrator 需要监视位置，并需要一个电话号码，以便在该位置上是否明确时向发送消息。 此数据作为强类型`MonitorRequest`对象传递到业务流程协调程序。
+Orchestrator 需要监视位置，并需要一个电话号码，以便在该位置上是否明确时向发送消息。 此数据作为强类型对象传递到业务流程协调程序 `MonitorRequest` 。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -114,7 +113,7 @@ function.json 定义如下**：
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
 
 > [!NOTE]
-> 需要安装`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行示例代码。
+> 需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包才能运行示例代码。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

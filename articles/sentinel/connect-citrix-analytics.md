@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588376"
 ---
 # <a name="connect-citrix-analytics-security"></a>连接 Citrix Analytics（安全） 
@@ -27,7 +26,7 @@ ms.locfileid: "77588376"
 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure Sentinel 工作区的读取和写入权限。
 
@@ -36,7 +35,7 @@ ms.locfileid: "77588376"
 
 ## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>将 Azure Sentinel 连接到 Citrix 分析（安全）
 
-1. 在 Azure 门户中，导航到 " **Azure Sentinel** > **数据连接器**"，然后选择 " **Citrix 分析（安全）** " 连接器。
+1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择 " **Citrix 分析（安全）** " 连接器。
 
 2. 选择 "**打开连接器" 页面**。
 

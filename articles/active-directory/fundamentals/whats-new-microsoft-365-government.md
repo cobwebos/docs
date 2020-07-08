@@ -14,10 +14,9 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425538"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 政府版中 Azure Active Directory 的新增功能
@@ -34,9 +33,9 @@ ms.locfileid: "77425538"
 
 ## <a name="changes-to-the-initial-domain-name"></a>对初始域名的更改
 
-在组织初始注册 Microsoft 365 政府在线服务期间，系统会要求你选择组织的域名`<your-domain-name>.onmicrosoft.com`。 如果已经有一个具有 .com 后缀的域名，则不会更改任何内容。
+在组织初始注册 Microsoft 365 政府在线服务期间，系统会要求你选择组织的域名 `<your-domain-name>.onmicrosoft.com` 。 如果已经有一个具有 .com 后缀的域名，则不会更改任何内容。
 
-但是，如果要注册新的 Microsoft 365 政府版服务，系统会要求你使用`.us`后缀选择域名。 那么，它将是`<your-domain-name>.onmicrosoft.us`。
+但是，如果要注册新的 Microsoft 365 政府版服务，系统会要求你使用后缀选择域名 `.us` 。 那么，它将是 `<your-domain-name>.onmicrosoft.us` 。
 
 >[!Note]
 >此更改不适用于由云服务提供商（Csp）管理的任何客户。
@@ -51,7 +50,7 @@ ms.locfileid: "77425538"
 
 下表显示了所有客户的终结点：
 
-| 名称 | 终结点详细信息 |
+| “属性” | 终结点详细信息 |
 |------|------------------|
 | 门户 |Microsoft Azure 政府：https://portal.azure.us<p>Microsoft 365 政府– GCC 高：https://portal.office365.us<p>Microsoft 365 政府– DoD：https://portal.apps.mil |
 | Azure Active Directory 机构终结点 | https://login.microsoftonline.us |

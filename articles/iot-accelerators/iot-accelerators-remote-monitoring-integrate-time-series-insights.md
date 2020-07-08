@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564638"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
@@ -24,7 +23,7 @@ Azure 时序见解是一种完全托管的分析、存储和可视化服务，�
 > [!NOTE]
 > 时序见解目前在 Azure 中国云中不可用。 Azure 中国云中的新远程监视解决方案加速器部署使用 Cosmos DB 进行所有存储。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本操作指南，需要已部署远程监视解决方案：
 
@@ -49,15 +48,15 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 接下来，将时序见解作为附加资源部署到远程监视解决方案中，并将其连接到 IoT 中心。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择 "**创建资源** > **物联网** > **时序见解**"。
+1. 选择 "**创建资源**  >  **物联网**  >  **时序见解**"。
 
     ![新建时序见解](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
 1. 若要创建时序见解环境，请使用下表中的值：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 环境名称 | 以下屏幕截图使用名称“contorosrmtsi”****。 完成此步骤后，请选择自己的唯一名称。 |
     | 订阅 | 在下拉列表中选择自己的 Azure 订阅。 |
@@ -68,7 +67,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![创建时序见解](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. 单击 **“创建”** 。 可能需要花费片刻时间来创建环境。
+1. 单击“创建”。 可能需要花费片刻时间来创建环境。
 
 ## <a name="create-event-source"></a>创建事件源
 
@@ -80,13 +79,13 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![查看事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. 单击“添加”  。
+1. 单击“添加” 。
 
     ![添加事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
 1. 若要将 IoT 中心配置为新事件源，请使用下表中的值：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 事件源名称 | 以下屏幕截图使用名称“contosorm-iot-hub”****。 完成此步骤后，请使用自己的唯一名称。 |
     | 源 | **IoT 中心** |
@@ -101,7 +100,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
     ![创建事件源](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 单击 **“创建”** 。
+1. 单击“创建”。
 
 ## <a name="configure-the-data-access-policy"></a>配置数据访问策略
 
@@ -121,7 +120,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 1. 在“角色”下拉列表中选择一个角色，例如“读者”和“参与者”************。
 
-1. 在“选择”列表中，选择用户、组或应用程序****。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符****。
+1. 在“选择”列表中，选择用户、组或应用程序****。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 
 1. 选择“保存”，创建角色分配****。 片刻之后，会在数据访问策略中为安全主体分配角色。
 
@@ -213,7 +212,7 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 
 1. 搜索并单击“ContosoRM”应用程序****。
 
-1. 导航到 "**设置** > " "**项**"，然后为应用程序创建新的密钥。 请确保将密钥值复制到安全位置。
+1. 导航到 "**设置**" "  >  **项**"，然后为应用程序创建新的密钥。 请确保将密钥值复制到安全位置。
 
 1. 使用最新的标记从 GitHub 存储库中提取[最新的 docker 合成 yaml 文件](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm)。 
 

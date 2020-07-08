@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565921"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 将私有云设置为灾难恢复目标
@@ -146,7 +145,7 @@ CloudSimple 要求你不要使用默认的 "cloudowner" 用户安装 vRA 和 SRM
 
 从 CloudSimple 门户提升权限后，使用 cloudowner 用户凭据登录到 vCenter。
 
-在 vCenter 中创建一个`srm-soln-admin`新用户，并将其添加到 vcenter 中的 administrators 组。
+在 vCenter 中创建一个新用户， `srm-soln-admin` 并将其添加到 vcenter 中的 administrators 组。
 以 cloudowner 用户的身份注销 vCenter，并以*srm soln*用户身份登录。
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>CloudSimple portal：配置 vRA 的防火墙规则

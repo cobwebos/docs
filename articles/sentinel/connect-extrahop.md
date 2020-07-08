@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588291"
 ---
 # <a name="connect-extrahop-revealx"></a>连接 ExtraHop Reveal(x)
@@ -26,7 +25,7 @@ ms.locfileid: "77588291"
 通过 ExtraHop 显示（x）数据连接器，可以轻松地将显示（x）系统与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 此集成使你能够深入了解你的组织的网络并改善你的安全操作功能。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure Sentinel 工作区的读取和写入权限。
 
@@ -34,7 +33,7 @@ ms.locfileid: "77588291"
 
 ## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>将 Azure Sentinel 连接到 ExtraHop 显示（x）
 
-1. 在 Azure 门户中，导航到 " **Azure Sentinel** > **数据连接器**"，然后选择 " **ExtraHop 显示（x）** " 连接器。
+1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择 " **ExtraHop 显示（x）** " 连接器。
 
 2. 选择 "**打开连接器" 页面**。
 

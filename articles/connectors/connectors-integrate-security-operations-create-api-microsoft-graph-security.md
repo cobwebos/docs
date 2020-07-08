@@ -10,15 +10,14 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77598827"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
-借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Graph 安全性](https://docs.microsoft.com/graph/security-concept-overview)连接器，可以创建用于集成 Microsoft 安全产品、服务和合作伙伴的自动工作流，从而提升应用的威胁检测、防护和响应能力。 例如，可以创建用于监视和管理 Microsoft Graph 安全性实体（如警报）的 [Azure 安全中心 playbook](../security-center/security-center-playbooks.md)。 下面是 Microsoft Graph 安全连接器支持的一些方案：
+借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和 [Microsoft Graph 安全性](https://docs.microsoft.com/graph/security-concept-overview)连接器，可以创建用于集成 Microsoft 安全产品、服务和合作伙伴的自动工作流，从而提升应用的威胁检测、防护和响应能力。 例如，可以创建用于监视和管理 Microsoft Graph 安全实体（如警报）的[Azure 安全中心行动手册](../security-center/security-center-playbooks.md)。 下面是 Microsoft Graph 安全连接器支持的一些方案：
 
 * 按查询或警报 ID 获取警报。 例如，可以获取非常严重的警报列表。
 
@@ -38,7 +37,7 @@ ms.locfileid: "77598827"
 
 * 根据 [Microsoft Graph 安全性身份验证要求](https://aka.ms/graphsecurityauth)，必须已明确授予** Azure Active Directory (AD) 租户管理员同意，才能使用 Microsoft Graph 安全性连接器。 若要授予此同意，必须提供 Microsoft Graph 安全性连接器的应用程序 ID 和名称（也可以在 [Azure 门户](https://portal.azure.com)中查找）：
 
-  | properties | 值 |
+  | 属性 | Value |
   |----------|-------|
   | **应用程序名称** | `MicrosoftGraphSecurityConnector` |
   | **应用程序 ID** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
@@ -50,7 +49,7 @@ ms.locfileid: "77598827"
 
   * 在逻辑应用首次运行期间，应用可以通过[应用程序同意体验](../active-directory/develop/application-consent-experience.md)请求获得 Azure AD 租户管理员同意。
    
-* 有关[如何创建逻辑应用的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知识
+* 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
 * 要访问 Microsoft Graph 安全性实体（如警报）的逻辑应用。 若要使用 Microsoft Graph 安全触发器，你需要空白逻辑应用。 若要使用 Microsoft Graph 安全操作，需要一个以适用于你的方案的适当触发器开头的逻辑应用。
 
@@ -66,7 +65,7 @@ ms.locfileid: "77598827"
 
    对于现有的逻辑应用，在要添加 Microsoft Graph 安全操作的最后一个步骤下，选择 "**新建步骤**"。
 
-   \- 或 -
+   -或-
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（+），然后选择 "**添加操作**"。
 
@@ -91,15 +90,15 @@ ms.locfileid: "77598827"
 
 1.  在触发器中，提供要监视的警报的相关信息。 若要查看更多属性，请打开 "**添加新参数**" 列表，并选择一个参数以将该属性添加到触发器。
 
-   | properties | 属性 (JSON) | 必选 | 类型 | 说明 |
+   | Property | 属性 (JSON) | 必须 | 类型 | 描述 |
    |----------|-----------------|----------|------|-------------|
-   | **间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p><p>- 月：1-16 个月 <br>- 天：1-500 天 <br>- 小时：1-12,000 小时 <br>- 分钟：1-72,000 分钟 <br>- 秒：1-9,999,999 秒 <p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
-   | **频率** | `frequency` | 是 | 字符串 | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”************************ |
-   | **时区** | `timeZone` | 否 | 字符串 | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
-   | **开始时间** | `startTime` | 否 | 字符串 | 采用以下格式提供启动日期和时间： <p><p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>\- 或 - <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果你需要 2:00 2017 年9月18日，则指定 "2017-09-18T14：00： 00" 并选择时区，如太平洋标准时间。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：** 此开始时间的最大值为49年，并且必须遵循[utc 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的[ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有[utc 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **时间间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p><p>- 月：1-16 个月 <br>- 天：1-500 天 <br>- 小时：1-12,000 小时 <br>- 分钟：1-72,000 分钟 <br>- 秒：1-9,999,999 秒 <p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
+   | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”**** **** **** **** **** **** |
+   | **时区** | `timeZone` | 否 | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
+   | **开始时间** | `startTime` | 否 | String | 采用以下格式提供启动日期和时间： <p><p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果你需要 2:00 2017 年9月18日，则指定 "2017-09-18T14：00： 00" 并选择时区，如太平洋标准时间。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  完成后，请在设计器工具栏上选择“保存”****。
+1.  完成后，请在设计器工具栏上选择“保存”。
 
 1.  现在请继续向逻辑应用添加一个或多个操作，以便完成需对触发器结果执行的任务。
 
@@ -117,7 +116,7 @@ ms.locfileid: "77598827"
 
 | 操作 | 说明 |
 |--------|-------------|
-| **获取警报** | 获取根据一个或多个[警报属性](https://docs.microsoft.com/graph/api/resources/alert)（例如） `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`筛选的警报。 | 
+| **获取警报** | 获取根据一个或多个[警报属性](https://docs.microsoft.com/graph/api/resources/alert)（例如）筛选的警报 `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` 。 | 
 | **按 ID 获取警报** | 按警报 ID 获取特定警报。 | 
 | **更新警报** | 按警报 ID 更新特定警报。 若要确保在请求中传递必需的可编辑属性，请参阅[可编辑警报属性](https://docs.microsoft.com/graph/api/alert-update)。 例如，若要向安全分析师分配警报以供调查，可以更新警报的“分配对象”**** 属性。 |
 |||
@@ -138,7 +137,7 @@ Microsoft Graph 支持[订阅**](https://docs.microsoft.com/graph/api/resources/
 
 ### <a name="manage-threat-intelligence-indicators"></a>管理威胁智能指示器
 
-若要筛选、排序或获取最新结果，只需** 提供 [Microsoft Graph支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)。 请勿指定** 完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/beta/security/tiIndicators` 或 `GET`/`PATCH` 操作。 下面是一个特定的示例，当你需要具有`DDoS`威胁类型的列表时，显示**Get tiIndicators**操作的参数：
+若要筛选、排序或获取最新结果，只需** 提供 [Microsoft Graph支持的 ODATA 查询参数](https://docs.microsoft.com/graph/query-parameters)。 请勿指定** 完整的基 URL 或 HTTP 操作，例如 `https://graph.microsoft.com/beta/security/tiIndicators` 或 `GET`/`PATCH` 操作。 下面是一个特定的示例，当你需要具有威胁类型的列表时，显示**Get tiIndicators**操作的参数 `DDoS` ：
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

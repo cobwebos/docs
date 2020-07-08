@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616931"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复 
@@ -40,7 +39,7 @@ Azure 上的 SAP HANA（大型实例）在四个地缘政治区域（美国、�
 
 下表显示了当前支持的高可用性和灾难恢复方法与组合：
 
-| HANA 大型实例支持的方案 | 高可用性选项 | 灾难恢复选项 | 说明 |
+| HANA 大型实例支持的方案 | 高可用性选项 | 灾难恢复选项 | 注释 |
 | --- | --- | --- | --- |
 | 单节点 | 不可用。 | 专用 DR 设置。<br /> 多用途 DR 设置。 | |
 | 主机自动故障转移：横向扩展（使用或不使用备用）<br /> 包括 1+1 | 在备用节点充当活动角色的情况下可行。<br /> HANA 控制角色切换。 | 专用 DR 设置。<br /> 多用途 DR 设置。<br /> 使用存储复制实现 DR 同步。 | HANA 卷集将附加到所有节点。<br /> DR 站点必须拥有相同的节点数。 |

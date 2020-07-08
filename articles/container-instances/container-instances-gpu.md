@@ -4,10 +4,9 @@ description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行�
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77525280"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
@@ -91,7 +90,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-用[az container create][az-container-create]命令部署容器组，并为`--file`参数指定 YAML 文件名。 需要提供支持 GPU 资源的资源组名称和容器组位置（例如 eastus）**。  
+用[az container create][az-container-create]命令部署容器组，并为参数指定 YAML 文件名 `--file` 。 需要提供支持 GPU 资源的资源组名称和容器组位置（例如 eastus）**。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus

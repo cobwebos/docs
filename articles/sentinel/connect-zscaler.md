@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: cc784afe5db64ccc4aad13fae7a2fa748e4befa3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587985"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>连接 Zscaler Internet 访问 Azure Sentinel
@@ -43,8 +42,8 @@ ms.locfileid: "77587985"
    > 此解决方案支持 Syslog RFC 3164 或 RFC 5424。
 
 
-1. 若要在 CEF 事件的 Log Analytics 中使用相关架构，请搜索`CommonSecurityLog`。
-1. 继续执行[步骤3：验证连接性](connect-cef-verify.md)。
+1. 若要在 CEF 事件的 Log Analytics 中使用相关架构，请搜索 `CommonSecurityLog` 。
+1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

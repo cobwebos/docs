@@ -14,10 +14,9 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77615085"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
@@ -145,8 +144,8 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 单击 "**继续**"
 
-预期值 = 部署的节点数（在本例中为 2 ![） yast-Cluster-Security](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)单击 "**下一步**
-!["](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) yast-cluster-configure-csync2 添加节点名称，然后单击 "添加建议的文件"
+预期值 = 部署的节点数（在本例中为2） ![yast-Cluster-Security.png](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) 单击 "**下一步**" 
+ ![yast-cluster-configure-csync2.png](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png) 添加节点名称，然后单击 "添加建议的文件"
 
 单击“打开 csync2”
 
@@ -160,8 +159,8 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-单击 "**下一步**
-![" yast-cluster-service](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+单击 "**下一步**" 
+ ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在默认选项中，启动已关闭，将其更改为“打开”，以便 pacemaker 在启动时开始。 可以基于设置需求做出选择。
 单击“下一步”，完成群集配置。****
@@ -257,7 +256,7 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon](media/HowToHLI/HASetupWithStonith/crm-mon.png)你还可以登录到 hawk 以检查群集状态*https://\<节点 IP>： 7630*。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd ** 命令更改密码。
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) 还可以登录到 hawk 查看群集状态 https://\<node IP>:7630**。 默认用户是 hacluster，密码为 linux。 如果需要，可以使用 passwd ** 命令更改密码。
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集属性和资源 
 本部分将介绍配置群集资源的步骤。
@@ -322,7 +321,7 @@ crm configure load update crm-vip.txt
 在运行命令 crm_mon** 时，可以在那里看到两个资源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，你还可以在*https://\<节点 IP 地址>： 7630/cib/live/state*中查看状态
+此外，可以在 https://\<node IP address>:7630/cib/live/state** 上看到状态
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -334,11 +333,11 @@ Service pacemaker stop
 现在，停止 node2**** 上的 pacemaker 服务，资源已故障转移到 node1****
 
 **故障转移之前**  
-![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 故障转移后****  
-![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. 疑难解答

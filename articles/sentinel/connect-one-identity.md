@@ -15,23 +15,22 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588138"
 ---
 # <a name="connect-one-identity-safeguard"></a>连接一个标识保护
 单个标识保护数据连接器增强了标准通用事件格式（CEF）连接器，并保护了特定于特权会话的仪表板。 使用此连接器可以轻松开始使用设备生成的、用于可视化、警报、调查等的事件。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure Sentinel 工作区的读取和写入权限。
 
 ## <a name="connect-azure-sentinel-to-one-identity-safeguard"></a>将 Azure Sentinel 连接到一个标识保护
 
-1. 在 Azure 门户中，导航到 " **Azure Sentinel** > **数据连接器**"，然后选择**一个 "标识保护**" 连接器。
+1. 在 Azure 门户中，导航到 " **Azure Sentinel**  >  **数据连接器**"，然后选择**一个 "标识保护**" 连接器。
 
 2. 选择 "**打开连接器" 页面**。
 

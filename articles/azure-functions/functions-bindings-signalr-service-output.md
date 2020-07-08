@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530245"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务输出绑定
@@ -176,7 +175,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 示例 function.json：
 
@@ -311,7 +310,7 @@ public static Task SendMessage(
 }
 ```
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 示例 function.json：
 
@@ -478,13 +477,13 @@ public static Task RemoveFromGroup(
 > [!NOTE]
 > 若要正确绑定 `ClaimsPrincipal`，必须已经在 Azure Functions 中配置身份验证设置。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 ### <a name="add-user-to-a-group"></a>将用户添加到组
 
 以下示例将用户添加到组。
 
-示例*函数。 json*
+示例*function.js*
 
 ```json
 {
@@ -522,7 +521,7 @@ public static Task Run(
 
 以下示例从组中删除用户。
 
-示例*函数。 json*
+示例*function.js*
 
 ```json
 {
@@ -565,7 +564,7 @@ public static Task Run(
 
 以下示例将用户添加到组。
 
-示例*函数。 json*
+示例*function.js*
 
 ```json
 {
@@ -593,7 +592,7 @@ module.exports = async function (context, req) {
 
 以下示例从组中删除用户。
 
-示例*函数。 json*
+示例*function.js*
 
 ```json
 {
@@ -623,7 +622,7 @@ module.exports = async function (context, req) {
 
 以下示例将用户添加到组。
 
-示例*函数。 json*
+示例*function.js*
 
 ```json
 {
@@ -650,7 +649,7 @@ def main(req: func.HttpRequest, action: func.Out[str]) -> func.HttpResponse:
 
 以下示例从组中删除用户。
 
-示例*函数。 json*
+示例*function.js*
 
 ```json
 {
@@ -725,26 +724,26 @@ public SignalRGroupAction removeFromGroup(
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
-下表说明了在*函数 json*文件和`SignalRConnectionInfo`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `SignalRConnectionInfo` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | n/a | 必须设置为 `signalRConnectionInfo`。|
-|**方向键**| n/a | 必须设置为 `in`。|
-|**name**| n/a | 变量名称，在连接信息对象的函数代码中使用。 |
+|**type**| 不适用 | 必须设置为 `signalRConnectionInfo`。|
+|**direction**| 不适用 | 必须设置为 `in`。|
+|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
-|**Id**|**UserId**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
+|**userId**|**Id**| 可选：将要在访问密钥令牌中设置的用户标识符声明的值。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
 ### <a name="signalr"></a>SignalR
 
-下表说明了在*函数 json*文件和`SignalR`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `SignalR` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type | n/a | 必须设置为 `signalR`。|
-|**方向键**| n/a | 必须设置为 `out`。|
-|**name**| n/a | 变量名称，在连接信息对象的函数代码中使用。 |
+|**type**| 不适用 | 必须设置为 `signalR`。|
+|**direction**| 不适用 | 必须设置为 `out`。|
+|**name**| 不适用 | 变量名称，在连接信息对象的函数代码中使用。 |
 |**hubName**|**HubName**| 此值必须设置为 SignalR 中心（将为其生成连接信息）的名称。|
 |**connectionStringSetting**|**ConnectionStringSetting**| 应用设置的名称，该设置包含 SignalR 服务连接字符串（默认为“AzureSignalRConnectionString”） |
 
