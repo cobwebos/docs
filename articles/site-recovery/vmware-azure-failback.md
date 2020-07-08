@@ -7,16 +7,15 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485319"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>将 VMware VM 故障回复到本地站点
 
-本文介绍如何使用 [Azure Site Recovery](site-recovery-failover.md)将 Azure VM 故障回复到本地站点，然后将本地 VM [故障转移](site-recovery-overview.md)到 Azure。 故障回复到本地后启用复制，使本地 VM 开始复制到 Azure。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md)将 Azure VM 故障回复到本地站点，然后将本地 VM [故障转移](site-recovery-failover.md)到 Azure。 故障回复到本地后启用复制，使本地 VM 开始复制到 Azure。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -29,7 +28,7 @@ ms.locfileid: "75495332"
 
 ## <a name="run-a-failover-to-fail-back"></a>运行故障转移以进行故障回复
 
-1. 确保 Azure VM 已重新受保护，并正在复制到本地站点。 
+1. 确保 Azure VM 已重新受保护，并正在复制到本地站点。
     - VM 至少需有一个恢复点才能故障回复。
     - 如果对恢复计划进行故障回复，该计划中的所有计算机应至少有一个恢复点。
 2. 在保管库中 >“复制的项”，选择 VM  。 右键单击该 VM 并选择“计划内故障转移”  。

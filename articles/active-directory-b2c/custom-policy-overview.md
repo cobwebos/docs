@@ -7,15 +7,14 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/06/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484174"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -25,7 +24,7 @@ ms.locfileid: "81678164"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比较用户流和自定义策略
 
-| | 用户流 | 自定义策略 |
+| 上下文 | 用户流 | 自定义策略 |
 |-|-------------------|-----------------|
 | 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 他们能够熟悉运作 OpenID Connect 流，并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |
@@ -39,20 +38,20 @@ ms.locfileid: "81678164"
 
 使用以下三种类型的策略文件：
 
-- 基本文件  - 包含大多数定义。 建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略。
-- 扩展文件  保存租户的唯一配置更改。
-- 信赖方 (RP) 文件  注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
+- 基本文件 - 包含大多数定义。 建议对此文件进行极少量的更改，以帮助进行故障排除和长期维护策略。
+- 扩展文件保存租户的唯一配置更改。
+- 信赖方 (RP) 文件注重单个任务的文件，由应用程序或服务（又称信赖方）直接调用。 每个唯一任务需要自身的 RP，根据品牌要求，该数字可能是“应用程序总数 x 用例总数”。
 
-Azure AD B2C 中的用户流遵循前面所述的文件模式，但开发人员只能看到 RP 文件，而 Azure 门户会在后台向扩展文件进行更改。
+Azure AD B2C 中的用户流遵循上面描述的文件模式，但开发人员只能看到 RP 文件，同时，Azure 门户会在后台对扩展文件进行更改。
 
-尽管有三种类型的策略文件，但并不局限于三个文件。 您可能有每个文件类型的多个文件。 例如，如果不想对扩展文件进行更改，则可以创建一个 Extensions2 文件来进一步扩展扩展文件。
+尽管有三种类型的策略文件，但并不局限于三个文件。 每种文件类型都可以有多个文件。 例如，如果不希望更改扩展名文件，则可以创建 Extensions2 文件来进一步扩展该扩展文件。
 
 ## <a name="custom-policy-core-concepts"></a>自定义策略核心概念
 
 Azure 中的客户标识和访问管理 (CIAM) 服务包括：
 
 - 一个用户目录，可通过使用 Microsoft Graph 进行访问，并保存本地帐户和联合帐户的用户数据。
-- 访问“标识体验框架”****。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识或访问管理任务。
+- 访问“标识体验框架”。此框架协调用户与实体之间的信任，并在两者之间传递声明，以完成标识或访问管理任务。
 - 安全令牌服务 (STS)，颁发 ID 令牌、刷新令牌和访问令牌（以及等效的 SAML 断言），并对其进行验证以保护资源。
 
 Azure AD B2C 依次与标识提供程序、用户、其他系统和本地用户目录交互，以完成标识任务。 例如，登录用户、注册新用户或重置密码。 “标识体验框架”和策略（亦称为“用户旅程”或“信任框架策略”）可建立多方信任并显式定义执行组件、操作、协议和要完成的步骤顺序。

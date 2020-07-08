@@ -4,38 +4,37 @@ services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程以及路由的工作原理
-keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84307412"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何处理 Azure Dev Spaces
 
-Azure Dev Spaces 提供多种方法来快速循环访问和调试 Kubernetes 应用程序，并在 Azure Kubernetes 服务（AKS）群集上与团队进行协作。 在开发环境中运行项目后，Azure Dev Spaces 为项目提供其他网络和路由功能。
+Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kubernetes 应用程序，并在 Azure Kubernetes 服务 (AKS) 群集上与团队协作。 在开发环境中运行项目后，Azure Dev Spaces 为项目提供其他网络和路由功能。
 
 本文介绍了如何将路由用于 Dev 空间。
 
 ## <a name="how-routing-works"></a>路由的工作原理
 
-Dev 空间构建在 AKS 之上，并使用相同的[网络概念](../aks/concepts-network.md)。 Azure Dev Spaces 还具有一个集中式*ingressmanager*服务，并将其自己的入口控制器部署到 AKS 群集。 *Ingressmanager*服务会监视包含 dev 空间的 AKS 群集，并在群集中扩充 Azure Dev Spaces 入口控制器，其中包含用于路由到应用程序箱的入口对象。 每个 pod 中的 devspaces 容器会根据 URL `azds-route-as`向开发环境中的 http 流量添加 http 标头。 例如，对 URL *http://azureuser.s.default.serviceA.fedcba09...azds.io*的请求将获取 HTTP 标头。 `azds-route-as: azureuser` 如果已存在一个`azds-route-as`标头，devspaces 容器将不会添加标头。
+Dev 空间构建在 AKS 之上，并使用相同的[网络概念](../aks/concepts-network.md)。 Azure Dev Spaces 还具有一个集中式*ingressmanager*服务，并将其自己的入口控制器部署到 AKS 群集。 *Ingressmanager*服务会监视包含 dev 空间的 AKS 群集，并在群集中扩充 Azure Dev Spaces 入口控制器，其中包含用于路由到应用程序箱的入口对象。 每个 pod 中的 devspaces 容器会根据 URL 向开发环境中的 `azds-route-as` http 流量添加 http 标头。 例如，对 URL 的请求 *http://azureuser.s.default.serviceA.fedcba09...azds.io* 将获取 HTTP 标头 `azds-route-as: azureuser` 。 如果已存在一个标头，devspaces 容器将不会添加 `azds-route-as` 标头。
 
-当从群集外部向服务发出 HTTP 请求时，请求将发送到入口控制器。 入口控制器根据请求的入口对象和规则将请求直接路由到相应的 pod。 Pod 中的 devspaces 容器接收请求，根据 URL 添加`azds-route-as`标头，然后将请求路由到应用程序容器。
+当从群集外部向服务发出 HTTP 请求时，请求将发送到入口控制器。 入口控制器根据请求的入口对象和规则将请求直接路由到相应的 pod。 Pod 中的 devspaces 容器接收请求， `azds-route-as` 根据 URL 添加标头，然后将请求路由到应用程序容器。
 
-当从群集中的其他服务向服务发出 HTTP 请求时，请求将首先通过调用服务的 devspaces 容器。 Devspaces 容器查看 HTTP 请求，并检查`azds-route-as`标头。 根据标头，devspaces 容器将查找与标头值相关联的服务的 IP 地址。 如果找到了 IP 地址，devspaces 容器会将请求重排到该 IP 地址。 如果找不到 IP 地址，devspaces 容器会将请求路由到父应用程序容器。
+当从群集中的其他服务向服务发出 HTTP 请求时，请求将首先通过调用服务的 devspaces 容器。 Devspaces 容器查看 HTTP 请求，并检查 `azds-route-as` 标头。 根据标头，devspaces 容器将查找与标头值相关联的服务的 IP 地址。 如果找到了 IP 地址，devspaces 容器会将请求重排到该 IP 地址。 如果找不到 IP 地址，devspaces 容器会将请求路由到父应用程序容器。
 
-例如，应用程序*serviceA*和*serviceB*部署到名为*default*的父开发人员空间。 *serviceA*依赖于*serviceB*并向其发出 HTTP 调用。 Azure 用户基于名为*azureuser*的*默认*空间创建子开发人员空间。 Azure 用户还会将其自己的*serviceA*版本部署到其子空间。 向*http://azureuser.s.default.serviceA.fedcba09...azds.io*发出请求时：
+例如，应用程序*serviceA*和*serviceB*部署到名为*default*的父开发人员空间。 *serviceA*依赖于*serviceB*并向其发出 HTTP 调用。 Azure 用户基于名为*azureuser*的*默认*空间创建子开发人员空间。 Azure 用户还会将其自己的*serviceA*版本部署到其子空间。 向发出请求时 *http://azureuser.s.default.serviceA.fedcba09...azds.io* ：
 
 ![Azure Dev Spaces 路由](media/how-dev-spaces-works/routing.svg)
 
 1. 入口控制器查找与 URL 关联的 pod 的 IP，即*serviceA. azureuser*。
 1. 入口控制器在 Azure 用户的开发区域中查找 pod 的 IP，并将请求路由到*serviceA. azureuser* pod。
-1. *Azureuser* pod 中的 devspaces 容器接收请求并添加`azds-route-as: azureuser`为 HTTP 标头。
+1. *Azureuser* pod 中的 devspaces 容器接收请求并添加 `azds-route-as: azureuser` 为 HTTP 标头。
 1. *Azureuser* pod 中的 devspaces 容器将请求路由到*serviceA* pod 中的*serviceA*应用程序容器。
-1. *Azureuser* pod 中的*serviceA*应用程序调用*serviceB*。 *ServiceA*应用程序还包含用于保留现有`azds-route-as`标头的代码，在本例中为`azds-route-as: azureuser`。
-1. *Azureuser* pod 中的 devspaces 容器接收请求，并根据`azds-route-as`标头的值查找*serviceB*的 IP。
+1. *Azureuser* pod 中的*serviceA*应用程序调用*serviceB*。 *ServiceA*应用程序还包含用于保留现有 `azds-route-as` 标头的代码，在本例中为 `azds-route-as: azureuser` 。
+1. *Azureuser* pod 中的 devspaces 容器接收请求，并根据标头的值查找*serviceB*的 IP `azds-route-as` 。
 1. *Azureuser* pod 中的 devspaces 容器找不到*serviceB*的 IP。
 1. *Azureuser* pod 中的 devspaces 容器在父空间中查找*serviceB*的 IP，即 " *serviceB*"。
 1. *Azureuser* pod 中的 devspaces 容器查找*serviceB*的 IP，并将该请求路由到*serviceB。*
@@ -64,12 +63,12 @@ Dev 空间构建在 AKS 之上，并使用相同的[网络概念](../aks/concept
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看 Azure Dev Spaces 如何使用路由来提供快速迭代和开发的一些示例，请参阅[将开发计算机连接到你][how-it-works-connect]的开发环境的工作原理、[如何使用 Azure Dev Spaces 进行远程调试你的代码，以及如何使用][how-it-works-remote-debugging] [Azure Kubernetes 服务 & 的 GitHub 操作][pr-flow]。
+若要查看 Azure Dev Spaces 如何使用路由来提供快速迭代和开发的一些示例，请参阅[使用 Kubernetes 的本地过程如何工作][how-it-works-local-process-kubernetes]，[如何使用 Azure Dev Spaces 进行远程调试，以及如何在][how-it-works-remote-debugging] [Azure Kubernetes 服务中使用 GitHub & 操作][pr-flow]。
 
 若要开始使用与 Azure Dev Spaces 进行团队开发的路由，请参阅 Azure Dev Spaces 快速入门[中的团队开发][quickstart-team]。
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

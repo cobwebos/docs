@@ -1,16 +1,15 @@
 ---
 title: Azure 自动化 - 更改跟踪和库存概述
-description: 本文介绍了“更改跟踪和库存”功能，该功能可帮助你确定在环境中发生的软件和 Microsoft 服务更改。
+description: 本文介绍了更改跟踪和清单功能，可帮助你在环境中识别软件和 Microsoft 服务的更改。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f6ae1ad5b0f3904b84d47316c11aa1a67531a28
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835098"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555028"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -26,35 +25,36 @@ ms.locfileid: "83835098"
 > [!NOTE]
 > 若要跟踪 Azure 资源管理器的属性更改，请参阅 Azure Resource Graph [更改历史记录](../governance/resource-graph/how-to/get-resource-changes.md)。
 
-更改跟踪和库存从 Azure Monitor 中获取其数据。 连接到 Log Analytics 工作区的虚拟机使用 Log Analytics 代理收集有关已安装软件、Microsoft 服务、Windows 注册表和文件以及受监视服务器上的任何 Linux 守护程序的更改数据。 数据可用时，代理会将其发送到 Azure Monitor 进行处理。 Azure Monitor 将逻辑应用于接收的数据，记录这些数据并使其可用。 
-
-更改跟踪和库存功能在 Azure 自动化中同时启用了更改跟踪和库存功能两个区域。 由于这两个区域都使用相同的 Log Analytics 代理，因此，在其中添加 VM 的过程是相同的。 
+更改跟踪和库存从 Azure Monitor 中获取其数据。 连接到 Log Analytics 工作区的虚拟机使用 Log Analytics 代理来收集有关受监视服务器上的已安装软件、Microsoft 服务、Windows 注册表和文件和 Linux 守护程序的更改的数据。 数据可用时，代理会将其发送到 Azure Monitor 进行处理。 Azure Monitor 将逻辑应用于接收的数据，记录这些数据并使其可用。 
 
 > [!NOTE]
 > 若要使用更改跟踪和库存功能，必须在自动化帐户的同一订阅和区域中查找所有 VM。
 
 更改跟踪和库存当前不支持以下项：
 
-* Windows 注册表跟踪递归
-* 网络文件系统
-* 不同的安装方法
-* *适用于 Windows 的 .exe 文件
+- Windows 注册表跟踪递归
+- 网络文件系统
+- 不同的安装方法
+- *适用于 Windows 的 .exe 文件
 
 其他限制：
 
-* 未在当前实现中使用“最大文件大小”列和值。
-* 如果在 30 分钟收集周期内收集超过 2,500 个文件，则更改跟踪和库存功能的性能可能会下降。
-* 网络流量较高时，更改记录可能需要最多六个小时才能显示。
-* 如果在计算机关闭的情况下修改配置，计算机可能会发布属于以前配置的更改。
+- 未在当前实现中使用“最大文件大小”列和值。
+- 如果在30分钟的收集周期内收集超过2500个文件，更改跟踪和清单性能可能会下降。
+- 网络流量较高时，更改记录可能需要最多六个小时才能显示。
+- 如果在计算机关闭的情况下修改配置，计算机可能会发布属于以前配置的更改。
 
 更改跟踪和库存当前遇到以下问题：
 
-* 没有在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
-* 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因在于捕获 Azure Monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) 日志中的 `SvcRunLevels` 数据的方式。
+- 不会在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
+
+- 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因 `SvcRunLevels` 是捕获 Azure Monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange)日志中的数据的方式。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 正式支持的 Windows 操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 还支持许多 Linux 操作系统。 请参阅 [Log Analytics 代理概述](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) 
+满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 官方操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 许多 Linux 操作系统也支持此功能。 有关支持 Log Analytics 的操作系统，请参阅[Log Analytics 代理概述](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。
+
+若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 ## <a name="network-requirements"></a>网络要求
 
@@ -77,16 +77,27 @@ ms.locfileid: "83835098"
 
 可以单击更改或事件以显示其详细信息。 可用的更改类型包括：
 
-* 事件
-* 守护程序
-* 文件
-* 注册表
-* 软件
-* Microsoft 服务
+- 事件
+- 守护程序
+- 文件
+- 注册表
+- 软件
+- Microsoft 服务
 
-可以添加、修改或删除每项更改。 在下例中，可以看到服务的启动类型已从“手动”更改为“自动”。
+可以添加、修改或删除每个更改。 下面的示例演示了服务的启动类型在手动和自动之间的更改。
 
-![更改跟踪详细信息](./media/change-tracking/change-tracking-details.png)
+![更改跟踪和清单详细信息](./media/change-tracking/change-tracking-details.png)
+
+## <a name="fim-support-in-azure-security-center"></a>Azure 安全中心中的 FIM 支持
+
+更改跟踪和库存功能可利用 [Azure 安全中心文件完整性监视 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)。 虽然 FIM 仅监视文件和注册表，但完整的更改跟踪和库存功能还包括以下内容的跟踪：
+
+- 软件更改
+- Microsoft 服务
+- Linux 守护程序
+
+> [!NOTE]
+> 启用完整的更改跟踪和库存功能可能会产生额外的费用。 请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。 可以从 Azure 门户中提供[的已安装监视解决方案列表](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中删除 FIM。 请参阅[删除监视解决方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)。
 
 ## <a name="tracking-of-file-changes"></a>跟踪文件更改
 
@@ -94,24 +105,23 @@ ms.locfileid: "83835098"
 
 ## <a name="tracking-of-file-content-changes"></a>跟踪文件内容更改
 
-更改跟踪和库存功能允许在文件更改前后查看 Windows 或 Linux 文件的内容。 对于文件的每个更改，更改跟踪和库存功能将文件内容存储在 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)中。 跟踪文件时，可以在更改前后查看其内容。 可以通过内联方式或并排查看内容。 
+更改跟踪和清单允许您查看 Windows 或 Linux 文件的内容。 对于文件的每个更改，更改跟踪和库存功能将文件内容存储在 [Azure 存储帐户](../storage/common/storage-create-storage-account.md)中。 跟踪文件时，可以在更改前后查看其内容。 文件内容可以是内联的，也可以并排查看。 
 
 ![查看文件中的更改](./media/change-tracking/view-file-changes.png)
 
 ## <a name="tracking-of-registry-keys"></a>跟踪注册表项
 
-更改跟踪和库存功能支持监视注册表项的更改。 此监视操作可以确定第三方代码和恶意软件可以激活的扩展点。 下表列出了预配置（但未启用）的注册表项。 若要跟踪这些注册表项，必须将它们都启用。
+更改跟踪和清单允许监视 Windows 注册表项的更改。 此监视操作可以确定第三方代码和恶意软件可以激活的扩展点。 下表列出了预配置（但未启用）的注册表项。 若要跟踪这些注册表项，必须将它们都启用。
 
 > [!div class="mx-tdBreakAll"]
 > |注册表项 | 目的 |
 > | --- | --- |
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 监视常见的自动启动条目，这些条目直接与 Windows 资源管理器挂钩，并且通常使用 Explorer.exe 在进程内运行。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | 监视启动时运行的脚本。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | 监视关机时运行的脚本。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | 监视用户登录 Windows 帐户之前加载的注册表项。 该注册表项用于在 64 位计算机上运行的 32 位应用程序。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | 监视应用程序设置的更改。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 监视常见的自动启动条目，这些条目直接与 Windows 资源管理器挂钩，并且通常使用 Explorer.exe 在进程内运行。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 监视常见的自动启动条目，这些条目直接与 Windows 资源管理器挂钩，并且通常使用 Explorer.exe 在进程内运行。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 监视直接挂钩到 Windows 资源管理器中的上下文菜单处理程序，并且通常与**explorer.exe**在进程内运行。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 监视直接挂钩到 Windows 资源管理器并在**explorer.exe**中运行的复制挂钩处理程序。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 监视图标覆盖处理程序注册。
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 监视在 64 位计算机上运行的 32 位应用程序的图标覆盖处理程序注册。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | 监视 Internet Explorer 的新浏览器帮助程序对象插件。 用于访问当前页的文档对象模型 (DOM) 并控制导航。
@@ -120,25 +130,20 @@ ms.locfileid: "83835098"
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | 对于在 64 位计算机上运行的 32 位应用程序，监视新的 Internet Explorer 扩展，如自定义工具菜单和自定义工具栏按钮。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | 监视与 wavemapper、wave1 和 wave2、msacm.imaadpcm、.msadpcm、.msgsm610 和 vidc 关联的 32 位驱动程序。 类似于 system.ini 文件中的 [drivers] 部分。
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | 对于在 64 位计算机上运行的 32 位应用程序，监视与 wavemapper、wave1 和 wave2、msacm.imaadpcm、.msadpcm、.msgsm610 和 vidc 关联的 32 位驱动程序。 类似于 system.ini 文件中的 [drivers] 部分。
-> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | 监视已知或常用的系统 DLL 列表。 该系统可以通过删除特洛伊木马版本的系统 DLL 来防止人们利用弱应用程序目录权限。
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | 监视已知或常用的系统 DLL 列表。 监视可通过删除系统 Dll 的特洛伊木马版本来防止人们利用弱应用程序目录权限。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | 监视可从 winlogon.exe（适用于 Windows 的交互式登录支持模型）接收事件通知的包列表。
-
-## <a name="support-for-file-integrity-monitoring-in-azure-security-center"></a>支持 Azure 安全中心内的文件完整性监视
-
-更改跟踪和库存功能可利用 [Azure 安全中心文件完整性监视 (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)。 虽然 FIM 仅监视文件和注册表，但完整的更改跟踪和库存功能还包括以下内容的跟踪：
-
-- 软件更改
-- Microsoft 服务
-- Linux 守护程序
 
 ## <a name="recursion-support"></a>递归支持
 
-更改跟踪和库存功能支持递归，这样你就可以指定通配符来简化跨目录的跟踪。 递归还提供了环境变量，使你能够跨具有多个或动态驱动器名称的环境跟踪文件。 以下列表包括配置递归时应了解的常用信息：
+更改跟踪和库存功能支持递归，这样你就可以指定通配符来简化跨目录的跟踪。 递归还提供了环境变量，使你能够跨具有多个或动态驱动器名称的环境跟踪文件。 下面的列表包含在配置递归时应了解的常见信息：
 
-* 跟踪多个文件需要使用通配符。
-* 只能在路径的最后一段中使用通配符，例如 c:\folder\\file* 或 /etc/*.conf 。
-* 如果环境变量具有无效路径，验证会成功，但在执行过程中路径会失败。
-* 设置路径时应避免使用通用路径名，因为此类型的设置可能会导致遍历太多文件夹。
+- 跟踪多个文件需要使用通配符。
+
+- 只能在文件路径的最后一段中使用通配符，例如， **c:\folder \\ file*** 或 **/etc/*.**
+
+- 如果环境变量具有无效路径，验证会成功，但在执行过程中路径会失败。
+
+- 设置路径时应避免常规路径名，因为此类型的设置可能会导致遍历太多文件夹。
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>更改跟踪和库存数据收集
 
@@ -165,11 +170,11 @@ ms.locfileid: "83835098"
 |服务|250|
 |守护程序|250|
 
-使用更改跟踪和库存的计算机的平均 Log Analytics 数据用量为每月大约 40 MB，具体取决于环境。 使用 Log Analytics 工作区的“使用情况和预估成本”功能，可以在使用情况图表中查看更改跟踪和库存功能所引入的数据。 可以使用此数据视图来评估自己的数据使用情况，并确定它如何影响帐单。 请参阅[了解自己的使用情况和预估成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)  
+使用更改跟踪和库存的计算机的平均 Log Analytics 数据用量为每月大约 40 MB，具体取决于环境。 使用 "Log Analytics" 工作区的 "使用情况和估计成本" 功能，可以在使用情况图表中查看更改跟踪和库存的数据引入。 使用此数据视图可以评估你的数据使用情况，并确定它如何影响你的帐单。 请参阅[了解自己的使用情况和预估成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)
 
 ### <a name="microsoft-service-data"></a>Microsoft 服务数据
 
-Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置”下“Microsoft 服务”选项卡上的滑块配置频率。 
+Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置”下“Microsoft 服务”选项卡上的滑块配置频率。
 
 ![Microsoft 服务滑块](./media/change-tracking/windowservices.png)
 
@@ -180,13 +185,13 @@ Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置�
 
 ## <a name="support-for-alerts-on-configuration-state"></a>支持有关配置状态的警报
 
-更改跟踪和库存的主要功能是就混合环境的配置状态更改发出警报。 可以触发许多有用的操作来响应警报，例如对 Azure 函数、自动化 runbook、webhook 等触发的操作。 在计算机的 C:\windows\system32\drivers\etc\hosts 文件发生更改时发出警报，这是对更改跟踪和库存数据警报的一个不错的应用。 还有更多的警报方案，包括下表中定义的查询方案。 
+更改跟踪和库存的主要功能是就混合环境的配置状态更改发出警报。 可以触发许多有用的操作来响应警报，例如对 Azure 函数、自动化 runbook、webhook 等触发的操作。 对计算机的**c:\windows\system32\drivers\etc\hosts**文件进行更改时发出警报是更改跟踪和清单数据的一个良好的警报。 还有更多的警报方案，包括下表中定义的查询方案。
 
 |查询  |说明  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|用于跟踪对系统关键文件的更改。|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|用于跟踪对关键配置文件的修改。|
-|ConfigurationChange <br>&#124; where ConfigChangeType == "Microsoft services" and SvcName contains "w3svc" and SvcState == "Stopped"|用于跟踪对系统关键服务的更改。|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|用于跟踪对系统关键服务的更改。|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Daemons" and SvcName contains "ssh" and SvcState!= "Running"|用于跟踪对系统关键服务的更改。|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Added"|用于需锁定软件配置的环境。|
 |ConfigurationData <br>&#124; where SoftwareName contains "Monitoring Agent" and CurrentVersion!= "8.0.11081.0"|用于查看哪些计算机安装了过时的或不符合标准的软件版本。 该查询会报告最新报告的配置状态，而不报告更改。|
@@ -195,10 +200,10 @@ Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 如需详细了解如何使用更改跟踪和库存功能，请参阅[管理更改跟踪和库存](change-tracking-file-contents.md)。
-* 若要从 runbook 启用此功能，请参阅[从 runbook 启用更改跟踪和库存](automation-enable-changes-from-runbook.md)。
-* 若要从自动化帐户启用此功能，请参阅[从自动化帐户启用更改跟踪和库存](automation-enable-changes-from-auto-acct.md)。
-* 若要通过浏览 Azure 门户来启用此功能，请参阅[从 Azure 门户启用更改跟踪和库存](automation-onboard-solutions-from-browse.md)。
-* 若要从 Azure VM 启用此功能，请参阅[从 Azure VM 启用更改跟踪和库存](automation-enable-changes-from-vm.md)。
-* 如果需要搜索 Log Analytics 工作区中存储的日志，请参阅 [Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
-* 若要排查功能错误，请参阅[排查更改跟踪和库存的问题](troubleshoot/change-tracking.md)。
+- 若要从自动化帐户启用此功能，请参阅[从自动化帐户启用更改跟踪和库存](automation-enable-changes-from-auto-acct.md)。
+
+- 若要通过浏览 Azure 门户来启用此功能，请参阅[从 Azure 门户启用更改跟踪和清单](automation-onboard-solutions-from-browse.md)。
+
+- 若要从 runbook 启用此功能，请参阅[从 runbook 启用更改跟踪和库存](automation-enable-changes-from-runbook.md)。
+
+- 若要从 Azure VM 启用此功能，请参阅[从 Azure VM 启用更改跟踪和库存](automation-enable-changes-from-vm.md)。

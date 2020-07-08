@@ -1,14 +1,13 @@
 ---
 title: 使用服务终结点限制访问
-description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问
+description: 使用 Azure 虚拟网络中的服务终结点限制对 Azure 容器注册表的访问。 服务终结点访问是高级服务层的一项功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685058"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509281"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虚拟网络中的服务终结点限制对容器注册表的访问
 
@@ -100,7 +99,7 @@ az network vnet subnet show \
 
 #### <a name="change-default-network-access-to-registry"></a>更改默认网络对注册表的访问权限
 
-默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 在以下 [az acr update][az-acr-update] 命令中，替换注册表的名称：
+默认情况下，Azure 容器注册表允许来自任何网络上的主机的连接。 要将访问权限仅授予所选网络，请将默认操作更改为拒绝访问。 请将以下 [az acr update][az-acr-update] 命令中的占位符替换为你的注册表名称：
 
 ```azurecli
 az acr update --name myContainerRegistry --default-action Deny

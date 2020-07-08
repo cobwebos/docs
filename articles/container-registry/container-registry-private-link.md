@@ -1,14 +1,13 @@
 ---
 title: 设置专用链接
-description: 在容器注册表上设置专用终结点，并实现在本地虚拟网络中通过专用链接进行访问
+description: 在容器注册表上设置专用终结点，并通过本地虚拟网络中的专用链接启用访问。 私有链接访问是高级服务层的一项功能。
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850039"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509332"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>为 Azure 容器注册表配置 Azure 专用链接 
 
@@ -234,7 +233,7 @@ az network private-dns record-set a add-record \
 1. 在“专用终结点”选项卡上，选择“+ 专用终结点”。
 1. 在“基本信息”中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
@@ -246,7 +245,7 @@ az network private-dns record-set a add-record \
 5. 在完成时选择“下一步:资源”。
 6. 输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
     | 订阅| 选择订阅。 |
@@ -267,7 +266,7 @@ az network private-dns record-set a add-record \
     |专用 DNS 区域 |选择“(新) privatelink.azurecr.io” |
     |||
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
 2. 看到“验证通过”消息时，选择“创建” 。
 
 创建专用终结点之后，专用区域中的 DNS 设置会显示在门户中的“专用终结点”页上：

@@ -5,17 +5,16 @@ description: 如何在聚类、分类或回归试验中选择监督式和非监�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: 582d6077a4b84e5b2d8c0d69da7b00b807a355b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927575"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433146"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>如何选择 Azure 机器学习的算法
 
@@ -44,35 +43,35 @@ ms.locfileid: "82927575"
 
 一些学习算法会对数据的结构或期望的结果做出特定假设。 如果找到符合需求的算法，它可以提供更有用的结果、更准确的预测或更快的定型时间。
 
-下表总结了分类、回归和群集系列中算法的一些最重要的特征：
+下表总结了分类、回归和聚类系列算法的一些最重要的特征：
 
-| **算法** | **准确性** | **定型时间** | **线性** | **参数** | **说明** |
+| **算法** | **准确性** | **定型时间** | **线性** | **Parameters** | **说明** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **分类系列** | | | | | |
 | [双类逻辑回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |好  |快速 |是 |4 | |
-| [双类决策林](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |5 |显示较慢的评分时间。 建议不要处理“一对多”多类分类，因为在累积树预测中由于踏板锁定导致的计分时间较慢 |
+| [双类决策林](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |5 |显示的评分时间变慢。 建议不要使用“一对多”多类分类，因为树预测累积中的梯级锁定会导致评分时间变慢 |
 | [双类提升决策树](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |6 |内存占用量大 |
 | [双类神经网络](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中等 |否 |8 | |
 | [双类平均感知器](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |好 |中等 |是 |4 | |
 | [双类支持向量机](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |5 |适用于大型特征集 |
 | [多类逻辑回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |4 | |
-| [多类决策林](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |5 |显示较慢的评分时间 |
-| [多类提升决策树](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |6 | 降低了准确性，同时降低了覆盖范围 |
+| [多类决策林](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |5 |显示的评分时间变慢 |
+| [多类提升决策树](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |6 | 提高了准确性，同时存在小的覆盖面降低的风险 |
 | [多类神经网络](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |好 |中等 |否 |8 | |
-| [一对多多类](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |查看所选双类方法的属性 |
+| [“一对多”多类分类](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |查看所选双类方法的属性 |
 | **回归系列** | | | | | |
 | [线性回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |好 |快速 |是 |4 | |
 | [决策林回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|很好 |中等 |否 |5 | |
 | [提升决策树回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |很好 |中等 |否 |6 |内存占用量大 |
 | [神经网络回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |好 |中等 |否 |8 | |
 | **群集系列** | | | | | |
-| [K 平均值聚类](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |很好 |中等 |是 |8 |聚类算法 |
+| [K-Means 群集](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |很好 |中等 |是 |8 |聚类算法 |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>数据科学方案的要求
 
-一旦知道要对数据执行哪些操作，就需要确定解决方案的其他要求。 
+知道要将数据用于何种用途后，需要确定解决方案的其他要求。 
 
-出于以下要求做出选择和可能的权衡：
+做出选择，并针对以下要求采取可能的折衷方案：
 
 - 精确度
 - 定型时间
@@ -82,72 +81,72 @@ ms.locfileid: "82927575"
 
 ## <a name="accuracy"></a>精确度
 
-机器学习的准确性衡量模型在总体事例结果比例上的有效性。 在机器学习设计器中，"[评估模型" 模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)计算一组符合行业标准的评估指标。 您可以使用此模块来度量定型模型的准确性。
+机器学习中的准确度根据真实结果数与案例总数之比来度量模型的有效性。 在机器学习设计器中，[“评估模型”模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)将计算一组符合行业标准的评估指标。 可以使用此模块来度量已训练模型的准确度。
 
-获取最准确的答案并非总是必需的。 有时，近似值便已足够，具体取决于想要将其用于何处。 如果是这种情况，您可以通过使用更接近的方法来显著地缩短您的处理时间。 大致的方法也通常会避免过度拟合。
+获取最准确的答案可能并不总是必要的。 有时，近似值便已足够，具体取决于想要将其用于何处。 如果是这种情况，可以通过坚持使用更多的近似值方法大大减少处理时间。 此外，近似值方法在性质上趋向于避免过度拟合。
 
 可通过三种方式使用“评估模型”模块：
 
-- 针对定型数据生成分数，以便对模型进行评估
+- 针对训练数据生成评分以评估模型
 - 在模型中生成评分，但将这些评分与保留的测试集中的评分进行比较
 - 使用相同的数据集比较两个不同但相关的模型的评分
 
-有关可用于评估机器学习模型准确性的指标和方法的完整列表，请参阅[评估模型模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)。
+有关可用于评估机器学习模型准确度的指标和方法的完整列表，请参阅[“评估模型”模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/evaluate-model?WT.mc_id=docs-article-lazzeri)。
 
 ## <a name="training-time"></a>定型时间
 
-在监督式学习中，定型意味着使用历史数据生成一个最小化错误的机器学习模型。 算法之间定型模型所需的分钟数或小时数差异较大。 训练时间通常与准确性密切相关;其中一项通常伴随另一个。 
+在监督式学习中，训练表示使用历史数据生成一个可以尽量减少误差的机器学习模型。 算法之间定型模型所需的分钟数或小时数差异较大。 训练时间通常与准确度密切相关：两者通常是相辅相成的。 
 
-此外，相较于其他算法，某些算法对数据点数目更敏感。 您可以选择特定的算法，因为您有时间限制，尤其是在数据集很大的情况下。
+此外，相较于其他算法，某些算法对数据点数目更敏感。 可以选择特定的算法，因为时间是有限的，尤其是数据集很大的情况下。
 
-在机器学习设计器中，创建和使用机器学习模型的过程通常分为三个步骤：
+在机器学习设计器中，创建和使用机器学习模型通常是一个三步过程：
 
-1.  通过选择特定类型的算法，然后定义其参数或超参数，配置模型。 
+1.  通过选择特定类型的算法并定义其参数或超参数来配置模型。 
 
-2.  提供一个数据集，该数据集带有标记并具有与算法兼容的数据。 将数据和模型连接到[定型模型模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/train-model?WT.mc_id=docs-article-lazzeri)。
+2.  提供一个带标记且其数据与算法兼容的数据集。 将数据和模型都连接到[“训练模型”模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/train-model?WT.mc_id=docs-article-lazzeri)。
 
-3.  训练完成后，使用训练的模型和一个[计分模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/score-model?WT.mc_id=docs-article-lazzeri)来对新数据进行预测。
+3.  训练完成后，结合某个[评分模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/score-model?WT.mc_id=docs-article-lazzeri)使用训练的模型基于新数据做出预测。
 
 ## <a name="linearity"></a>线性
 
-统计和机器学习中的线性意味着数据集中的变量和常数之间存在线性关系。 例如，线性分类算法假设可以用直线（或其更高的模拟）分隔类。
+统计学和机器学习中的线性度表示数据集中的某个变量与常数之间存在线性关系。 例如，线性分类算法假设直线（或其更高维的模拟）可以将类分离。
 
-许多机器学习算法都使用线性。 在 Azure 机器学习设计器中，它们包括： 
+许多机器学习算法都使用线性。 在 Azure 机器学习设计器中，这些算法包括： 
 
 - [多类逻辑回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri)
 - [双类逻辑回归](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri)
-- [支持矢量计算机](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)  
+- [支持向量机](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)  
 
-线性回归算法假定数据趋势遵循一条直线。 对于某些问题而言，此假设并不不错，但对于其他一些问题，它会降低准确性。 尽管它们有缺点，但线性算法作为第一种策略。 它们往往算法简单且可快速定型。
+线性回归算法假定数据趋势遵循一条直线。 对于某些问题而言，这种假设可以成立，但对于其他一些问题，它会降低准确度。 尽管它们有缺点，但线性算法往往被用作首要策略。 它们往往算法简单且可快速定型。
 
 ![非线性类边界](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-***非线性类边界***：*依赖线性分类算法会导致低准确性。*
+***非线性类边界***：依赖于线性分类算法会导致较低的准确度。
 
 ![非线性趋势数据](./media/how-to-select-algorithms/nonlinear-trend.png)
 
-***具有非线性趋势的数据***：*使用线性回归方法会产生比所需的更大的错误。*
+***非线性趋势数据***：使用线性回归方法会产生超过必要的更大误差。
 
 ## <a name="number-of-parameters"></a>参数数目
 
-参数是数据科学家在设置算法时要旋转的旋钮。 它们是影响算法行为的数字，如容错或迭代次数，或算法行为方式的变体之间的选项。 算法的定型时间和准确性有时会很敏感，只会获得适当的设置。 通常情况下，具有大量参数的算法需要进行最多的试用和错误，才能找到好的组合。
+参数是数据科学家在设置算法时要旋转的旋钮。 它们是影响算法行为的数字，例如错误容限、迭代次数，或算法行为方式的变体之间的选项。 算法的训练时间和准确度有时可能对获取正确设置相当敏感。 通常情况下，具有大量参数的算法需要进行最多的试用和错误，才能找到好的组合。
 
-另外，机器学习设计器中还有[优化模型超参数模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/tune-model-hyperparameters?WT.mc_id=docs-article-lazzeri)：此模块的目标是确定机器学习模型的最佳超参数。 该模块使用不同的设置组合来生成并测试多个模型。 它将比较所有模型的指标，以获取设置组合。 
+此外，机器学习设计器中还提供了[“优化模型超参数”模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/tune-model-hyperparameters?WT.mc_id=docs-article-lazzeri)：此模块的目标是确定机器学习模型的最佳超参数。 该模块使用不同的设置组合来生成并测试多个模型。 它将比较所有模型的指标，以获取设置组合。 
 
-虽然这是确保已跨越参数空间的好方法，但定型模型所需的时间与参数的数量呈指数级增长。 优点是通常情况下，参数较多说明算法具有更大的灵活性。 只要你能提供正确的参数设置组合，它通常能达到很好的精度。
+虽然这是确保跨越参数空间的好方法，但训练模型所需的时间随参数数量呈指数增长。 优点是通常情况下，参数较多说明算法具有更大的灵活性。 只要你能提供正确的参数设置组合，它通常能达到很好的精度。
 
 ## <a name="number-of-features"></a>特征数量
 
-在机器学习中，一项功能是您尝试分析的一种可量化的现象。 对于某些类型的数据，相较于数据点的数量，特征的数量可能非常大。 这通常出现在遗传学或文本数据的情况下。 
+在机器学习中，特征是你要尝试分析的现象的可量化变量。 对于某些类型的数据，相较于数据点的数量，特征的数量可能非常大。 这通常出现在遗传学或文本数据的情况下。 
 
-大量功能可以会阻碍一些学习算法，使定型时间特别长。 [支持矢量计算机](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)特别适用于具有大量功能的方案。 出于此原因，许多应用程序中都使用了这些应用程序，从信息检索到文本和图像分类。 支持矢量机可用于分类和回归任务。
+大量的特征会导致某些学习算法不可用，从而使得训练时间特别长。 [支持向量机](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri)特别适合存在大量特征的方案。 出于此原因，从信息检索到图文分类等许多应用场景中都使用了支持向量机。 支持向量机可用于分类和回归任务。
 
-功能选择是指在给定指定输出的情况下将统计测试应用于输入的过程。 目标是确定哪些列能够更准确地预测输出。 机器学习设计器中的 "[基于筛选器的特征选择" 模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri)提供了多个可供选择的特征选择算法。 该模块包含“皮尔逊相关”和卡方值等相关性方法。
+特征选择是指在指定了输出的情况下，将统计测试应用到输入的过程。 目标是确定哪些列能够更准确地预测输出。 机器学习设计器中的[“基于筛选器的特征选择”模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri)提供多种特征选择算法供用户选择。 该模块包含“皮尔逊相关”和卡方值等相关性方法。
 
-你还可以使用[排列功能重要性模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri)来计算数据集的一组功能重要性分数。 然后，你可以利用这些分数帮助你确定要在模型中使用的最佳功能。
+还可以使用[“排列特征重要性”模块](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri)计算数据集的一组特征重要性评分。 然后，可以利用这些评分来帮助确定最适合在模型中使用的特征。
 
 ## <a name="next-steps"></a>后续步骤
 
- - [了解 Azure 机器学习设计器的详细信息](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
- - 有关 Azure 机器学习设计器中可用的所有机器学习算法的说明，请参阅[机器学习设计器算法和模块参考](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)
- - 若要浏览深度学习、机器学习和 AI 之间的关系，请参阅[深度学习与机器学习](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
+ - [详细了解 Azure 机器学习设计器](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - 有关 Azure 机器学习设计器中提供的所有机器学习算法的介绍，请参阅[机器学习设计器算法和模块参考](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)
+ - 若要探索深度学习、机器学习与 AI 之间的关系，请参阅[深度学习与机器学习](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)

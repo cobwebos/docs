@@ -4,16 +4,15 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294924"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485088"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
-Azure 备份根据备份要求和基础结构拓扑（本地或 Azure）提供多个备份解决方案。 任何备份用户或管理员都可以看到所有解决方案中发生的情况，并在出现重大情况时收到通知。 本文详细介绍了 Azure 备份服务提供的监视和通知功能。
+Azure 备份根据备份要求和基础结构拓扑（本地或 Azure）提供多个备份解决方案。 任何备份用户或管理员都应能看到所有解决方案正在进行的操作，并且可能会在重要方案中收到通知。 本文详细介绍了 Azure 备份服务提供的监视和通知功能。
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>恢复服务保管库中的 Azure 备份作业
 
@@ -27,13 +26,13 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 - Azure VM 备份
 - Azure 文件备份
-- Azure 工作负载备份，例如 SQL 和 SAP HANA
+- Azure 工作负荷备份，例如 SQL 和 SAP HANA
 - Azure 备份代理 (MAB)
 
 不会显示 System Center Data Protection Manager (SC-DPM) 和 Microsoft Azure 备份服务器 (MABS) 中的作业。
 
 > [!NOTE]
-> Azure Vm 中的 azure 工作负荷（例如 SQL 和 SAP HANA 备份）具有大量的备份作业。 例如，日志备份可能每隔 15 分钟运行一次。 因此，对于此类数据库工作负荷，只显示用户触发的操作。 不显示计划的备份操作。
+> Azure Vm 中的 azure 工作负荷（例如 SQL 和 SAP HANA 备份）具有大量的备份作业。 例如，日志备份可能每隔 15 分钟运行一次。 因此对于此类 DB 工作负载，只显示用户触发的操作。 不显示计划的备份操作。
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>恢复服务保管库中的备份警报
 
@@ -59,11 +58,11 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 ### <a name="consolidated-alerts"></a>合并的警报
 
-对于 Azure 工作负荷备份解决方案（例如 SQL 和 SAP HANA），可以非常频繁地生成日志备份（根据策略，每15分钟一次）。 因此，日志备份失败也可能会非常频繁（最多15分钟）。 在这种情况下，如果每次出现故障时引发一次警报，最终用户将会不堪重负。 因此，在第一次发生时将发送警报，如果后续失败是由于相同的根本原因导致的，则不会生成进一步的警报。 第一个警报更新为失败计数。 但如果用户停用了警报，则下一个事件会触发另一个警报，这会被视为该事件的第一个警报。 这是 Azure 备份对 SQL 和 SAP HANA 备份执行警报合并的方式。
+对于 Azure 工作负荷备份解决方案（例如 SQL 和 SAP HANA），可以非常频繁地生成日志备份（根据策略，每15分钟一次）。 因此，日志备份失败也可能会非常频繁（最多15分钟）。 在这种情况下，如果每次出现故障时引发一次警报，最终用户将会不堪重负。 因此，在第一次发生时将发送警报，如果以后的故障因根本原因而失败，则不会生成警报。 第一个警报更新为失败计数。 但如果用户停用了警报，则下一个事件会触发另一个警报，这会被视为该事件的第一个警报。 这是 Azure 备份对 SQL 和 SAP HANA 备份执行警报合并的方式。
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>未引发警报时生成异常
 
-当失败时，不会引发警报。 它们是：
+当失败时，不会引发警报。 它们分别是：
 
 - 用户显式取消了正在运行的作业
 - 作业失败，因为另一个备份作业正在进行（在此情况下，无需采取任何措施，因为只需等待前一个作业完成即可）
@@ -77,7 +76,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 根据警报严重性，可以定义三种类型的警报：
 
 - **关键**：在原则上，任何备份或恢复失败（已计划或用户触发）都将导致生成警报，并且将显示为严重警报和破坏性操作，例如删除备份。
-- **警告**：如果备份操作成功，但有几个警告，它们将作为警告警报列出。
+- **警告**：如果备份操作成功，但有几个警告，它们将作为警告警报列出。 警告警报目前仅适用于 Azure 备份代理备份。
 - **信息**：目前，Azure 备份服务不会生成信息性警报。
 
 ## <a name="notification-for-backup-alerts"></a>备份警报的通知
@@ -89,9 +88,9 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 ![恢复服务保管库内置电子邮件通知](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
 
-配置通知后，你将收到一封欢迎电子邮件或简介电子邮件。 由此可以确认，在引发警报时，Azure 备份可向这些地址发送电子邮件。<br>
+配置通知后，你将收到欢迎或介绍性电子邮件。 由此可以确认，在引发警报时，Azure 备份可向这些地址发送电子邮件。<br>
 
-如果将频率设置为“每小时摘要”，然后引发了警报，但在一小时内解决了该警报，那么，后续的每小时摘要中不会包括该警报。
+如果将频率设置为 "每小时摘要"，并在一小时内引发并解决了警报，则不会成为即将发生的每小时摘要。
 
 > [!NOTE]
 >

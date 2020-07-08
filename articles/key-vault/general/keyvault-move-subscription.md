@@ -11,12 +11,11 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488811"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -66,9 +65,8 @@ ms.locfileid: "83121178"
 4. 选择“移动”按钮
 5. 从下拉选项中选择“移动到另一个订阅”
 6. 选择要将密钥保管库移动到其中的资源组
-7. 选择要将密钥保管库移动到其中的资源组
-8. 确认有关移动资源的警告
-9. 选择“确定”
+7. 确认有关移动资源的警告
+8. 选择“确定”
 
 ### <a name="additional-steps-post-move"></a>其他步骤（移动后）
 

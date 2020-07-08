@@ -4,16 +4,15 @@ description: 创建测试证书，并在 Azure IoT Edge 设备上安装和管理
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/02/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79539203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84308772"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -23,10 +22,10 @@ ms.locfileid: "79539203"
 
 首次安装 IoT Edge 和预配设备时，将在设备上设置临时证书，使你能够测试服务。
 这些临时证书将在 90 天后过期，重启计算机可以重置这些证书。
-准备好将设备转移到生产方案或者要创建网关方案时，需要提供自己的证书。
+一旦进入生产方案，或者想要创建网关设备，就需要提供自己的证书。
 本文演示在 IoT Edge 设备上安装证书的步骤。
 
-若要详细了解不同类型的证书及其在 IoT Edge 方案中的角色，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
+若要了解有关不同类型的证书及其角色的详细信息，请参阅[了解 Azure IoT Edge 如何使用证书](iot-edge-certs.md)。
 
 >[!NOTE]
 >整篇文章中使用的术语“根 CA”是指 IoT 解决方案证书链的最顶层颁发机构公共证书。 不需要使用联合证书颁发机构的证书根，也不需要使用组织证书颁发机构的根。 在许多情况下，它实际上是中间 CA 公共证书。
@@ -69,24 +68,24 @@ ms.locfileid: "79539203"
    * Windows： `C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-1. 将 config.yaml 文件中的 **certificate** 属性设置为 IoT Edge 设备上的证书和密钥文件的完整路径。 删除 certificate 属性前面的 `#` 字符，以取消注释四个代码行。 请确保 **certificates:** 行前面没有空格，并且嵌套项缩进了两个空格。 例如：
+1. 将 yaml 中的**证书**属性设置为 IoT Edge 设备上的证书和密钥文件的文件 URI 路径。 删除 certificate 属性前面的 `#` 字符，以取消注释四个代码行。 请确保 **certificates:** 行前面没有空格，并且嵌套项缩进了两个空格。 例如：
 
    * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
-        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
-        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
       ```
 
    * Linux：
 
       ```yaml
       certificates:
-        device_ca_cert: "<path>/device-ca.cert.pem"
-        device_ca_pk: "<path>/device-ca.key.pem"
-        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///<path>/<device CA cert>"
+        device_ca_pk: "file:///<path>/<device CA key>"
+        trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
 1. 在 Linux 设备上，确保用户 **iotedge** 对保存证书的目录拥有读取权限。

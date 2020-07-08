@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509196"
 ---
 # <a name="entities"></a>实体
 
@@ -25,6 +24,33 @@ ms.locfileid: "83758718"
 实体由其父级唯一拥有，这意味着，当父级被 `Entity.Destroy()` 销毁时，其子级和所有连接的[组件](components.md)也会被销毁。 因此，从场景中删除模型（由 `AzureSession.Actions.LoadModelAsync()` 或其 SAS 变体 `AzureSession.Actions.LoadModelFromSASAsync()` 返回）可以通过在模型的根节点上调用 `Destroy` 来实现。
 
 当服务器加载内容或用户想要将对象添加到场景中时，会创建实体。 例如，如果用户想要添加裁切平面来可视化网格内部，则用户可以创建应存在平面的实体，然后将该裁切平面组件添加到其中。
+
+## <a name="create-an-entity"></a>创建实体
+
+若要将新实体添加到场景中，例如，将其作为根对象传递以加载模型或向其附加组件，请使用以下代码：
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>查询函数
 

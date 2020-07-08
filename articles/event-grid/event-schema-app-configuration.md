@@ -1,18 +1,17 @@
 ---
 title: 作为事件网格源 Azure 应用配置
-description: 本文介绍如何使用 Azure 应用配置作为事件网格事件源。 其中提供了有关教程和操作方法文章的架构和链接。
+description: 本文介绍如何使用 Azure 应用配置作为事件网格事件源。 其中提供了架构，以及教程和操作指南文章的链接。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: adb548ef8531698a2cb075fbc742bb20a02a434b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393433"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84553156"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>将配置作为事件网格源 Azure 应用
 本文提供 Azure 应用程序配置事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程列表，以将 Azure 应用配置作为事件来源。
@@ -23,7 +22,7 @@ ms.locfileid: "81393433"
 
 Azure 应用程序配置会发出以下事件类型：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.AppConfiguration.KeyValueModified | 创建或替换键/值时引发。 |
 | Microsoft.AppConfiguration.KeyValueDeleted | 删除键/值时引发。 |
@@ -72,7 +71,7 @@ Azure 应用程序配置会发出以下事件类型：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| Property | 类型 | 描述 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
@@ -85,9 +84,9 @@ Azure 应用程序配置会发出以下事件类型：
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| key | 字符串 | 已修改或已删除的键/值的键。 |
+| key | string | 已修改或已删除的键/值的键。 |
 | label | 字符串 | 已修改或已删除的键/值的标签（如果有）。 |
 | etag | 字符串 | 对于 `KeyValueModified`，为新键/值的 etag。 对于 `KeyValueDeleted`，为已删除的键/值的 etag。 |
 

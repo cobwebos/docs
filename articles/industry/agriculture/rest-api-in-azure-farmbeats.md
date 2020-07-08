@@ -1,18 +1,17 @@
 ---
-title: 参考
+title: reference
 description: ''
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488029"
 ---
-# <a name="references"></a>参考
+# <a name="references"></a>reference
 
 本文介绍 Azure FarmBeats Api。
 
@@ -33,18 +32,18 @@ FarmBeats Api 包含 Swagger 技术文档。 有关所有 Api 及其相应的请
 
 下表汇总了 FarmBeats Datahub 中的所有对象和资源：
 
-| 对象和资源 | 说明
+| 对象和资源 | 描述
 --- | ---|
 Farm | 场对应于 FarmBeats 系统中感兴趣的物理位置。 每个场都有场名称和唯一场 ID。 |
 设备  | 设备对应于在场上存在的物理设备。 每台设备都具有唯一的设备 ID。 通常会将设备设置为具有场 ID 的场。
 DeviceModel  | DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
-传感器  | 传感器对应于记录值的物理传感器。 传感器通常连接到设备 ID 为的设备。
+传感器  | 传感器对应于记录值的物理传感器。 传感器通常连接到具有设备 ID 的设备。
 SensorModel  | SensorModel 对应于传感器的元数据，如制造商、传感器类型（模拟或数字）以及传感器测量，如环境温度和压力。
-遥测技术  | 遥测提供读取特定传感器和时间范围的遥测消息的功能。
+遥测  | 遥测提供读取特定传感器和时间范围的遥测消息的功能。
 作业  | 作业对应于在 FarmBeats 系统中执行的任何活动工作流以获取所需的输出。 每个作业都与作业 ID 和作业类型相关联。
 JobType  | JobType 对应于系统支持的不同作业类型。 包含系统定义和用户定义的作业类型。
 ExtendedType  | ExtendedType 对应于系统中的系统定义类型和用户定义类型的列表。 ExtendedType 可帮助在 FarmBeats 系统中设置新的传感器、场景或场景文件类型。
-合作伙伴  | 合作伙伴对应于 FarmBeats 的传感器和图像集成合作伙伴。
+Partner  | 合作伙伴对应于 FarmBeats 的传感器和图像集成合作伙伴。
 场景  | 场景对应于在场的上下文中生成的任何输出。 每个场景都具有与之关联的场景 ID、场景源、场景类型和场 ID。 每个场景 ID 都可以有多个与之关联的场景文件。
 SceneFile |SceneFile 对应于针对单个场景生成的所有文件。 一个场景 ID 可以有多个与之关联的 SceneFile Id。
 规则  |规则对应于与场相关的用于触发警报的数据的条件。 每个规则都在场的数据的上下文中。
@@ -54,7 +53,7 @@ RoleAssignment  |RoleAssignment 对应于将角色分配给用户或服务主体
 
 ### <a name="data-format"></a>数据格式
 
-JSON 是一种与语言无关的公共数据格式，提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON 网站](https://www.json.org/)。
+JSON 是一种与语言无关的常见数据格式，该格式提供任意数据结构的简单文本表示形式。 有关详细信息，请参阅[JSON 网站](https://www.json.org/)。
 
 ## <a name="authentication-and-authorization"></a>身份验证和授权
 
@@ -72,19 +71,19 @@ headers = {"Authorization": "Bearer " + **access_token**}
 下面是在对 Azure FarmBeats Datahub 进行 API 调用时必须指定的最常见请求标头。
 
 
-**Header** | **说明和示例**
+**标头** | **说明和示例**
 --- | ---
-Content-Type  | 请求格式（Content-type： application/<format>）。 对于 Azure FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
-授权  | 指定进行 API 调用所需的访问令牌。 授权：持有者 <访问令牌>
-Accept | 响应格式。 对于 Azure FarmBeats Datahub Api，格式为 JSON。 接受： application/json
+Content-Type  | 请求格式 (Content-Type: application/<format>)。 对于 Azure FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
+授权  | 指定进行 API 调用所需的访问令牌。 Authorization:持有者 <Access-Token>
+Accept | 响应格式。 对于 Azure FarmBeats Datahub Api，格式为 JSON。 Accept: application/json
 
 ### <a name="api-requests"></a>API 请求
 
 若要发出 REST API 请求，请将 HTTP （GET、POST、PUT 或 DELETE）方法、API 服务的 URL、要查询的资源的 URI、提交数据到、更新或删除，然后添加一个或多个 HTTP 请求标头。
 
-API 服务的 URL 是你的 Datahub URL，例如 https://\<> yourdatahub azurewebsites.net。
+API 服务的 URL 是你的 Datahub URL，例如 https:// \<yourdatahub-website-name> . azurewebsites.net。
 
-或者，您可以在 GET 调用中包含查询参数以筛选、限制的大小，并对响应中的数据进行排序。
+或者，可在 GET 调用中包含查询参数以筛选数据、限制数据的大小，并对响应中的数据进行排序。
 
 以下示例请求用于获取设备列表：
 
@@ -113,7 +112,7 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
 
  |错误代码             | 说明 |
  |---                    | --- |
- |200                    | 成功 |
+ |200                    | Success |
  |201                    | 创建（Post）成功 |
  |400                    | 错误的请求。 请求中存在错误。 |
  |401                    | 未授权。 API 的调用方无权访问该资源。 |
@@ -147,13 +146,13 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
 
 可以通过 Azure Active Directory 中的用户或应用注册来访问 Azure FarmBeats Api。 若要在 Azure Active Directory 中创建应用注册，请按照以下步骤操作：
 
-1. 中转到[Azure 门户](https://portal.azure.com)，选择 " **Azure Active Directory** > "**应用注册** > "**新注册**"。 或者，您可以使用现有帐户。
+1. 中转到[Azure 门户](https://portal.azure.com)，选择 " **Azure Active Directory**"  >  **应用注册**"  >  **新注册**"。 或者，您可以使用现有帐户。
 2. 对于新帐户，请执行以下操作：
 
     - 输入名称。
     - **仅选择此组织目录中的帐户（单租户）**。
     - 使用其余字段中的默认值。
-    - 选择“注册”  。
+    - 选择“注册”。
 
 3. 在 "新建和现有应用注册**概述**" 窗格中，执行以下操作：
 
@@ -162,9 +161,18 @@ Azure FarmBeats Datahub Api 返回标准 HTTP 错误。 最常见的错误代码
     - 返回到 "**概述**"，并选择 "**管理本地目录中的应用程序**" 旁边的链接。
     - 请参阅 "**属性**" 以捕获**对象 ID**。
 
-4. 中转到 Datahub Swagger （https://<yourdatahub>）并执行以下操作：
+4. 中转到 Datahub Swagger （ <yourdatahub> azurewebsites.net/swagger/index.html）并执行以下操作：
     - 请参阅**ROLEASSIGNMENT API**。
     - 执行 POST，为刚创建的**对象 ID**创建**RoleAssignment**对象。
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > 有关如何添加用户和 Active Directory 注册的详细信息，请参阅[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。

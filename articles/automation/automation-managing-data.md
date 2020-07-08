@@ -1,20 +1,44 @@
 ---
-title: 管理 Azure 自动化数据
-description: 本文提供 Azure 自动化中的数据管理概念，包括数据保留和备份。
+title: Azure 自动化数据安全性
+description: 本文将帮助你了解 Azure 自动化如何保护你的隐私并保护你的数据。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835200"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343048"
 ---
 # <a name="management-of-azure-automation-data"></a>管理 Azure 自动化数据
 
-本文包含有关在 Azure 自动化环境管理数据的多个主题。
+本文包含多个主题，介绍如何在 Azure 自动化环境中保护和保护数据。
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>Azure 自动化的 TLS 1.2 强制实施
+
+为了确保传输到 Azure 自动化的数据的安全性，我们强烈建议你配置传输层安全性（TLS）1.2 的使用。 下面列出了通过 HTTPS 与自动化服务进行通信的方法或客户端：
+
+* Webhook 调用
+
+* 混合 Runbook 辅助角色，包括由更新管理和更改跟踪和清单管理的计算机。
+
+* DSC 节点
+
+我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 从2020年9月开始，我们将开始强制执行加密协议的 TLS 1.2 和更高版本。
+
+除非绝对必要，否则我们不建议将代理显式设置为仅使用 TLS 1.2，因为这可能会破坏平台级安全功能，导致无法自动检测并利用推出的更新且更安全的协议，例如 TLS 1.3。
+
+有关使用适用于 Windows 和 Linux 的 Log Analytics 代理（这是混合 Runbook 辅助角色的依赖项）的 TLS 1.2 支持的信息，请参阅[Log Analytics 代理概述-TLS 1.2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)。 
+
+### <a name="platform-specific-guidance"></a>特定于平台的指南
+
+|平台/语言 | 支持 | 更多信息 |
+| --- | --- | --- |
+|Linux | Linux 分发版往往依赖于 [OpenSSL](https://www.openssl.org) 来提供 TLS 1.2 支持。  | 请检查 [OpenSSL 变更日志](https://www.openssl.org/news/changelog.html)，确认你的 OpenSSL 版本是否受支持。|
+| Windows 8.0 - 10 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)。  |
+| Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认你仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 默认情况下支持但不启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 
 ## <a name="data-retention"></a>数据保留
 
@@ -53,16 +77,16 @@ ms.locfileid: "83835200"
 
 无法使用 cmdlet 检索已加密变量或凭据密码字段的值。 如果不知道这些值，可以在 runbook 中检索它们。 若要检索变量值，请参阅 [Azure 自动化中的变量资产](shared-resources/variables.md)。 若要了解有关检索凭据值的详细信息，请参阅 [Azure 自动化中的凭据资产](shared-resources/credentials.md)。
 
- ### <a name="dsc-configurations"></a>DSC 配置
+### <a name="dsc-configurations"></a>DSC 配置
 
 可以使用 Azure 门户或 Windows PowerShell 中的 [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
 ) cmdlet 将 DSC 配置导出到脚本文件。 可以在另一个自动化帐户中导入并使用这些配置。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自动化中的异地复制
 
-异地复制在 Azure 自动化帐户中是标准的。 设置帐户时需选择主要区域。 内部自动化异地复制服务会自动将次要区域分配给帐户。 该服务随后会将帐户数据从主要区域连续备份到次要区域。 主要区域和次要区域的完整列表位于[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+异地复制在 Azure 自动化帐户中是标准的。 设置帐户时需选择主要区域。 内部自动化异地复制服务会自动将次要区域分配给帐户。 该服务随后会将帐户数据从主要区域连续备份到次要区域。 主要区域和次要区域的完整列表位于[业务连续性和灾难恢复 (BCDR)：Azure 配对区域](../best-practices-availability-paired-regions.md)。
 
-自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可以使用此备份。 如果主要区域丢失（这种情况很少见），Microsoft 将尝试恢复它。 如果公司无法恢复主要数据，则使用自动故障转移，并通过 Azure 订阅向你通知情况。 
+自动化异地复制服务创建的备份是自动化资产、配置等的完整副本。 如果主要区域发生故障并丢失数据，则可以使用此备份。 如果主要区域丢失（这种情况很少见），Microsoft 将尝试恢复它。 如果公司无法恢复主要数据，则使用自动故障转移，并通过 Azure 订阅向你通知情况。
 
 如果出现区域故障，外部客户无法直接访问自动异地复制服务。 如果要在区域故障期间维护自动化配置和 runbook：
 
@@ -77,4 +101,5 @@ ms.locfileid: "83835200"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解有关 Azure 自动化中的安全资产的详细信息，请参阅[加密 Azure 自动化中的安全资产](automation-secure-asset-encryption.md)。
-* 若要了解有关地域复制的详细信息，请参阅[创建和使用活动异地复制](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)。
+
+* 若要了解有关地域复制的详细信息，请参阅[创建和使用活动异地复制](../sql-database/sql-database-active-geo-replication.md)。

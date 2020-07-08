@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488743"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
 
@@ -24,7 +23,7 @@ ms.locfileid: "83874070"
 
 1. 使用 Azure 机器学习[将模型部署为 Web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
 
-2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md#example-entry-script)。 流分析使用该架构来理解 Web 服务的函数签名。
+2. 评分脚本应该包含由 Azure 机器学习用来生成架构规范的[示例输入和输出](../machine-learning/how-to-deploy-and-where.md#example-entry-script)。 流分析使用该架构来理解 Web 服务的函数签名。 可以使用此[示例 swagger 定义](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)作为参考，以确保已正确设置该定义。
 
 3. 确保 Web 服务接受并返回 JSON 序列化的数据。
 

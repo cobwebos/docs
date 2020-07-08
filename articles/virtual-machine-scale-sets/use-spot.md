@@ -11,7 +11,6 @@ ms.reviewer: jagaveer
 ms.custom: jagaveer
 ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
 ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/03/2020
 ms.locfileid: "84310557"

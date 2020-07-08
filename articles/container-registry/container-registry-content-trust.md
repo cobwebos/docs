@@ -1,14 +1,13 @@
 ---
 title: 管理已签名的映像
-description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。
+description: 了解如何为 Azure 容器注册表启用内容信任，以及如何推送和拉取已签名的映像。 内容信任是高级服务层的一项功能。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 72d45301e1d8a5f29eda941bd39217082f5dc6ba
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680485"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84509553"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 

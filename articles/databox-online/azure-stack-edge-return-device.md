@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743639"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339359"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>退回或替换 Azure Stack Edge 设备
 
@@ -22,6 +21,7 @@ ms.locfileid: "83743639"
 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 擦除设备上数据磁盘中的数据
 > * 打开支持票证以退回设备
 > * 打包设备并安排取件

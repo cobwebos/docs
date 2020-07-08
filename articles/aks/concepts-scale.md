@@ -2,16 +2,13 @@
 title: 概念 - 在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 description: 了解 Azure Kubernetes 服务 (AKS) 中的缩放，包括水平 Pod 自动缩放程序、群集自动缩放程序和 Azure 容器实例连接器。
 services: container-service
-author: zr-msft
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: zarhoads
-ms.openlocfilehash: c5c1180acec726d0863e11a3fe0825ffc7c48e3f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465331"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 
@@ -46,7 +43,7 @@ Kubernetes 使用水平 Pod 自动缩放程序 (HPA) 来监视资源需求并自
 
 由于水平 Pod 自动缩放程序每 30 秒检查一次指标 API，因此在进行另一次检查之前，先前的缩放事件可能尚未成功完成。 此行为可能导致水平 Pod 自动缩放程序会在上一个缩放事件能够接收应用程序工作负荷且需要对资源进行相应调整之前更改副本数。
 
-若要最大程度地减少争用事件，请设置延迟值。 此值定义了在缩放事件之后，必须等待多长时间才能触发另一个缩放事件。 此行为允许新副本计数生效，指标 API 反映分布式工作负荷。 [Kubernetes 1.12 的纵向扩展事件没有延迟](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay)，但按比例降低事件的延迟默认为5分钟。
+若要最大程度地减少争用事件，请设置延迟值。 此值定义水平 Pod 自动缩放程序在一个缩放事件之后必须等待多长时间才能触发另一个缩放事件。 此行为允许新副本计数生效，指标 API 反映分布式工作负荷。 [从 Kubernetes 1.12 开始，纵向扩展事件没有延迟](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-cooldown-delay)，但是纵向缩减事件的延迟默认为 5 分钟。
 
 目前，无法从默认值调整这些冷却时间值。
 

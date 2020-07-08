@@ -3,12 +3,12 @@ title: 提交大量任务
 description: 如何有效地将巨量的任务提交到单个 Azure Batch 作业中
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 46ab5e8879167a1808c51d4c4cd5c7071cb67cff
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84553351"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 
@@ -49,7 +49,7 @@ Batch API 提供所需的方法用于高效地将任务作为集合添加到作�
 
 * **HTTP 连接限制** - 当 Batch 客户端添加大量的任务时，并发 HTTP 连接数可能会限制该客户端的性能。 可以使用某些 API 限制 HTTP 连接数。 例如，使用 .NET API 进行开发时，[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 属性默认设置为 2。 我们建议将该值增大到接近或大于并行操作数目。
 
-## <a name="example-batch-net"></a>示例：批处理 .NET
+## <a name="example-batch-net"></a>示例：Batch .NET
 
 以下 C# 代码片段演示了在使用 Batch .NET API 添加大量任务时要配置的设置。
 

@@ -7,13 +7,12 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84462832"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>为针对 Azure 认知搜索的管理访问权限设置 RBAC 角色
 
@@ -35,8 +34,23 @@ ms.locfileid: "74112557"
 
 角色不授予对服务终结点的访问权限。 搜索服务操作（例如索引管理、索引填充和搜索数据的查询）可通过 API 密钥而非角色进行控制。 有关详细信息，请参阅[管理 API 密钥](search-security-api-keys.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="permissions-table"></a>权限表
 
-+ [使用 PowerShell 进行管理](search-manage-powershell.md) 
+下表概述了 Azure 认知搜索中允许的操作，以及哪个密钥可以解锁特定操作的访问。
+
+| 操作 | 权限 |
+|-----------|-------------------------|
+| 创建服务 | Azure 订阅持有者 |
+| 缩放服务 | 资源的管理密钥、RBAC 所有者或参与者  |
+| 删除服务 | 资源的管理密钥、RBAC 所有者或参与者 |
+| 创建、修改、删除服务中的对象： <br>索引和组件部分（包括分析器定义、计分配置文件、CORS 选项）、索引器、数据源、同义词、建议器 | 资源的管理密钥、RBAC 所有者或参与者 |
+| 查询索引 | 管理密钥或查询密钥（RBAC 不适用） |
+| 查询系统信息，例如返回统计信息、计数和对象列表 | 管理密钥，资源的 RBAC（所有者、参与者、读取者） |
+| 管理管理密钥 | 管理密钥，资源中的 RBAC 所有者或参与者 |
+| 管理查询密钥 |  管理密钥，资源中的 RBAC 所有者或参与者  |
+
+## <a name="see-also"></a>请参阅
+
++ [使用 PowerShell 管理](search-manage-powershell.md) 
 + [Azure 认知搜索中的性能和优化](search-performance-optimization.md)
 + [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。

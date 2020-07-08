@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84310379"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -115,7 +114,7 @@ Azure 专用 HSM 服务使用 SafeNet Luna Network HSM 7（型号 A790）设备�
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>问：专用 HSM 客户端软件支持哪些操作系统？
 
 * Windows、Linux、Solaris、AIX、HP-UX、FreeBSD
-* 虚拟：VMware、hyperv、Xen、KVM
+* 虚拟： VMware、Hyper-v、Xen、KVM
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>问：如何将客户端应用程序配置为使用多个 HSM 中的多个分区创建高可用性配置？
 
@@ -242,7 +241,7 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>问：如果我需要重新启动 HSM，该怎么办？
 
-HSM 具有命令行重启选项，但是，我们偶尔会遇到重新启动挂起问题，因此建议你向 Microsoft 提出支持请求，以便在物理上重新启动设备。 
+HSM 具有命令行重启选项，但是，在重新启动时，我们遇到的问题是间歇性地停止响应的，出于此原因，建议你向 Microsoft 提出支持请求，以便在物理上重新启动设备。 
 
 ## <a name="cryptography-and-standards"></a>加密和标准
 
@@ -286,7 +285,7 @@ HSM 具有命令行重启选项，但是，我们偶尔会遇到重新启动挂�
 
 在请求取消预配之前，客户必须使用 Gemalto 提供的 HSM 客户端工具将 HSM 归零。
 
-## <a name="performance-and-scale"></a>性能和缩放性
+## <a name="performance-and-scale"></a>性能和规模
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>问：专用 HSM 支持每秒多少次加密操作？
 

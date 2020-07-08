@@ -2,22 +2,19 @@
 title: 将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 description: 了解如何将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
-ms.author: zarhoads
-ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465637"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 
 [Azure NetApp 文件][anf]是在 Azure 上运行的企业级、高性能、按流量计费的文件存储服务。 本文介绍如何将 Azure NetApp 文件与 Azure Kubernetes 服务（AKS）集成。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
 > [!IMPORTANT]
@@ -148,7 +145,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-创建`pv-nfs.yaml`定义 PersistentVolume 的。 将`path`替换为*creationToken* ， `server`并将替换为上一命令中的*ipAddress* 。 例如：
+创建 `pv-nfs.yaml` 定义 PersistentVolume 的。 将替换 `path` 为*creationToken* ，并将替换为 `server` 上一命令中的*ipAddress* 。 例如：
 
 ```yaml
 ---
@@ -180,7 +177,7 @@ kubectl describe pv pv-nfs
 
 ## <a name="create-the-persistentvolumeclaim"></a>创建 PersistentVolumeClaim
 
-创建`pvc-nfs.yaml`定义 PersistentVolume 的。 例如：
+创建 `pvc-nfs.yaml` 定义 PersistentVolume 的。 例如：
 
 ```yaml
 apiVersion: v1
@@ -210,7 +207,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>使用 pod 装载
 
-创建一个`nginx-nfs.yaml`使用 PersistentVolumeClaim 的定义 pod。 例如：
+创建一个 `nginx-nfs.yaml` 使用 PersistentVolumeClaim 的定义 pod。 例如：
 
 ```yaml
 kind: Pod
@@ -246,7 +243,7 @@ kubectl apply -f nginx-nfs.yaml
 kubectl describe pod nginx-nfs
 ```
 
-使用[kubectl exec][kubectl-exec]连接到 pod，验证是否已将你的卷装入盒，然后`df -h`检查该卷是否已装入。
+使用[kubectl exec][kubectl-exec]连接到 pod，验证是否已将你的卷装入盒，然后 `df -h` 检查该卷是否已装入。
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

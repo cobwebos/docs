@@ -1,5 +1,5 @@
 ---
-title: 在合作伙伴中心获取对商业 Marketplace 门户的支持
+title: 在合作伙伴中心获取对商业 marketplace 门户的支持
 description: 了解合作伙伴中心的支持选项，包括如何提供支持请求。
 author: qianw211
 ms.author: dsindona
@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a007fe80c7c95305d65819eaa7081a8ff69e1cfc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463682"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>支持合作伙伴中心的商业市场计划
 
@@ -40,7 +39,7 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 
 5. 选择 " **[Marketplace 合作伙伴社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)**"，通过利用其他 Microsoft 发布者的知识来回答您的问题。 
 
-6. 选择**[其他帮助](https://partner.microsoft.com/support/v2/?stage=1)** 以打开**新的支持请求**票证。  
+6. 选择**[其他帮助](https://aka.ms/marketplacepublishersupport)** 以打开**新的支持请求**票证。  
 
 ## <a name="how-to-open-a-support-ticket"></a>如何开具支持票证
 
@@ -57,7 +56,7 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 
 找到所选主题后，请选择 "**查看解决方案**"。
 
-![下一步](./media/next-step.png)
+![后续步骤](./media/next-step.png)
 
 以下选项将变为可用：
 

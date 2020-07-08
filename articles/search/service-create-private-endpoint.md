@@ -8,16 +8,17 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466164"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>创建用于与 Azure 认知搜索建立安全连接的专用终结点
 
 本文介绍如何使用 Azure 门户创建无法通过 internet 访问的新 Azure 认知搜索服务实例。 接下来，你将配置同一虚拟网络中的 Azure 虚拟机，并使用它通过专用终结点访问搜索服务。
+
+专用终结点由[Azure 专用链接](../private-link/private-link-overview.md)作为单独的服务提供。 有关成本的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/private-link/)。
 
 > [!Important]
 > 可以使用 Azure 门户或[管理 REST API 版本 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/)来配置 Azure 认知搜索的专用终结点支持。 当服务终结点为私有时，某些门户功能处于禁用状态。 你将能够查看和管理服务级别信息，但出于安全考虑，出于安全原因，对索引数据和服务中的各种组件（如索引、索引器和技能组合定义）的门户访问是受限的。
@@ -38,13 +39,13 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 从 "Azure 门户主页" 选项卡中，选择 "**创建资源**" "网络" "  >  **Networking**  >  **虚拟网络**"。
 
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+1. 在“创建虚拟网络”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅|
     | 资源组 | 选择 "**新建**"，输入*myResourceGroup*，然后选择 **"确定"** |
-    | 名称 | 输入*MyVirtualNetwork* |
+    | “属性” | 输入*MyVirtualNetwork* |
     | 区域 | 选择所需的区域 |
     |||
 
@@ -58,13 +59,13 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在**新的搜索服务-基础知识**中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
+    | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。|
     | **实例详细信息** |  |
-    | 代码 | 输入唯一名称。 |
+    | URL | 输入唯一名称。 |
     | 位置 | 选择所需的区域。 |
     | 定价层 | 选择 "**更改定价层**"，并选择所需的服务层。 （不支持**免费**级别。 必须为**Basic**或更高版本。） |
     |||
@@ -77,28 +78,28 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在 "**新建搜索服务**" 中，选择 "在**私有终结点**下**添加 +** "。 
 
-1. 在“创建专用终结点”  中，输入或选择以下信息：
+1. 在“创建专用终结点”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。|
+    | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。|
     | 位置 | 选择“美国西部”****。|
-    | 名称 | 输入  *myPrivateEndpoint*。  |
+    | “属性” | 输入  *myPrivateEndpoint*。  |
     | 目标子资源 | 保留默认**searchService**。 |
     | **网络** |  |
     | 虚拟网络  | 从资源组“myResourceGroup”** 中选择“MyVirtualNetwork” **。 |
     | 子网 | 选择“mySubnet”。 ** |
     | **专用 DNS 集成** |  |
-    | 与专用 DNS 区域集成  | 保留默认值“是”  。 |
+    | 与专用 DNS 区域集成  | 保留默认值“是”。 |
     | 专用 DNS 区域  | 保留默认值 * * （New） privatelink.search.windows.net * *。 |
     |||
 
-1. 选择“确定”  。 
+1. 选择“确定”。 
 
-1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。 
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
 
-1. 看到“验证通过”消息时，选择“创建”   。 
+1. 看到“验证通过”消息时，选择“创建” 。 
 
 1. 完成新服务的预配后，浏览到刚刚创建的资源。
 
@@ -110,19 +111,19 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "计算" "  >  **Compute**  >  **虚拟机**"。
 
-1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
+1. 在“创建虚拟机 - 基本信息”**** 中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。  已在上一部分创建此内容。  |
+    | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
     | 区域 | 选择 "**美国西部**" 或任何所使用的区域。 |
-    | 可用性选项 | 保留默认值“不需要基础结构冗余”  。 |
-    | 映像 | 选择“Windows Server 2019 Datacenter”。  |
-    | 大小 | 保留默认值“标准 DS1 v2”  。 |
+    | 可用性选项 | 保留默认值“不需要基础结构冗余”****。 |
+    | 映像 | 选择“Windows Server 2019 Datacenter”。**** |
+    | 大小 | 保留默认值“标准 DS1 v2”****。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
     | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
@@ -131,28 +132,28 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
     | 公共入站端口 | 保留默认**允许所选端口**。 |
     | 选择入站端口 | 保留默认**RDP （3389）**。 |
     | **节省资金** |  |
-    | 已有 Windows 许可证？ | 保留默认值“否”  。 |
+    | 已有 Windows 许可证？ | 保留默认值“否”****。 |
     |||
 
 1. 在完成时选择“下一步:**磁盘”** 。
 
-1. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:  **网络”** 。
+1. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:**** **网络”** 。
 
-1. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
+1. 在“创建虚拟机 - 基本信息”**** 中，选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 虚拟网络 | 保留默认值“MyVirtualNetwork”  。  |
-    | 地址空间 | 保留默认值“10.1.0.0/24”。 |
-    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。 |
-    | 公共 IP | 保留默认值“(new) myVm-ip”  。 |
-    | 公共入站端口 | 选择“允许所选端口”  。 |
-    | 选择入站端口 | 选择“HTTP”和“RDP”。  |
+    | 虚拟网络 | 保留默认值“MyVirtualNetwork”****。  |
+    | 地址空间 | 保留默认值“10.1.0.0/24”。****|
+    | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。****|
+    | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
+    | 公共入站端口 | 选择“允许所选端口”****。 |
+    | 选择入站端口 | 选择“HTTP”和“RDP”。**** ****|
     ||
 
-1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。
 
-1. 看到“验证通过”消息时，选择“创建”   。 
+1. 看到“验证通过”消息时，选择“创建” 。 
 
 
 ## <a name="connect-to-the-vm"></a>连接到 VM
@@ -161,22 +162,22 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。  选择“连接”按钮后，“连接到虚拟机”随即打开   。
+1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
 
-1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
 1. 打开下载的 .rdp* 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据**** ****。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
@@ -212,7 +213,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 ## <a name="clean-up-resources"></a>清理资源 
 使用完专用终结点、搜索服务和 VM 后，请删除资源组及其包含的所有资源：
 1.  *myResourceGroup*   在门户顶部的**搜索**框中输入 "myResourceGroup"，然后 *myResourceGroup*   从搜索结果中选择 "myResourceGroup"。 
-1. 选择“删除资源组”  。 
+1. 选择“删除资源组”。 
 1. 输入 *myResourceGroup*   作为 **"资源组名称"** ，然后选择 "**删除**"。
 
 ## <a name="next-steps"></a>后续步骤

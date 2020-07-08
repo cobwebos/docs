@@ -5,18 +5,17 @@ description: 了解如何以最佳方式对数据集进行版本控制，以及�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
-ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: e0b2d7abb378a6717eb4444882ede54debdb5968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84555630"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>在试验中对数据集进行版本控制和跟踪
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +51,7 @@ ms.locfileid: "80476856"
 
 ### <a name="register-a-dataset-version"></a>注册数据集版本
 
-下面的代码通过将 `titanic_ds` 参数设置为 `create_new_version` 来注册 `True` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
+下面的代码通过将 `create_new_version` 参数设置为 `True` 来注册 `titanic_ds` 数据集的新版本。 如果没有向工作区注册现有 `titanic_ds` 数据集，则代码会创建一个名为 `titanic_ds` 的新数据集，并将其版本设置为 1。
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -63,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
-默认情况下，[ 类中的 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)get_by_name()`Dataset` 方法返回已注册到工作区的数据集的最新版本。 
+默认情况下，`Dataset` 类中的 [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) 方法返回已注册到工作区的数据集的最新版本。 
 
 下面的代码获取 `titanic_ds` 数据集的版本 1。
 
@@ -169,9 +168,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-还可以使用 `input_datasets` 从试验中查找 https://ml.azure.com/ 。 
+还可以使用 https://ml.azure.com/ 从试验中查找 `input_datasets`。 
 
-下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”  窗格，并打开试验  **的特定运行的“属性”** `keras-mnist`选项卡。
+下图展示了在 Azure 机器学习工作室中从何处查找试验的输入数据集。 对于此示例，请转到“试验”窗格，并打开试验 `keras-mnist` 的特定运行的“属性”选项卡。
 
 ![输入数据集](./media/how-to-version-track-datasets/input-datasets.png)
 

@@ -5,15 +5,14 @@ author: normesta
 ms.service: storage
 ms.date: 02/14/2019
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6c5f2a041f03d53e1ea7c3f981683f4b70d3963b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465994"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 
@@ -57,13 +56,13 @@ ms.locfileid: "82232370"
 
     !["连接和复制" 页面](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. 在 "访问存储帐户和上传数据" 对话框中，复制 " **Blob 服务终结点**" 和 "**存储帐户密钥**"。 从 blob 服务终结点中，省略`https://`和尾随斜杠。
+2. 在 "访问存储帐户和上传数据" 对话框中，复制 " **Blob 服务终结点**" 和 "**存储帐户密钥**"。 从 blob 服务终结点中，省略 `https://` 和尾随斜杠。
 
-    在这种情况下，终结点`https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`为：。 要使用的 URI 的主机部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`。 有关示例，请参阅如何[通过 Http 连接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
+    在这种情况下，终结点为： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` 。 要使用的 URI 的主机部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` 。 有关示例，请参阅如何[通过 Http 连接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
 
      !["访问存储帐户和上传数据" 对话框](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. 将终结点和 Data Box 或 Data Box Heavy 节点 IP 地址添加到`/etc/hosts`每个节点上。
+3. 将终结点和 Data Box 或 Data Box Heavy 节点 IP 地址添加到 `/etc/hosts` 每个节点上。
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -71,9 +70,9 @@ ms.locfileid: "82232370"
 
     如果对 DNS 使用其他某种机制，应确保可以解析 Data Box 终结点。
 
-4. 将 shell 变量`azjars`设置为`hadoop-azure`和`azure-storage` jar 文件的位置。 可以在 Hadoop 安装目录下找到这些文件。
+4. 将 shell 变量设置 `azjars` 为 `hadoop-azure` 和 jar 文件的位置 `azure-storage` 。 可以在 Hadoop 安装目录下找到这些文件。
 
-    若要确定这些文件是否存在，请使用以下命令`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`：。 将`<hadoop_install_dir>`占位符替换为已安装 Hadoop 的目录的路径。 请确保使用完全限定的路径。
+    若要确定这些文件是否存在，请使用以下命令： `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` 。 将 `<hadoop_install_dir>` 占位符替换为已安装 Hadoop 的目录的路径。 请确保使用完全限定的路径。
 
     示例：
 
@@ -88,13 +87,13 @@ ms.locfileid: "82232370"
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * 将`<blob_service_endpoint>`占位符替换为你的 blob 服务终结点的名称。
+    * 将 `<blob_service_endpoint>` 占位符替换为你的 blob 服务终结点的名称。
 
-    * 将`<account_key>`占位符替换为帐户的访问密钥。
+    * 将 `<account_key>` 占位符替换为帐户的访问密钥。
 
-    * 将`<container-name>`占位符替换为你的容器的名称。
+    * 将 `<container-name>` 占位符替换为你的容器的名称。
 
-    * 将`<destination_directory>`占位符替换为要将数据复制到的目录的名称。
+    * 将占位符替换为 `<destination_directory>` 要将数据复制到的目录的名称。
 
 6. 运行 list 命令以确保已创建容器和目录。
 
@@ -105,11 +104,11 @@ ms.locfileid: "82232370"
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * 将`<blob_service_endpoint>`占位符替换为你的 blob 服务终结点的名称。
+   * 将 `<blob_service_endpoint>` 占位符替换为你的 blob 服务终结点的名称。
 
-   * 将`<account_key>`占位符替换为帐户的访问密钥。
+   * 将 `<account_key>` 占位符替换为帐户的访问密钥。
 
-   * 将`<container-name>`占位符替换为你的容器的名称。
+   * 将 `<container-name>` 占位符替换为你的容器的名称。
 
 7. 将数据从 Hadoop HDFS 复制到你之前创建的容器中 Data Box Blob 存储。 如果找不到要复制到的目录，则该命令会自动创建它。
 
@@ -123,21 +122,21 @@ ms.locfileid: "82232370"
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * 将`<blob_service_endpoint>`占位符替换为你的 blob 服务终结点的名称。
+    * 将 `<blob_service_endpoint>` 占位符替换为你的 blob 服务终结点的名称。
 
-    * 将`<account_key>`占位符替换为帐户的访问密钥。
+    * 将 `<account_key>` 占位符替换为帐户的访问密钥。
 
-    * 将`<container-name>`占位符替换为你的容器的名称。
+    * 将 `<container-name>` 占位符替换为你的容器的名称。
 
-    * 将`<exlusion_filelist_file>`占位符替换为包含文件排除列表的文件的名称。
+    * 将 `<exlusion_filelist_file>` 占位符替换为包含文件排除列表的文件的名称。
 
-    * 将`<source_directory>`占位符替换为包含要复制的数据的目录的名称。
+    * 将 `<source_directory>` 占位符替换为包含要复制的数据的目录的名称。
 
-    * 将`<destination_directory>`占位符替换为要将数据复制到的目录的名称。
+    * 将占位符替换为 `<destination_directory>` 要将数据复制到的目录的名称。
 
-    `-libjars`选项用于使`hadoop-azure*.jar`和依赖`azure-storage*.jar`文件可供使用`distcp`。 对于某些群集，可能已发生此情况。
+    `-libjars`选项用于使 `hadoop-azure*.jar` 和依赖 `azure-storage*.jar` 文件可供使用 `distcp` 。 对于某些群集，可能已发生此情况。
 
-    下面的示例演示如何使用`distcp`命令来复制数据。
+    下面的示例演示如何 `distcp` 使用命令来复制数据。
 
     ```
      hadoop distcp \
@@ -151,9 +150,9 @@ ms.locfileid: "82232370"
   
     提高复制速度：
 
-    * 尝试更改映射器数。 （上面的示例使用`m` = 4 映射器。）
+    * 尝试更改映射器数。 （上面的示例使用 `m` = 4 映射器。）
 
-    * 尝试并行运行`distcp`多个。
+    * 尝试并行运行多个 `distcp` 。
 
     * 请记住，大型文件的性能比小文件更好。
 
@@ -206,7 +205,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 ### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>生成标识列表，并将其映射到 Azure Active Directory （添加）标识
 
-1. 下载`copy-acls.py`脚本。 请参阅本文中的[下载帮助器脚本并设置边缘节点以运行它们](#download-helper-scripts)。
+1. 下载 `copy-acls.py` 脚本。 请参阅本文中的[下载帮助器脚本并设置边缘节点以运行它们](#download-helper-scripts)。
 
 2. 运行此命令以生成唯一标识的列表。
 
@@ -215,11 +214,11 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   此脚本将生成一个名`id_map.json`为的文件，其中包含需要映射到基于添加的标识的标识。
+   此脚本将生成一个名为 `id_map.json` 的文件，其中包含需要映射到基于添加的标识的标识。
 
 3. 在文本编辑器中打开 `id_map.json` 文件。
 
-4. 对于文件中显示的每个 JSON 对象，使用适当`target`的映射标识更新 AAD 用户主体名称（UPN）或 OBJECTID （OID）的属性。 完成后，保存该文件。 下一步需要用到此文件。
+4. 对于文件中显示的每个 JSON 对象， `target` 使用适当的映射标识更新 AAD 用户主体名称（UPN）或 ObjectId （OID）的属性。 完成后，保存该文件。 下一步需要用到此文件。
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>将权限应用于复制的文件和应用标识映射
 
@@ -231,15 +230,15 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 * 将 `<storage-account-name>` 占位符替换为存储帐户的名称。
 
-* 将`<container-name>`占位符替换为你的容器的名称。
+* 将 `<container-name>` 占位符替换为你的容器的名称。
 
-* 将`<application-id>`和`<client-secret>`占位符替换为你在创建服务主体时收集的应用程序 ID 和客户端机密。
+* 将 `<application-id>` 和占位符替换为你在 `<client-secret>` 创建服务主体时收集的应用程序 ID 和客户端机密。
 
 ## <a name="appendix-split-data-across-multiple-data-box-devices"></a>附录：跨多个 Data Box 设备拆分数据
 
 将数据移到 Data Box 设备之前，需要下载一些帮助程序脚本，确保将数据组织到 Data Box 设备上，并排除所有不必要的文件。
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>下载帮助程序脚本并设置边缘节点以运行它们
 
@@ -281,7 +280,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 如果数据未超出单一 Data Box 设备的大小，则可以转到下一节。
 
-1. 使用提升的权限，按照`generate-file-list`上一部分中的指导运行下载的脚本。
+1. 使用提升的权限，按照 `generate-file-list` 上一部分中的指导运行下载的脚本。
 
    下面是对命令参数的说明：
 
@@ -332,4 +331,4 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Data Lake Storage Gen2 如何与 HDInsight 群集配合使用。 请参阅[将 Azure Data Lake Storage Gen2 与 Azure HDInsight 群集配合使用](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+了解 Data Lake Storage Gen2 如何与 HDInsight 群集配合使用。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。

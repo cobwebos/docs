@@ -11,23 +11,22 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84483789"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题
 
 本“常见问题解答”文章解答有关 Azure 多重身份验证和使用多重身份验证服务的常见问题。 其中的问题已划分为常规服务问题、计费模式问题、用户体验问题和故障排除问题。
 
 > [!IMPORTANT]
-> 从2019年7月1日起，Microsoft 将不再为新部署提供 MFA 服务器。 想要从其用户请求多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在7月1日前激活 MFA 服务器的现有客户将能够下载最新版本、将来更新和生成激活凭据。
+> 从 2019 年 7 月 1 日开始，Microsoft 将不再为新部署提供 MFA 服务器。 希望用户执行多重身份验证的新客户应使用基于云的 Azure 多重身份验证。 在 7 月 1 日之前激活了 MFA 服务器的现有客户可以像平时一样下载最新版本、将来的更新以及生成激活凭据。
 >
 > 以下与 Azure 多重身份验证服务器相关的信息仅适用于已运行 MFA 服务器的用户。
 >
-> 从 2018 年 9 月 1 日起，新客户不再可以使用基于消耗量的许可。
+> 自 2018 年 9 月 1 日起，新客户无法再使用基于消费的许可。
 > 2018年9月1日生效，可能无法再创建新的身份验证提供程序。 可以继续使用和更新现有的身份验证提供程序。 多重身份验证将继续成为 Azure AD Premium 许可证中的可用功能。
 
 ## <a name="general"></a>常规
@@ -70,7 +69,7 @@ ms.locfileid: "81271397"
 * *759731*
 * *673801*
 
-不保证基于短信或基于语音的多重身份验证提示传递相同的数字。 在我们的用户感兴趣的情况下，我们可以随时添加或删除短代码，因为我们将进行路线调整以改善 SMS 传送。 除美国和加拿大以外的国家或地区，我们不支持短代码。
+不保证基于短信或基于语音的多重身份验证提示传递相同的数字。 为了用户的利益，我们在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外的国家或地区，我们不支持短代码。
 
 ## <a name="billing"></a>计费
 
@@ -163,7 +162,7 @@ ms.locfileid: "81271397"
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>如果用户无法登录到非浏览器应用，该怎么办？
 
-如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-mfasettings.md#app-passwords)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
+如果组织仍然使用传统客户端，并且[允许使用应用密码](howto-mfa-app-passwords.md)，则用户无法使用其用户名和密码登录到这些传统客户端。 他们需要[设置应用密码](../user-help/multi-factor-authentication-end-user-app-passwords.md)。 用户必须清除（删除）其登录信息、重新启动应用，并使用其用户名和*应用密码*而不是普通的密码登录。
 
 如果你的组织没有旧客户端，则不应允许用户创建应用密码。
 
@@ -240,7 +239,7 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 要求用户完成以下过程以从 Microsoft Authenticator 中删除帐户，并再次添加：
 
 1. 中转到[Azure 门户配置文件](https://account.activedirectory.windowsazure.com/profile/)，并使用组织帐户进行登录。
-2. 选择“其他安全性验证”****。
+2. 选择 "**其他安全性验证**"。
 3. 从 Microsoft Authenticator 应用中删除现有帐户。
 4. 单击 "**配置**"，然后按照说明重新配置 Microsoft Authenticator。
 
@@ -257,4 +256,4 @@ Windows Server 2012 R2 中的安全性更改改变了 Azure 多重身份验证�
 * 在 [Microsoft 支持知识库](https://support.microsoft.com)中搜索常见技术问题的解决方法。
 * 搜索和浏览来自社区的技术问题与解答，或在[Azure Active Directory Q&](https://docs.microsoft.com/answers/topics/azure-active-directory.html)提出自己的问题。
 * 通过[Azure 多重身份验证服务器支持](https://support.microsoft.com/oas/default.aspx?prid=14947)联系 Microsoft professional。 与我们联系时，尽可能包含有关问题的更多信息将很有帮助。 可提供的信息包括看到错误的页面、特定错误代码、特定会话 ID 和看到错误的用户的 ID。
-* 如果你是旧版 PhoneFactor 客户，并且你有疑问或需要重置密码方面的帮助，请[phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com)使用电子邮件地址来打开支持案例。
+* 如果你是旧版 PhoneFactor 客户，并且你有疑问或需要重置密码方面的帮助，请使用 [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) 电子邮件地址来打开支持案例。

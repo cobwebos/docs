@@ -3,12 +3,11 @@ title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板在 PowerShell 中自动创建和管理资源、警报和可用性测试。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485423"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -382,7 +381,7 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
 
 `priceCode` 定义为：
 
-|价格代码|计划|
+|价格代码|plan|
 |---|---|
 |1|每 GB（旧称为“基本计划”）|
 |2|每节点（旧称为“企业计划”）|
@@ -473,5 +472,4 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 * [设置警报](powershell-alerts.md)
 * [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
-* [从 GitHub 部署到 Azure](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

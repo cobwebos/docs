@@ -4,16 +4,15 @@ description: 使用 "查询加速（预览版）" 检索存储帐户中的数据
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: d7213bb44503fbe191a69683188bdea6976827ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465858"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>使用 Azure Data Lake Storage 查询加速来筛选数据（预览）
 
@@ -24,7 +23,7 @@ ms.locfileid: "82930074"
 > [!NOTE]
 > 查询加速功能处于公共预览阶段，在加拿大中部和法国中部区域提供。 若要查看限制，请参阅[已知问题](data-lake-storage-known-issues.md)一文。 若要注册预览版，请参阅[此窗体](https://aka.ms/adls/qa-preview-signup)。  
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -53,11 +52,11 @@ ms.locfileid: "82930074"
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. 下载查询加速包。 你可以使用以下链接获取包含这些包的压缩 .zip 文件： [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net)。 
+1. 下载查询加速包。 你可以使用以下链接获取包含这些包的压缩 .zip 文件： [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) 。 
 
 2. 将此文件的内容提取到您的项目目录。
 
-3. 在文本编辑器中打开项目文件（*.csproj*），并在\<项目\>元素内添加这些包引用。
+3. 在文本编辑器中打开项目文件（*.csproj*），并在元素内添加这些包引用 \<Project\> 。
 
    ```xml
    <ItemGroup>
@@ -67,7 +66,7 @@ ms.locfileid: "82930074"
    </ItemGroup>
    ```
 
-4. 还原预览版 SDK 包。 此示例命令通过使用`dotnet restore`命令来还原预览版 SDK 包。 
+4. 还原预览版 SDK 包。 此示例命令通过使用命令来还原预览版 SDK 包 `dotnet restore` 。 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
@@ -81,16 +80,16 @@ ms.locfileid: "82930074"
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. 在项目的根目录中创建目录。 根目录是包含**pom**文件的目录。
+1. 在项目的根目录中创建目录。 根目录是包含**pom.xml**文件的目录。
 
    > [!NOTE]
    > 本文中的示例假定目录的名称为**lib**。
 
-2. 下载查询加速包。 你可以使用以下链接获取包含这些包的压缩 .zip 文件： [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java)。 
+2. 下载查询加速包。 你可以使用以下链接获取包含这些包的压缩 .zip 文件： [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) 。 
 
 3. 将此 .zip 文件中的文件提取到你创建的目录中。 在本示例中，该目录的名称为**lib**。 
 
-4. 在文本编辑器中打开 pom.xml 文件  。 将以下依赖项元素添加到依赖项组。 
+4. 在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -145,7 +144,7 @@ ms.locfileid: "82930074"
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-将这些`using`语句添加到代码文件的顶部。
+将这些 `using` 语句添加到代码文件的顶部。
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -155,14 +154,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析库添加 using 语句。 本文中显示的示例使用 NuGet 上提供的[CsvHelper](https://www.nuget.org/packages/CsvHelper/)库分析 CSV 文件。 因此，我们会将这些`using`语句添加到代码文件的顶部。
+查询加速检索 CSV 和 Json 格式的数据。 因此，请确保为选择使用的任何 CSV 或 Json 分析库添加 using 语句。 本文中显示的示例使用 NuGet 上提供的[CsvHelper](https://www.nuget.org/packages/CsvHelper/)库分析 CSV 文件。 因此，我们会将这些 `using` 语句添加到代码文件的顶部。
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-若要编译本文中介绍的示例，还需要添加这些`using`语句。
+若要编译本文中介绍的示例，还需要添加这些 `using` 语句。
 
 ```csharp
 using System.Threading.Tasks;
@@ -174,7 +173,7 @@ using System.Linq;
 
 ### <a name="java"></a>[Java](#tab/java)
 
-将这些`import`语句添加到代码文件的顶部。
+将这些 `import` 语句添加到代码文件的顶部。
 
 ```java
 import com.azure.storage.blob.*;
@@ -190,15 +189,15 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>使用筛选器检索数据
 
-您可以使用 SQL 来指定查询加速请求中的行筛选器谓词和列投影。 下面的代码查询存储中的 CSV 文件，并返回其中第三列与该值`Hemingway, Ernest`匹配的所有数据行。 
+您可以使用 SQL 来指定查询加速请求中的行筛选器谓词和列投影。 下面的代码查询存储中的 CSV 文件，并返回其中第三列与该值匹配的所有数据行 `Hemingway, Ernest` 。 
 
-- 在 SQL 查询中，关键字`BlobStorage`用于表示正在查询的文件。
+- 在 SQL 查询中，关键字 `BlobStorage` 用于表示正在查询的文件。
 
-- 列引用被指定为`_N`第一列的位置`_1`。 如果源文件包含标题行，则可以按标题行中指定的名称来引用列。 
+- 列引用被指定为 `_N` 第一列的位置 `_1` 。 如果源文件包含标题行，则可以按标题行中指定的名称来引用列。 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async 方法`BlobQuickQueryClient.QueryAsync`将查询发送到查询加速 API，然后将结果作为[流](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)对象传输回应用程序。
+Async 方法 `BlobQuickQueryClient.QueryAsync` 将查询发送到查询加速 API，然后将结果作为[流](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8)对象传输回应用程序。
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +259,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-方法`BlobQuickQueryClient.openInputStream()`将查询发送到查询加速 API，然后将结果作为`InputStream`对象流式传输到应用程序，该对象可像其他任何 InputStream 对象一样读取。
+方法将 `BlobQuickQueryClient.openInputStream()` 查询发送到查询加速 API，然后将结果作为对象流式传输到应用程序， `InputStream` 该对象可像其他任何 InputStream 对象一样读取。
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -316,7 +315,7 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 您可以将结果的范围限定为列的子集。 这样一来，只需检索执行给定计算所需的列。 这可以提高应用程序性能并降低成本，因为通过网络传输的数据较少。 
 
-此代码仅检索数据`PublicationYear`集中所有书籍的列。 它还使用源文件中的标题行中的信息来引用查询中的列。
+此代码仅检索 `PublicationYear` 数据集中所有书籍的列。 它还使用源文件中的标题行中的信息来引用查询中的列。
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)

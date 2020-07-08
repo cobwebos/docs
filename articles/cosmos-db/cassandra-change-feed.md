@@ -4,23 +4,59 @@ description: 了解如何使用 Azure Cosmos DB API for Cassandra 中的更改�
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431606"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Azure Cosmos DB API for Cassandra 中的更改源
 
 Azure Cosmos DB API for Cassandra 中的[更改源](change-feed.md)支持通过 Cassandra 查询语言 (CQL) 中的查询谓词提供。 使用这些谓词条件可以查询更改源 API。 应用程序可以使用 CQL 中必需的主键（也称为分区键）来获取对表所做的更改。 然后，可以根据结果采取进一步的措施。 对表中的行所做的更改将按照其修改时间顺序捕获，而排序顺序是按分区键提供保证的。
 
-以下示例演示如何使用 .NET 获取 Cassandra API 密钥空间表中所有行上的更改源。 直接在 CQL 中使用谓词 COSMOS_CHANGEFEED_START_TIME()，以从指定的开始时间（在本例中为当前日期时间）查询更改源中的项。 可[在此处下载适用于 c #](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)的完整示例，并在[此处](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)下载 Java。
+以下示例演示如何使用 .NET 获取 Cassandra API 密钥空间表中所有行上的更改源。 直接在 CQL 中使用谓词 COSMOS_CHANGEFEED_START_TIME()，以从指定的开始时间（在本例中为当前日期时间）查询更改源中的项。 可以在[此处](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)（对于 C#）和[此处](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)（对于 Java）下载完整示例。
 
 在每个迭代中，查询将使用分页状态从上次读取更改的时间点恢复。 可以看到，新的更改不断地流式传输到密钥空间中的表。 我们将会看到对已插入或更新的行所做的更改。 目前不支持使用 Cassandra API 中的更改源来监视删除操作。
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+        Session cassandraSession = utils.getSession();
+
+        try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+               
+             byte[] token=null; 
+             System.out.println(query); 
+             while(true)
+             {
+                 SimpleStatement st=new  SimpleStatement(query);
+                 st.setFetchSize(100);
+                 if(token!=null)
+                     st.setPagingStateUnsafe(token);
+                 
+                 ResultSet result=cassandraSession.execute(st) ;
+                 token=result.getExecutionInfo().getPagingState().toBytes();
+                 
+                 for(Row row:result)
+                 {
+                     System.out.println(row.getString("user_name"));
+                 }
+             }
+                    
+
+        } finally {
+            utils.close();
+            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+        }
+
+```
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -70,43 +106,6 @@ Azure Cosmos DB API for Cassandra 中的[更改源](change-feed.md)支持通过 
             Console.WriteLine("Exception " + e);
         }
     }
-
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```java
-        Session cassandraSession = utils.getSession();
-
-        try {
-              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
-               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
-                    + dtf.format(now)+ "'";
-               
-             byte[] token=null; 
-             System.out.println(query); 
-             while(true)
-             {
-                 SimpleStatement st=new  SimpleStatement(query);
-                 st.setFetchSize(100);
-                 if(token!=null)
-                     st.setPagingStateUnsafe(token);
-                 
-                 ResultSet result=cassandraSession.execute(st) ;
-                 token=result.getExecutionInfo().getPagingState().toBytes();
-                 
-                 for(Row row:result)
-                 {
-                     System.out.println(row.getString("user_name"));
-                 }
-             }
-                    
-
-        } finally {
-            utils.close();
-            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
-        }
 
 ```
 ---

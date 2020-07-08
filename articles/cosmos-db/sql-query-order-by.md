@@ -4,18 +4,17 @@ description: 了解 Azure Cosmos DB 的 SQL ORDER BY 子句。 将 SQL 用作 Az
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84484327"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
 
-Optional `ORDER BY`子句指定查询返回的结果的排序顺序。
+可选的 `ORDER BY` 子句指定查询返回的结果的排序顺序。
 
 ## <a name="syntax"></a>语法
   
@@ -29,11 +28,11 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   指定查询结合集要进行排序的属性或表达式。 可将排序列指定为名称或属性别名。  
+   指定对查询结果集进行排序时要依据的属性或表达式。 可将排序列指定为名称或属性别名。  
   
-   可以指定多个属性。 属性名称必须唯一。 `ORDER BY`子句中排序属性的顺序定义了排序结果集的组织。 即：结果集按第一个属性排序，然后该排序列表按第二个属性排序，依此类推。  
+   可以指定多个属性。 属性名称必须唯一。 `ORDER BY` 子句中排序属性的顺序定义了排序的结果集的组织方式。 也就是说，结果集首先按第一个属性排序，然后该有序列表按第二个属性排序，依此类推。  
   
-   `ORDER BY`子句中引用的属性名称必须与 select 列表中的属性或在`FROM`子句中指定的集合中定义的属性相对应。  
+   `ORDER BY` 子句中引用的属性名称必须与所选列表中的某个属性或者与 `FROM` 子句中指定的集合中定义的某个属性相对应，且不存在任何多义性。  
   
 - `<sort_expression>`  
   
@@ -41,18 +40,18 @@ ORDER BY <sort_specification>
   
 - `<scalar_expression>`  
   
-   请参阅[标量表达式](sql-query-scalar-expressions.md)部分，了解详细信息。  
+   有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)部分。  
   
 - `ASC | DESC`  
   
-   指定按升序或降序排列指定列中的值。 `ASC`从最低值到最高值排序。 `DESC`从最高值到最低值排序。 `ASC`是默认的排序顺序。 Null 值被视为最低的可能值。  
+   指定应当按升序或降序对指定列中的值进行排序。 `ASC` 将按照从最低值到最高值的顺序排序。 `DESC` 将按照从最高值到最低值的顺序排序。 `ASC` 是默认排序顺序。 Null 值被视为最低的可能值。  
   
 ## <a name="remarks"></a>备注  
   
-   `ORDER BY`子句要求索引策略包含要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称排序，而不支持根据计算的属性排序。 Azure Cosmos DB 支持多`ORDER BY`个属性。 若要运行包含多个 ORDER BY 属性的查询，应在所要排序的字段中定义[组合索引](index-policy.md#composite-indexes)。
+   `ORDER BY` 子句要求索引策略包含所要排序的字段的索引。 Azure Cosmos DB 查询运行时支持根据属性名称排序，而不支持根据计算的属性排序。 Azure Cosmos DB 支持多个 `ORDER BY` 属性。 若要运行包含多个 ORDER BY 属性的查询，应在所要排序的字段中定义[组合索引](index-policy.md#composite-indexes)。
 
 > [!Note]
-> 如果要排序的属性对于某些文档而言可能是未定义的，并且您想要在 ORDER BY 查询中检索这些属性，则必须在索引中显式包含此路径。 默认索引策略不允许检索未定义排序属性的文档。 [查看包含某些缺失字段的文档的示例查询](#documents-with-missing-fields)。
+> 如果要排序的属性对于某些文档而言可能未定义，并且你希望在 ORDER BY 查询中检索这些属性，则必须在索引中显式包含此路径。 默认索引策略不允许检索未定义排序属性的文档。 [查看针对缺少一些字段的文档的示例查询](#documents-with-missing-fields)。
 
 ## <a name="examples"></a>示例
 
@@ -79,7 +78,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。**
+以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -112,11 +111,11 @@ ORDER BY <sort_specification>
 
 此查询按城市名称的升序检索家庭 `id`。 如果多个项包含同一个城市名称，该查询将按 `creationDate` 的降序排序。
 
-## <a name="documents-with-missing-fields"></a>缺失字段的文档
+## <a name="documents-with-missing-fields"></a>缺少字段的文档
 
-针对具有`ORDER BY`默认索引策略的容器运行的查询不会返回未定义 sort 属性的文档。 如果要包括未定义 sort 属性的文档，则应在索引策略中显式包含此属性。
+针对采用默认索引策略的容器运行包含 `ORDER BY` 的查询不会返回未定义排序属性的文档。 若要包含未定义排序属性的文档，应在索引策略中显式包含此属性。
 
-例如，下面是一个容器，其中包含除了之外`"/*"`的任何路径的索引策略：
+例如，以下容器的索引策略未显式包含除 `"/*"` 以外的其他任何路径：
 
 ```json
 {
@@ -131,9 +130,9 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果运行包含`lastName`在`Order By`子句中的查询，则结果将只包括定义了`lastName`属性的文档。 我们尚未定义显式包含的`lastName`路径，因此，任何没有的`lastName`文档都不会出现在查询结果中。
+如果运行一个在 `Order By` 子句中包含 `lastName` 的查询，则结果只包括定义了 `lastName` 属性的文档。 我们尚未为 `lastName` 定义显式包含路径，因此查询结果中不会显示任何没有 `lastName` 的文档。
 
-下面的查询按`lastName`两个文档排序，其中一个文档没有`lastName`定义：
+以下查询按 `lastName` 对两个文档进行排序，对于其中的一个文档，尚未定义 `lastName`：
 
 ```sql
     SELECT f.id, f.lastName
@@ -141,7 +140,7 @@ ORDER BY <sort_specification>
     ORDER BY f.lastName
 ```
 
-结果仅包括定义`lastName`了的文档：
+结果仅包括定义了 `lastName` 的文档：
 
 ```json
     [
@@ -152,9 +151,9 @@ ORDER BY <sort_specification>
     ]
 ```
 
-如果我们将容器的索引策略更新为显式包含的路径`lastName`，则在查询结果中将包含带有未定义的排序属性的文档。 必须显式定义路径，使其导致此标量值（而不是超出它的值）。 你应在索引`?`策略的路径定义中使用字符，以确保显式索引属性`lastName` ，但不会在它的外部附加嵌套路径。 如果`Order By`查询使用[复合索引](index-policy.md#composite-indexes)，则结果将始终在查询结果中包含带有未定义的排序属性的文档。
+如果我们将该容器的索引策略更新为显式包含 `lastName` 的路径，则查询结果中会包括具有未定义排序属性的文档。 必须显式定义路径才能生成此标量值（而不是生成其他值）。 应在索引策略的路径定义中使用 `?` 字符，确保为 `lastName` 属性显式编制索引，且不会包含除此之外的其他嵌套路径。 如果 `Order By` 查询使用[组合索引](index-policy.md#composite-indexes)，则查询结果中始终包括具有未定义排序属性的文档。
 
-下面是一个示例索引策略，该策略允许你将包含未定义`lastName`的文档显示在查询结果中：
+使用以下示例索引策略可以在查询结果中显示具有未定义的 `lastName` 的文档：
 
 ```json
 {
@@ -172,7 +171,7 @@ ORDER BY <sort_specification>
 }
 ```
 
-如果再次运行相同的查询，则在查询结果中`lastName`首先会出现丢失的文档：
+如果再次运行同一查询，则缺少 `lastName` 的文档会显示在查询结果中的最前面：
 
 ```sql
     SELECT f.id, f.lastName
@@ -194,7 +193,7 @@ ORDER BY <sort_specification>
 ]
 ```
 
-如果将排序顺序更改为`DESC`，则在查询结果中`lastName`最后出现的文档将显示为最后：
+如果将排序顺序修改为 `DESC`，则缺少 `lastName` 的文档会显示在查询结果中的最后面：
 
 ```sql
     SELECT f.id, f.lastName
@@ -215,6 +214,11 @@ ORDER BY <sort_specification>
     }
 ]
 ```
+
+> [!Note]
+> 仅 .NET SDK 3.4.0 或更高版本支持混合类型的 ORDER BY。 因此，如果要按未定义值和已定义值的组合进行排序，则应使用此版本（或更高版本）。
+
+你无法控制不同类型在结果中的显示顺序。 在上面的示例中，我们演示了如何在字符串值之前对未定义值进行排序。 例如，如果想更好地控制未定义值的排序顺序，则可为任何未定义属性分配字符串值“aaaaaaaaa”或“zzzzzzzz”，以确保它们是第一个或最后一个。
 
 ## <a name="next-steps"></a>后续步骤
 

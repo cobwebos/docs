@@ -4,15 +4,14 @@ description: 了解如何使用 Azure 内容交付网络（CDN）缓存 Azure �
 author: normesta
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465212"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>将静态网站与 Azure CDN 集成
 
@@ -41,7 +40,7 @@ ms.locfileid: "80878795"
    若要查找静态网站终结点，请导航到存储帐户的“静态网站”设置。****  复制主终结点，并将其粘贴到 CDN 配置中。
 
    > [!IMPORTANT]
-   > 请确保删除 URL 中的协议标识符（*如*HTTPS）和尾随斜杠。 例如，如果静态网站终结点为`https://mystorageaccount.z5.web.core.windows.net/`，则需在 " `mystorageaccount.z5.web.core.windows.net` **源主机名**" 字段中指定。
+   > 请确保删除 URL 中的协议标识符（*如*HTTPS）和尾随斜杠。 例如，如果静态网站终结点为 `https://mystorageaccount.z5.web.core.windows.net/` ，则需 `mystorageaccount.z5.web.core.windows.net` 在 "**源主机名**" 字段中指定。
 
    下图显示了一个终结点配置示例：
 
@@ -53,7 +52,7 @@ ms.locfileid: "80878795"
 
     ![显示 CDN 终结点概览的屏幕截图](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. 预配 CDN 终结点后，导航到 CDN 终结点将显示之前上传到静态网站的索引 .html 文件的内容。
+1. 预配 CDN 终结点后，导航到 CDN 终结点会显示你之前上传到静态网站的 index.html 文件的内容。
 
 1. 若要查看 CDN 终结点的源设置，请导航到 CDN 终结点的“设置”部分下的“源”。******** 此时会看到“源类型”字段设置为“自定义源”，“源主机名”字段显示静态网站终结点。**********
 
@@ -67,7 +66,7 @@ ms.locfileid: "80878795"
 * 通过 Azure 门户禁用或删除 CDN 终结点。
 * 将托管服务修改为不再响应此对象的请求。
 
-已在 Azure CDN 中缓存的对象将保持缓存状态，直到该对象的生存时间到期，或直至[清除](../../cdn/cdn-purge-endpoint.md)终结点为止。 当生存时间到期时，Azure CDN 会确定 CDN 终结点是否仍有效，以及是否仍可对该对象进行匿名访问。 如果不能，则不再缓存该对象。
+已在 Azure CDN 中缓存的对象保持缓存状态，直至对象的生存时间到期，或直至[清除](../../cdn/cdn-purge-endpoint.md)终结点为止。 当生存时间到期时，Azure CDN 会确定 CDN 终结点是否仍有效，以及是否仍可对该对象进行匿名访问。 如果不能，则不再缓存该对象。
 
 ## <a name="next-steps"></a>后续步骤
 

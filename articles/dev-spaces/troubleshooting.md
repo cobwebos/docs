@@ -5,12 +5,11 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872016"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84309639"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -27,6 +26,14 @@ ms.locfileid: "83872016"
 在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过在终端窗口中运行 `echo $TMPDIR` 来找到 TEMP 目录。 在 Linux 计算机上，TEMP 目录通常为 `/tmp`。 此外，还请验证是否已在 [Azure CLI 配置文件](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中启用了日志记录。
 
 Azure Dev Spaces 在调试单个实例或 Pod 时也能发挥最佳效果。 `azds.yaml` 文件包含 replicaCount 设置，它指明了 Kubernetes 针对服务运行的 Pod 数。 如果你通过更改 replicaCount 将应用程序配置为针对给定服务运行多个 Pod，调试程序会附加到按字母顺序列出的第一个 Pod。 如果回收原始 Pod，调试程序会附加到其他 pod，这可能会导致意外行为发生。
+
+## <a name="common-issues-when-using-local-process-with-kubernetes"></a>将本地进程用于 Kubernetes 时的常见问题
+
+### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>无法还原群集上的部署的原始配置
+
+将本地过程与 Kubernetes 一起使用时，如果使用 Kubernetes 客户端的本地进程崩溃或突然终止，则使用 Kubernetes 的本地进程的服务可能无法还原到其原始状态。
+
+若要解决此问题，请将服务重新部署到群集。
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>启用 Azure Dev Spaces 时遇到的常见问题
 
@@ -97,7 +104,7 @@ azure-cli                         2.0.60 *
 
 当 Azure Dev Spaces 无法连接到 AKS 群集的 API 服务器时，你可能会看到此错误。
 
-如果对你的 AKS 群集 API 服务器的访问被锁定，或者你为 AKS 群集启用了 [API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，以[允许基于你的区域的其他范围](https://github.com/Azure/dev-spaces/tree/master/public-ips)。
+如果已锁定对 AKS 群集 API 服务器的访问，或者如果已为 AKS 群集启用了[API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，则还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，以[允许基于你的区域的其他范围](configure-networking.md#aks-cluster-network-requirements)
 
 通过运行 kubectl 命令来确保 API 服务器是可用的。 如果 API 服务器不可用，请联系 AKS 支持部门，然后在 API 服务器正常运行时重试。
 
@@ -150,7 +157,7 @@ Container image build failed
 
 若要修复此问题，请重启群集中的代理节点。
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>错误“release azds-\<identifier\>-\<spacename\>-\<servicename\> 失败:服务 '\<servicename\>' 已存在”或“拒绝对 \<servicename\> 的拉取访问、存储库不存在或可能要求‘Docker 登录’”
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>错误 "release azds- \<identifier\> - \<spacename\> - \<servicename\> failed：服务" \<servicename\> "已存在" 或 "拒绝请求 \<servicename\> ，存储库不存在，或者可能需要 ' docker login"
 
 如果在同一开发空间内混合运行直接 Helm 命令（如 `helm install`、`helm upgrade` 或 `helm delete`）和 Dev Spaces 命令（如 `azds up` 和 `azds down`），可能会看到这些错误。 出现这种情况是因为，Dev Spaces 有它自己的 Tiller 实例，这与在同一开发空间中运行的你自己的 Tiller 实例冲突。
 
@@ -259,7 +266,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>连接开发计算机时，网络流量不转发到 AKS 群集
 
-在使用 [Azure Dev Spaces 将 AKS 群集连接到开发计算机](how-to/connect.md)时，可能会遇到下面这样的问题：网络流量没有在开发计算机与 AKS 群集之间进行转发。
+在使用 [Azure Dev Spaces 将 AKS 群集连接到开发计算机](how-to/local-process-kubernetes-vs-code.md)时，可能会遇到下面这样的问题：网络流量没有在开发计算机与 AKS 群集之间进行转发。
 
 将开发计算机连接到 AKS 群集时，Azure Dev Spaces 通过修改开发计算机的 `hosts` 文件，在 AKS 群集与开发计算机之间转发网络流量。 Azure Dev Spaces 在 `hosts` 中创建一个条目，其中包含要替换的 Kubernetes 服务的地址作为主机名。 此条目与端口转发结合使用，以在开发计算机与 AKS 群集之间定向网络流量。 如果开发计算机上的服务与要替换的 Kubernetes 服务的端口发生冲突，Azure Dev Spaces 就无法转发 Kubernetes 服务的网络流量。 例如，Windows BranchCache 服务通常绑定到 0.0.0.0:80，这会导致所有本地 IP 上的端口 80 发生冲突。
 
@@ -272,9 +279,9 @@ Service cannot be started.
 * （可选）可以通过将“启动类型”设置为“已禁用”来禁用它。
 * 单击“确定”。
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>错误“找不到处于已分配状态的 pod:azds/azds-webhook-deployment-\<id\> 的 AzureAssignedIdentity”
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>错误 "找不到 pod 的 AzureAssignedIdentity： azds/azds- \<id\> 已分配的状态"
 
-在安装了[托管标识](../aks/use-managed-identity.md)和 [Pod 托管标识](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)的 AKS 群集上使用 Azure Dev Spaces 运行服务时，进程可能会在“图表安装”步骤后挂起。 如果在 azds 命名空间中检查 azds-injector-webhook，可能会看到此错误。
+在安装了[托管标识](../aks/use-managed-identity.md)和[pod 托管标识](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)的 AKS 群集上运行带有 Azure Dev Spaces 的服务时，该进程可能会在*图表安装*步骤后停止响应。 如果在 azds 命名空间中检查 azds-injector-webhook，可能会看到此错误。
 
 Azure Dev Spaces 在群集上运行的服务利用群集的托管标识与群集外的 Azure Dev Spaces 后端服务进行通信。 在 Pod 托管标识安装后，会在群集的节点上配置网络规则，以将托管标识凭据的所有调用重定向到[群集上安装的节点托管标识 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 对调用 Pod 进行标识，并确保 Pod 已被正确标记来访问请求获取的托管标识。 Azure Dev Spaces 无法检测群集是否安装了 Pod 托管标识，也无法执行必要的配置来允许 Azure Dev Spaces 服务访问群集的托管标识。 由于 Azure Dev Spaces 服务尚未配置为访问群集的托管标识，因此 NMI DaemonSet 将不允许它们获取托管标识的 AAD 令牌，并且无法与 Azure Dev Spaces 后端服务进行通信。
 
@@ -434,7 +441,7 @@ spec:
 
 如果没有安装或正确配置 `azds.exe`，可能会出现此错误。
 
-解决此问题：
+若要解决此问题：
 
 1. 检查位置 %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI 中是否有 `azds.exe`。 如果它在那里，将该位置添加到 PATH 环境变量。
 2. 如果没有安装 `azds.exe`，请运行以下命令：
@@ -510,7 +517,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 可以将 `--enable-ingress` 开关指定为 `azds prep` 命令，或选中 Visual Studio 内的 `Publicly Accessible` 复选框，从而配置服务的公共 URL 终结点。 当你在 Dev Spaces 中运行服务时，公共 DNS 名称自动注册。 如果此 DNS 名称未注册，你在连接到公共 URL 时，在 Web 浏览器中看到“无法显示网页”或“无法访问网站”错误消息。
 
-解决此问题：
+若要解决此问题：
 
 * 检查与 Dev Spaces 服务关联的所有 URL 的状态：
 
@@ -532,7 +539,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 * 容器仍在生成和部署过程中。 如果先运行 `azds up` 或启动调试器，然后在成功部署容器之前尝试访问容器，则会出现此问题。
 * 端口配置在 _Dockerfile_、Helm 图表以及任何用于打开端口的服务器代码中不一致。
 
-解决此问题：
+若要解决此问题：
 
 1. 如果容器正在生成/部署过程中，则可等待 2-3 秒，然后尝试再次访问服务。 
 1. 检查以下资产中的端口配置：
@@ -589,9 +596,10 @@ kubectl -n my-namespace delete pod --all
 | cloudflare.docker.com | HTTPS:443 | 用于拉取 linux alpine 和其他 Azure Dev Spaces 映像 |
 | gcr.io | HTTP:443 | 用于拉取 helm/tiller 映像|
 | storage.googleapis.com | HTTP:443 | 用于拉取 helm/tiller 映像|
-| azds-<guid>.<location>.azds.io | HTTPS:443 | 用于与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在 %USERPROFILE%\.azds\settings.json 的“dataplaneFqdn”中找到确切的 FQDN|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>错误“在订阅 \<subscriptionId\> 中找不到群集 \<cluster\>”
+更新防火墙或安全配置，以允许与上述所有 Fqdn 和[Azure Dev Spaces 基础结构服务](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)的网络流量。
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>错误 "找不到 \<cluster\> 订阅中的群集 \<subscriptionId\> "
 
 如果 kubeconfig 文件定目标到的群集或订阅与你尝试与 Azure Dev Spaces 客户端工具配合使用的群集或订阅不同，你可能会看到此错误。 Azure Dev Spaces 客户端工具复制 kubectl 的行为，即使用[一个或多个 kubeconfig 文件](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)选择群集并与群集通信。
 

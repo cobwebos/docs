@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 410f9702184c4ac58fb905b6f2eeebaea3e3c881
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 1012ce417fb4952878dada29a9080c70954ed21f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570325"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339631"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-azure-stack-edge"></a>使用 Azure 门户管理 Azure Azure Stack 边缘上的用户
 

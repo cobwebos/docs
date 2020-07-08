@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84307922"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>生成并部署 OPC 保管库证书管理服务
 
@@ -22,7 +21,7 @@ ms.locfileid: "81686943"
 > [!NOTE]
 > 有关详细信息，请参阅 GitHub [OPC 保管库](https://github.com/Azure/azure-iiot-opc-vault-service)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="install-required-software"></a>安装必需软件
 
@@ -51,11 +50,11 @@ cd azure-iiot-opc-vault-service
 使用 PowerShell 脚本可以轻松地部署 OPC 保管库微服务和应用程序。
 
 1. 在存储库根上打开 PowerShell 窗口。 
-3. 请参阅部署文件夹`cd deploy`。
-3. 选择一个名称`myResourceGroup` ，导致与其他已部署网页发生冲突的可能性不大。 请参阅本文后面的 "网站名称已被使用" 部分。
-5. 使用`.\deploy.ps1`进行交互式安装来启动部署，或输入完整的命令行：  
+3. 请参阅部署文件夹 `cd deploy` 。
+3. 选择一个名称 `myResourceGroup` ，导致与其他已部署网页发生冲突的可能性不大。 请参阅本文后面的 "网站名称已被使用" 部分。
+5. 使用 `.\deploy.ps1` 进行交互式安装来启动部署，或输入完整的命令行：  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. 如果计划使用此部署进行开发，请添加`-development 1`以启用 Swagger UI，并部署调试版本。
+7. 如果计划使用此部署进行开发，请添加 `-development 1` 以启用 SWAGGER UI，并部署调试版本。
 6. 按照脚本中的说明登录到你的订阅，并提供其他信息。
 9. 成功完成生成和部署操作后，应会看到以下消息：
    ```
@@ -76,26 +75,26 @@ cd azure-iiot-opc-vault-service
    > 如果出现问题，请参阅本文后面的 "部署失败疑难解答" 一节。
 
 8. 打开你最喜欢的浏览器，然后打开应用程序页：`https://myResourceGroup.azurewebsites.net`
-8. 在部署后，为 web 应用和 OPC 保管库微服务几分钟的时间。 第一次使用时，web 主页可能会挂起，直到获取第一个响应。
+8. 在部署后，为 web 应用和 OPC 保管库微服务几分钟的时间。 在您获取第一个响应之前，web 主页可能会在首次使用时停止响应。
 11. 若要查看 Swagger API，请打开：`https://myResourceGroup-service.azurewebsites.net`
-13. 若要使用 dotnet 启动本地 GDS 服务器，请`.\myResourceGroup-gds.cmd`启动。 对于 Docker，请`.\myResourceGroup-dockergds.cmd`启动。
+13. 若要使用 dotnet 启动本地 GDS 服务器，请启动 `.\myResourceGroup-gds.cmd` 。 对于 Docker，请启动 `.\myResourceGroup-dockergds.cmd` 。
 
 可以使用完全相同的设置重新部署生成。 请注意，此类操作将续订所有应用程序机密，并可能会重置 Azure Active Directory （Azure AD）应用程序注册中的某些设置。
 
-还可以仅重新部署 web 应用二进制文件。 对于参数`-onlyBuild 1`，会将服务和应用程序的新的 zip 包部署到 web 应用程序。
+还可以仅重新部署 web 应用二进制文件。 对于参数 `-onlyBuild 1` ，会将服务和应用程序的新的 zip 包部署到 web 应用程序。
 
 成功部署后，可以开始使用服务。 请参阅[管理 OPC 保管库证书管理服务](howto-opc-vault-manage.md)。
 
 ## <a name="delete-the-services-from-the-subscription"></a>从订阅中删除服务
 
-以下是操作方法：
+下面介绍如何操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 中转到部署了该服务的资源组。
-3. 选择“删除资源组”并进行确认。****
+3. 选择“删除资源组”并进行确认。
 4. 一小段时间后，所有已部署的服务组件都将被删除。
-5. 请参阅**Azure Active Directory** > **应用注册**。
-6. 对于每个已部署的资源组，应该列出三个注册。 注册具有以下名称： `resourcegroup-client`、 `resourcegroup-module`、。 `resourcegroup-service` 分别删除每个注册。
+5. 转到“Azure Active Directory” > “应用注册”。 
+6. 对于每个已部署的资源组，应该列出三个注册。 注册具有以下名称： `resourcegroup-client` 、 `resourcegroup-module` 、 `resourcegroup-service` 。 分别删除每个注册。
 
 现在会删除所有已部署的组件。
 
@@ -107,7 +106,7 @@ cd azure-iiot-opc-vault-service
 
 ### <a name="website-name-already-in-use"></a>网站名称已被使用
 
-网站的名称可能已在使用中。 需要使用不同的资源组名称。 部署脚本使用的主机名为： https：\//resourcegroupname.azurewebsites.net 和 https：\//resourgroupname-service.azurewebsites.net。
+网站的名称可能已在使用中。 需要使用不同的资源组名称。 部署脚本使用的主机名为： https： \/ /resourcegroupname.azurewebsites.net 和 https： \/ /resourgroupname-service.azurewebsites.net。
 其他服务名称由短名称哈希的组合生成，并且不太可能与其他服务冲突。
 
 ### <a name="azure-ad-registration"></a>Azure AD 注册 
@@ -161,7 +160,7 @@ cd azure-iiot-opc-vault-service
 -development 0|1
 ```
 
-这是为了进行开发而部署。 使用 "调试" "生成"，并将 "ASP.NET" 环境设置为 "开发"。 在`.publishsettings` Visual Studio 2017 中创建用于导入，以允许它直接部署应用和服务。 此参数也是可选的。
+这是为了进行开发而部署。 使用 "调试" "生成"，并将 "ASP.NET" 环境设置为 "开发"。 `.publishsettings`在 Visual Studio 2017 中创建用于导入，以允许它直接部署应用和服务。 此参数也是可选的。
 
 ```
 -onlyBuild 0|1

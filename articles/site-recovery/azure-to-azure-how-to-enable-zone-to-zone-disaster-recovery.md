@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488930"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>启用区域以对 Azure 虚拟机进行灾难恢复
 
@@ -20,7 +19,7 @@ ms.locfileid: "82891502"
 
 >[!NOTE]
 >
->- Site Recovery 当前不支持区域到区域灾难恢复的恢复计划。 
+>- Site Recovery 当前不支持通过门户对区域到灾难恢复进行区域恢复计划。 请使用 PowerShell 或 REST API 来利用针对区域进行灾难恢复的恢复计划。 
 >- 对区域到区域灾难恢复的支持当前限制为两个区域：东南亚和英国南部。  
 
 Site Recovery 服务通过在计划内和计划外的停机期间保持业务应用程序的运行，来为业务连续性和灾难恢复策略提供贡献。 建议使用灾难恢复选项，使应用程序在发生区域性服务中断时能够正常运行。
@@ -65,7 +64,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 在将区域部署到 Vm 的区域灾难恢复之前，请务必确保 VM 上启用的其他功能可与区域进行互操作，以便进行灾难恢复。
 
-|Feature  | 支持声明  |
+|功能  | 支持声明  |
 |---------|---------|
 |经典 VM   |     不支持    |
 |ARM Vm    |    支持    |
@@ -88,7 +87,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 1. 在“Azure 门户”菜单中，选择“虚拟机”，或在任何页面上搜索并选择“虚拟机”。 选择要复制的 VM。 对于区域到灾难恢复的区域，此 VM 必须已在可用性区域中。
 
-2. 在 "操作" 中，选择 "灾难恢复"。
+2. 在“操作”中，选择“灾难恢复” 。
 
 3. 如下所示，在 "基本信息" 选项卡中，选择 "是" 作为 "可用性区域之间的灾难恢复"
 
@@ -104,7 +103,7 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 
 7. 单击 "下一步：审核 + 开始复制"，然后单击 "开始复制"。
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 **1. 区域到灾难恢复的区域的定价如何？**
 区域到区域灾难恢复的定价与 Azure 到 Azure 灾难恢复的定价相同。 可在[此处](https://azure.microsoft.com/pricing/details/site-recovery/)和[此处](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)找到有关定价页面的更多详细信息。 请注意，要在区域灾难恢复中看到的出口费用将低于区域进行灾难恢复。
@@ -113,10 +112,13 @@ Site Recovery 服务通过在计划内和计划外的停机期间保持业务应
 RTO SLA 与 Site Recovery 整体相同。 我们承诺最多2小时的 RTO。 没有针对 RPO 定义的 SLA。
 
 **3. 是否可在辅助区域中保证容量？**
-Site Recovery 团队和 Azure 容量管理团队规划了足够的基础结构容量。 启动故障转移时，团队还有助于确保受 Site Recovery 保护的 VM 实例将部署到目标区域。
+Site Recovery 团队和 Azure 容量管理团队计划了足够的基础结构容量。 启动故障转移时，团队还有助于确保受 Site Recovery 保护的 VM 实例将部署到目标区域。
 
 **4. 支持哪些操作系统？**
 区域到区域的灾难恢复支持与 Azure 到 Azure 灾难恢复相同的操作系统。 请参阅[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)的支持矩阵。
+
+**5. 源和目标资源组是否可以相同？**
+否，必须故障转移到不同的资源组。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,16 +4,15 @@ description: 使用 FUSE 在 Linux 上装载 Azure Blob 存储容器
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061432"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465467"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
@@ -52,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-同样，将 URL 更改为`.../ubuntu/16.04/...`或`.../ubuntu/18.04/...`以引用其他 Ubuntu 版本。
+同样，将 URL 更改为 `.../ubuntu/16.04/...` 或 `.../ubuntu/18.04/...` 以引用其他 Ubuntu 版本。
 
 ### <a name="install-blobfuse"></a>安装 Blobfuse
 

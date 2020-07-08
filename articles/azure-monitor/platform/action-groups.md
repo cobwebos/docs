@@ -3,15 +3,14 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465246"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -118,7 +117,7 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-mo
     > 此脚本必须由 [Azure AD 应用程序管理员角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成员执行。
     
     - 修改 PowerShell 脚本的 Connect-AzureAD 调用以使用 Azure AD 租户 ID。
-    - 修改 PowerShell 脚本的变量 $myAzureADApplicationObjectId 以使用 Azure AD 应用程序的对象 ID
+    - 将 PowerShell 脚本的变量 $myAzureADApplicationObjectId 修改为使用 Azure AD 应用程序的对象 ID。
     - 运行修改后的脚本。
     
 1. 配置操作组安全 Webhook 操作。
@@ -217,7 +216,12 @@ Write-Host $myApp.AppRoles
 受支持国家/地区的定价在 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)中列出。
 
 ### <a name="webhook"></a>Webhook
-将使用以下规则重试 Webhook。 当返回以下 HTTP 状态代码时，最多可以重试 2 次 Webhook 调用：最多可以重试 2 次 Webhook 调用。 首次重试在 10 秒后发生。 第二次重试在 100 秒后发生。 两次失败后，没有操作组会在 30 分钟内调用终结点。 
+使用以下规则处理 webhook
+- 最多尝试三次 webhook 调用。
+- 如果在超时期限内未收到响应，或者返回以下 HTTP 状态代码之一，将重试此调用：408、429、503或504。
+- 第一次调用将为响应等待10秒。
+- 第二次和第三次尝试将为响应等待30秒。
+- 3次尝试调用 webhook 失败后，任何操作组都不会调用该终结点15分钟。
 
 源 IP 地址范围
  - 13.72.19.232
@@ -245,7 +249,7 @@ Write-Host $myApp.AppRoles
 ## <a name="next-steps"></a>后续步骤
 * 详细了解[短信警报行为](../../azure-monitor/platform/alerts-sms-behavior.md)。  
 * 获取[对活动日志警报 webhook 架构的了解](../../azure-monitor/platform/activity-log-alerts-webhook.md)。  
-* 了解有关 [ITSM 连接器](../../azure-monitor/platform/itsmc-overview.md)的详细信息
+* 详细了解[ITSM 连接器](../../azure-monitor/platform/itsmc-overview.md)。
 * 详细了解有关警报的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
 * 获取[活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置每次发布服务运行状况通知时的警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。

@@ -3,20 +3,22 @@ title: Azure 自动化“在空闲时间启动/停止 VM”的概述
 description: 本文介绍“在空闲时间启动/停止 VM”功能，该功能按计划启动或停止 VM 并主动通过 Azure Monitor 日志监视这些 VM。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424068"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>“在空闲时间启动/停止 VM”概述
 
-“在空闲时间启动/停止 VM”功能可启动或停止已启用的 Azure VM。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。 
+在空闲时间启动/停止 VM 功能启动或停止启用的 Azure Vm。 它根据用户定义的计划启动或停止计算机、通过 Azure Monitor 日志提供见解，并通过使用[操作组](../azure-monitor/platform/action-groups.md)发送可选的电子邮件。 在大多数情况下，可同时在 Azure 资源管理器和经典 VM 上启用此功能。 
 
-此功能使用 [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) cmdlet 来启动 VM。 它使用 [Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) 来停止 VM。
+此功能使用[new-azvm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) cmdlet 来启动 vm。 它使用[new-azvm](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)停止 vm。
+
+> [!NOTE]
+> 当 runbook 已更新为使用新的 Azure Az module cmdlet 时，它们使用 AzureRM 前缀别名。
 
 > [!NOTE]
 > “在空闲时间启动/停止 VM”已进行了更新，可支持可用的最新版本的 Azure 模块。 此功能更新后的版本（Azure 市场提供）不支持 AzureRM 模块，因为我们已从 AzureRM 迁移到 Az 模块。
@@ -73,7 +75,7 @@ ms.locfileid: "83743706"
 
 可以使用新的自动化帐户和 Log Analytics 工作区为“在空闲时间启动/停止 VM”功能启用 VM。 在这种情况下，需要具有上一部分中定义的权限以及本部分中定义的权限。 还需要以下角色：
 
-- 订阅的共同管理员。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
+- 订阅上的共同管理员。 如果要管理经典 VM，则需要此角色才能创建“经典运行方式帐户”。 默认情况下，不再创建[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。
 - [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 应用程序开发人员角色中的成员身份。 有关配置运行方式帐户的详细信息，请参阅[用于配置运行方式帐户的权限](manage-runas-account.md#permissions)。
 - 订阅的参与者或以下权限。
 
@@ -90,7 +92,7 @@ ms.locfileid: "83743706"
 
 ## <a name="components"></a>组件
 
-“在空闲时间启动/停止 VM”功能包括预配置的 runbook、计划以及与 Azure Monitor 日志的集成。 可以使用这些元素，按业务需求精确设置 VM 的启动和关闭。
+在空闲时间启动/停止 VM 功能包括预配置的 runbook、计划以及与 Azure Monitor 日志的集成。 可以使用这些元素，按业务需求精确设置 VM 的启动和关闭。
 
 ### <a name="runbooks"></a>Runbook
 
@@ -104,7 +106,7 @@ ms.locfileid: "83743706"
 |Runbook | 参数 | 说明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 Auto-Stop 方案按每个资源创建警报。|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList` 是以逗号分隔的 VM 列表。 例如，`vm1, vm2, vm3` 。<br> `WhatIf` 可实现对 runbook 逻辑进行验证但不执行。|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> `VMList`以逗号分隔的 Vm 列表（不含空格），例如 `vm1,vm2,vm3` 。<br> `WhatIf` 可实现对 runbook 逻辑进行验证但不执行。|
 |AutoStop_Disable | 无 | 禁用 Auto-Stop 警报和默认计划。|
 |AutoStop_VM_Child | WebHookData | 从父 runbook 调用。 警报规则调用此 runbook 以停止经典 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |从父 runbook 调用。 警报规则调用此 runbook 以停止 VM。  |
@@ -112,7 +114,7 @@ ms.locfileid: "83743706"
 |ScheduledStartStop_Child | VMName <br> 操作：启动或停止 <br> ResourceGroupName | 从父 runbook 调用。 针对计划的停止执行启动或停止操作。|
 |ScheduledStartStop_Child_Classic | VMName<br> 操作：启动或停止<br> ResourceGroupName | 从父 runbook 调用。 根据经典 VM 的停止计划执行启动或停止操作。 |
 |ScheduledStartStop_Parent | 操作：启动或停止 <br>VMList <br> WhatIf：是或否 | 启动或停止订阅中的所有 VM。 编辑变量 `External_Start_ResourceGroupNames` 和 `External_Stop_ResourceGroupNames`，以实现仅在这些目标资源组上执行操作。 还可以通过更新 `External_ExcludeVMNames` 变量排除特定 VM。|
-|SequencedStartStop_Parent | 操作：启动或停止 <br> WhatIf：是或否<br>VMList| 在要确定启动/停止活动序列的每个 VM 上，创建名为 sequencestart 和 sequencestop 的标记 。 这些标记名称区分大小写。 标记的值应为一个正整数（1、2、3），对应于启动或停止的顺序。 <br>**注意**：VM 必须位于 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 变量中定义的资源组中。 它们必须具有相应的标记才能使操作生效。|
+|SequencedStartStop_Parent | 操作：启动或停止 <br> WhatIf：是或否<br>VMList| 在要确定启动/停止活动序列的每个 VM 上，创建名为 sequencestart 和 sequencestop 的标记 。 这些标记名称区分大小写。 标记的值应为正整数的列表，例如， `1,2,3` 对应于你想要启动或停止的顺序。 <br>**注意**：VM 必须位于 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 变量中定义的资源组中。 它们必须具有相应的标记才能使操作生效。|
 
 ### <a name="variables"></a>变量
 
@@ -132,7 +134,7 @@ ms.locfileid: "83743706"
 |External_AutoStop_TimeAggregationOperator | 应用到所选窗口大小以计算条件的时间聚合运算符。 可接受的值为 `Average`、`Minimum`、`Maximum`、`Total` 和 `Last`。|
 |External_AutoStop_TimeWindow | Azure 将分析用于触发警报的选定指标的窗口大小。 此参数接受 timespan 格式的输入。 可能的值为 5 分钟到 6 小时。|
 |External_EnableClassicVMs| 其值用于指定此功能是否以经典 VM 为目标。 默认值为 True。 对于 Azure 云解决方案提供商 (CSP) 订阅，将此变量设置为 False。 经典 VM 需要一个[经典运行方式帐户](automation-create-standalone-account.md#create-a-classic-run-as-account)。|
-|External_ExcludeVMNames | 要排除的 VM 名称的列表，以逗号分隔，限于 140 个 VM。 如果向此列表添加超过 140 个 VM，则设置为要排除的 VM 可能会无意中启动或停止。|
+|External_ExcludeVMNames | 要排除的 VM 名称的列表，以逗号分隔，限于 140 个 VM。 如果将超过140个 Vm 添加到列表中，则为排除指定的 Vm 可能会在无意中启动或停止。|
 |External_Start_ResourceGroupNames | 一个或多个以启动操作为目标的资源组的以逗号分隔的列表。|
 |External_Stop_ResourceGroupNames | 一个或多个以停止操作为目标的资源组的以逗号分隔的列表。|
 |External_WaitTimeForVMRetrySeconds |要在 SequencedStartStop_Parent runbook 的 VM 上执行的操作的等待时间（以秒为单位）。 此变量允许 runbook 在继续执行下一步操作之前，等待子操作运行，等待时间为指定的秒数。 最长等待时间是 10800 秒，即三个小时。 默认值为 2100 秒。|
@@ -170,7 +172,7 @@ ms.locfileid: "83743706"
 如果每个云服务有超过 20 个 VM，请参考以下建议：
 
 * 使用父 runbook ScheduledStartStop_Parent 创建多个计划，并为每个计划指定 20 个 VM。 
-* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表。 
+* 在计划属性中，使用 `VMList` 参数将 VM 名称指定为以逗号分隔的列表（无空格）。 
 
 否则，如果此功能的自动化作业运行超过三个小时，将根据[公平份额](automation-runbook-execution.md#fair-share)限制暂时将其卸载或停止。
 

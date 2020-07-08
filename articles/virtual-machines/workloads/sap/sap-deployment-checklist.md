@@ -15,12 +15,11 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84556664"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -63,7 +62,7 @@ ms.locfileid: "80060061"
         - 根据 RTO 和 RPO，定义高可用性和灾难恢复体系结构的外观。
         - 若要在区域中实现高可用性，请检查所需的 DBMS 在 Azure 中提供的功能。 大多数 DBMS 包提供同步热备用的同步方法，我们建议将其用于生产系统。 还要查看不同数据库的 SAP 相关文档，从[Azure 虚拟机 DBMS 部署适用于 sap 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)和相关文档的注意事项开始。
            不支持将 Windows Server 故障转移群集与 DBMS 层的共享磁盘配置一起使用，例如[SQL Server 所述](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)。 相反，请使用如下所示的解决方案：
-           - [SQL Server Always On](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle 数据防护](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
            - [HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - 对于跨 Azure 区域的灾难恢复，请查看不同 DBMS 供应商提供的解决方案。 其中的大多数支持异步复制或日志传送。
@@ -86,7 +85,7 @@ ms.locfileid: "80060061"
     - [SAP HANA 安装](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  在您的客户、系统集成商、Microsoft 以及其他参与方之间定义定期设计和部署评审节奏。
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>试点阶段（强烈推荐）
  
 您可以在项目规划和准备过程之前或期间运行试验。 你还可以使用试点阶段测试规划和准备阶段中所做的方法和设计。 您可以扩展试验阶段，使其成为现实概念证明。
@@ -213,7 +212,7 @@ ms.locfileid: "80060061"
 14. 优化和增强团队的 Azure 基于角色的访问、权限和过程，确保你有责任分离。 同时，请确保所有团队都可以在 Azure 基础结构中执行其任务。
 15. 练习、测试和记录高可用性和灾难恢复过程，使您的员工能够执行这些任务。 确定缺点，并改编要集成到部署中的新 Azure 功能。
 
- 
+
 ## <a name="production-preparation-phase"></a>生产准备阶段 
 在此阶段中，收集在非生产部署期间遇到并了解到的内容，并将其应用于将来的生产部署。 还需要准备当前托管位置和 Azure 之间的数据传输工作。
 
@@ -298,6 +297,6 @@ ms.locfileid: "80060061"
 请参阅以下文章：
 
 - [SAP NetWeaver 的 Azure 虚拟机规划和实施指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [适用于 SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 

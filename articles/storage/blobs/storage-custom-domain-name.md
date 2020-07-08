@@ -4,17 +4,16 @@ titleSuffix: Azure Storage
 description: 将自定义域映射到 Azure 存储帐户中的 Blob 存储或 Web 终结点。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84465530"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
@@ -23,9 +22,9 @@ ms.locfileid: "79370468"
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> 这种映射仅适用于子域（例如：`www.contoso.com`）。 如果希望在根域上提供 web 终结点（例如： `contoso.com`），则必须使用 Azure CDN。 有关指南，请参阅本文中的将[自定义域映射到已启用 HTTPS](#enable-https)部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
+> 这种映射仅适用于子域（例如：`www.contoso.com`）。 如果希望在根域上提供 web 终结点（例如： `contoso.com` ），则必须使用 Azure CDN。 有关指南，请参阅本文中的将[自定义域映射到已启用 HTTPS](#enable-https)部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>在启用仅限 HTTP 的情况下映射自定义域
 
@@ -33,7 +32,7 @@ ms.locfileid: "79370468"
 
 若要启用 HTTPS 访问，请参阅本文中的[使用 https 启用映射自](#enable-https)定义域部分。 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>映射自定义域
 
@@ -50,7 +49,7 @@ ms.locfileid: "79370468"
 
 ： heavy_check_mark：步骤4：测试自定义域。
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步骤1：获取存储终结点的主机名 
 
@@ -71,7 +70,7 @@ ms.locfileid: "79370468"
   
    请设置此值供稍后使用。
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步骤2：使用您的域提供程序创建规范名称（CNAME）记录
 
@@ -91,7 +90,7 @@ ms.locfileid: "79370468"
       
    - 在本文前面的[获取存储终结点的主机名](#endpoint)部分获取的主机名。 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>步骤3：将自定义域注册到 Azure
 
@@ -117,7 +116,7 @@ ms.locfileid: "79370468"
 
 例如，若要访问 *photos.contoso.com* 自定义子域中的 *myforms* 容器内的 Web 窗体：可使用以下 URI：`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>在不停机的情况下映射自定义域
 
@@ -136,7 +135,7 @@ ms.locfileid: "79370468"
 
 ： heavy_check_mark：步骤5：测试自定义域。
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>步骤1：获取存储终结点的主机名 
 
@@ -233,7 +232,7 @@ ms.locfileid: "79370468"
 
 若要删除自定义域映射，请取消注册自定义域。 使用以下过程之一。
 
-#### <a name="portal"></a>[门户](#tab/azure-portal)
+#### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要删除自定义域设置，请执行以下操作：
 
@@ -244,7 +243,7 @@ ms.locfileid: "79370468"
 
 3. 清除包含自定义域名的文本框的内容。
 
-4. 选择“保存”按钮  。
+4. 选择“保存”按钮。
 
 成功删除自定义域后，会看到一条门户通知，指出存储帐户已成功更新
 
@@ -295,7 +294,7 @@ ms.locfileid: "79370468"
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>映射已启用 HTTPS 的自定义域
 

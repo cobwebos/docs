@@ -5,17 +5,17 @@ description: 了解如何通过在服务外部训练过的模型来使用 Azure 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: df569ee4a392bae27431f526e0fbe010feab5a5d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557381"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>通过 Azure 机器学习使用现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "79472369"
 >
 > 有关部署流程的一般信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
 
@@ -70,9 +70,9 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> 您还可以将 " `tags`添加`properties` " 和 "字典" 对象设置为已注册的模型。 以后可以使用这些值来帮助确定特定的模型。 例如，使用的框架、定型参数等。
+> 还可以设置为向已注册的模型添加 `tags` 和 `properties` 字典对象。 以后可以使用这些值来帮助识别特定的模型。 例如使用的框架、训练参数等。
 
-有关详细信息，请参阅 [](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) 参考。
+有关详细信息，请参阅 [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) 参考。
 
 
 有关一般情况下模型注册的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
@@ -111,7 +111,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 + [如何使用环境](how-to-use-environments.md)。
 + [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) 参考。
@@ -283,7 +283,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 有关部署的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-## <a name="request-response-consumption"></a>使用“请求-响应”
+## <a name="request-response-consumption"></a>请求-响应的使用
 
 部署完成后将显示评分 URI。 客户端可使用此 URI 将请求提交到服务。 以下示例是一个基本 Python 客户端，该客户端将数据提交到服务并显示响应：
 
@@ -306,7 +306,7 @@ print(response.json())
 
 ## <a name="next-steps"></a>后续步骤
 
-* [用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [如何为已部署的模型创建客户端](how-to-consume-web-service.md)

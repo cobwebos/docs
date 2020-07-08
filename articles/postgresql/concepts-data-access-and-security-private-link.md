@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84508991"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL-单一服务器的专用链接
 
@@ -46,6 +45,10 @@ Azure Database for PostgreSQL 单服务器中的数据（例如，数据库管�
 从本地计算机连接到公共终结点时，需要使用服务器级防火墙规则将 IP 地址添加到基于 IP 的防火墙。 尽管此模型非常适合用于允许对开发或测试工作负荷的单个计算机进行访问，但在生产环境中却难以管理。
 
 使用 "专用" 链接，可以使用[快速路由](https://azure.microsoft.com/services/expressroute/)（ER）、专用对等互连或[VPN 隧道](https://docs.microsoft.com/azure/vpn-gateway/)来启用对专用终结点的跨界访问。 然后，他们可以通过公共终结点禁用所有访问权限，而不使用基于 IP 的防火墙。
+
+> [!NOTE]
+> 在某些情况下，Azure Database for PostgreSQL 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
+> - 请确保这两个订阅都注册了**DBforPostgreSQL**资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
 ## <a name="configure-private-link-for-azure-database-for-postgresql-single-server"></a>为 Azure Database for PostgreSQL 单个服务器配置专用链接
 
@@ -97,13 +100,13 @@ Azure Database for PostgreSQL 单服务器中的数据（例如，数据库管�
 * [站点到站点 VPN 连接](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
 * [ExpressRoute 线路](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
 
-## <a name="private-link-combined-with-firewall-rules"></a>与防火墙规则结合的专用链接
+## <a name="private-link-combined-with-firewall-rules"></a>将专用链接与防火墙规则结合使用
 
-结合使用专用链接和防火墙规则时，可能会出现以下情况和结果：
+将专用链接与防火墙规则结合使用时，可能会出现以下情况和结果：
 
 * 如果未配置任何防火墙规则，则默认情况下，任何流量都不能访问 Azure Database for PostgreSQL 的单一服务器。
 
-* 如果配置公共流量或服务终结点，并创建私有终结点，则会通过相应类型的防火墙规则授权不同类型的传入流量。
+* 如果配置公共流量或服务终结点并创建专用终结点，则不同类型的传入流量将由相应类型的防火墙规则授权。
 
 * 如果未配置任何公用流量或服务终结点，并且创建专用终结点，则只能通过专用终结点访问 Azure Database for PostgreSQL 单服务器。 如果未配置公共流量或服务终结点，则在拒绝或删除所有已批准的专用终结点后，流量将无法访问 Azure Database for PostgreSQL 的单一服务器。
 
@@ -111,7 +114,7 @@ Azure Database for PostgreSQL 单服务器中的数据（例如，数据库管�
 
 如果你希望仅依赖于专用终结点来访问其 Azure Database for PostgreSQL 单个服务器，则可以通过在数据库服务器上设置 "**拒绝公共网络访问**" 配置来禁用设置所有公用终结点（[防火墙规则](concepts-firewall-rules.md)和[VNet 服务终结点](concepts-data-access-and-security-vnet.md)）。 
 
-如果此设置设置为 *"是"* ，则只允许通过专用终结点连接到 Azure Database for PostgreSQL。 如果将此设置设置为 "*无*客户端"，则可以根据防火墙或 VNet 服务终结点设置连接到 Azure Database for PostgreSQL。 此外，将专用网络访问的值设置为 "客户" 后，无法添加和/或更新现有的 "防火墙规则" 和 "VNet 服务终结点" 规则
+如果此设置设置为 *"是"* ，则只允许通过专用终结点连接到 Azure Database for PostgreSQL。 如果将此设置设置为 "*无*客户端"，则可以根据防火墙或 VNet 服务终结点设置连接到 Azure Database for PostgreSQL。 此外，一旦设置了专用网络访问的值，客户就不能添加和/或更新现有的 "防火墙规则" 和 "VNet 服务终结点规则"。
 
 > [!Note]
 > 此功能在所有 Azure Database for PostgreSQL 单服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
@@ -129,3 +132,6 @@ Azure Database for PostgreSQL 单服务器中的数据（例如，数据库管�
 * 若要了解如何为 Azure Database for PostgreSQL 单个服务器配置虚拟网络服务终结点，请参阅[配置从虚拟网络进行访问](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet)。
 
 * 有关 Azure Database for PostgreSQL 单服务器连接的概述，请参阅[Azure Database for PostgreSQL 连接体系结构](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

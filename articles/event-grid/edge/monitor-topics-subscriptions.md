@@ -1,19 +1,18 @@
 ---
 title: 监视主题和事件订阅-Azure 事件网格 IoT Edge |Microsoft Docs
 description: 监视主题和事件订阅
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84554356"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>监视主题和事件订阅
 
@@ -21,7 +20,7 @@ ms.locfileid: "77086675"
 
 ## <a name="enable-metrics"></a>启用指标
 
-将该模块配置为发出指标，方法`metrics__reporterType`是在容器`prometheus`创建选项中将环境变量设置为：
+将该模块配置为发出指标，方法是 `metrics__reporterType` `prometheus` 在容器创建选项中将环境变量设置为：
 
  ```json
         {
@@ -40,9 +39,9 @@ ms.locfileid: "77086675"
         }
  ```    
 
-适用于 http 和`5888/metrics` `4438/metrics` https 的模块中提供了度量值。 例如， `http://<modulename>:5888/metrics?api-version=2019-01-01-preview`对于 http。 此时，指标模块可以轮询终结点以收集指标，如此[示例结构](https://github.com/veyalla/ehm)中所示。
+适用于 http 和 https 的模块中提供了度量值 `5888/metrics` `4438/metrics` 。 例如， `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` 对于 http。 此时，指标模块可以轮询终结点以收集指标，如此[示例结构](https://github.com/veyalla/ehm)中所示。
 
-## <a name="available-metrics"></a>可用指标
+## <a name="available-metrics"></a>可用度量值
 
 主题和事件订阅都发出指标，使你能够深入了解事件传递和模块性能。
 

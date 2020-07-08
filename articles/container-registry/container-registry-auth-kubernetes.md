@@ -5,13 +5,12 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84309809"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>将映像从 Azure 容器注册表拉取到 Kubernetes 群集
 
@@ -40,10 +39,10 @@ Kubernetes 使用“映像拉取机密”  来存储向注册表证明身份所�
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 其中：
 
@@ -51,36 +50,36 @@ kubectl create secret docker-registry <secret-name> \
 | :--- | :--- |
 | `secret-name` | 映像拉取机密的名称，例如 *acr-secret* |
 | `namespace` | 用来放置机密的 Kubernetes 命名空间 <br/> 仅当要将机密置于默认命名空间之外的命名空间中时才需要此项 |
-| `container-registry-name` | 你的 Azure 容器注册表的名称 |
-| `service-principal-ID` | Kubernetes 用来访问注册表的服务主体的 ID |
+| `container-registry-name` | Azure 容器注册表的名称，例如， *myregistry*<br/><br/>`--docker-server`是注册表登录服务器的完全限定名称  |
+| `service-principal-ID` | Kubernetes 用于访问注册表的服务主体的 ID |
 | `service-principal-password` | 服务主体密码 |
 
-## <a name="use-the-image-pull-secret"></a>使用映像拉取机密
+## <a name="use-the-image-pull-secret"></a>使用映像请求机密
 
-创建映像拉取机密后，可以使用它来创建 Kubernetes Pod 和部署。 在部署文件中，在 `imagePullSecrets` 下提供机密名称。 例如：
+创建映像请求机密后，可以使用它来创建 Kubernetes pod 和部署。 在部署文件中的下提供机密的名称 `imagePullSecrets` 。 例如：
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-在前面的示例中，`your-awesome-app:v1` 是要从 Azure 容器注册表中拉取的映像的名称，`acr-secret` 是你创建的用于访问注册表的拉取密钥的名称。 部署 Pod 时，如果群集上尚无映像，则 Kubernetes 会自动从注册表中拉取映像。
+在前面的示例中， `my-awesome-app:v1` 是要从 Azure 容器注册表中请求的映像的名称， `acr-secret` 是你创建的用于访问注册表的请求密钥的名称。 部署 pod 时，Kubernetes 会自动从注册表中提取映像（如果它在群集上还没有）。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解如何使用服务主体和 Azure 容器注册表，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)
-* 在 [Kubernetes 文档](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)中详细了解映像拉取机密
+* 有关使用服务主体和 Azure 容器注册表的详细信息，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md)
+* 在[Kubernetes 文档](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)中了解有关图像请求机密的详细信息
 
 
 <!-- IMAGES -->
