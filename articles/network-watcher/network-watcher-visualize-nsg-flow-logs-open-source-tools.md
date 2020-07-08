@@ -7,17 +7,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d2b2fb55a9c23643bbb778ced047e75871ba7f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840632"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807673"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用开源工具可视化 Azure 网络观察程序 NSG 流日志
 
@@ -25,10 +25,7 @@ ms.locfileid: "76840632"
 
 这些流日志可能难以手动分析并难以从中获取见解。 不过，可以使用多个开源工具将相关数据可视化。 本文将提供一个使用 Elastic Stack 将这些日志可视化的解决方案，方便用户在 Kibana 仪表板上快速完成流日志的索引和可视化操作。
 
-> [!Warning]  
-> 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
-
-## <a name="scenario"></a>场景
+## <a name="scenario"></a>方案
 
 在本文中，我们将设置一个解决方案，方便用户使用 Elastic Stack 来可视化网络安全组流日志。  将使用 Logstash 输入插件直接从已配置为存储流日志的存储 Blob 获取流日志。 然后使用 Elastic Stack 为流日志编制索引并将这些日志用于创建 Kibana 仪表板，实现信息的可视化。
 
@@ -138,6 +135,11 @@ ms.locfileid: "76840632"
                   "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
                   "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
                   "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
+                  "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+                   "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+                   "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+                   "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+                   "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
                    }
       convert => {"unixtimestamp" => "integer"}
       convert => {"srcPort" => "integer"}
@@ -157,7 +159,7 @@ ms.locfileid: "76840632"
    }  
    ```
 
-有关安装 Logstash 的其他说明，请参阅[正式文档](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
+有关安装 Logstash 的其他说明，请参阅[官方文档](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安装适用于 Azure Blob 存储的 Logstash 输入插件
 
@@ -203,7 +205,7 @@ sudo /etc/init.d/logstash start
 
 下载[仪表板文件](https://aka.ms/networkwatchernsgflowlogdashboard)、[可视化效果文件](https://aka.ms/networkwatchernsgflowlogvisualizations)和[已保存的搜索文件](https://aka.ms/networkwatchernsgflowlogsearch)。
 
-在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。   然后，可从“仪表板”  选项卡打开并加载示例仪表板。
+在 Kibana 的“Management”（管理）选项卡下，导航到“Saved Objects”（已保存的对象）并导入所有三个文件。  然后，可从“仪表板”选项卡打开并加载示例仪表板。
 
 还可以创建自己的可视化效果，以及根据感兴趣的指标定制的仪表板。 阅读 Kibana 的[正式文档](https://www.elastic.co/guide/en/kibana/current/visualize.html)，详细了解如何创建 Kibana 可视化效果。
 

@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173163"
 ---
 ## <a name="deleting-personal-information"></a>删除个人信息
@@ -40,7 +40,7 @@ ms.locfileid: "67173163"
 - 与作业一并保存的数据会随作业一并删除。 用户可手动删除作业，已完成作业会在 90 天后自动删除。 可通过 REST API 或 Azure 门户手动删除作业。 若要在 Azure 门户中删除作业，请转到导入/导出作业，然后单击命令栏中的“删除”**。 若要详细了解如何通过 REST API 删除导入/导出作业，请参阅[删除导入/导出作业](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)。
 
 - 可通过删除门户设置，删除门户设置中保存的联系人信息。 可以按照以下步骤删除门户设置：
-  - 登录 [Azure 门户](https://portal.azure.com)。
+  - 登录到 [Azure 门户](https://portal.azure.com)。
   - 单击“设置”** 图标 ![Azure 设置图标](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
   - 单击“导出所有设置”**（以将当前设置保存到 `.json` 文件）。
   - 单击“删除所有设置和专用仪表板”，删除包括保存的联系人信息在内的所有设置**。

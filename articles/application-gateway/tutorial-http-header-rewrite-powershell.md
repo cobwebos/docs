@@ -4,19 +4,19 @@ description: 本文介绍如何使用 Azure PowerShell 创建 Azure 应用程序
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8aec788e5370bd0c6f0e2f1b6ff032ca68cac87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806442"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>创建应用程序网关和重写 HTTP 标头
 
-可以使用 Azure PowerShell 在创建新的[自动缩放和区域冗余的应用程序网关 SKU](rewrite-http-headers.md) 时配置[重写 HTTP 请求和响应标头的规则](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)。
+可以使用 Azure PowerShell 在创建新的[自动缩放和区域冗余的应用程序网关 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) 时配置[重写 HTTP 请求和响应标头的规则](rewrite-http-headers.md)。
 
 在本文中，学习如何：
 

@@ -9,27 +9,27 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: tamram
-ms.reviewer: cbrooks
-ms.openlocfilehash: 724c250b56107cb68da387bdd531602e8d239e1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ozgun
+ms.openlocfilehash: f69301bdbc0af9334858940fbfd3d7d0a0a63153
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127526"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807646"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>配置 Azure 存储的高级威胁防护
 
 适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 这一层保护使你可以在不是安全专家或管理安全监视系统的情况下解决威胁。
 
-当发生异常时，将触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
+当活动出现异常时，会触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
 服务对 Blob 存储的读取、写入和删除请求引入资源日志进行威胁检测。 若要调查高级威胁防护中的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
 
 ## <a name="availability"></a>可用性
 
-Azure 存储的高级威胁防护目前仅适用于[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)。 支持高级威胁防护的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 高级威胁防护在所有公有云和美国政府云中提供，但在其他主权或 Azure 政府云区域中不可用。
+针对 Azure 存储的高级威胁防护目前仅适用于 [Blob 存储](https://azure.microsoft.com/services/storage/blobs/)。 支持高级威胁防护的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 高级威胁防护在所有公有云和美国政府云中提供，但在其他主权或 Azure 政府云区域中不可用。
 
-有关定价详细信息（包括免费的30天试用版），请参阅[Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+如需定价详细信息（包括 30 天免费试用版的信息），请参阅 [Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 
 ## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护
@@ -60,7 +60,7 @@ Azure 存储的高级威胁防护目前仅适用于[Blob 存储](https://azure.m
 1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中，单击 "**已启用**" 或 "**已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 单击 **“保存”** 。
+1. 单击“保存” 。
 
 ### <a name="template"></a>[模板](#tab/template)
 
@@ -82,7 +82,7 @@ Azure 存储的高级威胁防护目前仅适用于[Blob 存储](https://azure.m
 
 1. 分配策略。
 
-    !["策略定义" 页](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
+    ![策略定义页](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -128,4 +128,4 @@ Azure 存储的高级威胁防护目前仅适用于[Blob 存储](https://azure.m
 ## <a name="next-steps"></a>后续步骤
 
 * 了解有关[Azure 存储帐户中的日志的](/rest/api/storageservices/About-Storage-Analytics-Logging)详细信息
-* 了解有关[Azure 安全中心](../../security-center/security-center-intro.md)的详细信息
+* 了解有关 [Azure 安全中心](../../security-center/security-center-intro.md)的详细信息

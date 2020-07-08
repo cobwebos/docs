@@ -4,15 +4,15 @@ description: 本文提供有关如何部署使用新应用程序网关的应用�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807146"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>如何安装使用新应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -66,13 +66,13 @@ ms.locfileid: "80585884"
     }
     EOF
     ```
-    若要部署启用 **RBAC** 的群集，请将 `aksEnabledRBAC` 字段设置为 `true`
+    若要部署启用 **RBAC** 的群集，请将 `aksEnableRBAC` 字段设置为 `true`
 
 ## <a name="deploy-components"></a>部署组件
 此步骤将以下组件添加到订阅：
 
 - [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/intro-kubernetes)
-- [应用程序网关](https://docs.microsoft.com/azure/application-gateway/overview)v2
+- [应用程序网关](https://docs.microsoft.com/azure/application-gateway/overview) v2
 - 包含 2 个[子网](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)的[虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
 - [公共 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
 - [AAD Pod Identity](https://github.com/Azure/aad-pod-identity/blob/master/README.md) 将要使用的[托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
@@ -106,10 +106,10 @@ ms.locfileid: "80585884"
 
 ## <a name="set-up-application-gateway-ingress-controller"></a>设置应用程序网关入口控制器
 
-使用上一节中的说明，我们创建和配置了新的 AKS 群集和应用程序网关。 现在，我们已准备好将一个示例应用和入口控制器部署到新的 Kubernetes 基础结构。
+我们已根据上一部分中的说明创建并配置了新的 AKS 群集和应用程序网关。 现在，我们已准备好将一个示例应用和入口控制器部署到新的 Kubernetes 基础结构。
 
 ### <a name="setup-kubernetes-credentials"></a>设置 Kubernetes 凭据
-执行以下步骤时，需要安装[kubectl](https://kubectl.docs.kubernetes.io/)命令，该命令将用于连接到新的 Kubernetes 群集。 已安装[Cloud Shell。](https://shell.azure.com/) `kubectl` 我们将使用 `az` CLI 获取 Kubernetes 的凭据。
+对于以下步骤，需要设置 [kubectl](https://kubectl.docs.kubernetes.io/) 命令用于连接到新的 Kubernetes 群集。 已安装[Cloud Shell](https://shell.azure.com/) `kubectl` 。 我们将使用 `az` CLI 获取 Kubernetes 的凭据。
 
 获取新部署的 AKS 的凭据（[详细了解](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)）：
 ```azurecli
@@ -124,20 +124,20 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory Pod Identity 提供对 [Azure 资源管理器 (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 的基于令牌的访问。
 
   [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) 会将以下组件添加到 Kubernetes 群集：
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)： `AzureIdentity`、 `AzureAssignedIdentity`、`AzureIdentityBinding`
+   * Kubernetes [CRD](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/)：`AzureIdentity`、`AzureAssignedIdentity`、`AzureIdentityBinding`
    * [托管标识控制器 (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) 组件
    * [节点托管标识 (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) 组件
 
 
 将 AAD Pod Identity 安装到群集：
 
-   - 已启用 RBAC 的 AKS 群集**
+   - 已启用 RBAC 的 AKS 群集 
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
      ```
 
-   - 已禁用 RBAC 的 AKS 群集**
+   - 已禁用 RBAC 的 AKS 群集 
 
      ```bash
      kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
@@ -148,7 +148,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
 
 1. 安装 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
-    - 已启用 RBAC 的 AKS 群集**
+    - 已启用 RBAC 的 AKS 群集 
 
         ```bash
         kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -156,7 +156,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
         helm init --tiller-namespace kube-system --service-account tiller-sa
         ```
 
-    - 已禁用 RBAC 的 AKS 群集**
+    - 已禁用 RBAC 的 AKS 群集 
 
         ```bash
         helm init
@@ -252,18 +252,18 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
    值：
      - `verbosityLevel`：设置 AGIC 日志记录基础结构的详细级别。 有关可能的值，请参阅[日志记录级别](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels)。
      - `appgw.subscriptionId`：应用程序网关所在的 Azure 订阅 ID。 示例：`a123b234-a3b4-557d-b2df-a0bc12de1234`
-     - `appgw.resourceGroup`：在其中创建应用程序网关的 Azure 资源组的名称。 示例：`app-gw-resource-group`
-     - `appgw.name`：应用程序网关的名称。 示例：`applicationgatewayd0f0`
-     - `appgw.shared`：此布尔标志应默认为`false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
+     - `appgw.resourceGroup`：在其中创建了应用程序网关的 Azure 资源组的名称。 示例：`app-gw-resource-group`
+     - `appgw.name`：应用程序网关的名称。 示例： `applicationgatewayd0f0`
+     - `appgw.shared`：此布尔标志应默认为 `false`。 如果需要[共享的应用程序网关](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)，请设置为 `true`。
      - `kubernetes.watchNamespace`：指定 AGIC 应监视的命名空间。 此命名空间可以是单字符串值，也可以是逗号分隔的命名空间列表。
     - `armAuth.type`：可以是 `aadPodIdentity` 或 `servicePrincipal`。
-    - `armAuth.identityResourceID`： Azure 托管标识的资源 ID
+    - `armAuth.identityResourceID`：Azure 托管标识的资源 ID
     - `armAuth.identityClientId`：标识的客户端 ID。 有关标识的详细信息，请参阅下文
-    - `armAuth.secretJSON`：仅在选择服务主体机密类型时才需要（ `armAuth.type`设置为`servicePrincipal`时） 
+    - `armAuth.secretJSON`：仅当选择了服务主体机密类型时（`armAuth.type` 设置为 `servicePrincipal`）才需要指定该值 
 
 
    > [!NOTE]
-   > `identityResourceID`和`identityClientID`是在[部署组件](ingress-controller-install-new.md#deploy-components)步骤中创建的值，可以使用以下命令重新获得：
+   > `identityResourceID` 和 `identityClientID` 是在执行[部署组件](ingress-controller-install-new.md#deploy-components)步骤期间创建的值，可使用以下命令再次获取这些值：
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

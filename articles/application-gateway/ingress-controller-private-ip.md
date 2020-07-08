@@ -4,15 +4,15 @@ description: 本文介绍如何使用专用 IP 进行内部路由，以便将群
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 570f28ce559ff1c1180ffaacb781b9120b1890a2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795487"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84806800"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>使用入口终结点的专用 IP 进行内部路由 
 
@@ -51,7 +51,7 @@ appgw.ingress.kubernetes.io/use-private-ip: "true"
 
 
 ## <a name="assign-globally"></a>全局分配
-如果要求是限制所有入口通过专用 IP 进行公开，请在 `appgw.usePrivateIP: true` 配置中使用 `helm`。
+如果要求是限制所有入口通过专用 IP 进行公开，请在 `helm` 配置中使用 `appgw.usePrivateIP: true`。
 
 ### <a name="usage"></a>使用情况
 ```yaml

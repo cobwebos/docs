@@ -4,15 +4,15 @@ description: 本文介绍如何从 LetsEncrypt.org 获取证书并将其用在 A
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73957983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807035"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>将 LetsEncrypt.org 的证书用在 AKS 群集的应用程序网关上
 
@@ -101,7 +101,7 @@ ms.locfileid: "73957983"
     注意注释 `certmanager.k8s.io/cluster-issuer: letsencrypt-staging`，它告知 cert-manager 处理标记的入口资源。
 
     > [!IMPORTANT] 
-    > 在`<PLACEHOLDERS.COM>`下面的 YAML 中更新你自己的域（或应用程序网关，例如 "kh-aks-ingress.westeurope.cloudapp.azure.com"）
+    > `<PLACEHOLDERS.COM>`在下面的 YAML 中更新你自己的域（或应用程序网关，例如 "kh-aks-ingress.westeurope.cloudapp.azure.com"）
 
     ```bash
     kubectl apply -f - <<EOF

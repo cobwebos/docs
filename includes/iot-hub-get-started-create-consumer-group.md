@@ -5,10 +5,10 @@ ms.author: robinsh
 ms.topic: include
 ms.date: 05/20/2019
 ms.openlocfilehash: c164433efc6a34a3a06676a3145feb18d3de80b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66248854"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>将使用者组添加到 IoT 中心
@@ -19,6 +19,6 @@ ms.locfileid: "66248854"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中打开 IoT 中心。
 
-2. 在左侧窗格中，选择 "**内置终结点**"，在右窗格中选择 "**事件**"，然后在 "**使用者组**" 下输入名称。 选择“保存”。 
+2. 在左侧窗格中，选择 "**内置终结点**"，在右窗格中选择 "**事件**"，然后在 "**使用者组**" 下输入名称。 选择“保存”。
 
    ![在 IoT 中心创建使用者组](./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png)

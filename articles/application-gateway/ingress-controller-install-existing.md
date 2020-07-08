@@ -4,15 +4,15 @@ description: 本文提供有关如何部署使用现有应用程序网关的应�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869901"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807106"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>安装使用现有应用程序网关的应用程序网关入口控制器 (AGIC)
 
@@ -32,7 +32,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 - 已启用[高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni)的 [AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - AKS 所在的同一虚拟网络中的[应用程序网关 v2](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant)
 - 已在 AKS 群集上安装 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity)
-- [Cloud Shell](https://shell.azure.com/)是 Azure Shell 环境，安装了`az` CLI、 `kubectl`和。 `helm` 需要使用这些工具来运行下面所述的命令。
+- [Cloud Shell](https://shell.azure.com/)是 Azure Shell 环境， `az` 安装了 CLI、 `kubectl` 和 `helm` 。 需要使用这些工具来运行下面所述的命令。
 
 在安装 AGIC 之前，请__备份应用程序网关的配置__：
   1. 使用 [Azure 门户](https://portal.azure.com/)导航到 `Application Gateway` 实例
@@ -46,7 +46,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
 
 1. 安装 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) 并运行以下命令来添加 `application-gateway-kubernetes-ingress` Helm 包：
 
-    - 已启用 RBAC 的 AKS 群集**
+    - 已启用 RBAC 的 AKS 群集 
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -54,7 +54,7 @@ AGIC 监视 Kubernetes [入口](https://kubernetes.io/docs/concepts/services-net
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-    - 已禁用 RBAC 的 AKS 群集**
+    - 已禁用 RBAC 的 AKS 群集 
 
     ```bash
     helm init
@@ -344,4 +344,4 @@ kubectl get AzureIngressProhibitedTargets prohibit-all-targets -o yaml
     kubectl get AzureIngressProhibitedTargets
     ```
 
-3. 通过门户修改应用程序网关配置-添加侦听器、路由规则、后端等。我们创建的新对象（`manually-configured-staging-environment`）将禁止 AGIC 覆盖与相关的应用程序网`staging.contoso.com`关配置。
+3. 通过门户修改应用程序网关配置-添加侦听器、路由规则、后端等。我们创建的新对象（ `manually-configured-staging-environment` ）将禁止 AGIC 覆盖与相关的应用程序网关配置 `staging.contoso.com` 。

@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8db6140789a9e4f46e368b913cacacd21609ccd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1db26e6e1308299325e15b4c856fc2ebbaed8326
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807617"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>授权访问 Azure 存储中的数据
 
@@ -40,7 +40,7 @@ ms.locfileid: "81529716"
 - Azure 文件的**本地 Active Directory 域服务（AD DS 或本地 AD DS）身份验证（预览版）** 。 Azure 文件通过 AD DS 支持通过 SMB 进行基于标识的授权。 你的 AD DS 环境可以托管在本地计算机中，也可以托管在 Azure Vm 中。 使用从本地或 Azure 中的已加入域的计算机 AD DS 凭据支持 SMB 访问文件。 可以结合使用 RBAC 与共享级别访问控制和 NTFS Dacl 的组合来执行目录/文件级权限。 有关使用域服务进行 Azure 文件身份验证的详细信息，请参阅[概述](../files/storage-files-active-directory-overview.md)。
 
 - 用于 blob、文件、队列和表的**共享密钥授权**。 使用共享密钥的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key/)。
-- 用于 blob、文件、队列和表的**共享访问签名**。 共享访问签名 (SAS) 针对存储帐户中的资源提供有限的委托访问权限。 通过对签名的有效时间间隔或对它授予的权限添加约束，可灵活地管理访问权限。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。
+- 用于 blob、文件、队列和表的**共享访问签名**。 共享访问签名 (SAS) 针对存储帐户中的资源提供有限的委托访问权限。 通过对签名的有效时间间隔或对它授予的权限添加约束，可灵活地管理访问权限。 有关详细信息，请参阅[使用共享访问签名（SAS）](storage-sas-overview.md)。
 - 用于容器和 blob 的**匿名公共读取访问**。 无需授权。 有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](../blobs/storage-manage-access-to-resources.md)。  
 
 默认情况下，Azure 存储中的所有资源都受到保护，并且只能由帐户所有者使用。 虽然你可以使用上述任何授权策略为客户端授予访问存储帐户资源的权限，但 Microsoft 建议尽可能使用 Azure AD，以获得最大的安全性和易用性。
@@ -49,4 +49,4 @@ ms.locfileid: "81529716"
 
 - [使用 Azure Active Directory 授予对 Azure Blob 和队列的访问权限](storage-auth-aad.md)
 - [通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key/)
-- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限](storage-sas-overview.md)
+- [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)
