@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "62123799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515437"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务管理 StorSimple 虚拟阵列
 ![安装流程](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -42,7 +41,7 @@ ms.locfileid: "62123799"
 StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 虚拟阵列。 用户将使用在浏览器中运行的中央 Microsoft Azure 门户管理这些设备。 若要连接到 StorSimple Device Manager 服务，请执行以下操作。
 
 #### <a name="to-connect-to-the-service"></a>连接到服务
-1. 转到 [https://ms.portal.azure.com](https://ms.portal.azure.com)。
+1. 转到[https://ms.portal.azure.com](https://ms.portal.azure.com)。
 2. 使用 Microsoft 帐户凭据，登录到 Microsoft Azure 门户（位于窗格右上角）。
 3. 在 StorSimple Device Manager 中导航到“浏览”->“筛选器”，以查看给定订阅中的所有设备管理器。
 

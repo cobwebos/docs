@@ -4,11 +4,10 @@ description: 了解如何在 Azure 容器实例的已运行容器中设置环境
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686726"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 
@@ -85,7 +84,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 在 PowerShell 中设置环境变量类似于在 CLI 中进行的相应操作，但需使用 `-EnvironmentVariable` 命令行参数。
 
-首先，使用此 [New-AzContainerGroup][aci-wordcount] 命令在默认配置中启动 [aci-wordcount][new-Azcontainergroup] 容器：
+首先，使用此 [New-AzContainerGroup][new-Azcontainergroup] 命令在默认配置中启动 [aci-wordcount][aci-wordcount] 容器：
 
 ```azurepowershell-interactive
 New-AzContainerGroup `
@@ -94,7 +93,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 *后指定*NumWords*和*MinLength`envVars` 环境变量：
+现在请运行以下 [New-AzContainerGroup][new-Azcontainergroup] 命令。 此命令在填充数组变量 `envVars` 后指定 *NumWords* 和 *MinLength* 环境变量：
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -144,7 +143,7 @@ Azure:\
 在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“高级”页中指定它们。 
 
 1. 在“高级”页上将“重启策略”设置为“在故障时”   
-2. 在“环境变量”下，为第一个变量输入值为 **的**，并为第二个变量输入值为 `NumWords` 的 `5`。`MinLength``8` 
+2. 在“环境变量”下，为第一个变量输入值为 `5` 的 `NumWords`，并为第二个变量输入值为 `8` 的 `MinLength`。 
 1. 选择“查看 + 创建”进行验证，然后部署容器。 
 
 ![门户页，显示环境变量“启用”按钮和文本框][portal-env-vars-01]

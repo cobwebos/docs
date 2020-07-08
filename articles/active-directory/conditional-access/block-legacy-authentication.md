@@ -4,19 +4,18 @@ description: 了解如何通过使用 Azure AD 条件访问阻止旧式身份验
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e657114f4e51775fb73267322a48e362f57b1c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: bd66bc742d0832cba5d6f302bfe30c85e2d82716
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641699"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253335"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问来阻止对 Azure AD 的旧式身份验证   
 
@@ -65,15 +64,16 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 - 经过身份验证的 SMTP - 由 POP 和 IMAP 客户端用于发送电子邮件。
 - 自动发现 - 由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。
-- Exchange Online PowerShell - 用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+- Exchange ActiveSync （EAS）-用于连接到 Exchange Online 中的邮箱。
+- Exchange Online PowerShell - 用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
 - Exchange Web 服务 (EWS) - Outlook、Outlook for Mac 和第三方应用使用的编程接口。
 - IMAP4 - 由 IMAP 电子邮件客户端使用。
-- MAPI over HTTP (MAPI/HTTP) - 由 Outlook 2010 及更高版本使用。
-- 脱机通讯簿 (OAB) - Outlook 下载并使用的地址列表集合的副本。
-- Outlook Anywhere (RPC over HTTP) - 由 Outlook 2016 及更早版本使用。
-- Outlook 服务 - 由适用于 Windows 10 的邮件和日历应用使用。
+- 基于 HTTP 的 MAPI (MAPI/HTTP) - 由 Outlook 2010 及更高版本使用。
+- 脱机通讯簿 (OAB) - 通过 Outlook 下载并使用的地址列表集合的副本。
+- Outlook Anywhere（基于 HTTP 的 RPC）- 由 Outlook 2016 及更低版本使用。
+- Outlook 服务 - 由 Windows 10 的邮件和日历应用使用。
 - POP3 - 由 POP 电子邮件客户端使用。
-- 报表 Web 服务 - 用于在 Exchange Online 中检索报表数据。
+- Reporting Web Services - 用于在 Exchange Online 中检索报表数据。
 - 其他客户端 - 标识为使用旧式身份验证的其他协议。
 
 有关这些身份验证协议和服务的详细信息，请参阅 [Azure Active Directory 门户中的“登录活动”报表](../reports-monitoring/concept-sign-ins.md#filter-sign-in-activities)。

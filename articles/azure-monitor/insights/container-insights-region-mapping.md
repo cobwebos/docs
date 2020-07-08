@@ -3,12 +3,12 @@ title: 容器区域映射的 Azure Monitor
 description: 本文介绍容器 Azure Monitor、Log Analytics 工作区和自定义指标之间支持的区域映射。
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 3e8ead78c5e0e534e07c1e2ab0e25eb3f5a90c38
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75403427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194983"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>容器 Azure Monitor 支持区域映射
 
@@ -33,7 +33,7 @@ AKS 群集资源或 Log Analytics 工作区可以位于其他区域，下表显�
 |SoutheastAsia |SoutheastAsia |
 |**巴西** | |
 |BrazilSouth | Default-machinelearning-southcentralus |
-|**Canada** ||
+|**加拿大** ||
 |CanadaCentral |CanadaCentral |
 |CanadaEast |CanadaCentral |
 |**欧洲** | |
@@ -53,7 +53,7 @@ AKS 群集资源或 Log Analytics 工作区可以位于其他区域，下表显�
 |**韩国** | |
 |KoreaCentral |KoreaCentral |
 |KoreaSouth |KoreaCentral |
-|**反馈** | |
+|**美国** | |
 |CentralUS |CentralUS|
 |EastUS |EastUS |
 |EastUS2 |EastUS2 |

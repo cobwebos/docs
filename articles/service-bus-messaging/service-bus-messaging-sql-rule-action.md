@@ -1,29 +1,17 @@
 ---
 title: Azure 服务总线中的 SQLRuleAction 语法参考
 description: 本文提供 SQLRuleAction 语法参考。 这些操作是以针对中转消息执行的基于 SQL 语言的语法编写的。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 61fa6e046b4d4a0ba91bf8608c846755026d07ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341577"
 ---
 # <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服务总线的 SQLRuleAction 语法参考
 
-*SqlRuleAction* 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行。   
+SqlRuleAction 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 类的实例，代表以基于 SQL 语言的语法编写的一组操作，该语法针对 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) 执行。   
   
 本文列出了有关 SQL 规则操作语法的详细信息。  
   
@@ -160,7 +148,7 @@ ms.locfileid: "76759622"
   
 -   `<decimal_constant>` 是一个数字字符串，不使用引号，但包含小数点。 这些值以 `System.Double` 形式存储在内部，并具有相同的范围/精度。  
   
-     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `System.Double` 的基础数据类型为 `<decimal_constant>` 这一事实。  
+     在未来版本中，此数字可能以其他数据类型存储，目的是支持确切的数字语义，因此不应依赖于 `<decimal_constant>` 的基础数据类型为 `System.Double` 这一事实。  
   
      下面是十进制常量的示例：  
   
@@ -207,7 +195,7 @@ ms.locfileid: "76759622"
   
 ### <a name="remarks"></a>备注  
 
-`newid()` 函数返回 **方法生成的**System.Guid`System.Guid.NewGuid()`。  
+`newid()` 函数返回 `System.Guid.NewGuid()` 方法生成的 **System.Guid**。  
   
 `property(name)` 函数返回 `name` 所引用的属性的值。 `name` 值可以是任何返回字符串值的有效表达式。  
   

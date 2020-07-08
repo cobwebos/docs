@@ -4,16 +4,15 @@ description: 了解如何开发使用 Azure 文件来存储文件数据的 .NET 
 author: roygara
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515378"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -49,7 +48,7 @@ API | 何时使用 | 说明
 1. 在“创建新项目”  中，选择用于 C# 的“控制台应用(.NET Framework)”  ，然后选择“下一步”  。
 1. 在“配置新项目”中输入应用的名称，然后选择“创建”。  
 
-可将本教程中的所有代码示例添加到控制台应用程序的 `Main()` 文件中的 `Program.cs` 方法。
+可将本教程中的所有代码示例添加到控制台应用程序的 `Program.cs` 文件中的 `Main()` 方法。
 
 可以在任意类型的 .NET 应用程序中使用 Azure 存储客户端库。 这些类型包括 Azure 云服务或 Web 应用，以及桌面和移动应用程序。 为简单起见，我们在本指南中使用控制台应用程序。
 
@@ -84,7 +83,7 @@ API | 何时使用 | 说明
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 App.config 文件
 
-接下来，将凭据保存到项目的 `App.config` 文件中。 在“解决方案资源管理器”中，双击  **并编辑该文件，使其类似于以下示例。** `App.config` 请将 `myaccount` 替换为你的存储帐户名，将 `mykey` 替换为你的存储帐户密钥。
+接下来，将凭据保存到项目的 `App.config` 文件中。 在“解决方案资源管理器”中，双击 `App.config` 并编辑该文件，使其类似于以下示例。 请将 `myaccount` 替换为你的存储帐户名，将 `mykey` 替换为你的存储帐户密钥。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,7 +102,7 @@ API | 何时使用 | 说明
 
 ## <a name="add-using-directives"></a>添加 using 指令
 
-在“解决方案资源管理器”中打开  **文件，并在该文件顶部添加以下 using 指令。** `Program.cs`
+在“解决方案资源管理器”中打开 `Program.cs` 文件，并在该文件顶部添加以下 using 指令。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -435,7 +434,7 @@ using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-尽管 Azure Blob、Azure 表和 Azure 队列使用 `ServiceProperties` 命名空间中的共享 `Microsoft.Azure.Storage.Shared.Protocol` 类型，但 Azure 文件存储使用其自身的类型，即 `FileServiceProperties` 命名空间中的 `Microsoft.Azure.Storage.File.Protocol` 类型。 但是，必须在代码中引用这两个命名空间才能编译后续代码。
+尽管 Azure Blob、Azure 表和 Azure 队列使用 `Microsoft.Azure.Storage.Shared.Protocol` 命名空间中的共享 `ServiceProperties` 类型，但 Azure 文件存储使用其自身的类型，即 `Microsoft.Azure.Storage.File.Protocol` 命名空间中的 `FileServiceProperties` 类型。 但是，必须在代码中引用这两个命名空间才能编译后续代码。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.

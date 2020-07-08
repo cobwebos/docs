@@ -8,12 +8,11 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f1a4d9af8a1b1095527078dd790e80ef45a5ee9a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355652"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>在 Azure Blob 存储中管理和查找数据（预览版）
 
@@ -26,7 +25,7 @@ Blob 索引允许：
 - 基于索引标记的计算指定 blob Api 的条件行为
 - 利用 blob 平台功能上高级控制的索引标记，如[生命周期管理](storage-lifecycle-management-concepts.md)
 
-请考虑这样一种情形：你的存储帐户中有数百万个 blob，并且这些 blob 由许多不同的应用程序编写和访问。 要从单个项目中查找所有相关的数据，但不确定其作用域，因为数据可跨多个容器，具有不同的 blob 命名约定。 但知道，你的应用程序会基于其各自的项目和标识说明，上传包含标记的所有数据。 你只需使用`Project = Contoso`作为发现条件，而不必搜索数百万个 blob 和比较名称和属性。 Blob 索引将筛选整个存储帐户中的所有容器，以便快速查找并只返回来自`Project = Contoso`的 50 blob 集。 
+请考虑这样一种情形：你的存储帐户中有数百万个 blob，并且这些 blob 由许多不同的应用程序编写和访问。 要从单个项目中查找所有相关的数据，但不确定其作用域，因为数据可跨多个容器，具有不同的 blob 命名约定。 但知道，你的应用程序会基于其各自的项目和标识说明，上传包含标记的所有数据。 你只需使用作为发现条件，而不必搜索数百万个 blob 和比较名称和属性 `Project = Contoso` 。 Blob 索引将筛选整个存储帐户中的所有容器，以便快速查找并只返回来自的 50 blob 集 `Project = Contoso` 。 
 
 若要开始使用 Blob 索引的示例，请参阅[利用 Blob 索引管理和查找数据](storage-blob-index-how-to.md)。
 
@@ -36,14 +35,14 @@ Blob 索引允许：
 
 请考虑存储帐户中的以下五个 blob：
 >
-> container1/事务 .csv  
-> container2/  
-> 照片/bannerphoto  
-> 存档/已完成/2019review  
-> 日志/2020/01/01/logfile .txt  
+> container1/transaction.csv  
+> container2/campaign.docx  
+> 照片/bannerphoto.png  
+> 存档/完成/2019review.pdf  
+> 日志/2020/01/01/logfile.txt  
 >
 
-这些 blob 目前使用容器/虚拟文件夹/blob 名称的前缀进行分隔。 使用 Blob 索引，可以将这五个 blob 上的`Project = Contoso`索引标记属性设置为在一起，同时保留其当前的前缀组织。 这样就无需通过使用存储平台的多维索引来筛选和查找数据，从而无需移动数据。
+这些 blob 目前使用容器/虚拟文件夹/blob 名称的前缀进行分隔。 使用 Blob 索引，可以将 `Project = Contoso` 这五个 blob 上的索引标记属性设置为在一起，同时保留其当前的前缀组织。 这样就无需通过使用存储平台的多维索引来筛选和查找数据，从而无需移动数据。
 
 ## <a name="setting-blob-index-tags"></a>设置 Blob 索引标记
 
@@ -63,21 +62,21 @@ Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键
 > "Priority" = "01" 
 >
 
-若要修改现有的索引标记特性，必须首先检索现有标记特性，修改标记特性，并将替换为 SetBlobTags 操作。 若要从 blob 中删除所有索引标记，请调用 SetBlobTags 操作，不指定标记属性。 Blob 索引标记是 blob 数据内容的子资源，SetBlobTags 不会修改任何基础内容，也不会更改 blob 的上次修改时间。
+若要修改现有的索引标记特性，必须首先检索现有标记特性，修改标记特性，并将替换为 SetBlobTags 操作。 若要从 blob 中删除所有索引标记，请调用 SetBlobTags 操作，不指定标记属性。 由于 blob 索引标记是 blob 数据内容的子资源，因此 SetBlobTags 不会修改任何基础内容，也不会更改 blob 的上次修改时间或 ETag （实体标记）。 您可以为所有当前的基本 blob 和以前的版本创建或修改索引标记;但不能修改快照或软删除 blob 上的标记。 
 
 以下限制适用于 Blob 索引标记：
 - 每个 blob 最多可以有10个 blob 索引标记
 - 标记键的长度必须介于1到128个字符之间
 - 标记值必须介于0到256个字符之间
 - 标记键和值区分大小写
-- 标记键和值仅支持字符串数据类型;所有数字或特殊字符都将保存为字符串
+- 标记键和值仅支持字符串数据类型;任何数字、日期、时间或特殊字符都将保存为字符串
 - 标记键和值必须符合以下命名规则：
   - 字母数字字符： a-z、a-z、0-9
   - 特殊字符：空格、加、减、句点、冒号、等于、下划线、正斜杠
 
 ## <a name="getting-and-listing-blob-index-tags"></a>获取和列出 Blob 索引标记
 
-Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础 blob 数据内容进行检索。 设置后，可以立即使用 GetBlobTags 操作检索和查看单个 blob 的 blob 索引标记。 带`include:tags`参数的 ListBlobs 操作还会返回容器中的所有 blob 及其应用的 blob 索引标记。 
+Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础 blob 数据内容进行检索。 设置后，可以立即使用 GetBlobTags 操作检索和查看单个 blob 的 blob 索引标记。 带参数的 ListBlobs 操作 `include:tags` 还会返回容器中的所有 blob 及其应用的 blob 索引标记。 
 
 对于至少具有1个 blob 索引标记的任何 blob，将在 ListBlobs、GetBlob 和 GetBlobProperties 操作中返回 x ms 标记计数，指示 blob 上存在的 blob 索引标记的计数。
 
@@ -90,16 +89,16 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 以下条件适用于 blob 索引筛选：
 -   标记键应括在双引号（"）中
 -   标记值和容器名称应括在单引号（'）中
--   仅允许在特定容器名称（即@container = "容器名称"）上进行筛选的 @ 字符
+-   仅允许在特定容器名称（即 @container = "容器名称"）上进行筛选的 @ 字符
 - 筛选器应用于字符串的字典排序
 -   同一键上的相同面范围操作无效（即 "Rank" > "10" 和 "Rank" >= "15"）
 - 使用 REST 创建筛选器表达式时，应对字符进行 URI 编码
 
 下表显示了 FindBlobsByTags 的所有有效运算符：
 
-|  运算符  |  说明  | 示例 |
+|  运算符  |  描述  | 示例 |
 |------------|---------------|---------|
-|     =      |     等于     | "状态" = "正在进行" | 
+|     =      |     Equal     | "状态" = "正在进行" | 
 |     >      |  大于 |  "日期" > "2018-06-18" |
 |     >=     |  大于或等于 | "Priority" >= "5" | 
 |     <      |  小于    | "Age" < "32" |
@@ -107,23 +106,30 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 |    AND     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
 | @container |  作用域到特定容器   | @container= ' videofiles ' 和 "status" = ' done ' |
 
+> [!NOTE]
+> 对标记设置和查询时，请熟悉按字典排序。
+> - 数字排在字母之前。 数字根据第一个数字进行排序。
+> - 大写字母排在小写字母之前。
+> - 符号不是标准符号。 某些符号在数值之前进行排序。 其他符号在字母之前或之后排序。
+>
+
 ## <a name="conditional-blob-operations-with-blob-index-tags"></a>带有 Blob 索引标记的条件 Blob 操作
-在 REST 版本2019-10-10 及更高版本中，大多数[blob 服务 api](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)现在支持条件标头（x-毫秒-标记），以便仅当满足指定的 blob 索引条件时，操作才会成功。 如果不满足条件，则将获得`error 412: The condition specified using HTTP conditional header(s) is not met`。
+在 REST 版本2019-10-10 及更高版本中，大多数[blob 服务 api](https://docs.microsoft.com/rest/api/storageservices/operations-on-blobs)现在支持条件标头（x-毫秒-标记），以便仅当满足指定的 blob 索引条件时，操作才会成功。 如果不满足条件，则将获得 `error 412: The condition specified using HTTP conditional header(s) is not met` 。
 
 "X-毫秒-标记" 标头可以与其他现有 HTTP 条件标头（If-Match、If-match 等）组合。  如果请求中提供了多个条件标头，则它们都必须评估为 true，操作才能成功。  所有条件标头都与逻辑 AND 组合在一起。 
 
 下表显示了条件运算的所有有效运算符：
 
-|  运算符  |  说明  | 示例 |
+|  运算符  |  描述  | 示例 |
 |------------|---------------|---------|
-|     =      |     等于     | "状态" = "正在进行" |
+|     =      |     Equal     | "状态" = "正在进行" |
 |     <>     |   不等于   | "状态"  <>  "完成"  | 
 |     >      |  大于 |  "日期" > "2018-06-18" |
 |     >=     |  大于或等于 | "Priority" >= "5" | 
 |     <      |  小于    | "Age" < "32" |
 |     <=     |  小于或等于  | "公司" <= "Contoso" |
 |    AND     |  逻辑与  | "Rank" >= "010" 和 "Rank" < "100" |
-|     或     |  逻辑或   | "状态" = "完成" 或 "优先级" >= "05" |
+|     或者     |  逻辑或   | "状态" = "完成" 或 "优先级" >= "05" |
 
 > [!NOTE]
 > 有两个额外的运算符（不等于和逻辑或）可用于 blob 操作的条件 x ms-chap 标头中，但在 FindBlobsByTags 操作中不存在。
@@ -138,7 +144,7 @@ Blob 索引的标记不仅有助于对 blob 数据进行分类、管理和搜索
 
 您可以将 blob 索引匹配设置为生命周期规则中的独立筛选器集，以便对标记的数据应用操作。 也可以组合使用前缀匹配和 blob 索引匹配来匹配更具体的数据集。 将多个筛选器应用于生命周期规则的操作是一种逻辑 AND 操作，以便仅当所有筛选条件匹配时才应用该操作。 
 
-以下示例生命周期管理规则适用于容器 "videofiles" 中的块 blob，以及用于仅在数据与的 blob 索引标记条件匹配时用于存档存储```"Status" = 'Processed' AND "Source" == 'RAW'```的层 blob。
+以下示例生命周期管理规则适用于容器 "videofiles" 中的块 blob，以及用于仅在数据与的 blob 索引标记条件匹配时用于存档存储的层 blob ```"Status" = 'Processed' AND "Source" == 'RAW'``` 。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 ![Azure 门户中的生命周期管理的 Blob 索引匹配规则示例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
@@ -201,7 +207,7 @@ Blob 索引标记是 blob 数据的子资源。 具有权限的用户或用于�
 
 |   Blob 操作   |  RBAC 操作   |
 |---------------------|----------------|
-| 按标记查找 Blob  | StorageAccounts/blobServices/容器/blob/筛选器 |
+| 按标记查找 Blob  | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 | 设置 Blob 标记         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write | 
 | 获取 Blob 标记         | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read |
 
@@ -214,7 +220,7 @@ Blob 索引标记是 blob 数据的子资源。 具有权限的用户或用于�
 
 |  权限  |  URI 符号  | 允许的操作 |
 |--------------|--------------|--------------------|
-|  索引标记  |      t         | 获取和设置 blob 的 blob 索引标记 |
+|  索引标记  |      T         | 获取和设置 blob 的 blob 索引标记 |
 
 #### <a name="container-sas"></a>容器 SAS
 可以在容器服务 SAS 中授予下列权限，以允许对 blob 标记进行筛选。  Blob 列表权限不足，无法按索引标记允许筛选 blob。
@@ -246,9 +252,11 @@ Blob 索引定价当前提供公共预览版，并可能会因公开上市而发
 
 ## <a name="regional-availability-and-storage-account-support"></a>区域可用性和存储帐户支持
 
-Blob 索引当前仅可用于常规用途 v2 （GPv2）帐户。 在 Azure 门户中，可将现有的常规用途 (GPv1) 帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅[Azure 存储帐户概述](../common/storage-account-overview.md)。
+Blob 索引当前仅在禁用了分层命名空间（HNS）的常规用途 v2 （GPv2）帐户上可用。 常规用途（GPV1）帐户不受支持，但你可以将任何 GPv1 帐户升级到 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 在公共预览版中，Blob 索引当前仅在以下选择区域提供：
+- 加拿大中部
+- 加拿大东部
 - 法国中部
 - 法国南部
 
@@ -276,9 +284,9 @@ az provider register --namespace 'Microsoft.Storage'
 本部分介绍 Blob 索引当前公共预览版中的已知问题和条件。 与大多数预览一样，此功能不应用于生产工作负荷，因为行为可能会发生变化。
 
 -   对于预览版，你必须先注册你的订阅，然后才能将 Blob 索引用于预览区域中的存储帐户。
--   预览版目前仅支持 GPv2 帐户。 Blob 索引当前不支持 blob、BlockBlobStorage 和 HNS enabled DataLake Gen2 帐户。
+-   预览版目前仅支持 GPv2 帐户。 Blob 索引当前不支持 blob、BlockBlobStorage 和 HNS enabled DataLake Gen2 帐户。 将不支持 GPv1 帐户。
 -   上载包含索引标记的页 blob 当前不会保留标记。 必须在上载页 blob 后设置标记。
--   当筛选的作用域限定为单个容器时@container ，只有在筛选器表达式中的所有索引标记均为相等检查（key = value）时，才能传递。 
+-   当筛选的作用域限定为单个容器时， @container 只有在筛选器表达式中的所有索引标记均为相等检查（key = value）时，才能传递。 
 -   将 range 运算符与 AND 条件一起使用时，只能指定相同的索引标记键名称（Age > "013" 和 Age < "100"）。
 -   当前不支持版本控制和 Blob 索引。 Blob 索引标记保留用于版本，但当前未传递到 blob 索引引擎。
 -   当前不支持帐户故障转移。 Blob 索引在故障转移后可能不会正确更新。
@@ -290,6 +298,9 @@ az provider register --namespace 'Microsoft.Storage'
 
 ### <a name="can-blob-index-help-me-filter-and-query-content-inside-my-blobs"></a>Blob 索引可以帮助我筛选和查询 blob 中的内容吗？ 
 不可以，Blob 索引标记可帮助你查找要查找的 blob。 如果需要在 blob 内搜索，请使用查询加速或 Azure 搜索。
+
+### <a name="are-there-any-special-considerations-regarding-blob-index-tag-values"></a>有关 Blob 索引标记值是否有任何特殊注意事项？
+Blob 索引标记仅支持字符串数据类型和查询，并按字典顺序返回结果。 对于数字，建议使用零填充数字。 对于日期和时间，建议将存储为符合 ISO 8601 的格式。
 
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>Blob 索引标记和 Azure 资源管理器标记是相关的吗？
 不能，Azure 资源管理器标记有助于组织控制平面资源，如订阅、资源组和存储帐户。 Blob 索引标记提供对数据平面资源（如存储帐户中的 blob）的对象管理和发现。

@@ -4,19 +4,18 @@ description: 在员工或来宾获取访问权限之前，开始使用 Azure Act
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253318"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -94,19 +93,19 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
    | 过期开始日期 | 频率 | 结果 |
    | --- | --- | --- |
-   | 今天的日期  | 每月一次 | 从今天开始，用户必须接受使用条款，并且以后每个月都要接受。 |
-   | 将来的日期  | 每月一次 | 从今天开始，用户必须接受使用条款。 到达指定的将来日期时，同意状态将会过期，以后用户必须每个月接受使用条款。  |
+   | 今天的日期  | 每月 | 从今天开始，用户必须接受使用条款，并且以后每个月都要接受。 |
+   | 将来的日期  | 每月 | 从今天开始，用户必须接受使用条款。 到达指定的将来日期时，同意状态将会过期，以后用户必须每个月接受使用条款。  |
 
    例如，如果将过期开始日期设置为“1 月 1 日”，将频率设置为“每月”，则两个用户的过期计划如下：********
 
-   | User | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
+   | 用户 | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
 
 1. 使用 "**重新接受前的持续时间" 需要（天）** 设置以指定用户必须面向的使用条款。 这可以让用户遵照自己的计划。 例如，如果将持续时间设置为 **30** 天，则两个用户的计划如下：
 
-   | User | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
+   | 用户 | 第一个接受日期 | 第一个过期日期 | 第二个过期日期 | 第三个过期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 1 月 31 日 | 3 月 2 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 14 日 | 3 月 16 日 | 4 月 15 日 |
@@ -129,7 +128,7 @@ Azure AD 使用条款使用 PDF 格式显示内容。 此 PDF 文件可以是任
 
     可以使用自定义条件访问策略将使用条款细化，向下细化到特定云应用程序或用户组。 有关详细信息，请参阅[快速入门：访问云应用之前要求接受使用条款](require-tou.md)。
 
-1. 单击“创建”。 
+1. 单击“创建”。
 
    选择自定义条件访问模板后，会显示一个新的屏幕用于创建自定义的条件访问策略。
 
@@ -225,7 +224,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 
    ![“编辑使用条款”窗格，其中显示了名称和展开选项](./media/terms-of-use/edit-tou.png)
 
-1. 单击 "**保存**" 以保存所做的更改。
+1. 单击“保存”以保存更改。
 
    保存更改后，用户必须重新接受这些编辑内容。
 
@@ -366,7 +365,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：是的，最终用户可以选择指向其他页面的超链接，但不支持链接到文档中的部分。
 
 **问：使用条款是否支持多种语言？**<br />
-答：是的。 目前，管理员可以为单个使用条款配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
+A:是的。 目前，管理员可以为单个使用条款配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
 
 **问：什么时候会触发使用条款？**<br />
 答：在登录体验期间触发使用条款。
@@ -387,7 +386,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：如果你已配置 Azure AD 使用条款和[Intune 条款和条件](/intune/terms-and-conditions-create)，则用户需要接受这两者。 有关详细信息，请参阅[为组织博客文章选择合适的条款解决方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)。
 
 **问：使用条款服务使用哪些终结点进行身份验证？**<br />
-答：使用条款利用以下用于身份验证的终结https://tokenprovider.termsofuse.identitygovernance.azure.com点https://account.activedirectory.windowsazure.com：和。 如果你的组织针对注册实施 URL 允许列表，则需要将这些终结点以及用于登录的 Azure AD 终结点添加到该允许列表。
+答：使用条款利用以下用于身份验证的终结点： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果你的组织针对注册实施 URL 允许列表，则需要将这些终结点以及用于登录的 Azure AD 终结点添加到该允许列表。
 
 ## <a name="next-steps"></a>后续步骤
 

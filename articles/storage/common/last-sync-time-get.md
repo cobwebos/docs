@@ -6,16 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/16/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 02f7d7e2735717a7a6e7a56273551197c16b77aa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4309f1dc63ac7dd96e22f4564a32aae6ed59ad84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195804"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>检查存储帐户的“上次同步时间”属性
 
@@ -37,13 +36,7 @@ ms.locfileid: "83659246"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 获取存储帐户的上次同步时间，请安装支持获取异地复制统计信息的 Az.Storage 模块版本。例如：
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.14.0 –AllowClobber –Force
-```
-
-然后检查存储帐户的 GeoReplicationStats.LastSyncTime 属性。 请务必将占位符值替换为你自己的值：
+若要获取具有 PowerShell 的存储帐户的上次同步时间，请安装[1.11.0 模块的](https://www.powershellgallery.com/packages/Az.Storage)版本或更高版本。 然后检查存储帐户的 GeoReplicationStats.LastSyncTime 属性。 请务必将占位符值替换为你自己的值：
 
 ```powershell
 $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `

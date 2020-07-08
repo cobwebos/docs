@@ -8,12 +8,11 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195873"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway 安全和数据保护
 
@@ -27,7 +26,6 @@ Data Box Gateway 解决方案包含四个主要组件互相交互：
 - **Data Box Gateway 设备**。 在你提供的系统的虚拟机监控程序中预配的虚拟设备。 此虚拟设备用于将本地数据导入到 Azure。
 - **连接到设备的客户端/主机**。 基础结构中连接到 Data Box Gateway 设备并包含需要保护的数据的客户端。
 - **云存储**。 Azure 云平台中存储数据的位置。 此位置通常是链接到所创建的 Data Box Gateway 资源的存储帐户。
-
 
 ## <a name="data-box-gateway-service-protection"></a>Data Box Gateway 服务保护
 
@@ -64,7 +62,6 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - 使用本地 web UI[更改密码](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)。 如果更改了密码，请务必通知所有远程访问用户，使其在登录时不会出现问题。
 
-
 ## <a name="protect-your-data"></a>保护数据
 
 本节介绍保护传输中数据和存储数据的 Data Box Gateway 安全功能。
@@ -77,10 +74,18 @@ Data Box Gateway 设备是在你提供的本地系统的虚拟机监控程序中
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>通过存储帐户保护数据
+### <a name="protect-data-using-storage-accounts"></a>使用存储帐户保护数据
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - 定期轮换[存储帐户密钥](data-box-gateway-manage-shares.md#sync-storage-keys)并对其进行同步，以帮助保护你的存储帐户不受未经授权的用户的保护。
+
+### <a name="protect-the-device-data-using-bitlocker"></a>使用 BitLocker 保护设备数据
+
+若要保护 Data Box Gateway 虚拟机上的虚拟磁盘，建议启用 BitLocker。 默认情况下，不启用 BitLocker。 有关详细信息，请参阅：
+
+- [Hyper-V 管理器中的加密支持设置](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [虚拟机中的 BitLocker 支持](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>管理个人信息
 

@@ -3,12 +3,11 @@ title: 在 Azure Migrate 中添加评估工具
 description: 了解如何在 Azure Migrate 中添加评估工具。
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195635"
 ---
 # <a name="add-assessment-tools"></a>添加评估工具
 
@@ -19,11 +18,11 @@ ms.locfileid: "82901060"
 
 ## <a name="select-an-assessment-scenario"></a>选择评估方案
 
-1. 在 Azure Migrate 项目中，单击“概述”。 
+1. 在 Azure Migrate 项目中，单击“概述”。
 2. 选择要使用的评估方案：
 
     - 若要发现和评估要迁移到 Azure 的计算机和工作负荷，请选择 "**评估和迁移服务器**"。
-    - 若要评估本地 SQL 计算机，请选择 "**评估和迁移数据库**"。
+    - 若要评估本地 SQL Server 数据库，请选择 "**评估和迁移数据库**"。
     - 若要评估本地 web 应用，请选择 "**评估和迁移 web 应用**"。
 
     ![评估方案](./media/how-to-assess/assess-scenario.png)

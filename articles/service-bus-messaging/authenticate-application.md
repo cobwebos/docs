@@ -1,19 +1,13 @@
 ---
 title: 对访问 Azure 服务总线实体的应用程序进行身份验证
 description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服务总线实体（队列、主题等）的应用程序进行身份验证
-services: service-bus-messaging
-ms.service: event-hubs
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.author: aschhab
-ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 707fbec4317b4c34349e04895f9c6a0bdf4f1b47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341512"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
 Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -70,13 +64,13 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 1. 在 [Azure 门户](https://portal.azure.com/)中，导航到你的服务总线命名空间。 选择左侧菜单上的“访问控制(标识和访问管理)”，显示命名空间的访问控制设置  。 如果需要创建服务总线命名空间，请按此文中的说明操作：[创建服务总线消息传送命名空间](service-bus-create-namespace-portal.md)。
 
     ![在左侧菜单中选择“访问控制”](./media/authenticate-application/select-access-control-menu.png)
-1. 选择“角色分配”  选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。   
+1. 选择“角色分配”  选项卡以查看角色分配列表。 在工具栏上选择“添加”按钮，然后选择“添加角色分配”。  
 
     ![工具栏上的“添加”按钮](./media/authenticate-application/role-assignments-add-button.png)
 1. 在“添加角色分配”  页上，执行以下步骤：
     1. 选择要分配的**服务总线角色**。 
     1. 通过搜索找到要为其分配该角色的**安全主体**（用户、组、服务主体）。
-    1. 选择“保存”以保存角色分配。  
+    1. 选择“保存”以保存角色分配。 
 
         ![向用户分配角色](./media/authenticate-application/assign-role-to-user.png)
     4. 分配有该角色的标识列出在该角色下。 例如，下图显示 Azure-users 充当“Azure 服务总线数据所有者”角色。 
@@ -103,7 +97,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 > [!Note]
 > 如果将应用程序注册为本机应用程序，可为重定向 URI 指定任何有效的 URI。 对于本机应用程序，此值不一定要是实际的 URL。 对于 Web 应用程序，重定向 URI 必须是有效的 URI，因为它指定了要向哪个 URL 提供令牌。
 
-注册应用程序后，可在“设置”下看到“应用程序(客户端) ID”：  
+注册应用程序后，可在“设置”下看到“应用程序(客户端) ID”： 
 
 ![已注册的应用程序的应用程序 ID](./media/authenticate-application/application-id.png)
 
@@ -116,11 +110,11 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 请求令牌时，应用程序需要使用客户端机密来证明其身份。 若要添加客户端机密，请执行以下步骤。
 
 1. 在 Azure 门户中导航到你的应用注册（如果尚未转到此页上）。
-1. 在左侧菜单上，选择“证书和机密”****。
-1. 在“客户端机密”下，选择“新建客户端机密”以创建新的机密。********
+1. 在左侧菜单上，选择“证书和机密”  。
+1. 在“客户端机密”下，选择“新建客户端机密”以创建新的机密。  
 
     ![新建客户端机密 - 按钮](./media/authenticate-application/new-client-secret-button.png)
-1. 提供机密说明，并选择所需的过期时间间隔，然后选择“添加”。****
+1. 提供机密说明，并选择所需的过期时间间隔，然后选择“添加”。 
 
     ![“添加客户端机密”页](./media/authenticate-application/add-client-secret-page.png)
 1. 请马上将新机密的值复制到安全位置。 填充值只会显示一次。
@@ -128,7 +122,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
     ![客户端机密](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>服务总线 API 的权限
-如果应用程序是一个控制台应用程序，则必须注册一个本机应用程序并将 **Microsoft.ServiceBus** 的 API 权限添加到“必需的权限”集。**** 本机应用程序在 Azure AD 中还需要一个**重定向 URI** ，用作标识符;该 URI 不需要是网络目标。 对于此示例请使用 `https://servicebus.microsoft.com`，因为示例代码已使用了该 URI。
+如果应用程序是一个控制台应用程序，则必须注册一个本机应用程序并将 **Microsoft.ServiceBus** 的 API 权限添加到“必需的权限”集。  本机应用程序在 Azure AD 中还需要有一个充当标识符的 **redirect-URI**，该 URI 不需要是网络目标。 对于此示例请使用 `https://servicebus.microsoft.com`，因为示例代码已使用了该 URI。
 
 ### <a name="client-libraries-for-token-acquisition"></a>用于获取令牌的客户端库  
 注册应用程序并向其授予在 Azure 服务总线发送/接收数据的权限后，可将代码添加到应用程序，以便对安全主体进行身份验证并获取 OAuth 2.0 令牌。 若要进行身份验证并获取令牌，可以使用 [Microsoft 标识平台身份验证库](../active-directory/develop/reference-v2-libraries.md)，或者其他支持 OpenID 或 Connect 1.0 的开源库。 然后，应用程序可以使用访问令牌授权针对 Azure 服务总线发出的请求。
@@ -136,26 +130,26 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 有关支持获取令牌的方案列表，请参阅[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库的[方案](https://aka.ms/msal-net-scenarios)部分。
 
 ## <a name="sample-on-github"></a>GitHub 上的示例
-请参阅 GitHub 上的以下示例：[服务总线的角色基本访问控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
+窗口 GitHub 上的以下示例：[服务总线的基于角色的访问控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
 
-使用“客户端机密登录”选项，而不是“交互用户登录”选项。******** 使用客户端机密选项时，看不到弹出窗口。 应用程序会使用租户 ID 和应用 ID 进行身份验证。 
+使用“客户端机密登录”选项，而不是“交互用户登录”选项。   使用客户端机密选项时，看不到弹出窗口。 应用程序会使用租户 ID 和应用 ID 进行身份验证。 
 
 ### <a name="run-the-sample"></a>运行示例
 
-在运行该示例之前，请编辑**app.config**文件，并根据方案设置以下值：
+在运行示例前，请编辑 **app.config** 文件并根据方案设置以下值：
 
 - `tenantId`：设置为 **TenantId** 值。
 - `clientId`：设置为 **ApplicationId** 值。
-- `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”**** 下。
+- `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”  下。
 - `serviceBusNamespaceFQDN`：设置为新创建的服务总线命名空间的完整 DNS 名称，例如 `example.servicebus.windows.net`。
-- `queueName`：设置为你创建的队列的名称。
+- `queueName`：设置为所创建的队列的名称。
 - 执行前面的步骤时在应用中指定的重定向 URI。
 
-运行该控制台应用程序时，系统会提示你选择一个方案。 请通过键入相应的编号并按 ENTER 来选择“交互用户登录”****。 应用程序会显示一个登录窗口，要求你同意访问服务总线，然后使用登录标识通过该服务来演练发送/接收方案。
+运行该控制台应用程序时，系统会提示你选择一个方案。 请通过键入相应的编号并按 ENTER 来选择“交互用户登录”  。 应用程序会显示一个登录窗口，要求你同意访问服务总线，然后使用登录标识通过该服务来演练发送/接收方案。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解有关 RBAC 的详细信息，请参阅[什么是基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)？
+- 若要详细了解 RBAC，请参阅[什么是基于角色的访问控制 (RBAC)？](../role-based-access-control/overview.md)
 - 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 RBAC 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-powershell.md)  
     - [使用 Azure CLI 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-cli.md)

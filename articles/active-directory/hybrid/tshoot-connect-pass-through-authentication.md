@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: 36844c3c2fcfdbf016b3e2d148345e9ce31ea2b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60456092"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85356145"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -52,13 +51,40 @@ ms.locfileid: "60456092"
 |AADSTS80005|验证遇到了不可预知的 WebException|暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
 |AADSTS80007|与 Active Directory 通信时出错|查看代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
+### <a name="users-get-invalid-usernamepassword-error"></a>用户收到无效的用户名/密码错误 
+
+如果用户的本地 UserPrincipalName （UPN）不同于用户的云 UPN，就会发生这种情况。
+
+若要确认这是否是问题，请首先测试直通身份验证代理是否正常工作：
+
+
+1. 创建测试帐户。  
+2. 导入代理计算机上的 PowerShell 模块：
+ 
+ ```powershell
+ Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication  Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
+ ```
+3. 运行调用 PowerShell 命令： 
+
+ ```powershell
+ Invoke-PassthroughAuthOnPremLogonTroubleshooter 
+ ``` 
+4. 当系统提示你输入凭据时，请输入用于登录的相同用户名和密码（ https://login.microsoftonline.com) 。
+
+如果获得相同的用户名/密码错误，这意味着直通身份验证代理正常工作，问题可能是本地 UPN 不可路由。 若要了解详细信息，请参阅[配置备用登录 ID]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
+
+
+
+
+
+
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 
 如果你的租户有关联的 Azure AD Premium 许可证，还可在 [Azure Active Directory 管理员中心](https://aad.portal.azure.com/)查看[登录活动报告](../reports-monitoring/concept-sign-ins.md)。
 
 ![Azure Active Directory 管理中心 - 登录报表](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-导航到[Azure Active Directory 管理中心](https://aad.portal.azure.com/) **Azure Active Directory** -> **登录**，并单击特定用户的登录活动。 查找“登录错误代码”**** 字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
+导航到**Azure Active Directory**  ->  [Azure Active Directory 管理中心](https://aad.portal.azure.com/)Azure Active Directory**登录**，并单击特定用户的登录活动。 查找“登录错误代码”**** 字段。 使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -67,7 +93,7 @@ ms.locfileid: "60456092"
 | 80002 | 身份验证代理的密码验证请求已超时。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80003 | 身份验证代理收到的响应无效。 | 如果在多个用户中均可重现此问题，请检查你的 Active Directory 配置。
 | 80004 | 在登录请求中使用的用户主体名称 (UPN) 不正确。 | 要求用户使用正确的用户名登录。
-| 80005 | 身份验证代理：出现错误。 | 暂时性的错误。 请稍后再试。
+| 80005 | 身份验证代理：出现错误。 | 暂时性的错误。 请稍后重试。
 | 80007 | 身份验证代理无法连接到 Active Directory。 | 检查是否可以从身份验证代理访问你的 Active Directory。
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。

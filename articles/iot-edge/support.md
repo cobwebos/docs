@@ -4,16 +4,15 @@ description: 了解可以运行 Azure IoT Edge 守护程序和运行时的操作
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/12/2020
+ms.date: 06/19/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ec143fbca94c5423ca67e09fa2932e55c06f418e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 097826a24cb2de17b603ff5fe3113d715e079697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807394"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -90,6 +89,7 @@ Microsoft 支持下表中列出的系统，这些系统通常可用或处于公�
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Wind River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+| [Ubuntu 20.04 <sup>2</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20.04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20.04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
 <sup>1</sup> Debian 10 系统（包括 Raspian Buster）使用 IoT Edge 不支持的 OpenSSL 版本。 在安装 IoT Edge 之前，请使用以下命令安装较低版本：
 
@@ -97,19 +97,21 @@ Microsoft 支持下表中列出的系统，这些系统通常可用或处于公�
 sudo apt-get install libssl1.0.2
 ```
 
+<sup>2</sup> [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)存储库中的 Debian 9 包应与 Ubuntu 20.04 一起使用。
+
 ## <a name="releases"></a>发行版本
 
 [azure-iotedge releases](https://github.com/Azure/azure-iotedge/releases) 页提供 IoT Edge 发行资产和发行说明。 本部分将介绍这些发行说明中的信息，以帮助你更轻松地直观显示每个版本的组件。
 
 可以单独安装或更新 IoT Edge 组件，并与旧版本中的组件向后兼容。 下表列出了每个版本中包含的组件：
 
-| 发布   | 安全守护程序  | Edge 中心<br>Edge 代理 | Libiothsm | Moby  |
-| --------- | ---------------- | ---------------------- | --------- | ----- |
-| 1\.0.9 | 1.0.9.1<br>1.0.9            | 1.0.9.1<br>1.0.9                  | 1.0.9.1<br>1.0.9     |       |
-| 1\.0.8 | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| 1\.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
-| 1\.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
-| 1\.0.5 | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+| 发布 | 安全守护程序 | Edge 中心<br>Edge 代理 | Libiothsm | Moby |
+|--|--|--|--|--|
+| 1\.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| 1\.0.8 | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| 1\.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
+| 1\.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| 1\.0.5 | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
 IoT Edge 使用 Microsoft.Azure.Device.Client SDK。 有关详细信息，请参阅 [Azure IoT C# SDK GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp)或 [Azure SDK for .NET 参考内容](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet)。 以下列表显示了测试每个版本所针对的客户端 SDK 版本：
 

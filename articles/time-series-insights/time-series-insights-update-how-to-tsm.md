@@ -10,19 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39ebbf99ad31cce20eabc20fbdc056c889235713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2fa56217c54ac662a62a5ce835d75e3d85f05bfa
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77470745"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041466"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据建模
 
 本文介绍如何在 Azure 时序见解预览版中使用时序模型。 它详细介绍了几个常见数据方案。
 
 > [!TIP]
-> * 了解预览版[时序模型](time-series-insights-update-tsm.md)。
+> * 了解预览版[时序模型](concepts-model-overview.md)。
 > * 若要详细了解如何在预览版 UI 中进行导航，请参阅 [Azure 时序见解预览版资源管理器](./time-series-insights-update-explorer.md)。
 
 ## <a name="instances"></a>实例数
@@ -53,7 +52,7 @@ Azure 时序见解资源管理器在浏览器中支持实例“创建”、“�
 
     [![通过 JSON 大容量上传实例。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-instances.png#lightbox)
 
-1. 选择 "**上传**"。
+1. 选择**上载**。
 
 ### <a name="edit-a-single-instance"></a>编辑单个实例
 
@@ -104,7 +103,7 @@ Azure 时序见解资源管理器在浏览器中支持层次结构“创建”�
 
 1. 选择“上传 JSON”。****
 1. 选择包含层次结构有效负载的文件。
-1. 选择 "**上传**"。
+1. 选择**上载**。
 
     [![用于批量上传层次结构的选项。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-hierarchies.png#lightbox)
 
@@ -147,7 +146,7 @@ Azure 时序见解资源管理器在浏览器中支持类型“创建”、“�
 
 1. 选择“上传 JSON”。****
 1. 选择包含类型有效负载的文件。
-1. 选择 "**上传**"。
+1. 选择**上载**。
 
     [![批量类型上传选项。](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png)](media/v2-update-how-to-tsm/how-to-tsm-bulk-upload-types-json.png#lightbox)
 
@@ -168,7 +167,7 @@ Azure 时序见解资源管理器在浏览器中支持类型“创建”、“�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关时序模型的详细信息，请阅读[数据建模](./time-series-insights-update-tsm.md)。
+- 有关时序模型的详细信息，请阅读[数据建模](./concepts-model-overview.md)。
 
 - 若要详细了解预览版，请阅读[在 Azure 时序见解预览版资源管理器中可视化数据](./time-series-insights-update-explorer.md)。
 

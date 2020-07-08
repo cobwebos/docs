@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 534d75a5b9009f0febee2746179ab7357a4985e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77060394"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732865"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 SAP Cloud Platform Identity Authentication
 
@@ -31,7 +30,7 @@ ms.locfileid: "77060394"
 >
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -41,7 +40,7 @@ ms.locfileid: "77060394"
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>将用户分配到 SAP Cloud Platform Identity Authentication
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
 在配置和启用自动用户预配之前，应决定 Azure AD 中哪些用户和/或组需要访问 SAP Cloud Platform Identity Authentication。 确定后，可按照此处的说明将这些用户和/或组分配到 SAP Cloud Platform Identity Authentication：
 * [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
@@ -50,7 +49,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 * 建议为单个 Azure AD 用户分配 SAP Cloud Platform Identity Authentication 来测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 将用户分配到 SAP Cloud Platform Identity Authentication 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有**默认访问**角色的用户。
+* 将用户分配到 SAP Cloud Platform Identity Authentication 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="setup-sap-cloud-platform-identity-authentication-for-provisioning"></a>设置 SAP Cloud Platform Identity Authentication 进行预配
 
@@ -58,7 +57,10 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![SAP Cloud Platform Identity Authentication 管理控制台](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/adminconsole.png)
 
-2.  创建管理员用户并选择用户。  
+2.  按左侧面板上的 " **+ 添加**" 按钮，以便向列表中添加新的管理员。 选择 "**添加系统**" 并输入系统的名称。   
+
+> [!NOTE]
+> SAP Cloud Platform Identity Authentication 中的管理员用户必须是**系统**类型。 创建普通管理员用户可能会在预配时导致*未经授权*的错误。   
 
 3.  在 "配置授权" 下，切换切换按钮以**管理用户**和**管理组**。
 
@@ -78,7 +80,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 中转到 "**企业应用程序**"，然后选择 "**所有应用程序**"。
+2. 转到“企业应用程序”，并选择“所有应用程序”。 
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -99,7 +101,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>在 Azure AD 中为 SAP Cloud Platform Identity Authentication 配置自动用户预配：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -107,15 +109,15 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![应用程序列表中的“SAP Cloud Platform Identity Authentication”链接](common/all-applications.png)
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
-    ![设置选项卡](common/provisioning.png)
+    ![预配选项卡](common/provisioning.png)
 
-4. 将**预配模式**设置为 "**自动**"。
+4. 将“预配模式”设置为“自动”。
 
-    ![设置选项卡](common/provisioning-automatic.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中`https://<tenantID>.accounts.ondemand.com/service/scim ` ，输入 "**租户 URL**"。 输入先前在 "**管理员用户名**和**管理员密码**" 中检索的**用户 ID**和**密码**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 SAP Cloud Platform Identity Authentication。 如果连接失败，请确保 SAP Cloud Platform Identity Authentication 帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分中，输入 " `https://<tenantID>.accounts.ondemand.com/service/scim ` **租户 URL**"。 输入先前在 "**管理员用户名**和**管理员密码**" 中检索的**用户 ID**和**密码**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 SAP Cloud Platform Identity Authentication。 如果连接失败，请确保 SAP Cloud Platform Identity Authentication 帐户具有管理员权限，然后重试。
 
     ![租户 URL + 令牌](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
@@ -123,13 +125,13 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击 **“保存”** 。
+7. 单击“保存” 。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 SAP Cloud Platform Identity Authentication**"。
 
     ![SAP Cloud Platform Identity Authentication 用户映射](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/mapping.png)
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 SAP Cloud Platform Identity Authentication 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 SAP Cloud Platform Identity Authentication 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改****。
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 SAP Cloud Platform Identity Authentication 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 SAP Cloud Platform Identity Authentication 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![SAP Cloud Platform Identity Authentication 用户属性](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 
@@ -143,7 +145,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![预配范围](common/provisioning-scope.png)
 
-13. 已准备好预配时，单击“保存”****。
+13. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 

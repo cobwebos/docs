@@ -8,17 +8,16 @@ manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 759748124893a8f906a4bc336f835546202b0b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d5b35815e42b6c9fa5cbd874c0a58f5285c99539
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049494"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85355907"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -35,7 +34,7 @@ ms.locfileid: "80049494"
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
-- 将 Azure AD 服务 URL （`https://autologon.microsoftazuread-sso.com`）添加到 "受信任的站点" 区域而非 "本地 intranet" 区域会*阻止用户登录*。
+- 将 Azure AD 服务 URL （ `https://autologon.microsoftazuread-sso.com` ）添加到 "受信任的站点" 区域而非 "本地 intranet" 区域会*阻止用户登录*。
 - 无缝 SSO 支持 Kerberos 的 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5 加密类型。 建议将 AzureADSSOAcc $ 帐户的加密类型设置为 AES256_HMAC_SHA1，或将其中一个 AES 类型与 RC4 进行加密以提高安全性。 加密类型存储在 Active Directory 中的帐户的 Msds-supportedencryptiontypes 属性上。  如果 "AzureADSSOAcc $ 帐户加密类型" 设置为 "RC4_HMAC_MD5"，并且你想要将其更改为其中一个 AES 加密类型，请确保首先滚动 AzureADSSOAcc $ 帐户的 Kerberos 解密密钥，如相关问题下的[FAQ 文档](how-to-connect-sso-faq.md)中所述，否则不会出现无缝 SSO。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
@@ -54,7 +53,7 @@ ms.locfileid: "80049494"
 
 ![Azure Active Directory 管理中心：登录报告](./media/tshoot-connect-sso/sso9.png)
 
-浏览到[Azure Active Directory 管理中心](https://aad.portal.azure.com/)中**Azure Active Directory** > **登录**，然后选择特定用户的登录活动。 查找“登录错误代码”**** 字段。 通过使用下表将该字段的值映射到某个失败原因和解决方法：
+浏览到**Azure Active Directory**  >  [Azure Active Directory 管理中心](https://aad.portal.azure.com/)中 Azure Active Directory**登录**，然后选择特定用户的登录活动。 查找“登录错误代码”**** 字段。 通过使用下表将该字段的值映射到某个失败原因和解决方法：
 
 |登录错误代码|登录失败原因|解决方法
 | --- | --- | ---
@@ -75,7 +74,7 @@ ms.locfileid: "80049494"
 
 - 确保在 Azure AD Connect 中已启用无缝 SSO 功能。 如果无法启用该功能（例如，由于端口被阻止），请确保事先满足所有[先决条件](how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)。
 - 如果同时对租户启用了 [Azure AD Join](../active-directory-azureadjoin-overview.md)和无缝 SSO，请确保 Azure AD Join 没有问题。 如果设备同时注册了 Azure AD 并加入了域，则 Azure AD Join 的 SSO 将优先于无缝 SSO。 使用 Azure AD Join 的 SSO，用户将看到显示“已连接到 Windows”的登录磁贴。
-- 确保 Azure AD URL （`https://autologon.microsoftazuread-sso.com`）是用户 Intranet 区域设置的一部分。
+- 确保 Azure AD URL （ `https://autologon.microsoftazuread-sso.com` ）是用户 Intranet 区域设置的一部分。
 - 确保企业设备已加入 Active Directory 域。 设备__ 不需要[加入 Azure AD](../active-directory-azureadjoin-overview.md)，无缝 SSO 便可工作。
 - 确保用户已通过 Active Directory 域帐户登录到设备。
 - 确保用户的帐户来自已设置了无缝 SSO 的 Active Directory 林。
@@ -120,10 +119,10 @@ ms.locfileid: "80049494"
 1. 调用 `$creds = Get-Credential`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
    > [!NOTE]
-   >必须以 SAM 帐户名称格式（contoso\johndoe 或 com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分通过 DNS 查找域管理员的域控制器。
+   >必须以 SAM 帐户名称格式（contoso\johndoe 或 contoso.com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分查找使用 DNS 的域管理员的域控制器。
 
    >[!NOTE]
-   >使用的域管理员帐户不得是受保护用户组的成员。 如果是这样，则操作将失败。
+   >使用的域管理员帐户不得是受保护用户组的成员。 如果是，则操作将失败。
 
 2. 调用 `Disable-AzureADSSOForest -OnPremCredentials $creds`。 此命令将从本地域控制器删除此特定 Active Directory 林的 `AZUREADSSOACC` 计算机帐户。
 3. 为在其中设置了该功能的每个 Active Directory 林重复上述步骤。
@@ -133,13 +132,13 @@ ms.locfileid: "80049494"
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
    > [!NOTE]
-   >必须以 SAM 帐户名称格式（contoso\johndoe 或 com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分通过 DNS 查找域管理员的域控制器。
+   >必须以 SAM 帐户名称格式（contoso\johndoe 或 contoso.com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分查找使用 DNS 的域管理员的域控制器。
 
    >[!NOTE]
-   >使用的域管理员帐户不得是受保护用户组的成员。 如果是这样，则操作将失败。
+   >使用的域管理员帐户不得是受保护用户组的成员。 如果是，则操作将失败。
 
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
 
 若要在租户上启用此功能，请调用 `Enable-AzureADSSO -Enable $true`。

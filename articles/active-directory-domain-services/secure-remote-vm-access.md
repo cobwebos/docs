@@ -10,12 +10,11 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: a17f27831dd0a674c1d55cde6974aba5e1bfcfc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8a9382af630d80480e5bec50d629451ebe49bf73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734463"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>对 Azure Active Directory 域服务中的虚拟机进行安全远程访问
 
@@ -41,10 +40,10 @@ ms.locfileid: "82105720"
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
+    * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
 * 在 Azure Active Directory 域服务虚拟网络中创建的*工作负荷*子网。
     * 如果需要，请[为 Azure Active Directory 域服务托管域配置虚拟网络][configure-azureadds-vnet]。
-* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。 
+* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
 
 ## <a name="deploy-and-configure-the-remote-desktop-environment"></a>部署和配置远程桌面环境
 
@@ -55,16 +54,16 @@ ms.locfileid: "82105720"
 * *RDGVM01* -运行 RD 连接代理 SERVER、RD Web 访问服务器和 RD 网关服务器。
 * *RDSHVM01* -运行 RD 会话主机服务器。
 
-请确保将 Vm 部署到 Azure AD DS 虚拟网络的*工作负荷*子网，然后将 vm 加入 Azure AD ds 托管域。 有关详细信息，请参阅如何[创建 Windows SERVER VM 并将其加入到 AZURE AD DS 托管域][tutorial-create-join-vm]。
+请确保将 Vm 部署到 Azure AD DS 虚拟网络的*工作负荷*子网，然后将 vm 加入托管域。 有关详细信息，请参阅如何[创建 Windows SERVER VM 并将其加入到托管域][tutorial-create-join-vm]。
 
-RD 环境部署包含多个步骤。 可以使用现有的 RD 部署指南，无需任何特定更改即可在 Azure AD DS 托管域中使用：
+RD 环境部署包含多个步骤。 可以使用现有的 RD 部署指南，而无需在托管域中使用任何特定更改：
 
 1. 使用属于*AZURE AD DC Administrators*组的帐户（如*contosoadmin*）登录为 RD 环境创建的 vm。
 1. 若要创建和配置 RDS，请使用现有的[远程桌面环境部署指南][deploy-remote-desktop]。 根据需要将 RD 服务器组件分散在 Azure Vm 中。
     * 特定于 Azure AD DS-配置 RD 授权时，请将其设置为 "**每设备**" 模式，而不是 "部署指南"**中所述**。
 1. 如果要使用 web 浏览器提供访问权限，请[为用户设置远程桌面 web 客户端][rd-web-client]。
 
-将 RD 部署到 Azure AD DS 托管域后，你可以像使用本地 AD DS 域一样管理和使用该服务。
+将 RD 部署到托管域后，你可以像使用本地 AD DS 域一样管理和使用该服务。
 
 ## <a name="deploy-and-configure-nps-and-the-azure-mfa-nps-extension"></a>部署和配置 NPS 和 Azure MFA NPS 扩展
 
@@ -76,7 +75,7 @@ RD 环境部署包含多个步骤。 可以使用现有的 RD 部署指南，无
 
 若要将 Azure 多重身份验证集成到 Azure AD DS 远程桌面环境中，请创建一个 NPS 服务器并安装扩展：
 
-1. 创建连接到 Azure AD DS 虚拟网络中的*工作负荷*子网的附加 Windows Server 2016 或 2019 VM，如*NPSVM01*。 将 VM 加入到 Azure AD DS 托管域。
+1. 创建连接到 Azure AD DS 虚拟网络中的*工作负荷*子网的附加 Windows Server 2016 或 2019 VM，如*NPSVM01*。 将 VM 加入托管域。
 1. 以作为*AZURE AD DC Administrators*组的一部分的帐户（如*contosoadmin*）登录到 NPS VM。
 1. 在**服务器管理器**中，选择 "**添加角色和功能**"，然后安装 "*网络策略和访问服务*" 角色。
 1. 使用现有的操作方法文章来[安装和配置 AZURE MFA NPS 扩展][nps-extension]。
@@ -87,9 +86,9 @@ RD 环境部署包含多个步骤。 可以使用现有的 RD 部署指南，无
 
 若要集成 Azure 多重身份验证 NPS 扩展，请使用现有的操作方法文章，使用[网络策略服务器（NPS）扩展和 Azure AD 集成你的远程桌面网关基础结构][azure-mfa-nps-integration]。
 
-与 Azure AD DS 托管域集成需要以下附加配置选项：
+与托管域集成需要以下附加配置选项：
 
-1. 请勿[在 Active Directory 中注册 NPS 服务器][register-nps-ad]。 此步骤在 Azure AD DS 托管域中失败。
+1. 请勿[在 Active Directory 中注册 NPS 服务器][register-nps-ad]。 此步骤在托管域中失败。
 1. 在[步骤4中，若要配置网络策略][create-nps-policy]，还请选中复选框以**忽略用户帐户的拨入属性**。
 1. 如果为 NPS 服务器和 Azure 多重身份验证 NPS 扩展使用 Windows Server 2019，请运行以下命令来更新安全通道，使 NPS 服务器能够正确通信：
 

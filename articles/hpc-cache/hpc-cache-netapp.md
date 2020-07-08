@@ -3,15 +3,14 @@ title: 使用 Azure HPC 缓存和 Azure NetApp 文件
 description: 如何使用 Azure HPC 缓存来改善对 Azure NetApp 文件中存储的数据的访问
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6d4dd69b30acb26d02218fe05a60ace9aa855ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 374f3106ec42233cd5309c2773b05e3c96bbf98e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515488"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>将 Azure HPC 缓存用于 Azure NetApp 文件
 
@@ -80,7 +79,7 @@ Azure NetApp 文件文档中的快速入门示例文档使用 10.7.0.0/16 作为
 az netappfiles volume list -g ${RESOURCE_GROUP} --account-name ${ANF_ACCOUNT} --pool-name ${POOL} --query "[].mountTargets[].ipAddress" | grep -Ee '[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+' | tr -d '"' | tr -d , | sort | uniq
 ```
 
-Azure NetApp 文件系统上的导出名称有一个路径组件。 请勿尝试在 Azure NetApp 文件中创建根导出``/``的存储目标，因为该导出不提供文件访问。
+Azure NetApp 文件系统上的导出名称有一个路径组件。 请勿尝试在 Azure NetApp 文件中创建根导出的存储目标 ``/`` ，因为该导出不提供文件访问。
 
 对于这些存储目标的虚拟命名空间路径没有特别的限制。
 

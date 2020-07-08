@@ -4,19 +4,18 @@ description: 了解如何要求应用保护策略通过 Azure Active Directory �
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253352"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：要求应用保护策略和核准的客户端设备通过条件访问来访问云应用
 
@@ -37,7 +36,7 @@ ms.locfileid: "83681414"
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>应用场景 1：Office 365 应用需要已批准的具有应用保护策略的应用
 
-在此方案中，Contoso 已决定，在获得访问权限之前，对 Office 365 资源的所有移动访问都必须使用经批准的客户端应用，如 Outlook Mobile、OneDrive 和 Microsoft Teams，这些应用受应用保护策略保护。 其所有用户已使用 Azure AD 凭据登录，并拥有分配的许可证（包括 Azure AD Premium P1 或 P2 和 Microsoft Intune）。
+在此方案中，Contoso 已决定对 Office 365 资源的所有移动访问都必须使用批准的客户端应用（如 Outlook mobile 和 OneDrive），才能接收访问权限。 其所有用户已使用 Azure AD 凭据登录，并拥有分配的许可证（包括 Azure AD Premium P1 或 P2 和 Microsoft Intune）。
 
 组织必须完成以下步骤才能在移动设备上要求使用经批准的客户端应用。
 

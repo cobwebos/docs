@@ -11,12 +11,11 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: ed791ea10c072308c16baac9fa469a46b19ec648
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5d3300151dc5fdfde0b34aa3f76c3ed9494d34fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734055"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题： Azure Active Directory 域服务中的常见警报和解决方法
 
@@ -34,7 +33,7 @@ ms.locfileid: "80654498"
 
 此错误通常是在将 Azure 订阅移动到新的 Azure AD 目录，并且删除了与 Azure AD DS 关联的旧 Azure AD 目录时产生的。
 
-此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，并在新目录中重新创建它。 如果在删除 Azure AD DS 托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，并在新目录中重新创建它。 如果在删除托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101：Azure AD B2C 在此目录中运行
 
@@ -48,11 +47,11 @@ Azure AD DS 会自动与 Azure AD 目录同步。 如果 Azure AD 目录配置�
 
 若要使用 Azure AD DS，必须使用以下步骤在非 Azure AD B2C 目录中重新创建托管域：
 
-1. 从现有的 Azure AD 目录中[删除 AZURE AD DS 托管域](delete-aadds.md)。
+1. 从现有 Azure AD 目录中[删除托管域](delete-aadds.md)。
 1. 创建不是 Azure AD B2C 目录的新 Azure AD 目录。
-1. [创建 AZURE AD DS 托管域的替换](tutorial-create-instance.md)。
+1. [创建替换托管域](tutorial-create-instance.md)。
 
-Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警报。
+托管域的运行状况在两小时内自动更新，并删除警报。
 
 ## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103：地址在公共 IP 范围内
 
@@ -69,18 +68,18 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 > [!NOTE]
 > 如果你在 Internet 中拥有为虚拟网络配置的 IP 地址范围，则可以忽略此警报。 但是，Azure AD 域服务无法通过此配置提交到[SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/)]，因为这可能导致不可预知的错误。
 
-若要解决此警报，请删除现有 Azure AD DS 托管域，并在具有专用 IP 地址范围的虚拟网络中重新创建它。 此过程会造成中断，因为 Azure AD DS 托管域不可用，而您创建的任何自定义资源（如 Ou 或服务帐户）都将丢失。
+若要解决此警报，请删除你的现有托管域，并在具有专用 IP 地址范围的虚拟网络中重新创建它。 此过程会造成中断，因为托管域不可用，而您创建的任何自定义资源（如 Ou 或服务帐户）都将丢失。
 
-1. 从目录中[删除 AZURE AD DS 托管域](delete-aadds.md)。
+1. 从目录中[删除托管域](delete-aadds.md)。
 1. 若要更新虚拟网络 IP 地址范围，请在 Azure 门户中搜索并选择 "*虚拟网络*"。 为 Azure AD DS 选择不正确设置了公共 IP 地址范围的虚拟网络。
 1. 在 "**设置**" 下，选择 "*地址空间*"。
 1. 通过选择现有地址范围并对其进行编辑来更新地址范围，或添加其他地址范围。 请确保新的 IP 地址范围在专用 IP 范围内。 准备就绪后，**保存**所做的更改。
 1. 在左侧导航栏中选择 "**子网**"。
 1. 选择要编辑的子网，或创建其他子网。
 1. 更新或指定专用 IP 地址范围，并**保存**所做的更改。
-1. [创建 AZURE AD DS 托管域的替换](tutorial-create-instance.md)。 请确保选择具有专用 IP 地址范围的已更新虚拟网络子网。
+1. [创建替换托管域](tutorial-create-instance.md)。 请确保选择具有专用 IP 地址范围的已更新虚拟网络子网。
 
-Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警报。
+托管域的运行状况在两小时内自动更新，并删除警报。
 
 ## <a name="aadds106-your-azure-subscription-is-not-found"></a>AADDS106: 找不到 Azure 订阅
 
@@ -90,11 +89,11 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 ### <a name="resolution"></a>解决方法
 
-Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果删除了与 Azure AD DS 托管域关联的 Azure 订阅，则必须重新创建 Azure 订阅并 Azure AD DS 托管域。
+Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果删除了托管域与之关联的 Azure 订阅，则必须重新创建 Azure 订阅和托管域。
 
 1. [创建 Azure 订阅](../cost-management-billing/manage/create-subscription.md)。
-1. 从现有的 Azure AD 目录中[删除 AZURE AD DS 托管域](delete-aadds.md)。
-1. [创建 AZURE AD DS 托管域的替换](tutorial-create-instance.md)。
+1. 从现有 Azure AD 目录中[删除托管域](delete-aadds.md)。
+1. [创建替换托管域](tutorial-create-instance.md)。
 
 ## <a name="aadds107-your-azure-subscription-is-disabled"></a>AADDS107: Azure 订阅已禁用
 
@@ -104,12 +103,12 @@ Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 �
 
 ### <a name="resolution"></a>解决方法
 
-Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的 Azure 订阅未处于活动状态，则必须续订该订阅以重新激活订阅。
+Azure AD DS 要求使用有效的订阅。 如果与托管域关联的 Azure 订阅未处于活动状态，则必须续订该订阅以重新激活订阅。
 
 1. [续订 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
 2. 续订订阅后，可以通过 Azure AD DS 通知重新启用托管域。
 
-再次启用托管域时，Azure AD DS 托管域的运行状况将在两小时内自动更新，并删除警报。
+再次启用托管域后，托管域的运行状况会在两小时内自动更新，并删除警报。
 
 ## <a name="aadds108-subscription-moved-directories"></a>AADDS108: 在目录中移动了订阅
 
@@ -119,7 +118,7 @@ Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的
 
 ### <a name="resolution"></a>解决方法
 
-Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果移动了与 Azure AD DS 托管域关联的 Azure 订阅，则将订阅移回上一个目录，或从现有目录中[删除托管域](delete-aadds.md)，并[在所选订阅中创建替换 Azure AD DS 托管域](tutorial-create-instance.md)。
+Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果移动了托管域与之关联的 Azure 订阅，则将订阅移回上一个目录，或从现有目录中[删除托管域](delete-aadds.md)，并在所[选的订阅中创建一个替代托管域](tutorial-create-instance.md)。
 
 ## <a name="aadds109-resources-for-your-managed-domain-cannot-be-found"></a>AADDS109: 找不到托管域的资源
 
@@ -133,12 +132,12 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 删除其中一个所需资源时，将生成此警报。 如果删除资源的时间不到4小时之前，Azure 平台可能会自动重新创建已删除的资源。 以下步骤概述了如何检查运行状况状态和资源删除的时间戳：
 
-1. 在 Azure 门户中，搜索并选择 "**域服务**"。 选择 Azure AD DS 托管域，如*aaddscontoso.com*。
+1. 在 Azure 门户中，搜索并选择 "**域服务**"。 选择你的托管域，例如 *aaddscontoso.com*。
 1. 在左侧导航栏中，选择 "**运行状况**"。
 1. 在 "运行状况" 页上，选择 ID 为*AADDS109*的警报。
 1. 警报的时间戳是第一次找到它的时间。 如果时间戳不到4小时之前，Azure 平台可能会自动重新创建资源并自行解决警报。
 
-    如果警报超过4小时，则 Azure AD DS 托管域处于不可恢复的状态。 [删除 AZURE AD DS 托管域](delete-aadds.md)，然后[创建一个替代托管域](tutorial-create-instance.md)。
+    如果警报超过 4 小时，则托管域将处于不可恢复状态。 [删除托管域](delete-aadds.md)，然后[创建替换托管域](tutorial-create-instance.md)。
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: 与托管域关联的子网已满
 
@@ -150,7 +149,7 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 用于 Azure AD DS 的虚拟网络子网需要为自动创建的资源提供足够的 IP 地址。 此 IP 地址空间包括在出现维护事件时创建替换资源的需要。 若要最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如自己的 Vm）部署到与 Azure AD DS 相同的虚拟网络子网中。
 
-此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，然后重新创建它。 如果在删除 Azure AD DS 托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+此错误无法恢复。 若要解决此警报，请[删除你的现有托管域](delete-aadds.md)，然后重新创建它。 如果在删除托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 ## <a name="aadds111-service-principal-unauthorized"></a>AADDS111：未授权的服务主体
 
@@ -160,7 +159,7 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 ### <a name="resolution"></a>解决方法
 
-某些自动生成的服务主体用于管理和创建 Azure AD DS 托管域的资源。 如果更改了其中一个服务主体的访问权限，则域无法正确管理资源。 以下步骤说明如何了解并向服务主体授予访问权限：
+某些自动生成的服务主体用于管理和创建托管域的资源。 如果更改了其中一个服务主体的访问权限，则域无法正确管理资源。 以下步骤说明如何了解并向服务主体授予访问权限：
 
 1. 了解[基于角色的访问控制以及如何向 Azure 门户中的应用程序授予访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 2. 查看 ID 为*abba844e-bc0e-44b0-947a-dc74e5d09022*的服务主体所具有的访问权限，并授予之前拒绝的访问权限。
@@ -175,18 +174,18 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 用于 Azure AD DS 的虚拟网络子网需要为自动创建的资源提供足够的 IP 地址。 此 IP 地址空间包括在出现维护事件时创建替换资源的需要。 若要最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如自己的 Vm）部署到与 Azure AD DS 相同的虚拟网络子网中。
 
-若要解决此警报，请删除现有 Azure AD DS 托管域，并在具有足够大 IP 地址范围的虚拟网络中重新创建它。 此过程会造成中断，因为 Azure AD DS 托管域不可用，而您创建的任何自定义资源（如 Ou 或服务帐户）都将丢失。
+若要解决此警报，请删除你的现有托管域，并在具有足够大 IP 地址范围的虚拟网络中重新创建它。 此过程会造成中断，因为托管域不可用，而您创建的任何自定义资源（如 Ou 或服务帐户）都将丢失。
 
-1. 从目录中[删除 AZURE AD DS 托管域](delete-aadds.md)。
+1. 从目录中[删除托管域](delete-aadds.md)。
 1. 若要更新虚拟网络 IP 地址范围，请在 Azure 门户中搜索并选择 "*虚拟网络*"。 为具有小型 IP 地址范围 Azure AD DS 选择虚拟网络。
 1. 在 "**设置**" 下，选择 "*地址空间*"。
 1. 通过选择现有地址范围并对其进行编辑来更新地址范围，或添加其他地址范围。 请确保新的 IP 地址范围足以满足 Azure AD DS 子网范围。 准备就绪后，**保存**所做的更改。
 1. 在左侧导航栏中选择 "**子网**"。
 1. 选择要编辑的子网，或创建其他子网。
 1. 更新或指定足够大的 IP 地址范围，并**保存**所做的更改。
-1. [创建 AZURE AD DS 托管域的替换](tutorial-create-instance.md)。 请确保使用足够大的 IP 地址范围选取更新的虚拟网络子网。
+1. [创建替换托管域](tutorial-create-instance.md)。 请确保使用足够大的 IP 地址范围选取更新的虚拟网络子网。
 
-Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警报。
+托管域的运行状况在两小时内自动更新，并删除警报。
 
 ## <a name="aadds113-resources-are-unrecoverable"></a>AADDS113: 资源不可恢复
 
@@ -196,7 +195,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 ### <a name="resolution"></a>解决方法
 
-此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，然后重新创建它。 如果在删除 Azure AD DS 托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+此错误无法恢复。 若要解决此警报，请[删除你的现有托管域](delete-aadds.md)，然后重新创建它。 如果在删除托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 ## <a name="aadds114-subnet-invalid"></a>AADDS114: 子网无效
 
@@ -206,7 +205,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 ### <a name="resolution"></a>解决方法
 
-此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，然后重新创建它。 如果在删除 Azure AD DS 托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+此错误无法恢复。 若要解决此警报，请[删除你的现有托管域](delete-aadds.md)，然后重新创建它。 如果在删除托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 ## <a name="aadds115-resources-are-locked"></a>AADDS115: 资源已锁定
 
@@ -248,10 +247,10 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 [检查 AZURE AD DS 运行状况](check-health.md)，以了解任何指示托管域配置问题的警报。 网络配置问题可能会阻止 Azure AD 的同步。 如果你能够解决指示配置问题的警报，请等待两个小时，然后返回以查看同步是否已成功完成。
 
-以下常见原因导致同步停止在 Azure AD DS 托管域中：
+以下常见原因导致托管域中的同步停止：
 
 * 所需的网络连接被阻止。 若要详细了解如何在 Azure 虚拟网络中检查问题和所需的内容，请参阅[排查网络安全组](alert-nsg.md)问题以及[Azure AD 域服务的网络要求](network-considerations.md)。
-*  部署 Azure AD DS 托管域时，密码同步未设置或已成功完成。 你可以为[仅限云的用户](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)或[混合用户](tutorial-configure-password-hash-sync.md)设置密码同步本地。
+*  部署托管域时，密码同步未设置或已成功完成。 你可以为[仅限云的用户](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)或[混合用户](tutorial-configure-password-hash-sync.md)设置密码同步本地。
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501：已在一段时间内未执行备份
 
@@ -272,14 +271,14 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 ### <a name="resolution"></a>解决方法
 
 > [!WARNING]
-> 如果 Azure AD DS 托管域长时间挂起，则会删除该域。 尽快解决挂起的原因。 有关详细信息，请参阅[了解 AZURE AD DS 的挂起状态](suspension.md)。
+> 如果托管域长时间挂起，则会有风险被删除。 尽快解决挂起的原因。 有关详细信息，请参阅[了解 AZURE AD DS 的挂起状态](suspension.md)。
 
-Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的 Azure 订阅未处于活动状态，则必须续订该订阅以重新激活订阅。
+Azure AD DS 要求使用有效的订阅。 如果与托管域关联的 Azure 订阅未处于活动状态，则必须续订该订阅以重新激活订阅。
 
 1. [续订 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
 2. 续订订阅后，可以通过 Azure AD DS 通知重新启用托管域。
 
-再次启用托管域时，Azure AD DS 托管域的运行状况将在两小时内自动更新，并删除警报。
+再次启用托管域后，托管域的运行状况会在两小时内自动更新，并删除警报。
 
 ## <a name="aadds504-suspension-due-to-an-invalid-configuration"></a>AADDS504：由于配置无效而暂停
 
@@ -290,13 +289,13 @@ Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的
 ### <a name="resolution"></a>解决方法
 
 > [!WARNING]
-> 如果 Azure AD DS 托管域长时间挂起，则会删除该域。 尽快解决挂起的原因。 有关详细信息，请参阅[了解 AZURE AD DS 的挂起状态](suspension.md)。
+> 如果托管域长时间挂起，则会有风险被删除。 尽快解决挂起的原因。 有关详细信息，请参阅[了解 AZURE AD DS 的挂起状态](suspension.md)。
 
-[查看 AZURE AD DS 运行状况](check-health.md)，以获取指出托管域配置问题的警报。 如果你能够解决指示配置问题的警报，请等待两个小时，然后返回以查看同步是否已完成。 准备就绪后，请[打开 Azure 支持请求][azure-support]，重新启用 Azure AD DS 托管域。
+[查看 AZURE AD DS 运行状况](check-health.md)，以获取指出托管域配置问题的警报。 如果你能够解决指示配置问题的警报，请等待两个小时，然后返回以查看同步是否已完成。 准备就绪后，请[打开 Azure 支持请求][azure-support]以重新启用托管域。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果仍有问题，请[提出 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+如果仍有问题，请[发起 Azure 支持请求][azure-support]以获得额外的疑难解答帮助。
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

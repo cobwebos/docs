@@ -4,12 +4,11 @@ description: 适用于请求遥测的 Application Insights 数据模型
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77671896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807649"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -19,9 +18,9 @@ ms.locfileid: "77671896"
 
 ## <a name="name"></a>名称
 
-请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `GET /values/{id}` 值的 `id`。
+请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
 
-在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中详细了解 ASP.NET Web SDK 如何处理请求名称集合。
+在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可在该[博客文章](https://apmtips.com/posts/2015-02-23-request-name-and-url/)中详细了解 ASP.NET Web SDK 如何处理请求名称集合。
 
 最大长度：1024 个字符
 
@@ -61,7 +60,7 @@ ms.locfileid: "77671896"
 
 部分接受的内容 `206` 可能指示整个请求失败。 例如，Application Insights 终结点以单个请求的形式接收一批遥测项。 未成功处理该批中的某些项时，该终结点将返回 `206`。 `206` 比率提高指示出现了需要调查的问题。 类似的逻辑适用于 `207` 多状态，其中的成功结果可能是不同响应代码的最差结果。
 
-可在该[博客文章](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/)中详细了解请求结果代码和状态代码。
+可在该[博客文章](https://apmtips.com/posts/2016-12-03-request-success-and-response-code/)中详细了解请求结果代码和状态代码。
 
 ## <a name="custom-properties"></a>自定义属性
 

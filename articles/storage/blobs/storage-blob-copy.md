@@ -7,13 +7,12 @@ ms.author: mhopkins
 ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463444"
 ---
 # <a name="copy-a-blob-with-net"></a>使用 .NET 复制 Blob
 
@@ -111,7 +110,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 中止复制操作会导致块 Blob、追加 Blob 和页 Blob 的目标 Blob 长度为零。 但是，目标 Blob 的元数据将包含从源 Blob 复制的新值，或者在 [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) 或 [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) 调用中显式设置的新值。 若要在复制之前保留原始元数据，请在调用 `StartCopy` 或 `StartCopyAsync`之前创建目标 Blob 的快照。
 
-中止正在进行的 blob 复制操作时，目标 blob 的[CopyState](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status)设置为[CopyStatus](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet)。
+如果中止正在进行的 Blob 复制操作，目标 Blob 的 [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) 将设置为 [CopyStatus.Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet)。
 
 [AbortCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopy?view=azure-dotnet) 和 [AbortCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.abortcopyasync?view=azure-dotnet) 方法会取消正在进行的 Blob 复制操作，并保留长度为零的目标 Blob 和完整的元数据。
 

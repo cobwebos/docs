@@ -7,20 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4cf851022a2b2b0c9a9781f4d41b40982bf2ad57
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807700"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
 这份 Microsoft 常见问题解答列出了 Azure Monitor 的常见问题。
 
-## <a name="general"></a>一般性问题
+## <a name="general"></a>常规
 
-### <a name="what-is-azure-monitor"></a>什么是 Azure Monitor？
+### <a name="what-is-azure-monitor"></a>说明是 Azure Monitor？
 [Azure Monitor](overview.md) 是 Azure 中的一项服务，可通过它监视 Azure、其他云环境或本地中应用程序和服务的性能和可用性。 Azure Monitor 将多个源中的数据收集到一个公共数据平台，你可在这里分析趋势和异常。 Azure Monitor 中的丰富功能可帮助你快速确定和应对可能会影响你的应用程序的关键情况。
 
 ### <a name="whats-the-difference-between-azure-monitor-log-analytics-and-application-insights"></a>Azure Monitor、Log Analytics 和 Application Insights 之间有何区别？
@@ -36,7 +35,7 @@ ms.locfileid: "83835336"
 可通过 Azure 门户中的“监视”菜单访问各项 Azure Monitor 功能和数据。 通过不同 Azure 服务的菜单的“监视”部分，可访问相同的工具，其中数据经过筛选，指向特定的资源。 也可通过 CLI、PowerShell 和 REST API 针对各种场景来访问 Azure Monitor 数据。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>Azure Monitor 是否有本地版本？
-没有。 Azure Monitor 是一种用于处理和存储大量数据的可缩放式云服务，但它可监视本地和其他云中的资源。
+否。 Azure Monitor 是一种用于处理和存储大量数据的可缩放式云服务，但它可监视本地和其他云中的资源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure Monitor 能否监视本地资源？
 可以，除了从 Azure 资源收集监视数据以外，Azure Monitor 还可从其他云和本地的虚拟机和应用程序中收集数据。 请参阅 [Azure Monitor 的监视数据源](platform/data-sources.md)。
@@ -318,7 +317,7 @@ WireData
 * 要详细了解如何在 Application Insights 中收集 IP 地址和地理位置数据，请参阅本[文章](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)。
 
 
-可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
+可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
 
 可以[使用 Power BI](app/export-power-bi.md ) 在映射中显示请求遥测。
 
@@ -367,7 +366,7 @@ WireData
 ### <a name="what-are-the-user-and-session-counts"></a>什么是用户和会话计数？
 
 * JavaScript SDK 在 Web 客户端上设置了用于识别返回用户的用户 cookie，以及用于对活动进行分组的会话 cookie。
-* 如果没有客户端脚本，可以[在服务器设置 cookie](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)。
+* 如果没有客户端脚本，可以[在服务器设置 cookie](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/)。
 * 如果一个真实的用户在不同的浏览器中使用站点，或者使用私密/隐身浏览，或使用不同的计算机，则会进行多次计数。
 * 若要识别跨计算机和浏览器登录的用户，请添加对 [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) 的调用。
 
@@ -546,7 +545,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 对于代理版本 ciprod12042019 及更高版本，为了尽量减少收集日志数据时产生的费用，默认情况下不会为每行日志填充这两个属性。 有两种方法可用于查询表，查询包含这些属性及其值：
 
-#### <a name="option-1"></a>方法 1 
+#### <a name="option-1"></a>选项 1 
 
 联接其他表，在结果中包含这些属性值。
 

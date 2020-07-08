@@ -5,33 +5,32 @@ description: 了解如何在指定时刻及时创建 blob 的只读快照以备�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 438692d5c142c3f617ee9d0c3f55b9b3740f9b7a
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84463529"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中创建和管理 blob 快照
 
 快照是在某一时间点拍摄的只读版本的 Blob。 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)创建和管理 blob 快照。
 
-有关 Azure 存储中 blob 快照的详细信息，请参阅[在 .net 中创建和管理 blob 快照](snapshots-overview.md)。
+有关 Azure 存储中 blob 快照的详细信息，请参阅[在 .NET 中创建和管理 blob 快照](snapshots-overview.md)。
 
 ## <a name="create-a-snapshot"></a>创建快照
 
-# <a name="net-version-12x"></a>[.NET 版本2。x](#tab/v12)
+# <a name="net-version-12x"></a>[.NET 版本 12.x](#tab/v12)
 
-若要使用适用于 .NET 的 Azure 存储客户端库的版本2.x 创建块 blob 的快照，请使用以下方法之一：
+要使用 12.x 版用于 .NET 的 Azure 存储客户端库创建块 blob 快照，请使用以下任一方法：
 
 - [CreateSnapshot](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.createsnapshotasync)
 
-下面的代码示例演示如何创建版本为版本为的快照。 包括对[Azure. 标识](https://www.nuget.org/packages/azure.identity)库的引用，以使用 Azure AD 凭据向服务请求授权。
+以下代码示例演示如何在版本 12.x 中创建快照。 包含对 [Azure.Identity](https://www.nuget.org/packages/azure.identity) 库的引用，以使用 Azure AD 凭据授权对服务的请求。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(string accountName, string containerName, string blobName, Stream data)
@@ -77,14 +76,14 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET 版本 11. x](#tab/v11)
+# <a name="net-version-11x"></a>[.NET 版本 11.x](#tab/v11)
 
-若要使用适用于 .NET 的 Azure 存储客户端库的版本 11. x 创建块 blob 的快照，请使用以下方法之一：
+要使用 11.x 版用于 .NET 的 Azure 存储客户端库创建块 blob 快照，请使用以下任一方法：
 
 - [CreateSnapshot](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshot)
 - [CreateSnapshotAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshotasync)
 
-下面的代码示例演示如何创建版本为版本 11. x 的快照。 本示例在创建快照时为其指定了其他元数据。
+以下代码示例演示如何在版本 11.x 中创建快照。 该示例在创建快照时为其指定了额外的元数据。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -126,31 +125,31 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 若要删除 blob，必须先删除该 blob 的所有快照。 可以单独删除快照，或指定在删除源 Blob 时删除所有快照。 如果尝试删除仍包含快照的 Blob，会发生错误。
 
-# <a name="net-version-12x"></a>[.NET 版本2。x](#tab/v12)
+# <a name="net-version-12x"></a>[.NET 版本 12.x](#tab/v12)
 
-若要使用适用于 .NET 的 Azure 存储客户端库的版本2.x 删除 blob 及其快照，请使用以下方法之一，并包含[DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption)枚举：
+要使用 12.x 版用于 .NET 的 Azure 存储客户端库删除 blob 及其快照，请使用以下任一方法，并包括 [DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) 枚举：
 
 - [删除](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.delete)
 - [DeleteAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteasync)
 - [DeleteIfExists](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
 
-下面的代码示例演示如何在 .NET 中删除 blob 及其快照，其中`blobClient`是[BlobClient](/dotnet/api/azure.storage.blobs.blobclient)类型的对象）：
+以下代码示例演示如何在 .NET 中删除 blob 及其快照，其中 `blobClient` 是 [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) 类型的对象：
 
 ```csharp
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET 版本 11. x](#tab/v11)
+# <a name="net-version-11x"></a>[.NET 版本 11.x](#tab/v11)
 
-若要使用适用于 .NET 的 Azure 存储客户端库的版本4.x 删除 blob 及其快照，请使用以下 blob 删除方法之一，并包含[DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption)枚举：
+要使用 11.x 版用于 .NET 的 Azure 存储客户端库删除 blob 及其快照，请使用以下任一 blob 删除方法，并包括 [DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) 枚举：
 
 - [删除](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteasync)
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
-下面的代码示例演示如何在 .NET 中删除 blob 及其快照，其中`blockBlob`是类型为 [CloudBlockBlob] [dotnet_CloudBlockBlob] 的对象：
+以下代码示例演示如何在 .NET 中删除 blob 及其快照，其中 `blockBlob` 是 [CloudBlockBlob][dotnet_CloudBlockBlob] 类型的对象：
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
@@ -160,6 +159,6 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Blob 快照](snapshots-overview.md)
+- [blob 快照](snapshots-overview.md)
 - [Blob 版本（预览）](versioning-overview.md)
-- [Blob 的软删除](storage-blob-soft-delete.md)
+- [blob 的软删除](storage-blob-soft-delete.md)

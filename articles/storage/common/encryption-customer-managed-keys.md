@@ -8,14 +8,13 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5dedd70b51361936808724ef70b96cdf9cfa13f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81456815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515404"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密
 
@@ -47,13 +46,13 @@ ms.locfileid: "81456815"
 
 ## <a name="enable-customer-managed-keys-for-a-storage-account"></a>为存储帐户启用客户管理的密钥
 
-客户托管的密钥只能在现有存储帐户上启用。 必须使用访问策略对密钥保管库进行预配，该访问策略将对与存储帐户关联的托管标识授予密钥权限。 托管标识仅在存储帐户创建后可用。
+客户托管密钥只能在现有存储帐户上启用。 必须使用访问策略对密钥保管库进行预配，这些策略将密钥权限授予与存储帐户关联的托管标识。 托管标识仅在存储帐户创建后可用。
 
-在配置客户管理的密钥时，Azure 存储将在关联的密钥保管库中使用客户托管密钥包装帐户的根数据加密密钥。 启用客户管理的密钥不会影响性能，并会立即生效。
+在配置客户托管密钥时，Azure 存储会在关联的密钥保管库中使用客户托管密钥来包装帐户的根数据加密密钥。 启用客户托管密钥不影响性能，并且会立即生效。
 
 如果通过启用或禁用客户托管密钥、更新密钥版本或指定其他密钥来修改用于 Azure 存储加密的密钥，则根密钥的加密会更改，但 Azure 存储帐户中的数据不需重新加密。
 
-当你启用或禁用客户管理的密钥时，或在你修改密钥或密钥版本时，将更改根加密密钥的保护，但不需要重新加密 Azure 存储帐户中的数据。
+在启用或禁用客户托管密钥时，或者在修改密钥或密钥版本时，对根加密密钥的保护会变化，但你不需要重新加密 Azure 存储帐户中的数据。
 
 要了解如何将客户管理的密钥与 Azure 密钥保管库配合使用来对 Azure 存储进行加密，请参阅以下文章之一：
 
@@ -62,51 +61,51 @@ ms.locfileid: "81456815"
 - [通过 Azure CLI 使用密钥保管库配置客户管理的密钥用于 Azure 存储加密](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
-> 客户托管密钥依赖于 Azure 资源的托管标识，后者是Azure AD 的一项功能。 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，系统会在幕后自动将一个托管标识分配到你的存储帐户。 如果随后将订阅、资源组或存储帐户从一个 Azure AD 目录移到另一个目录，与存储帐户关联的托管标识不会传输到新租户，因此客户管理的密钥可能不再起作用。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”****。  
+> 客户托管密钥依赖于 Azure 资源的托管标识，后者是Azure AD 的一项功能。 托管标识当前不支持跨目录方案。 在 Azure 门户中配置客户管理的密钥时，系统会在幕后自动将一个托管标识分配到你的存储帐户。 如果随后将订阅、资源组或存储帐户从一个 Azure AD 目录移到另一个目录，与存储帐户关联的托管标识不会传输到新租户，因此客户管理的密钥可能不再起作用。 有关详细信息，请参阅 [Azure 资源的常见问题解答和已知问题](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中的“在 Azure AD 目录之间转移订阅”。  
 
 ## <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户管理的密钥存储在 Azure 密钥保管库
 
-若要在存储帐户上启用客户管理的密钥，必须使用 Azure 密钥保管库来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性********。
+若要在存储帐户上启用客户管理的密钥，必须使用 Azure 密钥保管库来存储密钥。 必须同时启用密钥保管库上的“软删除”和“不清除”属性 。
 
-Azure 存储加密仅支持2048位 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。****
+Azure 存储加密支持2048、3072和4096大小的 RSA 和 RSA-HSM 密钥。 有关密钥的详细信息，请参阅[关于 Azure Key Vault 密钥、机密和证书](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的“Key Vault 密钥”。
 
 ## <a name="rotate-customer-managed-keys"></a>轮换客户管理的密钥
 
-可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 当密钥旋转时，必须更新存储帐户以使用新的密钥版本 URI。 若要了解如何更新存储帐户以在 Azure 门户中使用新版本的密钥，请参阅[使用 Azure 门户配置 Azure 存储的客户管理的密钥](storage-encryption-keys-portal.md)中标题为“更新密钥版本”的部分****。
+可以根据自己的合规性策略，在 Azure 密钥保管库中轮换客户管理的密钥。 轮换密钥后，需要更新存储帐户以使用新的密钥版本 URI。 若要了解如何更新存储帐户以在 Azure 门户中使用新版本的密钥，请参阅[使用 Azure 门户配置 Azure 存储的客户管理的密钥](storage-encryption-keys-portal.md)中标题为“更新密钥版本”的部分。
 
 轮换密钥不会触发存储帐户中数据的重新加密。 用户无需执行任何其他操作。
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>撤消对客户管理的密钥的访问权限
 
-你可以随时撤销存储帐户对客户管理的密钥的访问权限。 在撤消对客户管理的密钥的访问权限，或者在禁用或删除密钥之后，客户端无法调用从 blob 或其元数据读取或写入数据的操作。 对于所有用户，尝试调用以下任何操作都将失败，错误代码为403（禁止）：
+可以随时撤销存储帐户对客户托管密钥的访问权限。 在撤销对客户托管密钥的访问权限之后，或者在禁用或删除密钥之后，客户端无法调用在 Blob 或其元数据中读取或写入数据的操作。 对于所有用户来说，尝试调用以下任何操作都会失败，错误代码为“403 (禁止访问)”：
 
-- 用请求 URI 上的`include=metadata`参数调用时[列出 blob](/rest/api/storageservices/list-blobs)
+- 在请求 URI 上通过 `include=metadata` 参数调用[列出 Blob](/rest/api/storageservices/list-blobs)
 - [获取 Blob](/rest/api/storageservices/get-blob)
 - [获取 Blob 属性](/rest/api/storageservices/get-blob-properties)
 - [获取 Blob 元数据](/rest/api/storageservices/get-blob-metadata)
 - [设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata)
-- [快照 Blob](/rest/api/storageservices/snapshot-blob)（与`x-ms-meta-name`请求标头一起调用时）
+- 通过 `x-ms-meta-name` 请求标头调用[快照 Blob](/rest/api/storageservices/snapshot-blob)
 - [复制 Blob](/rest/api/storageservices/copy-blob)
 - [从 URL 复制 Blob](/rest/api/storageservices/copy-blob-from-url)
 - [设置 Blob 层](/rest/api/storageservices/set-blob-tier)
 - [放置块](/rest/api/storageservices/put-block)
-- [将块置于 URL 中](/rest/api/storageservices/put-block-from-url)
+- [从 URL 放置块](/rest/api/storageservices/put-block-from-url)
 - [追加块](/rest/api/storageservices/append-block)
-- [将块追加到 URL](/rest/api/storageservices/append-block-from-url)
+- [从 URL 追加块](/rest/api/storageservices/append-block-from-url)
 - [放置 Blob](/rest/api/storageservices/put-blob)
 - [放置页](/rest/api/storageservices/put-page)
-- [从 URL 放置页面](/rest/api/storageservices/put-page-from-url)
+- [从 URL 放置页](/rest/api/storageservices/put-page-from-url)
 - [增量复制 Blob](/rest/api/storageservices/incremental-copy-blob)
 
-若要再次调用这些操作，请还原对客户管理的密钥的访问权限。
+若要再次调用这些操作，请还原对客户托管密钥的访问权限。
 
-此部分中未列出的所有数据操作可能在吊销客户管理的密钥或禁用或删除密钥后继续。
+此部分中未列出的所有数据操作可以在撤销客户托管密钥或者禁用或删除某个密钥后继续。
 
-若要撤消对客户管理的密钥的访问权限，请使用[PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys)或[Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)。
+若要撤销对客户托管密钥的访问权限，请使用 [PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) 或 [Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)。
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Azure 托管磁盘的客户托管密钥
 
-客户管理的密钥也可用于管理 Azure 托管磁盘的加密。 客户管理的密钥对托管磁盘的行为不同于对 Azure 存储资源的行为。 有关详细信息，请参阅适用于 Windows 的[azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux[的 azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
+客户托管密钥也可用于管理 Azure 托管磁盘的加密。 客户管理的密钥对托管磁盘的行为不同于对 Azure 存储资源的行为。 有关详细信息，请参阅适用于 Windows 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

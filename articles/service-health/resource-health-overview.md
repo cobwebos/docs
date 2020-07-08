@@ -3,12 +3,11 @@ title: Azure 资源运行状况概述
 description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: f0d2fdb8e1c8b92dba526650405405db8ae8a776
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80159245"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041568"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
  
@@ -18,7 +17,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ## <a name="resource-definition-and-health-assessment"></a>资源定义和运行状况评估
 
-资源是 Azure 服务中的一个特定实例，例如虚拟机、Web 应用或 SQL 数据库。** 资源运行状况依赖于各种 Azure 服务发出的信号来评估资源是否正常运行。 如果资源运行不正常，资源运行状况将分析其他信息以确定问题根源。 它还会报告 Microsoft 采取的用于解决此问题的操作或可以采取的用于解决问题的措施。
+*资源*是 Azure 服务的特定实例，如虚拟机、web 应用或 SQL 数据库。 资源运行状况依赖于各种 Azure 服务发出的信号来评估资源是否正常运行。 如果资源运行不正常，资源运行状况将分析其他信息以确定问题根源。 它还会报告 Microsoft 采取的用于解决此问题的操作或可以采取的用于解决问题的措施。
 
 有关如何评估运行状况的详细信息，请参阅 [Azure 资源运行状况](resource-health-checks-resource-types.md)中的资源类型和运行状况检查列表。
 

@@ -6,12 +6,11 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84686998"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>设置客户管理的密钥，以便在 Azure 逻辑应用中为集成服务环境（ISEs）加密静态数据
 
@@ -27,13 +26,13 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * *只能在创建 ISE 时*指定客户托管的密钥，而不能在以后创建 ISE。 创建 ISE 后，不能禁用此密钥。 目前，不支持轮换 ISE 的客户托管密钥。
 
-* 若要支持客户管理的密钥，ISE 要求需要启用[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 此标识允许 ISE 验证对其他 Azure Active Directory （Azure AD）租户中的资源的访问权限，这样就无需使用凭据进行登录。
+* 若要支持客户管理的密钥，ISE 要求需要启用[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 此标识允许 ISE 验证对其他 Azure Active Directory （Azure AD）租户中的资源的访问权限，这样就无需使用凭据进行登录。
 
 * 目前，若要创建支持客户管理的密钥的 ISE 并启用系统分配的标识，则必须使用 HTTPS PUT 请求调用逻辑应用 REST API。
 
 * 发送用于创建 ISE 的 HTTPS PUT 请求后*30 分钟*内，必须[为 ise 的系统分配的标识授予密钥保管库访问权限](#identity-access-to-key-vault)。 否则，ISE 创建失败并引发权限错误。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 为[ise 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和要求与在 Azure 门户中创建 ise 时相同。
 
@@ -43,7 +42,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * 在密钥保管库中，使用以下属性值创建的密钥：
 
-  | 属性 | 值 |
+  | Property | “值” |
   |----------|-------|
   | **键类型** | RSA |
   | **RSA 密钥大小** | 2048 |
@@ -67,20 +66,20 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 > [!IMPORTANT]
 > 逻辑应用 REST API 2019-05-01 版本要求你为 ISE 连接器自行发出 HTTP PUT 请求。
 
-部署通常需要两个小时才能完成。 有时，部署可能最多需要四个小时。 若要检查部署状态，请在 " [Azure 门户](https://portal.azure.com)的 Azure 工具栏上，选择" 通知 "图标，打开" 通知 "窗格。
+部署通常需要两个小时才能完成。 有时，部署过程可能长达四个小时。 若要检查部署状态，请在 " [Azure 门户](https://portal.azure.com)的 Azure 工具栏上，选择" 通知 "图标，打开" 通知 "窗格。
 
 > [!NOTE]
-> 如果部署失败或删除 ISE，Azure 在释放子网之前可能需要长达一个小时。 这种延迟意味着可能需要等待，才能在另一 ISE 中重用这些子网。
+> 如果部署失败或删除 ISE，Azure 在释放子网之前可能需要长达一个小时。 此延迟意味着可能需要等待一段时间才能在另一个 ISE 中重复使用这些子网。
 >
-> 如果删除虚拟网络，则在释放子网之前，Azure 通常需要两个小时，但此操作可能需要更长时间。 
+> 如果删除虚拟网络，Azure 通常需要长达两小时才能释放子网，但是此操作可能需要更长的时间。 
 > 删除虚拟网络时，请确保没有资源仍处于连接状态。 
 > 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
-### <a name="request-header"></a>请求头
+### <a name="request-header"></a>请求标头
 
 在请求标头中，包括以下属性：
 
-* `Content-type`：将此属性值设置`application/json`为。
+* `Content-type`：将此属性值设置为 `application/json` 。
 
 * `Authorization`：将此属性值设置为有权访问要使用的 Azure 订阅或资源组的客户的持有者令牌。
 
@@ -203,7 +202,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 1. 在[Azure 门户](https://portal.azure.com)中，打开 Azure 密钥保管库。
 
-1. 在 key vault 菜单上，选择 "**访问策略** > " "**添加访问策略**"，例如：
+1. 在 key vault 菜单上，选择 "**访问策略**  >  " "**添加访问策略**"，例如：
 
    ![为系统分配的托管标识添加访问策略](./media/customer-managed-keys-integration-service-environment/add-ise-access-policy-key-vault.png)
 
@@ -219,7 +218,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
       ![选择 "密钥管理" > "密钥权限"](./media/customer-managed-keys-integration-service-environment/select-key-permissions.png)
 
-   1. 对于 "**选择主体**"，请选择 "**未**选择"。 **主体**窗格打开后，在 "搜索" 框中，找到并选择你的 ISE。 完成后，选择 "**选择** > **添加**"。
+   1. 对于 "**选择主体**"，请选择 "**未**选择"。 **主体**窗格打开后，在 "搜索" 框中，找到并选择你的 ISE。 完成后，选择 "**选择**  >  **添加**"。
 
       ![选择要用作主体的 ISE](./media/customer-managed-keys-integration-service-environment/select-service-principal-ise.png)
 

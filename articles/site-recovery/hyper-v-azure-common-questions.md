@@ -3,12 +3,11 @@ title: 有关使用 Azure Site Recovery 实现 Hyper-V 灾难恢复的常见问�
 description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 Hyper-V VM 到 Azure 的灾难恢复的常见问题。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75498206"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195262"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -114,7 +113,7 @@ ms.locfileid: "75498206"
 是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 以下为通过 PowerShell 将 Hyper-V 复制到 Azure 的当前支持方案：
 
 - [使用 PowerShell 在无 VMM 的情况下复制 Hyper-V](hyper-v-azure-powershell-resource-manager.md)
-- [使用 PowerShell 在有 VMM 的情况下复制 Hyper-V](hyper-v-vmm-powershell-resource-manager.md)
+- [使用 PowerShell 将 Hyper-v 复制到 VMM](hyper-v-vmm-powershell-resource-manager.md)
 
 ## <a name="replication"></a>复制
 
@@ -159,7 +158,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 
-可以每隔 30 秒（高级存储除外）、5 分钟或 15 分钟复制一次 Hyper-V VM。
+可以每隔30秒（高级存储除外）或5分钟复制一次 hyper-v Vm。
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
@@ -171,7 +170,7 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 可以从复制中排除磁盘。 
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>是否可以复制包含动态磁盘的 VM？
-可以复制动态磁盘。 操作系统磁盘必须为基本磁盘。
+可以复制动态磁盘。 操作系统磁盘必须是基本磁盘。
 
 
 
@@ -214,7 +213,7 @@ Site Recovery 不会在启用复制的 Hyper-V VM 上显式安装任何内容。
 Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到辅助 Azure 数据中心。 发生故障转移时，我们会确保元数据和保管库保留在为保管库选择的同一地理区域中。
 
 ### <a name="is-failover-automatic"></a>故障转移是自动发生的吗？
-[故障转移](site-recovery-failover.md)不是自动进行的。 通过在门户中单击即可启动故障转移，或者可以使用[PowerShell](/powershell/module/az.recoveryservices)来触发故障转移。
+[故障转移](site-recovery-failover.md)不是自动的。 通过在门户中单击即可启动故障转移，或者可以使用[PowerShell](/powershell/module/az.recoveryservices)来触发故障转移。
 
 ### <a name="how-do-i-fail-back"></a>如何故障回复？
 
