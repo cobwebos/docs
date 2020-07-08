@@ -8,28 +8,30 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1610ba173f31ecee05b2816758eab2d7c6da98f9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391904"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET 更改源 SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行程序 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -217,8 +219,8 @@ ms.locfileid: "83798451"
 
 ### <a name="220"></a>2.2.0
 
-* 添加了对每分钟请求单位 (RU/m) 功能的支持。
-* 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
+* 添加了对每分钟请求单位数 (RU/m) 功能的支持。
+* 添加了对称为“ConsistentPrefix”的新一致性级别的支持。
 
 ### <a name="210"></a>2.1.0
 
@@ -231,25 +233,25 @@ ms.locfileid: "83798451"
 
 ### <a name="201"></a>2.0.1
 
-* 对文档注释进行编辑更改。
+* 对文档注释进行编辑性更改。
 
 ### <a name="200"></a>2.0.0
 
 * 添加了对 Python 3.5 的支持。
 * 添加了对连接池使用请求模块的支持。
-* 添加了对会话一致性的支持。
-* 已对分区集合添加 TOP/ORDERBY 查询支持。
+* 添加了会话一致性支持。
+* 添加了对分区集合的 TOP/ORDERBY 查询支持。
 
 ### <a name="190"></a>1.9.0
 
-* 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，遇到错误代码 429 时，DocumentDB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。
+* 添加了对限制请求的重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，遇到错误代码 429 时，DocumentDB 会针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。
   如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。
   DocumentDB 现在对每个要中止的请求等待最多 30 秒（不考虑重试计数），并返回错误代码为 429 的响应。
   还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
 
 * DocumentDB 现在将 x-ms-throttle-retry-count 和 x-ms-throttle-retry-wait-time-ms 作为每个请求的响应标头返回，以表示限制重试计数和重试之间请求所等待的累计时间。
 
-* 已移除 document_client 类上公开的 RetryPolicy 类以及相应的属性 (retry_policy)，引入了在 ConnectionPolicy 对象上公开 RetryOptions 属性的 RetryOptions 类，该类可用于覆盖一些默认的重试选项。
+* 删除了 document_client 类上公开的 RetryPolicy 类以及相应的属性 (retry_policy)，改为引入了在 ConnectionPolicy 对象上公开 RetryOptions 属性的 RetryOptions 类，该类可用于覆盖一些默认的重试选项。
 
 ### <a name="180"></a>1.8.0
 
@@ -258,7 +260,7 @@ ms.locfileid: "83798451"
 
 ### <a name="170"></a>1.7.0
 
-* 在文档中添加了对生存时间 (TTL) 的支持。
+* 添加了对文档生存时间 (TTL) 功能的支持。
 
 ### <a name="161"></a>1.6.1
 
@@ -336,7 +338,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 | 0.9.1-prelease |2014 年 9 月 23 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 8 月 21 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

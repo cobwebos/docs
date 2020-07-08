@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 虚拟机修复命令修复 Windows VM | Microsoft Docs
-description: 本文详细介绍如何使用 Azure VM 修复命令将磁盘连接到另一个 Windows VM 来修复所有错误，然后重建原始 VM。
+description: 本文详细介绍如何使用 Azure VM 修复命令将磁盘连接到另一个 Windows VM 来修复所有错误，然后重新生成原始 VM。
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -14,23 +14,29 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: b754c9e02567939569bf2ef59359dbb2614a6647
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: f23df5924354fa688743d29919095413ec12ce18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85444346"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虚拟机修复命令修复 Windows VM
 
-如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行迁移。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure VM 修复命令将磁盘连接到另一个 Windows VM 来修复所有错误，然后重建原始 VM。
+如果 Windows 虚拟机 (VM) 在 Azure 中遇到启动或磁盘错误，可能需要对磁盘本身执行缓解操作。 一个常见示例是应用程序更新失败，使 VM 无法成功启动。 本文详细介绍如何使用 Azure VM 修复命令将磁盘连接到另一个 Windows VM 来修复所有错误，然后重新生成原始 VM。
 
 > [!IMPORTANT]
-> 本文中的脚本仅适用于使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的 VM。
+> * 本文中的脚本仅适用于使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的 VM。
+> * 运行脚本需要 VM 的出站连接（端口 443）。
+> * 一次只能运行一个脚本。
+> * 无法取消正在运行的脚本。
+> * 脚本最多可以运行 90 分钟，之后它将超时。
+> * 对于使用 Azure 磁盘加密的 Vm，仅支持通过单一传递加密（带有或不带 KEK）加密的托管磁盘。
+
 
 ## <a name="repair-process-overview"></a>修复过程概述
 
-现在可以使用 Azure VM 修复命令更改 VM 的 OS 磁盘，不再需要删除和重新创建 VM。
+现在可以使用 Azure VM 修复命令更改 VM 的 OS 磁盘，而不再需要删除并重新创建 VM。
 
 请按照以下步骤解决 VM 问题：
 
@@ -44,12 +50,6 @@ ms.locfileid: "84219893"
 
 ## <a name="repair-process-example"></a>修复过程示例
 
-> [!NOTE]
-> * 运行脚本需要来自 VM 的出站连接（端口 443）。
-> * 一次只能运行一个脚本。
-> * 无法取消正在运行的脚本。
-> * 脚本最多可以运行 90 分钟，之后它将超时。
-
 1. 启动 Azure Cloud Shell
 
    Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。
@@ -59,8 +59,10 @@ ms.locfileid: "84219893"
    选择“复制”以复制代码块，然后将其粘贴到 Cloud Shell 中，选择 Enter 来运行它。 
 
    如果希望在本地安装并使用 CLI，则本快速入门需要 Azure CLI version 2.0.30 或更高版本。 运行 ``az --version`` 即可查找版本。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+   
+   如果需要使用与当前登录到 Azure 门户的帐户不同的帐户登录 Cloud Shell，可以使用 ``az login`` [az login reference](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)。  若要在与你的帐户关联的订阅之间切换，你可以使用 ``az account set --subscription`` [az account set reference](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set)。
 
-2. 如果这是首次使用 `az vm repair` 命令，请添加 vm-repair CLI 扩展。
+2. 如果是首次使用 `az vm repair` 命令，请添加 vm-repair CLI 扩展。
 
    ```azurecli-interactive
    az extension add -n vm-repair
@@ -72,7 +74,7 @@ ms.locfileid: "84219893"
    az extension update -n vm-repair
    ```
 
-3. 运行 `az vm repair create`。 此命令将为非功能性 VM 创建 OS 磁盘的副本，在新资源组中创建修复 VM，并附加 OS 磁盘副本。  修复 VM 的大小和区域将与指定的非功能性 VM 相同。 所有步骤中使用的资源组和 VM 名称都将用于非功能性 VM。
+3. 运行 `az vm repair create`。 此命令将为非功能性 VM 创建 OS 磁盘的副本，在新资源组中创建修复 VM，并附加 OS 磁盘副本。  修复 VM 的大小和区域将与指定的非功能性 VM 相同。 所有步骤中使用的资源组和 VM 名称都将用于非功能性 VM。 如果 VM 使用的是 Azure 磁盘加密，则该命令将尝试解锁已加密的磁盘，以便在附加到修复 VM 时可对其进行访问。
 
    ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
@@ -84,7 +86,7 @@ ms.locfileid: "84219893"
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
 
-5. 运行 `az vm repair restore`。 此命令会将修复的 OS 磁盘与 VM 的原始 OS 磁盘交换。 此处使用的资源组和 VM 名称适用于第 3 步中使用的非功能性 VM。
+5. 运行 `az vm repair restore`。 此命令会将已修复的 OS 磁盘与 VM 的原始 OS 磁盘交换。 此处使用的资源组和 VM 名称适用于第 3 步中使用的非功能性 VM。
 
    ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
@@ -104,4 +106,4 @@ az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGro
 
 * 如果在连接到 VM 时遇到问题，请参阅[对 Azure VM 的 RDP 连接进行故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-rdp-connection)。
 * 如果在访问 VM 上运行的应用程序时遇到问题，请参阅[排查 Azure 中虚拟机上的应用程序连接问题](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-app-connection)。
-* 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+* 有关使用 Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。

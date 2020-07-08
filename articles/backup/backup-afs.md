@@ -3,50 +3,29 @@ title: 在 Azure 门户中备份 Azure 文件共享
 description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: a77f7fd0ec21eae60a7313a9ffa889fbef4372c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 76bf8e00dede5f227cb862f9c9474844e349e298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82977946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391141"
 ---
-# <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>在恢复服务保管库中备份 Azure 文件共享
+# <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 
 本文介绍如何使用 Azure 门户备份[Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
 
-本文介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 * 创建恢复服务保管库。
 * 发现文件共享并配置备份。
 * 运行按需备份作业来创建还原点。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 在与托管文件共享的存储帐户相同的区域中标识或创建[恢复服务保管库](#create-a-recovery-services-vault)。
 * 确保文件共享存在于[受支持的存储帐户类型](azure-file-share-support-matrix.md)之一中。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
-
-## <a name="modify-storage-replication"></a>修复存储复制
-
-默认情况下，保管库使用[异地冗余存储 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
-
-* 如果保管库是你的主要备份机制，则建议你使用 GRS。
-* 可以使用[本地冗余存储（LRS）](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)作为低成本选项。
-
-若要修改存储复制类型，请执行以下操作：
-
-1. 在新保管库中，选择 "**设置**" 部分下的 "**属性**"。
-
-1. 在 "**属性**" 页上的 "**备份配置**" 下，选择 "**更新**"。
-
-1. 选择存储复制类型，然后选择 "**保存**"。
-
-    ![更新备份配置](./media/backup-afs/backup-configuration.png)
-
-> [!NOTE]
-> 在保管库经过设置并且包含备份项之后，无法修改存储复制类型。 如果要执行此操作，则需要重新创建保管库。
->
 
 ## <a name="discover-file-shares-and-configure-backup"></a>发现文件共享并配置备份
 
@@ -84,7 +63,7 @@ ms.locfileid: "82977946"
 
 1. 右侧会打开 "**选择文件共享**" 上下文窗格。 Azure 将在存储帐户中搜索可备份的文件共享。 如果你最近添加了文件共享，但在列表中看不到它们，则留出一些时间让文件共享出现。
 
-1. 从 "**选择文件共享**" 列表中，选择要备份的一个或多个文件共享。 选择“确定”  。
+1. 从 "**选择文件共享**" 列表中，选择要备份的一个或多个文件共享。 选择“确定”。
 
    ![选择文件共享](./media/backup-afs/select-file-shares.png)
 
@@ -148,7 +127,7 @@ ms.locfileid: "82977946"
 
 1. 选择 **"确定"** 以确认运行的按需备份作业。
 
-1. 监视门户通知以跟踪备份作业运行完成。 可以在保管库仪表板中监视作业进度。 选择**正在进行的****备份作业** > 。
+1. 监视门户通知以跟踪备份作业运行完成。 可以在保管库仪表板中监视作业进度。 选择**Backup Jobs**  >  **正在进行的**备份作业。
 
 >[!NOTE]
 >为相应帐户中的任何文件共享配置保护时，Azure 备份会锁定存储帐户。 这样可以防止意外删除包含备份文件共享的存储帐户。

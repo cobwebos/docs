@@ -5,16 +5,16 @@ description: 了解如何使用 Azure CLI 创建新的 Azure 机器学习工作�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/25/2020
+ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617776"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392703"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ az extension add -n azure-cli-ml
 Azure 机器学习工作区依赖于以下 Azure 服务或实体：
 
 > [!IMPORTANT]
-> 如果未指定现有 Azure 服务，则将在创建工作区期间自动创建一个。 必须始终指定资源组。
+> 如果未指定现有 Azure 服务，则将在创建工作区期间自动创建一个。 必须始终指定资源组。 附加自己的存储帐户时，请确保该帐户已启用 Azure Blob 和 Azure 文件功能，并且已禁用该分层命名空间（ADLS 第2代）。 稍后，你可以在创建工作区后，随时附加自己的存储帐户。
 
 | 服务 | 用于指定现有实例的参数 |
 | ---- | ---- |
@@ -317,7 +317,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 ## <a name="sync-keys-for-dependent-resources"></a>同步依赖资源的密钥
 
-如果更改了工作区使用的某个资源的访问密钥，请使用以下命令将新密钥与工作区同步：
+如果更改了工作区使用的某个资源的访问密钥，则工作区需要大约一小时的时间才能同步到新密钥。 若要强制工作区立即同步新密钥，请使用以下命令：
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>

@@ -2,17 +2,20 @@
 title: 超出部署配额
 description: 介绍如何解决这样一个错误：在资源组历史记录中有 800 多个部署。
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80245083"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391173"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>解决部署计数超出 800 的错误
 
 每个资源组在其部署历史记录中最多只能有 800 个部署。 本文介绍在部署因超出允许的 800 个部署的限制而失败时可能会出现的错误。 若要解决此错误，请从资源组历史记录中删除部署。 从历史记录中删除部署不会影响已部署的任何资源。
+
+> [!NOTE]
+> Azure 资源管理器很快就会开始从历史记录中自动删除部署，就像你这样的限制。 如果取消选择了自动删除，可能仍会看到此错误。 有关详细信息，请参阅[从部署历史记录中自动删除](deployment-history-deletions.md)。
 
 ## <a name="symptom"></a>症状
 
@@ -22,7 +25,7 @@ ms.locfileid: "80245083"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-使用[az deployment group delete](/cli/azure/group/deployment)命令删除历史记录中的部署。
+使用 [az deployment group delete](/cli/azure/group/deployment) 命令从历史记录中删除部署。
 
 ```azurecli-interactive
 az deployment group delete --resource-group exampleGroup --name deploymentName

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 9014d446b29b9a81a807c002cd7f83a2c3bdaa51
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 78f50abf68412d2edcb7a6504c8e5c1b788e5901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413155"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的区域和可用性区域
 
@@ -22,7 +22,7 @@ Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你
 
 为了更好地了解 Azure 中的区域和可用性区域，它有助于了解关键术语或概念。
 
-| 术语或概念 | 描述 |
+| 术语或概念 | 说明 |
 | --- | --- |
 | region | 在延迟定义的外围中部署的一组数据中心，并通过专用的区域低延迟网络进行连接。 |
 | geography | 世界上至少包含一个 Azure 区域的区域。 地理位置定义了一个保持数据驻留和符合性界限的离散市场。 地域允许具有特定数据驻留和符合性要求的客户保持他们的数据和应用程序相邻近。 地域具有容错能力，可通过其与专用的高容量网络基础结构的连接来经受完成区域故障。 |
@@ -43,7 +43,7 @@ Microsoft Azure 服务可在全球范围内实现云操作的最佳水平。 你
 
 可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的地区中都必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
 
-Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台会识别更新域上的此分布，以确保不同区域中的 VM 不会同时更新。
+Azure 区域中的可用性区域是容错域和更新域的组合。 例如，如果在 Azure 区域的三个区域中创建三个或更多 VM，则 VM 将有效分布在三个容错域和三个更新域中。 Azure 平台可识别更新域中的此分发，以确保不会计划同时更新不同区域中的 Vm。
 
 通过将计算、存储、网络和数据资源共置在一个区域并将其复制到其他区域，在应用程序体系结构中内置高可用性。 支持可用性区域的 Azure 服务划分为两类：
 
@@ -79,7 +79,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 | 区域类型 | 非区域 | 基础 | 主要支持 | 专用 | 可用性区域 | 数据驻留 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 建议 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | :heavy_check_mark: | :heavy_check_mark: |
-| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不可用 | :heavy_check_mark: |
+| 备用 | :heavy_check_mark: | :heavy_check_mark: | 需求驱动 | 需求驱动 | 不适用 | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>按类别分类的服务
 
@@ -101,7 +101,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 > | 云服务 | 用于 Redis 的 Azure 缓存 | Azure 实验室服务 |
 > | 云服务： Av2 系列 | Azure 认知搜索 | Azure NetApp 文件 |
 > | 云服务： Dv2 系列 | Azure 数据资源管理器 | Azure 量程 |
-> | 云服务： Dv3 系列 | Azure Data Share | Azure Time Series Insights |
+> | 云服务： Dv3 系列 | Azure Data Share | Azure 时序见解 |
 > | 云服务： Ev3 系列 | Azure Database for MySQL | Azure VMware Solution by CloudSimple |
 > | 云服务：实例级别 Ip | Azure Database for PostgreSQL | 云服务： A8-A11 （计算密集型） |
 > | 云服务：保留 IP | Azure 数据库迁移服务 | 云服务： G 系列 |
@@ -166,7 +166,7 @@ Azure 服务分为三个类别：基本、主流和专用服务。 将服务部�
 - [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 - [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
-- [SQL 数据库](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
+- [SQL 数据库](../azure-sql/database/high-availability-sla.md#zone-redundant-configuration)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [服务总线异地灾难恢复](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [创建区域冗余的虚拟网关](../vpn-gateway/create-zone-redundant-vnet-gateway.md)

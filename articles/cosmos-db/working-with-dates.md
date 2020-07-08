@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f31ee7f7d60a3bf0ab56b9ed8aa7fd25774e06c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85412543"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的日期
 
@@ -21,9 +21,9 @@ Azure Cosmos DB 通过本机 [JSON](https://www.json.org) 数据模型提供架�
 
 ## <a name="storing-datetimes"></a>存储 DateTime
 
-Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、数组和对象。 它不直接支持 DateTime 类型。 目前，Azure Cosmos DB 不支持日期的本地化。 因此，需要将 DateTime 存储为字符串。 Azure Cosmos DB 中 DateTime 字符串的建议格式为 `YYYY-MM-DDThh:mm:ss.fffffffZ`，它遵循 ISO 8601 UTC 标准。 建议以 UTC 格式存储 Azure Cosmos DB 中的所有日期。 将日期字符串转换为此格式将允许按字典顺序对日期进行排序。 如果存储非 UTC 日期，则必须在客户端处理相关逻辑。 若要将本地日期时间转换为 UTC，则偏移量必须已知/存储为 JSON 中的属性，客户端可以使用 offset 计算 UTC 日期时间值。
+Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、数组和对象。 它不直接支持 DateTime 类型。 目前，Azure Cosmos DB 不支持日期的本地化。 因此，需要将 DateTime 存储为字符串。 Azure Cosmos DB 中 DateTime 字符串的建议格式为 `yyyy-MM-ddTHH:mm:ss.fffffffZ`，它遵循 ISO 8601 UTC 标准。 建议以 UTC 格式存储 Azure Cosmos DB 中的所有日期。 将日期字符串转换为此格式将允许按字典顺序对日期进行排序。 如果存储非 UTC 日期，则必须在客户端处理相关逻辑。 若要将本地 DateTime 转换为 UTC，偏移量必须已知/存储为 JSON 中的属性，并且客户端可以使用偏移量来计算 UTC DateTime 值。
 
-仅当 DateTime 字符串均采用 UTC 格式且长度相同时，才支持将 DateTime 字符串作为筛选器的范围查询。 在 Azure Cosmos DB 中， [GetCurrentDateTime](sql-query-getcurrentdatetime.md)系统函数将返回以下格式的当前 UTC 日期和时间 ISO 8601 字符串值： `YYYY-MM-DDThh:mm:ss.fffffffZ`。
+仅当 DateTime 字符串均采用 UTC 格式且长度相同时，才支持那些将 DateTime 字符串作为筛选器的范围查询。 在 Azure Cosmos DB 中，[GetCurrentDateTime](sql-query-getcurrentdatetime.md) 系统函数会返回以下格式的当前 UTC 日期和时间 ISO 8601 字符串值：`yyyy-MM-ddTHH:mm:ss.fffffffZ`。
 
 由于以下原因，大多数应用程序可以使用 DateTime 的默认字符串表示形式：
 
@@ -69,28 +69,28 @@ Azure Cosmos DB 支持 JSON 类型，如字符串、数字、布尔值、null、
 
 ## <a name="querying-datetimes-in-linq"></a>在 LINQ 中查询 Datetime
 
-SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数据。 例如，下面的代码片段演示一个 LINQ 查询，该查询筛选在过去三天中发运的订单：
+SQL .NET SDK 自动支持通过 LINQ 查询存储在 Azure Cosmos DB 中的数据。 例如，以下代码片段显示一个 LINQ 查询，该查询筛选在过去三天内发运的订单：
 
 ```csharp
     IQueryable<Order> orders = container.GetItemLinqQueryable<Order>(allowSynchronousQueryExecution: true).Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
 ```
 
-转换为以下 SQL 语句并在 Azure Cosmos DB 上执行：
+已转换为以下 SQL 语句并在 Azure Cosmos DB 上执行：
 
 ```sql
     SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
-可以在[linq 中查询 Cosmos DB](sql-query-linq-to-sql.md)了解 AZURE COSMOS DB 的 SQL 查询语言和 linq 提供程序的详细信息。
+可在[使用 LINQ 查询 Cosmos DB](sql-query-linq-to-sql.md) 中详细了解 Azure Cosmos DB 的 SQL 查询语言和 LINQ 提供程序。
 
-## <a name="indexing-datetimes-for-range-queries"></a>设置 DateTime 的索引，以便进行范围查询
+## <a name="indexing-datetimes-for-range-queries"></a>编制 DateTime 的索引以执行范围查询
 
-查询与 DateTime 值共同。 若要有效地执行这些查询，您必须对查询筛选器中的任何属性定义索引。
+查询通常使用 DateTime 值。 若要高效执行这些查询，必须已在查询筛选器中的任何属性上定义索引。
 
 如需详细了解如何配置索引策略，可参阅 [Azure Cosmos DB 索引策略](index-policy.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 下载并运行[GitHub 上的代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* 了解 [SQL 查询](sql-query-getting-started.md)的详细信息
-* 深入了解 [Azure Cosmos DB 索引策略](index-policy.md)
+* 下载并运行 [GitHub 上的代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
+* 详细了解 [SQL 查询](sql-query-getting-started.md)
+* 详细了解 [Azure Cosmos DB 索引策略](index-policy.md)
