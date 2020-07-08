@@ -1,19 +1,19 @@
 ---
-title: 用 c + + 客户端库列出 Azure 存储资源
+title: 使用 C++ 客户端库列出 Azure 存储资源
 description: 了解如何在用于 C++ 的 Microsoft Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82591678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514457"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>使用 C++ 列出 Azure 存储资源
 
@@ -22,7 +22,7 @@ ms.locfileid: "82591678"
 > [!NOTE]
 > 本指南主要面向适用于 C++ 版本 2.x 的 Azure 存储客户端库，该库可通过 [NuGet](https://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获取。
 
-存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文将探讨以下方案：
+存储客户端库提供了多种方法，用于列出或查询 Azure 存储中的对象。 本文探讨以下方案：
 
 * 列出帐户中的容器
 * 列出容器或虚拟 blob 目录中的 blob
@@ -30,7 +30,7 @@ ms.locfileid: "82591678"
 * 列出帐户中的表
 * 查询表中的实体
 
-将使用不同的重载针对不同的方案演示上述每种方法。
+使用不同的重载针对不同的方案演示上述每种方法。
 
 ## <a name="asynchronous-versus-synchronous"></a>异步与同步
 
@@ -40,7 +40,7 @@ ms.locfileid: "82591678"
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
 ```
 
-同步操作包装了相应的异步操作：
+同步操作包装相应的异步操作：
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const continuation_token& token) const
@@ -53,16 +53,16 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 ## <a name="segmented-listing"></a>分段列表
 
-云存储的规模决定了要使用分段列表。 例如，你可能在 Azure blob 容器中有超过一百万个 blob，或者在 Azure 表中有十亿个以上的实体。 这些不是理论上的数字，而是实际的客户使用情况。
+云存储的规模决定了要使用分段列表。 例如，你可能在 Azure blob 容器中有超过一百万个 blob，或者在 Azure 表中有超过十亿个实体。 这些不是理论上的数字，而是实际的客户使用情况。
 
-因此，要在单个响应中列出所有对象是不实际的。 与之相反，可以使用分页来列出对象。 每个列表 API 都有*分段*重载。
+因此，要在单个响应中列出所有对象是不实际的。 可以改用分页列出对象。 每个列表 API 都有 *分段* 重载。
 
 分段列表操作的响应包括：
 
 * *_segment*，其中包含针对列表 API 进行单个调用时返回的结果集。
-* *continuation_token*，会传递给下一个调用，以获取下一页结果。 当不再有需要返回的结果时，继续标记为 null。
+* continuation_token，将传递给下一个调用，以获取下一页结果。 当不再有要返回的结果时，继续标记为 null。
 
-例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码段可能如下所示。 我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)中提供了该代码：
+例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码片段可能如下所示。 我们的 [示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)中提供了该代码：
 
 ```cpp
 // List blobs in the blob container
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-请注意，一页中返回的结果数可以通过每个 API 的重载中的参数 *max_results* 进行控制，例如：
+请注意，一页中返回的结果数可以通过每个 API 的重载中的参数 max_results 进行控制，例如：
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -95,11 +95,11 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-如果未指定 *max_results* 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
+如果未指定 max_results 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
 
-另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于所指定的 *max_results* 参数的值，即使继续标记不为空。 可能的一个原因是，查询可能无法在 5 秒钟内完成。 只要继续标记不为空，查询就会继续，代码不应假定分段结果的大小。
+另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于所指定的 max_results 参数的值，即使继续标记不为空。 可能的一个原因是，查询可能无法在 5 秒钟内完成。 只要继续标记不为空，查询就会继续，代码不应假定分段结果的大小。
 
-大多数情况下，建议采用分段列表编码模式，因为这样可以明确地了解列表或查询的进度，以及服务对每个请求是如何响应的。 具体说来，对于 C++ 应用程序或服务来说，对列表进程进行低级别的控制可以更好地控制内存和性能。
+大多数情况下，建议采用分段列表编码模式，因为这样可以明确地了解列表或查询的进度，以及服务对每个请求的响应方式。 具体说来，对于 C++ 应用程序或服务来说，对列表进度进行低级别的控制可以更好地控制内存和性能。
 
 ## <a name="greedy-listing"></a>贪婪列表
 
@@ -113,7 +113,7 @@ std::vector<cloud_queue> list_queues() const;
 
 这些方法在实现时，以分段 API 包装器的方式进行。 每次对分段列表进行响应时，代码会将结果附加到一个矢量，并在对完整的容器进行扫描后返回所有结果。
 
-当存储帐户或表所包含的对象数量较少时，此方法可以使用。 但是，随着对象数目的增加，所需的内存可能会增加且没有限制，因为所有结果都保留在内存中。 一个列表操作可能需要很长时间，调用方在此期间无法获得进度方面的信息。
+当存储帐户或表所包含的对象数量较少时，此方法可能有效。 但是，随着对象数目的增加，所需的内存可能会增加且没有限制，因为所有结果都保留在内存中。 一个列表操作可能需要很长时间，调用方在此期间无法获得进度方面的信息。
 
 SDK 中的此类贪婪列表 API 在 C#、Java 或 JavaScript Node.js 环境中不存在。 若要避免使用这些贪婪 API 带来的潜在问题，我们在 0.6.0 预览版中删除了它们。
 
@@ -143,23 +143,23 @@ do
 } while (!token.empty());
 ```
 
-可以指定该段的 *max_results* 参数，在请求数和内存使用量之间进行平衡，满足应用程序的性能要求。
+可以指定该段的 max_results 参数，在请求数和内存使用量之间进行均衡，满足应用程序的性能要求。
 
-此外，如果使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议对代码进行重构，以便谨慎地处理在规模较大的本地集合中存储数据的问题。
+此外，如果使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议对代码进行重构，谨慎地应对数据处理规模扩大时会数据存储在本地集合中带来的问题。
 
 ## <a name="lazy-listing"></a>懒惰列表
 
-虽然贪婪列表带来了各种潜在的问题，但如果容器中的对象不是很多，则使用起来还是很方便的。
+虽然贪婪列表带来了各种潜在的问题，但如果容器中的对象不是很多，则使用起来很方便。
 
 如果还使用 C# 或 Oracle Java SDK，则应熟悉枚举型编程模式，该模式提供懒惰形式的列表，仅在需要时才提取具有特定偏移量的数据。 在 C++ 中，基于迭代器的模板也提供了类似方法。
 
-典型的懒惰列表 API（使用 **list_blobs** 作为示例）如下所示：
+典型的懒惰列表 API（使用 list_blobs 作为示例）如下所示：
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
 ```
 
-使用懒惰列表模式的典型代码段可能会如下所示：
+使用懒惰列表模式的典型代码片段可能如下所示：
 
 ```cpp
 // List blobs in the blob container
@@ -181,9 +181,9 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 与贪婪列表相比，懒惰列表仅在必要时提取数据。 实际上，它仅在下一个迭代器进入下一段的情况下，才从 Azure 存储提取数据。 因此，内存使用量被控制为界定的大小，而且运行速度也快。
 
-延迟列表 API 包括在用于 C++ 的存储客户端库的 2.2.0 版中。
+懒惰列表 API 包括在用于 C++ 的存储客户端库的 2.2.0 版中。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 在本文中，我们针对用于 C++ 的存储客户端库中的各种对象，对列表 API 的不同重载进行了讨论。 总结：
 
@@ -194,7 +194,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 存储以及用于 C++ 的客户端库的更多信息，请参阅以下资源。
+有关 Azure 存储以及用于 C++ 的客户端库的详细信息，请参阅以下资源。
 
 * [如何通过 C++ 使用 Blob 存储](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [如何通过 C++ 使用表存储](../../cosmos-db/table-storage-how-to-use-c-plus.md)

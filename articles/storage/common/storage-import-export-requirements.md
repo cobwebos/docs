@@ -4,16 +4,16 @@ description: 了解 Azure 导入/导出服务的软件和硬件要求。
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512407"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -78,11 +78,13 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |
 
 不支持以下磁盘类型：
+
 - USB。
 - 带有内置 USB 适配器的外部 HDD。
 - 外部 HDD 外壳内的磁盘。
 
 单个导入/导出作业可以有：
+
 - 最多 10 个 HDD/SSD。
 - 任意大小的 HDD/SSD 的组合。
 
@@ -90,9 +92,6 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 
 当使用 WAImportExport 工具准备硬盘驱动器并复制数据时，可以使用外部 USB 适配器。 大多数现成的 USB 3.0 或更高版本的适配器应可以工作。
 
-
 ## <a name="next-steps"></a>后续步骤
 
-* [设置 WAImportExport 工具](storage-import-export-tool-how-to.md)
-* [使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)
-* [Azure 导入/导出 REST API 示例](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
+* [通过 AzCopy 命令行实用工具传输数据](storage-use-azcopy.md)

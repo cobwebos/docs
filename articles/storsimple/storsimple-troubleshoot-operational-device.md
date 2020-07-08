@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: twooley
-ms.openlocfilehash: ca79e4240c1a82e46bea44a9d018a3c681920480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2e68c7016a37824f1bf307a676c39281d4d41d2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507813"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>对正常运行的 StorSimple 设备进行故障排除
 > [!NOTE]
@@ -45,12 +45,12 @@ ms.locfileid: "75933295"
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>在安装向导的后续运行过程中发生的错误
 下表介绍了在操作设备上运行安装向导时可能遇到的错误、发生错误的可能原因以及解决它们的建议的操作。 
 
-| 否。 | 错误消息或条件 | 可能的原因 | 建议操作 |
+| 不能。 | 错误消息或条件 | 可能的原因 | 建议的操作 |
 |:--- |:--- |:--- |:--- |
-| 1 |错误 350032：此设备已被停用。 |如果在停用的设备上运行安装向导，会看到此错误。 |有关后续步骤，[请联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 停用的设备无法提供服务。 可能需要先恢复出厂设置，才可以重新激活设备。 |
+| 1 |错误 350032：此设备已被停用。 |如果在停用的设备上运行安装向导，会看到此错误。 |[联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)以了解后续步骤。 停用的设备无法提供服务。 可能需要先恢复出厂设置，才可以重新激活设备。 |
 | 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Exception from HRESULT: 0x80070001) |DNS 服务器更新失败。 DNS 设置是全局设置，并应用于所有启用的网络接口。 |启用界面并再次应用 DNS 设置。 由于这些设置是全局的，可能会中断其他已启用接口的网络。 |
 | 3 |设备在 StorSimple Manager 服务门户中似乎处于联机状态，但尝试完成最低安装并保存配置时，操作会失败。 |在初始安装过程中，即使已存在实际的代理服务器，也不会配置 Web 代理。 |使用 [Test-HcsmConnection cmdlet][2] 查找错误。 如果不能更正此问题，请 [联系 Microsoft 支持部门](storsimple-contact-microsoft-support.md)。 |
-| 4 |Invoke-HcsSetupWizard：值不在预期范围内。 |错误的子网掩码导致此错误。 可能的原因包括： <ul><li> 子网掩码缺失或为空。</li><li>Ipv6 前缀格式不正确。</li><li>该接口已启用云，但网关缺失或不正确。</li></ul>请注意，如果通过安装向导配置，则 DATA 0 自动启用云。 |要确定该问题，请使用子网 0.0.0.0 或 256.256.256.256，再看输出。 请根据需要输入正确的子网掩码、网关和 Ipv6 前缀值。 |
+| 4 |Invoke-HcsSetupWizard：值不在预期范围内。 |错误的子网掩码导致此错误。 可能的原因有： <ul><li> 子网掩码缺失或为空。</li><li>Ipv6 前缀格式不正确。</li><li>该接口已启用云，但网关缺失或不正确。</li></ul>请注意，如果通过安装向导配置，则 DATA 0 自动启用云。 |要确定该问题，请使用子网 0.0.0.0 或 256.256.256.256，再看输出。 请根据需要输入正确的子网掩码、网关和 Ipv6 前缀值。 |
 
 ## <a name="error-codes"></a>错误代码
 按数字顺序列出错误。

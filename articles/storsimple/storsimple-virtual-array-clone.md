@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: af6e979c-55e3-477c-b53e-a76a697f80c9
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60580791"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513643"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>从 StorSimple 虚拟阵列的备份克隆
 
@@ -42,7 +42,7 @@ ms.locfileid: "60580791"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击" **确定**"。
+   c.    单击“确定”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. 在“克隆”**** 边栏选项卡中，单击“目标设置”****，并执行以下操作：
@@ -57,7 +57,7 @@ ms.locfileid: "60580791"
    
    e.    为此共享分配管理员。 克隆完成后，能够通过文件资源管理器修改共享属性。
    
-   f.    单击" **确定**"。
+   f.    单击“确定”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "60580791"
    
    b.    在显示的已筛选备份列表中，选择要从中克隆的备份。
    
-   c.    单击" **确定**"。
+   c.    单击“确定”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. 在“克隆”**** 边栏选项卡中，单击“目标卷设置”****，并执行以下操作：
@@ -96,7 +96,7 @@ ms.locfileid: "60580791"
    d. 对于“连接的主机”****，单击“选择”****。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. 在“连接的主机”**** 边栏选项卡中，从现有 ACR 中选择，或添加一个新 ACR。 若要添加新 ACR，需要提供 ACR 名称和主机 IQN。 单击“选择”。 
+4. 在“连接的主机”**** 边栏选项卡中，从现有 ACR 中选择，或添加一个新 ACR。 若要添加新 ACR，需要提供 ACR 名称和主机 IQN。 单击“选择”。
    
    ![克隆备份](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. 单击“克隆”**** 启动克隆作业。

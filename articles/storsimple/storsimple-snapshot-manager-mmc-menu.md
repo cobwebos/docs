@@ -9,24 +9,24 @@ editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
-ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c177adaa6fe0808d6719a8e87669d7f2fa4fb9cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931467"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508820"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>使用 StorSimple Snapshot Manager 中的 MMC 菜单操作
 
 ## <a name="overview"></a>概述
 在 StorSimple Snapshot Manager 中，将看到以下操作列于所有的操作菜单和“**操作**”窗格的所有变体上。
 
-* 查看
+* 视图
 * 从此处新建窗口 
 * 刷新 
 * 导出列表 
@@ -34,13 +34,13 @@ ms.locfileid: "75931467"
 
 这些操作是 Microsoft 管理控制台 (MMC) 的组成部分，而非特定于 StorSimple Snapshot Manager。 本教程介绍了这些操作，并阐述了如何在 StorSimple Snapshot Manager 中使用其中的每一个操作。
 
-## <a name="view"></a>查看
+## <a name="view"></a>视图
 你可以使用 **“视图”** 选项来更改 **“结果”** 窗格视图和控制台窗口视图。 
 
 #### <a name="to-change-the-results-pane-view"></a>更改“结果”窗格视图
 1. 单击桌面图标启动 StorSimple Snapshot Manager。
 2. 在 **“作用域”** 窗格中，右键单击任意节点，或者展开节点后右键单击 **“结果”** 窗格中的某个项目，然后单击 **“视图”** 选项。 
-3. 若要添加或删除显示在 **“结果”** 窗格中的列，请单击 **“添加/删除列”**。 此时会显示 **“添加/删除列”** 对话框。
+3. 若要添加或删除显示在 **“结果”** 窗格中的列，请单击 **“添加/删除列”**。 随即出现“添加/删除列”对话框。
    
     ![添加或删除“结果”窗格中的列](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
 4. 如下所示填写表单：
@@ -87,7 +87,7 @@ ms.locfileid: "75931467"
    1. 在 **“文件名”** 框中，键入 CSV 文件的名称或单击相应箭头从下拉列表中进行选择。
    2. 在 **“另存为类型”** 框中，单击相应箭头并从下拉列表中选择一个文件类型。
    3. 若只保存选定项目，请选择相应行，然后单击 **“只保存选定行”** 复选框。 若要保存导出的所有列表，则清除“**只保存选定行**”复选框。
-   4. 单击“ **保存**”。
+   4. 单击“保存” 。
       
       ![将列表导出为逗号分隔值文件](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 

@@ -4,21 +4,21 @@ description: 如何使用 Azure 资源管理器模板安装用户界面工具以
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: abe9b060793983e42ab432924ca5d6d7f43d307d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615235"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514237"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署管理工具
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的秋季2019版本。
+>本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
 
 本文中的说明将告诉你如何使用 Azure 资源管理器模板部署 UI。
 
@@ -40,7 +40,7 @@ ms.locfileid: "82615235"
 
 - 已禁用 Azure 多重身份验证 (MFA)
 - 有权在 Azure 订阅中创建资源
-- 有权创建 Azure AD 应用程序 按照[所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)中的说明，执行这些步骤检查用户是否具有所需的权限。
+- 有权创建 Azure AD 应用程序 按照[所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)中的说明，执行这些步骤检查用户是否具有所需的权限。
 
 部署和配置管理工具后，建议你要求用户启动管理 UI，以确保一切正常。 启动管理 UI 的用户必须具有使他们能够查看或编辑 Windows 虚拟桌面租户的角色分配。
 
@@ -52,7 +52,7 @@ ms.locfileid: "82615235"
 
 1. 转到 [GitHub Azure RDS 模板页](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)。
 2. 将模板部署到 Azure。
-    - 如果在“企业”订阅中部署，请向下滚动并选择“部署到 Azure”。**** 
+    - 如果在“企业”订阅中部署，请向下滚动并选择“部署到 Azure”。****
     - 如果在“云解决方案提供商”订阅中部署，请遵照以下说明部署到 Azure：
         1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。********
         2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
@@ -71,11 +71,13 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 
 在登录和使用管理工具之前，必须为管理工具关联的新 Azure AD 应用程序提供许可。 提供许可使管理工具可以代表当前已登录到该工具的用户进行 Windows 虚拟桌面管理调用。
 
-![该屏幕截图显示许可 UI 管理工具时提供的权限。](../media/management-ui-delegated-permissions.png)
+> [!div class="mx-imgBorder"]
+> ![该屏幕截图显示许可 UI 管理工具时提供的权限。](../media/management-ui-delegated-permissions.png)
 
 若要确定可以使用哪个用户登录到该工具，请转到 [Azure Active Directory 用户设置页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)，并记下“用户可以许可应用代表他们访问公司数据”的值。****
 
-![该屏幕截图显示用户是否可以许可应用程序代表他们访问数据。](../media/management-ui-user-consent-allowed.png)
+> [!div class="mx-imgBorder"]
+> ![该屏幕截图显示用户是否可以许可应用程序代表他们访问数据。](../media/management-ui-user-consent-allowed.png)
 
 - 如果该值设置为“是”，则你可以使用 Azure Active Directory 中的任何用户帐户登录，并只能为该用户提供许可。**** 但是，如果以后使用其他用户登录到管理工具，则必须再次执行相同的许可。
 - 如果该值设置为“否”，则必须以 Azure Active Directory 中的全局管理员身份登录，并针对目录中的所有用户提供管理员许可。**** 所有其他用户不会看到许可提示。
@@ -83,11 +85,12 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 
 决定要使用哪个用户提供许可后，请遵照以下说明为工具提供许可：
 
-1. 转到 Azure 资源，选择具有你在模板中提供的名称的 Azure 应用服务资源（例如，Apr3UX），然后导航到与其关联的 URL;例如， <https://rdmimgmtweb-210520190304.azurewebsites.net>。
+1. 转到 Azure 资源，选择具有你在模板中提供的名称的 Azure 应用服务资源（例如，Apr3UX），然后导航到与其关联的 URL;例如， <https://rdmimgmtweb-210520190304.azurewebsites.net> 。
 2. 使用相应的 Azure Active Directory 用户帐户登录。
 3. 如果已使用全局管理员帐户进行身份验证，则现在可以选中“代表组织提供许可”复选框。**** 选择“接受”以提供许可。****
-   
-   ![该屏幕截图显示用户或管理员将看到的整个许可页。](../media/management-ui-consent-page.png)
+
+   > [!div class="mx-imgBorder"]
+   > ![该屏幕截图显示用户或管理员将看到的整个许可页。](../media/management-ui-consent-page.png)
 
 随后你会转到管理工具。
 
@@ -101,7 +104,7 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 2. 使用 Windows 虚拟桌面凭据登录。
 3. 当系统提示你选择租户组时，请从下拉列表中选择“默认租户组”。****
 4. 选择“默认租户组”时，将在窗口左侧显示一个菜单****。 在此菜单中，找到租户组的名称并将其选中。
-  
+
   > [!NOTE]
   > 如果你有自定义的租户组，请手动输入名称，而不要从下拉列表中选择。
 

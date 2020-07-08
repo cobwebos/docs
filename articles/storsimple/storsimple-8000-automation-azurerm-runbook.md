@@ -3,15 +3,15 @@ title: 使用 Azure 自动化 Runbook 管理 StorSimple 设备
 description: 了解如何使用 Azure 自动化 Runbook 自动执行 StorSimple 作业
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 727bebe0c190ed4dff4408884c45fe166ad541a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 737533cd75ebec8d5d6c614f496e0c9b552217aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514172"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自动化 Runbook 管理 StorSimple 设备
 
@@ -182,7 +182,7 @@ ms.locfileid: "76276970"
    3. 创建新的资源组，或选择现有的资源组。
    4. 选择一个**位置**（请尽量选择运行服务的位置）。
    5. 保留选择默认的“创建运行方式帐户”选项。****
-   6. （可选）选中“固定到仪表板”。**** 单击“创建”。 
+   6. （可选）选中“固定到仪表板”。**** 单击“创建”。
 
        ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
@@ -194,11 +194,11 @@ ms.locfileid: "76276970"
 
 4. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。********
 
-5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”。 
+5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. 转到“过程自动化”>“Runbook”并单击“+ 添加 Runbook”。**** 在“添加 Runbook”边栏选项卡中，单击“导入现有的 Runbook”。******** 指向 **Runbook 文件**的 Windows PowerShell 脚本文件。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。 
+6. 转到“过程自动化”>“Runbook”并单击“+ 添加 Runbook”。**** 在“添加 Runbook”边栏选项卡中，单击“导入现有的 Runbook”。******** 指向 **Runbook 文件**的 Windows PowerShell 脚本文件。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

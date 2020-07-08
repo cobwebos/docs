@@ -5,17 +5,17 @@ description: 用于从虚拟网络安全访问存储帐户的专用终结点的�
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299050"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513278"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>使用 Azure 存储的专用终结点
 
@@ -31,7 +31,7 @@ ms.locfileid: "79299050"
 
 ![Azure 存储的专用终结点概述](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-专用终结点是[虚拟网络](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 当你为存储帐户创建专用终结点时，它会在 VNet 和你的存储中的客户端之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。 专用终结点与存储服务之间的连接使用安全的专用链接。
+专用终结点是[虚拟网络](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 当你为存储帐户创建专用终结点时，它会在 VNet 和你的存储中的客户端之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点与存储服务之间的连接使用安全的专用链接。
 
 VNet 中的应用程序可以**使用相同的连接字符串和要使用的授权机制**，以无缝方式通过专用终结点连接到存储服务。 专用终结点可与存储帐户支持的所有协议（包括 REST 和 SMB）结合使用。
 
@@ -79,17 +79,17 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 对于上面所示的示例，存储帐户 "StorageAccountA" 的 DNS 资源记录在托管专用终结点的 VNet 之外进行解析时将为：
 
-| 名称                                                  | 类型  | 值                                                 |
+| 名称                                                  | 类型  | Value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<存储服务公共终结点\>                   |
-| \<存储服务公共终结点\>                   | A     | \<存储服务公共 IP 地址\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 如前文所述，你可以使用存储防火墙通过公共终结点拒绝或控制对 VNet 外部客户端的访问。
 
 托管专用终结点的 VNet 中的客户端解析后，StorageAccountA 的 DNS 资源记录将为：
 
-| 名称                                                  | 类型  | 值                                                 |
+| 名称                                                  | 类型  | Value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -137,9 +137,9 @@ Vnet 中具有现有专用终结点的客户端在访问具有专用终结点的
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>专用终结点所在子网的网络安全组规则
 
-目前，无法为专用终结点配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则和用户定义的路由。 应用于托管专用终结点的子网的 NSG 规则应用到专用终结点。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。
+目前，无法为专用终结点配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则和用户定义的路由。 应用于托管专用终结点的子网的 NSG 规则仅适用于专用终结点以外的其他终结点（例如 Nic）。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [配置 Azure 存储防火墙和虚拟网络](storage-network-security.md)
-- [适用于 Blob 存储的安全建议](../blobs/security-recommendations.md)
+- [有关 Blob 存储的安全性建议](../blobs/security-recommendations.md)

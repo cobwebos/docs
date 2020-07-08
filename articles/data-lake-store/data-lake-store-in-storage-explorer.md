@@ -3,15 +3,15 @@ title: 管理 Data Lake Storage Gen1 资源-Azure 存储资源管理器
 description: 了解如何在 Azure 存储资源管理器中访问和管理 Azure Data Lake Storage Gen1 数据和资源
 author: jejiang
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: a99196cfad7abad38408c847a8a0b64ffe95fff5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73832266"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508786"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用存储资源管理器管理 Azure Data Lake Storage Gen1 资源
 
@@ -142,7 +142,7 @@ Data Lake Storage Gen1 帐户的资源包含文件夹和文件。
 1. 选择要下载的文件夹或文件。
 2. 在主窗格的工具栏上，选择“下载”。****
 3. 在“选择用于保存已下载文件的文件夹”对话框中，指定位置和名称。****
-4. 选择“保存”。 
+4. 选择“保存”。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>从本地计算机打开文件夹或文件
 

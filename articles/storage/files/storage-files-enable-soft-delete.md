@@ -1,23 +1,23 @@
 ---
 title: 启用软删除 - Azure 文件共享
-description: 了解如何在 Azure 文件共享上启用软删除，以进行数据恢复和防止意外删除。
+description: 了解如何在 Azure 文件共享上启用软删除（预览版），以便进行数据恢复和防止意外删除。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
-ms.date: 05/26/2020
+ms.topic: how-to
+ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 755ccd266b8a88471bf7dbc0d2deb790f35f3457
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83883010"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510808"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 文件共享上启用软删除
 
-Azure 存储为文件共享提供软删除，以便在应用程序或其他存储帐户用户错误地删除了数据后，可以更轻松地恢复数据。 若要了解有关软删除的详细信息，请参阅[如何防止意外删除 Azure 文件共享](storage-files-prevent-file-share-deletion.md)。
+Azure 存储为文件共享提供软删除（预览版），以便在应用程序或其他存储帐户用户误删除数据时，可以更轻松地恢复数据。 若要了解有关软删除的详细信息，请参阅[如何防止意外删除 Azure 文件共享](storage-files-prevent-file-share-deletion.md)。
 
 以下部分说明如何在现有存储帐户上为 Azure 文件共享启用和使用软删除：
 
@@ -97,3 +97,7 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
 ```
 ---
+
+## <a name="next-steps"></a>后续步骤
+
+若要了解另一种形式的数据保护和恢复，请参阅[Azure 文件的共享快照概述](storage-snapshots-files.md)。

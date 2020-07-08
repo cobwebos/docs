@@ -3,24 +3,24 @@ title: 使用 AzCopy v10 向/从 Azure Blob 存储传输数据 | Microsoft Docs
 description: 本文包含一系列 AzCopy 示例命令，以帮助你创建容器，并在本地文件系统与容器之间复制文件和同步目录。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513773"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
 AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据，或者在存储帐户之间复制数据。 本文包含适用于 Blob 存储的示例命令。
 
 > [!TIP]
-> 本文中的示例将路径参数括在单引号（' '）中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
+> 本文中的示例将路径参数括在单引号 ('') 中。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 ## <a name="get-started"></a>入门
 
@@ -62,8 +62,8 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 >
 > |方案|标志|
 > |---|---|
-> |将文件上传为追加 Blob 或页 Blob。|**--blob 类型**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |上传到特定访问层（如存档层）。|**--块 blob-第**=\[None\|热\|酷\|存档\]|
+> |将文件作为追加 Blob 或页 Blob 上传。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |上传到特定访问层（如存档层）。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
@@ -158,9 +158,9 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 >
 > |方案|标志|
 > |---|---|
-> |自动解压缩文件。|**--解压缩**|
-> |指定您希望与副本相关的日志条目的详细信息。|**--日志级别**=\[警告\|错误\|信息\|无\]|
-> |指定是否以及如何覆盖目标上的冲突文件和 blob。|**--覆盖**=\[true\|false\|ifSourceNewer\|提示符\]|
+> |自动解压缩文件。|**--decompress**|
+> |指定你希望与复制相关的日志条目达到何种详细程度。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
+> |指定是否以及如何覆盖目标位置的冲突文件和 Blob。|**--overwrite**=\[true\|false\|ifSourceNewer\|prompt\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
@@ -241,7 +241,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 > [!NOTE]
 > 此方案在当前版本中存在以下限制。
 >
-> - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。
+> - 必须向每个源 URL 追加一个 SAS 令牌。 如果使用 Azure Active Directory (AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。 请确保已在目标帐户中设置适当的角色。 请参阅[选项1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
 >-  高级块 Blob 存储帐户不支持访问层。 请通过将 `s2s-preserve-access-tier` 设置为 `false`（例如：`--s2s-preserve-access-tier=false`），在复制操作中省略 Blob 的访问层。
 
 本部分包含以下示例：
@@ -259,9 +259,9 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 >
 > |方案|标志|
 > |---|---|
-> |将文件复制为追加 Blob 或页 Blob。|**--blob 类型**=\[BlockBlob\|PageBlob\|AppendBlob\]|
-> |复制到特定访问层（如存档层）。|**--块 blob-第**=\[None\|热\|酷\|存档\]|
-> |自动解压缩文件。|**--解压缩**=\[gzip\|deflate\]|
+> |将文件复制为追加 Blob 或页 Blob。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |复制到特定访问层（如存档层）。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
+> |自动解压缩文件。|**--decompress**=\[gzip\|deflate\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-copy.md#options)。
 
@@ -310,7 +310,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 可将本地文件系统的内容与 Blob 容器同步。 还可以将容器和虚拟目录相互同步。 同步是单向的。 换言之，需要选择这两个终结点中哪一个是源，哪一个是目标。 同步也使用服务器到服务器 API。 本部分中提供的示例也适用于具有分层命名空间的帐户。 
 
 > [!NOTE]
-> 当前版本的 AzCopy 不在其他源和目标之间同步（例如：文件存储或 Amazon Web Services （AWS） S3 存储桶）。
+> 当前版本的 AzCopy 不会在其他源和目标之间同步（例如：文件存储或 Amazon Web Services (AWS) S3 桶）。
 
 [sync](storage-ref-azcopy-sync.md) 命令比较文件名和上次修改时间戳。 如果将 `--delete-destination` 可选标志设置为 `true` 或 `prompt` 值，当目标目录中的文件不在源目录中存在时，会删除这些文件。
 
@@ -324,9 +324,9 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 >
 > |方案|标志|
 > |---|---|
-> |指定下载时应如何验证严格的 MD5 哈希。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
-> |基于模式排除文件。|**--排除-路径**|
-> |指定您希望与同步相关的日志条目的详细程度。|**--日志级别**=\[警告\|错误\|信息\|无\]|
+> |指定下载时应验证 MD5 哈希的严格程度。|**--check-md5**=\[NoCheck\|LogOnly\|FailIfDifferent\|FailIfDifferentOrMissing\]|
+> |基于模式排除文件。|**--exclude-path**|
+> |指定你希望与同步相关的日志条目达到何种详细程度。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 > 
 > 有关完整列表，请参阅[选项](storage-ref-azcopy-sync.md#options)。
 

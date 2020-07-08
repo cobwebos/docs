@@ -3,15 +3,15 @@ title: 将数据移动到 Azure HPC 缓存云容器
 description: 如何填充用于 Azure HPC 缓存的 Azure Blob 存储
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fd21a78d0271f91d334bba5aba748f3770ad38cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac963fd01016506193aae0fab5582224b3957de8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537927"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508956"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>将数据移动到 Azure Blob 存储
 
@@ -58,7 +58,7 @@ Avere CLFSLoad 实用工具需要以下信息：
 
 ![显示多客户端、多线程数据移动的示意图：在左上方，本地硬件存储对应的图标引出了多个箭头。 箭头指向四台客户端计算机。 每个客户端计算机的三个箭头指向 Azure HPC 缓存。 通过 Azure HPC 缓存，多个箭头指向 Blob 存储。](media/hpc-cache-parallel-ingest.png)
 
-通常``cp``用于``copy``将数据从一个存储系统传输到另一个存储系统的或命令是单线程进程，该进程一次只复制一个文件。 这意味着文件服务器一次只引入一个文件，这就是缓存资源的浪费。
+``cp`` ``copy`` 通常用于将数据从一个存储系统传输到另一个存储系统的或命令是单线程进程，该进程一次只复制一个文件。 这意味着文件服务器一次只引入一个文件，这就是缓存资源的浪费。
 
 本部分介绍了使用 Azure HPC 缓存创建多客户端多线程文件复制系统以将数据移到 Blob 存储的策略。 其中解释了文件传输的概念，以及可用于有效通过多个客户端和简单复制命令来复制数据的决策点。
 
@@ -77,9 +77,9 @@ Avere CLFSLoad 实用工具需要以下信息：
 
 * 手动复制-可以通过在后台针对预定义的文件或路径集运行多个 copy 命令，在客户端上手动创建多线程副本。 有关详细信息，请参阅[AZURE HPC 缓存数据引入-手动复制方法](hpc-cache-ingest-manual.md)。
 
-* ``msrsync``  - 的``msrsync``部分自动复制是一个运行多个并行``rsync``进程的包装实用工具。 有关详细信息，请参阅[AZURE HPC 缓存数据引入-msrsync 方法](hpc-cache-ingest-msrsync.md)。
+* 的部分自动复制 ``msrsync``  -  ``msrsync`` 是一个运行多个并行进程的包装实用工具 ``rsync`` 。 有关详细信息，请参阅[AZURE HPC 缓存数据引入-msrsync 方法](hpc-cache-ingest-msrsync.md)。
 
-* 使用``parallelcp``脚本复制-了解如何在[Azure HPC 缓存数据引入-并行复制脚本方法](hpc-cache-ingest-parallelcp.md)中创建和运行并行复制脚本。
+* 使用脚本复制 ``parallelcp`` -了解如何在[Azure HPC 缓存数据引入-并行复制脚本方法](hpc-cache-ingest-parallelcp.md)中创建和运行并行复制脚本。
 
 ## <a name="next-steps"></a>后续步骤
 

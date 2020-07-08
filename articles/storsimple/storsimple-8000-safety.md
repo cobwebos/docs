@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396631"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514536"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>安全地安装和运行 StorSimple 设备
 ![警告图标](./media/storsimple-safety/IC740879.png)
@@ -30,7 +30,7 @@ ms.locfileid: "80396631"
 ## <a name="safety-icon-conventions"></a>安全图标约定
 以下是在查看安全预防措施时出现的图标，安装和运行 Microsoft Azure StorSimple 设备时应遵循这些措施。
 
-| 图标 | 说明 |
+| 图标 | 描述 |
 |:--- |:--- |
 | ![危险图标](./media/storsimple-safety/IC740879.png) **DANGER!** |指示如果未能避免危险情况，将导致死亡或重伤。 此警示语仅限于最为极端的情况。 |
 | ![警告图标](./media/storsimple-safety/IC740879.png) **WARNING!** |指示如果未能避免危险情况，可能导致死亡或重伤。 |
@@ -103,10 +103,11 @@ ms.locfileid: "80396631"
 
 机架系统的正确冷却：
 
-* 确保机架设计考虑到 35 摄氏度（95 华氏度）的最高机箱操作环境温度。
+* 确保机架设计考虑到 35 摄氏度（95 华氏度）的最高机箱操作环境温度。 留出机架系统很冷的房间，并检查数据中心内 AC 通风管是否有充足的气流。
 * 系统采用低压后排气安装运行（机架门和障碍物生成的背压不能超过 5 帕斯卡 [0.5 毫米水位]）。
 
 ## <a name="power-cooling-module-pcm-precautions"></a>电源冷却模块 (PCM) 注意事项
+
 该设备的设计可操作两台 PCM。 每个 PCM 都有电源和双轴风扇。 在紧急情况下，系统可以在其中一个电源发生故障时继续正常操作。 必须始终安装两个 PCM（以及相应的电源）。 单个 PCM 不提供冗余电源。 因此，即使一个 PCM 发生故障，也会导致停机或可能造成数据丢失。
 
 ![警告图标](./media/storsimple-safety/IC740879.png) ![电击图标](./media/storsimple-safety/IC740882.png) **WARNING!**
@@ -123,6 +124,7 @@ ms.locfileid: "80396631"
 * 除非可以立即安装更换，否则请勿移除 PCM。 所有模块未准备就绪时，请勿对机箱进行操作。
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>静电放电 (ESD) 预防措施
+
 ![注意图标](./media/storsimple-safety/IC740881.png) **NOTICE:**
 
 请遵循以下与 ESD 相关的注意事项。
@@ -133,6 +135,7 @@ ms.locfileid: "80396631"
 * ESD 损坏不在保修范围内。
 
 ## <a name="battery-disposal-precautions"></a>电池处置注意事项
+
 电源使用特殊电池在临时性的短期停电期间保护内存中的内容。 电池装在 PCM 中。 请注意以下有关电池的信息。
 
 ![警告图标](./media/storsimple-safety/IC740879.png) **WARNING!**
@@ -150,6 +153,6 @@ ms.locfileid: "80396631"
 查看完这些安全注意事项之后，后续步骤是对设备进行解包、安装机架并连接电缆。
 
 ## <a name="next-steps"></a>后续步骤
+
 * 对于对 8100 设备，请转到 [安装 StorSimple 8100 设备](storsimple-8100-hardware-installation.md)。
 * 对于对 8600 设备，请转到 [安装 StorSimple 8600 设备](storsimple-8600-hardware-installation.md)。
-

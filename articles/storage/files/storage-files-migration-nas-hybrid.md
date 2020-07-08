@@ -3,16 +3,16 @@ title: 本地 NAS 迁移到 Azure 文件同步
 description: 了解如何使用 Azure 文件同步和 Azure 文件共享将文件从本地网络附加存储（NAS）位置迁移到混合云部署。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7b0c7a30580d3863a78e85b8b45287a598bbf394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247344"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510299"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从网络附加存储（NAS）迁移到混合云部署
 
@@ -124,7 +124,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG：\<文件名\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       将状态作为 UNICODE 输出到日志文件（覆盖现有日志）。
@@ -181,7 +181,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 ## <a name="phase-8-user-cut-over"></a>阶段8：用户缩减
 
-首次运行 RoboCopy 命令时，您的用户和应用程序仍将在 NAS 上访问文件，并有可能更改这些文件。 这是可能的，RoboCopy 处理了一个目录，移到下一个目录，然后在源位置（NAS）上的用户添加、更改或删除了当前未在此当前 RoboCopy 运行中处理的文件。 此行为是预期的行为。
+首次运行 RoboCopy 命令时，您的用户和应用程序仍将在 NAS 上访问文件，并有可能更改这些文件。 这是可能的，RoboCopy 处理了一个目录，移到下一个目录，然后在源位置（NAS）上的用户添加、更改或删除了当前未在此当前 RoboCopy 运行中处理的文件。 这是预期的行为。
 
 第一次运行是将大量数据移到 Windows 服务器，并通过 Azure 文件同步将数据移动到云中。此第一个副本可能需要较长时间，具体取决于：
 

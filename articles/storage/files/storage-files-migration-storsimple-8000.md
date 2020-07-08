@@ -3,16 +3,16 @@ title: StorSimple 8000 系列迁移到 Azure 文件同步
 description: 了解如何将 StorSimple 8100 或8600设备迁移到 Azure 文件同步。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d6ad132513c2ec61dd5a290da1a88e50f0ad6eb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510352"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
@@ -23,7 +23,7 @@ StorSimple 8000 系列[将在 12](https://support.microsoft.com/en-us/lifecycle/
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
 > [!IMPORTANT]
-> Microsoft 致力于帮助客户完成其迁移。 用于AzureFiles@microsoft.com自定义迁移计划的电子邮件，并在迁移过程中提供帮助。
+> Microsoft 致力于帮助客户完成其迁移。 AzureFilesMigration@microsoft用于自定义迁移计划的电子邮件，并在迁移过程中提供帮助。
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 

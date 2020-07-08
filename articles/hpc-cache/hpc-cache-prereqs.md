@@ -3,19 +3,35 @@ title: Azure HPC 缓存先决条件
 description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: d7a5bfe56a17ecc2377be7b59dcbe3254d813a0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513250"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
 使用 Azure 门户创建新的 Azure HPC 缓存之前，请确保你的环境满足这些要求。
+
+## <a name="video-overviews"></a>视频概述
+
+观看这些视频，快速概述系统组件以及需要协同工作的组件。
+
+（单击视频图像或观看的链接。）
+
+* [工作原理](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)-介绍 Azure HPC 缓存如何与存储和客户端交互
+
+  [![视频缩略图： Azure HPC 缓存：工作方式（单击以访问视频页面）](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+
+* [先决条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)-介绍 NAS 存储、Azure Blob 存储、网络访问和客户端访问的要求
+
+  [![视频缩略图： Azure HPC 缓存：先决条件（单击以访问视频页）](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+
+有关具体建议，请阅读本文的其余部分。
 
 ## <a name="azure-subscription"></a>Azure 订阅
 
@@ -80,7 +96,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
 * 性能：**标准**
 * 帐户类型： **StorageV2 （常规用途 v2）**
-* 复制：**本地冗余存储(LRS)**
+* 复制：**本地冗余存储（LRS）**
 * 访问层（默认）：**热**
 
 最好使用与缓存位于同一位置的存储帐户。
@@ -103,7 +119,7 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
   若要检查存储系统的设置，请按照此过程操作。
 
-  * 向存储`rpcinfo`系统发出命令以检查所需的端口。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
+  * `rpcinfo`向存储系统发出命令以检查所需的端口。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
 
     你可以从安装了 NFS 基础结构的任何 Linux 客户端发出此命令。 如果在群集子网中使用客户端，它还可以帮助验证子网和存储系统之间的连接。
 
@@ -111,26 +127,26 @@ Azure HPC 缓存需要具有以下特性的专用子网：
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
-  请确保``rpcinfo``查询返回的所有端口都允许来自 Azure HPC 缓存的子网的无限制流量。
+  请确保查询返回的所有端口都 ``rpcinfo`` 允许来自 AZURE HPC 缓存的子网的无限制流量。
 
-  * 如果无法使用`rpcinfo`命令，请确保这些常用端口允许入站和出站流量：
+  * 如果无法使用 `rpcinfo` 命令，请确保这些常用端口允许入站和出站流量：
 
-    | 协议 | 端口  | 服务  |
+    | 协议 | Port  | 服务  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | mountd   |
-    | TCP/UDP  | 4047  | status   |
+    | TCP/UDP  | 4047  | 状态   |
 
     某些系统对这些服务使用不同的端口号，请参阅存储系统的文档以确保。
 
   * 检查防火墙设置，以确保它们允许所有这些所需端口上的流量。 请确保检查 Azure 中使用的防火墙以及数据中心内的本地防火墙。
 
-* **目录访问：** 在存储`showmount`系统中启用命令。 Azure HPC 缓存使用此命令检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录（发生文件冲突的风险）。
+* **目录访问：**`showmount`在存储系统中启用命令。 Azure HPC 缓存使用此命令检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录（发生文件冲突的风险）。
 
   > [!NOTE]
-  > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请**不要启用`showmount` **。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md)以获取帮助。
+  > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请**不要启用 `showmount` **。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md)以获取帮助。
 
   有关目录列表访问权限的详细信息，请参阅 NFS 存储目标[故障排除一文](troubleshoot-nas.md#enable-export-listing)。
 

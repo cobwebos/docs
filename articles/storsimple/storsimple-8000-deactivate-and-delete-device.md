@@ -5,21 +5,20 @@ services: storsimple
 documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 825a10bec7a9d415bdcf76e5b6f28f04060bb411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61481891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514033"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用和删除 StorSimple 设备
 
@@ -36,28 +35,29 @@ ms.locfileid: "61481891"
 >
 > 出厂重置过程会删除以本地方式存储在设备上的所有数据。 因此，必须在停用设备之前创建所有数据的云快照。 使用此云快照可以在后面的某个阶段恢复所有数据。
 
+> [!NOTE]
+>
+> - 停用 StorSimple 物理设备或云设备之前，请确保已删除卷容器中的数据实际已从设备中删除。 可以监视云使用量图表，当看到由于删除了备份云使用量下降时，便可以继续停用设备。 如果在此下降发生之前停用设备，数据将闲置在存储帐户中并累算费用。
+>
+> - 停用 StorSimple 物理设备或云设备之前，请停止或删除依赖于该设备的客户端与主机。
+>
+> - 如果在从设备中删除数据之前已经删除了与卷容器关联的存储帐户中的存储帐户或容器，则将收到错误，并且可能无法删除数据。 建议删除设备上的数据，然后删除其中的存储帐户。 但是，在这种情况下，你必须继续执行设备停用和删除操作，前提是已将数据从存储帐户中删除。
+
 阅读本教程之后，能够：
 
-* 停用设备并删除数据。
-* 停用设备并保留数据。
-
-> [!NOTE]
-> 停用 StorSimple 物理设备或云设备之前，请停止或删除依赖于该设备的客户端与主机。
-
+- 停用设备并删除数据。
+- 停用设备并保留数据。
 
 ## <a name="deactivate-and-delete-data"></a>停用和删除数据
 
 若要彻底删除设备，不想在设备上保留数据，则请完成以下步骤。
 
-#### <a name="to-deactivate-the-device-and-delete-the-data"></a>停用设备并删除数据
+### <a name="to-deactivate-the-device-and-delete-the-data"></a>停用设备并删除数据
 
-1. 在停用设备之前，必须删除与设备关联的所有卷容器（以及卷）。 只有在删除关联的备份后，才能删除卷容器。
-
-    > [!NOTE]
-    > 停用 StorSimple 物理设备或云设备之前，请确保已删除卷容器中的数据实际已从设备中删除。 可以监视云使用量图表，当看到由于删除了备份云使用量下降时，便可以继续停用设备。 如果在此下降发生之前停用设备，数据将闲置在存储帐户中并累算费用。
+1. 在停用设备之前，必须删除与设备关联的所有卷容器（以及卷）。 只有在删除关联的备份后，才能删除卷容器。 停用 StorSimple 物理设备或云设备之前，请参阅上述概述中的说明。
 
 2. 通过以下操作停用设备：
-   
+
    1. 转到 StorSimple Device Manager 服务并单击“设备”。**** 在“设备”边栏选项卡中选择要停用的设备，单击右键，单击“停用”。********
 
         ![停用 StorSimple 设备](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
@@ -79,7 +79,8 @@ ms.locfileid: "61481891"
 
 若要删除设备，但又想在设备上保留数据，请完成以下步骤：
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>停用设备并保留数据
+### <a name="to-deactivate-a-device-and-retain-the-data"></a>停用设备并保留数据
+
 1. 停用设备。 设备的所有卷容器和快照都会保留。
    
    1. 转到 StorSimple Device Manager 服务并单击“设备”。**** 在“设备”边栏选项卡中选择要停用的设备，单击右键，单击“停用”。********
@@ -99,7 +100,6 @@ ms.locfileid: "61481891"
        ![停用 StorSimple 设备](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. 成功完成删除后，系统会发出通知。 设备列表也会更新以反映删除后的结果。
 
-     
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>停用和删除云设备
 
 对于 StorSimple 云设备，在门户中执行停用操作会解除分配并删除虚拟机，以及预配虚拟机时创建的资源。 停用云设备之后，无法将它还原到以前的状态。

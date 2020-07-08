@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 78896323-e57c-431e-bbe2-0cbde1cf43a2
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
-ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85508914"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
 ## <a name="overview"></a>概述
@@ -91,9 +91,9 @@ ms.locfileid: "79254646"
    
     ![配置列](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 结果列 | 说明 |
+   | 结果列 | 描述 |
    |:--- |:--- |
-   |  名称 |**“名称”** 列包含分配给每个已发现卷的驱动器号。 |
+   |  “属性” |**“名称”** 列包含分配给每个已发现卷的驱动器号。 |
    |  设备 |“**设备**”列包含连接到主计算机的设备 IP 地址。 |
    |  设备卷名称 |**“设备卷名称”** 列包含选定卷所属的设备卷的名称。 这是在 Azure 门户中针对特定卷定义的卷名称。 |
    |  访问路径 |**“访问路径”** 列显示卷的访问路径。 这是在主计算机上可以访问该卷的驱动器号或装入点。 |
@@ -130,7 +130,7 @@ ms.locfileid: "79254646"
 ## <a name="configure-and-back-up-a-basic-volume"></a>配置和备份基本卷
 使用以下过程配置基本卷的备份，并立即开始备份或创建已计划备份的策略。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
@@ -158,7 +158,7 @@ ms.locfileid: "79254646"
 * 步骤 1：使用磁盘管理创建动态镜像的卷。 
 * 步骤 2：使用 StorSimple Snapshot Manager 配置备份。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。

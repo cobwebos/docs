@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67876211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509381"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -55,8 +55,8 @@ StorSimple 是极佳的备份目标，原因如下：
 
 StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用程序提供存储。 在此模型中，工作数据集存储在本地层中，剩余的非工作/冷/存档数据集在云中分层。 下图演示了此模型。 平坦的绿线表示存储在 StorSimple 设备本地层中的数据。 红线表示 StorSimple 解决方案的所有层中存储的总数据量。 平坦绿线与呈指数级升高的红色曲线之间的空间表示存储在云中的总数据量。
 
-**Storsimple 分层**
-![storsimple 分层示意图](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
+**StorSimple 分层** 
+ ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-netbackup/image1.jpg)
 
 知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 -   通过本地工作数据集执行最常见的还原。
@@ -265,7 +265,7 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-netbackup-storage"></a>设置 NetBackup 存储
 
-1.  在 NetBackup 管理控制台中，选择 "**媒体和设备管理** > **设备** > " "**磁盘池**"。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。********
+1.  在 NetBackup 管理控制台中，选择 "**媒体和设备管理**  >  **设备**" "  >  **磁盘池**"。 在磁盘池配置向导中，选择存储服务器类型“AdvancedDisk”，并选择“下一步”。********
 
     ![NetBackup 管理控制台，磁盘池配置向导](./media/storsimple-configure-backup-target-using-netbackup/nbimage1.png)
 
@@ -277,7 +277,7 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，选择 StorSimple 卷磁盘](./media/storsimple-configure-backup-target-using-netbackup/nbimage3.png)
 
-4.  输入备份目标的名称，**然后选择** > "下一步"**以完成**向导。
+4.  输入备份目标的名称，**然后选择 "下一步"**  >  **Next**以完成向导。
 
 5.  检查设置，并选择“完成”。****
 
@@ -300,10 +300,10 @@ StorSimple 提供以下优势：
 
 下面是四周、每月和每年的 GFS 轮转计划示例：
 
-| 频率/备份类型 | 完全 | 增量备份（第 1-5 天）  |   
+| 频率/备份类型 | 完整 | 增量备份（第 1-5 天）  |   
 |---|---|---|
 | 每周（第 1-4 周） | 星期六 | 星期一至星期五 |
-| 每月一次  | 星期六  |   |
+| 每月  | 星期六  |   |
 | 每年 | 星期六  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>将 StorSimple 卷分配到 NetBackup 备份作业
@@ -316,7 +316,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，创建新策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。******** 选择“确定”  。
+2. 在“添加新策略”对话框中，输入策略的名称，并选中“使用策略配置向导”复选框。******** 选择“确定”。
 
    ![NetBackup 管理控制台，“添加新策略”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
@@ -328,7 +328,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“**下一步**”。
+5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“下一步”。
 
    ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -340,7 +340,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，新策略的备份频率和轮转](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8. 选择**下** > 一**步** > **完成**。  创建策略后，可以修改计划。
+8. 选择**下**一  >  **步**  >  **完成**。  创建策略后，可以修改计划。
 
 9. 选择刚刚创建的策略将它展开，然后选择“计划”。****
 
@@ -360,7 +360,7 @@ StorSimple 提供以下优势：
 
     ![NetBackup 管理控制台，更改开始时段](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14. 选择“确定”  。
+14. 选择“确定”。
 
 15. 针对每个增量备份重复步骤 10-14。 针对创建的每个备份选择适当的卷和计划。
 
@@ -408,13 +408,13 @@ StorSimple 提供以下优势：
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
 
-| Week | 完全 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
+| 周 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
 | 第 1 周 | 本地 RAID 卷  | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 |
 | 第 2 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 3 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 4 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
-| 每月一次 | StorSimple 每月备份 |   |   |   |   |   |
+| 每月 | StorSimple 每月备份 |   |   |   |   |   |
 | 每年 | StorSimple 每年备份  |   |   |   |   |   |
 
 
@@ -430,13 +430,13 @@ StorSimple 提供以下优势：
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>将 StorSimple 卷分配到 NetBackup 存档和重复数据删除作业
 
-1. 在 NetBackup 管理控制台中，选择 "**存储** > **存储生命周期策略** > " "**新建存储生命周期策略**"。
+1. 在 NetBackup 管理控制台中，选择 "**存储**  >  **存储生命周期策略**" "  >  **新建存储生命周期策略**"。
 
    ![NetBackup 管理控制台，新建存储生命周期策略](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
 2. 输入快照的名称，并选择“添加”。****
 
-3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。**************** 为“目标存储”、“保留类型”和“保留期”选择所需的值。************ 选择“确定”  。
+3. 在“新建操作”对话框中的“属性”选项卡上，为“操作”选择“备份”。**************** 为“目标存储”、“保留类型”和“保留期”选择所需的值。************ 选择“确定”。
 
    ![NetBackup 管理控制台，“新建操作”对话框](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 

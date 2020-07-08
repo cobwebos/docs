@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 179bc5cdf982792f41e0dec209341f346959a31a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511798"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 
@@ -104,21 +104,21 @@ ms.locfileid: "80397523"
 
 如果在规划测试故障转移或测试故障回复，我们建议对数据较少（Gb 量级）的卷容器进行测试。 通常，可以在故障转移完成 24 小时后开始故障回复。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
-Q. **如果灾难恢复失败或部分成功，会发生什么情况？**
+问： **如果灾难恢复失败或部分成功，会发生什么情况？**
 
 A. 如果灾难恢复失败，我们建议再试一次。 第二个设备故障转移作业知道第一个作业的进度，并且将从该点向前开始。
 
-Q. **正在进行设备故障转移时，是否可以删除设备？**
+问： **正在进行设备故障转移时，是否可以删除设备？**
 
 A. 灾难恢复正在进行时无法删除设备。 只能在灾难恢复完成后删除设备。 可以在“作业”边栏选项卡中监视设备故障转移作业进度。****
 
-Q. **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
+问： **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
 
 A. 只有在完全清理设备之后，才会在源设备上启用垃圾收集。 清理过程包括清理已从源设备故障转移的对象，例如卷、备份对象（不是数据）、卷容器和策略。
 
-Q. **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
+问： **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
 
 A.  如果删除作业失败，则可以手动删除卷容器。 在“设备”边栏选项卡中，选择源设备并单击“卷容器”。******** 选择已故障转移的卷容器，并在边栏选项卡底部单击“删除”。**** 删除源设备上所有已故障转移的卷容器后，便可以开始故障回复。 有关详细信息，请转到[删除卷容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
 

@@ -3,16 +3,16 @@ title: 最终用户身份验证-Data Lake Storage Gen1 与 Azure AD
 description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511301"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终身份验证
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
     ![获取 AAD 域](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Azure 租户 ID。 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。
+* Azure 租户 ID。 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。
 
 ## <a name="end-user-authentication"></a>最终用户身份验证
 如果希望最终用户通过 Azure AD 登录到您的应用程序，则建议使用这种身份验证机制。 然后，应用程序可访问 Azure 资源，且访问权限级别与已登录的最终用户相同。 最终用户需要定期提供凭据，以使应用程序可继续访问。
@@ -74,11 +74,11 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 遵循链接中的说明进行操作时，请确保选择“本机”作为应用程序类型，如以下屏幕截图中所示****：
 
-![创建 web 应用](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "创建本机应用")
+![创建 Web 应用](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "创建本机应用")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>步骤 2：获取应用程序 ID 和重定向 URI
 
-请参阅[获取应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) 来检索应用程序 ID。
+请参阅[获取应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 来检索应用程序 ID。
 
 若要检索重定向 URI，请执行以下步骤。
 
@@ -107,7 +107,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
     ![客户端 ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
-    单击“Done”（完成）  。
+    单击“完成”。
 
 5. 重复最后两步，同时为 Windows Azure 服务管理 API 授予权限****。
 

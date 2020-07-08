@@ -3,16 +3,16 @@ title: 创建高级 Azure 文件共享
 description: 本文介绍如何创建高级 Azure 文件共享。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509976"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
 高级文件共享在固态磁盘 (SSD) 存储介质上提供，可用于 IO 密集型工作负荷，包括宿主数据库和高性能计算 (HPC)。 高级文件共享托管在特殊用途的存储帐户类型（称为 FileStorage 帐户）中。 高级文件共享旨在用于高性能和企业级应用程序，可稳定提供低延迟、高 IOPS 和高吞吐量的共享。
@@ -46,21 +46,24 @@ ms.locfileid: "79529101"
 1. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 1. 选择存储帐户的位置或使用默认位置。
 1. 对于“性能”，请选择“高级”。  
-1. 依次选择“帐户类型”、“FileStorage”。  
-1. 将“复制”保留设置为默认值“本地冗余存储(LRS)”。  
+
+    您必须在 "**帐户类型**" 下拉列表**中选择 "** **FileStorage** " 作为可用选项。
+
+1. 依次选择“帐户类型”、“FileStorage”。********
+1. 将“复制”保留设置为默认值“本地冗余存储(LRS)”。********
 
     ![如何创建高级文件共享的存储帐户](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
-1. 选择“查看+创建”  可查看存储帐户设置并创建帐户。
-1. 选择“创建”  。
+1. 选择“查看+创建”可查看存储帐户设置并创建帐户。
+1. 选择“创建”。
 
 创建存储帐户资源后，请导航到该资源。
 
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-1. 在存储帐户的左侧菜单中滚动到“文件服务”部分，然后选择“文件”。  
-1. 选择“文件共享”以创建高级文件共享。 
-1. 输入文件共享的名称和所需配额，然后选择“创建”。 
+1. 在存储帐户的左侧菜单中滚动到“文件服务”部分，然后选择“文件”。********
+1. 选择“文件共享”以创建高级文件共享。****
+1. 输入文件共享的名称和所需配额，然后选择“创建”。****
 
 > [!NOTE]
 > 预配的共享大小按共享配额指定，文件共享按预配大小计费。有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
@@ -77,7 +80,7 @@ ms.locfileid: "79529101"
 
 首先，安装最新版本的 [PowerShellGet](/powershell/scripting/gallery/installing-psget) 模块。
 
-然后，升级 PowerShell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
+然后，升级 PowerShell 模块，登录到你的 Azure 订阅，创建一个资源组，然后创建一个存储帐户。
 
 ### <a name="upgrade-your-powershell-module"></a>升级 PowerShell 模块
 

@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267919"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514076"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的控制器模块
 ## <a name="overview"></a>概述
@@ -195,7 +195,7 @@ ms.locfileid: "79267919"
    > [!NOTE]
    > 控制器和 LED 激活最长可能需要 5 分钟时间。
   
-5. 若要验证更换是否成功，请在 Azure 门户中，转到你的设备，然后导航到 "**监视** > **硬件运行状况**"，并确保 "控制器 0" 和 "控制器 1" 运行正常（状态为绿色）。
+5. 若要验证更换是否成功，请在 Azure 门户中，转到你的设备，然后导航到 "**监视**  >  **硬件运行状况**"，并确保 "控制器 0" 和 "控制器 1" 运行正常（状态为绿色）。
 
 ## <a name="identify-the-active-controller-on-your-device"></a>识别设备的活动控制器
 在很多情况下（例如，首次注册设备或更换控制器时），需要在 StorSimple 设备中找到活动控制器。 活动控制器处理所有磁盘固件和联网操作。 可以使用以下方法识别活动控制器：
@@ -207,7 +207,7 @@ ms.locfileid: "79267919"
 下面介绍了其中的每个过程。
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>使用 Azure 门户识别活动控制器
-在 Azure 门户中，导航到你的 > **设备，** 然后**滚动到 "****控制器**" 部分。 可以在此处确认哪个控制器处于活动状态。
+在 Azure 门户中，导航到你的设备，然后**Monitor**  >  **Hardware health**滚动到 "**控制器**" 部分。 可以在此处确认哪个控制器处于活动状态。
 
 ![在 Azure 门户中识别活动控制器](./media/storsimple-controller-replacement/IC752072.png)
 

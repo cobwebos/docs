@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a0c394df-957b-49b3-a283-38824f8847fd
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 9ac87bbf5089dd20b8c6eeec0b970a7767b3dcda
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64723944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85507664"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务记录 StorSimple 虚拟阵列的支持请求
 
@@ -39,7 +39,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 2. 在“基本”边栏选项卡中执行以下操作****：
 
-    1. 从“颁发类型”下拉列表中，选择“技术”********。 
+    1. 从“颁发类型”下拉列表中，选择“技术” 。 
     
     2. 将自动选择当前**订阅**、**服务**类型和**资源**（StorSimple Device Manager 服务）。 
 
@@ -61,7 +61,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
 #### <a name="to-manage-your-support-requests"></a>管理支持请求
 
-若要访问“帮助和支持”页，请导航到“浏览”>“帮助 + 支持”****。
+若要访问“帮助和支持”页，请导航到“浏览”>“帮助 + 支持”。
 
 ![管理支持请求](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

@@ -3,16 +3,16 @@ title: Azure 文件存储性能故障排除指南
 description: Azure 文件共享的已知性能问题和相关解决方法。
 author: gunjanj
 ms.service: storage
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85511960"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件存储性能问题
 
@@ -113,7 +113,7 @@ ms.locfileid: "77598079"
 ### <a name="workaround"></a>解决方法
 
 - 如果可能，请避免短时间内在同一目录中使用过多的打开/关闭句柄。
-- 对于 Linux VM，请指定 **actimeo=\<sec>** 作为装载选项，以增大目录条目缓存超时。 默认情况下，该超时为 1 秒，使用更大的值（例如 3 或 5）可能有所帮助。
+- 对于 Linux Vm，请通过指定**actimeo = \<sec> **作为装载选项来增加目录条目缓存超时。 默认情况下，该超时为 1 秒，使用更大的值（例如 3 或 5）可能有所帮助。
 - 对于 Linux VM，请将内核升级到 4.20 或更高版本。
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL 上的 IOPS 较低

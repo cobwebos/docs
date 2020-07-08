@@ -3,15 +3,15 @@ title: 解决存储防火墙设置
 description: 在 Azure HPC 缓存中创建 Azure Blob 存储目标时，存储帐户网络防火墙设置可能会导致故障。 本文提供了对此限制的解决方法，直到软件修补准备就绪。
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/7/2019
 ms.author: rohogue
-ms.openlocfilehash: 6643662d498db8cbcffcb120a9ceabc46cfc04cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e57e5d101e35c55dbaa39615dfe48511a8b87c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74174403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513817"
 ---
 # <a name="work-around-blob-storage-account-firewall-settings"></a>解决 Blob 存储帐户防火墙设置问题
 

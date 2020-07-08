@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245481"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510872"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 
@@ -49,7 +49,16 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>提示 4：深入了解扩充的文档 
+> [!NOTE]
+> 最佳做法是，将生产工作负荷的 maxFailedItems，maxFailedItemsPerBatch 设置为0
+
+## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>提示4：使用调试会话来识别和解决技能组合的问题 
+
+调试会话是一个可视化编辑器，可与 Azure 门户中的现有技能组配合使用。 在调试会话中，您可以识别和解决错误，验证更改，以及将更改提交到 AI 扩充管道中的生产技能组合。 这是一项预览功能，请[阅读文档](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)。 有关概念和入门的详细信息，请参阅[调试会话](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)。
+
+调试会话适用于单个文档，可让你以迭代方式生成更复杂的扩充管道。
+
+## <a name="tip-5-looking-at-enriched-documents-under-the-hood"></a>提示5：查看丰富的文档 
 扩充的文档是在扩充期间创建但在完成处理后会删除的临时结构。
 
 若要捕获索引编制期间创建的扩充文档的快照，请将名为 ```enriched``` 的字段添加到索引。 索引器将作为该文档的所有扩充项的字符串表示形式自动转储到字段中。
@@ -77,35 +86,35 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 }
 ```
 
-## <a name="tip-5-expected-content-fails-to-appear"></a>提示 5：预期的内容没有出现
+## <a name="tip-6-expected-content-fails-to-appear"></a>提示6：预期的内容无法显示
 
 缺少内容可能是由于文档在索引编制过程中被丢弃。 免费层和基本层对文档大小的限制都很低。 如果文件超出此限制，则会在索引编制过程中将其丢弃。 可以在 Azure 门户中查找丢弃的文档。 在搜索服务仪表板中，双击“索引器”磁贴。 查看成功地进行索引的文档的比率。 如果不是 100%，可以单击该比率以获取更多详细信息。 
 
-如果问题与文件大小相关，则可能会看到这样的错误：“Blob \<file-name> 的大小为 \<file-size> 字节，这超出了当前服务层级的文档提取的最大大小。” 有关索引器限制的详细信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
+如果问题与文件大小相关，你可能会看到如下错误： "blob" 的大小为 \<file-name> \<file-size> 字节，超出了当前服务层的文档提取的最大大小。 " 有关索引器限制的详细信息，请参阅[服务限制](search-limits-quotas-capacity.md)。
 
 内容没有出现的另一原因可能与输入/输出映射错误相关。 例如，输出目标名称为“People”，但索引字段名称为“people”（小写）。 系统可能会针对整个管道返回“201 成功”消息，因此你认为索引编制成功，但实际上有一个字段是空的。 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>提示 6：延长处理时间至超出最长运行时间（24 小时）
+## <a name="tip-7-extend-processing-beyond-maximum-run-time-24-hour-window"></a>提示7：扩展处理超出最大运行时间（24小时窗口）
 
 即使情况很简单，图像分析也是计算密集型操作，因此当图像特别大或特别复杂时，处理时间可能会超过允许的最长时间。 
 
 最长运行时间因层而异：免费层为数分钟，收费层为 24 小时（索引编制）。 进行按需处理时，如果处理无法在 24 小时期限内完成，则可改用计划形式，让索引器在计划时间接着上次的工作继续处理。 
 
-对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤 3：创建索引器](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
+对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤3：创建索引器](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或了解[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 > [!NOTE]
-> 如果将索引器设置为某个计划，但每次运行时一次又一次地在同一文档上反复失败，则索引器将以不那么频繁的间隔开始运行（最多每 24 小时至少一次），直到它成功地再次取得进展。  如果你认为你已修复了导致索引器在某一点停滞的任何问题，则可以按需运行索引器，如果成功取得进展，索引器将再次回到其设置的计划间隔。
+> 如果将索引器设置为某个计划，但每次运行时一次又一次地在同一文档上反复失败，则索引器将以不那么频繁的间隔开始运行（最多每 24 小时至少一次），直到它成功地再次取得进展。  如果你认为你已修复了导致索引器在某一点停滞的任何问题，可以按需运行索引器，如果成功取得进展，索引器将再次回到其设置的计划间隔。
 
 进行基于门户的索引编制（如快速入门中所述）时，选择“运行一次”索引器选项即可将处理时间限制为 1 小时 (`"maxRunTime": "PT1H"`)。 可能需要延长处理时间至更长。
 
-## <a name="tip-7-increase-indexing-throughput"></a>提示 7：提高索引编制吞吐量
+## <a name="tip-8-increase-indexing-throughput"></a>提示8：提高索引吞吐量
 
 进行[并行索引编制](search-howto-large-index.md)时，请将数据置于多个容器中，或者置于同一容器的多个虚拟文件夹中， 然后创建多个数据源和索引器对。 所有索引器可以使用同一技术集并写入同一目标搜索索引，因此你的搜索应用不需了解这种分区。
 有关详细信息，请参阅[为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 + [快速入门：在门户中创建 AI 扩充管道](cognitive-search-quickstart-blob.md)
-+ [教程：了解 AI 扩充 REST API](cognitive-search-tutorial-blob.md)
++ [教程：学习 AI 扩充 REST Api](cognitive-search-tutorial-blob.md)
 + [指定数据源凭据](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [为大型数据集编制索引](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [如何定义技能集](cognitive-search-defining-skillset.md)

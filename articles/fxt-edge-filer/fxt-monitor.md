@@ -3,15 +3,15 @@ title: 监视 Azure FXT Edge Filer
 description: 如何监视 Azure FXT Edge 文件服务器混合存储缓存的硬件状态
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7027fe9988c0c559db72c3c388c7a579d533c57e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72254872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509432"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>监视 Azure FXT Edge 文件服务器硬件状态
 
@@ -60,7 +60,7 @@ Azure FXT Edge 文件服务器混合存储缓存系统将多个状态灯内置�
 
 如果尝试这些解决方案后仍出现错误，请[联系支持人员](fxt-support-ticket.md)获取帮助。 
 
-| 图标 | 说明 | 添加状态 | 可能的解决方案 |
+| 图标 | 描述 | 添加状态 | 可能的解决方案 |
 |----------------|---------------|--------------------|----------------------|
 | ![驱动器图标](media/fxt-monitor/fxt-hd-icon.jpg) | 驱动器状态 | 驱动器错误 | 检查系统事件日志以确定驱动器是否有错误，或 <br>运行相应的联机诊断测试;重新启动系统并运行嵌入式诊断（ePSA），或者 <br>如果驱动器是在 RAID 阵列中配置的，请重新启动系统并输入主机适配器配置实用程序 |
 |![温度图标](media/fxt-monitor/fxt-temp-icon.jpg) | 温度状态 | 温度错误-例如，风扇出现故障或环境温度超出范围 | 检查以下可寻址条件： <br>冷却风扇丢失或已失败 <br>系统盖、导风槽、内存模块为空或背面填充托架已删除 <br>环境温度过高 <br>外部气流受到阻碍 |

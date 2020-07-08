@@ -3,20 +3,20 @@ title: Azure Data Lake Storage Gen1 门户入门
 description: 使用 Azure 门户创建 Data Lake Storage Gen1 帐户并在帐户中执行基本操作。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509194"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
 
 > [!div class="op_single_selector"]
-> * [门户](data-lake-store-get-started-portal.md)
+> * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -26,11 +26,11 @@ ms.locfileid: "79265579"
 
 了解如何使用 Azure 门户创建 Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅[Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-开始学习本教程之前，必须做好以下准备：
+要阅读本教程，必须具备以下项：
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 
@@ -40,7 +40,7 @@ ms.locfileid: "79265579"
 
     ![创建新的 Data Lake Storage Gen1 帐户](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "创建新的 Data Lake Storage Gen1 帐户")
 
-   * **名称**。 输入 Data Lake Storage Gen1 帐户的唯一名称。
+   * “名称”。 输入 Data Lake Storage Gen1 帐户的唯一名称。
    * **订阅**。 选择要在其下创建新的 Data Lake Storage Gen1 帐户的订阅。
    * **资源组**。 选择现有资源组，或选择“新建”选项创建一个资源组。**** 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：选择要创建 Data Lake Storage Gen1 帐户的位置。
@@ -56,7 +56,7 @@ ms.locfileid: "79265579"
 
         有关详细信息，请参阅 [Azure Data Lake Storage Gen1 中的数据加密](./data-lake-store-encryption.md)。
 
-4. 单击 **“创建”** 。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Storage Gen1 帐户的进度。 预配 Data Lake Storage Gen1 帐户后，会显示帐户边栏选项卡。
+4. 单击“创建”。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Storage Gen1 帐户的进度。 预配 Data Lake Storage Gen1 帐户后，会显示帐户边栏选项卡。
 
 ## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>分配对 Azure Key Vault 的权限
 

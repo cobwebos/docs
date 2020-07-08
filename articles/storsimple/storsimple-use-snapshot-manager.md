@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
-ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513740"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>使用 StorSimple Snapshot Manager 用户界面管理备份作业和备份目录
 
@@ -67,9 +67,9 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表说明了出现在 **“文件”** 菜单上的项目。
 
-| 菜单项 | 说明 |
+| Menu item | 描述 |
 |:--- |:--- |
-| “新建” |单击“**新建**”可基于 StorSimple Snapshot Manager 新建控制台。 |
+| 新建 |单击“**新建**”可基于 StorSimple Snapshot Manager 新建控制台。 |
 | 打开 |单击 **“打开”** 可打开现有控制台。 |
 | 保存 |单击 **“保存”** 可保存当前控制台。 |
 | 另存为 |单击 **“另存为”** 可为当前控制台创建新的重命名实例。 使用“**另存为**”选项可自定义并保存视图以供将来检索。 例如，可以创建指向特定服务器的 StorSimple Snapshot Manager 管理单元。 |
@@ -107,7 +107,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 > 
 > 
 
-| 操作 | 导航 | 说明 |
+| 操作 | 导航 | 描述 |
 |:--- |:--- |:--- |
 | Authenticate |单击“**设备**”节点，并右键单击“**结果**”窗格中的设备。 |单击“**验证**”可输入为设备配置的密码。 |
 | 克隆 |展开 **“备份目录”**，展开 **“云快照”**，单击标记了日期的备份，然后在 **“结果”** 窗格中选择一个卷。 |单击 **“克隆”** 可创建云快照的副本，并将其存储在指定的位置。 |
@@ -139,7 +139,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表说明了出现在 **“视图”** 菜单中的项目。
 
-| 菜单项 | 说明 |
+| Menu item | 描述 |
 |:--- |:--- |
 | 添加/删除列 |单击 **“添加/删除列”** 即可添加或删除 **“结果”** 窗格中的列。 |
 | 自定义 |单击“**自定义**”可显示或隐藏 StorSimple Snapshot Manager 控制台窗口中的项。 |
@@ -155,7 +155,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表说明了出现在 **“收藏夹”** 菜单中的项目。
 
-| 菜单项 | 说明 |
+| Menu item | 描述 |
 |:--- |:--- |
 | 添加到收藏夹 |单击 **“添加到收藏夹”** 可将当前视图添加到你的收藏夹列表。 |
 | 整理收藏夹 |单击“**整理收藏夹**”可整理收藏夹文件夹的内容。 |
@@ -173,7 +173,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“窗口”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| Menu item | 描述 |
 |:--- |:--- |
 | 新建窗口 |单击 **“新建窗口”** 可打开新的控制台窗口（除现有窗口之外）。 |
 | Cascade |单击 **“层叠”** 可通过层叠方式显示打开的控制台窗口。 |
@@ -190,7 +190,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“帮助”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| Menu item | 描述 |
 |:--- |:--- |
 | 有关 StorSimple Snapshot Manager 的帮助 |单击“**有关 StorSimple Snapshot Manager 的帮助**”可在一个单独的窗口中打开 StorSimple Snapshot Manager 帮助。 |
 | 帮助主题 |单击 **“帮助主题”** 可在单独窗口中打开 MMC 联机帮助。 |
@@ -204,7 +204,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 ### <a name="icon-descriptions"></a>图标说明
 下表介绍了工具栏上显示的图标。 
 
-| 图标 | 说明 |
+| 图标 | 描述 |
 |:--- |:--- |
 | ![向左键](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |单击向左键图标可返回上一页。 |
 | ![向右键](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |单击向右键可转到下一页（如果箭头为灰色，则操作不可用）。 |
@@ -354,7 +354,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 ### <a name="menu-bar-shortcut-keys"></a>菜单栏的快捷键
 下表介绍了菜单栏的快捷键组合。 按下快捷键且菜单打开后，可以使用菜单的快捷键（菜单上带下划线的键）。 有关菜单栏的详细信息，请转至[菜单栏](#menu-bar)。
 
-| 快捷方式 | 结果 | 菜单的快捷键 | 结果 |
+| 快捷键 | 结果 | 菜单的快捷键 | 结果 |
 |:--- |:--- |:--- |:--- |
 | ALT+F |打开 **“文件”** 菜单。 |N |可打开一个新的控制台实例。 |
 |  |O |打开 **“管理工具”** 页。 | |
@@ -428,7 +428,7 @@ StorSimple Snapshot Manager 支持 Windows 操作系统和 Microsoft 管理控�
 | V |打开 **“视图”** 菜单。 |
 | W |可打开以“**卷组**”节点为重点的新的 StorSimple Snapshot Manager 控制台。 |
 | F |可更新 StorSimple Snapshot Manager 控制台。 |
-| L |打开“导出列表”页。 |
+| L |打开 **“导出列表”** 页。 |
 | H |可打开联机帮助。 |
 
 #### <a name="backup-catalog-node-shortcut-keys"></a>备份目录节点的快捷键

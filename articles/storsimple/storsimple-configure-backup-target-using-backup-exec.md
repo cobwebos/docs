@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509653"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 
@@ -55,8 +55,8 @@ StorSimple 是极佳的备份目标，原因如下：
 
 StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用程序提供存储。 在此模型中，工作数据集存储在本地层中，剩余的非工作/冷/存档数据集在云中分层。 下图演示了此模型。 平坦的绿线表示存储在 StorSimple 设备本地层中的数据。 红线表示 StorSimple 解决方案的所有层中存储的总数据量。 平坦绿线与呈指数级升高的红色曲线之间的空间表示存储在云中的总数据量。
 
-**Storsimple 分层**
-![storsimple 分层示意图](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**StorSimple 分层** 
+ ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 -   通过本地工作数据集执行最常见的还原。
@@ -102,7 +102,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 空值  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不适用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -233,7 +233,7 @@ StorSimple 提供以下优势：
 -   StorSimple 支持 Backup Exec 完整和增量备份。 建议不要使用合成备份和差异备份。
 -   备份数据文件应只包含特定作业的数据。 例如，不允许跨不同的作业附加媒体。
 -   禁用作业验证。 如果需要，应在最新的备份作业之后计划验证。 必须知道，此作业会影响备份持续时间。
--   选择 "**存储** > **磁盘** > **详细信息** > "**属性**。 关闭“预分配磁盘空间”。****
+-   选择 "**存储**  >  **磁盘**  >  **详细信息**"  >  **属性**。 关闭“预分配磁盘空间”。****
 
 有关最新的 Backup Exec 设置以及如何满足这些要求的最佳实践，请参阅 [Veritas 网站](https://www.veritas.com)。
 
@@ -267,7 +267,7 @@ StorSimple 提供以下优势：
 
 ### <a name="to-set-up-backup-exec-storage"></a>设置 Backup Exec 存储
 
-1.  在 Backup Exec 管理控制台中，选择 "**存储** > **Configure Storage** > **Disk-Based Storage** > " "**下一步**"。
+1.  在 Backup Exec 管理控制台中，选择 "**存储**" "  >  **Configure Storage**  >  **Disk-Based Storage**  >  **下一步**"。
 
     ![Backup Exec 管理控制台，配置存储页](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -275,7 +275,7 @@ StorSimple 提供以下优势：
 
     ![Backup Exec 管理控制台，选择存储页](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  输入有代表性的名称（例如“星期六完整备份”）和说明。**** 选择“**下一页**”。
+3.  输入有代表性的名称（例如“星期六完整备份”）和说明。**** 选择“下一步”。
 
     ![Backup Exec 管理控制台，名称和说明页](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -310,10 +310,10 @@ StorSimple 提供以下优势：
 
 下面是四周、每月和每年的 GFS 轮转计划示例：
 
-| 频率/备份类型 | 完全 | 增量备份（第 1-5 天）  |   
+| 频率/备份类型 | 完整 | 增量备份（第 1-5 天）  |   
 |---|---|---|
 | 每周（第 1-4 周） | 星期六 | 星期一至星期五 |
-| 每月一次  | 星期六  |   |
+| 每月  | 星期六  |   |
 | 每年 | 星期六  |   |
 
 
@@ -323,7 +323,7 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>将 StorSimple 卷分配到 Backup Exec 备份作业
 
-1.  在 Backup Exec 管理控制台中 **，选择** > "将**备份** > **备份到磁盘**"。
+1.  在 Backup Exec 管理控制台中 **，选择 "**  >  **Backup**  >  **将备份备份到磁盘**"。
 
     ![Backup Exec 管理控制台，选择“主机”、“备份”、“备份到磁盘”](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
@@ -381,13 +381,13 @@ StorSimple 提供以下优势：
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GSF 示例计划：每周、每月和每年 GFS 轮转计划
 
-| Week | 完全 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
+| 周 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
 | 第 1 周 | 本地 RAID 卷  | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 |
 | 第 2 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 3 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 4 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
-| 每月一次 | StorSimple 每月备份 |   |   |   |   |   |
+| 每月 | StorSimple 每月备份 |   |   |   |   |   |
 | 每年 | StorSimple 每年备份  |   |   |   |   |   |
 
 
@@ -395,11 +395,11 @@ StorSimple 提供以下优势：
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>将 StorSimple 卷分配到 Backup Exec 存档和复制作业
 
-1.  在 Backup Exec 管理控制台中，右键单击要存档到 StorSimple 卷的作业，然后选择 "**备份定义属性** > " "**编辑**"。
+1.  在 Backup Exec 管理控制台中，右键单击要存档到 StorSimple 卷的作业，然后选择 "**备份定义属性**" "  >  **编辑**"。
 
     ![Backup Exec 管理控制台，“备份定义属性”选项卡](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  选择 "**将阶段** > **复制到磁盘** > **编辑**"。
+2.  选择 "**将阶段**  >  **复制到磁盘**  >  **编辑**"。
 
     ![Backup Exec 管理控制台，添加阶段](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -415,7 +415,7 @@ StorSimple 提供以下优势：
 
     ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  选择“确定”  。
+6.  选择“确定”。
 
     ![Backup Exec 管理控制台，备份定义属性和复制选项](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 

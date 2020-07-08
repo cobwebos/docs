@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 性能优化-MapReduce
 description: Data Lake Storage Gen1 MapReduce 性能优化指南
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904593"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510915"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上使用 MapReduce**。 有关详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
@@ -27,7 +27,7 @@ ms.locfileid: "73904593"
 
 运行 MapReduce 作业时，以下是可配置以提高 Azure Data Lake Storage Gen1 性能的最重要参数：
 
-|参数      | 说明  |
+|参数      | 描述  |
 |---------|---------|
 |`Mapreduce.map.memory.mb`  |  要分配给每个映射器的内存量。  |
 |`Mapreduce.job.maps`     |  每个作业的映射任务数。  |
@@ -36,7 +36,7 @@ ms.locfileid: "73904593"
 
 ### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce .map。内存/Mapreduce. 减少内存
 
-根据映射和/或缩减任务所需的内存量调整此数字。 可以通过 Yarn 配置在 Ambari 中`mapreduce.map.memory`查看`mapreduce.reduce.memory`和的默认值。 在 Ambari 中，导航到 "YARN" 并查看 "配置 **" 选项卡**。将显示 YARN 内存。
+根据映射和/或缩减任务所需的内存量调整此数字。 可以 `mapreduce.map.memory` `mapreduce.reduce.memory` 通过 Yarn 配置在 Ambari 中查看和的默认值。 在 Ambari 中，导航到 "YARN" 并查看 "配置 **" 选项卡**。将显示 YARN 内存。
 
 ### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce. maps/Mapreduce。
 

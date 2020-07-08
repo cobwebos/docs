@@ -3,16 +3,16 @@ title: Linux 迁移到 Azure 文件同步
 description: 了解如何使用 Azure 文件同步和 Azure 文件共享将文件从 Linux 服务器位置迁移到混合云部署。
 author: fauhse
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 3131d6a7e3675027968eadd5f3e3ca8a7f2449c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd2e4f5c81427413e3f3f3eceaa0cc41a3b9e318
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85510378"
 ---
 # <a name="migrate-from-linux-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从 Linux 迁移到混合云部署
 
@@ -118,7 +118,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 :::row-end:::
 :::row:::
    :::column span="1":::
-      /UNILOG：\<文件名\>
+      /UNILOG:\<file name\>
    :::column-end:::
    :::column span="1":::
       将状态作为 Unicode 输出到日志文件（覆盖现有日志）。
@@ -175,7 +175,7 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 ## <a name="phase-8-user-cut-over"></a>阶段8：用户缩减
 
-当你首次运行 Robocopy 命令时，你的用户和应用程序仍将访问 Linux Samba 服务器上的文件，并有可能更改这些文件。 此方法可能会处理目录并移至下一个目录，然后在源位置（Linux）中添加、更改或删除现在不会在此当前 Robocopy 运行中处理的文件。 此行为是预期的行为。
+当你首次运行 Robocopy 命令时，你的用户和应用程序仍将访问 Linux Samba 服务器上的文件，并有可能更改这些文件。 此方法可能会处理目录并移至下一个目录，然后在源位置（Linux）中添加、更改或删除现在不会在此当前 Robocopy 运行中处理的文件。 这是预期的行为。
 
 第一次运行是将大量数据移到 Windows Server 实例，并通过 Azure 文件同步将数据移动到云中。此第一个副本可能需要较长时间，具体取决于：
 

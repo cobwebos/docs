@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
-ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60363246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514329"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
 
@@ -58,18 +58,18 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 3. 在“添加角色和功能”**** 向导中，执行以下步骤：
    
    1. 在“开始之前”  页上，单击“下一步”  。
-   2. 在“选择安装类型”**** 页上，接受“基于角色或基于功能的安装”**** 的默认设置。 单击“下一步”。 
+   2. 在“选择安装类型”**** 页上，接受“基于角色或基于功能的安装”**** 的默认设置。 单击“下一步” 。
    
        ![添加角色和功能向导 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-   3. 在 **“选择目标服务器”** 页上，选择 **“从服务器池中选择服务器”**。 主机服务器应该会被自动发现。 单击“下一步”。 
+   3. 在 **“选择目标服务器”** 页上，选择 **“从服务器池中选择服务器”**。 主机服务器应该会被自动发现。 单击“下一步” 。
    4. 在“选择服务器角色”**** 页面上，单击“下一步”****。
    5. 在 **“选择功能”** 页上，选择 **“多路径 I/O”**，然后单击 **“下一步”**。
    
        ![添加角色和功能向导 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. 在“确认安装选择”**** 页上，确认选择，并选择“如果需要，自动重启目标服务器”****，如下所示。 单击“安装”  。
+   6. 在“确认安装选择”**** 页上，确认选择，并选择“如果需要，自动重启目标服务器”****，如下所示。 单击“安装” 。
    
        ![添加角色和功能向导 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
-   7. 安装完成后，会收到通知。 单击 **“关闭”** 关闭向导。
+   7. 安装完成后，会收到通知。 单击“**关闭**”以关闭向导。
    
        ![添加角色和功能向导 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
@@ -113,15 +113,15 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    ![iSCSI 发起程序属性 - 目标选项卡](./media/storsimple-configure-mpio-windows-server/IC741007.png)
    
 6. 单击“连接”，与 StorSimple 设备建立 iSCSI 会话。**** 此时会显示“连接到目标”对话框。****
-7. 在 **“连接到目标”** 对话框中，选中 **“启用多路径”** 复选框。 单击“高级”****。
+7. 在 **“连接到目标”** 对话框中，选中 **“启用多路径”** 复选框。 单击 **“高级”** 。
 8. 在“高级设置”**** 对话框中，执行以下步骤：
    
    1. 在 **“本地适配器”** 下拉列表中，选择 **“Microsoft iSCSI 发起程序”**。
    2. 在 **“发起程序 IP”** 下拉列表中，选择主机的 IP 地址。
    3. 在“目标门户 IP”下拉列表中，选择设备接口的 IP。****
    4. 单击 **“确定”** 返回到 **“iSCSI 发起程序属性”** 对话框。
-9. 单击“属性”****。 在 **“属性”** 对话框中，单击 **“添加会话”**。
-10. 在 **“连接到目标”** 对话框中，选中 **“启用多路径”** 复选框。 单击“高级”****。
+9. 单击 **“属性”** 。 在 **“属性”** 对话框中，单击 **“添加会话”**。
+10. 在 **“连接到目标”** 对话框中，选中 **“启用多路径”** 复选框。 单击 **“高级”** 。
 11. 在 **“高级设置”** 对话框中，执行以下操作：
 
     1. 在 "**本地适配器**" 下拉列表中，选择 "Microsoft ISCSI 发起程序"。
@@ -169,7 +169,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    
    1. 保留“将此连接添加到收藏目标列表”的默认选定目标设置。**** 这样，每次重启此计算机时，设备就会自动尝试重启连接。
    2. 选中 **“启用多路径”** 复选框。
-   3. 单击“高级”****。
+   3. 单击 **“高级”** 。
 6. 在 **“高级设置”** 对话框中，执行以下操作：
    
    1. 在 **“本地适配器”** 下拉列表中，选择 **“Microsoft iSCSI 发起程序”**。

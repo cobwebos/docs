@@ -5,17 +5,17 @@ description: 为 Azure 存储帐户配置网络路由首选项（预览），以
 services: storage
 author: santoshc
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: bdb33ebfb1ca37772a5b0db96acdbddd422578af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595236"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514197"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>为 Azure 存储配置网络路由首选项（预览）
 

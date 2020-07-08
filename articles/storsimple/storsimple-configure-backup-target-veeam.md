@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 3ebf464fed1480e7452f246f04f3906faf0dd219
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85509687"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>用作备份目标的 StorSimple 与 Veeam 的集成
 
@@ -56,8 +56,8 @@ StorSimple 是极佳的备份目标，原因如下：
 
 StorSimple 旨在为处理妥善定义的工作数据集（热数据）的应用程序提供存储。 在此模型中，工作数据集存储在本地层中，剩余的非工作/冷/存档数据集在云中分层。 下图演示了此模型。 平坦的绿线表示存储在 StorSimple 设备本地层中的数据。 红线表示 StorSimple 解决方案的所有层中存储的总数据量。 平坦绿线与呈指数级升高的红色曲线之间的空间表示存储在云中的总数据量。
 
-**Storsimple 分层**
-![storsimple 分层示意图](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
+**StorSimple 分层** 
+ ![StorSimple 分层示意图](./media/storsimple-configure-backup-target-using-veeam/image1.jpg)
 
 知道这种体系结构后，会发现 StorSimple 非常适合用作备份目标。 使用 StorSimple 可以：
 
@@ -276,15 +276,15 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
-2.  在“新建备份存储库”对话框中，输入存储库的名称和说明。**** 选择“**下一步**”。
+2.  在“新建备份存储库”对话框中，输入存储库的名称和说明。**** 选择“下一步”。
 
     ![Veeam 管理控制台，名称和说明页](./media/storsimple-configure-backup-target-using-veeam/veeamimage2.png)
 
-3.  对于“类型”，请选择“Microsoft Windows 服务器”。**** 选择 Veeam 服务器。 选择“**下一步**”。
+3.  对于“类型”，请选择“Microsoft Windows 服务器”。**** 选择 Veeam 服务器。 选择“下一步”。
 
     ![Veeam 管理控制台，选择备份存储库的类型](./media/storsimple-configure-backup-target-using-veeam/veeamimage3.png)
 
-4.  要指定“位置”，请浏览到所需的卷并将其选中。**** 选中“将最大并发任务数限制为:”复选框，并将值设置为 **4**。**** 这可以确保在处理每个虚拟机 (VM) 时，只会并行处理四个虚拟磁盘。 选择“高级”按钮。****
+4.  要指定“位置”，请浏览到所需的卷并将其选中。**** 选中“将最大并发任务数限制为:”复选框，并将值设置为 **4**。**** 这可以确保在处理每个虚拟机 (VM) 时，只会并行处理四个虚拟磁盘。 选择“高级”按钮。
 
     ![Veeam 管理控制台，选择卷](./media/storsimple-configure-backup-target-using-veeam/veeamimage4.png)
 
@@ -293,7 +293,7 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，存储兼容性设置](./media/storsimple-configure-backup-target-using-veeam/veeamimage5.png)
 
-6.  在“新建备份存储库”对话框中，选中“在装载服务器上启用 vPower NFS 服务(建议)”复选框。******** 选择“**下一步**”。
+6.  在“新建备份存储库”对话框中，选中“在装载服务器上启用 vPower NFS 服务(建议)”复选框。******** 选择“下一步”。
 
     ![Veeam 管理控制台，备份存储库页](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
@@ -316,10 +316,10 @@ StorSimple 提供以下优势：
 
 下面是四周、每月和每年的 GFS 轮转计划示例：
 
-| 频率/备份类型 | 完全 | 增量备份（第 1-5 天）  |   
+| 频率/备份类型 | 完整 | 增量备份（第 1-5 天）  |   
 |---|---|---|
 | 每周（第 1-4 周） | 星期六 | 星期一至星期五 |
-| 每月一次  | 星期六  |   |
+| 每月  | 星期六  |   |
 | 每年 | 星期六  |   |
 
 
@@ -341,7 +341,7 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，新建备份作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
-4.  为“备份代理”和“备份存储库”选择所需的值。******** 在本地附加存储中根据环境的 RPO 和 RTO 定义，选择“要在磁盘上保留的还原点”的值。**** 选择“高级”。 
+4.  为“备份代理”和“备份存储库”选择所需的值。******** 在本地附加存储中根据环境的 RPO 和 RTO 定义，选择“要在磁盘上保留的还原点”的值。**** 选择“高级”****。
 
     ![Veeam 管理控制台，新建备份作业页](./media/storsimple-configure-backup-target-using-veeam/veeamimage11.png)
 
@@ -349,7 +349,7 @@ StorSimple 提供以下优势：
 
     ![Veeam 管理控制台，新建备份作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
-6. 在“存储”选项卡中，确保已清除“启用内联重复数据删除”复选框。******** 选中“排除交换文件块”复选框，并选中“排除已删除的文件块”复选框。******** 将“压缩级别”设置为“无”。******** 为实现性能均衡并删除重复数据，请将“存储优化”设置为“LAN 目标”。******** 选择“确定”  。
+6. 在“存储”选项卡中，确保已清除“启用内联重复数据删除”复选框。******** 选中“排除交换文件块”复选框，并选中“排除已删除的文件块”复选框。******** 将“压缩级别”设置为“无”。******** 为实现性能均衡并删除重复数据，请将“存储优化”设置为“LAN 目标”。******** 选择“确定”。
 
     ![Veeam 管理控制台，新建备份作业 - 高级设置页](./media/storsimple-configure-backup-target-using-veeam/veeamimage13.png)
 
@@ -393,13 +393,13 @@ StorSimple 提供以下优势：
 
 每周、每月和每年 GFS 轮转计划
 
-| Week | 完全 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
+| 周 | 完整 | 第 1 天增量备份 | 第 2 天增量备份 | 第 3 天增量备份 | 第 4 天增量备份 | 第 5 天增量备份 |
 |---|---|---|---|---|---|---|
 | 第 1 周 | 本地 RAID 卷  | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 | 本地 RAID 卷 |
 | 第 2 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 3 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
 | 第 4 周 | StorSimple（第 2-4 周） |   |   |   |   |   |
-| 每月一次 | StorSimple 每月备份 |   |   |   |   |   |
+| 每月 | StorSimple 每月备份 |   |   |   |   |   |
 | 每年 | StorSimple 每年备份  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>将 StorSimple 卷分配到 Veeam 复制作业

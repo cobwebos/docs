@@ -3,15 +3,15 @@ title: Azure HPC 缓存数据引入-手动复制
 description: 如何使用 cp 命令将数据移动到 Azure HPC 缓存中的 Blob 存储目标
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 1d5f8e6b59a4ae0149f219738952b47ce399c2ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5fdc3b76c330619601e171c152d7a2e583ae90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514488"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC 缓存数据引入-手动复制方法
 
@@ -37,7 +37,7 @@ cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1
 
 如果文件名称是可预测的，则可以使用表达式来创建并行复制线程。
 
-例如，如果你的目录中`0001`包含1000个按顺序按顺序编号`1000`的文件，则可以使用以下表达式创建每个复制100文件的10个并行线程：
+例如，如果你的目录中包含1000个按顺序按顺序编号的文件 `0001` `1000` ，则可以使用以下表达式创建每个复制100文件的10个并行线程：
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
