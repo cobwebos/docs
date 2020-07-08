@@ -6,12 +6,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 878a8d660495c932cc8fa44bb1ed06e79576729b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f119fe4b4547bda8249a3620baf938dd8b83c235
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648774"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056032"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>使用 Azure CLI 获取托管资源组中的资源并重设 VM 大小
 
@@ -33,12 +33,12 @@ ms.locfileid: "75648774"
 
 | Command | 说明 |
 |---|---|
-| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-list) | 列出托管应用程序。 提供要重点关注结果的查询值。 |
-| [az resource list](https://docs.microsoft.com/cli/azure/resource#az-resource-list) | 列出资源。 提供要重点关注结果的资源组和查询值。 |
-| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | 更新虚拟机的大小。 |
+| [az managedapp list](/cli/azure/managedapp#az-managedapp-list) | 列出托管应用程序。 提供要重点关注结果的查询值。 |
+| [az resource list](/cli/azure/resource#az-resource-list) | 列出资源。 提供要重点关注结果的资源组和查询值。 |
+| [az vm resize](/cli/azure/vm#az-vm-resize) | 更新虚拟机的大小。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
-* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

@@ -3,12 +3,12 @@ title: 术语表 - LUIS
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681617"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056372"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解（LUIS）词汇表说明了使用 LUIS 服务时可能会遇到的术语。
@@ -38,11 +38,11 @@ ms.locfileid: "83681617"
 
 ### <a name="authoring-key"></a>创作密钥
 
-[创作密钥](luis-concept-keys.md)用于创作应用程序。 不用于生产级别的终结点查询。 有关详细信息，请参阅[密钥限制](luis-limits.md#key-limits)。
+[创作密钥](luis-how-to-azure-subscription.md)用于创作应用程序。 不用于生产级别的终结点查询。 有关详细信息，请参阅[密钥限制](luis-limits.md#key-limits)。
 
 ### <a name="authoring-resource"></a>创作资源
 
-你的 LUIS[创作资源](luis-concept-keys.md#azure-resources-for-luis)是可通过 Azure 获取的可管理项。 资源是对 Azure 服务的关联创作、培训和发布功能的访问权限。 资源包括访问关联的 Azure 服务所需的身份验证、授权和安全信息。
+你的 LUIS[创作资源](luis-how-to-azure-subscription.md#azure-resources-for-luis)是可通过 Azure 获取的可管理项。 资源是对 Azure 服务的关联创作、培训和发布功能的访问权限。 资源包括访问关联的 Azure 服务所需的身份验证、授权和安全信息。
 
 创作资源具有的 Azure "种类" `LUIS-Authoring` 。
 
@@ -234,7 +234,7 @@ LUIS 预测终结点 URL 是在创作和发布[LUIS 应用](#application-app)后
 
 ### <a name="prediction-key"></a>预测密钥
 
-[预测密钥](luis-concept-keys.md)（以前称为订阅密钥）是与在 Azure 中创建的 LUIS 服务关联的密钥，该服务授权你使用预测终结点。
+[预测密钥](luis-how-to-azure-subscription.md)（以前称为订阅密钥）是与在 Azure 中创建的 LUIS 服务关联的密钥，该服务授权你使用预测终结点。
 
 此密钥不是创作密钥。 如果有一个预测终结点密钥，则它应用于任何终结点请求，而不是创作密钥。 你可以在 LUIS 网站中 "Azure 资源" 页底部的终结点 URL 内查看当前的预测密钥。 它是订阅密钥名称/值对的值。
 
@@ -284,8 +284,8 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 |Nomalized 值| 同义词|
 |--|--|
 |小型| 这只是一个8盎司|
-|中型| 常规，12盎司|
-|大型| 大，16盎司|
+|中| 常规，12盎司|
+|大| 大，16盎司|
 |Xtra 大型| 最大的1盎司|
 
 当在输入中出现任何同义词时，该模型将返回实体的规范化值。
@@ -300,7 +300,7 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 
 请参阅[更改预生成的 datetimeV2 实体的时区](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity)。
 
-## <a name="token"></a>令牌
+## <a name="token"></a>标记
 [标记](luis-language-support.md#tokenization)是 LUIS 可以识别的最小文本单位。 这种不同的语言略有不同。
 
 对于**英语**，标记是字母和数字的连续跨度（无空格或标点）。 空格不是标记。
@@ -312,7 +312,7 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 |`425-555-5555`|5|电话号码。 每个标点符号都是一个标记，因此将 `425-555-5555` 是5个标记：<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
 |`https://luis.ai`|7|`https`<br>`:`<br>`/`<br>`/`<br>`luis`<br>`.`<br>`ai`<br>|
 
-## <a name="train"></a>训练
+## <a name="train"></a>定型
 
 [训练](luis-how-to-train.md)是在上一次培训后，对活动版本的任何更改进行 LUIS 的过程。
 
@@ -328,6 +328,6 @@ LUIS 配额是 Azure 订阅层的限制。 可同时通过每秒请求数（HTTP
 
 [查询文本](luis-concept-utterance.md)是会话中句子的简短文本表示形式的用户输入。 这是一种自然语言短语，如 "将图书2入场券给西雅图的第二个星期二"。 示例最谈话添加到定型模型，模型在运行时在新查询文本上预测
 
-## <a name="version"></a>版本
+## <a name="version"></a>Version
 
 LUIS[版本](luis-how-to-manage-versions.md)是与 LUIS 应用 ID 和已发布终结点关联的 LUIS 应用程序的特定实例。 每个 LUIS 应用至少有一个版本。

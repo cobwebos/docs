@@ -2,13 +2,13 @@
 title: 从 ACR 任务中进行跨注册表身份验证
 description: 配置 Azure 容器注册表任务（ACR 任务）以使用 Azure 资源的托管标识访问其他专用 Azure 容器注册表
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842481"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057343"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 托管标识在 ACR 任务中进行跨注册表的身份验证 
 
@@ -44,6 +44,7 @@ ms.locfileid: "76842481"
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 在当前目录中，运行 [az acr build][az-acr-build] 命令，生成基础映像并将其推送到基础注册表。 在实际中，可能会由组织中的另一个团队或流程来维护基础注册表。
     
 ```azurecli
@@ -85,6 +86,27 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>为标识授予对基础注册表的提取权限
+
+在本部分中，向托管标识授予从基础注册表 mybaseregistry 中进行拉取的权限。
+
+使用 [az acr show][az-acr-show] 命令获取基础注册表的资源 ID 并将其存储在变量中：
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+使用 [az role assignment create][az-role-assignment-create] 命令向标识分配用于访问基础注册表的 `acrpull` 角色。 此角色仅具有从注册表拉取映像的权限。
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+继续[将目标注册表凭据添加到任务](#add-target-registry-credentials-to-task)。
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>选项 2：创建具有系统分配的标识的任务
 
 本部分中的步骤创建一个任务并启用系统分配的标识。 如果要改为启用用户分配的标识，请参阅[选项 1：创建具有用户分配的标识的任务](#option-1-create-task-with-user-assigned-identity)。 
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>为标识授予对基础注册表的提取权限
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>为标识授予对基础注册表的提取权限
 
 在本部分中，向托管标识授予从基础注册表 mybaseregistry 中进行拉取的权限。
 

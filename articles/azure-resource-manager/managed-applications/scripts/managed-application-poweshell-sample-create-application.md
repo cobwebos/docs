@@ -6,12 +6,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: e076128a5be453028635b1657bf3f90980863148
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a2687e9c943df8454ff42a17f44866dcdb7f4730
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648934"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055879"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>使用 PowerShell 为服务目录部署托管应用程序
 
@@ -33,10 +33,10 @@ ms.locfileid: "75648934"
 
 | Command | 说明 |
 |---|---|
-| [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
+| [New-AzManagedApplication](/powershell/module/az.resources/new-azmanagedapplication) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
-* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/get-started-azureps)。

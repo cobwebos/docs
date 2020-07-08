@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756483"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054723"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
 
@@ -39,12 +39,8 @@ ms.locfileid: "80756483"
 
 1. 在 Eclipse 中，选择“文件”**** 菜单，然后选择“新建”-&gt;“Maven 项目”****。 
 1. 接受“新建 Maven 项目”对话框中的默认设置，然后选择“下一步”。********
-1. 选择“添加原型”，并为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 添加条目。****
-    - 原型组 ID：com.microsoft.azure
-    - 原型项目 ID：azure-functions-archetype
-    - 版本：查看并使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![中的最新版本 Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. 单击 **“确定”**，然后单击 **“下一步”**。  请确保填写包括 `resourceGroup`、`appName` 和 `appRegion` 在内的所有字段的值（请使用 **fabrikam-function-20170920120101928** 之外的其他 appName），并最终单击“完成”****。
+1. 找到并选择[azure 函数原型](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)，并单击 "**下一步**"。
+1. 请确保填写包括 `resourceGroup`、`appName` 和 `appRegion` 在内的所有字段的值（请使用 **fabrikam-function-20170920120101928** 之外的其他 appName），并最终单击“完成”****。
     ![Eclipse Maven 创建 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven 在新文件夹中创建名为 artifactId__ 的项目文件。 项目中生成的代码是一个简单的回显触发 HTTP 请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数。

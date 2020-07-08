@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273613"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055250"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -105,9 +105,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 ## <a name="backup-policy-essentials"></a>备份策略概要
 
 - 备份策略是按保管库创建的。
-- 可为以下工作负荷的备份创建备份策略
-  - Azure VM
-  - Azure VM 中的 SQL
+- 可以创建备份策略来备份以下工作负荷： azure vm、azure Vm 中的 SQL、SAP HANA 在 Azure Vm 和 Azure 文件共享中。 MARS 控制台中指定了使用 MARS 代理进行文件和文件夹备份的策略。
   - Azure 文件共享
 - 可将一个策略分配到多个资源。 可以使用一个 Azure VM 备份策略来保护多个 Azure VM。
 - 策略由两个部分组成
@@ -115,9 +113,12 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
   - 保留期：每个备份应保留多长时间。
 - 可将计划定义为带有特定时间点的“每日”或“每周”计划。
 - 可以针对“每日”、“每周”、“每月”、“每年”备份点定义保留期。
-- “每周”是指在特定的星期日期进行备份，“每月”是指在特定的月份日期进行备份，“每年”是指在特定的年份日期进行备份。
-- “每月”、“每年”备份点的保留期称为“LongTermRetention”。
-- 创建保管库时，也会为 Azure VM 备份创建名为“DefaultPolicy”的策略，此策略可用于备份 Azure VM。
+  - "每周" 指的是一周中某天的备份
+  - "每月" 是指每月的某一天的备份
+  - "每年" 指的是一年中的某一天的备份
+- "每月"、"每年" 备份点的保留期称为长期保留（LTR）
+- 创建保管库后，还会创建一个 "DefaultPolicy"，并将其用于备份资源。
+- 对备份策略的保留期所做的任何更改都将以追溯方式到新的恢复点。
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 
@@ -139,7 +140,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或者 Azure VM 文件或文件夹
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>体系结构：直接备份本地 Windows Server 计算机或 Azure VM 文件或文件夹
 
 1. 若要设置方案，请在计算机中下载并安装 MARS 代理。 然后选择要备份的内容、运行备份的时间，以及备份在 Azure 中保留的期限。
 1. 初始备份根据备份设置运行。
@@ -170,15 +171,15 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure VM 至少包含两个磁盘：一个磁盘用于操作系统，另一个用作临时磁盘。 Azure VM 还可以使用数据磁盘来存储应用数据。 磁盘以 VHD 的形式进行存储。
 
 - 在 Azure 上的标准或高级存储帐户中，VHD 以页 Blob 的形式进行存储：
-  - **标准存储：** 为运行不关注延迟的工作负荷的 VM 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
-  - **高级存储：** 高性能磁盘支持。 使用高级·SSD 磁盘。
+  - **标准存储：** 对运行工作负荷不受延迟影响的 Vm 提供可靠、低成本的磁盘支持。 标准存储可以使用标准固态硬盘 (SSD) 或标准机械硬盘 (HDD)。
+  - **高级存储：** 高性能磁盘支持。 使用高级 SSD 磁盘。
 - 磁盘具有不同的性能层：
-  - **标准 HDD 磁盘：** 基于 HDD，用作经济高效的存储。
-  - **标准 SSD 磁盘：** 结合了高级 SSD 磁盘和标准 HDD 磁盘的特点。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
-  - **高级·SSD 磁盘：** 基于 SSD，为运行 I/O 密集型工作负荷的 VM 提供高性能和低延迟。
+  - **标准 HDD 磁盘：** 由 Hdd 提供支持，并用于经济高效的存储。
+  - **标准 SSD 磁盘：** 组合高级 SSD 磁盘和标准 HDD 磁盘的元素。 提供的一致性能和可靠性超过 HDD，而性价比仍然很高。
+  - **高级 SSD 磁盘：** 由 Ssd 提供支持，并为运行 i/o 密集型工作负荷的 Vm 提供高性能和低延迟。
 - 磁盘可以是托管磁盘或非托管磁盘：
-  - **非托管磁盘：** VM 使用的传统磁盘类型。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
-  - **托管磁盘：** Azure 将为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
+  - **非托管磁盘：** Vm 使用的传统类型的磁盘。 对于这些磁盘，可以创建自己的存储帐户，并在创建磁盘时指定该存储帐户。 然后需要确定如何最大限度地利用 VM 的存储资源。
+  - **托管磁盘：** Azure 会为你创建和管理存储帐户。 你只需指定磁盘大小和性能层，Azure 就会自动创建托管磁盘。 当你添加磁盘和缩放 VM 时，Azure 将处理存储帐户。
 
 有关磁盘存储和 VM 可用的磁盘类型的详细信息，请参阅以下文章：
 
@@ -212,7 +213,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看支持矩阵，以[了解备份方案支持的功能和限制](backup-support-matrix.md)。
+- 查看支持矩阵，[了解备份方案支持的功能和限制](backup-support-matrix.md)。
 - 为以下方案之一设置备份：
   - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
   - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。

@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 687f2a80b362ca559d054b81d464daf2f6f85c09
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340600"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055607"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过查看端点最谈话改善 LUIS 应用
 
-查看终结点最谈话进行正确预测的过程称为[活动学习](luis-concept-review-endpoint-utterances.md)。 主动学习捕获终结点查询并选择用户不确定的终结点话语。 你审核这些话语以选择意向并标记这些真实话语的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
+查看终结点最谈话进行正确预测的过程称为[活动学习](luis-concept-review-endpoint-utterances.md)。 主动学习捕获终结点查询并选择用户不确定的终结点话语。 您将查看这些最谈话以选择意图并标记这些现实世界最谈话的实体。 在示例话语中接受这些更改，然后对其进行训练和发布。 然后 LUIS 更准确地识别话语。
 
 ## <a name="enable-active-learning"></a>启用主动学习
 
-若要启用主动学习，必须记录用户查询。 这是通过使用 querystring 参数和值调用[终结点查询](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)来实现的 `log=true` 。
+若要启用主动学习，必须记录用户查询。 这是通过 `log=true` querystring 参数和值调用[终结点查询](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)实现的。
 
 使用 LUIS 门户构造正确的终结点查询。
 
 1. 登录到 [LUIS 门户](https://www.luis.ai)，选择“订阅”和“创作资源”以查看分配给该创作资源的应用。
-1. 通过在 **"我的应用**" 页上选择应用程序的名称来打开应用。
+1. 在“我的应用”页上选择应用名称以打开应用。
 1. 请在 "**管理**" 部分，选择 " **Azure 资源**"。
 1. 对于分配的预测资源，请选择 "**更改查询参数**"。
 

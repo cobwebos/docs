@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4a9639343827ebc5bb17a6d62d9b65d0b561e932
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595126"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056780"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览中的路由
 
-Azure 静态 Web 应用中的路由定义静态内容和 API 的后端路由规则和授权行为。 规则在 routes.json 文件中定义为一组规则。
+Azure 静态 Web 应用中的路由为静态内容和 Api<sup>1</sup>定义后端路由规则和授权行为。 规则在 routes.json 文件中定义为一组规则。
 
 - routes.json 文件必须存在于应用生成工件文件夹的根目录中。
 - 规则按照其在 `routes` 数组中显示的顺序执行。
@@ -25,6 +25,8 @@ Azure 静态 Web 应用中的路由定义静态内容和 API 的后端路由规�
 - 你可以完全控制角色名称。
 
 路由主题明显与身份验证和授权概念重叠。 务必要阅读[身份验证和授权](authentication-authorization.md)指南以及本文。
+
+有关详细信息，请参阅[示例路由文件](#example-route-file)。
 
 ## <a name="location"></a>位置
 
@@ -46,7 +48,7 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | 规则属性  | 必选 | 默认值 | 注释                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
 | `route`        | 是      | 不适用          | 调用方请求的路由模式。<ul><li>路由路径的末尾支持[通配符](#wildcards)。 例如，路由 admin/\* 与 admin 路径下的任何路由匹配。<li>路由的默认文件为 index.html。</ul>|
-| `serve`        | 否       | 不适用          | 定义从请求返回的文件或路径。 文件路径和名称可以不同于所请求的路径。 如果定义了 `serve` 值，则使用请求的路径。 |
+| `serve`        | 否       | 不适用          | 定义从请求返回的文件或路径。 文件路径和名称可以不同于所请求的路径。 如果 `serve` 未定义值，则使用请求的路径。 不支持 Querystring 参数;`serve`值必须指向实际文件。  |
 | `allowedRoles` | 否       | 匿名     | 角色名称数组。 <ul><li>有效字符包括 `a-z`、`A-Z`、`0-9` 和 `_`。<li>内置角色 `anonymous` 适用于所有未经身份验证的用户。<li>内置角色 `authenticated` 适用于任何已登录的用户。<li>用户必须至少属于一个角色。<li>角色在 OR 基础上进行匹配。 如果用户处于列出的任何角色中，则授予访问权限。<li>单个用户通过[邀请](authentication-authorization.md)关联到角色。</ul> |
 | `statusCode`   | 否       | 200           | 响应请求的 [HTTP 状态代码](https://wikipedia.org/wiki/List_of_HTTP_status_codes)。 |
 
@@ -150,6 +152,9 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 
 用户可能会遇到多个可能导致错误的不同情况。 使用 `platformErrorOverrides` 数组，可以提供自定义体验来响应这些错误。 请参阅[示例路由文件](#example-route-file)，以便将数组放置在 routes.json 文件中。
 
+> [!NOTE]
+> 一旦请求使其进入平台替代级别，就不会再次运行路由规则。
+
 下表列出了可用的平台错误替代：
 
 | 错误类型  | HTTP 状态代码 | 说明 |
@@ -161,6 +166,53 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
 | `Unauthorized_MissingRoles` | 401 | 用户不是所需角色的成员。 |
 | `Unauthorized_TooManyUsers` | 401 | 站点已达到用户的最大数量，服务器正在限制进一步增加。 此错误会向客户端公开，因为你可以生成的[邀请](authentication-authorization.md)数没有限制，某些用户可能永远不会接受邀请。|
 | `Unauthorized_Unknown` | 401 | 尝试对用户进行身份验证时出现未知问题。 此错误的一个原因可能是用户未被识别，因为他们未向应用程序授予许可。|
+
+## <a name="custom-mime-types"></a>自定义 mime 类型
+
+与该 `mimeTypes` 数组在同一级别上列出的对象 `routes` 允许您将[MIME 类型](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types)与文件扩展名关联。
+
+```json
+{
+    "routes": [],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+}
+```
+
+在上面的示例中，具有扩展名的所有文件 `.custom` 都用 `text/html` MIME 类型提供。
+
+以下注意事项在处理 MIME 类型时非常重要：
+
+- 键不能为 null 或空，也不能超过50个字符
+- 值不能为 null 或空，也不能超过1000个字符
+
+## <a name="default-headers"></a>默认标头
+
+与该 `defaultHeaders` 数组在同一级别上列出的对象可 `routes` 用于添加、修改或删除[响应标头](https://developer.mozilla.org/docs/Web/HTTP/Headers)。
+
+为标头提供值可以添加或修改标头。 提供空值后，会删除为客户端提供的标头。
+
+```json
+{
+    "routes": [],
+    "defaultHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+      "cache-control": "must-revalidate, max-age=6000",
+      "x-dns-prefetch-control": ""
+    }
+}
+```
+
+在上面的示例中，添加了一个新的 `content-security-policy` 标头， `cache-control` 修改了服务器默认值，并且删除了该 `x-dns-prefectch-control` 标头。
+
+在处理标头时，请注意以下事项：
+
+- 键不能为 null 或为空。
+- 如果为 Null 或空值，则从处理中删除标头。
+- 键或值不能超过8000个字符。
+- 定义的标头将为所有请求提供服务。
+- 在routes.js中定义_的_标头仅适用于静态内容。 可以在函数的代码中自定义 API 终结点的响应标头。
 
 ## <a name="example-route-file"></a>路由文件示例
 
@@ -214,33 +266,47 @@ routes.json 文件必须存在于应用生成工件文件夹的根目录中。 �
     },
     {
       "errorType": "Unauthenticated",
+      "statusCode": "302",
       "serve": "/login"
     }
-  ]
+  ],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+      "custom": "text/html"
+  }
 }
 ```
 
 下面的示例说明当请求与规则匹配时将发生的情况。
 
-|请求...  | 结果为... |
-|---------|---------|---------|
+| 请求... | 结果为... |
+|--|--|--|
 | /profile | 向经过身份验证的用户提供 /profile/index.html 文件。 未经身份验证的用户重定向到 /login。 |
-| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 经过身份验证的非管理员角色的用户将收到 401 错误<sup>1</sup>。 未经身份验证的用户重定向到 /login。 |
+| /admin/reports | 向经过身份验证的管理员角色用户提供 /admin/reports/index.html 文件。 不在_管理员_角色中的经过身份验证的用户将被提供401错误<sup>2</sup>。 未经身份验证的用户重定向到 /login。 |
 | /api/admin | 将经过身份验证的管理员角色用户发出的请求发送到 API。 经过身份验证的非管理员角色的用户，和未经身份验证的用户将收到 401 错误。 |
-| /customers/contoso | 向经过身份验证的管理员或 customers\_contoso 角色用户提供 /customers/contoso/index.html 文件<sup>1</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
-| /login     | 未经身份验证的用户将面临在 GitHub 中进行身份验证的挑战。 |
-| /.auth/login/twitter     | 已禁用通过 Twitter 的授权。 服务器响应时出现 404 错误。 |
-| /logout     | 用户已注销任何身份验证提供程序。 |
+| /customers/contoso | 属于 "_管理员_" 或 "_客户" \_ contoso_角色的经过身份验证的用户提供 _/customers/contoso/index.html_文件<sup>2</sup>。 经过身份验证的非管理员或非 customers\_contoso 角色的用户将收到 401 错误。 未经身份验证的用户重定向到 /login。 |
+| /login | 未经身份验证的用户将面临在 GitHub 中进行身份验证的挑战。 |
+| /.auth/login/twitter | 已禁用通过 Twitter 的授权。 服务器响应时出现 404 错误。 |
+| /logout | 用户已注销任何身份验证提供程序。 |
 | /calendar/2020/01 | 将向浏览器提供 /calendar.html 文件。 |
 | /specials | 浏览器将重定向到 /deals。 |
-| /unknown-folder     | 提供 /custom-404.html 文件。 |
+| /unknown-folder | 提供 /custom-404.html 文件。 |
+| 扩展名为的文件 `.custom` | 与 `text/html` MIME 类型一起提供 |
 
-<sup>1</sup> 可以通过在 `platformErrorOverrides` 数组中定义 `Unauthorized_MissingRoles` 规则来提供自定义错误页。
+- 所有响应都包含 `content-security-policy` 值为的标头 `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` 。
+
+<sup>1</sup> API 函数的路由规则仅支持[重定向](#redirects)和[保护具有角色的路由](#securing-routes-with-roles)。
+
+<sup>2</sup>你可以通过 `Unauthorized_MissingRoles` 在数组中定义规则来提供自定义错误页 `platformErrorOverrides` 。
 
 ## <a name="restrictions"></a>限制
 
 - routes.json 文件不能超过 100 KB
 - routes.json 文件最多支持 50 个不同的角色
+
+有关一般限制和限制，请参阅[配额一文](quotas.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

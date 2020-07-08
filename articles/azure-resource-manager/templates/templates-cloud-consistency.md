@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156100"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055233"
 ---
-# <a name="develop-arm-templates-for-cloud-consistency"></a>为云一致性开发 ARM 模板
+# <a name="develop-arm-templates-for-cloud-consistency"></a>开发用于确保云一致性的 ARM 模板
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器（ARM）模板使你的部署在不同的环境（包括全球 Azure、Azure 主权云和 Azure Stack）之间保持一致且可重复。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
+Azure 的主要优势是一致性。 一个位置的开发投入可在另一个位置重复使用。 Azure 资源管理器 (ARM) 模板可确保部署在全球 Azure、Azure 主权云和 Azure Stack 等环境中保持一致性和可重复性。 若要在各种云中重复使用模板，需要参照本指南的说明，考虑特定于云的依赖关系。
 
 Microsoft 在很多位置提供了面向企业的智能云服务，其中包括：
 
@@ -33,7 +33,7 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 
 然而，即使全球云、主权云、托管云和混合云提供一致的服务，也不是所有云都相同。 因此，可以创建对仅特定云可以提供的功能具有依赖关系的模板。
 
-本指南的其余部分介绍计划开发新的或更新 Azure Stack 现有 ARM 模板时要考虑的领域。 一般情况下，注意事项应包括以下各项：
+本指南的其余部分介绍在计划开发新的或更新现有的适用于 Azure Stack 的 ARM 模板时需要考虑的方面。 一般情况下，注意事项应包括以下各项：
 
 * 验证模板中的函数、终结点、服务和其他资源在目标部署位置是否可用。
 * 将嵌套模板和配置项目存储在可访问的位置，确保可以跨云访问。
@@ -45,7 +45,7 @@ Microsoft 在很多位置提供了面向企业的智能云服务，其中包括�
 
 ## <a name="ensure-template-functions-work"></a>确保模板函数可用
 
-ARM 模板的基本语法为 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅[ARM 模板函数](template-functions.md)。
+ARM 模板的基本语法为 JSON。 模板使用 JSON 的超集，通过表达式和函数扩展语法。 模板语言处理器经常更新以支持附加的模板函数。 有关可用模板函数的详细说明，请参阅 [ARM 模板函数](template-functions.md)。
 
 Azure 资源管理器中引入的新模板函数在主权云或 Azure Stack 中不会立即可用。 要成功部署模板，模板中引用的所有函数都必须在目标云中可用。
 
@@ -133,7 +133,7 @@ Azure 资源管理器在运行时评估主要模板并检索和评估每个嵌�
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -295,13 +295,13 @@ Get-AzureRmResourceProvider | select-object ProviderNamespace -ExpandProperty Re
 
 ### <a name="track-versions-using-api-profiles"></a>使用 API 配置文件跟踪版本
 
-跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 **，而 Azure 和 Azure Stack 的通用 API 版本为** `2018-04-01``2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 **，而在 Azure 中的最新 API 版本为** `2016-01-01``2018-02-01`。
+跟踪所有可用资源提供程序和 Azure Stack 中存在的相关 API 版本非常具有挑战性。 例如，在撰写本文时，Azure 中 Microsoft.Compute/availabilitySets 的最新 API 版本为 `2018-04-01`，而 Azure 和 Azure Stack 的通用 API 版本为 `2016-03-30`。 在所有 Azure 和 Azure Stack 位置之间共享的 Microsoft.Storage/storageAccounts 的通用 API 版本为 `2016-01-01`，而在 Azure 中的最新 API 版本为 `2018-02-01`。
 
 为此，资源管理器在模板中引入了 API 配置文件的概念。 使用 API 配置文件，模板中的每个资源都配置了 `apiVersion` 元素，用于描述该特定资源的 API 版本。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -342,7 +342,7 @@ API 配置文件版本充当 Azure 和 Azure Stack 通用的每种资源类型�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -384,7 +384,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -443,8 +443,8 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 
 一般情况下，请避免在模板中使用硬编码终结点。 最佳做法是使用引用模板函数动态检索终结点。 例如，最常进行硬编码的终结点是存储帐户的终结点命名空间。 每个存储帐户均有唯一的 FQDN，它通过连接存储帐户的名称与终结点命名空间来构造。 名为 mystorageaccount1 的 blob 存储帐户会因为云的不同而产生不同的 FQDN：
 
-* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net  。
-* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn  。
+* 在全球 Azure 云上创建时会产生 mystorageaccount1.blob.core.windows.net。
+* 在 Azure 中国世纪互联云创建时会产生 mystorageaccount1.blob.core.chinacloudapi.cn。
 
 以下引用模板函数从存储资源提供程序中检索终结点命名空间：
 
@@ -467,7 +467,7 @@ API 配置文件可确保 API 版本可跨位置使用，因此不需要手动�
 }
 ```
 
-然后，可以使用 `resourceId` 模板函数中的 `reference` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
+然后，可以使用 `reference` 模板函数中的 `resourceId` 函数检索数据库的属性。 返回对象包含保留完整终结点值的 `fullyQualifiedDomainName` 属性。 该值在运行时检索，并提供特定于云环境的终结点命名空间。 若要在不对终结点命名空间硬编码的情况下定义连接字符串，可以直接引用连接字符串中返回对象的属性，如下所示：
 
 ```json
 "[concat('Server=tcp:', reference(resourceId('sql', 'Microsoft.Sql/servers', parameters('test')), '2015-05-01-preview').fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('database'),';User ID=', parameters('username'), ';Password=', parameters('pass'), ';Encrypt=True;')]"
@@ -497,7 +497,7 @@ Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | 
 
 如果向 Azure Stack 提供这些 VM 映像，则会占用所有可用的存储。 为了可以容纳最小的缩放单元，Azure Stack 允许选择所需的映像添加到环境。
 
-下面的代码示例演示了一种一致的方法来引用 ARM 模板中的发布者、产品/服务和 SKU 参数：
+以下代码示例演示了在 ARM 模板中引用发布服务器、产品/服务和 SKU 参数的一致方法：
 
 ```json
 "storageProfile": {
@@ -574,7 +574,7 @@ Get-AzureRmVMSize -Location "West Europe"
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>验证 VM 扩展在 Azure Stack 中是否使用
 
-云一致性的另一个注意事项是使用[虚拟机扩展](../../virtual-machines/windows/extensions-features.md)配置 VM 内的资源。 并非所有的 VM 扩展在 Azure Stack 均可用 模板可指定专用于 VM 扩展的资源，从而在模板内创建依赖关系和条件。
+云一致性的另一个注意事项是使用[虚拟机扩展](../../virtual-machines/extensions/features-windows.md)配置 VM 内的资源。 并非所有的 VM 扩展在 Azure Stack 均可用 模板可指定专用于 VM 扩展的资源，从而在模板内创建依赖关系和条件。
 
 例如，如果要配置运行 Microsoft SQL Server 的 VM，VM 扩展可以配置 SQL Server 作为模板部署的一部分。 如果部署模板也包含配置为在运行 SQL Server 的 VM 上创建数据库的应用程序服务器，想象一下会发生什么情况。 除了使用应用程序服务器的 VM 扩展外，还可以在成功返回 SQL Server VM 扩展资源时配置应用程序服务器的依赖关系。 此方法可确保在指示应用程序服务器创建数据库时，运行 SQL Server 的 VM 已配置并且可用。
 
@@ -611,7 +611,7 @@ Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageTy
 
 VM 扩展资源的 API 版本必须存在于你模板中计划的所有目标位置。 位置依赖关系的作用类似于之前在“验证所有资源类型的版本”部分讨论的资源提供程序 API 版本的可用性。
 
-要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示  ：
+要检索 VM 扩展资源的可用 API 版本列表，请将 [Get-AzureRmResourceProvider](/powershell/module/az.resources/get-azresourceprovider) cmdlet 与 Microsoft.Compute 资源提供程序结合使用，如下所示：
 
 ```azurepowershell-interactive
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachines/extensions"}
@@ -641,7 +641,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Obje
         ...
 ```
 
-要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本  ：
+要检索特定 VM 扩展的可用版本列表，请使用 [Get AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet。 以下示例从 myLocation 检索 PowerShell DSC（所需状态配置）VM 扩展的可用版本：
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT
@@ -668,4 +668,4 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 资源管理器模板注意事项](/azure-stack/user/azure-stack-develop-templates)
-* [ARM 模板的最佳实践](template-syntax.md)
+* [ARM 模板的最佳做法](template-syntax.md)

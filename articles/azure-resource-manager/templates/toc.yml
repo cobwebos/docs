@@ -89,7 +89,7 @@
         - name: DevOps
           items:
             - name: 管道
-              href: 'https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json'
+              href: /azure/devops/pipelines/apps/cd/azure/deploy-arm-template?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 集成
           items:
             - name: 事件网格

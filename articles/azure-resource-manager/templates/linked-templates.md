@@ -1,22 +1,22 @@
 ---
 title: 用于部署的链接模板
-description: 介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
+description: 介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 06/26/2020
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609300"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056678"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
-若要部署复杂的解决方案，可以将模板分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语 "**链接模板**" 引用通过主模板的链接引用的单独模板文件。 它使用术语**嵌套模板**指代主模板内嵌套的模板语法。
+若要部署复杂的解决方案，可以将模板分解为许多相关模板，然后通过主模板将它们一起部署。 相关模板可以是嵌入在主模板内的单独文件或模板语法。 本文使用术语“链接模板”来指代一个通过主模板中的链接进行引用的单独模板文件。 它使用术语**嵌套模板**指代主模板内嵌套的模板语法。
 
 对于中小型解决方案，单个模板更易于理解和维护。 可以查看单个文件中的所有资源和值。 对于高级方案，使用链接模板可将解决方案分解为目标组件。 可以轻松地将这些模板重复用于其他方案。
 
-如需教程，请参阅[教程：创建链接的 Azure 资源管理器模板](template-tutorial-create-linked-templates.md)。
+如需教程，请参阅[教程：创建链接的 Azure 资源管理器模板](./deployment-tutorial-linked-template.md)。
 
 > [!NOTE]
 > 对于链接模板或嵌套模板，只能使用[增量](deployment-modes.md)部署模式。
@@ -24,7 +24,7 @@ ms.locfileid: "82609300"
 
 ## <a name="nested-template"></a>嵌套模板
 
-若要嵌套模板，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 **template** 属性中，指定模板语法。
+若要嵌套某个模板，请向主模板中添加一个[部署资源](/azure/templates/microsoft.resources/deployments)。 在 **template** 属性中，指定模板语法。
 
 ```json
 {
@@ -34,9 +34,9 @@ ms.locfileid: "82609300"
   "variables": {},
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
@@ -63,13 +63,13 @@ ms.locfileid: "82609300"
   },
   "resources": [
     {
-      "name": "nestedTemplate1",
-      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "nestedTemplate1",
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -92,11 +92,11 @@ ms.locfileid: "82609300"
 }
 ```
 
-### <a name="expression-evaluation-scope-in-nested-templates"></a>嵌套模板中的表达式计算范围
+### <a name="expression-evaluation-scope-in-nested-templates"></a>嵌套模板中的表达式计算作用域
 
 使用嵌套模板时，可以指定是在父模板的作用域内还是在嵌套模板的作用域内计算模板表达式。 作用域决定了如何对参数、变量和函数（例如 [resourceGroup](template-functions-resource.md#resourcegroup) 和 [subscription](template-functions-resource.md#subscription)）进行求解。
 
-可以通过 `expressionEvaluationOptions` 属性设置作用域。 默认情况下，`expressionEvaluationOptions` 属性设置为 `outer`，这意味着它使用父模板作用域。 将值设置为`inner` ，使表达式在嵌套模板范围内进行计算。
+可以通过 `expressionEvaluationOptions` 属性设置作用域。 默认情况下，`expressionEvaluationOptions` 属性设置为 `outer`，这意味着它使用父模板作用域。 将值设置为“`inner`”可使表达式在嵌套模板的作用域内进行计算。
 
 ```json
 {
@@ -132,7 +132,7 @@ ms.locfileid: "82609300"
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -158,18 +158,18 @@ ms.locfileid: "82609300"
 }
 ```
 
-的值会`exampleVar`根据中`scope` `expressionEvaluationOptions`属性的值发生变化。 下表显示了这两个作用域的结果。
+`exampleVar` 的值因 `expressionEvaluationOptions` 中 `scope` 属性的值而异。 下表显示了这两个作用域的结果。
 
 | `expressionEvaluationOptions` `scope` | 输出 |
 | ----- | ------ |
 | 内部 | from nested template |
 | outer（或默认值） | from parent template |
 
-下面的示例部署一个 SQL Server，并检索要用于密码的密钥保管库机密。 作用域设置为， `inner`因为它会动态创建密钥保管库 ID （ `adminPassword.reference.keyVault`请参阅外部模板`parameters`中），并将其作为参数传递到嵌套模板。
+下面的示例部署一个 SQL Server，并检索要用于密码的密钥保管库机密。 作用域设置为 `inner`，因为它会动态创建密钥保管库 ID（请参见外部模板 `parameters` 中的 `adminPassword.reference.keyVault`）并将其作为参数传递到嵌套模板。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ ms.locfileid: "82609300"
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -277,9 +277,9 @@ ms.locfileid: "82609300"
 
 > [!NOTE]
 >
-> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中已部署资源的值，请使用`inner` "作用域" 或 "将嵌套模板转换为链接模板"。
+> 当作用域设置为 `outer` 时，对于已在嵌套模板中部署的资源，无法在嵌套模板的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中已部署资源的值，请使用 " `inner` 作用域" 或 "将嵌套模板转换为链接模板"。
 
-## <a name="linked-template"></a>链接模板
+## <a name="linked-template"></a>链接的模板
 
 若要链接模板，请将[部署资源](/azure/templates/microsoft.resources/deployments)添加到主模板。 在 **templateLink** 属性中，指定要包括的模板的 URI。 以下示例链接到部署新存储帐户的模板。
 
@@ -308,15 +308,13 @@ ms.locfileid: "82609300"
 }
 ```
 
-引用链接模板时，的值`uri`不能是本地文件，也不能是只能在本地网络上使用的文件。 必须提供可下载为**http**或**https**的 URI 值。 
+引用链接模板时，`uri` 的值不能是本地文件或只能在本地网络上使用的文件。 必须提供可下载的 http 或 https 形式的 URI 值。
 
 > [!NOTE]
 >
-> 您可以使用最终解析为使用**http**或**https**的参数（例如，使用如下所示的`_artifactsLocation`参数）来引用模板：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> 可以使用参数（如 `_artifactsLocation` 参数）来引用模板，例如：`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`，这些参数最终会解析为某个使用“http”或“https”的项
 
-
-
-资源管理器必须能够访问该模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
+资源管理器必须能够访问模板。 一种做法是将链接模板放入存储帐户，并对该项使用 URI。
 
 ### <a name="parameters-for-linked-template"></a>链接模板的参数
 
@@ -358,7 +356,7 @@ ms.locfileid: "82609300"
       "contentVersion":"1.0.0.0"
      },
      "parameters": {
-      "StorageAccountName":{"value": "[parameters('StorageAccountName')]"}
+      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
     }
    }
   }
@@ -369,11 +367,11 @@ ms.locfileid: "82609300"
 
 ## <a name="contentversion"></a>contentVersion
 
-无需为`templateLink`或`parametersLink`属性提供`contentVersion`属性。 如果未提供`contentVersion`，则部署当前版本的模板。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
+无需为 `templateLink` 或 `parametersLink` 属性提供 `contentVersion` 属性。 如果未提供 `contentVersion`，则会部署模板的当前版本。 如果提供内容版本值，它必须与链接的模板中的版本相匹配；否则，部署失败并产生错误。
 
 ## <a name="using-variables-to-link-templates"></a>使用变量来链接模板
 
-前面的示例演示了用于模板链接的硬编码 URL 值。 此方法可能适用于简单的模板，但它不适用于大型模块化模板。 相反，可以创建一个存储主模板的基 URL 的静态变量，并从基 URL 动态创建用于链接模板的 URL。 此方法的好处是可以轻松地移动或派生模板，因为只需更改主模板中的静态变量。 主模板会在整个分解后的模板中传递正确的 URI。
+前面的示例演示了用于模板链接的硬编码 URL 值。 这种方法可能适用于某个简单的模板，但不适用于一组大型模块化模板。 相反，可以创建一个存储主模板的基 URL 的静态变量，并从基 URL 动态创建用于链接模板的 URL。 这种方法的好处是可以轻松地移动或派生模板，因为只需在主模板中更改静态变量。 主模板会在整个分解后的模板中传递正确的 URI。
 
 以下示例演示如何使用基 URL 来创建两个用于链接模板的 URL（**sharedTemplateUrl** 和 **vmTemplate**）。
 
@@ -393,7 +391,7 @@ ms.locfileid: "82609300"
 }
 ```
 
-最终，将在`uri` `templateLink`属性的属性中使用该变量。
+最终，会在 `templateLink` 属性的 `uri` 属性中使用变量。
 
 ```json
 "templateLink": {
@@ -425,7 +423,7 @@ ms.locfileid: "82609300"
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -457,11 +455,11 @@ ms.locfileid: "82609300"
 
 从链接模板获取输出属性时，属性名称不能包含短划线。
 
-以下示例演示如何引用链接模板和检索输出值。 链接模板返回一条简单的消息。  首先，链接的模板：
+以下示例演示如何引用链接模板和检索输出值。 链接模板返回一条简单的消息。  首先，让我们看看链接模板：
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +477,7 @@ ms.locfileid: "82609300"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +510,7 @@ ms.locfileid: "82609300"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -543,11 +541,11 @@ ms.locfileid: "82609300"
 }
 ```
 
-若要在部署负载平衡器时使用上述模板中的公共 IP 地址，请链接到该模板，并声明对`Microsoft.Resources/deployments`资源的依赖项。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
+若要在部署负载平衡器时使用上述模板中的公共 IP 地址，请链接到该模板，并声明对资源的依赖项 `Microsoft.Resources/deployments` 。 负载均衡器上的公共 IP 地址设置为链接模板的输出值。
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +618,7 @@ ms.locfileid: "82609300"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +656,7 @@ ms.locfileid: "82609300"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -715,7 +713,7 @@ done
 
 ## <a name="securing-an-external-template"></a>保护外部模板
 
-尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌，用于启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
+尽管链接模板必须可从外部使用，但它无需向公众正式发布。 可以将模板添加到只有存储帐户所有者可以访问的专用存储帐户。 然后，在部署期间创建共享访问签名 (SAS) 令牌来启用访问。 将该 SAS 令牌添加到链接模板的 URI。 即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也会记录在部署操作中。 若要限制公开，请设置令牌的到期时间。
 
 也可将参数文件限制为通过 SAS 令牌进行访问。
 
@@ -725,7 +723,7 @@ done
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }
@@ -785,17 +783,17 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="example-templates"></a>示例模板
 
-以下示例演示了链接模板的常见用法。
+下面的示例展示了链接的模板的常见用途。
 
-|主模板  |链接模板 |说明  |
+|主模板  |链接的模板 |说明  |
 |---------|---------| ---------|
-|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接模板返回字符串。 |
-|[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接模板返回公共 IP 地址，并在负载均衡器中设置该值。 |
-|[多个 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [链接模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在链接模板中创建多个公共 IP 地址。  |
+|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[链接的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | 从链接的模板返回字符串。 |
+|[使用公共 IP 地址的负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[链接的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |从链接的模板返回公共 IP 地址并在负载均衡器中设置该值。 |
+|[多个 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [链接的模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |在链接模板中创建多个公共 IP 地址。  |
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要浏览教程，请参阅[教程：创建链接的 Azure 资源管理器模板](template-tutorial-create-linked-templates.md)。
-* 若要了解如何为资源定义部署顺序，请参阅[在 Azure 资源管理器模板中定义依赖项](define-resource-dependency.md)。
+* 若要浏览教程，请参阅[教程：创建链接的 Azure 资源管理器模板](./deployment-tutorial-linked-template.md)。
+* 若要了解如何为资源定义部署顺序，请参阅[在 Azure 资源管理器模板中定义依赖关系](define-resource-dependency.md)。
 * 若要了解如何定义一个资源而创建多个实例，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](deploy-powershell.md)或[使用 Resource Manager 模板和 Azure CLI 部署资源](deploy-cli.md)。

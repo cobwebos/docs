@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: abdb926825abcac4485cb11b71bdc82597391727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b258b0b5dba902e94e8d221e0d8f0292fdec9f67
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176815"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057392"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>在 Azure 门户中发布内容  
 > [!div class="op_single_selector"]
@@ -42,19 +42,19 @@ ms.locfileid: "82176815"
 
 要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL： 
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=m3u8-aapl)`
 
 要生成流式处理 URL 来播放平滑流资产，请使用以下 URL 格式：
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest`
 
 要生成 MPEG DASH 流式处理 URL，请将 (format=mpd-time-csf) 附加到 URL： 
 
-    {streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)
+`{streaming endpoint name-media services account name}/{locator ID}/{file name}.ism/Manifest(format=mpd-time-csf)`
 
 共享访问签名 URL 格式如下：
 
-    {blob container name}/{asset name}/{file name}/{shared access signature}
+`{blob container name}/{asset name}/{file name}/{shared access signature}`
 
 有关详细信息，请参阅[传送内容概述](media-services-deliver-content-overview.md)。
 

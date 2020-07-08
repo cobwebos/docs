@@ -4,12 +4,12 @@ description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShe
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744270"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056253"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
@@ -200,6 +200,11 @@ ms.locfileid: "83744270"
 }
 ```
 对于此演练，可将上面的示例 JSON 保存为类似于 sampleActivityLogAlert.json 的文件名，然后可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md)部署该文件。
+
+  > [!NOTE]
+  > 
+  > 请注意，可以将最高级别的活动日志警报定义为 "订阅"。
+  > 也就是说，没有用于定义两个订阅的警报的选项，因此，每个订阅的定义应为警报。
 
 以下字段是可以在 Azure 资源管理器模板中用于条件字段的选项：请注意，“资源运行状况”、“顾问”和“服务运行状况”有额外的属性字段，这是它们的特殊字段。 
 1. resourceId：应该对其生成警报的活动日志事件中受影响资源的资源 ID。

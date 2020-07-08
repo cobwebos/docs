@@ -3,18 +3,19 @@ title: 如何使用创作密钥和运行时密钥 - LUIS
 description: 首次使用语言理解 (LUIS) 时，不需要创建创作密钥。 如果需要发布应用，然后使用运行时终结点，则需创建运行时密钥并将其分配给应用。
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/07/2020
+ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560431"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055760"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
 创作和查询预测运行时资源为 LUIS 应用和预测终结点提供身份验证。
 
+<a name="azure-resources-for-luis"></a>
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
@@ -23,7 +24,7 @@ ms.locfileid: "85560431"
 
 LUIS 允许三种类型的 Azure 资源和一种非 Azure 资源：
 
-|Key|目的|认知服务 `kind`|认知服务 `type`|
+|键|目标|认知服务 `kind`|认知服务 `type`|
 |--|--|--|--|
 |创作密钥|通过创作、训练、发布和测试访问和管理应用程序的数据。 若要以编程方式创作 LUIS 应用，请创建 LUIS 创作密钥。<br><br>`LUIS.Authoring` 密钥的目的是让你执行以下操作：<br>* 以编程方式管理语言理解应用和模型，包括训练和发布<br> * 为人员分配[参与者角色](#contributions-from-other-authors)，控制对创作资源的权限。|`LUIS.Authoring`|`Cognitive Services`|
 |查询预测密钥| 查询预测终结点请求。 在客户端应用请求的预测超出初学者资源提供的 1,000 个请求之前，创建 LUIS 预测密钥。 |`LUIS`|`Cognitive Services`|
@@ -38,7 +39,7 @@ Azure 资源创建过程完成后，[将密钥分配](#assign-a-resource-to-an-a
 
 Azure 资源（如 LUIS）由包含资源的订阅所有。
 
-若要转让资源的所有权，ou 可以：
+若要转让资源的所有权，可以执行以下任一操作：
 * 转让订阅的[所有权](../../cost-management-billing/manage/billing-subscription-transfer.md)
 * 将 LUIS 应用导出为文件，然后在不同的订阅上导入应用。 可以从 LUIS 门户中的 "**我的应用**" 页获取导出。
 
@@ -71,6 +72,8 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 在 Azure 门户的“密钥”页上重新生成 Azure 密钥。
 
 
+<a name="securing-the-endpoint"></a>
+
 ## <a name="app-ownership-access-and-security"></a>应用所有权、访问和安全
 
 应用通过其 Azure 资源进行定义，这取决于所有者的订阅。
@@ -99,7 +102,7 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
 所有者和所有参与者具有创作应用所需的访问权限。
 
-|创作访问权限包括|注意|
+|创作访问权限包括|说明|
 |--|--|
 |添加或删除终结点密钥||
 |导出版本||
@@ -158,11 +161,10 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 1. 完成资源选择过程以后，请[创建新应用](luis-how-to-start-new-app.md#create-new-app-in-luis)。
 
 
-## <a name="create-azure-resources"></a>创建 Azure 资源
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
-[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
 ### <a name="create-resources-in-azure-cli"></a>在 Azure CLI 中创建资源
 
@@ -226,25 +228,25 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
     ![请求 Azure 资源管理器令牌和接收 Azure 资源管理器令牌](./media/luis-manage-keys/get-arm-token.png)
 
-1. 使用该令牌从用户帐户有权访问的[获取 LUIS azure 帐户 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c) 跨订阅请求 LUIS 运行时资源。
+1. 使用令牌，通过用户帐户有权访问的[GET LUIS Azure 帐户 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c)，在订阅之间请求 LUIS 运行时资源。
 
     此 POST API 需要以下设置：
 
-    |标头|值|
+    |Header|值|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
 
     此 API 将返回 LUIS 订阅的 JSON 对象的数组，包括订阅 ID、资源组和资源名称（作为帐户名称返回）。 在要将 LUIS 资源分配给 LUIS 应用的数组中查找一个项。
 
-1. 使用[将 LUIS azure 帐户分配给应用程序](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515) API，将令牌分配给 LUIS 资源。
+1. 将令牌分配给 LUIS 资源，并将[LUIS Azure 帐户分配给应用程序](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be32228e8473de116325515)API。
 
     此 POST API 需要以下设置：
 
-    |类型|设置|Value|
+    |类型|设置|“值”|
     |--|--|--|
-    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
-    |标头|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
+    |Header|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
+    |Header|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
     |标头|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。
     |正文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|

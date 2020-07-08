@@ -6,12 +6,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 695023f4700370cbe5e9b345f513e38d1cf1fc0c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 602aaeb67ca081ebac71ca1d6d24a2de3c020603
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648954"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055981"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>使用 PowerShell 获取托管资源组中的资源并重设 VM 大小
 
@@ -32,12 +32,12 @@ ms.locfileid: "75648954"
 
 | Command | 说明 |
 |---|---|
-| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | 列出托管应用程序。 提供要重点关注结果的资源组名称。 |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | 列出资源。 提供要重点关注结果的资源组和资源类型。 |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | 更新虚拟机的大小。 |
+| [Get-AzManagedApplication](/powershell/module/az.resources/get-azmanagedapplication) | 列出托管应用程序。 提供要重点关注结果的资源组名称。 |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | 列出资源。 提供要重点关注结果的资源组和资源类型。 |
+| [Update-AzVM](/powershell/module/az.compute/update-azvm) | 更新虚拟机的大小。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
-* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/get-started-azureps)。

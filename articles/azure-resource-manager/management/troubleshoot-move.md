@@ -1,14 +1,14 @@
 ---
 title: 排查迁移错误
-description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
+description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e4ffb2b79fcce85fa4b316e68e191eb14f8bf0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75891276"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055073"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>排查将 Azure 资源移到新的资源组或订阅时遇到的问题
 
@@ -18,8 +18,8 @@ ms.locfileid: "75891276"
 
 如果确实想要升级 Azure 订阅（例如从免费切换到即用即付），则需要转换订阅。
 
-* 若要升级免费试用版，请参阅[将免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](../../billing/billing-upgrade-azure-subscription.md)。
-* 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他套餐](../../billing/billing-how-to-switch-azure-offer.md)。
+* 若要升级免费试用版，请参阅将[免费试用版或 Microsoft Imagine Azure 订阅升级到即用即付](../../cost-management-billing/manage/upgrade-azure-subscription.md)。
+* 若要更改即用即付帐户，请参阅[将 Azure 即用即付订阅更改为其他产品/服务](../../cost-management-billing/manage/switch-azure-offer.md)。
 
 如果无法转换订阅，请[创建 Azure 支持请求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 选择“订阅管理”  作为问题类型。
 
@@ -48,4 +48,4 @@ ms.locfileid: "75891276"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关移动资源的命令，请参阅[将资源移动至新资源组或订阅](move-resource-group-and-subscription.md)。
+有关用于移动资源的命令，请参阅[将资源移到新资源组或订阅](move-resource-group-and-subscription.md)。

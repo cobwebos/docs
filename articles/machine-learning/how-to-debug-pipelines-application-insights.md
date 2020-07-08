@@ -1,5 +1,5 @@
 ---
-title: 对 Application Insights 中的机器学习管道进行调试和故障排除
+title: 监视 &收集管道日志文件
 titleSuffix: Azure Machine Learning
 description: 将日志记录添加到训练和批量评分管道，并在 Application Insights 中查看记录的结果。
 services: machine-learning
@@ -7,18 +7,17 @@ author: sanpil
 ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
-ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
-ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: a87ceb5a216b05f3fae6d570bbfed1c4a622c911
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982355"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055709"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>对 Application Insights 中的机器学习管道进行调试和故障排除
+# <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>收集用于警报和调试 Application Insights 中的机器学习管道日志文件
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 可以通过脚本使用 [OpenCensus](https://opencensus.io/quickstart/python/) Python 库将日志路由到 Application Insights。 在一个位置聚合管道运行发出的日志可以生成查询和诊断问题。 使用 Application Insights 可以跟踪一段时间内的日志，并比较各个运行的管道日志。

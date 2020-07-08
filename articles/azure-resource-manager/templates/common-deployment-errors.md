@@ -3,33 +3,33 @@ title: 排查常见部署错误
 description: 说明如何解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 10/04/2019
-ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460375"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055658"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>排查使用 Azure Resource Manager 时的常见 Azure 部署错误
 
 本文介绍了一些常见的 Azure 部署错误，并提供了有关如何解决这些错误的信息。 如果找不到部署错误的错误代码，请参阅[查找错误代码](#find-error-code)。
 
-如果需要某个错误代码的信息，而本文没有提供该信息，请告知我们。 在此页的底部，你可以留下反馈。 将跟踪 GitHub 问题的反馈。
+如果需要某个错误代码的信息，而本文没有提供该信息，请告知我们。 在此页的底部，你可以留下反馈。 我们将跟踪 GitHub 问题的反馈。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>错误代码
 
-| 错误代码 | 缓解 | 更多信息 |
+| 错误代码 | 缓解操作 | 详细信息 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循存储帐户的命名限制。 | [解析存储帐户名称](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 检查可用的存储帐户属性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows 预配和分配问题](../../virtual-machines/windows/troubleshoot-deployment-new-vm.md)和[排查分配失败问题](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | 群集或区域没有可用的资源或无法支持所请求的 VM 大小。 稍后重试请求，或者请求不同的 VM 大小。 | [Linux 预配和分配问题](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows 预配和分配问题](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)和[排查分配失败问题](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 等待并发操作完成。 | |
 | AuthorizationFailed | 帐户或服务主体没有足够的访问权限，无法完成部署。 检查帐户所属的角色及其在部署范围内的访问权限。<br><br>所需的资源提供程序未注册时，可能会收到此错误。 | [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)<br><br>[解决注册问题](error-register-resource-provider.md) |
 | BadRequest | 发送的部署值与资源管理器预期的值不匹配。 检查内部状态消息，以帮助进行故障排除。 | [模板引用](/azure/templates/)和[支持的位置](resource-location.md) |
-| 冲突 | 在资源的当前状态下不允许所请求的操作。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
+| Conflict | 在资源的当前状态下不允许所请求的操作。 例如，仅当创建 VM 或该 VM 已解除分配时，才允许调整磁盘大小。 | |
 | DeploymentActiveAndUneditable | 等待此资源组上的并发部署完成。 | |
 | DeploymentFailedCleanUp | 在完整模式下部署时，模板中不存在的任何资源都将被删除。 当没有足够的权限删除模板中所有不存在的资源时，会出现此错误。 若要避免此错误，请将部署模式更改为“增量”。 | [Azure 资源管理器部署模式](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | 部署名称只能包含字母、数字、"-"、"." 或 "_"。 | |
@@ -62,8 +62,8 @@ ms.locfileid: "79460375"
 | OperationNotAllowed | 部署正在尝试执行一个超过了订阅、资源组或区域配额的操作。 如果可能，请修改部署，以保持在配额范围内。 否则，请考虑请求更改配额。 | [解决配额问题](error-resource-quota.md) |
 | ParentResourceNotFound | 确保在创建子资源之前父资源已存在。 | [解决父资源问题](error-parent-resource.md) |
 | PasswordTooLong | 你可能选择了包含太多字符的密码，或在将密码值作为参数传递之前将其转换成了一个安全字符串。 如果模板包括一个**安全字符串**参数，则不需要将值转换为安全字符串。 请以文本形式提供密码值。 |  |
-| PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 更改 IP 地址以避免保留的范围。 | [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | 指定的 IP 地址超出子网范围。 更改 IP 地址，使之在子网范围内。 | [IP 地址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | 指定的 IP 地址包括 Azure 所需的地址范围。 更改 IP 地址以避免保留的范围。 | [IP 地址](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | 指定的 IP 地址超出子网范围。 更改 IP 地址，使之在子网范围内。 | [IP 地址](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | 已部署资源上的某些属性不能更改。 更新资源时，请限制为对允许的属性进行更改。 | [更新资源](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | 订阅中的某个资源策略阻止你在部署期间尝试执行的操作。 查找阻止该操作的策略。 如果可能，请更改部署，使之符合策略的限制。 | [解决策略问题](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名称的资源名称。 | [保留的资源名称](error-reserved-resource-name.md) |
@@ -89,7 +89,7 @@ ms.locfileid: "79460375"
 
 验证错误源于部署之前可确定的方案。 原因包括模板中的语法错误，或尝试部署超出订阅配额的资源。 部署错误源于部署过程中发生的条件。 原因包括尝试访问并行部署的资源。
 
-两种类型的错误都会返回用于对部署进行故障排除的错误代码。 两种类型的错误都会显示在[活动日志](../management/view-activity-logs.md)中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
+这两种类型的错误都会返回错误代码，可使用该代码来排查部署问题。 两种类型的错误都显示在[活动日志](../management/view-activity-logs.md)中。 但是，验证错误不会显示在部署历史记录中，因为部署从未启动。
 
 ### <a name="validation-errors"></a>验证错误
 
@@ -114,7 +114,7 @@ ms.locfileid: "79460375"
 若要通过 Azure CLI 查看部署错误代码和消息，请使用：
 
 ```azurecli-interactive
-az deployment group operation list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
+az deployment operation group list --name exampledeployment -g examplegroup --query "[*].properties.statusMessage"
 ```
 
 在门户中，选择通知。
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 使用以下命令查看部署操作：
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --resource-group examplegroup \
   --name exampledeployment
 ```
@@ -180,7 +180,7 @@ az deployment group operation list \
 使用以下命令检查请求内容：
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.request
@@ -189,7 +189,7 @@ az deployment group operation list \
 使用以下命令检查响应内容：
 
 ```azurecli
-az deployment group operation list \
+az deployment operation group list \
   --name exampledeployment \
   -g examplegroup \
   --query [].properties.response
@@ -223,7 +223,7 @@ az deployment group operation list \
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "storageName": {

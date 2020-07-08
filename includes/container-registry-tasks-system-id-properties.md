@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77112327"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057342"
 ---
 在命令输出中，`identity` 部分显示在任务中设置了 `SystemAssigned` 类型的标识。 `principalId` 是任务标识的主体 ID：
 
@@ -31,7 +31,9 @@ ms.locfileid: "77112327"
 使用 [az acr task show][az-acr-task-show] 命令将 principalId 存储在一个变量中，以便在以后的命令中使用。 在以下命令中替换任务和注册表的名称：
 
 ```azurecli
-principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show \
+  --name <task_name> --registry <registry_name> \
+  --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

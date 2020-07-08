@@ -105,9 +105,6 @@
           href: luis-concept-test.md
         - name: 批处理测试
           href: luis-concept-batch-test.md
-    - name: 创作和运行时密钥
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: 数据管理
       items:
         - name: 更改数据

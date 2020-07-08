@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
-ms.openlocfilehash: b3c4110c8761b3e8daf324d65ac7fa1dcbcdf61f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023491"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055035"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>使用扩展提供部署后配置
 
@@ -20,13 +20,13 @@ ms.locfileid: "77023491"
 
 现有的扩展如下：
 
-- [VirtualMachines/扩展](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
-- [Microsoft.Compute virtualMachineScaleSets/extensions](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
-- [Microsoft.HDInsight clusters/extensions](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
-- [Microsoft.Sql servers/databases/extensions](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
-- [Microsoft.Web/sites/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
+- [VirtualMachines/扩展](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
+- [Microsoft.Compute virtualMachineScaleSets/extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
+- [Microsoft.HDInsight clusters/extensions](/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
+- [Microsoft.Sql servers/databases/extensions](/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
+- [Microsoft.Web/sites/siteextensions](/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
-若要找出可用的扩展，请浏览到[模板参考](https://docs.microsoft.com/azure/templates/)。 在“按标题筛选”**** 中，输入“扩展”****。
+若要找出可用的扩展，请浏览到[模板参考](/azure/templates/)。 在“按标题筛选”**** 中，输入“扩展”****。
 
 若要了解如何使用这些扩展，请参阅：
 

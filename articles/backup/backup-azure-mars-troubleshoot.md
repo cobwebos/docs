@@ -4,12 +4,12 @@ description: 本文介绍如何排查 Azure 备份代理的安装和注册问题
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598005"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056579"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 错误 | 可能的原因 | 建议的操作
 --- | --- | ---
 由于出现“服务戳中未预配资源”的内部服务错误，当前操作失败。 请稍后重试操作。 (ID:230006) | 受保护的服务器已重命名。 | <li> 将服务器重命名回在保管库中注册的原始名称。 <br> <li> 用新名称向保管库重新注册服务器。
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>作业无法启动，因为另一个作业正在进行中
+
+如果你在**MARS 控制台**作业历史记录中注意到一条警告消息  >  **Job history**，指出 "作业无法启动，因为另一个作业正在进行"，则这可能是因为任务计划程序触发了作业的重复实例。
+
+![作业无法启动，因为另一个作业正在进行中](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+若要解决此问题，请执行下列操作：
+
+1. 在 "运行" 窗口中键入*taskschd.msc* ，启动任务计划程序管理单元
+1. 在左窗格中，导航到**任务计划程序库**  ->  **Microsoft**  ->  **缺少 onlinebackup.kek**"。
+1. 对于此库中的每个任务，双击该任务以打开 "属性"，然后执行以下步骤：
+    1. 切换到“设置”选项卡。
+
+         ![“设置”选项卡](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. **如果任务已在运行，请更改的选项，然后应用以下规则**。 选择 "**不启动新实例**"。
+
+         ![更改规则以不启动新实例](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>排查还原问题
 

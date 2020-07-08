@@ -6,12 +6,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 346ea59209bc2f74970e708c947f5caa158a0338
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c2fc3dc4e76f295dff94ebda71d54bad425b621
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648784"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056117"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>使用 Azure CLI 为服务目录部署托管应用程序
 
@@ -33,10 +33,10 @@ ms.locfileid: "75648784"
 
 | Command | 说明 |
 |---|---|
-| [az managedapp create](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-create) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
+| [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | 创建托管应用程序。 提供模板的定义 ID 和参数。 |
 
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
-* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+* 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。

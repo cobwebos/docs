@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 440162d6cddd790cdb2859c119d60a6dbe28dcbf
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374861"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055454"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
-语言理解（LUIS）创作身份验证从电子邮件帐户更改为 Azure 资源。 虽然目前不需要切换到 Azure 资源，但将来会强制执行此功能。
+语言理解 (LUIS) 创作身份验证已从电子邮件帐户更改为 Azure 资源。 虽然目前不需要切换到 Azure 资源，但将来会强制执行此功能。
 
 
 ## <a name="what-is-migration"></a>什么是迁移？
 
-迁移是将创作身份验证从电子邮件帐户更改为 Azure 资源的过程。 迁移后，你的帐户将链接到 Azure 订阅和 Azure 创作资源。 *所有 LUIS 用户（所有者或合作者）最终都需要迁移。* 
+迁移是将创作身份验证从电子邮件帐户更改为 Azure 资源的过程。 迁移后，你的帐户将链接到 Azure 订阅和 Azure 创作资源。 *所有 LUIS 用户（所有者或合作者）最终都需要迁移。*
 
 必须从 LUIS 门户完成迁移。 例如，如果使用 LUIS CLI 创建创作密钥，则需要在 LUIS 门户中完成迁移过程。 迁移后，你仍可以对应用程序进行 coauthors，但这些将添加到 Azure 资源级别，而不是应用程序级别。
 
@@ -63,7 +63,7 @@ ms.locfileid: "85374861"
 |[LUIS](https://www.luis.ai)| 迁移到新的创作资源。<br> 在迁移流程中创建新的创作资源。<br> 从 "**管理**  >  **Azure 资源**" 页为应用分配或取消分配预测和创作资源。 <br> 将应用程序从一个创作资源移动到另一个创作资源。  |
 
 > [!Note]
-> LUIS 应用免费创作，如 F0 层所示。 了解[有关定价层的详细信息](luis-limits.md#key-limits)。
+> LUIS 应用免费创作，如 F0 层所示。 了解[有关定价层的更多信息](luis-limits.md#key-limits)。
 
 
 ## <a name="migration-steps"></a>迁移步骤
@@ -71,17 +71,17 @@ ms.locfileid: "85374861"
 1. 在正在使用的 LUIS 门户中，可以从顶部工具栏上的**Azure**图标开始迁移过程。
 
    > [!div class="mx-imgBorder"]
-   > ![迁移图标](./media/migrate-authoring-key/migration-button.png)
+   > ![“迁移”图标](./media/migrate-authoring-key/migration-button.png)
 
-2. 可以在 "迁移" 弹出窗口中继续进行迁移或迁移。 选择 "**立即迁移**"。
+2. 使用“迁移”弹出窗口可以继续迁移或稍后进行迁移。 选择“立即迁移”。
 
    > [!div class="mx-imgBorder"]
    > ![迁移过程中的第一个弹出窗口，可在其中选择 "立即迁移"](./media/migrate-authoring-key/prompt-when-migrating-2.png)
 
 3. 如果任何应用有协作者，系统将提示你向他们发送一封电子邮件，让他们了解迁移。 这是可选步骤。
 
-   对于每个协作者和应用，会打开默认的电子邮件应用程序，其中包含一种格式较轻的电子 你可以在发送电子邮件之前对其进行编辑。 电子邮件模板包含确切的应用程序 ID 和应用名称。
-   
+   对于每个协作者和应用，会打开默认的电子邮件应用程序，显示一封格式简单的电子邮件。 可以在发送电子邮件之前对其进行编辑。 电子邮件模板包含确切的应用 ID 和应用名称。
+
    ```html
    Dear Sir/Madam,
 
@@ -89,10 +89,10 @@ ms.locfileid: "85374861"
 
    App Id: <app-ID-omitted>
    App name: Human Resources
-      
+
    Thank you
    ```
-   
+
    > [!Note]
    > 将你的帐户迁移到 Azure 后，你的应用程序将不能再用于协作者。
 
@@ -122,7 +122,7 @@ ms.locfileid: "85374861"
 
 请注意，每个订阅的每个区域可以有10个免费创作资源。 如果订阅的同一区域中的创作资源超过10个，将无法创建新的资源。
 
-创建创作资源后，会显示成功消息。 选择 "**关闭**" 以关闭弹出窗口。
+创建了创作资源后，会显示成功消息。 选择“关闭”以关闭弹出窗口。
 
   > [!div class="mx-imgBorder"]
   > ![表明创作资源已成功创建的消息](./media/migrate-authoring-key/migration-success-2.png)
@@ -148,7 +148,7 @@ ms.locfileid: "85374861"
 > [!div class="mx-imgBorder"]
 > ![用于选择创作资源的窗口，现在可以使用 "迁移" 按钮](./media/migrate-authoring-key/choose-authoring-resource-and-migrate-2.png)
 
-一条成功消息随即出现。 选择 "**关闭**" 以关闭弹出窗口。
+一条成功消息随即出现。 选择“关闭”以关闭弹出窗口。
 
 > [!div class="mx-imgBorder"]
 > ![表明创作资源已成功迁移的消息](./media/migrate-authoring-key/migration-success-2.png)
@@ -162,7 +162,7 @@ ms.locfileid: "85374861"
  > [!div class="mx-imgBorder"]
  > ![订阅和创作资源的框](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
-不需要知道创作资源的密钥即可继续在 LUIS 门户中编辑应用。 
+无需知道创作资源的密钥即可继续在 LUIS 门户中编辑应用。
 
 如果计划以编程方式编辑应用，则需要创作密钥值。 这些值显示在 LUIS 门户中的 "**管理**  >  **Azure 资源**" 页上。 资源的 "**密钥**" 页上的 "Azure 门户中也提供了它们。 你还可以创建更多的创作资源并从同一页分配这些资源。
 
@@ -178,14 +178,14 @@ ms.locfileid: "85374861"
 您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到 Azure 门户中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
 > [!Note]
-> 如果 LUIS 应用的所有者迁移并添加了协作者作为 Azure 资源的参与者，则协作者仍将无法访问应用，除非他们还在迁移。
+> 如果 LUIS 应用的所有者将协作者迁移到并添加为 Azure 资源上的参与者，协作者将仍无法访问该应用，除非他们自己也进行迁移。
 
 ## <a name="luis-portal-migration-reminders"></a>LUIS 门户迁移提醒
 
 [LUIS 门户](https://www.luis.ai)提供迁移过程。
 
 如果满足以下两个条件，系统会要求你进行迁移：
-* 你具有用于创作的电子邮件身份验证系统上的应用。
+* 在电子邮件身份验证系统上有用于创作的应用。
 * 你是应用所有者。
 
 每周一次，系统都将提示您迁移应用程序。 无需迁移即可关闭此窗口。 如果要在下一个计划的时间段之前迁移，可以从 LUIS 门户顶部工具栏上的**Azure**图标开始迁移过程。
@@ -246,5 +246,5 @@ ms.locfileid: "85374861"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[有关创作和运行时密钥的概念](luis-concept-keys.md)。 
+* 查看[有关创作和运行时密钥的概念](luis-how-to-azure-subscription.md)。
 * 查看如何[分配密钥](luis-how-to-azure-subscription.md)并[添加参与者](luis-how-to-collaborate.md)。

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ad79721b88f886426d658ed6ee89c4969e1f1baa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75470282"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056882"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>教程：将 Azure 部署管理器与资源管理器模板配合使用（公共预览版）
 
@@ -40,7 +40,7 @@ ms.locfileid: "75470282"
 
 其他资源：
 
-* [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+* [Azure 部署管理器 REST API 参考](/rest/api/deploymentmanager/)。
 * [教程：在 Azure 部署管理器中使用运行状况检查](./deployment-manager-tutorial-health-check.md)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
@@ -52,7 +52,7 @@ ms.locfileid: "75470282"
 若要完成本文，需要做好以下准备：
 
 * 在开发 [Azure 资源管理器模板](overview.md)方面有一定的经验。
-* Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](/powershell/azure/get-started-azureps)。
 * 部署管理器 cmdlet。 若要安装这些预发行版 cmdlet，需要最新版本的 PowerShellGet。 若要获取最新版本，请参阅[安装 PowerShellGet](/powershell/scripting/gallery/installing-psget)。 安装 PowerShellGet 后，关闭 PowerShell 窗口。 打开新的提升的 PowerShell 窗口并使用以下命令：
 
     ```powershell

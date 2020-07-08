@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 2402e72d2ef9fcda46f2f40bff48759262ee30e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87b4f0573fbcc73573c508a7f8e39acadcfa05af
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189039"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056457"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -264,7 +264,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 - 单击“新建警报规则”以创建警报
 - 请参阅[日志警报文档](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)以创建警报
 
-## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>如何检查哪些 VM 接收的本地流量最多？
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>如何实现检查哪些 Vm 正在接收大多数本地流量？
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -288,7 +288,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 对于时间，请使用格式：yyyy-mm-dd 00:00:00
 
-## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>如何查看 VM 从本地计算机接收的流量的标准偏差？
+## <a name="how-do-i-check-standard-deviation-in-traffic-received-by-my-vms-from-on-premises-machines"></a>如何实现检查我的 Vm 从本地计算机接收的流量的标准偏差吗？
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
@@ -309,7 +309,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
             | summarize deviation = stdev(traffic)  by IP
             
-## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>如何使用 NSG 规则检查 IP 对之间哪些端口可以访问（或被阻止）？
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查是否可通过 NSG 规则在 IP 对之间访问（或阻止）哪些端口？
 
             AzureNetworkAnalytics_CL
             | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
@@ -347,7 +347,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ### <a name="keyboard-navigation-at-any-stage"></a>任何阶段的键盘导航
     
 - 按 `Esc` 可折叠已展开的选定内容。
-- 按 `Up arrow` 键可执行按 `Esc` 时所执行的相同操作。 按 `Down arrow` 键可执行按 `Enter` 时所执行的相同操作。
+- 按 `Up-arrow` 键可执行按 `Esc` 时所执行的相同操作。 按 `Down arrow` 键可执行按 `Enter` 时所执行的相同操作。
 - 使用 `Shift+Plus` 可以放大，使用 `Shift+Minus` 可以缩小。
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>如何在虚拟网络拓扑视图中使用键盘导航？
