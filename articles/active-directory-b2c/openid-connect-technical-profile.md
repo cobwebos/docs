@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e259a57a9cd6b24362862ffd6cb738157ca912d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff5a83a8ab608e685f43056debe45877965e0c53
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332762"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203988"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `OpenIdConnect`。 例如，**MSA-OIDC** 技术配置文件的协议为 `OpenIdConnect`：
+“Protocol”元素的“Name”属性必须设置为 `OpenIdConnect`。 例如，**MSA-OIDC** 技术配置文件的协议为 `OpenIdConnect`：
 
-```XML
+```xml
 <TechnicalProfile Id="MSA-OIDC">
   <DisplayName>Microsoft Account</DisplayName>
   <Protocol Name="OpenIdConnect" />
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 **InputClaims** 和 **InputClaimsTransformations** 元素不是必需的。 但是，你可能需要向标识提供者发送更多参数。 以下示例将值为 `contoso.com` 的 **domain_hint** 查询字符串参数添加到授权请求。
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="domain_hint" DefaultValue="contoso.com" />
 </InputClaims>
@@ -74,13 +74,13 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必需 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
-| IdTokenAudience | 否 | id_token 的受众。 如果指定，Azure AD B2C 将检查标识`aud`提供者返回的令牌中的声明是否等于 IdTokenAudience 元数据中指定的声明。  |
+| IdTokenAudience | 否 | id_token 的受众。 如果指定，Azure AD B2C 将检查 `aud` 标识提供者返回的令牌中的声明是否等于 IdTokenAudience 元数据中指定的声明。  |
 | METADATA | 是 | 指向 OpenID Connect 标识提供程序配置文档的 URL，也称为 OpenID 众所周知的配置终结点。 URL 可以包含 `{tenant}` 表达式，该表达式将替换为租户名称。  |
-| authorization_endpoint | 否 | 指向 OpenID Connect 标识提供程序配置授权终结点的 URL。 Authorization_endpoint 元数据的值优先于 OpenID 众所周知`authorization_endpoint`的配置终结点中指定的。 URL 可包含`{tenant}`表达式，该表达式将替换为租户名称。 |
-| 颁发者 | 否 | OpenID Connect 标识提供程序的唯一标识符。 颁发者元数据的值优先于 OpenID `issuer`众所周知的配置终结点中指定的值。  如果已指定，则 Azure AD B2C 检查`iss`标识提供者返回的令牌中的声明是否等于颁发者元数据中指定的声明。 |
+| authorization_endpoint | 否 | 指向 OpenID Connect 标识提供程序配置授权终结点的 URL。 Authorization_endpoint 元数据的值优先于 `authorization_endpoint` OpenID 众所周知的配置终结点中指定的。 URL 可包含 `{tenant}` 表达式，该表达式将替换为租户名称。 |
+| 颁发者 | 否 | OpenID Connect 标识提供程序的唯一标识符。 颁发者元数据的值优先于 `issuer` OpenID 众所周知的配置终结点中指定的值。  如果已指定，则 Azure AD B2C 检查 `iss` 标识提供者返回的令牌中的声明是否等于颁发者元数据中指定的声明。 |
 | ProviderName | 否 | 标识提供者的名称。  |
 | response_types | 否 | 符合 OpenID Connect Core 1.0 规范的响应类型。 可能的值：`id_token`、`code` 或 `token`。 |
 | response_mode | 否 | 标识提供者在将结果发送回 Azure AD B2C 时使用的方法。 可能的值：`query`、`form_post`（默认值）或 `fragment`。 |
@@ -90,13 +90,13 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 | UsePolicyInRedirectUri | 否 | 指示在构造重定向 URI 时是否要使用策略。 在标识提供者中配置应用程序时，需指定重定向 URI。 重定向 URI 指向 Azure AD B2C `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`。  如果指定 `false`，需为每个使用的策略添加重定向 URI。 例如：`https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`。 |
 | MarkAsFailureOnStatusCode5xx | 否 | 指示在 Http 状态代码处于 5xx 范围内的情况下，是否应将对外部服务的请求标记为失败。 默认值为 `false`。 |
 | DiscoverMetadataByTokenIssuer | 否 | 指示是否应使用 JWT 令牌中的颁发者来发现 OIDC 元数据。 |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项`true`设置为。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 ### <a name="ui-elements"></a>UI 元素
  
-以下设置可用于配置失败时显示的错误消息。 应在 OpenID Connect 技术配置文件中配置元数据。 可以[本地化](localization-string-ids.md#sign-up-or-sign-in-error-messages)错误消息。
+以下设置可用于配置失败时显示的错误消息。 应在 OpenID Connect 技术配置文件中配置元数据。 可以将错误消息[本地化](localization-string-ids.md#sign-up-or-sign-in-error-messages)。
 
-| 特性 | 必需 | 说明 |
+| 属性 | 必需 | 描述 |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果在目录中找不到具有提供的用户名的帐户，则显示给用户的消息。 |
 | UserMessageIfInvalidPassword | 否 | 密码不正确时向用户显示的消息。 |
@@ -106,7 +106,7 @@ Azure Active Directory B2C (Azure AD B2C) 为 [OpenID Connect](https://openid.ne
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必需 | 说明 |
+| 特性 | 必需 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据已设置为 `id_token`，则可省略加密密钥。  |
 

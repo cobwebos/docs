@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202290"
 ---
 # <a name="display-controls"></a>显示控件
 
@@ -32,9 +32,9 @@ ms.locfileid: "78188726"
 
 ## <a name="prerequisites"></a>必备条件
 
- 在[自断言技术配置文件](self-asserted-technical-profile.md#metadata)的[元数据](self-asserted-technical-profile.md)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
+ 在[自断言技术配置文件](self-asserted-technical-profile.md)的[元数据](self-asserted-technical-profile.md#metadata)部分中，引用的 [ContentDefinition](contentdefinitions.md) 需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
-```XML
+```xml
 <ContentDefinition Id="api.selfasserted">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -66,7 +66,7 @@ ms.locfileid: "78188726"
 
 以下示例使用已存在的地址预填充要验证的电子邮件地址。
 
-```XML
+```xml
 <DisplayControl Id="emailControl" UserInterfaceControlType="VerificationControl">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="emailAddress" />
@@ -78,11 +78,11 @@ ms.locfileid: "78188726"
 
 每种类型的显示控件都需要一组不同的显示声明、[输出声明](#output-claims)，以及要执行的[操作](#display-control-actions)。
 
-与在**自断言技术配置文件**中定义的[显示声明](self-asserted-technical-profile.md#display-claims)类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
+与在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)中定义的**显示声明**类似，显示声明表示在显示控件中要从用户那里收集的声明。 引用的 **ClaimType** 元素需要指定 Azure AD B2C 支持的某个用户输入类型的 **UserInputType** 元素，例如 `TextBox` 或 `DropdownSingleSelect`。 如果显示声明值是某个**操作**所必需的，请将 **Required** 属性设置为 `true` 来强制用户为该特定的显示声明提供一个值。
 
 某些显示声明是某些类型的显示控件所必需的。 例如，**VerificationCode** 是 **VerificationControl** 类型的显示控件所必需的。 请使用 **ControlClaimType** 属性指定为该必需声明指定了哪个 DisplayClaim。 例如：
 
-```XML
+```xml
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
 ```
 
@@ -100,7 +100,7 @@ ms.locfileid: "78188726"
 
 下面的示例根据用户选择的 **mfaType** 声明通过电子邮件或短信来发送代码。
 
-```XML
+```xml
 <Action Id="SendCode">
   <ValidationClaimsExchange>
     <ValidationClaimsExchangeTechnicalProfile TechnicalProfileReferenceId="AzureMfa-SendSms">
@@ -127,11 +127,11 @@ ms.locfileid: "78188726"
 
 ## <a name="referencing-display-controls"></a>引用显示控件
 
-显示控件在[自断言技术配置文件](self-asserted-technical-profile.md#display-claims)的[显示声明](self-asserted-technical-profile.md)中引用。
+显示控件在[自断言技术配置文件](self-asserted-technical-profile.md)的[显示声明](self-asserted-technical-profile.md#display-claims)中引用。
 
 例如：
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
   ...
   <DisplayClaims>

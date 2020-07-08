@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cd344b9bebb69af210c482f46af6b2dd7edf7816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 842a69c27ceb0d56df5a7b49eb9922b88d8d4b32
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206931"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>了解 LocalConfiguration.json 文件 - C 代理
 
@@ -49,13 +49,13 @@ ms.locfileid: "81311709"
 | DPS | JsonObject | DPS 相关配置 |
 | IDScope | 字符串 | DPS 的 ID 范围 |
 | RegistrationId | 字符串  | DPS 设备注册 ID |
-| 日志记录 | JsonObject | 代理记录器相关配置 |
+| Logging | JsonObject | 代理记录器相关配置 |
 | SystemLoggerMinimumSeverity | 0 <= number <= 4 | 日志消息等于或高于此严重级别将记录到/var/log/syslog （0是最低严重性） |
 | DiagnosticEventMinimumSeverity | 0 <= number <= 4 | 日志消息等于或高于此严重级别将作为诊断事件发送（0是最低严重性） |
 
 ## <a name="security-agent-configurations-code-example"></a>安全代理配置代码示例
 
-```JSON
+```json
 {
     "Configuration" : {
         "AgentId" : "b97faf0a-0f57-471f-9dab-46a8e1764946",

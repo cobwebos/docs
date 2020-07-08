@@ -4,18 +4,18 @@ description: 了解 Google 安全和隐私策略对 Google 连接器（如 Gmail
 services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
-ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.topic: conceptual
+ms.date: 06/05/2020
+ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194961"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure 逻辑应用中 Google 连接器的数据安全和隐私策略
 
-从**2020**开始，，由于 Google 的[数据安全和隐私策略](https://www.blog.google/technology/safety-security/project-strobe/)的更改，可能会影响使用[Gmail 连接器](https://docs.microsoft.com/connectors/gmail/)的逻辑应用工作流。 如果逻辑应用使用 gmail 连接器，其中包含 Gmail 使用者帐户（以@gmail.com或@googlemail.com结尾的电子邮件地址），则逻辑应用只能使用特定[的 Google 批准触发器、操作和连接器](#approved-connectors)。 
+从**2020**开始，，由于 Google 的[数据安全和隐私策略](https://www.blog.google/technology/safety-security/project-strobe/)的更改，可能会影响使用[Gmail 连接器](https://docs.microsoft.com/connectors/gmail/)的逻辑应用工作流。 如果逻辑应用使用 gmail 连接器，其中包含 Gmail 使用者帐户（以或结尾的电子邮件地址 @gmail.com @googlemail.com ），则逻辑应用只能使用特定[的 Google 批准触发器、操作和连接器](#approved-connectors)。
 
 > [!NOTE]
 > 如果逻辑应用将 Gmail 连接器与 G Suite 企业帐户（带有自定义域的电子邮件地址）结合使用，则逻辑应用不会受到影响，也不会限制使用 Gmail 连接器。
@@ -36,11 +36,31 @@ ms.locfileid: "82628702"
 
 * 逻辑应用内置触发器和操作：批处理、控制、数据操作、日期时间、平面文件、液体、请求、计划、变量和 XML
 
+  Google 未批准的内置触发器和操作（如 HTTP、Azure Functions、Azure 逻辑应用和其他操作）使逻辑应用不符合 Gmail 连接器，因为该应用可从任何位置发送或接收数据。
+
 * Google 服务： Gmail、Google Calendar、Google Contacts、Google Drive、Google Sheets 和 Google Task
 
 * 批准的 Microsoft 服务： Dynamics 365、Excel Online、Microsoft 团队、Office 365、OneDrive 和 SharePoint Online
 
 * 用于客户管理的数据源的连接器： FTP、RSS、SFTP、SMTP 和 SQL Server
+
+## <a name="non-compliant-examples"></a>不符合的示例
+
+下面是一些示例，这些示例将 Gmail 连接器用于内置触发器、操作或不由 Google 批准的托管连接器：
+
+* 此逻辑应用将 Gmail 连接器与 HTTP 内置触发器一起使用：
+
+  ![不符合逻辑应用-示例1](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-1.png)
+  
+  逻辑应用还使用已批准的 Google 日历连接器。
+
+* 此逻辑应用使用 Gmail 连接器和 Azure Blob 存储连接器：
+
+  ![不符合逻辑应用-示例2](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-2.png)
+
+* 此逻辑应用使用 Gmail 连接器和 Twitter 连接器：
+
+  ![不符合逻辑应用-示例3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
 有关最新信息，请参阅[Gmail 连接器技术参考文档](https://docs.microsoft.com/connectors/gmail/)。
 
@@ -70,7 +90,7 @@ ms.locfileid: "82628702"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
-1. 如果要添加新的 Gmail 触发器或操作并创建全新的连接，请继续执行下一步。 否则，在 "Gmail 触发器" 或 "操作" 中，选择 "**更改连接** > **添加新**"，例如：
+1. 如果要添加新的 Gmail 触发器或操作并创建全新的连接，请继续执行下一步。 否则，在 "Gmail 触发器" 或 "操作" 中，选择 "**更改连接**  >  **添加新**"，例如：
 
    ![选择 "更改连接" > "添加新"](./media/connectors-google-data-security-privacy-policy/change-gmail-connection.png)
 
@@ -78,11 +98,11 @@ ms.locfileid: "82628702"
 
    ![提供连接信息](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | 属性 | 值 | 说明 |
+   | Property | “值” | 描述 |
    |----------|-------|-------------|
    | **身份验证类型** | **自带应用程序** | 指定将使用自己的客户端应用进行身份验证。 |
    | **客户端 ID** | <*client-ID*> | Google 客户端应用的客户端 ID |
-   | **客户端密码** | <*client-secret*> | Google 客户端应用的客户端密码 |
+   | **客户端机密** | <*client-secret*> | Google 客户端应用的客户端密码 |
    ||||
 
 1. 完成后，选择 "**登录**"。

@@ -4,16 +4,16 @@ description: 如何使用 Windows 桌面客户端连接到 Windows 虚拟桌面�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b16818856ca8196b82eb8f618cf22b5fc1b6854
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d333b2f8bbb660e9fd71339159d942c0520f4f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201542"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
@@ -22,7 +22,7 @@ ms.locfileid: "82612684"
 使用 windows 桌面客户端，你可以使用 Windows 7、Windows 10 和 Windows 10 IoT Enterprise 在设备上访问 Windows 虚拟桌面资源。
 
 >[!NOTE]
->Windows 客户端自动默认为 Windows 虚拟桌面秋季2019版。 但是，如果客户端检测到用户还具有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。 
+>Windows 客户端自动默认为 Windows 虚拟桌面秋季2019版。 但是，如果客户端检测到用户还具有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
 
 > [!IMPORTANT]
 > Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
@@ -46,7 +46,7 @@ ms.locfileid: "82612684"
 
 通过订阅管理员提供的源，获取可供你使用的托管资源的列表。订阅会使资源在本地 PC 上可用。
 
-订阅源：
+若要订阅源，请执行以下操作：
 
 1. 打开 Windows 桌面客户端。
 2. 在主页上选择 "**订阅**"，连接到服务并检索资源。
@@ -60,7 +60,7 @@ ms.locfileid: "82612684"
 - 从 "开始" 菜单正常启动资源。
   - 你还可以在搜索栏中搜索应用。
 
-订阅源后，会定期自动更新源的内容。 可以根据管理员所做的更改来添加、更改或删除资源。
+订阅源后，会定期自动更新源的内容。 资源可能会根据管理员所做的更改而进行添加、更改或删除。
 
 ## <a name="next-steps"></a>后续步骤
 

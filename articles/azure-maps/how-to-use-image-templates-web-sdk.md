@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207084"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
@@ -26,13 +26,13 @@ ms.locfileid: "80804803"
 
 为了确保层具有良好的性能，请在呈现前将图像加载到地图图像动画处理资源。 默认情况下，SymbolLayer 的[IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)将几个颜色的标记图像预加载到地图图像的子画面。 这些标记图像和其他标记图像作为 SVG 模板提供。 它们可用于创建具有自定义比例的图像，或用作客户主要和辅助颜色。 总共提供了42个图像模板：27个符号图标和15个多边形填充模式。
 
-可以使用`map.imageSprite.createFromTemplate`函数将图像模板添加到地图图像 sprite 资源。 此函数允许传入多达五个参数;
+可以使用函数将图像模板添加到地图图像 sprite 资源 `map.imageSprite.createFromTemplate` 。 此函数允许传入多达五个参数;
 
 ```javascript
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-`id`是您创建的唯一标识符。 将`id`图像添加到地图图像 sprite 后，会将其分配给映像。 在层中使用此标识符来指定要呈现的图像资源。 `templateName`指定要使用的图像模板。 `color`选项设置图像的主要颜色， `secondaryColor`选项设置图像的辅助颜色。 `scale`选项会在将图像模板应用于图像子画面之前对其进行缩放。 当图像应用于图像子画面时，它将转换为 PNG。 若要确保清晰渲染，最好在将图像模板添加到子画面之前向上向上扩展，而不是在层中进行缩放。
+`id`是您创建的唯一标识符。 将 `id` 图像添加到地图图像 sprite 后，会将其分配给映像。 在层中使用此标识符来指定要呈现的图像资源。 `templateName`指定要使用的图像模板。 `color`选项设置图像的主要颜色， `secondaryColor` 选项设置图像的辅助颜色。 `scale`选项会在将图像模板应用于图像子画面之前对其进行缩放。 当图像应用于图像子画面时，它将转换为 PNG。 若要确保清晰渲染，最好在将图像模板添加到子画面之前向上向上扩展，而不是在层中进行缩放。
 
 此函数以异步方式将图像加载到图像 sprite。 因此，它将返回可等待此函数完成的承诺。
 
@@ -52,41 +52,41 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="use-an-image-template-with-a-symbol-layer"></a>使用带有符号层的图像模板
 
-将图像模板加载到地图图像 sprite 后，可通过在的`image`选项中引用图像资源 ID，将其呈现为符号层中的符号。 `iconOptions`
+将图像模板加载到地图图像 sprite 后，可通过在的选项中引用图像资源 ID，将其呈现为符号层中的符号 `image` `iconOptions` 。
 
-下面的示例使用带有蓝绿色主色`marker-flat`和白色辅助颜色的图像模板呈现符号层。 
+下面的示例使用 `marker-flat` 带有蓝绿色主色和白色辅助颜色的图像模板呈现符号层。 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的符号层" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>带有内置图标的笔符号层</a>"<a href='https://codepen.io/azuremaps'>@azuremaps</a>模板 Azure Maps （）。
+请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>带有内置图标的笔符号层" 模板</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>使用沿行路径的图像模板
 
-一旦将图像模板加载到地图图像下边缘，就可以通过将 LineString 添加到数据源，并使用带`lineSpacing`选项的符号层，并通过在`image`选项中引用图像资源的 ID，将其沿行的路径进行呈现。 `iconOptions` 
+一旦将图像模板加载到地图图像下边缘，就可以通过将 LineString 添加到数据源，并使用带选项的符号层， `lineSpacing` 并通过在选项中引用图像资源的 ID，将其沿行的路径进行呈现 `image` `iconOptions` 。 
 
-下面的示例在地图上呈现粉红色的线条，并使用带有宝蓝蓝原色`car`和白色辅助颜色的图像模板的符号层。 
+下面的示例在地图上呈现粉红色的线条，并使用 `car` 带有宝蓝蓝原色和白色辅助颜色的图像模板的符号层。 
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的线条层" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>带有内置图标模板</a>的笔线层<a href='https://codepen.io/azuremaps'>@azuremaps</a>" Azure Maps （）。
+请参阅 CodePen 上的 "<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>带有内置图标模板的笔线层</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
-> 如果图像模板指向上方，则将符号`rotation`层的图标选项设置为90（如果你想要将其指向与直线相同的方向。
+> 如果图像模板指向上方，则将 `rotation` 符号层的图标选项设置为90（如果你想要将其指向与直线相同的方向。
 
 ## <a name="use-an-image-template-with-a-polygon-layer"></a>使用带有多边形层的图像模板
 
-将图像模板加载到地图图像下边缘后，可通过在该图层的`fillPattern`选项中引用图像资源 ID，将其呈现为多边形层中的填充模式。
+将图像模板加载到地图图像下边缘后，可通过在该图层的选项中引用图像资源 ID，将其呈现为多边形层中的填充模式 `fillPattern` 。
 
-下面的示例使用带有红色主颜色和`dot`透明辅助颜色的图像模板呈现多边形层。  
+下面的示例使用 `dot` 带有红色主颜色和透明辅助颜色的图像模板呈现多边形层。  
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="用内置图标模板填充多边形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用内置图标模板的笔填充多边形</a>Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>（）。
+请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用内置图标模板的笔填充多边形</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 > [!TIP]
@@ -94,21 +94,32 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="use-an-image-template-with-an-html-marker"></a>使用带有 HTML 标记的图像模板
 
-可以使用`altas.getImageTemplate`函数检索图像模板，并将其用作 HTML 标记的内容。 模板可传递到标记`htmlContent`的选项，然后使用`color`、 `secondaryColor`和`text`选项自定义。
+可以使用函数检索图像模板，并将其用作 `altas.getImageTemplate` HTML 标记的内容。 模板可传递到 `htmlContent` 标记的选项，然后使用 `color` 、 `secondaryColor` 和选项自定义 `text` 。
 
-下面的示例使用具有`marker-arrow`红色主色、粉红色辅助颜色和文本值 "00" 的模板。
+下面的示例使用 `marker-arrow` 具有红色主色、粉红色辅助颜色和文本值 "00" 的模板。
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="带有内置图标模板的 HTML 标记" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>使用内置图标模板的笔 HTML 标记</a>Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>（）。
+请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>使用内置图标模板的笔 HTML 标记</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
 </iframe>
+
+
+> [!TIP]
+> 还可以在地图外使用图像模板。 GetImageTemplate 函数返回具有占位符的 SVG 字符串;`{color}`, `{secondaryColor}`, `{scale}`, `{text}`. 替换这些占位符值以创建有效的 SVG 字符串。 然后，可以将 SVG 字符串直接添加到 HTML DOM，或将其转换为数据 URI，然后将其插入到 image 标记中。 例如：
+> ```JavaScript
+> //Retrieve an SVG template and replace the placeholder values.
+> var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
+>
+> //Convert to data URI for use in image tags.
+> var dataUri = 'data:image/svg+xml;base64,' + btoa(svg);
+> ```
 
 ## <a name="create-custom-reusable-templates"></a>创建自定义的可重用模板
 
-如果你的应用程序使用不同图标的相同图标，或者如果你要创建添加其他图像模板的模块，则可以从 Azure Maps web SDK 轻松添加和检索这些图标。 在`atlas`命名空间上使用以下静态函数。
+如果你的应用程序使用不同图标的相同图标，或者如果你要创建添加其他图像模板的模块，则可以从 Azure Maps web SDK 轻松添加和检索这些图标。 在命名空间上使用以下静态函数 `atlas` 。
 
-| 名称 | 返回类型 | 说明 | 
+| “属性” | 返回类型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
@@ -128,7 +139,7 @@ SVG 图像模板支持以下占位符值：
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="将自定义图标模板添加到阿特拉斯命名空间" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的 "通过 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>将自定义图标模板添加到阿特拉斯命名空间</a>"。
+请参阅 CodePen 上的 "通过 Azure Maps （）<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>将自定义图标模板添加到阿特拉斯命名空间</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="list-of-image-templates"></a>映像模板列表
@@ -157,7 +168,7 @@ SVG 图像模板支持以下占位符值：
 | 固定 | 固定 | 圆角正方形 | 圆方形-粗 |
 | ![“固定”图标](./media/image-templates/pin.png) | ![固定线图标](./media/image-templates/pin-round.png) | ![圆角图标](./media/image-templates/rounded-square.png) | ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png) |
 ||||
-| 向上箭头 | 向上箭头-细 | 汽车 ||
+| 向上箭头 | 向上箭头-细 | car ||
 | ![向上箭头图标](./media/image-templates/arrow-up.png) | ![向上箭头-细图标](./media/image-templates/arrow-up-thin.png) | ![汽车图标](./media/image-templates/car.png) | |
 
 **多边形填充图案模板**
@@ -176,6 +187,25 @@ SVG 图像模板支持以下占位符值：
 | 之-字形 | 之-字形-垂直 | 点数 |  |
 | ![之-字形图标](./media/image-templates/zig-zag.png) | ![之-字形图标](./media/image-templates/zig-zag-vertical.png) | ![点图标](./media/image-templates/dots.png) | |
 
+**预加载的图像图标**
+
+该映射使用 `marker` 、和模板将一组图标预加载到地图图像 sprite `pin` `pin-round` 。 下表列出了这些图标名称及其颜色值。
+
+| 图标名称 | color | secondaryColor |
+|-----------|-------|----------------|
+| `marker-black` | `#231f20` | `#ffffff` |
+| `marker-blue` | `#1a73aa` | `#ffffff` |
+| `marker-darkblue` | `#003963` | `#ffffff` |
+| `marker-red` | `#ef4c4c` | `#ffffff` |
+| `marker-yellow` | `#f2c851` | `#ffffff` |
+| `pin-blue` | `#2072b8` | `#ffffff` |
+| `pin-darkblue` | `#003963` | `#ffffff` |
+| `pin-red` | `#ef4c4c` | `#ffffff` |
+| `pin-round-blue` | `#2072b8` | `#ffffff` |
+| `pin-round-darkblue` | `#003963` | `#ffffff` |
+| `pin-round-red` | `#ef4c4c` | `#ffffff` |
+
+
 ## <a name="try-it-now-tool"></a>立即试用工具
 
 通过以下工具，你可以通过多种方式呈现不同的内置图像模板，并自定义主要和次要的颜色和缩放。
@@ -183,7 +213,7 @@ SVG 图像模板支持以下占位符值：
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="图标模板选项" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在<a href='https://codepen.io'>CodePen</a>上按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）查看笔<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>图标模板选项</a>。
+在 CodePen 上按 Azure Maps （）查看笔<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>图标模板选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

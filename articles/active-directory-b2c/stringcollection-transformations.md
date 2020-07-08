@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cac7e6feb632456b63b97ead057f9ecaf49322ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203242"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -34,11 +34,11 @@ ms.locfileid: "81729722"
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
 | OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入声明中指定。 |
 
-使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId  技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail  声明转换会读取 ClaimType，并将值添加到 otherMails  ClaimType。
+使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId 技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail 声明转换会读取 ClaimType，并将值添加到 otherMails ClaimType。
 
-以下声明转换会将 email  ClaimType 添加到 otherMails  ClaimType。
+以下声明转换会将 email ClaimType 添加到 otherMails ClaimType。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateOtherMailsFromEmail" TransformationMethod="AddItemToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="item" />
@@ -70,7 +70,7 @@ ms.locfileid: "81729722"
 
 使用此声明转换将字符串值添加到新的或现有的 stringCollection。 以下示例将常量电子邮件地址 (admin@contoso.com) 添加到 **otherMails** 声明。
 
-```XML
+```xml
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -102,9 +102,9 @@ ms.locfileid: "81729722"
 | InputClaim | collection | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
 | OutputClaim | extractedItem | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
 
-以下示例读取 otherMails  声明，并将第一项返回到 email  声明中。
+以下示例读取 otherMails 声明，并将第一项返回到 email 声明中。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="otherMails" TransformationClaimType="collection" />
@@ -136,7 +136,7 @@ ms.locfileid: "81729722"
 
 以下示例检查 `roles` stringCollection 声明类型是否包含 **admin** 值。
 
-```XML
+```xml
 <ClaimsTransformation Id="IsAdmin" TransformationMethod="StringCollectionContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -163,16 +163,16 @@ ms.locfileid: "81729722"
 
 检查 StringCollection 声明类型是否包含声明值。
 
-| 项 | TransformationClaimType | 数据类型 | 注意 |
+| 项目 | TransformationClaimType | 数据类型 | 注释 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 要搜索的声明类型。 |
-| InputClaim | item|字符串| 包含要搜索的值的声明类型。|
-|InputParameter|ignoreCase|字符串|指定此比较是否应忽略所比较字符串的大小写。|
-| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 如果集合包含这样的字符串，则为布尔型指示器 |
+| InputClaim | item|string| 包含要搜索的值的声明类型。|
+|InputParameter|ignoreCase|string|指定此比较是否应忽略所比较字符串的大小写。|
+| OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 布尔指示符（如果集合包含这样的字符串） |
 
-下面的`roles`示例检查 stringCollection 声明类型是否包含`role`声明类型的值。
+以下示例检查 `roles` stringCollection 声明类型是否包含 `role` 声明类型。
 
-```XML
+```xml
 <ClaimsTransformation Id="HasRequiredRole" TransformationMethod="StringCollectionContainsClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="collection" />
@@ -188,9 +188,9 @@ ms.locfileid: "81729722"
 ```
 
 - 输入声明：
-    - **集合**： ["reader"、"author"、"admin"]
-    - **项**： "Admin"
+    - **collection**: ["reader", "author", "admin"]
+    - **item**:“Admin”
 - 输入参数：
-    - **regexoptions.ignorecase**： "true"
+    - **ignoreCase**: "true"
 - 输出声明：
-    - **outputClaim**： "true"
+    - **outputClaim**: "true"

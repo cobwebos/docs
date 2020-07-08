@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 5670be6d4c45644ac8318702822c37ed82a81caa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70071704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205741"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何设置或编辑 Azure API 管理策略
 
@@ -38,10 +38,10 @@ ms.locfileid: "70071704"
 4. 选择以前导入的某个 API。
 5. 选择“设计”  选项卡。
 6. 选择要将该策略应用到的操作。 如果想要将策略应用到所有操作，请选择“所有操作”  。
-7. 在“入站处理” **</>或“出站处理”** **部分中选择** **“** (代码编辑器)”图标。
+7. 在“入站处理”或“出站处理”部分中选择“</>(代码编辑器)”图标。
 8. 将所需的策略代码粘贴到某个相应的块中。
 
-    ```XML
+    ```xml
     <policies>
         <inbound>
             <base />

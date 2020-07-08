@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202214"
 ---
 # <a name="general-claims-transformations"></a>常规声明转换
 
@@ -35,7 +35,7 @@ ms.locfileid: "78188539"
 
 使用此声明转换可以将字符串或数值声明中的值复制到另一个声明。 以下示例将 externalEmail 声明值复制到电子邮件声明。
 
-```XML
+```xml
 <ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
@@ -64,7 +64,7 @@ ms.locfileid: "78188539"
 
 使用此声明转换检查声明是否存在或是否包含任何值。 返回值是指示声明是否存在的布尔值。 以下示例检查电子邮件地址是否存在。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
@@ -93,7 +93,7 @@ ms.locfileid: "78188539"
 | InputParameter | randomizerSecret | string | 指向现有的 Azure AD B2C **策略密钥**。 若要创建新策略密钥，请执行以下操作：在 Azure AD B2C 租户的**管理**下，选择 **Identity Experience Framework**。 选择“策略密钥”，以查看租户中的可用密钥。  选择“添加”   。 对于“选项”，请选择“手动”   。 提供名称（可能会自动添加前缀 B2C_1A_  ）。 在“机密”  文本框中，输入要使用的任何机密，如 1234567890。 对于“密钥用法”，请选择“签名”   。 选择“创建”  。 |
 | OutputClaim | hash | string | 调用此声明转换后生成的 ClaimType。 在 `plaintext` inputClaim 中配置的声明。 |
 
-```XML
+```xml
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="password" TransformationClaimType="plaintext" />

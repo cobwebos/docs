@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaa2984c0d7a5d3763f554e39f687fdbd2865e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203378"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure Active Directory B2C （Azure AD B2C）中，社会帐户标识存储在`userIdentities` **alternativeSecurityIdCollection**声明类型的属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
+在 Azure Active Directory B2C （Azure AD B2C）中，社会帐户标识存储在 `userIdentities` **alternativeSecurityIdCollection**声明类型的属性中。 **alternativeSecurityIdCollection** 中的每个项指定颁发者（标识提供者名称，例如 facebook.com）和 `issuerUserId`（颁发者的唯一用户标识符）。
 
-```JSON
+```json
 "userIdentities": [{
     "issuer": "google.com",
     "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"
@@ -41,7 +41,7 @@ ms.locfileid: "78183748"
 
 创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅[AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架构。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | key | 字符串 | 用于指定社交标识提供者所用唯一用户标识符的 ClaimType。 |
 | InputClaim | identityProvider | 字符串 | 用于指定社交帐户标识提供者名称（例如 facebook.com）的 ClaimType。 |
@@ -49,7 +49,7 @@ ms.locfileid: "78183748"
 
 使用此声明转换可以生成 `alternativeSecurityId` ClaimType。 此 ClaimType 由所有社交标识提供者技术配置文件（例如 `Facebook-OAUTH`）使用。 以下声明转换接收用户社交帐户 ID 和标识提供者名称。 此技术配置文件的输出是可在 Azure AD 目录服务中使用的 JSON 字符串格式。
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
@@ -73,9 +73,9 @@ ms.locfileid: "78183748"
 
 将 `AlternativeSecurityId` 添加到 `alternativeSecurityIdCollection` 声明。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | 字符串 | 要添加到输出声明的 ClaimType。 |
+| InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes（如果在策略中可用）。 如果已提供，则声明转换将在集合末尾添加 `item`。 |
 | OutputClaim | collection | alternativeSecurityIdCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 包含 `collection` 和 `item` 输入中的项的集合。 |
 
@@ -86,7 +86,7 @@ ms.locfileid: "78183748"
 1. 调用 **AddItemToAlternativeSecurityIdCollection** 声明转换，将 **AlternativeSecurityId2** 声明添加到现有的 **AlternativeSecurityIds** 声明。
 1. 将 **alternativeSecurityIds** 声明保存到用户帐户
 
-```XML
+```xml
 <ClaimsTransformation Id="AddAnotherAlternativeSecurityId" TransformationMethod="AddItemToAlternativeSecurityIdCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="AlternativeSecurityId2" TransformationClaimType="item" />
@@ -110,14 +110,14 @@ ms.locfileid: "78183748"
 
 在新的 **stringCollection** 声明中返回 **alternativeSecurityIdCollection** 声明中的颁发者列表。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | 用于获取标识提供者（颁发者）列表的 ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 与 alternativeSecurityIdCollection 输入声明关联的标识提供者列表 |
 
 以下声明转换读取用户 **alternativeSecurityIds** 声明，并提取与该帐户关联的标识提供者名称列表。 使用 **identityProvidersCollection** 输出向用户显示与该帐户关联的标识提供者列表。 或者，在标识提供者选项页上，基于输出 **identityProvidersCollection** 声明筛选标识提供者列表。 因此，用户可以选择链接尚未与该帐户关联的新社交标识。
 
-```XML
+```xml
 <ClaimsTransformation Id="ExtractIdentityProviders" TransformationMethod="GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="alternativeSecurityIds" TransformationClaimType="alternativeSecurityIdCollection" />
@@ -137,7 +137,7 @@ ms.locfileid: "78183748"
 
 从 **alternativeSecurityIdCollection** 声明中删除 **AlternativeSecurityId**。
 
-| 项 | TransformationClaimType | 数据类型 | 说明 |
+| 项目 | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | identityProvider | 字符串 | 包含要从集合中删除的标识提供者名称的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 声明转换使用的 ClaimTypes。 声明转换从集合中删除 identityProvider。 |
@@ -149,7 +149,7 @@ ms.locfileid: "78183748"
 3. 调用一个声明转换技术配置文件，该技术配置文件调用使用标识提供者名称删除了所选社交标识的 **RemoveAlternativeSecurityIdByIdentityProvider** 声明转换。
 4. 将**alternativeSecurityIds**声明保存到用户帐户。
 
-```XML
+```xml
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
     <InputClaims>
         <InputClaim ClaimTypeReferenceId="secondIdentityProvider" TransformationClaimType="identityProvider" />

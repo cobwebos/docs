@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202851"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -30,7 +30,7 @@ ms.locfileid: "80051498"
 
 以下示例演示了本地化资源的内容定义标识符和定义：
 
-```XML
+```xml
 <ContentDefinition Id="api.localaccountsignup">
   <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
@@ -44,9 +44,9 @@ ms.locfileid: "80051498"
     ...
 ```
 
-**LocalAccountSignUpWithLogonEmail** 自我断言技术配置文件的元数据包含设置为 **的内容定义标识符**ContentDefinitionReferenceId`api.localaccountsignup`
+**LocalAccountSignUpWithLogonEmail** 自我断言技术配置文件的元数据包含设置为 `api.localaccountsignup` 的内容定义标识符 **ContentDefinitionReferenceId**
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -90,13 +90,13 @@ ms.locfileid: "80051498"
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 
-在 [ 和页面类型之间插入 ](javascript-samples.md) 即可启用 `contract`JavaScript 客户端代码`elements`。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
+在 `elements` 和页面类型之间插入 `contract` 即可启用 [JavaScript 客户端代码](javascript-samples.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-[ 的 ](page-layout.md)version`DataUri` 部分指定内容包，其中包含的 HTML、CSS 和 JavaScript 适用于策略中的用户界面元素。 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也仍然需要为页面指定页面布局版本。
+`DataUri` 的 [version](page-layout.md) 部分指定内容包，其中包含的 HTML、CSS 和 JavaScript 适用于策略中的用户界面元素。 如果打算启用 JavaScript 客户端代码，则 JavaScript 所基于的元素必须是不可变的。 如果它们不是不可变的，则任何更改都可能会导致用户页上出现意外行为。 为了防止这些问题，请强制使用页面布局，并指定页面布局版本。 这样做可以确保 JavaScript 所基于的所有内容定义不可变。 即使不打算启用 JavaScript，也仍然需要为页面指定页面布局版本。
 
-以下示例显示版本 **的**DataUri`selfasserted` 为 `1.2.0`：
+以下示例显示版本 `1.2.0` 的 **DataUri** 为 `selfasserted`：
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -166,7 +166,7 @@ ms.locfileid: "80051498"
 
 以下示例演示包含对英语、法语和西班牙语本地化的引用的注册或登录内容定义：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   <RecoveryUri>~/common/default_page_error.html</RecoveryUri>

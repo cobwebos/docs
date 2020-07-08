@@ -7,19 +7,19 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/06/2018
+ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9880915061c0639aebe30bdb33258d7c79e155d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836883"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206880"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration 概述
 
-Azure Automation State Configuration 是一种 Azure 配置管理服务，允许为任何云或本地数据中心内的节点编写、管理和编译 PowerShell 所需状态配置 (DSC) [配置](/powershell/scripting/dsc/configurations/configurations)。 该服务还导入 [DSC 资源](/powershell/scripting/dsc/resources/resources)，并将配置分配给目标节点，一切操作均在云中完成。 可以通过选择“配置管理”下的“状态配置 (DSC)”在 Azure 门户中访问 Azure Automation State Configuration 。 
+Azure Automation State Configuration 是一种 Azure 配置管理服务，允许为任何云或本地数据中心内的节点编写、管理和编译 PowerShell 所需状态配置 (DSC) [配置](/powershell/scripting/dsc/configurations/configurations)。 该服务还导入 [DSC 资源](/powershell/scripting/dsc/resources/resources)，并将配置分配给目标节点，一切操作均在云中完成。 可以通过选择“配置管理”下的“状态配置 (DSC)”在 Azure 门户中访问 Azure Automation State Configuration 。
 
 可以使用 Azure Automation State Configuration 管理各种不同的计算机：
 
@@ -53,7 +53,7 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 
 使用 Azure Automation State Configuration 进行管理的节点将详细的报表状态数据发送到内置拉取服务器。 可以将 Azure Automation State Configuration 配置为将此数据发送到 Log Analytics 工作区。 请参阅[将 Azure Automation State Configuration 报告数据转发到 Azure Monitor 日志](automation-dsc-diagnostics.md)。
 
-## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>使用 Azure Automation State Configuration 的先决条件
+## <a name="prerequisites"></a>先决条件
 
 使用 Azure Automation State Configuration 时，请想一想本节中的要求。
 
@@ -88,9 +88,11 @@ Azure Automation State Configuration 向 [PowerShell Desired State Configuration
 * 端口：只需使用 TCP 443 即可进行出站 Internet 访问
 * 全局 URL：*.azure-automation.net
 * US Gov 弗吉尼亚州的全局 URL：*.azure-automation.us
-* 代理服务： https://\<workspaceId\>.agentsvc.azure-automation.net
+* 代理服务： **https:// \<workspaceId\> . agentsvc.azure-automation.net**
 
 如果使用在节点之间传递的 DSC 资源（如 [WaitFor* 资源](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)），还需要允许节点之间产生流量。 请参阅每个 DSC 资源的文档以了解这些网络要求。
+
+若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="proxy-support"></a>代理支持
 
@@ -101,36 +103,9 @@ Windows 版本 1809 及更高版本中提供了对 DSC 代理的代理支持。 
 
 对于 Linux 节点，DSC 代理支持代理并使用 `http_proxy` 变量来确定 URL。 若要详细了解代理支持，请参阅[生成 DSC 元配置](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)。
 
-#### <a name="azure-automation-state-configuration-network-ranges-and-namespace"></a>Azure Automation State Configuration 网络范围和命名空间
+#### <a name="dns-records-per-region"></a>每个区域的 DNS 记录数
 
-建议在定义异常时使用以下列出的地址。 对于 IP 地址，可以下载 [Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 此文件每周更新，包含当前部署的范围以及即将对 IP 范围进行的更新。
-
-如果为特定的区域定义了自动化帐户，则可以限制与该区域数据中心之间的通信。 下表提供了每个区域的 DNS 记录：
-
-| **区域** | **DNS 记录** |
-| --- | --- |
-| 美国中西部 | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| 美国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| 美国东部    | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| 美国东部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| 加拿大中部 |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| 西欧 |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| 北欧 |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| 东南亚 |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| 印度中部 |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| 日本东部 |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| 澳大利亚东南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov 弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-有关区域 IP 地址列表（非区域名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) XML 文件。
-
-> [!NOTE]
-> Azure 数据中心 IP 地址 XML 文件列出了 Microsoft Azure 数据中心使用的 IP 地址范围。 文件中包含计算、SQL 和存储范围。
->
->每周都将发布更新的文件。 该文件反映当前已部署的范围和任何即将对 IP 范围进行的更改。 数据中心至少在一周后才会使用文件中显示的新范围。 建议每周下载新的 XML 文件。 然后，更新网站以正确地标识 Azure 中运行的服务。 
-
-Azure ExpressRoute 用户应注意，此文件过去经常在每个月的第一周更新 Azure 空间的边界网关协议 (BGP) 播发。
+定义异常时，建议使用 "[每个区域的 DNS 记录](how-to/automation-region-dns-records.md)" 表中列出的地址。
 
 ## <a name="next-steps"></a>后续步骤
 

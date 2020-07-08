@@ -1,43 +1,43 @@
 ---
-title: Windows 虚拟桌面诊断问题-Azure
+title: Windows 虚拟桌面诊断问题 - Azure
 description: 如何使用 Windows 虚拟桌面诊断功能来诊断问题。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cffc6393ef6f5c1a33be615d9d5d4b8729ab711f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2ead16c655d4790e81931371e67da8106dabf83e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611851"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200539"
 ---
 # <a name="identify-and-diagnose-issues"></a>识别和诊断问题
 
 >[!IMPORTANT]
->此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
 >
-> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Windows 虚拟桌面提供一项诊断功能，使管理员能够通过单个界面识别问题。 若要了解有关 Windows 虚拟桌面诊断功能的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics.md)。
-  
+Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 若要了解有关 Windows 虚拟桌面诊断功能的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics.md)。
+
 由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当最终用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
 
 ## <a name="common-error-scenarios"></a>常见错误方案
 
-错误方案在服务的内部和 Windows 虚拟桌面的外部分类。
+错误方案分类为服务的内部和 Windows 虚拟桌面的外部。
 
 * 内部问题：指定客户无法缓解的方案，需要将这些方案解析为支持问题。 当通过[Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供反馈时，请包含问题发生时的相关 ID 和大致时间范围。
-* 外部问题：与可由客户缓解的方案相关。 这些是 Windows 虚拟桌面的外部。
+* 外部问题：与可由客户缓解的方案相关。 这些问题发生在 Windows 虚拟桌面的外部。
 
 下表列出了管理员可能会遇到的常见错误。
 
 >[!NOTE]
->此列表包括最常见的错误，并会定期更新。 若要确保获得最新的信息，请务必每月至少查看一次本文。
+>此列表包括最常见的错误，并且会定期更新。 若要确保获得最新的信息，请务必每月至少查看一次本文。
 
 ## <a name="management-errors"></a>管理错误
 
@@ -53,21 +53,21 @@ Windows 虚拟桌面提供一项诊断功能，使管理员能够通过单个界
 
 ### <a name="external-connection-error-codes"></a>外部连接错误代码
 
-|数值代码|错误代码|建议的解决方案|
+|数字代码|错误代码|建议的解决方案|
 |---|---|---|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|会话主机未正确加入到 Active Directory。|
-|-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|由于会话主机不可用，连接失败。 检查会话主机的运行状况。|
+|-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|由于会话主机不可用，连接失败。 请检查会话主机的运行状况。|
 |-2146233088|ConnectionFailedClientDisconnect|如果经常看到此错误，请确保用户的计算机已连接到网络。|
 |-2146233088|ConnectionFailedNoHealthyRdshAvailable|主机用户尝试连接到的会话不正常。 调试虚拟机。|
 |-2146233088|ConnectionFailedUserNotAuthorized|用户无权访问已发布的应用或桌面。 在管理员删除已发布资源后，可能会出现此错误。 要求用户刷新远程桌面应用程序中的源。|
 |2|FileNotFound|用户尝试访问的应用程序未正确安装或设置为不正确的路径。<br><br>当在用户具有活动会话的情况下发布新应用时，用户将无法访问此应用。 必须关闭并重新启动会话，然后用户才能访问应用。 |
-|3|InvalidCredentials|用户输入的用户名或密码与任何现有的用户名或密码都不匹配。 查看输入错误的凭据，然后重试。|
+|3|InvalidCredentials|用户输入的用户名或密码与任何现有的用户名或密码都不匹配。 请查看凭据是否有拼写错误，然后重试。|
 |8|ConnectionBroken|客户端和网关或服务器之间的连接已断开。 除非意外发生，否则不需要执行任何操作。|
 |14|UnexpectedNetworkDisconnect|断开与网络的连接。 要求用户再次连接。|
-|24|ReverseConnectFailed|主机虚拟机没有可直接连接到 RD 网关的行为。 确保可以解析网关 IP 地址。|
+|24|ReverseConnectFailed|主机虚拟机没有直通 RD 网关。 请确保可以解析网关 IP 地址。|
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Windows 虚拟桌面中的角色的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
+若要了解有关 Windows 虚拟桌面中的角色的详细信息，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
 
-若要查看适用于 Windows 虚拟桌面的可用 PowerShell cmdlet 的列表，请参阅[PowerShell 参考](/powershell/windows-virtual-desktop/overview)。
+若要查看适用于 Windows 虚拟桌面的可用 PowerShell cmdlet 的列表，请参阅 [PowerShell 参考](/powershell/windows-virtual-desktop/overview)。

@@ -4,12 +4,12 @@ description: 提供了故障排除指导，帮助你诊断 Azure 备份性能问
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c229bd836029226a1e042de9bfe706654f97dc26
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658922"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194019"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>排查在 Azure 备份中备份文件和文件夹时速度缓慢的问题
 
@@ -96,7 +96,7 @@ Windows 提供了内置工具[性能监视器](https://techcommunity.microsoft.c
 * **UI 显示数据传输进度**。 数据仍在传输。 网络带宽或数据大小可能导致延迟。
 * **UI 未显示数据传输进度**。 打开位于 C:\Program Files\Microsoft Azure Recovery Services Agent\Temp 中的日志，并检查日志中的 FileProvider::EndData 条目。 此条目表示数据传输已完成，正在进行目录操作。 请不要取消备份作业， 而是再等待片刻，让目录操作完成。 如果问题持续出现，请联系 [Azure 支持部门](https://portal.azure.com/#create/Microsoft.Support)。
 
-如果尝试备份大型磁盘，建议使用 [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) 进行第一次备份（初始复制）。  如果无法使用 Data Box，则在通过网络进行长时间数据传输期间，环境中发生的任何暂时性网络问题都会导致备份失败。  若要防止备份失败，可以向初始备份添加几个文件夹，并保持以增量方式添加更多文件夹，直到将所有文件夹成功备份到 Azure。  后续增量备份将相对较快。
+如果尝试备份大磁盘，建议使用[Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box)进行第一次备份（初始复制）。  如果无法使用 Data Box，则在通过网络进行长时间数据传输期间，环境中发生的任何暂时性网络问题都会导致备份失败。  若要防止备份失败，可以向初始备份添加几个文件夹，并保持以增量方式添加更多文件夹，直到将所有文件夹成功备份到 Azure。  后续增量备份将相对较快。
 
 ## <a name="next-steps"></a>后续步骤
 

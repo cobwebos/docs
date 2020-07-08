@@ -4,16 +4,16 @@ description: 如何为 Windows 虚拟桌面环境配置负载平衡方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204333"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>配置 Windows 虚拟桌面负载均衡方法
 
@@ -33,15 +33,15 @@ ms.locfileid: "82612429"
 若要将主机池配置为在不调整最大会话限制的情况下执行广度优先负载平衡，请运行以下 PowerShell cmdlet：
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-然后，为了确保已设置了广度优先的负载均衡方法，请运行以下 cmdlet： 
+然后，为了确保已设置了广度优先的负载均衡方法，请运行以下 cmdlet：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 若要将主机池配置为执行深度优先负载平衡，请运行以下 PowerShell cmdlet：
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 若要确保已更新设置，请运行以下 cmdlet：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,10 +77,10 @@ MaxSessionLimit  : 6
 
 配置负载平衡：
 
-1. 登录 Azure 门户：https://portal.azure.com。 
-2. 搜索并选择 "服务" 下的**Windows 虚拟桌面**。 
+1. 登录 Azure 门户：https://portal.azure.com。
+2. 搜索并选择 "服务" 下的**Windows 虚拟桌面**。
 3. 在 Windows 虚拟桌面页面中，选择 "**主机池**"。
 4. 选择要编辑的主机池的名称。
-5. 选择“属性”  。
+5. 选择“属性”。
 6. 在该字段中输入**最大会话限制**，并在下拉菜单中选择要用于此主机池的**负载平衡算法**。
-7. 选择“保存”  。 这会应用新的负载平衡设置。
+7. 选择“保存”。 这会应用新的负载平衡设置。

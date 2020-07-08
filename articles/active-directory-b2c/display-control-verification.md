@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42c889277f937a33e72eaf57819385166d6a409
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188777"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202308"
 ---
 # <a name="verification-display-control"></a>验证显示控件
 
@@ -53,7 +53,7 @@ ms.locfileid: "78188777"
 
 然后，用户输入 **verificationCode** 并选择 **VerifyCode**，以在后端触发 **VerifyCode** 操作。 如果所有验证都通过，则 **VerificationControl** 将被视为已完成，用户可以继续执行下一步。
 
-```XML
+```xml
 <DisplayControl Id="emailVerificationControl" UserInterfaceControlType="VerificationControl">
   <DisplayClaims>
     <DisplayClaim ClaimTypeReferenceId="email"  Required="true" />

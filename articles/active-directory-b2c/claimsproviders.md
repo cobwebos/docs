@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d1928de8c9731b54966e566d4dddf9c01073d41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189763"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201253"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -23,7 +23,7 @@ ms.locfileid: "78189763"
 
 一个声明提供程序可以包含一组[技术配置文件](technicalprofiles.md)。 每个声明提供程序必须包含一个或多个用于确定终结点的技术配置文件，以及与该声明提供程序通信所需的协议。 一个声明提供程序可以包含多个技术配置文件。 例如，由于声明提供程序需要支持多个协议和具有不同功能的各种终结点，或者需要在不同的保障级别发布不同的声明，因此可以定义多个技术配置文件。 可以接受在一个用户旅程中发布敏感声明，但不接受在另一个用户旅程中发布此类声明。
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <Domain>Domain name</Domain>
@@ -57,7 +57,7 @@ ClaimsProvider  元素包含以下子元素：
 
 **ClaimsProvider** 可组织技术配置文件与声明提供程序的关联方式。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Azure Active Directory</DisplayName>
   <TechnicalProfiles>
@@ -95,7 +95,7 @@ ClaimsProvider  元素包含以下子元素：
 
 以下示例显示了使用 **Facebook-OAUTH** 技术配置文件的 Facebook 声明提供程序。
 
-```XML
+```xml
 <ClaimsProvider>
   <Domain>facebook.com</Domain>
   <DisplayName>Facebook</DisplayName>

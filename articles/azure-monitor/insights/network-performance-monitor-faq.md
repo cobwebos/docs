@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c672caaedd3e5cc591659f24c73f54f399c73de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193997"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -149,19 +149,19 @@ NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond 
     
 如需专用对等互连级信息，请在日志搜索中使用下面所述的查询
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
-     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | project  CircuitName,PeeringName,BitsInPerSecond,BitsOutPerSecond
   
 如需线路级信息，请在日志搜索中使用下面所述的查询
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
-        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | project CircuitName, BitsInPerSecond, BitsOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM 的性能监视器支持哪些区域？
 NPM 可以通过某个[受支持区域](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)中托管的工作区，监视全球任意位置的网络之间的连接
@@ -213,7 +213,7 @@ HopLatencyValue 是从源到终结点的。
 * 若要确认中间网络防火墙或 Azure NSG 是否未阻止所需端口上的通信，请遵照下面的说明使用第三方 PsPing 实用工具：
   * 可从[此处](https://technet.microsoft.com/sysinternals/psping.aspx)获取 psping 实用工具。 
   * 在源节点中运行以下命令。
-    * psping -n 15 \<目标节点 IP 地址\>:<端口号>。NPM 默认使用端口 8084。 如果使用 EnableRules.ps1 脚本显式更改了此端口，请输入所用的自定义端口号。 这是从 Azure 机器向本地执行的 ping
+    * psping-n 15 \<destination node IPAddress\> :P ortnumber 默认情况下 NPM 使用8084端口。 如果使用 EnableRules.ps1 脚本显式更改了此端口，请输入所用的自定义端口号。 这是从 Azure 机器向本地执行的 ping
 * 检查 ping 是否成功。 如果未成功，则表示中间网络防火墙或 Azure NSG 阻止了此端口上的流量。
 * 现在，从目标节点向源节点 IP 运行该命令。
 
@@ -222,9 +222,9 @@ HopLatencyValue 是从源到终结点的。
 由于从 A 到 B 之间的网络路径可能不同于从 B 到 A 之间的网络路径，因此，可能会观察到不同的丢包率和延迟值。
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>为何发现不了我的所有 ExpressRoute 线路和对等互连？
-NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线路和对等连接。 选择链接 Express Route 资源的所有订阅，并为发现的每个资源启用监视。 NPM 在发现专用对等互连时查找连接对象，因此请检查 VNET 是否与对等互连关联。
+NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线路和对等连接。 选择链接 Express Route 资源的所有订阅，并为发现的每个资源启用监视。 NPM 在发现专用对等互连时查找连接对象，因此请检查 VNET 是否与对等互连关联。 NPM 不检测与 Log Analytics 工作区位于不同租户中的线路和对等互连。
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 监视器功能发出了诊断消息“流量无法通过任何线路”。 这是什么意思？
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 监视器功能发出了诊断消息“流量无法通过任何线路”。 这意味着什么？
 
 可能存在这种情况：本地与 Azure 节点之间建立了正常的连接，但流量不能通过配置为由 NPM 监视的 ExpressRoute 线路。 
 
@@ -233,6 +233,12 @@ NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线�
 * ER 线路已关闭。
 * 路由筛选器的配置使得其他路由（例如 VPN 连接或其他 ExpressRoute 线路）的优先级高于所需的 ExpressRoute 线路。 
 * 监视配置中选择用来监视 ExpressRoute 线路的本地和 Azure 节点未通过所需的 ExpressRoute 线路相互建立连接。 确保选择正确的节点，并通过所要监视的 ExpressRoute 线路让它们相互建立连接。
+
+### <a name="why-does-expressroute-monitor-report-my-circuitpeering-as-unhealthy-when-it-is-available-and-passing-data"></a>为什么 ExpressRoute 监视器在可用和传递数据时将线路/对等互连报告为不正常。
+ExpressRoute 监视器会将代理/服务报告的网络性能值（丢失、延迟和带宽使用率）与配置过程中设置的阈值进行比较。 对于线路，如果所报告的带宽使用率超过配置中设置的阈值，则线路会被标记为不正常。 对于对等互连，如果报告的丢失、延迟或带宽使用率大于配置中设置的阈值，则对等互连将标记为不正常。 NPM 不利用度量值或任何其他形式的数据到 deicde 的运行状况状态。
+
+### <a name="why-does-expressroute-monitorbandwidth-utilisation-report-a-value-differrent-from-metrics-bits-inout"></a>ExpressRoute Monitor'bandwidth 使用率为什么会从指标位 in/out 报告值其他
+对于 ExpressRoute 监视器，带宽 utiliation 是过去20分钟的传入和传出带宽的平均值，以每秒位数表示。对于快速路由指标，位输入/输出是每分钟数据点。在内部，用于两者的数据集是相同的，但在 NPM 与 ER 指标之间进行聚合 valies。 对于精确、按分钟的监视和快速警报，建议直接在 ER 指标上设置警报
 
 ### <a name="while-configuring-monitoring-of-my-expressroute-circuit-the-azure-nodes-are-not-being-detected"></a>为 ExpressRoute 线路配置监视时，并未检测 Azure 节点。
 如果 Azure 节点是通过 Operations Manager 连接的，则可能发生这种情况。 ExpressRoute 监视器功能仅支持以直接代理形式连接的 Azure 节点。

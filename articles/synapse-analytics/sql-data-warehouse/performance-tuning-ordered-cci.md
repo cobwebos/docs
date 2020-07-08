@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd81031f27d772912383fa050e0f946bf9964c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204653"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>使用有序聚集列存储索引优化性能  
 
@@ -24,11 +24,11 @@ ms.locfileid: "81417041"
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>有序与无序聚集列存储索引
 
-默认情况下，对于每个未使用索引选项创建的表，内部组件（索引生成器）都将在其上创建未排序的聚集列存储索引（CCI）。  每个列中的数据压缩成单独的 CCI 行组段。  对于每个段的值范围，都有元数据，因此，在执行查询期间，不会从磁盘中读取超出查询谓词范围的段。  CCI 提供最高级别的数据压缩，可减少要读取的段大小，因此查询可以更快地运行。 但是，由于索引生成器在将数据压缩成段之前不会将数据排序，因此可能会出现值范围重叠的段，从而导致查询从磁盘中读取更多的段，需要更长的时间才能完成。  
+默认情况下，对于不是使用索引选项创建的每个表，某个内部组件（索引生成器）将在该表中创建无序的聚集列存储索引 (CCI)。  每个列中的数据压缩成单独的 CCI 行组段。  每个段的值范围都有元数据，因此，在执行查询期间，不会从磁盘中读取超出查询谓词边界的段。  CCI 提供最高级别的数据压缩，可减少要读取的段大小，因此查询可以更快地运行。 但是，由于索引生成器在将数据压缩成段之前不会将数据排序，因此可能会出现值范围重叠的段，从而导致查询从磁盘中读取更多的段，需要更长的时间才能完成。  
 
-创建按序的 CCI 时，Synapse SQL 引擎会按顺序键对内存中的现有数据进行排序，然后索引生成器将这些数据压缩到索引段。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  由于数据仓库中的大型表，这种情况通常不会发生。  
+创建有序 CCI 时，Synapse SQL 引擎会先按顺序键将内存中的现有数据排序，然后，索引生成器将这些数据压缩成索引段。  使用有序数据可以减少段重叠的情况，使查询更有效地消除段，因而可提高性能，因为要从磁盘读取的段数更少。  如果可以一次性在内存中为所有数据排序，则可以避免段重叠的情况。  由于数据仓库中的表较大，因此这种情况不经常发生。  
 
-若要检查列的段范围，请使用表名称和列名称运行以下命令：
+若要检查列的段范围，请结合表名称和列名称运行以下命令：
 
 ```sql
 SELECT o.name, pnp.index_id, 
@@ -117,7 +117,7 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
-- 在将数据加载到表中之前，按排序关键字预先对数据进行排序。
+- 将数据载入表之前，预先按排序键将数据排序。
 
 下面是有序 CCI 表分布示例，该表根据上述建议清除了段重叠情况。 该有序 CCI 表是使用 MAXDOP 1 和 xlargerc，基于 20-GB 的堆表通过 CTAS 在 DWU1000c 数据库中创建的。  CCI 已按照不包含重复项的 BIGINT 列进行排序。  
 
@@ -155,4 +155,4 @@ WITH (DROP_EXISTING = ON)
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅 [开发概述](sql-data-warehouse-overview-develop.md)。

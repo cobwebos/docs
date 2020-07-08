@@ -4,21 +4,22 @@ description: Azure Synapse SQL 中支持的排序规则类型
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
+ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b10aea962a31ba600deca866a8d9f7ab3b81ea8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e9d8048c88a5ef37df2fde1ab282a834b07228a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133661"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85206336"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL 的数据库排序规则支持
 
 排序规则为基于字符的数据类型提供区域设置、代码页、排序顺序和字符敏感度规则。 选择以后，需要排序规则信息的所有列和表达式会从数据库设置中继承所选排序规则。 可以重写默认继承，只需为基于字符的数据类型显式声明另一个排序规则即可。
 
-创建新的 SQL 池数据库时，可以从 Azure 门户更改默认数据库排序规则。 利用此功能，可以更轻松地使用3800支持的数据库排序规则之一创建新数据库。
+创建新的 SQL 池数据库时，可以从 Azure 门户更改默认数据库排序规则。 利用此功能，可以更轻松地使用 3800 个受支持的数据库排序规则之一创建新数据库。
 
 您可以在创建时使用 CREATE DATABASE 语句指定默认的 Synapse SQL 按需数据库排序规则。
 
@@ -108,7 +109,7 @@ ms.locfileid: "82133661"
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
-当传递 "排序规则" 作为属性参数时，DatabasePropertyEx 函数将返回指定数据库的当前排序规则。 可以在 MSDN 上详细了解 DatabasePropertyEx 函数。
+将“Collation”作为属性参数传递时，DatabasePropertyEx 函数将返回指定数据库的当前排序规则。 可以在 MSDN 上详细了解 DatabasePropertyEx 函数。
 
 ## <a name="next-steps"></a>后续步骤
 

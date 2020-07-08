@@ -4,22 +4,23 @@ description: 如何为 Windows 虚拟桌面设置 MSIX 应用附加。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204465"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
 > [!IMPORTANT]
-> MSIX 应用附加目前以个人预览版提供。
-> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> .MSIX 应用附加当前为公共预览版。
+> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本主题将引导你了解如何在 Windows 虚拟桌面环境中设置 MSIX 应用附加。
 
@@ -28,13 +29,32 @@ ms.locfileid: "83742932"
 在开始之前，需要配置 MSIX 应用附加：
 
 - 访问 Windows 预览体验门户以获取支持 MSIX 应用附加 API 的 Windows 10 版本。
-- 正常运行的 Windows 虚拟桌面部署。 有关详细信息，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
-- MSIX 打包工具
-- Windows 虚拟桌面部署中存储 MSIX 包的网络共享
+- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面秋季2019版，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何部署 Windows 虚拟桌面2020版，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- .MSIX 打包工具。
+- Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享。
 
 ## <a name="get-the-os-image"></a>获取 OS 映像
 
-首先，需要获取将用于 MSIX 应用的 OS 映像。 获取 OS 映像：
+首先，需要获取 OS 映像。 可以通过 Azure 门户获取 OS 映像。 但是，如果您是 Windows 预览体验计划的成员，则可以选择使用 Windows 预览体验门户。
+
+### <a name="get-the-os-image-from-the-azure-portal"></a>获取 Azure 门户中的 OS 映像
+
+若要从 Azure 门户获取 OS 映像：
+
+1. 打开[Azure 门户](https://portal.azure.com)并登录。
+
+2. 请参阅**创建虚拟机**。
+
+3. 在 "**基本**" 选项卡中，选择 **"Windows 10 企业多会话，版本 2004"**。
+
+4. 按照说明的其余部分操作来完成虚拟机的创建。
+
+     >[!NOTE]
+     >可以使用此 VM 直接测试 .MSIX 应用附加。 若要了解详细信息，请跳到[生成用于 .msix 的 VHD 或 VHDX 包](#generate-a-vhd-or-vhdx-package-for-msix)。 否则，请继续阅读本部分。
+
+### <a name="get-the-os-image-from-the-windows-insider-portal"></a>从 Windows 预览体验门户获取 OS 映像
+
+若要从 Windows 预览体验门户获取 OS 映像，请执行以下操作：
 
 1. 打开 [Windows 预览体验成员门户](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)并登录。
 
@@ -44,15 +64,15 @@ ms.locfileid: "83742932"
 2. 向下滚动到“选择版本”部分，然后选择“Windows 10 预览体验预览企业(快速) - 版本 19041”或更高版本 。
 
 3. 选择“确认”，然后选择要使用的语言，然后再次选择“确认” 。
-    
+
      >[!NOTE]
      >目前仅对该项功能执行了英文测试。 你可以选择其他语言，但是其他语言的显示情况可能与预期不符。
-    
+
 4. 生成下载链接后，选择“64 位下载”并将其保存到本地硬盘。
 
-## <a name="prepare-the-vhd-image-for-azure"></a>准备 Azure 的 VHD 映像 
+## <a name="prepare-the-vhd-image-for-azure"></a>准备 Azure 的 VHD 映像
 
-在开始之前，需要创建一个主 VHD 映像。 如果尚未创建主 VHD 映像，请转到[准备和自定义主 VHD 映像](set-up-customize-master-image.md)，然后按照此处的说明进行操作。 
+接下来，需要创建一个主 VHD 映像。 如果尚未创建主 VHD 映像，请转到[准备和自定义主 VHD 映像](set-up-customize-master-image.md)，然后按照此处的说明进行操作。
 
 创建主 VHD 映像后，必须禁用 MSIX 应用附加应用程序的自动更新。 若要禁用自动更新，需要在提升的命令提示符中运行以下命令：
 
@@ -74,10 +94,10 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-禁用自动更新后，必须启用 Hyper-V，因为你将使用 Mound VHD 命令暂存和卸除 VHD 以转储。 
+禁用自动更新后，你必须启用 Hyper-v，因为你将使用装入 VHD 命令来暂存和卸载 VHD 到 "转储"。
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >此更改将需要你重新启动虚拟机。
@@ -86,7 +106,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
 
 将 VHD 上传到 Azure 后，请按照[通过使用 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)教程中的说明创建基于此新映像的主机池。
 
-## <a name="prepare-the-application-for-msix-app-attach"></a>准备 MSIX 应用附加的应用程序 
+## <a name="prepare-the-application-for-msix-app-attach"></a>准备 MSIX 应用附加的应用程序
 
 如果已经有 MSIX 包，请跳到[配置 Windows 虚拟桌面基础结构](#configure-windows-virtual-desktop-infrastructure)。 如果要测试旧版应用程序，请按照[通过 VM 上的桌面安装程序创建 MSIX 包](/windows/msix/packaging-tool/create-app-package-msi-vm/)中的说明将旧版应用程序转换为 MSIX 包。
 
@@ -169,7 +189,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
 - 共享与 SMB 兼容。
 - 作为会话主机池一部分，VM 对共享具有 NTFS 权限。
 
-### <a name="set-up-an-msix-app-attach-share"></a>设置 MSIX 应用附加共享 
+### <a name="set-up-an-msix-app-attach-share"></a>设置 MSIX 应用附加共享
 
 在 Windows 虚拟桌面环境中，创建网络共享并将包移到该处。
 
@@ -410,16 +430,16 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="use-packages-offline"></a>脱机使用包
 
-如果通过网络中或未连接到 Internet 的设备使用[适用于企业的 Microsoft Store](https://businessstore.microsoft.com/) 或[适用于教育的 Microsoft Store](https://educationstore.microsoft.com/) 中的包，则需要从 Microsoft Store 获取包许可证并将其安装到设备上，才能成功运行该应用。 如果设备处于联机状态并且可以连接到适用于企业的 Microsoft Store，就会自动下载所需的许可证，但如果处于脱机状态，则需要手动设置许可证。 
+如果通过网络中或未连接到 Internet 的设备使用[适用于企业的 Microsoft Store](https://businessstore.microsoft.com/) 或[适用于教育的 Microsoft Store](https://educationstore.microsoft.com/) 中的包，则需要从 Microsoft Store 获取包许可证并将其安装到设备上，才能成功运行该应用。 如果设备处于联机状态并且可以连接到适用于企业的 Microsoft Store，就会自动下载所需的许可证，但如果处于脱机状态，则需要手动设置许可证。
 
-若要安装许可证文件，需要使用 PowerShell 脚本来调用 WMI Bridge 提供程序中的 MDM_EnterpriseModernAppManagement_StoreLicenses02_01 类。  
+若要安装许可证文件，需要使用 PowerShell 脚本来调用 WMI Bridge 提供程序中的 MDM_EnterpriseModernAppManagement_StoreLicenses02_01 类。
 
-下面介绍如何设置脱机使用的许可证： 
+下面介绍如何设置脱机使用的许可证：
 
 1. 从适用于企业的 Microsoft Store 下载应用包、许可证和必需的框架。 你需要编码和未编码的许可证文件。 可在[此处](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)找到详细的下载说明。
 2. 在步骤 3 的脚本中更新以下变量：
       1. `$contentID` 是未编码的许可证文件 (.xml) 中的 ContentID 值。 可以在所选的文本编辑器中打开许可证文件。
-      2. `$licenseBlob` 是已编码的许可证文件 (.bin) 中许可证 blob 的整个字符串。 可以在所选的文本编辑器中打开已编码的许可证文件。 
+      2. `$licenseBlob` 是已编码的许可证文件 (.bin) 中许可证 blob 的整个字符串。 可以在所选的文本编辑器中打开已编码的许可证文件。
 3. 在管理员 PowerShell 提示符中运行以下脚本。 建议在[暂存脚本](#stage-the-powershell-script)的末尾执行许可证安装，该脚本也需要在管理员提示符中运行。
 
 ```powershell
@@ -434,14 +454,14 @@ $contentID = "{'ContentID'_in_unencoded_license_file}"
 #TODO - Update $licenseBlob with the entire String in the encoded license file (.bin)
 $licenseBlob = "{Entire_String_in_encoded_license_file}"
 
-$session = New-CimSession 
+$session = New-CimSession
 
 #The final string passed into the AddLicenseMethod should be of the form <License Content="encoded license blob" />
-$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />' 
+$licenseString = '<License Content='+ '"' + $licenseBlob +'"' + ' />'
 
 $params = New-Object Microsoft.Management.Infrastructure.CimMethodParametersCollection
 $param = [Microsoft.Management.Infrastructure.CimMethodParameter]::Create("param",$licenseString ,"String", "In")
-$params.Add($param) 
+$params.Add($param)
 
 
 try
@@ -453,7 +473,7 @@ try
 catch [Exception]
 {
      write-host $_ | out-string
-}  
+}
 ```
 
 ## <a name="next-steps"></a>后续步骤

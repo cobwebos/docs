@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbadfb63b9f575053feca87bda2c3ad2e64e91eb
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e8f5564f9e7e1176db1fed5fae38eee58874c2eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204195"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
+“Protocol”元素的“Name”属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
 
 以下示例演示了 `JwtIssuer` 的技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
   <Protocol Name="OpenIdConnect" />
@@ -63,7 +63,7 @@ Azure Active Directory B2C (Azure AD B2C) 在处理每个身份验证流时颁�
 | refresh_token_lifetime_secs | 否 | 刷新令牌生存期。 在应用程序已获取 offline_access 范围的情况下，可以使用某个刷新令牌获取新访问令牌之前所要经过的最长时间段。 默认值为 120,9600 秒（14 天）。 最小值为 86,400 秒（24 小时）（含）。 最大值为 7,776,000 秒（90 天）（含）。 |
 | rolling_refresh_token_lifetime_secs | 否 | 刷新令牌滑动窗口生存期。 此时间段过后，会强制用户重新进行身份验证，不考虑该应用程序获取的最近刷新令牌的有效期。 如果不想要实施滑动窗口生存期，请将 allow_infinite_rolling_refresh_token 的值设置为 `true`。 默认值为 7,776,000 秒（90 天）。 最小值为 86,400 秒（24 小时）（含）。 最大值为 31,536,000 秒（365 天）（含）。 |
 | allow_infinite_rolling_refresh_token | 否 | 如果设置为 `true`，则刷新令牌滑动窗口生存期永不过期。 |
-| IssuanceClaimPattern | 否 | 控制颁发者 (iss) 声明。 值为下列其中一项：<ul><li>AuthorityAndTenantGuid-iss 声明包括域名（如`login.microsoftonline`或`tenant-name.b2clogin.com`）和租户标识符 https：\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - iss 声明包含域名（例如 `login.microsoftonline` 或 `tenant-name.b2clogin.com`）、租户标识符和信赖方策略名称。 https：\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> 默认值：AuthorityAndTenantGuid |
+| IssuanceClaimPattern | 否 | 控制颁发者 (iss) 声明。 值为下列其中一项：<ul><li>AuthorityAndTenantGuid-iss 声明包括域名（如 `login.microsoftonline` 或 `tenant-name.b2clogin.com` ）和租户标识符 https： \/ /login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - iss 声明包含域名（例如 `login.microsoftonline` 或 `tenant-name.b2clogin.com`）、租户标识符和信赖方策略名称。 https： \/ /login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> 默认值：AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | 否 | 控制 `acr` 声明值。<ul><li>None - Azure AD B2C 不发出 acr 声明</li><li>PolicyId - `acr` 声明包含策略名称</li></ul>用于设置此值的选项为 TFP（信任框架策略）和 ACR（身份验证上下文引用）。 建议将此值设置为 TFP，若要设置值，请确保存在包含 `Key="AuthenticationContextReferenceClaimPattern"` 的 `<Item>`，且值为 `None`。 在信赖方策略中，添加 `<OutputClaims>` 项和此元素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`。 另请确保策略包含声明类型 `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
 |RefreshTokenUserJourneyId| 否 | 向 `/token` 终结点发送[刷新访问令牌](authorization-code-flow.md#4-refresh-the-token) POST 请求期间应执行的用户旅程的标识符。 |
 
@@ -73,12 +73,12 @@ CryptographicKeys 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是你`B2C_1A_TokenSigningKeyContainer`在[自定义策略入门](custom-policy-get-started.md)中配置的密钥。 |
+| issuer_secret | 是 | 用于对 JWT 令牌进行签名的 X509 证书（RSA 密钥集）。 这是 `B2C_1A_TokenSigningKeyContainer` 你在[自定义策略入门](custom-policy-get-started.md)中配置的密钥。 |
 | issuer_refresh_token_key | 是 | 用于加密刷新令牌的 X509 证书（RSA 密钥集）。 在[自定义策略入门](custom-policy-get-started.md)中已配置 `B2C_1A_TokenEncryptionKeyContainer` 密钥 |
 
 ## <a name="session-management"></a>会话管理
 
-若要配置 Azure AD B2C 与信赖方应用程序之间的 Azure AD B2C 会话，请在`UseTechnicalProfileForSessionManagement`元素的属性中添加对[OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider) SSO 会话的引用。
+若要在 Azure AD B2C 和信赖方应用程序之间配置 Azure AD B2C 会话，请在 `UseTechnicalProfileForSessionManagement` 元素的属性中添加对 [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider) SSO 会话的引用。
 
 
 

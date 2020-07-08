@@ -4,15 +4,15 @@ description: 描述如何为 Windows 虚拟桌面 Vm 应用 Windows 许可证。
 services: virtual-desktop
 author: ChristianMontoya
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c60303d2306ca167a4d90b0cc27c1d265f2e2db8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204415"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>将 Windows 许可证应用到会话主机虚拟机
 

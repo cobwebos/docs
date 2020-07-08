@@ -4,16 +4,16 @@ description: 如何为 Windows 虚拟桌面个人桌面主机池配置分配类�
 services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ddfd9346f4a72ceb2e8bf5c336fb3de9b5c8c5c7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204857"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>配置个人桌面主机池分配类型
 
@@ -31,7 +31,7 @@ ms.locfileid: "83827465"
 
 若要自动分配用户，请先将其分配到个人桌面主机池，以便他们能够在其源中看到桌面。 当分配的用户在其源中启动桌面时，如果他们尚未连接到主机池，则他们将认领一个可用的会话主机，分配过程就此完成。
 
-在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。 
+在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。
 
 > [!NOTE]
 > 在按照下面的说明操作之前，请确保已安装 Windows 虚拟桌面 PowerShell 模块版本 1.0.1534.2001 或更高版本。

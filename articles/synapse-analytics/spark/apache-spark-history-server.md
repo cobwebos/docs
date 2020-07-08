@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 4f03033942517f4778192e0b12f84610df8fd469
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4ee5d064d17d7b11305c6c86dc1d29ddccc642e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429208"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194988"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark 历史记录服务器来调试和诊断 Apache Spark 应用程序
 
@@ -56,7 +56,7 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
 选择要查看的作业的 ID。 然后，在 "工具" 菜单上选择 "**数据**" 以获取数据视图。 本部分说明如何在 "数据" 选项卡中执行各种任务。
 
-* 分别选择“输入”、“输出”和“表操作”，以选中这些选项卡************。
+* 分别选择“输入”、“输出”和“表操作”，以选中这些选项卡  。
 
     ![Spark 应用程序选项卡的数据](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
@@ -106,7 +106,7 @@ Apache Spark 历史记录服务器是用于完成和运行 Spark 应用程序的
 
 ![Spark 应用程序和作业图形作业 ID](./media/apache-spark-history-server/apache-spark-graph-jobid.png)
 
-### <a name="display"></a>显示器
+### <a name="display"></a>显示
 
 默认情况下，**进度**显示处于选中状态。 可以通过在 "**显示**" 下拉列表中选择 "**读取**" 或 "**写入**" 来检查数据流。
 
@@ -126,7 +126,7 @@ Graph 节点显示热度地图图例中显示的颜色。
 |橙色|重试：失败但不影响作业最终结果的任务实例。 这些任务包括可能稍后会成功的重复或重试实例。|
 |蓝色|正在运行：任务正在运行。|
 |白色|正在等待或已跳过：任务正在等待运行，或已跳过该阶段。|
-|Red|失败：任务失败。|
+|红色|失败：任务失败。|
 
 下图显示了绿色、橙色和蓝色状态颜色。
 
@@ -157,9 +157,9 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 在 "作业关系图" 选项卡上，如果有任务满足以下条件，则会显示一个工具提示和一个小图标：
 
-|条件|说明|
+|条件|描述|
 |-|-|
-|数据偏斜|数据读取大小 > 此阶段中所有任务的平均数据读取大小 * 2 和数据读取大小 > 10 MB|
+|数据倾斜|数据读取大小 > 此阶段中所有任务的平均数据读取大小 * 2 和数据读取大小 > 10 MB|
 |时间偏差|此阶段内所有任务的执行时间 > 平均执行时间 * 2 和执行时间 > 2 分钟|
    
 ![Spark 应用程序和作业关系图倾斜图标](./media/apache-spark-history-server/sparkui-graph-skew-icon.png)
@@ -190,9 +190,9 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 ## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>浏览 Apache Spark history server 中的 "诊断" 选项卡
 
-若要访问 "诊断" 选项卡，请选择作业 ID。 然后，在 "工具" 菜单上选择 "**诊断**" 以获取 "作业诊断" 视图。 诊断选项卡包括“数据倾斜”、“时间偏差”和“执行程序使用情况分析”************。
+若要访问 "诊断" 选项卡，请选择作业 ID。 然后，在 "工具" 菜单上选择 "**诊断**" 以获取 "作业诊断" 视图。 诊断选项卡包括“数据倾斜”、“时间偏差”和“执行程序使用情况分析”  。
 
-分别选择“数据倾斜”、“时间偏差”和“执行程序使用情况分析”，以选中这些选项卡************。
+分别选择“数据倾斜”、“时间偏差”和“执行程序使用情况分析”，以选中这些选项卡  。
 
 ![SparkUI - 诊断数据偏斜选项卡](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -212,9 +212,9 @@ Graph 节点显示热度地图图例中显示的颜色。
 
 ### <a name="time-skew"></a>时间倾斜
 
-“时间倾斜”**** 选项卡根据任务执行时间显示倾斜任务。
+“时间倾斜”选项卡根据任务执行时间显示倾斜任务。
 
-* **指定参数** - 第一部分显示用于检测时间倾斜的参数。 用于检测时间倾斜的默认条件是：任务执行时间是平均执行时间的三倍，任务执行时间大于 30 秒。 可以按需更改相关参数。 与上面的“时间倾斜”选项卡一样，倾斜阶段和倾斜图表显示相应的阶段和任务信息************。
+* **指定参数** - 第一部分显示用于检测时间倾斜的参数。 用于检测时间倾斜的默认条件是：任务执行时间是平均执行时间的三倍，任务执行时间大于 30 秒。 可以按需更改相关参数。 与上面的“时间倾斜”选项卡一样，倾斜阶段和倾斜图表显示相应的阶段和任务信息  。
 
 * 选择“时间偏斜”****，然后筛选的结果就会根据在“指定参数”部分设置的参数显示在“偏斜的阶段”部分。******** 选择“偏斜的阶段”部分的一个项目，然后相应的图表就会在第 3 部分绘制，任务详细信息显示在右下面板中。****
 

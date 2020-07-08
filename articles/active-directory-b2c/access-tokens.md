@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: de5c478ac6641fe5b1e342c063d134f70084b2ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201440"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中请求访问令牌
 
@@ -29,7 +29,7 @@ ms.locfileid: "83635451"
 ## <a name="prerequisites"></a>先决条件
 
 - [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
-- 如果尚未执行此操作，请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-application.md)。
+- 如果尚未执行此操作，请[向 Azure Active Directory B2C 租户添加 Web API 应用程序](add-web-api-application.md)。
 
 ## <a name="scopes"></a>作用域
 
@@ -49,7 +49,7 @@ scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-如果请求的作用域数超过为客户端应用程序授予的数目，则在至少授予一个权限时调用将成功。 生成的访问令牌中的 scp 声明将仅使用已成功授予的权限进行填充。 OpenID Connect 标准指定了多个特殊的 scope 值。 以下作用域表示访问用户的配置文件的权限：
+如果请求的作用域数超过为客户端应用程序授予的数目，则在至少授予一个权限时调用将成功。 生成的访问令牌中的 scp 声明将仅使用已成功授予的权限进行填充。 OpenID Connect 标准指定了多个特殊的 scope 值。 以下作用域表示访问用户配置文件的权限：
 
 - **openid** - 请求 ID 令牌。
 - **offline_access** - 使用[授权代码流](authorization-code-flow.md)请求刷新令牌。
@@ -67,7 +67,7 @@ scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_acce
 - `<application-ID>` - 为支持用户流而注册的 Web 应用的应用程序标识符。
 - `<redirect-uri>` - 注册客户端应用程序时输入的重定向 URI。
 
-```HTTP
+```http
 GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
@@ -84,7 +84,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 
 成功收到授权码后，可以使用它来请求访问令牌：
 
-```HTTP
+```http
 POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
@@ -99,7 +99,7 @@ grant_type=authorization_code
 
 应会看到类似于下面的响应：
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
     "token_type": "Bearer",
@@ -113,7 +113,7 @@ grant_type=authorization_code
 
 使用 https://jwt.ms 检查返回的访问令牌时，应会看到类似于以下示例的内容：
 
-```JSON
+```json
 {
   "typ": "JWT",
   "alg": "RS256",

@@ -4,12 +4,13 @@ description: 了解如何将 Azure Application Insights 和 Azure Functions 结�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 2aaf52a528f929f183c9bf4565d9f0da4918f146
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207001"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -245,7 +246,7 @@ Functions 运行时创建具有以“Host”开头的类别的日志。 在版�
 
 ## <a name="configure-sampling"></a>配置采样
 
-Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，可以防止在峰值负载时为已完成的执行生成过多的遥测数据。 当传入执行的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入执行。 每秒执行的最大次数的默认设置为 20（版本 1.x 中为 5）。 可以在 [host.json] 中配置采样。  下面是一个示例：
+Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，可以防止在峰值负载时为已完成的执行生成过多的遥测数据。 当传入执行的速率超过指定的阈值时，Application Insights 开始随机忽略某些传入执行。 每秒执行的最大次数的默认设置为 20（版本 1.x 中为 5）。 可以在 [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) 中配置采样。  下面是一个示例：
 
 ### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
@@ -255,12 +256,15 @@ Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，�
     "applicationInsights": {
       "samplingSettings": {
         "isEnabled": true,
-        "maxTelemetryItemsPerSecond" : 20
+        "maxTelemetryItemsPerSecond" : 20,
+        "excludedTypes": "Request"
       }
     }
   }
 }
 ```
+
+在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录*所有*函数执行（请求），而其他类型的遥测仍会受到采样的限制。
 
 ### <a name="version-1x"></a>版本 1.x 
 
@@ -313,7 +317,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 ```json
 {
-  customDimensions: {
+  "customDimensions": {
     "prop__{OriginalFormat}":"C# Queue trigger function processed: {message}",
     "Category":"Function",
     "LogLevel":"Information",
@@ -683,6 +687,28 @@ Get-AzSubscription
 Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
+
+## <a name="scale-controller-logs"></a>缩放控制器日志
+
+[Azure Functions 缩放控制器](./functions-scale.md#runtime-scaling)监视运行应用程序的函数主机实例，并做出有关何时添加或删除函数主机实例的决策。 如果需要了解规模控制器在你的应用程序中所做的决策，你可以将其配置为将日志发送到 Application Insights 或 Blob 存储。
+
+> [!WARNING]
+> 此功能为预览版。 建议你不要无限期地启用此功能，并且应在需要收集的信息后再禁用它来启用它。
+
+若要启用此功能，请添加一个名为的新应用程序设置 `SCALE_CONTROLLER_LOGGING_ENABLED` 。 此设置的值必须采用 `{Destination}:{Verbosity}` 以下格式：
+* `{Destination}`指定日志要发送到的目标，并且必须是 `AppInsights` 或 `Blob` 。
+* `{Verbosity}`指定所需的日志记录级别，必须为 `None` 、 `Warning` 或之一 `Verbose` 。
+
+例如，要将详细信息从规模控制器记录到 Application Insights，请使用值 `AppInsights:Verbose` 。
+
+> [!NOTE]
+> 如果启用 `AppInsights` 目标类型，则必须确保[为函数应用配置 Application Insights](#enable-application-insights-integration)。
+
+如果将目标设置为 `Blob` ，则会在 `azure-functions-scale-controller` `AzureWebJobsStorage` 应用程序设置中设置的存储帐户中创建一个名为的 blob 容器中的日志。
+
+如果将详细级别设置为 `Verbose` ，则缩放控制器将记录辅助角色计数中每次更改的原因，以及有关参与规模控制器决策的触发器的信息。 例如，日志将包含触发器警告，并运行缩放控制器前后触发器使用的哈希。
+
+若要禁用缩放控制器日志记录，请将的值设置 `{Verbosity}` 为 `None` 或删除 `SCALE_CONTROLLER_LOGGING_ENABLED` 应用程序设置。
 
 ## <a name="disable-built-in-logging"></a>禁用内置日志记录
 

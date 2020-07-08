@@ -1,32 +1,32 @@
 ---
 title: 从异地备份还原数据仓库
-description: 异地还原 SQL 池的操作指南。
+description: 有关异地还原 SQL 池的指南。
 services: synapse-analytics
 author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7e980f2ffd31bd10b481fe4fc8e0617c40717a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205078"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL 池的异地还原
 
-本文介绍如何通过 Azure 门户和 PowerShell 从异地备份还原 SQL 池。
+本文介绍了如何通过 Azure 门户和 PowerShell 从异地备份还原 SQL 池。
 
 ## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**验证 DTU 容量。** 每个 SQL 池由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
+**验证 DTU 容量。** 每个 SQL 池都由具有默认 DTU 配额的[逻辑 SQL server](../../azure-sql/database/logical-servers.md) （例如，myserver.database.windows.net）托管。 验证 SQL Server 的剩余 DTU 配额是否足够进行数据库还原。 若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改](sql-data-warehouse-get-started-create-support-ticket.md)。
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>通过 PowerShell 从 Azure 地理区域还原
 
@@ -49,7 +49,7 @@ ms.locfileid: "80745074"
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different logical server.
+$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different server.
 $TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -70,30 +70,30 @@ $GeoRestoredDatabase = Restore-AzSqlDatabase –FromGeoBackup -ResourceGroupName
 $GeoRestoredDatabase.status
 ```
 
-如果源数据库启用了 TDE，则已恢复的数据库将启用 TDE。
+如果源数据库启用了 TDE，则已恢复的数据库会启用 TDE。
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>通过 Azure 门户从 Azure 地理区域还原
 
-请按照下面概述的步骤从异地备份还原 SQL 池：
+按下述步骤从异地备份还原 SQL 池：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)帐户。
-2. 单击“+ 创建资源”****。
+2. 单击“+ 创建资源”  。
 
    ![新建 DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. 单击 "**数据库**"，然后选择 "Azure Synapse Analytics （以前称为 SQL DW）"。
+3. 单击 "**数据库**"，然后单击 " **Azure Synapse Analytics （以前称为 SQL DW）**"。
 
-   ![新 DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+   ![新建 DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
-4. 填写 "**基本**信息" 选项卡中所需的信息，然后单击 "**下一步：其他设置**"。
+4. 填充在“基本信息”选项卡中请求的信息，然后  单击“下一步:  其他设置”。
 
-   ![基础](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![基础知识](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. 对于“使用现有的数据”参数，**** 请选择“备份”，然后从向下滚动选项中选择适当的备份。**** 单击 "**查看 + 创建**"。
+5. 对于“使用现有的数据”参数，  请选择“备份”，然后从向下滚动选项中选择适当的备份。  单击“查看 + 创建”  。
 
-   ![备份 (backup)](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. 数据仓库还原后，请检查“状态”是否为“联机”****。
+6. 数据仓库还原后，请检查“状态”是否为“联机”  。
 
 ## <a name="next-steps"></a>后续步骤
 

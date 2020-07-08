@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311664"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85205452"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>了解本地配置文件（c # 代理）
 
@@ -30,9 +30,9 @@ ms.locfileid: "81311664"
 
 C # 安全代理使用多个配置文件：
 
-- **常规 .Config**代理相关配置。
-- **身份验证**与身份验证相关的配置（包括身份验证详细信息）。
-- **SecurityIotInterface** -IoT 相关配置。
+- **General.config**代理相关配置。
+- 与**Authentication.config**身份验证相关的配置（包括身份验证详细信息）。
+- 与**SecurityIotInterface.config** IoT 相关的配置。
 
 配置文件包含默认配置。 身份验证配置在代理安装过程中进行填充，并且在重新启动代理时对配置文件进行更改。
 
@@ -40,13 +40,13 @@ C # 安全代理使用多个配置文件：
 
 对于 Linux：
 
-- 操作系统配置文件位于中`/var/ASCIoTAgent`。
+- 操作系统配置文件位于中 `/var/ASCIoTAgent` 。
 
 对于 Windows：
 
 - 操作系统配置文件位于安全代理的目录中。
 
-### <a name="generalconfig-configurations"></a>常规 .config 配置
+### <a name="generalconfig-configurations"></a>General.config 配置
 
 | 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
@@ -62,9 +62,9 @@ C # 安全代理使用多个配置文件：
 | logFilePath | 文件路径 | 如果 fileLogLevel > 关闭，则日志将写入此文件。 |
 | defaultEventPriority | "高"、"低"、"关" | 默认事件优先级。 |
 
-### <a name="generalconfig-example"></a>常规 .config 示例
+### <a name="generalconfig-example"></a>General.config 示例
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <General>
   <add key="agentId" value="da00006c-dae9-4273-9abc-bcb7b7b4a987" />
@@ -81,24 +81,24 @@ C # 安全代理使用多个配置文件：
 </General>
 ```
 
-### <a name="authenticationconfig"></a>身份验证 .config
+### <a name="authenticationconfig"></a>Authentication.config
 
 | 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
 | moduleName | 字符串 | 安全模块标识的名称。 此名称必须与设备中的模块标识名称相对应。 |
-| deviceId | 字符串 | 设备的 ID （在 Azure IoT 中心内注册）。 || schedulerInterval | TimeSpan 字符串 | 内部计划程序间隔。 |
+| deviceId | string | 设备的 ID （在 Azure IoT 中心内注册）。 || schedulerInterval | TimeSpan 字符串 | 内部计划程序间隔。 |
 | gatewayHostname | 字符串 | Azure Iot 中心的主机名。 通常 <我的中心>。 azure-devices.net |
 | filePath | 字符串-文件路径 | 包含身份验证机密的文件的路径。|
-| type | "SymmetricKey"、"New-selfsignedcertificate" | 用于身份验证的用户机密。 如果用户机密是对称密钥，请选择 " *SymmetricKey* "，如果密码是自签名证书，请选择 "*自签名证书*"。 |
-| identity | "DPS"、"Module"、"Device" | 身份验证标识-DPS 如果通过 DPS、Module 进行身份验证，则使用模块凭据进行身份验证，或者在使用设备凭据进行身份验证时使用设备。
+| 类型 | "SymmetricKey"、"New-selfsignedcertificate" | 用于身份验证的用户机密。 如果用户机密是对称密钥，请选择 " *SymmetricKey* "，如果密码是自签名证书，请选择 "*自签名证书*"。 |
+| 标识 | "DPS"、"Module"、"Device" | 身份验证标识-DPS 如果通过 DPS、Module 进行身份验证，则使用模块凭据进行身份验证，或者在使用设备凭据进行身份验证时使用设备。
 | certificateLocationKind |  "LocalFile"、"Store" | LocalFile 如果证书存储在文件中，则存储证书是否位于证书存储区中。 |
 | idScope | 字符串 | DPS 的 ID 范围 |
 | registrationId | 字符串  | DPS 设备注册 ID。 |
 |
 
-### <a name="authenticationconfig-example"></a>Authentication .config 示例
+### <a name="authenticationconfig-example"></a>Authentication.config 示例
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
   <add key="moduleName" value="azureiotsecurity"/>
@@ -113,16 +113,16 @@ C # 安全代理使用多个配置文件：
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface.config
 
 | 配置名称 | 可能值 | 详细信息 |
 |:-----------|:---------------|:--------|
 | transportType | "Ampq" "Mqtt" | IoT 中心传输类型。 |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface 示例
+### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config 示例
 
-```XML
+```xml
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
   <add key="transportType" value="Amqp"/>

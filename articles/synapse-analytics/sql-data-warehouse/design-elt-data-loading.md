@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1b73b82b4367d50cc5fbe9881a67e0afa041db86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660020"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201152"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL 池的数据加载策略
 
@@ -46,15 +46,13 @@ ms.locfileid: "83660020"
 5. 转换数据。
 6. 将数据插入生产表。
 
-有关 PolyBase 加载操作的教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
-
-有关详细信息，请参阅[加载模式博客](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)。
+有关加载教程，请参阅[从 Azure blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.将源数据提取到文本文件中
 
-从源系统中取出数据的过程取决于存储位置。  目标是将数据移动到 PolyBase 和 COPY 支持的带分隔符的文本或 CSV 文件中。
+从源系统中取出数据的过程取决于存储位置。 目标是将数据移到支持的分隔文本或 CSV 文件中。
 
-### <a name="polybase-and-copy-external-file-formats"></a>PolyBase 和 COPY 外部文件格式
+### <a name="supported-file-formats"></a>支持的文件格式
 
 借助 PolyBase 和 COPY 语句，可以从 UTF-8 和 UTF-16 编码的带分隔符的文本或 CSV 文件中加载数据。 除了带分隔符的文本或 CSV 文件以外，它还可以从 Hadoop 文件格式（如 ORC 和 Parquet）加载数据。 PolyBase 和 COPY 语句还可以从 Gzip 和 Snappy 压缩文件加载数据。
 
@@ -74,11 +72,11 @@ ms.locfileid: "83660020"
 
 在加载之前，可能需要准备和清理存储帐户中的数据。 可以在数据仍保留在源中、将数据导出到文本文件时或者在数据进入 Azure 存储之后执行数据准备。  最好是在加载过程的早期阶段处理数据。  
 
-### <a name="define-external-tables"></a>定义外部表
+### <a name="define-the-tables"></a>定义表
 
-如果使用的是 PolyBase，则需要在加载之前定义 SQL 池中的外部表。 COPY 语句不需要外部表。 PolyBase 使用外部表来定义和访问 Azure 存储中的数据。
+使用 COPY 语句时，必须先在 SQL 池中定义要加载到的表。
 
-外部表和数据库视图相似。 外部表包含表架构，并指向存储在 SQL 池外部的数据。
+如果使用的是 PolyBase，则需要在加载之前定义 SQL 池中的外部表。 PolyBase 使用外部表来定义和访问 Azure 存储中的数据。 外部表和数据库视图相似。 外部表包含表架构，并指向存储在 SQL 池外部的数据。
 
 定义外部表涉及到指定数据源、文本文件的格式和表定义。 所需的 T-SQL 语法参考文章如下：
 
@@ -86,7 +84,7 @@ ms.locfileid: "83660020"
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [创建外部表](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-加载 Parquet 时，SQL 数据类型映射为：
+加载 Parquet 文件时，请使用以下 SQL 数据类型映射：
 
 |                         Parquet 类型                         |   Parquet 逻辑类型（批注）   |  SQL 数据类型   |
 | :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
@@ -126,7 +124,7 @@ ms.locfileid: "83660020"
 
 
 
-有关创建外部对象的示例，请参阅加载教程中的[创建外部表](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data)步骤。
+有关创建外部对象的示例，请参阅[创建外部表](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool)。
 
 ### <a name="format-text-files"></a>设置文本文件的格式
 
@@ -139,17 +137,16 @@ ms.locfileid: "83660020"
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4.使用 PolyBase 或 COPY 语句加载数据
 
-这是将数据加载到临时表中的最佳做法。 利用临时表，可以处理错误，且不会干扰生产表。 将数据插入生产表之前，还可以通过临时表使用 SQL 池 MPP 来运行数据转换。
+这是将数据加载到临时表中的最佳做法。 利用临时表，可以处理错误，且不会干扰生产表。 使用临时表，还可以在将数据插入生产表之前，使用 SQL 池并行处理体系结构进行数据转换。
 
-当使用 COPY 加载到临时表中时，将需要预先创建该表。
+### <a name="options-for-loading"></a>用于加载的选项
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>使用 PolyBase 和 COPY 语句加载数据的选项
+若要加载数据，可以使用以下任一加载选项：
 
-若要使用 PolyBase 加载数据，可以使用下列任一加载选项：
-
-- 如果数据位于 Azure Blob 存储或 Azure Data Lake Store 中，则 [PolyBase 与 T-SQL](load-data-from-azure-blob-storage-using-polybase.md) 可以发挥作用。 使用此方法可以获得加载过程的最大控制度，不过同时需要定义外部数据对象。 其他方法在你将源表映射到目标表时，在幕后定义这些对象。  若要协调 T-SQL 负载，可以使用 Azure 数据工厂、SSIS 或 Azure Functions。
-- 如果源数据位于本地 SQL Server 或云中的 SQL Server，则 [PolyBase 与 SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 可以发挥作用。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
+- [COPY 语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)是推荐的加载实用工具，因为它使你能够无缝灵活地加载数据。 该语句具有许多 PolyBase 不提供的其他加载功能。 
+- [PolyBase 与 t-sql](load-data-from-azure-blob-storage-using-polybase.md)要求您定义外部数据对象。
 - [将 PolyBase 和 COPY 语句与 Azure 数据工厂 (ADF) 配合使用](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)是另一个业务流程工具。  它定义管道并计划作业。
+- 当你的源数据处于 SQL Server 时[，PolyBase 与 SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)非常有用。 SSIS 定义源到目标表的映射，同时可协调负载。 如果已有 SSIS 包，可将这些包修改为使用新的数据仓库目标。
 - [将 PolyBase 与 Azure DataBricks 配合使用](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)，可使用 PolyBase 将数据从表传输到 Databricks 数据帧，并且/或者可将 Databricks 数据帧中的数据写入表。
 
 ### <a name="other-loading-options"></a>其他加载选项

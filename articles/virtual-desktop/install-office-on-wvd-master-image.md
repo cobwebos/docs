@@ -4,20 +4,20 @@ description: 如何在 Windows 虚拟桌面版映像到 Azure 上安装和自定
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e213ac7a4d0436cf904a8104cea7e76eabaece4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200522"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
-本文介绍如何在用于上传到 Azure 的主虚拟硬盘（VHD）映像上安装 Office 365 ProPlus、OneDrive 和其他常用应用程序。 如果用户需要访问特定业务线（LOB）应用程序，我们建议在完成本文中的说明后安装这些应用程序。
+本文介绍如何在用于上传到 Azure 的主虚拟硬盘（VHD）映像上安装适用于企业版、OneDrive 和其他常见应用程序 Microsoft 365 应用。 如果用户需要访问特定业务线（LOB）应用程序，我们建议在完成本文中的说明后安装这些应用程序。
 
 本文假设你已创建虚拟机（VM）。 否则，请参阅[准备和自定义主 VHD 映像](set-up-customize-master-image.md#create-a-vm)
 
@@ -28,32 +28,33 @@ ms.locfileid: "79127850"
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>在共享计算机激活模式下安装 Office
 
-共享计算机激活使你能够将 Office 365 ProPlus 部署到你组织中由多个用户访问的计算机。 有关共享计算机激活的详细信息，请参阅[Office 365 的共享计算机激活概述 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)。
+共享计算机激活允许你将适用于企业的 Microsoft 365 应用部署到组织中由多个用户访问的计算机。 有关共享计算机激活的详细信息，请参阅[Microsoft 365 应用的共享计算机激活概述](/deployoffice/overview-shared-computer-activation)。
 
 使用[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)安装 office。 Windows 10 企业多会话仅支持以下版本的 Office：
-- Office 365 专业增强版
-- Microsoft 365 商业版订阅随附的 Office 365 业务
+
+   - Microsoft 365 企业应用版
+   - 适用于企业的 Microsoft 365 适用于 Microsoft 365 商业版高级订阅的应用
 
 Office 部署工具需要一个配置 XML 文件。 若要自定义下面的示例，请参阅[Office 部署工具的配置选项](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)。
 
 我们提供的此示例配置 XML 将执行以下操作：
 
-- 从每月频道安装 Office，并在执行时从每月频道中提供更新。
-- 使用 x64 体系结构。
-- 禁用自动更新。
-- 删除 Office 的任何现有安装并迁移其设置。
-- 启用共享计算机激活。
+   - 从月度企业渠道安装 Office 并从月度企业渠道交付更新。
+   - 使用 x64 体系结构。
+   - 禁用自动更新。
+   - 删除 Office 的任何现有安装并迁移其设置。
+   - 启用共享计算机激活。
 
 >[!NOTE]
 >在 Windows 虚拟桌面中，Visio 的模具搜索功能可能无法按预期方式工作。
 
 下面是此示例配置 XML 不会执行的操作：
 
-- 安装 Skype for Business
-- 在每用户模式下安装 OneDrive。 若要了解详细信息，请参阅[在每个计算机模式下安装 OneDrive](#install-onedrive-in-per-machine-mode)。
+   - 安装 Skype for Business
+   - 在每用户模式下安装 OneDrive。 若要了解详细信息，请参阅[在每个计算机模式下安装 OneDrive](#install-onedrive-in-per-machine-mode)。
 
 >[!NOTE]
->共享计算机激活可通过组策略对象（Gpo）或注册表设置进行设置。 GPO 位于 "**计算机\\配置策略\\" 管理模板\\Microsoft Office 2016 （计算机）\\授权设置**
+>共享计算机激活可通过组策略对象（Gpo）或注册表设置进行设置。 GPO 位于 "**计算机配置策略" \\ \\ 管理模板 \\ Microsoft Office 2016 （计算机） \\ 授权设置**
 
 Office 部署工具包含 setup.exe。 若要安装 Office，请在命令行中运行以下命令：
 
@@ -61,13 +62,13 @@ Office 部署工具包含 setup.exe。 若要安装 Office，请在命令行中�
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>示例配置 .xml
+#### <a name="sample-configurationxml"></a>示例 configuration.xml
 
-下面的 XML 示例将安装每月发布。
+下面的 XML 示例将安装月度企业通道版本。
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -116,12 +117,12 @@ OneDrive 通常按用户安装。 在此环境中，应将其安装在每台计�
 
 下面介绍如何在每个计算机模式下安装 OneDrive：
 
-1. 首先，创建一个用于暂存 OneDrive 安装程序的位置。 本地磁盘文件夹或 [\\\\unc] （file://unc）位置正常。
+1. 首先，创建一个用于暂存 OneDrive 安装程序的位置。 本地磁盘文件夹或 [ \\ \\ unc] （file://unc）位置正常。
 
-2. 通过以下链接将 OneDriveSetup 下载到暂存位置：<https://aka.ms/OneDriveWVD-Installer>
+2. 通过以下链接将 OneDriveSetup.exe 下载到暂存位置：<https://aka.ms/OneDriveWVD-Installer>
 
-3. 如果你通过省略** \<ExcludeApp ID = "onedrive"\>** 将 office 与 OneDrive 一起安装，请运行以下命令，从提升的命令提示符中卸载任何现有的 onedrive 每用户安装：
-    
+3. 如果通过省略安装 office with OneDrive **\<ExcludeApp ID="OneDrive" /\>** ，请运行以下命令，从提升的命令提示符中卸载任何现有的 onedrive 每用户安装：
+
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
@@ -156,9 +157,11 @@ OneDrive 通常按用户安装。 在此环境中，应将其安装在每台计�
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>团队和 Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft 团队和 Skype for Business
 
-Windows 虚拟桌面不支持 Skype for business 和团队。
+Windows 虚拟桌面不支持 Skype for Business。
+
+有关安装 Microsoft 团队的帮助，请参阅[在 Windows 虚拟桌面上使用 Microsoft 团队](teams-on-wvd.md)。 Windows 虚拟桌面上适用于 Microsoft 团队的媒体优化在预览版中提供。
 
 ## <a name="next-steps"></a>后续步骤
 

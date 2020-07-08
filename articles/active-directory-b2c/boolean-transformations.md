@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 7c292f939339add06168c55236f8666651e4aace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529202"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201270"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -36,7 +36,7 @@ ms.locfileid: "80529202"
 
 以下声明转换演示如何执行两个布尔型 ClaimTypes 的 And 运算：`isEmailNotExist` 和 `isSocialAccount`。 如果这两个输入声明的值为 `true`，则输出声明 `presentEmailSelfAsserted` 设置为 `true`。 在业务流程步骤中，只有在社交帐户电子邮件为空的情况下，才可以使用前置条件来预设自断言页。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isEmailNotExist" TransformationClaimType="inputClaim1" />
@@ -48,7 +48,7 @@ ms.locfileid: "80529202"
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-of-andclaims"></a>情况的示例
 
 - 输入声明：
     - **inputClaim1**: true
@@ -72,7 +72,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `accountEnabled` ClaimType 的值为 false，则会引发错误消息。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabledIsTrue" TransformationMethod="AssertBooleanClaimIsEqualToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="accountEnabled" TransformationClaimType="inputClaim" />
@@ -85,7 +85,8 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 
 `login-NonInteractive` 验证技术配置文件会调用 `AssertAccountEnabledIsTrue` 声明转换。
-```XML
+
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -96,7 +97,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 自断言技术配置文件调用验证 login-NonInteractive 技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Custom error message if account is disabled.</Item>
@@ -107,7 +108,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>AssertBooleanClaimIsEqualToValue 的示例
 
 - 输入声明：
     - **inputClaim**: false
@@ -124,10 +125,9 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
 | OutputClaim | compareResult | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
-
 以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等于 `true`，则声明转换返回 `true`，否则返回 `false`。
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
@@ -141,7 +141,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-of-comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue 的示例
 
 - 输入声明：
     - **inputClaim**: false
@@ -149,8 +149,6 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
     - **valueToCompareTo**: true
 - 输出声明：
     - compareResult：false
-
-
 
 ## <a name="notclaims"></a>NotClaims
 
@@ -163,7 +161,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 使用此声明转换对声明执行逻辑非运算。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="NotClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userExists" TransformationClaimType="inputClaim" />
@@ -174,7 +172,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-of-notclaims"></a>NotClaims 的示例
 
 - 输入声明：
     - **inputClaim**: false
@@ -193,7 +191,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 以下声明转换演示如何执行两个布尔型 ClaimTypes 的 `Or` 运算。 在业务流程步骤中，如果其中一个声明的值为 `true`，则可以使用前置条件来预设自断言页。
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="isLastTOSAcceptedNotExists" TransformationClaimType="inputClaim1" />
@@ -205,7 +203,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-of-orclaims"></a>OrClaims 的示例
 
 - 输入声明：
     - **inputClaim1**: true

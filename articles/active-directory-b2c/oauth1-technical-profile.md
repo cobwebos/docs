@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204075"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 ## <a name="protocol"></a>协议
 
-**协议**元素的`OAuth1` **Name**属性需要设置为。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
+“Protocol”元素的“Name”属性必须设置为 `OAuth1`。 例如，**Twitter-OAUTH1** 技术配置文件的协议为 `OAuth1`。
 
-```XML
+```xml
 <TechnicalProfile Id="Twitter-OAUTH1">
   <DisplayName>Twitter</DisplayName>
   <Protocol Name="OAuth1" />
@@ -68,7 +68,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必需 | 说明 |
+| Attribute | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 特性 | 必需 | 说明 |
+| 特性 | 必需 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   |
 

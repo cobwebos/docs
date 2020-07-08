@@ -6,21 +6,21 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5c9b7eb1b03b6b6e3721c13f9ebf7da25dd2e376
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18d341db8538af12dbbabab4797459779a553e4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745056"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85204993"
 ---
 # <a name="user-defined-restore-points"></a>用户定义的还原点
 
-本文介绍如何在 Azure Synapse Analytics 中使用 PowerShell 和 Azure 门户为 SQL 池创建新的用户定义的还原点。
+本文介绍了如何使用 PowerShell 和 Azure 门户为 Azure Synapse Analytics 中的 SQL 池新建用户定义的还原点。
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>通过 PowerShell 创建用户定义的还原点
 
@@ -64,7 +64,7 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 2. 导航到要为其创建还原点的 SQL 池。
 
-3. 从左窗格中选择“概述”  ，选择“+ 新建还原点”  。 如果 "新还原点" 按钮未启用，请确保 SQL 池未暂停。
+3. 从左窗格中选择“概述”  ，选择“+ 新建还原点”  。 如果“新建还原点”按钮未启用，请确保 SQL 池未暂停。
 
     ![新建还原点](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -76,5 +76,5 @@ Get-AzSqlDatabaseRestorePoints -ResourceGroupName $ResourceGroupName -ServerName
 
 - [还原现有的 SQL 池](sql-data-warehouse-restore-active-paused-dw.md)
 - [还原已删除的 SQL 池](sql-data-warehouse-restore-deleted-dw.md)
-- [从异地备份 SQL 池还原](sql-data-warehouse-restore-from-geo-backup.md)
+- [从异地备份 SQL 池进行还原](sql-data-warehouse-restore-from-geo-backup.md)
 

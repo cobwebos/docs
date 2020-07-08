@@ -1,26 +1,26 @@
 ---
 title: 可管理性和监视 - 概述
-description: 监视和可管理性概述：使用 Synapse SQL 池的资源利用率、日志和查询活动、建议以及数据保护（备份和还原）。
+description: 针对资源利用率、日志和查询活动、建议以及使用 Synapse SQL 池进行数据保护（备份和还原）的监视和可管理性概述。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19b2b4aecedbaa66c258b9076c517b02034a46fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586416"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200981"
 ---
 # <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Synapse SQL 池的可管理性和监视
 
-Synapse SQL 允许您通过 SQL 池预配数据仓库。 以下文章可帮助你管理和监视数据仓库。 你还将了解如何优化数据仓库的使用和性能。
+Synapse SQL 允许你通过 SQL 池预配数据仓库。 以下文章可帮助你管理和监视数据仓库。 你还将了解如何优化数据仓库的使用和性能。
 
 ## <a name="overview"></a>概述
 

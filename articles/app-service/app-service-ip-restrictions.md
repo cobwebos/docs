@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a77172aacc4c58e6430339328410744cc866def3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207118"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure 应用服务访问限制
 
@@ -59,6 +59,10 @@ ms.locfileid: "81639273"
 服务终结点不能用于限制对在应用服务环境中运行的应用程序的访问。 当应用处于应用服务环境中时，可以使用 IP 访问规则来控制对应用的访问。 
 
 通过服务终结点，可以为应用配置应用程序网关或其他 WAF 设备。 还可以为多层应用程序配置安全后端。 有关某些可能性的更多详细信息，请阅读[网络功能和应用服务](networking-features.md)和[应用程序网关与服务终结点的集成](networking/app-gateway-with-service-endpoints.md)。
+
+> [!NOTE]
+> 使用 IP SSL 虚拟 IP （VIP）的 web 应用目前不支持服务终结点。 
+>
 
 ## <a name="managing-access-restriction-rules"></a>管理访问限制规则
 

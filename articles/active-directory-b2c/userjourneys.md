@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 189343888d2856a6945723c030485e58394c912f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: d705c7fbdb744082b402f4dd598551107563ed2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85203157"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -25,21 +25,21 @@ ms.locfileid: "82559600"
 
 这些用户旅程可视为一些模板，可用于满足感兴趣社区的各种信赖方的核心需求。 用户旅程有助于定义策略的信赖方部分。 策略可以定义多个用户旅程。 每个用户旅程都是一系列的业务流程步骤。
 
-若要定义策略支持的用户旅程，请在策略文件的顶级元素下添加 UserJourneys  元素。
+若要定义策略支持的用户旅程，请在策略文件的顶级元素下添加 UserJourneys 元素。
 
-UserJourneys  元素包含以下元素：
+UserJourneys 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | UserJourney | 1:n | 定义完整用户流所需的所有构造的用户旅程。 |
 
-UserJourney  元素包含以下属性：
+UserJourney 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| ID | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney  元素指向此属性。 |
+| ID | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney 元素指向此属性。 |
 
-UserJourney  元素包含以下元素：
+UserJourney 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -51,25 +51,25 @@ UserJourney  元素包含以下元素：
 
 业务流程步骤可以基于业务流程步骤元素中定义的前提条件有条件地执行。 例如，仅当存在特定声明或声明等于或未达到指定值时，才能检查执行业务流程步骤。
 
-若要指定业务流程步骤的有序列表，请将 OrchestrationSteps  元素作为策略的一部分添加。 此元素是必需的。
+若要指定业务流程步骤的有序列表，请将 OrchestrationSteps 元素作为策略的一部分添加。 此元素是必需的。
 
-OrchestrationSteps  元素包含以下元素：
+OrchestrationSteps 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | OrchestrationStep | 1:n | 一个有序的业务流程步骤。 |
 
-OrchestrationStep  元素包含以下属性：
+OrchestrationStep 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | `Order` | 是 | 业务流程步骤的顺序。 |
-| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection  - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp  - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange  - 指示业务流程步骤与声明提供程序交换声明。</li><li>**GetClaims** -指定业务流程步骤应通过其`InputClaims`配置处理从信赖方发送到 Azure AD B2C 的声明数据。</li><li>SendClaims  - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> |
+| `Type` | 是 | 业务流程步骤的类型。 可能的值： <ul><li>ClaimsProviderSelection - 指示业务流程步骤向用户提供各种声明提供程序以选择一个。</li><li>CombinedSignInAndSignUp - 指示业务流程步骤提供组合的社交提供程序登录和本地帐户注册页面。</li><li>ClaimsExchange - 指示业务流程步骤与声明提供程序交换声明。</li><li>**GetClaims** - 指定业务流程步骤应处理通过其 `InputClaims` 配置从信赖方发送到 Azure AD B2C 的声明数据。</li><li>SendClaims - 指示业务流程步骤将声明发送给具有声明颁发者颁发的令牌的信赖方。</li></ul> |
 | ContentDefinitionReferenceId | 否 | 与此业务流程步骤相关联的[内容定义](contentdefinitions.md)的标识符。 通常内容定义引用标识符在自断言的技术配置文件中定义。 但是，在某些情况下，Azure AD B2C 需要显示无技术配置文件的某些内容。 有两个示例 - 如果业务流程步骤的类型是以下类型之一：`ClaimsProviderSelection` 或 `CombinedSignInAndSignUp`，Azure AD B2C 需要在没有技术配置文件的情况下显示标识提供者选择。 |
 | CpimIssuerTechnicalProfileReferenceId | 否 | 业务流程步骤的类型是 `SendClaims`。 此属性定义为信赖方颁发令牌的声明提供程序的技术配置文件标识符。  如果不存在，则不会创建任何信赖方令牌。 |
 
 
-OrchestrationStep  元素可以包含以下元素：
+OrchestrationStep 元素可以包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -79,7 +79,7 @@ OrchestrationStep  元素可以包含以下元素：
 
 ### <a name="preconditions"></a>Preconditions
 
-Preconditions  元素包含以下元素：
+Preconditions 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -88,14 +88,14 @@ Preconditions  元素包含以下元素：
 
 #### <a name="precondition"></a>Precondition
 
-Precondition  元素包含以下属性：
+Precondition 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
-| `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist  （指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals  （指定当指定声明存在且其值等于指定值时应执行操作）。 |
+| `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
 | `ExecuteActionsIf` | 是 | 使用 true 或 false 测试确定是否应执行前置条件中的操作。 |
 
-Precondition  元素包含以下元素：
+Precondition 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
@@ -106,7 +106,7 @@ Precondition  元素包含以下元素：
 
 以下前置条件检查是否存在用户的 objectId。 在用户旅程中，用户已选择使用本地帐户进行登录。 如果存在 objectId，请跳过此业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -123,7 +123,7 @@ Precondition  元素包含以下元素：
 
 以下前置条件检查用户是否使用社交帐户登录。 已尝试在目录中查找用户帐户。 如果用户使用本地帐户登录或注册，请跳过此业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="3" Type="ClaimsExchange">
   <Preconditions>
     <Precondition Type="ClaimEquals" ExecuteActionsIf="true">
@@ -140,7 +140,7 @@ Precondition  元素包含以下元素：
 
 Preconditions 可以检查多个前置条件。 以下示例检查是否存在“objectId”或“电子邮件”。 如果第一个条件为 true，旅程将跳到下一个业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="4" Type="ClaimsExchange">
   <Preconditions>
   <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
@@ -174,7 +174,7 @@ Preconditions 可以检查多个前置条件。 以下示例检查是否存在�
 | --------- | -------- | ----------- |
 | DisplayOption| 否 | 控制单个声明提供程序选择可用时的行为。 可能的值： `DoNotShowSingleProvider` （默认值），用户将立即重定向到联合标识提供者。 或  `ShowSingleProvider` Azure AD B2C 会显示带有单一个标识提供者选择的登录页。 若要使用此属性，[内容定义版本](page-layout.md)必须为  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` 及更高版本。|
 
-ClaimsProviderSelection  元素包含以下属性：
+ClaimsProviderSelection 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |
@@ -185,7 +185,7 @@ ClaimsProviderSelection  元素包含以下属性：
 
 在下面的业务流程步骤中，用户可以选择使用 Facebook、LinkedIn、Twitter、Google 或本地帐户进行登录。 如果用户选择其中一个社交标识提供者，则第二个业务流程步骤将使用 `TargetClaimsExchangeId` 属性中指定的所选声明交换执行。 第二个业务流程步骤将用户重定向到社交标识提供者以完成登录过程。 如果用户选择使用本地帐户登录，Azure AD B2C 将保持相同的业务流程步骤（相同的注册页面或登录页面），并跳过第二个业务流程步骤。
 
-```XML
+```xml
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
     <ClaimsProviderSelections>
     <ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange" />
@@ -220,13 +220,13 @@ ClaimsProviderSelection  元素包含以下属性：
 
 ## <a name="claimsexchanges"></a>ClaimsExchanges
 
-ClaimsExchanges  元素包含以下元素：
+ClaimsExchanges 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | ClaimsExchange | 1:n | 具体取决于正在使用的技术配置文件，根据所选的 ClaimsProviderSelection 重定向客户端，或对交换声明进行服务器调用。 |
 
-ClaimsExchange  元素包含以下属性：
+ClaimsExchange 元素包含以下属性：
 
 | 属性 | 必须 | 说明 |
 | --------- | -------- | ----------- |

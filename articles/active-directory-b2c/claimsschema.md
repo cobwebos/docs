@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78397811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201355"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -23,7 +23,7 @@ ms.locfileid: "78397811"
 
 ClaimsSchema  元素定义了可以引用为策略的一部分的声明类型。 声明架构是发出声明的位置。 声明可以是名字、姓氏、显示名称、电话号码等。 ClaimsSchema 元素包含 ClaimType  元素的列表。 ClaimType  元素包含 Id  属性，它是声明名称。
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="Id">
@@ -97,7 +97,7 @@ Protocol  元素包含以下属性：
 
 在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname  声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
 
-```XML
+```xml
 <ClaimType Id="surname">
   <DisplayName>Surname</DisplayName>
   <DataType>string</DataType>
@@ -111,7 +111,7 @@ Protocol  元素包含以下属性：
 
 因此，Azure AD B2C 发布的 JWT 令牌会忽略 `family_name`，而不是 ClaimType 名称 surname  。
 
-```JSON
+```json
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   "auth_time": 1535013501,
@@ -132,7 +132,7 @@ Mask  元素包含以下属性：
 
 以下示例将配置具有 `Simple` 掩码的 PhoneNumber  声明：
 
-```XML
+```xml
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
@@ -147,7 +147,7 @@ Mask  元素包含以下属性：
 
 以下示例将配置具有 `Regex` 掩码的 AlternateEmail  声明：
 
-```XML
+```xml
 <ClaimType Id="AlternateEmail">
   <DisplayName>Please verify the secondary email linked to your account</DisplayName>
   <DataType>string</DataType>
@@ -190,7 +190,7 @@ Enumeration  元素包含以下属性：
 
 以下示例将配置默认值设置为 `New York` 的  “城市”下拉列表声明：
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
   <DataType>string</DataType>
@@ -218,7 +218,7 @@ Pattern  元素可以包含以下属性：
 
 以下示例将配置具有正则表达式输入验证和帮助文本的 email  声明：
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -262,7 +262,7 @@ TextBox  用户输入类型用于提供单行文本框。
 
 ![显示在声明类型中指定的属性的 TextBox](./media/claimsschema/textbox.png)
 
-```XML
+```xml
 <ClaimType Id="displayName">
   <DisplayName>Display Name</DisplayName>
   <DataType>string</DataType>
@@ -277,7 +277,7 @@ EmailBox  用户输入类型用于提供基本电子邮件输入字段。
 
 ![显示在声明类型中指定的属性的 EmailBox](./media/claimsschema/emailbox.png)
 
-```XML
+```xml
 <ClaimType Id="email">
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
@@ -295,7 +295,7 @@ Password  用户输入类型用于记录用户输入的密码。
 
 ![使用具有 password 的声明类型](./media/claimsschema/password.png)
 
-```XML
+```xml
 <ClaimType Id="password">
   <DisplayName>Password</DisplayName>
   <DataType>string</DataType>
@@ -310,7 +310,7 @@ DateTimeDropdown  用户输入类型用于提供一组用来选择日、月和�
 
 ![使用具有 datetimedropdown 的声明类型](./media/claimsschema/datetimedropdown.png)
 
-```XML
+```xml
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date Of Birth</DisplayName>
   <DataType>date</DataType>
@@ -325,7 +325,7 @@ RadioSingleSelect  用户输入类型用于提供允许用户选择一个选项�
 
 ![使用具有 radiodsingleselect 的声明类型](./media/claimsschema/radiosingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="color">
   <DisplayName>Preferred color</DisplayName>
   <DataType>string</DataType>
@@ -344,7 +344,7 @@ DropdownSingleSelect  用户输入类型用于提供允许用户选择一个选�
 
 ![使用具有 dropdownsingleselect 的声明类型](./media/claimsschema/dropdownsingleselect.png)
 
-```XML
+```xml
 <ClaimType Id="city">
   <DisplayName>City where you work</DisplayName>
   <DataType>string</DataType>
@@ -363,7 +363,7 @@ CheckboxMultiSelect  用户输入类型用于提供允许用户选择多个选�
 
 ![使用具有 checkboxmultiselect 的声明类型](./media/claimsschema/checkboxmultiselect.png)
 
-```XML
+```xml
 <ClaimType Id="languages">
   <DisplayName>Languages you speak</DisplayName>
   <DataType>string</DataType>
@@ -382,7 +382,7 @@ Readonly  用户输入类型用于提供要显示声明和值的只读字段。
 
 ![使用具有 readonly 的声明类型](./media/claimsschema/readonly.png)
 
-```XML
+```xml
 <ClaimType Id="membershipNumber">
   <DisplayName>Membership number</DisplayName>
   <DataType>string</DataType>
@@ -398,7 +398,7 @@ Paragraph  用户输入类型用于提供仅在段落标记中显示文本的字
 
 ![使用具有 paragraph 的声明类型](./media/claimsschema/paragraph.png)
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>

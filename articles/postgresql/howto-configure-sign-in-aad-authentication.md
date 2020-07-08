@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7df9c40980d7a35c1eab0f892c3aca0a30938f57
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85194104"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向 PostgreSQL 进行身份验证
 
@@ -54,21 +54,19 @@ ms.locfileid: "83652551"
 
 以下是用户/应用程序使用 Azure AD 进行身份验证所需的步骤：
 
+### <a name="prerequisites"></a>先决条件
+
+可以按照 Azure Cloud Shell、Azure VM 或本地计算机上的顺序进行。 请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>步骤 1：使用 Azure AD 进行身份验证
 
-请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
+首先使用 Azure CLI 工具通过 Azure AD 进行身份验证。 Azure Cloud Shell 中不需要执行此步骤。
 
-调用 Azure CLI 工具以使用 Azure AD 进行身份验证。 这要求你提供 Azure AD 的用户 ID 和密码。
-
-```azurecli-interactive
+```
 az login
 ```
 
-此命令将启动浏览器窗口来显示 Azure AD 身份验证页。
-
-> [!NOTE]
-> 还可以使用 Azure Cloud Shell 来执行这些步骤。
-> 请注意，在 Azure Cloud Shell 中检索 Azure AD 访问令牌时，需要显式调用 `az login` 并再次登录（在单独的窗口中使用代码）。 登录后，`get-access-token` 命令将按预期方式工作。
+此命令将启动一个浏览器窗口到 Azure AD 身份验证 "页。 这一操作需要提供 Azure AD 的用户 ID 和密码。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>步骤 2：检索 Azure AD 访问令牌
 
@@ -117,8 +115,12 @@ az account get-access-token --resource-type oss-rdbms
 
 Windows 示例：
 
-```shell
+```cmd
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
+```
+
+```PowerShell
+$env:PGPASSWORD='<copy/pasted TOKEN value from step 2>'
 ```
 
 Linux/macOS 示例：
@@ -132,6 +134,15 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+
+连接时的重要注意事项：
+
+* `user@tenant.onmicrosoft.com`尝试连接的 Azure AD 用户或组的名称
+* 始终在 Azure AD 用户/组名称后追加服务器名称（例如 `@mydb` ）
+* 请确保使用与 Azure AD 用户或组名称拼写相同的方式
+* Azure AD 的用户名和组名区分大小写
+* 作为组连接时，请仅使用组名称（例如 `GroupName@mydb` ）
+* 如果名称包含空格，请 `\` 在每个空格前使用以对其进行转义
 
 现在可以使用 Azure AD 身份验证向 PostgreSQL 服务器进行身份验证。
 
@@ -169,8 +180,8 @@ CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
 
 Azure Database for PostgreSQL 中的 Azure AD 身份验证确保 PostgreSQL 服务器中存在用户，并通过验证令牌的内容来检查令牌的有效性。 执行以下令牌验证步骤：
 
-- 令牌由 Azure AD 签名，未被篡改
-- 由 Azure AD 为与服务器关联的租户颁发令牌
+- 令牌是否由 Azure AD 签名，并且未被篡改
+- 是否由 Azure AD 为与服务器关联的租户颁发令牌
 - 令牌尚未过期
 - 令牌用于 Azure Database for PostgreSQL 资源（而不是其他 Azure 资源）
 

@@ -2,14 +2,14 @@
 title: 使用 Azure 门户配置区块链数据管理器-Azure 区块链服务
 description: 使用 Azure 门户创建和管理 Azure 区块链服务的区块链数据管理器。
 ms.date: 03/30/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a151c28d31bf0bb7f21185fb161315d42f9563d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85200675"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 门户配置区块链数据管理器
 
@@ -20,7 +20,7 @@ ms.locfileid: "81260592"
 * 为 Azure 区块链 Service transaction 节点创建区块链数据管理器实例
 * 添加区块链应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[快速入门：使用 Azure 门户或快速入门创建区块链成员](create-member.md) [：使用 Azure CLI 创建 Azure 区块链 Service 区块链成员](create-member-cli.md)。 使用区块链数据管理器时，建议使用 Azure 区块链服务*标准*层。
 * 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -32,7 +32,7 @@ ms.locfileid: "81260592"
 
 出站连接将区块链数据发送到 Azure 事件网格。 创建实例时，可以配置单个出站连接。 区块链数据管理器支持对任意给定的区块链数据管理器实例使用多个事件网格主题出站连接。 可将区块链数据发送到一个或多个目标。 若要添加另一个目标，只需向实例添加其他出站连接即可。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 请参阅要连接到区块链数据管理器的 Azure 区块链服务成员。 选择“区块链数据管理器”****。
 1. 选择 **添加** 。
 
@@ -40,14 +40,14 @@ ms.locfileid: "81260592"
 
     输入以下详细信息：
 
-    设置 | 说明
+    设置 | 描述
     --------|------------
-    名称 | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，并且最大长度为20个字符。
+    “属性” | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，并且最大长度为20个字符。
     事务节点 | 选择事务节点。 仅列出具有读取访问权限的事务节点。
     连接名称 | 输入用于发送区块链事务数据的出站连接的唯一名称。
     事件网格终结点 | 选择与区块链数据管理器实例相同的订阅中的事件网格主题。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
     创建区块链数据管理器实例需要不到一分钟的时间。 部署实例后，它会自动启动。 正在运行的区块链数据管理器实例从事务节点捕获区块链事件，并将数据发送到出站连接。
 
@@ -108,18 +108,18 @@ ms.locfileid: "81260592"
 
     ![创建存储帐户容器](./media/data-manager-portal/create-container.png)
 
-    | 字段 | 说明 |
+    | 字段 | 描述 |
     |-------|-------------|
-    | 名称  | 为该容器命名。 例如，“smartcontract”** |
+    | “属性”  | 为该容器命名。 例如，“smartcontract”** |
     | 公共访问级别 | 选择“专用(没有匿名访问权限)”** |
 
-1. 选择“确定”  创建容器。
+1. 选择“确定”创建容器。
 1. 先选择该容器，然后选择“上传”****。
 1. 选择在[获取合同 ABI 和字节码](#get-contract-abi-and-bytecode)部分中创建的两个 JSON 文件。
 
     ![上传 blob](./media/data-manager-portal/upload-blobs.png)
 
-    选择 "**上传**"。
+    选择**上载**。
 
 #### <a name="generate-url"></a>生成 URL
 
@@ -144,13 +144,13 @@ ms.locfileid: "81260592"
 
     输入区块链应用程序的名称以及智能合同 ABI 和字节码 URL。
 
-    设置 | 说明
+    设置 | 描述
     --------|------------
-    名称 | 输入要跟踪的区块链应用程序的唯一名称。
+    “属性” | 输入要跟踪的区块链应用程序的唯一名称。
     合同 ABI | 合同 ABI 文件的 URL 路径。 有关详细信息，请参阅[创建合同 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。
     合同字节码 | 字节码文件的 URL 路径。 有关详细信息，请参阅[创建合同 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
     创建应用程序后，应用程序将显示在区块链应用程序的列表中。
 

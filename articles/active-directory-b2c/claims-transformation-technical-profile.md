@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6553b9ec120ca0e1e479b400495b61bc68c88cf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189780"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85201202"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
 
@@ -26,11 +26,11 @@ ms.locfileid: "78189780"
 
 ## <a name="protocol"></a>协议
 
-**协议**元素的`Proprietary` **Name**属性需要设置为。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 **handler** 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称：`Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
 
 以下示例演示了一个声明转换技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="Facebook-OAUTH-UnLink">
     <DisplayName>Unlink Facebook</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -52,7 +52,7 @@ ms.locfileid: "78189780"
 
 **OutputClaimsTransformations** 元素可能包含用于修改声明或生成新声明的 **OutputClaimsTransformation** 元素集合。 以下技术配置文件调用 **RemoveAlternativeSecurityIdByIdentityProvider** 声明转换。 此声明转换从 **AlternativeSecurityIds** 的集合中删除一个社交标识。 此技术配置文件的输出声明为 **identityProvider2**（设置为 `facebook.com`）和 **AlternativeSecurityIds**（其中包含在删除 facebook.com 标识后与此用户关联的社交标识的列表）。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider"
 TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">
@@ -84,7 +84,7 @@ TransformationClaimType="collection" />
 
 使用声明转换技术配置文件，可以在任何用户旅程的业务流程步骤中执行声明转换。 在以下示例中，业务流程步骤调用取消链接技术配置文件中的一个，例如 **UnLink-Facebook-OAUTH**。 在从集合中删除 Facebook 标识时，此技术配置文件调用声明转换技术配置文件 RemoveAlternativeSecurityIdByIdentityProvider，后者生成一个新的 AlternativeSecurityIds2 声明，该声明包含用户社交标识的列表********。
 
-```XML
+```xml
 <UserJourney Id="AccountUnLink">
   <OrchestrationSteps>
     ...
@@ -102,15 +102,15 @@ TransformationClaimType="collection" />
 
 ## <a name="metadata"></a>元数据
 
-| 特性 | 必需 | 说明 |
+| Attribute | 必需 | 描述 |
 | --------- | -------- | ----------- |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项`true`设置为。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定[声明解析](claim-resolver-overview.md)是否包含在技术配置文件中。 可能的值：`true` 或 `false` （默认值）。 若要使用技术配置文件中的声明解析程序，请将此项设为 `true`。 |
 
 ## <a name="use-a-validation-technical-profile"></a>使用验证技术配置文件
 
 声明转换技术配置文件可以用来验证信息。 在以下示例中，名为 **LocalAccountSignUpWithLogonEmail** 的[自断言技术配置文件](self-asserted-technical-profile.md)要求用户输入电子邮件两次，然后调用名为 **Validate-Email** 的[验证技术配置文件](validation-technical-profile.md)，对电子邮件进行验证。 **Validate-Email** 技术配置文件调用声明转换 **AssertEmailAreEqual** 来比较两个声明（**email** 和 **emailRepeat**）。如果在进行指定的比较后确定这两个声明不相同，则会引发异常。
 
-```XML
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="AssertEmailAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
     <InputClaims>
@@ -126,7 +126,7 @@ TransformationClaimType="collection" />
 
 声明转换技术配置文件调用 **AssertEmailAreEqual** 声明转换，后者断言用户提供的电子邮件是否相同。
 
-```XML
+```xml
 <TechnicalProfile Id="Validate-Email">
   <DisplayName>Unlink Facebook</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -145,7 +145,7 @@ TransformationClaimType="collection" />
 
 自断言技术配置文件可以调用验证技术配置文件，并显示 **UserMessageIfClaimsTransformationStringsAreNotEqual** 元数据中指定的错误消息。
 
-```XML
+```xml
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
   <DisplayName>User ID signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d4c538a9292698fecc8b44c055ab201748e292c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85202987"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 4xx HTTP 状态代码，其中包含以下数据。 有关详细信息，请参阅[返回错误消息](restful-technical-profile.md#returning-error-message)
+验证技术配置文件是来自任何协议（如 [Azure Active Directory](active-directory-technical-profile.md) 或 [REST API](restful-technical-profile.md)）的普通技术配置文件。 验证技术配置文件返回输出声明，或返回 4xx HTTP 状态代码，其中包含以下数据。 有关详细信息，请参阅[返回错误消息](restful-technical-profile.md#returning-validation-error-message)
 
-```JSON
+```json
 {
     "version": "1.0.0",
     "status": 409,
@@ -87,7 +87,7 @@ Precondition  元素包含以下元素：
 2. 如果 userType 声明不存在，或 userType 的值为 `Partner`，则下一个验证技术配置文件不会执行。 验证技术配置文件会尝试从内部客户数据库读取用户配置文件，并在发生错误（如 REST API 服务不可用或任何内部错误）时继续。
 3. 如果 userType 声明不存在，或 userType 的值为 `Customer`，则最后一个验证技术配置文件不会执行。 验证技术配置文件会尝试从内部合作伙伴数据库读取用户配置文件，并在发生错误（如 REST API 服务不可用或任何内部错误）时继续。
 
-```XML
+```xml
 <ValidationTechnicalProfiles>
   <ValidationTechnicalProfile ReferenceId="login-NonInteractive" ContinueOnError="false" />
   <ValidationTechnicalProfile ReferenceId="REST-ReadProfileFromCustomertsDatabase" ContinueOnError="true" >
