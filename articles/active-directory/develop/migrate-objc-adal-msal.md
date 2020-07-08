@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77085171"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>将应用程序迁移到适用于 iOS 和 macOS 的 MSAL
@@ -40,7 +39,7 @@ Microsoft 标识平台与 Azure Active Directory v1.0 之前存在一些重要�
 
 * Microsoft 标识平台终结点遵从 OAuth 2.0 和 OpenId Connect 标准。
 
-### <a name="incremental-and-dynamic-consent"></a>增量同意和动态同意
+### <a name="incremental-and-dynamic-consent"></a>增量许可和动态许可
 
 * Azure Active Directory v1.0 终结点要求在应用程序注册过程中提前声明所有权限。 这意味着，这些权限是静态的。
 * Microsoft 标识平台允许动态请求权限。 应用只能根据需求请求权限，并在需求提高时请求更多的权限。
@@ -61,7 +60,7 @@ MSAL 公共 API 反映 Azure AD v1.0 与 Microsoft 标识平台之间的一些�
 
 在 ADAL 中，应用必须提供资源标识符（例如 `https://graph.microsoft.com`）才能从 Azure Active Directory v1.0 终结点获取令牌。** 资源可以在应用清单中定义它可以识别的多个范围或 oAuth2Permissions。 这样，客户端应用便可以根据应用注册期间预定义的一组特定范围请求该资源的令牌。
 
-在 MSAL 中，应用不是提供单个资源标识符，而是为每个请求提供一组范围。 范围是资源标识符后接“资源/权限”格式的权限名称。 例如： `https://graph.microsoft.com/user.read`
+在 MSAL 中，应用不是提供单个资源标识符，而是为每个请求提供一组范围。 范围是资源标识符后接“资源/权限”格式的权限名称。 例如，`https://graph.microsoft.com/user.read`
 
 在 MSAL 中可通过两种方式提供范围：
 
@@ -134,7 +133,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
 * `MSALErrorInteractionRequired`：用户必须执行交互式请求。 这可能是由于各种原因导致的，例如身份验证会话过期、条件性访问策略已更改、刷新令牌已过期或已被吊销、缓存中没有有效的令牌，等等。
 * `MSALErrorServerDeclinedScopes`：请求未完全完成并且某些范围未被授予访问权限。 此错误的可能原因是用户拒绝许可一个或多个范围的权限。
 
-处理[ `MSALError`列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误是可选的。 可以使用这些错误中的信息来改善用户体验。
+处理[ `MSALError` 列表](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)中的所有其他错误是可选的。 可以使用这些错误中的信息来改善用户体验。
 
 有关 MSAL 错误处理的详细信息，请参阅[使用 MSAL 处理异常和错误](msal-handling-exceptions.md)。
 
@@ -184,7 +183,7 @@ MSAL 更明确地区分应用可以处理的错误，以及需要用户干预的
 
 ### <a name="business-to-business-b2b"></a>企业到企业 (B2B)
 
-在 ADAL 中， `ADAuthenticationContext`为应用请求令牌的每个租户创建单独的实例。 这在 MSAL 中不再是必需的。 在 MSAL 中，可以创建的单个实例`MSALPublicClientApplication` ，并通过为 AcquireToken 和 acquireTokenSilent 调用指定不同的颁发机构来将其用于任何 AAD 云和组织。
+在 ADAL 中， `ADAuthenticationContext` 为应用请求令牌的每个租户创建单独的实例。 这在 MSAL 中不再是必需的。 在 MSAL 中，可以创建的单个实例 `MSALPublicClientApplication` ，并通过为 acquireToken 和 acquireTokenSilent 调用指定不同的颁发机构来将其用于任何 AAD 云和组织。
 
 ## <a name="sso-in-partnership-with-other-sdks"></a>在与其他 SDK 的合作方案中实现 SSO
 
@@ -226,7 +225,7 @@ iOS 上的 MSAL 还支持其他两种类型的 SSO：
 
 重定向 URI 应采用以下格式：`msauth.<app.bundle.id>://auth`。 将 `<app.bundle.id>` 替换为应用程序的捆绑 ID。 在 [Azure 门户](https://aka.ms/MobileAppReg)中指定重定向 URI。
 
-（仅适用于 iOS）若要支持基于证书的身份验证，需要在应用程序和 Azure 门户中，使用以下格式额外注册一个重定向 URI：`msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如： `msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
+（仅适用于 iOS）若要支持基于证书的身份验证，需要在应用程序和 Azure 门户中，使用以下格式额外注册一个重定向 URI：`msauth://code/<broker-redirect-uri-in-url-encoded-form>`。 例如，`msauth://code/msauth.com.microsoft.mybundleId%3A%2F%2Fauth`
 
 建议所有应用注册这两个重定向 URI。
 
@@ -321,8 +320,8 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 若要启用令牌缓存，请执行以下操作：
 1. 确保应用程序已正确签名
-2. 转到 Xcode 项目设置 >“功能”选项卡   >   “启用密钥链共享”
-3. 单击 **+** 并输入以下“密钥链组”  条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
+2. 转到 Xcode 项目设置 >“功能”选项卡 > “启用密钥链共享”
+3. 单击 **+** 并输入以下“密钥链组”条目：3.a 对于 iOS，输入 `com.microsoft.adalcache` 3.b 对于 macOS，输入 `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>创建 MSALPublicClientApplication 并切换到其 acquireToken 和 acquireTokeSilent 调用
 

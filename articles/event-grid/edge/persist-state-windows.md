@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086624"
 ---
 # <a name="persist-state-in-windows"></a>Windows 中的持久状态
@@ -73,9 +72,9 @@ ms.locfileid: "77086624"
     1. 启动文件资源管理器。
     1. 导航到**装载**点指向的文件夹。
     1. 右键单击，然后选择 "**属性**"。
-    1. 选择 "**安全性**"。
+    1. 选择“安全”。
     1. 在 "组或用户名" 下，选择 "**编辑**"。
-    1. 依次**Add**选择 "添加`Users`"、"输入" 和 "**检查名称**"，然后选择 **"确定"**。
+    1. 依次选择 "**添加**"、"输入" `Users` 和 "**检查名称**"，然后选择 **"确定"**。
     1. 在 "*用户的权限*" 下，选择 "**修改**"，然后选择 **"确定"**。
 1. 使用**绑定**来装入此卷，并从 Azure 门户重新部署事件网格模块
 
@@ -112,7 +111,7 @@ ms.locfileid: "77086624"
     ```
 
    >[!IMPORTANT]
-   >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，必须是**C：\\app\\metadataDb**。
+   >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，必须是**C： \\ app \\ metadataDb**。
 
 
     例如，
@@ -176,7 +175,7 @@ ms.locfileid: "77086624"
     ```
 
     >[!IMPORTANT]
-    >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，该模块必须是**C：\\app\\metadataDb**。
+    >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，该模块必须是**C： \\ app \\ metadataDb**。
 
     例如，
 
@@ -220,7 +219,7 @@ ms.locfileid: "77086624"
 * 事件持久性在创建时配置在事件订阅上，并且在创建事件订阅后无法修改。 若要切换事件持久性，必须删除并重新创建事件订阅。
 * 保持事件的速度几乎始终比在内存操作中慢，但速度差异很大程度上取决于驱动器的特征。 速度和可靠性之间的权衡对于所有消息系统都是固有的，但它的规模只是很明显。
 
-若要在事件订阅上启用事件持久性， `persistencePolicy`请`true`将设置为：
+若要在事件订阅上启用事件持久性，请将设置 `persistencePolicy` 为 `true` ：
 
  ```json
         {

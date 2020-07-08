@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167029"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -320,7 +319,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 `test-netconnection`
 
 > [!NOTE]
-> 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以在 PowerShell `$ProgressPreference = "SilentlyContinue"`中运行以禁用进度栏。
+> 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以 `$ProgressPreference = "SilentlyContinue"` 在 PowerShell 中运行以禁用进度栏。
 
 或
 
@@ -479,5 +478,5 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 ## <a name="next-steps"></a>后续步骤
 * 主要串行控制台 Windows 文档页位于[此处](serial-console-windows.md)。
-* 串行控制台也适用于[Linux](serial-console-linux.md) vm。
-* 了解有关[启动诊断](boot-diagnostics.md)的详细信息。
+* 串行控制台也适用于 [Linux](serial-console-linux.md) VM。
+* 详细了解[启动诊断](boot-diagnostics.md)。

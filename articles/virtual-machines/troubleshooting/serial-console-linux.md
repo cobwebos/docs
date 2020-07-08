@@ -1,6 +1,6 @@
 ---
 title: 适用于 Linux 的 Azure 串行控制台 |Microsoft Docs
-description: 用于 Azure 虚拟机和虚拟机规模集的双向串行控制台。
+description: 适用于 Azure 虚拟机和虚拟机规模集的双向串行控制台。
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,31 +14,30 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77167018"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
 
-Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机规模集实例的基于文本的控制台的访问。 此串行连接连接到 VM 或虚拟机规模集实例的 ttys0 串行端口，提供与网络或操作系统状态无关的访问权限。 串行控制台只能通过使用 Azure 门户进行访问，而只允许访问角色为 "参与者" 或 "虚拟机" 或 "虚拟机规模集" 的用户使用。
+Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机规模集实例的基于文本的控制台的访问。 此串行连接连接到 VM 或虚拟机规模集实例的 ttys0 串行端口，提供与网络或操作系统状态无关的访问权限。 串行控制台只能通过使用 Azure 门户来访问，并且仅供对 VM 或虚拟机规模集具有参与者访问角色或更高权限的用户使用。
 
-串行控制台的工作方式与 Vm 和虚拟机规模集实例的工作方式相同。 在此文档中，除非另有说明，否则，所有对 Vm 的提及将隐式包含虚拟机规模集实例。
+串行控制台的工作方式与 VM 和虚拟机规模集实例的工作方式相同。 在本文档中，除非另有说明，否则所有对 VM 的提及都将隐式包含虚拟机规模集实例。
 
 有关适用于 Windows 的串行控制台文档，请参阅[Windows 串行控制台](../windows/serial-console.md)。
 
 > [!NOTE]
-> 在全球 Azure 区域和 Azure 政府公共预览版中，此串行控制台已正式发布。 它目前在 Azure 中国云中不可用。
+> 串行控制台在全球 Azure 区域中提供正式版，并在 Azure 政府中提供公共预览版。 它在 Azure 中国云中尚不可用。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- VM 或虚拟机规模集实例必须使用资源管理部署模型。 不支持经典部署。
+- VM 或虚拟机规模集实例必须使用资源管理器部署模型。 不支持经典部署。
 
-- 使用串行控制台的帐户必须具有 VM 和[启动诊断](boot-diagnostics.md)存储帐户的[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
+- 使用串行控制台的 Azure 帐户必须对 VM 和[启动诊断](boot-diagnostics.md)存储帐户拥有[虚拟机参与者角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
-- VM 或虚拟机规模集实例必须具有基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。********
+- VM 或虚拟机规模集实例必须具有基于密码的用户。 可以使用 VM 访问扩展的[重置密码](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)功能创建一个帐户。 在“支持 + 故障排除”部分选择“重置密码”。 
 
 - VM 或虚拟机规模集实例必须已启用[启动诊断](boot-diagnostics.md)。
 
@@ -46,7 +45,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 
 - 有关特定于 Linux 分发版的设置，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
 
-- 必须为虚拟机或虚拟机规模集实例配置 "串行输出" `ttys0`。 这是 Azure 映像的默认设置，但你需要在自定义映像上仔细检查此设置。 详细信息[如下](#custom-linux-images)。
+- 必须为虚拟机或虚拟机规模集实例配置 "串行输出" `ttys0` 。 这是 Azure 映像的默认设置，但你需要在自定义映像上仔细检查此设置。 详细信息[如下](#custom-linux-images)。
 
 
 > [!NOTE]
@@ -59,7 +58,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 > [!NOTE]
 > 如果在串行控制台中没有看到任何内容，请确保在 VM 上启用了启动诊断。 命中**输入**通常会修复串行控制台中没有显示任何内容的问题。
 
-分发      | 串行控制台访问
+分布      | 串行控制台访问
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 默认已启用串行控制台访问。
 CentOS      | 默认已启用串行控制台访问。
@@ -70,7 +69,7 @@ SUSE        | Azure 中提供的较新 SLES 映像默认已启用串行控制台
 Oracle Linux        | 默认已启用串行控制台访问。
 
 ### <a name="custom-linux-images"></a>自定义 Linux 映像
-若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过`systemctl start serial-getty@ttyS0.service`来实现。
+若要为自定义 Linux VM 映像启用串行控制台，请在文件 */etc/inittab* 中启用控制台访问，以便在 `ttyS0` 上运行终端。 例如：`S0:12345:respawn:/sbin/agetty -L 115200 console vt102`。 还可能需要在 ttyS0 上生成 getty。 这可以通过来实现 `systemctl start serial-getty@ttyS0.service` 。
 
 还需要将 ttys0 添加为串行输出的目标。 有关配置自定义映像以使用串行控制台的详细信息，请参阅在[Azure 中创建和上载 LINUX VHD 中](https://aka.ms/createuploadvhd#general-linux-system-requirements)的常规系统要求。
 
@@ -110,27 +109,27 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 > [!CAUTION]
 > 这意味着不会注销已断开连接的用户。在规划断开连接时（通过使用 SIGHUP 或类似的机制）强制注销的功能仍在路线图上。 对于 Windows，特殊管理控制台 (SAC) 中会启用自动超时；但对于 Linux，可以配置终端超时设置。 为此，请将 `export TMOUT=600` 添加到用于登录控制台的用户的 *.bash_profile* 或 *.profile* 中。 此设置使会话在 10 分钟后超时。
 
-## <a name="accessibility"></a>辅助功能
+## <a name="accessibility"></a>可访问性
 辅助功能是 Azure 串行控制台的主要焦点。 为此，我们会确保串行控制台的完全可访问性。
 
 ### <a name="keyboard-navigation"></a>键盘导航
-使用键盘上的 **Tab** 键在 Azure 门户中的串行控制台界面上导航。 屏幕上会突出显示你的位置。 若要离开串行控制台窗口的焦点，请在键盘上按**Ctrl**+**F6** 。
+使用键盘上的 **Tab** 键在 Azure 门户中的串行控制台界面上导航。 屏幕上会突出显示你的位置。 若要使焦点离开串行控制台窗口，请在键盘上按 **Ctrl**+**F6**。
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>通过屏幕阅读器使用串行控制台
 串行控制台内置了屏幕阅读器支持。 在打开屏幕阅读器的情况下导航，屏幕阅读器可大声读出当前所选按钮的替换文字。
 
 ## <a name="known-issues"></a>已知问题
-我们注意到串行控制台和 VM 的操作系统出现一些问题。 下面列出了这些问题以及针对 Linux Vm 的缓解步骤。 这些问题和缓解措施适用于 Vm 和虚拟机规模集实例。 如果这些错误与你看到的错误不匹配，请参阅常见的串行控制台服务错误和[常见的串行控制台错误](./serial-console-errors.md)。
+我们注意到，串行控制台和 VM 的操作系统存在一些问题。 下面列出了这些问题以及针对 Linux Vm 的缓解步骤。 这些问题和缓解措施既适用于 VM，又适用于虚拟机规模集实例。 如果这些错误与你看到的错误不匹配，请参阅[常见串行控制台错误](./serial-console-errors.md)处的常见串行控制台服务错误。
 
-问题                           |   缓解
+问题                           |   缓解操作
 :---------------------------------|:--------------------------------------------|
-在出现连接标题后按 **Enter** 不会显示登录提示。 | 可能未正确配置 GRUB。 运行以下命令： `grub2-mkconfig -o /etc/grub2-efi.cfg`和/或。 `grub2-mkconfig -o /etc/grub2.cfg` 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的是自定义 VM、强化的设备或 GRUB 配置，导致 Linux 无法连接到串行端口，则可能出现此问题。
+在出现连接标题后按 **Enter** 不会显示登录提示。 | 可能未正确配置 GRUB。 运行以下命令： `grub2-mkconfig -o /etc/grub2-efi.cfg` 和/或 `grub2-mkconfig -o /etc/grub2.cfg` 。 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的是自定义 VM、强化的设备或 GRUB 配置，导致 Linux 无法连接到串行端口，则可能出现此问题。
 串行控制台文本仅占用屏幕大小的一部分（通常在使用文本编辑器后）。 | 串行控制台不支持协商窗口大小 ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt))，这意味着不会发送 SIGWINCH 信号来更新屏幕大小，因此 VM 不会了解终端的大小。 安装可提供 `resize` 命令的 xterm 或类似实用工具，然后运行 `resize`。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
-SLES BYOS 映像中的键盘输入不正常。 仅限偶尔识别键盘输入。 | 这是 Plymouth 包的问题。 Plymouth 不应在 Azure 中运行，因为你不需要初始屏幕，Plymouth 会干扰平台使用串行控制台的功能。 删除 Plymouth `sudo zypper remove plymouth` ，然后重新启动。 或者，通过将追加`plymouth.enable=0`到行尾来修改 GRUB 配置的内核行。 可以通过以下方式执行此操作：[在启动时编辑启动项](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)，或编辑中`/etc/default/grub`的 GRUB_CMDLINE_LINUX 行，重新生成`grub2-mkconfig -o /boot/grub2/grub.cfg`GRUB，然后重新启动。
+SLES BYOS 映像中的键盘输入不正常。 仅限偶尔识别键盘输入。 | 这是 Plymouth 包的问题。 Plymouth 不应在 Azure 中运行，因为你不需要初始屏幕，Plymouth 会干扰平台使用串行控制台的功能。 删除 Plymouth `sudo zypper remove plymouth` ，然后重新启动。 或者，通过将追加 `plymouth.enable=0` 到行尾来修改 GRUB 配置的内核行。 可以通过以下方式执行此操作：[在启动时编辑启动项](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)，或编辑中的 GRUB_CMDLINE_LINUX 行 `/etc/default/grub` ，重新生成 GRUB， `grub2-mkconfig -o /boot/grub2/grub.cfg` 然后重新启动。
 
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 **问：如何发送反馈？**
 
@@ -138,7 +137,7 @@ A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题�
 
 **问：串行控制台是否支持复制/粘贴？**
 
-A. 是的。 使用**ctrl**+**shift**+**C**和**ctrl**+**Shift**shift+**V**复制并粘贴到终端。
+A. 是的。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
 
 **问：我是否可以使用串行控制台而不是 SSH 连接？**
 
@@ -155,13 +154,13 @@ A. 若要在订阅范围级别启用或禁用串行控制台，必须拥有订�
 
 A. 对于 VM 或虚拟机规模集，您必须具有虚拟机参与者角色或更高版本，才能访问串行控制台。
 
-**问：我的串行控制台未显示任何内容，我该怎么办？**
+**问：我的串口控制台未显示任何内容，该怎么办？**
 
 A. 你的映像可能配置错误，无法进行串行控制台访问。 有关配置映像以启用串行控制台的详细信息，请参阅[串行控制台 Linux 分发版可用性](#serial-console-linux-distribution-availability)。
 
 **问：串行控制台是否可用于虚拟机规模集？**
 
-A. 是的，它是！ 请参阅[用于虚拟机规模集的串行控制台](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
+A. 是的！ 请参阅[适用于虚拟机规模集的串行控制台](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
 **问：如果我使用 SSH 密钥身份验证设置 VM 或虚拟机规模集，是否仍可使用串行控制台连接到我的 VM/虚拟机规模集实例？**
 
@@ -172,5 +171,5 @@ A. 是的。 由于串行控制台不需要 SSH 密钥，因此你只需设置�
 * 使用串行控制台执行 [NMI 和 SysRq 调用](serial-console-nmi-sysrq.md)。
 * 了解如何使用串行控制台[在各种发行版中启用 GRUB](serial-console-grub-proactive-configuration.md)
 * 串行控制台也适用于[Windows vm](../windows/serial-console.md)。
-* 了解有关[启动诊断](boot-diagnostics.md)的详细信息。
+* 详细了解[启动诊断](boot-diagnostics.md)。
 

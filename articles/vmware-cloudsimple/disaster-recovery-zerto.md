@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083133"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>将 CloudSimple 私有云设置为本地 VMware 工作负荷的灾难恢复站点
@@ -46,12 +45,12 @@ CloudSimple 解决方案：
 3. [在 CloudSimple 私有云上设置 ZVM 和 VRA](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [设置 Zerto 虚拟保护组](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 若要启用从本地环境到私有云的 Zerto 虚拟复制，请完成以下先决条件。
 
 1. [设置本地网络与 CloudSimple 私有云之间的站点到站点 VPN 连接](set-up-vpn.md)。
-2. [设置 DNS 查找，以便将私有云管理组件转发到私有云 DNS 服务器](on-premises-dns-setup.md)。  若要启用 DNS 查找转发，请在的本地 DNS 服务器中为`*.cloudsimple.io` CloudSimple dns 服务器创建一个转发区域条目。
+2. [设置 DNS 查找，以便将私有云管理组件转发到私有云 DNS 服务器](on-premises-dns-setup.md)。  若要启用 DNS 查找转发，请在的本地 DNS 服务器中为 CloudSimple DNS 服务器创建一个转发区域条目 `*.cloudsimple.io` 。
 3. 设置 DNS 查找，以便将本地 vCenter 组件转发到本地 DNS 服务器。  DNS 服务器必须可通过站点到站点 VPN 通过 CloudSimple 私有云访问。 若要获得帮助，请提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，并提供以下信息。  
 
     * 本地 DNS 域名

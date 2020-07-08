@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
 ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77162202"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
@@ -56,7 +55,7 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 * [Azure 存储 Blob 的软删除](../storage/blobs/storage-blob-soft-delete.md)
 * [取消删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
 
-### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage 第1代
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
 
 [还原-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
 
@@ -66,9 +65,9 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 
 ## <a name="trash-purging"></a>清除清除
 
-`fs.trash.interval` **HDFS****Advanced core-site** `0`高级核心网站中的属性应保留为默认值，因为不应将任何数据存储在本地文件系统上。 >  此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
+`fs.trash.interval` **HDFS**  >  **高级核心网站**中的属性应保留为默认值 `0` ，因为不应将任何数据存储在本地文件系统上。 此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Apache Hadoop on HDInsight 中使用 MapReduce](hadoop/hdinsight-use-mapreduce.md)
+* [在 HDInsight Apache Hadoop 上使用 MapReduce](hadoop/hdinsight-use-mapreduce.md)
 * [Azure HDInsight 简介](hadoop/apache-hadoop-introduction.md)

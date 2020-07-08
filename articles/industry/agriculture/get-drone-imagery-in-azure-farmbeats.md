@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77132052"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>从无人机合作伙伴获取无人机图像
@@ -22,7 +21,7 @@ ms.locfileid: "77132052"
 
 将无人机图像数据与 Azure FarmBeats 集成可帮助你获取从你在场到 datahub 的无人机航班 orthomosaic 数据。 数据可用后，可在 FarmBeats 加速器中查看。 数据可用于数据合成、人工智能和机器学习模型生成。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
   - 请确保已安装 Azure FarmBeats。 有关如何安装 FarmBeats 的信息，请参阅[Install Azure FarmBeats](install-azure-farmbeats.md)。
   - 确保你有要在 FarmBeats 系统中定义无人机图像的场。
@@ -35,7 +34,7 @@ ms.locfileid: "77132052"
  - 客户端 ID
  - 客户端机密
 
-按以下步骤操作。
+请执行以下步骤。
 
 1. 下载此[脚本](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器。 Zip 文件内有两个文件。
 2. 登录到 [Azure 门户](https://portal.azure.com/)，并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。

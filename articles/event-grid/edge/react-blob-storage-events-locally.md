@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086608"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：响应 IoT Edge 上的 Blob 存储事件（预览版）
@@ -43,11 +42,11 @@ ms.locfileid: "77086608"
 1. 导航到 IoT 中心。
 1. 从 "**自动设备管理**" 部分的菜单中选择 " **IoT Edge** "。 
 1. 从设备列表中单击目标设备的 ID
-1. 选择 "**设置模块**"。 使页面保持打开状态。 你将继续执行下一节中的步骤。
+1. 选择“设置模块”。 使页面保持打开状态。 你将继续执行下一节中的步骤。
 
 ### <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。  创建分为三步：添加模块、指定路由和评审部署************。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。  它分为三步：添加模块、指定路由和评审部署  。
 
 ### <a name="add-modules"></a>添加模块
 
@@ -77,7 +76,7 @@ ms.locfileid: "77086608"
         }
     ```    
 
- 1. 单击“保存” 
+ 1. 单击“保存”
  1. 在将 Azure 事件网格订户模块一起部署之前，请继续阅读下一节。
 
     >[!IMPORTANT]
@@ -97,7 +96,7 @@ ms.locfileid: "77086608"
    * **名称**：订阅服务器
    * **映像 URI**：`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器创建选项**：无
-1. 单击“保存” 
+1. 单击“保存”
 1. 转到下一节以添加 Azure Blob 存储模块
 
 ## <a name="deploy-azure-blob-storage-module"></a>部署 Azure Blob 存储模块
@@ -134,8 +133,8 @@ ms.locfileid: "77086608"
 
    > [!IMPORTANT]
    > - Blob 存储模块可以使用 HTTPS 和 HTTP 发布事件。 
-   > - 如果已为 EventGrid 启用基于客户端的身份验证，请确保将 EVENTGRID_ENDPOINT 的值更新为允许使用 https，如下所示`EVENTGRID_ENDPOINT=https://<event grid module name>:4438`：。
-   > - 另外，将另一个`AllowUnknownCertificateAuthority=true`环境变量添加到上述 Json。 通过 HTTPS 与 EventGrid 通信时， **AllowUnknownCertificateAuthority**允许存储模块信任自签名的 EventGrid 服务器证书。
+   > - 如果已为 EventGrid 启用基于客户端的身份验证，请确保将 EVENTGRID_ENDPOINT 的值更新为允许使用 https，如下所示： `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 。
+   > - 另外，将另一个环境变量添加 `AllowUnknownCertificateAuthority=true` 到上述 Json。 通过 HTTPS 与 EventGrid 通信时， **AllowUnknownCertificateAuthority**允许存储模块信任自签名的 EventGrid 服务器证书。
 
 4. 使用以下信息更新复制的 JSON：
 
@@ -143,12 +142,12 @@ ms.locfileid: "77086608"
 
    - 将 `<your storage account key>` 替换为 64 字节 base64 密钥。 你可以使用 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) 等工具生成密钥。 你将使用这些凭据从其他模块访问 blob 存储。
 
-   - 替换`<event grid module name>`为事件网格模块的名称。
+   - 替换 `<event grid module name>` 为事件网格模块的名称。
    - 根据容器操作系统替换 `<storage mount>`。
      - 对于 Linux 容器，**我的容量：/blobroot**
      - 对于 Windows 容器，**我的卷： C：/BlobRoot**
 
-5. 单击“保存” 
+5. 单击“保存”
 6. 单击 "**下一步**" 以继续转到 "路由" 部分
 
     > [!NOTE]
@@ -199,7 +198,7 @@ ms.locfileid: "77086608"
     > - 对于 HTTPS 流，如果通过证书启用了客户端身份验证，则卷曲请求将为：`curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview`
 
 2. 订户可以注册发布到主题的事件。 若要接收任何事件，需要为**MicrosoftStorage**主题创建事件网格订阅。
-    1. 创建具有以下内容的 blobsubscription。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)
+    1. 创建具有以下内容的 blobsubscription.js。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)
 
        ```json
         {
@@ -217,7 +216,7 @@ ms.locfileid: "77086608"
        >[!NOTE]
        > **EndpointType**属性指定订阅服务器是**Webhook**。  **EndpointUrl**指定订阅服务器侦听事件的 URL。 此 URL 对应于之前部署的 Azure Function 示例。
 
-    2. 运行以下命令以创建主题的订阅。 确认显示 HTTP 状态代码为`200 OK`。
+    2. 运行以下命令以创建主题的订阅。 确认显示 HTTP 状态代码为 `200 OK` 。
 
        ```sh
        curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
@@ -326,29 +325,29 @@ ms.locfileid: "77086608"
 
 下面列出了受支持的事件属性及其类型和说明。 
 
-| 属性 | 类型 | 说明 |
+| Property | 类型 | 描述 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
 | subject | 字符串 | 事件主题的发布者定义路径。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| ID | 字符串 | 事件的唯一标识符。 |
+| id | 字符串 | 事件的唯一标识符。 |
 | data | 对象 (object) | Blob 存储事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| api | 字符串 | 触发事件的操作。 可以为下列值之一： <ul><li>BlobCreated-允许的值为`PutBlob` ：和`PutBlockList`</li><li>BlobDeleted-允许的值`DeleteBlob`为`DeleteAfterUpload` 、 `AutoDelete`和。 <p>此`DeleteAfterUpload`事件是在自动删除 blob 时生成的，因为 deleteAfterUpload 所需的属性设置为 true。 </p><p>`AutoDelete`当 blob 自动删除，因为 deleteAfterMinutes 所需的属性值过期，将生成事件。</p></li></ul>|
+| api | 字符串 | 触发事件的操作。 可以为下列值之一： <ul><li>BlobCreated-允许的值为： `PutBlob` 和`PutBlockList`</li><li>BlobDeleted-允许的值为 `DeleteBlob` 、 `DeleteAfterUpload` 和 `AutoDelete` 。 <p>此 `DeleteAfterUpload` 事件是在自动删除 blob 时生成的，因为 deleteAfterUpload 所需的属性设置为 true。 </p><p>`AutoDelete`当 blob 自动删除，因为 deleteAfterMinutes 所需的属性值过期，将生成事件。</p></li></ul>|
 | ClientRequestId | 字符串 | 用于存储 API 操作的客户端提供的请求 ID。 此 ID 可用于在日志中使用 "客户端请求 id" 字段与 Azure 存储诊断日志关联，可以使用 "x-客户端请求 id" 标头在客户端请求中提供。 有关详细信息，请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | requestId | 字符串 | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 | eTag | 字符串 | 可用于根据条件执行操作的值。 |
 | contentType | 字符串 | 为 Blob 指定的内容类型。 |
-| contentLength | 整数 | Blob 大小，以字节为单位。 |
-| blobType | 字符串 | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
-| url | 字符串 | Blob 的路径。 <br>如果客户端使用 Blob REST API，则该 url 将具有以下结构： * \<\>\<blob.core.windows.net/\>/\<\>* 的名称。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将采用以下结构： * \<\>\<dfs.core.windows.net/\>/\<\>* 文件-名称文件中。 |
+| contentLength | integer | Blob 大小，以字节为单位。 |
+| blobType | string | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
+| url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 url 将采用以下结构： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将具有以下结构： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
 
 
 ## <a name="next-steps"></a>后续步骤

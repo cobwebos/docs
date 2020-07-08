@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77084060"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
@@ -86,7 +85,7 @@ MSAL 公共 API 引入了重要的更改，其中包括：
 如果目前使用的是 ADAL 且不需要使用增量许可，则开始使用 MSAL 的最简单方法是使用新的 `AcquireTokenParameter` 对象并设置资源 ID 值来发出 `acquireToken` 请求。
 
 > [!CAUTION]
-> 不能同时设置作用域和资源 id。尝试同时设置这两个将导致`IllegalArgumentException`。
+> 不能同时设置作用域和资源 id。尝试同时设置这两个将导致 `IllegalArgumentException` 。
 
  这与使用 v1 时的行为相同。 在应用注册中请求的所有权限是用户首次交互期间从用户请求的。
 
@@ -127,7 +126,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 如果尝试使用 Microsoft 未知的颁发机构，并且未在配置中包含该颁发机构，将会收到 `UnknownAuthorityException`。
 
-### <a name="logging"></a>日志记录
+### <a name="logging"></a>Logging
 现在可在配置中以声明方式配置日志记录，如下所示：
 
  ```
@@ -146,7 +145,7 @@ MSAL 不提供用于启用或禁用颁发机构验证的标志。 颁发机构�
 
 与金融机构的帐户一样，Microsoft 标识平台中的帐户也是使用凭据访问的。 这些凭据是在 Microsoft 注册的、由 Microsoft 颁发， 或者由 Microsoft 代表某家组织颁发。
 
-相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 下面是一个示例：
+相比之下，Microsoft 标识平台与金融机构的不同之处在于，Microsoft 标识平台提供一个框架，可让用户使用一个帐户及其关联的凭据来访问属于多个个人和组织的资源。 这类似于用户能够使用某家银行在另一所金融机构颁发的银行卡。 这种运作方式之所以可行，是因为相关的所有组织都使用 Microsoft 标识平台，允许在多个组织中使用一个帐户。 以下是一个示例：
 
 Sam 在 Contoso.com 任职，同时管理属于 Fabrikam.com 的 Azure 虚拟机。 要使 Sam 能够管理 Fabrikam 的虚拟机，他需要获取访问这些虚拟机的授权。 要向 Sam 授予此访问权限，可将其帐户添加到 Fabrikam.com，并向其帐户授予一个可以管理虚拟机的角色。 也可以使用 Azure 门户进行这种授权。
 
@@ -240,7 +239,7 @@ MSAL 中提供异常层次结构，每个异常具有自身的一组关联的特
 
 MSAL 异常列表
 
-|异常  | 说明  |
+|例外  | 描述  |
 |---------|---------|
 | `MsalException`     | MSAL 引发的默认选择异常。  |
 | `MsalClientException`     | 当错误在客户端上发生时引发。 |

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77120687"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
@@ -67,7 +66,7 @@ ms.locfileid: "77120687"
 | properties |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
-webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https：\//mysamplealert/webcallback？ tokenid = sometokenid&someparameter = somevalue
+webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https： \/ /mysamplealert/webcallback？ tokenid = sometokenid&someparameter = somevalue
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自动缩放通知 webhook 负载架构
 生成自动缩放通知时，以下元数据会包含在 webhook 负载中：

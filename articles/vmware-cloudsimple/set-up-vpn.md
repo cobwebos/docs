@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77087124"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>配置到 CloudSimple 私有云的 VPN 连接
@@ -37,7 +36,7 @@ ms.locfileid: "77087124"
 1. 启动 CloudSimple 门户，然后选择 "**网络**"。
 2. 选择**VPN 网关**。
 3. 在 VPN 网关列表中，单击 "点到站点 VPN 网关"。
-4. 选择“用户”****。
+4. 选择 "**用户**"。
 5. 单击 "**下载我的 VPN 配置"**
 
     ![下载 VPN 配置](media/download-p2s-vpn-configuration.png)
@@ -57,7 +56,7 @@ ms.locfileid: "77087124"
 
 2. 在计算机上打开 Viscosity。
 
-3. 单击该**+** 图标，然后选择 "**从文件****导入连接** > "。
+3. 单击该 **+** 图标，然后选择 "从文件**导入连接**"  >  **From File**。
 
     ![从文件导入 VPN 配置](media/import-p2s-vpn-config.png)
 
@@ -79,7 +78,7 @@ ms.locfileid: "77087124"
 
 1. 启动[CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 导航到 "**资源** > " "**私有云**"，然后选择要连接到的私有云。
+2. 导航到 "**资源**  >  " "**私有云**"，然后选择要连接到的私有云。
 
 3. 在私有云的 "**摘要**" 页上，在 "**基本信息**" 下复制私有云 DNS 服务器 IP 地址。
 
@@ -97,7 +96,7 @@ ms.locfileid: "77087124"
 
     ![编辑 VPN 连接](media/viscosity-edit-connection.png)
 
-7. 单击 "**网络**" 选项卡，然后输入私有云 DNS 服务器 IP 地址，以逗号或空格分隔，并```cloudsimple.io```输入域。  选择 "**忽略 VPN 服务器发送的 DNS 设置**"。
+7. 单击 "**网络**" 选项卡，然后输入私有云 DNS 服务器 IP 地址，以逗号或空格分隔，并输入域 ```cloudsimple.io``` 。  选择 "**忽略 VPN 服务器发送的 DNS 设置**"。
 
     ![VPN 网络](media/viscosity-edit-connection-networking.png)
 

@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 12655d2ceb4a1124376d9bddf82194472c98ebb9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77086651"
 ---
 # <a name="persist-state-in-linux"></a>在 Linux 中持久保存状态
@@ -25,7 +24,7 @@ ms.locfileid: "77086651"
 本文提供了在 Linux 部署中部署具有持久性的事件网格模块的步骤。
 
 > [!NOTE]
->事件网格模块以具有 UID `2000`和名称`eventgriduser`的低权限用户身份运行。
+>事件网格模块以具有 UID 和名称的低权限用户身份运行 `2000` `eventgriduser` 。
 
 ## <a name="persistence-via-volume-mount"></a>通过卷装入持久保存
 
@@ -170,7 +169,7 @@ ms.locfileid: "77086651"
 * 事件持久性在创建时配置在事件订阅上，并且在创建事件订阅后无法修改。 若要切换事件持久性，必须删除并重新创建事件订阅。
 * 保持事件的速度几乎始终比在内存操作中慢，但速度差异很大程度上取决于驱动器的特征。 速度和可靠性之间的权衡对于所有消息系统都是固有的，但通常情况下，这只是大规模的明显。
 
-若要在事件订阅上启用事件持久性， `persistencePolicy`请`true`将设置为：
+若要在事件订阅上启用事件持久性，请将设置 `persistencePolicy` 为 `true` ：
 
  ```json
         {

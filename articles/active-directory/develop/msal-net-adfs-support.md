@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 15af18177cea217612a4d5276d130abe02d339f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77160753"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET 中的 Active Directory 联合身份验证服务支持
@@ -44,7 +43,7 @@ MSAL.NET 支持连接到 Azure AD，后者可将托管用户（在 Azure AD 中�
 此联合方案支持的 AD FS 版本为 AD FS v2、AD FS v3 (Windows Server 2012 R2) 和 AD FS v4 (AD FS 2016)。
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>使用 AcquireTokenByIntegratedAuthentication 或 AcquireTokenByUsernamePassword 获取令牌
-使用 `AcquireTokenByIntegratedAuthentication` 或 `AcquireTokenByUsernamePassword` 方法获取令牌时，MSAL.NET 会让标识提供者根据用户名进行联系。  MSAL.NET 在联系标识提供者后接收 [SAML 1.1 令牌](reference-saml-tokens.md)。  然后，MSAL.NET 将 SAML 令牌以用户断言的形式提供给 Azure AD（类似于[代理流](msal-authentication-flows.md#on-behalf-of)），以取回 JWT。
+使用 `AcquireTokenByIntegratedAuthentication` 或 `AcquireTokenByUsernamePassword` 方法获取令牌时，MSAL.NET 会让标识提供者根据用户名进行联系。  MSAL.NET 在与标识提供者联系后接收[SAML 1.1 令牌](reference-saml-tokens.md)。  然后，MSAL.NET 将 SAML 令牌以用户断言的形式提供给 Azure AD（类似于[代理流](msal-authentication-flows.md#on-behalf-of)），以取回 JWT。
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>MSAL 直接连接到 AD FS
 MSAL.NET 支持连接到 AD FS 2019，后者符合 Open ID Connect 规范并了解 PKCE 和范围。 此项支持要求将服务包 [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) 应用到 Windows Server。 直接连接到 AD FS 时，用于生成应用程序的机构类似于 `https://mysite.contoso.com/adfs/`。

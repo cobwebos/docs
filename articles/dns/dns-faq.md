@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
 ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77121722"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
@@ -187,7 +186,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="do-azure-dns-name-servers-resolve-over-ipv6"></a>Azure DNS 名称服务器是否通过 IPv6 解析？ 
 
-是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 示例为 `nslookup -q=aaaa <Azure DNS Nameserver>`。
+是的。 Azure DNS 名称服务器是双重堆栈。 双重堆栈表示它们具有 IPv4 和 IPv6 地址。 若要查找分配给 DNS 区域的 Azure DNS 名称服务器的 IPv6 地址，请使用 nslookup 等工具。 例如 `nslookup -q=aaaa <Azure DNS Nameserver>`。
 
 ### <a name="how-do-i-set-up-an-idn-in-azure-dns"></a>如何在 Azure DNS 中设置 IDN？
 

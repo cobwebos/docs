@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77083985"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
@@ -48,7 +47,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="initializing-a-confidential-client-application-from-code"></a>通过代码初始化机密客户端应用程序
 
-同样，以下代码将实例化机密应用程序（位于中的 Web 应用`https://myapp.azurewebsites.net`），用于处理来自 Microsoft Azure 公有云中用户的令牌、其工作和学校帐户，或者其个人 Microsoft 帐户。 标识提供者通过共享客户端机密标识该应用程序：
+同样，以下代码将实例化机密应用程序（位于中的 Web 应用 `https://myapp.azurewebsites.net` ），用于处理来自 Microsoft Azure 公有云中用户的令牌、其工作和学校帐户，或者其个人 Microsoft 帐户。 标识提供者通过共享客户端机密标识该应用程序：
 
 ```csharp
 string redirectUri = "https://myapp.azurewebsites.net";

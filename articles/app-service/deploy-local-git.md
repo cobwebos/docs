@@ -7,10 +7,9 @@ ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77152986"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>从本地 Git 部署到 Azure 应用服务
@@ -45,7 +44,7 @@ ms.locfileid: "77152986"
 
 ### <a name="get-the-deployment-url"></a>获取部署 URL
 
-若要获取 URL 以对现有应用启用本地 Git 部署，请在[`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) Cloud Shell 中运行。 请将 \<app-name> 和 \<group-name> 替换为应用及其 Azure 资源组的名称。
+若要获取 URL 以对现有应用启用本地 Git 部署，请 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) 在 Cloud Shell 中运行。 \<app-name>将和替换 \<group-name> 为你的应用及其 Azure 资源组的名称。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +53,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > 如果你使用的是 linux 应用服务计划，则需要添加此参数：--运行时 python | 3。7
 
 
-或者，若要创建新的启用 Git 的应用， [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)请在 Cloud Shell 中使用`--deployment-local-git`参数运行。 请将 \<app-name>、\<group-name> 和 \<plan-name> 替换为新 Git 应用、其 Azure 资源组及其 Azure 应用服务计划的名称。
+或者，若要创建新的启用 Git 的应用，请 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 在 Cloud Shell 中使用 `--deployment-local-git` 参数运行。 \<app-name>将、 \<group-name> 和替换为 \<plan-name> 新 Git 应用的名称、其 Azure 资源组及其 Azure App Service 计划。
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git
@@ -64,7 +63,7 @@ az webapp create --name <app-name> --resource-group <group-name> --plan <plan-na
 
 如果不使用此帐户级 URL，也可以使用应用级凭据启用本地 Git。 Azure 应用服务会自动为每个应用生成这些凭据。 
 
-在 Cloud Shell 中运行以下命令以获取应用凭据。 请将 \<app-name> 和 \<group-name> 替换为应用和 Azure 资源组的名称。
+在 Cloud Shell 中运行以下命令以获取应用凭据。 \<app-name>将和替换 \<group-name> 为应用的名称和 Azure 资源组名称。
 
 ```azurecli-interactive
 az webapp deployment list-publishing-credentials --name <app-name> --resource-group <group-name> --query scmUri --output tsv
@@ -74,7 +73,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 ### <a name="deploy-the-web-app"></a>部署 Web 应用
 
-1. 打开本地终端窗口并转到本地 Git 存储库，然后添加一个 Azure 远程实例。 在以下命令中，请将 \<url> 替换为你在上一步骤中获取的特定于部署用户的 URL 或特定于应用的 URL。
+1. 打开本地终端窗口并转到本地 Git 存储库，然后添加一个 Azure 远程实例。 在下面的命令中， \<url> 将替换为你在上一步骤中获取的特定于部署用户的 url 或应用特定的 url。
    
    ```bash
    git remote add azure <url>
@@ -100,7 +99,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 使用 Azure Pipelines （预览版）为应用启用本地 Git 部署：
 
-1. 在[Azure 门户](https://portal.azure.com)中，搜索并选择 "**应用服务**"。 
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“应用服务”。 
 
 1. 选择 Azure App Service 应用，并选择左侧菜单中的 "**部署中心**"。
    
@@ -125,7 +124,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    
    ![复制 Git 存储库 URL](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
-1. 在本地终端窗口中，将 Azure 远程计算机添加到本地 Git 存储库。 在命令中，将\<url> 替换为你在上一步中获取的 Git 存储库的 url。
+1. 在本地终端窗口中，将 Azure 远程计算机添加到本地 Git 存储库。 在命令中，将替换 \<url> 为你在上一步中获取的 Git 存储库的 URL。
    
    ```bash
    git remote add azure <url>
@@ -135,7 +134,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
    
 1. 在 " **Git 凭据管理器**" 页上，用 visualstudio.com 用户名登录。 有关其他身份验证方法，请参阅[Azure DevOps Services authentication 概述](/vsts/git/auth-overview?view=vsts)。
    
-1. 部署完成后，请在`https://<azure_devops_account>.visualstudio.com/<project_name>/_build`中查看生成进度，并在上`https://<azure_devops_account>.visualstudio.com/<project_name>/_release`查看部署进度。
+1. 部署完成后，请在中查看生成进度 `https://<azure_devops_account>.visualstudio.com/<project_name>/_build` ，并在上查看部署进度 `https://<azure_devops_account>.visualstudio.com/<project_name>/_release` 。
    
 1. 在 Azure 门户中浏览到你的应用以检查内容是否已部署。
 
@@ -152,7 +151,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|在运行 `git push` 期间未指定分支，或者未在 `.gitconfig` 中设置 `push.default` 值。|再次运行 `git push`，并指定主分支：`git push azure master`。|
 |`src refspec [branchname] does not match any.`|你已尝试推送到“azure”远程实例上除主节点以外的分支。|再次运行 `git push`，并指定主分支：`git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果尝试通过 HTTPS 推送大型 Git 存储库，则可能出现此错误。|在本地计算机上更改 Git 配置，以增大 `postBuffer`。 例如：`git config --global http.postBuffer 524288000`。|
-|`Error - Changes committed to remote repository but your web app not updated.`|你已使用一个指定了其他所需模块的 _package.json_ 文件部署了 Node.js 应用。|检查发生此错误之前出现的 `npm ERR!` 错误消息，以了解有关失败的更多上下文。 下面是此错误的已知原因，以及相应的 `npm ERR!` 消息：<br /><br />**包文件格式不正确**：`npm ERR! Couldn't read dependencies.`<br /><br />**本机模块没有适用于 Windows 的二进制分发版**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|你已使用一个指定了其他所需模块的 _package.json_ 文件部署了 Node.js 应用。|检查发生此错误之前出现的 `npm ERR!` 错误消息，以了解有关失败的更多上下文。 下面是此错误的已知原因，以及相应的 `npm ERR!` 消息：<br /><br />**文件上的格式不正确 package.js**：`npm ERR! Couldn't read dependencies.`<br /><br />**本机模块没有适用于 Windows 的二进制分发版**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>其他资源
 

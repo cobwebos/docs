@@ -4,10 +4,9 @@ description: Azure Functions 支持多个版本的运行时。 了解如何在 A
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77151949"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
