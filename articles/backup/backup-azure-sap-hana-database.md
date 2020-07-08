@@ -3,12 +3,11 @@ title: 通过 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务来将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 4183c1eca6b1149c5c61ed77c0ca1101c86f8f4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667312"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -25,8 +24,11 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 > * 运行按需备份作业
 
 >[!NOTE]
+>RHEL（7.4、7.6、7.7 或 8.1）的 SAP HANA 备份预览[入门](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)。 如需深入咨询，请通过 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 联系我们。
+
+>[!NOTE]
 >Azure VM 中的 SQL Server 软删除和 Azure VM 工作负荷中的 SAP HANA 软删除现以预览版形式提供。<br>
->若要注册预览版，请通过 AskAzureBackupTeam@microsoft.com 联系我们
+>若要注册预览版，请向我们写信 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +43,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 | **选项**                        | **优点**                                               | **缺点**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 专用终结点                 | 允许通过虚拟网络中的专用 IP 进行备份  <br><br>   提供网络和保管库端的精细控制 | 产生标准专用终结点[开销](https://azure.microsoft.com/pricing/details/private-link/) |
-| NSG 服务标记                  | 由于范围更改会自动合并，因此更易于管理   <br><br>   无额外成本 | 仅可与 NSG 配合使用  <br><br>    提供对整个服务的访问权限 |
+| NSG 服务标记                  | 由于范围更改会自动合并，因此更易于管理   <br><br>   无额外成本 | 只可用于 NSG  <br><br>    提供对整个服务的访问权限 |
 | Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用                         |
 | 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
 | 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
@@ -58,7 +60,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 
 1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
 
-1. 在“设置”下，选择“出站安全规则”。 
+1. 在“设置”下选择“出站安全规则”。 
 
 1. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
@@ -180,7 +182,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 10. 完成定义备份策略后，单击“确定”。
 
 > [!NOTE]
-> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将保留，直到最后一个日志备份的保留期结束。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异和 2 小时日志。 所有这些备份都将保留 30 天。 不过，只有在下一个完整备份可用后（即 30 + 7 天后），才会真正清除/删除每周完整备份。 例如，每周完整备份在 11 月 16 日执行。 根据保留策略，它应保留到 12 月 16 日。 此完整备份的最后一次日志备份在下一次计划完整备份（11 月 22 日）之前发生。 在此日志有效期在 12 月 22 日截止之前，不能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将保留，直到最后一个日志备份的保留期结束。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异和 2 小时日志。 所有这些备份都将保留 30 天。 不过，只有在下一个完整备份可用后（即 30 + 7 天后），才会真正清除/删除每周完整备份。 例如，每周完整备份在 11 月 16 日执行。 根据保留策略，它应保留到12月16日。 此完整备份的最后一次日志备份在下一次计划完整备份（11 月 22 日）之前发生。 在此日志有效期在 12 月 22 日截止之前，不能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 
@@ -188,7 +190,7 @@ SAP HANA 数据库属于关键工作负荷，要求较低的恢复点目标 (RPO
 
 1. 在保管库菜单中，单击“备份项”。
 2. 在“备份项”中，选择运行 SAP HANA 数据库的 VM，然后单击“立即备份”。
-3. 在“立即备份”中，使用日历控件选择应当保留恢复点的最后一天。 然后单击“确定”。
+3. 在 "**立即备份**" 中，选择要执行的备份类型。 。 此备份将根据与此备份项关联的策略进行保留。
 4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于数据库的大小。
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA Studio 备份

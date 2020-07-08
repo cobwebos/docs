@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04c541dc10b2e25aa1e24ef704b4d939243f23ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513715"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>排查 StorSimple 设备部署问题
 ## <a name="overview"></a>概述
@@ -69,7 +68,7 @@ ms.locfileid: "79267620"
 * 注册设备。
 
 ## <a name="errors-during-the-required-network-settings"></a>配置所需的网络设置期间的错误
-| 不能。 | 错误消息 | 可能的原因 | 建议操作 |
+| 不能。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |Invoke-HcsSetupWizard：此命令只能在主动控制器上运行。 |在被动控制器上执行配置。 |从主动控制器运行此命令。 有关详细信息，请参阅[标识设备上的主动控制器](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)。 |
 | 2 |Invoke-HcsSetupWizard：设备未准备就绪。 |DATA 0 上的网络连接存在问题。 |检查 DATA 0 上的物理网络连接。 |
@@ -77,16 +76,16 @@ ms.locfileid: "79267620"
 | 4 |Invoke-HcsSetupWizard：群集资源失败。 （异常来自 HRESULT：0x800713AE）。 |VIP 重复。 提供的 IP 已在使用中。 |提供一个未使用的新 IP。 |
 | 5 |Invoke-HcsSetupWizard：IPv4 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅 [Ipv4 寻址][1]。 |
 | 6 |Invoke-HcsSetupWizard：IPv6 地址无效。 |提供的 IP 地址的格式不正确。 |检查格式并再次提供 IP 地址。 有关详细信息，请参阅 [Ipv6 寻址][2]。 |
-| 7 |Invoke-HcsSetupWizard：端点映射程序中没有更多可用的端点。 （异常来自 HRESULT：0x800706D9） |群集功能不工作。 |有关后续步骤，[请联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
+| 7 |Invoke-HcsSetupWizard：端点映射程序中没有更多可用的端点。 （异常来自 HRESULT：0x800706D9） |群集功能不工作。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>配置可选 Web 代理设置期间的错误
-| 不能。 | 错误消息 | 可能的原因 | 建议操作 |
+| 不能。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http://*\<IP 地址或 web 代理服务器的 FQDN>*：*\<TCP 端口号>* |
+| 1 |Invoke-HcsSetupWizard：参数无效（异常来自 HRESULT：0x80070057） |为代理设置提供的一个参数无效。 |提供的 URI 的格式不正确。 使用以下格式： http:// *\<IP address or FQDN of the web proxy server>* ：*\<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard：RPC 服务器不可用（异常来自 HRESULT：0x800706ba） |根本原因是以下项之一：<ol><li>群集未启动。</li><li>被动控制器不能与主动控制器通信，并且命令从被动控制器运行。</li></ol> |具体取决于根本原因：<ol><li>[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。</li><li>从主动控制器运行命令。 如果要从被动控制器运行命令，则需要确保被动控制器可以与主动控制器通信。 如果此连接中断，则需要[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。</li></ol> |
 | 3 |Invoke-HcsSetupWizard：RPC 调用失败（异常来自 HRESULT：0x800706be） |群集已关闭。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以确保群集已启动。 |
 | 4 |Invoke-HcsSetupWizard：找不到群集资源（异常来自 HRESULT：0x8007138f） |找不到群集资源。 安装不正确时可能出现这个错误。 |可能需要将设备重置为出厂默认设置。 [联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md) 以创建群集资源。 |
-| 5 |Invoke-HcsSetupWizard：群集资源无法联机（异常来自 HRESULT：0x8007138c） |群集资源未联机。 |有关后续步骤，[请联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)。 |
+| 5 |Invoke-HcsSetupWizard：群集资源无法联机（异常来自 HRESULT：0x8007138c） |群集资源未联机。 |[联系 Microsoft 支持部门](storsimple-8000-contact-microsoft-support.md)以了解后续步骤。 |
 
 ## <a name="errors-related-to-device-administrator-password"></a>与设备管理员密码相关的错误
 默认的设备管理员密码为 **Password1**。 此密码在首次登录后过期；因此，需要使用设置向导来更改它。 首次注册设备时，必须提供新的设备管理员密码。 
@@ -126,7 +125,7 @@ ms.locfileid: "79267620"
 ## <a name="errors-during-device-registration"></a>设备注册期间的错误
 可以使用在 Microsoft Azure 中运行的 StorSimple 设备管理器服务来注册设备。 在设备注册过程中，可能会遇到以下一个或多个问题。
 
-| 不能。 | 错误消息 | 可能的原因 | 建议操作 |
+| 不能。 | 错误消息 | 可能的原因 | 建议的操作 |
 | --- | --- | --- | --- |
 | 1 |错误 350027：无法使用 StorSimple 设备管理器注册设备。 | |等候几分钟时间，并重试操作。 如果问题仍然存在，请[联系 Microsoft 支持](storsimple-8000-contact-microsoft-support.md)。 |
 | 2 |错误 350013：注册设备时发生错误。 这可能是由于服务注册密钥不正确。 | |请使用正确的服务注册密钥再次注册该设备。 有关详细信息，请参阅[获取服务注册密钥](storsimple-8000-manage-service.md#get-the-service-registration-key)。 |
@@ -139,7 +138,7 @@ ms.locfileid: "79267620"
 | 9 |警告：无法激活设备。 设备管理员和 StorSimple Snapshot Manager 密码尚未更改。 |如果注册失败，则设备管理员和 StorSimple Snapshot Manager 密码不会更改。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>用于排查 StorSimple 部署问题的工具
-StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障排除。 这些方法包括：
+StorSimple 包含多个工具，可用于对 StorSimple 解决方案进行故障排除。 其中包括：
 
 * 支持包和设备日志。
 * 专为故障排除而设计的 cmdlet。

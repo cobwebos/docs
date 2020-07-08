@@ -4,15 +4,14 @@ description: 使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5477eea12ee41bae42365555e38aa95ca0faeb3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75860514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987107"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 
@@ -209,7 +208,7 @@ ms.locfileid: "75860514"
 
 配置 TestVNet1 后，即可创建 TestVNet4。 遵循以下步骤，并根据需要替换为自己的值。
 
-1. 连接并声明变量。 请务必将值替换为用于配置的值。
+1. 连接并声明变量。 请务必将值替换为要用于配置的值。
 
    ```azurepowershell-interactive
    $RG4 = "TestRG4"
@@ -327,7 +326,7 @@ ms.locfileid: "75860514"
 
 必须在新订阅环境中完成此步骤。 此部分可能由拥有订阅的不同组织的管理员执行。
 
-1. 声明变量。 请务必将值替换为用于配置的值。
+1. 声明变量。 请务必将值替换为要用于配置的值。
 
    ```azurepowershell-interactive
    $Sub5 = "Replace_With_the_New_Subscription_Name"
@@ -347,7 +346,7 @@ ms.locfileid: "75860514"
    $GWIPconfName5 = "gwipconf5"
    $Connection51 = "VNet5toVNet1"
    ```
-2. 连接到订阅 5。 打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助你连接：
+2. 连接到订阅 5。 打开 PowerShell 控制台并连接到帐户。 使用下面的示例来帮助连接：
 
    ```azurepowershell-interactive
    Connect-AzAccount

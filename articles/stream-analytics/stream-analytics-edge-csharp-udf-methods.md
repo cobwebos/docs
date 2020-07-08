@@ -7,12 +7,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
-ms.translationtype: MT
+ms.openlocfilehash: 4f9d117ccc763744411bfe24163ed955532e8e56
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994490"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921857"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -46,25 +45,25 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 |**Azure 流分析类型** |**C # 类型** |
 |---------|---------|
-|bigint | 长整型 |
-|float | Double |
-|nvarchar(max) | string |
+|bigint | long |
+|float | double |
+|nvarchar(max) | 字符串 |
 |datetime | DateTime |
-|Record | 字典\<字符串，对象> |
+|Record | Dictionary\<string, object> |
 |数组 | Object [] |
 
 当需要将数据从 c # 封送到 Azure 流分析时，就会出现这种情况。 下表显示了受支持的类型：
 
 |**C # 类型**  |**Azure 流分析类型**  |
 |---------|---------|
-|长整型  |  bigint   |
-|Double  |  float   |
-|string  |  nvarchar(max)   |
+|long  |  bigint   |
+|double  |  float   |
+|字符串  |  nvarchar(max)   |
 |DateTime  |  dateTime   |
 |struct  |  Record   |
-|对象  |  Record   |
+|对象 (object)  |  Record   |
 |Object []  |  数组   |
-|字典\<字符串，对象>  |  Record   |
+|Dictionary\<string, object>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
 可以在 Script.sql CodeBehind 中编写用户定义的函数****。 Visual Studio 工具会自动将 CodeBehind 文件编译为程序集文件。 将作业提交到 Azure 时，程序集将打包为 zip 文件并上传到存储帐户。 可以根据[流分析 Edge 作业的 UDF](stream-analytics-edge-csharp-udf.md) 教程执行操作，了解如何使用 CodeBehind 编写 C# UDF。 
@@ -76,7 +75,7 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 1. 在解决方案中创建一个新的类库。
 2. 在类中编写代码。 注意必须将类定义为公共，并且必须将对象定义为静态公共****。 
-3. 生成项目。 工具会将 bin 文件夹中的所有项目打包为 zip 文件，并将该 zip 文件上传到存储帐户。 对于外部引用，请使用程序集引用而不是 NuGet 包。
+3. 生成你的项目。 工具会将 bin 文件夹中的所有项目打包为 zip 文件，并将该 zip 文件上传到存储帐户。 对于外部引用，请使用程序集引用而不是 NuGet 包。
 4. 引用 Azure 流分析项目中的新类。
 5. 在 Azure 流分析项目中添加一个新的函数。
 6. 在作业配置文件 `JobConfig.json` 中配置程序集路径。 将程序集路径设置为“本地项目引用或 CodeBehind”****。
@@ -128,9 +127,9 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 
 若要在作业配置文件 `JobConfig.json` 中配置程序集路径，请执行以下操作：
 
-展开“用户定义的代码配置”部分，并使用以下建议值填写配置****：
+展开“用户定义的代码配置”部分，并使用以下建议值填写配置：
 
-   |**设置**|**建议的值**|
+   |**设置**|建议的值|
    |-------|---------------|
    |全局存储设置资源|选择当前帐户中的数据源|
    |全局存储设置订阅| <你的订阅>|
@@ -144,7 +143,7 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 ## <a name="user-logging"></a>用户日志记录
 使用日志记录机制，可以在作业运行时捕获自定义信息。 您可以使用日志数据实时调试或评估自定义代码的正确性。
 
-`StreamingContext`类可让你使用`StreamingDiagnostics.WriteError`函数发布诊断信息。 下面的代码显示了由 Azure 流分析公开的接口。
+`StreamingContext`类可让你使用函数发布诊断信息 `StreamingDiagnostics.WriteError` 。 下面的代码显示了由 Azure 流分析公开的接口。
 
 ```csharp
 public abstract class StreamingContext
@@ -158,7 +157,7 @@ public abstract class StreamingDiagnostics
 }
 ```
 
-`StreamingContext`作为输入参数传递到 UDF 方法，并可在 UDF 中使用以发布自定义日志信息。 在下面的示例中`MyUdfMethod` ，定义一个由查询提供的**数据**输入，并定义一个作为**context**的`StreamingContext`上下文输入，由运行时引擎提供。 
+`StreamingContext`作为输入参数传递到 UDF 方法，并可在 UDF 中使用以发布自定义日志信息。 在下面的示例中， `MyUdfMethod` 定义一个由查询提供的**数据**输入，并定义一个作为的**上下文**输入 `StreamingContext` ，由运行时引擎提供。 
 
 ```csharp
 public static long MyUdfMethod(long data, StreamingContext context)
@@ -170,7 +169,7 @@ public static long MyUdfMethod(long data, StreamingContext context)
 }
 ```
 
-此`StreamingContext`值不需要由 SQL 查询传入。 如果存在输入参数，Azure 流分析会自动提供上下文对象。 不`MyUdfMethod`会更改的使用，如下面的查询所示：
+此 `StreamingContext` 值不需要由 SQL 查询传入。 如果存在输入参数，Azure 流分析会自动提供上下文对象。 不 `MyUdfMethod` 会更改的使用，如下面的查询所示：
 
 ```sql
 SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
@@ -186,6 +185,10 @@ UDF 预览目前有以下限制：
 * 在门户中使用 .NET Standard UDF 时，Azure 门户查询编辑器显示一条错误。 
 
 * 由于自定义代码与 Azure 流分析引擎共享上下文，因此自定义代码无法引用 namespace/dll_name 与 Azure 流分析代码发生冲突的任何内容。 例如，不能引用 Newtonsoft Json**。
+
+* 项目中包含的支持文件会复制到用户自定义代码 zip 文件中，该文件在你将作业发布到云中时使用。 解压缩时，子文件夹中的所有文件都将直接复制到云中的用户自定义代码文件夹的根目录中。 解压缩时，zip 为 "平展"。
+
+* 用户自定义代码不支持空文件夹。 不要将空文件夹添加到项目中的支持文件。
 
 ## <a name="next-steps"></a>后续步骤
 

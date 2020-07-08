@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9e29d91aa3b146a8aacdccec01b67506d5e45bb3
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75548830"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037913"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark 结构化流的概述
 
@@ -62,11 +61,13 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 
 这个简单的示例查询可以根据一小时时间范围汇总温度读数。 在本例中，数据存储在 Azure 存储（附加为 HDInsight 群集的默认存储）中的 JSON 文件内：
 
-    {"time":1469501107,"temp":"95"}
-    {"time":1469501147,"temp":"95"}
-    {"time":1469501202,"temp":"95"}
-    {"time":1469501219,"temp":"95"}
-    {"time":1469501225,"temp":"95"}
+```json
+{"time":1469501107,"temp":"95"}
+{"time":1469501147,"temp":"95"}
+{"time":1469501202,"temp":"95"}
+{"time":1469501219,"temp":"95"}
+{"time":1469501225,"temp":"95"}
+```
 
 这些 JSON 文件存储在 HDInsight 群集容器下的 `temps` 子文件夹中。
 
@@ -74,41 +75,51 @@ Spark 结构化流以表的形式表示数据流，该表的深度受限，即�
 
 首先配置一个数据帧，用于描述数据源，以及该源所需的任何设置。 此示例从 Azure 存储中的 JSON 文件抽取数据，并在读取时向这些数据应用一个架构。
 
-    import org.apache.spark.sql.types._
-    import org.apache.spark.sql.functions._
+```sql
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.functions._
 
-    //Cluster-local path to the folder containing the JSON files
-    val inputPath = "/temps/" 
+//Cluster-local path to the folder containing the JSON files
+val inputPath = "/temps/" 
 
-    //Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
-    val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
+//Define the schema of the JSON files as having the "time" of type TimeStamp and the "temp" field of type String
+val jsonSchema = new StructType().add("time", TimestampType).add("temp", StringType)
 
-    //Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
-    val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath) 
+//Create a Streaming DataFrame by calling readStream and configuring it with the schema and path
+val streamingInputDF = spark.readStream.schema(jsonSchema).json(inputPath)
+``` 
 
 #### <a name="apply-the-query"></a>应用查询
 
 接下来，针对流数据帧应用包含所需操作的查询。 在本例中，某个聚合会将所有行分组到 1 小时时间范围，然后计算该 1 小时时间范围内的最小、平均和最大温度。
 
-    val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```sql
+val streamingAggDF = streamingInputDF.groupBy(window($"time", "1 hour")).agg(min($"temp"), avg($"temp"), max($"temp"))
+```
 
 ### <a name="define-the-output-sink"></a>定义输出接收器
 
 接下来，针对在每个触发器间隔内添加到结果表中的行定义目标。 此示例只是将所有行输出到稍后可以使用 SparkSQL 查询的内存中表 `temps`。 完整输出模式可以确保每次都会输出所有时间范围的所有行。
 
-    val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
+```sql
+val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete")
+``` 
 
 ### <a name="start-the-query"></a>启动查询
 
 启动流查询，并一直运行到收到终止信号为止。
 
-    val query = streamingOutDF.start()  
+```sql
+val query = streamingOutDF.start() 
+``` 
 
 ### <a name="view-the-results"></a>查看结果
 
 运行查询时，在同一个 SparkSession 中，可以针对存储查询结果的 `temps` 表运行 SparkSQL 查询。
 
-    select * from temps
+```sql
+select * from temps
+```
 
 此查询生成类似于以下内容的结果：
 

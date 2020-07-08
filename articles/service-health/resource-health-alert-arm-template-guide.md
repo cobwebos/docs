@@ -4,10 +4,9 @@ description: 以编程方式创建在 Azure 资源不可用时发出通知的警
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759017"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
@@ -17,18 +16,18 @@ ms.locfileid: "81759017"
 通过 Azure 资源运行状况可得知 Azure 资源的当前及历史运行状况。 Azure 资源运行状况警报会在这些资源的运行状况发生变化时几乎实时地发出通知。 通过以编程方式创建资源运行状况警报，用户可以批量创建警报并对其进行自定义。
 
 > [!NOTE]
-> 资源运行状况警报目前处于预览阶段。
+> 资源运行状况警报目前为预览版。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要按本页中的说明操作，需事先进行几项设置：
 
 1. 需安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>说明
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
 
         Login-AzAccount
@@ -230,7 +229,7 @@ ms.locfileid: "81759017"
 如果希望在运行状况的全部四个阶段都获得通知，可以将这一条件全部删除，这样不管 `status` 属性是什么，警报都会向你发出通知。
 
 > [!NOTE]
-> 每个 "anyOf" 节应该只包含一个字段类型值。
+> 每个“anyOf”部分应只包含一个字段类型值。
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>将资源运行状况警报调整为避免“Unknown”事件
 
@@ -440,7 +439,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
 
 了解有关资源运行状况的详细信息：
 -  [Azure 资源运行状况概述](Resource-health-overview.md)
--  [可用的资源类型和运行状况检查 Azure 资源运行状况](resource-health-checks-resource-types.md)
+-  [可通过 Azure 资源运行状况使用的资源类型和运行状况检查](resource-health-checks-resource-types.md)
 
 
 创建服务运行状况警报：

@@ -10,17 +10,16 @@ ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: ''
-ms.topic: overview
+ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82158aeae614112c47a2288ceb867b382c6a159a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
+ms.openlocfilehash: b61fd2f9bc36743754a43b05629a798f0305d4e5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609203"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>如何将 Azure 资源托管标识用于 Azure 虚拟机
 
@@ -92,4 +91,4 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 请参阅以下快速入门，开始使用 Azure 资源托管标识功能：
 
 * [使用 Windows VM 系统分配托管标识访问资源管理器](tutorial-windows-vm-access-arm.md)
-* [使用 Linux VM 系统分配托管标识访问资源管理器](tutorial-linux-vm-access-arm.md) how-managed-identities-work-vm
+* [使用 Linux VM 系统分配托管标识访问资源管理器](tutorial-linux-vm-access-arm.md)

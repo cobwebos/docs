@@ -9,20 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5540697e8e64586d73e34d253fb95e549fc0301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c7970f321f301cc394732b1557d65974e7902574
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609021"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -32,7 +31,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
+- 如果不熟悉 Azure 管理器部署模板，请查看[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
@@ -66,7 +65,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 
 
-3. 完成后，以下各节应当会添加到模板的 `resource` 节，该节应当呈现如下：
+3. 完成后，应将以下部分添加到 `resource` 模板的部分，该部分应如下所示：
 
    ```JSON
    "resources": [
@@ -165,7 +164,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    如果 `apiVersion` 为 `2017-12-01` 并且 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及用户分配的托管标识的 `identityIds` 数组。  
 
-以下示例演示如何从没有用户分配的托管标识的 VM 删除系统分配的托管标识：
+下面的示例演示如何从没有用户分配的托管标识的 VM 中删除系统分配的托管标识：
 
  ```JSON
  {
@@ -230,7 +229,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    }
    ```
 
-3. 完成后，以下各节应当会添加到模板的 `resource` 节，该节应当呈现如下：
+3. 完成后，应将以下部分添加到 `resource` 模板的部分，该部分应如下所示：
 
    **Microsoft.Compute/virtualMachines API 版本 2018-06-01**    
 
@@ -336,13 +335,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `useraAssignedIdentities` 字典中删除。
 
-   如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
+   如果你有系统分配的托管标识，请将它保留在 `type` 值下的值中 `identity` 。
 
    **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
 
    若要从 VM 中删除单个用户分配的托管标识，请将其从 `identityIds` 数组中删除。
 
-   如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
+   如果你有系统分配的托管标识，请将它保留在 `type` 值下的值中 `identity` 。
 
 ## <a name="next-steps"></a>后续步骤
 

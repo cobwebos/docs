@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81757899"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平台3.11
@@ -241,18 +240,18 @@ ms.locfileid: "81757899"
 
 不同的版本可能具有不同的参数，因此，请验证所用分支的必要参数。
 
-### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy.json.已解释的参数 json 文件
+### <a name="azuredeployparametersjson-file-explained"></a>说明的文件 azuredeploy.Parameters.js
 
-| properties | 说明 | 有效选项 | 默认值 |
+| Property | 描述 | 有效选项 | 默认值 |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | 项目的 URL （json、脚本等） |  |  https：\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `_artifactsLocation`  | 项目的 URL （json、脚本等） |  |  https： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要将资源部署到的 Azure 区域 |  |  |
-| `masterVmSize` | 主 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_E2s_v3 |
-| `infraVmSize` | 基础 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_D4s_v3 |
-| `nodeVmSize` | 应用节点 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_D4s_v3 |
-| `cnsVmSize` | 容器本机存储（CNS）节点 VM 的大小。 选择 azuredeploy.json 文件中列出的允许 VM 大小之一 |  | Standard_E4s_v3 |
+| `masterVmSize` | 主 VM 的大小。 从 "azuredeploy.js上的" 文件 "中列出的允许 VM 大小中选择一个。 |  | Standard_E2s_v3 |
+| `infraVmSize` | 基础 VM 的大小。 从 "azuredeploy.js上的" 文件 "中列出的允许 VM 大小中选择一个。 |  | Standard_D4s_v3 |
+| `nodeVmSize` | 应用节点 VM 的大小。 从 "azuredeploy.js上的" 文件 "中列出的允许 VM 大小中选择一个。 |  | Standard_D4s_v3 |
+| `cnsVmSize` | 容器本机存储（CNS）节点 VM 的大小。 从 "azuredeploy.js上的" 文件 "中列出的允许 VM 大小中选择一个。 |  | Standard_E4s_v3 |
 | `osImageType` | 要使用的 RHEL 映像。 defaultgallery：按需;marketplace：第三方映像 | defaultgallery <br> 市场 | defaultgallery |
-| `marketplaceOsImage` | 如果`osImageType`是 marketplace，则输入 marketplace 产品/服务的 "发布者"、"产品/服务"、"sku" 和 "版本" 的相应值。 此参数是对象类型 |  |  |
+| `marketplaceOsImage` | 如果 `osImageType` 是 marketplace，则输入 marketplace 产品/服务的 "发布者"、"产品/服务"、"sku" 和 "版本" 的相应值。 此参数是对象类型 |  |  |
 | `storageKind` | 要使用的存储类型  | 托管式<br> unmanaged | 托管式 |
 | `openshiftClusterPrefix` | 用于配置所有节点的主机名的群集前缀。  介于1到20个字符之间 |  | mycluster |
 | `minoVersion` | 要部署的 OpenShift 容器平台3.11 的次版本 |  | 69 |
@@ -276,10 +275,10 @@ ms.locfileid: "81757899"
 | `keyVaultName` | 创建的 Key Vault 的名称 |  |  |
 | `enableAzure` | 启用 Azure 云提供程序 | true <br> false | true |
 | `aadClientId` | Azure Active Directory 客户端 ID 也称为服务主体的应用程序 ID |  |  |
-| `domainName` | 要使用的自定义域名的名称（如果适用）。 如果不部署完全专用群集，则设置为 "无" |  | none |
-| `masterClusterDnsType` | OpenShift web 控制台的域类型。 "默认" 将使用主基础公共 IP 的 DNS 标签。 "自定义" 允许您定义自己的名称 | default <br> 自定义 | default |
+| `domainName` | 要使用的自定义域名的名称（如果适用）。 如果不部署完全专用群集，则设置为 "无" |  | 无 |
+| `masterClusterDnsType` | OpenShift web 控制台的域类型。 "默认" 将使用主基础公共 IP 的 DNS 标签。 "自定义" 允许您定义自己的名称 | 默认值 <br> 自定义 | 默认值 |
 | `masterClusterDns` | 如果选择了 "自定义"，则用于访问 OpenShift web 控制台的自定义 DNS 名称`masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | 如果设置为 "nipio"， `routingSubDomain`将使用 nip.io。  如果你有要用于路由的自己的域，请使用 "自定义" | nipio <br> 自定义 | nipio |
+| `routingSubDomainType` | 如果设置为 "nipio"， `routingSubDomain` 将使用 nip.io。  如果你有要用于路由的自己的域，请使用 "自定义" | nipio <br> 自定义 | nipio |
 | `routingSubDomain` | 如果选择了 "自定义"，则要用于路由的通配符 DNS 名称`routingSubDomainType` |  | apps.contoso.com |
 | `virtualNetworkNewOrExisting` | 选择是使用现有虚拟网络还是新建虚拟网络 | 现有 <br> new | new |
 | `virtualNetworkResourceGroupName` | 如果为其选择了 "新建"，则为新虚拟网络的资源组名称`virtualNetworkNewOrExisting` |  | resourceGroup （）. 名称 |

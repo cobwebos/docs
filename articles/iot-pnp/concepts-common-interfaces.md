@@ -8,28 +8,27 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5773ec2b3ea88fa9a507b7c1b0b84bb7ea305a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770493"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT 即插即用预览通用接口
 
-所有 IoT 即插即用设备都应该实现一些公共接口。 常见接口会使 IoT 解决方案受益，因为它们提供了一致的功能。 [证书](tutorial-build-device-certification.md)要求设备实现多个通用接口。 你可以从公共模型存储库检索公共接口定义。
+所有 IoT 即插即用设备均应实现一些通用接口。 常见接口会使 IoT 解决方案受益，因为它们提供了一致的功能。 [证书](tutorial-build-device-certification.md)要求设备实现多个通用接口。 你可以从公共模型存储库中检索通用接口定义。
 
 ## <a name="summary-of-common-interfaces"></a>公共接口摘要
 
-| 名称 | Id | 描述 | 由 Azure IoT SDK 实现 | 必须在功能模型中声明 |
+| 名称 | ID | 描述 | 由 Azure IoT SDK 实现 | 必须在功能模型中声明 |
 | -------- | -------- | -------- | -------- | -------- | -------- |
-| 模型信息 | urn： azureiot： ModelDiscovery： ModelInformation：1 | 用于设备声明功能模型 ID 和接口。 所有 IoT 即插即用设备都是必需的。 | 是 | 否 |
-| 数字克隆客户端 SDK 信息 | urn： azureiot：客户端： SDKInformation：1 | 用于将设备连接到 Azure 的客户端 SDK。 [认证](tutorial-build-device-certification.md)所必需 | 是 | 否 |
+| 模型信息 | urn： azureiot： ModelDiscovery： ModelInformation：1 | 用于设备声明功能模型 ID 和接口。 所有 IoT 即插即用设备都是必需的。 | 是 | No |
+| 数字克隆客户端 SDK 信息 | urn： azureiot：客户端： SDKInformation：1 | 用于将设备连接到 Azure 的客户端 SDK。 [认证](tutorial-build-device-certification.md)所必需 | 是 | No |
 | 设备信息 | urn： azureiot：设备： DeviceInformation：1 | 有关设备的硬件和操作系统信息。 [认证](tutorial-build-device-certification.md)所必需 | 否 | 是 |
 | 模型定义 | urn： azureiot： ModelDiscovery： ModelDefinition：1 | 设备用于声明其功能模型和接口的完整定义。 当模型定义不托管在模型存储库中时，必须实现。 | 否 | 是 |
 | 数字孪生 | urn： azureiot： ModelDiscovery： DigitalTwin：1 | 供解决方案开发人员检索数字克隆的功能模型 ID 和接口 Id。 IoT 即插即用设备不声明或实现此接口。 | 否 | 否 |
 
 - 由 Azure IoT SDK 实现-Azure IoT SDK 是否实现了在接口中声明的功能。 使用 Azure IoT SDK 的 IoT 即插即用设备无需实现此接口。
-- 必须在功能模型中声明-如果是 "yes"，则必须在此 IoT 即插即用`"implements":`设备的设备功能模型的部分中声明此接口。
+- 必须在功能模型中声明-如果是 "yes"，则必须在 `"implements":` 此 IoT 即插即用设备的设备功能模型的部分中声明此接口。
 
 ## <a name="retrieve-interface-definitions-from-the-public-repository"></a>从公共存储库检索接口定义
 

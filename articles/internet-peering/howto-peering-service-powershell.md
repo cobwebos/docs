@@ -5,15 +5,14 @@ description: 使用 PowerShell 通过直接对等互连启用 Azure 对等互连
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c029b822d00ce545e3623a6212421a55b2d1971f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 579af2d5cbe0f3dcdbdf749894d5c400112f37cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710790"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>使用 PowerShell 通过直接对等互连启用 Azure 对等互连服务
 
@@ -21,7 +20,7 @@ ms.locfileid: "81686970"
 
 如果愿意，可以使用 Azure[门户](howto-peering-service-portal.md)完成本指南。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](prerequisites.md)。
 * 在订阅中选择要为其启用对等互连服务的直接对等互连。 如果没有，请转换旧直接对等互连，或创建新的直接对等互连：
     * 若要转换旧版直接对等互连，请按照[使用 PowerShell 将旧直接对等互连转换为 Azure 资源](howto-legacy-direct-powershell.md)中的说明进行操作。

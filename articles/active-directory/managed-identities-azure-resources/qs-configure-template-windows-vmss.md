@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5afb11a275275ac49178b30929d7896c8a082591
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77425555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609004"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>使用模板在 Azure 虚拟机规模集上为 Azure 资源配置托管标识
 
@@ -34,9 +33,9 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)  。
+- 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#managed-identity-types)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
-- 若要执行本文中的管理操作，帐户需要以下基于 Azure 角色的访问控制分配：
+- 若要执行本文中的管理操作，你的帐户需要以下 Azure 基于角色的访问控制分配：
 
     > [!NOTE]
     > 无需其他 Azure AD 目录角色分配。
@@ -133,7 +132,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 
 
-   以下示例演示如何从没有用户分配托管标识的虚拟机规模集中删除系统分配托管标识：
+   下面的示例演示如何从没有用户分配的托管标识的虚拟机规模集中删除系统分配的托管标识：
 
    ```json
    {
@@ -293,7 +292,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachineScaleSets` 资源。 如果虚拟机规模集只有用户分配的托管标识，则可以通过将标识类型更改为 `None` 来禁用它。
 
-   以下示例演示如何从没有系统分配的托管标识的 VM 中删除所有用户分配的托管标识：
+   下面的示例演示如何从没有系统分配的托管标识的 VM 中删除所有用户分配的托管标识：
 
    ```json
    {
@@ -310,13 +309,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    若要从虚拟机规模集中删除单个用户分配的托管标识，请将其从 `userAssignedIdentities` 字典中删除。
 
-   如果具有系统分配的标识，请将其保持在 `identity` 值下的 `type` 值中。
+   如果你有系统分配的标识，请将它保留在 `type` 值下的值中 `identity` 。
 
    **Microsoft.Compute/virtualMachineScaleSets API 版本 2017-12-01**
 
    要从虚拟机规模集中删除单个用户分配托管标识，请将其从 `identityIds` 数组中删除。
 
-   如果具有系统分配的托管标识，请将其保持在 `identity` 值下的 `type` 值中。
+   如果你有系统分配的托管标识，请将它保留在 `type` 值下的值中 `identity` 。
 
 ## <a name="next-steps"></a>后续步骤
 

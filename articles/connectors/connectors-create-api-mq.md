@@ -9,12 +9,11 @@ ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
 ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e9e554fdc092e49f5a87049de0e3dc3163105f58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85609497"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 IBM MQ 服务器
 
@@ -94,7 +93,7 @@ IBM MQ 连接器包含以下操作，但不提供触发器：
      > [!IMPORTANT]
      > 请确保在“证书 - 本地计算机” > “受信任的根证书颁发机构”存储中安装证书 。
 
-* MQ 服务器要求你定义要用于 SSL 连接的密码规范。 但是，.NET 中的 SsLStream 不允许指定密码规范的顺序。 要解决此限制，可以更改 MQ 服务器配置，以匹配连接器在 SSL 协商中发送的套件中的第一个密码规范。
+* MQ 服务器要求你定义要用于 TLS/SSL 连接的密码规范。 但是，.NET 中的 System.net.security.sslstream 不允许你指定密码规范的顺序。 若要解决此限制，可以更改 MQ 服务器配置，使之与连接器在 TLS/SSL 协商中发送的套件中的第一个密码规范相匹配。
 
   尝试连接时，MQ 服务器会记录一条事件消息，指示连接失败，因为另一端使用了不正确的密码规范。 这条事件消息包含列表中首先出现的密码规范。 更新通道配置中的密码规范，以匹配事件消息中的密码规范。
 

@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6a0c68bf11d81925c1b9c3e408434a6f7b1b2694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608987"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
 
@@ -51,13 +50,13 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 > 目前不支持 B2C 相关的审核和登录活动日志。
 >
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。
-* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。****
+* 一个是 Azure AD 租户的全局管理员或安全管理员的用户。 
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 
 ## <a name="licensing-requirements"></a>许可要求
@@ -66,9 +65,9 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 ## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure Monitor
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择**Azure Active Directory** > "**诊断设置** -> " "**添加诊断设置**"。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
+2. 选择**Azure Active Directory**"  >  **诊断设置**" "  ->  **添加诊断设置**"。 还可以从“审核日志”**** 或“登录”**** 页选择“导出设置”****，以转到诊断设置配置页。  
     
 3. 在“诊断设置”菜单中，选中“发送到 Log Analytics 工作区”复选框，并选择“配置”************。
 
@@ -78,7 +77,7 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
     * 若要将审核日志发送到 Log Analytics 工作区，请选中“AuditLogs”**** 复选框。 
     * 若要将登录日志发送到 Log Analytics 工作区，请选中“SignInLogs”**** 复选框。
 
-6. 选择“保存”****，保存设置。
+6. 选择“保存”，保存设置。
 
     ![诊断设置](./media/howto-integrate-activity-logs-with-log-analytics/Configure.png)
 

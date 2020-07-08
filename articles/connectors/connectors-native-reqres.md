@@ -5,45 +5,55 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 0dea516ea6b938b91fc4b9b833979bcecc285339
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325127"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
 借助 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置的请求触发器和响应操作，可以创建用于接收和响应传入的 HTTPS 请求的自动化任务和工作流。 例如，使用逻辑应用，你可以完成以下操作：
 
 * 接收并响应对本地数据库中数据的 HTTPS 请求。
+
 * 发生外部 Webhook 事件时触发工作流。
+
 * 接收来自其他逻辑应用的 HTTPS 调用并对其作出响应。
 
 请求触发器支持 [Azure Active Directory Open Authorization](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth)，用于授权对逻辑应用的入站调用。 有关如何启用此身份验证的详细信息，请参阅[保护 Azure 逻辑应用中的访问和数据安全 - 启用 Azure AD OAuth 身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
-
-> [!NOTE]
-> 对于传入调用，请求触发器仅支持传输层安全性 (TLS) 1.2。 传出调用支持 TLS 1.0、1.1 和 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。
->
-> 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 
-> 对于传入调用，下面是受支持的密码套件：
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 有关[逻辑应用](../logic-apps/logic-apps-overview.md)的基础知识。 如果你不熟悉逻辑应用，请了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 有关[逻辑应用](../logic-apps/logic-apps-overview.md)的基础知识。 如果不熟悉逻辑应用，请了解[如何创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>传输层安全 (TLS) (Transport Layer Security) (TLS)
+
+* 入站调用*仅*支持传输层安全性（TLS）1.2。 如果出现 TLS 握手错误，请确保使用 TLS 1.2。 有关详细信息，请参阅[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)。 出站调用支持基于目标终结点功能的 TLS 1.0、1.1 和1.2。
+
+* 入站呼叫支持以下密码套件：
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 <a name="add-request"></a>
 
@@ -61,7 +71,7 @@ ms.locfileid: "83714961"
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必须 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用后生成的终结点 URL，该 URL 用于调用逻辑应用 |
    | **请求正文 JSON 架构** | `schema` | 否 | JSON 架构，用于描述传入请求正文中的属性和值 |
@@ -158,9 +168,17 @@ ms.locfileid: "83714961"
       }
       ```
 
+1. 若要检查入站调用是否具有与指定架构匹配的请求正文，请执行以下步骤：
+
+   1. 在请求触发器的标题栏中，选择省略号按钮（**...**）。
+   
+   1. 在触发器的 "设置" 中，启用 "**架构验证**"，然后选择 "**完成**"。
+   
+      如果入站调用的请求正文与架构不匹配，则触发器将返回 `HTTP 400 Bad Request` 错误。
+
 1. 要指定其他属性，请打开“添加新参数”列表，然后选择要添加的参数。
 
-   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必须 | 描述 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 一个方法，传入请求必须使用它才能调用逻辑应用 |
    | **Relative path** | `relativePath` | 否 | 逻辑应用的终结点 URL 可以接受的参数的相对路径 |
@@ -186,6 +204,9 @@ ms.locfileid: "83714961"
 
    ![用于触发逻辑应用的 URL](./media/connectors-native-reqres/generated-url.png)
 
+   > [!NOTE]
+   > 如果要在 **#** 调用请求触发器时在 URI 中包含哈希或井号（），请改用此编码版本：`%25%23`
+
 1. 要触发逻辑应用，请向生成的 URL 发送一个 HTTP POST。
 
    例如，可以使用 [Postman](https://www.getpostman.com/) 等工具来发送 HTTP POST。 如果[启用了 Azure Active Directory Open Authorization](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) 来授权对请求触发器的入站调用，则可以使用[共享访问签名 (SAS) URL](../logic-apps/logic-apps-securing-a-logic-app.md#sas) 或身份验证令牌来调用触发器（不能同时使用这两种方法）。 身份验证令牌必须在授权标头中指定 `Bearer` 类型。 有关详细信息，请参阅[保护 Azure 逻辑应用中的访问和数据安全 - 访问基于请求的触发器](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers)。
@@ -198,8 +219,8 @@ ms.locfileid: "83714961"
 
 | JSON 属性名称 | 数据类型 | 说明 |
 |--------------------|-----------|-------------|
-| `headers` | 对象 | 一个 JSON 对象，用于描述请求中的标头 |
-| `body` | 对象 | 一个 JSON 对象，用于描述请求中的正文内容 |
+| `headers` | Object | 一个 JSON 对象，用于描述请求中的标头 |
+| `body` | Object | 一个 JSON 对象，用于描述请求中的正文内容 |
 ||||
 
 <a name="add-response"></a>
@@ -214,7 +235,7 @@ ms.locfileid: "83714961"
 > 如果响应操作包括这些标头，则逻辑应用会从生成的响应消息中删除这些标头，而不会显示任何警告或错误：
 >
 > * `Allow`
-> * `Content-*`，但 `Content-Disposition`、`Content-Encoding` 和 `Content-Type` 除外
+> * `Content-*` 中含以下例外：`Content-Disposition`、`Content-Encoding` 和 `Content-Type`
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`
@@ -229,7 +250,7 @@ ms.locfileid: "83714961"
 
    ![添加新步骤](./media/connectors-native-reqres/add-response.png)
 
-   若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 (+)，然后选择“添加操作”。
+   若要在步骤之间添加操作，请将鼠标指针移到这些步骤之间的箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。
 
 1. 在“选择操作”下的搜索框中，输入“响应”作为筛选器，然后选择“响应”操作 。
 
@@ -251,7 +272,7 @@ ms.locfileid: "83714961"
 
    下面是有关可以在响应操作中设置的属性的详细信息。 
 
-   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
+   | 属性名称 | JSON 属性名称 | 必须 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，用于描述要包含在响应中的一个或多个标头 |

@@ -7,7 +7,7 @@ manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -15,12 +15,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea1360499c4f4f9b2f6cfa07e81d8f692d0353d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3037dd2e03062ebab0c48438aa4345a766a22fc8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608919"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>修正 Azure Active Directory 门户中“标记为风险用户”的用户
 
@@ -32,7 +31,7 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>访问标记为存在风险的用户的报告
 
-可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果没有 Azure AD，可以免费注册[https://aka.ms/AccessAAD](https://aka.ms/AccessAAD)。 
+可以在 Azure 门户中通过[“有风险的用户”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers)报告查看已标记为存在风险的用户。 如果没有 Azure AD，可以免费注册 [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD) 。 
 
 从“已标记为存在风险的用户”报告中，你可以针对每个用户采取以下操作：
 
@@ -75,9 +74,9 @@ Microsoft 致力于保护你的环境的安全。 为此，Microsoft 持续监�
 
     f. 将帐户的密码复杂性设置为高。
 
-    g. 启用邮箱审核。
+    如， 启用邮箱审核。
 
-    h. 生成审核日志供管理员查看。
+    h.如果该值不存在，请单击“添加行”。 生成审核日志供管理员查看。
 
 4. 调查 Office 365 租户和其他 IT 基础结构，包括查看所有租户设置、用户帐户以及单个用户的配置设置中是否有可能需要修改的地方。 查看是否存在使用持久性方法的痕迹，以及是否存在入侵者利用初始据点获取 VPN 凭据或访问其他组织资源的痕迹。 
 
