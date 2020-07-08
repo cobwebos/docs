@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658568"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955949"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor 视图中的筛选器
 [Azure Monitor 视图](view-designer.md)中的**筛选器**使得用户可以在不修改视图本身的情况下，以特定属性的值筛选视图中的数据。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
@@ -31,7 +31,7 @@ ms.locfileid: "77658568"
 
 ## <a name="creating-a-filter"></a>创建筛选器
 
-[编辑视图](view-designer.md)时，从“筛选器”选项卡创建筛选器。   筛选器适用于视图全局并应用于视图的所有部分。  
+[编辑视图](view-designer.md)时，从“筛选器”选项卡创建筛选器。  筛选器适用于视图全局并应用于视图的所有部分。  
 
 ![筛选器设置](media/view-designer-filters/filters-settings.png)
 
@@ -61,15 +61,19 @@ ms.locfileid: "77658568"
 
 在查询中使用筛选器值的语法是： 
 
-    where ${filter name}  
+`where ${filter name}`  
 
 例如，如果视图具有返回事件的查询并使用名为 _Computers_ 的筛选器，则可以使用以下查询。
 
-    Event | where ${Computers} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | summarize count() by EventLevelName
+```
 
 如果添加另一个名为 Severity 的筛选器，则可以利用以下查询同时使用两个筛选器。
 
-    Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```kusto
+Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
+```
 
 ## <a name="next-steps"></a>后续步骤
 * 深入了解可添加到自定义视图的[可视化效果部件](view-designer-parts.md)。

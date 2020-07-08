@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 3ede22b5af942c3f0c0cd88d86b56a625c7656c0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: 9810d29750e7c741c84b11b296099a37d67fc595
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267607"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955159"
 ---
 # <a name="monitor-azure-storage"></a>监视 Azure 存储
 
@@ -78,11 +78,13 @@ Azure Monitor 中的指标和日志仅支持 Azure 资源管理器存储帐户�
 
 系统会自动收集平台指标和活动日志，但你需要创建诊断设置来收集资源日志，或将其转发到 Azure Monitor 之外。 要了解使用 Azure 门户、Azure CLI 或 PowerShell 创建诊断设置的过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](../../azure-monitor/platform/diagnostic-settings.md)。
 
-创建诊断设置时，请选择要为其启用日志的存储类型，如 blob、队列、表或文件。 如果在 Azure 门户中创建诊断设置，则可以从列表中选择资源。 如果使用 PowerShell 或 Azure CLI，则需要使用存储类型的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
+创建诊断设置时，请选择要为其启用日志的存储类型，如 blob、队列、表或文件。 Data Lake Storage Gen2 不会显示为存储类型。 这是因为 Data Lake Storage Gen2 是可用于 Blob 存储的一组功能。 
+
+如果在 Azure 门户中创建诊断设置，则可以从列表中选择资源。 如果使用 PowerShell 或 Azure CLI，则需要使用存储类型的资源 ID。 通过打开存储帐户的“属性”页，可在 Azure 门户中找到资源 ID。
 
 此外，还必须指定要为其收集日志的操作的类别。 此表列出了 Azure 存储的类别。
 
-| 类别 | 说明 |
+| 类别 | 描述 |
 |:---|:---|
 | StorageRead | 对 blob 的读取操作。 |
 | StorageWrite | 对 blob 的写入操作。 |
@@ -343,6 +345,8 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 |StorageFileLogs | 描述文件共享中的活动的日志。 |
 |StorageQueueLogs | 描述队列中的活动的日志。|
 |StorageTableLogs| 描述表中的活动的日志。|
+
+Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是可以在 Blob 存储帐户上启用的一组功能。 如果已启用这些功能，日志将继续出现在 StorageBlobLogs 表中。 
 
 ### <a name="azure-storage-log-analytics-queries-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储 Log Analytics 查询
 

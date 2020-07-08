@@ -1,23 +1,23 @@
 ---
-title: 通过具体化视图进行性能优化
+title: 利用具体化视图提高性能
 description: 在使用具体化视图来提高查询性能时应了解的建议和注意事项。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7a54d1d644d1069957db7f94d6f5e261e1a8dfb2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: e624cf343209af722bfd007bd66a5e48b56eaff2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747554"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956383"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>通过具体化视图进行性能优化
+# <a name="performance-tune-with-materialized-views"></a>利用具体化视图提高性能
 
 Synapse SQL 池中的具体化视图为复杂的分析查询提供了一种低维护的方法，可以在不改变任何查询的情况下获得快速的性能。 本文讨论了使用具体化视图的一般指南。
 

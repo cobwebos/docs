@@ -7,6 +7,7 @@ ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
 ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
 ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/05/2020
 ms.locfileid: "85955262"
@@ -203,7 +204,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`除另有说明外，还支持以下选项（版本为 1.x/x-only）：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--csharp`**<br/> **`--dotnet`** | 初始化 [C# 类库 (.cs) 项目](functions-dotnet-class-library.md)。 |
 | **`--csx`** | 初始化[c # 脚本（. run.csx）项目](functions-reference-csharp.md)。 必须在后续命令中指定 `--csx`。 |
@@ -304,7 +305,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 也可以在命令中使用以下参数指定这些选项：
 
-| 参数     | 描述                            |
+| 参数     | 说明                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （版本 1.x/版本 x）生成在版本1.x 和门户中使用的相同 c # 脚本（. run.csx）模板。 |
 | **`--language`**, **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本2.x 中，请不要使用此选项或选择与工作运行时匹配的语言。 |
@@ -363,7 +364,7 @@ npm start
 
 `func start` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 版本1.x 不支持。 |
 | **`--cert`** | 包含私钥的 .pfx 文件的路径。 仅与 `--useHttps` 结合使用。 版本1.x 不支持。 |
@@ -473,7 +474,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 `func run` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | 内联内容。 |
 | **`--debug`**, **`-d`** | 运行函数前，将调试程序附加到主机进程。|
@@ -512,14 +513,14 @@ func azure functionapp publish <FunctionAppName>
 
 以下发布选项适用于版本1.x、2.x 和1.x：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 以下发布选项仅在版本1.x 和2.x 中受支持：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  仅发布设置，并跳过内容。 默认为提示。 |
 |**`--list-ignored-files`** | 基于 .funcignore 文件显示发布期间忽略的文件列表。 |
@@ -543,7 +544,7 @@ func deploy
 
 可使用以下自定义容器部署选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 当前用户登录到的 Docker 注册表的名称。 |
 | **`--platform`** | 函数应用的托管平台。 有效选项为 `kubernetes` |

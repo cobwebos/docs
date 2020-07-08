@@ -4,7 +4,6 @@ description: 本文提供有关运行 Azure VM 中的 SQL Server 时遇到的常
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: felixwu
 editor: ''
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,21 +13,21 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 278f3a5109e638530a55f4b2a77cd6d28aa7ca54
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035258"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955669"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
+# <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure Vm 上的 SQL Server 常见问题
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](frequently-asked-questions-faq.md)
 > * [Linux](../linux/frequently-asked-questions-faq.md)
 
-本文提供有关[在 Azure 的 Windows 虚拟机上运行 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 时出现的一些最常见问题的解答。
+本文提供有关[在 Microsoft Azure 虚拟机（vm）上运行 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)的一些最常见问题的解答。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -51,15 +50,15 @@ ms.locfileid: "84035258"
 
    是的，使用 PowerShell。 有关使用 PowerShell 部署 SQL Server VM 的详细信息，请参阅[如何使用 Azure PowerShell 预配 SQL Server 虚拟机](create-sql-vm-powershell.md)。
    
-1. 是否可以为 SQL Server 虚拟机创建一个通用的 Azure SQL Server 市场映像并使用它部署 VM？
+1. **是否可以创建 SQL Server SQL Server VM 的通用 Azure Marketplace 映像，并使用它来部署 Vm？**
 
    可以，但需要[向 SQL Server VM 资源提供程序注册每个 SQL Server VM](sql-vm-resource-provider-register.md)，以便在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。 在向资源提供程序注册时，还需要为每个 SQL Server VM 指定许可证类型。
 
 1. 如何使 Azure VM 上的 SQL Server 通用化并使用它部署新 VM？
 
-   可以部署 Windows Server VM（不安装 SQL Server），并使用 [SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) 进程和 SQL Server 安装媒体将 Azure VM (Windows) 上的 SQL Server 通用化。 如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装媒体。 没有软件保障的客户可以使用具有所需版本的市场 SQL Server VM 映像中的安装媒体。
+   可以部署 Windows Server VM（不安装 SQL Server），并使用 [SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) 进程和 SQL Server 安装媒体将 Azure VM (Windows) 上的 SQL Server 通用化。 如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装介质。 没有软件保障的客户可以使用具有所需版本的 Azure Marketplace SQL Server VM 映像中的设置媒体。
 
-   或者，使用 Azure 市场中的 SQL Server 映像之一在 Azure VM 上通用化 SQL Server。 请注意，在创建自己的映像之前，必须删除源映像中的以下注册表项。 否则，可能会导致 SQL Server 安装程序启动文件夹膨胀和/或 SQL IaaS 扩展处于失败状态。
+   或者，使用 Azure Marketplace 中的 SQL Server 映像之一在 Azure VM 上通用化 SQL Server。 请注意，在创建自己的映像之前，必须删除源映像中的以下注册表项。 否则，可能会导致 SQL Server 安装程序启动文件夹膨胀和/或 SQL IaaS 扩展处于失败状态。
 
    注册表项路径：  
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
@@ -73,7 +72,7 @@ ms.locfileid: "84035258"
 
 1. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
-   不是。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](create-sql-vm-powershell.md) 选择提供的某个映像。 但是，可以部署一个 Windows VM 并在其中自行安装 SQL Server。 然后，需要[向 SQL Server VM 资源提供程序注册 SQL Server VM](sql-vm-resource-provider-register.md)，以便在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。 
+   不是。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](create-sql-vm-powershell.md) 选择提供的某个映像。 但是，可以部署一个 Windows VM 并在其中自行安装 SQL Server。 然后，你必须向[SQL Server VM 资源提供程序注册你的 SQL Server VM](sql-vm-resource-provider-register.md) ，以管理 Azure 门户中的 SQL Server VM，并使用自动修补和自动备份等功能。 
 
 
 ## <a name="creation"></a>创建
@@ -82,7 +81,7 @@ ms.locfileid: "84035258"
 
    最简单的方法是创建包含 SQL Server 的虚拟机。 有关注册 Azure 并从门户创建 SQL Server VM 的教程，请参阅[在 Azure 门户中预配 SQL Server 虚拟机](create-sql-vm-portal.md)。 可选择使用按秒付费 SQL Server 许可的虚拟机映像，或者可以使用允许自带 SQL Server 许可证的映像。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 请务必[向 SQL Server VM 资源提供程序注册 SQL Server VM](sql-vm-resource-provider-register.md)，以便在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility/)。 有关详细信息，请参阅 [SQL Server Azure VM 定价指南](pricing-guidance.md)。
 
-1. **如何将本地 SQL Server 数据库迁移到云中？**
+1. **如何将本地 SQL Server 数据库迁移到云？**
 
    首先，请创建装有 SQL Server 实例的 Azure 虚拟机。 然后将本地数据库迁转到该实例。 有关数据迁移策略，请参阅[将 SQL Server 数据库迁移到 Azure VM 中的 SQL Server](migrate-to-vm-from-sql-server.md)。
 
@@ -90,7 +89,7 @@ ms.locfileid: "84035258"
 
 1. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
 
-   可通过三种方式实现此目的。 如果你是企业协议 (EA) 客户，可以预配[支持许可证的虚拟机映像](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)之一，这也称为自带许可 (BYOL)。 如果你有[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在现有的即用即付 (PAYG) 映像上启用 [Azure 混合权益](licensing-model-azure-hybrid-benefit-ahb-change.md)。 也可将 SQL Server 安装媒体复制到 Windows Server VM 上，然后在 VM 上安装 SQL Server。 请确保向[资源提供程序](sql-vm-resource-provider-register.md)注册 SQL Server VM，以便能够使用门户管理、自动备份和自动修补等功能。 
+   可通过三种方式实现此目的。 如果你是企业协议（EA）客户，则可以预配[支持许可证的虚拟机映像](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)之一，这也称为 "自带许可证" （BYOL）。 如果你有[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在现有的即用即付（PAYG）映像上启用[Azure 混合权益](licensing-model-azure-hybrid-benefit-ahb-change.md)。 也可将 SQL Server 安装媒体复制到 Windows Server VM 上，然后在 VM 上安装 SQL Server。 请确保向[资源提供程序](sql-vm-resource-provider-register.md)注册 SQL Server VM，以便能够使用门户管理、自动备份和自动修补等功能。 
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
@@ -102,7 +101,7 @@ ms.locfileid: "84035258"
    
 1. **是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？**
 
-   不是。 不支持在经典 VM 上更改许可模型。 可以将 VM 迁移到 Azure 资源管理器模型，并向 SQL Server VM 资源提供程序进行注册。 向 SQL Server VM 资源提供程序注册 VM 后，即可在 VM 上更改许可模型。
+   不是。 在经典 VM 上不支持更改许可模式。 可以将 VM 迁移到 Azure 资源管理器模型，并向 SQL Server VM 资源提供程序进行注册。 向 SQL Server VM 资源提供程序注册 VM 后，即可在 VM 上更改许可模型。
 
 1. **是否可以使用 Azure 门户来管理同一 VM 上的多个实例？**
 
@@ -133,7 +132,7 @@ ms.locfileid: "84035258"
 
 1. **哪些订阅支持灾难恢复 (DR) 权益？**
 
-   提供软件保障等效订阅权限作为固定权益的综合计划支持 DR 权益。 这包括 但不限于：开放式价值 (OV)、开放式价值订阅 (OVS)、企业协议 (EA)、企业订阅协议 (EAS) 以及服务器和云注册 (SCE)。 有关详细信息，请参阅[产品条款](https://www.microsoft.com/licensing/product-licensing/products)并与许可联系人或客户经理联系。 
+   提供软件保障等效订阅权限作为固定权益的综合计划支持 DR 权益。 这包括 但并不限于：开盘值（OV-ES）、开盘值订阅（OVS-ES）、企业协议（EA）、企业协议订阅（EAS）以及服务器和云注册（SCE）。 有关详细信息，请参阅[产品条款](https://www.microsoft.com/licensing/product-licensing/products)并与许可联系人或客户经理联系。 
 
    
  ## <a name="resource-provider"></a>资源提供程序
@@ -183,13 +182,13 @@ ms.locfileid: "84035258"
    
 ## <a name="updating-and-patching"></a>更新和修补
 
-1. **如何将 Azure VM 中的 SQL Server 更改为另一版本？**
+1. **如何实现在 Azure VM 中更改为不同版本的 SQL Server？**
 
    客户可以使用包含所需 SQL Server 版本的安装介质来更改其 SQL Server 版本。 更改版本以后，使用 Azure 门户修改 VM 的版本属性，使之准确反映 VM 的计费。 有关详细信息，请参阅[更改 SQL Server VM 的版本](change-sql-server-edition.md)。 不同版本的 SQL Server 没有计费差异，因此 SQL Server 的版本发生更改后，无需采取进一步操作。
 
 1. **可在何处获取用于更改 SQL Server 版本的安装媒体？**
 
-   如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装媒体。 没有软件保障的客户可以使用具有所需版本的市场 SQL Server VM 映像中的安装媒体。
+   如果客户有[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)，则可以从[批量许可中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)获取其安装介质。 没有软件保障的客户可以使用 Azure Marketplace 中的安装媒体 SQL Server VM 具有所需版本的映像。
    
 1. **如何将更新和服务包应用到 SQL Server VM？**
 
@@ -201,7 +200,7 @@ ms.locfileid: "84035258"
 
 1. **如何获取终止支持的 SQL Server 2008 和 SQL Server 2008 R2 实例的免费扩展安全更新？**
 
-   可以通过将 SQL Server 按原样迁移到 Azure SQL 虚拟机，获取 [免费扩展安全更新](sql-server-2008-extend-end-of-support.md)。 有关详细信息，请参阅[终止支持选项](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)。 
+   可以通过将 SQL Server 原样移到 Azure 虚拟机来获取[免费的扩展安全更新](sql-server-2008-extend-end-of-support.md)。 有关详细信息，请参阅[终止支持选项](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)。 
   
    
 
@@ -209,14 +208,14 @@ ms.locfileid: "84035258"
 
 1. Azure VM 是否支持 SQL Server 故障转移群集实例 (FCI)？
 
-   是的。 可以使用存储子系统的[高级文件共享 (PFS)](failover-cluster-instance-premium-file-share-manually-configure.md) 或[存储空间直通 (S2D)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 安装故障转移群集实例。 高级文件共享提供可满足许多工作负载需求的 IOPS 和吞吐量。 对于 IO 密集型工作负载，请考虑使用存储空间直通（基于托管的高级磁盘或超级磁盘）。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)中所述。
+   是的。 可以使用存储子系统的[高级文件共享 (PFS)](failover-cluster-instance-premium-file-share-manually-configure.md) 或[存储空间直通 (S2D)](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 安装故障转移群集实例。 高级文件共享提供可满足许多工作负载需求的 IOPS 和吞吐量。 对于 IO 密集型工作负载，请考虑使用存储空间直通（基于托管的高级磁盘或超级磁盘）。 或者，你可以使用第三方群集或存储解决方案，如[Azure 虚拟机上 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)中所述。
 
    > [!IMPORTANT]
    > 目前，Azure 上的 SQL Server FCI 不支持完全 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)。 建议从参与 FCI 的 VM 中卸载“完整”扩展，并改为以轻型模式安装该扩展 。 此扩展支持自动备份和修补等功能，以及 SQL Server 的一些门户功能。 卸载完全代理后，这些功能对 SQL Server VM 不起作用。
 
 1. SQL Server VM 与 SQL 数据库服务之间的差别是什么？
 
-   从概念上讲，在 Azure 虚拟机上运行 SQL Server 与在远程数据中心运行 SQL Server 并没什么不同。 相比之下， [SQL 数据库](../../database/sql-database-paas-overview.md) 可提供数据库即服务。 使用 SQL 数据库时，无法访问托管数据库的计算机。 有关完整比较，请参阅[选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)](../../azure-sql-iaas-vs-paas-what-is-overview.md)。
+   从概念上讲，在 Azure 虚拟机上运行 SQL Server 与在远程数据中心运行 SQL Server 并没什么不同。 与此相反， [AZURE SQL 数据库](../../database/sql-database-paas-overview.md)提供数据库即服务。 使用 SQL 数据库时，无法访问托管数据库的计算机。 有关完整比较，请参阅[选择云 SQL Server 选项：Azure SQL (PaaS) 数据库或 Azure VM 上的 SQL Server (IaaS)](../../azure-sql-iaas-vs-paas-what-is-overview.md)。
 
 1. **如何在 Azure VM 上安装 SQL 数据工具？**
 
@@ -230,16 +229,16 @@ ms.locfileid: "84035258"
 
 **Windows VM**：
 
-* [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。
-* [设置 SQL Server Windows VM](create-sql-vm-portal.md)
+* [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
+* [在 Windows VM 上预配 SQL Server](create-sql-vm-portal.md)
 * [将数据库迁移到 Azure VM 上的 SQL Server](migrate-to-vm-from-sql-server.md)
-* [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
-* [Azure 虚拟机中 SQL Server 的性能最佳实践](performance-guidelines-best-practices.md)
-* [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](application-patterns-development-strategies.md)
+* [Azure 虚拟机上 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
+* [Azure 虚拟机中 SQL Server 的性能最佳做法](performance-guidelines-best-practices.md)
+* [Azure 虚拟机上 SQL Server 的应用程序模式和开发策略](application-patterns-development-strategies.md)
 
 **Linux VM**：
 
 * [Linux VM 上的 SQL Server 概述](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
-* [设置 SQL Server Linux VM](../linux/sql-vm-create-portal-quickstart.md)
+* [在 Linux VM 上预配 SQL Server](../linux/sql-vm-create-portal-quickstart.md)
 * [常见问题 (Linux)](../linux/frequently-asked-questions-faq.md)
 * [“Linux 上的 SQL Server”文档](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

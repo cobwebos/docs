@@ -3,12 +3,12 @@ title: Azure Batch 中的作业和任务
 description: 从开发的角度来了解作业和任务及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
 ms.date: 05/12/2020
-ms.openlocfilehash: aeffd05a26066675ca320ab4b3c3c09e6807e6df
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790804"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955363"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Azure Batch 中的作业和任务
 
@@ -22,7 +22,7 @@ ms.locfileid: "83790804"
 
 ### <a name="job-priority"></a>作业优先级
 
-可以向创建的作业分配可选的作业优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级，请调用[更新作业的属性](https://docs.microsoft.com/rest/api/batchservice/job/update)操作 (Batch REST) 或修改 [CloudJob.Priority](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) 属性 (Batch .NET)。
+可以向创建的作业分配可选的作业优先级。 Batch 服务使用作业的优先级值来确定帐户中的作业计划顺序（不要与 [计划的作业](#scheduled-jobs)相混淆）。 优先级值的范围为 -1000 到 1000，-1000 表示最低优先级，1000 表示最高优先级。 若要更新作业的优先级，请调用[更新作业的属性](/rest/api/batchservice/job/update)操作 (Batch REST) 或修改 [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) 属性 (Batch .NET)。
 
 在同一个帐户内，高优先级作业的计划优先顺序高于低优先级作业。 一个帐户中具有较高优先级值的作业，其计划优先级并不高于不同帐户中较低优先级值的另一个作业。 已经运行的低优先级作业中的任务不会预先清空。
 
@@ -39,13 +39,13 @@ ms.locfileid: "83790804"
 
 客户端应用程序可将任务添加到作业，用户也可以指定 [作业管理器任务](#job-manager-task)。 作业管理器任务包含必要的信息用于为池中某个计算节点上运行的包含作业管理器任务的作业创建所需的任务。 作业管理器任务专门由 Batch 来处理；创建作业和重新启动失败的作业后，会立即将任务排队。 [作业计划](#scheduled-jobs)创建的作业需要作业管理器任务，因为它是在实例化作业之前定义任务的唯一方式。
 
-默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 onAllTasksComplete 属性（在 Batch .NET 中为 [OnAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob)）设置为 terminatejob，可在作业的所有任务处于已完成状态时自动终止该作业。
+默认情况下，当作业内的所有任务都完成时，作业仍保持活动状态。 可以更改此行为，使作业在其中的所有任务完成时自动终止。 将作业的 onAllTasksComplete 属性（在 Batch .NET 中为 [OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob)）设置为 terminatejob，可在作业的所有任务处于已完成状态时自动终止该作业。
 
 Batch 服务将没有任务的作业视为其所有任务都已完成。 因此，此选项往往与 [作业管理器任务](#job-manager-task)配合使用。 如果想要使用自动作业终止而不通过作业管理器终止，首先应该将新作业的 **onAllTasksComplete** 属性设置为 *noaction*，然后只有在完成将任务添加到作业之后才将它设置为 *terminatejob*。
 
 ### <a name="scheduled-jobs"></a>计划的作业
 
-使用[作业计划](https://docs.microsoft.com/rest/api/batchservice/jobschedule)可在 Batch 服务中创建周期性作业。 作业计划指定何时要运行作业，并包含要运行的作业的规范。 可以指定计划的持续时间（计划的持续时间和生效时间），以及在计划的时间段创建作业的频率。
+使用[作业计划](/rest/api/batchservice/jobschedule)可在 Batch 服务中创建周期性作业。 作业计划指定何时要运行作业，并包含要运行的作业的规范。 可以指定计划的持续时间（计划的持续时间和生效时间），以及在计划的时间段创建作业的频率。
 
 ## <a name="tasks"></a>任务
 
@@ -153,11 +153,11 @@ Batch 提供作业准备任务用于前期作业执行设置，还提供作业�
 
 ### <a name="environment-settings-for-tasks"></a>任务的环境设置
 
-批处理服务执行的每个任务都可以访问在计算节点上设置的环境变量。 这包括 Batch 服务（[服务定义型](https://docs.microsoft.com/azure/batch/batch-compute-node-environment-variables)）定义的环境变量，以及用户可以针对其任务定义的自定义环境变量。 任务执行的应用程序和脚本可以在执行期间访问这些环境变量。
+批处理服务执行的每个任务都可以访问在计算节点上设置的环境变量。 这包括 Batch 服务（[服务定义型](./batch-compute-node-environment-variables.md)）定义的环境变量，以及用户可以针对其任务定义的自定义环境变量。 任务执行的应用程序和脚本可以在执行期间访问这些环境变量。
 
-可以通过填充这些实体的 *环境设置* 属性，在任务或作业级别设置自定义环境变量。 有关更多详细信息，请参阅[将任务添加到作业](https://docs.microsoft.com/rest/api/batchservice/task/add?)] 操作 (Batch REST API)，或 Batch .NET 中的 [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) 和 [CloudJob.CommonEnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudjob) 属性。
+可以通过填充这些实体的 *环境设置* 属性，在任务或作业级别设置自定义环境变量。 有关更多详细信息，请参阅[将任务添加到作业](/rest/api/batchservice/task/add?)] 操作 (Batch REST API)，或 Batch .NET 中的 [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) 和 [CloudJob.CommonEnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudjob) 属性。
 
-客户端应用程序或服务可使用[获取有关任务的信息](https://docs.microsoft.com/rest/api/batchservice/task/get)操作 (Batch REST) 或通过访问 [CloudTask.EnvironmentSettings](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) 属性 (Batch .NET)，来获取任务的环境变量（服务定义型和自定义环境变量）。 在计算节点上执行的进程可以在节点上访问这些和其他环境变量，例如，通过使用熟悉的 `%VARIABLE_NAME%` (Windows) 或 `$VARIABLE_NAME` (Linux) 语法。
+客户端应用程序或服务可使用[获取有关任务的信息](/rest/api/batchservice/task/get)操作 (Batch REST) 或通过访问 [CloudTask.EnvironmentSettings](/dotnet/api/microsoft.azure.batch.cloudtask) 属性 (Batch .NET)，来获取任务的环境变量（服务定义型和自定义环境变量）。 在计算节点上执行的进程可以在节点上访问这些和其他环境变量，例如，通过使用熟悉的 `%VARIABLE_NAME%` (Windows) 或 `$VARIABLE_NAME` (Linux) 语法。
 
 可以在[计算节点环境变量](batch-compute-node-environment-variables.md)中找到包含所有服务定义型环境变量的完整列表。
 

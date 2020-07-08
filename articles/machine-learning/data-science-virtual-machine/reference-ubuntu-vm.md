@@ -5,15 +5,16 @@ description: Data Science Virtual Machine 中包含的工具的详细信息
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161275"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955533"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu (Linux) Data Science Virtual Machine
 
@@ -96,7 +97,7 @@ R 是数据分析和机器学习的最常用语言之一。 若要使用 R 进�
 
 ## <a name="python"></a>Python
 
-使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2\.7 环境称为根环境，3.5 环境称为 py35 环境   。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
+使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2\.7 环境称为根环境，3.5 环境称为 py35 环境__ __。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
 
 默认为 py35 环境。 若要激活根 (2.7) 环境，请使用以下命令：
 
@@ -137,23 +138,23 @@ conda install <package> -n py35
 
 Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码登录。
 
-已使用 Python 2、Python 3 和 R 内核预配置 Jupyter 笔记本服务器。 使用“Jupyter Notebook”桌面图标打开浏览器并访问 Notebook 服务器。  如果通过 SSH 或 X2Go 客户端登录 VM，则还可以通过 `https://localhost:8000/` 访问 Jupyter Notebook 服务器。
+已使用 Python 2、Python 3 和 R 内核预配置 Jupyter 笔记本服务器。 使用“Jupyter Notebook”桌面图标打开浏览器并访问 Notebook 服务器。**** 如果通过 SSH 或 X2Go 客户端登录 VM，则还可以通过 `https://localhost:8000/` 访问 Jupyter Notebook 服务器。
 
 > [!NOTE]
 > 如果收到任何证书警告，请选择继续。
 
-可以从任何主机访问 Jupyter 笔记本服务器。 输入 **https://\<VM DNS 名称或 IP 地址\>:8000/** 。
+可以从任何主机访问 Jupyter 笔记本服务器。 输入 https://\<VM DNS name or IP address\>:8000/****。
 
 > [!NOTE]
 > 默认情况下，配置 VM 时，防火墙中会打开端口 8000。 
 
-我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”  并选择相应的语言内核，可创建新笔记本。 如果未看到“新建”按钮，请选择左上角的“Jupyter”图标转到 Notebook 服务器的主页。  
+我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”**** 并选择相应的语言内核，可创建新笔记本。 如果未看到“新建”按钮，请选择左上角的“Jupyter”图标转到 Notebook 服务器的主页。**** ****
 
 ## <a name="apache-spark-standalone"></a>Apache Spark 独立版
 
 一个 Apache Spark 独立版实例已预装在 Linux DSVM 上，以帮助你在本地开发 Spark 应用程序，然后在大型群集上对其进行测试和部署。 
 
-可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，选择“新建”按钮即可看到可用内核的列表  。 “Spark - Python”是 PySpark 内核。借助它可以使用 Python 语言生成 Spark 应用程序  。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 
+可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，选择“新建”按钮即可看到可用内核的列表****。 “Spark - Python”是 PySpark 内核。借助它可以使用 Python 语言生成 Spark 应用程序****。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 
 
 在此独立实例中，Spark 堆栈会在调用方客户端程序中运行。 与在 Spark 群集上进行开发相比，使用此功能可以更快、更轻松地排查问题。
 
@@ -262,8 +263,10 @@ VM 随附一些已预编译并已在本地预装的机器学习工具和算法�
 * **Python**：Anaconda Python 附带机器学习算法，这些算法含有库（如 Scikit-learn）。 可以通过使用 `pip install` 命令安装其他库。
 * **LightGBM**：快速、分布式、高性能的梯度提升框架，基于决策树算法。
 * **R**：有丰富的机器学习函数库可供 R 使用。预装的库包括 lm、glm、randomForest 和 rpart。 可运行以下命令安装其他库：
-  
-        install.packages(<lib name>)
+
+    ```r
+    install.packages(<lib name>)
+    ```
 
 以下是一些关于列表中前三个机器学习工具的附加信息。
 
@@ -315,7 +318,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (R Analytical Tool To Learn Easily) 使用基于 GUI 的数据浏览和建模       。 它提供数据的统计和可视化摘要，转换可轻松建模的数据，从数据构建不受监督和受监督的模型，以图形方式呈现模型的性能，以及对新数据集进行评分。 它还生成 R 代码，用于复制 UI 中可直接在 R 中运行或用作进一步分析的起点的操作。
+Rattle (R Analytical Tool To Learn Easily) 使用基于 GUI 的数据浏览和建模**** **** **** **** **** ****。 它提供数据的统计和可视化摘要，转换可轻松建模的数据，从数据构建不受监督和受监督的模型，以图形方式呈现模型的性能，以及对新数据集进行评分。 它还生成 R 代码，用于复制 UI 中可直接在 R 中运行或用作进一步分析的起点的操作。
 
 若要运行 Rattle，需进入图形桌面登录会话。 在终端中输入 **R** 打开 R 环境。 在 R 提示符中，输入以下命令：
 
@@ -327,19 +330,19 @@ rattle()
 此时会打开包含一组选项卡的图形界面。 在 Rattle 中执行以下快速入门步骤，使用示例天气数据集并生成模型。 在某些步骤中，系统会提示自动安装并加载尚未安装在系统上的某些必需 R 包。
 
 > [!NOTE]
-> 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y  。
+> 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y****。
 
-1. 选择“执行”  。
-1. 此时会显示一个对话框，询问是否要使用示例气象数据集。 选择“是”以加载示例。 
-1. 选择“模型”选项卡。 
-1. 选择“执行”以生成决策树。 
-1. 选择“绘制”以显示决策树。 
-1. 选择“林”选项，然后选择“执行”以生成随机林。  
-1. 选择“评估”选项卡。 
-1. 选择“风险”选项，然后选择“执行”以显示两个“风险(累积)”性能绘图。   
-1. 选择“日志”选项卡以显示为上述操作生成的 R 代码。 
-   （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志”  前插入 **#** 字符。）
-1. 选择“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。 
+1. 选择“执行”****。
+1. 此时会显示一个对话框，询问是否要使用示例气象数据集。 选择“是”以加载示例。****
+1. 选择“模型”选项卡。****
+1. 选择“执行”以生成决策树。****
+1. 选择“绘制”以显示决策树。****
+1. 选择“林”选项，然后选择“执行”以生成随机林。**** ****
+1. 选择“评估”选项卡。****
+1. 选择“风险”选项，然后选择“执行”以显示两个“风险(累积)”性能绘图。**** **** ****
+1. 选择“日志”选项卡以显示为上述操作生成的 R 代码。****
+   （由于当前版本 Rattle 中的 bug，需在日志文本中的“导出此日志”**** 前插入 **#** 字符。）
+1. 选择“导出”按钮，将名为 *weather_script.R* 的 R 脚本文件保存到主文件夹。****
 
 可以退出 Rattle 和 R。现在，可以修改生成的 R 脚本。 或者，可以按原样使用该脚本，并可随时运行它来重复 Rattle UI 中的所有操作。 尤其是对于 R 初学者而言，使用此方法可在简单的图形界面中快速执行分析和机器学习，同时在 R 中自动生成代码来修改项目或用于学习。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30ca3bb86426b144fa6cbf5c63888d9546919ebf
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76514215"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954683"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -242,10 +242,12 @@ ms.locfileid: "76514215"
 > 
 >   本节中定义的字段语法（符合 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）如下：
 
-    FileType = MajorBrand MinorVersion CompatibleBrands
-    MajorBrand = STRING_UINT32
-    MinorVersion = STRING_UINT32
-    CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```properties
+FileType = MajorBrand MinorVersion CompatibleBrands
+MajorBrand = STRING_UINT32
+MinorVersion = STRING_UINT32
+CompatibleBrands = "ccff" "iso8" 0\*(STRING_UINT32)
+```
 
 **注意**：兼容性品牌“ccff”和“iso8”指示片段符合“通用容器文件格式”、通用加密 [ISO/IEC 23001-7] 和 ISO 基本媒体文件格式版本 4 [ISO/IEC 14496-12]。
 
@@ -288,14 +290,18 @@ ms.locfileid: "76514215"
 > 
 >   包含 HEVC 流的呈现内容应该设置：
 
-    MajorVersion = 2
-    MinorVersion = 2
+```properties
+MajorVersion = 2
+MinorVersion = 2
+```
 
 >   LookaheadCount = 0（注意：框已弃用）
 > 
 >   呈现内容还应设置：
 
-    TimeScale = 90000
+```properties
+TimeScale = 90000
+```
 
 >   流集合：根据第 *3.1.1.1.2* 节指定的“流说明”数据元素集合。
 > 

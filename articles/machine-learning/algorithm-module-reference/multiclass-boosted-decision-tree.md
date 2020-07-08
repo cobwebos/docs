@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
-ms.openlocfilehash: cfe35f81526a729092edf522f693ccd18494d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 023b731216605746e838306ce1ab69ebe8c6c6fd
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137818"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955771"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多类提升决策树
 
@@ -26,50 +26,50 @@ ms.locfileid: "82137818"
 
 ## <a name="how-to-configure"></a>配置方式 
 
-此模块创建一个未训练的分类模型。 由于分类是一种监督式学习方法，所以，你需要一个标记的数据集，其中包含一个标签列，该列在所有行中都有一个值  。
+此模块创建一个未训练的分类模型。 由于分类是一种监督式学习方法，所以，你需要一个标记的数据集，其中包含一个标签列，该列在所有行中都有一个值。
 
 可以使用[训练模型](././train-model.md)来训练这种类型的模型。 
 
-1.  将“多类提升决策树”模块添加到管道  。
+1.  将“多类提升决策树”模块添加到管道。
 
-1.  通过设置“创建训练程序模式”选项，指定所希望的模型训练方式  。
+1.  通过设置“创建训练程序模式”选项，指定所希望的模型训练方式。
 
-    + **单个参数**：如果知道自己想要如何配置模型，可以提供一组特定的值作为参数。
+    + **单个参数**：如果你知道自己想要如何配置模型，可以提供一组特定的值作为参数。
     
-    + **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
+    + **参数范围**：如果不确定最佳参数并想要运行参数整理，请选择此选项。 选择要循环访问的值范围，[优化模型超参数](tune-model-hyperparameters.md)将循环访问所提供设置的所有可能组合，以确定产生最佳结果的超参数。  
 
-1. “每个树的最大叶数”限制可在任何树中创建的终端节点（叶）的最大数目****。
+1. “每个树的最大叶数”限制可在任何树中创建的终端节点（叶）的最大数目。
     
-        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
+    如果增大此值，则可能会增加树的大小并达到更高的精度，但会有过度拟合和训练时间较长的风险。
   
-1. “每个叶节点的最少样本数”指示在树中创建任何终端节点（叶）所需的事例数****。  
+1. “每个叶节点的最少样本数”指示在树中创建任何终端节点（叶）所需的事例数。  
 
-         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
+    通过增加此值，可以增加用于创建新规则的阈值。 例如，使用默认值 1 时，即使是单个事例也可以导致创建新规则。 如果将值增加到 5，则训练数据将必须包含至少五个满足相同条件的案例。
 
-1. “学习速率”定义学习时的步幅****。 请输入介于 0 到 1 之间的数字。
+1. “学习速率”定义学习时的步幅。 请输入介于 0 到 1 之间的数字。
 
-         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
+    学习速率决定了学习器向最佳解决方案趋近的速度。 如果步幅太大，则可能超出最佳解决方案。 如果步幅太小，训练将花费更长的时间来趋近最佳解决方案。
 
-1. “构造的树数”指示要在集成中创建的决策树的总数****。 通过创建更多决策树，你可能会获得更好的覆盖范围，但训练时间将会增加。
+1. “构造的树数”指示要在集成中创建的决策树的总数。 通过创建更多决策树，你可能会获得更好的覆盖范围，但训练时间将会增加。
 
-1. “随机数种子”可以选择性地设置非负整数作为随机种子值****。 指定种子可以确保具有相同数据和参数的运行之间的可再现性。  
+1. “随机数种子”可以选择性地设置非负整数作为随机种子值。 指定种子可以确保具有相同数据和参数的运行之间的可再现性。  
 
-         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
+    默认情况下，随机种子设置为 42。 使用不同随机种子的后续运行会产生不同的结果。
 
 1. 训练模型：
 
-    + 如果将“创建训练程序模式”设置为“单个参数”，请连接标记的数据集和[训练模型](train-model.md)模块********。  
+    + 如果将“创建训练程序模式”设置为“单个参数”，请连接带标记的数据集和[训练模型](train-model.md)模块 。  
   
-    + 如果将 "**创建训练培训模式**" 设置为 "**参数范围**"，请使用[优化模型超参数](tune-model-hyperparameters.md)连接标记的数据集并为模型定型。  
+    + 如果将“创建训练程序模式”设置为“参数范围”，请连接带标记的数据集并使用[优化模型超参数](tune-model-hyperparameters.md)来训练模型 。  
   
     > [!NOTE]
     > 
-    > 如果将参数范围传递到[定型模型](train-model.md)，则它仅使用单个参数列表中的默认值。  
+    > 如果将参数范围传递给[训练模型](train-model.md)，则它只使用单个参数列表中的默认值。  
     > 
-    > 如果将一组参数值传递到[优化模型超参数](tune-model-hyperparameters.md)模块，则在它需要每个参数的一系列设置时，它将忽略这些值，并使用学习器的默认值。  
+    > 如果将一组参数值传递给[优化模型超参数](tune-model-hyperparameters.md)模块，则当它期望每个参数有一系列设置时，它会忽略这些值，并为学习器使用默认值。  
     > 
-    > 如果选择 "**参数范围**" 选项并为任何参数输入单个值，则会在整个扫描中使用您指定的单个值，即使其他参数在一系列值中发生变化。
+    > 如果选择“参数范围”选项并为任何参数输入单个值，则整个整理过程中都会使用你指定的单个值，即使其他参数的值发生一系列更改。
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

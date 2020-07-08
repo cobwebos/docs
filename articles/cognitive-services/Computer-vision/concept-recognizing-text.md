@@ -1,7 +1,7 @@
 ---
-title: 从图像和文档中读取文本-计算机视觉
+title: 光学字符识别（OCR）-计算机视觉
 titleSuffix: Azure Cognitive Services
-description: 与光学字符识别（OCR）和图像和文档中的文本相关的概念，用于使用计算机视觉 API 打印和手写文本。
+description: 与使用计算机视觉 API 通过打印文本和手写文本打印的图像和文档中的光学字符识别（OCR）相关的概念。
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 416a7edfdcd7e7915aa7886a8f53cf822b43fe93
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: d1c642a660b24cfc54c9c4308b8956582e13d50a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560807"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954734"
 ---
-# <a name="read-text-from-images-and-documents"></a>从图像和文档读取文字
+# <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
 计算机视觉包括新的基于深度学习的光学字符识别（OCR）功能，这些功能可从图像和 PDF 文档中提取打印文本或手写文本。 计算机视觉从模拟文档（图像、扫描的文档）和数字化的文档中提取文本。 你可以从图像中提取文本（例如，具有序列号的许可印版照片或包含序列号的容器），也可以从文档-发票、帐单、财务报表、文章等。 此 OCR 功能作为云中或本地（容器）的托管服务的一部分提供。 此外，它还支持虚拟网络和专用终结点，以满足企业级符合性和隐私需求。
 

@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: f00d93a639bacd1d0862fed7b6b003302bb2920e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/9/2020
+ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097653"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954188"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
 在“基本”、“常规用途”和“内存优化”这三个不同的定价层中，Azure Database for MariaDB 服务器可以在其中的一个定价层中创建。 定价层的差异表现在可以预配的 vCore 中的计算量、每个 vCore 的内存，以及用于存储数据的存储技术。 所有资源都在 MariaDB 服务器级别预配。 一个服务器可以有一个或多个数据库。
 
-|    | **基本** | **常规用途** | **内存优化** |
+| 资源 | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
 | 计算的代 | 第 5 代 |第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ ms.locfileid: "82097653"
 
 预配的存储是指可供 Azure Database for MariaDB 服务器使用的存储容量。 此存储可用于数据库文件、临时文件、事务日志和 MariaDB 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
-|    | **基本** | **常规用途** | **内存优化** |
+| 存储属性   | Basic | 常规用途 | 内存优化 |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
@@ -58,6 +58,20 @@ ms.locfileid: "82097653"
 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
 可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
+
+### <a name="large-storage-preview"></a>大型存储（预览）
+
+我们正在增加常规用途和内存优化层中的存储限制。 选择加入预览版的新创建的服务器可以预配高达 16 TB 的存储空间。 IOPS 按3:1 的比率缩放，最高可达 20000 IOPS。 与当前的已正式发布的存储一样，你可以在创建服务器后添加额外的存储容量，并允许系统根据工作负荷的存储使用量自动增长存储。
+
+| 存储属性 | 常规用途 | 内存优化 |
+|:-------------|:--------------------|:---------------------|
+| 存储类型 | Azure 高级存储 | Azure 高级存储 |
+| 存储大小 | 32 GB 到 16 TB| 32到 16 TB |
+| 存储增量大小 | 1GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
+
+> [!IMPORTANT]
+> 大型存储目前在以下区域中处于公共预览阶段：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东部、美国西部2和美国中部。
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
