@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671131"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
@@ -72,7 +71,7 @@ ms.locfileid: "77671131"
 
 ![探查器集成](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 图中只显示了一个组件，其余组件仅显示为外部依赖项，没有显示有关这些组件内发生的情况的详细信息**。
 
@@ -94,4 +93,4 @@ ms.locfileid: "77671131"
 
 为什么新体验中缺少大部分相关项查询？**
 
-这是设计的结果。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。
+这是设计使然。 所有组件的全部相关项都已显示在左侧（顶部和底部）。 新体验中有两个左侧未包含的相关项：此事件发生前后五分钟内的所有遥测，以及用户时间线。

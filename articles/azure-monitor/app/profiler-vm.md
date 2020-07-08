@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VM 上分析 web 应用-Application Insights Profiler
+title: 探查 Azure VM 上的 Web 应用 - Application Insights Profiler
 description: 使用 Application Insights Profiler 探查 Azure VM 上的 Web 应用。
 ms.topic: conceptual
 author: cweining
@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671573"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>使用 Application Insights Profiler 探查在 Azure 虚拟机或虚拟机规模集上运行的 Web 应用
@@ -87,7 +86,7 @@ Azure Application Insights Profiler 也可以部署在以下服务上：
 
     ![检查是否安装了 WAD 扩展][wadextension]
 
-2. 查找你的 VM 的 VM 诊断扩展。 转到 [https://resources.azure.com](https://resources.azure.com)。 展开你的资源组、Microsoft.Compute 虚拟机、虚拟机名称和扩展。  
+2. 查找你的 VM 的 VM 诊断扩展。 转到[https://resources.azure.com](https://resources.azure.com)。 展开你的资源组、Microsoft.Compute 虚拟机、虚拟机名称和扩展。  
 
     ![在 Azure 资源浏览器中导航到 WAD 配置][azureresourceexplorer]
 

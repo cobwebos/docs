@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
 ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668224"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见警报架构与逻辑应用集成
@@ -109,7 +108,7 @@ ms.locfileid: "77668224"
         }
     ```
 
-1. 选择**+** "**新建步骤**"，然后选择 "**添加操作**"。
+1. 选择 " **+** **新建步骤**"，然后选择 "**添加操作**"。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
@@ -137,6 +136,6 @@ ms.locfileid: "77668224"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关操作组的详细信息](../../azure-monitor/platform/action-groups.md)。
-* [详细了解常见警报架构](https://aka.ms/commonAlertSchemaDocs)。
+* [详细了解操作组](../../azure-monitor/platform/action-groups.md)。
+* [了解有关常见警报架构的详细信息](https://aka.ms/commonAlertSchemaDocs)。
 

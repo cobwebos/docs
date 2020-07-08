@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77915023"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
@@ -35,7 +34,7 @@ ms.locfileid: "77915023"
 
 
 1. 删除经典虚拟机。
-2. 如果已选中“磁盘”复选框，则与页 Blob *.vhd 关联的**磁盘租约**（如上图所示）将会中断。 实际的页 Blob *.vhd 文件仍在存储帐户中存在。
+2. 如果选择了 "磁盘" 复选框，则与页 blob * .vhd 关联的**磁盘租约**（如上图所示）已损坏。 实际的页 Blob *.vhd 文件仍在存储帐户中存在。
 ![门户屏幕截图，其中显示（经典）虚拟机的“删除”错误窗格已打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. 中断磁盘租约后，可以删除页 Blob 本身。 删除存储帐户或容器中的所有“磁盘”资源后，可以删除该存储帐户或容器。
@@ -114,7 +113,7 @@ ms.locfileid: "77915023"
 在 Azure 门户中执行以下步骤：
 1.  导航到 [Azure 门户](https://portal.azure.com)。
 2.  导航到“磁盘(经典)”。 
-3.  单击 "磁盘" 选项![卡。门户的屏幕截图，容器 blob "列表" 窗格打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  单击 "磁盘" 选项卡。 ![门户的屏幕截图，其中已打开容器 blob "列表" 窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  选择用户的数据磁盘，并单击“删除磁盘”。
  ![门户屏幕截图，其中显示容器 Blob“列表”窗格已打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)

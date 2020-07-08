@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
 ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672202"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
@@ -42,7 +41,7 @@ ms.locfileid: "77672202"
 
 ## <a name="sign-in-to-grafana"></a>登录到 Grafana
 
-1. 使用服务器的 IP 地址在浏览器中打开登录页 http://\<IP 地址\>:3000 或 \<DNSName>\:3000****。 尽管默认端口为 3000，但请注意可能在设置期间选择了其他端口。 你应看到生成的 Grafana 服务器登录页。
+1. 使用服务器的 IP 地址，在浏览器的*http:// \<IP address\> ： 3000*或* \<DNSName> \: 3000*中打开登录页。 尽管默认端口为 3000，但请注意可能在设置期间选择了其他端口。 你应看到生成的 Grafana 服务器登录页。
 
     ![Grafana 登录屏幕](./media/grafana-plugin/grafana-login-screen.png)
 

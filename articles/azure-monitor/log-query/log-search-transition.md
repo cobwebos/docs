@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
 ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670128"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>从 Log Analytics 日志搜索过渡到 Azure Monitor 日志
@@ -39,7 +38,7 @@ Log Analytics 中的日志搜索功能最近已由一个可以分析 Azure Monit
 
 ![保存日志搜索](media/log-search-transition/save-search-log-search.png)
 
-若要在 Azure Monitor 日志中保存当前查询，请选择“保存”。  将“另存为”更改为“函数”，并提供一个**函数别名**以创建[函数](functions.md)。   若要使用[计算机组](../platform/computer-groups.md)的函数别名，请选择“将此查询另存为计算机组”  。
+若要在 Azure Monitor 日志中保存当前查询，请选择“保存”。  将“另存为”更改为“函数”，并提供一个**函数别名**以创建[函数](functions.md)。 若要使用[计算机组](../platform/computer-groups.md)的函数别名，请选择“将此查询另存为计算机组”。
 
 ![保存日志查询](media/log-search-transition/save-query-logs.png)
 

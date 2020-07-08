@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670315"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>通过 Azure Monitor 日志查询创建图表和关系图
@@ -69,7 +68,7 @@ Perf
 ![参考线](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>多个维度
-`by` 的 `summarize` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
+`summarize` 的 `by` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
 
 ```Kusto
 SecurityEvent

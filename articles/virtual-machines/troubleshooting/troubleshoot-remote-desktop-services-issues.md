@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
 ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919458"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
@@ -34,16 +33,16 @@ ms.locfileid: "77919458"
 
 - 在使用事件查看器远程查看 VM 中的事件日志时， 你发现远程桌面服务 (TermService) 未启动或无法启动。 下面是日志示例：
 
-    **日志名称**：系统 </br>
-    **源**：服务控制管理器 </br>
-    **日期**: 12/16/2017 11:19:36 AM</br>
-    **事件 ID**：7022</br>
-    **任务类别**: 无</br>
-    **级别**：错误</br>
-    **关键字**：经典</br>
-    **用户**：暂缺</br>
+    **日志名称**：    系统 </br>
+    **源**：      服务控制管理器 </br>
+    **日期**：        2017 年 12 月 16 日上午 11:19:36</br>
+    **事件 ID**：    7022</br>
+    **任务类别**：无</br>
+    **级别**：       错误</br>
+    **关键字**：    经典</br>
+    **用户**：        空值</br>
     **计算机**: vm.contoso.com</br>
-    **说明**: 远程桌面服务服务在启动时挂起。 
+    **说明**：远程桌面服务在启动时挂起。 
 
     也可以使用串行访问控制台功能运行以下查询来查找这些错误： 
 
@@ -53,7 +52,7 @@ ms.locfileid: "77919458"
  
 之所以发生此问题，是因为远程桌面服务未在 VM 上运行。 未运行的原因取决于以下情况： 
 
-- TermService 服务设置为“已禁用”。**** 
+- TermService 服务设置为“已禁用”。  
 - TermService 服务崩溃或未响应。 
 - 错误的配置导致 TermService 不启动。
 
@@ -143,7 +142,7 @@ ms.locfileid: "77919458"
 
     1. [将数据磁盘附加到 VM](../windows/attach-managed-disk-portal.md
 )。
-    2. 使用串行控制台可将文件复制到新驱动器。 例如，`copy C:\temp\ProcMonTrace.PML F:\` 。 在此命令中，F 是附加的数据磁盘的驱动程序号。
+    2. 使用串行控制台可将文件复制到新驱动器。 例如 `copy C:\temp\ProcMonTrace.PML F:\`。 在此命令中，F 是附加的数据磁盘的驱动程序号。
     3. 分离数据驱动器，并将其附加到已安装进程监视器 ubstakke 的正常 VM。
 
 6. 在正常的 VM 上使用进程监视器打开 **ProcMonTrace.PML**。 然后按**结果筛选为 "拒绝访问**"，如以下屏幕截图所示：
@@ -202,8 +201,8 @@ ms.locfileid: "77919458"
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>将 OS 磁盘附加到恢复 VM
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
-2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的 OS 磁盘的驱动器号。
-3. 打开提升的命令提示符实例（**以管理员身份运行**）。 然后运行以下脚本。 假设分配给附加 OS 磁盘的驱动器号为**F**。将其替换为 VM 中的相应值。 
+2. 开始与恢复 VM 建立远程桌面连接。 确保附加的磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
+3. 打开权限提升的命令提示符实例（“以管理员身份运行”）。  然后运行以下脚本。 假设分配给附加的 OS 磁盘的驱动器号为 **F**。请将它替换为 VM 中的相应值。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

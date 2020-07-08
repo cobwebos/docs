@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77919407"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>了解 Azure VM 的系统重启
@@ -30,7 +29,7 @@ Azure 虚拟机 (VM) 有时可能会在没有明显原因（没有证据表明�
 
 若要为应用程序提供此级别的冗余，建议两个或更多 VM 组合到一个可用性集中。 这种配置可确保发生计划内或计划外维护事件时，至少有一个 VM 可用，并满足 99.95% 的 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/) 要求。
 
-有关可用性集的详细信息，请参阅[管理 vm 的可用性](../windows/manage-availability.md)
+有关可用性集的详细信息，请参阅[管理 VM 的可用性](../windows/manage-availability.md)
 
 ## <a name="resource-health-information"></a>资源运行状况信息
 
@@ -47,13 +46,13 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
 若要了解什么是 Azure 计划内维护，及其如何影响 Linux VM 的可用性，请参阅下面列出的文章。 这些文章介绍了 Azure 计划内维护过程的背景，以及如何安排计划内维护以进一步减少影响。
 
 - [Azure VM 的计划内维护](../windows/planned-maintenance.md)
-- [如何对 Azure Vm 计划计划内维护](../windows/classic/planned-maintenance-schedule.md)
+- [如何在 Azure VM 上安排计划内维护](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>内存保留更新
 
 对于 Microsoft Azure 中的这类更新，用户体验不到其对运行中的 VM 的任何影响。 其中一些更新主要面向组件或服务，更新时不会干扰正在运行的实例。 还有一些是主机操作系统上的平台基础结构更新，应用时无需重启 VM。
 
-这些内存保留更新通过启用就地实时迁移技术实现。 进行更新时，VM 处于“暂停”状态。** 该状态可保留 RAM 中的内存，基础主机操作系统则接收必要的更新和补丁。 VM 在暂停后 30 秒内恢复正常。 VM 恢复后，其时钟将自动同步。
+这些内存保留更新通过启用就地实时迁移技术实现。 进行更新时，VM 处于“暂停”状态。  该状态可保留 RAM 中的内存，基础主机操作系统则接收必要的更新和补丁。 VM 在暂停后 30 秒内恢复正常。 VM 恢复后，其时钟将自动同步。
 
 由于暂停时间短，因此通过这种机制部署更新可以大大减少对 VM 的影响。 但是，并非所有更新都可通过这种方式部署。 
 
@@ -64,7 +63,7 @@ Microsoft Azure 在全球范围内定期执行更新，提高 VM 所基于主机
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>用户发起的重启或关闭操作
 
-如果从 Azure 门户、Azure PowerShell、命令行接口或 REST API 执行重新启动，则可以在[Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)中找到该事件。
+如果通过 Azure 门户、Azure PowerShell、 命令行接口或 REST API 执行重启，则可在 [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)中找到该事件。
 
 如果在 VM 的操作系统中执行该操作，则可在系统日志中找到该事件。
 
@@ -86,7 +85,7 @@ Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少�
 
 服务器错误通常由硬盘或固态硬盘等硬件故障引起。 Azure 持续监视这些事件，确定基础 bug，并在实现和测试缓解举措后推出更新。
 
-由于某些主机服务器错误可能特定于该服务器，因此可通过手动将 VM 重新部署到其他主机服务器来改善 VM 重复重启的情况。 在 VM 详细信息页上使用“重新部署”选项，或在 Azure 门户中停止并重启 VM，可触发此操作。****
+由于某些主机服务器错误可能特定于该服务器，因此可通过手动将 VM 重新部署到其他主机服务器来改善 VM 重复重启的情况。 在 VM 详细信息页上使用“重新部署”选项，或在 Azure 门户中停止并重启 VM，可触发此操作。 
 
 ### <a name="auto-recovery"></a>自动恢复
 
@@ -113,9 +112,9 @@ VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能
 
 关机持续时间可短至 5 分钟，也可能非常久。 下面是与存储相关的强制关机具体情况之一： 
 
-超过 IO 限制****
+超过 IO 限制 
 
-如果 I/O 请求因每秒输入/输出操作数 (IOPS) 超出磁盘 I/O 限制而持续受到限制，则可能暂时关闭 VM。 （标准磁盘存储限制为 500 IOPS。）若要缓解此问题，请根据工作负荷使用磁盘条带化或配置来宾 VM 内的存储空间。 有关详细信息，请参阅[配置 Azure VM 以获得最佳存储性能](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
+如果 I/O 请求因每秒输入/输出操作数 (IOPS) 超出磁盘 I/O 限制而持续受到限制，则可能暂时关闭 VM。 （标准磁盘存储的限制为 500 IOPS。）为缓解此问题，请在来宾 VM 中使用磁盘剥离或配置存储空间，具体情况取决于工作负荷。 有关详细信息，请参阅[配置 Azure VM 以获得最佳存储性能](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)。
 
 ### <a name="other-incidents"></a>其他事件
 

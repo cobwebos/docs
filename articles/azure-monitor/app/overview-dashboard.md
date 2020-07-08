@@ -4,10 +4,9 @@ description: 使用 Azure Application Insights 概览仪表板功能来监控应
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669890"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights 概述仪表板
@@ -26,7 +25,7 @@ Application Insights 一直都有一个总览窗格，可让用户快速、直�
 
 ![时间范围](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”  标题下选择“失败”  ：
+总体性能已大大提高。 只需单击一次即可访问常用功能，例如**搜索**和**分析**。 每个默认动态更新的 KPI 磁贴都可让你深入了解相应的 Application Insights 功能。 若要了解有关失败请求的详细信息，请在“调查”标题下选择“失败”：
 
 ![失败数](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 

@@ -7,10 +7,9 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77671658"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
@@ -23,7 +22,7 @@ Application Insights Profiler 也可以部署在以下服务上：
 Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Azure 诊断配置为安装 Profiler 并将配置文件发送到 Application Insights 资源即可。
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>对 Azure 云服务启用 Profiler
-1. 检查以确保使用[.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)或更高版本。 如果使用的是操作系统系列4，则需要使用[启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet)安装 .NET Framework 4.6.1 或更高版本。 默认情况下，OS 系列5包含 .NET Framework 的兼容版本。 
+1. 请进行检查，确保使用的是 [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 或更新版本。 如果使用的是 OS 系列 4，则需要使用[启动任务](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet)安装 .NET Framework 4.6.1 或更新版本。 默认情况下，OS 系列 5 包含 .NET Framework 的兼容版本。 
 
 1. [将 Application Insights SDK 添加到 Azure 云服务](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
 
@@ -33,11 +32,11 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 
     * 对于 ASP.NET Web 角色，Application Insights 可以自动跟踪请求。
 
-    * 对于辅助角色，请[添加用于跟踪请求的代码](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)。
+    * 对于辅助角色，请[添加代码以跟踪请求](profiler-trackrequests.md?toc=/azure/azure-monitor/toc.json)。
 
 1. 配置 Azure 诊断扩展以启用 Profiler：
 
-    a. 找到应用程序角色的 [Azure 诊断 diagnostics.wadcfgx 文件](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) **，如下所示：  
+    a. 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件，如下所示：  
 
       ![诊断配置文件的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 

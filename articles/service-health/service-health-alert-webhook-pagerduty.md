@@ -4,10 +4,9 @@ description: 获取有关发送到 PagerDuty 实例的服务运行状况事件�
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77654063"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 Webhook 通过 PagerDuty 发送 Azure 服务运行状况警报
@@ -27,7 +26,7 @@ ms.locfileid: "77654063"
 
     a. **集成类型**：Microsoft Azure
 
-    b. **集成名称**：\<名称\>
+    b. **集成名称**：\<Name\>
 
     ![PagerDuty 中的“集成设置”](./media/webhook-alerts/pagerduty-integration-settings.png)
 

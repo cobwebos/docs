@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: 48a825f31a1c5f2eab2fbb71b6f030b8acb5617d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77668377"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
@@ -24,7 +23,7 @@ ms.locfileid: "77668377"
 
 警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../../azure-monitor/platform/alerts-overview.md)或是[从 Nagios 或 Zabbix 导入](../../azure-monitor/learn/quick-collect-linux-computer.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)导入警报。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 解决方案处理 Log Analytics 存储库中具有 Alert**** 类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
 - 对于 Log Analytics 警报，[创建警报规则](../../azure-monitor/platform/alerts-overview.md)以直接在存储库中创建警报记录。
@@ -45,7 +44,7 @@ ms.locfileid: "77668377"
 ### <a name="agents"></a>代理
 下表介绍了该解决方案支持的连接的源。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | 描述 |
 |:--- |:--- |:--- |
 | [Windows 代理](agent-windows.md) | 否 |直接 Windows 代理不会生成警报。  可以通过从 Windows 代理收集的事件和性能数据来创建 Log Analytics 警报。 |
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
@@ -63,7 +62,7 @@ ms.locfileid: "77668377"
 
 单击“警报管理”**** 磁贴打开“警报管理”**** 仪表板。  仪表板包含下表中的列。  每列按计数列出了指定范围和时间范围内符合该列条件的前十个警报。  可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“查看全部”**** 或单击列标题。
 
-| 列 | 说明 |
+| 列 | 描述 |
 |:--- |:--- |
 | 严重警报 |按警报名称分组并且严重级别为“严重”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
 | 警告警报 |按警报名称分组并且严重级别为“警告”的所有警报。  单击某个警报名称，以运行会返回该警报所有记录的日志搜索。 |
@@ -80,7 +79,7 @@ ms.locfileid: "77668377"
 
 解决方案会从 System Center Operations Manager 导入警报，并为类型为 Alert**** 且 SourceSystem 为 OpsManager**** 的每个警报创建相应的记录。  这些记录的属性在下表中列出：  
 
-| 属性 | 描述 |
+| properties | 描述 |
 |:--- |:--- |
 | `Type` |*警报* |
 | `SourceSystem` |*OpsManager* |

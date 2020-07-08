@@ -7,10 +7,9 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77655644"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
@@ -36,7 +35,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](../../azure-fun
 | &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | 是               | 
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | 是               | 
 | | | | 
-| **支持的功能**                |                   |                   |               
+| **受支持的功能**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | 是             | 是               | 
 | &nbsp;&nbsp;&nbsp;&mdash; 安全控制通道|                 | 是               | 
 | &bull; 采样                     | 是             | 是               | 

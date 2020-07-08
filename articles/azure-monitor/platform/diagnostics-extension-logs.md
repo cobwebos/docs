@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
 ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77672389"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>将 Azure 诊断扩展中的数据收集到 Azure Monitor 日志
@@ -46,7 +45,7 @@ Azure 诊断扩展将数据存储在 Azure 存储帐户中。 要使 Azure Monit
 请使用以下过程启用从 Azure 存储帐户收集诊断扩展数据：
 
 1. 在 Azure 门户中，转到 **Log Analytics 工作区**并选择你的工作区。
-1. 在菜单的“工作区数据源”  部分中单击“存储帐户日志”  。
+1. 在菜单的“工作区数据源”部分中单击“存储帐户日志”。
 2. 单击“添加”  。
 3. 选择包含要收集的数据的**存储帐户**。
 4. 选择要收集的**数据类型**。

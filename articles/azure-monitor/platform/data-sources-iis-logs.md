@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670570"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure Monitor 中收集 IIS 日志
@@ -43,7 +42,7 @@ IIS 日志记录的类型为 **W3CIISLog**，并具有下表中的属性：
 | csUserName |访问服务器的经身份验证的用户名称。 匿名用户会以连字符表示。 |
 | csUriStem |请求的目标，例如网页。 |
 | csUriQuery |客户端正在尝试执行的查询（如果有的话）。 |
-| ManagementGroupName |Operations Manager 代理的管理组的名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
+| ManagementGroupName |Operations Manager 代理的管理组的名称。  对于其他代理，这是 AOI-\<workspace ID\> |
 | RemoteIPCountry |客户端 IP 地址的国家/地区。 |
 | RemoteIPLatitude |客户端 IP 地址的纬度。 |
 | RemoteIPLongitude |客户端 IP 地址的经度。 |

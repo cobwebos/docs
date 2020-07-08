@@ -10,84 +10,83 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658096"
 ---
 # <a name="workbook-resource-parameters"></a>工作簿资源参数
 
-资源参数用于在工作簿中选择资源。 在设置从中获取数据的作用域时，这非常有用。 例如，允许用户选择一组 Vm，其中的图表将在呈现数据时使用。
+使用资源参数可以选取工作簿中的资源。 在设置从中获取数据的范围时，资源参数非常有用。 例如，用户可以通过资源参数选择 VM 集，然后，图表在呈现数据时可以使用这些 VM。
 
-资源选取器中的值可以来自工作簿上下文、静态列表或来自 Azure 资源 Graph 查询。
+资源选取器中的值可以来自工作簿上下文、静态列表或 Azure Resource Graph 查询。
 
 ## <a name="creating-a-resource-parameter-workbook-resources"></a>创建资源参数（工作簿资源）
-1. 在编辑模式下从空工作簿开始。
-2. 从工作簿内的链接中选择 "_添加参数_"。
-3. 单击蓝色的 "_添加参数_" 按钮。
-4. 在弹出的 "新建参数" 窗格中，输入：
+1. 从编辑模式下的空工作簿开始操作。
+2. 从工作簿内的链接中选择“添加参数”。
+3. 单击蓝色的“添加参数”按钮。
+4. 在弹出的“新建参数”窗格中，输入：
     1. 参数名称：`Applications`
     2. 参数类型：`Resource picker`
-    3. 必填：`checked`
-    4. 允许多个选择：`checked`
-5. 获取数据来自：`Workbook Resources`
+    3. 必需：`checked`
+    4. 允许多选：`checked`
+5. 从以下位置获取数据：`Workbook Resources`
 6. 仅包括资源类型：`Application Insights`
-7. 从工具栏中选择 "保存"，创建参数。
+7. 从工具栏中选择“保存”以创建参数。
 
-![显示使用工作簿资源创建资源参数的图像](./media/workbooks-resources/resource-create.png)
+![显示如何使用工作簿资源创建资源参数的插图](./media/workbooks-resources/resource-create.png)
 
-## <a name="creating-a-resource-parameter-azure-resource-graph"></a>创建资源参数（Azure 资源图）
-1. 在编辑模式下从空工作簿开始。
-2. 从工作簿内的链接中选择 "_添加参数_"。
-3. 单击蓝色的 "_添加参数_" 按钮。
-4. 在弹出的 "新建参数" 窗格中，输入：
+## <a name="creating-a-resource-parameter-azure-resource-graph"></a>创建资源参数 (Azure Resource Graph)
+1. 从编辑模式下的空工作簿开始操作。
+2. 从工作簿内的链接中选择“添加参数”。
+3. 单击蓝色的“添加参数”按钮。
+4. 在弹出的“新建参数”窗格中，输入：
     1. 参数名称：`Applications`
     2. 参数类型：`Resource picker`
-    3. 必填：`checked`
-    4. 允许多个选择：`checked`
-5. 获取数据来自：`Query`
+    3. 必需：`checked`
+    4. 允许多选：`checked`
+5. 从以下位置获取数据：`Query`
     1. 查询类型：`Azure Resource Graph`
-    2. 订阅`Use default subscriptions`
-    3. 在查询控件中添加此代码片段
+    2. 订阅：`Use default subscriptions`
+    3. 在查询控件中添加此片段
     ```kusto
     where type == 'microsoft.insights/components'
     | project value = id, label = name, selected = false, group = resourceGroup
     ```
-7. 从工具栏中选择 "保存"，创建参数。
+7. 从工具栏中选择“保存”以创建参数。
 
-![显示如何使用 Azure 资源关系图创建资源参数的图像](./media/workbooks-resources/resource-query.png)
+![显示如何使用 Azure Resource Graph 创建资源参数的插图](./media/workbooks-resources/resource-query.png)
 
 > [!NOTE]
-> Azure 资源图尚未在所有云中提供。 如果选择了此方法，请确保在目标云中受支持。
+> Azure Resource Graph 尚未在所有云中推出。 如果选择此方法，请确保你的目标云支持 Azure Resource Graph。
 
-[Azure 资源关系图文档](https://docs.microsoft.com/azure/governance/resource-graph/overview)
+[Azure Resource Graph 文档](https://docs.microsoft.com/azure/governance/resource-graph/overview)
 
 ## <a name="creating-a-resource-parameter--json-list"></a>创建资源参数（JSON 列表）
-1. 在编辑模式下从空工作簿开始。
-2. 从工作簿内的链接中选择 "_添加参数_"。
-3. 单击蓝色的 "_添加参数_" 按钮。
-4. 在弹出的 "新建参数" 窗格中，输入：
+1. 从编辑模式下的空工作簿开始操作。
+2. 从工作簿内的链接中选择“添加参数”。
+3. 单击蓝色的“添加参数”按钮。
+4. 在弹出的“新建参数”窗格中，输入：
     1. 参数名称：`Applications`
     2. 参数类型：`Resource picker`
-    3. 必填：`checked`
-    4. 允许多个选择：`checked`
-5. 获取数据来自：`JSON`
-    1. 在内容控件中，添加此 json 代码片段
+    3. 必需：`checked`
+    4. 允许多选：`checked`
+5. 从以下位置获取数据：`JSON`
+    1. 在内容控件中添加此 JSON 片段
     ```json
     [
         { "value":"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication", "label": "acmeauthentication", "selected":true, "group":"Acme Backend" },
         { "value":"/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeweb", "label": "acmeweb", "selected":false, "group":"Acme Frontend" }
     ]
     ```
-    2. 单击 "蓝色_更新_" 按钮。
-6. （可选） `Include only resource types`将设置为_Application Insights_
-7. 从工具栏中选择 "保存"，创建参数。
+    2. 点击蓝色的“更新”按钮。
+6. （可选）将 `Include only resource types` 设置为 _Application Insights_
+7. 从工具栏中选择“保存”以创建参数。
 
 ## <a name="referencing-a-resource-parameter"></a>引用资源参数
-1. 向工作簿添加查询控件并选择 Application Insights 资源。
-2. 使用_Application Insights_下拉控件将参数绑定到控件。 这样做会将查询的作用域设置为运行时参数返回的资源。
-4. 在 KQL 控件中，添加此代码片段
+1. 在工作簿中添加查询控件，然后选择 Application Insights 资源。
+2. 使用“Application Insights”下拉列表将参数绑定到控件。 这会将查询范围设置为参数在运行时返回的资源。
+4. 在 KQL 控件中添加此片段
     ```kusto
     requests
     | summarize Requests = count() by appName, name
@@ -95,23 +94,23 @@ ms.locfileid: "77658096"
     ```
 5. 运行查询以查看结果。 
 
-![显示查询控件中引用的资源参数的图像](./media/workbooks-resources/resource-reference.png)
+![显示查询控件中引用的资源参数的插图](./media/workbooks-resources/resource-reference.png)
 
-> 此方法可用于将资源绑定到其他控件（如指标）。
+> 此方法可用于将资源绑定到其他控件（例如指标）。
 
 ## <a name="resource-parameter-options"></a>资源参数选项
 | 参数 | 说明 | 示例 |
 | ------------- |:-------------|:-------------|
-| `{Applications}` | 选定的资源 ID | _/subscriptions/<>/resourceGroups/<资源组>/providers/<>/acmeauthentication 的子 id_ |
+| `{Applications}` | 选定的资源 ID | _/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication_ |
 | `{Applications:label}` | 所选资源的标签 | `acmefrontend` |
-| `{Applications:value}` | 所选资源的值 | _"/subscriptions/<子 id>/resourceGroups/<资源组>/providers/</acmeauthentication"_ |
+| `{Applications:value}` | 所选资源的值 | _'/subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/<resource-type>/acmeauthentication'_ |
 | `{Applications:name}` | 所选资源的名称 | `acmefrontend` |
 | `{Applications:resourceGroup}` | 所选资源的资源组 | `acmegroup` |
-| `{Applications:resourceType}` | 所选资源的类型 | _microsoft insights/组件_ |
+| `{Applications:resourceType}` | 所选资源的类型 | _microsoft.insights/components_ |
 | `{Applications:subscription}` | 所选资源的订阅 |  |
-| `{Applications:grid}` | 显示资源属性的网格。 用于在调试时在文本块中呈现  |  |
+| `{Applications:grid}` | 显示资源属性的网格。 调试时可用于在文本块中呈现内容  |  |
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)了解有关工作簿许多丰富可视化效果选项的详细信息。
-* [控制](workbooks-access-control.md)和共享对工作簿资源的访问权限。
+* [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
+* [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

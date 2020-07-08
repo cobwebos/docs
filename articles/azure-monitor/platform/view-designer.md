@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658483"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
@@ -26,7 +25,7 @@ ms.locfileid: "77658483"
 
 
 ## <a name="concepts"></a>概念
-视图显示在 Azure 门户的 Azure Monitor“概述”**** 页中。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面************。 每个自定义视图中的磁贴都按字母顺序显示，监视解决方案的磁贴安装在同一工作区中。
+视图显示在 Azure 门户的 Azure Monitor“概述”**** 页中。 通过点击“见解”部分下的“更多”，从“Azure Monitor”菜单打开此页面  。 每个自定义视图中的磁贴都按字母顺序显示，监视解决方案的磁贴安装在同一工作区中。
 
 ![概述页](media/view-designer/overview-page.png)
 

@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77670298"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
@@ -82,10 +81,10 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|United States    | 19                  |
-|Canada           | 3                   |
+|美国    | 19                  |
+|加拿大           | 3                   |
 |爱尔兰          | 0                   |
-|United Kingdom   | 0                   |
+|英国   | 0                   |
 |荷兰      | 2                   |
 
 
@@ -143,7 +142,7 @@ Perf
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：
 
 - [字符串操作](string-operations.md)
-- [日期和时间操作](datetime-operations.md)
+- [时间和日期操作](datetime-operations.md)
 - [高级聚合](advanced-aggregations.md)
 - [JSON 和数据结构](json-data-structures.md)
 - [高级查询编写](advanced-query-writing.md)

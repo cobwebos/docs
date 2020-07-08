@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77665131"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
@@ -49,7 +48,7 @@ ms.locfileid: "77665131"
 | [SCOM 管理组](../../azure-monitor/platform/om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](collect-azure-metrics-logs.md) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 若要访问 Application Insights 连接器信息，必须拥有 Azure 订阅
 - 必须至少配置了一个 Application Insights 资源。
@@ -60,7 +59,7 @@ ms.locfileid: "77665131"
 1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview)或者使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Azure Web 应用分析解决方案。
 2. 浏览到 [Azure 门户](https://portal.azure.com)。 选择“所有服务”**** 以打开 Application Insights。 然后，搜索 Application Insights。 
 3. 在“订阅”下，选择包含 Application Insights 资源的订阅，然后在“名称”下选择一个或多个应用程序。********
-4. 单击 **“保存”** 。
+4. 单击“保存” 。
 
 大约 30 分钟后，数据将会可用，Application Insights 磁贴中会更新数据，如下图所示：
 
@@ -174,7 +173,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | 说明 |
+| Property | 描述 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | ClientIP |   |
@@ -200,7 +199,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性特定的字段
 
-| 属性 | 说明 |
+| Property | 描述 |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web 测试的名称 |
@@ -242,7 +241,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | 说明 |
+| Property | 描述 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | TelemetryType | 请求 |
@@ -251,7 +250,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | RequestID | 用于唯一标识请求的 ID |
 | RequestName | GET/POST + URL 基 |
 | RequestDuration | 请求持续时间（秒） |
-| 代码 | 请求的 URL，不包括主机 |
+| URL | 请求的 URL，不包括主机 |
 | 主机 | Web 服务器主机 |
 | URLBase | 请求的完整 URL |
 | ApplicationProtocol | 应用程序使用的协议类型 |

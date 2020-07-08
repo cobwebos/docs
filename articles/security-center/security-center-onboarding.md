@@ -14,10 +14,9 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
 ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77912046"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
@@ -25,8 +24,8 @@ ms.locfileid: "77912046"
 
 安全中心标准层包括：
 
-- **** 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自各种来源（包括防火墙和其他合作伙伴解决方案）的安全数据。
-- **安全警报**-使用高级分析和 Microsoft Intelligent Security Graph 来获取有关不断发展的网络攻击的优势。 利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
+- 混合安全 – 在所有本地和云工作负载上获得统一的安全视图。 应用安全策略并持续评估混合云工作负载的安全性，确保符合安全标准。 收集、搜索并分析来自各种来源（包括防火墙和其他合作伙伴解决方案）的安全数据。
+- **安全警报** - 使用高级分析和 Microsoft Intelligent Security Graph，来压制不断演变的网络攻击。 利用内置行为分析和机器学习来识别攻击和零时差攻击。 监视网络、计算机和云服务是否出现有即将来袭的攻击和攻破后活动。 使用交互工具和上下文威胁智能简化调查。
 - **** 访问和应用程序控件 - 通过应用适合特定工作负载且由机器学习提供支持的允许列表建议，阻止恶意软件和其他不需要的应用程序。 通过对 Azure VM 上管理端口的实时控制访问减小网络攻击面，显著减小在暴力和其他网络攻击下的曝光面。
 
 ## <a name="detecting-unprotected-resources"></a>检测未受保护的资源
@@ -41,7 +40,7 @@ ms.locfileid: "77912046"
 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>升级 Azure 订阅或工作区
 若要将订阅或工作区升级到标准版：
-1. 在“安全中心”主菜单下，选择“入门”  。
+1. 在“安全中心”主菜单下，选择“入门”。
   ![入门](./media/security-center-onboarding/get-started.png)
 2. 在“升级”  下，安全中心将列出符合载入条件的订阅和工作区。 
    - 可以单击可展开的“申请试用”  来查看所有订阅和工作区的列表及其试用资格状态。
@@ -61,11 +60,11 @@ ms.locfileid: "77912046"
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>从“入门”**** 添加新的非 Azure 计算机
 
 1. 返回到“入门”****。
-2. 选择“入门”  选项卡。
+2. 选择“入门”选项卡。
 
    ![非 Azure](./media/security-center-onboarding/non-azure.png)
 
-3. 单击“添加新的非 Azure 计算机”下的“配置”   。 此时将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
+3. 单击“添加新的非 Azure 计算机”下的“配置” 。 此时将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
    ![添加非 Azure 计算机][7]
 

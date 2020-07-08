@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77659248"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
@@ -60,7 +59,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 |:---|:---|
 | ReadOnly | Log Analytics 读者 |
 | 参与者 | Log Analytics 参与者 |
-| Administrator | “所有者” | 
+| 管理员 | 所有者 | 
  
 
 ## <a name="new-workspaces"></a>新工作区

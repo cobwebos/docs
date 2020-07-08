@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
 ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77663247"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
@@ -48,7 +47,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 
 单击“代理运行状况”磁贴可打开“代理运行状况”仪表板。********  仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前十个事件。 可以通过在每一列右下方选择“查看全部”**** 或单击列标题来运行提供整个列表的日志搜索。
 
-| 列 | 说明 |
+| 列 | 描述 |
 |--------|-------------|
 | 某个时段的代理计数 | 在七天时段内的代理计数趋势（针对 Linux 和 Windows 代理）。|
 | 无响应代理的计数 | 在过去 24 小时内未发送检测信号的代理的列表。|
@@ -67,7 +66,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。****  这些记录的属性在下表中列出。  
 
-| 属性 | 描述 |
+| Property | 描述 |
 | --- | --- |
 | `Type` | *检测信号*|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。******|

@@ -10,66 +10,65 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 380b8a7ce286ab06b6935bf63bf3a0e82f371c2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77658007"
 ---
 # <a name="workbook-time-parameters"></a>工作簿时间参数
 
-时间参数允许用户设置分析的时间上下文，并供几乎所有报表使用。 进行设置和使用相对简单，允许作者指定要在下拉范围中显示的时间范围，包括自定义时间范围的选项。 
+时间参数使用户可以设置分析的时间上下文，几乎所有的报表都会使用它。 时间参数的设置和使用相对简单 - 允许作者指定要在下拉列表中显示的时间范围，包括自定义时间范围的选项。 
 
 ## <a name="creating-a-time-parameter"></a>创建时间参数
-1. 在编辑模式下从空工作簿开始。
-2. 从工作簿内的链接中选择 "_添加参数_"。
-3. 单击蓝色的 "_添加参数_" 按钮。
-4. 在弹出的 "新建参数" 窗格中，输入：
+1. 从编辑模式下的空工作簿开始操作。
+2. 从工作簿内的链接中选择“添加参数”。
+3. 单击蓝色的“添加参数”按钮。
+4. 在弹出的“新建参数”窗格中，输入：
     1. 参数名称：`TimeRange`
     2. 参数类型：`Time range picker`
-    3. 必填：`checked`
-    4. 可用时间范围：过去小时、过去12小时、过去24小时、过去48小时、过去3天、过去7天和允许自定义时间范围选择
-5. 从工具栏中选择 "保存"，创建参数。
+    3. 必需：`checked`
+    4. 可用时间范围：过去 1 小时、过去 12 小时、过去 24 小时、过去 48 小时、过去 3 天、过去 7 天，以及允许自定义时间范围选择
+5. 从工具栏中选择“保存”以创建参数。
 
-    ![显示时间范围参数创建的图像](./media/workbooks-time/time-settings.png)
+    ![显示创建时间范围参数的图像](./media/workbooks-time/time-settings.png)
 
 这就是工作簿在读取模式下的外观。
 
 ![在读取模式下显示时间范围参数的图像](./media/workbooks-time/parameters-time.png)
 
 ## <a name="referencing-a-time-parameter"></a>引用时间参数
-### <a name="via-bindings"></a>Via 绑定
-1. 向工作簿添加查询控件并选择 Application Insights 资源。
-2. 大多数工作簿控件支持_时间范围_范围选择器。 打开 "_时间范围_" 下拉箭头，然后选择`{TimeRange}`底部的 "时间排名参数" 组中的。
-3. 这会将时间范围参数绑定到图表的时间范围。 现在，示例查询的时间范围是过去24小时。
+### <a name="via-bindings"></a>通过绑定的方式
+1. 向工作簿添加查询控件，然后选择 Application Insights 资源。
+2. 大多数工作簿控件支持“时间范围”范围选取器。 打开“时间范围”下拉列表，然后选择底部时间范围参数组中的 `{TimeRange}`。
+3. 这会将时间范围参数绑定到图表的时间范围。 现在示例查询的时间范围为“过去 24 小时”。
 4. 运行查询以查看结果
 
-    ![显示通过绑定引用的时间范围参数的图像](./media/workbooks-time/time-binding.png)
+    ![显示通过绑定引用时间范围参数的图像](./media/workbooks-time/time-binding.png)
 
 ### <a name="in-kql"></a>在 KQL 中
-1. 向工作簿添加查询控件并选择 Application Insights 资源。
-2. 在 KQL 中，输入使用参数的时间范围筛选器：`| where timestamp {TimeRange}`
-3. 这会将查询计算时间展开`| where timestamp > ago(1d)`为，它是参数的时间范围值。
+1. 向工作簿添加查询控件，然后选择 Application Insights 资源。
+2. 在 KQL 中，输入使用以下参数的时间范围筛选器：`| where timestamp {TimeRange}`
+3. 这会将查询计算时间扩大到 `| where timestamp > ago(1d)`，这就是参数的时间范围值。
 4. 运行查询以查看结果
 
-    ![显示 KQL 中引用的时间范围的图像](./media/workbooks-time/time-in-code.png)
+    ![显示在 KQL 中引用时间范围的图像](./media/workbooks-time/time-in-code.png)
 
-### <a name="in-text"></a>文本中 
-1. 向工作簿添加文本控件。
-2. 在 markdown 中，输入`The chosen time range is {TimeRange:label}`
-3. 选择 "_完成编辑_"
-4. 文本控件将显示文本：所_选时间范围是过去24小时_
+### <a name="in-text"></a>在文本中 
+1. 向工作簿添加文件控件。
+2. 在 Markdown 中，输入 `The chosen time range is {TimeRange:label}`
+3. 选择“完成编辑”
+4. 文本控件将显示文本：所选的时间范围为“过去 24 小时”
 
 ## <a name="time-parameter-options"></a>时间参数选项
 | 参数 | 说明 | 示例 |
 | ------------- |:-------------|:-------------|
 | `{TimeRange}` | 时间范围标签 | 过去 24 小时 |
 | `{TimeRange:label}` | 时间范围标签 | 过去 24 小时 |
-| `{TimeRange:value}` | 时间范围值 | > 前（1d） |
-| `{TimeRange:query}` | 时间范围查询 | > 前（1d） |
-| `{TimeRange:start}` | 时间范围开始时间 | 3/20/2019 4:18 PM |
-| `{TimeRange:end}` | 时间范围结束时间 | 3/21/2019 4:18 PM |
-| `{TimeRange:grain}` | 时间范围粒度 | 30 m |
+| `{TimeRange:value}` | 时间范围值 | > ago(1d) |
+| `{TimeRange:query}` | 时间范围查询 | > ago(1d) |
+| `{TimeRange:start}` | 时间范围开始时间 | 2019/3/20 下午 4:18 |
+| `{TimeRange:end}` | 时间范围结束时间 | 2019/3/21 下午 4:18 |
+| `{TimeRange:grain}` | 时间范围粒度 | 30 分钟 |
 
 
 ### <a name="using-parameter-options-in-a-query"></a>在查询中使用参数选项
@@ -80,5 +79,5 @@ requests
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)了解有关工作簿许多丰富可视化效果选项的详细信息。
-* [控制](workbooks-access-control.md)和共享对工作簿资源的访问权限。
+* [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
+* [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

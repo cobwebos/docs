@@ -4,10 +4,9 @@ description: Application Insights 如何适应 devOps 周期
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.openlocfilehash: 24095aade80022d1e1ebb38357971512bfc873c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77669686"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
@@ -124,7 +123,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 * 跟踪特定用户的会话与响应时间，使支持与运营团队能够即时提供客户支持。
 * 确定常用的应用功能，以便能够解答功能优先问题。
 
-客户 DNN 说：“Application Insights 为我们提供了方程式中遗漏的部分，使我们能够根据需要合并、排序、查询及筛选数据。 我们的团队可以使用自己的创意和体验，通过功能强大的查询语言来查找数据，得到相关见解，解决我们甚至都不知道发生了的问题。 很多有意思的回答都是针对开头为‘我想知道，如果...’这样的问题。” 
+客户 DNN 说：“Application Insights 为我们提供了方程式中遗漏的部分，使我们能够根据需要合并、排序、查询及筛选数据。 我们的团队可以使用自己的创意和体验，通过功能强大的查询语言来查找数据，得到相关见解，解决我们甚至都不知道发生了的问题。 很多有意思的回答都是针对开头为‘我想知道，如果...’这样的问题。”**
 
 ## <a name="development-tools-integration"></a>开发工具集成
 ### <a name="configuring-application-insights"></a>配置 Application Insights

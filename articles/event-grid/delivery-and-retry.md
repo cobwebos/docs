@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: spelluru
 ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921056"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>事件网格消息传送和重试
@@ -115,14 +114,14 @@ az eventgrid event-subscription create \
 
 | 状态代码 | 重试行为 |
 | ------------|----------------|
-| 400 错误请求 | 在 5 分钟或更长时间后重试（如果设置了死信，则立即加入死信队列） |
+| 400 错误的请求 | 在 5 分钟或更长时间后重试（如果设置了死信，则立即加入死信队列） |
 | 401 未授权 | 5 分钟或更长时间后重试 |
 | 403 禁止访问 | 5 分钟或更长时间后重试 |
 | 404 未找到 | 5 分钟或更长时间后重试 |
 | 408 请求超时 | 2 分钟或更长时间后重试 |
 | 413 请求实体太大 | 在 10 秒或更长时间后重试（如果设置了死信，则立即加入死信队列） |
 | 503 服务不可用 | 30 秒或更长时间后重试 |
-| 其他 | 10 秒或更长时间后重试 |
+| 所有其他 | 10 秒或更长时间后重试 |
 
 
 ## <a name="next-steps"></a>后续步骤
