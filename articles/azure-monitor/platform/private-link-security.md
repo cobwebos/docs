@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: ddd34295bfe64fdd336d8b237482b45f02e30201
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 14ecd1a35f8aae8365b7c7dc458712acdb894e62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602578"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -74,11 +74,17 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 首先创建一个 Azure Monitor 专用链接范围资源。
 
-1. 转到 Azure 门户中的“创建资源”，并搜索“Azure Monitor 专用链接范围” 。 
-2. 单击“创建”。 
-3. 选择一个订阅和资源组。 
-4. 为 AMPLS 指定名称。 最好使用明确指出该范围将用于哪个用途和安全边界的名称，防止有人意外中断网络安全边界。 例如，使用名称“AppServerProdTelem”。 
+1. 转到 Azure 门户中的“创建资源”，并搜索“Azure Monitor 专用链接范围” 。
+
+   ![查找 Azure Monitor 专用链接范围](./media/private-link-security/ampls-find-1c.png)
+
+2. 单击“创建”。
+3. 选择一个订阅和资源组。
+4. 为 AMPLS 指定名称。 最好使用明确指出该范围将用于哪个用途和安全边界的名称，防止有人意外中断网络安全边界。 例如，使用名称“AppServerProdTelem”。
 5. 单击“查看 + 创建”。 
+
+   ![创建 Azure Monitor 专用链接范围](./media/private-link-security/ampls-create-1d.png)
+
 6. 让验证通过，然后单击“创建”。
 
 ## <a name="connect-azure-monitor-resources"></a>连接 Azure Monitor 资源
@@ -117,7 +123,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
    a.    选择要连接到 Azure Monitor 资源的虚拟网络和子网 。 
  
-   b.    针对“与专用 DNS 区域集成”选择“是”，让它自动新建一个专用 DNS 区域 。 
+   b.    针对“与专用 DNS 区域集成”选择“是”，让它自动新建一个专用 DNS 区域 。 实际 DNS 区域可能不同于下面屏幕截图中显示的内容。 
  
    c.    单击“查看 + 创建”。
  
@@ -162,9 +168,8 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 > [!NOTE]
 > 若要完全保护基于工作区的 Application Insights，需要锁定对 Application Insights 资源和基础 Log Analytics 工作区的访问。
-
-> [!NOTE]
-> 代码级别的诊断 (profiler/debugger) 目前不支持专用链接。
+>
+> 代码级诊断（探查器/调试器）需要提供自己的存储帐户以支持专用链接。 下面是有关如何执行此操作的[文档](https://docs.microsoft.com/azure/azure-monitor/app/profiler-bring-your-own-storage)。
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令行
 
@@ -188,7 +193,7 @@ Azure Monitor 专用链接范围是一项分组资源，它将一个或多个专
 
 **Log Analytics Windows 代理**
 
-使用 Log Analytics 代理版本 18.20.18038.0 或更高版本。
+使用 Log Analytics 代理版本10.20.18038.0 或更高版本。
 
 **Log Analytics Linux 代理**
 
@@ -201,7 +206,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure 门户
 
-要使用 Azure Monitor 门户体验（例如 Application Insights 和 Log Analytics），你需要使 Azure 门户和 Azure Monitor 扩展能在专用网络上进行访问。 在防火墙中添加 AzureActiveDirectory、AzureResourceManager、**AzureFrontDoor.FirstParty 和 AzureFrontdoor.Frontend [服务标记](../../firewall/service-tags.md)  。
+要使用 Azure Monitor 门户体验（例如 Application Insights 和 Log Analytics），你需要使 Azure 门户和 Azure Monitor 扩展能在专用网络上进行访问。 将**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor**和**AzureFrontDoor** [服务标记](../../firewall/service-tags.md)添加到防火墙。
 
 ### <a name="programmatic-access"></a>以编程方式访问
 
@@ -220,7 +225,14 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 | 云环境 | 代理资源 | 端口 | 方向 |
 |:--|:--|:--|:--|
-|Azure Public     | scadvisor.blob.core.windows.net         | 443 | 出站
+|Azure Public     | scadvisorcontent.blob.core.windows.net         | 443 | 出站
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  出站
 |Azure 中国世纪互联      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | 出站
 
+### <a name="browser-dns-settings"></a>浏览器 DNS 设置
+
+如果要通过专用链接连接到 Azure Monitor 资源，则必须通过在网络上配置的专用终结点完成到这些资源的通信。 若要启用专用终结点，请根据[连接到专用终结点](#connect-to-a-private-endpoint)中所述更新 DNS 设置。 某些浏览器使用自己的 DNS 设置，而不是设置的设置。 浏览器可能会尝试连接到 Azure Monitor 公用终结点，并完全绕过专用链接。 验证你的浏览器设置不会替代或缓存旧的 DNS 设置。 
+
+## <a name="next-steps"></a>后续步骤
+
+- 了解[专用存储](private-storage.md)
