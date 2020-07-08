@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993806"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103953"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -92,7 +92,7 @@ ms.locfileid: "82993806"
 --- | --- | ---
 **启动类型** | 支持 BIOS。 不支持 UEFI。 | 如果启动类型为 UEFI，则状态为有条件的就绪。
 **核心数** | 计算机核心数 <= Azure VM 支持的最大核心数 (128)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的核心数。<br/>如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果小于或等于限制，则状态为就绪。
-**内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
+**内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](../virtual-machines/windows/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果在限制范围内，则状态为就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果在限制范围内，则状态为就绪。
 
@@ -114,8 +114,8 @@ Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| 已做好 Azu
 Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | 已做好 Azure 迁移准备
 Windows Server 2003、2003 R2 | 不支持，需要[自定义支持协议 (CSA)](https://aka.ms/WSosstatement) 才可获取 Azure 支持。 | Azure 有条件的就绪，请考虑在迁移到 Azure 前升级 OS。
 Windows 2000、98、95、NT、3.1、MS-DOS | 不支持。 计算机可能在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
-Windows Client 7、8 和 10 | Azure 仅支持 [Visual Studio 订阅。](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | 已做好特定条件下的 Azure 迁移准备
-Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)的支持。 | 已做好特定条件下的 Azure 迁移准备
+Windows Client 7、8 和 10 | Azure 仅支持 [Visual Studio 订阅。](../virtual-machines/windows/client-images.md) | 已做好特定条件下的 Azure 迁移准备
+Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)的支持。 | 已做好特定条件下的 Azure 迁移准备
 Windows Vista、XP Professional | 不支持。 计算机可能在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前升级 OS。
 Linux | Azure 予以认可这些 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能在 Azure 中启动，但建议在迁移到 Azure 前将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本不受认可，则为 Azure 有条件的就绪。
 其他操作系统<br/><br/> 例如 Oracle Solaris、Apple Mac 操作系统、FreeBSD 等。 | Azure 不认可这些操作系统。 计算机课在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪，建议在迁移到 Azure 前安装已升级的 OS。  
@@ -240,11 +240,11 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[详细了解 MMA 支持的 Linux 操作系统的列表](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)。
+[详细了解 MMA 支持的 Linux 操作系统的列表](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)。
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>在受 Operations Manager 监视的计算机上安装 MMA 代理
 
-受 System Center Operations Manager 2012 R2 或更高版本监视的计算机无需安装 MMA 代理。 服务映射与 Operations Manager MMA 集成，以收集必要的依赖项数据。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)。 需要安装依赖项代理。
+受 System Center Operations Manager 2012 R2 或更高版本监视的计算机无需安装 MMA 代理。 服务映射与 Operations Manager MMA 集成，以收集必要的依赖项数据。 [了解详细信息](../azure-monitor/insights/service-map-scom.md#prerequisites)。 需要安装依赖项代理。
 
 ### <a name="install-the-dependency-agent"></a>安装依赖项代理
 
@@ -274,7 +274,7 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 4. 可通过单击时间范围标签中的持续时间，查看不同持续时间的依赖项。 时间范围默认为 1 小时。 你可以修改时间范围，或指定开始和结束日期以及持续时间。
 
    > [!NOTE]
-   >    支持最长为一小时的时间范围。 使用 Azure Monitor 日志[查询较长持续时间的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+   >    支持最长为一小时的时间范围。 使用 Azure Monitor 日志[查询较长持续时间的依赖项数据](./how-to-create-group-machine-dependencies.md)。
 
 5. 确定想要分成一组的依赖计算机之后，按住 Ctrl 键单击，在映射上选择多台计算机，然后单击“分组计算机”  。
 6. 指定组名。 确认 Azure Migrate 已发现依赖计算机。
@@ -289,7 +289,7 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>查询 Azure Monitor 日志中的依赖项数据
 
-服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)可在 Azure Monitor 日志中查询的服务映射数据表。 
+服务映射捕获的依赖项数据可用于在与 Azure Migrate 项目关联的 Log Analytics 工作区中进行查询。 [详细了解](../azure-monitor/insights/service-map.md#log-analytics-records)可在 Azure Monitor 日志中查询的服务映射数据表。 
 
 若要运行 Kusto 查询，请执行以下操作：
 
@@ -299,15 +299,15 @@ vCenter Server 中指定为“其他”  的 OS | 在此情况下，Azure Migrat
 4. 编写查询以使用 Azure Monitor 日志收集依赖项数据。 在下一部分查找示例查询。
 5. 通过单击“运行”，运行查询。 
 
-[详细了解](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)如何编写 Kusto 查询。 
+[详细了解](../azure-monitor/log-query/get-started-portal.md)如何编写 Kusto 查询。 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Azure Monitor 日志示例查询
 
-以下是可用于提取依赖项数据的示例查询。 可修改查询以提取首选数据点。 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)提供依赖项数据记录中字段的详尽列表。 更多示例查询，请参阅[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)。
+以下是可用于提取依赖项数据的示例查询。 可修改查询以提取首选数据点。 [此处](../azure-monitor/insights/service-map.md#log-analytics-records)提供依赖项数据记录中字段的详尽列表。 更多示例查询，请参阅[此处](../azure-monitor/insights/service-map.md#sample-log-searches)。
 
 #### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>总结一组计算机上的入站连接
 
-针对连接指标的表中的记录 VMConnection 不显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中。 [详细了解](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections)物理网络连接数据如何聚合到 VMConnection 中的单个逻辑记录中。 
+针对连接指标的表中的记录 VMConnection 不显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中。 [详细了解](../azure-monitor/insights/service-map.md#connections)物理网络连接数据如何聚合到 VMConnection 中的单个逻辑记录中。 
 
 ```
 // the machines of interest

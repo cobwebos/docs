@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 准备评估/迁移 Hyper-V VM。
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ca9020a9c306eea39d75c15c96b5f9fe9bcc11fe
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770537"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109614"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>准备评估 Hyper-V VM 并将其迁移到 Azure
 
@@ -74,13 +74,13 @@ ms.locfileid: "84770537"
     ![Azure AD 权限](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> 这是不受影响的默认设置。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> 这是不受影响的默认设置。 [了解详细信息](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 
 
 #### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色
 
-租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ### <a name="assign-azure-account-permissions"></a>分配 Azure 帐户权限
 
@@ -106,7 +106,7 @@ ms.locfileid: "84770537"
 **验证 PowerShell 版本** | 检查你是否在受支持的 PowerShell 版本中运行该脚本。 | 检查是否正在 Hyper-V 主机上运行 PowerShell 版本 4.0 或更高版本。
 **创建帐户** | 验证你（运行脚本的用户）是否对 Hyper-V 主机拥有管理特权。<br/><br/>  允许你创建一个本地用户帐户（非管理员），供 Azure Migrate 服务用来与 Hyper-V 主机通信。 此用户帐户将添加到主机上的以下组：<br/><br/> - 远程管理用户<br/><br/> - Hyper-V 管理员<br/><br/>- 性能监视器用户 | 在 Hyper-V 主机/群集上设置拥有管理员权限的域或本地用户帐户。<br/><br/> - 对于要包含在发现中的所有主机和群集，都需要设置一个帐户。<br/><br/> - 该帐户可以是本地帐户或域帐户。 我们建议为该帐户分配 Hyper-V 主机或群集的管理员权限。<br/><br/> 或者，如果你不想要分配管理员权限，则需要分配以下权限：远程管理用户；Hyper-V 管理员；性能监视器用户。
 **启用 PowerShell 远程处理** | 在每台主机上启用 PowerShell 远程控制，使 Azure Migrate 设备能够通过 WinRM 连接在主机上运行 PowerShell 命令。| 要设置，请在每台主机上，以管理员身份打开 PowerShell 控制台，然后运行以下命令：<br/><br/>``` Enable-PSRemoting -force ```
-**设置 Hyper-V 集成服务** | 检查主机管理的所有 VM 上是否已启用 Hyper-V Integration Services。 |  在每个 VM 上[启用 Hyper-V 集成服务](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> 如果运行的是 Windows Server 2003，请[遵循这些说明](prepare-windows-server-2003-migration.md)。
+**设置 Hyper-V 集成服务** | 检查主机管理的所有 VM 上是否已启用 Hyper-V Integration Services。 |  在每个 VM 上[启用 Hyper-V 集成服务](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)。<br/><br/> 如果运行的是 Windows Server 2003，请[遵循这些说明](prepare-windows-server-2003-migration.md)。
 **如果 VM 磁盘位于远程 SMB 共享上，则委派凭据** | 脚本委托凭据。 | [启用 CredSSP](#enable-credssp-to-delegate-credentials) 以委托凭据。
 
 ### <a name="run-the-script"></a>运行脚本
