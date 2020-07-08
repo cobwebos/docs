@@ -8,19 +8,19 @@ manager: daveba
 ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47f0dea435af56f6994b57079983a63b3a29600d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358555"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -57,11 +57,11 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 4. 密码哈希同步代理通过先将哈希转换为 32 字节的十六进制字符串，然后使用 UTF-16 编码重新将此字符串转换为二进制，来将 16 字节的二进制密码哈希扩展为 64 字节。
 5. 密码哈希同步代理通过将每个用户的 salt（包含 10 字节长度的 salt）添加到 64 字节的二进制字符串，来进一步保护原始哈希。
 6. 然后，密码哈希同步代理将 MD4 哈希与每个用户的 salt 组合在一起，并将其输入到 [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 函数。 使用 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) 键控哈希算法的 1000 次迭代。 
-7. 密码哈希同步代理获取生成的32字节哈希，同时将每用户 salt 和 SHA256 迭代次数连接到它（以供 Azure AD 使用），然后通过 TLS 将字符串从 Azure AD Connect 传输到 Azure AD。</br> 
-8. 当用户尝试登录到 Azure AD 并输入其密码时，将通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。
+7. 密码哈希同步代理获取生成的 32 字节哈希，将每个用户的 salt 和 SHA256 迭代次数与该哈希连接（以供 Azure AD 使用），然后通过 TLS 将该字符串从 Azure AD Connect 传输到 Azure AD。</br> 
+8. 当用户尝试登录到 Azure AD 并输入其密码时，会通过同一 MD4+salt+PBKDF2+HMAC-SHA256 过程运行密码。 如果生成的哈希与 Azure AD 中存储的哈希匹配，则用户输入的密码正确并进行身份验证。
 
 > [!NOTE]
-> 原始 MD4 哈希不会传送到 Azure AD。 与之相反，传输的是原始 MD4 哈希的 SHA256 哈希。 因此，如果获取了 Azure AD 中存储的哈希，将无法在本地“传递哈希”攻击中使用。
+> 原始 MD4 哈希不会传送到 Azure AD。 与之相反，传输的是原始 MD4 哈希的 SHA256 哈希。 因此，如果获取了 Azure AD 中存储的哈希，则无法在本地“传递哈希”攻击中使用。
 
 ### <a name="security-considerations"></a>安全注意事项
 
@@ -85,18 +85,17 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 #### <a name="password-expiration-policy"></a>密码过期策略
 
-如果用户属于密码哈希同步的范围，云帐户密码则默认设置为“永不过期”**。
+如果用户属于密码哈希同步的范围，云帐户密码则默认设置为“永不过期”  。
 
 可以继续使用在本地环境中过期的同步密码来登录云服务。 下次在本地环境中更改密码时，云密码会更新。
 
-##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>公共预览版 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 功能
+##### <a name="enforcecloudpasswordpolicyforpasswordsyncedusers"></a>EnforceCloudPasswordPolicyForPasswordSyncedUsers
 
 如果某些已同步的用户仅与 Azure AD 集成服务交互，同时必须遵守密码过期策略，则你可以通过启用 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 功能来强制他们遵守 Azure AD 密码过期策略。
 
 如果 *EnforceCloudPasswordPolicyForPasswordSyncedUsers* 处于禁用状态（默认设置），Azure AD Connect 会将已同步用户的 PasswordPolicies 属性设置为“DisablePasswordExpiration”。 每当用户的密码同步时都会执行此操作，同时，系统会指示 Azure AD 忽略该用户的云密码过期策略。 可以在 Azure AD PowerShell 模块中使用以下命令检查该属性的值：
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
-
 
 若要启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 功能，请按如下所示使用 MSOnline PowerShell 模块运行以下命令。 你必须为 Enable 参数键入“yes”，如下所示：
 
@@ -118,32 +117,28 @@ Continue with this operation?
 
 Azure AD 支持为每个已注册的域单独设置密码过期策略。
 
-注意：如果在 Azure AD 中有需要使用不过期密码的同步帐户，则必须将`DisablePasswordExpiration`值显式添加到 Azure AD 中用户对象的 PasswordPolicies 属性。  为此可以运行以下命令。
+注意事项：如果需要在 Azure AD 中对某些已同步的帐户使用密码不过期策略，则必须将 `DisablePasswordExpiration` 值显式添加到 Azure AD 中用户对象的 PasswordPolicies 属性。  为此可以运行以下命令。
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> 此功能目前以公共预览版提供。
-> Set-msolpasswordpolicy PowerShell 命令在联合域上不起作用。 
+> Set-MsolPasswordPolicy PowerShell 命令对联合域不起作用。 
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>用于同步临时密码和 "下次登录时强制更改密码" 的公共预览版
+#### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>同步临时密码和 "下次登录时强制更改密码"
 
 典型的做法是强制用户在首次登录时更改其密码，尤其是发生管理员密码重置后。  这种做法通常称为设置“临时”密码，它是通过对 Active Directory (AD) 中的用户对象选中“用户下次登录时必须更改密码”标志来完成的。
   
 临时密码功能有助于确保首次使用凭据时完成其所有权转移，以最大程度地减少多个人员知道该凭据的持续时间。
 
-若要在 Azure AD 中支持同步用户的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用 ForcePasswordChangeOnLogOn** 功能：
+若要在 Azure AD 中支持同步用户的临时密码，可以通过在 Azure AD Connect 服务器上运行以下命令来启用 ForcePasswordChangeOnLogOn  功能：
 
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> 如果强制用户在下次登录时更改其密码，则同时也需要执行密码更改操作。  Azure AD Connect 不会自行选取强制密码更改标志;它是在密码哈希同步过程中检测到的密码更改的补充。
+> 如果强制用户在下次登录时更改其密码，则同时也需要执行密码更改操作。  Azure AD Connect 本身不会选取强制密码更改标志；它是对密码哈希同步期间检测到的密码更改的补充。
 
 > [!CAUTION]
-> 仅当在租户上启用 SSPR 和密码写回时，才应使用此功能。  这是因为，如果用户通过 SSPR 更改了密码，则会将其同步到 Active Directory。
-
-> [!NOTE]
-> 此功能目前以公共预览版提供。
+> 仅当在租户上启用了 SSPR 和密码写回时，才应使用此功能。  这样，如果用户通过 SSPR 更改其密码，该密码将同步到 Active Directory。
 
 #### <a name="account-expiration"></a>帐户过期
 
@@ -204,7 +199,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 >[!IMPORTANT]
 >如果要从 AD FS（或其他联合技术）迁移到密码哈希同步，我们强烈建议你按照[此处](https://aka.ms/adfstophsdpdownload)发布的详细部署指南进行操作。
 
-使用“快速设置”选项**** 安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)。
+使用“快速设置”选项  安装 Azure AD Connect 时，会自动启用密码哈希同步。 有关详细信息，请参阅[通过快速设置开始使用 Azure AD Connect](how-to-connect-install-express.md)。
 
 如果在安装 Azure AD Connect 时使用了自定义设置，则可在用户登录页上使用密码哈希同步。 有关详细信息，请参阅 [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)。
 
@@ -218,7 +213,7 @@ Azure AD 支持为每个已注册的域单独设置密码过期策略。
 1. 转到 %programfiles%\Azure AD Sync\Bin。
 2. 打开 miiserver.exe.config。
 3. 转到文件末尾的 configuration/runtime 节点。
-4. 添加以下节点：`<enforceFIPSPolicy enabled="false"/>`
+4. 添加以下节点： `<enforceFIPSPolicy enabled="false"/>`
 5. 保存所做更改。
 
 下面显示了此代码片段的大致情况，供参考：

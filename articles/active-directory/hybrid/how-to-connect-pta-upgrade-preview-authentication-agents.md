@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 494ccc3b90b8c249ee935087dcf0f0b5264b02ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60386735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358134"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory 直通身份验证：升级预览身份验证代理
 
@@ -74,7 +74,7 @@ ms.locfileid: "60386735"
 5. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查“Microsoft Azure AD Connect 身份验证代理”是否存在对应的条目。********
 
 >[!NOTE]
->如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态****，另一个显示它处于“非活动”状态****。 这是正常情况__。 几天后自动删除表示“非活动”的条目****。
+>如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态****，另一个显示它处于“非活动”状态****。 这是_预期_情况。 几天后自动删除表示“非活动”的条目****。
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>升级其他服务器上的身份验证代理
 
@@ -86,7 +86,7 @@ ms.locfileid: "60386735"
 4. **验证是否已安装最新版本**：如前所述转到“控制面板”->“程序”->“程序和功能”，检查是否存在名为“Microsoft Azure AD Connect 身份验证代理”的条目。********
 
 >[!NOTE]
->如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态****，另一个显示它处于“非活动”状态****。 这是正常情况__。 几天后自动删除表示“非活动”的条目****。
+>如果在完成上述步骤后查看 [Azure Active Directory 管理中心](https://aad.portal.azure.com)的“传递身份验证”边栏选项卡，将看到每个服务器上有两个身份验证代理条目，一个条目显示身份验证代理处于“活动”状态****，另一个显示它处于“非活动”状态****。 这是_预期_情况。 几天后自动删除表示“非活动”的条目****。
 
 ## <a name="next-steps"></a>后续步骤
-- [**故障排除**](tshoot-connect-pass-through-authentication.md)-了解如何解决此功能的常见问题。
+- [故障排除](tshoot-connect-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。

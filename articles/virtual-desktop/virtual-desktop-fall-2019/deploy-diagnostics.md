@@ -4,21 +4,21 @@ description: 如何部署适用于 Windows 虚拟桌面的诊断 UX 工具。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615170"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362333"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的秋季2019版本。
+>本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。
 
 >[!IMPORTANT]
 >从2020年3月16日起，我们暂时禁用了影响用户体验的诊断查询，这是因为增加了对服务的需求。 这将导致工具停止工作，因为它依赖于这些查询才能运行。 当诊断查询再次可用时，我们将更新本文。
@@ -68,7 +68,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
    ```powershell
    Connect-AzureAD
    ```
-4. 请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**CreateADAppRegistrationforDiagnostics**脚本。
+4. 请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**CreateADAppRegistrationforDiagnostics.ps1**脚本。
 5.  当脚本要求你为应用命名时，请输入唯一的应用名称。
 
 
@@ -93,7 +93,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 运行 PowerShell 脚本：
 
 1.  以管理员身份打开 PowerShell。
-2.  请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**CreateLogAnalyticsWorkspaceforDiagnostics**脚本。
+2.  请参阅[RDS 模板 GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)存储库，并在 PowerShell 中运行**CreateLogAnalyticsWorkspaceforDiagnostics.ps1**脚本。
 3. 输入以下参数值：
 
     - 对于**ResourceGroupName**，输入资源组的名称。
@@ -115,13 +115,13 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 1. 打开 internet 浏览器，然后用管理帐户登录到[Azure 门户](https://portal.azure.com/)。
 2. 接下来，请前往**Log Analytics 工作区**查看已配置的 Windows 性能计数器。
 3. 在 "**设置**" 部分，选择 "**高级设置**"。
-4. 然后，导航到 "**数据** > " "**Windows 性能计数器**"，并添加以下计数器：
+4. 然后，导航到 "**数据**" "  >  **Windows 性能计数器**"，并添加以下计数器：
 
-    -   逻辑磁盘（\*）\\% 可用空间
-    -   逻辑磁盘（C：\\） Avg. Disk Queue Length
-    -   内存（\*）\\可用兆字节
-    -   处理器信息（\*）\\处理器时间
-    -   每个会话的用户输入\*延迟\\（）最大输入延迟
+    -   逻辑磁盘（ \* ） \\ % 可用空间
+    -   逻辑磁盘（C：） \\ Avg. Disk Queue Length
+    -   内存（ \* ） \\ 可用兆字节
+    -   处理器信息（ \* ） \\ 处理器时间
+    -   每个会话的用户输入延迟（ \* ） \\ 最大输入延迟
 
 [在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/azure/azure-monitor/platform/data-sources-performance-counters)的性能计数器的详细信息。
 
@@ -147,14 +147,14 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 1. 在[Azure 门户](https://portal.azure.com/)中转到**Log Analytics 工作区**以查看配置的 Windows 性能计数器。
 2. 在 "**设置**" 下，选择 "**高级设置**"。
-3. 之后，请跳到**数据** > **Windows 性能计数器**。
+3. 之后，请跳到**数据**  >  **Windows 性能计数器**。
 4. 请确保预配置了以下计数器：
 
-   - 逻辑磁盘（\*）\\% Free space：显示磁盘上总可用空间的可用空间量（以百分比表示）。
-   - 逻辑磁盘（C：\\） Avg. Disk Queue Length： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
-   - 内存（\*）\\可用兆字节数：系统的可用内存（mb）。
-   - 处理器信息（\*）\\处理器时间：处理器执行非空闲线程所用时间的百分比。
-   - 每个会话的用户输入\*延迟\\（）最大输入延迟
+   - 逻辑磁盘（ \* ） \\ % Free Space：显示磁盘上总可用空间的可用空间量（以百分比表示）。
+   - 逻辑磁盘（C：） \\ Avg. Disk Queue length： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
+   - 内存（ \* ） \\ 可用兆字节数：系统的可用内存（mb）。
+   - 处理器信息（ \* ） \\ 处理器时间：处理器执行非空闲线程所用时间的百分比。
+   - 每个会话的用户输入延迟（ \* ） \\ 最大输入延迟
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>连接到 Log Analytics 工作区中的 Vm
 
@@ -164,7 +164,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 2. 中转到 Log Analytics 工作区。
 3. 在左侧面板的 "工作区数据源" 下，选择 "**虚拟机**"。
 4. 选择要连接到的 VM 的名称。
-5. 选择“连接”  。
+5. 选择“连接”。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -195,11 +195,12 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 6. 在 "类型" 下的下拉菜单中选择 "**网站**"。
 7. 输入 "应用概述" 页中的 URL，并将 **/security/signin-callback**添加到该 URL 的末尾。 例如：`https://<yourappname>.azurewebsites.net/security/signin-callback`。
 
-   !["重定向 URI" 页](../media/redirect-uri-page.png)
+   > [!div class="mx-imgBorder"]
+   > !["重定向 URI" 页](../media/redirect-uri-page.png)
 
-8. 现在，请转到 Azure 资源，选择具有你在模板中提供的名称的 "Azure 应用服务" 资源，并导航到与其关联的 URL。 （例如，如果在模板中使用的应用名称为`contosoapp45`，则关联的 URL 为<https://contosoapp45.azurewebsites.net>）。
+8. 现在，请转到 Azure 资源，选择具有你在模板中提供的名称的 "Azure 应用服务" 资源，并导航到与其关联的 URL。 （例如，如果在模板中使用的应用名称为，则 `contosoapp45` 关联的 URL 为 <https://contosoapp45.azurewebsites.net> ）。
 9. 使用相应的 Azure Active Directory 用户帐户登录。
-10.   选择“接受”  。
+10.   选择“接受”。
 
 ## <a name="distribute-the-diagnostics-tool"></a>分发诊断工具
 
@@ -226,7 +227,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 连接活动可能包含多个错误。 你可以展开活动类型，以查看用户已遇到的任何其他错误。 选择错误代码的名称以打开一个对话框，查看其详细信息。
 
-### <a name="investigate-the-session-host"></a>调查会话主机 
+### <a name="investigate-the-session-host"></a>调查会话主机
 
 在搜索结果中，找到并选择你要获取其相关信息的会话主机。
 
@@ -242,26 +243,26 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows 性能计数器阈值
 
-- 逻辑磁盘（\*）\\% 可用空间：
+- 逻辑磁盘（ \* ） \\ % 可用空间：
 
     - 显示逻辑磁盘上可用的总可用空间的百分比。
     - 阈值：小于20% 被标记为不正常。
 
-- 逻辑磁盘（C：\\） Avg. Disk Queue Length：
+- 逻辑磁盘（C：） \\ Avg. Disk Queue Length：
 
     - 表示存储系统条件。
     - 阈值：大于5会被标记为不正常。
 
-- 内存（\*）\\可用兆字节：
+- 内存（ \* ） \\ 可用兆字节：
 
     - 系统的可用内存。
     - 阈值：标记为不正常的小于 500 mb。
 
-- 处理器信息（\*）\\处理器时间：
+- 处理器信息（ \* ） \\ 处理器时间：
 
     - 阈值：大于80% 将被标记为不正常。
 
-- [每个会话的用户输入\*延迟\\（）最大输入延迟](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
+- [每个会话的用户输入延迟（ \* ） \\ 最大输入延迟](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
 
     - 阈值：大于 2000 ms 被标记为不正常。
 

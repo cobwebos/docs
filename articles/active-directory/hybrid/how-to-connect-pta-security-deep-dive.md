@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185560"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358236"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -72,9 +72,12 @@ ms.locfileid: "77185560"
 
 ### <a name="authentication-agent-installation"></a>安装身份验证代理
 
-仅全局管理员可在本地服务器上安装身份验证代理（使用 Azure AD Connect 或独立安装）。 安装将两个新条目添加到 "控制面板 **" 的 "程序"** > **"程序** > **和功能**" 列表中：
+仅全局管理员可在本地服务器上安装身份验证代理（使用 Azure AD Connect 或独立安装）。 安装将两个新条目添加到 "控制面板 **" 的 "程序"**"程序  >  **Programs**  >  **和功能**" 列表中：
 - 身份验证代理应用程序本身。 此应用程序使用 [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 特权运行。
 - 用于自动更新身份验证代理的更新程序应用程序。 此应用程序使用 [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 特权运行。
+
+>[!IMPORTANT]
+>从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保证域控制器防范攻击](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的相同顺序对 PTA 代理服务器进行强制验证
 
 ### <a name="authentication-agent-registration"></a>注册身份验证代理
 
@@ -103,7 +106,7 @@ ms.locfileid: "77185560"
     - 此 CA 仅由直通身份验证功能使用。 CA 仅在身份验证代理注册过程中用于签署 CSR。
     -  没有任何其他 Azure AD 服务使用此 CA。
     - 证书主题（可分辨名称或 DN）将设置为租户 ID。 此 DN 是唯一标识租户的 GUID。 此 DN 将此证书限制为仅用于租户。
-6. Azure AD 将身份验证代理的公钥存储于仅 Azure AD 可访问的 Azure SQL 数据库中。
+6. Azure AD 在 Azure SQL 数据库中的数据库中存储身份验证代理的公钥，只有 Azure AD 有权访问该数据库。
 7. 将（步骤 5 中发布的）证书存储到本地服务器上的 Windows 证书存储（具体而言，即 [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) 位置）。 它可供身份验证代理和更新程序应用程序使用。
 
 ### <a name="authentication-agent-initialization"></a>初始化身份验证代理
@@ -136,7 +139,7 @@ ms.locfileid: "77185560"
 4. 用户在“用户登录”页中输入其用户名，然后选择“下一步”按钮********。
 5. 用户在“用户登录”页中输入其密码，然后选择“登录”按钮********。
 6. 在 HTTPS POST 请求中，将用户名和密码提交到 Azure AD STS。
-7. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并将其用于加密密码。
+7. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并使用密码对其进行加密。
     - 如果租户上注册了“N”个身份验证代理，它就会生成“N”个加密密码值。
 8. Azure AD STS 将密码验证请求（包含用户名和加密密码值）置于特定于租户的服务总线队列上。
 9. 由于初始化的身份验证代理持续连接到服务总线队列，因此其中一个可用身份验证代理会检索密码验证请求。
@@ -175,7 +178,7 @@ ms.locfileid: "77185560"
 6. 如果现有证书已过期，Azure AD 会从租户的已注册身份验证代理列表中删除此身份验证代理。 然后，全局管理员需要手动安装并注册新的身份验证代理。
     - 使用 Azure AD 根 CA 对证书进行签名。
     - 将证书主题（可分辨名称或 DN）设置为租户 ID，此租户 ID 是一个用于唯一标识租户的 GUID。 此 DN 使证书仅针对你的租户。
-6. Azure AD 将新的身份验证代理公钥存储于仅它可访问的 Azure SQL 数据库中。 它还会使与此身份验证代理关联的旧公钥无效。
+6. Azure AD 将身份验证代理的新公钥存储在 Azure SQL 数据库中只有有权访问的数据库中。 它还会使与此身份验证代理关联的旧公钥无效。
 7. 然后将（步骤 5 中颁发的）新证书存储到服务器上的 Windows 证书存储（具体而言即 [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) 位置）。
     - 由于信任续订过程为非交互式（不涉及全局管理员），因此身份验证代理不再有权更新 CERT_SYSTEM_STORE_LOCAL_MACHINE 位置的现有证书。 
     

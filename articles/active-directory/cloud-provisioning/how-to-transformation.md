@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: davba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: ec12927b40096b7ff04fae6b7cbc69a7bc11e8f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a15a25ce4fbe1a43c2a5065bf88f5c40c5865721
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360684"
 ---
 # <a name="transformations"></a>转换
 
@@ -62,7 +62,7 @@ ms.locfileid: "75549289"
                                 }
                             },
     ```
-1. 编辑代码，使 company 特性映射到`ExtensionAttribute3`。
+1. 编辑代码，使 company 特性映射到 `ExtensionAttribute3` 。
 
    ```
                                     {
@@ -98,7 +98,7 @@ ms.locfileid: "75549289"
 
     ![重新启动预配](media/how-to-transformation/transform3.png)
 
- 1. 稍微经过一段时间后，通过在图形资源管理器中运行以下查询来验证正在`https://graph.microsoft.com/beta/users/{Azure AD user UPN}`填充的属性：。
+ 1. 稍微经过一段时间后，通过在图形资源管理器中运行以下查询来验证正在填充的属性： `https://graph.microsoft.com/beta/users/{Azure AD user UPN}` 。
  1. 现在应会看到值。
 
     ![显示值](media/how-to-transformation/transform4.png)

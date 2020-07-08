@@ -8,16 +8,16 @@ manager: daveba
 ms.subservice: hybrid
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 72ec59d0082071746cb8db2b06412d90b4958914
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359953"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>为应用程序配置组声明 Azure Active Directory
 
@@ -179,14 +179,14 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 
    | 可选声明架构 | 值 |
    |----------|-------------|
-   | **路径名** | 必须是“groups” |
-   | **源程序** | 未使用。 省略或指定 null |
-   | **或缺** | 未使用。 省略或指定 false |
-   | **AdditionalProperties** | 其他属性的列表。  有效选项为“sam_account_name”、“dns_domain_and_sam_account_name”、“netbios_domain_and_sam_account_name”、“emit_as_roles” |
+   | **name：** | 必须是“groups” |
+   | **source：** | 未使用。 省略或指定 null |
+   | **essential：** | 未使用。 省略或指定 false |
+   | **additionalProperties：** | 附加属性列表。  有效选项为“sam_account_name”、“dns_domain_and_sam_account_name”、“netbios_domain_and_sam_account_name”、“emit_as_roles” |
 
-   在 additionalProperties 中，只需要指定“sam_account_name”、“dns_domain_and_sam_account_name”和“netbios_domain_and_sam_account_name”中的一个。  如果存在其中的多个选项，将使用第一个，并忽略其他所有选项。
+   在 additionalProperties 中，只需要指定“sam_account_name”、“dns_domain_and_sam_account_name”和“netbios_domain_and_sam_account_name”中的一个。  如果存在多个，则将使用第一个，而忽略其他。
 
-   某些应用程序需要有关角色声明中的用户的组信息。  若要将声明类型从组声明更改为角色声明，请将“emit_as_roles”添加到附加属性。  组值将在角色声明中发出。
+   某些应用程序需要角色声明中有关用户的组信息。  若要将声明类型从组声明更改为角色声明，请将“emit_as_roles”添加到附加属性。  组值将在角色声明中发出。
 
    > [!NOTE]
    > 如果使用“emit_as_roles”，则分配了用户的任何已配置应用程序角色不会显示在角色声明中
@@ -222,6 +222,6 @@ Azure Active Directory 可以提供令牌中的用户组成员身份信息，以
 
 ## <a name="next-steps"></a>后续步骤
 
-[向企业应用分配用户或组](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
-
-[配置角色声明](../../active-directory/develop/active-directory-enterprise-app-role-management.md)
+- [使用组 & 将声明添加到 ASP.NET Core web 应用（代码示例）添加授权](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
+- [向企业应用分配用户或组](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
+- [配置角色声明](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

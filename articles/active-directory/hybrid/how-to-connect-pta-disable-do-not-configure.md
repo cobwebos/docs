@@ -5,24 +5,24 @@ services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa1046dc64fed3edb6c9d04f76a96f488769ff42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358338"
 ---
 # <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD Connect "不配置" 时禁用 PTA
 
 如果使用传递身份验证和 Azure AD Connect，并将其设置为 "不配置"，则可以禁用它。 可以使用以下 cmdlet 来禁用 PTA。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 需要以下先决条件：
 - 安装了 PTA 代理的任何 windows 计算机。 
 - 代理必须处于版本1.5.1742.0 或更高版本。 
@@ -50,9 +50,9 @@ ms.locfileid: "81726795"
 如果没有代理计算机，可以使用以下命令安装代理。
 
 1. 从 portal.azure.com 下载最新的身份验证代理。
-2. 安装功能： `.\AADConnectAuthAgentSetup.exe`或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+2. 安装功能： `.\AADConnectAuthAgentSetup.exe` 或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Active Directory 传递身份验证的用户登录](how-to-connect-pta.md)
+- [使用 Azure Active Directory 直通身份验证的用户登录](how-to-connect-pta.md)

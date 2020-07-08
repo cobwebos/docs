@@ -13,23 +13,23 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362085"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
 
-本文详细介绍了每个生成任务中可用的配置选项。 本文首先介绍安全代码分析工具的任务。 它以后续处理任务结束。
+本文详细介绍了每个生成任务中可用的配置选项。 本文首先介绍了与安全代码分析工具相关的任务， 最后介绍了处理后任务。
 
-## <a name="anti-malware-scanner-task"></a>反恶意软件扫描器任务
+## <a name="anti-malware-scanner-task"></a>反恶意软件扫描程序任务
 
 >[!NOTE]
-> 反恶意软件扫描程序生成任务需要启用了 Windows Defender 的生成代理。 托管的 Visual Studio 2017 和更高版本提供此类代理。 生成任务不会在 Visual Studio 2015 托管代理上运行。
+> 反恶意软件扫描程序生成任务需要启用了 Windows Defender 的生成代理。 托管的 Visual Studio 2017 和更高版本提供了这样的代理。 生成任务不会在 Visual Studio 2015 托管代理上运行。
 >
-> 尽管不能在这些代理上更新签名，但签名应始终小于三个小时。
+> 尽管不能在这些代理上更新特征，但特征的使用期限应始终小于三个小时。
 
 以下屏幕截图和文本中显示了任务配置的详细信息。
 
@@ -61,15 +61,15 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 - 在 "**目标**" 中，为文件、目录或筛选器模式输入一个或多个说明符。 这些说明符解析为要分析的一个或多个二进制文件：
     - 多个指定的目标必须用分号（;) 分隔。
     - 说明符可以是单个文件，也可以包含通配符。
-    - 目录规范必须始终以\\* 结尾。
-    - 示例:
+    - 目录规范必须始终以 \\ * 结尾。
+    - 示例：
 
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
 
-- 如果在 "**类型**" 列表中选择 "**命令行**"，则需要运行 binskim：
-     - 请确保 binskim 的第一个参数是谓词**分析**后跟一个或多个路径规范。 每个路径可以是完整路径，也可以是相对于源目录的路径。
+- 如果在 "**类型**" 列表中选择 "**命令行**"，则需要运行 binskim.exe：
+     - 请确保 binskim.exe 的第一个参数是谓词**分析**后跟一个或多个路径规范。 每个路径可以是完整路径，也可以是相对于源目录的路径。
      - 多个目标路径必须用空格分隔。
      - 可以省略 **/o**或 **/output**选项。 为您添加或替换的输出值。
      - 标准命令行配置如下所示。
@@ -78,13 +78,13 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
            analyze *.dll *.exe --recurse --verbose
 
           > [!NOTE]
-          > 如果为\\目标指定目录，则尾随 * 非常重要。
+          > \\如果为目标指定目录，则尾随 * 非常重要。
 
 有关 BinSkim 命令行参数、按 ID 或退出代码的规则的详细信息，请参阅[BinSkim 用户指南](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md)。
 
 有关此任务的 YAML 配置的信息，请查看[BINSKIM YAML 选项](yaml-configuration.md#binskim-task)
 
-## <a name="credential-scanner-task"></a>凭据扫描器任务
+## <a name="credential-scanner-task"></a>凭据扫描程序任务
 
 以下屏幕截图和列表中显示了任务配置的详细信息。
 
@@ -103,40 +103,10 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
   - **匹配超时**：在放弃检查之前，尝试搜索者匹配所用的时间（以秒为单位）。
   - **文件扫描读取缓冲区大小**：读取内容时使用的缓冲区大小（以字节为单位）。 默认值为524288。  
   - **最大文件扫描读取字节**数：内容分析期间要从文件中读取的最大字节数。 默认值为104857600。
-  - **控制选项** > **运行此任务**：指定运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
+  - **控制选项**  > **运行此任务**：指定运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
   - **版本**： Azure DevOps 中的生成任务版本。 此选项不经常使用。
 
 有关此任务的 YAML 配置的信息，请查看[凭据扫描器 YAML 选项](yaml-configuration.md#credential-scanner-task)
-
-## <a name="microsoft-security-risk-detection-task"></a>Microsoft 安全风险检测任务
-
-> [!NOTE]
-> 使用 MSRD 任务之前，必须创建和配置具有 Microsoft 安全风险检测（MSRD）服务的帐户。 此服务需要单独的载入过程。 与此扩展中的大多数其他任务不同，此任务需要单独的订阅和 MSRD。
->
-> 请参阅[Microsoft 安全风险检测](https://aka.ms/msrddocs)和[Microsoft 安全风险检测：如何](https://docs.microsoft.com/security-risk-detection/how-to/)了解相关说明。
-
-以下列表显示了配置此任务的详细信息。 对于任何 UI 元素，您可以将鼠标悬停在该元素上以获得帮助。
-
-   - **适用于 MSRD 的 Azure DevOps 服务终结点名称**： azure DevOps 服务终结点的泛型类型存储载入 MSRD 实例 URL 和 REST API 访问令牌。 如果已创建此类终结点，则可以在此处指定。 否则，请选择 "**管理**" 链接，为此 MSRD 任务创建和配置新的服务终结点。
-   - **帐户 ID**：可以从 MSRD 帐户 URL 检索的 GUID。
-   - **二进制文件的 url**：以分号分隔的公开可用 url 列表。 模糊化计算机使用这些 Url 下载二进制文件。
-   - **Seed 文件的 url**：以分号分隔的公开可用 url 列表。 模糊化计算机使用这些 Url 下载种子。 如果将 seed 文件与二进制文件一起下载，则指定此值是可选的。
-   - **操作系统平台类型**：运行模糊化作业的计算机的操作系统（OS）平台。 可用值为**Windows**和**Linux**。
-   - **Windows edition/Linux 版本**：运行模糊化作业的计算机的操作系统版本。 如果计算机具有不同的操作系统版本，则可以覆盖默认值。
-   - **包安装脚本**：要在测试计算机上运行的脚本。 此脚本在提交模糊化作业之前安装测试目标程序及其依赖项。
-   - **作业提交参数**：
-       - **种子目录**：包含种子的模糊计算机上的目录的路径。
-       - **Seed Extension**：种子的文件扩展名。
-       - **测试驱动程序可执行**文件：模糊化计算机上目标可执行文件的路径。
-       - **测试驱动程序可执行文件体系结构**：目标可执行文件的体系结构。 可用值为**x86**和**amd64**。
-       - **测试驱动程序参数**：传递到测试可执行文件的命令行参数。 参数 "% testfile.txt%" （包括引号）自动替换为目标文件的完整路径。 此文件由测试驱动程序分析并且是必需的。
-       - 测试**完成后，测试驱动程序进程退出**：如果测试驱动程序在完成后终止，则选择此复选框。 如果需要强行关闭测试驱动程序，请将其清除。
-       - **最长持续时间（以秒为单位）**：预计目标程序分析输入文件所需的最长预期时间。 估算越精确，模糊化应用运行的效率就越高。
-       - **可以重复运行测试驱动程序**：如果测试驱动程序可以重复运行（不依赖于持久性或共享的全局状态），请选中此复选框。
-       - **可以重命名测试驱动程序**：如果可以重命名测试驱动程序可执行文件，但仍能正常工作，请选中此复选框。
-       - **模糊化应用程序作为单个 Os 进程运行**：如果测试驱动程序在单个操作系统进程下运行，则选择此复选框。 如果测试驱动程序产生额外的进程，请清除此方法。
-
-有关此任务的 YAML 配置的信息，请查看[Microsoft 安全风险检测 YAML 选项](yaml-configuration.md#microsoft-security-risk-detection-task)
 
 ## <a name="roslyn-analyzers-task"></a>Roslyn 分析器任务
 
@@ -153,11 +123,11 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 - **规则集**：值为**sdl 必需**、 **sdl 建议**或你自己的自定义规则集。
 - **分析器版本**：建议选择 "**最新**"。
 - **编译器警告禁止显示文件**：一个文本文件，其中包含已取消显示的警告 id 的列表。
-- **控制选项** > **运行此任务**：指定运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
+- **控制选项**  > **运行此任务**：指定运行任务的时间。 选择 "**自定义条件**" 指定更复杂的条件。
 
 > [!NOTE]
 >
-> - Roslyn 分析器与编译器集成，只能作为 csc 编译的一部分运行。 因此，此任务需要重播或再次运行在生成中运行的编译器命令。 此重播或运行通过查询 MSBuild 生成任务日志 Visual Studio Team Services （VSTS）来完成。
+> - Roslyn 分析器与编译器集成，只能作为 csc.exe 编译的一部分运行。 因此，此任务需要重播或再次运行在生成中运行的编译器命令。 此重播或运行通过查询 MSBuild 生成任务日志 Visual Studio Team Services （VSTS）来完成。
 >
 >   任务不能通过其他方式可靠地从生成定义获取 MSBuild 编译命令行。 建议添加一个自由格式文本框，使用户能够输入其命令行。 但这样做很难使这些命令行保持最新，并与主版本同步。
 >
@@ -184,7 +154,7 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 有关此任务的 YAML 配置的信息，请查看[TSLINT YAML 选项](yaml-configuration.md#tslint-task)
 
-## <a name="publish-security-analysis-logs-task"></a>发布安全分析日志任务
+## <a name="publish-security-analysis-logs-task"></a>“发布安全分析日志”任务
 
 以下屏幕截图和列表中显示了任务配置的详细信息。
 
@@ -209,7 +179,7 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 有关此任务的 YAML 配置的信息，请查看我们的[安全报表 YAML 选项](yaml-configuration.md#security-report-task)
 
-## <a name="post-analysis-task"></a>分析后任务
+## <a name="post-analysis-task"></a>事后分析任务
 
 以下屏幕截图和列表中显示了任务配置的详细信息。
 
@@ -225,4 +195,4 @@ Windows Defender 使用 Windows 更新客户端下载和安装签名。 如果�
 
 有关基于 YAML 的配置的信息，请参阅我们的[YAML 配置指南](yaml-configuration.md)。
 
-如果你对安全代码分析扩展和提供的工具有其他疑问，请查看[我们的常见问题页面](security-code-analysis-faq.md)。
+对于安全代码分析扩展和所提供的工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。

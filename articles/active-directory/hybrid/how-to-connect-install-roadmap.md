@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331429"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358729"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
@@ -70,9 +70,9 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 
 [设备写回](how-to-connect-device-writeback.md)将允许在 Azure AD 中注册的设备写回到本地 Active Directory，因此它可用于条件性访问。
 
-[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md) 功能默认处于打开状态，它可以保护云目录，避免同时进行多次删除。 默认情况下，允许每次运行执行 500 次删除。 可以更改此设置，具体取决于组织规模。
+[防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)功能默认处于打开状态，它可以保护云目录，避免同时进行多次删除。 默认情况下，每运行一次可以进行 500 次删除。 可以根据组织大小更改此设置。
 
-[自动升级](how-to-connect-install-automatic-upgrade.md) ，这可确保 Azure AD Connect 始终保持最新版本。
+使用快速设置安装时，将默认启用[自动升级](how-to-connect-install-automatic-upgrade.md)，确保 Azure AD Connect 始终保持最新版本。
 
 ### <a name="next-steps-to-configure-sync-features"></a>同步功能配置后续步骤
 |主题 |链接|  
@@ -86,15 +86,15 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 |自动升级 | [Azure AD Connect：自动升级](how-to-connect-install-automatic-upgrade.md)|
 
 ## <a name="customize-azure-ad-connect-sync"></a>自定义 Azure AD Connect 同步
-Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配置。 但总会有一些情况使得默认配置不适用，因此必须进行调整。 可以根据本部分和链接主题中所述进行更改。
+Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配置。 但总存在默认配置不适用的情况，因此必须进行调整。 可以根据本部分和链接主题中所述进行更改。
 
-如果以前没有用过同步拓扑，请先了解 [技术概念](how-to-connect-sync-technical-concepts.md)中所述的基本概念和术语。 Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。 即使有些功能相同，但改变的部分也有很多。
+如果以前没有用过同步拓扑，请先了解[技术概念](how-to-connect-sync-technical-concepts.md)中所述的基本概念和术语。 Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。 即使有些功能相同，但改变的部分也有很多。
 
-[默认配置](concept-azure-ad-connect-sync-default-configuration.md) 假设配置中可能存在多个林。 在这些拓扑中，用户对象可能表示为另一个林中的联系人。 用户还可能在另一个资源林中具有链接的邮箱。 [用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)中介绍了默认配置的行为。
+[默认配置](concept-azure-ad-connect-sync-default-configuration.md)假设配置中可能存在多个林。 在这些拓扑中，用户对象可能表示为另一个林中的联系人。 用户还可能具有另一个资源林中的链接邮箱。 [用户和联系人](concept-azure-ad-connect-sync-user-and-contacts.md)中介绍了默认配置的行为。
 
-同步的配置模型称为 [声明性预配](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)。 高级属性流程使用 [函数](reference-connect-sync-functions-reference.md) 来表示属性转换。 可以使用 Azure AD Connect 随附的工具来检查整个配置。 如果需要进行配置更改，请确保遵循 [最佳做法](how-to-connect-sync-best-practices-changing-default-configuration.md) ，以便可以更轻松地采用新版本。
+同步的配置模型称为[声明性预配](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)。 高级属性流程使用[函数](reference-connect-sync-functions-reference.md)来表示属性转换。 可以使用 Azure AD Connect 随附的工具来检查整个配置。 如果需要进行配置更改，请确保遵循[最佳做法](how-to-connect-sync-best-practices-changing-default-configuration.md)，以便可以更轻松地采用新版本。
 
-### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>Azure AD Connect 同步自定义后续步骤
+### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>自定义 Azure AD Connect 同步的后续步骤
 |主题 |链接|  
 | --- | --- |
 |所有 Azure AD Connect 同步文章 | [Azure AD Connect 同步](how-to-connect-sync-whatis.md)|
@@ -108,13 +108,13 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进行联合身份验证以及管理联合身份验证信任的过程。 Azure AD Connect 支持 Windows Server 2012R2 或更高版本上的 AD FS。
 
-即使未使用 Azure AD Connect 来管理联合身份验证信任，也请[更新 AD FS 场的 TLS/SSL 证书](how-to-connect-fed-ssl-update.md)。
+[更新 AD FS 场的 TLS/SSL 证书](how-to-connect-fed-ssl-update.md)，即使你不使用 Azure AD Connect 管理联合身份验证信任。
 
 向场[添加 AD FS 服务器](how-to-connect-fed-management.md#addadfsserver)，以便根据需要扩展场。
 
 [修复信任](how-to-connect-fed-management.md#repairthetrust)（针对 Azure AD），只需单击数下即可。
 
-可将 ADFS 配置为支持 [多个域](how-to-connect-install-multiple-domains.md)。 例如，可能在联合身份验证功能中需要使用多个顶级域。
+可将 ADFS 配置为支持[多个域](how-to-connect-install-multiple-domains.md)。 例如，在联合身份验证功能中可能需要使用多个顶级域。
 
 如果 ADFS 服务器未配置为自动更新 Azure AD 中的证书，或者如果使用非 ADFS 解决方案，则在需要[更新证书](how-to-connect-fed-o365-certs.md)时会通知你。
 
@@ -132,7 +132,7 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 
 1. [获取 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)或[开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。
 2. 在标识服务器上[下载并安装 Azure AD Connect Health 代理](#download-and-install-azure-ad-connect-health-agent)。
-3. 查看 Azure AD Connect Health 的仪表板[https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)。
+3. 查看 Azure AD Connect Health 的仪表板 [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth) 。
 
 > [!NOTE]
 > 请记住，在查看 Azure AD Connect Health 仪表板中的数据之前，需要在目标服务器上安装 Azure AD Connect Health 代理。

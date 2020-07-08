@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/16/2019
+ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: ddcf1d05933daadd29bf2f93850ac3299dc9e734
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361381"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -122,9 +122,19 @@ ms.locfileid: "84020109"
 [deployment-guide-4.5.1]:deployment-guide.md#987cf279-d713-4b4c-8143-6b11589bb9d4 (Azure PowerShell)
 [deployment-guide-4.5.2]:deployment-guide.md#408f3779-f422-4413-82f8-c57a23b4fc2f (Azure CLI)
 [deployment-guide-4.5]:deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca (配置适用于 SAP 的 Azure 扩展)
+[deployment-guide-configure-new-extension-ps]:deployment-guide.md#2ad55a0d-9937-4943-9dd2-69bc2b5d3de0 (为适用于 SAP 的新 Azure 扩展配置 Azure PowerShell)
+[deployment-guide-configure-new-extension-cli]:deployment-guide.md#c8749c24-fada-42ad-b114-f9aae2dc37da (为适用于 SAP 的新 Azure 扩展配置 Azure CLI)
 [deployment-guide-5.1]:deployment-guide.md#bb61ce92-8c5c-461f-8c53-39f5e5ed91f2 (适用于 SAP 的 Azure 扩展的就绪状态检查)
+[deployment-guide-5.1-new]:deployment-guide.md#7bf24f59-7347-4c7a-b094-4693e4687ee5 (适用于 SAP 的新 Azure 扩展的就绪状态检查)
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (适用于 SAP 的 Azure 扩展配置的运行状况检查)
+[deployment-guide-5.2-new]:deployment-guide.md#464ac96d-7d3c-435d-a5ae-3faf3bfef4b3 (适用于 SAP 的新 Azure 扩展配置的运行状况检查)
 [deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (对适用于 SAP 的 Azure 扩展进行故障排除)
+[deployment-guide-5.3-new]:deployment-guide.md#b7afb8ef-a64c-495d-bb37-2af96688c530 (针对 SAP 的新 Azure 扩展的疑难解答)
+[deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (Azure Extension for SAP 疑难解答-联系支持人员)
+[deployment-guide-run-the-script]:deployment-guide.md#0d2847ad-865d-4a4c-a405-f9b7baaa00c7 (Azure Extension for SAP 故障排除-运行安装脚本)
+[deployment-guide-redeploy-after-sysprep]:deployment-guide.md#2cd61f22-187d-42ed-bb8c-def0c983d756 (用于 SAP 的 Azure 扩展故障排除-在 sysprep 后重新部署)
+[deployment-guide-fix-internet-connection]:deployment-guide.md#e92bc57d-80d9-4a2b-a2f4-16713a22ad89 (用于 SAP 的 Azure 扩展故障排除-修复 internet 连接)
+
 
 [deployment-guide-configure-monitoring-scenario-1]:deployment-guide.md#ec323ac3-1de9-4c3a-b770-4ff701def65b (配置 VM 扩展)
 [deployment-guide-configure-proxy]:deployment-guide.md#baccae00-6f79-4307-ade4-40292ce4e02d (配置代理)
@@ -150,7 +160,7 @@ ms.locfileid: "84020109"
 [deployment-guide-figure-azure-cli-installed]:deployment-guide.md#402488e5-f9bb-4b29-8063-1c5f52a892d0
 [deployment-guide-figure-azure-cli-version]:deployment-guide.md#0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda
 [deployment-guide-install-vm-agent-windows]:deployment-guide.md#b2db5c9a-a076-42c6-9835-16945868e866
-[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (检查 SAP 主机代理的端到端数据收集并对其进行故障排除)
+[deployment-guide-troubleshooting-chapter]:deployment-guide.md#564adb4f-5c95-4041-9616-6635e83a810b (检查和故障排除)
 
 [deploy-template-cli]:../../../resource-group-template-deploy-cli.md
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
@@ -191,7 +201,6 @@ ms.locfileid: "84020109"
 [planning-guide-3.2.2]:planning-guide.md#fc1ac8b2-e54a-487c-8581-d3cc6625e560 (升级域)
 [planning-guide-3.2.3]:planning-guide.md#18810088-f9be-4c97-958a-27996255c665 (Azure 可用性集)
 [planning-guide-3.2]:planning-guide.md#8d8ad4b8-6093-4b91-ac36-ea56d80dbf77 (Microsoft Azure 虚拟机概念)
-[planning-guide-3.3.2]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure 高级存储)
 [planning-guide-5.1.1]:planning-guide.md#4d175f1b-7353-4137-9d2f-817683c26e53 (使用非通用化磁盘将 VM 从本地移至 Azure)
 [planning-guide-5.1.2]:planning-guide.md#e18f7839-c0e2-4385-b1e6-4538453a285c (使用特定于客户的映像部署虚拟机)
 [planning-guide-5.2.1]:planning-guide.md#1b287330-944b-495d-9ea7-94b83aff73ef (准备使用非通用化磁盘将虚拟机从本地移到 Azure)
@@ -202,11 +211,6 @@ ms.locfileid: "84020109"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (在 Azure 存储帐户之间复制磁盘)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (SAP 部署的 VM/VHD 结构)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (为附加的磁盘设置自动装载)
-[planning-guide-7.1]:planning-guide.md#3e9c3690-da67-421a-bc3f-12c520d99a30 (用于 SAP NetWeaver 演示/培训的单一 VM 方案)
-[planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP 实例的仅限云部署的概念)
-[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (适用于 SAP 的 Azure 监视解决方案)
-[planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure 高级存储)
-[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (托管磁盘)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -308,6 +312,10 @@ ms.locfileid: "84020109"
 [vpn-gateway-vpn-faq]:../../../vpn-gateway/vpn-gateway-vpn-faq.md
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
+[qs-configure-powershell-windows-vm]:../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md
+[qs-configure-cli-windows-vm]:../../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md
+[howto-assign-access-powershell]:../../../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md
+[howto-assign-access-cli]:../../../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -381,7 +389,7 @@ ms.locfileid: "84020109"
 * SAP 说明 [1984787] 包含有关 SUSE Linux Enterprise Server 12 的一般信息。
 * SAP 说明 [2002167] 包含有关 Red Hat Enterprise Linux 7.x 的一般信息。
 * SAP 说明 [2069760] 包含有关 Oracle Linux 7.x 的一般信息。
-* SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
+* SAP 说明[1999351]包含适用于 SAP 的 Azure 扩展的其他疑难解答信息。
 * SAP 说明 [1597355] 包含有关 Linux 交换空间的一般信息。
 * [Azure 上的 SAP SCN 页](https://wiki.scn.sap.com/wiki/x/Pia7Gg)包含新闻和有用资源的集合。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
@@ -429,12 +437,12 @@ ms.locfileid: "84020109"
    * 位置：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
 1. **Size**：
 
-     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]和 [Azure 高级存储][planning-guide-azure-premium-storage][（参见“SAP NetWeaver 的 Azure 虚拟机规划和实施指南”）][planning-guide]。
+     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[Sap NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的存储：[针对 sap 工作负荷的](./planning-guide-storage.md) [Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]和 Azure 存储。
 
 1. 设置：
    * **存储**
      * **磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
-     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅计划指南中的[托管磁盘][planning-guide-managed-disks]一章。
+     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅计划指南中的[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency)一章。
      * **存储帐户**：选择现有存储帐户，或者新建存储帐户。 并未所有存储类型都适合用来运行 SAP 应用程序。 有关存储类型的详细信息，请参阅[用于 RDBMS 部署的 VM 的存储结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)。
    * **Network**
      * 虚拟网络和子网： 要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
@@ -520,7 +528,7 @@ ms.locfileid: "84020109"
 
 #### <a name="vm-extension-for-sap-check"></a>适用于 SAP 的 VM 扩展检查
 
-按照[检查 SAP 主机代理的端到端数据收集并对其进行故障排除][deployment-guide-troubleshooting-chapter]中的说明，检查适用于 SAP 的 VM 扩展是否正在运行。
+检查 SAP 的 VM 扩展是否正常工作，如[检查和故障排除][deployment-guide-troubleshooting-chapter]中所述。
 
 #### <a name="post-deployment-steps"></a>部署后步骤
 
@@ -569,12 +577,12 @@ ms.locfileid: "84020109"
    * 位置：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
 1. **Size**：
 
-     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]和 [Azure 高级存储][planning-guide-azure-premium-storage][（参见“SAP NetWeaver 的 Azure 虚拟机规划和实施指南”）][planning-guide]。
+     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[Sap NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的存储：[针对 sap 工作负荷的](./planning-guide-storage.md) [Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]和 Azure 存储。
 
 1. 设置：
    * **存储**
      * **磁盘类型**：选择 OS 磁盘的磁盘类型。 若要对数据磁盘使用高级存储，我们建议也对 OS 磁盘使用高级存储。
-     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅计划指南中的[托管磁盘][planning-guide-managed-disks]一章。
+     * **使用托管磁盘**：若要使用托管磁盘，请选择“是”。 有关托管磁盘的详细信息，请参阅计划指南中的[托管磁盘](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency)一章。
    * **Network**
      * 虚拟网络和子网： 要将虚拟机与内部网络相集成，请选择连接到本地网络的虚拟网络。
      * **公共 IP 地址**：选择想要使用的公共 IP 地址，或输入参数来创建新的公共 IP 地址。 可以使用公共 IP 地址通过 Internet 访问虚拟机。 请确保同时创建网络安全组来帮助保护对虚拟机的访问。
@@ -632,7 +640,7 @@ ms.locfileid: "84020109"
       * [Microsoft Azure 存储简介][storage-introduction]
    * **用户映像 VHD URI**（仅限非托管磁盘映像模板）：专用 OS 映像 VHD 的 URI，例如 https://&lt;accountname>.blob.core.windows.net/vhds/userimage.vhd。
    * **用户映像存储帐户**（仅限非托管磁盘映像模板）：存储着专用 OS 映像的存储帐户的名称，例如 &lt;accountname> in https://&lt;accountname>.blob.core.windows.net/vhds/userimage.vhd。
-   * **userImageId**（仅限托管磁盘映像模板）：要使用的托管磁盘映像的 ID
+   * **userImageId** （仅限托管磁盘映像模板）：要使用的托管磁盘映像的 ID
    * 管理员用户名和管理员密码： 用户名和密码。
 
      将创建一个新用户，用于登录到虚拟机。
@@ -662,7 +670,7 @@ ms.locfileid: "84020109"
 
 #### <a name="sap-vm-extension-check"></a>SAP VM 扩展检查
 
-按照[检查 SAP 主机代理的端到端数据收集并对其进行故障排除][deployment-guide-troubleshooting-chapter]中的说明，检查适用于 SAP 的 VM 扩展是否正在运行。
+检查 SAP 的 VM 扩展是否正常工作，如[检查和故障排除][deployment-guide-troubleshooting-chapter]中所述。
 
 
 ### <a name="scenario-3-moving-an-on-premises-vm-by-using-a-non-generalized-azure-vhd-with-sap"></a><a name="a9a60133-a763-4de8-8986-ac0fa33aa8c1"></a>场景 3：使用包含 SAP 的非通用化 Azure VHD 移动本地 VM
@@ -723,7 +731,7 @@ ms.locfileid: "84020109"
       * [高级存储：适用于 Azure 虚拟机工作负载的高性能存储][storage-premium-storage-preview-portal]
       * [Microsoft Azure 存储简介][storage-introduction]
    * **OS 磁盘 VHD URI**（仅限非托管磁盘模板）：专用 OS 磁盘的 URI，例如 https://&lt;accountname>.blob.core.windows.net/vhds/osdisk.vhd。
-   * **OS 磁盘托管磁盘 ID**（仅限托管磁盘模板）：托管磁盘 OS 磁盘的 ID，例如 /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
+   * **OS 磁盘托管磁盘 ID** （仅限托管磁盘模板）：托管磁盘 OS 磁盘的 id/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
    * **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 id>/resourceGroups/&lt;资源组名称>/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称>/subnets/&lt;子网名称>
 
@@ -752,7 +760,7 @@ ms.locfileid: "84020109"
 
 #### <a name="sap-vm-check"></a>SAP VM 检查
 
-按照[检查 SAP 主机代理的端到端数据收集并对其进行故障排除][deployment-guide-troubleshooting-chapter]中的说明，检查适用于 SAP 的 VM 扩展是否正在运行。
+检查 SAP 的 VM 扩展是否正常工作，如[检查和故障排除][deployment-guide-troubleshooting-chapter]中所述。
 
 ## <a name="update-the-configuration-of-azure-extension-for-sap"></a>更新适用于 SAP 的 Azure 扩展的配置
 
@@ -771,18 +779,9 @@ ms.locfileid: "84020109"
 
 ### <a name="deploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>部署 Azure PowerShell cmdlet
 
-1. 转到 [Microsoft Azure 下载](https://azure.microsoft.com/downloads/)。
-1. 在“命令行工具”下，在“PowerShell”下选择“Windows 安装”。  
-1. 在 Microsoft 下载管理器对话框中，针对已下载的文件（例如 WindowsAzurePowershellGet.3f.3f.3fnew.exe）选择“运行”。
-1. 若要运行 Microsoft Web 平台安装程序 (Microsoft Web PI)，请选择“是”。
-1. 将显示一个如下所示的页面：
+按照[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)一文中所述的步骤进行操作
 
-   ![Azure PowerShell cmdlet 的安装页面][deployment-guide-figure-500]<a name="figure-5"></a>
-
-1. 选择“安装”，并接受 Microsoft 软件许可条款。
-1. PowerShell 安装完成。 选择“完成”以关闭安装向导。
-
-请经常检查 PowerShell cmdlet 的更新，通常每月都会更新。 检查更新的最简单方法是执行上述安装步骤，直到出现步骤 5 中显示的安装页面。 步骤 5 中显示的页面上包括了 cmdlet 的发布日期和发行版号。 除非 SAP 说明 [1928533] 或 SAP 说明 [2015553] 中另有规定，否则建议使用最新版本的 Azure PowerShell cmdlet。
+请经常检查 PowerShell cmdlet 的更新，通常每月都会更新。 请按照[本文中所述的步骤](https://docs.microsoft.com/powershell/azure/install-az-ps#update-the-azure-powershell-module)进行操作。 除非 SAP 说明 [1928533] 或 SAP 说明 [2015553] 中另有规定，否则建议使用最新版本的 Azure PowerShell cmdlet。
 
 要检查计算机上安装的 Azure PowerShell cmdlet 的版本，请运行以下 PowerShell 命令：
 
@@ -790,41 +789,17 @@ ms.locfileid: "84020109"
 (Get-Module Az.Compute).Version
 ```
 
-结果类似以下形式：
-
-![Azure PowerShell cmdlet 版本检查结果][deployment-guide-figure-600]
-<a name="figure-6"></a>
-
-如果计算机上安装的 Azure cmdlet 版本是当前版本，则安装向导的第一个页面会通过将 **(已安装)** 添加到产品标题中来指明这一情况（请参阅下面的屏幕截图）。 PowerShell Azure cmdlet 是最新的。 若要关闭安装向导，请选择“退出”。
-
-![Azure PowerShell cmdlet 的安装页面，其中指明已安装了 Azure PowerShell cmdlet 的最新版本][deployment-guide-figure-700]
-<a name="figure-7"></a>
-
 ### <a name="deploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>部署 Azure CLI
 
-1. 转到 [Microsoft Azure 下载](https://azure.microsoft.com/downloads/)。
-1. 在“命令行工具”下，在“Azure 命令行接口”下选择适用于操作系统的**安装**链接。
-1. 在 Microsoft 下载管理器对话框中，针对已下载的文件（例如 WindowsAzureXPlatCLI.3f.3f.3fnew.exe）选择“运行”。
-1. 若要运行 Microsoft Web 平台安装程序 (Microsoft Web PI)，请选择“是”。
-1. 将显示一个如下所示的页面：
+按照[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)一文中所述的步骤进行操作
 
-   ![Azure PowerShell cmdlet 的安装页面][deployment-guide-figure-500]<a name="figure-5"></a>
-
-1. 选择“安装”，并接受 Microsoft 软件许可条款。
-1. Azure CLI 安装完成。 选择“完成”以关闭安装向导。
-
-请经常检查 Azure CLI 的更新，通常每月都会更新。 检查更新的最简单方法是执行上述安装步骤，直到出现步骤 5 中显示的安装页面。
+请经常检查 Azure CLI 的更新，通常每月都会更新。
 
 要检查计算机上安装的 Azure CLI 的版本，请运行以下命令：
 
 ```console
-azure --version
+az --version
 ```
-
-结果类似以下形式：
-
-![Azure CLI 版本检查结果][deployment-guide-figure-760]
-<a name="0ad010e6-f9b5-4c21-9c09-bb2e5efb3fda"></a>
 
 ### <a name="join-a-vm-to-an-on-premises-domain-windows-only"></a><a name="31d9ecd6-b136-4c73-b61e-da4a29bbc9cc"></a>将 VM 加入本地域（仅限 Windows）
 
@@ -934,9 +909,22 @@ azure --version
 
 ### <a name="configure-the-azure-extension-for-sap"></a><a name="d98edcd3-f2a1-49f7-b26a-07448ceb60ca"></a>配置适用于 SAP 的 Azure 扩展
 
-根据 [Azure 上的 SAP 的 VM 部署方案][deployment-guide-3]所述准备好 VM 之后，Azure VM 代理就已安装在虚拟机上了。 下一个步骤是部署 Azure 全球数据中心内的 Azure 扩展存储库中提供的适用于 SAP 的 Azure 扩展。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide-9.1]。
+> [!NOTE]
+> 常规支持声明：若要支持适用于 SAP 的 Azure 扩展，请始终使用适用于 Windows 的 BC-OP-NT-AZR for Windows 或业务连续性-组件 BC-OP-LNX-AZR 创建-BC-OP-NT-AZR 在 SAP 上打开一个事件。
+> SAP 支持系统中有专门的 Microsoft 支持工程师，可帮助我们的共同客户。
 
-可以使用 PowerShell 或 Azure CLI 安装和配置适用于 SAP 的 Azure 扩展。 若要使用 Windows 计算机在 Windows 或 Linux VM 上安装扩展，请参阅 [Azure PowerShell][deployment-guide-4.5.1]。 若要使用 Linux 台式机在 Linux VM 上安装扩展，请参阅 [Azure CLI][deployment-guide-4.5.2]。
+根据 [Azure 上的 SAP 的 VM 部署方案][deployment-guide-3]所述准备好 VM 之后，Azure VM 代理就已安装在虚拟机上了。 下一个步骤是部署 Azure 全球数据中心内的 Azure 扩展存储库中提供的适用于 SAP 的 Azure 扩展。 有关详细信息，请参阅 [适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施] [规划指南-9.1]。
+
+我们正在发布适用于 SAP 的 Azure 扩展的新版本。 新扩展使用系统分配的虚拟机标识来获取有关连接的磁盘、网络接口和虚拟机本身的信息。 为了能够访问这些资源，虚拟机的系统标识需要针对虚拟机、OS 磁盘、数据磁盘和网络接口的读取器权限。 我们目前建议仅在以下方案中安装新扩展：
+
+1. 你希望通过 Terraform、Azure 资源管理器模板或其他方法（而不是 Azure CLI 或 Azure PowerShell）安装扩展
+1. 需要在 SUSE SLES 15 或更高版本上安装扩展。
+1. Microsoft 或 SAP 支持会要求你安装新扩展
+1. 要使用 Azure 超小型磁盘或标准托管磁盘
+
+对于这些方案，请按照 "Azure PowerShell 为[Sap 配置新的 Azure 扩展"][deployment-guide-configure-new-extension-ps]一章中的步骤进行操作，Azure PowerShell 并为适用于[Sap 的新 azure 扩展配置 "Azure CLI"][deployment-guide-configure-new-extension-cli] Azure CLI。
+
+按照[Azure PowerShell][deployment-guide-4.5.1]或[Azure CLI][deployment-guide-4.5.2]安装和配置适用于 SAP 的 Azure 扩展的标准版本。
 
 #### <a name="azure-powershell-for-linux-and-windows-vms"></a><a name="987cf279-d713-4b4c-8143-6b11589bb9d4"></a>适用于 Linux 和 Windows VM 的 Azure PowerShell
 
@@ -944,7 +932,7 @@ azure --version
 
 1. 确保已安装最新版本的 Azure PowerShell cmdlet。 有关详细信息，请参阅[部署 Azure PowerShell cmdlet][deployment-guide-4.1]。  
 1. 运行以下 Azure PowerShell cmdlet。
-    若要获得可用环境的列表，请运行 `commandlet Get-AzEnvironment`。 如果想要使用全局 Azure，则环境是 **AzureCloud**。 对于中国区 Azure，请选择 **AzureChinaCloud**。
+    若要获得可用环境的列表，请运行 `commandlet Get-AzEnvironment`。 如果想要使用全局 Azure，则环境是 **AzureCloud**。 对于 Azure 中国世纪互联，请选择**AzureChinaCloud**。
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -954,7 +942,7 @@ azure --version
     Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
-在输入帐户数据并标识 Azure 虚拟机名，该脚本将部署所需的扩展，并启用所需的功能。 这可能需要几分钟。
+输入帐户数据后，该脚本将部署所需的扩展，并启用所需的功能。 这可能需要几分钟。
 有关 `Set-AzVMAEMExtension` 的详细信息，请参阅 [Set-AzVMAEMExtension][msdn-set-Azvmaemextension]。
 
 ![成功执行特定于 SAP 的 Azure cmdlet Set-AzVMAEMExtension][deployment-guide-figure-900]
@@ -1030,7 +1018,96 @@ azure --version
    ...
    ```
 
-## <a name="checks-and-troubleshooting-for-end-to-end-data-collection-for-sap-host-agent"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>检查 SAP 主机代理的端到端数据收集并对其进行故障排除
+#### <a name="configure-the-new-azure-extension-for-sap-with-azure-powershell"></a><a name="2ad55a0d-9937-4943-9dd2-69bc2b5d3de0"></a>为适用于 SAP 的新 Azure 扩展配置 Azure PowerShell
+
+适用于 SAP 的新 VM 扩展使用分配给 VM 的托管标识来访问 VM 的监视和配置数据。 若要使用 PowerShell 为 SAP 安装新的 Azure 扩展，首先必须将此类标识分配给 VM，并向该标识授予对该虚拟机使用的所有资源的访问权限，例如磁盘和网络接口。
+
+此过程将在下一版本的 Azure PowerShell 中自动执行（> 4.2.0）。 当新版本可用时，我们将更新本文。 在此之前，请按照以下步骤手动安装扩展。
+
+> [!NOTE]
+> 以下步骤要求对资源组或单个资源（虚拟机、数据磁盘等）拥有所有者权限。
+
+1. 请确保使用 SAP 主机代理 7.21 PL 47 或更高版本。
+1. 请确保卸载适用于 SAP 的 VM 扩展的最新版本。 不支持在同一虚拟机上为 SAP 安装两个版本的 VM 扩展。
+1. 确保已安装最新版本的 Azure PowerShell cmdlet。 有关详细信息，请参阅[部署 Azure PowerShell cmdlet][deployment-guide-4.1]。
+1. 按照使用 PowerShell 为 azure [VM 上的 azure 资源配置托管标识][qs-configure-powershell-windows-vm]一文中的步骤，为 VM 启用系统分配的托管标识。 适用于 SAP 的 VM 扩展不支持用户分配的托管标识。 但是，可以同时启用系统分配的和用户分配的标识。
+    
+    示例：
+    ```powershell
+    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
+    Update-AzVM -ResourceGroupName $vm.ResourceGroupName -VM $vm -IdentityType SystemAssigned
+    ```
+
+1. 按照[使用 PowerShell 分配对资源的托管标识访问][howto-assign-access-powershell]中所述，将托管标识访问权限分配给 VM 的资源组或所有网络接口、托管磁盘和 VM 本身：
+
+    ```powershell
+    $spID = (Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>).identity.principalid
+    $rg = Get-AzResourceGroup -Name $vm.ResourceGroupName
+    New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope $rg.ResourceId
+    ```
+
+1. 运行以下 PowerShell cmdlet 以安装适用于 SAP 的 Azure 扩展。
+    目前仅支持 AzureCloud 中的扩展。 目前尚不支持 azure 中国世纪互联、Azure 政府版或任何其他特殊环境。
+
+    ```powershell
+    $env = Get-AzEnvironment -Name AzureCloud
+    Connect-AzAccount -Environment $env
+    Set-AzContext -SubscriptionName <subscription name>
+
+    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
+    if ($vm.StorageProfile.OsDisk.OsType -eq "Windows") {
+      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Windows -Name MonitorX64Windows -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
+    } else {
+      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Linux -Name MonitorX64Linux -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
+    }
+    ```
+
+#### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>为适用于 SAP 的新 Azure 扩展配置 Azure CLI
+
+适用于 SAP 的新 VM 扩展使用分配给 VM 的托管标识来访问 VM 的监视和配置数据。 若要使用 Azure CLI 为 SAP 安装新的 Azure 扩展，你必须首先将此类标识分配给 VM，并向该标识授予对该虚拟机使用的所有资源的访问权限，例如磁盘和网络接口。
+
+> [!NOTE]
+> 以下步骤要求对资源组或单个资源（虚拟机、数据磁盘等）拥有所有者权限。
+
+1. 请确保使用 SAP 主机代理 7.21 PL 47 或更高版本。
+1. 请确保卸载适用于 SAP 的 VM 扩展的最新版本。 不支持在同一虚拟机上为 SAP 安装两个版本的 VM 扩展。
+1. 如[安装 Azure CLI 2.0][azure-cli-2] 中所述安装 Azure CLI 2.0。
+
+1. 使用 Azure 帐户进行登录：
+
+   ```azurecli
+   az login
+   ```
+
+1. 按照使用 Azure CLI 为 azure [vm 上的 azure 资源配置托管标识][qs-configure-cli-windows-vm]一文中的步骤，为 VM 启用系统分配的托管标识。 适用于 SAP 的 VM 扩展不支持用户分配的托管标识。 但是，可以同时启用系统分配的和用户分配的标识。
+
+   示例：
+   ```azurecli
+   az vm identity assign -g <resource-group-name> -n <vm name>
+   ```
+
+1. 按照[使用 Azure CLI 向资源分配托管标识访问][howto-assign-access-cli]中所述，将托管标识访问权限分配给 VM 的资源组或所有网络接口、托管磁盘和 VM 本身。
+
+    示例：
+
+    ```azurecli
+    spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
+    rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+    ```
+
+1. 运行以下 Azure CLI 命令安装适用于 SAP 的 Azure 扩展。
+    目前仅支持 AzureCloud 中的扩展。 目前尚不支持 azure 中国世纪互联、Azure 政府版或任何其他特殊环境。
+
+    ```azurecli
+    # For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    #For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+    ```
+
+## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>检查和故障排除
 
 在部署 Azure VM 并设置适用于 SAP 的相关 Azure 扩展后，请检查扩展的所有组件是否都按预期正常运行。
 
@@ -1038,7 +1115,7 @@ azure --version
 
 ### <a name="readiness-check-for-the-azure-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>适用于 SAP 的 Azure 扩展的就绪状态检查
 
-通过此项检查，可以确认底层适用于 SAP 的 Azure 扩展是否能够提供 SAP 应用程序中显示的所有性能指标。
+通过此项检查，可以确认底层适用于 SAP 的 Azure 扩展是否能够提供 SAP 应用程序中显示的所有性能指标。 如果已部署适用于 SAP 的新 Azure 扩展，请遵循本指南中[适用于 sap 的新 Azure 扩展的章节准备情况检查][deployment-guide-5.1-new]。
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>在 Windows VM 上运行就绪状态检查
 
@@ -1131,16 +1208,78 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
    c.  检查 **Virtualization_Configuration\Enhanced Monitoring Access** 度量值是否为 **true**。
 
-如果已安装 SAP NetWeaver ABAP 应用程序服务器，请打开事务 ST06，并检查是否已启用增强型监视。
+如果已安装 SAP NetWeaver ABAP 应用程序服务器，请打开事务 ST06，并检查是否已启用监视。
 
 如果这些检查中有任何一项检查失败，并且要详细了解如何重新部署该扩展，请参阅[对适用于 SAP 的 Azure 扩展进行故障排除][deployment-guide-5.3]。
+
+### <a name="readiness-check-for-the-new-azure-extension-for-sap"></a><a name="7bf24f59-7347-4c7a-b094-4693e4687ee5"></a>适用于 SAP 的新 Azure 扩展的就绪状态检查
+
+通过此项检查，可以确认底层适用于 SAP 的 Azure 扩展是否能够提供 SAP 应用程序中显示的所有性能指标。 如果已部署适用于 SAP 的旧 Azure 扩展，请遵循本指南中[的适用于 sap 的 Azure 扩展][deployment-guide-5.1]的本指南的本指南。
+
+#### <a name="run-the-readiness-check-on-a-windows-vm"></a>在 Windows VM 上运行就绪状态检查
+
+1. 登录到 Azure 虚拟机（不需要使用管理员帐户）。
+1. 打开 web 浏览器并导航到http://127.0.0.1:11812/azure4sap/metrics
+1. 浏览器应显示或下载包含虚拟机的监视数据的 XML 文件。 如果不是这种情况，请确保已安装适用于 SAP 的 Azure 扩展。
+
+##### <a name="check-the-content-of-the-xml-file"></a>检查 XML 文件的内容
+
+可以访问的 XML 文件 http://127.0.0.1:11812/azure4sap/metrics 包含适用于 SAP 的所有已填充 Azure 性能计数器。 它还包含适用于 SAP 的 Azure 扩展状态的摘要和运行状况指示符。
+
+检查**提供程序健康说明**元素的值。 如果值不是**OK**，请按照针对[SAP 配置的新 Azure 扩展的运行状况检查][deployment-guide-5.2-new]中的说明进行操作。
+
+#### <a name="run-the-readiness-check-on-a-linux-vm"></a>在 Linux VM 上运行就绪状态检查
+
+1. 使用 SSH 连接到 Azure 虚拟机。
+
+1. 检查以下命令的输出
+
+    ```console
+    curl http://127.0.0.1:11812/azure4sap/metrics
+    ```
+    
+   **预期结果**：返回一个 XML 文档，其中包含虚拟机及其磁盘和网络接口的监视信息。
+
+如果前面的检查未成功，请运行以下额外的检查：
+
+1. 确保已安装并启用了 waagent。
+
+   a.  `sudo ls -al /var/lib/waagent/`运行
+
+     **预期结果**：列出 waagent 目录的内容。
+
+   b.  `ps -ax | grep waagent`运行
+
+   **预期结果**：显示一个类似于以下内容的条目：`python /usr/sbin/waagent -daemon`
+
+1. 确保适用于 SAP 的 Azure 扩展已安装且正常运行。
+
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-*/'`运行
+
+   **预期结果**：列出适用于 SAP 的 Azure 扩展目录的内容。
+
+   b. `ps -ax | grep AzureEnhanced`运行
+
+   **预期结果**：显示一个类似于以下内容的条目：`/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux-1.0.0.82/AzureEnhancedMonitoring -monitor`
+
+1. 如 SAP 说明 [1031096] 中所述安装 SAP 主机代理，并检查 `saposcol` 的输出。
+
+   a.  `/usr/sap/hostctrl/exe/saposcol -d`运行
+
+   b.  `dump ccm`运行
+
+   c.  检查 **Virtualization_Configuration\Enhanced Monitoring Access** 度量值是否为 **true**。
+
+如果已安装 SAP NetWeaver ABAP 应用程序服务器，请打开事务 ST06，并检查是否已启用监视。
+
+如果这些检查中有任何一个失败，以及有关如何重新部署该扩展的详细信息，请参阅对[适用于 SAP 的新 Azure 扩展进行故障排除][deployment-guide-5.3-new]。
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>适用于 SAP 的 Azure 扩展配置的运行状况检查
 
 如果[适用于 SAP 的 Azure 扩展的就绪状态检查][deployment-guide-5.1]中所述的测试指出未正确提供某些基础结构数据，请运行 `Test-AzVMAEMExtension` cmdlet 以检查是否正确配置了 Azure 基础结构和适用于 SAP 的 Azure 扩展。
 
 1. 确保已根据[部署 Azure PowerShell cmdlet][deployment-guide-4.1] 中所述安装了最新版本的 Azure PowerShell cmdlet。
-1. 运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于中国区 Azure，请选择 **AzureChinaCloud**。
+1. 运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于 Azure 中国世纪互联，请选择**AzureChinaCloud**。
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1148,10 +1287,6 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
    Set-AzContext -SubscriptionName <subscription name>
    Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
-
-1. 输入帐户数据并标识 Azure 虚拟机。
-
-   ![特定于 SAP 的 Azure cmdlet Test-VMConfigForSAP_GUI 的输入页面][deployment-guide-figure-1200]
 
 1. 脚本将测试你选择的虚拟机的配置。
 
@@ -1162,6 +1297,22 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 > [!Note]
 > 如果使用的是托管的标准 Azure 磁盘，则可能会收到一些警告。 测试将显示警告而非返回“正常”。 在使用该磁盘类型的情况下，这是正常的并且是预料中的行为。 另请参阅[对适用于 SAP 的 Azure 扩展进行故障排除][deployment-guide-5.3]
 > 
+
+### <a name="health-check-for-the-new-azure-extension-for-sap-configuration"></a><a name="464ac96d-7d3c-435d-a5ae-3faf3bfef4b3"></a>适用于 SAP 的新 Azure 扩展配置的运行状况检查
+
+如果未按照[针对 sap 的 Azure 扩展准备情况检查][deployment-guide-5.1-new]中所述的测试正确传递某些基础结构数据，请运行 `Get-AzVMExtension` cmdlet 来检查是否安装了适用于 Sap 的 azure 扩展。 尚 `Test-AzVMAEMExtension` 不支持新的扩展。 一旦该 cmdlet 支持新扩展，我们将更新本文。
+
+1. 确保已根据[部署 Azure PowerShell cmdlet][deployment-guide-4.1] 中所述安装了最新版本的 Azure PowerShell cmdlet。
+1. 运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于 Azure 中国世纪互联，请选择**AzureChinaCloud**。
+
+   ```powershell
+   $env = Get-AzEnvironment -Name <name of the environment>
+   Connect-AzAccount -Environment $env
+   Set-AzContext -SubscriptionName <subscription name>
+   Get-AzVMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   ```
+
+1. Cmdlet 将列出所选虚拟机的所有扩展。 请确保 VM 上安装了适用于 SAP 的 Azure 扩展。
 
 ### <a name="troubleshooting-azure-extension-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>对适用于 SAP 的 Azure 扩展进行故障排除
 
@@ -1242,7 +1393,7 @@ WARNING: [WARN] Standard Managed Disks are not supported. Extension will be inst
 
 ###### <a name="solution"></a>解决方案
 
-之所以出现这些消息，是因为标准托管磁盘未提供适用于 SAP 的 SAP 扩展检查标准 Azure 存储帐户的统计信息时需使用的 API。 这不是一个值得关注的问题。 之所以针对标准磁盘存储帐户引入收集数据功能，是因为 I/O 限制频繁发生。 托管磁盘会通过限制存储帐户中的磁盘数避免这类限流。 因此，没有该类型的数据并不重要。
+之所以出现这些消息，是因为标准托管磁盘未提供适用于 SAP 的 SAP 扩展检查标准 Azure 存储帐户的统计信息时需使用的 API。 这不是一个值得关注的问题。 引入标准磁盘存储帐户的收集数据的原因是限制频繁发生的输入和输出。 托管磁盘会通过限制存储帐户中的磁盘数避免这类限流。 因此，没有该类型的数据并不重要。
 
 
 #### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 缺少某些 Azure 性能计数器
@@ -1252,3 +1403,121 @@ Azure 中的性能度量值是由某个守护程序收集的，该守护程序�
 有关已知问题的完整最新列表，请参阅 SAP 说明 [1999351]，其中包含有关适用于 SAP 的 Azure 扩展的其他故障排除信息。
 
 如果使用 SAP 说明 [1999351] 进行故障排除没有解决问题，请根据[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]中所述重新运行 `Set-AzVMAEMExtension` 配置脚本。 可能必须要等待一小时，因为在启用存储分析或诊断计数器后可能不会立即创建这些计数器。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。
+
+### <a name="troubleshooting-the-new-azure-extension-for-sap"></a><a name="b7afb8ef-a64c-495d-bb37-2af96688c530"></a>针对 SAP 的新 Azure 扩展的疑难解答
+
+#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure 性能计数器根本未显示
+
+AzureEnhancedMonitoring 进程在 Azure 中收集性能指标。 如果该进程未在 VM 中运行，则无法收集任何性能指标。
+
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>适用于 SAP 的 Azure 扩展的安装目录为空
+
+###### <a name="issue"></a>问题
+
+安装目录 C： \\ 程序包 \\ 插件 \\ MonitorX64Windows \\ &lt; 版本> 为空。
+
+###### <a name="solution"></a>解决方案
+
+未安装该扩展。 确定这是否为代理问题（如前文所述）。 可能需要重新启动计算机或重新安装 VM 扩展。
+
+#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] 缺少某些 Azure 性能计数器
+
+AzureEnhancedMonitoring Windows 进程在 Azure 中收集性能指标。 此过程从多个源中获取数据。 某些配置数据是在本地收集的，某些性能度量值是从 Azure Monitor 中读取的。
+
+如果使用 SAP 说明[1999351]进行故障排除不能解决此问题，请在组件 BC-操作-Bc-op-nt-azr for WINDOWS 或组件 BC-OP-LNX-AZR 创建-Bc-op-nt-azr for Linux 虚拟机上打开 SAP 客户支持消息。 请将日志文件 C： \\ 程序包 \\ 插件 \\ MonitorX64Windows \\ &lt;>logapp.txt 附加 \\ 到事件。
+
+#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure 性能计数器根本未显示
+
+Azure 中的性能度量值是由某个守护程序收集的。 如果该守护程序未运行，则无法收集任何性能度量值。
+
+##### <a name="the-installation-directory-of-the-azure-extension-for-sap-is-empty"></a>适用于 SAP 的 Azure 扩展的安装目录为空
+
+###### <a name="issue"></a>问题
+
+\\var\\lib\\waagent\\ 目录未包含适用于 SAP 的 Azure 扩展的子目录。
+
+###### <a name="solution"></a>解决方案
+
+未安装该扩展。 确定这是否为代理问题（如前文所述）。 你可能需要重新启动计算机并/或重新安装 VM 扩展。
+
+#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 缺少某些 Azure 性能计数器
+
+Azure 中的性能度量值是由某个守护程序收集的，该守护程序从多个来源获取数据。 某些配置数据是在本地收集的，某些性能度量值是从 Azure Monitor 中读取的。
+
+有关已知问题的完整最新列表，请参阅 SAP 说明 [1999351]，其中包含有关适用于 SAP 的 Azure 扩展的其他故障排除信息。
+
+如果使用 SAP 说明[1999351]进行故障排除不能解决此问题，请按照[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]中所述，重新安装该扩展。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。 请将日志文件/var/lib/waagent/Microsoft.AzureCAT.AzureEnhancedMonitoring.MonitorX64Linux- &lt; 版本>/logapp.txt 附加到事件。
+
+## <a name="azure-extension-error-codes"></a>Azure 扩展错误代码
+
+| 错误 ID | 错误说明 | 解决方案 |
+|---|---|---|
+| <a name="cfg_018"></a>cfg/018 | 缺少应用配置。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_019"></a>cfg/019 | 应用配置中没有部署 ID。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_020"></a>cfg/020 | 在应用配置中未 RoleInstanceId。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_022"></a>cfg/022 | 在应用配置中未 RoleInstanceId。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_031"></a>cfg/031 | 无法读取 Azure 配置。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_021"></a>cfg/021 | 缺少应用配置文件。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_015"></a>cfg/015 | 应用配置中没有 VM 大小。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_016"></a>cfg/016 | GlobalMemoryStatusEx 计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_023"></a>cfg/023 | MaxHwFrequency 计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_024"></a>cfg/024 | NIC 计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_025"></a>cfg/025 | 磁盘映射计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_026"></a>cfg/026 | 处理器名称计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_027"></a>cfg/027 | 磁盘映射计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_038"></a>cfg/038 | 扩展配置文件 config.xml 中缺少指标 "磁盘类型"。 V 2.2.0.68 12/16/2015 中引入了与一些其他计数器一起提供的 "磁盘类型"。 如果在12/16/2015 之前部署了扩展，则将使用旧的配置文件。 Azure 扩展框架会自动将扩展升级到较新的版本，但 config.xml 保持不变。 若要更新配置，请下载并执行最新的 PowerShell 安装程序脚本。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_039"></a>cfg/039 | 无磁盘缓存。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_036"></a>cfg/036 | 无磁盘 SLA 吞吐量。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_037"></a>cfg/037 | 无磁盘 SLA IOPS。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_028"></a>cfg/028 | 磁盘映射计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_029"></a>cfg/029 | 上一个硬件更改计数器失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_030"></a>cfg/030 | NIC 计数器失败 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_017"></a>cfg/017 | 由于 VM 的 sysprep，Windows SID 发生了更改。 | [在 sysprep 后重新部署][deployment-guide-redeploy-after-sysprep] |
+| <a name="str_007"></a>str/007 | 访问存储分析失败。 <br /><br />由于新创建的 VM 上的存储分析数据填充可能需要长达半个小时，因此错误可能会在一段时间后消失。 如果错误仍然出现，请重新运行安装脚本。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="str_010"></a>str/010 | 无存储分析计数器。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="str_009"></a>str/009 | 存储分析失败。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="wad_004"></a>wad/004 | 错误的 WAD 配置。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="wad_002"></a>wad/002 | 意外的 WAD 格式。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="wad_001"></a>wad/001 | 找不到 WAD 计数器。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="wad_040"></a>wad/040 | 找到陈旧的 WAD 计数器。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="wad_003"></a>wad/003 | 无法读取 WAD 表。 没有与 WAD 表的连接。 此问题可能有几个原因：<br /><br /> 1）过期的配置 <br />2）无网络连接到 Azure <br />3） WAD 安装程序的问题 | [运行安装脚本][deployment-guide-run-the-script]<br />[修复 internet 连接][deployment-guide-fix-internet-connection]<br />[联系支持人员][deployment-guide-contact-support] |
+| <a name="prf_011"></a>prf/011 | Perfmon NIC 指标失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="prf_012"></a>prf/012 | Perfmon 磁盘指标失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="prf_013"></a>prf/013 | 某些 prefmon 指标失败。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="prf_014"></a>prf/014 | Perfmon 无法创建计数器。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="cfg_035"></a>cfg/035 | 未配置指标提供程序。 | [联系支持人员][deployment-guide-contact-support] |
+| <a name="str_006"></a>str/006 | 错误的存储分析配置。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="str_032"></a>str/032 | 存储分析度量值失败。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="cfg_033"></a>cfg/033 | 某个指标提供程序失败。 | [运行安装脚本][deployment-guide-run-the-script] |
+| <a name="str_034"></a>str/034 | 提供程序线程失败。 | [联系支持人员][deployment-guide-contact-support] |
+
+### <a name="detailed-guidelines-on-solutions-provided"></a>提供的解决方案的详细指南
+
+#### <a name="run-the-setup-script"></a><a name="0d2847ad-865d-4a4c-a405-f9b7baaa00c7"></a>运行安装脚本
+
+遵循本指南中的[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]中的步骤，重新安装该扩展。 请注意，设置可能需要长达30分钟的时间。
+
+如果错误未消失，请[联系支持人员][deployment-guide-contact-support]。
+
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>联系支持人员
+
+意外错误或没有已知解决方案。 收集 C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop （Windows）或/Var/log/azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux （Linux）文件夹中的 AzureEnhancedMonitoring_service 文件，并联系 SAP 支持以获得进一步的帮助。
+
+#### <a name="redeploy-after-sysprep"></a><a name="2cd61f22-187d-42ed-bb8c-def0c983d756"></a>在 sysprep 后重新部署
+
+如果计划生成通用化经过系统准备 OS 映像（可包含 SAP 软件），则建议此映像不包含适用于 SAP 的 Azure 扩展。 部署通用化 OS 映像的新实例后，应安装适用于 SAP 的 Azure 扩展。
+
+但是，如果通用和经过系统准备 OS 映像已包含适用于 SAP 的 Azure 扩展，则可以应用以下解决方法，在新部署的 VM 实例上重新配置该扩展：
+
+* 在新部署的 VM 实例上，删除以下文件夹的内容：  
+  C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \RuntimeSettings C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Status
+
+* 遵循本指南中的[配置适用于 SAP 的 Azure 扩展][deployment-guide-4.5]中的步骤，重新安装该扩展。
+
+#### <a name="fix-internet-connection"></a><a name="e92bc57d-80d9-4a2b-a2f4-16713a22ad89"></a>修复 internet 连接
+
+运行适用于 SAP 的 Azure 扩展的 Microsoft Azure 虚拟机需要访问 Internet。 如果此 Azure VM 是 Azure 虚拟网络或本地域的一部分，请确保已设置相关代理设置。 这些设置对于用于访问 Internet 的 LocalSystem 帐户也必须有效。 遵循本指南中[的 "配置代理"][deployment-guide-configure-proxy]一章。
+
+此外，如果需要为 Azure VM 设置静态 IP 地址，请不要在 Azure VM 中手动设置，但可以使用[Azure PowerShell](../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md)、 [Azure CLI](../../../virtual-network/virtual-networks-static-private-ip-arm-cli.md) [Azure 门户](../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)进行设置。 通过 Azure DHCP 服务传播静态 IP。
+
+不支持在 Azure VM 中手动设置静态 IP 地址，这可能会导致适用于 SAP 的 Azure 扩展出现问题。

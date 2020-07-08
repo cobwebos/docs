@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a94bd07cf5020981cdf028ec0eccfa8fa531d240
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63d1d87d9b576a8e181b5b339052a6b6512f18a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359222"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 
@@ -41,7 +41,7 @@ ms.locfileid: "76897177"
  
 下表将服务类型映射到相应的必需数据类型：
 
-| 服务类型 | 代理（Windows 服务名称） | 目的 | 生成的数据类型  |
+| 服务类型 | 代理（Windows 服务名称） | 目标 | 生成的数据类型  |
 | --- | --- | --- | --- |  
 | Azure AD Connect （同步） | Azure AD Connect Health Sync Insights 服务 | 收集特定于 AAD 连接的信息（连接器、同步规则等） | - AadSyncService-SynchronizationRules <br />  -AadSyncService <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
 |  | Azure AD Connect Health Sync 监视服务 | 收集 AAD 连接特定的性能计数器、ETW 跟踪、文件 | 性能计数器 |

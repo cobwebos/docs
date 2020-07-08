@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77019275"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358950"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>将 Azure AD Connect 数据库从 SQL Server Express 移到 SQL Server 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77019275"
 8. 附加数据库以后，请返回到 Azure AD Connect 服务器并安装 Azure AD Connect。
 9. MSI 安装完成后，将启动 Azure AD Connect 向导，进入快速模式安装。 单击“退出”图标关闭屏幕。
    ![欢迎使用](./media/how-to-connect-install-move-db/db1.png)
-10. 启动新的命令提示符或 PowerShell 会话。 导航到文件夹\<驱动器> \program files\Microsoft Azure AD Connect。 运行命令 .\AzureADConnect.exe /useexistingdatabase，在“使用现有数据库”安装模式下启动 Azure AD Connect 向导。
+10. 启动新的命令提示符或 PowerShell 会话。 导航到 \<drive>\program files\Microsoft Azure AD Connect 文件夹。 运行命令 .\AzureADConnect.exe /useexistingdatabase，在“使用现有数据库”安装模式下启动 Azure AD Connect 向导。
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. 出现“欢迎使用 Azure AD Connect”屏幕。 同意许可条款和隐私声明后，单击“继续”  。
     ![欢迎使用](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ ms.locfileid: "77019275"
 14. 在“连接目录”屏幕上，为目录同步配置的现有 AD 林旁边显示有红色十字图标  。 若要同步本地 AD 林中的更改，需要 AD DS 帐户。 Azure AD Connect 向导无法检索存储在 ADSync 数据库中的 AD DS 帐户凭据，因为凭据已加密，只能由先前的 Azure AD Connect 服务器进行解密。 单击“更改凭据”为 AD 林指定 AD DS 帐户  。
     ![Directories](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. 在弹出对话框中，可以 (i) 提供企业管理员凭据，并让 Azure AD Connect 为你创建 AD DS 帐户，或 (ii) 自行创建 AD DS 帐户，并将其凭据提供给 Azure AD Connect。 选择一个选项并提供必要凭据后，单击“确定”关闭弹出对话框  。
     ![欢迎使用](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. 提供凭据后，红色十字图标将被替换为绿色钩号图标。 单击“下一步”。 
     ![欢迎使用](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. 在“准备好配置”屏幕上，单击“安装”   。
     ![欢迎使用](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. 安装完成后，Azure AD Connect 服务器自动启用暂存模式。 建议在禁用暂存模式之前，查看服务器配置和意外更改的挂起导出。 
 
 ## <a name="next-steps"></a>后续步骤

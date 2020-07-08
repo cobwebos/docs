@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b15250804dd316000aa20d6b97e9cccbfc36e9ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359086"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>诊断并修正重复的属性同步错误
 
@@ -34,7 +34,7 @@ ms.locfileid: "76897190"
 
 ## <a name="problems"></a>问题
 ### <a name="a-common-scenario"></a>常见方案
-发生 QuarantinedAttributeValueMustBeUnique**** 和 AttributeValueMustBeUnique**** 同步错误时，Azure AD 中往往会出现 UserPrincipalName**** 或代理地址**** 冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 同步错误将在下一次同步后解决。例如，此图像表示有两个用户的**UserPrincipalName**发生冲突。 两者都是**Joe.\@J contoso.com**。 有冲突的对象将在 Azure AD 中隔离。
+发生 QuarantinedAttributeValueMustBeUnique**** 和 AttributeValueMustBeUnique**** 同步错误时，Azure AD 中往往会出现 UserPrincipalName**** 或代理地址**** 冲突的情况。 在本地端更新有冲突的源对象即可解决同步错误。 同步错误将在下一次同步后解决。例如，此图像表示有两个用户的**UserPrincipalName**发生冲突。 两者都是**Joe. J \@ contoso.com**。 有冲突的对象将在 Azure AD 中隔离。
 
 ![诊断常见的同步错误场景](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 

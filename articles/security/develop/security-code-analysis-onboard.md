@@ -12,14 +12,14 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7fab9515051180fdb1b894602478768a60177ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147669"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362051"
 ---
-# <a name="onboarding-and-installing"></a>载入和安装
+# <a name="onboarding-and-installing"></a>加入和安装
 
 Microsoft 安全代码分析入门的先决条件：
 
@@ -48,8 +48,9 @@ Microsoft 安全代码分析入门的先决条件：
 
 >**群体**
 
-- 区域-联系人详细信息：cloudsupport@zones.com
+- 区域–联系详细信息：cloudsupport@zones.com
 - Wortell –联系详细信息：info@wortell.nl
+- Logicalis –联系详细信息：Matthew.Curtis@us.logicalis.com 
 
 ### <a name="become-a-partner"></a>成为合作伙伴
 
@@ -57,12 +58,12 @@ Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支�
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>安装 Microsoft 安全代码分析扩展
 
-1. 将扩展与 Azure DevOps 组织共享后，请参阅 Azure DevOps 组织页。 此类页的示例 URL 是`https://dev.azure.com/contoso`。
+1. 将扩展与 Azure DevOps 组织共享后，请参阅 Azure DevOps 组织页。 此类页的示例 URL 是 `https://dev.azure.com/contoso` 。
 1. 选择名称旁边的右上角的 "购物袋" 图标，然后选择 "**管理扩展**"。
 1. 选择 "**共享**"。
 1. 选择 Microsoft 安全代码分析扩展，然后选择 "**安装**"。
 1. 从下拉列表中，选择要在其上安装扩展的 Azure DevOps 组织。
-1. 选择“安装”  。 安装完成后，可以开始使用扩展。
+1. 选择“安装”。 安装完成后，可以开始使用扩展。
 
 >[!NOTE]
 > 即使您没有安装该扩展的访问权限，也可以继续执行安装步骤。 你可以在安装过程中请求 Azure DevOps 组织管理员的访问权限。
@@ -72,11 +73,11 @@ Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支�
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>将特定生成任务添加到 Azure DevOps 管道
 
 1. 在 Azure DevOps 组织中打开团队项目。
-1. 选择**管道** > **生成**。
+1. 选择**管道**  >  **生成**。
 1. 选择要向其中添加扩展生成任务的管道：
    - 新管道：选择 "**新建**"，然后按照详细介绍的步骤创建新管道。
    - 编辑管道：选择现有管道，然后选择 "**编辑**" 开始编辑管道。
-1. 选择**+** 并打开 "**添加任务**" 窗格。
+1. 选择 **+** 并打开 "**添加任务**" 窗格。
 1. 从列表或使用 "搜索" 框中，找到要添加的生成任务。 选择 **添加** 。
 1. 指定任务所需的参数。
 1. 将新的生成排队。
@@ -95,4 +96,4 @@ Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支�
 
 有关配置生成任务的详细信息，请参阅我们的[配置指南](security-code-analysis-customize.md)或[YAML 配置指南](yaml-configuration.md)。
 
-如果你有关于扩展和提供的工具的更多问题，请查看我们的[常见问题页面](security-code-analysis-faq.md)。
+对于所提供的扩展和工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。

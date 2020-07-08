@@ -5,35 +5,33 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: 8b12e1bd7bd67c3d22bdb62255b481d81976b969
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362119"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的审核日志
 
 在 Azure Database for MySQL 中，审核日志可供用户使用。 审核日志可以用来跟踪数据库级别的活动，通常用于确保符合性。
 
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
-
 ## <a name="configure-audit-logging"></a>配置审核日志记录
+
+>[!IMPORTANT]
+> 建议仅记录审核目的所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
 
 默认情况下，审核日志被禁用。 若要启用它，请将 `audit_log_enabled` 设置为 ON。
 
 可以调整的其他参数包括：
 
 - `audit_log_events`：控制要记录的事件。 请查看下表以了解具体的审核事件。
-- `audit_log_include_users`：要纳入日志记录的 MySQL 用户。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
-> [!Note]
-> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
-- `audit_log_exclude_users`：要从日志记录中排除的 MySQL 用户。 此参数的最大长度为 512 个字符。
+- `audit_log_include_users`：要包括 MySQL 用户进行日志记录。 此参数的默认值为空，这将包括所有用户进行日志记录。 此参数的优先级高于 `audit_log_exclude_users`。 此参数的最大长度为 512 个字符。
+- `audit_log_exclude_users`：不对 MySQL 用户进行日志记录。 此参数的最大长度为 512 个字符。
 
-> [!Note]
-> 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
+> [!NOTE]
+> `audit_log_include_users` 的优先级高于 `audit_log_exclude_users`。 例如，如果 `audit_log_include_users` = `demouser` 并且 `audit_log_exclude_users` = `demouser`，则会将该用户包括在审核日志中，因为 `audit_log_include_users` 的优先级更高。
 
 | **事件** | **说明** |
 |---|---|
@@ -45,7 +43,7 @@ ms.locfileid: "80062542"
 | `DCL` | 类似“GRANT PERMISSION”的查询 |
 | `ADMIN` | 类似“SHOW STATUS”的查询 |
 | `GENERAL` | All in DML_SELECT, DML_NONSELECT, DML, DDL, DCL, and ADMIN |
-| `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> -表读取语句，如 SELECT 或 INSERT INTO .。。单击 <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
+| `TABLE_ACCESS` | - 仅适用于 MySQL 5.7 <br> - 表读取语句，例如 SELECT 或 INSERT INTO ...SELECT <br> - 表删除语句，例如 DELETE 或 TRUNCATE TABLE <br> - 表插入语句，例如 INSERT 或 REPLACE <br> - 表更新语句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>访问审核日志
 
@@ -53,7 +51,7 @@ ms.locfileid: "80062542"
 
 ## <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
-以下部分介绍基于事件类型的 MySQL 审核日志的输出是什么。 包括的字段以及它们的出现顺序可能有所不同，具体取决于输出方法。
+以下部分介绍基于事件类型的 MySQL 审核日志的输出是什么。 根据输出方法，包含的字段以及这些字段出现的顺序可能会有所不同。
 
 ### <a name="connection"></a>连接
 
@@ -62,7 +60,7 @@ ms.locfileid: "80062542"
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
-| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `Type` | 日志的类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
 | `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
@@ -85,12 +83,15 @@ ms.locfileid: "80062542"
 
 下面的架构适用于 GENERAL、DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN 事件类型。
 
+> [!NOTE]
+> 对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
+
 | **属性** | **说明** |
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
-| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `Type` | 日志的类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
 | `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
@@ -114,14 +115,14 @@ ms.locfileid: "80062542"
 ### <a name="table-access"></a>表访问权限
 
 > [!NOTE]
-> 只有 MySQL 5.7 输出表访问日志。
+> 只有 MySQL 5.7 输出表访问日志。<br>对于 `sql_text`，如果日志超过 2048 个字符，则会截断日志。
 
 | **属性** | **说明** |
 |---|---|
 | `TenantId` | 租户 ID |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | 记录日志时的时间戳 (UTC) |
-| `Type` | 日志类型。 始终是 `AzureDiagnostics` |
+| `Type` | 日志的类型。 始终是 `AzureDiagnostics` |
 | `SubscriptionId` | 服务器所属的订阅的 GUID |
 | `ResourceGroup` | 服务器所属的资源组的名称 |
 | `ResourceProvider` | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORMYSQL` |
@@ -141,9 +142,9 @@ ms.locfileid: "80062542"
 
 ## <a name="analyze-logs-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的日志
 
-通过诊断日志将审核日志输送到 Azure Monitor 日志后，可以进一步分析已审核的事件。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
+将审核日志通过诊断日志以管道方式传送到 Azure Monitor 日志后，便可以对审核事件进行进一步分析。 下面是一些可帮助你入门的示例查询。 请确保使用你的服务器名称更新下面的内容。
 
-- 列出特定服务器上的常规事件
+- 列出特定服务器上的 GENERAL 事件
 
     ```kusto
     AzureDiagnostics
@@ -153,7 +154,7 @@ ms.locfileid: "80062542"
     | order by TimeGenerated asc nulls last 
     ```
 
-- 列出特定服务器上的连接事件
+- 列出特定服务器上的 CONNECTION 事件
 
     ```kusto
     AzureDiagnostics
@@ -173,7 +174,7 @@ ms.locfileid: "80062542"
     | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
     ```
 
-- 在特定服务器上关系图审核事件类型分布
+- 绘制特定服务器上的审核事件类型分布图
 
     ```kusto
     AzureDiagnostics
@@ -184,7 +185,7 @@ ms.locfileid: "80062542"
     | render timechart 
     ```
 
-- 列出为审核日志启用了诊断日志的所有 MySQL 服务器上的已审核事件
+- 列出已为审核日志启用诊断日志的所有 MySQL 服务器上的已审核事件
 
     ```kusto
     AzureDiagnostics

@@ -5,15 +5,15 @@ author: billmath
 ms.author: billmath
 manager: daveba
 ms.date: 12/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75549479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360786"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>云预配故障排除
 
@@ -22,7 +22,7 @@ ms.locfileid: "75549479"
 
 ## <a name="common-troubleshooting-areas"></a>常见疑难解答区域
 
-|名称|说明|
+|“属性”|描述|
 |-----|-----|
 |[代理问题](#agent-problems)|验证是否正确安装了代理，以及该代理是否与 Azure Active Directory （Azure AD）通信。|
 |[对象同步问题](#object-synchronization-problems)|使用预配日志排查对象同步问题。|
@@ -44,14 +44,14 @@ ms.locfileid: "75549479"
 若要验证代理是否已由 Azure 查看并且运行正常，请执行以下步骤。
 
 1. 登录到 Azure 门户。
-1. 在左侧，选择 " **Azure Active Directory** > **Azure AD Connect**"。 在中心选择 "**管理预配（预览版）**"。
-1. 在 " **Azure AD 预配（预览版）** " 屏幕上，选择 "**查看所有代理**"。
+1. 在左侧选择“Azure Active Directory” > “Azure AD Connect”。 在中心位置选择“管理预配(预览版)”。
+1. 在“Azure AD 预配(预览版)”屏幕上，选择“查看所有代理”。
 
    ![查看所有代理](media/how-to-install/install7.png)</br>
  
 1. 在 "**本地预配代理**" 屏幕上，可以看到已安装的代理。 验证相关代理是否存在并标记为 "*正常*"。
 
-   ![本地设置代理屏幕](media/how-to-install/install8.png)</br>
+   ![“本地预配代理”屏幕](media/how-to-install/install8.png)</br>
 
 ### <a name="verify-the-port"></a>验证端口
 
@@ -67,10 +67,10 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 若要验证代理是否正在运行，请执行以下步骤。
 
-1. 在安装了代理的服务器上，通过导航到服务或通过转到 "**开始** > **运行** > **services.msc**" 打开**服务**。
-1. 在 "**服务**" 下，确保**Microsoft Azure AD 连接代理更新**程序和**Microsoft Azure AD 连接设置代理**存在并且其状态为 "*正在运行*"。
+1. 在安装了代理的服务器上，通过导航到**服务**或通过转到 "**开始**  >  **运行**  >  **services.msc**" 打开服务。
+1. 确保“Microsoft Azure AD Connect 代理更新程序”和“Microsoft Azure AD Connect 预配代理”包含在“服务”中，并且其状态为“正在运行”。
 
-   ![服务屏幕](media/how-to-troubleshoot/troubleshoot1.png)
+   ![“服务”屏幕](media/how-to-troubleshoot/troubleshoot1.png)
 
 ### <a name="common-agent-installation-problems"></a>常见代理安装问题
 
@@ -87,7 +87,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 若要解决此问题，请执行以下步骤。
 
 1. 使用管理员帐户登录到服务器。
-1. 通过导航到服务或通过转到 "**开始** > " "**运行** > **services.msc**" 打开**服务**。
+1. 导航到“服务”或者转到“开始” > “运行” > “Services.msc”来打开“服务”。
 1. 在 "**服务**" 下，双击 " **Microsoft Azure AD 连接设置代理**"。
 1. 在 "**登录**" 选项卡上，将**此帐户**更改为域管理员。然后重新启动该服务。 
 
@@ -99,10 +99,10 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 ![超时错误消息](media/how-to-troubleshoot/troubleshoot4.png)
 
-此问题通常是由于代理无法连接到混合标识服务并且需要你配置 HTTP 代理所致。 若要解决此问题，请配置出站代理。 
+此问题通常是由于代理无法连接到混合标识服务所导致，并且需要你配置 HTTP 代理。 若要解决此问题，请配置出站代理。 
 
-预配代理支持使用出站代理。 可以通过编辑*C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*代理配置文件来配置该配置文件。将以下行添加到该文件末尾紧靠结束`</configuration>`标记之前。
-将变量`[proxy-server]`和`[proxy-port]`替换为你的代理服务器名称和端口值。
+预配代理支持使用出站代理。 可以通过编辑代理配置文件*C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*来配置它。将以下行添加到该文件末尾紧靠结束 `</configuration>` 标记之前。
+将变量 `[proxy-server]` 和替换 `[proxy-port]` 为你的代理服务器名称和端口值。
 
 ```xml
     <system.net>
@@ -132,7 +132,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 1. 停止服务**Microsoft Azure AD 连接设置代理**。
 1. 创建原始配置文件的副本： *C:\Program Files\Microsoft Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe.config*。
-1. 将现有`<system.diagnostics>`节替换为以下内容，并将所有跟踪消息都发送到文件*ProvAgentTrace*。
+1. 将现有节替换为 `<system.diagnostics>` 以下内容，并将所有跟踪消息都发送到文件*ProvAgentTrace*。
 
    ```xml
      <system.diagnostics>

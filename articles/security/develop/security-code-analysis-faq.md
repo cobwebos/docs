@@ -1,7 +1,7 @@
 ---
-title: Microsoft 安全代码分析文档常见问题
-description: 本文包含有关 Microsoft 安全代码分析扩展的常见问题
-author: vharindra
+title: Microsoft 安全代码分析文档常见问题解答
+description: 本文包含有关 Microsoft 安全代码分析扩展的常见问题解答
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,35 +12,35 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362068"
 ---
-# <a name="frequently-asked-questions"></a>常见问题解答
-有疑问吗？ 有关详细信息，请查看以下常见问题解答。
+# <a name="frequently-asked-questions"></a>常见问题
+遇到问题？ 请查看以下常见问题解答来了解详细信息。
 
-## <a name="general-faq"></a>一般常见问题解答
+## <a name="general-faq"></a>常见问题解答
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>能否在我的 Visual Studio Team Foundation Server 实例而不是在 Azure DevOps 实例上安装扩展？
 
 不能。 此扩展不可用于下载和安装 Visual Studio Team Foundation Server。
 
-### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>我是否必须在生成时运行 Microsoft 安全代码分析？ 
+### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>是否必须对生成运行 Microsoft 安全代码分析？ 
 
-也许。 这取决于分析工具的类型。 源代码可能是唯一需要的，也可能是必需的生成输出。
+也许。 这取决于分析工具的类型。 源代码可能是唯一必需的东西，生成输出也可能是必需的。
 
-例如，Credential 扫描器（CredScan）会分析代码存储库的文件夹结构中的文件。 由于此分析，可以运行 CredScan 并在独立版本中发布安全分析日志生成任务以获取结果。
+例如，凭据扫描程序 (CredScan) 会分析代码存储库的文件夹结构中的文件。 由于此分析，你可以运行 CredScan 并在独立的生成中发布安全分析日志生成任务来获取结果。
 
-对于分析后生成项目的其他工具（如 BinSkim），首先需要生成。
+对于 BinSkim 之类的用来分析生成后项目的其他工具，首先需要的是生成。
 
-### <a name="can-i-break-my-build-when-results-are-found"></a>能否在发现结果时中断生成？
+### <a name="can-i-break-my-build-when-results-are-found"></a>在找到结果时是否可以中断生成？
 
-是的。 如果任何工具在其日志文件中报告了问题或问题，则可以引入生成中断。 只需添加后期分析生成任务，并选中要为其中断生成的任何工具的复选框。
+是的。 当有任何工具在其日志文件中报告了问题时，你都可以引入生成中断。 只需添加分析后生成任务，并选中要中断生成的任何工具对应的复选框。
 
-在分析后任务的 UI 中，你可以选择在任何工具仅报告错误或同时报告错误和警告时中断生成。
+在分析后任务的 UI 中，你可以选择在以下两种情况下中断生成：一是工具仅报告错误，二是工具既报告错误又报告警告。
 
 ### <a name="how-do-the-command-line-arguments-in-azure-devops-differ-from-those-arguments-in-the-standalone-desktop-tools"></a>Azure DevOps 中的命令行参数与独立桌面工具中的参数有何不同？ 
 
@@ -48,7 +48,7 @@ ms.locfileid: "81460216"
 
 明显差异：
 
-- 从代理 $ （Build.sourcesdirectory）的源文件夹或从% BUILD_SOURCESDIRECTORY% 运行的工具。 例如，C:\agent\_work\1\s。
+- 从代理 $ （Build.sourcesdirectory）的源文件夹或从% BUILD_SOURCESDIRECTORY% 运行的工具。 例如，C:\agent \_ work\1\s。
 - 自变量中的路径可以是相对于前面列出的源目录的根目录的相对路径。 路径也可以是绝对路径。 你可以使用 Azure DevOps 生成变量或运行本地代理和本地资源的已知部署位置来获取绝对路径。
 - 工具自动提供输出文件路径或文件夹。 如果提供生成任务的输出位置，则会将该位置替换为生成代理上的日志的众所周知位置的路径
 - 某些工具的其他命令行参数会被更改。 例如，添加或删除确保没有启动 GUI 的选项。
@@ -57,22 +57,22 @@ ms.locfileid: "81460216"
 
 不能。 不支持在单个管道中跨多个存储库运行安全开发工具。
 
-### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建指定的输出文件，或者找不到指定的输出文件
+### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未创建我指定的输出文件，或者找不到我指定的输出文件
 
-生成任务筛选部分用户输入。 具体而言，它们将生成的输出文件的位置更新为生成代理上的常见位置。 有关此位置的详细信息，请参阅以下问题。
+生成任务会筛选某些用户输入。 具体对于此问题而言，它们将生成的输出文件的位置更新为生成代理上的一个通用位置。 有关此位置的详细信息，请参阅以下问题。
 
-### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>工具所生成的输出文件保存在何处？ 
+### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>工具生成的输出文件保存在何处？ 
 
-生成任务自动将输出路径添加到生成代理上的此已知位置： $ （Agent.builddirectory）\_sdt\logs。 由于我们将在此位置上标准化，因此生成或使用代码分析日志的所有团队都可以访问输出。
+生成任务会自动将输出路径添加到生成代理上的此已知位置：$(Agent.BuildDirectory)\_sdt\logs。 由于我们对此位置进行了标准化，因此所有生成或使用代码分析日志的团队都可以访问此输出。
 
-### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>是否可以对生成进行排队以便在托管生成代理上运行这些任务？ 
+### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>是否可以对生成进行排队以便在托管的生成代理上运行这些任务？ 
 
-是的。 扩展中的所有任务和工具都可以在托管生成代理上执行。
+是的。 此扩展中的所有任务和工具都可以在托管的生成代理上执行。
 
 >[!NOTE]
-> 反恶意软件扫描程序生成任务需要启用了 Windows Defender 的生成代理。 托管的 Visual Studio 2017 和更高版本提供此类代理。 生成任务不会在 Visual Studio 2015 托管代理上运行。
+> 反恶意软件扫描程序生成任务需要启用了 Windows Defender 的生成代理。 托管的 Visual Studio 2017 和更高版本提供了这样的代理。 生成任务不会在 Visual Studio 2015 托管代理上运行。
 >
-> 尽管不能在这些代理上更新签名，但签名应始终小于三个小时。
+> 尽管不能在这些代理上更新特征，但特征的使用期限应始终小于三个小时。
 
 ### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>是否可以将这些生成任务作为发布管道的一部分运行，而不是作为生成管道运行？
 
@@ -88,23 +88,23 @@ ms.locfileid: "81460216"
 
 在其安装过程中，扩展提供的安全生成任务将可供组织中的所有用户使用。 当你创建或编辑 Azure 管道时，"生成-任务集合" 列表中会提供这些任务。 否则，在 Azure DevOps 组织中安装扩展不起作用。 安装不会修改任何帐户设置、项目设置或管道。
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安装扩展是否会修改现有 Azure Pipelines？ 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安装此扩展是否会修改现有 Azure Pipelines？ 
 
-不能。 安装扩展会使安全生成任务可用于添加到管道。 你仍需要添加或更新生成定义，以便这些工具可用于你的生成过程。
+否。 安装此扩展会使安全生成任务可供添加到管道中。 你仍需要添加或更新生成定义，以便这些工具可用于你的生成过程。
 
-## <a name="task-specific-faq"></a>任务特定的常见问题
+## <a name="task-specific-faq"></a>特定于任务的常见问题解答
 
 本部分列出了特定于生成任务的问题。
 
-### <a name="credential-scanner"></a>凭据扫描器
+### <a name="credential-scanner"></a>凭据扫描程序
 
 #### <a name="what-are-common-suppression-scenarios-and-examples"></a>常见的抑制方案和示例有哪些？
 
 下面是两个最常见的抑制方案的详细信息。
 
-##### <a name="to-suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>禁止显示指定路径中的所有给定机密
+##### <a name="to-suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>抑制指定路径中给定机密的所有实例
 
-需要 CredScan 输出文件中机密的哈希键，如以下示例中所示。
+CredScan 输出文件中机密的哈希键是必需的，如以下示例所示。
 
         {
             "tool": "Credential Scanner",
@@ -117,21 +117,21 @@ ms.locfileid: "81460216"
         }
 
 >[!WARNING]
-> 哈希键由匹配值或文件内容的一部分生成。 任何源代码修订版本都可以更改哈希键并禁用禁止显示规则。
+> 哈希键由匹配值或文件内容的一部分生成。 任何源代码修订都可以更改哈希键并禁用抑制规则。
 
-##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>禁止显示指定文件中的所有机密，或禁止显示机密文件本身
+##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>抑制指定文件中的所有机密，或抑制机密文件本身
 
-文件表达式可以是文件名。 它也可以是完整文件路径或文件名的 basename 部分。 不支持通配符。
+文件表达式可以是文件名。 它还可以是完整文件路径或文件名的基名称部分。 不支持通配符。
 
-下面的示例演示如何禁止显示文件\<InputPath> \src\js\lib\angular.js
+下面的示例展示了如何抑制 \<InputPath>\src\JS\lib\angular.js 文件
 
 有效抑制规则的示例：
 
-- \<InputPath> \src\JS\lib\angular.js-取消指定路径中的文件
+- \<InputPath>\src\JS\lib\angular.js - 抑制指定路径中的文件
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- node.js-禁止名称相同的任何文件
+- angular.js - 抑制具有相同名称的任何文件
 
         {
             "tool": "Credential Scanner",
@@ -148,71 +148,71 @@ ms.locfileid: "81460216"
         }      
 
 >[!WARNING] 
-> 添加到该文件中的所有未来机密也将自动取消。
+> 将来添加到此文件中的任何机密也将被自动抑制。
 
-#### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>什么是用于管理机密的推荐指导原则？
+#### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>用于管理机密的建议准则有哪些？
 
-以下资源可帮助你安全地管理机密，并从应用程序中访问敏感信息：
+以下资源可帮助你安全地管理机密以及从应用程序中访问敏感信息：
 
- - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
- - [Azure AD 托管服务标识（MSI）](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
+ - [Azure 密钥保管库](../../key-vault/index.yml)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
+ - [Azure AD 托管服务标识 (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)
- - [Azure App Service 和 Azure Functions 中的托管标识](../../app-service/overview-managed-identity.md)
- - [Microsoft.azure.services.appauthentication 库](../../key-vault/general/service-to-service-authentication.md)
+ - [Azure 应用服务和 Azure Functions 中的托管标识](../../app-service/overview-managed-identity.md)
+ - [AppAuthentication 库](../../key-vault/general/service-to-service-authentication.md)
 
 
-有关详细信息，请参阅博客文章[在云中安全管理机密](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)。
+有关详细信息，请参阅博客文章：[Managing Secrets Securely in the Cloud](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)（在云中安全地管理机密）。
 
-#### <a name="can-i-write-my-own-custom-searchers"></a>我是否可以编写自己的自定义 searchers？
+#### <a name="can-i-write-my-own-custom-searchers"></a>我是否可以编写自己的自定义搜索器？
 
-Credential 扫描器依赖于一组通常在 buildsearchers 文件中定义的内容 searchers。 文件包含表示**ContentSearcher**对象的 XML 序列化对象的数组。 该程序与一组经过充分测试的 searchers 一起分发。 但也可以实现您自己的自定义 searchers。
+凭据扫描程序依赖于通常在 buildsearchers.xml 文件中定义的一组内容搜索器。 该文件包含一个 XML 序列化对象数组，代表 **ContentSearcher** 对象。 该程序在分发时附带了一组经过充分测试的搜索器。 但你也可以实现自己的自定义搜索器。
 
-内容搜索者定义如下：
+内容搜索器定义如下：
 
-- **Name**：要在 Credential 扫描器输出文件中使用的描述性搜索程序名称。 建议为搜索程序名称使用 camel 大小写命名约定。
-- **RuleId**：搜索者的稳定不透明 ID：
-    - 为凭据扫描器默认搜索者分配了**RuleId**值，如 CSCAN0010、CSCAN0020 或 CSCAN0030。 最后一个数字保留用于通过正则表达式（regex）合并或划分搜索程序组。
-    - 自定义搜索程序的**RuleId**值应具有其自己的命名空间。 示例包括\<CSCAN\>0010、CSCAN\<\>和 CSCAN\<命名空间\>0030。
-    - 完全限定的搜索者名称是**RuleId**值和搜索者名称的组合。 例如，CSCAN0010。KeyStoreFiles 和 CSCAN0020。Base64EncodedCertificate.
-- **ResourceMatchPattern**：用于检查搜索者的文件扩展名的正则表达式。
-- **ContentSearchPatterns**：包含要匹配的正则表达式语句的字符串数组。 如果未定义搜索模式，则返回与**ResourceMatchPattern**值匹配的所有文件。
-- **ContentSearchFilters**：包含 regex 语句的字符串数组，用于筛选搜索器特定的误报。
-- **MatchDetails**：为每个搜索匹配项添加的描述性消息、缓解说明或同时添加这两者。
-- **建议**：使用 PREfast 报表格式的匹配项的建议字段内容。
-- **严重性**：一个整数，反映问题的严重级别。 最高严重性级别的值为1。
+- **名称**：要在凭据扫描程序输出文件中使用的描述性搜索器名称。 建议为搜索器名称使用驼峰式大小写命名约定。
+- **RuleId**：搜索器的稳定不透明 ID：
+    - 将为凭据扫描程序默认搜索器分配一个 **RuleId** 值，例如 CSCAN0010、CSCAN0020 或 CSCAN0030。 最后一个数字保留用于可能会通过正则表达式 (regex) 对搜索器组进行的合并或划分。
+    - 自定义的搜索器的 **RuleId** 值应当具有其自己的命名空间。 例如，CSCAN-\<Namespace\>0010、CSCAN-\<Namespace\>0020 和 CSCAN-\<Namespace\>0030。
+    - 完全限定的搜索器名称是 **RuleId** 值和搜索器名称的组合。 例如，CSCAN0010.KeyStoreFiles 和 CSCAN0020.Base64EncodedCertificate。
+- **ResourceMatchPattern**：用于针对搜索器进行检查的文件扩展名的正则表达式。
+- **ContentSearchPatterns**：一个字符串数组，其中包含要匹配的正则表达式语句。 如果未定义搜索模式，则返回与 **ResourceMatchPattern** 值匹配的所有文件。
+- **ContentSearchFilters**：一个包含 regex 语句的字符串数组，用于筛选特定于搜索器的误报。
+- **MatchDetails**：要为搜索器的每个匹配项添加的描述性消息和/或缓解说明。
+- **建议**：针对匹配项的建议字段内容，使用 PREfast 报告格式。
+- **严重性**：一个整数，反映问题的严重性级别。 最高严重性级别的值为 1。
 
-  ![显示 Credential 扫描器安装程序的 XML](./media/security-tools/6-credscan-customsearchers.png)
+  ![显示了凭据扫描程序设置的 XML](./media/security-tools/6-credscan-customsearchers.png)
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 
-#### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>使用 Roslyn 分析器任务时的常见错误是什么？
+#### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>使用 Roslyn 分析器任务时的常见错误有哪些？
 
-##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>使用错误的 NETCore 版本还原了项目
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>使用错误的 Microsoft.NETCore.App 版本还原了项目
 
-完整的错误消息：
+完整错误消息：
 
-"错误：使用 NETCore 版本1.x 还原了项目，但使用当前设置时，将*改用版本为 y* *的版本。* 若要解决此问题，请确保将相同的设置用于 restore 和后续操作，例如 build 或 publish。 如果在 build 或 publish 期间设置了 RuntimeIdentifier 属性，而没有在 restore 过程中设置，通常就会出现此问题。”
+“错误:该项目是使用 Microsoft.NETCore.App 版本 x.x.x 还原的，但使用当前设置时，将改用版本 y.y.y。 若要解决此问题，请确保使用相同的设置执行还原和后续操作，例如生成或发布。 通常，如果在生成或发布过程中设置了 RuntimeIdentifier 属性，但在还原过程中未设置此属性，则会出现此问题。”
 
-由于 Roslyn 分析器任务作为编译的一部分运行，因此生成计算机上的源树需要处于可生成状态。
+因为 Roslyn 分析器任务作为编译过程的一部分运行，因此生成计算机上的源树需要处于可生成状态。
 
-主生成和 Roslyn 分析器步骤之间的步骤可能会将源树置于阻止生成的状态。 这一额外步骤可能**dotnet 发布**。 尝试复制在 Roslyn 分析器步骤之前执行 NuGet 还原的步骤。 此重复步骤可能使源树处于可生成状态。
+介于主生成与 Roslyn 分析器步骤之间的一个步骤可能会将源树置于会阻止生成的状态。 这一额外步骤可能是 **dotnet.exe 发布**。 在即将执行 Roslyn 分析器步骤之前，请尝试重复将执行 NuGet 还原的步骤。 此重复的步骤可以将源树重新置于可生成状态。
 
-##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc 无法创建分析器实例
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>csc.exe 无法创建分析器实例
 
-完整的错误消息：
+完整错误消息：
 
-"csc" 已退出，错误代码为 1-无法从 C：\\*BBBB*创建分析器*AAAA*的实例：无法加载文件或程序集 "CodeAnalysis，*Version = 31bf3856ad364e35，Culture*= 中性，PublicKeyToken =" 或其依赖项之一。 系统找不到指定的文件。”
+“'csc.exe' 已退出并显示了错误代码 1 -- 无法通过 C:\\*BBBB*.dll 创建分析器 *AAAA* 的实例:无法加载文件或程序集 'Microsoft.CodeAnalysis, Version=*X.X.X.X*, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 或它的某一个依赖项。 系统找不到指定的文件。”
 
-确保编译器支持 Roslyn 分析器。 运行命令**csc/version**应报告版本值2.6 或更高版本。
+请确保你的编译器支持 Roslyn 分析器。 运行 **csc.exe /version** 命令应当报告版本值 2.6 或更高值。
 
-有时，.csproj 文件可通过从 Microsoft.Net 引用包来重写生成计算机的 Visual Studio 安装。 如果不打算使用特定版本的编译器，请删除对 Microsoft.Net 的引用。 否则，请确保引用包的版本也为2.6 或更高版本。
+有时，.csproj 文件可通过引用 Microsoft.Net.Compilers 中的包来替代生成计算机的 Visual Studio 安装。 如果不打算使用编译器的某个特定版本，请删除对 Microsoft.Net.Compilers 的引用。 否则，请确保所引用的包的版本也是 2.6 或更高。
 
-尝试获取在**csc/errorlog**选项中指定的错误日志路径。 选项和路径显示在 Roslyn 分析器生成任务的日志中。 它们可能类似于 **/errorlog： f:\ts-services-\_123 work\456\s\Some\Project\Code\Code.csproj.sarif**
+请尝试获取错误日志路径，该路径在 **csc.exe /errorlog** 选项中指定。 此选项和路径显示在 Roslyn 分析器生成任务的日志中。 它们可能类似于 **/errorlog:F:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.sarif**
 
-##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C # 编译器的版本不够新
+##### <a name="the-c-compiler-version-isnt-recent-enough"></a>C# 编译器版本不够新
 
-若要获取最新版本的 c # 编译器，请转到[Microsoft.Net](https://www.nuget.org/packages/Microsoft.Net.Compilers)。 若要获取已安装的版本，请在命令提示符下运行 **/version** 。 确保引用的是版本2.6 或更高版本的 Microsoft.Net NuGet 包。
+若要获取最新版本的 C# 编译器，请转到 [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers)。 若要获取已安装的版本，请在命令提示符下运行 **csc.exe /version**。 确保引用 2.6 版或更高版本的 Microsoft.Net.Compilers NuGet 包。
 
 ##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>找不到 MSBuild 和 VSBuild 日志
 
@@ -220,8 +220,8 @@ Roslyn 分析器生成任务需要从 MSBuild 生成任务中查询 MSBuild 日�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果需要更多帮助，Microsoft 安全代码分析支持将于太平洋标准时间上午9:00 到晚上5:00 的星期五提供。
+如果你需要更多帮助，可以在周一到周五的太平洋标准时间上午 9:00 到下午 5:00 联系 Microsoft 安全代码分析支持人员。
 
 - 载入：请参阅我们的[载入文档](security-code-analysis-onboard.md)
   
-- 支持：通过电子邮件发送[Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)团队
+- 支持：请通过 [Microsoft 安全代码分析支持](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)向我们的团队发送电子邮件

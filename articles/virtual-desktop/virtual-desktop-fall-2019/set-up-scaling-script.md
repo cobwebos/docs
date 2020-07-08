@@ -4,16 +4,16 @@ description: 如何利用 Azure 自动化自动改变 Windows 虚拟桌面会话
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f659a40cbb9e3ef2d0e7fe4e527518a76507d5ee
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: f94852a99f0bc430ac193b9951de607cdd7fa933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362537"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
 
@@ -33,7 +33,7 @@ ms.locfileid: "83745714"
 缩放工具为想要优化其会话主机 VM 成本的客户提供了低成本的自动化选项。
 
 可以使用缩放工具执行以下操作：
- 
+
 - 根据高峰和非高峰营业时间，安排 VM 的启动和停止时间。
 - 基于每个 CPU 核心的会话数量横向扩展 VM。
 - 在非高峰时段横向缩减 VM 规模，仅让最小数量的会话主机 VM 保持运行。
@@ -67,7 +67,7 @@ ms.locfileid: "83745714"
 - 已配置了 Windows 虚拟桌面服务并向其注册了的会话主机池 VM
 - 对 Azure 订阅具有[参与者访问权限](../../role-based-access-control/role-assignments-portal.md)的用户
 
-用于部署此工具的计算机必须具有： 
+用于部署此工具的计算机必须具有：
 
 - Windows PowerShell 5.1 或更高版本
 - Microsoft Az PowerShell 模块
@@ -106,7 +106,8 @@ ms.locfileid: "83745714"
 
 6. 设置 Azure 自动化帐户后，登录到 Azure 订阅，并检查以确保 Azure 自动化帐户和相关 runbook 已显示在指定的资源组中，如下图所示：
 
-![Azure 概述页的图像，其中显示了新创建的自动化帐户和 runbook。](../media/automation-account.png)
+> [!div class="mx-imgBorder"]
+> ![Azure 概述页的图像，其中显示了新创建的自动化帐户和 runbook。](../media/automation-account.png)
 
   若要检查 webhook 是否位于其预期位置，请选择 runbook 的名称。 接下来，转到 runbook 的“资源”部分，选择“Webhook”。
 
@@ -180,21 +181,21 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      ```powershell
      $aadTenantId = (Get-AzContext).Tenant.Id
-     
+
      $azureSubscription = Get-AzSubscription | Out-GridView -PassThru -Title "Select your Azure Subscription"
      Select-AzSubscription -Subscription $azureSubscription.Id
      $subscriptionId = $azureSubscription.Id
-     
+
      $resourceGroup = Get-AzResourceGroup | Out-GridView -PassThru -Title "Select the resource group for the new Azure Logic App"
      $resourceGroupName = $resourceGroup.ResourceGroupName
      $location = $resourceGroup.Location
-     
+
      $wvdTenant = Get-RdsTenant | Out-GridView -PassThru -Title "Select your WVD tenant"
      $tenantName = $wvdTenant.TenantName
-     
+
      $wvdHostpool = Get-RdsHostPool -TenantName $wvdTenant.TenantName | Out-GridView -PassThru -Title "Select the host pool you'd like to scale"
      $hostPoolName = $wvdHostpool.HostPoolName
-     
+
      $recurrenceInterval = Read-Host -Prompt "Enter how often you'd like the job to run in minutes, e.g. '15'"
      $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
      $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
@@ -204,12 +205,12 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
      $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
      $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
      $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
-     
+
      $automationAccount = Get-AzAutomationAccount -ResourceGroupName $resourceGroup.ResourceGroupName | Out-GridView -PassThru
      $automationAccountName = $automationAccount.AutomationAccountName
      $automationAccountConnection = Get-AzAutomationConnection -ResourceGroupName $resourceGroup.ResourceGroupName -AutomationAccountName $automationAccount.AutomationAccountName | Out-GridView -PassThru -Title "Select the Azure RunAs connection asset"
      $connectionAssetName = $automationAccountConnection.Name
-     
+
      $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
      $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don't want to be managed by this scaling tool"
 
@@ -236,11 +237,13 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
      运行该脚本后，资源组中应会显示逻辑应用，如下图所示。
 
-     ![示例 Azure 逻辑应用的“概述”页的图像。](../media/logic-app.png)
+     > [!div class="mx-imgBorder"]
+     > ![示例 Azure 逻辑应用的“概述”页的图像。](../media/logic-app.png)
 
 若要更改执行计划（例如更改重复周期间隔或时区），可转到自动缩放计划程序，在其中选择“编辑”以转入逻辑应用设计器。
 
-![“逻辑应用设计器”图像。 使用户能够编辑重复执行时间的“定期”和“Webhook”菜单以及 webhook 文件处于打开状态。](../media/logic-apps-designer.png)
+> [!div class="mx-imgBorder"]
+> ![“逻辑应用设计器”图像。 使用户能够编辑重复执行时间的“定期”和“Webhook”菜单以及 webhook 文件处于打开状态。](../media/logic-apps-designer.png)
 
 ## <a name="manage-your-scaling-tool"></a>管理缩放工具
 
@@ -252,7 +255,8 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 在所选的“自动化帐户”右侧，可在“作业统计信息”下查看所有 Runbook 作业的摘要列表。 在窗口左侧打开“作业”页后，其中会显示当前作业状态、开始时间和完成时间。
 
-![作业状态页的屏幕截图。](../media/jobs-status.png)
+> [!div class="mx-imgBorder"]
+> ![作业状态页的屏幕截图。](../media/jobs-status.png)
 
 ### <a name="view-logs-and-scaling-tool-output"></a>查看日志和缩放工具输出
 
@@ -260,5 +264,6 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <appl
 
 在托管 Azure 自动化帐户的资源组中，导航到 runbook（默认名称为 WVDAutoScaleRunbook），并选择“概述”。 在“概述”页上，选择“最近的作业”下的某个作业，并查看其缩放工具输出，如下图所示。
 
-![缩放工具的输出窗口的图像。](../media/tool-output.png)
+> [!div class="mx-imgBorder"]
+> ![缩放工具的输出窗口的图像。](../media/tool-output.png)
 

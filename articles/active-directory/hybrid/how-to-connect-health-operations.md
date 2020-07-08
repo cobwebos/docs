@@ -11,16 +11,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261510"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359154"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -109,9 +109,9 @@ ms.locfileid: "79261510"
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支持以下内置角色：
 
-| Role | 权限 |
+| 角色 | 权限 |
 | --- | --- |
-| “所有者” |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
+| 所有者 |所有者可以在 Azure AD Connect Health 中管理访问权限**（例如将角色分配到用户或组）、从门户查看所有信息**（例如查看警报信息），以及更改设置**（例如设置电子邮件通知）。 <br>默认情况下，将为 Azure AD 全局管理员分配此角色，且此角色是无法更改的。 |
 | 参与者 |参与者可以在 Azure AD Connect Health 中从门户中*查看所有信息*（例如查看警报信息）以及*更改设置*（例如设置电子邮件通知）。 |
 | 读取器 |读取者可以在 Azure AD Connect Health 中从门户*查看所有信息*（例如查看警报）。 |
 
@@ -136,9 +136,9 @@ Azure AD Connect Health 支持两个级别的访问管理：
 2. 选择 **添加** 。
 3. 在“选择角色”**** 窗格中，选择一个角色（例如“所有者”****）。<br>
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”  。
+4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。
    ![Azure AD Connect Health RBAC“用户”窗口的屏幕快照](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 选择“确定”  。<br>
+5. 选择“确定”。<br>
 6. 完成角色分配后，用户和组将显示在列表中。<br>
    ![Azure AD Connect Health RBAC 用户窗口的屏幕截图（其中突出显示了新用户）](./media/how-to-connect-health-operations/RBAC_user_list.png)
 

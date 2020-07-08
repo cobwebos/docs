@@ -1,41 +1,41 @@
 ---
 title: Azure AD Connect：将组从一个林迁移到另一个林
-description: 本文介绍了将组从一个林成功迁移到 Azure AD Connect 的组所需的步骤。
+description: 本文介绍了为 Azure AD Connect 将组从一个林成功迁移到另一个林需要执行的步骤。
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
-ms.topic: reference
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229793"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358576"
 ---
-# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Azure AD Connect 中将组迁移到另一个林
+# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>为 Azure AD Connect 将组从一个林迁移到另一个林
 
-本文介绍如何将组从一个林迁移到另一个林，以便迁移的组对象与云中的现有对象匹配。
+本文介绍了如何将组从一个林成功迁移到另一个林，使迁移的组对象与云中的现有对象匹配。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure AD Connect 版本1.5.18.0 或更高版本
-- 源锚点属性设置为`mS-DS-ConsistencyGuid`
+- Azure AD Connect 1.5.18.0 或更高版本
+- 源定位点属性设置为 `mS-DS-ConsistencyGuid`
 
 ## <a name="migrate-groups"></a>迁移组
 
-从版本1.5.18.0 开始，Azure AD Connect 支持将`mS-DS-ConsistencyGuid`属性用于组。 如果选择`mS-DS-ConsistencyGuid`作为 "源定位点" 属性，并且值在 Active Directory 中填充，则 Azure AD Connect 会将`mS-DS-ConsistencyGuid`的值`immutableId`用作。 否则，它将回退到使用`objectGUID`。 但请注意，Azure AD Connect 不会将值写回`mS-DS-ConsistencyGuid` Active Directory 中的特性。
+从版本 1.5.18.0 开始，Azure AD Connect 支持对组使用 `mS-DS-ConsistencyGuid` 属性。 如果选择 `mS-DS-ConsistencyGuid` 作为源定位点属性，并且该值在Active Directory 中填充，则 Azure AD Connect 使用 `mS-DS-ConsistencyGuid` 的值作为 `immutableId`。 否则，它将回退为使用 `objectGUID`。 但是请注意，Azure AD Connect 不会将该值写回 Active Directory 中的 `mS-DS-ConsistencyGuid` 属性。
 
-在跨林移动过程中，当组对象从一个林（如 F1）移到另一个林（如 F2）时，需要将`mS-DS-ConsistencyGuid`值（如果存在）或从林的对象中的`objectGUID`值复制到 F2 中的对象的`mS-DS-ConsistencyGuid`属性。
+在将组对象从一个林（如 F1）移到另一个林（如 F2）的跨林移动期间，需要将林 F1 中对象的 `mS-DS-ConsistencyGuid` 值（如果存在）或 `objectGUID` 值复制到 F2 中对象的 `mS-DS-ConsistencyGuid` 属性。
 
-使用以下脚本作为指导了解如何将单个组从一个林迁移到另一个林。 你还可以使用这些脚本作为迁移多个组的指南。 脚本使用源林的林名称 F1，并使用 F2 作为目标林。
+使用以下脚本作为指导，了解如何将单个组从一个林迁移到另一个林。 还可以将这些脚本用作迁移多个组的指导。 这些脚本使用林名称 F1 作为源林，使用 F2 作为目标林。
 
-首先，我们在林`objectGUID`状`mS-DS-ConsistencyGuid`结构中获取组对象的和。 这些属性将导出到 CSV 文件。
+首先，我们获取林 F1 中组对象的 `objectGUID` 和 `mS-DS-ConsistencyGuid`。 这些属性将导出到 CSV 文件中。
 ```
 <#
 DESCRIPTION
@@ -83,7 +83,7 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-接下来，我们使用生成的输出 CSV 文件来标记`mS-DS-ConsistencyGuid`林 F2 中目标对象上的属性：
+接下来，我们使用生成的输出 CSV 文件来标记林 F2 中目标对象的 `mS-DS-ConsistencyGuid` 属性：
 
 
 ```
@@ -125,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

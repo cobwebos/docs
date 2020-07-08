@@ -4,15 +4,15 @@ description: 了解如何创建 Azure Analysis Services 服务器名称别名。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 06/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b416a25fd0befa91076fed5f9bf5df23ea30844
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 435649c5431ff14461245fee88cebe4a2c571663
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361432"
 ---
 # <a name="alias-server-names"></a>别名服务器名称
 
@@ -37,7 +37,7 @@ ms.locfileid: "83698983"
 
 若要创建别名终结点，可以使用可返回有效的 Azure Analysis Services 服务器名称的任何方法。 例如，引用 Azure Blob 存储中包含实际服务器名称的一个文件，或者创建并发布一个 ASP.NET Web 窗体应用程序。
 
-在此示例中，ASP.NET Web 窗体应用程序是在 Visual Studio 中创建的。 母版页引用和用户控件已从 Default.aspx 页面中删除。 Default.aspx 的内容只是以下 Page 指令：
+在此示例中，ASP.NET Web 窗体应用程序是在 Visual Studio 中创建的。 页面引用和用户控件将从 default.aspx 页中删除。 Default.aspx 的内容只是以下 Page 指令：
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
@@ -54,5 +54,5 @@ protected void Page_Load(object sender, EventArgs e)
 
 ## <a name="see-also"></a>另请参阅
 
-[客户端库](analysis-services-data-providers.md)   
+[客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)   
 [从 Power BI Desktop 进行连接](analysis-services-connect-pbi.md)

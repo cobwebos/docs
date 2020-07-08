@@ -11,17 +11,17 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f98109199f489839253965bef3033d27935cff13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85359342"
 ---
 # <a name="risky-ip-report-public-preview"></a>有风险的 IP 报表（公共预览版）
 AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为最终用户提供身份验证服务，方便他们访问 Office 365 之类的 SaaS 应用程序。 在这种情况下，恶意参与者可能会尝试登录 AD FS 系统，用猜测最终用户密码的方式获得应用程序资源的访问权限。 AD FS 提供 Extranet 帐户锁定功能，可以防止这些类型的攻击，自 AD FS 出现在 Windows Server 2012 R2 中以后就是这样。 如果所用版本较低，强烈建议将 AD FS 系统升级到 Windows Server 2016。 <br />
@@ -41,7 +41,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 ## <a name="what-is-in-the-report"></a>报表中有哪些内容？
 失败的登录活动客户端 IP 地址通过 Web 应用程序代理服务器进行聚合。 “风险 IP”报表中的每个项目都会显示有关失败的 AD FS 登录活动（失败次数超出指定阈值）的聚合信息。 它提供以下信息：![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4a.png)
 
-| 报告项 | 说明 |
+| 报告项 | 描述 |
 | ------- | ----------- |
 | 时间戳 | 当检测时间窗口启动时，显示基于 Azure 门户本地时间的时间戳。<br /> 所有每日事件都在 UTC 时间的午夜生成。 <br />每小时事件的时间戳舍入为整点。 可以在已导出文件的“firstAuditTimestamp”中找到第一个活动开始时间。 |
 | 触发器类型 | 显示检测时间窗口的类型。 聚合触发器类型为每小时或每日。 这适用于检测高频暴力破解攻击，与之相反的是慢速攻击，后者在一天中的尝试攻击行动是分散的。 |
@@ -68,7 +68,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 ## <a name="download-risky-ip-report"></a>下载有风险的 IP 报表 
 使用**下载**功能，可以将过去 30 天的整个风险 IP 地址列表从 Connect Health 门户导出 导出结果将包括每个检测时段所有失败的 AD FS 登录活动，因此可以在导出后自定义筛选功能。 除了门户中突出显示的聚合，导出结果还显示有关已失败登录活动（按 IP 地址划分）的更多详细信息：
 
-|  报告项  |  说明  | 
+|  报告项  |  描述  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | 显示在检测时段启动失败的活动时的第一个时间戳。  | 
 | lastAuditTimestamp | 显示在检测时段结束失败的活动时的最后一个时间戳。  | 
@@ -83,7 +83,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 ![Azure AD Connect Health 门户](./media/how-to-connect-health-adfs/report4d.png)
 
-| 阈值项 | 说明 |
+| 阈值项 | 描述 |
 | --- | --- |
 | (错误 U/P + Extranet 锁定) / 天  | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**天**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |
 | (错误 U/P + Extranet 锁定) / 小时 | 阈值设置，用于在特定条件下报告活动并触发警报通知。该特定条件是：每**小时**的“密码不正确”错误的计数加上“Extranet 锁定”错误的计数超出该阈值。 |

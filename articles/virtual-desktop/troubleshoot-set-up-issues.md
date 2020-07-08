@@ -8,19 +8,19 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e248e7af5fc9ed2bc144a4b302577be56524d7d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612523"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361161"
 ---
-# <a name="host-pool-creation"></a>主机池创建
+# <a name="host-pool-creation"></a>创建主机池
 
 >[!IMPORTANT]
->此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
 >
-> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍了 Windows 虚拟桌面租户和相关的会话主机池基础结构的初始安装过程中的问题。
@@ -31,13 +31,14 @@ ms.locfileid: "82612523"
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>获取 Windows 10 企业多会话映像
 
-若要使用 Windows 10 企业多会话映像，请转到 Azure Marketplace，选择 "**入门** > **Microsoft Windows 10** > 和[Windows 10 企业版多会话，版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)。
+若要使用 Windows 10 企业多会话映像，请转到 Azure Marketplace，选择 "**入门**  >  **Microsoft Windows 10** > 和[Windows 10 企业版多会话，版本 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)。
 
 ## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>使用 Azure 门户创建主机池时遇到的问题
 
 ### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>错误：访问服务时出现 "创建免费帐户"
 
-![显示 "创建免费帐户" 消息 Azure 门户的图像](media/create-new-account.png)
+> [!div class="mx-imgBorder"]
+> ![显示 "创建免费帐户" 消息 Azure 门户的图像](media/create-new-account.png)
 
 **原因**：你使用登录到 Azure 的帐户中没有活动的订阅，或者该帐户无权查看订阅。 
 
@@ -60,9 +61,10 @@ ms.locfileid: "82612523"
 3. 确定错误后，请使用错误消息和资源[解决 azure 资源管理器的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)，以解决此问题。
 4. 删除在之前的部署过程中创建的任何资源，然后重试部署模板。
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>错误：部署失败 ...\<主机名>/joindomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>错误：部署失败 .... \<hostname> /joindomain
 
-![部署失败，屏幕截图。](media/failure-joindomain.png)
+> [!div class="mx-imgBorder"]
+> ![部署失败，屏幕截图。](media/failure-joindomain.png)
 
 原始错误的示例：
 
@@ -103,7 +105,8 @@ ms.locfileid: "82612523"
 
 ### <a name="error-vmextensionprovisioningerror"></a>错误： VMExtensionProvisioningError
 
-![部署的屏幕截图失败，终端预配状态为 "失败"。](media/failure-vmextensionprovisioning.png)
+> [!div class="mx-imgBorder"]
+> ![部署的屏幕截图失败，终端预配状态为 "失败"。](media/failure-vmextensionprovisioning.png)
 
 **原因1：** Windows 虚拟桌面环境出现暂时性错误。
 
@@ -113,7 +116,8 @@ ms.locfileid: "82612523"
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许指定的管理员用户名
 
-![不允许管理员指定的部署的屏幕截图。](media/failure-username.png)
+> [!div class="mx-imgBorder"]
+> ![不允许管理员指定的部署的屏幕截图。](media/failure-username.png)
 
 原始错误的示例：
 
@@ -130,7 +134,8 @@ ms.locfileid: "82612523"
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>错误： VM 在处理扩展时报告了故障
 
-![部署中具有终端预配状态的资源操作的屏幕截图失败。](media/failure-processing.png)
+> [!div class="mx-imgBorder"]
+> ![部署中具有终端预配状态的资源操作的屏幕截图失败。](media/failure-processing.png)
 
 原始错误的示例：
 
@@ -149,7 +154,8 @@ ms.locfileid: "82612523"
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>错误： DeploymentFailed – PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误
 
-![部署的屏幕截图失败，PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误。](media/failure-dsc.png)
+> [!div class="mx-imgBorder"]
+> ![部署的屏幕截图失败，PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误。](media/failure-dsc.png)
 
 原始错误的示例：
 
@@ -254,12 +260,12 @@ the VM.\\\"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Windows 虚拟桌面故障排除和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
-- 若要解决在 Windows 虚拟桌面中配置虚拟机（VM）时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
 - 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
-- 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
+- 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。
-- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
+- 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

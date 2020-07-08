@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50f02ea42bb792320da6e2523b733f09afd412a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77620969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360956"
 ---
 # <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>为 Azure AD Connect 基于云的设置创建新配置
 
@@ -25,7 +25,7 @@ ms.locfileid: "77620969"
 ## <a name="configure-provisioning"></a>配置设置
 若要配置预配，请执行以下步骤。
 
-1.  在 Azure 门户中，选择 " **Azure Active Directory**"。
+1.  在 Azure 门户中，选择“Azure Active Directory”。
 1.  选择“Azure AD Connect”****。
 1.  选择 "**管理预配（预览版）**"。
 
@@ -41,14 +41,14 @@ ms.locfileid: "77620969"
 ## <a name="scope-provisioning-to-specific-users-and-groups"></a>向特定用户和组设置作用域
 可以通过使用本地 Active Directory 组或组织单位来确定代理的范围，以便同步特定的用户和组。 不能在配置中配置组和组织单位。 
 
-1.  在 Azure 门户中，选择 " **Azure Active Directory**"。
+1.  在 Azure 门户中，选择“Azure Active Directory”。
 1.  选择“Azure AD Connect”****。
 1.  选择 "**管理预配（预览版）**"。
 1.  在 "**配置**" 下，选择您的配置。
 
     ![“配置”部分](media/how-to-configure/scope1.png)
 
-1.  在“配置”下选择“所有用户”，以更改配置规则的范围。********
+1.  在“配置”下选择“所有用户”，以更改配置规则的范围。 
 
     ![所有用户选项](media/how-to-configure/scope2.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "77620969"
 
 ## <a name="restart-provisioning"></a>重新启动预配 
 如果不想等待下一次计划的运行，请使用 "**重新启动设置**" 按钮触发设置运行。 
-1.  在 Azure 门户中，选择 " **Azure Active Directory**"。
+1.  在 Azure 门户中，选择“Azure Active Directory”。
 1.  选择“Azure AD Connect”****。
 1.  选择 "**管理预配（预览版）**"。
 1.  在 "**配置**" 下，选择您的配置。
@@ -76,7 +76,7 @@ ms.locfileid: "77620969"
 ## <a name="remove-a-configuration"></a>删除配置
 若要删除配置，请执行以下步骤。
 
-1.  在 Azure 门户中，选择 " **Azure Active Directory**"。
+1.  在 Azure 门户中，选择“Azure Active Directory”。
 1.  选择“Azure AD Connect”****。
 1.  选择 "**管理预配（预览版）**"。
 1.  在 "**配置**" 下，选择您的配置。

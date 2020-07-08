@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 714fe5d1bdaddac2873194ab066f304e72bdde67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60244520"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358865"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>通过快速设置开始使用 Azure AD Connect
 采用单林拓扑并将**密码哈希同步**用于身份验证时，可以使用 Azure AD Connect [快速设置](how-to-connect-password-hash-synchronization.md)。 **快速设置** 是默认选项，用于最常见的部署方案。 只需按几下鼠标即可将本地目录扩展到云中。
@@ -37,10 +37,10 @@ ms.locfileid: "60244520"
 3. 在“欢迎”屏幕上，选中对应的框，同意许可条款，并单击“继续”。   
 4. 在“快速设置”屏幕上，单击“使用快速设置”。****  
    ![欢迎使用 Azure AD Connect](./media/how-to-connect-install-express/express.png)
-5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步”。   
+5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的全局管理员用户名和密码。 单击“下一步” 。  
    ![连接到 Azure AD](./media/how-to-connect-install-express/connectaad.png)  
    如果收到错误消息并且出现连接问题，请参阅[排查连接问题](tshoot-connect-connectivity.md)。
-6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“下一步”。   
+6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。 可以采用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\administrator 或 fabrikam.com\administrator。 单击“下一步” 。  
    ![连接到 AD DS](./media/how-to-connect-install-express/connectad.png)
 7. 只有在未完成[先决条件](how-to-connect-install-prerequisites.md)中的[验证域](../active-directory-domains-add-azure-portal.md)步骤时，才会显示 [**Azure AD 登录配置**](plan-connect-user-signin.md#azure-ad-sign-in-configuration)页。
    ![未验证的域](./media/how-to-connect-install-express/unverifieddomain.png)  
@@ -67,7 +67,7 @@ ms.locfileid: "60244520"
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
 
 ## <a name="related-documentation"></a>相关文档
 

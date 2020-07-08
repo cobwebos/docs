@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ca9b1d9fbd18f60de80a80c932f0e27b8dc8583
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701047"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361483"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
@@ -24,7 +24,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 ## <a name="authentication"></a>身份验证
 
-所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](analysis-services-data-providers.md)（AMO、MSOLAP、ADOMD）连接到服务器。 
+所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)（AMO、MSOLAP、ADOMD）连接到服务器。 
 
 所有 3 个客户端库均支持 Azure AD 交互流和非交互式身份验证方法。 可在利用 AMOMD 和 MSOLAP 的应用程序中使用两种非交互式方法，即 Active Directory 密码和 Active Directory 集成身份验证方法。 这两种方法绝对不会产生弹出式对话框。
 

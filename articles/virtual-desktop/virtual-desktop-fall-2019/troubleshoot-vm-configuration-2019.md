@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeccf0031e28bdcb719c0d534874d2c240ba46d3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117421"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362503"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -118,7 +118,8 @@ ms.locfileid: "83117421"
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>错误： RdsSessionHost cmdlet 中存档的状态显示为 "不可用"
 
-![RdsSessionHost cmdlet 将状态显示为 "不可用"。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![RdsSessionHost cmdlet 将状态显示为 "不可用"。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因：** 代理无法将自身更新为新版本。
 
@@ -179,7 +180,7 @@ ms.locfileid: "83117421"
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>排查 Windows 虚拟桌面并行堆栈问题
 
-Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Microsoft Installer （MSI）在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安装并行堆栈。 对于 Microsoft Windows 10，将使用**enablesxstackrs**启用 Windows 虚拟桌面并行堆栈。
+Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Microsoft Installer （MSI）在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安装并行堆栈。 对于 Microsoft Windows 10，将使用**enablesxstackrs.ps1**启用 Windows 虚拟桌面并行堆栈。
 
 在会话主机池 Vm 上安装或启用并行堆栈的主要方式有三种：
 
@@ -191,7 +192,8 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 如果安装并启用了并列堆栈，则**qwinsta**的输出将在输出中列出**rdp-sxs** 。
 
-![已安装或启用并行堆栈，其中 qwinsta 在输出中列为 rdp-sxs。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![已安装或启用并行堆栈，其中 qwinsta 在输出中列为 rdp-sxs。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 检查下面列出的注册表项，并确认它们的值是否匹配。 如果缺少注册表项或值不匹配，请按照如何重新安装并行堆栈中的[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中的说明进行操作。
 
@@ -205,7 +207,8 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ### <a name="error-o_reverse_connect_stack_failure"></a>错误： O_REVERSE_CONNECT_STACK_FAILURE
 
-![O_REVERSE_CONNECT_STACK_FAILURE 错误代码。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+> [!div class="mx-imgBorder"]
+> ![O_REVERSE_CONNECT_STACK_FAILURE 错误代码。](../media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **原因：** 并行堆栈未安装在会话主机 VM 上。
 
@@ -227,8 +230,8 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 - 不遵循正确的步骤顺序来启用并排堆栈
 - 自动更新到 Windows 10 增强的多功能光盘（EVD）
 - 缺少远程桌面会话主机（RDSH）角色
-- 多次运行 enablesxsstackrc
-- 在没有本地管理员权限的帐户中运行 enablesxsstackrc
+- 多次运行 enablesxsstackrc.ps1
+- 在没有本地管理员权限的帐户中运行 enablesxsstackrc.ps1
 
 本节中的说明可帮助你卸载 Windows 虚拟桌面并行堆栈。 卸载并列堆栈后，请在[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中的 "使用 Windows 虚拟机主机池注册 VM" 中，使用安装并行堆栈。
 
@@ -247,19 +250,21 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
             psexec.exe \\<VMname> cmd
     ```
 
-    >[!Note]
+    >[!NOTE]
     >VMname 是并行堆栈不正常的 VM 的计算机名称。
 
 7. 单击 "同意" 以接受 PsExec 许可协议。
 
-    ![软件许可协议屏幕截图。](../media/SoftwareLicenseTerms.png)
+    > [!div class="mx-imgBorder"]
+    > ![软件许可协议屏幕截图。](../media/SoftwareLicenseTerms.png)
 
-    >[!Note]
+    >[!NOTE]
     >此对话框仅在第一次运行 PsExec 时才会显示。
 
 8. 在具有故障的并行堆栈的虚拟机上打开命令提示会话后，请运行 qwinsta 并确认名为 rdp-sxs 的条目可用。 如果没有，则并行堆栈不存在于 VM 上，因此该问题不会与并行堆栈相关联。
 
-    ![管理员命令提示符](../media/AdministratorCommandPrompt.png)
+    > [!div class="mx-imgBorder"]
+    > ![管理员命令提示符](../media/AdministratorCommandPrompt.png)
 
 9. 运行以下命令，该命令将列出并行堆栈出现故障的 VM 上安装的 Microsoft 组件。
 
@@ -281,7 +286,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 如果操作系统是 Microsoft Windows 10，请继续执行以下说明：
 
-14. 从运行 PsExec 的 VM，打开文件资源管理器，将 disablesxsstackrc 复制到 VM 的系统驱动器中，并行堆栈不正常。
+14. 在运行 PsExec 的 VM 上，打开文件资源管理器，将 disablesxsstackrc.ps1 复制到并行堆栈不正常的 VM 的系统驱动器。
 
     ```cmd
         \\<VMname>\c$\
@@ -290,7 +295,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
     >[!NOTE]
     >VMname 是并行堆栈不正常的 VM 的计算机名称。
 
-15. 建议的过程：从 PsExec 工具启动 PowerShell 并导航到上一步骤中的文件夹并运行 disablesxsstackrc。 或者，你可以运行以下 cmdlet：
+15. 建议的过程：从 PsExec 工具启动 PowerShell 并导航到上一步骤中的文件夹并运行 disablesxsstackrc.ps1。 或者，你可以运行以下 cmdlet：
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -327,7 +332,8 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 3. 选择 "**关于电脑**"。
 4. 检查 "版本" 旁边的编号。 该数字应为 "1809" 或 "1903"，如下图所示。
 
-    ![Windows 规范窗口的屏幕截图。 版本号以蓝色突出显示。](../media/windows-specifications.png)
+    > [!div class="mx-imgBorder"]
+    > ![Windows 规范窗口的屏幕截图。 版本号以蓝色突出显示。](../media/windows-specifications.png)
 
 了解版本号后，请跳到相关部分。
 
@@ -347,13 +353,13 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Windows 虚拟桌面故障排除和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
-- 若要在 Windows 虚拟桌面环境中创建租户和主机池时排查问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues-2019.md)。
-- 若要解决在 Windows 虚拟桌面中配置虚拟机（VM）时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
+- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
+- 若要排查在 Windows 虚拟桌面环境中创建租户和主机池时遇到的问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues-2019.md)。
+- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
 - 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection-2019.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](../troubleshoot-client.md)问题
-- 若要解决将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅[Windows 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
+- 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup-2019.md)。
-- 若要浏览疑难解答教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
+- 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../../azure-resource-manager/templates/deployment-history.md)。

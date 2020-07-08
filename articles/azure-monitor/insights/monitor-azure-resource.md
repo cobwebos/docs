@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 8072dec6b5f5dbd35c86573dd43d3925a271bc43
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 430b1c044ac5fc22dbf3a4f4df33ff9017e21d6d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361949"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 资源
 如果你有关键应用程序和业务流程依赖于 Azure 资源，则需要监视这些资源的可用性、性能和操作。 本文描述了 Azure 资源生成的监视数据，介绍如何使用 Azure Monitor 的功能对此数据分析和发出警报。
@@ -90,7 +90,7 @@ Azure 中的资源会生成[日志](../platform/data-platform-logs.md)和[指标
  可通过 Azure 门户中的资源菜单访问大多数 Azure 资源的监视数据。 这样，你就可以使用标准 Azure Monitor 工具访问单个资源的数据。 某些 Azure 服务将提供不同的选项，因此应参考相应服务的文档了解其他信息。 使用“Azure Monitor”菜单来分析所有受监视资源中的数据。 
 
 ### <a name="overview"></a>概述
-许多服务的“概述”页中会包含监视数据，以提供关于操作的快速概览。 这通常会基于 Azure Monitor 指标中存储的平台指标子集。 其他监视选项通常在“服务”>“菜单”的“监视”部分中提供 。
+许多服务的“概述”页中会包含监视数据，以提供关于操作的快速概览。 这通常会基于 Azure Monitor 指标中存储的平台指标子集。 其他监视选项通常会出现在服务菜单的 "**监视**" 部分中。
 
 ![概述页](media/monitor-azure-resource/overview-page.png)
 

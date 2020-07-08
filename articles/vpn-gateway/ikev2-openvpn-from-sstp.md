@@ -9,6 +9,7 @@ ms.date: 03/30/2020
 ms.author: alzam
 ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84983350"

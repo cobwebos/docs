@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358440"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>后续步骤以及如何管理 Azure AD Connect
 使用本文中介绍的操作流程，根据组织的需要和要求自定义 Azure Active Directory (Azure AD) Connect。  
@@ -56,12 +56,12 @@ ms.locfileid: "79261289"
 如果需要运行同步任务，可以通过以下方式执行此操作：
 
 1. 双击 Azure AD Connect 桌面快捷方式以启动向导。
-2. 单击 **“配置”**。
+2. 单击 **“配置”** 。
 3. 在任务屏幕上，选择“自定义同步选项”****，然后单击“下一步”****。
 4. 输入 Azure AD 凭据
-5. 单击“下一步”。  单击“下一步”。   单击“下一步”。 
+5. 单击“下一步” 。 单击“下一步” 。  单击“下一步” 。
 5.  在“已准备好进行配置”屏幕上，确保已选中“配置完成后启动同步过程”复选框。********
-6.  单击 **“配置”**。
+6.  单击 **“配置”** 。
 
 有关 Azure AD Connect 同步计划程序的详细信息，请参阅[Azure AD Connect 计划程序](how-to-connect-sync-feature-scheduler.md)。
 
@@ -72,7 +72,7 @@ ms.locfileid: "79261289"
 
 ![其他任务列表](./media/how-to-connect-post-installation/addtasks2.png)
 
-| 其他任务 | 说明 |
+| 其他任务 | 描述 |
 | --- | --- |
 |**隐私设置**|查看正在与 Microsoft 共享的遥测数据。|
 |**查看当前配置**|查看当前的 Azure AD Connect 解决方案。  包括常规设置、同步的目录和同步设置等。 |
@@ -82,7 +82,7 @@ ms.locfileid: "79261289"
 |**配置暂存模式** |对不会立即同步且不会导出到 Azure AD 或本地 Active Directory 的信息进行同步。  使用此功能可在同步前进行预览。 |
 |**更改用户登录**|更改用户用来登录的身份验证方法|
 |**管理联合身份验证服务**|管理 AD FS 基础结构，续订证书，以及添加 AD FS 服务器|
-|**疑难解答**|有关排除 Azure AD Connect 问题的帮助信息|
+|**故障排除**|有关排除 Azure AD Connect 问题的帮助信息|
 
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

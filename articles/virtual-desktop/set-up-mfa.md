@@ -4,16 +4,16 @@ description: 如何设置 Azure 多重身份验证以提高 Windows 虚拟桌面
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361143"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面启用 Azure 多重身份验证
 
@@ -23,7 +23,7 @@ ms.locfileid: "82930516"
 
 尽管记住凭据很方便，但它也可以使部署在企业方案或个人设备上不太安全。 若要保护用户，你需要确保客户端始终询问 Azure 多重身份验证（MFA）凭据。 本文将演示如何配置 Windows 虚拟桌面的条件性访问策略，以便启用此设置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下面是你需要入门的内容：
 
@@ -38,24 +38,25 @@ ms.locfileid: "82930516"
 
 本部分将介绍如何创建在连接到 Windows 虚拟桌面时需要多重身份验证的条件性访问策略。
 
-1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-2. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-3. 选择“新策略”  。
-4. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
+1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 Azure 门户。
+2. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+3. 选择“新策略”。
+4. 为策略指定一个名称。 建议组织为其策略的名称创建有意义的标准。
 5. 在“分配”  下，选择“用户和组”  。
-   - 在 "**包括**" 下，选择 "**选择用户和组** > **用户和组**" > 选择 "先决条件" 阶段中创建的组。
-   - 选择“完成”  。
-6. 在 "**云应用或操作** > **包括**" 下，选择 "**选择应用**"。
+   - 在 "**包括**" 下，选择 "**选择用户和组**  >  **用户和组**" > 选择 "先决条件" 阶段中创建的组。
+   - 选择“完成” 。
+6. 在 "**云应用或操作**  >  **包括**" 下，选择 "**选择应用**"。
    - 选择 " **Windows 虚拟桌面**（应用程序 ID 9cdead84-a844-4324-93f2-b2e6bb768d07）"，然后**选择**"**完成**"。
-   
-     ![云应用或操作页的屏幕截图。 Windows 虚拟桌面和 Windows 虚拟桌面客户端应用以红色突出显示。](media/cloud-apps-enterprise.png)
+
+     > [!div class="mx-imgBorder"]
+     > ![云应用或操作页的屏幕截图。 Windows 虚拟桌面和 Windows 虚拟桌面客户端应用以红色突出显示。](media/cloud-apps-enterprise.png)
 
      >[!NOTE]
      >若要查找要选择的应用的应用 ID，请在 "应用程序类型" 下拉菜单中，单击 "**企业应用程序**"，然后选择 " **Microsoft 应用程序**"。
 
-7. 在 "**访问控制** > " "**授权**" 下，选择 "**授予访问权限**，**需要多重身份验证**"，然后**选择**。
-8. 在 "**访问控制** > **会话**下，选择 "**登录频率**"，将 "值" 设置为**1** ，将 "单位" 设置为 "**小时**"，然后选择 "**选择**"。
-9. 确认设置，然后将“启用策略”设置为“打开”。  
+7. 在 "**访问控制**" "  >  **授权**" 下，选择 "**授予访问权限**，**需要多重身份验证**"，然后**选择**。
+8. 在 **"访问控制**"  >  **会话**下，选择 "**登录频率**"，将 "值" 设置为**1** ，将 "单位" 设置为 "**小时**"，然后选择 "**选择**"。
+9. 确认设置并将“启用策略”设置为“开启”。
 10. 选择 "**创建**" 以启用策略。
 
 ## <a name="next-steps"></a>后续步骤

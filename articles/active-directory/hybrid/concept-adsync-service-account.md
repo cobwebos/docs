@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f228da5afc5998d8fa59ce2d720cec4c9f955b67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67478714"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85360293"
 ---
 # <a name="adsync-service-account"></a>ADSync 服务帐户
 Azure AD Connect 会安装一个本地服务用于协调 Active Directory 与 Azure Active Directory 之间的同步。  Microsoft Azure AD 同步同步服务（ADSync）在本地环境中的服务器上运行。  默认会在“快速”安装中设置该服务的凭据，不过，用户也可以根据组织的安全要求自定义凭据。  这些凭据不会用于连接到本地林或 Azure Active Directory。
@@ -82,4 +82,4 @@ Minor Number = 0
 Description  = 'A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online.'
 ```
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

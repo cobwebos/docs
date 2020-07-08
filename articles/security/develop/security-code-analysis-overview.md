@@ -1,7 +1,7 @@
 ---
 title: Microsoft 安全代码分析文档概述
 description: 本文概述了 Microsoft 安全代码分析扩展
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 963bc909b69962cded0a50d717e3a653d3d69769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74851462"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361313"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>关于 Microsoft 安全代码分析
 
@@ -65,15 +65,11 @@ Microsoft 安全代码分析扩展使你随时可以使用最新版本的重要�
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim 是一种可移植可执行（PE）的轻型扫描程序，用于验证编译器设置、链接器设置和二进制文件的其他与安全相关的特征。 此生成任务在 binskim 控制台应用程序的周围提供了一个命令行包装器。 BinSkim 是一个开源工具。 有关详细信息，请参阅[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
+BinSkim 是一种可移植可执行（PE）的轻型扫描程序，用于验证编译器设置、链接器设置和二进制文件的其他与安全相关的特征。 此生成任务在 binskim.exe 控制台应用程序的周围提供了一个命令行包装器。 BinSkim 是一个开源工具。 有关详细信息，请参阅[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
 
-### <a name="credential-scanner"></a>凭据扫描器
+### <a name="credential-scanner"></a>凭据扫描程序
 
 在源代码中存储的密码和其他机密是一个重大问题。 Credential 扫描器是一个专用静态分析工具，可帮助解决此问题。 该工具在源代码和生成输出中检测凭据、机密、证书和其他敏感内容。
-
-### <a name="microsoft-security-risk-detection"></a>Microsoft 安全风险检测
-
-Microsoft 安全风险检测（MSRD）是一项基于云的服务，用于模糊测试。 它识别软件中可利用的安全错误。 此服务需要单独的订阅和激活。 有关详细信息，请参阅[MSRD 开发人员中心](https://docs.microsoft.com/security-risk-detection/)。
 
 ### <a name="roslyn-analyzers"></a>Roslyn 分析器
 

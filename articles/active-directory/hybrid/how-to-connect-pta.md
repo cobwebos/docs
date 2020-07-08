@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85358015"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -39,11 +39,11 @@ ms.locfileid: "77185502"
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>使用 Azure AD 传递身份验证的主要优势
 
-- 出色的用户体验**
+- 出色的用户体验
   - 用户使用同样的密码登录本地和基于云的应用程序。
   - 用户花费在联系 IT 支持人员解决密码相关问题上的时间更少。
   - 用户可以完成云中的[自助服务密码管理](../authentication/active-directory-passwords-overview.md)任务。
-- 易于部署和管理**
+- 易于部署和管理
   - 无需复杂的本地部署或网络配置。
   - 仅需在本地安装一个轻型代理。
   - 无管理开销。 代理会自动获得改进和 bug 修复。
@@ -74,9 +74,9 @@ ms.locfileid: "77185502"
 - [从 AD FS 迁移到传递身份验证](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](how-to-connect-pta-current-limitations.md) - 了解支持和不支持的方案。
-- 深入技术探究[](how-to-connect-pta-how-it-works.md) - 了解此功能如何运作。
+- 深入技术探究 - 了解此功能如何运作。
 - [常见问题](how-to-connect-pta-faq.md) - 常见问题解答。
-- [故障排除](tshoot-connect-pass-through-authentication.md) - 了解如何解决使用此功能时遇到的常见问题。
+- 故障排除 - 了解如何解决使用此功能时遇到的常见问题。
 - [深入了解安全性](how-to-connect-pta-security-deep-dive.md) - 有关该功能的其他深入技术信息。
 - [Azure AD 无缝 SSO](how-to-connect-sso.md) - 深入了解此补充功能。
-- UserVoice[](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+- UserVoice - 用于填写新功能请求。

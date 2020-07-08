@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc671629934d80b3e727ca69f9026f534d05e160
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1b4e56dfeae2d4b7826f3ad30bc5eb4b8672b85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85361466"
 ---
 # <a name="connecting-to-servers"></a>连接到服务器
 
@@ -20,7 +20,7 @@ ms.locfileid: "81676653"
 
 ## <a name="client-libraries"></a>客户端库
 
-[获取最新的客户端库](analysis-services-data-providers.md)
+[获取最新的客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
 与服务器的所有连接（无论连接类型）都需要更新后的 AMO、ADOMD.NET 和 OLEDB 客户端库才能连接到 Analysis Services 服务器。 对于 SSMS、Visual Studio、Excel 2016 及更高版本和 Power BI，最新的客户端库会与每月发布一起安装或更新。 但是在某些情况下，应用程序可能不是最新版本。 例如，当策略延迟更新或 Office 365 更新在延期频道上时。
 
@@ -38,7 +38,7 @@ ms.locfileid: "81676653"
 
 ### <a name="get-the-server-name"></a>获取服务器名称
 
-在 **Azure 门户**中，单击“服务器”>“概述”**** > “服务器名称”****，并复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
+在 **Azure 门户**中，单击“服务器”>“概述” > “服务器名称”，并复制整个服务器名称。 如果组织中的其他用户也要连接此服务器，则可以将此服务器名称与他们共享。 指定服务器名称时，必须使用完整路径。
 
 ![在 Azure 中获取服务器名称](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "81676653"
 
 ## <a name="next-steps"></a>后续步骤
 
-[与 Excel 连接](analysis-services-connect-excel.md)    
-[连接 Power BI](analysis-services-connect-pbi.md)   
+[使用 Excel 进行连接](analysis-services-connect-excel.md)    
+[使用 Power BI 进行连接](analysis-services-connect-pbi.md)   
 [管理服务器](analysis-services-manage.md)   
 
