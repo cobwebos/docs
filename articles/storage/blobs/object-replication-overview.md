@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800766"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888071"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>块 blob 的对象复制（预览版）
 
@@ -44,7 +44,7 @@ ms.locfileid: "83800766"
 
 配置对象复制时，需要通过 Azure 存储资源提供程序针对源帐户和目标帐户创建复制策略。 复制策略通过策略 ID 进行标识。 源帐户和目标帐户的策略必须具有相同的策略 ID，才能进行复制。
 
-存储帐户可用作最多两个目标帐户的源帐户。 源帐户和目标帐户可能全都位于不同的区域。 可以配置单独的复制策略，以便将数据复制到每个目标帐户。
+存储帐户可用作最多两个目标帐户的源帐户。 并且目标帐户不能有两个以上的源帐户。 源帐户和目标帐户可能全都位于不同的区域。 可以配置单独的复制策略，以便将数据复制到每个目标帐户。
 
 ### <a name="replication-rules"></a>复制规则
 
@@ -54,7 +54,7 @@ ms.locfileid: "83800766"
 
 也可以将一个或多个筛选器指定为复制规则的一部分，以按前缀筛选块 blob。 指定前缀时，只会将源容器中与该前缀匹配的 blob 复制到目标容器。
 
-源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以针对目标容器中的 blob 调用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作，将其移动到不同的访问层。 例如，可以将目标容器中的 blob 移动到存档层以节省成本。
+源和目标容器必须都存在，然后才能在规则中指定它们。 创建复制策略后，目标容器变为只读。 任何尝试写入目标容器的操作都会失败，错误代码为 409（冲突）。 但是，可以对目标容器中的 blob 调用 "[设置 Blob 层](/rest/api/storageservices/set-blob-tier)" 操作，以将其移动到 "存档" 层。 有关存档层的详细信息，请参阅[Azure Blob 存储： "热"、"冷" 和 "存档" 访问层](storage-blob-storage-tiers.md#archive-access-tier)。
 
 ## <a name="about-the-preview"></a>关于此预览版
 
@@ -73,7 +73,9 @@ ms.locfileid: "83800766"
 
 ### <a name="prerequisites-for-object-replication"></a>对象复制的先决条件
 
-对象复制需要启用以下 Azure 存储功能：
+对象复制需要启用以下 Azure 存储功能： 
+- [更改源](storage-blob-change-feed.md)
+- [版本管理](versioning-overview.md)
 
 在配置对象复制之前，请先启用其先决条件。 必须在源帐户上启用更改源，并且必须同时在源帐户和目标帐户上启用 blob 版本控制。 有关如何启用上述功能的详细信息，请参阅以下文章：
 
@@ -157,3 +159,5 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 ## <a name="next-steps"></a>后续步骤
 
 - [配置对象复制（预览版）](object-replication-configure.md)
+- [Azure Blob 存储中的更改源支持（预览）](storage-blob-change-feed.md)
+- [启用和管理 blob 版本控制](versioning-enable.md)

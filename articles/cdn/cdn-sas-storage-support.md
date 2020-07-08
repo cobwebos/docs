@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: c1deffe36df081908294d3c7fe58a17c8a454687
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260167"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887041"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253826"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888545"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>通过 Azure CDN 进行动态站点加速
 
@@ -44,7 +44,7 @@ ms.locfileid: "81253826"
 
    ![添加新的 CDN 终结点](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
-   此时会显示“添加终结点”**** 窗格。
+   此时会显示“添加终结点”窗格。
 
 2. 在“优化对象”**** 下，选择“动态站点加速”****。
 
@@ -147,7 +147,7 @@ TCP 慢启动** 是 TCP 协议的算法，用于通过限制通过网络发送�
 --- | ---  
 JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
-## <a name="caching"></a>Caching
+## <a name="caching"></a>缓存
 
 使用 DSA 时，默认将关闭 CDN 上的缓存，即使源在响应中包含 `Cache-Control` 或 `Expires` 标头也是如此。 DSA 通常用于因对每个客户端是唯一的而不应缓存的动态资产。 缓存可能会中断此行为。
 
@@ -169,7 +169,7 @@ JPEG 压缩 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 访问规则引擎：
     
-1. 从 " **CDN 配置文件**" 页中，选择 "**管理**"。  
+1. 从“CDN 配置文件”页中，选择“管理” 。  
     
     ![CDN 配置文件管理按钮](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 

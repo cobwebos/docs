@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 从专用映像版本创建规模集
-description: 使用 Azure CLI 的共享映像库中的专用映像版本创建规模集。
+title: 使用 Azure CLI 从专用化映像版本创建规模集
+description: 使用 Azure CLI 从共享映像库中的专用化映像版本创建规模集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 5de9fe7c81059c56c99a55ca066e186cbf83c50f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796975"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887881"
 ---
-# <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用具有 Azure CLI 的专用映像版本创建规模集
+# <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>使用 Azure CLI 通过专用化映像版本创建规模集
 
-使用共享映像库中存储的[专用映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建规模集。 如果要使用通用化映像版本创建规模集，请参阅[从一般化映像版本创建 VM](instance-generalized-image-version-cli.md)。
+从共享映像库中存储的[专用化映像版本](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images)创建规模集。 如果要使用通用化映像版本创建规模集，请参阅[从一般化映像创建规模集](instance-generalized-image-version-cli.md)。
 
-如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 版本2.4.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.4.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
 在此示例中，请根据需要替换资源名称。 
 
-使用[az sig image definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list)列出库中的图像定义，查看定义的名称和 ID。
+使用 [az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) 列出库中的映像定义，以查看定义的名称和 ID。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -36,11 +36,11 @@ az sig image-definition list \
    --output tsv
 ```
 
-使用[`az vmss create`](/cli/azure/vmss#az-vmss-create) `--specialized`参数创建规模集，以指示该映像是专用映像。
+使用 [`az vmss create`](/cli/azure/vmss#az-vmss-create) 创建一个规模集，使用 `--specialized` 参数来指示映像是专用化映像。
 
-使用的映像定义 ID `--image`可从最新版本的可用映像创建规模集实例。 还可以通过为`--image`提供映像版本 ID，从特定版本创建规模集实例。 请注意，使用特定映像版本意味着如果特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 创建新的 VM，除非需要特定的映像版本。
+使用 `--image` 的映像定义 ID 从可用的最新映像版本创建规模集实例。 还可以通过提供 `--image` 的映像版本 ID 从特定版本创建规模集实例。 请注意，使用特定映像版本意味着：如果该特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 来创建新的 VM（除非需要特定的映像版本）。
 
-在此示例中，我们从最新版本的*myImageDefinition*映像创建实例。
+在此示例中，我们将从 myImageDefinition 映像的最新版本创建实例。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -58,7 +58,7 @@ az vmss create \
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
 

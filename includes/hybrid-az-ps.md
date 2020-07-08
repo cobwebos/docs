@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ee0d990a8959a8d9430ca909a37f6c233afe530d
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73748085"
 ---
 本文中的步骤和示例使用 Azure PowerShell Az 模块。 若要在计算机上本地安装 Az 模块，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 若要详细了解新 Az 模块，请参阅[新 Azure Powershell Az 模块简介](/powershell/azure/new-azureps-module-az)。 PowerShell cmdlet 经常更新。 如果未运行最新版本，在说明中指定的值可能无法使用。 若要在系统上查找已安装的 PowerShell 版本，请使用 `Get-Module -ListAvailable Az` cmdlet。

@@ -12,15 +12,15 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887671"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
@@ -51,11 +51,11 @@ ms.locfileid: "74083162"
 
 1. 在 Azure 门户中，选择一个 CDN 配置文件，然后选择 blob 的终结点。
 
-2. 在左窗格中的“设置”下，选择“缓存规则”。****
+2. 在左窗格中的“设置”下，选择“缓存规则”。
 
    ![CDN 缓存规则按钮](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
-   “缓存规则”**** 页随即出现。
+   “缓存规则”页随即出现。
 
    ![CDN 缓存页](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "74083162"
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-3. 选择“保存”。 
+3. 选择“保存”。
  
 **使用自定义缓存规则设置 Blob 文件的 Cache-Control 标头：**
 
@@ -84,7 +84,7 @@ ms.locfileid: "74083162"
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/blobcontainer1` 文件夹中的所有 blob 文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `blob1.txt` blob 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-2. 选择“保存”。 
+2. 选择“保存”。
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>使用 Azure PowerShell 设置 Cache-Control 标头

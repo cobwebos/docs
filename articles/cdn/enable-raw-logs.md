@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888641"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Azure CDN HTTP 原始日志
 原始日志提供了大量有关操作和错误的信息，这些信息对于审核和故障排除非常重要。 原始日志不同于活动日志。 活动日志让你能够了解对 Azure 资源执行的操作。 原始日志提供资源的操作记录。
@@ -33,7 +33,7 @@ ms.locfileid: "83747301"
 
 为 Microsoft 配置文件中的 Azure CDN 配置原始日志： 
 
-1. 在 Azure 门户菜单中，选择“所有资源” >>  **\<your-CDN-profile>** 。
+1. 从 "Azure 门户" 菜单中，选择 "**所有资源**"  >>  **\<your-CDN-profile>** 。
 
 2. 在“监视”下，选择“诊断设置” 。
 

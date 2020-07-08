@@ -9,10 +9,10 @@ ms.date: 09/25/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 5104c3b4446a8d3747ce7cc1648ef05dd117eb3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74013771"
 ---
 存储资源管理器 1.10.0 可让用户上传、下载和复制托管磁盘，以及创建快照。 由于具有这些附加功能，存储资源管理器使你能够将数据从本地迁移到 Azure，并可以跨 Azure 区域迁移数据。
@@ -32,53 +32,53 @@ ms.locfileid: "74013771"
 
     ![单击插件图标](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 
-1. 选择“添加 Azure 帐户”，然后单击“下一步”。********
+1. 选择“添加 Azure 帐户”，然后单击“下一步”。  
 
     ![添加 Azure 帐户](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
 
-1. 在“Azure 登录”对话框中输入 Azure 凭据。****
+1. 在“Azure 登录”对话框中输入 Azure 凭据。 
 
     ![Azure 登录对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/sign-in.png)
 
-1. 从列表中选择你的订阅，然后单击“应用”****。
+1. 从列表中选择你的订阅，然后单击“应用”  。
 
     ![选择订阅](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-subscription.png)
 
 ## <a name="upload-a-managed-disk-from-an-on-prem-vhd"></a>从本地 VHD 上传托管磁盘
 
-1. 在左窗格中，展开“磁盘”并选择要将磁盘上传到的资源组。****
+1. 在左窗格中，展开“磁盘”并选择要将磁盘上传到的资源组。 
 
     ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. 选择 "**上传**"。
+1. 选择“上传”。 
 
     ![选择“上传”](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-button.png)
 
-1. 在“上传 VHD”中，指定源 VHD、磁盘名称、OS 类型、要将磁盘上传到的区域，以及帐户类型。**** 对于支持可用性区域的某些地区，可以选择所选的区域。
-1. 选择“创建”开始上传磁盘。****
+1. 在“上传 VHD”中，指定源 VHD、磁盘名称、OS 类型、要将磁盘上传到的区域，以及帐户类型。  对于支持可用性区域的某些地区，可以选择所选的区域。
+1. 选择“创建”开始上传磁盘。 
 
     ![上传 VHD 对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/upload-vhd-dialog.png)
 
-1. 现在，上传状态会显示在“活动”中。****
+1. 现在，上传状态会显示在“活动”中。 
 
     ![上传状态](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
 
-1. 如果上传已完成但右窗格中未显示该磁盘，请选择“刷新”。****
+1. 如果上传已完成但右窗格中未显示该磁盘，请选择“刷新”。 
 
 ## <a name="download-a-managed-disk"></a>下载托管磁盘
 
-以下步骤说明如何将托管磁盘下载到本地 VHD。 只能下载状态为“未附加”的磁盘，而无法下载状态为“已附加”的磁盘。********
+以下步骤说明如何将托管磁盘下载到本地 VHD。 只能下载状态为“未附加”的磁盘，而无法下载状态为“已附加”的磁盘。  
 
-1. 在左窗格中展开“磁盘”（如果尚未展开），并选择要从中下载磁盘的资源组。****
+1. 在左窗格中展开“磁盘”（如果尚未展开），并选择要从中下载磁盘的资源组。 
 
     ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
 1. 在右窗格中选择要下载的磁盘。
-1. 选择“下载”，然后选择磁盘的保存位置。****
+1. 选择“下载”，然后选择磁盘的保存位置。 
 
     ![下载托管磁盘](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button.png)
 
-1. 选择“保存”，随即会开始下载磁盘。**** 下载状态将显示在“活动”中。****
+1. 选择“保存”，随即会开始下载磁盘。  下载状态将显示在“活动”中。 
 
     ![下载状态](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
 
@@ -86,11 +86,11 @@ ms.locfileid: "74013771"
 
 使用存储资源管理器可以在区域内部或跨区域复制托管磁盘。 若要复制磁盘：
 
-1. 在左侧的“磁盘”下拉列表中，选择包含要复制的磁盘的资源组。****
+1. 在左侧的“磁盘”下拉列表中，选择包含要复制的磁盘的资源组。 
 
     ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. 在右窗格中选择要复制的磁盘，然后选择“复制”。****
+1. 在右窗格中选择要复制的磁盘，然后选择“复制”。 
 
     ![复制托管磁盘](media/disks-upload-vhd-to-managed-disk-storage-explorer/copy-button.png)
 
@@ -98,33 +98,33 @@ ms.locfileid: "74013771"
 
     ![选择资源组 2](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg2.png)
 
-1. 在右窗格中选择“粘贴”。****
+1. 在右窗格中选择“粘贴”。 
 
     ![粘贴托管磁盘](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-button.png)
 
-1. 在“粘贴磁盘”对话框中填写值。**** 还可以指定受支持地区中的可用性区域。
+1. 在“粘贴磁盘”对话框中填写值。  还可以指定受支持地区中的可用性区域。
 
     ![“粘贴磁盘”对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
 
-1. 选择“粘贴”，磁盘随即开始复制，复制状态会显示在“活动”中。********
+1. 选择“粘贴”，磁盘随即开始复制，复制状态会显示在“活动”中。  
 
     ![复制粘贴状态](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
 
 ## <a name="create-a-snapshot"></a>创建快照
 
-1. 在左侧的“磁盘”下拉列表中，选择要创建快照的磁盘所在的资源组。****
+1. 在左侧的“磁盘”下拉列表中，选择要创建快照的磁盘所在的资源组。 
 
     ![选择资源组 1](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. 在右侧选择要创建快照的磁盘，然后选择“创建快照”。****
+1. 在右侧选择要创建快照的磁盘，然后选择“创建快照”。 
 
     ![创建快照](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. 在“创建快照”中，指定快照名称，以及要在其中创建快照的资源组。**** 然后选择“创建”  。
+1. 在“创建快照”中，指定快照名称，以及要在其中创建快照的资源组。  然后选择“创建”  。
 
     ![“创建快照”对话框](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 
-1. 创建快照后，可以在“活动”中选择“在门户中打开”，以便在 Azure 门户中查看快照。********
+1. 创建快照后，可以在“活动”中选择“在门户中打开”，以便在 Azure 门户中查看快照。  
 
     ![在门户中打开快照](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 

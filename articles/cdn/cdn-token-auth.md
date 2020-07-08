@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 837018e3-03e6-4f9c-a23e-4b63d5707a64
 ms.service: azure-cdn
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887434"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
 
@@ -173,17 +173,17 @@ ms.locfileid: "83745461"
 3. 在“HTTP Large”下，选择“规则引擎” 。 使用此规则引擎来定义应用功能、启用令牌身份验证功能以及启用其他令牌身份验证相关功能的路径。 有关详细信息，请参阅[规则引擎引用](cdn-rules-engine-reference.md)。
 
    1. 选择现有规则或创建新规则，定义想要应用令牌身份验证的资产或路径。 
-   2. 要对规则启用令牌身份验证，请从“功能”列表中选择[“令牌身份验证”](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)，然后选择“启用”。 选择“更新”更新规则，或选择“添加”创建规则 。
+   2. 要对规则启用令牌身份验证，请从“功能”列表中选择[“令牌身份验证”](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)，然后选择“启用”。 选择“更新”更新规则，或选择“添加”创建规则 。
         
       ![CDN 规则引擎令牌身份验证启用示例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. 在规则引擎中，还可启用与令牌身份验证相关的其他功能。 要启用以下任意功能，请从“功能”列表中选择它，然后选择“启用”。
     
-   - [令牌身份验证拒绝代码](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)：确定拒绝请求时会返回给用户的响应类型。 在此处设置的规则将替代在基于令牌的身份验证页上的“自定义拒绝处理”部分设置的响应代码。
+   - [令牌身份验证拒绝代码](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)：确定拒绝请求时会返回给用户的响应类型。 在此处设置的规则将替代在基于令牌的身份验证页上的“自定义拒绝处理”部分设置的响应代码。
 
-   - [令牌身份验证忽略 URL 大小写](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)：确定用于验证令牌的 URL 是否区分大小写。
+   - [令牌身份验证忽略 URL 大小写](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)：确定用于验证令牌的 URL 是否区分大小写。
 
-   - [令牌身份验证参数](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)：重命名在请求 URL 中显示的令牌身份验证查询字符串参数。 
+   - [令牌身份验证参数](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)：重命名在请求 URL 中显示的令牌身份验证查询字符串参数。 
         
      ![CDN 规则引擎令牌身份验证设置示例](./media/cdn-token-auth/cdn-rules-engine2.png)
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ff3e456a587a7d676de379987c86f154878c61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260558"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887639"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -47,11 +47,11 @@ ms.locfileid: "81260558"
 
 1. 在 Azure 门户中，选择一个 CDN 配置文件，然后选择 Web 服务器的终结点。
 
-1. 在左窗格中的“设置”下，选择“缓存规则”。****
+1. 在左窗格中的“设置”下，选择“缓存规则”。
 
    ![CDN 缓存规则按钮](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
-   “缓存规则”**** 页随即出现。
+   “缓存规则”页随即出现。
 
    ![CDN 缓存页](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "81260558"
 
    此全局缓存规则设置为期一小时的缓存持续时间，并会影响发送到终结点的所有请求。 它会替代由终结点指定的源服务器发送的所有 `Cache-Control` 或 `Expires` HTTP 标头。   
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
 **使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
 
@@ -80,7 +80,7 @@ ms.locfileid: "81260558"
 
     第一个自定义缓存规则为终结点指定的源服务器上的 `/webfolder1` 文件夹中的所有文件设置为期四小时的缓存持续时间。 第二个规则仅替代 `file1.txt` 文件的第一个规则，并且为它设置为期两小时的缓存持续时间。
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用配置文件设置 Cache-Control 标头
@@ -106,7 +106,7 @@ ms.locfileid: "81260558"
 </configuration>
 ```
 
-若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并用作`Cache-Control` `max-age`指令的值。 有关元素的`<clientCache>`详细信息，请参阅[Client Cache \<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
+若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并用作指令的值 `Cache-Control` `max-age` 。 有关 `<clientCache>` 元素的详细信息，请参阅[客户端缓存\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>以编程方式设置 Cache-Control 标头
 对于 ASP.NET 应用程序，可以通过设置 .NET API 的 **HttpResponse.Cache** 属性，以编程方式控制 CDN 缓存行为。 有关 **HttpResponse.Cache** 属性的信息，请参阅 [HttpResponse.Cache 属性](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache)和 [HttpCachePolicy 类](/dotnet/api/system.web.httpcachepolicy)。  

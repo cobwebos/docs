@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc1599fc0c2f8c55c709ab674c10dd53c8d8dc04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67593900"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887700"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>分析 Microsoft Azure CDN 中的边缘节点性能
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -59,7 +59,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
    
     将显示边缘节点分析仪表板。
 
-### <a name="chart"></a>图表
+### <a name="chart"></a>Chart
 仪表板包含一张图表，用于跟踪在其正下方显示的时间线中选择的时间段内的指标。  一条时间线将直接显示在图表下方，并以图表方式表示直到最近两年的 CDN 活动。
 
 #### <a name="using-the-chart"></a>使用图表
@@ -84,14 +84,14 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
   * 降低运营成本。
 * 改进的数据传输加速，因为将直接从 CDN 提供更多请求。
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | 缓存效率 |表示从缓存中提供的数据的传输百分比。 该指标度量何时直接从 CDN（边缘服务器）向请求者（例如，Web 浏览器）提供所请求内容的缓存版本 |
 | 命中率 |表示从缓存提供的请求的百分比。 该指标度量何时直接从 CDN（边缘服务器）向请求者（例如，Web 浏览器）提供所请求内容的缓存版本。 |
 | % 的远程字节 - 无缓存配置 |表示从源服务器提供给 CDN（边缘服务器）的流量的百分比，由于“绕过缓存”功能（HTTP 规则引擎），该流量不会被缓存。 |
 | % 的远程字节 - 到期缓存 |指示由于陈旧内容重新验证而从源服务器提供给 CDN（边缘服务器）的流量的百分比。 |
 
-#### <a name="usage-metrics"></a>使用指标
+#### <a name="usage-metrics"></a>使用情况指标
 使用这些指标的目的是为了让你深入了解以下降低成本的措施：
 
 * 通过 CDN 将运营成本降至最低。
@@ -102,7 +102,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 > 
 > 
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | 平均传出字节 |表示从 CDN（边缘服务器）向请求者（例如，Web 浏览器）提供的每个请求传输的平均字节数。 |
 | 无缓存配置字节率 |表示从 CDN（边缘服务器）向请求者（例如，Web 浏览器）提供的由于“绕过缓存”功能而不会被缓存的流量的百分比。 |
@@ -114,10 +114,10 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 #### <a name="performance-metrics"></a>性能指标
 这些指标的目的是跟踪流量的整体 CDN 性能。
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | 传输速率 |表示内容从 CDN 传输到请求者的平均速率。 |
-| Duration |表示将资产传送给请求者（例如，Web 浏览器）所需的平均时间（以毫秒为单位）。 |
+| 持续时间 |表示将资产传送给请求者（例如，Web 浏览器）所需的平均时间（以毫秒为单位）。 |
 | 压缩请求速率 |表示以压缩格式从 CDN（边缘服务器）传递到请求者（例如，Web 浏览器）的命中数的百分比。 |
 | 4xx 错误率 |表示生成 4xx 状态代码的命中数的百分比。 |
 | 5xx 错误率 |表示生成 5xx 状态代码的命中数的百分比。 |
@@ -183,7 +183,7 @@ CDN 活动数据必须由“边缘性能分析”模块收集，才能为其生�
 | 502 错误 |包含一个条形图，允许查看导致 502 Bad Gateway 响应代码的前 10 个请求。 当服务器和 HTTP 代理之间发生 HTTP 协议故障时，会出现 502 Bad Gateway 响应代码。 在我们的 CDN 中，当客户源服务器向边缘服务器返回无效响应时，通常出现发生 502 Bad Gateway 响应代码。 如果响应无法解析或不完整，则该响应无效。 |
 | 5xx 错误 |包含一个条形图，允许查看导致 500 范围内响应代码的前 10 个请求。  此报告中排除 502 Bad Gateway 和 504 Gateway Timeout 响应代码。 |
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure CDN 概述](cdn-overview.md)
 * [Microsoft Azure CDN 中的实时统计信息](cdn-real-time-stats.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)

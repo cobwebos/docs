@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73935886"
 ---
 **上次文档更新**时间：太平洋标准时间 2019 10:00 AM PST。
@@ -105,7 +105,7 @@ Windows OS support for TAA mitigation is enabled: True
 
 
 
-**步骤 3**：若要启用内核虚拟地址（KVAS）和分支目标注入（BTI） OS 支持，请按照[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)中的说明使用`Session Manager`注册表项启用保护。 必须重启。
+**步骤 3**：若要启用内核虚拟地址（KVAS）和分支目标注入（BTI） OS 支持，请按照[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)中的说明使用 `Session Manager` 注册表项启用保护。 必须重启。
 
 
 **步骤 4**：对于使用[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)的部署（仅限 D3 和 E3）：这些说明适用于你用作 hyper-v 主机的虚拟机。

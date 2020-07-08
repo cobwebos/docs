@@ -1,15 +1,14 @@
 ---
 title: 备份 Azure VM 中的 SQL Server 数据库
 description: 本文介绍如何使用 Azure 备份来备份 Azure 虚拟机上的 SQL Server 数据库。
-ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 3fd94dc6332d96f875c164dfeadff3a8ab2cad4e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 16e24ed94d8017d9fb922193bb16a33ec7a9cdfd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817537"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -34,9 +33,10 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 在备份 SQL Server 数据库之前，请检查以下条件：
 
 1. 在托管 SQL Server 实例的 VM 所在的同一区域和订阅中标识或创建一个[恢复服务保管库](backup-sql-server-database-azure-vms.md#create-a-recovery-services-vault)。
-2. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
-3. 确认 SQL Server 数据库是否遵循 [Azure 备份的数据库命名准则](#database-naming-guidelines-for-azure-backup)。
-4. 检查是否未为该数据库启用了其他任何备份解决方案。 在备份数据库之前，请禁用其他所有 SQL Server 备份。
+1. 验证 VM 是否已建立[网络连接](backup-sql-server-database-azure-vms.md#establish-network-connectivity)。
+1. 确认 SQL Server 数据库是否遵循 [Azure 备份的数据库命名准则](#database-naming-guidelines-for-azure-backup)。
+1. 请确保 Azure 资源管理器（ARM） Vm 的 SQL Server VM 名称和资源组名称的组合长度不超过84个字符（对于经典 Vm 为77个字符）。 此限制是因为某些字符由该服务预留。
+1. 检查是否未为该数据库启用了其他任何备份解决方案。 在备份数据库之前，请禁用其他所有 SQL Server 备份。
 
 > [!NOTE]
 > 可以同时针对某个 Azure VM 以及该 VM 上运行的 SQL Server 数据库启用 Azure 备份，而不会发生任何冲突。
@@ -50,7 +50,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 | **选项**                        | **优点**                                               | **缺点**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 专用终结点                 | 允许通过虚拟网络中的专用 IP 进行备份  <br><br>   提供网络和保管库端的精细控制 | 产生标准专用终结点[开销](https://azure.microsoft.com/pricing/details/private-link/) |
-| NSG 服务标记                  | 由于范围更改会自动合并，因此更易于管理   <br><br>   无额外成本 | 仅可与 NSG 配合使用  <br><br>    提供对整个服务的访问权限 |
+| NSG 服务标记                  | 由于范围更改会自动合并，因此更易于管理   <br><br>   无额外成本 | 只可用于 NSG  <br><br>    提供对整个服务的访问权限 |
 | Azure 防火墙 FQDN 标记          | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用                         |
 | 允许访问服务 FQDN/IP | 无额外成本   <br><br>  适用于所有网络安全设备和防火墙 | 可能需要访问一组广泛的 IP 或 FQDN   |
 | 使用 HTTP 代理                 | 对 VM 进行单点 Internet 访问                       | 通过代理软件运行 VM 带来的额外成本         |
@@ -67,7 +67,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 1. 在“所有服务”中转到“网络安全组”，然后选择“网络安全组”。
 
-1. 在“设置”下，选择“出站安全规则”。 
+1. 在“设置”下选择“出站安全规则”。 
 
 1. 选择 **添加** 。 输入创建新规则所需的所有详细信息，如[安全规则设置](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)中所述。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
@@ -215,7 +215,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
    ![为新的备份策略选择策略类型](./media/backup-azure-sql-database/policy-type-details.png)
 
 3. 在“策略名称”处输入新策略的名称。
-4. 在“完整备份策略”中选择“备份频率” 。 选择“每日”或“每周”。
+4. 在“完整备份策略”中选择一个**备份频率**。 选择“每日”或“每周”。
 
    * 如果选择“每日”，请选择备份作业开始时的小时和时区。
    * 如果选择“每周”，请选择备份作业开始时的星期、小时和时区。
@@ -258,13 +258,13 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 14. 完成备份策略的编辑后，选择“确定”。
 
 > [!NOTE]
-> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将保留，直到最后一个日志备份的保留期结束。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异和 2 小时日志。 所有这些备份都将保留 30 天。 不过，只有在下一个完整备份可用后（即 30 + 7 天后），才会真正清除/删除每周完整备份。 例如，每周完整备份在 11 月 16 日执行。 根据保留策略，它应保留到 12 月 16 日。 此完整备份的最后一次日志备份在下一次计划完整备份（11 月 22 日）之前发生。 在此日志有效期在 12 月 22 日截止之前，不能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将保留，直到最后一个日志备份的保留期结束。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户具有每周完整备份、每日差异和 2 小时日志。 所有这些备份都将保留 30 天。 不过，只有在下一个完整备份可用后（即 30 + 7 天后），才会真正清除/删除每周完整备份。 例如，每周完整备份在 11 月 16 日执行。 根据保留策略，它应保留到12月16日。 此完整备份的最后一次日志备份在下一次计划完整备份（11 月 22 日）之前发生。 在此日志有效期在 12 月 22 日截止之前，不能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
 
 ## <a name="enable-auto-protection"></a>启用自动保护  
 
 可以启用自动保护，以自动将所有现有和未来数据库备份到独立的 SQL Server 实例或 AlwaysOn 可用性组。
 
-* 可以一次性选择进行自动保护的数据库数目没有限制。
+* 你可以选择一次自动保护的数据库数量没有限制。 发现通常每8小时运行一次。 但是，如果您通过**选择 "重新发现数据库**" 选项手动运行发现，则可以立即发现和保护新数据库。
 * 启用自动保护时，无法在实例中选择性地保护数据库或排除数据库。
 * 如果实例已经包含某些受保护的数据库，即使你启用了自动保护，它们将继续受各自策略的保护。 稍后添加的所有不受保护的数据库将只有在启用自动保护时定义的单个策略，在“配置备份”下列出。 不过，以后可以更改与自动保护的数据库相关联的策略。  
 
@@ -283,7 +283,7 @@ SQL Server 数据库是需要低恢复点目标 (RPO) 和长期保留的关键�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何操作：
+了解如何：
 
 * [还原已备份的 SQL Server 数据库](restore-sql-database-azure-vm.md)
 * [管理已备份的 SQL Server 数据库](manage-monitor-sql-database-backup.md)

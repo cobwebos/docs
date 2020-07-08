@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74085221"
 ---
 创建虚拟网络网关时，需要指定要使用的网关 SKU。 请根据工作负荷、吞吐量、功能和 SLA 的类型，选择满足需求的 SKU。 有关 Azure 可用性区域中的虚拟网络网关 Sku，请参阅[Azure 可用性区域网关 sku](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "74085221"
 
 由于 SLA 和功能集的差异，建议使用以下 SKU 比较生产与开发-测试：
 
-| **工作负载**                       | **Sku**               |
+| **工作负荷**                       | SKU               |
 | ---                                | ---                    |
 | 生产、关键工作负荷**** | 除基本 SKU 外的所有第 1 代和第 2 代 SKU |
 | 开发-测试或概念证明****   | 基本 (\*\*)                 |

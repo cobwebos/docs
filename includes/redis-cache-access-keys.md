@@ -10,7 +10,7 @@ ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720307"

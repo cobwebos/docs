@@ -3,14 +3,14 @@ title: 设置 Windows 开发环境
 description: 安装运行时、SDK 和工具并创建本地开发群集。 完成此设置后，就可以在 Windows 上开始生成应用程序。
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888106"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -21,9 +21,9 @@ ms.locfileid: "81731757"
 >
 >
 
-若要在 Windows 开发计算机上生成并运行 [Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
+若要在 Windows 开发计算机上生成并运行[Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="supported-operating-system-versions"></a>支持的操作系统版本
 
@@ -54,7 +54,7 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]
 
-### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>使用 Visual Studio 2015（要求 Visual Studio 2015 Update 2 或更高版本）
+### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>使用 Visual Studio 2015（需要安装 Visual Studio 2015 Update 2 或更高版本）
 
 对于 Visual Studio 2015，Service Fabric 工具是使用 Web 平台安装程序与 SDK 和运行时 一起安装的：
 
@@ -62,14 +62,14 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 ### <a name="sdk-installation-only"></a>仅安装 SDK
 
-如果只需 SDK，可以安装此包：
+如果只需要 SDK，则安装此包：
 
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]
 
 当前版本包括：
 
-* Service Fabric SDK 和工具4.1.409
-* Service Fabric 运行时7.1.409
+* Service Fabric SDK 和工具4.1.416
+* Service Fabric 运行时7.1.417
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 
@@ -86,7 +86,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 ## <a name="install-docker-optional"></a>安装 Docker（可选）
 
-[Service Fabric 是容器业务流程协调程序](service-fabric-containers-overview.md)，用于跨计算机群集部署微服务。 若要在本地开发群集上运行 Windows 容器应用程序，必须先安装用于 Windows 的 Docker。 获取[用于 Windows 的 Docker CE (稳定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。  此步骤是运行基于 Windows 的 Docker 映像所必需的。
+[Service Fabric 是容器业务流程协调程序](service-fabric-containers-overview.md)，用于跨计算机群集部署微服务。 若要在本地开发群集上运行 Windows 容器应用程序，必须先安装用于 Windows 的 Docker。 获取[用于 Windows 的 Docker CE (稳定版)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 安装并启动 Docker 以后，右键单击任务栏图标，并选择“切换到 Windows 容器”。 此步骤是运行基于 Windows 的 Docker 映像所必需的。
 
 ## <a name="next-steps"></a>后续步骤
 

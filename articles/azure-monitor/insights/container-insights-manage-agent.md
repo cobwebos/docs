@@ -2,13 +2,13 @@
 title: 如何管理用于容器的 Azure Monitor 代理 | Microsoft Docs
 description: 本文介绍使用容器化 Log Analytics 代理来管理最常见的维护任务，该代理由用于容器的 Azure Monitor 使用。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: ce014d27c6acc473c4a435dfed4757fb0884f4fe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/15/2020
+ms.openlocfilehash: ca0fa88cf27db15d45a2c855a1af351764c48fde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887505"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理用于容器的 Azure Monitor 代理
 
@@ -68,7 +68,7 @@ $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
 ```
 
-如果 Log Analytics 工作区位于 Azure 中国，请运行以下命令：
+如果 Log Analytics 的工作区位于 Azure 中国世纪互联，请运行以下命令：
 
 ```
 $ helm upgrade --name myrelease-1 \
@@ -93,6 +93,20 @@ $ helm upgrade --name myrelease-1 \
 ```
 $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
+```
+
+### <a name="upgrade-agent-on-azure-arc-enabled-kubernetes"></a>已启用 Azure Arc 上的升级代理 Kubernetes
+
+执行以下命令，在没有代理终结点的启用了 Azure Arc 的 Kubernetes 群集上升级代理。
+
+```
+$ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+```
+
+执行以下命令以在指定代理终结点时升级代理。 有关代理终结点的详细信息，请参阅[配置代理终结点](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint)。
+
+```
+helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
 ```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>如何禁用容器上的环境变量集合

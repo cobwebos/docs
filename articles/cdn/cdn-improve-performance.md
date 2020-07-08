@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887695"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>通过在 Azure CDN 中压缩文件来提高性能
 文件压缩是提高文件传输速度和增加页面加载性能的一种简单有效的方法，可通过在从服务器发送文件之前减少其大小来实现。 文件压缩可以减少带宽成本，并为用户提供更快的响应体验。
@@ -76,7 +76,7 @@ ms.locfileid: "81253758"
 > 本部分仅适用于**来自 Verizon 的高级 Azure CDN** 配置文件。
 > 
 
-1. 从“CDN 配置文件”页中，选择“管理”****。
+1. 从 "CDN 配置文件" 页中，选择 "**管理**"。
 
     ![CDN 管理选择](./media/cdn-file-compression/cdn-manage-btn.png)
 
@@ -139,22 +139,22 @@ ms.locfileid: "81253758"
 这些表描述每种方案的 Azure CDN 压缩行为：
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>已禁用压缩或文件不适合压缩
-| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | &nbsp; &nbsp;说明&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | &nbsp; &nbsp; &nbsp; &nbsp; 说明 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
-| Compressed |Compressed |Compressed | |
-| Compressed |未压缩 |未压缩 | |
-| Compressed |未缓存 |压缩或未压缩 |源响应确定 CDN 是否执行压缩。 |
-| 未压缩 |Compressed |未压缩 | |
+| 压缩 |压缩 |压缩 | |
+| 压缩 |未压缩 |未压缩 | |
+| 压缩 |未缓存 |压缩或未压缩 |源响应确定 CDN 是否执行压缩。 |
+| 未压缩 |压缩 |未压缩 | |
 | 未压缩 |未压缩 |未压缩 | |
 | 未压缩 |未缓存 |未压缩 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已启用压缩且文件适合压缩
-| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | 注意 |
+| 客户端请求的格式（通过 Accept-Encoding 标头） | 缓存文件格式 | CDN 对客户端的响应 | 说明 |
 | --- | --- | --- | --- |
-| Compressed |Compressed |Compressed |在支持的格式之间进行 CDN 转码。 |
-| Compressed |未压缩 |Compressed |CDN 执行压缩。 |
-| Compressed |未缓存 |Compressed |如果源返回未压缩文件，CDN 将执行压缩。 <br/>来自 Verizon 的 Azure CDN 将传递第一个请求上的未压缩文件，然后压缩并缓存文件以供后续请求使用****。 <br/>永远不会压缩带 `Cache-Control: no-cache` 标头的文件。 |
-| 未压缩 |Compressed |未压缩 |CDN 执行解压缩。 |
+| 压缩 |压缩 |压缩 |在支持的格式之间进行 CDN 转码。 |
+| 压缩 |未压缩 |压缩 |CDN 执行压缩。 |
+| 压缩 |未缓存 |压缩 |如果源返回未压缩文件，CDN 将执行压缩。 <br/>来自 Verizon 的 Azure CDN 将传递第一个请求上的未压缩文件，然后压缩并缓存文件以供后续请求使用****。 <br/>永远不会压缩带 `Cache-Control: no-cache` 标头的文件。 |
+| 未压缩 |压缩 |未压缩 |CDN 执行解压缩。 |
 | 未压缩 |未压缩 |未压缩 | |
 | 未压缩 |未缓存 |未压缩 | |
 
@@ -165,6 +165,6 @@ ms.locfileid: "81253758"
 - application/vnd.apple.mpegurl
 - application/f4m+xml 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [排查 CDN 文件压缩问题](cdn-troubleshoot-compression.md)    
 

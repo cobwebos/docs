@@ -2,16 +2,14 @@
 title: 轮换 Azure Kubernetes 服务 (AKS) 中的证书
 description: 了解如何轮换 Azure Kubernetes 服务 (AKS) 群集中的证书。
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: zarhoads
-ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817443"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>轮换 Azure Kubernetes 服务 (AKS) 中的证书
 
@@ -19,7 +17,7 @@ Azure Kubernetes 服务 (AKS) 使用证书对其许多组件进行身份验证�
 
 本文介绍如何轮换 AKS 群集中的证书。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文要求运行 Azure CLI 2.0.77 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -32,7 +30,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * 每个 kubelet 还创建一个证书签名请求 (CSR)，该 CSR 由群集 CA 签名，用于从 kubelet 到 API 服务器的通信。
 * etcd 键值存储具有由群集 CA 签名的证书，用于从 etcd 到 API 服务器的通信。
 * etcd 键值存储创建一个 CA，该 CA 对证书进行签名，以便对 AKS 群集中 etcd 副本之间的数据复制进行身份验证和授权。
-* API 聚合器使用群集 CA 颁发证书以便与其他 Api 通信。 API 聚合器也可以拥有自己的 CA 来颁发这些证书，但它目前使用群集 CA。
+* API 聚合器使用群集 CA 颁发证书，以便与其他 API 进行通信。 API 聚合器也可以拥有自己的 CA 来颁发这些证书，但它目前使用群集 CA。
 * 每个节点都使用服务帐户 (SA) 令牌，该令牌由群集 CA 签名。
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 
@@ -41,8 +39,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下命令会显示 *myAKSCluster* 群集的证书详细信息。
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>轮换群集证书
@@ -72,7 +69,7 @@ $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-通过运行 `kubectl` 来更新 `az aks get-credentials` 使用的证书。
+通过运行 `az aks get-credentials` 来更新 `kubectl` 使用的证书。
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing

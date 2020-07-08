@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b8654500fd697685b38e4f51ba1069e0cf6ccfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bab78d60e5007d9c3eb61afa7bc63a9b44e47aa1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888031"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>通过数据移动库传输数据
 
@@ -44,12 +44,12 @@ Azure 存储数据移动库是一个高性能的跨平台开源库，用于上�
 3. 在 Visual Studio Code 中打开此目录。 通过在 Windows 中命令行上键入 `code .` 可快速完成此步骤。
 4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 重新启动 Visual Studio Code。
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
-6. 修改 `launch.json` 下的 `.vscode`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
+6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
 7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，并验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>将数据移动库添加到项目
 
-1. 将最新版本的数据移动库添加到 `dependencies` 文件的 `<project-name>.csproj` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 此时应会显示一条提示，指出要还原项目。 请单击“还原”按钮。 也可以从命令行还原项目，在项目的根目录中键入 `dotnet restore` 命令即可。
 
 修改 `<project-name>.csproj`：
@@ -525,7 +525,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
     ConsoleKeyInfo keyinfo;
     try
     {
-        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, true, null, context, cancellationSource.Token);
+        task = TransferManager.CopyAsync(sourceBlob, destinationBlob, CopyMethod.ServiceSideAsyncCopy, null, context, cancellationSource.Token);
         while(!task.IsCompleted)
         {
             if(Console.KeyAvailable)

@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure Kubernetes 服务 (AKS) 运行 Apache Spark 作业
-description: 使用 Azure Kubernetes 服务（AKS）创建并运行用于大规模数据处理的 Apache Spark 作业。
+description: 使用 Azure Kubernetes 服务 (AKS) 创建并运行 Apache Spark 作业来进行大规模数据处理。
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 962d0d6dd51bb30f5df9ca0b609acf932777ebcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887516"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>在 AKS 中运行 Apache Spark 作业
 
-[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-latest-release]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
+[Apache Spark][apache-spark] 是用于大规模数据处理的高速引擎。 从 [Spark 2.3.0 版][spark-kubernetes-earliest-version]开始，Apache Spark 原生支持与 Kubernetes 群集集成。 Azure Kubernetes 服务 (AKS) 是 Azure 中运行的托管 Kubernetes 环境。 本文档详细说明如何在 Azure Kubernetes 服务 (AKS) 群集上准备和运行 Apache Spark 作业。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -25,6 +25,7 @@ ms.locfileid: "80877621"
 * [Docker Hub][docker-hub] 帐户，或 [Azure 容器注册表][acr-create]。
 * 已在开发系统上[安装][azure-cli] Azure CLI。
 * 已在系统上安装 [JDK 8][java-install]。
+* 已在系统上安装[Apache Maven][maven-install] 。
 * 已在系统上安装 SBT（[Scala 生成工具][sbt-install]）。
 * 已在系统上安装 Git 命令行工具。
 
@@ -293,7 +294,7 @@ Pi is roughly 3.152155760778804
 
 在上述示例中，Spark jar 文件已上传到 Azure 存储。 另一种做法是将 jar 文件打包成自定义生成的 Docker 映像。
 
-为此，请在 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目录中查找 Spark 映像的 `dockerfile`。 为 Spark `ADD`作业`jar`添加语句`WORKDIR` ，并将其添加`ENTRYPOINT`到声明。
+为此，请在 `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` 目录中查找 Spark 映像的 `dockerfile`。 在 `WORKDIR` 与 `ENTRYPOINT` 声明之间的某个位置为 Spark 作业 `jar` 添加 `ADD` 语句。
 
 将 jar 路径更新为 `SparkPi-assembly-0.1.0-SNAPSHOT.jar` 文件在开发系统上的位置。 也可以使用自己的自定义 jar 文件。
 
@@ -340,9 +341,10 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 [apache-spark]: https://spark.apache.org/
 [docker-hub]: https://docs.docker.com/docker-hub/
 [java-install]: https://aka.ms/azure-jdks
+[maven-install]: https://maven.apache.org/install.html
 [sbt-install]: https://www.scala-sbt.org/1.0/docs/Setup.html
 [spark-docs]: https://spark.apache.org/docs/latest/running-on-kubernetes.html
-[spark-latest-release]: https://spark.apache.org/releases/spark-release-2-3-0.html
+[spark-kubernetes-earliest-version]: https://spark.apache.org/releases/spark-release-2-3-0.html
 [spark-quickstart]: https://spark.apache.org/docs/latest/quick-start.html
 
 

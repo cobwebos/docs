@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887579"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "81260269"
 > 
 > 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [清除 Azure CDN 终结点](cdn-purge-endpoint.md)
 * [Azure CDN REST API 参考：预加载终结点上的内容](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API 参考：清除终结点上的内容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

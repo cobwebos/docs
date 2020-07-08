@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77463201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887891"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全一般信息和指南
 
@@ -43,9 +43,9 @@ ms.locfileid: "77463201"
 
 * 通过启用了授权的服务进行数据访问时：
   * 在请求的上下文中调用 Ranger authorization 插件。
-  * Ranger 应用为服务配置的策略。 如果 Ranger 策略失败，则会将访问检查推迟到文件系统。 某些服务（如 MapReduce）仅检查提交请求的同一用户所拥有的文件/文件夹。 Hive 等服务，检查所有权是否匹配或相应的文件系统权限`rwx`（）。
+  * Ranger 应用为服务配置的策略。 如果 Ranger 策略失败，则会将访问检查推迟到文件系统。 某些服务（如 MapReduce）仅检查提交请求的同一用户所拥有的文件/文件夹。 Hive 等服务，检查所有权是否匹配或相应的文件系统权限（ `rwx` ）。
 
-* 对于 Hive，除了具有创建/更新/删除权限的权限外，用户还应具有`rwx`对存储和所有子目录的目录的权限。
+* 对于 Hive，除了具有创建/更新/删除权限的权限外，用户还应具有对 `rwx` 存储和所有子目录的目录的权限。
 
 * 可以将策略应用于组（首选），而不是个人。
 
@@ -66,14 +66,14 @@ ms.locfileid: "77463201"
 
 ### <a name="default-hdfs-permissions"></a>默认 HDFS 权限
 
-* 默认情况下，用户无法访问 HDFS 上**/** 的文件夹（他们需要在存储 blob 所有者角色中才能成功访问）。
-* 对于 mapreduce 和其他的暂存目录，将创建一个用户特定的目录，并为`sticky _wx`其提供权限。 用户可以在其下创建文件和文件夹，但不能查看其他项目。
+* 默认情况下，用户无法访问 **/** HDFS 上的文件夹（他们需要在存储 blob 所有者角色中才能成功访问）。
+* 对于 mapreduce 和其他的暂存目录，将创建一个用户特定的目录，并为其提供 `sticky _wx` 权限。 用户可以在其下创建文件和文件夹，但不能查看其他项目。
 
 ### <a name="url-auth"></a>URL 身份验证
 
 如果启用了 url 身份验证：
 
-* 此配置将包含 url 身份验证中包含的前缀（如`adl://`）。
+* 此配置将包含 url 身份验证中包含的前缀（如 `adl://` ）。
 * 如果此 url 的访问权限，则 Ranger 将检查用户是否在允许列表中。
 * Ranger 不检查任何精细的策略。
 
@@ -119,7 +119,7 @@ HDInsight 不能依赖于本地域控制器或自定义域控制器，因为它�
 
 ### <a name="azure-ad-ds-instance"></a>Azure AD DS 实例
 
-* 创建具有的`.onmicrosoft.com domain`实例。 这样一来，就不会有多个 DNS 服务器为域提供服务。
+* 创建具有的实例 `.onmicrosoft.com domain` 。 这样一来，就不会有多个 DNS 服务器为域提供服务。
 * 为 LDAPS 创建自签名证书并将其上传到 Azure AD DS。
 * 使用对等互连虚拟网络部署群集（当有许多团队部署 HDInsight ESP 群集时，这将很有帮助）。 这可以确保不需要在具有域控制器的虚拟网络上打开端口（Nsg）。
 * 为虚拟网络正确配置 DNS （Azure AD DS 域名应解析为不包含任何主机文件条目）。
@@ -159,6 +159,17 @@ Azure AD DS 会定期同步 Azure AD 的对象。 Azure 门户上的 "Azure AD D
 * Nsg 过于严格，无法加入域。
 * 托管标识没有足够的权限。
 * 群集名称在前六个字符上不唯一（使用其他活动群集或已删除的群集）。
+
+## <a name="authentication-setup-and-configuration"></a>身份验证设置和配置
+
+### <a name="user-principal-name-upn"></a>用户主体名称 (UPN)
+
+* 请为所有服务使用小写-Upn 在 ESP 群集中不区分大小写，但
+* UPN 前缀应匹配 Azure AD-DS 中的 SAMAccountName。 不需要与 "邮件" 字段匹配。
+
+### <a name="ldap-properties-in-ambari-configuration"></a>Ambari 配置中的 LDAP 属性
+
+有关影响 HDInsight 群集配置的 Ambari 属性的完整列表，请参阅[AMBARI LDAP 身份验证设置](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

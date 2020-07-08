@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463567"
 ---
 Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的每月电子邮件将让你访问高级报告和分析以及[所有 api][all APIs] （WEB、SMTP、事件、分析等）。 有关 SendGrid 提供的其他服务的信息，请访问 [SendGrid 解决方案][SendGrid Solutions]页。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>注册 SendGrid 帐户
-1. 登录 [Azure 门户][Azure portal]。
+1. 登录到 [Azure 门户][Azure portal]。
 2. 在 "Azure 门户" 菜单或 "主页" 中，选择 "**创建资源**"。
 
     ![command-bar-new][command-bar-new]
@@ -26,14 +26,14 @@ Azure 客户每月可解锁 25,000 封免费电子邮件。 这些25000免费的
     ![sendgrid-create][sendgrid-create]
 5. 输入“名称”**** 标识 Azure 设置中的 SendGrid 服务。 名称的长度必须介于 1 到 100 个字符之间，并只能包含字母字符、短划线、句点和下划线。 名称在订阅的 Azure 应用商店项目的列表中必须是唯一的。
 6. 输入并确认“密码”****。
-7. 选择**订阅**。
+7. 选择“订阅”。
 8. 新建“资源组”**** 或使用现有资源组。
 9. 在“定价层”**** 对话框中，选择要注册的 SendGrid 计划。
 
     ![sendgrid-pricing][sendgrid-pricing]
 10. 如果有“促销代码”****，请输入。
-11. 输入“联系信息”****。
-12. 查看并接受“法律条款”****。
+11. 输入**联系信息**。
+12. 查看并接受**法律条款**。
 13. 确认你的购买后，你会看到 "**部署成功**" 弹出窗口，你会看到你的帐户已列出。
 
     ![all-resources][all-resources]

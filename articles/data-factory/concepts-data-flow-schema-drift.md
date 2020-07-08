@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886634"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>映射数据流中的架构偏差
 
@@ -37,7 +37,7 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 ## <a name="schema-drift-in-source"></a>源中的架构偏差
 
-从源定义进入数据流的列在源投影中不存在时定义为 "偏移"。 您可以从源转换的 "投影" 选项卡中查看源投影。 为源选择数据集时，ADF 会自动从数据集中获取架构，并通过该数据集架构定义创建项目。
+从源定义进入数据流的列在源投影中不存在时定义为 "偏移"。 您可以从源转换的 "投影" 选项卡中查看源投影。 为源选择数据集时，ADF 会自动从数据集中获取架构，并基于该数据集架构定义创建投影。
 
 在源转换中，架构偏移定义为读取未定义数据集架构的列。 若要启用架构偏移，请选中 "允许在源转换中使用**架构偏移**"。
 
@@ -59,7 +59,7 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 当数据流包含偏移列时，可以使用以下方法在转换中访问它们：
 
-* 使用`byPosition`和`byName`表达式按名称或位置号显式引用列。
+* 使用 `byPosition` 和 `byName` 表达式按名称或位置号显式引用列。
 * 添加派生列或聚合转换中的列模式，以匹配任何名称、流、位置或类型的组合
 * 在 Select 或 Sink 转换中添加基于规则的映射，以便通过模式将偏移列与列别名匹配
 
@@ -71,7 +71,7 @@ Azure 数据工厂以本机方式支持灵活的架构，这些架构从执行�
 
 ![地图偏移](media/data-flow/mapdrifted1.png "地图偏移")
 
-在生成的派生列转换中，每个偏移列都映射到其检测到的名称和数据类型。 在上面的数据预览中，将 "movieId" 列检测为一个整数。 单击**Map 偏移**后，MovieId 在派生列中定义为`toInteger(byName('movieId'))` ，在下游转换中包含在架构视图中。
+在生成的派生列转换中，每个偏移列都映射到其检测到的名称和数据类型。 在上面的数据预览中，将 "movieId" 列检测为一个整数。 单击**Map 偏移**后，MovieId 在派生列中定义为，在 `toInteger(byName('movieId'))` 下游转换中包含在架构视图中。
 
 ![地图偏移](media/data-flow/mapdrifted2.png "地图偏移")
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89a4c934a0245c39f6015a43d9de16db800691d8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 9cb9f1a33c37487f4bfb1419d45d4e42a862d815
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888121"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>为块 blob 配置对象复制（预览）
 
@@ -28,7 +28,9 @@ ms.locfileid: "84170624"
 
 在配置对象复制前，如果还没有源存储帐户和目标存储帐户，请先创建它们。 这两个帐户都必须是常规用途 v2 存储帐户。 有关详细信息，请参阅[创建 Azure 存储帐户](../common/storage-account-create.md)。
 
-另外，还请确保已注册以下功能预览：
+存储帐户可用作最多两个目标帐户的源帐户。 并且目标帐户不能有两个以上的源帐户。 源帐户和目标帐户可能全都位于不同的区域。 可以配置单独的复制策略，以便将数据复制到每个目标帐户。
+
+在开始之前，请确保已注册以下功能预览：
 
 - [对象复制（预览）](object-replication-overview.md)
 - [Blob 版本控制（预览版）](versioning-overview.md)
@@ -41,7 +43,7 @@ ms.locfileid: "84170624"
 若要在 Azure 门户中创建复制策略，请按照以下步骤操作：
 
 1. 在 Azure 门户中，转到源存储帐户。
-1. 在“设置”下，选择“对象复制”。
+1. 在**Blob 服务**下，选择**对象复制**。
 1. 选择“设置复制”。
 1. 选择目标订阅和存储帐户。
 1. 在“容器对”部分中，选择源帐户中的源容器，以及目标帐户中的目标容器。 每个复制策略最多可以创建 10 个容器对。

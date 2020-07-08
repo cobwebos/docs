@@ -10,21 +10,21 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254009"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887733"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
 本文介绍现有 CDN 配置文件中用于创建 [Azure 内容分发网络 (CDN)](cdn-overview.md) 终结点的所有设置。 创建配置文件和终结点以后，即可将内容交付给客户。 有关如何创建配置文件和终结点的快速入门，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 在创建 CDN 终结点之前，必须已创建至少一个 CDN 配置文件，其中可能包含一个或多个 CDN 终结点。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。 由于 CDN 定价是在 CDN 配置文件级别应用的，因此如果需要使用混合的 Azure CDN 定价层，则必须创建多个 CDN 配置文件。 若要创建 CDN 配置文件，请参阅[创建新的 CDN 配置文件](cdn-create-new-endpoint.md#create-a-new-cdn-profile)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -36,7 +36,7 @@ ms.locfileid: "81254009"
    
     此时会显示“CDN 配置文件”窗格。
 
-2. 选择“终结点”。****
+2. 选择 "**终结点**"。
    
     ![CDN 选定终结点](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
    
@@ -44,7 +44,7 @@ ms.locfileid: "81254009"
    
     ![“添加终结点”页](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. 至于“名称”****，请输入新建 CDN 终结点的唯一名称。 此名称用于访问域_ \<终结点>_ 的缓存资源。 azureedge.net。
+3. 至于“名称”****，请输入新建 CDN 终结点的唯一名称。 此名称用于访问在 azureedge.net 的缓存资源。 _\<endpointname>_
 
 4. 对于“源类型”，**** 请选择下述源类型之一： 
    - **存储**：适用于 Azure 存储
@@ -62,7 +62,7 @@ ms.locfileid: "81254009"
    > 某些类型的原点（例如 Azure 存储和 Web 应用）需要主机头来匹配原点的域。 除非拥有的原点要求不同于其域的主机头，否则应当保留默认值。
    > 
     
-8. 至于“协议”和“源服务器端口”********，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域（_\<终结点>_ azureedge.net）访问 HTTPS 内容。 
+8. 至于“协议”和“源服务器端口”********，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域（ _\<endpointname>_ . azureedge.net）访问 HTTPS 内容。 
    
    > [!NOTE]
    > “源服务器端口”**** 值只决定终结点用来从源服务器检索信息的端口。 终结点自身仅可用于默认 HTTP 和 HTTPS 端口（80 和 443）上的最终客户端，不管“源服务器端口”值如何****。  
@@ -88,7 +88,7 @@ ms.locfileid: "81254009"
        - [**大文件下载**](cdn-optimization-overview.md#large-file-download)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
-10. 选择“添加”**** 可创建新的终结点。
+10. 选择“添加”可创建新的终结点。
    
     终结点在创建后出现在配置文件的终结点列表中。
     
@@ -97,7 +97,7 @@ ms.locfileid: "81254009"
     终结点不会立即可供使用，因为注册传播需花时间： 
     - 对于 **Microsoft 推出的 Azure CDN 标准版**配置文件，传播通常可在 10 分钟内完成。 
     - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成********。 
+    - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成 。 
    
     如果尝试在终结点配置传播到接入点 (POP) 服务器之前使用 CDN 域名，则可能会收到 HTTP 404 响应状态。 如果在创建终结点数小时后依然收到 404 响应状态，请参阅[排查 Azure CDN 终结点返回 404 状态代码的问题](cdn-troubleshoot-endpoint.md)。
 

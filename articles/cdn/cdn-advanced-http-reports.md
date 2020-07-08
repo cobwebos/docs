@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 0b0eec2425f8a1663eb7a09c83a6bad037d1d79c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886057"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>使用 Azure CDN 高级 HTTP 报告分析使用情况统计信息
 ## <a name="overview"></a>概述
@@ -48,7 +48,7 @@ ms.locfileid: "67594112"
 
 下面为每种类型的基于地图的地理报告提供简要说明。
 
-| 报表名称 | 说明 |
+| 报表名称 | 描述 |
 | --- | --- |
 | 世界地图 |此报告允许查看全球对 CDN 内容的需求。 每个国家/地区都在世界地图上进行了颜色编码，以表示源自该区域的命中的百分比。 |
 | 美国地图 |此报告允许查看美国对 CDN 内容的需求。 每个州都在此地图上进行了颜色编码，以表示源自该区域的命中数的百分比。 |
@@ -71,7 +71,7 @@ ms.locfileid: "67594112"
 
 下方提供了两种类型的报告的简要说明。
 
-| 报表名称 | 说明 |
+| 报表名称 | 描述 |
 | --- | --- |
 | 热门城市 |此报告根据源自该区域的命中数对城市进行排名。 |
 | 热门国家/地区 |此报告根据源自该国家/地区的点击次数对国家/地区进行排名。 |
@@ -199,7 +199,7 @@ ms.locfileid: "67594112"
 
 在条形图正下方，将列出前 250 个最常请求资产的以下信息：相对路径（包括文件名）、导致 404 Not Found 状态代码的请求数、资产的总请求次数，以及导致 404 Not Found 状态代码的请求的百分比。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure CDN 概述](cdn-overview.md)
 * [Microsoft Azure CDN 中的实时统计信息](cdn-real-time-stats.md)
 * [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)

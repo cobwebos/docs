@@ -9,10 +9,10 @@ ms.date: 11/27/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 456d550659c04b2272c048fcd64fe73b1a11522a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74566213"
 ---
 写入加速器是 M 系列虚拟机 (VM) 的磁盘功能，且只能与 Azure 托管磁盘一起在高级存储上使用。 顾名思义，该功能的目的是改善对 Azure 高级存储的写入操作的 I/O 延迟。 写入加速器非常适合需要更新日志文件，并以高性能方式将现代数据库保存到磁盘的情况。
@@ -54,13 +54,13 @@ ms.locfileid: "74566213"
 | M16ms、M16s | 2 | 2500 |
 | M8ms、M8s | 1 | 1250 |
 
-IOPS 限制是针对每个 VM 而不是每个磁盘**。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
+IOPS 限制是针对每个 VM 而不是每个磁盘  。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁盘上启用写入加速器
 
 以下几个部分介绍如何在 Azure 高级存储 VHD 上启用写入加速器。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 目前，使用写入加速器必须满足以下先决条件：
 
@@ -74,20 +74,20 @@ Azure PowerShell 模块 5.5.0 和更高版本对相关的 cmdlet 做了更改，
 
 已将新的开关参数 **-WriteAccelerator** 添加到以下 cmdlet：
 
-- [AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
+- [Set-AzVMOsDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
 - [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
 - [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
 - [Add-AzVmssDataDisk](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
 
 不指定该参数会将属性设置为 false，并且会部署不受写入加速器支持的磁盘。
 
-新的开关参数 **-OsDiskWriteAccelerator**已添加到以下 cmdlet：
+已将新的开关参数 **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
 - [Set-AzVmssStorageProfile](https://docs.microsoft.com/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
 
 默认情况下，不指定该参数会将属性设置为 false，并且会返回不利用写入加速器的磁盘。
 
-已将新的可选布尔参数（不可为 null）**-OsDiskWriteAccelerator** 添加到以下 cmdlet：
+已将新的可选布尔参数（不可为 null） **-OsDiskWriteAccelerator** 添加到以下 cmdlet：
 
 - [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
 - [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
@@ -171,7 +171,7 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 若要附加启用了写入加速器的磁盘，请使用 [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)；若要替换为自己的值，可使用以下示例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-若要禁用写入加速器，请使用[az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update)，将属性设置为 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+若要禁用写入加速器，请使用 [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update) 将属性设置为 false：`az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>使用 Rest API 启用写入加速器
 

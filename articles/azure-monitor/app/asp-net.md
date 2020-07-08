@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | M
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: aa4449a0229ba156dbeed37c10ed21f8b1b5f201
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 7dd60be0a3f2ee7e1a0d306fa007bed166746115
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698498"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84886830"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -54,7 +54,7 @@ Application Insights 配置屏幕：
 
  在调试期间以及发布应用后，遥测数据将发送到 [Azure 门户](https://portal.azure.com)。
 > [!NOTE]
-> 如果不希望在进行调试时向门户发送遥测，则请直接向应用添加 Application Insights SDK，但不要在门户中配置资源。 在调试时，可以在 Visual Studio 中查看遥测数据。 稍后可以返回此配置页，或者等到部署应用后，启用[在运行时打开遥测](../../azure-monitor/app/monitor-performance-live-website-now.md)。
+> 如果不希望在进行调试时向门户发送遥测，则请直接向应用添加 Application Insights SDK，但不要在门户中配置资源。 在调试时，可以在 Visual Studio 中查看遥测数据。 稍后可以返回此配置页，或者等到部署应用后，启用[在运行时打开遥测](../../azure-monitor/app/status-monitor-v2-overview.md)。
 
 ## <a name="step-2-run-your-app"></a><a name="run"></a> 步骤 2：运行应用程序
 使用 F5 运行应用。 打开不同的页以生成一些遥测数据。

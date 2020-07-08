@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c432b28250dca382f69a992de73d633b5ea45b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84883989"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
@@ -51,7 +51,7 @@ ms.locfileid: "81254795"
 
 遵循以下步骤使用 CDN 核心分析启用日志记录：
 
-登录 [Azure 门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
+登录到 [Azure 门户](https://portal.azure.com)。 如果还没有为工作流启用 CDN，请在继续操作之前[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
 1. 在 Azure 门户中，导航到“CDN 配置文件”。****
 
@@ -77,7 +77,7 @@ ms.locfileid: "81254795"
 
     ![门户 - 诊断日志](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. 选择“存储帐户”****。
+3. 选择 "**存储帐户**"。
 
     此时将显示“选择存储帐户”页面。****
 
@@ -87,7 +87,7 @@ ms.locfileid: "81254795"
 
 5. 完成诊断日志设置后，选择“保存”。****
 
-### <a name="logging-with-azure-monitor"></a>记录 Azure Monitor
+### <a name="logging-with-azure-monitor"></a>使用 Azure Monitor 进行日志记录
 
 若要使用 Azure Monitor 来存储日志，请执行以下步骤：
 
@@ -117,7 +117,7 @@ ms.locfileid: "81254795"
 
 5. 对于“订阅”，从下拉列表中选择一个现有的订阅。**** 
 
-6. 对于“资源组”  ，创建一个新资源组或选择现有的资源组。
+6. 对于“资源组”，创建一个新资源组或选择现有的资源组。
 
 7. 对于“位置”****，从下拉列表中选择一个位置。
 
@@ -189,7 +189,7 @@ ms.locfileid: "81254795"
 
 字段说明：****
 
-|值|说明|
+|“值”|描述|
 |-------|---------|
 |订阅 ID    |Azure 订阅的 ID，采用 GUID 格式。|
 |资源组名称 |CDN 资源所属资源组的名称。|
@@ -197,7 +197,7 @@ ms.locfileid: "81254795"
 |终结点名称 |CDN 终结点的名称|
 |年|  年份的四位数表示形式，例如 2017|
 |月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
-|日期|   月份中日的两位数表示形式|
+|天|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
 ### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>将核心分析数据导出到 CSV 文件
@@ -264,7 +264,7 @@ Azure Monitor 是一项 Azure 服务，用于监视云和本地环境，使其�
 
     ![查看全部](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. 创建自动化帐户后，即可添加解决方案。 选择“创建”**** 按钮。
+9. 创建自动化帐户后，即可添加解决方案。 选择“创建”按钮。
 
     ![查看全部](./media/cdn-diagnostics-log/21_Ready.png)
 

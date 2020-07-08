@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77911723"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84817719"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -45,19 +45,18 @@ Data Box 确保只有经过授权的实体能够查看、修改或删除你的�
 Data Box 设备由以下功能提供保护：
 
 - 坚固的装置外壳，能够承受冲击、不利的运输和环境条件。 
-- 防篡改封条，可以看出在运输途中发生的任何设备篡改。
 - 硬件和软件篡改检测，可以防止进一步的设备操作。
 - 仅运行 Data Box 特定的软件。
 - 在锁定状态下启动。
 - 通过设备解锁密码控制设备访问。
-- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”  页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
+- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”**** 页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>Data Box 数据保护
 
 流入和流出 Data Box 的数据由以下功能提供保护：
 
 - 用于静态数据的 AES 256 位加密。
-- 可以为传输中数据使用加密的协议。
+- 可以为传输中数据使用加密的协议。 建议你在将数据从数据服务器复制时，将 SMB 3.0 与加密配合使用来保护数据。
 - 将数据上传到 Azure 后，从设备中安全擦除数据。 数据擦除符合 [NIST 800-88r1 标准中 ATA 硬盘驱动器的附录 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) 中的准则。 数据擦除事件将记录在[订单历史记录](data-box-logs.md#download-order-history)中。
 
 ### <a name="data-box-service-protection"></a>Data Box 服务保护

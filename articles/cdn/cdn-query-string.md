@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
-ms.openlocfilehash: a0df9cecc4ccd09db3f6b07fa6fd4c5283753aa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260201"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84887212"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 标准层
 > [!div class="op_single_selector"]
