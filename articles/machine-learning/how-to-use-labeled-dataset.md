@@ -5,16 +5,17 @@ description: 了解如何从 Azure 机器学习标记项目中导出数据标签
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: conceptual
+ms.subservice: core
+ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 80932ebbedeca3f5e0a1b4cc2e68d73ef5b0d63a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655762"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025720"
 ---
-# <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
+# <a name="create-and-explore-azure-machine-learning-dataset-with-labels-preview"></a>创建和浏览带标签的 Azure 机器学习数据集（预览）
 
 在本文中，你将学习如何从 Azure 机器学习数据标记项目中导出数据标签，并将其加载为常用格式，例如，加载为 Pandas 数据帧以用于浏览数据，或者加载为 Torchvision 数据集以用于转换图像。 
 
@@ -32,7 +33,7 @@ ms.locfileid: "83655762"
 
 ## <a name="export-data-labels"></a>导出数据标签 
 
-完成数据标记项目后，可以从标记项目中导出标签数据。 这样，便可以捕获对数据及其标签的引用，并将其导出为 [COCO 格式](http://cocodataset.org/#format-data)或 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。  
+完成数据标记项目后，可以从标记项目中导出标签数据。 这样，便可以捕获对数据及其标签的引用，并将其导出为 [COCO 格式](http://cocodataset.org/#format-data)或 Azure 机器学习数据集。 使用标记项目的“项目详细信息”页上的“导出”按钮。 
 
 ### <a name="coco"></a>COCO 
 
@@ -40,7 +41,7 @@ ms.locfileid: "83655762"
 
 ### <a name="azure-machine-learning-dataset"></a>Azure 机器学习数据集
 
-可以在 Azure 机器学习工作室的“数据集”部分中访问导出的 Azure 机器学习数据集。  数据集“详细信息”  页还提供了演示如何从 Python 访问标签的示例代码。
+可以在 Azure 机器学习工作室的“数据集”部分中访问导出的 Azure 机器学习数据集。 数据集“详细信息”页还提供了演示如何从 Python 访问标签的示例代码。
 
 ![导出的数据集](./media/how-to-create-labeling-projects/exported-dataset.png)
 

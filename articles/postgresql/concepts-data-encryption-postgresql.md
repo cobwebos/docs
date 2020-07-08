@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4ef5d89ea58c5c27f4344633afa2fe8048948719
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849462"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86025584"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密
-
-> [!NOTE]
-> 目前，必须请求访问权限才能使用此功能。 为此，请联系 AskAzureDBforPostgreSQL@service.microsoft.com。
 
 通过使用客户管理的密钥对 Azure Database for PostgreSQL 单一服务器进行数据加密，让你能够创建自己的密钥 (BYOK) 来保护静态数据。 通过它，组织还可在管理密钥和数据时实现职责分离。 通过客户托管的加密，密钥的生命周期、密钥使用权限以及对密钥操作的审核都由你负责和完全控制。
 
@@ -129,6 +126,19 @@ Key Vault 管理员还可[启用 Key Vault 审核事件的日志记录](../azure
 * 通过主要 Azure Database for PostgreSQL 单一服务器启动还原或只读副本创建过程。
 * 使新创建的（还原/副本）服务器保持在无法访问的状态，因为其唯一标识尚无权访问 Key Vault。
 * 在还原/副本服务器上，重新验证数据加密设置中客户管理的密钥。 这可确保为新创建的服务器授予对 Key Vault 中存储的密钥进行包装和取消包装的权限。
+
+## <a name="limitations"></a>限制
+
+对于 Azure Database for PostgreSQL，使用客户托管的密钥（CMK）对静态数据加密的支持有几个限制：
+
+* 对此功能的支持仅限于**常规用途**和**内存优化**定价层。
+* 此功能仅在支持高达 16 TB 的存储的区域和服务器上受支持。 有关支持存储最多16TB 的 Azure 区域列表，请参阅[此处](concepts-pricing-tiers.md#storage)文档中的 "存储" 部分
+
+    > [!NOTE]
+    > - 在上面列出的区域中创建的所有新 PostgreSQL 服务器都**提供**对使用客户管理器密钥的加密支持。 虽然在理论上的时间点还原（PITR）服务器或读取副本不合格，但它们是 "新的"。
+    > - 若要验证预配的服务器是否支持最大16TB，可以在门户中访问 "定价层" 边栏选项卡，并查看预配服务器支持的最大存储大小。 如果可以将滑块向上移动到4TB，则服务器可能不支持通过客户托管的密钥进行加密。 但是，始终使用服务托管密钥对数据进行加密。 AskAzureDBforPostgreSQL@service.microsoft.com如果你有任何疑问，请联系。
+
+* 只有 RSA 2048 加密密钥支持加密。
 
 ## <a name="next-steps"></a>后续步骤
 
