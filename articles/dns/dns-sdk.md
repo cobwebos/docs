@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.openlocfilehash: c497209e456ff838786edaa19e46ebc5c1858d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938858"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841857"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务

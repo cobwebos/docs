@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
 ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76845343"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
@@ -161,7 +160,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 ![受保护的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
-使用 RBAC，可以在团队中实现职责分离，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
+使用 RBAC，可以在团队中对职责进行分配，仅向用户授予执行作业所需的访问权限。 而不是向每个人提供对 Azure 订阅或资源的无限权限，可以仅允许某些操作。 例如，使用 RBAC 允许一个员工管理订阅中的虚拟机，而允许另一个员工管理同一订阅中的 SQL 数据库。
 
 ![Azure 中受保护的资源访问 (RBAC)](./media/technical-capabilities/azure-security-technical-capabilities-fig5.png)
 
@@ -342,9 +341,9 @@ Microsoft Azure 包括可靠的网络基础结构以支持应用程序和服务�
 
 如果需要基本的网络级别访问控制（基于 IP 地址和 TCP 或 UDP 协议），则可以使用[网络安全组](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。 网络安全组 (NSG) 是基本的静态数据包筛选防火墙，使用户能够基于 [5 元组](https://www.techopedia.com/definition/28190/5-tuple)控制访问权限。
 
-Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义路由](../../virtual-network/virtual-networks-udr-overview.md)实现此操作。
+Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为的功能。 可以通过在 Azure 中配置[用户定义的路由](../../virtual-network/virtual-networks-udr-overview.md)来实现此目的。
 
-[强制隧道](https://www.petri.com/azure-forced-tunneling)是一种机制，可用于确保服务不能启动到 Internet 上的设备的连接。
+[强制隧道](https://www.petri.com/azure-forced-tunneling) 是一种机制，可用于确保不允许服务发起与 Internet 上设备的连接。
 
 Azure 支持通过 [ExpressRoute](../../expressroute/expressroute-introduction.md) 使用专用 WAN 链路连接本地网络和 Azure 虚拟网络。 Azure 和站点之间的链接使用专用连接，不需要通过公共 Internet。 如果 Azure 应用程序在多个数据中心运行，则可以使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)智能地跨应用程序实例路由来自用户的请求。 如果可以通过 Internet 访问未在 Azure 中运行的服务，还可以将流量路由到这些服务。
 
@@ -354,9 +353,9 @@ Azure 支持通过 [ExpressRoute](../../expressroute/expressroute-introduction.m
 
 借助 Azure，可以使用来自 Microsoft、Symantec、Trend Micro 和 Kaspersky 等安全性供应商的[反恶意软件](antimalware.md)，保护虚拟机免受恶意文件、广告软件和其他威胁的侵害。
 
-适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并删除病毒、间谍软件和其他恶意软件。 Microsoft 反恶意软件提供了已知恶意或不需要的软件试图安装自身或在 Azure 系统上运行时的可配置警报。
+适用于 Azure 云服务和虚拟机的 Microsoft 反恶意软件是一种实时保护功能，可帮助识别并移除病毒、间谍软件和其他恶意软件。 当已知恶意软件或不需要的软件试图在 Azure 系统上安装自身或运行时，Microsoft 反恶意软件将提供可配置的警报。
 
-[Azure 备份](../../backup/backup-overview.md)是一种可缩放的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序。 借助 Azure 备份，可以保护运行 Windows 和 Linux 的虚拟机。
+[Azure 备份](../../backup/backup-overview.md)是一种可缩放的解决方案，无需资本投资便可保护应用程序数据，从而最大限度降低运营成本。 应用程序错误可能会损坏数据，人为错误可能会将 bug 引入应用程序。 使用 Azure 备份可以保护运行 Windows 和 Linux 的虚拟机。
 
 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
@@ -460,11 +459,11 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 - **依赖项速率、响应时间和失败率** - 了解外部服务是否正拖慢速度。
 
-- 异常**** - 分析聚合的统计信息，或选择特定实例并钻取堆栈跟踪和相关请求。 报告服务器和浏览器异常。
+- 异常 - 分析聚合的统计信息，或选择特定实例并钻取堆栈跟踪和相关请求。 报告服务器和浏览器异常。
 
 - **页面查看次数和负载性能** - 由用户的浏览器报告。
 
-- **来自网页的 AJAX 调用**：速率、响应时间和失败率。
+- **来自网页的 AJAX 调用**-速率、响应时间和失败率。
 
 - **用户和会话计数。**
 
@@ -476,7 +475,7 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 - 您在客户端或服务器代码中自行编写的**自定义事件和指标**，用于跟踪业务事件（例如销售的商品或赢得的游戏）。
 
-应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， [Azure 资源管理器](../../azure-resource-manager/management/overview.md)使你能够以组的形式处理解决方案中的资源。
+应用程序的体系结构通常由许多组件构成 – 其中可能包括虚拟机、存储帐户、虚拟网络、Web 应用、数据库、数据库服务器和第三方服务。 这些组件不会以独立的实体出现，而是以单个实体的相关部件和依赖部件出现。 如果希望以组的方式部署、管理和监视这些这些组件， 可以使用 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 将解决方案中的资源作为一个组进行处理。
 
 可以通过一个协调的操作为解决方案部署、更新或删除所有资源。 可以使用一个模板来完成部署，该模板适用于不同的环境，例如测试、过渡和生产。 Resource Manager 提供安全、审核和标记功能，以帮助你在部署后管理资源。
 
@@ -515,6 +514,6 @@ Azure 操作安全性建立在一个框架上，该框架融合了通过 Microso
 
 - [标识和访问管理](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
-- [网络安全性](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
+- [网络安全](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [威胁管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)

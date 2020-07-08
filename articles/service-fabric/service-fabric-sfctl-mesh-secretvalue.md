@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905962"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
@@ -17,18 +16,18 @@ ms.locfileid: "76905962"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|描述|
 | --- | --- |
-| “删除” | 删除已命名机密资源的指定值。 |
+| delete | 删除已命名机密资源的指定值。 |
 | list | 列出指定的机密资源的所有值的名称。 |
-| 显示 | 列出机密资源的指定值。 |
+| show | 列出机密资源的指定值。 |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl mesh secretvalue delete
 删除已命名机密资源的指定值。
 
 删除由名称标识的机密值资源。 资源的名称通常是与该值关联的版本。 如果指定的值在使用中，则删除将失败。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |
@@ -50,7 +49,7 @@ ms.locfileid: "76905962"
 
 获取指定的机密资源的所有机密值资源的信息。 该信息包括机密值资源的名称，但不包括实际值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |
@@ -69,7 +68,7 @@ ms.locfileid: "76905962"
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
 列出机密资源的指定值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |

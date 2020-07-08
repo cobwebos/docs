@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76273875"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple 虚拟阵列简介
@@ -32,7 +31,7 @@ Microsoft Azure StorSimple 虚拟阵列是一个集成式存储解决方案，�
 
 下表总结了 StorSimple 虚拟阵列的重要功能。
 
-| Feature | StorSimple 虚拟阵列 |
+| 功能 | StorSimple 虚拟阵列 |
 | --- | --- |
 | 安装要求 |使用虚拟化基础结构（HYPER-V 或 VMware） |
 | 可用性 |单节点 |
@@ -57,7 +56,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下表介绍了 StorSimple 虚拟阵列解决方案提供的某些主要优势。
 
-| Feature | 好处 |
+| 功能 | 好处 |
 | --- | --- |
 | 透明集成 |虚拟阵列支持 iSCSI 或 SMB 协议。 本地层和云层之间的数据移动是无缝的，并且对用户透明。 |
 | 降低存储成本 |借助 StorSimple，预配足够的本地存储来满足对最常使用的热门数据的当前需求。 随着存储需求的增长，StorSimple 将冷数据分层到经济高效的云存储中。 在发送到云之前对数据进行重复数据删除和压缩，以进一步降低存储要求和开支。 |
@@ -69,7 +68,7 @@ StorSimple 在几分钟内将用户和服务器连接到 Azure 存储，无需�
 
 下面以表格形式列出了受支持的 StorSimple 工作负荷的摘要。
 
-|方案     |工作负载     |支持      |限制               | 适用版本|
+|方案     |工作负荷     |支持      |限制               | 适用版本|
 |-------------|-------------|---------------|---------------------------|--------------------|
 |远程办公室/分支机构 (ROBO)  |文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |
 |云存档  |存档文件共享     |是      |请参阅[文件服务器的最大限制](storsimple-ova-limits.md)。<br></br>请参阅[受支持的 SMB 版本的系统要求](storsimple-ova-system-requirements.md)。| 所有版本     |

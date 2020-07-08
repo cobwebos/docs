@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 31b7d51293878c9d0e8567b6b4bd58c48d75ec63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76766276"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自定义业务流程状态 (Azure Functions)
@@ -148,7 +147,7 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> 在 JavaScript 中，在计划下一个 `customStatus` 或 `yield` 操作时设置 `return` 字段。
+> 在 JavaScript 中，在计划下一个 `yield` 或 `return` 操作时设置 `customStatus` 字段。
 
 ---
 

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906048"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
@@ -17,7 +16,7 @@ ms.locfileid: "76906048"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|描述|
 | --- | --- |
 | get | 从容器中获取日志。 |
 
@@ -26,7 +25,7 @@ ms.locfileid: "76906048"
 
 获取服务副本的指定代码包的容器日志。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |

@@ -9,10 +9,9 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844388"
 ---
 # <a name="coarse-relocalization"></a>粗略重新局部化
@@ -91,7 +90,7 @@ cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
 cloudSpatialAnchorSession.setLocationProvider(sensorProvider);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 // Create the sensor fingerprint provider
@@ -105,7 +104,7 @@ cloudSpatialAnchorSession = std::make_shared<CloudSpatialAnchorSession>();
 cloudSpatialAnchorSession->LocationProvider(sensorProvider);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 ```cpp
 // Create the sensor fingerprint provider
 PlatformLocationProvider sensorProvider = PlatformLocationProvider();
@@ -123,9 +122,9 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 |             | 室内 | 室外 |
 |-------------|---------|----------|
-| GPS         | Off | 启用 |
-| WLAN        | 启用 | 启用（可选） |
-| BLE 信标 | 开启（可选，请参阅下文） | Off |
+| GPS         | 关 | 开 |
+| WLAN        | 开 | 启用（可选） |
+| BLE 信标 | 开启（可选，请参阅下文） | 关 |
 
 
 ### <a name="enabling-gps"></a>启用 GPS
@@ -159,14 +158,14 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setGeoLocationEnabled(true);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->GeoLocationEnabled(true);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -272,7 +271,7 @@ while (m_isRunning)
 sensorProvider.stop();
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 // Game about to start, start tracking the sensors
@@ -292,7 +291,7 @@ while (m_isRunning)
 sensorProvider->Stop();
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 // Game about to start, start tracking the sensors
@@ -345,14 +344,14 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setWifiEnabled(true);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->WifiEnabled(true);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -403,14 +402,14 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setBluetoothEnabled(true);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->BluetoothEnabled(true);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors();
@@ -467,7 +466,7 @@ SensorCapabilities sensors = sensorProvider.getSensors();
 sensors.setKnownBeaconProximityUuids(uuids);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 std::vector<std::string> uuids;
@@ -478,7 +477,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->KnownBeaconProximityUuids(uuids);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 std::vector<winrt::hstring> uuids;
@@ -559,7 +558,7 @@ AnchorLocateCriteria anchorLocateCriteria = new AnchorLocateCriteria();
 anchorLocateCriteria.setNearDevice(nearDeviceCriteria);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto nearDeviceCriteria = std::make_shared<NearDeviceCriteria>();
@@ -574,7 +573,7 @@ auto anchorLocateCriteria = std::make_shared<AnchorLocateCriteria>();
 anchorLocateCriteria->NearDevice(nearDeviceCriteria);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
@@ -592,9 +591,9 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-`DistanceInMeters`参数控制浏览定位点图以检索内容的距离。 假设你已使用每个计量的固定密度的固定空间填充了一些空间。 此外，设备上的摄像机正在观察单个锚点，并且该服务已成功定位。 您很可能想要检索您在附近放置的所有定位点，而不是当前观察到的单个锚。 假设您所放置的定位点已连接到图形中，则该服务可以按照图中的边缘来检索所有附近的定位点。 完成的图形遍历量由控制`DistanceInMeters`;系统会向你提供与你所找到的定位点相关的所有锚`DistanceInMeters`。
+`DistanceInMeters`参数控制浏览定位点图以检索内容的距离。 假设你已使用每个计量的固定密度的固定空间填充了一些空间。 此外，设备上的摄像机正在观察单个锚点，并且该服务已成功定位。 您很可能想要检索您在附近放置的所有定位点，而不是当前观察到的单个锚。 假设您所放置的定位点已连接到图形中，则该服务可以按照图中的边缘来检索所有附近的定位点。 完成的图形遍历量由控制 `DistanceInMeters` ; 您将获得与所找到的所有定位点相关联的所有定位点 `DistanceInMeters` 。
 
-请记住，的`MaxResultCount`较大值可能会对性能产生负面影响。 将其设置为应用程序的合理值。
+请记住，的较大值 `MaxResultCount` 可能会对性能产生负面影响。 将其设置为应用程序的合理值。
 
 最后，需要告诉会话使用基于传感器的查找：
 
@@ -622,13 +621,13 @@ cloudSpatialAnchorSession!.createWatcher(anchorLocateCriteria)
 cloudSpatialAnchorSession.createWatcher(anchorLocateCriteria);
 ```
 
-# <a name="c-ndk"></a>[C + + NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 cloudSpatialAnchorSession->CreateWatcher(anchorLocateCriteria);
 ```
 
-# <a name="c-winrt"></a>[C + + WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
@@ -661,8 +660,8 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| GPS         | 空值 | 支持通过[LocationManager][3] API （GPS 和网络） | 通过[CLLocationManager][4] api 支持 |
-| WLAN        | 支持，每3秒约扫描一次 | 支持。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅[Android 文档][5]。 | 不适用-无公共 API |
+| GPS         | 不适用 | 支持通过[LocationManager][3] API （GPS 和网络） | 通过[CLLocationManager][4] api 支持 |
+| WLAN        | 支持，每3秒约扫描一次 | 。 从 API 级别28开始，每隔2分钟就会将 WiFi 扫描限制为4次调用。 可以从 Android 10 中禁用 "开发人员设置" 菜单中的限制。 有关详细信息，请参阅[Android 文档][5]。 | 不适用-无公共 API |
 | BLE 信标 | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] | 仅限[Eddystone][1]和[iBeacon][2] |
 
 ## <a name="next-steps"></a>后续步骤

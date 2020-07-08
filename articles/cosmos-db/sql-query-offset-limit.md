@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
 ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76771569"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 OFFSET LIMIT 子句
@@ -37,7 +36,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>备注
   
-  必须在 `OFFSET` 子句中同时指定 `LIMIT` 计数和 `OFFSET LIMIT` 计数。 如果使用可选的 `ORDER BY` 子句，将会通过跳过排序值来生成结果集。 否则，查询将返回固定顺序的值。
+  必须在 `OFFSET LIMIT` 子句中同时指定 `OFFSET` 计数和 `LIMIT` 计数。 如果使用可选的 `ORDER BY` 子句，将会通过跳过排序值来生成结果集。 否则，查询将返回固定顺序的值。
 
   使用 `OFFSET LIMIT` 进行查询时的 RU 费用会随着要跳过的字词数量的增加而增加。 对于有多个结果页的查询，我们通常建议使用继续标记。 继续标记是一个“书签”，用于在以后恢复查询。 如果使用 `OFFSET LIMIT`，则没有“书签”。 如果希望返回查询的下一页，则必须从头开始。
   

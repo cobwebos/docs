@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68976772"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
@@ -59,5 +58,5 @@ ms.locfileid: "68976772"
 ## <a name="summary"></a>总结
 使用 **Azure 数据目录**注册数据源，将结构性元数据和描述性元数据从数据源复制到目录服务，使数据可被发现。 注册并发现数据源后，用户可以从“Azure 数据目录”**** 门户使用“打开方式...”菜单， 或者使用用户自己选择的数据工具连接到数据源。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure 数据目录入门](data-catalog-get-started.md)教程，了解有关如何连接到数据源的分步详细说明。

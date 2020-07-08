@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905981"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -17,18 +16,18 @@ ms.locfileid: "76905981"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|描述|
 | --- | --- |
-| “删除” | 删除机密资源。 |
+| delete | 删除机密资源。 |
 | list | 列出所有机密资源。 |
-| 显示 | 获取具有给定名称的机密资源。 |
+| show | 获取具有给定名称的机密资源。 |
 
 ## <a name="sfctl-mesh-secret-delete"></a>sfctl mesh secret delete
 删除机密资源。
 
 删除指定的机密资源及其所有其命名值。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |
@@ -64,7 +63,7 @@ ms.locfileid: "76905981"
 
 获取具有给定名称的机密资源的相关信息。 此信息包括机密的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |

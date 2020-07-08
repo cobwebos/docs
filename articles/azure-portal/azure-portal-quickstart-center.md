@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 21dd43b5179d0752699bb56b51a2c08976aa037b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76900686"
 ---
 # <a name="get-started-with-the-azure-quickstart-center"></a>Azure 快速入门中心入门
@@ -32,11 +31,11 @@ Azure 快速入门中心有三个入门选项：
 
 ## <a name="how-to-use-azure-quickstart-center"></a>如何使用 Azure 快速入门中心
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 从 Azure 门户菜单中选择“所有服务”****。
 
-1. 选择 "**常规** > **快速入门中心**"。
+1. 选择 "**常规**  >  **快速入门中心**"。
 
 若要深入了解 Azure 快速入门中可执行的操作，请查看此视频：
 > [!VIDEO https://www.youtube.com/embed/0bSA7RXrbAg]

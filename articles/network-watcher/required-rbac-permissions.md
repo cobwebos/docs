@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
 ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76840547"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用网络观察程序功能所需的基于角色的访问控制权限

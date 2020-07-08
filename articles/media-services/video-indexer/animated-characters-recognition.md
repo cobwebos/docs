@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76989903"
 ---
 # <a name="animated-character-detection-preview"></a>动画字符检测（预览）
@@ -40,10 +39,10 @@ Azure 媒体服务视频索引器支持通过与[认知服务自定义视觉](ht
 
 ### <a name="trial-vs-paid"></a>试用版和付费版
 
-|功能|试用|付费|
+|功能|试用|已付|
 |---|---|---|
 |自定义视觉帐户|由视频索引器在后台进行管理。 |自定义视觉帐户已连接到视频索引器。|
-|动画模型的数目|一个|每个帐户最多100个型号（自定义视觉限制）。|
+|动画模型的数目|One|每个帐户最多100个型号（自定义视觉限制）。|
 |模型定型|视频索引器训练新字符的模型其他现有字符的示例。|当客户准备好进行更改时，帐户所有者训练该模型。|
 |自定义视觉中的高级选项|无权访问自定义视觉门户。|您可以在自定义视觉门户中自行调整模型。|
 

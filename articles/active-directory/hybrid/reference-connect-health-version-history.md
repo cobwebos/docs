@@ -17,10 +17,9 @@ ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76897031"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
@@ -125,7 +124,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
   2. 修复了 Bug，进行了一般改进
 
 
-## <a name="march-2018"></a>2018 年 3月
+## <a name="march-2018"></a>2018 年 3 月
 **新的预览功能：**
 * 适用于 AD FS 的 Azure Active Directory Connect Health - 有风险的 IP 报表和警报。
 
@@ -196,7 +195,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 * Azure AD Connect 的同步错误报告
 
-**新增功能：**
+**新功能：**
 
 * 适用于 AD FS 的 Azure AD Connect Health - 在有关前 50 名存在用户名/密码错误的用户的报告中，提供了 IP 地址字段。
 
@@ -210,12 +209,12 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 * 适用于 AD FS 的 Azure AD Connect Health 代理（2.6.91.1512 版）
 
-**新增功能：**
+**新功能：**
 
 * [Azure AD Connect Health 代理的测试连接工具](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)
 
 ## <a name="november-2015"></a>2015 年 11 月
-**新增功能：**
+**新功能：**
 
 * 支持[基于角色的访问控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
@@ -223,12 +222,12 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 * [用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。
 
-**已修复的问题：**
+**已解决的问题：**
 
 * 针对代理注册期间出现的错误进行 Bug 修复。
 
 ## <a name="september-2015"></a>2015 年 9 月
-**新增功能：**
+**新功能：**
 
 * AD FS 的错误用户名密码报告
 * 支持配置未经身份验证的 HTTP 代理
@@ -236,14 +235,14 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 * 改进了 AD FS 的警报
 * 在适用于 AD FS 的 Azure AD Connect Health 代理中改进了连接和数据上传。
 
-**已修复的问题：**
+**已解决的问题：**
 
 * 对 AD FS 使用洞察信息错误类型的 Bug 修复。
 
 ## <a name="june-2015"></a>2015 年 6 月
 **适用于 AD FS 和 AD FS 代理的 Azure AD Connect Health 初始发行。**
 
-**新增功能：**
+**新功能：**
 
 * 监视 AD FS 与 AD FS 代理服务器时以电子邮件通知发出警报。
 * 在 AD FS 性能计数器中轻松访问 AD FS 拓扑和模式。

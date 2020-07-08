@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 474ef03d482288b6bf7b5a8b1c224349a8e2d3a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77014957"
 ---
 # <a name="create-resource-pools-for-your-private-cloud-with-azure-subscription-mapping"></a>通过 Azure 订阅映射为私有云创建资源池
@@ -30,4 +29,4 @@ Azure 订阅映射允许从可用的 vSphere 资源池为私有云创建资源�
 
     ![Azure 订阅](media/resources-azure-mapping.png)
 
-6. 单击" **确定**"。
+6. 单击“确定”。

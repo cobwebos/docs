@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 0e5ba1a311bd0480c56ee40edf01fc13ec01664a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905906"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
@@ -17,18 +16,18 @@ ms.locfileid: "76905906"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|描述|
 | --- | --- |
-| “删除” | 删除卷资源。 |
+| delete | 删除卷资源。 |
 | list | 列出所有卷资源。 |
-| 显示 | 获取具有给定名称的卷资源。 |
+| show | 获取具有给定名称的卷资源。 |
 
 ## <a name="sfctl-mesh-volume-delete"></a>sfctl mesh volume delete
 删除卷资源。
 
 删除由名称标识的卷资源。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |
@@ -64,7 +63,7 @@ ms.locfileid: "76905906"
 
 获取具有给定名称的卷资源的相关信息。 此信息包括卷的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76906215"
 ---
 # <a name="sfctl"></a>sfctl
@@ -18,21 +17,21 @@ ms.locfileid: "76906215"
 命令遵循名词谓词模式。 有关详细信息，请参阅子组。
 
 ## <a name="subgroups"></a>子组
-|子组|说明|
+|子组|描述|
 | --- | --- |
 | [应用程序](service-fabric-sfctl-application.md) | 创建、删除和管理应用程序及应用程序类型。 |
 | [chaos](service-fabric-sfctl-chaos.md) | 启动、停止和报告混沌测试服务。 |
 | [聚集](service-fabric-sfctl-cluster.md) | 选择、管理和操作 Service Fabric 群集。 |
 | [成为](service-fabric-sfctl-compose.md) | 创建、删除和管理 Docker Compose 应用程序。 |
 | [容器](service-fabric-sfctl-container.md) | 在群集节点上运行与容器相关的命令。 |
-| [事件](service-fabric-sfctl-events.md) | 从事件存储中检索事件（如果已安装 EventStore 服务）。 |
+| [events](service-fabric-sfctl-events.md) | 从事件存储中检索事件（如果已安装 EventStore 服务）。 |
 | [is](service-fabric-sfctl-is.md) | 查询并向基础结构服务发送命令。 |
 | [mesh](service-fabric-sfctl-mesh.md) | 删除和管理 Service Fabric 网格应用程序。 |
 | [节点](service-fabric-sfctl-node.md) | 管理构成群集的节点。 |
 | [依据](service-fabric-sfctl-partition.md) | 查询和管理任何服务的分区。 |
 | [property](service-fabric-sfctl-property.md) | 在 Service Fabric 名称下存储和查询属性。 |
 | [副本](service-fabric-sfctl-replica.md) | 管理属于服务分区的副本。 |
-| [rpm](service-fabric-sfctl-rpm.md) | 查询并向修复管理器服务发送命令。 |
+| [tar](service-fabric-sfctl-rpm.md) | 查询并向修复管理器服务发送命令。 |
 | [sa-cluster](service-fabric-sfctl-sa-cluster.md) | 管理独立 Service Fabric 群集。 |
 | [服务](service-fabric-sfctl-service.md) | 创建、删除和管理服务、服务类型与服务包。 |
 | [设置](service-fabric-sfctl-settings.md) | 配置此 sfctl 实例的本地设置。 |

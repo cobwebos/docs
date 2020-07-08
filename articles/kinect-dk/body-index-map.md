@@ -10,7 +10,6 @@ ms.topic: conceptual
 keywords: kinect, 移植, 人体, 跟踪, 索引, 分段, 映射
 ms.openlocfilehash: 8c128e59cef515aafb4f59794f0f644b90fd625d
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "76756241"

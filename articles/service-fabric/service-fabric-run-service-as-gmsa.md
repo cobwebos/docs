@@ -7,15 +7,14 @@ ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
 ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988390"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>以组托管服务帐户身份运行服务
 
-在 Windows Server 独立群集上，可以使用 *RunAs* 策略以组托管服务帐户 (gMSA) 的身份来运行服务。   默认情况下，Service Fabric 应用程序在运行 `Fabric.exe` 进程的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 使用 gMSA 时，没有密码或加密的密码存储在应用程序清单中。  还可以采用 [Active Directory 用户或组](service-fabric-run-service-as-ad-user-or-group.md)身份运行服务。
+在 Windows Server 独立群集上，可以使用 *RunAs* 策略以组托管服务帐户 (gMSA) 的身份来运行服务。  默认情况下，Service Fabric 应用程序在运行 `Fabric.exe` 进程的帐户之下运行。 即使在共享托管环境中以不同帐户身份运行应用程序，也可确保运行的应用程序彼此更安全。 使用 gMSA 时，没有密码或加密的密码存储在应用程序清单中。  还可以采用 [Active Directory 用户或组](service-fabric-run-service-as-ad-user-or-group.md)身份运行服务。
 
 以下示例演示如何创建一个名为 *svc-Test$* 的 gMSA 帐户、如何将该托管服务帐户部署到群集节点，以及如何配置用户主体。
 

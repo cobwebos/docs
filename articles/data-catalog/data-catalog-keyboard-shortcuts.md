@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 72d1ce0ded61b1143f99769319892981f3cd1c10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69014455"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>适用于 Azure 数据目录的键盘快捷方式
@@ -18,7 +17,7 @@ ms.locfileid: "69014455"
 ## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>适用于数据目录数据源注册工具的键盘快捷方式
 
 ### <a name="general-keyboard-shortcuts"></a>常规键盘快捷方式
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | 使用 Tab 键移动到页面上的每个控件 |选项卡 |
 | 选择一个选项 |Enter 键或空格键 |
@@ -27,24 +26,24 @@ ms.locfileid: "69014455"
 | 打开页面菜单 |ALT+空格键 |
 
 ### <a name="authentication-page"></a>身份验证页
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | 登录到服务 |Alt+S |
 
 ### <a name="data-source-selection-page"></a>数据源选择页
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | 转到下一页（如已启用） |ALT+N |
 | 焦点位于磁贴上时更改所选类型 |向左、向上、向右或向下箭头 |
 
 ### <a name="data-source-connection-page"></a>数据源连接页
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | 转到前一页（如已启用） |ALT+P |
 | 选择“连接”按钮。 |ALT+C |
 
 ### <a name="connection-context-page"></a>连接上下文页
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | “注册”按钮（如已启用） |ALT+R |
 | 包括“预览”复选框（如果可用） |ALT+P |
@@ -54,20 +53,20 @@ ms.locfileid: "69014455"
 | 为“可用对象”**** 或“要注册的对象”**** 移动所选项 |空格键 |
 
 ### <a name="publish-progress-page"></a>发布进度页
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | “取消”按钮 |ALT+C |
 | “注册更多对象”按钮 |ALT+R |
 | “查看门户”按钮 |Alt+V |
 
 ### <a name="publish-progress-page"></a>发布进度页
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | “保存”按钮（如已启用） |Alt+S |
 | “取消”按钮 |ALT+C |
 
 ## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>适用于数据目录门户的键盘快捷方式
-| Operation | 请按 |
+| 操作 | 请按 |
 | --- | --- |
 | 导航 |Tab 和 SHIFT+TAB |
 | 单击某个项 |空格键或 Enter 键 |

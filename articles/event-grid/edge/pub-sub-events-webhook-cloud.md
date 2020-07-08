@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844577"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布、订阅事件
@@ -22,7 +21,7 @@ ms.locfileid: "76844577"
 
 在继续之前，请参阅[事件网格概念](concepts.md)，以了解什么是事件网格主题和订阅。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
@@ -67,7 +66,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 作为事件的发布者，需要创建事件网格主题。 主题指的是发布者可将事件发送到的终结点。
 
-1. 创建具有以下内容的 topic2。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 topic2.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
          {
@@ -110,7 +109,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 创建具有以下内容的 subscription2。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 subscription2.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         {
@@ -159,7 +158,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="publish-an-event"></a>发布事件
 
-1. 创建具有以下内容的 event2。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 event2.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         [

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905873"
 ---
 # <a name="sfctl-node"></a>sfctl node
@@ -241,7 +240,7 @@ ms.locfileid: "76905873"
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 告知 Service Fabric，节点上的保留状态已被永久删除或丢失。
 
-这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 自 Service Fabric 6.5 起，若要将此 API 用于种子节点，请将这些种子节点更改为常规节点（非种子节点），然后调用此 API 以删除节点状态。 如果群集正在 Azure 上运行，当种子节点发生故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数不少于“发生故障”的种子节点数。 如有必要，请将更多节点添加到主节点类型以实现这一目标。 对于独立群集，如果不希望向下 seed 节点的状态保持不变，请从群集中删除节点，请参阅 https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
+这意味着无法恢复该节点的保留状态。 如果硬盘已擦除干净或者硬盘崩溃，通常会出现这种情况。 节点必须已关闭，此操作才能成功。 此操作让 Service Fabric 知道该节点上的副本不再存在，并且 Service Fabric 应停止等待这些副本恢复。 如果未删除节点上的状态并且节点能够以原状态恢复，则不要运行此 cmdlet。 自 Service Fabric 6.5 起，若要将此 API 用于种子节点，请将这些种子节点更改为常规节点（非种子节点），然后调用此 API 以删除节点状态。 如果群集正在 Azure 上运行，当种子节点发生故障后，Service Fabric 将尝试自动将其更改为非种子节点。 若要实现这一点，请确保主节点类型中的非种子节点数不少于“发生故障”的种子节点数。 如有必要，请将更多节点添加到主节点类型以实现这一目标。 对于独立群集，如果不希望向下 seed 节点的状态保持不变，请从群集中删除节点，请参阅 https \: //docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes。
 
 ### <a name="arguments"></a>参数
 

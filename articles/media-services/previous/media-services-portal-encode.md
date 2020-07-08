@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69542604"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>在 Azure 门户中使用 Media Encoder Standard 对资产进行编码

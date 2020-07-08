@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774921"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用 Media Encoder Standard 对资产进行编码
@@ -279,5 +278,5 @@ ms.locfileid: "76774921"
 ## <a name="next-steps"></a>后续步骤
 了解如何创建对资产进行编码的作业后，请参阅[如何使用媒体服务检查作业进度](media-services-rest-check-job-progress.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 [获取媒体处理器](media-services-rest-get-media-processor.md)

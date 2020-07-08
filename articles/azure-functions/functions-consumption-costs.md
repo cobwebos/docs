@@ -4,10 +4,9 @@ description: 了解如何更好地估算在 Azure 的消耗计划中运行函数
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76963982"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
@@ -17,7 +16,7 @@ ms.locfileid: "76963982"
 | 计划 | 说明 |
 | ---- | ----------- |
 | [**消耗**](functions-scale.md#consumption-plan) | 只根据函数应用的运行时间收费。 此计划包括基于订阅的[免费授予][定价页]。|
-| [**Premium**](functions-scale.md#premium-plan) | 提供与消耗计划相同的功能和缩放机制，但具有增强的性能和 VNET 访问权限。 成本取决于所选的定价层。 若要了解详细信息，请参阅[Azure Functions 高级计划](functions-premium-plan.md)。 |
+| [**高级**](functions-scale.md#premium-plan) | 提供与消耗计划相同的功能和缩放机制，但具有增强的性能和 VNET 访问权限。 成本取决于所选的定价层。 若要了解详细信息，请参阅[Azure Functions 高级计划](functions-premium-plan.md)。 |
 | [**专用（应用服务）**](functions-scale.md#app-service-plan) <br/>（基本或更高层） | 需要在专用 VM 或隔离的环境中运行、自定义映像，或想要使用超额的应用服务计划容量时。 使用[常规应用服务计划计费](https://azure.microsoft.com/pricing/details/app-service/)。 成本取决于所选的定价层。|
 
 选择对函数性能和成本要求最有利的计划。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
@@ -57,7 +56,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 + **触发器和绑定**：从读取输入并将输出写入[函数绑定](functions-triggers-bindings.md)所用的时间将计入执行时间。 例如，如果函数使用某个输出绑定将消息写入 Azure 存储队列，则执行时间包括将该消息写入该队列所花费的时间，而函数成本计算包括该写入时间。 
 
-+ **异步执行**：函数等待异步请求结果的时间（`await`在 c # 中）计为执行时间。 “GB 秒”计算基于函数的开始和结束时间，以及该时间段内的内存用量。 计算中不考虑该时间段内发生的 CPU 活动。 也许可以使用 [Durable Functions](durable/durable-functions-overview.md) 来降低异步操作期间产生的成本。 业务流程协调程序函数中的等待时间不产生费用。
++ **异步执行**：函数等待异步请求结果的时间（ `await` 在 c # 中）计为执行时间。 “GB 秒”计算基于函数的开始和结束时间，以及该时间段内的内存用量。 计算中不考虑该时间段内发生的 CPU 活动。 也许可以使用 [Durable Functions](durable/durable-functions-overview.md) 来降低异步操作期间产生的成本。 业务流程协调程序函数中的等待时间不产生费用。
 
 ## <a name="view-execution-data"></a>查看执行数据
 
@@ -71,7 +70,7 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 1. 在 [Azure 门户]顶部的“搜索服务、资源和文档”中搜索 `monitor`，然后选择“服务”下的“Monitor”。************
 
-1. 在左侧，选择 "**指标** > " "**选择资源**"，然后使用图像下方的设置选择 function app。
+1. 在左侧，选择 "**指标**  >  " "**选择资源**"，然后使用图像下方的设置选择 function app。
 
     ![选择函数应用资源](media/functions-consumption-costing/select-a-resource.png)
 
@@ -228,9 +227,9 @@ customMetrics
 
 | name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+| QueueTrigger AvgDurationMs | 16 \. 087                     |
+| QueueTrigger MaxDurationMs | 90 \. 249                     |
+| QueueTrigger MinDurationMs | 8 \. 522                      |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -13,10 +13,9 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76938356"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理器流量视图
@@ -70,7 +69,7 @@ ms.locfileid: "76938356"
 
 使用流量视图时，将根据用于创建所显示建议的数据点数目进行计费。 目前，所用的唯一数据点类型是根据流量管理器配置文件接收的查询。 有关定价的详细信息，请访问[流量管理器定价页](https://azure.microsoft.com/pricing/details/traffic-manager/)。
 
-## <a name="faqs"></a>常见问题解答
+## <a name="faqs"></a>常见问题
 
 * [流量视图有什么作用？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
 

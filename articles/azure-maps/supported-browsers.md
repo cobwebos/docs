@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76988781"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支持的浏览器
@@ -29,7 +28,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>“桌面”
+## <a name="desktop"></a>桌面型
 
 Azure Maps Web SDK 支持以下桌面浏览器：
 
@@ -40,7 +39,7 @@ Azure Maps Web SDK 支持以下桌面浏览器：
 
 另请参阅本文后面的[面向旧版浏览器](#Target-Legacy-Browsers)。
 
-## <a name="mobile"></a>移动电话
+## <a name="mobile"></a>移动
 
 Azure Maps Web SDK 支持以下移动浏览器：
 
@@ -57,18 +56,18 @@ Azure Maps Web SDK 支持以下移动浏览器：
 
 ## <a name="nodejs"></a>Node.js
 
-Node.js 还支持以下 Web SDK 模块：
+Node.js 中还支持以下 Web SDK 模块：
 
-- 服务模块（[文档](how-to-use-services-module.md) | [npm 模块](https://www.npmjs.com/package/azure-maps-rest)）
+- 服务模块（[文档](how-to-use-services-module.md)  |  [npm 模块](https://www.npmjs.com/package/azure-maps-rest)）
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>定位旧版浏览器
 
-你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如[Leaflet](https://leafletjs.com/)。 下面是一个示例：
+你可能想要面向不支持 WebGL 的旧版浏览器，或仅限对其的支持。 在这种情况下，我们建议你结合使用 Azure Maps 服务和开源地图控件，如[Leaflet](https://leafletjs.com/)。 以下是一个示例：
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure Maps + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a> by<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps （）。
+请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a> by Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
 </iframe>
 
 

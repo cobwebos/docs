@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773587"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容 
 
 > [!NOTE]
-> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅[Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 要完成本教程，需要一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。   > 未向 Media Services v2 添加新功能或功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 >   
 
 强烈建议通过 AES-256 位加密在本地加密内容，然后将其上传到 Azure 存储中以加密形式静态存储相关内容。
@@ -117,7 +116,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
     ---|---
     ID | 使用以下格式生成 ContentKey ID：“nb:kid:UUID:\<NEW GUID>”。
     ContentKeyType | 内容密钥类型是一个整数，用于定义密钥。 存储加密格式的值为 1。
-    EncryptedContentKey | 我们创建一个新的内容密钥值，这是一个 256 位（32 字节）的值。 此密钥使用存储加密 X.509 证书进行加密，该证书是我们通过执行 GetProtectionKeyId 和 GetProtectionKey 方法的 HTTP GET 请求从 Microsoft Azure 媒体服务中检索到的。 有关示例，请参阅下面的 .NET 代码：**此处**定义的 [EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs) 方法。
+    EncryptedContentKey | 我们创建一个新的内容密钥值，这是一个 256 位（32 字节）的值。 此密钥使用存储加密 X.509 证书进行加密，该证书是我们通过执行 GetProtectionKeyId 和 GetProtectionKey 方法的 HTTP GET 请求从 Microsoft Azure 媒体服务中检索到的。 有关示例，请参阅下面的 .NET 代码：[此处](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)定义的 **EncryptSymmetricKeyData** 方法。
     ProtectionKeyId | 这是存储空间加密 X.509 证书的保护密钥 ID，用于加密内容密钥。
     ProtectionKeyType | 这是用于加密内容密钥的保护密钥的加密类型。 对于我们的示例，此值为 StorageEncryption(1)。
     校验和 |内容密钥的 MD5 计算的校验和。 它通过使用内容密钥加密内容 ID 计算得出。 此示例代码演示了如何计算校验和。

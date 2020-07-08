@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76722095"
 ---
 # <a name="agile-development-of-data-science-projects"></a>数据科学项目的敏捷开发
@@ -39,7 +38,7 @@ ms.locfileid: "76722095"
 
 下面是工作项类型的定义：
 
-- **功能**：一个功能对应一个项目协定。 与客户端不同的协定是不同的功能，最好将项目的不同阶段视为不同的功能。 如果选择类似 \<ClientName-\<EngagementName> 的架构作为功能命名，则可以通过名称轻松识别出项目和协定的上下文  。
+- **功能**：一个功能对应一个项目协定。 与客户端不同的协定是不同的功能，最好将项目的不同阶段视为不同的功能。 如果你选择一个架构（例如） *\<ClientName>-\<EngagementName>* 来命名你的功能，则可以轻松地识别该项目的上下文，并从名称本身进行参与。
   
 - **用户情景**：用户情景是完成端到端功能所需的工作项。 用户情景示例包括：
   - 获取数据 

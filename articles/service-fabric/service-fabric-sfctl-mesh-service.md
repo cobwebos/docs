@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2b9f16062b02d7a1a3403d396643a7989b8976b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905925"
 ---
 # <a name="sfctl-mesh-service"></a>sfctl mesh service
@@ -17,17 +16,17 @@ ms.locfileid: "76905925"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|描述|
 | --- | --- |
 | list | 列出所有服务资源。 |
-| 显示 | 获取具有给定名称的服务资源。 |
+| show | 获取具有给定名称的服务资源。 |
 
 ## <a name="sfctl-mesh-service-list"></a>sfctl mesh service list
 列出所有服务资源。
 
 获取某个应用程序资源的所有服务的相关信息。 此信息包括服务的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |
@@ -48,7 +47,7 @@ ms.locfileid: "76905925"
 
 获取具有给定名称的服务资源的相关信息。 此信息包括服务的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |

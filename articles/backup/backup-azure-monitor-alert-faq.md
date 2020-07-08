@@ -5,10 +5,9 @@ ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76989563"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure 备份监视警报 - 常见问题解答
@@ -19,7 +18,7 @@ ms.locfileid: "76989563"
 
 ### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>如何确定报告数据是否已开始流向 Log Analytics (LA) 工作区？
 
-导航到已配置的 LA 工作区，导航到“日志”  菜单项，然后运行查询 CoreAzureBackup | 选择 1。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
+导航到已配置的 LA 工作区，导航到“日志”菜单项，然后运行查询 CoreAzureBackup | 选择 1。 如果看到返回了记录，则表示数据已开始流入工作区。 初始数据推送可能需要长达 24 小时。
 
 ### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>向 LA 工作区推送数据的频率是怎样的？
 

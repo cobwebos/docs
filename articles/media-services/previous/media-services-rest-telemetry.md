@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76774862"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>使用 REST 配置 Azure 媒体服务遥测
@@ -34,7 +33,7 @@ ms.locfileid: "76774862"
 - 获取通知终结点
 - 创建用于监视的通知终结点。 
 
-    若要创建通知终结点，请将 EndPointType 设置为 AzureTable （2），并将将 endpontaddress 设置为存储表（例如，\/https：/telemetryvalidationstore.table.core.windows.net/）。
+    若要创建通知终结点，请将 EndPointType 设置为 AzureTable （2），并将将 endpontaddress 设置为存储表（例如，https： \/ /telemetryvalidationstore.table.core.windows.net/）。
   
 - 获取监视配置
 
@@ -126,7 +125,7 @@ ms.locfileid: "76774862"
     }
 
 > [!NOTE]
-> 请不要忘记将 "https：\//telemetryvalidationstore.table.core.windows.net" 值更改为存储帐户。
+> 请不要忘记将 "https： \/ /telemetryvalidationstore.table.core.windows.net" 值更改为存储帐户。
 
 ### <a name="response"></a>响应
 

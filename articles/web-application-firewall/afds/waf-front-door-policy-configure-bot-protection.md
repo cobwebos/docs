@@ -8,10 +8,9 @@ services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
 ms.openlocfilehash: f48b683044bc727cda461fb64a743c055188962a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934658"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>为 Web 应用程序防火墙配置机器人保护（预览版）
@@ -20,7 +19,7 @@ ms.locfileid: "76934658"
 > [!IMPORTANT]
 > 机器人防护规则集当前为公共预览版，并提供预览版服务级别协议。 某些功能可能不受支持或者受限。  有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 按照[使用 Azure 门户为 Azure 前门创建 WAF 策略](waf-front-door-create-portal.md)中所述的说明，为前门创建基本的 WAF 策略。
 

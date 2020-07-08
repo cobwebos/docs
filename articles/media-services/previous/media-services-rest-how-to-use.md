@@ -16,10 +16,9 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76773665"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
@@ -37,7 +36,7 @@ ms.locfileid: "76773665"
 
 使用 REST 时需考虑下列事项：
 
-* 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用**此 .NET 示例**和**此 REST API 示例**中所述的 **Skip** 和 [Take](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) (.NET)/ [top](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) (REST)。 
+* 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 需要使用[此 .NET 示例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)和[此 REST API 示例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
 * 使用 JSON 并指定在请求中使用 **__metadata** 关键字（例如，为了引用某个链接对象）时，必须将 **Accept** 标头设置为 [JSON 详细格式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)（参阅以下示例）。 Odata 并不了解请求中的 **__metadata** 属性，除非将其设置为 verbose。  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1

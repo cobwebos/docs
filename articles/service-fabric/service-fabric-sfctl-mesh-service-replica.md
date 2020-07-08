@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76905952"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh service-replica
@@ -17,17 +16,17 @@ ms.locfileid: "76905952"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|描述|
 | --- | --- |
 | list | 列出某个服务的所有副本。 |
-| 显示 | 获取应用程序服务的给定副本。 |
+| show | 获取应用程序服务的给定副本。 |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>sfctl mesh service-replica list
 列出某个服务的所有副本。
 
 获取某个服务的所有副本的相关信息。 此信息包括服务副本的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |
@@ -49,7 +48,7 @@ ms.locfileid: "76905952"
 
 获取具有给定名称的服务副本的相关信息。 此信息包括服务副本的说明和其他属性。
 
-### <a name="arguments"></a>参数
+### <a name="arguments"></a>自变量
 
 |参数|说明|
 | --- | --- |

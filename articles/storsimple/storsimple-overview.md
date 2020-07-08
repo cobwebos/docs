@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68965120"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
@@ -208,7 +207,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 方案 | 工作负载 | 支持 | 限制 | 版本 |
+| 方案 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -217,8 +216,8 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 | 虚拟化 |虚拟机 |是* |仅本地固定卷支持 |Update 2 及更高版本 |
 | 数据库 |SQL |是* |仅本地固定卷支持 |Update 2 及更高版本 |
 | 视频监视 |视频监视 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 2 及更高版本 |
-| Backup |主目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
-| Backup |辅助目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
+| 备份 |主目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
+| 备份 |辅助目标备份 |是* |StorSimple 设备专用于此工作负荷时，支持 |Update 3 及更高版本 |
 
 是&#42; - 应该应用解决方案的指导原则和限制。**
 
@@ -235,7 +234,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 方案 | 工作负载 | 支持 | 限制 | 版本 |
+| 方案 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
@@ -258,7 +257,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。
 
 ### <a name="key-terms-and-definitions"></a>关键术语和定义
-| 术语（首字母缩写词或缩写） | 说明 |
+| 术语（首字母缩写词或缩写） | 描述 |
 | --- | --- |
 | 访问控制记录 (ACR) |与 Microsoft Azure StorSimple 设备上的卷相关联的记录，可决定哪些主机可以连接到它。 此决定基于连接到 StorSimple 设备的主机（包含在 ACR 中）上 iSCSI 限定的名称 (IQN)。 |
 | AES-256 |当数据在云中出入时，用于加密该数据的 256 位高级加密标准 (AES) 算法。 |

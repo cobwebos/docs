@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76844711"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：向事件网格云转发事件
@@ -25,7 +24,7 @@ ms.locfileid: "76844711"
 
  若要完成本教程，你需要了解有关[边缘](concepts.md)和[Azure](../concepts.md)的事件网格概念。 有关其他目标类型，请参阅[事件处理程序](event-handlers.md)。 
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
@@ -34,9 +33,9 @@ ms.locfileid: "76844711"
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>在云中创建事件网格主题和订阅
 
-按照[本教程](../custom-event-quickstart-portal.md)的说明，在云中创建事件网格主题和订阅。 记下`topicURL` `sasKey`在本教程`topicName`稍后将使用的新创建主题的、和。
+按照[本教程](../custom-event-quickstart-portal.md)的说明，在云中创建事件网格主题和订阅。 记下 `topicURL` `sasKey` `topicName` 在本教程稍后将使用的新创建主题的、和。
 
-例如，如果你创建了一个名为`testegcloudtopic` "美国西部" 的主题，则这些值将如下所示：
+例如，如果你创建了一个名为 `testegcloudtopic` "美国西部" 的主题，则这些值将如下所示：
 
 * **TopicUrl**：`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **TopicName**：`testegcloudtopic`
@@ -44,7 +43,7 @@ ms.locfileid: "76844711"
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>在边缘创建事件网格主题
 
-1. 创建具有以下内容的 topic3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 topic3.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         {
@@ -85,7 +84,7 @@ ms.locfileid: "76844711"
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 创建具有以下内容的 subscription3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 subscription3.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
    ```json
         {
@@ -157,7 +156,7 @@ ms.locfileid: "76844711"
 
 ## <a name="publish-an-event-at-the-edge"></a>在边缘发布事件
 
-1. 创建具有以下内容的 event3。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 event3.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         [
@@ -175,7 +174,7 @@ ms.locfileid: "76844711"
         ]
     ```
 
-1. 运行以下命令：
+1. 运行下面的命令：
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview

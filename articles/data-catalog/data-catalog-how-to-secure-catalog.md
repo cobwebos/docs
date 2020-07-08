@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68976767"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>如何保护对安全访问数据目录和数据资产的访问
@@ -32,7 +31,7 @@ ms.locfileid: "68976767"
 
    ![Azure 数据目录用户添加按钮](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
-3. 单击 **“添加”** 。
+3. 单击“添加” 。
 
 4. 在与目录关联的 Azure Active Directory (AAD) 中输入完全限定用户名或安全组名称********。 若要添加多个用户或组，请使用逗号（“,”）作为分隔符。
 

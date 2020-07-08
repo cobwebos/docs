@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76776230"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>方案：群集创建由于 Azure HDInsight 中的 DomainNotFound 错误而失败
@@ -20,7 +19,7 @@ ms.locfileid: "76776230"
 
 ## <a name="issue"></a>问题
 
-HDI 安全（企业安全性套餐）群集创建失败， `DomainNotFound`并出现错误消息。
+HDI 安全（企业安全性套餐）群集创建失败，并出现 `DomainNotFound` 错误消息。
 
 ## <a name="cause"></a>原因
 
@@ -52,6 +51,6 @@ DNS 设置不正确。
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

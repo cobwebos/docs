@@ -5,15 +5,14 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
 ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76934977"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>配置应用程序的存储库凭据以下载容器映像
 
-通过将添加`RepositoryCredentials`到应用程序清单的`ContainerHostPolicies`部分来配置容器注册表身份验证。 为容器注册表添加帐户和密码（在以下示例中为*myregistry.azurecr.io* ），该帐户允许服务从存储库下载容器映像。
+通过将添加 `RepositoryCredentials` 到应用程序清单的部分来配置容器注册表身份验证 `ContainerHostPolicies` 。 为容器注册表添加帐户和密码（在以下示例中为*myregistry.azurecr.io* ），该帐户允许服务从存储库下载容器映像。
 
 ```xml
 <ServiceManifestImport>
@@ -35,7 +34,7 @@ ms.locfileid: "76934977"
 
 Service Fabric 允许你配置群集范围的凭据，这些凭据可由应用程序用作默认存储库凭据。
 
-可以`UseDefaultRepositoryCredentials`通过使用`ContainerHostPolicies` `true`或`false`值将属性添加到 applicationmanifest.xml 中，启用或禁用此功能。
+可以通过将 `UseDefaultRepositoryCredentials` 属性添加到 `ContainerHostPolicies` ApplicationManifest.xml 中的 `true` 或值来启用或禁用此功能 `false` 。
 
 ```xml
 <ServiceManifestImport>
@@ -49,14 +48,14 @@ Service Fabric 允许你配置群集范围的凭据，这些凭据可由应用�
 </ServiceManifestImport>
 ```
 
-然后 Service Fabric 使用默认存储库凭据，这些凭据可在`Hosting`部分下的 clustermanifest.xml 中指定。  如果 `UseDefaultRepositoryCredentials` 为 `true`，则 Service Fabric 将从 ClusterManifest 中读取以下值：
+然后 Service Fabric 使用默认存储库凭据，这些凭据可在部分下的 Clustermanifest.xml 中指定 `Hosting` 。  如果 `UseDefaultRepositoryCredentials` 为 `true`，则 Service Fabric 将从 ClusterManifest 中读取以下值：
 
 * DefaultContainerRepositoryAccountName (string)
 * DefaultContainerRepositoryPassword (string)
 * IsDefaultContainerRepositoryPasswordEncrypted (bool)
 * DefaultContainerRepositoryPasswordType （字符串）
 
-下面是可以在 ClusterManifestTemplate 文件的部分中添加的`Hosting`内容的示例。 可以在群集创建时或配置升级后期添加 `Hosting` 节。 有关详细信息，请参阅[更改 Azure Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)和[管理 Azure Service Fabric 应用程序机密](service-fabric-application-secret-management.md)
+下面是可以在文件的 ClusterManifestTemplate.js中的部分内添加内容的示例 `Hosting` 。 可以在群集创建时或配置升级后期添加 `Hosting` 节。 有关详细信息，请参阅[更改 Azure Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)和[管理 Azure Service Fabric 应用程序机密](service-fabric-application-secret-management.md)
 
 ```json
 "fabricSettings": [
@@ -101,7 +100,7 @@ Service Fabric 支持使用令牌作为凭据为容器下载映像。  此功能
 
     ![将 VM 主体添加到 ACR](./media/configure-container-repository-credentials/configure-container-repository-credentials-vmss-identity.png)
 
-3. 接下来，修改应用程序清单。 在`ContainerHostPolicies`部分中，添加属性`‘UseTokenAuthenticationCredentials=”true”`。
+3. 接下来，修改应用程序清单。 在 `ContainerHostPolicies` 部分中，添加属性 `‘UseTokenAuthenticationCredentials=”true”` 。
 
     ```xml
       <ServiceManifestImport>
@@ -116,7 +115,7 @@ Service Fabric 支持使用令牌作为凭据为容器下载映像。  此功能
     ```
 
     > [!NOTE]
-    > 如果`UseTokenAuthenticationCredentials`为`UseDefaultRepositoryCredentials` true，则将标志设置为 true 会在部署过程中导致错误。
+    > 如果为 true，则将标志 `UseDefaultRepositoryCredentials` 设置为 true `UseTokenAuthenticationCredentials` 会在部署过程中导致错误。
 
 ## <a name="next-steps"></a>后续步骤
 

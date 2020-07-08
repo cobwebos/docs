@@ -10,10 +10,9 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 101dcae5870322878cec48098f2efae32cc68c14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76841724"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>配置 webhook 订阅服务器身份验证
@@ -45,7 +44,7 @@ ms.locfileid: "76841724"
  ```
 
 >[!NOTE]
->只能在测试`outbound__webhook__allowUnknownCA`环境`true`中将属性设置为，因为通常可以使用自签名证书。 对于生产工作负荷，我们建议将其设置为**false**。
+>`outbound__webhook__allowUnknownCA` `true` 只能在测试环境中将属性设置为，因为通常可以使用自签名证书。 对于生产工作负荷，我们建议将其设置为**false**。
 
 ## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>允许 HTTPS 订阅服务器，但跳过证书验证
 
@@ -60,7 +59,7 @@ ms.locfileid: "76841724"
  ```
 
 >[!NOTE]
->仅在测试`outbound__webhook__skipServerCertValidation`环境`true`中将属性设置为，因为你可能无法提供需要进行身份验证的证书。 对于生产工作负荷，我们建议将其设置为**false**
+>`outbound__webhook__skipServerCertValidation` `true` 仅在测试环境中将属性设置为，因为你可能无法提供需要进行身份验证的证书。 对于生产工作负荷，我们建议将其设置为**false**
 
 ## <a name="allow-both-http-and-https-with-self-signed-certificates"></a>允许 HTTP 和 HTTPS 与自签名证书
 
@@ -75,4 +74,4 @@ ms.locfileid: "76841724"
  ```
 
 >[!NOTE]
->仅在测试`outbound__webhook__httpsOnly`环境`false`中将属性设置为，因为可能需要首先打开 HTTP 订阅服务器。 对于生产工作负荷，我们建议将其设置为**true**
+>`outbound__webhook__httpsOnly` `false` 仅在测试环境中将属性设置为，因为可能需要首先打开 HTTP 订阅服务器。 对于生产工作负荷，我们建议将其设置为**true**
