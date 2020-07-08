@@ -1,21 +1,21 @@
 ---
-title: 将 VHD 上传到 Azure 或跨区域复制磁盘-Azure PowerShell
-description: 了解如何使用 Azure PowerShell 通过直接上传将 VHD 上传到 Azure 托管磁盘并跨区域复制托管磁盘。
+title: 将 VHD 上传到 Azure 或跨区域复制磁盘 - Azure PowerShell
+description: 了解如何通过直接上传将 VHD 上传到 Azure 托管磁盘，以及如何使用 Azure PowerShell 跨区域复制托管磁盘。
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d03e911b88e6a7729b0519e74941b47d85a97901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944621"
 ---
-# <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域-Azure PowerShell
+# <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
@@ -23,14 +23,14 @@ ms.locfileid: "82182508"
 
 - 下载最新版本 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
-- 如果要从本地上载 VHD：已[为 Azure 准备](prepare-for-upload-vhd-image.md)的固定大小 VHD，本地存储。
+- 若要从本地上传 VHD：[已为 Azure 准备了](prepare-for-upload-vhd-image.md)一个固定大小的 VHD，存储在本地。
 - 若要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="getting-started"></a>入门
 
 如果希望通过 GUI 上传磁盘，可以使用 Azure 存储资源管理器。 有关详细信息，请参阅：[使用 Azure 存储资源管理器管理 Azure 托管磁盘](disks-use-storage-explorer-managed-disks.md)
 
-若要将 VHD 上传到 Azure，需要创建一个为此上传过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
+若要将 VHD 上传到 Azure，需要创建一个针对此上传过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
 
 这种托管磁盘有两种独特的状态：
 
@@ -42,11 +42,14 @@ ms.locfileid: "82182508"
 
 ## <a name="create-an-empty-managed-disk"></a>创建空托管磁盘
 
-你需要上载 VHD 的文件大小（以字节为单位），然后才能创建用于上传的空标准 HDD。 可以使用示例代码来这样做，但若要自己操作，可以使用 `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`。 指定 **-UploadSizeInBytes** 参数时将使用此值。
+在创建要上传的空标准 HDD 之前，需要获取要上传的 VHD 的文件大小（以字节为单位）。 可以使用示例代码来这样做，但若要自己操作，可以使用 `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`。 指定 **-UploadSizeInBytes** 参数时将使用此值。
 
-现在，请在本地 shell 上创建一个要上传的空的标准 HDD，方法是：在 **-CreateOption** 参数中指定 **Upload** 设置，并在 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 中指定 **-UploadSizeInBytes** 参数。 然后，调用[AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0)创建该磁盘。
+现在，请在本地 shell 上创建一个要上传的空的标准 HDD，方法是：在 **-CreateOption** 参数中指定 **Upload** 设置，并在 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 中指定 **-UploadSizeInBytes** 参数。 然后调用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) 来创建磁盘。
 
-替换`<yourdiskname>`， `<yourresourcegroupname>`， `<yourregion>`然后运行以下命令：
+替换 `<yourdiskname>`、`<yourresourcegroupname>` 和 `<yourregion>`，然后运行以下命令：
+
+> [!TIP]
+> 如果要创建 OS 磁盘，请将-HyperVGeneration " <yourGeneration> " 添加到 `New-AzDiskConfig` 。
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -58,9 +61,9 @@ New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>
 
 若要上传高级 SSD 或标准 SSD，请将 **Standard_LRS** 替换为 **Premium_LRS** 或 **StandardSSD_LRS**。 目前尚不支持 Ultra 磁盘。
 
-现在，你已创建了一个为上传过程配置的空托管磁盘，可以将 VHD 上传到该磁盘。 若要将 VHD 上传到磁盘，则需要一个可写 SAS，以便将其作为上传的目标进行引用。
+现在，你已创建了一个针对上传过程配置的空托管磁盘，可以将 VHD 上传到其中了。 若要将 VHD 上传到磁盘，需要一个可写的 SAS，以便将此磁盘作为上传目标引用。
 
-若要生成空托管磁盘的可写 SAS，请`<yourdiskname>`替换`<yourresourcegroupname>`和，然后使用以下命令：
+若要生成空托管磁盘的可写 SAS，请替换 `<yourdiskname>` 和 `<yourresourcegroupname>`，然后使用以下命令：
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -DurationInSecond 86400 -Access 'Write'
@@ -82,7 +85,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlo
 
 上传完成后，如果你不再需要将更多数据写入磁盘，请吊销 SAS。 吊销 SAS 会更改托管磁盘的状态，使你可以将磁盘附加到 VM。
 
-替换`<yourdiskname>`和`<yourresourcegroupname>`，并运行以下命令：
+替换 `<yourdiskname>` 和 `<yourresourcegroupname>`，然后运行以下命令：
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>'
@@ -90,14 +93,17 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 
 ## <a name="copy-a-managed-disk"></a>复制托管磁盘
 
-直接上传还能简化复制托管磁盘的过程。 可以在同一区域内复制，也可以将托管磁盘复制到其他区域。
+直接上传还能简化复制托管磁盘的过程。 可以在同一区域中进行复制，或者将托管磁盘复制到其他区域。
 
-以下脚本将为你执行此操作，此过程类似于前面所述的步骤，因为你使用的是现有磁盘。
+以下脚本可自动完成此操作，此过程类似于前面所述的步骤，但由于处理的是现有磁盘，因此存在一些差异。
 
 > [!IMPORTANT]
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
-将`<sourceResourceGroupHere>`、 `<sourceDiskNameHere>` `<targetDiskNameHere>` `<yourOSTypeHere>` 、、和`<yourTargetLocationHere>` （位置值的示例为 uswest2）替换为你的值，然后运行以下脚本，以便复制托管磁盘。 `<targetResourceGroupHere>`
+将 `<sourceResourceGroupHere>` 、、 `<sourceDiskNameHere>` 、 `<targetDiskNameHere>` `<targetResourceGroupHere>` `<yourOSTypeHere>` 和 `<yourTargetLocationHere>` （位置值的示例为 uswest2）替换为你的值，然后运行以下脚本，以便复制托管磁盘。
+
+> [!TIP]
+> 如果要创建 OS 磁盘，请将-HyperVGeneration " <yourGeneration> " 添加到 `New-AzDiskConfig` 。
 
 ```powershell
 
@@ -129,6 +135,6 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 ## <a name="next-steps"></a>后续步骤
 
-现在已成功将 VHD 上传到托管磁盘，可以将磁盘附加到 VM 并开始使用它。
+成功将 VHD 上传到托管磁盘后，即可将磁盘附加到 VM 并开始使用它。
 
-若要了解如何将数据磁盘附加到 VM，请参阅主题：[使用 PowerShell 将数据磁盘附加到 WINDOWS VM](attach-disk-ps.md)。 若要将磁盘用作 OS 磁盘，请参阅[从专用磁盘创建 Windows VM](create-vm-specialized.md#create-the-new-vm)。
+若要了解如何将数据磁盘附加到 VM，请参阅有关此主题的文章：[使用 PowerShell 将数据磁盘附加到 Windows VM](attach-disk-ps.md)。 若要将磁盘用作 OS 磁盘，请参阅[从专用磁盘创建 Windows VM](create-vm-specialized.md#create-the-new-vm)。

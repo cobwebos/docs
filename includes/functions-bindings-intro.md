@@ -8,10 +8,10 @@ ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 1ae2d694853b72009af3f45013e147099943577c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76277377"
 ---
 此参考信息面向 Azure Functions 开发人员。 Azure Functions 的新手请从以下资源入手：

@@ -6,18 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 2627cd540efe644315e303337b7dce95a6e2d126
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84906881"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
-
-监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。
-
-可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费的，但收集的数据可能会产生使用费。 除了由 Microsoft 提供的解决方案以外，合作伙伴和客户还可以[创建管理解决方案](solutions-creating.md)，以便在各自环境中使用或通过社区提供给客户使用。
+监视解决方案利用 Azure 中的服务来对特定应用程序或服务的操作进行其他分析。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。 可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费的，但收集的数据可能会产生使用费。
 
 ## <a name="use-monitoring-solutions"></a>使用监视解决方案
 

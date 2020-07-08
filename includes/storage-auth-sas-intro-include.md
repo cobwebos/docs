@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: aec1faa4de1149f08fb6fbc1cc5bf3aa2ab6becd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75371764"
 ---
 使用共享访问签名 (SAS)，可以授予对存储帐户中容器和 blob 的有限访问权限。 创建 SAS 时，需要指定其约束条件，包括允许客户端访问哪些 Azure 存储资源、它们对这些资源具有哪些权限，以及 SAS 的有效期。

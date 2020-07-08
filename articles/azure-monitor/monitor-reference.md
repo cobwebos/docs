@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/17/2020
-ms.openlocfilehash: d154029e20ed952ca371685b00d5520f9d7850c8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.date: 06/15/2020
+ms.openlocfilehash: 146deba7a0ef1e0dc5ffe03f9ad414e752058274
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873846"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945369"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -31,7 +31,7 @@ ms.locfileid: "83873846"
 | [用于网络的 Azure Monitor（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
 [用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
 | [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
-| [用于 VM 的 Azure Monitor](insights/container-insights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
+| [用于 VM 的 Azure Monitor](insights/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
 | [Key Vault 的 Azure Monitor（预览版）](insights/key-vaults-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
 | [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
@@ -137,8 +137,7 @@ ms.locfileid: "83873846"
 |通知中心 | 是 | 否 | 否 |  |
 |开放数据集 | 否 | 否 | 否 |  |
 |策略 | 否 | 否 | 否 |  |
-|Power BI | 是 | 是 | 否 |  |
-|Power BI Embedded | 否 | 否 | 否 |  |
+|Power BI Embedded | 是 | 是 | 否 |  |
 |专用链接 | 否 | 否 | 否 |  |
 |项目假脱机通信平台 | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
@@ -148,7 +147,7 @@ ms.locfileid: "83873846"
 |零售搜索 - 通过必应 | 否 | 否 | 否 |  |
 |搜索 | 是 | 是 | 否 |  |
 |服务总线 | 是 | 是 | 否 |  |
-|Service Fabric | 否 | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
+|Service Fabric | No | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
 |注册门户 | 否 | 否 | 否 |  |
 |Site Recovery | 否 | 是 | 否 |  |
 |Spring Cloud 服务 | 否 | 否 | 否 |  |
@@ -167,7 +166,7 @@ ms.locfileid: "83873846"
 |虚拟机规模集 | 否 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
 |虚拟机 | 是 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
 |虚拟网络 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
-|虚拟网络 - NSG 流日志 | 否 | 是 | 否 |  |
+|虚拟网络 - NSG 流日志 | No | 是 | 否 |  |
 |VPN 网关 | 是 | 是 | 否 |  |
 |Windows 虚拟桌面 | 否 | 否 | 否 |  |
 
@@ -201,7 +200,7 @@ ms.locfileid: "83873846"
 |:---|:---|
 | [Active Directory 运行状况检查](insights/ad-assessment.md) | 评估 Active Directory 环境的风险和运行状况。 |
 | [Active Directory 复制状态](insights/ad-replication-status.md) | 定期监视 Active Directory 环境中是否有任何复制失败。 |
-| [活动日志分析](platform/activity-log-view.md#azure-portal) | 查看活动日志条目。 |
+| [活动日志分析](platform/activity-log.md#activity-log-analytics-monitoring-solution) | 查看活动日志条目。 |
 | [DNS Analytics（预览版）](insights/dns-analytics.md) | 收集、分析和关联 Windows DNS 分析和审核日志，以及 DNS 服务器的其他相关数据。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多个部署收集、查看和分析 Cloud Foundry 系统的运行状况和性能指标。 |
 | [容器](insights/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |

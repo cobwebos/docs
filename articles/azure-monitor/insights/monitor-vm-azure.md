@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: e38ae07aa032e4a828c9188fd78b112f4ff0d397
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945386"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure Monitor 监视 Azure 虚拟机
 本文介绍如何使用 Azure Monitor 从 Azure 虚拟机收集和分析监视数据以维护其运行状况。 可以使用 Azure Monitor 监视虚拟机的可用性和性能，就像监视任何[其他 Azure 资源](monitor-azure-resource.md)一样，但是它们与其他资源不同，因为你还需要监视客户操作和系统以及在其中运行的工作负载。 
@@ -105,9 +105,9 @@ Azure 中的虚拟机为虚拟主机生成以下与其他 Azure 资源相同的�
 有关在 Linux 虚拟机上配置 Telegraf 代理的详细信息，请参阅[安装和配置 Telegraf](../platform/collect-custom-metrics-linux-telegraf.md#install-and-configure-telegraf)。 “诊断设置”菜单选项适用于 Linux，但它只允许你将数据发送到 Azure 存储。
 
 ### <a name="collect-platform-metrics-and-activity-log"></a>收集平台指标和活动日志
-你可以查看为 Azure 门户中的每个虚拟主机收集的平台指标和活动日志。 将此数据收集到与用于 VM 的 Azure Monitor 相同的 Log Analytics 工作区中，以便与为虚拟机收集的其他监视数据一起进行分析。 此收集配置了[诊断设置](../platform/diagnostic-settings.md)。 使用[订阅的诊断设置](../platform/diagnostic-settings.md#create-diagnostic-settings-in-azure-portal)收集活动日志。
+你可以查看为 Azure 门户中的每个虚拟主机收集的平台指标和活动日志。 将此数据收集到与用于 VM 的 Azure Monitor 相同的 Log Analytics 工作区中，以便与为虚拟机收集的其他监视数据一起进行分析。 此收集配置了[诊断设置](../platform/diagnostic-settings.md)。 使用[订阅的诊断设置](../platform/diagnostic-settings.md#create-in-azure-portal)收集活动日志。
 
-使用虚拟机的诊断设置收集平台指标。 与其他 Azure 资源不同，你无法在 Azure 门户中为虚拟机创建诊断设置，但必须使用[其他方法](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell)。 以下示例演示如何使用 PowerShell 和 CLI 收集虚拟机指标。
+使用虚拟机的诊断设置收集平台指标。 与其他 Azure 资源不同，你无法在 Azure 门户中为虚拟机创建诊断设置，但必须使用[其他方法](../platform/diagnostic-settings.md#create-using-powershell)。 以下示例演示如何使用 PowerShell 和 CLI 收集虚拟机指标。
 
 ```powershell
 Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"

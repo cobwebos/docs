@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: virtual-machines
 author: roygara
@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81008316"
 ---
 ## <a name="limitations"></a>限制
@@ -27,12 +27,12 @@ ms.locfileid: "81008316"
 
 ### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>将高级 SSD 部署为共享磁盘
 
-若要部署启用了共享磁盘功能的托管磁盘，请使用新属性`maxShares`并定义大于1的值。 这会使该磁盘可在多个 Vm 间共享。
+若要部署启用了共享磁盘功能的托管磁盘，请使用新属性 `maxShares` 并定义大于1的值。 这会使该磁盘可在多个 Vm 间共享。
 
 > [!IMPORTANT]
-> 仅当从`maxShares`所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值`maxShares`。
+> `maxShares`仅当从所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值 `maxShares` 。
 
-使用以下模板之前，请将`[parameters('dataDiskName')]`、 `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]`、和`[parameters('maxShares')]`替换为自己的值。
+使用以下模板之前，请 `[parameters('dataDiskName')]` 将、 `[resourceGroup().location]` 、 `[parameters('dataDiskSizeGB')]` 和替换 `[parameters('maxShares')]` 为自己的值。
 
 ```json
 { 
@@ -77,10 +77,10 @@ ms.locfileid: "81008316"
 
 #### <a name="cli"></a>CLI
 
-若要部署启用了共享磁盘功能的托管磁盘，请将`maxShares`参数更改为大于1的值。 这会使该磁盘可在多个 Vm 间共享。
+若要部署启用了共享磁盘功能的托管磁盘，请将 `maxShares` 参数更改为大于1的值。 这会使该磁盘可在多个 Vm 间共享。
 
 > [!IMPORTANT]
-> 仅当从`maxShares`所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值`maxShares`。
+> `maxShares`仅当从所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值 `maxShares` 。
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-若要部署启用了共享磁盘功能的托管磁盘，请使用属性`maxShares`并定义大于1的值。 这会使该磁盘可在多个 Vm 间共享。
+若要部署启用了共享磁盘功能的托管磁盘，请使用属性 `maxShares` 并定义大于1的值。 这会使该磁盘可在多个 Vm 间共享。
 
 > [!IMPORTANT]
-> 仅当从`maxShares`所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值`maxShares`。
+> `maxShares`仅当从所有 vm 中卸载磁盘时，才能设置或更改的值。 请参阅[磁盘大小](#disk-sizes)以了解的允许值 `maxShares` 。
 
-使用以下模板之前，请将`[parameters('dataDiskName')]`、 `[resourceGroup().location]` `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`、、、、、和`[parameters('diskMBpsReadOnly')]`替换为自己的值。
+使用以下模板之前，请将、、、、、、 `[parameters('dataDiskName')]` `[resourceGroup().location]` 和替换 `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` `[parameters('diskMBpsReadOnly')]` 为自己的值。
 
 ```json
 {
@@ -170,7 +170,7 @@ az disk show -g rg1 -n clidisk
 
 ### <a name="using-azure-shared-disks-with-your-vms"></a>将 Azure 共享磁盘与 Vm 配合使用
 
-使用`maxShares>1`部署共享磁盘后，可以将该磁盘装载到一台或多台 vm。
+使用部署共享磁盘后 `maxShares>1` ，可以将该磁盘装载到一台或多台 vm。
 
 > [!IMPORTANT]
 > 共享磁盘的所有 Vm 都必须部署在同一[邻近位置组](../articles/virtual-machines/windows/proximity-placement-groups.md)中。

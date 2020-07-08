@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660176"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907459"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接
 
@@ -222,7 +222,10 @@ SAP 系统通常包含敏感的业务数据。 托管 SAP 系统的 VM 具有公
 
 ## <a name="other-solutions"></a>其他解决方案
 
-如果出站流量是通过第三方防火墙路由的，请确保防火墙配置允许出站连接到 Azure 管理 API：`https://management.azure.com` 和 `https://login.microsoftonline.com`。  
+如果通过第三方防火墙路由出站流量：
+
+- 如果使用 Azure 隔离代理，请确保防火墙配置允许与 Azure 管理 API 建立出站连接： `https://management.azure.com` 和`https://login.microsoftonline.com`   
+- 如果使用 SUSE 的 Azure 公有云更新基础结构来应用更新和修补程序，请参阅[Azure 公有云更新基础结构 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
 ## <a name="next-steps"></a>后续步骤
 

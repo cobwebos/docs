@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: douglasl
 ms.openlocfilehash: bf8d0992cd25b52955ac90cecc00750d93343da6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80335083"
 ---
 Azure 数据库迁移服务是一项完全托管的服务，旨在实现在最短的停机时间内从多个数据库源无缝迁移到 Azure 数据平台。

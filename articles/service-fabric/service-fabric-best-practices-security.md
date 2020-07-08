@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f6049a69b88c85f4e1bdf1c2400866739a6718d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944315"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
@@ -87,7 +87,7 @@ ms.locfileid: "80478756"
 > [!NOTE]
 > Service Fabric 群集将使用它在主机的证书存储中找到的第一个有效证书。 在 Windows 上，该证书将是具有最晚到期日期且与公用名和颁发者指纹匹配的证书。
 
-Azure 域（例如 *\<你的子域\>.cloudapp.azure.com 或 \<你的子域\>.trafficmanager.net）由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
+Azure 域，如 * \<YOUR SUBDOMAIN\> . cloudapp.azure.com 或 \<YOUR SUBDOMAIN\> trafficmanager.net，由 Microsoft 拥有。 证书颁发机构不会将域的证书颁发给未授权的用户。 大多数用户需要从注册机构购买域，或者需要是经授权的域管理员，否则证书颁发机构不会向其颁发具有该公用名的证书。
 
 若要更详细地确定如何配置 DNS 服务，以便将域解析为 Microsoft IP 地址，请了解如何配置[用于托管域的 Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。
 
@@ -157,7 +157,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>使用托管服务标识 (MSI) 向 Azure 资源验证 Service Fabric 应用程序
 
-若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+若要了解 Azure 资源的托管标识，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)。
 Azure Service Fabric 群集托管在虚拟机规模集上，后者支持[托管服务标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources)。
 若要获取可以使用 MSI 向其进行身份验证的服务的列表，请参阅[支持 Azure Active Directory 身份验证的 Azure 服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)。
 
@@ -217,7 +217,12 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 这些防火墙规则是对允许的出站网络安全组的补充，此类安全组将包括 ServiceFabric 和存储，作为来自虚拟网络的允许目标。
 
 ## <a name="tls-12"></a>TLS 1.2
-[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
+
+Microsoft [Azure 建议](https://azure.microsoft.com/updates/azuretls12/)所有客户完全迁移到支持传输层安全（TLS）1.2 的解决方案，并确保默认情况下使用 TLS 1.2。
+
+Azure 服务（包括[Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/microsoft-azure-service-fabric-6-3-refresh-release-cu1-notes/ba-p/791493)）已完成工程工作以删除 tls 1.0/1.1 协议的依赖项，并为想要将其工作负荷配置为仅接受 tls 1.2 连接的客户提供完全支持。
+
+默认情况下，客户应配置其 Azure 托管的工作负载以及与 Azure 服务交互的本地应用程序以使用 TLS 1.2。 下面介绍如何[将 Service Fabric 群集节点和应用程序配置](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)为使用特定的 TLS 版本。
 
 ## <a name="windows-defender"></a>Windows Defender 
 
@@ -267,8 +272,8 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在运行 Windows Server 的 Vm 或计算机上创建群集：[为 Windows server Service Fabric 群集创建](service-fabric-cluster-creation-for-windows-server.md)。
-* 在运行 Linux 的 Vm 或计算机上创建群集：[创建 linux 群集](service-fabric-cluster-creation-via-portal.md)。
+* 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)。
+* 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)。
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)。
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

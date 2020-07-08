@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
 ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73590420"
 ---
 以下限制适用于每个 Azure 订阅的认知服务资源数。 每个认知服务可能都有其他限制，有关详细信息，请参阅 [Azure 认知服务](https://docs.microsoft.com/azure/cognitive-services/)。

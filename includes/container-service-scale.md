@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "66814854"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "66814854"
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 缩放
 
-[安装 Azure CLI](/cli/azure/install-azure-cli)并使用`az login`登录到 Azure 帐户。
+[安装 Azure CLI](/cli/azure/install-azure-cli)并使用登录到 Azure 帐户 `az login` 。
 
 ### <a name="see-the-current-agent-count"></a>查看当前代理计数
 若要查看群集中当前的代理数，请运行 `az acs show` 命令。 这会显示群集配置。 例如，以下命令显示资源组 `myResourceGroup` 中名为 `containerservice-myACSName` 的容器服务的配置：

@@ -8,23 +8,25 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 0dd6618bdee8e6810d414d4b04b16a1e0a9c90ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67173426"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905861"
 ---
-可以访问在容器中生成的控制台日志。 首先，请在 Cloud Shell 中运行以下命令，以便启用容器日志记录功能：
+若要从应用服务中的应用程序代码内部访问生成的控制台日志，请在[Cloud Shell](https://shell.azure.com)中运行以下命令，打开诊断日志记录：
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --docker-container-logging filesystem
+az webapp log config --resource-group <resource-group-name> --name <app-name> --application-logging true --level Verbose
 ```
 
-启用容器日志记录功能以后，请运行以下命令来查看日志流：
+的可能值为 `--level` ： `Error` 、 `Warning` 、 `Info` 和 `Verbose` 。 每个后续级别都包含之前的级别。 例如： `Error` 仅包括错误消息，并 `Verbose` 包含所有消息。
+
+启用诊断日志记录后，运行以下命令以查看日志流：
 
 ```azurecli-interactive
-az webapp log tail --name <app-name> --resource-group myResourceGroup
+az webapp log tail --resource-group <resource-group-name> --name <app-name>
 ```
 
 如果没有立即看到控制台日志，请在 30 秒后重新查看。

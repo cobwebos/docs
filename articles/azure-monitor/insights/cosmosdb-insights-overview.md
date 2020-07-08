@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 05000f4c670860be249d80b0e695a8a8760510be
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797579"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945488"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
 
@@ -38,7 +38,7 @@ ms.locfileid: "83797579"
 
 若要查看所有订阅中的存储帐户的利用率和性能，请执行以下步骤。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 2. 搜索“Monitor”并选择“Monitor”。
 
@@ -119,6 +119,10 @@ ms.locfileid: "83797579"
 无论是在私有的“我的报表”部分中，还是在有权访问资源组的每个人均可访问的“共享报表”部分中，工作簿都保存在某个资源组中。 保存自定义工作簿后，需要转到工作簿库来启动它。
 
 ![从命令栏启动工作簿库](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>疑难解答
+
+有关故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 配置自定义 Linux 容器
 description: 了解如何在 Azure App Service 中配置自定义 Linux 容器。 本文介绍最常见的配置任务。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57281bedb34078dff6878d69be1bfe7f7300f545
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280139"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905793"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure App Service 配置自定义 Linux 容器
 
@@ -18,7 +18,7 @@ ms.locfileid: "79280139"
 
 ## <a name="configure-port-number"></a>配置端口号
 
-自定义映像中的 web 服务器可能使用80以外的端口。 通过使用`WEBSITES_PORT`应用程序设置，通知 Azure 有关自定义容器使用的端口。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以通过在 Cloud Shell 中运行[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令来设置它。 例如：
+自定义映像中的 web 服务器可能使用80以外的端口。 通过使用应用程序设置，通知 Azure 有关自定义容器使用的端口 `WEBSITES_PORT` 。 [本教程中的 Python 示例](https://github.com/Azure-Samples/docker-django-webapp-linux)的 GitHub 页显示，需将 `WEBSITES_PORT` 设置为 _8000_。 可以通过 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 在 Cloud Shell 中运行命令来设置它。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,7 +26,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>配置环境变量
 
-自定义容器可能会使用需要在外部提供的环境变量。 可以通过在 Cloud Shell 中运行[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令来传入它们。 例如：
+自定义容器可能会使用需要在外部提供的环境变量。 可以通过在 Cloud Shell 中运行命令来传入它们 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -36,11 +36,11 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="use-persistent-shared-storage"></a>使用永久共享存储
 
-你可以使用应用文件系统中的 */home*目录跨重启保存文件并在实例之间共享这些文件。 提供`/home`应用中的，使容器应用能够访问永久性存储。
+你可以使用应用文件系统中的 */home*目录跨重启保存文件并在实例之间共享这些文件。 `/home`提供应用中的，使容器应用能够访问永久性存储。
 
-禁用永久性存储后，对该目录的`/home`写入不会在应用重新启动或多个实例之间保持不变。 唯一的例外是用于`/home/LogFiles`存储 Docker 和容器日志的目录。 启用持久性存储时，将保留对该`/home`目录的所有写入，并可由扩展的应用程序的所有实例访问。
+禁用永久性存储后，对该目录的写入 `/home` 不会在应用重新启动或多个实例之间保持不变。 唯一的例外是 `/home/LogFiles` 用于存储 Docker 和容器日志的目录。 启用持久性存储时，将保留对该目录的所有写入， `/home` 并可由扩展的应用程序的所有实例访问。
 
-默认情况下，将*启用*持久性存储，并且不会在应用程序设置中公开设置。 若要禁用该选项， `WEBSITES_ENABLE_APP_SERVICE_STORAGE`请通过运行[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Cloud Shell 中的命令来设置应用设置。 例如：
+默认情况下，将*启用*持久性存储，并且不会在应用程序设置中公开设置。 若要禁用该选项，请 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 通过运行 Cloud Shell 中的命令来设置应用设置 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -54,16 +54,16 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支持 SSH，你必须将其添加到 Dockerfile 本身。
 
 > [!TIP]
-> 所有内置 Linux 容器都已将 SSH 说明添加到了其映像存储库中。 你可以通过 node.js [10.14 存储库](https://github.com/Azure-App-Service/node/blob/master/10.14)完成以下说明，以查看其在此中的启用方式。
+> 所有内置 Linux 容器都已将 SSH 说明添加到了其映像存储库中。 你可以使用[Node.js 10.14 存储库](https://github.com/Azure-App-Service/node/blob/master/10.14)完成以下说明，以查看其在此中的启用方式。
 
-- 使用[运行](https://docs.docker.com/engine/reference/builder/#run)指令安装 SSH 服务器，并将根帐户的密码设置为`"Docker!"`。 例如，对于基于[Alpine Linux](https://hub.docker.com/_/alpine)的映像，需要以下命令：
+- 使用[运行](https://docs.docker.com/engine/reference/builder/#run)指令安装 SSH 服务器，并将根帐户的密码设置为 `"Docker!"` 。 例如，对于基于[Alpine Linux](https://hub.docker.com/_/alpine)的映像，需要以下命令：
 
     ```Dockerfile
     RUN apk add openssh \
          && echo "root:Docker!" | chpasswd 
     ```
 
-    此配置不允许外部连接到容器。 SSH 仅通过`https://<app-name>.scm.azurewebsites.net`发布凭据提供并经过身份验证。
+    此配置不允许外部连接到容器。 SSH 仅通过 `https://<app-name>.scm.azurewebsites.net` 发布凭据提供并经过身份验证。
 
 - 将[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)添加到映像存储库，并使用[copy](https://docs.docker.com/engine/reference/builder/#copy)指令将文件复制到 */etc/ssh/* 目录中。 有关*sshd_config*文件的详细信息，请参阅[OpenBSD 文档](https://man.openbsd.org/sshd_config)。
 
@@ -88,29 +88,29 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
     /usr/sbin/sshd
     ```
 
-    有关示例，请参阅默认[node.js 10.14 容器](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh)如何启动 SSH 服务器。
+    有关示例，请参阅默认[Node.js 10.14 容器](https://github.com/Azure-App-Service/node/blob/master/10.14/startup/init_container.sh)如何启动 SSH 服务器。
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="configure-multi-container-apps"></a>配置多容器应用
 
 - [在 Docker Compose 中使用持久性存储](#use-persistent-storage-in-docker-compose)
-- [预览版限制](#preview-limitations)
+- [预览限制](#preview-limitations)
 - [Docker Compose 选项](#docker-compose-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>在 Docker Compose 中使用持久性存储
 
 多容器应用（如 WordPress）需要持久存储才能正常工作。 若要启用它，你的 Docker Compose 配置必须指向容器*外部*的存储位置。 在应用重新启动后，容器中的存储位置不会保存更改。
 
-使用 Cloud Shell 中的`WEBSITES_ENABLE_APP_SERVICE_STORAGE` [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令设置应用设置，启用持久存储。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`使用 Cloud Shell 中的[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set)命令设置应用设置，启用持久存储。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-在*docker-compose.yml*文件中，将`volumes`选项映射到。 `${WEBAPP_STORAGE_HOME}` 
+在*docker-compose.yml*文件中，将 `volumes` 选项映射到 `${WEBAPP_STORAGE_HOME}` 。 
 
 `WEBAPP_STORAGE_HOME` 是应用服务中已映射到应用持续性存储的环境变量。 例如：
 
@@ -136,7 +136,7 @@ wordpress:
 
 #### <a name="supported-options"></a>支持的选项
 
-- command
+- 命令
 - entrypoint
 - 环境
 - image

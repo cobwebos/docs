@@ -1,15 +1,15 @@
 ---
-title: 容器实例的安全性
+title: 容器实例的安全注意事项
 description: 有关保护 Azure 容器实例的映像和机密的建议，以及任何容器平台的一般性安全注意事项
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907017"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure 容器实例的安全注意事项
 
@@ -19,13 +19,16 @@ ms.locfileid: "81457988"
 > * 有关管理 Azure 容器实例的映像和机密的**安全建议**
 > * 任何容器平台在整个容器生命周期内的**容器生态系统注意事项**
 
+有关将帮助你改进部署安全状况的综合建议，请参阅[容器实例的 Azure 安全基线](security-baseline.md)。
+
+
 ## <a name="security-recommendations-for-azure-container-instances"></a>Azure 容器实例的安全建议
 
 ### <a name="use-a-private-registry"></a>使用专用注册表
 
 容器是基于一个或多个存储库中存储的映像构建的。 这些存储库可以属于公共注册表（例如 [Docker Hub](https://hub.docker.com)），也可以属于专用注册表。 [Docker 受信任注册表](https://docs.docker.com/datacenter/dtr/)是专用注册表的例子，它可以安装在本地或者安装在虚拟私有云中。 还可以使用基于云的专用容器注册表服务，包括 [Azure 容器注册表](../container-registry/container-registry-intro.md)。 
 
-公用的容器映像不保证安全性。 容器映像包括多个软件层，每个软件层可能有漏洞。 为帮助减少攻击风险，应在 Azure 容器注册表或 Docker 受信任注册表等专用注册表中存储和检索映像 除了提供托管的专用注册表以外，Azure 容器注册表还支持通过 Azure Active Directory 使用[基于服务主体的身份验证](../container-registry/container-registry-authentication.md)执行基本身份验证流。 此身份验证包括基于角色的只读访问（请求）、写入（推送）和其他权限。
+公用的容器映像不保证安全性。 容器映像包括多个软件层，每个软件层可能有漏洞。 为帮助减少攻击风险，应在 Azure 容器注册表或 Docker 受信任注册表等专用注册表中存储和检索映像 除了提供托管的专用注册表以外，Azure 容器注册表还支持通过 Azure Active Directory 使用[基于服务主体的身份验证](../container-registry/container-registry-authentication.md)执行基本身份验证流。 此身份验证包括使用只读（提取）、写入（推送）和其他权限进行的基于角色的访问。
 
 ### <a name="monitor-and-scan-container-images"></a>监视和扫描容器映像
 
@@ -94,17 +97,17 @@ ms.locfileid: "81457988"
 
 还可以通过从容器运行时中删除任何不使用或不必要的进程或特权，来最大程度地减小潜在受攻击面。 特权容器以 root 身份运行。 如果恶意用户或工作负荷侵入某个特权容器，则该容器就会在该系统上以 root 身份运行。
 
-### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>允许容器访问或运行的 Preapprove 文件和可执行文件 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>预先批准允许容器访问或运行的文件和可执行文件 
 
-减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器以便只能访问或运行预先批准或 safelisted 文件和可执行文件，这是一种可限制风险暴露的经过验证的方法。  
+减少可变因素或未知因素的数量有助于维持稳定可靠的环境。 限制容器以使其只能访问或运行已预先批准的或已加入安全列表的文件和可执行文件，是限制风险因素的已证实方法。  
 
-从一开始就实现了一个安全的安全管理程序，这种方法很容易。 当你了解应用程序正常运行所需的文件和可执行文件时，可以使用安全安全措施提供控制和可管理性。 
+从一开始就实现了一个安全的安全管理程序，这种方法很容易。 安全列表提供控制措施和管理功能，因为你知道正常运行应用程序需要哪些文件和可执行文件。 
 
-安全安全不仅减少了攻击面，还可以为异常提供基线，并防止出现 "干扰邻居" 和容器专题讨论情况。 
+安全列表不仅可以减小受攻击面，而且还能提供异常状况的基线，并防止出现“干扰邻居”和容器入侵情形的用例。 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>在运行的容器中强制网络分段  
 
-为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 还需要维护网络分段，以便在需要满足合规性要求的行业中使用容器。  
+为了防范一个子网中的容器在另一个子网中遇到安全风险，请在运行的容器之间保持网络分段（或 nano 分段）或隔离。 若要在需要满足合规要求的行业中使用容器，可能还需要保持网络分段。  
 
 例如，"合作伙伴" 工具[水绿色](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview)为 nano 分段提供自动化方法。 浅绿色监视运行时中的容器网络活动。 它标识与其他容器、服务、IP 地址和公共 internet 之间的所有入站和出站网络连接。 Nano-根据监视的流量自动创建分段。 
 
@@ -112,13 +115,13 @@ ms.locfileid: "81457988"
 
 与使用任何 IT 环境时一样，应始终如一地监视容器生态系统中的活动和用户访问，以快速识别任何可疑或恶意活动。 Azure 提供容器监视解决方案，包括：
 
-* [容器 Azure Monitor 用于](../azure-monitor/insights/container-insights-overview.md)监视部署到 Azure Kubernetes 服务（AKS）上托管的 Kubernetes 环境的工作负荷性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
+* [用于容器的 Azure Monitor](../azure-monitor/insights/container-insights-overview.md) 监视托管在 Azure Kubernetes 服务 (AKS) 上的 Kubernetes 环境中部署的工作负荷的性能。 用于容器的 Azure Monitor 通过 Metrics API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 
 
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)可帮助你在单个位置查看和管理其他 Docker 与 Windows 容器主机。 例如：
 
   * 查看详细审核信息，其中显示了与容器一起使用的命令。 
   * 通过查看和搜索集中式日志来排查容器问题，而无需远程查看 Docker 或 Windows 主机。  
-  * 查找可能干扰并消耗主机上过量资源的容器。
+  * 在主机上查找可能具有干扰性并且占用过多资源的容器。
   * 查看容器的集中式 CPU、内存、存储器、网络使用情况和性能信息。  
 
   该解决方案支持容器业务流程协调程序，包括 Docker Swarm、DC/OS、非托管 Kubernetes、Service Fabric 和 Red Hat OpenShift。 
@@ -127,19 +130,21 @@ ms.locfileid: "81457988"
 
 监视资源活动，例如，容器访问的文件、网络和其他资源。 监视资源活动和消耗量对于性能监视非常有用，可用作一种安全措施。 
 
-[Azure Monitor](../azure-monitor/overview.md)允许收集指标、活动日志和诊断日志，为 Azure 服务启用核心监视。 例如，可以通过活动日志了解新资源的创建或修改时间。 
+使用 [Azure Monitor](../azure-monitor/overview.md) 可收集指标、活动日志和诊断日志，为 Azure 服务启用核心监视。 例如，可以通过活动日志了解新资源的创建或修改时间。 
 
   可通过指标获取不同资源（甚至包括虚拟机中的操作系统）的性能统计信息。 可以使用 Azure 门户中的某个资源管理器查看此数据，还可以基于这些指标创建警报。 Azure Monitor 提供最快的指标管道（5 分钟乃至 1 分钟），因此应将其用于时间关键型警报和通知。 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>记录所有容器管理用户访问以用于审核 
 
-维护对容器生态系统的管理访问权限的准确审核线索，包括 Kubernetes 群集、容器注册表和容器映像。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
+维护对容器生态系统（包括 Kubernetes 群集）、容器注册表和容器映像的管理访问的准确审核线索。 这些日志在审核时可能需要用到，在发生任何安全事件后可用作法庭证据。 Azure 解决方案包括：
 
 * 将[Azure Kubernetes 服务与 Azure 安全中心集成](../security-center/azure-kubernetes-service-integration.md)，以监视群集环境的安全配置并生成安全建议
 * [Azure 容器监视解决方案](../azure-monitor/insights/containers.md)
 * [Azure 容器实例](container-instances-log-analytics.md)和[azure 容器注册表](../container-registry/container-registry-diagnostics-audit-logs.md)的资源日志
 
 ## <a name="next-steps"></a>后续步骤
+
+* 请参阅[容器实例的 Azure 安全基线](security-baseline.md)以获取可帮助你提高部署安全状况的综合建议。
 
 * 详细了解如何使用[Azure 安全中心](../security-center/container-security.md)在容器化环境中进行实时威胁检测。
 

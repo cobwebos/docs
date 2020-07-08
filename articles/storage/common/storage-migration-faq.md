@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1d8275d11b845df43238dce82beabe89d6464799
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84944689"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>有关 Azure 存储迁移的常见问题
 
@@ -215,19 +215,20 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 - 在一个存储帐户中从一个共享复制到一个 Blob 容器或复制到不同存储帐户。
 
 有关详细信息，请参阅[使用 AzCopy on Windows 传输数据](storage-use-azcopy.md)。
+
 ## <a name="configuration"></a>配置
 
 如何将存储帐户的辅助位置更改为欧洲区域？
 
 创建存储帐户时，可以为帐户选择主要区域。 选择次要区域是根据主要区域确定的且无法更改。 有关详细信息，请参阅[异地冗余存储 (GRS)：Azure 存储的跨区域复制](storage-redundancy.md)。
 
-我在哪里可以获得有关 Azure 存储服务加密 (SSE) 的更多信息？  
+**在哪里可以获取有关 Azure 存储加密的详细信息？**  
 
 请参阅以下文章：
 
--  [Azure 存储安全指南](../blobs/security-recommendations.md)
-
--  [静态数据的 Azure 存储服务加密](storage-service-encryption.md)
+- [静态数据的 Azure 存储加密](storage-service-encryption.md)
+- [在 Azure Key Vault 中使用客户托管密钥管理 Azure 存储加密](encryption-customer-managed-keys.md)
+- [在对 Blob 存储的请求中提供加密密钥（预览）](encryption-customer-provided-keys.md)
 
 如何在存储帐户中加密数据？
 
@@ -237,7 +238,7 @@ AzCopy 将使用[复制 Blob API](https://docs.microsoft.com/rest/api/storageser
 
 **将存储帐户的复制从异地冗余存储更改到本地冗余存储是否有先决条件？**
 
-不是。
+否。
 
 **如何转换到 Azure 高级存储以共享文件？**
 
@@ -253,19 +254,19 @@ Azure 文件共享上不允许使用高级存储。
 
 让其他人访问存储资源：
 
--   使用共享访问签名 (SAS) 令牌提供资源的访问权限。
+- 使用共享访问签名（SAS）令牌提供对资源的访问权限。
 
--   向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
+- 向用户提供存储帐户的主密钥或辅助密钥。 有关详细信息，请参阅[管理存储帐户访问密钥](storage-account-keys-manage.md)。
 
--   更改访问策略以允许匿名访问。 有关详细信息，请参阅[授予对容器和 Blob 的匿名用户权限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
+- 更改访问策略以允许匿名访问。 有关详细信息，请参阅[授予对容器和 Blob 的匿名用户权限](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)。
 
 AzCopy 安装在什么位置？
 
--   如果从 Microsoft Azure 存储命令行访问 AzCopy，请键入 AzCopy。 命令行与 AzCopy 一起安装。
+- 如果从 Microsoft Azure 存储命令行访问 AzCopy，请键入 AzCopy。 命令行与 AzCopy 一起安装。
 
--   如果你安装的是 32 位版本，它将位于：%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy。
+- 如果你安装的是 32 位版本，它将位于：%ProgramFiles(x86)%\\Microsoft SDKs\\Azure\\AzCopy。
 
--   如果你安装的是 64 位版本，它将位于：%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy。
+- 如果你安装的是 64 位版本，它将位于：%ProgramFiles%\\Microsoft SDKs\\Azure\\AzCopy。
 
 **如何结合使用我的存储帐户和 HTTPS 自定义域？例如，如何使“https:\//mystorageaccountname.blob.core.windows.net/images/image.gif”显示为“https:\//www.contoso.com/images/image.gif”？**
 
@@ -284,15 +285,15 @@ AzCopy 安装在什么位置？
 
 **对于复制的存储帐户（如区域冗余存储、异地冗余存储或读取访问异地冗余存储），如何访问存储在次要区域中的数据？**
 
--   如果使用的是区域冗余存储空间或异地冗余存储，除非对该区域启动故障转移，否则无法从次要区域访问数据。 有关故障转移过程的详细信息，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
+- 如果使用的是区域冗余存储空间或异地冗余存储，除非对该区域启动故障转移，否则无法从次要区域访问数据。 有关故障转移过程的详细信息，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
 
--   如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用下列方法之一：  
+- 如果使用的是读取访问异地冗余存储，可以随时从次要区域访问数据。 使用下列方法之一：  
 
-    - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点。 例如：  
+  - **AzCopy**：为 URL 中的存储帐户名追加“-secondary”以访问辅助终结点。 例如：  
 
       `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
-    - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
+  - **SAS 令牌**：使用 SAS 令牌访问终结点中的数据。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
 **如何使用 FTP 访问存储帐户中的数据？**
 
@@ -300,6 +301,6 @@ AzCopy 安装在什么位置？
 
 如果你只想下载数据而不需要使用存储资源管理器或类似的应用程序，则可以使用 SAS 令牌。 有关详细信息，请参阅[使用共享访问签名](storage-sas-overview.md)。
 
-## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员。
+## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。

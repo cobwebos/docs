@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: edfcb1d0bfc87c84620b13ed26ec681fef32f1e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1854c6f86e1a3578b6314b072f104174032344e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907578"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>支持 Azure Data Lake Storage Gen2 的 Azure 服务
 
@@ -34,16 +34,16 @@ ms.locfileid: "80878317"
 |Azure 事件网格|正式发布|[教程：实现 data lake 捕获模式以更新 Databricks 增量表](data-lake-storage-events.md)|
 |Azure 逻辑应用|正式发布|[概述 - 什么是 Azure 逻辑应用？](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
 |Azure 机器学习|正式发布|[访问 Azure 存储服务中的数据](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)|
-|Azure 流分析|正式发布|[快速入门：使用 Azure 门户创建流分析作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [出口到 Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
+|Azure 流分析|正式发布|[快速入门：使用 Azure 门户创建流分析作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 流出量](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Data Box|正式发布|[使用 Azure Data Box 将数据从本地 HDFS 存储迁移到 Azure 存储](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
-|HDInsight |正式发布|[将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[将 HDFS CLI 与 Data Lake Storage Gen2 配合使用](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教程：在 Azure HDInsight 上使用 Apache Hive 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)|
+|HDInsight |正式发布|[将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[将 HDFS CLI 与 Data Lake Storage Gen2 配合使用](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT 中心 |正式发布|[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|
 |Power BI|正式发布|[使用 Power BI 分析 Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
-|SQL 数据仓库|正式发布|[与 Azure SQL 数据仓库配合使用](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
-|SQL Server Integration Services (SSIS)|正式发布|[Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
-|Azure 认知搜索|预览|[索引和搜索 Azure Data Lake Storage Gen2 文档（预览）](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Azure Synapse Analytics（以前称为 SQL 数据仓库）|正式发布|[用于 Azure Synapse Analytics （以前称为 SQL 数据仓库）](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
+|SQL Server 集成服务 (SSIS)|正式发布|[Azure 存储连接管理器](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
+|Azure 认知搜索|预览|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure 数据资源管理器|预览|[使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
-|Azure 内容分发网络|尚不支持|[索引和搜索 Azure Data Lake Storage Gen2 文档（预览）](https://docs.microsoft.com/azure/cdn/cdn-overview)|
+|Azure 内容分发网络|尚不支持|[为 Azure Data Lake Storage Gen2 文档编制索引及对其进行搜索（预览）](https://docs.microsoft.com/azure/cdn/cdn-overview)|
 
 
 ## <a name="see-also"></a>另请参阅

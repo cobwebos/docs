@@ -4,18 +4,18 @@ description: 了解如何将应用服务资源从一个区域移动到另一个�
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 7e68f12ce062831ad361c88345188aca61922c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77925704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945471"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>将应用服务应用移动到其他区域
 
 本文介绍了如何将应用服务资源移动到其他 Azure 区域。 由于各种原因，你可能需要将资源移动到其他区域。 例如，利用新的 Azure 区域，部署仅在特定区域中可用的功能或服务，满足内部策略和监管要求，或者满足容量规划要求。
 
-应用服务资源是特定于区域的，不能跨区域移动。 你必须在目标区域中创建现有应用服务资源的副本，并将你的内容移动到新应用。 如果你的源应用使用自定义域，你可以在完成后[将其迁移到目标区域中的新应用](manage-custom-dns-migrate-domain.md)。
+应用服务资源是特定于区域的，不能跨区域移动。 你必须在目标区域中创建现有应用服务资源的副本，然后将内容移动到新应用。 如果你的源应用使用自定义域，你可以在完成后[将其迁移到目标区域中的新应用](manage-custom-dns-migrate-domain.md)。
 
 为了更轻松地复制应用程序，你可以将[单个应用服务应用克隆](app-service-web-app-cloning.md)到另一个区域中的应用服务计划，但它确实存在[限制](app-service-web-app-cloning.md#current-restrictions)，尤其是不支持 Linux 应用。
 
@@ -46,7 +46,7 @@ ms.locfileid: "77925704"
 1. [创建源应用的备份](manage-backup.md)。
 1. 在[新的应用服务计划中，在目标区域中创建一个应用](app-service-plan-manage.md#create-an-app-service-plan)。
 2. [在目标应用中还原备份](web-sites-restore.md)
-2. 如果使用自定义域，请将[其绑定到目标应用提前](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively)， `awverify.`并[在目标应用中启用该域](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app)。
+2. 如果使用自定义域，请将[其绑定到目标应用提前](manage-custom-dns-migrate-domain.md#bind-the-domain-name-preemptively)， `awverify.` 并[在目标应用中启用该域](manage-custom-dns-migrate-domain.md#enable-the-domain-for-your-app)。
 3. 将目标应用中的其他所有内容配置为与源应用相同，并验证你的配置。
 4. 当你已准备好将自定义域指向目标应用时，将重新[映射该域名](manage-custom-dns-migrate-domain.md#remap-the-active-dns-name)。
 

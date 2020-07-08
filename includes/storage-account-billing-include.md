@@ -9,10 +9,10 @@ ms.date: 10/19/2018
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: cdcbe993bd1100b2060a1f8d38eb82ac97121c0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74851616"
 ---
 我们会根据存储帐户使用情况，对 Azure 存储进行计费。 存储帐户中的所有对象会作为组共同计费。 

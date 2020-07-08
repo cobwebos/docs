@@ -5,15 +5,15 @@ services: databox
 author: priestlg
 ms.service: databox
 ms.subservice: disk
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 74828bfd3a110739afc211a530c11c74387b70ed
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748776"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945012"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box Disk 使用自我托管交付功能
 
@@ -28,6 +28,7 @@ ms.locfileid: "83748776"
 * 日本
 * 新加坡
 * 韩国
+* 印度（预览版）
 
 ## <a name="use-self-managed-shipping"></a>使用自我托管交付
 
@@ -43,7 +44,7 @@ ms.locfileid: "83748776"
 
    ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. 设备准备好后，你可安排提货。 在 Azure Data Box Disk 订单中，转到“概述”，然后选择“安排提货” 。
+4. 准备好设备并收到电子邮件通知后，可以计划装货。 在 Azure Data Box Disk 订单中，转到“概述”，然后选择“安排提货” 。
 
    ![将 Data Box 设备排序以便提货](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
@@ -57,11 +58,11 @@ ms.locfileid: "83748776"
 
    记下此授权代码。
 
-   根据安全要求，在安排提货和交货时，需要提供将负责提货和交货的人员的姓名。
+   根据安全要求，在制定计划时，需要提供将获得 pick 的人员的姓名，这是必需的。
 
    你还需要提供将前往数据中心提货的人员的详细信息。 你或联系人员必须携带政府批准的带照片的 ID，我们将在数据中心验证该 ID。
 
-   此外，设备提取人员还需要有授权代码。 在数据中心提货时会验证该授权代码。
+   此外，设备提取人员还需要有授权代码。 授权代码对于分拣或拖放是唯一的，在数据中心进行验证。
 
 7. 从数据中心提取设备后，你的订单将自动切换到“已提货”状态。
 

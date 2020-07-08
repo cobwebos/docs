@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: d892c58413803ff65fbd8ca8b25a61bc5ffeb26f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945403"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>探究适用于 Azure Cache for Redis（预览版）的 Azure Monitor
 
@@ -179,6 +179,10 @@ ms.locfileid: "83847355"
 保存自定义工作簿后，转到工作簿库来打开它。
 
 ![突出显示“库”的命令栏](./media/cosmosdb-insights-overview/gallery.png)
+
+## <a name="troubleshooting"></a>疑难解答
+
+有关故障排除指南，请参阅专用的基于工作簿的 insights[故障排除一文](troubleshoot-workbooks.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

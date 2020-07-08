@@ -9,10 +9,10 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80632051"
 ---
 ### <a name="portal"></a>门户
@@ -21,10 +21,10 @@ ms.locfileid: "80632051"
 
 #### <a name="setting-up-your-azure-key-vault"></a>设置 Azure Key Vault
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 搜索并选择 "**密钥保管库**"。
 
-    [![sse-key-vault-portal-search .png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
+    [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > Azure 密钥保管库、磁盘加密集、VM、磁盘和快照必须都位于同一区域和订阅中才能成功部署。
@@ -38,7 +38,7 @@ ms.locfileid: "80632051"
 
 1. 密钥保管库部署完成后，请选择它。
 1. 选择 "**设置**" 下的 "**密钥**"。
-1. 选择“生成/导入”。 
+1. 选择“生成/导入”。
 
     !["Key Vault 资源设置" 窗格的屏幕截图。 显示 "生成/导入" 按钮内的设置。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "80632051"
 1. 选择资源组，将加密集命名为，并选择与密钥保管库相同的区域。
 1. 选择 " **key vault 和密钥**"。
 1. 选择先前创建的密钥保管库和密钥，以及版本。
-1. 按“选择”****。
+1. 按“选择”  。
 1. 依次选择 "**查看**" 和 **"创建"**。
 
     ![磁盘加密创建边栏选项卡的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及密钥保管库 + 键选择器。](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
@@ -102,7 +102,7 @@ VM 部署过程与标准部署过程类似，唯一的差别在于，你需要�
     ![示例 VM 的屏幕截图，其中打开了 "磁盘" 边栏选项卡。 操作系统磁盘将突出显示，作为你选择的示例磁盘。](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
 1. 选择 "**加密**" 并选择 "静态加密"，并选择 "**使用客户管理的密钥加密**"，然后在下拉列表中选择你的磁盘加密集。
-1. 选择“保存”  。
+1. 选择“保存”。
 
     ![示例操作系统磁盘的屏幕截图。 此时会打开 "加密" 边栏选项卡，选择 "使用客户管理的密钥进行静态加密"，并 Azure Key Vault 示例。 进行这些选择后，选择 "保存" 按钮。](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 

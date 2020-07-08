@@ -9,10 +9,10 @@ ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
 ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80655944"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
@@ -47,7 +47,7 @@ ms.locfileid: "80655944"
 
 ## <a name="for-users-not-in-your-directory"></a>适用于不在目录中的用户
 
- **不在目录中的用户**是指位于另一个 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到你的目录。 必须将 Azure AD 目录配置为允许在**协作限制**中加入邀请。 有关详细信息，请参阅[启用 B2B 外部协作和管理可以邀请来宾的人员](../articles/active-directory/b2b/delegate-invitations.md)。
+ **不在目录中的用户**是指位于另一个 Azure AD 目录或域中的用户。 这些用户可能尚未被邀请到你的目录。 必须将 Azure AD 目录配置为允许在**协作限制**中加入邀请。 有关详细信息，请参阅[启用 B2B 外部协作并管理谁可以邀请来宾](../articles/active-directory/b2b/delegate-invitations.md)。
 
 > [!NOTE]
 > 将为不是目录中的其请求已审批或自动审批的用户创建来宾用户帐户。 将邀请来宾，但他们不会收到邀请电子邮件。 传递其访问包分配时，他们将收到电子邮件。 默认情况下，当来宾用户不再有任何访问包分配时（因为他们的上次分配已过期或已取消），将会阻止该来宾用户帐户登录并随后将其删除。 如果希望无限期地在目录中保留来宾用户（即使他们没有任何访问包分配），可以更改权利管理配置的设置。 有关来宾用户对象的详细信息，请参阅[AZURE ACTIVE DIRECTORY B2B 协作用户的属性](../articles/active-directory/b2b/user-properties.md)。
@@ -206,4 +206,4 @@ ms.locfileid: "80655944"
 
     ![访问包 - 策略 - 启用策略设置](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. 单击“下一步”。 
+1. 单击“下一步” 。

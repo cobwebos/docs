@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: 791d41aae7dde3e1ef2ae511de4ffd84141f0232
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: HT
+ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84907476"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -66,7 +66,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 | .NET | https://www.nuget.org/packages/Azure.Messaging.EventHubs | [快速入门](quickstart-send-telemetry-dotnet.md) |
 | Java | https://mvnrepository.com/artifact/com.azure/azure-messaging-eventhubs | [快速入门](quickstart-send-telemetry-java.md) |
 | Node.js | https://www.npmjs.com/package/@azure/event-hubs | [快速入门](quickstart-send-telemetry-node.md) |
-| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
+| Python | https://pypi.org/project/azure-eventhub/ | [快速入门](quickstart-send-telemetry-python.md) |
 
 可用于 IoT 中心公开的内置的与事件中心兼容的终结点的产品集成包括：
 

@@ -2,13 +2,13 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 05/08/2020
+ms.openlocfilehash: 45541bcbea5a80e55dbc9f80e1eae8e17189bf6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945437"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
@@ -72,7 +72,7 @@ Azure Active Directory 的全局管理员不自动拥有分配角色的权限。
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 对于 Azure PowerShell，请使用 [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
@@ -81,7 +81,7 @@ az deployment tenant create \
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 对于 REST API，请使用[部署 - 在租户范围内创建或更新](/rest/api/resources/deployments/createorupdateattenantscope)。
@@ -117,7 +117,7 @@ New-AzTenantDeployment `
 
 ## <a name="create-management-group"></a>创建管理组
 
-[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg)用于创建管理组。
+[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg)用于创建管理组。
 
 ```json
 {
@@ -143,7 +143,7 @@ New-AzTenantDeployment `
 
 ## <a name="assign-role"></a>分配角色
 
-[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment)用于在租户范围内分配角色。
+[以下模板](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment)用于在租户范围内分配角色。
 
 ```json
 {
