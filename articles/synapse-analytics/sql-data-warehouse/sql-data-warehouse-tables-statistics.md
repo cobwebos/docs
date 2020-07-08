@@ -1,30 +1,30 @@
 ---
 title: 创建和更新统计信息
-description: 用于在 Synapse SQL 池中创建和更新表的查询优化统计信息的建议和示例。
+description: 本文提供的建议和示例适用于创建和更新 Synapse SQL 池中有关表的查询优化统计信息。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 257b1e26127186fce07e402e58f98660005a97fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800760"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL 池中的表统计信息
 
-本文介绍如何在 SQL 池中创建和更新表中的查询优化统计信息。
+本文提供的建议和示例适用于创建和更新 SQL 池中有关表的查询优化统计信息。
 
 ## <a name="why-use-statistics"></a>为何使用统计信息
 
-更多 SQL 池知道您的数据，它对它执行查询的速度就越快。 在将数据加载到 SQL 池中之后，收集数据的统计信息是优化查询时可以执行的最重要的任务之一。
+SQL 池对数据了解得越多，其针对数据执行查询的速度就越快。 将数据载入 SQL 池之后，收集有关数据的统计信息是优化查询时可做的最重要事情之一。
 
 SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查询计划的成本进行比较，并选择成本最低的计划。 在大多数情况下，它会选择执行速度最快的计划。
 
@@ -32,21 +32,21 @@ SQL 池查询优化器是基于成本的优化器。 此优化器会对各种查
 
 ## <a name="automatic-creation-of-statistic"></a>自动创建统计信息
 
-当数据库 AUTO_CREATE_STATISTICS 选项为 on 时，SQL 池会分析传入的用户查询是否缺少统计信息。
+启用数据库的 AUTO_CREATE_STATISTICS 选项时，SQL 池会分析传入的用户查询中是否缺少统计信息。
 
 如果缺少统计信息，查询优化器将在查询谓词或联接条件中各个列上创建统计信息，以改进查询计划的基数估计。
 
 > [!NOTE]
 > 默认情况下，自动创建统计信息目前处于开启状态。
 
-可以通过运行以下命令来检查 SQL 池是否 AUTO_CREATE_STATISTICS 配置：
+可运行以下命令来检查是否为 SQL 池配置了 AUTO_CREATE_STATISTICS：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果你的 SQL 池未配置 AUTO_CREATE_STATISTICS，则建议你运行以下命令启用此属性：
+如果 SQL 池未配置 AUTO_CREATE_STATISTICS，建议通过运行以下命令来启用此属性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -67,7 +67,7 @@ SET AUTO_CREATE_STATISTICS ON
 
 自动创建统计信息的过程是以同步方式完成的，因此，如果列中缺少统计信息，查询性能可能会轻微下降。 为单个列创建统计信息所需的时间取决于表的大小。
 
-若要避免性能降低，应先通过执行基准工作负载，然后在分析系统之前，首先创建统计信息。
+为了避免性能大幅下降，应确保在分析系统之前先通过执行基准检验工作负载来创建统计信息。
 
 > [!NOTE]
 > 统计信息的创建将记录在其他用户上下文中的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中。
@@ -78,15 +78,15 @@ SET AUTO_CREATE_STATISTICS ON
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-table_name 是包含要显示的统计信息的表的名称。 此表不能是外部表。 目标是要显示统计信息的目标索引、统计信息或列的名称。
+table_name 是包含要显示的统计信息的表的名称。 此表不能为外部表。 目标是要显示统计信息的目标索引、统计信息或列的名称。
 
 ## <a name="update-statistics"></a>更新统计信息
 
-最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次将新行加载到 SQL 池中时，都会添加新的加载日期或事务日期。 这些添加项会更改数据分布，并使统计信息过时。
+最佳实践之一是每天在添加新日期后，更新有关日期列的统计信息。 每次有新行载入 SQL 池时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
-客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会更改。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
+有关客户表中的国家/地区列的统计信息可能永远不需要更新，因为值的分布通常不会变化。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-但是，如果 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，从而导致存储了多个国家/地区的数据，则需要更新 "国家/地区" 列中的统计信息。
+但是，如果 SQL 池只包含一个国家/地区，并且引入了来自新国家/地区的数据，导致存储了多个国家/地区的数据，那么，就需要更新有关国家/地区列的统计信息。
 
 下面是关于更新统计信息的建议：
 
@@ -97,14 +97,60 @@ table_name 是包含要显示的统计信息的表的名称。 此表不能是�
 
 在排查查询问题时，首先要询问的问题之一就是 **“统计信息是最新的吗？”**
 
-此问题不是可通过数据保留时间来回答的问题。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。
+此问题无法根据数据期限得到答案。 如果对基础数据未做重大更改，则最新的统计信息对象有可能非常陈旧。 如果行数有明显变化或给定列的值分布有重大变化，则  需要更新统计信息。 
 
-> [!TIP]
-> 如果行数有明显变化或给定列的值分布有重大变化，则  需要更新统计信息。
+没有任何动态管理视图可用于确定自上次更新统计信息以来表中的数据是否发生更改。  以下两个查询可帮助确定统计信息是否过时。
 
-没有任何动态管理视图可用于确定自上次更新统计信息以来表中的数据是否发生更改。 如果知道统计信息的期限，可以大致猜出更新状态。
+**查询1：** 找出统计信息（**stats_row_count**）与实际行计数（**actual_row_count**）之间的行计数之间的差异。 
 
-可以使用以下查询来确定上次更新每个表的统计信息的时间。
+```sql
+select 
+objIdsWithStats.[object_id], 
+actualRowCounts.[schema], 
+actualRowCounts.logical_table_name, 
+statsRowCounts.stats_row_count, 
+actualRowCounts.actual_row_count,
+row_count_difference = CASE
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN actualRowCounts.actual_row_count - statsRowCounts.stats_row_count
+    ELSE statsRowCounts.stats_row_count - actualRowCounts.actual_row_count
+END,
+percent_deviation_from_actual = CASE
+    WHEN actualRowCounts.actual_row_count = 0 THEN statsRowCounts.stats_row_count
+    WHEN statsRowCounts.stats_row_count = 0 THEN actualRowCounts.actual_row_count
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (actualRowCounts.actual_row_count - statsRowCounts.stats_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+    ELSE CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (statsRowCounts.stats_row_count - actualRowCounts.actual_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+END
+from
+(
+    select distinct object_id from sys.stats where stats_id > 1
+) objIdsWithStats
+left join
+(
+    select object_id, sum(rows) as stats_row_count from sys.partitions group by object_id
+) statsRowCounts
+on objIdsWithStats.object_id = statsRowCounts.object_id 
+left join
+(
+    SELECT sm.name [schema] ,
+    tb.name logical_table_name ,
+    tb.object_id object_id ,
+    SUM(rg.row_count) actual_row_count
+    FROM sys.schemas sm
+    INNER JOIN sys.tables tb ON sm.schema_id = tb.schema_id
+    INNER JOIN sys.pdw_table_mappings mp ON tb.object_id = mp.object_id
+    INNER JOIN sys.pdw_nodes_tables nt ON nt.name = mp.physical_name
+    INNER JOIN sys.dm_pdw_nodes_db_partition_stats rg
+    ON rg.object_id = nt.object_id
+    AND rg.pdw_node_id = nt.pdw_node_id
+    AND rg.distribution_id = nt.distribution_id
+    WHERE 1 = 1
+    GROUP BY sm.name, tb.name, tb.object_id
+) actualRowCounts
+on objIdsWithStats.object_id = actualRowCounts.object_id
+
+```
+
+**查询2：** 通过检查每个表上上次更新统计信息的时间来找出统计信息的期限。 
 
 > [!NOTE]
 > 如果给定列的值分布有重大变化，则应该更新统计信息，不管上次更新时间为何。
@@ -136,21 +182,21 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，SQL 池中的**日期列**通常需要频繁更新统计信息。 每次将新行加载到 SQL 池中时，都会添加新的加载日期或事务日期。 这些添加项会更改数据分布，并使统计信息过时。
+例如，SQL 池中的日期列往往需要经常更新统计信息  。 每次有新行载入 SQL 池时，就会添加新的加载日期或事务日期。 这些添加操作会更改数据分布情况并使统计信息过时。
 
 相反地，客户表上性别列的统计信息可能永远不需要更新。 假设客户间的分布固定不变，将新行添加到表变化并不会改变数据分布情况。
 
-如果 SQL 池只包含一种性别，而新的要求导致了多个性别，则需要更新 "性别" 列中的统计信息。
+如果 SQL 池只包含一种性别，而新的要求会导致出现多种性别，则需更新性别列的统计信息。
 
 有关详细信息，请参阅[统计信息](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的通用指南。
 
 ## <a name="implementing-statistics-management"></a>实施统计信息管理
 
-扩展数据加载过程通常是一种很好的做法，以确保在负载结束时更新统计信息，以避免/最大程度地减少并发查询之间的阻塞或资源争用。  
+通常可以扩展数据加载过程，确保在加载结束时更新统计信息，避免/最大程度地减少并发查询之间出现阻塞或资源争用的情况。  
 
-当表更改其大小和/或其值分布时，数据加载最为频繁。 数据加载是实现某些管理过程的逻辑位置。
+当表更改其大小和/或其值分布时，数据加载最为频繁。 可以通过数据加载实施某些管理过程。
 
-提供以下指导原则来更新统计信息：
+下面提供了有关更新统计信息的一些指导原则：
 
 - 确保加载的每个表至少包含一个更新的统计信息对象。 这会在统计信息更新过程中更新表大小（行计数和页计数）信息。
 - 将重点放在参与 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的列上。
@@ -166,9 +212,9 @@ WHERE
 
 ### <a name="create-single-column-statistics-with-default-options"></a>使用默认选项创建单列统计信息
 
-若要对列创建统计信息，请提供统计信息对象的名称和列的名称。
+若要基于某个列创建统计信息，需要提供统计信息对象的名称和列的名称。
 
-此语法使用所有默认选项。 默认情况下，SQL 池在创建统计信息时对**20%** 的表采样。
+此语法使用所有默认选项。 默认情况下，SQL 池在创建统计信息时会提取 **20%** 的表数据作为样本。
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -231,12 +277,12 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 ### <a name="create-multi-column-statistics"></a>创建多列统计信息
 
-若要创建多列统计信息对象，请使用前面的示例，但要指定更多的列。
+若要创建多列统计信息对象，请使用上述示例，但要指定更多的列。
 
 > [!NOTE]
 > 用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
 
-在此示例中，直方图位于 product*category\_* 。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
+在此示例中，直方图位于 product\_category。 跨列统计信息是根据 *product\_category* 和 *product\_sub_category* 计算的：
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
@@ -268,7 +314,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用存储过程基于数据库中的所有列创建统计信息
 
-SQL 池没有与 SQL Server 中的 sp_create_stats 相同的系统存储过程。 此存储过程将基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
+SQL 池不提供相当于 SQL Server 中 sp_create_stats 的系统存储过程。 此存储过程基于数据库中尚不包含统计信息的每个列创建单列统计信息对象。
 
 以下示例可以帮助你开始进行数据库设计。 可以根据需要任意改写此存储过程。
 
@@ -364,13 +410,13 @@ DROP TABLE #stats_ddl;
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
 
-若要使用 fullscan 对表中的所有列创建统计信息，请调用此过程。
+若要通过全面扫描基于表中的所有列创建统计信息，请调用此过程。
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
 
-要对表中的所有列创建示例统计信息，请输入 3 和示例百分比。 此过程使用的采样速率为20%。
+要对表中的所有列创建示例统计信息，请输入 3 和示例百分比。 此过程使用 20% 的采样率。
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
@@ -397,7 +443,7 @@ UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-通过更新特定统计信息对象，可以减少管理统计信息所需的时间和资源。 执行此操作需要考虑选择要更新的最佳统计信息对象。
+通过更新特定统计信息对象，可以减少管理统计信息所需的时间和资源。 这需要经过一定的思考，以选择要更新的最佳统计信息对象。
 
 ### <a name="update-all-statistics-on-a-table"></a>更新表的所有统计信息
 
@@ -413,10 +459,10 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。** 如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
+UPDATE STATISTICS 语句很容易使用。 只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。  如果性能不是一个考虑因素，这是保证拥有最新统计信息的最简单、最全面的操作方式。
 
 > [!NOTE]
-> 更新表中的所有统计信息时，SQL 池会执行扫描，以针对每个统计信息对象的表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> 更新表中的所有统计信息时，SQL 池将执行扫描，以针对每个统计信息对象进行表采样。 如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表](sql-data-warehouse-tables-temporary.md)。 实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
 
@@ -493,14 +539,14 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS() 显示统计信息对象中保存的数据。 这些数据包括三个组成部分：
 
-- Header
+- 标头
 - 密度矢量
 - 直方图
 
 有关统计信息的标头元数据。 直方图显示统计信息对象的第一个键列中的值分布。 密度向量可度量跨列相关性。
 
 > [!NOTE]
-> SQL 池用 statistics 对象中的任何数据来计算基数估计值。
+> SQL 池使用统计信息对象中的任何数据来计算基数估计值。
 
 ### <a name="show-header-density-and-histogram"></a>显示标头、密度和直方图
 
@@ -532,7 +578,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差异
 
-与 SQL Server 相比，在 SQL 池中更严格地实现了 DBCC SHOW_STATISTICS （）：
+相比于 SQL Server，在 SQL 池中，DBCC SHOW_STATISTICS() 的实现更加严格。
 
 - 未阐述的功能不受支持。
 - 不能使用 Stats_stream。

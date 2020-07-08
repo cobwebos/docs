@@ -14,6 +14,7 @@ ms.date: 06/28/2020
 ms.author: memildin
 ms.openlocfilehash: c01ed6dbbd6e1f7febfb99df11d2ee67cb1e5465
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85800591"
@@ -24,7 +25,7 @@ Azure 安全中心是用于保护容器安全的 Azure 本机解决方案。 安
 
 
 
-|资源 |“属性”  |详细信息  |
+|资源 |名称  |详细信息  |
 |:---------:|---------|---------|
 |![容器主机](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)|容器主机（运行 Docker 的虚拟机）|安全中心扫描 Docker 配置，并提供已评估的所有失败规则列表让你洞察错误配置。 安全中心提供指导来帮助你快速解决这些问题，因此可节省时间。 安全中心持续评估 Docker 配置，并提供其最新状态。|
 |![Kubernetes 服务](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)|Azure Kubernetes 服务 (AKS) 群集|利用安全中心为标准层用户提供的[可选 AKS 捆绑](azure-kubernetes-service-integration.md)，更深入地了解 AKS 节点、云流量和安全控制。|

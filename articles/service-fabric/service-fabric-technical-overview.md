@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611724"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 
@@ -60,7 +60,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 **** 应用程序包：一个磁盘目录，其中包含应用程序类型的 `ApplicationManifest.xml` 文件。 引用构成应用程序类型的每个服务类型的服务包。 应用程序包目录中的文件将复制到 Service Fabric 群集的映像存储。 例如，电子邮件应用程序类型的应用程序包可能包含对队列服务包、前端服务包和数据库服务包的引用。
 
-**** 命名应用程序：将应用程序包复制到映像存储后，在群集中创建应用程序实例。 当你指定应用程序包的应用程序类型时，通过使用其名称或版本来创建一个实例。 将为每个应用程序类型实例分配一个类似如下的统一资源标识符 (URI) 名称：`"fabric:/MyNamedApp"`。 在群集中，可以从单个应用程序类型创建多个命名应用程序。 还可以从不同的应用程序类型创建命名应用程序。 可单独管理每个命名应用程序并设置其版本。
+**** 命名应用程序：将应用程序包复制到映像存储后，在群集中创建应用程序实例。 当你指定应用程序包的应用程序类型时，通过使用其名称或版本来创建一个实例。 将为每个应用程序类型实例分配一个类似如下的统一资源标识符 (URI) 名称：`"fabric:/MyNamedApp"`。 在群集中，可以从单个应用程序类型创建多个命名应用程序。 也可以从不同的应用程序类型创建命名应用程序。 可单独管理每个命名应用程序并设置其版本。
 
 **** 服务类型：分配给服务的代码包、数据包、配置包的名称/版本。 服务类型在 `ServiceManifest.xml` 文件中定义，并嵌入到服务包目录中。 然后，服务包目录由应用程序包的 `ApplicationManifest.xml` 文件引用。 在群集中创建命名应用程序后，可以从应用程序类型的服务类型之一创建命名服务。 服务类型的 `ServiceManifest.xml` 文件描述该服务。
 
@@ -116,7 +116,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 **修复管理器服务**：这是一项可选的系统服务，可在集群上实现自动、透明、安全的修复操作。 修复管理器可用于：
 
-   - 在[白银和黄金持久性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric 集群上执行 Azure 维护修复。
+   - 在[白银和黄金持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) Azure Service Fabric 集群上执行 Azure 维护修复。
    - 实施面向[修补业务流程应用](service-fabric-patch-orchestration-application.md)的修复操作
 
 ## <a name="deployment-and-application-models"></a>部署和应用程序模型
@@ -141,7 +141,7 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 
 **容器**：Service Fabric 支持在 Linux 上部署 Docker 容器，在 Windows Server 2016 上部署 Windows Server 容器，同时支持 Hyper-V 隔离模式。 在 Service Fabric [应用程序模型](service-fabric-application-model.md)中，容器表示放置多个服务副本的应用程序主机。 Service Fabric 可运行任何容器，该方案类似于来宾可执行的方案，可在容器内打包现有应用程序。 此外，也可[在容器内运行 Service Fabric 服务](service-fabric-services-inside-containers.md)。
 
-**来宾可执行文件**：可以在 Azure 中运行任何类型的代码（例如 Node.js、Python、Java 或 c + +）作为服务 Service Fabric。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
+**来宾可执行文件**：可以在 Azure 中运行任何类型的代码（如 Node.js、Python、Java 或 c + + Service Fabric 即服务）。 Service Fabric 将这些类型的服务称为来宾可执行文件，视其为无状态服务。 在 Service Fabric 群集中运行来宾可执行文件的优点包括高可用性、运行状况监视、应用程序生命周期管理、高密度和可发现性。
 
 有关详细信息，请阅读[为服务选择编程模型](service-fabric-choose-framework.md)一文。
 
@@ -169,7 +169,7 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 
 下表介绍了不同的应用模型以及针对 Service Fabric 为它们提供的工具。
 
-| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
 | Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | VS 2017 |不支持 |不支持 | 支持 - 仅网格环境 | 不支持|
 |Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 支持|支持|支持|支持|

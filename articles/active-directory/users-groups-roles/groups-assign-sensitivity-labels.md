@@ -8,22 +8,22 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807798"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>将敏感度标签分配到 Azure Active Directory 中的 Office 365 组（预览）
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中将敏感度标签分配给 Office 365 组
 
-Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前处于公开预览状态。 有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
+Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前已公开上市。 有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
 
 > [!IMPORTANT]
 > 若要配置此功能，你的 Azure AD 组织中必须至少有一个活动 Azure Active Directory Premium P1 许可证。
@@ -68,7 +68,7 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-就这么简单。 已启用该功能，可以将已发布的标签应用于组。
+分配过程如上所述。 已启用该功能，可以将已发布的标签应用于组。
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>在 Azure 门户中为新组分配标签
 
@@ -91,7 +91,7 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 
    ![在组的 "概述" 页上分配敏感度标签](./media/groups-assign-sensitivity-labels/assign-to-existing.png)
 
-1. 选择“保存”  以保存更改。
+1. 选择“保存”以保存更改。
 
 ## <a name="remove-a-label-from-an-existing-group-in-azure-portal"></a>从 Azure 门户中的现有组中删除标签
 
@@ -100,11 +100,11 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 1. 从 "**所有组**" 页中，选择要从中删除标签的组。
 1. 在 "**组**" 页上，选择 "**属性**"。
 1. 选择“删除”。
-1. 单击“保存”应用所做的更改。****
+1. 单击“保存”应用所做的更改。
 
 ## <a name="using-classic-azure-ad-classifications"></a>使用经典 Azure AD 分类
 
-启用此功能后，组的 "经典" 分类将仅显示现有组和站点，并且仅当在不支持敏感度标签的应用中创建组时，才应将其用于新组。 如果需要，你的管理员可以稍后将其转换为敏感性标签。 经典分类是通过在 Azure AD PowerShell 中为`ClassificationList`设置定义值来设置的旧分类。 启用此功能后，这些分类将不会应用于组。
+启用此功能后，组的 "经典" 分类将仅显示现有组和站点，并且仅当在不支持敏感度标签的应用中创建组时，才应将其用于新组。 如果需要，你的管理员可以稍后将其转换为敏感性标签。 经典分类是通过 `ClassificationList` 在 Azure AD PowerShell 中为设置定义值来设置的旧分类。 启用此功能后，这些分类将不会应用于组。
 
 ## <a name="troubleshooting-issues"></a>对问题进行故障排除
 
@@ -135,7 +135,7 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 1. 选择**组**。
 1. 从 "**所有组**" 页中，选择要标记的组。
 1. 在选定组的页上，选择 "**属性**"，然后从列表中选择一个新的敏感度标签。
-1. 选择“保存”  。
+1. 选择“保存”。
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>组设置对已发布标签所做的更改不会在组中更新
 

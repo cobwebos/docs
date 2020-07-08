@@ -2,34 +2,35 @@
 title: 排查常见问题
 description: 了解如何排查部署、运行或管理 Azure 容器实例时的常见问题
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807836"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
 本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答](container-instances-faq.md)。
 
-如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的  “帮助 + 支持”选项。
+如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的“帮助 + 支持”选项。
 
 ## <a name="issues-during-container-group-deployment"></a>容器组部署过程中的问题
 ### <a name="naming-conventions"></a>命名约定
 
-定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关 Azure 命名约定的详细信息，请参阅 Azure 体系结构中心中的[命名约定][azure-name-restrictions]。
+定义容器规格时，某些参数需要遵循命名限制。 下表包含容器组属性的特定要求。 有关详细信息，请参阅 Azure 体系结构中心和命名规则中的[命名约定][azure-name-restrictions][和 Azure 资源的限制][naming-rules]。
 
 | 范围 | 长度 | 大小写 | 有效的字符 | 建议的模式 | 示例 |
 | --- | --- | --- | --- | --- | --- |
-| 容器组名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| 容器名称 | 1-64 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| 容器名称<sup>1</sup> | 1-63 |小写 | 第一个或最后一个字符不能为字母数字和连字符 |`<name>-<role>-container<number>` |`web-batch-container1` |
 | 容器端口 | 介于 1 和 65535 之间 |Integer |一个介于 1 和 65535 之间的整数 |`<port-number>` |`443` |
 | DNS 名称标签 | 5-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和连字符 |`<name>` |`frontend-site1` |
 | 环境变量 | 1-63 |不区分大小写 |第一个或最后一个字符不能为字母数字和下划线 (_) |`<name>` |`MY_VARIABLE` |
-| 卷名 | 5-63 |不区分大小写 |第一个或最后一个字符不能为小写字母、数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
+| 卷名 | 5-63 |小写 |除第一个或最后一个字符之外的字母数字和连字符。 不能包含两个连续的连字符。 |`<name>` |`batch-output-volume` |
+
+<sup>1</sup>对于容器组名称的限制也适用于不单独指定容器实例的情况，例如，用于 `az container create` 命令部署。
 
 ### <a name="os-version-of-image-not-supported"></a>不受支持的映像的操作系统版本
 
@@ -95,10 +96,10 @@ ms.locfileid: "74533392"
 * 部署到其他 Azure 区域
 * 稍后部署
 
-## <a name="issues-during-container-group-runtime"></a>容器组运行过程中的问题
+## <a name="issues-during-container-group-runtime"></a>容器组运行时中的问题
 ### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>容器不断退出并重启（没有长时间运行的进程）
 
-容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”****，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
+容器组的[重启策略](container-instances-restart-policy.md)默认为 **Always**，因此容器组中的容器在运行完成后始终会重启。 如果打算运行基于任务的容器，则可能需要将此策略更改为 **OnFailure** 或 **Never**。 如果指定了“失败时”  ，但仍不断重启，则可能容器中执行的应用程序或脚本存在问题。
 
 在没有长时间运行的进程的情况下运行容器组时，可能会看到重复退出并重启 Ubuntu 或 Alpine 等映像。 通过 [EXEC](container-instances-exec.md) 连接将无法正常工作，因为容器没有使其保持活动的进程。 若要解决此问题，请在容器组部署中包含如下所示的启动命令，以使容器保持运行。
 
@@ -154,7 +155,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
 ```
 
 > [!NOTE]
-> Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 由于 Shell 本身不是长时间运行的服务，因此如果这些容器配置了“始终”重启策略，会立即退出并不断重启****。
+> Linux 分发的大多数容器映像会设置一个 shell（如 bash）作为默认命令。 由于 Shell 本身不是长时间运行的服务，因此如果这些容器配置了“始终”重启策略，会立即退出并不断重启  。
 
 ### <a name="container-takes-a-long-time-to-start"></a>容器启动时间过长
 
@@ -186,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-Azure 容器实例使用缓存机制来帮助加快使用常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括`nanoserver:1809`、 `servercore:ltsc2019`和`servercore:1809`）生成的映像的容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+Azure 容器实例使用缓存机制来帮助加快使用常见[Windows 基准映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括、和）生成的映像的容器启动时间 `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` 。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。
@@ -228,6 +229,7 @@ Azure 容器实例尚不支持具有常规 docker 配置的端口映射。 如�
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
@@ -235,4 +237,4 @@ Azure 容器实例尚不支持具有常规 docker 配置的端口映射。 如�
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
-[list-cached-images]: /rest/api/container-instances/listcachedimages
+[list-cached-images]: /rest/api/container-instances/location/listcachedimages

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829391"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -124,13 +124,13 @@ Service Fabric 支持具有 Open Web Interface for .NET (OWIN) 和 ASP.NET Core 
 
   > **何时使用**：在应用存储非关系数据，如键值对（表）、blob、文件共享，或消息（队列）的情况下使用。
   >
-  > **开始使用**：选择这些类型存储之一：[blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)或[文件](../../storage/files/storage-dotnet-how-to-use-files.md)。
+  > **入门**：选择以下类型之一： [blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[表](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[队列](../../storage/queues/storage-dotnet-how-to-use-queues.md)或[文件](../../storage/files/storage-dotnet-how-to-use-files.md)。
 
 - Azure SQL 数据库****：基于 Azure 版本的 Microsoft SQL Server 引擎，用于在云中存储关系表格数据。 SQL 数据库可提供可预测的性能、在不停机情况下进行缩放、业务连续性和数据保护功能。
 
   > **何时使用**：在应用程序需要具有引用完整性、事务支持和 TSQL 查询支持的数据存储时，可以考虑使用。
   >
-  > **开始使用**：[使用 Azure 门户在几分钟内创建 SQL 数据库](../../sql-database/sql-database-get-started.md)。
+  > **入门**：[使用 AZURE 门户在 Azure SQL 数据库中的几分钟内创建数据库](../../sql-database/sql-database-get-started.md)。
 
 
 你可以使用 [Azure 数据工厂](../../data-factory/introduction.md)将现有本地数据移到 Azure。 如果你尚未准备好将数据移到云中，则[混合连接](../../app-service/app-service-hybrid-connections.md)在 Azure App Service 中，你可以将应用服务托管的应用连接到本地资源。 此外，你还可以从本地应用程序连接到 Azure 数据和存储服务。
@@ -255,7 +255,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 除了 REST Api，许多 Azure 服务还允许使用特定于平台的 Azure Sdk （包括适用于以下开发平台的 Sdk）以编程方式管理应用程序中的资源：
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -268,7 +268,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 在 Azure 上运行应用可能涉及使用多个 Azure 服务。 这些服务遵循相同的生命周期，并可被视为一个逻辑单元。 例如，Web 应用可以使用 Web 应用、SQL 数据库、存储、Azure Redis 缓存，以及 Azure 内容分发网络服务。 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)能够使你以组的方式处理应用程序中的资源。 你可以通过单个协调的操作来部署、更新或删除所有资源。
 
-除了逻辑分组和管理相关资源以外，Azure 资源管理器还提供了部署功能，使你可以自定义相关资源的部署和配置。 例如，可以使用资源管理器部署和配置应用程序。 此应用程序可以包含多个虚拟机、负载均衡器和一个单个单元的 Azure SQL 数据库。
+除了逻辑分组和管理相关资源以外，Azure 资源管理器还提供了部署功能，使你可以自定义相关资源的部署和配置。 例如，可以使用资源管理器部署和配置应用程序。 此应用程序可以包含多个虚拟机、负载均衡器以及 Azure SQL 数据库中的数据库作为一个单元。
 
 可使用 Azure 资源管理器模板（JSON 格式的文档）来开发这些部署。 借助这些模板，可使用声明性模板（而不是脚本）来定义应用程序的部署和管理。 模板可用于测试、暂存和生产等不同的环境。 例如，你可以使用模板将一个按钮添加到 GitHub 存储库，只需要单击一次即可将存储库中的代码部署到一组 Azure 服务。
 

@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807581"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 
@@ -86,15 +86,10 @@ ms.locfileid: "80049662"
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. 配置组策略以允许设备注册
 
-* 在 Active Directory 中创建组策略对象（如果尚未创建）。
-* 将其命名为 (ex- Hybrid Azure AD join)。
-* 编辑策略并转到：“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“设备注册”
-* 启用：“将已加入域的计算机注册为设备”
-* 依次单击“应用”、“确定”。
-* 将 GPO 链接到所选的位置（组织单位、安全组或所有设备的域）。
+有关如何允许混合 Azure AD 联接单个设备的信息，请参阅[混合 Azure AD 联接的受控验证](../devices/hybrid-azuread-join-control.md)。
 
->[!NOTE]
->对于 2012R2，请通过“计算机配置”>“策略”>“管理模板”>“Windows 组件”>“工作区加入”>“自动工作区加入客户端计算机”完成策略设置****
+> [!NOTE]
+> 2012 R2 的策略设置位于**计算机配置 > 策略 > 管理模板 > Windows 组件 > Workplace Join > 自动工作区加入客户端计算机**。
 
 ## <a name="next-steps"></a>后续步骤
 [配置设备写回](how-to-connect-device-writeback.md)

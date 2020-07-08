@@ -4,12 +4,12 @@ description: 了解如何针对门户开发安装 Azure Functions 的 Durable Fu
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7aa283480d95693e2630e24d5642fc7cb909b34b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807955"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -58,7 +58,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
    ![Kudu 运行 npm install](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. 最后，通过添加值为 `true` 的应用设置 `FUNCTIONS_V2_COMPATIBILITY_MODE`（启用兼容模式）[https://docs.microsoft.com/en-us/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1 ]。
+5. 最后，通过添加值为的应用设置，[启用兼容性模式](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1) `FUNCTIONS_V2_COMPATIBILITY_MODE` `true` 。
 
 ## <a name="create-an-orchestrator-function"></a>创建一个业务流程协调程序函数
 
@@ -83,7 +83,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 1. 使用 HTTP 工具（例如 Postman 或 cURL）将 POST 请求发送到已复制的 URL。 以下示例是一个 cURL 命令，该命令将 POST 请求发送到持久函数：
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     在此示例中，`{your-function-app-name}` 是域，该域是函数应用的名称。 响应消息包含一组 URI 终结点，这些终结点可以用来监视并管理执行，该执行如以下示例所示：
