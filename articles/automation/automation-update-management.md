@@ -3,14 +3,14 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 05/22/2020
+ms.date: 06/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 86116e4aa76b376331e25719d128fc733c3257ae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316389"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "83847322"
 [Azure 资源管理器模板](automation-update-management-deploy-template.md)可帮助将更新管理部署到新的或现有的自动化帐户以及订阅中的 Log Analytics 工作区。
 
 > [!NOTE]
-> 不能使用配置了更新管理功能的计算机从 Azure 自动化运行自定义脚本。 此计算机只能运行 Microsoft 签名的更新脚本。 
+> 不能使用配置了更新管理功能的计算机从 Azure 自动化运行自定义脚本。 此计算机只能运行 Microsoft 签名的更新脚本。
 
 ## <a name="about-update-management"></a>关于更新管理
 
@@ -68,21 +68,22 @@ ms.locfileid: "83847322"
 通过 Azure 自动化中的 runbook 安装更新。 无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，会创建一个在指定的时间为所包含的计算机启动主更新 runbook 的计划。 此主 Runbook 会在每个代理上启动一个子 Runbook 来安装必需的更新。
 
 目标计算机会按更新部署中指定的日期和时间，以并行方式执行部署。 在安装之前，会运行扫描来验证更新是否仍然是必需的。 对于 WSUS 客户端计算机，如果更新未在 WSUS 中获得批准，则更新部署会失败。
+
 不支持在多个 Log Analytics 工作区（也称为多宿主）中对计算机注册更新管理。
 
 ## <a name="clients"></a>客户端
 
 ### <a name="supported-client-types"></a>支持的客户端类型
 
-下表列出了更新评估支持的操作系统。 修补需要混合 Runbook 辅助角色。 有关混合 Runbook 辅助角色要求的信息，请参阅[部署 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)和[部署 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)。
+下表列出了支持的操作系统，以便进行更新评估和修补。 修补需要混合 Runbook 辅助角色。 有关混合 Runbook 辅助角色要求的信息，请参阅[部署 Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)和[部署 Linux 混合 Runbook 辅助角色](automation-linux-hrw-install.md)。
 
 > [!NOTE]
 > 仅自动化帐户和 Log Analytics 工作区[映射表](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)中列出的特定区域支持 Linux 计算机的更新评估。 
 
 |操作系统  |说明  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估。 不支持修补，因为 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](automation-windows-hrw-install.md)。 |
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理支持对此操作系统进行评估和修补。 Windows Server 2008 R2 支持[混合 Runbook 辅助角色](automation-windows-hrw-install.md)。 |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](automation-view-update-assessments.md#linux-2)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
@@ -103,7 +104,7 @@ ms.locfileid: "83847322"
 
 ### <a name="client-requirements"></a>客户端要求
 
-以下信息介绍了特定于操作系统的客户端要求。 有关其他指南，请参阅[网络规划](#ports)。
+以下信息介绍了特定于操作系统的客户端要求。 有关其他指南，请参阅[网络规划](#ports)。 若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="windows"></a>Windows
 
@@ -165,7 +166,7 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 下表介绍了更新管理支持的连接的源：
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 |是 |更新管理从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |更新管理从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -187,10 +188,10 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|\* .blob.core.windows.net | *.blob.core.usgovcloudapi.net|
-|\* .azure-automation.net | *.azure-automation.us|
+|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
+|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
+|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+|`*.azure-automation.net` | `*.azure-automation.us`|
 
 对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。 可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果拥有本地 [Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量发送到 [WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
 
@@ -224,13 +225,20 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
 
+>[!NOTE]
+>仅当在支持的 Azure 公有云区域中使用时，才可以使用适用于 Linux 计算机的更新分类。 使用以下国家/地区云区域中的更新管理时：
+>* Azure 美国政府
+>* 中国世纪互联
+>
+> 没有 Linux 更新分类，它们在 "**其他更新**" 类别下进行报告。 更新管理使用受支持的分发版发布的数据，具体来说，它是其发布的[椭圆](https://oval.mitre.org/)（开放漏洞和评估语言）文件。 由于 internet 访问受限于这些国家云，因此更新管理无法访问和使用这些文件。
+
 对于 Linux，由于云中的数据扩充，更新管理可以区分云中的关键更新和安全更新，同时显示评估数据。 为了进行修补，更新管理依赖于计算机上提供的分类数据。 与其他发行版不同，CentOS 在 RTM 版本中未提供此信息。 如果已将 CentOS 计算机配置为返回以下命令的安全数据，则更新管理可以基于分类进行修补。
 
 ```bash
 sudo yum -q --security check-update
 ```
 
-当前没有受支持的方法可用来在 CentOS 上提供原生分类数据。 目前，只能尽力为可能自己实现了此功能的客户提供支持。 
+当前没有受支持的方法可用来在 CentOS 上提供原生分类数据。 目前，只能尽力为可能自己实现了此功能的客户提供支持。
 
 若要对 Red Hat Enterprise 版本 6 上的更新进行分类，需要安装 yum 安全插件。 在 Red Hat Enterprise Linux 7 上，yum 本身已包含该插件，无需安装任何内容。 有关详细信息，请参阅以下 Red Hat [知识文章](https://access.redhat.com/solutions/10021)。
 

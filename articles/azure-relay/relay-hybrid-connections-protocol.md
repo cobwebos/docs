@@ -1,29 +1,18 @@
 ---
 title: Azure 中继混合连接协议指南 | Microsoft 文档
 description: 本文介绍如何与混合连接中继的客户端交互，以连接侦听器和发送方角色中的客户端。
-services: service-bus-relay
-documentationcenter: na
-author: clemensv
-manager: timlt
-editor: ''
-ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/21/2020
-ms.author: clemensv
-ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316649"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
 
-Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继的新“混合连接”功能是基于 HTTP 和 WebSocket 的安全、开放协议演化版  。 它取代了之前基于专用协议构建的名为“BizTalk 服务”的功能  。 将混合连接集成到 Azure 应用服务并不影响原有的运行方式。
+Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继的新“混合连接”功能是基于 HTTP 和 WebSocket 的安全、开放协议演化版。 它取代了之前基于专用协议构建的名为“BizTalk 服务”的功能。 将混合连接集成到 Azure 应用服务并不影响原有的运行方式。
 
 混合连接在两个联网应用程序之间启用双向二进制流通信和简单的数据报流。 任何一方或双方均可驻留在 NAT 或防火墙之后。
 
@@ -35,7 +24,7 @@ Azure 中继是 Azure 服务总线平台最重要的功能支柱之一。 中继
 
 该服务允许中继 Web 套接字连接和 HTTP(S) 请求与响应。
 
-该交互模型倾向于使用由许多其他网络服务 API 创建的术语： 有一个侦听器可以先指明是否准备好处理传入连接，再在这些连接到达时接受它们。 在另一端，某个客户端会连接到侦听器，预期该连接被接受以建立双向通信路径。 “连接”、“侦听”和“接受”与大多数套接字 API 中找到的术语相同。
+该交互模型倾向于使用由许多其他网络服务 API 创建的术语： 首先一个是侦听器，指示处理传入连接的准备情况，然后在这些连接到达时进行接受。 在另一端，某个客户端会连接到侦听器，预期该连接被接受以建立双向通信路径。 “连接”、“侦听”和“接受”与大多数套接字 API 中找到的术语相同。
 
 任何中继通信模型都会使双方生成针对服务终结点的出站连接。 这使得“侦听器”也常被说成“客户端”，可能还会导致其他术语重载。 因此，用于混合连接的准确术语如下：
 
@@ -99,7 +88,7 @@ HTTP 帧标头元数据将转换为 JSON，以方便由侦听器框架处理；�
 
 #### <a name="connect-operation"></a>连接操作
 
-“连接”操作会打开服务上的 WebSocket，提供混合连接的名称和（可选，但默认为必需）授予查询字符串中“发送”权限的安全令牌。 然后，服务会按照之前所述的方式与侦听器进行交互，并且侦听器会创建一个与此 WebSocket 联接的集合连接。 WebSocket 被接受后，该 WebSocket 上的所有后续交互都将使用已连接的侦听器。
+“连接”操作会打开服务上的 WebSocket，提供混合连接的名称和（可选，但默认为必需）授予查询字符串中“发送”权限的安全令牌。 然后，服务会按照之前所述的方式与侦听器进行交互，并且侦听器会创建一个与此 WebSocket 联接的集合连接。 WebSocket 被接受后，该 WebSocket 上的所有后续交互都会使用已连接的侦听器。
 
 #### <a name="request-operation"></a>请求操作
 
@@ -144,7 +133,7 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 
 查询字符串参数选项如下所示。
 
-| 参数        | 必选 | 说明
+| 参数        | 必须 | 说明
 | ---------------- | -------- | -------------------------------------------
 | `sb-hc-action`   | 是      | 对于侦听器角色，该参数必须是 **sb-hc-action=listen**
 | `{path}`         | 是      | 要注册该侦听器的预配置混合连接的 URL 编码命名空间路径。 此表达式追加至固定的 `$hc/` 路径部分。
@@ -160,7 +149,7 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 | 403  | 禁止      | 安全令牌对此操作的此路径无效。
 | 500  | 内部错误 | 服务内部出错。
 
-如果服务在初始设置 WebSocket 连接后有意将其关闭，则会使用相应的 WebSocket 协议错误代码，连同也包含跟踪 ID 的描述性错误消息传达执行此操作的原因。 服务在未出现错误状况的情况下将不会关闭控制通道。 任何干净关闭都由客户端控制。
+如果服务在初始设置 WebSocket 连接后有意将其关闭，则会使用相应的 WebSocket 协议错误代码，连同也包含跟踪 ID 的描述性错误消息传达执行此操作的原因。 服务在未出现错误状况的情况下不会关闭控制通道。 任何干净关闭都由客户端控制。
 
 | WS 状态 | 说明
 | --------- | -------------------------------------------------------------------------------
@@ -174,7 +163,7 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 
 该消息包含名为“accept”的 JSON 对象，此时该对象定义以下属性：
 
-* address – 用于创建服务的 WebSocket URL 字符串，以接受传入连接  。
+* **address** – 用于创建服务的 WebSocket URL 字符串，以接受传入连接。
 * **id** – 该连接的唯一标识符。 如果该 ID 由发送方客户端提供，则是发送方提供的值，否则为系统生成的值。
 * **connectHeaders** – 发送方向中继终结点提供的所有 HTTP 头，其中也包括 Sec-WebSocket-Protocol 和 Sec-WebSocket-Extensions 头。
 
@@ -204,11 +193,11 @@ HTTP 请求/响应模型为发送方提供受限程度极低的 HTTP 协议外�
 
 URL 必须原样使用，用于创建接受套接字，但是要包含以下参数：
 
-| 参数      | 必选 | 说明
+| 参数      | 必须 | 说明
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | 是      | 若要接受套接字，该参数必须为 `sb-hc-action=accept`
 | `{path}`       | 是      | （请参阅下文）
-| `sb-hc-id`     | 否       | 请参阅上述的 ID 说明  。
+| `sb-hc-id`     | 否       | 请参阅上述的 **ID** 说明。
 
 `{path}` 是要注册此侦听器的预配置混合连接的 URL 编码命名空间路径。 此表达式追加至固定的 `$hc/` 路径部分。
 
@@ -241,12 +230,12 @@ URL 必须原样使用，用于创建接受套接字，但是要包含以下参�
 
  若要拒绝套接字，客户端需使用 `accept` 消息中的地址 URI 并将两个查询字符串参数追加到其中，如下所示：
 
-| Param                   | 必选 | 说明                              |
+| Param                   | 必须 | 说明                              |
 | ----------------------- | -------- | ---------------------------------------- |
 | sb-hc-statusCode        | 是      | 数值型 HTTP 状态代码。                |
 | sb-hc-statusDescription | 是      | 可人工读取的拒绝原因。 |
 
-然后，使用生成的 URI 建立 WebSocket 连接。
+然后使用生成的 URI 建立 WebSocket 连接。
 
 正确完成后，该握手会有意失败，并出现 HTTP 错误代码 410，因为尚未创建任何 WebSocket。 如果出现问题，会使用以下代码描述问题：
 
@@ -345,7 +334,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 响应是名为“response”的 JSON 对象。 正文内容的处理规则与 `request` 消息的处理方式相同，并基于 `body` 属性。
 
-* **requestId** – 字符串。 必需。 正在响应的 `id` 消息的 `request` 属性值。
+* **requestId** – 字符串。 必需。 正在响应的 `request` 消息的 `id` 属性值。
 * **statusCode** – 数字。 必需。 指示通知结果的数字 HTTP 状态代码。 允许 [RFC7231 第 6 部分](https://tools.ietf.org/html/rfc7231#section-6)所述的所有状态代码，但 [502“错误的网关”](https://tools.ietf.org/html/rfc7231#section-6.6.3)和 [504“网关超时”](https://tools.ietf.org/html/rfc7231#section-6.6.5)除外。
 * **statusDescription** - 字符串。 可选。 [RFC7230 第 3.1.2 部分](https://tools.ietf.org/html/rfc7230#section-3.1.2)所述的 HTTP 状态代码原因短语
 * **responseHeaders** – 要在外部 HTTP 回复中设置的 HTTP 标头。
@@ -374,9 +363,9 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 对于超过 64 kB 的响应，必须通过会合套接字传送响应。 此外，如果请求超过 64 kB，并 `request` 仅包含地址字段，则必须建立会合套接字以获取 `request`。 建立会合套接字后，必须通过持久保留的会合套接字传送对该相应客户端的响应，以及来自该相应客户端的后续请求。
 
-`address` 中的 `request` URL 必须原样使用，用于建立会合套接字，但要包含以下参数：
+`request` 中的 `address` URL 必须原样使用，用于建立会合套接字，但要包含以下参数：
 
-| 参数      | 必选 | 说明
+| 参数      | 必须 | 说明
 | -------------- | -------- | -------------------------------------------------------------------
 | `sb-hc-action` | 是      | 若要接受套接字，该参数必须为 `sb-hc-action=request`
 
@@ -402,7 +391,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 侦听器令牌即将到期时，可以通过已创建的控制通道向服务发送文本框消息来替换令牌。 消息包含名为 `renewToken` 的 JSON 对象，此时该对象定义以下属性：
 
-* token – 命名空间或混合连接的有效 URL 编码的服务总线共享访问令牌，可授予“侦听”权限   。
+* token – 命名空间或混合连接的有效 URL 编码的服务总线共享访问令牌，可授予“侦听”权限 。
 
 ```json
 {
@@ -430,7 +419,7 @@ wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的头均流向侦听器并且可在“接受”控制消息的 `connectHeader` 对象上找到  。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的头均流向侦听器并且可在 **accept** 控制消息的 `connectHeader` 对象上找到。
 
 查询字符串参数选项如下所示：
 
@@ -447,7 +436,7 @@ _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全�
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-`path` 表达式传递到“接受”控制消息所含地址 URI 中的侦听器。
+`path` 表达式传递到“accept”控制消息所含地址 URI 中的侦听器。
 
 如果由于混合连接路径未注册、令牌无效或丢失或其他一些错误，导致 WebSocket 连接失败，则会使用常规的 HTTP 1.1 状态反馈模型提供错误反馈。 状态说明包含可传达给 Azure 支持人员的错误跟踪 ID：
 
@@ -478,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#Request message)）均流向侦听器并可在`requestHeader`请求**消息的**  对象上找到。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#Request message)）均流向侦听器并可在**请求**消息的 `requestHeader` 对象上找到。
 
 查询字符串参数选项如下所示：
 
@@ -488,10 +477,10 @@ _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全�
 
 也可以在 `ServiceBusAuthorization` 或 `Authorization` HTTP 标头中携带该令牌。 如果混合连接配置为允许匿名请求，则可以省略该令牌。
 
-由于服务实际上充当代理，因此，即使它不是真正的 HTTP 代理，也会添加 `Via` 标头，或批注符合 `Via`RFC7230 第 5.7.1 部分[的现有 ](https://tools.ietf.org/html/rfc7230#section-5.7.1) 标头。
+由于服务实际上充当代理，因此，即使它不是真正的 HTTP 代理，也会添加 `Via` 标头，或批注符合 [RFC7230 第 5.7.1 部分](https://tools.ietf.org/html/rfc7230#section-5.7.1)的现有 `Via` 标头。
 服务将中继命名空间主机名添加到 `Via`。
 
-| 代码 | 消息  | 说明                    |
+| 代码 | Message  | 说明                    |
 | ---- | -------- | ------------------------------ |
 | 200  | OK       | 请求已至少由一个侦听器处理。  |
 | 202  | 已接受 | 请求已至少由一个侦听器接受。 |

@@ -1,29 +1,17 @@
 ---
 title: 示例 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了 GitHub 上 Azure 事件中心的示例列表。
-services: event-hubs
-documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: event-hubs
-ms.custom: seodec18
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/15/2020
-ms.author: shvija
-ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 9529b11d15460c713a0ae14f3bccfa1c2684a3ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162052"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315505"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
-可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](/azure/event-hubs/)的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
+可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](/azure/event-hubs/)的主要功能。 本文对可用示例进行了分类和介绍，每个示例均具有链接。
 
 ## <a name="net-samples"></a>.NET 示例
 
@@ -67,7 +55,7 @@ ms.locfileid: "77162052"
 可在 [azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) GitHub 存储库中找到 Apache Kafka 功能的事件中心示例。
 
 ## <a name="next-steps"></a>后续步骤
-参阅以下文章可以了解有关事件中心的详细信息：
+可在以下文章中了解有关事件中心的详细信息：
 
 - [事件中心概述](event-hubs-what-is-event-hubs.md)
 - [事件中心功能](event-hubs-features.md)

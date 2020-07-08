@@ -1,18 +1,14 @@
 ---
 title: Azure 事件中心的网络安全
 description: 本文介绍如何配置专用终结点的访问权限
-services: event-hubs
-author: spelluru
-ms.service: event-hubs
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: spelluru
-ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312839"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure 事件中心的网络安全 
 本文介绍如何在 Azure 事件中心中使用以下安全功能： 
@@ -20,23 +16,23 @@ ms.locfileid: "80422770"
 - 服务标记
 - IP 防火墙规则
 - 网络服务终结点
-- 专用终结点（预览）
+- 专用终结点（预览版）
 
 
 ## <a name="service-tags"></a>服务标记
-服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址发生更改时自动更新服务标记，从而最大程度地降低频繁更新网络安全规则的复杂性。 有关服务标记的详细信息，请参阅[服务标记概述](../virtual-network/service-tags-overview.md)。
+服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记，从而尽量减少频繁更新网络安全规则所需的复杂操作。 有关服务标记的详细信息，请参阅[服务标记概述](../virtual-network/service-tags-overview.md)。
 
-你可以使用服务标记来定义[网络安全组](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火墙](../firewall/service-tags.md)上的网络访问控制。 创建安全规则时，使用服务标记代替特定的 IP 地址。 通过在规则的相应 "*源* " 或 " *目标* " 字段中指定服务标记名称（例如， **EventHub**），可以允许或拒绝相应服务的流量。
+可以在[网络安全组](../virtual-network/security-overview.md#security-rules) 或  [Azure 防火墙](../firewall/service-tags.md)中使用服务标记来定义网络访问控制。 创建安全规则时，请使用服务标记代替特定 IP 地址。 通过在规则的相应 "*源*" 或 "目标" 字段中指定服务标记名称（例如， **EventHub**）    *destination*   ，可以允许或拒绝相应服务的流量。
 
-| 服务标记 | 目的 | 可以使用入站或出站？ | 可以是区域？ | 是否可在 Azure 防火墙中使用？ |
+| 服务标记 | 目的 | 可以使用入站还是出站连接？ | 可以支持区域范围？ | 是否可在 Azure 防火墙中使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **EventHub** | Azure 事件中心。 | 出站 | 是 | 是 |
 
 
 ## <a name="ip-firewall"></a>IP 防火墙 
-默认情况下，只要请求附带有效的身份验证和授权，就可以从 internet 访问事件中心命名空间。 使用 IP 防火墙，你可以将其进一步限制为仅一组 IPv4 地址或[CIDR （无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法中的 ipv4 地址范围。
+默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
 
-此功能在 Azure 事件中心应只能从某些已知站点进行访问的情况下很有用。 防火墙规则使你可以配置规则以接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与[Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services)一起使用，则可以创建**防火墙规则**，以仅允许来自本地基础结构 IP 地址的流量。 
+在仅应从某些知名站点访问 Azure 事件中心的情况下，此功能很有用。 可以通过防火墙规则来配置规则，以便接受来自特定 IPv4 地址的流量。 例如，如果将事件中心与 [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services) 配合使用，则可创建防火墙规则，仅允许来自本地基础结构 IP 地址的流量。 
 
 IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规则适用于通过任何受支持协议从客户端发出的所有连接。 如果某 IP 地址与事件中心命名空间上的允许 IP 规则不匹配，则将拒绝来自该地址的任何连接尝试并将其标记为“未经授权”。 响应不会提及 IP 规则。 IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决定了将执行接受操作还是执行拒绝操作。
 
@@ -47,7 +43,7 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 
 一旦配置为至少绑定到一个虚拟网络子网服务终结点，各自的事件中心命名空间就不再接受来自虚拟网络中的任何位置但获得授权的子网的流量。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。 
 
-然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 此行为有一个例外。 默认情况下，启用服务终结点将启用`denyall`与虚拟网络关联的[IP 防火墙](event-hubs-ip-filtering.md)中的规则。 可以在 IP 防火墙中添加特定的 IP 地址，以便能够访问事件中心公共终结点。 
+然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 此行为有一个例外。 默认情况下，启用服务终结点将启用 `denyall` 与虚拟网络关联的[IP 防火墙](event-hubs-ip-filtering.md)中的规则。 可以在 IP 防火墙中添加特定的 IP 地址，以便能够访问事件中心公共终结点。 
 
 > [!IMPORTANT]
 > 事件中心的标准**** 和专用**** 层支持虚拟网络。 **基本**层不支持此方法。
@@ -74,12 +70,12 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 
 使用[Azure 专用链接服务](../private-link/private-link-overview.md)，可以通过虚拟网络中的**专用终结点**访问 azure 服务（例如，Azure 事件中心、azure 存储和 Azure Cosmos DB）以及 azure 托管的客户/合作伙伴服务。
 
-专用终结点是一个网络接口，该接口将你私下并安全地连接到由 Azure 专用链接提供支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
+专用终结点是一个网络接口，可以通过专用且安全的方式将你连接到 Azure 专用链接支持的服务。 专用终结点使用 VNet 中的专用 IP 地址将服务有效接入 VNet 中。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
 
 > [!NOTE]
-> 只有**专用**层才支持此功能。 有关专用层的详细信息，请参阅[事件中心专用层的概述](event-hubs-dedicated-overview.md)。 
+> 只有**专用**层支持此功能。 有关专用层的详细信息，请参阅[事件中心专用层概述](event-hubs-dedicated-overview.md)。 
 >
-> 此功能目前处于**预览阶段**。 
+> 此功能目前为预览版。 
 
 
 有关详细信息，请参阅[如何为事件中心配置专用终结点](private-link-service.md)

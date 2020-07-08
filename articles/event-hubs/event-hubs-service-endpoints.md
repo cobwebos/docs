@@ -1,22 +1,14 @@
 ---
 title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何将 Microsoft EventHub 服务终结点添加到虚拟网络的信息。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 11/26/2019
-ms.author: shvija
-ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85315426"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
 
@@ -24,21 +16,21 @@ ms.locfileid: "81390287"
 
 一旦配置为至少绑定到一个虚拟网络子网服务终结点，各自的事件中心命名空间就不再接受来自虚拟网络中的任何位置但获得授权的子网的流量。 从虚拟网络的角度来看，通过将事件中心命名空间绑定到服务终结点，可配置从虚拟网络子网到消息传递服务的独立网络隧道。 
 
-然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 此行为有一个例外。 默认情况下，启用服务终结点将启用`denyall`与虚拟网络关联的[IP 防火墙](event-hubs-ip-filtering.md)中的规则。 可以在 IP 防火墙中添加特定的 IP 地址，以便能够访问事件中心公共终结点。 
+然后，绑定到子网的工作负荷与相应的事件中心命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。 此行为有一个例外。 默认情况下，启用服务终结点将启用 `denyall` 与虚拟网络关联的[IP 防火墙](event-hubs-ip-filtering.md)中的规则。 可以在 IP 防火墙中添加特定的 IP 地址，以便能够访问事件中心公共终结点。 
 
 >[!WARNING]
 > 实现虚拟网络集成可以防止其他 Azure 服务与事件中心进行交互。
 >
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
-> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）****-
-> - Azure Monitor （诊断设置）
+> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
+> - Azure Monitor（诊断设置）
 > - Azure 流分析
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
 >
-> 需要在虚拟网络上安装以下 Microsoft 服务
+> 以下 Microsoft 服务必须在虚拟网络中
 > - Azure Web 应用
 > - Azure Functions
 
@@ -65,25 +57,25 @@ ms.locfileid: "81390287"
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分演示如何使用 Azure 门户添加虚拟网络服务终结点。 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
-1. 在[Azure 门户](https://portal.azure.com)中导航到**事件中心命名空间**。
-2. 在左侧菜单中，选择 "**网络**" 选项。 如果选择 "**所有网络**" 选项，则事件中心接受来自任何 IP 地址的连接。 此设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+1. 在 [Azure 门户](https://portal.azure.com)中导航到“事件中心命名空间”。
+2. 在左侧菜单中，选择“网络”选项。 如果选择“所有网络”选项，则事件中心将接受来自任何 IP 地址的连接。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    !["防火墙-所有网络" 选项已选中](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+    ![防火墙 - 已选择“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. 若要 restrct 访问特定网络，请选择页面顶部的 "**所选网络**" 选项。
 2. 在页面的 "**虚拟网络**" 部分中，选择 "+ 添加现有虚拟网络"。 如果要创建新的 VNet，请选择 " **+ 创建新虚拟网络**"。 
 
     ![添加现有虚拟网络](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
-3. 从虚拟网络列表中选择虚拟网络，然后选择**子网**。 在将虚拟网络添加到列表之前，必须先启用服务终结点。 如果未启用服务终结点，门户将提示你启用它。
+3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。
    
    ![选择子网](./media/event-hubs-tutorial-vnet-and-firewalls/select-subnet.png)
 
-4. 为 web.config 启用了子网的服务终结点后，应看到以下成功消息 **。** 选择页面底部的 "**添加**"，添加网络。 
+4. 为 web.config 启用了子网的服务终结点后，应看到以下成功消息 **。** 选择页面底部的“添加”，添加网络。 
 
     ![选择子网并启用终结点](./media/event-hubs-tutorial-vnet-and-firewalls/subnet-service-endpoint-enabled.png)
 
     > [!NOTE]
-    > 如果无法启用服务终结点，则可以使用资源管理器模板忽略缺少的虚拟网络服务终结点。 此功能在门户中不可用。
-6. 在工具栏上选择 "**保存**"，保存设置。 等待几分钟让确认显示在门户通知上。
+    > 如果无法使用资源管理器模板启用服务终结点，可以忽略有关缺少虚拟网络服务终结点的消息。 此功能在门户中不可用。
+6. 在工具栏上选择“保存”，保存这些设置。 请等待几分钟，直到门户通知中显示确认消息。
 
     ![保存网络](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
@@ -99,10 +91,10 @@ ms.locfileid: "81390287"
 * **virtualNetworkingSubnetId**：虚拟网络子网的完全限定的资源管理器路径；例如，虚拟网络默认子网的 `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default`。
 
 > [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接****。
-> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”******
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> 从
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

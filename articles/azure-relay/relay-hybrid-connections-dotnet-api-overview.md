@@ -1,25 +1,14 @@
 ---
 title: Azure 中继 .NET Standard API 概述 | Microsoft Docs
 description: 本文总结了 Azure 中继混合连接 .NET 标准 API 的一些关键技术。
-services: service-bus-relay
-documentationcenter: na
-author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
-ms.service: service-bus-relay
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/23/2018
-ms.author: spelluru
-ms.openlocfilehash: 18eaf2d2daae817107be6cdb0da9359bb5f9b4e9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/23/2020
+ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85316838"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 
@@ -63,7 +52,7 @@ catch (ArgumentException ae)
 
 ## <a name="hybrid-connection-stream"></a>混合连接流
 
-无论使用的是 [HybridConnectionClient][HCStream]，还是 [HybridConnectionListener][HCClient]，[HybridConnectionStream][HCListener] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
+无论使用的是 [HybridConnectionClient][HCClient]，还是 [HybridConnectionListener][HCListener]，[HybridConnectionStream][HCStream] 类这一主要对象均用于从 Azure 中继终结点发送和接收数据。
 
 ### <a name="getting-a-hybrid-connection-stream"></a>获取混合连接流
 
@@ -80,7 +69,7 @@ await listener.OpenAsync();
 var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
-#### <a name="client"></a>Client
+#### <a name="client"></a>客户端
 
 使用 [HybridConnectionClient][HCClient] 对象可以获取 `HybridConnectionStream` 对象，如下所示：
 
@@ -127,7 +116,7 @@ var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 `hybridConnectionStream`StreamWriter[ 对象包装 ](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象。
+但是，如果要直接发送文本，而无需每次都对字符串进行编码，则可以使用 [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 对象包装 `hybridConnectionStream` 对象。
 
 ```csharp
 // The StreamWriter object only needs to be created once
