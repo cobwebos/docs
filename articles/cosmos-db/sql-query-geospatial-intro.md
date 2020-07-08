@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367578"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
@@ -19,15 +18,15 @@ ms.locfileid: "79367578"
 
 * 如何在 Azure Cosmos DB 中存储空间数据？
 * 如何使用 SQL 和 LINQ 查询 Azure Cosmos DB 中的地理空间数据？
-* 如何在 Azure Cosmos DB 中启用或禁用空间索引？
+* 如何在Azure Cosmos DB 中启用或禁用空间索引？
 
 ## <a name="introduction-to-spatial-data"></a>空间数据简介
 
-空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象和地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。
+空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象，也就是地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。
 
-Azure Cosmos DB 的 SQL API 支持两种空间数据类型： **geometry**数据类型和**geography**数据类型。
+Azure Cosmos DB SQL API 支持两种空间数据类型：geometry  数据类型和 geography 数据类型  。
 
-- **Geometry**类型表示欧氏（平面）坐标系中的数据
+- geometry  类型在欧几里得（平面）坐标系统中表示数据
 - **Geography** 类型表示圆形地球坐标系中的数据。
 
 ## <a name="supported-data-types"></a>支持的数据类型
@@ -36,18 +35,18 @@ Azure Cosmos DB 支持对使用 [GeoJSON 规范](https://tools.ietf.org/html/rfc
 
 Azure Cosmos DB 支持以下空间数据类型：
 
-- 点
+- Point
 - LineString
 - Polygon
 - MultiPolygon
 
-### <a name="points"></a>点
+### <a name="points"></a>Point（点）
 
-**点**代表空间中的单一位置。 在地理空间数据中，某个点所代表的确切位置可能是杂货店、电话亭、汽车或城市的街道地址。  点使用其坐标对或经纬度，以 GeoJSON 格式（和 Azure Cosmos DB）表示。
+**点** 代表空间中的单一位置。 在地理空间数据中，某个点所代表的确切位置可能是杂货店、电话亭、汽车或城市的街道地址。  点使用其坐标对或经纬度，以 GeoJSON 格式（和 Azure Cosmos DB）表示。
 
-下面是一个用于点的示例 JSON：
+以下是点的 JSON 示例：
 
-Azure Cosmos DB 中的点****
+Azure Cosmos DB 中的点 
 
 ```json
 {
@@ -56,9 +55,9 @@ Azure Cosmos DB 中的点****
 }
 ```
 
-可以在 Azure Cosmos DB 文档中嵌入空间数据类型，如以下包含位置数据的用户配置文件示例所示：
+如下面包含位置数据的用户配置文件示例所示，空间数据类型可以嵌入在 Azure Cosmos DB 文档中：
 
-存储在 Azure Cosmos DB 中包含位置的用户配置文件****
+存储在 Azure Cosmos DB 中包含位置的用户配置文件 
 
 ```json
 {
@@ -75,19 +74,19 @@ Azure Cosmos DB 中的点****
 
 ### <a name="points-in-a-geometry-coordinate-system"></a>几何坐标系统中的点
 
-对于**geometry**数据类型，GeoJSON 规范首先指定水平轴和垂直轴。
+对于几何  数据类型，GeoJSON 规范首先指定水平轴，然后指定垂直轴。
 
 ### <a name="points-in-a-geography-coordinate-system"></a>地理坐标系统中的点
 
-对于**geography**数据类型，GeoJSON 规范指定了经度 first 和纬度 second。 与其他地图应用程序一样，经度和纬度为角度，并以度为单位表示。 经度值从本初子午线测量，并介于 -180 度和 180.0 度之间；纬度值从赤道测量，并介于 -90.0 度和 90.0 度之间。
+对于 **geography** 数据类型，GeoJSON 规范先指定经度，再指定纬度。 与其他地图应用程序一样，经度和纬度为角度，并以度为单位表示。 经度值从本初子午线测量，并介于 -180 度和 180.0 度之间；纬度值从赤道测量，并介于 -90.0 度和 90.0 度之间。
 
 Azure Cosmos DB 会将坐标解释为按照 WGS-84 参考系统表示。 有关坐标参考系统的更多详细信息，请参阅下文。
 
-### <a name="linestrings"></a>Linestring
+### <a name="linestrings"></a>LineString
 
 **LineString** 表示空间中一连串的点（两个或更多个）以及连接这些点的线段。 在地理空间数据中，LineString 通常用来表示高速公路或河流。
 
-**GeoJSON 中的 Linestring**
+**GeoJSON 中的 LineString**
 
 ```json
     "type":"LineString",
@@ -97,11 +96,11 @@ Azure Cosmos DB 会将坐标解释为按照 WGS-84 参考系统表示。 有关�
     ] ]
 ```
 
-### <a name="polygons"></a>多边形
+### <a name="polygons"></a>Polygon（多边形）
 
-**多边形**是由相连接的点组成的边界，并形成闭合的 LineString。 多边形通常用来表示自然构成物（例如湖泊），或表示政治管辖权（例如省/市/自治区）。 下面是 Azure Cosmos DB 中的多边形的示例：
+**多边形** 是形成闭合的 LineString 的相连接的点的边界。 多边形通常用来表示自然构成物（例如湖泊），或表示政治管辖权（例如省/市/自治区）。 下面是 Azure Cosmos DB 中的一个多边形示例：
 
-GeoJSON 中的多边形****
+GeoJSON 中的多边形 
 
 ```json
 {
@@ -123,11 +122,11 @@ GeoJSON 中的多边形****
 >
 >
 
-### <a name="multipolygons"></a>MultiPolygons
+### <a name="multipolygons"></a>MultiPolygon
 
-**MultiPolygon**是零个或多个多边形的数组。 **MultiPolygons**不能重叠，也不能具有任何公共区域。 它们可能在一个或多个点上接触。
+**MultiPolygon** 是包含零个或多个多边形的数组。 各个 **MultiPolygon** 的边不能重叠，也不能具有任何公共区域。 它们的一个或多个点可以接触。
 
-**GeoJSON 中的 MultiPolygons**
+**GeoJSON 中的 MultiPolygon**
 
 ```json
 {
@@ -151,9 +150,9 @@ GeoJSON 中的多边形****
 
 ## <a name="coordinate-reference-systems"></a>坐标参考系统
 
-由于地球的形状不规则，地理地理空间数据的坐标表示在许多坐标参考系统（CRS）中，每个坐标引用系统都有自己的参考框架和测量单位。 例如，“英国国家网格”对英国而言是非常精确的参考系统，但对其他地区则不是。
+由于地球的形状不规则，地理空间数据的坐标可以用许多坐标参考系统 (CRS) 来表示，而这些系统各有自己的参考框架和测量单位。 例如，“英国国家网格”对英国而言是非常精确的参考系统，但对其他地区则不是。
 
-现今最常使用的 CRS 是世界测地系统 [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)。 GPS 设备和许多地图服务（包括谷歌地图和必应地图 API）均使用 WGS-84。 Azure Cosmos DB 仅支持使用 WGS-84 CRS 索引和查询地理地理空间数据。
+现今最常使用的 CRS 是世界测地系统 [WGS-84](https://earth-info.nga.mil/GandG/update/index.php)。 GPS 设备和许多地图服务（包括谷歌地图和必应地图 API）均使用 WGS-84。 Azure Cosmos DB 仅支持对使用 WGS-84 CRS 的地理空间数据进行索引编制和查询。
 
 ## <a name="creating-documents-with-spatial-data"></a>创建包含空间数据的文档
 创建包含 GeoJSON 值的文档时，值会根据容器的索引策略，自动以空间索引进行索引编制。 如果以动态类型化语言（如 Python 或 Node.js）使用 Azure Cosmos DB SDK，则必须创建有效的 GeoJSON。
@@ -174,7 +173,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-如果使用的是 SQL api，则可以`Point`使用`LineString` `Polygon` `MultiPolygon` `Microsoft.Azure.Cosmos.Spatial`命名空间中的、、和类，将位置信息嵌入应用程序对象中。 这些类有助于简化将空间数据序列化和反序列化为 GeoJSON 的过程。
+如果使用 SQL API，则可以在 `Microsoft.Azure.Cosmos.Spatial` 命名空间中使用 `Point`、`LineString`、`Polygon` 和 `MultiPolygon` 类，将位置信息嵌入应用程序对象中。 这些类有助于简化将空间数据序列化和反序列化为 GeoJSON 的过程。
 
 **在 .NET 中创建包含地理空间数据的文档**
 
@@ -205,6 +204,6 @@ await container.CreateItemAsync( new UserProfile
 
 已经学会如何开始使用 Azure Cosmos DB 中的地理空间支持，下一步现在可以：
 
-* 深入了解 [Azure Cosmos DB 查询](sql-query-getting-started.md)
-* 详细了解如何[通过 Azure Cosmos DB 查询空间数据](sql-query-geospatial-query.md)
-* 了解有关[索引空间数据的](sql-query-geospatial-index.md)详细信息，请参阅 Azure Cosmos DB
+* 详细了解 [Azure Cosmos DB 查询](sql-query-getting-started.md)
+* 详细了解如何[使用 Azure Cosmos DB 查询空间数据](sql-query-geospatial-query.md)
+* 详细了解如何[使用 Azure Cosmos DB 为空间数据编制索引](sql-query-geospatial-index.md)

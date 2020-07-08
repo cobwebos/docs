@@ -10,10 +10,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281335"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 移动数据
@@ -61,7 +60,7 @@ ms.locfileid: "79281335"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 **OnPremisesMongoDB** 链接服务专属 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesMongoDb** |是 |
 | server |MongoDB 服务器的 IP 地址或主机名。 |是 |
@@ -79,7 +78,7 @@ ms.locfileid: "79281335"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **MongoDbCollection** 数据集类型的 typeProperties 节具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
 
@@ -90,9 +89,9 @@ ms.locfileid: "79281335"
 
 源为 **MongoDbSource** 类型时，可在 typeProperties 节使用以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：从 MyTable 中选择 *。 |否（如果指定了**数据集**的 **collectionName**） |
+| 查询 |使用自定义查询读取数据。 |SQL-92 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **collectionName**） |
 
 
 
@@ -292,16 +291,16 @@ Azure 数据工厂服务通过使用 MongoDB 集合中最新的 100 个文档来
 
 | MongoDB 类型 | .NET Framework 类型 |
 | --- | --- |
-| Binary |Byte[] |
-| Boolean |Boolean |
+| 二进制 |Byte[] |
+| 布尔 |布尔 |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |字符串 |
-| 字符串 |字符串 |
+| 字符串 |String |
 | UUID |Guid |
-| 对象 |重新标准化为平展列，以“_”作为嵌套分隔符 |
+| Object |重新标准化为平展列，以“_”作为嵌套分隔符 |
 
 > [!NOTE]
 > 若要了解对使用虚拟表的数组的支持，请参阅以下[支持使用虚拟表的复杂类型](#support-for-complex-types-using-virtual-tables)一节。
@@ -323,15 +322,15 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 MongoDB 数据库�
 
 | _id | 客户名称 | 发票 | 服务级别 | 评级 |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] |银卡 |[5,6] |
-| 2222 |XYZ |[{invoice_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] |金卡 |[1,2] |
+| 1111 |ABC |[{invoice_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] |Silver |[5,6] |
+| 2222 |XYZ |[{invoice_id:”135”, item:”fridge”, price: ”12543”, discount: ”0.0”}] |Gold |[1,2] |
 
 该驱动程序会生成多个虚拟表来表示此单个表。 第一个虚拟表是名为“ExampleTable”的基表，如下所示。 基表包含原始表中的所有数据，但已省略数组中的数据，这些数据会在虚拟表中展开。
 
 | _id | 客户名称 | 服务级别 |
 | --- | --- | --- |
-| 1111 |ABC |银卡 |
-| 2222 |XYZ |金卡 |
+| 1111 |ABC |Silver |
+| 2222 |XYZ |Gold |
 
 下表显示在示例中表示原始数组的虚拟表。 这些表包含以下项：
 

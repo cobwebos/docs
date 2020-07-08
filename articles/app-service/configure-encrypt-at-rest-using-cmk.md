@@ -4,10 +4,9 @@ description: 加密 Azure 存储中的应用程序数据，并将其部署为包
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 7e5e809fe8b670ae6ec5bfd15e54f9a8019e76d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408737"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客户管理的密钥进行静态加密
@@ -71,7 +70,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 最佳做法是定期轮换存储帐户的 SAS 密钥。 若要确保 web 应用不会无意间丢失访问权限，你还必须更新 Key Vault 中的 SAS URL。
 
-1. 若要轮换 SAS 密钥，请在 Azure 门户中导航到你的存储帐户。 在“设置” > “访问密钥”下，单击相应的图标来轮换 SAS 密钥。  
+1. 若要轮换 SAS 密钥，请在 Azure 门户中导航到你的存储帐户。 在“设置” > “访问密钥”下，单击相应的图标来轮换 SAS 密钥。
 
 1. 复制新的 SAS URL，并使用以下命令在 Key Vault 中设置更新的 SAS URL：
 

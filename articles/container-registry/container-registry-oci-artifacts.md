@@ -7,19 +7,18 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: stevelas
 ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371046"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>使用 Azure 容器注册表推送和拉取 OCI 项目
 
 可以使用 Azure 容器注册表来存储和管理[开放容器计划 (OCI) 项目](container-registry-image-formats.md#oci-artifacts)、Docker 以及与 Docker 兼容的容器映像。
 
-为了演示此功能，本文介绍了如何使用 [OCI 注册表即存储 (ORAS)](https://github.com/deislabs/oras) 工具将示例项目（一个文本文件）推送到 Azure 容器注册表， 然后从注册表拉取项目。 可以使用适用于每个 OCI 项目的不同命令行工具，在 Azure 容器注册表中管理各种 OCI 项目。
+为了演示此功能，本文介绍了如何使用[OCI 注册表作为存储（ORAS）](https://github.com/deislabs/oras)工具将示例项目-文本文件推送到 Azure 容器注册表。 然后从注册表拉取项目。 可以使用适用于每个 OCI 项目的不同命令行工具，在 Azure 容器注册表中管理各种 OCI 项目。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **ORAS 工具** - 从 [GitHub 存储库](https://github.com/deislabs/oras/releases)下载并安装适合操作系统的最新 ORAS 版本。 此工具以压缩 tarball（`.tar.gz` 文件）形式发布。 使用适合操作系统的标准过程提取并安装该文件。
@@ -64,7 +63,7 @@ az acr login --name myregistry
 echo "Here is an artifact!" > artifact.txt
 ```
 
-使用 `oras push` 命令将该文本文件推送到注册表。 以下示例将示例文本文件推送到 `samples/artifact` 存储库。 注册表用完全限定的注册表名称*myregistry.azurecr.io* （全部小写）标识。 此项目标记为 `1.0`。 默认情况下，此项目有一个未定义的类型，该类型通过文件名  *后的媒体类型*`artifact.txt`字符串进行标识。 有关其他类型，请参阅 [OCI Artifacts](https://github.com/opencontainers/artifacts)（OCI 项目）。 
+使用 `oras push` 命令将该文本文件推送到注册表。 以下示例将示例文本文件推送到 `samples/artifact` 存储库。 注册表用完全限定的注册表名称*myregistry.azurecr.io* （全部小写）标识。 此项目标记为 `1.0`。 默认情况下，此项目有一个未定义的类型，该类型通过文件名 `artifact.txt` 后的媒体类型  字符串进行标识。 有关其他类型，请参阅 [OCI Artifacts](https://github.com/opencontainers/artifacts)（OCI 项目）。 
 
 **Linux**
 

@@ -13,10 +13,9 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281231"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
@@ -70,7 +69,7 @@ ms.locfileid: "79281231"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 PostgreSQL 链接服务专属 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesPostgreSql** |是 |
 | server |PostgreSQL 服务器的名称。 |是 |
@@ -86,7 +85,7 @@ ms.locfileid: "79281231"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分（包括 PostgreSQL 数据集）具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -97,9 +96,9 @@ ms.locfileid: "79281231"
 
 当 source 的类型为**RelationalSource** （包括 PostgreSQL）时，typeProperties 节中提供以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询中将名称括在 `""`（双引号）中。
@@ -304,36 +303,36 @@ ms.locfileid: "79281231"
 
 | PostgreSQL 数据库类型 | PostgresSQL 别名 | .NET Framework 类型 |
 | --- | --- | --- |
-| abstime | |Datetime |
+| abstime | |datetime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
-| boolean |bool |Boolean |
+| boolean |bool |布尔 |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
-| character [(n)] |char [(n)] |字符串 |
-| character varying [(n)] |varchar [(n)] |字符串 |
-| cid | |字符串 |
-| cidr | |字符串 |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
+| cid | |String |
+| cidr | |String |
 | circle | |Byte[], String |
-| date | |Datetime |
-| daterange | |字符串 |
+| date | |datetime |
+| daterange | |String |
 | 双精度 |float8 |Double |
 | inet | |Byte[], String |
-| intarry | |字符串 |
-| int4range | |字符串 |
-| int8range | |字符串 |
-| 整数 |int, int4 |Int32 |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
+| integer |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |字符串 |
+| json | |String |
 | jsonb | |Byte[] |
 | line | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
-| money | |Decimal |
-| numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |字符串 |
+| money | |小数 |
+| numeric [(p, s)] |decimal [(p, s)] |小数 |
+| numrange | |String |
 | oid | |Int32 |
 | path | |Byte[], String |
 | pg_lsn | |Int64 |
@@ -343,7 +342,7 @@ ms.locfileid: "79281231"
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |字符串 |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

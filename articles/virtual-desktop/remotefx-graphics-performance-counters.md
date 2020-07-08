@@ -9,10 +9,9 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79127552"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断远程桌面中的图形性能问题
@@ -35,7 +34,7 @@ ms.locfileid: "79127552"
 
 确定远程会话名称后，请按照以下说明收集远程会话的 RemoteFX 图形性能计数器。
 
-1. 选择 "**启动** > **管理工具** > **性能监视器**"。
+1. 选择 "**启动**  >  **管理工具**  >  **性能监视器**"。
 2. 在 "**性能监视器**" 对话框中，展开 "**监视工具**"，选择 "**性能监视器**"，然后选择 "**添加**"。
 3. 在 "**添加计数器**" 对话框的 "**可用计数器**" 列表中，展开 "RemoteFX 图形" 部分。
 4. 选择要监视的计数器。
@@ -78,7 +77,7 @@ ms.locfileid: "79127552"
 
 使用 "帧质量" 计数器诊断帧质量问题。 此计数器将输出帧的质量表示为源帧质量的百分比。 质量损失可能是由于 RemoteFX 导致的，也可能是图形源所固有的。 如果 RemoteFX 导致质量损失，则问题可能是缺少网络或服务器资源来发送更高保真的内容。
 
-## <a name="mitigation"></a>缓解
+## <a name="mitigation"></a>缓解操作
 
 如果服务器资源导致瓶颈，请尝试以下方法之一来提高性能：
 

@@ -1,40 +1,39 @@
 ---
-title: 用云本机 Buildpack 构建映像
-description: 使用 az acr pack build 命令从应用生成容器映像，并推送到 Azure 容器注册表，无需使用 Dockerfile。
+title: 使用 Cloud Native Buildpack 生成映像
+description: 在不使用 Dockerfile 的情况下，使用 az acr pack build 命令从应用生成容器映像并将其推送到 Azure 容器注册表。
 ms.topic: article
 ms.date: 10/24/2019
 ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087070"
 ---
-# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用云本机 Buildpack 从应用生成并推送映像
+# <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用 Cloud Native Buildpack 从应用生成映像并推送该映像
 
-Azure CLI 命令`az acr pack build`使用[Buildpacks](https://buildpacks.io/)中[`pack`](https://github.com/buildpack/pack)的 CLI 工具来生成应用，并将其映像推送到 Azure 容器注册表中。 此功能提供了一个选项，可用于从 node.js、Java 和其他语言中的应用程序源代码快速构建容器映像，而无需定义 Dockerfile。
+Azure CLI 命令 `az acr pack build` 使用 [`pack`](https://github.com/buildpack/pack) CLI 工具（来自 [Buildpack](https://buildpacks.io/)）生成应用，并将此应用的映像推送到 Azure 容器注册表中。 此功能提供一个选项，用于从以 Node.js、Java 和其他语言编写的应用程序源代码快速生成容器映像，而无需定义 Dockerfile。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 如果要在本地使用，则需要版本2.0.70 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.70 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前以预览版提供。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
-## <a name="use-the-build-command"></a>使用生成命令
+## <a name="use-the-build-command"></a>使用 build 命令
 
-若要使用云本机 Buildpacks 生成并推送容器映像，请运行[az acr pack build][az-acr-pack-build]命令。 [Az acr build][az-acr-build]命令从 Dockerfile 源和相关代码生成并推送图像，同时`az acr pack build`直接指定应用程序源树。
+若要使用 Cloud Native Buildpack 生成并推送容器映像，请运行 [az acr pack build][az-acr-pack-build] 命令。 [az acr build][az-acr-build] 命令从 Dockerfile 源和相关代码生成并推送映像，而使用 `az acr pack build` 可直接指定应用程序源树。
 
-至少需要在运行`az acr pack build`时指定以下内容：
+运行 `az acr pack build` 时，请至少指定以下各项：
 
-* 运行命令的 Azure 容器注册表
+* 在其中运行命令的 Azure 容器注册表
 * 生成的映像的映像名称和标记
-* ACR 任务[支持的上下文位置](container-registry-tasks-overview.md#context-locations)之一，例如本地目录、GitHub 存储库或远程 tarball
-* 适用于你的应用程序的 Buildpack 生成器图像的名称。 Azure 容器注册表会缓存生成器图像， `cloudfoundry/cnb:0.0.34-cflinuxfs3`例如以实现更快的生成。  
+* ACR 任务的[受支持上下文位置](container-registry-tasks-overview.md#context-locations)之一，例如本地目录、GitHub 存储库或远程 tarball
+* 适合你的应用程序的 Buildpack 生成器映像的名称。 为加快生成速度，Azure 容器注册表会缓存 `cloudfoundry/cnb:0.0.34-cflinuxfs3` 等生成器映像。  
 
-`az acr pack build`支持 ACR 任务命令的其他功能，包括流式传输并保存的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-logs.md)，以便以后检索。
+`az acr pack build` 支持 ACR 任务命令的其他功能，包括 [run 变量](container-registry-tasks-reference-yaml.md#run-variables)以及[任务运行日志](container-registry-tasks-logs.md)（这些日志会进行流式传输，还会进行保存供以后检索）。
 
-## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>示例：用 Cloud Foundry 生成器生成 node.js 映像
+## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>示例：使用 Cloud Foundry 生成器生成 Node.js 映像
 
-下面的示例使用`cloudfoundry/cnb:0.0.34-cflinuxfs3`生成器，通过[Azure-Samples/nodejs-hello world](https://github.com/Azure-Samples/nodejs-docs-hello-world)存储库中的 node.js 应用生成容器映像。 此生成器由 Azure 容器注册表缓存，因此不需要`--pull`参数：
+以下示例使用 `cloudfoundry/cnb:0.0.34-cflinuxfs3` 生成器，从 [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) 存储库中的 Node.js 应用生成容器映像。 Azure 容器注册表会缓存此生成器，因此无需指定 `--pull` 参数：
 
 ```azurecli
 az acr pack build \
@@ -44,11 +43,11 @@ az acr pack build \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-此示例生成带有`node-app` `1.0`标记的图像，并将其推送到*myregistry*容器注册表。 在此示例中，将目标注册表名称显式预置到映像名称。 如果未指定，则注册表登录服务器名称将自动附加到映像名称之前。
+此示例生成具有 `1.0` 标记的 `node-app` 映像，并将其推送到 myregistry 容器注册表中  。 在此示例中，已将目标注册表名称显式追加到映像名称的前面。 如果未指定目标注册表名称，则会自动将注册表登录服务器名称追加到映像名称的前面。
 
-命令输出显示生成和推送映像的进度。 
+命令输出显示了生成和推送映像的进度。 
 
-成功生成映像后，可以使用 Docker 运行它（如果已安装）。 首先登录到注册表：
+成功生成映像后，可以使用 Docker（如果已安装）运行该映像。 首先登录到注册表：
 
 ```azurecli
 az acr login --name myregistry
@@ -60,11 +59,11 @@ az acr login --name myregistry
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-在你`localhost:1337`喜爱的浏览器中浏览到，查看示例 web 应用。 按`[Ctrl]+[C]`以停止容器。
+在你常用的浏览器中浏览到 `localhost:1337`，以查看示例 Web 应用。 按 `[Ctrl]+[C]` 停止容器。
 
-## <a name="example-build-java-image-with-heroku-builder"></a>示例：用 Heroku 生成器生成 Java 映像
+## <a name="example-build-java-image-with-heroku-builder"></a>示例：使用 Heroku 生成器生成 Java 映像
 
-下面的示例使用`heroku/buildpacks:18`生成器在[buildpack/sample](https://github.com/buildpack/sample-java-app) --应用存储库中从 java 应用生成容器映像。 `--pull`参数指定该命令应提取最新的生成器映像。 
+以下示例使用 `heroku/buildpacks:18` 生成器从 [buildpack/sample-java-app](https://github.com/buildpack/sample-java-app) 存储库中的 Java 应用生成容器映像。 `--pull` 参数指定命令应提取最新的生成器映像。 
 
 ```azurecli
 az acr pack build \
@@ -74,30 +73,30 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-此示例生成用`java-app`命令的运行 ID 标记的映像，并将其推送到*myregistry*容器注册表。
+此示例生成使用命令的运行 ID 标记的 `java-app` 映像，并将其推送到 myregistry 容器注册表中  。
 
-命令输出显示生成和推送映像的进度。 
+命令输出显示了生成和推送映像的进度。 
 
-成功生成映像后，可以使用 Docker 运行它（如果已安装）。 首先登录到注册表：
+成功生成映像后，可以使用 Docker（如果已安装）运行该映像。 首先登录到注册表：
 
 ```azurecli
 az acr login --name myregistry
 ```
 
-运行图像，将*runid*的图像标记替换为：
+运行映像（请将 runid 替换为你的映像标记）  ：
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-在你`localhost:8080`喜爱的浏览器中浏览到，查看示例 web 应用。 按`[Ctrl]+[C]`以停止容器。
+在你常用的浏览器中浏览到 `localhost:8080`，以查看示例 Web 应用。 按 `[Ctrl]+[C]` 停止容器。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-使用`az acr pack build`构建容器映像并将其推送后，可以像将任何映像一样部署到所选目标。 Azure 部署选项包括在[应用服务](../app-service/containers/tutorial-custom-docker-image.md)或[azure Kubernetes 服务](../aks/tutorial-kubernetes-deploy-cluster.md)中运行它，等等。
+使用 `az acr pack build` 生成并推送容器映像后，可以像部署任何其他映像一样将其部署到所选目标。 Azure 部署选项包括在[应用服务](../app-service/containers/tutorial-custom-docker-image.md)或[azure Kubernetes 服务](../aks/tutorial-kubernetes-deploy-cluster.md)中运行它，等等。
 
-有关 ACR 任务功能的详细信息，请参阅[通过 Acr 任务自动生成和维护容器映像](container-registry-tasks-overview.md)。
+有关 ACR 任务功能的详细信息，请参阅[使用 ACR 任务自动执行容器映像的生成和维护](container-registry-tasks-overview.md)。
 
 
 <!-- LINKS - External -->

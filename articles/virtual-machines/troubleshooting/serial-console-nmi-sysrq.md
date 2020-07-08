@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250083"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
@@ -98,7 +97,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>不可屏蔽的中断 (NMI)
-不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  如今，程序员和系统管理员通常使用 NMI 作为一种机制来对未响应的系统进行调试或故障排除。
+不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  现在，程序员和系统管理员通常使用 NMI 作为用来对未响应的系统进行调试或故障排除的机制。
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 
@@ -131,4 +130,4 @@ echo "1" >/proc/sys/kernel/sysrq
 * 主要串行控制台 Linux 文档页位于[此处](serial-console-linux.md)。
 * 使用串行控制台启动到 [GRUB 并进入单用户模式](serial-console-grub-single-user-mode.md)
 * 串行控制台也适用于 [Windows](serial-console-windows.md) VM
-* 详细了解[启动诊断](boot-diagnostics.md)
+* 了解有关[启动诊断](boot-diagnostics.md)的详细信息

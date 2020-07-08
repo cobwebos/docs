@@ -10,10 +10,9 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79265696"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
@@ -29,15 +28,15 @@ ms.locfileid: "79265696"
 
 ### <a name="create-an-account"></a>创建帐户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 单击 "**创建资源** > **智能 + 分析** > "**Data Lake Analytics**。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 单击 "**创建资源**  >  **智能 + 分析**"  >  **Data Lake Analytics**。
 3. 为以下项选择值： 
    1. 名称****：Data Lake Analytics 帐户的名称。
    2. 订阅****：用于帐户的 Azure 订阅。
    3. 资源组****：要在其中创建帐户的 Azure 资源组。 
    4. 位置****：Data Lake Analytics 帐户的 Azure 数据中心。 
    5. Data Lake Store****：要用于 Data Lake Analytics 帐户的默认存储。 Azure Data Lake Store 帐户和 Data Lake Analytics 帐户必须位于同一位置。
-4. 单击 **“创建”** 。 
+4. 单击“创建”。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>删除 Data Lake Analytics 帐户
 
@@ -89,7 +88,7 @@ Data Lake Analytics 支持以下数据源：
 3. 选择一个用户，然后单击“选择”****。
 4. 选择一个角色，然后单击“选择”****。 若要设置要使用 Azure Data Lake 的新的开发人员，请选择“Data Lake Analytics 开发人员”**** 角色。
 5. 选择 U-SQL 数据库的访问控制列表 (ACL)。 如果对所选内容满意，请单击“选择”****。
-6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”  。
+6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”。
 7. 查看所选的所有更改，然后单击“运行”****。
 8. 完成向导后，单击“完成”****。
 
@@ -111,10 +110,10 @@ Data Lake Analytics 支持以下数据源：
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>将用户或安全组添加到 Data Lake Analytics 帐户
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击 "**访问控制（IAM）** > " "**添加角色分配**"。
+2. 单击 "**访问控制（IAM）**" "  >  **添加角色分配**"。
 3. 选择角色。
 4. 添加用户。
-5. 单击" **确定**"。
+5. 单击“确定”。
 
 >[!NOTE]
 >如果用户或安全组需要提交作业，还需要对存储帐户的权限。 有关详细信息，请参阅[保护 Data Lake Store 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。

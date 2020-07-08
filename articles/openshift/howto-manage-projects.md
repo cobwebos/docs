@@ -9,10 +9,9 @@ ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79139107"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中管理项目、模板和图像流 
@@ -21,11 +20,11 @@ ms.locfileid: "79139107"
 
 ## <a name="self-provisioning-projects"></a>自行预配项目
 
-可以让开发人员创建他们自己的项目。 API 终结点负责根据名为项目请求的模板预配项目。 当开发人员创建新`oc new-project`项目时，web 控制台和命令将使用此终结点。
+可以让开发人员创建他们自己的项目。 API 终结点负责根据名为项目请求的模板预配项目。 `oc new-project`当开发人员创建新项目时，web 控制台和命令将使用此终结点。
 
 提交项目请求时，API 会将以下参数替换为模板：
 
-| 参数               | 说明                                    |
+| 参数               | 描述                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 项目的名称。 必需。             |
 | PROJECT_DISPLAYNAME     | 项目的显示名称。 可能为空。 |
@@ -37,7 +36,7 @@ ms.locfileid: "79139107"
 
 ## <a name="modify-the-template-for-a-new-project"></a>修改新项目的模板 
 
-1. 以具有`customer-admin`权限的用户身份登录。
+1. 以具有权限的用户身份登录 `customer-admin` 。
 
 2. 编辑默认的项目请求模板。
 
@@ -61,7 +60,7 @@ ms.locfileid: "79139107"
 
 您可以防止经过身份验证的用户组自设置新项目。
 
-1. 以具有`customer-admin`权限的用户身份登录。
+1. 以具有权限的用户身份登录 `customer-admin` 。
 
 2. 编辑设置程序群集角色绑定。
 
@@ -69,7 +68,7 @@ ms.locfileid: "79139107"
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. 通过添加以下批注，从 ARO 更新过程中删除角色： `openshift.io/reconcile-protect: "true"`。
+3. 通过添加以下批注，从 ARO 更新过程中删除角色： `openshift.io/reconcile-protect: "true"` 。
 
    ```
    ...
@@ -79,7 +78,7 @@ ms.locfileid: "79139107"
    ...
    ```
 
-4. 更改群集角色绑定，阻止`system:authenticated:oauth`创建项目：
+4. 更改群集角色绑定，阻止 `system:authenticated:oauth` 创建项目：
 
    ```
    apiVersion: rbac.authorization.k8s.io/v1
@@ -101,18 +100,18 @@ ms.locfileid: "79139107"
 
 ## <a name="manage-default-templates-and-imagestreams"></a>管理默认模板和 imageStreams
 
-在 Azure Red Hat OpenShift 中，可以禁用命名空间中`openshift`任何默认模板和图像流的更新。
-禁用所有`Templates`和`ImageStreams`命名空间中`openshift`的更新：
+在 Azure Red Hat OpenShift 中，可以禁用命名空间中任何默认模板和图像流的更新 `openshift` 。
+禁用所有 `Templates` 和 `ImageStreams` 命名空间中的更新 `openshift` ：
 
-1. 以具有`customer-admin`权限的用户身份登录。
+1. 以具有权限的用户身份登录 `customer-admin` 。
 
-2. 编辑`openshift`命名空间：
+2. 编辑 `openshift` 命名空间：
 
    ```
    oc edit namespace openshift
    ```
 
-3. 通过`openshift`添加以下批注，从 ARO 更新过程中删除命名空间：`openshift.io/reconcile-protect: "true"`
+3. `openshift`通过添加以下批注，从 ARO 更新过程中删除命名空间：`openshift.io/reconcile-protect: "true"`
 
    ```
    ...
@@ -122,7 +121,7 @@ ms.locfileid: "79139107"
    ...
    ```
 
-   通过向`openshift`命名空间中的任何单个对象添加批注`openshift.io/reconcile-protect: "true"` ，可以将其从更新过程中移除。
+   通过向命名空间中的任何单个对象 `openshift` 添加批注，可以将其从更新过程中移除 `openshift.io/reconcile-protect: "true"` 。
 
 ## <a name="next-steps"></a>后续步骤
 

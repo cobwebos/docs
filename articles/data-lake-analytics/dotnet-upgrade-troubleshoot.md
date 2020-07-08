@@ -10,10 +10,9 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79213583"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics 升级到 .NET Framework v 4.7。2
@@ -39,7 +38,7 @@ Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .N
 1. 通过以下方式在 .NET Dll 上运行向后兼容性检查器
    1. 使用[.net 可移植性分析器](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)上的 Visual Studio 扩展 Visual studio 扩展
    1. 下载并使用[GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)中的独立工具。 有关运行独立工具的说明，请参阅[GitHub dotnetapiport 重大更改](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
-   1. 对于4.7.2。 兼容性`read isRetargeting == True`用于标识可能的问题。
+   1. 对于4.7.2。 兼容性 `read isRetargeting == True` 用于标识可能的问题。
 2. 如果该工具指示你的代码是否可能会受到任何可能的向后不兼容性的影响（下面列出了一些常见的不兼容示例），可以通过以下方式进一步检查：
    1. 分析代码并确定代码是否正在将值传递给受影响的 Api
    1. 执行运行时检查。 不会在 ADLA 中并行执行运行时部署。 你可以在升级之前执行运行时检查，并使用 VisualStudio 的本地运行，并使用本地 .NET Framework 4.7.2 针对有代表性的数据集。
@@ -65,19 +64,19 @@ Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .N
   - 建议的操作：确保 TaskFactory 正确返回 true
 
 - DataObject.GetData 现在将数据检索为 UTF-8
-  - 对于面向 .NET Framework 4 或者在 .NET Framework 4.5.1 或早期版本上运行的应用，DataObject.GetData 将 HTML 格式的数据检索为 ASCII 字符串。 因此，非 ASCII 字符（ASCII 代码大于0x7F 的字符）由两个随机字符表示。对于面向 .NET Framework 4.5 或更高版本并在 .NET Framework 4.5.2 上运行的应用，#N # #N #，将 HTML 格式`DataObject.GetData`的数据检索为 utf-8，这表示正确的字符。
+  - 对于面向 .NET Framework 4 或者在 .NET Framework 4.5.1 或早期版本上运行的应用，DataObject.GetData 将 HTML 格式的数据检索为 ASCII 字符串。 因此，非 ASCII 字符（ASCII 代码大于0x7F 的字符）由两个随机字符表示。对于面向 .NET Framework 4.5 或更高版本并在 .NET Framework 4.5.2 上运行的应用，#N # #N #，将 `DataObject.GetData` HTML 格式的数据检索为 utf-8，这表示正确的字符。
   - 受影响的库： Glo
   - 建议的操作：确保检索的数据是所需的格式
 
 - XmlWriter 引发无效的代理项对
   - 对于面向 .NET Framework 4.5.2 或以前的版本的应用程序，使用异常回退处理编写无效的代理项对并不会总是引发异常。 对于面向 .NET Framework 4.6 的应用，尝试编写无效的代理项对会引发 `ArgumentException`。
-  - 受影响的库： ReaderWriter
+  - 受影响的库： System.Xml、System.Xml。ReaderWriter
   - 建议的操作：确保未编写将导致参数异常的无效代理项对
 
 - HtmlTextWriter 未正确呈现 `<br/>` 元素
   - 从 .NET Framework 4.6 开始，调用带有 `<BR />` 的 `HtmlTextWriter.RenderBeginTag()` 和 `HtmlTextWriter.RenderEndTag()` 将正确插入唯一 `<BR />`（而非两个）
   - 受影响的库： System.web
-  - 建议的`<BR />`操作：确保插入预期的数量，以便在生产作业中未出现随机行为
+  - 建议的操作：确保插入预期的数量， `<BR />` 以便在生产作业中未出现随机行为
 
 - 调用具有 null 自变量的 CreateDefaultAuthorizationContext 的方式已更改
   - 调用具有 null authorizationPolicies 自变量的 `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` 所返回的 AuthorizationContext 实现更改了其在 .NET Framework 4.6 中的实现。
@@ -85,7 +84,7 @@ Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .N
   - 建议的操作：确保在存在 null 授权策略时处理新的预期行为
   
 - RSACng 现在可正确加载非标准密钥大小的 RSA 密钥
-  - 在 .NET Framework 4.6.2 之前的版本中，使用非标准密钥大小的 RSA 证书的客户无法通过 `GetRSAPublicKey()` 和 `GetRSAPrivateKey()` 扩展方法访问这些密钥。 `CryptographicException`引发消息 "不支持所请求的密钥大小" 的消息。 在 .NET Framework 4.6.2，此问题已得到解决。 同样， `RSA.ImportParameters()`和`RSACng.ImportParameters()`现在可以处理非标准密钥大小，而不`CryptographicException`会引发。
+  - 在 .NET Framework 4.6.2 之前的版本中，使用非标准密钥大小的 RSA 证书的客户无法通过 `GetRSAPublicKey()` 和 `GetRSAPrivateKey()` 扩展方法访问这些密钥。 `CryptographicException`引发消息 "不支持所请求的密钥大小" 的消息。 在 .NET Framework 4.6.2，此问题已得到解决。 同样， `RSA.ImportParameters()` 和 `RSACng.ImportParameters()` 现在可以处理非标准密钥大小，而不会引发 `CryptographicException` 。
   - 受影响的库： mscorlib、System.object
   - 建议的操作：确保 RSA 密钥按预期方式工作
 
@@ -95,11 +94,11 @@ Azure Data Lake Analytics 默认运行时从 .NET Framework v 4.5.2 升级到 .N
   - 建议的操作：
 
 - 调用 ClaimsIdentity 构造函数
-  - 从 .NET Framework 4.6.2 开始，具有 `T:System.Security.Principal.IIdentity` 参数的 `T:System.Security.Claims.ClaimsIdentity` 构造函数设置 `P:System.Security.Claims.ClaimsIdentify.Actor` 属性的方式发生了变化。 如果 `T:System.Security.Principal.IIdentity` 参数是 `T:System.Security.Claims.ClaimsIdentity` 对象，且该 `T:System.Security.Claims.ClaimsIdentity` 对象的 `P:System.Security.Claims.ClaimsIdentify.Actor` 属性不为 `null`，则 `P:System.Security.Claims.ClaimsIdentify.Actor` 属性是使用 `M:System.Security.Claims.ClaimsIdentity.Clone` 方法附加的。 在 Framework 4.6.1 及更早版本中， `P:System.Security.Claims.ClaimsIdentify.Actor`属性作为现有引用附加。 由于此更改，从 .NET Framework 4.6.2 `P:System.Security.Claims.ClaimsIdentify.Actor`开始，新`T:System.Security.Claims.ClaimsIdentity`对象的属性不等于构造函数的`P:System.Security.Claims.ClaimsIdentify.Actor` `T:System.Security.Principal.IIdentity`参数的属性。 在 .NET Framework 4.6.1 及更早版本中，它们是相等的。
+  - 从 .NET Framework 4.6.2 开始，具有 `T:System.Security.Principal.IIdentity` 参数的 `T:System.Security.Claims.ClaimsIdentity` 构造函数设置 `P:System.Security.Claims.ClaimsIdentify.Actor` 属性的方式发生了变化。 如果 `T:System.Security.Principal.IIdentity` 参数是 `T:System.Security.Claims.ClaimsIdentity` 对象，且该 `T:System.Security.Claims.ClaimsIdentity` 对象的 `P:System.Security.Claims.ClaimsIdentify.Actor` 属性不为 `null`，则 `P:System.Security.Claims.ClaimsIdentify.Actor` 属性是使用 `M:System.Security.Claims.ClaimsIdentity.Clone` 方法附加的。 在 Framework 4.6.1 及更早版本中， `P:System.Security.Claims.ClaimsIdentify.Actor` 属性作为现有引用附加。 由于此更改，从 .NET Framework 4.6.2 开始， `P:System.Security.Claims.ClaimsIdentify.Actor` 新对象的属性 `T:System.Security.Claims.ClaimsIdentity` 不等于 `P:System.Security.Claims.ClaimsIdentify.Actor` 构造函数的参数的属性 `T:System.Security.Principal.IIdentity` 。 在 .NET Framework 4.6.1 及更早版本中，它们是相等的。
   - 受影响的库： mscorlib
   - 建议的操作：确保 ClaimsIdentity 在新运行时按预期方式工作
 
 - 使用 DataContractJsonSerializer 控制字符的序列化现在与 ECMAScript V6 和 V8 兼容
   - 在 .NET framework 4.6.2 及更早版本中，DataContractJsonSerializer 不会序列化一些特殊控制字符（如 \b、\f 和 \t），这种方式与 ECMAScript V6 和 V8 标准兼容。 从 .NET Framework 4.7 开始，这些控制字符的序列化与 ECMAScript V6 和 V8 兼容。
-  - 受影响的库：
+  - 受影响的库： System.Runtime.Serialization.Js
   - 建议的操作：确保与 DataContractJsonSerializer 相同的行为

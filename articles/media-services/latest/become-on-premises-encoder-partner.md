@@ -9,10 +9,9 @@ ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298625"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何验证本地实时传送视频流编码器
@@ -29,7 +28,7 @@ ms.locfileid: "79298625"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略  类型创建流式处理定位符  。
+7. 使用内置的流式处理策略类型创建流式处理定位符。
 8. 列出流式处理定位器的路径，以取回要使用的 URL  。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
@@ -48,7 +47,7 @@ ms.locfileid: "79298625"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的流式处理策略  类型创建流式处理定位符  。
+7. 使用内置的流式处理策略类型创建流式处理定位符。
 8. 列出流式处理定位器的路径，以取回要使用的 URL  。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。

@@ -4,10 +4,9 @@ description: 介绍 ACR 任务。ACR 任务是 Azure 容器注册表中的功能
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087274"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任务自动执行容器映像的生成和维护
@@ -52,7 +51,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="trigger-task-on-source-code-update"></a>源代码更新时触发任务
 
-向 GitHub 或 Azure DevOps 中的公共或私有 Git 存储库提交代码或获取或更新拉取请求时，触发容器映像生成或多步骤任务。 例如，使用 Azure CLI 命令 [az acr task create][az-acr-task-create] 并指定 Git 存储库以及可选的分支和 Dockerfile，来配置生成任务。 当团队在存储库中更新代码时，ACR 任务创建的 Webhook 会触发存储库中定义的容器映像的生成。 
+向 GitHub 或 Azure DevOps 中的公共或专用 Git 存储库提交代码或者发出或更新拉取请求时，触发容器映像生成或多步骤任务。 例如，使用 Azure CLI 命令 [az acr task create][az-acr-task-create] 并指定 Git 存储库以及可选的分支和 Dockerfile，来配置生成任务。 当团队在存储库中更新代码时，ACR 任务创建的 Webhook 会触发存储库中定义的容器映像的生成。 
 
 将 Git 存储库设置为任务的上下文时，ACR 任务支持以下触发器：
 
@@ -61,7 +60,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 提交 | 是 |
 | 拉取请求 | 否 |
 
-若要配置源代码更新触发器，需要为该任务提供个人访问令牌（PAT），以便在公共或专用 GitHub 或 Azure DevOps 存储库中设置 webhook。
+若要配置源代码更新触发器，你需要为任务提供个人访问令牌 (PAT)，以便在公共或专用 GitHub 或 Azure DevOps 存储库中设置 Webhook。
 
 > [!NOTE]
 > 目前，ACR 任务不支持 GitHub Enterprise 存储库中的提交或拉取请求触发器。
@@ -70,16 +69,16 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="automate-os-and-framework-patching"></a>自动执行 OS 和框架修补
 
-用于真正增强容器生成工作流的 ACR 任务的强大功能来自其检测*基本映像*更新的能力。 基本映像是大多数容器映像的一项功能，它是一个或多个应用程序映像所基于的父映像。 基本映像通常包含操作系统和应用程序框架。 
+真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测“基础映像”  的更新。 基础映像是大多数容器映像的一项功能，它是一个或多个应用程序映像所基于的父映像。 基础映像通常包含操作系统，有时候包含应用程序框架。 
 
-在生成应用程序映像时，可以设置一个 ACR 任务来跟踪基本映像上的依赖关系。 将更新的基础映像将推送到注册表时，或者在公共存储库（例如 Docker Hub）中更新基础映像时，ACR 任务可以基于该映像自动生成任何应用程序映像。
+可以设置一个 ACR 任务，在它生成应用程序映像时跟踪对基础映像的依赖关系。 将更新的基础映像将推送到注册表时，或者在公共存储库（例如 Docker Hub）中更新基础映像时，ACR 任务可以基于该映像自动生成任何应用程序映像。
 通过这种自动检测和重新生成，ACR 任务能够节省在正常情况下手动跟踪和更新引用已更新基础映像的每个应用程序映像所需的时间和精力。
 
-了解有关 ACR 任务的[基础映像更新触发器](container-registry-tasks-base-images.md)的详细信息。 了解如何在[Azure 容器注册表中更新基本映像时](container-registry-tutorial-base-image-update.md)，将基本映像推送到教程中的容器注册表时触发映像生成
+详细了解 ACR 任务的[基础映像更新触发器](container-registry-tasks-base-images.md)。 参阅[在 Azure 容器注册表中更新基础映像时自动生成容器映像](container-registry-tutorial-base-image-update.md)教程，了解在将基础映像推送到容器注册表时如何触发映像生成。
 
 ## <a name="schedule-a-task"></a>计划任务
 
-（可选）创建或更新任务时，通过设置一个或多个计时器触发器来计划任务。** 计划任务有助于按定义的计划运行容器工作负荷，或者对定期推送到注册表的映像运行维护操作或测试。 有关详细信息，请参阅[按定义的计划运行 ACR 任务](container-registry-tasks-scheduled.md)。
+（可选）创建或更新任务时，通过设置一个或多个计时器触发器来计划任务。  计划任务有助于按定义的计划运行容器工作负荷，或者对定期推送到注册表的映像运行维护操作或测试。 有关详细信息，请参阅[按定义的计划运行 ACR 任务](container-registry-tasks-scheduled.md)。
 
 ## <a name="multi-step-tasks"></a>多步骤任务
 
@@ -107,13 +106,13 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
 | GitHub 主分支 | 公共或专用 GitHub 存储库的主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub 分支 | 公共或专用 GitHub 存储库的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub 子文件夹 | 公共或专用 GitHub 存储库中的子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| GitHub 提交 | 公共或专用 GitHub 存储库中的特定提交。 示例显示了 commit 哈希（SHA）和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
-| Azure DevOps 子文件夹 | 公共或私有 Azure 存储库中的子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| GitHub 子文件夹 | 公共或专用 GitHub 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub 提交 | 公共或专用 GitHub 存储库中的特定提交。 示例显示了提交哈希 (SHA) 和子文件夹规范的组合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
+| Azure DevOps 子文件夹 | 公共或专用 Azure 存储库中某个子文件夹内的文件。 示例显示了分支和子文件夹规范的组合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | 远程 tarball | 远程 Web 服务器上某个压缩存档中的文件。 | `http://remoteserver/myapp.tar.gz` |
 
 > [!NOTE]
-> 使用私有 Git 存储库作为任务的上下文时，需要提供个人访问令牌（PAT）。
+> 使用专用 Git 存储库作为任务的上下文时，需要提供个人访问令牌 (PAT)。
 
 ## <a name="image-platforms"></a>映像平台
 
@@ -126,9 +125,9 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="view-task-output"></a>查看任务输出
 
-每个任务运行都会生成日志输出，检查该输出即可确定任务步骤是否已成功运行。 手动触发任务时，会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 自动触发某个任务后（例如，提交源代码或更新基础映像后触发），只会存储任务日志。 查看 Azure 门户中的运行日志，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
+每个任务运行都会生成日志输出，检查该输出即可确定任务步骤是否已成功运行。 手动触发某个任务时，会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 自动触发某个任务后（例如，提交源代码或更新基础映像后触发），只会存储任务日志。 在 Azure 门户中查看运行日志，或者使用 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) 命令。
 
-查看有关[查看和管理任务日志](container-registry-tasks-logs.md)的更多信息。
+请参阅有关[查看和管理任务日志](container-registry-tasks-logs.md)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

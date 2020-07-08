@@ -7,17 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 4dff2321414721dbd415b468e59aea0ab4b3acee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79375117"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-postgresql-single-server-using-azure-portal"></a>使用 Azure 门户 Azure Database for PostgreSQL 单个服务器拒绝公共网络访问
 
 本文介绍如何将 Azure Database for PostgreSQL 单个服务器配置为拒绝所有公共配置，并仅允许通过专用终结点进行的连接，从而进一步增强网络安全。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本操作指南，需要：
 
@@ -35,7 +34,7 @@ ms.locfileid: "79375117"
 
     ![Azure Database for PostgreSQL 单一服务器拒绝网络访问](./media/howto-deny-public-network-access/deny-public-network-access.PNG)
 
-1. 单击 **“确定”**，保存这些更改。
+1. 单击“保存”以保存更改。
 
 1. 通知会确认已成功启用连接安全设置。
 

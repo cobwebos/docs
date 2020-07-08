@@ -13,10 +13,9 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281127"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
@@ -66,10 +65,10 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了针对 Salesforce 链接服务的 JSON 元素说明。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |Type 属性必须设置为： **Salesforce**。 |是 |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https\/：/login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https： \/ /login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
 | securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |
@@ -79,7 +78,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -95,9 +94,9 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 Salesforce）时，以下属性在 typeProperties 部分中可用：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了**数据集**的 **tableName**） |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
@@ -199,7 +198,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 ![数据工厂 - Salesforce 连接 - API 名称](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
-**Azure blob 输出数据集**
+**Azure Blob 输出数据集**
 
 数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
@@ -285,25 +284,25 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 
 | Salesforce 类型 | 基于 .NET 的类型 |
 | --- | --- |
-| 自动编号 |字符串 |
-| 复选框 |Boolean |
-| 货币 |Decimal |
-| 日期 |DateTime |
+| 自动编号 |String |
+| 复选框 |布尔 |
+| 货币 |小数 |
+| Date |DateTime |
 | 日期/时间 |DateTime |
-| 电子邮件 |字符串 |
-| ID |字符串 |
-| 查找关系 |字符串 |
-| 多选择列表 |字符串 |
-| 数字 |Decimal |
-| 百分比 |Decimal |
-| 电话 |字符串 |
-| 选择列表 |字符串 |
-| Text |字符串 |
-| 文本区域 |字符串 |
-| 文本区域（长型值） |字符串 |
-| 文本区域（丰富） |字符串 |
-| 文本（加密） |字符串 |
-| 代码 |字符串 |
+| Email |String |
+| ID |String |
+| 查找关系 |String |
+| 多选择列表 |String |
+| Number |小数 |
+| 百分比 |小数 |
+| 电话 |String |
+| 选择列表 |String |
+| 文本 |String |
+| 文本区域 |String |
+| 文本区域（长型值） |String |
+| 文本区域（丰富） |String |
+| 文本（加密） |String |
+| URL |String |
 
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

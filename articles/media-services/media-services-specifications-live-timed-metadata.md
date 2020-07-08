@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: 551fb0cb9f3745a62d5d84f2c4878bbbbe5ad9a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79137316"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>实时传送视频流中的超时元数据信号 
@@ -413,7 +412,7 @@ Fragments(video=1583488022000000,format=m3u8-aapl-v8)
 
 ### <a name="221-live-server-manifest-box"></a>2.2.1 Live Server Manifest Box
 
-稀疏轨迹**必须**在具有 **\<textstream\>** 条目的 Live Server Manifest Box 中进行声明，并且**必须**包含以下属性集：
+**必须**在 "实时服务器清单" 框中使用条目来声明稀疏轨迹 **\<textstream\>** ，并且**必须**设置以下属性：
 
 | **属性名称** | **字段类型** | **必需？** | **说明**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

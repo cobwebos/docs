@@ -9,15 +9,14 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944756"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
-此示例演示如何使用 [Azure REST API](https://docs.microsoft.com/azure/virtual-machines/linux/monitor) 检索 [Linux 虚拟机](/rest/api/azure/)的 CPU 使用情况。
+此示例演示如何使用 [Azure REST API](/rest/api/azure/) 检索 [Linux 虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/monitor)的 CPU 使用情况。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 

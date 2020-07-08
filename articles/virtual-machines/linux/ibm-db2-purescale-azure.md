@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945059"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上的 IBM DB2 pureScale
@@ -73,13 +72,13 @@ IBM DB2 pureScale 环境为 Azure 提供了一个数据库群集，在 Linux 操
 
 -   DB2 CF 使用内存优化的虚拟机，例如 E 系列或 L 系列。
 
--   使用运行 Linux 的标准\_DS4\_v2 虚拟机的共享存储群集。
+-   使用 \_ 运行 Linux 的标准 DS4 v2 虚拟机的共享存储群集 \_ 。
 
--   管理 jumpbox 是运行 Linux 的\_标准\_DS2 v2 虚拟机。  一种替代方法是使用 Azure 堡垒，该服务为虚拟网络中的所有 Vm 提供安全的 RDP/SSH 体验。
+-   管理 jumpbox 是 \_ 运行 Linux 的标准 DS2 \_ v2 虚拟机。  一种替代方法是使用 Azure 堡垒，该服务为虚拟网络中的所有 Vm 提供安全的 RDP/SSH 体验。
 
 -   客户端是运行 Windows 的标准 \_DS3\_ v2 虚拟机（用于测试）。
 
--   *可选*。 见证服务器。 仅在某些早期版本的 Db2 pureScale 中需要。 此示例使用运行 Linux\_（\_用于 DB2 pureScale）的标准 DS3 v2 虚拟机。
+-   可选。 见证服务器。 仅在某些早期版本的 Db2 pureScale 中需要。 此示例使用 \_ \_ 运行 Linux （用于 DB2 pureScale）的标准 DS3 v2 虚拟机。
 
 > [!NOTE]
 > DB2 pureScale 群集至少需要两个 DB2 实例。 还需要缓存实例和锁定管理器实例。

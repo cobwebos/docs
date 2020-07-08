@@ -17,14 +17,13 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79137622"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虚拟机支持的方案中的 SAP 工作负荷
-在 Azure 中设计 SAP NetWeaver、 `Hybris` Business One 或 S/4HANA 系统体系结构可为各种体系结构和工具提供很多不同的机会，以实现可缩放、高效和高度可用的部署。 尽管依赖于所使用的操作系统或 DBMS，但存在一些限制。 此外，Azure 中不支持在本地支持的所有方案。 本文档将通过专门使用 Azure Vm 提供支持的非高可用性配置和高可用性配置和体系结构。 对于[Hana 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)支持的方案，请查看文章[适用于 hana 大型实例的支持方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)。 
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虚拟机支持的方案中的 SAP 工作负载
+在 Azure 中设计 SAP NetWeaver、Business one `Hybris` 或 S/4HANA 系统体系结构可为各种体系结构和工具提供很多不同的机会，以实现可缩放、高效和高度可用的部署。 尽管依赖于所使用的操作系统或 DBMS，但存在一些限制。 此外，Azure 中不支持在本地支持的所有方案。 本文档将通过专门使用 Azure Vm 提供支持的非高可用性配置和高可用性配置和体系结构。 对于[Hana 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)支持的方案，请查看文章[适用于 hana 大型实例的支持方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)。 
 
 
 ## <a name="2-tier-configuration"></a>双层配置
@@ -67,7 +66,7 @@ SAP 2 层配置被认为是在 SAP DBMS 和应用程序层的组合层的基础�
 - IBM Db2。 在[多个实例（Linux、UNIX）](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)一文中查找详细信息
 - 对于 Oracle。 有关详细信息，请参阅[sap 支持说明 #1778431](https://launchpad.support.sap.com/#/notes/1778431)和相关 SAP 说明
 - 对于 SAP HANA，一个虚拟机上的多个实例，SAP 调用此部署方法 MCOS。 有关详细信息，请参阅 SAP 文章 [一台主机上的多个 SAP HANA 系统（MCOS）] （https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
-- /b2751fd43bec41a9a14e01913f1edf18.html)
+- /b2751fd43bec41a9a14e01913f1edf18.html）
 
 在一个主机上运行多个数据库实例时，需要确保不同的实例不会争用资源，因而超出了 VM 的物理资源限制。 对于需要将 VM 共享的任何人都可以分配的内存上限的内存，尤其如此。 对于不同数据库实例可以利用的 CPU 资源也可能如此。 提到的所有 DBMS 都具有允许在实例级别限制内存分配和 CPU 资源的配置。
 为了让 Azure Vm 支持此类配置，预计用于不同实例管理的数据库的数据和日志/重做日志文件的磁盘或卷是独立的。 换句话说，不应将不同 DBMS 实例管理的数据库的数据或日志/重做日志文件共享到相同的磁盘或卷。 
@@ -79,7 +78,7 @@ HANA 大型实例的磁盘配置已配置，并在[Hana 大型实例支持的方
 
 
 ## <a name="multiple-sap-dialog-instances-in-one-vm"></a>一个虚拟机中的多个 SAP 对话框实例
-在许多情况下，多个对话框实例部署在裸机服务器上，甚至部署在在私有云中运行的虚拟机中。 此类配置的原因是要将某些 SAP 对话框实例定制为特定的工作负荷、业务功能或工作负荷类型。 将这些实例隔离到不同 Vm 中的原因是操作系统维护和操作的工作量。 或者，在很多情况下，VM 的宿主或操作员要求按每个 VM 的每月费用（运行和根据）。 在 Azure 中，在单个 VM 中托管多个 SAP 对话框实例的方案，在 Windows、Red Hat、SUSE 和 Oracle Linux 的操作系统上支持生产和非生产目的。 如果多个 SAP 应用程序服务器实例正在单个 VM 上运行，则应设置 SAP 内核参数 PHYS_MEMSIZE，在 Windows 和新式 Linux 内核上可用。 此外，建议限制操作系统上的 SAP 扩展内存扩展，如 Windows，实现 SAP 扩展内存的自动增长。 可以通过 SAP 配置文件参数`em/max_size_MB`来完成此操作。
+在许多情况下，多个对话框实例部署在裸机服务器上，甚至部署在在私有云中运行的虚拟机中。 此类配置的原因是要将某些 SAP 对话框实例定制为特定的工作负荷、业务功能或工作负荷类型。 将这些实例隔离到不同 Vm 中的原因是操作系统维护和操作的工作量。 或者，在很多情况下，VM 的宿主或操作员要求按每个 VM 的每月费用（运行和根据）。 在 Azure 中，在单个 VM 中托管多个 SAP 对话框实例的方案，在 Windows、Red Hat、SUSE 和 Oracle Linux 的操作系统上支持生产和非生产目的。 如果多个 SAP 应用程序服务器实例正在单个 VM 上运行，则应设置 SAP 内核参数 PHYS_MEMSIZE，在 Windows 和新式 Linux 内核上可用。 此外，建议限制操作系统上的 SAP 扩展内存扩展，如 Windows，实现 SAP 扩展内存的自动增长。 可以通过 SAP 配置文件参数来完成此操作 `em/max_size_MB` 。
 
 在 Azure Vm 中运行多个 SAP 对话框实例的3层配置如下所示：
 
@@ -101,12 +100,12 @@ HANA 大型实例的磁盘配置已配置，并在[Hana 大型实例支持的方
     - [Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
 - 使用 SUSE 和 Red Hat 上的[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)SAP HANA 扩展 n + m 配置。 以下文章中列出了详细信息：
     - [使用 SUSE Linux Enterprise Server} 上的 Azure NetApp 文件在 Azure Vm 上通过备用节点部署 SAP HANA 扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-    - [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure Vm 上使用备用节点部署 SAP HANA 扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+    - [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
 - 基于 Windows 横向扩展文件服务 SQL Server 故障转移群集。 尽管生产系统的建议是使用 SQL Server Always On 而不是聚类分析。 SQL Server Always On 可以使用单独的存储提供更好的可用性。 本文介绍了详细信息： 
     - [在 Azure 虚拟机上配置 SQL Server 故障转移群集实例](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster)
 - 适用于 Azure 上的 SQL Server 的 Windows 操作系统支持 SQL Server Always On。 这是 Azure 上生产 SQL Server 实例的默认建议。 有关详细信息，请参阅以下文章：
     - [介绍 Azure 虚拟机上的 SQL Server Always On 可用性组](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-overview)。
-    - [在不同区域中的 Azure 虚拟机上配置 Always On 可用性组](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)。
+    - [在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-availability-group-dr)。
     - [在 Azure 中为 Always On 可用性组配置负载均衡器](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener)。
 - 适用于 Windows 和 Oracle Linux 的 Oracle 数据防护。 可在此文中找到 Oracle Linux 的详细信息：
     - [在 Azure Linux 虚拟机上实现 Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
@@ -150,21 +149,21 @@ SAP 中心服务是 SAP 配置的第二个故障点。 因此，你还需要保�
     - [针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和文件共享准备 SAP 高可用性的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
 - 基于 sapmnt 和全局传输目录的[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)，使用 SMB 共享的 Windows 故障转移群集服务器。 有关详细信息，请在以下文章中列出：
     - [适用于 SAP 应用程序的 azure 虚拟机上的 SAP NetWeaver 的高可用性，适用于 SAP 应用程序的 Azure NetApp 文件（SMB）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-- 基于 SIOS `Datakeeper`的 Windows 故障转移群集服务器。 尽管 Microsoft 记录了 Microsoft 的支持关系，但在使用此解决方案时，你可以与 sios 支持联系。 有关详细信息，请参阅以下文章：
+- 基于 SIOS 的 Windows 故障转移群集服务器 `Datakeeper` 。 尽管 Microsoft 记录了 Microsoft 的支持关系，但在使用此解决方案时，你可以与 sios 支持联系。 有关详细信息，请参阅以下文章：
     - [使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
     - [针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
-- 通过使用两个 SUSE Vm 和`drdb`文件复制创建高度可用的 NFS 共享，在 SUSE 操作系统上 Pacemaker。 文章中记录了详细信息
+- 通过使用两个 SUSE Vm 和文件复制创建高度可用的 NFS 共享，在 SUSE 操作系统上 Pacemaker `drdb` 。 文章中记录了详细信息
     - [SUSE Linux Enterprise Server for SAP Applications 上 Azure VM 中的 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
     - [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
 - 利用[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)提供的 NFS 共享 Pacemaker SUSE 操作系统。 详细信息记录在
-    - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- 在`glusterfs`群集上托管有 NFS 共享的 Red Hat 操作系统上的 Pacemaker。 有关详细信息，请参阅文章
+    - [带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+- 在群集上托管有 NFS 共享的 Red Hat 操作系统上的 Pacemaker `glusterfs` 。 有关详细信息，请参阅文章
     - [Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
     - [`GlusterFS`适用于 SAP NetWeaver Red Hat Enterprise Linux 上的 Azure Vm](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
 - 在[Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)上托管有 NFS 共享的 Red Hat 操作系统上的 Pacemaker。 有关详细信息，请参阅
     - [适用于 sap NetWeaver 的 azure 虚拟机高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
-在列出的解决方案中，您需要与 SIOS 之间的支持关系， `Datakeeper`以支持该产品，并在出现问题时直接与 sios 进行联系。 取决于你对 Windows、Red Hat 和/或 SUSE 操作系统的授权方式，你可能还需要与操作系统提供商签订支持合同，才能完全支持列出的高可用性配置。
+在列出的解决方案中，您需要与 SIOS 之间的支持关系，以支持该 `Datakeeper` 产品，并在出现问题时直接与 sios 进行联系。 取决于你对 Windows、Red Hat 和/或 SUSE 操作系统的授权方式，你可能还需要与操作系统提供商签订支持合同，才能完全支持列出的高可用性配置。
 
 此配置还可以像下面这样显示：
 
@@ -181,10 +180,10 @@ SAP 中心服务是 SAP 配置的第二个故障点。 因此，你还需要保�
 
 - Windows 横向扩展文件服务器的 windows 故障转移群集服务器可以部署在除 Azure NetApp 文件之外的所有本机 Azure 存储类型上。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
 - Azure netapp 文件上支持带有 SMB 的 Windows 故障转移群集服务器。 此时**不**支持 Azure 文件服务上的 SMB 共享。
-- 可在除 Azure NetApp 文件以外的所有本机 Azure `Datakeeper`存储类型上部署基于 SIOS 的 Windows 故障转移群集服务器。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
+- `Datakeeper`可在除 Azure NetApp 文件以外的所有本机 azure 存储类型上部署基于 SIOS 的 Windows 故障转移群集服务器。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
 - 使用 Azure NetApp 文件上的 NFS 共享的 SUSE 或 Red Hat Pacemaker 在 Azure NetApp 文件上受支持。 
-- 使用本地 Azure 存储`drdb`类型（Azure NetApp 文件除外）支持在两个 vm 之间使用配置的 SUSE Pacemaker。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
-- 使用`glusterfs`用于提供 NFS 共享的 Red Hat Pacemaker，支持使用 Azure NetApp 文件以外的本机 azure 存储类型。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
+- 使用 `drdb` 本地 azure 存储类型（Azure NetApp 文件除外）支持在两个 vm 之间使用配置的 SUSE Pacemaker。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
+- 使用 `glusterfs` 用于提供 NFS 共享的 Red Hat Pacemaker，支持使用 Azure NetApp 文件以外的本机 azure 存储类型。 不过，建议使用高级存储，因为吞吐量和 IOPS 具有优异的服务级别协议。
 
 > [!IMPORTANT]
 > Microsoft Azure 市场提供各种软设备，这些设备在 Azure 本机存储基础上提供存储解决方案。 这些软设备可用于创建 NFS 或 SMB 共享，理论上还可以在故障转移群集 SAP 中心服务中使用这些设备。 Microsoft 不直接支持这些解决方案。 如果决定使用此类解决方案来创建 NFS 或 SMB 共享，则需要由在存储软设备中拥有该软件的第三方提供对 SAP 中心服务配置的支持。
@@ -223,8 +222,8 @@ SAP 中心服务是 SAP 配置的第二个故障点。 因此，你还需要保�
 有关包含或不包含备用节点的精确存储配置的详细信息，请查看以下文章：
 
 - [SAP HANA Azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
-- [使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure Vm 上使用备用节点部署 SAP HANA 扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure Vm 上使用备用节点部署 SAP HANA 扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
+- [使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
+- [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
 - [SAP 支持说明 #2080991](https://launchpad.support.sap.com/#/notes/2080991)
 
 有关 HANA 大型实例支持的 HANA 横向扩展配置的详细信息，请参阅以下文档：
@@ -281,12 +280,12 @@ SAP 中心服务是 SAP 配置的第二个故障点。 因此，你还需要保�
 存在一系列方案，Azure 体系结构上的 SAP 工作负荷不支持此方案。 **不受支持**意味着 SAP 和 Microsoft 将不能支持这些配置，并且需要推迟到最终涉及的第三方（提供软件来建立此类体系结构）。 其中两个类别为：
 
 - 存储软设备： Azure marketplace 中提供了许多存储软设备。 一些供应商提供了有关如何在 Azure 上使用与 SAP 软件相关的存储软设备的文档。 需要由这些存储软设备的供应商提供涉及此类存储软设备的配置或部署的支持。 [SAP 支持说明](https://launchpad.support.sap.com/#/notes/2015553)中也提供了此事实 #2015553
-- 高可用性框架：对于 Azure 上的 SAP 工作负荷，仅支持 Pacemaker 和 Windows Server 故障转移群集。 如前文所述，Microsoft 介绍和记录`Datakeeper`了 SIOS 解决方案。 尽管如此， `Datakeeper`需要通过 sios 来支持的每个组件都是提供这些组件的供应商。 SAP 还在各种 SAP 说明中列出了其他经过认证的高可用性框架。 其中一些已由第三方供应商提供 Azure 认证。 然而，使用这些产品的配置支持必须由产品供应商提供。 不同的供应商在 SAP 支持过程中具有不同的集成。 在决定在 Azure 上部署的 SAP 配置中使用该产品之前，应阐明哪种支持流程最适合特定的供应商。
+- 高可用性框架：对于 Azure 上的 SAP 工作负荷，仅支持 Pacemaker 和 Windows Server 故障转移群集。 如前文所述， `Datakeeper` Microsoft 介绍和记录了 SIOS 解决方案。 尽管如此， `Datakeeper` 需要通过 sios 来支持的每个组件都是提供这些组件的供应商。 SAP 还在各种 SAP 说明中列出了其他经过认证的高可用性框架。 其中一些已由第三方供应商提供 Azure 认证。 然而，使用这些产品的配置支持必须由产品供应商提供。 不同的供应商在 SAP 支持过程中具有不同的集成。 在决定在 Azure 上部署的 SAP 配置中使用该产品之前，应阐明哪种支持流程最适合特定的供应商。
 - 除了 maxDB 之外，不支持数据库文件驻留在共享磁盘上的共享磁盘群集。 对于其他所有数据库，支持的解决方案是使用单独的存储位置，而不是 SMB 或 NFS 共享或共享磁盘来配置高可用性方案
 
 不受支持的其他方案包括以下方案：
 
-- 在 sap 应用层和 sap DBMS 层之间引入更大网络延迟的部署方案，如 NetWeaver、S/4HANA 中所示，如`Hybris`。 这包括：
+- 在 sap 应用层和 sap DBMS 层之间引入更大网络延迟的部署方案，如 NetWeaver、S/4HANA 中所示，如 `Hybris` 。 这包括：
     - 在本地部署某个层，而将另一层部署在 Azure 中
     - 在不同于 DBMS 层的 Azure 区域中部署系统的 SAP 应用程序层
     - 将数据中心内的一层部署到 azure 和 Azure 中的另一层，但 Azure 本机服务提供此类体系结构模式除外
