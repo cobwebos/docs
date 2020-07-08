@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "76021200"
 ---
 请务必了解 Azure 中虚拟机 (VM) 运行的方式和位置，以及最大化性能、可用性和冗余的选项。 本文提供了 Azure 的可用性和冗余功能的概述。
@@ -42,7 +42,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 区域对的示例包括：
 
-| 基本 | 辅助副本 |
+| 主要 | 次要 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
@@ -80,7 +80,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 可以在[此处](../articles/storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](../articles/virtual-machines/windows/managed-disks-overview.md)。
 
-### <a name="storage-costs"></a>存储成本
+### <a name="storage-costs"></a>存储费用
 价格根据所选存储类型和可用性的不同而异。
 
 **Azure 托管磁盘**

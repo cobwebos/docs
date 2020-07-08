@@ -11,20 +11,20 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083118"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84888683"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>排查 Azure CDN 终结点返回 404 状态代码的问题
 本文帮助你排查 Azure 内容分发网络 (CDN) 终结点返回 404 HTTP 响应状态代码的问题。
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
+如果在本文中有任何需要协助的地方，可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
 
 ## <a name="symptom"></a>症状
 已经创建 CDN 配置文件和终结点，但内容似乎没有出现在 CDN 上。 尝试通过 CDN URL 访问内容的用户收到 HTTP 404 状态代码。 
@@ -42,7 +42,7 @@ ms.locfileid: "74083118"
 > 创建 CDN 终结点后，终结点无法立即使用，因为注册需要时间来通过 CDN 进行传播：
 > - 对于 Microsoft 的 Azure CDN 标准版配置文件，传播通常可在 10 分钟内完成****。 
 > - 对于 **Akamai 的 Azure CDN 标准版**配置文件，传播通常可在一分钟内完成。 
-> - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成********。 
+> - 对于 Verizon 的 Azure CDN 标准版和 Verizon 的 Azure CDN 高级版配置文件，传播通常可在 90 分钟内完成 。 
 > 
 > 如果完成了本文档中的步骤，但仍然收到 404 响应，请考虑在创建支持票证之前，等待几小时后重新检查一次。
 > 
@@ -73,7 +73,7 @@ ms.locfileid: "74083118"
 #### <a name="http-and-https-ports"></a>HTTP 和 HTTPS 端口
 检查**HTTP**和**HTTPS 端口**。 在大多数情况下，80 和 443 都正确，无需任何更改。  但是，如果源服务器正在侦听其他端口，则应在此处表示出来。 如果不能确定，请查看源文件的 URL。 HTTP 和 HTTPS 规范使用端口 80 和 443 作为默认值。 在示例 URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt 中未指定端口，因此假设 443 为默认端口，并且设置是正确的。  
 
-但是，假设之前测试的源文件的 URL 为 http:\//www.contoso.com:8080/file.txt， 请注意主机名段末尾的 *:8080* 部分。 该数字指示浏览器使用端口8080连接到 www\.contoso.com 上的 web 服务器，因此需要在 " **HTTP 端口**" 字段中输入*8080* 。 请务必注意，这些端口设置只会影响该终结点用来从源中检索信息的那些端口。
+但是，假设之前测试的源文件的 URL 为 http:\//www.contoso.com:8080/file.txt， 请注意主机名段末尾的 *:8080* 部分。 该数字指示浏览器使用端口8080连接到 www contoso.com 上的 web 服务器 \. ，因此需要在 " **HTTP 端口**" 字段中输入*8080* 。 请务必注意，这些端口设置只会影响该终结点用来从源中检索信息的那些端口。
 
 > [!NOTE]
 > **来自 Akamai 的 Azure CDN 标准**终结点不允许原点的完整 TCP 端口范围。  有关不被允许的原点端口列表，请参阅 [来自 Akamai 的 Azure CDN 受允许原点端口](/previous-versions/azure/mt757337(v=azure.100))。  

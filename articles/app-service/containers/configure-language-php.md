@@ -4,12 +4,12 @@ description: 了解如何为应用配置预先构建的 PHP 容器。 本文介�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: 9e4237f1eecb9f6542aac946525ff4583e478c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84905691"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux PHP 应用
 
@@ -109,7 +109,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 如果需要对 PHP 安装进行更改，则可以按照以下步骤更改任何 [php.ini 指令](https://www.php.net/manual/ini.list.php)。
 
 > [!NOTE]
-> 查看 PHP 版本和当前 php.ini 配置的最佳方法是在应用中调用 [phpinfo()](https://www.php.net/manual/function.phpinfo.php)。
+> 查看 PHP 版本和当前 php.ini 配置的最佳方法是在应用中调用 [phpinfo()](https://php.net/manual/function.phpinfo.php)。
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>自定义非 PHP_INI_SYSTEM 指令
@@ -187,7 +187,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-linux-no-h.md)]
 
 ## <a name="open-ssh-session-in-browser"></a>在浏览器中打开 SSH 会话
 
@@ -198,7 +198,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 如果运行中的 PHP 应用在应用服务中的行为不同或有错误，请尝试执行以下操作：
 
 - [访问日志流](#access-diagnostic-logs)。
-- 在生产模式下，在本地测试应用。 应用服务在生产模式下运行 Node.js 应用，因此需要确保项目在生产模式下按预期在本地运行。 例如：
+- 在生产模式下，在本地测试应用。 应用服务在生产模式下运行你的应用，因此你需要确保你的项目在生产模式下以本地方式按预期方式工作。 例如：
     - 根据 composer.json，可以为生产模式安装不同的包（`require` 与 `require-dev`）。
     - 某些 Web 框架可以在生产模式下通过各种方式部署静态文件。
     - 在生产模式下运行时，某些 Web 框架可能会使用自定义的启动脚本。

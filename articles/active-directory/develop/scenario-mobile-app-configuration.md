@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/23/2019
+ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06475b53acf6c9161888e29723feab9cdc4336d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78e3bbfe910ebc3d7f21167c2a15f0c255fdc8ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84904790"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>配置调用 Web API 的移动应用
 
@@ -327,10 +327,10 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
 
    `$"msauth.(BundleId)"`
 
-   此处， `BundleId`唯一标识你的设备。 例如，如果`BundleId`为`yourcompany.xforms`，则 URL 方案为。 `msauth.com.yourcompany.xforms`
+   此处， `BundleId` 唯一标识你的设备。 例如，如果 `BundleId` 为 `yourcompany.xforms` ，则 URL 方案为 `msauth.com.yourcompany.xforms` 。
   
    > [!NOTE]
-   > 此 URL 方案将成为重定向 URI 的一部分，用于在收到 broker 响应时唯一标识应用。 请确保在[Azure 门户](https://portal.azure.com)中为你的应用`msauth.(BundleId)://auth`程序注册了格式的重定向 URI。
+   > 此 URL 方案将成为重定向 URI 的一部分，用于在收到 broker 响应时唯一标识应用。 请确保在 Azure 门户中为 `msauth.(BundleId)://auth` 你的应用程序注册了格式的重定向[Azure portal](https://portal.azure.com)URI。
   
    ```XML
    <key>CFBundleURLTypes</key>
@@ -346,12 +346,12 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
 
 #### <a name="step-3-add-lsapplicationqueriesschemes"></a>步骤3：添加 LSApplicationQueriesSchemes
 
-如果`LSApplicationQueriesSchemes`已安装，则添加以允许调用 Microsoft Authenticator 应用。
+`LSApplicationQueriesSchemes`如果已安装，则添加以允许调用 Microsoft Authenticator 应用。
 
 > [!NOTE]
-> 当`msauthv3`使用 Xcode 11 和更高版本编译应用程序时，需要使用方案。 
+> `msauthv3`当使用 Xcode 11 和更高版本编译应用程序时，需要使用方案。 
 
-下面是一个示例，说明如何添加`LSApplicationQueriesSchemes`：
+下面是一个示例，说明如何添加 `LSApplicationQueriesSchemes` ：
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -363,7 +363,7 @@ MSAL 使用 `–canOpenURL:` 来检查是否在设备上安装了中介。 在 i
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>适用于 Xamarin.Android 的中介身份验证
 
-MSAL.NET 不支持适用于 Android 的代理。
+有关在 Android 上启用代理的信息，请参阅[Xamarin 上的中转身份验证](msal-net-use-brokers-with-xamarin-apps.md#brokered-authentication-for-android)。
 
 ## <a name="next-steps"></a>后续步骤
 
