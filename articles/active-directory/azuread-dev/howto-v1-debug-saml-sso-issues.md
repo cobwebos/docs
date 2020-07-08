@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5d92b43b47a20a75d2c8b6becb69cfee5829e80f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383574"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -32,9 +32,9 @@ ms.locfileid: "80154842"
 
 若要下载并安装“我的应用安全登录扩展”，请使用以下链接之一。
 
-- [&](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [FireFox](https://go.microsoft.com/fwlink/?linkid=866366)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 ## <a name="test-saml-based-single-sign-on"></a>测试基于 SAML 的单一登录
 

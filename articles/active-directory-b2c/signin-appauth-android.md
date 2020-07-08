@@ -1,22 +1,22 @@
 ---
 title: 在 Android 应用程序中获取令牌
 titleSuffix: Azure AD B2C
-description: 如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识以及对用户进行身份验证的 Android 应用。
+description: 如何创建一个使用 AppAuth 和 Azure Active Directory B2C 来管理用户标识并对用户进行身份验证的 Android 应用。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 79219d7a7b59818d54acc6a2b0b4c8093ead3a6a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638390"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385223"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 Android 应用程序登录
 
@@ -35,13 +35,13 @@ Microsoft 标识平台使用开放式标准，例如 OAuth2 和 OpenID Connect�
 
 ## <a name="create-an-application"></a>创建应用程序
 
-接下来，在 Azure AD B2C 租户中注册应用程序。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。
+接下来，将应用程序注册到 Azure AD B2C 租户。 此应用为 Azure AD 提供所需的 Azure AD 信息，使之能够与应用安全通信。
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
 记录“应用程序(客户端) ID”，以便在后续步骤中使用。
 
-还应记录自定义重定向 URI，以便在后续步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+还记录自定义重定向 URI，以便在后续步骤中使用。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 ## <a name="create-your-user-flows"></a>创建用户流
 
@@ -120,8 +120,8 @@ AuthorizationServiceConfiguration config =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000` 。
-* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000`。
+* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 [注册应用](#create-an-application)时应已保存这两项信息。
 

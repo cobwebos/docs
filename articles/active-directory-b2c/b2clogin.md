@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4297ee64742b81e86eb8b85c0a6c405fac07d67f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386158"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
@@ -50,7 +50,7 @@ ms.locfileid: "78189984"
 
 ## <a name="change-identity-provider-redirect-urls"></a>更改标识提供者重定向 URL
 
-在已创建应用程序的每个标识提供者的网站上，更改所有受信任的 Url `your-tenant-name.b2clogin.com`以重定向到而不是*login.microsoftonline.com*。
+在已创建应用程序的每个标识提供者的网站上，更改所有受信任的 Url 以重定向到 `your-tenant-name.b2clogin.com` 而不是*login.microsoftonline.com*。
 
 你可以将两种格式用于 b2clogin.com 重定向 Url。 第一个选项使用租户 ID (GUID) 来替代租户域名，其优点是无需在 URL 中的任何位置显示“Microsoft”：
 
@@ -91,7 +91,7 @@ https://contosob2c.b2clogin.com/00000000-0000-0000-0000-000000000000/B2C_1_signu
 
 ### <a name="validateauthority-property"></a>ValidateAuthority 属性
 
-如果使用的是[MSAL.NET][msal-dotnet] v2 或更早版本，请在客户`false`端实例化上将**ValidateAuthority**属性设置为，以允许重定向到*b2clogin.com*。 在 MSAL.NET v3 和更高版本中不需要此设置。
+如果使用的是[MSAL.NET][msal-dotnet] v2 或更早版本，请在客户端实例化上将**ValidateAuthority**属性设置为， `false` 以允许重定向到*b2clogin.com*。 在 MSAL.NET v3 和更高版本中不需要此设置。
 
 ```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication

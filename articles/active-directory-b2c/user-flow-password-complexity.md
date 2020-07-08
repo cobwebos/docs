@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5ef550af0c7e19531ea19093ea937880f7dcf14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 165529697949bba0233567b89c5a8a077d48a28b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185635"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384016"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -37,20 +37,20 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录****。
-3. 在 Azure 门户中，搜索并选择“Azure AD B2C”****。
-4. 选择“用户流(策略)”****。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在门户工具栏中选择“目录 + 订阅”，然后选择包含 Azure AD B2C 租户的目录。
+3. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
+4. 选择“用户流(策略)”。
 2. 选择一个用户流，然后单击“属性”****。
 3. 在“密码复杂性”**** 下，将此用户流的密码复杂性更改为“简单”****、“强”**** 或“自定义”****。
 
 ### <a name="comparison-chart"></a>比较图表
 
-| 复杂性 | 说明 |
+| 复杂性 | 描述 |
 | --- | --- |
 | 简单 | 为至少 8 到 64 个字符的密码。 |
-| 非常 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |
-| 自定义 | 此选项提供了对密码复杂性规则的最大控制。  可以配置自定义长度。  还可以接受仅为数字的密码 (pin)。 |
+| 强 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |
+| “自定义” | 此选项提供了对密码复杂性规则的最大控制。  可以配置自定义长度。  还可以接受仅为数字的密码 (pin)。 |
 
 ## <a name="custom-options"></a>自定义选项
 

@@ -8,16 +8,16 @@ ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.custom: aaddev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5595f7eebc8feca2f00a6f95e10c547ded9529
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981063"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383728"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory 身份验证库 (ADAL) 客户端的错误处理最佳做法
 
@@ -189,7 +189,7 @@ AcquireToken 是用于获取令牌的默认 ADAL 方法。 在需要用户标识
 
 ### <a name="error-cases-and-actionable-steps-native-client-applications"></a>错误情况和操作步骤：本机客户端应用程序
 
-生成本机客户端应用程序时，需考虑几种错误处理情况，它们与网络问题、暂时性故障以及其他特定于平台的错误有关。 在大多数情况下，应用程序不应立即进行重试，而是等待最终用户交互提示登录。 
+生成本机客户端应用程序时，需考虑几种错误处理情况，它们与网络问题、暂时性故障以及其他特定于平台的错误有关。 在大多数情况下，应用程序不应立即执行重试，而应等到出现提示登录的最终用户交互时再重试。 
 
 在少数特殊情况下，可通过一次重试解决问题。 例如，用户需要在设备上启用数据，或首次失败后完成 Azure AD 中转站下载的情况。 
 

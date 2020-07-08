@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163087461dbbcfd036b348f69362f0ad0010e791
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154876"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383846"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何使 AppSource 通过 Azure Active Directory 的认证
 
@@ -117,7 +117,7 @@ ms.locfileid: "80154876"
 
 对于 Azure AD 集成，我们使用 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) 和社区来提供支持。
 
-强烈建议先在 Stack Overflow 上提问并浏览现有问题，查看是否已有人提出过相同疑问。 确保你的问题或评论带有[ `[azure-active-directory]`和`[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)标记。
+强烈建议先在 Stack Overflow 上提问并浏览现有问题，查看是否已有人提出过相同疑问。 确保你的问题或评论带有[ `[azure-active-directory]` 和 `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)标记。
 
 使用以下评论部分提供反馈，帮助我们改进内容。
 

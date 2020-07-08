@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384866"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>利用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -31,7 +31,7 @@ ms.locfileid: "78186261"
 
 如果还没有，请在订阅中创建 Application Insights 的实例。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含 Azure 订阅的目录（而不是您的 Azure AD B2C 目录）。
 1. 选择左侧导航菜单中的 "**创建资源**"。
 1. 搜索并选择 " **Application Insights**"，然后选择 "**创建**"。
@@ -42,28 +42,28 @@ ms.locfileid: "78186261"
 
 ## <a name="configure-the-custom-policy"></a>配置自定义策略
 
-1. 打开信赖方（RP）文件，例如*signuporsignin.xml*。
+1. 打开信赖方（RP）文件，例如*SignUpOrSignin.xml*。
 1. 将以下属性添加到 `<TrustFrameworkPolicy>` 元素：
 
-   ```XML
+   ```xml
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. 如果它尚不存在，请将`<UserJourneyBehaviors>`一个子节点添加`<RelyingParty>`到该节点。 它必须紧跟在之后`<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`。
-1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。 请确保将替换`{Your Application Insights Key}`为前面记录的 Application Insights**检测密钥**。
+1. 如果它尚不存在，请将一个 `<UserJourneyBehaviors>` 子节点添加到该 `<RelyingParty>` 节点。 它必须紧跟在之后 `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />` 。
+1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。 请确保将替换为 `{Your Application Insights Key}` 前面记录的 Application Insights**检测密钥**。
 
-    ```XML
+    ```xml
     <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
     ```
 
     * `DeveloperMode="true"`告诉 Applicationinsights.config 通过处理管道加速遥测。 适用于开发，但在较大的卷上受到限制。
-    * `ClientEnabled="true"`发送用于跟踪页面视图和客户端错误的 Applicationinsights.config 客户端脚本。 可以在 Application Insights 门户中的**browserTimings**表中查看这些项。 通过设置`ClientEnabled= "true"`，你可以将 Application Insights 添加到页面脚本，并获取页面加载和 ajax 调用、计数、浏览器异常和 ajax 失败的详细信息以及用户和会话计数的计时。 此字段是**可选**的，默认情况下`false` ，设置为。
+    * `ClientEnabled="true"`发送用于跟踪页面视图和客户端错误的 Applicationinsights.config 客户端脚本。 可以在 Application Insights 门户中的**browserTimings**表中查看这些项。 通过设置 `ClientEnabled= "true"` ，你可以将 Application Insights 添加到页面脚本，并获取页面加载和 ajax 调用、计数、浏览器异常和 ajax 失败的详细信息以及用户和会话计数的计时。 此字段是**可选**的， `false` 默认情况下，设置为。
     * `ServerEnabled="true"` 将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。
 
     例如：
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
       ...
       TenantId="fabrikamb2c.onmicrosoft.com"

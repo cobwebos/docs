@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638483"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385410"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
 
@@ -35,23 +35,23 @@ ms.locfileid: "83638483"
 
 使用 Azure AD B2C 保护 Azure API 管理中的 API 时，需要为 APIM 中创建的[入站策略](../api-management/api-management-howto-policies.md)提供多个值。 首先，记录之前在 Azure AD B2C 租户中创建的应用程序的应用程序 ID。 如果使用的是在先决条件中创建的应用程序，请使用 webbapp1 的应用程序 ID。
 
-可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来获取应用程序 ID 。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
+要在 Azure AD B2C 租户中注册应用程序，可以使用新的统一“应用注册”体验或旧版“应用程序(旧版)”体验 。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
-1. 在“管理”下，选择“应用程序” 。
-1. 记录 webapp1 或之前创建的其他应用程序的“应用程序 ID”列中的值。
-
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
-1. 选择“应用注册(预览版)”，然后选择“拥有的应用程序”选项卡 。
+1. 选择 "**应用注册**"，然后选择 "**拥有的应用程序**" 选项卡。
 1. 记录 webapp1 或之前创建的其他应用程序的“应用程序(客户端)ID”列中的值。
+
+#### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 在 "**管理**" 下，选择 "**应用程序（旧版）**"。
+1. 记录 webapp1 或之前创建的其他应用程序的“应用程序 ID”列中的值。
 
 * * *
 
@@ -88,7 +88,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 1. 选择“API”。
 1. 选择要使用 Azure AD B2C 来保护的 API。
 1. 选择“设计”选项卡。
-1. 在“入站处理”下，选择“\</\>”以打开“策略代码编辑器” 。
+1. 在 "**入站处理**" 下，选择 **\</\>** 打开 "策略代码编辑器"。
 1. 将以下 `<validate-jwt>` 标记放入 `<inbound>` 策略。
 
     1. 使用策略的已知配置 URL 来更新 `<openid-config>` 元素中的 `url` 值。
@@ -171,7 +171,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 在 Postman 中选择“发送”按钮以执行请求。 如果已正确配置所有内容，应会看到一个 JSON 响应，其中包含一系列会议发言人（此处内容不完整）：
 
-    ```JSON
+    ```json
     {
       "collection": {
         "version": "1.0",
@@ -206,7 +206,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 1. 选择“发送”按钮以执行请求。 如果令牌无效，则预期结果是 `401` 未授权的状态代码：
 
-    ```JSON
+    ```json
     {
         "statusCode": 401,
         "message": "Unauthorized. Access token is missing or invalid."
@@ -219,7 +219,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 通常有多个应用程序会与单个 REST API 交互。 若要使 API 接受用于多个应用程序的令牌，请将其应用程序 ID 添加到 APIM 入站策略中的 `<audiences>` 元素。
 
-```XML
+```xml
 <!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
@@ -229,7 +229,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 同样，若要支持多个令牌颁发者，请将其终结点 URI 添加到 APIM 入站策略中的 `<issuers>` 元素。
 
-```XML
+```xml
 <!-- Accept tokens from multiple issuers -->
 <issuers>
     <issuer>https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/</issuer>
@@ -249,7 +249,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 下面的 APIM 入站策略示例说明了如何接受 b2clogin.com 和 login.microsoftonline.com 颁发的令牌。 此外，它支持来自两个应用程序的 API 请求。
 
-```XML
+```xml
 <policies>
     <inbound>
         <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

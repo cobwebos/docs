@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f1897a4f58276bbac2a7de673544e592a562562
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 206768604c6d08a32c0caaf9b53a1417cfa1344b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83826666"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385325"
 ---
 # <a name="secure-your-restful-services"></a>保护 RESTful 服务 
 
@@ -114,7 +114,7 @@ HTTP 基本身份验证在 [RFC 2617](https://tools.ietf.org/html/rfc2617) 中�
 在非生产环境中，如果还没有证书，可使用自签名证书。 在 Windows 上，可使用 PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) cmdlet 来生成证书。
 
 1. 执行此 PowerShell 命令来生成自签名证书。 根据应用程序的需要修改 `-Subject` 参数，并修改 Azure AD B2C 租户名称。 还可调整 `-NotAfter` 日期，为证书指定不同的过期日期。
-    ```PowerShell
+    ```powershell
     New-SelfSignedCertificate `
         -KeyExportPolicy Exportable `
         -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
@@ -285,7 +285,7 @@ Authorization: Bearer <token>
 
 添加上述片段后，技术配置文件应与以下 XML 代码类似：
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>REST APIs</DisplayName>
   <TechnicalProfiles>

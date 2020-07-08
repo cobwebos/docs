@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eadac0e973b361b1fdee63dcc9cfa848a0b2bacb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d432912cb0442744061500fc01bdd86a4c5d97ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385342"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C （预览版）中设置自定义策略的手机注册和登录
 
@@ -48,31 +48,31 @@ ms.locfileid: "78183952"
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. 在每个文件中，将`yourtenant`字符串替换为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为*contosob2c*，则的`yourtenant.onmicrosoft.com`所有实例都将变为`contosob2c.onmicrosoft.com`。
+1. 在每个文件中，将字符串替换 `yourtenant` 为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为*contosob2c*，则的所有实例都将 `yourtenant.onmicrosoft.com` 变为 `contosob2c.onmicrosoft.com` 。
 
-1. 完成[Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的[将应用程序 id 添加到自定义策略](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)部分中的步骤。 在这种情况下`/phone-number-passwordless/` **`Phone_Email_Base.xml`** ，请在完成必备组件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*时，用注册的两个应用程序的**应用程序（客户端） id**进行更新。
+1. 完成[Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的[将应用程序 id 添加到自定义策略](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)部分中的步骤。 在这种情况下，请在 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** 完成必备组件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*时，用注册的两个应用程序的**应用程序（客户端） id**进行更新。
 
 ## <a name="upload-the-policy-files"></a>上传策略文件
 
 1. 登录到[Azure 门户](https://portal.azure.com)并导航到 Azure AD B2C 租户。
-1. 在“策略”下，选择“Identity Experience Framework”。********
-1. 选择 "**上载自定义策略**"。
+1. 在“策略”下，选择“Identity Experience Framework”。 
+1. 选择“上传自定义策略”。
 1. 按以下顺序上传策略文件：
-    1. *Phone_Email_Base .xml*
-    1. *SignUpOrSignInWithPhone*
-    1. *SignUpOrSignInWithPhoneOrEmail*
-    1. *ProfileEditPhoneOnly*
-    1. *ProfileEditPhoneEmail*
-    1. *ChangePhoneNumber*
-    1. *PasswordResetEmail*
+    1. *Phone_Email_Base.xml*
+    1. *SignUpOrSignInWithPhone.xml*
+    1. *SignUpOrSignInWithPhoneOrEmail.xml*
+    1. *ProfileEditPhoneOnly.xml*
+    1. *ProfileEditPhoneEmail.xml*
+    1. *ChangePhoneNumber.xml*
+    1. *PasswordResetEmail.xml*
 
-上传每个文件时，Azure 会添加`B2C_1A_`前缀。
+上传每个文件时，Azure 会添加前缀 `B2C_1A_` 。
 
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
 1. 在 "**自定义策略**" 下，选择**B2C_1A_SignUpOrSignInWithPhone**。
 1. 在 "**选择应用程序**" 下，选择在完成先决条件时注册的*webapp1*应用程序。
-1. 对于 "**选择回复 url**" `https://jwt.ms`，请选择。
+1. 对于 "**选择回复 url**"，请选择 `https://jwt.ms` 。
 1. 选择 "**立即运行**" 并使用电子邮件地址或电话号码进行注册。
 1. 选择 "**立即运行**" 并使用同一帐户登录，以确认配置正确。
 

@@ -9,18 +9,18 @@ ms.subservice: azuread-dev
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383693"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
 
@@ -230,7 +230,7 @@ App3 重定向 URI：`x-msauth-mytestiosapp://com.myapp.mytestapp3`
 </plist>
 ```
 
-在每个应用程序中启用密钥链授权并准备好使用 SSO 后，请在中`ADAuthenticationSettings`使用以下设置，告诉标识 SDK 关于密钥链：
+在每个应用程序中启用密钥链授权并准备好使用 SSO 后，请在中使用以下设置，告诉标识 SDK 关于密钥链 `ADAuthenticationSettings` ：
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
@@ -309,7 +309,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>步骤 4：将配置参数添加到应用
 
-ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iOS 9 中，Apple 锁定了应用程序可以查询的方案。 需要将 "msauth" 添加到的 LSApplicationQueriesSchemes 节`info.plist file`。
+ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。 在 iOS 9 中，Apple 锁定了应用程序可以查询的方案。 需要将 "msauth" 添加到的 LSApplicationQueriesSchemes 节 `info.plist file` 。
 
 ```
     <key>LSApplicationQueriesSchemes</key>

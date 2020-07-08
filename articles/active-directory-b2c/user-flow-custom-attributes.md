@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b1ecfba0435f827c7c7a4d05da619998140bc6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d02a7acf1d59c628e3b83161ab9cabb4a19ca41a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186043"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384985"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定义自定义属性
 

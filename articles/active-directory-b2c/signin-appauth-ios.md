@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85384934"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 
@@ -92,8 +92,8 @@ OIDServiceConfiguration *configuration =
 
 配置或检索授权服务配置后，可以构造授权请求。 若要创建该请求，需要提供以下信息：
 
-* 之前记录的客户端 ID（应用程序 ID）。 例如，`00000000-0000-0000-0000-000000000000` 。
-* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+* 之前记录的客户端 ID（应用程序 ID）。 例如 `00000000-0000-0000-0000-000000000000`。
+* 之前记录的自定义重定向 URI。 例如，`com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`。
 
 [注册应用](#create-an-application)时应已保存这两项信息。
 

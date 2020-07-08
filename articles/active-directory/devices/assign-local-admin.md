@@ -4,29 +4,29 @@ description: 了解如何将 Azure 角色分配给 Windows 设备的本地管理
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128885"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386362"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
 若要管理 Windows 设备，需要成为本地管理员组的成员。 作为 Azure Active Directory (Azure AD) 联接过程的一部分，Azure AD 会更新设备上此组的成员身份。 可以自定义成员身份更新以满足业务需求。 例如，如果希望帮助台员工在设备上执行需要管理员权限的任务，则成员身份更新会非常有帮助。
 
-本文介绍了成员身份更新的工作原理以及在加入 Azure AD 期间如何对其进行自定义。 本文的内容不适用于加入“混合”**** Azure AD。
+本文介绍本地管理员成员身份更新的工作方式，以及如何在 Azure AD 加入过程中对其进行自定义。 本文内容不适用于已**加入混合 Azure AD**的设备。
 
 ## <a name="how-it-works"></a>工作原理
 
-使用 Azure AD 联接将 Windows 设备与 Azure AD 连接时，Azure AD 会将以下安全原则添加到设备上的本地管理员组：
+使用 Azure AD join 连接 Windows 设备与 Azure AD 时 Azure AD 会将以下安全主体添加到设备上的本地管理员组：
 
 - Azure AD 全局管理员角色
 - Azure AD 设备管理员角色 
@@ -48,7 +48,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 在 Azure 门户中，可以管理“设备”页上的设备管理员角色****。 要打开“设备”页，请执行以下操作****：
 
 1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 搜索并选择“Azure Active Directory”  。
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”部分单击“设备”。********
 1. 在“设备”页上，单击“设备设置”********。
 
@@ -59,10 +59,13 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 >[!NOTE]
 > 此选项需要 Azure AD Premium 租户。 
 
-设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 在用户已登录到的设备上，当发生以下*两项*操作时，会进行权限更新：
+设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 在用户已登录到的设备上，当发生以下*两项*操作时，会进行权限提升：
 
-- 已为 Azure AD 传递了4小时，以便使用适当的权限颁发新的主刷新令牌。 
+- 超过4小时后，Azure AD 使用适当的权限颁发新的主刷新令牌。 
 - 用户注销并重新登录，而不是锁定/取消锁定，以刷新其配置文件。
+
+>[!NOTE]
+> 上述操作不适用于以前未登录到相关设备的用户。 在这种情况下，将在首次登录设备后立即应用管理员权限。 
 
 ## <a name="manage-regular-users"></a>管理常规用户
 
@@ -88,7 +91,7 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 设备管理员已分配给所有已加入 Azure AD 的设备。 无法将他们的范围限定为一组特定设备。
 
-从设备管理员角色中删除用户时，只要用户登录设备，他们仍拥有设备的本地管理员权限。 下次登录期间或者颁发新的主刷新令牌 4 小时后，将撤销该权限。
+从设备管理员角色中删除用户时，只要用户登录设备，他们仍拥有设备的本地管理员权限。 颁发新的主刷新令牌时，将在下次登录时撤消特权。 此吊销类似于权限提升，可能需要4小时。
 
 ## <a name="next-steps"></a>后续步骤
 

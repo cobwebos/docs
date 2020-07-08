@@ -3,24 +3,24 @@ title: Azure AD 应用程序代理常见问题 |Microsoft Docs
 description: 了解有关使用 Azure AD 应用程序代理将内部本地应用程序发布到远程用户的常见问题解答（FAQ）的解答。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 10/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583086"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386277"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）应用程序代理常见问题
 
@@ -65,12 +65,19 @@ ms.locfileid: "82583086"
 与连接器一起安装了性能监视器计数器。 查看管理共享：  
 
 1. 选择 "**开始**"，键入 "Perfmon"，然后按 enter。
-2. 选择 "**性能监视器**"，然后**+** 单击绿色图标。
+2. 选择 "**性能监视器**"，然后单击绿色 **+** 图标。
 3. 添加要监视的**MICROSOFT AAD 应用程序代理连接器**计数器。
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Azure AD 应用程序代理连接器是否必须与资源位于同一子网？
 
 连接器不需要位于同一子网中。 但是，它需要对资源进行名称解析（DNS、主机文件）和必要的网络连接（路由到资源、资源上打开的端口等）。 有关建议，请参阅[使用 Azure Active Directory 应用程序代理时的网络拓扑注意事项](application-proxy-network-topology.md)。
+
+### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>可以在什么版本的 Windows Server 上安装连接器？
+应用程序代理需要 Windows Server 2012 R2 或更高版本。 目前，Windows Server 2019 的 HTTP2 有限制。 为了成功地在 Windows Server 2019 上使用连接器，你将需要添加以下注册表项并重新启动服务器：
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
+
 
 ## <a name="application-configuration"></a>应用程序配置
 
@@ -146,13 +153,13 @@ NTLM 身份验证不能用作预身份验证或单一登录方法。 仅当可�
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>能否使用 Azure AD 应用程序代理作为 AD FS 代理（如 Web 应用程序代理）？
 
-否。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
+不能。 Azure AD 应用程序代理用于处理 Azure AD，并且不满足充当 AD FS 代理的要求。
 
 ## <a name="websocket"></a>WebSocket
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket 是否支持 QlikSense 以外的应用程序？
 
-目前，WebSocket 协议支持仍以公共预览版提供，可能不适用于其他应用程序。 一些客户使用 WebSocket 协议与其他应用程序的混合成功。 如果测试这种情况，我们很乐意听到您的结果。 请向我们发送你的aadapfeedback@microsoft.com反馈。
+目前，WebSocket 协议支持仍以公共预览版提供，可能不适用于其他应用程序。 一些客户使用 WebSocket 协议与其他应用程序的混合成功。 如果测试这种情况，我们很乐意听到您的结果。 请向我们发送你的反馈 aadapfeedback@microsoft.com 。
 
 目前，Windows 管理中心（WAC）或远程桌面 Web 客户端（HTML5）中的功能（事件日志、PowerShell 和远程桌面服务）不适用于 Azure AD 应用程序代理。
 

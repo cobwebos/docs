@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 394b242ab46da7821f77e8d008836753f4e358e2
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67172899"
 ---
 在此步骤中，在故障转移群集管理器和 SQL Server Management Studio 中手动创建可用性组侦听器。
@@ -19,7 +19,7 @@ ms.locfileid: "67172899"
 
 3. 展开群集名称，并单击“角色”。 
 
-4. 在“角色”窗格中，右键单击可用性组名称，并选择“添加资源” **“客户端接入点”。**   >  
+4. 在“角色”窗格中，右键单击可用性组名称，并选择“添加资源” > “客户端接入点”。
    
     ![为可用性组添加客户端接入点](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678769.gif)
 

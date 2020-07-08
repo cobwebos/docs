@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67172901"
 ---
 1. 在故障转移群集管理器中，展开“角色”，然后突出显示可用性组。   
@@ -31,7 +31,7 @@ ms.locfileid: "67172901"
 
 8. 启动 SQL Server Management Studio，然后连接到主副本。
 
-9. 转到“AlwaysOn 高可用性”   > “可用性组”   >  **\<AvailabilityGroupName\>**  >   “可用性组侦听程序”。  
+9. 中转到**AlwaysOn 高可用性**  >  **可用性**组  >  **\<AvailabilityGroupName\>**  >  **可用性组侦听器**。  
     此时会显示在故障转移群集管理器中创建的侦听程序名称。
 
 10. 右键单击侦听程序名称，然后单击“属性”。 

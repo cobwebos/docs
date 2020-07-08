@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
 ms.date: 12/01/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 32375c14d95dc9e100cbf496c8550f0a195a11dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f56fdd08a73db5b3164a316afe9c6568c885413
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383659"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 身份验证库
 

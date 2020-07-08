@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a596454a48a1d6fcee77634363dd38f34a4d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85386328"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在寻找有关部署 Azure Active Directory （Azure AD）功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
@@ -29,7 +29,7 @@ ms.locfileid: "81603353"
 
 角色可能包括以下 
 
-|Role |说明 |
+|角色 |描述 |
 |-|-|
 |最终用户|将为其实施功能的代表用户组。 经常预览试点计划中的更改。
 |IT 支持经理|IT 支持组织代表，他们可以从支持人员的角度提供此更改的可支持性的输入。  
@@ -61,17 +61,18 @@ ms.locfileid: "81603353"
 
 | 功能 | 说明|
 | -| -|
-| [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 使用管理员批准的身份验证方法，Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 |
-| [条件访问](../conditional-access/plan-conditional-access.md)| 使用条件性访问，你可以根据条件，实现可访问云应用的用户的自动访问控制决策。 |
-| [自助式密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置功能可帮助用户在无需管理员干预的情况下重置密码。 |
+| [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure MFA 可使用管理员批准的身份验证方法，帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 |
+| [条件访问](../conditional-access/plan-conditional-access.md)| 使用条件访问时，可以根据条件实施自动化的访问控制决策，决定谁能够访问云应用。 |
+| [自助服务密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置功能可帮助用户在无需管理员干预的情况下重置密码。 |
 | [无密码](../authentication/howto-authentication-passwordless-deployment.md) | 使用组织中的 Microsoft Authenticator 应用或 FIDO2 安全密钥实现无密码 authentication |
 
-## <a name="deploy-application-management"></a>部署应用程序管理
+## <a name="deploy-application-and-device-management"></a>部署应用程序和设备管理
 
 | 功能 | 说明|
 | -| - |
 | [单一登录](../manage-apps/plan-sso-deployment.md)| 单一登录可帮助用户访问在只登录一次时需要执行业务的应用和资源。 登录后，他们可以从 Microsoft Office 到 SalesForce 到 Box，再到内部应用程序，而无需再次输入凭据。 |
-| [访问面板](../manage-apps/access-panel-deployment-plan.md)| 为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 使用自助服务功能，例如请求访问应用和组，或者代表其他人管理对资源的访问权限，从而提高工作效率。 |
+| [访问面板](../manage-apps/access-panel-deployment-plan.md)| 为你的用户提供一个简单的中心来发现和访问他们的所有应用程序。 通过自助服务功能提高他们的工作效率，例如请求访问应用和组，或代表其他人管理对资源的访问。 |
+| [设备](../devices/plan-device-deployment.md) | 本文将帮助你评估将设备与 Azure AD 集成的方法、选择实现计划，并提供指向受支持的设备管理工具的关键链接。 |
 
 
 ## <a name="deploy-hybrid-scenarios"></a>部署混合方案
@@ -80,7 +81,7 @@ ms.locfileid: "81603353"
 | -| -|
 | [使用 ADFS 进行密码哈希同步](../hybrid/plan-migrate-adfs-password-hash-sync.md)| 通过密码哈希同步，用户密码的哈希将从本地 Active Directory 同步到 Azure AD，让 Azure AD 对不与本地的交互的用户进行身份验证 Active Directory |
 | [使用 ADFS 进行直通身份验证](../hybrid/plan-migrate-adfs-pass-through-authentication.md)| Azure AD 传递身份验证可帮助用户使用相同的密码登录到本地和基于云的应用程序。 此功能为用户提供更好的体验-需要记住的密码越少，并且减少了 IT 支持人员的成本，因为用户不太可能忘记登录的方式。 当人们使用 Azure AD 登录时，此功能可直接通过本地 Active Directory 验证用户的密码。 |
-| [Azure AD 应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地公司应用。 Azure AD 应用程序代理可实现此强大的访问，而无需昂贵、复杂的虚拟专用网络（Vpn）或外围区域（Dmz）。 |
+| [Azure AD 应用程序代理](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-deployment-plan) |现今的员工想要随时随地都能在任何设备上高效工作。 他们需要访问云中的 SaaS 应用和本地的公司应用。 Azure AD 应用程序代理支持这种强大的访问，而无需昂贵和复杂的虚拟专用网络 (VPN) 或外围子网 (DMZ)。 |
 | [无缝 SSO](../hybrid/how-to-connect-sso-quick-start.md)| Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接到企业网络的企业设备上的用户自动登录。 利用此功能，用户无需键入密码即可登录 Azure AD，通常不需要输入用户名。 此功能为授权用户提供轻松访问基于云的应用程序的权限，而无需其他任何本地组件。 |
 
 ## <a name="deploy-user-provisioning"></a>部署用户预配

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385376"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>定义 Azure AD B2C 中的电话号码声明转换
 
@@ -37,7 +37,7 @@ ms.locfileid: "83738755"
 
 在此示例中，值类型为 `phoneNumber` 的 cellPhoneNumber 声明将转换为值类型为 `string` 的 cellPhone 声明。
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -72,7 +72,7 @@ ConvertStringToPhoneNumberClaim 声明转换始终从[验证技术配置文件](
 
 可以使用此声明转换来确保所提供的字符串声明是有效的电话号码。 如果没有，则会引发错误消息。 下面的示例检查 phoneString ClaimType 是否确实是有效的电话号码，然后返回 Azure AD B2C 标准格式的电话号码。 否则会引发错误消息。
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ ConvertStringToPhoneNumberClaim 声明转换始终从[验证技术配置文件](
 
 调用包含此声明转换的验证技术配置文件的自断言技术配置文件可以定义错误消息。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -132,7 +132,7 @@ ConvertStringToPhoneNumberClaim 声明转换始终从[验证技术配置文件](
 
 下面的示例尝试将电话号码拆分为国家/地区号码和国家/地区代码。 如果电话号码有效，则国家/地区号码将替换电话号码。 如果电话号码无效，则不会引发异常，并且电话号码仍具有其原始值。
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ ConvertStringToPhoneNumberClaim 声明转换始终从[验证技术配置文件](
 
 调用包含此声明转换的验证技术配置文件的自断言技术配置文件可以定义错误消息。
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>

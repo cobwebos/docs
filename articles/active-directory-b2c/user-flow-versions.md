@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40d21d3390396e0cb7e44d4e19598f9b0b691087
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acebf5239bf8a180f637e4c12c4e03509edb93c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78185611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383982"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流版本
 

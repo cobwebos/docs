@@ -6,19 +6,19 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ae99ba6540250d18c0bb5f6365e2ed3b9939ac9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383863"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>在 Azure Active Directory 应用程序库中列出你的应用程序
 
@@ -51,7 +51,7 @@ ms.locfileid: "80666939"
 
 在测试应用程序集成是否可用于 Azure AD 后，请在[Microsoft 应用程序网络门户](https://microsoft.sharepoint.com/teams/apponboarding/Apps)中提交应用程序请求。
 
-如果在登录后出现以下页面，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供要用于提交请求的电子邮件帐户。 诸如这样的业务电子邮件[name@yourbusiness.com](mailto:name@yourbusiness.com)地址是首选的。 Azure AD 团队将在 Microsoft 应用程序网络门户中添加该帐户。
+如果在登录后出现以下页面，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。 提供要用于提交请求的电子邮件帐户。 诸如这样的业务电子邮件地址 [name@yourbusiness.com](mailto:name@yourbusiness.com) 是首选的。 Azure AD 团队将在 Microsoft 应用程序网络门户中添加该帐户。
 
 ![SharePoint 门户上的访问请求消息](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -79,11 +79,11 @@ ms.locfileid: "80666939"
  
 **安全解决方案：**
 
-* MFA 注册的来宾用户修正其自己的用户风险。 这可以由来宾用户执行安全的密码更改或重置（https://aka.ms/sspr)在其主租户上，这需要 MFA 和 SSPR）执行。 必须在 Azure AD 而不是本地上启动安全密码更改或重置。
+* MFA 注册的来宾用户修正其自己的用户风险。 这可以由来宾用户执行安全的密码更改或重置（ https://aka.ms/sspr) 在其主租户上，这需要 MFA 和 SSPR）执行。 必须在 Azure AD 而不是本地上启动安全密码更改或重置。
 
-* 来宾用户的管理员可以纠正他们的风险。 在这种情况下，管理员将执行密码重置（临时密码生成）。 这不需要 Identity Protection。 来宾用户的管理员可以前往https://aka.ms/RiskyUsers ，并单击 "重置密码"。
+* 来宾用户的管理员可以纠正他们的风险。 在这种情况下，管理员将执行密码重置（临时密码生成）。 这不需要 Identity Protection。 来宾用户的管理员可以前往 https://aka.ms/RiskyUsers ，并单击 "重置密码"。
 
-* 来宾用户的管理员需要关闭/消除其风险。 同样，这不需要 Identity Protection。 管理员可以前往https://aka.ms/RiskyUsers ，并单击 "消除用户风险"。 但是，管理员必须执行 "截止努力"，以确保在关闭用户风险之前，这是误报风险评估。 否则，他们会通过抑制风险评估而不进行调查，使其和 Microsoft 的资源面临风险。
+* 来宾用户的管理员需要关闭/消除其风险。 同样，这不需要 Identity Protection。 管理员可以前往 https://aka.ms/RiskyUsers ，并单击 "消除用户风险"。 但是，管理员必须执行 "截止努力"，以确保在关闭用户风险之前，这是误报风险评估。 否则，他们会通过抑制风险评估而不进行调查，使其和 Microsoft 的资源面临风险。
 
 > [!NOTE]
 > 如果访问有任何问题，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
@@ -136,7 +136,7 @@ ms.locfileid: "80666939"
 
 ## <a name="list-requests-by-customers"></a>列出客户的请求
 
-客户可以通过选择**客户** > 的应用请求**提交新请求**来提交列出应用程序的请求。
+客户可以通过选择**客户的应用请求**  >  **提交新请求**来提交列出应用程序的请求。
 
 ![显示客户请求的应用磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
 
@@ -156,4 +156,4 @@ ms.locfileid: "80666939"
 
 ## <a name="escalations"></a>升级
 
-对于任何升级，请将电子邮件发送到[Azure AD 的 SSO 集成团队](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.com，并尽快做出回复。
+对于任何升级，请将电子邮件发送到[Azure AD 的 SSO 集成团队](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.com ，并尽快做出回复。

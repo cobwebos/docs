@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332806"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85385937"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义 Azure MFA 技术配置文件
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 使用 Azure 多重身份验证 (MFA) 
 
 此技术配置文件：
 
-- 不提供与用户交互的接口， 而是从[自断言](self-asserted-technical-profile.md)技术配置文件或充当[验证技术配置文件](display-controls.md)的[显示控件](validation-technical-profile.md)中调用用户界面。
+- 不提供与用户交互的接口， 而是从[自断言](self-asserted-technical-profile.md)技术配置文件或充当[验证技术配置文件](validation-technical-profile.md)的[显示控件](display-controls.md)中调用用户界面。
 - 使用 Azure MFA 服务生成代码并将其发送到某个手机号，然后验证该代码。  
 - 通过文本消息验证电话号码。
 
@@ -34,7 +34,7 @@ Azure Active Directory B2C (Azure AD B2C) 使用 Azure 多重身份验证 (MFA) 
 
 ## <a name="protocol"></a>协议
 
-“Protocol”  元素的“Name”  属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称  ：
+“Protocol”元素的“Name”属性必须设置为 `Proprietary`。 handler 属性必须包含 Azure AD B2C 使用的协议处理程序程序集的完全限定名称  ：
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 以下示例演示了 Azure MFA 的技术配置文件：
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
     <DisplayName>Send Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -93,7 +93,7 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 以下示例显示了一个 Azure MFA 技术配置文件（用于通过短信发送代码）。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
   <DisplayName>Send Sms</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -153,7 +153,7 @@ Azure MFA 协议提供程序未返回任何 OutputClaims，因此无需指定输
 
 以下示例显示了用来验证代码的 Azure MFA 技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-VerifySms">
     <DisplayName>Verify Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

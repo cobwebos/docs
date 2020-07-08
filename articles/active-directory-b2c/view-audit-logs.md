@@ -6,24 +6,24 @@ services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264214"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85383931"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
 Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有关 B2C 资源、颁发的令牌和管理员访问权限的活动信息。 本文简要概述了审核日志中提供的信息，并介绍了如何访问 Azure AD B2C 租户的此数据。
 
-审核日志事件仅保留**七天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
+审核日志事件只保留**7 天**。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
 
 > [!NOTE]
 > 无法在 Azure 门户中“Azure Active Directory”或“Azure AD B2C”页的“用户”部分查看各个 Azure AD B2C 应用程序的用户登录。************ 该处的登录事件会显示用户活动，但不能回过头来将其与用户登录到的 B2C 应用程序相关联。 必须使用其审核日志，这一点会在本文中进一步阐述。
@@ -34,10 +34,10 @@ Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有�
 
 |活动类型 |说明  |
 |---------|---------|
-|Authorization |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
+|授权 |涉及授权用户访问 B2C 资源（例如，管理员访问 B2C 策略列表）的活动。         |
 |目录 |与管理员使用 Azure 门户登录时检索到的目录属性相关的活动。 |
 |应用程序 | 与 B2C 应用程序相关的创建、读取、更新和删除 (CRUD) 操作。 |
-|密钥 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
+|键 |与 B2C 密钥容器中存储的密钥相关的 CRUD 操作。 |
 |资源 |与 B2C 资源相关的 CRUD 操作。 例如，策略和标识提供者。
 |身份验证 |用户凭据和令牌颁发的验证。|
 
@@ -51,9 +51,9 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 活动详细信息面板包含以下相关信息：
 
-|部分|字段|说明|
+|部分|字段|描述|
 |-------|-----|-----------|
-| 活动 | 名称 | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。** |
+| 活动 | “属性” | 发生了哪项活动。 例如，“向应用程序颁发 id_token”（这将结束实际的用户登录）。** |
 | 发起者（参与者） | ObjectId | 用户登录的 B2C 应用程序的**对象 ID**。 此标识符在 Azure 门户中不可见，但可以通过 Microsoft Graph API 访问它。 |
 | 发起者（参与者） | SPN | 用户登录的 B2C 应用程序的**应用程序 ID**。 |
 | 目标 | ObjectId | 正在登录的用户的**对象 ID**。 |
@@ -94,7 +94,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 按照以下文章中的步骤操作，以注册具有所需权限的应用程序：
 
-[用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)
+[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)
 
 使用适当的权限注册应用程序后，请参阅本文后面的 "PowerShell 脚本" 一节，了解如何使用脚本获取活动事件的示例。
 
@@ -102,7 +102,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 若要通过 API 下载 Azure AD B2C 审核日志事件，请按 `B2C` 类别筛选日志。 若要按类别筛选，请在调用 Azure AD 报告 API 终结点时使用 `filter` 查询字符串参数。
 
-```HTTP
+```http
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
@@ -158,7 +158,7 @@ if ($oauth.access_token -ne $null) {
 
 下面是本文前面所示的示例活动事件的 JSON 表示形式：
 
-```JSON
+```json
 {
     "id": "B2C_DQO3J_4984536",
     "category": "Authentication",
