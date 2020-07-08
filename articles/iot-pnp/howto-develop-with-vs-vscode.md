@@ -8,12 +8,11 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 91e7b1c0be9a38c3d79440f07d944d182980dc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298221"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>使用 Visual Studio 和 Visual Studio Code 来构建 IoT 即插即用设备
 
@@ -25,7 +24,7 @@ ms.locfileid: "80159228"
 - 使用设备项目中生成的代码。
 - 通过重新生成主干代码进行迭代。
 
-若要了解有关使用 VS Code 开发 IoT 设备的详细信息， [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench)请参阅。
+若要了解有关使用 VS Code 开发 IoT 设备的详细信息，请参阅 [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench) 。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -53,11 +52,11 @@ ms.locfileid: "80159228"
 
 - **项目类型**。 代码生成器还会生成一个 CMake 或 Arduino 项目。 目前支持的项目类型为：
 
-    - **Windows 上的 CMake 项目**：适用于在 windows 上使用[CMake](https://cmake.org/)作为生成系统的设备项目。 此选项在`CMakeLists.txt`与 C 代码相同的文件夹中生成设备 SDK 配置。
-    - **Linux 上的 CMake 项目**：用于在 linux 上使用[CMake](https://cmake.org/)作为生成系统的设备项目。 此选项在`CMakeLists.txt`与 C 代码相同的文件夹中生成设备 SDK 配置。
+    - **Windows 上的 CMake 项目**：适用于在 windows 上使用[CMake](https://cmake.org/)作为生成系统的设备项目。 此选项 `CMakeLists.txt` 在与 C 代码相同的文件夹中生成设备 SDK 配置。
+    - **Linux 上的 CMake 项目**：用于在 linux 上使用[CMake](https://cmake.org/)作为生成系统的设备项目。 此选项 `CMakeLists.txt` 在与 C 代码相同的文件夹中生成设备 SDK 配置。
     - **MXChip Iot DevKit project**：用于在[MXChip IoT DevKit](https://aka.ms/iot-devkit)设备上运行的设备项目。 此选项生成可[在 VS Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)或 Arduino IDE 中使用的 Arduino 项目，以在 IoT DevKit 设备上生成和运行。
 
-- **设备 SDK 类型**。 如果选择 " `CMakeLists.txt`CMake" 作为 "项目类型"，这是在中配置生成的代码如何将 Azure IoT C 设备 SDK 包括在内的步骤：
+- **设备 SDK 类型**。 如果选择 "CMake" 作为 "项目类型"，这是在中配置生成的代码如何将 Azure IoT C 设备 SDK 包括在内的步骤 `CMakeLists.txt` ：
 
     - **通过源代码**：生成的代码依赖于要包含在中的[设备 SDK 源代码](https://github.com/Azure/azure-iot-sdk-c)，并与之一起生成。 如果已自定义设备 SDK 源代码，则建议使用此设置。
     - **Via Vcpkg**：生成的代码依赖于[设备 SDK Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) ，以包括在中，并与它一起生成。 对于运行 Windows、Linux 或 macOS 的设备，建议使用此方法。
@@ -69,9 +68,9 @@ ms.locfileid: "80159228"
 
 代码生成完成后，扩展将使用代码打开一个新的 VS Code 窗口。 如果打开生成的文件（如**main. c**），则可能会发现 IntelliSense 会报告它无法打开 c SDK 源文件。 若要启用正确的 IntelliSense 和代码导航，请使用以下步骤包括 C SDK 源：
 
-1. 在 VS Code 中，使用**Ctrl + Shift + P**打开命令面板，键入并选择 " **c/c + +：编辑配置（JSON）** " 以打开**c_cpp_properties 的 JSON**文件。
+1. 在 VS Code 中，使用**Ctrl + Shift + P**打开命令面板，键入并选择 " **c/c + +：编辑配置（JSON）** " 以打开文件**上的c_cpp_properties.js** 。
 
-1. 在`includePath`部分中添加设备 SDK 的路径：
+1. 在部分中添加设备 SDK 的路径 `includePath` ：
 
     ```json
     "includePath": [
@@ -80,7 +79,7 @@ ms.locfileid: "80159228"
     ]
     ```
 
-1. 保存文件。
+1. 保存该文件。
 
 ## <a name="use-the-generated-code"></a>使用生成的代码
 
@@ -92,7 +91,7 @@ ms.locfileid: "80159228"
 
 1. 打开终端应用程序。
 
-1. `apt-get`使用命令安装**GCC**、 `cmake` **Git**、和所有依赖项：
+1. 使用命令安装**GCC**、 **Git**、 `cmake` 和所有依赖项 `apt-get` ：
 
     ```bash
     sudo apt-get update
@@ -127,7 +126,7 @@ ms.locfileid: "80159228"
     ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
-1. 在文件夹`cmake`中创建一个子目录，其中包含生成的代码存根，并导航到该文件夹：
+1. `cmake`在文件夹中创建一个子目录，其中包含生成的代码存根，并导航到该文件夹：
 
     ```bash
     mkdir cmake
@@ -156,7 +155,7 @@ ms.locfileid: "80159228"
 
 1. 安装[Visual Studio 2019 （社区版、专业版或企业版）](https://visualstudio.microsoft.com/downloads/) -确保包括**NuGet 包管理器**组件和**采用 c + + 的桌面开发**工作负荷。
 
-1. 打开 Visual Studio，选择 "**文件" > 打开 "> CMake** "，以`CMakeLists.txt`在包含生成的代码的文件夹中打开。
+1. 打开 Visual Studio，选择 "**文件" > 打开 "> CMake** "，以 `CMakeLists.txt` 在包含生成的代码的文件夹中打开。
 
 1. 在**常规**工具栏中，查找 "**配置**" 下拉列表。 选择 "**管理配置**"，为你的项目添加 CMake 设置。
 
@@ -170,13 +169,13 @@ ms.locfileid: "80159228"
     -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
     ```
 
-1. 保存文件。
+1. 保存该文件。
 
 1. 切换到 "**配置**" 下拉列表中的 " **x86-调试**"。 CMake 需要几秒钟时间才能为它生成缓存。 查看 "输出" 窗口以查看进度。
 
     ![CMake 输出](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
 
-1. 在**解决方案资源管理器**中，右键单击根文件夹中`CMakeLists.txt`的，然后从上下文菜单中选择 "**生成**"，以通过设备 SDK 生成生成的代码存根。
+1. 在**解决方案资源管理器**中，右键单击 `CMakeLists.txt` 根文件夹中的，然后从上下文菜单中选择 "**生成**"，以通过设备 SDK 生成生成的代码存根。
 
 1. 生成成功后，在命令提示符处运行应用程序，并将 IoT 中心设备连接字符串指定为参数。
 
@@ -193,7 +192,7 @@ ms.locfileid: "80159228"
 
 1. 打开终端应用程序。
 
-1. 使用[Homebrew](https://homebrew.sh)安装所有依赖项：
+1. 使用[Homebrew](https://brew.sh)安装所有依赖项：
 
     ```bash
     brew update
@@ -216,7 +215,7 @@ ms.locfileid: "80159228"
 
     应该预料到此操作需要几分钟才能完成。
 
-1. 在包含生成的`cmake`代码的文件夹中创建一个名为的文件夹，然后导航到该文件夹。
+1. `cmake`在包含生成的代码的文件夹中创建一个名为的文件夹，然后导航到该文件夹。
 
     ```bash
     mkdir cmake
@@ -247,10 +246,10 @@ ms.locfileid: "80159228"
 
 1. 选择 "**为 {项目名称} 重新生成代码**"。
 
-1. 代码生成器使用之前配置的设置并重新生成代码。 但是，它不会覆盖可能包含用户代码的文件，例如`main.c`和`{project_name}_impl.c`。
+1. 代码生成器使用之前配置的设置并重新生成代码。 但是，它不会覆盖可能包含用户代码的文件，例如 `main.c` 和 `{project_name}_impl.c` 。
 
 > [!NOTE]
-> 如果在接口文件中更新 URN id，则会将其视为新接口。 当你重新生成代码时，代码生成器将为接口生成代码，但不会覆盖`{project_name}_impl.c`文件中的原始代码。
+> 如果在接口文件中更新 URN id，则会将其视为新接口。 当你重新生成代码时，代码生成器将为接口生成代码，但不会覆盖文件中的原始代码 `{project_name}_impl.c` 。
 
 ## <a name="problems-and-feedback"></a>问题和反馈
 

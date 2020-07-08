@@ -11,12 +11,11 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84295416"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
 
@@ -24,7 +23,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持各种新式应用程序体系�
 
 必须通过 [Azure 门户](https://portal.azure.com/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](tutorial-create-tenant.md)中。 应用程序注册过程将收集和分配一些值，例如：
 
-* 用于唯一标识应用程序的应用程序 ID****。
+* 用于唯一标识应用程序的应用程序 ID  。
 * 可用于将响应定向回应用程序的**回复 URL**。
 
 发送到 Azure AD B2C 的每个请求都指定了**用户流**（内置策略）或用于控制 Azure AD B2C 行为的**自定义策略**。 两种策略类型都可以用来创建一系列自定义程度很高的用户体验。
@@ -119,13 +118,15 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 包含长时运行进程或不需要用户操作的应用程序还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用程序可使用应用程序的标识（而不是用户的委派标识）并使用 OAuth 2.0 客户端凭据流来进行身份验证和获取令牌。 客户端凭据流与代表流不同，代表流不会应用于服务器到服务器的身份验证。
 
-虽然 Azure AD B2C 当前不支持客户端凭据流，但可使用 Azure AD 设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。  使用 Azure AD B2C 租户的 Azure AD 功能支持客户端凭据流。
+尽管 Azure AD B2C 身份验证服务当前不直接支持 OAuth 2.0 客户端凭据授予流，但你可以使用 Azure AD B2C 租户中的应用程序的 Azure AD 和 Microsoft 标识平台/token 终结点设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
 
 若要设置客户端凭据流，请参阅 [Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)。 如 [Azure AD 令牌参考](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)中所述，身份验证成功后会收到格式化的令牌，以便 Azure AD 可使用它。
 
+有关注册管理应用程序的说明，请参阅[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
+
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 链（代理流）
 
-许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Microsoft online 服务，例如 Microsoft Graph API。
+许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Microsoft Graph API 等 Microsoft 联机服务。
 
 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为“代理流”）来支持这种链接的 Web API 方案。  但是，Azure AD B2C 中目前尚未实现代理流。
 

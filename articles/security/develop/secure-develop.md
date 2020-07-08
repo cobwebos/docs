@@ -15,7 +15,6 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
 ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/01/2020
 ms.locfileid: "84266757"

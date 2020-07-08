@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f140aa905916524eca66e764f08b699de26be650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300675"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的连接体系结构
 本文介绍 Azure Database for PostgreSQL 的连接体系结构，以及如何在 Azure 内部和外部将流量从客户端定向到 Azure Database for PostgreSQL 数据库实例。
@@ -44,6 +43,7 @@ ms.locfileid: "80546595"
 | 美国东部 | 40.121.158.30, 191.238.6.43  |
 | 美国东部 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | 法国中部 | 40.79.137.0, 40.79.129.1  |
+| 法国南部 | 40.79.177.0     |
 | 德国中部 | 51.4.144.100     |
 | 德国东北部 | 51.5.144.179  |
 | 印度中部 | 104.211.96.159     |

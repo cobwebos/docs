@@ -10,14 +10,13 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266094"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>注册验证方法信息以重置你自己的密码
 
@@ -26,7 +25,7 @@ ms.locfileid: "83739598"
 你的管理员必须打开此功能，你才能注册你的信息并重置你的密码。 如果看不到“忘记密码”选项，则表明管理员尚未为你的组织打开此功能。 如果你认为这是错误，请联系支持人员以获取帮助。
 
 >[!Important]
->本文适用于尝试使用自助服务密码重置注册的用户。 这意味着你将能够重置自己的工作或学校密码（如 alain@contoso.com），而无需管理员的帮助。 如果你是管理员，并且正在查找有关如何为员工或其他用户打开自助式密码重置的详细信息，请参阅[部署 Azure AD 自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)以及其他文章。
+>本文适用于尝试使用自助服务密码重置注册的用户。 这意味着你将能够重置自己的工作或学校密码（如 alain@contoso.com ），而无需管理员的帮助。 如果你是管理员，并且正在查找有关如何为员工或其他用户打开自助式密码重置的详细信息，请参阅[部署 Azure AD 自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)以及其他文章。
 
 ## <a name="set-up-your-password-reset-verification-method"></a>设置密码重置验证方法
 

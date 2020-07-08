@@ -3,12 +3,11 @@ title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 获取有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300920"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -20,15 +19,15 @@ ms.locfileid: "83677784"
 
 ## <a name="can-i-spread-an-aks-cluster-across-regions"></a>AKS 群集是否可以跨区域分布？
 
-不可以。 AKS 群集为区域性资源，不可跨区域分布。 如需了解如何创建包含多个区域的体系结构，请参阅[业务连续性和灾难恢复最佳做法][bcdr-bestpractices]。
+否。 AKS 群集为区域性资源，不可跨区域分布。 如需了解如何创建包含多个区域的体系结构，请参阅[业务连续性和灾难恢复最佳做法][bcdr-bestpractices]。
 
 ## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>AKS 群集是否可以跨可用性区域？
 
-可以。 在[支持可用性区域的区域][availability-zones]中，可以在一个或跨多个[可用性区域][az-regions]部署 AKS 群集。
+是的。 在[支持可用性区域的区域][availability-zones]中，可以在一个或跨多个[可用性区域][az-regions]部署 AKS 群集。
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>是否可以控制谁有权限访问 Kubernetes API 服务器？
 
-可以。 可以通过以下两种方式限制对 API 服务器的访问：
+是的。 可以通过以下两种方式限制对 API 服务器的访问：
 
 - 如果希望保留 API 服务器的公共终结点但仅限对一组受信任的 IP 范围的访问，请使用 [API 服务器授权的 IP 范围][api-server-authorized-ip-ranges]。
 - 如要仅允许从你的虚拟网络内访问 API 服务器，请使用[专用群集][private-clusters]。
@@ -62,7 +61,7 @@ AKS 基于多个 Azure 基础结构资源构建（包括虚拟机规模集、虚
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>是否可以自定义 AKS 节点资源组的名称？
 
-可以。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location，但你也可以提供一个自定义名称。
+是的。 默认情况下，AKS 将节点资源组命名为 MC_resourcegroupname_clustername_location，但你也可以提供一个自定义名称。
 
 若要自行指定一个资源组名称，请安装 [aks-preview][aks-preview-cli] Azure CLI 扩展版本 0.3.2 或更高版本。 使用 [az aks create][az-aks-create] 命令创建 AKS 群集时，请使用 --node-resource-group 参数并为资源组指定一个名称。 如果[使用 Azure 资源管理器模板][aks-rm-template]部署 AKS 群集，可以使用 nodeResourceGroup 属性定义资源组名称。
 
@@ -75,11 +74,13 @@ AKS 基于多个 Azure 基础结构资源构建（包括虚拟机规模集、虚
 * 不能为节点资源组指定不同的订阅。
 * 不能在节点资源组创建完成后更改其名称。
 * 不能为节点资源组内的受管理资源指定名称。
-* 不能修改或删除节点资源组内的受管理资源的标记 （其他信息详见下一节）。
+* 不能修改或删除节点资源组内受管理资源中由 Azure 创建的标记。 （其他信息详见下一节）。
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>可以修改节点资源组中 AKS 资源的标记和其他属性吗？
 
-修改或删除节点资源组中 Azure 创建的标记或其他资源属性可能会导致预期之外的结果，例如缩放和升级错误。 AKS 支持创建和修改自定义标记。 有时，你可能想要创建或修改自定义标记，例如，在指定业务部门或成本中心时。 修改 AKS 群集中节点资源组下的资源会中断服务级别目标 (SLO)。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
+修改或删除节点资源组中 Azure 创建的标记或其他资源属性可能会导致预期之外的结果，例如缩放和升级错误。 使用 AKS 可以创建和修改最终用户创建的自定义标记。 有时，你可能想要创建或修改自定义标记，例如，在指定业务部门或成本中心时。 这可以通过使用托管资源组上的作用域创建 Azure 策略来实现。
+
+但是，在 AKS 群集中的节点资源组下修改资源上的任何**Azure 创建的标记**是不受支持的操作，该操作会中断服务级别目标（SLO）。 有关详细信息，请参阅 [AKS 是否提供服务级别协议？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支持哪些 Kubernetes 许可控制器？ 是否可以添加或删除许可控制器？
 

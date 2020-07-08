@@ -1,16 +1,15 @@
 ---
 title: Azure Dev Spaces 工作原理
 services: azure-dev-spaces
-ms.date: 03/24/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程
-keywords: Azure Dev Spaces，Dev 空间，Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234960"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84307361"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 工作原理
 
@@ -22,13 +21,13 @@ Azure Dev Spaces 提供多种方法来快速循环访问和调试 Kubernetes 应
 
 Azure Dev Spaces 降低了在 AKS 群集的上下文中开发、测试和迭代 Kubernetes 应用程序的工作量。 这种减少的工作量使开发人员可以专注于应用程序的业务逻辑，而不是将其服务配置为在 Kubernetes 中运行。
 
-### <a name="connect-your-development-machine-to-aks"></a>将开发计算机连接到 AKS
+### <a name="local-process-with-kubernetes"></a>本地 Kubernetes 进程
 
-利用 Azure Dev Spaces，你可以将开发计算机连接到 AKS 群集，以便在开发计算机上运行和调试代码，就像它在群集上运行一样。 Azure Dev Spaces 通过在群集上运行一个 pod，将流量重定向到连接的 AKS 群集，该群集充当远程代理，用于重定向开发计算机和群集之间的流量。 此流量重定向允许开发计算机上的代码和在 AKS 群集中运行的服务进行通信，就像它们位于同一个 AKS 群集中一样。 有关将开发计算机连接到 AKS 的详细信息，请参阅将[开发计算机连接到 AKS 群集的方式][how-it-works-connect]。
+通过 Kubernetes 的本地进程，可以将开发计算机连接到 Kubernetes 群集，使你能够在开发计算机上运行和调试代码，就像它在群集上运行一样。 通过在群集上运行一个可充当远程代理来重定向开发计算机和群集之间的流量的 pod，Azure Dev Spaces 重定向已连接的群集之间的流量。 此流量重定向允许开发计算机上的代码和群集中运行的服务进行通信，就像它们位于同一群集中一样。 有关将开发计算机连接到 Kubernetes 群集的详细信息，请参阅[使用 Kubernetes 的本地进程的工作原理][how-it-works-local-process-kubernetes]。
 
 ### <a name="run-your-code-in-aks"></a>在 AKS 中运行你的代码
 
-除了在开发计算机与 AKS 群集之间重定向流量外 Azure Dev Spaces，你还可以配置并快速在 AKS 中运行代码。 通过 Visual Studio、Visual Studio Code 或 Azure Dev Spaces CLI，Azure 开发人员空间会将代码上传到群集，然后生成并运行它。 Azure Dev spaces 还可以智能地同步代码更改，并重新启动服务，以反映所需的更改。 运行代码时，生成日志和 HTTP 跟踪会流式传输回客户端，以便你可以监视进度并诊断任何问题。 你还可以使用 Azure Dev Spaces 将 Visual Visual Studio Code Studio 中的调试器附加到 Java、node.js 和 .NET Core 服务中。 有关详细信息，请参阅[准备 Azure Dev Spaces 项目的工作][how-it-works-prep]原理、[使用 Azure Dev Spaces 运行代码的工作][how-it-works-up]原理以及[使用 Azure Dev Spaces 远程调试代码的][how-it-works-remote-debugging]方式。
+除了在开发计算机与 AKS 群集之间重定向流量外 Azure Dev Spaces，你还可以配置并快速在 AKS 中运行代码。 通过 Visual Studio、Visual Studio Code 或 Azure Dev Spaces CLI，Azure 开发人员空间会将代码上传到群集，然后生成并运行它。 Azure Dev spaces 还可以智能地同步代码更改，并重新启动服务，以反映所需的更改。 运行代码时，生成日志和 HTTP 跟踪会流式传输回客户端，以便你可以监视进度并诊断任何问题。 你还可以使用 Azure Dev Spaces 将 Visual Visual Studio Code Studio 中的调试器附加到 Java、Node.js 和 .NET Core 服务中。 有关详细信息，请参阅[准备 Azure Dev Spaces 项目的工作][how-it-works-prep]原理、[使用 Azure Dev Spaces 运行代码的工作][how-it-works-up]原理以及[使用 Azure Dev Spaces 远程调试代码的][how-it-works-remote-debugging]方式。
 
 ## <a name="team-development"></a>团队开发
 
@@ -46,10 +45,10 @@ Azure Dev Spaces 有助于团队在同一 AKS 群集上高效地工作应用程�
 
 若要开始将本地开发计算机连接到 AKS 群集，请参阅[将开发计算机连接到 AKS 群集][connect]。
 
-若要开始使用 Azure Dev Spaces 进行团队开发，请参阅[Azure Dev Spaces 快速入门中的团队开发][quickstart-team]。
+若要开始使用 Azure Dev Spaces 进行团队开发，请参阅 [Azure Dev Spaces 中的团队开发][quickstart-team]快速入门。
 
-[connect]: how-to/connect.md
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[connect]: how-to/local-process-kubernetes-vs-code.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

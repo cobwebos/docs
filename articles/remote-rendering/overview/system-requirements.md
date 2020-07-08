@@ -5,17 +5,16 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411126"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300600"
 ---
 # <a name="system-requirements"></a>系统要求
 
 > [!IMPORTANT]
-> Azure 远程渲染目前为公共预览版。 
+> Azure 远程渲染目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本章列出了适用于*Azure 远程呈现*（ARR）的最低系统要求。
@@ -69,6 +68,9 @@ Azure 远程呈现目前仅支持将**HoloLens 2**和 Windows 桌面作为目标
 必须安装以下软件：
 
 * 最新版本的**Visual Studio 2019** [（下载）](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [适用于混合现实的 Visual Studio Tools](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具体来说，必须安装以下工作负载：
+  * **使用 C++ 的桌面开发**
+  * **通用 Windows 平台 (UWP) 开发**
 * **Windows SDK 10.0.18362.0** [（下载）](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **GIT** [（下载）](https://git-scm.com/downloads)
 * 可选：若要在台式计算机上查看来自服务器的视频流，需要**HEVC 视频扩展** [（Microsoft Store 链接）](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)。

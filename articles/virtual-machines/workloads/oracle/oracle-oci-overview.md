@@ -11,15 +11,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299870"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
 
@@ -35,10 +34,7 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 
 跨云连接为你提供了一种解决方案，用于在 Azure 虚拟机上运行 Oracle 业界领先的应用程序和你自己的自定义应用程序，同时享受 OCI 中托管数据库服务的权益。 
 
-> [!IMPORTANT]
-> 到 2020 年 5 月，Oracle 将证明这些应用程序在使用 Azure/Oracle 云互连解决方案时可以在 Azure 中运行。
-
-可在跨云配置中运行的应用程序包括：
+从5月2020，以下应用程序通过跨云配置进行认证：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

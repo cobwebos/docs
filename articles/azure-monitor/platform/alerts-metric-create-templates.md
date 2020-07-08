@@ -5,14 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299292"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -563,7 +562,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>用于监视多个条件的静态阈值指标警报的模板
 
-较新的指标警报支持对多维指标发出警报，并支持定义多个条件（每个警报规则最多5个标准）。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
+较新的指标警报支持根据多维指标发出警报，并支持定义多个条件（每个警报规则最多定义 5 个条件）。 可以使用以下模板创建根据维度指标发出的更高级指标警报规则，并指定多个标准。
 
 在包含多个条件的警报规则中使用维度时，请注意以下约束：
 - 在每个条件中，只能为每个维度选择一个值。
@@ -806,15 +805,15 @@ az group deployment create \
 
 单个警报规则可以一次监视多个指标时序，从而减少要管理的警报规则。
 
-在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合    ：
-1. **ResponsType** - 使用“\*”通配符意味着对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序  。
-2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序   。
+在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合  ：
+1. **ResponsType** - 使用“\*”通配符意味着对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序。
+2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序 。
 
 例如，该警报规则监视的几个潜在时序是：
-- Metric = 事务、ResponseType = 成功、ApiName = GetBlob   
-- Metric = 事务、ResponseType = 成功、ApiName = PutBlob   
-- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob   
-- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob   
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob  
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob  
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob  
+- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob  
 
 为进行本次演练，请将下面的 json 保存为 multidimensionalstaticmetricalert.json。
 
@@ -1026,15 +1025,15 @@ az group deployment create \
 
 单个动态阈值警报规则可以一次为数百个指标时序（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
-在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合    ：
-1. **ResponsType** - 对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序  。
-2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序   。
+在下面的示例中，警报规则监视“事务”指标的“ResponseType”和“ApiName”的维度值组合  ：
+1. **ResponsType** - 对于“ResponseType”维度的每个值（包括未来值），将分别监视不同的时序。
+2. **ApiName** - 只对“GetBlob”和“PutBlob”维度值监视不同的时序 。
 
 例如，该警报规则监视的几个潜在时序是：
-- Metric = 事务、ResponseType = 成功、ApiName = GetBlob   
-- Metric = 事务、ResponseType = 成功、ApiName = PutBlob   
-- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob   
-- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob   
+- Metric = 事务、ResponseType = 成功、ApiName = GetBlob  
+- Metric = 事务、ResponseType = 成功、ApiName = PutBlob  
+- Metric = 事务、ResponseType = 服务器超时、ApiName = GetBlob  
+- Metric = 事务、ResponseType = 服务器超时、ApiName = PutBlob  
 
 为进行本次演练，请将下面的 json 保存为 advanceddynamicmetricalert.json。
 
@@ -1250,7 +1249,7 @@ az group deployment create \
 
 若要详细了解 Azure Monitor 中的自定义指标，请参阅 [Azure Monitor 中的自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
 
-针对自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
+基于自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 还应确保已报告自定义指标，因为无法针对尚不存在的自定义指标创建警报规则。
 
 为进行本次演练，请将下面的 json 保存为 customstaticmetricalert.json。
 
@@ -1517,11 +1516,11 @@ az group deployment create \
 
 - 监视一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）。
 - 监视单个订阅中的所有虚拟机（在单个 Azure 区域中）。
-- 监视单个订阅中的一个虚拟机列表（在单个 Azure 区域中）。
+- 监视单个订阅中的虚拟机列表（在单个 Azure 区域中）。
 
 > [!NOTE]
 >
-> 在监视多个资源的指标警报规则中，只允许一个条件。
+> 在监视多个资源的指标警报规则中，仅允许包含一个条件。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一个或多个资源组中所有虚拟机上的静态阈值警报
 
@@ -3549,7 +3548,6 @@ az group deployment create \
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",

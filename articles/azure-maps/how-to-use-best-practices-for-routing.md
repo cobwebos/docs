@@ -1,6 +1,6 @@
 ---
 title: Azure Maps 路线服务的最佳实践 |Microsoft Azure 映射
-description: 了解如何使用 Microsoft Azure Maps 中的路线服务来高效地进行路由。
+description: 了解如何使用 Microsoft Azure Maps 中的路线服务来路由车辆。
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84266689"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps 路由服务的最佳做法
 
@@ -29,11 +28,11 @@ Azure Maps[路线服务](https://docs.microsoft.com/rest/api/maps/route)中的�
 * 使用支持点优化备选路由。 例如，提供通过电力公司收费工作站的备用路由。
 * 将[路线服务](https://docs.microsoft.com/rest/api/maps/route)与 AZURE MAPS Web SDK 一起使用
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-若要调用 Azure Maps Api，需要 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取主键](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主密钥也称为主要订阅密钥或订阅密钥。
+若要调用 Azure Maps Api，需要 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 主密钥也称为主要订阅密钥或订阅密钥。
 
-有关 Azure Maps 中的身份验证的信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。 有关路线服务的覆盖范围的详细信息，请参阅[路由覆盖面](routing-coverage.md)。
+有关 Azure Maps 中身份验证的信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。 有关路线服务的覆盖范围的详细信息，请参阅[路由覆盖面](routing-coverage.md)。
 
 本文使用[Postman 应用](https://www.postman.com/downloads/)来构建 REST 调用，但你可以选择任何 API 开发环境。
 
@@ -56,7 +55,7 @@ Azure Maps[路线服务](https://docs.microsoft.com/rest/api/maps/route)中的�
 
 下面是用于显示路线方向和矩阵 Api 的某些功能的比较：
 
-| Azure Maps API | 请求中的最大查询数 | 避免区域 | 卡车和电车布线 | waypoints 和旅游推销员优化 | 支持点 |
+| Azure Maps API | 请求中的最大查询数 | 避免区域 | 卡车和电车布线 | Waypoints 和旅游推销员优化 | 支持点 |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
 | 获取路线方向 | 1 | | X | X | |
 | 后敷设方向 | 1 | X | X | X | X |
@@ -67,13 +66,13 @@ Azure Maps[路线服务](https://docs.microsoft.com/rest/api/maps/route)中的�
 
 ## <a name="request-historic-and-real-time-data"></a>请求历史数据和实时数据
 
-默认情况下，路由服务假定旅行模式为汽车，并现在出发时间为。 它会根据实时流量条件返回路由，除非路由计算请求另外指定。 捕获与时间相关的流量限制，如 "在 4:00 PM 之间不允许使用左移到 6:00 PM"，并将由路由引擎考虑。 除非您专门请求了忽略当前实时流量的路由，否则将会考虑 roadworks （如）。 若要忽略当前流量，请`traffic`在`false` API 请求中设置为。
+默认情况下，路由服务假定旅行模式为汽车，并现在出发时间为。 它会根据实时流量条件返回路由，除非路由计算请求另外指定。 捕获与时间相关的流量限制，如 "在 4:00 PM 之间不允许使用左移到 6:00 PM"，并将由路由引擎考虑。 除非您专门请求了忽略当前实时流量的路由，否则将会考虑 roadworks （如）。 若要忽略当前流量，请 `traffic` `false` 在 API 请求中设置为。
 
 路由计算**travelTimeInSeconds**值包括流量导致的延迟。 当出发时间设置为 "现在" 时，它通过利用当前和历史行程时间数据来生成。 如果你的出发时间设置为将来的时间，则 Api 会根据历史数据返回预测的行程时间。
 
 如果你的请求中包含**computeTravelTimeFor = all**参数，则响应中的 summary 元素将包含以下附加字段，其中包括历史流量条件：
 
-| 元素 | 说明|
+| 元素 | 描述|
 | :--- | :--- |
 | noTrafficTravelTimeInSeconds | 预计的预计旅行时间，就像由于流量情况而导致的路由没有延迟，例如由于拥塞 |
 | historicTrafficTravelTimeInSeconds | 使用依赖时间的历史流量数据计算的预计旅行时间 |
@@ -129,9 +128,9 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ## <a name="request-route-and-leg-details"></a>请求路由和支线详细信息
 
-默认情况下，路由服务将返回一个坐标数组。 响应将包含在名为`points`的列表中构成路径的坐标。 路由响应还包括从路由开始到预计运行时间的距离。 这些值可用于计算整个路线的平均速度。
+默认情况下，路由服务将返回一个坐标数组。 响应将包含在名为的列表中构成路径的坐标 `points` 。 路由响应还包括从路由开始到预计运行时间的距离。 这些值可用于计算整个路线的平均速度。
 
-下图显示了`points`元素。
+下图显示了 `points` 元素。
 
 <center>
 
@@ -139,7 +138,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 </center>
 
-展开`point`元素可查看路径的坐标列表：
+展开 `point` 元素可查看路径的坐标列表：
 
 <center>
 
@@ -149,7 +148,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 路由方向 Api 支持可以通过指定**instructionsType**参数来使用的不同格式的指令。 若要格式化说明以便轻松进行计算机处理，请使用**instructionsType = 编码**。 使用**instructionsType = 标记**为用户显示文本说明。 此外，还可以将指令的格式设置为文本，其中指令的某些元素将被标记出来，并且说明中提供了特殊的格式设置。 有关详细信息，请参阅[支持的指令类型的列表](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)。
 
-请求指令时，响应将返回名为`guidance`的新元素。 `guidance`元素包含两条信息：依次旋转方向和摘要说明。
+请求指令时，响应将返回名为的新元素 `guidance` 。 `guidance`元素包含两条信息：依次旋转方向和摘要说明。
 
 <center>
 
@@ -157,7 +156,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 </center>
 
-`instructions`元素为行程保留轮流方向，并`instructionGroups`提供摘要说明。 每个说明摘要都涵盖了可能涵盖多个道路的行程段。 Api 可以返回路由各部分的详细信息。 例如，流量堵塞的坐标范围或流量的当前速度。
+`instructions`元素为行程保留轮流方向，并提供 `instructionGroups` 摘要说明。 每个说明摘要都涵盖了可能涵盖多个道路的行程段。 Api 可以返回路由各部分的详细信息。 例如，流量堵塞的坐标范围或流量的当前速度。
 
 <center>
 
@@ -183,7 +182,7 @@ Azure Maps 路由 Api 支持商用车路由，涵盖了商业卡车路线。 Api
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-路由 API 返回可容纳卡车尺寸和危险废物的方向。 可以通过展开`guidance`元素来读取路由说明。
+路由 API 返回可容纳卡车尺寸和危险废物的方向。 可以通过展开元素来读取路由说明 `guidance` 。
 
 <center>
 
@@ -199,7 +198,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-下面的响应适用于带有2类危险性材料的卡车，这种情况比 class 1 有害材料的危险更小。 当你展开`guidance`元素以阅读方向时，你会注意到，方向并不相同。 对于携带 class 1 物质材料的卡车有更多路线说明。
+下面的响应适用于带有2类危险性材料的卡车，这种情况比 class 1 有害材料的危险更小。 当你展开 `guidance` 元素以阅读方向时，你会注意到，方向并不相同。 对于携带 class 1 物质材料的卡车有更多路线说明。
 
 <center>
 
@@ -209,11 +208,11 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ## <a name="request-traffic-information-along-a-route"></a>沿路由请求流量信息
 
-使用 Azure Maps 路由方向 Api，开发人员可以通过在请求中包含`sectionType`参数来请求每个部分类型的详细信息。 例如，您可以为每个交通堵塞段请求速度信息。 请参阅[sectionType 键的值列表](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype)，了解你可以请求的各种详细信息。
+使用 Azure Maps 路由方向 Api，开发人员可以通过在请求中包含参数来请求每个部分类型的详细信息 `sectionType` 。 例如，您可以为每个交通堵塞段请求速度信息。 请参阅[sectionType 键的值列表](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype)，了解你可以请求的各种详细信息。
 
 ### <a name="sample-query"></a>示例查询
 
-下面的查询将设置`sectionType`为`traffic`。 它将包含来自西雅图的流量信息的部分请求到圣地亚哥。
+下面的查询将设置 `sectionType` 为 `traffic` 。 它将包含来自西雅图的流量信息的部分请求到圣地亚哥。
 
 ```http
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
@@ -249,7 +248,7 @@ Azure Maps 当前提供两种形式的路由优化：
 
 ### <a name="sample-query"></a>示例查询
 
-下面的查询请求六个 waypoints 的路径， `computeBestOrder`参数设置为。 `false` 它也是该`computeBestOrder`参数的默认值。
+下面的查询请求六个 waypoints 的路径， `computeBestOrder` 参数设置为 `false` 。 它也是该参数的默认值 `computeBestOrder` 。
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -275,7 +274,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ### <a name="sample-query"></a>示例查询
 
-下面的查询请求相同六个 waypoints 的路径，如上述示例中所示。 这一次， `computeBestOrder`参数设置为`true` （旅行推销员优化）。
+下面的查询请求相同六个 waypoints 的路径，如上述示例中所示。 这一次， `computeBestOrder` 参数设置为 `true` （旅行推销员优化）。
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -323,7 +322,7 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>在 web 应用中使用路由服务
 
-Azure Maps Web SDK 提供[服务模块](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 node.js 应用程序中使用 Azure Maps REST Api。 服务模块可用于在地图上呈现返回的路由。 模块自动确定要与 GET 和 POST 请求一起使用的 API。
+Azure Maps Web SDK 提供[服务模块](https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest)。 此模块是一个帮助程序库，使用 JavaScript 或 TypeScript 可以轻松地在 web 或 Node.js 应用程序中使用 Azure Maps REST Api。 服务模块可用于在地图上呈现返回的路由。 模块自动确定要与 GET 和 POST 请求一起使用的 API。
 
 ## <a name="next-steps"></a>后续步骤
 

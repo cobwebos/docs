@@ -5,12 +5,11 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure Dev Spaces 的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6328515232b257e01b9b453de4ca0aca820c4038
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414315"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84267488"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>常见问题 Azure Dev Spaces
 
@@ -30,7 +29,7 @@ Azure Dev Spaces 支持[AKS 中所有当前支持的 Kubernetes 正式发布（G
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>能否在现有 Dockerfile 或 Helm 图表中使用 Azure Dev Spaces？
 
-是的，如果你的项目已有 Dockerfile 或 Helm 图表，则可以将这些文件与 Azure Dev Spaces 一起使用。 运行`azds prep`时，请使用`--chart`参数并指定图表的位置。 Azure Dev Spaces 仍将生成*yaml*和*Dockerfile*文件，但不会替换或修改现有 Dockerfile 或 Helm 图表。 可能需要修改*azds*和*Dockerfile*文件，才能在运行`azds up`时将所有内容与现有应用程序一起正常使用。
+是的，如果你的项目已有 Dockerfile 或 Helm 图表，则可以将这些文件与 Azure Dev Spaces 一起使用。 运行时 `azds prep` ，请使用 `--chart` 参数并指定图表的位置。 Azure Dev Spaces 仍将生成*yaml*和*Dockerfile*文件，但不会替换或修改现有 Dockerfile 或 Helm 图表。 可能需要修改*azds*和*Dockerfile*文件，才能在运行时将所有内容与现有应用程序一起正常使用 `azds up` 。
 
 使用自己的 Dockerfile 或 Helm 图表时，有以下限制：
 * 如果只使用一个 Dockerfile，它必须包含启用开发方案所需的所有内容，例如语言 SDK，而不只是运行时。 如果对 Azure Dev Spaces 使用单独的 Dockerfile （如 Dockerfile），则必须在该 Dockerfile 中包含启用开发方案所需的所有内容。
@@ -99,7 +98,6 @@ Azure Dev Spaces 支持[AKS 中所有当前支持的 Kubernetes 正式发布（G
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
-[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities

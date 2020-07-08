@@ -10,12 +10,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40285c811cd6f407c20c40bf3a90ec5b779a9c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264396"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84297898"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ)
 
@@ -49,7 +48,7 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以配置范围，从各种社交标识提供者收集更多使用者的相关信息吗？
 
-否。 一组受支持的社交标识提供者使用的默认范围是：
+不能。 一组受支持的社交标识提供者使用的默认范围是：
 
 * Facebook：电子邮件
 * Google+：电子邮件
@@ -134,21 +133,20 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 请按照以下步骤删除 Azure AD B2C 租户。
 
-可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验********。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
+你可以使用我们新的统一**应用注册**体验或我们的传统**应用程序（旧版）** 体验。 [详细了解此新体验](https://aka.ms/b2cappregtraining)。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
+#### <a name="app-registrations"></a>[应用注册](#tab/app-reg-ga/)
 
 1. 以*订阅管理员身份*登录到[Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
-1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 删除 Azure AD B2C 租户中的所有**用户流(策略)**。
-1. 删除你在 Azure AD B2C 租户中注册的所有**应用程序**。
+1. 选择 "**应用注册**"，然后选择 "**所有应用程序**" 选项卡。
+1. 删除已注册的所有应用程序。
+1. 删除 **b2c-extensions-app**。
+1. 在“管理”下选择“用户” 。
+1. 依次选择每个用户（排除你当前登录时所用的*订阅管理员*用户）。 选择页面底部的“删除”****，并在出现提示时选择“是”****。
 1. 在左侧菜单中，选择“Azure Active Directory”****。
-1. 在“管理”下，选择“用户”   。
-1. 依次选择每个用户（排除你当前登录时所用的*订阅管理员*用户）。 选择页面底部的 "**删除**"，并在出现提示时选择 **"是"** 。
-1. 在“管理”**** 下，选择“应用注册”**** 或“应用注册(旧版)”****。
-1. 选择“查看所有应用程序”****
-1. 选择名为“b2c-extensions-app”**** 的应用程序，选择“删除”****，然后在出现提示时选择“是”****。
 1. 在“管理”下，选择“用户设置”********。
 1. 如果存在，请在“LinkedIn 帐户连接”**** 下选择“否”****，然后选择“保存”****。
 1. 在 "**管理**" 下选择 "**属性**"
@@ -157,18 +155,19 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 在左侧菜单中，选择“Azure Active Directory”****。
 1. 在“概述”**** 页上，选择“删除目录”****。 按照屏幕上的说明完成该过程。
 
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="applications-legacy"></a>[应用程序(旧版)](#tab/applications-legacy/)
 
 1. 以*订阅管理员身份*登录到[Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
-1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择“Azure AD B2C”  。 或者，选择“所有服务”  并搜索并选择“Azure AD B2C”  。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 删除 Azure AD B2C 租户中的所有**用户流(策略)**。
-1. 选择“应用注册(预览版)”，然后选择“所有应用程序”选项卡。********
-1. 删除已注册的所有应用程序。
-1. 删除 **b2c-extensions-app**。
-1. 在“管理”下，选择“用户”   。
-1. 依次选择每个用户（排除你当前登录时所用的*订阅管理员*用户）。 选择页面底部的“删除”****，并在出现提示时选择“是”****。
+1. 删除你在 Azure AD B2C 租户中注册的所有**应用程序（旧版）** 。
 1. 在左侧菜单中，选择“Azure Active Directory”****。
+1. 在“管理”下选择“用户” 。
+1. 依次选择每个用户（排除你当前登录时所用的*订阅管理员*用户）。 选择页面底部的 "**删除**"，并在出现提示时选择 **"是"** 。
+1. 在“管理”下，选择“应用注册”。 
+1. 选择“查看所有应用程序”****
+1. 选择名为“b2c-extensions-app”**** 的应用程序，选择“删除”****，然后在出现提示时选择“是”****。
 1. 在“管理”下，选择“用户设置”********。
 1. 如果存在，请在“LinkedIn 帐户连接”**** 下选择“否”****，然后选择“保存”****。
 1. 在 "**管理**" 下选择 "**属性**"

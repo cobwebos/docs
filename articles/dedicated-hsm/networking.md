@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70881281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84300709"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -78,7 +77,7 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>使用 VPN 网关实现跨区域的高可用性
 
-对于全局分布式应用程序或高可用性区域故障转移方案，需要跨区域连接虚拟网络。 借助 Azure 专用 HSM，可以使用一个能在两个虚拟网络之间提供安全隧道的 VPN 网关来实现高可用性。 有关使用 VPN 网关建立 VNet 到 VNet 连接的详细信息，请参阅标题为[什么是 VPN 网关？](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)的文章
+对于全局分布式应用程序或高可用性区域故障转移方案，需要跨区域连接虚拟网络。 借助 Azure 专用 HSM，可以使用一个能在两个虚拟网络之间提供安全隧道的 VPN 网关来实现高可用性。 有关使用 VPN 网关建立 VNet 到 VNet 连接的详细信息，请参阅标题为[什么是 VPN 网关？](../vpn-gateway/design.md#V2V)的文章
 
 > [!NOTE]
 > 目前，全局 VNet 对等互连在使用专用 HSM 的跨区域连接方案中不可用，为此应改用 VPN 网关。 
@@ -89,7 +88,7 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 
 - [常见问题解答](faq.md)
 - [可支持性](supportability.md)
-- [高可用性](high-availability.md)
+- 高可用性
 - [物理安全性](physical-security.md)
-- [监视](monitoring.md)
+- [Monitoring](monitoring.md)
 - [部署体系结构](deployment-architecture.md)

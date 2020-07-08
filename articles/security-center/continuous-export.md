@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299938"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 
@@ -28,6 +27,21 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 * 导出到 CSV （一次）
 
 
+
+
+## <a name="availability"></a>可用性
+
+- 发布状态：**正式发布版**
+- 必需的角色和权限：
+    - 订阅上包含导出配置的**读取器**
+    - 资源组（或**所有者**）上的**安全管理员角色**
+    - 还必须对目标资源具有写入权限
+- 云： 
+    - ✔ 商业云
+    - ✔ US Gov
+    - ✘中国 Gov，其他 Gov
+
+
 ## <a name="setting-up-a-continuous-export"></a>设置连续导出
 
 无论是将连续导出设置为 Log Analytics 工作区还是 Azure 事件中心，都需要执行以下步骤。
@@ -38,13 +52,13 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
     
 1. 在该订阅的 "设置" 页的侧栏中，选择 "**连续导出**"。
 
-    [Azure 安全中心的导出选项![](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)此时会显示导出选项。 每个可用的导出目标有一个选项卡。 
+    [ ![ 在 Azure 安全中心的 "导出选项" 中](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)，可以看到导出选项。 每个可用的导出目标有一个选项卡。 
 
 1. 选择要导出的数据类型，并从每种类型的筛选器中进行选择（例如，仅导出高严重性警报）。
 
 1. 从 "导出目标" 区域中，选择要将数据保存到的位置。 数据可以保存在不同订阅的目标中（例如，在中央事件中心实例或中央 Log Analytics 工作区中）。
 
-1. 单击 **“保存”** 。
+1. 单击“保存” 。
 
 
 

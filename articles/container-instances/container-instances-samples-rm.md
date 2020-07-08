@@ -3,12 +3,11 @@ title: Azure 资源管理器模板示例
 description: 查找 Azure 资源管理器模板示例以在不同配置中部署 Azure 容器实例
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981651"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299751"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure 资源管理器模板
 
@@ -26,11 +25,11 @@ ms.locfileid: "75981651"
 | **卷** ||
 | [emptyDir][vol-emptydir] | 部署两个共享 emptyDir 卷的 Linux 容器。 |
 | [gitRepo][vol-gitrepo] | 部署一个克隆 GitHub 存储库的 Linux 容器并将其作为卷装入。 |
-| [私钥][vol-secret] | 部署装有 PFX 证书的 Linux 容器作为机密卷。 |
-| **联网** ||
+| [secret][vol-secret] | 部署装有 PFX 证书的 Linux 容器作为机密卷。 |
+| **网络** ||
 | [公开 UDP 的容器][net-udp] | 部署公开 UDP 端口的 Windows 或 Linux 容器。 |
 | [具有公共 IP 的 Linux 容器][net-publicip] | 部署可通过公共 IP 访问的单个 Linux 容器。 |
-| [使用虚拟网络部署容器组（预览版）][net-vnet] | 部署新的虚拟网络、子网、网络配置文件和容器组。 |
+| [使用虚拟网络部署容器组][net-vnet] | 部署新的虚拟网络、子网、网络配置文件和容器组。 |
 | **Azure 资源** ||
 | [创建 Azure 存储帐户和文件共享][az-files] | 在容器实例中使用 Azure CLI 创建存储帐户和 Azure 文件共享。
 

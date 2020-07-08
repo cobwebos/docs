@@ -3,12 +3,11 @@ title: 关于 Azure 文件共享备份
 description: 了解如何在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84299224"
 ---
 # <a name="about-azure-file-share-backup"></a>关于 Azure 文件共享备份
 
@@ -16,17 +15,18 @@ Azure 文件共享备份是一种基于云的本机备份解决方案，用于�
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Azure 文件共享备份的主要优点
 
-* 零基础结构：配置对文件共享的保护不需要进行部署。
-* 自定义保留：可以根据需要配置每日/每周/每月/每年保留的备份。
-* 内置的管理功能：你可以计划备份并指定所需的保留期，而无需额外的数据删除开销。
-* 即时还原： Azure 文件共享备份使用文件共享快照，因此，你可以只选择想要立即还原的文件。
-* 警报和报告：你可以为备份和还原失败配置警报，并使用 Azure 备份提供的报表解决方案来深入了解文件共享中的备份。
+* **零基础结构**：配置对文件共享的保护不需要进行部署。
+* **自定义保留**：可以根据需要配置每日/每周/每月/每年保留的备份。
+* **内置的管理功能**：你可以计划备份并指定所需的保留期，而无需额外的数据删除开销。
+* **即时还原**： Azure 文件共享备份使用文件共享快照，因此，你可以只选择想要立即还原的文件。
+* **警报和报告**：你可以为备份和还原失败配置警报，并使用 Azure 备份提供的报表解决方案来深入了解文件共享中的备份。
+* **防止意外删除文件共享**： Azure 备份允许在保留期为14天的存储帐户级别启用[软删除功能](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。 即使恶意执行组件删除文件共享，文件共享的内容和恢复点（快照）也会保留在可配置的保留期内，从而能够成功恢复源内容和快照，而不会丢失数据。
 
 ## <a name="architecture"></a>体系结构
 
 ![Azure 文件共享备份体系结构](./media/azure-file-share-backup-overview/azure-file-shares-backup-architecture.png)
 
-## <a name="how-the-backup-process-works"></a>备份过程的工作方式
+## <a name="how-the-backup-process-works"></a>备份进程的工作方式
 
 1. 为 Azure 文件共享配置备份的第一步是创建恢复服务保管库。 保管库提供跨不同工作负荷配置的备份的合并视图。
 

@@ -6,13 +6,12 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84298595"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本（DFS）
 
@@ -22,7 +21,7 @@ ms.locfileid: "82890872"
 
 ![脚本按钮](media/data-flow/scriptbutton.png "脚本按钮")
 
-例如，在`allowSchemaDrift: true,`源转换中，会告知服务将源数据集中的所有列包含在数据流中，即使它们未包含在架构投影中也是如此。
+例如， `allowSchemaDrift: true,` 在源转换中，会告知服务将源数据集中的所有列包含在数据流中，即使它们未包含在架构投影中也是如此。
 
 ## <a name="use-cases"></a>用例
 DFS 由用户界面自动生成。 您可以单击 "脚本" 按钮，查看并自定义该脚本。 你还可以在 ADF UI 外生成脚本，然后将其传递到 PowerShell cmdlet。 调试复杂数据流时，您可能会发现扫描脚本代码隐藏而不是扫描流的 UI 图形表示形式会更容易。
@@ -52,7 +51,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-如果我们决定添加派生转换，首先需要创建核心转换文本，其中包含一个简单的表达式用于添加一个名`upperCaseTitle`为的新大写列：
+如果我们决定添加派生转换，首先需要创建核心转换文本，其中包含一个简单的表达式用于添加一个名为的新大写列 `upperCaseTitle` ：
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
@@ -71,7 +70,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-现在，我们将通过识别要新转换之后的转换（在本例中为`source1`）来重新路由传入流，并将流的名称复制到新转换：
+现在，我们将通过识别要新转换之后的转换（在本例中为）来重新路由传入流 `source1` ，并将流的名称复制到新转换：
 ```
 source(output(
         movieId as string,
@@ -85,7 +84,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-最后，我们确定要在此新转换后出现的转换，并将其输入流（在本例中为`sink1`）替换为新转换的输出流名称：
+最后，我们确定要在此新转换后出现的转换，并将其输入流（在本例中 `sink1` 为）替换为新转换的输出流名称：
 ```
 source(output(
         movieId as string,
@@ -165,7 +164,7 @@ ValueDistAgg aggregate(numofunique = countIf(countunique==1),
 ```
 
 ### <a name="include-all-columns-in-an-aggregate"></a>包含聚合中的所有列
-这是一种通用聚合模式，演示如何在生成聚合时保留输出元数据中的其余列。 在这种情况下，我们```first()```使用函数来选择名称不是 "movie" 的每个列中的第一个值。 若要使用此函数，请创建名为 DistinctRows 的聚合转换，然后将其粘贴到脚本中现有 DistinctRows 聚合脚本的顶部。
+这是一种通用聚合模式，演示如何在生成聚合时保留输出元数据中的其余列。 在这种情况下，我们使用 ```first()``` 函数来选择名称不是 "movie" 的每个列中的第一个值。 若要使用此函数，请创建名为 DistinctRows 的聚合转换，然后将其粘贴到脚本中现有 DistinctRows 聚合脚本的顶部。
 
 ```
 aggregate(groupBy(movie),
@@ -173,7 +172,7 @@ aggregate(groupBy(movie),
 ```
 
 ### <a name="create-row-hash-fingerprint"></a>创建行哈希指纹 
-使用数据流脚本中的此代码创建一个名```DWhash```为的新派生列，该派生```sha1```列生成三列的哈希。
+使用数据流脚本中的此代码创建一个名为的新派生列 ```DWhash``` ，该派生列生成 ```sha1``` 三列的哈希。
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -186,12 +185,22 @@ derive(DWhash = sha1(columns()))
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg 等效项
-此代码将充当 T-sql ```string_agg()```函数，并将字符串值聚合到一个数组中。 然后，可以将该数组强制转换为字符串，以便与 SQL 目标一起使用。
+此代码将充当 T-sql ```string_agg()``` 函数，并将字符串值聚合到一个数组中。 然后，可以将该数组强制转换为字符串，以便与 SQL 目标一起使用。
 
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新、upsert、插入、删除的次数
+使用更改行转换时，可能需要计算从更改行策略生成的更新、upsert、插入、删除的数目。 在更改行后添加聚合转换，并将此数据流脚本粘贴到这些计数的聚合定义中：
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>后续步骤
