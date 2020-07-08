@@ -7,7 +7,7 @@ ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: bbf1daf3a70e5ca87b4a0027b53aed5fab5691d1
 ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/02/2020
 ms.locfileid: "84317759"

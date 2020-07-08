@@ -3,25 +3,25 @@ title: 应用代理应用的“无法访问此企业应用程序”错误
 description: 如何解决使用 Azure AD 应用程序代理应用程序时的常见访问问题。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb3743251f2818ab1e4255b3dc6e7f4f9cbbcba
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367744"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>使用应用程序代理应用程序时出现“无法访问此企业应用程序”错误
 
@@ -71,7 +71,7 @@ ms.locfileid: "83846726"
 若要确认应用程序已分配到正常工作的连接器组：
 
 1. 通过转到“Azure Active Directory”，并依次单击“企业应用程序”和“所有应用程序”，在门户中打开应用程序。 打开应用程序，并从左侧菜单中选择“应用程序代理”。
-1. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果未显示任何警告，则继续验证是否允许所有[必需端口](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)。
+1. 查看“连接器组”字段。 如果组中没有活动连接器，将看到一条警告。 如果未显示任何警告，则继续验证是否允许所有[必需端口](application-proxy-add-on-premises-application.md)。
 1. 如果显示错误的连接器组，请使用下拉列表选择正确的组，并确认不再显示任何警告。 如果显示预期的连接器组，请单击警告消息以打开“连接器管理”页面。
 1. 此处，有几种方法可进一步深入探讨：
 
@@ -83,7 +83,7 @@ ms.locfileid: "83846726"
 
 ## <a name="check-all-required-ports-are-open"></a>检查所有必需端口是否都已打开
 
-若要确认所有必需的端口都已打开，请参阅[有关打开端口的文档](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectivity-ports-how-to)。 如果所有必需的端口都已打开，则继续下一部分。
+验证所有所需的端口是否已打开。 对于必需的端口，请参阅[教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序教程中](application-proxy-add-on-premises-application.md)的 "打开端口" 部分。 如果所有必需的端口都已打开，则继续下一部分。
 
 ## <a name="check-for-other-connector-errors"></a>检查其他连接器错误
 

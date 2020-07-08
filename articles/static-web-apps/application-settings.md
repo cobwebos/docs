@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36aa0a4a87e439c128c5247b6850100a7f2e826e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 66ad9c27ca69df230d9ce1d2282e734420fa14f3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373653"
 ---
 # <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>为 Azure 静态 Web 应用预览版配置应用程序设置
 
@@ -105,9 +105,11 @@ Azure 门户提供一个用于创建、更新和删除应用程序设置的接�
 
     :::image type="content" source="media/application-settings/configuration.png" alt-text="Azure 静态 Web 应用配置视图":::
 
-1. 输入“名称”和“值” 
+1. 输入**名称**和**值**。
 
-1. 单击 **“确定”**
+1. 单击 **“确定”** 。
+
+1. 单击“保存” 。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -156,7 +158,7 @@ Azure CLI 命令需要一些特定于帐户的值才能运行上传。 在静态
 
 可通过 Azure CLI 查看应用程序设置。
 
-1. 从终端或命令行执行以下命令。 请务必将占位符 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>` 和 `<YOUR_STATIC_SITE_NAME>` 替换为你的值。
+- 从终端或命令行执行以下命令。 请务必将占位符 `<YOUR_SUBSCRIPTION_ID>`、`<YOUR_RESOURCE_GROUP_NAME>` 和 `<YOUR_STATIC_SITE_NAME>` 替换为你的值。
 
    ```bash
    az rest --method post --uri "/subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>/providers/Microsoft.Web/staticSites/<YOUR_STATIC_SITE_NAME>/listFunctionAppSettings?api-version=2019-12-01-preview"

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1dc5cf055e6fee72cb6d73b3c4c5c76eefb037d6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800185"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368238"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -34,9 +34,9 @@ ms.locfileid: "83800185"
 
 有两个选项可用来在 Azure 中设置 Pacemaker 群集。 可以使用隔离代理，它负责通过 Azure API 重新启动失败的节点；还可以使用 SBD 设备。
 
-SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是可以更快地进行故障转移；如果在本地使用 SBD 设备，则不需要对操作 pacemaker 群集的方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 当一个 iSCSI 目标服务器关闭时，若要进行隔离，必须使用三个 SBD 设备，因此需要使用三个 iSCSI 目标服务器。
+SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是，如果你已经在本地使用 SBD 设备，则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 如果希望能够在一个 iSCSI 目标服务器关闭时进行防护，则必须使用三个 SBD 设备，因此可以使用三个 iSCSI 目标服务器，这是使用 SBDs 时最具弹性的配置。
 
-如果不希望另外投资购买一台虚拟机，也可以使用 Azure 隔离代理。 其缺点在于，如果资源停止失败或者群集节点不再可以彼此通信，则故障转移可能要花费 10 到 15 分钟。
+Azure 隔离代理不需要部署其他虚拟机。   
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -413,32 +413,36 @@ o- / ...........................................................................
    sudo vi /root/.ssh/authorized_keys
    </code></pre>
 
-1. [A] 安装隔离代理
+1. **[A]** 基于 Azure 隔离代理使用 STONITH 设备安装围栏代理包。  
    
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
    >[!IMPORTANT]
-   > 如果使用的是 Suse Linux Enterprise Server for SAP 15，请注意，需要激活附加模块并安装附加组件，这是使用 Azure 隔离代理的先决条件。 若要了解有关 SUSE 模块和扩展的详细信息，请参阅[模块和扩展说明](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html)。 按照以下说明安装 Azure Python SDK。 
+   > 安装的包防护版本 **-代理**必须至少为**4.4.0** ，以便在群集节点需要隔离的情况下，使用 Azure 隔离代理更快地进行故障转移。 如果运行的版本较低，建议更新包。  
 
-   以下有关如何安装 Azure Python SDK 的说明仅适用于 Suse Enterprise Server for SAP 15。  
 
-    - 如果使用的是自带订阅，请按照以下说明操作  
+1. **[A]** 安装 AZURE Python SDK 
+   - 在 SLES 12 SP4 或 SLES 12 SP5 上
+   <pre><code>
+    # You may need to activate the Public cloud extention first
+    SUSEConnect -p sle-module-public-cloud/12/x86_64
+    sudo zypper install python-azure-mgmt-compute
+   </code></pre> 
 
-    <pre><code>
-    #Activate module PackageHub/15/x86_64
-    sudo SUSEConnect -p PackageHub/15/x86_64
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
-
-     - 如果使用的是即用即付订阅，请按照以下说明操作  
-
-    <pre><code>#Activate module PackageHub/15/x86_64
-    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
-    #Install Azure Python SDK
-    sudo zypper in python3-azure-sdk
-    </code></pre>
+   - 在 SLES 15 及更高版本上 
+   <pre><code>
+    # You may need to activate the Public cloud extention first. In this example the SUSEConnect command is for SLES 15 SP1
+    SUSEConnect -p sle-module-public-cloud/15.1/x86_64
+    sudo zypper install python3-azure-mgmt-compute
+   </code></pre> 
+ 
+   >[!IMPORTANT]
+   >根据您的版本和映像类型，您可能需要在安装 Azure Python SDK 之前激活操作系统版本的公有云扩展。
+   >可以通过运行 SUSEConnect---列表扩展来检查扩展。  
+   >若要通过 Azure 隔离代理获得更快的故障转移时间：
+   > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本**4.6.2**或更高版本的包 python-azure 管理-计算  
+   > - 在 SLES 15 上安装版本**4.6.2**或更高版本的包 python**3**-azure 管理-计算 
 
 1. [A] 设置主机名称解析
 
@@ -457,7 +461,7 @@ o- / ...........................................................................
    </code></pre>
 
 1. [1] 安装群集
-
+- 如果使用 SBD 设备进行防护
    <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
@@ -466,6 +470,19 @@ o- / ...........................................................................
    # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
    # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
+   # Do you wish to configure an administration IP (y/n)? <b>n</b>
+   </code></pre>
+
+- 如果*不使用*SBD 设备进行防护
+   <pre><code>sudo ha-cluster-init -u
+   
+   # ! NTP is not configured to start at system boot.
+   # Do you want to continue anyway (y/n)? <b>y</b>
+   # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
+   # Do you wish to use SBD (y/n)? <b>n</b>
+   #WARNING: Not configuring SBD - STONITH will be disabled.
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
 
@@ -528,8 +545,27 @@ o- / ...........................................................................
    <pre><code>sudo service corosync restart
    </code></pre>
 
+## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 的默认 Pacemaker 配置
+
+本部分中的配置仅适用于使用 SBD STONITH 的情况。  
+
+1. **[1]** 启用 STONITH 设备并设置隔离延迟
+
+<pre><code>sudo crm configure property stonith-timeout=144
+sudo crm configure property stonith-enabled=true
+
+# List the resources to find the name of the SBD device
+sudo crm resource list
+sudo crm resource stop stonith-sbd
+sudo crm configure delete <b>stonith-sbd</b>
+sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
+   params pcmk_delay_max="15" \
+   op monitor interval="15" timeout="15"
+</code></pre>
+
 ## <a name="create-azure-fence-agent-stonith-device"></a>创建 Azure 隔离代理 STONITH 设备
 
+本部分文档仅适用于使用 STONITH （基于 Azure 隔离代理）的情况。
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
 
 1. 转到 <https://portal.azure.com>
@@ -553,22 +589,26 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to deallocate and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/deallocate/action",
-    "Microsoft.Compute/virtualMachines/start/action", 
-    "Microsoft.Compute/virtualMachines/powerOff/action" 
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -591,32 +631,23 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 编辑虚拟机的权限后，可以在群集中配置 STONITH 设备。
 
-<pre><code># replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
+<pre><code>sudo crm configure property stonith-enabled=true
+crm configure property concurrent-fencing=true
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 sudo crm configure primitive rsc_st_azure stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
+  params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>" \
+  pcmk_monitor_retries=4 pcmk_action_limit=3 power_timeout=240 pcmk_reboot_timeout=900 \ 
+  op monitor interval=3600 timeout=120
 
 sudo crm configure property stonith-timeout=900
-sudo crm configure property stonith-enabled=true
+
 </code></pre>
+
+> [!IMPORTANT]
+> 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。
 
 > [!TIP]
 >Azure 隔离代理要求与[使用标准 ILB 的 VM 的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)中所述的公共终结点建立出站连接并提供可能的解决方案。  
-
-## <a name="default-pacemaker-configuration-for-sbd"></a>SBD 的默认 Pacemaker 配置
-
-1. **[1]** 启用 STONITH 设备并设置隔离延迟
-
-<pre><code>sudo crm configure property stonith-timeout=144
-sudo crm configure property stonith-enabled=true
-
-# List the resources to find the name of the SBD device
-sudo crm resource list
-sudo crm resource stop stonith-sbd
-sudo crm configure delete <b>stonith-sbd</b>
-sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
-   params pcmk_delay_max="15" \
-   op monitor interval="15" timeout="15"
-</code></pre>
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>用于 Azure 计划事件的 Pacemaker 配置
 

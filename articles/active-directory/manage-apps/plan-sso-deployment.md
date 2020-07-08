@@ -2,23 +2,23 @@
 title: 规划 Azure Active Directory 单一登录部署
 description: 帮助你在组织中规划、部署和管理 SSO 的指南。
 services: active-directory
-author: jeevansd
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 06/10/2020
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4b5836ffe721aa3e329651c3709ce64344363728
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197875"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374434"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -32,7 +32,7 @@ ms.locfileid: "83197875"
 
 Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程序，因此可以轻松地将它们集成到租户中。
 
-## <a name="licensing"></a>授权
+## <a name="licensing"></a>许可
 
 - **Azure AD 的授权**-SSO 适用于预先集成的 SaaS 应用程序。 但是，目录中的对象数以及要部署的功能可能需要额外的许可证。 有关许可证要求的完整列表，请参阅[Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 - **应用程序授权**-你将需要适用于你的 SaaS 应用程序的许可证，以满足你的业务需求。 与应用程序所有者合作，确定分配到应用程序的用户是否具有其在应用程序中的角色的相应许可证。 如果 Azure AD 基于角色管理自动预配，则在 Azure AD 中分配的角色必须与应用程序中拥有的许可证数量一致。 应用程序中拥有的许可证数量不正确可能会导致在用户的预配/更新过程中出现错误。
@@ -163,7 +163,7 @@ Microsoft 云应用程序安全性（MCAS）会话控制可用于任何操作系
 
 ### <a name="attribute-requirements"></a>特性要求
 
-Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配置的一组属性和属性映射。 某些应用管理其他类型的对象，如组。 计划将用户属性从 Azure AD 映射到应用程序，并根据业务需求[自定义默认属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
+Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预先配置的属性和属性映射。 某些应用管理其他类型的对象，如组。 计划将用户属性从 Azure AD 映射到应用程序，并根据业务需求[自定义默认属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
 
 ### <a name="certificate-requirements"></a>证书要求
 
@@ -194,8 +194,6 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
    如果找不到应用程序，请参阅[自定义应用程序文档](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)。 这将引导你完成如何添加不位于 Azure AD 库中的应用程序。
 
    或者，你可以使用[Microsoft 指南文档](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，为企业应用程序使用在 SAML 令牌中颁发的声明。 确保这会映射到你预期在应用程序的 SAML 响应中收到的内容。 如果在配置过程中遇到问题，请使用有关[如何调试 SSO 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)的指南。
-
-自定义应用程序载入是 Azure AD Premium P1 或 P2 许可证功能。
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>向最终用户提供 SSO 更改通信
 
@@ -237,11 +235,11 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 | 增添| 角色 | Azure AD 角色（如果需要） |
 |--------|-------|-----------------------------|
-| 咨询台管理员 | 第1层支持 | 无 |
+| 咨询台管理员 | 第1层支持 | None |
 | 标识管理员 | 在问题影响时进行配置和调试 Azure AD | 全局管理员 |
-| 应用程序管理员 | 应用程序中的用户证明，具有权限的用户配置 | 无 |
+| 应用程序管理员 | 应用程序中的用户证明，具有权限的用户配置 | None |
 | 基础结构管理员 | 证书滚动更新所有者 | 全局管理员 |
-| 业务所有者/利益干系人 | 应用程序中的用户证明，具有权限的用户配置 | 无 |
+| 业务所有者/利益干系人 | 应用程序中的用户证明，具有权限的用户配置 | None |
 
 建议使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）来管理角色，以便为具有目录权限的用户提供其他审核、控制和访问权限。
 

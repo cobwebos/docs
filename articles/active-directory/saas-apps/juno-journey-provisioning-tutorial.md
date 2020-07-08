@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1a516374e0ac478b24fa1c3ced1627c4814f9bbd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367591"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教程：为 Juno Journey 配置自动用户预配
 
@@ -40,7 +40,7 @@ ms.locfileid: "83647745"
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
-*  [Juno Journey 租户](https://www.junojourney.com/blank)
+*  [Juno Journey 租户](https://www.junojourney.com/getstarted)
 *  Juno Journey 中具有管理员权限的用户帐户。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署

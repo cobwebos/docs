@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f2167552e21973d304f98693be022683fdf661
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373856"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云预配并将其作为标识解决方案。
@@ -26,8 +26,8 @@ ms.locfileid: "83870935"
 ## <a name="cloud-provisioning-agent-requirements"></a>云预配代理要求
 需要以下内容才能使用 Azure AD Connect 云预配：
     
-- 不是来宾用户的 Azure AD 租户的全局管理员帐户。
-- 使用 Windows 2012 R2 或更高版本的预配代理的本地服务器。
+- 不是来宾用户的 Azure AD 租户的混合标识管理员帐户。
+- 使用 Windows 2012 R2 或更高版本的预配代理的本地服务器。  此服务器应该是基于[Active Directory 管理层模型](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)的第0层服务器。
 - 本地防火墙配置。
 
 >[!NOTE]
@@ -37,7 +37,7 @@ ms.locfileid: "83870935"
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>在 Azure Active Directory 管理中心中
 
-1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 完成此步骤至关重要，可确保自己不被锁定在租户外部。
+1. 在 Azure AD 租户上创建仅限云的混合标识管理员帐户。 这样一来，就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的混合标识管理员帐户](../active-directory-users-create-azure-portal.md)。 完成此步骤至关重要，可确保自己不被锁定在租户外部。
 1. 在 Azure AD 租户中添加一个或多个[自定义域名](../active-directory-domains-add-azure-portal.md)。 用户可以使用其中一个域名登录。
 
 ### <a name="in-your-directory-in-active-directory"></a>在 Active Directory 的目录中

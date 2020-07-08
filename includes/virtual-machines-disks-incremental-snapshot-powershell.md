@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d63ec0c2d82ec316a61771b4642731c932b045cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84224951"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,17 +26,17 @@ ms.locfileid: "79299443"
 
 ## <a name="powershell"></a>PowerShell
 
-您可以使用 Azure PowerShell 来创建增量快照。 你将需要最新版本的 Azure PowerShell，以下命令将安装它或将现有安装更新到最新版本：
+可以使用 Azure PowerShell 创建增量快照。 将需要最新版本的 Azure PowerShell，以下命令将安装它或将现有安装更新到最新版本：
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-安装后，请通过`az login`登录到 PowerShell 会话。
+安装之后，使用 `Connect-AzAccount` 登录到 PowerShell 会话。
 
-若要使用 Azure PowerShell 创建增量快照，请使用[AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) `-Incremental`参数设置配置，然后通过`-Snapshot`参数将其作为变量传递给[AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) 。
+若要使用 Azure PowerShell 创建增量快照，请使用含有 `-Incremental` 参数的 [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) 设置配置，然后将其作为变量通过 `-Snapshot` 参数传递给 [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0)。
 
-将`<yourDiskNameHere>`、 `<yourResourceGroupNameHere>`和`<yourDesiredSnapShotNameHere>`替换为你的值，然后可以使用以下脚本创建增量快照：
+将 `<yourDiskNameHere>`、`<yourResourceGroupNameHere>` 和 `<yourDesiredSnapShotNameHere>` 替换为你的值，然后可以使用以下脚本创建增量快照：
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-可以通过快照的`SourceResourceId`和`SourceUniqueId`属性标识同一磁盘中的增量快照。 `SourceResourceId`父磁盘的 Azure 资源管理器资源 ID。 `SourceUniqueId`是从磁盘的`UniqueId`属性继承的值。 如果要删除某一磁盘，然后创建同名的新磁盘，则该`UniqueId`属性的值将更改。
+可以使用快照的 `SourceResourceId` 和 `SourceUniqueId` 属性标识同一磁盘中的增量快照。 `SourceResourceId` 是父磁盘的 Azure 资源管理器资源 ID。 `SourceUniqueId` 是从磁盘的 `UniqueId` 属性继承的值。 如果要删除某个磁盘，然后创建具有相同名称的新磁盘，则 `UniqueId` 属性的值将更改。
 
-你可以使用`SourceResourceId`和`SourceUniqueId`来创建与特定磁盘关联的所有快照的列表。 将`<yourResourceGroupNameHere>`替换为你的值，然后可以使用以下示例列出现有增量快照：
+可以使用 `SourceResourceId` 和 `SourceUniqueId` 来创建与特定磁盘关联的所有快照的列表。 将 `<yourResourceGroupNameHere>` 替换为你的值，然后可以使用以下示例列出现有增量快照：
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -67,9 +67,9 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="resource-manager-template"></a>资源管理器模板
+## <a name="resource-manager-template"></a>Resource Manager 模板
 
-还可以使用 Azure 资源管理器模板创建增量快照。 需要确保 apiVersion 设置为**2019-03-01** ，并且增量属性也设置为 true。 以下代码片段举例说明了如何使用资源管理器模板创建增量快照：
+还可以使用 Azure 资源管理器模板创建增量快照。 需要确保 apiVersion 设置为 2019-03-01 且增量属性也设置为 true****。 以下代码片段是使用资源管理器模板创建增量快照的示例：
 
 ```json
 {
@@ -105,4 +105,4 @@ $incrementalSnapshots
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看演示增量快照的差异功能的示例代码，请参阅使用 .NET，请参阅[将 Azure 托管磁盘备份复制到另一个区域，其差异功能为增量快照](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。
+要查看演示使用 .NET 的增量快照的差异功能的示例代码，请参阅[通过增量快照差异功能将 Azure 托管磁盘备份复制到另一区域](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)。

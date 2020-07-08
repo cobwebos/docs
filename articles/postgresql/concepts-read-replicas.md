@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/24/2020
+ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367983"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -31,31 +31,31 @@ ms.locfileid: "81531977"
 只读副本功能使用 PostgreSQL 本机异步复制。 该功能不适用于同步复制方案。 主服务器与副本之间存在明显的延迟。 副本上的数据最终将与主服务器上的数据保持一致。 对于能够适应这种延迟的工作负荷，可以使用此功能。
 
 ## <a name="cross-region-replication"></a>跨区域复制
-可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
+可以在与主服务器不同的区域中创建只读副本。 对于灾难恢复计划或让数据更贴近用户等场景，跨区域复制很有帮助。
 
-可以在任何 [Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中设置主服务器。 主服务器可以在其配对区域或通用副本区域中有一个副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
+>[!NOTE]
+> 基本层服务器仅支持相同区域复制。
 
-[![读取副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+可以在任何 [Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中设置主服务器。 主服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
+
+[ ![只读副本区域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
 无论主服务器位于何处，始终可以在以下任何区域中创建读取副本。 下面是通用副本区域：
 
-澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部。
-
-* 美国西部2暂时不可用作跨区域副本位置。
-
+澳大利亚东部、澳大利亚东南部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2、美国中部。
 
 ### <a name="paired-regions"></a>配对区域
-除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道区域对，可以从[Azure 配对区域一文](../best-practices-availability-paired-regions.md)了解详细信息。
+除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建只读副本。 如果不了解区域的配对情况，可以通过 [Azure 配对区域文章](../best-practices-availability-paired-regions.md)了解详细信息。
 
-如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
+如果使用跨区域副本进行灾难恢复计划，则建议在配对区域中创建副本，而不是在另一个区域中创建。 配对区域可避免同时进行更新，并会优先考虑物理隔离和数据驻留。  
 
 需要考虑以下限制： 
 
-* 区域可用性：在美国西部2、法国中部、阿拉伯联合酋长国北部和德国中部提供 Azure Database for PostgreSQL。 但是，它们的配对区域不可用。
+* 区域可用性： Azure Database for PostgreSQL 在法国中部、阿拉伯联合酋长国北部和德国中部提供。 但是，它们的配对区域不可用。
     
 * 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部。 
-   这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在印度西部创建副本。 这是因为西部印度的次要区域是印度南部地区，而印度南部的次要区域不是西印度。
+   这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在印度西部创建副本。 这是因为印度西部的次要区域是印度南部，但印度南部的次要区域不是印度西部。
 
 
 ## <a name="create-a-replica"></a>创建副本
@@ -147,7 +147,15 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 本部分汇总了有关只读副本功能的注意事项。
 
 ### <a name="prerequisites"></a>先决条件
-创建只读副本之前，必须将主服务器上的 `azure.replication_support` 参数设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 `azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层。
+读取副本和[逻辑解码](concepts-logical.md)都依赖于 "Postgres 写入" 日志（WAL）来获取详细信息。 这两个功能需要来自 Postgres 的不同级别的日志记录。 逻辑解码需要比读取副本更高的日志记录级别。
+
+若要配置正确的日志记录级别，请使用 Azure 复制支持参数。 Azure 复制支持有三个设置选项：
+
+* **Off** -将最少的信息放在 WAL 中。 在大多数 Azure Database for PostgreSQL 服务器上，此设置不可用。  
+* **副本**-比**Off**更详细。 这是[读取副本](concepts-read-replicas.md)运行所需的最小日志记录级别。 在大多数服务器上，此设置是默认设置。
+* **逻辑**上比**副本**更详细。 这是要运行的逻辑解码的最小日志记录级别。 读取副本也可以通过此设置运行。
+
+需要在更改此参数后重新启动服务器。 在内部，此参数设置 Postgres 参数 `wal_level` 、 `max_replication_slots` 和 `max_wal_senders` 。
 
 ### <a name="new-replicas"></a>新副本
 只读副本创建为新的 Azure Database for PostgreSQL 服务器。 无法将现有的服务器设为副本。 无法创建另一个只读副本的副本。
@@ -163,6 +171,9 @@ PostgreSQL 要求只读副本上的 `max_connections` 参数值大于或等于�
 在不遵守限制的情况下尝试更新上述服务器值会导致出错。
 
 创建副本时或之后，防火墙规则、虚拟网络规则和参数设置不会从主服务器继承到副本服务器。
+
+### <a name="basic-tier"></a>基本层
+基本层服务器仅支持相同区域复制。
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
 [PostgreSQL 要求](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS)只读副本上的 `max_prepared_transactions` 参数值大于或等于主服务器上的值，否则副本不会启动。 如果要更改主服务器上的 `max_prepared_transactions`，请先在副本上进行相应更改。

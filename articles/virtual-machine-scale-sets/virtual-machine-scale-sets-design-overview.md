@@ -7,15 +7,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 06/01/2017
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373975"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
 本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。

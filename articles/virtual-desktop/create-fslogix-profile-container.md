@@ -4,18 +4,18 @@ description: 如何使用 Windows 虚拟桌面中的 Azure NetApp 文件创建 F
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/13/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362979"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp 文件和 AD DS 创建配置文件容器
 
 建议使用 FSLogix 配置文件容器作为[Windows 虚拟桌面服务](overview.md)的用户配置文件解决方案。 FSLogix 配置文件容器将完整的用户配置文件存储在单个容器中，并设计为在非持久性远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 登录时，容器会使用本地支持的虚拟硬盘（VHD）和 Hyper-v 虚拟硬盘（VHDX）以动态方式附加到计算环境。 这些高级筛选器驱动程序技术允许用户配置文件立即可用，并与本地用户配置文件完全相同。 若要了解有关 FSLogix 配置文件容器的详细信息，请参阅[FSLogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "82607378"
 
 若要开始，需要设置 Azure NetApp 文件帐户。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
+1. 登录到 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
 
 2. 选择搜索栏右侧的 " **Azure Cloud Shell" 图标**以打开 Azure Cloud Shell。
 
@@ -53,7 +53,8 @@ ms.locfileid: "82607378"
 
 4. 如果这是你第一次使用 Azure Cloud Shell，请在同一订阅中创建存储帐户，以保留你的 Azure NetApp 文件和 Windows 虚拟桌面。
 
-   ![位于窗口底部的 "创建存储" 按钮的 "存储帐户" 窗口以红色突出显示。](media/create-storage-button.png)
+   > [!div class="mx-imgBorder"]
+   > ![位于窗口底部的 "创建存储" 按钮的 "存储帐户" 窗口以红色突出显示。](media/create-storage-button.png)
 
 5. Azure Cloud Shell 加载后，运行以下两个 cmdlet。
 
@@ -67,12 +68,13 @@ ms.locfileid: "82607378"
 
 6. 在窗口左侧，选择 "**所有服务**"。 将**Azure NetApp 文件**输入到菜单顶部显示的 "搜索" 框中。
 
-   ![用户在 "所有服务" 搜索框中输入 "Azure NetApp 文件" 的屏幕截图。 搜索结果显示 "Azure NetApp 文件" 资源。](media/azure-netapp-files-search-box.png)
+   > [!div class="mx-imgBorder"]
+   > ![用户在 "所有服务" 搜索框中输入 "Azure NetApp 文件" 的屏幕截图。 搜索结果显示 "Azure NetApp 文件" 资源。](media/azure-netapp-files-search-box.png)
 
 
 7. 在搜索结果中选择 " **Azure NetApp 文件**"，然后选择 "**创建**"。
 
-8. 选择“添加”按钮。 
+8. 选择“添加”按钮。
 9. 当 "**新 NetApp 帐户**" 选项卡打开时，输入以下值：
 
     - 对于 "**名称**"，请输入你的 NetApp 帐户名称。
@@ -87,7 +89,7 @@ ms.locfileid: "82607378"
 
 ## <a name="create-a-capacity-pool"></a>创建容量池
 
-接下来，创建新的容量池： 
+接下来，创建新的容量池：
 
 1. 请在 "Azure NetApp 文件" 菜单中，选择新的帐户。
 2. 在帐户菜单中，选择 "存储服务" 下的**容量池**。
@@ -108,7 +110,8 @@ ms.locfileid: "82607378"
 
 1. 在页面左侧的菜单中选择 " **Active Directory 连接**"，然后选择 "**联接**" 按钮打开 "**联接 Active Directory** " 页。
 
-   ![联接 Active Directory 连接 "菜单的屏幕截图。](media/active-directory-connections-menu.png)
+   > [!div class="mx-imgBorder"]
+   > ![联接 Active Directory 连接 "菜单的屏幕截图。](media/active-directory-connections-menu.png)
 
 2. 在 "**联接 Active Directory** " 页中输入以下值以联接连接：
 
@@ -132,7 +135,7 @@ ms.locfileid: "82607378"
     - 对于 "**虚拟网络**"，请从下拉菜单中选择一个已连接到域控制器的现有虚拟网络。
     - 在 "**子网**" 下，选择 "**新建**"。 请记住，此子网将委托给 Azure NetApp 文件。
 
-3.  选择 "**下一\>步：协议**"，打开 "协议" 选项卡并配置卷访问参数。
+3.  选择 "**下一 \> \> 步：协议**"，打开 "协议" 选项卡并配置卷访问参数。
 
 ## <a name="configure-volume-access-parameters"></a>配置卷访问参数
 
@@ -142,13 +145,14 @@ ms.locfileid: "82607378"
 2.  在 "配置" 下的 " **Active Directory** " 下拉菜单中，选择最初连接的同一目录 "[加入 Active Directory 连接](create-fslogix-profile-container.md#join-an-active-directory-connection)"。 请记住，每个订阅有一个 Active Directory 限制。
 3.  在 "**共享名**" 文本框中，输入会话主机池及其用户使用的共享的名称。
 
-4.  在页面底部选择“查看 + 创建”  。 这将打开 "验证" 页。 成功验证卷后，选择 "**创建**"。
+4.  在页面底部选择“查看 + 创建”。 这将打开 "验证" 页。 成功验证卷后，选择 "**创建**"。
 
 5.  此时，新卷将开始部署。 部署完成后，可以使用 Azure NetApp 文件共享。
 
 6.  若要查看装载路径，请选择 "**中转到资源**"，然后在 "概述" 选项卡中查找它。
 
-    !["概述" 屏幕的屏幕截图，其中包含一个指向装入路径的红色箭头。](media/overview-mount-path.png)
+    > [!div class="mx-imgBorder"]
+    > !["概述" 屏幕的屏幕截图，其中包含一个指向装入路径的红色箭头。](media/overview-mount-path.png)
 
 ## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在会话主机虚拟机（Vm）上配置 FSLogix
 
@@ -158,19 +162,19 @@ ms.locfileid: "82607378"
 
 2. 解压缩下载的文件。
 
-3. 在文件中，中转到**x64** > **版本**并运行**FSLogixAppsSetup**。 将打开安装菜单。
+3. 在文件中，中转到**x64**  >  **版本**并运行**FSLogixAppsSetup.exe**。 将打开安装菜单。
 
 4.  如果有产品密钥，请在 "产品密钥" 文本框中输入该密钥。
 
 5. 选中 "**我同意许可条款和条件**" 旁边的复选框。
 
-6. 选择“安装”  。
+6. 选择“安装”。
 
-7. 导航到**C：\\Program Files\\FSLogix\\Apps**以确认已安装代理。
+7. 导航到**C： \\ Program Files \\ FSLogix \\ Apps**以确认已安装代理。
 
 8. 从 "开始" 菜单中，以管理员身份运行**RegEdit** 。
 
-9. 导航到 **"\\计算机\\HKEY_LOCAL_MACHINE\\software FSLogix**"。
+9. 导航到 "**计算机 \\ HKEY_LOCAL_MACHINE \\ software \\ FSLogix**"。
 
 10. 创建名为 "**配置文件**" 的密钥。
 
@@ -210,7 +214,7 @@ ms.locfileid: "82607378"
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>确保用户可以访问 Azure NetApp 文件共享
 
-1. 打开 internet 浏览器，然后访问<https://rdweb.wvd.microsoft.com/arm/webclient>。
+1. 打开 internet 浏览器，然后访问 <https://rdweb.wvd.microsoft.com/arm/webclient> 。
 
 2. 使用分配给远程桌面组的用户的凭据登录。
 
@@ -218,16 +222,20 @@ ms.locfileid: "82607378"
 
 4. 打开**Azure Netapp 文件**，选择 Azure netapp 文件帐户，然后选择 "**卷**"。 打开 "卷" 菜单后，选择相应的卷。
 
-   ![你之前在 Azure 门户中设置的 NetApp 帐户的屏幕截图，其中选择了 "卷" 按钮。](media/netapp-account.png)
+   > [!div class="mx-imgBorder"]
+   > ![你之前在 Azure 门户中设置的 NetApp 帐户的屏幕截图，其中选择了 "卷" 按钮。](media/netapp-account.png)
 
 5. 请在 "**概述**" 选项卡上，确认 FSLogix 配置文件容器正在使用空间。
 
-6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径**（在以下示例中，装载路径为\\ \\anf-SMB-3863.gt1107.onmicrosoft.com\\和）。
+6. 使用远程桌面直接连接到主机池的任何 VM 部分，并打开**文件资源管理器。** 然后导航到**装载路径**（在以下示例中，装载路径为 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 和）。
 
    在此文件夹中，应存在一个配置文件 VHD （或 VHDX），如以下示例中所示。
 
-   ![装载路径中文件夹内容的屏幕截图。 内部是名为 "Profile_ssbb" 的单个 VHD 文件。](media/mount-path-folder.png)
+   > [!div class="mx-imgBorder"]
+   > ![装载路径中文件夹内容的屏幕截图。 内部是名为 "Profile_ssbb" 的单个 VHD 文件。](media/mount-path-folder.png)
 
 ## <a name="next-steps"></a>后续步骤
 
 你可以使用 FSLogix 配置文件容器来设置用户配置文件共享。 若要了解如何使用新容器创建用户配置文件共享，请参阅[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
+
+你还可以创建 Azure 文件共享，以将 FSLogix 配置文件存储在中。 若要了解详细信息，请参阅[创建具有域控制器的 Azure 文件共享](create-file-share.md)。

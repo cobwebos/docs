@@ -2,17 +2,15 @@
 title: 预览-将专色节点池添加到 Azure Kubernetes 服务（AKS）群集
 description: 了解如何向 Azure Kubernetes 服务（AKS）群集添加一个专色节点池。
 services: container-service
-author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: zarhoads
-ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77622044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374604"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>预览-将专色节点池添加到 Azure Kubernetes 服务（AKS）群集
 
@@ -26,7 +24,7 @@ ms.locfileid: "77622044"
 
 本文假设读者基本了解 Kubernetes 和 Azure 负载均衡器的概念。 有关详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-此功能目前处于预览状态。
+此功能目前以预览版提供。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -43,9 +41,6 @@ ms.locfileid: "77622044"
 ### <a name="register-spotpoolpreview-preview-feature"></a>注册 spotpoolpreview 预览功能
 
 若要创建使用点节点池的 AKS 群集，必须在订阅上启用*spotpoolpreview*功能标志。 此功能在配置群集时提供了最新的服务增强功能。
-
-> [!CAUTION]
-> 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
 
 使用[az feature register][az-feature-register]命令注册*spotpoolpreview*功能标志，如以下示例中所示：
 
@@ -67,7 +62,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要创建使用点节点池的 AKS 群集，需要*AKS* CLI 扩展版本0.4.32 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要创建使用点节点池的 AKS 群集，需要*AKS* CLI 扩展版本0.4.32 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -94,7 +89,7 @@ az extension update --name aks-preview
 
 必须将一个专色节点池添加到已启用多个节点池的现有群集。 有关创建具有多个节点池的 AKS 群集的详细信息，请参阅[此处][use-multiple-node-pools]。
 
-使用[az aks nodepool add][az-aks-nodepool-add]创建节点池。
+使用 [az aks nodepool add][az-aks-nodepool-add] 创建节点池。
 ```azurecli-interactive
 az aks nodepool add \
     --resource-group myResourceGroup \
@@ -111,7 +106,7 @@ az aks nodepool add \
 
 默认情况下，当你创建具有多个节点池的群集时，将在 AKS 群集中创建*优先级*为 "*常规*" 的节点池。 上述命令将辅助节点池添加到具有 "*点*"*优先级*的现有 AKS 群集。 *点*的*优先级*使节点池成为一个点节点池。 在上面的示例中，*逐出策略*参数设置为*Delete* ，这是默认值。 将[逐出策略][eviction-policy]设置为 "*删除*" 时，节点池的底层规模集中的节点会在被逐出时删除。 你还可以将逐出策略设置为*解除分配*。 将逐出策略设置为*解除分配*时，基础规模集中的节点会在逐出时设置为已停止释放的状态。 已停止解除分配状态中的节点会根据计算配额进行计数，并可能会导致群集缩放或升级问题。 *优先级*和*逐出策略*值只能在创建节点池的过程中设置。 以后不能更新这些值。
 
-该命令还启用[群集自动缩放程序][cluster-autoscaler]，这是建议用于污点节点池的。 根据群集中运行的工作负荷，群集自动缩放程序扩展并缩小节点池中的节点数。 对于点节点池，如果仍需要其他节点，则群集自动缩放程序将在逐出之后增加节点数。 如果更改节点池可以具有的最大节点数，还需要调整与群集自动缩放程序关联的`maxCount`值。 如果不使用群集自动缩放程序，则在逐出时，点池最终将减小到零，并需要手动操作才能接收任何其他的专色节点。
+该命令还启用[群集自动缩放程序][cluster-autoscaler]，这是建议用于污点节点池的。 根据群集中运行的工作负荷，群集自动缩放程序扩展并缩小节点池中的节点数。 对于点节点池，如果仍需要其他节点，则群集自动缩放程序将在逐出之后增加节点数。 如果更改节点池可以具有的最大节点数，还需要调整 `maxCount` 与群集自动缩放程序关联的值。 如果不使用群集自动缩放程序，则在逐出时，点池最终将减小到零，并需要手动操作才能接收任何其他的专色节点。
 
 > [!Important]
 > 仅在可处理中断的点节点池（如批处理作业和测试环境）上计划工作负荷。 建议在点节点池上设置[taints 和 tolerations][taints-tolerations] ，以确保仅在点节点池上安排可处理节点逐出的工作负荷。 例如，上述命令默认情况下会添加*kubernetes.azure.com/scalesetpriority=spot:NoSchedule*的破坏，因此在此节点上只计划具有相应 toleration 的 pod。
@@ -143,9 +138,9 @@ spec:
 部署具有此 toleration 的 pod 时，Kubernetes 可以成功地在应用了破坏的节点上计划 pod。
 
 ## <a name="max-price-for-a-spot-pool"></a>某个位置池的最大价格
-基于区域和 SKU，[专色实例的定价是可变][pricing-spot]的。 有关详细信息，请参阅适用于[Linux][pricing-linux]和[Windows][pricing-windows]的定价。
+基于区域和 SKU，[专色实例的定价是可变][pricing-spot]的。 有关详细信息，请参阅针对 [Linux][pricing-linux] 和 [Windows][pricing-windows] 的定价。
 
-使用可变定价，可以选择设置最大价格（美元），最多可使用5个小数位数。 例如，值*0.98765*的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为 *-1*，则不会根据价格收回实例。 如果有可用容量和配额，则实例的价格将是当前的长期价格或标准实例的价格。
+使用可变定价，你可以设置最高价格，以美元 (USD) 为单位，最多可使用 5 个小数位。 例如，值*0.98765*的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为 *-1*，则不会根据价格收回实例。 如果有可用容量和配额，则实例的价格将是当前的长期价格或标准实例的价格。
 
 ## <a name="next-steps"></a>后续步骤
 

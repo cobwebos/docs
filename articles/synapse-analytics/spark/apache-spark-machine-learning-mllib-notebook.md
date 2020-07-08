@@ -6,14 +6,15 @@ author: euangMS
 ms.service: synapse-analytics
 ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
+ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: fd3637eed35fa4b9f40623612be9fc99703051e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368169"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -70,48 +71,32 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 由于原始数据是 Parquet 格式，因此可以使用 Spark 上下文直接将文件作为数据帧提取到内存中。 尽管下面的代码使用默认选项，但如果需要，可以强制映射数据类型和其他架构属性。
 
-1. 通过将代码粘贴到新单元格，运行以下行来创建 Spark 数据帧。 第一部分将 Azure 存储访问信息分配给变量。 第二部分允许 Spark 以远程方式从 Blob 存储读取数据。 最后一行代码将读取 Parquet，但此时不会加载任何数据。
+1. 通过将代码粘贴到新单元格，运行以下行来创建 Spark 数据帧。 这会通过开放式数据集 API 检索数据。 拉取所有这些数据将生成约 15 亿行。 根据 Spark 池（预览版）的大小，原始数据可能太大或需要花费太长时间来操作。 可以将此数据筛选为较小的数据。 使用 start_date 和 end_date 应用返回月份数据的筛选器。
 
     ```python
-    # Azure storage access info
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "nyctlc"
-    blob_relative_path = "yellow"
-    blob_sas_token = r""
+    from azureml.opendatasets import NycTlcYellow
 
-    # Allow SPARK to read from Blob remotely
-    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
-
-    # SPARK read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+    end_date = parser.parse('2018-06-06')
+    start_date = parser.parse('2018-05-01')
+    nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+    filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. 拉取所有这些数据将生成约 15 亿行。 根据 Spark 池（预览版）的大小，原始数据可能太大或需要花费太长时间来操作。 可以将此数据筛选为较小的数据。 如果需要，请添加以下行将数据筛选为大约 200 万行，以获得更快的响应体验。 使用这些参数拉取一周的数据。
-
-    ```python
-    # Create an ingestion filter
-    start_date = '2018-05-01 00:00:00'
-    end_date = '2018-05-08 00:00:00'
-
-    filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
-    ```
-
-3. 简单筛选的缺点在于，从统计的角度来看，它可能会导致数据偏差。 另一种方法是使用 Spark 中内置的采样。 如果在上面的代码之后应用以下代码，则数据集将减少到大约 2000 行。 此采样步骤可代替简单筛选器，也可与简单筛选器结合使用。
+2. 简单筛选的缺点在于，从统计的角度来看，它可能会导致数据偏差。 另一种方法是使用 Spark 中内置的采样。 如果在上面的代码之后应用以下代码，则数据集将减少到大约 2000 行。 此采样步骤可代替简单筛选器，也可与简单筛选器结合使用。
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. 现在可以查看数据以查看读取的内容。 通常最好使用子集而不是完整集查看数据，具体取决于数据集的大小。 下面的代码提供了两种查看数据的方法：前者是基本方法，后者提供了更丰富的网格体验以及以图形方式直观显示数据的功能。
+3. 现在可以查看数据以查看读取的内容。 通常最好使用子集而不是完整集查看数据，具体取决于数据集的大小。 下面的代码提供了两种查看数据的方法：前者是基本方法，后者提供了更丰富的网格体验以及以图形方式直观显示数据的功能。
 
     ```python
-    sampled_taxi_df.show(5)
-    display(sampled_taxi_df.show(5))
+    #sampled_taxi_df.show(5)
+    display(sampled_taxi_df)
     ```
 
-5. 根据生成的数据集大小和多次试验或运行笔记本的需要，建议在工作区本地缓存数据集。 有三种方法可以执行显式缓存：
+4. 根据生成的数据集大小和多次试验或运行笔记本的需要，建议在工作区本地缓存数据集。 有三种方法可以执行显式缓存：
 
    - 将数据帧作为文件本地保存
    - 将数据帧另存为临时表或视图

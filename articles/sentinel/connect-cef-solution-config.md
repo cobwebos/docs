@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bdb76954b1db8135d8a36d6658bb7fff274ac126
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c25e48bd46f0d37330f693cb4d6538e7bc29c4b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588444"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367234"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>步骤2：配置安全解决方案以发送 CEF 消息
 
@@ -29,10 +29,11 @@ ms.locfileid: "77588444"
 
 如果你的安全解决方案已经具有现有连接器，请使用以下连接器特定的说明：
 
-- [检查点](connect-checkpoint.md)
+- [AI Vectra 检测](connect-ai-vectra-detect.md)
+- [Check Point](connect-checkpoint.md)
 - [Cisco](connect-cisco.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
-- [F5](connect-f5.md)  
+- [F5 ASM](connect-f5.md)  
 - [Fortinet](connect-fortinet.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
@@ -40,6 +41,7 @@ ms.locfileid: "77588444"
 - [Zscaler](connect-zscaler.md)   
 
 ## <a name="configure-any-other-solution"></a>配置任何其他解决方案
+
 如果特定安全解决方案没有连接器，请使用以下一般说明将日志转发到 CEF 代理。
 
 1. 请参阅特定配置一文，了解有关如何配置解决方案以发送 CEF 消息的步骤。 如果未列出你的解决方案，则在设备上需要设置这些值，以便设备根据 Log Analytics 代理将必要的格式的必要日志发送到 Azure Sentinel Syslog 代理。 你可以在设备中修改这些参数，只要你还在 Azure Sentinel 代理上的 Syslog 后台程序中修改它们即可。
@@ -51,13 +53,12 @@ ms.locfileid: "77588444"
    > [!NOTE]
    > 此解决方案支持 Syslog RFC 3164 或 RFC 5424。
 
-
-1. 若要在 CEF 事件的 Log Analytics 中使用相关架构，请搜索`CommonSecurityLog`。
+1. 若要在 CEF 事件的 Log Analytics 中使用相关架构，请搜索 `CommonSecurityLog` 。
 
 1. 继续执行步骤3：[验证连接性](connect-cef-verify.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 本文档介绍了如何将 CEF 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats.md)。
-

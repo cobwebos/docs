@@ -3,25 +3,25 @@ title: Azure AD 应用程序代理中的通配符应用程序
 description: 了解如何在 Azure Active Directory 应用程序代理中使用通配符应用程序。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/06/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770307"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367727"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 如果内部和外部 URL 都采用以下格式，则可以使用通配符发布应用程序：
 
-> http(s)://*.\<domain\>
+> http （s）：//*。\<domain\>
 
 例如：`http(s)://*.adventure-works.com`。
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](application-proxy-add-on-premises-application.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始，请确保满足这些要求。
 
@@ -62,7 +62,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 1. 在 Azure 中创建已验证的域。
 1. 将采用 PFX 格式的 TLS/SSL 证书上传到应用程序代理。
 
-应考虑使用通配符证书来匹配打算创建的应用程序。 或者，还可以使用仅列出特定应用程序的证书。 在这种情况下，只能通过此通配符应用程序访问证书中列出的应用程序。
+应考虑使用通配符证书来匹配打算创建的应用程序。 
 
 出于安全原因，这是一项硬性要求，对于无法将自定义域用于外部 URL 的应用程序，我们不支持通配符。
 
@@ -82,11 +82,11 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 对于通配符应用程序，**内部 URL** 的格式必须为 `http(s)://*.<domain>`。
 
-![对于内部 URL，请使用 http （s）：//* 格式。\<域>](./media/application-proxy-wildcard/22.png)
+![对于内部 URL，请使用 http （s）：//* 格式。 \<域>](./media/application-proxy-wildcard/22.png)
 
 配置**外部 URL** 时，必须使用以下格式：`https://*.<custom domain>`
 
-![对于外部 URL，请使用格式 https://*。\<自定义域>](./media/application-proxy-wildcard/21.png)
+![对于外部 URL，请使用格式 https://*。 \<自定义域>](./media/application-proxy-wildcard/21.png)
 
 通配符的其他位置、多个通配符或其他正则表达式字符串不受支持，并且会导致错误。
 

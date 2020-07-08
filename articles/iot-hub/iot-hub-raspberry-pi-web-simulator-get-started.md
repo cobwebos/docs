@@ -12,6 +12,7 @@ ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: 0c1e56eced3ed675a70cc1ec2461038c80cff233
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84449781"

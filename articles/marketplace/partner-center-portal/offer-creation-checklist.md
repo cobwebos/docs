@@ -1,33 +1,36 @@
 ---
-title: SaaS 产品/服务创建清单 - Azure 商业市场
-description: 可在 SaaS 产品/服务创建过程中提供的详细信息。 - Azure 商业市场
+title: Microsoft 商用 marketplace 中的 SaaS 产品/服务创建清单
+description: 可在合作伙伴中心的 SaaS 产品创建过程中提供的详细信息。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: ec276c765c2a574dbbc2fc14b7b23507b4cc4798
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 05/08/2020
+ms.openlocfilehash: b30afd4ef69b9b4ecb49b99f4455bf136a6e6eb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850005"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374400"
 ---
-# <a name="saas-offer-creation-checklist"></a>SaaS 产品/服务创建清单
+# <a name="saas-offer-creation-checklist-in-partner-center"></a>在合作伙伴中心的 SaaS 产品/服务创建清单
 
-SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以在每个页面上提供的详细信息，其中包含用于详细了解每项的链接。
+SaaS 产品/服务创建过程将引导你完成多个页面。  下面是可以在每个页面上提供的详细信息，其中包含用于详细了解每项的链接。
 
-下面说明了需要提供或指定的项。 某些区域是可选的或提供默认值（可根据需要进行更改）。 不必按此处列出的顺序处理这些部分。
+下面说明了需要提供或指定的项。  某些区域是可选的或提供默认值（可根据需要进行更改）。  不必按此处列出的顺序处理这些部分。
+
+>[!Note]
+>如果要创建事务 SaaS 产品/服务，请确保实现与[SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。
 
 | **项**    | **用途**  |
 | :---------- | :-------------------|
 | [新建产品/服务模式](#new-offer-modal) | 收集产品/服务标识信息。  |
 | [产品/服务设置页](#offer-setup-page) | 使你可以选择使用关键功能，并选择如何通过 Microsoft 出售产品/服务。  |
 | [属性页](#properties-page) | 定义用于在市场上对产品/服务进行分组的类别和行业、支持产品/服务的法律合同以及应用版本。 |
-| [产品/服务列表页](#offer-listing-page) | 定义要显示在市场中的产品/服务详细信息，包括产品/服务和市场营销资产的说明。 |
-| [预览页](#preview-page) | 在向更广泛的市场受众发布产品/服务之前，定义有限的预览受众来发布产品/服务。 |
-| [产品/服务技术配置页](#technical-configuration-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。 定义用于连接到产品/服务的技术详细信息（URL 路径、Webhook、租户 ID 和应用 ID）。 |
+| [产品/服务列表页](#offer-listing-page) | 定义要显示在市场中的产品/服务详细信息，包括产品/服务和市场营销资产的说明。|
+| [预览页](#preview-page) | 在向更广泛的市场受众发布产品/服务之前，定义有限的预览受众来发布产品/服务。|
+| [产品/服务技术配置页](#technical-configuration-page)  |  仅当你选择通过 Microsoft 销售产品/服务时才可用。  定义 marketplace 用于连接到产品/服务的技术详细信息（登录页 URL、连接 webhook URL、Azure AD 租户 ID 和 Azure AD 应用 ID）。  若要正确集成 SaaS 履单和 Marketplace 计费 Api，需要这些参数。|
 | [新建计划模式](#plan-identity-modal) | 收集计划标识信息。  |
 | [计划列表页](#plan-listing-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。 定义用于在市场中列出计划的详细信息。  |
 | [计划定价和可用性页](#plan-pricing--availability-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。  为产品/服务的每个计划（版本）收集业务特性（定价模型）、受众和市场可用性。  |
@@ -89,7 +92,7 @@ SaaS 产品/服务创建过程将引导你完成多个页面。 下面是可以�
 | 有用链接标题 + URL  | 可选。 |
 | 支持性文档标题 + 文件  | 必需，最少 1 个，最多 3 个。 必须是 PDF 文件格式。 |
 | 屏幕截图  | 必需，最少 1 个屏幕截图，最多 5 个；推荐使用 4 个或更多。 必须是 PNG 格式的 1280 X 720。 |
-| Microsoft Store 徽标（小图、中图、大图、宽图、主图）  | 小图 (48 X 48) 和大图 (216 X 216) 是必需的；其他可选大小，但推荐使用：中图 (90 x 90)、宽图 (255 x 115)、主图 (815 x 290)。 必须为 PNG 格式。 |
+| 存储徽标（小、中、大、宽）  | Small （48 X 48）和大（216 X 216）必需;其他可选大小，但建议使用：中型（90 x 90），宽（255 x 115）。 必须在中。PNG 格式。 |
 | 视频名称 + URL + 缩略图  | 可选，推荐，最多 4 个视频。 缩略图必须是 PNG 格式的 1280 x 720。 视频必须在 YouTube 或 Vimeo 中托管。 |
 | 联系人（CSP 计划、工程、支持）  | 工程和支持联系人是必需的（姓名、电子邮件和电话号码）；CSP 计划联系人可选，但推荐使用。 |
 | 支持 URL  | 必需。 |

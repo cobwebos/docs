@@ -9,6 +9,7 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699101"
@@ -143,7 +144,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    
     **安装法兰帽**
    
-   | Label | 描述 |
+   | Label | 说明 |
    | --- | --- |
    |   1 |机箱紧固螺丝 |
 

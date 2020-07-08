@@ -1,18 +1,15 @@
 ---
-title: include 文件
-description: include 文件
-author: sptramer
-ms.author: sttramer
-manager: carmonm
-ms.date: 06/05/2019
 ms.topic: include
-ms.custom: include file
-ms.openlocfilehash: b833ae69c0edf3e85bebbb5b78ea514a0c81e5c6
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.date: 06/05/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 93a7e7994727012cd27f2901f75f23d1b130784d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "66814759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85378483"
 ---
 > [!IMPORTANT]
 > 本文包含需要 Azure 经典 CLI 的内容。 这是 Azure CLI 的旧版本，只能与 Azure 经典部署模型一起使用。

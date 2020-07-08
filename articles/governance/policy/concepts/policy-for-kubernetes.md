@@ -1,14 +1,14 @@
 ---
 title: 预览版 - 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。 这是预览功能。
-ms.date: 05/20/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373618"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解适用于 Kubernetes 群集的 Azure Policy（预览版）
 
@@ -25,7 +25,7 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 - [AKS 引擎](https://github.com/Azure/aks-engine/blob/master/docs/README.md)
 
 > [!IMPORTANT]
-> 适用于 Kubernetes 的 Azure Policy 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 具有“EnforceRegoPolicy”效果和相关“Kubernetes 服务”的有限预览策略定义已被弃用。 请改用更新的 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+> 适用于 Kubernetes 的 Azure Policy 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 不_推荐_使用**EnforceOPAConstraint**和**EnforceRegoPolicy**效果和相关**Kubernetes 服务**类别的有限预览策略定义。 请改用 "使用_审核_和_拒绝_" 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
 
 ## <a name="overview"></a>概述
 
@@ -35,6 +35,9 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
    - [Azure Kubernetes 服务 (AKS)](#install-azure-policy-add-on-for-aks)
    - [已启用 Azure Arc 的 Kubernetes](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS 引擎](#install-azure-policy-add-on-for-aks-engine)
+
+   > [!NOTE]
+   > 有关安装的常见问题，请参阅[排查 Azure 策略外接程序](../troubleshoot/general.md#add-on-installation-errors)问题。
 
 1. [了解适用于 Kubernetes 的 Azure Policy 语言](#policy-language)
 
@@ -49,9 +52,6 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 1. 需要安装并配置 Azure CLI 2.0.62 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 注册资源提供程序和预览功能。
-
-   > [!CAUTION]
-   > 在订阅上注册功能后，无法取消注册该功能。 启用某些预览功能后，在订阅中随后创建的所有 AKS 群集都可能使用默认值。 不要在生产订阅上启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
 
    - Azure 门户：
 
@@ -367,7 +367,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="policy-language"></a>Policy 语言
 
-用于管理 Kubernetes 的 Azure Policy 语言结构遵循现有策略定义。 EnforceOPAConstraint 效果用于管理 Kubernetes 群集，并获取特定于使用 [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint) 和 Gatekeeper v3 的详细信息属性。 有关详细信息和示例，请参阅 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+用于管理 Kubernetes 的 Azure Policy 语言结构遵循现有策略定义。 使用的[资源提供程序模式](./definition-structure.md#resource-provider-modes) `Microsoft.Kubernetes.Data` ，会使用 "[审核](./effects.md#audit)" 和 "[拒绝](./effects.md#deny)" 来管理你的 Kubernetes 群集。 _审核_和_拒绝_必须提供特定于使用[OPA 约束框架](https://github.com/open-policy-agent/frameworks/tree/master/constraint)和网关守卫 v3 的**详细信息**属性。
 
 作为策略定义中 details.constraintTemplate 和 details.constraint 属性的一部分，Azure Policy 将这些 [CustomResourceDefinitions](https://github.com/open-policy-agent/gatekeeper#constraint-templates) (CRD) 的 URI 传递给加载项 。 Rego 是 OPA 和 Gatekeeper 支持的语言，用于验证对 Kubernetes 群集的请求。 通过支持 Kubernetes 管理的现有标准，Azure Policy 可重用现有规则并将其与 Azure Policy 配对以获得统一的云符合性报告体验。 有关详细信息，请参阅[什么是 Rego？](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)。
 

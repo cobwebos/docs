@@ -14,6 +14,7 @@ ms.reviewer: vanto
 ms.date: 06/15/2020
 ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84986956"
@@ -119,7 +120,7 @@ Microsoft 还可按需无缝移动和管理密钥，以实现异地复制和还�
 
 使用 master 数据库中充当管理员或 **dbmanager** 角色成员的登录名连接到数据库。
 
-| Command | 描述 |
+| Command | 说明 |
 | --- | --- |
 | [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF 会加密或解密数据库 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |返回有关数据库的加密状态及其关联的数据库加密密钥的信息 |

@@ -15,6 +15,7 @@ ms.date: 11/30/2016
 ms.author: allensu
 ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "84687967"

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/21/2020
+ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 3b65422a9baf33a2b55de9f1bdfcc85918616d65
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85366810"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -196,6 +196,11 @@ ms.locfileid: "83800752"
    <pre><code>sudo pcs quorum expected-votes 2
    </code></pre>
 
+1. **[1]** 允许并发隔离操作
+
+   <pre><code>sudo pcs property set concurrent-fencing=true
+   </code></pre>
+
 ## <a name="create-stonith-device"></a>创建 STONITH 设备
 
 STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步骤创建服务主体。
@@ -221,21 +226,26 @@ STONITH 设备使用服务主体对 Microsoft Azure 授权。 请按照以下步
 
 ```json
 {
-  "Name": "Linux Fence Agent Role",
-  "Id": null,
-  "IsCustom": true,
-  "Description": "Allows to power-off and start virtual machines",
-  "Actions": [
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/powerOff/action",
-    "Microsoft.Compute/virtualMachines/start/action"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
-  ]
+    "properties": {
+        "roleName": "Linux Fence Agent Role",
+        "description": "Allows to power-off and start virtual machines",
+        "assignableScopes": [
+            "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
+            "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Compute/*/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/start/action"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
 }
 ```
 
@@ -267,7 +277,13 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > 如果 RHEL 主机名和 Azure 节点名不相同，则仅命令仅需要“pcmk_host_map”选项。 请参阅命令中的粗体部分。
 
-<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+> [!IMPORTANT]
+> 对监视和防护操作进行反序列化。 因此，如果存在运行时间较长的监视操作和同时发生的防护事件，则群集故障转移不会延迟，因为已在运行监视操作。  
 
 ### <a name="1-enable-the-use-of-a-stonith-device"></a>**[1]** 启用 STONITH 设备
 

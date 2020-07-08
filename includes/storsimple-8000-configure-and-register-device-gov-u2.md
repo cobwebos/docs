@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173006"
 ---
 ### <a name="to-configure-and-register-the-device"></a>配置和注册设备
@@ -26,7 +26,7 @@ ms.locfileid: "67173006"
    > 需要在该设备的活动控制器上执行这些配置步骤。  串行控制台菜单指示标题消息中的控制器状态。 如果未连接到活动控制器，请断开连接，并连接到活动控制器。
    
    1. 在命令提示符处，键入密码。 默认设备密码为 **Password1**。
-   2. 键入下列命令：
+   2. 键入以下命令：
       
         `Invoke-HcsSetupWizard`
    3. 随后将出现安装向导，以帮助你配置设备的网络设置。 提供以下信息：

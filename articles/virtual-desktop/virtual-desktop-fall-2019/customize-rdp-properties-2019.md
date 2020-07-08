@@ -4,21 +4,21 @@ description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面自定义 RD
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc89b0f6ed745b3de829c0fff145adc79c5af642
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bfcd6927d4a2e5e0b5314b4fb2aa26c6dc46b8f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362554"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自定义主机池远程桌面协议属性
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的秋季2019版本。 如果尝试管理春季2020更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../customize-rdp-properties.md)。
+>本教程的内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 2019 年秋季版。 如果要尝试管理 2020 年春季版更新中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../customize-rdp-properties.md)。
 
 通过自定义主机池的远程桌面协议（RDP）属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以使用**RdsHostPool** cmdlet 中的 **-CustomRdpProperty**参数自定义 Windows 虚拟桌面中的 RDP 属性。
 
@@ -36,7 +36,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 |RDP 属性 | 台式机 | RemoteApps |
 |---|---| --- |
-| 多监视器模式 | 已启用 | 不可用 |
+| 多监视器模式 | Enabled | 不适用 |
 | 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 
@@ -50,7 +50,8 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
 ```
 
-![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/singlecustomrdpproperty.png)
+> [!div class="mx-imgBorder"]
+> ![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>添加或编辑多个自定义 RDP 属性
 
@@ -61,7 +62,8 @@ $properties="<property1>;<property2>;<property3>"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
 
-![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/multiplecustomrdpproperty.png)
+> [!div class="mx-imgBorder"]
+> ![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>重置所有自定义 RDP 属性
 
@@ -71,11 +73,12 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
 
-![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/resetcustomrdpproperty.png)
+> [!div class="mx-imgBorder"]
+> ![已突出显示 Name 和 FriendlyName 的 PowerShell cmdlet RDSRemoteApp 的屏幕截图。](../media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-自定义给定主机池的 RDP 属性后，可以登录到 Windows 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两个操作方法将告诉你如何使用所选的客户端连接到会话：
+自定义给定主机池的 RDP 属性后，可以登录到 Windows 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
 
 - [使用 Windows 桌面客户端进行连接](../connect-windows-7-and-10.md)
 - [使用 Web 客户端进行连接](connect-web-2019.md)

@@ -1,26 +1,23 @@
 ---
-title: 访问审核日志-Azure 门户-Azure Database for MariaDB
+title: 访问审核日志 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何从 Azure 门户配置和访问 Azure Database for MariaDB 中的审核日志。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/24/2020
+ms.openlocfilehash: f05f26c54d9f3ea62180c598aada59d405c3c805
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85362673"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>在 Azure 门户中配置和访问审核日志
 
 可以从 Azure 门户配置 [Azure Database for MariaDB 审核日志](concepts-audit-logs.md)和诊断设置。
 
-> [!IMPORTANT]
-> 审核日志功能目前为预览版。
-
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要逐步执行本操作方法指南，需要：
 
@@ -28,9 +25,12 @@ ms.locfileid: "81382963"
 
 ## <a name="configure-audit-logging"></a>配置审核日志记录
 
+>[!IMPORTANT]
+> 建议仅记录审核目的所需的事件类型和用户，以确保服务器的性能不会受到严重影响。
+
 启用并配置审核日志记录。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 选择 Azure Database for MariaDB 服务器。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81382963"
 1. 将 **audit_log_enabled** 参数更新为 ON。
     ![启用审核日志](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. 通过更新 [audit_log_events](concepts-audit-logs.md#configure-audit-logging) 参数，选择要记录的**事件类型**。
+1. 通过更新 **audit_log_events** 参数，选择要记录的[事件类型](concepts-audit-logs.md#configure-audit-logging)。
     ![审核日志事件](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. 通过更新 **audit_log_exclude_users** 参数添加要从日志记录中排除的 MariaDB 用户。 通过提供 MariaDB 用户名来指定用户。
@@ -70,4 +70,4 @@ ms.locfileid: "81382963"
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 Azure Database for MariaDB 中的[审核日志](concepts-audit-logs.md)
-- 了解如何在[Azure CLI](howto-configure-audit-logs-cli.md)中配置审核日志
+- 了解如何在 [Azure CLI](howto-configure-audit-logs-cli.md) 中配置审核日志

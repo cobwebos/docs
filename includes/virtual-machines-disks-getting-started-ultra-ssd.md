@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 269cc52f1e96a6864de55f729fe39a5f609d35c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84902751"
 ---
 Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 此新产品提供出类拔萃的性能，其可用性级别与我们的现有磁盘产品相同。 超磁盘的一个主要优点是能够在不重新启动 Vm 的情况下动态更改 SSD 的性能和工作负荷。 超级磁盘适用于 SAP HANA、顶层数据库等数据密集型工作负荷，以及事务密集型工作负荷。
 
@@ -30,11 +30,11 @@ Azure ultra 磁盘为 Azure IaaS 虚拟机（Vm）提供高吞吐量、高 IOPS 
 #### <a name="cli"></a>CLI
 
 ```azurecli
-$subscription = "<yourSubID>"
+subscription="<yourSubID>"
 # example value is southeastasia
-$region = "<yourLocation>"
+region="<yourLocation>"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -65,10 +65,10 @@ $vmSize = "Standard_E64s_v3"
 现在，必须部署在美国西部部署的 Ultra 磁盘，无需任何冗余选项。 但是，并非每个支持 ultra 磁盘的磁盘大小都可以在此区域中。 若要确定美国西部的哪些支持超磁盘，可以使用以下代码片段之一。 请确保 `vmSize` 首先替换和 `subscription` 值：
 
 ```azurecli
-$subscription = "<yourSubID>"
-$region = "westus"
+subscription="<yourSubID>"
+region="westus"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize="<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -132,12 +132,12 @@ UltraSSDAvailable                            True
 - 填写所选选择的其余条目。
 - 选择“磁盘”****。
 
-![create-ultra-disk-enabled-vm .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+![create-ultra-disk-enabled-vm.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
 - 在 "磁盘" 边栏选项卡中，选择 **"是"** **启用超高磁盘兼容性**。
 - 选择 "**创建并附加新磁盘**"，立即附加一个超磁盘。
 
-![enable-and-attach-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+![enable-and-attach-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
 - 在 "**创建新磁盘**" 边栏选项卡上，输入名称，然后选择 "**更改大小**"。
 - 将**帐户类型**更改为 "**超小型磁盘**"。
@@ -145,36 +145,36 @@ UltraSSDAvailable                            True
 - 在两个边栏选项卡中选择 **"确定"** 。
 - 继续执行 VM 部署，该部署将与部署任何其他 VM 的部署相同。
 
-![create-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+![create-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
 
 ## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户附加一个超磁盘
 
 或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。 在现有 VM 上启用 ultra 磁盘，并将其附加为数据磁盘。
 
 - 导航到 VM，然后选择 "**磁盘**"。
-- 选择“编辑”  。
+- 选择“编辑”。
 
-![options-selector-ultra-disks .png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+![options-selector-ultra-disks.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
 - 选择 **"是"** **启用超高磁盘兼容性**。
 
-![ultra-options-yes-enable .png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+![ultra-options-yes-enable.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
-- 选择“保存”  。
+- 选择“保存”。
 - 选择 "**添加数据磁盘**"，然后在 "**名称**" 下拉列表中选择 "**创建磁盘**"。
 
-![create-and-attach-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+![create-and-attach-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
 - 填写新磁盘的名称，并选择 "**更改大小**"。
 - 将**帐户类型**更改为 "**超小型磁盘**"。
 - 将 "**自定义磁盘大小（GiB）**"、"**磁盘 IOPS**" 和 "**磁盘吞吐量**" 的值更改为你选择的值。
 - 选择 **"确定"** ，然后选择 "**创建**"。
 
-![making-a-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+![making-a-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
 
 - 返回到磁盘的边栏选项卡后，选择 "**保存**"。
 
-![saving-and-attaching-new-ultra-disk .png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![saving-and-attaching-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户调整超磁盘的性能
 
@@ -183,12 +183,12 @@ UltraSSDAvailable                            True
 - 导航到 VM，然后选择 "**磁盘**"。
 - 选择要修改其性能的超磁盘。
 
-![selecting-ultra-disk-to-modify .png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+![selecting-ultra-disk-to-modify.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - 选择 "**配置**"，然后进行修改。
-- 选择“保存”  。
+- 选择“保存”。
 
-![configuring-ultra-disk-performance-and-size .png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+![configuring-ultra-disk-performance-and-size.png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>使用 CLI 部署 ultra 磁盘
 
@@ -219,12 +219,12 @@ az vm start -n $vmName -g $rgName
 现在，你有了一个能够附加超磁盘的 VM，你可以创建一个超磁盘并将其附加到该磁盘。
 
 ```azurecli-interactive
-$location="eastus2"
-$subscription="xxx"
-$rgname="ultraRG"
-$diskname="ssd1"
-$vmname="ultravm1"
-$zone=123
+location="eastus2"
+subscription="xxx"
+rgname="ultraRG"
+diskname="ssd1"
+vmname="ultravm1"
+zone=123
 
 #create an ultra disk
 az disk create `
@@ -244,10 +244,10 @@ az disk create `
 或者，如果你的现有 VM 位于能够使用超磁盘的区域/可用性区域中，则可以使用超磁盘，而不必创建新的 VM。
 
 ```azurecli
-$rgName = "<yourResourceGroupName>"
-$vmName = "<yourVMName>"
-$diskName = "<yourDiskName>"
-$subscriptionId = "<yourSubscriptionID>"
+rgName="<yourResourceGroupName>"
+vmName="<yourVMName>"
+diskName="<yourDiskName>"
+subscriptionId="<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```

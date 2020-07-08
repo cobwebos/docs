@@ -6,23 +6,23 @@ author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/20/2019
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582538"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374570"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>关闭非托管 Azure AD 组织中的工作或学校帐户
 
-如果你是不受管理的 Azure 活动组织（Azure AD）组织中的用户，并且不再需要使用该组织提供的应用或保持与它的关联，你可以随时关闭帐户。 非托管组织没有全局管理员。 非托管组织中的用户可以自行关闭自己的帐户，而无需联系管理员。
+如果你是非托管 Azure Active Directory （Azure AD）组织中的用户，并且不再需要使用该组织提供的应用或保持与它的关联，你可以随时关闭帐户。 非托管组织没有全局管理员。 非托管组织中的用户可以自行关闭自己的帐户，而无需联系管理员。
 
 非托管组织中的用户通常是在自助注册期间创建的。 例如，组织中的信息工作者可以注册免费服务。 有关自助注册的详细信息，请参阅[什么是 Azure Active Directory 的自助注册？](directory-self-service-signup.md)。
 

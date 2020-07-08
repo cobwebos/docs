@@ -3,13 +3,13 @@ title: 创建专用 Azure Kubernetes 服务群集
 description: 了解如何创建专用 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 6/18/2020
+ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374519"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>创建专用 Azure Kubernetes 服务群集
 
@@ -71,11 +71,11 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 
 如前所述，VNet 对等互连是一种访问专用群集的方法。 若要使用 VNet 对等互连，需要在虚拟网络与专用 DNS 区域之间设置链接。
     
-1. 转到 Azure 门户中的 MC_* 资源组。  
+1. 中转到 Azure 门户中的节点资源组。  
 2. 选择专用 DNS 区域。   
 3. 在左窗格中，选择“虚拟网络”链接。  
 4. 创建新链接，将 VM 的虚拟网络添加到专用 DNS 区域。 DNS 区域链接需要几分钟时间才能变为可用。  
-5. 返回到 Azure 门户中的 MC_* 资源组。  
+5. 在 Azure 门户中，导航到包含群集的 VNet 的资源组。  
 6. 在右窗格中，选择“虚拟网络”。 虚拟网络名称的格式为 aks-vnet-\*。  
 7. 在左窗格中，选择“对等互连”。  
 8. 选择“添加”，添加 VM 的虚拟网络，然后创建对等互连。  
@@ -91,7 +91,7 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 
 2. 专用 DNS 区域仅链接到群集节点附加到的 VNet (3)。 这意味着专用终结点只能由该链接 VNet 中的主机进行解析。 在 VNet 上未配置任何自定义 DNS 的情况下（默认），这可以正常工作，因为主机指向 DNS 168.63.129.16，从而可以解析专用 DNS 区域中的记录（由于链接）。
 
-3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 可以在群集预配期间创建专用区域后手动创建此链接，也可以使用 Azure Policy 或其他基于事件的部署机制（例如，Azure 事件网格和 Azure Functions）在检测到创建区域后通过自动化来创建此链接。
+3. 在包含群集的 VNet 具有自定义 DNS 设置 (4) 的情况下，除非将专用 DNS 区域链接到包含自定义 DNS 解析程序的 VNet (5)，否则群集部署将失败。 在群集预配期间创建专用区域或通过使用基于事件的部署机制（例如，Azure 事件网格和 Azure Functions）来检测区域创建时，可以手动创建此链接。
 
 ## <a name="dependencies"></a>依赖项  
 
@@ -100,9 +100,8 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 
 ## <a name="limitations"></a>限制 
 * IP 授权范围不能应用于专用 API 服务器终结点，它们仅适用于公共 API 服务器
-* 某些区域当前支持可用性区域，请参阅本文档的开头部分 
+* 某些区域当前支持[可用性区域][availability-zones]。 
 * [Azure 专用链接服务限制][private-link-service]适用于专用群集。
-* 不支持专用群集中的虚拟节点在专用 Azure 虚拟网络中旋转专用 Azure 容器实例 (ACI)
 * 不支持具有专用群集的 Azure DevOps Microsoft 托管的代理。 请考虑使用[自托管代理][devops-agents]。 
 * 对于需要使 Azure 容器注册表能够与专用 AKS 配合使用的客户，容器注册表虚拟网络必须与代理群集虚拟网络对等互连。
 * 当前不支持 Azure Dev Spaces
@@ -122,3 +121,4 @@ API 服务器终结点没有公共 IP 地址。 若要管理 API 服务器，需
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[availability-zones]: availability-zones.md

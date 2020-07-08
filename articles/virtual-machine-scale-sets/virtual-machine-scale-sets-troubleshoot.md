@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 11/16/2017
+ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 624f9bf512a28657808d9e2838149601c0bd2f99
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374587"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>疑难解答使用虚拟机规模集的自动缩放问题
 问题 - 已使用虚拟机规模集在 Azure 资源管理器中创建自动缩放基础结构（例如，通过部署一个与此类似的模板： https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale ）。已定义了缩放规则，其效果良好，但无论在 VM 中施放多少负载，它都不会自动缩放。

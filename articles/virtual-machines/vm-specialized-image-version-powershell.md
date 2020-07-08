@@ -1,6 +1,6 @@
 ---
-title: 从专用映像创建 VM
-description: 使用共享映像库中的专用映像创建 VM。
+title: 从专用化映像创建 VM
+description: 使用共享映像库中的专用化映像创建 VM。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 7d54fa25bc4ab55e62b8f88a3cf76a5ba1130e55
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374621"
 ---
-# <a name="create-a-vm-using-a-specialized-image"></a>使用专用映像创建 VM 
+# <a name="create-a-vm-using-a-specialized-image"></a>使用专用化映像创建 VM 
 
-使用共享映像库中存储的专用映像版本创建 VM。 如果要使用通用化映像版本创建 VM，请参阅[从专用映像创建 vm](vm-generalized-image-version-powershell.md)。
+从共享映像库中存储的专用化映像版本创建 VM。 如果要使用通用化映像版本创建 VM，请参阅[使用一般化映像创建 vm](vm-generalized-image-version-powershell.md)。
 
-获得专用映像版本后，可以创建一个或多个新 Vm。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
+获得专用化映像版本后，可以创建一个或多个新 VM。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet。 
 
-在此示例中，我们使用映像定义 ID 来确保新 VM 使用最新版本的映像。 你还可以使用的映像版本 ID 来使用特定版本`Set-AzVMSourceImage -Id`。 例如，若要使用映像版本 *1.0.0*，请键入：`Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
+在此示例中，我们使用映像定义 ID 来确保新 VM 会使用最新版本的映像。 也可通过将映像版本 ID 用作 `Set-AzVMSourceImage -Id` 来使用特定版本。 例如，若要使用映像版本 *1.0.0*，请键入：`Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
 
-请注意，使用特定映像版本意味着如果特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 创建新的 VM，除非需要特定的映像版本。
+请注意，使用特定映像版本意味着：如果该特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 来创建新的 VM（除非需要特定的映像版本）。
 
 在此示例中，请根据需要替换资源名称。 
 
@@ -104,7 +104,7 @@ New-AzVM `
 ```
 
 ## <a name="attach-the-data-disk"></a>附加数据磁盘
-如果映像包含数据磁盘，则需要将数据磁盘附加到 VM。
+如果映像包含数据磁盘，则需要将数据磁盘连接到 VM。
 
 ```azurepowershell-interactive
 
@@ -129,8 +129,8 @@ Add-AzVMDataDisk `
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [从映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](./windows/shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](./windows/troubleshooting-shared-images.md)。

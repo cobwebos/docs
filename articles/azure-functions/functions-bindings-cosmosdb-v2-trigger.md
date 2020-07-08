@@ -1,18 +1,19 @@
 ---
-title: 适用于 Functions 2.x 的 Azure Cosmos DB 触发器
+title: 函数1.x 和更高版本的 Azure Cosmos DB 触发器
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 1ff8281a420eb1e967cb9f1d4db620d8f816794b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85374230"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 触发器
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的 Azure Cosmos DB 触发器
 
 Azure Cosmos DB 触发器使用 [Azure Cosmos DB 更改源](../cosmos-db/change-feed.md)来侦听跨分区的插入和更新。 更改源发布插入和更新，不发布删除。
 
@@ -123,7 +124,7 @@ JavaScript 代码如下所示：
 
 以下示例演示 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 修改 Cosmos DB 记录时，该函数会写入日志消息。
 
-下面是 function.json** 文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -194,7 +195,7 @@ JavaScript 代码如下所示：
 
 有关完整示例，请参阅[触发器](#example)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -208,27 +209,27 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-从[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对`@CosmosDBInput`从 Cosmos DB 读取数据的参数使用批注。
+从[Java 函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中， `@CosmosDBInput` 对从 Cosmos DB 读取数据的参数使用批注。
 
 ---
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`CosmosDBTrigger`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `CosmosDBTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
-|**方向键** | n/a | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|**name** | n/a | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|**type** | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|**name** | 不适用 | 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
-|**Database**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
+|**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
 |**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | 可有可无应用设置的名称，该应用设置包含包含租用集合的 Azure Cosmos DB 帐户的连接字符串。 未设置时，使用 `connectionStringSetting` 值。 在门户中创建绑定时，将自动设置该参数。 用于租用集合的连接字符串必须具有写入权限。|
 |**leaseDatabaseName** |**LeaseDatabaseName** | （可选）数据库的名称，该数据库包含用于存储租用的集合。 未设置时，使用 `databaseName` 设置的值。 在门户中创建绑定时，将自动设置该参数。 |
 |**leaseCollectionName** | **LeaseCollectionName** | （可选）用于存储租用的集合的名称。 未设置时，使用值 `leases`。 |
 |**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | （可选）设置为 `true` 时，如果租用集合并不存在，将自动创建该集合。 默认值为 `false`。 |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| 可有可无定义创建租约集合时要分配的请求单位数。 仅当设置为`createLeaseCollectionIfNotExists` `true`时，才使用此设置。 使用门户创建绑定时，将自动设置该参数。
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| 可有可无定义创建租约集合时要分配的请求单位数。 仅当设置为时，才使用此设置 `createLeaseCollectionIfNotExists` `true` 。 使用门户创建绑定时，将自动设置该参数。
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| 可有可无设置此值后，会将值作为前缀添加到此函数的租约集合中创建的租约。 使用前缀允许两个单独的 Azure Functions 通过使用不同的前缀来共享同一租约集合。
 |**feedPollDelay**| **FeedPollDelay**| 可有可无在所有当前更改完成后，为源中的新更改轮询分区之间的延迟时间（以毫秒为单位）。 默认值为5000毫秒，即5秒。
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| （可选）设置后，此项以毫秒为单位定义启动一个计算任务的时间间隔（前提是分区在已知的主机实例中均匀分布）。 默认为 13000（13 秒）。
@@ -236,8 +237,8 @@ Python 不支持特性。
 |**leaseRenewInterval**| **LeaseRenewInterval**| （可选）设置后，此项以毫秒为单位定义当前由实例拥有的分区的所有租用的续订时间间隔。 默认为 17000（17 秒）。
 |**checkpointFrequency**| **CheckpointFrequency**| （可选）设置后，此项以毫秒为单位定义租用检查点的时间间隔。 默认为始终在进行每个 Function 调用之后进行检查。
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| 可有可无如果设置此属性，则此属性将设置每个函数调用接收的最大项数。 如果受监视集合中的操作通过存储过程执行，则在从更改源读取项时，会保留[事务范围](../cosmos-db/stored-procedures-triggers-udfs.md#transactions)。 因此，接收的项数可能会高于指定的值，以便在一个原子批处理中返回由同一事务更改的项。
-|**startFromBeginning**| **StartFromBeginning**| 可有可无此选项告知触发器从集合的更改历史记录开始，而不是从当前时间开始读取更改。 从开头开始读取仅在触发器首次启动时运行，就像在后续运行中，检查点已存储。 如果已创建租约`true`时将此选项设置为，则不会产生任何影响。 |
-|**preferredLocations**| **PreferredLocations**| 可有可无为 Azure Cosmos DB 服务中异地复制的数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
+|**startFromBeginning**| **StartFromBeginning**| 可有可无此选项告知触发器从集合的更改历史记录开始，而不是从当前时间开始读取更改。 从开头开始读取仅在触发器首次启动时运行，就像在后续运行中，检查点已存储。 如果已创建租约时将此选项设置为，则 `true` 不会产生任何影响。 |
+|**preferredLocations**| **PreferredLocations**| （可选）为 Azure Cosmos DB 服务中的异地复制数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

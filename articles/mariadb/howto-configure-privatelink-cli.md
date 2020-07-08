@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08e7805d9eff1f53c43882f2180e298abd008346
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85368322"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 创建和管理 Azure Database for MariaDB 的专用链接
 
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
-使用[az Network vnet create](/cli/azure/network/vnet)创建虚拟网络。 此示例创建名为 *myVirtualNetwork* 的默认虚拟网络，它具有一个名为 *mySubnet* 的子网：
+使用 [az network vnet create](/cli/azure/network/vnet) 创建虚拟网络。 此示例创建名为 *myVirtualNetwork* 的默认虚拟网络，它具有一个名为 *mySubnet* 的子网：
 
 ```azurecli-interactive
 az network vnet create \
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，需要创建或更新子网，以禁用专用终结点[网络策略](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -72,7 +72,7 @@ az vm create \
 使用 az MariaDB server create 命令创建 Azure Database for MariaDB。 请记住，MariaDB 服务器的名称必须在 Azure 中是唯一的，因此请将占位符中的占位符值替换为你自己的唯一值： 
 
 ```azurecli-interactive
-# Create a logical server in the resource group 
+# Create a server in the resource group 
 az mariadb server create \
 --name mydemoserver \
 --resource-group myResourcegroup \
@@ -82,20 +82,24 @@ az mariadb server create \
 --sku-name GP_Gen5_2
 ```
 
-请注意，MariaDB 服务器 ID 类似于 ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMariaDB/servers/servername.```你将在下一步中使用 MARIADB 服务器 id。 
+> [!NOTE]
+> 在某些情况下，Azure Database for MariaDB 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
+> - 请确保这两个订阅都注册了**DBforMariaDB**资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
 ## <a name="create-the-private-endpoint"></a>创建专用终结点 
 在虚拟网络中创建 MariaDB 服务器的专用终结点： 
+
 ```azurecli-interactive
 az network private-endpoint create \  
     --name myPrivateEndpoint \  
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MariaDB Server ID>" \  
-    --group-ids mariadbServer \  
+    --private-connection-resource-id $(az resource show -g myResourcegroup -n mydemoserver --resource-type "Microsoft.DBforMariaDB/servers" --query "id") \    
+    --group-id mariadbServer \  
     --connection-name myConnection  
  ```
+
 
 ## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域 
 为 MariDB server 域创建专用 DNS 区域，并使用虚拟网络创建关联链接。 
@@ -130,22 +134,22 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。  选择“连接”按钮后，“连接到虚拟机”随即打开   。
+1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
 
-1. 选择“下载 RDP 文件”  。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
+1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开 downloaded.rdp  文件。
+1. 打开 downloaded.rdp** 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据**** ****。
 
-1. 选择“确定”  。
+1. 选择“确定”。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。  
 
@@ -168,12 +172,12 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 4. 在 "**新建连接**" 中，输入或选择以下信息：
 
-    | 设置 | 值 |
+    | 设置 | “值” |
     | ------- | ----- |
     | 连接名称| 选择所选的连接名称。|
     | 主机名 | 选择*mydemoserver.privatelink.mariadb.database.azure.com* |
-    | 用户名 | 输入在 MariaDB *username@servername*服务器创建过程中提供的用户名。 |
-    | Password | 输入在创建 MariaDB 服务器期间提供的密码。 |
+    | 用户名 | 输入在 *username@servername* MariaDB 服务器创建过程中提供的用户名。 |
+    | 密码 | 输入在创建 MariaDB 服务器期间提供的密码。 |
     ||
 
 5. 选择 "**测试连接** **" 或 "确定"**。
@@ -191,3 +195,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>后续步骤
 了解[什么是 Azure 专用终结点的](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)详细信息
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

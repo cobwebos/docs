@@ -6,15 +6,15 @@ ms.author: mimckitt
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.date: 02/22/2016
+ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 65182ce16b8785a3a0e497b3ed8003fa9e7b67bc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: c003d66f59f932d818740bdd378280049bbeb7d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655434"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373873"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>使用 VM 规模集的 Resource Manager 模板的高级自动缩放配置
 可以根据性能指标阈值，按循环计划或按特定日期扩展和缩减虚拟机规模集。 还可以为缩放操作配置电子邮件和 webhook 通知。 本文演示了在 VM 规模集上使用 Resource Manager 模板配置以上所有对象的示例。

@@ -6,17 +6,17 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: overview
-ms.date: 02/26/2020
+ms.topic: reference
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77916568"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85373822"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -32,9 +32,9 @@ ms.locfileid: "77916568"
 
 这是正常情况。 失败的原因是 Azure AD 中不存在相关的用户对象。 将用户预配到 Azure AD 后，密码哈希应会在后续的运行中预配。 请等待运行几次，然后确认密码哈希同步是否不再出错。
 
-**问：如果 Active Directory 实例具有云预配不支持的属性（例如，目录扩展），会发生什么情况？**
+**问：如果 Active Directory 实例包含云预配不支持的属性（例如，目录扩展），会发生什么情况？**
 
-云预配将运行并预配受支持的属性。 不支持的属性将不会预配到 Azure AD。 查看 Active Directory 中的目录扩展，确保你不需要将这些属性预配到 Azure AD。 如果需要一个或多个属性，请考虑使用 Azure AD Connect 同步或将所需的信息移到支持的属性之一（例如，扩展属性 1-15）。
+云预配将运行并预配受支持的属性。 不支持的属性将不会预配到 Azure AD。 查看 Active Directory 中的目录扩展，并确保不需要这些属性流向 Azure AD。 如果需要一个或多个属性，请考虑使用 Azure AD Connect 同步或将所需的信息移到支持的属性之一（例如，扩展属性 1-15）。
 
 **问：Azure AD Connect sync 与云预配之间有何区别？**
 
@@ -62,7 +62,7 @@ Microsoft 会自动升级代理。 对于 IT 团队来说，这可以减轻必�
 
 **问：如果已同步的用户在下次登录时必须更改密码，将会发生什么情况？**
 
-如果在云预配中启用了密码哈希同步，并且要求已同步用户在本地 AD 中下次登录时更改密码，则云预配不会将要更改的密码哈希预配到 Azure AD。 用户更改密码后，用户密码哈希将从 AD 预配到 Azure AD。
+如果在云设置中启用了密码哈希同步，并且在本地 AD 中下次登录时需要同步的用户更改密码，则云设置不会将 "要更改的" 密码哈希设置为 Azure AD。 用户更改密码后，用户密码哈希将从 AD 预配到 Azure AD。
 
 **问：云预配是否支持写回任何对象的 ms-ds-consistencyGUID？**
 
@@ -70,7 +70,7 @@ Microsoft 会自动升级代理。 对于 IT 团队来说，这可以减轻必�
 
 **问：我正使用云预配来预配用户。我删除了配置。为何我仍在 Azure AD 中看到了旧的同步对象？** 
 
-删除配置时，云预配不会清理 Azure AD 中的已同步对象。 若要确保删除旧对象，请将配置范围更改为空的组或组织单位。 预配运行并清理对象后，请禁用并删除配置。 
+删除配置时，云设置不会自动删除 Azure AD 中同步的对象。 若要确保删除旧对象，请将配置范围更改为空的组或组织单位。 预配运行并清理对象后，请禁用并删除配置。 
 
 **问：不支持 Exchange 混合意味着什么？**
 
@@ -79,6 +79,10 @@ Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中�
 **问：能否在 Windows Server Core 上安装云预配代理？**
 
 否，不支持在 Server Core 上安装代理。
+
+**问：是否可以在云预配代理中使用过渡服务器？**
+
+不支持，不支持过渡服务器。
 
 ## <a name="next-steps"></a>后续步骤 
 

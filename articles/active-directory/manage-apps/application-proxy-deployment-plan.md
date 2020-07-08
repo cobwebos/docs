@@ -3,8 +3,8 @@ title: 规划 Azure Active Directory 应用程序代理部署
 description: 规划组织内应用程序代理部署的端到端指南
 services: active-directory
 documentationcenter: azure
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: baselden
-ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.author: kenwith
+ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610133"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85367778"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>规划 Azure AD 应用程序代理部署
 
@@ -111,13 +110,13 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 以下是应该为其定义组织业务要求的区域。 每个区域均包含要求的示例
 
- **访问**
+ **Access**
 
 * 已加入域或 Azure AD 加入设备的远程用户可以使用无缝单一登录（SSO）安全访问发布的应用程序。
 
 * 具有批准的个人设备的远程用户可以安全地访问已发布的应用程序，前提是这些用户已在 MFA 中注册，并已在其移动电话上将 Microsoft Authenticator 应用注册为身份验证方法。
 
-**调控**
+**治理**
 
 * 管理员可以定义和监视用户分配到通过应用程序代理发布的应用程序的生命周期。
 
@@ -228,13 +227,13 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 如果将此选项设置为 "否"，则用户无需权限即可通过 Azure AD 应用代理访问本地应用程序，因此请谨慎使用。
 
-发布应用程序后，应该可以通过在浏览器中键入其外部 URL，或通过其在上[https://myapps.microsoft.com](https://myapps.microsoft.com/)键入其图标来访问该应用程序。
+发布应用程序后，应该可以通过在浏览器中键入其外部 URL，或通过其在上键入其图标来访问该应用程序 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。
 
 ### <a name="enable-pre-authentication"></a>启用预身份验证
 
 验证是否可通过应用程序代理访问应用程序，方法是通过外部 URL 访问应用程序。
 
-1. 导航到 " **Azure Active Directory** > **企业应用程序** > " "**所有应用程序**"，并选择要管理的应用。
+1. 导航到 " **Azure Active Directory**  >  **企业应用程序**  >  " "**所有应用程序**"，并选择要管理的应用。
 
 2. 选择“应用程序代理”****。
 
@@ -254,7 +253,7 @@ SSO 可提供最佳的用户体验和安全性，因为用户在访问 Azure AD 
 
 ###  <a name="working-with-other-types-of-applications"></a>使用其他类型的应用程序
 
-Azure AD 应用程序代理还可以支持开发使用 Azure AD 身份验证库（[ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)）或 Microsoft 身份验证库（[MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)）的应用程序。 它通过使用在客户端请求的标头信息中收到 Azure AD 颁发的令牌，来代表用户执行预身份验证，从而支持本机客户端应用。
+Azure AD 应用程序代理还可以支持开发使用[Microsoft 身份验证库（MSAL）](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)的应用程序。 它通过使用在客户端请求的标头信息中收到 Azure AD 颁发的令牌，来代表用户执行预身份验证，从而支持本机客户端应用。
 
 若要了解应用程序代理的可用配置，请阅读[发布本机和移动客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client)程序和[基于声明的应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps)。
 
@@ -318,7 +317,7 @@ Azure AD 通过[审核日志和报告，](../reports-monitoring/concept-provisio
 * [显示应用页时出现问题](application-proxy-page-appearance-broken-problem.md)
 * [应用程序加载时间过长](application-proxy-page-load-speed-problem.md)
 * [应用程序页上的链接不起作用](application-proxy-page-links-broken-problem.md)
-* [要为应用打开哪些端口](application-proxy-connectivity-ports-how-to.md)
+* [要为应用打开哪些端口](application-proxy-add-on-premises-application.md)
 * [应用的连接器组中没有正常工作的连接器](application-proxy-connectivity-no-working-connector.md)
 * [在管理门户中配置](application-proxy-config-how-to.md)
 * [为应用配置单一登录](application-proxy-config-sso-how-to.md)
