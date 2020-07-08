@@ -1,14 +1,13 @@
 ---
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636302"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -17,7 +16,7 @@ ms.locfileid: "83849954"
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 
 当 Azure Policy 在 deployIfNotExists 策略定义中运行模板时，它使用[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)来执行此操作。
-Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 托管标识的位置不影响它与 Azure Policy 的操作。
+Azure Policy 会为每个分配创建一个托管标识，但必须具有要向托管标识授予哪些角色的相关详细信息。 如果托管标识缺少角色，则在分配策略或计划期间会显示此错误。 使用门户时，一旦启动分配，Azure Policy 将自动授予托管标识所列的角色。 托管标识的_位置_不会影响其对 Azure 策略的操作。
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="托管标识 - 缺少角色" border="false":::
 
@@ -51,9 +50,6 @@ az role definition list --name 'Contributor'
 - 在使用 SDK 时（如 Azure PowerShell）
 - 当模板修改分配范围以外的资源
 - 当模板读取分配范围以外的资源
-
-> [!NOTE]
-> Azure PowerShell 和 .NET 是当前支持此功能的唯一 SDK。
 
 ### <a name="create-managed-identity-with-powershell"></a>使用 PowerShell 创建托管标识
 
@@ -183,7 +179,7 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>在策略分配期间通过 Azure 门户创建修正任务
 
-创建修正任务的一种简化方法是在策略分配期间通过 Azure 门户执行此操作。 如果要分配的策略定义是 deployIfNotExists 或 Modify 效果，“修正”选项卡上的向导会提供“创建修正任务”选项。 如果选择此选项，则会在分配策略的同时创建修正任务。
+创建修正任务的一种简化方法是在策略分配期间通过 Azure 门户执行此操作。 如果要分配的策略定义是**deployIfNotExists**或**修改**效果，则 "**更正**" 选项卡上的向导将提供 "_创建修正任务_" 选项。 如果选择此选项，则会创建与策略分配相同的补救任务。
 
 ## <a name="next-steps"></a>后续步骤
 

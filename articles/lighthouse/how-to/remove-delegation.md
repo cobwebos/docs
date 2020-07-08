@@ -2,13 +2,12 @@
 title: 删除对委派的访问权限
 description: 了解如何删除已委派给 Azure 委派的资源管理的服务提供商的资源的访问权限。
 ms.date: 04/24/2020
-ms.topic: conceptual
-ms.openlocfilehash: d0db809eb057f8b4bb48bdf9dd127f4d488f0406
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636489"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
 
@@ -95,4 +94,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 ## <a name="next-steps"></a>后续步骤
 
 - 了解 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)。
-- 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)****。
+- 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。

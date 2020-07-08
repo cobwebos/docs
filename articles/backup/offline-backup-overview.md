@@ -3,12 +3,11 @@ title: 脱机备份概述
 description: 了解脱机备份的组件。 它们包括基于 Azure Data Box 的脱机备份和基于 Azure 导入/导出服务的脱机备份。
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628345"
 ---
 # <a name="overview-of-offline-backup"></a>脱机备份概述
 
@@ -60,7 +59,7 @@ Microsoft Azure 备份服务器 (MABS)、System Center Data Protection Manager (
 
 若要将基于 Azure 导入/导出服务的脱机备份与 MARS 代理一起使用，请参阅 [Azure 备份中的脱机备份工作流](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export)。
 
-若要将其与 MAB 或 DPM-A 一起使用，请参阅 [DPM 和 Azure 备份服务器的脱机备份工作流](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-)。
+若要将其与 MAB 或 DPM-A 一起使用，请参阅 [DPM 和 Azure 备份服务器的脱机备份工作流](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)。
 
 ## <a name="offline-backup-support-summary"></a>脱机备份支持摘要
 
@@ -83,4 +82,4 @@ Microsoft Azure 备份服务器 (MABS)、System Center Data Protection Manager (
 
 - [使用 Azure Data Box 进行 Azure 备份脱机备份](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)
-- [DPM 和 Azure 备份服务器的脱机备份工作流](backup-azure-backup-server-import-export-.md)
+- [DPM 和 Azure 备份服务器的脱机备份工作流](backup-azure-backup-server-import-export.md)

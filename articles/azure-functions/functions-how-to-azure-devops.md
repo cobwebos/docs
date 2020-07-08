@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 5e2fc8fb06248e2cdad9067c56647da6d9626b50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 0e47078e9f7620e72524ccf91e942d4e15a6b5bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255757"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559123"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -29,7 +29,7 @@ ms.locfileid: "78255757"
 
 在 Azure Pipelines 中构建应用程序的方式取决于应用程序的编程语言。 每种语言都有创建部署项目的特定生成步骤。 部署项目用于在 Azure 中部署函数应用。
 
-# <a name="c"></a>[Ansi-c\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 可以使用以下示例创建 YAML 文件以生成 .NET 应用：
 
@@ -172,7 +172,7 @@ steps:
 
 ---
 
-### <a name="deploy-your-app"></a>部署应用
+### <a name="deploy-your-app"></a>部署你的应用
 
 你必须在 YAML 文件中包含以下 YAML 示例之一，具体取决于托管操作系统。
 
@@ -237,7 +237,7 @@ Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
 ![更新代理池版本](media/functions-how-to-azure-devops/change-agent.png)
 
-### <a name="deploy-your-app"></a>部署应用
+### <a name="deploy-your-app"></a>部署你的应用
 
 创建新的发布管道时，请搜索 Azure Functions 发布模板。
 
@@ -247,7 +247,7 @@ Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>使用 Azure CLI 创建生成管道
 
-若要在 Azure 中创建生成管道，请`az functionapp devops-pipeline create`使用[命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 创建生成管道以生成和释放在存储库中所做的任何代码更改。 此命令生成新的 YAML 文件，该文件定义生成和发布管道，然后将其提交到存储库。 此命令的先决条件取决于代码的位置。
+若要在 Azure 中创建生成管道，请使用 `az functionapp devops-pipeline create` [命令](/cli/azure/functionapp/devops-pipeline#az-functionapp-devops-pipeline-create)。 创建生成管道以生成和释放在存储库中所做的任何代码更改。 此命令生成新的 YAML 文件，该文件定义生成和发布管道，然后将其提交到存储库。 此命令的先决条件取决于代码的位置。
 
 - 如果你的代码位于 GitHub 中：
 

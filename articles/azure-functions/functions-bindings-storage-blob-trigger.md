@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559986"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
 检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 Blob 内容以[函数输入](./functions-bindings-storage-blob-input.md)的形式提供。
 
-Azure Blob 存储触发器需要使用常规用途存储帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
+Azure Blob 存储触发器需要常规用途的存储帐户。 还支持具有[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)的存储 V2 帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
 
 若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-storage-blob.md)。
 
@@ -60,7 +60,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 
 以下示例显示了 *function.json* 文件中的一个 blob 触发器绑定以及使用该绑定的代码。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
-下面是 function.json  文件中的绑定数据：
+下面是 function.json 文件中的绑定数据：
 
 ```json
 {
@@ -107,7 +107,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 在 `samples-workitems` 容器中添加或更新 Blob 时，该函数会写入日志。
 
-function.json  文件如下所示：
+function.json 文件如下所示：
 
 ```json
 {
@@ -139,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在`samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 blob 时，函数会写入日志。
+以下示例显示了 *function.json* 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Python 代码](functions-reference-python.md)。 在 `samples-workitems` [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)中添加或更新 Blob 时，该函数会写入一条日志。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -176,7 +176,7 @@ def main(myblob: func.InputStream):
 
 # <a name="java"></a>[Java](#tab/java)
 
-此函数在`myblob`容器中添加或更新 blob 时写入日志。
+在 `myblob` 容器中添加或更新 Blob 时，该函数会写入一条日志。
 
 ```java
 @FunctionName("blobprocessor")
@@ -252,7 +252,7 @@ public void run(
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -272,15 +272,15 @@ Python 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`BlobTrigger`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | n/a | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**方向键** | n/a | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
-|**name** | n/a | 表示函数代码中的 Blob 的变量的名称。 |
-|**path** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#blob-name-patterns)。 |
-|**connection** | **连接** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**type** | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#usage)部分中已阐述异常。 |
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。 |
+|**路径** | **BlobPath** |要监视的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可以是某种 [Blob 名称模式](#blob-name-patterns)。 |
+|连接 | **Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -290,7 +290,7 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
@@ -348,15 +348,15 @@ Python 不支持特性。
 "path": "images/{{20140101}}-{name}",
 ```
 
-如果 blob 命名为* {20140101}-soundfile*，则函数代码中`name`的变量值为*soundfile.mp3*。
+如果 Blob 名为 *{20140101}-soundfile.mp3*，则函数代码中的 `name` 变量值为 *soundfile.mp3*。
 
-## <a name="metadata"></a>元数据
+## <a name="metadata"></a>Metadata
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
@@ -385,21 +385,21 @@ Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次�
 
 Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts** 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发函数（"*&lt;function app name>*。函数.函数名称>"，例如：" CopyBlob "） * &lt; *
+* 触发的函数（"&lt;function app name>.Functions.&lt;function name>** **"，例如："MyFunctionApp.Functions.CopyBlob"）
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts** 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。 若要立即重新处理，可以更新*azure*中的*scaninfo* blob。 将再次扫描`LatestScan`属性后最后修改的时间戳的任何 blob。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts** 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能不会立即发生，但它肯定会在稍后的时间点发生。 若要立即重新处理，可以更新 azure-webjobs-hosts/blobscaninfo 中的 scaninfo Blob** **。 将再次扫描 `LatestScan` 属性后具有上次修改时间戳的任何 Blob。
 
-## <a name="poison-blobs"></a>有害 blob
+## <a name="poison-blobs"></a>有害 Blob
 
 当给定 blob 的 blob 触发函数失败时，Azure Functions 将默认重试该函数共计 5 次。
 
-如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison** 的存储队列。 最大尝试次数是可配置的。 将使用相同的 MaxDequeueCount 设置处理有害 blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
+如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison** 的存储队列。 最大尝试次数可配置。 使用相同的 MaxDequeueCount 设置处理有害 Blob 和有害队列消息。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId （格式* &lt;为 function app name>*。函数.函数名称>） * &lt; *
+* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>** **）
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
@@ -409,7 +409,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 
 Blob 触发器可在内部使用队列，因此并发函数调用的最大数量受 [host.json 中的队列配置](functions-host-json.md#queues)控制。 默认设置会将并发限制到 24 个调用。 此限制分别应用于使用 blob 触发器的函数。
 
-[消耗计划](functions-scale.md#how-the-consumption-and-premium-plans-work)将一台虚拟机（VM）上的函数应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
+[消耗计划](functions-scale.md#how-the-consumption-and-premium-plans-work)将虚拟机 (VM) 上的函数应用限制为 1.5 GB 内存。 内存由每个并发执行函数实例和函数运行时本身使用。 如果 blob 触发的函数将整个 blob 加载到内存中，该函数使用的仅用于 blob 的最大内存为 24 * 最大 blob 大小。 例如，包含 3 个由 blob 触发的函数的函数应用和默认设置，其每 VM 最大并发为 3*24 = 72 个函数调用。
 
 JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑定到 `string`、`Byte[]` 或 POCO，则 C# 函数也会如此。
 
@@ -426,4 +426,4 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 ## <a name="next-steps"></a>后续步骤
 
 - [函数运行时读取 blob 存储数据](./functions-bindings-storage-blob-input.md)
-- [从函数中写入 blob 存储数据](./functions-bindings-storage-blob-output.md)
+- [通过函数写入 blob 存储数据](./functions-bindings-storage-blob-output.md)

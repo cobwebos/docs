@@ -2,21 +2,20 @@
 title: 作为事件网格源的 Azure SignalR
 description: 介绍为 Azure 事件网格中的 Azure SignalR 事件提供的属性
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: babanisa
-ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560637"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR 服务的 Azure 事件网格事件架构
 
-本文提供了 SignalR 服务事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程列表，可使用 Azure SignalR 作为事件来源。
+本文提供了 SignalR 服务事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。 它还提供了一个快速入门和教程的列表，这些快速入门和教程介绍如何使用 Azure SignalR 作为事件源。
 
 ## <a name="event-grid-event-schema"></a>事件网格事件架构
 
@@ -24,7 +23,7 @@ ms.locfileid: "82133721"
 
 SignalR 服务发出以下事件类型：
 
-| 事件类型 | 描述 |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.SignalRService.ClientConnectionConnected | 当连接客户端连接时引发。 |
 | Microsoft.SignalRService.ClientConnectionDisconnected | 当客户端连接断开连接时引发。 |
@@ -78,24 +77,24 @@ SignalR 服务发出以下事件类型：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| ID | 字符串 | 事件的唯一标识符。 |
-| data | 对象 (object) | SignalR 服务事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
+| 数据 | object | SignalR 服务事件数据。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| timestamp | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| hubName | 字符串 | 客户端连接所属的中心。 |
-| connectionId | 字符串 | 客户端连接的唯一标识符。 |
-| userId | 字符串 | 声明中定义的用户标识符。 |
-| errorMessage | 字符串 | 导致连接断开连接的错误。 |
+| timestamp | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| hubName | string | 客户端连接所属的中心。 |
+| connectionId | string | 客户端连接的唯一标识符。 |
+| userId | string | 声明中定义的用户标识符。 |
+| errorMessage | string | 导致连接断开连接的错误。 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 |标题 | 说明 |

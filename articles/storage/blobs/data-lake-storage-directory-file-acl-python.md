@@ -1,25 +1,25 @@
 ---
-title: Azure Data Lake Storage Gen2 Python SDK for files & Acl
+title: 用于文件和 ACL 的 Azure Data Lake Storage Gen2 Python SDK
 description: 在启用了分层命名空间 (HNS) 的存储帐户中使用 Python 来管理目录和文件以及目录访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
 ms.date: 04/10/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559158"
 ---
-# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl
+# <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL
 
 本文介绍如何使用 Python 在启用了分层命名空间 (HNS) 的存储帐户中创建和管理目录、文件与权限。 
 
-[包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [API reference](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [Gen1 to Gen2 mapping](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
+[包（Python 包索引）](https://pypi.org/project/azure-storage-file-datalake/)  | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  | [API 参考](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html)  | [Gen1 到 Gen2 的映射](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  | [提供反馈](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,7 +52,7 @@ from azure.storage.filedatalake._models import ContentSettings
 
 这是连接到帐户的最简单方法。 
 
-此示例使用帐户密钥创建一个**DataLakeServiceClient**实例。
+此示例使用帐户密钥创建 DataLakeServiceClient 实例。
 
 ```python
 try:  
@@ -69,11 +69,11 @@ except Exception as e:
 
 - 将 `storage_account_key` 占位符值替换为存储帐户访问密钥。
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory （AD）进行连接
+### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory (AD) 进行连接
 
-你可以使用[适用于 Python 的 Azure 标识客户端库](https://pypi.org/project/azure-identity/)通过 Azure AD 对应用程序进行身份验证。
+可以使用[适用于 Python 的 Azure 标识客户端库](https://pypi.org/project/azure-identity/)，通过 Azure AD 对应用程序进行身份验证。
 
-此示例使用客户端 ID、客户端机密和租户 ID 创建一个**DataLakeServiceClient**实例。  若要获取这些值，请参阅[从 Azure AD 获取用于从客户端应用程序授权请求的令牌](../common/storage-auth-aad-app.md)。
+此示例使用客户端 ID、客户端密码和租户 ID 创建 DataLakeServiceClient 实例。  若要获取这些值，请参阅[从 Azure AD 获取用于请求客户端应用程序授权的令牌](../common/storage-auth-aad-app.md)。
 
 ```python
 def initialize_storage_account_ad(storage_account_name, client_id, client_secret, tenant_id):
@@ -91,7 +91,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 ```
 
 > [!NOTE]
-> 有关更多示例，请参阅[用于 Python 的 Azure 标识客户端库](https://pypi.org/project/azure-identity/)文档。
+> 有关更多示例，请参阅[适用于 Python 的 Azure 标识客户端库](https://pypi.org/project/azure-identity/)文档。
 
 ## <a name="create-a-file-system"></a>创建文件系统
 
@@ -130,7 +130,7 @@ def create_directory():
 
 通过调用 **DataLakeDirectoryClient.rename_directory** 方法来重命名或移动目录。 以参数形式传递所需目录的路径。 
 
-此示例将某个子目录重命名为名称 `my-subdirectory-renamed`。
+此示例将子目录重命名为 `my-subdirectory-renamed` 的名称。
 
 ```python
 def rename_directory():
@@ -223,11 +223,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> 如果文件太大，则代码必须对**Append_data DataLakeFileClient**方法进行多次调用。 请考虑改用**Upload_data DataLakeFileClient**方法。 这样一来，您就可以在单个调用中上载整个文件。 
+> 如果文件很大，则代码必须多次调用 DataLakeFileClient.append_data 方法。 请考虑改用 DataLakeFileClient.upload_data 方法。 这样就可以在单个调用中上传整个文件。 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>将大型文件上传到目录
 
-使用**Upload_data DataLakeFileClient**方法上传大文件，而无需对**append_data DataLakeFileClient**方法进行多次调用。
+使用 DataLakeFileClient.upload_data 方法上传大型文件，无需多次调用 DataLakeFileClient.append_data 方法 。
 
 ```python
 def upload_file_to_directory_bulk():

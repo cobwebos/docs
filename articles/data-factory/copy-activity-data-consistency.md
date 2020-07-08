@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663705"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610213"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>复制活动中的数据一致性验证（预览版）
 
@@ -83,19 +82,18 @@ ms.locfileid: "83663705"
 } 
 ```
 
-properties | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 validateDataConsistency | 如果将此属性设置为 true，则复制活动将检查从源存储复制到目标存储的每个对象的文件大小、lastModifiedDate 和 MD5 校验和，以确保源存储和目标存储之间的数据一致性。 请注意，启用此选项会影响复制性能。  | True<br/>False（默认值） | 否
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过不一致的数据。<br/> -True：要通过跳过不一致的数据来复制其余内容。<br/> -False：找到不一致的数据后要中止复制活动。<br/>请注意，仅当你将 validateDataConsistency 设置为 True 时，此属性才有效。  | True<br/>False（默认值） | 否
 logStorageSettings | 一组属性，可以指定这些属性以使会话日志能够记录跳过的对象。 | | 否
 linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的链接服务，用于存储会话日志文件。 | `AzureBlobStorage` 或 `AzureBlobFS` 类型链接服务的名称，指代用于存储日志文件的实例。 | 否
-路径 | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
+path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
 
 >[!NOTE]
 >- 临时复制方案不支持数据一致性。 
->- 将二进制文件从任何存储复制到 Azure Blob 存储或 Azure Data Lake Storage Gen2 时，复制活动会执行文件大小和 MD5 校验和验证，以确保源存储和目标存储之间的数据一致性。 
->- 将二进制文件从任何存储复制到除 Azure Blob 存储或 Azure Data Lake Storage Gen2 之外的任何存储时，复制活动会进行文件大小验证，以确保源存储和目标存储之间的数据一致性。
-
+>- 从/向 Azure Blob 或 Azure Data Lake Storage Gen2 复制文件时，ADF 会利用 [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) 和 [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) 来进行块级 MD5 校验和验证。 如果 Azure Blob 或 Azure Data Lake Storage Gen2 上存在用作数据源的基于文件的 ContentMD5，则 ADF 在读取文件后也会进行文件级 MD5 校验和验证。 将文件复制到作为数据目标的 Azure Blob 或 Azure Data Lake Storage Gen2 之后，ADF 会将 ContentMD5 写入 Azure Blob 或 Azure Data Lake Storage Gen2，下游应用程序可以进一步使用 ContentMD5 进行数据一致性验证。
+>- ADF 在任何存储区存储之间复制文件时，会进行文件大小验证。
 
 ## <a name="monitoring"></a>监视
 
@@ -139,9 +137,9 @@ InconsistentData 的值：
 
 列 | 说明 
 -------- | -----------  
-时间戳 | ADF 跳过不一致文件时的时间戳。
-级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
-OperationName | ADF 复制每个文件上的活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
+Timestamp | ADF 跳过不一致文件时的时间戳。
+Level | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
+OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
 消息 | 说明为何要跳过文件的详细信息。
 

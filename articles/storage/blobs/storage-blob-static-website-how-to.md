@@ -7,12 +7,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: a7dfc58258c8c7c6e8bbf7567d743abf90d3a7e5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609924"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 存储中托管静态网站
 
@@ -153,13 +152,10 @@ ms.locfileid: "84194895"
 
 将对象从源目录上传到 $web 容器。
 
-> [!NOTE]
-> 如果使用 Azure Cloud Shell，请确保在引用 `$web` 容器时添加 `\` 转义字符（例如：`\$web`）。 如果使用的是 Azure CLI 的本地安装，则无需使用转义字符。
-
 此示例假设从 Azure Cloud Shell 会话中运行命令。
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 
@@ -201,7 +197,7 @@ set-AzStorageblobcontent -File "<path-to-file>" `
 
 可以使用网站的公共 URL 从浏览器查看网站的页面。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 在存储帐户的“帐户概述”页旁显示的窗格中，选择“静态网站”。 网站的 URL 将显示在“主终结点”字段中。
 

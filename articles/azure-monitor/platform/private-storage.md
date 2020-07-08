@@ -6,16 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 7213cb10936fc1c2117b2c5c3fc32a6bfea02d30
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816582"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610060"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Azure Monitor 上客户拥有的用于日志引入的存储帐户
 
-Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志](azure-storage-iis-table.md)等数据类型的数据引入过程中使用存储帐户。 在数据引入过程中，先将日志发送到存储帐户，然后再引入到 Log Analytics 或 Application Insights。 如果希望在数据引入过程中对数据进行控制，可以使用自己的存储帐户，不要使用服务托管存储。 使用自己的存储帐户，可以控制数据引入期间的日志访问、日志内容、日志加密和日志保留期。 我们将其称为自带存储或 BYOS。 
+Azure Monitor 在[自定义日志](data-sources-custom-logs.md)和 [Azure 日志](azure-storage-iis-table.md)等数据类型的数据引入过程中使用存储帐户。 在数据引入过程中，先将日志发送到存储帐户，然后再引入到 Log Analytics 或 Application Insights。 如果希望在数据引入过程中对数据进行控制，可以使用自己的存储帐户，不要使用服务托管存储。 使用自己的存储帐户，可以控制引入期间日志的访问、内容、加密和保留。 我们将其称为自带存储或 BYOS。 
 
 需要 BYOS 的一种方案是通过专用链接进行网络隔离。 使用 VNet 时，通常需要进行网络隔离，并限制公共 internet 访问。 在这种情况下，访问日志数据引入的 Azure Monitor 服务存储可能会被完全阻止，或被视为不好的做法。 相反，应通过 VNet 中客户所有的存储帐户引入日志，或从该帐户轻松访问日志。
 
@@ -210,7 +209,7 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="replace-a-storage-account"></a>替换存储帐户
 
-若要替换用于数据引入的存储帐户，请先为新存储帐户创建链接。 日志记录代理将获得更新配置，并开始将数据发送到新的存储。
+若要替换用于数据引入的存储帐户，请先为新存储帐户创建链接。 日志记录代理将获取更新的配置，并开始将数据发送到新的存储。
 
 接下来取消与旧存储帐户的链接，以便代理停止写入已删除的帐户。 数据引入过程将一直读取此帐户中的数据，直到全部引入。 在所有日志引入完之前，请不要删除存储帐户。
 
@@ -232,4 +231,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关设置专用链接的详细信息，请参阅 [使用 Azure 专用链接将网络安全连接到 Azure Monitor} (private-link-security.md)
+- 有关设置专用链接的详细信息，请参阅[使用 Azure 专用链接安全地将网络连接到 Azure Monitor](private-link-security.md)

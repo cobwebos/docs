@@ -2,18 +2,17 @@
 title: Azure 事件网格安全和身份验证
 description: 介绍 Azure 事件网格及其概念。
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: babanisa
-ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559013"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授权访问事件网格资源
 借助 Azure 事件网格，可以控制授予不同用户用来执行各种管理操作的访问级别，例如列出事件订阅、创建新的事件订阅及生成密钥。 事件网格使用 Azure 的基于角色的访问控制 (RBAC)。
@@ -34,7 +33,7 @@ ms.locfileid: "82629501"
 
 ## <a name="built-in-roles"></a>内置角色
 
-事件网格提供了用于管理事件订阅的两个内置角色。 它们对于实现[事件域](event-domains.md)很重要，因为它们向用户授予了订阅事件域中的主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
+事件网格提供了用于管理事件订阅的两个内置角色。 它们对于实施[事件域](event-domains.md)非常重要，因为它们为用户提供了订阅事件域中主题所需的权限。 这些角色专注于事件订阅，不授予对创建主题等操作的访问权限。
 
 你可以[将这些角色分配给用户或组](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
@@ -112,7 +111,7 @@ ms.locfileid: "82629501"
 
 下面是允许用户采取不同操作的示例事件网格角色定义。 这些自定义角色与内置角色不同，因为它们授予比只是事件订阅更广泛的访问权限。
 
-EventGridReadOnlyRole.json****：仅允许只读操作。
+**EventGridReadOnlyRole.json**：仅允许只读操作。
 
 ```json
 {
@@ -131,7 +130,7 @@ EventGridReadOnlyRole.json****：仅允许只读操作。
 }
 ```
 
-EventGridNoDeleteListKeysRole.json****：允许受限制的发布操作但禁止删除操作。
+**EventGridNoDeleteListKeysRole.json**：允许受限制的发布操作但禁止删除操作。
 
 ```json
 {
@@ -154,7 +153,7 @@ EventGridNoDeleteListKeysRole.json****：允许受限制的发布操作但禁止
 }
 ```
 
-EventGridContributorRole.json****：允许所有事件网格操作。
+**EventGridContributorRole.json**：允许所有事件网格操作。
 
 ```json
 {
@@ -182,9 +181,9 @@ EventGridContributorRole.json****：允许所有事件网格操作。
 
 ### <a name="encryption-at-rest"></a>静态加密
 
-事件网格服务写入到磁盘的所有事件或数据都通过 Microsoft 托管的密钥进行加密，确保静态加密。 此外，事件或数据保留的最长时间为24小时，并遵循[事件网格重试策略](delivery-and-retry.md)。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
+事件网格服务写入到磁盘的所有事件或数据均由 Microsoft 托管密钥进行加密，以确保静态加密。 此外，按照[事件网格重试策略](delivery-and-retry.md)，保留事件或数据的最长时间为 24 小时。 事件网格将在 24 小时或事件生存时间（以两者中较小者为准）过后自动删除所有事件或数据。
 
-## <a name="permissions-for-event-subscriptions"></a>事件订阅的权限
+## <a name="permissions-for-event-subscriptions"></a>事件订阅权限
 如果你使用不是 WebHook 的事件处理程序（例如事件中心或队列存储），则需要对该资源具有写入访问权限。 此权限检查可防止未经授权的用户向你的资源发送事件。
 
 你必须在作为事件源的资源上具有 **Microsoft.EventGrid/EventSubscriptions/Write** 权限。 因为要在资源范围内写入新的订阅，所以需要此权限。 所需资源因是订阅系统主题还是订阅自定义主题而异。 本部分介绍了这两种类型。

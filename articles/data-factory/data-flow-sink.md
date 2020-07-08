@@ -8,42 +8,55 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: 143c94527b947495709d2e94f107dc578e7f2866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610162"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>映射数据流中的接收器转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-转换数据后，可以将数据接收到目标数据集。 每个数据流都需要至少一个接收器转换，但你可以根据需要写入任意多个接收器来完成转换流。 若要写入其他接收器，请通过新的分支和条件拆分创建新的流。
+转换完数据后，使用接收器转换将数据写入目标存储。 每个数据流都需要至少一个接收器转换，但你可以根据需要写入任意多个接收器来完成转换流。 若要写入其他接收器，请通过新的分支和条件拆分创建新的流。
 
-每个接收器转换只与一个数据工厂数据集相关联。 数据集定义要写入的数据的形状和位置。
+每个接收器转换只与一个 Azure 数据工厂数据集对象或链接服务相关联。 接收器转换确定要写入的数据的形状和位置。
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>映射数据流中支持的接收器连接器
+## <a name="inline-datasets"></a>内联数据集
 
-当前，以下数据集可用于接收器转换：
-    
-* [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)（JSON、Avro、Text、Parquet）
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+创建接收器转换时，请选择是否在 dataset 对象内或接收器转换内定义接收器信息。 大多数格式仅可用于其中一种格式。 若要了解如何使用特定的连接器，请参阅相应的连接器文档。
 
-特定于这些连接器的设置位于 "**设置**" 选项卡中。有关这些设置的信息位于连接器文档中。 
+当 inline 和 dataset 对象同时支持格式时，这两种方法都有好处。 数据集对象是可重复使用的实体，可在其他数据流和活动（如复制）中利用。 当使用强化的架构时，这些方法特别有用。 数据集并不基于 Spark，有时你可能需要在接收器转换中替代某些设置或架构投影。
 
-Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)。 若要将数据写入数据流中的其他源，请使用复制活动在数据流完成后从支持的暂存区域中加载数据。
+使用灵活的架构、一次性接收器实例或参数化接收器时，建议使用内联数据集。 如果接收器的参数化很高，则行内数据集允许你不创建 "虚拟" 对象。 内联数据集基于 spark，其属性是流的本机属性。
+
+若要使用内联数据集，请在**接收器类型**选择器中选择所需的格式。 选择要连接到的链接服务，而不是选择接收器数据集。
+
+![内联数据集](media/data-flow/inline-selector.png "内联数据集")
+
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>支持的接收器类型
+
+映射数据流遵循提取、加载和转换（ELT）方法，并且适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
+
+| 连接器 | 格式 | 数据集/内联 |
+| --------- | ------ | -------------- |
+| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [通用数据模型（预览）](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB （SQL API）](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+特定于这些连接器的设置位于 "**设置**" 选项卡中。有关这些设置的信息和数据流脚本示例位于连接器文档中。 
+
+Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)。 若要将数据从数据流写入其他源，请使用复制活动从支持的接收器加载数据。
 
 ## <a name="sink-settings"></a>接收器设置
 
 添加接收器后，通过 "**接收器**" 选项卡进行配置。可在此处选取或创建接收器写入的数据集。 以下视频介绍了几种用于文本分隔文件类型的不同接收器选项：
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![接收器设置](media/data-flow/sink-settings.png "接收器设置")
 

@@ -5,13 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 74ca984232bef979062221a451d0ee10a6965bc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: cc996988-fb4f-47, tracking-python
+ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559920"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -44,7 +43,7 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码  。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
+以下示例演示 function.json 文件中的一个队列触发器绑定以及使用该绑定的 [C# 脚本 (.csx)](functions-reference-csharp.md) 代码。 每次处理某个队列项之后，该函数会轮询 `myqueue-items` 队列并写入日志。
 
 function.json  文件如下所示：
 
@@ -163,7 +162,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-代码`func.ServiceBusMessage` *\_py 将参数声明为，这允许您在函数中读取队列消息。 _ \__*
+代码* _ \_ _ \_ py*将参数声明为 `func.ServiceBusMessage` ，这允许您在函数中读取队列消息。
 
 ```python
 import logging
@@ -192,7 +191,7 @@ def main(msg: func.QueueMessage):
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下 Java 示例显示了存储队列触发器函数，该函数将触发的消息记录到队列`myqueuename`中。
+以下 Java 示例显示了存储队列触发器函数，该函数将触发的消息记录到队列中 `myqueuename` 。
 
  ```java
  @FunctionName("queueprocessor")
@@ -228,7 +227,7 @@ def main(msg: func.QueueMessage):
   }
   ```
 
-  可以设置`Connection`属性以指定包含要使用的存储帐户连接字符串的应用设置，如以下示例中所示：
+  可以设置 `Connection` 属性以指定包含要使用的存储帐户连接字符串的应用设置，如以下示例中所示：
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -266,7 +265,7 @@ def main(msg: func.QueueMessage):
 * 应用到类的 `StorageAccount` 特性。
 * “AzureWebJobsStorage”应用设置。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -280,7 +279,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用`QueueTrigger`批注可以访问触发函数的队列。 下面的示例通过`message`参数使队列消息可用于函数。
+使用 `QueueTrigger` 批注可以访问触发函数的队列。 下面的示例通过参数使队列消息可用于函数 `message` 。
 
 ```java
 package com.function;
@@ -301,23 +300,23 @@ public class QueueTriggerDemo {
 
 | Property    | 说明 |
 |-------------|-----------------------------|
-|`name`       | 声明函数签名中的参数名称。 触发函数时，此参数的值将具有队列消息的内容。 |
-|`queueName`  | 声明存储帐户中的队列名称。 |
+|`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
+|`queueName`  | 在存储帐户中声明队列名称。 |
 |`connection` | 指向存储帐户连接字符串。 |
 
 ---
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`QueueTrigger`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `QueueTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | n/a| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
-|**方向键**| n/a | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|**name** | n/a |包含功能代码中的队列项有效负载的变量的名称。  |
+|**type** | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
-|**connection** | **连接** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接 | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -332,22 +331,22 @@ public class QueueTriggerDemo {
 * `byte[]`
 * [CloudQueueMessage]
 
-如果尝试绑定到 `CloudQueueMessage` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
+如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-使用方法参数（例如） `string paramName`访问消息数据。 `paramName`是在`name` *函数 json*的属性中指定的值。 可以绑定到以下任何类型：
+使用方法参数（例如）访问消息数据 `string paramName` 。 `paramName` 是在 *function.json* 的 `name` 属性中指定的值。 可以绑定到以下任何类型：
 
 * 对象 - Functions 运行时将 JSON 负载反序列化为代码中定义的任意类的实例。 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
-如果尝试绑定到 `CloudQueueMessage` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
+如果在尝试绑定到 `CloudQueueMessage` 时出现错误消息，请确保引用[正确的存储 SDK 版本](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-队列项有效负载可通过`context.bindings.<NAME>` ，其中`<NAME>`与*函数 json*中定义的名称匹配。 如果有效负载为 JSON，则会将值反序列化为对象。
+队列项有效负载可通过 `context.bindings.<NAME>` ，其中 `<NAME>` 与*function.js上*的中定义的名称匹配。 如果有效负载为 JSON，则会将值反序列化为对象。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -363,9 +362,9 @@ public class QueueTriggerDemo {
 
 [队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些属性是[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)类的成员。
 
-|properties|类型|说明|
+|Property|类型|描述|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是一个字符串， `QueueTrigger`则与`name` *函数*中由属性命名的变量具有相同的值。|
+|`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是一个字符串，与 `QueueTrigger` 中的属性命名的变量具有相同的值 `name` *function.json*。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
 |`ExpirationTime`|`DateTimeOffset`|消息过期的时间。|
 |`Id`|`string`|队列消息 ID。|
@@ -373,9 +372,9 @@ public class QueueTriggerDemo {
 |`NextVisibleTime`|`DateTimeOffset`|消息下一次可见的时间。|
 |`PopReceipt`|`string`|消息的 pop 接收方。|
 
-## <a name="poison-messages"></a>病毒消息
+## <a name="poison-messages"></a>有害消息
 
-队列触发函数失败时，Azure Functions 会针对给定的队列消息重试该函数最多 5 次（包括第一次尝试）。 如果所有这5次尝试都失败，函数运行时会将消息添加到名为* &lt;originalqueuename*的队列中> 有害。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
+队列触发函数失败时，Azure Functions 会针对给定的队列消息重试该函数最多 5 次（包括第一次尝试）。 如果所有这5次尝试都失败，函数运行时会将消息添加到名为 originalqueuename 的队列中* &lt;> 有害*。 可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 若要手动处理有害消息，请检查队列消息的 [dequeueCount](#message-metadata)。
 
@@ -402,7 +401,7 @@ public class QueueTriggerDemo {
 
 队列触发器会自动阻止函数多次处理队列消息；无需将函数编写为幂等函数。
 
-## <a name="hostjson-properties"></a>host json 属性
+## <a name="hostjson-properties"></a>host.json 属性
 
 [host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](functions-bindings-storage-queue-output.md#hostjson-settings)部分。
 

@@ -1,5 +1,5 @@
 ---
-title: 常见问题-Azure 数据库迁移服务
+title: 常见问题 - Azure 数据库迁移服务
 description: 了解有关如何排查使用 Azure 数据库迁移服务时出现的常见已知问题/错误。
 services: database-migration
 author: pochiraju
@@ -11,16 +11,21 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649101"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609431"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误
 
 本文描述了 Azure 数据库迁移服务用户可能遇到的一些常见问题和错误。 本文还包含有关如何解决这些问题和错误的信息。
+
+> [!NOTE]
+> 无偏差通信
+>
+> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+>
 
 ## <a name="migration-activity-in-queued-state"></a>迁移活动处于排队状态
 
@@ -32,7 +37,7 @@ ms.locfileid: "77649101"
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>选择迁移的数据库数目上限
 
-为要转移到 Azure SQL 数据库或 Azure SQL 数据库托管实例的数据库迁移项目创建活动时发生以下错误：
+为要转移到 Azure SQL 数据库或 Azure SQL 托管实例的数据库迁移项目创建活动时发生以下错误：
 
 * **错误**：迁移设置验证错误: "errorDetail": 选择迁移的“数据库”对象数目超过最大数目 '4'。
 
@@ -58,7 +63,7 @@ ms.locfileid: "77649101"
 
 | 原因         | 解决方法 |
 | ------------- | ------------- |
-| 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2. 登录名-Add-azurermaccount <br>3. Get-azurermsubscription-SubscriptionName "\<>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| 如果尝试停止的服务实例包含仍在运行的或者存在于迁移项目中的活动，则会显示此错误。 <br><br><br><br><br><br> | 确保尝试停止的 Azure 数据库迁移服务实例中没有任何活动正在运行。 在尝试停止该服务之前，还可以删除活动或项目。 以下步骤演示如何通过删除所有正在运行的任务来删除项目，以清理迁移服务实例：<br>1.Install-Module -Name AzureRM.DataMigration <br>2. 登录名-Add-azurermaccount <br>3.Select-AzureRmSubscription -SubscriptionName "\<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>尝试启动 Azure 数据库迁移服务时出错
 
@@ -72,13 +77,13 @@ ms.locfileid: "77649101"
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>在将 SQL 迁移到 Azure SQL DB 托管实例的过程中还原数据库时出错
 
-从 SQL Server 联机迁移到 Azure SQL 数据库托管实例时，直接转换失败，出现以下错误：
+从 SQL Server 联机迁移到 Azure SQL 托管实例时，直接转换失败，出现以下错误：
 
 * **错误**：操作 ID 为“operationId”的还原操作失败。 代码为“AuthorizationFailed”，消息为“对象 ID 为 'objectId' 的客户端 'clientId' 无权执行作用域为 '/订阅/subscriptionId' 的操作 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read'。”。
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |
-| 此错误表明，用于从 SQL Server 联机迁移到 Azure SQL 数据库托管实例的应用程序主体在订阅上没有参与权限。 目前，使用托管实例进行的某些 API 调用需要在订阅上有此权限才能执行还原操作。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 将 `Get-AzureADServicePrincipal` PowerShell cmdlet 与错误消息中提供的 `-ObjectId` 配合使用即可列出所用应用程序 ID 的显示名称。<br><br> 验证此应用程序的权限，确保其在订阅级别有[参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)。 <br><br> Azure 数据库迁移服务工程团队会限定从订阅上的当前参与角色进行访问这一必需权限。 如果你的业务要求不允许使用参与角色，请联系 Azure 支持部门以获取更多帮助。 |
+| 此错误表明，用于从 SQL Server 联机迁移到 SQL 托管实例的应用程序主体在订阅上没有参与权限。 目前，使用托管实例进行的某些 API 调用需要在订阅上有此权限才能执行还原操作。 <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | 将 `Get-AzureADServicePrincipal` PowerShell cmdlet 与错误消息中提供的 `-ObjectId` 配合使用即可列出所用应用程序 ID 的显示名称。<br><br> 验证此应用程序的权限，确保其在订阅级别有[参与者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)。 <br><br> Azure 数据库迁移服务工程团队会限定从订阅上的当前参与角色进行访问这一必需权限。 如果你的业务要求不允许使用参与角色，请联系 Azure 支持部门以获取更多帮助。 |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>删除与 Azure 数据库迁移服务关联的 NIC 时出错
 
@@ -112,7 +117,7 @@ ms.locfileid: "77649101"
 
 尝试将 Azure 数据库迁移服务连接到在命名实例或动态端口上运行的 SQL Server 源时，连接失败并出现以下错误：
 
-* **错误**：-1 - SQL 连接失败。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。 验证实例名称是否正确，以及 SQL Server 是否已配置为允许远程连接。 （提供程序：SQL 网络接口，错误：26 - 查找指定的服务器/实例时出错）
+* **错误**：-1 - SQL 连接失败。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 未找到或无法访问服务器。 请验证实例名称是否正确，SQL Server 是否已配置为允许远程连接。 （提供程序：SQL 网络接口，错误：26 - 查找指定的服务器/实例时出错）
 
 | 原因         | 解决方法    |
 | ------------- | ------------- |

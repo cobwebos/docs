@@ -10,13 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: df02c7d2ace6c58d86f4044607eca386f1790e1d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84558925"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>用于登录用户的 Web 应用：登录和注销
 
@@ -33,7 +32,7 @@ ms.locfileid: "82734308"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，对于 Microsoft 标识平台应用程序，"**登录**" 按钮在`Views\Shared\_LoginPartial.cshtml`中公开（对于 MVC 应用） `Pages\Shared\_LoginPartial.cshtm`或（适用于 Razor 应用）。 仅当用户未经过身份验证时才会显示。 也就是说，当用户尚未登录或注销时，会显示该用户。相反，当用户已登录时，将显示 "**注销**" 按钮。 请注意，帐户控制器是在 MicrosoftIdentity NuGet**包**中的名为 " **MicrosoftIdentity** " 的区域中定义的。
+在 ASP.NET Core 中，对于 Microsoft 标识平台应用程序，“登录”按钮在 `Views\Shared\_LoginPartial.cshtml`（适用于 MVC 应用）或 `Pages\Shared\_LoginPartial.cshtm`（适用于 Razor 应用）中公开。 仅当用户未经过身份验证时才会显示此按钮。 即，仅当用户尚未登录或者已注销时才显示。相反，当用户已登录时，将显示“注销”按钮。 请注意，帐户控制器是在“Microsoft.Identity.Web.UI”NuGet 包（位于名为“MicrosoftIdentity”的区域中）中定义的。
 
 ```html
 <ul class="navbar-nav">
@@ -112,7 +111,7 @@ def index():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET 中，在 Web 应用中选择“登录”按钮会触发 `AccountController` 控制器上的 `SignIn` 操作。  在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 这并不是这样，因为控制器现在是**Microsoft 的 web.config**包的一部分。 有关详细信息，请参阅[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
+在 ASP.NET 中，在 Web 应用中选择“登录”按钮会触发 `AccountController` 控制器上的 `SignIn` 操作。 在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 现在不再是这样，因为该控制器现在是“Microsoft.Identity.Web.UI”NuGet 包的一部分。 有关详细信息，请参阅 [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)。
 
 此控制器还处理 Azure AD B2C 应用程序。
 
@@ -221,15 +220,15 @@ def _get_token_from_cache(scope=None):
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44321/signout-oidc`。    有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
+在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44321/signout-oidc`。   有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44308/Account/EndSession`。    有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
+在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `https://localhost:44308/Account/EndSession`。   有关详细信息，请参阅[注册 webApp 应用](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `http://localhost:8080/msal4jsample/sign_out`。   
+在应用程序注册期间，需要注册一个注销后的 URI。 在本教程中，你已在“身份验证”页上“高级设置”部分的“注销 URL”字段中注册了 `http://localhost:8080/msal4jsample/sign_out`。  
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -241,7 +240,7 @@ def _get_token_from_cache(scope=None):
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET 中，在 web 应用中选择 "**注销**" 按钮会`SignOut`触发`AccountController`控制器上的操作（请参阅下文）
+在 ASP.NET 的 Web 应用中选择“注销”按钮会触发 `AccountController` 控制器上的 `SignOut` 操作（见下）
 
 ```html
 <ul class="navbar-nav">
@@ -329,13 +328,13 @@ else
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 这并不是这样，因为控制器现在是**Microsoft 的 web.config**包的一部分。 有关详细信息，请参阅[AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs) 。
+在以前的 ASP.NET Core 模板版本中，`Account` 控制器嵌入在 Web 应用中。 现在不再是这样，因为该控制器现在是“Microsoft.Identity.Web.UI”NuGet 包的一部分。 有关详细信息，请参阅 [AccountController.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Controllers/AccountController.cs)。
 
 - 将 OpenID 重定向 URI 设置为 `/Account/SignedOut`，以便在 Azure AD 完成注销后回调控制器。
 - 调用 `Signout()`，让 OpenID Connect 中间件联系 Microsoft 标识平台 `logout` 终结点。 然后，终结点将会：
 
   - 从浏览器中清除会话 Cookie。
-  - 回调注销 URL。 默认情况下，注销 URL 会显示已注销视图页 [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此页还作为 MIcrosoft 的一部分提供。
+  - 回调注销 URL。 默认情况下，注销 URL 会显示已注销视图页 [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml)。 此页也作为 MIcrosoft.Identity.Web 的一部分提供。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -397,7 +396,7 @@ def logout():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core OpenID Connect 中间件提供名为 `OnRedirectToIdentityProviderForSignOut` 的 OpenID Connect 事件，可让应用截获对 Microsoft 标识平台 `logout` 终结点的调用。 此方法由 Microsoft 身份验证（这会在 web 应用调用 web api 的情况下清除帐户）
+ASP.NET Core OpenID Connect 中间件提供名为 `OnRedirectToIdentityProviderForSignOut` 的 OpenID Connect 事件，可让应用截获对 Microsoft 标识平台 `logout` 终结点的调用。 这由 Microsoft.Identity.Web 自动处理（在 Web 应用调用 Web API 的情况下会清除帐户）
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

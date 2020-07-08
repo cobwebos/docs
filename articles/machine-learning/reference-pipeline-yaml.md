@@ -5,17 +5,17 @@ description: 了解如何使用 YAML 文件定义机器学习管道。 YAML 管�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: a519519d5728307847b5d92f9ae5ce3e739e3ba6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208493"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560951"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定义机器学习管道
 
@@ -26,6 +26,7 @@ ms.locfileid: "82208493"
 | 步骤类型 | 支持？ |
 | ----- | :-----: |
 | PythonScriptStep | 是 |
+| ParallelRunStep | 是 |
 | AdlaStep | 是 |
 | AzureBatchStep | 是 |
 | DatabricksStep | 是 |
@@ -111,6 +112,7 @@ pipeline:
 | `DatabricsStep` | 添加 Databricks 笔记本、Python 脚本或 JAR。 对应于 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) 类。 |
 | `DataTransferStep` | 在存储选项之间传输数据。 对应于 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) 类。 |
 | `PythonScriptStep` | 运行 Python 脚本。 对应于 [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) 类。 |
+| `ParallelRunStep` | 运行 Python 脚本，以异步方式并行处理大量数据。 对应于 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 类。 |
 
 ### <a name="adla-step"></a>ADLA 步骤
 
@@ -362,11 +364,63 @@ pipeline:
                     bind_mode: mount
 ```
 
+### <a name="parallel-run-step"></a>并行运行步骤
+
+| YAML 键 | 说明 |
+| ----- | ----- |
+| `inputs` | 输入可以是 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、[DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py) 或 [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
+| `outputs` | 输出可以是 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 或 [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)。 |
+| `script_name` | Python 脚本的名称（相对于 `source_directory`）。 |
+| `source_directory` | 包含脚本、Conda 环境等的目录。 |
+| `parallel_run_config` | `parallel_run_config.yml` 文件的路径。 此文件是 [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py) 类的 YAML 表示形式。 |
+| `allow_reuse` | 确定当使用相同的设置再次运行时，该步骤是否应重用以前的结果。 |
+
+以下示例包含并行运行步骤：
+
+```yaml
+pipeline:
+    description: SamplePipelineFromYaml
+    default_compute: cpu-cluster
+    data_references:
+        MyMinistInput:
+            dataset_name: mnist_sample_data
+    parameters:
+        PipelineParamTimeout:
+            type: int
+            default: 600
+    steps:        
+        Step1:
+            parallel_run_config: "yaml/parallel_run_config.yml"
+            type: "ParallelRunStep"
+            name: "parallel-run-step-1"
+            allow_reuse: True
+            arguments:
+            - "--progress_update_timeout"
+            - parameter:timeout_parameter
+            - "--side_input"
+            - side_input:SideInputData
+            parameters:
+                timeout_parameter:
+                    source: PipelineParamTimeout
+            inputs:
+                InputData:
+                    source: MyMinistInput
+            side_inputs:
+                SideInputData:
+                    source: Output4
+                    bind_mode: mount
+            outputs:
+                OutputDataStep2:
+                    destination: Output5
+                    datastore: workspaceblobstore
+                    bind_mode: mount
+```
+
 ### <a name="pipeline-with-multiple-steps"></a>包含多个步骤的管道 
 
 | YAML 键 | 说明 |
 | ----- | ----- |
-| `steps` | 一个或多个 PipelineStep 定义的序列。 请注意， `destination`一个步骤的键`outputs`会成为下`source`一步的`inputs`的键。| 
+| `steps` | 具有一个或多个 PipelineStep 定义的序列。 请注意，步骤 `outputs` 的 `destination` 键将成为下一步 `inputs` 的 `source` 键。| 
 
 ```yaml
 pipeline:
@@ -433,7 +487,7 @@ pipeline:
 | `wait_for_provisioning` | 是否等待计划预配完成。 |
 | `wait_timeout` | 超时之前等待的秒数。 |
 | `datastore_name` | 要在其中监视已修改/已添加的 Blob 的数据存储。 |
-| `polling_interval` | 轮询已修改/已添加的 Blob 的间隔时间（分钟）。 默认值：5分钟。 仅支持数据存储计划。 |
+| `polling_interval` | 轮询已修改/已添加的 Blob 的间隔时间（分钟）。 默认值：5 分钟。 仅支持数据存储计划。 |
 | `data_path_parameter_name` | 要使用更改的 Blob 路径设置的数据路径管道参数的名称。 仅支持数据存储计划。 |
 | `continue_on_step_failure` | 当某个步骤失败时，是否继续执行提交的 PipelineRun 中的其他步骤。 如果提供此键，将替代管道的 `continue_on_step_failure` 设置。
 | `path_on_datastore` | 可选。 要在其中监视已修改/已添加的 Blob 的数据存储上的路径。 该路径位于数据存储的容器下，因此，计划监视的实际路径是 container/`path_on_datastore`。 如果没有此路径，将监视数据存储容器。 不会监视在 `path_on_datastore` 的子文件夹中进行的添加/修改。 仅支持数据存储计划。 |

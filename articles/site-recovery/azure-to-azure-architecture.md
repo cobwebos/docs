@@ -8,12 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629695"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -34,7 +33,7 @@ ms.locfileid: "82983323"
 **缓存存储帐户** | 源网络中需要一个缓存存储帐户。 在复制期间，VM 更改将存储在缓存中，然后再发送到目标存储。  缓存存储帐户必须是标准存储帐户。<br/><br/> 使用缓存可确保尽量减少对 VM 上运行的生产应用程序造成的影响。<br/><br/> [详细了解](azure-to-azure-support-matrix.md#cache-storage)缓存存储要求。 
 **目标资源** | 在复制期间以及发生故障转移时将使用目标资源。 Site Recovery 默认可以设置目标资源，你也可以自行创建/自定义目标资源。<br/><br/> 在目标区域中，请检查是否能够创建 VM，以及你的订阅是否有足够的资源用于支持目标区域中所需的 VM 大小。 
 
-![源和目标复制](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![源和目标复制](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目标资源
 
@@ -43,11 +42,11 @@ ms.locfileid: "82983323"
 **目标资源** | **默认设置**
 --- | ---
 **目标订阅** | 与源订阅相同。
-目标资源组  | VM 在故障转移后所属的资源组。<br/><br/> 该组可以位于除源区域以外的其他任何 Azure 区域。<br/><br/> Site Recovery 将在目标区域中创建一个带有“asr”后缀的新资源组。<br/><br/>
+目标资源组 | VM 在故障转移后所属的资源组。<br/><br/> 该组可以位于除源区域以外的其他任何 Azure 区域。<br/><br/> Site Recovery 将在目标区域中创建一个带有“asr”后缀的新资源组。<br/><br/>
 **目标 VNet** | 复制的 VM 在故障转移后所处的虚拟网络 (VNet)。 创建源虚拟网络与目标虚拟网络之间的网络映射，反之亦然。<br/><br/> Site Recovery 将创建带有“asr”后缀的新 VNet 和子网。
 **目标存储帐户** |  如果 VM 不使用托管磁盘，则会将数据复制到此存储帐户。<br/><br/> Site Recovery 将在目标区域中创建新的存储帐户，以镜像源存储帐户。
 **副本托管磁盘** | 如果 VM 使用托管磁盘，则会将数据复制到此副本托管磁盘。<br/><br/> Site Recovery 将在存储区域中创建副本托管磁盘用于镜像源。
-目标可用性集  |  复制的 VM 在故障转移后所处的可用性集。<br/><br/> 对于源位置中某个可用性集内的 VM，Site Recovery 将在目标区域中创建一个带有“asr”后缀的可用性集。 如果存在某个可用性集，则会使用该可用性集，而不会新建。
+目标可用性集 |  复制的 VM 在故障转移后所处的可用性集。<br/><br/> 对于源位置中某个可用性集内的 VM，Site Recovery 将在目标区域中创建一个带有“asr”后缀的可用性集。 如果存在某个可用性集，则会使用该可用性集，而不会新建。
 **目标可用性区域** | 如果目标区域支持可用性区域，Site Recovery 将分配源区域中所用的相同区域编号。
 
 ### <a name="managing-target-resources"></a>管理目标资源
@@ -55,7 +54,7 @@ ms.locfileid: "82983323"
 可按如下所述管理目标资源：
 
 - 启用复制时可以修改目标设置。
-- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU （或与源 VM SKU 比较的下一个最佳可用 SKU）相同。 类似于其他资源，例如目标资源组、目标名称等，还可以在复制过程中更新目标区域 VM SKU。 无法更新的资源是可用性类型（单实例、集或区域）。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
+- 已开始复制后可以修改目标设置。 请注意，目标区域 VM 的默认 SKU 与源 VM 的 SKU（或仅次于源 VM SKU 的最佳可用 SKU）相同。 与目标资源组、目标名称和其他资源类似，目标区域 VM SKU 也可以在复制期间进行更新。 无法更新的资源是可用性类型（单实例、集或区域）。 若要更改此设置，需要禁用复制、修改设置，然后重新启用复制。 
 
 
 ## <a name="replication-policy"></a>复制策略 
@@ -96,13 +95,13 @@ Site Recovery 按如下所述创建快照：
 
 ### <a name="crash-consistent"></a>崩溃一致性
 
-**说明** | **详细信息** | 建议 
+**说明** | **详细信息** | 建议
 --- | --- | ---
 崩溃一致性快照捕获创建快照时磁盘上的数据。 它不包括内存中的任何数据。<br/><br/> 崩溃一致性快照包含在 VM 发生崩溃或者在创建快照的那一刻从服务器上拔下电源线时，磁盘上的等量数据。<br/><br/> 崩溃一致性不能保证操作系统或 VM 上的应用中的数据一致性。 | 默认情况下，Site Recovery 每隔五分钟创建崩溃一致性恢复点。 此设置不可修改。<br/><br/>  | 目前，大多数应用都可以从崩溃一致性恢复点正常恢复。<br/><br/> 对于操作系统以及 DHCP 服务器和打印服务器等应用而言，崩溃一致性恢复点通常已足够。
 
 ### <a name="app-consistent"></a>应用一致性
 
-**说明** | **详细信息** | 建议 
+**说明** | **详细信息** | 建议
 --- | --- | ---
 应用一致性恢复点是基于应用一致性快照创建的。<br/><br/> 应用一致性快照包含崩溃一致性快照中的所有信息，此外加上内存中的数据，以及正在进行的事务中的数据。 | 应用一致性快照使用卷影复制服务 (VSS)：<br/><br/>   1) 启动快照时，VSS 会在卷上执行写入时复制 (COW) 操作。<br/><br/>   2) 执行 COW 之前，VSS 会告知计算机上的每个应用它需要将内存中的数据刷新到磁盘。<br/><br/>   3) 然后，VSS 允许备份/灾难恢复应用（在本例中为 Site Recovery）读取快照数据并继续处理。 | 应用一致性快照是按指定的频率创建的。 此频率始终应小于为保留恢复点设置的频率。 例如，如果使用默认设置 24 小时保留恢复点，则应将频率设置为小于 24 小时。<br/><br/>应用一致性快照比崩溃一致性快照更复杂，且完成时间更长。<br/><br/> 应用一致性快照会影响已启用复制的 VM 上运行的应用的性能。 
 
@@ -116,7 +115,7 @@ Site Recovery 按如下所述创建快照：
 4. Site Recovery 处理缓存中的数据，并将其发送到目标存储帐户或副本托管磁盘。
 5. 处理数据后，每隔五分钟生成崩溃一致性恢复点。 根据复制策略中指定的设置生成应用一致性恢复点。
 
-![启用复制过程，步骤 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![启用复制过程，步骤 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **复制过程**
 
@@ -130,7 +129,7 @@ Site Recovery 按如下所述创建快照：
 
 | **URL** | **详细信息** |
 | ------- | ----------- |
-| \* .blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| *.blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
 | *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
 | *.servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
@@ -146,23 +145,23 @@ Site Recovery 按如下所述创建快照：
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<区域名称>
+允许 HTTPS 出站通信：端口 443 | 允许对应于源区域中存储帐户的范围 | 储存.\<region-name>
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure Active Directory (Azure AD) 的范围  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub.\<区域名称>
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的事件中心对应的范围。 | EventsHub.\<region-name>
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 对应的范围  | AzureSiteRecovery
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅当通过门户为复制的项启用移动代理自动升级时才需要） | GuestAndHybridManagement
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅在通过门户为复制项启用移动代理自动升级时才需要这样做） | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>目标区域规则
 
 **规则** |  **详细信息** | **服务标记**
 --- | --- | --- 
-允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户相对应的范围 | 储存.\<区域名称>
+允许 HTTPS 出站通信：端口 443 | 允许与目标区域中的存储帐户相对应的范围 | 储存.\<region-name>
 允许 HTTPS 出站通信：端口 443 | 允许对应于 Azure AD 的范围  | AzureActiveDirectory
-允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub.\<区域名称>
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 相对应的范围  | AzureSiteRecovery
+允许 HTTPS 出站通信：端口 443 | 允许与源区域中的事件中心对应的范围。 | EventsHub.\<region-name>
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure Site Recovery 对应的范围  | AzureSiteRecovery
 允许 HTTPS 出站通信：端口 443 | 允许与 Azure Key Vault 对应的范围（仅在通过门户为支持 ADE 的虚拟机启用复制时才需要这样做） | AzureKeyVault
-允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅当通过门户为复制的项启用移动代理自动升级时才需要） | GuestAndHybridManagement
+允许 HTTPS 出站通信：端口 443 | 允许与 Azure 自动化控制器对应的范围（仅在通过门户为复制项启用移动代理自动升级时才需要这样做） | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 规则控制访问
@@ -191,7 +190,7 @@ Site Recovery 按如下所述创建快照：
 
 如果启动故障转移，系统会在目标资源组、目标虚拟网络、目标子网和目标可用性集中创建 VM。 可在故障转移过程中使用任意恢复点。
 
-![故障转移过程](./media/concepts-azure-to-azure-architecture/failover.png)
+![故障转移过程](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,13 +7,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/05/2020
+ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84610169"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换 
 
@@ -23,22 +22,36 @@ ms.locfileid: "81606309"
 
 每个数据流需要至少一个源转换，但你可以根据需要添加任意多个源来完成数据转换。 您可以将这些源与联接、查找或联合转换一起联接。
 
-每个源转换只与一个数据工厂数据集相关联。 数据集定义要写入或读取的数据的形状和位置。 如果使用基于文件的数据集，则可以使用源中的通配符和文件列表一次处理多个文件。
+每个源转换只与一个数据集或链接服务相关联。 数据集定义要写入或读取的数据的形状和位置。 如果使用基于文件的数据集，则可以使用源中的通配符和文件列表一次处理多个文件。
 
-## <a name="supported-source-connectors-in-mapping-data-flow"></a>映射数据流中支持的源连接器
+## <a name="inline-datasets"></a>内联数据集
+
+创建源转换时所做的第一次决定是在 dataset 对象内还是在源转换内定义源信息。 大多数格式仅可用于其中一种格式。 若要了解如何使用特定的连接器，请参阅相应的连接器文档。
+
+当 inline 和 dataset 对象同时支持格式时，这两种方法都有好处。 数据集对象是可重复使用的实体，可在其他数据流和活动（如复制）中利用。 当使用强化的架构时，这些方法特别有用。 数据集并不基于 Spark，有时你可能需要在源转换中替代某些设置或架构投影。
+
+使用灵活的架构、一次性源实例或参数化源时，建议使用内联数据集。 如果源的数据集很大，则行内数据集允许你不创建 "虚拟" 对象。 内联数据集基于 spark，其属性是流的本机属性。
+
+若要使用内联数据集，请在 "**源类型**选择器" 中选择所需的格式。 不选择源数据集，而是选择要连接到的链接服务。
+
+![内联数据集](media/data-flow/inline-selector.png "内联数据集")
+
+##  <a name="supported-source-types"></a><a name="supported-sources"></a>支持的源类型
 
 映射数据流遵循提取、加载和转换（ELT）方法，并且适用于所有 Azure 中的*临时*数据集。 当前，以下数据集可用于源转换：
-    
-* [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)（JSON、Avro、Text、Parquet）
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) （JSON，Avro，Text，Parquet）
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-特定于这些连接器的设置位于 "**源选项**" 选项卡中。有关这些设置的信息位于连接器文档中。 
+| 连接器 | 格式 | 数据集/内联 |
+| --------- | ------ | -------------- |
+| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [通用数据模型（预览）](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB （SQL API）](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
-Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)。 若要在数据流中包含其他源中的数据，请使用复制活动将该数据加载到某个支持的暂存区域。
+特定于这些连接器的设置位于 "**源选项**" 选项卡中。有关这些设置的信息和数据流脚本示例位于连接器文档中。 
+
+Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)。 若要在数据流中包含其他源中的数据，请使用复制活动将该数据加载到某个支持的暂存区域。
 
 ## <a name="source-settings"></a>源设置
 
@@ -46,6 +59,10 @@ Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)�
 
 ![源设置选项卡](media/data-flow/source1.png "源设置选项卡")
 
+**输出流名称：** 源转换的名称。
+
+**源类型：** 选择是要使用内联数据集还是现有数据集对象。
+ 
 **测试连接：** 测试数据流的 spark 服务是否可以成功连接到源数据集中使用的链接服务。 要启用此功能，调试模式必须为 on。
 
 **架构偏差：** [架构偏差](concepts-data-flow-schema-drift.md)是指数据工厂本机处理数据流中的灵活架构的能力，无需显式定义列更改。
@@ -60,12 +77,14 @@ Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)�
 
 **采样：** 启用采样以限制源中的行数。 当你在源中测试数据或对数据进行采样以便进行调试时，请使用此设置。
 
-**多行行：** 如果源文本文件包含跨多行的字符串值（即值中的换行符），请选择多行行。 此设置仅可用于 DelimitedText 数据集。
-
 若要验证是否正确配置了源，请打开调试模式并提取数据预览。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
 > [!NOTE]
 > 当调试模式处于打开状态时，"调试" 设置中的行限制配置将覆盖数据预览期间源中的采样设置。
+
+## <a name="source-options"></a>源选项
+
+"源选项" 选项卡包含特定于所选连接器和格式的设置。 有关详细信息和示例，请参阅相关[连接器文档](#supported-sources)。
 
 ## <a name="projection"></a>投影
 
@@ -83,26 +102,18 @@ Azure 数据工厂可访问超过[90 个本机连接器](connector-overview.md)�
 
 使用 "**投影**" 选项卡上的 "**导入架构**" 按钮，可以使用活动调试群集创建架构投影。 在每个源类型中提供，在此处导入架构将覆盖数据集中定义的投影。 数据集对象将不会更改。
 
-这在支持复杂数据结构的数据集中很有用，因为这些数据集不需要架构定义存在于数据集中。
+这在支持复杂数据结构的数据集中很有用，因为这些数据集不需要架构定义存在于数据集中。 对于内联数据集，这是引用列元数据而不会有架构偏移的唯一方法。
 
 ## <a name="optimize-the-source-transformation"></a>优化源转换
 
-在源转换的 "**优化**" 选项卡上，可能会看到**源**分区类型。 仅当你的源是 Azure SQL 数据库时，此选项才可用。 这是因为数据工厂会尝试建立并行连接，以针对 SQL 数据库源运行大型查询。
+"**优化**" 选项卡允许在每个转换步骤中编辑分区信息。 在大多数情况下，**使用当前分区**会优化源的理想分区结构。
+
+如果要从 Azure SQL 数据库源读取数据，自定义**源**分区可能会以最快的速度读取数据。 ADF 通过建立与数据库的并行连接来读取大型查询。 可以对列或使用查询执行此源分区。
 
 ![源分区设置](media/data-flow/sourcepart3.png "partitioning")
-
-不需要对 SQL 数据库源上的数据进行分区，但分区对于大型查询很有用。 您可以将分区基于列或查询。
-
-### <a name="use-a-column-to-partition-data"></a>使用列对数据进行分区
-
-从源表中，选择要进行分区的列。 同时设置分区数。
-
-### <a name="use-a-query-to-partition-data"></a>使用查询对数据进行分区
-
-您可以选择基于查询对连接进行分区。 输入 WHERE 谓词的内容。 例如，输入 year > 1980。
 
 有关映射数据流中的优化的详细信息，请参阅 "[优化" 选项卡](concepts-data-flow-overview.md#optimize)。
 
 ## <a name="next-steps"></a>后续步骤
 
-开始生成[派生列转换](data-flow-derived-column.md)和[select 转换](data-flow-select.md)。
+开始使用[派生列转换](data-flow-derived-column.md)和[select 转换](data-flow-select.md)生成数据流。

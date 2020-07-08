@@ -2,24 +2,23 @@
 title: Azure 事件网格事件架构
 description: 介绍所有事件都存在的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559414"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure 事件网格事件架构
 
 本文介绍为所有事件提供的属性和架构。 事件由 5 个所需的字符串属性和 1 个 所需的数据对象构成。 这些属性在任何发布服务器的所有事件中通用。 数据对象具有特定于每个发布者的属性。 对于系统主题，这些属性特定于资源提供程序，例如 Azure 存储或 Azure 事件中心。
 
-事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件的大小限制为 1 MB。 事件或数组超出大小限制时会收到响应“413 有效负载太大”  。 不过，按 64 KB 增量对操作进行收费。 因此，超过 64 KB 的事件将产生操作费用，就好像它们是多个事件。 例如，130 KB 的事件将产生类似于3个不同事件的操作。
+事件源会将事件发送到数组中的 Azure 事件网格（其中可包含多个事件对象）。 将事件发布到事件网格主题时，数组的总大小最大可为 1 MB。 数组中的每个事件被限制为 1 MB。 事件或数组超出大小限制时会收到响应“413 有效负载太大”****。 不过，操作以 64KB 为增量进行收费。 因此，超过 64KB 的事件会产生操作费用，就像它们是多个事件一样。 例如，大小为 130KB 的事件会产生操作费用，就像它是 3 个不同的事件一样。
 
 事件网格会将事件发送给具有单个事件的数组中的订阅者。 此行为在将来可能会更改。
 

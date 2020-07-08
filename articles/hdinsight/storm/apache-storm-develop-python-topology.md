@@ -6,18 +6,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77460018"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608768"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 开发 Apache Storm 拓扑
 
-了解如何创建使用 Python 组件的 [Apache Storm](https://storm.apache.org/) 拓扑。 Apache Storm 支持多种语言，甚至允许将几种语言的组件组合到一个拓扑中。 借助 [Flux](https://storm.apache.org/releases/current/flux.html) 框架（通过 Storm 0.10.0 引入），可以轻松地创建使用 Python 组件的解决方案。
+了解如何创建使用 Python 组件的 [Apache Storm](https://storm.apache.org/) 拓扑。 Apache Storm 支持多种语言，甚至可将多种语言的组件合并成一个拓扑。 借助 [Flux](https://storm.apache.org/releases/current/flux.html) 框架（通过 Storm 0.10.0 引入），可以轻松地创建使用 Python 组件的解决方案。
 
 > [!IMPORTANT]  
 > 本文档中的信息已使用 Storm on HDInsight 3.6 进行测试。
@@ -30,13 +29,13 @@ ms.locfileid: "77460018"
 
 * [Python 2.7 或更高版本](https://www.python.org/downloads/)。
 
-* [Java 开发人员工具包（JDK）版本 8](https://aka.ms/azure-jdks)。
+* [Java 开发人员工具包 (JDK) 版本 8](https://aka.ms/azure-jdks)。
 
 * 根据 Apache 要求正确[安装](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是 Java 项目的项目生成系统。
 
 ## <a name="storm-multi-language-support"></a>Storm 多语言支持
 
-Apache Storm 设计为与使用任何编程语言编写的组件配合使用。 组件必须了解如何使用 Storm 的 Thrift 定义。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 可以在[https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py)中找到此模块。
+Apache Storm 设计为与使用任何编程语言编写的组件配合使用。 组件必须了解如何使用 Storm 的 Thrift 定义。 对于 Python，会以 Apache Storm 项目的一部分提供模块，让用户可以轻松与 Storm 进行交互。 可以在 [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) 上找到此模块。
 
 Storm 是在 Java 虚拟机 (JVM) 上运行的 Java 进程。 使用其他语言编写的组件作为子进程执行。 Storm 使用通过 stdin/stdout 发送的 JSON 消息与这些子进程通信。 有关组件间通信的更多详细信息，请参阅 [Multi-lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html)（多语言协议）文档。
 
@@ -70,11 +69,11 @@ Flux 需要 Python 脚本位于包含拓扑的 jar 文件内的 `/resources` 目
 </resource>
 ```
 
-如前文所述，有一个`storm.py`用于实现风暴的 Thrift 定义的文件。 Flux 框架在生成项目时自动包含 `storm.py`，无需额外执行操作。
+如前文所述，有一个 `storm.py` 用于实现风暴的 Thrift 定义的文件。 Flux 框架在生成项目时自动包含 `storm.py`，无需额外执行操作。
 
 ## <a name="build-the-project"></a>生成项目
 
-1. 从[https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)下载项目。
+1. 从 [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) 下载项目。
 
 1. 打开命令提示符并导航到项目根：`hdinsight-python-storm-wordcount-master`。 输入以下命令：
 
@@ -114,7 +113,7 @@ Flux 需要 Python 脚本位于包含拓扑的 jar 文件内的 `/resources` 目
     storm kill wordcount
     ```
 
-    或者，可以使用 Storm UI。 在拓扑的“拓扑操作”下，选择“终止”********。
+    或者，可以使用 Storm UI。 在拓扑的“拓扑操作”下，选择“终止” 。
 
 ## <a name="run-the-topology-locally"></a>在本地运行拓扑
 
@@ -145,4 +144,4 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 
 ## <a name="next-steps"></a>后续步骤
 
-有关将 Python 与 HDInsight 配合使用的其他方式，请参阅以下文档：[如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义的函数（UDF）](../hadoop/python-udf-hdinsight.md)。
+请参阅以下文档，了解配合使用 Python 和 HDInsight 的其他方式：[如何在 Apache Pig 和 Apache Hive 中使用 Python 用户定义函数 (UDF)](../hadoop/python-udf-hdinsight.md)。

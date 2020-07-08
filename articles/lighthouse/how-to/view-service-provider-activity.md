@@ -2,13 +2,12 @@
 title: 查看服务提供商活动
 description: 客户可以查看记录的活动，查看服务提供商通过 Azure 委派的资源管理执行的操作。
 ms.date: 01/15/2020
-ms.topic: conceptual
-ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.topic: how-to
+ms.openlocfilehash: 42af2aa7fca5031eb50bd421a5207320858b70cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636438"
 ---
 # <a name="view-service-provider-activity"></a>查看服务提供商活动
 

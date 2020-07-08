@@ -1,29 +1,29 @@
 ---
-title: 通过重定向连接 - Azure Database for MySQL
-description: 本文介绍了如何将应用程序配置为通过重定向连接到 Azure Database for MySQL。
+title: 与重定向-Azure Database for MariaDB 连接
+description: 本文介绍如何将应用程序配置为通过重定向连接到 Azure Database for MariaDB。
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 4036fe5b08a087f1f26027d5c5d98da851fb377c
+ms.openlocfilehash: ae61f58f2ac44db77db496dd5d3e38fad268129f
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610281"
+ms.locfileid: "84612405"
 ---
-# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>通过重定向连接到 Azure Database for MySQL
+# <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>通过重定向连接到 Azure Database for MariaDB
 
-本主题说明如何使用重定向模式将应用程序连接到 Azure Database for MySQL 服务器。 重定向旨在通过允许应用程序直接连接到后端服务器节点，来减少客户端应用程序和 MySQL 服务器之间的网络延迟。
+本主题说明如何使用重定向模式将应用程序连接到 Azure Database for MariaDB 服务器。 重定向旨在通过允许应用程序直接连接到后端服务器节点，来减少客户端应用程序和 MariaDB 服务器之间的网络延迟。
 
 ## <a name="before-you-begin"></a>开始之前
-登录 [Azure 门户](https://portal.azure.com)。 使用引擎版本 5.6、5.7 或 8.0 创建 Azure Database for MySQL 服务器。 
+登录 [Azure 门户](https://portal.azure.com)。 使用引擎版本10.2 或10.3 创建 Azure Database for MariaDB 服务器。 
 
-有关详细信息，请参阅如何使用[Azure 门户](quickstart-create-mysql-server-database-using-azure-portal.md)或[Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)创建 Azure Database for MySQL 服务器。
+有关详细信息，请参阅如何使用[Azure 门户](quickstart-create-mariadb-server-database-using-azure-portal.md)或[Azure CLI](quickstart-create-mariadb-server-database-using-azure-cli.md)创建 Azure Database for MariaDB 服务器。
 
 ## <a name="enable-redirection"></a>启用重定向
 
-在 Azure Database for MySQL 服务器上，将 `redirect_enabled` 参数配置为 `ON` 以允许处于重定向模式的连接。 若要更新此服务器参数，请使用[Azure 门户](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)。
+在 Azure Database for MariaDB 服务器上，将 `redirect_enabled` 参数配置为 `ON` 以允许处于重定向模式的连接。 若要更新此服务器参数，请使用[Azure 门户](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-cli.md)。
 
 ## <a name="php"></a>PHP
 
@@ -46,7 +46,7 @@ ms.locfileid: "84610281"
 |**mysqlnd_azure.enableRedirect 值**| **行为**|
 |----------------------------------------|-------------|
 |`off` 或 `0`|将不使用重定向。 |
-|`on` 或 `1`|- 如果连接未在驱动程序端使用 SSL，则不会建立连接。 将返回以下错误：“mysqlnd_azure.enableRedirect 为 on，但连接字符串中未设置 SSL 选项。仅在使用了 SSL 的情况下才支持重定向。”<br>- 如果在驱动程序端使用了 SSL，但服务器不支持重定向，则第一个连接将中止并返回以下错误：“由于 MySQL 服务器上未启用重定向，或网络包不符合重定向协议，连接已中止。”<br>- 如果 MySQL 服务器支持重定向，但重定向的连接因任何原因而失败，还会中止第一个代理连接。 返回重定向连接的错误。|
+|`on` 或 `1`|- 如果连接未在驱动程序端使用 SSL，则不会建立连接。 将返回以下错误：“mysqlnd_azure.enableRedirect 为 on，但连接字符串中未设置 SSL 选项。仅在使用了 SSL 的情况下才支持重定向。”<br>-如果在驱动程序端使用 SSL，但在服务器上不支持重定向，则第一个连接将中止并返回以下错误： *"由于 MariaDB 服务器上未启用重定向，或网络包不满足重定向协议，连接已中止"。*<br>-如果 MariaDB 服务器支持重定向，但重定向的连接因任何原因而失败，还应中止第一个代理连接。 返回重定向连接的错误。|
 |`preferred` 或 `2`<br> （默认值）|- mysqlnd_azure 将尽可能使用重定向。<br>- 如果连接未在驱动程序端使用 SSL，则服务器不支持重定向，或者重定向的连接由于任何非致命原因而无法连接，而代理连接仍然有效，则服务器将回退到第一个代理连接。|
 
 本文档的后续部分将概述如何使用 PECL 安装 `mysqlnd_azure` 扩展并设置此参数的值。
@@ -57,7 +57,7 @@ ms.locfileid: "84610281"
 - PHP 版本 7.2.15+ 和 7.3.2+
 - PHP PEAR 
 - php-mysql
-- Azure Database for MySQL 服务器
+- Azure Database for MariaDB 服务器
 
 1. 通过 [PECL](https://pecl.php.net/package/mysqlnd_azure) 安装 [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)。 建议使用版本 1.1.0+。
 
@@ -95,7 +95,7 @@ ms.locfileid: "84610281"
 #### <a name="prerequisites"></a>先决条件 
 - PHP 版本 7.2.15+ 和 7.3.2+
 - php-mysql
-- Azure Database for MySQL 服务器
+- Azure Database for MariaDB 服务器
 
 1. 通过运行以下命令确定运行的是 x64 还是 x86 版本的 PHP：
 
@@ -140,7 +140,7 @@ ms.locfileid: "84610281"
  
  ```php
 <?php
-$host = '<yourservername>.mysql.database.azure.com';
+$host = '<yourservername>.mariadb.database.azure.com';
 $username = '<yourusername>@<yourservername>';
 $password = '<yourpassword>';
 $db_name = 'testdb';

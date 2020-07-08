@@ -12,18 +12,17 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668561"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628535"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>未使用内部负载均衡器和应用服务环境将应用程序网关的后端服务器证书加入允许列表。
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>不允许向使用带有应用服务环境的内部负载均衡器的应用程序网关列出后端服务器证书
 
-本文解决了以下问题：在 Azure 中使用端到端 TLS 时，通过使用内部负载均衡器（ILB）和后端的应用服务环境（ASE），在创建应用程序网关时，不允许将证书列入白名单。
+本文解决了以下问题：通过在 Azure 中使用端到端 TLS 时，使用内部负载均衡器（ILB）和后端的应用服务环境（ASE）在创建应用程序网关时，不允许列出证书。
 
 ## <a name="symptoms"></a>症状
 
@@ -39,16 +38,16 @@ ms.locfileid: "80668561"
 - **IP 地址：** 10.1.5.11
 - **HTTP 设置：** HTTPS
 - **端口：** :443
-- **自定义探测：** 主机名 - test.appgwtestase.com
+- **自定义探测：** Hostname – test.appgwtestase.com
 - **身份验证证书：** test.appgwtestase.com 的 .cer 证书
-- **后端运行状况：** 不正常 - 未将应用程序网关的后端服务器证书加入允许列表。
+- **后端运行状况：** 不正常–不允许向应用程序网关列出后端服务器证书。
 
 **ASE 配置：**
 
 - **ILB IP：** 10.1.5.11
 - **域名：** appgwtestase.com
 - **应用服务：** test.appgwtestase.com
-- **SSL 绑定：** SNI SSL – CN=test.appgwtestase.com
+- **SSL 绑定：** SNI SSL – CN = appgwtestase
 
 访问应用程序网关时，会收到以下错误消息，因为后端服务器不正常：
 
@@ -68,7 +67,7 @@ ms.locfileid: "80668561"
 
 - 如果使用的是 ILB 的 IP 地址，请清除应用程序网关的“用于应用服务”选项  。
 
-若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤仅适用于允许列表操作， 它不用于 TLS 通信。）你可以使用 HTTPS 上浏览器中的 IP 地址访问 ILB 来检索 ILB 证书，然后以64编码 CER 格式导出 TLS/SSL 证书，并在各自的 HTTP 设置上上载证书。
+若要降低开销，可在 HTTP 设置中上传 ILB 证书，使探测路径正常工作。 （此步骤只是为了允许列出。 不可用于 TLS 通信。）可通过如下方式检索 ILB 证书：在浏览器中使用 ILB 的 HTTPS IP 地址访问 ILB，然后以 Base-64 编码的 CER 格式导出 TLS/SSL 证书，并在相应 HTTP 设置中上传该证书。
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 联系支持人员
 

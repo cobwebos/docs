@@ -2,14 +2,13 @@
 title: Microsoft Azure 备份服务器 v3 发行说明
 description: 本文介绍 Microsoft Azure 备份服务器 (MABS) v3 的已知问题和解决方法。
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629198"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器发行说明
 
@@ -71,6 +70,40 @@ ms.locfileid: "82185619"
 
 9. 启动 MSDPM 服务。
 
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>安装 UR1 后，MABS 报表不会更新为新的 RDL 文件
+
+**说明**：对于 UR1，MABS 报表格式设置问题已在更新的 RDL 文件中修复。 新 RDL 文件不会自动替换为现有文件。
+
+**解决方法**：若要替换 RDL 文件，请按照以下步骤操作：
+
+1. 在 MABS 计算机上，打开 SQL Reporting Services Web 门户 URL。
+1. 在 Web 门户 URL 上，DPMReports 文件夹的格式为**`DPMReports_<GUID>`**
+
+    >[!NOTE]
+    >始终只有一个文件夹具有此命名约定。 如果 MABS 是从以前的版本升级的，则可能还存在另一个较旧的文件夹，但你将无法打开它。
+
+    ![DPMReports 文件夹](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. 选择并打开该 **`DPMReports_<GUID>`** 文件夹。 将列出各个报表文件，如下所示。
+
+    ![单个报表文件的列表](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. 选择不以**报表**结尾的报表文件，右键单击**选项**，然后选择 "**管理**"。
+
+    ![为报表文件选择 "管理"](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. 在 "新建" 页上，选择 "**替换**" 选项将文件替换为最新的报表文件。
+
+    可在路径中找到最新的报表文件`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    例如： `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![将文件替换为最新的报表文件](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    替换文件后，请确保**名称**和**说明**保持不变且不为空。
+
+1. 替换文件后，重新启动 MABS 服务并使用报表文件。
+
 ## <a name="next-steps"></a>后续步骤
 
-[MABS V3 中的新增功能](backup-mabs-whats-new-mabs.md)
+[MABS 中的新增功能](backup-mabs-whats-new-mabs.md)

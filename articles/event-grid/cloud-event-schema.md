@@ -1,20 +1,19 @@
 ---
 title: 在 CloudEvents 架构中将 Azure 事件网格与事件配合使用
-description: 介绍如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 服务支持云事件的 JSON 实现中的事件。
+description: 说明如何将 CloudEvents 架构用于 Azure 事件网格中的事件。 该服务支持 Cloud Events 的 JSON 实现中的事件。
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560698"
 ---
-# <a name="cloudevents-v10-schema-with-event-grid"></a>CloudEvents v1.0 包含事件网格的架构
+# <a name="cloudevents-v10-schema-with-event-grid"></a>将 CloudEvents v1.0 架构与事件网格配合使用
 
 除了采用[默认事件架构](event-schema.md)的事件，Azure 事件网格本身还支持采用 [CloudEvents v1.0 的 JSON 实现](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 协议绑定](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)的事件。 [CloudEvents](https://cloudevents.io/) 是一种用于描述事件数据的[开放规范](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
 
@@ -22,7 +21,7 @@ CloudEvents 提供的常用事件架构适合发布和使用基于云的事件�
 
 CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com/cloudevents/spec/blob/master/community/contributors.md)通过 [Cloud Native Computing Foundation](https://www.cncf.io/) 构建的。 它目前的发布版本为 1.0。
 
-本文介绍带有事件网格的 CloudEvents 架构。
+本文介绍 CloudEvents 架构和事件网格。
 
 ## <a name="sample-event-using-cloudevents-schema"></a>使用 CloudEvents 架构的示例事件
 
@@ -72,4 +71,4 @@ CloudEvents 是由包括 Microsoft 在内的多个[协作者](https://github.com
 对于所有事件架构，事件网格都要求在发布到事件网格主题时以及在创建事件订阅时进行验证。 有关详细信息，请参阅[事件网格安全性和身份验证](security-authentication.md)。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅 how [to Use CloudEvents 1.0 schema With Event Grid](cloudevents-schema.md)。  
+请参阅[如何将 CloudEvents v1.0 架构与事件网格配合使用](cloudevents-schema.md)。  

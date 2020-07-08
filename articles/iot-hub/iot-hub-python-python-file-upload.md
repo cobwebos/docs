@@ -8,13 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759691"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608496"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中心将文件从设备上传到云 (Python)
 
@@ -28,17 +27,17 @@ ms.locfileid: "81759691"
 
 [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-python.md)快速入门演示了 IoT 中心基本的设备到云的消息传送功能。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。
 
-在本教程结束时，将运行 Python 控制台应用：
+在本教程的末尾，你将运行 Python 控制台应用：
 
-* FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中****。
+* FileUpload.py，该应用使用 Python 设备 SDK 将文件上传到存储中  。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -46,19 +45,19 @@ ms.locfileid: "81759691"
 
 本部分中操作将会创建可将文件上传到 IoT 中心的设备应用。
 
-1. 在命令提示符下，运行以下命令以安装**azure iot-设备**包。 使用此包可将文件上传与 IoT 中心协调。
+1. 在命令提示符处，运行以下命令来安装 azure-iot-device  包。 可以使用此包与 IoT 中心协调文件上传操作。
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. 在命令提示符下，运行以下命令以安装[**azure. blob**](https://pypi.org/project/azure-storage-blob/)包。 使用此包执行文件上传。
+1. 在命令提示符处，运行以下命令来安装 [azure.storage.blob  ](https://pypi.org/project/azure-storage-blob/) 包。 可以使用此包执行文件上传操作。
 
     ```cmd/sh
     pip install azure.storage.blob
     ```
 
-1. 创建要上传到 blob 存储的测试文件。
+1. 创建将上传到 blob 存储的测试文件。
 
 1. 使用文本编辑器，在工作文件夹中创建一个 FileUpload.py 文件  。
 
@@ -75,9 +74,9 @@ ms.locfileid: "81759691"
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. 在文件中，将 `[Device Connection String]` 替换为 IoT 中心设备的连接字符串。 将`[Full path to local file]`替换为你创建的测试文件的路径，或者替换为你设备上要上传的任何文件。
+1. 在文件中，将 `[Device Connection String]` 替换为 IoT 中心设备的连接字符串。 将 `[Full path to local file]` 替换为你创建的测试文件的路径，或是设备上要上传的任何文件的路径。
 
-1. 创建函数以将文件上传到 blob 存储：
+1. 创建一个函数以将文件上传到 blob 存储：
 
     ```python
     async def store_blob(blob_info, file_name):
@@ -107,9 +106,9 @@ ms.locfileid: "81759691"
             return (False, ex)
     ```
 
-    此函数分析传递给它的*blob_info*结构，以创建用于初始化[BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python)的 URL。 然后，它会使用此客户端将文件上传到 Azure blob 存储。
+    此函数分析传递给它的 blob_info  结构，以创建用于初始化 [azure.storage.blob.BlobClient](https://docs.microsoft.com/python/api/azure-storage-blob/azure.storage.blob.blobclient?view=azure-python) 的 URL。 然后，它使用此客户端将文件上传到 Azure Blob 存储。
 
-1. 添加以下代码以连接客户端并上传文件：
+1. 添加下述用来连接客户端并上传文件的代码：
 
     ```python
     async def main():
@@ -169,13 +168,13 @@ ms.locfileid: "81759691"
         #loop.close()
     ```
 
-    此代码创建一个异步**IoTHubDeviceClient** ，并使用以下 api 管理与 IoT 中心的文件上传：
+    此代码创建一个异步的 IoTHubDeviceClient  ，并使用以下 API 来管理通过 IoT 中心进行的文件上传操作：
 
-    * **get_storage_info_for_blob**从 IoT 中心获取之前创建的链接存储帐户的信息。 此信息包括主机名、容器名称、blob 名称和 SAS 令牌。 存储信息传递到**store_blob**函数（在上一步中创建），因此该函数中的**BlobClient**可以通过 Azure 存储进行身份验证。 **Get_storage_info_for_blob**方法还返回**notify_blob_upload_status**方法中使用的 correlation_id。 Correlation_id 是 IoT 中心标记正在处理的 blob 的方式。
+    * get_storage_info_for_blob  从 IoT 中心获取你之前创建的链接存储帐户的相关信息。 此信息包括主机名、容器名称、blob 名称和 SAS 令牌。 存储信息传递到 store_blob  函数（在上一步中创建），因此该函数中的 BlobClient  可以通过 Azure 存储进行身份验证。 get_storage_info_for_blob  方法还会返回一个 correlation_id，后者在 notify_blob_upload_status  方法中使用。 IoT 中心使用 correlation_id 来标记你在处理的 blob。
 
-    * **notify_blob_upload_status**通知 IoT 中心你的 blob 存储操作的状态。 向其传递**get_storage_info_for_blob**方法获取的 correlation_id。 IoT 中心使用它来通知任何可能正在侦听文件上传任务状态的通知的服务。
+    * notify_blob_upload_status  向 IoT 中心通知你的 blob 存储操作的状态。 你将向其传递通过 get_storage_info_for_blob  方法获取的 correlation_id。 IoT 中心使用它来通知任何可能正在侦听文件上传任务状态通知的服务。
 
-1. 保存并关闭 UploadFile.py 文件****。
+1. 保存并关闭 UploadFile.py 文件  。
 
 ## <a name="run-the-application"></a>运行应用程序
 
@@ -187,7 +186,7 @@ ms.locfileid: "81759691"
     python FileUpload.py
     ```
 
-2. 以下屏幕截图显示来自 FileUpload 应用的输出****：
+2. 以下屏幕截图显示来自 FileUpload 应用的输出  ：
 
     ![simulated-device 应用的输出](./media/iot-hub-python-python-file-upload/run-device-app.png)
 
@@ -197,7 +196,7 @@ ms.locfileid: "81759691"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
+在本教程中，已学习了如何使用 IoT 中心的文件上传功能来简化从设备进行的文件上传。 可以使用以下文章继续探索 IoT 中心功能和方案：
 
 * [以编程方式创建 IoT 中心](iot-hub-rm-template-powershell.md)
 
@@ -205,8 +204,8 @@ ms.locfileid: "81759691"
 
 * [Azure IoT SDK](iot-hub-devguide-sdks.md)
 
-通过以下链接了解有关 Azure Blob 存储的详细信息：
+使用以下链接详细了解 Azure Blob 存储：
 
 * [Azure Blob 存储文档](https://docs.microsoft.com/azure/storage/blobs/)
 
-* [用于 Python API 的 Azure Blob 存储的文档](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)
+* [适用于 Python API 的 Azure Blob 存储文档](https://docs.microsoft.com/python/api/overview/azure/storage-blob-readme?view=azure-python)

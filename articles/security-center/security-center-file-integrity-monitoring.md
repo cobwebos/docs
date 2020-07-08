@@ -13,15 +13,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84628291"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 安全中心内的文件完整性监视
 使用本演练了解如何在 Azure 安全中心配置文件完整性监视 (FIM)。
+
+
+## <a name="availability"></a>可用性
+
+- 发布状态：**正式发布版**
+- 必需的角色：**工作区所有者**可以启用/禁用 FIM （有关详细信息，请参阅[Azure role for Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)）。 **读者**可以查看结果。
+- 云：
+    - ✔ 商业云
+    - US Gov 云✔
+    - ✘中国 Gov/其他 Gov
+
 
 ## <a name="what-is-fim-in-security-center"></a>安全中心内的 FIM 是什么？
 文件完整性监视 (FIM) 也称为更改监视，它可以检查操作系统、应用程序软件和其他组件的文件和注册表，确定它们是否发生了可能表示遭受攻击的更改。 将使用比较方法来确定当前文件状态是否不同于上次扫描该文件时的状态。 可以利用这种比较来确定文件是否发生了有效或可疑的修改。
@@ -37,37 +47,37 @@ ms.locfileid: "82106689"
 > [!NOTE]
 > 文件完整性监视 (FIM) 功能适用于 Windows 和 Linux 计算机与 VM，已在安全中心的标准层上提供。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。 FIM 将数据上传到 Log Analytics 工作区。 需要根据上传的数据量支付数据费用。 请参阅 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/log-analytics/)了解详细信息。
 
-FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视时，你具有类型为 "**解决方案**" 的**更改跟踪**资源。 有关数据收集频率的详细信息，请参阅更改跟踪 Azure 更改跟踪的[数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
+FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 启用文件完整性监视后，会获得一个“解决方案”类型的“更改跟踪”资源 。 有关数据收集频率的详细信息，请参阅 Azure 更改跟踪的[更改跟踪数据收集详细信息](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
 > [!NOTE]
-> 如果删除**更改跟踪**资源，还将禁用安全中心中的文件完整性监视功能。
+> 如果删除该“更改跟踪”资源，则还将禁用安全中心内的文件完整性监视功能。
 
 ## <a name="which-files-should-i-monitor"></a>应监视哪些文件？
 在选择要监视的文件时，应考虑对系统和应用程序至关重要的文件。 考虑选择预期不会在计划外发生更改的文件。 选择应用程序或操作系统经常更改的文件（例如日志文件和文本文件）会造成很多的干扰，使攻击识别变得很困难。
 
-安全中心提供以下建议项列表，根据已知的攻击模式进行监视。 其中包括文件和 Windows 注册表项。 所有键都在 HKEY_LOCAL_MACHINE （表中的 "HKLM"）下。
+安全中心提供了以下建议项列表，用于根据已知攻击模式进行监视。 这些项包括文件和 Windows 注册表项。 所有键都在 HKEY_LOCAL_MACHINE（表中的“HKLM”）下。
 
 |**Linux 文件**|**Windows 文件**|**Windows 注册表项**|
 |:----|:----|:----|
-|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
-|/etc/*. 会议|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/*.conf|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
 |/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows|
 |/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
-|/bin|C:\Windows\regedit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell 文件夹|
+|/bin|C:\Windows\regedit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders|
 |/sbin|C:\Windows\System32\userinit.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell 文件夹|
 |/boot|C:\Windows\explorer.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run|
 |/usr/local/bin|C:\Program Files\Microsoft Security Client\msseces.exe|HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce|
 |/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
 |/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
 |/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
-|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|适用/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0\CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
 |/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
 |/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows|
 |/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
-|/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell 文件夹|
-|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell 文件夹|
+|/etc/cron.monthly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders|
+|||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders|
 |||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run|
 |||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnce|
 |||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\RunOnceEx|
@@ -80,11 +90,11 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 ## <a name="using-file-integrity-monitoring"></a>使用文件完整性监视
-1. 打开“安全中心”**** 仪表板。
-2. 在左窗格中的“高级云防御”下，选择“文件完整性监视”。********
+1. 打开“安全中心”仪表板。
+2. 在左窗格中的“高级云防御”下，选择“文件完整性监视”。 
 ![安全中心仪表板][1]
 
-此时会打开“文件完整性监视”。****
+此时会打开“文件完整性监视”。
   ![安全中心仪表板][2]
 
 为每个工作区提供了以下信息：
@@ -100,31 +110,31 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 - ![升级计划图标][4]指示工作区或订阅不是在安全中心的标准层下运行。 若要使用 FIM 功能，订阅必须运行标准层。  选择工作区可以升级到标准层。 若要详细了解标准层以及升级方法，请参阅[升级到安全中心的标准层以增强安全性](security-center-pricing.md)。
 - 空白（没有任何按钮）表示已对工作区启用 FIM。
 
-在“文件完整性监视”下，可以选择某个工作区以便对其启用 FIM、查看该工作区的“文件完整性监视”仪表板工作区，或者将该工作区[升级](security-center-pricing.md)到标准层。****
+在“文件完整性监视”下，可以选择某个工作区以便对其启用 FIM、查看该工作区的“文件完整性监视”仪表板工作区，或者将该工作区[升级](security-center-pricing.md)到标准层。
 
 ## <a name="enable-fim"></a>启用 FIM
 若要对工作区启用 FIM：
 
-1. 在“文件完整性监视”下，选择附带“启用”按钮的工作区。********
-2. 此时会打开“启用文件完整性监视”，其中显示了该工作区中的 Windows 和 Linux 计算机数目。****
+1. 在“文件完整性监视”下，选择附带“启用”按钮的工作区。 
+2. 此时会打开“启用文件完整性监视”，其中显示了该工作区中的 Windows 和 Linux 计算机数目。
 
    ![启用文件完整性监视][5]
 
-   此外，还会列出适用于 Windows 和 Linux 的建议设置。  展开“Windows 文件”、“注册表”和“Linux 文件”查看建议项的完整列表。************
+   此外，还会列出适用于 Windows 和 Linux 的建议设置。  展开“Windows 文件”、“注册表”和“Linux 文件”查看建议项的完整列表。  
 
 3. 请取消选中不想要对其应用 FIM 的所有建议实体。
-4. 选择“应用文件完整性监视”以启用 FIM。****
+4. 选择“应用文件完整性监视”以启用 FIM。
 
 > [!NOTE]
 > 随时可以更改设置。 有关详细信息，请参阅下面的“编辑受监视的实体”。
 
 
 ## <a name="view-the-fim-dashboard"></a>查看 FIM 仪表板
-“文件完整性监视”仪表板显示已启用 FIM 的工作区。**** 对工作区启用 FIM 后或者在“文件完整性监视”窗口中选择已启用 FIM 的工作区时，FIM 仪表板将会打开。****
+“文件完整性监视”仪表板显示已启用 FIM 的工作区。 对工作区启用 FIM 后或者在“文件完整性监视”窗口中选择已启用 FIM 的工作区时，FIM 仪表板将会打开。
 
 ![文件完整性监视仪表板][6]
 
-工作区的 FIM 面板显示以下详细信息：
+工作区的 FIM 仪表板显示以下详细信息：
 
 - 连接到该工作区的计算机总数
 - 所选时间段内发生的更改总数
@@ -135,16 +145,16 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 ![时间段筛选器][7]
 
-“计算机”选项卡（如上所示）列出向此工作区报告的所有计算机。**** 对于每台计算机，仪表板将会列出：
+“计算机”选项卡（如上所示）列出向此工作区报告的所有计算机。 对于每台计算机，仪表板将会列出：
 
 - 所选时间段内发生的更改总数
 - 更改总数的细分，以文件更改数或注册表更改数的形式列出
 
-在搜索字段中输入计算机名称或选择 "计算机" 选项卡下列出的计算机时，将打开**日志搜索**。 "日志搜索" 显示在计算机的所选时间段内所做的所有更改。 可以展开某项更改以查看其详细信息。
+在搜索字段中输入计算机名，或选择“计算机”选项卡下列出的计算机时，“日志搜索”将会打开。日志搜索结果显示所选时间段内对该计算机所做的所有更改。 可以展开某项更改以查看其详细信息。
 
 ![日志搜索][8]
 
-“更改”选项卡（如下所示）列出所选时间段内对该工作区所做的所有更改。**** 对于更改的每个实体，仪表板将会列出：
+“更改”选项卡（如下所示）列出所选时间段内对该工作区所做的所有更改。 对于更改的每个实体，仪表板将会列出：
 
 - 发生更改的计算机
 - 更改类型（注册表或文件）
@@ -153,25 +163,25 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 
 ![工作区的更改][9]
 
-在搜索字段中输入某项更改，或选择“更改”选项卡下列出的某个实体时，“更改详细信息”将会打开。********
+在搜索字段中输入某项更改，或选择“更改”选项卡下列出的某个实体时，“更改详细信息”将会打开。 
 
 ![更改详细信息][10]
 
 ## <a name="edit-monitored-entities"></a>编辑受监视的实体
 
-1. 返回到“文件完整性监视”仪表板并选择“设置”。********
+1. 返回到“文件完整性监视”仪表板并选择“设置”。 
 
    ![设置][11]
 
-   此时会打开“工作区配置”，其中显示了三个选项卡：“Windows 注册表”、“Windows 文件”和“Linux 文件”。**************** 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
+   此时将打开“工作区配置”，其中显示三个选项卡：**Windows 注册表**、**Windows 文件**和 **Linux 文件**。 每个选项卡列出可在该类别中编辑的实体。 对于列出的每个实体，安全中心会指出是已启用 (true) 还是未启用 (false) FIM。  编辑实体可以启用或禁用 FIM。
 
    ![工作区配置][12]
 
-2. 选择标识保护。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。****
+2. 选择标识保护。 在此示例中，我们选择了“Windows 注册表”下的某个项。 此时会打开“更改跟踪的编辑”。
 
    ![编辑或更改跟踪][13]
 
-在“更改跟踪的编辑”下，可以：****
+在“更改跟踪的编辑”下，可以：
 
 - 启用 (True) 或禁用 (False) 文件完整性监视
 - 提供或更改实体名称
@@ -179,36 +189,36 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 - 删除实体、丢弃更改或保存更改
 
 ## <a name="add-a-new-entity-to-monitor"></a>添加要监视的新实体
-1. 返回到“文件完整性监视”仪表板并选择顶部的“设置”。******** 此时会打开“工作区配置”。****
-2. 在“工作区配置”下，选择要添加的实体类型对应的选项卡：“Windows 注册表”、“Windows 文件”或“Linux 文件”。**** 在此示例中，我们选择了“Linux 文件”****。
+1. 返回到“文件完整性监视”仪表板并选择顶部的“设置”。  此时会打开“工作区配置”。
+2. 在“工作区配置”下，选择要添加的实体类型对应的选项卡：“Windows 注册表”、“Windows 文件”或“Linux 文件”。 在此示例中，我们选择了“Linux 文件”。
 
    ![添加要监视的新项][14]
 
-3. 选择 **添加** 。 此时会打开“更改跟踪的添加”。****
+3. 选择“添加”  。 此时会打开“更改跟踪的添加”。
 
    ![输入请求的信息][15]
 
-4. 在“添加”页上，键入请求的信息并选择“保存”。********
+4. 在“添加”页上，键入请求的信息并选择“保存”。 
 
 ## <a name="disable-monitored-entities"></a>禁用受监视的实体
-1. 返回到“文件完整性监视”仪表板。****
+1. 返回到“文件完整性监视”仪表板。
 2. 选择当前已启用 FIM 的工作区。 如果某个工作区缺少“启用”按钮或“升级计划”按钮，则表示该工作区已启用 FIM。
 
    ![选择已启用 FIM 的工作区][16]
 
-3. 在“文件完整性监视”下，选择“设置”。****
+3. 在“文件完整性监视”下，选择“设置”。
 
    ![选择设置][17]
 
-4. 在“工作区配置”下，选择“已启用”设置为 true 的某个组。********
+4. 在“工作区配置”下，选择“已启用”设置为 true 的某个组。 
 
    ![工作区配置][18]
 
-5. 在“更改跟踪的编辑”窗口中，将“已启用”设置为 False。********
+5. 在“更改跟踪的编辑”窗口中，将“已启用”设置为 False。 
 
    ![将“已启用”设置为 false][19]
 
-6. 选择“保存”  。
+6. 选择“保存” 。
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>使用通配符监视文件夹和路径
 
@@ -221,16 +231,16 @@ FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更
 ## <a name="disable-fim"></a>禁用 FIM
 可以禁用 FIM。 FIM 使用 Azure 更改跟踪解决方案来跟踪和识别环境中发生的更改。 禁用 FIM 会从所选工作区中删除“更改跟踪”解决方案。
 
-1. 若要禁用 FIM，请返回到“文件完整性监视”仪表板。****
+1. 若要禁用 FIM，请返回到“文件完整性监视”仪表板。
 2. 选择工作区。
-3. 在“文件完整性监视”下，选择“禁用”。********
+3. 在“文件完整性监视”下，选择“禁用”。 
 
    ![禁用 FIM][20]
 
-4. 选择“删除”以禁用 FIM。****
+4. 选择“删除”以禁用 FIM。
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何在安全中心使用文件完整性监视（FIM）。 若要了解有关安全中心的详细信息，请参阅以下页面：
+本文已介绍如何在安全中心使用文件完整性监视 (FIM)。 若要了解有关安全中心的详细信息，请参阅以下页面：
 
 * [设置安全策略](tutorial-security-policy.md) -- 了解如何为 Azure 订阅和资源组配置安全策略。
 * [管理安全建议](security-center-recommendations.md) -- 了解建议如何帮助你保护 Azure 资源。

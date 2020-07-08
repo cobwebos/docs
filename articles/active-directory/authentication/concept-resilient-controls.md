@@ -9,15 +9,14 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca5817e744ff81efcd549bc328d7ce5eeedb2d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76908728"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84634636"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -65,10 +64,11 @@ ms.locfileid: "76908728"
 
 在组织现有的条件性访问策略中合并以下访问控制：
 
-1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。
+1. 为每个用户预配依赖于不同信道的多种身份验证方法，例如基于 Internet 的 Microsoft Authenticator 应用、在设备上生成的 OATH 令牌和手机短信。 下面的 PowerShell 脚本将帮助你提前标识，用户应注册的其他方法： [AZURE MFA 身份验证方法分析的脚本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)。
 2. 在 Windows 10 设备上部署 Windows Hello for Business，以便直接通过设备登录满足 MFA 要求。
 3. 通过 [Azure AD 混合联接](https://docs.microsoft.com/azure/active-directory/devices/overview)或 [Microsoft Intune 受管理设备](https://docs.microsoft.com/intune/planning-guide)使用受信任的设备。 受信任的设备将改善用户体验，因为受信任的设备本身就能满足策略的强身份验证要求，无需向用户发出 MFA 质询。 而在注册新设备以及从不受信任的设备访问应用或资源时，需使用 MFA。
 4. 当用户或登录面临风险时，使用“Azure AD 标识保护”基于风险的策略来阻止访问，而不是使用固定的 MFA 策略。
+5. 如果要使用 Azure MFA NPS 扩展来保护 VPN 访问，请考虑将 VPN 解决方案作为[SAML 应用](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)进行联合，并按建议确定应用类别。 
 
 >[!NOTE]
 > 基于风险的策略需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
@@ -91,8 +91,9 @@ ms.locfileid: "76908728"
 
 ### <a name="contingencies-for-user-lockout"></a>用户锁定应急计划
 
-或者，组织也可以创建应急策略。 若要创建应急策略，就必须在业务连续性、运营成本、财务成本和安全风险之间定义权衡标准。 例如，可以仅针对一部分用户、一部分应用、一部分客户端或一部分位置激活应急策略。 在未实施缓解方法的中断期间，应急策略将为管理员和最终用户提供对应用和资源的访问权限。
-了解你在中断期间可能面临的风险有助于降低风险，是规划过程中的关键环节。 若要创建应急计划，请首先确定组织的以下业务要求：
+或者，组织也可以创建应急策略。 若要创建应急策略，就必须在业务连续性、运营成本、财务成本和安全风险之间定义权衡标准。 例如，可以仅针对一部分用户、一部分应用、一部分客户端或一部分位置激活应急策略。 在未实施缓解方法的中断期间，应急策略将为管理员和最终用户提供对应用和资源的访问权限。 在未使用时，Microsoft 建议在[仅报告模式下](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-report-only)启用应变策略，以便管理员可以监视策略需要打开时的潜在影响。
+
+ 了解你在中断期间可能面临的风险有助于降低风险，是规划过程中的关键环节。 若要创建应急计划，请首先确定组织的以下业务要求：
 
 1. 提前确定你的任务关键型应用程序：你必须为其提供访问权限的应用是什么，甚至具有更低的风险/安全状态？ 为这些应用生成一个列表，确保你的其他利益干系人（业务部门、安全部门、法律部门、领导层）都同意：即使所有访问控制都失效，这些应用仍必须继续运行。 你最终可能会对应用进行以下分类：
    * **类别 1 任务关键应用**：不可用时间不能超过几分钟，例如直接影响组织收入的应用。
@@ -110,12 +111,12 @@ ms.locfileid: "76908728"
 
 #### <a name="microsoft-recommendations"></a>Microsoft 的建议
 
-应急条件性访问策略是一个**禁用的策略**，该策略忽略 Azure MFA、第三方 MFA、基于风险的控件或基于设备的控件。 当组织决定激活你的应急计划时，管理员可以启用该策略并禁用基于控制的常规策略。
+应急条件访问策略是省略 Azure MFA、第三方 MFA、基于风险或设备的控制的**备份策略**。 为了最大限度地减少启用应急策略时出现的意外中断，策略应在不使用时保持为仅报告模式。 管理员可以使用条件性访问见解工作簿来监视其应急策略的潜在影响。 当你的组织决定激活你的应变计划时，管理员可以启用策略并禁用常规的基于控制的策略。
 
 >[!IMPORTANT]
 > 启用应急计划时，禁用对用户强制执行安全措施的策略（即使只是暂时的）会对你的安全状况造成威胁。
 
-* 如果一种凭据类型或访问控制机制的中断就会影响对应用的访问，则配置一组回退策略。 配置一个需要将域加入作为控制机制并处于禁用状态的策略，将其作为需要第三方 MFA 提供程序的活动策略的备选项。
+* 如果一种凭据类型或访问控制机制的中断就会影响对应用的访问，则配置一组回退策略。 对于需要第三方 MFA 提供程序的活动策略，在需要将域加入作为控制的仅报告状态中配置策略。
 * 遵循[密码指南](https://aka.ms/passwordguidance)白皮书中的做法，降低不良参与者在不需要 MFA 时猜测密码的风险。
 * 部署 [Azure AD 自助密码重置 (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) 和 [Azure AD 密码保护](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy)，以确保用户不使用你选择禁用的常用密码和术语。
 * 如果未达到某个身份验证级别，则使用可限制应用内访问权限的策略，而不是简单地回退到完全访问权限。 例如：
@@ -146,28 +147,28 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * 云应用： Exchange Online 和 SharePoint Online
   * 条件：任意
   * 授权控制：需要加入域
-  * 状态：已禁用
+  * 状态：仅报告
 * 策略2：阻止 Windows 以外的平台
   * 名称： EM002-在紧急情况下启用： MFA 中断 [2/4]-Exchange SharePoint-阻止访问，Windows 除外
   * 用户和组：包含所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用： Exchange Online 和 SharePoint Online
   * 条件：设备平台包括所有平台，排除 Windows
   * 授予控制权限：阻止
-  * 状态：已禁用
+  * 状态：仅报告
 * 策略3：阻止除 CorpNetwork 以外的网络
   * 名称： EM003-在紧急情况下启用： MFA 中断 [3/4]-Exchange SharePoint-阻止访问，企业网络除外
   * 用户和组：包含所有用户。 排除 CoreAdmins 和 EmergencyAccess
   * 云应用： Exchange Online 和 SharePoint Online
   * 条件：位置包含任何位置，排除 CorpNetwork
   * 授予控制权限：阻止
-  * 状态：已禁用
+  * 状态：仅报告
 * 策略4：显式阻止 EAS
   * 名称： EM004-在紧急情况下启用： MFA 中断 [4/4]-Exchange-阻止所有用户使用 EAS
   * 用户和组：包括所有用户
   * 云应用：包括 Exchange Online
   * 条件：客户端应用： Exchange Active Sync
   * 授予控制权限：阻止
-  * 状态：已禁用
+  * 状态：仅报告
 
 激活顺序：
 
@@ -188,14 +189,14 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * 云应用： Salesforce。
   * 条件：无
   * 授予控制权限：阻止
-  * 状态：已禁用
+  * 状态：仅报告
 * 策略2：通过移动以外的任何平台阻止销售团队（以降低攻击面）
   * 名称： EM002-在紧急情况下启用：设备一致性中断 [2/2]-Salesforce-阻止除 iOS 和 Android 之外的所有平台
   * 用户和组：包括 SalesforceContingency。 排除 SalesAdmins
   * 云应用： Salesforce
   * 条件：设备平台包括所有平台，排除 iOS 和 Android
   * 授予控制权限：阻止
-  * 状态：已禁用
+  * 状态：仅报告
 
 激活顺序：
 
@@ -203,6 +204,26 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. 启用策略1：验证 SalesContingency 之外的用户无法访问 Salesforce。 确保 SalesAdmins 和 SalesforceContingency 中的用户能够访问 Salesforce。
 3. 启用策略2：验证 SalesContingency 组中的用户是否无法从其 Windows/Mac 便携式计算机访问 Salesforce，但仍可从其移动设备进行访问。 确保 SalesAdmin 仍可以从任意设备访问 Salesforce。
 4. 禁用 Salesforce 的现有设备符合性策略。
+
+### <a name="contingencies-for-user-lockout-from-on-prem-resources-nps-extension"></a>用户从本地资源进行锁定的偶然情况（NPS 扩展）
+
+如果要使用 Azure MFA NPS 扩展来保护 VPN 访问，请考虑将 VPN 解决方案作为[SAML 应用](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)进行联合，并按建议确定应用类别。 
+
+如果已部署 Azure AD MFA NPS 扩展，以使用 MFA 保护本地资源（例如 VPN 和远程桌面网关），则在紧急情况下，你应该提前考虑禁用 MFA。
+
+在这种情况下，你可以禁用 NPS 扩展，因此，NPS 服务器仅验证主要身份验证，而不会对用户强制执行 MFA。
+
+禁用 NPS 扩展： 
+-   将 HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 注册表项导出为备份。 
+-   删除 "AuthorizationDLLs" 和 "ExtensionDLLs" 的注册表值，而不是参数键。 
+-   重新启动网络策略服务（IAS）服务，使更改生效 
+-   确定 VPN 的主要身份验证是否成功。
+
+一旦该服务已恢复，并且你已准备好在用户上强制执行 MFA，请启用 NPS 扩展： 
+-   重要说明 HKEY_LOCAL_MACHINE 备份中的注册表项 \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   重新启动网络策略服务（IAS）服务，使更改生效 
+-   确定主要身份验证以及 VPN 的辅助身份验证是否成功。
+-   查看 NPS 服务器和 VPN 日志，确定在紧急时段内登录的用户。
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>即使你是联合用户或使用直通身份验证，也可以部署密码哈希同步
 
@@ -240,7 +261,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 还原导致中断的服务后，请撤消作为已激活的应变计划的一部分所做的更改。 
 
 1. 启用常规策略
-2. 禁用应急策略。 
+2. 禁用你的应变策略返回到仅报告模式。 
 3. 回滚在中断期间所做的并进行了记录的任何其他更改。
 4. 如果使用了紧急访问帐户，请记住重新生成凭据并以物理方式保护新凭据的详细信息，以作为紧急访问帐户过程的一部分。
 5. 继续会审发生可疑活动中断后[报告的所有风险检测](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
@@ -271,3 +292,4 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Azure Active Directory 条件访问中的条件是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Azure Active Directory 条件访问中的访问控制是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)
+* [什么是条件访问仅限报告模式？](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-report-only)

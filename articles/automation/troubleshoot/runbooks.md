@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84606881"
 ---
 # <a name="troubleshoot-runbook-issues"></a>排查 Runbook 问题
 
@@ -50,7 +49,7 @@ ms.locfileid: "83744317"
 
 1. 如果混合 Runbook 辅助角色中的 Runbook 作业或环境无响应，请执行此步骤。
 
-    如果在混合 Runbook 辅助角色而不是 Azure 自动化中运行 Runbook 作业，可能需要[排查混合辅助角色本身的问题](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)。
+    如果在混合 Runbook 辅助角色而不是 Azure 自动化中运行 Runbook 作业，可能需要[排查混合辅助角色本身的问题](hybrid-runbook-worker.md)。
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>场景：Runbook 失败并出现“无权限”或“禁止 403”错误
 
@@ -64,7 +63,7 @@ Runbook 失败并出现“无权限”或“禁止 403”错误或者类似的�
 
 ### <a name="resolution"></a>解决方法
 
-确保运行方式帐户[有权访问脚本中使用的任何资源](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+确保运行方式帐户[有权访问脚本中使用的任何资源](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>场景：登录到 Azure 帐户失败
 
@@ -99,7 +98,7 @@ No certificate was found in the certificate store with thumbprint
    Connect-AzAccount –Credential $Cred
    ```
 
-1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅博客文章：[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)。
+1. 如果无法在本地进行身份验证，则表示尚未正确设置 Azure Active Directory (Azure AD) 凭据。 若要正确设置 Azure AD 帐户，请参阅文章[使用 Azure Active Directory 对 Azure 进行身份验证](../automation-use-azure-ad.md)。
 
 1. 如果该错误看上去是暂时性的，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
 
@@ -137,7 +136,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>原因
 
-如果使用的不是运行方式帐户或者运行方式帐户已过期，则可能会发生此错误。 有关详细信息，请参阅[管理 Azure 自动化运行方式帐户](https://docs.microsoft.com/azure/automation/manage-runas-account)。
+如果使用的不是运行方式帐户或者运行方式帐户已过期，则可能会发生此错误。 有关详细信息，请参阅[管理 Azure 自动化运行方式帐户](../manage-runas-account.md)。
 
 此错误有两个主要原因：
 
@@ -274,7 +273,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ### <a name="resolution"></a>解决方法
 
-若要在 Azure 经典部署模型 cmdlet 中使用证书，请参阅[创建并添加管理 Azure 服务所需的证书](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要在 Azure 资源管理器 cmdlet 中使用服务主体，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+若要将经典运行方式帐户用于 Azure 经典部署模型 cmdlet，请参阅[创建经典运行方式帐户以管理 azure 服务](../automation-create-standalone-account.md#create-a-classic-run-as-account)。 若要在 Azure 资源管理器 cmdlet 中使用服务主体，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[使用 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>场景：Runbook 失败并出现“任务已取消”错误消息
 
@@ -383,7 +382,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-如果在调用 `Add-AzAccount` 来添加自动化帐户之前 Runbook 未执行正确的步骤，则可能会发生此错误。 例如，必要的步骤之一是使用运行方式帐户登录。 有关要在 Runbook 中使用的正确操作，请参阅[在 Azure 自动化中执行 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution)。
+如果在调用 `Add-AzAccount` 来添加自动化帐户之前 Runbook 未执行正确的步骤，则可能会发生此错误。 例如，必要的步骤之一是使用运行方式帐户登录。 有关要在 Runbook 中使用的正确操作，请参阅[在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)。
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>场景：对象引用未设置为某个对象的实例
 
@@ -419,7 +418,7 @@ $waitTime = 0
 while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
    Start-Sleep -Seconds $pollingSeconds
    $waitTime += $pollingSeconds
-   $job = $job | Get-AzAutomationJob
+   $jobResults = $job | Get-AzAutomationJob
 }
 
 $jobResults | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
@@ -652,16 +651,16 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>未使用运行方式帐户
 
-执行[步骤 5 - 添加身份验证来管理 Azure 资源](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources)，以确保使用运行方式帐户访问 Key Vault。
+执行[步骤 5 - 添加身份验证来管理 Azure 资源](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources)，以确保使用运行方式帐户访问 Key Vault。
 
 #### <a name="insufficient-permissions"></a>权限不足
 
-[将权限添加到 Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault)，以确保运行方式帐户拥有足够的权限，可以访问 Key Vault。
+[将权限添加到 Key Vault](../manage-runas-account.md#add-permissions-to-key-vault)，以确保运行方式帐户拥有足够的权限，可以访问 Key Vault。
 
 ## <a name="recommended-documents"></a>建议的文档
 
 * [在 Azure 自动化中执行 Runbook](../automation-runbook-execution.md)
-* [在 Azure 自动化中启动 Runbook](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>后续步骤
 

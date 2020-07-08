@@ -3,12 +3,11 @@ title: 概念-存储
 description: 了解 Azure VMware 解决方案（AVS）预览版私有云中的主要存储功能。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740351"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84604110"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware 解决方案（AVS）预览版存储概念
 
@@ -21,7 +20,7 @@ AVS 私有云提供了本机的群集范围内的群集存储。 群集中每个
 群集主机中的本地存储在群集范围的 vSAN 数据存储中使用。 所有数据存储都创建为私有云部署的一部分，可立即使用。 Cloudadmin 用户和 CloudAdmin 组中的所有用户都可以管理具有以下 vSAN 权限的数据存储：
 - Datastore.AllocateSpace
 - Datastore.Browse
-- 数据存储 .Config
+- Datastore.Config
 - DeleteFile
 - FileManagement
 - UpdateVirtualMachineMetadata
@@ -32,7 +31,7 @@ AVS 私有云提供了本机的群集范围内的群集存储。 群集中每个
 
 ## <a name="scaling"></a>扩展
 
-通过将主机添加到群集来扩展本机群集存储容量。 对于使用他的主机的群集，每个额外主机的原始群集范围容量增加了 15.4 TB。 使用 GP 主机构建的群集的原始容量增加了 7.7 TB，每增加一台主机。 在这两种类型的群集中，主机需要大约10分钟才能添加到群集。 有关缩放群集的说明，请参阅 [扩展私有云教程] [教程-缩放-cloud]。
+通过将主机添加到群集来扩展本机群集存储容量。 对于使用他的主机的群集，每个额外主机的原始群集范围容量增加了 15.4 TB。 使用 GP 主机构建的群集的原始容量增加了 7.7 TB，每增加一台主机。 在这两种类型的群集中，主机需要大约10分钟才能添加到群集。 有关缩放群集的说明，请参阅[扩展私有云教程][tutorial-scale-private-cloud]。
 
 ## <a name="azure-storage-integration"></a>Azure 存储集成
 
@@ -45,5 +44,5 @@ AVS 私有云提供了本机的群集范围内的群集存储。 群集中每个
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

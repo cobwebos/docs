@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81405269"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559782"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -131,7 +131,7 @@ public void ConfigureServices(IServiceCollection services)
 
 #### <a name="java-30-agent"></a>Java 3.0 代理
 
-  Java 3.0 代理支持 W3C 开箱即用，无需进行其他配置。 
+  Java 3.0 代理直接支持 W3C，不需要任何其他配置。 
 
 #### <a name="java-sdk"></a>Java SDK
 - **传入配置**
@@ -172,7 +172,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>启用对 Web 应用的 W3C 分布式跟踪支持
 
-此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它， `distributedTracingMode`请使用 config。提供 AI_AND_W3C 是为了向后兼容由 Application Insights 检测到的任何旧版服务。
+此功能在 `Microsoft.ApplicationInsights.JavaScript` 中。 此项默认禁用。 若要启用它，请使用 `distributedTracingMode` 配置。提供 AI_AND_W3C 是为了与 Application Insights 检测的任何旧式服务向后兼容：
 
 - **npm 设置（如果使用代码片段设置，则忽略）**
 
@@ -225,7 +225,7 @@ OpenCensus Python 遵循上述 `OpenTracing` 数据模型规范。 它也支持 
 
 ### <a name="incoming-request-correlation"></a>传入请求关联
 
-OpenCensus Python 将传入请求中的 W3C Trace-Context 标头关联到从请求本身生成的范围。 OpenCensus 将通过以下常见的 web 应用程序框架集成来自动执行此操作： Flask、Django 和棱锥。 只需使用[正确的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充 W3C Trace-Context 标头，并通过请求发送即可。 下面是演示此设置的示例 Flask 应用程序：
+OpenCensus Python 将传入请求中的 W3C Trace-Context 标头关联到从请求本身生成的范围。 OpenCensus 会通过适合以下流行 Web 应用程序框架的集成自动完成该操作：Flask、Django 和 Pyramid。 只需使用[正确的格式](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)填充 W3C Trace-Context 标头，并通过请求发送即可。 下面是演示此设置的示例 Flask 应用程序：
 
 ```python
 from flask import Flask
@@ -301,7 +301,7 @@ logger.warning('After the span')
 ```
 请注意，范围中的日志消息有一个对应的 `spanId`。 它与属于名为 `hello` 的范围的 `spanId` 相同。
 
-您可以使用`AzureLogHandler`导出日志数据。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)。
+可以使用 `AzureLogHandler` 导出日志数据。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET 中的遥测关联
 
@@ -309,7 +309,7 @@ logger.warning('After the span')
 
 - `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。
 - `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
-- `ILogger`使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。
+- `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。
 - Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
 
 但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 支持自动跨计算机关联。 .NET 库支持 `DiagnosticSource`，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
@@ -327,19 +327,19 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 中的遥测关联
 
-[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及[java SDK](../../azure-monitor/app/java-get-started.md)版本2.0.0 或更高版本支持遥测的自动关联。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
+[Java 代理](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)以及 [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
 
 > [!NOTE]
-> Application Insights Java agent 自动收集 JMS、Kafka、Netty/Webflux 等的请求和依赖项。 对于 Java SDK，相关功能仅支持通过 Apache HttpClient 进行的调用。 SDK 中不支持跨消息传送技术（例如 Kafka、RabbitMQ 和 Azure 服务总线）的自动上下文传播。 
+> Application Insights Java 代理自动收集 JMS、Kafka、Netty/Webflux 等的请求和依赖项。 对于 Java SDK，关联功能仅支持通过 Apache HttpClient 进行的调用。 该 SDK 不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 
 
 > [!NOTE]
-> 若要收集自定义遥测数据，需要通过 Java 2.6 SDK 来检测应用程序。 
+> 若要收集自定义遥测，需要使用 Java 2.6 SDK 检测应用程序。 
 
 ### <a name="role-names"></a>角色名称
 
 你可能需要对组件名称在[应用程序映射](../../azure-monitor/app/app-map.md)中的显示方式进行自定义。 为此，可执行以下操作之一来手动设置 `cloud_RoleName`：
 
-- 对于 Application Insights Java agent 3.0，按如下所示设置云角色名称：
+- 对于 Application Insights Java 代理 3.0，请按如下所示设置云角色名称：
 
     ```json
     {
@@ -350,7 +350,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
       }
     }
     ```
-    你还可以使用环境变量`APPLICATIONINSIGHTS_ROLE_NAME`设置云角色名称。
+    还可以使用环境变量 `APPLICATIONINSIGHTS_ROLE_NAME` 设置云角色名称。
 
 - 使用 Application Insights Java SDK 2.5.0 和更高版本时，可以通过将 `<RoleName>` 添加到 ApplicationInsights.xml 文件来指定 `cloud_RoleName`：
 
@@ -372,7 +372,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 ## <a name="next-steps"></a>后续步骤
 
 - 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
-- 有关 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)。
+- 对于 ASP.NET Core 和 ASP.NET 中的高级关联方案，请参阅[跟踪自定义操作](custom-operations-tracking.md)。
 - 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
 - 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。

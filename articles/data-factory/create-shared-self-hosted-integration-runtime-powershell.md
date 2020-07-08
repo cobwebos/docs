@@ -10,39 +10,36 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84655731"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建共享自承载集成运行时
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本指南演示如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
+本指南介绍如何在 Azure 数据工厂中创建共享自承载集成运行时。 然后可在另一个数据工厂中使用共享自托管集成运行时。
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>使用 Azure 数据工厂 UI 创建共享自承载 IR
 
 若要使用 Azure 数据工厂 UI 创建共享自承载 IR，可以执行以下步骤：
 
-1. 在要共享的自承载 IR 中，授予要在其中创建链接 IR 的数据工厂的权限。
+1. 在要共享的自承载 IR 中，选择“向另一个数据工厂授予权限”，然后在“集成运行时设置”页中，选择要在其中创建链接 IR 的数据工厂。
       
-    ![“共享”选项卡上的授予权限按钮](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![分配权限的选项](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![“共享”选项卡上的授予权限按钮](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. 记下要共享的自承载 IR 的资源 ID。
-      
-   ![资源 ID 的位置](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. 记下并复制上面要共享的自承载 IR 的“资源 ID”。
+         
 3. 在已授予权限的数据工厂中，创建新的自承载 IR（链接），并输入资源 ID。
       
-   ![用于创建链接的自承载集成运行时的按钮](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![用于输入名称和资源 ID 的框](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![用于创建自承载集成运行时的按钮](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![用于创建链接的自承载集成运行时的按钮](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![用于输入名称和资源 ID 的框](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>使用 Azure PowerShell 创建共享自承载 IR
 

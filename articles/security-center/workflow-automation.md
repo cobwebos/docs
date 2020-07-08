@@ -8,16 +8,15 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397917"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84629391"
 ---
 # <a name="workflow-automation"></a>工作流自动化
 
-每个安全计划都包含多个事件响应工作流。 这些过程可能包括通知相关利益干系人、启动更改管理流程，以及应用特定的补救步骤。 安全专家建议您尽可能多地自动执行这些过程的步骤。 自动化可降低开销。 它还可以确保按照预定义的要求快速、一致地执行过程步骤，从而提高安全性。
+每个安全计划都包含事件响应的多个工作流。 这些流程可能包含通知相关利益干系人、启动更改管理进程，以及应用特定的修正步骤。 安全专家建议你尽可能多地将这些流程自动化。 自动化可降低开销。 它还可以确保按照预定义的要求快速、一致地执行过程步骤，从而提高安全性。
 
 本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报和建议触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用[Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)创建逻辑应用。
 
@@ -25,15 +24,25 @@ ms.locfileid: "80397917"
 > 如果以前在边栏上使用了 "行动手册" （预览版）视图，则会在 "新建工作流自动化" 页中找到相同的功能和扩展功能。
 
 
-## <a name="requirements"></a>要求
 
-* 若要使用 Azure 逻辑应用工作流，你必须具有以下逻辑应用角色/权限：
+## <a name="availability"></a>可用性
 
-    * [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)权限是必需的或逻辑应用读取/触发器访问（此角色无法创建或编辑逻辑应用; 仅*运行*现有的应用）
+- 发布状态：**正式发布版**
+- 必需的角色和权限：
+    - 订阅上包含导出配置的**读取器**
+    - 资源组（或**所有者**）上的**安全管理员角色**
+    - 还必须对目标资源具有写入权限
+    - 此外，若要使用 Azure 逻辑应用工作流，则必须具有以下逻辑应用角色/权限：
 
-    * 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的
+        * [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)权限是必需的或逻辑应用读取/触发器访问（此角色无法创建或编辑逻辑应用; 仅*运行*现有的应用）
 
-* 如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务（例如，Outlook/团队/时差实例）
+        * 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的
+
+        * 如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务（例如，Outlook/团队/时差实例）
+- 云： 
+    - ✔ 商业云
+    - ✔ US Gov
+    - ✘中国 Gov，其他 Gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>创建一个逻辑应用，并定义它应自动运行的时间 
@@ -102,7 +111,7 @@ ms.locfileid: "80397917"
 
 - [有关如何使用工作流自动化来自动执行安全响应的 Microsoft Learn 模块](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure 安全中心的安全建议](security-center-recommendations.md)
-- [Azure 安全中心的安全警报](security-center-alerts-overview.md)
+- [Azure 安全中心中的安全警报](security-center-alerts-overview.md)
 - [关于 Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [逻辑应用连接器](https://docs.microsoft.com/connectors/)
 - [Workflow 自动化数据类型架构](https://aka.ms/ASCAutomationSchemas)

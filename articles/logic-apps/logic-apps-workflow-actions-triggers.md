@@ -3,15 +3,14 @@ title: 触发器和操作类型的架构引用
 description: 有关 Azure 逻辑应用中工作流定义语言触发器和操作类型的架构参考指南
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 01/19/2020
-ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/10/2020
+ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609384"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -73,7 +72,7 @@ ms.locfileid: "81257430"
 
 | 触发器类型 | 说明 | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | 检查或轮询  任何终结点。 此终结点必须使用“202”异步模式或返回数组，符合特定的触发约定。 | 
+| [**HTTP**](#http-trigger) | 检查或轮询  任何终结点。 此终结点必须符合特定的触发器协定，方法是使用 `202` 异步模式或返回一个数组。 | 
 | [**HTTPWebhook**](#http-webhook-trigger) | 为逻辑应用创建一个可调用的终结点，但调用指定的 URL 来注册或注销。 |
 | [**Recurrence**](#recurrence-trigger) | 根据定义的计划执行。 可以设置在将来某个日期和时间执行此触发器。 根据频率，还可指定运行工作流的次数和天数。 | 
 | [**Request**](#request-trigger)  | 为逻辑应用创建一个可调用的终结点，此类触发器也称为“手动”触发器。 相关示例请参阅[使用 HTTP 终结点调用、触发或嵌套工作流](../logic-apps/logic-apps-http-endpoint.md)。 | 
@@ -224,15 +223,15 @@ ms.locfileid: "81257430"
 |-------|------|-------------| 
 | <*connection-name*> | String | 工作流使用的托管 API 连接的名称 | 
 | <body-content  > | JSON 对象 | 要作为有效负载发送到托管 API 的任何消息内容 | 
-|||| 
+||||
 
 *可选*
 
-| Value | 类型 | 说明 | 
-|-------|------|-------------| 
-| <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
-| <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
-| <max-runs  > | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
+| Value | 类型 | 说明 |
+|-------|------|-------------|
+| <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
+| <query-parameters  > | JSON 对象 | 要包括在 API 调用中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 |
+| <max-runs  > | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 |
 | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <splitOn-expression  > | String | 对于返回数组的触发器，此表达式引用要使用的数组，从而可为每个数组项创建和运行一个工作流实例，而不是使用“for each”循环。 <p>例如，此表达式表示触发器正文内容中返回的数组中的某一项：`@triggerbody()?['value']` |
 | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -269,7 +268,7 @@ ms.locfileid: "81257430"
 
 ### <a name="http-trigger"></a>HTTP 触发器
 
-此触发器根据指定的重复计划向指定的 HTTP 或 HTTPS 终结点发送请求。 然后，触发器检查响应以确定是否运行工作流。
+此触发器根据指定的重复计划向指定的 HTTP 或 HTTPS 终结点发送请求。 然后，触发器检查响应以确定是否运行工作流。 有关详细信息，请参阅[通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点](../connectors/connectors-native-http.md)。
 
 ```json
 "HTTP": {
@@ -301,49 +300,49 @@ ms.locfileid: "81257430"
 
 *必需*
 
-| 属性 | Value | 类型 | 说明 |
+| Property | “值” | 类型 | 描述 |
 |----------|-------|------|-------------|
-| `method` | <method-type  > | String | 用于发送传出请求的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
-| `uri` | <HTTP-or-HTTPS-endpoint-URL>  | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
-| `frequency` | <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” |
-| `interval` | <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
+| `method` | <*方法类型*> | String | 用于发送传出请求的方法： "GET"、"PUT"、"POST"、"PATCH" 或 "DELETE" |
+| `uri` | <*HTTP 或 HTTPS 终结点-URL*> | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
+| `frequency` | <*时间单位*> | String | 时间单位，描述触发器触发的频率：“秒”、“分”、“小时”、“天”、“周”、“月” |
+| `interval` | <*时间单位数*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
 |||||
 
 *可选*
 
-| 属性 | Value | 类型 | 说明 |
+| Property | “值” | 类型 | 描述 |
 |----------|-------|------|-------------|
-| `headers` | <header-content  > | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| `queries` | <query-parameters  > | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到请求。 |
-| `body` | <body-content  > | JSON 对象 | 要作为有效负载与请求一同发送的消息内容 |
-| `authentication` | <*authentication-type-and-property-values*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
-| `retryPolicy` > `type` | <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
-| `runs` | <max-runs  > | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 |
-| `maximumWaitingRuns` | <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 |
-| `operationOptions` | <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 |
+| `headers` | <*标头-内容*> | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*查询-参数*> | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到请求。 |
+| `body` | <*正文-内容*> | JSON 对象 | 要作为有效负载与请求一同发送的消息内容 |
+| `authentication` | <*身份验证-类型和属性值*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
+| `retryPolicy` > `type` | <*重试-行为*> | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
+| `runs` | <*最大运行数*> | Integer | 默认情况下，工作流实例的运行时间不超过[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)**。 |
+| `maximumWaitingRuns` | <*最大运行数-队列*> | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 |
+| `operationOptions` | <*操作-选项*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 |
 |||||
 
 *输出*
 
-| 元素 | 类型 | 说明 |
-|---------|------|-------------| 
-| headers | JSON 对象 | 响应的标头 | 
-| body | JSON 对象 | 响应的正文 | 
-| 状态代码 | Integer | 响应中的状态代码 | 
+| 元素 | 类型 | 描述 |
+|---------|------|-------------|
+| `headers` | JSON 对象 | 响应的标头 |
+| `body` | JSON 对象 | 响应的正文 |
+| `status code` | Integer | 响应中的状态代码 |
+||||
+
+传入请求的要求**
+
+若要正常使用逻辑应用，终结点必须符合特定的触发器模式或协定，并识别这些响应属性：
+
+| Property | 必须 | 描述 |
+|----------|----------|-------------|
+| 状态代码 | 是 | “200 OK”状态代码启动运行。 其他任何状态代码均不会启动运行。 |
+| 重试间隔标头 | 否 | 逻辑应用再次轮询终结点之前所要经过的秒数 |
+| Location 标头 | 否 | 在下一个轮询间隔要调用的 URL。 如果未指定，将使用原始 URL。 |
 |||| 
 
-传入请求的要求 
-
-为很好地配合逻辑应用进行工作，终结点必须符合特定触发器模式或协定，并识别以下属性：  
-  
-| 响应 | 必须 | 说明 | 
-|----------|----------|-------------| 
-| 状态代码 | 是 | “200 OK”状态代码启动运行。 其他任何状态代码均不会启动运行。 | 
-| 重试间隔标头 | 否 | 逻辑应用再次轮询终结点之前所要经过的秒数 | 
-| Location 标头 | 否 | 在下一个轮询间隔要调用的 URL。 如果未指定，将使用原始 URL。 | 
-|||| 
-
-不同请求的示例行为 
+不同请求的示例行为**
 
 | 状态代码 | 重试间隔 | 行为 | 
 |-------------|-------------|----------|
@@ -360,7 +359,7 @@ ms.locfileid: "81257430"
 
 此触发器创建一个可通过调用指定终结点 URL 来注册订阅的终结点，使逻辑应用可被调用。 在工作流中创建此触发器时，传出请求会进行调用以注册订阅。 这样，该触发器便可开始侦听事件。 当某个操作使该触发器无效时，传出请求会自动进行调用以取消订阅。 有关详细信息，请参阅[终结点订阅](#subscribe-unsubscribe)。
 
-此外，还可对 HTTP Webhook 触发器指定[异步限制](#asynchronous-limits)  。 该触发器的行为取决于使用或省略的部分。
+此外，还可对 HTTP Webhook 触发器指定[异步限制](#asynchronous-limits)****。 该触发器的行为取决于使用或省略的部分。
 
 ```json
 "HTTP_Webhook": {
@@ -393,28 +392,28 @@ ms.locfileid: "81257430"
 }
 ```
 
-某些值对 `"subscribe"` 和 `"unsubscribe"` 对象均可用，例如 <method-type>  。
+某些值对 `"subscribe"` 和 `"unsubscribe"` 对象均可用，例如 <method-type>**。
 
 *必需*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 用于订阅请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
-| <endpoint-subscribe-URL  > | String | 要将订阅请求发送到的终结点 URL | 
+| <*方法类型*> | String | 用于订阅请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*终结点-订阅-URL*> | String | 要将订阅请求发送到的终结点 URL | 
 |||| 
 
 *可选*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 用于取消请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
-| <endpoint-unsubscribe-URL  > | String | 要将取消请求发送到的终结点 URL | 
-| <body-content  > | String | 要在订阅请求或取消订阅请求中发送的任何消息内容 | 
-| <*authentication-type*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
-| <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
-| <max-runs  > | Integer | 默认情况下，所有工作流实例都同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
-| <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*方法类型*> | String | 用于取消请求的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*终结点-取消订阅-URL*> | String | 要将取消请求发送到的终结点 URL | 
+| <*正文-内容*> | String | 要在订阅请求或取消订阅请求中发送的任何消息内容 | 
+| <*身份验证-类型*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
+| <*重试-行为*> | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
+| <*最大运行数*> | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)**。 | 
+| <*最大运行数-队列*> | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
+| <*操作-选项*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *输出* 
@@ -491,24 +490,24 @@ ms.locfileid: "81257430"
 
 *必需*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*time-unit*> | String | 用于描述触发器触发频率的时间单位：“秒”、“分钟”、“小时”、“天”、“周”、“月” | 
-| <*number-of-time-units*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
+| <*时间单位*> | String | 时间单位，描述触发器触发的频率：“秒”、“分”、“小时”、“天”、“周”、“月” | 
+| <*时间单位数*> | Integer | 指定触发器触发频率的值，即触发器再次触发之前需等待的时间单位数 <p>下面是最小和最大间隔： <p>- 月：1-16 个月 </br>- 天：1-500 天 </br>- 小时：1-12,000 小时 </br>- 分钟：1-72,000 分钟 </br>- 秒：1-9,999,999 秒<p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 | 
 |||| 
 
 *可选*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <start-date-time-with-format-YYYY-MM-DDThh:mm:ss  > | String | 采用以下格式的启动日期和时间： <p>如果指定时区，则为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果不指定时区，则为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2:00，则指定“2017-09-18T14:00:00”并指定时区（如“太平洋标准时间”），或仅指定“2017-09-18T14:00:00Z”，而不指定时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未指定时区，则必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 有关启动日期和时间的详细信息，请参阅[创建和计划定期运行任务](../connectors/connectors-native-recurrence.md)。 | 
-| <time-zone  > | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 指定要应用的时区。 | 
-| <one-or-more-hour-marks  > | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 23 范围内指定一个或多个整数（用逗号分隔），作为一天中要运行工作流的时间点。 <p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为小时标记。 | 
-| <one-or-more-minute-marks  > | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 59 范围内指定一个或多个整数（用逗号分隔），作为要运行工作流的分钟。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 | 
-| 工作日 | 字符串或字符串数组 | 如果 `frequency` 指定为“周”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“星期一”、“星期二”、“星期三”、“星期四”、“星期五”、“星期六”和“星期日” | 
-| <max-runs  > | Integer | 默认情况下，所有工作流实例都同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
-| <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*开始时间-日期-时间格式-Yyyy-mm-ddthh： MM： ss*> | String | 采用以下格式的启动日期和时间： <p>如果指定时区，则为 YYYY-MM-DDThh:mm:ss <p>\- 或 - <p>如果不指定时区，则为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果需要 2017 年 9 月 18 日下午 2:00，则指定“2017-09-18T14:00:00”并指定时区（如“太平洋标准时间”），或仅指定“2017-09-18T14:00:00Z”，而不指定时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未指定时区，则必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 有关启动日期和时间的详细信息，请参阅[创建和计划定期运行任务](../connectors/connectors-native-recurrence.md)。 | 
+| <*时区*> | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 指定要应用的时区。 | 
+| <*一个或多个小时标记*> | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 23 范围内指定一个或多个整数（用逗号分隔），作为一天中要运行工作流的时间点。 <p>例如，如果指定“10”、“12”和“14”，则会将上午 10 点、中午 12 点和下午 2 点作为小时标记。 | 
+| <*一分钟或更长的标记*> | 整数或整数数组 | 如果为 `frequency` 指定“Day”或“Week”，可以从 0 到 59 范围内指定一个或多个整数（用逗号分隔），作为要运行工作流的分钟。 <p>例如，可以指定“30”作为分钟标记并使用前面示例中的当天小时时间，这样，便可以指定10:30 AM、12:30 PM 和 2:30 PM 作为开始时间。 | 
+| 工作日 | 字符串或字符串数组 | 如果为 `frequency` 指定“Week”，则可以指定一天或多天（用逗号分隔）作为运行工作流的时间：“Monday”、“Tuesday”、“Wednesday”、“Thursday”、“Friday”、“Saturday”和“Sunday” | 
+| <*最大运行数*> | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)**。 | 
+| <*最大运行数-队列*> | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
+| <*操作-选项*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *示例 1*
@@ -600,22 +599,22 @@ ms.locfileid: "81257430"
 
 *必需*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <property-name  > | String | JSON 架构中属性的名称，描述有效负载 | 
-| <property-type  > | String | 属性的类型 | 
+| <*属性-名称*> | String | JSON 架构中属性的名称，描述有效负载 | 
+| <*属性类型*> | String | 属性的类型 | 
 |||| 
 
 *可选*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <method-type  > | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” |
-| <relative-path-for-accepted-parameter  > | String | 终结点的 URL 可接受的参数的相对路径 | 
-| <required-properties  > | Array | 需要值的一个或多个属性 | 
-| <max-runs  > | Integer | 默认情况下，所有工作流实例都同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)  。 | 
-| <max-runs-queue  > | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
-| <operation-option  > | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*方法类型*> | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” |
+| <*已接受的相对路径-参数*> | String | 终结点的 URL 可接受的参数的相对路径 | 
+| <*必需-属性*> | 数组 | 需要值的一个或多个属性 | 
+| <*最大运行数*> | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)**。 | 
+| <*最大运行数-队列*> | Integer | 当工作流已运行最大数量的实例（可基于 `runtimeConfiguration.concurrency.runs` 属性进行更改）时，任何新运行的实例都会被放入此队列（最多达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)）。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
+| <*操作-选项*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 *示例*
@@ -680,10 +679,10 @@ ms.locfileid: "81257430"
 
 ## <a name="trigger-multiple-runs"></a>触发多个运行
 
-触发器可能会返回一个可供逻辑应用处理的数组，但有时候，“for each”循环可能会花过长的时间来处理每个数组项。 此时可改用触发器中的 **SplitOn** 属性，对数组执行解除批处理  操作。 解除批处理时会拆分数组项，并启动一个针对每个数组项来运行的新工作流实例。 多种情况下可以使用此方法。例如，需要轮询一个终结点，而该终结点可能在不同的轮询间隔期之间返回多个新项。 若要了解 **SplitOn** 在单个逻辑应用运行中可以处理的最大数组项数，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 
+触发器可能会返回一个可供逻辑应用处理的数组，但有时候，“for each”循环可能会花过长的时间来处理每个数组项。 此时可改用触发器中的 **SplitOn** 属性，对数组执行解除批处理** 操作。 解除批处理时会拆分数组项，并启动一个针对每个数组项来运行的新工作流实例。 多种情况下可以使用此方法。例如，需要轮询一个终结点，而该终结点可能在不同的轮询间隔期之间返回多个新项。 若要了解 **SplitOn** 在单个逻辑应用运行中可以处理的最大数组项数，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 
 
 > [!NOTE]
-> 无法对同步响应模式使用 SplitOn  。 任何使用 **SplitOn** 并包括一个响应操作的工作流都会异步运行并即时发送 `202 ACCEPTED` 响应。
+> 无法对同步响应模式使用 SplitOn****。 任何使用 **SplitOn** 并包括一个响应操作的工作流都会异步运行并即时发送 `202 ACCEPTED` 响应。
 >
 > 启用触发器并发后，会显著降低 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
  
@@ -772,22 +771,22 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------|
-| <action-name  > | String | 操作的名称 | 
-| <action-type  > | String | 操作类型，例如“Http”或“ApiConnection”| 
-| <input-name  > | String | 定义操作行为的输入的名称 | 
-| <input-value  > | 各种各样 | 输入值，可为字符串、整数、JSON 对象等 | 
-| <previous-trigger-or-action-status  > | JSON 对象 | 在此当前操作可以运行之前，必须立即运行的触发器或操作的名称和结果状态 | 
+| <*操作-名称*> | String | 操作的名称 | 
+| <*操作-类型*> | String | 操作类型，例如“Http”或“ApiConnection”| 
+| <*输入名称*> | String | 定义操作行为的输入的名称 | 
+| <*输入-值*> | 各种各样 | 输入值，可为字符串、整数、JSON 对象等 | 
+| <*上一个触发器或操作-状态*> | JSON 对象 | 在此当前操作可以运行之前，必须立即运行的触发器或操作的名称和结果状态 | 
 |||| 
 
 *可选*
 
-| Value | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------|
-| <retry-behavior  > | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅“重试策略”。 | 
-| <runtime-config-options  > | JSON 对象 | 对于某些操作，可通过设置 `runtimeConfiguration` 属性在运行时更改操作的行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
-| <operation-option  > | String | 对于某些操作，可通过设置 `operationOptions` 属性更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
+| <*重试-行为*> | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅“重试策略”。 | 
+| <*运行时配置-选项*> | JSON 对象 | 对于某些操作，可通过设置 `runtimeConfiguration` 属性在运行时更改操作的行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
+| <*操作-选项*> | String | 对于某些操作，可通过设置 `operationOptions` 属性更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
 |||| 
 
 ## <a name="action-types-list"></a>操作类型列表
@@ -796,21 +795,21 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 * [内置操作类型](#built-in-actions)，例如以下示例等： 
 
-  * 用于通过 HTTP 或 HTTPS 调用终结点的 [HTTP](#http-action) 
+  * 用于通过 HTTP 或 HTTPS 调用终结点的 [HTTP](#http-action)****
 
-  * 用于响应请求的 [Response](#response-action) 
+  * 用于响应请求的 [Response](#response-action)****
 
   * [**执行 JavaScript 代码**](#run-javascript-code)以运行 JavaScript 代码片段
 
-  * 用于调用 Azure Functions 的 [Function](#function-action) 
+  * 用于调用 Azure Functions 的 [Function](#function-action)****
 
-  * 数据操作操作，例如 [Join](#join-action)、[Compose](#compose-action)、[Table](#table-action)、[Select](#select-action) 以及其他从各种输入创建或转换数据的操作    
+  * 数据操作操作，例如 [Join](#join-action)、[Compose](#compose-action)、[Table](#table-action)、[Select](#select-action) 以及其他从各种输入创建或转换数据的操作****************
 
-  * 用于调用另一个逻辑应用工作流的 [Workflow](#workflow-action) 
+  * 用于调用另一个逻辑应用工作流的 [Workflow](#workflow-action)****
 
-* [托管的 API 操作类型](#managed-api-actions)，例如调用由 Microsoft 托管的各种连接器和 API（例如 Azure 服务总线、Office 365 Outlook、Power BI、Azure Blob 存储、OneDrive 和 GitHub 等）的 [ApiConnection](#apiconnection-action) 和 [ApiConnectionWebHook](#apiconnectionwebhook-action)  
+* [托管的 API 操作类型](#managed-api-actions)，例如调用由 Microsoft 托管的各种连接器和 API（例如 Azure 服务总线、Office 365 Outlook、Power BI、Azure Blob 存储、OneDrive 和 GitHub 等）的 [ApiConnection](#apiconnection-action) 和 [ApiConnectionWebHook](#apiconnectionwebhook-action)********
 
-* 包含其他操作且有助于整理工作流执行的[控制工作流操作类型](#control-workflow-actions)，例如 [If](#if-action)、[Foreach](#foreach-action)、[Switch](#switch-action)、[Scope](#scope-action) 和 [Until](#until-action)     
+* 包含其他操作且有助于整理工作流执行的[控制工作流操作类型](#control-workflow-actions)，例如 [If](#if-action)、[Foreach](#foreach-action)、[Switch](#switch-action)、[Scope](#scope-action) 和 [Until](#until-action)********************
 
 <a name="built-in-actions"></a>
 
@@ -818,9 +817,9 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | 操作类型 | 说明 | 
 |-------------|-------------| 
-| [Compose](#compose-action)  | 从输入创建单个输出，可具有多种类型。 | 
+| [**撰写**](#compose-action) | 从输入创建单个输出，可具有多种类型。 | 
 | [**执行 JavaScript 代码**](#run-javascript-code) | 运行符合特定条件的 JavaScript 代码片段。 有关代码要求和详细信息，请参阅[通过内联代码添加和运行代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 |
-| [**才能**](#function-action) | 调用 Azure Function。 | 
+| [**函数**](#function-action) | 调用 Azure Function。 | 
 | [**HTTP**](#http-action) | 调用 HTTP 终结点。 | 
 | [**联接**](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的分隔符字符分隔这些项。 | 
 | [**分析 JSON**](#parse-json-action) | 基于 JSON 内容中的属性创建用户友好型令牌。 然后可通过将令牌包含在逻辑应用中来引用这些属性。 | 
@@ -828,8 +827,8 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | [**响应**](#response-action) | 创建针对传入调用或请求的响应。 | 
 | [**Select**](#select-action) | 通过基于指定映射转换另一个数组中的项，使用 JSON 对象创建数组。 | 
 | [**数据表**](#table-action) | 根据数组创建 CSV 或 HTML 表。 | 
-| [Terminate](#terminate-action)**** | 停止正在主动运行的工作流。 | 
-| [**等待**](#wait-action) | 将工作流暂停指定的时间段或暂停到指定日期和时间。 | 
+| [**Terminate**](#terminate-action) | 停止正在主动运行的工作流。 | 
+| [**Wait**](#wait-action) | 将工作流暂停指定的时间段或暂停到指定日期和时间。 | 
 | [**工作流**](#workflow-action) | 将一个工作流嵌套在另一个工作流内。 | 
 ||| 
 
@@ -853,8 +852,8 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | 在循环中对数组中的每个项执行相同的操作。 | 
 | [**如果**](#if-action) | 基于指定条件为 true 还是为 false 来运行操作。 | 
-| [**内**](#scope-action) | 基于组状态从一组操作中运行操作。 | 
-| [**转**](#switch-action) | 当表达式、对象或令牌的值匹配各事例指定的值时，运行被组织为事例的操作。 | 
+| [**范围**](#scope-action) | 基于组状态从一组操作中运行操作。 | 
+| [**开关**](#switch-action) | 当表达式、对象或令牌的值匹配各事例指定的值时，运行被组织为事例的操作。 | 
 | [**生效**](#until-action) | 在循环中运行操作，直至指定条件为 true。 | 
 |||  
 
@@ -888,17 +887,17 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*操作-名称*> | 字符串 | 连接器提供的操作的名称 | 
-| <*api 名称*> | 字符串 | 用于连接的 Microsoft 托管 API 的名称 | 
-| <*方法类型*> | 字符串 | 用于调用 API 的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
-| <*api-操作*> | 字符串 | 要调用的 API 操作 | 
+| <*操作-名称*> | String | 连接器提供的操作的名称 | 
+| <*api 名称*> | String | 用于连接的 Microsoft 托管 API 的名称 | 
+| <*方法类型*> | String | 用于调用 API 的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*api-操作*> | String | 要调用的 API 操作 | 
 |||| 
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*其他特定于操作的输入属性*> | JSON 对象 | 应用于此指定操作的任何其他输入属性 | 
 | <*重试-行为*> | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
@@ -968,21 +967,21 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*操作-名称*> | 字符串 | 连接器提供的操作的名称 | 
-| <*方法类型*> | 字符串 | 用于从终结点订阅或取消订阅的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
-| <*api-订阅-URL*> | 字符串 | 用于订阅 API 的 URI | 
+| <*操作-名称*> | String | 连接器提供的操作的名称 | 
+| <*方法类型*> | String | 用于从终结点订阅或取消订阅的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” | 
+| <*api-订阅-URL*> | String | 用于订阅 API 的 URI | 
 |||| 
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*api-取消订阅-URL*> | 字符串 | 用于取消订阅 API 的 URI | 
+| <*api-取消订阅-URL*> | String | 用于取消订阅 API 的 URI | 
 | <*标头-内容*> | JSON 对象 | 请求中发送的任何标头 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*正文-内容*> | JSON 对象 | 请求中发送的任何消息内容 | 
-| <*身份验证-类型*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
+| <*身份验证-类型*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 |
 | <*重试-行为*> | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 | 
 | <*查询-参数*> | JSON 对象 | 要包括在 API 调用中的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 | 
 | <*其他特定于操作的输入属性*> | JSON 对象 | 应用于此指定操作的任何其他输入属性 | 
@@ -1007,7 +1006,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需* 
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*输入到撰写*> | Any | 用于创建一个单一输出的输入 | 
 |||| 
@@ -1068,9 +1067,9 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 |
+| “值” | 类型 | 描述 |
 |-------|------|-------------|
-| <*JavaScript 代码段*> | 不定 | 要运行的 JavaScript 代码。 有关代码要求和详细信息，请参阅[通过内联代码添加和运行代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 <p>在 `code` 特性中，代码片段可以使用只读的 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。 有关`workflowContext`对象的详细信息，请参阅[代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。 |
+| <*JavaScript 代码段*> | 多种多样 | 要运行的 JavaScript 代码。 有关代码要求和详细信息，请参阅[通过内联代码添加和运行代码片段](../logic-apps/logic-apps-add-run-inline-code.md)。 <p>在 `code` 特性中，代码片段可以使用只读的 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。 有关对象的详细信息 `workflowContext` ，请参阅[代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。 |
 ||||
 
 在某些情况下是必需的**
@@ -1079,14 +1078,14 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 对于 `includeTrigger` 特性，可以指定 `true` 或 `false` 值。
 
-| 值 | 类型 | 说明 |
+| “值” | 类型 | 描述 |
 |-------|------|-------------|
 | <*以前的操作*> | 字符串数组 | 包含指定的操作名称的数组。 使用工作流定义中显示的操作名称，其中的操作名称使用下划线 (_) 而不是空格 ("")。 |
 ||||
 
 *示例 1*
 
-此操作运行的代码将获取逻辑应用的名称，并返回文本“Hello world from \<逻辑应用名称>”作为结果。 在此示例中，代码通过只读的 `workflowContext` 对象访问 `workflowContext.workflow.name` 属性，以此引用工作流的名称。 有关使用`workflowContext`对象的详细信息，请参阅[代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。
+此操作运行代码，该代码可获取逻辑应用的名称，并返回 "Hello world from \<logic-app-name> " 文本作为结果。 在此示例中，代码通过只读的 `workflowContext` 对象访问 `workflowContext.workflow.name` 属性，以此引用工作流的名称。 有关使用对象的详细信息 `workflowContext` ，请参阅[代码中的引用触发器和操作结果](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)。
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1145,15 +1144,15 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------|  
 | <*Azure 函数 ID*> | String | 要调用的 Azure 函数的资源 ID。 下面是此值的格式：<p>“/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group>/providers/Microsoft.Web/sites/<Azure-function-app-name>/functions/<Azure-function-name>”******** | 
-| <*方法类型*> | 字符串 | 用于调用函数的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” <p>如果未指定，则默认方法为“POST”。 | 
+| <*方法类型*> | String | 用于调用函数的 HTTP 方法：“GET”、“PUT”、“POST”、“PATCH”或“DELETE” <p>如果未指定，则默认方法为“POST”。 | 
 ||||
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------|  
 | <*标头-内容*> | JSON 对象 | 与调用一同发送的任何标头 <p>例如，在请求中设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*正文-内容*> | JSON 对象 | 请求中发送的任何消息内容 | 
@@ -1201,7 +1200,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 ### <a name="http-action"></a>HTTP 操作
 
-此操作会将请求发送到指定的 HTTP 或 HTTPS 终结点并检查响应，以确定是否运行工作流。
+此操作会将请求发送到指定的 HTTP 或 HTTPS 终结点并检查响应，以确定是否运行工作流。 有关详细信息，请参阅[通过 HTTP 或 HTTPS 从 Azure 逻辑应用调用服务终结点](../connectors/connectors-native-http.md)。
 
 ```json
 "HTTP": {
@@ -1223,20 +1222,20 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 属性 | 值 | 类型 | 说明 |
+| Property | “值” | 类型 | 描述 |
 |----------|-------|------|-------------|
-| `method` | <*方法类型*> | 字符串 | 用于发送传出请求的方法： "GET"、"PUT"、"POST"、"PATCH" 或 "DELETE" |
-| `uri` | <*HTTP 或 HTTPS 终结点-URL*> | 字符串 | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
+| `method` | <*方法类型*> | String | 用于发送传出请求的方法： "GET"、"PUT"、"POST"、"PATCH" 或 "DELETE" |
+| `uri` | <*HTTP 或 HTTPS 终结点-URL*> | String | 需在其中发送传出请求的 HTTP 或 HTTPS 终结点 URL。 最大字符串大小：2 KB <p>对于 Azure 服务或资源，此 URI 语法包括要访问的资源的资源 ID 和路径。 |
 |||||
 
 *可选*
 
-| 属性 | 值 | 类型 | 说明 |
+| Property | “值” | 类型 | 描述 |
 |----------|-------|------|-------------|
 | `headers` | <*标头-内容*> | JSON 对象 | 需包括在请求中的任何标头 <p>例如，设置语言和类型： <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*查询-参数*> | JSON 对象 | 需在请求中使用的任何查询参数 <p>例如，`"queries": { "api-version": "2018-01-01" }` 对象将 `?api-version=2018-01-01` 添加到调用。 |
 | `body` | <*正文-内容*> | JSON 对象 | 要作为有效负载与请求一同发送的消息内容 |
-| `authentication` | <*身份验证-类型和属性值*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
+| `authentication` | <*身份验证-类型和属性值*> | JSON 对象 | 身份验证模型，请求用它对出站请求进行身份验证。 有关详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。 除计划程序外，还支持 `authority` 属性。 如果未指定此值，则使用默认值 `https://management.azure.com/`，但也可使用其他值。 |
 | `retryPolicy` > `type` | <*重试-行为*> | JSON 对象 | 自定义状态代码为 408、429 和 5XX 的间歇性故障以及任何连接异常的重试行为。 有关详细信息，请参阅[重试策略](../logic-apps/logic-apps-exception-handling.md#retry-policies)。 |
 | <*其他特定于操作的输入属性*> | <*输入-属性*> | JSON 对象 | 应用于此指定操作的任何其他输入属性 |
 | <*其他特定于操作的属性*> | <*属性-值*> | JSON 对象 | 应用于此指定操作的任何其他属性 |
@@ -1275,10 +1274,10 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 说明 | 
 |-------|------|-------------| 
-| <*组成*> | 数组 | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 | 
-| <*后面*> | 单字符字符串 | 分隔字符串中每个项的字符 | 
+| <array> | 数组 | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 | 
+| <*delimiter*> | 单字符字符串 | 分隔字符串中每个项的字符 | 
 |||| 
 
 *示例*
@@ -1319,7 +1318,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*JSON-源*> | JSON 对象 | 要分析的 JSON 内容 | 
 | <*JSON-架构*> | JSON 对象 | 描述基础 JSON 内容的 JSON 架构，操作将该架构用于分析源 JSON 内容。 <p>**提示**：在逻辑应用设计器中，可提供该架构或提供示例有效负载，以便操作可生成该架构。 | 
@@ -1421,10 +1420,10 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 说明 | 
 |-------|------|-------------| 
-| <*组成*> | 数组 | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 |
-| <*条件或筛选器*> | 字符串 | 用于筛选源数组中的项的条件 <p>**注意**：如果没有任何值满足此条件，则该操作会创建一个空数组。 |
+| <array> | 数组 | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 |
+| <*条件或筛选器*> | String | 用于筛选源数组中的项的条件 <p>**注意**：如果没有任何值满足此条件，则该操作会创建一个空数组。 |
 |||| 
 
 *示例*
@@ -1462,14 +1461,14 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*响应-状态代码*> | Integer | 发送到传入请求的 HTTP 状态代码。 默认代码为“200 OK”，但此代码可为以 2xx、4xx 或 5xx（非 3xxx）开头的任何有效状态代码。 | 
 |||| 
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*响应-标头*> | JSON 对象 | 要包括在响应中的一个或多个标头 | 
 | <*响应正文*> | 各种各样 | 响应正文，可为字符串、JSON 对象甚至上一个操作的二进制内容 | 
@@ -1537,11 +1536,11 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 *必需* 
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 说明 | 
 |-------|------|-------------| 
-| <*组成*> | 数组 | 提供源项的数组或表达式。 确保将表达式放入双引号内。 <p>**注意**：如果源数组为空，则该操作会创建一个空数组。 | 
+| <array> | 数组 | 提供源项的数组或表达式。 确保将表达式放入双引号内。 <p>**注意**：如果源数组为空，则该操作会创建一个空数组。 | 
 | <*项名称*> | String | 分配给 <*表达式*的结果的属性名称> <p>若要为输出数组中的所有对象添加一个新属性，请提供该属性的 <key-name> 以及属性值的 <expression>****。 <p>若要从数组的所有对象中删除属性，请删除该属性的 <key-name>**。 | 
-| <*表达式*> | 字符串 | 用于转换源数组中的项并将结果赋给 <的*键名*的表达式> | 
+| <*expression*> | String | 用于转换源数组中的项并将结果赋给 <的*键名*的表达式> | 
 |||| 
 
 Select 操作创建一个数组作为输出，因此，任何想要使用此输出的操作必须接受数组或者该数组必须转换为使用者操作接受的类型****。 例如，若要将此输出数组转换为字符串，可将此数组传递到 Compose 操作，然后在其他操作中引用 Compose 操作的输出********。
@@ -1635,19 +1634,19 @@ Select 操作创建一个数组作为输出，因此，任何想要使用此输�
 
 *必需* 
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 说明 | 
 |-------|------|-------------| 
-| \<CSV*或*HTML>| 字符串 | 要创建的表的格式 | 
-| <*组成*> | 数组 | 为表提供源项的数组或表达式 <p>**注意**：如果源数组为空，则该操作会创建一个空表。 | 
+| \<CSV *or* HTML>| String | 要创建的表的格式 | 
+| <array> | 数组 | 为表提供源项的数组或表达式 <p>**注意**：如果源数组为空，则该操作会创建一个空表。 | 
 |||| 
 
 *可选*
 
 若要指定或自定义列标头和值，请使用 `columns` 数组。 `header-value` 对具有相同标头名称时，其值显示在该标头名称下相同的列中。 否则，每个唯一的标头定义一个唯一列。
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*列名*> | 字符串 | 列的标头名称 | 
+| <*列名*> | String | 列的标头名称 | 
 | <*列-值*> | Any | 该列中的值 | 
 |||| 
 
@@ -1724,7 +1723,7 @@ ID,Product_Name
 
 以下为此操作创建的 HTML 表： 
 
-<table><thead><tr><th>Stock_ID</th><th>说明</th></tr></thead><tbody><tr><td>0</td><td>Organic Apples</td></tr><tr><td>1</td><td>Organic Oranges</td></tr></tbody></table>
+<table><thead><tr><th>Stock_ID</th><th>描述</th></tr></thead><tbody><tr><td>0</td><td>Organic Apples</td></tr><tr><td>1</td><td>Organic Oranges</td></tr></tbody></table>
 
 <a name="terminate-action"></a>
 
@@ -1748,19 +1747,19 @@ ID,Product_Name
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*状态值*> | 字符串 | 针对运行所返回的状态：“Failed”、“Cancelled”或“Succeeded” |
+| <*状态值*> | String | 针对运行所返回的状态：“Failed”、“Cancelled”或“Succeeded” |
 |||| 
 
 *可选*
 
 仅在“runStatus”属性设为“Failed”状态时，“runStatus”对象的属性才适用。
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*错误-代码或名称*> | 字符串 | 错误的代码或名称 |
-| <*错误-消息*> | 字符串 | 消息或文本，描述错误和应用用户可采取的任何操作 | 
+| <*错误-代码或名称*> | String | 错误的代码或名称 |
+| <*错误-消息*> | String | 消息或文本，描述错误和应用用户可采取的任何操作 | 
 |||| 
 
 *示例*
@@ -1818,11 +1817,11 @@ ID,Product_Name
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*单位数*> | Integer | 对于 Delay 操作，要等待的单位数**** | 
-| <*间隔*> | 字符串 | 对于 Delay 操作，要等待的时间间隔：“秒”、“分”、“小时”、“天”、“周”、“月”**** | 
-| <*日期时间戳*> | 字符串 | 对于 Delay Until 操作，执行的恢复日期和时间****。 该值必须使用 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)。 | 
+| <*间隔*> | String | 对于 Delay 操作，要等待的时间间隔：“秒”、“分”、“小时”、“天”、“周”、“月”**** | 
+| <*日期时间戳*> | String | 对于 Delay Until 操作，执行的恢复日期和时间****。 该值必须使用 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)。 | 
 |||| 
 
 *示例 1*
@@ -1891,24 +1890,24 @@ ID,Product_Name
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*嵌套逻辑应用名称*> | 字符串 | 要调用的逻辑应用的名称 | 
-| <*触发器-名称*> | 字符串 | 要调用的嵌套逻辑应用中的触发器的名称 | 
-| <*Azure 订阅 ID*> | 字符串 | 嵌套逻辑应用的 Azure 订阅 ID |
-| <*Azure 资源组*> | 字符串 | 嵌套逻辑应用的 Azure 资源组名称 |
-| <*嵌套逻辑应用名称*> | 字符串 | 要调用的逻辑应用的名称 |
+| <*嵌套逻辑应用名称*> | String | 要调用的逻辑应用的名称 | 
+| <*触发器-名称*> | String | 要调用的嵌套逻辑应用中的触发器的名称 | 
+| <*Azure 订阅 ID*> | String | 嵌套逻辑应用的 Azure 订阅 ID |
+| <Azure-resource-group>** | String | 嵌套逻辑应用的 Azure 资源组名称 |
+| <*嵌套逻辑应用名称*> | String | 要调用的逻辑应用的名称 |
 ||||
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------|  
 | <*标头-内容*> | JSON 对象 | 与调用一同发送的任何标头 | 
 | <*正文-内容*> | JSON 对象 | 与调用一同发送的任何消息内容 | 
 ||||
 
-*Outputs*
+*输出*
 
 此操作的输出基于嵌套应用的 Response 操作而有所不同。 如果嵌套逻辑应用不包含 Response 操作，则输出为空。
 
@@ -1968,19 +1967,19 @@ ID,Product_Name
 
 *必需* 
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*操作-1 .。。北*> | 字符串 | 在每个数组项上运行的操作的名称 | 
+| <*操作-1 .。。北*> | String | 在每个数组项上运行的操作的名称 | 
 | <*操作定义-1 .。。北*> | JSON 对象 | 运行的操作的定义 | 
-| <*-每个表达式*> | 字符串 | 用于引用指定数组中每个项的表达式 | 
+| <*-每个表达式*> | String | 用于引用指定数组中每个项的表达式 | 
 |||| 
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 说明 | 
 |-------|------|-------------| 
-| <*计*> | Integer | 默认情况下，"for each" 循环迭代按[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)同时运行（并发或并行）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改“for each”循环并发](#change-for-each-concurrency)**。 | 
-| <*操作-选项*> | 字符串 | 若要按顺序而不是并行运行“for each”循环，请将 <operation-option> 设为 `Sequential` 或将 <count> 设为 `1`（仅二者之一）****。 有关详细信息，请参阅[按顺序运行“for each”循环](#sequential-for-each)。 | 
+| <*count*> | Integer | 默认情况下，"for each" 循环迭代按[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)同时运行（并发或并行）。 若要通过设置新的 <count> 值更改此限制，请参阅[更改“for each”循环并发](#change-for-each-concurrency)**。 | 
+| <*操作-选项*> | String | 若要按顺序而不是并行运行“for each”循环，请将 <operation-option> 设为 `Sequential` 或将 <count> 设为 `1`（仅二者之一）****。 有关详细信息，请参阅[按顺序运行“for each”循环](#sequential-for-each)。 | 
 |||| 
 
 *示例*
@@ -2041,7 +2040,7 @@ ID,Product_Name
 }
 ```
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
 | <*状态*> | JSON 对象 | 要评估的条件（可以为表达式） | 
 | <*操作-1*> | JSON 对象 | <condition> 评估结果为 true 时要运行的操作** | 
@@ -2131,7 +2130,7 @@ ID,Product_Name
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------|  
 | <*内部-操作-1 .。。北*> | JSON 对象 | 在范围内运行的一个或多个操作 |
 | <*操作-输入*> | JSON 对象 | 每个操作的输入 |
@@ -2172,19 +2171,19 @@ ID,Product_Name
 
 *必需*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*expression-对象或标记*> | 不定 | 要计算的表达式、JSON 对象或令牌 | 
-| <*操作-名称*> | 字符串 | 要针对匹配事例运行的操作的名称 | 
+| <*expression-对象或标记*> | 多种多样 | 要计算的表达式、JSON 对象或令牌 | 
+| <*操作-名称*> | String | 要针对匹配事例运行的操作的名称 | 
 | <*操作-定义*> | JSON 对象 | 要针对匹配事例运行的操作的定义 | 
-| <*匹配-值*> | 不定 | 要与计算结果比较的值 | 
+| <*匹配-值*> | 多种多样 | 要与计算结果比较的值 | 
 |||| 
 
 *可选*
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*默认操作-名称*> | 字符串 | 无匹配事例存在时要运行的默认操作的名称 | 
+| <*默认操作-名称*> | String | 无匹配事例存在时要运行的默认操作的名称 | 
 | <*默认操作-定义*> | JSON 对象 | 无匹配事例存在时要运行的操作的定义 | 
 |||| 
 
@@ -2298,14 +2297,14 @@ ID,Product_Name
 }
 ```
 
-| 值 | 类型 | 说明 | 
+| “值” | 类型 | 描述 | 
 |-------|------|-------------| 
-| <*操作-名称*> | 字符串 | 要在循环内运行的操作的名称 | 
+| <*操作-名称*> | String | 要在循环内运行的操作的名称 | 
 | <*操作-类型*> | String | 要运行的操作类型 | 
 | <*操作-输入*> | 各种各样 | 要运行的操作的输入 | 
-| <*状态*> | 字符串 | 当循环中的所有操作都运行完成后要计算的条件或表达式 | 
+| <*状态*> | String | 当循环中的所有操作都运行完成后要计算的条件或表达式 | 
 | <*循环计数*> | Integer | 针对操作可运行的最大循环数的限制。 有关默认限制和最大限制的详细信息，请参阅[Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 | 
-| <*循环超时*> | 字符串 | 针对循环可运行的最长时间的限制。 默认 `timeout` 值为 `PT1H`，即要求的 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
+| <*循环超时*> | String | 针对循环可运行的最长时间的限制。 默认 `timeout` 值为 `PT1H`，即要求的 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 |||| 
 
 *示例*
@@ -2375,9 +2374,9 @@ ID,Product_Name
 
 ## <a name="runtime-configuration-settings"></a>运行时配置设置
 
-可以通过将这些`runtimeConfiguration`属性添加到触发器或操作定义来更改触发器和操作的默认运行时行为。
+可以通过将这些 `runtimeConfiguration` 属性添加到触发器或操作定义来更改触发器和操作的默认运行时行为。
 
-| 属性 | 类型 | 说明 | 触发器或操作 | 
+| Property | 类型 | 描述 | 触发器或操作 | 
 |----------|------|-------------|-------------------| 
 | `runtimeConfiguration.concurrency.runs` | Integer | 更改可同时运行的工作流实例数的[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)（并发或并行）。 调整此值有助于限制后端系统接收的请求数。 <p>将 `runs` 属性设置为 `1` 与将 `operationOptions` 属性设置为 `SingleInstance` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要更改此默认限制，请参阅[更改触发器并发](#change-trigger-concurrency)或[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | 更改当逻辑应用已在运行最大并发实例时必须等待运行的工作流实例数的[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 <p>若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 所有触发器 | 
@@ -2393,12 +2392,12 @@ ID,Product_Name
 
 可通过触发器或操作定义中的以下 `operationOptions` 属性更改触发器和操作的默认行为。
 
-| 操作选项 | 类型 | 说明 | 触发器或操作 | 
+| 操作选项 | 类型 | 描述 | 触发器或操作 | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | 字符串 | 以同步方式而非异步方式运行基于 HTTP 的操作。 <p><p>若要设置此选项，请参阅[同步运行操作](#asynchronous-patterns)。 | 操作： <p>[ApiConnection](#apiconnection-action)、 <br>[HTTP](#http-action)、 <br>[响应](#response-action) | 
-| `OptimizedForHighThroughput` | 字符串 | 将针对每 5 分钟的操作执行数的[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)更改为[最大限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 <p><p>若要设置此选项，请参阅[在高吞吐量模式下运行](#run-high-throughput-mode)。 | 所有操作 | 
-| `Sequential` | 字符串 | 每次运行一个“for each”循环迭代，而不是同时并行运行所有迭代。 <p>此选项与将 `runtimeConfiguration.concurrency.repetitions` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p><p>若要设置此选项，请参阅[按顺序运行“for each”循环](#sequential-for-each)。| 操作： <p>[Foreach](#foreach-action) | 
-| `SingleInstance` | 字符串 | 按顺序对每个逻辑应用实例运行此触发器，并在等待上一个活动运行完成后，再触发下一个逻辑应用实例。 <p><p>此选项与将 `runtimeConfiguration.concurrency.runs` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要设置此选项，请参阅[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
+| `DisableAsyncPattern` | String | 以同步方式而非异步方式运行基于 HTTP 的操作。 <p><p>若要设置此选项，请参阅[同步运行操作](#disable-asynchronous-pattern)。 | 操作： <p>[ApiConnection](#apiconnection-action)、 <br>[HTTP](#http-action)、 <br>[响应](#response-action) | 
+| `OptimizedForHighThroughput` | String | 将针对每 5 分钟的操作执行数的[默认限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)更改为[最大限制](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)。 <p><p>若要设置此选项，请参阅[在高吞吐量模式下运行](#run-high-throughput-mode)。 | 所有操作 | 
+| `Sequential` | String | 每次运行一个“for each”循环迭代，而不是同时并行运行所有迭代。 <p>此选项与将 `runtimeConfiguration.concurrency.repetitions` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p><p>若要设置此选项，请参阅[按顺序运行“for each”循环](#sequential-for-each)。| 操作： <p>[Foreach](#foreach-action) | 
+| `SingleInstance` | String | 按顺序对每个逻辑应用实例运行此触发器，并在等待上一个活动运行完成后，再触发下一个逻辑应用实例。 <p><p>此选项与将 `runtimeConfiguration.concurrency.runs` 属性设置为 `1` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要设置此选项，请参阅[按顺序触发实例](#sequential-trigger)。 | 所有触发器 | 
 ||||
 
 <a name="change-trigger-concurrency"></a>
@@ -2407,7 +2406,7 @@ ID,Product_Name
 
 默认情况下，逻辑应用工作流实例都同时运行（并发或并行）。 此行为意味着，每个触发器实例在之前活动的工作流实例运行完成之前激发。 但是，并发运行的实例的数目有[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 当同时运行的工作流实例的数量达到此限制时，任何其他新实例都必须等待运行。 此限制可控制后端系统接收的请求数。
 
-打开触发器的并发控制时，触发器实例将并行运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要更改此默认并发限制，可以使用 "代码视图编辑器" 或 "逻辑应用设计器"，因为通过设计器更改并发性设置`runtimeConfiguration.concurrency.runs`将在基础触发器定义中添加或更新属性，反之亦然。 此属性控制可并行运行的新工作流实例的最大数量。
+打开触发器的并发控制时，触发器实例将并行运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要更改此默认并发限制，可以使用 "代码视图编辑器" 或 "逻辑应用设计器"，因为通过设计器更改并发性设置将 `runtimeConfiguration.concurrency.runs` 在基础触发器定义中添加或更新属性，反之亦然。 此属性控制可并行运行的新工作流实例的最大数量。
 
 如果要对触发器启用并发，请注意以下事项：
 
@@ -2421,7 +2420,7 @@ ID,Product_Name
 
   * 若要中断此状态，请取消仍在运行** 的最早实例。
 
-    1. 在逻辑应用的菜单中，选择“概述”****。
+    1. 在逻辑应用的菜单中，选择“概述”。
 
     1. 在“运行历史记录”**** 部分中，选择仍在运行的最早实例，例如：
 
@@ -2444,11 +2443,11 @@ ID,Product_Name
 
        ![指定超时持续时间](./media/logic-apps-workflow-actions-triggers/timeout.png)
 
-* 若要按顺序运行逻辑应用，请使用代码视图编辑器`1`或设计器将触发器的并发设置为。 请确保未在代码视图编辑器中将触发器`operationOptions`的属性`SingleInstance`设置为。 否则会出现验证错误。 有关详细信息，请参阅[按顺序触发实例](#sequential-trigger)。
+* 若要按顺序运行逻辑应用，请 `1` 使用代码视图编辑器或设计器将触发器的并发设置为。 请确保未 `operationOptions` `SingleInstance` 在代码视图编辑器中将触发器的属性设置为。 否则会出现验证错误。 有关详细信息，请参阅[按顺序触发实例](#sequential-trigger)。
 
 #### <a name="edit-in-code-view"></a>在代码视图中编辑 
 
-在基础触发器定义中，添加`runtimeConfiguration.concurrency.runs`属性，该属性的值可以从`1`到。 `50`
+在基础触发器定义中，添加 `runtimeConfiguration.concurrency.runs` 属性，该属性的值可以从 `1` 到 `50` 。
 
 以下示例将并发运行数限制为 10 个实例：
 
@@ -2490,7 +2489,7 @@ ID,Product_Name
 
 #### <a name="edit-in-code-view"></a>在代码视图中编辑 
 
-在基础 "for each" 定义中，添加或更新`runtimeConfiguration.concurrency.repetitions`属性，该属性的值必须介于和`1` `50`之间。
+在基础 "for each" 定义中，添加或更新 `runtimeConfiguration.concurrency.repetitions` 属性，该属性的值必须介于 `1` 和之间 `50` 。
 
 以下示例将并发运行数限制为 10 个迭代：
 
@@ -2526,7 +2525,7 @@ ID,Product_Name
 
 等待运行的次数也有[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 当等待的运行数达到此限制时，逻辑应用引擎将不再接受新的运行。 请求和 webhook 触发器返回 429 错误，并且重复的触发器会开始跳过轮询尝试。
 
-您不仅可以[更改触发器并发的默认限制](#change-trigger-concurrency)，还可以更改等待运行的默认限制。 在基础触发器定义中，添加`runtimeConfiguration.concurrency.maximumWaitingRuns`属性，该属性的值可以从`1`到。 `100`
+您不仅可以[更改触发器并发的默认限制](#change-trigger-concurrency)，还可以更改等待运行的默认限制。 在基础触发器定义中，添加 `runtimeConfiguration.concurrency.maximumWaitingRuns` 属性，该属性的值可以从 `1` 到 `100` 。
 
 ```json
 "<trigger-name>": {
@@ -2575,7 +2574,7 @@ ID,Product_Name
 }
 ```
 
-*或*
+*\- 或 -*
 
 将 `operationOptions` 属性设为 `SingleInstance`：
 
@@ -2629,7 +2628,7 @@ ID,Product_Name
 }
 ```
 
-*或*
+*\- 或 -*
 
 将 `operationOptions` 属性设为 `Sequential`：
 
@@ -2653,13 +2652,52 @@ ID,Product_Name
 
 1. 将“并行度”滑块拖到数字 ****`1`。
 
-<a name="asynchronous-patterns"></a>
+<a name="disable-asynchronous-pattern"></a>
 
-### <a name="run-actions-synchronously"></a>同步运行操作
+### <a name="run-actions-in-a-synchronous-operation-pattern"></a>在同步操作模式中运行操作
 
-默认情况下，所有基于 HTTP 的操作都遵循标准异步操作模式。 此模式指定当基于 HTTP 的操作向指定终结点发送请求时，远程服务器发回“202 ACCEPTED”响应。 此回复意味着服务器已接受请求以便进行处理。 逻辑应用引擎持续检查响应的位置标头所指定的 URL，直至处理停止（即为任何非 202 响应）。
+默认情况下，Azure 逻辑应用中的 HTTP 操作和 APIConnection 操作遵循标准[*异步操作模式*](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，而响应操作遵循*同步操作模式*。 异步模式指定在操作调用或将请求发送到指定终结点、服务、系统或 API 后，接收方会立即返回["202 接受"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)响应。 此代码确认接收方接受了请求，但尚未完成处理。 响应可以包括 `location` 指定 URL 和刷新 ID 的标头，调用方可以使用该标头来持续轮询或检查异步请求的状态，直到接收方停止处理并返回["200 正常"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)成功响应或其他非202响应。 有关详细信息，请参阅[异步微服务 integration 强制微服务自治](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
 
-但是，由于请求具有超时限制，因此，对于长时间运行的操作，可通过在操作的输入下添加 `operationOptions` 属性并将该属性设为 `DisableAsyncPattern` 来禁用异步行为。
+* 在逻辑应用设计器中，"HTTP 操作"、"APIConnection 操作" 和 "响应" 操作具有**异步模式**设置。 启用后，此设置将指定调用方不会等待处理完成，并可继续执行下一个操作，但会继续检查状态，直到处理停止。 如果禁用此设置，则此设置指定调用方等待处理完成，然后再继续执行下一个操作。 若要找到此设置，请执行以下步骤：
+
+  1. 在 HTTP 操作的标题栏中，选择省略号（"**...**"）按钮，这将打开操作的设置。
+
+  1. 查找**异步模式**设置。
+
+     !["异步模式" 设置](./media/logic-apps-workflow-actions-triggers/asynchronous-pattern-setting.png)
+
+* 在操作的基础 JavaScript 对象表示法（JSON）定义中，HTTP action 和 APIConnection 操作隐式遵循异步操作模式。
+
+在某些情况下，你可能希望操作遵循同步模式。 例如，当你使用 HTTP 操作时，你可能想要：
+
+* [避免长时间运行的任务的 HTTP 超时](../connectors/connectors-native-http.md#avoid-http-timeouts)
+* [禁用检查位置标头](../connectors/connectors-native-http.md#disable-location-header-check)
+
+在这些情况下，可以使用以下选项同步运行操作：
+
+* 将该操作的轮询版本替换为 webhook 版本（如果可用）。
+
+* 通过执行以下任一选项来禁用操作的异步行为：
+
+  * 在逻辑应用设计器中，[禁用**异步模式**设置](#turn-off-asynchronous-pattern-setting)。
+
+  * 在操作的基础 JSON 定义中，[添加 `"DisableAsyncPattern"` 操作选项](#add-disable-async-pattern-option)。
+
+<a name="turn-off-asynchronous-pattern-setting"></a>
+
+#### <a name="turn-off-asynchronous-pattern-setting"></a>关闭**异步模式**设置
+
+1. 在逻辑应用设计器中，在操作的标题栏上选择**省略号（"..."**）按钮，这将打开操作的设置。
+
+1. 找到 "**异步模式**" 设置，将设置为 "**关闭**" （如果已启用），然后选择 "**完成**"。
+
+   ![关闭 "异步模式" 设置](./media/logic-apps-workflow-actions-triggers/disable-asynchronous-pattern-setting.png)
+
+<a name="add-disable-async-pattern-option"></a>
+
+#### <a name="disable-asynchronous-pattern-in-actions-json-definition"></a>禁用操作的 JSON 定义中的异步模式
+
+在操作的基础 JSON 定义中，将["operationOptions" 属性](#operation-options)添加到 `"DisableAsyncPattern"` 操作的部分下，并将其设置为 `"inputs"` ：
 
 ```json
 "<some-long-running-action>": {
@@ -2669,8 +2707,6 @@ ID,Product_Name
    "runAfter": {}
 }
 ```
-
-有关详细信息，请参阅[操作选项](#operation-options)。
 
 <a name="run-high-throughput-mode"></a>
 
@@ -2694,7 +2730,7 @@ ID,Product_Name
 
 ## <a name="authenticate-triggers-and-actions"></a>对触发器和操作进行身份验证
 
-HTTP 和 HTTPS 终结点支持不同类型的身份验证。 根据用于发出访问这些终结点的出站调用或请求的触发器或操作，可以从各种不同的身份验证类型中进行选择。 有关详细信息，请参阅[针对出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+HTTP 和 HTTPS 终结点支持不同类型的身份验证。 根据用于发出访问这些终结点的出站调用或请求的触发器或操作，可以从各种不同的身份验证类型中进行选择。 有关详细信息，请参阅[向出站调用添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 ## <a name="next-steps"></a>后续步骤
 

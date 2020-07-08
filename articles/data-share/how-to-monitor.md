@@ -6,12 +6,11 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a3d13919a54e170d410abba5da66172c2029d9b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636268"
 ---
 # <a name="monitor-azure-data-share"></a>监视 Azure Data Share  
 
@@ -40,13 +39,17 @@ ms.locfileid: "73490515"
 
 ## <a name="snapshot-history"></a>快照历史记录 
 
-在 "历史记录" 选项卡中，可以查看已复制到数据使用者的租户的快照。 可以监视每个快照间隔的频率和持续时间。 
+在共享的 "**历史记录**" 选项卡中，可以查看将数据从数据提供程序复制到数据使用者的数据存储的时间。 可以监视每个快照的频率、持续时间和状态。 
 
 ![快照历史记录](./media/sent-shares.png "快照历史记录") 
 
-可以通过单击 "运行" 开始日期来查看有关每个快照运行的详细信息。 
+可以通过单击 "运行" 开始日期来查看有关每个快照运行的详细信息。 然后单击每个数据集的状态，以查看已传输的数据量、已复制的文件/记录的数量、快照的持续时间、使用的 Vcore 数和错误消息（如果有）。 
 
-默认显示最多30天的快照历史记录。 如果需要查看超过30天的历史记录，请导航到 "监视->" "诊断设置"，然后选择 "**添加诊断设置**"。 你将需要选择存储帐户来存储这些日志。 
+显示最多30天的快照历史记录。 如果需要保存并查看30天以上的历史记录，可以利用诊断设置。
+
+## <a name="diagnostic-setting"></a>诊断设置
+
+可以配置诊断设置来保存日志数据或事件。 导航到 "监视-> 诊断设置"，然后选择 "**添加诊断设置**"。 选择您感兴趣的日志数据或事件，以及要存储或发送的事件。 
 
 ![快照历史记录](./media/diagnostic-settings.png "诊断设置") 
 

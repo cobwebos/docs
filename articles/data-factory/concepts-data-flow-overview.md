@@ -7,13 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/09/2020
+ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187845"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635113"
 ---
 # <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
@@ -22,6 +21,8 @@ ms.locfileid: "82187845"
 映射数据流是在 Azure 数据工厂中以可视方式设计的数据转换。 数据流允许数据工程师开发图形数据转换逻辑，而无需编写代码。 生成的数据流将作为使用向外 Apache Spark 群集的 Azure 数据工厂管道中的活动执行。 数据流活动可以通过现有的数据工厂计划、控制、流和监视功能进行参与。
 
 映射数据流提供完全直观的体验，无需编码。 数据流在执行群集上运行，用于扩展的数据处理。 Azure 数据工厂处理所有代码转换、路径优化和数据流作业的执行。
+
+![体系结构](media/data-flow/adf-data-flows.png "体系结构")
 
 ## <a name="getting-started"></a>入门
 
@@ -35,13 +36,13 @@ ms.locfileid: "82187845"
 
 数据流画布分为三部分：顶栏、图形和配置面板。 
 
-![Canvas](media/data-flow/canvas1.png "Canvas")
+![画布](media/data-flow/canvas1.png "画布")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>图形
 
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 "**添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。
 
-![Canvas](media/data-flow/canvas2.png "Canvas")
+![画布](media/data-flow/canvas2.png "画布")
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 集成运行时数据流属性
 
@@ -123,7 +124,7 @@ Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值�
 
 生成一个表达式，该表达式为分区数据列中的值提供固定范围。 若要避免分区歪斜，应在使用此选项之前对数据有充分的了解。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
 
-##### <a name="key"></a>密钥
+##### <a name="key"></a>键
 
 如果您对数据的基数有充分了解，键分区可能是一个不错的策略。 键分区为列中的每个唯一值创建分区。 不能设置分区数，因为该数字基于数据中的唯一值。
 

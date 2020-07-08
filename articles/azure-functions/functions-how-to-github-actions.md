@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559092"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 Github Actions 进行持续交付
 
@@ -33,22 +33,22 @@ ms.locfileid: "83122319"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](/cli/azure/)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com)或通过选择 "**试用**" 按钮来运行此命令。
+可以在 [Azure CLI](/cli/azure/) 中使用 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-在此示例中，请将资源中的占位符替换为你的订阅 ID、资源组以及函数应用名称。 输出是提供对函数应用程序的访问权限的角色分配凭据。 请复制此 JSON 对象，它可以用来从 GitHub 进行身份验证。
+在此示例中，请将资源中的占位符替换为你的订阅 ID、资源组以及函数应用名称。 输出是用于访问函数应用的角色分配凭据。 请复制此 JSON 对象，它可以用来从 GitHub 进行身份验证。
 
 > [!IMPORTANT]
 > 始终应授予最小访问权限。 这是在上一示例中将范围限制为特定的函数应用而不是整个资源组的原因。
 
 ## <a name="download-the-publishing-profile"></a>下载发布配置文件
 
-下载函数应用的发布配置文件：
+若要下载函数应用的发布配置文件：
 
-1. 选择函数应用的 "**概述**" 页，然后选择 "**获取发布配置文件**"。
+1. 选择函数应用的“概述”页，然后选择“获取发布配置文件”**** ****。
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="下载发布配置文件":::
 
@@ -62,8 +62,8 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 1. 添加新机密。
 
-   * 如果使用的是通过使用 Azure CLI 创建的服务主体，请使用 `AZURE_CREDENTIALS` 作为“名称”****。 然后，粘贴复制的 JSON 对象输出以获取**值**，并选择 "**添加密钥**"。
-   * 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为“名称”****。 然后，使用发布配置文件的文件内容作为**值**，并选择 "**添加密钥**"。
+   * 如果使用的是通过使用 Azure CLI 创建的服务主体，请使用 `AZURE_CREDENTIALS` 作为“名称”****。 然后，将复制的 JSON 对象输出粘贴为“值”，并选择“添加机密”**** ****。
+   * 如果使用的是发布配置文件，请使用 `SCM_CREDENTIALS` 作为“名称”****。 然后使用发布配置文件的文件内容作为“值”，并选择“添加机密”**** ****。
 
 GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
@@ -203,8 +203,8 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 |参数 |说明  |
 |---------|---------|
-|**_应用名称_** | （必需）函数应用的名称。 |
-|_**槽名称**_ | （可选）要部署到其中的[部署槽](functions-deployment-slots.md)的名称。 该槽必须已经在函数应用中定义。 |
+|**_app-name_** | （必需）函数应用的名称。 |
+|_**slot-name**_ | （可选）要部署到其中的[部署槽](functions-deployment-slots.md)的名称。 该槽必须已经在函数应用中定义。 |
 
 
 以下示例使用第 1 版 `functions-action`：
@@ -219,7 +219,7 @@ GitHub 现在可以针对 Azure 中的函数应用进行身份验证了。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要查看完整的 yaml 文件，请参阅[Azure GitHub 操作工作流](https://aka.ms/functions-actions-samples)中名为的存储库中的文件之一 `functionapp` 。 可以使用这些示例作为工作流的起点。
+若要查看完整的工作流 .yaml 文件，请参阅 [Azure GitHub Actions 工作流示例存储库](https://aka.ms/functions-actions-samples)中名称包含 `functionapp` 的文件之一。 可以使用这些示例作为工作流的起点。
 
 > [!div class="nextstepaction"]
 > [详细了解 GitHub Actions](https://help.github.com/en/articles/about-github-actions)

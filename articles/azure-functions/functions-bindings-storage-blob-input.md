@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633880"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559078"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
@@ -279,7 +279,7 @@ public static void Run(
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器-特性和批注](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -299,16 +299,16 @@ Python 不支持特性。
 
 ## <a name="configuration"></a>配置
 
-下表说明了在*函数 json*文件和`Blob`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | n/a | 必须设置为 `blob`。 |
-|**方向键** | n/a | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
-|**name** | n/a | 表示函数代码中的 Blob 的变量的名称。|
-|**path** |**BlobPath** | Blob 的路径。 |
-|**connection** |**连接**| 应用设置的名称，其中包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将设置`connection`为 "MyStorage"，函数运行时将查找名为 "AzureWebJobsMyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
-|n/a | **访问** | 表示是要读取还是写入。 |
+|**type** | 不适用 | 必须设置为 `blob`。 |
+|**direction** | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
+|**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
+|**路径** |**BlobPath** | Blob 的路径。 |
+|连接 |**Connection**| 应用设置的名称，其中包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将设置 `connection` 为 "MyStorage"，函数运行时将查找名为 "AzureWebJobsMyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|不适用 | **Access** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -318,7 +318,7 @@ Python 不支持特性。
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
@@ -339,4 +339,4 @@ Python 不支持特性。
 ## <a name="next-steps"></a>后续步骤
 
 - [在 blob 存储数据更改时运行函数](./functions-bindings-storage-blob-trigger.md)
-- [从函数中写入 blob 存储数据](./functions-bindings-storage-blob-output.md)
+- [通过函数写入 blob 存储数据](./functions-bindings-storage-blob-output.md)

@@ -7,16 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74069630"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84609159"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支持的高可用性服务
 
  为了给分析组件提供最佳的可用性级别，我们使用独特的体系结构开发了 HDInsight，以确保关键服务的高可用性 (HA)。 此体系结构的某些组件由 Microsoft 开发，旨在提供自动故障转移。 其他组件是为了支持特定的服务而部署的标准 Apache 组件。 本文介绍 HDInsight 中 HA 服务模型的体系结构，HDInsight 如何支持 HA 服务的故障转移，以及在其他服务发生中断后如何进行恢复。
+ 
+> [!NOTE]
+> 无偏差通信
+>
+> Microsoft 支持多样化的包容性环境。 本文包含对单词 slave 的引用。 Microsoft 的[无偏差通信风格指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)将其视为排他性单词。 本文使用该单词旨在保持一致性，因为目前软件中使用的是该单词。 如果软件更新后删除了该单词，则本文也将更新以保持一致。
+>
+
 
 ## <a name="high-availability-infrastructure"></a>高可用性基础结构
 
@@ -46,7 +52,7 @@ HDInsight 提供自定义的基础结构，以确保四个主要服务具有高�
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight 高可用性服务
 
-Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。 
+Microsoft 为下表中所述的 HDInsight 群集中的四个 Apache 服务提供支持。 为了将这些服务与 Apache 组件支持的高可用性服务区分开来，下表中将它们称作“HDInsight HA 服务”。
 
 | 服务 | 群集节点 | 群集类型 | 目的 |
 |---|---|---|---|
@@ -105,7 +111,7 @@ HDInsight HA 服务只应在活动头节点上运行，并在必要时自动重�
 
 ### <a name="some-known-issues"></a>某些已知问题
 
-- 在待机节点上手动启动某个 HA 服务时，在发生下一次故障转移之前该服务不会停止。 当 HA 服务同时在这两个头节点上运行时，一些潜在问题包括： Ambari UI 不可访问、Ambari 引发错误、YARN、Spark 和 Oozie 作业可能会停滞。
+- 在待机节点上手动启动某个 HA 服务时，在发生下一次故障转移之前该服务不会停止。 当 HA 服务同时在两个头节点上运行时，可能会出现的一些问题包括：Ambari UI 不可访问、Ambari 引发错误，YARN、Spark、Oozie 作业可能会停滞。
 
 - 当活动头节点上的某个 HA 服务停止时，在发生下一次故障转移或者主故障转移控制器/master-ha-service 重启之前，该服务不会重启。 当活动头节点上的一个或多个 HA 服务停止时（尤其是当 Ambari 服务器停止时），Ambari UI 将不可访问，其他潜在问题包括 YARN、Spark 和 Oozie 作业失败。
 

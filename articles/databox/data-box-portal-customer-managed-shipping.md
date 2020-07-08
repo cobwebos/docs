@@ -5,15 +5,14 @@ services: databox
 author: priestlg
 ms.service: databox
 ms.subservice: disk
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83748926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608581"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box 使用自我托管交付功能
 
@@ -41,7 +40,7 @@ ms.locfileid: "83748926"
 3. 提供送货地址后，需要验证该地址并完成下单。
    ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. 设备准备好后，你可安排提货。
+4. 准备好设备并收到电子邮件通知后，可以计划装货。
 
    在 Azure Data Box 订单中，转到“概述”，然后选择“安排提货” 。
 
@@ -57,7 +56,7 @@ ms.locfileid: "83748926"
 
    ![查看授权代码](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   记下此授权代码。 根据安全要求，在安排提货和交货时，需要提供将负责提货和交货的人员姓名。
+   记下此授权代码。 根据安全要求，在制定计划时，有必要显示将到达的人员的姓名，这是必需的。
 
    你还需要提供将前往数据中心提货的人员的详细信息。 你或联系人员必须携带政府批准的带照片的 ID，我们将在数据中心验证该 ID。
 

@@ -7,14 +7,13 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 2e26a2ed81ed215d7ef2029123349b39e6e67d25
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 7fd8fd35ee411d929843be81a1daaa512e0b3ca1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84611038"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,8 +32,8 @@ ms.locfileid: "82890926"
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type | 用于读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 不压缩默认值。<br>**注意**当前复制活动不支持 "snappy" & "lz4"，并且映射数据流不支持 "ZipDeflate"。<br>**请注意**，使用复制活动解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，文件将被提取到文件夹中： `<path specified in dataset>/<folder named as source zip file>/`。 | 否。  |
-| level | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **最快：** 压缩操作应该尽快完成，即使生成的文件未以最佳方式压缩。<br>- **最佳**：应以最佳方式压缩压缩操作，即使操作需要更长的时间才能完成。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
+| type | 用来读取/写入 JSON 文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**、**snappy** 或 **lz4**。 保存文件时使用。 默认设置是不压缩。<br>请注意  ，复制活动目前不支持“snappy”和“lz4”，映射数据流不支持“ZipDeflate”。<br>**注意**，使用复制活动解压缩 ZipDeflate 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source zip file>/` 文件夹，对[复制活动源](#json-as-source)使用 `preserveZipFileNameAsFolder` 来控制是否以文件夹结构形式保留 zip 文件名。 | 否。  |
+| level | 压缩率。 <br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的 JSON 数据集的示例：
 
@@ -68,37 +67,46 @@ ms.locfileid: "82890926"
 
 ### <a name="json-as-source"></a>以 JSON 作为源
 
-复制活动*** \*源\* ***部分支持以下属性。
+复制活动的 ***\*source\**** 节支持以下属性。
 
 | 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
+| formatSettings | 一组属性。 请参阅下面的“JSON 读取设置”表。 | 否       |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+
+`formatSettings` 下支持的“JSON 读取设置”：
+
+| 属性      | 说明                                                  | 必须 |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | formatSettings 的 type 必须设置为“JsonReadSettings”。 | 是      |
+| compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
+| preserveZipFileNameAsFolder<br>（在 `compressionProperties` 下） | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。 当设置为 true（默认值）时，数据工厂将解压缩文件写入 `<path specified in dataset>/<folder named as source zip file>/`；当设置为 false 时，数据工厂将解压缩文件直接写入 `<path specified in dataset>`。  | 否 |
 
 ### <a name="json-as-sink"></a>JSON 作为接收器
 
-复制活动*** \*接收器\* ***部分支持以下属性。
+复制活动的 ***\*sink\**** 节支持以下属性。
 
 | 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
-| formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。**** | 否       |
+| formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。 | 否       |
 | storeSettings | 有关如何将数据写入到数据存储的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自身支持的写入设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
 | 属性      | 说明                                                  | 必须                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | FormatSettings 的类型必须设置为**JsonWriteSettings**。 | 是                                                   |
-| filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为： **setOfObjects** （JSON 行）和**arrayOfObjects**。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
+| type          | formatSettings 的类型必须设置为 **JsonWriteSettings**。 | 是                                                   |
+| filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：setOfObjects (JSON Lines) 和 arrayOfObjects。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
 
 ### <a name="json-file-patterns"></a>JSON 文件模式
 
-从 JSON 文件复制数据时，复制活动可以自动检测和分析以下 JSON 文件模式。 将数据写入 JSON 文件时，可以在复制活动接收器上配置文件模式。
+从 JSON 文件复制数据时，复制活动可自动检测并分析以下 JSON 文件模式。 将数据写入 JSON 文件时，可以在复制活动接收器上配置文件模式。
 
 - **类型 I：setOfObjects**
 
-    每个文件都包含单个对象、JSON 行或连接的对象。
+    每个文件都包含单一对象、JSON Lines 或串联的对象。
 
     * **单一对象 JSON 示例**
 
@@ -113,7 +121,7 @@ ms.locfileid: "82890926"
         }
         ```
 
-    * **JSON 行（接收器的默认值）**
+    * **JSON Lines（接收器的默认值）**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
@@ -185,73 +193,25 @@ ms.locfileid: "82890926"
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
-JSON 文件类型可用作接收器和映射数据流中的源。
+在映射数据流时，可以在以下数据存储中读取和写入 JSON 格式： [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)和[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
-### <a name="creating-json-structures-in-a-derived-column"></a>在派生列中创建 JSON 结构
+### <a name="source-properties"></a>源属性
 
-您可以通过派生列表达式生成器将复杂列添加到数据流。 在派生列转换中，通过单击蓝色框来添加一个新列并打开 "表达式生成器"。 若要使列复杂化，可以手动输入 JSON 结构，或使用 UX 以交互方式添加个子列。
+下表列出了 json 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。
 
-#### <a name="using-the-expression-builder-ux"></a>使用表达式生成器 UX
-
-在 "输出架构" 侧窗格中，将鼠标悬停在某一列上，并单击加号图标。 选择 "**添加 subcolumn** "，使列成为复杂类型。
-
-![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 Subcolumn")
-
-您可以通过相同的方式添加更多的列和个子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
-
-![复杂列](media/data-flow/complexcolumn.png "复杂列")
-
-#### <a name="entering-the-json-structure-manually"></a>手动输入 JSON 结构
-
-若要手动添加 JSON 结构，请添加一个新列，然后在编辑器中输入该表达式。 表达式采用以下常规格式：
-
-```
-@(
-    field1=0,
-    field2=@(
-        field1=0
-    )
-)
-```
-
-如果为名为 "complexColumn" 的列输入了此表达式，则会将其作为以下 JSON 写入接收器：
-
-```
-{
-    "complexColumn": {
-        "field1": 0,
-        "field2": {
-            "field1": 0
-        }
-    }
-}
-```
-
-#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整层次结构定义的示例手动脚本
-```
-@(
-    title=Title,
-    firstName=FirstName,
-    middleName=MiddleName,
-    lastName=LastName,
-    suffix=Suffix,
-    contactDetails=@(
-        email=EmailAddress,
-        phone=Phone
-    ),
-    address=@(
-        line1=AddressLine1,
-        line2=AddressLine2,
-        city=City,
-        state=StateProvince,
-        country=CountryRegion,
-        postCode=PostalCode
-    ),
-    ids=[
-        toString(CustomerID), toString(AddressID), rowguid
-    ]
-)
-```
+| “属性” | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
+| 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | String | partitionRootPath |
+| 文件列表 | 你的源是否指向列出要处理的文件的文本文件 | 否 | `true` 或 `false` | fileList |
+| 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | String | rowUrlColumn |
+| 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或`false` <br> 移动`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br> modifiedBefore |
+| 单个文档 | 映射数据流从每个文件读取一个 JSON 文档 | 否 | `true` 或 `false` | singleDocument |
+| 不带引号的列名 | 如果选择了不带**引号的列名称**，则映射数据流将读取未括在引号中的 JSON 列。 | 否 | `true` 或 `false` |  unquotedColumnNames
+| 包含注释 | 如果 JSON 数据具有 C 或 c + + 样式注释，请选择 "**具有注释**" | 否 | `true` 或 `false` | asComments |
+| 单引号 | 读取未括在引号中的 JSON 列 | 否 | `true` 或 `false` | singleQuoted |
+| 反斜杠转义 | 如果使用反斜杠对 JSON 数据中的字符进行转义，请选择**反斜杠转义** | 否 | `true` 或 `false` | backslashEscape |
 
 ### <a name="source-format-options"></a>源格式选项
 
@@ -322,12 +282,87 @@ File3.json
 
 #### <a name="backslash-escaped"></a>反斜杠转义
 
-如果使用反斜杠对 JSON 数据中的字符进行转义，则选择 "**单引号**"。
+如果使用反斜杠对 JSON 数据中的字符进行转义，请选择**反斜杠转义**。
 
 ```
 { "json": "record 1" }
 { "json": "\} \" \' \\ \n \\n record 2" }
 { "json": "record 3" }
+```
+
+### <a name="sink-properties"></a>接收器属性
+
+下表列出了 json 接收器支持的属性。 可以在 "**设置**" 选项卡中编辑这些属性。
+
+| “属性” | 描述 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
+| 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为`part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件：`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+
+### <a name="creating-json-structures-in-a-derived-column"></a>在派生列中创建 JSON 结构
+
+您可以通过派生列表达式生成器将复杂列添加到数据流。 在派生列转换中，通过单击蓝色框来添加一个新列并打开 "表达式生成器"。 若要使列复杂化，可以手动输入 JSON 结构，或使用 UX 以交互方式添加个子列。
+
+#### <a name="using-the-expression-builder-ux"></a>使用表达式生成器 UX
+
+在 "输出架构" 侧窗格中，将鼠标悬停在某一列上，并单击加号图标。 选择 "**添加 subcolumn** "，使列成为复杂类型。
+
+![添加子列](media/data-flow/addsubcolumn.png "添加子列")
+
+您可以通过相同的方式添加更多的列和个子列。 对于每个非复杂字段，可以在右侧的表达式编辑器中添加表达式。
+
+![复杂列](media/data-flow/complexcolumn.png "复杂列")
+
+#### <a name="entering-the-json-structure-manually"></a>手动输入 JSON 结构
+
+若要手动添加 JSON 结构，请添加一个新列，然后在编辑器中输入该表达式。 表达式采用以下常规格式：
+
+```
+@(
+    field1=0,
+    field2=@(
+        field1=0
+    )
+)
+```
+
+如果为名为 "complexColumn" 的列输入了此表达式，则会将其作为以下 JSON 写入接收器：
+
+```
+{
+    "complexColumn": {
+        "field1": 0,
+        "field2": {
+            "field1": 0
+        }
+    }
+}
+```
+
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整层次结构定义的示例手动脚本
+```
+@(
+    title=Title,
+    firstName=FirstName,
+    middleName=MiddleName,
+    lastName=LastName,
+    suffix=Suffix,
+    contactDetails=@(
+        email=EmailAddress,
+        phone=Phone
+    ),
+    address=@(
+        line1=AddressLine1,
+        line2=AddressLine2,
+        city=City,
+        state=StateProvince,
+        country=CountryRegion,
+        postCode=PostalCode
+    ),
+    ids=[
+        toString(CustomerID), toString(AddressID), rowguid
+    ]
+)
 ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520676"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84559951"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -40,7 +40,7 @@ ms.locfileid: "80520676"
 
 ### <a name="one-entity"></a>一个实体
 
-以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 对于表中插入的每条记录，将触发该函数。
+以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 对于发送到队列的每个消息，将触发该函数。
 
 行键值“{queueTrigger}”指示行键来自队列消息字符串。
 
@@ -198,7 +198,7 @@ public class Person
 
 以下示例演示 *function.json* 文件中的一个表输入绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数读取队列消息中指定的分区键的实体。
 
-function.json  文件如下所示：
+function.json** 文件如下所示：
 
 ```json
 {
@@ -403,7 +403,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例显示了一个 HTTP 触发函数，该函数返回位于表存储中指定分区内的 person 对象的列表。 在此示例中，分区键从 http 路由提取，tableName 和连接来自函数设置。 
+以下示例显示了一个 HTTP 触发函数，该函数返回表存储中指定分区中的 person 对象列表。 在此示例中，分区键将从 http 路由中提取，表名和连接将从函数设置中提取。 
 
 ```java
 public class Person {
@@ -432,7 +432,7 @@ public Person[] get(
 }
 ```
 
-TableInput 批注还可以从请求的 json 正文中提取绑定，如下面的示例所示。
+TableInput 注释还可以从请求的 json 正文中提取绑定，如下面的示例所示。
 
 ```java
 @FunctionName("GetPersonsByKeysFromRequest")
@@ -454,7 +454,7 @@ public HttpResponseMessage get(
 }
 ```
 
-下面的示例使用筛选器在 Azure 表中查询具有特定名称的人员，并将可能的匹配项数目限制为10个结果。
+下面的示例使用 Filter 在 Azure 表中查询具有特定名称的人员，并将可能的匹配项数目限制为 10 个结果。
 
 ```java
 @FunctionName("getPersonsByName")
@@ -472,7 +472,7 @@ public Person[] get(
 
 ---
 
-## <a name="input---attributes-and-annotations"></a>输入-特性和批注
+## <a name="input---attributes-and-annotations"></a>输入 - 特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -480,7 +480,7 @@ public Person[] get(
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
-  该特性的构造函数采用表名称、分区键和行键。 特性可用于`out`参数或函数的返回值，如下面的示例中所示：
+  该特性的构造函数采用表名称、分区键和行键。 可对函数的 `out` 参数或返回值使用该特性，如以下示例中所示：
 
   ```csharp
   [FunctionName("TableInput")]
@@ -532,7 +532,7 @@ public Person[] get(
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -552,19 +552,19 @@ Python 不支持特性。
 
 ## <a name="input---configuration"></a>输入 - 配置
 
-下表说明了在*函数 json*文件和`Table`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
-|**方向键** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
-|**name** | n/a | 表示函数代码中的表或实体的变量的名称。 | 
+|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
+|**name** | 不适用 | 表示函数代码中的表或实体的变量的名称。 | 
 |**tableName** | **TableName** | 表的名称。| 
 |**partitionKey** | **PartitionKey** |可选。 要读取的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
 |**rowKey** |**RowKey** | 可选。 要读取的表实体的行键。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
-|**长** |**长** | 可选。 要在 JavaScript 中读取的最大实体数。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
-|**筛选器** |**筛选器** | 可选。 JavaScript 中的表输入的 OData 筛选表达式。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
-|**connection** |**连接** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 此设置可以是 "AzureWebJobs" 前缀的 "应用程序设置" 或 "连接字符串名称" 的名称。 例如，如果您的设置名称是 "AzureWebJobsMyStorage"，则可以在此处指定 "MyStorage"。 函数运行时将自动查找名为 "AzureWebJobsMyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|**take** |**Take** | 可选。 要在 JavaScript 中读取的最大实体数。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
+|**filter** |**Filter** | 可选。 JavaScript 中的表输入的 OData 筛选表达式。 有关如何使用此属性的指导，请参阅[用法](#input---usage)部分。| 
+|连接 |**Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 设置可以是带有“AzureWebJobs”前缀的应用设置的名称，也可以是连接字符串的名称。 例如，如果设置名称是“AzureWebJobsMyStorage”，则可以在此处指定“MyStorage”。 Functions 运行时将自动查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -572,7 +572,7 @@ Python 不支持特性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-* **在中读取一行**
+* **读取一行**
 
   设置 `partitionKey` 和 `rowKey`。 使用方法参数 `T <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 通常是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 此方案中不使用 `filter` 和 `take` 属性。
 
@@ -581,11 +581,11 @@ Python 不支持特性。
   使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
 
   > [!NOTE]
-  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-* **在中读取一行**
+* **读取一行**
 
   设置 `partitionKey` 和 `rowKey`。 使用方法参数 `T <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 通常是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 此方案中不使用 `filter` 和 `take` 属性。
 
@@ -594,7 +594,7 @@ Python 不支持特性。
   使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
 
   > [!NOTE]
-  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -602,11 +602,11 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-表数据作为 JSON 字符串传递给函数。 通过调用`json.loads`来反序列化消息，如输入[示例](#input)中所示。
+表数据作为 JSON 字符串传递给函数。 通过调用来反序列化消息， `json.loads` 如输入[示例](#input)中所示。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput)属性使你能够访问触发函数的表行。
+使用 [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) 特性可以访问触发了函数的表行。
 
 ---
 
@@ -641,11 +641,11 @@ public class TableStorage
 }
 ```
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数写入多个表实体。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -700,7 +700,7 @@ public class Person
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数写入多个表实体。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -745,7 +745,7 @@ module.exports = function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何使用表存储输出绑定。 可以`table`通过将值分配给、 `name` `tableName` `partitionKey`、和`connection`来配置*函数 json*中的绑定。
+下面的示例演示如何使用表存储输出绑定。 `table`通过将值分配给*function.json* `name` 、 `tableName` 、和，在function.js中配置绑定 `partitionKey` `connection` ：
 
 ```json
 {
@@ -778,7 +778,7 @@ module.exports = function (context) {
 }
 ```
 
-以下函数为`rowKey`值生成唯一的 UUI，并将该消息保存到表存储中。
+以下函数为值生成唯一的 UUI `rowKey` ，并将该消息保存到表存储中。
 
 ```python
 import logging
@@ -804,7 +804,7 @@ def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示一个 Java 函数，该函数使用 HTTP 触发器写入单个表行。
+以下示例演示了使用 HTTP 触发器写入单个表行的 Java 函数。
 
 ```java
 public class Person {
@@ -845,7 +845,7 @@ public class AddPerson {
 }
 ```
 
-下面的示例演示一个 Java 函数，该函数使用 HTTP 触发器来写入多个表行。
+以下示例演示了使用 HTTP 触发器写入多个表行的 Java 函数。
 
 ```java
 public class Person {
@@ -881,13 +881,13 @@ public class AddPersons {
 
 ---
 
-## <a name="output---attributes-and-annotations"></a>输出-属性和批注
+## <a name="output---attributes-and-annotations"></a>输出 - 特性和注释
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)。
 
-该特性的构造函数采用表名称。 特性可用于`out`参数或函数的返回值，如下面的示例中所示：
+该特性的构造函数采用表名称。 可对函数的 `out` 参数或返回值使用该特性，如以下示例中所示：
 
 ```csharp
 [FunctionName("TableOutput")]
@@ -917,7 +917,7 @@ public static MyPoco TableOutput(
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[输入 - 特性](#input---attributes-and-annotations)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -931,25 +931,25 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对参数使用[TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)批注，以将值写入表存储。
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对参数使用 [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) 注释以将值写入到表存储中。
 
-[有关更多详细信息](#output)，请参阅示例。
+请参阅[示例来了解更多详细信息](#output)。
 
 ---
 
 ## <a name="output---configuration"></a>输出 - 配置
 
-下表说明了在*函数 json*文件和`Table`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type  | n/a | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
-|**方向键** | n/a | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
-|**name** | n/a | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
+|**type** | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
+|**name** | 不适用 | 在函数代码中使用的、表示表或实体的变量名称。 设置为 `$return` 可引用函数返回值。| 
 |**tableName** |**TableName** | 表的名称。| 
 |**partitionKey** |**PartitionKey** | 要写入的表实体的分区键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
 |**rowKey** |**RowKey** | 要写入的表实体的行键。 有关如何使用此属性的指导，请参阅[用法部分](#output---usage)。| 
-|**connection** |**连接** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将设置`connection`为 "MyStorage"，函数运行时将查找名为 "MyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
+|连接 |**Connection** | 包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，Functions 运行时将会查找名为“MyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -957,35 +957,35 @@ Python 不支持特性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用方法参数`ICollector<T> paramName`或`IAsyncCollector<T> paramName`其中`T`包含`PartitionKey`和`RowKey`属性的来访问输出表实体。 这些属性通常与实现`ITableEntity`或继承`TableEntity`一起附带。
+可以使用方法参数 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` 访问输出表实体，其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性。 实现 `ITableEntity` 或继承 `TableEntity` 时通常会伴随使用这些属性。
 
-或者，可以使用`CloudTable`方法参数通过 AZURE 存储 SDK 写入表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+另外，还可以使用 `CloudTable` 方法参数通过 Azure 存储 SDK 来写入到表。 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-使用方法参数`ICollector<T> paramName`或`IAsyncCollector<T> paramName`其中`T`包含`PartitionKey`和`RowKey`属性的来访问输出表实体。 这些属性通常与实现`ITableEntity`或继承`TableEntity`一起附带。 `paramName`值是在*函数 json*的`name`属性中指定的。
+可以使用方法参数 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` 访问输出表实体，其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性。 实现 `ITableEntity` 或继承 `TableEntity` 时通常会伴随使用这些属性。 `paramName` 值是在 *function.json* 的 `name` 属性中指定的。
 
-或者，可以使用`CloudTable`方法参数通过 AZURE 存储 SDK 写入表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+另外，还可以使用 `CloudTable` 方法参数通过 Azure 存储 SDK 来写入到表。 如果在尝试绑定到 `CloudTable` 时出现错误消息，请确保引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<name>`访问 output 事件，其中`<name>`是在`name` *函数 json*的属性中指定的值。
+使用 `context.bindings.<name>` 访问输出事件，其中 `<name>` 是 function.json 的 `name` 属性中指定的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
 有两个选项可用于从函数输出表存储行消息：
 
-- **返回值**：将`name` *函数 json*中的属性设置为`$return`。 使用此配置时，函数的返回值将持久保存为表存储行。
+- **返回值**：将 `name` *function.js上*的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为表存储行。
 
-- **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给`set`的值将持久保存为事件中心消息。
+- **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为事件中心消息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-可以通过以下两个选项使用[TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)批注从函数中输出表存储行：
+有两个选项可用于使用 [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注释从函数来输出表存储行：
 
-- **返回值**：通过将批注应用于函数本身，函数的返回值将持久保存为表存储行。
+- **返回值**：通过将注释应用于函数本身，函数的返回值将持久保存为表存储行。
 
-- **命令式** [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)：若要显式设置消息值，请将批注应用到类型的特定参数，其中`T`包括`PartitionKey`和`RowKey`属性。 这些属性通常与实现`ITableEntity`或继承`TableEntity`一起附带。
+- **命令性**：若要显式设置消息值，请将注释应用于 [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) 类型的特定参数，其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性。 实现 `ITableEntity` 或继承 `TableEntity` 时通常会伴随使用这些属性。
 
 ---
 

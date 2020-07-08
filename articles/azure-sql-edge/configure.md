@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure SQL Edge（预览版）
-description: 了解如何配置 Azure SQL Edge（预览版）
+description: 了解如何配置 Azure SQL Edge （预览版）。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,54 +9,53 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a28724e00f59fe049d1d9d6dfbcbc5a3f9556124
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235151"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636234"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>配置 Azure SQL Edge（预览版）
 
 Azure SQL Edge 通过以下两个选项之一进行配置：
 
-- 使用环境变量。
-- 使用置于 /var/opt/mssql 文件夹中的 mssql.conf 文件。
+- 环境变量
+- 放置在/var/opt/mssql 文件夹中的 mssql. 文件
 
 > [!NOTE]
-> 设置环境变量会替代 mssql.conf 文件中指定的设置。
+> 设置环境变量会替代 mssql. 文件中指定的设置。
 
-## <a name="configure-using-environment-variables"></a>使用环境变量进行配置
+## <a name="configure-by-using-environment-variables"></a>使用环境变量进行配置
 
-Azure SQL Edge 公开了几个不同的环境变量，她们可用于配置 SQL Edge 容器。 这些环境变量是可用于 Linux 上的 SQL Server 的环境变量的子集。 有关 Linux 上的 SQL Server 环境变量的详细信息，请参阅[环境变量](/sql/linux/sql-server-linux-configure-environment-variables/)。
+Azure SQL Edge 公开了几个不同的环境变量，她们可用于配置 SQL Edge 容器。 这些环境变量是可用于 Linux 上的 SQL Server 的一个子集。 有关 Linux 上的 SQL Server 环境变量的详细信息，请参阅[环境变量](/sql/linux/sql-server-linux-configure-environment-variables/)。
 
-Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如已定义，这些环境变量将在容器初始化期间被忽略。
+Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如果已定义，则在容器初始化过程中将忽略此环境变量。
 
 | 环境变量 | 说明 |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | 启用可用性组。 例如，“1”为已启用，“0”为已禁用 |
+| **MSSQL_ENABLE_HADR** | 启用可用性组。 例如，启用**1**并禁用**0** 。 |
 
 > [!IMPORTANT]
 > SQL Edge 的 MSSQL_PID 环境变量仅接受 Premium 和 Developer 作为有效值。 Azure SQL Edge 不支持使用产品密钥进行初始化。
 
 > [!NOTE]
-> 若要下载 Azure SQL Edge 最终用户许可协议，请参阅[最终用户许可协议](https://go.microsoft.com/fwlink/?linkid=2128283)。
+> 下载适用于 Azure SQL Edge 的[Microsoft 软件许可条款](https://go.microsoft.com/fwlink/?linkid=2128283)。
 
-### <a name="specifying-the-environment-variables"></a>指定环境变量
+### <a name="specify-the-environment-variables"></a>指定环境变量
 
-通过 [Azure 门户](deploy-portal.md)部署 Azure SQL Edge 时，可以为 SQL Edge 指定环境变量。 这可以添加到模块部署的“环境变量”部分中，也可以添加为容器创建选项的一部分，如下所述。
+通过[Azure 门户](deploy-portal.md)部署服务时，为 SQL Edge 指定环境变量。 您可以在模块部署的 "**环境变量**" 部分或**容器 "创建选项**" 中添加它们。
 
-使用环境变量选项进行设置
+在**环境变量**中添加值。
 
-![使用环境变量列表进行设置](media/configure/set-environment-variables.png)
+![使用环境变量列表设置](media/configure/set-environment-variables.png)
 
-使用容器创建选项进行设置
+在**容器创建选项**中添加值。
 
-![使用容器创建选项进行设置](media/configure/set-environment-variables-using-create-options.png)
+![使用容器创建选项设置](media/configure/set-environment-variables-using-create-options.png)
 
-## <a name="configure-using-mssqlconf-file"></a>使用 mssql.conf 文件进行配置
+## <a name="configure-by-using-an-mssqlconf-file"></a>使用 mssql. 会议文件进行配置
 
-与 Linux 上的 SQL Server 不同，Azure SQL Edge 不包含 [mssql-conf 配置实用工具](/sql/linux/sql-server-linux-configure-mssql-conf/)，因此，需要手动配置 mssql.conf 文件，并将其放置在映射到 SQL Edge 模块中的 /var/opt/mssql/ 文件夹的持久存储驱动器中。 从 Azure 市场部署 SQL Edge 时，此映射被指定为容器创建选项中的“装载”选项
+Azure SQL Edge 不包含[mssql 会议配置实用工具](/sql/linux/sql-server-linux-configure-mssql-conf/)，如 Linux 上的 SQL Server。 你需要手动配置 mssql.，并将其放在映射到 SQL Edge 模块中的/var/opt/mssql/文件夹的持久存储驱动器中。 当你从 Azure Marketplace 部署 SQL Edge 时，此映射将指定为**容器创建选项**中的 "**装载**" 选项。
 
 ```json
     {
@@ -71,18 +70,18 @@ Azure SQL Edge 不支持以下 Linux 上的 SQL Server 环境变量。 如已定
     }
 ```
 
-以下 mssql.conf 选项不适用于 SQL Edge：
+以下 mssql 方案选项不适用于 SQL Edge：
 
-|选项|说明|
+|选项|描述|
 |:---|:---|
-|**客户反馈** | 选择 SQL Server 是否向 Microsoft 发送反馈。 |
+|**客户反馈** | 选择是否 SQL Server 向 Microsoft 发送反馈。 |
 |**数据库邮件配置文件** | 为 Linux 上的 SQL Server 设置默认数据库邮件配置文件。 |
 |**高可用性** | 启用可用性组。 |
-|**Microsoft 分布式事务处理协调器** | 在 Linux 上配置 MSDTC 并对其进行故障排除。 此外，SQL Edge 不支持其他分布式事务相关的配置选项。 有关这些其他配置选项的详细信息，请参阅[配置 MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc) |
-|**MLServices EULA** | 对于机器学习服务包，接受 R 和 Python EULA。 仅适用于 SQL Server 2019。|
+|**Microsoft 分布式事务处理协调器** | 在 Linux 上配置 MSDTC 并对其进行故障排除。 SQL Edge 不支持其他分布式事务相关配置选项。 有关这些其他配置选项的详细信息，请参阅[CONFIGURE MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc)。 |
+|**MLServices EULA** | 接受 Azure 机器学习包的 R 和 Python Eula。 仅适用于 SQL Server 2019。|
 |**outboundnetworkaccess** |为[机器学习服务](/sql/linux/sql-server-linux-setup-machine-learning/) R、Python 和 Java 扩展启用出站网络访问。|
 
-下面提供了一个用于 SQL Edge 的 mssql.conf 文件示例。 有关 mssql.conf 文件格式的详细信息，请参阅 [mssql.conf 格式](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)。
+以下示例 mssql. 会议文件适用于 SQL 边缘。 有关 mssql. 会议文件的格式的详细信息，请参阅[mssql. 工作格式](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)。
 
 ```ini
 [EULA]
@@ -114,7 +113,7 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 - [连接到 Azure SQL Edge](connect.md)
 - [使用 SQL Edge 构建端到端 IoT 解决方案](tutorial-deploy-azure-resources.md)

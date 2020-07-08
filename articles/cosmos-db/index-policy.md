@@ -4,20 +4,19 @@ description: 了解如何配置和更改默认索引策略，以便自动编制�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/09/2020
 ms.author: tisande
-ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869939"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636319"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
 在 Azure Cosmos DB 中，每个容器都有一个确定了如何为容器项编制索引的索引策略。 新建容器的默认索引策略会对每个项的每个属性编制索引，对任何字符串或数字强制使用范围索引，对 Point 类型的任何 GeoJSON 对象强制使用空间索引。 这样，无需提前考虑索引和索引管理，就能获得较高的查询性能。
 
-在某些情况下，你可能想要替代此自动行为，以便更好地满足自己的要求。 可以通过设置容器索引策略的索引模式来自定义该策略，并可以包含或排除属性路径。  
+在某些情况下，你可能想要替代此自动行为，以便更好地满足自己的要求。 可以通过设置容器索引策略的索引模式来自定义该策略，并可以包含或排除属性路径。 
 
 > [!NOTE]
 > 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。
@@ -30,7 +29,7 @@ Azure Cosmos DB 支持两种索引模式：
 - **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 进行监视，直到完成。
 
 > [!NOTE]
-> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。
+> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 2020 年 6 月，我们引入了一项更改，不再允许将新容器设置为“延迟索引”模式。 如果 Azure Cosmos DB 帐户已经包含至少一个具有延迟索引的容器，则将自动从更改中免除此帐户。 还可以通过联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求免除。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
 
@@ -77,7 +76,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 - 默认情况下，系统属性 `_etag` 被排除在索引之外，除非将 etag 添加到索引所包含的路径中。
 
-- 如果将索引模式设为“一致”  ，则会自动为系统属性 `id` 和 `_ts` 编制索引。
+- 如果将索引模式设为“一致”，则会自动为系统属性 `id` 和 `_ts` 编制索引。
 
 包含和排除路径时，可能会遇到以下属性：
 
@@ -99,7 +98,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 ## <a name="includeexclude-precedence"></a>包含/排除优先级
 
-如果包含的路径和排除的路径有冲突，则更精确的路径优先。
+如果包含路径和排除路径有冲突，则以更精确的路径优先。
 
 下面是一个示例：
 
@@ -107,21 +106,21 @@ Azure Cosmos DB 支持两种索引模式：
 
 **排除的路径**：`/food/ingredients/*`
 
-在这种情况下，包含的路径优先于排除的路径，因为它更精确。 根据这些路径，将从索引中排除`food/ingredients`路径或嵌套内的任何数据。 例外情况是包含的路径中的数据： `/food/ingredients/nutrition/*`，将对其进行索引。
+在这种情况下，包含路径优先于排除路径，因为它更精确。 根据这些路径，位于或嵌套在 `food/ingredients` 路径中的任何数据都将从索引中排除。 异常是包含的路径 `/food/ingredients/nutrition/*` 中的数据，该路径将被索引。
 
-下面是有关 Azure Cosmos DB 中包含和排除的路径优先级的一些规则：
+下面是有关 Azure Cosmos DB 中包含和排除路径优先级的一些规则：
 
-- 深度路径比较窄的路径更精确。 例如： `/a/b/?`比`/a/?`更精确。
+- 较深的路径比较窄的路径更精确。 例如：`/a/b/?` 比 `/a/?` 更精确。
 
-- `/?`比`/*`更精确。 例如`/a/?` ，其优先级高于`/a/*`此`/a/?`优先级。
+- `/?` 比 `/*` 更精确。 例如，`/a/?` 比 `/a/*` 更精确，因此 `/a/?` 优先。
 
-- 路径`/*`必须是包含路径或排除路径。
+- 路径 `/*` 必须是包含路径或排除路径。
 
 ## <a name="spatial-indexes"></a>空间索引
 
 在索引策略中定义空间路径时，应定义要将哪个索引 ```type``` 应用到该路径。 空间索引的可能类型包括：
 
-* Point
+* 点
 
 * Polygon
 
@@ -135,7 +134,7 @@ Azure Cosmos DB 默认不会创建任何空间索引。 若要使用空间 SQL �
 
 包含 `ORDER BY` 子句（该子句包含两个或更多个属性）的查询需要一个组合索引。 还可以定义一个组合索引来改善许多相等性和范围查询的性能。 默认情况下不会定义组合索引，因此，应根据需要[添加组合索引](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)。
 
-与包含或排除的路径不同，不能使用`/*`通配符创建路径。 每个复合路径在路径`/?`的末尾都具有隐式，无需指定。 复合路径导致标量值，这是组合索引中包含的唯一值。
+与指定包含或排除路径不同，不能创建包含 `/*` 通配符的路径。 每个复合路径的末尾都有一个不需要指定的隐式 `/?`。 复合路径会导致一个标量值，这是复合索引中包含的唯一值。
 
 定义组合索引时，请指定：
 

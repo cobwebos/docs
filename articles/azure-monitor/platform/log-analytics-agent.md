@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608360"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](/azure/security-center/)和 [Azure 自动化](../../automation/automation-intro.md)。
@@ -114,6 +113,24 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 >[!NOTE]
 >如果使用的是当前不受支持且与我们的支持模型不一致的发行版或版本，我们建议对此存储库创建分支，并接受 Microsoft 支持不会为已分支的代理版本提供帮助。
 
+
+### <a name="python-2-requirement"></a>Python 2 要求
+ Log Analytics 代理需要 Python 2。 如果虚拟机使用的发行版默认情况下不包括 Python 2，则必须安装它。 下面的示例命令将在不同的发行版上安装 Python 2。
+
+ - Red Hat、CentOS、Oracle：`yum install -y python2`
+ - Ubuntu、Debian：`apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+Python2 可执行文件必须使用以下命令化名为 "python"：
+
+```
+alternatives --set python /usr/sbin/python2
+```
+
+### <a name="supported-distros"></a>支持的发行版
+
+Linux 代理正式支持以下版本的 Linux 操作系统：
+
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x64) 和 7 (x64)  
 * Oracle Linux 6 和 7 (x64) 
@@ -190,7 +207,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 说明 |
+|properties| 描述 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |
@@ -210,4 +227,3 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 * 查看[数据源](agent-data-sources.md)，了解可用于从 Windows 或 Linux 系统收集数据的数据源。 
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。 
 * 了解[监视解决方案](../insights/solutions.md)如何将功能添加到 Azure Monitor，以及如何将数据收集到 Log Analytics 工作区中。
-

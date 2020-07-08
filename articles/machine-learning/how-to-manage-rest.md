@@ -7,14 +7,14 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/31/2020
-ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77580621"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84560172"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -32,12 +32,12 @@ ms.locfileid: "77580621"
 > * 使用 DELETE 请求清理资源 
 > * 使用基于密钥的授权来为部署的模型评分
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)
 - 一个 [Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
 - 管理 REST 请求使用服务主体身份验证。 遵循[为 Azure 机器学习资源和工作流设置身份验证](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中的步骤在工作区中创建服务主体
-- **curl** 实用工具。 在**适用于 Linux 的 Windows 子系统**或任何 UNIX 分发版中均已提供了 [curl](https://aka.ms/wslinstall/) 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
+- **curl** 实用工具。 在[适用于 Linux 的 Windows 子系统](https://aka.ms/wslinstall/)或任何 UNIX 分发版中均已提供了 **curl** 程序。 在 PowerShell 中，**curl** 是 **Invoke-WebRequest** 的别名，并且 `curl -d "key=val" -X POST uri` 变成了 `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`。 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>检索服务主体身份验证令牌
 
@@ -166,7 +166,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 }
 ```
 
-若要处理工作区中的资源，需从常规 **management.azure.com** 服务器切换到特定于工作区位置的 REST API 服务器。 请记下上述 JSON 响应中 `discoveryUrl` 密钥的值。 如果收到该 URL，会收到类似于下面的响应：
+若要处理工作区中的资源，需从常规 **management.azure.com** 服务器切换到特定于工作区位置的 REST API 服务器。 请记下上述 JSON 响应中 `discoveryUrl` 密钥的值。 如果 GET 该 URL，会收到如下响应：
 
 ```json
 {
@@ -183,7 +183,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 }
 ```
 
-`api`响应的值是要用于其他请求的服务器的 URL。 例如，若要列出试验，请发送以下命令。 替换`regional-api-server`为`api`响应的值（例如`centralus.api.azureml.ms`）。 同时将`your-subscription-id`、 `your-resource-group` `your-workspace-name`、和`your-access-token`替换为：
+`api` 响应的值是要用于其他请求的服务器的 URL。 例如，若要列出试验，请发送以下命令。 请将 `regional-api-server` 替换为 `api` 响应的值（例如 `centralus.api.azureml.ms`）。 还像往常一样替换 `your-subscription-id`、`your-resource-group`、`your-workspace-name` 和 `your-access-token`：
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -191,7 +191,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/exp
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-同样，若要在工作区中检索已注册的模型，请发送：
+同样，若要检索工作区中已注册的模型，请发送：
 
 ```bash
 curl https://{regional-api-server}/modelmanagement/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,35 +199,35 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-请注意，若要列出试验，该`history/v1.0`路径将以列出模型的方式开始， `modelmanagement/v1.0`路径以开头。 REST API 划分为多个操作组，每个操作组具有不同的路径。 以下链接中的 API 参考文档列出了各种操作的操作、参数和响应代码。
+请注意，若要列出试验，路径需以 `history/v1.0` 开头；若要列出模型，路径需以 `modelmanagement/v1.0` 开头。 REST API 划分为多个操作组，每个操作组具有不同的路径。 以下链接中的 API 参考文档列出了各项操作及其参数和响应代码。
 
-|区域|路径|参考|
+|区域|`Path`|参考|
 |-|-|-|
-|项目|项目/v2.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|数据存储|数据存储/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|超参数调整|hyperdrive/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|项目|artifact/v2.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|数据存储|datastore/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|超参数优化|hyperdrive/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |模型|modelmanagement/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|运行历史记录|执行/v1.0 1.0/和 history/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/runs)|
+|运行历史记录|execution/v1.0/ and history/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/runs)|
 
-您可以使用的常规模式浏览 REST API：
+可以使用以下常规模式浏览 REST API：
 
-|URL 组件|示例|
+|URL 组成部分|示例|
 |-|-|
 | https://| |
-| 区域 api-服务器/ | centralus.api.azureml.ms/ |
-| 操作-路径/ | history/v1.0/ |
-| 订阅/{你的订阅-id}/ | 订阅/abcde123-abab-abab-1234-0123456789abc/ |
-| resourceGroups/{你的资源组}/ | resourceGroups/MyResourceGroup/ |
-| 提供程序/操作提供程序/ | providers/MachineLearningServices/ |
-| 提供程序-资源-路径/ | workspace/MLWorkspace/MyWorkspace/FirstExperiment/运行/1/ |
-| 操作-终结点/ | 项目/元数据/ |
+| regional-api-server/ | centralus.api.azureml.ms/ |
+| operations-path/ | history/v1.0/ |
+| subscriptions/{your-subscription-id}/ | subscriptions/abcde123-abab-abab-1234-0123456789abc/ |
+| resourceGroups/{your-resource-group}/ | resourceGroups/MyResourceGroup/ |
+| providers/operation-provider/ | providers/Microsoft.MachineLearningServices/ |
+| provider-resource-path/ | workspaces/MLWorkspace/MyWorkspace/FirstExperiment/runs/1/ |
+| operations-endpoint/ | artifacts/metadata/ |
 
 
-## <a name="create-and-modify-resources-using-put-and-post-requests"></a>使用 PUT 和 POST 请求创建和修改资源
+## <a name="create-and-modify-resources-using-put-and-post-requests"></a>使用 PUT 与 POST 请求创建和修改资源
 
-除了通过 GET 谓词进行资源检索外，REST API 支持创建定型、部署和监视 ML 解决方案所需的所有资源。 
+除了使用 GET 谓词检索资源以外，REST API 还支持创建训练、部署和监视 ML 解决方案所需的所有资源。 
 
-培训和运行 ML 模型需要计算资源。 可以通过以下方式列出工作区的计算资源： 
+训练和运行 ML 模型需要计算资源。 可使用以下代码列出工作区的计算资源： 
 
 ```bash
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-若要创建或覆盖命名计算资源，请使用 PUT 请求。 在下面的中，除、、、和`your-subscription-id` `your-resource-group` `your-workspace-name` `your-access-token`的常用的替换外，还可以替换`your-compute-name`、、、 `location` `vmSize` `vmPriority` `scaleSettings`、 `adminUserName`和`adminUserPassword`的值。 按照[机器学习计算-创建或更新 SDK 参考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)中的引用中所述，以下命令将创建一个专用的单节点 Standard_D1 （一个基本 CPU 计算资源），该资源将在30分钟后缩减：
+若要创建或覆盖命名计算资源，需使用 PUT 请求。 在以下代码中，除了像平时一样替换 `your-subscription-id`、`your-resource-group`、`your-workspace-name` 和 `your-access-token` 以外，还需要替换 `your-compute-name`，以及 `location`、`vmSize`、`vmPriority`、`scaleSettings`、`adminUserName` 和 `adminUserPassword` 的值。 根据[机器学习计算 - 创建或更新 SDK 参考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)中的明确说明，以下命令将创建一个专用的单节点 Standard_D1（基本 CPU 计算资源），该资源在 30 分钟后将会纵向缩减：
 
 ```bash
 curl -X PUT \
@@ -264,13 +264,13 @@ curl -X PUT \
 ```
 
 > [!Note]
-> 在 Windows 终端中，你可能需要在发送 JSON 数据时对双引号符号进行转义。 也就是说，等文本`"location"`变为。 `\"location\"` 
+> 在 Windows 终端中，可能需要在发送 JSON 数据时对双引号符号进行转义。 也就是说，诸如 `"location"` 之类的文本将变成 `\"location\"`。 
 
-成功的请求将会获得`201 Created`响应，但是请注意，此响应只是指预配过程已开始。 你需要投票（或使用门户）来确认它是否成功完成。
+成功的请求将获取 `201 Created` 响应，但请注意，此响应仅表示预配过程已开始。 需要通过轮询（或使用门户）来确认它是否成功完成。
 
-### <a name="create-an-experimental-run"></a>创建实验性运行
+### <a name="create-an-experimental-run"></a>创建试验运行
 
-若要在实验中开始运行，需要包含定型脚本和相关文件的 zip 文件夹，以及运行定义 JSON 文件。 Zip 文件夹的根目录中必须有 Python 条目文件。 例如，在名为 "**火车 .zip**" 的文件夹中，将普通 Python 计划（如以下）压缩为一个文件夹。
+若要在试验中启动运行，需要一个包含训练脚本和相关文件的 zip 文件夹，以及一个运行定义 JSON 文件。 该 zip 文件夹必须在其根目录中包含 Python 入口文件。 例如，将如下所示的普通 Python 程序压缩到名为 **train.zip** 的文件夹中。
 
 ```python
 # hello.py
@@ -278,7 +278,7 @@ curl -X PUT \
 print("Hello, REST!")
 ```
 
-将此下一个代码段保存为**定义 json**。 确认 "脚本" 值与刚刚压缩的 Python 文件的名称匹配。 确认 "目标" 值与可用计算资源的名称匹配。 
+将下一个代码片段保存为 **definition.json**。 确认“Script”值与刚刚压缩的 Python 文件的名称相匹配。 确认“Target”值与可用计算资源的名称相匹配。 
 
 ```json
 {
@@ -320,7 +320,7 @@ print("Hello, REST!")
 }
 ```
 
-使用`multipart/form-data`内容将这些文件发布到服务器：
+使用 `multipart/form-data` 内容将这些文件发布到服务器：
 
 ```bash
 curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
@@ -331,7 +331,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
   -F runDefinitionFile=@runDefinition.json
 ```
 
-成功的 POST 请求将生成`200 OK`状态，其中包含所创建的运行的标识符的响应正文：
+成功的 POST 请求将生成 `200 OK` 状态，以及包含所创建运行的标识符的响应正文：
 
 ```json
 {
@@ -339,7 +339,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
 }
 ```
 
-你可以使用现在应熟悉的 rest-ful 模式监视运行：
+可以使用现在应很熟悉的 RESTful 模式监视运行：
 
 ```bash
 curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-names}/runs/{your-run-id}?api-version=2019-11-01' \
@@ -348,7 +348,7 @@ curl 'https://{regional-api-server}/history/v1.0/subscriptions/{your-subscriptio
 
 ### <a name="delete-resources-you-no-longer-need"></a>删除不再需要的资源
 
-某些（但不是全部）资源支持删除谓词。 在提交到 REST API 以删除用例之前，请检查[API 引用](https://docs.microsoft.com/rest/api/azureml/)。 例如，若要删除某一模型，可以使用：
+某些（但不是所有）资源支持 DELETE 谓词。 在删除用例中提交到 REST API 之前，请查看 [API 参考](https://docs.microsoft.com/rest/api/azureml/)。 例如，若要删除某个模型，可以使用：
 
 ```bash
 curl
@@ -357,9 +357,9 @@ curl
   -H 'Authorization:Bearer {your-access-token}' 
 ```
 
-## <a name="use-rest-to-score-a-deployed-model"></a>使用 REST 对已部署的模型进行评分
+## <a name="use-rest-to-score-a-deployed-model"></a>使用 REST 为部署的模型评分
 
-尽管可以部署一个模型，使其能够使用服务主体进行身份验证，但大多数面向客户端的部署使用基于密钥的身份验证。 可以在 Studio 的 "**终结点**" 选项卡的部署页中找到相应的密钥。 同一位置将显示终结点的计分 URI。 您的模型的输入必须建模为名为`data`的 JSON 数组：
+尽管可以部署一个模型以使其使用服务主体进行身份验证，但大多数面向客户端的部署使用基于密钥的身份验证。 可以在工作室的部署页中的“终结点”选项卡上找到相应的密钥。 同一位置会显示终结点的评分 URI。 必须将模型的输入建模为名为 `data` 的 JSON 数组：
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -370,9 +370,9 @@ curl 'https://{scoring-uri}' \
 
 ## <a name="create-a-workspace-using-rest"></a>使用 REST 创建工作区 
 
-每个 Azure ML 工作区依赖于四个其他 Azure 资源：启用了管理的容器注册表、密钥保管库、Application Insights 资源和存储帐户。 在这些资源存在之前，你无法创建工作区。 有关创建每个此类资源的详细信息，请参阅 REST API 参考。
+每个 Azure ML 工作区依赖于其他四个 Azure 资源：启用了管理的容器注册表、密钥保管库、Application Insights 资源和存储帐户。 只有存在这些资源，才能创建工作区。 有关创建每个此类资源的详细信息，请查阅 REST API 参考。
 
-若要创建工作区，请将类似于下面的调用`management.azure.com`置于。 尽管此调用需要设置大量变量，但与本文讨论的其他调用在结构上是相同的。 
+若要创建工作区，请在 `management.azure.com` 中放置 (PUT) 如下所示的调用。 尽管此调用要求设置大量的变量，但在结构上，它与本文所述的其他调用相同。 
 
 ```bash
 curl -X PUT \
@@ -400,9 +400,9 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-应会在返回`202 Accepted`的标头（ `Location` URI）中收到响应。 你可以获取此 URI 以获取有关部署的信息，包括有用的调试信息（如果某个依赖资源存在问题）（例如，如果你忘记在容器注册表中启用管理员访问权限）。 
+应会收到 `202 Accepted` 响应，并在返回的标头中收到 `Location` URI。 可以获取 (GET) 此 URI 以获取有关部署的信息，包括某个依赖资源出现问题（例如，你忘记了在容器注册表中启用管理员访问权限）时提供的有用调试信息。 
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="resource-provider-errors"></a>资源提供程序错误
 
@@ -411,16 +411,16 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ### <a name="moving-the-workspace"></a>移动工作区
 
 > [!WARNING]
-> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
+> 不支持将 Azure 机器学习工作区移动到另一个订阅，或将拥有的订阅移到新租户。 这样做可能会导致错误。
 
 ### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
 
-Azure 机器学习工作区对某些操作使用 Azure 容器注册表（ACR）。 它首次需要时，它将自动创建一个 ACR 实例。
+Azure 机器学习工作区使用 Azure 容器注册表 (ACR) 执行某些操作。 首次需要 ACR 实例时，它会自动创建一个。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解完整的[AzureML REST API 引用](https://docs.microsoft.com/rest/api/azureml/)。
-- 了解如何使用 Studio & 设计器[通过设计器（预览）预测汽车价格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
-- 探索[Jupyter 笔记本 Azure 机器学习](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。
+- 浏览完整的 [AzureML REST API 参考](https://docs.microsoft.com/rest/api/azureml/)。
+- 了解如何在工作室和设计器中[使用设计器（预览版）预测汽车价格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
+- [使用 Jupyter 笔记本探索 Azure 机器学习](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。

@@ -1,19 +1,18 @@
 ---
 title: 事件处理程序和目标-Azure 事件网格 IoT Edge |Microsoft Docs
 description: 事件处理程序和边缘上事件网格中的目标
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4e144461b80dca2cf02c0cc06d7feee882293848
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84557640"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>事件处理程序和边缘上事件网格中的目标
 
@@ -23,7 +22,7 @@ ms.locfileid: "76849742"
 
 ## <a name="webhook"></a>WebHook
 
-若要发布到 WebHook 终结点，请`endpointType`将`WebHook`设置为并提供：
+若要发布到 WebHook 终结点，请将设置 `endpointType` 为 `WebHook` 并提供：
 
 * endpointUrl： WebHook 终结点 URL
 
@@ -42,7 +41,7 @@ ms.locfileid: "76849742"
 
 ## <a name="azure-event-grid"></a>Azure 事件网格
 
-若要发布到 Azure 事件网格云终结点，请`endpointType`将`eventGrid`设置为并提供：
+若要发布到 Azure 事件网格云终结点，请将设置 `endpointType` 为 `eventGrid` 并提供：
 
 * endpointUrl：云中的事件网格主题 URL
 * sasKey：事件网格主题的 SAS 密钥
@@ -65,7 +64,7 @@ ms.locfileid: "76849742"
 
 ## <a name="iot-edge-hub"></a>IoT Edge 中心
 
-若要发布到 Edge 中心模块，请将`endpointType`设置`edgeHub`为并提供：
+若要发布到 Edge 中心模块，请将设置 `endpointType` 为 `edgeHub` 并提供：
 
 * outputName：事件网格模块将匹配此订阅的事件路由到 edgeHub 的输出。 例如，与以下订阅匹配的事件将写入/messages/modules/eventgridmodule/outputs/sampleSub4。
 
@@ -84,7 +83,7 @@ ms.locfileid: "76849742"
 
 ## <a name="event-hubs"></a>事件中心
 
-若要发布到事件中心，请将`endpointType`设置`eventHub`为并提供：
+若要发布到事件中心，请将设置 `endpointType` 为 `eventHub` 并提供：
 
 * connectionString：目标为通过共享访问策略生成的特定事件中心的连接字符串。
 
@@ -106,7 +105,7 @@ ms.locfileid: "76849742"
 
 ## <a name="service-bus-queues"></a>服务总线队列
 
-若要发布到服务总线队列，请将`endpointType`设置`serviceBusQueue`为并提供：
+若要发布到服务总线队列，请将设置 `endpointType` 为 `serviceBusQueue` 并提供：
 
 * connectionString：目标为通过共享访问策略生成的特定服务总线队列的连接字符串。
 
@@ -128,7 +127,7 @@ ms.locfileid: "76849742"
 
 ## <a name="service-bus-topics"></a>服务总线主题
 
-若要发布到服务总线主题，请将`endpointType`设置`serviceBusTopic`为并提供：
+若要发布到服务总线主题，请将设置 `endpointType` 为 `serviceBusTopic` 并提供：
 
 * connectionString：目标为通过共享访问策略生成的特定服务总线主题的连接字符串。
 
@@ -150,7 +149,7 @@ ms.locfileid: "76849742"
 
 ## <a name="storage-queues"></a>存储队列
 
-若要发布到存储队列，请将`endpointType`设置`storageQueue`为并提供：
+若要发布到存储队列，请将设置 `endpointType` 为 `storageQueue` 并提供：
 
 * queueName：要发布到的存储队列的名称。
 * connectionString：存储队列所在的存储帐户的连接字符串。

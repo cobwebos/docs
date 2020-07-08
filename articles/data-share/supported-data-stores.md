@@ -6,12 +6,11 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0daa2b02c16d8d5a65b5e7e0f983a4f47181d40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84635962"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure 数据共享中支持的数据存储
 
@@ -38,16 +37,17 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 
 下表详细说明了数据使用者在接受和配置其数据共享时具有的不同组合和选择。 有关如何配置数据集映射的详细信息，请参阅[如何配置数据集映射](how-to-configure-mapping.md)。
 
-|  | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob 存储 | ✓ || ✓|
-| Azure Data Lake Storage Gen1 | ✓ | | ✓|
-| Azure Data Lake Storage Gen2 | ✓ | | ✓|
-| Azure SQL Database | ✓ | | ✓| ✓| ✓|
-| Azure Synapse Analytics （以前称为 Azure SQL DW） | ✓ | | ✓| ✓| ✓|
+|  | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure 数据资源管理器
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob 存储 | ✓ || ✓ ||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
+| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
+| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics （以前称为 Azure SQL DW） | ✓ | | ✓ | ✓ | ✓ ||
+| Azure 数据资源管理器 |||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>从存储帐户共享
-Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 当在基于快照的共享中共享文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 将覆盖具有相同名称的现有文件。
+Azure 数据共享支持从 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共享文件、文件夹和文件系统。 它还支持从 Azure Blob 存储共享 blob、文件夹和容器。 目前仅支持块 blob。 在基于快照的共享中共享文件系统、容器或文件夹时，数据使用者可以选择创建共享数据的完整副本，也可以利用增量快照功能只复制新的或更新的文件。 增量快照基于文件的上次修改时间。 将覆盖具有相同名称的现有文件。
 
 ## <a name="share-from-a-sql-based-source"></a>从基于 SQL 的源共享
 Azure 数据共享支持从 Azure SQL 数据库和 Azure Synapse Analytics （以前称为 Azure SQL DW）共享表或视图。 数据使用者可以选择接受将数据作为 csv 或 parquet 文件 Azure Data Lake Store Gen2 或 Azure Blob 存储。 请注意，默认情况下，文件格式为 csv。 如果需要，数据使用者可以选择接收 parquet 格式的数据。 在接收数据时，可以在数据集映射设置中完成此操作。 

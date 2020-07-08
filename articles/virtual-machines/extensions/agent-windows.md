@@ -13,17 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: f29a20ddeb93ec3d4aa98bbcb36f50456b543667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81452564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84608683"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
 
-本文详细介绍了如何安装和检测 Azure 虚拟机代理。
+本文详细介绍如何安装和检测 Azure 虚拟机代理。
 
 ## <a name="install-the-vm-agent"></a>安装 VM 代理
 
@@ -36,7 +35,7 @@ Windows 来宾代理包分为两个部分：
 - 预配代理 (PA)
 - Windows 来宾代理 (WinGA)
 
-若要启动 VM，VM 上必须已安装 PA，但无需安装 WinGA。 部署 VM 时，可以选择不安装 WinGA。 下面的示例演示如何选择 Azure 资源管理器模板的 provisionVmAgent 选项**：
+若要启动 VM，VM 上必须已安装 PA，但无需安装 WinGA。 部署 VM 时，可以选择不安装 WinGA。 下面的示例演示如何选择 Azure 资源管理器模板的 provisionVmAgent 选项  ：
 
 ```json
 "resources": [{
@@ -58,20 +57,20 @@ Windows 来宾代理包分为两个部分：
 如果没有安装代理，则无法使用某些 Azure 服务，例如 Azure 备份或 Azure 安全。 这些服务需要安装扩展。 如果已在没有 WinGA VM 的情况下部署 VM，稍后可以安装最新版本的代理。
 
 ### <a name="manual-installation"></a>手动安装
-可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建部署到 Azure 的自定义 VM 映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，[下载 VM 代理安装程序](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM 代理在 Windows Server 2008 R2 和更高版本上受支持。
+可以使用 Windows 安装程序包手动安装 Windows VM 代理。 创建部署到 Azure 的自定义 VM 映像时，可能需要手动安装。 若要手动安装 Windows VM 代理，[下载 VM 代理安装程序](https://go.microsoft.com/fwlink/?LinkID=394789)。 VM 代理在 Windows Server 2008 （64）和更高版本上受支持。
 
 > [!NOTE]
-> 在不使用 ProvisionVMAgent enable 部署的 VM 上手动安装 VMAgent 后，必须更新 AllowExtensionOperations 选项，这一点很重要。
+> 未启用 ProvisionVMAgent 的情况下，在从映像部署的 VM 上手动安装 VMAgent 之后，请务必更新 AllowExtensionOperations 选项。
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true
 $vm | Update-AzVM
 ```
 
-### <a name="prerequisites"></a>必备条件
-- 在 .Net Framework 4.0 下，Windows VM 代理至少需要 Windows Server 2008 R2 （64位）才能运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+### <a name="prerequisites"></a>先决条件
+- 在 .Net Framework 4.0 下，Windows VM 代理至少需要 Windows Server 2008 （64位）才能运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
-- 请确保 VM 有权访问 IP 地址168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
+- 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)。
 
 ## <a name="detect-the-vm-agent"></a>检测 VM 代理
 
@@ -83,7 +82,7 @@ $vm | Update-AzVM
 Get-AzVM
 ```
 
-以下精简示例输出展示了嵌套在 *OSProfile* 内的 *ProvisionVMAgent* 属性。 可以使用该属性来确定 VM 代理是否已部署到 VM：
+以下浓缩版示例输出演示了嵌套在 *OSProfile* 中的 *ProvisionVMAgent* 属性。 此属性可以用来确定 VM 代理是否已部署到 VM：
 
 ```powershell
 OSProfile                  :
@@ -107,7 +106,7 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>手动检测
 
-登录到 Windows VM 后，可以使用任务管理器检查正在运行的进程。 要查看 Azure VM 代理，请打开任务管理器 > 单击“详细信息”选项卡，并查找名为 WindowsAzureGuestAgent.exe 的进程******。 存在该进程表示 VM 代理已安装。
+登录到 Windows VM 后，可以使用任务管理器检查正在运行的进程。 要查看 Azure VM 代理，请打开任务管理器 > 单击“详细信息”选项卡，并查找名为 WindowsAzureGuestAgent.exe 的进程   。 存在该进程表示 VM 代理已安装。
 
 
 ## <a name="upgrade-the-vm-agent"></a>升级 VM 代理
