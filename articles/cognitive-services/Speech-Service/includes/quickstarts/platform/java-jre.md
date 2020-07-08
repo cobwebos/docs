@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 94946b4b6d0f0fc9c94cac7aca1e971b3f6262f9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 95bf939feaad39d261e03938a3c7dd12a76cdd99
+ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673214"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85806015"
 ---
 本指南介绍如何安装用于 64 位 Java 8 JRE 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，那么请知悉在 Maven 中央存储库中未提供 Java SDK。 无论是使用 Gradle 还是 `pom.xml` 依赖项文件，都需要添加指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自定义存储库（请参阅下文了解包名称）。
 
@@ -40,24 +40,24 @@ ms.locfileid: "83673214"
 
   - 在 Ubuntu 上，请运行以下命令来安装所需的包：
 
-        ```sh
-        sudo apt-get update
-        sudo apt-get install build-essential libssl1.0.0 libasound2
-        ```
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.0 libasound2
+    ```
 
   - 在 Debian 9 上，请运行以下命令来安装所需的包：
 
-        ```sh
-        sudo apt-get update
-        sudo apt-get install build-essential libssl1.0.2 libasound2
-        ```
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.2 libasound2
+    ```
 
   - 在 RHEL/CentOS 上，请运行以下命令来安装所需的包：
 
-        ```sh
-        sudo yum update
-        sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
-        ```
+    ```sh
+    sudo yum update
+    sudo yum install alsa-lib java-1.8.0-openjdk-devel openssl
+    ```
 
 > [!NOTE]
 > - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。

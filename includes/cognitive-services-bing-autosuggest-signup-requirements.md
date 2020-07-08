@@ -4,20 +4,16 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
-ms.openlocfilehash: 01dabff80f0c7e46e183a05a000251797d490e32
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: f12fbe3ea9fa07c5ba8498a1f0b846a72647f5da
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929514"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805965"
 ---
 ## <a name="create-an-azure-resource"></a>创建 Azure 资源
 
 通过创建以下 Azure 资源之一开始使用必应自动建议 API。
-
-### <a name="trial-resource"></a>[试用资源](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-   * 不需要 Azure 订阅。
-   * 有效期为七天，免费。 注册后，试用密钥和终结点在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上可用。
 
 ### <a name="bing-autosuggest-resource"></a>[必应自动建议资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingAutosuggest-v7)
    * 在删除资源前，可通过 Azure 门户使用。
