@@ -6,13 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/22/2020
-ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.date: 06/09/2020
+ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84661028"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建自动化帐户
 
@@ -35,8 +34,8 @@ ms.locfileid: "83837138"
 
 | 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区 | workspaces | 2017-03-15-preview |
-| 自动化帐户 | automation | 2015-10-31 | 
+| 工作区 | workspaces | 2020-03-01-预览 |
+| 自动化帐户 | automation | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>使用模版之前
 
@@ -48,14 +47,14 @@ ms.locfileid: "83837138"
 
 * 工作区的名称。
 * 要在其中创建工作区的区域。
+* 启用资源或工作区权限。
 * 自动化帐户的名称。
-* 要在其中创建帐户的区域。
+* 要在中创建自动化帐户的区域。
 
 模板中的以下参数设置为 Log Analytics 工作区的默认值：
 
 * sku 默认为“按 GB”定价层，该层已在 2018 年 4 月的定价模型中发布。
 * dataRetention 默认为 30 天。
-* capacityReservationLevel 默认为 100 GB。
 
 >[!WARNING]
 >如果要在订阅中创建或配置 Log Analytics 工作区，而该订阅已加入 2018 年 4 月的定价模型，则唯一有效的 Log Analytics 定价层为 PerGB2018。
@@ -63,7 +62,7 @@ ms.locfileid: "83837138"
 
 JSON 模板为其他参数指定默认值，这些参数将会用作环境中的标准配置。 可以将模板存储在 Azure 存储帐户中，以便在组织中共享访问。 有关使用模板的详细信息，请参阅[使用资源管理器模板和 Azure CLI 部署资源](../azure-resource-manager/templates/deploy-cli.md)。
 
-如果你不熟悉 Azure 自动化和 Azure Monitor，请务必了解以下配置详细信息。 当你尝试创建、配置和使用链接到新自动化帐户的 Log Analytics 工作区时，这些信息有助于避免出错。 
+如果你不熟悉 Azure 自动化和 Azure Monitor，请务必了解以下配置详细信息。 当你尝试创建、配置和使用链接到新自动化帐户的 Log Analytics 工作区时，这些信息有助于避免出错。
 
 * 查看[其他详细信息](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace)以充分了解工作区配置选项，如访问控制模式、定价层、保留期和产能预留级别。
 
@@ -107,14 +106,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
-            }
-        },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
+                "description": "Number of days to retain data."
             }
         },
         "location": {
@@ -122,6 +114,12 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -176,13 +174,11 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -194,7 +190,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
         "resources": [
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [
@@ -209,7 +205,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
             "resources": [
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('sampleGraphicalRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -229,7 +225,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePowerShellRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -249,7 +245,7 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePython2RunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -270,10 +266,10 @@ JSON 模板为其他参数指定默认值，这些参数将会用作环境中的
                 ]
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"

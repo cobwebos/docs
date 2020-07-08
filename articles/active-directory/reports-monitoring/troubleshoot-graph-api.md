@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 0030c5a4-16f0-46f4-ad30-782e7fea7e40
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,12 +17,11 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d1fb4f49e4f9ad41f971d869873200e6180b5cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eec5c5a3d810fdd2d561313e3a355e872fb525c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399281"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608086"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>对 Azure Active Directory 报告 API 中的错误进行故障排除
 
@@ -40,15 +39,15 @@ ms.locfileid: "78399281"
 
 如果在尝试使用 API 访问审核日志或登录时看到此错误消息，请确保帐户属于 Azure Active Directory 租户中的“安全读取者”或“报表读取者”角色********。 
 
-### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误: 应用程序缺少 AAD“读取目录数据”权限 
+### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误：应用程序缺少 AAD“读取目录数据”权限 
 
 请按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
 
-### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 Microsoft Graph API "读取所有审核日志数据" 权限
+### <a name="error-application-missing-microsoft-graph-api-read-all-audit-log-data-permission"></a>错误：应用程序缺少 Microsoft Graph API“读取所有审核日志数据”权限
 
 请按照[访问 Azure Active Directory 报告 API 的先决条件](howto-configure-prerequisites-for-reporting-api.md)中的步骤操作，确保应用程序使用正确的权限集运行。 
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 "审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)
-"[使用登录活动报告 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+[使用审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+[使用登录活动报告 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)

@@ -1,6 +1,6 @@
 ---
 title: 配置域独立工作组可用性组
-description: 了解如何在 Azure 中的 SQL Server 虚拟机上配置 Active Directory 域独立的工作组 Always On 可用性组。
+description: 了解如何在 Azure 中的 SQL Server 虚拟机上配置 Active Directory 域无关的工作组 Always On 可用性组。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 93819332def05022272eabc130e0f2240938f244
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84037228"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955499"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>配置工作组可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,13 +45,13 @@ ms.locfileid: "84037228"
 | **工作组名称** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>设置 DNS 后缀 
+## <a name="set-a-dns-suffix"></a>设置 DNS 后缀 
 
 在此步骤中，为这两个服务器配置 DNS 后缀。 例如，`ag.wgcluster.example.com`。 这样，你就可以使用想要连接到的对象的名称作为网络中的完全限定地址，如 `AGNode1.ag.wgcluster.example.com`。 
 
 若要配置 DNS 后缀，请执行以下步骤：
 
-1. RDP 到第一个节点并打开服务器管理器。 
+1. RDP 连接到第一个节点并打开服务器管理器。 
 1. 选择“本地服务器”，然后在“计算机名称”下选择虚拟机的名称 。 
 1. 选择“重命名此计算机…”下的“更改…” 。 
 1. 将工作组名称的名称更改为有意义的名称，例如 `AGWORKGROUP`： 
@@ -71,13 +70,13 @@ ms.locfileid: "84037228"
 1. 当系统提示重启服务器时，请进行重启。 
 1. 在要用于可用性组的任何其他节点上重复这些步骤。 
 
-## <a name="edit-host-file"></a>编辑主机文件
+## <a name="edit-a-host-file"></a>编辑主机文件
 
 由于没有 Active Directory，因此无法对 Windows 连接进行身份验证。 因此，请通过使用文本编辑器编辑主机文件来分配信任。 
 
 若要编辑主机文件，请执行以下步骤：
 
-1. RDP 到虚拟机。 
+1. RDP 连接到你的虚拟机。 
 1. 使用文件资源管理器以转到 `c:\windows\system32\drivers\etc`。 
 1. 右键单击 hosts 文件，然后使用记事本（或任何其他文本编辑器）打开该文件 。
 1. 在该文件末尾，以 `IP Address, DNS Suffix #comment` 的形式为每个节点、可用性组和侦听器添加一个条目，如下所示： 
@@ -104,7 +103,7 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>创建故障转移群集
 
-在此步骤中，将创建故障转移群集。 如果尚不熟悉这些步骤，可参阅[故障转移群集教程](failover-cluster-instance-storage-spaces-direct-manually-configure.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)执行这些步骤。
+在此步骤中，将创建故障转移群集。 如果尚不熟悉这些步骤，可参阅[故障转移群集教程](failover-cluster-instance-storage-spaces-direct-manually-configure.md)执行这些步骤。
 
 教程与应为工作组群集执行的操作之间存在明显差异：
 - 运行群集验证时，取消选中“存储”和“存储空间直通” 。 
@@ -130,13 +129,13 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-a-cloud-witness"></a>创建云见证 
 
-在此步骤中，配置云共享见证。 如果尚不熟悉这些步骤，请参阅[故障转移群集教程](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness)。 
+在此步骤中，配置云共享见证。 如果你不熟悉这些步骤，请参阅[为故障转移群集部署云见证](/windows-server/failover-clustering/deploy-cloud-witness)。 
 
-## <a name="enable-availability-group-feature"></a>启用可用性组功能 
+## <a name="enable-the-availability-group-feature"></a>启用可用性组功能 
 
 在此步骤中，启用可用性组功能。 如果尚不熟悉这些步骤，请参阅[可用性组教程](availability-group-manually-configure-tutorial.md#enable-availability-groups)。 
 
-## <a name="create-keys-and-certificate"></a>创建密钥和证书
+## <a name="create-keys-and-certificates"></a>创建密钥和证书
 
 在此步骤中，创建 SQL 登录在加密的终结点上使用的证书。 在每个节点上创建一个文件夹来保存证书备份，如 `c:\certs`。 
 
@@ -277,16 +276,16 @@ GO
 
 如果群集中有任何其他节点，请同样在此处重复这些步骤，并修改各自的证书名称及用户名。 
 
-## <a name="configure-availability-group"></a>配置可用性组
+## <a name="configure-an-availability-group"></a>配置可用性组
 
 在此步骤中，配置可用性组，并向其添加数据库。 此时请不要创建侦听器。 如果尚不熟悉这些步骤，请参阅[可用性组教程](availability-group-manually-configure-tutorial.md#create-the-availability-group)。 请确保启动故障转移和故障回复，以便验证所有项是否均正常工作。 
 
    > [!NOTE]
    > 如果在同步过程中出现故障，则可能需要授予 `NT AUTHORITY\SYSTEM` sysadmin 权限才能在第一个节点（如 `AGNode1`）上临时创建群集资源。 
 
-## <a name="configure-load-balancer"></a>配置负载均衡器
+## <a name="configure-a-load-balancer"></a>配置负载均衡器
 
-在最后一步中，使用 [Azure 门户](availability-group-load-balancer-portal-configure.md)或 [PowerShell](availability-group-listener-powershell-configure.md) 配置负载均衡器
+在最后一步中，使用[Azure 门户](availability-group-load-balancer-portal-configure.md)或[PowerShell](availability-group-listener-powershell-configure.md)配置负载均衡器。
 
 
 ## <a name="next-steps"></a>后续步骤

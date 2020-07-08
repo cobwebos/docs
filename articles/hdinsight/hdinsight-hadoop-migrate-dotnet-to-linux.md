@@ -9,11 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84709260"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 
@@ -34,7 +33,7 @@ HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。 有关包含在 HDInsight �
 
 1. 安装 [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)。 在安装期间，选择要使用的 Visual Studio 版本。
 
-2. 在 Visual Studio 2015 中，依次选择“分析”   > “可移植性分析器设置”  ，并确保在“Mono”  部分选中了“4.5”  。
+2. 在 Visual Studio 2015 中，依次选择“分析” > “可移植性分析器设置”，并确保在“Mono”部分选中了“4.5”。
 
     ![在分析器设置的 Mono 部分选中了 4.5](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 

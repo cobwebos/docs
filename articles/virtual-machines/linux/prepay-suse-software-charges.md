@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759284"
 ---
 # <a name="prepay-for-azure-software-plans"></a>为 Azure 软件计划预付
@@ -22,7 +21,7 @@ ms.locfileid: "81759284"
 可以在 Azure 门户中购买 SUSE 和 RedHat 软件计划。 若要购买计划：
 
 - 对于至少一个企业或个人订阅，你必须至少拥有一个使用即用即付定价的所有者角色。
-- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项****。 如果禁用此设置，则必须是订阅的 EA 管理员。
+- 对于企业订阅，必须在 [EA 门户](https://ea.azure.com/)中启用“添加预留实例”选项  。 如果禁用此设置，则必须是订阅的 EA 管理员。
 - 对于云解决方案提供商（CSP）程序，管理代理或销售代理可以购买软件计划。
 
 ## <a name="buy-a-software-plan"></a>购买软件计划
@@ -68,10 +67,10 @@ RedHat 计划折扣仅适用于你在购买时选择的 VM 大小。 在购买�
 
 若要了解如何管理预订，请参阅[管理 Azure 预订](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 
-若要了解详细信息，请参阅以下文章：
+要了解更多信息，请参阅下列文章：
 
-- [什么是 Azure 保留？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [在 Azure 中管理保留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+- [什么是 Azure 预订？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [管理 Azure 中的预留](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [了解如何应用 SUSE 预留折扣](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)

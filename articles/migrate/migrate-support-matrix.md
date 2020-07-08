@@ -4,12 +4,11 @@ description: 汇总了 Azure Migrate 服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: ec267053a0bc675d05e6488665f77467da9370e0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 51f797ad80886669a8734af6898164737d16971a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746855"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770180"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -40,7 +39,7 @@ Azure Migrate 服务器迁移 | NA | 迁移 [VMware VM](tutorial-migrate-vmware.
 [Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。 | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | 评估和迁移 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。 |  迁移 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。
 [设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。| NA
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估 SQL Server 的数据库。 | NA
 [DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构 (VDI) | NA
 [Movere](https://www.movere.io/) | 评估 VMWare VM、Hyper-V VM、Xen VM、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
@@ -68,7 +67,7 @@ Hyper-V VM    | 在单个项目中最多评估 35,000 个 Hyper-V VM。
 **任务** | **权限** | **详细信息**
 --- | --- | ---
 创建 Azure Migrate 项目 | Azure 帐户需要创建项目的权限。 | 针对 [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-project)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project) 或[物理服务器](tutorial-prepare-physical.md#assign-permissions-to-create-project)进行设置。
-注册 Azure Migrate 设备| Azure Migrate 使用轻型 [Azure Migrate 设备](migrate-appliance.md)通过 Azure Migrate 服务器评估来评估计算机，并通过 Azure Migrate 服务器迁移来执行 VMware VM 的[无代理迁移](server-migrate-overview.md)。 此设备可发现计算机，并将元数据和性能数据发送到 Azure Migrate。<br/><br/> 在注册过程中，注册提供程序（Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault）将注册到在设备中选择的订阅，以便订阅可使用资源提供程序。 若要注册，你需要订阅的“参与者”或“所有者”访问权限。<br/><br/> VMware - 在载入过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用。 第一个应用在设备代理与 Azure Migrate 服务之间通信。 应用无权进行 Azure 资源管理调用或对资源具有 RBAC 访问权限。 第二个应用可访问在用户订阅中创建的仅用于无代理 VMware 迁移的 Azure Key Vault。 在无代理迁移中，Azure Migrate 需要创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。 从设备启动发现时，将具有对 Azure Key Vault（在客户租户中）的 RBAC 访问权限。<br/><br/> Hyper-V - 在载入过程中。 Azure Migrate 创建一个 Azure AD 应用。 该应用在设备代理与 Azure Migrate 服务之间通信。 应用无权进行 Azure 资源管理调用或对资源具有 RBAC 访问权限。 | 针对 [VMware](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance) 或[物理服务器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)进行设置。
+注册 Azure Migrate 设备| Azure Migrate 使用轻型 [Azure Migrate 设备](migrate-appliance.md)通过 Azure Migrate 服务器评估来评估计算机，并通过 Azure Migrate 服务器迁移来执行 VMware VM 的[无代理迁移](server-migrate-overview.md)。 此设备可发现计算机，并将元数据和性能数据发送到 Azure Migrate。<br/><br/> 在注册过程中，注册提供程序（Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault）将注册到在设备中选择的订阅，以便订阅可使用资源提供程序。 若要注册，你需要订阅的“参与者”或“所有者”访问权限。<br/><br/> VMware - 在载入过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用。 第一个应用在设备代理与 Azure Migrate 服务之间通信。 应用无权进行 Azure 资源管理调用或对资源具有 RBAC 访问权限。 第二个应用可访问在用户订阅中创建的仅用于无代理 VMware 迁移的 Azure Key Vault。 在无代理迁移中，Azure Migrate 需要创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。 从设备启动发现时，将具有对 Azure Key Vault（在客户租户中）的 RBAC 访问权限。<br/><br/> Hyper-V - 在载入过程中。 Azure Migrate 创建一个 Azure AD 应用。 该应用在设备代理与 Azure Migrate 服务之间通信。 应用无权进行 Azure 资源管理调用或对资源具有 RBAC 访问权限。 | 针对 [VMware](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps)、[Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-azure-ad-apps) 或[物理服务器](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)进行设置。
 创建用于 VMware 无代理迁移的密钥保管库 | 若要使用无代理 Azure Migrate 服务器迁移工具迁移 VMware VM，Azure Migrate 需要创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。 若要创建保管库，需要在 Azure Migrate 项目所在的资源组中设置权限（所有者或参与者和用户访问管理员）。 | [设置](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)权限。
 
 ## <a name="supported-geographies-public-cloud"></a>支持的地理区域（公有云）

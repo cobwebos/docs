@@ -3,23 +3,22 @@ title: 在池上装载虚拟文件系统
 description: 了解如何在 Batch 池上装载虚拟文件系统。
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 4e51e8a1f11d670515893a83398a0c6d7c6e9a46
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816023"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954666"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池上装载虚拟文件系统
 
 Azure Batch 现在支持在 Batch 池的 Windows 或 Linux 计算节点上装载云存储空间或外部文件系统。 计算节点加入池时，将装载虚拟文件系统并将其视为该节点上的本地驱动器。 可以装载文件系统，例如 Azure 文件存储、Azure Blob 存储、网络文件系统 (NFS)，包括 [Avere vFXT 缓存](../avere-vfxt/avere-vfxt-overview.md)或通用 Internet 文件系统 (CIFS)。
 
-在本文中，你将了解如何使用[适用于 .NET 的 Batch 管理库](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet)在计算节点池上装载虚拟文件系统。
+在本文中，你将了解如何使用[适用于 .NET 的 Batch 管理库](/dotnet/api/overview/azure/batch?view=azure-dotnet)在计算节点池上装载虚拟文件系统。
 
 > [!NOTE]
 > 2019-08-19 或之后创建的 Batch 池上支持装载虚拟文件系统。 2019-08-19 之前创建的 Batch 池不支持此功能。
 > 
-> 用于在计算节点上装载文件系统的 API 是 [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 库的组成部分。
+> 用于在计算节点上装载文件系统的 API 是 [Batch .NET](/dotnet/api/microsoft.azure.batch?view=azure-dotnet) 库的组成部分。
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>装载在池上的好处
 
@@ -128,7 +127,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>通用 Internet 文件系统
 
-还可以将通用 Internet 文件系统 (CIFS) 装载到池节点，这样可以使 Azure Batch 节点能够轻松访问传统文件系统。 CIFS 是一种文件共享协议，它提供了一种用于请求网络服务器文件和服务的开放和跨平台的机制。 CIFS 基于适用于 Internet 和 Intranet 文件共享的 Microsoft 服务器消息块 (SMB) 协议的增强版本，用于在 Windows 节点上装载外部文件系统。 要详细了解 SMB，请参阅[文件服务器和 SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview)。
+还可以将通用 Internet 文件系统 (CIFS) 装载到池节点，这样可以使 Azure Batch 节点能够轻松访问传统文件系统。 CIFS 是一种文件共享协议，它提供了一种用于请求网络服务器文件和服务的开放和跨平台的机制。 CIFS 基于适用于 Internet 和 Intranet 文件共享的 Microsoft 服务器消息块 (SMB) 协议的增强版本，用于在 Windows 节点上装载外部文件系统。 要详细了解 SMB，请参阅[文件服务器和 SMB](/windows-server/storage/file-server/file-server-smb-overview)。
 
 ```csharp
 new PoolAddParameter
@@ -153,7 +152,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>诊断装载错误
 
-如果装载配置失败，池中的计算节点将失败，节点状态变为不可用。 要诊断某个安装配置失败，请检查 [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) 属性，获取有关错误的详细信息。
+如果装载配置失败，池中的计算节点将失败，节点状态变为不可用。 要诊断某个安装配置失败，请检查 [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror) 属性，获取有关错误的详细信息。
 
 要获取日志文件以进行调试，请使用 [OutputFiles](batch-task-output-files.md) 上传 `*.log` 文件。 `*.log` 文件包含有关在 `AZ_BATCH_NODE_MOUNTS_DIR` 位置装载文件系统的信息。 对于每个装载，装载日志文件格式：`<type>-<mountDirOrDrive>.log`。 例如，名为 `test` 的装载目录中处的 `cifs` 装载将有一个名为 `cifs-test.log` 的装载日志文件。
 
@@ -179,5 +178,5 @@ new PoolAddParameter
 
 - 了解有关将 Azure 存储文件共享装载到 [Windows](../storage/files/storage-how-to-use-files-windows.md) 或 [Linux](../storage/files/storage-how-to-use-files-linux.md) 的详细信息。
 - 了解有关使用和装载 [blobfuse](https://github.com/Azure/azure-storage-fuse) 虚拟文件系统的信息。
-- 要了解 NFS 及其应用程序，请参阅[网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)。
-- 要详细了解 SMB，请参阅 [Microsoft SMB 协议和 CIFS 协议概述](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)。
+- 要了解 NFS 及其应用程序，请参阅[网络文件系统概述](/windows-server/storage/nfs/nfs-overview)。
+- 要详细了解 SMB，请参阅 [Microsoft SMB 协议和 CIFS 协议概述](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)。

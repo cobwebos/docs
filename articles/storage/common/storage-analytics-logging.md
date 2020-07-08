@@ -11,7 +11,6 @@ ms.reviewer: fryu
 ms.custom: monitoring
 ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83675923"

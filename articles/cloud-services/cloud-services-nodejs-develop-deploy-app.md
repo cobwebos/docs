@@ -9,12 +9,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 774d2bb58fd7dd75825be8f433f078d70c13fe8c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75386181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919984"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -47,19 +46,24 @@ ms.locfileid: "75386181"
 2. [连接 PowerShell] 到订阅。
 3. 输入以下 PowerShell cmdlet 来创建项目：
 
-        New-AzureServiceProject helloworld
+   ```powershell
+   New-AzureServiceProject helloworld
+   ```
 
-    ![New-AzureService helloworld 命令的结果][The result of the New-AzureService helloworld command]
+   ![New-AzureService helloworld 命令的结果][The result of the New-AzureService helloworld command]
 
-    **New-AzureServiceProject** cmdlet 将生成一个基本结构用于将 Node.js 应用程序发布到云服务。 该结构包含向 Azure 发布应用程序所需的配置文件。 该 cmdlet 还会将工作目录更改为服务的目录。
+   **New-AzureServiceProject** cmdlet 将生成一个基本结构用于将 Node.js 应用程序发布到云服务。 该结构包含向 Azure 发布应用程序所需的配置文件。 该 cmdlet 还会将工作目录更改为服务的目录。
 
-    该 cmdlet 将创建以下文件：
+   该 cmdlet 将创建以下文件：
 
    * **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** 和 **ServiceDefinition.csdef**：发布应用程序所需的特定于 Azure 的文件。 有关详细信息，请参阅 [创建 Azure 托管服务概述]。
    * **deploymentSettings.json**：存储供 Azure PowerShell 部署 cmdlet 使用的本地设置。
+
 4. 输入以下命令添加新的 Web 角色：
 
-       Add-AzureNodeWebRole
+   ```powershell
+   Add-AzureNodeWebRole
+   ```
 
    ![Add-AzureNodeWebRole 命令的输出][The output of the Add-AzureNodeWebRole command]
 
@@ -70,12 +74,14 @@ ms.locfileid: "75386181"
 
 Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（默认为 **WebRole1**）的目录中。 代码如下：
 
-    var http = require('http');
-    var port = process.env.port || 1337;
-    http.createServer(function (req, res) {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Hello World\n');
-    }).listen(port);
+```js
+var http = require('http');
+var port = process.env.port || 1337;
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World\n');
+}).listen(port);
+```
 
 此代码基本上与 [nodejs.org] 网站上的“Hello World”示例相同，但它使用云环境分配的端口号。
 
@@ -89,14 +95,18 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 1. 运行以下 Azure Powershell cmdlet：
 
-       Get-AzurePublishSettingsFile
+    ```powershell
+    Get-AzurePublishSettingsFile
+    ```
 
    此操作将使用浏览器导航到发布设置下载页。 系统可能会提示使用 Microsoft 帐户登录。 如果是这样，请使用与 Azure 订阅关联的帐户。
 
    将已下载的配置文件保存到能够轻松访问的文件位置。
 2. 运行以下 cmdlet 以导入下载的发布配置文件：
 
-       Import-AzurePublishSettingsFile [path to file]
+    ```powershell
+    Import-AzurePublishSettingsFile [path to file]
+    ```
 
     > [!NOTE]
     > 导入发布设置之后，请考虑删除下载的 .publishSettings 文件，因为它包含了可供他人访问你帐户的信息。
@@ -104,8 +114,10 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 ### <a name="publish-the-application"></a>发布应用程序
 若要发布，请运行以下命令：
 
-      $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
-    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```powershell
+$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))
+Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+```
 
 * **-ServiceName** 指定部署的名称。 此名称必须唯一，否则发布过程会失败。 **Get-Date** 命令附加应使名称唯一的日期/时间字符串。
 * **-Location** 指定托管应用程序的数据中心。 若要查看可用数据中心的列表，请使用 **Get-AzureLocation** cmdlet。
@@ -136,14 +148,18 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 1. 在 Windows PowerShell 窗口中，使用以下 cmdlet 以停止上一节中创建的服务部署：
 
-       Stop-AzureService
+    ```powershell
+    Stop-AzureService
+    ```
 
    停止服务可能需要花费几分钟时间。 在服务停止时，会收到一条指示服务已停止的消息。
 
    ![Stop-AzureService 命令的状态][The status of the Stop-AzureService command]
 2. 若要删除服务，请调用以下 cmdlet：
 
-       Remove-AzureService
+    ```powershell
+    Remove-AzureService
+    ```
 
    在出现提示时，输入 **Y** 以删除服务。
 
@@ -161,7 +177,7 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 [Azure 网站、云服务和虚拟机的比较]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure Powershell]: /powershell/azureps-cmdlets-docs
+[Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [用于 .NET 2.7 的 Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [将 PowerShell 连接]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

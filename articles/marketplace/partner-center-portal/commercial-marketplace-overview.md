@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 95d57e34694190b4ab997229f005ebeef7924e57
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724813"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954125"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心内的商业市场门户概述
 
@@ -34,7 +33,7 @@ ms.locfileid: "83724813"
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>发布和产品/服务管理用户体验方面的改进
 
-转换至合作伙伴中心后，发布者们不仅能享受用户体验上的改进，还可以使用新功能。  有关详细信息，请参阅[有关从云合作伙伴门户迁移到合作伙伴中心的常见问题解答](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-migration-faq)。
+转换至合作伙伴中心后，发布者们不仅能享受用户体验上的改进，还可以使用新功能。  有关详细信息，请参阅[有关从云合作伙伴门户迁移到合作伙伴中心的常见问题解答](../cloud-partner-portal-migration-faq.md)。
 
 ### <a name="account-and-user-management-updates"></a>帐户和用户管理更新
 
@@ -50,10 +49,10 @@ ms.locfileid: "83724813"
 
 ## <a name="view-the-roadmap-and-join-the-conversation"></a>查看路线图并加入对话
 
-访问 [Microsoft 商业市场路线图](https://docs.microsoft.com/azure/marketplace/marketplace-roadmap)，或加入 [Microsoft 合作伙伴社区](https://www.microsoftpartnercommunity.com/)中的对话，了解有关最新版本和未来版本的更多信息。
+访问 [Microsoft 商业市场路线图](../marketplace-roadmap.md)，或加入 [Microsoft 合作伙伴社区](https://www.microsoftpartnercommunity.com/)中的对话，了解有关最新版本和未来版本的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 对于想在市场上发布产品/服务的新 Microsoft 合作伙伴，请参阅[在合作伙伴中心中创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
-- 对于以前在云合作伙伴门户中发布过产品/服务的现有合作伙伴，请参阅[在合作伙伴中心中管理商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。
+- 对于想在市场上发布产品/服务的新 Microsoft 合作伙伴，请参阅[在合作伙伴中心中创建商业市场帐户](create-account.md)。
+- 对于以前在云合作伙伴门户中发布过产品/服务的现有合作伙伴，请参阅[在合作伙伴中心中管理商业市场帐户](manage-account.md)。
 - 请在此[合作伙伴社区博客](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)中详细了解移动至合作伙伴中心的云市场管理，其中包括演示视频。

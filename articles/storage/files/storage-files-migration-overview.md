@@ -7,12 +7,11 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685988"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660761"
 ---
 # <a name="migrate-to-azure-file-shares"></a>迁移到 Azure 文件共享
 
@@ -117,13 +116,13 @@ Microsoft 和其他工具提供了多个文件复制工具。 若要为迁移方
 
 | 建议 | 工具 | 支持 Azure 文件共享 | 保存文件保真 |
 | :-: | :-- | :---- | :---- |
-|![是，建议使用](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | 支持。 可以将 Azure 文件共享装载为网络驱动器。 | 完全保真。 * |
+|![是，建议使用](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | 。 可以将 Azure 文件共享装载为网络驱动器。 | 完全保真。 * |
 |![是，建议使用](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure 文件同步 | 本机集成到 Azure 文件共享中。 | 完全保真。 * |
 |![是，建议使用](media/storage-files-migration-overview/circle-green-checkmark.png)| 存储迁移服务 | 间接支持。 在 SMS 目标服务器上，可以将 Azure 文件共享装载为网络驱动器。 | 完全保真。 * |
-|![不完全推荐](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | 支持。 | 不复制元数据。 [Data Box 可以与 Azure 文件同步一起使用](storage-sync-offline-data-transfer.md)。 |
-|![不建议](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | 支持。 | 不复制元数据。 |
-|![不建议](media/storage-files-migration-overview/circle-red-x.png)| Azure 存储资源管理器 | 支持。 | 不复制元数据。 |
-|![不建议](media/storage-files-migration-overview/circle-red-x.png)| Azure 数据工厂 | 支持。 | 不复制元数据。 |
+|![是，建议使用](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy 版本10.4 或更高版本| 。 | 完全保真。 * |
+|![不完全推荐](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | 。 | 不复制元数据。 [Data Box 可以与 Azure 文件同步一起使用](storage-sync-offline-data-transfer.md)。 |
+|![不完全推荐](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure 存储资源管理器，版本1.14 | 。 | 不复制 Acl。 支持时间戳。  |
+|![不推荐](media/storage-files-migration-overview/circle-red-x.png)| Azure 数据工厂 | 。 | 不复制元数据。 |
 |||||
 
 *\*完全保真：满足或超过 Azure 文件共享功能。*

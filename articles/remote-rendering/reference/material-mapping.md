@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680383"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783004"
 ---
 # <a name="material-mapping-for-model-formats"></a>模型格式的材料映射
 
@@ -43,18 +42,17 @@ ms.locfileid: "80680383"
 |   emissiveFactor    |   -                        |
 |   emissiveTexture   |   -                        |
 
-GlTF 中的每个纹理都`texCoord`可以具有值，这在 Azure 远程呈现材料中也受支持。
+GlTF 中的每个纹理都可以具有 `texCoord` 值，这在 Azure 远程呈现材料中也受支持。
 
 ### <a name="embedded-textures"></a>嵌入的纹理
 
-支持嵌入在* \*bin*或* \*glb*文件中的纹理。
+支持嵌入在* \* bin*或* \* glb*文件中的纹理。
 
 ### <a name="supported-gltf-extension"></a>支持的 glTF 扩展
 
 除了基本功能集之外，Azure 远程呈现还支持以下 glTF 扩展：
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
-* [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
 * [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md)：对应于[颜色材料](../overview/features/color-materials.md)。 对于*放射*资料，建议使用此扩展。
 * [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md)：可以提供漫射反射度的纹理，而不是金属粗糙度的纹理。 Azure 远程呈现实现直接遵循扩展中的转换公式。
 
@@ -102,17 +100,17 @@ FBX 材料使用 SpecularLevel 概念，因此，若要从漫射纹理转换为 
 下面使用了一些定义：
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`.Red ∗ 0.2125 + `Specular`。绿色∗ 0.7154 + `Specular`。Blue ∗0.0721
-* `DiffuseBrightness`= 0.299 * `Diffuse`。红色<sup>2</sup> + 0.587 * `Diffuse`。绿色<sup>2</sup> + 0.114 * `Diffuse`。蓝<sup>2</sup>
-* `SpecularBrightness`= 0.299 * `Specular`。红色<sup>2</sup> + 0.587 * `Specular`。绿色<sup>2</sup> + 0.114 * `Specular`。蓝<sup>2</sup>
-* `SpecularStrength`= max （`Specular`。红色， `Specular`。绿色， `Specular`。蓝色
+* `SpecularIntensity` = `Specular`.Red ∗ 0.2125 + `Specular` 。绿色∗ 0.7154 + `Specular` 。Blue ∗0.0721
+* `DiffuseBrightness`= 0.299 * `Diffuse` 。红色<sup>2</sup> + 0.587 * `Diffuse` 。绿色<sup>2</sup> + 0.114 * `Diffuse` 。蓝<sup>2</sup>
+* `SpecularBrightness`= 0.299 * `Specular` 。红色<sup>2</sup> + 0.587 * `Specular` 。绿色<sup>2</sup> + 0.114 * `Specular` 。蓝<sup>2</sup>
+* `SpecularStrength`= max （ `Specular` 。红色， `Specular` 。绿色， `Specular` 。蓝色
 
 可从[此处](https://en.wikipedia.org/wiki/Luma_(video))获取 SpecularIntensity 公式。
 亮度公式在此[规范](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)中进行了介绍。
 
-### <a name="roughness"></a>程度
+### <a name="roughness"></a>粗糙度
 
-`Roughness`是`Specular` `ShininessExponent`使用[此公式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)计算得出的。 该公式是冯氏反射指数中的粗糙度的近似值：
+`Roughness`是 `Specular` `ShininessExponent` 使用[此公式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)计算得出的。 该公式是冯氏反射指数中的粗糙度的近似值：
 
 ```Cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
@@ -120,7 +118,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 
 ### <a name="metalness"></a>Metalness
 
-`Metalness`从`Diffuse` [glTF 规范](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)计算`Specular` ，并使用此公式。
+`Metalness`从 `Diffuse` glTF 规范计算，并 `Specular` 使用此[公式](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)。
 
 这里的思路是解决公式： Ax<sup>2</sup> + Bx + C = 0。
 基本上，dielectric 的表面以反光的形式反映了约4% 的光线，而其余表面则为漫射。 金属表面以漫射方式反映没有任何灯光，但以镜面方式呈现。
@@ -139,10 +137,10 @@ Metalness = clamp(value, 0.0, 1.0);
 
 ### <a name="albedo"></a>Albedo
 
-`Albedo`是从、 `Diffuse` `Specular`和`Metalness`计算的。
+`Albedo`是从 `Diffuse` 、 `Specular` 和计算的 `Metalness` 。
 
 如 "Metalness" 一节中所述，dielectric 的表面反映了约4% 的光线。  
-这里的思路是使用`Dielectric` `Metal` `Metalness`值作为系数，以线性方式在和颜色之间进行插入。 如果 metalness 为`0.0`，则根据反射，它将为黑色（如果镜面为高）或扩散不会更改（如果不存在反射）。 如果 metalness 是一个较大的值，则漫射色将会消失，以支持反射颜色。
+这里的思路是 `Dielectric` `Metal` 使用 `Metalness` 值作为系数，以线性方式在和颜色之间进行插入。 如果 metalness 为 `0.0` ，则根据反射，它将为黑色（如果镜面为高）或扩散不会更改（如果不存在反射）。 如果 metalness 是一个较大的值，则漫射色将会消失，以支持反射颜色。
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -156,22 +154,22 @@ AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 
 `AlbedoRGB`已由以上公式计算，但 alpha 通道需要其他计算。 FBX 格式与透明度无关，有多种方法可以定义它。 不同的内容工具使用不同的方法。 这里的思路是将它们统一为一个公式。 但如果不是以常见方式创建的，则它会使某些资产错误地显示为透明。
 
-此计算从`TransparentColor`、 `TransparencyFactor`、： `Opacity`
+此计算从 `TransparentColor` 、 `TransparencyFactor` 、 `Opacity` ：
 
-如果`Opacity`定义了，则直接使用： `AlbedoAlpha`  =  `Opacity` else  
-如果`TransparencyColor`定义了，则`AlbedoAlpha` = 1.0-（（`TransparentColor`）。红色 + `TransparentColor`。绿色 + `TransparentColor`。蓝色）/3.0） else  
-如果`TransparencyFactor`为， `AlbedoAlpha`则 = 1.0-`TransparencyFactor`
+如果 `Opacity` 定义了，则直接使用： `AlbedoAlpha`  =  `Opacity` else  
+如果 `TransparencyColor` 定义了，则 `AlbedoAlpha` = 1.0-（（） `TransparentColor` 。红色 + `TransparentColor` 。绿色 + `TransparentColor` 。蓝色）/3.0） else  
+如果 `TransparencyFactor` 为，则 `AlbedoAlpha` = 1.0-`TransparencyFactor`
 
-最终`Albedo`颜色具有四个通道， `AlbedoRGB`并将与组合`AlbedoAlpha`在一起。
+最终 `Albedo` 颜色具有四个通道，并将 `AlbedoRGB` 与组合在一起 `AlbedoAlpha` 。
 
-### <a name="summary"></a>“摘要”
+### <a name="summary"></a>总结
 
-这里汇总了， `Albedo`如果`Specular`接近于零，则会`Diffuse`非常接近原始。 否则，表面看起来像是一个金属面，因而会丢失漫射色。 如果`ShininessExponent`足够大且`Specular`非常明亮，则图面看起来更精美并更具反射。 否则，表面看起来会很粗糙，几乎不会反映出环境。
+这里汇总了， `Albedo` `Diffuse` 如果接近于零，则会非常接近原始 `Specular` 。 否则，表面看起来像是一个金属面，因而会丢失漫射色。 如果 `ShininessExponent` 足够大且非常明亮，则图面看起来更精美并更具反射 `Specular` 。 否则，表面看起来会很粗糙，几乎不会反映出环境。
 
 ### <a name="known-issues"></a>已知问题
 
-* 当前公式不适用于简单的彩色几何。 如果`Specular`非常明亮，则所有几何都将成为没有任何颜色的反射金属表面。 此处的解决方法是从`Specular`原始中降低到30%，或者使用转换设置[fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)。
-* 最近向`Maya`和`3DS Max`内容创建工具中添加了 .pbr 材料。 它们使用自定义的用户定义的黑盒属性将其传递到 FBX。 Azure 远程呈现不会读取这些附加属性，因为没有记录这些属性并且格式为关闭源。
+* 当前公式不适用于简单的彩色几何。 如果 `Specular` 非常明亮，则所有几何都将成为没有任何颜色的反射金属表面。 此处的解决方法是 `Specular` 从原始中降低到30%，或者使用转换设置[fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)。
+* 最近向 `Maya` 和 `3DS Max` 内容创建工具中添加了 .pbr 材料。 它们使用自定义的用户定义的黑盒属性将其传递到 FBX。 Azure 远程呈现不会读取这些附加属性，因为没有记录这些属性并且格式为关闭源。
 
 ## <a name="next-steps"></a>后续步骤
 

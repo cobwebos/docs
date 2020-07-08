@@ -1,16 +1,15 @@
 ---
 title: 如何查看 Azure Service Fabric 实体的聚合运行状况
 description: 说明如何通过运行状况查询和常规查询来查询、查看和评估 Azure Service Fabric 实体聚合运行状况。
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: gwallace
+ms.openlocfilehash: 4688664fea29cc07f5895e33ebfff541d61070d1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392737"
 ---
 # <a name="view-service-fabric-health-reports"></a>查看 Service Fabric 运行状况报告
 Azure Service Fabric 引入了一种具有运行状况实体的[运行状况模型](service-fabric-health-introduction.md)，系统组件和监视器可以在其上报告它们监视的本地状况。 [运行状况存储](service-fabric-health-introduction.md#health-store)聚合所有运行状况数据以确定实体是否正常运行。
@@ -87,7 +86,7 @@ Service Fabric 为每个支持的[实体类型](service-fabric-health-introducti
 * [可选] 用于在运行状况统计信息中包括 fabric:/System 运行状况统计信息的筛选器。 仅当未排除运行状况统计信息时才适用。 默认情况下，运行状况统计信息只包括用户应用程序的统计信息，而不包括系统应用程序的统计信息。
 
 ### <a name="api"></a>API
-若要获取群集运行状况，请创建 `FabricClient` 并在其 [HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) 上调用 **GetClusterHealthAsync** 方法。
+若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthasync) 方法。
 
 以下调用将获取群集运行状况：
 
@@ -811,7 +810,7 @@ HealthEvents               :
 区块查询目前不会返回不正常的评估或实体事件。 可以使用现有的群集运行状况查询获取这些附加信息。
 
 ### <a name="api"></a>API
-若要获取群集运行状况，请创建 `FabricClient` 并在其 [HealthManager](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) 上调用 **GetClusterHealthChunkAsync** 方法。 可以传入 [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) 来描述运行状况策略和高级筛选器。
+若要获取群集运行状况，请创建 `FabricClient` 并在其 **HealthManager** 上调用 [GetClusterHealthChunkAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.getclusterhealthchunkasync) 方法。 可以传入 [ClusterHealthQueryDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.clusterhealthchunkquerydescription) 来描述运行状况策略和高级筛选器。
 
 以下代码使用高级筛选器获取群集运行状况区块。
 

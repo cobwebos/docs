@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79535776"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037505"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
 
@@ -30,13 +29,13 @@ ms.locfileid: "79535776"
 
 ## <a name="use-sql-for-dashboard"></a>对仪表板使用 SQL
 
-Power BI 仪表板提供较低的延迟，但无法用于生成完备的 Power BI 报表。 常见报告模式是先将数据输出到 SQL 数据库。 然后使用 Power BI 的 SQL 连接器在 SQL 中查询最新数据。
+Power BI 仪表板提供较低的延迟，但无法用于生成完备的 Power BI 报表。 常见的报告模式是先将数据输出到 SQL 数据库。 然后使用 Power BI 的 SQL 连接器在 SQL 中查询最新数据。
 
 ![ASA SQL 仪表板](media/stream-analytics-solution-patterns/sqldashboard.png)
 
-使用 SQL 数据库可以获得更大的灵活性，低价是延迟略有提高。 此解决方案最适合延迟要求超过一秒的作业。 此方法可以最大程度地发挥 Power BI 的功能，以进一步细分报表数据，并提供多得多的可视化选项。 此外，你可以灵活地使用其他仪表板解决方案，例如 Tableau。
+使用 SQL 数据库可提供更大的灵活性，但会降低延迟。 此解决方案最适合延迟要求超过一秒的作业。 此方法可以最大程度地发挥 Power BI 的功能，以进一步细分报表数据，并提供多得多的可视化选项。 此外，你可以灵活地使用其他仪表板解决方案，例如 Tableau。
 
-SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据库的最大吞吐量目前大约为 24 MB/秒。 如果解决方案中的事件源以更高的速率生成数据，则你需要使用流分析中的处理逻辑来降低到 SQL 的输出速率。 可以结合时态联接和分析函数使用筛选、开窗聚合、模式匹配等技术。 可以使用[到 Azure SQL 数据库的 Azure 流分析输出](stream-analytics-sql-output-perf.md)中所述的技术进一步优化到 SQL 的输出速率。
+SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据库的最大吞吐量目前为 24 MB/s。 如果解决方案中的事件源以更高的速率生成数据，则你需要使用流分析中的处理逻辑来降低到 SQL 的输出速率。 可以结合时态联接和分析函数使用筛选、开窗聚合、模式匹配等技术。 可以使用[到 Azure SQL 数据库的 Azure 流分析输出](stream-analytics-sql-output-perf.md)中所述的技术进一步优化到 SQL 的输出速率。
 
 ## <a name="incorporate-real-time-insights-into-your-application-with-event-messaging"></a>使用事件消息传送将实时见解整合到应用程序中
 
@@ -72,7 +71,7 @@ SQL 不是一种高吞吐量的数据存储。 从 Azure 流分析到 SQL 数据
 
 ## <a name="use-reference-data-for-application-customization"></a>使用引用数据进行应用程序自定义
 
-Azure 流分析引用数据功能是专门为警报阈值、处理规则和[地理围栏](geospatial-scenarios.md)等最终用户自定义操作设计的。 应用层可以接受参数更改，并将其存储在 SQL 数据库中。 流分析作业定期查询数据库中的更改，并使得自定义参数可通过引用数据联接操作进行访问。 有关如何使用引用数据进行应用程序自定义的详细信息，请参阅 [SQL 引用数据](sql-reference-data.md)和[引用数据联接](/stream-analytics-query/reference-data-join-azure-stream-analytics)。
+Azure 流分析引用数据功能是专门为警报阈值、处理规则和[地理围栏](geospatial-scenarios.md)等最终用户自定义操作设计的。 应用程序层可以接受参数更改，并将其存储在 SQL 数据库中。 流分析作业定期查询数据库中的更改，并使得自定义参数可通过引用数据联接操作进行访问。 有关如何使用引用数据进行应用程序自定义的详细信息，请参阅 [SQL 引用数据](sql-reference-data.md)和[引用数据联接](/stream-analytics-query/reference-data-join-azure-stream-analytics)。
 
 此模式还可用于实现从引用数据定义规则阈值的规则引擎。 有关规则的详细信息，请参阅[在 Azure 流分析中处理基于阈值的可配置规则](stream-analytics-threshold-based-rules.md)。
 
@@ -106,7 +105,7 @@ Azure 流分析的内置[异常情况检测模型](stream-analytics-machine-lear
 
 ## <a name="use-reference-data-for-enrichment"></a>使用引用数据进行扩充
 
-ETL 引擎通常需要数据扩充。 Azure 流分析支持使用 SQL 数据库和 Azure Blob 存储中的[引用数据](stream-analytics-use-reference-data.md)扩充数据。 可以扩充进入 Azure Data Lake 和 SQL 数据仓库的数据。
+ETL 引擎通常需要数据扩充。 Azure 流分析支持从 SQL 数据库和 Azure Blob 存储的[引用数据](stream-analytics-use-reference-data.md)扩充数据。 可以扩充进入 Azure Data Lake 和 SQL 数据仓库的数据。
 
 ![使用数据扩充进行 ASA 脱机分析](media/stream-analytics-solution-patterns/offlineanalytics.png)
 

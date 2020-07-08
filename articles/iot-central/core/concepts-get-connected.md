@@ -11,12 +11,11 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710433"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
@@ -50,7 +49,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 ![单个设备的 SAS 密钥](./media/concepts-get-connected/single-device-sas.png)
 
-若要了解详细信息，请参阅[创建 node.js 客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)教程。
+若要了解详细信息，请参阅[创建 Node.js 客户端应用程序并将其连接到 Azure IoT Central 应用程序](./tutorial-connect-device-nodejs.md)教程。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>使用 SAS 大规模连接设备
 
@@ -93,11 +92,11 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 若要使用 x.509 证书批量连接设备，请先在应用程序中注册设备，方法是使用 CSV 文件[导入设备 id 和设备名称](howto-manage-devices.md#import-devices)。 设备 Id 应该全部为小写。
 
-使用上传的根证书或中间证书生成设备的 x.509 叶证书。 使用**设备 ID**作为叶证书`CNAME`中的值。 设备代码需要应用程序的**ID 范围**值、**设备 ID**和相应的设备证书。
+使用上传的根证书或中间证书生成设备的 x.509 叶证书。 使用**设备 ID**作为 `CNAME` 叶证书中的值。 设备代码需要应用程序的**ID 范围**值、**设备 ID**和相应的设备证书。
 
 #### <a name="sample-device-code"></a>示例设备代码
 
-以下来自[Azure IoT NODE.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的示例显示 node.js 设备客户端如何使用 x.509 叶证书和 DPS 注册到 IoT Central 应用程序：
+以下来自[Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js)的示例演示了 Node.js 设备客户端如何使用 x.509 叶证书和 DPS 注册到 IoT Central 应用程序：
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -107,7 +106,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 仅适用于测试，你可以使用以下实用工具生成根证书、中间证书和设备证书：
 
-- [适用于 Azure IoT 设备预配设备 SDK 的工具](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)：可用于生成和验证 x.509 证书和密钥的 node.js 工具的集合。
+- [适用于 Azure IoT 设备预配设备 SDK 的工具](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md)：可用于生成和验证 x.509 证书和密钥的 Node.js 工具的集合。
 - 如果使用 DevKit 设备，则此[命令行工具](https://aka.ms/iotcentral-docs-dicetool)会生成一个 CA 证书，可将其添加到 IoT Central 应用程序来验证证书。
 - [管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)： PowerShell 和 Bash 脚本的集合：
   - 创建证书链。
@@ -148,7 +147,7 @@ IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/ab
 
 1. [将根或中间 x.509 证书添加](#connect-devices-using-x509-certificates)到 IoT Central 应用程序并进行验证。
 
-1. 使用已添加到 IoT Central 应用程序的根证书或中间证书为设备生成叶证书。 使用小写的设备 Id 作为叶证书`CNAME`中的。
+1. 使用已添加到 IoT Central 应用程序的根证书或中间证书为设备生成叶证书。 使用小写的设备 Id 作为 `CNAME` 叶证书中的。
 
 1. OEM 用设备 ID、生成的叶 x.509 证书和应用程序**ID 范围**值闪烁每个设备。
 
@@ -180,7 +179,7 @@ IoT Central 支持用于单个注册的以下证明机制：
 - **X.509 证书：** 若要使用 x.509 证书创建单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为连接方法，然后选择 "**证书" （x.509）** 作为机制。 与单个注册条目一起使用的设备证书要求将颁发者和使用者 CN 设置为设备 ID。
 
     > [!TIP]
-    > 对于测试，可以使用适用于 node.js 的[Azure IoT 设备预配设备 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)来生成自签名证书：`node create_test_cert.js device "mytestdevice"`
+    > 对于测试，可以使用适用于[Node.js的 Azure IoT 设备预配设备 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)来生成自签名证书：`node create_test_cert.js device "mytestdevice"`
 
 - **受信任的平台模块（TPM）证明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一种硬件安全模块。 使用 TPM 是连接设备的最安全方式之一。 本文假设使用的是独立的、固件或集成的 TPM。 软件仿真 Tpm 非常适合用于原型制作或测试，但它们不提供与离散、固件或集成 Tpm 相同的安全性级别。 请勿在生产环境中使用软件 Tpm。 若要创建使用 TPM 的单个注册，请打开 "**设备连接**" 页，选择 "**单个注册**" 作为 "连接方法"，选择 " **TPM** " 作为机制。 输入 TPM 认可密钥并保存设备连接信息。
 
@@ -249,19 +248,19 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 与 IoT 中心进行的所有设备通信都使用以下 IoT 中心连接选项：
 
-- [设备到云的消息传递](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [设备到云的消息传送](../../iot-hub/iot-hub-devguide-messages-d2c.md)
 - [设备孪生](../../iot-hub/iot-hub-devguide-device-twins.md)
 
 下表对 Azure IoT Central 设备功能映射到 IoT 中心功能的具体情况进行了汇总：
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 遥测 | 设备到云的消息传递 |
-| 属性 | 设备孪生报告属性 |
+| 遥测 | 设备到云的消息传送 |
+| Property | 设备孪生报告属性 |
 | 属性（可写） | 设备孪生所需的和报告的属性 |
 | Command | 直接方法 |
 
-若要详细了解如何使用设备 SDK，请参阅[将 DevDiv 工具包设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)中的示例代码。
+若要了解有关使用设备 Sdk 的详细信息，请参阅[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)，了解示例代码。
 
 ### <a name="protocols"></a>协议
 
@@ -281,7 +280,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是一名设备开发人员，我们建议执行以下后续步骤：
+如果你是设备开发人员，则建议执行以下后续步骤：
 
 - 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)
 - 了解如何[在 Azure IoT Central 应用程序中定义新的 IoT 设备类型](./howto-set-up-template.md)

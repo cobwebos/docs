@@ -15,11 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712490"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>开发使用媒体服务的 Azure Functions
 
@@ -62,7 +61,7 @@ ms.locfileid: "79251162"
 
 1. 选择 Function App，然后单击“新建函数”。 
 2. 选择“C#”  语言和“数据处理”  方案。
-3. 选择“BlobTrigger”  模板。 只要将 blob 上传到输入容器，就会触发此函数  。 下一步的“路径”  中指定了**输入**名称。
+3. 选择“BlobTrigger”  模板。 只要将 blob 上传到输入容器，就会触发此函数  。 下一步的“路径”中指定了**输入**名称。
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 

@@ -1,25 +1,19 @@
 ---
 title: Azure VM 大小 - 常规用途 | Microsoft Docs
 description: 列出 Azure 中虚拟机进行常规用途所适用的各种大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: b5e597eebda6a730d301eefdbd2d7e6859f5a7cc
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: HT
+ms.openlocfilehash: 1e9cce7adc6dbc9062dd133d690fbce92c3190fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783310"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 
@@ -36,12 +30,13 @@ ms.locfileid: "84248305"
 
 - [DCsv2 系列](dcv2-series.md)可以在公有云中处理数据和代码时帮助保护数据和代码的机密性和完整性。 这些虚拟机由最新一代采用 SGX 技术的 Intel XEON E-2288G 处理器提供支持。 借助 Intel Turbo Boost Technology，这些虚拟机最高可以达到 5.0GHz。 客户使用 DCv2 系列实例可以构建安全的基于 enclave 的应用程序，以在使用该系列时保护其代码和数据。
 
-- [Dv2 和 Dsv2 系列](dv2-dsv2-series.md) VM（原始 D 系列的后续产品）提供更强大的 CPU 和最优 CPU 到内存的配置，使其可适合大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列通过 Intel Turbo Boost Technology 2.0 可在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+- [Dv2 和 Dsv2 系列](dv2-dsv2-series.md) VM（原始 D 系列的后续产品）提供更强大的 CPU 和最优 CPU 到内存的配置，使其可适合大多数生产工作负荷。 Dv2 系列比 D 系列快大约 35%。 Dv2 系列于第2代 Intel®强®白金8272CL （级联 Lake）、Intel®强® 8171M 2.1 GHz （Skylake）、Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®至强® E5-2673 v3 2.0 2。4 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
-- [Dv3 和 Dsv3 系列](dv3-dsv3-series.md)虚拟机可在 Intel® Xeon® 8171M 2.1GHz (Skylake)、Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，采用超线程配置，可为大多数常规用途工作负载带来价值提升。 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。 Dv3 系列不再具备 D/Dv2 系列的高端存储器 VM 大小，后者已转至经过内存优化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
+- [Dv3 和 Dsv3 系列](dv3-dsv3-series.md)在第二代上，Vm 运行的是 Intel®强®白金8272CL （级联 Lake）、Intel® Skylake® 8171M 2.1 GHz （）、Intel®至强® E5-2673 v4 2.3 GHz （Broadwell）或 Intel®至强® E5-2673 v3 2。4 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。 Dv3 系列不再具备 D/Dv2 系列的高端存储器 VM 大小，后者已转至经过内存优化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
 
-- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md) VM 在第 2 代 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，可为大多数常规用途工作负载带来价值提升。 它具有 3.4GHz 的持续全核 Turbo 时钟速度，并采用 [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
+- [Dv4 和 Dsv4 系列](dv4-dsv4-series.md)Vm 在第2代 Intel &reg; 强 &reg; 白金8272CL （级联 Lake）处理器上运行，为大多数通用工作负荷提供更好的价值主张。 Dv4 和 Dsv4 Vm 系列是一种新类别的虚拟机，它依赖于远程磁盘，不提供临时本地存储。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔 AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
 
+- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md)Vm 在第2代 Intel &reg; 强 &reg; 白金8272CL （级联 Lake）处理器上运行，为大多数通用工作负荷提供更好的价值主张。 Ddv4 和 Ddsv4 Vm 系列是包含本地数据临时磁盘的一种新的虚拟机类别。 它具有 3.4GHz 的持续全核 Turbo 时钟速度，并采用 [Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -54,4 +49,4 @@ ms.locfileid: "84248305"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

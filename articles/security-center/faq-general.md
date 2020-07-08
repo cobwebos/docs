@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心常见问题解答-一般问题
-description: 有关 Azure 安全中心的常见问题，一种有助于防止、检测和响应威胁的产品
+title: Azure 安全中心常见问题解答 - 一般问题
+description: 有关 Azure 安全中心的常见问题解答。Azure 安全中心是一个可帮助预防、检测和响应威胁的产品
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,42 +13,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783208"
 ---
-# <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答-有关 Azure 安全中心的一般问题
+# <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答 - 关于 Azure 安全中心的一般问题
 
 ## <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
-Azure 安全中心可帮助预防、检测和响应威胁，同时提高资源的可见性并控制其安全性。 该服务提供订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
+Azure 安全中心有助于预防、检测和响应威胁，同时增加资源的可见性和安全可控性。 该服务提供订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
 
-安全中心使用 Log Analytics 代理来收集和存储数据。 有关详细信息，请参阅[Azure 安全中心中的数据收集](security-center-enable-data-collection.md)。
+安全中心使用 Log Analytics 代理来收集和存储数据。 有关详细信息，请参阅 [Azure 安全中心中的数据收集](security-center-enable-data-collection.md)。
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>如何获取Azure 安全中心？
-Azure 安全中心通过 Microsoft Azure 订阅启用，可从 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问。 若要访问它，请[登录到门户](https://portal.azure.com)，选择 "**浏览**"，并滚动到 "**安全中心**"。
+Azure 安全中心通过你的 Microsoft Azure 订阅启用，并从[Azure 门户](https://azure.microsoft.com/features/azure-portal/)访问。 若要访问它，请[登录门户](https://portal.azure.com)，选择“浏览”，并滚动到“安全中心” 。
 
 
 ## <a name="which-azure-resources-are-monitored-by-azure-security-center"></a>哪些 Azure 资源由 Azure 安全中心监视？
 Azure 安全中心监视以下 Azure 资源：
 
-* 虚拟机（Vm）（包括[云服务](../cloud-services/cloud-services-choose-me.md)）
+* 虚拟机 (VM)（包括 [云服务](../cloud-services/cloud-services-choose-me.md)）
 * 虚拟机规模集
-* Azure 虚拟网络
-* 容器
-* Azure SQL 服务
-* Azure 存储帐户
-* [应用服务环境](../app-service/environment/intro.md) 中的 Azure Web 应用
 * 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和应用服务环境上的 Web 应用程序防火墙
-
-此外，Azure 安全中心还可以监视非 Azure （包括本地）计算机。 支持[Windows 计算机](./quick-onboard-windows-computer.md)和[Linux 计算机](./quick-onboard-linux-computer.md)。
+* [产品概述中列出的众多 Azure PaaS 服务](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>如何查看 Azure 资源当前安的全状态？
-“安全中心概述”页显示按计算、网络、存储和数据以及应用程序细分的环境的总体安全状况****。 每个资源类型都有一个指示安全漏洞的指示器。 单击每个磁贴可显示安全中心发现的安全问题列表和订阅中的资源清单。
+“安全中心概述”页显示按计算、网络、存储和数据以及应用程序细分的环境的总体安全状况。 每种资源类型都有一个指示符，该指示符显示已识别的安全漏洞。 单击每个磁贴可显示安全中心发现的安全问题列表和订阅中的资源清单。
 
 
 
@@ -59,7 +52,7 @@ Azure 安全中心中启用的安全策略将使用安全建议和监视。 若�
 
 
 ## <a name="who-can-modify-a-security-policy"></a>哪些用户可以修改安全策略？
-若要修改安全策略，你必须是该订阅的安全管理员或所有者或参与者。
+若要修改安全策略，你必须是**安全管理员**或该订阅的**所有者**。
 
 若要了解如何配置安全策略，请参阅[在 Azure 安全中心设置安全策略](tutorial-security-policy.md)。
 
@@ -86,8 +79,8 @@ Azure 安全中心自动从 Azure 资源、网络和合作伙伴解决方案（�
 * 来自集成合作伙伴解决方案（例如反恶意软件或 Web 应用程序防火墙）的安全警报
 
 
-## <a name="why-did-secure-score-values-change"></a>为什么安全分数值发生了变化？ <a name="secure-score-faq"></a>
-从 2019 年 2 月开始，安全中心调整了某些建议的评分，使之与严重性更相符。 由于此调整，可能会更改整体安全分数值。  有关安全分数的详细信息，请参阅[安全分数计算](security-center-secure-score.md)。
+## <a name="why-did-secure-score-values-change"></a>安全功能分数值为何会有变化？ <a name="secure-score-faq"></a>
+从 2019 年 2 月开始，安全中心调整了某些建议的评分，使之与严重性更相符。 做出此项调整后，总体安全功能分数值可能会有变化。  有关安全分数的详细信息，请参阅[Azure 安全中心的增强安全分数](secure-score-security-controls.md)。
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Microsoft 安全响应中心与 Azure 安全中心检测和警示的威胁之间有何区别？

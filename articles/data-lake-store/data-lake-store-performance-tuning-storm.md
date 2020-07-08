@@ -3,15 +3,14 @@ title: 性能优化-带有 Azure Data Lake Storage Gen1 的风暴
 description: 了解 Azure Data Lake Storage Gen1 上的风暴群集的性能优化指南。
 author: stewu
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691644"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513795"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Storm on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -19,7 +18,7 @@ ms.locfileid: "82691644"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen1 中运行 Storm 群集**。 有关详细信息，请参阅[HDInsight 上的风暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
@@ -126,7 +125,7 @@ ms.locfileid: "82691644"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在**Ambari** > **风暴** > **Config**Config > **Advanced 风暴-log4j**中，将** &lt;root level = "info"&gt; **改为** &lt;root level = "debug"&gt;**。 重新启动所有节点/服务使配置生效。
+1. 在**Ambari**  >  **风暴**  >  **Config**  >  **Advanced 风暴-log4j**中，将** &lt; root level = "info" &gt; **改为** &lt; root level = "debug" &gt; **。 重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen1 限制异常。
 
 ## <a name="next-steps"></a>后续步骤

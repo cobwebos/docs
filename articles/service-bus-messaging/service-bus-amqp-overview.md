@@ -1,25 +1,13 @@
 ---
 title: Azure 服务总线中 AMQP 1.0 的概述
 description: 了解 Azure 服务总线如何支持高级消息队列协议（AMQP，一种开放标准协议）。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.assetid: 0e8d19cc-de36-478e-84ae-e089bbc2d515
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 8ddeadde85e3e0b574c93db0227dcba6ad746f64
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76759306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338066"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服务总线的 AMQP 1.0 支持
 Azure 服务总线云服务和本地 [Windows Server 服务总线（服务总线 1.1）](https://msdn.microsoft.com/library/dn282144.aspx)均支持高级消息队列协议 (AMQP) 1.0。 AMQP 让你能够使用开放标准协议构建跨平台的混合应用程序。 可以借助使用不同语言和框架构建的且运行在不同操作系统上的组件来构建应用程序。 所有这些组件均可连接到服务总线，并且能够高效且完全无损地无缝交换结构化业务消息。

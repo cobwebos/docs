@@ -7,17 +7,16 @@ author: rohinkoul
 ms.service: traffic-manager
 manager: twooley
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: rohink
-ms.openlocfilehash: adfe7d117d2329832a5b5e9e782a9029a682ff3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9da534642bc2e48878667d262309037963fcdc62
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938615"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711572"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
@@ -30,7 +29,7 @@ ms.locfileid: "76938615"
 ### <a name="to-create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册一个[月免费试用版](https://azure.microsoft.com/free/)。 
-2. 单击 "**创建资源** > **网络** > **流量管理器配置文件** > " "**创建**"。
+2. 单击 "**创建资源**  >  **网络**  >  **流量管理器配置文件**" "  >  **创建**"。
 4. 在“创建流量管理器配置文件”  中，按如下所示完成操作：
     1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（`<name>`,trafficmanager.net），该名称用于访问流量管理器配置文件。
     2. 在**路由方法**中，选择“优先级”  路由方法。

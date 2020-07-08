@@ -4,7 +4,6 @@ description: 通过以下两种方式扩展对 SQL Server 2008 和 SQL Server 20
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: conceptual
@@ -14,12 +13,11 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034248"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668740"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 扩展对 SQL Server 2008 和 SQL Server 2008 R2 的支持
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +59,7 @@ SQL Server 需要应用一致性 Azure Site Recovery 快照以确保恢复。 Az
 
 ### <a name="database-migration-service"></a>数据库迁移服务
 
-如果客户要通过将 SQL Server 升级到 2012 版或更高版本的方式从本地迁移到 Azure VM，可以选择使用[数据库迁移服务](/azure/dms/dms-overview)。
+如果客户从本地迁移到 Azure VM，则可以使用[Azure 数据库迁移服务](/azure/dms/dms-overview)，方法是将 SQL Server 升级到2012版本或更高版本。
 
 ## <a name="disaster-recovery"></a>灾难恢复
 
@@ -74,7 +72,7 @@ Azure VM 上 EOS SQL Server 的灾难恢复解决方案如下：
 ## <a name="security-patching"></a>安全修补
 在向 SQL VM [资源提供程序](sql-vm-resource-provider-register.md)注册 SQL Server VM 后，通过“Microsoft 更新”通道传递 SQL Server VM 的扩展安全更新程序。 修补程序可手动下载，也可自动下载。
 
-*自动修补* ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 如果安装了 SQL Server IaaS 扩展，你可以指定维护时段是星期几，并指定它的时间和持续时间。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。  有关详细信息，请参阅 [Azure 虚拟机上 SQL Server 的自动修补](automated-patching.md)。
+*自动修补* ：默认处于启用状态。 Azure 可以通过自动修补来自动修补 SQL Server 和操作系统。 如果安装了 SQL Server IaaS 扩展，你可以指定维护时段是星期几，并指定它的时间和持续时间。 Azure 会在维护时段进行修补。 维护时段计划使用 VM 的时间区域设置。 有关详细信息，请参阅 [Azure 虚拟机上 SQL Server 的自动修补](automated-patching.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

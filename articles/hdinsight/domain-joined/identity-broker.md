@@ -7,12 +7,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1bea8adbdb39d2ce83cfe7821ef052fdc1f1d512
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921328"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>使用 ID Broker （预览版）进行凭据管理
 
@@ -38,7 +37,7 @@ ID 代理允许使用多重身份验证登录到 ESP 群集，而无需提供任
 
 若要创建启用了 ID Broker 的 ESP 群集，请执行以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 遵循 ESP 群集的基本创建步骤。 有关详细信息，请参阅[创建具有 ESP 的 HDInsight 群集](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。
 1. 选择 "**启用 HDINSIGHT ID 代理**"。
 
@@ -47,7 +46,7 @@ ID 代理功能将向群集添加一个额外的 VM。 此 VM 是 ID 代理节�
 ![用于启用 ID 代理的选项](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
-如果将具有以下属性的名`idbrokernode`为的新角色添加到模板的计算配置文件中，则会在启用 ID 代理节点的情况下创建群集：
+如果将具有以下属性的名为的新角色添加 `idbrokernode` 到模板的计算配置文件中，则会在启用 ID 代理节点的情况下创建群集：
 
 ```json
 .
@@ -90,9 +89,11 @@ ID 代理功能将向群集添加一个额外的 VM。 此 VM 是 ID 代理节�
 
 HDInsight [IntelliJ 插件](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib)将更新为支持 OAuth。 可以使用此插件连接到群集并提交作业。
 
+你还可以使用[Spark & Hive 工具来 VS Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode)来利用笔记本和提交作业。
+
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Azure AD DS 中没有密码哈希的 SSH 访问
 
-启用 ID 代理后，仍需要使用域帐户为 SSH 方案 Azure AD DS 存储密码哈希。 若要通过 SSH 连接到已加入域的 VM，或者`kinit`若要运行该命令，则需要提供密码。 
+启用 ID 代理后，仍需要使用域帐户为 SSH 方案 Azure AD DS 存储密码哈希。 若要通过 SSH 连接到已加入域的 VM，或者若要运行该 `kinit` 命令，则需要提供密码。 
 
 SSH 身份验证要求 Azure AD DS 中提供哈希。 如果只想将 SSH 用于管理方案，则可以创建一个仅限云的帐户，并使用该帐户通过 SSH 连接到群集。 其他用户仍可使用 Ambari 或 HDInsight 工具（例如 IntelliJ 插件），Azure AD DS 中没有可用的密码哈希。
 
@@ -100,7 +101,7 @@ SSH 身份验证要求 Azure AD DS 中提供哈希。 如果只想将 SSH 用于
 
 在 ID 代理安装中，可以更新连接到网关的自定义应用和客户端，以便首先获取所需的 OAuth 令牌。 您可以按照本[文档](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app)中的步骤获取令牌，其中包含以下信息：
 
-*   OAuth 资源 uri：https://hib.azurehdinsight.net 
+*   OAuth 资源 uri：`https://hib.azurehdinsight.net` 
 * AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   权限：（name： cluster.exe，id：8f89faa0-ffef-4007-974d-4989b39ad77d）
 

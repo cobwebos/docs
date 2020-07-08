@@ -4,7 +4,6 @@ description: 了解如何连接到 Azure 上的 SQL Server 虚拟机。 本主�
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -14,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c014799cc0e6a2c985bb6df5872d65880e7d2a26
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667411"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

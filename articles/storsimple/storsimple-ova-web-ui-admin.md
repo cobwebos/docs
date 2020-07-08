@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6bea9c9b7807ffb32b6071c968d3186965477009
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513039"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>使用 Web UI 管理 StorSimple Virtual Array
 ![安装流程](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -40,7 +39,7 @@ ms.locfileid: "79254724"
 如果不慎丢失服务数据加密密钥，并且需要取回它，请在注册到服务的设备的本地 Web UI 中执行以下步骤。
 
 #### <a name="to-get-the-service-data-encryption-key"></a>获取服务数据加密密钥
-1. 连接到本地 Web UI。 请参阅**配置** > **云设置**。
+1. 连接到本地 Web UI。 请参阅**配置**  >  **云设置**。
 2. 在页面底部，单击“获取服务数据加密密钥”****。 将出现密钥。 复制并保存此密钥。
    
     ![获取服务数据加密密钥 1](./media/storsimple-ova-web-ui-admin/image27.png)
@@ -49,7 +48,7 @@ ms.locfileid: "79254724"
 在某些情况下，通过本地 Web UI 配置设备时，可能会出现错误。 若要诊断并解决此类错误，可以运行诊断测试。
 
 #### <a name="to-run-the-diagnostic-tests"></a>运行诊断测试
-1. 在本地 web UI 中，请参阅**诊断测试****故障排除** > 。
+1. 在本地 web UI 中，请参阅**Troubleshooting**  >  **诊断测试**故障排除。
    
     ![运行诊断 1](./media/storsimple-ova-web-ui-admin/image29.png)
 2. 在页面底部，单击“运行诊断测试”****。 这会启动测试以诊断网络、设备、Web 代理、时间或云设置可能存在的任何问题。 用户将收到设备正在运行测试的通知。
@@ -61,7 +60,7 @@ ms.locfileid: "79254724"
 日志包由所有可帮助 Microsoft 支持部门排查任何设备问题的相关日志组成。 在此版本中，可通过本地 Web UI 生成日志包。
 
 #### <a name="to-generate-the-log-package"></a>生成日志包
-1. 在本地 web UI 中，请参阅**故障排除** > **系统日志**。
+1. 在本地 web UI 中，请参阅**故障排除**  >  **系统日志**。
    
     ![生成日志包 1](./media/storsimple-ova-web-ui-admin/image31.png)
 2. 在页面底部，单击“创建日志包”****。 将创建系统日志的包。 几分钟后即可创建完毕。
@@ -80,7 +79,7 @@ ms.locfileid: "79254724"
 可使用本地 Web UI 关闭或重启虚拟设备。 在重启之前，建议使卷或共享依次在主机和设备上脱机。 这能在最大程度上减少发生数据损坏的可能性。 
 
 #### <a name="to-shut-down-your-virtual-device"></a>关闭虚拟设备
-1. 在本地 web UI 中，请参阅**维护** > **电源设置**。
+1. 在本地 web UI 中，请参阅**维护**  >  **电源设置**。
 2. 在页面底部，单击 "**关闭**"。
    
     ![关闭设备 1](./media/storsimple-ova-web-ui-admin/image36.png)
@@ -95,7 +94,7 @@ ms.locfileid: "79254724"
     设备将立即关闭。 如果想要启动设备，需要通过 Hyper-V 管理器执行此操作。
 
 #### <a name="to-restart-your-virtual-device"></a>重启虚拟设备
-1. 在本地 web UI 中，请参阅**维护** > **电源设置**。
+1. 在本地 web UI 中，请参阅**维护**  >  **电源设置**。
 2. 在页面底部，单击“重启”****。
    
     ![设备重启](./media/storsimple-ova-web-ui-admin/image36.png)

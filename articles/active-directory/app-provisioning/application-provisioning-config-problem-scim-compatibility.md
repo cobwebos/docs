@@ -2,21 +2,20 @@
 title: SCIM 2.0 协议符合性的已知问题-Azure AD
 description: 如何解决将支持 SCIM 2.0 的非库应用程序添加到 Azure AD 时面临的常见协议兼容性问题
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/03/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 00551eb6c9d5d6fab9dc1d698a7a25bb6872901b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594026"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782256"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -40,7 +39,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 
-否。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
+不能。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
 
 修补程序发布后，更改会应用于 Azure 门户中配置的所有新的[非库 SCIM 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)。
 

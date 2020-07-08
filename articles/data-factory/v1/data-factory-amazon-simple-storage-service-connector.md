@@ -13,11 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711912"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -62,9 +61,9 @@ ms.locfileid: "79281647"
 ## <a name="linked-service-properties"></a>链接服务属性
 链接服务可将数据存储链接到数据工厂。 创建 **AwsAccessKey** 类型的链接服务，以便将 Amazon S3 数据存储链接到数据工厂。 下表提供 Amazon S3 (AwsAccessKey) 链接服务专属 JSON 元素的说明。
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| accessKeyID |机密访问键 ID。 |字符串 |是 |
+| accessKeyID |机密访问键 ID。 |string |是 |
 | secretAccessKey |机密访问键本身。 |加密的机密字符串 |是 |
 
 >[!NOTE]
@@ -91,13 +90,13 @@ ms.locfileid: "79281647"
 
 所有数据集类型（例 SQL 数据库、Azure Blob 和 Azure 表）的结构、可用性和策略等部分类似。 每种类型的数据集的**typeProperties**节都是不同的，并提供数据在数据存储中的位置信息。 **AmazonS3** 类型数据集（包括 Amazon S3 数据集）的 **typeProperties** 节具有以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| bucketName |S3 存储桶的名称。 |字符串 |是 |
-| key |S3 对象键。 |字符串 |否 |
-| 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |字符串 |否 |
-| version |启用 S3 版本控制时 S3 对象的版本。 |字符串 |否 |
-| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一****。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、 [JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、 [Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、 [Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和[Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 | |否 |
+| bucketName |S3 存储桶的名称。 |String |是 |
+| key |S3 对象键。 |String |否 |
+| 前缀 |S3 对象键的前缀。 已选中其键以该前缀开头的对象。 仅当键为空时应用。 |String |否 |
+| 版本 |启用 S3 版本控制时 S3 对象的版本。 |String |否 |
+| format | 支持以下格式类型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 | |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型为：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：**最佳**和**最快**。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 | |否 |
 
 
@@ -172,7 +171,7 @@ ms.locfileid: "79281647"
 ## <a name="copy-activity-properties"></a>复制活动属性
 有关可用于定义活动的各个部分和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。 可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，属性因源和接收器类型而异。 复制活动中源的类型为 **FileSystemSource**（包括 Amazon S3）时，可以在 **typeProperties** 节中使用以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | recursive |指定是否以递归方式列出目录下的 S3 对象。 |true/false |否 |
 

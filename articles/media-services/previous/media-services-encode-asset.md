@@ -14,25 +14,24 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251097"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712320"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 点播媒体编码器概述 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本的[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
-一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
+开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
 编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
 
-媒体服务所提供的动态打包，允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
+媒体服务所提供的动态打包允许以媒体服务支持的流格式（MPEG DASH、HLS、平滑流式处理）传送自适应比特率 MP4 或平滑流式处理编码内容，而无须重新打包成这些流格式。
 
-创建媒体服务帐户后，会将**默认**流式处理终结点添加到帐户的 "**已停止**" 状态。 若要开始流式传输内容并利用动态打包和动态加密，要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。**** 每当流式处理终结点处于“正在运行”**** 状态时，就会对该终结点进行计费。
+创建媒体服务帐户后，会将一个处于“已停止”状态的**默认**流式处理终结点添加到帐户。  若要开始对内容进行流式处理并利用动态打包和动态加密功能，必须确保要从其流式获取内容的流式处理终结点处于“正在运行”状态。 每当流式处理终结点处于“正在运行”**** 状态时，就会对该终结点进行计费。
 
 媒体服务支持会在本文中介绍的以下按需编码器：
 
@@ -43,7 +42,7 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。 可以预留编码单元，使用它们可以同时运行多个编码任务，购买的每个编码预留单位对应一个任务。 有关信息，请参阅[缩放编码单位](media-services-scale-media-processing-overview.md)。
 
-## <a name="media-encoder-standard"></a>媒体编码器标准版
+## <a name="media-encoder-standard"></a>Media Encoder Standard
 
 ### <a name="how-to-use"></a>如何使用
 [如何使用 Media Encoder Standard 进行编码](media-services-dotnet-encode-with-media-encoder-standard.md)
@@ -68,7 +67,7 @@ Media Encoder Standard 使用[此处](https://go.microsoft.com/fwlink/?linkid=61
 ### <a name="create-overlays"></a>创建覆盖层
 有关信息，请参阅[如何使用 Media Encoder Standard 创建覆盖层](media-services-advanced-encoding-with-mes.md#overlay)。
 
-### <a name="see-also"></a>另请参阅
+### <a name="see-also"></a>请参阅
 [媒体服务博客](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>媒体编码器高级工作流

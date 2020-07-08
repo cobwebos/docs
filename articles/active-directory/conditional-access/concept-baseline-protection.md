@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3e5cc6bbe363e111f5c39147010d6a3d00cb45c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604601"
 ---
 # <a name="what-are-baseline-policies"></a>什么是基线策略？
 
@@ -25,7 +24,7 @@ ms.locfileid: "75767562"
 管理自定义的条件访问策略需要 Azure AD Premium 许可证。
 
 > [!IMPORTANT]
-> 不推荐使用基线策略。 有关详细信息，请参阅[Azure Active Directory 中的新增功能？](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults)
+> 不推荐使用基线策略。 有关详细信息，请参阅[存档 Azure Active Directory 中的新增功能？](../fundamentals/whats-new-archive.md#replacement-of-baseline-policies-with-security-defaults)
 
 ## <a name="baseline-policies"></a>基线策略
 
@@ -59,7 +58,7 @@ ms.locfileid: "75767562"
 * 帐务管理员
 * 用户管理员
 
-如果组织在脚本或代码中使用这些帐户，请考虑将其替换为[托管标识](../managed-identities-azure-resources/overview.md)。
+如果组织在脚本或代码中使用这些帐户，请考虑将它们替换为[托管标识](../managed-identities-azure-resources/overview.md)。
 
 ### <a name="end-user-protection-preview"></a>最终用户保护（预览版）
 
@@ -80,7 +79,7 @@ ms.locfileid: "75767562"
 
 ### <a name="require-mfa-for-service-management-preview"></a>要求对服务管理执行 MFA（预览版）
 
-组织会使用各种 Azure 服务，并通过如下所述的基于 Azure 资源管理器的工具对其进行管理：
+组织使用各种 Azure 服务，并通过基于 Azure 资源管理器的工具（如下所示）管理它们：
 
 * Azure 门户
 * Azure PowerShell
@@ -92,8 +91,8 @@ ms.locfileid: "75767562"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参见:
+有关详细信息，请参阅：
 
 * [启用安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)
-* [常见的条件访问策略](concept-conditional-access-policy-common.md)
+* [常见条件访问策略](concept-conditional-access-policy-common.md)
 * [保护标识基础结构的五个步骤](../../security/fundamentals/steps-secure-identity.md)

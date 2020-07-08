@@ -4,20 +4,18 @@ description: 本文介绍了如何配置流量管理器以从特定子网路由�
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: rohink
-ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711776"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -47,7 +45,7 @@ ms.locfileid: "76938738"
 #### <a name="create-vms-for-running-websites"></a>创建用于运行网站的 VM
 在本部分，我们将在“美国东部”和“西欧”Azure 区域创建两个 VM：myEndpointVMEastUS 和 myEndpointVMWEurope************。
 
-1. 在 Azure 门户的左上角，选择 "**创建资源** > " "**计算** > " "**Windows Server 2016 VM**"。
+1. 在 Azure 门户的左上角，选择 "**创建资源**" "计算" "  >  **Compute**  >  **Windows Server 2016 VM**"。
 2. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
     |设置|Value|
@@ -56,7 +54,7 @@ ms.locfileid: "76938738"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“新建”  ，然后键入 *myResourceGroupTM1*。|
-    |位置| 选择“美国东部”  。|
+    |位置| 选择“美国东部”。|
     |||
 
 4. 在“选择大小”下选择 VM 大小  。
@@ -64,7 +62,7 @@ ms.locfileid: "76938738"
     
     |设置|Value|
     |---|---|
-    |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet1*，为“子网”输入 *mySubnet*。   |
+    |虚拟网络| 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet1*，为“子网”输入 *mySubnet*。|
     |网络安全组|选择“基本”，在“选择公共入站端口”下拉列表中选择“HTTP”和“RDP”     |
     |启动诊断|选择“已禁用”。 |
     |||
@@ -78,7 +76,7 @@ ms.locfileid: "76938738"
     |资源组 | 选择“新建”  ，然后键入 *myResourceGroupTM2*|
     |位置|西欧|
     |VM 名称 | myIISVMWEurope|
-    |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。   |
+    |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。|
     |||
 
 8. 创建 VM 可能需要数分钟的时间。 在两个 VM 完成创建之前，不要继续执行剩余的步骤。
@@ -87,7 +85,7 @@ ms.locfileid: "76938738"
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>安装 IIS 并自定义默认网页
 
-在本部分中，将在两个 vm 上安装 IIS 服务器- *myIISVMEastUS*  & *myIISVMWEurope*，然后更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
+在本部分中，将在两个 vm 上安装 IIS 服务器- *myIISVMEastUS*   &  *myIISVMWEurope*，然后更新默认网站页面。 自定义网站页面显示从 Web 浏览器访问网站时要连接到的 VM 的名称。
 
 1. 在左侧菜单中选择“所有资源”，然后在资源列表中，单击位于 *myResourceGroupTM1* 资源组中的“myIISVMEastUS”。******
 2. 在“概述”页上单击“连接”，然后在“连接到虚拟机”中选择“下载 RDP 文件”。    
@@ -133,7 +131,7 @@ ms.locfileid: "76938738"
 
 在本部分，我们将在每个 Azure 区域（“美国东部”和“西欧”）各创建一个 VM（*mVMEastUS* 和 *myVMWestEurope*）。******** 稍后将使用这些 VM 来测试当你浏览到该网站时，流量管理器如何将流量路由到最近的 IIS 服务器。
 
-1. 在 Azure 门户的左上角，选择 "**创建资源** > " "**计算** > " "**Windows Server 2016 VM**"。
+1. 在 Azure 门户的左上角，选择 "**创建资源**" "计算" "  >  **Compute**  >  **Windows Server 2016 VM**"。
 2. 对于“基本信息”输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
     |设置|Value|
@@ -161,7 +159,7 @@ ms.locfileid: "76938738"
     |设置|Value|
     |---|---|
     |VM 名称 | *myVMWEurope*|
-    |资源组 | 选择“现有”，然后键入 *myResourceGroupTM2* |
+    |资源组 | 选择“现有”，然后键入 *myResourceGroupTM2*|
     |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 myVNet4，为“子网”输入 mySubnet4      。|
     |||
 
@@ -170,7 +168,7 @@ ms.locfileid: "76938738"
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 创建一个流量管理器配置文件，该配置文件允许根据请求的源 IP 返回特定终结点。
 
-1. 在屏幕的左上方，选择 "**创建资源** > " "**网络** > " "**流量管理器配置文件** > " "**创建**"。
+1. 在屏幕的左上方，选择 "**创建资源**" "网络" "  >  **Networking**  >  **流量管理器配置文件**" "  >  **创建**"。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受剩下的默认设置，然后选择“创建”   ：
 
     | 设置                 | Value                                              |
@@ -186,7 +184,7 @@ ms.locfileid: "76938738"
 
 ## <a name="add-traffic-manager-endpoints"></a>添加流量管理器终结点
 
-添加运行 IIS 服务器的两个 vm- *myIISVMEastUS* & *myIISVMWEurope* ，以根据用户查询的子网路由用户流量。
+添加运行 IIS 服务器的两个 vm- *myIISVMEastUS*  &  *myIISVMWEurope* ，以根据用户查询的子网路由用户流量。
 
 1. 在门户的搜索栏中，搜索在前面部分创建的流量管理器配置文件名称，并在显示的结果中选择该配置文件。
 2. 在“流量管理器配置文件”  的“设置”  部分单击“终结点”  ，然后单击“添加”。 

@@ -6,23 +6,22 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: aad65c112bfc5a6a80f481fe3748e0f4d5c52f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7c27c9e522964ca4f6374e83a9fb6b992f0fb2c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745287"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213510"
 ---
 # <a name="connection-strings-for-synapse-sql-pool"></a>Synapse SQL 池的连接字符串
 
-可以通过多种不同的应用程序协议（例如[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、 [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、 [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）连接到 SQL 池。 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  
+可以使用几种不同的应用程序协议（例如，[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、[ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）连接到 SQL 池。 下面是每个协议的连接字符串的一些示例。  可以使用 Azure 门户来生成连接字符串。  
 
-若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”  下单击“显示数据库连接字符串”  。
+若要使用 Azure 门户生成连接字符串，请导航到数据库边栏选项卡，在“概要”下单击“显示数据库连接字符串”   。
 
 ## <a name="sample-adonet-connection-string"></a>示例 ADO.NET 连接字符串
 
@@ -53,4 +52,4 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始在 Visual Studio 和其他应用程序中查询 SQL 池，请参阅[通过 Visual studio 进行查询](sql-data-warehouse-query-visual-studio.md)。
+若要开始使用 Visual Studio 和其他应用程序来查询 SQL 池，请参阅[使用 Visual Studio 进行查询](sql-data-warehouse-query-visual-studio.md)。

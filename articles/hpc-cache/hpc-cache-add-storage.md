@@ -3,15 +3,14 @@ title: 将存储添加到 Azure HPC 缓存
 description: 如何定义存储目标，以便 Azure HPC 缓存可以将本地 NFS 系统或 Azure Blob 容器用于长期文件存储
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4c3ef79806d29b188eb2738919bf912cfedc8ef1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513876"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -22,6 +21,10 @@ ms.locfileid: "82195037"
 请记住，必须可以从缓存的虚拟网络中访问存储导出。 对于本地硬件存储，你可能需要设置一个 DNS 服务器，该服务器可以解析用于 NFS 存储访问的主机名。 在[DNS 访问](hpc-cache-prereqs.md#dns-access)中了解详细信息。
 
 创建缓存后，添加存储目标。 此过程略有不同，具体取决于是否要添加 Azure Blob 存储或 NFS 导出。 下面是每种情况的详细信息。
+
+单击下面的图像，观看有关创建缓存和添加存储目标的[视频演示](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)。
+
+[![视频缩略图： Azure HPC 缓存：设置（单击以访问视频页）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>打开 "存储目标" 页
 
@@ -70,7 +73,7 @@ Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.micro
 
 1. 打开存储帐户的 "**访问控制（IAM）** " 页。 （"**添加存储目标**" 页中的链接会自动打开所选帐户的此页。）
 
-1. 单击页面**+** 顶部的，然后选择 "**添加角色分配**"。
+1. 单击 **+** 页面顶部的，然后选择 "**添加角色分配**"。
 
 1. 从列表中选择 "存储帐户参与者" 角色。
 
@@ -149,8 +152,8 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 
 | 使用模型 | 缓存模式 | 后端验证 | 最大写回延迟 |
 | ---- | ---- | ---- | ---- |
-| 读取繁重的罕见写入 | 读取 | 从不 | 无 |
-| 超过15% 写入 | 读取/写入 | 从不 | 1 小时 |
+| 读取繁重的罕见写入 | 读取 | Never | None |
+| 超过15% 写入 | 读取/写入 | Never | 1 小时 |
 | 客户端绕过缓存 | 读取 | 30 秒 | 无 |
 
 ## <a name="next-steps"></a>后续步骤

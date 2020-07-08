@@ -1,22 +1,21 @@
 ---
 title: SAP SuccessFactors 属性参考
-description: 了解 SuccessFactors 中的哪些属性受 SuccessFactors 驱动的预配支持
+description: 了解 SuccessFactors-HR 驱动的预配支持 SuccessFactors 中的哪些属性
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: reference
 ms.workload: identity
 ms.date: 12/06/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781542"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性参考
 
@@ -46,7 +45,7 @@ ms.locfileid: "82593178"
 | 9  | PerPersonal                            | preferredName                | 读取           |
 | 10 | 用户                                   | addressLine1                 | 读取           |
 | 11 | 用户                                   | addressLine2                 | 读取           |
-| 12 | User                                   | addressLIne3                 | 读取           |
+| 12 | 用户                                   | addressLIne3                 | 读取           |
 | 13 | 用户                                   | 商务电话                | 读取           |
 | 14 | 用户                                   | 手机                    | 读取           |
 | 15 | 用户                                   | city                         | 读取           |
@@ -92,26 +91,26 @@ ms.locfileid: "82593178"
 | 55 | EmpJob                                 | position                     | 读取           |
 | 65 | EmpJob                                 | customString13               | 读取           |
 | 56 | EmpJob                                 | managerId                    | 读取           |
-| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | 读取           |
-| 58 | EmpJob\.BusinessUnit                   | businessUnitId               | 读取           |
-| 59 | EmpJob\.公司                        | company                      | 读取           |
-| 60 | EmpJob\.公司                        | companyId                    | 读取           |
-| 61 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode           | 读取           |
-| 62 | EmpJob\.CostCenter                     | costCenter                   | 读取           |
-| 63 | EmpJob\.CostCenter                     | costCenterId                 | 读取           |
-| 64 | EmpJob\.CostCenter                     | costCenterDescription        | 读取           |
-| 65 | EmpJob\.部门                     | department                   | 读取           |
-| 66 | EmpJob\.部门                     | departmentId                 | 读取           |
-| 67 | EmpJob\.除法                       | division                     | 读取           |
-| 68 | EmpJob\.除法                       | divisionId                   | 读取           |
-| 69 | EmpJob\.JobCode                        | jobCode                      | 读取           |
-| 70 | EmpJob\.JobCode                        | jobCodeId                    | 读取           |
-| 71 | EmpJob\.位置                       | LocationName                 | 读取           |
-| 72 | EmpJob\.位置                       | officeLocationAddress        | 读取           |
-| 73 | EmpJob\.位置                       | officeLocationCity           | 读取           |
-| 74 | EmpJob\.位置                       | officeLocationCustomString4  | 读取           |
-| 75 | EmpJob\.位置                       | officeLocationZipCode        | 读取           |
-| 76 | EmpJob\.PayGrade                       | payGrade                     | 读取           |
+| 57 | EmpJob \. BusinessUnit                   | businessUnit                 | 读取           |
+| 58 | EmpJob \. BusinessUnit                   | businessUnitId               | 读取           |
+| 59 | EmpJob \. 公司                        | company                      | 读取           |
+| 60 | EmpJob \. 公司                        | companyId                    | 读取           |
+| 61 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode           | 读取           |
+| 62 | EmpJob \. CostCenter                     | costCenter                   | 读取           |
+| 63 | EmpJob \. CostCenter                     | costCenterId                 | 读取           |
+| 64 | EmpJob \. CostCenter                     | costCenterDescription        | 读取           |
+| 65 | EmpJob \. 部门                     | department                   | 读取           |
+| 66 | EmpJob \. 部门                     | departmentId                 | 读取           |
+| 67 | EmpJob \. 除法                       | division                     | 读取           |
+| 68 | EmpJob \. 除法                       | divisionId                   | 读取           |
+| 69 | EmpJob \. JobCode                        | jobCode                      | 读取           |
+| 70 | EmpJob \. JobCode                        | jobCodeId                    | 读取           |
+| 71 | EmpJob \. 位置                       | LocationName                 | 读取           |
+| 72 | EmpJob \. 位置                       | officeLocationAddress        | 读取           |
+| 73 | EmpJob \. 位置                       | officeLocationCity           | 读取           |
+| 74 | EmpJob \. 位置                       | officeLocationCustomString4  | 读取           |
+| 75 | EmpJob \. 位置                       | officeLocationZipCode        | 读取           |
+| 76 | EmpJob \. PayGrade                       | payGrade                     | 读取           |
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 读取           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | 读取           |
 
@@ -122,22 +121,22 @@ ms.locfileid: "82593178"
 | \# | SuccessFactors 实体                  | SuccessFactors 特性 | 默认 AD/Azure AD 属性映射   | 处理注释                                                                            |
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | employeeId                              | 用作匹配属性                                                                   |
-| 2  | PerPerson                              | perPersonUuid            | \[未映射\-为源锚点\] | 初始同步期间，预配服务会将 personUuid 链接到现有 objectGuid\。  |
-| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
-| 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
-| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
-| 6  | 用户                                   | addressLine1             | streetAddress                           | NA                                                                                           |
-| 7  | 用户                                   | city                     | l                                       | NA                                                                                           |
-| 8  | 用户                                   | country                  | co                                      | NA                                                                                           |
-| 9  | User                                   | state                    | st                                      | NA                                                                                           |
-| 10 | 用户                                   | username                 | samAccountName                          | NA                                                                                           |
-| 11 | 用户                                   | zipCode                  | postalCode                              | NA                                                                                           |
-| 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
-| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
-| 15 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
-| 16 | EmpJob\.部门                     | department               | department                              | NA                                                                                           |
-| 17 | EmpJob\.除法                       | division                 | company                                 | NA                                                                                           |
-| 18 | EmpJob\.位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
-| 19 | EmpJob\.位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
+| 2  | PerPerson                              | perPersonUuid            | \[未映射 \- 为源锚点\] | 初始同步期间，预配服务会将 personUuid 链接到现有 objectGuid\。  |
+| 3  | PerPersonal                            | displayName              | displayName                             | 不可用                                                                                           |
+| 4  | PerPersonal                            | firstName                | givenName                               | 不可用                                                                                           |
+| 5  | PerPersonal                            | lastName                 | sn                                      | 不可用                                                                                           |
+| 6  | 用户                                   | addressLine1             | streetAddress                           | 不可用                                                                                           |
+| 7  | 用户                                   | city                     | l                                       | 不可用                                                                                           |
+| 8  | 用户                                   | country                  | co                                      | 不可用                                                                                           |
+| 9  | 用户                                   | state                    | st                                      | 不可用                                                                                           |
+| 10 | 用户                                   | username                 | samAccountName                          | 不可用                                                                                           |
+| 11 | 用户                                   | zipCode                  | postalCode                              | 不可用                                                                                           |
+| 12 | PerEmail                               | emailAddress             | mail                                    | 不可用                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | title                                   | 不可用                                                                                           |
+| 14 | EmpJob                                 | managerId                | manager                                 | 不可用                                                                                           |
+| 15 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode       | c                                       | 不可用                                                                                           |
+| 16 | EmpJob \. 部门                     | department               | department                              | 不可用                                                                                           |
+| 17 | EmpJob \. 除法                       | division                 | company                                 | 不可用                                                                                           |
+| 18 | EmpJob \. 位置                       | officeLocationAddress    | streetAddress                           | 不可用                                                                                           |
+| 19 | EmpJob \. 位置                       | officeLocationZipCode    | postalCode                              | 不可用                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，则禁用 account\。                                           |

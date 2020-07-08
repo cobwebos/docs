@@ -8,12 +8,11 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0ec46a1d2c7fca231b5cf6b045b634af50ee12a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe3040bee56507fe40ce748d3e9e51b06eaa0213
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459825"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512886"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）
 
@@ -123,10 +122,10 @@ Azure 磁盘加密与 [Azure Key Vault](https://azure.microsoft.com/documentatio
 ### <a name="set-up-an-azure-ad-app-and-service-principal-though-the-azure-portal"></a><a name="bkmk_ADappRM"></a>通过 Azure 门户设置 Azure AD 应用和服务主体
 使用[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)一文中的步骤创建 Azure AD 应用程序。 下面列出的每个步骤直接链接到要完成的文章部分。 
 
-1. [验证所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [创建 Azure Active Directory 应用程序](../../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [验证所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)
+2. [创建 Azure Active Directory 应用程序](../../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) 
      - 创建应用程序时，可以使用任意所需的名称和登录 URL。
-3. [获取应用程序 ID 和身份验证密钥](../../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)。 
+3. [获取应用程序 ID 和身份验证密钥](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 
      - 身份验证密钥是客户端密码，用作 Set-AzVMDiskEncryptionExtension 的 AadClientSecret。 
         - 应用程序使用身份验证密钥作为凭据登录到 Azure AD。 在 Azure 门户中，此机密称为密钥，但与 Key Vault 没有任何关系。 请适当地保护此机密。 
      - 稍后，应用程序 ID 将用作 Set-AzVMDiskEncryptionExtension 的 AadClientId，以及 Set-AzKeyVaultAccessPolicy 的 ServicePrincipalName。 

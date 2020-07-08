@@ -3,12 +3,11 @@ title: 监视已部署的 Azure Kubernetes 服务 (AKS) 群集 | Microsoft Docs
 description: 了解如何使用用于容器的 Azure Monitor 启用对订阅中已部署的 Azure Kubernetes 服务 (AKS) 群集的监视。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85337980"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用对已部署的 Azure Kubernetes 服务 (AKS) 群集的监视
 
@@ -27,10 +26,10 @@ ms.locfileid: "79275446"
 
 ## <a name="enable-using-azure-cli"></a>启用 Azure CLI
 
-以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区的格式类似于 *DefaultWorkspace-\<GUID>-\<Region>* 。  
+以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区类似于*形式 defaultworkspace \<GUID> - \<Region> *的格式。
 
 ```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
 输出如下所示：
@@ -41,7 +40,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>与现有工作区集成
 
-如果要与现有工作区集成，请执行以下步骤，首先确定 `--workspace-resource-id` 参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令以针对指定的工作区启用监视加载项。  
+如果要与现有工作区集成，请执行以下步骤，首先确定 `--workspace-resource-id` 参数所需的 Log Analytics 工作区的完整资源 ID，然后运行命令以针对指定的工作区启用监视加载项。
 
 1. 使用以下命令列出你有权访问的所有订阅：
 
@@ -87,7 +86,7 @@ provisioningState       : Succeeded
 
 ## <a name="enable-using-terraform"></a>使用 Terraform
 
-1. 将 oms_agent 附加配置文件添加到现有 [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile) 资源 
+1. 将 oms_agent 附加配置文件添加到现有 [azurerm_kubernetes_cluster](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile) 资源
 
    ```
    addon_profile {
@@ -108,11 +107,11 @@ provisioningState       : Succeeded
 
 2. 从列表中选择容器  。
 
-3. 在“监视 - 容器”页上，选择“非监视群集”   。
+3. 在 "**监视容器**" 页上，选择 "未**监视群集**"。
 
-4. 从非监视群集的列表中找到容器，然后单击“启用”  。   
+4. 从未监视群集的列表中，找到列表中的容器，然后单击 "**启用**"。
 
-5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
+5. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器见解监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -130,15 +129,15 @@ provisioningState       : Succeeded
 
 2. 在资源列表中，开始键入“Containers”  。  列表会根据输入的内容进行筛选。
 
-3. 选择“Kubernetes 服务”  。  
+3. 选择“Kubernetes 服务”  。
 
     ![Kubernetes 服务链接](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. 在容器列表中，选择一个容器。
 
-5. 在容器概述页面中，选择“监视容器”  。  
+5. 在容器概述页面中，选择“监视容器”  。
 
-6. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。  
+6. 在“载入到用于容器的 Azure Monitor”页上，如果现有 Log Analytics 工作区与群集在同一订阅中，请从下拉列表中选择该工作区  。
     列表预先选择了 AKS 容器在订阅中部署到的默认工作区和位置。
 
     ![启用 AKS 容器运行状况监视](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
@@ -310,7 +309,21 @@ kubectl get ds omsagent --namespace=kube-system
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
+
+如果群集上有 Windows Server 节点，你可以运行以下命令来验证代理是否已成功部署。
+
+```
+kubectl get ds omsagent-win --namespace=kube-system
+```
+
+输出应如下所示，指明其已正确部署：
+
+```output
+User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
+NAME                   DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                   AGE
+omsagent-win           2         2         2         2            2           beta.kubernetes.io/os=windows   1d
+```
 
 若要验证解决方案的部署，请运行以下命令：
 
@@ -328,23 +341,23 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>代理版本低于 06072018
 
-若要验证 06072018  之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：  
+若要验证 06072018** 之前发布的 Log Analytics 代理版本是否已正确部署，请运行以下命令：
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-输出应如下所示，指明其已正确部署：  
+输出应如下所示，指明其已正确部署：
 
 ```output
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
-```  
+```
 
 ## <a name="view-configuration-with-cli"></a>使用 CLI 查看配置
 
-使用 `aks show` 命令获取详细信息，例如，解决方案是否已启用、Log Analytics 工作区 resourceID 是什么，以及有关群集的摘要详细信息。  
+使用 `aks show` 命令获取详细信息，例如，解决方案是否已启用、Log Analytics 工作区 resourceID 是什么，以及有关群集的摘要详细信息。
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>

@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0a3e3455615006c0e93cf32eebcdaedac9960a79
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307450"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027607"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>将自定义命令活动发送到客户端应用程序
 
@@ -28,7 +27,7 @@ ms.locfileid: "85307450"
 
 ## <a name="prerequisites"></a>先决条件
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)或更高版本。 本指南使用 Visual Studio 2019
 > * 用于语音服务的 Azure 订阅密钥：[免费获取一个](get-started.md)，或在[Azure 门户](https://portal.azure.com)上创建它
 > * 以前[创建的自定义命令应用](quickstart-custom-commands-application.md)
 > * 支持语音 SDK 的客户端应用：[如何：使用语音 sdk 与客户端应用程序集成](./how-to-custom-commands-setup-speech-sdk.md)
@@ -46,7 +45,7 @@ ms.locfileid: "85307450"
      "device": "{SubjectDevice}"
    }
    ```
-1. 单击 "**保存**" 以创建具有 Send 活动操作的新规则
+1. 单击 "**保存**" 以使用 "发送活动" 操作创建新规则，**定型**并**发布**更改
 
    > [!div class="mx-imgBorder"]
    > ![发送活动完成规则](media/custom-commands/send-activity-to-client-completion-rules.png)
@@ -55,9 +54,12 @@ ms.locfileid: "85307450"
 
 在[操作方法：使用 SPEECH sdk （预览版）设置客户端应用程序](./how-to-custom-commands-setup-speech-sdk.md)中，你创建了一个使用 speech SDK 的 UWP 客户端应用程序，该应用程序已处理诸如、之类的命令 `turn on the tv` `turn off the fan` 。 添加一些视觉对象后，可以看到这些命令的结果。
 
-使用添加到的以下 XML 添加标记为 **"开**" 或 "**关**" 的文本`MainPage.xaml`
+若要添加带有指示**on**或**off**的带标签的框，请将 system.windows.controls.stackpanel> 的以下 XML 块添加到 `MainPage.xaml` 。
 
 ```xml
+<StackPanel Orientation="Vertical" H......>
+......
+</StackPanel>
 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
     <Grid x:Name="Grid_TV" Margin="50, 0" Width="100" Height="100" Background="LightBlue">
         <StackPanel>
@@ -72,6 +74,7 @@ ms.locfileid: "85307450"
         </StackPanel>
     </Grid>
 </StackPanel>
+<MediaElement ....../>
 ```
 
 ### <a name="add-reference-libraries"></a>添加引用库
@@ -79,15 +82,21 @@ ms.locfileid: "85307450"
 由于已创建 JSON 有效负载，因此需要添加对[JSON.NET](https://www.newtonsoft.com/json)库的引用来处理反序列化。
 
 1. 向右客户端解决方案。
-1. 选择 "**管理解决方案的 NuGet 包**"，选择 "**安装**" 
-1. 在更新列表中搜索 " **Newtonsoft.js** "，将**NETCore**更新为最新版本
+1. 选择 "**管理解决方案的 NuGet 包**"，选择 "**浏览**" 
+1. 如果已**在上安装Newtonsoft.js**，请确保其版本至少为12.0.3。 如果没有，请参阅**管理解决方案更新的 NuGet 包**，搜索更新**Newtonsoft.js** 。 本指南使用版本12.0.3。
 
-> [!div class="mx-imgBorder"]
-> ![发送活动有效负载](media/custom-commands/send-activity-to-client-json-nuget.png)
+    > [!div class="mx-imgBorder"]
+    > ![发送活动有效负载](media/custom-commands/send-activity-to-client-json-nuget.png)
+
+1. 此外，请确保 NuGet 包**NETCore**至少为6.2.10。 本指南使用版本6.2.10。
 
 在 "MainPage" 中，添加
-- `using Newtonsoft.Json;` 
-- `using Windows.ApplicationModel.Core;`
+
+```C#
+using Newtonsoft.Json; 
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
+```
 
 ### <a name="handle-the-received-payload"></a>处理收到的有效负载
 

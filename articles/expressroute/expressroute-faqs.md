@@ -7,12 +7,11 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987307"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -87,15 +86,15 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI - 通过 Azure 区域社区提供，请参阅[此处](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)以了解如何查找 Power BI 租户的区域。
 * Azure Active Directory
-* [Windows 虚拟桌面](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/)（Azure 全球服务社区）
-* 适用于 IaaS（虚拟机、虚拟网络网关、负载均衡器等）的 Azure 公共 IP 地址  
+* 适用于 IaaS 的 Azure 公共 IP 地址（虚拟机、虚拟网络网关、负载均衡器等）  
 * 还支持大多数其他 Azure 服务。 请直接对要使用的服务进行确认来验证是否支持。
 
 不支持：
 
 * CDN
 * Azure Front Door
+* [Windows 虚拟桌面](https://azure.microsoft.com/services/virtual-desktop/)
 * 多重身份验证服务器（旧版）
 * 流量管理器
 
@@ -118,7 +117,7 @@ Microsoft 会验证指定的“播发的公用前缀”和“对等 ASN”（或
 Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客户可以受益于针对 Azure 资源的底层 ExpressRoute 支持。 如果路由器筛选器包含在其中托管 Dynamics 365/CDS 环境的 Azure 区域，则可以连接到其服务终结点。
 
 > [!NOTE]
-> 通过 Azure ExpressRoute 进行 Dynamics 365 连接不需要 [ExpressRoute 高级版](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)。
+> 如果在同一[地缘政治区域](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)内部署了 expressroute 线路[，则](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium)**不**需要通过 Azure expressroute 进行 Dynamics 365 连接。
 
 ## <a name="data-and-connections"></a>数据和连接
 
@@ -152,7 +151,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>如何在专用对等互连上实现冗余？
 
-来自不同对等互连位置的多个 ExpressRoute 线路可以连接到同一个虚拟网络，以提供高可用性，以防单个线路不可用。 随后可以向本地连接[分配更高权重](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)，以便使特定线路成为首选。 强烈建议客户至少设置两个 ExpressRoute 线路，以避免单一故障点。 
+不同的对等位置中的多个 ExpressRoute 线路或来自同一对等位置的最多四个连接可以连接到同一个虚拟网络，以提供高可用性，以防单个线路变为不可用。 然后，可以[将较大的权重分配](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)给某个本地连接，以首选特定线路。 强烈建议客户至少设置两个 ExpressRoute 线路，以避免单一故障点。 
 
 请参阅[此处](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute)以了解如何进行高可用性设计，并参阅[此处](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering)以了解如何进行灾难恢复设计。  
 
@@ -164,7 +163,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何确保连接到 ExpressRoute 的虚拟网络上的高可用性？
 
-通过将不同的对等互连位置（例如，新加坡、新加坡 2）中的 ExpressRoute 线路连接到虚拟网络可以实现高可用性。 如果一条 ExpressRoute 线路出现故障，连接会故障转移到另一条 ExpressRoute 线路。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一条线路优先于另一条线路。 有关详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
+可以通过将最多4个 ExpressRoute 线路连接到虚拟网络，或者将不同的对等位置（例如，新加坡、新加坡2）中的 ExpressRoute 线路连接到虚拟网络来实现高可用性。 如果一条 ExpressRoute 线路出现故障，连接会故障转移到另一条 ExpressRoute 线路。 默认情况下，将基于等成本多路径路由 (ECMP) 对离开虚拟网络的流量进行路由。 可以使用连接权重来使一条线路优先于另一条线路。 有关详细信息，请参阅[优化 ExpressRoute 路由](expressroute-optimize-routing.md)。
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>如何确保 Microsoft 对等互连或公共对等互连上以 Azure 公共服务（如 Azure 存储和 Azure SQL）为目标的流量首选采用 ExpressRoute 路径？
 
@@ -195,7 +194,7 @@ Dynamics 365 和 Common Data Service (CDS) 环境托管在 Azure 上，因此客
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>在相同市内是否可以有多条 ExpressRoute 线路？ 是否可以将这些线路链接到同一虚拟网络？
 
-是的。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果城区内有多个 ExpressRoute 对等位置，并且线路创建在了不同的对等位置，则可以将这些线路链接到同一虚拟网络。 如果在相同对等互连位置创建线路，则可以将最多 4 个线路链接到同一虚拟网络。
+是的。 可以具有多条包含相同或不同服务提供商的 ExpressRoute 线路。 如果城区内有多个 ExpressRoute 对等位置，并且线路创建在了不同的对等位置，则可以将这些线路链接到同一虚拟网络。 如果在同一对等位置创建线路，则可以将最多四个线路链接到同一虚拟网络。
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>如何将我的虚拟网络连接到 ExpressRoute 线路
 

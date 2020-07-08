@@ -5,13 +5,12 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/25/2020
+ms.openlocfilehash: 506bd79a512a5d8d143f582ee84d292dff86d9df
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131225"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392805"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
 
@@ -57,15 +56,15 @@ Azure Database for PostgreSQL 与 Azure Monitor 诊断日志设置相集成。 �
 
 ### <a name="configure-diagnostic-settings"></a>配置诊断设置
 
-可以使用 Azure 门户、CLI、REST API 和 Powershell 为 Postgres 服务器启用诊断设置。 要选择的日志类别为“PostgreSQLLogs”。**** （如果使用[查询存储](concepts-query-store.md)，则还可以配置其他日志。）
+可以使用 Azure 门户、CLI、REST API 和 Powershell 为 Postgres 服务器启用诊断设置。 要选择的日志类别为“PostgreSQLLogs”。 （如果使用[查询存储](concepts-query-store.md)，则还可以配置其他日志。）
 
-使用 Azure 门户启用资源日志：
+若要使用 Azure 门户启用资源日志：
 
-   1. 在门户上 Postgres 服务器的导航菜单中，转到“诊断设置”。**
-   2. 选择 "*添加诊断设置*"。
+   1. 在门户上 Postgres 服务器的导航菜单中，转到“诊断设置”。
+   2. 选择“添加诊断设置”。
    3. 为此设置命名。 
    4. 选择首选的终结点（存储帐户、事件中心、Log Analytics）。 
-   5. 选择日志类型“PostgreSQLLogs”。****
+   5. 选择日志类型“PostgreSQLLogs”。
    7. 保存设置。
 
 若要使用 Powershell、CLI 或 REST API 启用资源日志，请访问[诊断设置](../azure-monitor/platform/diagnostic-settings.md)一文。
@@ -82,6 +81,7 @@ Azure Monitor 日志将发送到所选的工作区。 Postgres 日志使用 **Az
 ```
 AzureDiagnostics
 | where LogicalServerName_s == "myservername"
+| where Category == "PostgreSQLLogs"
 | where TimeGenerated > ago(1d) 
 ```
 
@@ -102,18 +102,18 @@ AzureDiagnostics
 | TenantId | 租户 ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | 记录日志时的时间戳 (UTC) |
-| 类型 | 日志类型。 始终是 `AzureDiagnostics` |
+| 类型 | 日志的类型。 始终是 `AzureDiagnostics` |
 | SubscriptionId | 服务器所属的订阅的 GUID |
-| ResourceGroup | 服务器所属的资源组的名称 |
+| resourceGroup | 服务器所属的资源组的名称 |
 | ResourceProvider | 资源提供程序的名称。 始终是 `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | 资源 URI |
 | 资源 | 服务器的名称 |
-| 类别 | `PostgreSQLLogs` |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | 日志记录级别，示例：LOG、ERROR、NOTICE |
-| 消息 | 主要日志消息 | 
-| Domain | 服务器版本，示例：postgres-10 |
+| errorLevel | 日志记录级别，例如：LOG, ERROR, NOTICE |
+| Message | 主要日志消息 | 
+| 域 | 服务器版本，示例：postgres-10 |
 | 详细信息 | 辅助日志消息（如果适用） |
 | ColumnName | 列名称（如果适用） |
 | SchemaName | 架构名称（如果适用） |

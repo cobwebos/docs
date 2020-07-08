@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: bd973a859ce1fa6a9ce5566b1403331988630960
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 8615a853ea218c0598f33d87d39c9ead15709cc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828094"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955448"
 ---
 # <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商业市场的支持
 
@@ -43,10 +42,9 @@ ms.locfileid: "83828094"
 | 电子邮件： [gtm@microsoft.com](mailto:gtm@microsoft.com) | 支持享受 GTM 权益和提出程序问题。 | 营业时间基于太平洋时区。 |  
 | 电子邮件： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 解答有关 Azure 徽标使用和品牌推广的问题。 |  |  
 
-
 ## <a name="next-steps"></a>后续步骤
 
-* 访问[“商业市场发布者指南”页面](https://docs.microsoft.com/azure/marketplace/)。
-* 详细了解[合作伙伴中心商业市场计划的支持](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+* 访问[“商业市场发布者指南”页面](index.yml)。
+* 详细了解[合作伙伴中心商业市场计划的支持](partner-center-portal/support.md)。
 
 ---

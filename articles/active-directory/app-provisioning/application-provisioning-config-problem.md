@@ -2,21 +2,20 @@
 title: 配置 Azure AD 库应用的用户预配时出现问题
 description: 当为在 Azure AD 应用程序库中列出的某个应用程序配置用户预配时，如何解决面对的常见问题
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: e6fb5fbecc9b2917f4fde2d1ccb76d6962a0af18
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782120"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>为 Azure AD 库应用程序配置用户预配时遇到的问题
 
@@ -28,9 +27,9 @@ ms.locfileid: "82593958"
 
 配置服务后，可通过两个地方了解服务操作的大多数情况：
 
--   **预配日志（预览版）** –[预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)记录预配服务执行的所有操作，包括查询在预配范围内分配的用户 Azure AD。 查询目标应用以验证是否存在这些用户以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。 可以通过在 "**活动**" 部分中选择 " **Azure Active Directory** &gt; **企业应用** &gt; **预配日志（预览版）** " 来访问 Azure 门户中的设置日志。
+-   **预配日志（预览版）** –[预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)记录预配服务执行的所有操作，包括查询在预配范围内分配的用户 Azure AD。 查询目标应用以验证是否存在这些用户以及比较系统之间的用户对象。 然后根据比较结果在目标系统中添加、更新或禁用用户帐户。 可以通过在**Azure Active Directory** &gt; "活动" 部分中选择 "Azure Active Directory**企业应用** &gt; **预配日志（预览版）** **Activity** " 来访问 Azure 门户中的设置日志。
 
--   **当前状态–** 可在屏幕底部的 "服务设置" 下的 " ** &gt; Azure Active Directory Enterprise &gt; \[Apps 应用程序名称\] &gt;预配**" 部分中查看给定应用的最后一次设置运行的摘要。 "当前状态" 部分显示预配周期是否已开始预配用户帐户。 您可以查看周期的进度，查看已设置的用户和组的数量，并查看已创建的角色数。 如果有任何错误，则可在 [设置日志（.。/reports-monitoring/concept-provisioning-logs.md？ context = azure/active directory/管理-应用/上下文/管理-应用-上下文）。
+-   **当前状态–** 可在屏幕底部的 "服务设置" 下的 " **Azure Active Directory &gt; Enterprise Apps &gt; \[ 应用程序名称 \] &gt; 预配**" 部分中查看给定应用的最后一次设置运行的摘要。 "当前状态" 部分显示预配周期是否已开始预配用户帐户。 您可以查看周期的进度，查看已设置的用户和组的数量，并查看已创建的角色数。 如果有任何错误，则可在 [设置日志（.。/reports-monitoring/concept-provisioning-logs.md？ context = azure/active directory/管理-应用/上下文/管理-应用-上下文）。
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>要考虑的有关预配的常规问题范围
 
@@ -66,4 +65,4 @@ ms.locfileid: "82593958"
   * **适用于组的属性映射：** 除预配成员的名称和详细信息外，还预配组名称和组的详细信息（前提是某些应用程序支持这样做）。 可以启用或禁用 "**预配**" 选项卡中显示的组对象**映射**来启用或禁用此功能。如果启用了预配组，请务必查看属性映射以确保 "匹配 ID" 使用合适的字段。 这可以是显示名称或电子邮件别名，因为在匹配属性为空，或没有为 Azure AD 中的某个组填写时，组及组成员将无法进行预配。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](user-provisioning.md)
+[通过 Azure Active Directory 应用程序为 SaaS 自动化用户预配和取消预配](user-provisioning.md)

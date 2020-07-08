@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759520"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
@@ -34,9 +33,9 @@ ms.locfileid: "81759520"
 这些步骤使用 Azure CLI 创建应用注册，然后使用 GUI（门户）设置权限。 若要创建应用注册，需要提供以下五项信息：
 
 - 显示名称：应用注册名称（例如 OCPAzureAD）
-- 主页： OpenShift 控制台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console`）
-- 标识符 URI： OpenShift 控制台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console`）
-- 回复 URL： Master 公共 URL 和应用注册名称（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`）
+- 主页： OpenShift 控制台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console` ）
+- 标识符 URI： OpenShift 控制台 URL （例如， `https://masterdns343khhde.westus.cloudapp.azure.com/console` ）
+- 回复 URL： Master 公共 URL 和应用注册名称（例如， `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD` ）
 - 密码：安全密码（使用强密码）
 
 以下示例使用上述信息创建应用注册：
@@ -69,7 +68,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 门户中：
 
-1. 选择 " **Azure Active Directory** > **应用注册**"。
+1. 选择 " **Azure Active Directory**  >  **应用注册**"。
 2. 搜索应用注册（例如 OCPAzureAD）。
 3. 在结果中，单击“应用注册”。
 4. 在“设置”下，选择“所需的权限”。********
@@ -85,7 +84,7 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
    ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
 
-8. 选择“完成”  。
+8. 选择“完成” 。
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>为 Azure AD 身份验证配置 OpenShift
 

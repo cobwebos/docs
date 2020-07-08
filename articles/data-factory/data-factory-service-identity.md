@@ -8,14 +8,13 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: d47450f3252074d3bae8df97766bf8858fca5972
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416580"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037590"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -163,7 +162,7 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 - 托管标识租户
 - 托管标识应用程序 ID
 
-当你创建支持托管标识身份验证的链接服务（如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等）时，托管标识信息也会显示。
+当你创建链接服务时，托管标识信息也会显示，它支持托管标识身份验证，如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等。
 
 授予权限时，请使用对象 ID 或数据工厂名称（作为托管标识名称）来查找此标识。
 
@@ -191,8 +190,63 @@ Id                    : 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
 Type                  : ServicePrincipal
 ```
 
+### <a name="retrieve-managed-identity-using-rest-api"></a>使用 REST API 检索托管标识
+
+当你获取特定数据工厂时，将返回托管标识主体 ID 和租户 ID，如下所示。
+
+在请求中调用以下 API：
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}?api-version=2018-06-01
+```
+
+**响应**：将获得如下所示的响应。 "标识" 部分会相应填充。
+
+```json
+{
+    "name":"<dataFactoryName>",
+    "identity":{
+        "type":"SystemAssigned",
+        "principalId":"554cff9e-XXXX-XXXX-XXXX-90c7d9ff2ead",
+        "tenantId":"72f988bf-XXXX-XXXX-XXXX-2d7cd011db47"
+    },
+    "id":"/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>",
+    "type":"Microsoft.DataFactory/factories",
+    "properties":{
+        "provisioningState":"Succeeded",
+        "createTime":"2020-02-12T02:22:50.2384387Z",
+        "version":"2018-06-01",
+        "factoryStatistics":{
+            "totalResourceCount":0,
+            "maxAllowedResourceCount":0,
+            "factorySizeInGbUnits":0,
+            "maxAllowedFactorySizeInGbUnits":0
+        }
+    },
+    "eTag":"\"03006b40-XXXX-XXXX-XXXX-5e43617a0000\"",
+    "location":"<region>",
+    "tags":{
+
+    }
+}
+```
+
+> [!TIP] 
+> 若要从 ARM 模板检索托管标识，请在 ARM JSON 中添加 "**输出**" 部分：
+
+```json
+{
+    "outputs":{
+        "managedIdentityObjectId":{
+            "type":"string",
+            "value":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('<dataFactoryName>')), '2018-06-01', 'Full').identity.principalId]"
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>后续步骤
-参阅以下主题，其中介绍了何时以及如何使用数据工厂托管标识：
+请参阅以下主题，其中介绍了何时以及如何使用数据工厂托管标识：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
 - [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)

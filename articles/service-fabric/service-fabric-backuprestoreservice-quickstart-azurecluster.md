@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712456"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>在 Azure Service Fabric 群集中定期备份和还原
 > [!div class="op_single_selector"]
@@ -68,7 +67,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-启用 `Include backup restore service` 选项卡中 `+ Show optional settings` 下的 `Cluster Configuration` 复选框。
+启用 `Cluster Configuration` 选项卡中 `+ Show optional settings` 下的 `Include backup restore service` 复选框。
 
 ![使用门户启用备份还原服务][1]
 
@@ -76,7 +75,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
 ### <a name="using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 首先，需要在群集中启用备份和还原服务  。 获取要部署的群集的模板。 可使用[示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)或创建资源管理器模板。 通过以下步骤启用备份和还原服务  ：
 
-1. 检查 `apiversion` 是否针对  **资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新**`Microsoft.ServiceFabric/clusters`：
+1. 检查 `apiversion` 是否针对 `Microsoft.ServiceFabric/clusters` 资源设置为 `2018-02-01`，如果没有，请按以下代码片段所示进行更新：
 
     ```json
     {
@@ -88,7 +87,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
     }
     ```
 
-2. 现在，通过在 _部分下添加以下_ 部分来启用备份和还原服务，如以下代码片段所示`addonFeatures``properties`： 
+2. 现在，通过在 `properties` 部分下添加以下 `addonFeatures` 部分来启用备份和还原服务，如以下代码片段所示： 
 
     ```json
         "properties": {
@@ -99,7 +98,7 @@ Service Fabric 提供了一组 API 以实现与定期备份和还原功能相关
         }
 
     ```
-3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `BackupRestoreService` 部分下添加以下 `fabricSettings` 部分来配置加密证书，如以下代码片段所示： 
+3. 配置 X.509 证书以用于加密凭据。 此步骤非常重要，可确保在保留之前对提供用于连接存储的凭据进行加密。 通过在 `fabricSettings` 部分下添加以下 `BackupRestoreService` 部分来配置加密证书，如以下代码片段所示： 
 
     ```json
     "properties": {

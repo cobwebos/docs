@@ -5,15 +5,14 @@ author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2020
 ms.service: storage
-ms.subservice: common
-ms.topic: conceptual
+ms.subservice: blobs
+ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: cc82b6578b06323d8cf9a09644d50043dba8e554
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986283"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储上的数据
 
@@ -22,7 +21,7 @@ Blob 索引标记使用键/值标记特性对存储帐户中的数据进行分�
 若要详细了解 Blob 索引，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 > [!NOTE]
-> Blob 索引为公共预览版，在**法国中部**和**法国南部**区域可用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
+> Blob 索引处于公共预览阶段，可在**加拿大中部**、**加拿大东部**、**法国中部**和**法国南部**地区使用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ## <a name="prerequisites"></a>先决条件
 # <a name="portal"></a>[门户](#tab/azure-portal)

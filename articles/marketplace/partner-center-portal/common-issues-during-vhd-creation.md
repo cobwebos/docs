@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/09/2020
-ms.openlocfilehash: addf85f3ed966f45472fec6ee15272574a0f840e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: e96118e3c570faaaffb4cc7ef64e6d2d0e075e47
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724711"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85954170"
 ---
 # <a name="common-issues-during-vhd-creation"></a>创建 VHD 期间出现的常见问题
 
@@ -20,7 +19,7 @@ ms.locfileid: "83724711"
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>如何使用高级存储中的 VHD 从 Azure 门户创建 VM？
 
-Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像创建 VM 产品/服务。 有关详细信息，请参阅 [Azure 托管磁盘概述](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。
+Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像创建 VM 产品/服务。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../virtual-machines/windows/managed-disks-overview.md)。
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>是否可将第 2 代 VM 用于产品/服务？
 
@@ -45,9 +44,9 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 如果使用 Azure 资源管理器部署模型，则有三个选项：
 
-* [使用 Azure 门户创建基于路由的 VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
-* [使用 Azure PowerShell 创建基于路由的 VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-powershell)
-* [使用 CLI 创建基于路由的 VPN 网关](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-cli)
+* [使用 Azure 门户创建基于路由的 VPN 网关](../../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+* [使用 Azure PowerShell 创建基于路由的 VPN 网关](../../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
+* [使用 CLI 创建基于路由的 VPN 网关](../../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
 ## <a name="what-are-microsoft-support-policies-for-running-microsoft-server-software-on-azure-based-vms"></a>有关在基于 Azure 的 VM 上运行 Microsoft 服务器软件的 Microsoft 支持策略有哪些？
 
@@ -75,4 +74,4 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 每当我尝试从 VHD 创建映像时，都会在 Azure PowerShell 中收到错误“VHD 已作为资源注册到映像存储库”。 我之前没有创建任何映像，也没在 Azure 中找到任何带有此名称的映像。 如何解决此问题？
 
-如果从带锁的 VHD 创建了 VM，则通常会出现此问题。 请确认没有从此 VHD 分配 VM，然后重试此操作。 如果问题仍然存在，请开具支持票证。 请参阅[合作伙伴中心支持](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+如果从带锁的 VHD 创建了 VM，则通常会出现此问题。 请确认没有从此 VHD 分配 VM，然后重试此操作。 如果问题仍然存在，请开具支持票证。 请参阅[合作伙伴中心支持](support.md)。

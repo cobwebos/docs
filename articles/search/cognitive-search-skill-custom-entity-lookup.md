@@ -7,30 +7,29 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987478"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自定义实体查找认知技能（预览版）
 
 > [!IMPORTANT] 
 > 此技能目前以公共预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前不支持门户或 .NET SDK。
 
-**自定义实体查找**技能将查找自定义的、用户定义的单词和短语列表中的文本。 使用此列表，它将标记具有任何匹配实体的所有文档。 该技能还支持一定程度的模糊匹配，可用于查找类似但不完全完全相同的匹配项。  
+“自定义实体查找”技能可在用户自定义的单词和短语列表中查找文本。**** 它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。  
 
-此技能未绑定到认知服务 API，可以在预览期间免费使用。 但仍应[附加认知服务资源](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)，以覆盖每日扩充限制。 每日限制适用于通过 Azure 认知搜索访问认知服务的免费访问。
+此技能未绑定到认知服务 API，在预览期可免费使用。 但是，仍然应该[附加一个认知服务资源](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)，以覆盖每日扩充限制。 每日限制适用于通过 Azure 认知搜索免费访问认知服务的情况。
 
 ## <a name="odatatype"></a>@odata.type  
-CustomEntityLookupSkill。 
+Microsoft.Skills.Text.CustomEntityLookupSkill 
 
 ## <a name="data-limits"></a>数据限制
-+ 支持的输入记录的最大大小为 256 MB。 如果你需要在将数据发送到自定义实体查找技能之前分解你的数据，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
-+ 支持的最大实体定义表是 10 MB （如果是使用*entitiesDefinitionUri*参数提供的）。 
-+ 如果使用*inlineEntitiesDefinition*参数以内联方式定义实体，则受支持的最大大小为 10 KB。
++ 支持的最大输入记录大小为 256 MB。 如果在将数据发送到自定义实体查找技能之前需要将其拆分，请考虑使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
++ 如果使用 entitiesDefinitionUri** 参数提供实体定义表，则支持的最大表大小为 10 MB。 
++ 如果使用 *inlineEntitiesDefinition* 参数以内联方式定义实体，则支持的最大大小为 10 KB。
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -38,17 +37,17 @@ CustomEntityLookupSkill。
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| entitiesDefinitionUri    | JSON 或 CSV 文件的路径，该文件包含要匹配的所有目标文本。 在索引器运行开始时，将读取此实体定义;在后续运行之前，不会实现对此文件的任何更新。 此配置必须可通过 HTTPS 访问。 请参阅下面的 "[自定义实体定义](#custom-entity-definition-format)格式" 以了解预期的 CSV 或 JSON 架构。|
-|inlineEntitiesDefinition | 内联 JSON 实体定义。 如果存在，此参数将取代 entitiesDefinitionUri 参数。 以内联方式提供的配置不能超过 10 KB。 请参阅下面的[自定义实体定义](#custom-entity-definition-format)以获取预期的 JSON 架构。 |
-|defaultLanguageCode |    可有可无用于标记和描绘输入文本的输入文本的语言代码。 支持以下语言： `da, de, en, es, fi, fr, it, ko, pt`。 默认值为 "英语`en`（）"。 如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。  |
+| `entitiesDefinitionUri`    | JSON 或 CSV 文件的路径，该文件包含要匹配的所有目标文本。 索引器运行一开始就会读取此实体定义；在后续运行之前，不会识别到在运行中途对此文件所做的任何更新。 必须可以通过 HTTPS 访问此配置。 有关预期的 CSV 或 JSON 架构，请参阅下面的[自定义实体定义](#custom-entity-definition-format)格式。|
+|`inlineEntitiesDefinition` | 内联 JSON 实体定义。 此参数将取代 entitiesDefinitionUri 参数（如果存在）。 可通过内联方式提供不超过 10 KB 的配置。 有关预期的 JSON 架构，请参阅下面的[自定义实体定义](#custom-entity-definition-format)。 |
+|`defaultLanguageCode` |    （可选）用于标记化和描绘输入文本的输入文本的语言代码。 支持以下语言：`da, de, en, es, fi, fr, it, ko, pt`。 默认值为英语 (`en`)。 如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。  |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 说明                   |
+| 输入名称      | 描述                   |
 |---------------|-------------------------------|
-| text          | 要分析的文本。          |
-| languageCode    | 可选。 默认值为 `"en"`。  |
+| `text`          | 要分析的文本。          |
+| `languageCode`    | 可选。 默认值为 `"en"`。  |
 
 
 ## <a name="skill-outputs"></a>技能输出
@@ -56,22 +55,22 @@ CustomEntityLookupSkill。
 
 | 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| 实体 | 对象的数组，其中包含有关找到的匹配项和相关元数据的信息。 标识的每个实体可能包含以下字段：  <ul> <li> *名称*：标识的顶级实体。 实体表示 "规范化" 窗体。 </li> <li> *id*：用户在 "自定义实体定义格式" 中定义的实体的唯一标识符。</li> <li> *说明*：用户使用 "自定义实体定义格式" 定义的实体说明。 </li> <li> *键入：* 用户定义的实体类型，采用 "自定义实体定义格式"。</li> <li> *子类型：* 用户在 "自定义实体定义格式" 中定义的实体子类型。</li>  <li> *匹配*：描述源文本上该实体的每个匹配项的集合。 每个匹配项都具有以下成员： </li> <ul> <li> *text*：原始文本与源文档中的匹配项。 </li> <li> *offset*：在文本中找到匹配项的位置。 </li> <li> *长度*：匹配的文本的长度。 </li> <li> *matchDistance*：此匹配项不同于原始实体名称或别名的字符数。  </li> </ul> </ul>
+| `entities` | 对象的数组，包含有关找到的匹配项和相关元数据的信息。 识别到的每个实体可包含以下字段：  <ul> <li> *name*：识别到的顶级实体。 实体表示“规范化”形式。 </li> <li> *id*：用户以“自定义实体定义格式”定义的实体的唯一标识符。</li> <li> *description*：用户以“自定义实体定义格式”定义的实体说明。 </li> <li> *type*：用户以“自定义实体定义格式”定义的实体类型。</li> <li> *subtype*：用户以“自定义实体定义格式”定义的实体子类型。</li>  <li> *matches*：描述该实体在源文本中的每个匹配项的集合。 每个匹配项具有以下成员： </li> <ul> <li> *text*：源文档中匹配的原始文本。 </li> <li> *offset*：该匹配项在文本中的位置。 </li> <li> *length*:匹配文本的长度。 </li> <li> *matchDistance*：此匹配项与原始实体名称或别名相差的字符数。  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>自定义实体定义格式
 
-有3种不同的方法可向自定义实体查找技能提供自定义实体的列表。 你可以在中提供列表。CSV 文件。作为技能定义的一部分的 JSON 文件或作为内联定义。  
+可通过 3 种不同的方式向自定义实体查找技能提供自定义实体列表。 可以在 .CSV 文件、.JSON 文件中提供列表，或者以内联定义的形式在技能定义中提供列表。  
 
-如果定义文件是一个。CSV 或。JSON 文件，需要将该文件的路径作为*entitiesDefinitionUri*参数的一部分提供。 在这种情况下，将在每次索引器运行开始时下载该文件一次。 只要索引器打算运行，就必须能够访问该文件。 此外，该文件必须采用 UTF-8 编码。
+如果定义文件是 .CSV 或 .JSON 文件，则需要提供该文件的路径作为 entitiesDefinitionUri** 参数的一部分。 在这种情况下，将在每次开始运行索引器时下载该文件一次。 每次想要运行索引器时，都必须能够访问该文件。 此外，该文件必须采用 UTF-8 编码。
 
-如果以内联方式提供定义，则应将其作为*inlineEntitiesDefinition*技能参数的内容提供为内联。 
+如果以内联方式提供定义，应将其作为 *inlineEntitiesDefinition* 技能参数的内容提供。 
 
 ### <a name="csv-format"></a>CSV 格式
 
-您可以提供自定义实体的定义，通过提供文件的路径并在*entitiesDefinitionUri*技能参数中进行设置来在逗号分隔值（CSV）文件中查找。 路径应位于 https 位置。 定义文件的大小最大可为 10 MB。
+可以提供自定义实体的定义来查找逗号分隔值 (CSV) 文件中的内容，方法是提供该文件的路径并在 entitiesDefinitionUri** 技能参数中设置该路径。 该路径应位于 https 位置。 定义文件的最大大小为 10 MB。
 
-CSV 格式很简单。 每行代表一个唯一的实体，如下所示：
+CSV 格式很简单。 每行代表一个唯一实体，如下所示：
 
 ```
 Bill Gates, BillG, William H. Gates
@@ -79,13 +78,13 @@ Microsoft, MSFT
 Satya Nadella 
 ```
 
-在这种情况下，可以将三个实体作为找到的实体（比尔·盖茨、Satya Nadella、Microsoft）返回，但如果文本上的行（别名）上的任何字词均匹配，则将标识它们。 例如，如果在文档中找到字符串 "William"，则将返回 "比尔·盖茨" 实体的匹配项。
+在本例中，可以返回找到的三个实体（Bill Gates、Satya Nadella、Microsoft），但是，如果行（别名）上的任何字词在文本中匹配，则会识别到这些实体。 例如，如果在文档中找到字符串“William H. Gates”，则会返回“Bill Gates”实体的匹配项。
 
 ### <a name="json-format"></a>JSON 格式
 
-还可以提供自定义实体的定义，以在 JSON 文件中查找。 JSON 格式可提供更大的灵活性，因为它允许您定义每个术语的匹配规则。 例如，您可以为每个术语指定模糊匹配距离（Damerau-Levenshtein 距离）或者匹配是否应区分大小写。 
+还可以提供自定义实体的定义，以查找 JSON 文件中的内容。 JSON 格式提供的灵活性要大一些，因为它允许按字词定义匹配规则。 例如，可为每个字词指定模糊匹配距离（Damerau-Levenshtein 距离），或者匹配是否要区分大小写。 
 
- 与 CSV 文件一样，需要提供 JSON 文件的路径，并在*entitiesDefinitionUri*技能参数中进行设置。 路径应位于 https 位置。 定义文件的大小最大可为 10 MB。
+ 与 CSV 文件一样，需要提供 JSON 文件的路径，并在 entitiesDefinitionUri** 技能参数中设置该路径。 该路径应位于 https 位置。 定义文件的最大大小为 10 MB。
 
 最基本的 JSON 自定义实体列表定义可以是要匹配的实体列表：
 
@@ -103,7 +102,7 @@ Satya Nadella
 ]
 ```
 
-更复杂的 JSON 定义示例还可以提供每个实体的 id、说明、类型和子类型以及其他*别名*。 如果匹配别名术语，还将返回该实体：
+更复杂的 JSON 定义示例可以选择性地提供每个实体的 ID、说明、类型和子类型，以及其他别名。** 如果匹配了某个别名字词，则也会返回该实体：
 
 ```json
 [ 
@@ -141,32 +140,32 @@ Satya Nadella
 ] 
 ```
 
-下表更详细地介绍了在定义要匹配的实体时可以设置的不同配置参数：
+下表更详细地描述了在定义要匹配的实体时可以设置的不同配置参数：
 
-|  字段名  |        说明  |
+|  字段名称  |        描述  |
 |--------------|----------------------|
-| name | 顶级实体描述符。 技能输出中的匹配项将按此名称进行分组，并且应表示所找到文本的 "已规范化" 窗体。  |
-| description  | 可有可无此字段可用作有关匹配文本的自定义元数据的传递。 此字段的值将随其在技能表中的实体的每个匹配项显示。 |
-| type | 可有可无此字段可用作有关匹配文本的自定义元数据的传递。 此字段的值将随其在技能表中的实体的每个匹配项显示。 |
-| subtype | 可有可无此字段可用作有关匹配文本的自定义元数据的传递。 此字段的值将随其在技能表中的实体的每个匹配项显示。 |
-| id | 可有可无此字段可用作有关匹配文本的自定义元数据的传递。 此字段的值将随其在技能表中的实体的每个匹配项显示。 |
-| caseSensitive | 可有可无默认值为 false。 指示与实体名称进行比较是否应区分字符大小写的布尔值。 不区分大小写的匹配项 "Microsoft" 可能是： microsoft、microSoft、MICROSOFT |
-| fuzzyEditDistance | 可有可无默认值为0。 最大值为5。 表示可接受的具有实体名称匹配项的分歧字符数。 返回任何给定匹配的可能的最小容差。  例如，如果 "编辑距离" 设置为 "3"，则 "Windows 10" 仍会匹配 "Windows"、"Windows 10" 和 "windows 7"。 <br/> 如果将 "区分大小写" 设置为 "false"，则大小写差异不会计入 "区分大小容差"，否则为。 |
-| defaultCaseSensitive | 可有可无更改此实体的默认区分大小写的值。 它用于更改所有别名 caseSensitive 值的默认值。 |
-| defaultFuzzyEditDistance | 可有可无更改此实体的默认模糊编辑距离值。 它可用于更改所有别名 fuzzyEditDistance 值的默认值。 |
-| 别名 | 可有可无可用于指定根实体名称的替代拼写或同义词的复杂对象数组。 |
+| `name` | 顶级实体描述符。 技能输出中的匹配项将按此名称分组，此名称应表示所找到的文本的“规范化”形式。  |
+| `description`  | （可选）此字段可用作有关匹配文本的自定义元数据的信息传达字段。 此字段的值将连同其在技能输出中的实体的每个匹配项一起显示。 |
+| `type` | （可选）此字段可用作有关匹配文本的自定义元数据的信息传达字段。 此字段的值将连同其在技能输出中的实体的每个匹配项一起显示。 |
+| `subtype` | （可选）此字段可用作有关匹配文本的自定义元数据的信息传达字段。 此字段的值将连同其在技能输出中的实体的每个匹配项一起显示。 |
+| `id` | （可选）此字段可用作有关匹配文本的自定义元数据的信息传达字段。 此字段的值将连同其在技能输出中的实体的每个匹配项一起显示。 |
+| `caseSensitive` | （可选）默认值为 false。 一个布尔值，表示在与实体名称进行比较时是否应区分字符大小写。 不区分大小写的“Microsoft”匹配示例：microsoft, microSoft, MICROSOFT |
+| `fuzzyEditDistance` | （可选）默认值为 0。 最大值为 5。 表示仍看作与实体名称匹配的可接受分歧字符数。 将返回任意给定匹配项的最小可能模糊匹配数。  例如，如果编辑距离设置为 3，则“Windows 10”仍与“Windows”、“Windows10”和“windows 7”匹配。 <br/> 如果区分大小写设置为 false，则大小写差异不会计入模糊匹配容差；否则会计入。 |
+| `defaultCaseSensitive` | （可选）更改此实体的默认区分大小写值。 它用于更改所有别名 caseSensitive 值的默认值。 |
+| `defaultFuzzyEditDistance` | （可选）更改此实体的默认模糊编辑距离值。 它可用于更改所有别名 fuzzyEditDistance 值的默认值。 |
+| `aliases` | （可选）可用于指定根实体名称的替代拼写或同义词的复杂对象数组。 |
 
 | 别名属性 | 说明 |
 |------------------|-------------|
-| text  | 某些目标实体名称的替代拼写或表示形式。  |
-| caseSensitive | 可有可无与上面的根实体 "caseSensitive" 参数的作用相同，但仅适用于这一个别名。 |
-| fuzzyEditDistance | 可有可无与上面的根实体 "fuzzyEditDistance" 参数的作用相同，但仅适用于这一个别名。 |
+| `text`  | 某个目标实体名称的替代拼写或表示形式。  |
+| `caseSensitive` | （可选）作用与前面所述的根实体“caseSensitive”参数相同，但仅应用于这一个别名。 |
+| `fuzzyEditDistance` | （可选）作用与前面所述的根实体“fuzzyEditDistance”参数相同，但仅应用于这一个别名。 |
 
 
 ### <a name="inline-format"></a>内联格式
 
-在某些情况下，更方便的方法是提供自定义实体的列表，以便将内联直接匹配到技能定义。 在这种情况下，您可以对上述方法使用类似的 JSON 格式，但它是在技能定义中内联的。
-只能以内联方式定义小于 10 KB 大小（序列化大小）的配置。 
+在某些情况下，直接在技能定义中提供要内联匹配的自定义实体列表会更方便。 对于这种情况，可以使用类似于前面所述的 JSON 格式，但要将它内联在技能定义中。
+只能以内联方式定义小于 10 KB（序列化大小）的配置。 
 
 ##    <a name="sample-definition"></a>示例定义
 
@@ -188,7 +187,7 @@ Satya Nadella
       }, 
       { 
         "name" : "Xbox One", 
-        "type": "Harware",
+        "type": "Hardware",
         "subtype" : "Gaming Device",
         "id" : "4e36bf9d-5550-4396-8647-8e43d7564a76",
         "description" : "The Xbox One product"
@@ -208,7 +207,7 @@ Satya Nadella
     ]
   }
 ```
-或者，如果您决定提供指向实体定义文件的指针，则下面显示了使用 entitiesDefinitionUri 格式的示例技能定义：
+或者，如果您决定提供一个指向实体定义文件的指针，则使用该格式的示例技能定义如下 `entitiesDefinitionUri` 所示：
 
 ```json
   {
@@ -240,7 +239,7 @@ Satya Nadella
         "recordId": "1",
         "data":
            {
-             "text": "The company microsoft was founded by Bill Gates. Microsoft's gaming console is called Xbox",
+             "text": "The company, Microsoft, was founded by Bill Gates. Microsoft's gaming console is called Xbox",
              "languageCode": "en"
            }
       }
@@ -298,12 +297,12 @@ Satya Nadella
 
 ## <a name="errors-and-warnings"></a>错误和警告
 
-### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告：达到了匹配项的最大容量，跳过所有进一步的重复匹配项。
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告：已达到最大的匹配项容量，将跳过所有后续的重复匹配项。
 
-如果检测到的匹配项数大于允许的最大值，则将发出此警告。 在这种情况下，我们将停止包含重复的匹配项。 如果无法接受这种情况，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)，以便我们可以帮助你使用单个用例。
+如果检测到的匹配项数大于允许的最大值，则将发出此警告。 在这种情况下，我们将停止包含重复的匹配项。 如果这是你无法接受的，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)，以便我们帮助你处理个别用例。
 
 ## <a name="see-also"></a>另请参阅
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [实体识别技能（用于搜索众所周知的实体）](cognitive-search-skill-entity-recognition.md)
++ [实体识别技能（用于搜索已知实体）](cognitive-search-skill-entity-recognition.md)

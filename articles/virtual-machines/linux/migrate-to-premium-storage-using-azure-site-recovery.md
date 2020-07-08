@@ -3,16 +3,15 @@ title: 使用 Azure Site Recovery 将 Linux VM 迁移到 Azure 高级存储
 description: 使用 Site Recovery 将现有虚拟机迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
 author: luywang
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 03e26c344284541116a5b98bc330804b71a64e28
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 734d4f9e3c9832d08b61d98c9f9c8fe860998135
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84660200"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -203,7 +202,7 @@ Site Recovery 将创建类型与支持高级存储的 VM 相同或类似的 VM �
 ## <a name="troubleshooting"></a>疑难解答
 
 * [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [针对 Microsoft Azure Site Recovery 的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
+* [有关 Microsoft Azure Site Recovery 的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
 
 ## <a name="next-steps"></a>后续步骤
 
