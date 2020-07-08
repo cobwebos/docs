@@ -3,20 +3,19 @@ title: Azure Migrate 中的物理服务器迁移支持
 description: 了解 Azure Migrate 中对物理服务器迁移的支持。
 ms.topic: conceptual
 ms.custom: fasttrack-edit
-ms.date: 01/07/2020
-ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/14/2020
+ms.openlocfilehash: fe23989845d3c0b229a194c9a2a58f879b757811
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770333"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理服务器迁移的支持矩阵
 
 本文总结了在[Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)的情况下迁移物理服务器的支持设置和限制。 如果你正在寻找有关评估要迁移到 Azure 的物理服务器的信息，请查看[评估支持矩阵](migrate-support-matrix-physical.md)。
 
-
-## <a name="overview"></a>概述
+## <a name="migrating-machines-as-physical"></a>将计算机作为物理计算机迁移
 
 可以使用基于代理的复制将本地计算机作为物理服务器迁移。 使用此工具可将各种计算机迁移到 Azure：
 
@@ -50,8 +49,8 @@ ms.locfileid: "80520284"
 **磁盘限制** |  每台计算机最多63磁盘。
 **加密磁盘/卷** |  不支持对具有加密磁盘/卷的计算机进行迁移。
 **共享磁盘群集** | 不支持。
-**独立磁盘** | 支持。
-**传递磁盘** | 支持。
+**独立磁盘** | 。
+**传递磁盘** | 。
 **NFS** | 不会复制在计算机上作为卷装载的 NFS 卷。
 **iSCSI 目标** | 无代理迁移不支持具有 iSCSI 目标的计算机。
 **多路径 IO** | 不支持。
@@ -66,14 +65,14 @@ ms.locfileid: "80520284"
 如果在物理服务器上手动设置复制设备，请确保它符合表中汇总的要求。 使用 Azure Migrate 中心提供的 .OVA 模板将 Azure Migrate 复制设备设置为 VMware VM 时，会使用 Windows Server 2016 设置设备，并符合支持要求。 
 
 - 了解[复制设备要求](migrate-replication-appliance.md#appliance-requirements)。
-- 必须在设备上安装 MySQL。 了解[安装选项](migrate-replication-appliance.md#mysql-installation)。
+- MySQL 必须安装在设备上。 了解[安装选项](migrate-replication-appliance.md#mysql-installation)。
 - 了解复制设备需要访问的[url](migrate-replication-appliance.md#url-access) 。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 
 复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。 Site Recovery 运行复制先决条件检查时，如果不符合某些要求，检查将会失败。
 
-组件  | **惠?** | **详细信息**
+**组件** | **要求** | **详细信息**
 --- | --- | ---
 来宾操作系统 | 验证支持的操作系统。<br/> 你可以迁移在受支持的操作系统上运行的任何工作负荷。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
@@ -86,7 +85,7 @@ ms.locfileid: "80520284"
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为**公共**配置文件添加了 TCP 和 UDP 规则，并确保在**Windows 防火墙** > "**允许的应用**" 中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许**Windows 防火墙** -> 中的 rdp 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为**公共**配置文件添加了 TCP 和 UDP 规则，并确保在**Windows 防火墙**"  >  **允许的应用**" 中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，请启用 rdp，并允许**Windows 防火墙**中  ->  的 rdp 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 

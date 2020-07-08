@@ -3,8 +3,8 @@ title: 使用租户限制管理对 SaaS 应用的访问 - Azure AD
 description: 如何使用租户限制来根据用户的 Azure AD 租户管理可访问应用的用户。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763017"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -74,7 +74,7 @@ ms.locfileid: "83680134"
 
 这些标头应包含以下元素：
 
-- 对于 Restrict-Access-To-Tenants，应使用 \<允许租户列表\> 的值，即希望允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- 对于 "*限制访问到租户*"，请使用的值 \<permitted tenant list\> ，它是要允许用户访问的租户的逗号分隔列表。 已注册到某个租户的任何域都可用于在此列表中标识该租户。 例如，若要允许访问 Contoso 和 Fabrikam 租户，名称/值对如下所示： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - 对于 Restrict-Access-Context，应使用单个目录 ID 的值，用于声明哪个租户将要设置租户限制。 例如，要将 Contoso 声明为设置租户限制策略的租户，名称/值对如下所示： `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -155,7 +155,7 @@ Fiddler 是一个免费 Web 调试代理，可用于捕获和修改 HTTP/HTTPS �
 
    1. 在 Fiddler Web 调试器工具中选择“规则”菜单，并选择“自定义规则...”  打开 CustomRules 文件。
 
-   2. 将以下行添加到 `OnBeforeRequest` 函数的开头。 将 \<租户域\> 替换为已注册到租户的域（例如 `contoso.onmicrosoft.com`）。 将 \<directory ID\> 替换为租户的 Azure AD GUID 标识符。
+   2. 将以下行添加到 `OnBeforeRequest` 函数的开头。 将替换为 \<tenant domain\> 注册到你的租户的域（例如 `contoso.onmicrosoft.com` ）。 \<directory ID\>将替换为租户的 AZURE AD GUID 标识符。
 
       ```JScript.NET
       if (

@@ -2,21 +2,21 @@
 title: 使用 Azure AD 配置最终用户如何对应用程序表示同意
 description: 对于将有权访问你组织数据的应用程序，了解管理用户如何及何时对这些应用表示同意的方式。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 0a508e52189938447ea6fc1928d441d81deab392
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83713981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763459"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -49,7 +49,7 @@ ms.locfileid: "83713981"
 1. 在“针对应用程序的用户同意”下，选择想要为所有用户配置的同意设置。
 1. 选择“保存”以保存设置。
 
-![用户同意设置](./media/configure-user-consent/setting-for-all-users.png)
+:::image type="content" source="media/configure-user-consent/setting-for-all-users.png" alt-text="用户同意设置":::
 
 > [!TIP]
 > 请考虑[启用管理员同意工作流](configure-admin-consent-workflow.md)，以允许用户请求管理员评审和批准不允许用户同意的应用程序，例如当用户同意已被禁用或应用程序请求用户无法授予的权限时。
@@ -102,7 +102,7 @@ ms.locfileid: "83713981"
 
 在下例中，我们对单一登录所需的最小一组权限进行了分类：
 
-![权限分类](./media/configure-user-consent/permission-classifications.png)
+:::image type="content" source="media/configure-user-consent/permission-classifications.png" alt-text="权限分类":::
 
 > [!TIP]
 > 对于 Microsoft Graph API，执行基本单一登录所需的最低权限为 `openid`、`profile`、`User.Read` 和 `offline_access`。 通过这些权限，应用可读取已登录用户的个人资料详细信息，即使用户不再使用该应用，也可保留此访问。
@@ -192,7 +192,7 @@ ms.locfileid: "83713981"
 
 在下例中，所有组所有者都可同意应用访问其组数据：
 
-![权限分类](./media/configure-user-consent/group-owner-consent.png)
+:::image type="content" source="media/configure-user-consent/group-owner-consent.png" alt-text="组所有者同意设置":::
 
 ### <a name="configure-group-owner-consent-using-powershell"></a>使用 PowerShell 配置组所有者同意
 

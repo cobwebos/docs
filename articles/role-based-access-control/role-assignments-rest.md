@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 添加或删除 Azure 角色分配-Azure RBAC
-description: 了解如何使用 REST API 和 Azure 基于角色的访问控制（Azure RBAC）为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
+title: 使用 REST API 添加或删除 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 REST API 和 Azure 基于角色的访问控制 (Azure RBAC) 为用户、组、服务主体或托管标识授予对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -11,22 +11,22 @@ ms.service: role-based-access-control
 ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f9a8b35b07a4149fa2d6b9f8e6698e41f3e6870c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: d66b4c8e9f41f661cfc399f72a9ad97405a860fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891298"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790840"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>使用 REST API 添加或删除 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文介绍如何使用 REST API 分配角色。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要添加或删除角色分配，必须拥有以下权限：
 
@@ -34,7 +34,7 @@ ms.locfileid: "82891298"
 
 ## <a name="add-a-role-assignment"></a>添加角色分配
 
-在 Azure RBAC 中，若要授予访问权限，请添加角色分配。 若要添加角色分配，请使用[角色分配 - Create](/rest/api/authorization/roleassignments/create) REST API 并指定安全主体、角色定义和范围。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
+在 Azure RBAC 中，要授予访问权限，请添加角色分配。 若要添加角色分配，请使用[角色分配 - Create](/rest/api/authorization/roleassignments/create) REST API 并指定安全主体、角色定义和范围。 若要调用此 API，必须具有对 `Microsoft.Authorization/roleAssignments/write` 操作的访问权限。 在内置角色中，只有[所有者](built-in-roles.md#owner)和[用户访问管理员](built-in-roles.md#user-access-administrator)具有对此操作的访问权限。
 
 1. 使用[角色定义 - List](/rest/api/authorization/roledefinitions/list) REST API 或参阅[内置角色](built-in-roles.md)，获取你想要分配的角色定义的标识符。
 
@@ -55,10 +55,10 @@ ms.locfileid: "82891298"
     }
     ```
 
-1. 在 URI 内，将“{scope}”  替换为角色分配的范围。
+1. 在 URI 内，将“{scope}”替换为角色分配的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
@@ -67,23 +67,23 @@ ms.locfileid: "82891298"
 
     在前面的示例中，microsoft.web 是引用应用服务实例的资源提供程序。 同样，可以使用任何其他资源提供程序并指定范围。 有关详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)和支持的 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。  
 
-1. 将 *{roleAssignmentId}* 替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentId}”替换为角色分配的 GUID 标识符。
 
 1. 在请求正文中，将 *{scope}* 替换为角色分配的范围。
 
     > [!div class="mx-tableFixed"]
-    > | 范围 | 类型 |
+    > | 作用域 | 类型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理组 |
     > | `subscriptions/{subscriptionId1}` | 订阅 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
-1. 将“{roleDefinitionId}”  替换为角色定义标识符。
+1. 将“{roleDefinitionId}”替换为角色定义标识符。
 
-1. 将“{principalId}”  替换为将分配有角色的用户、组或服务主体的对象标识符。
+1. 将“{principalId}”替换为将分配有角色的用户、组或服务主体的对象标识符。
 
-以下请求和正文将[备份读取](built-in-roles.md#backup-reader)者角色分配给订阅范围内的用户：
+以下请求和正文将[备份读取者](built-in-roles.md#backup-reader)角色分配给订阅范围内的用户：
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
@@ -129,7 +129,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
     DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
-1. 在 URI 内，将“{scope}”** 替换为删除角色分配的范围。
+1. 在 URI 内，将“{scope}”替换为删除角色分配的范围。
 
     > [!div class="mx-tableFixed"]
     > | 作用域 | 类型 |
@@ -139,7 +139,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/micro
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | 资源组 |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | 资源 |
 
-1. 将 *{roleAssignmentId}* 替换为角色分配的 GUID 标识符。
+1. 将“{roleAssignmentId}”替换为角色分配的 GUID 标识符。
 
 以下请求在订阅范围内删除指定的角色分配：
 

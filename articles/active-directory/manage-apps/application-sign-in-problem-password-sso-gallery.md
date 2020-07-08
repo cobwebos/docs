@@ -2,25 +2,25 @@
 title: 登录到为 SSO 配置 Azure AD 库应用时出现问题 |Microsoft Docs
 description: 如何排查为密码单一登录配置的 Azure AD 库应用程序的问题。
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6eebde3a7c6163b7faf92be193fe442cd5b74d2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68381309"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759107"
 ---
 # <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>为 SSO 配置的 Azure AD 库应用的登录问题
 
@@ -47,7 +47,7 @@ ms.locfileid: "68381309"
 
 ## <a name="install-the-access-panel-browser-extension"></a>安装访问面板浏览器扩展
 
-执行以下步骤:
+请执行这些步骤：
 
 1. 在支持的浏览器中打开[访问面板](https://myapps.microsoft.com)，并以用户身份登录 Azure AD。
 
@@ -95,7 +95,7 @@ ms.locfileid: "68381309"
 
 ### <a name="add-the-app-from-the-azure-ad-gallery"></a>从 Azure AD 库添加应用程序
 
-执行以下步骤:
+请执行这些步骤：
 
 1. 打开[Azure 门户](https://portal.azure.com)，并以 "全局管理员" 或 "共同管理员" 身份登录。
 
@@ -119,7 +119,7 @@ ms.locfileid: "68381309"
 
 ### <a name="configure-the-app-for-password-sso"></a>为密码 SSO 配置应用
 
-执行以下步骤:
+请执行这些步骤：
 
 1. 打开[Azure 门户](https://portal.azure.com/)，并以 "全局管理员" 或 "共同管理员" 身份登录。
 

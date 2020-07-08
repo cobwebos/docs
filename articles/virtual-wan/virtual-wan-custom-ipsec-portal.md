@@ -4,15 +4,15 @@ description: 了解如何使用门户为 Azure 虚拟 WAN 配置自定义 IPsec 
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: f37d7f3bfac37253339aab3493fb2c444900e099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515741"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752614"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>使用门户为虚拟 WAN 配置自定义 IPsec 策略
 

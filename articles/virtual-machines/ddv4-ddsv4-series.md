@@ -1,28 +1,26 @@
 ---
-title: Ddv4 和 Ddsv4 系列 - Azure 虚拟机
+title: Ddv4 和 Ddsv4 系列
 description: Dv4、Ddv4、Dsv4 和 Ddsv4 系列 VM 的规格。
 author: brbell
 ms.author: brbell
-ms.reviewer: cynthn
+ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 42b42a7477326196546ad445367691192f00569a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: 28963f7b8d6b7fd7361d114935a401a00b6683a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263239"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753672"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
 
-Ddv4 和 Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理器，具有超线程配置，为大多数通用工作负载提供了更好的价值主张。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔&reg; AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 与 [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 的 [Dv3/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) 大小相比，这些新的 VM 大小的本地存储将增加 50%，而且本地磁盘的读写 IOPS 更佳。
+Ddv4 和 Ddsv4 系列采用英特尔&reg; 至强&reg; 铂金 8272CL (Cascade Lake) 处理器，具有超线程配置，为大多数通用工作负载提供了更好的价值主张。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔&reg; AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持[Intel &reg; 深度学习提升](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与 [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 的 [Dv3/Dsv3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) 大小相比，这些新的 VM 大小的本地存储将增加 50%，而且本地磁盘的读写 IOPS 更佳。
 
 D 系列用例包括企业级应用程序、关系数据库、内存中缓存和分析。
-
-> [!IMPORTANT]
-> 如果正在使用 Ddv4 或 Ddsv4 系列部署新的虚拟机，并且打算使用 Linux 映像，则需要使用 RHEL 8.x、CentOS 8.x，或者 Oracle 7.x 或更高版本。 如果选择 RHEL 7.x、CentOS 7.x 或 Orcale 6.x，则将出现 Kernel Panic 错误。 Microsoft 正在积极部署修复程序。 只有 RHEL、CentOS 和 Oracle 受到影响。 
 
 ## <a name="ddv4-series"></a>Ddv4 系列
 
@@ -40,7 +38,7 @@ ACU：195-210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存: GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2/1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2/2000 |
@@ -69,7 +67,7 @@ ACU：195-210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存: GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120(50) | 3000/48 | 2/1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242(100) | 6400/96 | 2/2000 |
@@ -92,4 +90,4 @@ ACU：195-210
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

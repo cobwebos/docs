@@ -2,21 +2,22 @@
 title: 页面上的链接对应用程序代理应用程序不起作用
 description: 如何对与 Azure AD 集成的应用程序代理应用程序上断开的链接问题进行故障排除
 services: active-directory
-author: msmimart
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca782b5a190704911472d70c414d12afa7e558f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050874b301628348b513b8b5b0c2b878a1dcecaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760195"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>页面上的链接对应用程序代理应用程序不起作用
 
@@ -33,7 +34,7 @@ ms.locfileid: "75430249"
 
 1.  请确保内部 URL 是包含应用程序所有相关链接的根 URL。 这会允许所有链接解析为同一应用程序内发布的内容。
 
-    如果更改了内部 URL，但不想更改用户的登陆页面，则将主页 URL 更改为以前发布的内部 URL。 可以通过转到 "Azure Active Directory"-&gt;应用注册来完成此操作&gt; -选择应用程序&gt;品牌。 在 "品牌" 部分中，你将看到 "主页 URL" 字段，你可以将其调整为所需的登陆页面。 如果仍在使用旧的应用注册体验，"属性" 选项卡将显示 "主页 URL" 详细信息。 
+    如果更改了内部 URL，但不想更改用户的登陆页面，则将主页 URL 更改为以前发布的内部 URL。 可以通过转到 "Azure Active Directory"-应用注册来完成此操作 &gt; - &gt; 选择应用程序 &gt; 品牌。 在 "品牌" 部分中，你将看到 "主页 URL" 字段，你可以将其调整为所需的登陆页面。 如果仍在使用旧的应用注册体验，"属性" 选项卡将显示 "主页 URL" 详细信息。 
     
     > [!IMPORTANT]
     > 若要进行上述更改，你需要在 Azure AD 中修改应用程序对象的权限。需要为用户分配[应用程序管理员](../users-groups-roles/roles-delegate-app-roles.md#assign-built-in-application-admin-roles)角色，该角色向用户授予对 Azure AD 的应用程序 modificaion 权限。

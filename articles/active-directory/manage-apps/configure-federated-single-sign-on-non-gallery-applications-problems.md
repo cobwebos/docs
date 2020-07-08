@@ -3,24 +3,24 @@ title: 配置非库应用程序的联合单一登录时遇到的问题 | Microso
 description: 解决在为 Azure AD 应用程序库中所列且为自定义 SAML 的应用程序配置联合单一登录时可能遇到的常见问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84a8ee8ca29046d26d200aaf853a3efe25f15768
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76711890"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763561"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序的联合单一登录时遇到的问题
 
@@ -48,15 +48,15 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用程序要求的格式�
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择已配置单一登录的应用程序。
 

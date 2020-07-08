@@ -3,25 +3,25 @@ title: 排查 Kerberos 约束委派应用代理问题
 description: 排查应用程序代理的 Kerberos 约束委派配置问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760433"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -135,7 +135,7 @@ Azure AD 应用程序代理可以部署到许多类型的基础结构或环境�
 
       ![IIS 应用程序配置窗口](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
 
-      了解标识后，确保使用上述 SPN 配置此帐户。 示例为 `setspn –q http/spn.wacketywack.com`。 在命令提示符中输入以下文本：
+      了解标识后，确保使用上述 SPN 配置此帐户。 例如 `setspn –q http/spn.wacketywack.com`。 在命令提示符中输入以下文本：
 
       ![显示 SetSPN 命令窗口](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 

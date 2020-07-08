@@ -3,25 +3,25 @@ title: 使用自助应用程序访问时的问题 | Microsoft Docs
 description: 排除与自助应用程序访问相关的问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 8a8a748b11e695041aa6baece381bc8d7d068992
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65784282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760909"
 ---
 # <a name="problem-using-self-service-application-access"></a>使用自助应用程序访问时的问题
 
@@ -47,13 +47,13 @@ ms.locfileid: "65784282"
 
 2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 单击 Azure Active Directory 左侧导航菜单中的 "**企业应用程序**"。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 从列表中选择要对其启用自助访问的应用程序。
 

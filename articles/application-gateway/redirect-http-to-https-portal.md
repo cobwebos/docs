@@ -4,19 +4,19 @@ description: 了解如何使用 Azure 门户创建支持从 HTTP 到 HTTPS 重�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbf4770bf5ac1747d596e6907dbc903ce8c16de9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804352"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
-可以使用 Azure 门户创建具有 TLS 终止证书的[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+可以通过 Azure 门户使用 TLS 终端的证书创建[应用程序网关](overview.md)。 路由规则用于将 HTTP 流量重定向到应用程序网关中的 HTTPS 端口。 在此示例中，还会为包含两个虚拟机实例的应用程序网关的后端池创建一个[虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，学习如何：
 
@@ -31,7 +31,7 @@ ms.locfileid: "81312095"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教程需要 Azure PowerShell 模块 1.0.0 或更高版本以创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本教程中的命令，还需要运行 `Login-AzAccount` 以创建与 Azure 的连接。
+本教程需要 Azure PowerShell 模块 1.0.0 或更高版本以创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 若要运行本教程中的命令，还需要运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 
@@ -126,7 +126,7 @@ Export-PfxCertificate `
 6. 对于“重定向目标”  ，选择“侦听器”  。
 7. 确保“目标侦听器”  设置为“appGatewayHttpListener”  。
 8. 对于“包含查询字符串”  和“包含路径”  ，请选择“是”  。
-9. 选择 **添加** 。
+9. 选择“添加”   。
 
 ## <a name="create-a-virtual-machine-scale-set"></a>创建虚拟机规模集
 
@@ -157,13 +157,13 @@ Export-PfxCertificate `
 3. 选择“后端池”  。
 4. 选择“myAppGatewaymyvmss”  。
 5. 选择“从后端池中删除所有目标”  。
-6. 选择“保存”。 
+6. 选择“保存”  。
 7. 此过程完成之后，选择“myAppGatewaymyvmss”  后端池，选择“删除”  ，然后选择“确定”  以确认。
 8. 选择“appGatewayBackendPool”  。
 9. 在“目标”  下，选择“VMSS”  。
 10. 在“VMSS”  下，选择“myvmss”  。
 11. 在“网络接口配置”  下，选择“myvmssNic”  。
-12. 选择“保存”。 
+12. 选择“保存”  。
 
 ### <a name="upgrade-the-scale-set"></a>升级规模集
 
@@ -203,23 +203,23 @@ Update-AzVmss `
 
 使用 IIS 更改实例之后，必须再次使用此更改升级规模集。
 
-1. 选择“myvmss”**** 规模集。
-2. 在“设置”**** 下，选择“实例”****。
-3. 选择两个实例，然后选择“升级”****。
-4. 单击“是”  以确认。
+1. 选择“myvmss”  规模集。
+2. 在“设置”  下，选择“实例”  。
+3. 选择两个实例，然后选择“升级”  。
+4. 请选择“是”以确认。 
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
 可以从应用程序网关“概述”页面获取应用程序公共 IP 地址。
 
-1. 选择“myAppGateway”****。
-2. 在“概述”**** 页面上，记下“前端公共 IP 地址”**** 下的 IP 地址。
+1. 选择“myAppGateway”  。
+2. 在“概述”  页面上，记下“前端公共 IP 地址”  下的 IP 地址。
 
 3. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如： http://52.170.203.149
 
    ![安全警告](./media/redirect-http-to-https-powershell/application-gateway-secure.png)
 
-4. 若要接受安全警告（如果你使用的是自签名证书），请选择 "**详细信息**"，然后**继续使用网页**。 随即显示受保护的 IIS 网站，如下例所示：
+4. 若要接受有关使用自签名证书的安全警告，请依次选择“详细信息”和“继续转到网页”。   随即显示受保护的 IIS 网站，如下例所示：
 
    ![在应用程序网关中测试基 URL](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173146"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>通过用于 StorSimple 的 Windows PowerShell 安装维护模式更新
@@ -27,13 +27,13 @@ ms.locfileid: "67173146"
 
     两个控制器将重新启动并进入维护模式。
 
-3. 安装维护模式更新。 键入：
+3. 安装维护模式更新。 类型：
 
     `Start-HcsUpdate`
 
     系统会提示进行确认。 确认更新后，它们将安装在当前正在访问的控制器上。 安装这些更新后，将重新启动控制器。
 
-4. 监视更新的状态。 由于当前控制器正在更新且无法处理任何其他命令，请登录到对等控制器。 键入：
+4. 监视更新的状态。 由于当前控制器正在更新且无法处理任何其他命令，请登录到对等控制器。 类型：
 
     `Get-HcsUpdateStatus`
 

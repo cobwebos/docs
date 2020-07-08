@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84752475"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
@@ -31,7 +31,6 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
 * 请求属性名称（参数）可以添加为排除元素，例如：
 
    * 表单字段名称
-   * XML 实体
    * JSON 实体
    * URL 查询字符串参数
 
@@ -39,7 +38,7 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
 
 下面是受支持的匹配条件运算符：
 
-- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器   。
+- **等于**：此运算符用于完全匹配。 例如，要选择名为“bearerToken”的标头，请结合使用等号运算符和设为“bearerToken”的选择器 。
 - **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
 - **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
 - **包含**：此运算符与包含指定选择器值的所有请求字段匹配。

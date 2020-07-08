@@ -5,14 +5,14 @@ author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: 515e64c3c70cc496d5af9761d1561a375f727a55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 0c919e3139fe025f3f1fb4b45c547ebae9662a90
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800574"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84750958"
 ---
 下面是有关如何撰写描述的一些提示：
 

@@ -9,14 +9,14 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74895373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804902"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
 

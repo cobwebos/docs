@@ -3,24 +3,24 @@ title: 添加非库应用程序的问题 | Microsoft Docs
 description: 了解添加自定义非库应用程序时常见的问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/11/2018
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: ce103ca6c958b0524d753da25c2a79aadfb7c8b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65784477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760280"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>添加非库应用程序的问题
 
@@ -96,7 +96,7 @@ ms.locfileid: "65784477"
 
 - **UPN** – 执行操作的用户
 
-  *  示例– **tperkins\@f128.info**
+  *  示例– **tperkins \@ f128.info**
 
 - **租户 ID** – 执行操作的用户所属的租户的唯一 ID
 
@@ -122,7 +122,7 @@ ms.locfileid: "65784477"
 
 - **详细信息** – 由操作导致的所发生情况的详细说明
 
-  *  示例-**内部 url `https://bing.com/`无效，因为它已在使用中**
+  *  示例-**内部 url `https://bing.com/` 无效，因为它已在使用中**
 
 - **复制错误** – 单击“复制错误”文本框右侧的复制图标********，可复制所有通知详细信息以便与支持小组或产品小组共享 
 - 工程师

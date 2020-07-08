@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 771cfa11375e97f2f6a94fc65cbd72306b12cd7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84803972"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何从用于 VM 的 Azure Monitor 查询日志
 
@@ -47,11 +47,11 @@ ms.locfileid: "80396928"
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection** 中的一个逻辑记录内。 
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
-|进程 |进程或进程组的标识，状态为正在启动/接受连接 |
+|过程 |进程或进程组的标识，状态为正在启动/接受连接 |
 |SourceIp |源的 IP 地址 |
 |DestinationIp |目标的 IP 地址 |
 |DestinationPort |目标的端口号 |
@@ -59,7 +59,7 @@ ms.locfileid: "80396928"
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
@@ -70,7 +70,7 @@ ms.locfileid: "80396928"
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
@@ -98,7 +98,7 @@ ms.locfileid: "80396928"
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--|:--|
 |RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
@@ -108,14 +108,14 @@ ms.locfileid: "80396928"
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
-|说明 |观察到的威胁说明。 |
+|描述 |观察到的威胁说明。 |
 |TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White**、Green**、Amber** 和 Red**。 |
 |置信度 |值介于 0 和 100** 之间。 |
-|严重性 |值介于 0 和 5** 之间，其中 5** 表示最严重，0** 表示毫不严重。 默认值为 3**。  |
+|severity |值介于 0 和 5** 之间，其中 5** 表示最严重，0** 表示毫不严重。 默认值为*3*。  |
 |FirstReportedDateTime |提供程序第一次报告指标。 |
 |LastReportedDateTime |Interflow 最后一次看到指标。 |
 |IsActive |使用值 True** 或 False** 指明是否停用标志。 |
@@ -128,11 +128,11 @@ ms.locfileid: "80396928"
 
 VMBoundPort 中的每个记录按以下字段标识： 
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--|:--|
-|进程 | 标识与端口关联的进程（或进程组）。|
+|过程 | 标识与端口关联的进程（或进程组）。|
 |Ip | 端口 IP 地址（可以是通配符 IP *0.0.0.0*） |
-|端口 |端口号 |
+|Port |端口号 |
 |协议 | 协议。  例如 *tcp* 或 *udp*（目前仅支持 *tcp*）。|
  
 端口派生自上述五个字段时使用的标识，存储在 PortId 属性中。 可以使用此属性快速查找一段时间内特定端口的记录。 
@@ -156,12 +156,12 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 类型为*VMComputer*的记录具有具有依赖关系代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *洞察力* | 
 |TimeGenerated | 记录的时间戳（UTC） |
-|计算机 | 计算机 FQDN | 
+|Computer | 计算机 FQDN | 
 |AgentId | Log Analytics 代理的唯一 ID |
 |计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为*m-{GUID}*，其中*Guid*是与 AgentId 相同的 guid。 | 
 |DisplayName | 显示名称 | 
@@ -218,22 +218,22 @@ VMBoundPort 中的每个记录按以下字段标识：
 
 类型为*VMProcess*的记录具有具有依赖关系代理的服务器上的 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *洞察力* | 
 |TimeGenerated | 记录的时间戳（UTC） |
-|计算机 | 计算机 FQDN | 
+|Computer | 计算机 FQDN | 
 |AgentId | Log Analytics 代理的唯一 ID |
 |计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为*m-{GUID}*，其中*Guid*是与 AgentId 相同的 guid。 | 
-|进程 | 服务映射进程的唯一标识符。 它采用*p-{GUID}* 的形式。 
+|过程 | 服务映射进程的唯一标识符。 它采用*p-{GUID}* 的形式。 
 |ExecutableName | 进程可执行文件的名称 | 
 |DisplayName | 进程显示名称 |
-|Role | 进程角色： *web*服务器、 *microsoft.windows.appserver.2008*、 *databaseServer*、 *ldapServer*、 *smbServer* |
+|角色 | 进程角色： *web*服务器、 *microsoft.windows.appserver.2008*、 *databaseServer*、 *ldapServer*、 *smbServer* |
 |组 | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
 |StartTime | 进程池启动时间 |
 |FirstPid | 进程池中的第一个 PID |
-|说明 | 进程说明 |
+|描述 | 进程说明 |
 |CompanyName | 公司名称 |
 |InternalName | 内部名称 |
 |ProductName | 产品名称 |
@@ -434,15 +434,15 @@ let remoteMachines = remote | summarize by RemoteMachine;
 类型为*InsightsMetrics*的记录包含来自虚拟机的来宾操作系统的性能数据。 这些记录的属性在下表中列出：
 
 
-| 属性 | 说明 |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *洞察力* | 
 |TimeGenerated | 收集值的时间（UTC） |
-|计算机 | 计算机 FQDN | 
+|Computer | 计算机 FQDN | 
 |源 | *vm.azm.ms* |
 |命名空间 | 性能计数器的类别 | 
-|名称 | 性能计数器的名称 |
+|“属性” | 性能计数器的名称 |
 |Val | 收集的值 | 
 |Tags | 有关记录的相关详细信息。 请参阅下表，了解用于不同记录类型的标记。  |
 |AgentId | 每台计算机的代理的唯一标识符 |
@@ -451,10 +451,10 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 下表列出了当前收集到*InsightsMetrics*表中的性能计数器：
 
-| 命名空间 | 名称 | 说明 | 单位 | Tags |
+| 命名空间 | “属性” | 描述 | 计价单位 | Tags |
 |:---|:---|:---|:---|:---|
-| 计算机    | 检测信号             | 计算机检测信号                        | | |
-| 内存      | AvailableMB           | 内存可用字节数                    | 字节          | memorySizeMB-内存总大小|
+| Computer    | 检测信号             | 计算机检测信号                        | | |
+| 内存      | AvailableMB           | 内存可用字节数                    | 兆字节      | memorySizeMB-内存总大小|
 | 网络     | WriteBytesPerSecond   | 每秒网络写入字节数            | 每秒字节数 | NetworkDeviceId-设备 Id<br>字节-发送的字节总数 |
 | 网络     | ReadBytesPerSecond    | 每秒网络读取字节数             | 每秒字节数 | networkDeviceId-设备 Id<br>字节-接收的字节总数 |
 | 处理器   | UtilizationPercentage | 处理器使用率百分比          | 百分比        | totalCpus-Cpu 总数 |
@@ -467,7 +467,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | LogicalDisk | ReadLatencyMs         | 逻辑磁盘读取延迟毫秒     | 毫秒   | mountId-设备的装载 ID |
 | LogicalDisk | ReadBytesPerSecond    | 逻辑磁盘每秒读取的字节数        | 每秒字节数 | mountId-设备的装载 ID |
 | LogicalDisk | FreeSpacePercentage   | 逻辑磁盘可用空间百分比        | 百分比        | mountId-设备的装载 ID |
-| LogicalDisk | FreeSpaceMB           | 逻辑磁盘可用空间字节数             | 字节          | mountId-设备的装载 ID<br>diskSizeMB-总磁盘大小 |
+| LogicalDisk | FreeSpaceMB           | 逻辑磁盘可用空间字节数             | 兆字节      | mountId-设备的装载 ID<br>diskSizeMB-总磁盘大小 |
 | LogicalDisk | 每秒字节数        | 每秒逻辑磁盘字节数             | 每秒字节数 | mountId-设备的装载 ID |
 
 

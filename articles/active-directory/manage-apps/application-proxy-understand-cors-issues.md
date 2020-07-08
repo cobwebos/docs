@@ -2,25 +2,25 @@
 title: 了解和解决 Azure AD 应用程序代理 CORS 问题
 description: 了解 Azure AD 应用程序代理中的 CORS，以及如何识别和解决 CORS 问题。
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72025786"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759923"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>了解和解决 Azure Active Directory 应用程序代理 CORS 问题
 
-[跨域资源共享（CORS）](https://www.w3.org/TR/cors/) 有时可能会对通过 Azure Active Directory 应用程序代理发布的应用和 api 提出挑战。 本文讨论 Azure AD 应用程序代理 CORS 问题和解决方案。
+[跨域资源共享（CORS）](https://www.w3.org/TR/cors/)  有时可能会对通过 Azure Active Directory 应用程序代理发布的应用和 Api 提出挑战。 本文讨论 Azure AD 应用程序代理 CORS 问题和解决方案。
 
 浏览器安全性通常会阻止网页向另一个域发出 AJAX 请求。 此限制称为*相同源策略*，可防止恶意站点读取另一个站点中的敏感数据。 但是，有时你可能希望让其他站点调用你的 web API。 CORS 是一种 W3C 标准，可让服务器放宽相同的源策略，并允许一些跨域请求，同时拒绝其他请求。
 
@@ -28,15 +28,15 @@ ms.locfileid: "72025786"
 
 如果两个 Url 具有相同的方案、主机和端口（[RFC 6454](https://tools.ietf.org/html/rfc6454)），则它们具有相同的源，例如：
 
--   http：\//contoso.com/foo.html
--   http：\//contoso.com/bar.html
+-   http： \/ /contoso.com/foo.html
+-   http： \/ /contoso.com/bar.html
 
 以下 Url 的来源不同于前两个 Url：
 
--   http：\//Contoso.net-不同域
--   http：\//Contoso.com:9000/foo.html-不同的端口
--   https：\//Contoso.com/foo.html-不同方案
--   http：\//Www.contoso.com/foo.html-不同的子域
+-   http： \/ /contoso.net-不同域
+-   http： \/ /contoso.com:9000/foo.html-不同的端口
+-   https： \/ /contoso.com/foo.html-不同方案
+-   http： \/ /www.contoso.com/foo.html-不同子域
 
 相同源策略阻止应用从其他源访问资源，除非它们使用正确的访问控制标头。 如果 CORS 标头不存在或不正确，则跨源请求会失败。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "72025786"
 1. 按**F12**打开调试控制台。
 1. 尝试重现该事务，并查看控制台消息。 CORS 冲突产生了有关源的控制台错误。
 
-在下面的屏幕截图中，选择 "试用" 按钮**会**导致 CORS 错误消息：\/在访问控制-允许源标头中找不到 https：/corswebclient-contoso.msappproxy.net。
+在下面的屏幕截图中，选择 "试用" 按钮**会**导致 CORS 错误消息：在 \/ 访问控制-允许源标头中找不到 https：/corswebclient-contoso.msappproxy.net。
 
 ![CORS 问题](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ ms.locfileid: "72025786"
 
 生成的应用 Url 可以有效地解决 CORS 问题：
 
-- https：\//corswebclient-contoso.msappproxy.net/CORSWebService
-- https：\//corswebclient-contoso.msappproxy.net/CORSWebClient
+- https： \/ /corswebclient-contoso.msappproxy.net/CORSWebService
+- https： \/ /corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>选项3：更新 HTTP 标头
 
@@ -101,7 +101,7 @@ Content-type：文本/无格式;字符集 = utf-8 \
 过期时间：-1 \
 Vary：接受编码 \
 服务器： Microsoft-IIS/8.5 HTTPAPI.DLL/2.0 \
-**访问控制-允许-源： https\://corswebclient-contoso.msappproxy.net**\
+**访问控制-允许-源： https \: //corswebclient-contoso.msappproxy.net**\
 X-AspNet-版本： 4.0.30319 \
 X-通过： ASP.NET \
 Content-length：17
@@ -114,7 +114,7 @@ Content-length：17
 
 无法解决某些 CORS 问题，例如当应用重定向到*login.microsoftonline.com*进行身份验证时，访问令牌过期。 否则，CORS 调用将失败。 此方案的一种解决方法是扩展访问令牌的生存期，以防止它在用户会话期间过期。 有关如何执行此操作的详细信息，请参阅[Azure AD 中的可配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)。
 
-## <a name="see-also"></a>另请参阅
-- [教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md) 
+## <a name="see-also"></a>请参阅
+- [教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问](application-proxy-add-on-premises-application.md) 
 - [规划 Azure AD 应用程序代理部署](application-proxy-deployment-plan.md) 
 - [通过 Azure Active Directory 应用程序代理远程访问本地应用程序](application-proxy.md) 

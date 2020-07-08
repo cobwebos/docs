@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 680c1b036b9b41edb1115f478fd5dc8f63ea1d02
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b853817b670f59bbfeef9ecd81c70dc63cbd367b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688046"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804622"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e3d4ca6f8e67f069bffcd27563d7f32b55f6591e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: da62efff5db5c71b087657b0eec93f8dd4702665
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780513"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751504"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -54,24 +54,31 @@ ms.locfileid: "83780513"
 
 1. 确定 ServiceNow 实例名称。 可以在用于访问 ServiceNow 的 URL 中找到实例名称。 在下面的示例中，实例名称为 dev35214。
 
-![ServiceNow 实例](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow 实例](media/servicenow-provisioning-tutorial/servicenow_instance.png)
 
-    
 2. 获取 ServiceNow 中管理员的凭据。 导航到 ServiceNow 中的用户配置文件，并验证该用户是否具有管理员角色。 
 
-![ServiceNow 管理员角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+   ![ServiceNow 管理员角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
+
+3. 检查以确保在 ServiceNow 中**禁用**了以下设置：
+
+   1. 选择 "**系统安全**  >  **高级安全设置**"  >  **要求对传入架构请求进行基本身份验证**。
+   2. 选择 "**系统属性**"  >  **Web 服务**  >  **需要对传入 SOAP 请求进行基本授权**。
+     
+   > [!IMPORTANT]
+   > 如果*启用*了这些设置，则设置引擎将无法与 ServiceNow 通信。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 ServiceNow
 
-从 Azure AD 应用程序库添加 ServiceNow，开始管理到 ServiceNow 的预配。 如果以前为 SSO 设置过 ServiceNow，则可以使用同一应用程序。 但建议在最初测试集成时创建一个单独的应用。 要详细了解如何从库中添加应用程序，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 
+从 Azure AD 应用程序库添加 ServiceNow，开始管理到 ServiceNow 的预配。 如果以前为 SSO 设置过 ServiceNow，则可以使用同一应用程序。 但建议在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义谁在预配范围中 
 
-借助 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来查看谁在预配范围中。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来查看要对谁进行预配，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
+使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来查看要对谁进行预配，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
 * 将用户和组分配到 ServiceNow 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
-* 先小部分测试。 在向全员推出之前，请对少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-servicenow"></a>步骤 5。 对 ServiceNow 配置自动用户预配 
@@ -80,7 +87,7 @@ ms.locfileid: "83780513"
 
 ### <a name="to-configure-automatic-user-provisioning-for-servicenow-in-azure-ad"></a>若要在 Azure AD 中为 ServiceNow 配置自动用户预配，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序”。 
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -90,17 +97,17 @@ ms.locfileid: "83780513"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![预配选项卡](common/provisioning-automatic.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分中，输入 ServiceNow 管理员凭据和用户名。 单击“测试连接”以确保 Azure AD 可以连接到 ServiceNow。 如果连接失败，请确保 ServiceNow 帐户具有管理员权限，然后重试。
 
     ![预配](./media/servicenow-provisioning-tutorial/provisioning.png)
 
-6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选择“发生故障时发送电子邮件通知”复选框 。
+6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中“发生故障时发送电子邮件通知”复选框 。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
@@ -128,13 +135,13 @@ ms.locfileid: "83780513"
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次。 
+此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步周期 。 初始周期执行的时间比后续周期长，只要 Azure AD 预配服务正在运行，后续周期大约每隔 40 分钟就会进行一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)以查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。  
 
 ## <a name="troubleshooting-tips"></a>故障排查提示
@@ -142,6 +149,14 @@ ms.locfileid: "83780513"
 * EntryJoiningPropertyValueIsMissing：查看[属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)以识别匹配的属性。 该值必须存在于要预配的用户或组上。 
 * 查看 [ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) 以了解任何要求或限制（例如，为用户指定国家/地区代码的格式）
 * 默认情况下，预配请求将发送到 https://{你的实例名称}.service-now.com/{表名称}。 如果需要一个自定义租户 URL，可以在实例名称字段中提供整个 URL。
+* **ServiceNowInstanceInvalid** 
+  
+  `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
+
+   此错误表示与 ServiceNow 实例通信时出现问题。 仔细检查以确保在 ServiceNow 中*禁用*了以下设置：
+   
+   1. 选择 "**系统安全**  >  **高级安全设置**"  >  **要求对传入架构请求进行基本身份验证**。
+   2. 选择 "**系统属性**"  >  **Web 服务**  >  **需要对传入 SOAP 请求进行基本授权**。
 
 ## <a name="additional-resources"></a>其他资源
 

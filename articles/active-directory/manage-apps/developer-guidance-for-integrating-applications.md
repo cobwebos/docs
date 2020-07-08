@@ -3,22 +3,21 @@ title: 注册应用程序以使用 Azure Active Directory | Microsoft Docs
 description: 本文专门为 IT 专业人员编写，提供有关将 Azure 应用程序与 Active Directory 集成的指导。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
-ms.author: mimart
-ms.custom: seohack1
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba54f8042c20a00f8d559ddce28e007a93afaace
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67108278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763408"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>为 Azure Active Directory 开发业务线应用
 本指南提供开发用于 Azure Active Directory (AD) 的业务线 (LoB) 应用程序的概述，目标受众为 Active Directory/Office 365 全局管理员。

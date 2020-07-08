@@ -5,14 +5,14 @@ author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: include
 ms.date: 05/19/2020
-ms.openlocfilehash: 6713d93400bc391f4de7e07cc024ff9df2849a39
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 7dd9de43e172737c96c3ee4cb5611cd2b2bee137
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700962"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84750948"
 ---
 使用 HTML 标记设置说明的格式，以使其更具吸引力。 大多数标记都需要打开组件和关闭组件，如下表所示。
 

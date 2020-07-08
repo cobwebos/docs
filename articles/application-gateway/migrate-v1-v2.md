@@ -4,15 +4,15 @@ description: 本文介绍如何将 Azure 应用程序网关和 Web 应用程序�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 27e8eaa7b8171d6ccc43f6abc8a4b3d1017d30cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198804"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804399"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2
 
@@ -59,7 +59,7 @@ ms.locfileid: "83198804"
 
 只有尚未在计算机上安装 Azure Az 模块时才能使用此选项。 如果已安装，则以下命令将显示错误。 可以卸载 Azure Az 模块，或者另一个选项手动下载并运行该脚本。
   
-通过以下命令运行该脚本以获取最新版本：
+使用以下命令运行该脚本以获取最新版本：
 
 `Install-Script -Name AzureAppGWMigration -Force`
 
@@ -67,7 +67,7 @@ ms.locfileid: "83198804"
 
 ### <a name="install-using-the-script-directly"></a>直接使用脚本安装
 
-如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。  此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
+如果已安装某些 Azure Az 模块并且无法卸载它们（或者不想卸载），可以使用脚本下载链接中的“手动下载”选项卡手动下载该脚本。 此脚本将作为原始 nupkg 文件下载。 若要安装此 nupkg 文件中的脚本，请参阅[手动下载包](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
 若要运行该脚本，请执行以下操作：
 
@@ -90,7 +90,7 @@ ms.locfileid: "83198804"
    ```
 
    脚本的参数：
-   * **resourceId: [String]:Required** - 这是现有的 Standard v1 或 WAF v1 网关的 Azure 资源 ID。 若要查找此字符串值，请导航到 Azure 门户，选择你的应用程序网关或 WAF 资源，然后单击网关对应的“属性”链接。  资源 ID 位于该页上。
+   * **resourceId: [String]:Required** - 这是现有的 Standard v1 或 WAF v1 网关的 Azure 资源 ID。 若要查找此字符串值，请导航到 Azure 门户，选择你的应用程序网关或 WAF 资源，然后单击网关对应的“属性”链接。 资源 ID 位于该页上。
 
      也可以运行以下 Azure PowerShell 命令获取资源 ID：
 
@@ -125,7 +125,7 @@ ms.locfileid: "83198804"
 
       若要创建 PSApplicationGatewayTrustedRootCertificate 对象列表，请参阅 [AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0)。
    * **privateIpAddress: [String]:Optional**。 要关联到新 v2 网关的特定专用 IP 地址。  此地址必须来自为新 v2 网关分配的同一 VNet。 如果未指定，该脚本将为 v2 网关分配一个专用 IP 地址。
-   * **publicIpResourceId: [String]:Optional**。 订阅中要分配给新 v2 网关的现有公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了“-IP”  的 v2 网关名称。
+   * **publicIpResourceId: [String]:Optional**。 订阅中要分配给新 v2 网关的现有公共 IP 地址（标准 SKU）资源的 resourceId。 如果未指定参数，该脚本将在同一资源组中分配一个新的公共 IP。 名称是追加了“-IP”的 v2 网关名称。
    * **validateMigration: [switch]:Optional**。 如果你希望在创建 v2 网关并复制配置后让脚本执行一些基本的配置比较验证，请使用此参数。 默认不会执行任何验证。
    * **enableAutoScale: [switch]:Optional**。 如果你希望在创建新的 v2 网关后让脚本启用自动缩放，请使用此参数。 默认会禁用自动缩放。 以后，始终可以在创建新的 v2 网关后手动启用自动缩放。
 
@@ -196,7 +196,7 @@ ms.locfileid: "83198804"
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时我遇到了一些问题。 如何求助？
   
-你可以在主题 "配置和设置/迁移到 V2 SKU" 下联系 Azure 支持。 [在此处了解有关 Azure 支持](https://azure.microsoft.com/support/options/)的详细信息。
+可以使用“配置和设置/迁移到 V2 SKU”主题与 Azure 支持部门联系。 在[此处](https://azure.microsoft.com/support/options/)详细了解 Azure 支持。
 
 ## <a name="next-steps"></a>后续步骤
 

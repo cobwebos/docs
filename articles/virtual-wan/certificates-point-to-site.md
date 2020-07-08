@@ -4,15 +4,15 @@ description: 在 Windows 10 或 Windows Server 2016 上使用 PowerShell 创建�
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0303bac88f34c895a4a680cd5bff0e9d1513d2e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5361df9e9cfc9f5d299d494ed634dcaaaf2e707
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059905"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753624"
 ---
 # <a name="generate-and-export-certificates-for-user-vpn-connections"></a>为用户 VPN 连接生成和导出证书
 

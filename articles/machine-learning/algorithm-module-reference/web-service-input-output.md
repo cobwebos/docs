@@ -1,6 +1,6 @@
 ---
-title: Web 服务输入/输出
-description: 了解 Azure 机器学习设计器中的 web 服务模块（预览）
+title: Web 服务输入/输出：模块参考
+description: 了解 Azure 机器学习设计器（预览版）中的 Web 服务模块
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,44 +9,45 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
-ms.openlocfilehash: be940e3ba693270707e22ffc7b9377dbea1df5f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded976fc9090535f3c683b5c6351646a55265205
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81462082"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751107"
 ---
-# <a name="web-service-inputoutput"></a>Web 服务输入/输出
+# <a name="web-service-input-and-web-service-output-modules"></a>Web 服务输入和 Web 服务输出模块
 
-本文介绍 Azure 机器学习设计器（预览版）中的 " **Web 服务输入**模块" 和 " **web 服务输出**" 模块。
+本文介绍 Azure 机器学习设计器（预览版）中的 Web 服务输入和 Web 服务输出模块。
 
-**Web 服务输入**模块只能连接到类型为**DataFrameDirectory**的输入端口。 和**Web 服务输出**模块只能从类型为**DataFrameDirectory**的输出端口连接。 可在模块树中的 " **Web 服务**" 类别下找到这两个模块。 
+Web 服务输入模块只能连接到类型为 DataFrameDirectory 的输入端口****。 Web 服务输出模块只能从类型为 DataFrameDirectory 的输出端口进行连接****。 可以在“Web 服务”类别下的模块树中找到这两个模块****。 
 
-**Web 服务输入**模块用于指示用户数据进入管道的位置， **web 服务输出**模块用于指示用户数据在实时推理管道中的返回位置。
+Web 服务输入模块指示用户数据进入管道的位置。 Web 服务输出模块指示实时推理管道中返回用户数据的位置。
 
-## <a name="how-to-use-web-service-inputoutput"></a>如何使用 Web 服务输入/输出
+## <a name="how-to-use-web-service-input-and-output"></a>如何使用 Web 服务输入和输出
 
-- 当你从定型管道创建实时推理管道时，将自动添加**Web 服务输入**和**web 服务输出**模块，以显示用户数据进入管道的位置和返回数据的位置。 
+从训练管道[创建实时推理管道](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline)时，将自动添加 Web 服务输入和 Web 服务输出模块，以显示用户数据进入管道的位置和数据返回的位置。 
 
-    详细了解如何[创建实时推理管道](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#create-a-real-time-inference-pipeline)。
+> [!NOTE]
+> 自动生成实时推理管道是基于规则的尽力而为的过程。 无法保证正确性。 
 
-    > [!NOTE]
-    > 自动生成实时推理管道是一项基于规则的尽力操作过程，不保证正确性。 你可以手动添加或删除**Web 服务输入/输出**模块，以满足你的要求。 请确保实时推理管道中至少有一个**Web 服务输入**模块和一个**web 服务输出**模块。 如果有多个**Web 服务输入**或**web 服务输出**模块，请确保它们具有唯一名称，您可以在模块的右面板中输入名称。
+若要满足你的需求，可以手动添加 Web 服务输入和 Web 服务输出模块或将其删除。 确保实时推理管道至少有一个 Web 服务输入模块和一个 Web 服务输出模块。 如果有多个 Web 服务输入或 Web 服务输出模块，请确保它们具有唯一的名称。 可以在模块的右侧面板中输入名称。
 
-- 还可以通过将**Web 服务输入**和**web 服务输出**模块添加到未提交的管道来手动创建实时推理管道。
+还可以通过将 Web 服务输入和 Web 服务输出模块添加到未提交的管道中来手动创建实时推理管道。
 
-    > [!NOTE]
-    >  管道类型将在第一次提交时确定。 如果要创建实时推理管道，请确保在首次提交前添加**Web 服务输入**和**web 服务输出**模块。
+> [!NOTE]
+> 管道类型将在首次提交时确定。 在首次提交之前，请确保添加 Web 服务输入和 Web 服务输出模块。
 
-   下面的示例演示如何从**执行 Python 脚本**模块手动创建实时推理管道。 
+下面的示例演示如何从“执行 Python 脚本”模块手动创建实时推理管道。 
 
-   ![示例](media/module/web-service-input-output-example.png)
+![示例](media/module/web-service-input-output-example.png)
    
-   提交管道并成功完成运行后，你将能够部署实时终结点。
+提交管道并成功完成运行之后，可以部署实时终结点。
    
-   > [!NOTE]
-   >  在上面的示例中，**手动输入数据**为 web 服务输入提供数据架构，并是部署实时终结点所必需的。 通常，应始终将模块或数据集连接到**Web 服务输入**连接到的端口，以提供数据架构。
+> [!NOTE]
+>  在前面的示例中，“手动输入数据”为 Web 服务输入提供了数据架构，并且对于部署实时终结点是必需的****。 通常，应始终将模块或数据集连接到 Web 服务输入连接的端口，以提供数据架构****。
    
 ## <a name="next-steps"></a>后续步骤
-详细了解如何[部署实时终结点](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)。
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。
+详细了解[部署实时终结点](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy#deploy-the-real-time-endpoint)。
+
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。

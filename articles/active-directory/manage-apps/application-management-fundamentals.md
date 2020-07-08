@@ -3,42 +3,43 @@ title: 应用程序管理：最佳实践和建议 |Microsoft Docs
 description: 了解有关在 Azure Active Directory 中管理应用程序的最佳做法和建议。 了解如何使用自动预配并使用应用程序代理发布本地应用。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: reference
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2019
 ms.subservice: app-mgmt
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6534efb6fcd07ee3b9f3979cabf2feb77496a8b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74085286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760263"
 ---
 # <a name="application-management-best-practices"></a>应用程序管理最佳做法
+
 本文包含有关使用自动预配在 Azure Active Directory （Azure AD）中管理应用程序、使用应用程序代理发布本地应用的建议和最佳实践。
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>Cloud app and 单一登录建议
-| 建议 | 说明 |
+| 建议 | 注释 |
 | --- | --- |
 | 检查应用的 Azure AD 应用程序库  | Azure AD 有一个库，其中包含数千个使用企业单一登录（SSO）启用的预先集成的应用程序。 有关特定于应用的安装指南，请参阅[SaaS 应用教程的列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)。  | 
 | 使用基于 SAML 的联合 SSO  | 当应用程序支持该应用程序时，将基于 SAML 的联合 SSO 与 Azure AD 而不是基于密码的 SSO 和 ADFS 结合使用。  | 
 | 使用 SHA-256 进行证书签名  | 默认情况下，Azure AD 使用 SHA-256 算法为 SAML 响应签名。 使用 SHA-256，除非应用程序要求使用 SHA-1 （请参阅[证书签名选项](certificate-signing-options.md)和[应用程序登录问题](application-sign-in-problem-application-error.md)）。  | 
 | 需要用户分配  | 默认情况下，用户可以访问你的企业应用程序，而无需将其分配给他们。 但是，如果应用程序公开角色或者希望应用程序显示在用户的访问面板上，则需要用户分配。 （请参阅[开发人员集成应用程序指南](developer-guidance-for-integrating-applications.md)。）  | 
-| 将我的应用访问面板部署到用户 | 上`https://myapps.microsoft.com`的[访问面板](end-user-experiences.md)是一个基于 web 的门户，它为用户提供分配给基于云的应用程序的单一入口点。 添加了组管理和自助密码重置等附加功能后，用户可以在访问面板中找到它们。 请参阅[计划访问面板部署](access-panel-deployment-plan.md)。
+| 将我的应用访问面板部署到用户 | 上的[访问面板](end-user-experiences.md) `https://myapps.microsoft.com` 是一个基于 web 的门户，它为用户提供分配给基于云的应用程序的单一入口点。 添加了组管理和自助密码重置等附加功能后，用户可以在访问面板中找到它们。 请参阅[计划访问面板部署](access-panel-deployment-plan.md)。
 | 使用组分配  | 如果订阅中包含组，则将组分配给应用程序，以便可以将正在进行的访问管理委派给组所有者。 （请参阅[开发人员集成应用程序指南](developer-guidance-for-integrating-applications.md)。）   | 
 | 建立管理证书的过程 | 签名证书的最长生存期为三年。 若要防止或最大程度地减少因证书过期而导致的故障，请使用角色和电子邮件通讯组列表，以确保密切监视与证书相关的更改通知。 |
 
 ## <a name="provisioning-recommendations"></a>预配建议
-| 建议 | 说明 |
+| 建议 | 注释 |
 | --- | --- |
 | 使用教程通过云应用设置预配 | 请查看[SaaS 应用教程列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)，以获取有关为要添加的库应用配置预配的分步指导。 |
 | 使用预配日志（预览版）监视状态 | [预配日志](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)提供了预配服务执行的所有操作的详细信息，包括各个用户的状态。 |
@@ -46,7 +47,7 @@ ms.locfileid: "74085286"
 
 
 ## <a name="application-proxy-recommendations"></a>应用程序代理建议
-| 建议 | 说明 |
+| 建议 | 注释 |
 | --- | --- |
 | 使用应用程序代理远程访问内部资源 | 建议将应用程序代理用于向远程用户提供对内部资源的访问权限，而不需要使用 VPN 或反向代理。 它不用于从企业网络访问资源，因为它可能会增加延迟。
 | 使用自定义域 | 为你的应用程序设置自定义域（请参阅[配置自](application-proxy-configure-custom-domain.md)定义域），以便用户和应用程序之间的 url 可以从你的网络内部或外部运行。 你还可以控制你的品牌并自定义你的 Url。  使用自定义域名时，计划从非 Microsoft 可信证书颁发机构获取公共证书。 Azure 应用程序 Proxy 支持标准、（[通配符](application-proxy-wildcard.md)）或基于 SAN 的证书。 （请参阅[应用程序代理计划](application-proxy-deployment-plan.md)。） |

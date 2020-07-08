@@ -5,22 +5,22 @@ titleSuffix: Azure Virtual WAN
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: 74347ce969b6a5ffd57f5ca8396517e78590f3f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c65d194d03dd1b7ff4cc2f3b45d84ff7909968
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753363"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>为用户 VPN OpenVPN 协议连接创建 Azure Active Directory 租户
 
 连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，在使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 本文可帮助你设置用于虚拟 WAN 用户 VPN （点到站点）开放 VPN 身份验证的 Azure AD 租户。
 
 > [!NOTE]
-> 仅 OpenVPN&reg;协议连接支持 Azure AD 身份验证。
+> 仅 OpenVPN&reg; 协议连接支持 Azure AD 身份验证。
 >
 
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1.创建 Azure AD 租户

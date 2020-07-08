@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f8df703030220f2c5a79bdb34e3ffbac8ee84a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84762116"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -52,6 +52,13 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 > [!NOTE]
 > 在 Azure Functions 消耗量和高级计划中运行时， [Azure Functions 规模控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将每10秒轮询一次每个控件和一次工作项队列。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
+
+### <a name="orchestration-start-delays"></a>业务流程启动延迟
+通过 `ExecutionStarted` 将消息放入任务中心的控件队列之一来启动业务流程实例。 在某些情况下，您可能会发现，当某一业务流程的计划运行以及它实际开始运行时，它们之间的延迟时间会很多。 在此时间间隔内，业务流程实例将保持 `Pending` 状态。 此延迟有两个可能的原因：
+
+1. **囤积控制队列**：如果此实例的控制队列包含大量消息，则可能需要一段时间才能 `ExecutionStarted` 由运行时接收和处理消息。 当业务流程同时处理大量事件时，可能会发生消息积压。 进入控制队列的事件包括业务流程启动事件、活动完成、持久计时器、终止和外部事件。 如果此延迟在正常情况下发生，请考虑创建具有更多分区的新的任务中心。 配置更多分区将导致运行时为负载分配创建更多控制队列。
+
+2. **回退轮询延迟**：业务流程延迟的另一个常见原因是[前面介绍了控制队列的回退轮询行为](#queue-polling)。 但是，仅当应用扩展到两个或多个实例时，才会出现这种延迟。 如果只有一个应用程序实例，或者，如果启动业务流程的应用程序实例也是轮询目标控制队列的同一个实例，则不会出现队列轮询延迟。 如前文所述，可通过更新设置的**host.js**降低轮询延迟。
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
@@ -220,7 +227,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
-如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。**** 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使使用扇出，扇入模式并等待完成所有任务（例如，在 .NET 或`Task.WhenAll` `context.df.Task.all` JavaScript 中使用），在一段时间内处理任务响应的批处理时，也会发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
+如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。**** 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使使用扇出，扇入模式并等待完成所有任务（例如， `Task.WhenAll` 在 .net 或 JavaScript 中使用 `context.df.Task.all` ），在一段时间内处理任务响应的批处理时，也会发生重播。 启用扩展会话后，业务流程协调程序函数实例将在内存中保存更长时间，同时，无需重播完整历史记录即可处理新消息。
 
 对于以下情况，往往可以观测到扩展会话对性能的改进：
 

@@ -3,8 +3,8 @@ title: 适用于 Azure AD 应用的高级 SAML 令牌证书签名选项
 description: 了解如何使用 Azure Active Directory 中预先集成的应用的 SAML 令牌中的高级证书签名选项
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2625698ae1d76dbae3ed8a8855b88dd6ac7bb17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77159193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763680"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 中库应用的 SAML 令牌中的高级证书签名选项
 
@@ -69,8 +69,8 @@ Azure AD 支持两种签名算法或安全哈希算法（Sha）来对 SAML 响�
 
    ![示例： "SAML 签名证书" 页](./media/certificate-signing-options/saml-signing-page.png)
 
-1. 在“签名选项”下拉列表中，选择“为 SAML 响应签名”、“为 SAML 断言签名”或“为 SAML 响应和断言签名”。**************** 本文前面的[证书签名选项](#certificate-signing-options)中显示了这些选项的说明。
-1. 在“签名算法”下拉列表中，选择“SHA-1”或“SHA-256”。************ 本文前面的 "[证书签名算法](#certificate-signing-algorithms)" 部分中显示了这些选项的说明。
+1. 在“签名选项”下拉列表中，选择“为 SAML 响应签名”、“为 SAML 断言签名”或“为 SAML 响应和断言签名”。    本文前面的[证书签名选项](#certificate-signing-options)中显示了这些选项的说明。
+1. 在“签名算法”下拉列表中，选择“SHA-1”或“SHA-256”。   本文前面的 "[证书签名算法](#certificate-signing-algorithms)" 部分中显示了这些选项的说明。
 1. 如果你对选择满意，请选择 "**保存**" 以应用新的 SAML 签名证书设置。 否则，请选择**X**以放弃更改。
 
 ## <a name="next-steps"></a>后续步骤

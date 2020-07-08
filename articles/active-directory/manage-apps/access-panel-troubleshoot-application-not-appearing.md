@@ -3,25 +3,25 @@ title: 访问面板中未显示已分配的应用程序 | Microsoft Docs
 description: 关于访问面板中未显示应用程序的疑难解答
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69f5196484b841e8f0de72ce52ae48e00963f6f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67272745"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760989"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>访问面板中未显示已分配的应用程序
 
@@ -77,11 +77,11 @@ ms.locfileid: "67272745"
 
 1.  打开[Azure 门户](https://portal.azure.com)并以 "**全局管理员**" 或 "**共同**管理员" 身份登录
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  在“企业应用程序”**** 窗格的右上角，单击“添加”**** 按钮。
 
@@ -101,15 +101,15 @@ ms.locfileid: "67272745"
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择要配置单一登录的应用程序。
 
@@ -137,7 +137,7 @@ ms.locfileid: "67272745"
 
 13. 单击“配置 &lt;应用程序名称&gt;”**** 以访问关于了解如何在应用程序中配置单一登录的文档。 此外，你还拥有为应用程序设置 SSO 所必需的元数据 URL 和证书。
 
-14. 单击“保存”**** 以保存配置。
+14. 单击 "**保存**" 以保存配置。
 
 15. 将用户分配到应用程序。
 
@@ -147,13 +147,13 @@ ms.locfileid: "67272745"
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
    * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”**** 顶部的“筛选器”**** 控件，并将“显示”**** 选项设置为“所有应用程序”****。
 
@@ -182,15 +182,15 @@ ms.locfileid: "67272745"
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择已配置单一登录的应用程序。
 
@@ -218,11 +218,11 @@ ms.locfileid: "67272745"
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5. 在“企业应用程序”**** 窗格的右上角，单击“添加”**** 按钮。
 
@@ -250,7 +250,7 @@ ms.locfileid: "67272745"
 
     1. 单击“添加属性”****。 输入“名称”****，并从下拉列表中选择“值”****。
 
-    2. 单击 "**保存"。** 然后就能在表中看到新属性了。
+    2. 单击“保存”。 然后就能在表中看到新属性了。
 
 14. 单击“配置 &lt;应用程序名称&gt;”**** 以访问关于了解如何在应用程序中配置单一登录的文档。 此外，你还拥有应用程序所必需的 Azure AD URL 和证书。
 
@@ -260,15 +260,15 @@ ms.locfileid: "67272745"
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择已配置单一登录的应用程序。
 
@@ -287,7 +287,7 @@ ms.locfileid: "67272745"
 
    1. 单击“添加属性”****。 输入“名称”****，并从下拉列表中选择“值”****。
 
-   2. 单击 "**保存"。** 然后就能在表中看到新属性了。
+   2. 单击“保存”。 然后就能在表中看到新属性了。
 
 #### <a name="download-the-azure-ad-metadata-or-certificate"></a>下载 Azure AD 元数据或证书
 
@@ -295,15 +295,15 @@ ms.locfileid: "67272745"
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择已配置单一登录的应用程序。
 
@@ -327,11 +327,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 1.  打开[Azure 门户](https://portal.azure.com)并以 "**全局管理员**" 或 "**共同**管理员" 身份登录
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  在“企业应用程序”**** 窗格的右上角，单击“添加”**** 按钮。
 
@@ -351,15 +351,15 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择要配置单一登录的应用程序。
 
@@ -385,11 +385,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 1.  打开[Azure 门户](https://portal.azure.com)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5.  在“企业应用程序”**** 窗格的右上角，单击“添加”**** 按钮。
 
@@ -405,15 +405,15 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 1.  打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4.  在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5.  单击“所有应用程序”****，查看所有应用程序的列表。
+5.  单击“所有应用程序”，查看所有应用程序的列表。
 
-    1.  如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+    1.  如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6.  选择要配置单一登录的应用程序。
 
@@ -443,15 +443,15 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 若要检查是否向用户分配了应用程序，请遵循以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
 6. **搜索**有关应用程序的名称。
 
@@ -465,37 +465,37 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 要直接将一个或多个用户分配到应用程序，请按照以下步骤操作：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”**** 身份登录。
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份**登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 从列表中选择要向其分配用户的应用程序。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”****。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
 8. 单击“用户和组”**** 列表顶部的“添加”**** 按钮，以打开“添加分配”**** 窗格。
 
-9. 在“添加分配”**** 窗格中，单击“用户和组”**** 选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
-10. 在“按名称或电子邮件地址搜索”**** 搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
+10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的用户的**全名**或**电子邮件地址**。
 
-11. 将鼠标悬停在列表中的**用户**上方以显示**复选框**。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”**** 列表。
+11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”**** 搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”**** 列表。
+12. **可选：** 如果要“添加多个用户”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“全名”或“电子邮件地址”，然后单击复选框以将此用户添加到“已选择”列表    。
 
-13. 在完成用户的选择后，单击“选择”**** 按钮将他们添加到要分配给应用程序的用户和组列表。
+13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
-14. **可选：** 单击“添加分配”**** 窗格中的“选择角色”**** 选择器，选择一个角色来分配给所选用户。
+14. **可选：** 单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选用户。
 
-15. 单击 "**分配**" 按钮，将应用程序分配给选定用户。
+15. 单击“分配”按钮，将应用程序分配给选定用户。
 
 稍等片刻，所选用户就能使用解决方案描述部分所述的方法来启动这些应用程序了。
 
@@ -503,11 +503,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 若要检查用户的已分配许可证，请按照以下步骤操作：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 单击导航菜单中的 "**用户和组**"。
 
@@ -523,11 +523,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 要将许可证分配给用户，请按照以下步骤操作：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -561,11 +561,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 若要检查组的成员身份，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 单击导航菜单中的 "**用户和组**"。
 
@@ -583,47 +583,47 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 要直接将一个或多个组分配到应用程序，请遵循以下步骤：
 
-1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”**** 身份登录。
+1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份**登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”****。
+4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
-5. 单击“所有应用程序”****，查看所有应用程序的列表。
+5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果看不到要在此处显示的应用程序，请使用 "**所有应用程序" 列表**顶部的 "**筛选器**" 控件，并将 "**显示**" 选项设置为 "**所有应用程序"。**
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 从列表中选择要向其分配用户的应用程序。
 
-7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”****。
+7. 在应用程序加载后，在应用程序的左侧导航菜单中单击“用户和组”。
 
 8. 单击“用户和组”**** 列表顶部的“添加”**** 按钮，以打开“添加分配”**** 窗格。
 
-9. 在“添加分配”**** 窗格中，单击“用户和组”**** 选择器。
+9. 在“添加分配”窗格中，单击“用户和组”选择器。
 
-10. 在“按名称或电子邮件地址搜索”**** 搜索框中，键入要分配的组的**完整组名**。
+10. 在“按名称或电子邮件地址搜索”搜索框中，键入要分配的组的**完整组名**。
 
-11. 将鼠标悬停在列表中的**组**上以显示**复选框**。 单击组头像或徽标旁边的复选框以将用户添加到“已选择”**** 列表。
+11. 将鼠标悬停在列表中的**组**上以显示**复选框**。 单击组头像或徽标旁边的复选框以将用户添加到“已选择”列表。
 
-12. **可选：** 如果想要**添加多个组**，请在“按名称或电子邮件地址搜索”**** 搜索框中，键入其他**完整组名**，然后单击复选框以将此组添加到“已选择”**** 列表。
+12. **可选：** 如果要“添加多个组”，请在“按名称或电子邮件地址搜索”搜索框中键入其他“完整组名”，然后单击复选框以将此组添加到“已选择”列表   。
 
-13. 选择完所有组后，单击“选择”**** 按钮将所有已选择的组添加到要分配给应用程序的用户和组的列表中。
+13. 选择完所有组后，单击“选择”按钮将所有已选择的组添加到要分配给应用程序的用户和组的列表中。
 
-14. **可选：** 单击“添加分配”**** 窗格中的“选择角色”**** 选择器，选择一个角色来分配给所选组。
+14. **可选：** 单击“添加分配”窗格中的“选择角色”选择器，选择一个角色来分配给所选组。
 
-15. 单击“分配”**** 按钮，将应用程序分配给所选组。
+15. 单击“分配”按钮，将应用程序分配给所选组。
 
 稍等片刻，所选用户就能使用解决方案描述部分所述的方法来启动这些应用程序了。
 
 ### <a name="check-if-a-user-is-part-of-group-assigned-to-a-license"></a>检查用户是否是要向其分配许可证的组的成员
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 单击导航菜单中的 "**用户和组**"。
 
@@ -643,11 +643,11 @@ Azure AD 不提供用于获取元数据的 URL。 元数据只能作为 XML 文�
 
 要将许可证分配给组，请按照以下步骤操作：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 

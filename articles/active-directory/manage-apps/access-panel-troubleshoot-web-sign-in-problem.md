@@ -3,25 +3,25 @@ title: 登录到访问面板网站时出现问题 | Microsoft Docs
 description: 指导解决尝试登录以使用访问面板时可能会遇到的问题
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 4f2ad4db231c616b3022ecafc62b12d6d81b67fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65784308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760807"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登录到访问面板网站时出现问题
 
@@ -82,7 +82,7 @@ ms.locfileid: "65784308"
 
 -   [重置用户的密码](#reset-a-users-password)
 
--   [启用自助式密码重置](#enable-self-service-password-reset)
+-   [启用自助服务密码重置](#enable-self-service-password-reset)
 
 -   [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)
 
@@ -98,11 +98,11 @@ ms.locfileid: "65784308"
 
 若要检查是否存在某个用户帐户，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -116,11 +116,11 @@ ms.locfileid: "65784308"
 
 若要检查用户帐户的状态，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -136,11 +136,11 @@ ms.locfileid: "65784308"
 
 若要重置用户的密码，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -168,11 +168,11 @@ ms.locfileid: "65784308"
 
 若要检查用户的多重身份验证状态，请执行以下步骤：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2. 在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 单击导航菜单中的 "**用户和组**"。
 
@@ -195,11 +195,11 @@ ms.locfileid: "65784308"
 
 若要检查用于多重身份验证、条件访问、标识保护和密码重置的用户身份验证联系信息，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -217,11 +217,11 @@ ms.locfileid: "65784308"
 
 若要检查用户的组成员身份，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -235,11 +235,11 @@ ms.locfileid: "65784308"
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 
@@ -253,11 +253,11 @@ ms.locfileid: "65784308"
 
 若要将许可证分配给用户，请执行以下步骤：
 
-1.  打开[**Azure 门户**](https://portal.azure.com/)并以 "**全局管理员" 身份登录。**
+1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”****，打开“Azure Active Directory 扩展”****。
+2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”****，选择“Azure Active Directory”**** 项。
+3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4.  单击导航菜单中的 "**用户和组**"。
 

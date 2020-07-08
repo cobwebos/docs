@@ -3,18 +3,18 @@ title: 完成虚拟机的灾难恢复
 description: 本文介绍如何使用 AVS 完成虚拟机灾难恢复
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84749959"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMWare 解决方案完成虚拟机灾难恢复
+# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMware 解决方案完成虚拟机灾难恢复
 
-本文包含使用 VMWare 混合云扩展（HCX）解决方案完成虚拟机灾难恢复的过程，并使用 Azure VMWare 解决方案私有云作为恢复或目标站点。
+本文包含使用 VMware 混合云扩展（HCX）解决方案完成虚拟机灾难恢复的过程，并使用 Azure VMware 解决方案私有云作为恢复或目标站点。
 
-VMWare HCX 提供各种操作，可提供复制策略的精细控制和粒度。 可用的操作包括：
+VMware HCX 提供各种操作，可提供复制策略的精细控制和粒度。 可用的操作包括：
 
 - 反向–发生灾难后。 Reverse 有助于使站点 B 成为受保护 VM 现在所在的源站点和站点 A。
 
@@ -56,7 +56,7 @@ VMWare HCX 提供各种操作，可提供复制策略的精细控制和粒度。
 
 - **启用静默：** 暂停 VM，以确保将一致的副本同步到远程站点。
 
-- **目标存储：** 为受保护的 VM 选择远程数据存储。 在 AVS 私有云中，此选择应为 VSAN 数据存储。
+- **目标存储：** 为受保护的 VM 选择远程数据存储。 在 AVS 私有云中，此选择应为 vSAN 数据存储。
 
 - **计算容器：** 远程 vSphere 群集或资源池。
 
@@ -144,7 +144,7 @@ VMWare HCX 提供各种操作，可提供复制策略的精细控制和粒度。
 
 ## <a name="disaster-recovery-plan-automation"></a>灾难恢复计划自动化
 
-VMWare HCX 目前没有用于创建和自动化灾难恢复计划的内置机制。 此功能在 HCX 中不存在。 但是，它提供了一组 REST Api，包括用于灾难恢复操作的 Api。
+VMware HCX 目前没有用于创建和自动化灾难恢复计划的内置机制。 此功能在 HCX 中不存在。 但是，它提供了一组 REST Api，包括用于灾难恢复操作的 Api。
 
 API 规范可以在 URL 中的 HCX Manager 内访问。
 

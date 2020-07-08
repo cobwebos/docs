@@ -5,20 +5,20 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805014"
 ---
 # <a name="get-information-about-a-converted-model"></a>获取有关转换后的模型的信息
 
-转换服务生成的 arrAsset 文件仅适用于呈现服务。 但有时，您可能希望在不启动渲染会话的情况下访问有关模型的信息。 因此，转换服务将 JSON 文件放在输出容器中的 arrAsset 文件旁边。 例如，如果转换了某个`buggy.gltf`文件，则输出容器将包含一个名`buggy.info.json`为 "已转换资产`buggy.arrAsset`" 的文件。 它包含有关源模型、转换后的模型以及转换本身的信息。
+转换服务生成的 arrAsset 文件仅适用于呈现服务。 但有时，您可能希望在不启动渲染会话的情况下访问有关模型的信息。 因此，转换服务将 JSON 文件放在输出容器中的 arrAsset 文件旁边。 例如，如果转换了某个文件 `buggy.gltf` ，则输出容器将包含一个名 `buggy.info.json` 为 "已转换资产" 的文件 `buggy.arrAsset` 。 它包含有关源模型、转换后的模型以及转换本身的信息。
 
 ## <a name="example-info-file"></a>示例*信息*文件
 
-下面是通过转换*info*名`buggy.gltf`为的文件而生成的示例信息文件：
+下面是通过转换名为的文件而生成的示例*信息*文件 `buggy.gltf` ：
 
 ```JSON
 {
@@ -100,7 +100,7 @@ ms.locfileid: "80681514"
 本部分提供有关源场景的信息。 此部分中的值与创建源模型的工具中的等效值之间通常会有差异。 这种差异是预期的，因为在导出和转换步骤中将修改模型。
 
 * `numMeshes`：网格部分的数量，其中每个部件都可以引用单个材料。
-* `numFaces`：整个模型中的_三角形_总数。 请注意，在转换过程中将会三角化网格。
+* `numFaces`：整个模型中的_三角形_总数。 请注意，在转换过程中将会三角化网格。 此数字用于[标准呈现 VM 大小](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)中的多边形限制。
 * `numVertices`：整个模型中的顶点总数。
 * `numMaterial`：整个模型中的总材料数。
 * `numFacesSmallestMesh`：模型的最小网格中的三角形数。
@@ -120,9 +120,9 @@ ms.locfileid: "80681514"
 
 此部分记录通过转换后的资产计算的信息。
 
-* `numMeshPartsCreated`： ArrAsset 中的网格数。 它可以与`inputStatistics`部分`numMeshes`中的不同，因为实例化受转换过程的影响。
+* `numMeshPartsCreated`： ArrAsset 中的网格数。 它可以与 `numMeshes` 部分中的不同 `inputStatistics` ，因为实例化受转换过程的影响。
 * `numMeshPartsInstanced`：在 arrAsset 中重复使用的网格数。
-* `recenteringOffset`：在`recenterToOrigin` [ConversionSettings](configure-model-conversion.md)中启用选项时，此值为转换后的模型将转换回其原始位置的转换。
+* `recenteringOffset`：在 `recenterToOrigin` [ConversionSettings](configure-model-conversion.md)中启用选项时，此值为转换后的模型将转换回其原始位置的转换。
 * `boundingBox`：模型的边界。
 
 ## <a name="next-steps"></a>后续步骤

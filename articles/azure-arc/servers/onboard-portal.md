@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0b43bb92a58af58ae5924610f0667e9796a426e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: c1801c1b26742661987ea822a3cb1479f40ec059
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84751277"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
@@ -40,9 +40,10 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 
     >[!NOTE]
     >Azure Arc for servers（预览版）仅支持以下区域：
+    >- EastUS
     >- 美国西部 2
     >- 西欧
-    >- 西亚
+    >- SoutheastAsia
     >
     >当在“概述”文章中在[此处](overview.md#supported-regions)选择区域时，查看更多注意事项。
 

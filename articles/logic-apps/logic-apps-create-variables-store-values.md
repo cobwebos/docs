@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02e9426c7fc537a43fadddb5e2c34fd9c311d69b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456697"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753256"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用变量来存储和管理值
 
@@ -22,7 +22,7 @@ ms.locfileid: "75456697"
 * 获取或引用变量的值。
 * 按常量值增大或减小变量，也称为递增和递减。  
 * 将不同的值赋给变量。
-* 插入或追加变量值作为字符串或数组中的最后一个时间。 
+* 将变量的值插入或*追加*到字符串或数组中的最后一项。
 
 变量只在创建它们的逻辑应用实例中存在并保持全局性。 另外，不管在逻辑应用实例中进行什么循环迭代，它们都会保留。 引用变量时，请使用变量的名称作为令牌，而不要使用操作的名称。操作名称通常用于引用操作的输出。
 

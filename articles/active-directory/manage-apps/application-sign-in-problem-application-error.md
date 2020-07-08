@@ -3,25 +3,25 @@ title: 登录后，应用页面上显示错误消息 |Microsoft Docs
 description: 当应用返回错误消息时，如何解决 Azure AD 登录的问题。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77185496"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84759532"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>应用页面在用户登录后显示错误消息
 
@@ -62,7 +62,7 @@ ms.locfileid: "77185496"
 
    1. 选择 "**添加属性**"。 输入**名称**，并从下拉列表中选择**值**。
 
-   1.  选择“保存”。  你将在表中看到新属性。
+   1.  选择“保存”。 你将在表中看到新属性。
 
 9. 保存配置。
 

@@ -8,14 +8,14 @@ ms.service: storage
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c8a5555c5c33255fdc5902a115e7e9103a4e936f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79410059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805313"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>在对 Blob 存储的请求中提供加密密钥（预览版）
 

@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 3778ec2fac13aee29ce361402a535ca70fd56c33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3cab4909937bbf5ccb0f72b194b08810c0487c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75750711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84792008"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>通过诊断设置启用日志记录
 
 [!INCLUDE [updated-for-az](./updated-for-az.md)]
 
-1. 登录到[Azure 门户](https://portal.azure.com)并导航到 IoT 中心。
+1. 登录 [Azure 门户](https://portal.azure.com)，导航到 IoT 中心。
 
-2. 选择“诊断设置”****。
+2. 选择“诊断设置”。
 
-3. 选择“启用诊断”****。
+3. 选择“启用诊断”。
 
    ![启用诊断](./media/iot-hub-diagnostics-settings/turnondiagnostics.png)
 

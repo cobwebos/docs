@@ -4,15 +4,15 @@ description: 网络限制提高
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76547701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764259"
 ---
 # <a name="networking-limit-increase"></a>网络限制提高
 
@@ -37,7 +37,7 @@ ms.locfileid: "76547701"
 
     ![帮助 + 支持](./media/networking-quota-request/help-plus-support.png)
 
-1. 选择 "**新建支持请求**"。
+1. 选择“新建支持请求”。
 
     ![新建支持请求](./media/networking-quota-request/new-support-request.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "76547701"
 
 按照这些说明使用 Azure 门户中的 "**使用情况 + 配额**" 创建支持请求。
 
-1. 从https://portal.azure.com中，搜索并选择 "**订阅**"。
+1. 从中 https://portal.azure.com ，搜索并选择 "**订阅**"。
 
     ![订阅](./media/networking-quota-request/search-for-suscriptions.png)
 

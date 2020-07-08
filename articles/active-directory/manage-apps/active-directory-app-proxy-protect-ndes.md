@@ -3,22 +3,22 @@ title: 与 NDES 服务器上的 AD 应用程序代理集成
 titleSuffix: Azure Active Directory
 description: 有关部署 Azure Active Directory 应用程序代理以保护 NDES 服务器的指南。
 services: active-directory
-author: CelesteDG
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/17/2020
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 4ccd8834671725ace72497391090f81eb197ad6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77032252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84760790"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>与网络设备注册服务（NDES）服务器上的 Azure AD 应用程序代理集成
 
@@ -35,28 +35,28 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 ## <a name="install-and-register-the-connector-on-the-ndes-server"></a>在 NDES 服务器上安装并注册连接器
 
 1. 以使用应用程序代理的目录的应用程序管理员身份登录到 [Azure 门户](https://portal.azure.com/)。 例如，如果租户域为 contoso.com，则管理员应为 admin@contoso.com 或该域上的其他任何域别名。
-1. 请在右上角选择用户名。 验证是否已登录到使用应用程序代理的目录。 如果需要更改目录，请选择“切换目录”，然后选择使用应用程序代理的目录****。
-1. 在左侧导航面板中选择“Azure Active Directory”****。
-1. 在“管理”下选择“应用程序代理”********。
-1. 选择“下载连接器服务”****。
+1. 请在右上角选择用户名。 验证是否已登录到使用应用程序代理的目录。 如果需要更改目录，请选择“切换目录”，然后选择使用应用程序代理的目录  。
+1. 在左侧导航面板中选择“Azure Active Directory”  。
+1. 在“管理”下选择“应用程序代理”   。
+1. 选择“下载连接器服务”  。
 
     ![下载连接器服务，以查看服务条款](./media/active-directory-app-proxy-protect-ndes/application-proxy-download-connector-service.png)
 
-1. 阅读“服务条款”。 准备就绪后，选择“接受条款并下载”****。
+1. 阅读“服务条款”。 准备就绪后，选择“接受条款并下载”  。
 1. 将 Azure AD 应用程序代理连接器安装程序文件复制到 NDES 服务器。 
    > 可以在企业网络中的任何服务器上安装连接器，并可访问 NDES。 不需要在 NDES 服务器上安装它。
-1. 运行安装程序文件，如*aadapplicationproxyconnectorinstaller.exe*。 接受软件许可条款。
+1. 运行安装程序文件，如*AADApplicationProxyConnectorInstaller.exe*。 接受软件许可条款。
 1. 在安装过程中，系统会提示在 Azure AD 目录中向应用程序代理注册连接器。
    * 为 Azure AD 目录中的全局管理员或应用程序管理员提供凭据。 Azure AD 的全局或应用程序管理员凭据可能不同于门户中的 Azure 凭据。
 
         > [!NOTE]
         > 用于注册连接器的全局或应用程序管理员帐户必须属于你启用应用程序代理服务的同一目录。
         >
-        > 例如，如果 Azure AD 域为*contoso.com*，则全局/应用程序管理员应为`admin@contoso.com`或该域上的另一个有效别名。
+        > 例如，如果 Azure AD 域为*contoso.com*，则全局/应用程序管理员应为 `admin@contoso.com` 或该域上的另一个有效别名。
 
    * 如果在安装连接器的服务器上启用了 Internet Explorer 增强的安全配置，则可能会阻止注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作，或在安装过程中关闭 Internet Explorer 增强的安全性。
    * 如果连接器注册失败，请参阅[应用程序代理故障排除](application-proxy-troubleshoot.md)。
-1. 安装结束时，会显示带有出站代理的环境的说明。 若要将 Azure AD 应用程序代理连接器配置为通过出站代理进行工作，请运行提供的`C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`脚本，例如。
+1. 安装结束时，会显示带有出站代理的环境的说明。 若要将 Azure AD 应用程序代理连接器配置为通过出站代理进行工作，请运行提供的脚本，例如 `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` 。
 1. 在 Azure 门户中的 "应用程序代理" 页上，将列出新的连接器，其状态为 "*活动*"，如以下示例中所示：
 
     ![新的 Azure AD 应用程序代理连接器在 Azure 门户中显示为 "活动"](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
@@ -66,7 +66,7 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
 1. 安装成功后，返回到 Azure 门户。
 
-1. 选择“企业应用程序”。****
+1. 选择“企业应用程序”。
 
    ![确保你正在吸引正确的利益干系人](./media/active-directory-app-proxy-protect-ndes/azure-active-directory-enterprise-applications.png)
 
@@ -83,7 +83,7 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
 1. 测试是否可以通过 Azure AD 应用程序代理访问 NDES 服务器，方法是将在步骤10中复制的链接粘贴到浏览器中。 应会看到默认的 IIS 欢迎页。
 
-1. 作为最终测试，将*mscep*路径添加到在上一步中粘贴的现有 URL：
+1. 作为最终测试，将*mscep.dll*路径添加到在上一步中粘贴的现有 URL：
 
    https://scep-test93635307549127448334.msappproxy.net/certsrv/mscep/mscep.dll
 

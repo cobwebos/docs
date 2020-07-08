@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 2cfc48f7c152f0f38ca70713dc989029e4e64e8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753541"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -39,8 +39,8 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 | 分发 | 版本 |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
-| Linux：Red Hat Enterprise Linux | 版本 7.3、7.4、7.5、7.6 |
-| Linux：CentOS | 版本 7.3、7.4、7.5、7.6 |
+| Linux：Red Hat Enterprise Linux | 7.3、7.4、7.5、7.6、7.7 |
+| Linux：CentOS | 7.3、7.4、7.5、7.6、7.7 |
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
@@ -62,7 +62,7 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -77,7 +77,7 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
 | apiVersion | 2015-06-15 | date |
 | 发布者 | Microsoft.HpcCompute | 字符串 |
 | type | NvidiaGpuDriverLinux | 字符串 |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1.3 | int |
 
 ### <a name="settings"></a>设置
 
@@ -113,7 +113,7 @@ https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup)�
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -131,14 +131,14 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.2 `
+    -TypeHandlerVersion 1.3 `
     -SettingString '{ `
     }'
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下示例镜像了上述 Azure 资源管理器和 PowerShell 示例，并添加了自定义设置作为非默认驱动程序安装的示例。 具体而言，它更新 OS 内核并安装特定的 CUDA 工具包版本驱动程序。
+以下示例对上述 Azure 资源管理器和 PowerShell 示例进行了镜像。
 
 ```azurecli
 az vm extension set \
@@ -146,10 +146,21 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.2 \
+  --version 1.3 
+```
+
+以下示例还添加了两个可选的自定义设置，作为非默认驱动程序安装的示例。 具体而言，它将操作系统内核更新为最新版本，并安装特定的 CUDA 工具包版本驱动程序。 同样，请注意，"--settings" 是可选的，默认值为。 请注意，更新内核可能会增加扩展安装时间。 另外，选择特定（较旧） CUDA tolkit 版本可能并不总是与较新的内核兼容。
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85" \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -167,7 +178,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-扩展执行输出将记录到以下文件：
+扩展执行输出将记录到以下文件中。 请参阅此文件以跟踪（任意长时间运行的）安装的状态，以及排查任何故障。
 
 ```bash
 /var/log/azure/nvidia-vmext-status

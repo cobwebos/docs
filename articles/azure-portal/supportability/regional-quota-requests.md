@@ -4,15 +4,15 @@ description: 如何请求增加 Azure 门户中某个区域的 vCPU 配额限制
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9236989f7bbb4695db24f86a2a049f5bb58f302a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843678"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763850"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>标准配额：按区域增加限制
 
@@ -42,15 +42,15 @@ Azure 资源管理器为虚拟机支持两种类型的 vCPU 配额：
 
 若要从 "**帮助 + 支持**" 中请求按区域增加 vCPU 配额：
 
-1. 从 " [Azure 门户](https://portal.azure.com)" 菜单中，选择 "**帮助 + 支持**"。
+1. 在 [Azure 门户](https://portal.azure.com)菜单中，选择“帮助和支持”。
 
    !["帮助 + 支持" 链接](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. 在 "**帮助 + 支持**" 中，选择 "**新建支持请求**"。
+1. 在“帮助 + 支持”中，选择“新建支持请求” 。
 
     ![新建支持请求](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. 对于“问题类型”，选择“服务和订阅限制(配额)”********。
+1. 对于 "**问题类型**"，请选择 "**服务和订阅限制（配额）**"。
 
    ![选择问题类型](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 

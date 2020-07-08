@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: 518a1b01f52edcf5fa365e2275d4b995ffd719c6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68721292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84805170"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何通过 Ruby 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>设置 Azure 存储连接
-Azure 模块将读取环境变量**\_azure 存储\_帐户**和**Azure\_存储\_ACCESS_KEY**以获取连接到 azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::QueueService** 前必须通过以下代码指定帐户信息：
+Azure 模块将读取环境变量**azure \_ 存储 \_ 帐户**和**azure \_ 存储 \_ ACCESS_KEY**以获取连接到 azure 存储帐户所需的信息。 如果未设置这些环境变量，则在使用 **Azure::QueueService** 前必须通过以下代码指定帐户信息：
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
-可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下 **，\_速览消息（）** 查看单个消息。 也可以指定要扫视的消息数。
+可调用 **peek\_messages()** 方法，查看队列前面的消息，而不必从队列中将其删除。 默认情况下，**速览 \_ 消息（）** 查看单个消息。 也可以指定要扫视的消息数。
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -99,7 +99,7 @@ result = azure_queue_service.peek_messages("test-queue",
 1. 在调用 **list\_messages()** 时，默认情况下会获取队列中的下一条消息。 也可以指定要获取的消息数。 从 **list\_messages()** 返回的消息变得对从此队列读取消息的任何其他代码不可见。 将传递以秒为单位的可见性超时值作为参数。
 2. 若要完成从队列中删除消息，还必须调用**delete_message （）**。
 
-此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后立即调用**delete\_message （）** 。
+此删除消息的两步过程可确保当代码因硬件或软件故障而无法处理消息时，其他代码实例可以获取同一消息并重试。 代码在处理消息后立即调用**delete \_ message （）** 。
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -118,7 +118,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
 ```
 
 ## <a name="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他选项
-可以通过两种方式自定义队列中的消息检索。
+可通过两种方式自定义队列中消息的检索。
 
 1. 可以获取一批消息。
 2. 可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少的时间来完全处理每个消息。

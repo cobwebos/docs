@@ -3,24 +3,24 @@ title: 如何配置自助应用程序分配 | Microsoft Docs
 description: 启用自助服务应用程序访问以允许用户查找自己的应用程序
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e09fd63ee6121ac9bf7f3c2be00f0ac22f752f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2a59343d4eafaa0e11f56636daa7471e748abf2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763136"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何配置自助应用程序分配
 
@@ -51,11 +51,11 @@ ms.locfileid: "81731708"
 
 若要启用应用程序的自助应用程序访问，请执行以下步骤：
 
-1. 以全局管理员身份登录到[Azure 门户](https://portal.azure.com)。
+1. 以全局管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“Azure Active Directory”  。 在左侧导航菜单中，选择 "**企业应用程序**"。
+2. 选择“Azure Active Directory”。 在左侧导航菜单中，选择“企业应用程序”。
 
-3. 从列表中选择应用程序。 如果看不到该应用程序，请开始在搜索框中键入其名称。 或使用筛选器控件选择应用程序类型、状态或可见性，然后选择 "**应用**"。
+3. 从列表中选择应用。 如果看不到该应用程序，请在搜索框中键入其名称。 或者使用筛选控件选择应用程序类型、状态或可见性，然后选择“应用”。
 
 4. 在左侧导航菜单中，选择 "**自助服务**"。
 
@@ -70,12 +70,12 @@ ms.locfileid: "81731708"
 
 8. **可选：对于仅使用密码单一登录的应用程序，** 若要允许业务审批者为批准的用户指定发送到此应用程序的密码，请将 "**允许审批者设置此应用程序的用户密码？** " 切换为 **"是"**。
 
-9. **可选：** 若要指定允许审批对此应用程序的访问权限的业务审批者，请在 **"要批准对此应用程序的访问权限"** 旁单击 "**选择审批者**"，然后选择多达10个单独的业务审批者。 然后单击“选择”****。
+9. **可选：** 若要指定允许审批对此应用程序的访问权限的业务审批者，请在 **"要批准对此应用程序的访问权限"** 旁单击 "**选择审批者**"，然后选择多达10个单独的业务审批者。 然后单击“选择”。
 
     >[!NOTE]
     >不支持组。 最多可选择10个单独的业务审批者。 如果指定多个审批者，则任何单个审批者都可以批准访问请求。
 
-10. **可选：** **对于公开角色的应用程序**，若要将自助服务批准的用户分配给角色，请**在 "此应用程序中应向哪个角色分配用户？**" 旁边，单击 "**选择角色**"，然后选择应将这些用户分配到的角色。 然后单击“选择”****。
+10. **可选：** **对于公开角色的应用程序**，若要将自助服务批准的用户分配给角色，请**在 "此应用程序中应向哪个角色分配用户？**" 旁边，单击 "**选择角色**"，然后选择应将这些用户分配到的角色。 然后单击“选择”。
 
 11. 单击窗格顶部的“保存”**** 按钮以完成操作。
 

@@ -4,15 +4,15 @@ description: 了解如何创建应用程序网关，将内部 web 流量重定�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b671af46d34e3b45796186cd10282d060fa8c537
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74011595"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84804671"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 创建支持外部重定向的应用程序网关
 
@@ -88,7 +88,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>添加重定向配置
 
-使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) 在应用程序网关中添加从 www\.consoto.org  将流量发送到 www\.contoso.com  的侦听器的重定向配置。
+使用 [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) 在应用程序网关中添加从 www\.consoto.org 将流量发送到 www\.contoso.com 的侦听器的重定向配置。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

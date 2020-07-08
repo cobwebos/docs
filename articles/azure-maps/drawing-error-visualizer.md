@@ -3,17 +3,17 @@ title: 使用 Azure Maps 绘图错误可视化工具
 description: 本文介绍了如何可视化由 Creator 转换 API 返回的警告和错误。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681952"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791107"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure Maps 绘图错误可视化工具
 
@@ -78,15 +78,15 @@ ms.locfileid: "83681952"
 
 在启动“绘图错误可视化工具”工具后，你会看到上传页面。 上传页面包含一个拖放框。 拖放框也可以用作启动“文件资源管理器”对话框的按钮。
 
-![绘图错误可视化工具应用 - 起始页](./media/drawing-errors-visualizer/start-page.png)
+:::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="绘图错误可视化工具应用 - 起始页":::
 
 ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下。 若要加载 ConversionWarningsAndErrors.json，可以将此文件拖放到框中，也可以单击拖放框，在“文件资源管理器”对话框中查找此文件，然后上传此文件。
 
-![绘制错误可视化工具应用 - 拖放以加载数据](./media/drawing-errors-visualizer/loading-data.gif)
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="绘制错误可视化工具应用 - 拖放以加载数据":::
 
-在 ConversionWarningsAndErrors.json 文件加载后，你就会看到绘图包错误和警告的列表。 每个错误或警告都由图层、楼层和详细消息指定。 现在可以转到每个错误，以详细了解如何解决相应错误。  
+在 ConversionWarningsAndErrors.json 文件加载后，你就会看到绘图包错误和警告的列表。 每个错误或警告都由图层、楼层和详细消息指定。 若要查看有关错误或警告的详细信息，请单击 "**详细**信息" 链接。 然后，棘手将显示在列表下方。 现在可以转到每个错误，以详细了解如何解决相应错误。
 
-![绘制错误可视化工具应用 - 错误和警告](./media/drawing-errors-visualizer/errors.png)
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="绘制错误可视化工具应用 - 错误和警告":::
 
 ## <a name="next-steps"></a>后续步骤
 

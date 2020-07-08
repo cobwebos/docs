@@ -5,15 +5,15 @@ description: 了解如何将专用 SD-WAN 与 Azure 虚拟 WAN 互连
 services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: sukishen
-ms.openlocfilehash: 9b935c1f612e7634bad86818cd8331fba0078a9d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 7b134e8ef4e09f1506f1d548ffb7579dcf65fbdd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84753334"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>带有 Azure 虚拟 WAN 的 SD-WAN 连接体系结构
 
@@ -37,7 +37,7 @@ SD-WAN CPE 合作伙伴可以启用自动化，以通过其相关 CPE 设备，�
 
 SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。 
 
-在此模型中，基于实时流量特征的某些供应商专用流量优化可能不受支持，因为与虚拟 WAN 的连接是通过 IPsec 建立的，并且 IPsec VPN 在虚拟 WAN VPN 网关上终止。 例如，分支 CPE 上的动态路径选择是可行的，因为分支设备与另一个 SD-WAN 节点交换各种网络数据包信息，从而可以在分支上动态识别要用于各种优先级流量的最佳链接。 在需要进行最后一英里优化的区域（分支到最靠近的 Microsoft POP），此功能可能非常有用。
+在此模型中，基于实时流量特征的某些供应商专用流量优化可能不受支持，因为与虚拟 WAN 的连接是通过 IPsec 建立的，并且 IPsec VPN 在虚拟 WAN VPN 网关上终止。 例如，分支 CPE 上的动态路径选择是可行的，由于分支设备与另一个 SD-WAN 节点交换各种网络数据包信息，因此可以在分支上动态识别要用于各种优先级流量的最佳链接。 在需要进行最后一英里优化的区域（分支到最靠近的 Microsoft POP），此功能可能非常有用。
 
 使用虚拟 WAN，用户可以获得 Azure 路径选择，即，通过从分支 CPE 到虚拟 WAN VPN 网关的多个 ISP 链接进行基于策略的路径选择。 虚拟 WAN 允许设置多个来自同一 SD-WAN 分支 CPE 的链接（路径）；每个链接代表从 SD-WAN CPE 的某个唯一公共 IP 到 Azure 虚拟 WAN VPN 网关的两个不同实例的双隧道连接。 SD-WAN 供应商可以根据其在 CPE 链接上的策略引擎设置的流量策略，实施连接 Azure 的最佳路径。 在 Azure 端，所有传入连接被同等对待。
 
@@ -59,5 +59,5 @@ SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。
 
 ## <a name="additional-information"></a>其他信息
 
-* [常见问题解答](virtual-wan-faq.md)
-* [解决远程连接](work-remotely-support.md)
+* [包括常见问题解答](virtual-wan-faq.md)
+* [解决远程连接性问题](work-remotely-support.md)
