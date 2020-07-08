@@ -1,25 +1,18 @@
 ---
 title: 获取连接字符串 - Azure 事件中心 | Microsoft Docs
 description: 本文说明如何获取客户端可用于连接 Azure 事件中心的连接字符串。
-services: event-hubs
-documentationcenter: na
-author: spelluru
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 02/19/2019
-ms.author: spelluru
-ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85320487"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>获取事件中心连接字符串
 
-若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心或 Kafka 主题的范围容器。 此命名空间提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
+若要使用事件中心，需要创建一个事件中心命名空间。 命名空间是多个事件中心或 Kafka 主题的范围容器。 此命名空间提供唯一的[FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 创建命名空间后，可以获取与事件中心通信所需的连接字符串。
 
 Azure 事件中心的连接字符串中嵌入了以下组成部分：
 
@@ -38,16 +31,16 @@ Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 
 ## <a name="get-connection-string-from-the-portal"></a>从门户中获取连接字符串
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
-2. 在左侧导航菜单中，选择“所有服务”  。 
-3. 选择“分析”部分中的“事件中心”   。 
+2. 在左侧导航菜单中，选择“所有服务”。 
+3. 选择“分析”部分中的“事件中心” 。 
 4. 在事件中心列表中，选择事件中心。
-6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略”   。
+6. 在“事件中心命名空间”页中的左侧菜单上选择“共享访问策略” 。
 
     ![共享访问策略菜单项](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. 在策略列表中选择“共享访问策略”  。 默认值命名为：RootManageSharedAccessPolicy  。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
+7. 在策略列表中选择“共享访问策略”。 默认值命名为：RootManageSharedAccessPolicy。 可以添加具有适当权限（读取、写入）的策略，并使用该策略。 
 
     ![事件中心共享访问策略](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮   。 
+8. 选择“连接字符串 - 主密钥”字段旁边的“复制”按钮 。 
 
     ![事件中心 - 获取连接字符串](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 

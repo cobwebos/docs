@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b348f3f3684d580ca84eed9b9a094717c12cf849
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931628"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319078"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
 > [!div class="op_single_selector" title1="转换活动"]
@@ -40,16 +40,16 @@ ms.locfileid: "74931628"
 
 可以使用存储过程活动调用企业或 Azure 虚拟机 (VM) 中以下数据存储中的存储过程：
 
-- Azure SQL Database
+- Azure SQL 数据库
 - Azure SQL 数据仓库
 - SQL Server 数据库。 如果使用 SQL Server，请在托管数据库的同一计算机上或在可以访问数据库的单独计算机上安装数据管理网关。 数据管理网关是一种以安全和托管的方式将本地/Azure VM 上的数据源与云服务进行连接的组件。 有关详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。
 
 > [!IMPORTANT]
-> 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程********。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。 不支持在使用复制活动将数据复制到 Azure SQL 数据仓库时调用存储过程。 但是，可使用存储过程活动来调用 SQL 数据仓库中的存储过程。
+> 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程   。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。 不支持在使用复制活动将数据复制到 Azure SQL 数据仓库时调用存储过程。 但是，可使用存储过程活动来调用 SQL 数据仓库中的存储过程。
 >
-> 从 Azure SQL 数据库、SQL Server 或 Azure SQL 数据仓库复制数据时，可以使用 sqlReaderStoredProcedureName 属性将复制活动中的 SqlSource 配置为调用存储过程，以便从源数据库读取数据********。 有关详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> 从 Azure SQL 数据库、SQL Server 或 Azure SQL 数据仓库复制数据时，可以使用 sqlReaderStoredProcedureName 属性将复制活动中的 SqlSource 配置为调用存储过程，以便从源数据库读取数据   。 有关详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
-以下演练使用管道中的存储过程活动来调用 Azure SQL 数据库中的存储过程。
+以下演练在管道中使用存储过程活动来调用 Azure SQL 数据库中的存储过程。
 
 ## <a name="walkthrough"></a>演练
 ### <a name="sample-table-and-stored-procedure"></a>示例表和存储过程
@@ -84,10 +84,10 @@ ms.locfileid: "74931628"
     ```
 
    > [!IMPORTANT]
-   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，确保**\@** 用作参数的前缀。
+   > 参数（在本示例中为 DateTime）的**名称**和**大小写**必须与管道/活动 JSON 中指定的参数匹配。 在存储过程定义中，确保用作 **\@** 参数的前缀。
 
 ### <a name="create-a-data-factory"></a>创建数据工厂
-1. 登录到[Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中单击“新建”****，然后依次单击“智能 + 分析”****、“数据工厂”****。
 
     ![新建数据工厂](media/data-factory-stored-proc-activity/new-data-factory.png)
@@ -95,7 +95,7 @@ ms.locfileid: "74931628"
 
    ![新建数据工厂](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
 4. 选择 **Azure 订阅**。
-5. 对于**资源组**，请执行以下步骤之一：
+5. 对于 "**资源组**"，请执行以下步骤之一：
    1. 单击“新建”****，然后为资源组输入名称。
    2. 单击“使用现有资源组”**** 并选择一个现有的资源组。
 6. 选择数据工厂的**位置**。
@@ -106,7 +106,7 @@ ms.locfileid: "74931628"
    ![数据工厂主页](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>创建 Azure SQL 链接服务
-创建数据工厂后，创建 Azure SQL 链接服务，将包含 sampletable 表和 usp_sample 存储过程的 Azure SQL 数据库链接到数据工厂。
+创建数据工厂后，创建一个 Azure SQL 链接服务，用于将 Azure SQL 数据库中的数据库链接到数据工厂，其中包含 sampletable 表和 usp_sample 存储过程。
 
 1. 在 **SProcDF** 的“数据工厂”**** 边栏选项卡中，单击“编写和部署”****，启动数据工厂编辑器。
 2. 在命令栏上单击“新建数据存储”**** 并选择“Azure SQL 数据库”****。 在编辑器中，应会看到用于创建 Azure SQL 链接服务的 JSON 脚本。
@@ -114,7 +114,7 @@ ms.locfileid: "74931628"
    ![新建数据存储](media/data-factory-stored-proc-activity/new-data-store.png)
 3. 在 JSON 脚本中，进行以下更改：
 
-   1. 将 `<servername>` 替换为 Azure SQL 数据库服务器的名称。
+   1. 将替换 `<servername>` 为服务器的名称。
    2. 将 `<databasename>` 替换为在其中创建表和存储过程的数据库。
    3. 将 `<username@servername>` 替换为有权访问数据库的用户帐户。
    4. 将 `<password>` 替换为用户帐户的密码。
@@ -201,13 +201,13 @@ ms.locfileid: "74931628"
 1. 单击“X”关闭“数据工厂编辑器”边栏选项卡，导航回到“数据工厂”边栏选项卡，然后单击“图示”。********
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. 在 "**关系图" 视图**中，可以看到有关在本教程中使用的管道和数据集的概述。
+2. 在“图示视图”中，可以看到管道的概述，以及本教程中使用的数据集。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. 在“图示视图”中，双击数据集 `sprocsampleout`。 将看到切片处于“就绪”状态。 由于切片是在 JSON 中针对开始时间和结束时间之间的每一小时生成的，因此，应该有 5 个切片。
 
     ![图示磁贴](media/data-factory-stored-proc-activity/data-factory-slices.png)
-4. 切片处于“就绪”**** 状态时，对 Azure SQL 数据库运行 `select * from sampletable` 查询，以验证存储过程是否已将数据插入到表中。
+4. 当切片处于 "**就绪**" 状态时，对 `select * from sampletable` 数据库运行查询，以验证存储过程是否已将数据插入到表中。
 
    ![输出数据](./media/data-factory-stored-proc-activity/output.png)
 
@@ -275,9 +275,9 @@ ms.locfileid: "74931628"
 同样，要将存储过程活动与下游活动（在存储过程活动完成后运行的活动）链接，需将存储过程活动的输出数据集指定为管道中下游活动的输入****。
 
 > [!IMPORTANT]
-> 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程********。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。
+> 将数据复制到 Azure SQL 数据库或 SQL Server 中时，可以使用 sqlWriterStoredProcedureName 属性将复制活动中的 SqlSink 配置为调用存储过程   。 有关详细信息，请参阅[从复制活动中调用存储过程](data-factory-invoke-stored-procedure-from-copy-activity.md)。 有关属性的详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)。
 > 
-> 从 Azure SQL 数据库、SQL Server 或 Azure SQL 数据仓库复制数据时，可以使用 sqlReaderStoredProcedureName 属性将复制活动中的 SqlSource 配置为调用存储过程，以便从源数据库读取数据********。 有关详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
+> 从 Azure SQL 数据库、SQL Server 或 Azure SQL 数据仓库复制数据时，可以使用 sqlReaderStoredProcedureName 属性将复制活动中的 SqlSource 配置为调用存储过程，以便从源数据库读取数据   。 有关详细信息，请参阅以下连接器文章：[Azure SQL 数据库](data-factory-azure-sql-connector.md#copy-activity-properties)、[SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties)、[Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#copy-activity-properties)
 
 ## <a name="json-format"></a>JSON 格式
 下面是用于定义存储过程活动的 JSON 格式：
@@ -303,14 +303,14 @@ ms.locfileid: "74931628"
 
 下表描述了其中的 JSON 属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 描述 | 必需 |
 | --- | --- | --- |
 | name | 活动名称 |是 |
 | description |描述活动用途的文本 |否 |
 | type | 必须设置为：**SqlServerStoredProcedure** | 是 |
 | inputs | 可选。 如果指定了输入数据集，则它必须可供使用（“就绪”状态），存储过程才能运行。 该输入数据集无法在存储过程中用作参数。 它仅用于在开始存储过程活动前检查依赖项。 |否 |
 | outputs | 必须指定存储过程活动的输出数据集。 输出数据集为存储过程活动指定**计划**（每小时、每周、每月等）。 <br/><br/>输出数据集必须使用**链接服务**，其指代 Azure SQL 数据库或 Azure SQL 数据仓库或要在其中运行存储过程的 SQL Server 数据库。 <br/><br/>输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 <br/><br/>在某些情况下，输出数据集可以是**虚拟数据集**，它仅用于指定运行存储过程活动的计划。 |是 |
-| storedProcedureName |指定 Azure SQL 数据库、Azure SQL 数据仓库或 SQL Server 数据库中存储过程的名称，表示形式为输出表使用的链接服务。 |是 |
+| storedProcedureName |在 Azure SQL 数据库、Azure SQL 数据仓库或 SQL Server 中指定存储过程的名称，该存储过程由输出表使用的链接服务表示。 |是 |
 | storedProcedureParameters |指定存储过程的参数值。 如果需要为参数传递 null，请使用语法："param1": null（全部小写）。 请参阅以下示例了解如何使用此属性。 |否 |
 
 ## <a name="passing-a-static-value"></a>传递静态值

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85317773"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署
 
@@ -45,7 +45,7 @@ Azure 逻辑应用提供一个可以重复使用的[预生成逻辑应用 Azure 
 
 可以结合 [LogicAppTemplate 模块](https://github.com/jeffhollan/LogicAppTemplateCreator)使用 Azure PowerShell 创建资源管理器模板。 此开源模块首先评估逻辑应用，以及逻辑应用使用的任何连接。 然后，该模块生成模板资源以及用于部署的必需参数。
 
-例如，假设某个逻辑应用要从 Azure 服务总线队列接收消息，并将数据上传到 Azure SQL 数据库。 该模块会保留所有业务流程逻辑，并参数化 SQL 和服务总线连接字符串，使你能够根据部署需求提供和更改这些值。
+例如，假设有一个逻辑应用，该应用从 Azure 服务总线队列接收消息，并将数据上传到 Azure SQL 数据库。 该模块会保留所有业务流程逻辑，并参数化 SQL 和服务总线连接字符串，使你能够根据部署需求提供和更改这些值。
 
 这些示例演示如何使用 Azure 资源管理器模板、Azure DevOps 中的 Azure Pipelines，以及 Azure PowerShell 来创建和部署逻辑应用：
 

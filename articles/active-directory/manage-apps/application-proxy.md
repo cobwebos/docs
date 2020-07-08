@@ -2,23 +2,23 @@
 title: 远程访问本地应用-Azure AD 应用程序代理
 description: Azure Active Directory 应用程序代理提供对本地 Web 应用程序的安全远程访问。 单一登录到 Azure AD 后，用户可以通过外部 URL 或内部应用程序门户访问云端和本地的应用程序。 例如，应用程序代理可以为远程桌面、SharePoint、Teams、Tableau、Qlik 和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 84cd6f9d7612cc6cf5829c03c398dd65a6eec412
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318022"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>通过 Azure Active Directory 应用程序代理远程访问本地应用程序
 
@@ -40,8 +40,8 @@ Azure AD 应用程序代理的特性：
 * 使用 [Windows 集成身份验证](application-proxy-configure-single-sign-on-with-kcd.md)方法进行身份验证的 Web 应用程序
 * 使用基于窗体或[基于标头](application-proxy-configure-single-sign-on-with-ping-access.md)的访问的 Web 应用程序
 * 想要公开给不同设备上丰富应用程序的 Web API
-* 托管在[远程桌面网关](application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
-* 与 Active Directory 身份验证库 (ADAL) 集成的富客户端应用
+* 驻留在[远程桌面网关](application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
+* 与 Microsoft 身份验证库 (MSAL) 集成的丰富客户端应用
 
 应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
 
@@ -72,4 +72,3 @@ Azure AD 应用程序代理的特性：
 ## <a name="next-steps"></a>后续步骤
 若要开始使用应用程序代理，请参阅[教程：通过应用程序代理添加用于远程访问的本地应用程序](application-proxy-add-on-premises-application.md)。
 
-请参阅 [应用程序代理博客](https://blogs.technet.com/b/applicationproxyblog/)，了解最新资讯和更新

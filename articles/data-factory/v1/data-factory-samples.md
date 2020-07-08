@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318903"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -46,9 +46,9 @@ ms.locfileid: "70139264"
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 可在 GitHub 上找到数据工厂的以下 Azure 资源管理器模板。
 
-| 模板 | 说明 |
+| 模板 | 描述 |
 | --- | --- |
-| [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Azure Blob 存储复制到 Azure SQL 数据库的管道 |
+| [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此模板将创建一个包含管道的 Azure 数据工厂，该管道可将数据从指定的 Azure blob 存储复制到 Azure SQL 数据库 |
 | [从 Salesforce 复制到 Azure Blob 存储](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Salesforce 帐户复制到 Azure Blob 存储的管道。 |
 | [在 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |部署此模板将创建包含管道的 Azure 数据工厂，该管道可以通过在 Azure HDInsight Hadoop 群集上运行示例 Hive 脚本来转换数据。 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "70139264"
 3. 在“示例管道”**** 边栏选项卡中，单击要部署的“示例”****。
 
     ![“示例管道”边栏选项卡](./media/data-factory-samples/SampleTile.png)
-4. 指定此示例的配置设置。 例如，Azure 存储帐户名和帐户密钥、Azure SQL server 名称、数据库、用户 ID 和密码等。
+4. 指定此示例的配置设置。 例如，Azure 存储帐户名称和帐户密钥、逻辑 SQL server 名称、数据库、用户 ID 和密码等。
 
     ![“示例”边栏选项卡](./media/data-factory-samples/SampleBlade.png)
 5. 指定配置设置后，单击“创建”**** 可以创建/部署示例管道和此管道使用的链接服务/表格。
@@ -79,8 +79,8 @@ ms.locfileid: "70139264"
 必须在计算机上安装了以下软件：
 
 * Visual Studio 2013 或 Visual Studio 2015
-* 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。************
-* 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果使用 Visual Studio 2013，还可以通过执行以下步骤来更新插件：在菜单上，单击 "**工具** -> " "扩展"，**然后更新** -> "**联机** -> **visual studio 库** -> **Microsoft Azure 用于 visual studio** -> 的数据工厂工具"**更新**。
+* 下载用于 Visual Studio 2013 或 Visual Studio 2015 的 Azure SDK。 导航到 [Azure 下载页](https://azure.microsoft.com/downloads/)，在“.NET”部分中单击“VS 2013”或“VS 2015”。  
+* 下载用于 Visual Studio 的最新 Azure 数据工厂插件：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果使用 Visual Studio 2013，还可以通过执行以下步骤来更新插件：在菜单上，单击 "**工具**" "扩展"，  ->  **然后更新**"  ->  **联机**  ->  **visual studio 库**  ->  **Microsoft Azure 用于 visual studio 的数据工厂工具**"  ->  **更新**。
 
 ### <a name="use-data-factory-templates"></a>使用数据工厂模板
 1. 在菜单上单击“文件”****，指向“新建”**** 并单击“项目”****。
@@ -90,7 +90,7 @@ ms.locfileid: "70139264"
    2. 在右窗格中选择“数据工厂模板”****。
    3. 输入项目的**名称**。
    4. 选择项目的**位置**。
-   5. 单击“确定”。 
+   5. 单击“确定”。
 
       ![“新建项目”对话框](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. 在“数据工厂模板”**** 对话框中，从“用例模板”**** 部分选择示例模板，并单击“下一步”****。 以下步骤将引导用户完成“客户分析”**** 模板的使用。 步骤与其他示例的步骤类似。
@@ -103,13 +103,13 @@ ms.locfileid: "70139264"
    3. 选择要在其中创建数据工厂的 **Azure 订阅**。
    4. 为数据工厂选择**资源组**。
    5. 在“区域”**** 中选择“美国西部”****、“美国东部”**** 或“北欧”****。
-   6. 单击“下一步”。 
-6. 在“配置数据存储”**** 页上，指定现有的“Azure SQL 数据库”**** 和“Azure 存储帐户”**** 或创建数据库/存储，并单击“下一步”。
+   6. 单击“下一步” 。
+6. 在 "**配置数据存储**" 页上，指定**azure SQL 数据库中**的现有数据库和**azure 存储帐户**（或） "创建数据库/存储"，然后单击 "下一步"。
 7. 在“配置计算”**** 页上，选择“默认”，并单击“下一步”****。
 8. 在“摘要”**** 页上，查看所有设置，并单击“下一步”****。
 9. 在“部署状态”**** 页上，等待部署完成后，单击“完成”****。
-10. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布” ****。
-11. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。********
+10. 在“解决方案资源管理器”中，右键单击该项目，并单击“发布” 。
+11. 如果显示“登录到 Microsoft 帐户”对话框，请输入拥有 Azure 订阅的帐户凭据，并单击“登录”。 
 12. 应该会看到以下对话框：
 
     ![“发布”对话框](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
@@ -117,9 +117,9 @@ ms.locfileid: "70139264"
 
     1. 确认“使用现有数据工厂”**** 选项。
     2. 选择使用模板时选中的**数据工厂**。
-    3. 单击“下一步”切换到“发布项”页。******** （如果“下一步”按钮已禁用，请按 **TAB** 移出“名称”字段）。****
-14. 在“发布项”页上，确保已选择所有数据工厂实体，并单击“下一步”切换到“摘要”页。************     
-15. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。********
-16. 在“部署状态” **** 页上，应看到部署过程的状态。 部署完成后，单击“完成”。
+    3. 单击“下一步”切换到“发布项”页。  （如果“下一步”按钮已禁用，请按 **TAB** 移出“名称”字段）。****
+14. 在“发布项”页上，确保已选择所有数据工厂实体，并单击“下一步”切换到“摘要”页。       
+15. 查看摘要，单击“下一步”，启动部署过程并查看“部署状态”。 
+16. 在“部署状态”  页上，应看到部署过程的状态。 部署完成后，单击“完成”。
 
 要深入了解如何使用 Visual Studio 来创作数据工厂实体并将其发布到 Azure，请参阅[生成第一个数据工厂 (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md)。          

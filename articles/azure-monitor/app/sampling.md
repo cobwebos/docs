@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f4989f8dce32e2340357e30541548b3e7e9d8a44
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85319628"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -22,7 +22,7 @@ ms.locfileid: "82508881"
 
 * 有三种不同类型的采样：自适应采样、固定速率采样和引入采样。
 * 默认情况下，已在所有最新版本的 Application Insights ASP.NET 和 ASP.NET Core 软件开发工具包 (SDK) 中启用自适应采样。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 也使用自适应采样。
-* 最新版本的 Application Insights Sdk 中提供了固定速率采样，适用于 ASP.NET、ASP.NET Core、Java （代理和 SDK）以及 Python。
+* 固定速率采样可在最新版本的适用于 ASP.NET、ASP.NET Core、Java（代理和 SDK）和 Python 的 Application Insights SDK 中使用。
 * 引入采样适用于 Application Insights 服务终结点。 仅当没有其他采样生效时，才能应用引入采样。 如果 SDK 为遥测数据采样，则会禁用引入采样。
 * 对于 Web 应用程序，如果记录自定义事件，并需要确保事件集一同保留或一同丢弃，则事件必须具有相同的 `OperationId` 值。
 * 如果要编写分析查询，应[考虑采样](../../azure-monitor/log-query/aggregations.md)。 特别是，应使用 `summarize sum(itemCount)`，而不是仅对记录进行计数。
@@ -209,7 +209,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>为 Azure Functions 配置自适应采样
 
-按照[此页](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)中的说明，为 Azure Functions 中运行的应用配置自适应采样。
+按照[此页](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)中的说明配置 Azure Functions 中运行的应用的自适应采样。
 
 ## <a name="fixed-rate-sampling"></a>固定速率采样
 
@@ -306,13 +306,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>为 Java 应用程序配置固定速率采样
 
-默认情况下，Java 代理和 SDK 中未启用任何采样。 目前，它仅支持固定速率采样。 Java 不支持自适应采样。
+默认情况下，Java 代理和 SDK 中不启用任何采样。 目前，它仅支持固定速率采样。 Java 不支持自适应采样。
 
 #### <a name="configuring-java-agent"></a>配置 Java 代理
 
-1. 下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
+1. 下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
-1. 若要启用采样，请将以下`ApplicationInsights.json`内容添加到文件：
+1. 若要启用采样，请将以下内容添加到 `ApplicationInsights.json` 文件：
 
 ```json
 {
@@ -330,9 +330,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-sdk"></a>配置 Java SDK
 
-1. 下载并配置最新的 web 应用程序[Application Insights JAVA SDK](../../azure-monitor/app/java-get-started.md)。
+1. 使用最新的 [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md) 下载并配置 Web 应用程序。
 
-2. 通过将以下代码片段添加到文件来`ApplicationInsights.xml` **启用固定速率采样模块**：
+2. 通过将以下代码片段添加到 `ApplicationInsights.xml` 文件，来**启用固定速率采样模块**：
 
     ```XML
     <TelemetryProcessors>
@@ -346,7 +346,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
     </TelemetryProcessors>
     ```
 
-3. 使用`Processor`标记的`FixedRateSamplingTelemetryProcessor`中的以下标记，可以在采样中包括或排除特定类型的遥测数据：
+3. 可以通过在 `Processor` 标记的 `FixedRateSamplingTelemetryProcessor` 中使用以下标记，在采样中包含或排除特定类型的遥测：
    
     ```XML
     <ExcludedTypes>
@@ -358,7 +358,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
     </IncludedTypes>
     ```
 
-可在采样中包括或排除的遥测类型为`Dependency`：、 `Event`、 `Exception`、 `PageView`、 `Request`和。 `Trace`
+可以在采样中包含或排除的遥测类型是：`Dependency`、`Event`、`Exception`、`PageView`、`Request` 和 `Trace`。
 
 > [!NOTE]
 > 对于采样百分比，请选择一个接近于 100/N 的百分比，其中 N 是整数。  当前采样不支持其他值。
@@ -368,12 +368,12 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 使用最新的 [OpenCensus Azure Monitor 导出程序](../../azure-monitor/app/opencensus-python.md)检测应用程序。
 
 > [!NOTE]
-> 固定速率采样不适用于指标导出程序。 这意味着自定义度量值是唯一不能配置采样的遥测类型。 度量值导出程序将发送它跟踪的所有遥测数据。
+> 固定速率采样不适用于指标导出程序。 这意味着，自定义指标是唯一不能配置采样的遥测类型。 指标导出程序将发送它跟踪的所有遥测数据。
 
 #### <a name="fixed-rate-sampling-for-tracing"></a>用于跟踪的固定速率采样 ####
-可以在 `Tracer` 配置中指定 `sampler`。 如果未提供显式采样器，则`ProbabilitySampler`默认情况下将使用。 `ProbabilitySampler`默认情况下，将使用速率1/10000，这意味着每个10000请求中的一个将发送到 Application Insights。 如需指定采样率，请参阅下文。
+可以在 `Tracer` 配置中指定 `sampler`。 如果未提供显式采样器，则默认使用 `ProbabilitySampler`。 `ProbabilitySampler` 将使用默认采样率 1/10000，这意味着，每 10000 个请求中就会有一个发送到 Application Insights。 如需指定采样率，请参阅下文。
 
-若要指定采样率，请确保`Tracer`指定采样速率介于0.0 和1.0 之间的采样器。 采样率 1.0 代表 100%，这意味着所有请求都会作为遥测数据发送到 Application Insights。
+若要指定采样率，请确保 `Tracer` 指定的采样器使用的采样率为 0.0 到 1.0（含）。 采样率 1.0 代表 100%，这意味着所有请求都会作为遥测数据发送到 Application Insights。
 
 ```python
 tracer = Tracer(
@@ -385,7 +385,7 @@ tracer = Tracer(
 ```
 
 #### <a name="fixed-rate-sampling-for-logs"></a>日志的固定速率采样 ####
-您可以通过修改`AzureLogHandler` `logging_sampling_rate`可选参数来配置的固定速率采样。 如果未提供任何参数，将使用采样速率1.0。 采样率 1.0 代表 100%，这意味着所有请求都会作为遥测数据发送到 Application Insights。
+可以通过修改 `logging_sampling_rate` 可选参数，为 `AzureLogHandler` 配置固定速率采样。 如果未提供参数，将使用采样率 1.0。 采样率 1.0 代表 100%，这意味着所有请求都会作为遥测数据发送到 Application Insights。
 
 ```python
 handler = AzureLogHandler(
@@ -396,12 +396,12 @@ handler = AzureLogHandler(
 
 ### <a name="configuring-fixed-rate-sampling-for-web-pages-with-javascript"></a>为包含 JavaScript 的网页配置固定速率采样
 
-基于 JavaScript 的网页可以配置为使用 Application Insights。 遥测是从用户浏览器中运行的客户端应用程序发送的，并且可以从任何服务器承载页面。
+可将基于 JavaScript 的网页配置为使用 Application Insights。 遥测数据是从用户浏览器中运行的客户端应用程序发送的，可在任何服务器中托管页面。
 
-[为 Application Insights 配置基于 JavaScript 的网页](javascript.md)时，请修改从 Application Insights 门户获取的 javascript 代码片段。
+[为 Application Insights 配置基于 JavaScript 的网页](javascript.md)时，请修改从 Application Insights 门户获取的 JavaScript 代码片段。
 
 > [!TIP]
-> 在包含 JavaScript 的 ASP.NET 应用中，代码段通常会`_Layout.cshtml`出现在中。
+> 在包含 JavaScript 的 ASP.NET 应用中，该代码片段通常放在 `_Layout.cshtml` 中。
 
 在检测密钥前插入类似于 `samplingPercentage: 10,` 的行：
 
@@ -425,40 +425,40 @@ handler = AzureLogHandler(
 
 #### <a name="coordinating-server-side-and-client-side-sampling"></a>协调服务器端和客户端采样
 
-客户端 JavaScript SDK 与服务器端 SDK 一起加入固定速率采样。 检测到的页面将仅从服务器端 SDK 使其在采样中包含的相同用户发送客户端遥测。 此逻辑设计用于维护客户端和服务器端应用程序之间的用户会话的完整性。 因此，在 Application Insights 中的任何特定遥测项都可以找到此用户或会话的所有其他遥测项，并在 "搜索" 中，可以在相关的页面视图和请求之间导航。
+客户端 JavaScript SDK 与服务器端 SDK 一同参与固定速率采样。 检测的页面仅从服务器端 SDK 决定“纳入采样”的相同用户发送客户端遥测数据。 此逻辑旨在维持跨客户端和服务器端应用程序的用户会话的完整性。 因此，通过 Application Insights 中的任何特定遥测项，可以找到此用户或会话的所有其他遥测项；在搜索中，可以在相关页面视图与请求之间导航。
 
-如果客户端和服务器端遥测不显示协调的示例：
+如果客户端和服务器端遥测不显示协调的样本：
 
-* 验证是否已在服务器和客户端上启用了采样。
+* 确认是否已同时在服务器和客户端上启用采样。
 * 检查在客户端和服务器上设置的采样百分比相同。
 * 确保 SDK 版本是 2.0 或更高版本。
 
 ## <a name="ingestion-sampling"></a>引入采样
 
-引入采样在 web 服务器、浏览器和设备的遥测到达 Application Insights 服务终结点时运行。 尽管它未减少从应用发送的遥测流量，但它确实减少了由 Application Insights 处理和保留（并收费）的遥测量。
+当来自 Web 服务器、浏览器和设备的遥测数据抵达 Application Insights 服务终结点时，将运行引入采样。 尽管它未减少从应用发送的遥测流量，但它确实减少了由 Application Insights 处理和保留（并收费）的遥测量。
 
 如果应用经常超过其每月配额，且没有使用任一种基于 SDK 的采样类型的选项，请使用此种类型的采样。 
 
 在“使用情况和预估成本”页面中设置采样率：
 
-![在应用程序的 "概述" 边栏选项卡中，依次单击 "设置"、"配额"、"示例"，然后选择采样率并单击 "更新"](./media/sampling/data-sampling.png)
+![从应用程序的“概述”边栏选项卡中，依次单击“设置”、“配额”、“示例”，选择采样率，然后单击“更新”。](./media/sampling/data-sampling.png)
 
 与其他类型的采样一样，该算法会保留相关的遥测项。 例如，在“搜索”中检查遥测数据时，可以查找与特定异常相关的请求。 诸如请求速率和异常率等指标计数会正确保留。
 
 被采样丢弃的数据点将无法在任何 Application Insights 功能（如[连续导出](../../azure-monitor/app/export-telemetry.md)）中使用。
 
-当自适应采样或固定速率采样正在运行时，引入采样不会运行。 默认情况下，在使用 ASP.NET SDK 或 ASP.NET Core SDK 时，或在[Azure App Service](azure-web-apps.md)中或使用状态监视器启用 Application Insights 时，将默认启用自适应采样。 当 Application Insights 服务终结点接收到遥测数据时，它会检查遥测数据，如果采样率报告为小于100% （表示正在对遥测进行采样），则将忽略设置的引入采样速率。
+当自适应采样或固定速率采样正在运行时，不会运行引入采样。 使用 ASP.NET SDK 或 ASP.NET Core SDK 时，或者在 [Azure 应用服务](azure-web-apps.md)中或使用状态监视器启用 Application Insights 时，默认会启用自适应采样。 当 Application Insights 服务终结点收到遥测数据时，它会检查遥测数据，如果报告的采样率小于 100%（表示正在对遥测数据采样），将忽略设置的引入采样率。
 
 > [!WARNING]
-> "门户" 磁贴上显示的值指示为引入采样设置的值。 如果任何一种 SDK 采样（自适应采样或固定速率采样）正在进行，则它不表示实际采样率。
+> 门户磁贴上显示的值表示为引入采样设置的值。 如果任何类型的 SDK 采样（自适应采样或固定速率采样）正在运行，则此值不表示实际采样率。
 
 ## <a name="when-to-use-sampling"></a>何时使用采样
 
-通常，对于大多数小型和中型应用程序，不需要采样。 通过收集所有用户活动的数据，获取最有用的诊断信息和最准确的统计。 
+一般情况下，对于大多数小型和中型应用程序，不需要采样。 通过收集所有用户活动的数据，获取最有用的诊断信息和最准确的统计。 
 
 采样的主要优势在于：
 
-* 当应用程序在短时间间隔内发送非常高的遥测数据点时，Application Insights 服务将删除（"限制"）数据点。 采样可降低应用程序发生限制的可能性。
+* 当应用以短时间间隔发送速率很高的遥测时，Application Insights 服务会删除（“限制”）数据点。 采样可以减少应用程序遭到限制的可能性。
 * 保持在定价层的数据点[配额](pricing.md)以内。 
 * 减少遥测集合中的网络流量。 
 
@@ -466,18 +466,18 @@ handler = AzureLogHandler(
 
 **在以下情况下使用引入采样：**
 
-* 通常使用每月的遥测配额。
+* 经常用完每月遥测配额。
 * 收到来自用户 Web 浏览器的大量遥测数据。
 * 使用的 SDK 版本不支持采样，例如版本早于 2 的 ASP.NET 版本。
 
 **在以下情况下使用固定速率采样：**
 
-* 你希望在客户端和服务器之间进行同步采样，以便在调查[搜索](../../azure-monitor/app/diagnostic-search.md)中的事件时，可以在客户端和服务器上的相关事件之间导航，如页面视图和 HTTP 请求。
+* 希望同步客户端和服务器之间的采样，因此，调查[搜索](../../azure-monitor/app/diagnostic-search.md)中的事件时，可以在客户端和服务器上的相关事件之间导航，例如页面视图和 HTTP 请求。
 * 对应用的适当采样百分比有信心。 它应该足够高以获取准确指标，但应低于超出定价配额和限制的速率。
 
 **使用自适应采样：**
 
-如果使用其他采样格式的条件不适用，我们建议使用自适应采样。 默认情况下，此设置在 ASP.NET/ASP.NET Core SDK 中启用。 在达到特定的最小速率之前，不会减少流量，因此，可能不会对使用率较低的站点进行抽样。
+如果使用其他采样格式的条件不适用，我们建议使用自适应采样。 ASP.NET/ASP.NET Core SDK 中默认已启用此设置。 只有在达到特定的最低速率时，它才减少流量，因此，可能根本不会对使用率较低的站点采样。
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>了解采样是否正在运行
 
@@ -489,29 +489,29 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 | summarize RetainedPercentage = 100/avg(itemCount) by bin(timestamp, 1h), itemType
 ```
 
-如果发现任何类型`RetainedPercentage`小于100，则将对该类型的遥测进行抽样。
+如果你发现任何类型的 `RetainedPercentage` 小于 100，则表示正在对该类型的遥测数据采样。
 
 > [!IMPORTANT]
-> Application Insights 不采样会话、指标（包括自定义指标）或任何采样方法中的性能计数器遥测类型。 这些类型始终不会从采样中排除，因为对这些遥测类型而言，精度的降低可能非常不理想。
+> Application Insights 不会在任何采样方法中对会话、指标（包括自定义指标）或性能计数器遥测类型采样。 这些类型始终会排除在采样之外，因为精度下降可能会给这些遥测类型造成很大的不利。
 
-## <a name="how-sampling-works"></a>采样的工作方式
+## <a name="how-sampling-works"></a>采样的工作原理
 
-采样算法决定要丢弃哪些遥测项以及要保留哪些项。 不管是由 SDK 还是在 Application Insights 服务中进行的，都是如此。 采样决策取决于多个规则，目标是保留所有相互关联的数据点不变，同时在 Application Insights 中保持可操作和可靠而且即使有精简数据集的诊断体验。 例如，如果你的应用程序包含在示例中的失败请求，将保留其他遥测项（如为此请求记录的异常和跟踪）。 采样会将它们一起保留或删除。 因此，在 Application Insights 中查看请求详细信息时，始终可以看到请求以及其关联的遥测项。
+采样算法决定要丢弃哪些遥测项，以及要保留哪些遥测项。 无论采样是由 SDK 执行还是在 Application Insights 服务中执行，都是如此。 采样决策取决于多个规则，目标是保留所有相互关联的数据点不变，同时在 Application Insights 中保持可操作和可靠而且即使有精简数据集的诊断体验。 例如，如果应用在样本中包含失败的请求，则会保留附加的遥测项（例如，为此请求记录的异常和跟踪）。 采样会将它们一起保留或删除。 因此，在 Application Insights 中查看请求详细信息时，始终可以看到请求以及其关联的遥测项。
 
-采样决定取决于请求的操作 ID，这意味着属于特定操作的所有遥测项不是被保留就是被删除。 对于没有设置操作 ID 的遥测项（例如，不带 HTTP 上下文的异步线程报告的遥测项），采样只捕获每个类型的遥测项的百分比。
+采样决定取决于请求的操作 ID，这意味着属于特定操作的所有遥测项不是被保留就是被删除。 对于未设置操作 ID 的遥测项（例如，异步线程报告的且没有 HTTP 上下文的遥测项），采样仅捕获每个类型的遥测项百分比。
 
 当遥测发回给用户时，Application Insights 服务会以收集时所使用的同一采样百分比来调整指标，以补偿缺失的数据点。 因此，当用户在 Application Insights 中查看遥测数据，会看到统计的正确近似值非常接近于实际值。
 
 近似值的准确性很大程度上取决于配置的采样百分比。 此外，对于处理通常来自大量用户的类似请求的较大量的应用程序，准确性也会提升。 相反，对于不处理大量负载的应用程序，不需要采样，因为这些应用程序通常可以发送其所有遥测的同时保持在配额以内，而不会因限制而造成数据丢失。 
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
-*ASP.NET 和 ASP.NET Core Sdk 中的默认采样行为是什么？*
+ASP.NET 和 ASP.NET Core SDK 中的默认采样行为是什么？
 
 * 如果使用上述 SDK 的某个最新版本，则默认会启用自适应采样：每秒采样 5 个遥测项。
-  默认情况下`AdaptiveSamplingTelemetryProcessor`添加了两个节点，一个节点在`Event`采样中包括该类型，而另一个`Event`节点在采样中排除了该类型。 此配置意味着，SDK 会尝试将遥测项限制为类型的`Event`五个遥测项和所有其他类型的五个遥测项，从而确保与其他`Events`遥测类型分别进行抽样。 事件通常用于业务遥测，在大多数情况下不应受到诊断遥测量的影响。
+  默认会添加两个 `AdaptiveSamplingTelemetryProcessor` 节点，其中一个节点在采样中包含 `Event` 类型，而另一个节点则从采样中排除 `Event` 类型。 这种配置意味着 SDK 会尝试将遥测项限制为 `Event` 类型的 5 个遥测项以及所有其他类型的 5 个遥测项，因此确保独立于其他遥测类型对 `Events` 进行采样。 事件通常用于业务遥测，在大多数情况下不应受到诊断遥测量的影响。
   
-  下面显示了生成的`ApplicationInsights.config`默认文件。 在 ASP.NET Core 中，将在代码中启用相同的默认行为。 使用[此页前面部分中的示例](#configuring-adaptive-sampling-for-aspnet-core-applications)来更改此默认行为。
+  下面显示了生成的默认 `ApplicationInsights.config` 文件。 在 ASP.NET Core 中，代码中会启用相同的默认行为。 使用[本页前面部分中的示例](#configuring-adaptive-sampling-for-aspnet-core-applications)可以更改此默认行为。
 
     ```xml
     <TelemetryProcessors>
@@ -526,13 +526,13 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
     </TelemetryProcessors>
     ```
 
-是否可以对遥测数据进行多次采样？**
+是否可以对遥测数据进行多次采样？
 
-* 不能。 如果项已采样，则 SamplingTelemetryProcessor 将不考虑项的采样。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
+* 否。 如果项已采样，则 SamplingTelemetryProcessor 将不考虑项的采样。 对于引入采样也是如此，对于已在 SDK 本身中采样的项，它不会应用采样。
 
 *为何不采样简单“收集每个遥测类型 %X”？*
 
-* 虽然这种采样方法会提供较高的精度（以跃点数为准），但它会突破将诊断数据与每个用户、会话和请求关联的功能，这对于诊断而言至关重要。 因此，对于 "收集 X% 的应用用户的所有遥测项" 或 "收集所有应用程序请求的所有遥测项" 之类的策略，采样更好。 对于与请求不关联的遥测项（如后台异步处理），回退为“收集每个遥测类型 %X 的所有项”。 
+* 虽然此采样方法提供极高精度的指标近似值，但它会破坏每个用户、会话和请求关联诊断数据的能力，而这对于诊断而言很关键。 因此，对于“收集 %X 应用用户的所有遥测项”或“收集 %X 应用请求的所有遥测数据”等策略，采样的效果更佳。 对于与请求不关联的遥测项（如后台异步处理），回退为“收集每个遥测类型 %X 的所有项”。 
 
 *采样百分比是否随时间变化？*
 
@@ -544,23 +544,23 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
   
     否则，就必须猜测。 分析 Application Insights 中当前遥测使用量、观察出现的任何限制，并估计所收集的遥测量。 这三个输入以及所选的定价层暗示你可能想要减少收集的遥测的数量。 但是，用户数量的增加或遥测量中的某些其他变化可能导致估计无效。
 
-*如果将采样百分比设置得太低，会发生什么情况？*
+如果我配置的采样百分比过低，会发生什么情况？
 
-* 过短的采样百分比会导致过多的采样，并在 Application Insights 尝试对数据量减少的数据的可视化效果进行补偿时降低近似值的准确性。 此外，您的诊断体验可能会受到负面影响，因为某些不常发生的失败或速度缓慢的请求可能会被采样。
+* 当 Application Insights 尝试补偿数据量减少的数据可视化效果时，过低的采样百分比会导致过度采样，并降低近似值的准确性。 此外，诊断体验可能会受到负面影响，因此可能会采样某些很少出现的请求或缓慢请求。
 
-*如果配置的采样百分比太高，会发生什么情况？*
+如果我配置的采样百分比过高，会发生什么情况？
 
-* 配置过高的采样百分比（不太积极）将导致收集的遥测数据量不足。 仍可能会遇到与限制相关的遥测数据丢失，而使用 Application Insights 的成本可能因过高费用而超出预算。
+* 将配置过高的采样百分比（力度不够）会导致收集的遥测量减少不够。 仍可能会遇到与限制相关的遥测数据丢失，而使用 Application Insights 的成本可能因过高费用而超出预算。
 
 *可以在哪些平台上使用采样？*
 
-* 如果 SDK 未执行采样，则对于过于特定量的任何遥测，自动运行引入采样。 例如，如果你使用的是较旧版本的 ASP.NET SDK 或 Java SDK，则可以使用此配置。
-* 如果你使用的是当前的 ASP.NET 或 ASP.NET Core Sdk （托管在 Azure 或自己的服务器上），则默认情况下会获取自适应采样，但你可以按上文所述切换到固定速率。 使用固定速率采样，浏览器 SDK 会自动同步到示例相关的事件。 
-* 如果你使用的是当前 Java 代理，则可以配置`ApplicationInsights.json` （适用于 Java SDK， `ApplicationInsights.xml`配置）以启用固定速率采样。 默认情况下，采样处于关闭状态。 通过固定速率采样，浏览器 SDK 和服务器会自动同步到相关的示例事件。
+* 如果 SDK 未执行采样，则对于过于特定量的任何遥测，自动运行引入采样。 例如，如果使用旧版 ASP.NET SDK 或 Java SDK，则此配置可正常运行。
+* 如果使用最新 ASP.NET 或 ASP.NET Core SDK（托管在 Azure 中或者自己的服务器上），则默认运行自适应采样，不过可按如上所述切换到固定速率采样。 使用固定速率采样，浏览器 SDK 会自动同步到示例相关的事件。 
+* 如果使用最新的 Java 代理，可以配置 `ApplicationInsights.json`（对于 Java SDK，配置 `ApplicationInsights.xml`）来启用固定速率采样。 默认情况下，采样处于关闭状态。 使用固定速率采样时，浏览器 SDK 和服务器会自动同步到样本相关的事件。
 
-*某些罕见事件始终需要查看。如何使它们超过采样模块？*
+*我总是想要查看某些罕见的事件。如何让它们通过采样模块？*
 
-* 为此，最佳方法是编写一个自定义的 [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，以便在想要保留的遥测项中将 `SamplingPercentage` 设置为 100，如下所示。 由于保证初始化程序将在遥测处理器（包括采样）之前运行，因此可以确保所有采样技术都会出于任何采样考虑而忽略此项目。 自定义遥测初始值设定项在 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK 和 Java SDK 中提供。 例如，可以使用 ASP.NET SDK 配置遥测初始值设定项：
+* 为此，最佳方法是编写一个自定义的 [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)，以便在想要保留的遥测项中将 `SamplingPercentage` 设置为 100，如下所示。 由于保证初始化程序将在遥测处理器（包括采样）之前运行，因此可以确保所有采样技术都会出于任何采样考虑而忽略此项目。 自定义遥测初始化表达式在 ASP.NET SDK、ASP.NET Core SDK、JavaScript SDK 和 Java SDK 中可用。 例如，可以使用 ASP.NET SDK 配置遥测初始化表达式：
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer
@@ -575,15 +575,15 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
     }
     ```
 
-## <a name="older-sdk-versions"></a>旧版 SDK 版本
+## <a name="older-sdk-versions"></a>旧 SDK 版本
 
-自适应采样适用于 ASP.NET v 2.0.0-beta3 和更高版本、Applicationinsights.config AspNetCore SDK v 2.2.0-beta1 和更高版本的 Application Insights SDK，默认情况下已启用。
+自适应采样适用于 Application Insights SDK for ASP.NET v2.0.0-beta3 及更高版本、Microsoft.ApplicationInsights.AspNetCore SDK v2.2.0-beta1 及更高版本，默认已启用。
 
-固定速率采样是 SDK 在2.0.0 和 Java SDK 版本2.0.1 和更高版本中 ASP.NET 的一项功能。
+固定速率采样是 ASP.NET 版本 2.0.0 及更高版本，以及 Java SDK 版本 2.0.1 及更高版本中的一项 SDK 功能。
 
-在 ASP.NET SDK 的 v 2.5.0-beta2 和 ASP.NET Core SDK 的 v 2.2.0-beta3 之前，采样决策基于定义 "user" 的应用程序（即，最常见的 web 应用程序）的用户 ID 的哈希。 对于未定义用户的应用程序类型（如 Web 服务），采样决定取决于请求的操作 ID。 最新版本的 ASP.NET 和 ASP.NET Core Sdk 使用操作 ID 进行采样决策。
+对于 ASP.NET SDK 的 v2.5.0-beta2 之前版本以及 ASP.NET Core SDK 的 v2.2.0-beta3 之前版本，采样决策基于定义“用户”的应用程序（即最典型 Web 应用程序）用户 ID 的哈希代码。 对于未定义用户的应用程序类型（如 Web 服务），采样决定取决于请求的操作 ID。 最新版本的 ASP.NET 和 ASP.NET Core SDK 使用操作 ID 做出采样决策。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [筛选](../../azure-monitor/app/api-filtering-sampling.md)可以对 SDK 发送的内容提供更严格地控制。
-* 阅读开发人员网络文章[Application Insights 的 "优化遥测](https://msdn.microsoft.com/magazine/mt808502.aspx)"。
+* 请参阅开发人员网络文章[使用 Application Insights 优化遥测](https://msdn.microsoft.com/magazine/mt808502.aspx)。

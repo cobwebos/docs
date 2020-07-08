@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af7a1e40f21b6c9af490abe6f58edcaf798818b4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74923872"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85318869"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>将源数据集列映射到目标数据集列
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "74923872"
 > 以下示例适用于 Azure SQL 和 Azure Blob，但也适用于任何支持矩形数据集的数据存储。 调整示例中的数据集与链接服务定义，使其指向相关数据源中的数据。
 
 ## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>示例 1 – 从 Azure SQL 到 Azure Blob 的列映射
-在本示例中，输入表有一个结构，并指向 Azure SQL 数据库中的 SQL 表。
+在此示例中，输入表有一个结构，并指向 Azure SQL 数据库中的 SQL 表。
 
 ```json
 {
