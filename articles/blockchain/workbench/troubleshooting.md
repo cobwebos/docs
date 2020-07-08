@@ -2,14 +2,13 @@
 title: Azure Blockchain Workbench 故障排除
 description: 如何对 Azure 区块链工作台预览应用程序进行故障排除。
 ms.date: 10/14/2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.reviewer: brendal
-ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 20c0f9bdd6f820a73b1ba6660de805268c0d8714
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324304"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212847"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 区块链工作台预览疑难解答
 
@@ -42,7 +41,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 ```
 此脚本接受以下参数：
 
-| 参数  | 说明 | 必需 |
+| 参数  | 描述 | 必需 |
 |---------|---------|----|
 | 订阅 ID | SubscriptionID，用于创建或定位所有资源。 | 是 |
 | ResourceGroupName | Blockchain Workbench 部署时所在的 Azure 资源组的名称。 | 是 |
@@ -56,7 +55,7 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 
 输出 ZIP 文件包含以下文件夹结构：
 
-| 文件夹或文件 | 说明  |
+| 文件夹或文件 | 描述  |
 |---------|---------|
 | \Summary.txt | 系统摘要 |
 | \Metrics\blockchain | 有关区块链的指标 |

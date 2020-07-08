@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2018
 ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdba55e0655a13e65e403f5da73fcb69db5dbca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cf309c10dc5924374d8c3a191f6fd11cceb2ac49
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68561907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604278"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>使用 Azure Active Directory 删除组
 可以因为各种原因删除 Azure Active Directory (Azure AD) 组，但通常是因为：

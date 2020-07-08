@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339886"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>开发 c # IoT Edge 模块，以将文件移动到 Azure Stack 边缘
 
@@ -24,6 +23,7 @@ ms.locfileid: "82569987"
 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 创建容器注册表来存储和管理你的模块（Docker 映像）。
 > * 创建要在 Azure Stack Edge 设备上部署的 IoT Edge 模块。 
 
@@ -63,19 +63,19 @@ Azure Stack 边缘设备可以部署和运行 IoT Edge 模块。 Edge 模块实�
 Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 可以在云中使用的两个常见 Docker 注册表服务分别是 Azure 容器注册表和 Docker 中心。 本文使用容器注册表。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 选择“创建资源”>“容器”>“容器注册表”****。 单击“创建”。 
+2. 选择“创建资源”>“容器”>“容器注册表”****。 单击“创建”。
 3. 提供：
 
    1. Azure 中的唯一“注册表名称”****，可包含 5 到 50 个字母数字字符。
    2. 选择“订阅”  。
    3. 创建新的资源组，或选择现有的“资源组”****。
-   4. 选择一个**位置**。 建议将此位置与 Azure Stack Edge 资源关联。
+   4. 选择“位置” 。 建议将此位置与 Azure Stack Edge 资源关联。
    5. 将“管理员用户”切换到“启用”。********
    6. 将 SKU 设置为“基本”****。
 
       ![创建容器注册表](./media/azure-stack-edge-create-iot-edge-module/create-container-registry-1.png)
  
-4. 选择“创建”。 
+4. 选择“创建”。
 5. 创建容器注册表后，请浏览到其中，然后选择“访问密钥”。****
 
     ![获取访问密钥](./media/azure-stack-edge-create-iot-edge-module/get-access-keys-1.png)

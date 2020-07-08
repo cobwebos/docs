@@ -6,16 +6,18 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652254"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84636676"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 向 MySQL 进行身份验证
 
 本文将分步介绍如何使用 Azure Database for MySQL 配置 Azure Active Directory 访问权限以及如何使用 Azure AD 令牌进行连接。
+
+> [!IMPORTANT]
+> Azure Active Directory 身份验证仅适用于 MySQL 5.7 和更高版本。
 
 ## <a name="setting-the-azure-ad-admin-user"></a>设置 Azure AD 管理员用户
 
@@ -54,21 +56,19 @@ ms.locfileid: "83652254"
 
 以下是用户/应用程序使用 Azure AD 进行身份验证所需的步骤：
 
+### <a name="prerequisites"></a>先决条件
+
+可以按照 Azure Cloud Shell、Azure VM 或本地计算机上的顺序进行。 请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>步骤 1：使用 Azure AD 进行身份验证
 
-请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-调用 Azure CLI 工具以使用 Azure AD 进行身份验证。 这一操作需要提供 Azure AD 的用户 ID 和密码。
+首先使用 Azure CLI 工具通过 Azure AD 进行身份验证。 Azure Cloud Shell 中不需要执行此步骤。
 
 ```
 az login
 ```
 
-此命令将启动浏览器窗口来显示 Azure AD 身份验证页。
-
-> [!NOTE]
-> 还可以使用 Azure Cloud Shell 来执行这些步骤。
-> 请注意，在 Azure Cloud Shell 中检索 Azure AD 访问令牌时，需要显式调用 `az login` 并再次登录（在单独的窗口中使用代码）。 登录后，`get-access-token` 命令将按预期方式工作。
+此命令将启动一个浏览器窗口到 Azure AD 身份验证 "页。 这一操作需要提供 Azure AD 的用户 ID 和密码。
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>步骤 2：检索 Azure AD 访问令牌
 
@@ -76,19 +76,19 @@ az login
 
 示例（适用于公有云）：
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 上述资源值必须完全按所示方式指定。 对于其他云，可以使用以下命令查看资源值：
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 对于 Azure CLI 版本 2.0.71 和更高版本，可以在以下更为方便的版本中为所有云指定命令：
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -122,6 +122,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+
+连接时的重要注意事项：
+
+* `user@tenant.onmicrosoft.com`尝试连接的 Azure AD 用户或组的名称
+* 始终在 Azure AD 用户/组名称后追加服务器名称（例如 `@mydb` ）
+* 请确保使用与 Azure AD 用户或组名称拼写相同的方式
+* Azure AD 的用户名和组名区分大小写
+* 作为组连接时，请仅使用组名称（例如 `GroupName@mydb` ）
+* 如果名称包含空格，请 `\` 在每个空格前使用以对其进行转义
 
 请注意“enable-cleartext-plugin”设置，需要对其他客户端使用类似的配置，以确保在不进行哈希处理的情况下将令牌发送到服务器。
 

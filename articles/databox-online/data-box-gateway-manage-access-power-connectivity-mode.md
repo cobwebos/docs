@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 98431e7a451aa54dfdee2126d4ce94b8b0b0fb84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339206"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure Data Box Gateway 的访问、电源和连接模式
 
@@ -22,6 +21,7 @@ ms.locfileid: "82561340"
 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 管理对设备的访问
 > * 管理连接模式
 > * 管理电源
@@ -50,7 +50,7 @@ ms.locfileid: "82561340"
     ![重置密码](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
 
  
-2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 单击“重置”。****
+2. 输入新密码并确认。 提供的密码必须是 8 到 16 个字符。 该密码必须包含以下字符中的 3 项：大写字母、小写字母、数字和特殊字符。 单击“重置”。
 
     ![重置密码](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "82561340"
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应该可以`User`访问 Active Directory 租户，因为你需要能够访问它`Read all directory objects`。 你不能是来宾用户，因为他们没有权限`Read all directory objects`。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge 设备上创建共享的操作都将失败，从而导致用户创建失败。
+你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge 设备上创建共享的操作都将失败，从而导致用户创建失败。
 
 有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅[Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "82561340"
 
 尝试创建任何资源之前，请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序，则需要确保创建新资源的用户具有足够的权限在订阅级别上注册所需的资源提供程序。 如果还没有这样做，则会看到以下错误：
 
-*订阅\<订阅名称> 没有注册资源提供程序的权限： DataBoxEdge。*
+*该订阅无权 \<Subscription name> 注册资源提供程序： DataBoxEdge。*
 
 
 若要获取当前订阅中已注册资源提供程序的列表，请运行以下命令：
@@ -88,7 +88,7 @@ ms.locfileid: "82561340"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge`应注册。 若要`Microsoft.DataBoxEdge`注册，订阅管理员应运行以下命令：
+对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge` 应注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -124,7 +124,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 可使用本地 Web UI 关闭或重启虚拟设备。 在重启之前，建议使共享依次在主机和设备上脱机。 此操作可以最大程度地减少发生数据损坏的可能性。
 
-1. 在本地 Web UI 中，转到“维护”>“电源设置”。****
+1. 在本地 Web UI 中，转到“维护”>“电源设置”。
 2. 根据意图单击“关机”或“重启”。********
 
     ![电源设置](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)

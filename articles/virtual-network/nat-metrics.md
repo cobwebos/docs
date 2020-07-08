@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: 75e20a4fb91b73bc353d347f0b34f9be8f7a8a58
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709940"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure 虚拟网络 NAT 指标

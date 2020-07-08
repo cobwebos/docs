@@ -1,24 +1,23 @@
 ---
-title: 连接 sqlcmd
-description: 使用 sqlcmd 命令行实用工具连接到 Synapse SQL 池并对其进行查询。
+title: 使用 sqlcmd 进行连接
+description: 使用 sqlcmd 命令行实用程序连接并查询 Synapse SQL 池。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 02157ca0d32d2347e50cc84a5c52e9c47b0f33b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745199"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212133"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>连接到具有 sqlcmd 的 Synapse SQL 池
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 连接到 Synapse SQL 池
 
 > [!div class="op_single_selector"]
 >
@@ -28,20 +27,20 @@ ms.locfileid: "80745199"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-使用 [sqlcmd] [sqlcmd] 命令行实用工具连接到 SQL 池并对其进行查询。  
+使用 [sqlcmd][sqlcmd] 命令行实用程序连接并查询 SQL 池。  
 
 ## <a name="1-connect"></a>1.连接
 
-若要开始使用 [sqlcmd] [sqlcmd]，请打开命令提示符并输入**sqlcmd** ，后跟 SQL 池数据库的连接字符串。 连接字符串需要以下参数：
+若要开始使用 [sqlcmd][sqlcmd]，请打开命令提示符并输入“sqlcmd”  ，后跟 SQL 池的连接字符串。 连接字符串需要以下参数：
 
 * **服务器 (-S)：** 采用 `<`Server Name`>`.database.windows.net 格式的服务器
-* **数据库（-d）：** 数据库名称。
-* **启用带引号的标识符（-I）：** 必须启用带引号的标识符才能连接到 SQL 池实例。
+* **数据库 (-d)：** 数据库名称。
+* **启用带引号的标识符 (-I)：** 必须启用带引号的标识符才能连接到 SQL 池实例。
 
-若要使用 SQL Server 身份验证，需要添加用户名/密码参数：
+若要使用 SQL Server 身份验证，需添加用户名/密码参数：
 
 * **用户 (-U)：** 采用 `<`User`>` 格式的服务器用户
-* **密码（-P）：** 与用户关联的密码。
+* **密码 (-P)：** 与用户关联的密码。
 
 例如，连接字符串可能如下所示：
 
@@ -49,9 +48,9 @@ ms.locfileid: "80745199"
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-若要使用 Azure Active Directory 集成的身份验证，需要添加 Azure Active Directory 参数：
+若要使用 Azure Active Directory 集成身份验证，需添加 Azure Active Directory 参数：
 
-* **Azure Active Directory 身份验证 (-G)：** 使用 Azure Active Directory 进行身份验证
+* Azure Active Directory 身份验证 (-G)：使用 Azure Active Directory 进行身份验证 
 
 例如，连接字符串可能如下所示：
 
@@ -60,7 +59,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> 需要 [启用 Azure Active Directory 身份验证](sql-data-warehouse-authentication.md) 才能使用 Active Directory 进行身份验证。
+> 需 [启用 Azure Active Directory 身份验证](sql-data-warehouse-authentication.md) 才能使用 Active Directory 进行身份验证。
 
 ## <a name="2-query"></a>2.查询
 
@@ -85,4 +84,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 sqlcmd 中可用选项的详细信息，请参阅[sqlcmd 文档](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+有关 sqlcmd 中可用选项的详细信息，请参阅 [sqlcmd 文档](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。

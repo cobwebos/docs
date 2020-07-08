@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339189"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
@@ -96,7 +95,7 @@ ms.locfileid: "82561293"
 
     ![选择共享](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   单击“刷新”。**** 
+2.   单击“刷新”。 
 
     ![单击“刷新”](media/data-box-gateway-manage-shares/refresh-2.png)
  

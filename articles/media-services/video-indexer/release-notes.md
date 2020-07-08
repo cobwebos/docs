@@ -10,14 +10,13 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84325059"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -29,6 +28,20 @@ ms.locfileid: "83124578"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="may-2020"></a>2020 年 5 月
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>在美国东部部署视频索引器
+
+你现在可以在美国东部地区创建视频索引器付费帐户。
+ 
+### <a name="video-indexer-url"></a>视频索引器 URL
+
+视频索引器区域终结点仅在 www 上是统一的。 不需要任何操作项。
+
+从现在开始，无论是用于嵌入小组件还是登录到视频索引器 web 应用程序，都可 www.videoindexer.ai。
+
+同时，wus.videoindexer.ai 将重定向到 www。 有关详细信息，请访问应用中的[嵌入视频索引器小组件](video-indexer-embed-widgets.md)。
 
 ## <a name="april-2020"></a>2020 年 4 月
 

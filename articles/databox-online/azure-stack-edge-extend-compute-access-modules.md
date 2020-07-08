@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b352458b768c997f295596a7cbd5e8c02f843a9f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 01b0eae7d2e5d1078c0761838081a2379a724a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84342980"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge"></a>在 Azure Stack 边缘启用计算网络
 
@@ -62,7 +61,7 @@ ms.locfileid: "82569792"
 3. 在 " **IoT Edge 自定义模块**" 边栏选项卡中：
 
     1. 指定想要部署的 web 服务器应用模块的**名称**。
-    2. 提供模块映像的**图像 URI** 。 检索与所提供的名称和标记相匹配的模块。 在这种情况`nginx:stable`下，将从公共[Docker 存储库](https://hub.docker.com/_/nginx/)拉取稳定的 nginx 映像（标记为稳定）。
+    2. 提供模块映像的**图像 URI** 。 检索与所提供的名称和标记相匹配的模块。 在这种情况下， `nginx:stable` 将从公共[Docker 存储库](https://hub.docker.com/_/nginx/)拉取稳定的 nginx 映像（标记为稳定）。
     3. 在**容器 "创建选项**" 中，粘贴以下代码示例：  
 
         ```
@@ -83,7 +82,7 @@ ms.locfileid: "82569792"
 
         ![在 IoT Edge 自定义模块边栏选项卡中指定端口信息](media/azure-stack-edge-extend-compute-access-modules/module-information.png)
 
-    4. 选择“保存”  。
+    4. 选择“保存”。
 
 ## <a name="verify-module-access"></a>验证模块访问
 

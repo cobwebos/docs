@@ -4,16 +4,15 @@ description: 如何使用 Web 客户端连接到 Windows 虚拟桌面。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 061805896203615d7673a006059080e9c4246863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: bb3a73566cd2477e493ca8621336fb3a51f3b3b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212456"
 ---
 # <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 

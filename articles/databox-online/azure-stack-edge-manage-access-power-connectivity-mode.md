@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339716"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>为 Azure Stack 边缘管理访问、电源和连接模式
 
@@ -40,7 +39,7 @@ ms.locfileid: "82569610"
 
     ![更改密码](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. 选择“更改密码”****。
+3. 选择“更改密码”。
  
 ### <a name="reset-device-password"></a>重置设备密码
 
@@ -66,7 +65,7 @@ ms.locfileid: "82569610"
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应该可以`User`访问 Active Directory 租户，因为你需要能够访问它`Read all directory objects`。 你不能是来宾用户，因为他们没有权限`Read all directory objects`。 如果你是来宾，则生成激活密钥、创建 Azure Stack 边缘设备上的共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
+你应该可以 `User` 访问 Active Directory 租户，因为你需要能够访问它 `Read all directory objects` 。 你不能是来宾用户，因为他们没有权限 `Read all directory objects` 。 如果你是来宾，则生成激活密钥、创建 Azure Stack 边缘设备上的共享、创建用户、配置边缘计算角色、重置设备密码的操作都将失败。
 
 有关如何向用户提供 Microsoft Graph API 访问权限的详细信息，请参阅[Microsoft Graph 权限参考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -80,7 +79,7 @@ ms.locfileid: "82569610"
 
 尝试创建任何资源之前，请确保在订阅中注册了资源提供程序。 如果未注册资源提供程序，则需要确保创建新资源的用户具有足够的权限在订阅级别上注册所需的资源提供程序。 如果还没有这样做，则会看到以下错误：
 
-*订阅\<订阅名称> 没有注册资源提供程序的权限： DataBoxEdge。*
+*该订阅无权 \<Subscription name> 注册资源提供程序： DataBoxEdge。*
 
 
 若要获取当前订阅中已注册资源提供程序的列表，请运行以下命令：
@@ -89,7 +88,7 @@ ms.locfileid: "82569610"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge`应注册。 若要`Microsoft.DataBoxEdge`注册，订阅管理员应运行以下命令：
+对于 Azure Stack Edge 设备， `Microsoft.DataBoxEdge` 应注册。 若要注册 `Microsoft.DataBoxEdge` ，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
@@ -122,7 +121,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 你可以使用本地 web UI 关闭或重新启动你的物理设备。 建议在重新启动之前，先在数据服务器和设备上使共享脱机。 此操作可以最大程度地减少发生数据损坏的可能性。
 
-1. 在本地 Web UI 中，转到“维护”>“电源设置”。****
+1. 在本地 Web UI 中，转到“维护”>“电源设置”。
 2. 根据要执行的操作，选择 "**关机**" 或 "**重新启动**"。
 
     ![电源设置](media/azure-stack-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)

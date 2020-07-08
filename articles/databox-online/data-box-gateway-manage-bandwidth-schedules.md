@@ -5,29 +5,28 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: feae75b1fbb832f833a01fa20ce07962ab5c484f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339138"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的带宽计划  
 
-本文介绍如何在 Azure Data Box Gateway 中管理用户。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。 
+本文介绍如何在 Azure Data Box Gateway 中管理用户。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。
 
 可以通过 Azure 门户添加、修改或删除 Data Box Gateway 的带宽计划。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 添加计划
 > * 修改计划
-> * 删除计划 
-
+> * 删除计划
 
 ## <a name="add-a-schedule"></a>添加计划
 
@@ -44,7 +43,7 @@ ms.locfileid: "82561414"
    2. 如果此计划全天运行，可以选中“全天”选项。**** 
    3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。**** 为此字段提供介于 1 和 1,000 之间的数字。 
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。**** 
-   5. 单击“添加”  。
+   5. 单击“添加” 。
 
       ![单击“添加用户”](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 

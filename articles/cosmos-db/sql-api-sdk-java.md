@@ -6,29 +6,29 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53ae3217e77a9301cbe0d3d63ce0712a0b9b7f1e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 520f64cbe768f2fcbd4603d1fb038bc349cd01db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85391972"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET 更改源](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET 更改源 SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST 资源提供程序](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](/rest/api/cosmos-db/)
+> * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [批量执行工具 - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
 这是适用于 SQL API 的原始 Azure Cosmos DB 同步 Java SDK v2，支持同步操作。
@@ -43,10 +43,16 @@ ms.locfileid: "84171610"
 |**API 文档**|[Java API 参考文档](/java/api/com.microsoft.azure.documentdb)|
 |**参与 SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**入门**|[Java SDK 入门](sql-api-java-get-started.md)|
-|**Web 应用教程**|[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-java-application.md)|
+|**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-java-application.md)|
 |受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* 修复了 documentCollection 查询的主分区缓存问题。
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* 添加了对 449 重试自定义配置的支持。
 
 ### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * 修复了连接池超时问题。
@@ -151,8 +157,8 @@ ms.locfileid: "84171610"
 * 解决了 Strong 和 BoundedStaleness 一致性级别存在的问题。
 
 ### <a name="1110"></a><a name="1.11.0"></a>1.11.0
-* 添加了对名为 ConsistentPrefix 的新一致性级别的支持。
-* 修复了在会话模式下读取集合时的 bug。
+* 添加了对称为“ConsistentPrefix”的新一致性级别的支持。
+* 修复了以会话模式读取集合时的 bug。
 
 ### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * 启用了对吞吐量低至 2,500 RU/秒并且缩放增量为 100 RU/秒的分区集合的支持。
@@ -168,8 +174,8 @@ ms.locfileid: "84171610"
 * 通过 RequestOptions.setPopulateQuotaInfo 添加了对集合配额信息的支持。
 * 通过 RequestOptions.setScriptLoggingEnabled 添加了对存储过程脚本日志记录的支持。
 * 修复了以下 bug：DirectHttps 模式中的查询在遇到限制失败时可能会停止响应。
-* 修复了一个会话一致性模式的 bug。
-* 修复了一个 bug，该 bug 可能会导致在请求率很高时，在 HttpContext 中出现 NullReferenceException。
+* 修复了会话一致性模式中的一个 Bug。
+* 修复了一个 Bug，该 Bug 可能在请求率很高时导致 HttpContext 中出现 NullReferenceException。
 * 改进了 DirectHttps 模式的性能。
 
 ### <a name="194"></a><a name="1.9.4"></a>1.9.4
@@ -192,17 +198,17 @@ ms.locfileid: "84171610"
 ### <a name="191"></a><a name="1.9.1"></a>1.9.1
 * 添加了对 BoundedStaleness 一致性级别的支持。
 * 添加了对分区集合的 CRUD 操作的直接连接支持。
-* 修复了使用 SQL 查询数据库的 bug。
+* 修复了使用 SQL 查询数据库的一个 bug。
 * 修复了会话缓存中会话令牌设置可能不正确的 bug。
 
 ### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * 添加了对跨分区并行查询的支持。
-* 已对分区集合添加 TOP/ORDER BY 查询支持。
-* 添加了对强一致性的支持。
-* 添加了对使用直接连接时基于名称的请求的支持。
-* 修复问题，以便使所有请求重试上的 ActivityId保持一致。
-* 修复了重新创建具有相同名称的集合期间与会话缓存相关的 bug。
-* 为地域隔离的空间查询指定集合索引策略的同时，已添加多边形和 LineString 数据类型。
+* 添加了对分区集合的 TOP/ORDER BY 查询支持。
+* 添加了非常一致性支持。
+* 添加了使用直接连接时对基于名称的请求的支持。
+* 修复了 bug，使 ActivityId 在所有请求重试中保持一致。
+* 修复了在重新创建同名集合时与会话缓存相关的 bug。
+* 为地域隔离的空间查询指定集合索引策略时增加了多边形和 LineString 数据类型。
 * 解决 Java 文档中的 Java 1.8 的问题。
 
 ### <a name="181"></a><a name="1.8.1"></a>1.8.1
@@ -211,8 +217,8 @@ ms.locfileid: "84171610"
 
 ### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * 添加了对多区域数据库帐户的支持。
-* 添加对自动重试限制请求的支持，并提供了选项用于自定义最大重试次数和最大重试等待时间。  请参阅 RetryOptions 和 ConnectionPolicy.getRetryOptions()。
-* 已弃用基于 IPartitionResolver 的自定义分区代码。 请使用分区集合来提高存储和吞吐量。
+* 添加了对自动重试限制请求的支持，并提供了选项用于自定义最大重试次数和最大重试等待时间。  请参阅 RetryOptions 和 ConnectionPolicy.getRetryOptions()。
+* 弃用了基于 IPartitionResolver 的自定义分区代码。 请使用分区集合来提高存储和吞吐量。
 
 ### <a name="171"></a><a name="1.7.1"></a>1.7.1
 * 添加了对速率限制的重试策略支持。  
@@ -268,6 +274,8 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |2020 年 6 月 3 日 |--- |
+| [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |
 | [2.4.6](#2.4.6) |2020 年 1 月 24 日 |--- |
 | [2.4.5](#2.4.5) |2019 年 11 月 10 日 |--- |
@@ -322,7 +330,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | 0.9.1-prelease |2014 年 12 月 19 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

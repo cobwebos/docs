@@ -4,15 +4,14 @@ description: 了解如何检测和调试 Azure Cosmos DB 请求的 SQL 查询性
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8776ecae982a4b1c67f6b66f16fceec930a561f0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69614820"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392125"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>优化 Azure Cosmos DB 的查询性能
 
@@ -93,7 +92,7 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-每个查询执行页面对应于一个标头为 `POST` 的 REST API `Accept: application/query+json`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
+每个查询执行页面对应于一个标头为 `Accept: application/query+json` 的 REST API `POST`，SQL 查询在正文中。 每个查询都使用为了继续执行而在客户端与服务器之间回应的 `x-ms-continuation` 标记进行到服务器的一次或多次往返。 FeedOptions 中的配置选项将以请求标头的形式传递给服务器。 例如，`MaxItemCount` 对应于 `x-ms-max-item-count`。 
 
 该请求返回以下响应（为便于阅读已将其截断）：
 
@@ -131,7 +130,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 | `x-ms-documentdb-query-metrics` | 执行的查询统计信息。 这是一个经分隔的字符串，其中包含在执行查询的各个阶段中花费的时间的统计信息。 如果 `x-ms-documentdb-populatequerymetrics` 设置为 `True`，则会返回。 | 
 | `x-ms-request-charge` | 查询使用的[请求单位](request-units.md)数。 | 
 
-有关 REST API 请求标头和选项的详细信息，请参阅[使用 REST API 查询资源](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)。
+有关 REST API 请求标头和选项的详细信息，请参阅[使用 REST API 查询资源](/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)。
 
 ## <a name="best-practices-for-query-performance"></a>有关查询性能的最佳做法
 下面是影响 Azure Cosmos DB 查询性能的最常见因素。 本文深入探讨了其中的每一个主题。

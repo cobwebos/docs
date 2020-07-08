@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: d64ecb32c783dcee08164856aa90a43d004894a8
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 1aceb9d2fb1d9b5890bc0859d432bc1c5e7e4db4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570286"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339833"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge"></a>使用 Azure 门户管理 Azure Stack 边缘上的共享
 
@@ -88,7 +87,7 @@ ms.locfileid: "82570286"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。************
 
-7. 选择“创建”。  
+7. 选择“创建”。 
 
    ![创建本地共享](media/azure-stack-edge-manage-shares/add-local-share-2.png)
 
@@ -177,7 +176,7 @@ ms.locfileid: "82570286"
 
    ![选择共享](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. 单击“刷新”。****
+2. 单击“刷新”。
 
    ![单击“刷新”](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273284"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中持久保存文件
@@ -62,7 +61,7 @@ Cloud Shell 在指定订阅中的存储帐户内使用 Azure 文件共享。 由
 用户应通过在存储帐户或订阅级别设置权限来锁定对其文件的访问权限。
 
 ## <a name="supported-storage-regions"></a>支持的存储区域
-若要查找当前区域，可在`env` Bash 中运行，并找到`ACC_LOCATION`变量，或从 PowerShell `$env:ACC_LOCATION`运行。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。
+若要查找当前区域，可 `env` 在 Bash 中运行，并找到变量 `ACC_LOCATION` ，或从 PowerShell 运行 `$env:ACC_LOCATION` 。 文件共享会收到系统创建的 5-GB 映像，用于保存 `$Home` 目录。
 
 Cloud Shell 计算机位于以下区域中：
 
@@ -80,7 +79,7 @@ Cloud Shell 计算机位于以下区域中：
 > [!NOTE]
 > 如果使用了次要区域，则 Cloud Shell 的文件访问和启动时间可能会更慢。
 
-用户可以在 PowerShell `(Get-CloudDrive | Get-AzStorageAccount).Location`中运行以查看其文件共享的位置。
+用户可以 `(Get-CloudDrive | Get-AzStorageAccount).Location` 在 PowerShell 中运行以查看其文件共享的位置。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>根据 Azure 资源策略限制资源创建
 在 Cloud Shell 中创建的存储帐户都标记有 `ms-resource-usage:azure-cloud-shell`。 如果想禁止用户在 Cloud Shell 中创建存储帐户，请创建此特定标记触发的[适用于标记的 Azure 资源策略](../azure-policy/json-samples.md)。
@@ -96,14 +95,14 @@ Cloud Shell 通过以下两种方法持久保存文件：
 ## <a name="clouddrive-commands"></a>clouddrive 命令
 
 ### <a name="use-the-clouddrive-command"></a>使用 `clouddrive` 命令
-在 Cloud Shell 中，您可以运行名`clouddrive`为的命令，这样您就可以手动更新装载到 Cloud Shell 中的文件共享。
+在 Cloud Shell 中，您可以运行名为的命令 `clouddrive` ，这样您就可以手动更新装载到 Cloud Shell 中的文件共享。
 
 ![运行“clouddrive”命令](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>列出 `clouddrive`
 若要查明哪些文件共享已装载为 `clouddrive`，请运行 `df` 命令。 
 
-clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如： `//storageaccountname.file.core.windows.net/filesharename`
+clouddrive 的文件路径会在 URL 中显示存储帐户名称和文件共享。 例如，`//storageaccountname.file.core.windows.net/filesharename`
 
 ```
 justin@Azure:~$ df
@@ -122,7 +121,7 @@ justin@Azure:~$
 #### <a name="prerequisites-for-manual-mounting"></a>手动装载的先决条件
 可使用 `clouddrive mount` 命令更新与 Cloud Shell 相关联的文件共享。
 
-如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过运行`env`并检查来检索位置`ACC_LOCATION`。
+如果装载现有的文件共享，则存储帐户必须位于所选的 Cloud Shell 区域中。 通过运行并检查来检索位置 `env` `ACC_LOCATION` 。
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` 命令
 

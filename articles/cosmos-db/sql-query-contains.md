@@ -4,19 +4,18 @@ description: 了解 Azure Cosmos DB 中的 CONTAINS SQL 系统函数如何返回
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84322697"
 ---
 # <a name="contains-azure-cosmos-db"></a>CONTAINS (Azure Cosmos DB)
 
- 返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。  
+返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。  
   
 ## <a name="syntax"></a>语法
   
@@ -26,10 +25,10 @@ CONTAINS(<str_expr1>, <str_expr2> [, <bool_expr>])
   
 ## <a name="arguments"></a>参数
   
-str_expr1  
+*str_expr1*  
    是要搜索的字符串表达式。  
   
-str_expr2  
+*str_expr2*  
    是要查找的字符串表达式。  
 
 bool_expr 忽略大小写的可选值。 如果设置为 true，CONTAINS 将执行不区分大小写的搜索。 如果未指定，则此值为 false。
@@ -46,7 +45,7 @@ bool_expr 忽略大小写的可选值。 如果设置为 true，CONTAINS 将执�
 SELECT CONTAINS("abc", "ab", false) AS c1, CONTAINS("abc", "A", false) AS c2, CONTAINS("abc", "A", true) AS c3
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [
@@ -75,6 +74,8 @@ Contains 的 RU 消耗将随着系统函数中属性的基数的增加而增加�
 ```
 
 第一个查询可能比第二个查询使用更多的 RU，因为 town 的基数高于 country 的基数。
+
+如果某些文档的 Contains 中的属性大小大于 1 KB，则查询引擎需要加载这些文档。 在这种情况下，查询引擎将无法使用索引对 Contains 进行完全评估。 如果你有大量属性大小超过 1 KB 的文档，则 Contains 的 RU 费用将很高。
 
 ## <a name="next-steps"></a>后续步骤
 

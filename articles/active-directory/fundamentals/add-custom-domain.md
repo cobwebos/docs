@@ -7,42 +7,41 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603954"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
-每个新的 Azure AD 租户都附带了一个初始域名， * \<domainname>. onmicrosoft.com*。 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
+每个新的 Azure AD 租户都附带了一个名为* \<domainname> onmicrosoft.com*的初始域名。 无法更改或删除初始域名，但可以添加组织的名称。 添加自定义域名有助于创建用户所熟悉的用户名，例如 *alain\@contoso.com*。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 添加自定义域名之前，请在域注册机构处创建域名。 有关认证的域注册机构，请参阅 [ICANN 认证的注册机构](https://www.icann.org/registrar-reports/accredited-list.html)。
 
 ## <a name="create-your-directory-in-azure-ad"></a>在 Azure AD 中创建目录
 
-获取域名后，可以创建第一个 Azure AD 目录。 使用具有订阅“所有者”角色的帐户登录到目录的 Azure 门户。 
+获取域名后，可以创建第一个 Azure AD 目录。 使用具有订阅“所有者”角色的帐户登录到目录的 Azure 门户。
 
 遵循[为组织创建新租户](active-directory-access-create-new-tenant.md#create-a-new-tenant-for-your-organization)中的步骤创建新目录。
 
 >[!IMPORTANT]
 >租户的创建者将自动成为该租户的全局管理员。 全局管理员可将其他管理员添加到租户中。
 
-有关订阅角色的详细信息，请参阅[Azure 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
+有关订阅角色的详细信息，请参阅 [Azure 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
 
 >[!TIP]
-> 如果你打算将本地 Windows Server AD 与 Azure AD 相联合，则需要在运行 Azure AD Connect 工具同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”  。
+> 如果你打算将本地 Windows Server AD 与 Azure AD 相联合，则需要在运行 Azure AD Connect 工具同步目录时选中“我计划将此域配置为使用本地 Active Directory 进行单一登录”。
 >
-> 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名  。 若要大致了解该设置，请参阅[验证选择用于联合的 Azure AD 域](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。 如果没有 Azure AD Connect 工具，可[在此处下载](https://go.microsoft.com/fwlink/?LinkId=615771)。
+> 还需要在向导的“Azure AD 域”步骤中注册选择用于与本地目录进行联合的域名。 若要大致了解该设置，请参阅[验证选择用于联合的 Azure AD 域](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)。 如果没有 Azure AD Connect 工具，可[在此处下载](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 ## <a name="add-your-custom-domain-name-to-azure-ad"></a>将自定义域名添加到 Azure AD
 
@@ -50,18 +49,18 @@ ms.locfileid: "82734733"
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”。  然后选择“自定义域名” **“添加自定义域”。**  >  
+1. 在任意页面中搜索并选择“Azure Active Directory”。 然后选择“自定义域名” > “添加自定义域”。 
 
     ![“自定义域名”页，其中显示了“添加自定义域”](media/add-custom-domain/add-custom-domain.png)
 
-1. 在“自定义域名”中，输入组织的新名称（在本示例中为 **contoso.com**）。  选择“添加域”。 
+1. 在“自定义域名”中，输入组织的新名称（在本示例中为 *contoso.com*）。 选择“添加域”。
 
     ![“自定义域名”页，其中显示了“添加自定义域”页](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
     >若要正常完成此过程，必须包含 *.com*、 *.net* 或其他任何顶级扩展名。
 
-    将添加未验证的域。 此时将出现“contoso.com”页，其中显示了 DNS 信息。  请保存此信息。 稍后需要使用此信息来创建 TXT 记录以配置 DNS。
+    将添加未验证的域。 此时将出现“contoso.com”页，其中显示了 DNS 信息。 请保存此信息。 稍后需要使用此信息来创建 TXT 记录以配置 DNS。
 
     ![包含 DNS 条目信息的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
@@ -82,13 +81,13 @@ ms.locfileid: "82734733"
 
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”，然后选择“自定义域名”。  
+1. 在任意页面中搜索并选择“Azure Active Directory”，然后选择“自定义域名”。
 
-1. 在“自定义域名”中选择自定义域名。  本示例选择了“contoso.com”。 
+1. 在“自定义域名”中选择自定义域名。 本示例选择了“contoso.com”。
 
     ![“Fabrikam - 自定义域名”页，其中突出显示了“Contoso”](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
-1. 在“contoso.com”页上，选择“验证”以确保自定义域已正确注册并且在 Azure AD 中有效。  
+1. 在“contoso.com”页上，选择“验证”以确保自定义域已正确注册并且在 Azure AD 中有效。 
 
     ![包含 DNS 条目信息和“验证”按钮的“Contoso”页](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 

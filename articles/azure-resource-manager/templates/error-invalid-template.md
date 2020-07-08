@@ -1,14 +1,13 @@
 ---
-title: “模板无效”错误
-description: 介绍如何解决在部署 Azure 资源管理器模板时遇到的“模板无效”错误。
+title: 无效模板错误
+description: 说明如何在部署 Azure 资源管理器模板时解决无效模板错误。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832515"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324056"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解决无效模板错误
 
@@ -27,13 +26,13 @@ Message=<varies>
 
 ## <a name="cause"></a>原因
 
-此错误可能由几种不同类型的错误导致。 它们通常涉及模板中的语法或结构错误。
+此错误可由多种不同类型的错误导致。 它们通常涉及模板中的语法或结构错误。
 
-<a id="syntax-error" />
+<a id="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>解决方案 1 - 语法错误
 
-如果收到指示模板验证失败的错误消息，则说明模板中可能存在语法问题。
+如果有错误消息指出模板验证失败，则可能是模板中存在语法问题。
 
 ```
 Code=InvalidTemplate
@@ -50,7 +49,7 @@ Message=Deployment template validation failed
 
 收到此类错误时，请仔细检查表达式语法。 考虑使用 [Visual Studio](create-visual-studio-deployment-project.md) 或 [Visual Studio Code](use-vs-code-to-create-template.md) 等 JSON 编辑器，此类编辑器在出现语法错误时可以发出警告。
 
-<a id="incorrect-segment-lengths" />
+<a id="incorrect-segment-lengths"></a>
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>解决方案 2 - 段长度不正确
 
@@ -72,7 +71,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-但下一个示例**不是有效名称**，因为其段数与类型的段数相同。
+但下一个示例 **不是有效名称** ，因为其段数与类型的段数相同。
 
 ```json
 {
@@ -82,7 +81,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-对于子资源来说，类型和名称的段数相同。 此段数是有意义的，因为子资源的全名和类型包括父名称和类型。 因此，全名仍然比完整类型少一个段。
+对于子资源来说，类型和名称的段数必须相同。 之所以必须这样，是因为子资源的完整名称和类型包含父名称和类型。 因此，完整名称的段仍比完整类型的段少一个。
 
 ```json
 "resources": [
@@ -111,7 +110,7 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-<a id="parameter-not-valid" />
+<a id="parameter-not-valid"></a>
 
 ## <a name="solution-3---parameter-is-not-valid"></a>解决方案 3 - 参数无效
 
@@ -126,13 +125,13 @@ part of the allowed values
 
 请仔细检查模板中的允许值，并提供在部署过程中提供这些值之一。 有关允许参数值的详细信息，请参阅 [Azure 资源管理器模板的参数部分](template-syntax.md#parameters)。
 
-<a id="too-many-resource-groups" />
+<a id="too-many-resource-groups"></a>
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解决方案 4 - 太多目标资源组
 
 你可能在之前的部署中看到此错误，原因是你被限制为一个部署使用 5 个目标资源组。 在 2020 年 5 月，此限额被上调到了 800 个资源组。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](cross-resource-group-deployment.md)。
 
-<a id="circular-dependency" />
+<a id="circular-dependency"></a>
 
 ## <a name="solution-5---circular-dependency-detected"></a>解决方案 5 - 检测到循环依赖项
 

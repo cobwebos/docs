@@ -1,26 +1,25 @@
 ---
 title: 工作负荷分类
-description: 使用分类来管理 Azure Synapse 分析中查询的并发性、重要性和计算资源的指南。
+description: 有关使用分类管理 Azure Synapse Analytics 中查询的并发性、重要性和计算资源的指导。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 266eebc8322b5fc648180c0524abc973a4b60373
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743653"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212371"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse 分析工作负荷分类
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics 工作负荷分类
 
-本文介绍使用 Azure Synapse 中的 Synapse SQL 池为传入请求分配工作负荷组和重要性的工作负荷分类过程。
+本文介绍了在 Azure Synapse 中使用 Synapse SQL 池为传入请求分配工作负荷组和重要性的工作负荷分类过程。
 
 ## <a name="classification"></a>分类
 
@@ -36,7 +35,7 @@ ms.locfileid: "80743653"
 
 ## <a name="classification-process"></a>分类过程
 
-目前，Azure Synapse 中的 Synapse SQL 池分类是通过将用户分配到具有分配给它的对应资源类[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)的角色来完成的。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来利用更丰富的分类方法。  使用此语法，Synapse SQL 池用户可以通过`workload_group`参数分配重要性和分配给请求的系统资源量。
+目前，对 Azure Synapse 中的 Synapse SQL 池进行分类是通过使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 将用户分配给具有相应资源类的角色来实现的。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 语法来利用更丰富的分类方法。  使用此语法，Synapse SQL 池用户可以通过 `workload_group` 参数为请求分配重要性和系统资源数。
 
 > [!NOTE]
 > 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。
@@ -45,7 +44,7 @@ ms.locfileid: "80743653"
 
 在分类过程中，将使用权重来确定分配哪个工作负荷组。  权重如下所示：
 
-|分类器参数 |重量   |
+|分类器参数 |权重   |
 |---------------------|---------|
 |MEMBERNAME:USER      |64       |
 |MEMBERNAME:ROLE      |32       |
@@ -55,7 +54,7 @@ ms.locfileid: "80743653"
 
 `membername` 参数是必需的。  但是，如果指定的 membername 是数据库用户而不是数据库角色，用户的权重更高，因此选择该分类器。
 
-如果用户是具有在多个分类器中分配或匹配的不同资源类的多个角色的成员，则会授予此用户最高的资源类分配。  此行为与现有的资源类分配行为保持一致。
+如果某个用户是多个角色的成员，并且这些角色分配有不同的资源类或者在多个分类器中相匹配，则会为该用户分配最高的资源类。  此行为与现有的资源类分配行为保持一致。
 
 ## <a name="system-classifiers"></a>系统分类器
 
@@ -69,7 +68,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 使用自动创建的系统分类器能够轻松迁移到工作负荷分类。 开始创建具有重要性的新分类器时，使用具有分类优先顺序的资源类角色映射可能会导致错误分类。
 
-请考虑下列方案：
+假设出现了下面这种情景：
 
 - 某个现有的数据仓库包含已分配到 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是使用 sp_addrolemember 进行的。
 - 现已使用工作负荷管理更新该数据仓库。

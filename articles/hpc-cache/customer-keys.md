@@ -3,15 +3,14 @@ title: 使用客户托管密钥加密 Azure HPC 缓存中的数据
 description: 如何使用 Azure HPC 缓存 Azure Key Vault 来控制加密密钥的访问权限，而不是使用默认的 Microsoft 托管的加密密钥
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
-ms.translationtype: MT
+ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597733"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512914"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>将客户托管的加密密钥用于 Azure HPC 缓存
 

@@ -1,6 +1,6 @@
 ---
-title: 从 Microsoft Access 源复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Microsoft Access 源复制到支持的接收器数据存储。
+title: 将数据从和复制到 Microsoft Access
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从和复制到 Microsoft Access。
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,15 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: fc2179efcda4ee11dda3b424b16a072a2bb2c26e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/28/2020
+ms.openlocfilehash: 00966af4e0fc83015726d86a4c7cb5724ad38633
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85513359"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Microsoft Access 数据存储复制数据
+# <a name="copy-data-from-and-to-microsoft-access-using-azure-data-factory"></a>使用 Azure 数据工厂将数据从和复制到 Microsoft Access
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述了如何在 Azure 数据工厂中使用复制活动从 Microsoft Access 数据存储复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
@@ -30,7 +29,7 @@ ms.locfileid: "81418178"
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-可将数据从 Microsoft Access 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可以将数据从 Microsoft Access 源复制到任何支持的接收器数据存储，或从任何支持的源数据存储复制到 Microsoft Access 接收器。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -55,7 +54,7 @@ Microsoft Access 链接服务支持以下属性：
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MicrosoftAccess** | 是 |
-| connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。有关更多详细信息，请参阅  [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。| 是 |
+| connectionString | 不包括凭据部分的 ODBC 连接字符串。 可以指定连接字符串，也可以利用在 Integration Runtime 计算机上设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。<br> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取  `password`  配置。 有关更多详细信息，请参阅 [在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md) 。| 是 |
 | authenticationType | 用于连接 Microsoft Access 数据存储的身份验证类型。<br/>允许值包括：**Basic** 和 **Anonymous**。 | 是 |
 | userName | 如果使用基本身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
@@ -68,7 +67,7 @@ Microsoft Access 链接服务支持以下属性：
 {
     "name": "MicrosoftAccessLinkedService",
     "properties": {
-        "type": "Microsoft Access",
+        "type": "MicrosoftAccess",
         "typeProperties": {
             "connectionString": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;",
             "authenticationType": "Basic",
@@ -121,7 +120,7 @@ Microsoft Access 链接服务支持以下属性：
 
 ### <a name="microsoft-access-as-source"></a>充当源的 Microsoft Access
 
-从 Microsoft Access 兼容的数据存储复制数据时，复制活动的 **source** 节支持以下属性：
+若要从 Microsoft Access 复制数据，复制活动**源**部分支持以下属性：
 
 | 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
@@ -154,6 +153,48 @@ Microsoft Access 链接服务支持以下属性：
             },
             "sink": {
                 "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+### <a name="microsoft-access-as-sink"></a>Microsoft Access as 接收器
+
+若要将数据复制到 Microsoft Access，请在复制活动**接收器**部分中支持以下属性：
+
+| Property | 描述 | 必需 |
+|:--- |:--- |:--- |
+| type | 复制活动接收器的 type 属性必须设置为： **MicrosoftAccessSink** | 是 |
+| writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
+| writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值为 0 - 自动检测） |
+| preCopyScript |每次运行时，将数据写入到数据存储之前，指定复制活动要执行的 SQL 查询。 此属性可用于清理预先加载的数据。 |否 |
+
+**示例：**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMicrosoftAccess",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Microsoft Access output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MicrosoftAccessSink"
             }
         }
     }

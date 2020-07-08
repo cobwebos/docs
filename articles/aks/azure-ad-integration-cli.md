@@ -4,26 +4,25 @@ description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory �
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: dba6590daf5c64dd1e53663e71a0cc27941b1470
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: 83ba43c3b8a00325750ec935fd3a43ec7d56074c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779937"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336530"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>使用 Azure CLI 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 群集操作员还可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。
 
-本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集并在 AKS 群集中创建一个基本的 RBAC 角色。 也可以[使用 Azure 门户完成这些步骤][azure-ad-portal]。
+本文介绍如何创建所需的 Azure AD 组件，然后部署支持 Azure AD 的群集并在 AKS 群集中创建一个基本的 RBAC 角色。
 
 有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
-以下限制适用：
+存在以下限制：
 
 - 只有在创建新的启用 RBAC 的群集时，才能启用 Azure AD。 不能在现有 AKS 群集上启用 Azure AD。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -37,7 +36,7 @@ aksname="myakscluster"
 
 ## <a name="azure-ad-authentication-overview"></a>Azure AD 身份验证概述
 
-使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅[OPEN ID connect 文档][open-id-connect]。
+使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅 [Open ID Connect 文档][open-id-connect]。
 
 在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。 有关 Webhook 令牌身份验证的详细信息，请参阅 [Webhook 身份验证文档][kubernetes-webhook]。
 
@@ -77,7 +76,7 @@ serverApplicationSecret=$(az ad sp credential reset \
 Azure AD 需要执行以下操作的有权：
 
 * 读取目录数据
-* 登录和读取用户配置文件
+* 登录并读取用户配置文件
 
 使用 [az ad app permission add][az-ad-app-permission-add] 命令分配这些权限：
 
@@ -88,7 +87,7 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-最后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予在上一步骤中为服务器应用程序分配的权限。 如果当前帐户不是租户管理员，则此步骤将失败。还需要为 Azure AD 应用程序添加权限，以便请求可能需要使用[az AD app 权限管理员同意][az-ad-app-permission-admin-consent]进行管理许可的信息：
+最后，使用 [az ad app permission grant][az-ad-app-permission-grant] 命令授予在上一步骤中为服务器应用程序分配的权限。 如果当前帐户不是租户管理员，此步骤将会失败。还需要添加对 Azure AD 应用程序的权限来请求信息，否则可能需要使用 [az ad app permission admin-consent][az-ad-app-permission-admin-consent] 来请求管理许可：
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
@@ -152,7 +151,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。**
+最后，使用 [az aks get-credentials][az-aks-get-credentials] 命令获取群集管理员凭据。 在以下步骤之一中，你将获取普通用户群集凭据，以查看 Azure AD 身份验证流的运作方式。 
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -160,7 +159,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-rbac-binding"></a>创建 RBAC 绑定
 
-在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户****。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
+在对 AKS 群集使用 Azure Active Directory 帐户之前，需要创建角色绑定或群集角色绑定。 “角色”定义要授予的权限，“绑定”将这些权限应用于目标用户   。 这些分配可应用于特定命名空间或整个群集。 有关详细信息，请参阅[使用 RBAC 授权][rbac-authorization]。
 
 使用 [az ad signed-in-user show][az-ad-signed-in-user-show] 命令获取用户当前登录用户的用户主体名称 (UPN)。 在下一步骤中，将为 Azure AD 集成启用此用户帐户。
 
@@ -247,7 +246,7 @@ error: You must be logged in to the server (Unauthorized)
 
 若要使用 Azure AD 用户和组来控制对群集资源的访问，请参阅[在 AKS 中使用基于角色的访问控制和 Azure AD 标识来控制对群集资源的访问][azure-ad-rbac]。
 
-有关如何保护 Kubernetes 群集的详细信息，请参阅[AKS 的访问和标识选项）][rbac-authorization]。
+有关如何保护 Kubernetes 群集的详细信息，请参阅 [AKS 的访问和标识选项][rbac-authorization]。
 
 有关标识和资源控制的最佳做法，请参阅[有关 AKS 中的身份验证和授权的最佳做法][operator-best-practices-identity]。
 

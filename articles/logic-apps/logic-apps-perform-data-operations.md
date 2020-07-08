@@ -7,11 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710365"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -90,7 +89,7 @@ ms.locfileid: "79283935"
 
      ![为 "撰写" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
 1. 在“选择操作”**** 下的搜索框中，输入 `compose` 作为筛选器。 从操作列表中选择“撰写”操作。****
 
@@ -106,7 +105,7 @@ ms.locfileid: "79283935"
 
    !["撰写" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 有关基础工作流定义中此操作的详细信息，请参阅[“撰写”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)。
 
@@ -148,7 +147,7 @@ ms.locfileid: "79283935"
 
      ![为 "创建 CSV 表" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
 1. 在“选择操作”**** 下的搜索框中，输入 `create csv table` 作为筛选器。 在操作列表中选择“创建 CSV 表”操作。****
 
@@ -167,7 +166,7 @@ ms.locfileid: "79283935"
 
    !["创建 CSV 表" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 ### <a name="customize-table-format"></a>自定义表格式
 
@@ -179,7 +178,7 @@ ms.locfileid: "79283935"
 
 1. 在“值”属性中，指定要改用的自定义值。****
 
-若要从数组中返回值，可以将[ `item()`函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 CSV 表**" 操作一起使用。 在`For_each`循环中，可以使用[ `items()`函数](../logic-apps/workflow-definition-language-functions-reference.md#items)。
+若要从数组中返回值，可以将[ `item()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 CSV 表**" 操作一起使用。 在 `For_each` 循环中，可以使用[ `items()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#items)。
 
 例如，假设你希望表列仅包含数组中的属性值，而不包含属性名称。 若只要返回这些值，请遵循在设计器视图或代码视图中操作的步骤。 下面是此示例返回的结果：
 
@@ -299,7 +298,7 @@ Oranges,2
 
      ![为 "创建 HTML 表" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
 1. 在“选择操作”**** 下的搜索框中，输入 `create html table` 作为筛选器。 在操作列表中选择“创建 HTML 表”操作。****
 
@@ -318,7 +317,7 @@ Oranges,2
 
    !["创建 HTML 表" 的完成示例](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 ### <a name="customize-table-format"></a>自定义表格式
 
@@ -330,7 +329,7 @@ Oranges,2
 
 1. 在“值”属性中，指定要改用的自定义值。****
 
-若要从数组中返回值，可以将[ `item()`函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 HTML 表**" 操作一起使用。 在`For_each`循环中，可以使用[ `items()`函数](../logic-apps/workflow-definition-language-functions-reference.md#items)。
+若要从数组中返回值，可以将[ `item()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#item)与 "**创建 HTML 表**" 操作一起使用。 在 `For_each` 循环中，可以使用[ `items()` 函数](../logic-apps/workflow-definition-language-functions-reference.md#items)。
 
 例如，假设你希望表列仅包含数组中的属性值，而不包含属性名称。 若只要返回这些值，请遵循在设计器视图或代码视图中操作的步骤。 下面是此示例返回的结果：
 
@@ -464,7 +463,7 @@ Oranges,2
 
      ![为 "筛选数组" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
 1. 在搜索框中，输入 `filter array` 作为筛选器。 在操作列表中选择“筛选数组”操作。****
 
@@ -482,7 +481,7 @@ Oranges,2
 
    !["筛选数组" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 有关基础工作流定义中此操作的详细信息，请参阅[“查询”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action)。
 
@@ -526,7 +525,7 @@ Oranges,2
 
      ![SSelect "联接" 操作的 "新步骤"](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
 1. 在搜索框中，输入 `join` 作为筛选器。 在操作列表中选择此操作：“联接”****
 
@@ -544,7 +543,7 @@ Oranges,2
 
    ![提供分隔符](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 有关基础工作流定义中此操作的详细信息，请参阅[“联接”操作](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action)。
 
@@ -586,7 +585,7 @@ Oranges,2
 
      ![选择 "分析 JSON" 操作的 "新步骤"](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
 1. 在搜索框中，输入 `parse json` 作为筛选器。 在操作列表中选择“分析 JSON”操作。****
 
@@ -606,13 +605,13 @@ Oranges,2
 
    如果没有架构，可以从要分析的 JSON 内容或有效负载生成该架构。** 
    
-   1. 在“分析 JSON”操作中，选择“使用示例有效负载生成架构”********。
+   1. 在“分析 JSON”操作中，选择“使用示例有效负载生成架构” 。
 
    1. 在“输入或粘贴示例 JSON 有效负载”下提供 JSON 内容，然后选择“完成”。********
 
       ![输入用于生成架构的 JSON 内容](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 有关基础工作流定义中此操作的详细信息，请参阅[“分析 JSON”操作](../logic-apps/logic-apps-workflow-actions-triggers.md)。
 
@@ -661,9 +660,9 @@ Oranges,2
 
      ![为 "选择" 操作选择 "新建步骤"](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示**+** 加号（）。 选择加号，然后选择“添加操作”。****
+   * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择“添加操作”。****
 
-1. 在“选择操作”下，选择“内置”。******** 在搜索框中，输入 `select` 作为筛选器。 在“操作”列表中，选择“选择”操作。****
+1. 在“选择操作”下，选择“内置”。**** **** 在搜索框中，输入 `select` 作为筛选器。 在“操作”列表中，选择“选择”操作。****
 
    ![选择“选择”操作](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -683,7 +682,7 @@ Oranges,2
 
    !["Select" 操作的已完成示例](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”****。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
 有关基础工作流定义中此操作的详细信息，请参阅[“选择”操作](../logic-apps/logic-apps-workflow-actions-triggers.md)。
 
