@@ -2,22 +2,22 @@
 title: 添加非库应用程序-Microsoft 标识平台 |Microsoft Docs
 description: 将非库应用程序添加到 Azure AD 租户。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063605"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555129"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>向 Azure AD 组织添加未列出的（非库）应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "77063605"
 
 1. 使用你的 Microsoft 标识平台管理员帐户登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。
 
-2. 选择 "**企业应用程序** > " "**新建应用程序**"。
+2. 选择 "**企业应用程序**" "  >  **新建应用程序**"。
 
 3. （可选，但建议使用）在 "**浏览 Azure AD 库**" 搜索框中，输入应用程序的显示名称。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "77063605"
    >* 为**本地应用程序配置用于安全远程访问的应用程序代理**打开 Azure AD 应用程序代理和连接器的配置页。
    >* **注册正在处理的应用程序，使其与 Azure AD**打开**应用注册**页面。 此选项通常用于 OpenID Connect 应用程序。
 
-7. 选择“创建”  。 此时会打开应用程序的“概述”**** 页。
+7. 选择“创建”。 此时会打开应用程序的“概述”**** 页。
 
 ## <a name="configure-user-sign-in-properties"></a>配置用户登录属性
 
@@ -70,7 +70,7 @@ ms.locfileid: "77063605"
 
       **已分配**用户的行为：
 
-       | 应用程序属性设置 | | | 已分配用户的体验 | |
+       | 应用程序属性 | 应用程序属性 | 应用程序属性 | 已分配用户的体验 | 已分配用户的体验 |
        |---|---|---|---|---|
        | 启用以供用户登录? | 需要进行用户分配? | 对用户可见? | 已分配用户能否登录? | 已分配用户能否看到应用程序?* |
        | 是 | 是 | 是 | 是 | 是  |
@@ -84,7 +84,7 @@ ms.locfileid: "77063605"
 
       **未分配**用户的行为：
 
-       | 应用程序属性设置 | | | 未分配用户的体验 | |
+       | 应用程序属性 | 应用程序属性 | 应用程序属性 | 未分配用户的体验 | 未分配用户的体验 |
        |---|---|---|---|---|
        | 启用以供用户登录? | 需要进行用户分配? | 对用户可见? | 未分配用户能否登录? | 未分配用户能否看到应用程序?* |
        | 是 | 是 | 是 | 否  | 否   |
@@ -102,7 +102,7 @@ ms.locfileid: "77063605"
 
     ![更改徽标](media/add-non-gallery-app/change-logo.png)
 
-4. 完成后，选择“保存”****。
+4. 完成后，请选择 "**保存**"。
 
 ## <a name="next-steps"></a>后续步骤
 

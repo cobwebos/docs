@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ac3235191952702f2acc39a25e948511901050b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303896"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555893"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
  以 ISO 8601 字符串形式返回当前 UTC（协调世界时）日期和时间。
@@ -27,16 +27,16 @@ GetCurrentDateTime ()
   
   以 `YYYY-MM-DDThh:mm:ss.fffffffZ` 格式返回当前 UTC 日期和时间 ISO 8601 字符串值，其中：
   
-  |||
+  |格式|描述|
   |-|-|
   |YYYY|四位数的年份|
   |MM|两位数的月份（01 = 1 月，依此类推。）|
   |DD|两位数的月份日期（01 到 31）|
   |T|时间元素开头的符号|
-  |hh|两位数的小时数（00到23）|
-  |mm|两位数分钟（00到59）|
-  |ss|两位数秒（00到59）|
-  |。 fffffff|七位数的秒小数部分|
+  |hh|两位数的小时（00 到 23）|
+  |MM|两位数的分钟（00 到 59）|
+  |ss|两位数的秒（00 到 59）|
+  |.fffffff|七位数的小数秒|
   |Z|UTC（协调世界时）指示符||
   
   有关 ISO 8601 格式的详细信息，请参阅 [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -47,7 +47,7 @@ GetCurrentDateTime ()
   
   返回的结果为 UTC。
 
-  精度为7位，准确度为100毫微秒。
+  精度为 7 位，准确度为 100 纳秒。
 
 ## <a name="examples"></a>示例
   

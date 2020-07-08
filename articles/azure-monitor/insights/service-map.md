@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557584"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -154,7 +154,7 @@ ms.locfileid: "79480906"
 
 某些进程在计算机上充当特定角色：Web 服务器、应用程序服务器、数据库等。 “服务映射”可批注进程和计算机设备，包含的角色图标有助于以显眼的方式标识进程或服务器扮演的角色。
 
-| 角色图标 | 说明 |
+| 角色图标 | 描述 |
 |:--|:--|
 | ![Web 服务器](media/service-map/role-web-server.png) | Web 服务器 |
 | ![应用服务器](media/service-map/role-application-server.png) | 应用程序服务器 |
@@ -272,7 +272,7 @@ ms.locfileid: "79480906"
 
 若要查看性能数据，就可能需要[启用相应的 Log Analytics 性能计数器](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)。  要启用的计数器：
 
-Windows：
+Windows:
 - Processor(*)\\% Processor Time
 - Memory\\% Committed Bytes In Use
 - Network Adapter(*)\\Bytes Sent/sec
@@ -326,7 +326,7 @@ Linux：
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| properties | 说明 |
+| Property | 描述 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| properties | 说明 |
+| Property | 描述 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
@@ -349,7 +349,7 @@ Linux：
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| properties | 说明 |
+| Property | 描述 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| properties | 说明 |
+| Property | 描述 |
 |:--|:--|
 | `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
@@ -387,14 +387,14 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| properties | 说明 |
+| Property | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
 | `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
 | `Description` |观察到的威胁说明。 |
 | `TLPLevel` |交通信号灯协议 (TLP) 级别是以下定义值之一：White**、Green**、Amber** 和 Red**。 |
 | `Confidence` |值介于 0 和 100** 之间。 |
-| `Severity` |值介于 0 和 5** 之间，其中 5** 表示最严重，0** 表示毫不严重。 默认值为 3**。  |
+| `Severity` |值介于 0 和 5** 之间，其中 5** 表示最严重，0** 表示毫不严重。 默认值为*3*。  |
 | `FirstReportedDateTime` |提供程序第一次报告指标。 |
 | `LastReportedDateTime` |Interflow 最后一次看到指标。 |
 | `IsActive` |使用值 True** 或 False** 指明是否停用标志。 |
@@ -405,7 +405,7 @@ Linux：
 
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -431,7 +431,7 @@ Linux：
 
 类型为 *ServiceMapProcess_CL* 的记录包含具有服务映射代理的服务器上 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| properties | 说明 |
+| properties | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -573,7 +573,7 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 | 代码 | 说明 | 解决方法 |
 |:--|:--|:--|
-| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对 `Windows8.1-KB2999226-x64.msu` 的引用后跟行 `Error 0x80240017: Failed to execute MSU package,`，则不具备安装 KB2999226 的先决条件。 请按照 [Windows 中的通用 C 运行时](https://support.microsoft.com/kb/2999226)一文中必备组件部分的说明进行操作。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
+| 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对 `Windows8.1-KB2999226-x64.msu` 的引用后跟行 `Error 0x80240017: Failed to execute MSU package,`，则不具备安装 KB2999226 的先决条件。 请遵循 [Windows 中的 Universal C Runtime](https://support.microsoft.com/kb/2999226) 一文中“必备组件”部分的说明。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
 
 ### <a name="post-installation-issues"></a>安装后的问题
 
@@ -584,22 +584,22 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 **Windows**：查找名为 " **Microsoft 依赖关系代理**" 的服务。
 **Linux**：查找正在运行的进程**microsoft 依赖关系代理**。
 
-* 你是否处于[Log Analytics 免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划最多允许五个独特的服务映射机。 任何后续计算机不会出现在服务映射中，即使之前的五个不再发送数据。
+* 你是否处于[Log Analytics 免费层](https://azure.microsoft.com/pricing/details/monitor/)？ 免费计划允许最多 5 个仅有的服务映射计算机。 服务映射中不再显示任何其他的计算机，即使前 5 个服务器不再发送数据。
 
-* 服务器是否发送日志和性能数据来 Azure Monitor 日志？ 请参阅 Azure Monitor\Logs 并为你的计算机运行以下查询： 
+* 服务器是否发送日志和性能数据来 Azure Monitor 日志？ 转到 Azure Monitor\Logs，并为计算机运行以下查询： 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-结果中是否有多种不同的事件？ 是否为最新数据？ 如果是这样，则 Log Analytics 代理正在正常运行，并且与工作区通信。 如果没有，请检查计算机上的代理：[用于 Windows 的 Log Analytics 代理故障排除](../platform/agent-windows-troubleshoot.md)或[用于 Linux 的 Log Analytics 代理故障排除](../platform/agent-linux-troubleshoot.md)。
+结果中是否有多种不同的事件？ 是否为最新数据？ 如果是，则表示 Log Analytics 代理正常运行并正在与工作区通信。 如果不是，请检查计算机上的代理：[适用于 Windows 的 Log Analytics 代理故障排除](../platform/agent-windows-troubleshoot.md)或[适用于 Linux 的 Log Analytics 代理故障排除](../platform/agent-linux-troubleshoot.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>服务器会在服务映射中显示，但没有任何进程
 
 如果你在服务映射中看到你的计算机，但它没有进程或连接数据，则表明依赖关系代理已安装并正在运行，但内核驱动程序未加载。 
 
-检查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
+检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
-## <a name="feedback"></a>反馈
+## <a name="suggestions"></a>建议
 
 是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。

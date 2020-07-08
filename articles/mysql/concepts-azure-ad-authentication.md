@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 12316abd4a738d54e01f88873498e4b299d6053d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556361"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 向 MySQL 进行身份验证
 
@@ -66,14 +66,18 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 - 集成式 Azure Active Directory
 - 采用了 MFA 的通用 Azure Active Directory
 - 使用 Active Directory 应用程序证书或客户端密码
+- [托管标识](howto-connect-with-managed-identity.md)
 
 执行 Active Directory 身份验证后，就可以检索令牌了。 此令牌是用于登录的密码。
+
+请注意，此时仅支持对 Azure AD 用户角色执行管理操作，例如添加新用户。
 
 > [!NOTE]
 > 若要详细了解如何使用 Active Directory 令牌进行连接，请参阅[为 Azure Database for MySQL 配置 Azure AD 并使用它登录](howto-configure-sign-in-azure-ad-authentication.md)。
 
 ## <a name="additional-considerations"></a>其他注意事项
 
+- Azure Active Directory 身份验证仅适用于 MySQL 5.7 和更高版本。
 - 无论何时都只能为 Azure Database for MySQL 服务器配置一个 Azure AD 管理员。
 - 只有 MySQL 的 Azure AD 管理员最初可以使用 Azure Active Directory 帐户连接到 Azure Database for MySQL。 Active Directory 管理员可以配置后续的 Azure AD 数据库用户。
 - 如果已从 Azure AD 中删除某个用户，此用户就无法再使用 Azure AD 进行身份验证，所以也就无法再获取此用户的访问令牌。 在这种情况下，尽管匹配用户仍保留在数据库中，但无法使用此用户连接到服务器。

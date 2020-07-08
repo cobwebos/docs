@@ -4,15 +4,15 @@ description: 了解如何生成和接收 Microsoft AppSource 和 Azure Marketpla
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6234719216c7ef40df99a26153d7677f7a747f55
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559571"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>商业市场产品/服务的潜在客户
 
@@ -87,10 +87,12 @@ ms.locfileid: "83800929"
 
 ## <a name="best-practices-for-lead-management"></a>潜在客户管理的最佳做法
 
+下面是通过销售周期推动潜在顾客的一些建议：
+
 - **过程**：使用里程碑、分析和明确的团队所有权定义一个明确的销售过程。
 - 资格：定义先决条件，用于指示潜在客户是否完全符合资格。 请确保销售或营销代表先仔细鉴定潜在客户资格，再引导潜在客户完成整个销售流程。
-- 后续任务：别忘记跟进。 预计典型事务需要 5 到 12 次跟进电话。
-- 巩固关系：培养潜在客户，助你获得更多利润。
+- **跟进**：不要忘记在24小时内跟进。 在客户部署了测试驱动器后，你将立即在你的 CRM 中获得潜在顾客;在仍处于热情的情况下将其发送给他们。 请求计划电话呼叫，以便更好地了解你的产品是否是解决问题的好办法。 预计典型事务需要大量跟进调用。
+- 巩固关系：培养潜在客户，助你获得更多利润。 签入，但不要 bombard 它们。 建议你在关闭之前至少经过几次电子邮件：第一次尝试后不放弃。 请记住，这些客户直接参与您的产品，并在免费试用中花费时间;它们是很棒的客户。
 
 ## <a name="common-questions-about-lead-management"></a>有关潜在客户管理的常见问题
 

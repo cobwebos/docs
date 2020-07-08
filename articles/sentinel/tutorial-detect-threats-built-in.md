@@ -1,6 +1,6 @@
 ---
 title: 用 Azure Sentinel 调查警报 |Microsoft Docs
-description: 使用本教程了解如何使用 Azure Sentinel 调查警报。
+description: 了解如何使用现成的内置 Azure 威胁检测模板，这些模板可在发生可疑问题时通知你。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d1ef885ea36e2eee7fd30268fd7b1f4609a70bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77585197"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560035"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>教程：就地检测威胁
 
@@ -29,7 +29,7 @@ ms.locfileid: "77585197"
 > 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-将 [数据源](quickstart-onboard.md) 连接到 Azure Sentinel 后，需要在出现可疑情况时收到通知。 为了使你能够执行此操作，Azure Sentinel 为你提供现成的内置模板。 这些模板是由 Microsoft 的安全专家和分析师团队设计的，它们基于已知的威胁、常见攻击媒介和可疑活动升级链。 启用这些模板后，它们会自动搜索任何在你的环境中看起来可疑的活动。 可以根据需要自定义许多模板来搜索或筛选出活动。 这些模板生成的警报将创建可在环境中分配和调查的事件。
+将 [数据源连接](quickstart-onboard.md)   到 Azure Sentinel 后，需要在出现可疑情况时收到通知。 为了使你能够执行此操作，Azure Sentinel 为你提供现成的内置模板。 这些模板是由 Microsoft 的安全专家和分析师团队设计的，它们基于已知的威胁、常见攻击媒介和可疑活动升级链。 启用这些模板后，它们会自动搜索任何在你的环境中看起来可疑的活动。 可以根据需要自定义许多模板来搜索或筛选出活动。 这些模板生成的警报将创建可在环境中分配和调查的事件。
 
 本教程可帮助你检测 Azure Sentinel 的威胁：
 

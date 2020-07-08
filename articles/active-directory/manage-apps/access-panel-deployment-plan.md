@@ -2,25 +2,25 @@
 title: 规划 Azure Active Directory 访问面板部署
 description: 有关部署 Azure Active Directory 访问面板的指南
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: baselden
+ms.author: kenwith
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b8a74c85b63e3a532e49136ba3b33437d907694
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897069"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555308"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>规划 Azure Active Directory 访问面板部署
 
@@ -63,7 +63,7 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 * [基于组的成员身份](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
-* [自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
+* [自助服务密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)
 
 * [Azure Active Directory 标识保护](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
@@ -83,8 +83,8 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 | 区域| 说明 |
 | - | - |
-| 访问| 可以从企业网络中的公司和个人设备访问访问面板门户。 |
-|访问 | 可以从企业网络外部的企业设备访问访问面板门户。 |
+| Access| 可以从企业网络中的公司和个人设备访问访问面板门户。 |
+|Access | 可以从企业网络外部的企业设备访问访问面板门户。 |
 | 审核| 使用情况数据至少每29天下载到企业系统。 |
 | 调控| 定义和监视 Azure AD 连接的应用程序和组的用户分配的生命周期。 |
 | 安全性| 可以通过用户和组分配来控制对资源的访问权限。 只有经过授权的用户可以管理资源访问权限。 |
@@ -149,9 +149,9 @@ Azure AD 访问面板通过以下方式提高企业的优势：
 
 当技术项目失败时，他们通常会这样做，因为对影响、结果和责任的预期不匹配。 若要避免这些问题，请[确保你参与了正确的利益干系人](../fundamentals/active-directory-deployment-plans.md)，并且项目中的利益干系人角色非常了解。
 
-### <a name="plan-communications"></a>计划通信
+### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
+沟通对于任何新服务的成功都至关重要。 主动向用户通知其体验将发生更改的方式和时间，以及如何在需要时获得支持。
 
 尽管访问面板通常不会创建用户问题，但必须做好准备。 开始之前，请为支持人员创建指南和所有资源的列表。
 
@@ -215,7 +215,7 @@ Azure AD 支持通过三种不同[的方式在应用程序中启用单一登录]
 
 ## <a name="plan-your-my-apps-deployment"></a>规划我的应用部署
 
-访问面板的基础是应用程序启动器 "我的应用程序"，用户可以[https://myapps.microsoft.com](https://myapps.microsoft.com/)在这些应用程序中访问。 "我的应用" 页面为用户准备了一个开始其工作的位置，并可访问所需的应用程序。 在这里，用户可以找到他们有权访问单一登录的所有应用程序的列表。 
+访问面板的基础是应用程序启动器 "我的应用程序"，用户可以在这些应用程序中访问 [https://myapps.microsoft.com](https://myapps.microsoft.com/) 。 "我的应用" 页面为用户准备了一个开始其工作的位置，并可访问所需的应用程序。 在这里，用户可以找到他们有权访问单一登录的所有应用程序的列表。 
 
 !["应用" 面板的屏幕截图](media/access-panel-deployment-plan/ap-dp-app-launcher.png)
 
@@ -261,7 +261,7 @@ Azure AD 支持通过三种不同[的方式在应用程序中启用单一登录]
 
 Azure AD 提供了[提供技术和业务见解的报表](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)。 与您的业务和技术应用程序所有者合作，以承担这些报告的所有权，并定期使用这些报告。 下表提供了一些典型报表方案的示例。
 
-|   | 管理风险| 提高工作效率| 管理和符合性 |
+| 示例 | 管理风险| 提高工作效率| 管理和符合性 |
 |  - |- | - | - |
 | 报表类型|  应用程序权限和使用情况| 帐户设置活动| 查看谁在访问应用程序 |
 | 可能的操作| 审核访问;废除权限| 修正任何预配错误| “撤销访问权限” |
@@ -338,11 +338,11 @@ Azure AD 将大多数审核数据保持30天。 可以通过 Azure 管理门户�
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|
-| 支持管理员| 第1层支持| 无 |
+| 支持管理员| 第1层支持| None |
 | 标识管理员| 在问题影响时进行配置和调试 Azure AD| 全局管理员 |
-| 应用程序管理员| 应用程序中的用户证明，具有权限的用户配置| 无 |
+| 应用程序管理员| 应用程序中的用户证明，具有权限的用户配置| None |
 | 基础结构管理员| 证书滚动更新所有者| 全局管理员 |
-| 业务所有者/利益干系人| 应用程序中的用户证明，具有权限的用户配置| 无 |
+| 业务所有者/利益干系人| 应用程序中的用户证明，具有权限的用户配置| None |
 
 你可以使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)来管理你的角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
 

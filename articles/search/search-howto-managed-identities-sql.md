@@ -1,7 +1,7 @@
 ---
-title: 使用托管标识设置到 Azure SQL 数据库的连接（预览）
+title: 使用托管标识建立到 Azure SQL 数据库的连接（预览）
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用托管标识设置到 Azure SQL 数据库的索引器连接（预览）
+description: 了解如何使用托管标识建立到 Azure SQL 数据库的索引器连接（预览）
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,22 +9,23 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 87389651707a3bdcc18ae7eb03b88681b5303c4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559936"
 ---
-# <a name="set-up-an-indexer-connection-to-an-azure-sql-database-using-a-managed-identity-preview"></a>使用托管标识设置到 Azure SQL 数据库的索引器连接（预览）
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用托管标识建立到 Azure SQL 数据库的索引器连接（预览）
 
 > [!IMPORTANT] 
 > 对于使用托管标识设置到数据源的连接的支持目前处于封闭的公开预览阶段。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
 > 可以填写[此表单](https://aka.ms/azure-cognitive-search/mi-preview-request)来请求访问预览版。
 
-本页描述如何使用托管标识设置到 Azure SQL 数据库的索引器连接，而不是在数据源对象连接字符串中提供凭据。
+本页介绍如何使用托管标识设置到 Azure SQL 数据库的索引器连接，而不是在数据源对象连接字符串中提供凭据。
 
 在详细了解此功能之前，建议先了解什么是索引器以及如何为数据源设置索引器。 有关详细信息，请访问以下链接：
+
 * [索引器概述](search-indexer-overview.md)
 * [Azure SQL 索引器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 
@@ -39,7 +40,7 @@ ms.locfileid: "83663455"
 选择“保存”后，将看到已分配给搜索服务的对象 ID。
 
 ![对象 ID](./media/search-managed-identities/system-assigned-identity-object-id.png "对象 ID")
- 
+
 ### <a name="2---provision-azure-active-directory-admin-for-sql-server"></a>2 - 为 SQL Server 预配 Azure Active Directory 管理
 
 在下一步连接到数据库时，需要连接到对数据库具有管理员访问权限的 Azure Active Directory (Azure AD) 帐户，以便授予搜索服务访问数据库的权限。
@@ -102,7 +103,7 @@ ms.locfileid: "83663455"
 * **name** 是搜索服务中数据源的唯一名称。
 * “类型”为 `azuresql`
 * **凭据**
-    * 使用托管标识进行身份验证时，凭据格式与不使用托管标识时不同。 在这里，你将提供初始目录或数据库名称以及没有帐户密钥或密码的 ResourceId。 ResourceId 必须包含 Azure SQL 数据库的订阅 ID、SQL 数据库的资源组和 SQL 数据库的名称。 
+    * 使用托管标识进行身份验证时，凭据格式与不使用托管标识时不同。 在这里，你将提供初始目录或数据库名称以及没有帐户密钥或密码的 ResourceId。 ResourceId 必须包括 Azure SQL 数据库的订阅 ID、SQL 数据库的资源组和 SQL 数据库的名称。 
     * 托管标识连接字符串格式：
         * Initial Catalog|Database=database name;ResourceId=/subscriptions/your subscription ID/resourceGroups/your resource group name/providers/Microsoft.Sql/servers/your SQL Server name/;Connection Timeout=connection timeout length;*    *
 * “容器”指定要编制索引的表或视图的名称。
@@ -110,7 +111,7 @@ ms.locfileid: "83663455"
 如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 创建 Azure SQL 数据源对象的示例：
 
 ```
-POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
+POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -131,7 +132,7 @@ Azure 门户和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure
 下面介绍如何使用可搜索的 `booktitle` 字段创建索引：   
 
 ```
-POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -155,7 +156,7 @@ api-key: [admin key]
 Azure SQL 索引器的索引器定义示例：
 
 ```
-POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 

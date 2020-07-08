@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db310cb7ea5c3a89eb727262a7a7ed63ce55b5db
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 6f11de7f38ff97b1141afa48c26788a171727cb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559565"
 ---
 # <a name="using-custom-security-policies"></a>使用自定义安全策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "83650889"
 
 1. 在“安全策略”页中的“你的自定义计划”下，单击“添加自定义计划”。
 
-    [![单击“添加自定义计划”](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![单击 "添加自定义计划"](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     此时会显示以下页：
 

@@ -4,28 +4,27 @@ description: Azure AD 登录到运行 Windows 的 Azure VM
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050061"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554895"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
 组织现在可以利用运行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更高版本的 Azure 虚拟机（vm）的 Azure Active Directory （AD）身份验证。 通过使用 Azure AD 向 Vm 进行身份验证，可以集中控制和强制实施策略。 Azure 基于角色的访问控制（RBAC）和 Azure AD 条件性访问等工具可让你控制谁可以访问 VM。 本文介绍如何创建和配置 Windows Server 2019 VM 以使用 Azure AD 身份验证。
 
-|     |
-| --- |
-| Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> Azure Windows Vm Azure AD 登录是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure AD 身份验证登录到 Azure 中的 Windows Vm 有很多好处，包括：
 
@@ -63,10 +62,10 @@ ms.locfileid: "80050061"
 
 若要为 Azure 中的 Windows Vm 启用 Azure AD 身份验证，需要确保 Vm 网络配置允许通过 TCP 端口443对以下终结点进行出站访问：
 
-- https：\//enterpriseregistration.windows.net
+- https： \/ /enterpriseregistration.windows.net
 - https:\//login.microsoftonline.com
-- https：\//device.login.microsoftonline.com
-- https：\//pas.windows.net
+- https： \/ /device.login.microsoftonline.com
+- https： \/ /pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>在 Azure 中启用 Windows VM 的 Azure AD 登录
 
@@ -141,7 +140,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-当`provisioningState`在`Succeeded` VM 上安装扩展后，将显示的。
+`provisioningState`当在 `Succeeded` VM 上安装扩展后，将显示的。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
@@ -166,7 +165,7 @@ az vm extension set \
 1. 从菜单选项中选择 "**访问控制（IAM）** "
 1. 依次选择 "**添加**"、"**添加角色分配**"，以打开 "添加角色分配" 窗格。
 1. 在 "**角色**" 下拉列表中，选择一个角色，如 "**虚拟机管理员登录名**" 或 "**虚拟机用户登录名**"。
-1. 在 "**选择**" 字段中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符****。
+1. 在 "**选择**" 字段中，选择用户、组、服务主体或托管标识。 如果没有在列表中看到安全主体，则可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
 1. 选择 "**保存**" 以分配角色。
 
 片刻之后，会在所选范围内为安全主体分配角色。
@@ -188,7 +187,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> 如果 AAD 域和登录用户名域不匹配，则必须指定用户帐户的对象 ID `--assignee-object-id`，而不只是的用户名。 `--assignee` 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
+> 如果 AAD 域和登录用户名域不匹配，则必须指定用户帐户的对象 ID `--assignee-object-id` ，而不只是的用户名 `--assignee` 。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
 
 有关如何使用 RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
 
@@ -212,7 +211,7 @@ az role assignment create \
 
 1. 导航到已启用 Azure AD 登录的虚拟机的 "概述" 页。
 1. 选择 "**连接**" 以打开 "连接到虚拟机" 边栏选项卡。
-1. 选择“下载 RDP 文件”  。
+1. 选择“下载 RDP 文件”。
 1. 选择 "**打开**" 以启动远程桌面连接客户端。
 1. 选择 "**连接**" 以启动 Windows 登录对话框。
 1. 使用 Azure AD 凭据进行登录。
@@ -243,21 +242,21 @@ az role assignment create \
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | 为分配到此 VM 的托管标识 Azure Active Directory 颁发的有效访问令牌 |
 
    > [!NOTE]
-   > 可以使用类似[http://calebb.net/](http://calebb.net/)的工具对访问令牌进行解码。 验证访问令牌中的 "appid" 是否与分配给 VM 的托管标识匹配。
+   > 可以使用类似的工具对访问令牌进行解码 [http://calebb.net/](http://calebb.net/) 。 验证访问令牌中的 "appid" 是否与分配给 VM 的托管标识匹配。
 
 1. 请确保使用命令行从 VM 访问所需的终结点：
    
-   - 卷 https：\//login.microsoftonline.com/-
-   - 卷 https：\//login.microsoftonline.com/`<TenantID>`/-D –
+   - 卷 https： \/ /login.microsoftonline.com/-
+   - 卷 https： \/ /login.microsoftonline.com/ `<TenantID>` /-D –
 
    > [!NOTE]
-   > 将`<TenantID>`替换为与 Azure 订阅关联的 AZURE AD 租户 ID。
+   > 将替换为 `<TenantID>` 与 Azure 订阅关联的 Azure AD 租户 ID。
 
-   - 卷 https：\//enterpriseregistration.windows.net/-
-   - 卷 https：\//device.login.microsoftonline.com/-
-   - 卷 https：\//pas.windows.net/-
+   - 卷 https： \/ /enterpriseregistration.windows.net/-
+   - 卷 https： \/ /device.login.microsoftonline.com/-
+   - 卷 https： \/ /pas.windows.net/-
 
-1. 可以通过运行`dsregcmd /status`来查看设备状态。 目标是将设备状态显示为`AzureAdJoined : YES`。
+1. 可以通过运行来查看设备状态 `dsregcmd /status` 。 目标是将设备状态显示为 `AzureAdJoined : YES` 。
 
    > [!NOTE]
    > Azure AD 联接活动在事件查看器中捕获到用户设备 Registration\Admin 日志下。
@@ -278,26 +277,26 @@ az role assignment create \
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>问题2： AADLoginForWindows 扩展安装失败，退出代码为：-2145648607
 
-此退出代码转换为 DSREG_AUTOJOIN_DISC_FAILED，因为扩展无法到达`https://enterpriseregistration.windows.net`终结点。
+此退出代码转换为 DSREG_AUTOJOIN_DISC_FAILED，因为扩展无法到达 `https://enterpriseregistration.windows.net` 终结点。
 
 1. 使用命令行验证是否可以从 VM 访问所需的终结点：
 
-   - 卷 https：\//login.microsoftonline.com/-
-   - 卷 https：\//login.microsoftonline.com/`<TenantID>`/-D –
+   - 卷 https： \/ /login.microsoftonline.com/-
+   - 卷 https： \/ /login.microsoftonline.com/ `<TenantID>` /-D –
    
    > [!NOTE]
-   > 将`<TenantID>`替换为与 Azure 订阅关联的 AZURE AD 租户 ID。 如果需要查找租户 ID，你可以将鼠标悬停在帐户名称上以获取目录/租户 ID，或在 Azure 门户中选择 Azure Active Directory > 属性 > 目录 ID。
+   > 将替换为 `<TenantID>` 与 Azure 订阅关联的 Azure AD 租户 ID。 如果需要查找租户 ID，你可以将鼠标悬停在帐户名称上以获取目录/租户 ID，或在 Azure 门户中选择 Azure Active Directory > 属性 > 目录 ID。
 
-   - 卷 https：\//enterpriseregistration.windows.net/-
-   - 卷 https：\//device.login.microsoftonline.com/-
-   - 卷 https：\//pas.windows.net/-
+   - 卷 https： \/ /enterpriseregistration.windows.net/-
+   - 卷 https： \/ /device.login.microsoftonline.com/-
+   - 卷 https： \/ /pas.windows.net/-
 
-1. 如果任何命令失败，并出现 "无法解析主机`<URL>`"，请尝试运行以下命令来确定 VM 正在使用的 DNS 服务器。
+1. 如果任何命令失败，并出现 "无法解析主机 `<URL>` "，请尝试运行以下命令来确定 VM 正在使用的 DNS 服务器。
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > 替换`<URL>`为终结点所使用的完全限定的域名，例如 "login.microsoftonline.com"。
+   > 替换 `<URL>` 为终结点所使用的完全限定的域名，例如 "login.microsoftonline.com"。
 
 1. 接下来，请参阅是否指定公共 DNS 服务器允许命令成功：
 
@@ -315,7 +314,7 @@ az role assignment create \
 
 当你尝试将 RDP 与 Azure AD 凭据结合时，某些常见错误包括未分配的 RBAC 角色、未经授权的客户端或所需的2FA 登录方法。 使用以下信息来更正这些问题。
 
-可以通过运行`dsregcmd /status`来查看设备和 SSO 状态。 目标是将设备状态显示为 "显示`AzureAdJoined : YES`为`SSO State` " 和`AzureAdPrt : YES`"显示为"。
+可以通过运行来查看设备和 SSO 状态 `dsregcmd /status` 。 目标是将设备状态显示为 "显示为" 和 "显示为" `AzureAdJoined : YES` `SSO State` `AzureAdPrt : YES` 。
 
 此外，在 AAD\Operational 事件日志下的事件查看器中捕获使用 Azure AD 帐户的 RDP 登录。
 

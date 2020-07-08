@@ -1,6 +1,6 @@
 ---
 title: 将 Windows 防火墙数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 Windows 防火墙数据连接到 Azure Sentinel。
+description: 启用 Azure Sentinel 中的 Windows 防火墙连接器，以便从安装了 Log Analytics 代理的 Windows 计算机轻松地流式传输防火墙事件。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559482"
 ---
 # <a name="connect-windows-firewall"></a>连接 Windows 防火墙
 

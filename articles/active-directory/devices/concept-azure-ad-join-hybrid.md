@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76512243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554917"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
 
@@ -29,15 +29,15 @@ ms.locfileid: "76512243"
 
 如果你的环境具有本地 AD 占用空间并且你希望利用 Azure Active Directory 提供的功能所带来的优势，则可选择实现混合 Azure AD 加入设备。 这些设备是加入本地 Active Directory 并注册到 Azure Active Directory 的设备。
 
-|   | 混合 Azure AD 联接 |
+| 混合 Azure AD 联接 | 描述 |
 | --- | --- |
 | **定义** | 已加入本地 AD 和 Azure AD，要求组织帐户登录到设备 |
-| **主要用户** | 适用于具有现有本地 AD 基础结构的混合组织 |
+| **主要受众** | 适用于具有现有本地 AD 基础结构的混合组织 |
 |   | 适用于组织中的所有用户 |
 | **设备所有权** | 组织 |
 | **操作系统** | Windows 10、8.1 和7 |
 |   | Windows Server 2008/R2、2012/R2、2016和2019 |
-| **设置** | Windows 10、Windows Server 2016/2019 |
+| **预配** | Windows 10、Windows Server 2016/2019 |
 |   | 域加入并通过 Azure AD Connect 或 ADFS config 进行加入 |
 |   | 通过 Windows Autopilot 加入域并通过 Azure AD Connect 或 ADFS config 进行加入 |
 |   | Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2-需要 MSI |
@@ -46,10 +46,10 @@ ms.locfileid: "76512243"
 |   | 适用于 Win10 的 Windows Hello 企业版 |
 | **设备管理** | 组策略 |
 |   | Configuration Manager 独立或共同管理 Microsoft Intune |
-| **关键功能** | SSO 到云和本地资源 |
+| **关键功能** | SSO 连接到云和本地资源 |
 |   | 通过域加入或通过 Intune 进行的条件性访问（如果共同托管） |
-|   | 在锁屏界面上进行自助密码重置和 Windows Hello PIN 重置 |
-|   | 跨设备企业状态漫游 |
+|   | 在锁屏界面上进行自助式密码重置和 Windows Hello PIN 重置 |
+|   | 跨设备的企业状态漫游 |
 
 ![混合 Azure AD 加入设备](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
@@ -64,6 +64,6 @@ ms.locfileid: "76512243"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [计划混合 Azure AD 加入实现](hybrid-azuread-join-plan.md)
+- [规划混合 Azure AD 联接实现](hybrid-azuread-join-plan.md)
 - [使用 Azure 门户管理设备标识](device-management-azure-portal.md)
-- [在 Azure AD 中管理陈旧的设备](manage-stale-devices.md)
+- [在 Azure AD 中管理旧设备](manage-stale-devices.md)

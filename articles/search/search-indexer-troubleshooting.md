@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79db94298d190f646393410ec73ba1a25bb48270
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560391"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器问题
 
@@ -76,7 +76,7 @@ Azure 认知搜索对 Cosmos DB 索引存在隐式依赖。 如果在 Cosmos DB 
 [显式支持可记录格式的 Blob 索引器文档](search-howto-indexing-azure-blob-storage.md#SupportedFormats)。 有时候，Blob 存储容器包含不受支持的文档。 而另一些时候，可能存在有问题的文档。 可以通过[更改配置选项](search-howto-indexing-azure-blob-storage.md#DealingWithErrors)来避免停止这些文档上的索引器：
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -94,7 +94,7 @@ Blob 索引器可[查找并提取容器中 Blob 的文本](search-howto-indexing
 * Blob 索引器配置为仅索引元数据。 若要提取内容，必须将 Blob 索引器配置为[提取内容和元数据](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)：
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
 Content-Type: application/json
 api-key: [admin key]
 
@@ -111,7 +111,8 @@ api-key: [admin key]
 索引器从[数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)查找文档。 有时候，索引中似乎会缺失数据源中本应进行索引的文档。 之所以发生这些错误，有多种常见原因：
 
 * 文档尚未进行索引。 查看门户中是否有成功的索引器运行。
+* 检查[更改跟踪](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)值。 如果高水位线值为日期设置为未来时间，则索引器将跳过日期小于此值的任何文档。 您可以在[索引器状态](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status#indexer-execution-result)中使用 "initialTrackingState" 和 "finalTrackingState" 字段来了解索引器的更改跟踪状态。
 * 文档在索引器运行之后已更新。 如果索引器已在[计划](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)之中，它最终会重新运行并选取该文档。
 * 在数据源中指定的 [query](/rest/api/searchservice/create-data-source) 排除了该文档。 索引器不能索引不属于数据源的文档。
-* [字段映射](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)或 [AI 扩充](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已更改此文档，因此它看起来不同于预期。
+* [字段映射](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)或[AI 扩充](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已更改文档，其外观与预期的不同。
 * 使用[查找文档 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来查找文档。

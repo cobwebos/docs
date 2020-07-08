@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: fb7ddce34a32d7108587bf1a3d47be4b31214535
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557872"
 ---
 # <a name="monitor-runbook-output"></a>监视 runbook 输出
 
@@ -88,7 +88,7 @@ Verbose inside of function
 
 #### <a name="declare-output-data-type-in-a-workflow"></a>在工作流中声明输出数据类型
 
-工作流使用 [OutputType 属性](https://technet.microsoft.com/library/hh847785.aspx)指定其输出的数据类型。 此属性在运行时不起作用，但在设计时，它可以指明 Runbook 的预期输出。 随着 Runbook 工具集的持续发展，在设计时声明输出数据类型的重要性也在不断提升。 因此，最佳做法是在创建的所有 runbook 中包含此声明。
+工作流使用 [OutputType 属性](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)指定其输出的数据类型。 此属性在运行时不起作用，但在设计时，它可以指明 Runbook 的预期输出。 随着 Runbook 工具集的持续发展，在设计时声明输出数据类型的重要性也在不断提升。 因此，最佳做法是在创建的所有 runbook 中包含此声明。
 
 以下示例 Runbook 将输出一个字符串对象，并包含其输出类型的声明。 如果 Runbook 输出了特定类型的数组，则仍应该指定相对于该类型数组的类型。
 

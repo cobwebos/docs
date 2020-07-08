@@ -2,21 +2,21 @@
 title: 调试应用程序代理应用程序-Azure Active Directory |Microsoft Docs
 description: 调试 Azure Active Directory （Azure AD）应用程序代理应用程序的问题。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74382074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555061"
 ---
 # <a name="debug-application-proxy-application-issues"></a>调试应用程序代理应用程序问题 
 
@@ -39,7 +39,7 @@ ms.locfileid: "74382074"
 
 ![显示用于调试应用程序的步骤的流程图](media/application-proxy-debug-apps/application-proxy-apps-debugging-flowchart.png)
 
-|  | 操作 | 说明 | 
+| 步骤 | 操作 | 说明 |
 |---------|---------|---------|
 |1 | 打开浏览器，访问应用，然后输入你的凭据 | 尝试使用你的凭据登录到应用，并检查与用户相关的任何错误，如[无法访问此公司应用](application-proxy-sign-in-bad-gateway-timeout-error.md)。 |
 |2 | 验证向应用程序分配用户 | 确保你的用户帐户有权从企业网络内部访问该应用，然后按照[测试应用程序](application-proxy-add-on-premises-application.md#test-the-application)中的步骤进行测试登录到该应用。 如果登录问题仍存在，请参阅[如何排查登录错误](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)。  |

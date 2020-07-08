@@ -9,16 +9,16 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556295"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何通过 .NET 应用程序使用 Azure 认知搜索
 
-文本介绍了如何使用 [Azure 认知搜索 .NET SDK](https://aka.ms/search-sdk)。 可以使用 .NET SDK，在应用程序中使用 Azure 认知搜索实现丰富的搜索体验。
+文本介绍了如何使用 [Azure 认知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)。 可以使用 .NET SDK，在应用程序中使用 Azure 认知搜索实现丰富的搜索体验。
 
 ## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure 认知搜索 SDK 包含的功能
 SDK 包括一些客户端库。借助它，不仅可以管理索引、数据源、索引器和同义词映射，还能上传和管理文档并执行查询，所有这些操作都无需处理 HTTP 和 JSON 的详细信息。 这些客户端库全部作为 NuGet 包进行分发。
@@ -38,7 +38,7 @@ SDK 中的其他 NuGet 程序包有：
 
 如果想要为 SDK 的未来更新提供反馈，请参阅我们的[反馈页](https://feedback.azure.com/forums/263029-azure-search/)，或者在 [GitHub](https://github.com/azure/azure-sdk-for-net/issues) 上创建问题并在问题标题中提到“Azure 认知搜索”。
 
-.NET SDK 支持版本 `2019-05-06` 的 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/)。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
+.NET SDK 面向 `2019-05-06` [Azure 认知搜索](https://docs.microsoft.com/rest/api/searchservice/)的版本 REST API。 此版本包括在为 Azure Blob 编制索引时所需的对[复杂类型](search-howto-complex-data-types.md)、[AI 增强](cognitive-search-concept-intro.md)、[自动完成](https://docs.microsoft.com/rest/api/searchservice/autocomplete)和 [JsonLines 分析模式](search-howto-index-json-blobs.md)的支持。 
 
 此 SDK 不支持[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)（如创建和缩放搜索服务以及管理 API 密钥）。 如果需要从 .NET 应用程序管理搜索资源，可以使用 [Azure 认知搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)。
 

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22ab3e7403069ed1b579631b88c2ac2c41191ecd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181318"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554764"
 ---
-# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 联接实现
+# <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
 与用户类似，设备是要保护的，并且随时随时要用来保护资源的另一个核心标识。 若要实现此目的，可以使用下述某种方法将设备标识引入 Azure AD 并对其进行管理：
 
@@ -41,13 +41,12 @@ ms.locfileid: "82181318"
 
 若要规划混合 Azure AD 实现，应做好以下准备：
 
-|   |   |
-| --- | --- |
-| ![检查][1] | 查看支持的设备 |
-| ![检查][1] | 查看应该知道的事项 |
-| ![检查][1] | 查看混合 Azure AD 联接的受控验证 |
-| ![检查][1] | 基于标识基础结构选择方案 |
-| ![检查][1] | 查看本地 AD UPN 支持混合 Azure AD 联接 |
+> [!div class="checklist"]
+> - 查看支持的设备
+> - 查看应该知道的事项
+> - 查看混合 Azure AD 联接的受控验证
+> - 基于标识基础结构选择方案
+> - 查看本地 AD UPN 支持混合 Azure AD 联接
 
 ## <a name="review-supported-devices"></a>查看支持的设备
 
@@ -58,7 +57,7 @@ ms.locfileid: "82181318"
 - Windows 10
 - Windows Server 2016
   - **注意**： Azure 国内云客户需要1809版
-- Windows Server Standard 2012 R2
+- Windows Server 2019
 
 对于运行 Windows 桌面操作系统的设备，受支持的版本将在[Windows 10 版本信息](/windows/release-information/)中列出。 最佳做法是，Microsoft 建议升级到最新版本的 Windows 10。
 
@@ -127,8 +126,8 @@ ms.locfileid: "82181318"
 
 联合环境应具有支持以下要求的标识提供者。 如果已有使用 Active Directory 联合身份验证服务 (AD FS) 的联合环境，则已经支持以下要求。
 
-- **WIAORMULTIAUTHN 声明：** 为 Windows 下层设备执行混合 Azure AD 联接需要此声明。
-- **WS 信任协议：** 需要此协议来对 Windows 当前混合 Azure AD 与 Azure AD 进行联接的设备进行身份验证。 使用 AD FS 时，需要启用以下 WS-Trust 终结点：`/adfs/services/trust/2005/windowstransport`  
+- **WIAORMULTIAUTHN 声明：** 此声明是为 Windows 下层设备执行混合Azure AD 加入所必需的。
+- **WS-Trust 协议：** 使用 Azure AD 对当前已加入混合 Azure AD 的 Windows 设备进行身份验证时需要此协议。 使用 AD FS 时，需要启用以下 WS-Trust 终结点：`/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -136,12 +135,12 @@ ms.locfileid: "82181318"
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。  
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。 
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
 
-自版本 1.1.819.0 起，Azure AD Connect 提供了混合 Azure AD 联接的配置向导。 该向导可让你显著简化配置过程。 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](hybrid-azuread-join-manual.md)。 
+从版本 1.1.819.0 开始，Azure AD Connect 提供了配置混合 Azure AD 联接的向导。 该向导可让你显著简化配置过程。 如果无法安装所需版本的 Azure AD Connect，请参阅[如何手动配置设备注册](hybrid-azuread-join-manual.md)。 
 
 根据与标识基础结构匹配的方案，请参阅：
 
@@ -160,7 +159,7 @@ ms.locfileid: "82181318"
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 说明 |
+| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 描述 |
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |
@@ -170,8 +169,8 @@ ms.locfileid: "82181318"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为联合环境](hybrid-azuread-join-federated-domains.md)
-> 配置混合 Azure Active Directory 联接为[托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
+> [为联合环境](hybrid-azuread-join-federated-domains.md) 
+>  配置混合 Azure Active Directory 联接[为托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

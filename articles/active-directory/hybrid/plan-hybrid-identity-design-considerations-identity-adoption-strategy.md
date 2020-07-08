@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 7263d6a73a78b4b804cddd77f979898008ebadd6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67109339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555375"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>定义混合标识采用策略
 在此任务中，你将根据所述的业务要求，为混合标识解决方案定义混合标识采用策略：
@@ -63,7 +63,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 **已加入域的应用程序和专用网络应用程序**：
 
-|  | 同步标识 | 联合身份 |
+| 应用程序 | 同步标识 | 联合身份 |
 | --- | --- | --- |
 | Web 浏览器 |基于表单的身份验证 |单一登录，有时需要提供组织 ID |
 | Outlook |提示输入凭据 |提示输入凭据 |
@@ -73,7 +73,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 
 **外部或不受信任源**：
 
-|  | 同步标识 | 联合身份 |
+| 应用程序 | 同步标识 | 联合身份 |
 | --- | --- | --- |
 | Web 浏览器 |基于表单的身份验证 |基于表单的身份验证 |
 | Outlook、Skype for Business (Lync)、OneDrive for Business、Office 订阅 |提示输入凭据 |提示输入凭据 |
@@ -111,7 +111,7 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ### <a name="supported-topologies"></a>支持的拓扑
 定义同步策略时，必须确定使用的拓扑。 可以根据步骤 2 中已确定的信息，确定适合使用的拓扑。 单林单 Azure AD 拓扑最常见，它由单个 Active Directory 林和单个 Azure AD 实例组成。  这会用于大多数方案，也是在使用 Azure AD Connect Express 安装时预期的拓扑，如下图所示。
 
-![支持的](./media/plan-hybrid-identity-design-considerations/single-forest.png)拓扑单林方案通常，大型组织甚至小型组织具有多个林，如图5所示。
+![支持的拓扑 ](./media/plan-hybrid-identity-design-considerations/single-forest.png) 单林方案通常，大型组织甚至小型组织具有多个林，如图5所示。
 
 > [!NOTE]
 > 有关不同的本地和 Azure AD 拓扑与 Azure AD Connect 同步的详细信息，请参阅 [Azure AD Connect 的拓扑](plan-connect-topologies.md)一文。
@@ -193,9 +193,9 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 | 用户位置 | 首选设计选项 |
 | --- | --- |
 | Azure Active Directory |云中的多重身份验证 |
-| Azure AD 和使用 AD FS 联合身份验证的本地 AD |双向 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |双向 |
-| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |双向 |
+| Azure AD 和使用 AD FS 联合身份验证的本地 AD |推送、请求和匿名 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 没有密码同步 |推送、请求和匿名 |
+| Azure AD 和使用 Azure AD Connect 的本地 AD - 有密码同步 |推送、请求和匿名 |
 | 本地 AD |多重身份验证服务器 |
 
 > [!NOTE]
@@ -213,6 +213,6 @@ Microsoft 有三个主要集成方案，分别为云标识、同步标识和联�
 ## <a name="next-steps"></a>后续步骤
 [确定数据保护要求](plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 [设计注意事项概述](plan-hybrid-identity-design-considerations-overview.md)
 

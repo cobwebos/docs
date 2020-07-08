@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557446"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
 
@@ -55,7 +55,7 @@ AI 扩充可提取和扩充数据，使之能够在 Azure 认知搜索中可供�
 技能定义为技能数组。 每个技能定义其输入的源，以及生成的输出的名称。 使用[创建技能 REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset) 可以定义对应于上图的技能集： 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -247,7 +247,7 @@ Content-Type: application/json
 
 ## <a name="add-a-knowledge-store"></a>添加知识存储
 
-[知识存储](knowledge-store-concept-intro.md)是 Azure 认知搜索中的一项预览版功能，用于保存扩充的文档。 创建的由 Azure 存储帐户支持的知识存储是扩充的数据要载入到的存储库。 
+[知识存储](knowledge-store-concept-intro.md)是 Azure 认知搜索中的一项功能，用于保存已扩充的文档。 创建的由 Azure 存储帐户支持的知识存储是扩充的数据要载入到的存储库。 
 
 知识存储定义将添加到技能集。 有关整个过程的演练，请参阅[在 REST 中创建知识存储](knowledge-store-create-rest.md)。
 

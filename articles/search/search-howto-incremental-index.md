@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 66bac2a063a3257a2101ca2f30e5946264adb9ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75b533368a01b2e98bece0751f45b12f36796658
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76989546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556267"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为增量扩充配置缓存
 
 > [!IMPORTANT] 
-> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供了此功能。 目前不支持门户或 .NET SDK。
+> 增量扩充目前以公共预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-预览版和 2020-06-30-preview](search-api-preview.md)提供此功能。 目前不支持门户或 .NET SDK。
 
 本文介绍如何将缓存添加到扩充管道，以便可以增量修改步骤，而无需每次都重新生成。 默认情况下，技能组合是无状态的，并且更改其组合的任何部分都需要完全重新运行索引器。 通过增量扩充，索引器可以根据在技能组合或索引器定义中检测到的更改来确定需要刷新文档树的哪些部分。 保留现有处理的输出，并尽可能重复使用。 
 
-使用你提供的帐户信息将缓存内容放置在 Azure 存储中。 在运行索引器`ms-az-search-indexercache-<alpha-numerc-string>`时，将创建名为的容器。 它应被视为由您的搜索服务管理的内部组件，而不能修改。
+使用你提供的帐户信息将缓存内容放置在 Azure 存储中。 在 `ms-az-search-indexercache-<alpha-numerc-string>` 运行索引器时，将创建名为的容器。 它应被视为由您的搜索服务管理的内部组件，而不能修改。
 
 如果你不熟悉如何设置索引器，请从[索引器概述](search-indexer-overview.md)开始，然后继续转到[技能集](cognitive-search-working-with-skillsets.md)了解扩充管道。 有关关键概念的更多背景信息，请参阅[增量扩充](cognitive-search-incremental-indexing-conceptual.md)。
 
@@ -38,10 +38,10 @@ ms.locfileid: "76989546"
 
 从具有以下组件的有效现有索引器开始：数据源、技能组合、索引。 索引器应该是可运行的。 
 
-使用 API 客户端构造获取索引器[请求](https://docs.microsoft.com/rest/api/searchservice/get-indexer)，以获取索引器的当前配置。 使用预览 API 版本获取索引器时，会将设置为 null `cache`的属性添加到定义中。
+使用 API 客户端构造获取索引器[请求](https://docs.microsoft.com/rest/api/searchservice/get-indexer)，以获取索引器的当前配置。 使用预览 API 版本获取索引器时， `cache` 会将设置为 null 的属性添加到定义中。
 
 ```http
-GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
+GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
@@ -50,12 +50,12 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-2-modify-the-cache-property-in-the-indexer-definition"></a>步骤2：修改索引器定义中的缓存属性
 
-默认情况下`cache` ，属性为 null。 使用 API 客户端设置缓存配置（门户不支持此 particulate 更新）。 
+默认情况下， `cache` 属性为 null。 使用 API 客户端设置缓存配置（门户不支持此 particulate 更新）。 
 
 修改缓存对象，使其包含以下必需属性和可选属性： 
 
-+ 是`storageConnectionString`必需的，必须将其设置为 Azure 存储连接字符串。 
-+ 布尔`enableReprocessing`值属性是可选的`true` （默认情况下），它表示启用了增量扩充。 如果需要，可以将其设置为`false`以暂停增量处理，而其他资源密集型操作（如为新文档编制索引）正在进行，然后将其重新`true`翻转到以后。
++ `storageConnectionString`是必需的，必须将其设置为 Azure 存储连接字符串。 
++ `enableReprocessing`布尔值属性是可选的（ `true` 默认情况下），它表示启用了增量扩充。 如果需要，可以将其设置为 `false` 以暂停增量处理，而其他资源密集型操作（如为新文档编制索引）正在进行，然后将其重新翻转到 `true` 以后。
 
 ```json
 {
@@ -78,17 +78,17 @@ api-key: [YOUR-ADMIN-KEY]
 为现有索引器设置增量扩充时需要重置索引器，以确保所有文档都处于一致状态。 你可以使用门户或 API 客户端以及此任务的[重置索引器 REST API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) 。
 
 ```http
-POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
 
 ### <a name="step-4-save-the-updated-definition"></a>步骤4：保存更新的定义
 
-使用 PUT 请求[更新索引器](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer)，请求的正文应包含具有缓存属性的已更新索引器定义。 如果收到400，请检查索引器定义，以确保满足所有要求（数据源、技能组合、索引）。
+使用 PUT 请求[更新索引器](https://docs.microsoft.com/rest/api/searchservice/preview-api/update-indexer)，请求的正文应包含具有缓存属性的已更新索引器定义。 如果收到400，请检查索引器定义，以确保满足所有要求（数据源、技能组合、索引）。
 
 ```http
-PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2019-05-06-Preview
+PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 {
@@ -101,7 +101,7 @@ api-key: [YOUR-ADMIN-KEY]
 }
 ```
 
-如果你现在发出索引器上的另一个 GET 请求，则来自服务的响应将`ID`包含缓存对象中的一个属性。 将字母数字字符串追加到容器的名称，该容器包含此索引器处理的每个文档的所有缓存结果和中间状态。 该 ID 将用于在 Blob 存储中对缓存进行唯一命名。
+如果你现在发出索引器上的另一个 GET 请求，则来自服务的响应将包含 `ID` 缓存对象中的一个属性。 将字母数字字符串追加到容器的名称，该容器包含此索引器处理的每个文档的所有缓存结果和中间状态。 该 ID 将用于在 Blob 存储中对缓存进行唯一命名。
 
     "cache": {
         "ID": "<ALPHA-NUMERIC STRING>",
@@ -116,7 +116,7 @@ api-key: [YOUR-ADMIN-KEY]
 或者，可以使用 REST[运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer)：
 
 ```http
-POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2019-05-06-Preview
+POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2020-06-30-Preview
 Content-Type: application/json
 api-key: [YOUR-ADMIN-KEY]
 ```
@@ -129,13 +129,13 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-6-modify-a-skillset-and-confirm-incremental-enrichment"></a>步骤6：修改技能组合并确认增量扩充
 
-若要修改技能组合，可以使用门户或 API。 例如，如果您使用的是文本翻译，则`en`对`es`或其他语言的简单内联更改就足以满足增量扩充的概念证明测试。
+若要修改技能组合，可以使用门户或 API。 例如，如果您使用的是文本翻译，则 `en` 对或其他语言的简单内联更改 `es` 就足以满足增量扩充的概念证明测试。
 
 再次运行索引器。 仅更新已丰富文档树的这些部分。 如果你使用[门户快速入门](cognitive-search-quickstart-blob.md)作为概念证明，将文本翻译技能修改为 "es"，你会注意到仅更新了8个文档而不是原始14个文档。 转换过程不影响的图像文件将从缓存中重复使用。
 
 ## <a name="enable-caching-on-new-indexers"></a>对新索引器启用缓存
 
-若要为新索引器设置增量扩充，只需在调用`cache` [Create 索引器（2019-05-06-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer)时在索引器定义负载中包括属性。 
+若要为新索引器设置增量扩充，只需在 `cache` 调用[Create 索引器（2020-06-30-Preview）](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer)时在索引器定义负载中包括属性。 
 
 
 ```json
@@ -169,10 +169,10 @@ api-key: [YOUR-ADMIN-KEY]
 
 | API           | 缓存影响     |
 |---------------|------------------|
-| [创建索引器（2019-05-06-预览版）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) | 创建并运行首次使用的索引器，包括创建缓存（如果索引器定义指定了缓存）。 |
+| [创建索引器（2020-06-30-预览版）](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | 创建并运行首次使用的索引器，包括创建缓存（如果索引器定义指定了缓存）。 |
 | [运行索引器](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | 按需执行扩充管道。 此 API 从缓存中读取（如果存在），如果已将缓存添加到更新索引器定义，则会创建缓存。 当你运行已启用缓存的索引器时，如果可以使用缓存的输出，则索引器将省略步骤。 你可以使用此 API 的公开发布或预览 API 版本。|
 | [重置索引器](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| 清除任何增量索引信息的索引器。 下一次索引器运行（按需或按计划）完全重新处理，包括重新运行所有技能和重新生成缓存。 它在功能上等效于删除索引器并重新创建它。 你可以使用此 API 的公开发布或预览 API 版本。|
-| [重置技能（2019-05-06-预览版）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) | 指定在下次运行索引器时要重新运行的技能，即使您没有修改任何技能也是如此。 缓存会相应地进行更新。 将使用缓存中的可重用数据以及每个更新的技能的新内容来刷新输出，如知识存储或搜索索引。 |
+| [重置技能](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | 指定在下次运行索引器时要重新运行的技能，即使您没有修改任何技能也是如此。 缓存会相应地进行更新。 将使用缓存中的可重用数据以及每个更新的技能的新内容来刷新输出，如知识存储或搜索索引。 |
 
 有关控制缓存发生的情况的详细信息，请参阅[缓存管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)。
 
@@ -183,5 +183,5 @@ api-key: [YOUR-ADMIN-KEY]
 此外，在启用缓存后，你需要了解有关缓存的参数和 Api 的信息，包括如何覆盖或强制特定行为。 有关详细信息，请参阅以下链接。
 
 + [技能组合概念和组合](cognitive-search-working-with-skillsets.md)
-+ [如何创建技能组合](cognitive-search-defining-skillset.md)
++ [如何创建技能集](cognitive-search-defining-skillset.md)
 + [增量扩充和缓存简介](cognitive-search-incremental-indexing-conceptual.md)

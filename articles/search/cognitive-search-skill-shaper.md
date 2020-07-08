@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81eb0e60befc544a6c3bee8f04e901b6a5e472bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75754112"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560813"
 ---
 # <a name="shaper-cognitive-skill"></a>整形程序认知技能
 
-“整形程序”技能将多个输入整合成以后可在扩充管道中引用的[复杂类型](search-howto-complex-data-types.md)。  借助整形程序技能，可实质上创建结构、定义该结构的成员名称，并为每个成员分配值。  搜索方案中有用的合并字段示例包括将姓和名合并成单个结构、将城市和州合并成单个结构、或者将姓名和出生日期合并成单个结构，从而建立唯一标识。
+“整形程序”技能将多个输入整合成以后可在扩充管道中引用的[复杂类型](search-howto-complex-data-types.md)。 借助整形程序技能，可实质上创建结构、定义该结构的成员名称，并为每个成员分配值。  搜索方案中有用的合并字段示例包括将姓和名合并成单个结构、将城市和州合并成单个结构、或者将姓名和出生日期合并成单个结构，从而建立唯一标识。
 
-此外，[方案 3](#nested-complex-types) 中展示的**整形程序**技能为输入添加了一个可选的 *sourceContext* 属性。 *source* 和 *sourceContext* 属性是互斥的。 如果输入位于技能上下文中，则只需使用 *source*。 如果输入所在的上下文与技能上下文不同，则使用 *sourceContext*。  *sourceContext* 要求使用寻址为源的特定元素定义嵌套的输入。 
+此外，[方案 3](#nested-complex-types) 中展示的**整形程序**技能为输入添加了一个可选的 *sourceContext* 属性。 *source* 和 *sourceContext* 属性是互斥的。 如果输入位于技能上下文中，则只需使用 *source*。 如果输入所在的上下文与技能上下文不同，则使用 *sourceContext*。 *sourceContext* 要求使用寻址为源的特定元素定义嵌套的输入。 
 
 输出名称始终为“output”。 管道可在内部映射不同的名称，例如下图所示的“analyzedText”，但“整形程序”技能本身会在响应中返回“output”。  如果正在调试大量文档并发现存在命名差异，或者要生成自定义技能并自行构建响应，这一点非常重要。
 
@@ -109,7 +109,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-output"></a>技能输出
 
-整形程序  技能使用 *text* 和 *sentiment* 组合元素生成一个名为 *analyzedText* 的新元素。 此输出符合索引架构。 它将在 Azure 认知搜索索引中导入和编制索引。
+整形程序技能使用 *text* 和 *sentiment* 组合元素生成一个名为 *analyzedText* 的新元素。 此输出符合索引架构。 它将在 Azure 认知搜索索引中导入和编制索引。
 
 ```json
 {
@@ -251,5 +251,5 @@ Microsoft.Skills.Util.ShaperSkill
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
 + [如何使用复杂类型](search-howto-complex-data-types.md)
-+ [知识存储（预览版）](knowledge-store-concept-intro.md)
++ [知识存储](knowledge-store-concept-intro.md)
 + [在 REST 中创建知识存储](knowledge-store-create-rest.md)

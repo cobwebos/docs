@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b76c940066539995dbefa76d503b5412ce0c359
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81453721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557905"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -43,11 +43,15 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
 
-例如，使用版本的完整引用如下所示：
+> [!NOTE] 
+> 当前需要版本。 轮换机密时，需在应用程序配置中更新版本。
+
+例如，完整的引用将如下所示：
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
+
 也可使用以下命令：
 
 ```
@@ -57,7 +61,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault 中的源应用程序设置
 
-Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
+Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，从而使你可以在 Key Vault 而不是站点配置中保存机密。应用程序设置在静态上进行安全加密，但是，如果你需要机密管理功能，它们应该进入 Key Vault。
 
 若要将 Key Vault 引用用于应用程序设置，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
 
@@ -68,7 +72,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 通过 Azure 资源管理器模板自动进行资源部署时，可能需要将依赖项按特定的顺序排列，这样才能使该功能发挥作用。 请注意，需将应用程序设置定义为其自己的资源，而不能使用站点定义中的 `siteConfig` 属性。 这是因为，站点需先进行定义，这样才能使用它来创建系统分配标识并将该标识用在访问策略中。
 
-函数应用的示例仿真模板可能如下所示：
+函数应用的示例伪模板可能如下所示：
 
 ```json
 {
@@ -187,15 +191,15 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用应用服务的检测程序
 
 1. 在门户中导航到你的应用。
-2. 选择“诊断和解决问题”。 
-3. 依次选择“可用性和性能”、“Web 应用关闭”。  
-4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。  
+2. 选择“诊断并解决问题”。
+3. 依次选择“可用性和性能”、“Web 应用关闭”。********
+4. 找到“Key Vault 应用程序设置诊断”，单击“更多信息”。********
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>使用 Azure Functions 的检测程序
 
 1. 在门户中导航到你的应用。
-2. 导航到“平台功能”。 
-3. 选择“诊断和解决问题”。 
-4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。  
-5. 单击“Key Vault 应用程序设置诊断”。 
+2. 导航到“平台功能”。****
+3. 选择“诊断并解决问题”。
+4. 依次选择“可用性和性能”、“函数应用关闭或报告错误”。********
+5. 单击“Key Vault 应用程序设置诊断”。****

@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402463"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558080"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的支持策略
 
@@ -51,9 +51,12 @@ AKS 不是完全托管的群集解决方案。 某些组件（例如工作器节
 
 Microsoft 为以下各项提供技术支持：
 
+> [!NOTE]
+> Microsoft 支持所执行的任何群集操作都是以名称的内置 Kubernetes ["edit"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)角色进行用户同意 `aks-support-rolebinding` 。 启用此角色后，AKS 支持编辑群集配置和资源，以便对群集问题进行故障排除和诊断，但该角色不能修改权限，也不能创建角色或角色绑定。 仅在具有实时（JIT）访问权限的活动支持票证下启用角色访问。
+
 * 到 Kubernetes 服务提供并支持的所有 Kubernetes 组件（例如 API 服务器）的连接。
 * Kubernetes 控制平面服务（例如 Kubernetes 主节点、API 服务器、etcd 和 kube-dns）的管理、运行时间、QoS 和操作。
-* Etcd。 支持包括每隔 30 分钟自动、透明地备份所有 etcd 数据，用于灾难规划和群集状态还原。 这些备份不直接提供给客户或用户。 它们可确保数据的可靠性和一致性。
+* Etcd。 支持包括每隔 30 分钟自动、透明地备份所有 etcd 数据，用于灾难规划和群集状态还原。 这些备份不直接提供给客户或用户。 它们可确保数据的可靠性和一致性。 Etcd。 不支持按需回滚或还原作为功能。
 * 适用于 Kubernetes 的 Azure 云提供商驱动程序中的任何集成点。 这包括与其他 Azure 服务的集成，这些服务包括负载均衡器、持久卷或网络（Kubernetes 和 Azure CNI），等等。
 * 有关控制平面组件（例如 Kubernetes API 服务器、etcd 和 kube-dns）的自定义的问题。
 * 有关网络的问题，例如 Azure CNI、kubenet 或其他网络访问和功能问题。 问题可能包括 DNS 解析、数据包丢失、路由，等等。 Microsoft 为各种网络方案提供支持：

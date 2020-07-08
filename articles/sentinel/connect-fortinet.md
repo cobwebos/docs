@@ -1,6 +1,6 @@
 ---
 title: 将 Fortinet 数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 Fortinet 数据连接到 Azure Sentinel。
+description: 将 Fortinet 设备连接到 Azure Sentinel 以查看仪表板、创建自定义警报和改进调查。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588189"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555964"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>将 Fortinet 连接到 Azure Sentinel
 
@@ -50,9 +50,9 @@ ms.locfileid: "77588189"
    > [!NOTE] 
    > 有关详细信息，请参阅[Fortinet 文档库](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 选择版本，并使用**手册**和**日志消息参考**。
 
-1. 若要使用 Fortinet 事件的 Azure Monitor Log Analytics 中的相关架构，请搜索`CommonSecurityLog`。
+1. 若要使用 Fortinet 事件的 Azure Monitor Log Analytics 中的相关架构，请搜索 `CommonSecurityLog` 。
 
-1. 继续执行[步骤3：验证连接性](connect-cef-verify.md)。
+1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

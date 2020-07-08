@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 91a9a761b35a945fcd105465ae8dea7cb6623f42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554522"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -65,7 +65,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 - Exchange 管理员
 - 条件访问管理员
 - 安全管理员
-- 支持管理员或密码管理员
+- 支持管理员
 - 计费管理员
 - 用户管理员
 - 身份验证管理员
@@ -92,7 +92,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 > [!WARNING]
 > 启用安全默认值之前，请确保管理员没有使用旧身份验证协议。 有关详细信息，请参阅[如何弃用旧身份验证](concept-fundamentals-block-legacy-authentication.md)。
 
-- [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-office-3)
+- [如何设置多功能设备或应用程序以使用 Office 365 和 Microsoft 365 发送电子邮件](https://docs.microsoft.com/exchange/mail-flow-best-practices/how-to-set-up-a-multifunction-device-or-application-to-send-email-using-microsoft-365-or-office-365)
 
 ### <a name="protecting-privileged-actions"></a>保护特权操作
 
@@ -122,7 +122,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 这些免费的安全默认值允许仅通过使用通知的 Microsoft Authenticator 应用注册和使用 Azure 多重身份验证。 条件访问允许使用管理员选择启用的任何身份验证方法。
 
-|   | 安全默认值 | 条件性访问 |
+| 方法 | 安全默认值 | 条件性访问 |
 | --- | --- | --- |
 | 通过移动应用发送通知 | X | X |
 | 移动应用或硬件标志提供的验证码 | X** | X |

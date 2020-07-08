@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 828f738ff8923dc8194e2449f5fb0be74ef45ad7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473551"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557973"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -77,42 +77,55 @@ ms.locfileid: "79473551"
 
 ### <a name="examples"></a>示例
 
-在此示例中，客户端证书是由指纹标识的。
+在此示例中，客户端证书由其指纹标识：
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-在此示例中，客户端证书是由资源名称标识的。
+
+在此示例中，客户端证书由资源名称标识：
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+在此示例中，客户端证书是在策略中设置的，而不是从内置证书存储中检索的：
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>元素  
   
-|名称|说明|必选|  
+|“属性”|描述|必需|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|名称|说明|必选|默认|  
+|名称|描述|必须|默认|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|客户端证书的指纹。|必须提供 `thumbprint` 或 `certificate-id`。|空值|  
-|certificate-id|证书资源名称。|必须提供 `thumbprint` 或 `certificate-id`。|空值|  
+|thumbprint|客户端证书的指纹。|必须提供 `thumbprint` 或 `certificate-id`。|不适用|
+|certificate-id|证书资源名称。|必须提供 `thumbprint` 或 `certificate-id`。|不适用|
+|body|作为字节数组的客户端证书。|否|空值|
+|password|客户端证书的密码。|如果中指定的证书 `body` 受密码保护，则使用。|空值|
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：** 入站  
+-   **策略节：** 入站  
   
 -   **策略范围：** 所有范围  
 
-##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> 使用托管标识进行身份验证  
- 使用 `authentication-managed-identity` 策略通过 API 管理服务的托管标识向后端服务进行身份验证。 此策略实质上使用托管标识从 Azure Active Directory 获取访问令牌以访问指定资源。 成功获取令牌后，策略将使用 `Authorization` 方案在 `Bearer` 标头中设置令牌的值。
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>用托管标识进行身份验证  
+ 使用 `authentication-managed-identity` 策略通过托管标识向后端服务进行身份验证。 此策略实质上使用托管标识从 Azure Active Directory 获取访问令牌以访问指定资源。 成功获取令牌后，策略将使用 `Bearer` 方案在 `Authorization` 标头中设置令牌的值。
+
+系统分配的标识和多个用户分配的标识都可以用来请求令牌。 如果 `client-id` 未提供系统分配的标识，则为。 如果为 `client-id` 该用户分配的标识请求了变量，则 Azure Active Directory
   
 ### <a name="policy-statement"></a>策略语句  
   
 ```xml  
-<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
 ### <a name="example"></a>示例  
@@ -127,7 +140,7 @@ ms.locfileid: "79473551"
 <authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
 ```
 ```xml  
-<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Bus-->
 ```
 ```xml  
 <authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
@@ -135,7 +148,21 @@ ms.locfileid: "79473551"
 ```xml  
 <authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
-  
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"/> <!--Your own Azure AD Application-->
+```
+
+#### <a name="use-managed-identity-and-set-header-manually"></a>手动使用托管标识和集标头
+
+```xml
+<authentication-managed-identity resource="api://Client_id_of_Backend"
+   output-token-variable-name="msi-access-token" ignore-error="false" /> <!--Your own Azure AD Application-->
+<set-header name="Authorization" exists-action="override">
+   <value>@("Bearer " + (string)context.Variables["msi-access-token"])</value>
+</set-header>
+```
+
 #### <a name="use-managed-identity-in-send-request-policy"></a>在发送请求策略中使用托管标识
 ```xml  
 <send-request mode="new" timeout="20" ignore-error="false">
@@ -147,22 +174,23 @@ ms.locfileid: "79473551"
 
 ### <a name="elements"></a>元素  
   
-|名称|说明|必选|  
+|“属性”|描述|必需|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|名称|说明|必选|默认|  
+|名称|描述|必须|默认|  
 |----------|-----------------|--------------|-------------|  
-|resource|字符串。 Azure Active Directory 中的目标 web API （受保护资源）的应用 ID。|是|空值|  
+|resource|字符串。 Azure Active Directory 中的目标 web API （受保护资源）的应用 ID。|是|不适用|
+|client-id|字符串。 Azure Active Directory 中用户分配的标识的应用 ID。|否|系统分配的标识|
 |output-token-variable-name|字符串。 上下文变量的名称，它将令牌值接收为对象类型 `string`。 |否|空值|  
 |ignore-error|布尔值。 如果设置为 `true`，即使未获得访问令牌，策略管道也将继续执行。|否|false|  
   
 ### <a name="usage"></a>使用情况  
- 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
+ 此策略可在以下策略[节](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
--   **策略段：** 入站  
+-   **策略节：** 入站  
   
 -   **策略范围：** 所有范围
 

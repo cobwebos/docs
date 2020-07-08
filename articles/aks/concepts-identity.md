@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的访问和标识，包括
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb3f0a7aee63f8b655e7056ee870de80c2f814e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259599"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85558173"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -67,6 +67,9 @@ ClusterRole 的工作原理与授予对资源的权限相同，但前者可应�
 角色绑定用于针对给定命名空间分配角色。 此方法可以从逻辑上分离各 AKS 群集，使用户只能访问向其分配的命名空间中的应用程序资源。 若需要针对整个群集或给定命名空间外的群集资源来绑定角色，可以改用“ClusterRoleBinding”  。
 
 ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可应用于整个群集而非特定命名空间中的资源。 使用此方法，可向管理员或支持工程师授予对 AKS 群集中所有资源的访问权限。
+
+> [!NOTE]
+> Microsoft 支持所执行的任何群集操作都是以名称的内置 Kubernetes ["edit"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)角色进行用户同意 `aks-support-rolebinding` 。 启用此角色后，AKS 支持编辑群集配置和资源，以便对群集问题进行故障排除和诊断，但该角色不能修改权限，也不能创建角色或角色绑定。 仅在具有实时（JIT）访问权限的活动支持票证下启用角色访问。 阅读有关[AKS 支持策略](support-policies.md)的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

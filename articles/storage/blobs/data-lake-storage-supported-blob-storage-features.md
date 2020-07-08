@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 06/29/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 5be7c9800076cfaf361a3e752162e14d10f22655
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 15e6cf7adfda995148a75ec21b8d8e5d8a5cab2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559074"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -39,17 +39,18 @@ Blob 存储功能（如[诊断日志记录](../common/storage-analytics-logging.
 |Blob 存储 Azure CLI 命令|正式发布|预览|[快速入门：使用 Azure CLI 创建、下载和列出 blob](storage-quickstart-blobs-cli.md)|
 |Blob 存储 API|正式发布|预览|[快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12](storage-quickstart-blobs-dotnet.md)<br>[快速入门：使用 Java v12 SDK 管理 blob](storage-quickstart-blobs-java.md)<br>[快速入门：使用 Python v12 SDK 管理 blob](storage-quickstart-blobs-python.md)<br>[快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob](storage-quickstart-blobs-nodejs.md)|
 |诊断日志|正式发布|预览 <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Azure 存储分析日志记录](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|存档访问层|正式发布|不支持|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
 |Azure Monitor 中的日志记录|预览 |尚不支持|[监视 Azure 存储](../common/monitor-storage.md)|
-|存档访问层|预览|不支持|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
+|快照|预览|尚不支持|[blob 快照](snapshots-overview.md)|
+|静态网站|预览|尚不支持|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
+|不可变存储|预览|尚不支持|[使用不可变存储存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
 |生命周期管理策略|预览|尚不支持|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
+|Blobfuse|预览|尚不支持|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
 |更改源|尚不支持|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
 |帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持|尚不支持|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
-|不可变存储|尚不支持|尚不支持|[使用不可变存储存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
-|快照|尚不支持|尚不支持|[在 .NET 中创建和管理 blob 快照](storage-blob-snapshots.md)|
 |软删除|尚不支持|尚不支持|[Azure 存储 Blob 的软删除](storage-blob-soft-delete.md)|
-|静态网站|尚不支持|尚不支持|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
 
 <div id="diagnostic-logging"><sup>1</sup>对于高级块 blob 存储帐户，无法使用 Azure 门户启用诊断日志（经典）。 可使用 PowerShell 启用它们。</div>
 

@@ -1,5 +1,5 @@
 ---
-title: 调试 AI 扩充技能组（预览版）
+title: 调试会话概念（预览）
 titleSuffix: Azure Cognitive Search
 description: 调试会话（通过 Azure 门户访问）提供一个类似于 IDE 的环境，可在其中识别和修复错误、验证更改，以及将更改推送到 AI 扩充管道中的技能组。 调试会话当前为预览版。
 manager: nitinme
@@ -8,21 +8,20 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 04b221d772abf923d7aabfe767a6424b72ed8fb2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: edce8f3460e92eef4f6665b1b38a61582d6841ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662405"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560379"
 ---
-# <a name="debug-sessions"></a>调试会话
+# <a name="debug-sessions-in-azure-cognitive-search"></a>在 Azure 中调试会话认知搜索
 
 调试会话是一个可视化编辑器，可与 Azure 门户中的现有技能组配合使用。 在调试会话中，可以识别和解决错误、验证更改，以及将更改推送到 AI 扩充管道中的生产技能组。
 
 > [!Important]
-> 以受限访问预览版形式[根据请求](https://aka.ms/DebugSessions)提供对 Azure 认知搜索的调试会话支持。 预览功能在提供时没有附带服务级别协议，不建议用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 调试会话是一种不带服务级别协议提供的预览功能，不建议用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 获得预览版访问权限后，可使用 Azure 门户访问和使用服务的调试会话。
 
 ## <a name="using-debug-sessions"></a>使用调试会话
 
@@ -86,6 +85,10 @@ ms.locfileid: "83662405"
 ## <a name="errorswarnings"></a>错误/警告
 
 此窗口显示在调试会话中针对文档执行技能组时生成的所有错误和警告。
+
+## <a name="limitations"></a>限制
+
+调试 sesisons 适用于所有正式可用的数据源 amd 大多数预览版数据源。 当前不支持 Cosmos DB 的 MongoDB API （预览）和 Cassandra API （预览版）。
 
 ## <a name="next-steps"></a>后续步骤
 

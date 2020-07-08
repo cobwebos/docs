@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a20884c33d5232661e858e0b3ec722f139825aea
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: dc9425b25fa594d06473865f1add9c91c7760a97
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85557233"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 的映射功能集成
 
@@ -20,7 +20,7 @@ ms.locfileid: "82928000"
 >[!NOTE]
 >如果已部署服务映射，可以在用于 VM 的 Azure Monitor 中查看映射，其中包括监视 VM 运行状况和性能的附加功能。 用于 VM 的 Azure Monitor 的映射功能旨在替代独立的服务映射解决方案。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](vminsights-overview.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * System Center Operations Manager 管理组（2012 R2 或更高版本）。
 * 经配置后支持用于 VM 的 Azure Monitor 的 Log Analytics 工作区。
@@ -38,30 +38,30 @@ ms.locfileid: "82928000"
 
 ## <a name="configure-integration"></a>配置集成
 
-安装服务映射管理包后，将在 Operations Manager Operations 控制台的“管理”**** 窗格中的“Operations Management Suite”**** 下显示新节点“服务映射”****。
+安装服务映射管理包后，将在 Operations Manager Operations 控制台的“管理”窗格中的“Operations Management Suite”下显示新节点“服务映射”。
 
 >[!NOTE]
->[Operations Management Suite](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)是包含 Log Analytics 的服务集合，现已成为[Azure Monitor](../overview.md)的一部分。
+>[Operations Management Suite 是一组服务](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，其中包括 Log Analytics（现在是 [Azure Monitor](../overview.md) 的一部分）。
 
 若要配置用于 VM 的 Azure Monitor 的映射集成，请执行以下操作：
 
-1. 若要打开配置向导，请在“服务映射概述”窗格中单击“添加工作区”。********  
+1. 若要打开配置向导，请在“服务映射概述”窗格中单击“添加工作区”。   
 
     ![“服务映射概述”窗格](media/service-map-scom/scom-configuration.png)
 
-2. 在“连接配置”窗口中，输入服务主体的租户名称或 ID、应用程序 ID（也称为用户名或 clientID）和密码，并单击“下一步”。******** 有关详细信息，请参阅“创建服务主体”。
+2. 在“连接配置”窗口中，输入服务主体的租户名称或 ID、应用程序 ID（也称为用户名或 clientID）和密码，并单击“下一步”。  有关详细信息，请参阅“创建服务主体”。
 
     ![“连接配置”窗口](media/service-map-scom/scom-config-spn.png)
 
-3. 在“订阅选择”窗口中，选择 Azure 订阅、Azure 资源组（包含 Log Analytics 工作区的资源组）和 Log Analytics 工作区，然后单击“下一步”。********
+3. 在“订阅选择”窗口中，选择 Azure 订阅、Azure 资源组（包含 Log Analytics 工作区的资源组）和 Log Analytics 工作区，然后单击“下一步”。 
 
     ![Operations Manager 配置工作区](media/service-map-scom/scom-config-workspace.png)
 
-4. 在“计算机组选择”**** 窗口中，你可以选择要同步到 Operations Manager 的服务映射计算机组。 单击“添加/删除计算机组”****，从“可用计算机组”**** 列表中选择组，然后单击“添加”****。  选择组后，单击“确定”**** 完成。
+4. 在“计算机组选择”窗口中，你可以选择要同步到 Operations Manager 的服务映射计算机组。 单击“添加/删除计算机组”，从“可用计算机组”列表中选择组，然后单击“添加”。  选择组后，单击“确定”完成。
 
     ![Operations Manager 配置计算机组](media/service-map-scom/scom-config-machine-groups.png)
 
-5. 在“服务器选择”窗口中，配置包含要在 Operations Manager 与映射功能之间同步的服务器的服务映射服务器组。**** 单击“添加/删除服务器”。****
+5. 在“服务器选择”窗口中，配置包含要在 Operations Manager 与映射功能之间同步的服务器的服务映射服务器组。 单击“添加/删除服务器”。
 
     若要在集成中为某个服务器构建分布式应用程序关系图，该服务器必须：
 
@@ -71,7 +71,7 @@ ms.locfileid: "82928000"
 
      ![Operations Manager 配置组](media/service-map-scom/scom-config-group.png)
 
-6. 可选：选择要与 Log Analytics 通信的所有管理服务器资源池，然后单击 "**添加工作区**"。
+6. 可选：选择要与 Log Analytics 通信的所有管理服务器资源池，然后单击“添加工作区”。
 
     ![Operations Manager 配置资源池](media/service-map-scom/scom-config-pool.png)
 
@@ -81,32 +81,32 @@ ms.locfileid: "82928000"
 
 ## <a name="monitor-integration"></a>监视集成
 
-连接 Log Analytics 工作区后，Operations Manager 操作控制台的“监视”窗格中会显示新文件夹“Service Map”。****
+连接 Log Analytics 工作区后，Operations Manager 操作控制台的“监视”窗格中会显示新文件夹“Service Map”。
 
 ![Operations Manager 的“监视”窗格](media/service-map-scom/scom-monitoring.png)
 
 “服务映射”文件夹包含四个节点：
 
-* **活动警报**：列出有关 Operations Manager 和 Azure Monitor 之间的通信的所有活动警报。  
+* **活动警报**：列出有关 Operations Manager 与 Azure Monitor 之间通信的所有活动警报。  
 
   >[!NOTE]
   >这些警报不是与 Operations Manager 同步的 Log Analytics 警报，而是根据服务映射管理包中定义的工作流在管理组中生成的警报。
 
-* "**服务器**"：列出已配置为从用于 VM 的 Azure Monitor 映射功能同步的受监视服务器。
+* **服务器**：列出配置为从用于 VM 的 Azure Monitor 映射功能同步的受监视服务器。
 
     ![Operations Manager 的“监视服务器”窗格](media/service-map-scom/scom-monitoring-servers.png)
 
-* **计算机组依赖关系视图**：列出从映射功能同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
+* **计算机组依赖项视图**：列出从映射功能同步的所有计算机组。 可以单击任意组来查看其分布式应用程序关系图。
 
     ![Operations Manager 分布式应用程序关系图](media/service-map-scom/scom-group-dad.png)
 
-* **服务器依赖关系视图**：列出从映射功能同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
+* **服务器依赖项视图**：列出从映射功能同步的所有服务器。 可以单击任一服务器来查看其分布式应用程序关系图。
 
     ![Operations Manager 分布式应用程序关系图](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>编辑或删除工作区
 
-可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。****************
+可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。   
 
 > [!NOTE]
 > [Operations Management Suite 是一组服务](../terminology.md#april-2018---retirement-of-operations-management-suite-brand)，其中包括 Log Analytics，后者现在是 [Azure Monitor](../overview.md) 的一部分。
@@ -121,9 +121,9 @@ ms.locfileid: "82928000"
 
 ![Operations Manager 的“重写属性”窗口](media/service-map-scom/scom-overrides.png)
 
-* **Enabled**：启用/禁用自动更新。
-* **IntervalMinutes**：指定更新之间的时间。 默认间隔为 1 小时。 若要更频繁地同步映射，可以更改此值。
-* **TimeoutSeconds**：指定请求超时前的时间长度。
+* **已启用**：启用或禁用自动更新。
+* **IntervalMinutes**：指定更新间隔时间。 默认间隔为 1 小时。 若要更频繁地同步映射，可以更改此值。
+* **TimeoutSeconds**：指定请求超时前的时长。
 * **TimeWindowMinutes**：指定查询数据的时间范围。 默认为 60 分钟，这是允许的最大时间间隔。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
@@ -131,7 +131,7 @@ ms.locfileid: "82928000"
 当前设计存在以下问题和限制：
 
 * 只能连接到单个 Log Analytics 工作区。
-* 尽管可通过“创作”窗格手动将服务器添加到服务映射服务器组，但不会立即同步这些服务器的映射。**** 它们将在下一个同步周期内从用于 VM 的 Azure Monitor 的映射功能同步。
+* 尽管可通过“创作”窗格手动将服务器添加到服务映射服务器组，但不会立即同步这些服务器的映射。 它们将在下一个同步周期内从用于 VM 的 Azure Monitor 的映射功能同步。
 * 如果对通过管理包创建的分布式应用程序关系图进行任何更改，则可能会在下一次与用于 VM 的 Azure Monitor 同步时覆盖这些更改。
 
 ## <a name="create-a-service-principal"></a>创建服务主体
@@ -142,5 +142,6 @@ ms.locfileid: "82928000"
 * [使用 Azure CLI 创建服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [使用 Azure 门户创建服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>反馈
-对于与用于 VM 的 Azure Monitor 地图功能或本文档的集成，你是否有任何反馈？ 请访问[用户之声页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
+### <a name="suggestions"></a>建议
+
+对于与用于 VM 的 Azure Monitor 映射功能的集成或本文档，你是否有任何反馈？ 请访问[用户之声页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。

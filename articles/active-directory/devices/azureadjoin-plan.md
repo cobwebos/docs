@@ -4,19 +4,19 @@ description: 介绍在环境中实现 Azure AD 联接设备的所需步骤。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672698"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555020"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -32,15 +32,14 @@ ms.locfileid: "78672698"
 
 若要计划 Azure AD 联接实现，应熟悉以下内容：
 
-|   |   |
-|---|---|
-|![检查][1]|查看方案|
-|![检查][1]|查看标识基础结构|
-|![检查][1]|评估设备管理|
-|![检查][1]|了解有关应用程序和资源的注意事项|
-|![检查][1]|了解预配选项|
-|![检查][1]|配置企业状态漫游|
-|![检查][1]|配置条件访问|
+> [!div class="checklist"]
+> - 查看方案
+> - 查看标识基础结构
+> - 评估设备管理
+> - 了解有关应用程序和资源的注意事项
+> - 了解预配选项
+> - 配置企业状态漫游
+> - 配置条件访问
 
 ## <a name="review-your-scenarios"></a>查看方案 
 
@@ -104,7 +103,7 @@ Azure AD 联接：
 
 - 仅适用于 Windows 10 设备。 
 - 不适用于以前版本的 Windows 或其他操作系统。 如果有 Windows 7/8.1 设备，则必须升级到 Windows 10 以部署 Azure AD 联接。
-- 在 TPM 处于 FIPS 模式下的设备上不受支持。
+- 支持 FIPS 兼容的 TPM 2.0，但不支持 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。
  
 **建议：** 始终使用最新的 Windows 10 发布版本以充分利用更新的功能。
 
@@ -185,6 +184,8 @@ Azure AD 联接设备不支持依赖计算机身份验证的本地应用程序�
 
 Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
 
+启动 Windows 10 2004 更新后，用户可以 alo 使用远程桌面从 Azure AD 注册的 Windows 10 设备连接到 Azure AD 加入的设备。 
+
 ## <a name="understand-your-provisioning-options"></a>了解预配选项
 
 可以使用以下方法预配 Azure AD 联接：
@@ -195,7 +196,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
  
 下面是这三种方法的比较 
  
-|   | 自助式设置 | Windows Autopilot | 批量注册 |
+| 元素 | 自助式设置 | Windows Autopilot | 批量注册 |
 | --- | --- | --- | --- |
 | 需要用户交互以进行设置 | 是 | 是 | 否 |
 | 需要 IT 工作量 | 否 | 是 | 是 |
@@ -244,7 +245,7 @@ Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混�
 **若要添加 MDM 提供程序**：
 
 1. 在“Azure Active Directory 页”的“管理”部分，单击 `Mobility (MDM and MAM)`********。 
-1. 单击“添加应用程序”  。
+1. 单击“添加应用程序”。
 1. 从列表中选择 MDM 提供程序。
 
    ![添加应用程序](./media/azureadjoin-plan/04.png)
@@ -295,8 +296,8 @@ MAM 不适用于 Azure AD 联接。
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在第一次运行](azuread-joined-devices-frx.md)
-> 期间将新的 Windows 10 设备加入 Azure AD 将[工作设备加入你组织的网络](/azure/active-directory/user-help/user-help-join-device-on-network)
+> 在[首次运行期间使用 Azure AD 加入新的 Windows 10 设备](azuread-joined-devices-frx.md) 
+> [将你的工作设备加入你组织的网络](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

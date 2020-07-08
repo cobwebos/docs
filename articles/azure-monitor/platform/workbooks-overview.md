@@ -8,123 +8,123 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658228"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560149"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
-工作簿提供了一个灵活的画布用于数据分析，并在 Azure 门户中创建了丰富的视觉对象报表。 它们允许你从 Azure 跨多个数据源，并将其合并为统一的交互式体验。 
+工作簿提供了一块灵活的画布，以用于分析数据以及在 Azure 门户中创建丰富的视觉报告。 使用工作簿可以在整个 Azure 中接入多个数据源，并将其组合成统一的交互式体验。 
 
 ## <a name="data-sources"></a>数据源
 
-工作簿可以查询 Azure 中多个源的数据。 工作簿的作者可以转换此数据，以便深入了解底层组件的可用性、性能、使用情况和总体运行状况。 例如，分析虚拟机中的性能日志来识别高 CPU 或内存不足实例，并将结果显示为交互式报表中的网格。
+工作簿可以查询 Azure 中多个源的数据。 工作簿的作者可以转换此数据，以提供对底层组件的可用性、性能、使用情况和总体运行状况的见解。 例如，分析虚拟机的性能日志可以识别 CPU 使用率较高或内存使用量较低的实例，并在交互式报告中以网格形式显示结果。
   
-但工作簿的强大功能是能够将来自不同源的数据组合到一个报表中。 这允许创建复合资源视图或跨资源的联接，从而实现更丰富的数据和更深入的信息，这种情况可能会导致您无法实现。
+但是，工作簿的真正强大之处是能够将来自不同源的数据组合到一份报告中。 这样，便可以创建复合资源视图或者在不同的资源之间进行联接，以提供更丰富的数据和见解，除此之外别无他法。
 
-工作簿当前与以下数据源兼容：
+工作簿目前与以下数据源兼容：
 
 * [日志](workbooks-data-sources.md#logs)
-* [指标](workbooks-data-sources.md#metrics)
+* [度量值](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
 * [警报（预览版）](workbooks-data-sources.md#alerts-preview)
-* [工作负荷运行状况（预览版）](workbooks-data-sources.md#workload-health-preview)
-* [Azure 资源运行状况（预览）](workbooks-data-sources.md#azure-resource-health)
-* [Azure 数据资源管理器（预览版）](workbooks-data-sources.md#azure-data-explorer-preview)
+* [工作负荷运行状况](workbooks-data-sources.md#workload-health)
+* [Azure 资源运行状况](workbooks-data-sources.md#azure-resource-health)
+* [Azure 数据资源管理器](workbooks-data-sources.md#azure-data-explorer)
 
 ## <a name="visualizations"></a>可视化效果
 
-工作簿提供了一组丰富的功能来可视化数据。 有关每种可视化类型的详细示例，可以参阅下面的示例链接：
+工作簿提供了一组丰富的功能以用于将数据可视化。 有关每种可视化类型的详细示例，可以参阅下面的示例链接：
 
-* [Text](workbooks-visualizations.md#text)
+* [文本](workbooks-visualizations.md#text)
 * [图表](workbooks-visualizations.md#charts)
-* [置](workbooks-visualizations.md#grids)
+* [网格](workbooks-visualizations.md#grids)
 * [平铺](workbooks-visualizations.md#tiles)
-* [Trees](workbooks-visualizations.md#trees)
+* [树](workbooks-visualizations.md#trees)
 * [关系图](workbooks-visualizations.md#graphs)
 
 ![示例工作簿可视化效果](./media/workbooks-overview/visualizations.png)
 
 ## <a name="getting-started"></a>入门
 
-若要浏览工作簿体验，请首先导航到 Azure Monitor 服务。 可以通过在 "Azure 门户中的" 搜索 "框中键入**Monitor**来完成此操作。
+若要探索工作簿体验，请先导航到 Azure Monitor 服务。 为此，可以在 Azure 门户的搜索框中键入 **Monitor**。
 
-然后选择 "**工作簿（预览）**"。
+然后选择“工作簿(预览版)”。
 
-![红色框中突出显示的工作簿预览按钮的屏幕截图](./media/workbooks-overview/workbooks-preview.png)
+![在红色框中突出显示的工作簿预览版按钮的屏幕截图](./media/workbooks-overview/workbooks-preview.png)
 
 ### <a name="gallery"></a>库
 
-这会转到工作簿库：
+随后你会转到工作簿库：
 
 ![Azure Monitor 工作簿库视图的屏幕截图](./media/workbooks-overview/gallery.png)
 
-### <a name="workbooks-versus-workbook-templates"></a>工作簿和工作簿模板
+### <a name="workbooks-versus-workbook-templates"></a>工作簿与工作簿模板
 
-您可以使用绿色显示_工作簿_，并在紫色中看到许多_工作簿模板_。 模板可用作特选的报表，这些报表旨在供多个用户和团队灵活重用。 打开模板将创建一个使用模板内容填充的暂时性工作簿。 
+可以看到一个绿色的工作簿，以及多个紫色的工作簿模板。  模板充当特选的报告，可供多个用户和团队灵活重复使用。 打开某个模板会创建一个临时工作簿，其中填充了该模板的内容。 
 
-您可以调整基于模板的工作簿的参数和执行分析，而无需担心会破坏未来的同事报告体验。 如果打开模板、进行一些调整，然后选择 "保存" 图标，则会将模板另存为工作簿，该工作簿会以绿色显示，使原始模板保持不变。 
+可以调整基于模板的工作簿的参数并执行分析，而无需担心将来会影响同事的报告体验。 如果打开某个模板，进行一些调整，然后选择“保存”图标，此时会将该模板保存为工作簿，该工作簿将以绿色显示，而原始模板保持不变。 
 
-在后台，模板还不同于已保存的工作簿。 保存工作簿会创建关联的 Azure 资源管理器资源，而仅打开模板时创建的临时工作簿没有关联的唯一资源。 若要详细了解如何在工作簿中管理访问控制，请参阅[工作簿访问控制文章](workbooks-access-control.md)。
+在幕后，模板也与保存的工作簿不同。 保存工作簿会创建关联的 Azure 资源管理器资源，而在打开模板时创建的临时工作簿则没有关联的唯一资源。 若要详细了解如何在工作簿中管理访问控制，请参阅[工作簿访问控制](workbooks-access-control.md)一文。
 
-### <a name="exploring-a-workbook-template"></a>浏览工作簿模板
+### <a name="exploring-a-workbook-template"></a>探索工作簿模板
 
-选择 "**应用程序故障分析**" 以查看默认应用程序工作簿模板之一。
+选择“应用程序故障分析”以查看默认应用程序工作簿模板之一。
 
 ![应用程序故障分析模板的屏幕截图](./media/workbooks-overview/failure-analysis.png)
 
-如前文所述，打开模板会创建一个临时工作簿，以便能够与进行交互。 默认情况下，工作簿将在读取模式中打开，该模式仅显示原始模板作者创建的预期分析体验的信息。
+如前文所述，打开模板会创建一个可让你与之交互的临时工作簿。 默认情况下，该工作簿以读取模式打开，在此模式下，只会显示原始模板作者按其目标所创建的分析体验的信息。
 
-对于此特定工作簿，体验是交互式的。 你可以调整订阅、目标应用以及要显示的数据的时间范围。 做出这些选择后，HTTP 请求网格也是交互式的，因此，选择单个行将更改报表底部的两个图表中呈现的数据。
+对于此特定工作簿，体验是交互式的。 可以调整订阅、目标应用，以及要显示的数据的时间范围。 做出这些选择后，“HTTP 请求”的网格也是交互式的，选择单个行会更改要在报告底部的两个图表中呈现的数据。
 
 ### <a name="editing-mode"></a>编辑模式
 
-若要了解如何将此工作簿模板放置在一起，需要通过选择 "**编辑**" 来切换到编辑模式。 
+若要了解此工作簿模板的构成，需要选择“编辑”切换到编辑模式。 
 
 ![应用程序故障分析模板的屏幕截图](./media/workbooks-overview/edit.png)
 
-切换到编辑模式后，你会注意到，与工作簿的每个单独方位相对应的**编辑**框会显示在右侧。
+切换到编辑模式后，你会发现右侧显示了一些“编辑”框，它们对应于工作簿的每个方面。
 
-![编辑按钮的屏幕截图](./media/workbooks-overview/edit-mode.png)
+![“编辑”按钮的屏幕截图](./media/workbooks-overview/edit-mode.png)
 
-如果在 "请求数据" 网格下直接选择 "编辑" 按钮，我们可以看到工作簿的这一部分包含一个针对 Application Insights 资源的数据的 Kusto 查询。
+如果选择紧靠在请求数据网格下面的编辑按钮，可以看到此工作簿部分包含一个 Kusto 查询，该查询针对的是 Application Insights 资源中的数据。
 
-![底层 Kusto 查询的屏幕截图](./media/workbooks-overview/kusto.png)
+![基础 Kusto 查询的屏幕截图](./media/workbooks-overview/kusto.png)
 
-单击右侧的其他 "**编辑**" 按钮将显示许多构成工作簿（如基于 markdown 的[文本框](workbooks-visualizations.md#text)、[参数选择](workbooks-parameters.md)UI 元素以及其他[图表/可视化对象类型](workbooks-visualizations.md)）的核心组件。 
+单击右侧的其他“编辑”按钮会显示一些构成了工作簿的核心组件，例如基于 Markdown 的[文本框](workbooks-visualizations.md#text)、[参数选择](workbooks-parameters.md) UI 元素，以及其他[图表/可视化类型](workbooks-visualizations.md)。 
 
-在编辑模式下浏览预建模板，然后对其进行修改以满足你的需求，并保存你自己的自定义工作簿是一种非常好的方法，可让你了解 Azure Monitor 工作簿的可能情况。
+在编辑模式下探索预生成的模板，然后根据需要对其进行修改并保存自己的自定义工作簿，是开始了解 Azure Monitor 工作簿功能的极佳方式。
 
 ## <a name="pinning-visualizations"></a>固定可视化效果
 
-工作簿中的 "文本"、"查询" 和 "指标" 步骤可以通过在工作簿处于 pin 模式时使用这些项上的 "固定" 按钮进行固定，或者，如果工作簿作者已为该元素启用了设置以使 pin 图标可见， 
+当工作簿处于固定模式，或者工作簿作者已启用显示图钉图标的设置时，可以使用工作簿中的文本、查询和指标步骤上的图钉按钮，来固定这些项。 
 
-若要访问 pin 模式，请单击 "**编辑**" 进入编辑模式，并选择顶部栏中的蓝色图钉图标。 然后，将在屏幕右侧的每个相应工作簿部件的*编辑*框上方显示单个图钉图标。
+若要访问固定模式，请单击“编辑”进入编辑模式，然后选择顶部栏中的蓝色图钉图标。 然后，单个图钉图标将显示在屏幕右侧的每个对应工作簿部分的“编辑”框的上方。
 
-![Pin 体验](./media/workbooks-overview/pin-experience.png)
+![固定体验](./media/workbooks-overview/pin-experience.png)
 
 > [!NOTE]
-> 保存工作簿时，保存工作簿的状态，并且在修改基础工作簿时，仪表板上固定工作簿不会更新。 若要更新固定工作簿部件，你将需要删除并重新固定该部件。
+> 固定时会保存工作簿的状态，如果修改基础工作簿，仪表板上固定的工作簿不会更新。 若要更新固定的工作簿部分，需要删除该部分，然后将其重新固定。
 
 ## <a name="dashboard-time-ranges"></a>仪表板时间范围
 
-如果将固定的项配置为使用*时间范围*参数，则固定工作簿查询部分将遵循仪表板的时间范围。 仪表板的时间范围值将用作时间范围参数的值，任何更改的仪表板时间范围将导致固定项更新。 如果某个固定的部分正在使用该仪表板的时间范围，则在时间范围发生变化时，你将看到固定部件更新的副标题以显示仪表板的时间范围。 
+如果固定的项配置为使用“时间范围”参数，则固定的工作簿查询部分将遵循仪表板的时间范围。 仪表板的时间范围值将用作时间范围参数的值，对仪表板时间范围进行任何更改会导致固定的项更新。 如果某个固定的部分正在使用仪表板的时间范围，则每当仪表板的时间范围发生更改时，你都会看到该固定部分的副标题更新为显示该时间范围。 
 
-此外，使用时间范围参数固定工作簿部件将按仪表板的时间范围确定的费率自动刷新。 上次运行查询的时间将显示在固定部件的副标题中。
+此外，使用时间范围参数的固定工作簿部分将按照仪表板时间范围确定的频率自动刷新。 上次运行查询的时间将显示在固定部分的副标题中。
 
-如果某个固定步骤具有显式设置的时间范围（不使用时间范围参数），则无论仪表板的设置如何，该时间范围始终将用于仪表板。 固定部件的副标题不会显示仪表板的时间范围，并且该查询不会在仪表板上自动刷新。 该副标题将显示上次执行查询的时间。
+如果某个固定步骤具有显式设置的时间范围（不使用时间范围参数），则无论仪表板的设置如何，都始终会将该时间范围用于仪表板。 固定部分的副标题不会显示仪表板的时间范围，并且查询不会在仪表板上自动刷新。 副标题将显示上次执行查询的时间。
 
 > [!NOTE]
-> 固定到仪表板时，当前不支持使用*合并*数据源的查询。
+> 目前，使用“合并”数据源的查询在固定到仪表板时不受支持。
 
 ## <a name="sharing-workbook-templates"></a>共享工作簿模板
 
-开始创建自己的工作簿模板后，你可能想要将其与更广泛的社区共享。 若要了解详细信息，并浏览不属于默认 Azure Monitor 库视图的其他模板，请访问我们的[GitHub 存储库](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)。 若要浏览现有工作簿，请访问 GitHub 上的[工作簿库](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)。
+开始创建自己的工作簿模板后，你可能希望将其与更广泛的社区成员共享。 若要了解详细信息，或要探索其他未包含在默认 Azure Monitor 库视图中的模板，请访问我们的 [GitHub 存储库](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)。 若要浏览现有的工作簿，请访问 GitHub 上的[工作簿库](https://github.com/microsoft/Application-Insights-Workbooks/tree/master/Workbooks)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)了解有关工作簿许多丰富可视化效果选项的详细信息。
+* [开始](workbooks-visualizations.md)详细了解工作簿的丰富可视化选项。
 * [控制](workbooks-access-control.md)和共享对工作簿资源的访问权限。

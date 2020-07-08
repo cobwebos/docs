@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Sentinel 中连接 DNS 数据 |Microsoft Docs
-description: 了解如何在 Azure Sentinel 中连接 DNS 数据。
+description: 了解如何通过在 DNS 计算机上安装代理，将 Windows 上运行的任何域名服务器（DNS）连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a88696ba69fdf53f5c7e15d174b126d69f4230ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555423"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
 

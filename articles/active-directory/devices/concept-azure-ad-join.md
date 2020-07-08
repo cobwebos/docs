@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e4521cb67ae95a1cd4a3e728a13e43bfd5773ab
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: ca08b81a71cd61e727b11bbeb88c0c235d25c5e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737021"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554909"
 ---
 # <a name="azure-ad-joined-devices"></a>已加入 Azure AD 的设备
 
 “Azure AD 加入”面向的是想要云优先或仅使用云的组织。 无论规模或行业，任何组织都可部署已加入 Azure AD 的设备。 即使在混合环境中，也能使用“Azure AD 加入”，从而提供对云和本地应用及资源的访问。
 
-|   | Azure AD 加入 |
+| Azure AD 加入 | 描述 |
 | --- | --- |
 | **定义** | 只需用组织帐户登录到设备即可加入 Azure AD |
 | **主要受众** | 适合仅使用云和使用混合环境的组织。 |

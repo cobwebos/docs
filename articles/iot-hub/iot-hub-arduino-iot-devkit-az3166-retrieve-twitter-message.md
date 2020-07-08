@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e2c14fa238160ca198b9f1c8a9808e70933f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60779695"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85560977"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>摇一摇，摇一条推文 - 使用 Azure Functions 检索 Twitter 消息
 
@@ -196,8 +196,6 @@ Arduino 草图将事件发送到 Azure IoT 中心。 此事件触发 Azure Funct
 2. 在 [Azure 门户](https://portal.azure.com/)中，找到创建的 Azure Functions 应用并将其重启：
 
    ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
-
-### <a name="feedback"></a>反馈
 
 如果遇到其他问题，请参阅 [IoT DevKit 常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下渠道联系我们：
 

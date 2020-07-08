@@ -1,6 +1,6 @@
 ---
 title: 将 F5 ASM 数据连接到 Azure Sentinel | Microsoft Docs
-description: 了解如何将 F5 ASM 数据连接到 Azure Sentinel。
+description: 了解如何使用 F5 ASM 数据连接器将 F5 ASM 日志推送到 Azure Sentinel。 在工作簿中查看 F5 ASM 数据，创建警报，并改进调查。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: bee8ec9b6532042659d54d590a29d49e7ce07c92
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 63e20467750e9a4b0c85de33180d4fa51831e59b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715828"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85555418"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>将 F5 ASM 连接到 Azure Sentinel
 

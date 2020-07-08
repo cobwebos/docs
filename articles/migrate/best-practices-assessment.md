@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a3735180d72496d58cdd22d0aa34c8a6f88a6a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85559848"
 ---
 # <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
 
@@ -21,15 +21,24 @@ ms.locfileid: "74185987"
 
 ## <a name="about-assessments"></a>关于评估
 
-使用 Azure Migrate Server 评估创建的评估是数据的时间点快照。 Azure Migrate 中有两种类型的评估。
+使用 Azure Migrate Server 评估创建的评估是数据的时间点快照。 您可以使用 Azure Migrate：服务器评估来创建两种类型的评估：
 
-**评估类型** | **详细信息** | **数据**
+**评估类型** | **详细信息**
+--- | --- 
+Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。 [了解详细信息](concepts-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+
+
+### <a name="sizing-criteria"></a>调整大小标准
+服务器评估提供两个大小调整条件选项：
+
+**调整大小标准** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于收集的性能数据提出建议的评估 | VM 大小建议基于 CPU 和内存使用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。
-**按本地** | 评估不使用性能数据来提出建议。 | VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在评估的 "存储类型" 设置中选择的内容。
+**基于性能** | 基于收集的性能数据提出建议的评估 | **AZURE vm 评估**： VM 大小建议基于 CPU 和内存使用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/> **Azure VMware 解决方案（AVS）评估**： AVS 节点建议基于 CPU 和内存利用率数据。
+**按本地** | 评估不使用性能数据来提出建议。 | **AZURE vm 评估**： VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在评估的 "存储类型" 设置中选择的内容。<br/><br/> **Azure VMware 解决方案（AVS）评估**： AVS 节点建议基于本地 VM 大小。
 
-### <a name="example"></a>示例
-例如，如果你有一个本地 VM，其四个内核的利用率为20%，内存为 8 GB，利用率为10%，则评估将如下所示：
+#### <a name="example"></a>示例
+例如，如果你有一个本地 VM，其四个内核的利用率为20%，内存为 8 GB，利用率为10%，Azure VM 评估将如下所示：
 
 - **基于性能的评估**：
     - 基于内核（4 x 0.20 = 0.8）和内存（8 GB x 0.10 = 0.8）利用率标识有效内核和内存。
@@ -38,6 +47,7 @@ ms.locfileid: "74185987"
 
 - **按原样（作为本地）评估**：
     -  建议具有四个核心的 VM;8 GB 内存。
+
 
 ## <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
 
@@ -54,6 +64,19 @@ Azure Migrate 设备会持续分析你的本地环境，并将元数据和性能
 - **创建按配置评估**：你可以在 Azure Migrate 的门户中显示你的计算机后立即创建 "按原样" 评估。
 - **创建基于性能的评估**：这有助于获得更好的成本估算，尤其是在本地过度预配服务器容量时。 但基于性能的评估的准确性取决于你为服务器指定的性能数据。 
 - **重新计算评估**：由于评估是时间点快照，因此不会自动更新到最新数据。 若要使用最新导入的数据更新评估，需要对其进行重新计算。
+ 
+### <a name="ftt-sizing-parameters-for-avs-assessments"></a>适用于 AVS 评估的 FTT 大小参数
+
+AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的存储要求。 这些策略保证 Vm 所需的服务级别，因为它们确定如何将存储分配给 VM。 以下是可用的 FTT-Raid 组合： 
+
+**容错故障（FTT）** | **RAID 配置** | **需要的最低主机** | **大小调整注意事项**
+--- | --- | --- | --- 
+1 | RAID-1 （镜像） | 3 | 100GB VM 将使用200GB。
+1 | RAID-5 （擦除编码） | 4 | 100GB VM 将使用 133.33 GB
+2 | RAID-1 （镜像） | 5 | 100GB VM 将使用300GB。
+2 | RAID-1 （擦除编码） | 6 | 100GB VM 将使用 150 GB。
+3 | RAID-1 （镜像） | 7 | 100GB VM 将使用400GB。
+
 
 ## <a name="best-practices-for-confidence-ratings"></a>置信度评级的最佳实践
 
@@ -83,7 +106,18 @@ Azure Migrate 设备会持续分析你的本地环境，并将元数据和性能
 
 ### <a name="outdated-assessments"></a>过时评估
 
-如果对组中已评估的 Vm 进行本地更改，则将评估标记为**过时**。 若要反映这些更改，请再次运行评估。
+如果对组中已评估的 Vm 进行本地更改，则将评估标记为**过时**。 由于以下属性中的一个或多个更改，可将评估标记为 "过时"：
+
+- 处理器核心数
+- 分配的内存
+- 启动类型或固件
+- 操作系统名称、版本和体系结构
+- 磁盘数目
+- 网络适配器的数目
+- 磁盘大小更改（已分配 GB）
+- Nic 属性更新。 示例： Mac 地址更改、IP 地址添加等。
+
+再次运行评估（**重新计算**）以反映所做的更改。
 
 ### <a name="low-confidence-rating"></a>低置信度分级
 
@@ -94,6 +128,12 @@ Azure Migrate 设备会持续分析你的本地环境，并将元数据和性能
 - 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则服务器评估将无法收集该时段的性能数据。
 
 - 启动服务器评估中的发现之后，基本不再创建 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
+
+### <a name="migration-tool-guidance-for-avs-assessments"></a>适用于 AVS 评估的迁移工具指南
+
+在 azure VMware 解决方案（AVS）评估的 Azure 就绪状态报告中，可以看到以下建议的工具： 
+- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。
 
 
 ## <a name="next-steps"></a>后续步骤

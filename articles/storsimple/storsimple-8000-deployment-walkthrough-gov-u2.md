@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: alkohli
-ms.openlocfilehash: 22084f9c59070c2efaa112ebfbb0c5ecc647145e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fbbb298dd9e5b568e6a1dc2c4ef731b8521f8308
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68965889"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85556031"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>在政府门户中部署本地 StorSimple 设备
 
@@ -28,7 +28,7 @@ ms.locfileid: "68965889"
 ## <a name="overview"></a>概述
 欢迎使用 Microsoft Azure StorSimple 设备部署。 这些部署教程适用于在 Azure 政府门户中运行 Update 3 软件或更高版本的 StorSimple 8000 系列。 本系列教程包括 StorSimple 设备的配置清单、配置先决条件列表，以及详细配置步骤。
 
-这些教程中的信息均假定已阅读安全预防措施，并已打开 StorSimple 设备包、装入机架，并连接好电缆。 如果仍然需要执行这些任务，请从阅读 [安全预防措施](storsimple-safety.md)开始。 按照设备具体说明，将设备解包、装入机架并连接好电缆。
+这些教程中的信息均假定已阅读安全预防措施，并已打开 StorSimple 设备包、装入机架，并连接好电缆。 如果仍然需要执行这些任务，请从阅读 [安全预防措施](storsimple-8000-safety.md)开始。 按照设备具体说明，将设备解包、装入机架并连接好电缆。
 
 * [解包、装载机架，并将电缆接到 8100](storsimple-8100-hardware-installation.md)
 * [解包、安装机架，将电缆连接到 8600](storsimple-8600-hardware-installation.md)
@@ -36,7 +36,7 @@ ms.locfileid: "68965889"
 需要有管理员权限才能完成安装和配置过程。 建议在开始之前查看配置清单。 部署和配置过程可能需要一些时间才能完成。
 
 > [!NOTE]
-> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 有关7000系列设备的完整信息，请参阅： [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。
+> Microsoft Azure 网站上发布的 StorSimple 部署信息仅适用于 StorSimple 8000 系列设备。 有关7000系列设备的完整信息，请参阅： [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com) 。 如需 7000 系列的部署信息，请参阅 [StorSimple 系统快速入门指南](http://onlinehelp.storsimple.com/111_Appliance/)。
 
 
 ## <a name="deployment-steps"></a>部署步骤
