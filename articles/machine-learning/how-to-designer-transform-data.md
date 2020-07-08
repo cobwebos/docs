@@ -5,17 +5,17 @@ description: 了解如何在 Azure 机器学习设计器中转换数据以创建
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
-ms.date: 05/04/2020
+ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85517504"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>在 Azure 机器学习设计器（预览版）中转换数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -78,7 +78,7 @@ ms.locfileid: "83644299"
 
 管道应如下所示：
 
-![显示如何配置管道和“拆分数据”模块的屏幕截图](media/how-to-designer-transform-data/split-data.png)。
+:::image type="content" source="./media/how-to-designer-transform-data/split-data.png"alt-text="显示如何配置管道和“拆分数据”模块的屏幕截图":::
 
 
 ## <a name="save-the-datasets"></a>保存数据集
@@ -93,7 +93,7 @@ ms.locfileid: "83644299"
 
     管道应如下所示：
 
-    ![显示如何连接“导出数据”模块的屏幕截图](media/how-to-designer-transform-data/export-data-pipeline.png)。
+    ![显示如何连接“导出数据”模块的屏幕截图](media/how-to-designer-transform-data/export-data-pipeline.png).
 
 1. 选择连接到“拆分数据”模块的最左侧端口的“导出数据”模块。
 
@@ -132,7 +132,7 @@ ms.locfileid: "83644299"
 
     管道和设置应如下所示：
     
-    ![显示如何配置“导出数据”模块的屏幕截图](media/how-to-designer-transform-data/us-income-export-data.png)。
+    ![显示如何配置“导出数据”模块的屏幕截图](media/how-to-designer-transform-data/us-income-export-data.png).
 
 ### <a name="submit-the-run"></a>提交运行
 

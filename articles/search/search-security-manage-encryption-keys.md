@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76899943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553281"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>使用 Azure Key Vault 中客户管理的密钥在 Azure 认知搜索中实现内容的静态加密
 
@@ -26,7 +26,7 @@ ms.locfileid: "76899943"
 密钥不需要全部位于同一 Key Vault 中。 单个搜索服务可以托管多个已加密的索引或同义词映射，每个映射都可以分别使用存储在不同 Key Vault 中的客户管理的加密密钥进行加密。  还可以在同一服务中托管未使用客户管理的密钥加密的索引和同义词映射。 
 
 > [!IMPORTANT] 
-> 此功能在 [REST API 版本 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) 和 [.NET SDK 版本 8.0-preview](search-dotnet-sdk-migration-version-9.md) 中可用。 当前不支持在 Azure 门户中配置客户管理的加密密钥。 搜索服务必须是在 2019 年 1 月之后创建的，且不能是免费（共享）服务。
+> 此功能在[REST API](https://docs.microsoft.com/rest/api/searchservice/)和[.net SDK 8.0 版-预览版](search-dotnet-sdk-migration-version-9.md)中可用。 当前不支持在 Azure 门户中配置客户管理的加密密钥。 搜索服务必须是在 2019 年 1 月之后创建的，且不能是免费（共享）服务。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "76899943"
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 用于配置任务。
 
-+ 可以使用[Postman](search-get-started-postman.md)、 [Azure PowerShell](search-create-index-rest-api.md)和[Azure 认知搜索 SDK](https://aka.ms/search-sdk-preview)来调用 REST API。 目前没有对客户管理的加密的门户支持。
++ [Postman](search-get-started-postman.md)、 [AZURE POWERSHELL](search-create-index-rest-api.md)和[.net SDK preview](https://aka.ms/search-sdk-preview)可用于调用 REST API。 目前没有对客户管理的加密的门户支持。
 
 >[!Note]
 > 由于通过客户托管密钥功能进行加密的性质，Azure 认知搜索将无法检索你的数据（如果你的 Azure 密钥保管库密钥已删除）。 若要防止意外 Key Vault 删除密钥导致的数据丢失，**必须**先在 Key Vault 中启用软删除和清除保护，然后才能使用。 有关详细信息，请参阅 [Azure Key Vault 软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。   

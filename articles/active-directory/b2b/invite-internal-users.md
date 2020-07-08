@@ -4,26 +4,24 @@ description: 如果有适用于合作伙伴、分销商、供应商、供应商�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783fc0fa6f6c4e6c918fa3ff5fe0b53a71fa0178
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680172"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551370"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀请内部用户进行 B2B 协作
 
-|     |
-| --- |
-| 邀请内部用户使用 B2B 协作是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 |
-|     |
+> [!NOTE]
+> 邀请内部用户使用 B2B 协作是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在 Azure AD B2B 协作的可用性之前，组织可以通过设置内部凭据与分销商、供应商、供应商和其他来宾用户合作。 如果你有与此类似的内部来宾用户，可以邀请他们使用 B2B 协作，以便可以利用 Azure AD B2B 权益。 B2B 来宾用户将能够使用自己的标识和凭据登录，无需维护密码或管理帐户生命周期。
 
@@ -62,7 +60,7 @@ ms.locfileid: "81680172"
 ```powershell
 Uninstall-Module AzureADPreview
 Install-Module AzureADPreview
-$ADGraphUser = Get-AzureADUser -searchstring "<<external email>>"
+$ADGraphUser = Get-AzureADUser -objectID "UPN of Internal User"
 $msGraphUser = New-Object Microsoft.Open.MSGraph.Model.User -ArgumentList $ADGraphUser.ObjectId
 New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitationMessage $True -InviteRedirectUrl "http://myapps.microsoft.com" -InvitedUser $msGraphUser
 ```

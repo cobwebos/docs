@@ -3,15 +3,15 @@ title: 排查 Azure HPC 缓存 NFS 存储目标问题
 description: 避免和修复在创建 NFS 存储目标时可能导致故障的配置错误和其他问题的提示
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: 72b6b0b78da23fd0891c0571c9137fefbfb0b077
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d576f8660d140a95eb67f7babf1c0af61f04278
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186611"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515455"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>排查 NAS 配置和 NFS 存储目标问题
 
@@ -32,15 +32,15 @@ Azure HPC 缓存需要对后端 NAS 存储系统上的几个 UDP/TCP 端口具�
 
 通常，缓存需要访问以下端口：
 
-| 协议 | 端口  | 服务  |
+| 协议 | Port  | 服务  |
 |----------|-------|----------|
 | TCP/UDP  | 111   | rpcbind  |
 | TCP/UDP  | 2049  | NFS      |
 | TCP/UDP  | 4045  | nlockmgr |
 | TCP/UDP  | 4046  | mountd   |
-| TCP/UDP  | 4047  | status   |
+| TCP/UDP  | 4047  | 状态   |
 
-若要了解系统所需的特定端口，请使用以下``rpcinfo``命令。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
+若要了解系统所需的特定端口，请使用以下 ``rpcinfo`` 命令。 以下命令列出了这些端口，并在表中设置相关结果的格式。 （使用系统的 IP 地址代替 *<storage_IP>* 术语。）
 
 你可以从安装了 NFS 基础结构的任何 Linux 客户端发出此命令。 如果在群集子网中使用客户端，它还可以帮助验证子网和存储系统之间的连接。
 
@@ -48,7 +48,7 @@ Azure HPC 缓存需要对后端 NAS 存储系统上的几个 UDP/TCP 端口具�
 rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
 ```
 
-请确保``rpcinfo``查询返回的所有端口都允许来自 Azure HPC 缓存的子网的无限制流量。
+请确保查询返回的所有端口都 ``rpcinfo`` 允许来自 AZURE HPC 缓存的子网的无限制流量。
 
 在 NAS 本身和存储系统与缓存子网之间的任何防火墙上检查这些设置。
 
@@ -58,7 +58,7 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 
 不同的存储系统使用不同的方法来实现此访问：
 
-* 通常，Linux 服务器``no_root_squash``将添加到中``/etc/exports``的导出路径。
+* 通常，Linux 服务器将添加 ``no_root_squash`` 到中的导出路径 ``/etc/exports`` 。
 * NetApp 和 EMC 系统通常使用绑定到特定 IP 地址或网络的导出规则来控制访问。
 
 如果使用导出规则，请记住缓存可以使用缓存子网中的多个不同的 IP 地址。 允许从可能的子网 IP 地址的完整范围进行访问。
@@ -79,17 +79,17 @@ Azure HPC 缓存需要访问存储系统的导出才能创建存储目标。 具
 * ``/ifs/accounting``
 * ``/ifs/accounting/payroll``
 
-导出``/ifs/accounting/payroll``是的子级``/ifs/accounting``，本身``/ifs/accounting``就是的子级。 ``/ifs``
+导出 ``/ifs/accounting/payroll`` 是的子级 ``/ifs/accounting`` ，本身就是的 ``/ifs/accounting`` 子级 ``/ifs`` 。
 
-如果将``payroll``导出作为 HPC 缓存存储目标添加，则缓存实际上会装载``/ifs/``并访问其中的工资单目录。 因此，Azure HPC 缓存需要根访问``/ifs``权限才能访问``/ifs/accounting/payroll``导出。
+如果将 ``payroll`` 导出作为 HPC 缓存存储目标添加，则缓存实际上会装载 ``/ifs/`` 并访问其中的工资单目录。 因此，Azure HPC 缓存需要根访问权限才能 ``/ifs`` 访问 ``/ifs/accounting/payroll`` 导出。
 
 此要求与缓存对文件进行索引的方式相关，并使用存储系统提供的文件句柄避免了文件冲突。
 
-如果文件是从不同的导出中检索的，则具有分层导出的 NAS 系统可以为同一文件提供不同的文件句柄。 例如，客户端可以装载``/ifs/accounting``并访问文件。 ``payroll/2011.txt`` 其他客户端``/ifs/accounting/payroll``装载并访问该``2011.txt``文件。 根据存储系统分配文件句柄的方式，这两个客户端可能会接收相同的文件，其中包含不同``<mount2>/payroll/2011.txt``的文件句``<mount3>/2011.txt``柄（一个是和一个）。
+如果文件是从不同的导出中检索的，则具有分层导出的 NAS 系统可以为同一文件提供不同的文件句柄。 例如，客户端可以装载 ``/ifs/accounting`` 并访问文件 ``payroll/2011.txt`` 。 其他客户端装载 ``/ifs/accounting/payroll`` 并访问该文件 ``2011.txt`` 。 根据存储系统分配文件句柄的方式，这两个客户端可能会接收相同的文件，其中包含不同的文件句柄（一个是 ``<mount2>/payroll/2011.txt`` 和一个 ``<mount3>/2011.txt`` ）。
 
 后端存储系统保留文件句柄的内部别名，但 Azure HPC 缓存无法判断其索引中哪些文件句柄引用同一项目。 因此，缓存可能会为同一文件缓存不同的写入，并不能正确应用更改，因为它不知道它们是同一文件。
 
-为了避免多个导出中的文件发生此可能的文件冲突，Azure HPC 缓存会自动在路径中装载 shallowest``/ifs``可用的导出（在本示例中），并使用该导出提供的文件句柄。 如果多个导出使用相同的基路径，则 Azure HPC 缓存需要对该路径的根访问权限。
+为了避免多个导出中的文件发生此可能的文件冲突，Azure HPC 缓存会自动在路径中装载 shallowest 可用的导出（ ``/ifs`` 在本示例中），并使用该导出提供的文件句柄。 如果多个导出使用相同的基路径，则 Azure HPC 缓存需要对该路径的根访问权限。
 
 ## <a name="enable-export-listing"></a>启用导出列表
 <!-- link in prereqs article -->

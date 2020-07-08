@@ -4,7 +4,7 @@ description: 与 Facebook 联合，让外部用户（来宾）能够使用自己
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0428671cf41bf148bc76bbd963bdd8fd90fce8e5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712264"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551433"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>将 Facebook 添加为外部标识的标识提供者
 
@@ -32,7 +32,7 @@ ms.locfileid: "83712264"
 
 > [!NOTE]  
 > 在下面的第 9 步和第 16 步中使用以下 URL。
-> - 对于“站点 URL”，输入“`https://login.microsoftonline.com`”。
+> - 对于 "**站点 URL** "，请输入应用程序的地址，例如 `https://contoso.com` 。
 > - 对于“有效 OAuth 重定向 URI”，输入“`https://login.microsoftonline.com/te/<tenant-id>/oauth2/authresp`”。 可以在“Azure Active Directory 概述”边栏选项卡中找到 `<tenant-ID>`。
 
 

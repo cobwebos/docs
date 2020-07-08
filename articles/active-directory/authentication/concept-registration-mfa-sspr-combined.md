@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4caaf8704f2ee49f8f094ad22065ae462154be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87cec45ac3d7bf491278a4ba8520e8257fd0f6c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550673"
 ---
 # <a name="combined-security-information-registration-overview"></a>组合安全信息注册概述
 
-在组合注册之前，用户单独注册了 Azure 多重身份验证和自助服务密码重置（SSPR）的身份验证方法。 人们搞糊涂，使用了类似的方法进行多重身份验证和 SSPR，但他们不得不注册这两种功能。 现在，通过组合注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
+在进行合并注册之前，用户分别注册了 Azure 多重身份验证和自助式密码重置 (SSPR) 的身份验证方法。 人们搞糊涂，使用了类似的方法进行多重身份验证和 SSPR，但他们不得不注册这两种功能。 现在，通过组合注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
 
 本文概述了安全注册的组合。 若要开始结合安全注册，请参阅以下文章：
 
@@ -34,11 +34,11 @@ ms.locfileid: "82143923"
 Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美国政府版、Azure 德国或 Azure 中国世纪互联。
 
 > [!IMPORTANT]
-> 同时启用了原始预览和增强组合注册体验的用户将看到新的行为。 同时启用这两种体验的用户只会看到新的 "我的个人资料" 体验。 新的 "我的个人资料" 与组合注册的外观一致，并为用户提供无缝体验。 用户可以通过转到来[https://myprofile.microsoft.com](https://myprofile.microsoft.com)查看我的个人资料。
+> 同时启用了原始预览和增强组合注册体验的用户将看到新的行为。 同时启用这两种体验的用户只会看到新的 "我的个人资料" 体验。 新的 "我的个人资料" 与组合注册的外观一致，并为用户提供无缝体验。 用户可以通过转到来查看我的个人资料 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
 >
 > 尝试访问 "安全信息" 选项时，可能会遇到错误消息。 例如，"抱歉，我们无法登录"。 在这种情况下，请确认在 web 浏览器中没有任何配置或组策略对象阻止第三方 cookie。
 
-根据访问页面的计算机的语言设置对配置文件页面进行本地化。 Microsoft 存储了浏览器缓存中使用的最新语言，因此后续尝试访问页面的操作将以最后使用的语言呈现。 如果清除缓存，则页面将重新呈现。 如果要强制使用特定语言，则可以将添加`?lng=<language>`到 URL 的末尾，其中`<language>`是要呈现的语言的代码。
+根据访问页面的计算机的语言设置对配置文件页面进行本地化。 Microsoft 存储了浏览器缓存中使用的最新语言，因此后续尝试访问页面的操作将以最后使用的语言呈现。 如果清除缓存，则页面将重新呈现。 如果要强制使用特定语言，则可以将添加 `?lng=<language>` 到 URL 的末尾，其中 `<language>` 是要呈现的语言的代码。
 
 ![设置 SSPR 或其他安全验证方法](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
@@ -46,7 +46,7 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 组合注册支持以下身份验证方法和操作：
 
-|   | 注册 | 更改 | 删除 |
+| 方法 | 注册 | 更改 | 删除 |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | 是（最多5个） | 否 | 是 |
 | 其他验证器应用 | 是（最多5个） | 否 | 是 |
@@ -55,8 +55,8 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 | 备用号码 | 是 | 是 | 是 |
 | 办公电话 | 否 | 否 | 否 |
 | 电子邮件 | 是 | 是 | 是 |
-| 安全提问 | 是 | 否 | 是 |
-| 应用密码 | 是 | 否 | 是 |
+| 安全提问 | 是 | No | 是 |
+| 应用密码 | 是 | No | 是 |
 | FIDO2 安全密钥<br />*托管模式，仅从 "[安全信息](https://mysignins.microsoft.com/security-info)" 页*| 是 | 是 | 是 |
 
 > [!NOTE]
@@ -111,7 +111,7 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 ### <a name="manage-mode"></a>管理模式
 
-用户可以访问管理模式，方法是[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)转到或从 "我的配置文件" 中选择 "**安全信息**"。 用户可以在该处添加方法、删除或更改现有方法、更改默认方法等。
+用户可以访问管理模式，方法是转到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 或从 "我的配置文件" 中选择 "**安全信息**"。 用户可以在该处添加方法、删除或更改现有方法、更改默认方法等。
 
 ## <a name="key-usage-scenarios"></a>关键使用方案
 
@@ -125,15 +125,15 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 管理员尚未强制执行注册。
 
-尚未设置所有必需[https://myprofile.microsoft.com](https://myprofile.microsoft.com)的安全信息的用户将进入。 用户在左窗格中选择 "**安全信息**"。 用户从此处选择添加方法，选择可用的任何方法，然后按照步骤设置该方法。 完成后，用户会看到刚在 "安全信息" 页上设置的方法。
+尚未设置所有必需的安全信息的用户将进入 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。 用户在左窗格中选择 "**安全信息**"。 用户从此处选择添加方法，选择可用的任何方法，然后按照步骤设置该方法。 完成后，用户会看到刚在 "安全信息" 页上设置的方法。
 
 ### <a name="delete-security-info-from-my-profile"></a>从我的配置文件中删除安全信息
 
-之前设置了至少一个方法的用户将导航到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户选择删除以前注册的方法之一。 完成后，用户将不再在 "安全信息" 页上看到该方法。
+之前设置了至少一个方法的用户将导航到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 用户选择删除以前注册的方法之一。 完成后，用户将不再在 "安全信息" 页上看到该方法。
 
 ### <a name="change-the-default-method-from-my-profile"></a>更改我的配置文件中的默认方法
 
-以前设置了至少一个可用于多重身份验证的方法的用户将导航到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)。 用户将当前默认方法更改为其他默认方法。 完成后，用户将看到 "安全信息" 页上的新默认方法。
+以前设置了至少一个可用于多重身份验证的方法的用户将导航到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 用户将当前默认方法更改为其他默认方法。 完成后，用户将看到 "安全信息" 页上的新默认方法。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -141,4 +141,4 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 了解如何[在租户中启用组合注册](howto-registration-mfa-sspr-combined.md)，或[强制用户重新注册身份验证方法](howto-mfa-userdevicesettings.md#manage-user-authentication-options)。
 
-你还可以查看[Azure 多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)。
+你还可以查看 [Azure 多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)。

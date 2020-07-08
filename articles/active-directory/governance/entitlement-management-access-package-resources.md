@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261887"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550310"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中更改访问包的资源角色
 
@@ -86,16 +86,16 @@ ms.locfileid: "79261887"
 
     ![访问包 - 添加资源角色 - 选择组](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. 单击“选择”。 
+1. 单击“选择”。
 
     选择组或团队后，"**子类型**" 列将列出以下子类型之一：
 
-    |  |  |
+    | 子类型 | 描述 |
     | --- | --- |
     | 安全性 | 用于授予对资源的访问权限。 |
-    | 分发 | 用于向一组人员发送通知。 |
+    | 分布 | 用于向一组人员发送通知。 |
     | O365 | 不是团队启用的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
-    | 团队 | 启用了团队的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
+    | 组 | 启用了团队的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
 
 1. 在“角色”列表中，选择“所有者”或“成员”。************
 
@@ -103,7 +103,7 @@ ms.locfileid: "79261887"
 
     ![访问包-添加组或团队的资源角色](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. 单击 **“添加”** 。
+1. 单击“添加” 。
 
     添加了对访问包的现有分配的任何用户将自动成为该组或团队的成员。
 
@@ -128,13 +128,13 @@ ms.locfileid: "79261887"
 
     ![访问包 - 添加资源角色 - 选择应用程序](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. 单击“选择”。 
+1. 单击“选择”。
 
 1. 在“角色”列表中，选择应用程序角色。****
 
     ![访问包 - 为应用程序添加资源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. 单击 **“添加”** 。
+1. 单击“添加” 。
 
     添加此应用程序时，在访问包中具有现有分配的任何用户将自动获得此应用程序的访问权限。
 
@@ -148,13 +148,13 @@ ms.locfileid: "79261887"
 
     ![访问包 - 添加资源角色 - 选择 SharePoint Online 站点](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. 单击“选择”。 
+1. 单击“选择”。
 
 1. 在“角色”列表中，选择 SharePoint Online 站点角色。****
 
     ![访问包 - 为 SharePoint Online 站点添加资源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. 单击 **“添加”** 。
+1. 单击“添加” 。
 
     添加此 SharePoint Online 站点时，在访问包中具有现有分配的任何用户将自动获得此 SharePoint Online 站点的访问权限。
 

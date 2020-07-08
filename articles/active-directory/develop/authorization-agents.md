@@ -12,12 +12,12 @@ ms.date: 09/05/2019
 ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83a33fa3891e01c484f298f22d67467bc54a7618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77085330"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551986"
 ---
 # <a name="authorization-agents-android"></a>授权代理 (Android)
 
@@ -76,7 +76,7 @@ MSAL 将检索设备上安装的浏览器的完整列表，以选择要使用的
 
 我们已对以下浏览器进行测试，以确定它们是否可以正确重定向到配置文件中指定的 `"redirect_uri"`：
 
-| | 内置浏览器 | Chrome | Opera  | Microsoft Edge | UC 浏览器 | Firefox |
+| 设备 | 内置浏览器 | Chrome | Opera  | Microsoft Edge | UC 浏览器 | Firefox |
 | -- |:-------------:| -----:|-----:|-----:|-----:|-----:|
 | Nexus 4 (API 17) | 通过 | 通过 |不适用 |不适用 |不适用 |不适用 |
 | Samsung S7 (API 25) | 通过* | 通过 | 通过 | 通过 | 失败 |通过 |

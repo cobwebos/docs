@@ -3,15 +3,15 @@ title: 将事件中心的数据捕获到 Azure Data Lake Storage Gen1
 description: 使用 Azure Data Lake Storage Gen1 来捕获 Azure 事件中心收到的数据。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690668"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515769"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
@@ -19,11 +19,11 @@ ms.locfileid: "82690668"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 
-*  **一个事件中心命名空间**。 有关说明，请参阅[创建事件中心命名空间](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)。 确保 Data Lake Storage Gen1 帐户和事件中心命名空间位于同一 Azure 订阅中。
+*  **事件中心命名空间**。 有关说明，请参阅[创建事件中心命名空间](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)。 确保 Data Lake Storage Gen1 帐户和事件中心命名空间位于同一 Azure 订阅中。
 
 
 ## <a name="assign-permissions-to-event-hubs"></a>向事件中心分配权限
@@ -48,7 +48,7 @@ ms.locfileid: "82690668"
 
     ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "为 Data Lake Storage Gen1 根分配权限")
     
-    单击“选择”  。
+    单击“选择”。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“执行”********。 将“添加到”设为“此文件夹和所有子文件夹”********。 将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
@@ -57,7 +57,7 @@ ms.locfileid: "82690668"
 
     ![为 Data Lake Storage Gen1 根分配权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "为 Data Lake Storage Gen1 根分配权限")
 
-    单击 **“确定”** 。
+    单击“确定”。
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
@@ -69,13 +69,13 @@ ms.locfileid: "82690668"
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击“选择”  。
+    单击“选择”。
 
     c. 在“分配权限”下，单击“选择权限”********。 将“权限”设为“读取”、“写入”和“执行”************。 将“添加到”设为“此文件夹和所有子文件夹”********。 最后，将“添加为”设为“一个访问权限入口和一个默认权限入口”********。
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
     
-    单击 **“确定”** 。 
+    单击“确定”。 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>配置事件中心，将数据捕获到 Data Lake Storage Gen1
 
@@ -99,7 +99,7 @@ ms.locfileid: "82690668"
 
     e. 将“示例捕获文件名格式”保留为默认值****。 此选项用于管理在捕获文件夹下创建的文件夹结构。
 
-    f. 单击 **“创建”** 。
+    f. 单击“创建”。
 
 ## <a name="test-the-setup"></a>测试设置
 
@@ -117,6 +117,6 @@ ms.locfileid: "82690668"
 数据位于 Data Lake Storage Gen1 中后，可运行分析作业来处理数据。 请参阅 [USQL Avro Example](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)（USQL Avro 示例）了解如何使用 Azure Data Lake Analytics 执行此操作。
   
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 * [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

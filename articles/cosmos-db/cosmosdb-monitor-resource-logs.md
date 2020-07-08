@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 诊断设置来监视 Azure Cosmos DB 中�
 author: SnehaGunda
 services: cosmos-db
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: b1a507c54c6a6555fc945dd35ee6e54d37d49bfd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857572"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549974"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>使用 Azure 中的诊断设置监视 Azure Cosmos DB 数据
 
@@ -22,13 +22,13 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 导航到 Azure Cosmos 帐户。 打开“诊断设置”窗格，然后选择“添加诊断设置”选项。  
+1. 导航到 Azure Cosmos 帐户。 打开“诊断设置”窗格，然后选择“添加诊断设置”选项。**** ****
 
-1. 在“诊断设置”窗格的表单中填充以下详细信息：  
+1. 在“诊断设置”窗格的表单中填充以下详细信息：**** 
 
     * **名称**：为要创建的日志输入名称。
 
-    * 可以存储日志以执行“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”的操作   
+    * 可以存储日志以执行“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”的操作**** **** ****
 
 1. 创建诊断设置时，请指定要收集的日志类别。 下面列出了 Azure Cosmos DB 支持的日志类别，以及收集的示例日志：
 
@@ -44,7 +44,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
-* CassandraRequests  ：选择此选项可记录用户从前端发起的请求，这些请求的内容是要求处理发送给 Azure Cosmos DB API for Cassandra 的请求。 此日志类型不适用于其他 API 帐户。 要记录的关键属性为 `operationName`、`requestCharge`、`piiCommandText`。 在诊断日志中启用 CassandraRequests 时，请务必禁用 DataPlaneRequests。 对于在 API 上发出的每个请求，都会看到一个日志。
+* CassandraRequests****：选择此选项可记录用户从前端发起的请求，这些请求的内容是要求处理发送给 Azure Cosmos DB API for Cassandra 的请求。 此日志类型不适用于其他 API 帐户。 要记录的关键属性为 `operationName`、`requestCharge`、`piiCommandText`。 在诊断日志中启用 CassandraRequests 时，请务必禁用 DataPlaneRequests。 对于在 API 上发出的每个请求，都会看到一个日志。
 
    ```json
    { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
@@ -73,7 +73,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 
 ## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>诊断查询问题疑难解答
 
-1. 如何查询运行时间超过3毫秒的操作：
+1. 如何查询运行时间超过 3 毫秒的操作：
 
    ```Kusto
    AzureDiagnostics 
@@ -99,7 +99,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    | render timechart
    ```
     
-1. 如何获取分区键统计信息以评估数据库帐户的前3个分区的偏差：
+1. 如何获取分区键统计信息，以评估数据库帐户最大的三个分区之间的偏差：
 
    ```Kusto
    AzureDiagnostics 
@@ -131,7 +131,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    | summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
 
-1. 如何获取与**DataPlaneRequests**和**QueryRunTimeStatistics**中的数据联接的、使用超过 100 RU/s 的所有查询。
+1. 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/s 的所有查询**** ****。
 
    ```Kusto
    AzureDiagnostics
@@ -145,6 +145,21 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    | order by requestCharge_s desc
    | limit 100
    ```
+
+1. 如何获取查询的请求费用和执行持续时间？
+
+   ```kusto
+   AzureDiagnostics
+   | where TimeGenerated >= ago(24hr)
+   | where Category == "QueryRuntimeStatistics"
+   | join (
+   AzureDiagnostics
+   | where TimeGenerated >= ago(24hr)
+   | where Category == "DataPlaneRequests"
+   ) on $left.activityId_g == $right.activityId_g
+   | project databasename_s, collectionname_s, OperationName1 , querytext_s,requestCharge_s1, duration_s1, bin(TimeGenerated, 1min)
+   ```
+
 
 1. 如何获取不同操作的分布情况？
 
@@ -207,7 +222,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
    | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
    ```
 
-1. 如何获取操作的 P99 或 P50 复制延迟，请求费用或响应的长度？
+1. 如何获取操作的 P99 或 P50 复制延迟、请求费用或响应时间？
 
    ```Kusto
    AzureDiagnostics
@@ -223,7 +238,7 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
  
 1. 如何获取 Controlplane 日志？
  
-   请记得按照[禁用基于密钥的元数据写入访问权限](audit-control-plane-logs.md#disable-key-based-metadata-write-access)articleand 中所述打开标志，并通过 AZURE POWERSHELL、CLI 或 ARM 执行操作。
+   切记按照[禁用基于键的元数据写访问权限](audit-control-plane-logs.md#disable-key-based-metadata-write-access)一文中所述打开标志，并通过 Azure PowerShell、CLI 或 ARM 执行操作。
  
    ```Kusto  
    AzureDiagnostics 
@@ -234,5 +249,5 @@ Azure 中的诊断设置用于收集资源日志。 Azure 资源日志由资源�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Cosmos DB 的 Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
+* [适用于 Azure Cosmos DB 的 Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json)
 * [使用 Azure Cosmos DB 中的指标进行监视和调试](use-metrics.md)

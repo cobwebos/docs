@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 561ec6d59349fca585beda8b1bd60073d2603077
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552187"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -130,13 +130,14 @@ Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
  
 若要仅测试系统要求，请使用以下命令：
 ```powershell
-Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
+Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name> -SkipNamespaceChecks
 ```
  
 若要以 CSV 格式显示结果，请使用以下命令：
 ```powershell
 $errors = Invoke-AzStorageSyncCompatibilityCheck […]
-$errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
+$validation.Results | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path
+    C:\results.csv -Encoding utf8
 ```
 
 ### <a name="file-system-compatibility"></a>文件系统兼容性
@@ -254,9 +255,7 @@ Azure 文件同步代理使用 Azure 文件同步 REST 协议和 FileREST 协议
 - 配置 Azure 文件同步以支持环境中的代理。
 - 限制 Azure 文件同步的网络活动。
 
-若要详细了解如何配置 Azure 文件同步的网络功能，请参阅：
-- [Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)
-- [确保 Azure 文件同步与数据中心能够良好地并行运作](storage-sync-files-server-registration.md)
+若要详细了解 Azure 文件同步和网络，请参阅[Azure 文件同步网络注意事项](storage-sync-files-networking-overview.md)。
 
 ## <a name="encryption"></a>加密
 使用 Azure 文件同步时，需要考虑三个不同的加密层：对 Windows Server 的静态存储进行加密、在 Azure 文件同步代理与 Azure 之间的传输中进行加密，以及在 Azure 文件共享中对数据进行静态加密。 
@@ -358,7 +357,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 
 还可以使用 Data Box 将数据迁移到 Azure 文件同步部署。 大多数情况下，当客户想使用 Data Box 引入数据时，他们会这样做，因为他们认为这样会提高部署的速度，或者因为这样做有助于实施带宽受限的方案。 尽管使用 Data Box 将数据引入到 Azure 文件同步部署中会降低带宽利用率，但大多数情况下，使用上述方法之一来实现联机数据上传可能会更快。 若要详细了解如何使用 Data Box 将数据引入 Azure 文件同步部署，请参阅[使用 Azure Data Box 将数据迁移到 Azure 文件同步](storage-sync-offline-data-transfer.md)。
 
-客户在将数据迁移到新的 Azure 文件同步部署时常犯的一个错误是直接将数据复制到 Azure 文件共享，而不是复制到其 Windows 文件服务器上。 尽管 Azure 文件同步会标识 Azure 文件共享上的所有新文件，并将它们同步回 Windows 文件共享，但这通常比通过 Windows 文件服务器加载数据的速度要慢得多。 许多 Azure 复制工具（如 AzCopy）还有一个缺点，就是并不是文件的所有重要元数据都会复制，例如时间戳和 ACL。
+客户在将数据迁移到新的 Azure 文件同步部署时常犯的一个错误是直接将数据复制到 Azure 文件共享，而不是复制到其 Windows 文件服务器上。 尽管 Azure 文件同步会标识 Azure 文件共享上的所有新文件，并将它们同步回 Windows 文件共享，但这通常比通过 Windows 文件服务器加载数据的速度要慢得多。 使用 Azure 复制工具（如 AzCopy）时，请务必使用最新版本。 检查 "[文件复制工具" 表](storage-files-migration-overview.md#file-copy-tools)以获取 Azure copy 工具的概述，以确保可以复制文件的所有重要元数据，例如时间戳和 acl。
 
 ## <a name="antivirus"></a>防病毒
 由于防病毒通过扫描文件中的已知恶意代码进行工作，因此防病毒产品可能导致重新调用分层文件。 在 Azure 文件同步代理 4.0 及更高版本中，分层文件已设置安全 Windows 属性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 我们建议你咨询软件供应商，以了解如何配置其解决方案以跳过读取已设置此属性的文件（许多解决方案会自动执行此操作）。 

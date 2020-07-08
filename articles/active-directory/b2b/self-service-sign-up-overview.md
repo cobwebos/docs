@@ -11,18 +11,17 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98456f26fbc7ca3955883eb283b54084bd86d503
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 34b08e2e530843dd98c87e424812706247388228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551317"
 ---
 # <a name="self-service-sign-up-preview"></a>自助注册（预览）
-|     |
-| --- |
-| 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+
+> [!NOTE]
+> 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 与外部用户共享应用时，你可能并不总是提前知道谁需要访问应用。 除了直接向个人发送邀请之外，还可以通过启用自助注册来允许外部用户自行注册特定的应用。 可以通过自定义自助注册用户流来创建个性化注册体验。 例如，可以提供使用 Azure AD 或社交标识提供者注册的选项，并在注册过程中收集关于用户的信息。
 

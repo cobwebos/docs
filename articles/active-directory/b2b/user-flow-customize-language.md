@@ -6,23 +6,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed56acc9276177951919a3bc63c8a1dc3876e1c4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83594696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551146"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory（预览版）中的语言自定义
-|     |
-| --- |
-| 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+
+> [!NOTE]
+> 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 用户流可以使用 Azure Active Directory (Azure AD) 中的语言自定义来适应不同的语言，从而满足用户需求。 Microsoft 提供 [36 种语言](#supported-languages)的翻译。 即使体验是针对一种语言提供的，也可以在“属性集合”页上自定义属性名称。
 

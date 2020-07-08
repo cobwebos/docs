@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: db50a8938459fe063553f08c495149867ee36f43
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: HT
+ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710059"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549626"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
 
@@ -325,8 +325,7 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 - 使用 NAT 时不支持 NSG 流日志记录。
 - NAT 不能跨多个虚拟网络。
 
-
-## <a name="feedback"></a>反馈
+## <a name="suggestions"></a>建议
 
 我们很想知道如何能够改进该服务。 缺少某个功能？ 请在 [UserVoice for NAT](https://aka.ms/natuservoice) 上针对我们接下来应打造什么功能提出建议。
 

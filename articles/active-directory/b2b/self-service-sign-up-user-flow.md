@@ -4,26 +4,23 @@ description: 与 Facebook 联合，让外部用户（来宾）能够使用自己
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: e9fa9d9e23de9a4ec93cbef6d2696d7bec70d41d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551246"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>向应用添加自助注册用户流（预览）
-|     |
-| --- |
-| 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+> [!NOTE]
+> 自助注册是 Azure Active Directory 的公共预览版功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以为组织生成的应用创建用户流。 通过将用户流与应用关联，可以在相应应用上启用注册。 可以选择多个与用户流关联的应用。 将用户流与一个或多个应用关联后，访问相应应用的用户将能够使用用户流中配置的选项注册并获得来宾帐户。
 
@@ -109,3 +106,5 @@ Azure AD 是自助注册的默认标识提供者。 也就是说，在默认情�
 
 - [向社交标识提供者列表添加 Google](google-federation.md)
 - [向社交标识提供者列表添加 Facebook](facebook-federation.md)
+- [使用 API 连接器通过 web Api 自定义和扩展用户流](api-connectors-overview.md)
+- [向用户流中添加自定义审批工作流](self-service-sign-up-add-approvals.md)

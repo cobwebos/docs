@@ -11,21 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 181e8192170cd7394d6817edd655f4e8257b48a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81cd2649ff056ab107491cf60602f0da7435b228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85550632"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory （预览）启用无密码安全密钥登录到本地资源
 
 本文档重点介绍如何为**Azure AD 联接**的环境和**混合 Azure AD 已加入**Windows 10 设备的环境启用到本地资源的无密码身份验证。 此功能使用与 Microsoft 兼容的安全密钥向本地资源提供无缝单一登录（SSO）。
 
-|     |
-| --- |
-| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
+> [!NOTE]
+> FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="sso-to-on-premises-resources-using-fido2-keys"></a>使用 FIDO2 密钥的 SSO 到本地资源
 
@@ -81,7 +79,7 @@ Azure AD Kerberos Server 对象在本地 Active Directory 中创建，然后安�
 1. 运行以下 PowerShell 命令，在本地 Active Directory 域和 Azure Active Directory 租户中创建新的 Azure AD Kerberos 服务器对象。
 
 > [!NOTE]
-> 将`contoso.corp.com`以下示例中的替换为本地 Active Directory 域名。
+> `contoso.corp.com`将以下示例中的替换为本地 Active Directory 域名。
 
 ```powerShell
 Import-Module ".\AzureAdKerberos.psd1"
@@ -111,7 +109,7 @@ Get-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -DomainCre
 
 此命令输出 Azure AD Kerberos 服务器的属性。 您可以查看属性以验证所有内容是否都按正确的顺序进行。
 
-| properties | 说明 |
+| Property | 说明 |
 | --- | --- |
 | ID | AD DS DC 对象的唯一 ID。 此 ID 有时称为 "槽" 或它是 "分支 ID"。 |
 | DomainDnsName | Active Directory 域的 DNS 域名。 |
@@ -148,7 +146,7 @@ Remove-AzureADKerberosServer -Domain $domain -CloudCredential $cloudCred -Domain
 
 Azure AD Kerberos server 对象在 Azure AD 中表示为*KerberosDomain*对象。 每个本地 Active Directory 域在 Azure AD 中都表示为一个*KerberosDomain*对象。
 
-例如，你的组织有一个包含两个域的 Active Directory `contoso.com`林`fabrikam.com`和。 如果选择允许 Azure AD 为整个林颁发 Kerberos Tgt，则 Azure AD 中有两个*KerberosDomain*对象。 一个*KerberosDomain*对象`contoso.com`，一个用于`fabrikam.com`。 如果有多个 Active Directory 的林，则每个林中的每个域都有一个*KerberosDomain*对象。
+例如，你的组织有一个包含两个域的 Active Directory 林 `contoso.com` 和 `fabrikam.com` 。 如果选择允许 Azure AD 为整个林颁发 Kerberos Tgt，则 Azure AD 中有两个*KerberosDomain*对象。 一个*KerberosDomain*对象 `contoso.com` ，一个用于 `fabrikam.com` 。 如果有多个 Active Directory 的林，则每个林中的每个域都有一个*KerberosDomain*对象。
 
 需要在组织中包含 Azure AD 用户的每个域和林中运行步骤以[创建 Kerberos 服务器对象](#create-kerberos-server-object)。
 
@@ -192,12 +190,12 @@ Azure AD Kerberos server 对象在 Azure AD 中表示为*KerberosDomain*对象�
 
 如果清理安装混合 Azure AD 联接的计算机，则在加入域后，你必须使用密码登录，并等待策略同步，然后才能使用 FIDO 登录。
 
-- 通过在命令窗口中键入`dsregcmd /status`来检查当前状态，并检查*AzureAdJoined*和*DomainJoined*是否都显示为 *"是"*。
+- 通过在命令窗口中键入来检查当前状态 `dsregcmd /status` ，并检查*AzureAdJoined*和*DomainJoined*是否都显示为 *"是"*。
 - 此延迟是加入域的设备的已知限制，不是 FIDO 特定的。
 
 ### <a name="im-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-fido-and-get-a-credential-prompt"></a>使用 FIDO 登录并收到凭据提示后，无法获取到 NTLM 网络资源的 SSO
 
-请确保修补了足够的域控制器来响应资源请求。 若要检查是否可以看到运行该功能的域控制器，请查看的输出`nltest /dsgetdc:contoso /keylist /kdc`。
+请确保修补了足够的域控制器来响应资源请求。 若要检查是否可以看到运行该功能的域控制器，请查看的输出 `nltest /dsgetdc:contoso /keylist /kdc` 。
 
 ## <a name="next-steps"></a>后续步骤
 

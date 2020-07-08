@@ -4,26 +4,25 @@ description: 直接与 SAML 或 WS-Fed 标识提供者联合，使来宾可以�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/11/2020
+ms.topic: how-to
+ms.date: 06/24/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591210"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551519"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与面向来宾用户的 AD FS 和第三方提供者的直接联合（预览）
-|     |
-| --- |
-| 直接联合是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
-|     |
+
+> [!NOTE]
+>  直接联合是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍如何为实现 B2B 协作建立与其他组织的直接联合。 可以与其标识提供者 (IdP) 支持 SAML 2.0 或 WS-Fed 协议的任何组织建立直接联合。
 与合作伙伴的 IdP 建立直接联合时，该域中的新来宾用户可以使用其自己的 IdP 管理的组织帐户登录到 Azure AD 租户，并开始与你合作。 来宾用户无需创建单独的 Azure AD 帐户。
@@ -221,3 +220,7 @@ IdP 颁发的 WS-Fed 令牌的必需声明：
    ```powershell
    Remove-AzureADExternalDomainFederation -ExternalDomainName  $domainName
    ```
+
+## <a name="next-steps"></a>后续步骤
+
+当外部用户登录到各种标识提供者时，详细了解[邀请兑换体验](redemption-experience.md)。

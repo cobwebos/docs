@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel 中的搜寻功能 |Microsoft Docs
-description: 本文介绍如何使用 Azure Sentinel 搜寻功能。
+description: 使用 Azure Sentinel 的内置搜索查询来指导你请求正确的问题，以找出数据中的问题。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cceeb1fc9715dfd7b1ac714c424421c51d292757
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686634"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552290"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>利用 Azure Sentinel 寻找威胁
 

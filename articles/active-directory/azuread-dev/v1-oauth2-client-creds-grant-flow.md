@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c698b9381755f81303dc3adfa9422b82500bb208
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83642211"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85551710"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>使用客户端凭据（共享密钥或证书）进行服务到服务调用
 
@@ -52,12 +52,12 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一种情况：使用共享机密访问令牌请求
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | 说明 |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
-| grant_type |必填 |指定请求的授权类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
-| client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序 。 client_id 是应用程序 ID |
-| client_secret |必填 |在 Azure AD 中输入为调用 Web 服务或 daemon 应用程序注册的密钥。 要创建密钥，请在 Azure 门户中，依次单击“Azure Active Directory”>“应用注册”并单击该应用程序，然后依次单击“设置”>“密钥”，并添加密钥   。  提供此机密时请对其进行 URL 编码。 |
-| resource |必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”   。 |
+| grant_type |必需 |指定请求的授权类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
+| client_id |必需 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序 。 client_id 是应用程序 ID |
+| client_secret |必需 |在 Azure AD 中输入为调用 Web 服务或 daemon 应用程序注册的密钥。 要创建密钥，请在 Azure 门户中，依次单击“Azure Active Directory”>“应用注册”并单击该应用程序，然后依次单击“设置”>“密钥”，并添加密钥   。  提供此机密时请对其进行 URL 编码。 |
+| resource |必需 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”   。 |
 
 #### <a name="example"></a>示例
 以下 HTTP POST 请求 `https://service.contoso.com/` Web 服务的[访问令牌](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 `client_id` 标识请求访问令牌的 Web 服务。
@@ -73,13 +73,13 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>第二种情况：使用证书访问令牌请求
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | 说明 |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
-| grant_type |必填 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
-| client_id |必填 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序 。 client_id 是应用程序 ID |
-| client_assertion_type |必填 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| grant_type |必需 |指定请求的响应类型。 在客户端凭据授权流中，该值必须是 **client_credentials**。 |
+| client_id |必需 |指定调用 Web 服务的 Azure AD 客户端 ID。 要查找调用应用程序的客户端 ID，请在 [Azure 门户](https://portal.azure.com)中，依次单击“Azure Active Directory”和“应用注册”，然后单击该应用程序 。 client_id 是应用程序 ID |
+| client_assertion_type |必需 |值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |必填 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 有关如何注册证书以及断言的格式，请阅读[证书凭据](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)的相关信息。|
-| resource | 必填 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”   。 |
+| resource | 必需 |输入接收 Web 服务的应用 ID URI。 要查找应用 ID URI，请在 Azure 门户中，依次单击“Azure Active Directory”和“应用注册”，并单击服务应用程序，然后依次单击“设置”和“属性”   。 |
 
 请注意，参数几乎与共享密钥请求的参数相同，只不过 client_secret 参数替换为两个参数：client_assertion_type 和 client_assertion。
 

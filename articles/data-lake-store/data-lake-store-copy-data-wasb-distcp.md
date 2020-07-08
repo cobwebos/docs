@@ -3,15 +3,15 @@ title: 使用 DistCp 将数据从 WASB 复制到 Azure Data Lake Storage Gen1
 description: 使用 DistCp 工具将数据复制到 Azure 存储 blob 并将其从 Azure 存储 blob 复制到 Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 455e73ece2d46a508b3077c13c8106fe53beb4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638827"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515677"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>使用 DistCp 在 Azure 存储 blob 和 Azure Data Lake Storage Gen1 之间复制数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "75638827"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 
@@ -35,7 +35,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 1. 从桌面使用 SSH 连接到群集。 请参阅[连接到基于 Linux 的 HDInsight 群集](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。 通过 SSH 提示符运行命令。
 
-1. 验证是否可以访问 Azure 存储 blob （WASB）。 运行以下命令：
+1. 验证是否可以访问 Azure 存储 blob （WASB）。 运行下面的命令：
 
    ```
    hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
@@ -43,7 +43,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
    输出在存储 blob 中提供了一个内容列表。
 
-1. 同样，验证是否可从此群集访问 Data Lake Storage Gen1 帐户。 运行以下命令：
+1. 同样，验证是否可从此群集访问 Data Lake Storage Gen1 帐户。 运行下面的命令：
 
    ```
    hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/
@@ -83,7 +83,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 * **步骤 1：确定总 YARN 内存** - 第一步是确定可供运行 DistCp 作业的群集使用的 YARN 内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并**查看 "配置" 选项卡**以查看 YARN 内存。 要获取总 YARN 内存，可将每个节点的 YARN 内存与你在群集中拥有的节点数相乘。
 
-* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小信息也可在 Ambari 门户中使用。 导航到 YARN 并**查看 "配置" 选项卡**。YARN 容器大小显示在此窗口中。 要到达映射器（**m**）数的公式为：
+* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小信息也可在 Ambari 门户中使用。 导航到 YARN 并**查看 "配置" 选项卡**。YARN 容器大小显示在此窗口中。 要到达映射器（**m**）数的公式为：
 
    `m = (number of nodes * YARN memory for each node) / YARN container size`
 
@@ -115,7 +115,7 @@ An HDInsight 群集随附了 DistCp 工具，可用于将数据从不同源复�
 
 * 如果要从 Azure Blob 存储帐户进行复制，则可在 Blob 存储端限制复制作业。 这会降低复制作业的性能。 若要了解有关 Azure Blob 存储的限制的详细信息，请参阅 azure[订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)中的 azure 存储限制。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [将数据从 Azure 存储 blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)

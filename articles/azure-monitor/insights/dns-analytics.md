@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552812"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>使用 DNS Analytics 预览解决方案收集有关 DNS 基础结构的见解
 
@@ -179,7 +179,7 @@ DNS 磁贴包括在其中收集数据的 DNS 服务器的数量。 它还包括�
 
 1. 缺少 DNS 查找数据 - 要解决此问题，请尝试在门户中重置配置或仅加载一次配置页。 若要重置，只需将设置更改为其他值，然后将其更改回原始值并保存配置。
 
-## <a name="feedback"></a>反馈
+## <a name="suggestions"></a>建议
 
 若要提供反馈，请访问 [Log Analytics UserVoice 页](https://aka.ms/dnsanalyticsuservoice)以发布有关要使用的 DNS Analytics 功能的想法。 
 

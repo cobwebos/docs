@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 93b3e90deb5e3764cb5402938c5d0e14cadb7883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 055fd5182920ebe15cb2f3ed4b7a8ff69bb94c16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549560"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日期和时间函数 (Azure Cosmos DB)
 
@@ -22,10 +22,8 @@ ms.locfileid: "74873380"
 
 使用以下标量函数可以获取采用以下两种格式的当前 UTC 日期和时间：一个其值为以毫秒为单位的 Unix 纪元的数值时间戳或作为一个符合 ISO 8601 格式的字符串：
 
-|||
-|-|-|
-|[GetCurrentDateTime](sql-query-getcurrentdatetime.md)|[GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)||
-
+* [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
+* [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
 
 ## <a name="next-steps"></a>后续步骤
 

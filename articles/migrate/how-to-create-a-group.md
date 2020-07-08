@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68301708"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85549922"
 ---
 # <a name="create-a-group-for-assessment"></a>为评估创建组
 
@@ -43,11 +43,11 @@ ms.locfileid: "68301708"
 
 2. 单击 "**组**" 图标。
 3. 在 "**创建组**" 中，指定组名称，并在 "**设备名称**" 中选择要用于计算机发现的 Azure Migrate 设备。
-1. 从 "计算机" 列表中，选择要添加到组 >**创建**的计算机。
+4. 从 "计算机" 列表中，选择要添加到组 >**创建**的计算机。
 
     ![创建组](./media/how-to-create-a-group/create-group.png)
 
-你现在可以在[创建评估](how-to-create-assessment.md)时使用此组。
+你现在可以在[创建 AZURE VM 评估](how-to-create-assessment.md)或[azure VMWARE 解决方案（AVS）评估](how-to-create-azure-vmware-solution-assessment.md)时使用此组。 请注意，你可以对只有 VMware Vm 的组创建 AVS 评估。 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>使用依赖关系映射优化组
 

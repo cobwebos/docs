@@ -3,15 +3,15 @@ title: 管理和更新 Azure HPC 缓存
 description: 如何使用 Azure 门户管理和更新 Azure HPC 缓存
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 825b8a34e130286a5772363107311fe4170e8743
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537944"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515558"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>从 Azure 门户管理缓存
 
@@ -30,6 +30,10 @@ Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存�
 * [**删除**](#delete-the-cache)-永久销毁缓存
 
 阅读以下有关这些选项的详细信息。
+
+单击下面的图像，观看说明缓存管理任务的[视频](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)。
+
+[![视频缩略图： Azure HPC 缓存：管理（单击可访问视频页）](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>停止缓存
 

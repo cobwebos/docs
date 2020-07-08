@@ -1,22 +1,22 @@
 ---
 title: 配置身份验证会话管理 - Azure Active Directory
-description: 自定义 Azure AD 身份验证会话配置，包括用户登录频率和浏览器会话持久性。
+description: 自定义 Azure AD authentication 会话配置，包括用户登录频率和浏览器会话暂留。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 11/21/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263278"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552121"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -35,11 +35,11 @@ ms.locfileid: "79263278"
 
 登录频率定义在用户尝试访问资源时，要求用户重新登录之前所要经过的时限。
 
-Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚动时限。 经常要求用户提供凭据看似很明智，但有时适得其反：平时不加思索输入凭据的用户可能会意外中收到恶意的凭据提示。
+用户登录频率的 Azure Active Directory （Azure AD）默认配置为90天滚动窗口。 经常要求用户提供凭据看似很明智，但有时适得其反：平时不加思索输入凭据的用户可能会意外中收到恶意的凭据提示。
 
 不要求用户重新登录看似不安全，但实际上，任何违反 IT 策略的行为都会撤销会话。 部分示例包括（但不限于）密码更改、设备不合规或禁用帐户。 也可以[使用 PowerShell 显式吊销用户会话](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 的默认配置是“如果用户会话的安全状况未发生变化，则不要求用户提供其凭据”。
 
-登录频率设置适用于已根据标准实现了 OAUTH2 或 OIDC 协议的应用。 大多数适用于 Windows、Mac 和 Mobile 的 Microsoft 本机应用（包括以下 Web 应用程序）都符合该设置。
+"登录频率" 设置适用于已根据标准实现了 OAUTH2 或 OIDC 协议的应用。 大多数适用于 Windows、Mac 和 Mobile 的 Microsoft 本机应用（包括以下 Web 应用程序）都符合该设置。
 
 - Word、Excel、PowerPoint Online
 - OneNote Online
@@ -51,9 +51,17 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
 - Dynamics CRM Online
 - Azure 门户
 
+"登录频率" 设置还适用于 SAML 应用程序，前提是它们不会删除自己的 cookie，而是定期重定向回 Azure AD 进行身份验证。
+
+### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>用户登录频率和多重身份验证
+
+之前仅应用到 Azure AD 联接、混合 Azure AD 联接和 Azure AD 注册的设备上的第一因素身份验证。 我们的客户无法轻松地在这些设备上重新强制执行多重身份验证（MFA）。 根据客户的反馈，登录频率也适用于 MFA。
+
+[![登录频率和 MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
+
 ### <a name="user-sign-in-frequency-and-device-identities"></a>用户登录频率和设备标识
 
-如果已 Azure AD 联接、混合 Azure AD 加入或 Azure AD 注册的设备，则当用户以交互方式解锁其设备或登录时，此事件也将满足登录频率策略。 在以下2个示例中，用户登录频率设置为1小时：
+如果 Azure AD 联接、混合 Azure AD 加入或 Azure AD 注册的设备，则当用户以交互方式解锁其设备或登录时，此事件也将满足登录频率策略。 在以下两个示例中，用户登录频率设置为1小时：
 
 示例 1：
 
@@ -90,14 +98,14 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
    > [!NOTE]
    > 建议为 Exchange Online 和 SharePoint Online 等重要 Microsoft Office 应用设置相同的身份验证提示频率，以获得最佳用户体验。
 
-1. 中转到 "**访问控制** > "**会话**，并单击 "**登录频率**"
+1. 中转到 "**访问控制**  >  "**会话**，并单击 "**登录频率**"
 1. 在第一个文本框中输入所需的天数和小时值
 1. 从下拉列表中选择“小时”或“天”的值********
 1. 保存策略
 
-![在条件访问策略中配置的登录频率](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
+![为登录频率配置的条件访问策略](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
-在已注册到 Azure AD 的 Windows 设备上，设备登录被视为一种提示。 例如，如果将 Office 应用的“登录频率”配置为 24 小时，则已注册到 Azure AD 的 Windows 设备上的用户符合“登录频率”策略，他们可以登录到设备，在打开 Office 应用时不再会看到提示。
+在已注册到 Azure AD 的 Windows 设备上，设备登录被视为一种提示。 例如，如果已将 Office 应用的登录频率配置为24小时，则 Azure AD 注册的 Windows 设备上的用户将通过登录到设备来满足登录频率策略，并在打开 Office 应用时不会再次提示。
 
 如果为同一浏览器会话中运行的不同 Web 应用配置了不同的登录频率，最严格的策略将应用到这两个应用，因为在同一浏览器会话中运行的所有应用共享一个会话令牌。
 
@@ -109,7 +117,7 @@ Azure Active Directory (Azure AD) 的默认用户登录频率配置为 90 天滚
    > [!NOTE]
    > 请注意，此控制措施要求选择“所有云应用”作为条件。 浏览器会话持久性由身份验证会话令牌控制。 浏览器会话中的所有标签页共享一个会话令牌，因此它们都必须共享持久性状态。
 
-1. 中转到 "**访问控制** > "**会话**，然后单击 "**持久浏览器会话**"
+1. 中转到 "**访问控制**  >  "**会话**，然后单击 "**持久浏览器会话**"
 1. 从下拉列表中选择一个值
 1. 保存策略
 

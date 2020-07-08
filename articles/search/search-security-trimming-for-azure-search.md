@@ -1,19 +1,19 @@
 ---
 title: 用于修整结果的安全筛选器
 titleSuffix: Azure Cognitive Search
-description: 使用安全筛选器和用户标识对 Azure 认知搜索内容进行访问控制。
+description: Azure 的文档级别的安全特权认知搜索搜索结果，使用安全筛选器和用户标识。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794267"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553140"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>用于在 Azure 认知搜索中修整结果的安全筛选器
 
@@ -40,7 +40,7 @@ ms.locfileid: "72794267"
 
 文档必须包含一个指定哪些组拥有访问权限的字段。 此信息将成为筛选条件，在返回给请求发出者的结果集中选择或拒绝文档时，将以此条件为依据。
 我们假设为受保护的文件创建了一个索引，每个文件可由一组不同的用户访问。
-1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `group_ids` 为“secured_file_b”的文档将 `["group_id1, group_id2"]` 字段设置为 `file_name`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
+1. 将字段 `group_ids`（此处可选择任意名称）为 `Collection(Edm.String)`。 确保该字段的 `filterable` 属性设置为 `true`，以便根据用户拥有的访问权限筛选搜索结果。 例如，如果针对 `file_name` 为“secured_file_b”的文档将 `group_ids` 字段设置为 `["group_id1, group_id2"]`，则只有属于组 ID“group_id1”或“group_id2”的用户才对该文件拥有读访问权限。
    确保字段的 `retrievable` 属性设置为 `false`，以便不会将其返回为搜索请求的一部分。
 2. 此外，针对此示例添加 `file_id` 和 `file_name` 字段。  
 
@@ -60,7 +60,7 @@ ms.locfileid: "72794267"
 向索引的 URL 终结点发出 HTTP POST 请求。 HTTP 请求的正文是一个 JSON 对象，包含要添加的文档：
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -118,7 +118,7 @@ api-key: [admin key]
 发出 HTTP POST 请求：
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
 ```
