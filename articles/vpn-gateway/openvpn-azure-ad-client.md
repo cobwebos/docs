@@ -5,14 +5,13 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 868bcfc898fc6bc804f36516f2cc01a52ad2db47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414328"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>配置用于 P2S OpenVPN 协议连接的 VPN 客户端：Azure AD 身份验证
 
@@ -158,7 +157,7 @@ ms.locfileid: "80879439"
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何将 DNS 后缀添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件，并添加 **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> **标记
 
 ```
 <azvpnprofile>
@@ -176,7 +175,7 @@ ms.locfileid: "80879439"
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何将自定义 DNS 服务器添加到 VPN 客户端？
 
-可以修改下载的配置文件 XML 文件，并添加 **\<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> **标记
 
 ```
 <azvpnprofile>
@@ -197,7 +196,7 @@ ms.locfileid: "80879439"
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何将自定义路由添加到 VPN 客户端？
 
-可以修改下载的 XML 配置文件，并添加 **\<includeroutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</includeroutes>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **标记
 
 ```
 <azvpnprofile>
@@ -215,7 +214,7 @@ ms.locfileid: "80879439"
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何在 VPN 客户端中阻止（排除）路由？
 
-可以修改下载的 XML 配置文件，并添加 **\<excluderoutes>\<route>\<destination>\<mask> \</destination>\</mask>\</route>\</excluderoutes>** 标记
+您可以修改下载的配置文件 XML 文件并添加** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> **标记
 
 ```
 <azvpnprofile>
@@ -233,12 +232,12 @@ ms.locfileid: "80879439"
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>是否可以从命令行提示符导入配置文件？
 
-你可以从命令行提示符导入该配置文件，方法是将下载的**azurevpnconfig**文件放在 **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate**文件夹中，并运行以下命令：
+可以从命令行提示符导入配置文件，方法是将下载的 azurevpnconfig.xml  文件放在“%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState”  文件夹中，并运行以下命令：
 
 ```
 azurevpn -i azurevpnconfig.xml 
 ```
-若要强制导入，请同时使用 **-f**开关
+若要强制导入，还应使用“-f”  开关
 
 
 ## <a name="next-steps"></a>后续步骤

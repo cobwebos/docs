@@ -8,12 +8,11 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: de8574cd691c77bb764c7e695db1e7c2f23c5f3a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242126"
 ---
 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 
@@ -451,7 +450,7 @@ Azure 备份支持的最大磁盘大小为 32 TiB（对于加密磁盘为 4 TiB�
 
 我们是否支持在所有磁盘大小上启用主机缓存？
 
-我们支持在小于 4 TiB 的磁盘大小上启用只读和读/写主机缓存。 对于超过 4 TiB 的磁盘大小，除提供“无”选项外，我们并不支持设置缓存选项。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
+小于 4 TiB 的磁盘大小支持主机缓存（ReadOnly 和读/写）。 这意味着，预配到 4095 GiB 的任何磁盘都可以利用主机缓存。 对于大于或等于 4096 GiB 的磁盘大小，不支持主机缓存。 例如，在 4095 GiB 预配的 P50 高级磁盘可以利用主机缓存，而 4096 GiB 预配的 P50 磁盘无法利用主机缓存。 建议利用较小磁盘大小的缓存，以便通过缓存到 VM 的数据观察到明显的性能提升。
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>如果未在此处找到相关问题怎么办？
 

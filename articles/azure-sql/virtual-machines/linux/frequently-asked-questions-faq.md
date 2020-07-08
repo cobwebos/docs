@@ -1,10 +1,9 @@
 ---
-title: Linux Azure 虚拟机中的 SQL Server 常见问题 | Microsoft 文档
-description: 本文提供有关在 Linux Azure VM 上运行 SQL Server 时遇到的常见问题解答。
+title: Linux 上的 SQL Server 虚拟机 FAQ |Microsoft Docs
+description: 本文提供有关运行 Linux 上的 SQL Server 虚拟机的常见问题的解答。
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: troubleshooting
@@ -12,21 +11,20 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5447e61936b55db353404aae7cb391377d78294
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84035338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669454"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>在 Linux Azure 虚拟机上运行 SQL Server 的常见问题
+# <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Linux 上的 SQL Server 虚拟机的常见问题
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](../windows/frequently-asked-questions-faq.md)
 > * [Linux](frequently-asked-questions-faq.md)
 
-本文提供有关在 [Linux Azure 虚拟机上运行 SQL Server](sql-server-on-linux-vm-what-is-iaas-overview.md) 时出现的一些最常见问题的解答。
+本文提供了有关在[虚拟机](sql-server-on-linux-vm-what-is-iaas-overview.md)上运行 Linux 上的 SQL Server 一些最常见问题的解答。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -34,15 +32,15 @@ ms.locfileid: "84035338"
 
 1. **有哪些 SQL Server 虚拟机库映像可用？**
 
-   Azure 为所有 Linux 和 Windows 版本中的所有受支持 SQL Server 主要发行版维护虚拟机映像。 有关更多详细信息，请参阅 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)的完整列表。
+   Azure 为 Linux 和 Windows 的所有版本中的所有受支持的主要版本 SQL Server 维护虚拟机（VM）映像。 有关更多详细信息，请参阅 [Linux VM 映像](sql-server-on-linux-vm-what-is-iaas-overview.md#create)和 [Windows VM 映像](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)的完整列表。
 
 1. **现有的 SQL Server 虚拟机库映像是否会更新？**
 
-   每隔两个月，都会使用最新的 Linux 和 Windows 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Linux 映像，这包括最新的系统更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的任何更新，以及重要的 SQL Server 安全更新和 Service Pack。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
+   每隔两个月，都会使用最新的 Linux 和 Windows 更新对虚拟机库中的 SQL Server 映像进行更新。 对于 Linux 映像，这包括最新的系统更新。 对于 Windows 映像，这包括 Windows 更新中标记为重要的所有更新，包括重要的 SQL Server 安全更新和 service pack。 Linux 和 Windows 的 SQL Server 累积更新以不同的方式进行处理。 对于 Linux，SQL Server 累积更新也包含在刷新中。 但目前，Windows VM 不会连同 SQL Server 或 Windows Server 累积更新一起更新。
 
 1. 还会安装哪些相关的 SQL Server 包？
 
-   若要查看默认情况下在 SQL Server Linux VM 上安装的 SQL Server 包，请参阅[安装的程序包](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)。
+   若要查看默认情况下安装在 Linux 上的 SQL Server Vm 上的 SQL Server 包，请参阅[已安装的包](sql-server-on-linux-vm-what-is-iaas-overview.md#packages)。
 
 1. **是否可以从库中删除 SQL Server 虚拟机映像？**
 
@@ -50,9 +48,9 @@ ms.locfileid: "84035338"
 
 ## <a name="creation"></a>创建
 
-1. 如何创建装有 SQL Server 的 Linux Azure 虚拟机？
+1. **如何实现使用 SQL Server 创建 Linux 虚拟机？**
 
-   最简单的解决方法是创建包含 SQL Server 的 Linux 虚拟机。 有关注册 Azure 并从门户创建 SQL VM 的教程，请参阅[在 Azure 门户中预配 Linux SQL Server 虚拟机](sql-vm-create-portal-quickstart.md)。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility)。
+   最简单的解决方案是创建包含 SQL Server 的 Linux 虚拟机。 有关注册 Azure 并从门户创建 SQL Server VM 的教程，请参阅[在 Azure 门户中预配运行 SQL Server 的 Linux 虚拟机](sql-vm-create-portal-quickstart.md)。 此外，你也可以选用免费许可版（开发人员版或速成版），或通过重新使用本地许可证在 VM 上手动安装 SQL Server。 如果自带许可，必须[在 Azure 上通过软件保障实现许可证移动性](https://azure.microsoft.com/pricing/license-mobility)。
 
 1. 为什么无法使用有支出限制的 Azure 订阅来设置 RHEL 或 SLES SQL Server VM？
 
@@ -74,13 +72,13 @@ ms.locfileid: "84035338"
 
 ## <a name="administration"></a>管理
 
-1. **是否可以使用 SQL Server Management Studio (SSMS) 管理 Linux SQL Server 虚拟机？**
+1. **能否使用 SQL Server Management Studio （SSMS）管理运行 SQL Server 的 Linux 虚拟机？**
 
-   是的，但 SSMS 目前是仅限 Windows 的工具。 必须从 Windows 计算机建立远程连接才能对 Linux SQL Server VM 使用 SSMS。 在 Linux 本地，新的 [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以执行许多管理任务。 有关跨平台数据库管理工具，请参阅 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)。
+   是的，但 SSMS 目前是仅限 Windows 的工具。 必须从 Windows 计算机远程连接才能将 SSMS 与运行 SQL Server 的 Linux Vm 配合使用。 在 Linux 本地，新的 [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以执行许多管理任务。 有关跨平台数据库管理工具，请参阅 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)。
 
-1. **是否可从 SQL VM 完全删除 SQL Server？**
+1. **是否可从 SQL Server VM 完全删除 SQL Server？**
 
-   是的，但仍将按照 [SQL Server Azure VM 的定价指南](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)收取 SQL VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
+   是的，但仍将按照 SQL Server Azure VM 的[定价指南](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)收取 SQL Server VM 费用。 如果不再需要 SQL Server，可以部署新的虚拟机并将数据和应用程序迁移到新的虚拟机。 然后可以删除 SQL Server 虚拟机。
 
 ## <a name="updating-and-patching"></a>更新和修补
 
@@ -90,20 +88,20 @@ ms.locfileid: "84035338"
 
 ## <a name="general"></a>常规
 
-1. Azure VM 上是否支持 SQL Server 的高可用性解决方案？
+1. **Azure Vm 是否支持 SQL Server 高可用性解决方案？**
 
-   现在不行。 Always On 可用性组和故障转移群集都需要 Linux 中的聚类分析解决方案，如 Pacemaker。 SQL Server 受支持的 Linux 分发版在云中不支持其高可用性加载项。
+   现在不行。 Always On 可用性组和故障转移群集都需要 Linux 中的群集解决方案，如 Pacemaker。 SQL Server 支持的 Linux 发行版本不支持云中高可用性加载项。
 
 ## <a name="resources"></a>资源
 
 **Linux VM**：
 
 * [Linux VM 上的 SQL Server 概述](sql-server-on-linux-vm-what-is-iaas-overview.md)
-* [设置 SQL Server Linux VM](sql-vm-create-portal-quickstart.md)
+* [在 Linux VM 上预配 SQL Server](sql-vm-create-portal-quickstart.md)
 * [“Linux 上的 SQL Server”文档](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
 **Windows VM**：
 
 * [Windows VM 上的 SQL Server 概述](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [设置 SQL Server Windows VM](../windows/sql-vm-create-portal-quickstart.md)
+* [在 Windows VM 上预配 SQL Server](../windows/sql-vm-create-portal-quickstart.md)
 * [常见问题 (Windows)](../windows/frequently-asked-questions-faq.md)

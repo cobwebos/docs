@@ -1,6 +1,6 @@
 ---
-title: 备份和还原数据库 - Azure SQL Edge（预览版）
-description: 了解 Azure SQL Edge（预览版）中的备份和还原功能
+title: 备份和还原数据库-Azure SQL Edge （预览版）
+description: 了解 Azure SQL Edge （预览版）中的备份和还原功能。
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,39 +9,40 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 902576f82faa18fbb0e7c7eaed5c06993bd379cc
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84667856"
 ---
-# <a name="backup-and-restore-databases-in-azure-sql-edge-preview"></a>Azure SQL Edge（预览版）中的备份和还原数据库功能 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>在 Azure SQL Edge 中备份和还原数据库（预览版） 
 
-Azure SQL Edge 基于 Linux 上的 Microsoft SQL Server 数据库引擎的最新版本而构建，提供的备份和还原数据库功能与 Linux 上的 SQL Server 和容器中运行的 SQL Server 类似。 备份和还原组件为保护存储在 Azure SQL Edge 数据库中的数据提供了基本安全保障。 为了尽量降低灾难性数据丢失的风险，建议定期备份数据库，以便定期保存对数据的修改。 计划良好的备份和还原策略有助于保护数据库，使之免受各种故障导致的数据丢失的威胁。 测试策略，方法是先还原一组备份，然后恢复数据库，以便准备好对灾难进行有效的响应。
+Azure SQL Edge 构建于 Linux 上最新版本的 Microsoft SQL Server 数据库引擎。 它提供的备份和还原数据库功能与在容器中运行 Linux 上的 SQL Server 和 SQL Server 中的功能类似。 备份和还原组件提供了保护存储在 Azure SQL Edge 数据库中的数据的基本保护。 
 
-若要详细了解备份的重要性，请参阅 [SQL Server 数据库的备份和还原](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases/)。
+若要最大程度地降低灾难性数据丢失的风险，应定期备份数据库以保留对数据的定期修改。 计划良好的备份和还原策略有助于保护数据库，使之免受各种故障导致的数据丢失的威胁。 通过还原一组备份，然后恢复数据库来测试您的策略，以使您能够有效地应对灾难。
 
-Azure SQL Edge 支持备份到本地存储或 Azure blob 并从中还原。 有关备份到 Azure Blob 存储并从中还原的详细信息，请参阅[使用 Microsoft Azure Blob 存储服务进行 SQL Server 备份和还原](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/)和 [SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)。
+若要详细了解备份的重要性，请参阅[SQL Server 数据库的备份和还原](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases/)。
 
-## <a name="backing-up-a-database-in-azure-sql-edge"></a>在 Azure SQL Edge 中备份数据库
+通过 Azure SQL Edge，你可以备份到本地存储和 Azure blob，并从中进行还原。 有关详细信息，请参阅[SQL Server 备份和还原与 Azure Blob 存储进行备份和还原](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/)，以及[SQL SERVER 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)。
 
-Azure SQL Edge 支持的备份类型与 SQL Server 相同。 有关 SQL Server 中支持的备份类型的完整列表，请参阅[备份概述](/sql/relational-databases/backup-restore/backup-overview-sql-server/)。
+## <a name="back-up-a-database-in-azure-sql-edge"></a>在 Azure SQL Edge 中备份数据库
+
+Azure SQL Edge 支持与 SQL Server 相同的备份类型。 有关完整列表，请参阅[备份概述](/sql/relational-databases/backup-restore/backup-overview-sql-server/)。
 
 > [!IMPORTANT] 
-> 默认情况下，在 Azure SQL Edge 中创建的数据库使用简单恢复模式。 因此，无法在这些数据库上执行日志备份。 如果需要在这些数据库上执行日志备份，则管理员需要将数据库恢复模式更改为完全恢复模式。 有关 SQL Server 支持的恢复模式的完整列表，请参阅[恢复模式概述](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov)。
+> 默认情况下，在 Azure SQL Edge 中创建的数据库使用简单恢复模式。 因此，不能在这些数据库上执行日志备份。 如果需要执行此操作，则需要管理员将数据库恢复模式更改为完整恢复模式。 有关 SQL Server 支持的恢复模式的完整列表，请参阅[恢复模式概述](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov)。
 
-### <a name="backup-to-local-disk"></a>备份到本地磁盘
+### <a name="back-up-to-local-disk"></a>备份到本地磁盘
 
-在下面提供的示例中，使用“BACKUP DATABASE”Transact-SQL 命令在容器中创建了数据库备份。 在这个例子中，要创建一个名为“备份”的新文件夹来存储备份文件。
+在下面的示例中，使用 `BACKUP DATABASE` transact-sql 命令在容器中创建数据库备份。 出于本示例的目的，将创建一个名为 "*备份*" 的新文件夹以存储备份文件。
 
-1. 创建用于备份的文件夹。 此命令需要在运行 Azure SQL Edge 容器的主机上执行。 在下面的命令中，将 <AzureSQLEdge_Container_Name> 替换为部署中的 Azure SQL Edge 容器的名称。
+1. 创建用于备份的文件夹。 在运行 Azure SQL Edge 容器的主机上运行此命令。 在以下命令中，将 **<AzureSQLEdge_Container_Name>** 替换为部署中的 Azure SQL Edge 容器的名称。
 
     ```bash
     sudo docker exec -it <AzureSQLEdge_Container_Name> mkdir /var/opt/mssql/backup
     ```
 
-2. 使用 SQL Server Management Studio (SSMS) 或使用 Azure Data Studio (ADS) 连接到 Azure SQL Edge 实例，并运行备份数据库命令以备份用户数据库。 在下面的示例中，我们将对 IronOreSilicaPrediction 数据库进行备份。
+2. 使用 SQL Server Management Studio （SSMS）或使用 Azure Data Studio 连接到 Azure SQL Edge 实例。 运行 `BACKUP DATABASE` 命令来备份用户数据库。 在下面的示例中，将对*IronOreSilicaPrediction*数据库进行备份。
 
     ```sql
     BACKUP DATABASE [IronOreSilicaPrediction] 
@@ -51,7 +52,7 @@ Azure SQL Edge 支持的备份类型与 SQL Server 相同。 有关 SQL Server �
     GO
     ```
 
-3. 运行该命令后，如果数据库备份成功，将在 SSMS 或 ADS 的“结果”部分中看到类似以下内容的消息。
+3. 运行该命令后，如果数据库的备份成功，你将在 SSMS 或 Azure Data Studio 的 "结果" 部分中看到类似于以下内容的消息。
 
     ```txt
     10 percent processed.
@@ -71,11 +72,11 @@ Azure SQL Edge 支持的备份类型与 SQL Server 相同。 有关 SQL Server �
     Completion time: 2020-04-09T23:54:48.4957691-07:00
     ```
 
-### <a name="backup-to-url"></a>备份到 URL
+### <a name="back-up-to-url"></a>备份到 URL
 
-Azure SQL Edge 支持备份到页 blob 和块 blob。 有关页 blob 和块 blob 的详细信息，请参阅[备份到块 blob 和页 blob](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)。 在下面的示例中，正在将数据库 IronOreSilicaPrediction 备份到块 blob。 
+Azure SQL Edge 支持备份到页 blob 和块 blob。 有关详细信息，请参阅[备份到块 blob 和页 blob](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)。 在下面的示例中，将数据库*IronOreSilicaPrediction*备份到块 blob。 
 
-1. 将备份配置为块 blob 的第一步是生成共享访问签名 (SAS) 令牌，该令牌可用于在 Azure SQL Edge 上创建 SQL Server 凭据。 该脚本创建了与存储访问策略关联的共享访问签名。 有关详细信息，请参阅[共享访问签名，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。 此脚本还编写在 SQL Server 上创建凭据时所需的 T-SQL 命令。 以下脚本假设你已有一个 Azure 订阅，并有一个用于备份的存储帐户和存储容器。
+1. 若要将备份配置为阻止 blob，请首先生成共享访问签名（SAS）令牌，该令牌可用于在 Azure SQL Edge 上创建 SQL Server 凭据。 此脚本创建与存储访问策略相关联的 SAS。 有关详细信息，请参阅[共享访问签名，第1部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。 此脚本还编写在 SQL Server 上创建凭据时所需的 T-SQL 命令。 以下脚本假设已有一个 Azure 订阅和一个存储帐户，以及一个用于备份的存储容器。
 
     ```PowerShell
     # Define global variables for the script  
@@ -107,9 +108,9 @@ Azure SQL Edge 支持备份到页 blob 和块 blob。 有关页 blob 和块 blob
     Write-Host $tSql
     ```
 
-    成功运行脚本后，将 CREATE CREDENTIAL 命令复制到查询工具，连接到一个 SQL Server 实例并运行该命令以创建使用共享访问签名的凭据。
+    成功运行脚本后，将命令复制 `CREATE CREDENTIAL` 到查询工具。 然后，连接到 SQL Server 实例，并运行命令，以使用 SAS 创建凭据。
 
-2. 使用 SQL Server Management Studio (SSMS) 或使用 Azure Data Studio (ADS) 连接到 Azure SQL Edge 实例，并使用上一步骤中的命令创建凭据。 确保将 CREATE CREDENTIAL 命令替换为上一步骤中的实际输出。
+2. 使用 SSMS 或 Azure Data Studio 连接到 Azure SQL Edge 实例，并使用上一步中的命令创建凭据。 请确保将命令替换为 `CREATE CREDENTIAL` 上一步中的实际输出。
 
     ```sql
     IF NOT EXISTS  
@@ -129,21 +130,21 @@ Azure SQL Edge 支持备份到页 blob 和块 blob。 有关页 blob 和块 blob
     GO
     ```
 
-## <a name="restoring-a-database-in-azure-sql-edge"></a>在 Azure SQL Edge 中还原数据库
+## <a name="restore-a-database-in-azure-sql-edge"></a>在 Azure SQL Edge 中还原数据库
 
-Azure SQL Edge 支持从本地磁盘、网络位置或从 Azure Blob 存储帐户还原。 若要大致了解 SQL Server 中的还原和恢复，请参阅[还原和恢复概述](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)。 若要大致了解 SQL Server 中的简单恢复模式，请参阅[完整数据库还原（简单恢复模式）](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)。
+在 Azure SQL Edge 中，可以从本地磁盘、网络位置或 Azure Blob 存储帐户进行还原。 有关 SQL Server 中的还原和恢复的详细信息，请参阅[还原和恢复概述](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)。 有关 SQL Server 中的简单恢复模式的概述，请参阅[完整数据库还原（简单恢复模式）](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)。
 
-### <a name="restore-from-local-disk"></a>从本地磁盘还原
+### <a name="restore-from-a-local-disk"></a>从本地磁盘还原
 
-此示例使用在上一个示例中执行的 IronOreSilicaPrediction 备份作为具有不同名称的新数据库进行还原。
+此示例使用在前面的示例中创建的*IronOreSilicaPrediction*备份。 现在，你将使用不同的名称将其还原为新数据库。
 
-1. 如果容器中还没有数据库备份文件，可以使用下面的命令将文件复制到容器中。 下面的示例假定备份文件存在于本地主机上，并且被复制到名为 sql1 的 Azure SQL Edge 容器的 /var/opt/mssql/backup 文件夹中。
+1. 如果数据库备份文件尚不在容器中，则可以使用以下命令将文件复制到容器中。 以下示例假定备份文件存在于本地主机上，并将复制到/var/opt/mssql/backup 文件夹到名为*sql1*的 Azure SQL Edge 容器。
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. 使用 SQL Server Management Studio (SSMS) 或使用 Azure Data Studio (ADS) 连接到 Azure SQL Edge 实例，以执行还原命令。 在下面的示例中，将还原 IronOrePredictDB.bak，以创建新数据库 IronOreSilicaPrediction_2
+2. 使用 SSMS 或 Azure Data Studio 连接到 Azure SQL Edge 实例，以运行还原命令。 在下面的示例中， **IronOrePredictDB**将还原为创建新数据库**IronOreSilicaPrediction_2**。
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'
@@ -154,7 +155,7 @@ Azure SQL Edge 支持从本地磁盘、网络位置或从 Azure Blob 存储帐�
     MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_2.ldf'
     ```
 
-3. 运行还原命令后，如果还原操作成功，则会在输出窗口中看到类似于以下内容的消息。 
+3. 运行 restore 命令后，如果还原操作成功，将在 "输出" 窗口中看到类似于以下内容的消息。 
 
     ```txt
     Processed 51648 pages for database 'IronOreSilicaPrediction_2', file 'IronOreSilicaPrediction' on file 1.
@@ -166,7 +167,7 @@ Azure SQL Edge 支持从本地磁盘、网络位置或从 Azure Blob 存储帐�
 
 ### <a name="restore-from-url"></a>从 URL 还原
 
-Azure SQL Edge 还支持从 Azure 存储帐户还原数据库。 可以从块 blob 或页 blob 备份执行还原。 在下面提供的示例中，将还原块 blob 上的 IronOreSilicaPrediction_2020_04_16.bak 数据库备份文件，以创建数据库 IronOreSilicaPrediction_3。
+Azure SQL Edge 还支持从 Azure 存储帐户还原数据库。 可以从块 blob 或页 blob 备份还原。 在下面的示例中，将还原块 blob 上的*IronOreSilicaPrediction_2020_04_16 .bak*数据库备份文件，以创建数据库， *IronOreSilicaPrediction_3*。
 
 ```sql
 RESTORE DATABASE IronOreSilicaPrediction_3

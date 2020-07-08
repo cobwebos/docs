@@ -1,10 +1,9 @@
 ---
-title: 可用性组概述
-description: 本文介绍 Azure 虚拟机上的 SQL Server 可用性组。
+title: SQL Server Always On 可用性组概述
+description: 本文介绍 Azure 虚拟机上的 SQL Server Always On 可用性组。
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -15,25 +14,25 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62dce0204f77ab65473fc1735015e41f483dddb1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036948"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669267"
 ---
-# <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>介绍 Azure 虚拟机上的 SQL Server 可用性组
+# <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>在 Azure 虚拟机上引入 SQL Server Always On 可用性组
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文介绍 Azure 虚拟机上的 SQL Server 可用性组。 
 
 Azure 虚拟机上的 Always On 可用性组类似于本地的 Always On 可用性组。 有关详细信息，请参阅 [Always On 可用性组 (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)。 
 
-此关系图说明了 Azure 虚拟机中完整 SQL Server 可用性组的部件。
+下图说明了 Azure 虚拟机中完整 SQL Server 可用性组的各个部分。
 
 ![可用性组](./media/availability-group-overview/00-EndstateSampleNoELB.png)
 
-Azure 虚拟机中可用性组的主要区别是 Azure 虚拟机需要[负载均衡器](../../../load-balancer/load-balancer-overview.md)。 负载均衡器保留可用性组侦听器的 IP 地址。 如果有多个可用性组，则每个组都需要一个侦听器。 一个负载均衡器可以支持多个侦听器。
+Azure 虚拟机上的可用性组的主要差别在于，这些虚拟机（Vm）需要[负载均衡器](../../../load-balancer/load-balancer-overview.md)。 负载均衡器保留可用性组侦听器的 IP 地址。 如果有多个可用性组，则每个组都需要一个侦听器。 一个负载均衡器可以支持多个侦听器。
 
 此外，在 Azure IaaS VM 来宾故障转移群集上，建议为每个服务器（群集节点）设置一个 NIC，并且只使用一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
 
@@ -43,19 +42,22 @@ Azure 虚拟机中可用性组的主要区别是 Azure 虚拟机需要[负载均
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | [SQL VM CLI](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
 | [快速启动模板](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
-| [门户模板](availability-group-azure-marketplace-template-configure.md) | 2016 </br>2012 R2 | 2016</br>2014 | 企业版 | 文件共享 | 否 | 否 | 否 | 否 | 否 | 否 |
 | [手动](availability-group-manually-configure-prerequisites-tutorial.md) | All | All | All | All | 是 | 是 | 是 | 是 | 是 | 是 |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
+**SQL Server AlwaysOn 群集（预览版）** 模板已从 Azure Marketplace 中删除并且不再可用。 
 
 准备好在 Azure 虚拟机上生成 SQL Server 可用性组时，请参阅这些教程。
 
 ## <a name="manually-with-azure-cli"></a>使用 Azure CLI 手动生成
-建议使用 Azure CLI 来配置和部署可用性组，因为这种方式最简单、部署速度最快。 使用 Azure CLI 中，创建 Windows 故障转移群集、将 SQL Server VM 加入群集以及创建侦听器和内部负载均衡器均可在 30 分钟内完成。 此选项仍然需要手动创建可用性组，但会自动完成所有其他必要的配置步骤。 
+
+建议使用 Azure CLI 来配置和部署可用性组，因为它是最简单、最快捷的部署。 使用 Azure CLI 中，创建 Windows 故障转移群集、将 SQL Server VM 加入群集以及创建侦听器和内部负载均衡器均可在 30 分钟内完成。 此选项仍需要手动创建可用性组，但它会自动执行所有其他必要的配置步骤。 
 
 有关详细信息，请参阅[使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 配置 Always On 可用性组](availability-group-az-cli-configure.md)。 
 
 ## <a name="automatically-with-azure-quickstart-templates"></a>使用 Azure 快速启动模板自动生成
-Azure 快速启动模板使用 SQL VM 资源提供程序来创建 Windows 故障转移群集、将 SQL Server VM 加入到该群集、创建侦听器以及配置内部负载均衡器。 此选项仍然需要手动创建可用性组和内部负载均衡器 (ILB)，但会自动执行和简化所有其他必要的配置步骤（包括配置 ILB）。 
+
+Azure 快速启动模板使用 SQL VM 资源提供程序来创建 Windows 故障转移群集、将 SQL Server VM 加入到该群集、创建侦听器以及配置内部负载均衡器。 此选项仍需要手动创建可用性组和内部负载均衡器（ILB）。 但是，它会自动执行并简化所有其他必要的配置步骤，包括 ILB 配置。 
 
 有关详细信息，请参阅[使用 Azure 快速启动模板为 Azure VM 上的 SQL Server 配置 Always On 可用性组](availability-group-quickstart-template-configure.md)。
 
@@ -65,7 +67,7 @@ Azure 快速启动模板使用 SQL VM 资源提供程序来创建 Windows 故障
 [在 Azure VM 中自动配置 Always On 可用性组 - Resource Manager](availability-group-azure-marketplace-template-configure.md)
 
 
-## <a name="manually-in-azure-portal"></a>在 Azure 门户手动生成
+## <a name="manually-in-the-azure-portal"></a>在 Azure 门户中手动
 
 还可以不使用模板自行创建虚拟机。 首先完成先决条件，然后创建可用性组。 请参阅下列主题： 
 

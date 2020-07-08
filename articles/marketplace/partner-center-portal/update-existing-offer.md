@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285140"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057953"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>在商业市场中更新现有的套餐
 
@@ -37,20 +36,29 @@ ms.locfileid: "80285140"
 > [!IMPORTANT]
 > 你必须在产品/服务预览版可用后查看它，并选择 "**上线**" 以将更新的产品/服务发布到目标受众（公共或私有）。
 
+## <a name="add-a-plan-to-an-existing-offer"></a>向现有产品/服务添加计划
+
+若要在已发布的现有产品/服务中添加新计划：
+
+1. 在现有产品/服务的 "**产品/服务概述**" 页打开后，请单击 "**计划概述**" 页，然后选择 "**创建新计划**"。
+1. 使用**现有计划定价模型**根据[准则](./create-new-saas-offer.md#plan-overview)创建新计划。
+1. 更改计划名称后，选择 "**保存草稿**"。 
+1. 准备好发布更新后，选择 "**发布**"。 此时将打开 "**[查看并发布](#review-and-publish-an-updated-offer)**" 页，并提供更新的完成状态。
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>在现有产品中更新计划
 
 若要对已发布的现有产品/服务中的计划进行更改：
 
-- 在 "**产品/服务概述**" 页打开现有产品/服务后，选择要更改的计划。 如果无法从**计划概述**列表访问该计划，请选择 "**查看所有计划**"。
-- 你可以选择 "计划**名称**"、"**定价模型**" 或 "**可用性**"。 *目前计划仅提供英语（美国）*。
-- 对计划名称、说明、定价或受众可用性进行任何必要的更改后，选择 "**保存**"。 
-- 准备好发布更新后，选择 "**发布**"。 "**[查看并发布](#review-and-publish-an-updated-offer)**" 页面将打开，并提供更新的完成状态。
+1. 在现有产品/服务的 "**产品/服务概述**" 页打开后，选择要更改的计划。 如果无法从**计划概述**列表访问该计划，请选择 "**查看所有计划**"。
+1. 你可以选择 "计划**名称**"、"**定价模型**" 或 "**可用性**"。 *目前，计划仅提供英语（美国）*。
+1. 对计划名称、说明或访问群体可用性进行任何必要的更改后，选择 "**保存**"。 
+1. 准备好发布更新后，选择 "**发布**"。 此时将打开 "**[查看并发布](#review-and-publish-an-updated-offer)**" 页，并提供更新的完成状态。
 
 ## <a name="compare-changes-to-marketplace-offers"></a>将更改与 marketplace 产品/服务进行比较
 
-你可以在使用 "**比较**" 进行实时更改之前，审核你对[已发布](#compare-changes-to-published-offer)或[预览](#compare-changes-to-a-preview-offer)产品/服务所做的更改。
+通过使用 "**比较**"，可以在将[发布](#compare-changes-to-published-offer)或[预览](#compare-changes-to-a-preview-offer)提议投入使用之前对其进行审核。
 
->[!NOTE]
+> [!NOTE]
 > 已发布的产品/服务已成功发布到预览或实时状态。
 
 有关常规审核信息，请参阅以下内容：
@@ -122,9 +130,9 @@ ms.locfileid: "80285140"
 
 使用 "**发布正在进行**" 状态取消产品/服务：
 
-- 选择产品/服务名称以打开 "**产品/服务概述**" 页。
-- 选择页面右上角的 "**取消发布**"。
-- 确认要阻止发布产品/服务。
+1. 选择产品/服务名称以打开 "**产品/服务概述**" 页。
+1. 选择页面右上角的 "**取消发布**"。
+1. 确认要阻止发布产品/服务。
 
 如果希望以后发布该产品/服务，则需要启动发布过程。
 

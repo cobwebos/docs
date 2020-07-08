@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650917"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036978"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
@@ -33,7 +32,7 @@ ms.locfileid: "77650917"
 为了获得最佳查询性能，请遵循以下经验法则：
 
 * 不要发送不必要的属性。 时序见解预览版按使用量收费。 最好仅存储和处理你要查询的数据。
-* 对于静态数据，请使用实例字段。 此做法有助于避免通过网络发送静态数据。 实例字段是时序模型的组件，其工作方式类似于时序见解正式版服务中的参考数据。 若要详细了解实例字段，请阅读[时序模型](./time-series-insights-update-tsm.md)。
+* 对于静态数据，请使用实例字段。 此做法有助于避免通过网络发送静态数据。 实例字段是时序模型的组件，其工作方式类似于时序见解正式版服务中的参考数据。 若要详细了解实例字段，请阅读[时序模型](./concepts-model-overview.md)。
 * 在两个或多个事件中共享维度属性。 此做法可以更有效地通过网络发送数据。
 * 不要使用深层数组嵌套。 时序见解预览版最多支持两个级别的包含对象的嵌套数组。 时序见解预览版会将消息中的数组平展成包含属性值对的多个事件。
 * 如果所有或大多数事件只存在几个度量，最好是在同一个对象中将这些度量作为单独的属性发送。 单独发送度量可以减少事件数目，并可能会提高查询的效率，因为要处理的事件更少。
@@ -95,7 +94,7 @@ ms.locfileid: "77650917"
 
 **要点：**
 
-* 示例 JSON 有一个外层数组，它使用[时序实例](./time-series-insights-update-tsm.md#time-series-model-instances)数据来提高消息的效率。 尽管时序实例设备元数据不可能发生更改，但它通常可为数据分析提供有用的属性。
+* 示例 JSON 有一个外层数组，它使用[时序实例](./concepts-model-overview.md#time-series-model-instances)数据来提高消息的效率。 尽管时序实例设备元数据不可能发生更改，但它通常可为数据分析提供有用的属性。
 
 * JSON 将两条或更多消息（每个设备一条）组合成单个有效负载，从而随着时间的推移节省带宽。
 
@@ -106,7 +105,7 @@ ms.locfileid: "77650917"
 
 #### <a name="time-series-instance"></a>时序实例 
 
-接下来，我们将详细介绍如何使用[时序实例](./time-series-insights-update-tsm.md#time-series-model-instances)来更好地塑造 JSON。 
+接下来，我们将详细介绍如何使用[时序实例](./concepts-model-overview.md#time-series-model-instances)来更好地塑造 JSON。 
 
 > [!NOTE]
 > 下面的[时序 ID](./time-series-insights-update-how-to-id.md) 是 *deviceId*。

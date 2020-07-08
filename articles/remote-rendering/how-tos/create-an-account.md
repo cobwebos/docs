@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844499"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057664"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>创建“Azure 远程渲染”帐户
 
@@ -28,20 +27,24 @@ ms.locfileid: "83844499"
     1. 将“资源名称”设置为帐户的名称
     1. 如有必要，更新“订阅”
     1. 将“资源组”设置为所选的资源组
+    1. 从 "位置" 下拉列表中选择要在其中创建此资源的区域。 请参阅下面的[帐户区域](create-an-account.md#account-regions)中的备注。
 1. 创建帐户后，导航到该帐户，然后执行以下操作：
     1. 在“概述”选项卡中，记下“帐户 ID”
     1. 在“设置”>“访问密钥”选项卡中，记下“主密钥”，它是帐户的机密帐户密钥
+
+### <a name="account-regions"></a>帐户区域
+帐户创建过程中在帐户创建期间指定的位置确定帐户资源分配到的区域。 创建后无法更改此。 但是，无论帐户的位置如何，都可以使用该帐户连接到任何[受支持的区域](./../reference/regions.md)中的远程呈现会话。
 
 ### <a name="retrieve-the-account-information"></a>检索帐户信息
 
 示例和教程要求提供帐户 ID 和密钥。 例如，在 PowerShell 示例脚本所使用的 arrconfig.json 文件中：
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 若要填写“区域”选项，请参阅[可用区域列表](../reference/regions.md)。
@@ -89,6 +92,7 @@ ms.locfileid: "83844499"
 > 如果未列出远程渲染帐户，请参阅此[疑难解答部分](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)。
 
 对于“角色”下拉列表中的相应选择，请重复添加新角色两次：
+
 * **存储帐户参与者**
 * **存储 Blob 数据参与者**
 

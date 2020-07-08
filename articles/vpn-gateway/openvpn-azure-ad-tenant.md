@@ -4,15 +4,14 @@ description: 可以使用 P2S VPN 通过 Azure AD 身份验证连接到 VNet
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: alzam
-ms.openlocfilehash: 00db2ed05285a1637414aa1e3adbe3b047ff0568
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2dda6cb84fc881b4ca628ff1cecdec7c00555e8b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641350"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85414295"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
@@ -91,38 +90,26 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
-8. 如果还没有正常运行的“点到站点”环境，请按照说明创建一个。 请参阅[创建点到站点 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)，以创建和配置使用本机 Azure 证书身份验证的点到站点 VPN 网关。 
+8. 如果还没有正常运行的“点到站点”环境，请按照说明创建一个。 请参阅[创建点到站点 vpn](vpn-gateway-howto-point-to-site-resource-manager-portal.md) ，创建和配置点到站点 vpn 网关。 
 
     > [!IMPORTANT]
     > OpenVPN 不支持基本 SKU。
 
-9. 运行以下命令（请务必修改命令来反映自己的环境），在 VPN 网关上启用 Azure AD 身份验证：
+9. 通过导航到 "**点到站点配置**" 并选择 " **OpenVPN （SSL）** " 作为**隧道类型**，在 VPN 网关上启用 Azure AD 身份验证。 选择 " **Azure Active Directory**作为**身份验证类型**，然后填写**Azure Active Directory**部分下的信息。
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
-    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>/" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
-    ```
+    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png)
+
 
    > [!NOTE]
-   > 请确保在`AadIssuerUri`值的末尾包含尾随斜杠。 否则，该命令将失败。
+   > 请确保在值的末尾包含尾随斜杠 `AadIssuerUri` 。 否则，连接可能会失败。
 
-10. 运行以下命令来创建并下载配置文件。 请更改 -ResourceGroupName 和 -Name 值，使之与你自己的值匹配。
+10. 单击 "**下载 VPN 客户端**" 链接，创建并下载配置文件。
 
-    ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
-    $PROFILE.VpnProfileSASUrl
-    ```
+11. 解压缩已下载的 zip 文件。
 
-11. 运行这些命令后，会看到如下所示的结果。 将结果 URL 复制到浏览器，以下载 zip 配置文件。
+12. 浏览到解压缩后的“AzureVPN”文件夹。
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/profile.png)
-
-12. 解压缩已下载的 zip 文件。
-
-13. 浏览到解压缩后的“AzureVPN”文件夹。
-
-14. 记下“azurevpnconfig.xml”文件的位置。 azurevpnconfig.xml 包含 VPN 连接的设置，可以直接导入到 Azure VPN 客户端应用程序中。 还可以将此文件分发给需要通过电子邮件或其他方式建立连接的所有用户。 用户需有有效的 Azure AD 凭据才能成功建立连接。
+13. 记下“azurevpnconfig.xml”文件的位置。 azurevpnconfig.xml 包含 VPN 连接的设置，可以直接导入到 Azure VPN 客户端应用程序中。 还可以将此文件分发给需要通过电子邮件或其他方式建立连接的所有用户。 用户需有有效的 Azure AD 凭据才能成功建立连接。
 
 ## <a name="next-steps"></a>后续步骤
 

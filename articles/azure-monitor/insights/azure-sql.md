@@ -7,12 +7,11 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275459"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249408"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -41,9 +40,9 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics 选项
 
-下表概述了 Azure SQL Analytics 仪表板的两个版本支持的选项，一种用于单个数据库和池中的数据库和弹性池，另一个用于托管实例和实例数据库。
+下表概述了 Azure SQL Analytics 仪表板的两个版本的支持选项，一个适用于 Azure SQL 数据库，另一个用于 Azure SQL 托管实例数据库。
 
-| Azure SQL Analytics 选项 | 说明 | 单一数据库和池数据库和弹性池支持 | 托管实例和实例数据库支持 |
+| Azure SQL Analytics 选项 | 描述 | SQL Database 支持 | SQL 托管实例支持 |
 | --- | ------- | ----- | ----- |
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
 | 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
@@ -58,11 +57,11 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 使用[从解决方案库中添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，将 Azure SQL Analytics （预览版）添加到 Log Analytics 工作区。
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>将 Azure SQL 数据库配置为流式传输诊断遥测
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>将 Azure SQL 数据库配置为流式传输诊断遥测
 
 在工作区中创建 Azure SQL Analytics 解决方案后，需要配置要监视的**每个**资源，以将其诊断遥测流式传输到 Azure SQL Analytics 中。 请遵循此页面上的详细说明：
 
-- 为 Azure SQL 数据库启用 Azure 诊断，以便[将诊断遥测数据流式传输到 Azure SQL Analytics](../../sql-database/sql-database-metrics-diag-logging.md)。
+- 启用数据库 Azure 诊断，以将[诊断遥测流式传输到 Azure SQL Analytics](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)。
 
 上述页面还提供了有关启用通过单个 Azure SQL Analytics 工作区，在单个视图中监视多个 Azure 订阅的支持。
 
@@ -72,13 +71,13 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 
 ![Azure SQL Analytics“摘要”磁贴](./media/azure-sql/azure-sql-sol-tile-01.png)
 
-加载后，该磁贴将显示单个和共用数据库、弹性池、托管实例以及 Azure SQL Analytics 接收诊断遥测的托管实例数据库的数目。
+加载后，该磁贴会显示 SQL 数据库中的数据库和弹性池的数量，以及 SQL 托管实例中的托管实例和实例数据库，Azure SQL Analytics 接收诊断遥测。
 
 ![“Azure SQL Analytics”磁贴](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Azure SQL Analytics 提供了两个单独的视图，一个用于监视单一数据库和池数据库和弹性池，另一个视图用于监视托管实例和实例数据库。
+Azure SQL Analytics 提供了两个单独的视图，一个用于监视 SQL 数据库，另一个用于监视 SQL 托管实例。
 
-若要查看单数据库和池中的数据库和弹性池 Azure SQL Analytics 监视仪表板，请单击该磁贴的上半部分。 若要查看托管实例和实例数据库 Azure SQL Analytics 监视仪表板，请单击磁贴下半部分。
+若要查看 SQL 数据库 Azure SQL Analytics 监视仪表板，请单击磁贴上部的部分。 若要查看 SQL 托管实例 Azure SQL Analytics 监视仪表板，请单击磁贴的下半部分。
 
 ### <a name="viewing-azure-sql-analytics-data"></a>查看 Azure SQL Analytics 数据
 
@@ -86,7 +85,7 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视单一数
 
 如果某些指标或日志未流式传输到 Azure Monitor，则 Azure SQL Analytics 中的磁贴不会填充监视信息。
 
-### <a name="single-and-pooled-databases-and-elastic-pools-view"></a>单个和共用数据库与弹性池视图
+### <a name="sql-database-view"></a>SQL 数据库视图
 
 选择数据库的 Azure SQL Analytics 磁贴后，会显示监视仪表板。
 
@@ -98,7 +97,7 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视单一数
 
 此视图中的每个透视都提供了订阅、服务器、弹性池和数据库级别的汇总。 此外，每个透视在右侧都显示了特定于透视的报表。 从列表选择订阅、服务器、池或数据库会继续向下钻取。
 
-### <a name="managed-instance-and-instances-databases-view"></a>托管实例和实例数据库视图
+### <a name="sql-managed-instance-view"></a>SQL 托管实例视图
 
 选择数据库的 Azure SQL Analytics 磁贴后，会显示监视仪表板。
 
@@ -106,13 +105,13 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视单一数
 
 选择任意磁贴，打开特定透视的向下钻取报告。 选择透视后，可看到向下钻取报表。
 
-选择 "托管实例" 视图，将显示有关托管实例利用率、其包含的数据库和通过实例执行的查询的遥测数据的详细信息。
+选择 "SQL 托管实例" 视图，将显示有关托管实例利用率、其包含的数据库和通过实例执行的查询的遥测数据的详细信息。
 
 ![Azure SQL Analytics 超时](./media/azure-sql/azure-sql-sol-metrics-mi.png)
 
 ### <a name="intelligent-insights-report"></a>智能见解报告
 
-使用 Azure SQL 数据库 [Intelligent Insights](../../sql-database/sql-database-intelligent-insights.md)，可以了解所有 Azure SQL 数据库的性能状况。 可通过见解透视，对收集的所有智能见解进行可视化和访问。
+使用 Azure SQL 数据库 [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md)，可以了解所有 Azure SQL 数据库的性能状况。 可通过见解透视，对收集的所有智能见解进行可视化和访问。
 
 ![Azure SQL Analytics 见解](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -170,7 +169,7 @@ Azure SQL Analytics 提供了两个单独的视图，一个用于监视单一数
 
 ## <a name="analyze-data-and-create-alerts"></a>分析数据和创建警报
 
-Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Analytics 语言](../log-query/get-started-queries.md)。 在[可用的指标和日志](../../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available)中查看从数据库资源收集的、用于自定义查询的数据的说明。
+Azure SQL Analytics 中的数据分析基于自定义查询和报告的 [Log Analytics 语言](../log-query/get-started-queries.md)。 在[可用的指标和日志](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md#metrics-and-logs-available)中查看从数据库资源收集的、用于自定义查询的数据的说明。
 
 Azure SQL Analytics 中的自动警报基于编写一个 Log Analytics 查询，该查询在满足条件时触发警报。 在下面的几个示例中查找 Log Analytics 查询，可以在 Azure SQL Analytics 中设置警报。
 
@@ -178,7 +177,7 @@ Azure SQL Analytics 中的自动警报基于编写一个 Log Analytics 查询，
 
 可以使用来自 Azure SQL 数据库资源的数据轻松[创建警报](../platform/alerts-metric.md)。 以下是部分有用的可用于日志警报的[日志查询](../log-query/log-query-overview.md)：
 
-#### <a name="high-cpu-on-azure-sql-database"></a>Azure SQL 数据库的 CPU 利用率较高
+#### <a name="high-cpu"></a>CPU 使用率过高
 
 ```
 AzureMetrics
@@ -194,7 +193,7 @@ AzureMetrics
 > - 设置此警报的先决条件是监视的数据库会将基本指标流式传输到 Azure SQL Analytics。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
-#### <a name="high-cpu-on-azure-sql-database-elastic-pools"></a>Azure SQL 数据库弹性池的 CPU 利用率较高
+#### <a name="high-cpu-on-elastic-pools"></a>弹性池上的高 CPU
 
 ```
 AzureMetrics
@@ -210,7 +209,7 @@ AzureMetrics
 > - 设置此警报的先决条件是监视的数据库会将基本指标流式传输到 Azure SQL Analytics。
 > - 若要改为获取高 DTU 结果，请将 MetricName 值 cpu_percent 替换为 dtu_consumption_percent。
 
-#### <a name="azure-sql-database-storage-in-average-above-95-in-the-last-1-hr"></a>Azure SQL 数据库存储在过去 1小时的平均值超过 95%
+#### <a name="storage-in-average-above-95-in-the-last-1-hr"></a>过去1小时内平均超过95% 的存储空间
 
 ```
 let time_range = 1h;
@@ -254,9 +253,9 @@ AzureDiagnostics
 | distinct rootCauseAnalysis_s
 ```
 
-### <a name="creating-alerts-for-managed-instances"></a>为托管实例创建警报
+### <a name="creating-alerts-for-sql-managed-instance"></a>为 SQL 托管实例创建警报
 
-#### <a name="managed-instance-storage-is-above-90"></a>托管实例存储超过90%
+#### <a name="storage-is-above-90"></a>存储超过90%
 
 ```
 let storage_percentage_threshold = 90;
@@ -272,7 +271,7 @@ AzureDiagnostics
 > - 设置此警报的先决条件在于，监视托管实例是否已启用 ResourceUsageStats 日志流式处理，以便 Azure SQL Analytics。
 > - 此查询需要设置警报规则，以便在查询中存在现有结果（> 结果）时发出警报，这表示该条件存在于托管实例上。 输出是托管实例上的存储占用百分比。
 
-#### <a name="managed-instance-cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>托管实例 CPU 平均消耗在过去1小时内超过95%
+#### <a name="cpu-average-consumption-is-above-95-in-the-last-1-hr"></a>CPU 平均消耗在过去1小时内超过95%
 
 ```
 let cpu_percentage_threshold = 95;

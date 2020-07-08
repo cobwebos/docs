@@ -8,10 +8,9 @@ ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
 ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869947"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure 应用服务诊断概述
@@ -24,7 +23,7 @@ ms.locfileid: "81869947"
 
 ## <a name="open-app-service-diagnostics"></a>打开应用服务诊断
 
-若要访问应用服务诊断，请导航到应用服务 web 应用或[Azure 门户](https://portal.azure.com)中的应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。****
+若要访问应用服务诊断，请导航到应用服务 web 应用或[Azure 门户](https://portal.azure.com)中的应用服务环境。 在左侧导航栏中，单击“诊断并解决问题”。
 
 对于 "Azure Functions"，导航到 function app，然后在顶部导航栏中，单击 "**平台功能**"，然后从 "**资源管理**" 部分选择 "**诊断和解决问题**"。
 

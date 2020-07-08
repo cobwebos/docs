@@ -10,17 +10,16 @@ ms.date: 07/01/2019
 ms.reviewer: zivr
 ms.custom: mimckitt
 ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727091"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>预览版：使用 PowerShell 创建和使用邻近放置组
 
 为了使 VM 尽可能接近，以尽可能降低延迟，应该在[邻近放置组](co-location.md#preview-proximity-placement-groups)中部署规模集。
 
-邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 邻近放置组适用于要求低延迟的工作负荷。
+邻近放置组是一种逻辑分组，用于确保 Azure 计算资源在物理上彼此靠近。 邻近放置组用于要求低延迟的工作负荷。
 
 > [!IMPORTANT]
 > 邻近放置组目前为公共预览版。
@@ -83,4 +82,4 @@ New-AzVmss `
 
 ## <a name="next-steps"></a>后续步骤
 
-还可以使用 [Azure CLI](../virtual-machines/linux/proximity-placement-groups.md) 创建邻近放置组。
+也可使用 [Azure CLI](../virtual-machines/linux/proximity-placement-groups.md) 创建邻近放置组。

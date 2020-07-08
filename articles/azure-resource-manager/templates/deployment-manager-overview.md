@@ -4,12 +4,11 @@ description: 介绍如何使用 Azure 部署管理器在多个区域部署服务
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152521"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057919"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>使用 Azure 部署管理器启用安全部署实践（公共预览版）
 
@@ -28,14 +27,14 @@ Azure 部署管理器处于预览阶段。 提供[反馈](https://aka.ms/admfeed
 
 请在部署推出模板之前部署拓扑模板。
 
-其他资源：
+更多资源：
 
-- [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+- [Azure 部署管理器 REST API 参考](/rest/api/deploymentmanager/)。
 - [教程：将 Azure 部署管理器用于资源管理器模板](./deployment-manager-tutorial.md)。
 - [教程：使用 Azure 部署管理器中的运行状况检查](./deployment-manager-tutorial-health-check.md)。
 - [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
-## <a name="identity-and-access"></a>身份标识和访问控制
+## <a name="identity-and-access"></a>标识和访问
 
 利用资源管理器，[用户分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)可执行部署操作。 请开始部署之前创建此标识。 它必须有权访问要将服务部署到的订阅并具有足够权限来完成部署。 有关通过角色授予的操作的详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -193,7 +192,7 @@ Azure 部署管理器处于预览阶段。 提供[反馈](https://aka.ms/admfeed
 
 ### <a name="steps"></a>步骤
 
-可以定义在部署操作之前或之后执行的步骤。 目前，只有`wait`步骤和 "healthCheck" 步骤可用。
+可以定义在部署操作之前或之后执行的步骤。 目前，只有 `wait` 步骤和 "healthCheck" 步骤可用。
 
 wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在部署下一个服务单位之前验证服务是否按预期运行。 以下示例显示了 wait 步骤的一般格式。
 
@@ -300,7 +299,7 @@ wait 步骤将先暂停部署，然后才能继续部署。 此步骤允许在�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

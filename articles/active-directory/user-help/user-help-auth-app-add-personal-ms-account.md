@@ -13,7 +13,6 @@ ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83741629"
@@ -62,7 +61,7 @@ ms.locfileid: "83741629"
 1. 使用相应的电子邮件地址（如 alain@outlook.com）登录个人帐户，然后选择“下一步”。
 
     >[!Note]
-    >如果没有 Microsoft 个人帐户，[可以创建一个](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index)。
+    >如果没有 Microsoft 个人帐户，[可以创建一个](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3D www.bing.com&destrt=home-index)。
 
 1. 输入密码，然后选择“登录”。 此时，个人帐户被添加到 Microsoft Authenticator 应用。
 

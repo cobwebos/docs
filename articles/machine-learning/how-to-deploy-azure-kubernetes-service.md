@@ -1,35 +1,34 @@
 ---
-title: 如何将模型部署到 Azure Kubernetes 服务
+title: 将 ML 模型部署到 Kubernetes 服务
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure Kubernetes 服务将 Azure 机器学习模型部署为 Web 服务。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 01/16/2020
-ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 16465ff823fab1b13f43aec33cb41f9b26b5c054
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811769"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392550"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 了解如何使用 Azure 机器学习将模型部署为 Azure Kubernetes 服务 (AKS) 中的 Web 服务。 Azure Kubernetes 服务适用于大规模的生产部署。 如果需要以下一项或多项功能，请使用 Azure Kubernetes 服务：
 
-- 快速响应时间  。
-- 自动缩放已部署的服务  。
-- 硬件加速选项，如 GPU 和现场可编程门阵列 (FPGA)  。
+- 快速响应时间____。
+- 自动缩放已部署的服务____。
+- 硬件加速选项，如 GPU 和现场可编程门阵列 (FPGA)____。
 
 > [!IMPORTANT]
 > 群集缩放并非通过 Azure 机器学习 SDK 提供。 如需深入了解如何缩放 AKS 群集中的节点，请参阅[缩放 AKS 群集中的节点计数](../aks/scale-cluster.md)。
 
-部署到 Azure Kubernetes 服务时，将部署到连接到工作区的 AKS 群集  。 有两种方法可将 AKS 群集连接到工作区：
+部署到 Azure Kubernetes 服务时，将部署到连接到工作区的 AKS 群集____。 有两种方法可将 AKS 群集连接到工作区：
 
 * 使用 Azure 机器学习 SDK、机器学习 CLI 或 [Azure 机器学习工作室](https://ml.azure.com)创建 AKS 群集。 此过程会自动将群集连接到工作区。
 * 将现有的 AKS 群集附加到 Azure 机器学习工作区。 可使用 Azure 机器学习 SDK、机器学习 CLI 或 Azure 机器学习工作室来附加群集。
@@ -45,7 +44,7 @@ ms.locfileid: "80811769"
 
 - [机器学习服务的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)、[Azure 机器学习 Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或 [Azure 机器学习 Visual Studio Code 扩展](tutorial-setup-vscode-extension.md)。
 
-- 本文中的 Python 代码片段假设设置了以下变量  ：
+- 本文中的 Python 代码片段假设设置了以下变量____：
 
     * `ws` - 设置为工作区。
     * `model` - 设置为注册的模型。
@@ -53,7 +52,7 @@ ms.locfileid: "80811769"
 
     有关如何设置这些变量的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档  。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+- 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档____。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ## <a name="create-a-new-aks-cluster"></a>创建新的 AKS 群集
 
@@ -64,7 +63,7 @@ ms.locfileid: "80811769"
 > [!TIP]
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，则必须先创建虚拟网络。 有关详细信息，请参阅 [Azure 虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
 
-如果要创建 AKS 群集以用于开发、验证和测试而非生产，则可以将“群集用途”指定为“开发测试”      。
+如果要创建 AKS 群集以用于开发、验证和测试而非生产，则可以将“群集用途”指定为“开发测试”____ ____ ____ ____ ____。
 
 > [!WARNING]
 > 如果设置了 `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`，则所创建的群集不适用于生产级别的流量，并且可能会增加推理时间。 开发/测试群集也不保证容错能力。 对于开发/测试群集，建议至少拥有 2 个虚拟 CPU。
@@ -113,7 +112,7 @@ az ml computetarget create aks -n myaks
 
 ## <a name="attach-an-existing-aks-cluster"></a>附加现有的 AKS 群集
 
-时间估计  ：大约 5 分钟。
+时间估计****：大约 5 分钟。
 
 如果 Azure 订阅中已有 AKS 群集并且其版本为 1.17 或更低版本，则可以使用该群集来部署映像。
 
@@ -131,12 +130,13 @@ az ml computetarget create aks -n myaks
 > [!WARNING]
 > 请勿在工作区中为同一 AKS 群集创建多个同步附件。 例如，使用两个不同的名称将一个 AKS 群集附加到工作区。 每个新附件都会破坏先前存在的附件。
 >
-> 如果要重新附加 AKS 群集（例如，更改 TLS 或其他群集配置设置），则必须先使用[AksCompute （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)删除现有附件。
+> 如果要重新附加 AKS 群集（例如，更改 TLS 或其他群集配置设置），则必须先使用 [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--) 删除现有附件。
 
 有关如何使用 Azure CLI 或门户创建 AKS 群集的详细信息，请参阅以下文章：
 
 * [创建 AKS 群集 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [创建 AKS 群集（门户）](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [创建 AKS 群集（Azure 快速入门模板上的 ARM 模板）](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 以下示例演示如何将现有 AKS 群集附加到工作区：
 
@@ -187,7 +187,7 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
-要将模型部署到 Azure Kubernetes 服务，请创建一个描述所需计算资源的部署配置  。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境  。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+要将模型部署到 Azure Kubernetes 服务，请创建一个描述所需计算资源的部署配置____。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境____。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 ### <a name="using-the-sdk"></a>使用 SDK
 
@@ -234,27 +234,27 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控推出（预览版）将模型部署到 AKS
 
-使用终结点以受控的方式分析和提升模型版本。 最多可以在一个终结点后部署六个版本。 终结点提供以下功能：
+使用终结点以受控的方式分析和提升模型版本。 最多可以在一个终结点后方部署六个版本。 终结点提供以下功能：
 
-* 配置__发送到每个终结点的计分流量百分比__。 例如，将20% 的流量路由到终结点 "test"，将80% 路由到 "生产"。
+* 配置__发送到每个终结点的评分流量百分比__。 例如，将 20% 的流量路由到终结点“test”，将 80% 路由到“production”。
 
     > [!NOTE]
-    > 如果未考虑到100% 的流量，则剩余的百分比将路由到__默认__终结点版本。 例如，如果将终结点版本 "test" 配置为获得10% 的流量，将 "生产" 配置为30%，则剩余的60% 将发送到默认终结点版本。
+    > 如果不按 100% 的流量计算，则所有剩余百分比的流量将路由到默认终结点版本____。 例如，如果将终结点版本“test”配置为获取 10% 的流量，将“prod”配置为 30%，则剩余的 60% 将发送到默认终结点版本。
     >
-    > 创建的第一个终结点版本自动配置为默认版本。 可以通过在创建或更新`is_default=True`终结点版本时设置来更改此设置。
+    > 创建的第一个终结点版本将自动配置为默认版本。 可通过在创建或更新终结点版本时设置 `is_default=True` 来更改此设置。
      
-* 将终结点版本标记为__控制__或__处理__。 例如，当前的生产终结点版本可能是控件，而可能的新模型部署为处理版本。 评估处理版本的性能后，如果一个版本优于当前的控件，则它可能会升级到新的生产/控制。
+* 将终结点版本标记为“对照”或“实验”____ ____。 例如，当前的生产终结点版本可能为“对照”版本，而可能的新模型将部署为“实验”版本。 评估“实验”版本的性能后，如果该版本优于当前的“对照”版本，则其可能会提升为新的生产/对照版本。
 
     > [!NOTE]
-    > 只能有__一个__控件。 您可以有多个治疗。
+    > 只能有一个“对照”版本____。 可以有多个“实验”版本。
 
 可以启用 App Insights 来查看终结点和已部署版本的操作指标。
 
 ### <a name="create-an-endpoint"></a>创建终结点
-做好部署模型的准备后，请创建一个评分终结点，并部署第一个版本。 下面的示例演示如何使用 SDK 部署和创建终结点。 第一个部署将被定义为默认版本，这意味着在所有版本中未指定的流量百分比将会转为默认版本。  
+做好部署模型的准备后，请创建一个评分终结点，并部署第一个版本。 以下示例演示如何使用 SDK 部署和创建终结点。 将第一个部署定义为默认版本，这意味着所有版本中未指定的百分比的流量都将流向默认版本。  
 
 > [!TIP]
-> 在下面的示例中，配置设置了初始终结点版本来处理20% 的流量。 由于这是第一个终结点，因此它也是默认版本。 由于其他80% 的流量没有任何其他版本，它也会路由到默认值。 在部署了采用一定百分比流量的其他版本之前，这一情况实际上接收到100% 的流量。
+> 在下面的示例中，所作配置将初始终结点版本设置为处理 20% 的流量。 由于这是第一个终结点，因此它也是默认版本。 而且，由于我们没有用于处理其余 80% 流量的其他版本，因此这些流量也将其路由到默认版本。 在部署了可处理一定百分比流量的其他版本以前，此版本实际将接收 100% 的流量。
 
 ```python
 import azureml.core,
@@ -282,10 +282,10 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>更新版本并将其添加到终结点
 
-将其他版本添加到终结点，并配置流向该版本的评分流量的百分比。 有两种类型的版本：控制版本和处理版本。 可以使用多个处理版本来帮助对照单个控制版本进行比较。
+将其他版本添加到终结点，并配置流向该版本的评分流量的百分比。 有两种类型的版本：控制版本和处理版本。 可设置多个“实验”版本来帮助进行与单个“对照”版本之间的比较。
 
 > [!TIP]
-> 通过以下代码片段创建的第二个版本接受10% 的流量。 第一个版本配置为20%，因此只为特定版本配置了30% 的流量。 剩余的70% 将发送到第一个终结点版本，因为它也是默认版本。
+> 由以下代码段创建的第二个版本可接受 10% 的流量。 第一个版本配置为 20%，因此总共仅为特定版本配置了 30% 的流量。 剩余的 70% 将发送到第一个终结点版本，因为它也是默认版本。
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -301,10 +301,10 @@ endpoint.create_version(version_name = version_name_add,
 endpoint.wait_for_deployment(True)
 ```
 
-更新或删除终结点中的现有版本。 可更改版本的默认类型、控件类型和流量百分比。 在下面的示例中，第二个版本会将其流量提高到40%，现在为默认值。
+更新或删除终结点中的现有版本。 可更改版本的默认类型、控件类型和流量百分比。 在下面的示例中，第二个版本会将其流量增加到 40% 且其现在为默认版本。
 
 > [!TIP]
-> 在下面的代码段之后，第二个版本现在是默认值。 它现在配置为40%，而原始版本仍配置为20%。 这意味着，版本配置不考虑40% 的流量。 遗留的流量将路由到第二个版本，因为它现在是默认值。 它可以有效地接收80% 的流量。
+> 运行以下代码段之后，现在第二个版本变为默认版本。 它现在配置为 40%，而原始版本仍配置为 20%。 这意味着，还有 40% 的流量未计入版本配置。 剩余的流量将路由到第二个版本，因为它现在为默认版本。 它实际上接收了 80% 的流量。
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -345,7 +345,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> 如果需要重新生成密钥，请使用[`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
+> 如需重新生成密钥，请使用 [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)
 
 ### <a name="authentication-with-tokens"></a>使用令牌进行身份验证
 
@@ -366,6 +366,8 @@ print(token)
 > 需要在令牌的 `refresh_by` 时间后请求一个新令牌。
 >
 > Microsoft 强烈建议在 Azure Kubernetes 服务群集所在的相同区域中创建 Azure 机器学习工作区。 要使用令牌进行身份验证，Web 服务将调用创建 Azure 机器学习工作区的区域。 如果工作区区域不可用，即使群集和工作区不在同一区域，也将无法获取 Web 服务的令牌。 这实际上会导致在工作区的区域再次可用之前，基于令牌的身份验证不可用。 此外，群集区域和工作区区域的距离越远，获取令牌所需的时间就越长。
+>
+> 若要检索令牌，必须使用 Azure 机器学习 SDK 或[az ml service get-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token)命令。
 
 ## <a name="update-the-web-service"></a>更新 Web 服务
 
@@ -376,7 +378,7 @@ print(token)
 * [虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [使用 TLS 通过 Azure 机器学习来保护 web 服务](how-to-secure-web-service.md)
+* [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-* [用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
+* [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

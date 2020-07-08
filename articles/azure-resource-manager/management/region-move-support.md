@@ -4,14 +4,13 @@ description: 列出可跨 Azure 区域移动的 Azure 资源类型
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760702"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057681"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>跨区域移动 Azure 资源的支持
 
@@ -29,9 +28,9 @@ ms.locfileid: "76760702"
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft.Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
-> - [AzureData](#microsoftazuredata)
+> - [Microsoft.AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft. 批处理](#microsoftbatch)
+> - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
@@ -41,10 +40,10 @@ ms.locfileid: "76760702"
 > - [Microsoft.Cache](#microsoftcache)
 > - [Microsoft.Cdn](#microsoftcdn)
 > - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
-> - [Microsoft.classiccompute](#microsoftclassiccompute)
-> - [Microsoft.classicnetwork](#microsoftclassicnetwork)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Cognitiveservices account](#microsoftcognitiveservices)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft.Container](#microsoftcontainer)
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
@@ -54,8 +53,8 @@ ms.locfileid: "76760702"
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
-> - [CustomProviders](#microsoftcustomproviders)
-> - [DataBox](#microsoftdatabox)
+> - [Microsoft.CustomProviders](#microsoftcustomproviders)
+> - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
 > - [Microsoft.DataCatalog](#microsoftdatacatalog)
@@ -66,7 +65,7 @@ ms.locfileid: "76760702"
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
 > - [Microsoft.DataMigration](#microsoftdatamigration)
-> - [DataShare](#microsoftdatashare)
+> - [Microsoft.DataShare](#microsoftdatashare)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -76,25 +75,25 @@ ms.locfileid: "76760702"
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
-> - [EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
 > - [Microsoft.Genomics](#microsoftgenomics)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
-> - [HealthcareApis](#microsofthealthcareapis)
-> -  Microsoft.HybridCompute
+> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [KeyVault](#microsoftkeyvault)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
 > - [Microsoft.LocationServices](#microsoftlocationservices)
-> - [Microsoft. 逻辑](#microsoftlogic)
+> - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
 > - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
@@ -105,37 +104,37 @@ ms.locfileid: "76760702"
 > - [Microsoft.Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft.Media](#microsoftmedia)
-> - [Microservices4Spring](#microsoftmicroservices4spring)
+> - [Microsoft.Microservices4Spring](#microsoftmicroservices4spring)
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft 网络](#microsoftnetwork)
+> - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
-> - [Microsoft.operationalinsights](#microsoftoperationalinsights)
-> - [为 microsoft.operationsmanagement](#microsoftoperationsmanagement)
-> - [Microsoft。对等互连](#microsoftpeering)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft.Peering](#microsoftpeering)
 > - [Microsoft.Portal](#microsoftportal)
 > - [Microsoft.PortalSdk](#microsoftportalsdk)
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
-> - [Microsoft.recoveryservices](#microsoftrecoveryservices)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft.Scheduler](#microsoftscheduler)
-> - [Microsoft. 搜索](#microsoftsearch)
+> - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.ServerManagement](#microsoftservermanagement)
-> - [Microsoft。](#microsoftservicebus)
+> - [Microsoft.ServiceBus](#microsoftservicebus)
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
 > - [Microsoft.Solutions](#microsoftsolutions)
-> - [Microsoft .Sql](#microsoftsql)
+> - [Microsoft.Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
-> - [StorageCache](#microsoftstoragecache)
+> - [Microsoft.StorageCache](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -144,11 +143,11 @@ ms.locfileid: "76760702"
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft Token](#microsofttoken)
+> - [Microsoft.Token](#microsofttoken)
 > - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
-> - [VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Microsoft Web](#microsoftweb)
+> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft.Web](#microsoftweb)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
@@ -186,7 +185,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 |  是 | 
+> | 服务 |  是（使用模板） <br/><br/> [跨区域移动 API 管理](../../api-management/api-management-howto-migrate.md)。 | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
@@ -200,7 +199,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | apiapps | 否 | 
+> | apiapps | 是（使用模板）<br/><br/> [将应用服务应用移到另一个区域](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | 否 | 
 > | gateways | 否 | 
 
@@ -217,7 +216,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | automationaccounts | 否 | 
+> | automationaccounts | 是（使用模板） <br/><br/> [使用异地复制](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/configurations | 否 | 
 > | automationaccounts/runbooks | 否 | 
 
@@ -230,7 +229,7 @@ ms.locfileid: "76760702"
 > | ------------- | ----------- |
 > | b2cdirectories | 否 | 
 
-## <a name="microsoftazuredata"></a>AzureData
+## <a name="microsoftazuredata"></a>Microsoft.AzureData
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -249,14 +248,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | batchaccounts | 否 |
+> | batchaccounts |  Batch 帐户不能直接从一个区域移到另一个区域，但你可以使用模板导出模板，对其进行修改，然后将模板部署到新区域。 <br/><br/> 了解如何[跨区域移动批处理帐户](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | clusters | 否 | 
+> | clusters | 否 <br/><br/> Azure Batch AI 服务已[停](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai)用。
 > | fileservers | 否 | 
 > | jobs | 否 | 
 > | workspaces | 否 | 
@@ -280,8 +279,8 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | blockchainmembers | 否 |
-> | 人士 | 否 | 
+> | blockchainmembers | 否 <br/><br/> 区块链网络不能具有不同区域中的节点。 
+> | watchers | 否 | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -311,7 +310,7 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | cdnwebapplicationfirewallpolicies | 否 |
-> | profiles | 否 | 
+> | 配置文件 | 否 | 
 > | profiles/endpoints | 否 | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -327,7 +326,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | domainnames | 否 |  
+> | domainnames | 不会为经典服务计划任何工作。
 > | virtualmachines | 否 | 
 
 
@@ -337,7 +336,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | networksecuritygroups | 否 |
+> | networksecuritygroups | 不会为经典服务计划任何工作。
 > | reservedips | 否 | 
 > | virtualnetworks | 否 | 
 
@@ -354,7 +353,8 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
+> | 认知搜索 | 支持手动步骤。<br/><br/> 了解如何[将 Azure 认知搜索服务转移到另一个区域](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -409,7 +409,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | containerservices | 否 | 
+> | containerservices | 不能。<br/><br/> 服务已[停](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)用。
 > | managedclusters | 否 | 
 > | openshiftmanagedclusters | 否 | 
 
@@ -418,14 +418,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 | 否 | 
+> | applications | 否 | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
@@ -441,7 +441,7 @@ ms.locfileid: "76760702"
 > | ------------- | ----------- |
 > | hubs | 否 |  
 
-## <a name="microsoftcustomproviders"></a>CustomProviders
+## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -512,14 +512,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
@@ -530,19 +530,19 @@ ms.locfileid: "76760702"
 > | services/projects | 否 | 
 > | slots | 否 | 
 
-## <a name="microsoftdatashare"></a>DataShare
+## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | servers | 否 |  
+> | servers | 如果为服务预配了异地冗余备份存储，则可以使用异地还原在其他区域中进行还原。 [了解详细信息](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -568,8 +568,8 @@ ms.locfileid: "76760702"
 > | artifactsources | 否 | 
 > | rollouts | 否 |  
 > | servicetopologies | 否 | 
-> | servicetopologies/服务 | 否 |  
-> | servicetopologies/services/serviceunits | 否 | 
+> | servicetopologies / services | 否 |  
+> | servicetopologies / services / serviceunits | 否 | 
 > | steps | 否 | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
@@ -577,9 +577,9 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | elasticpools | 否 | 
-> | elasticpools/iothubtenants | 否 | 
-> | iothubs | 是 | 
+> | elasticpools | 不能。 资源未公开。
+> | elasticpools/iothubtenants | 不能。 资源未公开。
+> | iothubs | 是的。 [了解详细信息](../../iot-hub/iot-hub-how-to-clone.md)
 > | provisioningservices | 否 | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
@@ -588,6 +588,7 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | 控制器 | 否 | 
+> | AKS 群集 | 否<br/><br/> [了解](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region)有关移动到另一个区域的详细信息。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -596,9 +597,9 @@ ms.locfileid: "76760702"
 > | ------------- | ----------- |
 > | labcenters | 否 | 
 > | labs | 否 | 
-> | 实验室/环境 | 否 |  
-> | 实验室/servicerunners | 否 | 
-> | 实验室/virtualmachines | 否 |  
+> | labs / environments | 否 |  
+> | labs / servicerunners | 否 | 
+> | labs / virtualmachines | 否 |  
 > | schedules | 否 |  
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
@@ -615,7 +616,7 @@ ms.locfileid: "76760702"
 > | ------------- | ----------- |
 > | domains | 否 | 
 
-## <a name="microsoftenterpriseknowledgegraph"></a>EnterpriseKnowledgeGraph
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -636,14 +637,14 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | clusters | 否 |  
-> | namespaces | 否 | 
+> | namespaces | 是（带模板）<br/><br/> [将事件中心命名空间移动到另一个区域](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
@@ -660,7 +661,7 @@ ms.locfileid: "76760702"
 > | ------------- | ----------- |
 > | clusters | 否 | 
 
-## <a name="microsofthealthcareapis"></a>HealthcareApis
+## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -672,7 +673,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 造 | 否 | 
+> | machines | 否 | 
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -693,7 +694,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 > | actiongroups |  否 | 
 > | activitylogalerts | 否 | 
 > | alertrules |  否 | 
@@ -713,7 +714,15 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | iotapps |  否 |  
+> | checknameavailability |  不能。<br/><br/> IoT Central 适用于地理位置，而不是区域。
+> | graph | 否
+
+## <a name="microsoftiothub"></a>IoTHub
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 区域移动 | 
+> | ------------- | ----------- |
+> |  iothub |  是（克隆中心） <br/><br/> [将 IoT 中心克隆到另一个区域](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
@@ -751,14 +760,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 不是，它是一种全球服务。
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -792,19 +801,19 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
-> | 帐户/工作区 | 否 | 
-> | 帐户/工作区/项目 | 否 | 
+> | accounts | 否 | 
+> | accounts / workspaces | 否 | 
+> | accounts / workspaces / projects | 否 | 
 > | teamaccounts | 否 | 
-> | teamaccounts/工作区 | 否 | 
-> | teamaccounts/工作区/项目 | 否 | 
+> | teamaccounts / workspaces | 否 | 
+> | teamaccounts / workspaces / projects | 否 | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
@@ -832,14 +841,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 |  否 |  
+> | accounts |  不，Azure Maps 是地理空间服务。 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | classicdevservices | 否 | 
+> | classicdevservices | 无计划使用经典服务 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
 
@@ -850,7 +859,7 @@ ms.locfileid: "76760702"
 > | mediaservices/liveevents |  否 | 
 > | mediaservices/streamingendpoints |  否 | 
 
-## <a name="microsoftmicroservices4spring"></a>Microservices4Spring
+## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -873,9 +882,9 @@ ms.locfileid: "76760702"
 > | ------------- | ----------- |
 > | netappaccounts | 否 | 
 > | netappaccounts / capacitypools | 否 | 
-> | netappaccounts/capacitypools/卷 | 否 | 
-> | netappaccounts/capacitypools/卷集/mounttargets | 否 | 
-> | netappaccounts/capacitypools/卷/快照 | 否 | 
+> | netappaccounts / capacitypools / volumes | 否 | 
+> | netappaccounts / capacitypools / volumes / mounttargets | 否 | 
+> | netappaccounts / capacitypools / volumes / snapshots | 否 | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -897,7 +906,7 @@ ms.locfileid: "76760702"
 > | expressrouteports | 否 | 
 > | frontdoors | 否 | 
 > | frontdoorwebapplicationfirewallpolicies | 否 | 
-> | loadbalancers | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br> 是 - 标准 SKU |
+> | loadbalancers | 是 <br/><br/> 你可以将现有配置导出为模板，并在新区域中部署模板。 了解如何移动[外部](../..//load-balancer/move-across-regions-external-load-balancer-portal.md)或[内部](../../load-balancer/move-across-regions-internal-load-balancer-portal.md)负载均衡器。 |
 > | localnetworkgateways |  否 | 
 > | natgateways |  否 | 
 > | networkintentpolicies |  否 | 
@@ -913,7 +922,7 @@ ms.locfileid: "76760702"
 > | privatednszones/virtualnetworklinks |  否 |  
 > | privateendpoints | 否 | 
 > | privatelinkservices | 否 | 
-> | publicipaddresses | 是 - 基本 SKU<br>否 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU |
+> | publicipaddresses | 是<br/><br/> 可以将现有的公共 IP 地址配置导出为模板，并在新区域中部署模板。 [了解](../../virtual-network/move-across-regions-publicip-portal.md)有关移动公共 IP 地址的详细信息。 |
 > | publicipprefixes | 否 | 
 > | routefilters | 否 | 
 > | routetables |  否 | 
@@ -954,12 +963,12 @@ ms.locfileid: "76760702"
 > | managementconfigurations |  否 | 
 > | 视图 |  否 | 
 
-## <a name="microsoftpeering"></a>Microsoft。对等互连
+## <a name="microsoftpeering"></a>Microsoft.Peering
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 对等互连 | 否 | 
+> | peerings | 否 | 
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 
@@ -994,14 +1003,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 帐户 | 否 | 
+> | accounts | 否 | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | vaults | 不能。 [禁用保管库并为 Site Recovery 重新创建](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)  | 
+> | vaults | 否。<br/><br/> 不支持将 Azure 备份的恢复服务保管库移动到 azure 区域。<br/><br/> 在 Azure Site Recovery 的恢复服务保管库中，可以在目标区域中[禁用并重新创建保管库](../../site-recovery/move-vaults-across-regions.md)。 | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
@@ -1023,7 +1032,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 |  否 | 
+> | applications |  否 | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
@@ -1069,7 +1078,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 | 否 | 
+> | applications | 否 | 
 > | clusters |  否 | 
 > | clusters/applications | 否 | 
 > | containergroups | 否 | 
@@ -1084,7 +1093,7 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 服务 |  否 | 
+> | applications |  否 | 
 > | containergroups | 否 | 
 > | gateways |  否 | 
 > | networks |  否 | 
@@ -1142,14 +1151,14 @@ ms.locfileid: "76760702"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | storageaccounts | 是 | 
+> | storageaccounts | 是<br/><br/> [将 Azure 存储帐户移到另一个区域](../../storage/common/storage-account-move.md) | 
 
-## <a name="microsoftstoragecache"></a>StorageCache
+## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
-> | 缓存 | 否 | 
+> | caches | 否 | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
@@ -1193,10 +1202,10 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | environments | 否 | 
-> | environments/eventsources | 否 | 
+> | environments / eventsources | 否 | 
 > | instances | 否 | 
-> | 实例/环境 | 否 | 
-> | 实例/环境/eventsources | 否 | 
+> | instances / environments | 否 | 
+> | instances / environments / eventsources | 否 | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
@@ -1204,7 +1213,7 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | providerregistrations | 否 | 
-> | 资源 | 否 | 
+> | resources | 否 | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -1212,10 +1221,10 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | environments |  否 | 
-> | environments/eventsources |  否 |  
+> | environments / eventsources |  否 |  
 > | environments/referencedatasets |  否 | 
 
-## <a name="microsofttoken"></a>Microsoft Token
+## <a name="microsofttoken"></a>Microsoft.Token
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -1235,12 +1244,12 @@ ms.locfileid: "76760702"
 > | 资源类型 | 区域移动 | 
 > | ------------- | ----------- |
 > | account |  否 | 
-> | 帐户/扩展 |  否 | 
-> | 帐户/项目 |  否 | 
+> | account / extension |  否 | 
+> | account / project |  否 | 
 
 
 
-## <a name="microsoftvmwarecloudsimple"></a>VMwareCloudSimple
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 区域移动 | 
@@ -1283,4 +1292,4 @@ ms.locfileid: "76760702"
 
 ## <a name="third-party-services"></a>第三方服务
 
-第三方服务当前不支持移动操作。
+第三方服务目前不支持移动操作。

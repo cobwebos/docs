@@ -9,12 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 5044993e04dabc363a7a4ee49abb66285bcd7521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85338247"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何扩展虚拟机的 OS 驱动器
 
@@ -25,7 +24,7 @@ ms.locfileid: "81869688"
 
 
 > [!IMPORTANT]
-> 若要调整 Azure 虚拟机的 OS 磁盘大小，需要对虚拟机解除分配。
+> 若要调整 Azure 虚拟机的 OS 磁盘大小，需要解除分配虚拟机。
 >
 > 扩展磁盘后，需要[扩展 OS 中的卷](#expand-the-volume-within-the-os)才能使用更大的磁盘。
 > 
@@ -77,9 +76,9 @@ ms.locfileid: "81869688"
    Start-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 
-这就是所有的操作！ 现在，请通过 RDP 访问 VM，打开“计算机管理”（或“磁盘管理”），并使用刚刚分配的空间扩展驱动器。
+这就是所有的操作！ 现在，请通过 RDP 访问 VM，打开“计算机管理”（或“磁盘管理”），然后使用刚刚分配的空间扩展驱动器。
 
-## <a name="resize-an-unmanaged-disk"></a>调整费托管磁盘的大小
+## <a name="resize-an-unmanaged-disk"></a>非托管磁盘的大小
 
 在管理模式下打开 Powershell ISE 或 Powershell 窗口，并遵循以下步骤：
 
@@ -160,7 +159,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>调整数据磁盘的大小
 
-虽然本文重介绍扩展 VM 的 OS 磁盘，但该脚本也可用于扩展附加到 VM 的数据磁盘。 例如，要扩展附加到 VM 的第一个数据磁盘，请将 `StorageProfile` 的 `OSDisk` 对象替换为 `DataDisks` 数组，并使用数字索引获取对第一个附加的数据磁盘的引用，如下所示：
+虽然本文重介绍扩展 VM 的 OS 磁盘，但该脚本也可用于扩展附加到 VM 的数据磁盘。 如果只扩展数据磁盘，则**不**需要解除分配 VM。 例如，若要扩展附加到 VM 的第一个数据磁盘，请将 `StorageProfile` 的 `OSDisk` 对象替换为 `DataDisks` 数组，并使用数字索引获取对第一个附加数据磁盘的引用，如下所示：
 
 **托管磁盘**
 

@@ -2,23 +2,23 @@
 title: 将应用程序身份验证从 AD FS 移动到 Azure Active Directory
 description: 本文旨在帮助组织了解如何将应用程序移到 Azure AD，并着重介绍联合 SaaS 应用程序。
 services: active-directory
-author: barbaraselden
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 04/01/2020
-ms.author: baselden
+ms.author: kenwith
+ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b777cce9b704be558460edf20cf243258c160b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608545"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -198,13 +198,13 @@ LOB 应用由组织内部开发，或者作为你的数据中心内安装的标�
 
 | 配置设置| AD FS| 如何在 Azure AD 中配置| SAML 令牌 |
 | - | - | - | - |
-| **应用登录 URL** <p>用于登录到服务提供商（SP）启动的 SAML 流中的应用的用户的 URL。| 空值| 从基于 SAML 的登录打开基本 SAML 配置| 空值 |
+| **应用登录 URL** <p>用于登录到服务提供商（SP）启动的 SAML 流中的应用的用户的 URL。| 不适用| 从基于 SAML 的登录打开基本 SAML 配置| 不适用 |
 | **应用回复 URL** <p>从标识提供者（IdP）的角度来看应用程序的 URL。 用户登录到 IdP 后，IdP 会将用户和令牌发送到此处。  这也称为**SAML 断言使用者终结点**。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| SAML 令牌中的 Destination 元素。 示例值： `https://contoso.my.salesforce.com` |
-| **应用注销 URL** <p>这是用户从应用程序中注销时，向其发送 "注销清理" 请求的 URL。 IdP 发送请求，同时从其他所有应用注销用户。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| 空值 |
+| **应用注销 URL** <p>这是用户从应用程序中注销时，向其发送 "注销清理" 请求的 URL。 IdP 发送请求，同时从其他所有应用注销用户。| 选择 "**终结点**" 选项卡| 从基于 SAML 的登录打开基本 SAML 配置| 不适用 |
 | **应用标识符** <p>这是 IdP 的透视中的应用标识符。 登录 URL 值通常用于标识符（但并非始终）。  有时，应用程序会将 "实体 ID" 称为 "实体 ID"。| 选择 "**标识符**" 选项卡|从基于 SAML 的登录打开基本 SAML 配置| 映射到 SAML 令牌中的**受众**元素。 |
-| **应用联合元数据** <p>这是应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。| 选择 "**监视**" 选项卡| 不适用。 Azure AD 不支持直接使用应用程序联合元数据。 您可以手动导入联合元数据。| 空值 |
+| **应用联合元数据** <p>这是应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。| 选择 "**监视**" 选项卡| 不适用。 Azure AD 不支持直接使用应用程序联合元数据。 您可以手动导入联合元数据。| 不适用 |
 | **用户标识符/名称 ID** <p>一个属性，用于以唯一方式向应用指示 Azure AD 或 AD FS 中的用户标识。  此属性通常为用户的 UPN 或电子邮件地址。| 声明规则。 在大多数情况下，声明规则使用以 NameIdentifier 结尾的类型发出声明。| 可以在标头**用户属性和声明**下找到标识符。 默认情况下，将使用 UPN| 映射到 SAML 令牌中的**NameID**元素。 |
-| **其他声明** <p>通常从 IdP 发送到应用的其他声明信息的示例包括名字、姓氏、电子邮件地址和组成员身份。| 在 AD FS 中，可以看到此项充当信赖方的其他声明规则。| 可以在标头用户属性下找到标识符 **& 声明**。 选择“查看”，然后编辑所有其他的用户属性。****| 空值 |
+| **其他声明** <p>通常从 IdP 发送到应用的其他声明信息的示例包括名字、姓氏、电子邮件地址和组成员身份。| 在 AD FS 中，可以看到此项充当信赖方的其他声明规则。| 可以在标头用户属性下找到标识符 **& 声明**。 选择“查看”，然后编辑所有其他的用户属性。****| 不适用 |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>地图标识提供者（IdP）设置
@@ -224,7 +224,7 @@ LOB 应用由组织内部开发，或者作为你的数据中心内安装的标�
 
 | 元素| 配置值 |
 | - | - |
-| 标识提供者颁发者| https：\//sts.windows.net/{tenant-id}/ |
+| 标识提供者颁发者| https： \/ /sts.windows.net/{tenant-id}/ |
 | 标识提供者登录 URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | 标识提供者注销 URL| [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) |
 | 联合元数据位置| [https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}](https://login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id}) |
@@ -236,11 +236,11 @@ SaaS 应用需要知道将身份验证请求发送到何处，以及如何验证
 
 | 配置设置| AD FS| 如何在 Azure AD 中配置 |
 | - | - | - |
-| **IdP 登录 URL** <p>从应用的角度来看，IdP 的登录 URL （将用户重定向以登录）。| AD FS 登录 URL 是 AD FS 的联合身份验证服务名称，后跟 "/adfs/ls/." <p>例如：`https://fs.contoso.com/adfs/ls/`| 将 {租户 id} 替换为你的租户 ID。 <p> 对于使用 SAML-P 协议的应用：[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP 注销 URL**<p>从应用的角度注销 IdP 的 URL （当用户选择从应用中注销时，用户会重定向）。| 注销 URL 既可以是登录 URL，也可以是附加了 "wa = wsignout1.0 1.0" 的同一 URL。 例如：`https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 将 {租户 id} 替换为你的租户 ID。<p>对于使用 SAML-P 协议的应用：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **IdP 登录 URL** <p>从应用的角度来看，IdP 的登录 URL （将用户重定向以登录）。| AD FS 登录 URL 是 AD FS 的联合身份验证服务名称，后跟 "/adfs/ls/." <p>例如： `https://fs.contoso.com/adfs/ls/`| 将 {租户 id} 替换为你的租户 ID。 <p> 对于使用 SAML-P 协议的应用：[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP 注销 URL**<p>从应用的角度注销 IdP 的 URL （当用户选择从应用中注销时，用户会重定向）。| 注销 URL 既可以是登录 URL，也可以是附加了 "wa = wsignout1.0 1.0" 的同一 URL。 例如： `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 将 {租户 id} 替换为你的租户 ID。<p>对于使用 SAML-P 协议的应用：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 对于使用 WS 联合身份验证协议的应用：[https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
 | **令牌签名证书**<p>IdP 使用证书的私钥对颁发的令牌进行签名。 它可以验证令牌是否来自已配置应用所信任的 IdP。| AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。****| 在应用程序的 "**单一登录属性**" 中的 " **SAML 签名证书**" 下，查找 Azure 门户。 可以在其中下载要上传到应用的证书。  <p>如果应用程序有多个证书，则可以在联合元数据 XML 文件中找到所有证书。 |
-| **标识符/"issuer"**<p>从应用的角度来看，IdP 的标识符（有时称为 "颁发者 ID"）。<p>在 SAML 令牌中，此值显示为 Issuer 元素。| AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符， **> 编辑联合身份验证服务属性**。 例如：`http://fs.contoso.com/adfs/services/trust`| 将 {租户 id} 替换为你的租户 ID。<p>https：\//sts.windows.net/{tenant-id}/ |
-| **IdP 联合元数据**<p>IdP 的公开可用联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）| 在 AD FS 管理中查找管理 > 下的 AD FS 联合元数据 URL **> 元数据 > 类型：联合元数据**。 例如：`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的相应值遵循模式[https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml)。 将 {TenantDomainName} 替换为 "contoso.onmicrosoft.com" 格式的租户名称。   <p>有关详细信息，请参阅[联合元数据](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
+| **标识符/"issuer"**<p>从应用的角度来看，IdP 的标识符（有时称为 "颁发者 ID"）。<p>在 SAML 令牌中，此值显示为 Issuer 元素。| AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符， **> 编辑联合身份验证服务属性**。 例如： `http://fs.contoso.com/adfs/services/trust`| 将 {租户 id} 替换为你的租户 ID。<p>https： \/ /sts.windows.net/{tenant-id}/ |
+| **IdP 联合元数据**<p>IdP 的公开可用联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）| 在 AD FS 管理中查找管理 > 下的 AD FS 联合元数据 URL **> 元数据 > 类型：联合元数据**。 例如： `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的相应值遵循模式 [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) 。 将 {TenantDomainName} 替换为 "contoso.onmicrosoft.com" 格式的租户名称。   <p>有关详细信息，请参阅[联合元数据](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>表示 Azure AD AD FS 安全策略
@@ -397,7 +397,7 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 在此表中，我们列出了一些有用的允许和除外选项，以及它们如何映射到 Azure AD。 
 
 
-| | 如何在 Azure AD 中配置允许选项？| 如何在 Azure AD 中配置 Except 选项？ |
+| 选项 | 如何在 Azure AD 中配置允许选项？| 如何在 Azure AD 中配置 Except 选项？ |
 | - | - | - |
 | 从特定网络| 映射到 Azure AD 中的[命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)| 将**Exclude**选项用于[受信任位置](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) |
 | 从特定组| [设置用户/组分配](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| 在用户和组中使用 "**排除**" 选项 |
@@ -421,7 +421,7 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 
 ### <a name="setup-user-self-provisioning"></a>设置用户自助预配 
 
-一些 SaaS 应用程序支持在用户首次登录应用程序时自行预配用户。 在 Azure Active Directory （Azure AD）中，术语 "应用设置" 是指在用户需要访问的云（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）应用程序中自动创建用户标识和角色。 已迁移的用户在 SaaS 应用程序中已有一个帐户。 需要预配迁移后添加的任何新用户。 在应用程序迁移后测试[SaaS 应用配置](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)。
+一些 SaaS 应用程序支持在用户首次登录应用程序时自行预配用户。 在 Azure Active Directory (Azure AD) 中，术语应用预配是指在用户需要访问的云 (SaaS) 应用程序中自动创建用户标识和角色。 已迁移的用户在 SaaS 应用程序中已有一个帐户。 需要预配迁移后添加的任何新用户。 在应用程序迁移后测试[SaaS 应用配置](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)。
 
 ### <a name="sync-external-users-in-azure-ad"></a>同步 Azure AD 中的外部用户
 
@@ -446,11 +446,11 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 请按照本文中详细说明的迁移过程进行操作。
 
 然后，请前往[Azure 门户](https://aad.portal.azure.com/)以测试迁移是否成功。 请根据以下说明进行操作：
-1. 从列表中选择 "**企业应用程序** > " "**所有应用程序**" 和 "查找应用"。
+1. 从列表中选择 "**企业应用程序**" "  >  **所有应用程序**" 和 "查找应用"。
 
-1. 选择 "**管理** > **用户和组**"，将至少一个用户或组分配到应用。
+1. 选择 "**管理**  >  **用户和组**"，将至少一个用户或组分配到应用。
 
-1. 选择 "**管理** > **条件性访问**"。 查看策略列表，并确保不会使用[条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)阻止对应用程序的访问。
+1. 选择 "**管理**  >  **条件性访问**"。 查看策略列表，并确保不会使用[条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)阻止对应用程序的访问。
 
 根据你配置应用的方式，验证 SSO 是否正常工作。 
 
@@ -460,9 +460,9 @@ AD FS 2016 具有几个内置的访问控制策略，你可以从中进行选择
 ‎ |
 | 基于 SAML 的 SSO| 使用 "**单一登录**" 下的 "[测试 SAML 设置](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues)" 按钮。  
 ‎ |
-| 基于密码的 SSO| 下载并安装[MyApps 安全登录](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)[扩展](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)。 此扩展可帮助你启动组织的任何需要使用 SSO 过程的云应用。  
+| 基于密码的 SSO| 下载并安装[MyApps 安全登录](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [扩展](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)。 此扩展可帮助你启动组织的任何需要使用 SSO 过程的云应用。  
 ‎ |
-| 应用程序代理| 确保连接器正在运行并已分配给应用程序。 请访问[应用程序代理故障排除指南](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)[ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)以获取进一步的帮助。  
+| 应用程序代理| 确保连接器正在运行并已分配给应用程序。 请访问[应用程序代理故障排除指南](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot)以获取进一步的帮助。  
 ‎ |
 
 > [!NOTE]

@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 19d0be6a032868c6683cd5b6bbfa7f07306171fb
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683437"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85242231"
 ---
 | 资源 | 基本 | Standard | Premium |
 |---|---|---|---|
-| 存储<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
-| 最大映像层大小 | 200 GiB | 200 GiB | 200 GiB |
+| 包含的存储<sup>1</sup> （GiB） | 10 | 100 | 500 |
+| 存储限制（TiB） | 20| 20 | 20 |
+| 最大图像层大小（GiB） | 200 | 200 | 200 |
 | 每分钟读取操作数<sup>2、3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分钟写入操作数<sup>2、4</sup> | 100 | 500 | 2,000 |
 | 下载带宽 (MBps)<sup>2</sup> | 30 | 60 | 100 |
@@ -32,10 +32,10 @@ ms.locfileid: "83683437"
 | 存储库范围内的权限 | 空值 | 空值 | [预览][token]|
 | &bull; 令牌 | 空值 | 空值 | 20,000 |
 | &bull; 范围映射 | 空值 | 空值 | 20,000 |
-| &bull; 每个范围映射的存储库 | 空值 | 空值 | 500 |
+| &bull; 每个范围映射的存储库 | 不适用 | 不适用 | 500 |
 
 
-<sup>1</sup>指定的存储空间上限是每层包含的存储量。 对于超出这些限制的图像存储，将每日针对每 GiB 进行额外收费。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
+每个层的每日费率中包含<sup>1</sup>个存储。 对于其他存储，将按每个 GiB 支付额外的每日费率，最高可达存储限制。 有关费率的信息，请参阅 [Azure 容器注册表定价][pricing]。
 
 <sup>2</sup>读取操作数、写入操作数和带宽是最小估计值。 Azure 容器注册表致力于根据使用情况来提高性能。
 

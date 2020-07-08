@@ -5,12 +5,11 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 72f976071a5fc65c8e96f6b3cd5c0094785e287b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726836"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956655"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure Pipelines 生成和部署 HPC 解决方案
 
@@ -28,8 +27,8 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 若要按照本文中的步骤进行操作，需要一个 Azure DevOps 组织和一个团队项目。
 
-* [创建一个 Azure DevOps 组织](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
-* [在 Azure DevOps 中创建项目](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
+* [创建一个 Azure DevOps 组织](/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [在 Azure DevOps 中创建项目](/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>环境的源代码管理
 
@@ -48,7 +47,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 本部分假定你熟悉版本控制和资源管理器模板设计。 如果你不熟悉这些概念，请参阅以下页面获取详细信息。
 
-* [什么是源代码管理？](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
+* [什么是源代码管理？](/azure/devops/user-guide/source-control?view=azure-devops)
 * [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
@@ -62,7 +61,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 ![使用 Azure 资源管理器模板的链接模板结构示例](media/batch-ci-cd/ARMTemplateHierarchy.png)
 
-我们探讨的第一个模板适用于 Azure 存储帐户。 我们的解决方案需要一个存储帐户，以便将应用程序部署到 Batch 帐户。 在为存储帐户生成资源管理器模板时，有必要了解[适用于 Microsoft.Storage 资源类型的资源管理器模板参考指南](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions)。
+我们探讨的第一个模板适用于 Azure 存储帐户。 我们的解决方案需要一个存储帐户，以便将应用程序部署到 Batch 帐户。 在为存储帐户生成资源管理器模板时，有必要了解[适用于 Microsoft.Storage 资源类型的资源管理器模板参考指南](/azure/templates/microsoft.storage/allversions)。
 
 ```json
 {
@@ -102,7 +101,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 }
 ```
 
-接下来，我们将探讨 Azure Batch 帐户模板。 Azure Batch 帐户充当一种平台，用于跨池（计算机组）运行多个应用程序。 在为 Batch 帐户生成资源管理器模板时，有必要了解[适用于 Microsoft.Batch 资源类型的资源管理器模板参考指南](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions)。
+接下来，我们将探讨 Azure Batch 帐户模板。 Azure Batch 帐户充当一种平台，用于跨池（计算机组）运行多个应用程序。 在为 Batch 帐户生成资源管理器模板时，有必要了解[适用于 Microsoft.Batch 资源类型的资源管理器模板参考指南](/azure/templates/microsoft.batch/allversions)。
 
 ```json
 {
@@ -141,7 +140,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 }
 ```
 
-下一个模板显示了创建 Azure Batch 池（用于处理应用程序的后端计算机）的示例。 在为 Batch 帐户池生成资源管理器模板时，有必要了解[适用于 Microsoft.Batch 资源类型的资源管理器模板参考指南](https://docs.microsoft.com/azure/templates/microsoft.batch/allversions)。
+下一个模板显示了创建 Azure Batch 池（用于处理应用程序的后端计算机）的示例。 在为 Batch 帐户池生成资源管理器模板时，有必要了解[适用于 Microsoft.Batch 资源类型的资源管理器模板参考指南](/azure/templates/microsoft.batch/allversions)。
 
 ```json
 {
@@ -309,7 +308,7 @@ Azure Pipelines 提供了一系列新式 CI/CD 过程，用于生成、部署、
 
 ## <a name="continuous-integration"></a>持续集成
 
-Azure DevOps Services 内的 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/?view=azure-devops) 有助于实现应用程序的生成、测试和部署管道。
+Azure DevOps Services 内的 [Azure Pipelines](/azure/devops/pipelines/get-started/?view=azure-devops) 有助于实现应用程序的生成、测试和部署管道。
 
 在管道的此阶段中，通常会运行测试来验证代码并生成软件的相应部分。 测试的数量和类型以及运行的任何其他任务将取决于作用范围更广的生成和发布策略。
 
@@ -323,9 +322,9 @@ Azure DevOps Services 内的 [Azure Pipelines](https://docs.microsoft.com/azure/
 
 1. 可使用两个选项创建生成管道：
 
-    a. [使用可视化设计器](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav)。 为此，请在“新管道”页上单击“使用可视化设计器”。
+    a. [使用可视化设计器](/azure/devops/pipelines/get-started-designer?view=azure-devops&tabs=new-nav)。 为此，请在“新管道”页上单击“使用可视化设计器”。
 
-    b. [使用 YAML 生成](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=azure-devops)。 可以通过单击“新管道”页上的“Azure Repos”或“GitHub”选项来创建新的 YAML 管道。 或者，可以在源代码管理中存储下面的示例，并通过单击“可视化设计器”引用现有的 YAML 文件，然后使用 YAML 模板。
+    b. [使用 YAML 生成](/azure/devops/pipelines/get-started-yaml?view=azure-devops)。 可以通过单击“新管道”页上的“Azure Repos”或“GitHub”选项来创建新的 YAML 管道。 或者，可以在源代码管理中存储下面的示例，并通过单击“可视化设计器”引用现有的 YAML 文件，然后使用 YAML 模板。
 
     ```yml
     # To publish an application into Azure Batch, we need to
@@ -357,11 +356,11 @@ Azure DevOps Services 内的 [Azure Pipelines](https://docs.microsoft.com/azure/
     ![查看生成中的实时输出](media/batch-ci-cd/Build-1.jpg)
 
 > [!NOTE]
-> 如果使用客户端应用程序执行 HPC Batch 应用程序，则需要为该应用程序创建单独的生成定义。 可以在 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops) 文档中找到一些操作指南。
+> 如果使用客户端应用程序执行 HPC Batch 应用程序，则需要为该应用程序创建单独的生成定义。 可以在 [Azure Pipelines](/azure/devops/pipelines/get-started/index?view=azure-devops) 文档中找到一些操作指南。
 
 ## <a name="continuous-deployment"></a>连续部署
 
-Azure Pipelines 还用于部署应用程序和底层基础结构。 [发布管道](https://docs.microsoft.com/azure/devops/pipelines/release)是启用持续部署和自动执行发布过程的组件。
+Azure Pipelines 还用于部署应用程序和底层基础结构。 [发布管道](/azure/devops/pipelines/release)是启用持续部署和自动执行发布过程的组件。
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>部署应用程序和底层基础结构
 

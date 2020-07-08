@@ -5,15 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569584"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84339751"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>使用 Azure 门户管理 Azure Stack 边缘的带宽计划  
 
@@ -44,7 +43,7 @@ ms.locfileid: "82569584"
    2. 如果此计划应该全天运行，请选中“全天”选项。****
    3. “带宽速率”是指设备在执行涉及到云的操作时使用的带宽，以每秒兆位数 (Mbps) 表示。**** 为此字段提供介于 20 和 1,000,000,007 之间的数字。
    4. 如果不希望限制数据上传和下载带宽，请选中“无限制”。****
-   5. 选择“添加”  。
+   5. 选择 **添加** 。
 
       ![添加计划](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

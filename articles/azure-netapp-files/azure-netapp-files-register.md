@@ -11,15 +11,14 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/06/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cdb96f08f78e22dd0e46070ab62bf9327e2d72a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274055"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85956298"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 
@@ -30,7 +29,7 @@ ms.locfileid: "79274055"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交用于访问服务的候补请求
 
-1. 提交候补请求，通过[Azure Netapp 文件候补提交页](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)访问 Azure netapp 文件服务。 
+1. 提交候补请求，通过[Azure Netapp 文件候补提交页](https://aka.ms/azurenetappfiles)访问 Azure netapp 文件服务。 
 
     候补注册不保证立即访问服务。 
 
@@ -52,38 +51,50 @@ ms.locfileid: "79274055"
 
 2. 如果你的 Azure 帐户上有多个订阅，请选择已列入 Azure NetApp 文件的允许列表的订阅：
     
-        az account set --subscription <subscriptionId>
+    ```azurepowershell
+    az account set --subscription <subscriptionId>
+    ```
 
 3. 在 Azure Cloud Shell 控制台中，输入以下命令来验证你的订阅是否已列入允许列表：
     
-        az feature list | grep NetApp
+    ```azurepowershell
+    az feature list | grep NetApp
+    ```
 
    命令输出如下所示：
    
-       "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
-       "name": "Microsoft.NetApp/ANFGA" 
+    ```output
+    "id": "/subscriptions/<SubID>/providers/Microsoft.Features/providers/Microsoft.NetApp/features/ANFGA",  
+    "name": "Microsoft.NetApp/ANFGA" 
+    ```
        
    `<SubID>` 是你的订阅 ID。
 
-    如果看不到该功能名称`Microsoft.NetApp/ANFGA`，则无法访问该服务。 停止执行此步骤。 按照[提交用于访问服务的候补请求](#waitlist)中的说明来请求服务访问，然后再继续。 
+    如果看不到该功能名称 `Microsoft.NetApp/ANFGA` ，则无法访问该服务。 停止执行此步骤。 按照[提交用于访问服务的候补请求](#waitlist)中的说明来请求服务访问，然后再继续。 
 
 4. 在 Azure Cloud Shell 控制台中，输入以下命令来注册 Azure 资源提供程序： 
     
-        az provider register --namespace Microsoft.NetApp --wait
+    ```azurepowershell
+    az provider register --namespace Microsoft.NetApp --wait
+    ```
 
    `--wait` 参数指示控制台等待注册完成。 注册过程可能需要一些时间才能完成。
 
 5. 在 Azure Cloud Shell 控制台中，输入以下命令来验证 Azure 资源提供程序是否已注册： 
     
-        az provider show --namespace Microsoft.NetApp
+    ```azurepowershell
+    az provider show --namespace Microsoft.NetApp
+    ```
 
    命令输出如下所示：
    
-        {
-        "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
-        "namespace": "Microsoft.NetApp", 
-        "registrationState": "Registered", 
-        "resourceTypes": […. 
+    ```output
+    {
+     "id": "/subscriptions/<SubID>/providers/Microsoft.NetApp",
+     "namespace": "Microsoft.NetApp", 
+     "registrationState": "Registered", 
+     "resourceTypes": […. 
+    ```
 
    `<SubID>` 是你的订阅 ID。  `state` 参数值表示 `Registered`。
 

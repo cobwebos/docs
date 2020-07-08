@@ -5,17 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 2eaa2202ac6c2f0fac0f53c6eeb2f5d08c764f1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773955"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413342"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格输出绑定
 
-使用事件网格输出绑定将事件写入到自定义主题。 必须拥有有效的[自定义主题访问密钥](../event-grid/security-authentication.md#authenticate-publishing-clients-using-sas-or-key)。
+使用事件网格输出绑定将事件写入到自定义主题。 必须拥有有效的[自定义主题访问密钥](../event-grid/security-authenticate-publishing-clients.md)。
 
 有关设置和配置的详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 
@@ -162,7 +161,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 然后，它会将事件发送到自定义事件网格主题，如 `topicEndpointUri` 所指定。
+以下示例演示 function.json 文件中的一个触发器绑定以及使用该绑定的 [Python 函数](functions-reference-python.md)。 然后，它将在事件中发送到由指定的自定义主题 `topicEndpointUri` 。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -187,7 +186,7 @@ module.exports = function(context) {
 }
 ```
 
-以下 Python 示例通过设置 `EventGridOutputEvent` 将事件发送到自定义事件网格主题：
+下面是用于通过设置将事件发送到自定义主题的 Python 示例 `EventGridOutputEvent` ：
 
 ```python
 import logging

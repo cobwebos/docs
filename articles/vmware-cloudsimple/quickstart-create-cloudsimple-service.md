@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81868019"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>快速入门-创建 Azure VMware 解决方案按 CloudSimple 服务
@@ -26,7 +25,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
 若要添加 CloudSimple 服务，必须创建一个网关子网。 网关子网是在创建边缘网络时使用的，需要一个/28 个 CIDR 块。 网关子网地址空间必须是唯一的。 它不能与任何本地网络地址空间或 Azure 虚拟网络地址空间重叠。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 为网关子网分配 a/28 CIDR 块。  网关子网是每个 CloudSimple 服务所必需的，并且对其创建的区域是唯一的。 网关子网用于 CloudSimple edge 网络服务的 Azure VMware 解决方案，需要一个/28 个 CIDR 块。 网关子网地址空间必须是唯一的。 它不得与任何与 CloudSimple 环境通信的网络重叠。  与 CloudSimple 通信的网络包括本地网络和 Azure 虚拟网络。
 
@@ -38,7 +37,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
 ## <a name="create-the-service"></a>创建服务
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”****。
 2. 搜索**CloudSimple 服务**。
 
     ![搜索 CloudSimple 服务](media/create-cloudsimple-service-search.png)
@@ -55,7 +54,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
     ![创建 CloudSimple 服务](media/create-cloudsimple-service.png)
 
-9. 单击" **确定**"。
+9. 单击“确定”。
 
 创建服务并将其添加到服务列表中。
 
@@ -63,7 +62,7 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 
 若要为 CloudSimple 私有云环境设置即用即付容量，请首先在 Azure 门户中设置节点。
 
-1. 选择“所有服务”  。
+1. 选择“所有服务”****。
 2. 搜索**CloudSimple 节点**。
 
     ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)
@@ -80,9 +79,9 @@ CloudSimple 服务允许 CloudSimple 使用 Azure VMware 解决方案。  通过
 9. 选择用于托管节点资源的专用位置。
 10. 选择[节点类型](cloudsimple-node.md)。
 11. 选择要预配的节点数。
-12. 选择“查看 + 创建”  。
+12. 选择“查看 + 创建”。
 13. 查看设置。 若要修改任何设置，请单击 "**上一步**"。
-14. 选择“创建”。 
+14. 选择“创建”。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,17 +6,16 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4dc054d26f0cb64a8f7faf2ffa4b2b688562f404
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653017"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213544"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure Synapse Analytics 中的资源利用率和查询活动
 
@@ -49,7 +48,7 @@ Azure 门户中提供了以下可用于 Synapse SQL 的指标。 这些指标通
 查看指标和设置警报时的注意事项：
 
 - 使用的 DWU 只是 SQL 池中使用情况的一种概要表示，并不是一种全面的利用率指标。 若要确定是纵向扩展还是缩减，请考虑可能会受 DWU 影响的所有因素，如并发性、内存、tempdb 和自适应缓存容量。 建议[在不同的 DWU 设置下运行工作负载](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)，以确定哪种设置最适合你的业务目标。
-- 会报告特定数据仓库（而不是逻辑服务器）失败和成功的连接数
+- 对于特定数据仓库，将报告失败和成功的连接-而不是服务器本身。
 - 即使数据仓库处于空闲状态，内存百分比也会反映利用率，而不会反映活动工作负载的内存占用率。 使用并跟踪这个指标与其他指标（tempdb、gen2 缓存），以便全面决策扩展额外的缓存容量是否会提高工作负载性能，以满足你的需求。
 
 ## <a name="query-activity"></a>查询活动

@@ -5,15 +5,14 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb01bf613ef007be6eafa98e12f4c5f4b5c607ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831156"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037063"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -21,13 +20,13 @@ ms.locfileid: "83831156"
 
 ## <a name="the-job-doesnt-produce-output"></a>作业不生成输出
 
-1. 使用每项输出对应的“测试连接”按钮来验证与输出的连接。
-1. 查看“监视器”选项卡上的[监视指标](stream-analytics-monitoring.md)。由于值将进行聚合，因此指标会延迟几分钟。
+1. 使用每项输出对应的“测试连接”按钮来验证与输出的连接****。
+1. 查看“监视器”**** 选项卡上的[监视指标](stream-analytics-monitoring.md)。由于值将进行聚合，因此指标会延迟几分钟。
 
-   * 如果“输入事件”值大于零，表示作业可以读取输入数据。 如果“输入事件”值不大于零，表示作业的输入有问题。 有关详细信息，请参阅[对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)。
-   * 如果“数据转换错误”值大于零且不断上升，请参阅 [Azure 流分析数据错误](data-errors.md)，以详细了解数据转换错误。
-   * 如果“运行时错误”值大于零，表示作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)，然后筛选“失败”状态。
-   * 如果“输入事件”值大于零，而“输出事件”值等于零，则下列陈述之一是正确的：
+   * 如果“输入事件”的值大于零，则作业可以读取输入数据****。 如果“输入事件”的值小于或等于零，表示作业的输入有问题****。 有关详细信息，请参阅[对输入连接进行故障排除](stream-analytics-troubleshoot-input.md)。
+   * 如果“数据转换错误”**** 的值大于零并不断增大，请参阅 [Azure 流分析数据错误](data-errors.md)，详细了解数据转换错误。
+   * 如果“运行时错误”**** 的值大于零，表示作业可以接收数据，但在处理查询时生成错误。 若要查找错误，请转到[审核日志](../azure-resource-manager/management/view-activity-logs.md)，然后筛选“失败”**** 状态。
+   * 如果“输入事件”**** 的值大于零，而“输出事件”**** 的值等于零，则下列陈述之一是正确的：
       * 查询处理导致了输出事件为零。
       * 事件或字段的格式可能不正确，导致在执行查询处理后的输出为零。
       * 由于连接或身份验证原因，作业无法将数据推送到输出接收器。
@@ -38,11 +37,11 @@ ms.locfileid: "83831156"
 
 当流分析作业启动时，就会读取输入事件。 不过，在某些情况下，输出可能会有延迟。
 
-在时态查询元素中使用较大的时间值可能会导致输出延迟。 为了在长时间段内生成正确的输出，流作业会尽量读取最新时间的数据来填充时间段。 最长可以追溯到 7 天前的数据。 在读取突出的输入事件之前，不会生成任何输出。 当系统升级流式处理作业时，可能会出现此问题。 当升级发生时，作业重启。 此类升级通常每隔几个月发生一次。
+在时态查询元素中使用较大的时间值可能会导致输出延迟。 为了在长时间段内生成正确的输出，流式处理作业会尽量读取最新时间的数据来填充时间段。 最长可以追溯到 7 天前的数据。 在读取未完成的输入事件之前，不会生成任何输出。 当系统升级流式处理作业时，可能会出现此问题。 当升级发生时，作业重启。 此类升级通常每隔几个月发生一次。
 
 在设计流分析查询时，请保持审慎。 如果对作业查询语法中的时态元素使用长时间段，可能会导致首个输出在作业启动或重启时延迟。 超过几个小时（最长 7 天）就被视为长时间段。
 
-缓解这种首个输出延迟的问题的一种方法是，使用查询并行化技术（如对数据进行分区）。 或者，也可以添加更多的流单位来提高吞吐量，直到作业赶上来。  有关详细信息，请参阅[创建流分析作业时的注意事项](stream-analytics-concepts-checkpoint-replay.md)。
+缓解这种首个输出延迟的问题的一种方法是，使用查询并行化技术（如对数据进行分区）。 或者，可以添加更多的流单元来提高吞吐量，直到完成作业。  有关详细信息，请参阅[创建流分析作业时的注意事项](stream-analytics-concepts-checkpoint-replay.md)。
 
 下面这些因素会影响首个输出的及时性：
 
@@ -67,7 +66,7 @@ ms.locfileid: "83831156"
 * 上游源是否受限制
 * 查询中的处理逻辑是否是计算密集型的
 
-若要查看输出详细信息，请在 Azure 门户中依次选择流式处理作业和“作业关系图”。 对于每个输入，每个分区都有一个积压工作 (backlog) 事件指标。 如果指标持续增长，则表明系统资源受到约束。 指标增长可能是由于输出接收器限制或 CPU 利用率高引起的。 有关详细信息，请参阅[使用作业关系图进行数据驱动调试](stream-analytics-job-diagram-with-metrics.md)。
+若要查看输出详细信息，请在 Azure 门户中依次选择流式处理作业和“作业关系图”****。 对于每个输入，每个分区都有一个积压工作 (backlog) 事件指标。 如果指标持续增长，则表明系统资源受到约束。 指标增长可能是由于输出接收器限制或 CPU 利用率高引起的。 有关详细信息，请参阅[使用作业关系图进行数据驱动调试](stream-analytics-job-diagram-with-metrics.md)。
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL 数据库输出键冲突警告
 
@@ -85,11 +84,11 @@ ms.locfileid: "83831156"
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Azure 流分析 (1.0) 中的列名称是小写的
 
-如果使用的是原始兼容性级别 (1.0)，Azure 流分析会将列名称更改为小写。 此行为已在以后的兼容性级别中得到修复。 若要保留大小写，请迁移到兼容性级别 1.1 或更高版本。 有关详细信息，请参阅[流分析作业的兼容性级别](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。
+如果使用的是原始兼容性级别 (1.0)，Azure 流分析会将列名称更改为小写。 此行为已在以后的兼容性级别中修复。 若要保留大小写，请迁移到兼容性级别 1.1 或更高版本。 有关详细信息，请参阅[流分析作业的兼容性级别](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)。
 
 ## <a name="get-help"></a>获取帮助
 
-如需获取进一步的帮助，请尝试阅读[关于 Azure 流分析的 Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 
