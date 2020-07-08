@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680071"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 检测工具
@@ -20,20 +19,20 @@ ArrInspector 是一种基于 web 的工具，用于检查正在运行的 Azure �
 
 ## <a name="connecting-to-the-arrinspector"></a>连接到 ArrInspector
 
-获取 ARR 服务器的主机名（以`mixedreality.azure.com`结尾）后，使用[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)进行连接。 此函数在运行`StartArrInspector.html`应用程序的设备上创建一个。 若要启动 ArrInspector，请在 PC 上使用浏览器（Edge、Firefox 或 Chrome）打开该文件。 此文件的有效期为24小时。
+获取 ARR 服务器的主机名（以结尾 `mixedreality.azure.com` ）后，使用[ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)进行连接。 此函数 `StartArrInspector.html` 在运行应用程序的设备上创建一个。 若要启动 ArrInspector，请在 PC 上使用浏览器（Edge、Firefox 或 Chrome）打开该文件。 此文件的有效期为24小时。
 
-如果调用`ConnectToArrInspectorAsync`的应用已在电脑上运行：
+如果调用的应用 `ConnectToArrInspectorAsync` 已在电脑上运行：
 
 * 如果你使用的是 Unity 集成，它可能会自动启动。
-* 否则，你会在*用户文件夹\\LocalAppData\\[your_app]\\AC\\Temp*中找到该文件。
+* 否则，你会在*用户文件夹 \\ LocalAppData \\ [your_app] \\ AC \\ Temp*中找到该文件。
 
 如果应用在 HoloLens 上运行：
 
 1. 使用[Windows 设备门户](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)访问 HoloLens。
 1. 请在*文件资源管理器中转到系统 >*。
-1. 导航到*用户文件夹\\LocalAppData\\[your_app]\\AC\\Temp*。
-1. 将*StartArrInspector*保存到你的电脑。
-1. 打开*StartArrInspector*加载会话的 ArrInspector。
+1. 导航到*用户文件夹 \\ LocalAppData \\ [your_app] \\ AC \\ Temp*。
+1. 将*StartArrInspector.htm*保存到你的电脑。
+1. 打开*StartArrInspector.html*加载会话的 ArrInspector。
 
 ## <a name="the-performance-panel"></a>性能面板
 
@@ -57,14 +56,14 @@ ArrInspector 是一种基于 web 的工具，用于检查正在运行的 Azure �
 
 日志面板显示服务器端生成的日志消息列表。 连接时，它最多显示200以前的日志消息，并在它们发生时打印新的日志消息。
 
-您可以使用顶部的按钮来筛选基于日志`[Error/Warning/Info/Debug]`类型的列表。
+您可以 `[Error/Warning/Info/Debug]` 使用顶部的按钮来筛选基于日志类型的列表。
 ![日志筛选器按钮](./media/log-filter.png)
 
 ## <a name="the-timing-data-capture-panel"></a>计时数据捕获面板
 
 ![计时数据捕获](./media/timing-data-capture.png)
 
-此面板用于从服务器捕获计时信息并进行下载。 该文件使用[Chrome 跟踪 JSON 格式](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)。 若要检查数据，请打开该 URL `Chrome://tracing`上的 Chrome，然后将下载的文件拖放到页面中。 计时数据在固定大小的环形缓冲区中持续收集。 写出后，捕获只包含有关过去的信息，这意味着几秒钟到几分钟的时间。
+此面板用于从服务器捕获计时信息并进行下载。 该文件使用[Chrome 跟踪 JSON 格式](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)。 若要检查数据，请打开该 URL 上的 Chrome， `Chrome://tracing` 然后将下载的文件拖放到页面中。 计时数据在固定大小的环形缓冲区中持续收集。 写出后，捕获只包含有关过去的信息，这意味着几秒钟到几分钟的时间。
 
 ## <a name="the-scene-inspection-panel"></a>场景检查面板
 
@@ -113,7 +112,7 @@ ArrInspector 是一种基于 web 的工具，用于检查正在运行的 Azure �
 
 默认情况下，该工具连接到在为 ArrInspector 提供服务的同一主机上运行的 ARR 服务器。 但是，你可以将其配置为检查其他服务器，假定它在打开工具端口的情况下运行 ARR 实例。
 
-为此，请访问标题栏左侧的主菜单，并选择 "*主机配置*"。 单击 "**添加新主机**"，然后输入名称和主机名。 对于*主机名* `.mixedreality.azure.com`，请使用以结尾的主机名`http://` ，不要包含或端口。
+为此，请访问标题栏左侧的主菜单，并选择 "*主机配置*"。 单击 "**添加新主机**"，然后输入名称和主机名。 对于*主机名*，请使用以结尾的主机名 `.mixedreality.azure.com` ，不要包含 `http://` 或端口。
 
 ![主机配置](./media/host-configuration.png)
 

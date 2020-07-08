@@ -6,17 +6,16 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681241"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用会话管理 REST API
 
 若要使用 Azure 远程呈现功能，需要创建一个*会话*。 每个会话对应于在 Azure 中分配的虚拟机（VM）并等待客户端设备连接。 当设备连接时，VM 将呈现请求的数据，并将结果作为视频流提供。 在会话创建过程中，您选择了要在哪种服务器上运行，这会确定定价。 不再需要会话时，应停止此会话。 如果未手动停止，它将在会话的*租约时间*到期时自动关闭。
 
-我们在 "*脚本*" 文件夹（名为 " *RenderingSession*"）的 " [ARR 示例" 存储库](https://github.com/Azure/azure-remote-rendering)中提供了一个 PowerShell 脚本，用于演示如何使用我们的服务。 此脚本及其配置如下所述： [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
+我们在 "*脚本*" 文件夹（称为*RenderingSession.ps1*）中的 " [ARR 示例" 存储库](https://github.com/Azure/azure-remote-rendering)中提供了一个 PowerShell 脚本，它演示了如何使用我们的服务。 此脚本及其配置如下所述： [PowerShell 脚本示例](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > 此页上列出的 PowerShell 命令旨在互相补充。 如果在同一个 PowerShell 命令提示符中按顺序运行所有脚本，则这些脚本将在彼此之上进行构建。
@@ -46,7 +45,7 @@ $accountKey = "*******************************************="
 
 ## <a name="common-request-headers"></a>常见请求标头
 
-* *授权*标头的值必须为 "`Bearer TOKEN`"，其中 "`TOKEN`" 是[安全令牌服务返回](tokens.md)的身份验证令牌。
+* *授权*标头的值必须为 " `Bearer TOKEN` "，其中 " `TOKEN` " 是[安全令牌服务返回](tokens.md)的身份验证令牌。
 
 ### <a name="example-script-request-a-token"></a>示例脚本：请求令牌
 
@@ -73,11 +72,11 @@ $token = $response.AccessToken;
 
 * maxLeaseTime （timespan）： VM 将自动解除授权时的超时值
 * 模型（数组）：要预加载的资产容器 Url
-* size （string）： VM 大小（**"标准"** 或 **"高级"**）。 请参阅特定[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+* size （string）： VM 大小（**"标准"** 或 **"高级"**）。 请参阅特定 [VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
 
 **响应**
 
-| 状态代码 | JSON 有效负载 | 说明 |
+| 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
 | 202 | -sessionId： GUID | 成功 |
 
@@ -126,7 +125,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/accounts/*accountID*/sessions/*sessionId* | 修补程序 |
+| /v1/accounts/*accountID*/sessions/*sessionId* | PATCH |
 
 **请求正文：**
 
@@ -134,9 +133,9 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 **响应**
 
-| 状态代码 | JSON 有效负载 | 说明 |
+| 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
-| 200 | | 成功 |
+| 200 | | Success |
 
 ### <a name="example-script-update-a-session"></a>示例脚本：更新会话
 
@@ -170,7 +169,7 @@ RawContentLength  : 0
 
 **响应**
 
-| 状态代码 | JSON 有效负载 | 说明 |
+| 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
 | 200 | -会话：会话属性的数组 | 有关会话属性的说明，请参阅 "获取会话属性" 部分 |
 
@@ -213,7 +212,7 @@ RawContentLength  : 2
 
 **响应**
 
-| 状态代码 | JSON 有效负载 | 说明 |
+| 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
 | 200 | -message： string<br/>-sessionElapsedTime： timespan<br/>-sessionHostname： string<br/>-sessionId： string<br/>-sessionMaxLeaseTime： timespan<br/>-sessionSize： enum<br/>-sessionStatus： enum | 枚举 sessionStatus {启动、准备、停止、停止、过期、出错}<br/>如果状态为 "错误" 或 "已过期"，则该消息将包含详细信息 |
 
@@ -256,7 +255,7 @@ RawContentLength  : 60
 
 **响应**
 
-| 状态代码 | JSON 有效负载 | 说明 |
+| 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
 | 204 | | 成功 |
 

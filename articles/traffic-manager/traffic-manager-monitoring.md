@@ -11,10 +11,9 @@ ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
 ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80757260"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>流量管理器终结点监视
@@ -25,7 +24,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 若要配置终结点监视，必须在流量管理器配置文件中指定以下设置：
 
-* **协议**。 选择 HTTP、HTTPS 或 TCP 作为协议，流量管理器在探测终结点以检查其运行状况时，将使用该协议。 HTTPS 监视并不验证你的 TLS/SSL 证书是否有效，它只检查证书是否存在。
+* **协议**。 选择 HTTP、HTTPS 或 TCP 作为协议，流量管理器在探测终结点以检查其运行状况时，将使用该协议。 HTTPS 监视并不验证 TLS/SSL 证书是否有效，它只检查是否有证书。
 * **端口**。 选择用于请求的端口。
 * **路径**。 此配置设置仅对 HTTP 和 HTTPS 协议有效，使用这些协议时，需要指定路径。 为 TCP 监视协议提供此设置会导致出错。 对于 HTTP 和 HTTPS 协议，指定监视功能要访问的网页或文件的相对路径和名称。 正斜杠 (/) 是相对路径的有效条目。 此值表示文件位于根目录中（默认设置）。
 * **自定义标头设置**：此配置设置用于将特定的 HTTP 标头添加到运行状况检查，以便流量管理器将该检查发送到配置文件中的终结点。 自定义标头可以在配置文件级别指定，使之适用于该配置文件中的所有终结点，以及/或者在终结点级别指定，使之仅适用于该终结点。 可以使用自定义标头进行运行状况检查，通过指定主机标头，将多租户环境中的终结点正确路由到目标。 也可使用此设置来添加唯一标头，以便标识源自流量管理器的 HTTP(S) 请求并对其进行不同的处理。 最多可以指定八个标头/值对（用逗号分隔）。 例如，“header1:value1,header2:value2”。 
@@ -40,7 +39,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 ## <a name="how-endpoint-monitoring-works"></a>终结点监视功能的工作原理
 
-如果监视协议设置为 HTTP 或 HTTPS，流量管理器探测代理将使用指定的协议、端口和相对路径向终结点发出 GET 请求。 如果收到返回的 200-OK 响应，或者在“预期的状态代码 \*范围”  中配置的任何响应，则认为该终结点正常。 如果响应是一个不同的值，或者在指定的超时期限内未收到的任何响应，则流量管理器探测代理会根据“容许的失败次数”设置重试（如果此设置为 0，则不执行重试）。 如果连续失败次数超过“容许的失败次数”设置，则将该终结点标记为不正常。 
+如果监视协议设置为 HTTP 或 HTTPS，流量管理器探测代理将使用指定的协议、端口和相对路径向终结点发出 GET 请求。 如果收到返回的 200-OK 响应，或者在“预期的状态代码 \*范围”中配置的任何响应，则认为该终结点正常。 如果响应是一个不同的值，或者在指定的超时期限内未收到的任何响应，则流量管理器探测代理会根据“容许的失败次数”设置重试（如果此设置为 0，则不执行重试）。 如果连续失败次数超过“容许的失败次数”设置，则将该终结点标记为不正常。 
 
 如果监视协议为 TCP，流量管理器探测代理将使用指定的端口发起 TCP 连接请求。 如果终结点响应了请求并提供了用于建立连接的响应，则将该运行状况检查标记为成功，并且流量管理器探测代理会重置 TCP 连接。 如果响应是一个不同的值，或者在指定的超时期限内未收到的任何响应，则流量管理器探测代理会根据“容许的失败次数”设置重试（如果此设置为 0，则不执行重试）。 如果连续失败次数超过“容许的失败次数”设置，则将该终结点标记为不正常。
 
@@ -100,7 +99,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 发生以下任一事件时，终结点会变得不正常：
 
 - 如果监视协议为 HTTP 或 HTTPS：
-    - 收到非 200 响应，或者收到的响应不包括在“预期的状态代码范围”设置中指定的状态范围（包括其他 2xx 代码，或者 301/302 重定向）。 
+    - 收到非 200 响应，或者收到的响应不包括在“预期的状态代码范围”设置中指定的状态范围（包括其他 2xx 代码，或者 301/302 重定向）。
 - 如果监视协议为 TCP： 
     - 收到非 ACK 或 SYN-ACK 响应，以响应流量管理器发送的用于尝试建立连接的 SYN 请求。
 - 超时。 
@@ -136,7 +135,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 * **加权**。 根据分配的权重以及其他可用终结点的权重随机选择任何可用的终结点。
 * **性能**。 返回最靠近最终用户的终结点。 如果终结点不可用，流量管理器会将流量转移给下一个最靠近 Azure 区域的终结点。 可以使用[嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)针对性能流量路由来配置替代故障转移计划。
 * **地理**。 已返回基于查询请求 IP 映射到地理位置的终结点。 如果该终结点不可用，则不会选择另一个要故障转移到的终结点，因为一个地理位置只能映射到配置文件中的一个终结点（[常见问题解答](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)中提供了更多详细信息）。 我们建议客户在使用地理路由时，使用包含多个终结点的嵌套式流量管理器配置文件作为配置文件的终结点，这是一种最佳做法。
-* **MultiValue**：返回多个映射到 IPv4/IPv6 地址的终结点。 收到此配置文件的查询时，系统会根据指定的“响应中的最大记录数”值返回正常终结点。  响应的默认数量为两个终结点。
+* **MultiValue**：返回多个映射到 IPv4/IPv6 地址的终结点。 收到此配置文件的查询时，系统会根据指定的“响应中的最大记录数”值返回正常终结点。 响应的默认数量为两个终结点。
 * **子网**：返回映射到一组 IP 地址范围的终结点。 从该 IP 地址收到请求时，返回的终结点是针对该 IP 地址映射的终结点。 
 
 有关详细信息，请参阅[流量管理器流量路由方法](traffic-manager-routing-methods.md)。
@@ -149,7 +148,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 > * 某个访问控制列表 (ACL) 正在阻止流量管理器运行状况检查。
 > * 流量管理器配置文件中的监视端口或协议配置不当。
 >
-> 此行为的一个结果是，即使流量管理器运行状况检查没有正确进行配置，但从流量路由的角度来看，流量管理器似乎也运行正常。  但在这种情况下，不能发生会影响应用程序总体可用性的终结点故障转移。 必须检查配置文件是否显示“联机”状态而不是“已降级”状态。 状态为“联机”表示流量管理器运行状况检查按预期进行。
+> 此行为的一个结果是，即使流量管理器运行状况检查没有正确进行配置，但从流量路由的角度来看，流量管理器似乎也运行正常。 但在这种情况下，不能发生会影响应用程序总体可用性的终结点故障转移。 必须检查配置文件是否显示“联机”状态而不是“已降级”状态。 状态为“联机”表示流量管理器运行状况检查按预期进行。
 
 有关针对失败的运行状况检查进行故障排除的详细信息，请参阅 [Azure 流量管理器上的降级状态故障排除](traffic-manager-troubleshooting-degraded.md)。
 
@@ -169,7 +168,7 @@ Azure 流量管理器包括内置的终结点监视和终结点自动故障转�
 
 * [可以在单个配置文件中使用不同的终结点寻址类型吗？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
 
-* [当传入查询的记录类型与与终结点寻址类型关联的记录类型不同时，会出现什么情况？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+* [当传入查询的记录类型与与终结点的寻址类型关联的记录类型不同时，会发生什么情况？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
 
 * [可以在嵌套配置文件中使用终结点采用 IPv4/IPv6 地址的配置文件吗？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
 

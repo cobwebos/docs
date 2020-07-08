@@ -11,7 +11,6 @@ manager: cpendle
 ms.custom: codepen
 ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804565"

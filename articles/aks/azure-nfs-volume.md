@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
 ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803460"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中手动创建和使用 NFS（网络文件系统）Linux 服务器卷

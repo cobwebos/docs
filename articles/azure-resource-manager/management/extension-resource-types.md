@@ -4,10 +4,9 @@ description: 列出用于扩展其他资源类型的功能的 Azure 资源类型
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80754869"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>用于扩展其他资源的功能的资源类型
@@ -23,14 +22,14 @@ ms.locfileid: "80754869"
 - Microsoft.AlertsManagement/alertsSummary
 - Microsoft.Authorization/checkAccess
 - Microsoft.Authorization/denyAssignments
-- Microsoft. Authorization/findOrphanRoleAssignments
+- Microsoft.Authorization/findOrphanRoleAssignments
 - Microsoft.Authorization/locks
 - Microsoft.Authorization/permissions
 - Microsoft.Authorization/policyAssignments
 - Microsoft.Authorization/policyDefinitions
 - Microsoft.Authorization/policySetDefinitions
 - Microsoft.Authorization/roleAssignments
-- Microsoft. Authorization/roleAssignmentsUsageMetrics
+- Microsoft.Authorization/roleAssignmentsUsageMetrics
 - Microsoft.Authorization/roleDefinitions
 - Microsoft.Billing/billingPeriods
 - Microsoft.Billing/billingPermissions
@@ -83,7 +82,7 @@ ms.locfileid: "80754869"
 - Microsoft.GuestConfiguration/softwareUpdates
 - microsoft.insights/baseline
 - microsoft.insights/calculatebaseline
-- microsoft insights/dataCollectionRuleAssociations
+- microsoft.insights/dataCollectionRuleAssociations
 - microsoft.insights/diagnosticSettings
 - microsoft.insights/diagnosticSettingsCategories
 - microsoft.insights/eventtypes
@@ -96,8 +95,8 @@ ms.locfileid: "80754869"
 - microsoft.insights/metricbaselines
 - microsoft.insights/metrics
 - microsoft.insights/myWorkbooks
-- microsoft insights/拓扑
-- microsoft insights/事务
+- microsoft.insights/topology
+- microsoft.insights/transactions
 - microsoft.insights/vmInsightsOnboardingStatuses
 - Microsoft.KubernetesConfiguration/sourceControlConfigurations
 - Microsoft.Maintenance/applyUpdates
@@ -113,7 +112,7 @@ ms.locfileid: "80754869"
 - Microsoft.PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Microsoft.RecoveryServices/backupProtectedItems
-- Microsoft.recoveryservices/replicationEligibilityResults    
+- Microsoft.RecoveryServices/replicationEligibilityResults    
 - Microsoft.ResourceHealth/availabilityStatuses
 - Microsoft.ResourceHealth/childAvailabilityStatuses
 - Microsoft.ResourceHealth/childResources

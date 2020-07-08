@@ -1,15 +1,14 @@
 ---
-title: 对出口流量使用静态 IP
+title: 将静态 IP 用于出口流量
 titleSuffix: Azure Kubernetes Service
 description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中出口流量的静态公共 IP 地址
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
 ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80803376"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用静态公共 IP 地址
@@ -18,7 +17,7 @@ ms.locfileid: "80803376"
 
 本文介绍了如何创建和使用静态公共 IP 地址，以便用于 AKS 群集中的出口流量。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -32,7 +31,7 @@ AKS 群集的出站流量遵循 [Azure 负载均衡器约定][outbound-connectio
 
 ## <a name="create-a-static-public-ip"></a>创建静态公共 IP
 
-使用 [az aks show][az-aks-show] 命令并添加 `--query nodeResourceGroup` 查询参数获取资源组名称。 以下示例获取名为 myResourceGroup  的资源组中 AKS 群集名称 myAKSCluster  的节点资源组：
+使用 [az aks show][az-aks-show] 命令并添加 `--query nodeResourceGroup` 查询参数获取资源组名称。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -40,7 +39,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-现在，使用 [az network public ip create][az-network-public-ip-create] 命令创建静态公共 IP 地址。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP  ：
+现在，使用 [az network public ip create][az-network-public-ip-create] 命令创建静态公共 IP 地址。 指定上一命令中获取的节点资源组名称，然后指定 IP 地址资源的名称，如 myAKSPublicIP**：
 
 ```azurecli-interactive
 az network public-ip create \
@@ -63,7 +62,7 @@ az network public-ip create \
   }
 ```
 
-稍后可以使用 [az network public-ip list][az-network-public-ip-list] 命令获取公共 IP 地址。 指定节点资源组的名称，然后查询 ipAddress  ，如以下示例中所示：
+稍后可以使用 [az network public-ip list][az-network-public-ip-list] 命令获取公共 IP 地址。 指定节点资源组的名称，然后查询 ipAddress，如以下示例中所示：
 
 ```azurecli-interactive
 $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
@@ -99,7 +98,7 @@ kubectl apply -f egress-service.yaml
 
 若要验证是否正在使用静态公共 IP 地址，可以使用 DNS 查找服务，例如 `checkip.dyndns.org`。
 
-启动并附加到基本 Debian  pod：
+启动并附加到基本 Debian pod：
 
 ```console
 kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
@@ -111,7 +110,7 @@ kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 apt-get update && apt-get install curl -y
 ```
 
-现在，使用 curl 访问 checkip.dyndns.org  站点。 将显示出口 IP 地址，如以下示例输出中所示。 此 IP 地址与为负载均衡器服务创建和定义的静态公共 IP 地址相匹配：
+现在，使用 curl 访问 checkip.dyndns.org 站点。 将显示出口 IP 地址，如以下示例输出中所示。 此 IP 地址与为负载均衡器服务创建和定义的静态公共 IP 地址相匹配：
 
 ```console
 $ curl -s checkip.dyndns.org

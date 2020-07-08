@@ -5,10 +5,9 @@ ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80676518"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure 区块链服务中的限制
@@ -21,12 +20,12 @@ Azure 区块链服务具有服务和功能限制，如成员可以具有的节�
 
 | 定价层 | 最大事务节点数 | 最大验证器节点 |
 |:---|:---:|:---:|
-| 基本 | 10 | 1 |
+| Basic | 10 | 1 |
 | 标准 | 10 | 2 |
 
 联盟网络应该至少有两个 Azure 区块链 Service 标准层节点。 标准层节点包括两个验证器节点。 需要四个验证器节点来满足[伊斯坦布尔错综复杂容错的共识](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)。
 
-"基本" 层用于开发、测试和概念证明。 将标准层用于生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”  层。
+"基本" 层用于开发、测试和概念证明。 将标准层用于生产级部署。 如果使用区块链数据管理器或发送大量专用事务，还应使用“标准”层。
 
 不支持在创建成员后在“基本”定价层和“标准”定价层之间进行切换。
 

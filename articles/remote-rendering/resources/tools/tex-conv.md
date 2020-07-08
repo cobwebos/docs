@@ -6,20 +6,19 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80680019"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv-纹理转换工具
 
 TexConv 是一个命令行工具，用于将纹理从 PNG、TGA、JPEG 和 DDS 等典型输入格式处理为适用于运行时消耗的优化格式。
-尽管最常见的情况是将单个输入文件`A.xxx`转换为优化格式`B.yyy`，但该工具还有许多其他选项可供高级使用。
+尽管最常见的情况是将单个输入文件转换 `A.xxx` 为优化格式，但 `B.yyy` 该工具还有许多其他选项可供高级使用。
 
 ## <a name="command-line-help"></a>命令行帮助
 
-使用`--help`参数运行 TexConv 将列出所有可用选项。 此外，TexConv 将在执行时打印所使用的选项，以帮助了解其功能。 有关详细信息，请参阅此输出。
+使用参数运行 TexConv.exe `--help` 将列出所有可用选项。 此外，TexConv 将在执行时打印所使用的选项，以帮助了解其功能。 有关详细信息，请参阅此输出。
 
 ## <a name="general-usage"></a>常规用法
 
@@ -37,13 +36,13 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="multiple-input-files"></a>多个输入文件
 
-若要组合多个输入文件的输出，请使用带有递增数字`-in`的选项指定每个输入文件：
+若要组合多个输入文件的输出，请使用带有递增数字的选项指定每个输入文件 `-in` ：
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-`-right`组合2d 纹理中的立方体贴图时，还可以使用、 `-left`、 `-top`、 `-bottom`、 `-front`、 `-back`或`-px`、 `-nx` `-py` `-ny`、、、 `-pz`和。 `-nz`
+组合2d 纹理中的立方体贴图时，还可以使用 `-right` 、 `-left` 、、 `-top` `-bottom` 、 `-front` 、或 `-back` 、、、、 `-px` `-nx` `-py` `-ny` `-pz` 和 `-nz` 。
 
 若要将这些输入映射到输出文件，需要正确的通道映射。
 
@@ -67,7 +66,7 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 可用的通道映射选项如下：
 
-- `-r`、 `-g`、 `-b`、 `-a` ：这些指定单个通道分配
+- `-r`、 `-g` 、 `-b` 、 `-a` ：这些指定单个通道分配
 - `-rg`：指定红色和绿色通道分配。
 - `-rgb`：指定红色、绿色和蓝色通道分配。
 - `-rgba`：指定所有四个通道分配。
@@ -89,7 +88,7 @@ TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 
 ## <a name="common-options"></a>常用选项
 
-最有趣的选项如下所示。 列出了更多选项`TexConv --help`。
+最有趣的选项如下所示。 列出了更多选项 `TexConv --help` 。
 
 ### <a name="output-type"></a>输出类型
 

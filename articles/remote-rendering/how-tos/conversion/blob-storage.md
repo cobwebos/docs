@@ -6,10 +6,9 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681644"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>将 Azure Blob 存储用于模型转换
@@ -29,7 +28,7 @@ ms.locfileid: "80681644"
 
 - [Azure 门户](https://portal.azure.com)
 - [az 命令行](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 - Sdk （c #、Python ...）
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>确保 Azure 远程呈现可以访问你的存储帐户
@@ -53,11 +52,11 @@ Azure 远程呈现需要从存储帐户检索模型数据，并将数据写回�
 - az PowerShell module
   - 请参阅[PowerShell 脚本示例](../../samples/powershell-example-scripts.md)
 - [az 命令行](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
   - 右键单击容器 "获取共享访问签名" （读取、列出输入容器的访问权限、对输出容器的写访问权限）
 - Sdk （c #、Python ...）
 
-有关在资产转换中使用共享访问签名的示例，请访问[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)。
+Conversion.ps1 [Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)中显示了在资产转换中使用共享访问签名的示例。
 
 ## <a name="upload-an-input-model"></a>上载输入模型
 
@@ -70,7 +69,7 @@ Azure 远程呈现需要从存储帐户检索模型数据，并将数据写回�
 - [使用存储 SDK （Python、c # ...）](https://docs.microsoft.com/azure/storage/)
 - [使用 Azure 存储 REST Api](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-有关如何上传用于转换的数据的示例，请参阅[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的转换。
+有关如何上传用于转换的数据的示例，请参阅[Powershell 示例脚本](../../samples/powershell-example-scripts.md#script-conversionps1)的 Conversion.ps1。
 
 ## <a name="get-a-sas-uri-for-the-converted-model"></a>获取转换后的模型的 SAS URI
 

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7f2b1031659864ae338bb0aa320c048ea23c21f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681696"
 ---
 # <a name="rendering-modes"></a>渲染模式
@@ -38,7 +37,7 @@ ms.locfileid: "80681696"
 
 每个一个 GPU 都使用 MSAA 来消除本地内容。 但是，来自不同 Gpu 的边缘之间可能存在固有的别名。 通过后处理最终映像，但 MSAA 质量仍比在**TileBasedComposition**模式下更糟，这种效果会得到缓解。
 
-下图演示了 MSAA 项目： ![DepthBasedComposition 中的 msaa](./media/service-render-mode-balanced.png)
+下图演示了 MSAA 项目： ![ DepthBasedComposition 中的 msaa](./media/service-render-mode-balanced.png)
 
 消除锯齿在 sculpture 和窗帘之间正常工作，因为这两个部分都呈现在同一 GPU 上。 另一方面，窗帘和墙壁之间的边缘会显示一些别名，因为这两个部分是由不同 Gpu 组成的。
 
@@ -50,7 +49,7 @@ ms.locfileid: "80681696"
 
 ## <a name="setting-the-render-mode"></a>设置呈现模式
 
-在中，通过在中`AzureSession.ConnectToRuntime`指定在远程呈现 VM 上使用的`ConnectToRuntimeParams`呈现模式。
+在中，通过在中指定在远程呈现 VM 上使用的呈现模式 `AzureSession.ConnectToRuntime` `ConnectToRuntimeParams` 。
 
 ```cs
 async void ExampleConnect(AzureSession session)
@@ -74,4 +73,4 @@ async void ExampleConnect(AzureSession session)
 ## <a name="next-steps"></a>后续步骤
 
 * [会话](../concepts/sessions.md)
-* [分层状态覆盖组件](../overview/features/override-hierarchical-state.md)
+* [分层状态重写组件](../overview/features/override-hierarchical-state.md)

@@ -1,7 +1,7 @@
 ---
-title: 参考： Data Science Virtual Machine 图像弃用
+title: 参考：Data Science Virtual Machine 映像弃用
 titleSuffix: Azure Data Science Virtual Machine
-description: 影响 Azure Data Science Virtual Machine 的弃用功能的详细信息
+description: 有关影响 Azure Data Science Virtual Machine 的弃用的详细信息
 author: lobrien
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,10 +9,9 @@ ms.author: laobri
 ms.date: 04/03/2020
 ms.topic: reference
 ms.openlocfilehash: 6004ae0c1fd2fa25a07ab84776ab74789f6e7da9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80754768"
 ---
 # <a name="reference-deprecation-of-dsvm-images"></a>参考：DSVM 映像的弃用

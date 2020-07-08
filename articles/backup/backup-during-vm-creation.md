@@ -4,10 +4,9 @@ description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备�
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80672810"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
@@ -26,14 +25,14 @@ ms.locfileid: "80672810"
 
 ## <a name="create-a-vm-with-backup-configured"></a>创建配置了备份的 VM
 
-1. 在 Azure 门户中，单击“创建资源”  。
+1. 在 Azure 门户中，单击“创建资源”。
 
-2. 在 Azure 市场中，单击“计算”  ，然后选择一个 VM 映像。
+2. 在 Azure 市场中，单击“计算”，然后选择一个 VM 映像。
 
 3. 根据适用于 [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) 的说明设置 VM。
 
-4. 在“管理”  选项卡上，在“启用备份”  中，单击“开启”  。
-5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”  。
+4. 在“管理”选项卡上，在“启用备份”中，单击“开启”。
+5. Azure 备份将备份到恢复服务保管库。 如果没有现有的保管库，请单击“新建”。
 6. 接受建议的保管库名称或自己指定名称。
 7. 指定或创建保管库将位于其中的资源组。 资源组保管库可以不同于 VM 资源组。
 
@@ -55,13 +54,13 @@ ms.locfileid: "80672810"
 需要注意的要点：
 
 1. 可以使用 RG 的默认名称，也可以根据公司要求对其进行编辑。
-2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 "n" 被替换为一个整数（从1开始），并用于在第一个 RG 已满时向外扩展。 目前一个 RG 最多可以有 600 个 RPC。
+2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可以有 600 个 RPC。
               ![创建策略时选择名称](./media/backup-during-vm-creation/create-policy.png)
 3. 该模式应遵循下面的 RG 命名规则，并且总长度不应超过允许的最大 RG 名称长度。
     1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结尾。
     2. 资源组名称最多可包含 74 个字符，包括 RG 名称和后缀。
-4. 第一个`<alpha-numeric-string>`参数是必需的，而 "n" 后面的第二个参数是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
-5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RPs 仍将驻留在旧 RG 中，因此不会移动，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
+4. 第一个 `<alpha-numeric-string>` 是必需的，但“n”后面的第二个是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
+5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧 RG 中，不会被删除，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
 ![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
 6. 建议不要锁定为了供备份服务使用而创建的资源组。
 
@@ -73,8 +72,8 @@ ms.locfileid: "80672810"
 
 创建 VM 后，请执行以下操作：
 
-1. 在 VM 属性中，单击“备份”。**** VM 状态将保持为“初始备份挂起”，直到初始备份运行
-2. 单击“立即备份”**** 来运行按需备份。
+1. 在 VM 属性中，单击“备份”。 VM 状态将保持为“初始备份挂起”，直到初始备份运行
+2. 单击“立即备份”来运行按需备份。
 
     ![运行按需备份](./media/backup-during-vm-creation/run-backup.png)
 

@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80681475"
 ---
 # <a name="override-materials-during-model-conversion"></a>在模型转换期间替代材料
@@ -22,7 +21,7 @@ ms.locfileid: "80681475"
 ## <a name="the-override-file-used-during-conversion"></a>转换期间使用的替代文件
 
 举个简单的例子，假设方框模型有一个称为 "默认" 的材料。 需要调整 albedo 颜色以在 ARR 中使用。
-在这种情况下`box_materials_override.json` ，可以创建文件，如下所示：
+在这种情况下， `box_materials_override.json` 可以创建文件，如下所示：
 
 ```json
 [
@@ -38,7 +37,7 @@ ms.locfileid: "80681475"
 ]
 ```
 
-该`box_materials_override.json`文件放置在输入容器中，并在旁`ConversionSettings.json` `box.fbx`添加，这会告诉转换在何处找到替代文件（请参阅[配置模型转换](configure-model-conversion.md)）：
+该 `box_materials_override.json` 文件放置在输入容器中，并在 `ConversionSettings.json` 旁添加 `box.fbx` ，这会告诉转换在何处找到替代文件（请参阅[配置模型转换](configure-model-conversion.md)）：
 
 ```json
 {
@@ -52,7 +51,7 @@ ms.locfileid: "80681475"
 
 [颜色材料](../../overview/features/color-materials.md)模型描述了与光照无关的持续着色的图面。
 例如，这对于 Photogrammetry 算法创建的资产很有用。
-在 "材料覆盖文件" 中，通过将设置`unlit`为`true`，可以将材料声明为颜色材料。
+在 "材料覆盖文件" 中，通过将设置为，可以将材料声明为颜色材料 `unlit` `true` 。
 
 ```json
 [
@@ -71,7 +70,7 @@ ms.locfileid: "80681475"
 
 有时，您可能希望转换过程忽略特定纹理映射。 这种情况可能是由一个工具生成的，该工具生成的是由呈现器无法正确理解的特殊映射。 例如，用于定义不透明度的 "OpacityMap" 或 "NormalMap" 存储为 "BumpMap" 的模型。 （在后一种情况下，您需要忽略 "NormalMap"，这将导致转换器使用 "BumpMap" 作为 "NormalMap"。）
 
-原则很简单。 只需添加一个名`ignoreTextureMaps`为的属性，并添加要忽略的纹理映射：
+原则很简单。 只需添加一个名为的属性 `ignoreTextureMaps` ，并添加要忽略的纹理映射：
 
 ```json
 [
@@ -86,7 +85,7 @@ ms.locfileid: "80681475"
 
 ## <a name="json-schema"></a>JSON 架构
 
-此处提供了材料文件的完整 JSON 架构。 除了`unlit`和`ignoreTextureMaps`之外，"可用" 属性还是 "[颜色材料](../../overview/features/color-materials.md)" 和 " [.pbr" 材料](../../overview/features/pbr-materials.md)模型各部分中描述的属性的子集。
+此处提供了材料文件的完整 JSON 架构。 除了 `unlit` 和之外 `ignoreTextureMaps` ，"可用" 属性还是 "[颜色材料](../../overview/features/color-materials.md)" 和 " [.pbr" 材料](../../overview/features/pbr-materials.md)模型各部分中描述的属性的子集。
 
 ```json
 {
@@ -172,5 +171,5 @@ ms.locfileid: "80681475"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [颜色材料](../../overview/features/color-materials.md)
+* [有色材料](../../overview/features/color-materials.md)
 * [PBR 材料](../../overview/features/pbr-materials.md)
