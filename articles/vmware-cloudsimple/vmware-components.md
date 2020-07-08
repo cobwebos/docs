@@ -10,11 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702816"
 ---
 # <a name="private-cloud-vmware-components"></a>私有云 VMware 组件
 
@@ -33,7 +32,7 @@ ms.locfileid: "79279502"
 |-----------|---------|------------------|
 | ESXi | 6.7 u2 | 企业 Plus |
 | vCenter | 6.7 u2 | vCenter 标准版 |
-| vSAN | 6.7 | 企业 |
+| vSAN | 6.7 | Enterprise |
 | NSX 数据中心 | 2.4.1 | 高级 |
 
 ## <a name="esxi"></a>ESXi
@@ -48,7 +47,7 @@ vCenter server 设备（VCSA）通过 CloudSimple 为 VMware 解决方案提供�
 
 ### <a name="vcenter-single-sign-on"></a>vCenter 单一登录
 
-VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联。  域名为**cloudsimple**。  系统会创建**CloudOwner@cloudsimple.com**一个默认用户以访问 vCenter。  可以为 vCenter 添加本地/Azure active directory[标识源](set-vcenter-identity.md)。
+VCSA 上的嵌入式平台服务控制器与**VCenter 单一登录域**相关联。  域名为**cloudsimple**。  **CloudOwner@cloudsimple.com**系统会创建一个默认用户以访问 vCenter。  可以为 vCenter 添加本地/Azure active directory[标识源](set-vcenter-identity.md)。
 
 ## <a name="vsan-storage"></a>vSAN 存储
 
@@ -82,7 +81,7 @@ NSX 数据中心在私有云上提供网络虚拟化、微分段和网络安全�
 
 ## <a name="vsphere-cluster"></a>vSphere 群集
 
-将 ESXi 主机配置为群集，以确保私有云的高可用性。  在创建私有云时，将在第一个群集上部署 vSphere 的管理组件。  为管理组件创建了资源池，并在此资源池中部署了所有管理 Vm。 无法删除第一个群集来压缩私有云。  vSphere 群集使用**VSPHERE HA**为 vm 提供高可用性。  容错失败基于群集中的可用节点数。  您可以使用公式```Number of nodes = 2N+1``` ，其中```N```是可容忍的失败次数。
+将 ESXi 主机配置为群集，以确保私有云的高可用性。  在创建私有云时，将在第一个群集上部署 vSphere 的管理组件。  为管理组件创建了资源池，并在此资源池中部署了所有管理 Vm。 无法删除第一个群集来压缩私有云。  vSphere 群集使用**VSPHERE HA**为 vm 提供高可用性。  容错失败基于群集中的可用节点数。  您可以使用公式， ```Number of nodes = 2N+1``` 其中 ```N``` 是可容忍的失败次数。
 
 ### <a name="vsphere-cluster-limits"></a>vSphere 群集限制
 
@@ -110,7 +109,7 @@ CloudSimple 负责在私有云中对 VMware 软件（ESXi、vCenter、PSC 和 NS
 软件更新包括：
 
 * **修补程序**。 VMware 发布的安全修补程序或 bug 修复。
-* **更新**。 VMware stack 组件的次要版本更改。
+* 更新。 VMware stack 组件的次要版本更改。
 * **升级**。 VMware stack 组件的主版本更改。
 
 CloudSimple 可从 VMware 获取关键安全修补程序后立即将其测试。 按照 SLA，CloudSimple 将安全修补程序推出到一周内的私有云环境中。

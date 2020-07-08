@@ -4,11 +4,10 @@ description: 介绍支持 Resource Manager 的资源提供程序及其架构和�
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273977"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702765"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -289,5 +288,5 @@ West US
 
 * 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](../templates/template-syntax.md)。 
 * 若要查看资源提供程序模板架构，请参阅[模板引用](/azure/templates/)。
-* 有关将资源提供程序映射到 Azure 服务的列表，请参阅 [Azure 服务的资源提供程序](azure-services-resource-providers.md)。
+* 有关资源提供程序到 Azure 服务的映射列表，请参阅 [Azure 服务的资源提供程序](azure-services-resource-providers.md)。
 * 若要查看资源提供程序的操作，请参阅 [Azure REST API](/rest/api/)。

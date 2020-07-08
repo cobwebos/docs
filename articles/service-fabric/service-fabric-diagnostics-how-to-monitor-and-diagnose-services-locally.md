@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701194"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 > [!div class="op_single_selector"]
@@ -40,16 +39,16 @@ Service Fabric 发出 ETW 事件以帮助应用程序开发人员了解平台中
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>将自己的自定义跟踪添加到应用程序代码
 Service Fabric Visual Studio 项目模板包含示例代码。 该代码演示如何添加自定义应用程序代码 ETW 跟踪（与来自 Service Fabric 的系统跟踪一起显示在 Visual Studio ETW 查看器中）。 此方法的优点是元数据会自动添加到跟踪中，并已配置了 Visual Studio 诊断事件查看器来显示它们。
 
-对于从**服务模板**（无状态或有状态）创建的项目，只要搜索 `RunAsync` 实现即可：
+对于从服务模板（无状态或有状态）创建的项目，只要搜索 `RunAsync` 实现即可：
 
-1. 对 `ServiceEventSource.Current.ServiceMessage` 方法中 `RunAsync` 的调用显示了应用程序代码中的自定义 ETW 跟踪的一个示例。
-2. 在 **ServiceEventSource.cs** 文件中，可找到 `ServiceEventSource.ServiceMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
+1. 对 `RunAsync` 方法中 `ServiceEventSource.Current.ServiceMessage` 的调用显示了应用程序代码中的自定义 ETW 跟踪的一个示例。
+2. 在 ServiceEventSource.cs 文件中，可找到 `ServiceEventSource.ServiceMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
 
 对于从 **Actor 模板**（无状态或有状态）创建的项目：
 
 1. 打开 **"ProjectName".cs** 文件，其中，*ProjectName* 是为 Visual Studio 项目选择的名称。  
-2. 在 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`DoWorkAsync*方法中查找代码*。  这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
-3. 在文件 **ActorEventSource.cs** 中，可找到 `ActorEventSource.ActorMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
+2. 在 *DoWorkAsync* 方法中查找代码 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`。  这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
+3. 在文件 ActorEventSource.cs 中，可找到 `ActorEventSource.ActorMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
 
 将自定义 ETW 跟踪添加到服务代码之后，可以再次生成、部署和运行应用程序以在诊断事件查看器中查看事件。 如果使用 **F5** 调试应用程序，则会自动打开诊断事件查看器。
 

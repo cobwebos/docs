@@ -7,25 +7,24 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82130768"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704057"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
 
-本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 作为对 Azure 流量管理器降级状态进行故障排除的第一步是启用日志记录。  有关详细信息，请参阅[启用资源日志](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”  状态，则一个或多个终结点的状态可能为“已降级”  ：
+本文介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除。 在排查 Azure 流量管理器状态降级问题时，第一步是启用日志记录。  有关详细信息，请参阅[启用资源日志](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs)。 在此方案中，假设已配置了一个指向某些 cloudapp.net 托管服务的流量管理器配置文件。 如果流量管理器的运行状况显示“已降级”**** 的状态，则一个或多个终结点的状态可能为“已降级”****：
 
 ![已降级终结点状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-如果流量管理器的运行状况显示“非活动”  状态，则这两个终结点可能**已禁用**：
+如果流量管理器的运行状况显示“非活动”**** 状态，则两个终结点的状态可能为“已禁用”****：
 
 ![非活动流量管理器状态](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
@@ -35,7 +34,7 @@ ms.locfileid: "82130768"
 * 应将 30x 重定向响应视为失败，除非已在流量管理器配置文件的[预期状态代码范围](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring)中将其指定为有效的响应代码。 流量管理器不探测重定向目标。
 * 对于 HTTPS 探测器，证书错误会被忽略。
 * 只要返回 200，就无需在意探测器路径的实际内容。 常用的技巧是探测某些静态内容的 URL，例如“/favicon.ico”。 即使应用程序处于正常状态，ASP 页等动态内容也不一定会返回 200。
-* 最佳做法是将探测路径设置为某个值，该值具有足够逻辑来确定站点是已启动还是已关闭。 在上面的示例中，如果将路径设置为“/favicon.ico”，只会测试 w3wp.exe 是否响应。 这种探测可能不会指示 Web 应用程序是否正常。 更好的选择是，将路径设置为诸如“/Probe.aspx”之类的值，可通过逻辑确定站点运行状况。 例如，可以使用性能计数器来查看 CPU 利用率，或者测量失败请求的数目。 或者，可以尝试访问数据库资源或会话状态，确保 Web 应用程序正常工作。
+* 最佳做法是将探测路径设置为某个值，该值具有足够逻辑来确定站点是已启动还是已关闭。 在上述示例中，如果将路径设置为“/favicon.ico”，则只会测试 w3wp.exe 是否有响应。 这种探测可能不会指示 Web 应用程序是否正常。 更好的做法是将路径设置为类似于“/Probe.aspx”的值，通过某个逻辑来确定站点的运行状况。 例如，可以使用性能计数器来查看 CPU 利用率，或者测量失败请求的数目。 或者，可以尝试访问数据库资源或会话状态，确保 Web 应用程序正常工作。
 * 如果配置文件中的所有终结点都已降级，流量管理器会将所有终结点视为处于正常状态，并将流量路由到所有终结点。 此行为可确保探测机制中的问题不会导致服务完全中断。
 
 ## <a name="troubleshooting"></a>故障排除
@@ -48,7 +47,7 @@ ms.locfileid: "82130768"
 
 也可以在 Internet Explorer 中使用“F12 调试工具”的“网络”标签页查看 HTTP 响应。
 
-在此示例中，我们想要查看探测器 URL 中的响应： http\/：/watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
+在此示例中，我们想要查看探测器 URL 中的响应： http： \/ /watestsdp2008r2.cloudapp.net:80/Probe。 以下 PowerShell 示例演示了该问题。
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -91,6 +90,6 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure 流量管理器 cmdlet][1]
+[Azure 流量管理器 Cmdlet][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager

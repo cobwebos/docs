@@ -5,23 +5,22 @@ description: 使用 Azure 门户在直接对等互连上启用 Azure 对等互�
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700036"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>使用 Azure 门户在直接对等互连上启用 Azure 对等互连服务
 
 本文介绍如何使用 Azure 门户通过直接对等互连启用 Azure 对[等互连服务](overview-peering-service.md)。
 
-如果愿意，可以使用[PowerShell](howto-peering-service-powershell.md)完成本指南。
+如果需要，可以使用 [PowerShell](howto-peering-service-powershell.md) 完成本指南。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 * 在开始配置之前，请查看[先决条件](prerequisites.md)。
 * 在订阅中选择要为其启用对等互连服务的直接对等互连。 如果没有，请转换旧直接对等互连，或创建新的直接对等互连：
     * 若要转换旧版直接对等互连，请按照[使用门户将旧直接对等互连转换为 Azure 资源](howto-legacy-direct-portal.md)中的说明进行操作。

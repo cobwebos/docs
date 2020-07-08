@@ -1,6 +1,6 @@
 ---
 title: 在 ASE v1 中创建 web 应用
-description: 了解如何在应用服务环境 v1 中创建 web 应用。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 了解如何在应用服务环境 v1 中创建 web 应用。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: ccompy
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.topic: article
@@ -8,11 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266190"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701824"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -28,7 +27,7 @@ ms.locfileid: "79266190"
 > 
 > 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本教程假设已创建一个应用服务环境。 如果尚未创建，请参阅[创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
@@ -40,7 +39,7 @@ ms.locfileid: "79266190"
     如果有多个订阅，请注意，若要在应用服务环境中创建应用，需要使用创建环境时所用的订阅来创建应用。 
 3. 选择或创建资源组。
    
-    使用资源组能够以单位形式管理相关的 Azure 资源，并可在为应用创建基于角色的访问控制 (RBAC) 规则时发挥作用****。 有关详细信息，请参阅[Azure 资源管理器概述][ResourceGroups]。 
+    使用资源组能够以单位形式管理相关的 Azure 资源，并可在为应用创建基于角色的访问控制 (RBAC) 规则时发挥作用****。 有关详细信息，请参阅 [Azure Resource Manager 概述][ResourceGroups]。 
 4. 选择或创建应用服务计划。
    
     应用服务计划** 是一组托管的 Web 应用。  选择定价时，支付的价格通常适用于应用服务计划而不是单个应用。 在 ASE 中，为分配给 ASE 的计算实例而不是向 ASP 列出的内容付费。  要增加 Web 应用的实例数，增加应用服务计划的实例数即可，此操作将影响该计划中的所有 Web 应用。  某些功能（如站点槽位或虚拟网络集成）在计划内也有数量限制。  有关详细信息，请参阅[Azure App Service 计划概述](../overview-hosting-plans.md)

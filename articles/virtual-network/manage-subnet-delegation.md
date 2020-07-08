@@ -7,17 +7,16 @@ documentationcenter: na
 author: KumudD
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d2db8eb5b93d84a5ece182fffbca5870762ee89e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84703870"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>添加或删除子网委托
 
@@ -33,15 +32,15 @@ ms.locfileid: "77201860"
 
 在本部分中，将创建一个虚拟网络和子网，稍后将其委托给 Azure 服务。
 
-1. 在屏幕的左上方，选择 "**创建资源** > " "**网络** > " "**虚拟网络**"。
-1. 在“创建虚拟网络”**** 中，输入或选择以下信息：
+1. 在屏幕的左上方，选择 "**创建资源**" "网络" "  >  **Networking**  >  **虚拟网络**"。
+1. 在“创建虚拟网络”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
+    | 名称 | 输入*MyVirtualNetwork*。 |
     | 地址空间 | 输入 *10.0.0.0/16*。 |
     | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”**********。 |
+    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
     | 位置 | 选择**EastUS**。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 *10.0.0.0/24*。 |
@@ -79,7 +78,7 @@ ms.locfileid: "77201860"
 ### <a name="create-a-resource-group"></a>创建资源组
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli-interactive
 
@@ -90,7 +89,7 @@ ms.locfileid: "77201860"
 ```
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)在**myResourceGroup**中**创建名为** **mySubnet**的子网的虚拟网络。
+使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) 在 **myResourceGroup** 中创建名为 **myVnet** 的虚拟网络，该虚拟网络包含名为 **mySubnet** 的子网。
 
 ```azurecli-interactive
   az network vnet create \
@@ -186,7 +185,7 @@ ms.locfileid: "77201860"
 ### <a name="create-a-resource-group"></a>创建资源组
 使用 [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group) 创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus

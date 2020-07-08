@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84699594"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>为 VMware 灾难恢复配置和管理复制策略
 
@@ -21,7 +20,7 @@ ms.locfileid: "79257116"
 ## <a name="create-a-policy"></a>创建策略
 
 1. 选择“管理”   > “Site Recovery 基础结构”  。
-2. 在“适用于 VMware 和物理计算机”  中选择“复制策略”  。
+2. 在“适用于 VMware 和物理计算机”中选择“复制策略”。
 3. 单击“+复制策略”  ，并指定策略名称。
 4. 在“RPO 阈值”中：指定 RPO 限制。  当连续复制超出此限制时，将生成警报。
 5. 在“恢复点保留期”  中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个保留期时段内的任意时间点。 复制到高级存储的计算机最长支持 24 小时的保留期。 标准存储最长支持 72 个小时。

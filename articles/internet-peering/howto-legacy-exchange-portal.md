@@ -5,15 +5,14 @@ description: 使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure �
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2020
 ms.author: derekol
-ms.openlocfilehash: e4f9f5b59b61065c300b58fb1cdb88e12b7ddbe0
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: HT
+ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700155"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>使用 Azure 门户将旧版 Exchange 对等互连转换为 Azure 资源
 

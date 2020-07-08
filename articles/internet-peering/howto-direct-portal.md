@@ -5,15 +5,14 @@ description: 使用 Azure 门户创建或修改直接对等互连
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 59b9079b500817c31586c0a566082a867d7e7f41
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: e49462612b58163c2ac51b78584761d0d8b8bd06
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700559"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>使用 Azure 门户创建或修改直接对等互连
 

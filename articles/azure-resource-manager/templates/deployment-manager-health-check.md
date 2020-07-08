@@ -6,11 +6,10 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84702544"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介绍 Azure 部署管理器的运行状况集成推出（公共预览版）
 
@@ -134,7 +133,7 @@ Azure 部署管理器中的新*healthCheck*步骤使你可以声明指示正常�
 
 此时，Azure 部署管理器知道如何查询服务的运行状况，以及在部署中执行此操作的阶段。 但是，Azure 部署管理器还允许对这些检查的时间进行深入配置。 在3个连续阶段中执行 healthCheck 步骤，所有这些阶段都有可配置的持续时间： 
 
-1. 等待
+1. Wait
 
     1. 部署操作完成后，Vm 可能会重新启动、基于新数据重新配置，甚至首次启动。 运行状况监视提供程序将运行状况信号聚合为有用的内容时，服务还需要花费时间。 在此 tumultuous 过程中，检查服务运行状况可能并不合理，因为更新尚未达到稳定状态。 事实上，当资源结算时，服务在正常和不正常状态之间可能会变得不稳定。 
     1. 在等待阶段，不会监视服务运行状况。 这用于在开始运行状况检查过程之前，允许已部署的资源制作时间。 

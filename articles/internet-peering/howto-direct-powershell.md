@@ -5,15 +5,14 @@ description: 使用 PowerShell 创建或修改直接对等互连
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 076332ac61359bc793615c2f7c9ea0e22c667bcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84700291"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>使用 PowerShell 创建或修改直接对等互连
 
@@ -21,8 +20,8 @@ ms.locfileid: "81680785"
 
 如果愿意，可以使用 Azure[门户](howto-direct-portal.md)完成本指南。
 
-## <a name="before-you-begin"></a>在开始之前
-* 开始配置之前，请查看[先决条件](prerequisites.md)和[直接对等互连演练](walkthrough-direct-all.md)。
+## <a name="before-you-begin"></a>开始之前
+* 在开始配置之前，请查看[先决条件](prerequisites.md)和[直接对等互连演练](walkthrough-direct-all.md)。
 * 如果你已与 Microsoft 建立直接对等互连连接，但未将其转换为 Azure 资源，请参阅[使用 PowerShell 将旧直接对等互连转换为 azure 资源](howto-legacy-direct-powershell.md)。
 
 ### <a name="work-with-azure-powershell"></a>使用 Azure PowerShell
@@ -45,7 +44,7 @@ ms.locfileid: "81680785"
 ## <a name="modify-a-direct-peering"></a><a name="modify"></a>修改直接对等互连
 [!INCLUDE [peering-direct-modify](./includes/direct-powershell-modify.md)]
 
-## <a name="deprovision-a-direct-peering"></a><a name="delete"></a>取消预配对等互连
+## <a name="deprovision-a-direct-peering"></a><a name="delete"></a>取消预配直接对等互连
 [!INCLUDE [peering-direct-delete](./includes/delete.md)]
 
 ## <a name="next-steps"></a>后续步骤
@@ -60,4 +59,4 @@ ms.locfileid: "81680785"
 Get-Help Get-AzPeering -detailed
 ```
 
-有关详细信息，请参阅[Internet 对等互连常见问题解答](faqs.md)。
+有关详细信息，请参阅 [Internet 对等互连常见问题解答](faqs.md)。

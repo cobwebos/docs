@@ -1,6 +1,6 @@
 ---
 title: 网络体系结构 v1
-description: 应用服务环境的网络拓扑的体系结构概述。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 应用服务环境的网络拓扑的体系结构概述。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,11 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84701807"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
 应用服务环境始终创建于[虚拟网络][virtualnetwork]的子网内，在应用服务环境中运行的应用可与相同虚拟网络拓扑中的专用终结点通信。  由于客户可能锁定了其虚拟网络基础结构的组件，因此请务必了解与应用服务环境发生的网络通信流类型。
