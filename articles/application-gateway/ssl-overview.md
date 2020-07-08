@@ -4,15 +4,15 @@ description: 本文概述应用程序网关的端到端 TLS 支持。
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: adaf3dea5855a4af75977cb820ae12675c7f2ced
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648134"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962095"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>应用程序网关的 TLS 终止和端到端 TLS 概述
 
@@ -68,7 +68,7 @@ ms.locfileid: "83648134"
 
 对于应用程序网关和 WAF v2 SKU，仅向前端流量应用 TLS 策略，并向后端服务器提供所有密码，后端服务器可以控制在握手期间选择特定的密码和 TLS 版本。
 
-应用程序网关仅与符合以下条件的后端服务器通信：已将其证书加入应用程序网关的允许列表，或者其证书已由已知的 CA 颁发机构签名，并且证书的 CN 与 HTTP 后端设置中的主机名匹配。 这些服务器包括受信任的 Azure 服务，例如 Azure 应用服务/Web 应用和 Azure API 管理。
+应用程序网关仅与那些允许使用应用程序网关列出其证书的后端服务器进行通信，或使用其证书由已知 CA 颁发机构进行签名，证书的 CN 与 HTTP 后端设置中的主机名匹配。 这些服务器包括受信任的 Azure 服务，例如 Azure 应用服务/Web 应用和 Azure API 管理。
 
 如果后端池成员的证书未由已知 CA 颁发机构签名，则必须为后端池中已启用端到端 TLS 的每个实例配置一个证书，这样才能进行安全通信。 添加证书后，可确保应用程序网关仅与已知后端实例通信。 从而进一步保护端到端通信。
 
@@ -80,9 +80,9 @@ ms.locfileid: "83648134"
 
 此示例通过端到端 TLS 将使用 TLS1.2 的请求路由到 Pool1 中的后端服务器。
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>端到端 TLS 和证书允许列表
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>端到端 TLS 和允许列出证书
 
-应用程序网关仅与已知后端实例通信，这些实例已将其证书加入应用程序网关的允许列表。 根据所用应用程序网关版本的不同，端到端 TLS 的设置过程也存在一些差异。 以下部分将分别对它们进行说明。
+应用程序网关仅与允许使用应用程序网关列出其证书的已知后端实例通信。 根据所用应用程序网关版本的不同，端到端 TLS 的设置过程也存在一些差异。 以下部分将分别对它们进行说明。
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>v1 SKU 的端到端 TLS
 
@@ -90,7 +90,7 @@ ms.locfileid: "83648134"
 
 对于 HTTPS 运行状况探测，应用程序网关 v1 SKU 使用与要上传到 HTTP 设置的身份验证证书（后端服务器证书的公钥，而不是根证书）完全匹配的证书。
 
-然后仅允许连接到已知且加入允许列表的后端。 运行状况探测将其余后端均视为运行不正常。 自签名证书仅用于测试目的，不建议用于生产工作负荷。 如前面的步骤中所述，此类证书必须加入应用程序网关的允许列表，才可以使用。
+只允许连接到已知的和允许的后端。 运行状况探测将其余后端均视为运行不正常。 自签名证书仅用于测试目的，不建议用于生产工作负荷。 如前面的步骤中所述，此类证书必须允许使用应用程序网关列出，然后才能使用这些证书。
 
 > [!NOTE]
 > Azure 应用服务等受信任的 Azure 服务不需要进行身份验证和受信任的根证书设置。 默认情况下，它们被认为是可信的。
@@ -111,7 +111,7 @@ ms.locfileid: "83648134"
 
 - 除了根证书匹配之外，应用程序网关 v2 还会验证后端 http 设置中指定的主机设置是否与后端服务器的 TLS/SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 TLS 连接时，应用程序网关 v2 会将服务器名称指示 (SNI) 扩展设置为后端 http 设置中指定的主机。
 
-- 如果已选择从后端地址选择主机名，而不是选择后端 http 设置中的主机字段，则 SNI 标头始终设置为后端池 FQDN，并且后端服务器 TLS/SSL 证书上的 CN 必须与其 FQDN 匹配。 此方案不支持具有 IP 的后端池成员。
+- 如果在后端 http 设置中选择了 "**从后端目标选择主机名**" 而不是 "主机" 字段，则 SNI 标头始终设置为后端池 FQDN，而后端服务器 TLS/SSL 证书上的 CN 必须与它的 fqdn 匹配。 此方案不支持具有 IP 的后端池成员。
 
 - 根证书是来自后端服务器证书的 base64 编码的根证书。
 
@@ -138,10 +138,10 @@ ms.locfileid: "83648134"
 场景 | v1 | v2 |
 | --- | --- | --- |
 | 将 TLS 握手期间的 SNI (server_name) 标头设置为 FQDN | 设置为后端池中的 FQDN。 根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)，SNI 主机名中不允许使用原义 IPv4 和 IPv6 地址。 <br> **注意：** 后端池中的 FQDN 应通过 DNS 解析为后端服务器的 IP 地址（公共或专用） | 将 SNI 标头 (server_name) 设置为附加到 HTTP 设置的自定义探测中的主机名（如果已配置）；如果没有，则设置为 HTTP 设置中提到的主机名；如果前两项都没有，则设置为后端池中提到的 FQDN。 优先顺序为自定义探测 > HTTP 设置 > 后端池。 <br> **注意：** 如果在 HTTP 设置和自定义探测中配置的主机名不同，则根据优先级，SNI 将设置为自定义探测中的主机名。
-| 如果后端池地址是 IP 地址 (v1) 或者自定义探测主机名配置为 IP 地址 (v2) | 不设置 SNI (server_name)。 <br> **注意：** 在这种情况下，后端服务器应该能够返回默认/备用证书，并且该证书应加入 HTTP 设置中身份验证证书下的允许列表。 如果后端服务器中未配置默认/备用证书，但需要提供 SNI，则服务器可能会重置连接并导致探测失败 | 按照前面提到的优先顺序，如果它们的主机名为 IP 地址，则不设置 SNI（根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)）。 <br> **注意：** 如果未配置自定义探测，并且未在 HTTP 设置或后端池中设置主机名，则也不会在 v2 探测中设置 SNI |
+| 如果后端池地址是 IP 地址 (v1) 或者自定义探测主机名配置为 IP 地址 (v2) | 不设置 SNI (server_name)。 <br> **注意：** 在这种情况下，后端服务器应该能够返回默认/备用证书，这应该允许在 "身份验证证书" 下的 "HTTP 设置" 中列出。 如果后端服务器中未配置默认/备用证书，但需要提供 SNI，则服务器可能会重置连接并导致探测失败 | 按照前面提到的优先顺序，如果它们的主机名为 IP 地址，则不设置 SNI（根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)）。 <br> **注意：** 如果未配置自定义探测，并且未在 HTTP 设置或后端池中设置主机名，则也不会在 v2 探测中设置 SNI |
 
 > [!NOTE] 
-> 如果未配置自定义探测，应用程序网关会按以下格式发送默认探测 - \<protocol\>://127.0.0.1:\<port\>/。 例如，对于默认的 HTTPS 探测，它将以 https://127.0.0.1:443/ 的形式发送。 请注意，此处提到的 127.0.0.1 仅用作 HTTP 主机标头，而不用作 SNI 标头（根据 RFC 6066）。 有关运行状况探测错误的详细信息，请查看[后端运行状况故障排除指南](application-gateway-backend-health-troubleshooting.md)。
+> 如果未配置自定义探测，应用程序网关将按以下格式（ \<protocol\> ：//127.0.0.1：/）发送默认探测 \<port\> 。 例如，对于默认的 HTTPS 探测，它将以 https://127.0.0.1:443/ 的形式发送。 请注意，此处提到的 127.0.0.1 仅用作 HTTP 主机标头，而不用作 SNI 标头（根据 RFC 6066）。 有关运行状况探测错误的详细信息，请查看[后端运行状况故障排除指南](application-gateway-backend-health-troubleshooting.md)。
 
 #### <a name="for-live-traffic"></a>对于实时流量
 

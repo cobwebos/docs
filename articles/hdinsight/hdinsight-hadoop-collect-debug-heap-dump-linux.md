@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 9134eb6922b0ed37bbe6051b138da2c7c082b175
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75658791"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962197"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>在基于 Linux 的 HDInsight 上为 Apache Hadoop 服务启用堆转储
 
@@ -37,7 +37,7 @@ ms.locfileid: "75658791"
 
 在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。 对于大多数 [Apache Hadoop](https://hadoop.apache.org/) 服务，可以修改用于启动该服务的 shell 脚本来传递这些选项。
 
-在每个脚本** \* \_中，有一个用于选择**的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
+在每个脚本**中，有一个用于选择 \* \_ **的导出，其中包含传递到 JVM 的选项。 例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含用于 NameNode 服务的选项。
 
 映射和化简进程稍有不同，因为这些操作是 MapReduce 服务的子进程。 每个映射或化简进程都在子容器中运行，并且有两个包含 JVM 选项的条目。 二者均包含在 **mapred-site.xml** 中：
 
@@ -51,9 +51,9 @@ ms.locfileid: "75658791"
 
 发生 OutOfMemoryError 时，可以使用以下选项来启用堆转储：
 
-    -XX:+HeapDumpOnOutOfMemoryError
+`-XX:+HeapDumpOnOutOfMemoryError`
 
-**指示是否启用了此选项+** 。 默认为禁用。
++ 指示是否启用了此选项。 默认为禁用。
 
 > [!WARNING]  
 > 默认情况下，在 HDInsight 上不为 Hadoop 服务启用堆转储，因为转储文件可能很大。 如果启用了堆转储来进行故障诊断，请记住在重现问题并收集转储文件后禁用堆转储。
@@ -62,7 +62,7 @@ ms.locfileid: "75658791"
 
 转储文件的默认位置是当前的工作目录。 可以使用以下选项来控制文件的存储位置：
 
-    -XX:HeapDumpPath=/path
+`-XX:HeapDumpPath=/path`
 
 例如，使用 `-XX:HeapDumpPath=/tmp` 可以将转储存储在 /tmp 目录中。
 
@@ -70,7 +70,7 @@ ms.locfileid: "75658791"
 
 还可以在发生 **OutOfMemoryError** 时触发一个脚本。 例如，可以触发一个通知，这样你就知道发生了错误。 使用以下选项在 __OutOfMemoryError__ 上触发某个脚本：
 
-    -XX:OnOutOfMemoryError=/path/to/script
+`-XX:OnOutOfMemoryError=/path/to/script`
 
 > [!NOTE]  
 > 由于 Apache Hadoop 是分布式系统，任何使用的脚本都必须放置在服务运行时所在的群集的所有节点上。

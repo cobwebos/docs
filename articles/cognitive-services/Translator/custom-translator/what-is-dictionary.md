@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 510c75b6e1a06ab800128534a72c5e1f6e510600
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997037"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962256"
 ---
 # <a name="what-is-a-dictionary"></a>什么是字典？
 
-字典是一组对齐的文档，其中指定了短语或句子的列表及其对应的译文。 如果希望 Microsoft Translator 始终使用字典中提供的译文来翻译源短语或句子，可以在训练中使用字典。 字典有时称为词汇表或术语库。 你可以将字典视为你所列出的所有字词的 "复制并替换" 这一 "强制"。 此外，Microsoft 自定义转换器服务构建并使用其自己的常规用途字典，提高翻译质量。 但是，客户提供的字典采用引用单元格，并将首先搜索以查找单词或句子。
+字典是一组对齐的文档，其中指定了短语或句子的列表及其对应的译文。 如果希望转换器始终使用您在字典中提供的翻译来转换源短语或句子的任何实例，请在训练中使用字典。 字典有时称为词汇表或术语库。 你可以将字典视为你所列出的所有字词的 "复制并替换" 这一 "强制"。 此外，自定义转换器功能将生成并使用其自己的常规用途字典，以提高翻译质量。 但是，客户提供的字典采用引用单元格，并将首先搜索以查找单词或句子。
 
 字典仅适用于语言对中的项目，这些项目具有完全受支持的 Microsoft 常规神经网络模型。 [查看语言的完整列表](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization)。
 
