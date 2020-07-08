@@ -7,10 +7,9 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
 ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75453500"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用内联代码添加和运行代码片段
@@ -21,10 +20,10 @@ ms.locfileid: "75453500"
 * 在5秒或更少的时间内完成运行。
 * 处理最大大小为 50 MB 的数据。
 * 不需要使用[**变量**操作](../logic-apps/logic-apps-create-variables-store-values.md)，这些操作尚不受支持。
-* 使用 node.js 版本8.11.1。 有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
+* 使用 Node.js 版本8.11.1。 有关详细信息，请参阅[标准内置对象](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)。 
 
   > [!NOTE]
-  > 用于`require()`运行 JavaScript 的**内联代码**操作不支持该函数。
+  > `require()`用于运行 JavaScript 的**内联代码**操作不支持该函数。
 
 此操作运行代码片段，并将该代码段的输出作为名为**Result**的令牌返回，可在逻辑应用中的后续操作中使用。 对于想要为代码创建函数的其他方案，请尝试在逻辑应用中[创建和调用 Azure 函数](../logic-apps/logic-apps-azure-functions.md)。
 
@@ -36,7 +35,7 @@ ms.locfileid: "75453500"
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 要在其中添加代码段（包括触发器）的逻辑应用。 如果没有逻辑应用，请参阅[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+* 要在其中添加代码段（包括触发器）的逻辑应用。 如果你没有逻辑应用，请参阅[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
    本主题中的示例逻辑应用使用此 Office 365 Outlook 触发器：**收到新电子邮件时**
 
@@ -53,7 +52,7 @@ ms.locfileid: "75453500"
 
    * 若要在工作流的末尾添加操作，请选择 "**新建步骤**"。
 
-   * 若要在现有步骤之间添加操作，请将鼠标指针移到连接这些步骤的箭头上。 选择加号（**+**），然后选择 "**添加操作**"。
+   * 若要在现有步骤之间添加操作，请将鼠标指针移到连接这些步骤的箭头上。 选择加号（ **+** ），然后选择 "**添加操作**"。
 
    此示例在 Office 365 Outlook 触发器下添加**内联代码**操作。
 
@@ -79,11 +78,11 @@ ms.locfileid: "75453500"
 
    若要使触发器和先前操作的结果更易于引用，则当光标位于**代码**框中时，将显示动态内容列表。 在此示例中，列表显示了触发器的可用结果，其中包括**正文**标记，你现在可以选择它。
 
-   选择**正文**标记后，内联代码操作将令牌解析为引用电子邮件的`workflowContext` `Body`属性值的对象：
+   选择**正文**标记后，内联代码操作将令牌解析为 `workflowContext` 引用电子邮件的 `Body` 属性值的对象：
 
    ![选择结果](./media/logic-apps-add-run-inline-code/inline-code-example-select-outputs.png)
 
-   在 "**代码**" 框中，代码段可以使用只读`workflowContext`对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。
+   在 "**代码**" 框中，代码段可以使用只读 `workflowContext` 对象作为输入。 此对象中的子属性可让代码访问触发器和工作流中先前操作提供的结果。
    有关详细信息，请参阅本主题后面的此部分：[代码中的引用触发器和操作结果](#workflowcontext)。
 
    > [!NOTE]
@@ -96,8 +95,8 @@ ms.locfileid: "75453500"
    > `// Incorrect`</br>
    > `workflowContext.actions.my.action.name.body`
 
-   内联代码操作无需`return`语句，但可在后续操作中通过`return` **结果**令牌引用语句中的结果。 
-   例如，代码段通过调用`match()`函数来返回结果，该函数可在电子邮件正文中查找正则表达式的匹配项。 "**撰写**" 操作使用**结果**令牌引用内联代码操作的结果，并创建单个结果。
+   内联代码操作无需 `return` 语句，但 `return` 可在后续操作中通过**结果**令牌引用语句中的结果。 
+   例如，代码段通过调用函数来返回结果 `match()` ，该函数可在电子邮件正文中查找正则表达式的匹配项。 "**撰写**" 操作使用**结果**令牌引用内联代码操作的结果，并创建单个结果。
 
    ![完成的逻辑应用](./media/logic-apps-add-run-inline-code/inline-code-complete-example.png)
 
@@ -107,7 +106,7 @@ ms.locfileid: "75453500"
 
 ### <a name="reference-trigger-and-action-results-in-your-code"></a>代码中的引用触发器和操作结果
 
-`workflowContext`对象具有此结构，其中包括`actions`、 `trigger`和`workflow`子属性：
+`workflowContext`对象具有此结构，其中包括 `actions` 、和子 `trigger` `workflow` 属性：
 
 ```json
 {
@@ -128,14 +127,14 @@ ms.locfileid: "75453500"
 
 此表包含有关这些子属性的详细信息：
 
-| properties | 类型 | 说明 |
+| Property | 类型 | 描述 |
 |----------|------|-------|
-| `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个*键-值*对，其中键是操作的名称，值等效于调用带有`@actions('<action-name>')`的[操作（）函数](../logic-apps/workflow-definition-language-functions-reference.md#actions)。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者用下划线（_）替换操作名称中的空格（""）。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
-| `trigger` | 对象 | 触发器中的 Result 对象并等效于调用[trigger （）函数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
-| `workflow` | 对象 | 工作流对象并等效于调用[workflow （）函数](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 此对象提供对当前工作流实例运行的工作流属性值（如工作流名称、运行 ID 等）的访问权限。 |
+| `actions` | 对象集合 | 在运行代码段之前运行的操作的结果对象。 每个对象都有一个*键-值*对，其中键是操作的名称，值等效于调用带有的[操作（）函数](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 操作的名称使用的操作名称与基础工作流定义中使用的操作名称相同，后者用下划线（_）替换操作名称中的空格（""）。 此对象提供对当前工作流实例运行的操作属性值的访问。 |
+| `trigger` | Object | 触发器中的 Result 对象并等效于调用[trigger （）函数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 此对象提供对当前工作流实例运行的触发器属性值的访问。 |
+| `workflow` | Object | 工作流对象并等效于调用[workflow （）函数](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 此对象提供对当前工作流实例运行的工作流属性值（如工作流名称、运行 ID 等）的访问权限。 |
 |||
 
-在本主题的示例中， `workflowContext`对象具有您的代码可以访问的以下属性：
+在本主题的示例中， `workflowContext` 对象具有您的代码可以访问的以下属性：
 
 ```json
 {
@@ -212,7 +211,7 @@ ms.locfileid: "75453500"
 > [!TIP]
 > 如果你计划重用你的代码，则通过使用 "**代码**" 框添加对属性的引用，使你的代码包含解析的令牌引用，而不是作为显式依赖项添加触发器或操作。
 
-例如，假设你有引用 Office 365 Outlook connector 的 "**发送审批电子邮件**" 操作的**SelectedOption**结果的代码。 在创建时，逻辑应用引擎会分析你的代码，以确定是否已引用任何触发器或操作结果并自动包含这些结果。 在运行时，如果遇到所引用的触发器或操作结果在指定`workflowContext`对象中不可用的错误，则可以将该触发器或操作作为显式依赖项添加。 在此示例中，将添加**操作**参数，并指定**内联代码**操作显式包括 "**发送审批电子邮件**" 操作的结果。
+例如，假设你有引用 Office 365 Outlook connector 的 "**发送审批电子邮件**" 操作的**SelectedOption**结果的代码。 在创建时，逻辑应用引擎会分析你的代码，以确定是否已引用任何触发器或操作结果并自动包含这些结果。 在运行时，如果遇到所引用的触发器或操作结果在指定对象中不可用的错误， `workflowContext` 则可以将该触发器或操作作为显式依赖项添加。 在此示例中，将添加**操作**参数，并指定**内联代码**操作显式包括 "**发送审批电子邮件**" 操作的结果。
 
 若要添加这些参数，请打开 "**添加新参数**" 列表，然后选择所需的参数：
 
@@ -221,7 +220,7 @@ ms.locfileid: "75453500"
    | 参数 | 说明 |
    |-----------|-------------|
    | **操作** | 包括先前操作的结果。 请参阅[包括操作结果](#action-results)。 |
-   | **触发器** | 包含触发器的结果。 请参阅[包含触发器结果](#trigger-results)。 |
+   | 触发器 | 包含触发器的结果。 请参阅[包含触发器结果](#trigger-results)。 |
    |||
 
 <a name="trigger-results"></a>
@@ -246,9 +245,9 @@ ms.locfileid: "75453500"
 
   `My.Action.Name`
 
-1. 在设计器工具栏上，选择 "**代码视图**"，然后`actions`在属性中搜索 "操作名称"。
+1. 在设计器工具栏上，选择 "**代码视图**"，然后在属性中搜索 `actions` "操作名称"。
 
-   例如， `Send_approval_email_`是 "**发送审批电子邮件**" 操作的 JSON 名称。
+   例如， `Send_approval_email_` 是 "**发送审批电子邮件**" 操作的 JSON 名称。
 
    ![在 JSON 中查找操作名称](./media/logic-apps-add-run-inline-code/find-action-name-json.png)
 

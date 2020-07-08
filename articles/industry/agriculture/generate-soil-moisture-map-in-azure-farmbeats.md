@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482564"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>生成土潮湿热度地图
@@ -51,7 +50,7 @@ ms.locfileid: "75482564"
 将传感器帐户链接到 Azure FarmBeats 后，需要将土潮湿传感器分配给感兴趣的场。
 
 1.  在主页中，从菜单中选择 "**服务器场**"，随即会显示 "**服务器场**" 列表页。
-2.  选择**MyFarm** > **添加设备**。
+2.  选择**MyFarm**  >  **添加设备**。
 3.  将显示 "**添加设备**" 窗口。 选择链接到场的 "土料湿气传感器" 的任何设备。
 
     ![FarmBeats 项目](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
@@ -87,7 +86,7 @@ ms.locfileid: "75482564"
 2. 当作业状态显示为 "**成功**" 时，请在菜单上选择 "**映射**"。
 3. 按 <"中 moisture_MyFarm_YYYY"> 的格式搜索地图的创建日期。
 4. 在 "**名称**" 列中选择一个映射，随即会显示一个弹出窗口，其中包含所选映射的预览。
-5. 选择“下载”  。 下载地图，并将其存储在计算机的本地文件夹中。
+5. 选择“下载”。 下载地图，并将其存储在计算机的本地文件夹中。
 
     ![FarmBeats 项目](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 

@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9722178011c3c0411f2e0e888dd9ab5962b933b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482044"
 ---
-# <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>使用自定义域和证书信息获取所有应用程序代理应用
+# <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>获取所有使用自定义域和证书信息的应用程序代理应用
 
 此 PowerShell 脚本示例列出了使用自定义域的所有 Azure Active Directory （Azure AD）应用程序代理应用程序，并列出了与自定义域关联的证书信息。
 
@@ -37,7 +36,7 @@ ms.locfileid: "75482044"
 
 ## <a name="script-explanation"></a>脚本说明
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 |[Get-AzureADServicePrincipal](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) | 获取服务主体。 |
 |[Get-AzureADApplication](https://docs.microsoft.com/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0) | 获取 Azure AD 应用程序。 |

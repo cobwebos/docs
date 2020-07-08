@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75463097"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 进行事件聚合和收集
@@ -129,7 +128,7 @@ namespace Stateless1
 }
 ```
 
-作为 `CreatePipeline` 中 `ServiceFabricDiagnosticsPipelineFactory` 方法的参数传递的名称是表示 EventFlow 日志收集管道的运行状况实体  的名称。 如果 EventFlow 发生错误，并通过 Service Fabric 运行状况子系统进行报告，则使用此名称。
+作为 `ServiceFabricDiagnosticsPipelineFactory` 中 `CreatePipeline` 方法的参数传递的名称是表示 EventFlow 日志收集管道的运行状况实体的名称。 如果 EventFlow 发生错误，并通过 Service Fabric 运行状况子系统进行报告，则使用此名称。
 
 ### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>在 eventFlowConfig 中使用 Service Fabric 设置和应用程序参数
 

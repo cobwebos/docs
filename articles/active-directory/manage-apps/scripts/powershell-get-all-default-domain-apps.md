@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 40a9f7ce86981d6f03b25237a7a73869fd5fd4ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75483370"
 ---
-# <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>使用默认域（. msappproxy.net）获取所有应用程序代理应用
+# <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>获取所有使用默认域 (.msappproxy.net) 的应用程序代理应用
 
 此 PowerShell 脚本示例列出了所有使用默认域（msappproxy.net）的 Azure Active Directory （Azure AD）应用程序代理应用程序。
 

@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6dccdaa96dadb061b168bbdf6148ed4d759776c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75481979"
 ---
-# <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>将分配给连接器组的所有应用移动到另一个连接器组
+# <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>将分配到某连接器组的所有应用移动到另一个连接器组
 
 此 PowerShell 脚本示例将当前分配给连接器组的所有 Azure Active Directory （Azure AD）应用程序代理应用程序移到不同的连接器组。
 

@@ -4,10 +4,9 @@ description: ReliableConcurrentQueue 是一个高吞吐量队列，它允许并�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462739"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的可靠并发队列简介
@@ -34,7 +33,7 @@ ms.locfileid: "75462739"
 * 队列不保证严格的 FIFO 排序。
 * 队列不读取自己的写入。 项在事务中排队时，该项对于同一事务中的取消排队者来说为不可见。
 * 取消排队不是相互隔离的。 如果项 A 在事务 txnA 中取消排队，则即使 txnA 尚未提交，项 A 也不会对并发事务 txnB 可见。       如果 txnA 中止，A 会立刻变得对 txnB 可见。   
-* 可以先使用 TryDequeueAsync  ，再中止事务，从而实现 TryPeekAsync  行为。 可以在“编程模式”部分中找到此行为的示例。
+* 可以先使用 TryDequeueAsync，再中止事务，从而实现 TryPeekAsync 行为。 可以在“编程模式”部分中找到此行为的示例。
 * 计数是非事务性的。 可以通过计数来了解队列中的元素数目，但计数只代表一个时间点的情况，可靠性不强。
 * 在事务处于活动状态时，不应对取消排队项执行开销高昂的处理，以避免可能对系统性能产生影响的长时间运行事务。
 

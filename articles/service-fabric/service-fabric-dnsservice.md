@@ -4,10 +4,9 @@ description: 使用 Service Fabric 的 DNS 服务从群集内部发现微服务�
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458031"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 中的 DNS 服务
@@ -46,7 +45,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 有了模板后，可以通过以下步骤启用 DNS 服务：
 
-1. 检查 `apiversion` 资源的 `2017-07-01-preview` 是否设置为 `Microsoft.ServiceFabric/clusters` 或更高，如果不是，请按以下示例所示进行更新：
+1. 检查 `Microsoft.ServiceFabric/clusters` 资源的 `apiversion` 是否设置为 `2017-07-01-preview` 或更高，如果不是，请按以下示例所示进行更新：
 
     ```json
     {
@@ -60,7 +59,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
 
 2. 现在，通过以下方式之一启用 DNS 服务：
 
-   - 若要启用采用默认设置的 DNS 服务，请将其添加到 `addonFeatures` 节中的 `properties` 节，如以下示例所示：
+   - 若要启用采用默认设置的 DNS 服务，请将其添加到 `properties` 节中的 `addonFeatures` 节，如以下示例所示：
 
         ```json
           "properties": {
@@ -72,7 +71,7 @@ DNS 服务不支持动态端口。 若要解析动态端口上公开的服务，
           }
         ```
 
-   - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `fabricSettings` 节中的 `properties` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
+   - 若要启用采用非默认设置的服务，请将 `DnsService` 节添加到 `properties` 节中的 `fabricSettings` 节。 在这种情况下，不需要将 DnsService 添加到 `addonFeatures`。 若要详细了解可为 DNS 服务设置的属性，请参阅 [DNS 服务设置](./service-fabric-cluster-fabric-settings.md#dnsservice)。
 
        ```json
            "properties": {

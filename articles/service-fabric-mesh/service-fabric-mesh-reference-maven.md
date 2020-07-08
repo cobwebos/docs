@@ -6,10 +6,9 @@ ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
 ms.openlocfilehash: bcc3fb7c6c3adce0997d0960c4d98227089b048b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75459014"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>适用于 Service Fabric 网格的 Maven 插件
@@ -36,7 +35,7 @@ ms.locfileid: "75459014"
 - 使用 `appresources` 文件夹中提供的网关名称生成 `gateway` YAML 
 
 #### `azure-sfmesh:addvolume`
-- 使用在`volume` `appresources`文件夹中提供的卷名生成 YAML。
+- `volume`使用在文件夹中提供的卷名生成 YAML `appresources` 。
 
 ### `azure-sfmesh:addsecret`
 - 使用 `appresources` 文件夹中提供的密钥名称生成 `secret` YAML 

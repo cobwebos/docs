@@ -13,13 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8149e9230de3e8b6c18d150c81ea67b1d861746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75482018"
 ---
-# <a name="get-all-application-proxy-apps-using-wildcard-publishing"></a>使用通配符发布获取所有应用程序代理应用
+# <a name="get-all-application-proxy-apps-using-wildcard-publishing"></a>获取所有使用通配符发布的应用程序代理应用
 
 此 PowerShell 脚本示例列出了使用通配符发布的所有 Azure Active Directory （Azure AD）应用程序代理应用程序。
 

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75497856"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>对复制到 Azure 的物理服务器进行故障转移和故障回复
@@ -126,7 +125,7 @@ ms.locfileid: "75497856"
 
 数据现应返回到本地站点，但不会复制到 Azure。 可按如下操作开始再次复制到 Azure：
 
-1. 在保管库中 > "**设置** >" "**复制的项**"，选择已故障回复的故障回复 vm，并单击 "**重新保护**"。
+1. 在保管库中 > "**设置**" > "**复制的项**"，选择已故障回复的故障回复 vm，并单击 "**重新保护**"。
 2. 选择用于将复制数据发送到 Azure 的进程服务器，然后单击“确定”****。
 
 

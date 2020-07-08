@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75494925"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight 群集的性能优化
@@ -44,7 +43,7 @@ Apache Kafka 生成者将作为一个单元发送的消息组（称为批）汇�
 
 ### <a name="producer-required-acknowledgments"></a>制造者要求的确认
 
-生成者所需的 `acks` 配置确定在将某个写入请求视为已完成之前，分区领先者所需的确认数目。 此设置会影响数据可靠性，其值为 `0`、`1` 或 `-1`。 的值`-1`表示在写入完成之前必须从所有副本接收确认。 设置 `acks = -1` 能够更可靠地保证数据不会丢失，但同时也会导致延迟增大，吞吐量降低。 如果应用场景要求提供较高的吞吐量，请尝试设置 `acks = 0` 或 `acks = 1`。 请记住，不确认所有副本可能会降低数据可靠性。
+生成者所需的 `acks` 配置确定在将某个写入请求视为已完成之前，分区领先者所需的确认数目。 此设置会影响数据可靠性，其值为 `0`、`1` 或 `-1`。 的值 `-1` 表示在写入完成之前必须从所有副本接收确认。 设置 `acks = -1` 能够更可靠地保证数据不会丢失，但同时也会导致延迟增大，吞吐量降低。 如果应用场景要求提供较高的吞吐量，请尝试设置 `acks = 0` 或 `acks = 1`。 请记住，不确认所有副本可能会降低数据可靠性。
 
 ### <a name="compression"></a>压缩
 

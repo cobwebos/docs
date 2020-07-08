@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
 ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75458378"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>独立 Windows 群集的配置设置
@@ -139,7 +138,7 @@ nodeTypes 节描述群集中的节点类型。 一个群集必须指定至少一
 }]
 ```
 
-name 是此特定节点类型的友好名称。 要创建这种类型的节点，请[如前所述](#nodes-on-the-cluster)，将该节点的友好名称分配到其 nodeTypeRef 变量。 对于每个节点类型，请定义要使用的连接终结点。 可为这些连接终结点选择任意端口号，只要不与此群集中的任何其他终结点冲突即可。 在多节点群集中，根据 *reliabilityLevel*，将有一个或多个主节点（即，isPrimary 设置为 [true](#reliability)）。 若要详细了解主节点类型和非主节点类型，请参阅 [Service Fabric 群集容量规划注意事项](service-fabric-cluster-capacity.md)，了解有关 nodeTypes 和 reliabilityLevel 的信息。 
+name 是此特定节点类型的友好名称。 要创建这种类型的节点，请[如前所述](#nodes-on-the-cluster)，将该节点的友好名称分配到其 nodeTypeRef 变量。 对于每个节点类型，请定义要使用的连接终结点。 可为这些连接终结点选择任意端口号，只要不与此群集中的任何其他终结点冲突即可。 在多节点群集中，根据 [reliabilityLevel](#reliability)，将有一个或多个主节点（即，isPrimary 设置为 *true*）。 若要详细了解主节点类型和非主节点类型，请参阅 [Service Fabric 群集容量规划注意事项](service-fabric-cluster-capacity.md)，了解有关 nodeTypes 和 reliabilityLevel 的信息。 
 
 #### <a name="endpoints-used-to-configure-the-node-types"></a>用于配置节点类型的终结点
 * clientConnectionEndpointPort 是使用客户端 API 时，客户端用来连接群集的端口。 

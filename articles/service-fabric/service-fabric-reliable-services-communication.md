@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75462955"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通信 API
@@ -128,7 +127,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-通信侦听器可以从 `CodePackageActivationContext` 中的 `ServiceContext` 访问分配给它的终结点资源。 然后，侦听器在打开时开始侦听请求。
+通信侦听器可以从 `ServiceContext` 中的 `CodePackageActivationContext` 访问分配给它的终结点资源。 然后，侦听器在打开时开始侦听请求。
 
 ```csharp
 var codePackageActivationContext = serviceContext.CodePackageActivationContext;
@@ -147,7 +146,7 @@ int port = codePackageActivationContext.getEndpoint("ServiceEndpoint").getPort()
 >
 
 ### <a name="service-address-registration"></a>服务地址注册
-名为*命名服务*的系统服务在 Service Fabric 群集上运行。 命名服务是服务及其地址（服务的每个实例或副本正在其上侦听）的注册机构。 当 `OpenAsync(C#) / openAsync(Java)` 的 `ICommunicationListener(C#) / CommunicationListener(Java)` 方法完成时，它的返回值会在命名服务中注册。 这个在命名服务中发布的返回值是一个字符串，其值完全可以是任何内容。 此字符串值是客户端向命名服务请求服务的地址时看到的内容。
+名为*命名服务*的系统服务在 Service Fabric 群集上运行。 命名服务是服务及其地址（服务的每个实例或副本正在其上侦听）的注册机构。 当 `ICommunicationListener(C#) / CommunicationListener(Java)` 的 `OpenAsync(C#) / openAsync(Java)` 方法完成时，它的返回值会在命名服务中注册。 这个在命名服务中发布的返回值是一个字符串，其值完全可以是任何内容。 此字符串值是客户端向命名服务请求服务的地址时看到的内容。
 
 ```csharp
 public Task<string> OpenAsync(CancellationToken cancellationToken)
