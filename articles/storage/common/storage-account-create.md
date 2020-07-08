@@ -10,10 +10,9 @@ ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82853497"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
@@ -59,7 +58,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 A
 
 此按钮会启动交互式 shell，你可以使用它来运行本操作指南文章中所述的步骤：
 
-[![显示门户中 "Cloud Shell" 窗口的屏幕截图](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+[![显示门户中 Cloud Shell 窗口的屏幕截图](./media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>在本地安装 CLI
 
@@ -75,7 +74,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 A
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -87,7 +86,7 @@ Connect-AzAccount
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要启动 Azure Cloud Shell，请登录到[Azure 门户](https://portal.azure.com)。
+若要启动 Azure Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。
 
 若要登录到本地安装的 CLI，请运行 [az login](/cli/azure/reference-index#az-login) 命令：
 
@@ -109,7 +108,7 @@ az login
 
 可以使用常规用途 v2 存储帐户访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘****。 本文所述的步骤将创建常规用途 v2 存储帐户，但创建任何类型的存储帐户的步骤都相似。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -142,7 +141,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在此`-EnableHierarchicalNamespace $True`参数列表中包含。
+> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `-EnableHierarchicalNamespace $True` 在此参数列表中包含。
 
 若要使用不同的复制选项创建常规用途 v2 存储帐户，请将 **SkuName** 参数替换为下表中的所需值。
 
@@ -153,7 +152,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |异地冗余存储 (GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
 |异地区域冗余存储 (GZRS)    |Standard_GZRS         |
-|读取访问区域冗余存储（GZRS）    |Standard_RAGZRS         |
+|读取访问异地区域冗余存储 (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -185,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在此`--enable-hierarchical-namespace true`参数列表中包含。 
+> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请 `--enable-hierarchical-namespace true` 在此参数列表中包含。 
 
 若要使用不同的复制选项创建常规用途 v2 存储帐户，请将 **sku** 参数替换为下表中的所需值。
 
@@ -196,7 +195,7 @@ az storage account create \
 |异地冗余存储 (GRS)     |Standard_GRS         |
 |读取访问异地冗余存储 (GRS)     |Standard_RAGRS         |
 |异地区域冗余存储 (GZRS)    |Standard_GZRS         |
-|读取访问区域冗余存储（GZRS）    |Standard_RAGZRS         |
+|读取访问异地区域冗余存储 (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[模板](#tab/template)
 
@@ -220,7 +219,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 ```
 
 > [!NOTE]
-> 此模板仅用作示例。 存在许多未配置为此模板的一部分的存储帐户设置。 例如，如果要使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，则可以通过将`isHnsEnabledad` `StorageAccountPropertiesCreateParameters`对象的属性设置为来`true`修改此模板。 
+> 此模板仅用作示例。 存在许多未配置为此模板的一部分的存储帐户设置。 例如，如果要使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，则可以通过将 `isHnsEnabledad` 对象的属性设置为来修改此模板 `StorageAccountPropertiesCreateParameters` `true` 。 
 
 若要了解如何修改此模板或创建新模板，请参阅：
 

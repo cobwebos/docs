@@ -4,10 +4,9 @@ description: 托管服务提供允许服务提供商向 Azure Marketplace 中的
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792286"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
@@ -31,7 +30,7 @@ ms.locfileid: "82792286"
 如果需要，可以在同一个产品/服务中包括公用和专用计划。
 
 > [!IMPORTANT]
-> 一旦某个计划作为公共计划发布，则不能将其更改为 "专用"。 若要控制哪些客户可以接受您的产品/服务和委托资源，请使用私有计划。 使用公用计划，您不能将可用性限制为特定客户或甚至是特定数量的客户（不过，如果您选择这样做，您可以完全停止销售计划）。 仅当你在发布产品/服务时，如果你在将**角色定义**设置为 "[托管服务注册分配](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)" "角色 **"，则**可以在客户接受产品/服务后[删除对委派的访问权限](../how-to/remove-delegation.md)。 你还可以联系客户并要求他们[删除你的访问权限](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+> 一旦某个计划已发布为公用，就无法将其更改为专用。 若要控制哪些客户可以接受产品/服务并委派资源，请使用专用计划。 使用公用计划时，不能将其可用性限制为特定客户，甚至不能限制特定数量的客户（不过，如果选择这样做，可完全停止销售计划）。 仅当在发布产品/服务时，包含将“角色定义”设置为[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的“授权”的情况下，才能在客户接受产品/服务后[删除对委派的访问权限](../how-to/remove-delegation.md)。 你还可以与客户联系，要求他们[删除你的访问权限](../how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)。
 
 ## <a name="publish-managed-service-offers"></a>发布托管服务产品
 

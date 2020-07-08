@@ -1,6 +1,6 @@
 ---
-title: 从一般化映像创建规模集
-description: 使用共享映像库中的一般化映像创建规模集。
+title: 从通用化映像创建规模集
+description: 使用共享映像库中的通用化映像创建规模集。
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -10,29 +10,28 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: f61977c1c1be07ffe744608c1bf8ec5a8013f8d0
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797079"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>从一般化映像创建规模集
+# <a name="create-a-scale-set-from-a-generalized-image"></a>从通用化映像创建规模集
 
-使用[共享映像库](shared-image-galleries.md)中存储的通用映像版本创建 VM。 如果要使用专用映像创建规模集，请参阅[从专用映像创建规模集实例](instance-specialized-image-version-powershell.md)。
+从[共享映像库](shared-image-galleries.md)中存储的通用化映像版本创建 VM。 若要使用专用化映像创建规模集，请参阅[从专用化映像创建规模集实例](instance-specialized-image-version-powershell.md)。
 
-获得通用化映像后，可以使用[AzVmss](/powershell/module/az.compute/new-azvmss) cmdlet 创建虚拟机规模集。 
+有通用化映像后，可以使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) cmdlet 来创建虚拟机规模集。 
 
-在此示例中，我们使用映像定义 ID 来确保新 VM 使用最新版本的映像。 你还可以使用的映像版本 ID 来使用特定版本`-ImageReferenceId`。 例如，若要使用映像版本 *1.0.0*，请键入：`-ImageReferenceId "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
+在此示例中，我们使用映像定义 ID 来确保新 VM 会使用最新版本的映像。 也可通过将映像版本 ID 用作 `-ImageReferenceId` 来使用特定版本。 例如，若要使用映像版本 *1.0.0*，请键入：`-ImageReferenceId "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`。 
 
-请注意，使用特定映像版本意味着如果特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 创建新的 VM，除非需要特定的映像版本。
-
-
-以下示例在*default-machinelearning-southcentralus*位置的*myVMSSRG*资源组中创建名为*myScaleSet*的规模集。 规模集将从*myGalleryRG*资源组中*myGallery*映像库中的*myImageDefinition*映像创建。 出现提示时，为规模集中的 VM 实例设置自己的管理凭据。
+请注意，使用特定映像版本意味着：如果该特定映像版本由于已删除或已从区域中删除而无法使用，则自动化可能会失败。 建议使用映像定义 ID 来创建新的 VM（除非需要特定的映像版本）。
 
 
-## <a name="simplified-parameter-set"></a>简化的参数集
+以下示例在*default-machinelearning-southcentralus*位置的*myVMSSRG*资源组中创建名为*myScaleSet*的规模集。 将基于“myGalleryRG”资源组的“myGallery”映像库中的“myImageDefinition”映像创建该规模集。 出现提示时，请为该规模集中的 VM 实例设置自己的管理凭据。
 
-若要快速创建规模集，同时提供最少的信息，请使用简化的参数集从共享映像库映像创建规模集。
+
+## <a name="simplified-parameter-set"></a>简化参数集
+
+若要在提供最少信息的同时快速创建规模集，请使用简化参数集从“共享映像库”映像创建规模集。
 
 ```azurepowershell-interactive
 $imageDefinition = Get-AzGalleryImageDefinition `
@@ -59,7 +58,7 @@ New-AzVmss `
 
 ## <a name="extended-parameter-set"></a>扩展参数集
 
-若要完全控制所有资源（包括命名），请使用 full 参数集创建使用共享图像库映像的规模集。 
+若要完全控制所有资源（包括命名），请使用完整参数集基于“共享映像库”映像创建规模集。 
 
 ```azurepowershell-interactive
 # Get the image definition
@@ -178,7 +177,7 @@ New-AzVmss `
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
 有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。

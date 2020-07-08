@@ -15,7 +15,6 @@ ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
 ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2020
 ms.locfileid: "82891662"

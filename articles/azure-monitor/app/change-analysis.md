@@ -6,10 +6,9 @@ author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
 ms.openlocfilehash: c287a2315f2b2319a6873ce84ee0e4e48bec8444
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82836720"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>使用 Azure Monitor 中的应用程序更改分析（预览版）
@@ -19,7 +18,7 @@ ms.locfileid: "82836720"
 更改分析构建在 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) 的强大功能基础之上，可让你洞察 Azure 应用程序的更改，以提高可观察性并减少 MTTR（平均修复时间）。
 
 > [!IMPORTANT]
-> 更改分析目前以预览版提供。 此预览版不附带服务级别协议。 不建议对生产工作负荷使用此版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 更改分析目前以预览版提供。 此预览版不附带服务级别协议。 不建议对生产工作负荷使用此版本。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="overview"></a>概述
 
@@ -79,7 +78,7 @@ ms.locfileid: "82836720"
 
 ![更改详细信息的屏幕截图](./media/change-analysis/change-details.png)
 
-有关任何反馈，请使用边栏选项卡或电子邮件changeanalysisteam@microsoft.com中的 "发送反馈" 按钮。
+有关任何反馈，请使用边栏选项卡或电子邮件中的 "发送反馈" 按钮 changeanalysisteam@microsoft.com 。
 
 ![“更改分析”边栏选项卡中反馈按钮的屏幕截图](./media/change-analysis/change-analysis-feedback.png)
 
@@ -109,7 +108,7 @@ ms.locfileid: "82836720"
 
     ![“启用更改分析”用户界面的屏幕截图](./media/change-analysis/change-analysis-on.png)
 
-5. 若要访问更改分析，请选择 "**诊断和解决问题** > **可用性和性能** > **应用程序崩溃**"。 此时会显示一个图形，其中汇总了在不同时间发生的更改类型，以及有关这些更改的详细信息。 默认情况下会显示过去 24 小时的更改，方便你解决即时问题。
+5. 若要访问更改分析，请选择 "**诊断和解决问题**  >  **可用性和性能**  >  **应用程序崩溃**"。 此时会显示一个图形，其中汇总了在不同时间发生的更改类型，以及有关这些更改的详细信息。 默认情况下会显示过去 24 小时的更改，方便你解决即时问题。
 
      ![更改差异视图的屏幕截图](./media/change-analysis/change-view.png)
 

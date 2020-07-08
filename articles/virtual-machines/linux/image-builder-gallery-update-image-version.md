@@ -9,17 +9,16 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 2b65dee27bf31a3cf49b59ddf982834b86dca4de
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82872128"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>预览：使用 Azure 映像生成器通过现有映像版本创建新的 VM 映像版本
 
 本文介绍如何使用[共享映像库](shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 
-我们将使用示例 json 模板来配置映像。 我们使用的 json 文件是： [helloImageTemplateforSIGfromSIG](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)。 
+我们将使用一个示例 .json 模板来配置映像。 此处使用的 json 文件是： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)。 
 
 
 ## <a name="register-the-features"></a>注册功能
@@ -35,7 +34,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-检查你的注册。
+检查注册。
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
@@ -44,7 +43,7 @@ az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果未注册，请运行以下内容：
+如果未显示“已注册”，请运行以下命令：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -54,7 +53,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="set-variables-and-permissions"></a>设置变量和权限
+## <a name="set-variables-and-permissions"></a>设置变量和访问权限
 
 如果使用了[创建图像并将其分发给共享映像库](image-builder-gallery.md)来创建共享映像库，则已创建了所需的一些变量。 如果没有，请设置要用于此示例的一些变量。
 
@@ -74,7 +73,7 @@ imageDefName=myIbImageDef
 runOutputName=aibSIGLinuxUpdate
 ```
 
-为订阅 ID 创建一个变量。 你可以使用`az account show | grep id`获取此。
+为你的订阅 ID 创建变量。 可使用 `az account show | grep id` 获取。
 
 ```console
 subscriptionID=<Subscription ID>
@@ -90,7 +89,7 @@ sigDefImgVersionId=$(az sig image-version list \
    --subscription $subscriptionID --query [].'id' -o json | grep 0. | tr -d '"' | tr -d '[:space:]')
 ```
 
-## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识并对资源组设置权限
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>创建用户分配的标识，并在资源组上设置权限
 在上一示例中设置用户标识后，只需获取其资源 ID，然后将其追加到模板。
 
 ```azurecli-interactive
@@ -102,7 +101,7 @@ imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, '
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 示例
-可以通过在以下位置打开 json 文件： [helloImageTemplateforSIGfromSIG](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)以及[图像生成器模板引用](image-builder-json.md)来查看我们将要使用的示例。 
+你可以通过在以下位置打开 json 文件来查看我们将要使用的示例：使用[图像生成器模板参考](image-builder-json.md) [helloImageTemplateforSIGfromSIG.js](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) 。 
 
 
 下载此 json 示例，并将其配置为你的变量。 
@@ -174,7 +173,7 @@ ssh azureuser@<pubIp>
 *******************************************************
 ```
 
-键入`exit`以关闭 SSH 连接。
+键入 `exit` 以关闭 SSH 连接。
 
 还可以列出库中现在可用的映像版本。
 

@@ -11,15 +11,14 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: sharadag
 ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81768317"
 ---
 # <a name="wildcard-domains"></a>通配符域
 
-除了顶点域和子域，你还可以将通配符域名映射到你的 Azure 前门配置文件中的前端主机或自定义域列表。 如果在 Azure 前门配置中拥有通配符域，则会为同一路由规则中的 API、应用程序或网站的多个子域简化流量路由行为。 无需修改配置即可单独添加或指定每个子域。 例如，你可以通过使用相同的路由规则`customer1.contoso.com`并`customer2.contoso.com`添加通配符`customerN.contoso.com`域`*.contoso.com`来定义、和的路由。
+除了顶点域和子域，你还可以将通配符域名映射到你的 Azure 前门配置文件中的前端主机或自定义域列表。 如果在 Azure 前门配置中拥有通配符域，则会为同一路由规则中的 API、应用程序或网站的多个子域简化流量路由行为。 无需修改配置即可单独添加或指定每个子域。 例如，你可以 `customer1.contoso.com` `customer2.contoso.com` `customerN.contoso.com` 通过使用相同的路由规则并添加通配符域来定义、和的路由 `*.contoso.com` 。
 
 支持通配符域的主要方案包括：
 
@@ -31,7 +30,7 @@ ms.locfileid: "81768317"
 
 ## <a name="adding-wildcard-domains"></a>添加通配符域
 
-你可以在前端主机或域的部分下添加通配符域。 类似于子域，Azure 前门验证是否存在通配符域的 CNAME 记录映射。 此 DNS 映射可以是`*.contoso.com`映射到`contoso.azurefd.net`的直接 CNAME 记录映射。 或者，可以使用 afdverify 临时映射。 例如， `afdverify.contoso.com`映射以`afdverify.contoso.azurefd.net`验证通配符的 CNAME 记录映射。
+你可以在前端主机或域的部分下添加通配符域。 类似于子域，Azure 前门验证是否存在通配符域的 CNAME 记录映射。 此 DNS 映射可以是映射到的直接 CNAME 记录映射 `*.contoso.com` `contoso.azurefd.net` 。 或者，可以使用 afdverify 临时映射。 例如， `afdverify.contoso.com` 映射以 `afdverify.contoso.azurefd.net` 验证通配符的 CNAME 记录映射。
 
 > [!NOTE]
 > Azure DNS 支持 通配符记录。
@@ -40,7 +39,7 @@ ms.locfileid: "81768317"
 
 - 定义子域的其他路由，而不是域的其余部分（来自通配符域）。
 
-- 针对特定子域具有不同的 WAF 策略。 例如， `*.contoso.com`允许添加`foo.contoso.com` ，而无需再次证明域所有权。 但不允许`foo.bar.contoso.com`这样做，因为它不是的单个`*.contoso.com`级别的子域。 若要`foo.bar.contoso.com`添加而不添加其他域`*.bar.contosonews.com`所有权验证，需要添加。
+- 针对特定子域具有不同的 WAF 策略。 例如， `*.contoso.com` 允许添加， `foo.contoso.com` 而无需再次证明域所有权。 但不允许这样做， `foo.bar.contoso.com` 因为它不是的单个级别的子域 `*.contoso.com` 。 若要添加 `foo.bar.contoso.com` 而不添加其他域所有权验证， `*.bar.contosonews.com` 需要添加。
 
 你可以添加通配符域及其子域，但有一些限制：
 
@@ -72,7 +71,7 @@ ms.locfileid: "81768317"
 配置路由规则时，可以选择通配符域作为前端主机。 对于通配符域和子域，还可以具有不同的路由行为。 如[Azure 前端的路由匹配方式](front-door-route-matching.md)中所述，在运行时选择不同路由规则中的域的最特定匹配。
 
 > [!IMPORTANT]
-> 你必须在路由规则中具有匹配的路径模式，否则你的客户端将会看到失败。 例如，有两个路由规则，例如路由1（`*.foo.com/*`映射到后端池 A）和路由2（`bar.foo.com/somePath/*`映射到后端池 B）。 然后，请求到达`bar.foo.com/anotherPath/*`。 Azure 前门根据更具体的域匹配选择路由2，而只查找路由之间没有匹配的路径模式。
+> 你必须在路由规则中具有匹配的路径模式，否则你的客户端将会看到失败。 例如，有两个路由规则，例如路由1（ `*.foo.com/*` 映射到后端池 A）和路由2（ `bar.foo.com/somePath/*` 映射到后端池 B）。 然后，请求到达 `bar.foo.com/anotherPath/*` 。 Azure 前门根据更具体的域匹配选择路由2，而只查找路由之间没有匹配的路径模式。
 
 ## <a name="next-steps"></a>后续步骤
 

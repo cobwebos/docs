@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
 ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82870035"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>创建翻转窗口触发器依赖项
@@ -82,18 +81,18 @@ ms.locfileid: "82870035"
 | **属性名称** | **说明**  | **类型** | **必需** |
 |---|---|---|---|
 | type  | 所有现有翻转窗口触发器将显示在此下拉列表中。 选择要依赖的触发器。  | TumblingWindowTriggerDependencyReference 或 SelfDependencyTumblingWindowTriggerReference | 是 |
-| offset | 依赖项触发器的偏移量。 以时间跨度格式提供值，负数和正数偏移量均可。 如果触发器依赖于自身，则此属性是必需的；对于其他所有情况，此属性是可选的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则该窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自依赖项：是<br/>其他：否 |
+| offset | 依赖项触发器的偏移量。 以时间跨度格式提供值，负数和正数偏移量均可。 如果触发器依赖于自身，则此属性是必需的；对于其他所有情况，此属性是可选的。 自我依赖项应始终为负偏移量。 如果未指定任何值，则该窗口与触发器本身相同。 | Timespan<br/>(hh:mm:ss) | 自我依赖项：是<br/>其他：否 |
 | 大小 | 依赖项翻转窗口的大小。 提供正的 timespan 值。 此属性是可选的。 | Timespan<br/>(hh:mm:ss) | 否  |
 
 > [!NOTE]
-> 翻转窗口触发器最多可以有五个其他触发器。
+> 翻转窗口触发器最多可以依赖其他五个触发器。
 
 ## <a name="tumbling-window-self-dependency-properties"></a>翻转窗口自我依赖项属性
 
-如果触发器不应继续到下一个窗口，直到上一窗口成功完成，则生成一个自依赖项。 依赖项触发器的依赖项依赖项在前一小时内的以前运行是否成功，将具有以下代码中所示的属性。
+对于在上一个窗口成功完成之前触发器不应转到下一个窗口的情况，请生成自我依赖项。 依赖于前一小时内自身运行是否成功的自我依赖项触发器将具有以下代码中所示的属性。
 
 > [!NOTE]
-> 如果触发管道依赖于先前触发的 windows 中管道的输出，则建议只使用翻转窗口触发器自依赖项。 若要限制并行触发器运行，请设置最触发器并发。
+> 如果触发的管道依赖于先前触发的窗口中管道的输出，则建议仅使用翻转窗口触发器自我依赖项。 若要限制并行触发器运行，请设置最大触发器并发。
 
 ```json
 {
@@ -133,7 +132,7 @@ ms.locfileid: "82870035"
 
 ### <a name="dependency-offset"></a>依赖项偏移量
 
-![偏移示例](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "偏移量示例")
+![偏移量示例](media/tumbling-window-trigger-dependency/tumbling-window-dependency02.png "偏移量示例")
 
 ### <a name="dependency-size"></a>依赖项大小
 
@@ -141,7 +140,7 @@ ms.locfileid: "82870035"
 
 ### <a name="self-dependency"></a>自我依赖项
 
-![自依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "自我依赖项")
+![自我依赖项](media/tumbling-window-trigger-dependency/tumbling-window-dependency04.png "自我依赖项")
 
 ### <a name="dependency-on-another-tumbling-window-trigger"></a>依赖于另一个翻转窗口触发器
 

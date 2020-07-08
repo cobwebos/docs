@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793034"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>优化 CloudSimple 私有云以安装 Oracle RAC
@@ -44,9 +43,9 @@ Oracle RAC 虚拟机具有多个磁盘，这些磁盘用于特定功能。  共�
 
 以下示例使用下表中定义的磁盘。
 
-| 磁盘                                      | 目标                                       | 共享磁盘 |
+| 磁盘和分区                                      | 目标                                       | 共享磁盘 |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| 操作系统                                        | 操作系统磁盘                         | 否          |
+| (OS)                                        | 操作系统磁盘                         | 否          |
 | 格                                      | Oracle 网格软件的安装位置     | 否          |
 | DATABASE                                  | Oracle 数据库软件的安装位置 | 否          |
 | ORAHOME                                   | Oracle 数据库二进制文件的基准位置    | 否          |
@@ -174,8 +173,8 @@ vSAN 策略为 VM 磁盘上存储的数据定义允许和磁盘条带化失败�
 3. 在左侧菜单中，选择 " **Vm 存储策略**"，然后选择 "**创建 vm 存储策略**"。
 4. 为策略输入有意义的名称，然后单击 "**下一步**"。
 5. 在 "**策略结构**" 部分，选择 "**启用 vSAN 存储的规则**"，然后单击 "**下一步**"。
-6. 在 " **vSAN** > **可用性**" 部分中，为 "站点灾难容错" 选择 "**无**"。 对于 "容错失败"，请为所需的 FTT 选择**RAID 镜像**选项。
-    ![vSAN 设置](media/oracle-rac-storage-wizard-vsan.png)。
+6. 在 " **vSAN**  >  **可用性**" 部分中，为 "站点灾难容错" 选择 "**无**"。 对于 "容错失败"，请为所需的 FTT 选择**RAID 镜像**选项。
+    ![vSAN 设置 ](media/oracle-rac-storage-wizard-vsan.png) 。
 7. 在 "**高级**" 部分中，选择 "每个对象的磁盘条带数"。 对于 "对象空间保留"，请选择 "**配置**"。 选择 "**禁用对象校验和**"。 单击 "**下一步**"。
 8. 按照屏幕上的说明查看兼容 vSAN 数据存储的列表，查看设置，然后完成安装。
 
@@ -257,7 +256,7 @@ VM 到主机关联规则确保 VM 在所需的主机上运行。  你可以在 v
 11. 选择包含 Oracle Vm 的 VM 组。
 12. 选择 **"必须在此组中的主机上运行"**。
 13. 选择创建的主机组。
-14. 单击 **"确定"** 创建规则。
+14. 单击“确定”创建规则  。
 
 ## <a name="references"></a>参考
 

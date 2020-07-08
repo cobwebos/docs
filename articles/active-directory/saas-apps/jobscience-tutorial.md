@@ -16,10 +16,9 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教程：Azure Active Directory 与 Jobscience 集成
@@ -34,7 +33,7 @@ ms.locfileid: "81870544"
 
 如果要了解有关 SaaS 应用与 Azure AD 的集成的详细信息，请参阅[什么是使用 Azure Active Directory 的应用程序访问和单一登录](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Jobscience 的集成，需要以下项：
 
@@ -60,7 +59,7 @@ ms.locfileid: "81870544"
 
 若要从库中添加 Jobscience，请执行以下步骤：****
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
     ![Active Directory][1]
 
@@ -68,7 +67,7 @@ ms.locfileid: "81870544"
 
     ![应用程序][2]
     
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
     ![应用程序][3]
 
@@ -172,11 +171,11 @@ ms.locfileid: "81870544"
 
     f. 对于 **“SAML 标识位置”**，请选择 **“标识在使用者表述的 NameIdentfier 元素中”**。
 
-    g. 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值********。
+    如， 在“标识提供者登录 URL”文本框中，粘贴从 Azure 门户复制的“SAML 单一登录服务 URL”值********。
 
-    h. 在“标识提供者注销 URL”**** 文本框中，粘贴从 Azure 门户复制的“注销 URL”**** 值。
+    h.如果该值不存在，请单击“添加行”。 在“标识提供者注销 URL”**** 文本框中，粘贴从 Azure 门户复制的“注销 URL”**** 值。
 
-    i. 单击 **“保存”** 。
+    i. 单击“ **保存**”。
 
 1. 在左侧导航窗格中的“管理”**** 部分中，单击“域管理”**** 以展开相关部分，并单击“我的域”****，打开“我的域”**** 页。 
     
@@ -229,7 +228,7 @@ ms.locfileid: "81870544"
 
     c. 选择 "**显示密码**" 并记下 "**密码**" 的值。
 
-    d. 单击“创建”。 
+    d. 单击“创建”。
  
 ### <a name="creating-a-jobscience-test-user"></a>创建 Jobscience 测试用户
 
@@ -262,13 +261,13 @@ ms.locfileid: "81870544"
    
    c. 在“别名”**** 文本框中键入用户的别名（如 brittas）。
 
-   d. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。****
+   d. 在“电子邮件”文本框中，键入用户的电子邮件地址（例如 Brittasimon@contoso.com）。
 
    e. 在“用户名”**** 文本框中，键入用户的用户名（例如 Brittasimon@contoso.com）。
 
    f. 在“昵称”**** 文本框中，键入用户的昵称（例如 Simon）。
 
-   g. 单击“ **保存**”。
+   g. 单击“保存” 。
 
     
 > [!NOTE]
@@ -294,7 +293,7 @@ ms.locfileid: "81870544"
 
     ![分配用户][202] 
 
-1. 单击“添加”**** 按钮。 然后在“添加分配”对话框中选择“用户和组”。********
+1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。********
 
     ![分配用户][203]
 

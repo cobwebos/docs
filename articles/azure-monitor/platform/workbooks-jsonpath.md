@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 工作簿-通过 JSONPath 转换 JSON 数据
-description: 如何使用 Azure Monitor 工作簿中的 JSONPath 将查询的终结点返回的 JSON 数据的结果转换为所需的格式。
+title: Azure Monitor 工作簿 - 使用 JSONPath 转换 JSON 数据
+description: 如何使用 Azure Monitor 工作簿中的 JSONPath，将查询的终结点返回的 JSON 数据结果转换为所需格式。
 services: azure-monitor
 author: lgayhardt
 manager: carmonm
@@ -10,26 +10,25 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82892207"
 ---
-# <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何使用 JSONPath 转换工作簿中的 JSON 数据
+# <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>如何在工作簿中使用 JSONPath 转换 JSON 数据
 
-工作簿可以从多个源查询数据。 某些终结点（如[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)或自定义终结点）可以返回 JSON 形式的结果。 如果查询的终结点返回的 JSON 数据未采用您所需的格式进行配置，则可以使用 JSONPath 来转换结果。
+工作簿可以从多个源查询数据。 某些终结点（例如 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)或自定义终结点）可以返回 JSON 格式的结果。 如果查询的终结点返回的 JSON 数据未采用所需的格式进行配置，可以使用 JSONPath 来转换结果。
 
-JSONPath 是一种 JSON 查询语言，类似于 XML 的 XPath。 与 XPath 类似，JSONPath 允许从 JSON 结构中提取和筛选数据。
+JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 与 XPath 类似，JSONPath 允许从 JSON 结构中提取和筛选数据。
 
-通过使用 JSONPath 转换，工作簿作者可以将 JSON 转换为表结构。 然后，可以使用该表绘制[工作簿可视化](workbooks-visualizations.md)对象。
+工作簿作者可以使用 JSONPath 转换将 JSON 转换为表结构。 然后，可以使用该表来绘制[工作簿可视化效果](workbooks-visualizations.md)。
 
 ## <a name="using-jsonpath"></a>使用 JSONPath
 
-1. 单击 "*编辑*" 工具栏项，将工作簿切换到编辑模式。
-2. 使用 "*添加* > *添加查询*" 链接向工作簿添加查询控件。
-3. 选择 " *JSON*" 作为数据源。
-4. 使用 JSON 编辑器输入以下 JSON 代码片段
+1. 单击“编辑”工具栏项，将工作簿切换到编辑模式。
+2. 使用“添加” > “添加查询”链接将查询控件添加到工作簿。 
+3. 选择“JSON”作为数据源。
+4. 使用 JSON 编辑器输入以下 JSON 片段
     ```json
     { "store": {
         "books": [ 
@@ -64,24 +63,24 @@ JSONPath 是一种 JSON 查询语言，类似于 XML 的 XPath。 与 XPath 类�
     }
     ```  
 
-假设我们将上述 JSON 对象作为商店清单的表示形式。 我们的任务是通过列出商店的书名、作者和价格来创建商店可用书籍的表格。
+假设以商店库存的表示形式提供了上述 JSON 对象。 我们的任务是通过列出书籍的书名、作者和价格，来创建商店供应书籍的表。
 
-1. 选择 "*结果设置*" 选项卡，并将结果格式切换为 " *JSON 路径*"。
+1. 选择“结果设置”选项卡，并将结果格式切换为“JSON 路径”。 
 2. 应用以下 JSON 路径设置：
 
-    JSON 路径表： `$.store.books`。 此字段表示表的根的路径。 在这种情况下，我们关心商店的书名。 表路径将 JSON 筛选为书籍信息。
+    JSON 路径表：`$.store.books`。 此字段表示表的根路径。 在本例中，我们关注的是商店的书籍库存。 表路径将按书籍信息筛选 JSON。
 
-   | 列 Id | 列 JSON 路径 |
+   | 列 ID | 列 JSON 路径 |
    |:-----------|:-----------------|
-   | Title      | `$.title`        |
+   | 标题      | `$.title`        |
    | 作者     | `$.author`       |
    | 价格      | `$.price`        |
 
-    列 Id 将为列标题。 列 JSON 路径字段表示从表的根到列值的路径。
+    列 ID 将是列标题。 “列 JSON 路径”字段表示从表的根到列值的路径。
 
-1. 单击 "*运行查询*" 应用上述设置
+1. 单击“运行查询”应用上述设置
 
-![ 编辑具有 JSON 数据源和 JSON 路径结果格式的查询项](./media/workbooks-jsonpath/query-jsonpath.png)
+![ 使用 JSON 数据源和 JSON 路径结果格式编辑查询项](./media/workbooks-jsonpath/query-jsonpath.png)
 
 ## <a name="next-steps"></a>后续步骤
 - [工作簿概述](workbooks-overview.md)

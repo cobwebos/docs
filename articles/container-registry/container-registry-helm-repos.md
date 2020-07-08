@@ -4,10 +4,9 @@ description: 了解如何使用 Azure 容器注册表中的存储库来为 Kuber
 ms.topic: article
 ms.date: 03/20/2020
 ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857613"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>将 Helm 图表推送和提取到 Azure 容器注册表
@@ -31,24 +30,24 @@ ms.locfileid: "82857613"
 ### <a name="additional-information"></a>其他信息
 
 * 在大多数情况下，我们建议结合本机 `helm chart` 命令使用 Helm 3 工作流，将图表作为 OCI 项目进行管理。
-* 从 Helm 3 开始，支持[az acr Helm][az-acr-helm]命令，以便兼容 Helm 2 客户端和图表格式。 目前尚未计划将来开发这些命令。 请参阅[产品路线图](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)。
+* 从 Helm 3 开始，为了与 Helm 2 客户端和图表格式兼容，支持 [az acr helm][az-acr-helm] 命令。 目前尚未计划将来开发这些命令。 请参阅[产品路线图](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)。
 * 不能使用 Azure 门户查看或管理 Helm 2 图表。
 
 ## <a name="use-the-helm-3-client"></a>使用 Helm 3 客户端
 
 ### <a name="prerequisites"></a>先决条件
 
-- Azure 订阅中有一个 Azure 容器注册表。  如果需要，请使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md) 创建一个注册表。
-- Helm 客户端 3.1.0 或更高版本 - 运行 `helm version` 可查看当前版本。  有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
-- 要在其中安装 Helm 图表的 Kubernetes 群集。  如果需要，请创建一个 [Azure Kubernetes 服务群集][aks-quickstart]。 
-- Azure CLI 2.0.71 或更高版本 - 运行 `az --version` 可查看版本。  如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+- Azure 订阅中有一个 Azure 容器注册表。**** 如果需要，请使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md) 创建一个注册表。
+- Helm 客户端 3.1.0 或更高版本 - 运行 `helm version` 可查看当前版本。**** 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install]。
+- 要在其中安装 Helm 图表的 Kubernetes 群集。**** 如果需要，请创建一个 [Azure Kubernetes 服务群集][aks-quickstart]。 
+- Azure CLI 2.0.71 或更高版本 - 运行 `az --version` 可查看版本。**** 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="high-level-workflow"></a>高级工作流
 
-使用 Helm 3 可以： 
+使用 Helm 3 可以：****
 
 * 在 Azure 容器注册表中创建一个或多个 Helm 存储库
-* 将 Helm 3 图表作为 [OCI 项目](container-registry-image-formats.md#oci-artifacts)存储在注册表中。 目前，Helm 3 对 OCI 的支持是实验性的。 
+* 将 Helm 3 图表作为 [OCI 项目](container-registry-image-formats.md#oci-artifacts)存储在注册表中。 目前，Helm 3 对 OCI 的支持是实验性的。**
 * 使用 `helm registry login` 命令向注册表进行身份验证。
 * 在 Helm CLI 中使用 `helm chart` 命令在注册表中推送、提取和管理 Helm 图表
 * 使用 `helm install` 从本地存储库缓存将图表安装到 Kubernetes 群集。
@@ -100,7 +99,7 @@ EOF
 
 将目录切换到 `hello-world` 子目录。 然后，运行 `helm chart save` 以在本地保存图表的副本，并使用注册表的完全限定名称（全小写）以及目标存储库和标记创建别名。 
 
-在以下示例中，注册表名称为 mycontainerregistry，目标存储库为 hello-world，目标图表标记为 v1，但要根据你的环境替换值：   
+在以下示例中，注册表名称为 mycontainerregistry，目标存储库为 hello-world，目标图表标记为 v1，但要根据你的环境替换值：** ** **
 
 ```console
 cd ..
@@ -246,7 +245,7 @@ version: 0.1.0
 
 ### <a name="install-helm-chart"></a>安装 Helm 图表
 
-运行 `helm install` 来安装已提取到本地缓存且已导出的 Helm 图表。 指定版本名称（例如 myhelmtest）或传递 `--generate-name` 参数。  例如：
+运行 `helm install` 来安装已提取到本地缓存且已导出的 Helm 图表。 指定版本名称（例如 myhelmtest）或传递 `--generate-name` 参数。** 例如：
 
 ```console
 helm install myhelmtest ./hello-world
@@ -283,15 +282,15 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 
 ### <a name="prerequisites"></a>先决条件
 
-- Azure 订阅中有一个 Azure 容器注册表。  如果需要，请使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md) 创建一个注册表。
-- Helm 客户端版本 2.11.0（而不是 RC 版本）或更高版本  - 运行 `helm version` 以查找当前版本。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，请创建一个 [Azure Kubernetes 服务群集][aks-quickstart]。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install-v2]。
-- Azure CLI 版本 2.0.46 或更高版本  - 运行 `az --version` 查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+- Azure 订阅中有一个 Azure 容器注册表。**** 如果需要，请使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md) 创建一个注册表。
+- Helm 客户端版本 2.11.0（而不是 RC 版本）或更高版本**** - 运行 `helm version` 以查找当前版本。 还需要在 Kubernetes 群集中初始化的一个 Helm 服务器 (Tiller)。 如果需要，请创建一个 [Azure Kubernetes 服务群集][aks-quickstart]。 有关如何安装和升级 Helm 的详细信息，请参阅[安装 Helm][helm-install-v2]。
+- Azure CLI 版本 2.0.46 或更高版本 ****- 运行 `az --version` 查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 ### <a name="high-level-workflow"></a>高级工作流
 
-使用 Helm 2 可以： 
+使用 Helm 2 可以：****
 
-* 将 Azure 容器注册表配置为单个 Helm 图表存储库。  当你在存储库中添加或删除图表时，Azure 容器注册表会管理索引定义。
+* 将 Azure 容器注册表配置为单个 Helm 图表存储库。** 当你在存储库中添加或删除图表时，Azure 容器注册表会管理索引定义。
 * 通过 Azure CLI 向 Azure 容器注册表进行身份验证，然后，系统会使用注册表 URI 和凭据自动更新 Helm 客户端。 无需手动指定此注册表信息，以免凭据在命令历史记录中公开。
 * 在 Azure CLI 中使用 [az acr helm][az-acr-helm] 命令可将 Azure 容器注册表添加为 Helm 图表存储库，并可推送和管理图表。 这些 Azure CLI 命令包装 Helm 2 客户端命令。
 * 将 Azure 容器注册表中的图表存储库添加到本地 Helm 存储库索引，以支持图表搜索。
@@ -309,7 +308,7 @@ az acr helm repo add --name mycontainerregistry
 
 ### <a name="add-a-sample-chart-to-the-repository"></a>将示例图表添加到存储库
 
-首先，在 ~/acr-helm  中创建一个本地目录，然后下载现有的 stable/wordpress  图表：
+首先，在 ~/acr-helm** 中创建一个本地目录，然后下载现有的 stable/wordpress** 图表：
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
@@ -317,13 +316,13 @@ helm repo update
 helm fetch stable/wordpress
 ```
 
-键入 `ls` 列出已下载的图表，并记下文件名中包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令未指定特定版本，因此会获取最新  版本。 在以下示例输出中，Wordpress 图表的版本为 8.1.0  ：
+键入 `ls` 列出已下载的图表，并记下文件名中包含的 Wordpress 版本。 `helm fetch stable/wordpress` 命令未指定特定版本，因此会获取最新** 版本。 在以下示例输出中，Wordpress 图表的版本为 8.1.0**：
 
 ```output
 wordpress-8.1.0.tgz
 ```
 
-在 Azure CLI 中使用 [az acr helm push][az-acr-helm-push] 命令将图表推送到 Azure 容器注册表中的 Helm 图表存储库。 指定在上一步骤中下载的 Helm 图表的名称，例如 wordpress-8.1.0.tgz  ：
+在 Azure CLI 中使用 [az acr helm push][az-acr-helm-push] 命令将图表推送到 Azure 容器注册表中的 Helm 图表存储库。 指定在上一步骤中下载的 Helm 图表的名称，例如 wordpress-8.1.0.tgz**：
 
 ```azurecli
 az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
@@ -372,7 +371,7 @@ az acr helm list --name mycontainerregistry
 helm inspect mycontainerregistry/wordpress
 ```
 
-如果没有版本号，将使用最新  版本。 Helm 将返回有关图表的详细信息，如以下精简示例输出中所示：
+如果没有版本号，将使用最新** 版本。 Helm 将返回有关图表的详细信息，如以下精简示例输出中所示：
 
 ```output
 apiVersion: v1
@@ -399,7 +398,7 @@ version: 8.1.0
 [...]
 ```
 
-此外，还可以使用 Azure CLI [az acr helm show][az-acr-helm-show] 命令显示图表的信息。 同样，默认情况下会返回图表的最新  版本。 可以追加 `--version` 以列出特定版本的图表，例如 8.1.0  ：
+此外，还可以使用 Azure CLI [az acr helm show][az-acr-helm-show] 命令显示图表的信息。 同样，默认情况下会返回图表的最新** 版本。 可以追加 `--version` 以列出特定版本的图表，例如 8.1.0**：
 
 ```azurecli
 az acr helm show --name mycontainerregistry wordpress
@@ -433,7 +432,7 @@ wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
 
 ### <a name="delete-a-helm-chart-from-the-repository"></a>从存储库删除 Helm 图表
 
-若要从存储库中删除图表，请使用 [az acr helm delete][az-acr-helm-delete] 命令。 指定图表的名称（例如 wordpress），以及要删除的版本（例如 8.1.0）   。
+若要从存储库中删除图表，请使用 [az acr helm delete][az-acr-helm-delete] 命令。 指定图表的名称（例如 wordpress），以及要删除的版本（例如 8.1.0）** **。
 
 ```azurecli
 az acr helm delete --name mycontainerregistry wordpress --version 8.1.0

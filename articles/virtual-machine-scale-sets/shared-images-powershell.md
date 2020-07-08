@@ -9,10 +9,9 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792779"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>通过 Azure PowerShell 创建和使用虚拟机规模集的共享映像
@@ -29,11 +28,11 @@ ms.locfileid: "82792779"
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
-完成本文中的示例，必须具有现有托管映像。 可以按照[教程：为虚拟机规模集创建和使用自定义映像，并](tutorial-use-custom-image-powershell.md)在需要时使用 Azure PowerShell 创建一个。 如果托管映像包含数据磁盘，则数据磁盘大小不能超过 1 TB。
+完成本文中的示例，必须具有现有托管映像。 可以按照[教程：通过 Azure PowerShell 创建和使用虚拟机规模集的自定义映像](tutorial-use-custom-image-powershell.md)根据需要创建。 如果托管映像包含数据磁盘，则数据磁盘大小不能超过 1 TB。
 
 通过本文进行操作时，请根据需要替换资源组和 VM 名称。
 
@@ -48,8 +47,8 @@ ms.locfileid: "82792779"
 此外可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [从映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。

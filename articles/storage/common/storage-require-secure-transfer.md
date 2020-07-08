@@ -11,41 +11,40 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870515"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全传输以确保安全连接
 
-可以通过为存储帐户设置“需要安全传输”属性，将存储帐户配置为仅接受来自安全连接的请求。  要求安全传输时，来自不安全连接的任何请求都会被拒绝。 Microsoft 建议你始终需要对所有存储帐户进行安全传输。
+可以通过为存储帐户设置“需要安全传输”属性，将存储帐户配置为仅接受来自安全连接的请求。 要求安全传输时，来自不安全连接的任何请求都会被拒绝。 Microsoft 建议你始终需要对所有存储帐户进行安全传输。
 
 要求安全传输时，必须通过 HTTPS 调用 Azure 存储 REST API 操作。 通过 HTTP 发出的任何请求都会被拒绝。
 
 如果存储帐户需要安全传输，则在不加密的情况下通过 SMB 连接到 Azure 文件共享会失败。 不安全连接的示例包括通过 SMB 2.1、不加密的 SMB 3.0 或某些版本的 Linux SMB 客户端进行的连接。
 
-默认情况下，当你创建存储帐户时，将启用 "**需要安全传输**" 属性。
+默认情况下，创建存储帐户时，会启用“需要安全传输”属性。
 
 > [!NOTE]
 > 由于 Azure 存储对自定义域名不支持 HTTPS，因此使用自定义域名时不应用此选项。 不支持经典存储帐户。
 
 ## <a name="require-secure-transfer-in-the-azure-portal"></a>需要在 Azure 门户中进行安全传输
 
-在 [Azure 门户](https://portal.azure.com)中创建存储帐户时，可启用“需要安全传输”属性。**** 也可以为现有存储帐户启用该设置。
+在 [Azure 门户](https://portal.azure.com)中创建存储帐户时，可启用“需要安全传输”属性。 也可以为现有存储帐户启用该设置。
 
 ### <a name="require-secure-transfer-for-a-new-storage-account"></a>新的存储帐户需要安全传输
 
-1. 在 Azure 门户中打开“创建存储帐户”**** 窗格。
-1. 在“需要安全传输”**** 下，选择“启用”****。
+1. 在 Azure 门户中打开“创建存储帐户”窗格。
+1. 在“需要安全传输”下，选择“启用”。
 
    ![“创建存储帐户”边栏选项卡](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>对现有存储帐户需要安全传输
 
 1. 在 Azure 门户中选择现有存储帐户。
-1. 在存储帐户菜单窗格的“设置”**** 下，选择“配置”****。
-1. 在“需要安全传输”**** 下，选择“启用”****。
+1. 在存储帐户菜单窗格的“设置”下，选择“配置”。
+1. 在“需要安全传输”下，选择“启用”。
 
    ![“存储帐户”菜单窗格](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 

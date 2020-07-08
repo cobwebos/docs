@@ -15,10 +15,9 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82883135"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>排查 fstab 错误导致的 Linux VM 启动问题
@@ -180,7 +179,7 @@ Give root password for maintenance
 
 8. 保存对 fstab 文件所做的更改。
 
-9. 重新启动虚拟机。
+9. 重启虚拟机。
 
 10. 如果条目已成功做出注释或修复，系统应会在门户中显示 bash 提示符。 检查是否可以连接到 VM。
 

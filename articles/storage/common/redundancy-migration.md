@@ -11,39 +11,38 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82871363"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
-Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) 的要求。
+Azure 存储始终会存储数据的多个副本，以防范各种计划内和计划外的事件，包括暂时性的硬件故障、网络中断或断电、大范围自然灾害等。 即使面临故障时，冗余也可确保存储帐户满足 [Azure 存储的服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/)的要求。
 
 Azure 存储提供以下类型的复制：
 
 - 本地冗余存储 (LRS)
 - 区域冗余存储 (ZRS)
-- 异地冗余存储（GRS）或读取访问异地冗余存储（RA-GRS）
+- 异地冗余存储 (GRS) 或读取访问异地冗余存储 (RA-GRS)
 - 区域冗余存储（GZRS）或读取访问权限异地冗余存储（RA-GZRS）
 
-有关这些选项的概述，请参阅[Azure 存储冗余](storage-redundancy.md)。
+有关这些选项每一个的概述，请参阅 [Azure 存储冗余](storage-redundancy.md)。
 
 ## <a name="switch-between-types-of-replication"></a>在复制类型之间切换
 
-可以将存储帐户从一种类型的复制切换到任何其他类型，但有些方案比其他方案更直接。 若要添加或删除对次要区域的异地复制或读取访问权限，可以使用 Azure 门户、PowerShell 或 Azure CLI 来更新复制设置。 但是，如果想要更改在主要区域中复制数据的方式，请通过从 LRS 转到 ZRS，反之亦然。
+可以将存储帐户从一种类型的复制切换到任何其他类型，但某些方案比另一些方案更直接。 若要添加或删除对次要区域的异地复制或读取访问权限，可以使用 Azure 门户、PowerShell 或 Azure CLI 来更新复制设置。 但是，如果想要更改在主要区域中复制数据的方式，请通过从 LRS 转到 ZRS，反之亦然。
 
-下表概述了如何从各种类型的复制切换到另一种类型的复制：
+下表概述了如何从每种复制类型切换到另一种复制类型：
 
-| 更换 | ...到 LRS | ...to GRS/RA-GRS | ...到 ZRS | ...to GZRS/RA-GZRS |
+| 切换 | …到 LRS | …到 GRS/RA-GRS | ...到 ZRS | ...to GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>...from LRS</b> | 不可用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br /> 或 <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
-| <b>...from GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 不可用 | 执行手动迁移 <br /><br /> 或 <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> 请求实时迁移 |
-| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 不可用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> |
-| <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 不可用 |
+| <b>…从 LRS</b> | 不适用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br /> 或者 <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
+| <b>…从 GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> 或者 <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> 请求实时迁移 |
+| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 不适用 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1、2</sup> |
+| <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
-<sup>1</sup>会产生一次性的出口费用。<br />
+<sup>1</sup> 会产生一次性出口费用。<br />
 <sup>2</sup>在以下区域中不支持从 ZRS 到 GZRS/RA-GZRS，反之亦然：，反之亦然。
 
 > [!CAUTION]
@@ -51,7 +50,7 @@ Azure 存储提供以下类型的复制：
 
 ## <a name="change-the-replication-setting"></a>更改复制设置
 
-您可以使用 Azure 门户、PowerShell 或 Azure CLI 更改存储帐户的复制设置，只要不更改在主要区域中复制数据的方式。 如果要从主要区域中的 LRS 迁移到主要区域中的 ZRS，则必须执行[手动迁移](#perform-a-manual-migration-to-zrs)或[实时迁移](#request-a-live-migration-to-zrs)。
+只要不更改在主要区域中复制数据的方式，就可以使用 Azure 门户、PowerShell 或 Azure CLI 更改存储帐户的复制设置。 如果要从主要区域中的 LRS 迁移到主要区域中的 ZRS，则必须执行[手动迁移](#perform-a-manual-migration-to-zrs)或[实时迁移](#request-a-live-migration-to-zrs)。
 
 更改存储帐户的复制方式不会导致应用程序停机。
 
@@ -63,11 +62,11 @@ Azure 存储提供以下类型的复制：
 1. 选择**配置**设置。
 1. 更新**复制**设置。
 
-![演示如何在门户中更改复制选项的屏幕截图](media/redundancy-migration/change-replication-option.png)
+![屏幕截图，其中显示了如何在门户中更改复制选项](media/redundancy-migration/change-replication-option.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要通过 PowerShell 更改存储帐户的冗余选项，请调用[AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount)命令并指定`-SkuName`参数：
+若要通过 PowerShell 更改存储帐户的冗余选项，请调用 [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) 命令并指定 `-SkuName` 参数：
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -77,7 +76,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要通过 Azure CLI 更改存储帐户的冗余选项，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)命令并指定`--sku`参数：
+若要通过 Azure CLI 更改存储帐户的冗余选项，请调用 [az storage account update](/cli/azure/storage/account#az-storage-account-update) 命令并指定 `--sku` 参数：
 
 ```azurecli-interactive
 az storage account update \
@@ -122,16 +121,16 @@ ZRS 仅支持常规用途 v2 帐户，因此请确保在将实时迁移请求提
 
 1. 选择**新的支持请求**
 2. 根据帐户信息填写“基本信息”。**** 在“服务”部分，选择“存储帐户管理”以及要转换为 ZRS 的资源。********
-3. 选择“**下一步**”。
+3. 选择“下一步”。
 4. 在“问题”部分指定以下值：****
     - **严重性**：保留默认值。
     - **问题类型**：选择“数据迁移”。****
     - **类别**：选择**迁移到 ZRS**。
     - **标题**：键入描述性的标题，例如“ZRS 帐户迁移”。****
-    - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，我想要从\_ \_区域中的 [LRS，GRS] 迁移到 ZRS。
-5. 选择“**下一步**”。
+    - **详细信息**：在 "**详细**信息" 框中键入其他详细信息，例如，我想要从区域中的 [LRS，GRS] 迁移到 ZRS \_ \_ 。
+5. 选择“下一步”。
 6. 检查“联系信息”边栏选项卡中的联系信息是否正确。****
-7. 选择“创建”。 
+7. 选择“创建”。
 
 支持人员将与你取得联系，并提供所需的任何帮助。
 
@@ -151,7 +150,7 @@ ZRS 仅支持常规用途 v2 帐户，因此请确保在将实时迁移请求提
 
 ZRS 经典版以异步方式在一到两个区域中的数据中心之间复制数据。 除非 Microsoft 发起了到次要区域的故障转移，否则复制的数据可能不可用。 ZRS 经典版帐户无法与 LRS、GRS 或 RA-GRS 相互转换。 ZRS 经典版帐户也不支持指标或日志记录。
 
-ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的**块 Blob**。 有关存储帐户的详细信息，请参阅[Azure 存储帐户概述](storage-account-overview.md)。
+ZRS 经典版仅适用于常规用途 V1 (GPv1) 存储帐户中的**块 Blob**。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。
 
 若要手动将 ZRS 帐户数据迁移到 LRS、GRS、GRS 或 ZRS 经典帐户，请使用以下工具之一： AzCopy、Azure 存储资源管理器、PowerShell 或 Azure CLI。 此外，可以使用某个 Azure 存储客户端库生成自己的迁移解决方案。
 
@@ -181,11 +180,11 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 ---
 
-## <a name="costs-associated-with-changing-how-data-is-replicated"></a>与更改复制数据的方式相关的成本
+## <a name="costs-associated-with-changing-how-data-is-replicated"></a>与更改数据复制方式相关的成本
 
-与更改复制数据的方式相关的成本取决于您的转换路径。 从最高到最昂贵的 Azure 存储冗余产品的顺序，包括 LRS、ZRS、GRS、RA-GRS、GZRS 和 RA-GZRS。
+与更改数据复制方式相关的成本取决于你的转换路径。 从最高到最昂贵的 Azure 存储冗余产品的顺序，包括 LRS、ZRS、GRS、RA-GRS、GZRS 和 RA-GZRS。
 
-例如，从 LRS 转移到任何其他类型的复制会产生额外的费用，因为这是转移到更高级的冗余级别。** 迁移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。** 此费用是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付迁移费用。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
+例如，从 LRS 转移到任何其他类型的复制会产生额外的费用，因为这是转移到更高级的冗余级别。 迁移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。 此费用是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付迁移费用。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 如果将存储帐户从 GRS 迁移到 LRS，则不会产生额外的费用，但从次要位置复制的数据将被删除。
 
@@ -195,5 +194,5 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 ## <a name="see-also"></a>另请参阅
 
 - [Azure 存储冗余](storage-redundancy.md)
-- [检查存储帐户的 "上次同步时间" 属性](last-sync-time-get.md)
+- [检查存储帐户的“上次同步时间”属性](last-sync-time-get.md)
 - [使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)

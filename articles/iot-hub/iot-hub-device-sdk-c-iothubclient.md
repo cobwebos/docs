@@ -10,10 +10,9 @@ ms.date: 08/29/2017
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: 91527b5f2159a336e8339c6a128e8d61965292a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732604"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关 IoTHubClient 的详细信息
@@ -77,7 +76,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 " **LL** " api 不会创建后台线程。 必须调用一个新 API 明确地与 IoT 中心之间相互发送和接收数据。 以下示例就此进行演示。
 
-SDK 中包含的**iothub\_\_client sample\_http**应用程序演示了较低级别的 api。 在该示例中，使用如下代码将事件发送到 IoT 中心：
+SDK 中包含的**iothub \_ client \_ sample \_ http**应用程序演示了较低级别的 api。 在该示例中，使用如下代码将事件发送到 IoT 中心：
 
 ```C
 EVENT_INSTANCE message;
@@ -103,7 +102,7 @@ while (1)
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
-通常在一个循环中调用**\_IoTHubClient LL\_DoWork**的原因是每次调用它时，它都会将*一些*缓冲的事件发送到 IoT 中心，并检索设备的*下一个*排队消息。 每次调用都不能保证发送所有缓冲的事件或检索所有排队的消息。 如果想要发送缓冲区中的所有事件，并继续进行其他处理，可以使用如下代码来替换此循环：
+通常在一个循环中调用**IoTHubClient \_ LL \_ DoWork**的原因是每次调用它时，它都会将*一些*缓冲的事件发送到 IoT 中心，并检索设备的*下一个*排队消息。 每次调用都不能保证发送所有缓冲的事件或检索所有排队的消息。 如果想要发送缓冲区中的所有事件，并继续进行其他处理，可以使用如下代码来替换此循环：
 
 ```C
 IOTHUB_CLIENT_STATUS status;
@@ -197,7 +196,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 ## <a name="message-handling"></a>消息处理
 
-如前所述，当 IoT 中心发出的消息抵达时， **IoTHubClient** 库将调用注册的回调函数来做出响应。 有必要进一步了解此函数的一个返回参数。 下面是**iothub\_\_client sample\_http**示例应用程序中回调函数的摘录：
+如前所述，当 IoT 中心发出的消息抵达时， **IoTHubClient** 库将调用注册的回调函数来做出响应。 有必要进一步了解此函数的一个返回参数。 下面是**iothub \_ client \_ sample \_ http**示例应用程序中回调函数的摘录：
 
 ```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)

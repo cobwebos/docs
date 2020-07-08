@@ -9,10 +9,9 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869469"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>适用于 Windows VM 的 Azure 示例基础结构演练
@@ -23,7 +22,7 @@ Adventure Works Cycles 想要在 Azure 中生成一个在线商店应用程序�
 
 * 位于 Web 层中、用于运行客户端前端的两个 IIS 服务器
 * 位于应用程序层中、用于处理数据和订单的两个 IIS 服务器
-* 位于数据库层中、用于存储订单和产品数据、具有 AlwaysOn 可用性组的两个 Microsoft SQL Server 实例（两个 SQL Server 和一个多数节点见证）
+* 位于数据库层中、用于存储产品数据和订单、具有 AlwaysOn 可用性组的两个 Microsoft SQL Server 实例（两个 SQL Server 和一个多数节点见证）
 * 位于身份验证层中、用于客户帐户和供应商的两个 Active Directory 域控制器
 * 所有服务器皆位于两个子网中：
   * Web 服务器位于前端子网中 

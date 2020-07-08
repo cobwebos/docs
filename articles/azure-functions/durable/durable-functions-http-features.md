@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82800713"
 ---
 # <a name="http-features"></a>HTTP 功能
@@ -89,7 +88,7 @@ Retry-After: 10
 
 ### <a name="async-operation-tracking"></a>异步操作跟踪
 
-前面提到的 HTTP 响应旨在通过 Durable Functions 实现长时间运行的 HTTP 异步 API。 此模式有时称为“轮询使用者模式”。  客户端/服务器流工作方式如下：
+前面提到的 HTTP 响应旨在通过 Durable Functions 实现长时间运行的 HTTP 异步 API。 此模式有时称为“轮询使用者模式”。 客户端/服务器流工作方式如下：
 
 1. 客户端发出 HTTP 请求，以启动长时间运行的进程，例如业务流程协调程序函数。
 1. 目标 HTTP 触发器返回 HTTP 202 响应，其中包含值为“statusQueryGetUri”的 Location 标头。
@@ -258,7 +257,7 @@ module.exports = df.orchestrator(function*(context) {
 
 可以使用 [Azure Functions .NET 依赖项注入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)来自定义业务流程内部 HTTP 客户端的行为。 此功能可用于做出轻微的行为更改。 使用此功能还可以通过注入 mock 对象，来对 HTTP 客户端进行单元测试。
 
-下面的示例演示如何使用依赖关系注入禁用调用外部 HTTP 终结点的业务流程协调程序函数的 TLS/SSL 证书验证。
+以下示例演示如何使用依赖项注入为调用外部 HTTP 终结点的业务流程协调程序函数禁用 TLS/SSL 证书验证。
 
 ```csharp
 public class Startup : FunctionsStartup

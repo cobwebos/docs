@@ -9,10 +9,9 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770084"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教程：使用 Azure IoT 中心消息根据
@@ -36,10 +35,10 @@ ms.locfileid: "81770084"
 > * 运行模拟 IoT 设备向中心发送消息的应用。
 > * 查看结果，并验证消息根据是否按预期方式工作。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 安装[Visual Studio](https://www.visualstudio.com/)。
+* 安装 [Visual Studio](https://www.visualstudio.com/)。
 
 * 确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -51,7 +50,7 @@ ms.locfileid: "81770084"
 从 GitHub 下载[IoT c # 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)并将其解压缩。 此存储库包含多个应用程序、脚本和资源管理器模板。 要在本教程中使用的方法如下：
 
 * 对于手动方法，有一个用于创建资源的 CLI 脚本。 此脚本位于/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli. azcli 中。 此脚本将创建资源并配置消息路由。 运行此脚本后，请使用[Azure 门户](https://portal.azure.com)手动创建消息根据。
-* 对于自动化方法，有一个 Azure 资源管理器模板。 该模板位于/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments。 此模板创建资源，配置消息路由，然后配置消息根据。
+* 对于自动化方法，有一个 Azure 资源管理器模板。 该模板位于中的/azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.js上。 此模板创建资源，配置消息路由，然后配置消息根据。
 * 你使用的第三个应用程序是设备模拟应用，用于向 IoT 中心发送消息并测试消息根据。
 
 ## <a name="manually-set-up-and-configure-by-using-the-azure-cli"></a>使用 Azure CLI 手动设置和配置
@@ -77,7 +76,7 @@ ms.locfileid: "81770084"
 
 下面是脚本创建的资源。 "扩充"*是指资源*适用于带有根据的消息。 "*原始*" 表示资源适用于未得到丰富的消息。
 
-| 名称 | 值 |
+| “属性” | “值” |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | 容器名称 | 原配  |
@@ -259,7 +258,7 @@ az iot hub route create \
 
 2. 将这些值添加到 ContosoStorageEndpointEnriched 终结点的列表。
 
-   | 密钥 | “值” | 终结点（下拉列表） |
+   | 键 | “值” | 终结点（下拉列表） |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | Msds-devicelocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -268,7 +267,7 @@ az iot hub route create \
    > [!NOTE]
    > 如果设备没有克隆，则在此处输入的值将被标记为消息根据中的值的字符串。 若要查看设备克隆信息，请在门户中转到中心，并选择 " **IoT 设备**"。 选择设备，然后选择页面顶部的 "**设备**克隆"。
    >
-   > 您可以编辑克隆信息以添加标记，如位置，并将其设置为特定值。 有关详细信息，请参阅[了解和使用 IoT 中心中的设备孪生](iot-hub-devguide-device-twins.md)。
+   > 您可以编辑克隆信息以添加标记，如位置，并将其设置为特定值。 有关详细信息，请参阅[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。
 
 3. 完成后，窗格应如下图所示：
 
@@ -287,7 +286,7 @@ az iot hub route create \
 
 1. 在 "**自定义部署**" 窗格中，选择 **"在编辑器中生成自己的模板"**。
 
-1. 在**编辑模板**窗格中，选择 "**加载文件**"。 出现 Windows 资源管理器。 在 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources**中找到解压缩存储库文件中的**template_messageenrichments**文件。 
+1. 在**编辑模板**窗格中，选择 "**加载文件**"。 出现 Windows 资源管理器。 在 **/iot-hub/Tutorials/Routing/SimulatedDevice/resources**中的解压缩存储库文件中查找文件中的**template_messageenrichments.js** 。 
 
    ![从本地计算机中选择模板](./media/tutorial-message-enrichments/template-select.png)
 
@@ -297,7 +296,7 @@ az iot hub route create \
 
    下面是通过加载模板创建的资源。 "扩充"**是指资源**适用于带有根据的消息。 "**原始**" 表示资源适用于未得到丰富的消息。 这些值与 Azure CLI 脚本中使用的值相同。
 
-   | 名称 | 值 |
+   | “属性” | 值 |
    |-----|-----|
    | resourceGroup | ContosoResourcesMsgEn |
    | 容器名称 | 原配  |
@@ -310,7 +309,7 @@ az iot hub route create \
    | 路由名称 1 | ContosoStorageRouteOriginal |
    | 路由名称 2 | ContosoStorageRouteEnriched |
 
-1. 选择“保存”  。 此时将显示 "**自定义部署**" 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 "**资源组**"。 请创建一个新的，或从下拉列表中选择一个。
+1. 选择“保存”。 此时将显示 "**自定义部署**" 窗格，并显示模板使用的所有参数。 需要设置的唯一字段是 "**资源组**"。 请创建一个新的，或从下拉列表中选择一个。
 
    下面是 "**自定义部署**" 窗格的上半部分。 你可以查看在何处填充资源组。
 
@@ -330,13 +329,13 @@ az iot hub route create \
 
 现在，已为终结点配置消息根据，运行模拟设备应用程序将消息发送到 IoT 中心。 中心设置完成以下任务的设置：
 
-* 路由到存储终结点 ContosoStorageEndpointOriginal 的消息将不会被丰富，并将存储在`original`存储容器中。
+* 路由到存储终结点 ContosoStorageEndpointOriginal 的消息将不会被丰富，并将存储在存储容器中 `original` 。
 
 * 路由到存储终结点 ContosoStorageEndpointEnriched 的消息将会扩充，并存储在存储容器 `enriched` 中。
 
 模拟设备应用程序是已解压缩的下载内容中的应用程序之一。 应用程序会为[路由教程](tutorial-routing.md)中的每个不同消息路由方法发送消息，其中包括 Azure 存储。
 
-双击解决方案文件**IoT_SimulatedDevice .sln** ，在 Visual Studio 中打开代码，并打开 " **Program.cs**"。 将标记 `{your hub name}` 替换为 IoT 中心名称。 IoT 中心主机名的格式为 **{中心名称}.azure-devices.net**。 本教程中的中心主机名为 ContosoTestHubMsgEn.azure-devices.net。 接下来，请在运行脚本来创建标记`{your device key}`的资源时，替换之前保存的设备密钥。
+双击解决方案文件**IoT_SimulatedDevice .sln** ，在 Visual Studio 中打开代码，并打开 " **Program.cs**"。 将标记 `{your hub name}` 替换为 IoT 中心名称。 IoT 中心主机名的格式为 **{中心名称}.azure-devices.net**。 本教程中的中心主机名为 ContosoTestHubMsgEn.azure-devices.net。 接下来，请在运行脚本来创建标记的资源时，替换之前保存的设备密钥 `{your device key}` 。
 
 如果没有设备密钥，可以从门户中检索。 登录后，请前往 "**资源组**"，选择资源组，然后选择 IoT 中心。 在 " **IoT 设备**" 下查看测试设备，并选择设备。 选择“主密钥”旁边的复制图标，将主密钥复制到剪贴板。****
 
@@ -352,7 +351,7 @@ az iot hub route create \
 
 运行控制台应用程序几分钟。 发送的消息将显示在应用程序的控制台屏幕上。
 
-此应用每隔一秒发送一条新的设备到云消息到 IoT 中心。 此消息包含一个 JSON 序列化对象，其中具有设备 ID、温度、湿度和消息级别（级别默认为 `normal`）。 它会随机分配`critical`或`storage`的级别，这将导致消息路由到存储帐户或默认终结点。 发送到存储帐户中 **enriched** 容器的消息将会扩充。
+此应用每隔一秒发送一条新的设备到云消息到 IoT 中心。 此消息包含一个 JSON 序列化对象，其中具有设备 ID、温度、湿度和消息级别（级别默认为 `normal`）。 它会随机分配或的 `critical` 级别 `storage` ，这将导致消息路由到存储帐户或默认终结点。 发送到存储帐户中 **enriched** 容器的消息将会扩充。
 
 发送多个存储消息后，查看数据。
 
@@ -386,7 +385,7 @@ az iot hub route create \
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 请记住`$resourceGroup` ，本教程开始时设置为**ContosoResourcesMsgEn** 。
+若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 请记住， `$resourceGroup` 本教程开始时设置为**ContosoResourcesMsgEn** 。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81870477"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>从 CloudSimple 门户升级私有云 vCenter 权限
@@ -31,7 +30,7 @@ ms.locfileid: "81870477"
 
 ## <a name="escalate-privileges"></a>提升特权
 
-1. 访问[CloudSimple 门户](access-cloudsimple-portal.md)。
+1. 访问 [CloudSimple 门户](access-cloudsimple-portal.md)。
 
 2. 打开 "**资源**" 页，选择要提升其权限的私有云。
 
@@ -39,7 +38,7 @@ ms.locfileid: "81870477"
 
     ![更改 vSphere 权限](media/escalate-private-cloud-privilege.png)
 
-4. 选择 vSphere 用户类型。  只能`CloudOwner@cloudsimple.local`升级本地用户。
+4. 选择 vSphere 用户类型。  只能 `CloudOwner@cloudsimple.local` 升级本地用户。
 
 5. 从下拉项中选择 "提升时间间隔"。 选择将允许您完成任务的最短时间。
 
@@ -47,7 +46,7 @@ ms.locfileid: "81870477"
 
     ![提升权限对话框](media/escalate-private-cloud-privilege-dialog.png)
 
-7. 单击" **确定**"。
+7. 单击“确定”。
 
 8. 升级过程可能需要几分钟的时间。 完成后，请单击“确定”****。
 
@@ -63,7 +62,7 @@ ms.locfileid: "81870477"
 
 如果需要额外的时间来完成任务，则可以扩展权限提升期限。  选择允许你完成管理任务的其他升级时间间隔。
 
-1. 在 CloudSimple 门户中的 "**资源** > "**私有云**上，选择要为其扩展权限升级的私有云。
+1. 在 CloudSimple 门户中的 "**资源**"  >  **私有云**上，选择要为其扩展权限升级的私有云。
 
 2. 在 "摘要" 选项卡的底部附近，单击 "**扩展权限提升**"。
 
@@ -77,11 +76,11 @@ ms.locfileid: "81870477"
 
 完成管理任务后，应取消对权限的升级。  
 
-1. 在 CloudSimple 门户中的 "**资源** > "**私有云**上，选择要为其解除升级权限的私有云。
+1. 在 CloudSimple 门户中的 "**资源**"  >  **私有云**上，选择要为其解除升级权限的私有云。
 
 2. 单击 "**取消升级**"。
 
-3. 单击" **确定**"。
+3. 单击“确定”。
 
 > [!IMPORTANT]
 > 若要避免任何错误，请注销 vCenter，并在解除升级的权限后再次登录。

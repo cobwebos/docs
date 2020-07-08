@@ -1,6 +1,6 @@
 ---
 title: 将 HBase 群集迁移到新版本 - Azure HDInsight
-description: 如何在 Azure HDInsight 中将 Apache HBase 群集迁移到较新版本。
+description: 如何将 Apache HBase 群集迁移到 Azure HDInsight 中的较新版本。
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792626"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
@@ -176,13 +175,13 @@ ms.locfileid: "82792626"
 
 1. 为确保刷新 memstore 中的所有最新数据，请再次运行前面的脚本。
 
-1. 登录到旧群集上的[Apache Ambari](https://ambari.apache.org/) （`https://OLDCLUSTERNAME.azurehdidnsight.net`），并停止 HBase 服务。 当系统提示你确认想要停止这些服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
+1. 登录到旧群集上的[Apache Ambari](https://ambari.apache.org/) （ `https://OLDCLUSTERNAME.azurehdidnsight.net` ），并停止 HBase 服务。 当系统提示你确认想要停止这些服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
 
     ![在 Ambari 中的“服务操作”下，单击“服务”>“HBase”>“停止”](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![选中“为 HBase 启用维护模式”复选框，然后确认](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-1. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。 
+1. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。****
 
     ![在 Ambari 中单击“服务”>“HDFS”>“配置”>“停止”](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
@@ -195,13 +194,13 @@ ms.locfileid: "82792626"
     ![在 Ambari 中更改 HBase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
 
 1. 若要将 HDInsight 3.6 升级到 4.0，请按以下步骤操作，否则请跳到步骤 10：
-    1. 通过选择 "**服务** > " "**全部重启**"，重新启动 Ambari 中所有必需的服务。
+    1. 选择“服务”**** > ****“重启所有必需服务”，以便重启 Ambari 中的所有必需服务。
     1. 停止 HBase 服务。
     1. 通过 SSH 连接到 Zookeeper 节点，执行 [zkCli](https://github.com/go-zkcli/zkcli) 命令 `rmr /hbase-unsecure`，以便从 Zookeeper 中删除 HBase 根 znode。
     1. 重启 HBase。
 
 1. 若要升级到 4.0 之外的任何其他 HDInsight 版本，请执行以下步骤：
-    1. 保存更改。
+    1. 保存所做更改。
     1. 根据 Ambari 中的指示重启全部所需的服务。
 
 1. 将应用程序指向新群集。

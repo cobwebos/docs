@@ -1,5 +1,5 @@
 ---
-title: 在 Azure HDInsight 中通过 Apache Ambari 优化群集
+title: 在 Azure HDInsight 中使用 Apache Ambari 优化群集
 description: 使用 Apache Ambari web UI 配置和优化 Azure HDInsight 群集。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,14 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
 ms.openlocfilehash: a819c3a57efdc0ae87cf969fd7471818c51895f6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793153"
 ---
-# <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Apache Ambari 优化群集
+# <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Apache Ambari 优化群集
 
-HDInsight 为大规模数据处理应用程序提供 Apache Hadoop 群集。 对这些复杂的多节点群集进行管理、监视和优化可能会很困难。 Apache Ambari 是一种用于管理和监视 HDInsight Linux 群集的 web 界面。
+HDInsight 为大规模数据处理应用程序提供 Apache Hadoop 群集。 对这些复杂的多节点群集进行管理、监视和优化可能充满挑战。 Apache Ambari 是可用于管理和监视 HDInsight Linux 群集的 Web 界面。
 
 有关使用 Ambari Web UI 的简介，请参阅[使用 Apache Ambari Web UI 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)
 
@@ -25,7 +24,7 @@ HDInsight 为大规模数据处理应用程序提供 Apache Hadoop 群集。 对
 
 ![已显示 Apache Ambari 用户仪表板](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
-Ambari web UI 用于管理主机、服务、警报、配置和视图。 Ambari 不能用于创建 HDInsight 群集或升级服务。 此外，也无法管理堆栈和版本、解除或重用主机或将服务添加到群集。
+Ambari Web UI 可用于管理主机、服务、警报、配置和视图。 Ambari 不能用于创建 HDInsight 群集或升级服务。 它也无法管理堆栈和版本、停用或重新启用主机，或向群集添加服务。
 
 ## <a name="manage-your-clusters-configuration"></a>管理群集的配置
 
@@ -35,11 +34,11 @@ Ambari web UI 用于管理主机、服务、警报、配置和视图。 Ambari �
 
 ## <a name="modify-namenode-java-heap-size"></a>修改 NameNode Java 堆大小
 
-NameNode Java 堆大小取决于许多因素，例如群集上的负载。 还可以是文件数和块数。 默认大小 1 GB 能够很好地满足大多数群集的需要，不过，某些工作负荷可能需要更多或更少的内存。
+NameNode Java 堆大小取决于许多因素，例如群集上的负载。 此外，还有文件数和块数。 默认大小 1 GB 能够很好地满足大多数群集的需要，不过，某些工作负荷可能需要更多或更少的内存。
 
 修改 NameNode Java 堆大小：
 
-1. 从“服务”边栏中选择“HDFS”，然后导航到“配置”选项卡。********
+1. 从“服务”边栏中选择“HDFS”，然后导航到“配置”选项卡。**** ****
 
     ![Apache Ambari HDFS 配置](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 

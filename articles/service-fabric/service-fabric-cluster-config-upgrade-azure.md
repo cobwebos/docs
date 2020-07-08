@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82793068"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>在 Azure 中升级群集的配置 
@@ -27,9 +26,9 @@ ms.locfileid: "82793068"
 可以通过 JSON 资源管理器模板配置 Azure 群集。 若要了解有关不同设置的详细信息，请参阅[群集的配置设置](service-fabric-cluster-fabric-settings.md)。 例如，下面的步骤演示如何使用 Azure 资源浏览器将新设置 MaxDiskQuotaInMB 添加到“诊断”部分****。
 
 1. 转到 https://resources.azure.com
-2. 若要导航**到订阅，请展开** -> **\<订阅>**  ->  **resourceGroups** -> **\<资源组中的资源组>**  -> **提供程序** -> **Microsoft. ServiceFabric** -> **群集** -> **\<群集名称>**
+2. 通过展开**订阅**  ->  **\<Your Subscription>**  ->  **resourceGroups**  ->  **\<Your Resource Group>**  ->  **提供程序**  ->  **ServiceFabric**  ->  **群集**导航到订阅 -> **\<Your Cluster Name>**
 3. 在右上角，选择 "**读/写"。**
-4. 选择 "**编辑**" `fabricSettings` ，更新 JSON 元素并添加新元素：
+4. 选择 "**编辑**"，更新 `fabricSettings` JSON 元素并添加新元素：
 
 ```json
       {

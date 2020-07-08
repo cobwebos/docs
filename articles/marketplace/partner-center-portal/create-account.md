@@ -8,10 +8,9 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 04/14/2020
 ms.openlocfilehash: 2a1a6963a540f3e7384f73067af336b53b29134d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856689"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>在合作伙伴中心创建商业 marketplace 帐户
@@ -21,7 +20,7 @@ ms.locfileid: "82856689"
 >[!IMPORTANT]
 >如果[云合作伙伴门户](https://cloudpartner.azure.com)中有一个已移动到合作伙伴中心的帐户，则无需创建新帐户。 有关详细信息，请参阅[适用于从云合作伙伴门户移动的发布服务器](#for-publishers-who-are-moving-from-the-cloud-partner-portal)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 若要在合作伙伴中心创建帐户，请确保：
 
@@ -75,7 +74,7 @@ ms.locfileid: "82856689"
 
     注册后，你将转到 "商业市场概述" 页。 "商用 marketplace" 帐户将显示在左窗格中。 
     
-1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置** > " "**合作伙伴设置** > **程序**"。
+1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置**" "  >  **合作伙伴设置**  >  **程序**"。
 
 你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -112,7 +111,7 @@ ms.locfileid: "82856689"
 >[!NOTE]
 > 你必须具有**帐户管理员**或**全局管理员**角色才能登录到 Microsoft 合作伙伴网络。
 
-1. 从["合作伙伴中心](https://partner.microsoft.com/)"，选择 "**设置** > " "**合作伙伴设置** > " "**程序** > " "**入门**"
+1. 从 "[合作伙伴中心](https://partner.microsoft.com/)"，选择 "**设置**" "  >  **合作伙伴设置**" "  >  **程序**" "  >  **入门**"
 
    Microsoft 合作伙伴网络检测订阅，并显示 "**发布服务器配置文件**" 窗格。
    
@@ -124,7 +123,7 @@ ms.locfileid: "82856689"
 
     注册后，你将转到 "商业市场概述" 页。 "商用 marketplace" 帐户将显示在左窗格中。 
     
-1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置** > " "**合作伙伴设置** > **程序**"。
+1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置**" "  >  **合作伙伴设置**  >  **程序**"。
 
 你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -143,7 +142,7 @@ ms.locfileid: "82856689"
 
 登录到合作伙伴中心后，请执行以下操作来完成帐户设置：
 
-1. 在合作伙伴中心中，选择 "**设置** > " "**开发人员设置** > " "**程序** > " "**入门**"，然后输入工作电子邮件地址。
+1. 在合作伙伴中心中，选择 "**设置**  >  " "**开发人员设置**  >  **Programs**  >  " "程序" "**入门**"，然后输入工作电子邮件地址。
 1. 完成**发布者配置文件**页上的详细信息。
 1. 阅读[Microsoft 发行者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中的条款和条件，然后选择 "**接受并继续**" 完成注册。
 
@@ -152,7 +151,7 @@ ms.locfileid: "82856689"
 
     注册后，你将转到 "商业市场概述" 页。 "商用 marketplace" 帐户将显示在左窗格中。 
     
-1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置** > " "**合作伙伴设置** > **程序**"。
+1. 若要验证 "商用 marketplace" 帐户是否列出为 "已注册"，请选择 "**设置**" "  >  **合作伙伴设置**  >  **程序**"。
 
 你现在已在合作伙伴中心创建了一个商业应用商店帐户。 有关详细信息，请参阅[商业市场概述](./commercial-marketplace-overview.md)。 有关添加发布服务器的帮助，请参阅[将新发布服务器添加到商用 marketplace](#add-new-publishers-to-the-commercial-marketplace-program)。
 
@@ -168,10 +167,10 @@ ms.locfileid: "82856689"
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>向商用 marketplace 计划添加新发布者
 
-组织可以有多个发布者与一个商业 marketplace 帐户关联。 现有用户可以通过选择 "**帐户设置** > " "**发布** > 者" "**添加发布者**"，在登录合作伙伴中心后添加更多的发布者。
+组织可以有多个发布者与一个商业 marketplace 帐户关联。 现有用户可以通过选择 "**帐户设置**" "发布者" "  >  **Publishers**  >  **添加发布者**"，在登录合作伙伴中心后添加更多的发布者。
 
 >[!NOTE]
->在添加新发布服务器之前，请先登录到合作伙伴中心，然后选择 "**帐户设置** > " "**发布**者"，查看现有发布者列表。
+>在添加新发布服务器之前，请先登录到合作伙伴中心，然后选择 "**帐户设置**" "发布者"，查看现有发布者列表  >  **Publishers**。
 
 同一 Azure Active Directory 租户中的其他用户可以通过执行以下操作来添加新的发布服务器：
 
@@ -189,4 +188,4 @@ ms.locfileid: "82856689"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在合作伙伴中心管理你的商业应用商店帐户](./manage-account.md)
+- [在合作伙伴中心管理商业市场帐户](./manage-account.md)

@@ -10,10 +10,9 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82884340"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
@@ -36,8 +35,8 @@ ms.locfileid: "82884340"
 
 若要启用具有模板的 blob 版本控制，请创建一个模板，并将**IsVersioningEnabled**属性**设置为 true**。 以下步骤介绍如何在 Azure 门户中创建模板。
 
-1. 在 Azure 门户中，选择“创建资源”。 
-1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
+1. 在 Azure 门户中，选择“创建资源”。
+1. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。 
 1. 选择 "**模板部署**"，选择 "**创建**"，然后选择 **"在编辑器中生成自己的模板"**。
 1. 在模板编辑器中，粘贴以下 JSON。 将 `<accountName>` 占位符替换为存储帐户的名称。
 1. 保存模板。
@@ -154,5 +153,5 @@ static void PrintMetadata(Response<BlobProperties> propertiesResponse)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Blob 版本控制（预览）](versioning-overview.md)
+- [Blob 版本控制（预览版）](versioning-overview.md)
 - [Azure 存储 Blob 的软删除](soft-delete-overview.md)

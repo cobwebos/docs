@@ -18,7 +18,6 @@ ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
 ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/07/2020
 ms.locfileid: "82891199"

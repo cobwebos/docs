@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
 ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82857639"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 进行转换
@@ -34,9 +33,9 @@ ms.locfileid: "82857639"
 
 ![管道的关系图](media/solution-template-Databricks-notebook/pipeline-example.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- 一个 Azure Blob 存储帐户，其中有一个`sinkdata`名为的容器，用作接收器。
+- 一个 Azure Blob 存储帐户，其中有一个名 `sinkdata` 为的容器，用作接收器。
 
   记下 "存储帐户名称"、"容器名称" 和 "访问密钥"。 稍后，模板中将需要这些值。
 
@@ -47,8 +46,8 @@ ms.locfileid: "82857639"
 将**转换**笔记本导入到 Databricks 工作区：
 
 1. 登录到 Azure Databricks 工作区，然后选择 "**导入**"。
-       ![用于导入工作区](media/solution-template-Databricks-notebook/import-notebook.png)的菜单命令你的工作区路径可以不同于显示的项，但请记住它。
-1. 选择 "**导入源： URL**"。 在文本框中，输入`https://adflabstaging1.blob.core.windows.net/share/Transformations.html`。
+       ![用于导入工作区的菜单命令 ](media/solution-template-Databricks-notebook/import-notebook.png) 你的工作区路径可以不同于显示的项，但请记住它。
+1. 选择 "**导入源： URL**"。 在文本框中，输入 `https://adflabstaging1.blob.core.windows.net/share/Transformations.html` 。
 
    ![导入笔记本的选择](media/solution-template-Databricks-notebook/import-from-url.png)
 
@@ -56,8 +55,8 @@ ms.locfileid: "82857639"
 
    在导入的笔记本中，按照以下代码片段所示，中转到**命令 5** 。
 
-   - 将`<storage name>`和`<access key>`替换为你自己的存储连接信息。
-   - 使用具有`sinkdata`容器的存储帐户。
+   - `<storage name>`将和替换 `<access key>` 为你自己的存储连接信息。
+   - 使用具有容器的存储帐户 `sinkdata` 。
 
     ```python
     # Supply storageName and accessKey values  
@@ -90,7 +89,7 @@ ms.locfileid: "82857639"
 
     !["生成" 按钮](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   *保存访问令牌*供以后用于创建 Databricks 链接服务。 访问令牌类似于`dapi32db32cbb4w6eee18b7d87e45exxxxxx`。
+   *保存访问令牌*供以后用于创建 Databricks 链接服务。 访问令牌类似于 `dapi32db32cbb4w6eee18b7d87e45exxxxxx` 。
 
 ## <a name="how-to-use-this-template"></a>如何使用此模板
 
@@ -118,7 +117,7 @@ ms.locfileid: "82857639"
 
         ![用于连接到群集的选项](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-1. 选择“使用此模板”  。 你将看到已创建的管道。
+1. 选择“使用此模板”。 你将看到已创建的管道。
 
     ![创建管道](media/solution-template-Databricks-notebook/new-pipeline.png)
 
@@ -126,19 +125,19 @@ ms.locfileid: "82857639"
 
 在新管道中，大多数设置都是用默认值自动配置的。 查看管道的配置，并进行任何必要的更改。
 
-1. 在 "**验证**活动**可用性" 标志**中，验证 "源**数据集**" 值`SourceAvailabilityDataset`是否设置为之前创建的。
+1. 在 "**验证**活动**可用性" 标志**中，验证 "源**数据集**" 值是否设置为 `SourceAvailabilityDataset` 之前创建的。
 
    ![源数据集值](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1. 在 "**将数据**活动**文件复制到 blob**" 中，检查 "**源**" 和 "**接收器**" 选项卡。 如有必要，请更改设置。
 
-   - **源**选项![卡源选项卡](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **源**选项卡 ![ 源选项卡](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **接收器**选项![卡接收器选项卡](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **接收器**选项卡 ![ 接收器选项卡](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1. 在**笔记本**活动**转换**中，根据需要查看并更新路径和设置。
 
-   应使用上一步中的值预填充**Databricks 链接服务**，如下所示： ![Databricks 链接服务的填充值](media/solution-template-Databricks-notebook/notebook-activity.png)
+   应使用上一步中的值预填充**Databricks 链接服务**，如下所示： ![ Databricks 链接服务的填充值](media/solution-template-Databricks-notebook/notebook-activity.png)
 
    检查**笔记本**设置：
   
@@ -150,7 +149,7 @@ ms.locfileid: "82857639"
 
        ![基本参数](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. 验证**管道参数**是否与以下屏幕截图中显示的内容匹配： ![管道参数](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. 验证**管道参数**是否与以下屏幕截图中显示的内容匹配： ![ 管道参数](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. 连接到数据集。
 
@@ -167,9 +166,9 @@ ms.locfileid: "82857639"
 
    - **DestinationFilesDataset** -将数据复制到接收器目标位置。 使用以下值：
 
-     - **Linked service** - `sinkBlob_LS`在上一步中创建的链接服务。
+     - **Linked service**  -  `sinkBlob_LS` 在上一步中创建的链接服务。
 
-     - **文件路径** - `sinkdata/staged_sink`。
+     - **文件路径**  -  `sinkdata/staged_sink` 。
 
        ![DestinationFilesDataset 的链接服务和文件路径的选择](media/solution-template-Databricks-notebook/destination-dataset.png)
 

@@ -11,10 +11,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: e9a43f4a7da39869e002e2da9fb9638381e57cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82856035"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
@@ -27,11 +26,11 @@ ms.locfileid: "82856035"
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 表
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:---|
 | TimeGenerated | 生成日志项目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
+| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
 | JobId | 已提交作业的 ID |
 | ExperimentId | 试验的 ID |
 | ExperimentName | 试验的名称 |
@@ -56,11 +55,11 @@ ms.locfileid: "82856035"
 
 ### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 表
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志项目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
+| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ProvisioningState | 群集的预配状态 |
 | ClusterName | 群集的名称 |
 | ClusterType | 群集的类型 |
@@ -99,11 +98,11 @@ ms.locfileid: "82856035"
 
 ### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents 表
 
-| properties | 说明 |
+| 属性 | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志项目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
-| 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
+| Category | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ClusterName | 群集的名称 |
 | NodeId | 创建的群集节点的 ID |
 | VmSize | 节点的 VM 大小 |
@@ -122,39 +121,39 @@ ms.locfileid: "82856035"
 | StartTaskEndTime | 向节点分配任务并结束任务的时间 |
 | TotalE2ETimeInSeconds | 总时间节点处于活动状态 |
 
-### <a name="metrics"></a>度量值
+### <a name="metrics"></a>指标
 
-下表列出了为 Azure 机器学习收集的平台指标，所有度量值都存储在“Azure 机器学习工作区”命名空间中  。
+下表列出了为 Azure 机器学习收集的平台指标，所有度量值都存储在“Azure 机器学习工作区”命名空间中。
 
 **Model**
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
-| 模型部署失败 | Count | 失败的模型部署数。 |
-| 模型部署开始 | Count | 开始的模型部署数。 |
-| 模型部署成功 | Count | 成功的模型部署数。 |
-| 模型注册失败 | Count | 失败的模型注册数。 |
-| 模型注册成功 | Count | 成功的模型注册数。 |
+| 模型部署失败 | 计数 | 失败的模型部署数。 |
+| 模型部署开始 | 计数 | 开始的模型部署数。 |
+| 模型部署成功 | 计数 | 成功的模型部署数。 |
+| 模型注册失败 | 计数 | 失败的模型注册数。 |
+| 模型注册成功 | 计数 | 成功的模型注册数。 |
 
 **配额**
 
 配额信息仅用于 Azure 机器学习计算。
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
-| 活动核心数 | Count | 活动计算核心的数量。 |
-| 活动节点数 | Count | 活动节点的数量。 |
-| 空闲核心数 | Count | 空闲计算核心的数量。 |
-| 空闲节点数 | Count | 空闲计算节点的数量。 |
-| 正在离开核心数 | Count | 正在离开核心的数量。 |
-| 正在离开节点数 | Count | 正在离开节点的数量。 |
-| 已占用核心数 | Count | 已占用核心的数量。 |
-| 已占用节点 | Count | 已占用节点的数量。 |
+| 活动核心数 | 计数 | 活动计算核心的数量。 |
+| 活动节点数 | 计数 | 活动节点的数量。 |
+| 空闲核心数 | 计数 | 空闲计算核心的数量。 |
+| 空闲节点数 | 计数 | 空闲计算节点的数量。 |
+| 正在离开核心数 | 计数 | 正在离开核心的数量。 |
+| 正在离开节点数 | 计数 | 正在离开节点的数量。 |
+| 已占用核心数 | 计数 | 已占用核心的数量。 |
+| 已占用节点 | 计数 | 已占用节点的数量。 |
 | 配额使用率百分比 | 百分比 | 已使用配额的百分比。 |
-| 核心总数 | Count | 核心总数。 |
-| 节点总数 | Count | 节点总数。 |
-| 不可用核心数 | Count | 不可用核心的数量。 |
-| 不可用节点数 | Count | 不可用节点的数量。 |
+| 核心总数 | 计数 | 核心总数。 |
+| 节点总数 | 计数 | 节点总数。 |
+| 不可用核心数 | 计数 | 不可用核心的数量。 |
+| 不可用节点数 | 计数 | 不可用节点的数量。 |
 
 下面是可用于筛选配额指标的维度：
 
@@ -166,25 +165,25 @@ ms.locfileid: "82856035"
 
 **资源**
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
 | CpuUtilization | 百分比 | 在运行/作业过程中，给定节点使用的 CPU 百分比。 仅当作业在节点上运行时，才会发布此指标。 一个作业可以使用一个或多个节点。 此指标按节点发布。 |
-| GpuUtilization | 百分比 | 在运行/作业期间，给定节点使用的 GPU 百分比。 一个节点可以有一个或多个 Gpu。 每个节点每个 GPU 发布此指标。 |
+| GpuUtilization | 百分比 | 在运行/作业过程中，给定节点使用的 GPU 百分比。 一个节点可以有一个或多个 GPU。 此指标按每个节点的 GPU 发布。 |
 
-下面是可用于筛选资源度量值的维度：
+下面是可用于筛选资源指标的维度：
 
 | 维度 | 说明 |
 | ----- | ----- |
 | CreatedTime | |
-| DeviceId | 设备的 ID （GPU）。 仅适用于 GpuUtilization。 |
-| NodeId | 作业运行所在的节点的 ID。 |
+| DeviceId | 设备 (GPU) 的 ID。 仅适用于 GpuUtilization。 |
+| NodeId | 作业运行时所在的已创建节点的 ID。 |
 | RunId | 运行/作业的 ID。 |
 
-**用**
+**Run**
 
 有关训练运行的信息。
 
-| 指标 | 单位 | 说明 |
+| 指标 | 计价单位 | 说明 |
 | ----- | ----- | ----- |
 | 已完成的运行数 | 计数 | 已完成运行的数量。 |
 | 失败运行数 | 计数 | 失败运行的数量。 |
@@ -201,7 +200,7 @@ ms.locfileid: "82856035"
 
 RunType 维度的有效值为：
 
-| 值 | 说明 |
+| Value | 说明 |
 | ----- | ----- |
 | 试验 | 非管道运行。 |
 | PipelineRun | 管道运行，它是 StepRun 的父级。 |

@@ -10,15 +10,14 @@ ms.date: 04/27/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: c6bc4fea05f79c446f318eb4cbc86beb160ea108
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82797001"
 ---
 # <a name="list-update-and-delete-image-resources-using-powershell"></a>使用 PowerShell 列出、更新和删除映像资源 
 
-你可以使用 Azure PowerShell 管理共享的映像库资源。
+可以使用 Azure PowerShell 管理共享映像库资源。
 
 [!INCLUDE [virtual-machines-common-gallery-list-ps.md](../../includes/virtual-machines-common-gallery-list-ps.md)]
 
