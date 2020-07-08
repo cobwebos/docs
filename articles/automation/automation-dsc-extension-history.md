@@ -11,7 +11,6 @@ ms.subservice: dsc
 ms.topic: conceptual
 ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83836917"

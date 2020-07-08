@@ -5,12 +5,11 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述如何为 Azure Dev Spaces 设置 Azure Kubernetes 服务群集
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 6b158ca7f425e8b7c492c27521dba588a508b534
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873547"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83995881"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何为 Azure Dev Spaces 设置群集
 
@@ -18,7 +17,7 @@ Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kuber
 
 ## <a name="prepare-your-aks-cluster"></a>准备 AKS 群集
 
-若要为 Dev Spaces 准备 AKS 群集，请验证 AKS 群集位于 [Azure Dev Spaces 支持的][supported-regions]区域中，并且你正在运行 Kubernetes 1.10.3 或更高版本。 若要在 Azure 门户中的群集上启用 Azure Dev Spaces，请导航到群集，单击“Dev Spaces”，将“使用 Dev Spaces”更改为“是”，然后单击“保存”   。 还可以通过运行 `az aks use-dev-spaces` 从 Azure CLI 启用 Azure Dev Spaces。
+若要为 Dev Spaces 准备 AKS 群集，请验证 AKS 群集位于 [Azure Dev Spaces 支持的][supported-regions]区域中，并且你正在运行 Kubernetes 1.10.3 或更高版本。 可以通过运行从 Azure CLI 启用 Azure Dev Spaces `az aks use-dev-spaces` 。
 
 有关为 Dev Spaces 设置 AKS 群集的示例，请参阅[团队开发快速入门][quickstart-team]。
 

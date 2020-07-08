@@ -7,7 +7,6 @@ description: 了解如何升级 Azure Dev Spaces 命令行工具、Visual Studio
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: 1dad455b834bbef046b295b2cba040831a74f757
 ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "83873483"

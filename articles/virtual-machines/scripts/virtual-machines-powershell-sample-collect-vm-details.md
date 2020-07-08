@@ -17,7 +17,6 @@ ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 27e88966759eaa158ffe86efce9905b1709ddbbe
 ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83848716"

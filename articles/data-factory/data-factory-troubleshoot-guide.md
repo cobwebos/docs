@@ -10,7 +10,6 @@ ms.author: abnarain
 ms.reviewer: craigg
 ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83836152"

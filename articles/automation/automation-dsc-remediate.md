@@ -11,7 +11,6 @@ ms.date: 07/17/2019
 manager: nirb
 ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83836849"

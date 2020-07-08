@@ -13,7 +13,6 @@ ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d5e44d6b34a16f03d4ca1f82453f1f6e9f074917
 ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/26/2020
 ms.locfileid: "83860607"
@@ -216,7 +215,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> 如果 TEXTFILE 表 *\<数据库名称\>.\<外部 textfile 表名称\>* 具有分区，则在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令会选择分区变量作为返回的数据集中的字段。 将数据插入 *\<数据库名称\>.\<ORC 表名称\>* 失败，因为 *\<数据库名称\>.\<ORC 表名称\>* 没有将分区变量作为表架构中的字段。 在这种情况下，需要专门选择要插入到 *\<数据库名称\>.\<ORC 表名称\>* 的字段，如下所示：
+> 如果 TEXTFILE 表 *\<数据库名称\>.\<外部 textfile 表名称\>* 具有分区，则在步骤 3 中，`SELECT * FROM <database name>.<external textfile table name>` 命令会选择分区变量作为返回的数据集中的字段。 将数据插入 *\<数据库名称\>.\<ORC 表名称\>* 失败，因为 *\<数据库名称\>.\<ORC 表名称\>* 没有将分区变量作为表架构中的字段。 在这种情况下，需要专门选择要插入到 *\<数据库名称\>.\<ORC 表名称\>* 的字段，如下所示： 在所有数据都已插入到 \<数据库名称\>.\<ORC 表名称\> 后，使用以下查询可以安全地删除 \<外部文本文件表名称\>： 完成此过程后，应该拥有一个可用的表，此表中具有 ORC 格式的数据。 In this case, you need to specifically select the fields to be inserted to <bpt id="p1">*</bpt><ph id="ph1">\&lt;database name\&gt;</ph>.<ph id="ph2">\&lt;ORC table name\&gt;</ph><ept id="p1">*</ept> as follows:
 >
 >
 
@@ -225,8 +224,8 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-在所有数据都已插入到 \<数据库名称\>.\<ORC 表名称\> 后，使用以下查询可以安全地删除 \<外部文本文件表名称\>：
+It is safe to drop the <bpt id="p1">*</bpt><ph id="ph1">\&lt;external text file table name\&gt;</ph><ept id="p1">*</ept> when using the following query after all data has been inserted into <bpt id="p2">*</bpt><ph id="ph2">\&lt;database name\&gt;</ph>.<ph id="ph3">\&lt;ORC table name\&gt;</ph><ept id="p2">*</ept>:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 
-完成此过程后，应该拥有一个可用的表，此表中具有 ORC 格式的数据。  
+After following this procedure, you should have a table with data in the ORC format ready to use.  

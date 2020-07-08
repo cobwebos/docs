@@ -11,7 +11,6 @@ ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83835625"

@@ -3,34 +3,26 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83996714"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
-Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关。 下表指示了运行时的当前版本、发布级别以及相关的 .NET 版本。 
+Azure Functions 当前支持三个版本的运行时主机：1.x、2.x 和3.x。 生产方案支持所有三个版本。  
 
-| 运行时版本 | 发布级别<sup>1</sup> | .NET 版本 | 
-| --------------- | ------------- | ------------ |
-| 3.x | GA | .NET Core 3.1 | 
-| 2.x | GA | .NET Core 2.2 |
-| 1.x | 正式版<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
-
-<sup>1</sup> 生产方案支持正式版。   
-<sup>2</sup> 版本 1.x 处于维护模式。 仅在更高版本中提供增强功能。   
-<sup>3</sup> 仅支持在 Azure 门户或本地 Windows 计算机上进行开发。
+> [!IMPORTANT]
+> 版本1.x 处于维护模式，仅支持在 Azure 门户或本地 Windows 计算机上进行开发。 仅在更高版本中提供增强功能。 
 
 本文详细介绍了不同版本之间的一些差异、如何创建每个版本，以及如何更改版本。
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>语言
 
 从版本 2.x 开始，运行时使用语言扩展性模型，并且函数应用中的所有函数必须共享同一语言。 函数应用中的函数语言是在创建应用时选择的，并且在 [FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) 设置中进行维护。 
 
-Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x 中不受支持。 下表指示每个运行时版本目前支持的编程语言。
+下表指示每个运行时版本目前支持的编程语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -58,21 +50,21 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 在版本 2.x 中做出了以下更改：
 
-* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥将默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
+* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥将默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，会重置文件存储中的现有机密。
 
 * 2\.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
 
 * 主机配置文件 (host.json) 应该为空或包含字符串 `"version": "2.0"`。
 
-* 若要改善监视，门户中的 Web 作业仪表板（使用[`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard)该设置）将替换为 Azure 应用程序 Insights，使用[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey)设置。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+* 若要改善监视，门户中的 Web 作业仪表板（使用该设置）将 [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) 替换为 Azure 应用程序 Insights，使用 [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) 设置。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
-* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置[`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime)中的值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
+* 函数应用中的所有函数必须共享相同的语言。 创建函数应用时，必须选择该应用的运行时堆栈。 运行时堆栈由应用程序设置中的 [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) 值指定。 增加此项要求的目的是减少占用空间和启动时间。 进行本地开发时，还必须在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中包含此设置。
 
-* 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到 unlimited（无限）。
+* 应用服务计划中函数的默认超时已更改为 30 分钟。 可以使用 host.json 中的 [functionTimeout](functions-host-json.md#functiontimeout) 设置，将超时手动改回到无限。
 
-* 默认情况下，为消耗计划函数实现 HTTP 并发限制，默认为每个实例100个并发请求。 可以在主机 json 文件的[`maxConcurrentRequests`](functions-host-json.md#http)设置中更改此设置。
+* 默认情况下，将对消耗计划函数实施 HTTP 并发性限制，每个实例的并发请求数默认为 100。 可以在 host.json 文件中的 [`maxConcurrentRequests`](functions-host-json.md#http) 设置内更改此值。
 
-* 由于[.Net Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对 F # 脚本（. .fsx）函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
+* 由于 [.NET Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已删除对 F# 脚本 (.fsx) 函数的支持。 编译的 F# 函数 (.fs) 仍受支持。
 
 * 事件网格触发器 Webhook 的 URL 格式已更改为 `https://{app}/runtime/webhooks/{triggerName}`。
 
@@ -80,11 +72,11 @@ Azure Functions 1.x 试验性语言不能使用新模型，因此它们在 2.x �
 
 Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该能够安全地升级到 3.x，无需更改任何代码。  虽然建议迁移到 3.x，但在生产应用的主版本中进行更改之前，务必运行大量测试。
 
-### <a name="breaking-changes-between-2x-and-3x"></a>2.x 和 3.x 之间的中断性变更
+### <a name="breaking-changes-between-2x-and-3x"></a>2\.x 和 3.x 之间的中断性变更
 
 下面是在将 2.x 应用升级到 3.x 之前要注意的变更。
 
-#### <a name="javascript"></a>JavaScript
+#### <a name="javascript"></a>Javascript
 
 * 通过 `context.done` 或返回值分配的输出绑定现在与在 `context.bindings` 中进行设置具有相同的行为。
 
@@ -102,9 +94,9 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中更改应用版本
 
-Azure 中发布的应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)应用程序设置决定。 支持以下主要运行时版本值：
+Azure 中的已发布应用使用的 Functions 运行时版本由 [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) 应用程序设置指定。 支持以下主要运行时版本值：
 
-| 值 | 运行时目标 |
+| Value | 运行时目标 |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |
@@ -135,7 +127,7 @@ Azure 中发布的应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_V
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-##### <a name="version-3x"></a>3.x 版
+##### <a name="version-3x"></a>3\.x 版
 
 ```xml
 <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -154,9 +146,9 @@ Azure 中发布的应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_V
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code 和 Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) 可用于命令行开发，另外，还可供用于 Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)使用。 若要针对版本 3.x 进行开发，请安装 Core Tools 版本 3.x。 版本 2.x 开发需要 Core Tools 版本 2.x，依此类推。 有关详细信息，请参阅[安装 Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)。
+[Azure Functions Core Tools](functions-run-local.md) 可用于命令行开发，另外，还可供适用于 Visual Studio Code 的 [Azure Functions 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)使用。 若要针对版本 3.x 进行开发，请安装 Core Tools 版本 3.x。 版本 2.x 开发需要 Core Tools 版本 2.x，依此类推。 有关详细信息，请参阅[安装 Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)。
 
-对于 Visual Studio Code 开发，可能还需要更新 `azureFunctions.projectRuntime` 的用户设置，以便与安装的工具版本匹配。  此设置还会更新创建函数应用期间使用的模板和语言。  若要在 `~3` 中创建应用，请将 `azureFunctions.projectRuntime` 用户设置更新为 `~3`。
+对于 Visual Studio Code 开发，可能还需要更新 `azureFunctions.projectRuntime` 的用户设置，使之与已安装工具的版本匹配。  此设置还会更新创建函数应用期间使用的模板和语言。  若要在 `~3` 中创建应用，请将 `azureFunctions.projectRuntime` 用户设置更新为 `~3`。
 
 ![Azure Functions 扩展运行时设置](./media/functions-versions/vs-code-version-runtime.png)
 
@@ -188,7 +180,7 @@ Azure 中发布的应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_V
 
 * 支持第三方绑定扩展。
 
-* 运行时和绑定分离。 此项更改允许对绑定扩展进行版本控制和单独发布。 例如，可以选择升级到依赖于基础 SDK 的较新版本的扩展版本。
+* 运行时和绑定分离。 此项更改允许对绑定扩展进行版本控制和单独发布操作。 例如，可以选择升级到依赖于基础 SDK 的较新版本的扩展版本。
 
 * 更轻便的执行环境，其中运行时仅知道和加载正在使用的绑定。
 
@@ -202,7 +194,7 @@ Azure 中发布的应用使用的函数运行时版本由[`FUNCTIONS_EXTENSION_V
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多信息，请参见以下资源：
+有关详细信息，请参阅以下资源：
 
 * [在本地对 Azure Functions 进行编码和测试](functions-run-local.md)
 * [如何面向 Azure Functions 运行时版本](set-runtime-version.md)

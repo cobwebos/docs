@@ -4,19 +4,18 @@ description: 在条件访问中使用仅报告模式，有助于采用
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 05/01/2020
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83994963"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>在仅报告模式下配置条件访问策略
 
@@ -26,11 +25,11 @@ ms.locfileid: "82690369"
 > 如果你的组织尚未这样做，请[设置与 Azure AD 的 Azure Monitor 集成](#set-up-azure-monitor-integration-with-azure-ad)。 必须先进行此过程，然后才能查看数据。
 
 1. 以条件访问管理员、安全管理员或全局管理员身份登录到**Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
-1. 选择“新策略”  。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
+1. 选择“新策略”。
 1. 根据需要配置策略条件和所需的授权控制。
 1. 在 "**启用策略**" 下，将切换设置为**仅报告**模式。
-1. 选择“保存” 
+1. 选择“保存”
 
 > [!TIP]
 > 你可以将中的现有策略的 "**启用" 策略**状态编辑为**仅报告** **，但**这样做将禁用策略强制实施。 
@@ -40,7 +39,7 @@ ms.locfileid: "82690369"
 查看特定登录的仅报告策略的结果：
 
 1. 以报表读者、安全读者、安全管理员或全局管理员身份登录到**Azure 门户**。
-1. 浏览到“Azure Active Directory”   > “登录”  。
+1. 浏览到“Azure Active Directory” > “登录”。
 1. 选择 "登录" 或添加筛选器以缩小结果范围。
 1. 在 "**详细信息**" 抽屉中，选择 "**仅限报告**" 选项卡，以查看登录期间评估的策略。
 
@@ -61,7 +60,7 @@ ms.locfileid: "82690369"
 将 Azure AD 日志与 Azure Monitor 集成后，可以使用新的条件性访问见解工作簿来监视条件访问策略的影响。
 
 1. 以安全管理员或全局管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **工作簿**。
+1. 浏览到**Azure Active Directory**  >  **工作簿**。
 1. 选择 "**条件访问见解**"。
 1. 从 "**条件性访问策略**" 下拉列表中选择一个或多个策略。 默认情况下，选择所有已启用的策略。
 1. 选择时间范围（如果时间范围超过可用的数据集，则报表将显示所有可用数据）。 设置**条件访问策略**和**时间范围**参数后，报表将加载。

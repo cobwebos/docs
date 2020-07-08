@@ -5,12 +5,11 @@ author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a366a199338539ba8e599bd5f406838f4e7bd21c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83996631"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
@@ -19,7 +18,7 @@ ms.locfileid: "81732730"
 > [!NOTE]
 > 如果 Gradle 不是你首选的开发工具，请使用[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、 [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)来查看适用于 Java 开发人员的类似教程。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用 Java 开发函数，必须安装以下软件：
 
@@ -42,7 +41,7 @@ git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-打开`build.gradle`并将以下`appName`部分中的更改为唯一名称，以避免在部署到 Azure 时域名冲突。 
+打开 `build.gradle` 并将 `appName` 以下部分中的更改为唯一名称，以避免在部署到 Azure 时域名冲突。 
 
 ```gradle
 azurefunctions {
@@ -60,7 +59,7 @@ azurefunctions {
 在文本编辑器中打开 *src/main/java* 路径中的新 Function.java 文件，查看生成的代码。 该代码是一个 [HTTP 触发的](functions-bindings-http-webhook.md)函数，用于回显请求的正文。 
 
 > [!div class="nextstepaction"]
-> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
@@ -93,14 +92,16 @@ curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 预期输出如下所示：
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
-在本地运行时，不需要[功能键](functions-bindings-http-webhook-trigger.md#authorization-keys)。  
+> [!NOTE]
+> 如果将 authLevel 设置为 `FUNCTION` 或 `ADMIN` ，则在本地运行时不需要此[功能键](functions-bindings-http-webhook-trigger.md#authorization-keys)。  
+
 在终端中使用 `Ctrl+C` 停止函数代码。
 
 > [!div class="nextstepaction"]
-> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
@@ -128,10 +129,10 @@ gradle azureFunctionsDeploy
 
 此部署还会在启用“从包运行”模式的情况下，使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 将项目文件打包并部署到新函数应用。
 
-由于我们发布的 HTTP 触发器使用 `authLevel = AuthorizationLevel.FUNCTION`，因此你需要获取函数密钥，以便通过 HTTP 调用函数终结点。 若要获取函数密钥，最简单的方法是使用 [Azure 门户]。
+示例项目中的 authLevel for HTTP 触发器是 `ANONYMOUS` ，它将跳过身份验证。 但是，如果使用其他 authLevel （如 `FUNCTION` 或 `ADMIN` ），则需要获取函数键，以便通过 HTTP 调用函数终结点。 若要获取函数密钥，最简单的方法是使用 [Azure 门户]。
 
 > [!div class="nextstepaction"]
-> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
 ## <a name="get-the-http-trigger-url"></a>获取 HTTP 触发器 URL
 
@@ -139,9 +140,9 @@ gradle azureFunctionsDeploy
 
 1. 浏览到 [Azure 门户]，登录，在页面顶部将函数应用的 _appName_ 键入“搜索”栏，**** 然后按 Enter。
  
-1. 在函数应用中展开“函数(只读)”，选择你的函数，然后选择右上角的“</> 获取函数 URL”。******** 
+1. 在函数应用中，选择 "**函数**"，选择函数，然后单击右上角的 " **</> 获取函数 Url** "。 
 
-    ![从 Azure 门户复制函数 URL](./media/functions-create-java-maven/get-function-url-portal.png)
+    :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="从 Azure 门户复制函数 URL":::
 
 1. 选择“默认(函数密钥)”，然后选择“复制”********。 
 
@@ -152,17 +153,17 @@ gradle azureFunctionsDeploy
 若要使用 `cURL` 验证在 Azure 上运行的函数应用，请将以下示例中的 URL 替换为从门户复制的 URL。
 
 ```console
-curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
+curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
 这会向函数终结点发送一个 POST 请求，请求正文中包含 `AzureFunctions`。 会看到以下响应。
 
 <pre>
-Hello AzureFunctions!
+Hello, AzureFunctions
 </pre>
 
 > [!div class="nextstepaction"]
-> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [我遇到了问题](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=verify-deployment)
 
 ## <a name="next-steps"></a>后续步骤
 

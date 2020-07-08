@@ -9,7 +9,6 @@ ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: abe08da95416dd73035115361cb0d87822ad9239
 ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84013391"

@@ -11,12 +11,11 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1140b65cf56125b23ef3c616e597aafba989b197
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83993842"
 ---
 # <a name="conditional-access-session"></a>条件访问：会话
 
@@ -48,7 +47,7 @@ ms.locfileid: "78671877"
 
 有关详细信息，请参阅[为特色应用部署条件访问应用控制](/cloud-app-security/proxy-deployment-aad)一文。
 
-## <a name="sign-in-frequency-preview"></a>登录频率（预览版）
+## <a name="sign-in-frequency"></a>登录频率
 
 登录频率定义在用户尝试访问资源时，要求用户重新登录之前所要经过的时限。
 
@@ -66,7 +65,7 @@ ms.locfileid: "78671877"
 
 有关详细信息，请参阅文章[使用条件访问配置身份验证会话管理](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)。
 
-## <a name="persistent-browser-session-preview"></a>持久性浏览器会话（预览）
+## <a name="persistent-browser-session"></a>持久性浏览器会话
 
 持久性浏览器会话可让用户在关闭再重新打开其浏览器窗口后保持登录状态。
 

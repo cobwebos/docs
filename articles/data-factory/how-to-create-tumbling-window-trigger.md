@@ -11,25 +11,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83996680"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>创建按翻转窗口运行管道的触发器
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文提供了创建、启动和监视翻转窗口触发器的步骤。 有关触发器和支持的类型的一般信息，请参阅[管道执行和触发器](concepts-pipeline-execution-triggers.md)。
 
-翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。
+翻转窗口触发器是一类可以在保留状态的同时按周期性的时间间隔（从指定的开始时间算起）触发的触发器。 翻转窗口是一系列固定大小、非重叠且连续的时间间隔。 翻转窗口触发器与管道存在一对一关系，一个这样的触发器只能引用一个管道。 翻转窗口触发器是计划触发器的权重更高的替代方案，为复杂方案提供一套功能（[依赖于其他翻转窗口触发器](#tumbling-window-trigger-dependency)、[重新运行失败的作业](tumbling-window-trigger-dependency.md#monitor-dependencies)以及[为管道设置用户重试](#user-assigned-retries-of-pipelines)）。 若要进一步了解计划触发器和翻转窗口触发器之间的差异，请访问[此处](concepts-pipeline-execution-triggers.md#trigger-type-comparison)。
 
 ## <a name="data-factory-ui"></a>数据工厂 UI
 
-1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”  选项卡，然后选择“新建”  。 
-1. 在触发器配置窗格打开后，选择“翻转窗口”  ，然后定义翻转窗口触发器属性。 
-1. 完成后，选择“保存”  。
+1. 若要在数据工厂 UI 中创建翻转窗口触发器，请选择“触发器”选项卡，然后选择“新建”。 
+1. 在触发器配置窗格打开后，选择“翻转窗口”，然后定义翻转窗口触发器属性。 
+1. 完成后，选择“保存”。
 
 ![在 Azure 门户中创建翻转窗口触发器](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
 
@@ -99,7 +98,7 @@ ms.locfileid: "82592071"
 | **type** | 触发器的类型。 类型为固定值“TumblingWindowTrigger”。 | String | "TumblingWindowTrigger" | 是 |
 | **runtimeState** | 触发器运行时的当前状态。<br/>**注意**：此元素是 \<readOnly>。 | String | “Started”、“Stopped”、“Disabled” | 是 |
 | **frequency** | 一个字符串，表示触发器重复出现的频率单位（分钟或小时）。 如果 **startTime** 日期值粒度比 **frequency** 值更细，则会在计算窗口边界时考虑 **startTime** 日期。 例如：如果 **frequency** 值为每小时，**startTime** 值为 2017-09-01T10:10:10Z，则第一个窗口为 (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z)。 | String | “minute”、“hour”  | 是 |
-| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 <br/>**注意**：最小窗口间隔为5分钟。 | Integer | 正整数。 | 是 |
+| **interval** | 一个正整数，表示 **frequency** 值对应的时间间隔，决定了触发器的运行频率。 例如，如果 **interval** 为 3，**frequency** 为“hour”，则触发器每 3 小时重复触发一次。 <br/>**注意**：最小窗口间隔为 5 分钟。 | Integer | 正整数。 | 是 |
 | **startTime**| 第一个匹配项，可以是过去的时间。 第一个触发器间隔是 (**startTime**, **startTime** + **interval**)。 | DateTime | 一个日期时间值。 | 是 |
 | **endTime**| 最后一个匹配项，可以是过去的时间。 | DateTime | 一个日期时间值。 | 是 |
 | **delay** | 延迟窗口数据处理开始的时间量。 管道运行在预期的执行时间加上 **delay** 的量之后启动。 **delay** 的定义是：在预期的执行时间过后，触发器在触发新的运行之前等待的时间。 **delay** 不改变窗口 **startTime**。 例如，值为 00:10:00 的 **delay** 意味着 10 分钟的延迟。 | Timespan<br/>(hh:mm:ss)  | 一个时间跨度值，默认值为 00:00:00。 | 否 |
@@ -111,7 +110,7 @@ ms.locfileid: "82592071"
 | **dependsOn: offset** | 依赖项触发器的偏移量。 | Timespan<br/>(hh:mm:ss) |  在自我依赖项中必须为负的时间跨度值。 如果未指定任何值，则该窗口与触发器本身相同。 | 自我依赖项：是<br/>其他：否  |
 
 > [!NOTE]
-> 发布翻转窗口触发器后，无法编辑**时间间隔**和**频率**。
+> 发布翻转窗口触发器后，无法编辑“间隔”和“频率” 。
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart 和 WindowEnd 系统变量
 
@@ -146,13 +145,19 @@ ms.locfileid: "82592071"
 若要在管道定义中使用 **WindowStart** 和 **WindowEnd** 系统变量值，请相应地使用“MyWindowStart”和“MyWindowEnd”参数。
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>回填方案中的窗口执行顺序
-有多个窗口需要执行时（尤其是在回填的情况下），窗口的执行顺序是确定的，将根据时间间隔的新旧按从旧到新的顺序执行。 当前无法修改此行为。
+
+如果触发器的 startTime 为过去时间，那么根据公式 M=(CurrentTime- TriggerStartTime)/TriggerSliceSize，触发器将在执行未来运行之前生成 {M} backfill(past) 次并行运行，以保证触发器并发性。 窗口的执行顺序是确定的（从最旧到最新的时间间隔）。 当前无法修改此行为。
 
 ### <a name="existing-triggerresource-elements"></a>现有 TriggerResource 元素
-以下各点适用于现有 **TriggerResource** 元素：
 
-* 如果触发器的 **frequency** 元素（或窗口大小）的值更改，则已处理窗口的状态不会** 重置。 触发器会根据新的窗口大小继续触发一段时间（从上次执行开始计算）。
-* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会** 重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
+以下几点适用于现有 TriggerResource 元素的更新：
+
+* 创建触发器后，便无法更改触发器的 frequency 元素（或窗口大小）与 interval 元素的值。 这是 triggerRun 重新运行和依赖项评估正常运行所必需的
+* 如果触发器的 **endTime** 元素的值更改（添加或更新），则已处理窗口的状态不会重置。 触发器会遵循新的 **endTime** 值。 如果新的 **endTime** 值在已执行的窗口之前，则触发器会停止。 否则，触发器会在遇到新的 **endTime** 值停止。
+
+### <a name="user-assigned-retries-of-pipelines"></a>用户分配的管道重试次数
+
+如果出现管道故障，翻转窗口触发器可以使用相同的输入参数自动重试引用的管道的执行，而无需用户干预。 可以在触发器定义中使用属性“retryPolicy”来指定此项。
 
 ### <a name="tumbling-window-trigger-dependency"></a>翻转窗口触发器依赖项
 
@@ -164,7 +169,7 @@ ms.locfileid: "82592071"
 
 本部分展示了如何使用 Azure PowerShell 创建、启动和监视触发器。
 
-1. 在 C:\ADFv2QuickStartPSH\ 文件夹中，创建包含以下内容的名为**mytrigger.json**的 json 文件：
+1. 在 C:\ADFv2QuickStartPSH\ 文件夹中创建一个名为 **MyTrigger.json** 的且包含以下内容的 JSON 文件：
 
     > [!IMPORTANT]
     > 保存 JSON 文件之前，请将 **startTime** 元素的值设置为当前 UTC 时间。 将 **endTime** 元素的值设置为比当前 UTC 时间早一小时。
@@ -212,7 +217,7 @@ ms.locfileid: "82592071"
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. 使用**AzDataFactoryV2Trigger** cmdlet 启动触发器：
+4. 使用 **Start-AzDataFactoryV2Trigger** cmdlet 启动触发器：
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"

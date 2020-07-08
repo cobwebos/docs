@@ -8,7 +8,6 @@ ms.topic: conceptual
 keywords: powershell, runbook, json, azure 自动化
 ms.openlocfilehash: 921d878c585b811700b1c112524e314f0af53c24
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83837070"

@@ -7,12 +7,11 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7bd0afe4d0ea01671c996a0f536151d943e4fca7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84013004"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>使用 Curl 在 HDInsight 中运行 Apache Sqoop 作业
 
@@ -24,9 +23,9 @@ ms.locfileid: "75767580"
 
 ## <a name="prerequisites"></a>必备条件
 
-* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)中完成[设置测试环境](./hdinsight-use-sqoop.md)。
+* 从[在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用](./hdinsight-use-sqoop.md)中完成[设置测试环境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 
-* 用于查询 Azure SQL 数据库的客户端。 考虑使用 [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) 或 [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md)。
+* 用于查询 Azure SQL 数据库的客户端。 考虑使用 [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) 或 [Visual Studio Code](../../azure-sql/database/connect-query-vscode.md)。
 
 * [Curl](https://curl.haxx.se/). Curl 是一种将数据传入或传出 HDInsight 群集的工具。
 
@@ -77,7 +76,7 @@ REST API 通过 [基本身份验证](https://en.wikipedia.org/wiki/Basic_access_
 
     此命令中使用的参数如下：
 
-   * **-d** -由于`-G`未使用，请求默认为 POST 方法。 `-d` 指定与请求一起发送的数据值。
+   * **-d** -由于 `-G` 未使用，请求默认为 POST 方法。 `-d` 指定与请求一起发送的数据值。
 
        * **user.name** - 正在运行命令的用户。
 

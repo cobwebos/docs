@@ -9,7 +9,6 @@ ms.author: magoedte
 ms.date: 02/25/2020
 ms.openlocfilehash: 1cd20e28d1b36167154059adf728a9cfdf8102bc
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83836611"

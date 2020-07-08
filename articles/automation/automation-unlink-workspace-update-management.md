@@ -7,7 +7,6 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 9129d10071a4c8da0376cbad3d64c10cbaceb8b9
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83835778"

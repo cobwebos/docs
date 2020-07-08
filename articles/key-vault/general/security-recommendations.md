@@ -12,7 +12,6 @@ ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 28b768e421ac72be363ab187312e52ba15d34970
 ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "83872992"

@@ -4,19 +4,18 @@ description: 本文演示如何迁移要求在 Azure 门户中进行多重身份
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: conceptual
-ms.date: 12/04/2019
+ms.topic: how-to
+ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74846008"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "83993722"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>在 Azure 门户中迁移经典策略
 
@@ -65,7 +64,7 @@ ms.locfileid: "74846008"
 
 ## <a name="disable-the-classic-policy"></a>禁用经典策略
 
-若要禁用经典策略，请单击“详细信息”  视图中的“禁用”  。
+若要禁用经典策略，请单击“详细信息”视图中的“禁用”。
 
 ![禁用经典策略](./media/policy-migration-mfa/14.png)
 
