@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/23/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e44e2e1eb37e808e60134a6fba5051552e84029
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189508"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389337"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C 的 Cookie 定义
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189508"
 
 ## <a name="samesite"></a>SameSite
 
-Microsoft Azure AD B2C 服务与 SameSite 浏览器配置兼容，其中包括支持`SameSite=None`和`Secure`属性。
+Microsoft Azure AD B2C 服务与 SameSite 浏览器配置兼容，其中包括支持 `SameSite=None` 和 `Secure` 属性。
 
 为了保护对站点的访问，Web 浏览器将引入一个新的“默认保护”模型，除非另行指定，该模型假定所有 Cookie 都应阻止来自外部的访问。 Chrome 浏览器是第一个实现此更改的浏览器，从 [2020 年 2 月份的 Chrome 80 开始](https://www.chromium.org/updates/same-site)。 若要详细了解如何针对 Chrome 中的此更改做好准备，请参阅 Chromium 博客上的[开发人员：针对新的 SameSite=None 做好准备；安全的 Cookie 设置](https://blog.chromium.org/2019/10/developers-get-ready-for-new.html)。
 
@@ -39,7 +39,7 @@ Microsoft Azure AD B2C 服务与 SameSite 浏览器配置兼容，其中包括�
 
 下表列出了 Azure AD B2C 中使用的 Cookie。
 
-| 名称 | Domain | 过期时间 | 目的 |
+| “属性” | 域 | 过期时间 | 目标 |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [浏览器会话](session-behavior.md)结束 | 保存各个租户的用户成员身份数据。 用户所属的租户，以及成员身份级别（管理员或用户）。 |
 | `x-ms-cpim-slice` | b2clogin.com、login.microsoftonline.com、署名域 | [浏览器会话](session-behavior.md)结束 | 用于将请求路由到相应的生产实例。 |

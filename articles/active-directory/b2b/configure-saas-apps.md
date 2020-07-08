@@ -4,7 +4,7 @@ description: 有关 Azure Active Directory B2B 协作的代码和 PowerShell 示
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2017
 ms.author: mimart
 author: msmimart
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8f38d42003645e6d6544d5c2064a0c8e692c0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387344"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>为 B2B 协作配置 SaaS 应用
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2B 协作适用于与 Azure AD 集成的大�
 
    ![显示单一登录配置设置的屏幕截图](media/configure-saas-apps/configure-box-sso.png)
 
-   a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。**** 此 URL 是 Box.com 租户的 URL。 它应遵循命名约定*https://.box.com*。  
+   a. 在“登录 URL”框中，确保登录 URL 是在 Azure 门户中为 Box 适当设置的 URL。**** 此 URL 是 Box.com 租户的 URL。 它应遵循命名约定 *https://.box.com* 。  
    “标识符”不适用于此应用，但仍显示为必填字段。****
 
    b. 在“用户标识符”框中输入 **user.mail**（适用于来宾帐户 SSO）。****

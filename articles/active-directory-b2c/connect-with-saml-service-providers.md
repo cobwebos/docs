@@ -7,17 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: b9ea9e756587af124ca94518d9f15271310ddee3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696946"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389372"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -119,7 +119,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 可以更改 `IssuerUri` 元数据的值。 这是 Azure AD B2C 在 SAML 响应中返回的颁发者 URI。 应将信赖方应用程序配置为：在 SAML 断言验证期间接受颁发者 URI。
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -165,7 +165,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 1. 如下所示，将策略的 `PolicyId` 和 `PublicPolicyUri` 更改为 B2C_1A_signup_signin_saml 和 `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml`。
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 1. 在 `<RelyingParty>` 元素之前添加以下 XML 代码段。 此 XML 将覆盖 SignUpOrSignIn 用户旅程的业务流程步骤编号 7。 如果从新手包中的其他文件夹开始，或者通过添加或删除业务流程来自定义用户旅程，请确保该数字（在 `order` 元素中）与令牌颁发者的用户旅程步骤中指定的数字一致（例如，在其他新手包文件夹中，`LocalAccounts` 的步骤编号为 4，`SocialAccounts` 的步骤编号为 6，`SocialAndLocalAccountsWithMfa` 的步骤编号为 9）。
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 1. 将 `<RelyingParty>` 元素中的整个 `<TechnicalProfile>` 元素替换为以下技术配置文件 XML。
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 最终的信赖方策略文件应如下所示：
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -265,12 +265,12 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 ## <a name="4-setup-application-in-the-azure-ad-b2c-directory"></a>4.在 Azure AD B2C 目录中安装应用程序
 
-### <a name="41-register-your-application-in-azure-active-directory"></a>4.1 在 Azure Active Directory 中注册应用程序
+### <a name="41-register-your-application-in-azure-ad-b2c"></a>4.1 在 Azure AD B2C 中注册应用程序
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
 1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
-1. 选择“应用注册(预览版)”，然后选择“新建注册” 。
+1. 选择“应用注册”，然后选择“新建注册” 。
 1. 输入应用程序的“名称”。 例如，SAMLApp1。
 1. 在“支持的帐户类型”下，选择“仅此组织目录中的帐户” 
 1. 在“重定向 URI”下，选择“Web”，然后输入 `https://localhost`。 稍后会在应用程序注册的清单中修改此值。
@@ -297,7 +297,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 对于使用 SAML 测试应用程序的本教程，请对 `samlMetadataUrl` 使用以下值：
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 对于本教程中使用 SAML 测试应用程序，请将 `replyUrlsWithType` 的 `url` 属性设置为以下 JSON 代码段中显示的值。
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 对于本教程中使用 SAML 测试应用程序，请将 `logoutUrl` 设置为 `https://samltestapp2.azurewebsites.net/logout`：
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

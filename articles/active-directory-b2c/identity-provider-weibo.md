@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08aa7e4af6dc5d5e5bff470bc4c5d023e25b3014
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187893"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387875"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过微博帐户注册与登录
 
@@ -43,8 +43,8 @@ ms.locfileid: "78187893"
 1. 上传所需的照片，并输入所需的信息。
 1. 选择“保存以上信息”  (save)。
 1. 选择“高级信息”  (advanced information)。
-1. 选择 OAuth2.0“授权设置”  (redirect URL) 字段旁边的“编辑”  (edit)。
-1. 为 OAuth2.0“授权设置”`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **(redirect URL) 输入** 。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
+1. 选择 OAuth2.0“授权设置”(redirect URL) 字段旁边的“编辑”(edit)。
+1. 为 OAuth2.0“授权设置”(redirect URL) 输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 例如，如果租户名称是 contoso，请将 URL 设置为 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
 1. 选择“提交”  (submit)。
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>将微博帐户配置为标识提供者

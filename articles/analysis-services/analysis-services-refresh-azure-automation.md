@@ -6,31 +6,27 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389966"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
 通过使用 Azure 自动化和 PowerShell Runbook，你可以对 Azure Analysis 表格模型执行自动化数据刷新操作。  
 
-本文中的示例使用了 [PowerShell SqlServer 模块](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。
-
-本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
+本文中的示例使用[SqlServer PowerShell 模块](https://docs.microsoft.com/powershell/module/sqlserver/?view=sqlserver-ps)。 本文后面提供了一个示例 PowerShell Runbook，它演示了如何刷新模型。  
 
 ## <a name="authentication"></a>身份验证
 
-所有调用都必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例将使用服务主体 (SPN) 通过 Azure Analysis Services 进行身份验证。
-
-若要详细了解如何创建服务主体，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+所有调用都必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例使用服务主体（SPN）对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
 > [!IMPORTANT]
-> 下面的示例假定 Azure Analysis Services 防火墙被禁用。 如果防火墙已启用，则需要将请求发起程序的公共 IP 地址添加到防火墙的白名单中。
+> 下面的示例假定 Azure Analysis Services 防火墙被禁用。 如果启用了防火墙，则必须在防火墙规则中包括请求发起程序的公共 IP 地址。
 
 ### <a name="install-sqlserver-modules-from-powershell-gallery"></a>从 PowerShell 库中安装 SqlServer 模块。
 

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 892e94ba1943b667ffeba63a80f4409b35ea5ec3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738245"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389286"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -74,22 +74,9 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 ### <a name="register-the-identityexperienceframework-application"></a>注册 IdentityExperienceFramework 应用程序
 
-若要在 Azure AD B2C 租户中注册应用程序，可使用“应用注册（旧版）”体验，或者使用我们新推出的统一“应用注册（预览版）”体验 。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
+若要在 Azure AD B2C 租户中注册应用程序，可以使用**应用注册**体验。
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
-1. 在“Azure Active Directory”概述菜单的“管理”下，选择“应用注册(旧版)”  。
-1. 选择“新建应用程序注册”。
-1. 对于“名称”，请输入 `IdentityExperienceFramework`。
-1. 对于“应用程序类型”，请选择“Web 应用/API”。
-1. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
-1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
-
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
-
-1. 选择“应用注册(预览版)”，然后选择“新建注册” 。
+1. 选择“应用注册”，然后选择“新建注册” 。
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
 1. 在“支持的帐户类型”下，选择“仅此组织目录中的帐户” 。
 1. 在“重定向 URI”下，选择“Web”，然后输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是 Azure AD B2C 租户域名 。
@@ -111,21 +98,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>注册 ProxyIdentityExperienceFramework 应用程序
 
-#### <a name="applications"></a>[应用程序](#tab/applications/)
-
-1. 在“应用注册(旧版)”中，选择“新建应用程序注册” 。
-1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
-1. 对于“应用程序类型”，请选择“本机” 。
-1. 对于“重定向 URI”，请输入 `myapp://auth`。
-1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
-1. 依次选择“设置”、“所需权限”和“添加”  。
-1. 选中“选择 API”，搜索并选择“IdentityExperienceFramework”，然后单击“选择”  。
-1. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。
-1. 选择“授予权限”，然后选择“是”进行确认 。
-
-#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
-
-1. 选择“应用注册(预览版)”，然后选择“新建注册” 。
+1. 选择“应用注册”，然后选择“新建注册” 。
 1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 1. 在“支持的帐户类型”下，选择“仅此组织目录中的帐户” 。
 1. 在“重定向 URI”下，使用下拉选择“公共客户端/本机(移动和桌面)” 。
@@ -137,7 +110,6 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 接下来，指定应将应用程序视为公共客户端：
 
 1. 在“管理”下，选择“身份验证”。 
-1. 选择“尝试新体验”（如果已显示）。
 1. 在“高级设置”下，启用“将应用程序视为公共客户端”（选择“是”）  。 请确保已在应用程序清单中设置 "allowPublicClient": true。 
 1. 选择“保存”。
 
@@ -151,7 +123,7 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 1. 选择“向(租户名称)授予管理员许可”。
 1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录。
 1. 选择“接受”。
-1. 选择“刷新”，然后确认两个范围的“状态”下是否均显示“已授予...”。  传播权限可能需要几分钟时间。
+1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在作用域 offline_access、openid 和 user_impersonation 的**状态**下方。 传播权限可能需要几分钟时间。
 
 * * *
 

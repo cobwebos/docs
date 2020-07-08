@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0b460d5a3c5535b74e349fa46c6a2ad55fc3a8d8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966566"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389524"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
 本文提供了有关在 Azure Active Directory B2C (Azure AD B2C) 中如何使用[自定义策略](custom-policy-overview.md)管理令牌、会话和单一登录 (SSO) 配置的信息。
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JWT 令牌生存期和声明配置
+## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW 令牌生存期和声明配置
 
 若要更改令牌生存期的设置，需要在想要影响的策略的信赖方文件中添加 [ClaimsProviders](claimsproviders.md) 元素。  **ClaimsProviders** 元素是 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素的子代。
 
@@ -30,7 +30,7 @@ ms.locfileid: "82966566"
 
 在该元素中，需要放置影响令牌生存期的信息。 XML 如以下示例所示：
 
-```XML
+```xml
 <ClaimsProviders>
   <ClaimsProvider>
     <DisplayName>Token Issuer</DisplayName>
@@ -59,18 +59,18 @@ ms.locfileid: "82966566"
 - **颁发者 (iss) 声明** - 颁发者 (iss) 声明是通过 **IssuanceClaimPattern** 元数据项设置的。 适用的值为 `AuthorityAndTenantGuid` 和 `AuthorityWithTfp`。
 - **设置声明表示策略 ID** - 用于设置此值的选项为 `TFP`（信任框架策略）和 `ACR`（身份验证上下文引用）。 `TFP` 是建议使用的值。 将 **AuthenticationContextReferenceClaimPattern** 设置为值 `None`。
 
-    在 ClaimsSchema 元素中，添加此元素****：
+    在 ClaimsSchema 元素中，添加此元素：
 
-    ```XML
+    ```xml
     <ClaimType Id="trustFrameworkPolicy">
       <DisplayName>Trust framework policy name</DisplayName>
       <DataType>string</DataType>
     </ClaimType>
     ```
 
-    在 OutputClaims 元素中，添加此元素****：
+    在 OutputClaims 元素中，添加此元素：
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
     ```
 
@@ -78,18 +78,18 @@ ms.locfileid: "82966566"
 
 - **使用者 (sub) 声明** - 此选项默认为 ObjectID，如果要将此设置切换为 `Not Supported`，请替换以下行：
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
     ```
 
     替换为以下代码行：
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     ```
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[Azure AD B2C 会话](session-overview.md)的详细信息。
+- 详细了解 [Azure AD B2C 会话](session-overview.md)。
 - 了解如何[在自定义策略中配置会话行为](session-behavior-custom-policy.md)。
-- 参考： [JwtIssuer](jwt-issuer-technical-profile.md)。
+- 参考：[JwtIssuer](jwt-issuer-technical-profile.md)。

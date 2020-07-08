@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebf83807629cc56aa381c97a9ce36d90c94d61f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666867"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388895"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -28,7 +28,7 @@ ms.locfileid: "80666867"
 
 ### <a name="user-flows"></a>用户流
 
-如果使用[用户流](user-flow-overview.md)，可以使用内置的页面布局模板或自己的 HTML 和 CSS 来更改用户流页面的外观。  本文稍后会介绍这两种方法。
+如果使用[用户流](user-flow-overview.md)，可以使用内置的页面布局模板或自己的 HTML 和 CSS 来更改用户流页面的外观。 本文稍后会介绍这两种方法。
 
 使用 [Azure 门户](tutorial-customize-ui.md)配置用户流的 UI 自定义。
 
@@ -41,7 +41,7 @@ ms.locfileid: "80666867"
 
 如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数[动态更改页面内容](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)的自定义策略。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
-### <a name="javascript"></a>JavaScript
+### <a name="javascript"></a>Javascript
 
 可以在[用户流](user-flow-javascript-overview.md)和[自定义策略](page-layout.md)中启用客户端 JavaScript 代码。
 
@@ -55,7 +55,7 @@ ms.locfileid: "80666867"
 
 用户流提供多个可供选择的内置模板，以便为用户体验页面提供专业的外观。 这些布局模板还可充当你自己的自定义操作的起点。
 
-在左侧菜单中的“自定义”下选择“页面布局”，然后选择“模板”。************
+在左侧菜单中的“自定义”下选择“页面布局”，然后选择“模板”。  
 
 ![Azure 门户的用户流页中的模板选择下拉列表](media/customize-ui-overview/template-selection.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "80666867"
 |:-:|:-:|:-:|
 |![注册登录页上呈现的“海蓝”模板的示例](media/customize-ui-overview/template-ocean-blue.png)|![注册登录页面上呈现的“青灰”模板示例](media/customize-ui-overview/template-slate-gray.png)|![注册登录页面上呈现的“经典”模板示例](media/customize-ui-overview/template-classic.png)|
 
-选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”**** 字段中。
+选择某个模板时，选定的布局将应用于用户流中的所有页面，并且每个页面的 URI 将显示在“自定义页面 URI”字段中。
 
 ## <a name="custom-html-and-css"></a>自定义 HTML 和 CSS
 
@@ -84,14 +84,14 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
   - 对 Internet Explorer 9 和 8 的支持有限
   - Google Chrome 42.0 和更高版本
   - Mozilla Firefox 38.0 和更高版本
-  - 适用于 iOS 和 macOS 的 Safari，版本12及更高版本
+  - 适用于 iOS 和 macOS 的 Safari 版本 12 及更高版本
 - 不要在 HTML 中包含**窗体标记**。 窗体标记会干扰 Azure AD B2C 插入的 HTML 所生成的 POST 操作。
 
 ### <a name="where-do-i-store-ui-content"></a>在何处存储 UI 内容？
 
 使用自己的 HTML 和 CSS 文件自定义 UI 时，可将 UI 内容托管在支持 CORS 的任何公用 HTTPS 终结点上。 例如，[Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)、Web 服务器、CDN、AWS S3 或文件共享系统。
 
-重要的一点是，在[已启用 CORS](https://enable-cors.org/server.html)的公开可用 HTTPS 终结点上托管内容。 在内容中指定绝对 URL 时，必须使用绝对 URL。
+重要的一点是，你将内容托管在一个[启用了 CORS](https://enable-cors.org/server.html) 且公开可用的 HTTPS 终结点上。 在内容中指定绝对 URL 时，必须使用绝对 URL。
 
 > [!NOTE]
 > 有关创建 HTML 内容、将内容上载到 Azure Blob 存储和配置 CORS 的详细信息，请参阅 UI 自定义文章中的[自定义页面内容演练](custom-policy-ui-customization.md#custom-page-content-walkthrough)部分。
@@ -169,9 +169,9 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 首先在**公司品牌**内设置横幅徽标、背景图像和背景色。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。
-1. 在 Azure 门户中，搜索并选择“Azure AD B2C”****。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
 1. 在 "**管理**" 下，选择 "**公司品牌**"。
 1. 按照[将品牌添加到组织的 Azure Active Directory 登录页](../active-directory/fundamentals/customize-branding.md)中的步骤进行操作。
 
@@ -186,11 +186,11 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 配置公司品牌后，请在用户流中启用它。
 
 1. 在 Azure 门户的左侧菜单中，选择 " **Azure AD B2C**"。
-1. 在“策略”下，选择“用户流(策略)”。********
+1. 在“策略”下，选择“用户流(策略)” 。
 1. 选择要为其启用公司品牌的用户流。 对于*登录版本 v1*和*配置文件编辑 v1*用户流类型，**不支持**公司品牌。
 1. 在 "**自定义**" 下，选择 "**页面布局**"，然后选择想要品牌的布局。 例如，选择 "**统一注册" 或 "登录" 页**。
 1. 对于 "**页面布局版本（预览）**"，选择 "版本**1.2.0** " 或更高版本。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 如果要在用户流中标记所有页面，请在用户流中为每个页面布局设置页面布局版本。
 
@@ -202,7 +202,7 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 ### <a name="use-company-branding-assets-in-custom-html"></a>在自定义 HTML 中使用公司品牌资产
 
-若要在自定义 HTML 中使用公司品牌资产，请在`<div id="api">`标记外添加以下标记：
+若要在自定义 HTML 中使用公司品牌资产，请在标记外添加以下标记 `<div id="api">` ：
 
 ```HTML
 <img data-tenant-branding-background="true" />
@@ -213,19 +213,19 @@ Azure AD B2C 使用称作[跨源资源共享 (CORS)](https://www.w3.org/TR/cors/
 
 ## <a name="localize-content"></a>本地化内容
 
-可通过在 Azure AD B2C 租户中启用[语言自定义](user-flow-language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui-locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+可通过在 Azure AD B2C 租户中启用[语言自定义](user-flow-language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui_locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。
 
 例如，自定义的页面 URI 可能类似于以下内容：
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
 可以通过从以下位置提取内容来加载法语页面：
 
-```HTTP
+```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 
@@ -237,7 +237,7 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你使用的是**用户流**，则可以使用教程开始自定义 UI：
+- 如果使用**用户流**，可以根据教程开始自定义 UI：
 
     [在 Azure Active Directory B2C 中自定义应用程序的用户界面](tutorial-customize-ui.md)。
 - 如果使用的是**自定义策略**，则可以使用以下文章开始自定义 UI：

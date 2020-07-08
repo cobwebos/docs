@@ -2,13 +2,13 @@
 title: 关于存储库和映像
 description: Azure 容器注册表、存储库和容器映像的重要概念简介。
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247054"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390442"
 ---
 # <a name="about-registries-repositories-and-images"></a>关于注册表、存储库和映像
 
@@ -24,13 +24,11 @@ ms.locfileid: "79247054"
 
 Azure 容器注册表中的项目地址包括以下元素。 
 
-`[loginUrl]/[namespace]/[artifact:][tag]`
+`[loginUrl]/[repository:][tag]`
 
 * **loginUrl** - 注册表主机的完全限定名称。 Azure 容器注册表中的注册表主机的格式为*myregistry*. azurecr.io （全部小写）。 使用 Docker 或其他客户端工具将项目提取或推送到 Azure 容器注册表时，必须指定 loginUrl。 
-* **namespace** - 以斜杠分隔的、相关映像或项目（例如工作组或应用）的逻辑分组
-* **artifact** - 特定映像或项目的存储库名称
-* **tag** - 存储在存储库中的映像或项目的特定版本
-
+* **存储库**-一个或多个相关映像或项目的逻辑分组的名称-例如，应用程序或基本操作系统的映像。 可能包括*命名空间*路径。 
+* **标记**-存储在存储库中的映像或项目的特定版本标识符。
 
 例如，Azure 容器注册表中映像的完整名称可能类似于：
 
@@ -40,20 +38,24 @@ Azure 容器注册表中的项目地址包括以下元素。
 
 ## <a name="repository-name"></a>存储库名称
 
-容器注册表管理存储库，并管理名称相同但标记不同的容器映像或其他项目的集合。  例如，以下三个映像位于“acr-helloworld”存储库中：
+*存储库*是具有相同名称但不同标记的容器映像或其他项目的集合。 例如，以下三个映像位于“acr-helloworld”存储库中：
 
 
 - *acr-helloworld:latest*
 - *acr-helloworld:v1*
 - *acr-helloworld:v2*
 
-存储库名称还可包括[命名空间](container-registry-best-practices.md#repository-namespaces)。 借助命名空间，可使用正斜杠分隔的存储库名称分组映像，例如：
+存储库名称还可包括[命名空间](container-registry-best-practices.md#repository-namespaces)。 命名空间允许你使用正斜杠分隔的名称标识组织中的相关存储库和项目所有权。 但是，注册表独立管理所有存储库，而不是作为层次结构。 例如：
 
 - *marketing/campaign10-18/web:v2*
 - *marketing/campaign10-18/api:v3*
 - *marketing/campaign10-18/email-sender:v2*
 - *product-returns/web-submission:20180604*
 - *product-returns/legacy-integrator:20180715*
+
+存储库名称只能包含小写字母数字字符、句点、短划线、下划线和正斜杠。 
+
+有关完整的存储库命名规则，请参阅[开放容器计划分发规范](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 
 ## <a name="image"></a>映像
 
@@ -63,9 +65,11 @@ Azure 容器注册表中的项目地址包括以下元素。
 
 映像或其他项目的标记指定了其版本。  存储库中的单个项目可分配有一个或多个标记，但也可能“无标记”。 也就是说，可删除映像中的所有标记，而映像的数据（其层）保留在注册表中。
 
-映像的名称由存储库（或存储库和命名空间）和标记进行定义。 在推送或拉取操作中指定映像名称，可以推送和拉取映像。
+映像的名称由存储库（或存储库和命名空间）和标记进行定义。 在推送或拉取操作中指定映像名称，可以推送和拉取映像。 `latest`如果未在 Docker 命令中提供标记，则默认情况下将使用标记。
 
 如何对容器映像进行标记由其开发或部署方案引导。 例如，建议使用稳定标记来维护基础映像，使用唯一标记来部署映像。 有关详细信息，请参阅[有关对容器映像进行标记和版本控制的建议](container-registry-image-tag-version.md)。
+
+有关标记命名规则，请参阅[Docker 文档](https://docs.docker.com/engine/reference/commandline/tag/)。
 
 ### <a name="layer"></a>层
 

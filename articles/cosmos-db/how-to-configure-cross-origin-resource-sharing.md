@@ -3,21 +3,21 @@ title: Azure Cosmos DB 中的跨源资源共享 (CORS)
 description: 本文介绍如何使用 Azure 门户和 Azure 资源管理器模板配置 Azure Cosmos DB 中的跨源资源共享 (CORS)。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 7a487cb10965a379a0a418efaa061be88c5d10dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77082990"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390867"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>配置跨源资源共享 (CORS)
 
 跨源资源共享 (CORS) 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为“同源策略”的安全限制，防止网页调用不同域中的 API。 但是，CORS 提供了一种安全的方式，允许源域调用另一个域中的 API。 Azure Cosmos DB 中的核心（SQL） API 现在支持跨域资源共享（CORS），方法是使用 "allowedOrigins" 标头。 为 Azure Cosmos 帐户启用 CORS 支持后，仅对经过身份验证的请求进行评估，以根据指定的规则确定是否允许这些请求。
 
-可以使用 Azure 门户或 Azure 资源管理器模板配置跨源资源共享 (CORS) 设置。 对于使用 Core (SQL) API 的 Cosmos 帐户，Azure Cosmos DB 支持在 Node.js 和基于浏览器的环境中均可使用的 JavaScript 库。 使用网关模式时，该库现在可以充分利用 CORS 支持。 无需客户端配置即可使用此功能。 借助 CORS 支持，来自浏览器的资源可以通过 [JavaScript 库](https://www.npmjs.com/package/@azure/cosmos)直接访问 Azure Cosmos DB 或直接通过 [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) 进行访问来执行简单操作。
+可以使用 Azure 门户或 Azure 资源管理器模板配置跨源资源共享 (CORS) 设置。 对于使用 Core (SQL) API 的 Cosmos 帐户，Azure Cosmos DB 支持在 Node.js 和基于浏览器的环境中均可使用的 JavaScript 库。 使用网关模式时，该库现在可以充分利用 CORS 支持。 无需客户端配置即可使用此功能。 借助 CORS 支持，来自浏览器的资源可以通过 [JavaScript 库](https://www.npmjs.com/package/@azure/cosmos)直接访问 Azure Cosmos DB 或直接通过 [REST API](/rest/api/cosmos-db/) 进行访问来执行简单操作。
 
 > [!NOTE]
 > CORS 支持仅适用于 Azure Cosmos DB Core (SQL) API 并受其支持。 它不适用于用于 Cassandra、Gremlin 或 MongoDB 的 Azure Cosmos DB API，因为这些协议不使用 HTTP 进行客户端-服务器通信。
@@ -33,7 +33,7 @@ ms.locfileid: "77082990"
    > [!NOTE]
    > 目前，不能将通配符用作域名的一部分。 例如，尚不支持 `https://*.mydomain.net` 格式。 
 
-   ![使用 Azure 门户启用跨源资源共享](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+   :::image type="content" source="./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png" alt-text="使用 Azure 门户启用跨源资源共享":::
 
 ## <a name="enable-cors-support-from-resource-manager-template"></a>使用资源管理器模板启用 CORS 支持
 

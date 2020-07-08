@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: b72462334fa2311b017be49860ed422dfa35430c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 816d1f762698deeed38afe01899916b491809db2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890825"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390459"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
 你可以使用[专用终结点](../private-link/private-endpoint-overview.md)将事件直接从你的虚拟网络直接发送到你的主题和域，[而无需](../private-link/private-link-overview.md)通过公共 internet。 专用终结点使用来自你的主题或域的 VNet 地址空间中的 IP 地址。 有关更多概念信息，请参阅[网络安全](network-security.md)。
@@ -37,37 +37,37 @@ ms.locfileid: "82890825"
     5. 然后，选择页面底部的 "**下一步：资源 >** " 按钮。 
 
       ![专用终结点-基本页](./media/configure-private-endpoints/basics-page.png)
-3. 在 "**资源**" 页上，执行以下步骤： 
+3. 在“资源”页上执行以下步骤： 
     1. 对于 "连接方法"，如果在 **"我的目录" 中选择 "连接到 Azure 资源**"，请执行以下步骤。 此示例演示如何在目录中连接到 Azure 资源。 
         1. 选择**主题/域**所在的**Azure 订阅**。 
         1. 对于 "**资源类型**"，请选择 " **EventGrid** " 或 " **EventGrid/域**" 作为**资源类型**。
         2. 对于 "**资源**"，请从下拉列表中选择一个主题/域。 
         3. 确认**目标 subresource**设置为**主题**或**域**（基于所选的资源类型）。    
-        4. 选择页面底部的 "**下一步：配置 >** " 按钮。 
+        4. 在页面底部选择“下一步:配置 >”按钮。 
 
             ![专用终结点-资源页](./media/configure-private-endpoints/resource-page.png)
     2. 如果选择 "**使用资源 ID 或别名连接到资源**"，请执行以下步骤：
         1. 输入资源的 ID。 例如：`/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>`。  
         2. 对于 "**资源**"，请输入**主题**或**域**。 
         3. 可有可无添加请求消息。 
-        4. 选择页面底部的 "**下一步：配置 >** " 按钮。 
+        4. 在页面底部选择“下一步:配置 >”按钮。 
 
             ![专用终结点-资源页](./media/configure-private-endpoints/connect-azure-resource-id.png)
-4. 在 "**配置**" 页上，选择要在其中部署专用终结点的虚拟网络中的子网。 
-    1. 选择一个**虚拟网络**。 下拉列表中仅列出当前所选订阅和位置中的虚拟网络。 
-    2. 选择所选虚拟网络中的**子网**。 
-    3. 选择页面底部的 "**下一步：标记 >** " 按钮。 
+4. 在“配置”页上，选择要在其中部署专用终结点的虚拟网络中的子网。 
+    1. 选择一个虚拟网络。 下拉列表中仅列出了当前所选订阅和位置中的虚拟网络。 
+    2. 在所选的虚拟网络中选择一个“子网”。 
+    3. 在完成时选择“下一步:标记 >”按钮，它位于页面底部。 
 
     ![专用终结点-配置页](./media/configure-private-endpoints/configuration-page.png)
-5. 在 "**标记**" 页上，创建要与专用终结点资源关联的任何标记（名称和值）。 然后，选择页面底部的 "**查看 + 创建**" 按钮。 
-6. 在 "**查看**" 和 "创建" 中，查看所有设置，并选择 "**创建**" 以创建专用终结点。 
+5. 在“标记”页上，创建要与专用终结点资源关联的任何标记（名称和值）。 然后选择页面底部的“查看 + 创建”按钮。 
+6. 在“查看 + 创建”页上查看所有设置，然后选择“创建”以创建专用终结点 。 
 
     ![专用终结点-查看 & 创建页面](./media/configure-private-endpoints/review-create-page.png)
     
 
 ### <a name="manage-private-link-connection"></a>管理专用链接连接
 
-创建专用终结点时，必须批准连接。 如果你要为其创建专用终结点的资源在你的目录中，则可以批准所提供的连接请求。 如果要连接到另一个目录中的 Azure 资源，则必须等待该资源的所有者批准连接请求。
+创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于你的目录中，在拥有足够权限的前提下，你可以批准连接请求。 如果要连接到另一个目录中的 Azure 资源，必须等待该资源的所有者批准你的连接请求。
 
 有四种预配状态：
 
@@ -81,10 +81,10 @@ ms.locfileid: "82890825"
 ###  <a name="how-to-manage-a-private-endpoint-connection"></a>如何管理专用终结点连接
 以下部分说明了如何批准或拒绝专用终结点连接。 
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在搜索栏中，键入**事件网格主题**或**事件网格域**。
 1. 选择要管理的**主题**或**域**。
-1. 选择“网络”选项卡。 
+1. 选择“网络”选项卡。
 1. 如果有任何挂起的连接，你会在预配状态中看到 "**挂起**" 列出的连接。 
 
 ### <a name="to-approve-a-private-endpoint"></a>批准专用终结点
@@ -140,8 +140,8 @@ az network private-endpoint create \
 
 有关此示例中使用的参数的说明，请参阅[az 网络专用终结点创建](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)文档。 在此示例中，需要注意几个要点： 
 
-- 对于`private-connection-resource-id`，请指定**主题**或**域**的资源 ID。 前面的示例使用 type：主题。
-- 对于`group-ids`，请`topic`指定`domain`或。 在前面的示例中`topic` ，使用。 
+- 对于 `private-connection-resource-id` ，请指定**主题**或**域**的资源 ID。 前面的示例使用 type：主题。
+- 对于 `group-ids` ，请指定 `topic` 或 `domain` 。 在前面的示例中， `topic` 使用。 
 
 若要删除专用终结点，请使用[az network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete)方法，如以下示例中所示：
 
@@ -184,8 +184,8 @@ az network private-endpoint create \
 
 有关此示例中使用的参数的说明，请参阅[az 网络专用终结点创建](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create)文档。 在此示例中，需要注意几个要点： 
 
-- 对于`private-connection-resource-id`，请指定**主题**或**域**的资源 ID。 前面的示例使用 type：主题。
-- 对于`group-ids`，请`topic`指定`domain`或。 在前面的示例中`topic` ，使用。 
+- 对于 `private-connection-resource-id` ，请指定**主题**或**域**的资源 ID。 前面的示例使用 type：主题。
+- 对于 `group-ids` ，请指定 `topic` 或 `domain` 。 在前面的示例中， `topic` 使用。 
 
 若要删除专用终结点，请使用[az network private-endpoint delete](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-delete)方法，如以下示例中所示：
 
@@ -299,7 +299,7 @@ az eventgrid topic private-endpoint-connection reject \
     --description "Connection rejected"
 ```
 
-### <a name="disable-public-network-access"></a>禁用公共网络访问
+### <a name="disable-public-network-access"></a>禁用公用网络访问
 默认情况下，对事件网格主题或域启用公共网络访问。 若要仅允许通过专用终结点进行访问，请运行以下命令禁用公共网络访问：  
 
 ```azurecli-interactive
@@ -484,4 +484,5 @@ Invoke-RestMethod -Method 'Get'
 即使已通过 API 拒绝连接，也可以批准连接。 如果使用 Azure 门户，则无法批准已拒绝的终结点。 
 
 ## <a name="next-steps"></a>后续步骤
-若要了解如何配置 IP 防火墙设置，请参阅[为 Azure 事件网格主题或域配置 ip 防火墙](configure-firewall.md)。
+* 若要了解如何配置 IP 防火墙设置，请参阅[为 Azure 事件网格主题或域配置 ip 防火墙](configure-firewall.md)。
+* 若要解决网络连接问题，请参阅[排查网络连接问题](troubleshoot-network-connectivity.md)

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c434ad6a724ba513caf7923916997600097b43f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187775"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387858"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
@@ -32,7 +32,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 
 1. 打开 *TrustframeworkExtensions.xml* 文件，向 **ClaimsSchema** 元素中添加标识符为 `identityProviderAccessToken` 的以下 **ClaimType** 元素：
 
-    ```XML
+    ```xml
     <BuildingBlocks>
       <ClaimsSchema>
         <ClaimType Id="identityProviderAccessToken">
@@ -47,7 +47,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 
 2. 针对你需要其访问令牌的每个 OAuth 2.0 标识提供者，向 **TechnicalProfile** 元素中添加 **OutputClaim** 元素。 下面的示例显示了添加到 Facebook 技术配置文件的该元素：
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Facebook</DisplayName>
       <TechnicalProfiles>
@@ -64,7 +64,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 3. 保存 *TrustframeworkExtensions.xml* 文件。
 4. 打开你的信赖方策略文件，例如 *SignUpOrSignIn.xml*，向 **TechnicalProfile** 中添加 **OutputClaim** 元素：
 
-    ```XML
+    ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
       <TechnicalProfile Id="PolicyProfile">
@@ -84,20 +84,20 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 
 ### <a name="upload-the-files"></a>上传文件
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录****。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”********。
-4. 选择 "**标识体验框架**"。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
+4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”****。
 6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。****
-7. 选择 "**上传**"。
+7. 选择**上载**。
 8. 针对信赖方文件（例如 *SignUpOrSignIn.xml*）重复步骤 5 到 7。
 
 ### <a name="run-the-policy"></a>运行策略
 
 1. 打开你更改的策略。 例如，*B2C_1A_signup_signin*。
 2. 对于“应用程序”****，选择你之前注册的应用程序。 “回复 URL”**** 应当显示 `https://jwt.ms` 才能看到以下示例中的令牌。
-3. 选择“立即运行”****。
+3. 选择“立即运行”。
 
     应会看到类似于以下示例的内容：
 

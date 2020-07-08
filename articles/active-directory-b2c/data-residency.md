@@ -7,16 +7,17 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/26/2019
+ms.topic: reference
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188842"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388708"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留
 
@@ -40,7 +41,7 @@ Azure AD B2C 将用户数据存储在美国、欧洲或亚太区域中。
 
 数据驻留取决于你在[创建 Azure AD B2C 租户](tutorial-create-tenant.md)时选择的国家/地区：
 
-![预览租户的屏幕截图](./media/data-residency/data-residency-b2c-tenant.png)
+![创建租户窗体的屏幕截图，选择国家或地区。](./media/data-residency/data-residency-b2c-tenant.png)
 
 数据驻留在以下国家/地区的**美国**中：
 
@@ -68,4 +69,4 @@ Azure AD B2C 将用户数据存储在美国、欧洲或亚太区域中。
 
 删除预览版 B2C 租户并创建具有相同域名的生产规模 B2C 租户时，存在已知问题。 *必须创建具有不同域名的生产规模 B2C 租户*。
 
-![预览租户的屏幕截图](./media/data-residency/preview-b2c-tenant.png)
+![作为预览租户的租户类型的屏幕截图。](./media/data-residency/preview-b2c-tenant.png)

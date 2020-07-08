@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803154"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389184"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用“使我保持登录状态 (KMSI)”
 
@@ -34,10 +34,10 @@ ms.locfileid: "80803154"
 
 ## <a name="configure-the-page-identifier"></a>配置页面标识符
 
-若要启用 KMSI，请将内容`DataUri`定义元素设置为[页面标识符](contentdefinitions.md#datauri) `unifiedssp`和[页面版本](page-layout.md) *1.1.0*或更高版本。
+若要启用 KMSI，请将内容定义 `DataUri` 元素设置为[页面标识符](contentdefinitions.md#datauri) `unifiedssp` 和[页面版本](page-layout.md) *1.1.0*或更高版本。
 
-1. 打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](custom-policy-get-started.md)。
-1. 搜索 BuildingBlocks**** 元素。 如果该元素不存在，请添加该元素。
+1. 打开策略的扩展文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。 此扩展文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](custom-policy-get-started.md)。
+1. 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
 1. 将**ContentDefinitions**元素添加到策略的**BuildingBlocks**元素中。
 
     自定义策略应类似于以下代码片段：
@@ -54,12 +54,12 @@ ms.locfileid: "80803154"
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>将元数据添加到自断言技术配置文件
 
-若要将 KMSI 复选框添加到注册和登录页，请将`setting.enableRememberMe`元数据设置为 true。 覆盖扩展文件中的 SelfAsserted-LocalAccountSignin 技术配置文件。
+若要将 KMSI 复选框添加到注册和登录页，请将 `setting.enableRememberMe` 元数据设置为 true。 覆盖扩展文件中的 SelfAsserted-LocalAccountSignin 技术配置文件。
 
 1. 找到 ClaimsProviders 元素。 如果该元素不存在，请添加该元素。
 1. 将以下声明提供程序添加到 ClaimsProviders 元素：
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
@@ -79,10 +79,10 @@ ms.locfileid: "80803154"
 更新用于启动创建的用户旅程的信赖方 (RP) 文件。
 
 1. 打开自定义策略文件。 例如，SignUpOrSignin.xml**。
-1. 如果它尚不存在，请将`<UserJourneyBehaviors>`一个子节点添加`<RelyingParty>`到该节点。 它必须紧跟在之后`<DefaultUserJourney ReferenceId="User journey Id" />`，例如：。 `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`
+1. 如果它尚不存在，请将一个 `<UserJourneyBehaviors>` 子节点添加到该 `<RelyingParty>` 节点。 它必须紧跟在之后 `<DefaultUserJourney ReferenceId="User journey Id" />` ，例如： `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />` 。
 1. 将以下节点添加为 `<UserJourneyBehaviors>` 元素的子级。
 
-    ```XML
+    ```xml
     <UserJourneyBehaviors>
       <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
       <SessionExpiryType>Absolute</SessionExpiryType>
@@ -90,17 +90,17 @@ ms.locfileid: "80803154"
     </UserJourneyBehaviors>
     ```
 
-    - **Ssosession** -指示在和`SessionExpiryInSeconds` `KeepAliveInDays`中指定的时间的扩展会话的方式。 `Rolling`值（默认值）指示每次用户执行身份验证时会话都将扩展。 `Absolute`该值表示用户在指定的时间段后被迫重新进行身份验证。
+    - **Ssosession** -指示在和中指定的时间的扩展会话的 `SessionExpiryInSeconds` 方式 `KeepAliveInDays` 。 `Rolling`值（默认值）指示每次用户执行身份验证时会话都将扩展。 `Absolute`该值表示用户在指定的时间段后被迫重新进行身份验证。
 
-    - **SessionExpiryInSeconds** -未启用 "*使我保持登录*状态" 时会话 cookie 的生存期，或用户未选择 "*使我保持登录*状态"。 会话在经过后`SessionExpiryInSeconds`过期，或浏览器已关闭。
+    - **SessionExpiryInSeconds** -未启用 "*使我保持登录*状态" 时会话 cookie 的生存期，或用户未选择 "*使我保持登录*状态"。 会话在经过后过期 `SessionExpiryInSeconds` ，或浏览器已关闭。
 
-    - **KeepAliveInDays** -启用 "*使我保持登录*状态" 时会话 cookie 的生存期，用户选择 "*使我保持登录*状态"。  的值`KeepAliveInDays`优先于`SessionExpiryInSeconds`值，并指示会话到期时间。 如果用户关闭浏览器并稍后重新打开它，则只要它在 KeepAliveInDays 时间段内，它们仍可无提示登录。
+    - **KeepAliveInDays** -启用 "*使我保持登录*状态" 时会话 cookie 的生存期，用户选择 "*使我保持登录*状态"。  的值 `KeepAliveInDays` 优先于 `SessionExpiryInSeconds` 值，并指示会话到期时间。 如果用户关闭浏览器并稍后重新打开它，则只要它在 KeepAliveInDays 时间段内，它们仍可无提示登录。
 
     有关详细信息，请参阅[用户旅程行为](relyingparty.md#userjourneybehaviors)。
 
 建议将 SessionExpiryInSeconds 的值设置为短时间（1200秒），而 KeepAliveInDays 的值可以设置为相对较长的时间（30天），如下面的示例中所示：
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <UserJourneyBehaviors>
@@ -131,7 +131,7 @@ ms.locfileid: "80803154"
 1. 若要测试上传的自定义策略，请在 "Azure 门户中，单击" 策略 "页，然后选择"**立即运行**"。
 1. 键入**用户名**和**密码**，选择 "**使我保持登录**"，并单击 "**登录**"。
 1. 返回到 Azure 门户。 中转到 "策略" 页，然后选择 "**复制**" 以复制 "登录 URL"。
-1. 在浏览器地址栏中，删除`&prompt=login`查询字符串参数，这会强制用户在该请求上输入其凭据。
+1. 在浏览器地址栏中，删除 `&prompt=login` 查询字符串参数，这会强制用户在该请求上输入其凭据。
 1. 在浏览器中，单击 "**开始**"。 现在 Azure AD B2C 会颁发访问令牌，而不会提示你再次登录。 
 
 ## <a name="next-steps"></a>后续步骤

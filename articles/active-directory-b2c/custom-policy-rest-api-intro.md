@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388929"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中集成 REST API 声明交换
 
@@ -32,6 +32,9 @@ ms.locfileid: "83636986"
 - 运行自定义业务逻辑。 可以发送推送通知、更新企业数据库、运行用户迁移过程、管理权限、审核数据库，以及执行任何其他工作流。
 
 ![RESTful 服务声明交换示意图](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> 如果 RESTful Azure AD B2C 服务的响应速度缓慢或没有响应，则超时为30秒，重试计数为2次（即，总共尝试3次）。 "超时" 和 "重试次数" 设置当前不可配置。
 
 ## <a name="calling-a-restful-service"></a>调用 RESTful 服务
 
@@ -142,7 +145,7 @@ REST API 可以基于任何平台并以任何编程语言进行编写，只要�
 ## <a name="localize-the-rest-api"></a>本地化 REST API
 在 RESTful 技术配置文件中，你可能要发送当前会话的语言/区域设置，并在必要时引发本地化错误消息。 使用[声明解析程序](claim-resolver-overview.md)可以发送上下文声明，如用户语言。 以下示例显示一个用于演示此方案的 RESTful 技术配置文件。
 
-```XML
+```xml
 <TechnicalProfile Id="REST-ValidateUserData">
   <DisplayName>Validate user input data</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -162,7 +165,7 @@ REST API 可以基于任何平台并以任何编程语言进行编写，只要�
 
 ## <a name="handling-error-messages"></a>处理错误消息
 
-REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 409 错误消息（冲突响应状态代码）。 有关详细信息，请参阅 [RESTful 技术配置文件](restful-technical-profile.md#returning-error-message)。
+REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回 HTTP 409 错误消息（冲突响应状态代码）。 有关详细信息，请参阅 [RESTful 技术配置文件](restful-technical-profile.md#returning-validation-error-message)。
 
 这只能通过从验证技术配置文件调用 REST API 技术配置文件来实现。 这使用户可以更正页面上的数据，并在提交页面时再次运行验证。
 

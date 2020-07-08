@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
-ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: d244a5bfb6d0a1e2a0965cc72a8f223e0646fa77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72755080"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85390850"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 服务器响应标头
 本文介绍了执行请求时 Cosmos DB Gremlin 服务器返回给调用方的标头。 这些标头可用于排查请求性能问题，生成与 Cosmos DB 服务进行本机集成的应用程序，以及简化客户支持。
@@ -107,6 +107,6 @@ try {
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Cosmos DB 的 HTTP 状态代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [常见的 Azure Cosmos DB REST 响应标头](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [Azure Cosmos DB 的 HTTP 状态代码](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
+* [常见的 Azure Cosmos DB REST 响应标头](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [TinkerPop 图形驱动程序提供程序要求]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

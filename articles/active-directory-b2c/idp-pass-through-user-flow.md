@@ -7,22 +7,22 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78187773"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85387824"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
 
 Azure Active Directory B2C (Azure AD B2C) 中的[用户流](user-flow-overview.md)允许应用程序的用户通过标识提供者进行注册或登录。 此过程开始时，Azure AD B2C 会从标识提供者处收到一个[访问令牌](tokens-overview.md)。 Azure AD B2C 使用该令牌来检索有关用户的信息。 在用户流中启用声明即可将该令牌传递给你在 Azure AD B2C 中注册的应用程序。
 
-Azure AD B2C 当前仅支持传递 [OAuth 2.0](authorization-code-flow.md) 标识提供者（这包括 [Facebook](identity-provider-facebook.md) 和 [Google](identity-provider-google.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
+Azure AD B2C 当前仅支持传递[OAuth 2.0](authorization-code-flow.md)标识提供程序（包括[Facebook](identity-provider-facebook.md)和[Google](identity-provider-google.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
 ## <a name="prerequisites"></a>必备条件
 

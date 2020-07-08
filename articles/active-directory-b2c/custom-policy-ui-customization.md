@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396384"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85388878"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -34,12 +34,12 @@ ms.locfileid: "80396384"
 
 若要配置 UI 自定义，请将基文件中的**ContentDefinition**及其子元素复制到扩展文件中。
 
-1. 打开策略的基文件。 例如， <em> `SocialAndLocalAccounts/` </em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 打开策略的基文件。 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkBase.xml`</em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜索并复制 ContentDefinitions**** 元素的全部内容。
-1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml**。 搜索 BuildingBlocks**** 元素。 如果该元素不存在，请添加该元素。
-1. 粘贴作为 BuildingBlocks**** 元素的子元素复制的 ContentDefinitions**** 元素的全部内容。
+1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml**。 搜索 **BuildingBlocks** 元素。 如果该元素不存在，请添加该元素。
+1. 粘贴复制为**BuildingBlocks**元素的子元素的**ContentDefinitions**元素的全部内容。
 1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition**** 元素。
-1. 将 LoadUri**** 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
+1. 将 LoadUri**** 的值更改为上传到存储的 HTML 文件的 URL。 例如 `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`。
 
     自定义策略应类似于以下代码片段：
 
@@ -64,28 +64,28 @@ ms.locfileid: "80396384"
 
 #### <a name="51-upload-the-custom-policy"></a>5.1 上传自定义策略
 
-1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
-1. 搜索并选择**Azure AD B2C**。
-1. 在“策略”下，选择“Identity Experience Framework”。********
-1. 选择 "**上载自定义策略**"。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 搜索并选择“Azure AD B2C”。
+1. 在“策略”下，选择“Identity Experience Framework”。 
+1. 选择“上传自定义策略”。
 1. 上传以前已更改的扩展文件。
 
 #### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 通过使用 "**立即运行**" 测试自定义策略
 
-1. 选择上传的策略，然后选择 "**立即运行**"。
+1. 选择已上传的策略，然后选择“立即运行”。
 1. 现在，应该可以使用电子邮件地址进行注册了。
 
 [!INCLUDE [active-directory-b2c-html-templates](../../includes/active-directory-b2c-html-templates.md)]
 
 ## <a name="configure-dynamic-custom-page-content-uri"></a>配置动态自定义页面内容 URI
 
-通过使用 Azure AD B2C 自定义策略，你可以在 URL 路径中发送参数，或在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 参数可以是任何[声明解析](claim-resolver-overview.md)程序，如应用程序 ID、语言 ID 或自定义查询字符串参数（例如） `campaignId`。
+通过使用 Azure AD B2C 自定义策略，你可以在 URL 路径中发送参数，或在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 参数可以是任何[声明解析](claim-resolver-overview.md)程序，如应用程序 ID、语言 ID 或自定义查询字符串参数（例如） `campaignId` 。
 
 ### <a name="sending-query-string-parameters"></a>发送查询字符串参数
 
-若要发送查询字符串参数，请在[信赖方策略](relyingparty.md)中添加`ContentDefinitionParameters`一个元素，如下所示。
+若要发送查询字符串参数，请在[信赖方策略](relyingparty.md)中添加一个元素，如下 `ContentDefinitionParameters` 所示。
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -99,9 +99,9 @@ ms.locfileid: "80396384"
 </RelyingParty>
 ```
 
-在内容定义中，将的`LoadUri`值更改为`https://<app_name>.azurewebsites.net/home/unified`。 自定义策略`ContentDefinition`应类似于以下代码片段：
+在内容定义中，将的值更改 `LoadUri` 为 `https://<app_name>.azurewebsites.net/home/unified` 。 自定义策略 `ContentDefinition` 应类似于以下代码片段：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,14 +118,14 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 可以根据所使用的参数从不同位置拉取内容。 在启用 CORS 的终结点中，设置文件夹结构以托管内容。 例如，可以按以下结构组织内容。 *每个语言/html 文件的根文件夹/文件夹*。 例如，自定义的页面 URI 可能类似于以下内容：
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...
 </ContentDefinition>
 ```
 
-对于法语， `fr` Azure AD B2C 为语言发送两个字母 ISO 代码：
+对于法语，Azure AD B2C 为语言发送两个字母 ISO 代码 `fr` ：
 
 ```http
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html

@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47fdf445fa11693dd3a998b8c73ac0c3ed8452a8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85389354"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
@@ -41,17 +41,17 @@ ms.locfileid: "79473670"
 
 ## <a name="define-a-claim"></a>定义声明
 
-声明在 Azure AD B2C 策略执行过程中提供数据的临时存储。 声明[架构](claimsschema.md)是声明声明的位置。 以下元素用于定义声明：
+声明在 Azure AD B2C 策略执行过程中提供数据的临时存储。 [声明架构](claimsschema.md)是发出声明的位置。 以下元素用于定义声明：
 
 - **DisplayName** - 一个字符串，用于定义面向用户的标签。
 - [DataType](claimsschema.md#datatype) -声明的类型。
 - **UserHelpText** - 帮助用户了解需要提供哪些信息。
 - [UserInputType](claimsschema.md#userinputtype) -输入控件（如文本框、广播选择、下拉列表或多个选项）的类型。
 
-打开策略的扩展文件。 例如， <em> `SocialAndLocalAccounts/` </em>。
+打开策略的扩展文件， 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。
 
-1. 搜索 BuildingBlocks[](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
-1. 找到 " [ClaimsSchema](claimsschema.md) " 元素。 如果该元素不存在，请添加该元素。
+1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
+1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
 1. 将 city 声明添加到**ClaimsSchema**元素。  
 
 ```xml
@@ -75,7 +75,7 @@ ms.locfileid: "79473670"
 - **SelfAsserted-** 联合帐户首次用户登录。
 - **SelfAsserted-self-asserted-profileupdate** -编辑配置文件流。
 
-若要在注册期间收集城市声明，则必须将其作为输出声明添加到`LocalAccountSignUpWithLogonEmail`技术配置文件中。 覆盖扩展文件中的此技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
+若要在注册期间收集城市声明，则必须将其作为输出声明添加到 `LocalAccountSignUpWithLogonEmail` 技术配置文件中。 覆盖扩展文件中的此技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
 
 ```xml
 <ClaimsProvider>
@@ -98,7 +98,7 @@ ms.locfileid: "79473670"
 <ClaimsProvider>
 ```
 
-若要在使用联合帐户初次登录后收集 city 声明，必须将其作为输出声明添加到`SelfAsserted-Social`技术配置文件。 为了使本地和联合帐户用户以后能够编辑其配置文件数据，请将输出声明添加到`SelfAsserted-ProfileUpdate`技术配置文件中。 覆盖扩展文件中的这些技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
+若要在使用联合帐户初次登录后收集 city 声明，必须将其作为输出声明添加到 `SelfAsserted-Social` 技术配置文件。 为了使本地和联合帐户用户以后能够编辑其配置文件数据，请将输出声明添加到 `SelfAsserted-ProfileUpdate` 技术配置文件中。 覆盖扩展文件中的这些技术配置文件。 指定输出声明的完整列表，以控制声明在屏幕上的显示顺序。 找到 **ClaimsProviders** 元素。 添加新的 ClaimsProviders，如下所示：
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -128,7 +128,7 @@ ms.locfileid: "79473670"
 ## <a name="read-and-write-a-claim"></a>读取和写入声明
 
 以下技术配置文件是[Active Directory 技术配置文件，这些配置文件](active-directory-technical-profile.md)将数据读写到 Azure Active Directory 中。  
-使用`PersistedClaims`将数据写入用户配置文件，并`OutputClaims`从各自 Active Directory 技术配置文件中的用户配置文件中读取数据。
+使用 `PersistedClaims` 将数据写入用户配置文件，并 `OutputClaims` 从各自 Active Directory 技术配置文件中的用户配置文件中读取数据。
 
 覆盖扩展文件中的这些技术配置文件。 找到 **ClaimsProviders** 元素。  添加新的 ClaimsProviders，如下所示：
 
@@ -172,7 +172,7 @@ ms.locfileid: "79473670"
 
 ## <a name="include-a-claim-in-the-token"></a>在令牌中包括声明 
 
-若要将城市声明返回给信赖方应用程序，请将输出声明添加到<em> `SocialAndLocalAccounts/` </em>该文件。 用户成功旅程后，会将输出声明添加到令牌中，并将其发送到应用程序。 修改 "信赖方" 部分中的 "技术配置文件" 元素，以将城市添加为输出声明。
+若要将城市声明返回给信赖方应用程序，请将输出声明添加到该 <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> 文件。 用户成功旅程后，会将输出声明添加到令牌中，并将其发送到应用程序。 修改 "信赖方" 部分中的 "技术配置文件" 元素，以将城市添加为输出声明。
  
 ```xml
 <RelyingParty>
@@ -198,11 +198,11 @@ ms.locfileid: "79473670"
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD 租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”********。
-4. 选择 "**标识体验框架**"。
+2. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
+3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
+4. 选择“标识体验框架”。
 5. 选择“上传自定义策略”，然后上传已更改的两个策略文件。****
-2. 选择已上传的注册或登录策略，并单击“立即运行”按钮。****
+2. 选择已上传的注册或登录策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址注册。
 
 注册屏幕应类似于以下屏幕截图：
