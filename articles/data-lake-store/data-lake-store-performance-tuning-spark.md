@@ -3,15 +3,15 @@ title: 性能优化-Spark 与 Azure Data Lake Storage Gen1
 description: 了解 Azure HDInsight 上的 Spark 和 Azure Data Lake Storage Gen1 的性能优化指南。
 author: stewu
 ms.service: data-lake-store
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 665fd3bf29f0ec4d2196bd29be300ee909364e31
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7012808e4ebcd936f30aba767731e7888d92161f
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856924"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "82691106"
 
 ## <a name="prerequisites"></a>先决条件
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen1 中运行 Spark 群集**。 有关详细信息，请参阅[使用 HDInsight Spark 群集分析中的数据 Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
@@ -55,26 +55,30 @@ ms.locfileid: "82691106"
 
 **步骤 3：设置执行器核心数** – 对于不执行复杂操作的 I/O 密集型工作负荷而言，一开始最好是指定一个较大数值的执行器核心数，以增加每个执行器的并行任务数。 将执行器核心数设置为 4 是个不错的起点。
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 增加执行器核心数可以提高并行度，这样可以体验不同执行器核心数带来的效果。 对于执行较复杂操作的作业，应减少每个执行器的核心数。 如果执行器核心数设置为 4 以上，则垃圾回收可能会变得低效，并且性能会下降。
 
 **步骤 4：确定群集中的 YARN 内存量** – Ambari 中提供了此信息。 导航到 YARN 并查看 "Contigs" 选项卡。YARN 内存显示在此窗口中。
 请注意，在该窗口中操作时，还可以查看默认的 YARN 容器大小。 YARN 容器大小与每个执行器的内存量参数相同。
 
-    Total YARN memory = nodes * YARN memory per node
+Total YARN memory = node * 每个节点的 YARN 内存
+
 **步骤 5：计算执行器数目**
 
 **计算内存约束** - 执行器数目参数受内存或 CPU 的约束。 内存约束由应用程序的可用 YARN 内存量决定。 获取 YARN 内存总量，并将其除以执行器内存。 需要根据应用数目重新换算约束，以便能够将它与应用数目相除。
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps
+Memory constraint = （total YARN memory/执行器内存）/应用 #
+
 **计算 CPU 约束** - 将虚拟核心总数除以每个执行器的核心数可以计算出 CPU 约束。 每个物理核心有 2 个虚拟核心。 与内存约束类似，可以除以应用数目来计算结果。
 
-    virtual cores = (nodes in cluster * # of physical cores in node * 2)
-    CPU constraint = (total virtual cores / # of cores per executor) / # of apps
+虚拟核心数 = （群集中的节点 * 节点中的物理内核数 * 2） CPU 约束 = （每个执行器的虚拟核心总数/每个执行器的核心数）/应用 #
+
 **设置执行器数目** – 使用内存约束和 CPU 约束的最小值可以得出执行器数目参数。 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
-设置较大的执行器数目不一定会提高性能。 应考虑到添加更多执行器会增加每个附加执行器的额外开销，这可能会降低性能。 执行器数目受群集资源的约束。
+执行数 = Min （每个执行器的核心数/每个执行器的核心数，可用 YARN 内存/执行器内存）设置更高的次数不一定会提高性能。 应考虑到添加更多执行器会增加每个附加执行器的额外开销，这可能会降低性能。 执行器数目受群集资源的约束。
 
 ## <a name="example-calculation"></a>示例计算
 
@@ -84,30 +88,28 @@ ms.locfileid: "82691106"
 
 **步骤 2：设置执行器内存** – 对于本示例，我们确定 6GB 执行器内存对于 I/O 密集型作业已足够。
 
-    executor-memory = 6GB
+```console
+executor-memory = 6GB
+```
+
 **步骤3：设置执行器核心**–由于这是一个 i/o 密集型作业，因此我们可以将每个执行器的核心数设置为4。 将每个执行器的核心数设置为大于4可能会导致垃圾回收问题。
 
-    executor-cores = 4
+```console
+executor-cores = 4
+```
+
 **步骤 4：确定群集中的 YARN 内存量** – 导航到 Ambari，可以发现每个 D4v2 具有 25GB YARN 内存。 由于有 8 个节点，因此内存总量为每个节点的可用 YARN 内存量乘以 8。
 
-    Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25 GB = 200 GB
+Total YARN memory = node * YARN memory * per node Total YARN memory = 8 节点 * 25 GB = 200 GB
+
 **步骤 5：计算执行器数目** – 将内存约束和 CPU 约束的最小值除以 Spark 中运行的应用数目可以得出执行器数目参数。
 
 **计算内存约束** – 将 YARN 内存总量除以每个执行器的内存量可以计算出内存约束。
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps 
-    Memory constraint = (200 GB / 6 GB) / 2
-    Memory constraint = 16 (rounded)
-**计算 CPU 约束** - 将 YARN 核心总数除以每个执行器的核心数可以计算出 CPU 约束。
-    
-    YARN cores = nodes in cluster * # of cores per node * 2
-    YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
-    CPU constraint = (total YARN cores / # of cores per executor) / # of apps
-    CPU constraint = (128 / 4) / 2
-    CPU constraint = 16
+内存限制 = （total YARN memory/执行器内存）/# of apps Memory constraint = （200 GB/6 GB）/2 Memory constraint = 16 （舍入）**计算 CPU 约束**-cpu 约束计算为 YARN 核心总数除以每个执行器的核心数。
+
+YARN 核 = 群集中的节点 * 每个节点的内核数 * 2 YARN 核心数 = 8 个节点 * 每个 D14 8 个内核 * 2 = 128 CPU 限制 = （每个执行器的总 YARN 核心数/每个128执行器数
+
 **设置执行器数目**
 
-    num-executors = Min (memory constraint, CPU constraint)
-    num-executors = Min (16, 16)
-    num-executors = 16
+执行数 = Min （内存约束、CPU 约束） num-执行器 = Min （16，16） num-执行器 = 16

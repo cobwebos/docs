@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: baa0ad790491351a17b638ba9d8eb75ed1f355b0
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: aa662dfbd98be5ec16a30e690f28196ca3868390
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758616"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855905"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -167,7 +167,7 @@ ms.locfileid: "83758616"
 * 要求通过 Microsoft Authenticator 对所有用户进行 MFA 质询
 * 限制旧身份验证协议。
 
-此方法可用于所有许可层，但不能与现有的条件访问策略混合使用。 若要了解详细信息，可以参阅“Azure AD 安全默认值”
+此方法可用于所有许可层，但不能与现有的条件访问策略混合使用。 你可以在[Azure AD 安全默认值](/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中查找详细信息
 
 **选项 2**：[通过更改用户状态启用多重身份验证](../../active-directory/authentication/howto-mfa-userstates.md)。   
 **优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure 多重身份验证和 Azure 多重身份验证服务器](/azure/active-directory/authentication/concept-mfa-whichversion)。 使用此方法要求用户在每次登录时都执行双重验证，并且会替代条件访问策略。
@@ -189,7 +189,7 @@ ms.locfileid: "83758616"
 此方法使用“Azure AD 标识保护”风险评估来确定是否需要基于所有云应用程序的用户和登录风险进行双重验证。 此方法需要 Azure Active Directory P2 授权。 有关此方法的详细信息，请参阅 [Azure Active Directory 标识保护](/azure/active-directory/identity-protection/overview)。
 
 > [!Note]
-> 选项 1 是通过更改用户状态来启用多重身份验证，它替代了条件访问策略。 因为选项 2 和 3 使用条件访问策略，所以无法将选项 1 与这两个选项结合使用。
+> 选项2，通过更改用户状态启用多重身份验证会替代条件访问策略。 由于选项3和4使用条件性访问策略，因此不能将选项2与它们一起使用。
 
 未添加额外标识保护层（如双重验证）的组织将更容易受到凭据窃取攻击。 凭据窃取攻击可能导致数据泄漏。
 

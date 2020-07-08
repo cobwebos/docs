@@ -8,17 +8,17 @@ manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9066c53fce750b1c8402c5a0ccbd10debd5ec431
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60612532"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855702"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成
 
@@ -46,17 +46,17 @@ ms.locfileid: "60612532"
 
 **Data Lake Storage 公共 IP 地址** - 使用目标 Data Lake Storage Gen1 帐户的公共 IP 地址。 若要确定 Data Lake Storage Gen1 帐户的 IP 地址，请[解析其 DNS 名称](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity)。 为每个地址创建一个单独的条目。
 
-    ```azurecli
-    # Create a route table for your resource group.
-    az network route-table create --resource-group $RgName --name $RouteTableName
-    
-    # Create route table rules for Data Lake Storage public IP addresses.
-    # There's one rule per Data Lake Storage public IP address. 
-    az network route-table route create --name toADLSregion1 --resource-group $RgName --route-table-name $RouteTableName --address-prefix <ADLS Public IP Address> --next-hop-type Internet
-    
-    # Update the virtual network, and apply the newly created route table to it.
-    az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resource-group $RgName --route-table $RouteTableName
-    ```
+```azurecli
+# Create a route table for your resource group.
+az network route-table create --resource-group $RgName --name $RouteTableName
+
+# Create route table rules for Data Lake Storage public IP addresses.
+# There's one rule per Data Lake Storage public IP address. 
+az network route-table route create --name toADLSregion1 --resource-group $RgName --route-table-name $RouteTableName --address-prefix <ADLS Public IP Address> --next-hop-type Internet
+
+# Update the virtual network, and apply the newly created route table to it.
+az network vnet subnet update --vnet-name $VnetName --name $SubnetName --resource-group $RgName --route-table $RouteTableName
+```
 
 ## <a name="data-exfiltration-from-the-customer-virtual-network"></a>客户虚拟网络中的数据泄露
 
@@ -118,7 +118,7 @@ ms.locfileid: "60612532"
 
        ![向 Data Lake Storage 帐户添加虚拟网络规则](media/data-lake-store-network-security/config-adls-1.png)
 
-3.  选择“所选网络”。****
+3.  选择“所选网络”。
  
 4.  选择 "**添加现有虚拟网络**"。
 
@@ -128,7 +128,7 @@ ms.locfileid: "60612532"
 
     ![选择虚拟网络和子网](media/data-lake-store-network-security/config-adls-3.png)
 
-6.  确保虚拟网络和子网在列表中正确显示。 选择“保存”。 
+6.  确保虚拟网络和子网在列表中正确显示。 选择“保存”。
 
     ![保存新规则](media/data-lake-store-network-security/config-adls-4.png)
 

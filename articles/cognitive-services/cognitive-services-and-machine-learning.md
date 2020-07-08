@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c8480557d0f27594fa369e4e2451a5d0fe7ad3cc
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220218"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856734"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>认知服务和机器学习
 
@@ -22,7 +22,7 @@ ms.locfileid: "84220218"
 
 [认知服务](welcome.md)是一组服务，每个服务支持不同的通用化预测功能。 服务分为不同的类别，以帮助你找到正确的服务。 
 
-|服务类别|用途|
+|服务类别|目标|
 |--|--|
 |[决策](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|构建应用，用于呈现有助于做出明智和高效决策的建议。|
 |[语言](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|让应用能够通过预建的脚本处理自然语言、评估情绪，并了解如何识别用户需求。|
@@ -73,7 +73,7 @@ ms.locfileid: "84220218"
 
 ### <a name="no-additional-training-data-required"></a>无需其他培训数据
 
-可将提供完全训练的模型的服务视为一个_黑色框_。 您无需知道它们的工作方式或用于对它们进行定型的数据。 您可以将数据引入经过完全训练的模型，以获得预测。 
+提供完全训练的模型的服务可被视为不透明的_框_。 您无需知道它们的工作方式或用于对它们进行定型的数据。 您可以将数据引入经过完全训练的模型，以获得预测。 
 
 ### <a name="some-or-all-training-data-required"></a>需要的部分或全部定型数据
 
@@ -91,7 +91,7 @@ _利用_服务，你可以提供数据来增强其自身的数据。 服务可�
 
 |认知服务|无需定型数据|提供了部分或全部定型数据|实时或近乎实时的数据收集|
 |--|--|--|--|
-|[异常检测器](./Anomaly-Detector/overview.md)|x|x|x|
+|[异常探测器](./Anomaly-Detector/overview.md)|x|x|x|
 |必应搜索 |x|||
 |[计算机视觉](./Computer-vision/Home.md)|x|||
 |[内容审查器](./Content-Moderator/overview.md)|x||x|

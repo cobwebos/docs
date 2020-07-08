@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c83323ff7b951892b96d49f3173c022592aac331
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594126"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920177"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]
@@ -44,7 +44,9 @@ ms.locfileid: "67594126"
 
 创建一个文件夹以存储应用程序。  在当前路径中带有 Node.js 工具的控制台中，将当前位置设置为此新文件夹，并通过执行以下命令来初始化项目：
 
-    npm init
+```console
+npm init
+```
 
 然后，将看到一系列问题，用于初始化项目。  对于**入口点**，本教程使用 *app.js*。  可以在下面的例子中看到我的其他选择。
 
@@ -52,8 +54,10 @@ ms.locfileid: "67594126"
 
 我们的项目现在使用 *packages.json* 文件进行初始化。  我们的项目将使用 NPM 包中包含的部分 Azure 库。  我们将使用适用于 Node.js 的 Azure 客户端运行时 (ms-rest-azure) 和适用于 Node.js 的 Azure CDN 客户端库 (azure-arm-cd)。  让我们将它们作为依赖项添加到项目。
 
-    npm install --save ms-rest-azure
-    npm install --save azure-arm-cdn
+```console
+npm install --save ms-rest-azure
+npm install --save azure-arm-cdn
+```
 
 当包安装完成后，*package.json* 文件应与此示例类似（版本号可能不同）：
 
@@ -86,7 +90,7 @@ ms.locfileid: "67594126"
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请确保将占位符（包括** &lt;尖括号&gt;**）替换为所需的值。
+2. 我们需要定义我们的方法将使用的一些常量。  添加以下内容。  请务必根据需要使用值替换占位符，包括 **&lt;尖括号&gt;** 。
    
     ``` javascript
     //Tenant app constants
@@ -119,7 +123,7 @@ ms.locfileid: "67594126"
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    请确保将** &lt;尖括号&gt; **中的项替换为正确的信息。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
+    请确保将** &lt; 尖括号 &gt; **中的项替换为正确的信息。  对于 `<redirect URI>`，请使用在 Azure AD 中注册应用程序时输入的重定向 URI。
 4. 我们的 Node.js 控制台应用程序会采用一些命令行参数。  让我们验证是否至少传递了一个参数。
    
    ```javascript

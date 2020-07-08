@@ -3,15 +3,15 @@ title: 将大型数据集上传到 Azure Data Lake Storage Gen1 脱机方法
 description: 使用导入/导出服务将数据从 Azure Blob 存储复制到 Azure Data Lake Storage Gen1
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: aa3eb0bcd9ddd2a094563efe326f7af7e9e8708a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855675"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Data Lake Storage Gen1
 
@@ -23,7 +23,7 @@ ms.locfileid: "73839295"
 
 在开始之前，必须满足以下条件：
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **一个 Azure 存储帐户**。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)。
 
@@ -31,17 +31,16 @@ ms.locfileid: "73839295"
 
 使用导入/导入服务前，请将要传输的数据文件拆分为**小于 200GB 大小的副本**。 导入工具无法处理大于 200GB 的文件。 在本文中，我们将文件拆分为每个 100 GB 的区块。 可使用 [Cygwin](https://cygwin.com/install.html) 实现此目的。 Cygwin 支持 Linux 命令。 在这种情况下，使用以下命令：
 
-    split -b 100m 319GB.tsv
+```console
+split -b 100m 319GB.tsv
+```
 
 此拆分操作会创建具有以下名称的文件。
 
-    319GB.tsv-part-aa
-
-    319GB.tsv-part-ab
-
-    319GB.tsv-part-ac
-
-    319GB.tsv-part-ad
+* *319GB-aa*
+* *319GB-ab*
+* *319GB-ac*
+* *319GB-ad*
 
 ## <a name="get-disks-ready-with-data"></a>准备好数据可使用的磁盘
 

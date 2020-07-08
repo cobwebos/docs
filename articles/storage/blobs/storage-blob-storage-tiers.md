@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14e8b3e28115fb191760382ed2a9fbd5c5a04114
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919926"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -59,9 +59,9 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性  。 使用
 
 ## <a name="archive-access-tier"></a>存档访问层
 
-存档访问层的存储成本最低。 但与热层和冷层相比，数据检索成本更高。 检索存档层中的数据可能需要花费几个小时。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。
+存档访问层的存储成本最低。 但与热层和冷层相比，数据检索成本更高。 存档层中的数据必须至少保留 180 天，否则需要支付提前删除费。 根据解除冻结的优先级，存档层中的数据可能需要几个小时来检索。 对于小对象，高优先级解除冻结可以在1小时内从存档中检索对象。 若要了解详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
 
-如果 Blob 位于存档存储中，则 Blob 数据处于脱机状态，不能读取、覆盖或修改。 若要在存档中读取或下载 Blob，必须首先将其解除冻结到联机层。 不能创建存档存储中 Blob 的快照。 但是，Blob 元数据会保持联机和可用状态，因而可列出 Blob 及其属性。 对于存档中的 Blob，仅以下操作有效：GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier、CopyBlob 和 DeleteBlob。 若要了解详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
+如果 Blob 位于存档存储中，则 Blob 数据处于脱机状态，不能读取、覆盖或修改。 若要在存档中读取或下载 Blob，必须首先将其解除冻结到联机层。 不能创建存档存储中 Blob 的快照。 不过，blob 元数据仍处于联机状态并且可用，允许列出 blob、其属性、元数据和 blob 索引标记。 不允许在存档时设置或修改 blob 元数据;不过，您可以设置和修改 blob 索引标记。 对于存档中的 blob，唯一有效的操作是 GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier、CopyBlob 和 DeleteBlob。
 
 存档访问层的示例使用方案包括：
 
@@ -71,18 +71,18 @@ Blob 存储和 GPv2 帐户在帐户级别公开“访问层”属性  。 使用
 
 ## <a name="account-level-tiering"></a>帐户级分层
 
-所有三个访问层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置推断相应的层。 如果访问层来自帐户，则你可以看到“推断的访问层”Blob 属性已设置为“true”，而“访问层”Blob 属性与帐户层匹配。   在 Azure 门户中，Blob 访问层的“推断访问层”属性显示为“热(推断)”或“冷(推断)”。   
+所有三个访问层中的 Blob 可以在同一帐户中共存。 如果 Blob 没有显式分配的层，则会从帐户访问层设置推断相应的层。 如果访问层来自帐户，则你可以看到“推断的访问层”Blob 属性已设置为“true”，而“访问层”Blob 属性与帐户层匹配。******** 在 Azure 门户中，Blob 访问层的“推断访问层”属性显示为“热(推断)”或“冷(推断)”。__********
 
-更改帐户访问层适用于帐户中存储的未设置显式层的所有“推断访问层”对象。  如果将帐户层从热切换为冷，则只按 GPv2 帐户中没有设置层的所有 Blob 的写入操作次数（以 10,000 次为单位）收费。 不会在 Blob 存储帐户中对此更改收费。 如果将 Blob 存储或 GPv2 帐户从冷切换为热，则会按读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。
+更改帐户访问层适用于帐户中存储的未设置显式层的所有“推断访问层”对象。__ 如果将帐户层从热切换为冷，则只按 GPv2 帐户中没有设置层的所有 Blob 的写入操作次数（以 10,000 次为单位）收费。 不会在 Blob 存储帐户中对此更改收费。 如果将 Blob 存储或 GPv2 帐户从冷切换为热，则会按读取操作次数（以 10,000 次为单位）和数据检索量（以 GB 为单位）收费。
 
 ## <a name="blob-level-tiering"></a>Blob 级别分层
 
-有了 Blob 级别分层，就可以使用 [Put Blob](/rest/api/storageservices/put-blob) 或 [Put 块列表](/rest/api/storageservices/put-block-list)操作将数据上传到所选的访问层，并使用[设置 Blob 层](/rest/api/storageservices/set-blob-tier)操作或[生命周期管理](#blob-lifecycle-management)功能在对象级别更改数据的层。 可以将数据上传到所需的访问层，然后在使用模式更改时轻松地在热、冷或存档层之间更改 Blob 访问层，不需在帐户之间移动数据。 所有层更改请求会立即发生，热和冷之间的层更改是即时的。 但是，从存档层中解除冻结 blob 可能需要几个小时。
+Blob 级分层允许使用 "[设置 Blob 层](/rest/api/storageservices/set-blob-tier)" 操作或[生命周期管理](#blob-lifecycle-management)功能，将数据上传到所选的访问层，使用 " [Put Blob](/rest/api/storageservices/put-blob) " 或 " [put 块列表](/rest/api/storageservices/put-block-list)" 操作并在对象级别更改数据层。 你可以将数据上传到所需的访问层，然后在使用模式更改时轻松地在热、冷或存档层之间更改 blob 访问层，而无需在帐户之间移动数据。 所有层更改请求会立即发生，热和冷之间的层更改是即时的。 但是，从存档层中解除冻结 blob 可能需要几个小时。
 
-上次 Blob 层更改的时间通过 Blob 属性“访问层更改时间”  公开。 覆盖热层或冷层中的 blob 时，除非在创建时显式设置了新的 blob 访问层，否则新创建的 blob 将继承被覆盖的 blob 的层的属性。 如果 Blob 位于存档层中，则无法被覆盖，因此在这种情况下，不允许上传相同的 Blob。 
+上次 Blob 层更改的时间通过 Blob 属性“访问层更改时间”**** 公开。 覆盖热层或冷层中的 blob 时，除非在创建时显式设置了新的 blob 访问层，否则新创建的 blob 将继承被覆盖的 blob 的层的属性。 如果 Blob 位于存档层中，则无法被覆盖，因此在这种情况下，不允许上传相同的 Blob。 
 
 > [!NOTE]
-> 存档存储和 Blob 级别分层仅支持块 Blob。 此外，目前无法更改包含快照的块 Blob 的层。
+> 存档存储和 Blob 级别分层仅支持块 Blob。
 
 ### <a name="blob-lifecycle-management"></a>Blob 生命周期管理
 
@@ -115,35 +115,35 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 下表显示了高级性能块 blob 存储以及 "热"、"冷" 和 "存档" 访问层的比较。
 
-|                                           | **高级性能**   | **热存储层** | **冷存储层**       | **存档存储层**  |
+|                                           | **高级性能**   | **热存储层** | **冷存储层**       | **存档层**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
-| **可用性** <br> **（RA-GRS 读取）**  | 空值                       | 99.99%       | 99.9%               | 脱机           |
-| 使用费****                         | 存储成本更高，访问和事务成本较低 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| **最小对象大小**                   | 空值                       | 空值          | 空值                 | 空值               |
-| **** 最短存储持续时间              | 空值                       | 空值          | 30 天<sup>1</sup> | 180 天
-| **延迟** <br> **（距第一字节时间）** | 一位数的毫秒 | 毫秒 | 毫秒        | 小时<sup>2</sup> |
+| **可用性** <br> **（RA-GRS 读取）**  | 不适用                       | 99.99%       | 99.9%               | Offline           |
+| 使用费****                         | 更高的存储成本、更低的访问和事务成本 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
+| **最小对象大小**                   | 不适用                       | 不适用          | 不适用                 | 不适用               |
+| **** 最短存储持续时间              | 不适用                       | 不适用          | 30 天<sup>1</sup> | 180 天
+| **滞后时间** <br> **（距第一字节时间）** | 一位数的毫秒 | 毫秒 | 毫秒        | 小时<sup>2</sup> |
 
 <sup>1</sup> GPv2 帐户冷层中的对象的最短保留期为 30 天。 Blob 存储帐户的冷层没有最短保留期。
 
 <sup>2</sup> 存档存储目前支持 2 种解冻优先级：“高”和“标准”，它们提供不同的检索延迟。 有关详细信息，请参阅[从存档层解冻 Blob 数据](storage-blob-rehydration.md)。
 
 > [!NOTE]
-> Blob 存储帐户支持与常规用途 v2 存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](scalability-targets.md)。
+> Blob 存储帐户支持与常规用途 v2 存储帐户相同的性能和可伸缩性目标。 有关详细信息，请参阅 [Blob 存储可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
-本部分使用 Azure 门户和 powershell 演示以下方案：
+在本部分中，使用 Azure 门户和 PowerShell 演示了以下方案：
 
 - 如何更改 GPv2 或 Blob 存储帐户的默认帐户访问层。
 - 如何更改 GPv2 或 Blob 存储帐户中 Blob 的层。
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户的默认帐户访问层
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
-1. 登录 [Azure 门户](https://portal.azure.com)。
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 门户中，搜索并选择“所有资源”****。
+1. 在 Azure 门户中，搜索并选择“所有资源”。
 
 1. 选择存储帐户。
 
@@ -155,7 +155,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 
 ![更改存储帐户层](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改帐户层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -168,24 +168,24 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户中 Blob 的层
-# <a name="portal"></a>[门户](#tab/azure-portal)
-1. 登录 [Azure 门户](https://portal.azure.com)。
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 门户中，搜索并选择“所有资源”****。
+1. 在 Azure 门户中，搜索并选择“所有资源”。
 
 1. 选择存储帐户。
 
 1. 选择容器，然后选择自己的 blob。
 
-1. 在“Blob 属性”中选择“更改层”。********
+1. 在“Blob 属性”中选择“更改层”。 
 
 1. 选择“热”、“冷”或“存档”访问层。************ 如果 Blob 目前位于存档中，而你想要解冻至联机层，则还可以选择“标准”或“高”作为“解冻优先级”。********
 
-1. 选择底部的“保存”。****
+1. 选择底部的“保存”。
 
 ![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 Blob 名称初始化 `$blobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
@@ -220,7 +220,7 @@ $blob.ICloudBlob.SetStandardBlobTier("Archive")
 > [!NOTE]
 > 有关 Blob 块的定价详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)页。 有关出站数据传输收费的详细信息，请参阅[数据传输定价详细信息](https://azure.microsoft.com/pricing/details/data-transfers/)页。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>常见问题解答
 
 **如果要将数据分层，是否应使用 Blob 存储或 GPv2 帐户？**
 
@@ -252,7 +252,7 @@ GPv1 和 GPv2 帐户的定价结构不同，客户在决定使用 GPv2 帐户之
 
 **热层、冷层和存档层中的操作是否相同？**
 
-热层和冷层中的所有操作 100% 一致。 所有有效的存档操作（包括 GetBlobProperties、GetBlobMetadata、ListBlobs、SetBlobTier 和 DeleteBlob）在热层和冷层中完全一致。 在解冻之前，无法读取或修改存档层中的 Blob 数据；仅支持对存档中的 Blob 元数据执行读取操作。
+热层和冷层中的所有操作 100% 一致。 所有有效的存档操作（包括 GetBlobProperties、GetBlobMetadata、SetBlobTags、GetBlobTags、FindBlobsByTags、ListBlobs、SetBlobTier 和 DeleteBlob）均为100%，并且具有热和冷。 在解冻之前，无法读取或修改存档层中的 Blob 数据；仅支持对存档中的 Blob 元数据执行读取操作。 但是，在存档时可以读取、设置或修改 blob 索引标记。
 
 **将 blob 从存档层解除冻结到热层或冷层时，如何知道解除冻结何时完成？**
 
@@ -283,5 +283,5 @@ Azure 门户、PowerShell 和 CLI 工具以及 .NET、Java、Python 和 Node.js 
 - [了解如何从存档层解冻 Blob 数据](storage-blob-rehydration.md)
 - [确定高级性能是否会使应用受益](storage-blob-performance-tiers.md)
 - [通过启用 Azure 存储度量值来评估当前存储帐户的使用情况](../common/storage-enable-and-view-metrics.md)
-- [按区域检查 Blob 存储和 GPv2 帐户中的热、冷和存档价格](https://azure.microsoft.com/pricing/details/storage/)
+- [按区域查看 Blob 存储帐户和 GPv2 帐户中的热层、冷层和存档层定价](https://azure.microsoft.com/pricing/details/storage/)
 - [检查数据传输定价](https://azure.microsoft.com/pricing/details/data-transfers/)

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 843cd74c85c619dbbd2b11a32fccf75d030b5613
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772958"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855936"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
@@ -199,7 +199,7 @@ ms.locfileid: "83772958"
 <br>
 对于 Linux 计算机，尚不支持代理多主页，因此，如果检测到现有的代理安装，则不会进行自动预配，并且不会更改计算机的配置。
 <br>
-对于在 2019 年 3 月 17 日之前载入到安全中心的订阅上的现有计算机，检测到现有代理时，将不会安装 Log Analytics 代理扩展，并且计算机将不会受到影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”建议，以解决这些计算机上的代理安装问题。
+对于 "订阅中的现有计算机载入到 2006 2019 年3月17日之前的安全中心"，将会检测到现有代理，不会安装 Log Analytics 代理扩展，并且计算机将不会受到影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”建议，以解决这些计算机上的代理安装问题。
 
   
 - 已在计算机上安装 System Center Operations Manager 代理<br>
@@ -237,58 +237,44 @@ ms.locfileid: "83772958"
 ### <a name="operations-management-suite-vm-extension-deployment"></a>Operations Management Suite VM 扩展部署 
 
 可以手动安装 Log Analytics 代理，使安全中心能够从 VM 收集安全数据并提供建议和警报。
-1. 选择自动预配 - 关闭。
-2. 创建工作区，并指定要在其中设置 Log Analytics 代理的工作区的定价层：
 
-   a.  在安全中心主菜单中，选择“安全策略”。
-     
-   b.  选择要在其中连接代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
-       ![选择工作区][8]
-3. 设置定价层。
-   ![选择定价层][9] 
-   >[!NOTE]
-   >如果工作区中已启用 **Security** 或 **SecurityCenterFree** 解决方案，则会自动设置定价层。 
+1. 禁用自动设置。
+
+1. （可选）创建一个工作区。
+
+1. 将 Log Analytics 代理安装到标准定价层的工作区：
+
+    1. 从安全中心的菜单中，选择 "**定价 & 设置**"。
+
+    1. 设置要在其上安装代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
+
+    1. 设置标准定价层，然后选择 "**保存**"。
+
+        ![将工作区设置为标准定价层](.\media\security-center-enable-data-collection\workspace-to-standard-tier.gif)
+
+       >[!NOTE]
+       >如果工作区中已启用 **Security** 或 **SecurityCenterFree** 解决方案，则会自动设置定价层。 
    > 
 
-4. 若要使用资源管理器模板在新 VM 上部署代理，请安装 OMS 虚拟机扩展：
+1. 如果要使用资源管理器模板在新的 Vm 上部署代理，请安装 Log Analytics 代理：
 
-   a.  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
+   a.  [安装适用于 Windows 的 Log Analytics 代理](../virtual-machines/extensions/oms-windows.md)
     
-   b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
-5. 若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)中的说明。
+   b.  [安装适用于 Linux 的 Log Analytics 代理](../virtual-machines/extensions/oms-linux.md)
+
+1. 若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)中的说明。
 
    > [!NOTE]
    > “收集事件和性能数据”部分是可选的。
    >
-6. 若要使用 PowerShell 部署扩展，请使用以下 PowerShell 示例：
-   
-   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-   
-   1. 转到“Log Analytics”并单击“高级设置”。 
-    
-      ![设置 Log Analytics][11]
 
-   2. 复制“工作区 ID”和“主密钥”的值。 
-  
-      ![复制值][12]
+1. 若要使用 PowerShell 来部署扩展，请使用虚拟机文档中的说明：
 
-   3. 在公共配置和专用配置中填充以下值：
-     
-           $PublicConf = @{
-               "workspaceId"= "<WorkspaceID value>"
-           }
- 
-           $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>"
-           }
+    - [对于 Windows 计算机](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#powershell-deployment)
 
-      - 在 Windows VM 上安装时：
-        
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
-    
-      - 在 Linux VM 上安装时：
-        
-            Set-AzVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
+    - [对于 Linux 计算机](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-linux?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#azure-cli-deployment)
+
+
 
 > [!NOTE]
 > 有关如何使用 PowerShell 加入安全中心的说明，请参阅[使用PowerShell 自动加入 Azure 安全中心](security-center-powershell-onboarding.md)。

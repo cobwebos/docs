@@ -3,12 +3,12 @@ title: 基础映像更新 - 任务
 description: 了解应用程序容器映像的基础映像，并了解基础映像更新如何触发 Azure 容器注册表任务。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 017c8f8a3a15896bd6e14a54136ba713e9f9c499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35933c4cdbbf2762f7a54bd945f8a8ffa55b9f21
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85918506"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>关于 ACR 任务的基础映像更新
 
@@ -39,29 +39,36 @@ ms.locfileid: "77617926"
 
 如果 `FROM` 语句中指定的基础映像驻留在上述某个位置，则 ACR 任务会添加一个挂钩，以确保它的基础映像更新时会重新生成该映像。
 
+## <a name="base-image-notifications"></a>基本映像通知
+
+更新基本映像和触发依赖任务之间的时间取决于基准映像位置：
+
+* 基于**Docker 中心内的公共存储库中的映像或 MCR** -对于公共存储库中的基础映像，ACR 任务会以10到60分钟之间的随机间隔来检查图像更新。 相关任务会相应运行。
+* **Azure 容器注册表**中的基本映像-azure 容器注册表中的基础映像，ACR 任务会在更新其基本映像时立即触发运行。 基本映像可以在运行任务的同一 ACR 中，也可以位于任何区域中的不同 ACR 中。
+
 ## <a name="additional-considerations"></a>其他注意事项
 
-* **应用程序映像的基础映像** - 目前，ACR 任务仅跟踪应用程序（*运行时*）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime  ) 映像的基础映像更新。  
+* **应用程序映像的基本映像**-当前，ACR 任务仅跟踪应用程序（*运行时*）映像的基本图像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime**) 映像的基础映像更新。  
 
-* **默认启用** - 使用 [az acr task create][az-acr-task-create] 命令创建某个 ACR 任务时，会默认启用该任务，以便在更新基础映像时触发。  即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
+* **默认情况下启用**-当你使用[az ACR task CREATE][az-acr-task-create]命令创建 ACR 任务时，默认情况下，基础映像更新将为该任务*启用*触发器。 即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
 
   ```azurecli
   az acr task update --myregistry --name mytask --base-image-trigger-enabled False
   ```
 
-* **触发依赖项跟踪** - 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包括其基础映像），必须先将该任务触发**至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
+* **用于跟踪依赖项的触发器**-若要启用 ACR 任务来确定和跟踪容器映像的依赖项（包括其基本映像），必须首先触发任务以**至少**生成映像。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
 
-* **基础映像的稳定标记** - 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 *。* `node:9-alpine` 在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
+* **基本映像的稳定标记**-若要在基础映像更新上触发任务，基本映像必须具有*稳定*标记，例如 `node:9-alpine` 。 在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
 
-* **其他任务触发器** - 在由基础映像更新触发的任务中，你还可以启用基于[源代码提交](container-registry-tutorial-build-task.md)或[计划](container-registry-tasks-scheduled.md)的触发器。 基础映像更新还可以触发[多步骤任务](container-registry-tasks-multi-step.md)。
+* **其他任务触发器**-在由基本映像更新触发的任务中，你还可以基于[源代码提交](container-registry-tutorial-build-task.md)或[计划](container-registry-tasks-scheduled.md)启用触发器。 基本映像更新还可以触发[多步骤任务](container-registry-tasks-multi-step.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅以下教程，了解在更新基础映像后自动执行应用程序映像生成的方案：
+请参阅以下教程，了解在更新基本映像后自动执行应用程序映像构建的方案：
 
-* [在同一注册表中更新基础映像时自动执行容器映像生成](container-registry-tutorial-base-image-update.md)
+* [在相同注册表中更新基本映像时自动生成容器映像](container-registry-tutorial-base-image-update.md)
 
-* [在不同注册表中更新基础映像时自动执行容器映像生成](container-registry-tutorial-base-image-update.md)
+* [在不同注册表中更新基本映像时自动生成容器映像](container-registry-tutorial-base-image-update.md)
 
 
 <!-- LINKS - External -->

@@ -2,13 +2,13 @@
 title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
 ms.date: 03/30/2020
-ms.topic: conceptual
-ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85919133"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -44,7 +44,7 @@ ms.locfileid: "81458805"
 
 - [创建新的服务主体帐户](../../active-directory/develop/howto-create-service-principal-portal.md)以便仅用于此函数，而不是将此角色分配到用于其他自动化的现有服务主体。
 - 确保此服务主体不具有对任何委派的客户资源的访问权限。
-- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)，并[将其安全地存储在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
+- [使用证书进行身份验证](../../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in)，并[将其安全地存储在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
 - 限制有权代表服务主体执行操作的用户。
 
 使用以下方法之一来进行根范围分配。
@@ -73,7 +73,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 一旦你创建了一个新的服务主体帐户，该帐户具有对管理租户的根作用域的 "监视读取者" 访问权限，你就可以使用它来查询和报告租户中的委托活动。 
 
-[此 Azure PowerShell 脚本](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)可用于查询过去1天的活动，并报告任何已添加或已删除的委派（或未成功的尝试）。 它将查询[租户活动日志](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List)数据，然后构造以下值以报告添加或删除的委托：
+[此 Azure PowerShell 脚本](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes)可用于查询过去1天的活动，并报告任何已添加或已删除的委派（或未成功的尝试）。 它将查询[租户活动日志](/rest/api/monitor/TenantActivityLogs/List)数据，然后构造以下值以报告添加或删除的委托：
 
 - **DelegatedResourceId**：委派的订阅或资源组的 ID
 - **CustomerTenantId**：客户租户 ID

@@ -3,20 +3,20 @@ title: 限制和边界 - QnA Maker
 description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273339"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855552"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
-下面提供 QnA Maker 限制是[Azure 认知搜索定价层限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)和[QnA Maker 定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)的组合。 您需要了解这两组限制，以了解您可以为每个资源创建多少知识库以及每个知识库的增长大小。
+下面提供 QnA Maker 限制是[Azure 认知搜索定价层限制](../../search/search-limits-quotas-capacity.md)和[QnA Maker 定价层限制](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)的组合。 您需要了解这两组限制，以了解您可以为每个资源创建多少知识库以及每个知识库的增长大小。
 
 ## <a name="knowledge-bases"></a>知识库
 
-最大知识库数基于[Azure 认知搜索层限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)。
+最大知识库数基于[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)。
 
 |**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -55,11 +55,11 @@ ms.locfileid: "78273339"
 
 ## <a name="metadata-limits"></a>元数据限制
 
-元数据显示为基于文本的键：值对，如`product:windows 10`。 它以小写形式存储和比较。
+元数据显示为基于文本的键：值对，如 `product:windows 10` 。 它以小写形式存储和比较。
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>由 Azure 认知搜索定价层
 
-每个知识库的元数据字段的最大数目取决于**[Azure 认知搜索层限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)**。
+每个知识库的元数据字段的最大数目取决于**[Azure 认知搜索层限制](../../search/search-limits-quotas-capacity.md)**。
 
 |**Azure 认知搜索层** | **免费** | **基本** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -81,11 +81,11 @@ ms.locfileid: "78273339"
 * 问题文本的长度：1,000
 * 元数据键/值文本的长度：100
 * 支持的元数据名称字符：字母、数字和`_`
-* 元数据值支持的字符数： `:`除和之外的所有字符`|`
+* 元数据值支持的字符数：除和之外的所有字符 `:``|`
 * 文件名长度：200
 * 支持的文件格式:：“.tsv”、“.pdf”、“.txt”、“.docx”、“.xlsx”。
 * 最大替代问题数：300
-* 问题答案对的最大数目：取决于所选的**[Azure 认知搜索层](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)**。 问题和答案对映射到 Azure 认知搜索索引上的文档。
+* 问题答案对的最大数目：取决于所选的**[Azure 认知搜索层](../../search/search-limits-quotas-capacity.md#document-limits)**。 问题和答案对映射到 Azure 认知搜索索引上的文档。
 * URL/HTML 页面：1000000个字符
 
 ## <a name="create-knowledge-base-call-limits"></a>创建知识库调用限制：

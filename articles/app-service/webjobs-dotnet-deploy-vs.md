@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 971ab39ddf4b383f92f0cd81e5258ad357e76e99
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866439"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85857073"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 开发和部署 WebJobs - Azure 应用服务
 
@@ -52,15 +52,15 @@ ms.locfileid: "81866439"
 
 1. [将项目发布到 Azure](#deploy-to-azure-app-service)（如果尚未这样做）。
 
-1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”  。
+1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。
 
-1. 在“发布”选项卡中选择“设置”。   
+1. 在“发布”选项卡中选择“设置”。  
 
-1. 在“配置文件设置”对话框中，为“WebJob 类型”选择“连续”，然后选择“保存”。    
+1. 在“配置文件设置”对话框中，为“WebJob 类型”选择“连续”，然后选择“保存”。   
 
     ![WebJob 的“发布设置”对话框](./media/webjobs-dotnet-deploy-vs/publish-settings.png)
 
-1. 选择“发布”，以使用更新的设置重新发布 WebJob。 
+1. 选择“发布”，以使用更新的设置重新发布 WebJob。
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>用作 .NET Framework 控制台应用的 WebJob  
 
@@ -99,25 +99,25 @@ ms.locfileid: "81866439"
 
 #### <a name="enable-automatic-webjobs-deployment-with-a-web-project"></a><a id="convertlink"></a> 使用 Web 项目启用自动 Web 作业部署
 
-1. 右键单击“解决方案资源管理器”  中的 Web 项目，并依次单击“添加”   > “用作 Azure Web 作业的现有项目”  。
+1. 右键单击“解决方案资源管理器”中的 Web 项目，并依次单击“添加” > “用作 Azure Web 作业的现有项目”。
    
     ![用作 Azure Web 作业的现有项目](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
     此时显示[添加 Azure Web 作业](#configure)对话框。
-2. 在“项目名称”  下拉列表中，选择要添加为 Web 作业的控制台应用程序项目。
+2. 在“项目名称”下拉列表中，选择要添加为 Web 作业的控制台应用程序项目。
    
     ![在“添加 Azure Web 作业”对话框中选择项目](./media/webjobs-dotnet-deploy-vs/aaw1.png)
-3. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”  。 
+3. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”。 
 
 #### <a name="enable-webjobs-deployment-without-a-web-project"></a><a id="convertnolink"></a> 不使用 Web 项目启用 Web 作业部署
-1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业”   。 
+1. 右键单击“解决方案资源管理器”中的控制台应用程序项目，然后单击“发布为 Azure Web 作业” 。 
    
     ![发布为 Azure Web 作业](./media/webjobs-dotnet-deploy-vs/paw.png)
    
-    此时显示[添加 Azure Web 作业](#configure)对话框，其“项目名称”  框中已选中该项目。
-2. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”  。
+    此时显示[添加 Azure Web 作业](#configure)对话框，其“项目名称”框中已选中该项目。
+2. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”。
    
-   此时显示“发布 Web”  向导。  如果不打算立即发布，请关闭向导。 输入的设置会保存，以便在[部署项目](#deploy)时使用。
+   此时显示“发布 Web”向导。  如果不打算立即发布，请关闭向导。 输入的设置会保存，以便在[部署项目](#deploy)时使用。
 
 ### <a name="create-a-new-webjobs-enabled-project"></a><a id="create"></a>创建已启用 Web 作业的新项目
 若要创建已启用 Web 作业的新项目，可以使用控制台应用程序项目模板，并根据 [上一节](#convert)所述启用 Web 作业部署。 或者，可以使用 Web 作业新建项目模板：
@@ -130,30 +130,30 @@ ms.locfileid: "81866439"
     创建一个项目，该项目配置为在针对位于相同解决方案中的 Web 项目进行部署时，自动以 Web 作业的方式部署。 要在运行相关 Web 应用程序的同一 Web 应用中运行 Web 作业时，请使用此选项。
 
 > [!NOTE]
-> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不想使用 WebJobs SDK，请删除或更改 Program.cs 中的 `host.RunAndBlock` 语句  。
+> Web 作业新建项目模板会自动安装 NuGet 包，并在 *Program.cs* 中包含适用于 [WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs) 的代码。 如果不想使用 WebJobs SDK，请删除或更改 Program.cs 中的 `host.RunAndBlock` 语句。
 > 
 > 
 
 #### <a name="use-the-webjobs-new-project-template-for-an-independent-webjob"></a><a id="createnolink"></a> 为独立的 Web 作业使用 Web 作业新建项目模板
-1. 依次单击“文件” > “新建项目”，然后在“新建项目”对话框中，依次单击“云” > “Azure Web 作业 (.NET Framework)”      。
+1. 依次单击“文件” > “新建项目”，然后在“新建项目”对话框中，依次单击“云” > “Azure Web 作业 (.NET Framework)”    。
    
     ![显示了 Web 作业模板的“新建项目”对话框](./media/webjobs-dotnet-deploy-vs/np.png)
 2. 按照前述说明， [将控制台应用程序项目设为独立的 Web 作业项目](#convertnolink)。
 
 #### <a name="use-the-webjobs-new-project-template-for-a-webjob-linked-to-a-web-project"></a><a id="createlink"></a> 在链接到 Web 项目的 Web 作业中使用 Web 作业新建项目模板
-1. 右键单击“解决方案资源管理器”  中的 Web 项目，并依次单击“添加”   > “新建 Azure Web 作业项目”  。
+1. 右键单击“解决方案资源管理器”中的 Web 项目，并依次单击“添加” > “新建 Azure Web 作业项目”。
    
     ![“新建 Azure Web 作业项目”菜单项](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
     此时显示[添加 Azure Web 作业](#configure)对话框。
-2. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”  。
+2. 完成[添加 Azure Web 作业](#configure)对话框，并单击“确定”。
 
 ### <a name="the-add-azure-webjob-dialog"></a><a id="configure"></a>添加 Azure Web 作业对话框
-可在“添加 Azure Web 作业”对话框中输入 Web 作业的名称和 Web 作业的运行模式设置  。 
+可在“添加 Azure Web 作业”对话框中输入 Web 作业的名称和 Web 作业的运行模式设置。 
 
 ![“添加 Azure Web 作业”对话框](./media/webjobs-dotnet-deploy-vs/aaw2.png)
 
-此对话框中的字段对应于 Azure 门户的“添加 WebJob”  对话框中的字段。 有关详细信息，请参阅[使用 Web 作业运行后台任务](webjobs-create.md)。
+此对话框中的字段对应于 Azure 门户的“添加 WebJob”对话框中的字段。 有关详细信息，请参阅[使用 Web 作业运行后台任务](webjobs-create.md)。
 
 > [!NOTE]
 > * 有关命令行部署的信息，请参阅[启用 Azure Web 作业的命令行或连续传送](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/)。
@@ -165,43 +165,47 @@ ms.locfileid: "81866439"
 ### <a name="webjob-publish-settingsjson"></a><a id="publishsettings"></a>webjob-publish-settings.json
 设置 Web 作业部署的控制台应用程序时，Visual Studio 会安装 [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet 包，并将计划信息存储在 Web 作业项目的项目 *Properties* 文件夹中的 *webjob-publish-settings.json* 文件内。 以下是该文件的示例：
 
-        {
-          "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
-          "webJobName": "WebJob1",
-          "startTime": "null",
-          "endTime": "null",
-          "jobRecurrenceFrequency": "null",
-          "interval": null,
-          "runMode": "Continuous"
-        }
+```json
+{
+  "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
+  "webJobName": "WebJob1",
+  "startTime": "null",
+  "endTime": "null",
+  "jobRecurrenceFrequency": "null",
+  "interval": null,
+  "runMode": "Continuous"
+}
+```
 
 可以编辑此文件目录，Visual Studio 会提供 IntelliSense。 在 [https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) 中可查看存储的文件架构。  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 如果将已启用 Web 作业的项目链接到 Web 项目，Visual Studio 会将 Web 作业项目的名称存储在 Web 项目 *Properties* 文件夹的 *webjobs-list.json* 文件中。 该列表可能包含多个 Web 作业项目，如以下示例所示：
 
-        {
-          "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
-          "WebJobs": [
-            {
-              "filePath": "../ConsoleApplication1/ConsoleApplication1.csproj"
-            },
-            {
-              "filePath": "../WebJob1/WebJob1.csproj"
-            }
-          ]
-        }
+```json
+{
+  "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
+  "WebJobs": [
+    {
+      "filePath": "../ConsoleApplication1/ConsoleApplication1.csproj"
+    },
+    {
+      "filePath": "../WebJob1/WebJob1.csproj"
+    }
+  ]
+}
+```
 
 可以编辑此文件目录，Visual Studio 会提供 IntelliSense。 在 [https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) 中可查看存储的文件架构。
 
 ### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>部署 Web 作业项目
-已链接到 Web 项目的 Web 作业项目会通过 Web 项目自动部署。 有关 Web 项目部署的信息，请参阅左侧导航区域中的“操作指南”   > “部署应用”  。
+已链接到 Web 项目的 Web 作业项目会通过 Web 项目自动部署。 有关 Web 项目部署的信息，请参阅左侧导航区域中的“操作指南” > “部署应用”。
 
-若要自动部署某个 Web 作业项目，请在“解决方案资源管理器”中右键单击该项目，然后单击“发布为 Azure Web 作业”   。 
+若要自动部署某个 Web 作业项目，请在“解决方案资源管理器”中右键单击该项目，然后单击“发布为 Azure Web 作业” 。 
 
 ![发布为 Azure Web 作业](./media/webjobs-dotnet-deploy-vs/paw.png)
 
-对于独立的 Web 作业，会显示 Web 项目使用的相同“发布 Web”  向导，但其中的可更改设置更少。
+对于独立的 Web 作业，会显示 Web 项目使用的相同“发布 Web”向导，但其中的可更改设置更少。
 
 ## <a name="scheduling-a-triggered-webjob"></a>计划触发的 WebJob
 
@@ -213,7 +217,7 @@ WebJobs 使用 *settings.job* 文件确定某个 WebJob 是否已运行。 使�
 }
 ```
 
-此文件必须位于 WebJobs 文件夹的根目录下，与 WebJob 的脚本（例如 `wwwroot\app_data\jobs\triggered\{job name}` 或 `wwwroot\app_data\jobs\continuous\{job name}`）放在一起。 从 Visual Studio 部署 Web 作业时，请将 `settings.job` 文件属性标记为“如果较新则复制”。  
+此文件必须位于 WebJobs 文件夹的根目录下，与 WebJob 的脚本（例如 `wwwroot\app_data\jobs\triggered\{job name}` 或 `wwwroot\app_data\jobs\continuous\{job name}`）放在一起。 从 Visual Studio 部署 Web 作业时，请将 `settings.job` 文件属性标记为“如果较新则复制”。 
 
 [从 Azure 门户创建 WebJob](webjobs-create.md) 时，系统会自动创建 settings.job 文件。
 
@@ -225,7 +229,7 @@ WebJobs 使用的 CRON 计划表达式与 Azure Functions 中的计时器触发�
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-### <a name="settingsjob-reference"></a>设置.作业引用
+### <a name="settingsjob-reference"></a>settings.job reference
 
 WebJobs 支持以下设置：
 

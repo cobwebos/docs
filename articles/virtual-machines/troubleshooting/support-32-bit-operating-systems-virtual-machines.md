@@ -13,23 +13,23 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4e08cba2b49f43baea16b01ec709d8d9ab6a18d
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71846532"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856954"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Azure 虚拟机对 32 位操作系统的支持
 
-Microsoft Azure 现在允许用户将其32位 Windows 操作系统带入 Azure。 由于其中一些操作系统已达到其生命的可支持性协议的末尾，Microsoft 可能不会为其提供其他支持。 在 Microsoft Azure 虚拟机（VM）上运行的基于 Linux 或 Berkeley 的基于 Linux 的操作系统也不提供支持。
+Microsoft Azure 现在允许用户将其32位 Windows 操作系统带入 Azure。 仅支持专用 Vhd，并且通用化映像在 Azure 中不起作用。 由于其中一些操作系统已达到其生命的可支持性协议的末尾，Microsoft 可能不会为其提供其他支持。 在 Microsoft Azure 虚拟机（VM）上运行的基于 Linux 或 Berkeley 的基于 Linux 的操作系统也不提供支持。
 
 ## <a name="more-information"></a>详细信息
 
 有关 Azure 虚拟机支持的操作系统的详细信息，请参阅以下 Microsoft 知识库文章：
 
 * [Microsoft Azure 虚拟机的 Microsoft 服务器软件支持](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
-* [Azure 对 Linux 和开放源代码技术的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
+* [Azure 中对 Linux 和开源技术的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
 ## <a name="references"></a>参考
 
@@ -43,4 +43,4 @@ Microsoft Azure 现在允许用户将其32位 Windows 操作系统带入 Azure�
 
 如果在本文的任何位置需要更多帮助，请联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。
 
-或者，提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
+或者，提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

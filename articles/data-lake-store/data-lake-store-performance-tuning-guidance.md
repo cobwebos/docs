@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 51716bdd6ab7f5b5102ccba3e6d57855dee5df33
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73904622"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855913"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>优化性能 Azure Data Lake Storage Gen1
 
@@ -65,15 +65,11 @@ Data Lake Storage Gen1 可进行缩放，以便为所有分析方案提供必要
 
 对于 Hive 和 ADLA 工作负荷，时间序列数据的分区修剪有助于某些查询只读取数据的一个子集，从而提高性能。
 
-这些用于引入时间系列数据的管道通常使用文件和文件夹的结构化命名来放置其文件。 下面是一个常见的示例，我们看到按日期结构化的数据：
-
-    \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
+这些用于引入时间系列数据的管道通常使用文件和文件夹的结构化命名来放置其文件。 下面是一个常见的示例，我们看到按日期结构化的数据： *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD tsv*。
 
 请注意，日期/时间信息同时显示为文件夹和文件名。
 
-下方是日期和时间的一种常见模式
-
-    \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
+对于日期和时间，以下是一种常见模式： *\dataset\yyyy\mm\dd\hh\mm\ datafile_YYYY_MM_DD_HH_mm tsv*。
 
 同样，选择的文件夹和文件组织方式应针对更大的文件大小和每个文件夹中合理的文件数进行优化。
 
@@ -128,14 +124,14 @@ HDInsight 群集由两个头节点和一些辅助角色节点组成。 每个辅
 
 除上述常规准则外，每个应用程序都有不同的参数，可用于优化该特定应用程序。 下表列出了一些参数和链接，有助于开始对每个应用程序执行性能优化。
 
-| 工作负载               | 用于设置任务数的参数                                                         |
+| 工作负荷               | 用于设置任务数的参数                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
 | [HDInsight 上的 Spark](data-lake-store-performance-tuning-spark.md)  | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
 | [Hive on HDInsight](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
 | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>工作进程数</li><li>Spout 执行器实例数</li><li>Bolt 执行器实例数 </li><li>Spout 任务数</li><li>Bolt 任务数</li></ul>|
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [Azure Data Lake Analytics 入门](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

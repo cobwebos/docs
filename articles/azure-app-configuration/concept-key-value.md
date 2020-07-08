@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 0b83a35d912c97ae25bc2d69d076e8eae8ca490f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8f8bda52be63a4176411855dd9ff9919e9e31f5
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523598"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85856687"
 ---
 # <a name="keys-and-values"></a>键和值
 
@@ -25,19 +25,23 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 * 基于组件服务
 
+```aspx
         AppName:Service1:ApiEndpoint
         AppName:Service2:ApiEndpoint
+```
 
 * 基于部署区域
 
+```aspx
         AppName:Region1:DbEndpoint
         AppName:Region2:DbEndpoint
+```
 
-在应用程序框架中使用配置数据可能会为键值指定特定的命名方案。 例如，Java 春季 Cloud framework 定义`Environment`了向弹簧应用程序提供设置的资源。  这些参数由包括*应用程序名称*和*配置文件*的变量参数化。 Spring Cloud 相关配置数据的键通常以这两个元素开头，由一个分隔符分开。
+在应用程序框架中使用配置数据可能会为键值指定特定的命名方案。 例如，Java 春季 Cloud framework 定义了 `Environment` 向弹簧应用程序提供设置的资源。  这些参数由包括*应用程序名称*和*配置文件*的变量参数化。 Spring Cloud 相关配置数据的键通常以这两个元素开头，由一个分隔符分开。
 
 存储在应用配置中的密钥是区分大小写的、基于 unicode 的字符串。 “app1”和“App1”键在应用程序配置存储区中是有所区分的****。 在应用程序中使用配置设置时，请记住这一点，因为有些框架处理配置键时不区分大小写。 不建议使用 case 来区分键。
 
-除了`*`、 `,`和`\`以外，还可以在键名称中使用任何 unicode 字符。  如果需要包含其中一个保留字符，请使用`\{Reserved Character}`对其进行转义。 
+除了、和以外，还可以在键名称中使用任何 unicode 字符 `*` `,` `\` 。  如果需要包含其中一个保留字符，请使用对其进行转义 `\{Reserved Character}` 。 
 
 键值对的组合大小限制为 10 KB。 此限制包括键中的所有字符、其值以及所有相关的可选属性。 在此限制范围内，可以为密钥设置许多层次结构级别。
 
@@ -53,13 +57,15 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 ### <a name="label-keys"></a>标签键
 
-应用配置中的键值可以选择具有“标签”属性。 标签用于区分具有相同键的键值。 带有标签*A*和*B*的键*app1*在应用配置存储区中形成两个不同的键。 默认情况下，键值没有标签。 若要显式引用不带标签的键值，请`\0`使用（URL 编码`%00`为）。
+应用配置中的键值可以选择具有“标签”属性。 标签用于区分具有相同键的键值。 带有标签*A*和*B*的键*app1*在应用配置存储区中形成两个不同的键。 默认情况下，键值没有标签。 若要显式引用不带标签的键值，请使用 `\0` （URL 编码为 `%00` ）。
 
 标签提供了一种方便的方式来创建键的变体。 标签的常见用途是为同一个键指定多个环境：
 
+```aspx
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
+```
 
 ### <a name="version-key-values"></a>对键值进行版本调整
 
@@ -71,7 +77,7 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 每个键值通过其键以及可以为 `null` 的标签进行唯一标识。 可以通过指定模式来查询应用程序配置存储区中的键值。 应用程序配置存储区会返回与模式及其对应的值和属性匹配的所有键值。 在 REST API 调用应用配置时使用以下键模式：
 
-| 密钥 | |
+| 键 | |
 |---|---|
 | 省略 `key` 或 `key=*` | 匹配所有密钥 |
 | `key=abc` | 完全匹配键名称 abc**** |
