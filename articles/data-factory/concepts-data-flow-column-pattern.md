@@ -8,10 +8,9 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606120"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>使用映射数据流中的列模式
@@ -31,9 +30,9 @@ ms.locfileid: "81606120"
 
 ![列模式](media/data-flow/columnpattern.png "列模式")
 
-使用 "[表达式生成器](concepts-data-flow-expression-builder.md)" 输入匹配条件。 `name`基于列的`type`、 `stream`、和`position`创建与列匹配的布尔表达式。 此模式将影响任何偏移或定义的列，其中条件返回 true。
+使用 "[表达式生成器](concepts-data-flow-expression-builder.md)" 输入匹配条件。 基于列的、、和创建与列匹配的布尔表达式 `name` `type` `stream` `position` 。 此模式将影响任何偏移或定义的列，其中条件返回 true。
 
-Match 条件下的两个表达式框指定受影响的列的新名称和值。 用于`$$`引用匹配字段的现有值。 左侧表达式框定义名称，右侧表达式框定义值。
+Match 条件下的两个表达式框指定受影响的列的新名称和值。 用于 `$$` 引用匹配字段的现有值。 左侧表达式框定义名称，右侧表达式框定义值。
 
 ![列模式](media/data-flow/columnpattern2.png "列模式")
 
@@ -45,7 +44,7 @@ Match 条件下的两个表达式框指定受影响的列的新名称和值。 �
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Select 和 sink 中基于规则的映射
 
-映射源中的列并选择转换时，可以添加固定映射或基于规则的映射。 `name`根据列的`type`、、 `stream`和进行`position`匹配。 可以有固定和基于规则的映射的任意组合。 默认情况下，每列大于50的所有投影都将默认为基于规则的映射，该映射在每个列上都匹配并输出输入名称。 
+映射源中的列并选择转换时，可以添加固定映射或基于规则的映射。 根据 `name` 列的、 `type` 、 `stream` 和进行匹配 `position` 。 可以有固定和基于规则的映射的任意组合。 默认情况下，每列大于50的所有投影都将默认为基于规则的映射，该映射在每个列上都匹配并输出输入名称。 
 
 若要添加基于规则的映射，请单击 "**添加映射**"，然后选择 "**基于规则的映射**"。
 
@@ -55,7 +54,7 @@ Match 条件下的两个表达式框指定受影响的列的新名称和值。 �
 
 ![基于规则的映射](media/data-flow/rule-based-mapping.png "基于规则的映射")
 
-使用`$$`语法来引用匹配列的输入名称。 使用上述图像作为示例，假设用户想要匹配名称长度少于6个字符的所有字符串列。 如果一个传入列已命名`test`，则表达式`$$ + '_short'`将重命名该列`test_short`。 如果这是唯一存在的映射，则将从输出的数据中删除所有不符合条件的列。
+使用 `$$` 语法来引用匹配列的输入名称。 使用上述图像作为示例，假设用户想要匹配名称长度少于6个字符的所有字符串列。 如果一个传入列已命名 `test` ，则表达式 `$$ + '_short'` 将重命名该列 `test_short` 。 如果这是唯一存在的映射，则将从输出的数据中删除所有不符合条件的列。
 
 模式匹配偏移和已定义的列。 若要查看规则所映射的定义列，请单击该规则旁边的眼镜图标。 使用数据预览来验证输出。
 
@@ -65,7 +64,7 @@ Match 条件下的两个表达式框指定受影响的列的新名称和值。 �
 
 ![基于规则的映射](media/data-flow/regex-matching.png "基于规则的映射")
 
-上面的示例匹配正则表达式`(r)`模式或任何包含小写字母的列名称。 与基于标准规则的映射类似，所有匹配的列都通过使用`$$`语法在右侧的条件下进行更改。
+上面的示例匹配正则表达式模式 `(r)` 或任何包含小写字母的列名称。 与基于标准规则的映射类似，所有匹配的列都通过使用语法在右侧的条件下进行更改 `$$` 。
 
 ### <a name="rule-based-hierarchies"></a>基于规则的层次结构
 
@@ -73,7 +72,7 @@ Match 条件下的两个表达式框指定受影响的列的新名称和值。 �
 
 ![基于规则的映射](media/data-flow/rule-based-hierarchy.png "基于规则的映射")
 
-上面的示例匹配复杂列`a`的所有个子列。 `a`包含两个`b`个子列`c`和。 输出架构将包括两个列`b` ， `c`并且 "名称为" 条件为`$$`。
+上面的示例匹配复杂列的所有个子列 `a` 。 `a`包含两个个子列 `b` 和 `c` 。 输出架构将包括两个列 `b` ，并且 `c` "名称为" 条件为 `$$` 。
 
 ## <a name="pattern-matching-expression-values"></a>模式匹配表达式的值。
 

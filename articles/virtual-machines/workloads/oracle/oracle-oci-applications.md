@@ -14,10 +14,9 @@ ms.date: 07/18/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: f36dfe0092e3447053871ee0e5b4d659bb443779
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687482"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>用于在 Azure 上部署 Oracle 应用程序的体系结构
@@ -44,7 +43,7 @@ Oracle 应用程序由多个服务组成，这些服务可以托管在 Azure 中
 
 使用跨云互连部署应用程序时，可以继续使用现有 ExpressRoute 线路将 Azure 环境连接到本地网络。 但是，需要将与连接到本地网络的连接的 ExpressRoute 线路单独用于 OCI。
 
-## <a name="e-business-suite"></a>电子商务套件
+## <a name="e-business-suite"></a>E-Business Suite
 
 Oracle 电子商务套件（EBS）是一套应用程序，包括供应链管理（SCM）和客户关系管理（CRM）。 若要利用 OCI 的托管数据库组合，可以使用 Microsoft Azure 和 OCI 之间的跨云互连来部署 EBS。 在此配置中，表示层和应用层在 Azure 和 OCI 中的数据库层中运行，如以下体系结构关系图所示（图1）。
 
@@ -193,4 +192,4 @@ PeopleTools 客户端用于执行管理活动，如开发、迁移和升级。 �
 
 使用[Terraform 脚本](https://github.com/microsoft/azure-oracle)在 Azure 中设置 Oracle 应用，并建立与 OCI 的跨云连接。
 
-有关 OCI 的详细信息和白皮书，请参阅[Oracle 云](https://docs.cloud.oracle.com/iaas/Content/home.htm)文档。
+有关 OCI 的详细信息和白皮书，请参阅 [Oracle 云](https://docs.cloud.oracle.com/iaas/Content/home.htm)文档。

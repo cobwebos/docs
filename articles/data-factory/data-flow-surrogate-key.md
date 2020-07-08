@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606296"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>映射数据流中的代理键转换 
@@ -47,7 +46,7 @@ ms.locfileid: "81606296"
 
 #### <a name="file-sources"></a>文件源
 
-如果以前的最大值位于文件中，则使用`max()`聚合转换中的函数获取上一个最大值：
+如果以前的最大值位于文件中，则使用 `max()` 聚合转换中的函数获取上一个最大值：
 
 ![代理键文件](media/data-flow/sk008.png "代理键文件")
 

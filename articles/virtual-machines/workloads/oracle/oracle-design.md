@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687536"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
@@ -46,7 +45,7 @@ ms.locfileid: "81687536"
 > 
 > |  | 本地实现**** | Azure 实现**** |
 > | --- | --- | --- |
-> | **联网** |LAN/WAN  |SDN（软件定义的网络）|
+> | **网络** |LAN/WAN  |SDN（软件定义的网络）|
 > | **安全组** |IP/端口限制工具 |[网络安全组（NSG）](https://azure.microsoft.com/blog/network-security-groups) |
 > | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 > | **计划内维护** |修补/升级|[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)（由 Azure 管理的修补/升级） |
@@ -146,7 +145,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 使用带有[加速](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)网络的虚拟机以获得更好的网络性能。
 - 对于某些 Linux distrubutions，请考虑启用[剪裁/取消映射支持](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)。
 - 在单独的虚拟机上安装[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
-- 默认情况下，linux 上并未启用大页面。 请考虑启用大型页面并`use_large_pages = ONLY`在 Oracle DB 上设置。 这可以帮助提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到详细信息。
+- 默认情况下，linux 上并未启用大页面。 请考虑启用大型页面并 `use_large_pages = ONLY` 在 Oracle DB 上设置。 这可以帮助提高性能。 可在[此处](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到详细信息。
 
 ### <a name="disk-types-and-configurations"></a>磁盘类型和配置
 

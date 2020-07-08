@@ -15,15 +15,14 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: aa65b789d02c60ef6042aa62e1c138c0e1bd7224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676902"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上设置 Oracle ASM  
 
-Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  学习如何：
+Azure 虚拟机提供完全可配置的灵活计算环境。 本教程介绍基本的 Azure 虚拟机部署以及 Oracle 自动存储管理 (ASM) 的安装和配置。  您将学习如何：
 
 > [!div class="checklist"]
 > * 创建并连接到 Oracle 数据库 VM
@@ -210,7 +209,7 @@ ssh <publicIpAddress>
    fdisk /dev/sdc
    ```
    
-   使用上面提供的答案， `fdisk`命令的输出应如下所示：
+   使用上面提供的答案，命令的输出 `fdisk` 应如下所示：
 
    ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
@@ -246,7 +245,7 @@ ssh <publicIpAddress>
    Syncing disks.
    ```
 
-4. 对`fdisk` `/dev/sdd`、 `/dev/sde`和`/dev/sdf`重复前面的命令。
+4. `fdisk`对、和重复前面的命令 `/dev/sdd` `/dev/sde` `/dev/sdf` 。
 
 5. 检查磁盘配置：
 
@@ -427,7 +426,7 @@ ssh <publicIpAddress>
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 在客户端系统上启动 PuTTY。 在 "**类别**" 窗格中，请参阅**连接** > **SSH** > **身份验证**。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
+6. 在客户端系统上启动 PuTTY。 在 "**类别**" 窗格中，请参阅**连接**  >  **SSH**  >  **身份验证**。在 "**身份验证的私钥文件**" 框中，浏览到之前生成的密钥。
 
    ![SSH 身份验证选项屏幕截图](./media/oracle-asm/setprivatekey.png)
 

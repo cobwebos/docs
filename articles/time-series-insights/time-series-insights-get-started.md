@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81602360"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 门户中创建新的时序见解环境
@@ -69,6 +68,6 @@ ms.locfileid: "81602360"
 
 * [将事件中心事件源添加](time-series-insights-how-to-add-an-event-source-eventhub.md)到 Azure 时序见解环境。
 
-* [发送事件](time-series-insights-send-events.md)到事件源。
+* [向事件源发送事件](time-series-insights-send-events.md)。
 
 * 在[时序见解资源管理器](https://insights.timeseries.azure.com)中查看环境。

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
 ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81728818"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中心开发人员指南
@@ -56,7 +55,7 @@ Azure IoT 中心提供：
 
 * [控制对 IoT 中心的访问](iot-hub-devguide-security.md)说明用于向设备和云组件授予 IoT 中心功能访问权限的安全模型。 此文章包括有关使用令牌和 X.509 证书的信息，以及可以授予的权限的详细信息。
 
-* [使用设备孪生来同步状态和配置](iot-hub-devguide-device-twins.md)介绍*设备孪生*概念。 本文还介绍了设备孪生公开的功能，如使用设备克隆同步设备。 此文章包括有关设备孪生中存储的数据的信息。
+* [使用设备孪生来同步状态和配置](iot-hub-devguide-device-twins.md)介绍*设备孪生*概念。 本文还介绍了设备孪生具备的功能，例如使用设备孪生来同步设备。 此文章包括有关设备孪生中存储的数据的信息。
 
 * [在设备上调用直接方法](iot-hub-devguide-direct-methods.md)介绍直接方法的生命周期。 本文介绍如何通过后端应用在设备上调用方法，以及如何在设备上处理直接方法。
 

@@ -10,10 +10,9 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81682014"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
@@ -54,7 +53,7 @@ ms.locfileid: "81682014"
 
 下表显示了新设备支持的操作：
 
-| 名称        |
+| “属性”        |
 | ----------- |
 | 打开   |
 | 关闭  |
@@ -83,7 +82,7 @@ ms.locfileid: "81682014"
 
 * Visual Studio Code。 可以[下载适用于 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
 * .NET Core。 可以下载[适用于 Mac、Linux 和 Windows 的 .NET Core](https://www.microsoft.com/net/download)。
-* [适用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+* [用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * Postman。 可以下载[适用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署到 Azure 订阅的 IoT 中心](../../articles/iot-hub/iot-hub-create-through-portal.md)。 需要 IoT 中心的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
 * 使用 SQL API 且配置为[强一致性](../../articles/cosmos-db/how-to-manage-database-account.md)的 Cosmos DB 数据库。 需要 Cosmos DB 数据库的连接字符串才能完成本指南中的步骤。 从 Azure 门户可获取连接字符串。
@@ -108,11 +107,11 @@ ms.locfileid: "81682014"
 
 在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹****。 单击任意“还原”按钮，修复任何未解决的依赖项****。
 
-打开**storage-adapter/WebService/appsettings**文件，并将 Cosmos DB 连接字符串分配到**documentDBConnectionString**变量。
+打开**存储适配器/WebService/appsettings.ini**文件，并将 Cosmos DB 连接字符串分配给**documentDBConnectionString**变量。
 
 要在本地运行微服务，请单击“调试”>“启动调试”****。
 
-Visual Studio Code 中的**终端**窗口显示正在运行的微服务的输出，包括 web 服务运行状况检查的 URL [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)：。 导航到此地址时，状态应显示为“正常: 活动且正常”。
+Visual Studio Code 中的**终端**窗口显示正在运行的微服务的输出，包括 web 服务运行状况检查的 URL： [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status) 。 导航到此地址时，状态应显示为“正常: 活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -425,7 +424,7 @@ Visual Studio Code 中的**终端**窗口显示正在运行的微服务的输出
 
 在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹****。 单击任意“还原”按钮，修复任何未解决的依赖项****。
 
-打开**WebService/appsettings**文件并将 Cosmos DB 连接字符串分配给**documentdb_connstring**变量，并按如下所述修改设置：
+打开**WebService/appsettings.ini**文件，将 Cosmos DB 连接字符串分配到**documentdb_connstring**变量，并按如下所述修改设置：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

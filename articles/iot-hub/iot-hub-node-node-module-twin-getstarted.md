@@ -1,5 +1,5 @@
 ---
-title: 开始 Azure IoT 中心模块身份 & 模块（node.js）
+title: Azure IoT 中心模块身份 & 模块（Node.js）入门
 description: 了解如何使用用于 Node.js 的 IoT SDK 创建模块标识和更新模块孪生。
 author: wesmc7777
 manager: philmea
@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp
 ms.openlocfilehash: 8e1599b1bd5db5e410e8bbd76fffbe0beb5f066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732306"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT 中心模块标识和模块孪生 (Node.js) 入门
@@ -37,7 +36,7 @@ ms.locfileid: "81732306"
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -57,7 +56,7 @@ ms.locfileid: "81732306"
 
 2. 在该目录中，首先运行 npm init -y 使用默认值创建一个空的 package.json  。 这是代码的项目文件。
 
-3. 运行**npm 安装 iothub\@模块-预览版**，将服务 SDK 安装到**node_modules**子目录中。
+3. 运行**npm 安装 iothub \@ 模块-预览版**，将服务 SDK 安装到**node_modules**子目录中。
 
     > [!NOTE]
     > 子目录名称 node_modules 使用字模块来表示“节点库”。 此处的术语与 IoT 中心模块无关。

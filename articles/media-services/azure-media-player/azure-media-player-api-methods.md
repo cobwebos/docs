@@ -7,10 +7,9 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727263"
 ---
 # <a name="api"></a>API #
@@ -19,7 +18,7 @@ ms.locfileid: "81727263"
 
 ## <a name="referencing-the-player"></a>引用播放机 ##
 
-若要使用 API 函数，需要访问 player 对象。 幸运的是，很容易获得。 只需确保视频标记具有 ID。 嵌入代码的示例具有一个 ID `vid1`。 如果一个页面上有多个视频，请确保每个视频标记都具有唯一的 ID。
+若要使用 API 函数，需要访问 player 对象。 幸运的是，很容易获得。 只需确保视频标记具有 ID。 嵌入代码的示例具有一个 ID `vid1` 。 如果一个页面上有多个视频，请确保每个视频标记都具有唯一的 ID。
 
 `var myPlayer = amp('vid1');`
 
@@ -39,7 +38,7 @@ Azure Media Player 设置视频和 API 所花的时间取决于所使用的播�
     });
 ```
 
-OR
+或者
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){

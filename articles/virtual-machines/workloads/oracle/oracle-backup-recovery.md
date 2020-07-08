@@ -15,10 +15,9 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687003"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
@@ -286,11 +285,11 @@ ms.locfileid: "81687003"
 
     ![恢复服务保管库“备份”页](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”************。 单击" **确定**"。
+5.  在“备份目标”边栏选项卡上，使用默认值“Azure”和“虚拟机”************。 单击“确定”。
 
     ![恢复服务保管库“详细信息”页](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”************。 单击" **确定**"。
+6.  对于“备份策略”，使用“DefaultPolicy”或选择“创建新策略”************。 单击“确定”。
 
     ![恢复服务保管库“备份策略详细信息”页](./media/oracle-backup-recovery/recovery_service_06.png)
 
@@ -508,7 +507,7 @@ ms.locfileid: "81687003"
 
     ![公共 IP 地址列表](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  在“公共 IP 地址”边栏选项卡中，单击“添加”********。 在“创建公共 IP 地址”边栏选项卡的“名称”下，选择公共 IP 名称********。 对于“资源组”，请选择“使用现有资源组”。******** 然后单击 "**创建**"。
+2.  在“公共 IP 地址”边栏选项卡中，单击“添加”********。 在“创建公共 IP 地址”边栏选项卡的“名称”下，选择公共 IP 名称********。 对于“资源组”，请选择“使用现有资源组”。  然后单击“创建”。
 
     ![创建 IP 地址](./media/oracle-backup-recovery/create_ip_01.png)
 

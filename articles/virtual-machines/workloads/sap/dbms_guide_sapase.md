@@ -16,10 +16,9 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81273199"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
@@ -50,7 +49,7 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 
 
 ## <a name="linux-operating-system-specific-settings"></a>Linux 操作系统特定设置
-在 Linux Vm 上， `saptune`使用配置文件 SAP 运行-ASE Linux 大页面应在默认情况下启用，并且可以通过命令进行验证  
+在 Linux Vm 上， `saptune` 使用配置文件 SAP 运行-ASE Linux 大页面应在默认情况下启用，并且可以通过命令进行验证  
 
 `cat /proc/meminfo` 
 
@@ -61,7 +60,7 @@ Microsoft Azure 提供了许多不同的虚拟机类型，可运行最小的 SAP
 
 Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的任何 vm 类型都支持 sap ASE For Sap NetWeaver 应用程序 #1928533 用于中型 SAP ASE 数据库服务器的典型 vm 类型包括 Esv3。  大型多 tb 数据库可以利用 M 系列 VM 类型。 可以通过启用 M 系列写入加速器来改善 SAP ASE 事务日志磁盘写入性能。 由于 SAP ASE 执行日志写入的方式，应小心地测试写入加速器。  查看[SAP 支持说明 #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)并考虑运行性能测试。  
 写入加速器仅适用于事务日志磁盘。 磁盘级别缓存应设置为 "无"。 如果 Azure 写入加速器与其他 DBMS 相比，没有显示类似的改进，别惊讶。 根据 SAP ASE 写入事务日志的方式，Azure 写入加速器不会有很小的加速。
-建议为数据设备和日志设备使用不同的磁盘。  系统数据库 sybsecurity 并且`saptools`不需要专用磁盘，可放置在包含 SAP 数据库数据和日志设备的磁盘上 
+建议为数据设备和日志设备使用不同的磁盘。  系统数据库 sybsecurity 并且 `saptools` 不需要专用磁盘，可放置在包含 SAP 数据库数据和日志设备的磁盘上 
 
 ![SAP ASE 的存储配置](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
@@ -80,7 +79,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小介于 50 GB – 250 GB （如 SAP 解决方案管理器）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 说明 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E4s_v3 （4 vCPU/32 GB RAM） | E4s_v3 （4 vCPU/32 GB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -88,7 +87,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 数据设备数 | 4 | 4 | ---|
 | 日志设备数 | 1 | 1 | --- |
 | temp 设备数 | 1 | 1 | SAP BW 工作负荷的详细信息 |
-| 操作系统 | Windows Server Standard 2012 R2 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 操作系统 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
@@ -101,7 +100,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 例如，如果数据库大小介于 250 GB – 750 GB 之间，则中型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 说明 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E16s_v3 （16 vCPU/128 GB RAM） | E16s_v3 （16 vCPU/128 GB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -109,7 +108,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 数据设备数 | 8 | 8 | ---|
 | 日志设备数 | 1 | 1 | --- |
 | temp 设备数 | 1 | 1 | SAP BW 工作负荷的详细信息 |
-| 操作系统 | Windows Server Standard 2012 R2 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 操作系统 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
@@ -121,7 +120,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小介于 750 GB – 2000 GB （如大型 SAP Business Suite system）的小型 SAP ASE DB 服务器的配置示例可能如下所示：
 
-| 配置 | Windows | Linux | 说明 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | E64s_v3 （64 vCPU/432 GB RAM） | E64s_v3 （64 vCPU/432 GB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -129,7 +128,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 数据设备数 | 16 | 16 | ---|
 | 日志设备数 | 1 | 1 | --- |
 | temp 设备数 | 1 | 1 | SAP BW 工作负荷的详细信息 |
-| 操作系统 | Windows Server Standard 2012 R2 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 操作系统 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
@@ -142,7 +141,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 
 数据库大小为 2 TB + 的小型 SAP ASE DB 服务器的配置示例，如更大的全局使用的 SAP 业务套件系统，如下所示
 
-| 配置 | Windows | Linux | 说明 |
+| 配置 | Windows | Linux | 注释 |
 | --- | --- | --- | --- |
 | VM 类型 | M 系列（1.0 到 4.0 TB RAM）  | M 系列（1.0 到 4.0 TB RAM） | --- |
 | 加速网络 | 启用 | 启用 | ---|
@@ -150,7 +149,7 @@ Sap[支持说明](https://launchpad.support.sap.com/#/notes/1928533)中列出的
 | 数据设备数 | 32 | 32 | ---|
 | 日志设备数 | 1 | 1 | --- |
 | temp 设备数 | 1 | 1 | SAP BW 工作负荷的详细信息 |
-| 操作系统 | Windows Server Standard 2012 R2 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
+| 操作系统 | Windows Server 2019 | SUSE 12 SP4/15 SP1 或 RHEL 7。6 | --- |
 | 磁盘聚合 | 存储空间 | LVM2 | --- |
 | 文件系统 | NTFS | XFS |
 | 格式块大小 | 需要工作负荷测试 | 需要工作负荷测试 | --- |
@@ -211,7 +210,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 - 使用具有正确条带大小和文件系统的 Windows 存储空间或 Linux LVM2 聚合磁盘
 - 为数据、日志、临时和备份目的创建足够数量的设备
 - 考虑对 x 大系统使用 UltraDisk 
-- 运行`saptune` Linux 操作系统上的 SAP-ASE 
+- 运行 `saptune` LINUX 操作系统上的 SAP-ASE 
 - 通过数据库加密保护数据库–手动存储密钥 Azure Key Vault 
 - 完成[Azure 上的 SAP 清单](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
 - 配置日志备份和完整备份 
@@ -221,7 +220,7 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 ## <a name="using-dbacockpit-to-monitor-database-instances"></a>使用 DBACockpit 监视数据库实例
 对于使用 SAP ASE 作为数据库平台的 SAP 系统，可以将 DBACockpit 作为事务 DBACockpit 中的嵌入式浏览器窗口或作为 Webdynpro 来访问。 但是，只在 DBACockpit 的 Webdynpro 实现中提供了用于监视和管理数据库的全部功能。
 
-与本地系统一样，需执行数个步骤，才能启用 DBACockpit 的 Webdynpro 实现所使用的所有 SAP NetWeaver 功能。 按照[SAP 支持说明 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，启用 webdynpro 并生成所需的应用。 按照上述说明中的说明进行操作时，还将配置 Internet 通信管理器`ICM`（）以及用于 http 和 https 连接的端口。 http 的默认设置如下所示：
+与本地系统一样，需执行数个步骤，才能启用 DBACockpit 的 Webdynpro 实现所使用的所有 SAP NetWeaver 功能。 按照[SAP 支持说明 #1245200](https://launchpad.support.sap.com/#/notes/1245200) ，启用 webdynpro 并生成所需的应用。 按照上述说明中的说明进行操作时，还将配置 Internet 通信管理器（ `ICM` ）以及用于 http 和 https 连接的端口。 http 的默认设置如下所示：
 
 > icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
 > 
@@ -231,15 +230,15 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 
 事务 DBACockpit 中生成的链接如下所示：
 
-> https：\//\<fullyqualifiedhostname>： 44300/sap/bc/webdynpro/sap/dba_cockpit
+> https： \/ / \<fullyqualifiedhostname> ： 44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http：\//\<fullyqualifiedhostname>： 8000/sap/bc/webdynpro/sap/dba_cockpit
+> http： \/ / \<fullyqualifiedhostname> ： 8000/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > 
 
 需要确保 ICM 使用完全限定的主机名，并且此名称可在打开 DBACockpit 的计算机上解析，具体取决于如何将托管 SAP 系统的 Azure 虚拟机连接到 AD 和 DNS。 请参阅[SAP 支持说明 #773830](https://launchpad.support.sap.com/#/notes/773830)以了解 ICM 如何根据配置文件参数确定完全限定的主机名，并在必要时显式设置参数 ICM/host_name_full。
 
-如果在仅限云的方案中部署 VM，而在本地与 Azure 之间没有跨界连接，则需要定义公共 IP 地址和`domainlabel`。 VM 的公共 DNS 名称格式如下所示：
+如果在仅限云的方案中部署 VM，而在本地与 Azure 之间没有跨界连接，则需要定义公共 IP 地址和 `domainlabel` 。 VM 的公共 DNS 名称格式如下所示：
 
 > `<custom domainlabel`>.`<azure region`>.cloudapp.azure.com
 > 
@@ -249,9 +248,9 @@ SAP 软件预配管理器（SWPM）提供一个选项，用于在安装期间对
 
 将 SAP 配置文件参数 icm/host_name_full 设置为 Azure VM 的 DNS 名称，其链接可能如下所示：
 
-> https：\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
+> https： \/ /mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
-> http：\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
+> http： \/ /mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
 
 在此情况下，需要确保：
 

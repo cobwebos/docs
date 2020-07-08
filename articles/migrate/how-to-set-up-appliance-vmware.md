@@ -4,10 +4,9 @@ description: 了解如何设置 Azure Migrate 设备来评估和迁移 VMware Vm
 ms.topic: article
 ms.date: 04/16/2020
 ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538250"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>为 VMware Vm 设置设备
@@ -33,8 +32,8 @@ ms.locfileid: "81538250"
 
 ## <a name="download-the-ova-template"></a>下载 OVA 模板
 
-1. 在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，单击“发现”。 
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 VMWare vSphere 虚拟机监控程序”。   
+1. 在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
+2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 VMWare vSphere 虚拟机监控程序”。  
 3. 单击“下载”以下载 .OVA 模板文件。****
 
   ![用于下载 OVA 文件的选项](./media/tutorial-assess-vmware/download-ova.png)
@@ -55,14 +54,14 @@ ms.locfileid: "81538250"
 
 导入下载的文件，然后创建 VM。
 
-1. 在 vSphere 客户端控制台中，单击 "**文件** > " "**部署 OVF 模板**"。
+1. 在 vSphere 客户端控制台中，单击 "**文件**" "  >  **部署 OVF 模板**"。
 ![用于部署 OVF 模板的菜单命令](./media/tutorial-assess-vmware/deploy-ovf.png)
 
-2. 在“部署 OVF 模板向导”>“源”  中，指定 OVA 文件的位置。
-3. 在“名称”和“位置”中，为 VM 指定一个易记名称。   选择要在其中托管 VM 的库存对象。
-5. 在“主机/群集”中，指定要在其上运行 VM 的主机或群集。 
-6. 在“存储”中，指定 VM 的存储目标。 
-7. 在“磁盘格式”  中，指定磁盘类型和大小。
+2. 在“部署 OVF 模板向导”>“源”中，指定 OVA 文件的位置。
+3. 在“名称”和“位置”中，为 VM 指定一个易记名称。  选择要在其中托管 VM 的库存对象。
+5. 在“主机/群集”中，指定要在其上运行 VM 的主机或群集。
+6. 在“存储”中，指定 VM 的存储目标。
+7. 在“磁盘格式”中，指定磁盘类型和大小。
 8. 在 "**网络映射**" 中，指定 VM 将连接到的网络。 该网络需要与 Internet 建立连接，这样才能向 Azure Migrate 服务器评估发送元数据。
 9. 检查并确认设置，然后单击“完成”****。
 
@@ -81,10 +80,10 @@ ms.locfileid: "81538250"
 3. 在可连接到该 VM 的任一计算机上打开浏览器，然后打开设备 Web 应用的 URL：**https://*设备名称或 IP 地址*:** 44368。
 
    或者，可以在设备桌面上单击应用快捷方式打开该应用。
-4. 在 Web 应用 >“设置必备组件”中执行以下操作： 
+4. 在 Web 应用 >“设置必备组件”中执行以下操作：
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用将检查 VM 是否可访问 Internet。 如果 VM 使用代理：
-        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。 
+        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
         - 如果代理需要身份验证，请指定凭据。
         - 仅支持 HTTP 代理。
     - **时间同步**：将验证时间。 设备上的时间应与 Internet 时间同步，这样才能正常进行发现。
@@ -95,14 +94,14 @@ ms.locfileid: "81538250"
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
-1. 单击“登录”。  如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
+1. 单击“登录”。 如果未显示该按钮，请确保已在浏览器中禁用弹出窗口阻止程序。
 2. 在新的标签页中，使用 Azure 凭据登录。
     - 使用用户名和密码登录。
     - 不支持使用 PIN 登录。
 3. 成功登录后，返回到 Web 应用。
 2. 选择在其中创建了 Azure Migrate 项目的订阅。 然后选择该项目。
 3. 指定设备的名称。 该名称应是字母数字，长度为 14 个或更少的字符。
-4. 单击“注册”  。
+4. 单击“注册”。
 
 
 ## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>提供 vCenter Server 和 VM 凭据，开始连续发现
@@ -124,7 +123,7 @@ ms.locfileid: "81538250"
 2. 选择“操作系统”****。
 3. 提供凭据的易记名称。
 4. 在“用户名”和“密码”中，指定在 VM 上至少具有来宾访问权限的帐户********。
-5. 单击“添加”  。
+5. 单击“添加” 。
 
 指定 vCenter Server 和 VM 凭据（可选）后，单击“保存并开始发现”，开始发现本地环境****。
 

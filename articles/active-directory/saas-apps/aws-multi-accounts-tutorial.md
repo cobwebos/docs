@@ -16,10 +16,9 @@ ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81603824"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教程： Azure Active Directory 与 Amazon Web Services （AWS）的集成（旧教程）
@@ -49,7 +48,7 @@ ms.locfileid: "81603824"
 
 * 所有 AWS 帐户将都使用相同的联合元数据 XML 文件，并且在证书滚动更新时，必须同时在所有 AWS 帐户上进行大量的操作来更新证书
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Amazon Web Services (AWS) 的集成，需要具有以下项：
 
@@ -68,7 +67,7 @@ ms.locfileid: "81603824"
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Amazon Web Services （AWS）支持**SP 和 IDP 启动的**SSO
+* Amazon Web Services (AWS) 支持 **SP 和 IDP** 发起的 SSO
 * 配置 Amazon Web Services (AWS) 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>从库中添加 Amazon Web Services (AWS)
@@ -76,11 +75,11 @@ ms.locfileid: "81603824"
 要配置 Amazon Web Services (AWS) 与 Azure AD 的集成，需要从库将 Amazon Web Services (AWS) 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中****，键入 **Amazon Web Services (AWS)**。
-1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用****。 在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入 **Amazon Web Services (AWS)** 。
+1. 在结果窗格中，选择“Amazon Web Services (AWS)”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 1. 添加应用程序后，请切换到 "**属性**" 页并复制 "**对象 ID**"。
 
@@ -114,7 +113,7 @@ ms.locfileid: "81603824"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框    。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框  。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -129,24 +128,24 @@ ms.locfileid: "81603824"
     | 名称  | 源属性  | 命名空间 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | Role            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
+    | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
     | SessionDuration             | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. 单击“添加新声明”  以打开“管理用户声明”  对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
     ![image](common/new-save-attribute.png)
 
     ![图像](common/new-attribute-details.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。 
+    b. 在“名称”文本框中，键入为该行显示的属性名称。
 
     c. 在“命名空间”**** 文本框中，键入为该行显示的命名空间值。
 
-    d. 选择“源”作为“属性”  。
+    d. 选择“源”作为“属性”。
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
@@ -190,7 +189,7 @@ ms.locfileid: "81603824"
 
     ![配置单一登录角色][16]
 
-1. 在“创建角色”**** 页中，执行以下步骤：  
+1. 在“创建角色”页中，执行以下步骤：  
 
     ![配置单一登录信任][19]
 
@@ -198,7 +197,7 @@ ms.locfileid: "81603824"
 
     b. 在“选择 SAML 2.0 提供程序”**** 部分中，选择之前创建的 SAML 提供程序****（例如：*WAAD*）
 
-    c. 选择“允许以编程方式和通过 AWS 管理控制台进行访问”****。
+    c. 选择“允许以编程方式和通过 AWS 管理控制台进行访问”。
   
     d. 单击“下一步: 权限”****。
 
@@ -212,7 +211,7 @@ ms.locfileid: "81603824"
 
     a. 在 "**密钥**" 文本框中，输入 Ex： Azureadtest 的密钥名称。
 
-    b. 在 "**值（可选）** " 文本框中，使用以下格式`accountname-aws-admin`输入密钥值。 帐户名称应为全部小写。
+    b. 在 "**值（可选）** " 文本框中，使用以下格式输入密钥值 `accountname-aws-admin` 。 帐户名称应为全部小写。
 
     c. 单击 "**下一步：查看**"。
 
@@ -220,7 +219,7 @@ ms.locfileid: "81603824"
 
     ![配置单一登录审阅][34]
 
-    a. 在 "**角色名称**" 文本框中，输入以下模式`accountname-aws-admin`的值。
+    a. 在 "**角色名称**" 文本框中，输入以下模式的值 `accountname-aws-admin` 。
 
     b. 在 "**角色说明**" 文本框中，输入与用于角色名称相同的值。
 
@@ -283,11 +282,11 @@ ms.locfileid: "81603824"
 
     !["Microsoft Graph 资源管理器" 对话框](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    g. 从服务主体对象中提取 appRoles 属性。
+    如， 从服务主体对象中提取 appRoles 属性。
 
     !["Microsoft Graph 资源管理器" 对话框](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    h. 现在需要为应用程序生成新角色。 
+    h.如果该值不存在，请单击“添加行”。 现在需要为应用程序生成新角色。 
 
     i. 下面 JSON 是 appRoles 对象的示例。 创建类似的对象，以添加应用程序所需的角色。
 

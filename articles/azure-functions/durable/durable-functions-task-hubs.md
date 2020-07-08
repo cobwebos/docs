@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81604614"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
-*Durable Functions* 中的[任务中心](durable-functions-overview.md)是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
+[Durable Functions](durable-functions-overview.md) 中的*任务中心*是用于业务流程的 Azure 存储资源的逻辑容器。 只有当业务流程协调程序函数与活动函数属于同一任务中心时，它们才能彼此进行交互。
 
-如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用  。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
+如果多个函数应用共享存储帐户，则必须使用单独的任务中心名称配置每个函数应用**。 一个存储帐户可以包含多个任务中心。 下图说明了在共享和专用存储帐户中每个函数应用有一个任务中心。
 
 ![说明共享和专用存储帐户的关系图。](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -35,13 +34,13 @@ ms.locfileid: "81604614"
 
 ## <a name="task-hub-names"></a>任务中心名称
 
-任务中心通过符合以下规则的名称进行标识：
+任务中心由符合以下规则的名称标识：
 
-* 只包含字母数字字符
+* 仅包含字母数字字符
 * 以字母开头
-* 的最小长度为3个字符，最大长度为45个字符
+* 最小长度为 3 个字符，最大长度为 45 个字符
 
-在*host json*文件中声明任务中心名称，如下面的示例中所示：
+任务中心名称在 host.json 文件中声明，如以下示例所示**：
 
 ### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
@@ -102,7 +101,7 @@ ms.locfileid: "81604614"
 }
 ```
 
-下面的代码演示如何编写一个函数，该函数使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心：
+以下代码演示如何编写使用[业务流程客户端绑定](durable-functions-bindings.md#orchestration-client)来处理配置为应用设置的任务中心的函数：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -125,7 +124,7 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
+> 前面的 C# 示例适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: a0a2f703d9224b8b9dd77c80b2b6a7faee70f5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81538097"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>向时序见解环境添加 IoT 中心事件源
@@ -25,7 +24,7 @@ ms.locfileid: "81538097"
 > [!NOTE]
 > 本文中的说明适用于 Azure 时序见解 GA 版和时序见解预览版环境。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 创建[Azure 时序见解环境](time-series-insights-update-create-environment.md)。
 * [使用 Azure 门户创建 IoT 中心](../iot-hub/iot-hub-create-through-portal.md)。
@@ -46,11 +45,11 @@ ms.locfileid: "81538097"
 
 1. 在****“使用者组”下，为使用者组输入唯一名称。 创建新的事件源时，请在时序见解环境中使用此相同名称。
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
 ## <a name="add-a-new-event-source"></a>添加新的事件源
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，选择“所有资源”  。 选择时序见解环境。
 
@@ -72,7 +71,7 @@ ms.locfileid: "81538097"
 
        [![“新建事件源”窗格 - 需要在“通过可用订阅使用 IoT 中心”选项中设置的属性](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | 属性 | 说明 |
+       | Property | 说明 |
        | --- | --- |
        | 订阅 | 所需的 iot 中心所属的订阅。 |
        | IoT 中心名称 | 所选 iot 中心的名称。 |
@@ -83,7 +82,7 @@ ms.locfileid: "81538097"
 
       下表介绍“手动提供 IoT 中心设置”**** 所需的属性：
 
-       | 属性 | 说明 |
+       | Property | 描述 |
        | --- | --- |
        | 订阅 ID | 所需的 iot 中心所属的订阅。 |
        | 资源组 | 在其中创建了此 IoT 中心的资源组名称。 |
@@ -93,7 +92,7 @@ ms.locfileid: "81538097"
 
     * 这两个选项共享以下配置选项：
 
-       | 属性 | 说明 |
+       | Property | 描述 |
        | --- | --- |
        | IoT 中心使用者组 | 从 IoT 中心读取事件的使用者组。 强烈建议为事件源使用专用的使用者组。 |
        | 事件序列化格式 | 目前，JSON 是唯一可用的序列化格式。 事件消息必须采用此格式，否则将无法读取任何数据。 |
@@ -102,7 +101,7 @@ ms.locfileid: "81538097"
 
 1. 添加已添加到 IoT 中心的专用时序见解使用者组名称。
 
-1. 选择“创建”。 
+1. 选择“创建”。
 
 1. 创建事件源以后，时序见解就会自动将数据流式传输到环境中。
 
@@ -110,6 +109,6 @@ ms.locfileid: "81538097"
 
 * [定义数据访问策略](time-series-insights-data-access.md)，以保护数据。
 
-* [发送事件](time-series-insights-send-events.md)到事件源。
+* [向事件源发送事件](time-series-insights-send-events.md)。
 
 * 在[时序见解资源管理器中访问环境](https://insights.timeseries.azure.com)。

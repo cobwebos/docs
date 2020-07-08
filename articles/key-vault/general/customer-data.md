@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81617897"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
@@ -40,7 +39,7 @@ Azure Key Vault 在创建或更新保管库、密钥、机密、证书和托管�
 
 用于创建保管库、密钥、机密、证书和托管存储帐户的相同 REST API、门户体验和 SDK 也能够更新和删除这些对象。
 
-通过软删除，你可以在删除后的90天内恢复已删除的数据。 使用软删除时，在90天的保留期到期之前，数据可能会被永久删除。 如果保管库或订阅已配置为阻止清除操作，则不能在计划的保留期结束前永久删除数据。
+软删除允许你在删除数据后的 90 天内恢复已删除的数据。 使用软删除时，可以通过执行清除操作在 90 天保留期到期之前永久删除数据。 如果保管库或订阅已配置为阻止清除操作，则不能在计划的保留期结束前永久删除数据。
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 

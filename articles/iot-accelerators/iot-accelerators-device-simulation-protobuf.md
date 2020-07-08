@@ -12,10 +12,9 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683994"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
@@ -32,9 +31,9 @@ ms.locfileid: "81683994"
 1. 指定在设备模型中使用 Protobuf 格式
 1. 定义 Protobuf 格式
 1. 生成 Protobuf 类
-1. 在本地测试
+1. 本地测试
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要遵循本操作指南中的步骤，需要：
 
@@ -65,7 +64,7 @@ ms.locfileid: "81683994"
 
 在 Visual Studio Code 中打开 **remote-monitoring-services-dotnet-master\storage-adapter** 文件夹。 单击任意“还原”按钮，修复未解决的依赖项****。
 
-打开**vscode/** STORAGEADAPTER 文件，并将 Cosmos DB 连接字符串分配到**电脑\_\_DOCUMENTDB\_CONNSTRING**环境变量。
+打开文件**上的 vscode/launch.js** ，并将 Cosmos DB 连接字符串分配到**电脑 \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING**环境变量。
 
 > [!NOTE]
 > 在计算机本地运行微服务时，它仍然需要 Azure 中的 Cosmos DB 实例才能正常运行。

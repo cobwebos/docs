@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641817"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
@@ -84,7 +83,7 @@ ms.locfileid: "81641817"
 * 逻辑用来通过[托管连接器](../connectors/apis-list.md)访问其他服务和系统的连接
 * 逻辑应用需要对部署使用的其他资源
 
-  例如，如果逻辑应用使用企业到企业（B2B）方案的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级`parameters`对象将声明接受该集成帐户的资源 ID 的参数。
+  例如，如果逻辑应用使用企业到企业（B2B）方案的[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，则模板的顶级 `parameters` 对象将声明接受该集成帐户的资源 ID 的参数。
 
 下面是参数定义的一般结构和语法，[参数 - 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#parameters)中对此做了全面介绍：
 
@@ -185,8 +184,8 @@ ms.locfileid: "81641817"
 
 若要提供模板参数的值，请将这些值存储在[参数文件](../azure-resource-manager/templates/parameter-files.md)中。 这样，就可以根据部署需求使用不同的参数文件。 下面是要使用的文件名格式：
 
-* 逻辑应用模板文件名： ** <*逻辑应用名称*> json**
-* 参数文件名： ** <*逻辑应用名称*>**
+* 逻辑应用模板文件名： ** < *逻辑应用名称*# C0.js**
+* 参数文件名： ** < *逻辑应用名称*# C0.parameters.js**
 
 下面是参数文件中的结构，其中包含用于[传递受保护的参数值与 Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)的密钥保管库参考：
 
@@ -319,13 +318,13 @@ ms.locfileid: "81641817"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 特性 | 必选 | 类型 | 说明 |
+| 特性 | 必须 | 类型 | 说明 |
 |-----------|----------|------|-------------|
-| `state` | 是 | 字符串 | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
-| `integrationAccount` | 否 | 对象 | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
-| `definition` | 是 | 对象 | 逻辑应用的基础工作流定义，它是代码视图中显示的相同对象，[工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md)主题中对此做了全面介绍。 在此工作流定义中，`parameters` 对象声明要在逻辑应用运行时使用的值的参数。 有关详细信息，请参阅[工作流定义和参数](#workflow-definition-parameters)。 <p><p>若要查看逻辑应用工作流定义中的属性，请在 Azure 门户或 Visual Studio 中或使用 [Azure 资源浏览器](https://resources.azure.com)之类的工具，从“设计视图”切换到“代码视图”。 |
-| `parameters` | 否 | 对象 | 要在逻辑应用运行时使用的[工作流定义参数值](#workflow-definition-parameters)。 这些值的参数定义显示在[工作流定义的 parameters 对象中](#workflow-definition-parameters)。 此外，如果逻辑应用使用[托管连接器](../connectors/apis-list.md)来访问其他服务和系统，则此对象将包含一个用于设置要在运行时使用的连接值的 `$connections` 对象。 |
-| `accessControl` | 否 | 对象 | 用于指定逻辑应用的安全属性，例如限制对请求触发器或运行历史记录输入和输出的 IP 访问。 有关详细信息，请参阅[保护对逻辑应用的访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
+| `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
+| `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
+| `definition` | 是 | Object | 逻辑应用的基础工作流定义，它是代码视图中显示的相同对象，[工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md)主题中对此做了全面介绍。 在此工作流定义中，`parameters` 对象声明要在逻辑应用运行时使用的值的参数。 有关详细信息，请参阅[工作流定义和参数](#workflow-definition-parameters)。 <p><p>若要查看逻辑应用工作流定义中的属性，请在 Azure 门户或 Visual Studio 中或使用 [Azure 资源浏览器](https://resources.azure.com)之类的工具，从“设计视图”切换到“代码视图”。 |
+| `parameters` | 否 | Object | 要在逻辑应用运行时使用的[工作流定义参数值](#workflow-definition-parameters)。 这些值的参数定义显示在[工作流定义的 parameters 对象中](#workflow-definition-parameters)。 此外，如果逻辑应用使用[托管连接器](../connectors/apis-list.md)来访问其他服务和系统，则此对象将包含一个用于设置要在运行时使用的连接值的 `$connections` 对象。 |
+| `accessControl` | 否 | Object | 用于指定逻辑应用的安全属性，例如限制对请求触发器或运行历史记录输入和输出的 IP 访问。 有关详细信息，请参阅[保护对逻辑应用的访问](../logic-apps/logic-apps-securing-a-logic-app.md)。 |
 ||||
 
 有关特定于逻辑应用、集成帐户和集成帐户项目的模板资源信息，请参阅 [Microsoft.Logic 资源类型](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions)。
@@ -1017,7 +1016,7 @@ ms.locfileid: "81641817"
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
-若要引用工作流定义参数，请使用在运行时评估的[工作流定义语言表达式和函数](../logic-apps/workflow-definition-language-functions-reference.md)。 你可能会发现，某些模板函数和工作流定义函数同名。 工作流定义表达式以 "at" 符号（**@**）开头：
+若要引用工作流定义参数，请使用在运行时评估的[工作流定义语言表达式和函数](../logic-apps/workflow-definition-language-functions-reference.md)。 你可能会发现，某些模板函数和工作流定义函数同名。 工作流定义表达式以 "at" 符号（ **@** ）开头：
 
 `"<attribute-name>": "@parameters('<workflow-definition-parameter-name>')"`
 

@@ -14,10 +14,9 @@ ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: borisb
 ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683757"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>设置 Azure 和 Oracle 云基础结构之间的直接互连  
@@ -25,18 +24,18 @@ ms.locfileid: "81683757"
 为了创建[集成的多云体验](oracle-oci-overview.md)，Microsoft 和 Oracle 通过[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)提供 Azure 与 oracle 云基础结构（OCI）之间的直接互连。 通过 ExpressRoute 和 FastConnect 互连，客户可以在两个云之间体验低延迟、高吞吐量、专用直接连接。
 
 > [!IMPORTANT]
-> 当使用 Azure/Oracle 云互连解决方案（可能为2020）时，Oracle 将验证这些应用程序可以在 Azure 中运行。
-> * 电子商务套件
+> 在 2020 年 5 月之前，Oracle 将认证，在使用 Azure/Oracle 云互连解决方案时，这些应用程序可以在 Azure 中运行。
+> * E-Business Suite
 > * JD Edwards EnterpriseOne
 > * PeopleSoft
-> * Oracle 零售应用程序
-> * Oracle Hyperion 金融管理
+> * Oracle Retail 应用程序
+> * Oracle Hyperion 财务管理
 
 下图显示了互连的高级概述：
 
 ![跨云网络连接](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 若要在 Azure 和 OCI 之间建立连接，必须具有有效的 Azure 订阅和活动的 OCI 租户。
 
@@ -66,7 +65,7 @@ ms.locfileid: "81683757"
     * 在 "**提供程序服务密钥**" 中，粘贴 ExpressRoute 服务密钥。
     * 使用前一步骤中的第一个/30 个专用 IP 地址空间来划分**主 BGP Ip 地址**和**辅助 bgp ip**地址的第二/30 个专用 ip 地址空间。
         * 将 Oracle BGP IP 地址（主要和次要）的两个范围的第一个可用地址分配给客户 BGP IP 地址（来自 FastConnect）。 第一个可用的 IP 地址是/30 地址空间中的第二个 IP 地址（Microsoft 保留第一个 IP 地址）。
-    * 单击 **“创建”** 。
+    * 单击“创建”。
 1. 使用路由表通过动态路由网关完成将 FastConnect 链接到 Oracle 租户下的虚拟云网络。
 1. 导航到 Azure 并确保 ExpressRoute 线路的**提供程序状态**已更改为 "已**设置**"，并确保已设置**Azure 专用**类型的对等互连。 这是以下步骤的先决条件。
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641121"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒体服务实时传送视频流概述
@@ -51,11 +50,11 @@ ms.locfileid: "81641121"
 
 ## <a name="streaming-endpoints-channels-programs"></a>流式处理终结点、频道、节目
 
-在 Azure 媒体服务中，“频道”、“程序”和“流式处理终结点”处理所有实时传送视频流功能，包括引入、格式化、DVR、安全性、可伸缩性和冗余    。
+在 Azure 媒体服务中，“频道”、“程序”和“流式处理终结点”处理所有实时传送视频流功能，包括引入、格式化、DVR、安全性、可伸缩性和冗余  。
 
 **通道** 表示用于处理实时流内容的管道。 通道可以通过以下方式接收实时输入流：
 
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（零碎的 MP4）发送到经配置可以进行直通传送的频道    。 直通传送是指引入的流将会直接通过频道，而不会经过任何进一步的处理   。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP： Telestream Wirecast、Haivision、Teradek 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的通道，但不建议这样做。 收到请求时，媒体服务会将该流传送给客户。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（零碎的 MP4）发送到经配置可以进行直通传送的频道  。 直通传送是指引入的流将会直接通过频道，而不会经过任何进一步的处理 。 可以使用以下输出多比特率平滑流的实时编码器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下实时编码器输出 RTMP：Telestream Wirecast、Haivision 和 Teradek 转码器。  实时编码器也可将单比特率流发送到并未启用实时编码的通道，但不建议这样做。 收到请求时，媒体服务会将该流传送给客户。
 
   > [!NOTE]
   > 需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，可以使用直通这种最经济的方法来实时传送视频流。 请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)详细信息。
@@ -65,7 +64,7 @@ ms.locfileid: "81641121"
 
 从媒体服务2.10 发行版开始，创建通道时，可以指定希望通道接收输入流的方式，以及是否希望通道对流执行实时编码。 可以使用两个选项：
 
-* 无（直通） - 如果打算使用输出多比特率流（直通流）的本地实时编码器，请指定此值  。 在这种情况下，传入流将传递到输出，而不会进行任何编码。 这是 2.10 发行版以前的通道行为。  
+* 无（直通） - 如果打算使用输出多比特率流（直通流）的本地实时编码器，请指定此值。 在这种情况下，传入流将传递到输出，而不会进行任何编码。 这是 2.10 发行版以前的通道行为。  
 * **标准** - 如果打算使用媒体服务将单比特率实时流编码为多比特率流，请选择此值。 若要针对不频繁发生的事件快速地向上缩放，此方法可以节省资金。 请注意，实时编码会影响计费，应记住，将实时编码频道保持为“正在运行”状态会产生费用。  建议在实时流式处理事件完成之后立即停止正在运行的通道，以避免产生额外的小时费用。
 
 ## <a name="comparison-of-channel-types"></a>通道类型的比较
@@ -88,7 +87,7 @@ ms.locfileid: "81641121"
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>使用从本地编码器（直通）接收多比特率实时流的频道
 
-下图显示的是直通工作流中涉及的 AMS 平台的主要组成部分  。
+下图显示的是直通工作流中涉及的 AMS 平台的主要组成部分。
 
 ![实时工作流](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
@@ -162,9 +161,9 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相关主题
-[Azure 媒体服务分段的运行中引入规范](../media-services-fmp4-live-ingest-overview.md)
+[Azure 媒体服务分片 MP4 实时引入规范](../media-services-fmp4-live-ingest-overview.md)
 
-[使用可通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
+[使用能够通过 Azure 媒体服务执行实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
 
 [使用从本地编码器接收多比特率实时流的频道](media-services-live-streaming-with-onprem-encoders.md)
 

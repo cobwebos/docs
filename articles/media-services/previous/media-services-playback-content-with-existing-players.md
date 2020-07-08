@@ -15,23 +15,22 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81686926"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
-Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题指出了可用来测试流的现有播放器。
+Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题列出了可用于测试流的现有播放器。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 门户媒体服务内容播放器
-**Azure** 门户提供可用于测试视频的内容播放器。
+**Azure** 门户提供了可用于测试视频的内容播放器。
 
-单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”  按钮。
+单击所需的视频（确保它[已发布](media-services-portal-publish.md)），并单击门户底部的“播放”按钮。
 
 请注意以下事项：
 
-* **媒体服务内容播放器**从默认的流式处理终结点播放。 如果要从非默认流式处理终结点播放，请使用其他播放器。 例如 [Azure Media Player](https://aka.ms/azuremediaplayer)。
+* **媒体服务内容播放器** 从默认的流式处理终结点播放。 如果要从非默认流式处理终结点播放，请使用其他播放器。 例如 [Azure Media Player](https://aka.ms/azuremediaplayer)。
 
 ![AMSPlayer][AMSPlayer]
 
@@ -59,8 +58,8 @@ Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 
 ### <a name="other"></a>其他
 若要测试 HLS URL，还可以使用：
 
-* iOS 设备上的“Safari”**** 或
-* Windows 上的“3ivx HLS 播放器”****。
+*  或
+*  。
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 935a99dd34b0a4e3d4970e8d91f9332d2bc1489a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81310571"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>安全代理故障排除指南 (Linux)
@@ -95,17 +94,17 @@ Azure Security Center for IoT agent encountered an error! Error in: {Error Code}
 
 | 错误代码 | 错误子代码 | 错误详细信息 | 修正 C | 修正 C# |
 |:-----------|:---------------|:--------|:------------|:------------|
-| 本地配置 | 缺少配置 | 本地配置文件中缺少配置。 错误消息应声明缺少哪个密钥。 | 向/var/LocalConfiguration.json 文件添加缺少的密钥，请参阅[cs-localconfig](azure-iot-security-local-configuration-c.md)获取详细信息。| 将缺少的密钥添加到常规 .config 文件中，有关详细信息，请参阅[c # localconfig](azure-iot-security-local-configuration-csharp.md) 。 |
-| 本地配置 | 无法分析配置 | 无法分析配置值。 错误消息应说明无法分析哪一项。 由于值不在预期的类型中，或者值超出了范围，因此无法分析配置值。 | 请在/var/LocalConfiguration.json 文件中修复密钥的值，以便它与 LocalConfiguration 架构匹配，有关详细信息，请参阅[c # localconfig](azure-iot-security-local-configuration-csharp.md) 。 |  修复常规 .config 文件中密钥的值，使其与架构匹配，有关详细信息，请参阅[cs-localconfig](azure-iot-security-local-configuration-c.md) 。|
+| 本地配置 | 缺少配置 | 本地配置文件中缺少配置。 错误消息应声明缺少哪个密钥。 | 向/var/LocalConfiguration.js上添加缺少的密钥，请参阅[cs-localconfig](azure-iot-security-local-configuration-c.md)获取详细信息。| 将缺少的密钥添加到 General.config 文件中，有关详细信息，请参阅[localconfig](azure-iot-security-local-configuration-csharp.md) 。 |
+| 本地配置 | 无法分析配置 | 无法分析配置值。 错误消息应说明无法分析哪一项。 由于值不在预期的类型中，或者值超出了范围，因此无法分析配置值。 | 修复/var/LocalConfiguration.json file 中的键的值，以便它与 LocalConfiguration 架构匹配，有关详细信息，请参阅[c # localconfig](azure-iot-security-local-configuration-csharp.md) 。 |  修复 General.config 文件中的键的值，使其与架构匹配，有关详细信息，请参阅[cs-localconfig](azure-iot-security-local-configuration-c.md) 。|
 | 本地配置 | 文件格式 | 未能分析配置文件。 | 配置文件已损坏，请下载并重新安装代理。 | |
 | 远程配置 | 超时 | 代理无法在超时期限内提取 azureiotsecurity 模块。 | 请确保身份验证配置正确，然后重试。 | 代理无法在超时期限内提取 azureiotsecurity 模块。 | 请确保身份验证配置正确，然后重试。 |
-| 身份验证 | 文件不存在 | 给定路径中的文件不存在。 | 请确保该文件存在于给定路径中或转到**LocalConfiguration**文件，然后更改**FilePath**配置。 | 请确保该文件存在于给定的路径中，或转到**Authentication .config**文件并更改**filePath**配置。|
+| 身份验证 | 文件不存在 | 给定路径中的文件不存在。 | 请确保该文件存在于给定路径中或转到文件的**LocalConfiguration.js** ，并更改**FilePath**配置。 | 请确保该文件存在于给定路径中或转到**Authentication.config**文件并更改**filePath**配置。|
 | 身份验证 | 文件权限 | 代理没有足够的权限打开该文件。 | 向**asciotagent**用户授予对给定路径中的文件的读取权限。 | 请确保该文件可访问。 |
 | 身份验证 | 文件格式 | 给定文件的格式不正确。 | 请确保文件的格式正确。 支持的文件类型为 .pfx 和 pem。 | 请确保该文件是有效的证书文件。 |
-| 身份验证 | 未授权 | 代理无法针对具有给定凭据的 IoT 中心进行身份验证。 | 验证 LocalConfiguration 文件中的身份验证配置，浏览身份验证配置并确保所有详细信息都正确，验证文件中的密码是否与已验证身份匹配。 | 在 Authentication 中验证身份验证配置，浏览身份验证配置，确保所有详细信息都正确，然后验证文件中的密码是否与已验证的标识匹配。
+| 身份验证 | 未授权 | 代理无法针对具有给定凭据的 IoT 中心进行身份验证。 | 验证 LocalConfiguration 文件中的身份验证配置，浏览身份验证配置并确保所有详细信息都正确，验证文件中的密码是否与已验证身份匹配。 | 在 Authentication.config 中验证身份验证配置，浏览身份验证配置并确保所有详细信息都正确，然后验证文件中的密码是否与经过身份验证的标识匹配。
 | 身份验证 | 未找到 | 已找到设备/模块。 | 验证身份验证配置-确保主机名正确，设备在 IoT 中心存在并且具有 azureiotsecurity 的克隆模块。 |  验证身份验证配置-确保主机名正确，设备在 IoT 中心存在并且具有 azureiotsecurity 的克隆模块。 |
-| 身份验证 | 缺少配置 | *身份验证*文件中缺少配置。 错误消息应声明缺少哪个密钥。 | 将缺少的密钥添加到*LocalConfiguration*文件。| 将缺少的密钥添加到*Authentication*文件中。有关详细信息，请参阅[c # localconfig](azure-iot-security-local-configuration-csharp.md) 。 |
-| 身份验证 | 无法分析配置 | 无法分析配置值。 错误消息应说明无法分析哪一项。 无法分析配置值，因为该值不是预期的类型，或者值超出了范围。 |修复**LocalConfiguration**文件中的项的值。 |在**Authentication .config**文件中修复密钥的值以匹配架构，有关详细信息，请参阅[cs-localconfig](azure-iot-security-local-configuration-c.md) 。|
+| 身份验证 | 缺少配置 | *Authentication.config*文件中缺少配置。 错误消息应声明缺少哪个密钥。 | 将缺少的密钥添加到文件的*LocalConfiguration.js* 。| 将缺少的密钥添加到*Authentication.config*文件中，有关详细信息，请参阅[localconfig](azure-iot-security-local-configuration-csharp.md) 。 |
+| 身份验证 | 无法分析配置 | 无法分析配置值。 错误消息应说明无法分析哪一项。 无法分析配置值，因为该值不是预期的类型，或者值超出了范围。 |修复**LocalConfiguration.js**文件中的项的值。 |修复**Authentication.config**文件中的项的值以匹配架构，有关详细信息，请参阅[localconfig-引用](azure-iot-security-local-configuration-c.md)。|
 |
 
 ## <a name="restart-the-agent"></a>重新启动代理

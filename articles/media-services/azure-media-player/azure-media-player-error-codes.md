@@ -7,15 +7,14 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 13d804ec39c3d7753d4ee04962a88d4451fb04d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81727250"
 ---
 # <a name="error-codes"></a>错误代码 #
 
-播放无法启动或停止时，将激发错误事件，并且该`error()`函数将返回一个代码和可选消息，帮助应用开发人员获取更多详细信息。 `error().message`不是向用户显示的消息。  向用户显示的消息基于`error().code` bits 27-20，请参阅下表。
+播放无法启动或停止时，将激发错误事件，并且该 `error()` 函数将返回一个代码和可选消息，帮助应用开发人员获取更多详细信息。 `error().message`不是向用户显示的消息。  向用户显示的消息基于 `error().code` bits 27-20，请参阅下表。
 
 ```javascript
 
@@ -44,12 +43,12 @@ ms.locfileid: "81727250"
 描述错误的详细信息，bits 27-20 提供高级别，bits 19-0 提供更多详细信息（如果可用）。
 
 
-| 错误代码。路径名 | 代码，位 [27-0] （28位） | 说明 |
+| 错误代码。路径名 | 代码，位 [27-0] （28位） | 描述 |
 |---|---:|---|
 | **MEDIA_ERR_ABORTED 错误范围（0x0100000-0x01FFFFF）** | | |
 | abortedErrUnknown | 0x0100000 | 一般中止错误 |
 | abortedErrNotImplemented | 0x0100001 | 中止错误，未实现 |
-| abortedErrHttpMixedContentBlocked | 0x0100002 | 中止错误，阻止了混合内容-一般在从`http://` `https://`页面加载流时出现 |
+| abortedErrHttpMixedContentBlocked | 0x0100002 | 中止错误，阻止了混合内容-一般在 `http://` 从页面加载流时 `https://` 出现 |
 | **MEDIA_ERR_NETWORK 错误开始值（0x0200000-0x02FFFFF）** | | |
 | networkErrUnknown | 0x0200000 | 一般网络错误 |
 | networkErrHttpBadUrlFormat | 0x0200190 | Http 400 错误响应 |

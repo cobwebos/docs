@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81688098"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio Code 的 Azure IoT 工具进行 Azure IoT 中心设备管理
@@ -43,59 +42,59 @@ ms.locfileid: "81688098"
 
 使用各种管理选项运行适用于 Visual Studio Code 的 Azure IoT 工具。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>需要什么
 
 * 一个有效的 Azure 订阅。
 * 已在订阅中创建一个 Azure IoT 中心。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [适用于 VS Code 的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或复制此 URL 并将其粘贴到浏览`vscode:extension/vsciot-vscode.azure-iot-tools`器窗口中：。
+* [适用于 VS Code 的 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 或复制此 URL 并将其粘贴到浏览器窗口中：`vscode:extension/vsciot-vscode.azure-iot-tools`。
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登录以访问 IoT 中心
 
-1. 在 VS Code 的“资源管理器”  视图中，展开左下角的“Azure IoT 中心设备”  部分。
+1. 在 VS Code 的“资源管理器”视图中，展开左下角的“Azure IoT 中心设备”部分。
 
-2. 在上下文菜单中单击“选择 IoT 中心”  。
+2. 在上下文菜单中单击“选择 IoT 中心”。
 
 3. 弹出窗口将显示在右下角，以便让你首次登录 Azure。
 
 4. 登录后，将显示 Azure 订阅列表，然后选择“Azure 订阅和 IoT 中心”。
 
-5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”  选项卡中。
+5. 几秒钟后，设备列表将显示在“Azure IoT 中心设备”选项卡中。
 
    > [!Note]
-   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。  在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
+   > 也可以选择“设置 IoT 中心连接字符串”来完成设置。 在弹出窗口中输入 IoT 设备连接到的 IoT 中心的 **iothubowner** 策略连接字符串。
 
 ## <a name="direct-methods"></a>直接方法
 
-1. 右键单击设备并选择“调用直接方法”  。 
+1. 右键单击设备并选择“调用直接方法”。 
 
 2. 在输入框中输入方法名称和有效负载。
 
-3. 结果将显示在“输出”   > “Azure IoT 中心”  视图中。
+3. 结果将显示在“输出” > “Azure IoT 中心”视图中。
 
 ## <a name="read-device-twin"></a>读取设备孪生
 
-1. 右键单击设备并选择“编辑设备孪生”  。 
+1. 右键单击设备并选择“编辑设备孪生”。 
 
-2. 将打开一个 azure-iot-device-twin.json 文件，其中包含设备孪生的内容  。
+2. 将打开一个 azure-iot-device-twin.json 文件，其中包含设备孪生的内容。
 
 ## <a name="update-device-twin"></a>更新设备孪生
 
-1. 编辑“标记”或 properties.desired 字段   。
+1. 编辑“标记”或 properties.desired 字段 。
 
-2. 右键单击 azure-iot-device-twin.json 文件  。
+2. 右键单击 azure-iot-device-twin.json 文件。
 
-3. 选择“更新设备孪生”以更新设备孪生  。
+3. 选择“更新设备孪生”以更新设备孪生。
 
 ## <a name="send-cloud-to-device-messages"></a>发送“云到设备”消息
 
 要将消息从 IoT 中心发送到设备，请执行以下步骤：
  
-1. 右键单击设备，然后选择“将 C2D 消息发送到设备”  。 
+1. 右键单击设备，然后选择“将 C2D 消息发送到设备”。 
 
 2. 在输入框中输入消息。
 
-3. 结果将显示在“输出”   > “Azure IoT 中心”  视图中。
+3. 结果将显示在“输出” > “Azure IoT 中心”视图中。
 
 ## <a name="next-steps"></a>后续步骤
 

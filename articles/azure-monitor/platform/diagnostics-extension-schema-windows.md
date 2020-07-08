@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81676432"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
@@ -189,7 +188,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。  
 
- 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览”   -> “资源组”   -> “<名称\>”  。 单击“属性”  磁贴，并从“ID”  字段复制值。  
+ 必需 **resourceId** 属性。  要在其中部署 Azure 诊断的虚拟机或虚拟机规模集的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。  
 
 |子元素|说明|  
 |--------------------|-----------------|  
@@ -230,14 +229,14 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 ## <a name="logs-element"></a>Logs 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
- 在 1.0 和 1.1 版本中提供。 1.2 中不提供。 在 1.3 中重新添加。  
+ 在 1.0 和 1.1 版本中提供。 1\.2 中不提供。 在 1.3 中重新添加。  
 
  定义基本 Azure 日志的缓冲区配置。  
 
-|Attribute|类型|说明|  
+|属性|类型|说明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”****，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”****、“信息”****、“警告”****、“错误”**** 和“严重”****。|  
+|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 |**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
 
@@ -248,7 +247,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |元素名称|说明|  
 |------------------|-----------------|  
-|**统计**|告诉系统收集 Docker 容器的统计信息|  
+|**Stats**|告诉系统收集 Docker 容器的统计信息|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
@@ -266,14 +265,14 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
  定义向其中发送诊断数据的位置。 例如，Application Insights 服务。  
 
-|Attribute|类型|说明|  
+|属性|类型|说明|  
 |---------------|----------|-----------------|  
-|name |字符串|标识 sinkname 的字符串。|  
+|**name**|string|标识 sinkname 的字符串。|  
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
-|**Application Insights**|字符串|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**通道**|字符串|每个对应一个流处理的其他筛选|  
+|**Application Insights**|string|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
+|通道|string|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -284,7 +283,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |元素|类型|说明|  
 |-------------|----------|-----------------|  
-|**通道**|字符串|在此页的其他位置查看说明。|  
+|**Channel**|string|在此页的其他位置查看说明。|  
 
 ## <a name="channel-element"></a>Channel 元素
  *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -295,7 +294,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |属性|类型|说明|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”****，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”****、“信息”****、“警告”****、“错误”**** 和“严重”****。|  
+|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**name**|**string**|要引用的通道的唯一名称|  
 
 
@@ -310,7 +309,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 
 |子元素|说明|  
 |--------------------|-----------------|  
-|**StorageAccount**|要使用的存储帐户。 需要以下属性<br /><br /> - **name** - 存储帐户的名称。<br /><br /> - **key** - 存储帐户的密钥。<br /><br /> - **endpoint** - 用于访问存储帐户的终结点。 <br /><br /> -**sasToken** （已添加1.8.1）-可以在专用配置中指定 SAS 令牌而非存储帐户密钥。如果提供，则忽略存储帐户密钥。 <br />对 SAS 令牌的要求： <br />- 仅支持帐户 SAS 令牌 <br />- *b*、*t* 服务类型是必需的。 <br /> - *a*、*c*、*u*、*w* 权限是必需的。 <br /> - *c*、*o* 资源类型是必需的。 <br /> - 仅支持 HTTPS 协议 <br /> - 起始时间和到期时间必须有效。|  
+|**StorageAccount**|要使用的存储帐户。 需要以下属性<br /><br /> - **name** - 存储帐户的名称。<br /><br /> - **key** - 存储帐户的密钥。<br /><br /> - **endpoint** - 用于访问存储帐户的终结点。 <br /><br /> -**sasToken**（在 1.8.1 中添加）- 可以在专用配置中指定 SAS 令牌而非存储帐户密钥。如果提供了此项，则会忽略存储帐户密钥。 <br />对 SAS 令牌的要求： <br />- 仅支持帐户 SAS 令牌 <br />- *b*、*t* 服务类型是必需的。 <br /> - *a*、*c*、*u*、*w* 权限是必需的。 <br /> - *c*、*o* 资源类型是必需的。 <br /> - 仅支持 HTTPS 协议 <br /> - 起始时间和到期时间必须有效。|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled 元素  
@@ -319,15 +318,15 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
  布尔值。 使用 `true` 启用诊断或使用 `false` 禁用诊断。
 
 ## <a name="example-configuration"></a>配置示例
- 下面是 JSON 和 XML 中所示的 Windows 诊断扩展的完整示例配置。
+ 以下是以 JSON 和 XML 格式显示的 Windows 诊断扩展的完整示例配置。
 
  
 ### <a name="json"></a>JSON
 
-*PublicConfig*和*privateconfig.json*是分离的，因为在大多数 JSON 使用情况下，它们将作为不同的变量传递。 这些情况包括资源管理器模板、PowerShell 和 Visual Studio。
+PublicConfig 和 PrivateConfig 是分开的，因为在大多数 JSON 用例中，它们作为不同的变量传递。 这些用例包括资源管理器模板、PowerShell 和 Visual Studio。
 
 > [!NOTE]
-> 公共配置 Azure Monitor 接收器定义具有两个属性： *resourceId*和*region*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 公共配置 Azure Monitor 接收器定义有两个属性：resourceId 和 region。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 ```json
 "PublicConfig" {
@@ -505,7 +504,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，用于从 Azure 计算�
 ```
 
 > [!NOTE]
-> 专用配置 Azure Monitor 接收器定义具有两个属性： *PrincipalId*和*Secret*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 专用配置 Azure Monitor 接收器定义有两个属性：PrincipalId 和 Secret。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 
 ```json

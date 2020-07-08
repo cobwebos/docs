@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
 ms.openlocfilehash: 01dd8422658aa0c8982733e48782efd27c1bf5be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81617855"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升级用于 VM 的 Azure Monitor 依赖关系代理
@@ -29,7 +28,7 @@ ms.locfileid: "81617855"
 
 ## <a name="upgrade-windows-agent"></a>升级 Windows 代理 
 
-若要将 Windows VM 上的代理更新为不使用依赖关系代理 VM 扩展安装的最新版本，您可以从命令提示符、脚本或其他自动化解决方案中运行，也可以使用 Installdependencyagent-windows.exe 安装向导来运行。  
+若要将 Windows VM 上的代理更新为不使用依赖关系代理 VM 扩展安装的最新版本，您可以从命令提示符、脚本或其他自动化解决方案中运行，也可以使用 InstallDependencyAgent-Windows.exe 安装向导运行。  
 
 可从[此处](https://aka.ms/dependencyagentwindows)下载最新版本的 Windows 代理。
 
@@ -37,7 +36,7 @@ ms.locfileid: "81617855"
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 执行**installdependencyagent-windows.exe**以启动安装向导。
+2. 执行**InstallDependencyAgent-Windows.exe**以启动安装向导。
    
 3. 按照**Dependency Agent 安装**向导卸载以前版本的依赖关系代理，然后安装最新版本。
 
@@ -52,9 +51,9 @@ ms.locfileid: "81617855"
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
     ```
 
-    如果`/RebootMode=manual`某些进程使用以前版本中的文件并对其进行锁定，则该参数可防止升级自动重新启动计算机。 
+    `/RebootMode=manual`如果某些进程使用以前版本中的文件并对其进行锁定，则该参数可防止升级自动重新启动计算机。 
 
-3. 若要确认升级是否成功，请查看`install.log`以了解详细的设置信息。 日志目录为 *%Programfiles%\Microsoft Dependency Agent\logs*。
+3. 若要确认升级是否成功，请查看 `install.log` 以了解详细的设置信息。 日志目录为 *%Programfiles%\Microsoft Dependency Agent\logs*。
 
 ## <a name="upgrade-linux-agent"></a>升级 Linux 代理 
 
@@ -64,7 +63,7 @@ ms.locfileid: "81617855"
 
 1. 使用具有管理权限的帐户登录到计算机。
 
-2. 以 root`sh InstallDependencyAgent-Linux64.bin -s`身份运行以下命令。 
+2. 以 root 身份运行以下命令 `sh InstallDependencyAgent-Linux64.bin -s` 。 
 
 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是 */var/opt/microsoft/dependency-agent/log*。 
 

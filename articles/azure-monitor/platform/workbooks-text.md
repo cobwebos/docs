@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 工作簿文本参数
-description: 利用预生成的自定义参数化工作簿，简化复杂的报告工作。 了解有关工作簿文本参数的详细信息。
+description: 使用预生成和自定义的参数化工作簿简化复杂的报表。 详细了解工作簿文本参数。
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,45 +10,44 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687330"
 ---
 # <a name="workbook-text-parameters"></a>工作簿文本参数
 
-Textbox 参数提供了一种简单的方法来从工作簿用户那里收集文本输入。 当不可行地使用下拉项收集输入（例如，任意阈值或一般筛选器）时，使用它们。 工作簿允许作者从查询中获取 textbox 的默认值。 这样就可以根据指标的 p95 设置默认阈值，这种情况很有趣。
+使用文本框参数可以方便地从工作簿用户那里收集文本输入。 无法使用下拉列表收集输入（例如任意阈值或常规筛选器）时，可以使用文本框参数。 工作簿允许作者从查询中获取文本框的默认值。 这样，就可以实现一些有意义的方案，例如，根据指标的 p95 设置默认阈值。
 
-文本框的常见用途是作为其他工作簿控件使用的内部变量。 这是通过对默认值进行查询，并使输入控件在读模式下不可见来实现的。 例如，用户可能希望阈值来自公式（而非用户），然后在后续查询中使用该阈值。
+文本框的常见用途是可以充当其他工作簿控件使用的内部变量。 若要起到这种效果，可以利用查询来获取默认值，并使输入控件在读取模式下隐藏。 例如，用户可能希望某个阈值来自公式（而不是来自用户），然后在后续查询中使用该阈值。
 
 ## <a name="creating-a-text-parameter"></a>创建文本参数
-1. 在编辑模式下从空工作簿开始。
-2. 从工作簿内的链接中选择 "_添加参数_"。
-3. 单击蓝色的 "_添加参数_" 按钮。
-4. 在弹出的 "新建参数" 窗格中，输入：
+1. 从编辑模式下的空工作簿开始操作。
+2. 从工作簿内的链接中选择“添加参数”。
+3. 单击蓝色的“添加参数”按钮。
+4. 在弹出的“新建参数”窗格中，输入：
     1. 参数名称：`SlowRequestThreshold`
     2. 参数类型：`Text`
-    3. 必填：`checked`
+    3. 必需：`checked`
     4. 从查询中获取默认值：`unchecked`
-5. 从工具栏中选择 "保存"，创建参数。
+5. 从工具栏中选择“保存”以创建参数。
 
-    ![显示文本参数创建的图像](./media/workbooks-text/text-create.png)
+    ![显示如何创建文本参数的插图](./media/workbooks-text/text-create.png)
 
 这就是工作簿在读取模式下的外观。
 
-![显示处于读取模式的文本参数的图像](./media/workbooks-text/text-readmode.png)
+![显示处于读取模式的文本参数的插图](./media/workbooks-text/text-readmode.png)
 
 ## <a name="referencing-a-text-parameter"></a>引用文本参数
-1. 通过选择蓝色`Add query`链接向工作簿添加查询控件并选择 Application Insights 资源。
-2. 在 KQL 框中，添加以下代码片段：
+1. 选择蓝色的 `Add query` 链接将查询控件添加到工作簿，然后选择 Application Insights 资源。
+2. 在 KQL 框中添加以下片段：
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= {SlowRequestThreshold}) by name
     | extend SlowRequestPercent = 100.0 * SlowRequests / AllRequests
     | order by SlowRequests desc
     ```
-3. 通过将 text 参数的值500和查询控件结合使用来有效地运行以下查询：
+3. 结合查询控件使用值为 500 的文本参数有效运行以下查询：
     ```kusto
     requests
     | summarize AllRequests = count(), SlowRequests = countif(duration >= 500) by name
@@ -57,35 +56,35 @@ Textbox 参数提供了一种简单的方法来从工作簿用户那里收集文
     ```
 4. 运行查询以查看结果
 
-    ![显示 KQL 中引用的文本参数的图像](./media/workbooks-text/text-reference.png)
+    ![显示 KQL 中引用的文本参数的插图](./media/workbooks-text/text-reference.png)
 
 > [!NOTE]
-> 在上面的示例中`{SlowRequestThreshold}` ，表示一个整数值。 如果要查询字符串（例如`{ComputerName}` ），则需要修改 Kusto 查询以添加引号`"{ComputerName}"` ，使参数字段成为不带引号的 accept 输入。
+> 在以上示例中，`{SlowRequestThreshold}` 表示一个整数值。 如果查询类似于 `{ComputerName}` 的字符串，则需要修改 Kusto 查询以添加引号 `"{ComputerName}"`，使参数字段接受不带引号的输入。
 
 ## <a name="setting-default-values"></a>设置默认值
-1. 在编辑模式下从空工作簿开始。
-2. 从工作簿内的链接中选择 "_添加参数_"。
-3. 单击蓝色的 "_添加参数_" 按钮。
-4. 在弹出的 "新建参数" 窗格中，输入：
+1. 从编辑模式下的空工作簿开始操作。
+2. 从工作簿内的链接中选择“添加参数”。
+3. 单击蓝色的“添加参数”按钮。
+4. 在弹出的“新建参数”窗格中，输入：
     1. 参数名称：`SlowRequestThreshold`
     2. 参数类型：`Text`
-    3. 必填：`checked`
+    3. 必需：`checked`
     4. 从查询中获取默认值：`checked`
-5. 在 KQL 框中，添加以下代码片段：
+5. 在 KQL 框中添加以下片段：
     ```kusto
     requests
     | summarize round(percentile(duration, 95), 2)
     ```
-    此查询将文本框的默认值设置为应用程序中所有请求的95% 的持续时间。
+    此查询将文本框的默认值设置为应用中所有请求的持续时间的 95%。
 6. 运行查询以查看结果
-7. 从工具栏中选择 "保存"，创建参数。
+7. 从工具栏中选择“保存”以创建参数。
 
-    ![显示来自 KQL 的默认值的文本参数的图像](./media/workbooks-text/text-default-value.png)
+    ![显示包含 KQL 中的默认值的文本参数的插图](./media/workbooks-text/text-default-value.png)
 
 > [!NOTE]
-> 尽管此示例查询 Application Insights 数据，但该方法可用于基于日志的任何数据源-Log Analytics、Azure 资源图等。
+> 尽管此示例查询的是 Application Insights 数据，但该方法可用于任何基于日志的数据源 - Log Analytics、Azure Resource Graph 等。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [开始](workbooks-visualizations.md)了解有关工作簿许多丰富可视化效果选项的详细信息。
-* [控制](workbooks-access-control.md)和共享对工作簿资源的访问权限。
+* [开始](workbooks-visualizations.md)详细了解工作簿丰富的可视化效果选项。
+* [控制](workbooks-access-control.md)并共享对工作簿资源的访问权限。

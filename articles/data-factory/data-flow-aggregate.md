@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: 871f2b49e2dce9d762ef8a54923da04b0f24e4be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81606536"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>映射数据流中的聚合转换
@@ -45,18 +44,18 @@ ms.locfileid: "81606536"
 
 聚合转换类似于 SQL 聚合 select 查询。 未包含在 group by 子句或聚合函数中的列不会流向聚合转换的输出。 如果希望将其他列包含在聚合输出中，请执行以下方法之一：
 
-* 使用聚合函数（如或`last()` `first()` ）来包含该其他列。
+* 使用聚合函数（如 `last()` 或） `first()` 来包含该其他列。
 * 使用[自联接模式](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)将这些列重新加入到输出流中。
 
 ## <a name="removing-duplicate-rows"></a>删除重复行
 
-聚合转换的一个常见用途是删除或标识源数据中的重复项。 此过程称为删除重复。 根据一组按键分组，使用所选的试探法来确定要保留的重复行。 常见试探法`first()`包括`last()`、 `max()`、和`min()`。 使用[列模式](concepts-data-flow-column-pattern.md)将规则应用到除 group by 列之外的每一列。
+聚合转换的一个常见用途是删除或标识源数据中的重复项。 此过程称为删除重复。 根据一组按键分组，使用所选的试探法来确定要保留的重复行。 常见试探法包括 `first()` 、、 `last()` `max()` 和 `min()` 。 使用[列模式](concepts-data-flow-column-pattern.md)将规则应用到除 group by 列之外的每一列。
 
 ![重复数据删除](media/data-flow/agg-dedupe.png "重复数据删除")
 
-在上面的示例中， `ProductID`列`Name`和用于分组。 如果两个行的值与这两个列的值相同，则它们被视为重复项。 在此聚合转换中，将保留第一个匹配的行的值，并且将删除所有其他行的值。 使用列模式语法，名称不`ProductID`为和`Name`的所有列都映射到其现有列名，并给定第一个匹配行的值。 输出架构与输入架构相同。
+在上面的示例中，列 `ProductID` 和用于 `Name` 分组。 如果两个行的值与这两个列的值相同，则它们被视为重复项。 在此聚合转换中，将保留第一个匹配的行的值，并且将删除所有其他行的值。 使用列模式语法，名称不为和的所有列 `ProductID` `Name` 都映射到其现有列名，并给定第一个匹配行的值。 输出架构与输入架构相同。
 
-对于数据验证方案， `count()`函数可用于计算有多少重复项。
+对于数据验证方案， `count()` 函数可用于计算有多少重复项。
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -81,7 +80,7 @@ ms.locfileid: "81606536"
 
 ### <a name="example"></a>示例
 
-下面的示例使用传入流`MoviesYear`并按列`year`对行进行分组。 转换将创建计算结果为`avgrating`列`Rating`平均值的聚合列。 此聚合转换的名称`AvgComedyRatingsByYear`为。
+下面的示例使用传入流 `MoviesYear` 并按列对行进行分组 `year` 。 转换将创建 `avgrating` 计算结果为列平均值的聚合列 `Rating` 。 此聚合转换的名称为 `AvgComedyRatingsByYear` 。
 
 在数据工厂 UX 中，此转换如下图所示：
 
@@ -100,7 +99,7 @@ MoviesYear aggregate(
 
 ![聚合数据流脚本](media/data-flow/aggdfs1.png "聚合数据流脚本")
 
-```MoviesYear```：用于定义年份和标题列```AvgComedyRatingByYear```的派生列：按年```avgrating```分组的 comedies 平均分级的聚合转换：要创建的、用于保存聚合值的新列的名称
+```MoviesYear```：用于定义年份和标题列的派生列 ```AvgComedyRatingByYear``` ：按年分组的 comedies 平均分级的聚合转换 ```avgrating``` ：要创建的、用于保存聚合值的新列的名称
 
 ```
 MoviesYear aggregate(groupBy(year),

@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 63a708f80ad18309269e37c354b047c304a260d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81641297"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>塑造 JSON 以最大化查询性能
@@ -165,7 +164,7 @@ ms.locfileid: "81641297"
 
 * 包含键属性 **deviceId** 和 **series.tagId** 的参考数据表：
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | 单位 |
+   | deviceId | series.tagId | messageId | deviceLocation | 类型 | 单位 |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | 流速 | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎油压 | psi |
@@ -174,7 +173,7 @@ ms.locfileid: "81641297"
 
 * 平展后的时序见解事件表：
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | 单位 | timestamp | series.value |
+   | deviceId | series.tagId | messageId | deviceLocation | 类型 | 单位 | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | 流速 | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎油压 | psi | 2018-01-17T01:17:00Z | 34.7 |

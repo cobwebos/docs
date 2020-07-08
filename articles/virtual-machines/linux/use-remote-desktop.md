@@ -15,7 +15,6 @@ ms.date: 09/12/2019
 ms.author: cynthn
 ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605190"

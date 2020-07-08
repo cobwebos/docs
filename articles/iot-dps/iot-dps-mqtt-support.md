@@ -11,10 +11,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680678"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
@@ -26,7 +25,7 @@ DPS 可让设备使用以下协议来与 DPS 设备终结点通信：
 
 DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指定的所有行为。 本文介绍设备如何使用受支持的 MQTT 行为通过 DPS 进行通信。
 
-所有通过 DPS 进行的设备通信都必须使用 TLS/SSL 来保护。 因此，DPS 不支持端口1883上的非安全连接。
+所有通过 DPS 进行的设备通信都必须使用 TLS/SSL 来保护。 因此，DPS 不支持通过端口 1883 进行的不安全的连接。
 
  > [!NOTE] 
  > DPS 目前不支持通过 MQTT 协议使用 TPM [证明机制](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism)的设备。
@@ -40,13 +39,13 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>直接使用 MQTT 协议（作为设备）
 
-如果设备无法使用设备 SDK，仍可在 8883 端口使用 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
+如果设备无法使用设备 SDK，仍可使用端口 8883 上的 MQTT 协议连接到公共设备终结点。 在 **CONNECT** 数据包中，设备应使用以下值：
 
 * 对于 **ClientId** 字段，使用 **registrationId**。
 
 * 对于 **Username** 字段，使用 `{idScope}/registrations/{registration_id}/api-version=2019-03-31`，其中 `{idScope}` 是 DPS 的 [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)。
 
-* “**密码**”字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
+* “密码”  字段使用 SAS 令牌。 对于 HTTPS 和 AMQP 协议，SAS 令牌的格式是相同的：
 
   `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` resourceURI 应采用 `{idScope}/registrations/{registration_id}` 格式。 策略名称应是 `registration`。
 
@@ -63,7 +62,7 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL 配置
 
-若要直接使用 MQTT 协议，客户端必须通过 TLS 1.2 进行连接。  尝试跳过此步骤失败并显示连接错误。
+若要直接使用 MQTT 协议，客户端必须通过 TLS 1.2 进行连接。 尝试跳过此步骤失败并显示连接错误。
 
 
 ## <a name="registering-a-device"></a>注册设备

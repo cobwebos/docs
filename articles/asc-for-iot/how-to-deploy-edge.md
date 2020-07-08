@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 4dd7ca8f926862487b9505731c0662e68ee3d7c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81311278"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在 IoT Edge 设备上部署安全模块
@@ -34,7 +33,7 @@ ms.locfileid: "81311278"
 
 使用以下步骤为 IoT Edge 部署用于 IoT 安全模块的 Azure 安全中心。
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 1. 在 IoT 中心中，确保你的设备已[注册为 IoT Edge 设备](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
 
@@ -97,11 +96,11 @@ ms.locfileid: "81311278"
       "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
     ```
 
-1. 选择“更新”  。
+1. 选择“更新”。
 
 #### <a name="step-2-runtime-settings"></a>步骤2：运行时设置
 
-1. 选择 "**运行时设置**"。
+1. 选择“运行时设置”。
 1. 在**Edge 中心**下，将**图像**更改为**mcr.microsoft.com/azureiotedge-hub:1.0.8.3**。
 1. 验证 "**创建选项**" 设置为以下配置：
 
@@ -129,9 +128,9 @@ ms.locfileid: "81311278"
     }
     ```
 
-1. 选择“保存”  。
+1. 选择“保存”。
 
-1. 选择“下一步”  。
+1. 选择“下一步”。
 
 #### <a name="step-3-specify-routes"></a>步骤3：指定路由
 
@@ -147,7 +146,7 @@ ms.locfileid: "81311278"
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. 选择“下一步”  。
+1. 选择“下一步”。
 
 #### <a name="step-4-review-deployment"></a>步骤4：查看部署
 
@@ -165,7 +164,7 @@ ms.locfileid: "81311278"
 
 1. 验证以下容器是否正在运行：
 
-   | 名称 | IMAGE |
+   | “属性” | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -179,7 +178,7 @@ ms.locfileid: "81311278"
 
    `sudo docker logs azureiotsecurity`
 
-1. 对于更详细的日志，请将以下环境变量添加到**azureiotsecurity**模块部署`logLevel=Debug`：。
+1. 对于更详细的日志，请将以下环境变量添加到**azureiotsecurity**模块部署： `logLevel=Debug` 。
 
 ## <a name="next-steps"></a>后续步骤
 

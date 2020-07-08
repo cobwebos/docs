@@ -6,10 +6,9 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81687067"
 ---
 # <a name="get-service-access-tokens"></a>获取服务访问令牌
@@ -18,13 +17,13 @@ ms.locfileid: "81687067"
 
 本文介绍如何创建此类访问令牌。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果还没有[ARR 帐户](create-an-account.md)，请创建一个。
 
 ## <a name="token-service-rest-api"></a>令牌服务 REST API
 
-为创建访问令牌，*安全令牌服务*提供单个 REST API。 ARR STS 服务的 URL 是 https：\//sts.mixedreality.azure.com。
+为创建访问令牌，*安全令牌服务*提供单个 REST API。 ARR STS 服务的 URL 是 https： \/ /sts.mixedreality.azure.com。
 
 ### <a name="get-token-request"></a>"获取令牌" 请求
 
@@ -32,7 +31,7 @@ ms.locfileid: "81687067"
 |-----------|:-----------|
 | /accounts/**accountId**/token | GET |
 
-| Header | 值 |
+| 标头 | 值 |
 |--------|:------|
 | 授权 | "持有者**accountId**：**accountKey**" |
 
@@ -40,11 +39,11 @@ ms.locfileid: "81687067"
 
 ### <a name="get-token-response"></a>"获取令牌" 响应
 
-| 状态代码 | JSON 有效负载 | 说明 |
+| 状态代码 | JSON 有效负载 | 注释 |
 |-----------|:-----------|:-----------|
 | 200 | AccessToken：字符串 | 成功 |
 
-| Header | 目的 |
+| Header | 目标 |
 |--------|:------|
 | MS-CV | 此值可用于跟踪服务中的调用 |
 

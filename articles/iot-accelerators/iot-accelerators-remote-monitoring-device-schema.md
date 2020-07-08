@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683740"
 ---
 # <a name="understand-the-device-model-schema"></a>了解设备模型架构
@@ -71,7 +70,7 @@ ms.locfileid: "81683740"
 
 下表描述了顶级架构条目：
 
-| 架构条目 | 说明 |
+| 架构条目 | 描述 |
 | -- | --- |
 | `SchemaVersion` | 架构版本始终是 `1.0.0`，特定于此文件的格式。 |
 | `Id` | 此设备模型的唯一 ID。 |
@@ -132,7 +131,7 @@ ms.locfileid: "81683740"
 
 解决方案启动时，会查询所有模拟设备，以生成要在 UI 中使用的 `Type` 值列表。 解决方案使用 `Latitude` 和 `Longitude` 属性将设备位置添加到仪表板上的地图中。
 
-## <a name="telemetry"></a>遥测技术
+## <a name="telemetry"></a>遥测
 
 `Telemetry` 数组列出模拟设备向解决方案发送的所有遥测类型。
 
@@ -166,8 +165,8 @@ ms.locfileid: "81683740"
 
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
-* Text
-* 布尔值
+* 文本
+* Boolean
 * Integer
 * Double
 * DateTime

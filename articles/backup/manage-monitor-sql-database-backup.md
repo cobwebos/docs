@@ -4,10 +4,9 @@ description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81537298"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
@@ -18,12 +17,12 @@ ms.locfileid: "81537298"
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>在门户中监视手动备份作业
 
-Azure 备份在“备份作业”门户中显示所有手动触发的作业。  此门户中显示的作业包括数据库发现和注册，以及备份和还原操作。
+Azure 备份在“备份作业”门户中显示所有手动触发的作业。 此门户中显示的作业包括数据库发现和注册，以及备份和还原操作。
 
 ![“备份作业”门户](./media/backup-azure-sql-database/jobs-list.png)
 
 > [!NOTE]
-> “备份作业”门户不显示计划的备份作业。  可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
+> “备份作业”门户不显示计划的备份作业。 可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
 >
 
 有关监视方案的详细信息，请参阅[在 Azure 门户中进行监视](backup-azure-monitoring-built-in-monitor.md)和[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。  
@@ -38,13 +37,13 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 
 若要监视数据库备份警报：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 在保管库仪表板中，选择“警报和事件”。 
+2. 在保管库仪表板中，选择“警报和事件”。
 
    ![选择“警报和事件”](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
 
-3. 在“警报和事件”  中，选择“备份警报”  。
+3. 在“警报和事件”中，选择“备份警报”。
 
    ![选择“备份警报”](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
 
@@ -55,17 +54,17 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 - 停止所有将来的备份作业，并删除所有恢复点。
 - 停止所有将来的备份作业，但将恢复点保留不变。
 
-如果选择保留恢复点，请记住以下详细内容：
+如果选择保留恢复点，请注意以下细节：
 
-- 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
+- 所有恢复点永远保留不变，在停止保护时所有修剪操作都会停止，但会保留数据。
 - 需要为受保护的实例和消耗的存储空间付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
-- 如果在不停止备份的情况下删除数据源，则新备份会失败。 旧恢复点将根据策略过期，但始终会保留一个最后的恢复点，直至你显式停止备份并删除数据。
+- 如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但始终会保留一个最后的恢复点，直至你显式停止备份并删除数据。
 
 停止数据库的保护：
 
-1. 在保管库仪表板中，选择“备份项”。****
+1. 在保管库仪表板中，选择“备份项”。
 
-2. 在“备份管理类型”下，选择“Azure VM 中的 SQL”。********
+2. 在“备份管理类型”下，选择“Azure VM 中的 SQL”。 
 
     ![选择“Azure VM 中 SQL”](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -73,15 +72,15 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 
     ![选择要停止保护的数据库](./media/backup-azure-sql-database/sql-restore-sql-in-vm.png)
 
-4. 在数据库菜单中，选择“停止备份”****。
+4. 在数据库菜单中，选择“停止备份”。
 
     ![选择“停止备份”](./media/backup-azure-sql-database/stop-db-button.png)
 
-5. 在“停止备份”菜单中，选择是要保留还是删除数据。**** 根据需要提供原因和注释。
+5. 在“停止备份”菜单中，选择是要保留还是删除数据。 根据需要提供原因和注释。
 
     ![在“停止备份”菜单中保留或删除数据](./media/backup-azure-sql-database/stop-backup-button.png)
 
-6. 选择 "**停止备份**"。
+6. 选择“停止备份”。
 
 > [!NOTE]
 >
@@ -94,15 +93,15 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 
 ## <a name="resume-protection-for-a-sql-database"></a>恢复 SQL 数据库的保护
 
-停止对 SQL 数据库的保护时，如果选择“保留备份数据”选项，以后可以恢复保护。**** 如果不保留备份数据，则无法恢复保护。
+停止对 SQL 数据库的保护时，如果选择“保留备份数据”选项，以后可以恢复保护。 如果不保留备份数据，则无法恢复保护。
 
 若要恢复 SQL 数据库的保护：
 
-1. 打开备份项，并选择“恢复备份”。****
+1. 打开备份项，并选择“恢复备份”。
 
     ![选择“恢复备份”以恢复数据库保护](./media/backup-azure-sql-database/resume-backup-button.png)
 
-2. 在“备份策略”菜单中选择策略，然后选择“保存”。********
+2. 在“备份策略”菜单中选择策略，然后选择“保存”。 
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 
@@ -121,17 +120,17 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 
 在禁用保护之后但删除保管库之前取消注册 SQL Server 实例：
 
-1. 在保管库仪表板上的 "**管理**" 下，选择 "**备份基础结构**"。  
+1. 在保管库仪表板上，在“管理”下，选择“备份基础结构”。   
 
    ![选择“备份基础结构”。](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. 在“管理服务器”下，选择“受保护的服务器”。********
+2. 在“管理服务器”下，选择“受保护的服务器”。 
 
    ![选择“受保护的服务器”](./media/backup-azure-sql-database/protected-servers.png)
 
-3. 在“受保护的服务器”中，选择要取消注册的服务器。**** 若要删除保管库，必须取消注册所有服务器。
+3. 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。
 
-4. 右键单击受保护的服务器并选择“取消注册”。****
+4. 右键单击受保护的服务器并选择“取消注册”。
 
    ![选择“删除”](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
@@ -142,7 +141,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。  
 > [!NOTE]
 > 在保留期内进行的任何更改将应用到新恢复点，并以追溯方式应用到所有旧恢复点。
 
-在保管库仪表板中，单击 "**管理** > **备份策略**"，然后选择要编辑的策略。
+在保管库仪表板中，转到“管理” > “备份策略”，然后选择要编辑的策略。 
 
   ![管理备份策略](./media/backup-azure-sql-database/modify-backup-policy.png)
 

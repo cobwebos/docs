@@ -13,10 +13,9 @@ ms.date: 12/13/2019
 ms.author: borisb
 ms.custom: ''
 ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81683489"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上的 Oracle Database Enterprise Edition 的参考体系结构
@@ -154,7 +153,7 @@ Oracle 分片主要包含以下组件。 有关这些组件的详细信息，请
 
 - **分片数据库**-分片数据库是 Oracle 数据库。 每个数据库都是在启用了快速启动故障转移（FSFO）的 Broker 配置中使用 Oracle Data Guard 复制的。 无需在每个分片上设置 Data Guard 故障转移和复制。 这是在创建共享数据库时自动配置和部署的。 如果特定的分片失败，Oracle 共享会自动将数据库连接从主数据库连接到备用数据库。
 
-可以部署和管理具有两个接口的 Oracle 分片数据库： Oracle 企业管理器云控件 GUI 和/ `GDSCTL`或命令行实用工具。 你甚至可以使用云控制来监视不同的分片的可用性和性能。 该`GDSCTL DEPLOY`命令会自动创建分片及其相应的侦听器。 此外，此命令会自动部署管理员指定的用于分片级高可用性的复制配置。
+可以部署和管理具有两个接口的 Oracle 分片数据库： Oracle 企业管理器云控件 GUI 和/或 `GDSCTL` 命令行实用工具。 你甚至可以使用云控制来监视不同的分片的可用性和性能。 该 `GDSCTL DEPLOY` 命令会自动创建分片及其相应的侦听器。 此外，此命令会自动部署管理员指定的用于分片级高可用性的复制配置。
 
 分片数据库的方式有不同：
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732268"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (Node.js)
@@ -33,13 +32,13 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-node-node-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法： [IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-node.md)
+* 直接方法：[IoT 中心开发人员指南 - 直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 本教程演示如何：
 
-* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor  。
+* 创建一个具有直接方法的 Node.js 模拟设备应用，启用可由解决方案后端进行调用的 lockDoor。
 
 * 创建一个 Node.js 控制台应用，该应用使用作业调用模拟设备应用中的 **lockDoor** 直接方法，并使用设备作业更新所需属性。
 
@@ -47,13 +46,13 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * **simDevice.js**，它使用设备标识连接到 IoT 中心，并接收 **lockDoor** 直接方法。
 
-* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性  。
+* scheduleJobService.js，它调用模拟设备应用中的直接方法，并通过作业更新设备孪生的所需属性。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
@@ -67,7 +66,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
 
-本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法  。
+本部分将创建一个 Node.js 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
 
 1. 新建名为 **simDevice**的空文件夹。  在 **simDevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
@@ -152,7 +151,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     npm init
     ```
 
-2. 在 scheduleJobService  文件夹的命令提示符处，运行以下命令安装 azure-iothub  设备 SDK 包和 azure-iot-device-mqtt  包：
+2. 在 scheduleJobService 文件夹的命令提示符处，运行以下命令安装 azure-iothub 设备 SDK 包和 azure-iot-device-mqtt 包：
 
     ```console
     npm install azure-iothub uuid --save
@@ -272,7 +271,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 simDevice  文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
+1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
 
     ```console
     node simDevice.js
