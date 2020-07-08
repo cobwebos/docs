@@ -3,25 +3,25 @@ title: 应用程序代理故障排除 | Microsoft 文档
 description: 介绍如何对 Azure AD 应用程序代理中的错误进行故障排除。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 06/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: H1Hack27Feb2017; it-pro
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848457"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>应用程序代理问题和错误消息故障排除
 
@@ -31,7 +31,7 @@ ms.locfileid: "79244220"
 
 * 打开 Windows 服务控制台。 验证**MICROSOFT AAD 应用程序代理连接器**服务是否已启用且正在运行。 另请查看应用程序代理服务属性页，如下图所示：  
   ![Microsoft AAD 应用程序代理连接器属性窗口屏幕截图](./media/application-proxy-troubleshoot/connectorproperties.png)
-* 打开事件查看器并在**应用程序和服务日志** > 中查找应用程序代理连接器事件**Microsoft** > **AadApplicationProxy** > **连接器** > **管理员**。
+* 打开事件查看器并在**应用程序和服务日志**中查找应用程序代理连接器事件  >  **Microsoft**  >  **AadApplicationProxy**  >  **连接器**  >  **管理员**。
 * 如果需要，可通过[打开应用程序代理连接器会话日志](application-proxy-connectors.md#under-the-hood)获取更详细的日志。
 
 ## <a name="the-page-is-not-rendered-correctly"></a>页面未正确呈现
@@ -39,13 +39,13 @@ ms.locfileid: "79244220"
 
 例如，如果发布路径 `https://yourapp/app`，但应用程序调用 `https://yourapp/media` 中的图像，则这些图像无法呈现。 确保使用包含所有相关内容所需的最高级路径发布应用程序。 在此示例中，它是 `http://yourapp/`。
 
-如果更改路径以包含引用内容，但仍然需要用户登陆路径中更深的链接，请参阅博客文章 [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)（在 Azure AD 访问面板和 Office 365 应用启动器中为应用程序代理应用程序设置正确的链接）。
-
 ## <a name="connector-errors"></a>连接器错误
 
 如果注册在连接器向导安装期间失败，有两种方法可查看失败原因。 查看“应用程序和服务日志\Microsoft\AadApplicationProxy\Connector\Admin”**** 下的事件日志，或运行以下 Windows PowerShell 命令：
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 从事件日志找到连接器错误后，使用此常见错误表解决问题：
 
@@ -54,7 +54,7 @@ ms.locfileid: "79244220"
 | 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：“发生了一个或多个错误。” | 如果关闭了注册窗口但没有登录到 Azure AD，请再次运行连接器向导并注册连接器。 <br><br> 如果注册窗口打开后立即关闭，而不允许登录，则可能会收到此错误。 当系统上存在网络错误时，可能出现此错误。 请确保可以从浏览器连接到公共网站，并且按照[应用程序代理先决条件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)中的指定打开端口。 |
 | 注册窗口中出现明确错误。 无法继续 | 如果看到此错误，然后窗口关闭，这意味着输入的用户名或密码错误。 重试。 |
 | 连接器注册已失败：确保已在 Azure 管理门户中启用应用程序代理，并且已正确输入 Active Directory 用户名和密码。 错误：AADSTS50059: 未在请求中找到或所提供的任何凭据均未暗示任何租户识别信息，并且服务主体 URI 的搜索已失败。 | 你正尝试使用 Microsoft 帐户登录，而不是使用你尝试访问的目录的组织 ID 中的域登录。 确保管理员是租户域的相同域名的一部分，例如，如果 Azure AD 域为 contoso.com，则管理员应为 admin@contoso.com。 |
-| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装失败，请检查以确保未禁用 PowerShell 执行策略。 <br><br>1. 打开组策略编辑器。<br>2. 转到 "**计算机配置** > **管理模板** > **windows 组件** > ""**windows PowerShell** "，然后双击 **" 启用脚本执行 "**。<br>3. 可以将执行策略设置为 "**未配置**" 或 "**已启用**"。 如果设置为“已启用”****，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”**** 或“允许所有脚本”****。 |
+| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装失败，请检查以确保未禁用 PowerShell 执行策略。 <br><br>1. 打开组策略编辑器。<br>2. 转到 "**计算机配置**"  >  **管理模板**  >  **windows 组件**""  >  **windows PowerShell** "，然后双击 **" 启用脚本执行 "**。<br>3. 可以将执行策略设置为 "**未配置**" 或 "**已启用**"。 如果设置为“已启用”****，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”**** 或“允许所有脚本”****。 |
 | 连接器无法下载配置。 | 用于身份验证的连接器客户端证书已过期。 如果将连接器安装在代理后，则可能发生此情况。 在此情况下，连接器无法访问 Internet，并且将无法向远程用户提供应用程序。 在 Windows PowerShell 中使用 `Register-AppProxyConnector` cmdlet 手动续订信任。 如果连接器在代理后，则必须向连接器帐户“网络服务”和“本地系统”授予 Internet 访问权限。 可通过向它们授予代理访问权限或将它们设置为绕过代理来实现此目的。 |
 | 连接器注册失败：确保你是 Active Directory 的应用程序管理员来注册连接器。 错误：“注册请求被拒绝。” | 尝试登录时所使用的别名不是此域上的管理员。 始终为拥有用户域的目录安装连接器。 确保尝试登录时所用的管理员帐户至少具有对 Azure AD 租户的应用程序管理员权限。 |
 | 由于网络问题，连接器无法连接到该服务。 连接器尝试访问以下 URL。 | 连接器无法连接到应用程序代理云服务。 如果有阻止连接的防火墙规则，则可能会发生这种情况。 确保允许访问[应用程序代理先决条件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)中列出的正确端口和 url。 |
@@ -65,7 +65,7 @@ ms.locfileid: "79244220"
 
 | 错误 | 建议的步骤 |
 | ----- | ----------------- |
-| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。<br><br>1. 打开组策略编辑器。<br>2. 转到 "**计算机配置** > **管理模板** > **windows 组件** > ""**windows PowerShell** "，然后双击 **" 启用脚本执行 "**。<br>3. 可以将执行策略设置为 "**未配置**" 或 "**已启用**"。 如果设置为“已启用”****，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”**** 或“允许所有脚本”****。 |
+| 无法检索运行 PowerShell 脚本的当前执行策略。 | 如果连接器安装已失败，请检查确保 PowerShell 执行策略未禁用。<br><br>1. 打开组策略编辑器。<br>2. 转到 "**计算机配置**"  >  **管理模板**  >  **windows 组件**""  >  **windows PowerShell** "，然后双击 **" 启用脚本执行 "**。<br>3. 可以将执行策略设置为 "**未配置**" 或 "**已启用**"。 如果设置为“已启用”****，请确保在“选项”下将“执行策略”设置为“允许本地脚本和远程签名脚本”**** 或“允许所有脚本”****。 |
 | 12008 - Azure AD 超出了对后端服务器的 Kerberos 身份验证尝试的最大允许次数。 | 此错误可能表示 Azure AD 和后端应用程序服务器之间的配置不正确，或者两台计算机上的时间和日期配置存在问题。 后端服务器拒绝了由 Azure AD 创建的 Kerberos 票证。 验证 Azure AD 和后端应用程序服务器是否正确配置。 确保 Azure AD 和后端应用程序服务器上的时间和日期配置已同步。 |
 | 13016 - Azure AD 无法代表用户检索 Kerberos 票证，因为边缘令牌或访问 cookie 中没有 UPN。 | STS 配置出现问题。 在 STS 中修复 UPN 声明配置。 |
 | 13019 - Azure AD 由于以下常规 API 错误而无法代表用户检索 Kerberos 票证。 | 此事件可能表示 Azure AD 和域控制器服务器之间的配置不正确，或者两台计算机上的时间和日期配置存在问题。 域控制器拒绝了由 Azure AD 创建的 Kerberos 票证。 验证 Azure AD 和后端应用程序服务器是否正确配置，尤其是 SPN 配置。 确保 Azure AD 加入与域控制器相同的域，以确保域控制器与 Azure AD 建立信任。 确保 Azure AD 和域控制器上的时间和日期配置已同步。 |
@@ -89,7 +89,7 @@ ms.locfileid: "79244220"
 
 如果遇到的 Azure AD 应用程序代理的错误或问题未在此故障排除指南中列出，请告知我们。 请将遇到的错误的详细信息通过电子邮件发送到我们的[反馈团队](mailto:aadapfeedback@microsoft.com)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [启用 Azure Active Directory 的应用程序代理](application-proxy-add-on-premises-application.md)
 * [使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)
 * [启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)

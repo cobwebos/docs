@@ -1,5 +1,5 @@
 ---
-title: 停止使用托管标识 VM 扩展-Azure AD
+title: 停止使用托管标识 VM 扩展 - Azure AD
 description: 有关停止使用 VM 扩展并开始使用 Azure 实例元数据服务 (IMDS) 进行身份验证的分步说明。
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848384"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>如何停止使用虚拟机托管标识扩展并开始使用 Azure 实例元数据服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "80049070"
 
 ### <a name="provision-the-extension"></a>预配扩展 
 
-将虚拟机或虚拟机规模集配置为使用托管标识时，可以选择性地在 `-Type`Set-AzVMExtension[ cmdlet 中使用 ](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 参数，来预配 Azure 资源托管标识 VM 扩展。 可以传递 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux`（取决于虚拟机的类型），并使用 `-Name` 参数将其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口：
+将虚拟机或虚拟机规模集配置为使用托管标识时，可以选择性地在 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) cmdlet 中使用 `-Type` 参数，来预配 Azure 资源托管标识 VM 扩展。 可以传递 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux`（取决于虚拟机的类型），并使用 `-Name` 参数将其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口：
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -44,26 +44,26 @@ ms.locfileid: "80049070"
 
 还可以使用 Azure 资源管理器部署模板预配 VM 扩展，方法是将以下 JSON 添加到模板中的 `resources` 节（使用 `ManagedIdentityExtensionForLinux` 指定名称，使用 type 元素指定 Linux 版本）。
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
 如果使用虚拟机规模集，则还可以使用 [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet 来预配 Azure 资源托管标识虚拟机规模集扩展。 可以传递 `ManagedIdentityExtensionForWindows` 或 `ManagedIdentityExtensionForLinux`（取决于虚拟机规模集的类型），并使用 `-Name` 参数将其命名。 `-Settings` 参数指定 OAuth 令牌终结点用于令牌获取的端口：
@@ -75,28 +75,28 @@ ms.locfileid: "80049070"
    ```
 若要使用 Azure 资源管理器部署模板预配虚拟机规模集扩展，请将以下 JSON 添加到模板中的 `extensionpProfile` 节（使用 `ManagedIdentityExtensionForLinux` 指定名称，使用 type 元素指定 Linux 版本）。
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 由于 DNS 查找失败，虚拟机扩展的预配可能会失败。 如果发生这种情况，请重启虚拟机，然后重试。 
 
 ### <a name="remove-the-extension"></a>删除扩展 
-若要删除扩展，请在 Azure CLI 中结合 `-n ManagedIdentityExtensionForWindows`az vm extension delete`-n ManagedIdentityExtensionForLinux` 或 [az vmss extension delete](https://docs.microsoft.com/cli/azure/vm/)（针对虚拟机规模集）使用 [ 或 ](https://docs.microsoft.com/cli/azure/vmss) 开关，或者在 Powershell 中使用 `Remove-AzVMExtension`：
+若要删除扩展，请在 Azure CLI 中结合 [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) 或 [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss)（针对虚拟机规模集）使用 `-n ManagedIdentityExtensionForWindows` 或 `-n ManagedIdentityExtensionForLinux` 开关，或者在 Powershell 中使用 `Remove-AzVMExtension`：
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -172,7 +172,7 @@ Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <loc
 
 #### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>尝试 Azure 资源托管标识扩展的架构导出功能时，“自动化脚本”失败
 
-在虚拟机上启用 Azure 资源的托管标识后，尝试对虚拟机或其资源组使用 "自动化脚本" 功能时，会显示以下错误：
+如果在虚拟机上启用了 Azure 资源托管标识，当尝试将“自动化脚本”功能用于虚拟机或其资源组时，将显示以下错误：
 
 ![Azure 资源托管标识自动化脚本导出错误](./media/howto-migrate-vm-extension/automation-script-export-error.png)
 

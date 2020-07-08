@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847401"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -80,7 +80,7 @@ ms.locfileid: "79274341"
 |\*.service.opinsights.azure.com| 443||  
 |\*.blob.core.windows.net| 443| 是|  
 |\*.ods.opinsights.azure.com| 443| 是|  
-|* .azure-automation.net | 443| 是|  
+|\* .azure-automation.net | 443| 是|  
 |**Operations Manager 控制台到 Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -180,7 +180,7 @@ ms.locfileid: "79274341"
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-1. 在 Azure 门户中，单击左下角的“更多服务”****。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。****  
+1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”****。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。****  
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
 1. 展开 Log Analytics，然后选择“连接”****。
 1. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。

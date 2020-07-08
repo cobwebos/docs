@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845740"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848709"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -228,9 +228,9 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 2. 在“服务器管理器”中，选择“工具”，然后选择“路由和远程访问”。 
 
-3. 在“路由和远程访问”窗口中，右键单击“\<服务器名称> (本地)”，然后选择“属性”。  
+3. 在 "**路由和远程访问**" 窗口中，右键单击 " ** \<server name> （本地）**"，然后选择 "**属性**"。
 
-4. 在“\<服务器名称> (本地) 属性”窗口中，选择“安全”选项卡。 
+4. 在 " ** \<server name> （本地）属性**" 窗口中，选择 "**安全**" 选项卡。
 
 5. 在“安全”选项卡的“身份验证提供程序”下，选择“RADIUS 身份验证”，然后选择“配置”。   
 
@@ -320,19 +320,15 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 如果值设置为 True，或者空白，则所有身份验证请求都将受到 MFA 的质询。 如果值设为 False，则仅向在 Azure 多重身份验证中注册的用户发出 MFA 质询。 仅在在测试或生产环境中，载入期间使用 False 设置。
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>获取 Azure Active Directory GUID ID
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>获取 Azure Active Directory 租户 ID
 
-作为 NPS 扩展配置的一部分，必须提供管理员凭据和 Azure AD 租户 ID。 通过以下方式获取 ID：
+作为 NPS 扩展配置的一部分，必须提供管理员凭据和 Azure AD 租户 ID。 若要获取租户 ID，请完成以下步骤：
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
+1. 在 Azure 门户菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
+1. 在 "**概述**" 页上，将显示*租户信息*。 在 "*租户 ID*" 旁边，选择 "**复制**" 图标，如以下示例屏幕截图所示：
 
-2. 在 Azure 门户菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
-
-3. 选择“属性”。
-
-4. 若要复制 Azure AD ID，请选择“复制”按钮。
-
-    ![Azure 门户中的 Azure AD 目录 ID](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![正在从 Azure 门户获取租户 ID](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
@@ -386,7 +382,7 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 5. 在命令提示符处，粘贴之前复制的租户 ID，然后按 Enter。
 
-    ![输入之前复制的 Azure AD 目录 ID](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![输入之前复制的 Azure AD 租户 ID](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     此脚本创建一个自签名证书并执行其他配置更改。 其输出类似下图所示：
 
@@ -412,7 +408,9 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 若要查看 Windows 事件查看器日志中的成功登录事件，请通过输入以下 PowerShell 命令查询 NPS 服务器上的 Windows 安全日志：
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![PowerShell 安全事件查看器](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 在安装了适用于 Azure 多重身份验证的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa 中找到特定于此扩展的事件查看器应用程序日志。
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![示例事件查看器 AuthZ 日志窗格](./media/howto-mfa-nps-extension-vpn/image46.png)
 

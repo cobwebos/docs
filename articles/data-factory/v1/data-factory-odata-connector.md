@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265904"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847575"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -60,7 +60,7 @@ ms.locfileid: "79265904"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 OData 链接服务专属 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| Property | 说明 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OData** |是 |
 | url |OData 服务的 URL。 |是 |
@@ -145,7 +145,7 @@ ms.locfileid: "79265904"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
 
-| properties | 说明 | 必需 |
+| Property | 说明 | 必需 |
 | --- | --- | --- |
 | path |OData 资源路径 |否 |
 
@@ -156,9 +156,9 @@ ms.locfileid: "79265904"
 
 源属于 **RelationalSource** 类型（包括 OData）时，以下属性在 typeProperties 节可用：
 
-| properties | 说明 | 示例 | 必选 |
+| Property | 描述 | 示例 | 必需 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
+| 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
 ## <a name="type-mapping-for-odata"></a>OData 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换。
@@ -174,7 +174,7 @@ ms.locfileid: "79265904"
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
 | Edm.DateTime |DateTime |
-| Edm.Decimal |Decimal |
+| Edm.Decimal |小数 |
 | Edm.Double |Double |
 | Edm.Single |Single |
 | Edm.Guid |Guid |
@@ -182,7 +182,7 @@ ms.locfileid: "79265904"
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |字符串 |
+| Edm.String |String |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 

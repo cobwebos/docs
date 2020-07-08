@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848735"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>使用网络策略服务器 (NPS) 扩展和 Azure AD 集成远程桌面网关基础结构
 
@@ -115,24 +115,24 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 本部分将说明如何配置 RDS 基础结构，以通过远程桌面网关使用 Azure MFA 进行客户端身份验证。
 
-### <a name="acquire-azure-active-directory-guid-id"></a>获得 Azure Active Directory GUID ID
+### <a name="acquire-azure-active-directory-tenant-id"></a>获取 Azure Active Directory 租户 ID
 
-作为 NPS 扩展配置的一部分，你需要为 Azure AD 租户提供管理员凭据和 Azure AD ID。 以下步骤演示如何获取租户 ID。
+作为 NPS 扩展配置的一部分，你需要为 Azure AD 租户提供管理员凭据和 Azure AD ID。 若要获取租户 ID，请完成以下步骤：
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
-1. 在 "Azure 门户" 菜单中，选择 " **Azure Active Directory**"，或从任意页面搜索并选择 " **Azure Active Directory** "。
-1. 选择“属性”  。
-1. 在“属性”边栏选项卡的“目录ID”旁边，单击“复制”**** 图标，如下所示，将 ID 复制到剪贴板。
+1. 在 Azure 门户菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
+1. 在 "**概述**" 页上，将显示*租户信息*。 在 "*租户 ID*" 旁边，选择 "**复制**" 图标，如以下示例屏幕截图所示：
 
-   ![正在从 Azure 门户获取目录 ID](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![正在从 Azure 门户获取租户 ID](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
 在安装了网络策略和访问服务 (NPS) 角色的服务器上安装 NPS 扩展。 这作为为你设计的 RADIUS 服务器。
 
-> [!Important]
-> 确保你未在远程桌面网关服务器上安装 NPS 扩展。
+> [!IMPORTANT]
+> 请勿在远程桌面网关（RDG）服务器上安装 NPS 扩展。 RDG 服务器不会将 RADIUS 协议与客户端一起使用，因此该扩展无法解释和执行 MFA。
 >
+> 当使用 NPS 扩展的 RDG 服务器和 NPS 服务器是不同的服务器时，RDG 会在内部使用 NPS 与其他 NPS 服务器通信，并使用 RADIUS 作为协议来正确通信。
 
 1. 下载 [NPS 扩展](https://aka.ms/npsmfa)。
 1. 将安装程序可执行文件 (NpsExtnForAzureMfaInstaller.exe) 复制到 NPS 服务器。
@@ -160,15 +160,15 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 1. 在 PowerShell 命令提示符处，键入 `cd 'c:\Program Files\Microsoft\AzureMfa\Config'` 并按 ENTER****。
 1. 键入 `.\AzureMfaNpsExtnConfigSetup.ps1`，然后按 ENTER****。 该脚本将检查是否已安装 Azure Active Directory PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
 
-   ![在 Azure AD PowerShell 中运行 AzureMfaNpsExtnConfigSetup](./media/howto-mfa-nps-extension-rdg/image4.png)
+   ![在 Azure AD PowerShell 中运行 AzureMfaNpsExtnConfigSetup.ps1](./media/howto-mfa-nps-extension-rdg/image4.png)
   
 1. 脚本验证 PowerShell 模块的安装情况后，它将显示 Azure Active Directory PowerShell 模块对话框。 在对话框中，输入 Azure AD 管理员凭据和密码，然后单击“登录”****。
 
    ![在 PowerShell 中对 Azure AD 进行身份验证](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. 出现提示时，请先将复制的目录 ID 粘贴到剪贴板，然后按**enter**。
+1. 出现提示时，粘贴之前复制到剪贴板的*租户 ID* ，然后按**enter**。
 
-   ![在 PowerShell 中输入目录 ID](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![在 PowerShell 中输入租户 ID](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. 此脚本创建一个自签名证书并执行其他配置更改。 输出应如下图所示。
 
@@ -186,14 +186,14 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 1. 在 RD 网关服务器上，打开“服务器管理器”****。
 1. 在此菜单上，单击“工具”****，指向“远程桌面服务”****，然后单击“远程桌面网关管理器”****。
-1. 在 RD 网关管理器中，右键单击** \["服务器名称\] （本地）**"，然后单击 "**属性**"。
+1. 在 RD 网关管理器中，右键单击 " ** \[ 服务器名称 \] （本地）**"，然后单击 "**属性**"。
 1. 在 "属性" 对话框中，选择 " **RD CAP 存储**" 选项卡。
 1. 在“RD CAP 存储”选项卡上，选择“运行 NPS 的中心服务器”****。 
 1. 在“输入正在运行 NPS 的服务器的名称或 IP 地址”**** 字段中，键入安装了 NPS 扩展的服务器的 IP 地址或服务器名称。
 
    ![输入 NPS 服务器的名称或 IP 地址](./media/howto-mfa-nps-extension-rdg/image10.png)
   
-1. 单击 **“添加”** 。
+1. 单击“添加” 。
 1. 在“共享密钥”**** 对话框中，输入一个共享密钥，然后单击“确定”****。 确保记录此共享密钥并安全地存储该记录。
 
    >[!NOTE]
@@ -202,7 +202,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![创建共享机密来建立信任](./media/howto-mfa-nps-extension-rdg/image11.png)
 
-1. 单击 **“确定”** 关闭对话框。
+1. 单击“确定”  关闭对话框。
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>在远程桌面网关 NPS 上配置 RADIUS 超时值
 
@@ -242,7 +242,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![配置指定服务器组的身份验证设置](./media/howto-mfa-nps-extension-rdg/image15.png)
 
-1. 单击“取消”  。
+1. 单击“取消” 。
 
 >[!NOTE]
 > 有关创建连接请求策略的详细信息，请参阅[配置连接请求策略](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy)文档的相关文章。 
@@ -301,7 +301,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
    ![选择性地指定连接条件](./media/howto-mfa-nps-extension-rdg/image23.png)
 
-1. 单击“确定”。  当系统提示查看相应帮助主题时，请单击“否”****。
+1. 单击“确定”。 当系统提示查看相应帮助主题时，请单击“否”****。
 1. 确保新策略位于列表的顶部、该策略已启用，并且它授予访问权限。
 
    ![将策略移至列表顶部](./media/howto-mfa-nps-extension-rdg/image24.png)
@@ -377,13 +377,13 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 下图显示了一个可下载的[共享性应用程序](https://www.deepsoftware.com/iasviewer)的输出。
 
-![示例共享应用程序 IAS 分析器](./media/howto-mfa-nps-extension-rdg/image35.png)
+![示例共享性应用 IAS 分析程序](./media/howto-mfa-nps-extension-rdg/image35.png)
 
 最后，对于其他故障排除选项，你可以使用协议分析器，例如 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)。
 
 以下来自 Microsoft Message Analyzer 的图像显示了在 RADIUS 协议上筛选的网络流量，其中包含用户名**CONTOSO\AliceC**。
 
-![显示筛选的流量的 Microsoft Message Analyzer](./media/howto-mfa-nps-extension-rdg/image36.png)
+![显示筛选的流量的 Microsoft 消息分析器](./media/howto-mfa-nps-extension-rdg/image36.png)
 
 ## <a name="next-steps"></a>后续步骤
 

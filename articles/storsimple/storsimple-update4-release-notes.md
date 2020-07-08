@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847282"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
 
@@ -88,7 +88,7 @@ Update 4 中没有任何新的已知问题。 有关从之前版本遗留至 Upd
 
 此更新不能应用于 StorSimple 云工具（也称为虚拟设备）。 将需要新建虚拟设备。 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 了解如何在 StorSimple 设备上[安装 Update 4](storsimple-install-update-4.md)。
 

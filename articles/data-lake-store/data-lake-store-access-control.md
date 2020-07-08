@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847829"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：************
 
-|            |    文件     |   Folder |
+|            |    文件     |   文件夹 |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需要 "**读取**" 和 "**执行**" 来列出文件夹的内容|
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项******** |
@@ -53,11 +53,11 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 ### <a name="short-forms-for-permissions"></a>权限的简短形式
 
-**RWX** 用于表示“读取 + 写入 + 执行”。**** 还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。************ 下面是一些示例。
+**RWX** 用于表示“读取 + 写入 + 执行”。 还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。   下面是一些示例。
 
 | 数字形式 | 简短形式 |      含义     |
 |--------------|------------|------------------------|
-| 7            | `RWX`        | RWX |
+| 7            | `RWX`        | 读取 + 写入 + 执行 |
 | 5            | `R-X`        | 读取 + 执行         |
 | 4            | `R--`        | 读取                   |
 | 0            | `---`        | 无权限         |
@@ -71,7 +71,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 以下常见方案可帮助你了解对 Data Lake Storage Gen1 帐户执行特定操作所需的权限。
 
-| Operation | 对象              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -250,7 +250,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不能。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
+否。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 
@@ -295,7 +295,7 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 * [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [使用 Linux 上的访问控制列表的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [在 Linux 上使用访问控制列表 (ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>另请参阅
 

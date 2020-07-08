@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253229"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846966"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -60,7 +60,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 ![审核日志](./media/concept-audit-logs/listview.png "审核日志")
 
-您可以通过单击工具栏中的 "**列**" 自定义列表视图。
+单击工具栏中的“列”即可自定义列表视图。 
 
 ![审核日志](./media/concept-audit-logs/columns.png "审核日志")
 
@@ -89,7 +89,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 使用“服务”**** 筛选器可以从以下服务的下拉列表中进行选择：
 
-- 全部
+- All
 - AAD 管理 UX
 - 访问评审
 - 帐户预配
@@ -111,7 +111,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 “类别”筛选器用于选择下述筛选器之一：****
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -138,8 +138,8 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 可以使用“状态”筛选器根据审核操作的状态进行筛选。**** 状态可以是下列其中一项：
 
-- 全部
-- 成功
+- All
+- Success
 - 失败
 
 **目标**筛选器允许您通过名称或用户主体名称（UPN）搜索特定目标。 目标名称和 UPN 区分大小写。 
@@ -147,11 +147,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 通过筛选器**启动**的筛选器，您可以定义参与者名称或通用主体名称（UPN）的开头。 名称和 UPN 区分大小写。
 
 使用 "**日期范围**" 筛选器可以定义返回的数据的时间范围。  
-可能的值为：
+可能的值有：
 
 - 7 天
 - 24 小时
-- 自定义
+- “自定义”
 
 选择自定义时间范围时，可以配置开始时间和结束时间。
 

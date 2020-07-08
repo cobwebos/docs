@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847482"
 ---
 # <a name="manage-farms"></a>管理场
 
@@ -33,7 +33,7 @@ ms.locfileid: "79271715"
 
 下面是定义场边界的两种方法：
 
-1. **标记地图**：使用地图控制工具绘制和标记场的边界。 为了标记边界， ![项目场可以击败](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png)并标记确切的边界。
+1. **标记地图**：使用地图控制工具绘制和标记场的边界。 为了标记边界， ![ 项目场可以击败 ](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) 并标记确切的边界。
 
     ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 

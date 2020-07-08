@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252553"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847353"
 ---
 # <a name="get-help-with-your-system"></a>获得有关系统的帮助
 
@@ -27,7 +27,7 @@ ms.locfileid: "79252553"
 
 按照以下步骤操作，确保已使用群集中的资源标记支持票证。 标记票证有助于我们将其路由到正确的支持资源。
 
-1. 从[https://portal.azure.com](https://portal.azure.com)中，选择 "**资源组**"。 浏览到包含出现此问题的 vFXT 群集的资源组，然后单击其中一个 Avere 群集虚拟机。
+1. 从中 [https://portal.azure.com](https://portal.azure.com) ，选择 "**资源组**"。 浏览到包含出现此问题的 vFXT 群集的资源组，然后单击其中一个 Avere 群集虚拟机。
 
     ![圈出特定 VM 的 Azure 门户资源组“概述”面板的屏幕截图](media/avere-vfxt-ticket-vm.png)
 

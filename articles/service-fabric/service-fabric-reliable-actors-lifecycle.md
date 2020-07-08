@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258312"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847878"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>执行组件生命周期、自动垃圾回收和手动删除
 当第一次调用执行组件的任何方法时即可激活该执行组件。 如果在可配置的一段时间内未使用执行组件，则此执行组件将停用（执行组件运行时对其进行垃圾回收）。 还可以在任何时候手动删除执行组件及其状态。
@@ -52,7 +52,7 @@ ms.locfileid: "79258312"
 * *扫描时间间隔*。 这是执行组件运行时为可以停用和进行垃圾回收的执行组件扫描其活动执行组件表的时间间隔。 此状态的默认值为 1 分钟。
 * *空闲超时*。 这是在停用执行组件并对其进行垃圾回收之前，该执行组件需要保持未使用（空闲）状态的时间。 此状态的默认值为 60 分钟。
 
-通常不需要更改这些默认值。 但是，如有必要，可在注册`ActorServiceSettings`执行组件服务[时通过 ](service-fabric-reliable-actors-platform.md) 更改这些时间间隔：
+通常不需要更改这些默认值。 但是，如有必要，可在注册[执行组件服务](service-fabric-reliable-actors-platform.md)时通过 `ActorServiceSettings` 更改这些时间间隔：
 
 ```csharp
 public class Program

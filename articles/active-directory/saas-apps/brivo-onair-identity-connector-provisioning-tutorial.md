@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246647"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848674"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Brivo Onair 标识连接器
 
@@ -31,7 +31,7 @@ ms.locfileid: "80246647"
 >
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -41,7 +41,7 @@ ms.locfileid: "80246647"
 
 ## <a name="assigning-users-to-brivo-onair-identity-connector"></a>将用户分配到 Brivo Onair 标识连接器
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
+Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
 
 在配置和启用自动用户预配之前，应确定 Azure AD 中的哪些用户和/或组需要访问 Brivo Onair 标识连接器。 确定后，可按照此处的说明将这些用户和/或组分配到 Brivo Onair 标识连接器：
 * [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
@@ -50,21 +50,21 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 * 建议将单个 Azure AD 用户分配到 Brivo Onair Identity Connector 来测试自动用户预配配置。 其他用户和/或组可以稍后分配。
 
-* 将用户分配到 Brivo Onair Identity Connector 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 将从设置中排除具有**默认访问**角色的用户。
+* 将用户分配到 Brivo Onair Identity Connector 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>设置 Brivo Onair 标识连接器进行预配
 
-1.    登录到[Brivo Onair Identity Connector 管理控制台](https://acs.brivo.com/login/)。 导航到**帐户 > 帐户设置**。
+1. 登录到[Brivo Onair Identity Connector 管理控制台](https://acs.brivo.com/login/)。 导航到**帐户 > 帐户设置**。
 
-    ![Brivo Onair 标识连接器管理控制台](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Brivo Onair 标识连接器管理控制台](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  单击**Azure AD** "选项卡。在 " **Azure AD**详细信息页上，重新输入高级管理员帐户的密码。 单击 "**提交**"。
+2. 单击**Azure AD** "选项卡。在 " **Azure AD**详细信息页上，重新输入高级管理员帐户的密码。 单击 "**提交**"。
 
-    ![Brivo Onair Identity Connector azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Brivo Onair Identity Connector azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    单击 "**复制令牌**" 按钮，并保存**机密令牌**。 此值将在 Azure 门户中的 Brivo Onair Identity Connector 应用程序的 "预配" 选项卡的 "机密令牌" 字段中输入。
+3. 单击 "**复制令牌**" 按钮，并保存**机密令牌**。 此值将在 Azure 门户中的 Brivo Onair Identity Connector 应用程序的 "预配" 选项卡的 "机密令牌" 字段中输入。
 
-    ![Brivo Onair 标识连接器标记](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Brivo Onair 标识连接器标记](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>从库中添加 Brivo Onair Identity Connector
 
@@ -76,7 +76,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 中转到 "**企业应用程序**"，然后选择 "**所有应用程序**"。
+2. 转到“企业应用程序”，并选择“所有应用程序”。 
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -94,7 +94,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>若要为 Azure AD 中的 Brivo Onair 标识连接器配置自动用户预配，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -102,15 +102,15 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![应用程序列表中的 Brivo Onair Identity Connector 链接](common/all-applications.png)
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
-    ![设置选项卡](common/provisioning.png)
+    ![预配选项卡](common/provisioning.png)
 
-4. 将**预配模式**设置为 "**自动**"。
+4. 将“预配模式”设置为“自动”。
 
-    ![设置选项卡](common/provisioning-automatic.png)
+    ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中`https://scim.brivo.com/ActiveDirectory/v2/` ，输入 "**租户 URL**"。 输入先前在**机密令牌**中检索到的**SCIM Authentication 令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Brivo Onair 标识连接器。 如果连接失败，请确保 Brivo Onair 标识连接器帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分中，输入 " `https://scim.brivo.com/ActiveDirectory/v2/` **租户 URL**"。 输入先前在**机密令牌**中检索到的**SCIM Authentication 令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Brivo Onair 标识连接器。 如果连接失败，请确保 Brivo Onair 标识连接器帐户具有管理员权限，然后重试。
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -118,13 +118,13 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击 **“保存”** 。
+7. 单击“保存” 。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Brivo Onair 标识连接器**"。
 
     ![Brivo Onair Identity Connector 用户映射](media/brivo-onair-identity-connector-provisioning-tutorial/user-mappings.png )
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Brivo Onair Identity Connector 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 Brivo Onair Identity Connector 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改****。
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Brivo Onair Identity Connector 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 Brivo Onair Identity Connector 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Brivo Onair Identity Connector 用户属性](media/brivo-onair-identity-connector-provisioning-tutorial/user-attributes.png)
 
@@ -132,7 +132,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![Brivo Onair 标识连接器组映射](media/brivo-onair-identity-connector-provisioning-tutorial/group-mappings.png)
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Brivo Onair Identity Connector 的组属性。 选为 "**匹配**" 属性的属性用于匹配 Brivo Onair Identity Connector 中的组以执行更新操作。 选择“保存”按钮以提交任何更改****。
+11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Brivo Onair Identity Connector 的组属性。 选为 "**匹配**" 属性的属性用于匹配 Brivo Onair Identity Connector 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Brivo Onair 标识连接器组属性](media/brivo-onair-identity-connector-provisioning-tutorial/group-attributes.png)
 
@@ -146,7 +146,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![预配范围](common/provisioning-scope.png)
 
-15. 已准备好预配时，单击“保存”****。
+15. 已准备好预配时，单击“保存”。
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
