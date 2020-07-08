@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75891501"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple 安全性和数据保护
@@ -242,7 +241,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 * [更改服务数据加密密钥](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。   应采取何种操作？
+**问：** 我授权设备进行服务数据加密密钥更改，但却无法开始密钥更改过程。 我该怎么办？
 
 **答：** 如果超时期限已过，需要重新授权设备进行服务数据加密密钥更改，并重新开始该过程。
 
@@ -250,7 +249,7 @@ StorSimple 使用以下加密算法来保护存储在 StorSimple 解决方案组
 
 **答：** 4 小时时限仅适用于启动更改操作。 一旦在授权的 StorSimple 设备上开始更新过程，授权会保持有效，直至所有设备都已更新。
 
-**问：** 我们的 StorSimple 管理员离开了公司。   应采取何种操作？
+**问：** 我们的 StorSimple 管理员离开了公司。 我该怎么办？
 
 **答：** 请更改和重置用于访问 StorSimple 设备的密码，并更改服务数据加密密钥以确保新信息不会泄露给未获授权的人员。 有关说明，请转到：
 

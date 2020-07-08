@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: twooley
 ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75930207"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
@@ -140,7 +139,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
   3. 在左窗格中，单击 **“本地服务器”**。
   4. 在 **“IE 增强的安全配置”** 旁边的右窗格中，单击 **“启用”**。
   5. 在 **“管理员”** 下，单击 **“禁用”**。
-  6. 单击“确定”。 
+  6. 单击“确定”。
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>远程 BLOB 存储 (RBS) 先决条件
 确保使用受支持的 SQL Server 版本。 只有以下版本受支持且能够使用 RBS：
@@ -226,7 +225,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 4. 在 **“配置 StorSimple 适配器”** 页上，单击每个要从外部 BLOB 存储中移除的内容数据库下面的 **“禁用”** 按钮。 
 5. 从 SharePoint 中删除对象，并将其重新上载。
 
-或者，你可以使用 SharePoint 随附`RBS Migrate()`的 Microsoft PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
+或者，你可以使用 `RBS Migrate()` SharePoint 随附的 Microsoft PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
 
 将 BLOB 移回内容数据库后，请转到下一步：[卸载适配器](#uninstall-the-adapter)。
 
@@ -238,7 +237,7 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 2. 双击 StorSimple Adapter for SharePoint 安装程序。 此时会启动安装向导。
    
     ![安装向导](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. 单击“下一步”。  将显示以下页。
+3. 单击“下一步” 。 将显示以下页。
    
     ![安装向导删除页](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. 单击 **“删除”** 选择删除过程。 将显示以下页。

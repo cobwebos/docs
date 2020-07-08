@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75974407"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
@@ -42,16 +41,16 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 - 通过设置以下参数来部署 HDInsight ESP 群集：
 
-    |参数 |说明 |
+    |参数 |描述 |
     |---|---|
     |域名|与 Azure AD DS 关联的域名。|
     |域用户名|在前面的部分中创建的 Azure AD DS DC 托管域中的服务帐户，例如：`hdiadmin@contoso.onmicrosoft.com`。 此域用户将成为此 HDInsight 群集的管理员。|
     |域密码|服务帐户的密码。|
     |组织单位|要与 HDInsight 群集配合使用的 OU 的可分辨名称，例如：`OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com`。 如果此 OU 不存在，HDInsight 群集将尝试使用服务帐户的权限创建 OU。|
-    |LDAPS URL|例如， `ldaps://contoso.onmicrosoft.com:636`。|
+    |LDAPS URL|例如， `ldaps://contoso.onmicrosoft.com:636` 。|
     |访问用户组|其用户要同步到群集的安全组，例如：`HiveUsers`。 如果想要指定多个用户组，请使用分号“;”分隔。 创建 ESP 群集之前，组必须存在于目录中。|
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 - [已加入域的 HDInsight 群集的 Apache Hadoop 安全性简介](../domain-joined/hdinsight-security-overview.md)
 - [在 HDInsight 中计划 Azure 已加入域的 Apache Hadoop 群集](../domain-joined/apache-domain-joined-architecture.md)
@@ -81,7 +80,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
     - 使用 Microsoft 托管的密钥或客户管理的密钥进行透明的服务器端加密。
     - 使用客户端加密、https 和 TLS 的传输加密。
 
-有关详细信息，请参阅下列文章：
+有关详细信息，请参阅以下文章：
 
 - [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 - [Azure 网络安全组概述](../../virtual-network/security-overview.md)

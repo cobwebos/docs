@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75934689"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
@@ -25,7 +24,7 @@ ms.locfileid: "75934689"
 
 Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可以跨多个群集共享存储，因此可以创建多个工作负载优化的计算群集，以满足不同作业的需求。 每个群集类型根据该特定工作负荷采用最佳的配置。 下表列出了 HDInsight 中支持的群集类型和对应的工作负荷。
 
-|工作负载|HDInsight 群集类型|
+|工作负荷|HDInsight 群集类型|
 |---|---|
 |批处理 (ETL/ELT)|Hadoop、Spark|
 |数据仓库|Hadoop、Spark、交互式查询|
@@ -103,7 +102,7 @@ HDInsight 对 Hive 和 Oozie 元存储使用 Azure SQL 数据库。 可通过两
 - 定期备份自定义元存储。
 - 将元存储和 HDInsight 群集保留在同一区域。
 - 使用 Azure SQL 数据库监视工具（例如 Azure 门户或 Azure Monitor 日志）监视元存储的性能和可用性。
-- 根据需要`ANALYZE TABLE`执行命令，以便为表和列生成统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
+- `ANALYZE TABLE`根据需要执行命令，以便为表和列生成统计信息。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作负荷的最佳做法
 

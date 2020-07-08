@@ -7,10 +7,9 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68736291"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure 数据目录术语
@@ -73,7 +72,7 @@ Azure 数据目录中的数据配置文件是已注册数据资产相关的表�
 
 专家是已被认定为对某数据资产具有广博的“专家”见解的用户。 任何用户可以将自身或另一用户添加为某资产的专家。 在 Azure 数据目录中，被列为专家并不代表具有任何其他特权；它允许用户在查看资产的描述性元数据时，可轻松找到最可能有用的那些观点。
 
-## <a name="owner"></a>“所有者”
+## <a name="owner"></a>所有者
 
 所有者是在 Azure 数据目录中对数据资产管理具有额外权限的用户。 用户可取得已注册的数据资产的所有权，而所有者可以将其他用户添加为共同所有者。 有关详细信息，请参阅[如何管理数据资产](data-catalog-how-to-manage.md)  
 

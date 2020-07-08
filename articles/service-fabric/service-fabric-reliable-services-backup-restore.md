@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75922779"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>备份和还原 Reliable Services 及 Reliable Actors
@@ -119,7 +118,7 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
   - 重写虚拟基类方法 `OnDataLossAsync`。
   - 在包含服务的备份的外部位置中查找最新备份。
   - 下载最新的备份（如果备份已压缩，则将其解压缩到备份文件夹中）。
-  - `OnDataLossAsync` 方法可提供 `RestoreContext`。 对所提供的 `RestoreAsync` 调用 `RestoreContext` API。
+  - `OnDataLossAsync` 方法可提供 `RestoreContext`。 对所提供的 `RestoreContext` 调用 `RestoreAsync` API。
   - 如果还原成功，则返回 true。
 
 以下是 `OnDataLossAsync` 方法的实现示例：
@@ -137,11 +136,11 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-传入 `RestoreDescription` 调用的 `RestoreContext.RestoreAsync` 包含名为 `BackupFolderPath` 的成员。
+传入 `RestoreContext.RestoreAsync` 调用的 `RestoreDescription` 包含名为 `BackupFolderPath` 的成员。
 还原单个完整备份时，此 `BackupFolderPath` 应设置为包含完整备份的文件夹的本地路径。
 还原一个完整备份和一些增量备份时，`BackupFolderPath` 应设置为包含完整备份以及所有增量备份的文件夹的本地路径。
-如果所提供的 `RestoreAsync` 不包含完整的备份，则 `FabricMissingFullBackupException` 调用可引发 `BackupFolderPath`。
-如果 `ArgumentException` 具有已断开的增量备份链，它还可引发 `BackupFolderPath`。
+如果所提供的 `BackupFolderPath` 不包含完整的备份，则 `RestoreAsync` 调用可引发 `FabricMissingFullBackupException`。
+如果 `BackupFolderPath` 具有已断开的增量备份链，它还可引发 `ArgumentException`。
 例如，如果它包含完整备份、第一个增量备份和第三个增量备份，但不包含第二个增量备份。
 
 > [!NOTE]
@@ -218,7 +217,7 @@ class MyCustomActorService : ActorService
   - 副本在变为主副本后从未执行过完整备份。
   - 自上次执行备份后，一些日志记录被截断。
 
-启用增量备份后，`KvsActorStateProvider` 未使用循环缓冲区管理其日志记录和定期截取它。 如果在 45 分钟的时间内用户未执行备份，则系统会自动截断日志记录。 可以通过在 `logTruncationIntervalInMinutes` 构造函数中指定 `KvsActorStateProvider` 来配置此间隔（与启用增量备份时类似）。 如果主副本需要通过发送其所有数据来生成另一个副本，日志记录也可能会被截断。
+启用增量备份后，`KvsActorStateProvider` 未使用循环缓冲区管理其日志记录和定期截取它。 如果在 45 分钟的时间内用户未执行备份，则系统会自动截断日志记录。 可以通过在 `KvsActorStateProvider` 构造函数中指定 `logTruncationIntervalInMinutes` 来配置此间隔（与启用增量备份时类似）。 如果主副本需要通过发送其所有数据来生成另一个副本，日志记录也可能会被截断。
 
 从备份链进行还原时，与 Reliable Services 类似，BackupFolderPath 应包含子目录（其中一个子目录包含完整备份，其他子目录包含增量备份）。 如果备份链验证失败，还原 API 将引发 FabricException 并显示相应的错误消息。 
 
@@ -244,7 +243,7 @@ class MyCustomActorService : ActorService
 
 ### <a name="restore"></a>还原
 可靠状态管理器具有使用 `RestoreAsync` API 从备份还原的功能。  
-仅可在 `RestoreAsync` 方法内调用 `RestoreContext` 的 `OnDataLossAsync` 方法。
+仅可在 `OnDataLossAsync` 方法内调用 `RestoreContext` 的 `RestoreAsync` 方法。
 由 `OnDataLossAsync` 返回的布尔值表示服务是否从外部源还原其状态。
 如果 `OnDataLossAsync` 返回 true，则 Service Fabric 将使用此主副本重新生成所有其他副本。 Service Fabric 可确保将接收 `OnDataLossAsync` 调用的副本先转换为主角色，但不会授予其读取状态或写入状态。
 这意味着对于 StatefulService 实现程序，不会调用 `RunAsync`，直到 `OnDataLossAsync` 成功完成。

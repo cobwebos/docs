@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
 ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75895045"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>从 Azure HDInsight 中的 Apache Ambari Hive 视图运行查询时发生异常
@@ -54,13 +53,13 @@ HTTP 处理程序线程的速度预期很快：只需准备作业并返回 `quer
 
 * 如果使用外部 Hive 元存储，请检查数据库指标，并确保数据库未过载。 考虑缩放元存储数据库层。
 
-* 确保已启用并行操作（使 HTTP 处理程序线程能够并行运行）。 若要验证该值，请启动 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) 并导航到“Hive” **“配置”** “高级” > “自定义 hive-site”。   >    >   `hive.server2.parallel.ops.in.session` 的值应是 `true`。
+* 确保已启用并行操作（使 HTTP 处理程序线程能够并行运行）。 若要验证该值，请启动 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) 并导航到“Hive” > “配置” > “高级” > “自定义 hive-site”。    `hive.server2.parallel.ops.in.session` 的值应是 `true`。
 
 * 确保群集的 VM SKU 对于负载而言不会太小。 考虑将工作负载分散到多个群集。 有关详细信息，请参阅[选择群集类型](../hdinsight-capacity-planning.md#choose-a-cluster-type)。
 
 * 如果在群集上安装了 Ranger，请检查是否需要为每个查询评估过多的 Ranger 策略。 找出重复或不需要的策略。
 
-* 在 Ambari 中检查“HiveServer2 堆大小”值。  导航到“Hive” **“配置”** “设置” > “优化”。   >    >   确保该值大于 10 GB。 根据需要进行调整，以优化性能。
+* 在 Ambari 中检查“HiveServer2 堆大小”值。  导航到“Hive” > “配置” > “设置” > “优化”。   . 确保该值大于 10 GB。 根据需要进行调整，以优化性能。
 
 * 确保 Hive 查询经过适当的优化。 有关详细信息，请参阅[在 Azure HDInsight 中优化 Apache Hive 查询](../hdinsight-hadoop-optimize-hive-query.md)。
 
@@ -70,6 +69,6 @@ HTTP 处理程序线程的速度预期很快：只需准备作业并返回 `quer
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

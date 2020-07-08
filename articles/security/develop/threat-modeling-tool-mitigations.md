@@ -16,30 +16,29 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68728033"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威胁建模工具风险缓解
 
 威胁建模工具是 Microsoft 安全开发生命周期 (SDL) 的核心要素。 当潜在安全问题处于无需花费过多成本即可相对容易解决的阶段，软件架构师可以使用威胁建模工具提前识别这些问题。 因此，它能大幅减少开发总成本。 此外，我们设计该工具时考虑到了非安全专家的体验，为他们提供有关创建和分析威胁模型的清晰指导，让所有开发人员都可以更轻松地使用威胁建模。
 
-请访问**[威胁建模工具](threat-modeling-tool.md)** 以立即开始！
+请访问 **[威胁建模工具](threat-modeling-tool.md)** 以立即开始！
 
 ## <a name="mitigation-categories"></a>风险缓解类别
 
 威胁建模工具缓解措施根据 Web 应用程序安全框架分类，包括：
 
-| 类别 | 说明 |
+| Category | 说明 |
 | -------- | ----------- |
 | **[审核和日志记录](threat-modeling-tool-auditing-and-logging.md)** | 谁在何时做了什么？ 审核与日志记录是指应用程序如何记录安全相关的事件 |
 | **[身份验证](threat-modeling-tool-authentication.md)** | 你是谁？ 身份验证是某个实体证明另一实体的身份的过程，这通常是通过用户名和密码等凭据完成的。 |
-| **[授权](threat-modeling-tool-authorization.md)** | 你可以做什么？ 授权是指应用程序如何提供对资源和操作的访问控制 |
+| **[授权](threat-modeling-tool-authorization.md)** | 该怎么办？ 授权是指应用程序如何提供对资源和操作的访问控制 |
 | **[通信安全](threat-modeling-tool-communication-security.md)** | 在与谁对话？ 通信安全可确保以尽量安全的方式进行所有通信 |
 | **[配置管理](threat-modeling-tool-configuration-management.md)** | 应用程序的运行身份是什么？ 它连接到哪些数据库？ 如何管理应用程序？ 如何保护这些设置？ 配置管理是指应用程序如何处理这些操作问题 |
-| **[密码](threat-modeling-tool-cryptography.md)** | 如何保守机密（保密性）？ 如何防止对数据或库（完整性）进行篡改？ 如何针对必须强加密的随机值提供种子？ 加密是指应用程序强制实施保密性和完整性 |
+| **[加密](threat-modeling-tool-cryptography.md)** | 如何保守机密（保密性）？ 如何防止对数据或库（完整性）进行篡改？ 如何针对必须强加密的随机值提供种子？ 加密是指应用程序强制实施保密性和完整性 |
 | **[异常管理](threat-modeling-tool-exception-management.md)** | 当应用程序中的方法调用失败时，应用程序会采取什么措施？ 透露的信息量有多大？ 是否向最终用户返回友好的错误信息？ 是否向调用方传回有用的异常信息？ 应用程序是否正常失败？ |
 | **[输入验证](threat-modeling-tool-input-validation.md)** | 如何知道应用程序接收的输入有效且安全？ 输入验证是指应用程序在进一步处理之前筛选、清理或拒绝输入。 请考虑通过入口点限制输入，通过出口点为输出编码。 是否信任数据库和文件共享等源中的数据？ |
 | **[敏感数据](threat-modeling-tool-sensitive-data.md)** | 应用程序如何处理敏感数据？ 敏感数据是指应用程序如何处理必须在内存中、通过网络或在持久性存储中保护的任何数据 |
@@ -54,4 +53,4 @@ ms.locfileid: "68728033"
 
 ## <a name="next-steps"></a>后续步骤
 
-请访问[威胁建模工具威胁](threat-modeling-tool-threats.md)****，以详细了解有关该工具用于生成可能的设计威胁的威胁类别。
+请访问[威胁建模工具威胁](threat-modeling-tool-threats.md)，以详细了解有关该工具用于生成可能的设计威胁的威胁类别。

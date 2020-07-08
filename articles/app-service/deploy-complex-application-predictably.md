@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75967380"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>按可预见的方式在 Azure 中设置和部署微服务
@@ -182,8 +181,8 @@ ms.locfileid: "75967380"
 ## <a name="deploy-the-resource-group-template-yourself"></a>自己部署资源组模板
 “部署到 Azure”**** 按钮太好用了，但是只有当已将 azuredeploy.json 推送到 GitHub 时，它才允许部署 azuredeploy.json 中的资源组模板。 Azure.NET SDK 还提供了工具，使你能够直接从本地计算机部署任何 JSON 模板文件。 为此，请执行以下步骤：
 
-1. 在 Visual Studio 中，单击 "**文件** > " "**新建** > **项目**"。
-2. 单击 " **Visual c #** > **Cloud** > **Azure 资源组**"，然后单击 **"确定"**。
+1. 在 Visual Studio 中，单击“文件” > “新建” > “项目”。
+2. 单击 " **Visual c #**  >  **Cloud**  >  **Azure 资源组**"，然后单击 **"确定"**。
    
    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. 在“选择 Azure 模板”**** 中，选择“空白模板”****，并单击“确定”****。
@@ -209,7 +208,7 @@ ms.locfileid: "75967380"
 11. 找到 `location` 和 `isEnabled` 属性并对其进行如下设置。 对其他三个警报（紫色警报）执行相同的操作。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
-12. 现在可以开始部署了。 右键单击该项目，然后选择 "**部署** > **新的部署**"。
+12. 现在可以开始部署了。 右键单击该项目，然后选择 "**部署**  >  **新的部署**"。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. 如果尚未执行该操作，则登录到 Azure 帐户。
@@ -220,7 +219,7 @@ ms.locfileid: "75967380"
     现在即可在一张不错的表中编辑在模板文件中定义的所有参数。 定义默认值的参数将已具有其默认值，并且定义允许值的列表的参数会显示为下拉列表。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. 填写所有空参数，并使用 **repoUrl** 中的 [ToDoApp 的 GitHub 存储库地址](https://github.com/azure-appservice-samples/ToDoApp.git)。 然后单击“保存”  。
+15. 填写所有空参数，并使用 **repoUrl** 中的 [ToDoApp 的 GitHub 存储库地址](https://github.com/azure-appservice-samples/ToDoApp.git)。 然后单击“保存” 。
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
@@ -228,7 +227,7 @@ ms.locfileid: "75967380"
     > 自动缩放是**标准**层或更高层中提供的一项功能，而计划级别警报是**基本**层或更高层中提供的功能，需要将 **sku** 参数设置为**标准**或**高级**，使所有新 App Insights 资源亮起。
     > 
     > 
-16. 单击“部署”****。 如果选择了“保存密码”****，密码将**以纯文本格式**保存在参数文件中。 否则，需要在部署过程中输入数据库密码。
+16. 单击“部署”。 如果选择了“保存密码”****，密码将**以纯文本格式**保存在参数文件中。 否则，需要在部署过程中输入数据库密码。
 
 就这么简单！ 现在只需转到 [Azure 门户](https://portal.azure.com/)和 [Azure 资源浏览器](https://resources.azure.com)工具，便可看到添加到 JSON 部署的应用程序中的新警报和自动缩放设置。
 
@@ -262,9 +261,9 @@ ms.locfileid: "75967380"
 要了解本文中部署的资源类型的 JSON 语法和属性，请参阅：
 
 * [Microsoft.Sql/servers](/azure/templates/microsoft.sql/servers)
-* [Microsoft.Sql/servers/databases](/azure/templates/microsoft.sql/servers/databases)
-* [Microsoft.Sql/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
+* [Microsoft .Sql/服务器/数据库](/azure/templates/microsoft.sql/servers/databases)
+* [Sql-dmo/servers/firewallRules](/azure/templates/microsoft.sql/servers/firewallrules)
 * [System.web/serverfarms](/azure/templates/microsoft.web/serverfarms)
 * [Microsoft. Web/站点](/azure/templates/microsoft.web/sites)
-* [Microsoft.Web/sites/slots](/azure/templates/microsoft.web/sites/slots)
+* [Microsoft. Web/站点/槽](/azure/templates/microsoft.web/sites/slots)
 * [Microsoft Insights/autoscalesettings](/azure/templates/microsoft.insights/autoscalesettings)

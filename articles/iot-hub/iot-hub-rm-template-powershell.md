@@ -9,10 +9,9 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75976625"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>使用 Azure 资源管理器模板创建 IoT 中心 (PowerShell)
@@ -47,7 +46,7 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-正如你在 PowerShell 脚本中所见，使用的模板来自 Azure 快速入门模板。 若要使用自己的，需要首先将模板文件上传到 Cloud shell，然后使用`-TemplateFile`开关指定文件名。  有关示例，请参阅[部署模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
+正如你在 PowerShell 脚本中所见，使用的模板来自 Azure 快速入门模板。 若要使用自己的，需要首先将模板文件上传到 Cloud shell，然后使用 `-TemplateFile` 开关指定文件名。  有关示例，请参阅[部署模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)。
 
 ## <a name="next-steps"></a>后续步骤
 

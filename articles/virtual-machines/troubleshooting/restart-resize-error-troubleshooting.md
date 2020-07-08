@@ -14,10 +14,9 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75965611"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>排查在 Azure 中重新启动现有 Windows VM 或调整其大小时遇到的部署问题
@@ -41,7 +40,7 @@ ms.locfileid: "75965611"
 ### <a name="resolution"></a>解决方法
 * 停止可用性集中的所有 VM 并重新启动每个 VM。
   
-  1. 单击“资源组”  资源组 >  *“资源”*  > 可用性集  “虚拟机” > *虚拟机* > “停止”。   >    >  
+  1. 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
   2. 所有 VM 停止后，选择每个已停止的 VM 并单击“启动”。
 * 稍后重试重新启动请求。
 
@@ -57,7 +56,7 @@ ms.locfileid: "75965611"
   
   1. 停止可用性集中的所有 VM。
      
-     * 单击“资源组”  资源组 >  *“资源”*  > 可用性集  “虚拟机” > *虚拟机* > “停止”。   >    >  
+     * 单击“资源组” > *资源组* > “资源” > *可用性集* > “虚拟机” > *虚拟机* > “停止”。
   2. 所有 VM 停止后，将所需的 VM 调整到更大的大小。
   3. 选择已调整大小的 VM，单击“启动”，并启动每个已停止的 VM。 
 

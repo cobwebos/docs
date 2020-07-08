@@ -9,15 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 26f41a7fd88a3c2018592e89ae95e3b962c1a9e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75911687"
 ---
 # <a name="display-feature-information"></a>显示功能信息
 
-空间数据通常使用点、线条和多边形来表示。 此数据通常具有与之关联的元数据信息。 例如，点可能表示商店的位置，而有关该餐馆的元数据可能是其所服务的食品的名称、地址和类型。 可以使用将此元数据添加为这些功能的属性`JsonObject`。 下面的代码使用值为 "Hello World！" `title`的属性创建一个简单的点功能。
+空间数据通常使用点、线条和多边形来表示。 此数据通常具有与之关联的元数据信息。 例如，点可能表示商店的位置，而有关该餐馆的元数据可能是其所服务的食品的名称、地址和类型。 可以使用将此元数据添加为这些功能的属性 `JsonObject` 。 下面的代码使用 `title` 值为 "Hello World！" 的属性创建一个简单的点功能。
 
 ```java
 //Create a data source and add it to the map.
@@ -32,7 +31,7 @@ properties.addProperty("title", "Hello World!");
 dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64), properties));
 ```
 
-当用户与地图上的功能交互时，可以使用事件来响应这些操作。 常见的情况是显示一条消息，该消息由用户与之交互的功能的元数据属性组成。 `OnFeatureClick`事件是用于检测用户在地图上点击功能时所使用的主要事件。 还有一个`OnLongFeatureClick`事件。 向映射添加`OnFeatureClick`事件时，可以将该事件限制为单个层，方法是传入层的 ID 以将其限制为。 如果未传入任何层 ID，请在映射上点击任意功能，而不考虑它所在的层，将触发此事件。 下面的代码创建一个符号层，用于在地图上呈现点数据，然后添加`OnFeatureClick`一个事件并将其限制为此符号层。
+当用户与地图上的功能交互时，可以使用事件来响应这些操作。 常见的情况是显示一条消息，该消息由用户与之交互的功能的元数据属性组成。 `OnFeatureClick`事件是用于检测用户在地图上点击功能时所使用的主要事件。 还有一个 `OnLongFeatureClick` 事件。 向映射添加 `OnFeatureClick` 事件时，可以将该事件限制为单个层，方法是传入层的 ID 以将其限制为。 如果未传入任何层 ID，请在映射上点击任意功能，而不考虑它所在的层，将触发此事件。 下面的代码创建一个符号层，用于在地图上呈现点数据，然后添加一个 `OnFeatureClick` 事件并将其限制为此符号层。
 
 ```java
 //Create a symbol and add it to the map.
@@ -50,7 +49,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 ## <a name="display-a-toast-message"></a>显示 toast 消息
 
-Toast 消息是向用户显示信息的最简单方法之一，在 Android 的所有版本中都提供。 它不支持任何类型的用户输入，只会在短时间内显示。 如果你想要快速让用户了解他们点击的内容，则 toast 消息可能是一个不错的选择。 下面的代码演示如何在`OnFeatureClick`事件中使用 toast 消息。
+Toast 消息是向用户显示信息的最简单方法之一，在 Android 的所有版本中都提供。 它不支持任何类型的用户输入，只会在短时间内显示。 如果你想要快速让用户了解他们点击的内容，则 toast 消息可能是一个不错的选择。 下面的代码演示如何在事件中使用 toast 消息 `OnFeatureClick` 。
 
 ```java
 //Add a feature click event to the map.
@@ -82,4 +81,4 @@ map.events.add((OnFeatureClick) (features) -> {
 > [添加符号层](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [将形状添加到 Android 地图](how-to-add-shapes-to-android-map.md)
+> [在 Android 地图中添加形状](how-to-add-shapes-to-android-map.md)
