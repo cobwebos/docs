@@ -1,43 +1,67 @@
 ---
 title: 在 Azure 自动化中部署 Windows 混合 Runbook 辅助角色
-description: 本文介绍如何部署混合 Runbook 辅助角色，你可使用该角色在本地数据中心或云环境的基于 Windows 的计算机上运行 Runbook。
+description: 本文介绍如何部署混合 Runbook 辅助角色，该辅助角色可用于在本地数据中心或云环境中的基于 Windows 的计算机上运行 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/10/2019
+ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8a21f6a58e8dc657d3b60aac33661504363072e2
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: HT
+ms.openlocfilehash: e1262aedda95f3feb7cf5604644d938bf4d00a53
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309908"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854919"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
-利用 Azure 自动化的混合 Runbook 辅助角色功能，既可以直接在托管角色的计算机上运行 Runbook，也可以对环境中的资源运行 Runbook，从而管理这些本地资源。 Azure 自动化存储和管理 Runbook，然后将其发送到一个或多个指定计算机。 本文介绍如何在 Windows 计算机上部署混合 Runbook 辅助角色。
+你可以使用 Azure 自动化的混合 Runbook 辅助角色功能直接在托管角色的计算机上运行 runbook，并针对环境中的资源运行 runbook，从而管理这些本地资源。 Azure Automation 存储和管理 runbook，然后将其传送到一个或多个指定的计算机。 本文介绍如何在 Windows 计算机上部署混合 Runbook 辅助角色，如何删除辅助角色，以及如何删除混合 Runbook 辅助角色组。
 
 成功部署 Runbook 辅助角色后，请查看[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)，了解如何配置 Runbook，使本地数据中心或其他云环境中的过程实现自动化。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="prerequisites"></a>先决条件
 
-## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Windows 混合 Runbook 辅助角色安装和配置
+在开始之前，请确保你具有以下各项。
 
-若要安装和配置 Windows 混合 Runbook 辅助角色，可以使用以下方法之一。
+### <a name="a-log-analytics-workspace"></a>Log Analytics 工作区
 
-* 对于 Azure VM，使用[适用于 Windows 的虚拟机扩展](../virtual-machines/extensions/oms-windows.md)安装适用于 Windows 的 Log Analytics 代理。 该扩展使用 Azure 资源管理器模板或 PowerShell 在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 安装代理后，可以将 VM 添加到自动化帐户中的混合 Runbook 辅助角色组。 请参阅[手动部署](#manual-deployment)部分中的步骤 3 和 4。
+混合 Runbook 辅助角色依赖于 Azure Monitor Log Analytics 工作区来安装和配置角色。 可以通过[Azure 资源管理器](../azure-monitor/samples/resource-manager-workspace.md#create-a-log-analytics-workspace)、 [PowerShell](../azure-monitor/scripts/powershell-sample-create-workspace.md?toc=/powershell/module/toc.json)或[Azure 门户](../azure-monitor/learn/quick-create-workspace.md)来创建它。
 
-* 使用自动化 Runbook 来彻底实现配置 Windows 计算机过程的自动化。 对于数据中心或其他云环境中的计算机，建议使用此方法。
+如果 Log Analytics 工作区没有 Azure Monitor，请在创建工作区之前查看[Azure Monitor 日志设计指南](../azure-monitor/platform/design-logs-deployment.md)。
 
-* 按照分步过程在非 Azure VM 上手动安装和配置混合 Runbook 辅助角色。
+如果你有一个工作区，但它未链接到自动化帐户，则启用自动功能会添加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 当你在 Log Analytics 工作区中启用 Azure 自动化功能之一时，特别[更新管理](automation-update-management.md)或[更改跟踪和清单](change-tracking.md)，辅助角色组件会自动推送到代理计算机。
 
-> [!NOTE]
-> 为了使用 Desired State Configuration (DSC) 管理支持混合 Runbook 辅助角色的服务器配置，必须将服务器添加为 DSC 节点。
+   若要将更新管理功能添加到工作区，请运行以下 PowerShell cmdlet：
 
-### <a name="minimum-requirements-for-windows-hybrid-runbook-worker"></a>Windows 混合 Runbook 辅助角色的最低要求
+```powershell-interactive
+   Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
+```
+
+   若要将更改跟踪和清单功能添加到工作区，请运行以下 PowerShell cmdlet：
+
+```powershell-interactive
+   Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
+```
+
+### <a name="log-analytics-agent"></a>Log Analytics 代理
+
+混合 Runbook 辅助角色需要适用于受支持的 Windows 操作系统的[Log Analytics 代理](../azure-monitor/platform/log-analytics-agent.md)。
+
+### <a name="supported-windows-operating-system"></a>支持的 Windows 操作系统
+
+Windows 混合 Runbook 辅助角色正式支持以下版本的 Windows 操作系统：
+
+* Windows Server 2019
+* Windows Server 2016、版本 1709 和 1803
+* Windows Server 2012、2012 R2
+* Windows Server 2008 SP2 (x64)、2008 R2
+* Windows 10 Enterprise（包括多会话）和 Pro
+* Windows 8 企业版和专业版
+* Windows 7 SP1
+
+### <a name="minimum-requirements"></a>最低要求
 
 Windows 混合 Runbook 辅助角色的最低要求如下：
 
-* Windows Server 2012 或更高版本
 * Windows PowerShell 5.1 或更高版本（[下载 WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)）
 * .NET Framework 4.6.2 或更高版本
 * 双核
@@ -48,23 +72,46 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 若要查看混合 Runbook 辅助角色的更多网络要求，请参阅[配置网络](automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="enabling-servers-for-management-with-azure-automation-state-configuration"></a>启用通过 Azure Automation State Configuration 进行管理的服务器
+### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>将计算机添加到混合 Runbook 辅助角色组
 
-有关启用通过 Azure Automation State Configuration 进行管理的服务器的信息，请参阅[启用通过 Azure Automation State Configuration 进行管理的计算机](automation-dsc-onboarding.md)。
+可以将辅助计算机添加到自动化帐户的混合 Runbook 辅助角色组中。 请注意，只要对 Azure 自动化功能和混合 Runbook 辅助角色组成员身份使用同一帐户，就必须支持自动化 Runbook。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
 
-启用 Azure 自动化[更新管理](automation-update-management.md)会自动将任何连接到 Azure Log Analytics 工作区的 Windows 计算机配置为混合 Runbook 辅助角色，以支持 Runbook 更新。 但是，该辅助角色未注册到任何已在自动化帐户中定义的混合 Runbook 辅助角色组。
+>[!NOTE]
+>启用 Azure 自动化[更新管理](automation-update-management.md)会自动将连接到 Log Analytics 工作区的任何 Windows 计算机配置为混合 Runbook 辅助角色，以支持管理其操作系统更新。 但是，该辅助角色未注册到任何已在自动化帐户中定义的混合 Runbook 辅助角色组。
 
-### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>将计算机添加到混合 Runbook 辅助角色组
+## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>启用计算机以通过 Azure 自动化状态配置进行管理
 
-可以将辅助角色计算机添加到自动化帐户中的混合 Runbook 辅助角色组。 请注意，只要对 Azure 自动化功能和混合 Runbook 辅助角色组成员身份使用同一帐户，就必须支持自动化 Runbook。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
+有关启用使用 Azure 自动化状态配置进行管理的计算机的信息，请参阅[启用虚拟机以通过 Azure Automation 状态配置进行管理](automation-dsc-onboarding.md)。
+
+> [!NOTE]
+> 若要管理支持混合 Runbook 辅助角色和所需状态配置（DSC）的计算机的配置，你必须将计算机添加为 DSC 节点。
+
+## <a name="windows-hybrid-runbook-worker-installation-options"></a>Windows 混合 Runbook Worker 安装选项
+
+若要安装和配置 Windows 混合 Runbook 辅助角色，可以使用以下方法之一。
+
+* 对于 Azure VM，使用[适用于 Windows 的虚拟机扩展](../virtual-machines/extensions/oms-windows.md)安装适用于 Windows 的 Log Analytics 代理。 该扩展使用 Azure 资源管理器模板或 PowerShell 在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 安装代理后，可以将 VM 添加到自动化帐户中的混合 Runbook 辅助角色组。
+
+* 对于非 Azure Vm，请使用将[windows 计算机连接到 Azure Monitor](../azure-monitor/platform/agent-windows.md)一文中所述的部署选项，安装适用于 Windows 的 Log Analytics 代理。 你可以对多台计算机重复此过程，以将多个辅助角色添加到你的环境中。 安装代理后，可将 Vm 添加到自动化帐户的混合 Runbook 辅助角色组。
+
+* 使用提供的 PowerShell 脚本来完全[自动执行](#automated-deployment)配置一台或多台 Windows 计算机的过程。 对于数据中心或其他云环境中的计算机，建议使用此方法。
 
 ## <a name="automated-deployment"></a>自动化部署
 
-在目标计算机上，执行以下步骤，以便自动完成 Windows 混合辅助角色的安装和配置。
+在目标计算机上，执行以下步骤，使用 PowerShell 脚本**New-OnPremiseHybridWorker.ps1**自动安装和配置 Windows 混合辅助角色。 此脚本执行以下步骤：
+
+* 安装必需的模块
+* 用 Azure 帐户登录
+* 验证指定的资源组和自动化帐户是否存在
+* 创建对自动化帐户属性的引用
+* 如果未指定，则创建 Azure Monitor Log Analytics 工作区
+* 在工作区中启用 Azure 自动化解决方案
+* 下载并安装适用于 Windows 的 Log Analytics 代理
+* 将计算机注册为混合 Runbook 辅助角色
 
 ### <a name="step-1---download-the-powershell-script"></a>步骤 1 - 下载 PowerShell 脚本
 
-从 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)下载 New-OnPremiseHybridWorker.ps1 脚本。 应直接从运行混合 Runbook 辅助角色的计算机或环境中的其他计算机下载。 下载该脚本后，将其复制到辅助角色。 在执行期间，New-OnPremiseHybridWorker.ps1 脚本使用以下参数。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker)下载 New-OnPremiseHybridWorker.ps1 脚本。 下载该脚本后，请在目标计算机上复制或运行该脚本。 在执行期间，New-OnPremiseHybridWorker.ps1 脚本使用以下参数。
 
 | 参数 | 状态 | 说明 |
 | --------- | ------ | ----------- |
@@ -82,7 +129,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>步骤 2 - 打开 Windows PowerShell 命令行 shell
 
-在“管理员”模式下，从“开始”屏幕打开 Windows PowerShell 。
+在 "**开始" 菜单**中，单击 "**开始**"，键入 " **PowerShell**"，右键单击 " **Windows PowerShell**"，然后单击 "以**管理员身份运行**"。
 
 ### <a name="step-3---run-the-powershell-script"></a>步骤 3 - 运行 PowerShell 脚本
 
@@ -91,60 +138,44 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 运行脚本后，系统会提示在 Azure 上进行身份验证。 必须以订阅管理员角色成员和订阅共同管理员的帐户登录。
 
 ```powershell-interactive
-.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <NameofAutomationAccount> -AAResourceGroupName <NameofResourceGroup>`
--OMSResourceGroupName <NameofOResourceGroup> -HybridGroupName <NameofHRWGroup> `
--SubscriptionID <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
+.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <nameOfAutomationAccount> -AAResourceGroupName <nameOfResourceGroup>`
+-OMSResourceGroupName <nameOfOResourceGroup> -HybridGroupName <nameOfHRWGroup> `
+-SubscriptionID <subscriptionId> -WorkspaceName <nameOfLogAnalyticsWorkspace>
 ```
 
 ### <a name="step-4---install-nuget"></a>步骤 4 - 安装 NuGet
 
-系统会提示用户同意安装 NuGet 并使用 Azure 凭据进行身份验证。 如果没有最新的 NuGet 版本，可以从[可用的 NuGet 分发版本](https://www.nuget.org/downloads)获取它。
+系统会提示用户同意安装 NuGet 并使用 Azure 凭据进行身份验证。 如果没有最新的 NuGet 版本，可以从[可用的 Nuget 分发版本](https://www.nuget.org/downloads)中下载它。
 
 ### <a name="step-5---verify-the-deployment"></a>步骤 5 - 验证部署
 
-脚本完成后，“混合辅助角色组”页面会显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
+脚本完成后，你的自动化帐户中的 "混合辅助角色组" 页将显示新组和成员数。 如果这是现有的组，则成员数会递增。 可以从“混合辅助角色组”页上的列表中选择组，并选择“混合辅助角色”磁贴。 在“混合辅助角色”页上，会列出组的每个成员。
 
 ## <a name="manual-deployment"></a>手动部署
 
-在目标计算机上，对自动化环境执行一次前两个步骤。 然后，对每个辅助角色计算机执行剩余步骤。
+若要安装和配置 Windows 混合 Runbook 辅助角色，请执行以下步骤。
 
-### <a name="step-1---create-a-log-analytics-workspace"></a>步骤 1 - 创建 Log Analytics 工作区
+### <a name="step-1---verify-agent-is-reporting-to-workspace"></a>步骤 1-验证是否向工作区报告代理
 
-如果还没有 Log Analytics 工作区，请在创建工作区前查看 [Azure Monitor 日志设计指南](../azure-monitor/platform/design-logs-deployment.md)。
-
-### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>步骤 2 - 将 Azure 自动化功能添加到 Log Analytics 工作区
-
-自动化功能增加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 在 Log Analytics 工作区中启用 Azure 自动化功能时，辅助角色组件会自动推送到代理计算机。
-
-若要将 Azure 自动化功能（例如，更新管理）添加到工作区，请运行以下 PowerShell cmdlet：
-
-```powershell-interactive
-Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
-```
-
-### <a name="step-3---install-the-log-analytics-agent-for-windows"></a>步骤 3 - 安装适用于 Windows 的 Log Analytics 代理
-
-适用于 Windows 的 Log Analytics 代理将计算机连接到 Azure Monitor Log Analytics 工作区。 在计算机上安装代理并将其连接到工作区时，代理会自动下载混合 Runbook 辅助角色所需的组件。
-
-若要在计算机上安装代理，请按照[将 Windows 计算机连接到 Azure Monitor 日志](../log-analytics/log-analytics-windows-agent.md)中的说明操作。 可以对多台计算机重复此过程，以将多个辅助角色添加到环境。
+适用于 Windows 的 Log Analytics 代理将计算机连接到 Azure Monitor Log Analytics 工作区。 当你在计算机上安装代理并将其连接到工作区时，它会自动下载混合 Runbook 辅助角色所需的组件。
 
 几分钟后，如果代理已成功连接到 Log Analytics 工作区，则可以运行以下查询，验证是否正在向工作区发送检测信号数据。
 
 ```kusto
 Heartbeat 
-| where Category == "Direct Agent" 
+| where Category == "Direct Agent"
 | where TimeGenerated > ago(30m)
 ```
 
-在搜索结果中，应可以看到计算机的检测信号记录，该记录指示计算机已连接到服务，并向其报告。 默认情况下，每个代理都会将检测信号记录转发到其分配的工作区。 按照以下步骤可完成代理安装和设置。
+在搜索结果中，应该会看到计算机的检测信号记录，指出它已连接并向服务报告。 默认情况下，每个代理都会将检测信号记录转发到其分配的工作区。 按照以下步骤可完成代理安装和设置。
 
-1. 启用该功能以添加代理计算机。 请参阅[在工作区中启用计算机](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace)。
-2. 验证代理是否已正确下载 Azure 自动化功能。 
-3. 若要确认混合 Runbook 辅助角色的版本，请浏览到 C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation 并留意 version 子文件夹 。
+1. 启用该功能以添加代理计算机。 有关更新管理和 Azure Vm，请参阅[启用 Azure vm](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)和非 Azure vm，请参阅[在工作区中启用计算机](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。 有关更改跟踪和 Azure Vm，请参阅[启用 Azure vm](automation-enable-changes-from-auto-acct.md#enable-azure-vms)和非 Azure vm，请参阅[在工作区中启用计算机](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)。
 
-### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 4 - 安装 Runbook 环境并连接到 Azure 自动化
+2. 若要确认混合 Runbook 辅助角色的版本，请浏览到 `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` **版本**子文件夹并记下它。
 
-将代理配置为向 Log Analytics 工作区报告时，Azure 自动化功能会向下推送 `HybridRegistration` PowerShell 模块，其中包含 `Add-HybridRunbookWorker` cmdlet。 使用此 cmdlet 将 Runbook 环境安装到计算机上，并将其注册到 Azure 自动化。
+### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 3-安装 runbook 环境并连接到 Azure 自动化
+
+将代理配置为向 Log Analytics 工作区报告时，Azure 自动化功能会向下推送 `HybridRegistration` PowerShell 模块，其中包含 `Add-HybridRunbookWorker` cmdlet。 使用此 cmdlet 在计算机上安装 runbook 环境，并将其注册到 Azure 自动化。
 
 在管理员模式下打开 PowerShell 会话，并运行以下命令以导入模块。
 
@@ -156,42 +187,47 @@ Import-Module .\HybridRegistration.psd1
 现在，使用以下语法运行 `Add-HybridRunbookWorker` cmdlet。
 
 ```powershell-interactive
-Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
+Add-HybridRunbookWorker –GroupName <String> -Url <Url> -Key <String>
 ```
 
-可以从 Azure 门户的“管理密钥”页获取此 cmdlet 所需的信息。 通过在自动化帐户的“设置”页中选择“密钥”，打开此页。
+可 `Url` `Key` 从自动化帐户中的 "**密钥**" 页获取参数和所需的信息。 从页面左侧的 "**帐户设置**" 部分下选择 "**密钥**"。
 
 ![“管理密钥”页](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* 对于 `GroupName` 参数，使用混合 Runbook 辅助角色组的名称。 如果该组已经存在于自动化帐户中，则会将当前计算机添加到其中。 如果该组不存在，则将添加该组。
-* 对于 `EndPoint` 参数，使用“管理密钥”页上的“URL”条目。
-* 对于 `Token` 参数，使用“管理密钥”页上的“主访问密钥”条目。
+* 对于 `Url` 参数，请复制 " **URL**" 的值。
+
+* 对于 `Key` 参数，请复制 "**主访问密钥**" 的值。
+
+* 对于 `GroupName` 参数，使用混合 Runbook 辅助角色组的名称。 如果此组已存在于自动化帐户中，则会将当前计算机添加到其中。 如果该组不存在，则将添加该组。
+
 * 如果需要，请设置 `Verbose` 参数以接收有关安装的详细信息。
 
-### <a name="step-5----install-powershell-modules"></a>步骤 5 - 安装 PowerShell 模块
+### <a name="step-4----install-powershell-modules"></a>步骤 4-安装 PowerShell 模块
 
-Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任何活动和 cmdlet。 由于这些模块不会自动部署到本地计算机，因此必须手动安装。 例外情况是 Azure 模块。 此模块是默认安装的，并可用于访问所有 Azure 服务的 cmdlet 以及 Azure 自动化的活动。
+Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任何活动和 cmdlet。 由于这些模块不会自动部署到本地计算机，因此必须手动安装它们。 例外情况是 Azure 模块。 此模块是默认安装的，并可用于访问所有 Azure 服务的 cmdlet 以及 Azure 自动化的活动。
 
 由于混合 Runbook 辅助角色的主要用途是管理本地资源，很可能需要安装支持这些资源的模块，尤其是 `PowerShellGet` 模块。 有关安装 Windows PowerShell 模块的信息，请参阅 [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
 
 安装的模块必须位于 `PSModulePath` 环境变量所引用的位置，以便混合辅助角色自动将其导入。 有关详细信息，请参阅[在 PSModulePath 中安装模块](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
 
-## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>从本地 Windows 计算机中删除混合 Runbook 辅助角色
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>从本地 Windows 计算机删除混合 Runbook 辅助角色
 
 1. 在 Azure 门户中，转到自动化帐户。
+
 2. 在“帐户设置”下，选择“密钥”并记下“URL”和“主访问密钥”的值   。
 
 3. 在管理员模式下打开 PowerShell 会话，并使用 URL 和主访问密钥值运行以下命令。 可使用 `Verbose` 参数获取删除过程的详细日志。 若要从混合辅助角色组中删除过时的计算机，请使用可选的 `machineName` 参数。
 
 ```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+Remove-HybridRunbookWorker -Url <URL> -Key <primaryAccessKey> -MachineName <computerName>
 ```
 
 ## <a name="remove-a-hybrid-worker-group"></a>删除混合辅助角色组
 
-若要删除混合 Runbook 辅助角色组，首先需要从每台计算机中删除属于该组的混合 Runbook 辅助角色。 然后，使用以下步骤删除该组：
+若要删除混合 Runbook 辅助角色组，首先需要从属于该组成员的每台计算机中删除混合 Runbook 辅助角色。 然后，使用以下步骤删除该组：
 
 1. 在 Azure 门户中打开自动化帐户。
+
 2. 在“流程自动化”下选择“混合辅助角色组”。 选择要删除的组。 将显示该组的属性页。
 
    ![“属性”页](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
@@ -205,4 +241,5 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何配置 Runbook，使本地数据中心或其他云环境中的过程自动化，请参阅[在混合 Runbook 辅助角色上运行 Runbook](automation-hrw-run-runbooks.md)。
+
 * 若要了解如何对混合 Runbook 辅助角色进行故障排除，请参阅[排查混合 Runbook 辅助角色问题](troubleshoot/hybrid-runbook-worker.md#general)。

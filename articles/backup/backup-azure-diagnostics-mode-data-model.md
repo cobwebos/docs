@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍用于 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
-ms.translationtype: HT
+ms.openlocfilehash: e776649ff22e3249e2472adbe298c869ff5c946a
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854751"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "83707983"
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 备份数据模型
 
-可以使用数据模型随附的以下字段，根据要求创建视觉对象、自定义查询和仪表板。
+您可以使用以下字段作为数据模型的一部分来创建视觉对象、自定义查询和仪表板，以根据您的要求进行。
 
 ### <a name="alert"></a>警报
 
@@ -466,6 +466,30 @@ ms.locfileid: "83707983"
 出于向后兼容的原因，Azure 备份代理和 Azure VM 备份的诊断数据当前发送到 V1 和 V2 架构中的 Azure 诊断表（V1 架构现在位于弃用路径上）。 可以通过在日志查询中筛选 SchemaVersion_s=="V1" 的记录来确定 Log Analytics 中的哪些记录属于 V1 架构。 
 
 请参阅上面所述的[数据模型](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#using-azure-backup-data-model)中的第三列“说明”，以确定哪些列仅属于 V1 架构。
+
+### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改查询以使用 V2 架构
+由于 V1 架构位于弃用路径上，因此建议在 Azure 备份诊断数据的所有自定义查询中仅使用 V2 架构。 下面的示例演示如何更新查询以删除 V1 架构的依赖项：
+
+1. 确定查询是否正在使用仅适用于 V1 架构的任何字段。 假设你有一个用于列出所有备份项及其关联的受保护服务器的查询，如下所示：
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+````
+
+以上查询使用仅适用于 V1 架构 ProtectedServerUniqueId_s 字段。 此字段的 V2 架构等效项 ProtectedContainerUniqueId_s （请参阅上表）。 该字段 BackupItemUniqueId_s 适用于 V2 架构，并且可以在此查询中使用相同的字段。
+
+2. 将查询更新为使用 V2 架构字段名称。 建议在所有查询中使用筛选器 "where SchemaVersion_s = =" V2 ""，以便查询仅分析与 V2 架构相对应的记录：
+
+````Kusto
+AzureDiagnostics
+| where Category=="AzureBackupReport"
+| where OperationName=="BackupItemAssociation"
+| where SchemaVersion_s=="V2"
+| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
+````
 
 ## <a name="next-steps"></a>后续步骤
 

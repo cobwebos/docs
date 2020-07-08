@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4dcc095648111348a6935225a6aa10798109f76e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85855310"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>使用 Runbook 部署 Amazon Web Services VM
 
@@ -64,7 +64,7 @@ VM 预配 Runbook 将使用 AWS PowerShell 模块来执行其功能。 通过以
 
 8. 若要从 AWS 订阅检索映像名称的列表，请启动 PowerShell ISE 并导入 AWS PowerShell 模块。 使用 `AWScred = Get-Credential` 在 ISE 环境中替换 `Get-AutomationPSCredential` 来对 AWS 进行身份验证。 此语句会提示输入凭据，可以提供访问密钥 ID 作为用户名，提供机密访问密钥作为密码。 
 
-        ```powershell
+      ```powershell
         #Sample to get the AWS VM available images
         #Please provide the path where you have downloaded the AWS PowerShell module
         Import-Module AWSPowerShell
@@ -78,7 +78,7 @@ VM 预配 Runbook 将使用 AWS PowerShell 模块来执行其功能。 通过以
         Set-DefaultAWSRegion -Region $AwsRegion
    
         Get-EC2ImageByName -ProfileName AWSProfile
-        ```
+      ```
         
     返回以下输出：<br><br>
    ![获取 AWS 映像](./media/automation-scenario-aws-deployment/powershell-ise-output.png)<br>  

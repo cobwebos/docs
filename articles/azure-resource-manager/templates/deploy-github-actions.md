@@ -2,13 +2,13 @@
 title: 使用 GitHub Actions 部署资源管理器模板
 description: 介绍如何使用 GitHub Actions 部署资源管理器模板。
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: f2e0d73c838d16c161605972b87d6f07ef8869b9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.date: 07/02/2020
+ms.openlocfilehash: 313354499901bc69ec6e00f0ba7c385065cae615
+ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869177"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85854734"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure 资源管理器模板
 
@@ -82,7 +82,7 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
 ## <a name="create-workflow"></a>创建工作流
 
-工作流文件必须存储在存储库根目录中的“.github/workflow”文件夹中。 工作流文件扩展名可以是“.yml”或“.yaml”。 
+工作流文件必须存储在存储库根目录的**github/** workflow 文件夹中。 工作流文件扩展名可以是“.yml”或“.yaml”。 
 
 你可以创建工作流文件，然后将该文件推送/上传到存储库，也可以使用以下过程：
 
