@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06f235b7f1c20681beee1f5be4c18de60d53a690
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75861755"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037301"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure 时序见解预览资源管理器
 
@@ -75,11 +74,11 @@ Azure 时序见解预览版支持对时序模型执行所有的创建、读取�
 * **时序模型层次结构**：层次结构是数据的系统组织。 层次结构描述时序见解数据中不同实体之间的关系。
 * **时序模型实例**：实例是时间序列本身。 在大多数情况下，它们是 **DeviceID** 或 **AssetID**（环境中的资产的唯一标识符）。
 
-若要了解有关时序模型的详细信息，请参阅[时序模型](./time-series-insights-update-tsm.md)。
+若要了解有关时序模型的详细信息，请参阅[时序模型](./concepts-model-overview.md)。
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. 层次结构树和搜索面板
 
-利用层次结构树和搜索面板，可以轻松搜索和导航[时序模型](./time-series-insights-update-tsm.md)层次结构，以查找要在图表上显示的特定时序实例。 选择实例时，不仅会将它们添加到当前图表，还会将其添加到数据。 
+利用层次结构树和搜索面板，可以轻松搜索和导航[时序模型](./concepts-model-overview.md)层次结构，以查找要在图表上显示的特定时序实例。 选择实例时，不仅会将它们添加到当前图表，还会将其添加到数据。 
 
 [![层次结构树和搜索面板](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -171,7 +170,7 @@ Azure 时序见解预览版支持对时序模型执行所有的创建、读取�
 
 ### <a name="current-session-share-link-control"></a>当前会话共享链接控件
 
-  [![共享图标](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
+  [![“共享”图标](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 选择新的“共享”图标可与团队共享 URL 链接。****
 
@@ -215,12 +214,12 @@ Azure 时序见解预览版支持两个主题：
 
 **其中**：使用 where 子句可以通过使用下表中列出的一组操作数来快速筛选您的事件。 如果通过选择操作数来执行搜索，则谓词会基于该搜索自动更新。 支持的操作数类型包括：
 
-| Operation | 支持的类型   | 说明 |
+| 操作 | 支持的类型   | 注释 |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | 双精度、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL |
 | `IN` | 字符串、布尔型、双精度型、DateTime、TimeSpan、NULL | 所有操作数应为同一类型或者是 NULL 常数。 |
-| `HAS` | 字符串 | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
+| `HAS` | String | 右侧只允许使用常量字符串文本。 不允许空字符串和 NULL。 |
 
 若要了解有关支持的查询操作和数据类型的详细信息，请阅读[时序表达式（TSX）](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
@@ -240,8 +239,10 @@ Azure 时序见解预览版支持两个主题：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 Azure 时序见解预览版中的[存储和流入量](./time-series-insights-update-storage-ingress.md)。
+- 了解将[数据引入](./concepts-ingestion-overview.md)到你的环境中。
 
-- 阅读有关[数据建模](./time-series-insights-update-tsm.md)的时序见解预览版文档。
+- 查看有关[存储](concepts-storage.md)的文章
+
+- 阅读有关[数据建模](./concepts-model-overview.md)的时序见解预览版文档。
 
 - 了解[如何诊断和排查](./time-series-insights-update-how-to-troubleshoot.md)时序见解实例的问题。

@@ -1,25 +1,17 @@
 ---
 title: 使用模板创建 Azure 服务总线命名空间
 description: 使用 Azure 资源管理器模板创建服务总线消息命名空间
-services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
-manager: timlt
-editor: ''
-ms.assetid: dc0d6482-6344-4cef-8644-d4573639f5e4
-ms.service: service-bus-messaging
-ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 06/21/2019
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 5febdd63ab6f854ca3244f8449f6f715a75e735f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76264469"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336834"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
@@ -46,7 +38,7 @@ ms.locfileid: "76264469"
 
 若要通过部署模板创建服务总线命名空间，请执行以下操作：
 
-1. 从后续代码块中选择“试用”，然后按说明登录到 Azure Cloud Shell。****
+1. 从以下代码块中选择 "**试用**"，然后按照说明登录到 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"

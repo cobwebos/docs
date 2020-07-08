@@ -4,11 +4,10 @@ description: 本文介绍了用于管理和监视 Azure 备份所备份的 Azure
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247652"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712082"
 ---
 # <a name="manage-azure-file-share-backups"></a>管理 Azure 文件共享备份
 
@@ -77,7 +76,7 @@ ms.locfileid: "79247652"
 * 停止所有将来的备份作业并*删除所有恢复点*。
 * 停止所有将来的备份作业，但*保留恢复点*。
 
-由于 Azure 备份创建的底层快照将被保留，因此可能会产生与保留存储中的恢复点相关的成本。 保留恢复点的好处是，你可以在以后还原文件共享。 有关保留恢复点的成本的信息，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/backup/)。 如果决定删除所有恢复点，则无法还原文件共享。
+由于 Azure 备份创建的底层快照将被保留，因此可能会产生与保留存储中的恢复点相关的成本。 保留恢复点的好处是，你可以在以后还原文件共享。 如需了解保留恢复点的成本，请参阅[定价详细信息](https://azure.microsoft.com/pricing/details/backup/)。 如果决定删除所有恢复点，则无法还原文件共享。
 
 若要停止对 Azure 文件共享的保护，请执行以下操作：
 

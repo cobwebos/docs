@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: twooley
-ms.openlocfilehash: b8fe87a2df633af310bc661308813a60987e77d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f9a42a8f94f3e5cb63cd340b696a803d97491c76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933280"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512828"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>使用 StorSimple Snapshot Manager 管理 StorSimple 解决方案
 
@@ -51,7 +50,7 @@ StorSimple Snapshot Manager 可用于监视和管理当前、 计划和已完成
 | 了解有关 StorSimple Snapshot Manager 的详细信息 |[什么是 StorSimple Snapshot Manager？](storsimple-what-is-snapshot-manager.md) |
 | 安装 StorSimple Snapshot Manager<br>重新安装 StorSimple Snapshot Manager<br>删除 StorSimple Snapshot Manager |[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) |
 | 使用 StorSimple Snapshot Manager 菜单和功能：<ul><li>菜单栏</li><li>工具栏</li><li>作用域窗格</li><li>“结果”窗格</li><li>“操作”窗格</li><li>键盘导航和快捷键</li></ul> |[StorSimple Snapshot Manager 用户界面](storsimple-use-snapshot-manager.md) |
-| 使用包含在 StorSimple Snapshot Manager 中的常见 MMC 功能：<ul><li>查看</li><li>从此处新建窗口</li><li>刷新</li><li>导出列表</li><li>帮助</li></ul> |[使用 StorSimple Snapshot Manager 中的 MMC 菜单操作](storsimple-snapshot-manager-mmc-menu.md) |
+| 使用包含在 StorSimple Snapshot Manager 中的常见 MMC 功能：<ul><li>视图</li><li>从此处新建窗口</li><li>刷新</li><li>导出列表</li><li>帮助</li></ul> |[使用 StorSimple Snapshot Manager 中的 MMC 菜单操作](storsimple-snapshot-manager-mmc-menu.md) |
 | 添加或替换设备<br>连接一个设备<br>验证导入的卷组<br>刷新连接的设备<br>对设备进行身份验证<br>查看设备详细信息<br>删除设备配置<br>更改设备密码<br>替换发生故障的设备<br> |[使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备](storsimple-snapshot-manager-manage-devices.md) |
 | 装载卷<br>查看有关卷的信息<br>删除卷<br>重新扫描卷<br>配置和备份基本卷<br>配置和备份动态镜像卷 |[使用 StorSimple Snapshot Manager 查看和管理卷](storsimple-snapshot-manager-manage-volumes.md) |
 | 查看卷组<br>创建卷组<br>备份卷组<br>编辑卷组<br>删除卷组 |[使用 StorSimple Snapshot Manager 创建和管理卷组](storsimple-snapshot-manager-manage-volume-groups.md) |

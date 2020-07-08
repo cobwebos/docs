@@ -3,25 +3,24 @@ title: 从 Azure AD 中的应用中删除用户或组分配
 description: 如何在 Azure Active Directory 的企业应用中删除对用户或组的访问权限分配
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edf918b57212cf2adfbffb358a0257d9dbea85e9
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: a09b3307403cb78da3bd22f3cc85bd75d7ebd858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74275877"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763051"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中删除企业应用的用户或组分配
 
@@ -34,7 +33,7 @@ ms.locfileid: "74275877"
 
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 选择“所有服务”  ，在文本框中输入 **Azure Active Directory**，并选择“Enter”  。
-1. 在“Azure Active Directory - **directoryname *”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。*** 
+1. 在“Azure Active Directory - *directoryname*”页面（即，正在管理的目录的 Azure AD 页面）上，选择“企业应用程序”。 
 1. 在“企业应用程序 - 所有应用程序”  页上，你会看到你可以管理的应用的列表。 选择一个应用。
 1. 在 ***appname*** 概览页面（即标题中包含所选应用的名称的页面）上，选择“用户和组”  。
 1. 在“***appname - 用户和组分配”页面上，选择一个或多个用户或组，并选择“删除”命令。*** ******** 出现提示时确认所作的决定。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 集成 Splunk |Microsoft Docs
+title: 使用 Azure Monitor 集成 Splunk | Microsoft Docs
 description: 了解如何使用 Azure Monitor 将 Azure Active Directory 日志与 SumoLogic 集成
 services: active-directory
 documentationcenter: ''
@@ -9,7 +9,7 @@ editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
@@ -17,18 +17,17 @@ ms.date: 03/10/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a17f0a0c9c6a6c8bd466114e98b2b8c6ee5e9f8c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968713"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608154"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>如何：使用 Azure Monitor 将 Azure Active Directory 日志与 Splunk 集成
 
 本文介绍如何使用 Azure Monitor 将 Azure Active Directory (Azure AD) 日志与 Splunk 集成。 首先将日志路由到 Azure 事件中心，然后将事件中心与 Splunk 集成。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用此功能，需满足以下条件:
 
@@ -38,11 +37,11 @@ ms.locfileid: "78968713"
 
 ## <a name="integrate-azure-active-directory-logs"></a>集成 Azure Active Directory 日志 
 
-1. 打开 Splunk 实例，并选择“数据摘要”****。
+1. 打开 Splunk 实例，并选择“数据摘要”。
 
     ![“数据摘要”按钮](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. 选择“Sourcetypes”选项卡，然后选择“amal: aadal:audit”********
+2. 选择“Sourcetypes”选项卡，然后选择“amal: aadal:audit” 
 
     ![数据摘要 Sourcetypes 选项卡](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
 

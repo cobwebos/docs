@@ -9,12 +9,11 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212660"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028260"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>为自定义模型构建定型数据集
 
@@ -26,7 +25,7 @@ ms.locfileid: "85212660"
 
 ## <a name="training-data-tips"></a>训练数据提示
 
-使用针对定型进行优化的数据集很重要。 使用以下提示来确保从[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)操作获得最佳结果：
+使用针对定型进行优化的数据集很重要。 使用以下提示来确保从[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)操作获得最佳结果：
 
 * 如果可能，请使用基于文本的 PDF 文档而不是基于图像的文档。 扫描的 Pdf 作为图像处理。
 * 对于填充窗体，请使用填充了所有字段的示例。
@@ -48,7 +47,7 @@ ms.locfileid: "85212660"
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>组织子文件夹中的数据（可选）
 
-默认情况下，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)API 将仅使用位于存储容器根目录下的窗体文档。 但是，如果在 API 调用中指定数据，则可以训练子文件夹中的数据。 通常，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
+默认情况下，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)API 将仅使用位于存储容器根目录下的窗体文档。 但是，如果在 API 调用中指定数据，则可以训练子文件夹中的数据。 通常，[定型自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)调用的正文采用以下格式，其中 `<SAS URL>` 是容器的共享访问签名 URL：
 
 ```json
 {

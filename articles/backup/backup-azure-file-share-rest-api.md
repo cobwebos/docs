@@ -4,11 +4,10 @@ description: 了解如何使用 REST API 在恢复服务保管库中备份 Azure
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248094"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710603"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>通过 Rest API 使用 Azure 备份来备份 Azure 文件共享
 
@@ -38,7 +37,7 @@ ms.locfileid: "79248094"
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-`{subscriptionId}`POST URI 包含`{vaultName}`、、 `{vaultresourceGroupName}`和`{fabricName}`参数。 在我们的示例中，不同参数的值如下所示：
+POST URI 包含 `{subscriptionId}` 、 `{vaultName}` 、 `{vaultresourceGroupName}` 和 `{fabricName}` 参数。 在我们的示例中，不同参数的值如下所示：
 
 - `{fabricName}`是*Azure*
 
@@ -467,7 +466,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 对于触发按需备份，以下是请求正文的组成部分。
 
-| 名称       | 类型                       | 说明                       |
+| 名称       | 类型                       | 描述                       |
 | ---------- | -------------------------- | --------------------------------- |
 | 属性 | AzurefilesharebackupReques | BackupRequestResource 属性 |
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81866259"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
@@ -35,7 +34,7 @@ ms.locfileid: "81866259"
 4. 所选 CA 以 X509 证书进行响应。
 5. 应用程序通过合并 CA 中的 X509 证书来完成新证书创建过程。
 
--   **使用已知的证书颁发者提供者创建证书：** 此方法要求你执行一项一次性任务，即创建一个证书颁发者对象。 在密钥保管库中创建证书颁发者对象以后，即可在 KV 证书的策略中引用其名称。 请求创建此类 KV 证书时，将在保管库中创建一个密钥对，并使用所引用的证书颁发者对象中的信息与证书颁发者提供者服务通信，以便获取 x509 证书。 从证书颁发者服务中检索 x509 证书并将其与密钥对合并以完成 KV 证书创建过程。  
+-   **使用已知的证书颁发者提供程序创建证书：** 此方法要求你执行一项一次性任务，即创建一个证书颁发者对象。 在密钥保管库中创建证书颁发者对象以后，即可在 KV 证书的策略中引用其名称。 请求创建此类 KV 证书时，将在保管库中创建一个密钥对，并使用所引用的证书颁发者对象中的信息与证书颁发者提供者服务通信，以便获取 x509 证书。 从证书颁发者服务中检索 x509 证书并将其与密钥对合并以完成 KV 证书创建过程。  
 
 ![通过与 Key Vault 配合使用的证书颁发机构创建证书](../media/certificate-authority-2.png)  
 
@@ -89,7 +88,7 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
 请注意，向证书颁发者提供者下单时，该提供者可能会接受 x509 证书扩展和证书有效期，也可能会将其替代，具体取决于证书类型。  
 
- 授权：需要证书/创建权限。
+ Authorization:需要证书/创建权限。
 
 ## <a name="see-also"></a>另请参阅
 

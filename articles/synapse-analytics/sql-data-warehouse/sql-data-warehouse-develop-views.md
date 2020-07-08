@@ -1,22 +1,21 @@
 ---
 title: 使用 T-SQL 视图
-description: 在 Synapse SQL 池中使用 T-sql 视图和开发解决方案的技巧。
+description: 在 Synapse SQL 池中使用 T-SQL 视图和开发解决方案的技巧。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 76442368fe4b3e498f622a8a3cd5b5b973f16bd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 26eb3a495fd1c896416265687d92da66dfc3599b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212286"
 ---
 # <a name="views-in-synapse-sql-pool"></a>Synapse SQL 池中的视图
 
@@ -32,11 +31,11 @@ SQL 池支持标准视图和具体化视图。 两者都是使用 SELECT 表达�
 
 若要使用标准视图，查询需要直接引用它。 有关详细信息，请参阅 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 文档。
 
-SQL 池中的视图仅存储为元数据。 因此，下列选项不可用：
+SQL 池中的视图仅存储为元数据。 因此，无法使用以下选项：
 
 * 不提供任何架构绑定选项
-* 不能通过视图更新基表
-* 无法在临时表上创建视图
+* 无法通过视图更新基表
+* 无法基于临时表创建视图
 * 不支持 EXPAND/NOEXPAND 提示
 * SQL 池中没有索引视图
 
@@ -46,9 +45,9 @@ SQL 池中的视图仅存储为元数据。 因此，下列选项不可用：
 
 ## <a name="materialized-view"></a>具体化视图
 
-像表一样，具体化视图预先计算、存储和维护 SQL 池中的数据。 每次使用具体化视图时都不需要重新计算。
+像表一样，具体化视图在 SQL 池中预先计算、存储和维护其数据。 每次使用具体化视图时都不需要重新计算。
 
-在将数据加载到基表中时，SQL 池会同步刷新具体化视图。  即使查询中未引用视图，查询优化器也会自动使用已部署的具体化视图来提高查询性能。  
+当数据加载到基表中时，SQL 池会同步刷新具体化视图。  即使查询中未引用视图，查询优化器也会自动使用已部署的具体化视图来提高查询性能。  
 
 从具体化视图中获益最大的查询是对产生小结果集的大型表的复杂查询（通常是使用联接和聚合的查询）。  
 
@@ -58,7 +57,7 @@ SQL 池中的视图仅存储为元数据。 因此，下列选项不可用：
 
 ## <a name="example"></a>示例
 
-常见的应用程序模式是在加载数据时，使用 CREATE TABLE AS SELECT （CTAS）后跟对象重命名模式来重新创建表。  
+一种常见的应用模式是在加载数据时使用 CREATE TABLE AS SELECT (CTAS) 并后接对象重命名模式，通过这种方式来重建表。  
 
 以下示例向日期维度添加新的日期记录。 请注意，这里先创建了一个新表 DimDate_New，然后将它重命名以替换表的原始版本。
 
@@ -79,12 +78,12 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-但是，这种方法可能导致表在用户的视图中出现和消失，同时发出 "表不存在" 错误消息。
+但是，此方法可能会导致表在用户的视图中出现并消失，并发出“表不存在”错误消息。
 
-视图可用于向用户提供一致的呈现层，同时将基础对象重命名。 通过视图提供对数据的访问，用户不需要对基础表的可见性。
+使用视图可为用户提供一致的呈现层，同时对基础对象重命名。 用户可以借助视图来访问数据，这样就不需要看到基础表。
 
 此层可提供一致的用户体验，同时确保数据仓库设计人员可以改进数据模型。 能够改进基础表意味着设计人员可以使用 CTAS 来使数据加载过程中的性能最大化。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[SQL 池开发概述](sql-data-warehouse-overview-develop.md)。
+如需更多开发技巧，请参阅 [SQL 池开发概述](sql-data-warehouse-overview-develop.md)。

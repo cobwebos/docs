@@ -3,25 +3,24 @@ title: 对应用程序执行许可时发生的意外错误 | Microsoft Docs
 description: 介绍对应用程序进行许可期间可能发生的错误，以及解决这些错误的方法
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519706"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763748"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>对应用程序执行许可时发生的意外错误
 
@@ -33,14 +32,14 @@ ms.locfileid: "80519706"
 
 ## <a name="requesting-not-authorized-permissions-error"></a>请求未授予的权限错误
 * **AADSTS90093：** &lt;clientAppDisplayName&gt; 正在请求一个或多个你无权授予的权限。 请与管理员联系，他/她可代表你对此应用程序进行许可。
-* **AADSTS90094：** &lt;clientAppDisplayName&gt;需要权限才能访问组织中只有管理员才能授予的资源。 请让管理员授予访问此应用的权限，否则你将无法使用该应用。
+* AADSTS90094：  &lt;clientAppDisplayName&gt; 需要访问组织中资源的权限（只有管理员可以授予）。 请先让管理员授予对此应用的权限，然后你才能使用此应用。
 
 当非公司管理员用户尝试使用的应用程序请求只有管理员才能授予的权限时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
-当阻止用户同意应用程序时，也可能发生此错误，因为 Microsoft 检测到权限请求是危险的。 在这种情况下，还将记录审核事件，其中包含 "ApplicationManagement" 类别、"同意应用程序" 活动类型和 "检测到有风险的应用程序" 的状态描述。
+如果 Microsoft 检测到权限请求存在风险而阻止用户许可应用程序，则也可能会发生此错误。 在这种情况下，还将记录一个审核事件，其“类别”为“ApplicationManagement”、“活动类型”为“许可应用程序”、“状态原因”为“检测到风险应用程序”。
 
 ## <a name="policy-prevents-granting-permissions-error"></a>策略阻止权限授予错误
-* **AADSTS90093：**&lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;应用名称&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
+* **AADSTS90093：** &lt;tenantDisplayName&gt; 管理员设置的策略阻止授予 &lt;name of app&gt; 请求的权限。 请与 &lt;tenantDisplayName&gt; 管理员联系，他/她可代表你授予对此应用的权限。
 
 当公司管理员关闭用户对应用程序进行许可的能力，非管理员用户尝试使用的应用程序需要许可时，会发生此错误。 此错误可通过管理员代表其组织授予访问此应用程序的权限进行解决。
 
@@ -50,12 +49,12 @@ ms.locfileid: "80519706"
 此错误表明服务端已发生不稳定问题。 可通过重新尝试对应用程序进行许可来解决此问题。
 
 ## <a name="resource-not-available-error"></a>资源不可用错误
-* **AADSTS65005：**&lt;clientAppDisplayName&gt; 应用已请求访问不可用的 &lt;resourceAppDisplayName&gt; 资源的权限。 
+* **AADSTS65005：** &lt;clientAppDisplayName&gt; 应用已请求访问不可用的 &lt;resourceAppDisplayName&gt; 资源的权限。 
 
 请与应用程序开发人员联系。
 
 ##  <a name="resource-not-available-in-tenant-error"></a>租户中资源不可用错误
-* **AADSTS65005：** &lt;clientAppDisplayName&gt; 正在请求访问组织 &lt;tenantDisplayName&gt; 中不可用的 &lt;resourceAppDisplayName&gt; 资源。 
+* **AADSTS65005：** &lt;clientAppDisplayName&gt; 正在请求访问你的组织 &lt;tenantDisplayName&gt; 中没有的 &lt;resourceAppDisplayName&gt; 资源。 
 
 确保此资源可用，或与 &lt;tenantDisplayName&gt; 管理员联系。
 

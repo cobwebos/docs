@@ -2,14 +2,13 @@
 title: 配置 Azure 区块链 Service transaction 节点
 description: 如何配置 Azure 区块链 Service transaction 节点
 ms.date: 11/20/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876923"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212558"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链 Service transaction 节点
 
@@ -35,12 +34,12 @@ ms.locfileid: "80876923"
 
     ![添加事务节点](./media/configure-transaction-nodes/add-node.png)
 
-    | 设置 | 说明 |
+    | 设置 | 描述 |
     |---------|-------------|
-    | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com` 。 创建节点名称后，不能对其进行更改。 |
-    | Password | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
+    | “属性” | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如 `newnode-myblockchainmember.blockchain.azure.com`。 创建节点名称后，不能对其进行更改。 |
+    | 密码 | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
 
-1. 选择“创建”。 
+1. 选择“创建”。
 
     预配新的事务节点大约需要 10 分钟时间。 其他事务节点会产生费用。 有关成本的详细信息，请参阅[Azure 定价](https://aka.ms/ABSPricing)。
 
@@ -69,7 +68,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
     | 设置 | 操作 |
     |---------|-------------|
-    | Role | 选择 "**所有者**"、"**参与者**" 或 "**读者**"。
+    | 角色 | 选择 "**所有者**"、"**参与者**" 或 "**读者**"。
     | 将访问权限分配到 | 选择**Azure AD 用户、组或服务主体**。
     | Select | 搜索要添加的用户、组或服务主体。
 
@@ -89,7 +88,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
 用户名是节点的名称，无法更改。
 
-若要使用 URL，请\<将\> password 替换为预配节点时设置的密码。 可以通过选择 "**重置密码**" 来更新密码。
+若要使用 URL，请将替换 \<password\> 为预配节点时设置的密码。 可以通过选择 "**重置密码**" 来更新密码。
 
 ### <a name="access-keys"></a>访问密钥
 
@@ -121,7 +120,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
 ![连接字符串](./media/configure-transaction-nodes/connection-strings.png)
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 提供的示例代码可通过 Web3、Nethereum、Web3js 和 Truffle 快速启用到事务节点的连接。
 

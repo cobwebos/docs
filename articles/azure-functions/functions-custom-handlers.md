@@ -5,12 +5,11 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cdbb5bbde1e5efef9bef992a62a54f1525a16df7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479249"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052584"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自定义处理程序（预览版）
 
@@ -20,11 +19,11 @@ ms.locfileid: "79479249"
 
 自定义处理程序最适合用于以下场合：
 
-- 在超出官方支持语言范畴的某种语言中实现函数应用
-- 在默认不支持的某个语言版本或运行时中实现函数应用
-- 对应用执行环境进行精细控制
+- 使用并非正式支持的语言来实现函数应用。
+- 默认情况下，不支持在语言版本或运行时中实现函数应用。
+- 提供对函数应用执行环境的更精细控制。
 
-使用自定义处理程序时，将通过[扩展绑定](./functions-triggers-bindings.md)来支持所有[触发器以及输入和输出绑定](./functions-bindings-register.md)。
+使用自定义处理程序时，将通过[扩展绑定](./functions-bindings-register.md)来支持所有[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
 
 ## <a name="overview"></a>概述
 
@@ -60,7 +59,7 @@ ms.locfileid: "79479249"
 
 应用程序是通过 host.json 文件配置的。  此文件指向能够处理 HTTP 事件的 Web 服务器，以此告知 Functions 主机要将请求发送到哪个位置。
 
-自定义处理程序的定义方式是通过  *节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。* `httpWorker`
+自定义处理程序的定义方式是通过 `httpWorker` 节在 host.json 文件中配置有关如何运行 Web 服务器的详细信息。
 
 ```json
 {
@@ -183,20 +182,20 @@ ms.locfileid: "79479249"
 | ------------- | --------- | ------------------------------------------------------------ |
 | `Outputs`     | JSON      | 保存 function.json 文件中 `bindings` 数组定义的响应值。 <br /><br />例如，如果为某个函数定义了名为“blob”的 blob 存储输出绑定，则 `Outputs` 将包含名为 `blob` 的键，此键设置为 blob 的值。 |
 | `Logs`        | array     | 消息将显示在 Functions 调用日志中。<br /><br />在 Azure 中运行时，消息显示在 Application Insights 中。 |
-| `ReturnValue` | 字符串    | 用于在`$return` *函数 json*文件中配置输出时提供响应。 |
+| `ReturnValue` | 字符串    | 用于在将输出配置为 `$return` 文件中的*function.js*时提供响应。 |
 
 [有关示例负载](#bindings-implementation)，请参阅示例。
 
 ## <a name="examples"></a>示例
 
-自定义处理程序可以采用任何支持 HTTP 事件的语言来实现。 尽管 Azure Functions[完全支持 JavaScript 和 node.js](./functions-reference-node.md)，但下面的示例演示如何在 node.js 中使用 JavaScript 来实现自定义处理程序，以便进行说明。
+自定义处理程序可以采用任何支持 HTTP 事件的语言来实现。 尽管 Azure Functions[完全支持 JavaScript 和 Node.js](./functions-reference-node.md)，但下面的示例演示如何在 Node.js 中使用 JavaScript 来实现自定义处理程序，以便进行说明。
 
 > [!TIP]
-> 尽管是学习如何在其他语言中实现自定义处理程序的指南，但是，如果想要在不支持的 node.js 版本中运行函数应用，则此处所示的基于 node.js 的示例也可能会很有用。
+> 尽管是学习如何在其他语言中实现自定义处理程序的指南，但是，如果想要在不支持的 Node.js 版本中运行函数应用，则此处所示的基于 Node.js 的示例也可能会很有用。
 
 ## <a name="http-only-function"></a>仅 HTTP 函数
 
-下面的示例演示如何配置没有其他绑定或输出的 HTTP 触发的函数。 本示例中实现的方案具有一个名为`http`的函数， `GET`该`POST`函数接受或。
+下面的示例演示如何配置没有其他绑定或输出的 HTTP 触发的函数。 本示例中实现的方案具有一个名为 `http` 的函数，该函数接受 `GET` 或 `POST` 。
 
 下面的代码片段表示如何编写对函数的请求。
 
@@ -213,7 +212,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>实现
 
-在名为*http*的文件夹中，*函数 JSON*文件配置 http 触发的函数。
+在名为 " *http*" 的文件夹中，" *function.js* " 文件配置 http 触发的函数。
 
 ```json
 {
@@ -233,9 +232,9 @@ content-type: application/json
 }
 ```
 
-该函数配置为接受`GET`和`POST`请求，结果值通过名为`res`的参数提供。
+该函数配置为接受 `GET` 和 `POST` 请求，结果值通过名为的参数提供 `res` 。
 
-在应用程序的根目录中，将*host json*文件配置为运行 node.js 并指向该`server.js`文件。
+在应用程序的根目录，文件*上的host.js*配置为运行 Node.js 并指向该 `server.js` 文件。
 
 ```json
 {
@@ -249,7 +248,7 @@ content-type: application/json
 }
 ```
 
-文件*服务器 .js*文件实现 web 服务器和 HTTP 函数。
+文件*server.js*文件实现 web 服务器和 HTTP 函数。
 
 ```javascript
 const express = require("express");
@@ -274,18 +273,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-在此示例中，Express 用于创建 web 服务器来处理 HTTP 事件，并设置为通过侦听请求`FUNCTIONS_HTTPWORKER_PORT`。
+在此示例中，Express 用于创建 web 服务器来处理 HTTP 事件，并设置为通过侦听请求 `FUNCTIONS_HTTPWORKER_PORT` 。
 
-函数在的`/hello`路径中定义。 `GET`通过返回一个简单的 JSON 对象来处理请求， `POST`并且请求可以通过`req.body`访问请求正文。
+函数在的路径中定义 `/hello` 。 `GET`通过返回一个简单的 JSON 对象来处理请求，并且 `POST` 请求可以通过访问请求正文 `req.body` 。
 
-此处的 order 函数的路由为， `/hello`而不`/api/hello`是因为函数主机将请求代理到自定义处理程序。
+此处的 order 函数的路由为 `/hello` ，而不是 `/api/hello` 因为函数主机将请求代理到自定义处理程序。
 
 >[!NOTE]
->不`FUNCTIONS_HTTPWORKER_PORT`是用于调用函数的面向公众的端口。 函数主机使用此端口调用自定义处理程序。
+>不 `FUNCTIONS_HTTPWORKER_PORT` 是用于调用函数的面向公众的端口。 函数主机使用此端口调用自定义处理程序。
 
 ## <a name="function-with-bindings"></a>带有绑定的函数
 
-本示例中实现的方案提供了一个名`order`为的函数`POST` ，该函数接受一个表示产品订单的有效负载。 在将订单发送到函数时，将创建队列存储消息并返回 HTTP 响应。
+本示例中实现的方案提供了一个名为 `order` 的函数，该函数接受一个 `POST` 表示产品订单的有效负载。 在将订单发送到函数时，将创建队列存储消息并返回 HTTP 响应。
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +301,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>实现
 
-在名为*order*的文件夹中，*函数 JSON*文件配置 HTTP 触发的函数。
+在名为*order*的文件夹中， *function.js*文件配置 HTTP 触发的函数。
 
 ```json
 {
@@ -333,7 +332,7 @@ content-type: application/json
 
 此函数定义为[http 触发函数](./functions-bindings-http-webhook-trigger.md)，该函数返回[http 响应](./functions-bindings-http-webhook-output.md)并输出[队列存储](./functions-bindings-storage-queue-output.md)消息。
 
-在应用程序的根目录中，将*host json*文件配置为运行 node.js 并指向该`server.js`文件。
+在应用程序的根目录，文件*上的host.js*配置为运行 Node.js 并指向该 `server.js` 文件。
 
 ```json
 {
@@ -347,7 +346,7 @@ content-type: application/json
 }
 ```
 
-文件*服务器 .js*文件实现 web 服务器和 HTTP 函数。
+文件*server.js*文件实现 web 服务器和 HTTP 函数。
 
 ```javascript
 const express = require("express");
@@ -379,24 +378,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-在此示例中，Express 用于创建 web 服务器来处理 HTTP 事件，并设置为通过侦听请求`FUNCTIONS_HTTPWORKER_PORT`。
+在此示例中，Express 用于创建 web 服务器来处理 HTTP 事件，并设置为通过侦听请求 `FUNCTIONS_HTTPWORKER_PORT` 。
 
-函数在的`/order`路径中定义。  此处的 order 函数的路由为， `/order`而不`/api/order`是因为函数主机将请求代理到自定义处理程序。
+函数在的路径中定义 `/order` 。  此处的 order 函数的路由为 `/order` ，而不是 `/api/order` 因为函数主机将请求代理到自定义处理程序。
 
-当`POST`向此函数发送请求时，将通过几个点公开数据：
+当 `POST` 向此函数发送请求时，将通过几个点公开数据：
 
 - 请求正文可通过`req.body`
 - 发布到函数的数据可通过`req.body.Data.req.Body`
 
-函数的响应被格式化为一个键/值对，其中`Outputs`成员保存一个 json 值，其中的键与*函数 json*文件中定义的输出相匹配。
+函数的响应被格式化为一个键/值对，其中的 `Outputs` 成员保存一个 JSON 值，其中的键与文件中的*function.js*中定义的输出相匹配。
 
-通过将`message`等于从请求传入的消息和`res`预期 HTTP 响应，此函数会将消息输出到队列存储并返回 HTTP 响应。
+通过将 `message` 等于从请求传入的消息和 `res` 预期 HTTP 响应，此函数会将消息输出到队列存储并返回 HTTP 响应。
 
 ## <a name="debugging"></a>调试
 
 若要调试函数自定义处理程序应用，需要添加适用于语言和运行时的参数来启用调试。
 
-例如，若要调试 node.js 应用程序， `--inspect`标志将作为参数传递到*host json*文件中。
+例如，若要调试 Node.js 应用程序， `--inspect` 标志将作为参数传递到文件的*host.js*中。
 
 ```json
 {
@@ -412,7 +411,7 @@ app.post("/order", (req, res) => {
 ```
 
 > [!NOTE]
-> 调试配置是您的*host json*文件的一部分，这意味着在部署到生产环境之前，您可能需要删除一些参数。
+> 调试配置是您的*host.js*文件的一部分，这意味着在部署到生产环境之前，您可能需要删除一些参数。
 
 使用此配置，可以使用以下命令启动函数的主机进程：
 
@@ -424,9 +423,9 @@ func host start
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-下面的示例演示如何设置*启动 json*文件，以便将应用程序连接到 Visual Studio Code 调试器。
+下面的示例演示如何在文件中设置*launch.js* ，以将应用程序连接到 Visual Studio Code 调试器。
 
-此示例适用于 node.js，因此你可能需要为其他语言或运行时更改此示例。
+此示例用于 Node.js，因此你可能需要为其他语言或运行时更改此示例。
 
 ```json
 {
@@ -447,9 +446,14 @@ func host start
 
 可以将自定义处理程序部署到几乎每个 Azure Functions 承载选项（请参阅[限制](#restrictions)）。 如果处理程序需要自定义依赖项（如语言运行时），则可能需要使用[自定义容器](./functions-create-function-linux-custom-image.md)。
 
+若要使用 Azure Functions Core Tools 部署自定义处理程序应用，请运行以下命令。
+
+```bash
+func azure functionapp publish $functionAppName --no-build --force
+```
+
 ## <a name="restrictions"></a>限制
 
-- Linux 消耗计划不支持自定义处理程序。
 - Web 服务器需要在60秒内启动。
 
 ## <a name="samples"></a>示例

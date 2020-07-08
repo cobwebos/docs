@@ -1,7 +1,7 @@
 ---
 title: 使用语音 SDK 与客户端应用集成
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。
+description: 如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414347"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027624"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>使用语音 SDK 与客户端应用程序集成
 
-本文介绍如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。 若要建立与自定义命令应用程序的连接，请执行下列任务：
+本文介绍如何从 UWP 应用程序中运行的语音 SDK 发出对已发布自定义命令应用程序的请求。 若要建立与自定义命令应用程序的连接，需要：
 
 - 发布自定义命令应用程序并获取应用程序标识符（应用程序 ID）
 - 使用语音 SDK 创建通用 Windows 平台（UWP）客户端应用程序，以便与自定义命令应用程序对话
@@ -32,13 +31,19 @@ ms.locfileid: "85414347"
 
 还需要：
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)或更高版本。 本指南基于 Visual Studio 2019。
 > * 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或创建一个[Azure 门户](https://portal.azure.com)
 > * [启用设备进行开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>步骤1：发布自定义命令应用程序
 
-1. 打开之前创建的自定义命令应用程序并选择 "**发布**"
+1. 打开以前创建的自定义命令应用程序
+1. 单击 "**设置**"，选择 " **LUIS 资源**"
+1. 如果未分配**预测资源**，请选择查询预测密钥或创建一个新的预测密钥
+
+    在发布应用程序之前始终需要查询预测密钥。 有关 LUIS 资源的详细信息，请参阅[创建 LUIS 资源](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription)
+
+1. 返回到编辑命令，选择 "**发布**"
 
    > [!div class="mx-imgBorder"]
    > ![发布应用程序](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +136,8 @@ ms.locfileid: "85414347"
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +326,7 @@ ms.locfileid: "85414347"
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");
@@ -402,13 +404,13 @@ ms.locfileid: "85414347"
 
 ## <a name="try-it-out"></a>试用
 
-1. 从菜单栏中，选择“构建”   > “构建解决方案”  以构建应用程序。 编译代码时应不会出错。
+1. 从菜单栏中，选择“构建” > “构建解决方案”以构建应用程序。 编译代码时应不会出错。
 
-1. 选择“调试”   > “开始调试”  （或按 F5  ）以启动应用程序。 此时将显示“helloworld”  窗口。
+1. 选择“调试” > “开始调试”（或按 F5）以启动应用程序。 此时将显示“helloworld”窗口。
 
    ![C# 中的示例 UWP 虚拟助手应用程序 - 快速入门](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 选择“启用麦克风”。  如果弹出了访问权限请求，请选择 **"是"**。
+1. 选择“启用麦克风”。 如果弹出了访问权限请求，请选择 **"是"**。
 
    ![麦克风访问权限请求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921580"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题 (FAQ)
 
@@ -30,11 +29,11 @@ ms.locfileid: "80668580"
 
 **Certificates**
 
-- [为什么云服务的 TLS/SSL 证书的证书链不完整？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
+- [云服务 TLS/SSL 证书的证书链为何不完整？](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [“用于扩展的 Windows Azure 工具加密证书”有何用途？](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [如何在未“通过 RDP 连接”到实例的情况下生成证书签名请求 (CSR)？](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [我的云服务管理证书即将到期。如何续订？](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [如何自动安装主要的 TLS/SSL 证书（.pfx）和中间证书（p7b）？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
+- [如何自动安装主要 TLS/SSL 证书 (.pfx) 和中间证书 (.p7b)？](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [“用于 MachineKey 的 Microsoft Azure 服务管理”证书的用途是什么？](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **监视和日志记录**
@@ -75,7 +74,7 @@ ms.locfileid: "80668580"
 
 ## <a name="certificates"></a>证书
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>为什么云服务的 TLS/SSL 证书的证书链不完整？
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>云服务 TLS/SSL 证书的证书链为何不完整？
     
 我们建议客户安装完整的证书链（叶证书、中间证书和根证书），而不要只安装叶证书。 如果只是安装叶证书，则要依赖 Windows 通过遍历 CTL 来构建证书链。 当 Windows 尝试验证证书时，如果 Azure 或 Windows 更新中发生间歇性网络问题或 DNS 问题，可能会将该证书视为无效。 如果安装完整的证书链，则可避免此问题。 博客 [How to install a chained SSL certificate](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/)（如何安装链接的 SSL 证书）中介绍了操作方法。
 
@@ -97,13 +96,15 @@ CSR 只是一个文本文件。 无需从最终使用此证书的计算机中创
 
 可使用以下 PowerShell 命令续订管理证书：
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
 **AzurePublishSettingsFile** 将在 Azure 门户上的“订阅” > “管理证书”中创建新的管理证书。   新证书的名称类似于“[订阅名称]-[当前日期]-credentials”。
 
-### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要的 TLS/SSL 证书（.pfx）和中间证书（p7b）？
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>如何自动安装主要 TLS/SSL 证书 (.pfx) 和中间证书 (.p7b)？
 
 可以使用启动脚本 (batch/cmd/PowerShell) 自动完成此任务，并将该启动脚本注册到服务定义文件中。 将启动脚本和证书（.p7b 文件）添加到启动脚本所在的同一目录中的项目文件夹。
 
@@ -226,15 +227,15 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 
 ### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>无法使用 RDP 文件通过远程桌面连接到云服务 VM。 收到以下错误：发生身份验证错误（代码：0x80004005）
 
-如果从已加入 Azure Active Directory 的计算机使用 RDP 文件，则可能出现此错误。 若要解决此问题，请执行以下步骤：
+如果在已加入 Azure Active Directory 的计算机上使用 RDP 文件，则可能会发生此错误。 若要解决此问题，请执行以下步骤：
 
-1. 右键单击下载的 RDP 文件，然后选择“编辑”****。
-2. 在 username 前面添加“&#92;”作为前缀。 例如，使用 **.\username**，而不是 **username**。
+1. 右键单击下载的 RDP 文件，然后选择“编辑”。 
+2. 在用户名的前面添加“&#92;”前缀。 例如，使用 **.\username** 而不要使用 **username**。
 
 ## <a name="scaling"></a>扩展
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>无法扩展到 X 个实例以上
-Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用的核心，将无法进行扩展。 例如，如果限制为 100 个核心，则意味着云服务可以有 100 个 A1 大小的虚拟机实例或 50 个 A2 大小的虚拟机实例。
+Azure 订阅对可以使用的内核数存在限制。 如果已使用所有可用的内核，缩放无法执行。 例如，如果限制为 100 个核心，则意味着云服务可以有 100 个 A1 大小的虚拟机实例或 50 个 A2 大小的虚拟机实例。
 
 ### <a name="how-can-i-configure-auto-scale-based-on-memory-metrics"></a>如何基于内存指标配置自动缩放？
 
@@ -273,22 +274,22 @@ Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用�
 %windir%\system32\inetsrv\appcmd set config /section:httpProtocol /+customHeaders.[name='X-Content-Type-Options',value='nosniff']
 ```
 
-### <a name="how-do-i-customize-iis-for-a-web-role"></a>如何为 Web 角色自定义 IIS？
+### <a name="how-do-i-customize-iis-for-a-web-role"></a>如何自定义 Web 角色的 IIS
 使用[常见启动任务](cloud-services-startup-tasks-common.md#configure-iis-startup-with-appcmdexe)一文中的 IIS 启动脚本。
 
 ### <a name="what-is-the-quota-limit-for-my-cloud-service"></a>什么是云服务配额限制？
 请参阅[服务特定的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
 
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>云服务 VM 上的驱动器为何显示可用磁盘空间不足？
-这是预期行为，应不会导致任何应用程序问题。 Azure PaaS VM 中的 %approot% 驱动器的日记功能启用后，基本上会占用文件通常所用空间的两倍。 但是请注意以下几点，从根本上看，此问题无足轻重。
+这是预期的行为，不会导致应用程序出现任何问题。 为 Azure PaaS VM 中的 %approot% 驱动器启用了日记，因此，占用的空间量在实际上是文件平时占用的空间量的两倍。 但是，有几个因素会在本质上消除此状态造成的问题。
 
-%approot% 驱动器大小计算为 \<.cspkg 大小 + 最大日记大小 + 富余的可用空间> 或 1.5 GB，以较大者为准。 VM 的大小与此计算方法无关。 （VM 大小仅影响临时 C: 驱动器的大小） 
+% Approot% 驱动器的大小计算为 \<size of .cspkg + max journal size + a margin of free space> 或 1.5 GB，取两者中较大者。 VM 大小对于计算结果没有任何影响。 （VM 大小只会影响临时 C: 驱动器的大小。） 
 
-不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源（或其他选项，例如 Blob 存储、Azure 文件等）中执行此操作。 因此 %approot% 文件夹的可用空间没有意义。 如果不确定应用程序是否要写入 %approot% 驱动器，可以让服务持续运行几天，然后比较“之前”和“之后”的大小。 
+不支持写入 %approot% 驱动器。 如果要写入 Azure VM，必须在临时 LocalStorage 资源中执行此操作（或使用其他选项，例如 Blob 存储、Azure 文件，等等）。 因此，%approot% 文件夹的可用空间量没有意义。 如果不确定应用程序是否写入 %approot% 驱动器，始终可以让服务运行数日，然后比较“之前”和“之后”的大小。 
 
-Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD 并将其装载到 Azure VM 后，可能写入此驱动器的唯一内容是你的应用程序。 
+Azure 不会将任何数据写入 %approot% 驱动器。 从 .cspkg 创建 VHD 并将其装载到 Azure VM 之后，就只有你的应用程序可能会写入此驱动器。 
 
-日记设置不可配置，因此无法将其关闭。
+日记设置不可配置，因此无法将其禁用。
 
 ### <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>如何以自动化方法为云服务添加反恶意软件扩展？
 
@@ -305,10 +306,12 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 **方法 1：使用 PowerShell**
 
-可以在云服务角色实例的启动任务中使用 PowerShell cmdlet **new-webbinding**配置 SNI 绑定，如下所示：
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+可在启动任务中使用 PowerShell cmdlet **New-WebBinding** 为云服务角色实例配置 SNI 绑定，如下所示：
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 如[此文](https://technet.microsoft.com/library/ee790567.aspx)所述，$sslFlags 可为以下值之一：
 
 |值|含义|
@@ -322,14 +325,15 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 也可以根据此[博客文章](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)中所述，通过角色启动中的代码配置 SNI 绑定：
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 使用上述任一方法时，必须先使用启动任务或通过代码在角色实例上安装特定主机名的相应证书 (*.pfx)，这样才能使 SNI 绑定生效。
 
@@ -337,19 +341,21 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 
 云服务是一个经典资源。 只有通过 Azure 资源管理器创建的资源才支持标记。 无法将标记应用到云服务等经典资源。 
 
-### <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>Azure 门户不显示云服务的 SDK 版本。 如何获取版本信息？
+### <a name="the-azure-portal-doesnt-display-the-sdk-version-of-my-cloud-service-how-can-i-get-that"></a>Azure 门户不显示我的云服务的 SDK 版本。 如何查看版本？
 
-我们正致力于将此功能引入 Azure 门户。 同时，你可以使用以下 PowerShell 命令获取 SDK 版本：
+我们正努力在 Azure 门户中实现此功能。 在此同时，你可以使用以下 PowerShell 命令获取 SDK 版本：
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
-### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想将云服务关闭几个月。 如何降低云服务的计费成本，而不丢失 IP 地址？
+### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>我想要关闭云服务几个月。 如何在不丢失 IP 地址的情况下降低云服务的计费成本？
 
-对于已部署的云服务，将对其所用的计算和存储计费。 因此，即使关闭 Azure VM，仍需为存储付费。 
+已部署的云服务使用的计算和存储资源会产生费用。 因此，即使关闭 Azure VM，也仍要支付存储费用。 
 
-可通过以下操作来减少计费，而且不丢失服务的 IP 地址：
+下面是可以在不丢失服务 IP 地址的情况下节省费用的办法：
 
-1. 在删除部署之前，[保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)。  仅需为此 IP 地址付费。 有关 IP 地址计费的详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
+1. 在删除部署之前[保留 IP 地址](../virtual-network/virtual-networks-reserved-public-ip.md)。  这样，就只需支付此 IP 地址的费用。 有关 IP 地址计费的详细信息，请参阅 [IP 地址定价](https://azure.microsoft.com/pricing/details/ip-addresses/)。
 2. 删除部署。 不要删除 xxx.cloudapp.net，以供将来使用。
-3. 若要使用在订阅中保留的相同保留 IP 来重新部署云服务，请参阅[云服务和虚拟机的保留 IP 地址](https://azure.microsoft.com/blog/reserved-ip-addresses/)。
+3. 如果想要使用订阅中的相同保留 IP 来重新部署云服务，请参阅[云服务和虚拟机的保留 IP 地址](https://azure.microsoft.com/blog/reserved-ip-addresses/)。
 

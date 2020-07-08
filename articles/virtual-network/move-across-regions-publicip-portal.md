@@ -1,22 +1,21 @@
 ---
-title: 使用 Azure 门户将 Azure 公共 IP 移到另一个 Azure 区域
-description: 使用 Azure 资源管理器模板，通过 Azure 门户将 Azure 公共 IP 从一个 Azure 区域移到另一个 Azure 区域。
+title: 将 Azure 公共 IP 配置移动到另一个 Azure 区域 Azure 门户
+description: 使用模板将 Azure 公共 IP 配置从一个 Azure 区域移到另一个 Azure 区域，使用 Azure 门户。
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711470"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 移到另一个区域
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 公共 IP 配置移动到另一个区域
 
-在多种情况下，你可能希望将现有的 Azure 公共 IP 从一个区域移到另一个区域。 例如，可能需要创建一个具有相同配置和 SKU 的公共 IP，以便进行测试。 还可能需要按照灾难恢复规划将公共 IP 移到另一个区域。
+在许多场景中，你希望将现有 Azure 公共 IP 区域从一个区域移动到另一个区域。 例如，可能需要创建一个具有相同配置和 SKU 的公共 IP，以便进行测试。 还可能需要按照灾难恢复规划将公共 IP 移到另一个区域。
 
 Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 但是，可以使用 Azure 资源管理器模板来导出公共 IP 的现有配置。  然后，可以将资源暂存在另一区域，方法是：将公共 IP 导出到模板，根据目标区域的情况修改参数，然后将模板部署到新区域。  有关资源管理器和模板的详细信息，请参阅[快速入门：使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
@@ -90,7 +89,7 @@ Azure 公共 IP 特定于区域，不能从一个区域移到另一个区域。 
              ]
     ```
 
-11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 12. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 

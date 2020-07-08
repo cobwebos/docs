@@ -7,18 +7,20 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921546"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>整理数据流中的转换函数
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 通过 Azure 数据工厂中的整理数据流，可以在云规模进行无代码的敏捷数据准备和整理。 整理数据流与[Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference)集成，使 Power Query M 功能可用于通过 spark 执行的数据整理。 
+
+> [!NOTE]
+> 整理数据流当前在公共预览版中可用
 
 当前并非所有 Power Query M 函数都支持数据整理，但在创作期间可用。 生成整理数据流时，如果函数不受支持，系统将提示你输入以下错误消息：
 
@@ -39,7 +41,7 @@ ms.locfileid: "82626677"
 
 * 相等和不相等
 * 数值、文本和日期比较（但不是 DateTime）
-* 数字信息，如[IsEven](https://docs.microsoft.com/powerquery-m/number-iseven)/[奇数](https://docs.microsoft.com/powerquery-m/number-iseven)
+* 数字信息，如[IsEven](https://docs.microsoft.com/powerquery-m/number-iseven) / [奇数](https://docs.microsoft.com/powerquery-m/number-iseven)
 * 使用 Text 的文本[包含](https://docs.microsoft.com/powerquery-m/text-contains)、 [StartsWith](https://docs.microsoft.com/powerquery-m/text-startswith)或[EndsWith。](https://docs.microsoft.com/powerquery-m/text-endswith)
 * 包括所有 "IsIn'[日期" 函数](https://docs.microsoft.com/powerquery-m/date-functions)的日期范围 
 * 使用 and、or 或 not 条件的组合
@@ -55,7 +57,7 @@ ms.locfileid: "82626677"
 * 大多数标准、科学和三角数字函数（*除 Number 之外*的所有函数，包括运算、[舍入](https://docs.microsoft.com/powerquery-m/number-functions#rounding)和[三角](https://docs.microsoft.com/powerquery-m/number-functions#trigonometry)[运算](https://docs.microsoft.com/powerquery-m/number-functions#operations)。阶乘、数字和组合）
 * [Replace](https://docs.microsoft.com/powerquery-m/text-replace)（[替换器，ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext)，[替换器](https://docs.microsoft.com/powerquery-m/replacer-replacevalue) [，text）](https://docs.microsoft.com/powerquery-m/text-remove)
 * 位置文本提取（[PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof)、Text、 [Length](https://docs.microsoft.com/powerquery-m/text-length)、 [text](https://docs.microsoft.com/powerquery-m/text-start) [、text、text.](https://docs.microsoft.com/powerquery-m/text-end)RemoveRange、 [ReplaceRange](https://docs.microsoft.com/powerquery-m/text-replacerange)、 [Text.Middle](https://docs.microsoft.com/powerquery-m/text-middle) [Text.RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange)）
-* 基本文本格式（[文本. 较低](https://docs.microsoft.com/powerquery-m/text-lower)、[文本](https://docs.microsoft.com/powerquery-m/text-upper)、文本[、文本。剪裁](https://docs.microsoft.com/powerquery-m/text-trim)/[开始](https://docs.microsoft.com/powerquery-m/text-trimstart)/[结束](https://docs.microsoft.com/powerquery-m/text-trimend)、 [PadStart](https://docs.microsoft.com/powerquery-m/text-padstart)/[结束](https://docs.microsoft.com/powerquery-m/text-padend)、[文本反转](https://docs.microsoft.com/powerquery-m/text-reverse)）
+* 基本文本格式（[文本. 较低](https://docs.microsoft.com/powerquery-m/text-lower)、[文本](https://docs.microsoft.com/powerquery-m/text-upper)、文本、[文本。剪裁](https://docs.microsoft.com/powerquery-m/text-trim) / [开始](https://docs.microsoft.com/powerquery-m/text-trimstart) / [结束](https://docs.microsoft.com/powerquery-m/text-trimend)、 [PadStart](https://docs.microsoft.com/powerquery-m/text-padstart) / [结束](https://docs.microsoft.com/powerquery-m/text-padend)、[文本反转](https://docs.microsoft.com/powerquery-m/text-reverse)）
 * 日期/时间函数（[日期. 日](https://docs.microsoft.com/powerquery-m/date-day)、[月](https://docs.microsoft.com/powerquery-m/date-month)、日、[年](https://docs.microsoft.com/powerquery-m/date-year)、月[、日](https://docs.microsoft.com/powerquery-m/time-minute) [、](https://docs.microsoft.com/powerquery-m/time-second)[日、日](https://docs.microsoft.com/powerquery-m/time-hour)、 [DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek)、 [DayOfYear](https://docs.microsoft.com/powerquery-m/date-dayofyear)、 [DaysInMonth](https://docs.microsoft.com/powerquery-m/date-daysinmonth)）
 * If 表达式（但分支必须具有匹配的类型）
 * 作为逻辑列的行筛选器

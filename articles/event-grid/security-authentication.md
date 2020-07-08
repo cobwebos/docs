@@ -1,92 +1,36 @@
 ---
-title: Azure 事件网格安全和身份验证
-description: 本文介绍了对事件网格资源（WebHook、订阅、自定义主题）的访问进行身份验证的不同方法
+title: 对事件处理程序的事件传递进行身份验证（Azure 事件网格）
+description: 本文介绍了在 Azure 事件网格中验证传递到事件处理程序的不同方式。
 services: event-grid
-author: banisadr
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.date: 06/25/2020
+ms.author: spelluru
+ms.openlocfilehash: 46b1aa500f00046dd4d6e318b270982e8b747a79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774313"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85412815"
 ---
-# <a name="authenticating-access-to-azure-event-grid-resources"></a>对 Azure 事件网格资源的访问进行身份验证
-本文提供了关于以下方案的信息：  
+# <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>对事件处理程序的事件传递进行身份验证（Azure 事件网格）
+本文介绍了如何对事件处理程序的事件传递进行身份验证。 它还演示了如何使用 Azure Active Directory （Azure AD）或共享机密来保护用于从事件网格接收事件的 webhook 终结点。
 
-- 使用共享访问签名 (SAS) 或密钥对将事件发布到 Azure 事件网格主题的客户端进行身份验证。 
-- 使用 Azure Active Directory (Azure AD) 或共享机密保护用于从事件网格接收事件的 Webhook 终结点。
+## <a name="use-system-assigned-identities-for-event-delivery"></a>使用系统分配的标识进行事件传递
+你可以为主题或域启用系统分配的托管标识，并使用该标识将事件转发到受支持的目标，例如服务总线队列和主题、事件中心和存储帐户。
 
-## <a name="authenticate-publishing-clients-using-sas-or-key"></a>使用 SAS 或密钥对发布客户端进行身份验证
-自定义主题使用共享访问签名 (SAS) 或密钥身份验证。 建议使用 SAS，但密钥身份验证提供简单的编程，并与多个现有 webhook 发布服务器兼容。
+步骤如下： 
 
-HTTP 标头中包括身份验证值。 对于 SAS，使用 aeg-sas-token 作为标头值。 对于密钥身份验证，使用 aeg-sas-key 作为标头值。
+1. 使用系统分配的标识创建一个主题或域，或更新现有的主题或域以启用标识。 
+1. 在目标上将标识添加到相应的角色（例如，服务总线数据发送方）（例如，服务总线队列）。
+1. 创建事件订阅时，请启用标识，以将事件传递给目标。 
 
-### <a name="key-authentication"></a>密钥身份验证
+有关详细的分步说明，请参阅[使用托管标识的事件传递](managed-service-identity.md)。
 
-密钥身份验证是最简单的身份验证形式。 在邮件头中使用格式 `aeg-sas-key: <your key>`。
-
-例如，使用以下项传递密钥：
-
-```
-aeg-sas-key: XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-还可以将 `aeg-sas-key` 指定为查询参数。 
-
-```
-https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01&&aeg-sas-key=XXXXXXXX53249XX8XXXXX0GXXX/nDT4hgdEj9DpBeRr38arnnm5OFg==
-```
-
-### <a name="sas-tokens"></a>SAS 令牌
-
-事件网格的 SAS 令牌包括资源、过期时间和签名。 SAS 令牌的格式是：`r={resource}&e={expiration}&s={signature}`。
-
-资源是要将事件发送到的事件网格主题的路径。 例如，有效的资源路径是 `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`。 若要查看所有受支持的 API 版本，请参阅 [Microsoft.EventGrid 资源类型](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)。 
-
-从密钥生成签名。
-
-例如，有效的 aeg-sas-token 值是：
-
-```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
-```
-
-以下示例会创建用于事件网格的 SAS 令牌：
-
-```cs
-static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
-{
-    const char Resource = 'r';
-    const char Expiration = 'e';
-    const char Signature = 's';
-
-    string encodedResource = HttpUtility.UrlEncode(resource);
-    var culture = CultureInfo.CreateSpecificCulture("en-US");
-    var encodedExpirationUtc = HttpUtility.UrlEncode(expirationUtc.ToString(culture));
-
-    string unsignedSas = $"{Resource}={encodedResource}&{Expiration}={encodedExpirationUtc}";
-    using (var hmac = new HMACSHA256(Convert.FromBase64String(key)))
-    {
-        string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(unsignedSas)));
-        string encodedSignature = HttpUtility.UrlEncode(signature);
-        string signedSas = $"{unsignedSas}&{Signature}={encodedSignature}";
-
-        return signedSas;
-    }
-}
-```
-
-### <a name="encryption-at-rest"></a>静态加密
-
-由事件网格服务写入到磁盘的所有事件或数据都使用 Microsoft 托管密钥进行加密，同时确保进行的是静态加密。 此外，根据[事件网格重试策略](delivery-and-retry.md)，事件或数据的最长保留期为 24 小时。 事件网格将在 24 小时或事件生存时间到期（无论哪个在先）后自动删除所有事件或数据。
 
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>对 Webhook 终结点的事件传递进行身份验证
 下面各部分介绍了如何对 Webhook 终结点的事件传递进行身份验证。 无论使用何种方法，都需要使用验证握手机制。 有关详细信息，请参阅 [Webhook 事件传递](webhook-event-delivery.md)。 
+
 
 ### <a name="using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD)
 可以使用 Azure AD 保护用于从事件网格接收事件的 Webhook 终结点。 需要创建 Azure AD 应用程序，并在授权事件网格的应用程序中创建角色和服务主体，同时还需要将事件订阅配置为使用 Azure AD 应用程序。 了解如何[使用事件网格配置 Azure Active Directory](secure-webhook-delivery.md)。
@@ -101,6 +45,6 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 > [!IMPORTANT]
 Azure 事件网格只支持 HTTPS Webhook 终结点。 
 
-## <a name="next-steps"></a>后续步骤
 
-- 有关事件网格的介绍，请参阅[关于事件网格](overview.md)
+## <a name="next-steps"></a>后续步骤
+请参阅[对发布客户端进行身份验证](security-authenticate-publishing-clients.md)，了解有关验证客户端将事件发布到主题或域的信息。 

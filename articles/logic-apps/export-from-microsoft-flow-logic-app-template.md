@@ -3,24 +3,25 @@ title: 将流从电源自动执行导出到 Azure 逻辑应用
 description: 通过导出为 Azure 资源管理器模板，将流从电源自动迁移到 Azure 逻辑应用
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75428884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84324785"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>从 Power Automate 导出流并将其部署到 Azure 逻辑应用
 
 若要扩展和扩展流的功能，可以将该流从[电源自动](https://flow.microsoft.com)迁移到[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。 可以将流导出为逻辑应用的 Azure 资源管理器模板，将该逻辑应用模板部署到 Azure 资源组，然后在逻辑应用设计器中打开该逻辑应用。
 
 > [!NOTE]
-> 在 Azure 逻辑应用中，并不是所有电源自动连接器都可用。 可以在 Azure 逻辑应用中导入具有[等效连接器](../connectors/apis-list.md)的流。 例如，按钮触发器、审批连接器和通知连接器特定于电源自动执行。
+> 在 Azure 逻辑应用中，并不是所有电源自动连接器都可用。 只能迁移在 Azure 逻辑应用中具有等效连接器的电源自动执行流。 例如，按钮触发器、审批连接器和通知连接器特定于电源自动执行。 目前，OpenAPI 中基于的流不支持作为逻辑应用模板的导出和部署。
 >
-> 当前不支持将基于 OpenAPI 的流从电源自动部署导出为逻辑应用模板。 
+> * 若要找出哪些电源自动连接器没有逻辑应用等效项，请参阅[电源自动连接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+>
+> * 若要找出哪些逻辑应用连接器没有电源自动执行等效功能，请参阅[逻辑应用连接器](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -28,13 +29,13 @@ ms.locfileid: "75428884"
 
 * 要从电源自动导出的流
 
-## <a name="export-a-flow"></a>导出流
+## <a name="export-your-flow"></a>导出流
 
-1. 登录到 "[电源自动](https://flow.microsoft.com)"，然后选择 **"我的流**"。 查找并选择你的流。 在工具栏上，选择省略号（**...**）按钮。 选择 "**导出** > **逻辑应用模板" （json）**。
+1. 登录到 "[电源自动](https://flow.microsoft.com)"，然后选择 **"我的流**"。 查找并选择你的流。 在工具栏上，选择 "省略号" （**...**）按钮 >**导出**  >  **逻辑应用模板（json）**。
 
-   ![导出流](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![从电源自动执行导出流程](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
-1. 将模板保存到所需的位置。
+1. 将模板的 json 文件保存到所需的位置。
 
 有关详细信息，请参阅[增长到 Azure 逻辑应用](https://flow.microsoft.com/blog/grow-up-to-logic-apps/)。
 
@@ -42,42 +43,51 @@ ms.locfileid: "75428884"
 
 1. 用 Azure 帐户登录[Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 主菜单上选择“创建资源”****。 在搜索框中，输入 "模板部署"。 选择**模板部署（使用自定义模板部署）**，然后选择 "**创建**"。
+1. 在 Azure 主页上的搜索框中，输入 `custom template` 。 在结果中，选择 "**部署自定义模板**  >  **创建**"。
 
-   ![选择 "模板部署"](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
+   ![查找并选择 "模板部署"](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
 1. 在 "**自定义部署**" 下，选择 **"在编辑器中生成自己的模板"**。
 
    ![选择 "在编辑器中生成自己的模板"](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. 在 "**编辑模板**" 工具栏中，选择 "**加载文件**"。 查找并选择从 "电源自动" 导出的 JSON 模板，然后选择 "**打开**"。
+1. 在 "**编辑模板**" 工具栏上，选择 "**加载文件**"。
 
    ![选择 "加载文件"](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
+1. 浏览到保存从 "Power 自动" 导出的 JSON 模板文件的位置。 选择 >**打开**的模板文件。
+
 1. 在编辑器显示模板中的 JSON、参数和资源后，选择 "**保存**"。
-  
+
    ![保存模板](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
-1. 现在为模板指定以下输入参数：
+1. 现在提供逻辑应用的详细信息。
 
-   * 用于计费的 Azure 订阅
-   * Azure 资源组
-   * Azure 资源组的位置
-   * 逻辑应用资源的名称
-   * 逻辑应用资源的位置（如果不同于 Azure 资源组）
-   * 逻辑应用可重复使用的任何以前创建的连接的名称
+   1. 选择或指定模板的输入参数值。
 
-      如果要创建第一个逻辑应用，则所有连接都将创建为新连接，以便可以接受默认名称。 否则，你可以指定先前创建的连接的名称，你可以跨多个逻辑应用使用这些连接。
+      | Property | 说明 |
+      |----------|-------------|
+      | **订阅** | 用于计费的 Azure 订阅 |
+      | **资源组** | 要用于逻辑应用的 Azure 资源组。 您可以使用现有组或创建新组。 |
+      | **位置** | 创建新的资源组时要使用的 Azure 区域 |
+      | **逻辑应用名称** | 逻辑应用资源使用的名称 |
+      | **逻辑应用位置** | 要在其中创建逻辑应用资源的 Azure 区域（如果不同于 Azure 资源组） |
+      | <*connection-name*> | 逻辑应用可重复使用的任何以前创建的连接的一个或多个名称 <p><p>**注意**：如果此逻辑应用是第一个，则会将所有连接创建为新连接，以便可以接受默认名称。 否则，你可以指定先前创建的连接的名称，你可以跨多个逻辑应用使用这些连接。 |
+      |||
 
-   为模板提供此信息后，请查看并同意 Azure Marketplace 用于创建必要的 Azure 资源和对 Azure 订阅进行相应计费的条款和条件，然后选择 "**购买**"。
-  
-   ![指定模板的输入参数](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
+      例如：
 
-   Azure 会将模板作为逻辑应用部署到指定的资源组。 从电源自动执行迁移的所有逻辑应用都部署在禁用状态。
+      ![指定模板的输入参数](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-1. 激活逻辑应用之前，请按照以下步骤授权任何新连接：
+   1. 完成后，请查看有关创建必要的 Azure 资源的**条款和条件**，并相应地计费 azure 订阅。
 
-   1. 打开创建的逻辑应用。 在逻辑应用的菜单中，选择 "**逻辑应用设计器**"。
+   1. 准备就绪后，选择 **"我同意上述条款和条件"**  >  **Purchase**。
+
+      Azure 会将模板作为逻辑应用部署到指定的资源组。
+
+1. 从电源自动执行迁移的所有逻辑应用都部署在禁用状态。 启用逻辑应用之前，请按照以下步骤授权任何新连接：
+
+   1. 在 Azure 门户中，打开创建的逻辑应用。 在逻辑应用的菜单中，选择 "**逻辑应用设计器**"。
 
       需要授权的每个连接都将显示一个警告图标：
 
@@ -89,7 +99,9 @@ ms.locfileid: "75428884"
 
    1. 登录到每个服务或提供必需的凭据来授权连接。
 
-1. 保存逻辑应用。 如果已准备好激活逻辑应用，请在逻辑应用的菜单中选择 "**概述**"，然后选择 "**启用**"。
+   1. 更新连接后，请在设计器工具栏上选择 "**保存**"。
+
+1. 如果已准备好激活逻辑应用，请在逻辑应用的菜单中选择 "**概述**"，然后选择 "**启用**"。
 
    ![启用逻辑应用](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -97,21 +109,23 @@ ms.locfileid: "75428884"
 
 ## <a name="deploy-template-by-using-visual-studio"></a>使用 Visual Studio 部署模板
 
-如果已设置 Visual Studio 并具有创建逻辑应用的[先决条件](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)，则可以将导出的模板从 Visual studio 部署到 Azure 逻辑应用。
+如果已设置 Visual Studio 并具有创建逻辑应用的[先决条件](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)，则可以使用 Visual Studio 将导出的模板部署到 Azure 逻辑应用。
 
-1. 在 Visual Studio 中，打开从 "电源自动" 导出的模板文件。
+1. 在 Visual Studio 中，浏览到并打开从 Power 自动功能导出的逻辑应用模板的 json 文件。
 
-1. 在 Visual Studio 中，创建一个 Azure 资源组项目并按照[快速入门：使用 Azure 逻辑应用创建自动化任务、进程和工作流-Visual studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步骤来选择**逻辑应用**模板，例如：
+1. 在 Visual Studio 中，按照[快速入门：使用 Azure 逻辑应用创建自动化任务、进程和工作流-Visual studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)中的步骤创建一个使用**逻辑应用**模板的**Azure 资源组**项目。
+
+   此示例创建一个名为 "ImportedLogicApp" 的 Visual Studio 解决方案。
 
    ![创建 Azure 资源组项目](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. 如果文件尚未打开，请从解决方案资源管理器打开**逻辑应用**文件。
+1. 创建解决方案后，在解决方案资源管理器中打开文件的**LogicApp.js** （如果该文件尚未打开）。
 
-1. 从导出的模板复制内容，并覆盖**逻辑应用**文件中的内容。
+1. 从导出的模板复制内容，并覆盖**LogicApp.js**文件中的内容。
 
 1. 在部署逻辑应用之前，请按照以下步骤授权任何新连接：
 
-   1. 打开 "**逻辑应用**" 快捷菜单，然后选择 "**通过逻辑应用设计器打开**"。
+   1. 在快捷菜单上打开 " **LogicApp.js** "，然后选择 "**用逻辑应用设计器打开**"。
 
       ![在逻辑应用设计器中打开模板](./media/export-from-microsoft-flow-logic-app-template/open-logic-app-designer.png)
 
@@ -131,7 +145,7 @@ ms.locfileid: "75428884"
 
    1. 在部署逻辑应用之前保存解决方案。
 
-1. 在解决方案资源管理器中，打开项目快捷菜单，然后选择 "**部署** > **新**的"。 如果出现系统提示，请使用 Azure 帐户登录。
+1. 在解决方案资源管理器中，打开项目快捷菜单，然后选择 "**部署**  >  **新**的"。 如果出现系统提示，请使用 Azure 帐户登录。
 
 1. 出现提示时，确认要用于部署的 Azure 订阅、Azure 资源组和其他任何设置，如用于传递模板参数值的[参数文件](../azure-resource-manager/templates/parameter-files.md)，然后选择 "**部署**"。
 

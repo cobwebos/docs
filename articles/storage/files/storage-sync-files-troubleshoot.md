@@ -3,16 +3,15 @@ title: 对 Azure 文件同步进行故障排除 | Microsoft Docs
 description: 对 Azure 文件同步的常见问题进行故障排除
 author: jeffpatt24
 ms.service: storage
-ms.topic: conceptual
-ms.date: 1/22/2019
+ms.topic: troubleshooting
+ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ec7469210bcfae53407a157a325c749aee2c2b08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85512054"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -315,6 +314,7 @@ PerItemErrorCount: 1006.
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | 服务器上的分层文件不可访问。 如果在删除服务器终结点之前未撤回该分层文件，则会出现此问题。 | 若要解决此问题，请参阅[在删除服务器终结点后无法访问服务器上的分层文件](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 如果错误持续数天，请使用 FileSyncErrorsReport.ps1 PowerShell 脚本确定相关的文件夹尚未同步的原因。 |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | 由于尚未同步某个相关的文件夹，无法同步文件或目录更改。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 如果错误持续数天，请使用 FileSyncErrorsReport.ps1 PowerShell 脚本确定相关的文件夹尚未同步的原因。 |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | 无法同步文件或目录更改，因为尚未同步某个相关的文件夹且同步会话失败。 在同步相关的更改后，此项将会同步。 | 无需采取措施。 如果错误仍然存在，请调查同步会话失败。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | 文件或目录名称无效。 | 重命名有问题的文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
@@ -552,13 +552,13 @@ PerItemErrorCount: 1006.
 
 当 Azure 订阅暂停时，将发生此错误。 还原 Azure 订阅后，会重新启用同步。 有关详细信息，请参阅[为何禁用我的 Azure 订阅？如何重新激活它？](../../cost-management-billing/manage/subscription-disabled.md)。
 
-<a id="-2134364052"></a>**为存储帐户配置了防火墙或虚拟网络。**  
+<a id="-2134375618"></a>**为存储帐户配置了防火墙或虚拟网络。**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
-| **HRESULT（十进制）** | -2134364052 |
-| **错误字符串** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **HRESULT** | 0x80c8033e |
+| **HRESULT（十进制）** | -2134375618 |
+| **错误字符串** | ECS_E_SERVER_BLOCKED_BY_NETWORK_ACL |
 | **所需的补救措施** | 是 |
 
 如果由于设置了存储帐户防火墙或者存储帐户属于虚拟网络而导致 Azure 文件共享不可访问，则会发生此错误。 验证存储帐户上的防火墙和虚拟网络设置是否已正确配置。 有关详细信息，请参阅[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)。 
@@ -884,7 +884,7 @@ PerItemErrorCount: 1006.
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 导航到存储同步服务中的同步组。
 2. 选择同步组中的云终结点。
 3. 记下打开的窗格中的 Azure 文件共享名称。
@@ -967,7 +967,7 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**确保 Azure 文件共享存在。**  
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. 在左侧目录中单击“概述”，返回存储帐户主页。
 2. 选择“文件”查看文件共享列表。
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
@@ -1087,6 +1087,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
+| 0x80c86045 | -2134351803 | ECS_E_INITIAL_UPLOAD_PENDING | 文件无法进行层级，因为正在进行初始上传。 | 无需采取措施。 初始上传完成后，将对该文件进行分层。 |
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 由于文件在使用中，文件分层失败。 | 无需采取措施。 不再使用该文件时，文件同步会对其进行分层。 |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 由于文件已被同步排除，文件分层失败。 | 无需采取措施。 无法对同步排除列表中的文件进行分层。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 由于在服务器上找不到文件，文件分层失败。 | 无需采取措施。 如果错误仍然存在，请检查服务器上是否存在该文件。 |
@@ -1108,6 +1109,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 由于网络问题，文件分层失败。 | 无需采取措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 由于已对文件进行了修改，文件分层失败。 | 无需采取措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行分层。 |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件分层失败。 | 如果错误仍然存在，请调查耗尽了系统资源的应用程序或内核模式驱动程序。 |
+| 0x8e5e03fe | -1906441218 | JET_errDiskIO | 由于写入云分层数据库时出现 i/o 错误，导致文件无法分层。 | 如果错误仍然存在，请在卷上运行 chkdsk，并检查存储硬件。 |
+| 0x8e5e0442 | -1906441150 | JET_errInstanceUnavailable | 由于云分层数据库未运行，文件未能分层。 | 若要解决此问题，请重新启动 FileSyncSvc 服务或服务器。 如果错误仍然存在，请在卷上运行 chkdsk，并检查存储硬件。 |
 
 
 

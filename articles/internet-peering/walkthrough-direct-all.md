@@ -5,15 +5,14 @@ description: 直接对等互连演练
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d88fcfc4d3e073bf544f2ca0f4d01dbe305b45da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e27fa26514d27d68aecdf9e28b36e2747dc8ffe2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75775506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710756"
 ---
 # <a name="direct-peering-walkthrough"></a>直接对等互连演练
 

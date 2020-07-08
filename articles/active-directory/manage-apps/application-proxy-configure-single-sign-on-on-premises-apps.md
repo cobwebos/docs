@@ -3,25 +3,24 @@ title: 具有 Azure AD 应用 Proxy 的本地应用的 SAML 单一登录
 description: 了解如何为通过 SAML 身份验证保护的本地应用程序提供单一登录。 使用应用程序代理提供对本地应用的远程访问。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803291"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764819"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>具有应用程序代理的本地应用程序的 SAML 单一登录
 
@@ -74,7 +73,7 @@ ms.locfileid: "80803291"
 
 2. 在 "**设置 SAML 的单一登录**" 页中，选择 "**基本 SAML 配置**" 标题，并选择其**编辑**图标（铅笔）。 请确保在 "**标识符**"、"**回复 url**" 和 "**注销 url** " 字段中填充了在应用程序代理中配置的**外部 URL** 。 这些 Url 是应用程序代理正常工作所必需的。 
 
-3. 编辑前面配置的**回复 URL** ，使其域可通过应用程序代理在 internet 上访问。 例如，如果**外部 URL**为`https://contosotravel-f128.msappproxy.net` `https://contosotravel.com/acs`，原始**回复 Url**是，则需要将原始**回复 url**更新为`https://contosotravel-f128.msappproxy.net/acs`。
+3. 编辑前面配置的**回复 URL** ，使其域可通过应用程序代理在 internet 上访问。 例如，如果**外部 URL**为 `https://contosotravel-f128.msappproxy.net` ，原始**回复 url**是 `https://contosotravel.com/acs` ，则需要将原始**回复 url**更新为 `https://contosotravel-f128.msappproxy.net/acs` 。
 
     ![输入基本 SAML 配置数据](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

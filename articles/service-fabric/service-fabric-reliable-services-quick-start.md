@@ -4,12 +4,11 @@ description: 介绍如何创建具有无状态服务和有状态服务的 Micros
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083757"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038015"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 
@@ -30,7 +29,7 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
 
-无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），才能实现高可用性和可靠性。
+无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），以使其高度可用且可靠。
 
 以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019，并新建一个名为 HelloWorld  的 Service Fabric 应用程序项目：
 
@@ -103,7 +102,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 系统将管理此业务流程，以便保持服务的高度可用和适当平衡。
 
-`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `Task.Run()` 实现中的 `RunAsync` 安排新的 Task。
+`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `RunAsync` 实现中的 `Task.Run()` 安排新的 Task。
 
 取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `RunAsync()`。
 
@@ -127,7 +126,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 有状态服务具有与无状态服务相同的入口点。 主要区别是是否有能够可靠地存储状态的*状态提供程序*。 Service Fabric 附带名为[可靠集合](service-fabric-reliable-services-reliable-collections.md)的状态提供程序实现，可让你通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
 
-打开 **HelloWorldStateful** 中的 *HelloWorldStateful.cs*，该文件包含以下 RunAsync 方法：
+打开 *HelloWorldStateful* 中的 **HelloWorldStateful.cs**，该文件包含以下 RunAsync 方法：
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)

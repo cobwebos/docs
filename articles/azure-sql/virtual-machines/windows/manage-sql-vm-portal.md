@@ -1,10 +1,9 @@
 ---
-title: 使用 Azure 门户管理 Azure 中的 SQL Server VM | Microsoft Docs
+title: 使用 Azure 门户管理 Azure 中 SQL Server 虚拟机 |Microsoft Docs
 description: 了解如何在 Azure 门户中访问 Azure 上托管的 SQL Server VM 的 SQL 虚拟机资源。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -13,17 +12,16 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6cf6fac84abd1d996c77aae7240c0322c5ec53fb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 8def7c52f2b1005419a29d35ef122b48f34fdee4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84036858"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84668995"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 中的 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-在 [Azure 门户](https://portal.azure.com)中，SQL 虚拟机资源是独立的管理服务。 可以使用它同时查看所有 SQL Server VM，以及修改专用于 SQL Server 的设置： 
+在[Azure 门户](https://portal.azure.com)中， **SQL 虚拟机**（vm）资源是一个独立的管理服务。 可以使用它同时查看所有 SQL Server VM，以及修改专用于 SQL Server 的设置： 
 
 ![SQL 虚拟机资源](./media/manage-sql-vm-portal/sql-vm-manage.png)
 

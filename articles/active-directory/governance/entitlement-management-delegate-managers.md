@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/07/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7acea7503e5cdde9ff55c27f16351b21453fe521
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73174361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078339"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>委派访问控制，以访问 Azure AD 的权利管理中的包管理器
 
@@ -68,7 +67,7 @@ ms.locfileid: "73174361"
 
 1. 在要删除的访问包管理器旁边添加复选标记。
 
-1. 单击 **“删除”**。
+1. 单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

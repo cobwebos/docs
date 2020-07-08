@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75969292"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021885"
 ---
 # <a name="use-case---customer-profiling"></a>用例 - 客户分析
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关 Cortana Intelligence 的详细信息，请访问 [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics)（Cortana Intelligence 套件）。 此文档介绍一个简单的用例，帮助你了解 Azure 数据工厂解决常见分析问题的方法。
@@ -38,7 +37,7 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 3. 在“示例管道”**** 边栏选项卡中，单击要部署的“客户分析”****。
 
     ![“示例管道”边栏选项卡](./media/data-factory-samples/SampleTile.png)
-4. 指定此示例的配置设置。 例如，Azure 存储帐户名和密钥、Azure SQL server 名称、数据库、用户 ID 和密码。
+4. 指定此示例的配置设置。 例如，Azure 存储帐户名称和密钥、逻辑 SQL server 名称、数据库、用户 ID 和密码。
 
     ![“示例”边栏选项卡](./media/data-factory-samples/SampleBlade.png)
 5. 指定配置设置后，单击“创建”**** 可以创建/部署示例管道和此管道使用的链接服务/表格。
@@ -63,6 +62,6 @@ Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交�
 
 在此示例中，数据工厂用于安排活动（复制输入数据、转换和处理数据，并将最终数据输出到 Azure SQL 数据库）。  还可以对数据管道的网络进行可视化、对其进行管理，以及从 UI 监视其状态。
 
-## <a name="benefits"></a>优点
+## <a name="benefits"></a>好处
 通过优化其用户配置文件分析并将其与业务目标匹配，游戏公司可快速收集使用模式并分析其营销活动的效果。
 
