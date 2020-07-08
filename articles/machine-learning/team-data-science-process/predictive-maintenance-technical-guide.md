@@ -13,7 +13,6 @@ ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83682718"

@@ -3,25 +3,23 @@ title: 适用于 IE 的 Azure 访问面板扩展故障排除 |Microsoft Docs
 description: 如何使用组策略为我的应用门户部署 Internet Explorer 加载项。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.openlocfilehash: 16abfbeacd972ee8b0ab55f09945e687c95f0093
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67723916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763255"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 的访问面板扩展疑难解答
 
@@ -40,7 +38,7 @@ ms.locfileid: "67723916"
 
 1. [选择此链接可下载诊断工具。](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 1. 打开该文件并将内容提取到您的计算机。
-1. 若要运行该工具，请右键单击名为 " *AccessPanelExtensionDiagnosticTool* " 的文件，然后选择 "**打开时** > **基于 Microsoft Windows 脚本宿主**"。
+1. 若要运行该工具，请右键单击名为*AccessPanelExtensionDiagnosticTool.js*的文件，然后选择 "**通过**  >  **基于 Microsoft Windows 的脚本宿主**打开"。
 
     ![打开方式 > 基于 Microsoft Windows 的脚本主机](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 

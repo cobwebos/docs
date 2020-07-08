@@ -5,12 +5,11 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d42087008f1812bc3713456025ed3be351d0917
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680981"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022174"
 ---
 # <a name="late-stage-reprojection"></a>后期阶段重新投影
 
@@ -24,7 +23,7 @@ ms.locfileid: "80680981"
 
 ## <a name="choose-lsr-mode-in-unity"></a>选择 Unity 中的 LSR 模式
 
-在 Unity 编辑器中，切换到 "*文件 > 生成设置*"。 选择左下角的 "*播放机设置*"，然后在 "*播放器 > XR 设置" > 虚拟现实 Sdk > Windows Mixed Reality* ，无论是否已选中 "**启用深度缓冲区共享**"：
+在 Unity 编辑器中，请参阅 *:::no-loc text="File > Build Settings":::* 。 *:::no-loc text="Player Settings":::* 在左下方选择，并选中 " *:::no-loc text="Player > XR Settings > Virtual Reality SDKs > Windows Mixed Reality":::* 是否选中" **:::no-loc text="Enable Depth Buffer Sharing":::** 。
 
 ![深度缓冲区共享已启用标志](./media/unity-depth-buffer-sharing-enabled.png)
 
@@ -44,9 +43,9 @@ ms.locfileid: "80680981"
 
 ### <a name="configure-planar-lsr-in-unity"></a>在 Unity 中配置平面 LSR
 
-平面参数派生自所谓的 "*焦点点*"，您必须通过`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`提供每个框架。 有关详细信息，请参阅[Unity 要点 API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 。 如果未设置焦点，则将为你选择一个回退。 但是，自动回退通常会导致不理想的结果。
+平面参数派生自所谓的 "*焦点点*"，您必须通过提供每个框架 `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` 。 有关详细信息，请参阅[Unity 要点 API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 。 如果未设置焦点，则将为你选择一个回退。 但是，自动回退通常会导致不理想的结果。
 
-您可以自行计算焦点，不过，这可能会使其基于由远程呈现主机计算的点。 调用`RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint`以获取。 系统会要求提供一个坐标框架，以便在其中表示焦点。 在大多数情况下，只需在`UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr`此处提供结果。
+您可以自行计算焦点，不过，这可能会使其基于由远程呈现主机计算的点。 调用 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` 以获取。 系统会要求提供一个坐标框架，以便在其中表示焦点。 在大多数情况下，只需在此处提供结果 `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` 。
 
 通常情况下，客户端和主机都会呈现另一方不知道的内容，例如客户端上的 UI 元素。 因此，将远程焦点与本地计算的焦点组合在一起可能有意义。
 

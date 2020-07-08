@@ -5,12 +5,11 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: ee602b3aa6c701eb10730f4c5c387175bb070ef3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834588"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921819"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支持选项
 
@@ -26,7 +25,7 @@ ms.locfileid: "83834588"
 - [Microsoft 顶级支持](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在青铜级可靠性层上运行的群集或单节点群集将仅允许运行测试工作负荷。 如果遇到在青铜级可靠性层上运行的群集或单节点群集方面的问题，Microsoft 支持团队将帮助你缓解问题，但不会执行根本原因分析。 有关更多详细信息，请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
+> 在青铜级可靠性层上运行的群集或单节点群集将仅允许运行测试工作负荷。 如果遇到在青铜级可靠性层上运行的群集或单节点群集方面的问题，Microsoft 支持团队将帮助你缓解问题，但不会执行根本原因分析。 有关更多详细信息，请参阅[群集的可靠性特征](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster)。
 >
 > 有关生产就绪群集所需满足的要求的详细信息，请参阅[生产就绪情况核对清单](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
@@ -51,7 +50,7 @@ ms.locfileid: "83834588"
 
 ### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow 和 MSDN 论坛
 
-[StackOverflow 上的 Service Fabric 标签][stackoverflow]和 [MSDN 上的 Service Fabric 论坛][msdn-forum]最适合提问有关平台工作方式以及如何通过该平台完成某些任务的问题。
+[StackOverflow 上的 Service Fabric 标记][stackoverflow]和 [MSDN 上的 Service Fabric 论坛][msdn-forum]最适合提问有关平台工作方式以及如何通过该平台完成某些任务的问题。
 
 ### <a name="azure-feedback-forum"></a>Azure 反馈论坛
 
@@ -72,3 +71,4 @@ ms.locfileid: "83834588"
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs
 [sample-repos]: https://aka.ms/servicefabricsamples
+[msdn-forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?category=windowsazureplatform

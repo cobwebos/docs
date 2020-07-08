@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81770693"
 ---
 # <a name="deployment-best-practices"></a>部署最佳实践
@@ -119,7 +118,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-在脚本中，使用`az login --service-principal`登录，提供主体的信息。 然后，可以使用`az webapp config container set`设置容器名称、标记、注册表 URL 和注册表密码。 下面是一些有用的链接，可用于构造容器 CI 过程。
+在脚本中，使用登录 `az login --service-principal` ，提供主体的信息。 然后，可以使用 `az webapp config container set` 设置容器名称、标记、注册表 URL 和注册表密码。 下面是一些有用的链接，可用于构造容器 CI 过程。
 
 - [如何登录到 Circle CI 上的 Azure CLI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
@@ -131,11 +130,11 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="node"></a>节点
 
-默认情况下，Kudu 执行节点应用程序（`npm install`）的生成步骤。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置`SCM_DO_BUILD_DURING_DEPLOYMENT`，并将值设置`false`为。
+默认情况下，Kudu 执行节点应用程序（）的生成步骤 `npm install` 。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置， `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将值设置为 `false` 。
 
 ### <a name="net"></a>.NET 
 
-默认情况下，Kudu 执行 .NET 应用程序（`dotnet build`）的生成步骤。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置`SCM_DO_BUILD_DURING_DEPLOYMENT`，并将值设置`false`为。
+默认情况下，Kudu 执行 .NET 应用程序（）的生成步骤 `dotnet build` 。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置， `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将值设置为 `false` 。
 
 ## <a name="other-deployment-considerations"></a>其他部署注意事项
 
@@ -156,4 +155,4 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 - 选择**最佳方案**主页磁贴。
 - 若要查看应用的当前状态，请单击 "**可用性最佳实践 & 性能**" 或 "**最佳实践**" 以查看应用的当前状态。
 
-你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。
+你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` 。

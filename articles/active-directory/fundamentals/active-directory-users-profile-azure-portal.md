@@ -7,17 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ba51b0ad7f314058f34092dff4e26411020086a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75422881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604006"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
 使用 Azure Active Directory (Azure AD) 来添加用户配置文件信息，包括配置文件图片、工作特定信息和某些设置。 有关添加新用户的详细信息，请参阅[如何添加或删除 Azure Active Directory 中的用户](add-users-azure-active-directory.md)。

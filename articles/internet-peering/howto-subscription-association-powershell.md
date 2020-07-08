@@ -5,19 +5,18 @@ description: 使用 PowerShell 将对等 ASN 关联到 Azure 订阅
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c0ad9ae885a458da5df8975d5d13018fd92bbdaf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75908989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710773"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>使用 PowerShell 将对等 ASN 关联到 Azure 订阅
 
-提交对等互连请求之前，首先应使用以下步骤将 ASN 与 Azure 订阅相关联。
+提交对等互连请求之前，应首先使用以下步骤将 ASN 与 Azure 订阅关联。
 
 如果愿意，可以使用[门户](howto-subscription-association-portal.md)完成本指南。
 
@@ -86,7 +85,7 @@ Type            : Microsoft.Peering/peerAsns
 ```
 
 > [!IMPORTANT]
-> 等待 ValidationState 在提交对等互连请求之前变成 "已批准"。 此批准最多可能需要12小时。
+> 在提交对等互连请求之前，等待 ValidationState 变成“Approved”。 此批准最多可能需要 12 小时。
 
 ## <a name="modify-peerasn"></a>修改 PeerAsn
 你可以随时修改 NOC 联系信息。
@@ -109,4 +108,4 @@ Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 
 ## <a name="additional-resources"></a>其他资源
 
-有关详细信息，请访问[Internet 对等互连常见问题解答](faqs.md)
+有关详细信息，请访问 [Internet 对等互连常见问题解答](faqs.md)

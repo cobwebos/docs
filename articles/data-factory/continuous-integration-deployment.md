@@ -11,12 +11,11 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772856"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85336871"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -98,7 +97,7 @@ ms.locfileid: "83772856"
 
     ![阶段视图](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  创建新任务。 搜索“Azure 资源组部署”，然后选择“添加”。 
+    b.  创建新任务。 搜索 " **ARM 模板部署**"，然后选择 "**添加**"。
 
     c.  在“部署任务”中，选择目标数据工厂的订阅、资源组和位置。 根据需要提供凭据。
 
@@ -361,6 +360,14 @@ ms.locfileid: "83772856"
                         "value": "-::secureString"
                     },
                     "resourceId": "="
+                },
+                "computeProperties": {
+                    "dataFlowProperties": {
+                        "externalComputeInfo": [{
+                                "accessToken": "-::secureString"
+                            }
+                        ]
+                    }
                 }
             }
         }
@@ -395,6 +402,7 @@ ms.locfileid: "83772856"
                     "accessKeyId": "=",
                     "servicePrincipalId": "=",
                     "userId": "=",
+                    "host": "=",
                     "clientId": "=",
                     "clusterUserName": "=",
                     "clusterSshUserName": "=",
@@ -413,7 +421,11 @@ ms.locfileid: "83772856"
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "functionAppUrl":"=",
+                    "environmentUrl": "=",
                     "aadResourceId": "=",
+                    "sasUri": "|:-sasUri:secureString",
+                    "sasToken": "|",
                     "connectionString": "|:-connectionString:secureString"
                 }
             }
@@ -570,27 +582,7 @@ ms.locfileid: "83772856"
 
 如果未配置 Git，可以通过“ARM 模板”列表中的“导出 ARM 模板”访问链接的模板。 
 
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>从 CI/CD 中排除 Azure-SSIS 集成运行时
-
-如果开发工厂包含 Azure-SSIS 集成运行时，在以下情况下，你可以从 CI/CD 流程中排除所有 Azure-SSIS 集成运行时：
-
-- Azure-SSIS IR 基础结构非常复杂，在每个环境中各不相同。  
-- 需使用相同的名称为每个环境手动设置 Azure-SSIS IR。 否则，如果存在依赖于 Azure-SSIS IR 的活动，则发布将会失败。
-
-若要排除 Azure-SSIS 集成运行时，请执行以下操作：
-
-1. 在协作分支的根文件夹中添加一个 publish_config.json 文件（如果不存在）。
-1. 在 publish_config.json 中添加以下设置： 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-从协作分支发布时，将从生成的资源管理器模板中排除 Azure-SSIS 集成运行时。
-
-## <a name="hotfix-production-branch"></a>修补程序生产分支
+## <a name="hotfix-production-environment"></a>修补程序生产环境
 
 将某个工厂部署到生产环境后，如果你发现某个 bug 需要立即予以修复，但无法部署当前协作分支，则你可能需要部署一个修补程序。 此方法称作快速修复工程 (QFE)。
 
@@ -631,7 +623,7 @@ ms.locfileid: "83772856"
 - 按照设计，数据工厂不允许挑拣提交内容或选择性地发布资源。 发布将包含数据工厂中发生的所有更改。
 
     - 数据工厂实体相互依赖。 例如，触发器依赖于管道，而管道又依赖于数据集和其他管道。 选择性发布资源子集可能会导致意外的行为和错误。
-    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅[修补程序生产分支](#hotfix-production-branch)。
+    - 如果需要进行选择性发布（这种情况很少见），请考虑使用修补程序。 有关详细信息，请参阅[修补程序生产环境](#hotfix-production-environment)。
 
 -   无法从专用分支发布。
 
@@ -734,8 +726,10 @@ function triggerSortUtil {
         return;
     }
     $visited[$trigger.Name] = $true;
-    $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
-        triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+    if ($trigger.Properties.DependsOn) {
+        $trigger.Properties.DependsOn | Where-Object {$_ -and $_.ReferenceTrigger} | ForEach-Object{
+            triggerSortUtil -trigger $triggerNameResourceDict[$_.ReferenceTrigger.ReferenceName] -triggerNameResourceDict $triggerNameResourceDict -visited $visited -sortedList $sortedList
+        }
     }
     $sortedList.Push($trigger)
 }

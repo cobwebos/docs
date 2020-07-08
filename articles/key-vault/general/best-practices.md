@@ -10,12 +10,11 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2a81d28998c531339a1b719e37e4b90004157edf
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
-ms.translationtype: MT
+ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213068"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 
@@ -35,7 +34,20 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="backup"></a>Backup
 
-确保在保管库中更新/删除/创建对象时定期执行保管库的备份。
+在保管库中更新/删除/创建对象时确保定期执行保管库的备份。
+
+### <a name="azure-powershell-backup-commands"></a>Azure PowerShell 备份命令
+
+* [备份证书](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate?view=azurermps-6.13.0)
+* [备份密钥](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey?view=azurermps-6.13.0)
+* [备份机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret?view=azurermps-6.13.0)
+
+### <a name="azure-cli-backup-commands"></a>Azure CLI 备份命令
+
+* [备份证书](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-backup)
+* [备份密钥](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-backup)
+* [备份机密](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-backup)
+
 
 ## <a name="turn-on-logging"></a>启用日志记录
 

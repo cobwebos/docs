@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 3720d917d71fa4e8c5a14bb60fdc7c405be4bfdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410458"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987046"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>使用 Azure 数据工厂从 Hive 复制数据 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,17 +54,17 @@ Hive 链接的服务支持以下属性：
 | port | Hive 服务器用来侦听客户端连接的 TCP 端口。 如果连接到 Azure HDInsights，请指定端口 443。 | 是 |
 | serverType | Hive 服务器的类型。 <br/>允许值包括：HiveServer1、HiveServer2、HiveThriftServer    | 否 |
 | thriftTransportProtocol | Thrift 层中要使用的传输协议。 <br/>允许值包括：二进制、SASL、HTTP    | 否 |
-| authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许值包括：Anonymous、Username、UsernameAndPassword、WindowsAzureHDInsightService     | 是 |
+| authenticationType | 用于访问 Hive 服务器的身份验证方法。 <br/>允许的值为： **Anonymous**、 **Username**、 **UsernameAndPassword**、 **WindowsAzureHDInsightService**。 目前不支持 Kerberos 身份验证。 | 是 |
 | serviceDiscoveryMode | true 指示使用 ZooKeeper 服务，false 指示不使用。  | 否 |
 | zooKeeperNameSpace | ZooKeeper 上要将 Hive Server 2 节点添加到其下的命名空间。  | 否 |
 | useNativeQuery | 指定驱动程序是使用本机 HiveQL 查询，还是将其转换为 HiveQL 中的等效形式。  | 否 |
 | username | 用于访问 Hive 服务器的用户名。  | 否 |
 | password | 用户所对应的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 否 |
 | httpPath | 对应于 Hive 服务器的部分 URL。  | 否 |
-| enableSsl | 指定是否使用 TLS 对到服务器的连接进行加密。 默认值为 false。  | 否 |
-| trustedCertPath | Pem 文件的完整路径，该文件包含在通过 TLS 进行连接时用于验证服务器的受信任的 CA 证书。 仅当在自承载 IR 上使用 TLS 时，才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
+| enableSsl | 指定是否使用 TLS 加密到服务器的连接。 默认值为 false。  | 否 |
+| trustedCertPath | 包含受信任 CA 证书（通过 TLS 进行连接时用来验证服务器）的 .pem 文件的完整路径。 只有在自承载 IR 上使用 TLS 时才能设置此属性。 默认值是随 IR 一起安装的 cacerts.pem 文件。  | 否 |
 | useSystemTrustStore | 指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 默认值为 false。  | 否 |
-| allowHostNameCNMismatch | 指定在通过 TLS 连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
+| allowHostNameCNMismatch | 指定通过 TLS 进行连接时是否要求 CA 颁发的 TLS/SSL 证书名称与服务器的主机名相匹配。 默认值为 false。  | 否 |
 | allowSelfSignedServerCert | 指定是否允许来自服务器的自签名证书。 默认值为 false。  | 否 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 在[先决条件](#prerequisites)部分了解更多信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
@@ -96,7 +95,7 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将数据集的 type 属性设置为 **HiveObject**。 支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| Property | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**HiveObject** | 是 |
 | 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
@@ -128,7 +127,7 @@ Hive 链接的服务支持以下属性：
 
 要从 Hive 复制数据，请将复制活动中的源类型设置为 **HiveSource**。 复制活动**source**部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| properties | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**HiveSource** | 是 |
 | 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

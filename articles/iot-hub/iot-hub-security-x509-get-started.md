@@ -10,17 +10,16 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759651"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
 本教程介绍使用 *X.509 证书身份验证*保护 Azure IoT 中心所要执行的步骤。 在演示过程中，我们将使用开源工具 OpenSSL 在 Windows 计算机本地创建证书。 我们建议仅将本教程用于测试目的。 对于生产环境，应该从*根证书颁发机构 (CA)* 购买证书。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程要求准备好以下资源：
 
@@ -41,43 +40,43 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 * 生成由某个现有根 CA 证书签名的 [X.509 中间 CA 证书](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust)并将其上传到中心。 在上传并验证中间证书后，可以使用它来替代下面提到的根 CA 证书，如下所述。 可以使用诸如 OpenSSL（[openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) 和 [openssl ca](https://www.openssl.org/docs/man1.1.0/man1/ca.html)）的工具来生成中间 CA 证书并对其进行签名。
 
 > [!NOTE]
-> 如果第三方根目录不是唯一的，请不要上传，因为这样可以使第三方的其他客户将其设备连接到 IoT 中心。
+> 如果第三方根目录不是你独有的，请不要将其上传，因为这将使第三方的其他客户能够将其设备连接到你的 IoT 中心。
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>将 X.509 CA 证书注册到 IoT 中心
 
 这些步骤说明如何通过门户将新的证书颁发机构添加到 IoT 中心。
 
-1. 在 Azure 门户中，导航到 IoT 中心，然后选择中心的 "**设置** > **证书**"。
+1. 在 Azure 门户中，导航到你的 IoT 中心，并选择中心的“设置” > “证书”。 
 
-1. 选择“添加”以添加新证书。****
+1. 选择“添加”以添加新证书。
 
-1. 在“证书名称”中输入一个易记的显示名称，并从计算机中选择在上一部分创建的证书文件。****
+1. 在“证书名称”中输入一个易记的显示名称，并从计算机中选择在上一部分创建的证书文件。
 
-1. 收到已成功上传证书的通知后，选择“保存”。****
+1. 收到已成功上传证书的通知后，选择“保存”。
 
     ![上传证书](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
 
-   该证书将显示在证书列表中，其状态为“未验证”。****
+   该证书将显示在证书列表中，其状态为“未验证”。
 
-1. 选择刚刚添加的证书以显示“证书详细信息”，然后选择“生成验证码”。********
+1. 选择刚刚添加的证书以显示“证书详细信息”，然后选择“生成验证码”。 
 
    ![验证证书](./media/iot-hub-security-x509-get-started/copy-verification-code.png)  
 
-1. 将**验证代码**复制到剪贴板。 稍后要使用它来验证证书所有权。
+1. 将“验证码”复制到剪贴板。 稍后要使用它来验证证书所有权。
 
 1. 遵循[管理用于示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的“步骤 3”。  此过程将使用与 X.509 CA 证书关联的、可生成签名的私钥来为验证码签名。 有一些工具（例如 OpenSSL）可执行此签名过程。 此过程称为[所有权证明](https://tools.ietf.org/html/rfc5280#section-3.1)。
 
-1. 在“证书详细信息”中的“验证证书 .pem 或 .cer 文件”下，找到并打开签名文件。******** 然后选择“验证”。****
+1. 在“证书详细信息”中的“验证证书 .pem 或 .cer 文件”下，找到并打开签名文件。  然后选择“验证”。
 
-   证书状态将更改为“已验证”。**** 如果证书未自动更新，请选择“刷新”。****
+   证书状态将更改为“已验证”。 如果证书未自动更新，请选择“刷新”。
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>为 IoT 中心创建 X.509 设备
 
-1. 在 Azure 门户中，导航到 IoT 中心，**然后选择** > "资源管理器**IoT 设备**"。
+1. 在 Azure 门户中导航到你的 IoT 中心，然后选择“资源管理器” > “IoT 设备”。 
 
-1. 选择“新建”以添加新设备。****
+1. 选择“新建”以添加新设备。
 
-1. 在“设备 ID”中，输入易记的显示名称。**** 对于“身份验证类型”，请选择“已由 X.509 CA 签名”，然后选择“保存”。************
+1. 在“设备 ID”中，输入易记的显示名称。 对于“身份验证类型”，请选择“已由 X.509 CA 签名”，然后选择“保存”。  
 
    ![在门户中创建 X.509 设备](./media/iot-hub-security-x509-get-started/new-x509-device.png)
 
@@ -87,21 +86,21 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
 接下来，我们演示如何创建一个 C# 应用程序来模拟针对 IoT 中心注册的 X.509 设备。 我们会将模拟设备提供的温度和湿度值发送到中心。 本教程只创建设备应用程序。 至于如何创建 IoT 中心服务应用程序用于向此模拟设备发送的事件发送响应，是留给读者的练习。 C# 应用程序假定你已按照[管理示例和教程的测试 CA 证书](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步骤进行操作。
 
-1. 打开 Visual Studio，选择“创建新项目”，然后选择“控制台应用(.NET Framework)”项目模板。******** 选择“下一步”  。
+1. 打开 Visual Studio，选择“创建新项目”，然后选择“控制台应用(.NET Framework)”项目模板。  选择“**下一步**”。
 
-1. 在“配置新项目”中，将项目命名为 *SimulateX509Device*，然后选择“创建”。********
+1. 在“配置新项目”中，将项目命名为 *SimulateX509Device*，然后选择“创建”。 
 
    ![在 Visual Studio 中创建 X.509 设备项目](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. 在解决方案资源管理器中，右键单击“SimulateX509Device”项目，然后选择“管理 NuGet 包”。********
+1. 在解决方案资源管理器中，右键单击“SimulateX509Device”项目，然后选择“管理 NuGet 包”。 
 
-1. 在“NuGet 包管理器”中，选择“浏览”，然后搜索并选择“Microsoft.Azure.Devices.Client”。************ 选择“安装”  。
+1. 在“NuGet 包管理器”中，选择“浏览”，然后搜索并选择“Microsoft.Azure.Devices.Client”。   选择“安装”。
 
    ![在 Visual Studio 中添加设备 SDK NuGet 包](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
     此步骤将下载、安装 Azure IoT 设备 SDK NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs 文件`using`的顶部添加以下语句： **Program.cs**
+1. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
 
     ```csharp
         using Microsoft.Azure.Devices.Client;
@@ -109,7 +108,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
         using System.Security.Cryptography.X509Certificates;
     ```
 
-1. 将以下字段添加到**Program**类：
+1. 将以下字段添加到 **Program** 类：
 
     ```csharp
         private static int MESSAGE_COUNT = 5;
@@ -177,7 +176,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
    1. 生成 Visual Studio 解决方案。
 
-   1. 使用“以管理员身份运行”打开新的命令提示符窗口。****  
+   1. 使用“以管理员身份运行”打开新的命令提示符窗口。  
 
    1. 导航到包含你的解决方案的文件夹，然后导航到解决方案文件夹中的 *bin/Debug* 路径。
 
@@ -191,7 +190,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
 若要详细了解如何保护 IoT 解决方案，请参阅：
 
-* [IoT 安全最佳实践](../iot-fundamentals/iot-security-best-practices.md)
+* [IoT 安全最佳做法](../iot-fundamentals/iot-security-best-practices.md)
 
 * [IoT 安全体系结构](../iot-fundamentals/iot-security-architecture.md)
 

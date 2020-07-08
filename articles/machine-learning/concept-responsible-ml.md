@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595006"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920364"
 ---
 # <a name="responsible-machine-learning-ml"></a>负责机器学习 (ML)
 
@@ -36,7 +35,7 @@ ms.locfileid: "83595006"
 
 ## <a name="interpret-and-explain-model-behavior"></a>解释和说明模型行为
 
-难以解释的系统或黑盒系统可能会出问题，因为利益干系人（如系统开发人员、监管人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
+难以解释或不透明的系统可能会产生问题，因为这使利益干系人（如系统开发人员、管理人员、用户和业务决策者）难以理解系统做出某些决策的原因。 有些 AI 系统比其他系统更容易解释，有时需要在更高准确度的系统和更容易解释的系统之间进行取舍。
 
 若要生成可解释的 AI 系统，请使用 Microsoft 生成的开放源代码包 [InterpretML](https://github.com/interpretml/interpret)。 [可以在 Azure 机器学习中使用 InterpretML](how-to-machine-learning-interpretability.md)，以[解释和说明机器学习模型](how-to-machine-learning-interpretability-aml.md)，包括[自动化机器学习模型](how-to-machine-learning-interpretability-automl.md)。
 
@@ -61,11 +60,14 @@ AI 系统中的不公平性可能会导致以下意外后果：
 
 实现差异隐私系统较为棘手。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) 是一个开放源代码项目，其中包含用于生成全局差异隐私系统的不同组件。 若要详细了解差异隐私和 WhiteNoise 项目，请参阅[使用差异隐私和 WhiteNoise 保护数据隐私](./concept-differential-privacy.md)一文。
 
+> [!NOTE]
+> 请注意，我们将重命名该工具包，并将在未来几周引入新名称。 
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>用数据表记录机器学习生命周期
 
 在机器学习过程中记录正确的信息是在每个阶段做出负责决策的关键所在。 使用数据表，可以记录在机器学习生命周期内使用和创建的机器学习资产。
 
-模型往往被认为是“黑盒”，而且往往很少有关于它们的信息。 由于机器学习系统变得越来越普遍，且被用于做出决策，因此使用数据表就是向开发更负责的机器学习系统迈进。
+模型通常被视为 "不透明框"，通常不会有很少的信息。 由于机器学习系统变得越来越普遍，且被用于做出决策，因此使用数据表就是向开发更负责的机器学习系统迈进。
 
 不妨在数据表中记录一些模型信息：
 
@@ -80,4 +82,5 @@ AI 系统中的不公平性可能会导致以下意外后果：
 
 ## <a name="additional-resources"></a>其他资源
 
+- 使用同态加密[部署加密推理 Web 服务](how-to-homomorphic-encryption-seal.md)。
 - 详细了解有关机器学习系统记录的[关于 ML](https://www.partnershiponai.org/about-ml/) 指南集。

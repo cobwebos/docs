@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 7cbcaefcc087c9f1c7c09668a27fbdef9a4802d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: af33a777d2d6ef53965c2168ac0abee00f59bc50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681072"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021375"
 ---
 # <a name="color-materials"></a>颜色材料
 
@@ -22,7 +21,7 @@ ms.locfileid: "80681072"
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如*albedoMap*或*顶点颜色*）相乘。 如果对材料启用了*透明度*，则使用 alpha 通道调整不透明度， `1`这意味着完全不透明并`0`表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如*albedoMap*或* :::no-loc text="vertex"::: 颜色*）相乘。 如果对材料启用了*透明度*，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
 
   > [!NOTE]
   > 由于颜色材料不反映环境，因此完全透明的颜色材料将变得不可见。 这对于[.pbr 材料](pbr-materials.md)是不同的。
@@ -33,15 +32,15 @@ ms.locfileid: "80681072"
 
 * **textureCoordinateScale**和**textureCoordinateOffset：** 将刻度与 UV 纹理坐标相乘，并向其添加偏移量。 可用于拉伸和移动纹理。 默认小数位数为（1，1），偏移量为（0，0）。
 
-* **useVertexColor：** 如果网格包含顶点颜色，并且已启用此选项，则网格的顶点颜色将被相乘到*albedoColor*和*albedoMap*中。 默认情况下，顶点颜色处于禁用状态。
+* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到*albedoColor*和*albedoMap*中。 默认情况下， *useVertexColor*处于禁用状态。
 
-* **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 默认情况下，此选项处于禁用状态。 另请参阅[单面渲染](single-sided-rendering.md)。
+* **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 默认情况下，此选项处于禁用状态。 另请参阅[ :::no-loc text="Single-sided"::: 呈现](single-sided-rendering.md)。
 
 ## <a name="color-material-properties"></a>颜色材料属性
 
 以下属性特定于颜色材料：
 
-* **vertexMix：** 与`0` `1`之间的此值用于指定[网格](../../concepts/meshes.md)中的顶点颜色对最终颜色的影响程度。 默认值为1时，顶点颜色完全与 albedo 颜色相乘。 如果值为0，则完全忽略顶点颜色。
+* **vertexMix：** 与之间的此值 `0` `1` :::no-loc text="vertex"::: 用于指定[网格](../../concepts/meshes.md)中的颜色对最终颜色的高度。 如果默认值为1，则将 :::no-loc text="vertex"::: 颜色完全乘以 albedo 颜色。 如果值为0，则 :::no-loc text="vertex"::: 完全忽略颜色。
 
 * **transparencyMode：** 与[.pbr 材料](pbr-materials.md)相反，颜色材料区分不同的透明模式：
 

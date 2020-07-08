@@ -4,15 +4,14 @@ description: 使用 Azure DNS 别名记录在区域顶点托管负载均衡的 W
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937371"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710535"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
 
@@ -89,8 +88,8 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
    |类型  |名称  |目标  |位置  |自定义标头设置|
    |---------|---------|---------|---------|---------|
-   |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主机：\<为 App-01 记下的 URL\><br>示例：**host:app-01.azurewebsites.net**|
-   |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主机：\<为 App-02 记下的 URL\><br>示例：**host:app-02.azurewebsites.net**
+   |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主持人\<the URL you recorded for App-01\><br>示例：**host:app-01.azurewebsites.net**|
+   |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主持人\<the URL you recorded for App-02\><br>示例：**host:app-02.azurewebsites.net**
 
 ## <a name="create-dns-zone"></a>创建 DNS 区域
 

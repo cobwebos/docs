@@ -14,12 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3abf7b4acfae5e90d0b3f6781b8fbbf0f6f1427d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921754"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -173,7 +172,7 @@ In | 有权执行的操作
 
 充当此角色的用户可以管理桌面分析以及 Office 自定义和策略服务。 对于桌面分析，此权限包括查看资产库存、创建部署计划、查看部署和运行状况。 对于 Office 自定义和策略服务，此角色可让用户管理 Office 策略。
 
-### <a name="device-administrator"></a>[设备管理员](#device-administrators-permissions)
+### <a name="device-administrators"></a>[设备管理员](#device-administrators-permissions)
 
 此角色只能作为[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
@@ -209,7 +208,7 @@ In | 有权执行的操作
 
 ### <a name="external-id-user-flow-administrator"></a>[外部 ID 用户流管理员](#external-id-user-flow-administrator-permissions)
 
-具有此角色的用户可以在 Azure 门户中创建和管理 B2C 用户流（也称为“内置”策略）。 通过创建或编辑用户流，这些用户可以更改用户体验的 html/CSS/javascript 内容、更改每个用户流的 MFA 要求、更改令牌中的声明，以及调整 Azure AD 组织中所有策略的会话设置。 但是，此角色无法查看用户数据，也不能对组织架构中包含的属性进行更改。 对 Identity Experience Framework（也称为“自定义”）策略的更改超出了此角色的权限范围。
+具有此角色的用户可以在 Azure 门户中创建和管理用户流（也称为 "内置" 策略）。 这些用户可以自定义 HTML/CSS/JavaScript 内容、更改 MFA 要求，在令牌中选择声明，管理 API 连接器，并为 Azure AD 组织中的所有用户流配置会话设置。 另一方面，此角色不包括查看用户数据或对组织架构中包含的属性进行更改的功能。 对标识体验框架策略（也称为自定义策略）的更改也不在此角色的作用域内。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部 ID 用户流属性管理员](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -224,7 +223,7 @@ In | 有权执行的操作
 
 ### <a name="global-administrator--company-administrator"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
-具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure AD 组织的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
+具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 此外，全局管理员可以[提升其访问权限](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)，以管理所有 Azure 订阅和管理组。 这允许全局管理员使用各自的 Azure AD 租户获取对所有 Azure 资源的完全访问权限。 注册 Azure AD 组织的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“全局管理员”。
@@ -238,6 +237,7 @@ In | 有权执行的操作
 > [!NOTE]
 > 全局读取者角色目前存在一些限制 -
 >
+>- [Onedrive 管理中心](https://admin.onedrive.com/)-onedrive 管理中心不支持全局读者角色
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全局读取者无法读取客户密码箱请求。 在 M365 管理中心左窗格中的“支持”下，找不到“客户密码箱请求”选项卡。 
 >- [Office 安全与合规中心](https://sip.protection.office.com/homepage) - 全局读取者无法读取 SCC 审核日志、执行内容搜索或查看安全评分。
 >- [Teams 管理中心](https://admin.teams.microsoft.com) - 全局读取者无法读取“Teams 生命周期”、“分析和报告”、“IP 电话设备管理”和“应用目录”。   
@@ -388,7 +388,7 @@ In | 有权执行的操作
 
 ### <a name="search-administrator"></a>[搜索管理员](#search-administrator-permissions)
 
-充当此角色的用户对 Microsoft 365 管理中心内的所有 Microsoft 搜索管理功能拥有完全访问权限。 搜索管理员可将搜索管理员和搜索编辑员角色委托给用户，并可创建和管理内容，例如书签、问答和位置。 此外，这些用户可以查看消息中心、监视服务运行状况和创建服务请求。
+充当此角色的用户对 Microsoft 365 管理中心内的所有 Microsoft 搜索管理功能拥有完全访问权限。 此外，这些用户可以查看消息中心、监视服务运行状况和创建服务请求。
 
 ### <a name="search-editor"></a>[搜索编辑员](#search-editor-permissions)
 
@@ -457,6 +457,9 @@ Windows Defender ATP 和 EDR | 查看和调查警报。 在 Windows Defender ATP
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为“SharePoint 服务管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“SharePoint 管理员”。
+
+> [!NOTE]
+> 此角色还授予对 Microsoft Intune 的 Microsoft Graph API 的作用域内权限，允许管理和配置与 Sharepoint 和 Onedrive 资源相关的策略。
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype for Business/Lync 管理员](#lync-service-administrator-permissions)
 
@@ -1345,8 +1348,7 @@ Windows Defender ATP 和 EDR | 查看和调查警报。 在 Windows Defender ATP
 | --- | --- |
 | microsoft.commerce.billing/partners/read | 读取 O365 计费的合作伙伴属性。 |
 | microsoft.commerce.volumeLicenseServiceCenter/allEntities/allTasks | 管理批量许可服务中心的所有方面。 |
-| microsoft.directory/organization/basic/update | 更新 Azure Active Directory 中组织的基本属性。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 创建并查看自己的 Office 365 支持票证。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
 
@@ -1858,7 +1860,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 设备用户 | 不推荐使用 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目录同步帐户 | 不显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目录编写人员 | 不显示，因为不应使用它 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目录编写人员 | 未显示，因为不应使用它 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID 用户流管理员 | 外部 ID 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID 用户流属性管理员 | 外部 ID 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
@@ -1898,9 +1900,9 @@ Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 服务管理员 | Teams 服务管理员 | 69091246-20e8-4a56-aa4d-066075b2a7a8
-用户 | 不显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
+用户 | 未显示，因为无法使用它 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 用户帐户管理员 | 用户管理员 | fe930be7-5e62-47db-91af-98c3a49a38b1
-工作区设备联接 | 不推荐使用 | c34f683f-4d5a-4403-affd-6615e00e3a7f
+工作区设备联接 | 已放弃 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>已弃用的角色
 
@@ -1927,16 +1929,16 @@ CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](direct
 设备用户 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 目录同步帐户 | 不显示，因为不应使用它 | [目录同步帐户文档](directory-assign-admin-roles.md#directory-synchronization-accounts)
 目录编写人员 | 不显示，因为不应使用它 | [目录写入者文档](directory-assign-admin-roles.md#directory-writers)
-来宾用户 | 不显示，因为无法使用它  | NA
+来宾用户 | 不显示，因为无法使用它  | 不可用
 Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 合作伙伴层 1 支持 | 不显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 不显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
-受限来宾用户 | 不显示，因为无法使用它 | NA
-用户 | 不显示，因为无法使用它 | NA
+受限来宾用户 | 不显示，因为无法使用它 | 不可用
+User | 不显示，因为无法使用它 | 不可用
 工作区设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解如何将用户分配为 Azure 订阅的管理员，请参阅[使用 Azure 角色 (Azure RBAC) 管理访问权限](../../role-based-access-control/role-assignments-portal.md)
 * 若要详细了解如何在 Microsoft Azure 中控制资源访问，请参阅[了解不同的角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* 有关 Azure Active Directory 如何与 Azure 订阅相关联的详细信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
+* 有关订阅与 Azure AD 租户之间的关系的详细信息，或者有关关联或添加订阅的说明，请参阅[将 Azure 订阅关联或添加到 Azure Active Directory 租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

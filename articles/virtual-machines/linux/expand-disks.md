@@ -1,18 +1,17 @@
 ---
 title: 在 Linux VM 上扩展虚拟硬盘
-description: 了解如何使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘。
+description: 了解如何使用 Azure CLI 在 Linux VM 上扩展虚拟硬盘。
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84659739"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>使用 Azure CLI 扩展 Linux VM 上的虚拟硬盘
 
@@ -28,7 +27,7 @@ ms.locfileid: "78945187"
 
 在以下示例中，请将示例参数名称（例如 *myResourceGroup* 和 *myVM*）替换成自己的值。
 
-1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中释放名为 myVM 的 VM：  
+1. 当 VM 正在运行时，无法在虚拟硬盘上执行操作。 使用 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) 解除分配 VM。 以下示例在名为 myResourceGroup 的资源组中解除分配名为 myVM 的 VM： 
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -37,7 +36,7 @@ ms.locfileid: "78945187"
     > [!NOTE]
     > 只有释放 VM 才能扩展虚拟硬盘。 使用 `az vm stop` 停止 VM 不会释放计算资源。 若要释放计算资源，请使用 `az vm deallocate`。
 
-1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示 myResourceGroup 资源组中托管磁盘的列表： 
+1. 使用 [az disk list](/cli/azure/disk#az-disk-list) 查看资源组中的托管磁盘列表。 以下示例显示名为 myResourceGroup 的资源组中的托管磁盘列表：
 
     ```azurecli
     az disk list \
@@ -58,7 +57,7 @@ ms.locfileid: "78945187"
     > [!NOTE]
     > 扩展托管磁盘时，更新的大小将向上舍入到最接近的托管磁盘大小。 有关可用托管磁盘大小和层的表，请参阅 [Azure 托管磁盘概述 - 定价和计费](../windows/managed-disks-overview.md)。
 
-1. 使用 [az vm start](/cli/azure/vm#az-vm-start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM：  
+1. 使用 [az vm start](/cli/azure/vm#az-vm-start) 启动 VM。 以下示例在名为 myResourceGroup 的资源组中启动名为 myVM 的 VM： 
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -68,7 +67,7 @@ ms.locfileid: "78945187"
 ## <a name="expand-a-disk-partition-and-filesystem"></a>扩展磁盘分区和文件系统
 若要使用扩展的磁盘，请扩展基础分区和文件系统。
 
-1. 使用适当的凭据，通过 SSH 登录到 VM。 可以使用 [az vm show](/cli/azure/vm#az-vm-show) 查看 VM 的 公共 IP 地址：
+1. 使用相应的凭据通过 SSH 连接到 VM。 可以使用 [az vm show](/cli/azure/vm#az-vm-show) 查看 VM 的 公共 IP 地址：
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
@@ -105,7 +104,7 @@ ms.locfileid: "78945187"
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. 使用 `resizepart` 展开分区。 输入分区号 1  以及新分区的大小：
+    c. 使用 `resizepart` 展开分区。 输入分区号 1 以及新分区的大小：
 
     ```bash
     (parted) resizepart

@@ -4,15 +4,14 @@ description: 使用 Azure 资源管理器和 PowerShell 将基于路由的 Azure
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a8a4ba7ea3de9140d79856fad9d5d0bc42cf4c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123319"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984623"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>使用 PowerShell 将 Azure VPN 网关连接到多个基于策略的本地 VPN 设备
 

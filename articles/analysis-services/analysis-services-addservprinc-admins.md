@@ -10,7 +10,6 @@ ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
 ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83697533"

@@ -10,10 +10,9 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81767011"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
@@ -316,7 +315,7 @@ WITH_DATA(EDM_DATE_TIME_OFFSET, Time)
 );
 ```
 
-在这种情况下，我们已经消除了**DECLARE\_结构**宏，只需使用建模语言中的简单类型从我们的方案定义数据项。
+在这种情况下，我们已经消除了**DECLARE \_ 结构**宏，只需使用建模语言中的简单类型从我们的方案定义数据项。
 
 此时，可以忽略 **Time** 事件。 这样一来，以下代码就进入**温度**：
 
@@ -556,9 +555,9 @@ azure-c-shared-utility\\macro\_utils\_h\_generator.
 
   ![Visual Studio 解决方案 maco_utils_h_generator 的屏幕截图](media/iot-hub-device-sdk-c-serializer/01-macro_utils_h_generator.png)
 
-此解决方案中的程序将生成 **macro\_utils.h** 文件。 SDK 附带了一个默认\_的 macro utils 文件。 此解决方案可让用户修改某些参数，并根据这些参数重新创建标头文件。
+此解决方案中的程序将生成 **macro\_utils.h** 文件。 SDK 附带了一个默认的 macro \_ utils 文件。 此解决方案可让用户修改某些参数，并根据这些参数重新创建标头文件。
 
-要关注的两个关键参数为**nArithmetic**和**nMacroParameters**，这些参数在 macro\_utils.tt 的以下两行中定义：
+要关注的两个关键参数为**nArithmetic**和**nMacroParameters**，这些参数在 macro utils.tt 的以下两行中定义 \_ ：
 
 ```C
 <#int nArithmetic=1024;#>
@@ -654,7 +653,7 @@ serializer_init(NULL);
 
 此操作必须在调用 **IoTHubClient\_CreateFromConnectionString** 之前完成。
 
-同样，在使用完库后，最后一次调用是**序列化程序\_deinit**：
+同样，在使用完库后，最后一次调用是**序列化程序 \_ deinit**：
 
 ```C
 serializer_deinit();

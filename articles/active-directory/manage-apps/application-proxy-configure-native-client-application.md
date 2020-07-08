@@ -3,25 +3,24 @@ title: 发布本机客户端应用 - Azure AD | Microsoft Docs
 description: 介绍如何使本机客户端应用与 Azure AD 应用程序代理连接器通信，以提供本地应用的安全远程访问。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764802"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何让本机客户端应用程序与代理应用程序交互
 
@@ -113,10 +112,10 @@ if (authResult != null)
 
 | 所需信息 | 如何在 Azure AD 门户中找到它 |
 | --- | --- |
-| \<租户 ID> | “Azure Active Directory” > “属性” > “目录 ID” |
-| \<本机应用的应用 ID> | “应用程序注册” > 你的本机应用程序 > “概述” > “应用程序 ID” |
-| \<范围> | “应用程序注册” > 你的本机应用程序 > “API 权限” > 单击权限 API (user_impersonation) > 一个标题为“user_impersonation”的面板会出现在右侧。 > 范围是编辑框中的 URL。
-| \<代理应用 Url> | API 的外部 Url 和路径
+| \<Tenant ID> | “Azure Active Directory” > “属性” > “目录 ID” |
+| \<App ID of the Native app> | “应用程序注册” > 你的本机应用程序 > “概述” > “应用程序 ID” |
+| \<Scope> | “应用程序注册” > 你的本机应用程序 > “API 权限” > 单击权限 API (user_impersonation) > 一个标题为“user_impersonation”的面板会出现在右侧。 > 范围是编辑框中的 URL。
+| \<Proxy App Url> | API 的外部 Url 和路径
 
 使用这些参数编辑 MSAL 之后，用户可以向本机客户端应用程序进行身份验证，即使他们在企业网络之外也是如此。
 

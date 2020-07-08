@@ -2,21 +2,20 @@
 title: 通过 REST API 暂停、恢复、缩放
 description: 通过 REST API 管理 Azure Synapse Analytics 数据仓库中的计算能力。
 services: synapse-analytics
-author: kevinvngo
+author: antvgski
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/29/2019
-ms.author: kevin
+ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 65161915a63b58ad75ff2c01c16c95dec1aad2ff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: bbb8e82710b4c8ca7736b53d427b3880faf2be05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652619"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213272"
 ---
 # <a name="rest-apis-for-azure-synapse-analytics-data-warehouse"></a>适用于 Azure Synapse Analytics 数据仓库的 REST API
 

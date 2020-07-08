@@ -4,15 +4,14 @@ description: 本文提供将 Cisco ASA 设备连接到 Azure VPN 网关的示例
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ec370ca3aa8d89111dcb4737701c7ea58cd48195
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75778076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84986094"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>示例配置：Cisco ASA 设备（IKEv2/无 BGP）
 本文提供将 Cisco 自适应安全 (ASA) 设备连接到 Azure VPN 网关的示例配置。 该示例适用于运行 IKEv2 而不使用边界网关协议 (BGP) 的 Cisco ASA 设备。 
@@ -32,7 +31,7 @@ ms.locfileid: "75778076"
 |                        |                                   |
 
 > [!NOTE]
-> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。  连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。 
+> 示例配置将 Cisco ASA 设备连接到 Azure 基于路由的 VPN 网关。  连接使用自定义 IPsec/IKE 策略并启用“UsePolicyBasedTrafficSelectors”选项，如[这篇文章](vpn-gateway-connect-multiple-policybased-rm-ps.md)中所述。
 >
 > 示例要求 ASA 设备中的“IKEv2”策略使用基于访问列表的配置，而不是基于 VTI 的配置。  请查阅 VPN 设备供应商规范，验证本地 VPN 设备是否支持 IKEv2 策略。
 

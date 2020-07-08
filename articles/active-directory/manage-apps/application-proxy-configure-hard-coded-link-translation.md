@@ -3,25 +3,24 @@ title: 转换链接和 URL Azure AD 应用代理 | Microsoft Docs
 description: 介绍有关 Azure AD 应用程序代理连接器的基础知识。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69533704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764836"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -88,7 +87,7 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 应用程序代理支持链接转换的 HTML 代码标记的完整列表包括：
 * a
-* audio
+* 音频
 * base
 * button
 * div
@@ -137,11 +136,11 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 链接转换入门就像单击按钮一样简单：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-2. 请参阅 " **Azure Active Directory** > **企业应用** > 程序" "**所有应用**程序" > 选择要管理的应用 >**应用程序代理**。
+2. 请参阅 " **Azure Active Directory**  >  **企业应用**程序" "  >  **所有应用**程序" > 选择要管理的应用 >**应用程序代理**。
 3. 将“转换应用程序主体中的 URL”改为“是”。********
 
    ![选择“是”可转换应用程序主体中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
-4. 单击“保存”应用所做的更改。****
+4. 单击“保存”应用所做的更改。
 
 现在，当用户访问此应用程序时，代理将自动扫描租户上通过应用程序代理发布的内部 URL。
 

@@ -4,22 +4,21 @@ description: 如何在 Windows 虚拟桌面中启用 GPU 加速的渲染和编�
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 99393ed518df590140f79933623a9f7ec96edc85
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
-ms.translationtype: HT
+ms.openlocfilehash: 96881154a368da15d703b43ba2ffe5d6dd034bd3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402272"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213255"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 (GPU) 加速
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
 >
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Windows 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲染和编码。 GPU 加速对于图形密集型应用尤其重要。

@@ -9,7 +9,6 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83697976"

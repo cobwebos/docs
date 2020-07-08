@@ -2,8 +2,8 @@
 title: 通过连接器组在单独的网络上发布应用-Azure AD
 description: 介绍如何在 Azure AD 应用程序代理中创建和管理连接器组。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,15 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764717"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -40,20 +39,20 @@ ms.locfileid: "74275571"
 
 使用以下步骤创建任意数量的连接器组。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 选择**Azure Active Directory** > **企业应用** > **程序应用程序代理**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 选择**Azure Active Directory**  >  **企业应用**  >  **程序应用程序代理**"。
 1. 选择“新建连接器组”****。 此时会显示“新建连接器组”边栏选项卡。
 
    ![显示用于选择新连接器组的屏幕](./media/application-proxy-connector-groups/new-group.png)
 
 1. 为新的连接器组提供一个名称，并使用下拉菜单选择哪些连接器属于此组。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>将应用程序分配到连接器组
 
 对已使用应用程序代理发布的每个应用程序使用以下步骤。 首次发布应用程序时，可以将其分配到连接器组，也可以在任何时候使用以下步骤更改分配。
 
-1. 在目录的管理面板中，选择 "**企业应用程序** > " "**所有应用**程序"，> 要分配给连接器组 >**应用程序代理**的应用程序。
+1. 在目录的管理面板中，选择 "**企业应用程序**  >  " "**所有应用**程序"，> 要分配给连接器组 >**应用程序代理**的应用程序。
 1. 使用“连接器组”**** 下拉菜单选择要让应用程序使用的组。
 1. 单击“保存”应用所做的更改。****
 

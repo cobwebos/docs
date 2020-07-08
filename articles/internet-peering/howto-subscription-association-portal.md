@@ -3,21 +3,20 @@ title: 使用门户将对等 ASN 关联到 Azure 订阅
 titleSuffix: Azure
 description: 使用门户将对等 ASN 关联到 Azure 订阅
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
-ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710841"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>使用门户将对等 ASN 关联到 Azure 订阅
 
-提交对等互连请求之前，应首先使用以下步骤将 ASN 与 Azure 订阅关联。
+作为 Internet 服务提供商或 Internet Exchange 提供商，在提交对等互连请求之前，你应该首先使用以下步骤将你的 ASN 与 Azure 订阅相关联。
 
 如果需要，可以使用 [PowerShell](howto-subscription-association-powershell.md) 完成本指南。
 
@@ -55,8 +54,7 @@ ms.locfileid: "83683956"
     > ![注册完成](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>创建 PeerAsn
-作为 Internet 服务提供商或 Internet Exchange 提供商，可以创建新的 PeerAsn 资源，以便将自治系统编号 (ASN) 与 Azure 订阅相关联。 可以通过对要关联的每个 ASN 导航到[关联 PeerASN 页面](https://go.microsoft.com/fwlink/?linkid=2129592)，将多个 ASN 关联到订阅。
-
+作为 Internet 服务提供商或 Internet Exchange 提供商，你可以在[关联的对等 ASN 页面](https://go.microsoft.com/fwlink/?linkid=2129592)上创建新的 PeerAsn 资源，以便将自治系统编号（ASN）与 Azure 订阅相关联。 可以通过为需要关联的每个 ASN 创建**PeerAsn** ，将多个 asn 关联到一个订阅。
 
 1. 在“关联对等 ASN”页面上的“基本信息”选项卡下，按如下所示填写字段。
 

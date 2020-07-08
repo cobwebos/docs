@@ -9,12 +9,11 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: c0efdda24ae47ae65f0d469b50feaefdf6350678
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84022208"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常见问题
 
@@ -24,13 +23,13 @@ ms.locfileid: "82780838"
 
 ### <a name="how-do-i-provision-an-hdinsight-cluster"></a>如何预配 HDInsight 群集？
 
-若要查看 HDInsight 群集类型和设置方法，请参阅[在 HDInsight 中设置包含 Apache Hadoop、Apache Spark、Apache Kafka 等的群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)。
+若要查看 HDInsight 群集类型和预配方法，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)。
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>如何删除现有的 HDInsight 群集？
 
 若要详细了解如何删除不再使用的群集，请参阅[删除 HDInsight 群集](hdinsight-delete-cluster.md)。
 
-尝试在创建和删除操作之间保留至少30到60分钟的时间。 否则，操作可能会失败并出现以下错误消息：
+尝试在创建群集后，至少等 30 到 60 分钟再删除群集。 否则，操作可能会失败并出现以下错误消息：
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -42,7 +41,15 @@ ms.locfileid: "82780838"
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>HDInsight 群集中有哪些不同类型的节点？
 
-请参阅[Azure HDInsight 群集中的资源类型](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)。
+请参阅 [Azure HDInsight 群集中的资源类型](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters)。
+
+### <a name="what-are-the-best-practices-for-creating-large-hdinsight-clusters"></a>创建大型 HDInsight 群集的最佳做法是什么？
+
+1. 建议使用[自定义 AMBARI DB](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db)设置 HDInsight 群集，以提高群集的可伸缩性。
+2. 使用[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)创建 HDInsight 群集，以利用更高的带宽和 Azure Data Lake Storage Gen2 的其他性能特征。
+3. 头节点应该足够大，能够容纳在这些节点上运行的多个主服务。
+4. 某些特定工作负荷（如交互式查询）也需要更大的 Zookeeper 节点。 请考虑至少8个核心 Vm。
+5. 对于 Hive 和 Spark，请使用[外部 Hive 元存储](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores)。
 
 ## <a name="individual-components"></a>单个组件
 
@@ -50,11 +57,11 @@ ms.locfileid: "82780838"
 
 是的。 若要安装其他组件或自定义群集配置，请使用：
 
-- 在创建期间或之后使用脚本。 脚本是通过[脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)调用的。 脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用此配置选项。
+- 在创建期间或之后使用脚本。 脚本可通过[脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)调用。 脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用此配置选项。
 
-- 用于安装应用程序的[HDInsight 应用程序平台](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)。
+- 使用 [HDInsight 应用程序平台](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)安装应用程序。
 
-有关支持的组件的列表，请参阅[HDInsight 提供的 Apache Hadoop 组件和版本有哪些？](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
+请参阅[在 HDInsight 中可以使用哪些 Apache Hadoop 组件和版本？](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)了解受支持组件的列表
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>是否可以升级预装在群集上的单个组件？
 
@@ -68,7 +75,7 @@ ms.locfileid: "82780838"
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>如何更改 Ambari 中的时区？
 
-1. 通过 `https://CLUSTERNAME.azurehdinsight.net`（其中，CLUSTERNAME 是群集的名称）打开 Ambari Web UI。
+1. 通过 `https://CLUSTERNAME.azurehdinsight.net` （其中，CLUSTERNAME 是群集的名称）打开 Ambari Web UI。
 2. 在右上角选择“管理”|“设置”。 
 
    ![Ambari 设置](media/hdinsight-faq/ambari-settings.png)
@@ -79,17 +86,17 @@ ms.locfileid: "82780838"
 
 ## <a name="metastore"></a>元存储
 
-### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>如何从现有的元存储迁移到 Azure SQL Server？ 
+### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-database"></a>如何从现有的元存储迁移到 Azure SQL 数据库？ 
 
-若要从 SQL Server 迁移到 Azure SQL Server，请参阅[教程：在 AZURE SQL 数据库中使用 DMS 脱机迁移 SQL Server 到单一数据库或池中的数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
+若要从 SQL Server 迁移到 Azure SQL Database，请参阅[教程：使用 DMS 脱机将 SQL Server 迁移到 AZURE Sql 数据库中的单个数据库或池中的数据库](../dms/tutorial-sql-server-to-azure-sql.md)。
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>删除群集时是否会删除 Hive 元存储？
 
 这取决于群集配置为使用的元存储类型。
 
-对于默认的元存储：默认元存储是群集生命周期的一部分。 删除群集时，会一并删除相应的元存储和元数据。
+对于默认元存储：默认元存储是群集生命周期的一部分。 删除群集时，也会删除相应的该元存储和元数据。
 
-对于自定义元存储：元存储的生命周期不与群集的生命周期相关联。 因此，你可以在不丢失元数据的情况下创建和删除群集。 即使在删除和重新创建 HDInsight 群集之后，系统也仍会保留 Hive 架构等元数据。
+对于自定义元存储：元存储的生命周期与群集的生命周期无关。 因此，可以在不丢失元数据的情况下创建和删除群集。 即使在删除和重新创建 HDInsight 群集之后，系统也仍会保留 Hive 架构等元数据。
 
 有关详细信息，请参阅[在 Azure HDInsight 中使用外部元数据存储](hdinsight-use-external-metadata-stores.md)。
 
@@ -103,7 +110,7 @@ ms.locfileid: "82780838"
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>如何估算 Hive 元存储数据库的大小？
 
-Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。 大小要求部分取决于 Hive 数据源的数量和复杂性。 之前无法估计这些项。 如[Hive 元存储指导原则](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)中所述，可以从 S2 层开始。 该层提供 50 DTU 和 250 GB 的存储空间，如果看到瓶颈，请向上扩展数据库。
+Hive 元存储用于存储 Hive 服务器所用数据源的元数据。 其大小要求一定程度上取决于 Hive 数据源的数量和复杂性。 这些项目无法预先估算。 如 [Hive 元存储指南](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)中所述，你可以从 S2 层开始。 该层提供 50 DTU 和 250 GB 的存储；如果遇到瓶颈，请纵向扩展数据库。
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>是否支持使用除 Azure SQL 数据库以外的其他任何数据库作为外部元存储？
 
@@ -131,13 +138,13 @@ Hive 元存储用于存储 Hive 服务器使用的数据源的元数据。 大�
 
 是，可以在 HDInsight 群集所在的同一子网中部署额外的虚拟机。 可使用以下配置：
 
-- 边缘节点：可将其他边缘节点添加到群集，如在[HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)中所述。
+- 边缘节点：可根据[在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点](hdinsight-apps-use-edge-node.md)中所述，将另一个边缘节点添加到群集。
 
-- 独立节点：可以将独立虚拟机添加到相同的子网，并使用专用终结点`https://<CLUSTERNAME>-int.azurehdinsight.net`从该虚拟机访问群集。 有关详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
+- 独立节点：可将独立的虚拟机添加到同一子网，并使用专用终结点 `https://<CLUSTERNAME>-int.azurehdinsight.net` 从该虚拟机访问群集。 有关详细信息，请参阅[控制网络流量](./control-network-traffic.md)。
 
-### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>是否应将数据存储在边缘节点的本地磁盘上？
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>是否应该将数据存储在边缘节点的本地磁盘上？
 
-不是，将数据存储在本地磁盘上并不是个好主意。 如果该节点发生故障，则本地存储的所有数据都将丢失。 建议在 Azure Data Lake Storage Gen2 或 Azure Blob 存储中存储数据，或通过装载 Azure 文件共享来存储数据。
+否，将数据存储在本地磁盘上不是一个好主意。 如果节点出现故障，本地存储的所有数据都将丢失。 我们建议将数据存储在 Azure Data Lake Storage Gen2 或 Azure Blob 存储中，或者通过装载 Azure 文件共享来存储数据。
 
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>是否可将现有的 HDInsight 群集添加到另一个虚拟网络？
@@ -164,13 +171,13 @@ ktutil: q
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>是否可以使用现有的 Azure Active Directory 租户创建具有 ESP 的 HDInsight 群集？
 
-启用 Azure Active Directory 域服务（Azure AD DS），然后才能创建具有 ESP 的 HDInsight 群集。 开源 Hadoop 依赖于使用 Kerberos 进行身份验证（与 OAuth 不同）。
+必须先启用 Azure Active Directory 域服务 (Azure AD DS)，然后才能创建具有 ESP 的 HDInsight 群集。 开源 Hadoop 依赖于使用 Kerberos 进行身份验证（与 OAuth 不同）。
 
-若要将 VM 加入域，必须有一个域控制器。 Azure AD DS 是托管域控制器，被视为 Azure Active Directory 的扩展。 Azure AD DS 提供了以托管方式构建安全 Hadoop 群集的所有 Kerberos 要求。 作为托管服务的 HDInsight 与 Azure AD DS 集成以提供安全性。
+若要将 VM 加入域，必须有一个域控制器。 Azure AD DS 是托管域控制器，可将其视为 Azure Active Directory 的扩展。 Azure AD DS 提供以托管方式生成安全 Hadoop 群集所需满足的所有 Kerberos 要求。 用作托管服务的 HDInsight 可与 Azure AD DS 集成来提供安全性。
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>能否在 AAD DS 安全 LDAP 设置中使用自签名证书并设置 ESP 群集？
 
-建议使用证书颁发机构颁发的证书。 但在 ESP 上，也支持使用自签名证书。 有关详细信息，请参见:
+建议使用证书颁发机构颁发的证书。 但在 ESP 上，也支持使用自签名证书。 有关详情，请参阅：
 
 - [启用 Azure Active Directory 域服务](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -180,11 +187,11 @@ ktutil: q
 
 出于审核要求，Microsoft 建议启用 Azure Monitor 日志，如[使用 Azure Monitor 日志监视 HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial)中所述。
 
-### <a name="can-i-disable-clamscan-on-my-cluster"></a>能否在群集`Clamscan`上禁用？
+### <a name="can-i-disable-clamscan-on-my-cluster"></a>能否 `Clamscan` 在群集上禁用？
 
-`Clamscan`是在 HDInsight 群集上运行并由 Azure 安全（azsecd）使用的防病毒软件，以防止群集遭受病毒攻击。 Microsoft 强烈建议用户避免对默认`Clamscan`配置进行任何更改。
+`Clamscan`是在 HDInsight 群集上运行并由 Azure 安全（azsecd）使用的防病毒软件，以防止群集遭受病毒攻击。 Microsoft 强烈建议用户避免对默认配置进行任何更改 `Clamscan` 。
 
-此过程不会影响其他进程，也不会对其进行任何循环。 它始终屈从于其他进程。 仅当系统`Clamscan`处于空闲状态时，才应显示 CPU 峰值。  
+此过程不会影响其他进程，也不会对其进行任何循环。 它始终屈从于其他进程。 `Clamscan`仅当系统处于空闲状态时，才应显示 CPU 峰值。  
 
 如果必须控制计划，可使用以下步骤：
 
@@ -203,7 +210,7 @@ ktutil: q
 
 ### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>创建 ESP 群集后如何添加其他 AAD 组？
 可通过两种方式实现此目标： 1-可在创建群集时重新创建群集并添加其他组。 如果使用的是 AAD-DS 中的作用域同步，请确保范围内同步中包含组 B。
-2-将组添加为之前组中用于创建 ESP 群集的嵌套子组。 例如，如果已使用组`A`创建 ESP 群集，稍后可以将组`B`添加为的嵌套子组`A` ，大约一小时后，它将自动同步并在群集中可用。 
+2-将组添加为之前组中用于创建 ESP 群集的嵌套子组。 例如，如果已使用组创建 ESP 群集 `A` ，稍后可以将组添加 `B` 为的嵌套子组 `A` ，大约一小时后，它将自动同步并在群集中可用。 
 
 ## <a name="storage"></a>存储
 
@@ -245,16 +252,16 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>是否有任何适用于存储的 Ranger 插件？
 
-目前，Blob 存储和 Azure Data Lake Storage Gen1 或 Gen2 没有任何 Ranger 插件。 对于 ESP 群集，应使用 Azure Data Lake Storage。 至少可以使用 HDFS 工具在文件系统级别上手动设置精细权限。 此外，在使用 Azure Data Lake Storage 时，ESP 群集将在群集级别使用 Azure Active Directory 执行某种文件系统访问控制。 
+目前，Blob 存储和 Azure Data Lake Storage Gen1 或 Gen2 没有任何 Ranger 插件。 对于 ESP 群集，应使用 Azure Data Lake Storage。 至少可以使用 HDFS 工具在文件系统级别手动设置精细权限。 此外，在使用 Azure Data Lake Storage 时，ESP 群集将在群集级别使用 Azure Active Directory 执行某种文件系统访问控制。 
 
-可以使用 Azure 存储资源管理器将数据访问策略分配到用户的安全组。 有关详细信息，请参见:
+可以使用 Azure 存储资源管理器将数据访问策略分配到用户的安全组。 有关详细信息，请参阅：
 
 - [如何设置 Azure AD 用户的权限，以使用 Hive 或其他服务在 Data Lake Storage Gen2 中查询数据？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [使用 Azure 存储资源管理器和 Azure Data Lake Storage Gen2 设置文件和目录级别权限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>是否可以在不增大工作器节点的磁盘大小的情况下增大群集上的 HDFS 存储？
 
-否。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
+不能。 不能增加任何工作节点的磁盘大小。 因此，增加磁盘大小的唯一方法是删除群集，并将其重新创建为更大的辅助 Vm。 请不要使用 HDFS 来存储任何 HDInsight 数据，因为删除群集时会删除这些数据。 请改为在 Azure 中存储数据。 纵向扩展群集也可以将更多的容量添加到 HDInsight 群集。
 
 ## <a name="edge-nodes"></a>边缘节点
 
@@ -276,14 +283,14 @@ done
 
 可使用以下 REST 终结点来提取 JSON 格式的所需信息。 使用基本身份验证标头发出请求。
 
-- `Tez Query View`： *https：\//\<群集名称>. azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
-- `Tez Dag View`： *https：\//\<群集名称>. azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
+- `Tez Query View`： *https： \/ / \<cluster name> . azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- `Tez Dag View`： *https： \/ / \<cluster name> . azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>如何以 Azure Active Directory 用户身份从 HDI 群集检索配置详细信息？
 
 若要以 AAD 用户身份协商正确的身份验证令牌，请使用以下格式浏览网关：
 
-* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https:// `<cluster dnsname>` . azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>如何使用 Ambari Restful API 来监视 YARN 性能？
 
@@ -321,7 +328,7 @@ http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/component
 
 ### <a name="when-does-hdinsight-billing-start--stop"></a>HDInsight 计费何时开始和停止？
 
-创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集按分钟按比例计费。
+HDInsight 群集计费在创建群集之后便会开始，删除群集后才会停止。 群集按分钟按比例计费。
 
 ### <a name="how-do-i-cancel-my-subscription"></a>如何取消订阅？
 
@@ -339,13 +346,13 @@ http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/component
 
 ## <a name="other-faq"></a>其他常见问题解答
 
-### <a name="what-does-hdinsight-offer-for-real-time-stream-processing-capabilities"></a>HDInsight 提供的实时流处理功能有哪些功能？
+### <a name="what-does-hdinsight-offer-for-real-time-stream-processing-capabilities"></a>HDInsight 提供哪些有关实时流处理的功能？
 
-有关流处理的集成功能的信息，请参阅[在 Azure 中选择流处理技术](/azure/architecture/data-guide/technology-choices/stream-processing)。
+有关流处理集成功能的信息，请参阅[在 Azure 中选择流处理技术](/azure/architecture/data-guide/technology-choices/stream-processing)。
 
-### <a name="is-there-a-way-to-dynamically-kill-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>当群集在特定时间段内处于空闲状态时，是否可以动态地终止群集的头节点？
+### <a name="is-there-a-way-to-dynamically-kill-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>当群集空闲特定的时间段后，是否可以动态终止群集的头节点？
 
-不能对 HDInsight 群集执行此操作。 可以使用 Azure 数据工厂实现此类目的。
+无法对 HDInsight 群集执行此操作。 可以使用 Azure 数据工厂实现此类目的。
 
 ### <a name="what-compliance-offerings-does-hdinsight-offer"></a>HDInsight 提供哪些符合性产品？
 

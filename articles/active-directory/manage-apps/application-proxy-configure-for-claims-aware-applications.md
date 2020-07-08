@@ -3,24 +3,23 @@ title: 声明感知应用 - Azure AD 应用代理 | Microsoft 文档
 description: 如何发布接受 ADFS 声明允许用户进行安全远程访问的本地 ASP.NET 应用程序。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbc5c356ea5a542fdc12b11aff236c56b146b3d5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.openlocfilehash: 77d465b5900a3c36e6c6b957431b9d6ba56f50a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "68477242"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764853"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>在应用程序代理中使用声明感知应用
 [声明感知应用](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx)对安全令牌服务 (STS) 执行重定向。 STS 请求用来自用户的凭据交换令牌，然后将用户重定向到应用程序。 使应用程序代理使用这些重定向有几种方式。 使用本文配置声明感知应用的部署。 

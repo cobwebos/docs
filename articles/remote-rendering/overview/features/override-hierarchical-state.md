@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
-ms.openlocfilehash: 40857e83457222365e61a224ead19bd1d1d31ae7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 5ef5af77831c01ae484398c1f2d8905e5e2bc11e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758973"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021324"
 ---
 # <a name="hierarchical-state-override"></a>分层状态替代
 
@@ -27,23 +26,23 @@ ms.locfileid: "83758973"
 
 可以替代的一组固定状态为：
 
-* **Hidden**：场景图中的相应网格将隐藏或显示。
-* **Tint color**：渲染的对象可以使用其各自的淡化颜色和淡化权重进行颜色淡化。 下图显示了对轮缘进行颜色淡化。
+* **`Hidden`**：场景图中的相应网格将隐藏或显示。
+* **`Tint color`**：呈现的对象可以使用其各自的淡色颜色和色调粗细进行彩色着色。 下图显示了对轮缘进行颜色淡化。
   
   ![颜色淡化](./media/color-tint.png)
 
-* **See-through**：几何结构以半透明方式呈现，例如，显示对象的内部部件。 下图显示了整个汽车以透视模式呈现，红色制动钳除外：
+* **`See-through`**：几何图形以半透明方式呈现，例如，用于显示对象的内部部件。 下图显示了整个汽车以透视模式呈现，红色制动钳除外：
 
   ![See-Through](./media/see-through.png)
 
   > [!IMPORTANT]
   > 仅当使用“TileBasedComposition”[渲染模式](../../concepts/rendering-modes.md)时，透视效果才起作用。
 
-* **Selected**：几何结构呈现有[选择轮廓](outlines.md)。
+* **`Selected`**：使用[选择轮廓](outlines.md)呈现几何。
 
   ![选择轮廓](./media/selection-outline.png)
 
-* **DisableCollision**：几何结构将不受[空间查询](spatial-queries.md)的影响。 **Hidden** 标志不会关闭冲突，因此，这两个标志通常一起设置。
+* **`DisableCollision`**：几何图形从[空间查询](spatial-queries.md)中免除。 该 **`Hidden`** 标志不会影响冲突状态标志，因此，这两个标志通常一起设置。
 
 ## <a name="hierarchical-overrides"></a>分层替代
 
@@ -87,7 +86,7 @@ component->SetState(
 
 ### <a name="tint-color"></a>浅色
 
-浅色替代略有特殊，因为它既有开/关/继承状态，又有浅色属性。 浅色的 Alpha 部分定义淡化效果的权重：如果设置为 0.0，则不会显示浅色，如果设置为 1.0，则将以纯浅色呈现对象。 对于中间值，最终颜色将与浅色混合。 可以在每帧的基础上更改浅色，以实现彩色动画。
+`tint color`重写略有特殊，因为有 "打开/关闭/继承" 状态和 "淡色颜色" 属性。 浅色的 Alpha 部分定义淡化效果的权重：如果设置为 0.0，则不会显示浅色，如果设置为 1.0，则将以纯浅色呈现对象。 对于中间值，最终颜色将与浅色混合。 可以在每帧的基础上更改浅色，以实现彩色动画。
 
 ## <a name="performance-considerations"></a>性能注意事项
 

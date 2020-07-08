@@ -3,15 +3,14 @@ title: 用于 Azure Cosmos DB API for MongoDB 的资源管理器模板
 description: 使用 Azure 资源管理器模板创建和配置 Azure Cosmos DB API for MongoDB。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1fe2c96e3c469e41e12d64f27a6a3b3d16a1174d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: b0a6bf3dd6585b600ff7283f6fd47cb87b68feda
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684772"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028181"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB MongoDB API 资源
 
@@ -33,7 +32,7 @@ ms.locfileid: "83684772"
 
 此模板将创建一个 Azure Cosmos for MongoDB API 帐户（3.2 或 3.6），其中包含两个在数据库级别共享自动缩放吞吐量的集合。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb-autoscale/azuredeploy.json":::
 
@@ -43,7 +42,7 @@ ms.locfileid: "83684772"
 
 此模板将创建一个 Azure Cosmos for MongoDB API 帐户（3.2 或 3.6），其中包含两个在数据库级别共享 400 RU/s 标准（手动）吞吐量的集合。 此模板还支持从 Azure 快速入门模板库进行一键部署。
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
+[:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-mongodb%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json":::
 

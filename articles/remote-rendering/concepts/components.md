@@ -5,18 +5,17 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 42efc1395fee28a3854420f15c2ad08b301cc1f7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758735"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021664"
 ---
 # <a name="components"></a>组件
 
 Azure 远程渲染使用[实体组件系统](https://en.wikipedia.org/wiki/Entity_component_system)模式。 [实体](entities.md)代表对象的位置和层次结构组合，而组件则负责实现行为。
 
-最常用的组件类型是[网格组件](meshes.md)，该组件将网格添加到渲染管道。 同样，[光线组件](../overview/features/lights.md)用于添加光线，而[剖切面组件](../overview/features/cut-planes.md)用于切开网格。
+最常使用的组件类型是 [:::no-loc text="mesh components":::](meshes.md) ，它将网格添加到呈现管道中。 同样，[光线组件](../overview/features/lights.md)用于添加光线，而[剖切面组件](../overview/features/cut-planes.md)用于切开网格。
 
 所有这些组件都使用它们所附着的实体的转换（位置、旋转、缩放）作为它们的参考点。
 

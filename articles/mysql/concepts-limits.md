@@ -5,161 +5,24 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: 9cf5c958a0dd9a19e6b976ff36a18c45e062f604
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 6/25/2020
+ms.openlocfilehash: c562b8a82ef21e78eccad2c2ed6159251056f4fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392686"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
 
 ## <a name="server-parameters"></a>服务器参数
 
-几个常用服务器参数的最小值和最大值由定价层和 vCore 决定。 若要了解限制，请参阅下面各表。
-
-### <a name="max_connections"></a>max_connections
-
-|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|50|10|50|
-|基本|2|100|10|100|
-|常规用途|2|300|10|600|
-|常规用途|4|625|10|1250|
-|常规用途|8|1250|10|2500|
-|常规用途|16|2500|10|5000|
-|常规用途|32|5000|10|10000|
-|常规用途|64|10000|10|20000|
-|内存优化|2|600|10|800|
-|内存优化|4|1250|10|2500|
-|内存优化|8|2500|10|5000|
-|内存优化|16|5000|10|10000|
-|内存优化|32|10000|10|20000|
-
-当连接数超出限制时，可能会收到以下错误：
-> 错误 1040 (08004)：连接过多
-
-> [!IMPORTANT]
-> 为了获得最佳体验，建议使用 ProxySQL 等连接池程序来高效地管理连接。
-
-与 MySQL 建立新的客户端连接需要花费一段时间，一旦建立连接，这些连接会占用数据库资源，即使空闲时，也不例外。 大多数应用程序请求许多生存期短的连接，这加剧了这种情况。 其结果是用于实际工作负荷的资源更少，进而导致性能下降。 连接池程序不仅减少空闲连接，还重用现有连接，有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
-
-### <a name="query_cache_size"></a>query_cache_size
-
-默认情况下，查询缓存是禁用的。 若要启用查询缓存，请配置 `query_cache_type` 参数。 
-
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_query_cache_size)。
-
 > [!NOTE]
-> 自 MySQL 5.7.20 起，查询缓存已被弃用；在 MySQL 8.0 中，查询缓存已被删除
+> 如果正在查找服务器参数（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，则此信息已移至 "**[服务器参数](./concepts-server-parameters.md)**" 一文。
 
-|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
-|常规用途|2|0|0|16777216|
-|常规用途|4|0|0|33554432|
-|常规用途|8|0|0|67108864|
-|常规用途|16|0|0|134217728|
-|常规用途|32|0|0|134217728|
-|常规用途|64|0|0|134217728|
-|内存优化|2|0|0|33554432|
-|内存优化|4|0|0|67108864|
-|内存优化|8|0|0|134217728|
-|内存优化|16|0|0|134217728|
-|内存优化|32|0|0|134217728|
+Azure Database for MySQL 支持优化服务器参数的值。 某些参数的最小值和最大值（例如 `max_connections`、 `join_buffer_size` 、 `query_cache_size` ）由服务器的定价层和 vcore 确定。 有关这些限制的详细信息，请参阅[服务器参数](./concepts-server-parameters.md)。
 
-### <a name="sort_buffer_size"></a>sort_buffer_size
-
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size)。
-
-|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
-|常规用途|2|524288|32768|4194304|
-|常规用途|4|524288|32768|8388608|
-|常规用途|8|524288|32768|16777216|
-|常规用途|16|524288|32768|33554432|
-|常规用途|32|524288|32768|33554432|
-|常规用途|64|524288|32768|33554432|
-|内存优化|2|524288|32768|8388608|
-|内存优化|4|524288|32768|16777216|
-|内存优化|8|524288|32768|33554432|
-|内存优化|16|524288|32768|33554432|
-|内存优化|32|524288|32768|33554432|
-
-### <a name="join_buffer_size"></a>join_buffer_size
-
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size)。
-
-|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
-|常规用途|2|262144|128|268435455|
-|常规用途|4|262144|128|536870912|
-|常规用途|8|262144|128|1073741824|
-|常规用途|16|262144|128|2147483648|
-|常规用途|32|262144|128|4294967295|
-|常规用途|64|262144|128|4294967295|
-|内存优化|2|262144|128|536870912|
-|内存优化|4|262144|128|1073741824|
-|内存优化|8|262144|128|2147483648|
-|内存优化|16|262144|128|4294967295|
-|内存优化|32|262144|128|4294967295|
-
-### <a name="max_heap_table_size"></a>max_heap_table_size
-
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size)。
-
-|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
-|常规用途|2|16777216|16384|268435455|
-|常规用途|4|16777216|16384|536870912|
-|常规用途|8|16777216|16384|1073741824|
-|常规用途|16|16777216|16384|2147483648|
-|常规用途|32|16777216|16384|4294967295|
-|常规用途|64|16777216|16384|4294967295|
-|内存优化|2|16777216|16384|536870912|
-|内存优化|4|16777216|16384|1073741824|
-|内存优化|8|16777216|16384|2147483648|
-|内存优化|16|16777216|16384|4294967295|
-|内存优化|32|16777216|16384|4294967295|
-
-### <a name="tmp_table_size"></a>tmp_table_size
-
-若要详细了解此参数，请查阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size)。
-
-|**定价层**|**vCore(s)**|**默认值**|**最小值**|**最大值**|
-|---|---|---|---|---|
-|基本|1|在基本层中不可配置|空值|空值|
-|基本|2|在基本层中不可配置|空值|空值|
-|常规用途|2|16777216|1024|67108864|
-|常规用途|4|16777216|1024|134217728|
-|常规用途|8|16777216|1024|268435456|
-|常规用途|16|16777216|1024|536870912|
-|常规用途|32|16777216|1024|1073741824|
-|常规用途|64|16777216|1024|1073741824|
-|内存优化|2|16777216|1024|134217728|
-|内存优化|4|16777216|1024|268435456|
-|内存优化|8|16777216|1024|536870912|
-|内存优化|16|16777216|1024|1073741824|
-|内存优化|32|16777216|1024|1073741824|
-
-### <a name="time_zone"></a>time_zone
-
-可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 若要了解如何调用存储过程，并设置全局或会话级别时区，请参阅 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 文章。
-
-### <a name="innodb_file_per_table"></a>innodb_file_per_table
-
-MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同的表空间中。 [系统表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html)是 InnoDB 数据字典的存储区域。 [file-per-table 表空间](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html)包含单个 InnoDB 表的数据和索引，并存储在文件系统内它自己的数据文件中。 此行为由 `innodb_file_per_table` 服务器参数控制。 将 `innodb_file_per_table` 设置为 `OFF` 会导致 InnoDB 在系统表空间中创建表。 否则，InnoDB 在 file-per-table 表空间中创建表。
-
-在单个数据文件中，Azure Database for MySQL 支持最大 1TB。 如果数据库大小超过 1TB，应在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) 表空间中创建表。 如果单个表的大小超过 1TB，应使用分区表。
+初始部署时，Azure for MySQL 服务器包含时区信息的系统表，但不填充这些表。 可以通过从 MySQL 命令行或 MySQL Workbench 等工具调用 `mysql.az_load_timezone` 存储过程来填充时区表。 有关如何调用存储过程并设置全局时区或会话级时区，请参阅文章 [Azure 门户](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter)。
 
 ## <a name="storage-engine-support"></a>存储引擎支持
 
@@ -179,6 +42,7 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。 
 - SUPER 特权：[SUPER 特权](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)同样也受到限制。
 - DEFINER：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
@@ -211,5 +75,5 @@ MySQL 根据你在表创建期间提供的配置，将 InnoDB 表存储在不同
 - 建立连接后，MySQL 服务器实例显示错误的服务器版本。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。
 
 ## <a name="next-steps"></a>后续步骤
-- [每个服务层中有哪些可用资源](concepts-pricing-tiers.md)
+- [每个服务层级中有哪些可用资源](concepts-pricing-tiers.md)
 - [支持的 MySQL 数据库版本](concepts-supported-versions.md)

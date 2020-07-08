@@ -5,15 +5,14 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84985460"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -160,7 +159,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 3. 网关子网名称自动以所需的名称“GatewaySubnet”进行填充。 ****“地址范围”包含分配给 VPN 网关服务的 IP 地址。 某些配置允许使用网关子网 /29，但最好使用 /28 或 /27 以适应将来可能需要为网关服务使用更多 IP 地址的配置。 在示例设置中，我们使用了 10.11.1.0/27。 调整地址空间，并单击“确定”。****
 4. 配置“网关大小”。**** 此设置指的是[网关 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 5. 配置“路由类型”。**** 此配置的路由类型必须为“动态”。**** 无法更改路由类型，除非删除网关并创建一个新网关。
-6. 单击“确定”。 
+6. 单击“确定”。
 7. 在“新建 VPN 连接”页上，单击“确定”，开始创建虚拟网络网关********。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>第 5 步 - 配置 TestVNet4 设置

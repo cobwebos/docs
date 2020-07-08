@@ -3,15 +3,14 @@ title: Azure Cosmos DB 连接器的 Power BI 教程
 description: 使用此 Power BI 教程导入 JSON、创建见解深入的报表以及使用 Azure Cosmos DB 和 Power BI 连接器来将数据可视化。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69616811"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027789"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 
@@ -51,22 +50,24 @@ ms.locfileid: "69616811"
 ## <a name="lets-get-started"></a>让我们开始吧
 本教程假设读者是一位研究世界各地的火山的地理学家。 火山数据存储在一个 Azure Cosmos DB 帐户中，JSON 文档格式如下所示：
 
-    {
-        "Volcano Name": "Rainier",
-           "Country": "United States",
-          "Region": "US-Washington",
-          "Location": {
-            "type": "Point",
-            "coordinates": [
-              -121.758,
-              46.87
-            ]
-          },
-          "Elevation": 4392,
-          "Type": "Stratovolcano",
-          "Status": "Dendrochronology",
-          "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-    }
+```json
+{
+    "Volcano Name": "Rainier",
+        "Country": "United States",
+        "Region": "US-Washington",
+        "Location": {
+          "type": "Point",
+          "coordinates": [
+            -121.758,
+            46.87
+          ]
+        },
+        "Elevation": 4392,
+        "Type": "Stratovolcano",
+        "Status": "Dendrochronology",
+        "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
+}
+```
 
 你将从该 Azure Cosmos DB 帐户中检索火山数据并在交互式 Power BI 报表中将数据可视化。
 
@@ -74,13 +75,13 @@ ms.locfileid: "69616811"
 
 2. 可以“获取数据”  、查看“最近使用的源”  或直接从“欢迎”屏幕“打开其他报表”  。 单击右上角的“X”以关闭屏幕。 显示 Power BI Desktop 的“报表”  视图。
    
-   ![Power BI Desktop 报表视图 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview.png" alt-text="Power BI Desktop 报表视图 - Power BI 连接器":::
 
 3. 选择“主页”  功能区，并单击“获取数据”  。  应出现“获取数据”  窗口。
 
 4. 单击“Azure”，选择“Azure Cosmos DB (Beta)”，并单击“连接”。    
 
-    ![Power BI Desktop 获取数据 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop 获取数据 - Power BI 连接器":::
 
 5. 在“预览连接器”页中，单击“继续”   。 此时会显示“Azure Cosmos DB”窗口。 
 
@@ -98,109 +99,121 @@ ms.locfileid: "69616811"
     
     预览窗格显示“记录”  项的列表。  文档在 Power BI 中表示为一种“记录”  类型。 同样，文档内部的嵌套 JSON 块也是“记录”  。
     
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 导航器窗口](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 导航器窗口":::
+
 12. 单击“编辑”在新窗口中启动查询编辑器，以转换数据  。
 
 ## <a name="flattening-and-transforming-json-documents"></a>平展和转换 JSON 文档
 1. 切换到“Power BI 查询编辑器”窗口，其中“文档”列位于中心窗格  。
-   ![Power BI Desktop 查询编辑器](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
-2. 单击“文档”  列标题右侧的扩展器。  会显示带有字段列表的上下文菜单。  选择报表所需的字段，例如，火山名称、国家/地区、区域、位置、海拔、类型、状态和已知的上次喷发。 取消选中“使用原始列名作为前缀”框，然后单击“确定”。  
-   
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 展开文档](./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png)
-3. 中央窗格显示其中包含所选字段的结果预览。
-   
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 平展结果](./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png)
-4. 在我们的示例中，“位置”属性是文档中的一个 GeoJSON 块。  可以看到，“位置”在 Power BI Desktop 中表示为一种“记录”  类型。  
-5. 单击 Document.Location 列标题右侧的扩展器。  此时会显示包含类型和坐标字段的上下文菜单。  让我们选择坐标字段，确保未选中“使用原始列名作为前缀”，然后单击“确定”。  
-   
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 位置记录](./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png)
-6. 中心窗格现在显示一个“列表”  类型的坐标列。  如教程的开头所示，本教程中的 GeoJSON 数据是“点”类型，纬度值和经度值记录在坐标数组中。
-   
-    coordinates[0] 元素表示经度，coordinates[1] 表示纬度。
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 坐标列表](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
-7. 若要平展坐标数组，请创建一个名为 LatLong 的**自定义列**。  选择“添加列”  功能区并单击“自定义列”  。  此时将显示“自定义列”  窗口。
-8. 为新列提供一个名称，例如 LatLong。
-9. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击 **“确定”** 。
-   
-    有关数据分析表达式 (DAX)（包括 DAX 函数）的详细信息，请访问 [Power BI Desktop 中的 DAX 基础知识](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
-   
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 添加自定义列](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 
-10. 现在，中央窗格将显示填充了值的新 LatLong 列。
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop 查询编辑器":::
+
+1. 单击“文档”  列标题右侧的扩展器。  会显示带有字段列表的上下文菜单。  选择报表所需的字段，例如，火山名称、国家/地区、区域、位置、海拔、类型、状态和已知的上次喷发。 取消选中“使用原始列名作为前缀”框，然后单击“确定”。  
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 扩展文档":::
+
+1. 中央窗格显示其中包含所选字段的结果预览。
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 平铺结果":::
+
+1. 在我们的示例中，“位置”属性是文档中的一个 GeoJSON 块。  可以看到，“位置”在 Power BI Desktop 中表示为一种“记录”  类型。  
+
+1. 单击 Document.Location 列标题右侧的扩展器。  此时会显示包含类型和坐标字段的上下文菜单。  让我们选择坐标字段，确保未选中“使用原始列名作为前缀”，然后单击“确定”。  
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 位置记录":::
+
+1. 中心窗格现在显示一个“列表”  类型的坐标列。  如教程的开头所示，本教程中的 GeoJSON 数据是“点”类型，纬度值和经度值记录在坐标数组中。
+   
+   coordinates[0] 元素表示经度，coordinates[1] 表示纬度。
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 坐标列表":::
+
+1. 若要平展坐标数组，请创建一个名为 LatLong 的**自定义列**。  选择“添加列”  功能区并单击“自定义列”  。  此时将显示“自定义列”  窗口。
+
+1. 为新列提供一个名称，例如 LatLong。
+
+1. 接下来，为新列指定自定义公式。  对于我们的示例，我们将如下所示，使用以下公式连接逗号分隔的纬度值和经度值：`Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 单击 **“确定”** 。
+   
+   有关数据分析表达式 (DAX)（包括 DAX 函数）的详细信息，请访问 [Power BI Desktop 中的 DAX 基础知识](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
+   
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 添加自定义列":::
+
+1. 现在，中央窗格将显示填充了值的新 LatLong 列。
     
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 自定义 LatLong 列](./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png)
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 自定义经纬度列":::
     
     如果新列中出现错误，请确保“查询设置”下应用的步骤与下图相符：
     
-    ![应用的步骤应为“源”、“导航”、“展开的文档”、“展开的 Document.Location”、“添加的自定义”](./media/powerbi-visualize/power-bi-applied-steps.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="应用的步骤应该为“源”、“导航”、“展开的文档”、“展开的文档位置”、“添加自定义”":::
     
     如果步骤不同，请删除额外的步骤，并重试添加自定义列。 
 
-11. 单击“关闭并应用”  以保存数据模型。
-    
-    ![针对 Azure Cosmos DB Power BI 连接器的 Power BI 教程 - 关闭并应用](./media/powerbi-visualize/power_bi_connector_pbicloseapply.png)
+1. 单击“关闭并应用”  以保存数据模型。
+
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI 用于 Azure Cosmos DB Power BI 连接器-关闭 & 应用的教程":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>生成报表
+
 可以在 Power BI Desktop 报表视图中开始创建报表来将数据可视化。  可以通过将字段拖放到“报表”  画布中来创建报表。
 
-![Power BI Desktop 报表视图 - Power BI 连接器](./media/powerbi-visualize/power_bi_connector_pbireportview2.png)
+:::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbireportview2.png" alt-text="Power BI Desktop 报表视图 - Power BI 连接器":::
 
 在“报表”视图中，应找到：
 
 1. 在“字段”  窗格中，可以看到包含可用于报表的字段的数据模型的列表。
-2. “可视化”  窗格。 一个报表可以包含单个或多个可视化效果。  从“可视化”  窗格中选取符合需求的视觉对象类型。
-3. 在“报表”  画布中，可以为报表生成视觉效果。
-4. “报表”  页。 可以在 Power BI Desktop 中添加多个报表页。
+1. “可视化”  窗格。 一个报表可以包含单个或多个可视化效果。  从“可视化”  窗格中选取符合需求的视觉对象类型。
+1. 在“报表”  画布中，可以为报表生成视觉效果。
+1. “报表”  页。 可以在 Power BI Desktop 中添加多个报表页。
 
 下面演示创建简单交互地图视图报表的基本步骤。
 
 1. 对于我们的示例，我们创建显示每座火山的位置的地图视图。  在“可视化”  窗格中，单击如上屏幕截图中突出显示的“地图”视觉对象类型。  应会看到绘制在“报表”  画布上的地图视觉对象类型。  “可视化”  窗格还应该显示一组与地图视觉对象类型相关的属性。
-2. 现在，从“字段”  窗格中将经纬度字段拖放到“可视化”  窗格中的“位置”  属性。
-3. 接下来，将“火山名称”字段拖放到“图例”  属性。  
-4. 然后，将“海拔”字段拖放到“大小”  属性。  
-5. 现在应会看到显示一组表示每座火山位置的气泡的地图视觉对象，气泡的大小与火山的海拔相关联。
-6. 此时已创建了基本报表。  可以通过添加更多可视化效果进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
+1. 现在，从“字段”  窗格中将经纬度字段拖放到“可视化”  窗格中的“位置”  属性。
+1. 接下来，将“火山名称”字段拖放到“图例”  属性。  
+1. 然后，将“海拔”字段拖放到“大小”  属性。  
+1. 现在应会看到显示一组表示每座火山位置的气泡的地图视觉对象，气泡的大小与火山的海拔相关联。
+1. 此时已创建了基本报表。  可以通过添加更多可视化效果进一步自定义该报表。  在本例中，我们添加了火山类型切片器以使报表具有交互性。  
    
-7. 在“文件”菜单中，单击“保存”  并将该文件保存为 PowerBITutorial.pbix。
+1. 在“文件”菜单中，单击“保存”  并将该文件保存为 PowerBITutorial.pbix。
 
 ## <a name="publish-and-share-your-report"></a>发布和共享报表
 要共享报表，必须在 PowerBI.com 中拥有帐户。
 
 1. 在 Power BI Desktop 中，单击“主页”  功能区。
-2. 单击“发布”。   系统会提示输入 PowerBI.com 帐户的用户名和密码。
-3. 凭据通过身份验证后，报表将发布到选择的目标。
-4. 单击“在 Power BI 中打开‘PowerBITutorial.pbix’”  ，以在 Power BI.com 上查看并共享报表。
+1. 单击“发布”。   系统会提示输入 PowerBI.com 帐户的用户名和密码。
+1. 凭据通过身份验证后，报表将发布到选择的目标。
+1. 单击“在 Power BI 中打开‘PowerBITutorial.pbix’”  ，以在 Power BI.com 上查看并共享报表。
    
-    ![已成功发布到 Power BI！ 在 Power BI 中打开教程](./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png)
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="发布到 Power BI 成功！在 Power BI 中打开教程":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>在 PowerBI.com 中创建仪表板
-现在，已创建一份可在 PowerBI.com 上共享的报表
+既然有了报表，就将报表分享到 PowerBI.com 吧
 
-将报表从 Power BI Desktop 发布到 PowerBI.com 时，会在 PowerBI.com 租户中生成一个“报表”  和“数据集”  。 例如，将一个名为 **PowerBITutorial** 的报表发布到 PowerBI.com 后，PowerBITutorial 会出现在 PowerBI.com 的“报表”  和“数据集”  部分。
+从 Power BI Desktop 发布报表到 PowerBI.com 时，会在 PowerBI.com 租户中生成一个“报表”**** 和“数据集”****。 例如，将一个名为 **PowerBITutorial** 的报表发布到 PowerBI.com 后，PowerBITutorial 会出现在 PowerBI.com 的“报表”**** 和“数据集”**** 部分。
 
-   ![PowerBI.com 中新报表和数据集的屏幕截图](./media/powerbi-visualize/powerbi-reports-datasets.png)
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="PowerBI.com 中新“报表”和“数据集”的屏幕截图":::
 
-若要创建可共享的仪表板，请单击 PowerBI 报表上的“固定活动页”  按钮。
+若要创建可共享的仪表板，请单击 PowerBI 报表上的“固定活动页”**** 按钮。
 
-   ![PowerBI.com 中新报表和数据集的屏幕截图](./media/powerbi-visualize/power-bi-pin-live-tile.png)
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="PowerBI.com 中新“报表”和“数据集”的屏幕截图":::
 
-然后，根据 [Pin a tile from a report](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report)（从报表固定磁贴）中的说明创建新仪表板。 
+然后按照[从报表固定磁贴](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report)中的说明创建新仪表板。 
 
-还可在创建仪表板之前进行即席修改。 但是，我们建议使用 Power BI Desktop 执行修改，并将报表重新发布到 PowerBI.com。
+创建仪表板之前也可以临时修改报表。 但是，建议使用 Power BI Desktop 执行修改并将报表重新发布到 PowerBI.com。
 
 <!-- ## Refresh data in PowerBI.com
 There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-![Screenshot of Refresh Now in PowerBI.com](./media/powerbi-visualize/power-bi-refresh-now.png)
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    ![Screenshot of the Schedule Refresh in PowerBI.com](./media/powerbi-visualize/power-bi-schedule-refresh.png)
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    
@@ -210,6 +223,6 @@ For a scheduled refresh, do the following.
 6. Click **Apply** and you are done setting up the scheduled refresh.
 -->
 ## <a name="next-steps"></a>后续步骤
-* 有关 Power BI 的详细信息，请参阅 [Get started with Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)（Power BI 入门）。
+* 有关 Power BI 的详细信息，请参阅 [Power BI 入门](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
 * 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登陆页](https://azure.microsoft.com/documentation/services/cosmos-db/)。
 

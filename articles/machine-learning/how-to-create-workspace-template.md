@@ -5,17 +5,16 @@ description: 了解如何使用 Azure 资源管理器模板创建新的 Azure �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: eae10b7ae8cd14fd120e969c39c05a8ba2525003
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681545"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392654"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板为 Azure 机器学习创建工作区
 
@@ -65,7 +64,7 @@ ms.locfileid: "83681545"
 > [!TIP]
 > 当与本文档关联的模板创建了新的 Azure 容器注册表时，你还可以在无需创建容器注册表的情况下创建新工作区。 当执行需要容器注册表的操作时，将创建一个容器注册表。 例如，训练或部署模型。
 >
-> 还可以在 Azure 资源管理器模板中引用现有容器注册表或存储帐户，而不是创建新容器注册表或存储帐户。
+> 还可以在 Azure 资源管理器模板中引用现有容器注册表或存储帐户，而不是创建新容器注册表或存储帐户。 但是，必须启用__管理员帐户__才能使用容器注册表。 有关启用管理员帐户的信息，请参阅[管理员帐户](/azure/container-registry/container-registry-authentication#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 

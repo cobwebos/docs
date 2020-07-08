@@ -6,16 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201070"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85212611"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -58,7 +57,7 @@ ms.locfileid: "83201070"
 
     ![显示存储权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-现在，“API 权限”窗格会显示已注册的 Azure AD 应用程序有权访问 Microsoft Graph 和 Azure 存储。  首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
+现在， **API 权限**窗格显示已注册的 Azure AD 应用程序可以访问 Microsoft Graph 和 Azure 存储 api。 首次向 Azure AD 注册应用时，系统会自动授予对 Microsoft Graph 的权限。
 
 ![显示注册应用权限的屏幕截图](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
@@ -213,7 +212,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -284,8 +283,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 若要运行该示例，可能需要为应用注册配置隐式授权流。 执行以下步骤：
 
 1. 在 Azure 门户中导航到你的应用注册。
-1. 在“管理”部分，选择“身份验证”设置。 
-1. 在“隐式授权”部分中的“高级设置”下，选中相应的复选框以启用访问令牌和 ID 令牌，如下图所示：  
+1. 在 "**管理**" 部分中，选择**身份验证**设置。
+1. 在 "**隐式授予**" 部分中，选中相应的复选框以启用 ID 令牌，如下图所示：
 
     ![显示如何启用隐式授权流设置的屏幕截图](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +293,13 @@ CloudBlockBlob blob = new CloudBlockBlob(
 运行该示例时，你可能会发现，需要更新应用注册中指定重定向 URI，以使用在运行时分配的 *localhost* 端口。 若要更新重定向 URI 以使用分配的端口，请执行以下步骤：
 
 1. 在 Azure 门户中导航到你的应用注册。
-1. 在“管理”部分，选择“身份验证”设置。 
+1. 在 "**管理**" 部分中，选择**身份验证**设置。
 1. 在“重定向 URI”下编辑端口，使之与示例应用程序使用的端口相匹配，如下图所示： 
 
     ![显示应用注册的重定向 URI 的屏幕截图](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解 Microsoft 标识平台，请参阅 [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)。
-- 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[使用 RBAC 管理存储数据的访问权限](storage-auth-aad-rbac.md)。
-- 若要了解如何将 Azure 资源的托管标识与 Azure 存储一起使用，请参阅[使用 Azure 资源的 Azure Active Directory 和托管标识验证对 Blob 和队列的访问权限](storage-auth-aad-msi.md)。
+- [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)
+- [使用 RBAC 管理对存储数据的访问权限](storage-auth-aad-rbac.md)
+- [使用 Azure 资源的 Azure Active Directory 和托管标识对 blob 和队列的访问进行身份验证](storage-auth-aad-msi.md)

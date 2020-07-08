@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281413"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710501"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>关于 ExpressRoute 虚拟网络网关
 
@@ -51,7 +50,7 @@ ms.locfileid: "79281413"
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
 >
 
-创建网关子网时，请指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
+创建网关子网时，需指定子网包含的 IP 地址数。 将网关子网中的 IP 地址分配到网关 VM 和网关服务。 有些配置需要具有比其他配置更多的 IP 地址。 
 
 规划网关子网大小时，请参阅你计划创建的配置的相关文档。 例如，ExpressRoute/VPN 网关共存配置所需的网关子网大于大多数其他配置。 此外，可能需要确保网关子网包含足够多的 IP 地址，以便应对将来可能会添加的配置。 尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 等）的网关子网（如果你有可用的地址空间来执行此操作）。 这将适合大多数配置。
 
@@ -86,7 +85,7 @@ ExpressRoute 虚拟网络网关旨在交换网络路由和路由网络流量。 
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API 和 PowerShell cmdlet
 有关将 REST API 和 PowerShell cmdlet 用于虚拟网络网关配置的其他技术资源和特定语法要求，请参阅以下页面：
 
-| **经典** | **资源管理器** |
+| **经典** | **Resource Manager** |
 | --- | --- |
 | [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |

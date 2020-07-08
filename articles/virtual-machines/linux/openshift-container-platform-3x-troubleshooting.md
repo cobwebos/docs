@@ -11,10 +11,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759465"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>排查 Azure 中的 OpenShift 容器平台3.11 部署问题
@@ -37,9 +36,9 @@ ms.locfileid: "81759465"
 
 ## <a name="log-files"></a>日志文件
 
-主机准备脚本的日志文件（stderr 和 stdout）位于所有主机`/var/lib/waagent/custom-script/download/0`上的。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
+主机准备脚本的日志文件（stderr 和 stdout）位于 `/var/lib/waagent/custom-script/download/0` 所有主机上的。 如果在准备主机期间出错，请查看这些日志文件以确定错误。
 
-如果准备脚本成功运行，则需要检查 ansible 操作手册宿主`/var/lib/waagent/custom-script/download/1`目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
+如果准备脚本成功运行，则 `/var/lib/waagent/custom-script/download/1` 需要检查 ansible 操作手册宿主目录中的日志文件。 如果在实际安装 OpenShift 期间出错，stdout 文件将显示错误。 使用此信息来联系支持人员，以获得进一步的帮助。
 
 示例输出
 
@@ -114,5 +113,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 对于某些错误，还可以使用以下命令获取详细信息：
 
-1. systemctl 状态\<服务>
+1. systemctl status \<service>
 2. journalctl -xe

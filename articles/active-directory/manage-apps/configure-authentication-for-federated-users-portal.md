@@ -3,24 +3,23 @@ title: 使用主领域发现配置登录自动加速
 description: 了解如何为联合用户配置用于 Azure Active Directory 身份验证的主领域发现策略，包括自动加速和域提示。
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690509"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84763578"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -81,8 +80,8 @@ ms.locfileid: "82690509"
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>自动加速的主领域发现策略
 某些应用程序不提供配置其发出的身份验证请求的方法。 在此情况下，域提示不能用来控制自动加速。 可以通过策略配置自动加速，以实现相同的行为。  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>为旧式应用程序启用直接身份验证
-最佳做法是让应用程序使用 AAD 库和交互式登录对用户进行身份验证。 库会处理联合用户流。  有时，旧式应用程序无法识别联合。 它们不会执行主领域发现，并且不会通过与正确的联合终结点交互来对用户进行身份验证。 如果需要，可以使用 HRD 策略来启用特定的旧式应用程序，以提交用于在 Azure Active Directory 中直接进行身份验证的用户名/密码凭据。 必须启用密码哈希同步。 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>为旧版应用程序的联合用户启用直接 ROPC 身份验证
+最佳做法是让应用程序使用 AAD 库和交互式登录对用户进行身份验证。 库会处理联合用户流。  通常，旧版应用程序（尤其是那些使用 ROPC 的应用程序）会直接将用户名和密码提交到 Azure AD，而不会写入来了解联合身份验证。 它们不会执行主领域发现，并且不会通过与正确的联合终结点交互来对用户进行身份验证。 如果你选择，则可以使用 HRD 策略来启用使用 ROPC 授予直接与 Azure Active Directory 进行身份验证的特定旧版应用程序，这些应用程序使用授予来提交用户名/密码凭据。 必须启用密码哈希同步。 
 
 > [!IMPORTANT]
 > 仅当已启用密码哈希同步，并且知道可对此应用程序进行身份验证，且本地 IdP 未实施任何策略时，才启用直接身份验证。 如果禁用密码哈希同步，或出于任何原因禁用使用 AD Connect 的目录同步，则应删除此策略，以防止使用过期的密码哈希进行直接身份验证。
@@ -110,7 +109,7 @@ ms.locfileid: "82690509"
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

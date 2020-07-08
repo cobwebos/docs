@@ -1,16 +1,15 @@
 ---
 title: 使用系统运行状况报告进行故障排除
 description: 介绍了 Azure Service Fabric 组件发送的运行状况报告，以及如何使用这些报告来排查群集或应用程序问题
-author: oanapl
+author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: oanapl
-ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: gwallace
+ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282011"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85392567"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系统运行状况报告进行故障排除
 Azure Service Fabric 组件提供有关现成群集中所有实体的系统运行状况报告。 [运行状况存储](service-fabric-health-introduction.md#health-store)根据系统报告来创建和删除实体。 它还会将这些实体组织为层次结构以捕获实体交互。
@@ -639,30 +638,30 @@ HealthEvents          :
 
 属性和文本指明了哪些 API 无法运行。 对不同卡滞 API 采取的后续步骤是不同的。 *Istatefulservicereplica.changerole*或*IStatelessServiceInstance*上的任何 API 通常是服务代码中的一个 bug。 下一节将介绍这些如何转换为[Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
 
-- **Istatefulservicereplica.changerole**：此警告表明`CreateServiceInstanceListeners`，如果重写，则`ICommunicationListener.OpenAsync` `OnOpenAsync`会阻塞对、或的调用。
+- **Istatefulservicereplica.changerole**：此警告表明 `CreateServiceInstanceListeners` ， `ICommunicationListener.OpenAsync` 如果重写，则会阻塞对、或的调用 `OnOpenAsync` 。
 
 - **IStatefulServiceReplica.Close** 和 **IStatefulServiceReplica.Abort**：最常见的情况是服务不履行传递给 `RunAsync` 的取消令牌。 也可能是无法调用 `ICommunicationListener.CloseAsync` 或 `OnCloseAsync`（若已重写）。
 
 - **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常见的情况是服务不履行传递给 `RunAsync` 的取消令牌。 在这种情况下，最佳解决方案是重启副本。
 
-- **Istatefulservicereplica.changerole. ChangeRole （P）**：最常见的情况是服务尚未从`RunAsync`返回任务。
+- **Istatefulservicereplica.changerole. ChangeRole （P）**：最常见的情况是服务尚未从返回任务 `RunAsync` 。
 
 可能会停滞的其他 API 调用位于**IReplicator**接口上。 例如：
 
 - **IReplicator.CatchupReplicaSet**：此警告指明发生以下两个事件之一。 已启动的副本不足。 若要查看是否是这种情况，请查看分区中的副本的副本状态，或查看卡滞重新配置的 System.FM 运行状况报告。 或副本不确认操作。 PowerShell cmdlet `Get-ServiceFabricDeployedReplicaDetail` 可用于确定所有副本的进度。 问题在于，某些副本的 `LastAppliedReplicationSequenceNumber` 值落后于主要副本的 `CommittedSequenceNumber` 值。
 
-- **IReplicator. ireplicator.buildreplica （\<远程 ReplicaId>）**：此警告表明生成过程中存在问题。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这可能是由于复制器地址配置错误所致。 有关详细信息，请参阅[配置有状态可靠服务](service-fabric-reliable-services-configuration.md)和[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。 也可能是远程节点有问题。
+- **IReplicator.BuildReplica (\<Remote ReplicaId>)**：此警告指明生成过程有问题。 有关详细信息，请参阅[副本生命周期](service-fabric-concepts-replica-lifecycle.md)。 这可能是由于复制器地址配置错误所致。 有关详细信息，请参阅[配置有状态可靠服务](service-fabric-reliable-services-configuration.md)和[在服务清单中指定资源](service-fabric-service-manifest-resources.md)。 也可能是远程节点有问题。
 
 ### <a name="replicator-system-health-reports"></a>复制器系统运行状况报告
-**复制队列已满：**
+**复制队列已满：** 
 复制队列已满时，**系统**会报告警告。 在主要副本上，由于一个或多个次要副本确认操作的速度较慢，复制队列通常会达到已满状态。 在辅助副本上，当服务应用操作的速度较慢时，通常会发生这种情况。 当队列不再满时，警告被清除。
 
 * **SourceId**：System.Replicator
 * **属性**： **PrimaryReplicationQueueStatus**或**SecondaryReplicationQueueStatus**，具体取决于副本角色。
 * **后续步骤**：如果报告位于主要副本上，请检查群集中节点间的连接。 如果所有连接都正常，则可能至少有一个慢速次要副本在应用操作时具有高磁盘延迟。 如果报告位于次要副本上，则先检查节点上的磁盘使用情况和性能。 然后检查从慢速节点到主要副本的传出连接。
 
-**RemoteReplicatorConnectionStatus：**
-如果与辅助（远程）复制器的连接不正常，主副本上的**系统**将报告警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
+**RemoteReplicatorConnectionStatus：** 
+主副本上的**系统复制**器会报告在与辅助（远程）复制器的连接不正常时出现的警告。 报告的信息中会显示远程复制器的地址，这样可以更方便地检测是否传入了错误的配置，或者复制器之间是否存在网络问题。
 
 * **SourceId**：System.Replicator
 * **属性**：**RemoteReplicatorConnectionStatus**。

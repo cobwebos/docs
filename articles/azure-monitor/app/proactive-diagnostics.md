@@ -5,7 +5,6 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
 ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83700840"

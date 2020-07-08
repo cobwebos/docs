@@ -9,10 +9,9 @@ ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
 ms.openlocfilehash: d8552391e8e8c389a44174595305b8f28224a833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732543"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
@@ -42,7 +41,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="prerequisites"></a>必备条件
 
-* 有效的 Azure 帐户。 （如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+* 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 * Azure 中的活动 IoT 中心。
 
@@ -180,4 +179,4 @@ pod install
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 解决方案加速器](https://azure.microsoft.com/documentation/suites/iot-suite/)文档。
 
-若要了解有关通过 IoT 中心开发解决方案的详细信息，请参阅[Iot 中心开发人员指南](iot-hub-devguide.md)。
+若要了解有关使用 IoT 中心开发解决方案的详细信息，请参阅 [IoT 中心开发人员指南](iot-hub-devguide.md)。

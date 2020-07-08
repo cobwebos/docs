@@ -4,15 +4,14 @@ description: 本文指导完成使用 Azure Resource Manager 和 PowerShell 通�
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6896cc268f6472b1816608067340c2c5868a2547
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984633"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>如何使用 PowerShell 在 Azure VPN 网关上配置 BGP
 本文介绍使用 Resource Manager 部署模型和 PowerShell 在跨界站点到站点 (S2S) VPN 连接和 VNet 到 VNet 连接上启用 BGP 的步骤。
@@ -223,9 +222,9 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG
 
 在本示例中，虚拟网络属于同一订阅。 可在不同订阅之间设置 VNet 到 VNet 连接。 有关详细信息，请参阅[配置 VNet 到 VNet 连接](vpn-gateway-vnet-vnet-rm-ps.md)。 请确保在创建连接时添加“-EnableBgp $True”，以启用 BGP。
 
-#### <a name="1-declare-your-variables"></a>1. 声明变量
+#### <a name="1-declare-your-variables"></a>1.声明变量
 
-请务必将值替换为用于配置的值。
+请务必将值替换为要用于配置的值。
 
 ```powershell
 $RG2 = "TestBGPRG2"
@@ -248,7 +247,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. 在新资源组中创建 TestVNet2
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2.在新资源组中创建 TestVNet2
 
 ```powershell
 New-AzResourceGroup -Name $RG2 -Location $Location2
@@ -280,9 +279,9 @@ New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Lo
 
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>步骤 2 - 连接 TestVNet1 和 TestVNet2 网关
 
-在本示例中，这两个网关位于同一订阅中。 可以在同一 PowerShell 会话中完成此步骤。
+在此示例中，这两个网关位于同一订阅中。 可以在同一 PowerShell 会话中完成此步骤。
 
-#### <a name="1-get-both-gateways"></a>1. 获取这两个网关
+#### <a name="1-get-both-gateways"></a>1.获取这两个网关
 
 请确保登录并连接到订阅 1。
 
@@ -291,7 +290,7 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. 创建两个连接
+#### <a name="2-create-both-connections"></a>2.创建两个连接
 
 在此步骤中，将创建从 TestVNet1 到 TestVNet2 的连接，以及从 TestVNet2 到 TestVNet1 的连接。
 

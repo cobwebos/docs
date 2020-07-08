@@ -10,11 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710858"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教程：在本地发布和订阅事件
 
@@ -23,7 +22,7 @@ ms.locfileid: "79280997"
 > [!NOTE]
 > 若要了解有关 Azure 事件网格主题和订阅的信息，请参阅[事件网格概念](concepts.md)。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
@@ -43,11 +42,11 @@ ms.locfileid: "79280997"
 1. 导航到 IoT 中心。
 1. 从 "**自动设备管理**" 部分的菜单中选择 " **IoT Edge** "。 
 1. 从设备列表中单击目标设备的 ID
-1. 选择 "**设置模块**"。 使页面保持打开状态。 你将继续执行下一节中的步骤。
+1. 选择“设置模块”。 使页面保持打开状态。 你将继续执行下一节中的步骤。
 
 ### <a name="configure-a-deployment-manifest"></a>配置部署清单
 
-部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。  创建分为三步：添加模块、指定路由和评审部署************。
+部署清单是一个 JSON 文档，其中描述了要部署的模块、数据在模块间的流动方式以及模块孪生的所需属性。 Azure 门户提供部署清单的创建向导，无需你手动构建 JSON 文档。  它分为三步：添加模块、指定路由和评审部署  。
 
 ### <a name="add-modules"></a>添加模块
 
@@ -77,7 +76,7 @@ ms.locfileid: "79280997"
           }
         }
     ```    
- 1. 单击“保存” 
+ 1. 单击“保存”
  1. 在将 Azure 事件网格订户模块一起部署之前，请继续阅读下一节。
 
     >[!IMPORTANT]
@@ -99,7 +98,7 @@ ms.locfileid: "79280997"
    * **名称**：订阅服务器
    * **映像 URI**：`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器创建选项**：无
-1. 单击“保存” 
+1. 单击“保存”
 1. 单击 "**下一步**" 以继续转到 "路由" 部分
 
  ### <a name="setup-routes"></a>安装路由
@@ -118,7 +117,7 @@ ms.locfileid: "79280997"
 
 作为事件的发布者，需要创建事件网格主题。 在 Azure 事件网格中，主题指的是发布服务器可将事件发送到的终结点。
 
-1. 创建包含以下内容的主题。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 topic.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         {
@@ -129,7 +128,7 @@ ms.locfileid: "79280997"
         }
     ```
 
-1. 运行以下命令以创建事件网格主题。 确认显示 HTTP 状态代码为`200 OK`。
+1. 运行以下命令以创建事件网格主题。 确认显示 HTTP 状态代码为 `200 OK` 。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -163,7 +162,7 @@ ms.locfileid: "79280997"
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 创建具有以下内容的订阅。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)
+1. 创建具有以下内容的 subscription.js。 有关有效负载的详细信息，请参阅我们的[API 文档](api.md)
 
     ```json
         {
@@ -180,7 +179,7 @@ ms.locfileid: "79280997"
 
     >[!NOTE]
     > **EndpointType**属性指定订阅服务器是**Webhook**。  **EndpointUrl**指定订阅服务器侦听事件的 URL。 此 URL 对应于之前部署的 Azure 订阅者示例。
-2. 运行以下命令以创建主题的订阅。 确认显示 HTTP 状态代码为`200 OK`。
+2. 运行以下命令以创建主题的订阅。 确认显示 HTTP 状态代码为 `200 OK` 。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +211,7 @@ ms.locfileid: "79280997"
 
 ## <a name="publish-an-event"></a>发布事件
 
-1. 创建包含以下内容的事件 json。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
+1. 创建具有以下内容的 event.js。 有关有效负载的详细信息，请参阅[API 文档](api.md)。
 
     ```json
         [

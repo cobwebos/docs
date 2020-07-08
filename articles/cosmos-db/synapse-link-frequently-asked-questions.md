@@ -6,12 +6,11 @@ ms.author: srchi
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 36be05f72597ae9864eff812862589cafb1f5b0d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: bead905a3bd4b1cdd46c4cd27775f9d7e03040d5
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596466"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921191"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>有关 Azure Synapse Link for Azure Cosmos DB 的常见问题
 
@@ -29,6 +28,9 @@ Azure Synapse Link for Azure Cosmos DB 在 Azure Cosmos DB 和 Azure Synapse Ana
 
 ### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>我是否可以选择仅为特定区域启用 Synapse Link，而不为多区域帐户设置中的所有区域启用它？
 在预览版中，为多区域帐户启用 Synapse Link 时，将在所有区域中创建分析存储。 基础数据针对事务存储中的吞吐量和事务一致性进行了优化。
+
+### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>支持 Synapse 链接的帐户是否支持备份和还原？
+在预览版中，对于启用了 Synapse 链接的数据库帐户，不支持备份和还原容器。 如果你有需要备份和还原功能的生产工作负荷，我们建议不要在这些数据库帐户上启用 Synapse 链接。 
 
 ### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>我是否可以为 Azure Cosmos 帐户禁用 Synapse Link 功能？
 目前，在帐户级别启用 Synapse Link 功能后，无法禁用它。  如果要关闭该功能，则必须删除并重新创建新的 Azure Cosmos 帐户。
@@ -107,7 +109,7 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 |Synapse SQL 无服务器    | 读取、写入（封闭预览）  |
 |Synapse SQL 预配   |  不可用 |
 
-### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Synapse Spark 表与 Synapse SQL 无服务器表同步的方式是否与 Azure Data Lake 同步的方式相同？
+### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>我的 Synapse Spark 表是否与我的 Synapse SQL 无服务器表同步，其方式与 Azure Data Lake 相同？
 目前，此功能不可用。
 
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>我是否可以从分析存储执行 Spark 结构化流式处理？
@@ -118,11 +120,11 @@ Azure Cosmos DB 保证事务和分析工作负荷之间的性能隔离。 在容
 ### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>在 Synapse Studio 中，如何识别是否连接到启用了分析存储的 Azure Cosmos DB 容器？
 使用分析存储启用的 Azure Cosmos DB 容器具有以下图标：
 
-![使用分析存储启用的 Azure Cosmos DB 容器 - 图标](./media/synapse-link-frequently-asked-questions/analytical-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/analytical-store-icon.png" alt-text="使用分析存储启用的 Azure Cosmos DB 容器 - 图标":::
 
 事务存储容器将使用以下图标表示：
 
-![使用事务存储启用的 Azure Cosmos DB 容器 - 图标](./media/synapse-link-frequently-asked-questions/transactional-store-icon.png)
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="使用事务存储启用的 Azure Cosmos DB 容器 - 图标":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>如何从 Synapse Studio 传递 Azure Cosmos DB 凭据？
 目前，Azure Cosmos DB 凭据是由有权访问 Azure Cosmos DB 数据库的用户在创建链接服务时传递的。 有权访问工作区的其他用户可以访问该存储。

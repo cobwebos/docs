@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 61f555dc8f24ce303934187d36ee994b25b31920
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114109"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920084"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>导致角色回收的常见问题
 本文讨论部署问题的一些常见原因，并提供故障排除技巧以帮助你解决这些问题。 角色实例无法启动，或者在“正在初始化”、“忙”和“正在停止”状态之间循环时，即指示应用程序存在问题。
@@ -53,12 +52,14 @@ Azure 是一个 64 位的环境。 因此，针对 32 位目标编译的 .NET �
   默认情况下，此设置指向模拟的存储帐户中，因此必须在部署应用程序包之前显式更改此设置。 如果不更改此设置，则角色实例尝试启动诊断监视器时，会引发异常。 这可能导致角色实例无限期回收。
 * 连接字符串是使用以下[格式](../storage/common/storage-configure-connection-string.md)指定的。 （协议必须指定为 HTTPS。）将 MyAccountName 替换为存储帐户名称，将 MyAccountKey 替换为访问密钥   ：    
 
-        DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```console
+DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
+```
 
   如果要使用 Microsoft Azure Visual Studio 的 Azure 工具来开发应用程序，则可使用属性页设置此值。
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>导出的证书不含私钥
-若要在 TLS 下运行 web 角色，必须确保导出的管理证书包含私钥。 如果使用 Windows 证书管理器导出证书，请务必对“导出私钥”选项选择“是”    。 该证书必须以 PFX 格式导出，这是当前支持的唯一格式。
+若要在 TLS 下运行 Web 角色，必须确保导出的管理证书包含私钥。 如果使用 Windows 证书管理器导出证书，请务必对“导出私钥”选项选择“是”    。 该证书必须以 PFX 格式导出，这是当前支持的唯一格式。
 
 ## <a name="next-steps"></a>后续步骤
 查看更多针对云服务的 [故障排除文章](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) 。
