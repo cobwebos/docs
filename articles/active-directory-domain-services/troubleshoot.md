@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 84efe294533186fdcf2e0a3356a7d6b01eccaf5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7642a32ce69dbbbb5ddebbe56b74f3202b2e6422
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654394"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039562"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
 
@@ -45,7 +45,7 @@ ms.locfileid: "80654394"
 
 检查相同的或对等互连的虚拟网络上没有具有相同域名的现有 AD DS 环境。 例如，你可能有一个在 Azure Vm 上运行的名为*aaddscontoso.com*的 AD DS 域。 尝试在虚拟网络上启用具有相同域名*aaddscontoso.com*的 Azure AD DS 托管域时，请求的操作将失败。
 
-此失败是由虚拟网络上的域名冲突引起的。 DNS 查找检查现有 AD DS 环境是否响应请求的域名。 若要解决此失败，请使用其他名称设置 Azure AD DS 托管域，或取消预配现有 AD DS 域，然后重试以启用 Azure AD DS。
+此失败是由虚拟网络上的域名冲突引起的。 DNS 查找检查现有 AD DS 环境是否响应请求的域名。 若要解决此失败，请使用其他名称设置托管域，或取消预配现有 AD DS 域，然后重试以启用 Azure AD DS。
 
 ### <a name="inadequate-permissions"></a>权限不足
 
@@ -57,8 +57,8 @@ ms.locfileid: "80654394"
 
 检查 Azure AD 目录中是否存在名为*Azure AD 域服务同步*的应用程序。 如果此应用程序存在，请将其删除，然后重试启用 Azure AD DS。 若要检查现有的应用程序并根据需要删除该应用程序，请完成以下步骤：
 
-1. 在 Azure 门户中，从左侧导航菜单中选择 " **Azure Active Directory** "。
-1. 选择“企业应用程序”。**** 从 "**应用程序类型**" 下拉菜单中选择 "*所有应用程序*"，然后选择 "**应用**"。
+1. 在 Azure 门户的左侧导航菜单中，选择“Azure Active Directory”。
+1. 选择“企业应用程序”。 在“应用程序类型”下拉菜单中，选择“所有应用程序”，然后选择“应用” 。
 1. 在搜索框中，输入 " *Azure AD 域服务同步*"。如果该应用程序存在，请将其选中，然后选择 "**删除**"。
 1. 删除应用程序后，请尝试再次启用 Azure AD DS。
 
@@ -118,17 +118,17 @@ if ($sp -ne $null)
 
 若要查看此应用程序的状态并根据需要启用它，请完成以下步骤：
 
-1. 在 Azure 门户中，从左侧导航菜单中选择 " **Azure Active Directory** "。
-1. 选择“企业应用程序”。**** 从 "**应用程序类型**" 下拉菜单中选择 "*所有应用程序*"，然后选择 "**应用**"。
+1. 在 Azure 门户的左侧导航菜单中，选择“Azure Active Directory”。
+1. 选择“企业应用程序”。 在“应用程序类型”下拉菜单中，选择“所有应用程序”，然后选择“应用” 。
 1. 在搜索框中，输入 " *00000002-0000-0000-c000-00000000000*"。 选择应用程序，然后选择 "**属性**"。
 1. 如果 "**允许用户登录**" 设置为 "*否*"，则将值设置为 *"是"*，然后选择 "**保存**"。
 1. 启用应用程序后，请尝试再次启用 Azure AD DS。
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>用户无法登录 Azure AD 域服务托管域
 
-如果 Azure AD 租户中的一个或多个用户无法登录到 Azure AD DS 托管域，请完成以下故障排除步骤：
+如果 Azure AD 租户中的一个或多个用户无法登录到托管域，请完成以下故障排除步骤：
 
-* **凭据格式**-尝试使用 UPN 格式指定凭据，如`dee@aaddscontoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定凭据的建议方法。 请确保在 Azure AD 中正确配置了此 UPN。
+* **凭据格式**-尝试使用 UPN 格式指定凭据，如 `dee@aaddscontoso.onmicrosoft.com` 。 UPN 格式是在 Azure AD DS 中指定凭据的建议方法。 请确保在 Azure AD 中正确配置了此 UPN。
 
     如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，则可能会自动生成帐户的*SAMAccountName* （如*AADDSCONTOSO\driley* ）。 因此，你的帐户的*SAMAccountName*格式可能不同于你在本地域中的预期或使用的格式。
 
@@ -137,35 +137,35 @@ if ($sp -ne $null)
     
       * 你已部署或更新到[Azure AD Connect 的最新建议版本](https://www.microsoft.com/download/details.aspx?id=47594)。
       * 已将 Azure AD Connect 配置为[执行完全同步][hybrid-phs]。
-      * 根据目录的大小，可能需要一段时间，用户帐户和凭据哈希在 Azure AD DS 中可用。 在尝试对托管域进行身份验证之前，请确保等待足够长的时间。
-      * 如果在验证前面的步骤后该问题仍然存在，请尝试重启*Microsoft Azure AD 同步服务*。 在 Azure AD Connect 服务器上，打开命令提示符并运行以下命令：
+      * 根据目录的大小，可能需要一段时间才能使用户帐户和凭据哈希在托管域中可用。 在尝试对托管域进行身份验证之前，请确保等待足够长的时间。
+      * 如果在验证前面的步骤后该问题仍然存在，请尝试重启*Microsoft Azure AD 同步服务*。 在 Azure AD Connect 服务器上，打开命令提示符，并运行以下命令：
     
         ```console
         net stop 'Microsoft Azure AD Sync'
         net start 'Microsoft Azure AD Sync'
         ```
 
-    * **仅限云的帐户**：如果受影响的用户帐户是仅限云的用户帐户，请确保在[启用 Azure AD DS 后，用户已更改其密码][cloud-only-passwords]。 此密码重置将导致生成 Azure AD 域服务所需的凭据哈希。
+    * **仅限云的帐户**：如果受影响的用户帐户是仅限云的用户帐户，请确保在[启用 Azure AD DS 后，用户已更改其密码][cloud-only-passwords]。 此密码重置将导致生成托管域所需的凭据哈希。
 
 * **验证用户帐户是否处于活动状态**：默认情况下，在2分钟内，托管域上的5次无效密码尝试将导致用户帐户被锁定30分钟。 当帐户被锁定时，用户无法登录。30分钟后，用户帐户会自动解锁。
-  * Azure AD DS 托管域上的密码尝试无效，不会锁定 Azure AD 中的用户帐户。 仅在托管域中锁定用户帐户。 使用[管理 VM][management-vm]（而不是在 Azure AD 中 *）检查 Active Directory 管理控制台（ADAC）* 中的用户帐户状态。
+  * 托管域上的无效密码尝试不会 Azure AD 中锁定用户帐户。 仅在托管域中锁定用户帐户。 使用[管理 VM][management-vm]（而不是在 Azure AD 中 *）检查 Active Directory 管理控制台（ADAC）* 中的用户帐户状态。
   * 你还可以[配置细化密码策略][password-policy]，以更改默认锁定阈值和持续时间。
 
-* **外部帐户**-检查受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（ `dee@live.com`如）或外部 Azure AD 目录中的用户帐户。 Azure AD DS 不存储外部用户帐户的凭据，因此无法登录到托管域。
+* **外部帐户**-检查受影响的用户帐户不是 Azure AD 租户中的外部帐户。 外部帐户的示例包括 Microsoft 帐户（如） `dee@live.com` 或外部 Azure AD 目录中的用户帐户。 Azure AD DS 不存储外部用户帐户的凭据，因此无法登录到托管域。
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>托管域上出现一个或多个警报
 
-如果 Azure AD DS 托管域上存在活动警报，可能会阻止身份验证过程正常运行。
+如果托管域上存在活动警报，可能会阻止身份验证过程正常运行。
 
-若要查看是否有任何活动警报，请[检查 AZURE AD DS 托管域的运行状况状态][check-health]。 如果显示任何警报，请[对其进行故障排除和解决][troubleshoot-alerts]。
+若要查看是否有任何活动警报，请[检查托管域的运行状况状态][check-health]。 如果显示任何警报，请[对其进行故障排除和解决][troubleshoot-alerts]。
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>从 Azure AD 租户中删除的用户不会从托管域中删除
 
-Azure AD 可防止意外删除用户对象。 从 Azure AD 租户中删除用户帐户时，会将相应的用户对象移动到回收站。 将此删除操作同步到 Azure AD DS 托管域时，相应的用户帐户将标记为禁用。 此功能可帮助您恢复或撤消删除用户帐户。
+Azure AD 可防止意外删除用户对象。 从 Azure AD 租户中删除用户帐户时，会将相应的用户对象移动到回收站。 将此删除操作同步到托管域时，相应的用户帐户将标记为禁用。 此功能可帮助您恢复或撤消删除用户帐户。
 
-即使在 Azure AD 目录中重新创建了具有相同 UPN 的用户帐户，用户帐户仍在 Azure AD DS 托管域中处于禁用状态。 若要从 Azure AD DS 托管域中删除用户帐户，需要从 Azure AD 租户中强制删除该帐户。
+即使在 Azure AD 目录中重新创建了具有相同 UPN 的用户帐户，用户帐户仍将在托管域中处于禁用状态。 若要从托管域中删除用户帐户，需要从 Azure AD 租户中强制删除该帐户。
 
-若要从 Azure AD DS 托管域完全删除用户帐户，请使用带有`-RemoveFromRecycleBin`参数的[set-msoluser][Remove-MsolUser] PowerShell cmdlet 从 Azure AD 租户中永久删除该用户。
+若要从托管域中完全删除用户帐户，请使用[Set-msoluser][Remove-MsolUser] PowerShell cmdlet 和参数从 Azure AD 租户中永久删除该用户 `-RemoveFromRecycleBin` 。
 
 ## <a name="next-steps"></a>后续步骤
 

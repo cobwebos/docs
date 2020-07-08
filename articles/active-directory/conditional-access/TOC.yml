@@ -8,8 +8,6 @@
   items:
     - name: 要求接受使用条款
       href: require-tou.md
-    - name: 检测到会话风险时阻止访问
-      href: app-sign-in-risk.md
 - name: 教程
   items:
     - name: 需要 Azure 多重身份验证
@@ -68,8 +66,10 @@
           href: howto-conditional-access-policy-azure-management.md
         - name: 要求所有用户执行 MFA
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: 基于风险的条件访问
+        - name: 基于登录风险的条件访问
           href: howto-conditional-access-policy-risk.md
+        - name: 基于用户风险的条件访问
+          href: howto-conditional-access-policy-risk-user.md
         - name: 保护安全信息注册
           href: howto-conditional-access-policy-registration.md
         - name: 按位置阻止访问

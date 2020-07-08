@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100237"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039001"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
 
@@ -32,11 +32,11 @@ ms.locfileid: "82100237"
 
 若要运行 LUIS 容器，请注意以下先决条件：
 
-|必选|目的|
+|必须|目的|
 |--|--|
-|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **在 Windows 上**，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
+|Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> **** 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。|
-|Azure `Cognitive Services`资源和 LUIS[打包的应用](luis-how-to-start-new-app.md)文件 |若要使用容器，必须具有：<br><br>* 一项_认知服务_ Azure 资源，以及关联的计费密钥和计费终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以通过 LUIS 门户或创作 API 获取打包文件。 若要通过[创作 API](#authoring-apis-for-package-file) 获得 LUIS 打包应用，还将需要_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}**：此密钥用于从云中的 LUIS 服务获取打包的应用，并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}**：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}**：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户的“认知服务”__ 资源的密钥列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}**： "概述" 页中提供的终结点。<br><br>[创作密钥和终结点密钥](luis-limits.md#key-limits)具有不同的用途。 请勿互换使用。 |
+|Azure `Cognitive Services` 资源和 LUIS[打包的应用](luis-how-to-start-new-app.md)文件 |若要使用容器，必须具有：<br><br>* 一项_认知服务_ Azure 资源，以及关联的计费密钥和计费终结点 URI。 这两个值都可以在资源的“概述”和“密钥”页上找到，并且是启动容器所必需的。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以通过 LUIS 门户或创作 API 获取打包文件。 若要通过[创作 API](#authoring-apis-for-package-file) 获得 LUIS 打包应用，还将需要_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}**：此密钥用于从云中的 LUIS 服务获取打包的应用，并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}**：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}**：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户的“认知服务”__ 资源的密钥列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}**： "概述" 页中提供的终结点。<br><br>[创作密钥和终结点密钥](luis-limits.md#key-limits)具有不同的用途。 请勿互换使用。 |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -66,7 +66,7 @@ ms.locfileid: "82100237"
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 
-使用[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/)命令从`mcr.microsoft.com/azure-cognitive-services/luis`存储库下载容器映像：
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令从存储库下载容器映像 `mcr.microsoft.com/azure-cognitive-services/luis` ：
 
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
@@ -89,7 +89,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 1. 使用完此容器后，从 LUIS 门户的输出装入点[导入终结点日志](#import-the-endpoint-logs-for-active-learning)并[停止](#stop-the-container)容器。
 1. 在“查看终结点话语”**** 页上使用 LUIS 门户的[主动学习](luis-how-to-review-endpoint-utterances.md)改进应用。
 
-无法更改正在容器中运行的应用。 若要更改容器中的应用，必须使用 [LUIS](https://www.luis.ai) 门户或使用 LUIS [创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 更改 LUIS 服务中的应用。 然后进行训练和/或发布，下载新包并再次运行该容器。
+无法更改正在容器中运行的应用。 若要更改容器中的应用，需要使用[LUIS](https://www.luis.ai)门户更改 LUIS 服务中的应用，或使用 LUIS[创作 api](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)。 然后进行训练和/或发布，下载新包并再次运行该容器。
 
 容器内的 LUIS 应用无法导出回 LUIS 服务。 只能上传查询日志。
 
@@ -108,7 +108,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 |包类型|查询终结点 API|查询可用性|包文件名格式|
 |--|--|--|--|
 |带有版本|GET、POST|仅容器|`{APP_ID}_v{APP_VERSION}.gz`|
-|分步|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
+|过渡|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
 |生产|GET、POST|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -146,7 +146,7 @@ LUIS [门户](https://www.luis.ai)提供导出已训练或已发布的应用包�
 可从****“版本”列表页中获取已进行版本控制的应用包。
 
 1. 登录到 LUIS [门户](https://www.luis.ai)。
-1. 在列表中选择应用。
+1. 在列表中选择该应用。
 1. 在应用的导航栏中选择“管理”****。
 1. 在左侧导航栏中选择“版本”****。
 1. 选中列表中版本名称左侧的复选框。
@@ -166,7 +166,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| 占位符 | “值” |
+| 占位符 | 值 |
 |-------------|-------|
 | **{APP_ID}** | 已发布 LUIS 应用的应用程序 ID。 |
 | **{SLOT_NAME}** | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>`PRODUCTION`<br/>`STAGING` |
@@ -185,7 +185,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| 占位符 | “值” |
+| 占位符 | 值 |
 |-------------|-------|
 | **{APP_ID}** | 已训练 LUIS 应用的应用程序 ID。 |
 | **{APP_VERSION}** | 已训练 LUIS 应用的应用程序版本。 |
@@ -252,7 +252,7 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|目的|
+|查询参数|类型|目标|
 |--|--|--|
 |`query`|字符串|用户的话语。|
 |`verbose`|boolean|一个布尔值，表示是否为预测的模型返回所有元数据。 默认值为 false。|
@@ -268,10 +268,10 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|目的|
+|查询参数|类型|目标|
 |--|--|--|
 |`q`|字符串|用户的话语。|
-|`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
+|`timezoneOffset`|number|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
 |`verbose`|boolean|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
 |`staging`|boolean|设置为 true 时，返回过渡环境结果中的查询。 |
 |`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
@@ -372,7 +372,7 @@ LUIS 容器使用 Azure 帐户中的认知服务__ 资源向 Azure 发送账单�
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>“摘要”
+## <a name="summary"></a>摘要
 
 在本文中，我们已学习相关的概念，以及语言理解 (LUIS) 容器的下载、安装和运行工作流。 综上所述：
 
@@ -387,7 +387,7 @@ LUIS 容器使用 Azure 帐户中的认知服务__ 资源向 Azure 发送账单�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[配置容器](luis-container-configuration.md)，了解配置设置。
+* 查看配置设置的[容器](luis-container-configuration.md)。
 * 请参阅[LUIS 容器](luis-container-limitations.md)对已知功能限制的限制。
 * 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.md)。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

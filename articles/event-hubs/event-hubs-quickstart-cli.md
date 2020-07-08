@@ -1,21 +1,15 @@
 ---
 title: 使用 Azure CLI 创建事件中心 - Azure 事件中心 | Microsoft Docs
 description: 本快速入门介绍如何使用 Azure CLI 创建事件中心，然后使用 Java 发送和接收事件。
-services: event-hubs
-author: spelluru
-manager: timlt
-ms.service: event-hubs
-ms.devlang: java
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 02/11/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 92fd7d15ee5bc54cc41b78f4ba0d078d3f8fac6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d3499d6c480a3bfdbad57ffa367c5d2d326d565
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77162627"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85313111"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 
@@ -23,7 +17,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 在本快速入门中，请使用 Azure CLI 创建事件中心。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要完成本快速入门，需要一个 Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户][]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -74,7 +68,7 @@ az eventhubs eventhub create --name <event hub name> --resource-group <resource 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已创建一个资源组、一个事件中心命名空间和一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ： 
+在本文中，你已创建一个资源组、一个事件中心命名空间和一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程： 
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)

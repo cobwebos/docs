@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81639913"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039834"
 ---
-# <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD 域服务托管域中同步对象和凭据
+# <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>如何在 Azure Active Directory 域服务托管域中同步对象和凭据
 
-可在域中本地创建 Azure Active Directory 域服务（AD DS）托管域中的对象和凭据，或从 Azure Active Directory （Azure AD）租户中进行同步。 首次部署 Azure AD DS 时，将配置并启动自动单向同步，以将对象从 Azure AD 中复制。 此单向同步将继续在后台运行，以使 Azure AD DS 托管域与 Azure AD 中的任何更改保持同步。 Azure AD DS 回 Azure AD 不会发生同步。
+可在域中本地创建 Azure Active Directory 域服务（Azure AD DS）托管域中的对象和凭据，或从 Azure Active Directory （Azure AD）租户中进行同步。 首次部署 Azure AD DS 时，将配置并启动自动单向同步，以将对象从 Azure AD 中复制。 此单向同步将继续在后台运行，以使 Azure AD DS 托管域与 Azure AD 中的任何更改保持同步。 Azure AD DS 回 Azure AD 不会发生同步。
 
-在混合环境中，可使用 Azure AD Connect 将本地 AD DS 域中的对象和凭据同步到 Azure AD。 一旦这些对象成功同步到 Azure AD 后，自动后台同步就会使用 Azure AD DS 托管域将这些对象和凭据提供给应用程序使用。
+在混合环境中，可使用 Azure AD Connect 将本地 AD DS 域中的对象和凭据同步到 Azure AD。 一旦这些对象成功同步到 Azure AD 后，自动后台同步就会使用托管域将这些对象和凭据提供给应用程序使用。
 
 下图说明了 Azure AD DS、Azure AD 和可选本地 AD DS 环境之间的同步工作方式：
 
@@ -34,24 +34,24 @@ ms.locfileid: "81639913"
 
 在 Azure AD 中创建用户时，它们不会同步到 Azure AD DS，除非他们在 Azure AD 中更改其密码。 此密码更改过程会导致在 Azure AD 中生成并存储用于 Kerberos 和 NTLM 身份验证的密码哈希。 需要使用密码哈希来成功验证 Azure AD DS 中的用户身份。
 
-按照设计，同步过程是一种方法。 Azure AD DS 中的更改不会反向同步回 Azure AD。 除了可以创建的自定义 Ou 外，Azure AD DS 托管域在大部分情况上都是只读的。 不能更改 Azure AD DS 托管域中的用户属性、用户密码或组成员身份。
+按照设计，同步过程是一种方法。 Azure AD DS 中的更改不会反向同步回 Azure AD。 托管域在很大程度上是只读的，但你可以创建的自定义 Ou 除外。 不能更改托管域中的用户属性、用户密码或组成员身份。
 
 ## <a name="attribute-synchronization-and-mapping-to-azure-ad-ds"></a>属性同步和到 Azure AD DS 的映射
 
 下表列出了一些常见的属性，以及如何将它们同步到 Azure AD DS。
 
-| Azure AD DS 中的属性 | 源 | 注意 |
+| Azure AD DS 中的属性 | 源 | 说明 |
 |:--- |:--- |:--- |
-| UPN | Azure AD 租户中的用户的*UPN*属性 | Azure AD 租户中的 UPN 属性按原样同步到 Azure AD DS。 登录到 Azure AD DS 托管域的最可靠方法是使用 UPN。 |
+| UPN | Azure AD 租户中的用户的*UPN*属性 | Azure AD 租户中的 UPN 属性按原样同步到 Azure AD DS。 登录到托管域的最可靠方法是使用 UPN。 |
 | SAMAccountName | 用户在 Azure AD 租户中的*mailNickname*属性，或自动生成 | *SAMAccountName*属性源于 Azure AD 租户中的*mailNickname*属性。 如果多个用户帐户具有相同的*mailNickname*属性，则将自动生成*SAMAccountName* 。 如果用户的*mailNickname*或*UPN*前缀的长度超过20个字符，则将自动生成*samaccountname*以满足*SAMAccountName*属性的20个字符的限制。 |
 | 密码 | Azure AD 租户中的用户密码 | NTLM 或 Kerberos 身份验证所需的旧密码哈希将从 Azure AD 租户同步。 如果 Azure AD 租户配置为使用 Azure AD Connect 进行混合同步，则这些密码哈希源自本地 AD DS 环境。 |
-| 主用户/组 SID | 生成 | 用户/组帐户的主 SID 在 Azure AD DS 中自动生成。 此属性与本地 AD DS 环境中对象的主用户/组 SID 不匹配。 这种不匹配是因为 Azure AD DS 托管域的 SID 命名空间与本地 AD DS 域不同。 |
+| 主用户/组 SID | 生成 | 用户/组帐户的主 SID 在 Azure AD DS 中自动生成。 此属性与本地 AD DS 环境中对象的主用户/组 SID 不匹配。 这种不匹配是因为托管域的 SID 命名空间不同于本地 AD DS 域。 |
 | 用户和组的 SID 历史记录 | 本地主用户和组 SID | Azure AD DS 中的用户和组的*SidHistory*属性设置为与本地 AD DS 环境中相应的主用户或组 SID 相匹配。 此功能可让本地应用程序的直接迁移和移动 Azure AD DS，因为无需重新创建 ACL 资源。 |
 
 > [!TIP]
-> **使用 UPN 格式登录到托管域**可以*SAMAccountName*为 Azure AD DS 托管域`AADDSCONTOSO\driley`中的某些用户帐户自动生成 SAMAccountName 属性（如）。 用户自动生成的*SAMAccountName*可能不同于其 UPN 前缀，因此不一定是一种可靠的登录方式。
+> **使用 UPN 格式登录到托管域***SAMAccountName* `AADDSCONTOSO\driley` 对于托管域中的某些用户帐户，可能会自动生成 SAMAccountName 属性（如）。 用户自动生成的*SAMAccountName*可能不同于其 UPN 前缀，因此不一定是一种可靠的登录方式。
 >
-> 例如，如果多个用户具有相同的*mailNickname*属性，或者用户的 UPN 前缀过长，则可能会自动生成这些用户的*SAMAccountName* 。 使用 UPN 格式（例如`driley@aaddscontoso.com`）来可靠地登录到 Azure AD DS 托管域。
+> 例如，如果多个用户具有相同的*mailNickname*属性，或者用户的 UPN 前缀过长，则可能会自动生成这些用户的*SAMAccountName* 。 使用 UPN 格式（例如 `driley@aaddscontoso.com` ）来可靠地登录到托管域。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>用户帐户的属性映射
 
@@ -64,12 +64,14 @@ ms.locfileid: "81639913"
 | country |co |
 | department |department |
 | displayName |displayName |
+| employeedId |employeeId |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |
 | mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName （有时可能会自动生成） |
+| manager |manager |
 | mobile |mobile |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
@@ -77,6 +79,7 @@ ms.locfileid: "81639913"
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
 | preferredLanguage |preferredLanguage |
+| ProxyAddresses | ProxyAddresses |
 | state |st |
 | streetAddress |streetAddress |
 | surname |sn |
@@ -95,6 +98,7 @@ ms.locfileid: "81639913"
 | mailNickname |msDS-AzureADMailNickname |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
+| ProxyAddresses | ProxyAddresses |
 | securityEnabled |groupType |
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>从本地 AD DS 同步到 Azure AD 和 Azure AD DS
@@ -102,7 +106,7 @@ ms.locfileid: "81639913"
 Azure AD Connect 用于将用户帐户、组成员身份和凭据哈希从本地 AD DS 环境同步到 Azure AD。 用户帐户的属性（如 UPN 和本地安全标识符（SID））是同步的。 若要使用 Azure AD DS 登录，NTLM 和 Kerberos 身份验证所需的旧密码哈希也会同步到 Azure AD。
 
 > [!IMPORTANT]
-> 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在 Azure AD DS 托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
+> 安装和配置的 Azure AD Connect 应仅用于与本地 AD DS 环境同步。 不支持在托管域中安装 Azure AD Connect 以将对象同步回 Azure AD。
 
 如果配置了写回，则会将 Azure AD 中的更改同步回到本地 AD DS 环境。 例如，如果用户使用 Azure AD 自助密码管理更改其密码，则会在本地 AD DS 环境中更新密码。
 
@@ -113,9 +117,9 @@ Azure AD Connect 用于将用户帐户、组成员身份和凭据哈希从本地
 
 许多组织都拥有一个相当复杂的本地 AD DS 环境，其中包括多个林。 Azure AD Connect 支持将用户、组和凭据哈希从多林环境同步到 Azure AD。
 
-Azure AD 具有更简单、更简单的命名空间。 为了使用户能够可靠地访问 Azure AD 保护的应用程序，需要解决不同林中用户帐户的 UPN 冲突。 Azure AD DS 托管域使用类似于 Azure AD 的平面 OU 结构。 尽管已从不同的本地域或林同步，但即使已在本地配置了分层 OU 结构，所有用户帐户和组都存储在*AADDC Users*容器中。 Azure AD DS 托管域平展任何分层 OU 结构。
+Azure AD 具有更简单、更简单的命名空间。 为了使用户能够可靠地访问 Azure AD 保护的应用程序，需要解决不同林中用户帐户的 UPN 冲突。 托管域使用平面 OU 结构，类似于 Azure AD。 尽管已从不同的本地域或林同步，但即使已在本地配置了分层 OU 结构，所有用户帐户和组都存储在*AADDC Users*容器中。 托管域平展任何分层 OU 结构。
 
-如前文所述，没有从 Azure AD DS 到 Azure AD 的同步。 你可以在 Azure AD DS 中[创建自定义组织单位（OU）](create-ou.md) ，然后在这些自定义 ou 中创建用户、组或服务帐户。 在自定义 Ou 中创建的任何对象都不会同步回 Azure AD。 这些对象仅在 Azure AD DS 托管域中可用，不能通过 Azure AD PowerShell cmdlet、Microsoft Graph API 或使用 Azure AD 管理 UI 来显示。
+如前文所述，没有从 Azure AD DS 到 Azure AD 的同步。 你可以在 Azure AD DS 中[创建自定义组织单位（OU）](create-ou.md) ，然后在这些自定义 ou 中创建用户、组或服务帐户。 在自定义 Ou 中创建的任何对象都不会同步回 Azure AD。 这些对象仅在托管域中可用，不能使用 Azure AD PowerShell cmdlet、Microsoft Graph API 或使用 Azure AD 管理 UI 来显示。
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>什么不同步到 Azure AD DS
 
@@ -124,9 +128,9 @@ Azure AD 具有更简单、更简单的命名空间。 为了使用户能够可�
 * **排除的属性：** 您可以使用 Azure AD Connect 选择将某些属性从本地 AD DS 环境中排除同步到 Azure AD。 这些排除的属性在 Azure AD DS 中不可用。
 * **组策略：** 本地 AD DS 环境中配置的组策略不会同步到 Azure AD DS。
 * **Sysvol 文件夹：** 本地 AD DS 环境中*Sysvol*文件夹的内容不会同步到 Azure AD DS。
-* **计算机对象：** 加入本地 AD DS 环境的计算机的计算机对象不会同步到 Azure AD DS。 这些计算机与 Azure AD DS 托管域没有信任关系，且仅属于本地 AD DS 环境。 在 Azure AD DS 中，只显示已显式加入域的计算机的计算机对象。
+* **计算机对象：** 加入本地 AD DS 环境的计算机的计算机对象不会同步到 Azure AD DS。 这些计算机与托管域没有信任关系，且仅属于本地 AD DS 环境。 在 Azure AD DS 中，只显示已显式加入域的计算机的计算机对象。
 * **用户和组的 SidHistory 属性：** 本地 AD DS 环境中的主要用户和主要组 Sid 将同步到 Azure AD DS。 但是，用户和组的现有*SidHistory*属性不会从本地 AD DS 环境同步到 Azure AD DS。
-* **组织单位（OU）结构：** 在本地 AD DS 环境中定义的组织单位不会同步到 Azure AD DS。 Azure AD DS 中有两个内置 Ou-一个用于用户，另一个用于计算机。 Azure AD DS 托管域具有平面 OU 结构。 你可以选择[在托管域中创建自定义 OU](create-ou.md)。
+* **组织单位（OU）结构：** 在本地 AD DS 环境中定义的组织单位不会同步到 Azure AD DS。 Azure AD DS 中有两个内置 Ou-一个用于用户，另一个用于计算机。 托管域具有平面 OU 结构。 你可以选择[在托管域中创建自定义 OU](create-ou.md)。
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>密码哈希同步和安全注意事项
 
@@ -134,7 +138,7 @@ Azure AD 具有更简单、更简单的命名空间。 为了使用户能够可�
 
 加密密钥对于每个 Azure AD 租户都是唯一的。 这些哈希已加密，因此只有 Azure AD DS 有权访问解密密钥。 Azure AD 中没有其他服务或组件有权访问解密密钥。
 
-然后，旧密码哈希将从 Azure AD 同步到 Azure AD DS 托管域的域控制器。 Azure AD DS 中的这些托管域控制器的磁盘将静态加密。 这些密码哈希在这些域控制器上进行存储和保护，这类似于在本地 AD DS 环境中存储和保护密码的方式。
+然后，旧密码哈希将从 Azure AD 同步到托管域的域控制器。 Azure AD DS 中的这些托管域控制器的磁盘将静态加密。 这些密码哈希在这些域控制器上进行存储和保护，这类似于在本地 AD DS 环境中存储和保护密码的方式。
 
 对于仅限云的 Azure AD 环境，[用户必须重置/更改其密码](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，才能生成所需的密码哈希，并将其存储到 Azure AD 中。 对于启用 Azure AD 域服务后在 Azure AD 中创建的任何云用户帐户，会生成密码哈希并采用与 NTLM 和 Kerberos 兼容的格式进行存储。 所有云用户帐户在同步到 Azure AD DS 之前都必须更改其密码。
 

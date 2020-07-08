@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4656d8116ddd2e618adad97aeea576e88bc8785f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: aeb326bbc14dd2c44a0d3ab250bb611a6b8f6b0f
+ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78899384"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85805851"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 这个简单的 Java 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) 上提供了此示例的源代码以及附加的错误处理和注释。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 最新版的 [Java 开发工具包](https://aka.ms/azure-jdks) (JDK)
 
@@ -97,7 +97,6 @@ else {
 
 * [什么是必应图像搜索？](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
 * [尝试在线互动演示](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [获取免费的认知服务访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure 认知服务 SDK 的 Java 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 * [Azure 认知服务文档](https://docs.microsoft.com/azure/cognitive-services)
 * [必应图像搜索 API 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

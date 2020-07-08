@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 581963c94129c36acbd8761d93e369281797fa9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654725"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039868"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-ad-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步，保护 Azure AD 域服务托管域的安全
+# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步，保护 Azure Active Directory 域服务托管域的安全
 
 默认情况下，Azure Active Directory 域服务（Azure AD DS）允许使用诸如 NTLM v1 和 TLS v1 的密码。 某些旧版应用程序可能需要这些密码，但会将其视为弱密码，如果不需要，可以将其禁用。 如果使用 Azure AD Connect 进行本地混合连接，还可以禁用 NTLM 密码哈希同步。
 
@@ -33,7 +33,7 @@ ms.locfileid: "80654725"
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
+    * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
 * 安装和配置 Azure PowerShell。
     * 如果需要，请按照说明[安装 Azure PowerShell 模块并连接到 Azure 订阅](/powershell/azure/install-az-ps)。
     * 确保使用 [Connect-AzAccount][Connect-AzAccount] cmdlet 登录到 Azure 订阅。
@@ -67,17 +67,17 @@ $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServ
 $securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
 ```
 
-最后，使用[AzResource][Set-AzResource] cmdlet 将定义的安全设置应用到 Azure AD DS 托管域。 指定第一步中的 "Azure AD DS" 资源，以及上一步骤中的 "安全设置"。
+最后，使用[AzResource][Set-AzResource] cmdlet 将定义的安全设置应用到托管域。 指定第一步中的 "Azure AD DS" 资源，以及上一步骤中的 "安全设置"。
 
 ```powershell
 Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
 ```
 
-将安全设置应用到 Azure AD DS 托管域需要一段时间。
+将安全设置应用到托管域需要一段时间。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关同步过程的详细信息，请参阅[如何在 AZURE AD DS 托管域中同步对象和凭据][synchronization]。
+若要了解有关同步过程的详细信息，请参阅[如何在托管域中同步对象和凭据][synchronization]。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
