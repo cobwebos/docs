@@ -8,22 +8,22 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a49e5fbe9eac689b630a0f3b443729faf29cdb0d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437117"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974511"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
-Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、National Clouds 和 Azure Stack 上的存储帐户。
+Microsoft Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 和 Linux 上轻松处理 Azure 存储数据。 应用可连接到托管在 Azure、National Clouds 和 Azure Stack 上的存储帐户。
 
 本指南汇总了存储资源管理器中常见问题的解决方法。
 
 ## <a name="rbac-permissions-issues"></a>RBAC 权限问题
 
-使用基于角色的访问控制 [(RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 可以通过将权限集组合成角色，来对 Azure 资源进行精细的访问管理。  下面是在存储资源管理器中以最佳方式使用 RBAC 的一些策略。
+使用基于角色的访问控制 [(RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) 可以通过将权限集组合成角色，来对 Azure 资源进行精细的访问管理。 下面是在存储资源管理器中以最佳方式使用 RBAC 的一些策略。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>如何在存储资源管理器中访问我的资源？
 
@@ -31,24 +31,24 @@ Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>“读取：列出/获取存储帐户”权限问题
 
-必须有权列出存储帐户。 若要获取此权限，必须具有“读取者”角色。 
+必须有权列出存储帐户。 若要获取此权限，必须具有“读取者”角色。
 
 #### <a name="list-storage-account-keys"></a>列出存储帐户密钥
 
-存储资源管理器还可以使用帐户密钥对请求进行身份验证。 可以通过权限更高的角色（例如“参与者”角色）来获取帐户密钥的访问权限。 
+存储资源管理器还可以使用帐户密钥对请求进行身份验证。 可以通过权限更高的角色（例如“参与者”角色）来获取帐户密钥的访问权限。
 
 > [!NOTE]
 > 访问密钥向其任何持有者授予不受限制的权限。 因此，我们不建议将这些密钥分发给帐户用户。 如果需要撤销访问密钥，可以通过 [Azure 门户](https://portal.azure.com/)重新生成访问密钥。
 
 #### <a name="data-roles"></a>数据角色
 
-必须至少拥有一个可以授予对资源中数据的读取访问权限的角色。 例如，如果需要列出或下载 Blob，则至少需要拥有“存储 Blob 数据读取者”角色。 
+必须至少拥有一个可以授予对资源中数据的读取访问权限的角色。 例如，如果需要列出或下载 Blob，则至少需要拥有“存储 Blob 数据读取者”角色。
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>为何需要管理层角色才能在存储资源管理器中查看我的资源？
 
-Azure 存储提供两个访问层：“管理”和“数据”。   订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
+Azure 存储提供两个访问层：“管理”和“数据”。  订阅和存储帐户是通过管理层访问的。 容器、Blob 和其他数据资源是通过数据层访问的。 例如，若要从 Azure 获取存储帐户的列表，应向管理终结点发送请求。 若要列出帐户中的 Blob 容器，应向相应的服务终结点发送请求。
 
-RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
+RBAC 角色可以向你授予管理或数据层访问权限。 例如，“读取者”角色授予对管理层资源的只读访问权限。
 
 严格地讲，“读取者”角色不提供数据层的权限，并非一定要有该角色才能访问数据层。
 
@@ -58,11 +58,18 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>如果我无法从管理员获取管理层权限，该怎么办？
 
-目前，对于此问题，我们尚未制定 RBAC 相关的解决方法。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+如果要访问 blob 容器或队列，可以使用 Azure 凭据附加到这些资源。
+
+1. 打开 "连接" 对话框。
+2. 选择 "通过 Azure Active Directory 添加资源（Azure AD）。 单击“下一步”。
+3. 选择与你要附加到的资源关联的用户帐户和租户。 单击“下一步”。
+4. 选择资源类型，输入资源的 URL，并为连接输入唯一的显示名称。 单击“下一步”。 单击“连接”。
+
+对于其他资源类型，目前还没有 RBAC 相关解决方案。 一种解决方法是请求一个 SAS URI 并将其[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
 ### <a name="recommended-built-in-rbac-roles"></a>建议的内置 RBAC 角色
 
-有几个内置 RBAC 角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
+可以使用多个内置 RBAC 角色提供存储资源管理器所需的权限。 其中一些角色是：
 - [所有者](/azure/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
 - [参与者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有内容，不包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
 - [读者](/azure/role-based-access-control/built-in-roles#reader)：读取和列出资源。
@@ -75,13 +82,13 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果存在以下情况之一，则往往会发生证书错误：
 
-- 应用通过透明代理进行连接，这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密  。
-- 正在运行的应用程序将自签名的 TLS/SSL 证书注入到收到的 HTTPS 消息中。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
+- 该应用通过_透明代理_进行连接。 这意味着服务器（如公司服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
+- 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 TLS/SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
 
 当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本。
-2. 转到“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件   
+2. 转到“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件  
 
 此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 若要修复此错误，必须同时添加这两个证书。
 
@@ -91,12 +98,12 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何精简版本均可。
     * Mac 和 Linux：应包含在操作系统中。
 2. 运行 OpenSSL。
-    * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe”   。
+    * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe” 。
     * Mac 和 Linux：从终端运行 `openssl`。
 3. 运行 `s_client -showcerts -connect microsoft.com:443`。
 4. 查找自签名证书。 如果不确定哪些证书是自签名证书，请记下使用者 `("s:")` 和证书颁发者 `("i:")` 相同的任意位置。
 5. 找到自签名证书后，将每个证书中从 `-----BEGIN CERTIFICATE-----`（含）到 `-----END CERTIFICATE-----`（含）的所有内容复制并粘贴到新的 .cer 文件中。
-6. 打开存储资源管理器，然后转到“编辑”   >   “SSL 证书” >   “导入证书”。 然后使用文件选取器查找、选择并打开创建的 .cer 文件。
+6. 打开存储资源管理器，然后转到“编辑” > “SSL 证书” > “导入证书”。 然后使用文件选取器查找、选择并打开创建的 .cer 文件。
 
 如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 也可选择通过命令行使用 `--ignore-certificate-errors` 标志打开存储资源管理器。 使用此标志打开后，存储资源管理器将忽略证书错误。
 
@@ -106,10 +113,10 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 出现空白登录对话框的原因往往是 Active Directory 联合身份验证服务 (AD FS) 提示存储资源管理器执行 Electron 不支持的重定向。 若要解决此问题，可以尝试使用设备代码流进行登录。 为此，请执行以下步骤：
 
-1. 在左侧垂直工具栏上，打开“设置”  。 在“设置”面板中，转到“应用程序” > “登录”   。 启用“使用设备代码流登录”  。
-2. 打开“连接”对话框（选择左侧纵栏上的插头图标，或选择帐户面板上的“添加帐户”）   。
+1. 在左侧垂直工具栏上，打开“设置”。 在“设置”面板中，转到“应用程序” > “登录” 。 启用“使用设备代码流登录”。
+2. 打开“连接”对话框（选择左侧纵栏上的插头图标，或选择帐户面板上的“添加帐户”） 。
 3. 选择要登录到的环境。
-4. 选择“登录”  。
+4. 选择“登录”。
 5. 按照下一个面板上的说明进行操作。
 
 如果由于默认浏览器已登录到其他帐户而导致你无法登录到要使用的帐户，请执行以下操作之一：
@@ -141,12 +148,12 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
     ![挂锁图标](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
 5. 打开存储资源管理器。
-6. 此时会出现一条类似于“服务中心想要访问 Keychain”的消息。 输入 Mac 管理员帐户密码，然后选择“始终允许”****（如果未显示“始终允许”****，则选择“允许”****）。
+6. 此时会出现一条类似于“服务中心想要访问 Keychain”的消息。 输入 Mac 管理员帐户密码，然后选择“始终允许”（如果未显示“始终允许”，则选择“允许”）。
 7. 请尝试登录。
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>常规登录故障排除步骤
 
-* 在 macOS 上操作时，如果登录窗口永远不会出现，而是一直显示“正在等待身份验证”**** 对话框，请尝试[这些步骤](#mac-keychain-errors)。
+* 在 macOS 上操作时，如果登录窗口永远不会出现，而是一直显示“正在等待身份验证”对话框，请尝试[这些步骤](#mac-keychain-errors)。
 * 重启存储资源管理器。
 * 如果身份验证窗口为空，请等待至少一分钟，然后关闭身份验证对话框。
 * 确保为计算机和存储资源管理器正确配置了代理和证书设置。
@@ -168,7 +175,7 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果无法通过 UI 删除附加的帐户或存储资源，可以通过删除以下文件夹来手动删除所有附加的资源：
 
-* Windows：`%AppData%/StorageExplorer`
+* Windows： `%AppData%/StorageExplorer`
 * macOS：`/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux：`~/.config/StorageExplorer`
 
@@ -192,25 +199,25 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果仍遇到问题，请尝试以下故障排除方法：
 
-* 如果在不使用代理时可以连接到 Internet，请确认未启用代理设置时存储资源管理器可以正常工作。 若是，则可能是代理设置出错。 与管理员配合找到问题所在。
+* 如果在不使用代理时可以连接到 Internet，请确认未启用代理设置时存储资源管理器可以正常工作。 如果出现这种情况，可能是代理设置有问题。 与管理员配合找到问题所在。
 * 确认使用代理服务器的其他应用程序按预期运行。
 * 验证是否能够连接到尝试使用的 Azure 环境的门户。
-* 验证能否从服务终结点接收响应。 在浏览器中输入一个终结点 URL。 如果可以连接，应收到 InvalidQueryParameterValue 或类似的 XML 响应。
-* 如果其他人也通过你的代理服务器使用存储资源管理器，请验证他们能否连接。 如果他们可以连接，请与代理服务器管理员联系。
+* 确认可以收到来自服务终结点的响应。 在浏览器中输入其中一个终结点 URL。 如果可以连接，应收到 InvalidQueryParameterValue 或类似的 XML 响应。
+* 如果其他人也在通过该代理服务器使用存储资源管理器，请确认他们可以连接。 如果他们可以连接，请与代理服务器管理员联系。
 
 ### <a name="tools-for-diagnosing-issues"></a>诊断问题的工具
 
 如果有 Fiddler for Windows 等网络服务工具，则能够按以下方式诊断问题：
 
-* 如果必须通过代理工作，则须将网络工具配置为通过代理连接。
-* 检查网络工具使用的端口号。
-* 在存储资源管理器中，输入本地主机 URL和网络工具的端口号作为代理设置。 如果正确完成此操作，网络服务工具将开始记录存储资源管理区向管理和服务终结点发出的网络请求。 例如，在浏览器中输入 `https://cawablobgrs.blob.core.windows.net/` 作为 Blob 终结点时，收到如下所示的响应：
+* 如果必须通过代理工作，则必须将网络服务工具配置为通过代理进行连接。
+* 检查网络服务工具使用的端口号。
+* 输入存储资源管理器中代理设置的本地主机 URL 和网络服务工具的端口号。 如果正确完成此操作，网络服务工具将开始记录存储资源管理区向管理和服务终结点发出的网络请求。 例如，在浏览器中输入 `https://cawablobgrs.blob.core.windows.net/` 作为 Blob 终结点时，收到如下所示的响应：
 
   ![代码示例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
   此响应表示资源存在，不过无法访问它。
 
-### <a name="contact-proxy-server-admin"></a>联系代理服务器管理员
+### <a name="contact-proxy-server-admin"></a>与代理服务器管理员联系
 
 如果代理设置正确，则必须与代理服务器管理员联系，以便：
 
@@ -223,16 +230,16 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>连接字符串没有完整的配置设置
 
-如果收到此错误消息，则表示你可能没有所需的权限来获取你的存储帐户的密钥。 若要确认是否如此，请转到门户并找到你的存储帐户。 可以通过右键单击存储帐户的节点并选择“在门户中打开”来执行此操作****。 然后转到“访问密钥”边栏选项卡****。 如果你无权查看密钥，则会看到“你没有访问权限”消息。 若要解决此问题，可以从其他某人获取帐户密钥并结合名称和密钥附加存储帐户，或者，向某人索要存储帐户的 SAS 并使用它来附加存储帐户。
+如果收到此错误消息，则表示你可能没有所需的权限来获取你的存储帐户的密钥。 若要确认是否如此，请转到门户并找到你的存储帐户。 可以通过右键单击存储帐户的节点并选择“在门户中打开”来执行此操作。 然后转到“访问密钥”边栏选项卡。 如果你无权查看密钥，则会看到“你没有访问权限”消息。 若要解决此问题，可以从其他某人获取帐户密钥并结合名称和密钥附加存储帐户，或者，向某人索要存储帐户的 SAS 并使用它来附加存储帐户。
 
 如果看到了帐户密钥，请在 GitHub 上提出问题，使我们能够帮助你解决问题。
 
-## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>添加新连接时出错： TypeError：无法读取未定义的属性 "version"
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>添加新连接时出错：TypeError:无法读取未定义的属性 'version'
 
 如果你在尝试添加自定义连接时收到此错误消息，则可能是本地凭据管理器中存储的连接数据已损坏。 若要解决此问题，请尝试删除已损坏的本地连接，然后重新添加它们：
 
-1. 启动存储资源管理器。 从菜单中转到 "**帮助** > " "**切换" 开发人员工具**。
-2. 在打开的窗口中的“应用程序”选项卡上，转到“本地存储”（左侧）>“file://”。************
+1. 启动存储资源管理器。 在顶部菜单中，转到“帮助” > “切换开发人员工具”。
+2. 在打开的窗口中的“应用程序”选项卡上，转到“本地存储”（左侧）>“file://”。  
 3. 根据遇到问题的连接类型，查找其密钥并将其值复制到文本编辑器。 该值是自定义连接名称的数组，如下所示：
     * 存储帐户
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -257,14 +264,14 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 # <a name="windows"></a>[Windows](#tab/Windows)
 
-1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。********
-2. 转到“Windows 凭据”。****
-3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。****
+1. 在“开始”菜单中，搜索“凭据管理器”并将其打开。 
+2. 转到“Windows 凭据”。
+3. 在“一般凭据”下，找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 4. 删除这些条目并重新添加连接。
 
 # <a name="macos"></a>[macOS](#tab/macOS)
 
-1. 打开“聚焦”（命令键+空格键），搜索“Keychain 访问”。****
+1. 打开“聚焦”（命令键+空格键），搜索“Keychain 访问”。
 2. 找到具有 `<connection_type_key>/<corrupted_connection_name>` 键的条目（例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 3. 删除这些条目并重新添加连接。
 
@@ -283,19 +290,21 @@ RBAC 角色可以包含对管理或数据访问层的权限。 例如，“读�
 
 如果通过 SAS URL 连接到服务时遇到错误：
 
-* 验证该 URL 是否提供读取和列出资源的必需权限。
-* 验证该 URL 是否未过期。
-* 如果 SAS URL建立在访问策略基础上，请验证该访问策略是否被撤销。
+* 请确认 URL 提供了读取或列出资源所需的权限。
+* 请确认 URL 未过期。
+* 如果 SAS URL 基于访问策略，请确认访问策略尚未吊销。
 
 如果意外附加了无效的 SAS URL，并且现在无法分离，请执行以下步骤：
 
 1. 运行存储资源管理器时，按 F12 打开“开发人员工具”窗口。
-2. 在“应用程序”选项卡上，选择左侧树中的“本地存储” > “file://”。************
+2. 在“应用程序”选项卡上，选择左侧树中的“本地存储” > “file://”。  
 3. 查找与有问题的 SAS URI 服务类型关联的键。 例如，如果用于 blob 容器的 SAS URI 错误，请查找名为 `StorageExplorer_AddStorageServiceSAS_v1_blob` 的键。
 4. 键的值应为 JSON 数组。 找到与错误 URI 关联的对象，并将其删除。
 5. 按 Ctrl+R 重新加载存储资源管理器。
 
 ## <a name="linux-dependencies"></a>Linux 依赖项
+
+### <a name="snap"></a>Snap
 
 Snap Store 中以内嵌项的形式提供了存储资源管理器 1.10.0 和更高版本。 存储资源管理器内嵌项会自动安装其所有依赖项，并在新版内嵌项推出时更新。 安装存储资源管理器内嵌项是建议的安装方法。
 
@@ -305,57 +314,76 @@ Snap Store 中以内嵌项的形式提供了存储资源管理器 1.10.0 和更�
 snap connect storage-explorer:password-manager-service :password-manager-service
 ```
 
+### <a name="targz-file"></a>gz 文件
+
 还可以下载 .tar.gz 文件格式的应用程序，但必须手动安装依赖项。
 
-> [!IMPORTANT]
-> 仅 Ubuntu 分发版支持 .tar.gz 下载内容中提供的存储资源管理器。 其他分发版尚未经过验证，可能需要替代包或附加包。
+Gz 下载中提供的存储资源管理器仅支持以下版本的 Ubuntu。 存储资源管理器可以在其他 Linux 分发版上运行，但不正式支持。
 
-这些包是 Linux 上存储资源管理器的最常见要求：
+- Ubuntu 20.04 x64
+- Ubuntu 18.04 x64
+- Ubuntu 16.04 x64
 
-* [.NET Core 2.2 运行时](/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
-* `libgconf-2-4`
-* `libgnome-keyring0` 或 `libgnome-keyring-dev`
-* `libgnome-keyring-common`
+存储资源管理器要求在您的系统上安装 .NET Core。 建议使用 .NET Core 2.1，但存储资源管理器也适用于2.2。
 
 > [!NOTE]
-> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果运行存储资源管理器 1.8.0 或更高版本，则可以使用的最高版本为 .NET Core 2.2。 高于 2.2 的版本目前尚未验证其使用情况。
+> 存储资源管理器 1.7.0 及更低版本需要 .NET Core 2.0。 如果安装了更高版本的 .NET Core，则必须[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果正在运行存储资源管理器1.8.0 或更高版本，则至少需要 .NET Core 2.1。
 
-# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
-1. 下载存储资源管理器。
-2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
-3. 运行以下命令：
+1. 下载存储资源管理器 gz 文件。
+2. 安装[.Net Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
-1. 下载存储资源管理器。
-2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
-3. 运行以下命令：
+1. 下载存储资源管理器 gz 文件。
+2. 安装[.Net Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
-   sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
+   wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
-1. 下载存储资源管理器。
-2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
-3. 运行以下命令：
+1. 下载存储资源管理器 gz 文件。
+2. 安装[.Net Core 运行时](https://docs.microsoft.com/dotnet/core/install/linux)：
    ```bash
-   sudo apt install libgnome-keyring-dev
-   ```
-
-# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
-
-1. 下载存储资源管理器。
-2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。
-3. 运行以下命令：
-   ```bash
-   sudo apt install libgnome-keyring-dev
+   wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
+     dpkg -i packages-microsoft-prod.deb; \
+     sudo apt-get update; \
+     sudo apt-get install -y apt-transport-https && \
+     sudo apt-get update && \
+     sudo apt-get install -y dotnet-runtime-2.1
    ```
 ---
+
+存储资源管理器所需的许多库都预安装了规范的 Ubuntu 标准安装。 自定义环境可能缺少某些库。 如果在启动存储资源管理器时遇到问题，我们建议确保在系统上安装以下包：
+
+- iproute2
+- libasound2
+- libatm1
+- libgconf2-4
+- libnspr4
+- libnss3
+- libpulse0
+- libsecret-1-0
+- libx11-xcb1
+- libxss1
+- libxtables11
+- libxtst6
+- xdg-utils
 
 ### <a name="patching-storage-explorer-for-newer-versions-of-net-core"></a>修补适用于 .NET Core 更高版本的存储资源管理器
 
@@ -371,7 +399,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 ## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>Azure 门户中的“在资源管理器中打开”不起作用
 
-如果在 Azure 门户上单击“在资源管理器中打开”按钮不起作用，请确保使用兼容的浏览器****。 以下浏览器已通过兼容性测试：
+如果在 Azure 门户上单击“在资源管理器中打开”按钮不起作用，请确保使用兼容的浏览器。 以下浏览器已通过兼容性测试：
 * Microsoft Edge
 * Mozilla Firefox
 * Google Chrome
@@ -379,6 +407,6 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 ## <a name="next-steps"></a>后续步骤
 
-如果上述解决方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。 也可以选择左下角的“向 GitHub 报告问题”按钮。****
+如果上述解决方法均不起作用，请[在 GitHub 上提出问题](https://github.com/Microsoft/AzureStorageExplorer/issues)。 也可以选择左下角的“向 GitHub 报告问题”按钮。
 
 ![反馈](./media/storage-explorer-troubleshooting/feedback-button.PNG)

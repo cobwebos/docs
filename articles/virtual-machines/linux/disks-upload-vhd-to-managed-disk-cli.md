@@ -1,19 +1,19 @@
 ---
-title: 将 VHD 上传到 Azure 或跨区域复制磁盘-Azure CLI
+title: 将 VHD 上传到 Azure 或跨区域复制磁盘 - Azure CLI
 description: 了解如何使用 Azure CLI 通过直接上传将 VHD 上传到 Azure 托管磁盘，以及如何跨区域复制托管磁盘。
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 03/27/2020
-ms.topic: article
+ms.date: 06/15/2020
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 259b46d21cee4c1106e1d307eeb325a4c430613f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84945624"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure CLI
 
@@ -47,6 +47,9 @@ ms.locfileid: "82580226"
 通过在[disk create](/cli/azure/disk#az-disk-create) cmdlet 中指定 **--for 上传**参数和 **--上传大小-字节**参数，创建一个空的标准 HDD 以进行上传：
 
 将 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` 替换为所选值。 `--upload-size-bytes` 参数包含示例值 `34359738880`，请将其替换为适合你的值。
+
+> [!TIP]
+> 如果要创建 OS 磁盘，请将--hyper-v 生成添加 <yourGeneration> 到 `az disk create` 。
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -99,7 +102,10 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 > [!IMPORTANT]
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
-将`<sourceResourceGroupHere>` `<sourceDiskNameHere>`、 `<targetDiskNameHere>` `<yourTargetLocationHere>` 、、和（位置值的示例为 uswest2）替换为你的值，然后运行以下脚本，以便复制托管磁盘。 `<targetResourceGroupHere>`
+将 `<sourceResourceGroupHere>` 、、 `<sourceDiskNameHere>` 、 `<targetDiskNameHere>` `<targetResourceGroupHere>` 和 `<yourTargetLocationHere>` （位置值的示例为 uswest2）替换为你的值，然后运行以下脚本，以便复制托管磁盘。
+
+> [!TIP]
+> 如果要创建 OS 磁盘，请将--hyper-v 生成添加 <yourGeneration> 到 `az disk create` 。
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

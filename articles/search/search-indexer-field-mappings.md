@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fa815d9fb653ee61d647023f7867549aa8d655aa
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7d853a8e935f7732a05b33d9b8581dcf753d8873
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005800"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84975327"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "83005800"
 * 需要对数据进行 Base64 编码或解码。 字段映射支持多个**映射函数**，包括用于 Base64 编码和解码的函数。
 
 > [!NOTE]
-> 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻型数据转换。 更复杂的数据可能需要预先处理才能将其调整为有利于索引的形式。 可以考虑的一个选项是[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)。
+> 索引器中的字段映射是将数据字段映射到索引字段的一种简单方法，可实现轻量级数据转换。 较复杂的数据可能需要经过预处理，才能将形状调整为有利于编制索引的形式。 可以考虑使用 [Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/)。
 
 ## <a name="set-up-field-mappings"></a>设置字段映射
 
@@ -39,6 +39,9 @@ ms.locfileid: "83005800"
 3. 可选的 `mappingFunction`，它可以使用几个预定义函数中的一个来转换数据。 这可以同时应用于输入和输出字段映射。 函数的完整列表[如下](#mappingFunctions)。
 
 字段映射将添加到索引器定义的 `fieldMappings` 数组中。
+
+> [!NOTE]
+> 如果未添加任何字段映射，则索引器将假定数据源字段映射到具有相同名称的索引字段。 添加字段映射会删除源和目标字段的这些默认字段映射。 某些索引器（例如[blob 存储索引器](search-howto-indexing-azure-blob-storage.md)）为索引键字段添加默认字段映射。
 
 ## <a name="map-fields-using-the-rest-api"></a>使用 REST API 映射字段
 
@@ -137,6 +140,27 @@ Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须
   }]
  ```
 
+#### <a name="example---preserve-original-values"></a>示例-保留原始值
+
+如果未指定字段映射，则[blob 存储索引器](search-howto-indexing-azure-blob-storage.md)会自动将字段映射从 `metadata_storage_path` blob 的 URI 添加到索引键字段。 此值是 Base64 编码的，因此可以安全地将其用作 Azure 认知搜索文档键。 下面的示例演示如何将的*URL 安全*Base64 编码版本同时映射 `metadata_storage_path` 到 `index_key` 字段并在字段中保留原始值 `metadata_storage_path` ：
+
+```JSON
+
+"fieldMappings": [
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "metadata_storage_path"
+  },
+  {
+    "sourceFieldName": "metadata_storage_path",
+    "targetFieldName": "index_key",
+    "mappingFunction": {
+       "name": "base64Encode"
+    }
+  }
+]
+```
+
 如果未包含映射函数的 parameters 属性，该属性的默认值为 `{"useHttpServerUtilityUrlTokenEncode" : true}`。
 
 Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同一字段时，应使用相同的参数。 在决定要使用哪些参数时，请参阅 [base64 编码选项](#base64details)了解详细信息。
@@ -145,7 +169,7 @@ Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同�
 
 ### <a name="base64decode-function"></a>base64Decode 函数
 
-执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。 
+执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。**
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>示例 - 解码 Blob 元数据或 URL
 
@@ -179,7 +203,7 @@ Azure 认知搜索支持 URL 安全的 base64 编码和正常的 base64 编码�
 > [!WARNING]
 > 如果使用 `base64Encode` 来生成密钥值，则必须将 `useHttpServerUtilityUrlTokenEncode` 设置为 true。 只能将 URL 安全的 base64 编码用于密钥值。 请参阅[命名规则（Azure 认知搜索）](https://docs.microsoft.com/rest/api/searchservice/naming-rules)，了解对密钥值中字符的整套限制。
 
-Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编码。 `useHttpServerUtilityUrlTokenEncode`和`useHttpServerUtilityUrlTokenDecode`选项利用此内置功能。 如果使用 .NET Core 或其他框架，建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
+Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编码。 `useHttpServerUtilityUrlTokenEncode` 和 `useHttpServerUtilityUrlTokenDecode` 选项利用了此内置功能。 如果使用 .NET Core 或其他框架，建议将这些选项设置为 `false` 并直接调用框架的编码和解码函数。
 
 下表比较了对字符串 `00>00?00` 进行不同的 base64 编码的结果。 若要确定 base64 函数所需的其他处理（如有），请对字符串 `00>00?00` 应用库编码函数，然后比较输出和预期的输出 `MDA-MDA_MDA`。
 
@@ -188,7 +212,7 @@ Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编�
 | 带填充的 Base64 | `MDA+MDA/MDA=` | 使用 URL 安全字符并删除填充 | 使用标准 base64 字符并添加填充 |
 | 不带填充的 Base64 | `MDA+MDA/MDA` | 使用 URL 安全字符 | 使用标准 base64 字符 |
 | 带填充的 URL 安全 Base64 | `MDA-MDA_MDA=` | 删除填充 | 添加填充 |
-| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | 无 | 无 |
+| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | None | None |
 
 <a name="extractTokenAtPositionFunction"></a>
 

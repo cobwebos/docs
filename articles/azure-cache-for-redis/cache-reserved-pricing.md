@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77530297"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974834"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>预付 Azure Cache for Redis 计算资源的预留容量
 
@@ -30,15 +30,15 @@ ms.locfileid: "77530297"
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>在购买之前确定正确的缓存大小
 
-保留的大小应基于特定区域中现有或即将部署的缓存使用的计算总量，并使用相同的服务层。
+保留的大小应基于特定区域中现有或即将部署的缓存所使用的内存总大小，并使用相同的服务层。
 
-例如，假设你正在运行一个通用的 Gen5 – 32 vCore 缓存，以及两个经过优化的内存 Gen5 – 16 vCore 缓存。 接下来，假设你计划在下个月中部署一个额外的常规用途： Gen5 – 32 vCore 数据库服务器和一个内存优化的 Gen5 – 16 vCore 数据库服务器。 假设你知道，你将需要至少1年的这些资源。 在这种情况下，你应该购买64（2x32） Vcore，为单一数据库的1年保留-Gen5，为单一数据库内存优化了48（2x16 + 16） vCore 1 年保留-Gen5
+例如，假设你正在运行两个缓存-一个为 13 GB，另一个为 26 GB。 至少需要一年的时间。 接下来，假设你计划将现有的 13 GB 缓存缩放到 26 GB，以满足季节性需求，然后再进行缩减。 在这种情况下，可以在一年的保留期内购买1个 P1 缓存和1个 P2 缓存或3个 P1 缓存，以最大限度地节省成本。 你将在保留的缓存内存总量上收到折扣，这与在缓存中分配该空间的方式无关。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>为 Redis 保留容量购买 Azure 缓存
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 选择 "**所有服务** > **保留**"。
+2. 选择“所有服务” > “预订”。
 3. 选择 "**添加**"，然后在 "购买预订" 窗格中选择 "**用于 Redis 的 Azure 缓存**"，为缓存购买新的保留。
 4. 填写必填字段。 与所选属性匹配的现有或新数据库可以获取预留容量折扣。 获取折扣的 Redis 实例的 Azure 缓存的实际数目取决于所选的范围和数量。
 
@@ -59,7 +59,7 @@ ms.locfileid: "77530297"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅[Azure 预订的自助服务交换和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+可以在一定的限制下对预留执行取消、交换或退款操作。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
 
 ## <a name="cache-size-flexibility"></a>缓存大小灵活性
 
@@ -77,7 +77,7 @@ ms.locfileid: "77530297"
 
 * 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
-    * [什么是 Azure 保留？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+    * [什么是 Azure 预订？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
     * [管理 Azure 预留项](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
     * [了解 Azure 预留折扣](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
     * [了解即用即付订阅的预留使用情况](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)

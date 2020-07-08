@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803477"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976059"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>有关管理 Azure Kubernetes 服务 (AKS) 中的资源的应用程序开发人员最佳做法
 
@@ -27,7 +27,7 @@ ms.locfileid: "80803477"
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定义 pod 资源请求和限制
 
-**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。 
+**最佳做法指导** - 在 YAML 清单中针对所有 pod 设置 pod 请求和限制。 如果 AKS 群集使用资源配额，而你未定义这些值，则可能会拒绝你的部署。**
 
 管理 AKS 群集中的计算资源的主要方法是使用 pod 请求和限制。 这些请求和限制可让 Kubernetes 计划程序知道应该为 pod 分配哪些计算资源。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80803477"
 
 在 Pod 规范中，必须根据上述信息定义这些请求和限制，这是**最佳做法且很重要**。 如果不包含这些值，则 Kubernetes 计划程序无法考虑应用程序在制定决策时所需的资源。
 
-如果计划程序在资源不足的节点上放置一个 Pod，则应用程序性能会下降。 强烈建议群集管理员针对需要你设置资源请求和限制的命名空间设置资源配额。  有关详细信息，请参阅 [AKS 群集上的资源配额][resource-quotas]。
+如果计划程序在资源不足的节点上放置一个 Pod，则应用程序性能会下降。 强烈建议群集管理员针对需要你设置资源请求和限制的命名空间设置资源配额。 有关详细信息，请参阅 [AKS 群集上的资源配额][resource-quotas]。
 
 定义 CPU 请求或限制时，值以 CPU 单位计量。 
 * *1.0* CPU 相当于节点上的一个基础虚拟 CPU 核心。 
@@ -76,9 +76,7 @@ spec:
 
 **最佳做法指导** - 开发团队应该使用 Dev Spaces 针对 AKS 群集进行部署和调试。 此开发模型可确保在将应用部署到生产环境之前，实现基于角色的访问控制、网络或存储需求。
 
-使用 Azure Dev Spaces 直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 将为 Dev Spaces 安装一个扩展，以提供所需的选项用于在 AKS 群集中运行和调试应用程序：
-
-![使用 Dev Spaces 在 AKS 群集中调试应用程序](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+使用 Azure Dev Spaces 直接针对 AKS 群集开发、调试和测试应用程序。 在整个应用程序生命周期，团队中的开发人员共同协作进行生成和测试。 可以继续使用现有的工具，例如 Visual Studio 或 Visual Studio Code。 为 Dev 空间安装了一个扩展，该扩展提供了一个选项，用于在 AKS 群集中运行和调试应用程序。
 
 这种使用 Dev Spaces 的集成式开发和测试过程减少了 [minikube][minikube] 等本地测试环境的需求。 可以针对 AKS 群集进行开发和测试。 可根据前面有关使用命名空间逻辑隔离群集的部分中所述保护和隔离此群集。 当准备好将应用部署到生产环境时，可以放心地进行部署，因为针对真正 AKS 群集的所有开发工作均已完成。
 
@@ -98,13 +96,13 @@ Azure Dev Spaces 适用于在 Linux pod 和节点上运行的应用程序。
 
 [kube-advisor][kube-advisor] 工具是一个关联的 AKS 开放源代码项目，它将扫描 Kubernetes 群集，并报告它找到的问题。 一项有用的检查是识别未应用资源请求和限制的 pod。
 
-kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux 应用程序中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux Pod 上进行计划。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为使用特定 OS 在节点池上运行。
+Kube-advisor 工具可以报告 Windows 应用程序和 Linux 应用程序的 PodSpecs 中缺少的资源请求和限制，但 kube-advisor 工具本身必须在 Linux pod 上计划。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为在具有特定 OS 的节点池上运行。
 
 在托管许多开发团队和应用程序的 AKS 群集中，可能很难跟踪未设置这些资源请求和限制的 pod。 最佳做法是定期针对 AKS 群集运行 `kube-advisor`。
 
 ## <a name="next-steps"></a>后续步骤
 
-本最佳做法文章从群集操作员的角度重点介绍了如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中的隔离和资源管理的群集操作员最佳做法][operator-best-practices-isolation]。
+本最佳做法文章从群集操作员的角度重点介绍了如何运行群集和工作负荷。 有关管理最佳做法的信息，请参阅[有关 Azure Kubernetes 服务 (AKS) 中隔离和资源管理的群集操作员最佳做法][operator-best-practices-isolation]。
 
 若要实施其中的某些最佳做法，请参阅以下文章：
 
@@ -119,7 +117,7 @@ kube-advisor 工具可以报告 PodSpecs for Windows 应用程序以及 Linux �
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/get-started-netcore.md
+[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

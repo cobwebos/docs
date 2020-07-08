@@ -5,16 +5,16 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 70c36f9a18a85b90bb3a66d4083a71a00f61f14e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: aa2b82e70b1a1372076483c7405c32b66da377af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84974408"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
-结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
+结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 通过向 ACR 授予所需的权限，可将此操作作为 CLI 和门户体验的一部分实现。 本文提供了在这两个 Azure 服务之间配置身份验证的示例。 
 
 可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。 此集成会将 AcrPull 角色分配给关联到 AKS 群集的服务主体。
 
@@ -23,7 +23,7 @@ ms.locfileid: "84016366"
 这些示例需要：
 
 * **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
-* Azure CLI 2.0.73 版或更高版本
+* Azure CLI 版本2.7.0 或更高版本
 
 为了避免需要“所有者”或“Azure 帐户管理员”角色，可以手动配置服务主体或使用现有服务主体从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用服务主体进行 ACR 身份验证](../container-registry/container-registry-auth-service-principal.md)或[使用请求密码从 Kubernetes 进行身份验证](../container-registry/container-registry-auth-kubernetes.md)。
 
@@ -142,6 +142,10 @@ NAME                                 READY   STATUS    RESTARTS   AGE
 nginx0-deployment-669dfc4d4b-x74kr   1/1     Running   0          20s
 nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 ```
+
+### <a name="troubleshooting"></a>疑难解答
+* 了解有关[ACR 诊断](../container-registry/container-registry-diagnostics-audit-logs.md)的详细信息
+* 了解有关[ACR 运行状况](../container-registry/container-registry-check-health.md)的详细信息
 
 <!-- LINKS - external -->
 [AKS AKS CLI]:  https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create
