@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82980807"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
@@ -48,7 +47,7 @@ ms.locfileid: "82980807"
 ### <a name="steps"></a>steps
 返回在指定步骤中定义的元素的输出值。 若要获取 Basics 步骤中的元素的输出值，请改用 `basics()`。
 
-下面的示例返回 `bar` 步骤中名为 `foo` 的元素的输出：
+下面的示例返回 `foo` 步骤中名为 `bar` 的元素的输出：
 
 ```json
 "[steps('foo').bar]"
@@ -93,7 +92,7 @@ ms.locfileid: "82980807"
 "[replace('Everything is terrible!', 'terrible', 'awesome')]"
 ```
 
-### <a name="guid"></a>guid
+### <a name="guid"></a>GUID
 生成全局唯一字符串 (GUID)。
 
 以下示例可能返回 `"c7bc8bdc-7252-4a82-ba53-7c468679a511"`：
@@ -156,7 +155,7 @@ ms.locfileid: "82980807"
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>长度
+### <a name="length"></a>length
 返回字符串中的字符数、数组中的值数，或对象中的键数。
 
 #### <a name="example-1-string"></a>示例 1：字符串
@@ -462,7 +461,7 @@ ms.locfileid: "82980807"
 ```
 
 ### <a name="not"></a>not
-如果参数的计算结果为 `true`，则返回 `false`。 此函数仅支持布尔类型的参数。
+如果参数的计算结果为 `false`，则返回 `true`。 此函数仅支持布尔类型的参数。
 
 以下示例返回 `true`：
 
@@ -485,9 +484,9 @@ ms.locfileid: "82980807"
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
-此函数在页面加载后由于用户操作而发生的可选调用上下文中尤其有用。 例如，如果在用户界面中的一个字段上放置的约束依赖于当前所选的另一个**不可见**字段的值，则为。 在这种情况`coalesce()`下，可以在页面加载时使用来允许函数在语法上有效，同时在用户与字段交互时具有所需的效果。
+在页面加载后因用户操作而发生可选调用的情况下，此功能特别有用。 例如，UI 的一个字段中的约束取决于最初不可见的另一个字段中的当前选定值时。 在这种情况下，可以使用 `coalesce()` 使该函数在页面加载时在语法上有效，同时使用户与该字段进行交互时获得所需的效果。
 
-请考虑`DropDown`这样，这允许用户从多个不同的数据库类型中进行选择：
+请考虑使用此 `DropDown`，以允许用户在几种不同的数据库类型中进行选择：
 
 ```
 {
@@ -516,13 +515,13 @@ ms.locfileid: "82980807"
     },
 ```
 
-若要在此字段的当前选定值上对另一字段的操作进行`coalesce()`条件，请使用，如下所示：
+若要限制另一个字段对此字段的当前选定值进行操作，请使用 `coalesce()`，如下所示：
 
 ```
 "regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
 ```
 
-这是必需的`databaseType` ，因为最初不可见，因此不包含值。 这将导致整个表达式计算不正确。
+这是必需的，因为 `databaseType` 最初不可见，所以没有值。 这将导致整个表达式无法正确求值。
 
 ## <a name="conversion-functions"></a>转换函数
 可以使用这些函数在 JSON 数据类型和编码之间转换值。
@@ -542,7 +541,7 @@ ms.locfileid: "82980807"
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>浮动
+### <a name="float"></a>float
 将参数转换为浮点。 此函数支持数字和字符串类型的参数。
 
 以下示例返回 `1.0`：

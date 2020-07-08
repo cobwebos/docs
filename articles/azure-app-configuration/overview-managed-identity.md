@@ -8,10 +8,9 @@ ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82981215"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>如何将托管标识用于 Azure 应用配置
@@ -32,7 +31,7 @@ ms.locfileid: "82981215"
 若要使用 Azure CLI 设置托管标识，请对现有的配置存储使用[az appconfig identity assign]命令。 运行本部分中的示例有三个选项：
 
 - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
-- 通过以下每个代码块右上角的 "试用" 按钮，使用嵌入的 Azure Cloud Shell。
+- 通过单击下面每个代码块右上角的“试用”按钮，来使用嵌入的 Azure Cloud Shell。
 - 如果喜欢使用本地 CLI 控制台，请[安装最新版本的 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) （2.1 或更高版本）。
 
 以下步骤将引导你创建应用配置存储，并使用 CLI 向其分配标识：
@@ -65,7 +64,7 @@ ms.locfileid: "82981215"
 若要使用 Azure CLI 设置托管标识，请对现有的配置存储使用[az appconfig identity assign]命令。 运行本部分中的示例有三个选项：
 
 - 在 Azure 门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。
-- 通过以下每个代码块右上角的 "试用" 按钮，使用嵌入的 Azure Cloud Shell。
+- 通过单击下面每个代码块右上角的“试用”按钮，来使用嵌入的 Azure Cloud Shell。
 - 如果喜欢使用本地 CLI 控制台，请[安装最新版 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)（2.0.31 或更高版本）。
 
 以下步骤将引导你创建用户分配的标识和应用配置存储，然后使用 CLI 将标识分配给存储：
@@ -83,15 +82,15 @@ ms.locfileid: "82981215"
     az appconfig create --name myTestAppConfigStore --location eastus --resource-group myResourceGroup --sku Free
     ```
 
-1. 使用 CLI 创建名`myUserAssignedIdentity`为的用户分配的标识。
+1. 使用 CLI 创建名为的用户分配的标识 `myUserAssignedIdentity` 。
 
     ```azurecli-interactive
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
     ```
 
-    在此命令的输出中，记下`id`属性的值。
+    在此命令的输出中，记下属性的值 `id` 。
 
-1. 运行[az appconfig identity assign]命令，将新的用户分配的标识分配给此配置存储。 使用在上一步`id`中记下的属性的值。
+1. 运行[az appconfig identity assign]命令，将新的用户分配的标识分配给此配置存储。 使用在 `id` 上一步中记下的属性的值。
 
     ```azurecli-interactive
     az appconfig identity assign --name myTestAppConfigStore --resource-group myResourceGroup --identities /subscriptions/[subscription id]/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity

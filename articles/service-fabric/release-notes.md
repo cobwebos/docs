@@ -6,18 +6,17 @@ ms.topic: conceptual
 hide_comments: true
 hideEdit: true
 ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891729"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric 发布
 
-| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑难解答指南</a> 
-| <a href="https://github.com/Azure/service-fabric-issues" target="blank">问题跟踪</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支持选项</a> 
-| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支持的版本</a> 
+| <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">疑难解答指南</a>  
+| <a href="https://github.com/Azure/service-fabric-issues" target="blank">问题跟踪</a>  
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">支持选项</a>  
+| <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">支持的版本</a>  
 | <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">代码示例</a>
 
 本文提供了有关 Service Fabric 运行时和 Sdk 的最新版本和更新的详细信息。
@@ -37,12 +36,12 @@ ms.locfileid: "82891729"
 ## <a name="key-announcements"></a>关键公告
 - **General Availability** [ **Service Fabric 应用程序 Service Fabric 托管标识**的公开上市](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
 - [**支持 Ubuntu 18.04**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**预览版：虚拟机规模集临时 os 磁盘支持**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *：临时 os 磁盘是在本地虚拟机上创建的存储，不保存到远程 Azure 存储。 建议为所有 Service Fabric 节点类型（主节点和辅助节点类型）执行这些操作，这与传统的永久性 OS 磁盘相比，临时操作系统磁盘相同：
-      -  降低操作系统磁盘的读/写延迟
+ - [**预览版：虚拟机规模集临时 os 磁盘支持**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *：临时 os 磁盘是在本地虚拟机上创建的存储，不保存到远程 Azure 存储。 建议将它们用于所有 Service Fabric 节点类型（主要和次要），因为与传统的持久 OS 磁盘相比，临时 OS 磁盘：
+      -  降低了到 OS 磁盘的读/写延迟
       -  实现更快的重置/重新映像节点管理操作
-      -  降低总体成本（磁盘免费，不会产生额外的存储成本）
+      -  降低了总体成本（磁盘免费，不会产生额外的存储成本）
 - 支持[**按使用者公用名对 Service Fabric 应用程序声明服务终结点证书**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)。
-- [**容器化服务的运行状况探测支持**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage)：支持容器化应用程序的活动探测机制。 活动探测帮助公布容器化应用程序的活动，并在这些应用程序不及时响应时，会导致重新启动。 
+- [**容器化服务的运行状况探测支持**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage)：支持容器化应用程序的活动探测机制。 运行情况探测可以用来通知容器化应用程序的运行情况，在应用程序未及时响应时会导致重启。 
 - 支持[容器](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview)和[来宾可执行](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction)应用程序的[**初始化代码包**](https://docs.microsoft.com/azure/service-fabric/initializer-codepackages)。 这允许按指定顺序执行代码包（如容器）来执行服务包初始化。
 - **FabricObserver 和 ClusterObserver**是无状态应用程序，用于捕获与 SF 的不同方面相关的 Service Fabric 遥测。 这两个应用程序都准备好部署到 Windows 生产群集，以捕获丰富的遥测并实现对 Applicationinsights.config、EventSource 和 LogAnalytics 的支持。
     - [**FabricObserver （FO） 2.0**](https://github.com/microsoft/service-fabric-observer)-在所有节点上运行，会生成运行状况事件，并在达到用户配置的资源使用率阈值时发出遥测。 此版本包含跨监视、数据管理、运行状况事件详细信息、结构化遥测的几项增强功能。
@@ -53,7 +52,7 @@ ms.locfileid: "82891729"
 - **[预览：请求排出](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-advanced#avoid-connection-drops-during-planned-downtime-of-stateless-services)**：在计划内服务维护（如服务升级或节点停用）期间，你希望允许服务正常排出连接。 此功能在服务配置中添加实例关闭延迟持续时间。 在计划的操作期间，SF 会从发现中删除服务的地址，并在关闭服务前等待此持续时间。
 - **[自动 Subcluster 检测和平衡](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**：当具有不同放置约束的服务具有一个通用[负载度量值](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)时，将发生 Subclustering。 如果不同组节点上的负载差别很大，则 Service Fabric 群集资源管理器认为群集不均衡，即使由于放置约束的原因而达到了最大的平衡。 因此，它会尝试重新平衡群集，这可能会导致不必要的服务移动（因为无法显著提高 "不平衡"）。 从此版本开始，群集资源管理器现在将尝试自动检测这些种类的配置，并了解何时可以通过移动来修复不平衡的情况，以及在不能对其进行重大改进的情况下，应该单独保留一些内容。  
 - [**辅助副本的不同移动成本**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)：我们引入了新的移动成本值 VeryHigh，在某些方案中提供了额外的灵活性，以定义是否应为辅助副本使用单独的移动成本。
-- 已为容器化应用程序启用[**活动探测**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage )机制。 活动探测帮助公布容器化应用程序的活动，并在这些应用程序不及时响应时，会导致重新启动。
+- 已为容器化应用程序启用[**活动探测**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage )机制。 运行情况探测可以用来通知容器化应用程序的运行情况，在应用程序未及时响应时会导致重启。
 - [**针对服务运行到完成/一次**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
 
 ### <a name="image-store-improvements"></a>映像存储改进
@@ -69,7 +68,7 @@ ms.locfileid: "82891729"
     - 修复数据损坏
                  
 ### <a name="service-fabric-71-releases"></a>Service Fabric 7.1 版本
-| 发布日期 | 发布 | 更多信息 |
+| 发行日期 | Release | 更多信息 |
 |---|---|---|
 | 2020年4月20日 | [Azure Service Fabric 7。1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [发行说明](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
 
@@ -103,7 +102,7 @@ Azure Service Fabric 7.0 现已推出！ 可以通过 Azure 门户或 Azure 资�
 
 ### <a name="service-fabric-70-releases"></a>Service Fabric 7.0 版本
 
-| 发布日期 | 发布 | 更多信息 |
+| 发行日期 | Release | 更多信息 |
 |---|---|---|
 | 2019 年 11 月 18 日 | [Azure Service Fabric 7。0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
 | 2020年1月30日 | [Azure Service Fabric 7.0 刷新版本](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
@@ -141,7 +140,7 @@ Azure Service Fabric 7.0 现已推出！ 可以通过 Azure 门户或 Azure 资�
 
 ### <a name="service-fabric-65-releases"></a>Service Fabric 6.5 版本
 
-| 发布日期 | 发布 | 更多信息 |
+| 发行日期 | Release | 更多信息 |
 |---|---|---|
 | 2019 年 6 月 11 日 | [Azure Service Fabric 6。5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
 | 2019 年 7 月 2 日 | [Azure Service Fabric 6.5 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
@@ -150,16 +149,16 @@ Azure Service Fabric 7.0 现已推出！ 可以通过 Azure 门户或 Azure 资�
 | 2019年10月14日 | [Azure Service Fabric 6.5 刷新版本](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [发行说明](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
 
-## <a name="previous-versions"></a>以前的版本
+## <a name="previous-versions"></a>早期版本
 
 ### <a name="service-fabric-64-releases"></a>Service Fabric 6.4 版本
 
-| 发布日期 | 发布 | 更多信息 |
+| 发行日期 | Release | 更多信息 |
 |---|---|---|
 | 2018年11月30日 | [Azure Service Fabric 6。4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [发行说明](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
 | 2018 年 12 月 12 日 | [适用于 Windows 群集的 Azure Service Fabric 6.4 更新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [发行说明](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
 | 2019年2月4日 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/02/04/azure-service-fabric-6-4-refresh-release/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/02/Service-Fabric-6.4CU3-Release-Notes.pdf) |
 | 2019年3月4日 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/03/12/azure-service-fabric-6-4-refresh-release-2/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)
 | 2019年4月8日 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/04/08/azure-service-fabric-6-4-refresh-release-5/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/04/Service-Fabric-6.4CU5-ReleaseNotes3.pdf)
-| 5月2日，2019 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/02/azure-service-fabric-6-4-refresh-release-3/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
+| 2019 年 5 月 2 日 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/02/azure-service-fabric-6-4-refresh-release-3/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
 | 5月28日，2019 | [Azure Service Fabric 6.4 刷新版本](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/28/azure-service-fabric-6-4-refresh-release-4/) | [发行说明](https://msdnshared.blob.core.windows.net/media/2019/05/Service_Fabric_64CU7_Release_Notes1.pdf)

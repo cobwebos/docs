@@ -10,10 +10,9 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982235"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
@@ -43,7 +42,7 @@ ms.locfileid: "82982235"
 下面的示例演示了一个[c # 函数](functions-dotnet-class-library.md)，该函数将在添加到应用中的每个新实例上运行。 不需要返回值特性。
 
 
-* 函数必须命名为```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
+* 函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 * 若要使用预热作为 .NET 类库功能，请确保具有对3.0.5 的包引用 **>=**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
@@ -73,14 +72,14 @@ namespace WarmupSample
     }
 }
 ```
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[c # 脚本函数](functions-reference-csharp.md)。
+下面的示例演示了一个在文件*function.js上*的预热触发器，以及一个将在添加到应用程序的每个新实例上运行的[c # 脚本函数](functions-reference-csharp.md)。
 
-您的函数必须命名```warmup```为（不区分大小写），并且每个应用程序只能有一个预热函数。
+您的函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -107,11 +106,11 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[JavaScript 函数](functions-reference-node.md)。
+下面的示例演示了文件*function.js*中的预热触发器，以及将在添加到应用时每个新实例上运行的[JavaScript 函数](functions-reference-node.md)。
 
-函数必须命名为```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
+函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -137,11 +136,11 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[Python 函数](functions-reference-python.md)。
+下面的示例显示了文件*function.js*中的预热触发器，以及将在添加到应用时每个新实例上运行的[Python 函数](functions-reference-python.md)。
 
-函数必须命名为```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
+函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
-下面是*函数 json*文件：
+function.json 文件如下所示：
 
 ```json
 {
@@ -172,7 +171,7 @@ def main(warmupContext: func.Context) -> None:
 
 下面的示例演示了在将每个新实例添加到应用程序时运行的预热触发器。
 
-函数必须命名为`warmup` （不区分大小写），并且每个应用程序只能有一个预热函数。
+函数必须命名为 `warmup` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
 ```java
 @FunctionName("Warmup")
@@ -185,13 +184,13 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>触发器 - 特性
 
-在[c # 类库](functions-dotnet-class-library.md)中， `WarmupTrigger`特性可用于配置函数。
+在[c # 类库](functions-dotnet-class-library.md)中， `WarmupTrigger` 特性可用于配置函数。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 此示例演示如何使用[预热](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs)特性。
 
-请注意，必须调用```Warmup```函数，并且每个应用只能有一个预热函数。
+请注意，必须调用函数 ```Warmup``` ，并且每个应用只能有一个预热函数。
 
 ```csharp
  [FunctionName("Warmup")]
@@ -204,7 +203,7 @@ public void run( ExecutionContext context) {
 
 有关完整示例，请参阅[触发器示例](#trigger---example)。
 
-# <a name="c-script"></a>[C # 脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 C# 脚本不支持特性。
 
@@ -224,12 +223,12 @@ Python 不支持特性。
 
 ## <a name="trigger---configuration"></a>触发器 - 配置
 
-下表说明了在*函数 json*文件和`WarmupTrigger`属性中设置的绑定配置属性。
+下表解释了在 function.json 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type  | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
-| **方向键** | 不适用| 必需 - 必须设置为 `in`。 |
+| **type** | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
+| **direction** | 不适用| 必需 - 必须设置为 `in`。 |
 | **name** | 不适用| 必需-在函数代码中使用的变量名称。|
 
 ## <a name="trigger---usage"></a>触发器 - 用法

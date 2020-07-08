@@ -4,17 +4,16 @@ description: 了解如何使用 Azure 门户从 Azure 备份创建的还原点�
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 5668328637ae9b5a5dd3db02085a7f15de2a2456
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82980579"
 ---
 # <a name="restore-azure-file-shares"></a>还原 Azure 文件共享
 
 本文介绍如何使用 Azure 门户从[Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview)创建的还原点还原整个文件共享或特定文件。
 
-本文介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 
 * 还原完整的 Azure 文件共享。
 * 还原单个文件或文件夹。

@@ -1,13 +1,12 @@
 ---
-title: 运行状况检查的错误引用
+title: 运行状况检查的错误参考信息
 description: 在 Azure 容器注册表中运行 az acr check-health 命令时出现的问题的错误代码及可能的解决方法
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82978308"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
@@ -58,7 +57,7 @@ ms.locfileid: "82978308"
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-此错误表示给定注册表的质询终结点响应了“403 禁止”HTTP 状态。 此错误表示用户无权访问注册表，很可能是因为存在虚拟网络配置，或者是因为不允许访问注册表的公共终结点。 若要查看当前配置的防火墙规则，请运行 `az acr show --query networkRuleSet --name <registry>`。
+此错误表示给定注册表的质询终结点响应了“403 禁止”HTTP 状态。 此错误表示用户无权访问注册表，原因很可能是虚拟网络配置有问题或不允许访问注册表的公共终结点。 若要查看当前配置的防火墙规则，请运行 `az acr show --query networkRuleSet --name <registry>`。
 
 *可能的解决方法*：删除虚拟网络规则，或将当前的客户端 IP 地址添加到允许列表。
 
@@ -100,7 +99,7 @@ ms.locfileid: "82978308"
 
 ## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
 
-此错误表示 CLI 与当前安装的 Docker/公证人版本不兼容。 尝试将公证人版本降级为早于0.6.0 的版本，方法是手动替换 Docker 安装的公证人客户端以解决此问题。
+此错误表示 CLI 与当前安装的 Docker/Notary 版本不兼容。 通过手动替换 Docker 安装的公证客户端，尝试将你的 notary.exe 版本降级到 0.6.0 之前的版本来解决此问题。
 
 ## <a name="next-steps"></a>后续步骤
 

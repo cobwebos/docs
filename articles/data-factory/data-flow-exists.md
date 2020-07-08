@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/07/2020
 ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82982626"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中存在转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Exists 转换是一个行筛选转换，用于检查数据是否存在于另一个源或流中。 输出流包括左侧流中存在或不存在于右侧流中的所有行。 Exists 转换类似于```SQL WHERE EXISTS```和。 ```SQL WHERE NOT EXISTS```
+Exists 转换是一个行筛选转换，用于检查数据是否存在于另一个源或流中。 输出流包括左侧流中存在或不存在于右侧流中的所有行。 Exists 转换类似于 ```SQL WHERE EXISTS``` 和 ```SQL WHERE NOT EXISTS``` 。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>配置
 
 1. 在 "**正确的流**" 下拉列表中选择要检查是否存在的数据流。
 1. 指定是否要在**存在类型**设置中查找数据。
 1. 选择是否需要**自定义表达式**。
-1. 选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉列表中，然后选择 "**计算列**"。
+1. 选择要作为存在条件进行比较的键列。 默认情况下，数据流在每个流中的一列之间查找相等性。 若要通过计算值进行比较，请将鼠标悬停在列下拉菜单上，然后选择“计算列”。
 
 ![存在设置](media/data-flow/exists.png "存在1")
 
@@ -48,9 +47,9 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 ![广播联接](media/data-flow/broadcast.png "广播联接")
 
-在联接、查找和存在转换中，如果一个或两个数据流适合工作节点内存，则可以通过启用**广播**来优化性能。 默认情况下，spark 引擎将自动决定是否广播一方。 若要手动选择要广播的端，请选择 "**固定**"。
+在联接、查找和存在转换中，如果工作器节点内存可容纳一个数据流或同时容纳两个数据流，则可以通过启用“广播”来优化性能。 默认情况下，Spark 引擎将自动决定是否广播一侧。 若要手动选择要广播的一侧，请选择“固定”。
 
-不建议禁用通过**Off**选项进行的广播，除非您的联接遇到超时错误。
+建议不要通过“关闭”选项来禁用广播，除非联接遇到超时错误。
 
 ## <a name="data-flow-script"></a>数据流脚本
 
@@ -67,7 +66,7 @@ Exists 转换是一个行筛选转换，用于检查数据是否存在于另一�
 
 ### <a name="example"></a>示例
 
-下面的示例是一个名为`checkForChanges`的 exists 转换，它`NameNorm2`采用左侧流`TypeConversions`和正确流。  Exists 条件是一个表达式`NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` ，如果每个流中的`EMPID`和`Region`列都匹配，则返回 true。 由于我们要检查是否存在， `negate`因此为 false。 我们未在 "优化" 选项卡中启用`broadcast`任何广播`'none'`，因此具有值。
+下面的示例是一个名为的 exists 转换 `checkForChanges` ，它采用左侧流 `NameNorm2` 和正确流 `TypeConversions` 。  Exists 条件是 `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` 一个表达式，如果 `EMPID` `Region` 每个流中的和列都匹配，则返回 true。 由于我们要检查是否存在，因此 `negate` 为 false。 我们未在 "优化" 选项卡中启用任何广播，因此 `broadcast` 具有值 `'none'` 。
 
 在数据工厂 UX 中，此转换如下图所示：
 

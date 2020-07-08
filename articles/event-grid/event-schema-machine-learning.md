@@ -1,5 +1,5 @@
 ---
-title: 作为事件网格源 Azure 机器学习
+title: 作为事件网格源的 Azure 机器学习
 description: 介绍为 Azure 事件网格中的机器学习工作区事件提供的属性
 services: event-grid
 author: spelluru
@@ -8,13 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82928867"
 ---
-# <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源 Azure 机器学习
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>作为事件网格源的 Azure 机器学习
 
 本文提供了机器学习工作区事件的属性和架构。 有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
@@ -30,7 +29,7 @@ Azure 机器学习发出以下事件类型：
 | Microsoft.MachineLearningServices.ModelDeployed | 将模型成功部署到终结点时引发。 |
 | Microsoft.MachineLearningServices.RunCompleted | 在成功完成运行时引发。 |
 | Microsoft.MachineLearningServices.DatasetDriftDetected | 当数据集偏移监视器检测到偏移时引发。 |
-| MachineLearningServices. RunStatusChanged | 当运行状态更改为 "failed" 时引发。 |
+| Microsoft.MachineLearningServices.RunStatusChanged | 当运行状态更改为“failed”时引发。 |
 
 ### <a name="the-contents-of-an-event-response"></a>事件响应的内容
 
@@ -149,7 +148,7 @@ Azure 机器学习发出以下事件类型：
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>MachineLearningServices. RunStatusChanged 事件
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft.MachineLearningServices.RunStatusChanged 事件
 
 ```json
 [{
@@ -196,8 +195,8 @@ Azure 机器学习发出以下事件类型：
 | subject | string | 事件主题的发布者定义路径。 |
 | eventType | string | 此事件源的一个注册事件类型。 |
 | EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| ID | 字符串 | 事件的唯一标识符。 |
-| data | 对象 (object) | Blob 存储事件数据。 |
+| id | string | 事件的唯一标识符。 |
+| 数据 | object | Blob 存储事件数据。 |
 | dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -209,8 +208,8 @@ Azure 机器学习发出以下事件类型：
 | -------- | ---- | ----------- |
 | ModelName | string | 已注册模型的名称。 |
 | ModelVersion | string | 已注册模型的版本。 |
-| ModelTags | 对象 (object) | 已注册模型的标记。 |
-| ModelProperties | 对象 (object) | 已注册模型的属性。 |
+| ModelTags | object | 已注册模型的标记。 |
+| ModelProperties | object | 已注册模型的属性。 |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
@@ -219,8 +218,8 @@ Azure 机器学习发出以下事件类型：
 | ServiceName | string | 已部署服务的名称。 |
 | ServiceComputeType | string | 已部署服务的计算类型（例如 ACI、AKS）。 |
   | ModelIds | string | 模型 ID 的逗号分隔列表。 服务中部署的模型的 ID。 |
-| ServiceTags | 对象 (object) | 已部署服务的标记。 |
-| ServiceProperties | 对象 (object) | 已部署服务的属性。 |
+| ServiceTags | object | 已部署服务的标记。 |
+| ServiceProperties | object | 已部署服务的属性。 |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
@@ -230,36 +229,36 @@ Azure 机器学习发出以下事件类型：
 | ExperimentName | string | 此运行所属的试验的名称。 |
 | RunId | string | 已完成的运行的 ID。 |
 | RunType | string | 已完成的运行的运行类型。 |
-| RunTags | 对象 (object) | 已完成的运行的标记。 |
-| RunProperties | 对象 (object) | 已完成的运行的属性。 |
+| RunTags | object | 已完成的运行的标记。 |
+| RunProperties | object | 已完成的运行的属性。 |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
-| 属性 | 类型 | 描述 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | DataDriftId | string | 触发了事件的数据偏移监视器的 ID。 |
 | DataDriftName | string | 触发了事件的数据偏移监视器的名称。 |
 | RunId | string | 检测到数据偏移的运行的 ID。 |
 | BaseDatasetId | string | 用于检测偏移的基础数据集的 ID。 |
 | TargetDatasetId | string | 用于检测偏移的目标数据集的 ID。 |
-| DriftCoefficient | double | 触发了事件的系数结果。 |
+| DriftCoefficient | Double | 触发了事件的系数结果。 |
 | StartTime | datetime | 导致了偏移检测的目标数据集时序的开始时间。  |
 | EndTime | datetime | 导致了偏移检测的目标数据集时序的结束时间。 |
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>MachineLearningServices. RunStatusChanged
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
 
-| 属性 | 类型 | 描述 |
+| 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | ExperimentId | string | 此运行所属的试验的 ID。 |
 | ExperimentName | string | 此运行所属的试验的名称。 |
 | RunId | string | 已完成的运行的 ID。 |
 | RunType | string | 已完成的运行的运行类型。 |
-| RunTags | 对象 (object) | 已完成的运行的标记。 |
-| RunProperties | 对象 (object) | 已完成的运行的属性。 |
+| RunTags | object | 已完成的运行的标记。 |
+| RunProperties | object | 已完成的运行的属性。 |
 | RunStatus | string | 运行的状态。 |
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
-| Title | 说明 |
+| 标题 | 说明 |
 | ----- | ----- |
 | [使用 Azure 机器学习事件](../machine-learning/concept-event-grid-integration.md) | 概述 Azure 机器学习与事件网格的集成。 |
 

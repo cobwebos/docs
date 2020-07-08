@@ -12,10 +12,9 @@ ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82929751"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
@@ -24,7 +23,7 @@ ms.locfileid: "82929751"
 
 ## <a name="what-is-mlops"></a>什么是 MLOps？
 
-机器学习操作 (MLOps) 基于可提高工作流效率的 [DevOps](https://azure.microsoft.com/overview/what-is-devops/) 原理和做法。 例如持续集成、持续交付和持续部署。 MLOps 会将这些原则应用到机器学习过程中，目的是：
+机器学习操作 (MLOps) 基于可提高工作流效率的 [DevOps](https://azure.microsoft.com/overview/what-is-devops/) 原理和做法。 例如持续集成、持续交付和持续部署。 MLOps 将这些原理应用到机器学习过程，其目标是：
 
 * 更快地试验和开发模型
 * 更快地将模型部署到生产环境
@@ -33,12 +32,12 @@ ms.locfileid: "82929751"
 Azure 机器学习提供以下 MLOps 功能：
 
 - **创建可重现的 ML 管道**。 使用机器学习管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
-- 创建可重用的软件环境用于训练和部署模型。 
-- 从任意位置注册、打包和部署模型。  还可以跟踪使用模型时所需的关联元数据。
-- 捕获端到端 ML 生命周期的监管数据。  记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
-- 针对 ML 生命周期中的事件发出通知和警报。  例如，试验完成、模型注册、模型部署和数据偏移检测。
+- 创建可重用的软件环境用于训练和部署模型。
+- 从任意位置注册、打包和部署模型。 还可以跟踪使用模型时所需的关联元数据。
+- 捕获端到端 ML 生命周期的监管数据。 记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
+- 针对 ML 生命周期中的事件发出通知和警报。 例如，试验完成、模型注册、模型部署和数据偏移检测。
 - **监视 ML 应用程序中的操作和 ML 相关问题**。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
-- 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。  使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
+- 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。 使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>创建可重现的 ML 管道
 
@@ -46,7 +45,7 @@ Azure 机器学习提供以下 MLOps 功能：
 
 ML 管道可以包含从数据准备、到特征提取、到超参数优化、再到模型评估的所有步骤。 有关详细信息，请参阅 [ML 管道](concept-ml-pipelines.md)。
 
-如果使用[设计器](concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。   克隆管道可以迭代管道设计，而不会丢失旧版本。  
+如果使用[设计器](concept-designer.md)创建 ML 管道，则随时可以单击设计器页面右上角的“...”，然后选择“克隆”。  克隆管道可以迭代管道设计，而不会丢失旧版本。  
 
 ## <a name="create-reusable-software-environments"></a>创建可重用的软件环境
 
@@ -140,25 +139,25 @@ Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和
 
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>分析
 
 Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详细信息，请参阅 [Power BI 中的 Azure 机器学习集成（预览版）](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕获所需的监管数据以捕获端到端的 ML 生命周期
 
-Azure ML 使你可以使用元数据来跟踪所有 ML 资产的端到端审核记录。
+Azure ML 提供使用元数据跟踪所有 ML 资产的端到端审核线索的功能。
 
 - Azure ML [与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，可跟踪有关存储库/分支/提交代码的来源位置的信息。
 - [Azure ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析数据及控制其版本。
-- 使用[Interpretability](how-to-machine-learning-interpretability.md) ，可以对模型进行说明，满足法规遵从性要求，并了解模型到达给定输入的结果。
-- Azure ML 运行历史记录存储用于定型模型的代码、数据和计算的快照。
+- 借助[可解释性](how-to-machine-learning-interpretability.md)，可以解释模型、满足法规要求，并了解模型如何针对给定输入来提供结果。
+- Azure ML 运行历史记录存储用于训练模型的代码、数据和计算的快照。
 - Azure ML 模型注册表捕获与模型关联的所有元数据（训练该模型的试验、模型的部署位置、其部署是否正常）。
-- [与 Azure 的集成](how-to-use-event-grid.md)使你能够对 ML 生命周期中的事件进行操作。 例如，模型注册、部署、数据偏移和定型（运行）事件。
+- 通过[与 Azure 集成](how-to-use-event-grid.md)，可以对机器学习生命周期中的事件进行操作。 例如，模型注册、部署、数据偏移和训练（运行）事件。
 
 > [!TIP]
-> 虽然自动捕获有关模型和数据集的某些信息，但可以使用__标记__添加其他信息。 在工作区中查找已注册的模型和数据集时，可以使用标记作为筛选器。
+> 系统会自动捕获有关模型和数据集的某些信息，同时你可以使用“标记”添加其他信息。 在工作区中查找已注册的模型和数据集时，可以使用标记作为筛选器。
 >
-> 将数据集与已注册的模型相关联是一个可选步骤。 有关注册模型时引用数据集的信息，请参阅[模型类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py)。
+> 可以选择将数据集与已注册的模型相关联。 若要了解如何在注册模型时引用数据集，请参阅 [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) 类参考信息。
 
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>针对 ML 生命周期中的事件发出通知和警报以及进行自动化处理
@@ -173,18 +172,18 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 
 有关详细信息，请参阅[如何启用模型数据收集](how-to-enable-data-collection.md)。
 
-## <a name="retrain-your-model-on-new-data"></a>针对新数据重新训练模型
+## <a name="retrain-your-model-on-new-data"></a>基于新数据重新训练模型
 
-通常，当您收到新信息时，您需要对模型进行验证、更新，甚至从头开始重新训练。 有时，接收新数据是域的预期部分。 其他情况下，如在数据[集上检测数据偏移（预览版）](how-to-monitor-datasets.md)中所述，在面对特定传感器的更改、自然数据更改（如季节性影响）或功能改变为其他功能的情况下，模型性能可能会下降。 
+我们经常需要验证并更新模型，甚至需要在收到新信息时从头开始重新训练该模型。 有时，接收新数据是该领域的预期环节。 在其他时候，如[检测数据集中的数据偏移（预览版）](how-to-monitor-datasets.md)中所述，在面对特定传感器更改、自然数据更改（例如季节性影响），或者某些功能因其他功能而发生改变等情况时，模型性能可能会下降。 
 
-"如何实现知道我是否应该重新训练？" 但前面讨论过的 Azure ML 事件和监视工具是自动化的良好起点。 在您决定重新训练后，您应该： 
+对于“如何知道我是否应重新训练模型？”这一问题，没有统一的答案。 但是，前面所述 Azure ML 事件和监视工具是实现自动化的良好起点。 在决定重新训练模型后，应该： 
 
-- 使用可重复的自动化过程预处理你的数据
+- 使用可重复的自动化过程预处理数据
 - 训练新模型
 - 将新模型的输出与旧模型的输出进行比较
-- 使用预定义的条件来选择是否替换旧模型 
+- 使用预定义的条件来确定是否替换旧模型 
 
-以上步骤的一个主题是，您的重新训练应该是自动化的，而不是临时的。 [Azure 机器学习管道](concept-ml-pipelines.md)是创建与数据准备、培训、验证和部署相关的工作流的好办法。 阅读重新训练[模型与 Azure 机器学习设计器（预览）](how-to-retrain-designer.md) ，了解管道和 Azure 机器学习设计器如何适应重新训练方案。 
+上述步骤的一个主旨是，重新训练应该是自动化的，而不是临时性的。 [Azure 机器学习管道](concept-ml-pipelines.md)非常适合用于创建与数据准备、训练、验证和部署相关的工作流。 请阅读[使用 Azure 机器学习设计器重新训练模型（预览版）](how-to-retrain-designer.md)，了解管道和 Azure 机器学习设计器如何适应重新训练方案。 
 
 ## <a name="automate-the-ml-lifecycle"></a>自动化 ML 生命周期 
 
@@ -195,13 +194,13 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 * 定义服务连接时启用工作区选择。
 * 使发布管道可由训练管道中创建的已训练模型触发。
 
-有关将 Azure Pipelines 与 Azure 机器学习配合使用的详细信息，请参阅以下链接：
+若要了解如何配合使用 Azure Pipelines 与 Azure 机器学习，请参阅以下链接：
 
-* [利用 Azure Pipelines 持续集成和部署 ML 模型](/azure/devops/pipelines/targets/azure-machine-learning) 
-* [Azure 机器学习 MLOps](https://aka.ms/mlops)存储库。
-* [Azure 机器学习 MLOpsPython](https://github.com/Microsoft/MLOpspython)存储库。
+* [借助 Azure Pipelines 实现机器学习模型的持续集成和部署](/azure/devops/pipelines/targets/azure-machine-learning) 
+* [Azure 机器学习 MLOps](https://aka.ms/mlops) 存储库。
+* [Azure 机器学习 MLOpsPython](https://github.com/Microsoft/MLOpspython) 存储库。
 
-你还可以使用 Azure 数据工厂创建数据引入管道，以便准备用于定型的数据。 有关详细信息，请参阅[数据引入管道](how-to-cicd-data-ingestion.md)。
+还可以使用 Azure 数据工厂创建数据引入管道，以准备好用于训练的数据。 有关详细信息，请参阅[数据引入管道](how-to-cicd-data-ingestion.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -217,6 +216,6 @@ Azure ML 将关键事件发布到 Azure 事件网格。使用事件网格可以�
 
 + 创建[使用已部署的模型](how-to-consume-web-service.md)的客户端
 
-+ [大规模机器学习](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
++ [规模化机器学习](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
 + [Azure AI 参考体系结构和最佳做法存储库](https://github.com/microsoft/AI)

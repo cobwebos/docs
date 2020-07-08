@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82930652"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像，并使用用户分配的托管标识访问 Azure 存储中的文件 
@@ -24,7 +23,7 @@ Azure 映像生成器支持使用脚本，或从多个位置（例如 GitHub 和
 
 
 > [!IMPORTANT]
-> Azure 映像生成器目前为公共预览版。
+> Azure 映像生成器目前提供公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
@@ -40,7 +39,7 @@ az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMac
 az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
 ```
 
-检查你的注册。
+检查注册。
 
 
 ```azurecli-interactive
@@ -50,7 +49,7 @@ az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
-如果未注册，请运行以下内容：
+如果未显示“已注册”，请运行以下命令：
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
@@ -62,7 +61,7 @@ az provider register -n Microsoft.Storage
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-我们将重复使用某些信息，因此我们将创建一些变量来存储该信息。
+我们将重复使用某些信息，因此我们将创建一些变量来存储这些信息。
 
 
 ```console
@@ -78,7 +77,7 @@ imageName=aibCustLinuxImgMsi01
 runOutputName=u1804ManImgMsiro
 ```
 
-为订阅 ID 创建一个变量。 你可以使用`az account show | grep id`获取此。
+为你的订阅 ID 创建变量。 可使用 `az account show | grep id` 获取。
 
 ```console
 subscriptionID=<Your subscription ID>
@@ -95,7 +94,7 @@ az group create -n $strResourceGroup -l $location
 
 创建用户分配的标识并对资源组设置权限。
 
-映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 角色定义将分配给用户标识。
+映像生成器将使用提供的[用户标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)将图像注入资源组。 在此示例中，你将创建一个 Azure 角色定义，其中包含用于对映像进行分布的精细操作。 然后将此角色定义分配给用户标识。
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -222,7 +221,7 @@ az vm create \
 ssh aibuser@<publicIp>
 ```
 
-一旦建立 SSH 连接，就会看到该映像已自定义一天的消息！
+建立 SSH 连接后，应会立即看到映像已使用当天的一个消息进行了自定义！
 
 ```output
 
@@ -233,7 +232,7 @@ ssh aibuser@<publicIp>
 *******************************************************
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 完成后，可以删除不再需要的资源。
 

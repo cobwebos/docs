@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82926224"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS 别名记录概述
@@ -66,7 +65,7 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
 与流量管理器配置文件一样，还可以使用别名记录将 DNS 区域顶点指向 Azure CDN 终结点。 使用 Azure 存储和 Azure CDN 创建静态网站时，这非常有用。 然后即可访问该网站，无需在 DNS 名称前面预置“www”。
 
-例如，如果你的静态网站命名`www.contoso.com`为，你的用户可以使用`contoso.com`访问你的网站，而无需在 DNS 名称前面预置 www。
+例如，如果你的静态网站命名为 `www.contoso.com` ，你的用户可以使用访问你 `contoso.com` 的网站，而无需在 DNS 名称前面预置 www。
 
 如前文所述，区域顶点不支持 CNAME 记录。 因此，不能使用 CNAME 记录将 contoso.com 指向 CDN 终结点。 而只能使用别名记录将区域顶点直接指向 CDN 终结点。
 

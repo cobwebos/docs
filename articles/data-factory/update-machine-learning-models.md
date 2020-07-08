@@ -12,10 +12,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82927372"
 ---
 # <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>使用 "更新资源" 活动更新 ML Studio （经典） v 模型
@@ -59,7 +58,7 @@ ms.locfileid: "82927372"
 }
 ```
 
-| 属性                      | 说明                              | 必须 |
+| Property                      | 描述                              | 必需 |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | 管道中活动的名称     | 是      |
 | description                   | 描述活动用途的文本。  | 否       |

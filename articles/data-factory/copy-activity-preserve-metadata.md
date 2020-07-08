@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: jingwang
 ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82891755"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的复制活动保留元数据和 ACL
@@ -90,7 +89,7 @@ ms.locfileid: "82891755"
 - **所有者**：复制并保留文件和目录的拥有用户。 需要超级用户访问接收器 Data Lake Storage Gen2。
 - **组**：复制并保留所属的文件和目录组。 需要超级用户对接收器 Data Lake Storage Gen2 或拥有用户的访问权限（如果拥有用户也是目标组的成员）。
 
-如果指定从文件夹复制，则如果`recursive`将设置为 true，则数据工厂将复制该给定文件夹及其下的文件和目录的 acl。 如果指定从单个文件复制，则会复制该文件上的 Acl。
+如果指定从文件夹复制，则如果 `recursive` 将设置为 true，则数据工厂将复制该给定文件夹及其下的文件和目录的 acl。 如果指定从单个文件复制，则会复制该文件上的 Acl。
 
 >[!NOTE]
 >使用 ADF 将 Acl 从 Data Lake Storage Gen1/Gen2 保留到 Gen2 时，接收器上的现有 Acl Gen2's 对应的文件夹/文件将被覆盖。
@@ -98,7 +97,7 @@ ms.locfileid: "82891755"
 >[!IMPORTANT]
 >选择保留 Acl 时，请确保为数据工厂授予足够高的权限，以便在接收器 Data Lake Storage Gen2 帐户上运行。 例如，使用帐户密钥身份验证，或将存储 Blob 数据所有者角色分配给服务主体或托管标识。
 
-当你将源配置为具有二进制格式或二进制复制选项的源作为 Data Lake Storage Gen1/Gen2，并以二进制格式或二进制复制选项接收 Data Lake Storage Gen2 时，你可以在复制数据工具中的 "**设置**" 页上或在活动创作的 "**复制活动** > **设置**" 选项卡上找到**保留**选项。
+当你将源配置为具有二进制格式或二进制复制选项的源作为 Data Lake Storage Gen1/Gen2，并以二进制格式或二进制复制选项接收 Data Lake Storage Gen2 时，你可以在复制数据工具中的 "**设置**" 页上或在活动创作的 "**复制活动**设置" 选项卡上找到**保留**选项  >  **Settings** 。
 
 ![Data Lake Storage Gen1/Gen2 到 Gen2 保留 ACL](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
