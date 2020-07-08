@@ -3,15 +3,16 @@ title: 使用 Azure Cosmos DB C# 笔记本中的内置笔记本命令和功能�
 description: 了解如何通过 Azure Cosmos DB 内置 C# 笔记本使用内置命令和功能来执行常见操作。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 94cb23b1795a93462a0356fb0af215601edb9d64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: d9d48e825adeecd54375ce13c612d4a0c6eaaa18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662465"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263409"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>使用 Azure Cosmos DB C# 笔记本中的内置笔记本命令和功能（预览版）
 
@@ -114,14 +115,14 @@ for (int i = 0; i < 5; i++) {
 
 例如，在 GetingStarted_Csharp.ipynb 示例中，我们可以在结果中输出变量 ``telemetryEvents``。 有关整个示例，请参阅 [GettingStarted_Csharp.ipynb 笔记本](https://github.com/Azure-Samples/cosmos-notebooks/blob/master/CSharp_quickstarts/GettingStarted_CSharp.ipynb)。 
 
-![Csharp 查询单元](media/use-notebook-features-and-commands/csharp-query-cell.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-query-cell.png" alt-text="Csharp 查询单元":::
 
-![nteract 数据资源管理器](media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-nteract-built-in-chart.png" alt-text="nteract 数据资源管理器":::
 
 ## <a name="use-built-in-dictionary-viewer"></a>使用内置字典查看器
 可以使用内置字典查看器查看变量。 在单元格中，将要可视化的变量放在最后一行中，在运行单元时，该变量会自动显示。
 
-![内置字典查看器](media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png)
+:::image type="content" source="media/use-notebook-features-and-commands/csharp-built-in-dictionary-viewer.png" alt-text="内置字典查看器":::
 
 ## <a name="upload-json-items-to-a-container"></a>将 JSON 项上传到容器
 可以使用 ``%%upload`` magic 命令将 JSON 文件中的数据上传到指定的 Azure Cosmos 容器。 运行以下命令来上传项：
@@ -159,7 +160,7 @@ Total RUs consumed : 25022.58
 ## <a name="reset-notebooks-workspace"></a>重置笔记本工作区
 若要将笔记本工作区重置为默认设置，请在命令栏上选择“重置工作区”。 这会删除所有自定义的已安装包，并重启 Jupyter 服务器。 笔记本、文件和 Azure Cosmos 资源不受影响。  
 
-![重置笔记本工作区](media/use-notebook-features-and-commands/reset-workspace.png)
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="重置笔记本工作区":::
 
 ## <a name="next-steps"></a>后续步骤
 

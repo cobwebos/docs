@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.date: 06/18/2020
+ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648165"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298848"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
-对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是一种隔离环境，它使用独立于“全局”、多租户逻辑应用服务的专用存储和其他资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 ISE 还为你提供你自己的静态 IP 地址。 这些 IP 地址与公共、多租户服务中的逻辑应用共享的静态 IP 地址分隔开。
+对于逻辑应用和集成帐户需要访问 [ Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)的情况，请创建[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)。 ISE 是一个专用环境，它使用专用存储和其他与“全局”多租户逻辑应用服务分离的资源。 这种分离还减少了其他 Azure 租户可能对应用性能产生的影响。 ISE 还为你提供你自己的静态 IP 地址。 这些 IP 地址与公共、多租户服务中的逻辑应用共享的静态 IP 地址分隔开。
 
 创建 ISE 时，Azure 将 ISE 注入到 Azure 虚拟环境，然后将逻辑应用服务部署到虚拟网络中。 创建逻辑应用或集成帐户时，请选择你的 ISE 作为其位置。 然后，逻辑应用或集成帐户可以直接访问虚拟网络中的虚拟机 (VM)、服务器、系统和服务等资源。
 
@@ -44,30 +44,38 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
   > [!IMPORTANT]
   > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用与基于消费的定价计划不同的定价计划。 要了解 ISE 的定价和计费原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。
+* [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 虚拟网络需要有四个*空*子网，这些子网不会委托给在 ISE 中创建和部署资源的任何服务。 每个子网都支持 ISE 中使用的不同逻辑应用组件。 你可以提前创建子网，也可以等待，直到创建了你可以在其中创建子网的 ISE。 详细了解[子网要求](#create-subnet)。
 
-  * 虚拟网络需要具有四个空子网，用于在 ISE 中创建和部署资源。 每个子网都支持 ISE 中使用的不同逻辑应用组件。 可以提前创建这些子网，也可以等到在创建 ISE 时创建子网。 详细了解[子网要求](#create-subnet)。
-
-  * 子网名称必须以字母字符或下划线开头，并且不能使用以下字符：`<`、`>`、`%`、`&`、`\\`、`?` 和 `/`。 
-  
-  * 如果要通过 Azure 资源管理器模板部署 ISE，请首先确保将一个空子网委派给 Microsoft.Logic/integrationServiceEnvironment。 通过 Azure 门户进行部署时，无需执行此委派。
+  > [!IMPORTANT]
+  >
+  > 不要为虚拟网络或子网使用以下 IP 地址空间，因为它们无法通过 Azure 逻辑应用解析：<p>
+  > 
+  > * 0.0.0.0/8
+  > * 100.64.0.0/10
+  > * 127.0.0.0/8
+  > * 168.63.129.16/32
+  > * 169.254.169.254/32
+  > 
+  > 子网名称必须以字母字符或下划线开头，并且不能使用以下字符：`<`、`>`、`%`、`&`、`\\`、`?` 和 `/`。 若要通过 Azure 资源管理器模板部署 ISE，请首先确保将一个空子网委托给 `Microsoft.Logic/integrationServiceEnvironment` 。 通过 Azure 门户进行部署时，无需执行此委派。
 
   * 确保你的虚拟网络[为 ISE 启用访问权限](#enable-access)，以便 ISE 能够正常运行并保持可访问性。
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) 可帮助你将本地网络扩展到 Microsoft 云，并通过连接提供商所支持的专用连接连接到 Microsoft 云服务。 具体而言，ExpressRoute 是可以通过专用网络（而不是公共 Internet）路由流量的虚拟专用网络。 通过 ExpressRoute 或虚拟专用网络连接时，逻辑应用可以连接到同一虚拟网络中的本地资源。 
-  
-    如果使用 ExpressRoute，则必须[创建具有以下路由的路由表](../virtual-network/manage-route-table.md)，并将该表链接到 ISE 使用的每个子网：
+  * 如果使用或需要与[强制隧道](../firewall/forced-tunneling.md)一起使用[ExpressRoute](../expressroute/expressroute-introduction.md) ，则必须使用以下特定路由[创建路由表](../virtual-network/manage-route-table.md)，并将路由表链接到你的 ISE 使用的每个子网：
 
     **名称**：<*route-name*><br>
     **地址前缀**：0.0.0.0/0<br>
     **下一跃点**：Internet
+    
+    需要此特定的路由表，以便逻辑应用组件可以与其他依赖 Azure 服务（如 Azure 存储和 Azure SQL DB）进行通信。 有关此路由的详细信息，请参阅[0.0.0.0/0 地址前缀](../virtual-network/virtual-networks-udr-overview.md#default-route)。 如果不对 ExpressRoute 使用强制隧道，则不需要此特定的路由表。
+    
+    ExpressRoute 使你可以将本地网络扩展到 Microsoft 云，并通过连接提供商加速的专用连接连接到 Microsoft 云服务。 具体而言，ExpressRoute 是通过专用网络而不是通过公共 internet 路由流量的虚拟专用网络。 逻辑应用可以连接到同一虚拟网络中的本地资源（当它们通过 ExpressRoute 或虚拟专用网络连接时）。
+   
+  * 如果使用[网络虚拟设备（NVA）](../virtual-network/virtual-networks-udr-overview.md#user-defined)，请确保不启用 TLS/ssl 终止或更改出站 TLS/ssl 流量。 此外，请确保不要对来自你的 ISE 子网的流量启用检测。 有关详细信息，请参阅[虚拟网络流量路由](../virtual-network/virtual-networks-udr-overview.md)。
 
-    逻辑应用组件需要此路由表才能与其他依赖的 Azure 服务（例如 Azure 存储和 Azure SQL DB）进行通信。
+  * 如果要为 Azure 虚拟网络使用自定义 DNS 服务器，请[按照以下步骤设置这些服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)，然后将 ISE 部署到虚拟网络。 有关管理 DNS 服务器设置的详细信息，请参阅[创建、更改或删除虚拟网络](../virtual-network/manage-virtual-network.md#change-dns-servers)。
 
-* 如果要为 Azure 虚拟网络使用自定义 DNS 服务器，请[按照以下步骤设置这些服务器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)，然后将 ISE 部署到虚拟网络。 有关管理 DNS 服务器设置的详细信息，请参阅[创建、更改或删除虚拟网络](../virtual-network/manage-virtual-network.md#change-dns-servers)。
-
-  > [!NOTE]
-  > 如果更改 DNS 服务器或 DNS 服务器设置，则必须重启 ISE，使 ISE 可以接收这些更改。 有关详细信息，请参阅[重启 ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)。
+    > [!NOTE]
+    > 如果更改 DNS 服务器或 DNS 服务器设置，则必须重启 ISE，以便 ISE 可以选取这些更改。 有关详细信息，请参阅[重启 ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)。
 
 <a name="enable-access"></a>
 
@@ -128,6 +136,12 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | 访问角色实例之间的 Azure Redis 缓存实例 | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383，另请参阅“说明”| 为了使 ISE 与 Azure Cache for Redis 一起使用，必须打开 [Azure Cache for Redis 常见问题解答中所述的出站和入站端口](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
 |||||||
 
+此外，还需要为[应用服务环境（ASE）](../app-service/environment/intro.md)添加出站规则：
+
+* 如果使用 Azure 防火墙，需要使用应用服务环境（ASE）[完全限定的域名（FQDN）标记](../firewall/fqdn-tags.md#current-fqdn-tags)设置防火墙，这允许出站访问 ASE 平台通信。
+
+* 如果使用除 Azure 防火墙以外的防火墙设备，则需要使用应用服务环境所需的[防火墙集成依赖项](../app-service/environment/firewall-integration.md#dependencies)中列出的*所有*规则设置防火墙。
+
 <a name="create-environment"></a>
 
 ## <a name="create-your-ise"></a>创建 ISE
@@ -144,7 +158,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的新的或现有的 Azure 资源组 |
@@ -167,7 +181,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    * 使用[无类别域际路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
 
-   * 使用地址空间中的 `/27`，因为每个子网都需要 32 个地址。 例如，`10.0.0.0/27` 有 32 个地址，因为 2<sup>(32-27)</sup> 是 2<sup>5</sup> 或 32。 增加地址数量不会带来更多好处。  若要详细了解如何计算地址，请参阅 [IPv4 CIDR 块](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。
+   * 使用地址空间中的 `/27`，因为每个子网都需要 32 个地址。 例如，`10.0.0.0/27` 有 32 个地址，因为 2<sup>(32-27)</sup> 是 2<sup>5</sup> 或 32。 增加地址数量不会带来更多好处。 若要详细了解如何计算地址，请参阅 [IPv4 CIDR 块](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)。
 
    * 如果使用 [ExpressRoute](../expressroute/expressroute-introduction.md)，则必须[创建具有以下路由的路由表](../virtual-network/manage-route-table.md)，并将该表与 ISE 使用的每个子网链接：
 
@@ -214,7 +228,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
    否则，请按照有关部署故障排除的 Azure 门户说明执行操作。
 
    > [!NOTE]
-   > 如果部署失败或删除 ISE，Azure 在释放子网之前可能需要长达一个小时。 此延迟意味着可能需要等待一段时间才能在另一个 ISE 中重复使用这些子网。
+   > 如果部署失败或删除了 ISE，则在释放子网之前，Azure 可能最多需要一小时或更长的时间。 因此，你可能需要等待，然后才能在另一 ISE 中重复使用这些子网。
    >
    > 如果删除虚拟网络，Azure 通常需要长达两小时才能释放子网，但是此操作可能需要更长的时间。 
    > 删除虚拟网络时，请确保没有资源仍处于连接状态。 

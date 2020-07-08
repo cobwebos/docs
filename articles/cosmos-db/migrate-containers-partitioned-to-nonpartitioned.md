@@ -3,15 +3,15 @@ title: 将未分区的 Azure Cosmos 容器迁移到已分区的容器
 description: 了解如何将所有现有的未分区容器迁移到已分区的容器。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 619ec7e5510f9d3a5a17dcd5961fbd2182674df4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623355"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263477"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>将未分区的容器迁移到已分区的容器
 
@@ -24,7 +24,7 @@ Azure Cosmos DB 支持创建不带分区键的容器。 目前可以使用 Azure
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>使用系统定义的分区键迁移容器
 
-为了支持迁移，Azure Cosmos DB 在所有没有分区键的容器上`/_partitionkey`提供名为的系统定义的分区键。 迁移容器后，无法更改分区键定义。 例如，已迁移到分区容器的容器的定义如下所示：
+为了支持迁移，Azure Cosmos DB 在 `/_partitionkey` 所有没有分区键的容器上提供名为的系统定义的分区键。 迁移容器后，无法更改分区键定义。 例如，已迁移到分区容器的容器的定义如下所示：
 
 ```json
 {

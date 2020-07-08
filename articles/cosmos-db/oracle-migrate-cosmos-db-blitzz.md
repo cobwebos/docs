@@ -3,16 +3,16 @@ title: 使用 Blitzz 将数据从 Oracle 迁移到 Azure Cosmos DB Cassandra API
 description: 了解如何使用 Blitzz 将数据从 Oracle 数据库迁移到 Azure Cosmos DB Cassandra API。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 882ba7f0b8f896c51e340fe921e53b27dd07ff8a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546270"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262457"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 将数据从 Oracle 迁移到 Azure Cosmos DB Cassandra API 帐户
 
@@ -36,7 +36,7 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
 
 * 它具有容错功能，可以保证数据的准确传输，即使系统出现硬件或软件故障。
 
-* 它使用各种安全方法（例如 TLS/SSL、加密）在传输过程中保护数据。
+* 它可以在传输过程中使用各种安全方法（例如 TLS/SSL、加密）对数据进行保护。
 
 * 它提供的服务可将以 PL/SQL 编写的复杂业务逻辑转换为 Azure Cosmos DB 中的等效业务逻辑。
 
@@ -44,7 +44,7 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
 
 本部分介绍如何执行所需步骤，以便设置 Blitzz 并将数据从 Oracle 数据库迁移到 Azure Cosmos DB。
 
-1. 在打算安装 Blitzz 复制器的计算机中，添加安全证书。 Blitzz replicant 需要此证书才能与指定的 Azure Cosmos DB 帐户建立 TLS 连接。 可以使用以下步骤来添加证书：
+1. 在打算安装 Blitzz 复制器的计算机中，添加安全证书。 该证书是 Blitzz 复制器与指定的 Azure Cosmos DB 帐户建立 TLS 连接所需的。 可以使用以下步骤来添加证书：
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt
@@ -54,9 +54,9 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
 
 1. 可以在 [Blitzz 网站](https://www.blitzz.io)上请求演示版，以获取 Blitzz 安装和二进制文件。 或者，可以向相关团队发送[电子邮件](mailto:success@blitzz.io)。
 
-   ![Blitzz 复制器工具下载](./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/blitzz-replicant-download.png" alt-text="Blitzz 复制器工具下载":::
 
-   ![Blitzz 复制器文件](./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/replicant-files.png" alt-text="Blitzz 复制器文件":::
 
 1. 在 CLI 终端设置源数据库配置。 使用 **`vi conf/conn/oracle.yml`** 命令打开配置文件，添加一个包含 Oracle 节点 IP 地址的逗号分隔的列表，并添加端口号、用户名、密码以及任何其他必需的详细信息。 以下代码显示一个示例配置文件：
 
@@ -75,9 +75,9 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
    use-ssl: false
    ```
 
-   ![打开 Oracle 连接编辑器](./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/open-connection-editor-oracle.png" alt-text="打开 Oracle 连接编辑器":::
 
-   ![Oracle 连接配置](./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-connection-configuration.png" alt-text="Oracle 连接配置":::
 
    填充配置详细信息后，保存并关闭该文件。
 
@@ -96,7 +96,7 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
 
 1. 在迁移数据之前，请将容器吞吐量提高到快速迁移应用程序所需的量。 例如，可将吞吐量提高到 100000 RU。 在开始迁移之前提高吞吐量可以缩短数据迁移时间。 
 
-   ![缩放 Azure Cosmos 容器吞吐量](./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/scale-throughput.png" alt-text="缩放 Azure Cosmos 容器吞吐量":::
 
    必须在迁移完成后降低吞吐量。 可以根据存储的数据量以及每次操作所需的 RU 数，估算数据迁移后所需的吞吐量。 若要详细了解如何估算所需的 ru，请参阅使用 Azure Cosmos DB 容量规划器文章为[容器和数据库预配吞吐量](set-throughput.md)和[估计 RU/秒](estimate-ru-with-capacity-planner.md)。
 
@@ -134,7 +134,7 @@ Blitzz 的迁移解决方案遵循迁移复杂的操作工作负荷的分步方�
 
    复制器 UI 显示复制进度。 完成架构迁移和快照操作以后，进度会显示 100%。 完成迁移后，可在目标 Azure Cosmos 数据库上验证数据。
 
-   ![Oracle 数据迁移输出](./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png)
+   :::image type="content" source="./media/oracle-migrate-cosmos-db-blitzz/oracle-data-migration-output.png" alt-text="Oracle 数据迁移输出":::
 
 1. 由于你已使用“完全”模式进行迁移，因此可以执行多项操作，例如在源 Oracle 数据库上插入、更新或删除数据。 稍后可以验证它们是否已在目标 Azure Cosmos 数据库上实时复制。 迁移后，请务必降低为 Azure Cosmos 容器配置的吞吐量。
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276902"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298508"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-在此示例中， `<RESOURCE_GROUP>`将替换为资源组`<PLAN_NAME>` ，并将替换为在资源组中唯一的计划的名称。 指定[支持`<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)的。 若要创建支持 Linux 的高级计划，请包括`--is-linux`选项。
+在此示例中， `<RESOURCE_GROUP>` 将替换为资源组，并将替换为在 `<PLAN_NAME>` 资源组中唯一的计划的名称。 指定[支持 `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)的。 若要创建支持 Linux 的高级计划，请包括 `--is-linux` 选项。
 
 创建计划后，可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)创建 function app。 在门户中，计划和应用都同时创建。 有关完整 Azure CLI 脚本的示例，请参阅[在高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md)。
 
@@ -61,11 +61,13 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="rapid-elastic-scale"></a>快速弹性缩放
 
-使用与消耗计划相同的快速缩放逻辑，为你的应用自动添加其他计算实例。  若要详细了解缩放的工作方式，请参阅[函数缩放和宿主](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
+使用与消耗计划相同的快速缩放逻辑，为你的应用自动添加其他计算实例。 同一应用服务计划中的应用将基于单个应用的需求彼此独立地进行扩展。 但是，同一应用服务计划中的函数应用会共享 VM 资源，以帮助降低成本（如果可能）。 与 VM 关联的应用数取决于每个应用的占用量和 VM 大小。
+
+若要详细了解缩放的工作方式，请参阅[函数缩放和宿主](./functions-scale.md#how-the-consumption-and-premium-plans-work)。
 
 ### <a name="longer-run-duration"></a>运行持续时间较长
 
-对于单个执行，消耗计划中的 Azure Functions 限制为10分钟。  在高级计划中，运行持续时间默认为30分钟，以防止执行失控。 不过，你可以[修改 host json 配置](./functions-host-json.md#functiontimeout)，使其不受高级计划应用的限制（保证60分钟）。
+对于单个执行，消耗计划中的 Azure Functions 限制为10分钟。  在高级计划中，运行持续时间默认为30分钟，以防止执行失控。 但是，可以[修改配置的 host.js](./functions-host-json.md#functiontimeout) ，使其不受高级计划应用的限制（保证60分钟）。
 
 ## <a name="plan-and-sku-settings"></a>计划和 SKU 设置
 
@@ -97,7 +99,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 ### <a name="memory-utilization-considerations"></a>内存使用率注意事项
 在具有更多内存的计算机上运行并不一定意味着函数应用将使用所有可用内存。
 
-例如，JavaScript 函数应用受 node.js 中默认的内存限制的限制。 若要增加此固定内存限制，请添加值`languageWorkers:node:arguments`为的`--max-old-space-size=<max memory in MB>`应用设置。
+例如，JavaScript 函数应用受 Node.js 中默认内存限制的限制。 若要增加此固定内存限制，请添加 `languageWorkers:node:arguments` 值为的应用设置 `--max-old-space-size=<max memory in MB>` 。
 
 ## <a name="region-max-scale-out"></a>区域最大 Scale Out
 

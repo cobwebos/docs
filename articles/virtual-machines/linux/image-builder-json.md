@@ -1,19 +1,19 @@
 ---
 title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779348"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263307"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -29,7 +29,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 可以增大 OS 磁盘的大小（Windows 和 Linux）。此节是可选的，值为 0 表示保留与源映像相同的大小。 
+映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 **只能**增加操作系统磁盘的大小（Win 和 Linux），这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
 
 ```json
  {
@@ -521,7 +521,7 @@ az resource show \
  
 Distribute 属性：
 - **type** - managedImage 
-- **imageId** - 目标映像的资源 ID，预期格式：/subscriptions/\<subscriptionId>/resourceGroups/\<destinationResourceGroupName>/providers/Microsoft.Compute/images/\<imageName>
+- **imageId** –目标映像的资源 ID，格式应为：/Subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.Compute/images/\<imageName>
 - **location** - 托管映像的位置。  
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
@@ -561,7 +561,7 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 共享映像库的 Distribute 属性：
 
 - **type** - sharedImage  
-- **galleryImageId** - 共享映像库的 ID。 格式为：/subscriptions/\<subscriptionId>/resourceGroups/\<resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName>/images/\<imageGalleryName>。
+- **galleryImageId** - 共享映像库的 ID。 格式为：/subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> 。
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
 - **replicationRegions** - 用于复制的区域数组。 必须有一个区域是部署库的区域。

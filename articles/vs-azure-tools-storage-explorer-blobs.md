@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244389"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298117"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用存储资源管理器管理 Azure Blob 存储资源
 
@@ -183,7 +183,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
      1. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件”。  
 
         ![“上传文件”菜单][15]
-     2. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 (…) 按钮，以选择要上传的文件。   
+     2. 在“上传文件”对话框中，选择“文件”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传的文件。 
 
         ![“上传文件”选项][16]
      3. 将类型指定为“Blob 类型”。  有关详细信息，请参阅[创建容器](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)。
@@ -194,7 +194,7 @@ Blob 容器包含 Blob 和文件夹（其中也可能包含 Blob）。
      1. 在主窗格的工具栏上选择“上载”，并从下拉菜单中选择“上载文件夹”。  
 
         ![“上传文件夹”菜单][17]
-     2. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 (…) 按钮，以选择要上传其内容的文件夹。   
+     2. 在“上传文件夹”对话框中，选择“文件夹”文本框右侧的省略号 ( **…** ) 按钮，以选择要上传其内容的文件夹。 
 
         ![“上传文件夹”选项][18]
      3. 将类型指定为“Blob 类型”。  有关详细信息，请参阅[创建容器](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)。

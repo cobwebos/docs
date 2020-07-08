@@ -1,35 +1,35 @@
 ---
 title: Azure Cosmos DB 监视数据引用 |Microsoft Docs
-description: 用于监视来自 Azure Cosmos DB 的数据的日志和指标参考。
+description: 来自 Azure Cosmos DB 的监视数据的日志和指标参考。
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: reference
+ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
-ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446d876033b09728ebcbec43c6300884a5c29cd3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588716"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262729"
 ---
-# <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 监视数据引用
-本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 有关收集和分析 Azure Cosmos DB 的监视数据的详细信息，请参阅[监视 Cosmos DB](monitor-cosmos-db.md) 。
+# <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 监视数据参考
+本文提供了对所收集日志和指标数据的引用，用于分析 Azure Cosmos DB 的性能和可用性。 请参阅[监视 Cosmos DB](monitor-cosmos-db.md)，详细了解如何收集和分析 Azure Cosmos DB 的监视数据。
 
 
 ## <a name="resource-logs"></a>资源日志
-下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure Cosmos DB 资源日志时这些资源的属性。 在 Azure Monitor 日志中，这些日志是使用**ResourceProvider**值 MICROSOFT 在**AzureDiagnostics**表中收集的 *。DOCUMENTDB*。 
+下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure Cosmos DB 资源日志时这些资源日志的属性。 在 Azure Monitor 日志中，它们收集在 AzureDiagnostics 表中，且 ResourceProvider 值为 MICROSOFT.DOCUMENTDB。 
 
 | Azure 存储字段或属性 | Azure Monitor 日志属性 | 说明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
-| **category** | **类别** | 对于 Azure Cosmos DB 日志， **DataPlaneRequests**， **MongoRequests**， **QueryRuntimeStatistics**， **PartitionKeyStatistics**， **PartitionKeyRUConsumption**， **ControlPlaneRequests**是可用的日志类型。 |
-| **operationName** | **名称** | 操作的名称。 此值可以是以下任意操作：创建、更新、读取、ReadFeed、删除、替换、执行、SqlQuery、查询、JSQuery、Head、HeadFeed 或 Upsert。   |
-| **properties** | n/a | 下面的行中描述了此字段的内容。 |
+| **category** | **类别** | 就 Azure Cosmos DB 日志来说，DataPlaneRequests、MongoRequests、QueryRuntimeStatistics、PartitionKeyStatistics、PartitionKeyRUConsumption、ControlPlaneRequests 是可用的日志类型。 |
+| **operationName** | **OperationName** | 操作的名称。 此值可以是以下任意操作：创建、更新、读取、ReadFeed、删除、替换、执行、SqlQuery、查询、JSQuery、Head、HeadFeed 或 Upsert。   |
+| **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |
 | **userAgent** | **userAgent_s** | 一个字符串，指定执行请求的客户端用户代理。 格式为 {用户代理名}/{版本}。|
 | **requestResourceType** | **requestResourceType_s** | 所访问资源的类型。 此值可以是以下任意资源类型：数据库、容器、文档、附件、用户、权限、StoredProcedure、触发器、UserDefinedFunction 或产品/服务。 |
@@ -42,13 +42,14 @@ ms.locfileid: "77588716"
 | **requestLength** | **requestLength_s** | 请求的长度（按字节计）。 |
 | **responseLength** | **responseLength_s** | 响应的长度（按字节计）。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | 将[资源令牌](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)用于身份验证时，此值非空。 值指向用户的资源 ID。 |
+| **responseLength** | **responseLength_s** | 响应的长度（按字节计）。|
 
-有关所有 Azure Monitor 日志类别和关联架构的链接的列表，请参阅[Azure Monitor 日志类别和架构](../azure-monitor/platform/diagnostic-logs-schema.md)。 
+如需所有 Azure Monitor 日志类别的列表和指向关联架构的链接，请参阅 [Azure Monitor 日志类别和架构](../azure-monitor/platform/diagnostic-logs-schema.md)。 
 
 ## <a name="metrics"></a>指标
-下表列出了为 Azure CosmOS DB 收集的平台指标。 所有指标都存储在命名空间**Cosmos DB 标准指标**中。
+以下各表列出了为 Azure CosmOS DB 收集的平台指标。 所有指标都存储在“Cosmos DB 标准指标”命名空间中。
 
-有关所有 Azure Monitor 支持指标（包括 CosmosDB）的列表，请参阅[Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 
+有关 Azure Monitor 支持的所有指标（包括 CosmosDB）的列表，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 
 
 #### <a name="request-metrics"></a>请求指标
             
@@ -81,7 +82,7 @@ ms.locfileid: "77588716"
 |Metric（指标显示名称）|Unit（聚合类型）|说明|维度| 时间粒度| 使用情况 |
 |---|---|---|---| ---| ---|
 | ReplicationLatency（复制延迟）| MilliSeconds（最小值、最大值、平均值） | 启用了异地复制的帐户的源和目标区域之间的 P99 复制延迟| SourceRegion、TargetRegion| 全部 | 用于监视异地复制帐户在任何两个区域之间的 P99 复制延迟。 |
-| 服务器端延迟| 毫秒（平均值） | 服务器处理请求所用的时间。 | CollectionName、ConnectionMode、DatabaseName、OperationType、PublicAPIType、Region | 全部 | 用于监视 Azure Cosmos DB 服务器上的请求延迟。 |
+| 服务器端延迟| 毫秒（平均值） | 服务器处理请求所用的时间。 | CollectionName、ConnectionMode、DatabaseName、OperationType、PublicAPIType、Region | 全部 | 用来监视 Azure Cosmos DB 服务器上的请求延迟。 |
 
 
 
@@ -102,5 +103,5 @@ ms.locfileid: "77588716"
 
 ## <a name="see-also"></a>另请参阅
 
-- 有关监视 Azure Cosmos DB 的说明，请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md) 。
+- 有关如何监视 Azure Cosmos DB 的说明，请参阅[监视 Azure Cosmos DB](monitor-cosmos-db.md)。
 - 有关监视 Azure 资源的详细信息，请参阅[通过 Azure Monitor 监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md)。

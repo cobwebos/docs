@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/09/2019
-ms.openlocfilehash: 7aa1e0aa6bbbee9d40eb0d48318a8e2908a75f9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4880fa5bdccdc6416962e2f7e6da395f3db7be44
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78897860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263589"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB Graph 帐户的区域终结点
 Azure Cosmos DB Graph 数据库是[全局分布](distribute-data-globally.md)的，因此应用程序可以使用多个读取终结点。 需要在多个位置具有写入访问权限的应用程序应启用[多主数据库](how-to-multi-master.md)功能。
@@ -43,7 +43,7 @@ TinkerPop Gremlin 客户端设计用于单台服务器。 应用程序可将全�
 
 获取 Azure Cosmos DB Graph 帐户区域列表的最简单的方法是 Azure 门户中的“概述”边栏选项卡。 它适用于不经常更改区域的应用程序，或者可以通过应用程序配置来更新列表。
 
-![从门户检索 Cosmos DB Graph 帐户的区域](./media/how-to-use-regional-gremlin/get-end-point-portal.png )
+:::image type="content" source="./media/how-to-use-regional-gremlin/get-end-point-portal.png " alt-text="从门户检索 Cosmos DB Graph 帐户的区域":::
 
 下面的示例演示了访问区域 Gremlin 终结点的一般原则。 应用程序应考虑将流量发送到的区域数量，以及要实例化的相应 Gremlin 客户端的数量。
 

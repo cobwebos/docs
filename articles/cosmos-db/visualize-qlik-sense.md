@@ -4,15 +4,15 @@ description: 本文介绍了将 Azure Cosmos DB 连接到 Qlik Sense 并可视�
 ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3a955060eb5f19544860c1c97abe1577084bef24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67985550"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263341"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>将 Qlik Sense 连接到 Azure Cosmos DB 并可视化数据
 
@@ -54,7 +54,7 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 1. 打开 Qlik Sense，然后选择“创建新应用”****。 为应用提供一个名称，然后选择“创建”****。
 
-   ![创建新的 Qlik Sense 应用](./media/visualize-qlik-sense/create-new-qlik-sense-app.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="创建新的 Qlik Sense 应用":::
 
 2. 成功创建新应用后，选择“打开应用”****，然后选择“添加来自文件和其他源的数据”****。 
 
@@ -62,15 +62,15 @@ Qlik Sense 是一个数据可视化工具，可将来自不同源的数据合并
 
 4. 切换到“用户 DSN”****，然后选择之前创建的 ODBC 连接。 为连接提供一个名称，然后选择“创建”****。 
 
-   ![创建新连接](./media/visualize-qlik-sense/create-new-connection.png)
+   :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="创建新连接":::
 
 5. 创建连接后，可以选择数据库、电子游戏机数据所在的集合，然后进行预览。
 
-   ![选择数据库和集合](./media/visualize-qlik-sense/choose-database-and-collection.png) 
+   :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="选择数据库和集合"::: 
 
 6. 接下来，选择“添加数据”**** 以将数据加载到 Qlik Sense。 将数据加载到 Qlik Sense 后，可以生成见解并对数据执行分析。 可以使用见解，也可以自行生成用来浏览电子游戏机销售的应用。 下图显示 
 
-   ![可视化数据](./media/visualize-qlik-sense/visualize-data.png)
+   :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="可视化数据":::
 
 ### <a name="limitations-when-connecting-with-odbc"></a>使用 ODBC 连接时的限制 
 

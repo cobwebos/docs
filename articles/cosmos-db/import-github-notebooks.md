@@ -4,14 +4,14 @@ description: 了解如何连接到 GitHub 并将笔记本从 GitHub 存储库导
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ce65d316b8236b83435388d2c1883cb9b89b03a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83690403"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262882"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>将笔记本从 GitHub 存储库导入 Azure Cosmos DB
 
@@ -29,7 +29,7 @@ ms.locfileid: "83690403"
 
 1. 此时会打开一个选项卡，可以在其中选择仅连接到“公共存储库”或同时连接到“公共和专用存储库” 。  选择所需选项后，请选择“访问授权”。 Azure Cosmos DB 需要获得授权才能访问 GitHub 帐户中的存储库。
 
-   ![授权 Azure Cosmos DB 访问 GitHub 存储库](./media/import-github-notebooks/authorize-access-github.png)
+   :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="授权 Azure Cosmos DB 访问 GitHub 存储库":::
 
 1. 此时会重定向到“github.com”网页，可以在其中确认授权。 选择“授权 AzureCosmosDBNotebooks”按钮，然后在提示中输入 GitHub 帐户密码。
 
@@ -37,7 +37,7 @@ ms.locfileid: "83690403"
 
 1. 选择所需的存储库后，相应的存储库条目将从“取消固定的存储库”部分移到“已固定的存储库”部分 。 如果需要，还可以选择要从中导入笔记本的该存储库的某个特定分支。
 
-   ![选择存储库和分支](./media/import-github-notebooks/choose-repo-branch.png)
+   :::image type="content" source="./media/import-github-notebooks/choose-repo-branch.png" alt-text="选择存储库和分支":::
 
 1. 选择“确定”完成导入操作。 所选存储库分支中的所有可用笔记本都将导入到 Azure Cosmos 帐户中。
 
@@ -53,7 +53,7 @@ ms.locfileid: "83690403"
 
 提交更改后，在常规 GitHub 流中，通常会将更改推送到某个远程计算机。 但是，在这种情况下，“提交选项”的作用是将更新“暂存、提交和推送”到 GitHub。
 
-![编辑笔记本并将更改提交到 GitHub](./media/import-github-notebooks/commit-changes-github.png)
+:::image type="content" source="./media/import-github-notebooks/commit-changes-github.png" alt-text="编辑笔记本并将更改提交到 GitHub":::
 
 ## <a name="next-steps"></a>后续步骤
 

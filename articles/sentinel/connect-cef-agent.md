@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298984"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步骤1：部署日志转发器
 
@@ -33,10 +33,10 @@ ms.locfileid: "81731648"
     - 在 TCP 端口514上的安全解决方案中侦听 Syslog 消息
     - 使用 TCP 端口25226只将其标识为 CEF 的消息转发到 localhost 上的 Log Analytics 代理
  
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 你必须在指定的 Linux 计算机上拥有提升的权限（sudo）。
-- 必须在 Linux 计算机上安装 python。<br>使用`python -version`命令检查。
+- 必须在 Linux 计算机上安装 python。<br>使用 `python -version` 命令检查。
 - 安装 Log Analytics 代理之前，Linux 计算机不得连接到任何 Azure 工作区。
 
 ## <a name="run-the-deployment-script"></a>运行部署脚本
@@ -69,13 +69,13 @@ ms.locfileid: "81731648"
 
 1. **配置 Syslog 守护程序：**
 
-    1. 使用 syslog 配置文件`/etc/rsyslog.conf`打开端口514进行 TCP 通信。
+    1. 使用 syslog 配置文件打开端口514进行 TCP 通信 `/etc/rsyslog.conf` 。
 
-    1. 通过在 syslog 守护程序目录`security-config-omsagent.conf` `/etc/rsyslog.d/`中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理。
+    1. 通过在 syslog 守护程序目录中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理 `security-config-omsagent.conf` `/etc/rsyslog.d/` 。
 
-        `security-config-omsagent.conf`文件的内容：
+        文件的内容 `security-config-omsagent.conf` ：
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. **重新启动 Syslog 守护程序**
@@ -101,11 +101,11 @@ ms.locfileid: "81731648"
 
 1. **配置 Syslog 守护程序：**
 
-    1. 使用 syslog 配置文件`/etc/syslog-ng/syslog-ng.conf`打开端口514进行 TCP 通信。
+    1. 使用 syslog 配置文件打开端口514进行 TCP 通信 `/etc/syslog-ng/syslog-ng.conf` 。
 
-    1. 通过在 syslog 守护程序目录`security-config-omsagent.conf` `/etc/syslog-ng/conf.d/`中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理。
+    1. 通过在 syslog 守护程序目录中插入一个特殊配置文件，将后台程序配置为将 CEF 消息转发到 TCP 端口25226上的 Log Analytics 代理 `security-config-omsagent.conf` `/etc/syslog-ng/conf.d/` 。
 
-        `security-config-omsagent.conf`文件的内容：
+        文件的内容 `security-config-omsagent.conf` ：
 
             filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};

@@ -1,22 +1,22 @@
 ---
-title: 群集安全性最佳方案
+title: 有关群集安全性的最佳做法
 titleSuffix: Azure Kubernetes Service
 description: 了解有关如何在 Azure Kubernetes 服务 (AKS) 中管理群集安全性和升级的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298015"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集安全性和升级的最佳做法
 
 在 Azure Kubernetes 服务 (AKS) 中管理群集时，关键是要确保工作负荷和数据的安全性。 特别是在使用逻辑隔离运行多租户群集时，需要保护对资源和工作负荷的访问。 为了尽量减少攻击风险，还需确保应用最新的 Kubernetes 和节点 OS 安全更新。
 
-本文重点介绍如何保护 AKS 群集。 学习如何：
+本文重点介绍如何保护 AKS 群集。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure Active Directory 和基于角色的访问控制来保护 API 服务器访问
@@ -173,7 +173,7 @@ chmod-prevented           0/1       Error     0          7s
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>定期更新到最新的 Kubernetes 版本
 
-**最佳做法指南** - 若要及时了解新功能和 bug 修复，请定期升级到 AKS 群集中的 Kubernetes 版本。
+**最佳做法指南**-若要及时了解新功能和 bug 修复，请定期升级 AKS 群集中的 Kubernetes 版本。
 
 与更传统的基础结构平台相比，Kubernetes 发布新功能的速度更快。 Kubernetes 更新包括新功能和 bug 或安全修补程序。 新功能通常会在经历 *alpha*、*beta* 状态后变得*稳定*，这时便可公开发布，并建议用于生产环境中。 在此发布周期内，可对 Kubernetes 进行更新，而不会经常遇到中断性变更，也无需调整部署和模板。
 
@@ -211,7 +211,7 @@ Weaveworks 的 [kured（KUbernetes 重启守护程序）][kured]开源项目可�
 
 本文重点介绍了如何保护 AKS 群集。 若要实施其中某些做法，请参阅以下文章：
 
-* [将 Azure Active Directory 与 AKS 应用相集成][aks-aad]
+* [将 Azure Active Directory 与 AKS 集成][aks-aad]
 * [将 AKS 群集升级到最新的 Kubernetes 版本][aks-upgrade]
 * [使用 kured 处理安全更新和节点重启][aks-kured]
 

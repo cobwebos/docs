@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 2c66f88cc49028fae50d89a9a7c24233d5a926b4
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: cf12e1c5c4f220aca7a1d1125581f41b1f0ada91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865717"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85297845"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>如何在 Azure VM 中启用嵌套虚拟化
 
@@ -20,11 +20,11 @@ ms.locfileid: "81865717"
 
 本文逐步介绍如何在 Azure VM 上启用 Hyper-V，并配置到该来宾虚拟机的 Internet 连接。
 
-## <a name="create-a-nesting-capable-azure-vm"></a>创建一个支持嵌套的 Azure VM
+## <a name="create-a-nesting-capable-azure-vm"></a>创建支持嵌套的 Azure VM
 
-创建新的 Windows Server 2016 Azure VM。 有关支持嵌套的虚拟机大小的完整列表，请参阅[Azure 计算单位](acu.md)一文。
+创建新的 Windows Server 2016 Azure VM。 有关支持嵌套的虚拟机大小的完整列表，请查看 [Azure 计算单位](acu.md)一文。
 
-请记得选择足以支持来宾虚拟机需求的 VM 大小。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
+请记住选择足够大的 VM 大小来支持来宾虚拟机的需求。 在此示例中，我们将使用 D3_v3 大小的 Azure VM。 
 
 可以在[此处](https://azure.microsoft.com/regions/services/)查看 Dv3 或 Ev3 系列虚拟机的区域可用性。
 
@@ -34,21 +34,21 @@ ms.locfileid: "81865717"
     
 ## <a name="connect-to-your-azure-vm"></a>连接到 Azure VM
 
-创建到虚拟机的远程桌面连接。
+创建与虚拟机的远程桌面连接。
 
-1. 单击虚拟机属性上的“连接”按钮。**** 此时会创建和下载远程桌面协议文件（.rdp 文件）。
+1. 单击虚拟机属性上的“连接”  按钮。 此时会创建和下载远程桌面协议文件（.rdp 文件）。
 
-2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。**** 在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
+2. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，请单击“连接”。  在 Mac 上，需要一个 RDP 客户端，例如 Mac 应用商店提供的这个[远程桌面客户端](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)。
 
-3. 输入在创建虚拟机时指定的用户名和密码，单击“确定”。****
+3. 输入在创建虚拟机时指定的用户名和密码，并单击“确定”。 
 
-4. 你可能会在登录过程中收到证书警告。 单击"**是**"或 **"继续**"继续连接。
+4. 你可能会在登录过程中收到证书警告。 单击“是”或“继续”继续进行连接。  
 
 ## <a name="enable-the-hyper-v-feature-on-the-azure-vm"></a>启用 Azure VM 上的 HYPER-V 功能
 你可以手动配置这些设置，或者使用我们提供的 PowerShell 脚本来自动完成配置。
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>选项 1：使用 PowerShell 脚本配置嵌套虚拟化
-在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog.
+在 [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) 上提供了用于在 Windows Server 2016 主机上启用嵌套虚拟化的 PowerShell 脚本。 该脚本将首先检查先决条件，然后在 Azure VM 上配置嵌套虚拟化。 必须重启 Azure VM 才能完成配置。 此脚本在其他环境中也可以运行，但不能保证。 有关在 Azure 上运行嵌套虚拟化的现场视频演示，请查看 Azure 博客文章！ https://aka.ms/AzureNVblog 。
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>选项 2：手动配置嵌套虚拟化
 
@@ -96,7 +96,7 @@ ms.locfileid: "81865717"
 若要配置网关，需要一些有关你网络的信息：    
   * IPAddress - NAT 网关 IP 指定要用作虚拟网络子网的默认网关地址的 IPv4 或 IPv6 地址。 常规形式为 a.b.c.1（例如，“192.168.0.1”）。 尽管最后一个位置不一定是 .1，但通常是 1（基于前缀长度）。 通常情况下，应使用 RFC 1918 专用网络地址空间。 
   * PrefixLength - 子网前缀长度定义本地子网大小（子网掩码）。 子网前缀长度将介于 0 到 32 之间的一个整数值。 0 将映射整个 Internet，32 则只允许一个映射的 IP。 常用值范围从 24 到 12，具体要取决于多少 IP 需要附加到 NAT。 常用 PrefixLength 为 24 -- 这是子网掩码 255.255.255.0。
-  * InterfaceIndex - ifIndex**** 是上一步中创建的虚拟交换机的接口索引。 
+  * InterfaceIndex - ifIndex  是上一步中创建的虚拟交换机的接口索引。 
 
     ```powershell
     New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 13
@@ -137,13 +137,13 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 ###  <a name="option-1-configure-dhcp-to-dynamically-assign-an-ip-address-to-the-guest-virtual-machine"></a>选项 1：配置 DHCP 以将 IP 地址动态分配给来宾虚拟机
 按照下面的步骤在主机虚拟机上配置 DHCP，以实现动态地址分配。
 
-#### <a name="install-dchp-server-on-the-azure-vm"></a>在 Azure VM 上安装 DCHP 服务器
+#### <a name="install-dhcp-server-on-the-azure-vm"></a>在 Azure VM 上安装 DHCP 服务器
 
-1. 打开服务器管理器。 在仪表板中，单击“添加角色和功能”****。 随即会出现“添加角色和功能”向导。
+1. 打开服务器管理器。 在仪表板中，单击“添加角色和功能”  。 随即会出现“添加角色和功能”向导。
   
-2. 在向导中，单击“下一步”****，直到出现“服务器角色”页。
+2. 在向导中，单击“下一步”  ，直到出现“服务器角色”页。
   
-3. 单击以选择“DHCP 服务器”**** 复选框，然后依次单击“添加功能”**** 和“下一步”****，直至完成向导。
+3. 单击以选择“DHCP 服务器”  复选框，然后依次单击“添加功能”  和“下一步”  ，直至完成向导。
   
 4. 单击“安装”  。
 
@@ -151,15 +151,15 @@ New-NetNat -Name "InternalNat" -InternalIPInterfaceAddressPrefix 192.168.0.0/24
 
 1. 打开 DHCP 管理器。
   
-2. 在导航窗格中，展开服务器名称，右键单击“IPv4”****，然后单击“新作用域”****。 “新作用域”向导出现后，单击“下一步”****。
+2. 在导航窗格中，展开服务器名称，右键单击“IPv4”  ，然后单击“新作用域”  。 “新作用域”向导出现后，单击“下一步”  。
   
-3. 输入作用域的名称和说明，然后单击“下一步”****。
+3. 输入作用域的名称和说明，然后单击“下一步”  。
   
-4. 为你的 DCHP 服务器定义 IP 范围（例如，192.168.0.100 到 192.168.0.200）。
+4. 定义 DHCP 服务器的 IP 范围（例如，192.168.0.100 到192.168.0.200）。
   
-5. 单击“下一步”**** 直到出现“默认网关”页。 输入之前创建的 IP 地址（例如，192.168.0.1）作为默认网关，然后单击“添加”****。
+5. 单击“下一步”  直到出现“默认网关”页。 输入之前创建的 IP 地址（例如，192.168.0.1）作为默认网关，然后单击“添加”  。
   
-6. 单击“下一步”**** 直到完成向导，保留所有默认值，然后单击“完成”****。
+6. 单击“下一步”  直到完成向导，保留所有默认值，然后单击“完成”  。
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>选项 2：在来宾虚拟机上手动设置静态 IP 地址
 如果未配置 DHCP 以向来宾虚拟机动态分配 IP 地址，请按照以下步骤设置静态 IP 地址。

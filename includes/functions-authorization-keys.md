@@ -4,14 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: glenga
-ms.openlocfilehash: 926434d7110877e234888682cb6c946afe3ae685
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 046bd8fcbb8fab50269c8d35da0956bdc63f2304
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648954"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298593"
 ---
 Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终结点。 除非 HTTP 触发的函数中的 HTTP 访问级别设置为 `anonymous`，否则请求中必须包含 API 访问密钥。 
+
+尽管密钥提供默认的安全机制，但你可能需要考虑使用其他选项来保护生产中的 HTTP 终结点。 例如，在公共应用中分发共享机密通常并不是一种好的做法。 如果从公共客户端调用函数，则可能要考虑实现另一个 secrity 机制。 有关详细信息，请参阅[在生产环境中保护 HTTP 终结点](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)。
+
+续订函数密钥值时，必须手动将更新的密钥值重新分发给调用该函数的所有客户端。  
 
 #### <a name="authorization-scopes-function-level"></a>授权作用域（函数级）
 

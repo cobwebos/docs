@@ -4,15 +4,15 @@ description: 本文介绍零售公司如何使用更改源来了解用户模式�
 author: SnehaGunda
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263001"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
 ## <a name="solution-components"></a>解决方案组件
 下图显示了该解决方案涉及的数据流和组件：
 
-![项目视觉对象](./media/changefeed-ecommerce-solution/project-visual.png)
+:::image type="content" source="./media/changefeed-ecommerce-solution/project-visual.png" alt-text="项目视觉对象" border="false":::
  
 1. **数据生成：** 数据模拟器用于生成零售数据，这些数据表示各种事件，例如，用户查看某个商品、将商品添加到购物车，或购买商品。 可以使用数据生成器来生成大量的示例数据。 生成的示例数据包含采用以下格式的文档：
    
@@ -101,7 +101,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
    * 对于“集合 ID”字段，请输入 **changefeedlabcollection**。****  
    * 对于“分区键”字段，请输入 **/Item**。**** 此值区分大小写，因此请务必正确输入。  
    * 对于“吞吐量”字段，请输入 **10000**。****  
-   * 选择“确定”  按钮。  
+   * 选择“确定”按钮。  
 
 3. 接下来，创建名为 **leases** 的另一个集合用于处理更改源。 租约 (lease) 集合协调处理跨多个辅助角色的更改源。 单独集合用于存储租用，一个分区一个租用。  
 
@@ -111,7 +111,7 @@ Azure Cosmos DB 更改源是一种机制，用于从 Azure Cosmos 容器获取�
    * 对于“集合 ID”字段，请输入 **leases**。****  
    * 对于“存储容量”，请选择“固定”。********  
    * 将“吞吐量”字段保留设置为默认值。****  
-   * 选择“确定”  按钮。
+   * 选择“确定”按钮。
 
 ## <a name="get-the-connection-string-and-keys"></a>获取连接字符串和密钥
 
@@ -139,7 +139,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 2. 在左侧菜单中选择“共享访问策略”。****  
 
-3. 选择“RootManageSharedAccessKey”。**** 将“连接字符串 - 主密钥”复制到记事本，或复制到可在整个实验室中访问的另一个文档。**** 应将其标记为“事件中心命名空间”连接字符串。**** 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
+3. 选择“RootManageSharedAccessKey”。 将“连接字符串 - 主密钥”复制到记事本，或复制到可在整个实验室中访问的另一个文档。**** 应将其标记为“事件中心命名空间”连接字符串。**** 稍后需要将此字符串复制到代码中，因此请将其记下，并记住其存储位置。
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>将 Azure 函数设置为读取更改源
 
@@ -169,7 +169,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 3. 添加**集合**和**数据库**的名称。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabcollection** 和 **changefeedlabdatabase**。）
 
-   ![更新连接字符串](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="更新连接字符串":::
  
 4. 保存对所有已编辑文件的更改。  
 
@@ -179,7 +179,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 7. 如果导航到[Azure 门户](https://portal.azure.com/)，然后转到资源组中的 Cosmos DB 帐户，然后**数据资源管理器**，则会看到在**changefeedlabcollection**中导入的随机数据。
  
-   ![门户中生成的数据](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="门户中生成的数据":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>设置流分析作业
 
@@ -189,7 +189,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 2. 按如下所示选择“输入”。****  
 
-   ![创建输入](./media/changefeed-ecommerce-solution/create-input.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="创建输入":::
 
 3. 选择“+ 添加流输入”。**** 然后，从下拉菜单中选择“事件中心”。****  
 
@@ -204,7 +204,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
    * 将“事件序列化格式”保留为“JSON”。********  
    * 将“编码”字段保留设置为“UTF-8”。********  
    * 将“事件压缩类型”字段保留设置为“无”。********  
-   * 选择“保存”按钮  。
+   * 选择“保存”按钮。
 
 5. 导航回到流分析作业页，并选择“输出”。****  
 
@@ -217,11 +217,11 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
    * 在“数据集名称”字段中，输入 **averagePrice**。****  
    * 在“表名称”字段中，输入 **averagePrice**。****  
    * 选择“授权”按钮，然后遵照说明授权连接到 Power BI****。  
-   * 选择“保存”按钮  。  
+   * 选择“保存”按钮。  
 
 8. 返回到“streamjob1”并选择“编辑查询”********。
 
-   ![编辑查询](./media/changefeed-ecommerce-solution/edit-query.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="编辑查询":::
  
 9. 将以下查询粘贴到查询窗口中。 **AVERAGE PRICE** 查询计算用户查看的、添加到购物车的以及购买的所有商品的平均价格。 此指标可帮助电子商务公司确定商品的售价，以及要投资购买哪些存货。 例如，如果查看的商品的平均价格比购买的商品的平均价格要高得多，则公司可以选择将更廉价的商品添加到库存中。
 
@@ -314,7 +314,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
    包含这些图表的仪表板示例如下所示：
 
-   ![可视化效果](./media/changefeed-ecommerce-solution/visualizations.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="可视化效果":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>可选：在电子商务站点中进行可视化
 
@@ -322,19 +322,19 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
 
 1. 导航回[Azure 门户](https://portal.azure.com/)，然后导航到**Cosmos DB 帐户**，并**数据资源管理器**。  
 
-   将两个集合添加到具有固定存储容量的**changefeedlabdatabase** - **产品**和**类别**下。
+   将两个集合**changefeedlabdatabase**添加  -  到具有固定存储容量的 changefeedlabdatabase**产品**和**类别**下。
 
    在 changefeedlabdatabase 的 topItems 和 /Item 下添加另一个集合作为分区键************。
 
 2. 选择“topItems”集合，然后在“规模和设置”下，将“生存时间”设置为“30 秒”，使 topItems 每隔 30 秒更新一次****************。
 
-   ![生存时间](./media/changefeed-ecommerce-solution/time-to-live.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="生存时间":::
 
-3. 若要在 **topItems** 集合中填充最经常购买的商品，请导航回到“streamjob1”，并添加新的**输出**。**** 选择“Cosmos DB”。****
+3. 若要在 **topItems** 集合中填充最经常购买的商品，请导航回到“streamjob1”，并添加新的**输出**。**** 选择“Cosmos DB”。
 
 4. 按下图所示填写必填字段。
 
-   ![Cosmos 输出](./media/changefeed-ecommerce-solution/cosmos-output.png)
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos 输出":::
  
 5. 如果在实验室的前一部分中添加了可选的 TOP 5 查询，请转到第 5a 部分。 否则，请转到第 5b 部分。
 

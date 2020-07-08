@@ -3,15 +3,15 @@ title: 使用大分区键创建 Azure Cosmos 容器
 description: 了解如何使用 Azure 门户和不同的 SDK 通过大分区键在 Azure Cosmos DB 中创建容器。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3b0a3387fe34a0e1c15109aec877c0654fc1a5b0
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 853d3fa79436d9af0119aada86d283f9970d4ef2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82870007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262797"
 ---
 # <a name="create-containers-with-large-partition-key"></a>使用大分区键创建容器
 
@@ -21,9 +21,9 @@ Azure Cosmos DB 使用基于哈希的分区方案实现数据的水平缩放。 
 
 ## <a name="create-a-large-partition-key-azure-portal"></a>创建大分区键（Azure 门户）
 
-若要在使用 Azure 门户创建新容器时创建大分区键，请选中“我的分区键大于 100 字节”选项。  如果不需要大分区键，或者应用程序在 1.18 之前的 SDK 版本上运行，请取消选中该复选框。
+若要在使用 Azure 门户创建新容器时创建大分区键，请选中“我的分区键大于 100 字节”选项。 如果不需要大分区键，或者应用程序在 1.18 之前的 SDK 版本上运行，请取消选中该复选框。
 
-![使用 Azure 门户创建大分区键](./media/large-partition-keys/large-partition-key-with-portal.png)
+:::image type="content" source="./media/large-partition-keys/large-partition-key-with-portal.png" alt-text="使用 Azure 门户创建大分区键":::
 
 ## <a name="create-a-large-partition-key-powershell"></a>创建大分区键 (PowerShell)
 
@@ -72,8 +72,8 @@ database,
 |.Net     |    1.18     |
 |Java 同步     |   2.4.0      |
 |Java 异步   |  2.5.0        |
-| REST API | 使用 `2017-05-03` 请求标头时版本高于 `x-ms-version`。|
-| 资源管理器模板 | 版本 2（通过使用 `"version":2` 对象中的 `partitionKey` 属性）。 |
+| REST API | 使用 `x-ms-version` 请求标头时版本高于 `2017-05-03`。|
+| Resource Manager 模板 | 版本 2（通过使用 `partitionKey` 对象中的 `"version":2` 属性）。 |
 
 目前不能在 Power BI 和 Azure Logic Apps 中将容器与大分区键配合使用。 在这些应用程序中，可以在没有大分区键的情况下使用容器。
 

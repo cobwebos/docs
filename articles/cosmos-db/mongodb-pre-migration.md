@@ -4,15 +4,15 @@ description: 本文档概述将数据从 MongoDB 迁移到 Cosmos DB 的先决�
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
-ms.topic: conceptual
-ms.date: 01/09/2020
+ms.topic: how-to
+ms.date: 06/04/2020
 ms.author: lbosq
-ms.openlocfilehash: 8156c1c3601b0cd6f518f6a70bc4e0769c570e7f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: ffa30b0fa42abc69c19b5e6c32f4224f3ad1c95a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263052"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>将数据从 MongoDB 迁移到 Azure Cosmos DB's API for MongoDB 的迁移前步骤
 
@@ -30,23 +30,23 @@ ms.locfileid: "83647282"
 
 下面是有关 Azure Cosmos DB’s API for MongoDB 的具体特征：
 
-- **容量模型**：Azure Cosmos DB 上的数据库容量基于一个基于吞吐量的模型。 此模型基于[每秒请求单位数](request-units.md)（这是表示每秒可对集合执行的数据库操作次数的单位）。 可以在[数据库或集合级别](set-throughput.md)分配此容量，也可以在分配模型中进行预配，或者使用[自动缩放预配的吞吐量](provision-throughput-autoscale.md)。
+- **容量模型**：Azure Cosmos DB 上的数据库容量基于吞吐量模型。 此模型基于[每秒请求单位数](request-units.md)，此单位表示每秒可对集合执行的数据库操作次数。 可以在[数据库或集合级别](set-throughput.md)分配此容量，也可以在分配模型中进行预配，或者使用[自动缩放预配的吞吐量](provision-throughput-autoscale.md)。
 
 - **请求单位**：在 Azure Cosmos DB 中，每个数据库操作都有关联的请求单位 (RU) 成本。 执行操作时，将从在给定的秒可用的请求单位级别中减去此成本。 如果请求所需的 RU 数超过了当前分配的每秒 RU 数，可以使用两个选项来解决此问题 - 增加 RU 数量，或等待下一秒开始，然后重试操作。
 
 - **弹性容量**：给定集合或数据库的容量随时可以更改。 这样，数据库就能弹性适应工作负荷的吞吐量要求。
 
-- **自动分片**：Azure Cosmos DB 提供一个仅需要分片（或分区键）的自动分区系统。 [自动分区机制](partition-data.md)在所有 Azure Cosmos DB API 之间共享，允许通过横向分配进行无缝的数据和吞吐量缩放。
+- **自动分片**：Azure Cosmos DB 提供一个仅需要分片（或分区键）的自动分区系统。 [自动分区机制](partition-data.md)在所有 Azure Cosmos DB API 之间共享，允许通过水平分配进行无缝的数据缩放和全面缩放。
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>适用于 Azure Cosmos DB’s API for MongoDB 的迁移选项
 
-[适用于 Azure Cosmos DB’s API for MongoDB 的 Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db.md)提供一个机制来简化数据迁移。该机制提供完全托管的承载平台、迁移监视选项和自动限制处理。 下面是完整的选项列表：
+[适用于 Azure Cosmos DB’s API for MongoDB 的 Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db.md)提供一个机制来简化数据迁移。该机制提供完全托管的主机平台、迁移监视选项和自动限制处理。 下面是完整的选项列表：
 
 |**迁移类型**|**解决方案**|**注意事项**|
 |---------|---------|---------|
-|脱机|[数据迁移工具](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; 易于设置并支持多个源 <br/>&bull; 不适用于大型数据集。|
-|脱机|[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; 易于设置并支持多个源 <br/>&bull; 利用 Azure Cosmos DB 批量执行工具库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程<br/>&bull; 缺少死信队列，这意味着，出现几个有错误的文件就可能会停止整个迁移过程 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量|
-|脱机|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
+|Offline|[数据迁移工具](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull; 易于设置并支持多个源 <br/>&bull; 不适合用于大型数据集。|
+|Offline|[Azure 数据工厂](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull; 易于设置且支持多个源 <br/>&bull; 利用 Azure Cosmos DB 批量执行程序库 <br/>&bull; 适合用于大型数据集 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程<br/>&bull; 缺少死信队列，这意味着，出现几个有错误的文件就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量|
+|Offline|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|&bull; 易于设置和集成 <br/>&bull; 需要对限制进行自定义处理|
 |联机|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)|&bull; 完全托管的迁移服务。<br/>&bull; 为迁移任务提供托管和监视解决方案。 <br/>&bull; 适合用于大型数据集，负责复制实时更改 <br/>&bull; 仅适用于其他 MongoDB 源|
 
 
@@ -79,12 +79,15 @@ ms.locfileid: "83647282"
 分区功能以类似方式自动增加容量，并相应地重新均衡数据。 有关为数据选择适当分区键的详细信息和建议，请参阅[选择分区键](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)一文。 
 
 ## <a name="index-your-data"></a><a id="indexing"></a>为数据编制索引
-默认情况下，Azure Cosmos DB 针对插入的所有数据提供自动索引编制。 Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 详情请参阅 [Azure Cosmos DB's API for MongoDB 中的索引编制](mongodb-indexing.md)。
 
-[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db.md)会自动迁移具有唯一索引的 MongoDB 集合。 但是，必须在迁移之前创建唯一索引。 如果集合中已有数据，Azure Cosmos DB 将不支持创建唯一索引。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)。
+Azure Cosmos DB API for MongoDB 服务器版本 3.6 仅自动为 `_id` 字段编制索引。 无法删除此字段。 它会自动强制确保每个分片密钥的 `_id` 字段的唯一性。 若要为其他字段编制索引，请应用 MongoDB 索引管理命令。 此默认索引编制策略不同于 Azure Cosmos DB SQL API，后者在默认情况下会为所有字段编制索引。
+
+Azure Cosmos DB 提供的索引编制功能包括添加复合索引、唯一索引和生存时间 (TTL) 索引。 索引管理接口映射到 `createIndex()` 命令。 有关详细信息，请参阅[Azure Cosmos DB 的 API For MongoDB 中的索引](mongodb-indexing.md)。
+
+[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db.md)自动迁移具有唯一索引的 MongoDB 集合。 但是，必须在迁移之前创建唯一索引。 如果集合中已包含数据，Azure Cosmos DB 将不支持创建唯一索引。 有关详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用数据库迁移服务将 MongoDB 数据迁移到 Cosmos DB。](../dms/tutorial-mongodb-cosmos-db.md) 
+* [使用数据库迁移服务将 MongoDB 数据迁移到 Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md) 
 * [对 Azure Cosmos 容器和数据库预配吞吐量](set-throughput.md)
 * [Azure Cosmos DB 中的分区](partition-data.md)
 * [Azure Cosmos DB 中的全局分布](distribute-data-globally.md)

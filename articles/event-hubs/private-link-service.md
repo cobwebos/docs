@@ -1,18 +1,14 @@
 ---
 title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
-services: event-hubs
-author: spelluru
-ms.author: spelluru
-ms.date: 03/12/2020
-ms.service: event-hubs
+ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649895"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85312830"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>将 Azure 事件中心与 Azure 专用链接集成
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -22,7 +18,7 @@ ms.locfileid: "83649895"
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> 只有**专用**层支持此功能。 有关专用层的详细信息，请参阅[事件中心专用层概述](event-hubs-dedicated-overview.md)。 
+> **标准**层和**专用**层都支持此功能。 
 
 >[!WARNING]
 > 启用专用终结点可以防止其他 Azure 服务与事件中心交互。
@@ -62,16 +58,16 @@ ms.locfileid: "83649895"
 2. 在搜索栏中键入“事件中心”。
 3. 从列表中选择要将专用终结点添加到的**命名空间**。
 4. 选择“设置”下的“网络”选项卡。 
-5. 选择页面顶部的“专用终结点连接”选项卡。 如果你未使用事件中心专用层，将看到一条消息：“事件中心的专用终结点连接仅受专用群集中创建的命名空间支持”。
+5. 选择页面顶部的“专用终结点连接”选项卡。 
 6. 选择页面顶部的“+ 专用终结点”按钮。
 
     ![映像](./media/private-link-service/private-link-service-3.png)
 7. 在“基本信息”页上执行以下步骤： 
-    1. 选择要在其中创建专用终结点的 **Azure 订阅**。 
-    2. 选择专用终结点资源的**资源组**。
-    3. 输入专用终结点的**名称**。 
-    5. 选择专用终结点的**区域**。 专用终结点必须与虚拟网络位于同一区域，但可以与要连接的专用链接资源位于不同的区域。 
-    6. 选择页面底部的“下一步:资源 >”按钮。
+    1. 选择要在其中创建专用终结点的 Azure 订阅。 
+    2. 选择专用终结点资源的资源组。
+    3. 输入专用终结点的名称。 
+    5. 专用终结点选择“区域”。 专用终结点必须与虚拟网络位于同一区域，但可以与要连接的专用链接资源位于不同的区域。 
+    6. 在完成时选择“下一步:资源 >”按钮，它位于页面底部。
 
         ![创建专用终结点 -“基本信息”页](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. 在“资源”页上执行以下步骤：
@@ -80,24 +76,24 @@ ms.locfileid: "83649895"
         2. 对于“资源类型”，请选择“Microsoft.EventHub/namespaces”。  
         3. 对于“资源”，请从下拉列表中选择一个事件中心命名空间。 
         4. 确认“目标子资源”设置为“命名空间”。 
-        5. 选择页面底部的“下一步:配置 >”按钮。 
+        5. 在页面底部选择“下一步:配置 >”按钮。 
         
             ![创建专用终结点 -“资源”页](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. 如果选择了“按资源 ID 或别名连接到 Azure 资源”，请执行以下步骤：
-        1. 输入**资源 ID** 或**别名**。 该值可以是某人已与你共享的资源 ID 或别名。 获取资源 ID 的最简单方法是在 Azure 门户中导航到“事件中心”命名空间，然后复制从 `/subscriptions/` 开始的 URI 部分。 参阅下图中的示例。 
+        1. 输入“资源 ID”或“别名”。  该值可以是某人已与你共享的资源 ID 或别名。 获取资源 ID 的最简单方法是在 Azure 门户中导航到“事件中心”命名空间，然后复制从 `/subscriptions/` 开始的 URI 部分。 参阅下图中的示例。 
         2. 对于“目标子资源”，请输入“命名空间”。  它是专用终结点可以访问的子资源类型。
-        3. （可选）输入一条**请求消息**。 资源所有者在管理专用终结点连接时会看到此消息。
-        4. 然后，选择页面底部的“下一步:配置 >”按钮。
+        3. （可选）输入一条请求消息。 资源所有者在管理专用终结点连接时会看到此消息。
+        4. 然后选择“下一步:配置 >”按钮。
 
             ![创建专用终结点 - 使用资源 ID 进行连接](./media/private-link-service/connect-resource-id.png)
 9. 在“配置”页上，选择要在其中部署专用终结点的虚拟网络中的子网。 
-    1. 选择一个**虚拟网络**。 下拉列表中仅列出了当前所选订阅和位置中的虚拟网络。 
-    2. 在所选的虚拟网络中选择一个**子网**。 
-    3. 选择页面底部的“下一步:标记 >”按钮。 
+    1. 选择一个虚拟网络。 下拉列表中仅列出了当前所选订阅和位置中的虚拟网络。 
+    2. 在所选的虚拟网络中选择一个“子网”。 
+    3. 在完成时选择“下一步:标记 >”按钮，它位于页面底部。 
 
         ![创建专用终结点 -“配置”页](./media/private-link-service/create-private-endpoint-configuration-page.png)
 10. 在“标记”页上，创建要与专用终结点资源关联的任何标记（名称和值）。 然后选择页面底部的“查看 + 创建”按钮。 
-11. 在“查看 + 创建”页上复查所有设置，然后选择“创建”以创建专用终结点。 
+11. 在“查看 + 创建”页上查看所有设置，然后选择“创建”以创建专用终结点 。
     
     ![创建专用终结点 -“查看 + 创建”页](./media/private-link-service/create-private-endpoint-review-create-page.png)
 12. 确认你创建的专用终结点连接已显示在终结点列表中。 在此示例中，专用终结点会自动获得批准，因为你已连接到自己目录中的 Azure 资源，并且有足够的权限。 
@@ -194,7 +190,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>使用 Azure 门户管理专用终结点
 
-创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于你的目录中，那么在你拥有足够权限的前提下，你可以批准连接请求。 如果要连接到另一个目录中的 Azure 资源，则必须等待该资源的所有者批准你的连接请求。
+创建专用终结点时，必须批准连接。 如果要为其创建专用终结点的资源位于你的目录中，在拥有足够权限的前提下，你可以批准连接请求。 如果要连接到另一个目录中的 Azure 资源，必须等待该资源的所有者批准你的连接请求。
 
 有四种预配状态：
 
@@ -215,10 +211,10 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ### <a name="approve-a-private-endpoint-connection"></a>批准专用终结点连接
 1. 如果有任何挂起的连接，则会看到预配状态为“挂起”的连接被列出。 
-2. 选择要批准的**专用终结点**
+2. 选择要批准的专用终结点
 3. 选择“批准”按钮。
 
-    ![映像](./media/private-link-service/approve-private-endpoint.png)
+    ![图像](./media/private-link-service/approve-private-endpoint.png)
 4. 在“批准连接”页上添加注释（可选），然后选择“是”。  如果选择“否”，则不会执行任何操作。 
 5. 应会看到，列表中专用终结点连接的状态已更改为“已批准”。 
 
@@ -244,9 +240,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 在“网络”选项卡中： 
 
-1. 指定**虚拟网络**和**子网**。 必须选择已将专用终结点部署到的虚拟网络。
-2. 指定一个**公共 IP** 资源。
-3. 对于“NIC 网络安全组”，请选择“无”。 
+1. 指定虚拟网络和子网 。 必须选择已将专用终结点部署到的虚拟网络。
+2. 指定一个公共 IP 资源。
+3. 对于“NIC 网络安全组”，请选择“无” 。
 4. 对于“负载均衡”，请选择“否”。 
 
 连接到 VM，打开命令行并运行以下命令：

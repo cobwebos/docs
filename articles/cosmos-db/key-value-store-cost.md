@@ -3,16 +3,16 @@ title: 作为键/值存储的 Azure Cosmos DB 的请求单位费用
 description: 了解 Azure Cosmos DB 在用作键/值存储时执行简单写入和读取操作的请求单位费用。
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5b2ee8b5bf19f16d7f7f04e9515fe591db7132f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77647503"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85262814"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>作为键值存储 Azure Cosmos DB-费用概述
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 性能基于以[请求单位](request-units.md)（RU/秒）表�
 
 作为一种全球分布式数据库系统，Cosmos DB 是唯一的 Azure 服务，提供涵盖延迟、吞吐量、一致性和高可用性的综合 Sla。 预配的吞吐量将应用到与 Cosmos 帐户关联的每个区域。 对于读取，Cosmos DB 提供多个妥善定义的[一致性级别](consistency-levels.md)供用户选择。 
 
-下表显示了根据大小为 1 KB 的数据项和 100 Kb （默认情况下自动索引关闭）执行读写操作所需的 ru 数。 
+下表显示了在默认自动索引关闭的情况下基于大小为 1 KB 和 100 KB 的数据项执行读取和写入操作所需的 RU 数。 
 
 |项大小|1 次读取|1 次写入|
 |-------------|------|-------|

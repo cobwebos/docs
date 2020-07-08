@@ -1,26 +1,27 @@
 ---
-title: 在 ML 管道中使用自动 ML
+title: 在 ML 管道中使用自动化 ML
 titleSuffix: Azure Machine Learning
-description: AutoMLStep 允许在管道中使用自动机器学习。
+description: AutoMLStep 允许在管道中使用自动化机器学习。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
-ms.date: 04/28/2020
-ms.openlocfilehash: 9bf17512d0b14c7106101d98598e2914020afc7a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/15/2020
+ms.custom: tracking-python
+ms.openlocfilehash: f162aca8c30d890ecf662a88fb5f2182edb14c9e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85298236"
 ---
-# <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure 机器学习管道中使用自动 ML
+# <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 的 Azure 机器学习管道中使用自动化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure 机器学习的自动 ML 功能可帮助你发现高性能模型，而不会重新实现每种可能的方法。 与 Azure 机器学习管道结合使用，你可以创建可部署的工作流，这些工作流可以快速发现最适合你的数据的算法。 本文介绍如何将数据准备步骤有效地加入到自动 ML 步骤。 自动 ML 可以快速发现最适合你的数据的算法，同时让你 MLOps 和模型生命周期操作化和管道。
+Azure 机器学习的自动化 ML 功能可帮助你发现高性能模型，而无需重新实现所有可能的方法。 结合 Azure 机器学习管道，你可以创建可部署的工作流，这些工作流可以快速发现最适合你的数据的算法。 本文将介绍如何有效地将数据准备步骤与自动化 ML 步骤结合起来。 自动化 ML 可以快速发现最适合你的数据的算法，同时让你开始使用 MLOps，并使用管道对生命周期操作进行建模。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,25 +31,25 @@ Azure 机器学习的自动 ML 功能可帮助你发现高性能模型，而不�
 
 * 基本熟悉 Azure 的[自动化机器学习](concept-automated-ml.md)和[机器学习管道](concept-ml-pipelines.md)设施和 SDK。
 
-## <a name="review-automated-mls-central-classes"></a>查看自动 ML 的中心类
+## <a name="review-automated-mls-central-classes"></a>查看自动化 ML 的中心类
 
-管道中的自动 ML 由`AutoMLStep`对象表示。 `AutoMLStep` 类是 `PipelineStep` 的一个子类。 `PipelineStep`对象的图形定义`Pipeline`。
+管道中的自动化 ML 由 `AutoMLStep` 对象表示。 `AutoMLStep` 类是 `PipelineStep` 的子类。 `PipelineStep` 对象的图形定义了 `Pipeline`。
 
-有多个子类`PipelineStep`。 除了之外`AutoMLStep`，本文还将显示`PythonScriptStep`用于数据准备的，另一种用于注册模型。
+`PipelineStep` 有多个子类。 除了 `AutoMLStep`，本文还将显示一个 `PythonScriptStep` 用于数据准备，另一个用于注册模型。
 
-最初将数据移动_到_ML 管道的首选方法是使用`Dataset`对象。 若要在步骤_之间_移动数据，首选方法是`PipelineData`处理对象。 要与`AutoMLStep`一起使用，必须`PipelineData`将对象转换为`PipelineOutputTabularDataset`对象。 有关详细信息，请参阅[来自 ML 管道的输入和输出数据](how-to-move-data-in-out-of-pipelines.md)。
+最初将数据移动到 ML 管道时，首选方法是使用 `Dataset` 对象__。 若要在步骤之间移动数据，首选方法是使用 `PipelineData` 对象__。 若要与 `AutoMLStep` 结合使用，必须将 `PipelineData` 对象转换为 `PipelineOutputTabularDataset` 对象。 有关详细信息，请参阅[来自 ML 管道的输入和输出数据](how-to-move-data-in-out-of-pipelines.md)。
 
-通过`AutoMLStep` `AutoMLConfig`对象进行配置。 `AutoMLConfig`是一个灵活的类，如在[Python 中配置自动 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
+通过 `AutoMLConfig` 对象配置 `AutoMLStep`。 `AutoMLConfig` 是一个灵活的类，如[使用 Python 配置自动化 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings)中所述。 
 
-在`Pipeline`中运行`Experiment`。 管道`Run`为每个步骤都提供子`StepRun`。 自动 ML `StepRun`的输出是定型指标和性能最高的模型。
+`Pipeline` 在 `Experiment` 中运行。 对于每个步骤，管道 `Run` 都具有子级 `StepRun`。 自动化 ML `StepRun` 的输出是训练指标和最高性能的模型。
 
-为简单起见，本文为分类任务创建了一个简单的管道。 该任务将预测 Titanic 的生存，但我们不会讨论数据或任务，只是通过传递。
+为了具体介绍，本文会创建一个用于分类任务的简单管道。 任务是预测泰坦尼克号的幸存者，但我们只会顺便讨论数据或任务。
 
 ## <a name="get-started"></a>入门
 
 ### <a name="retrieve-initial-dataset"></a>检索初始数据集
 
-通常，ML 工作流从预先存在的基线数据开始。 对于已注册的数据集，这是一个很好的方案。 数据集在工作区中可见，支持版本控制，可以交互方式浏览。 有多种方法可以创建和填充数据集，如[创建 Azure 机器学习数据集](how-to-create-register-datasets.md)中所述。 由于我们将使用 Python SDK 来创建管道，请使用 SDK 下载基线数据，并使用名称 "titanic_ds" 注册它。
+通常，ML 工作流从预先存在的基线数据开始。 对于已注册的数据集，这是一个很好的方案。 数据集在整个工作区中可见，支持版本控制，并且可以以交互方式浏览。 可通过多种方法创建和填充数据集，如[创建 Azure 机器学习数据集](how-to-create-register-datasets.md)中所述。 因为我们将使用 Python SDK 创建管道，所以请使用该 SDK 下载基线数据，并使用名称“titanic_ds”注册它。
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -68,11 +69,11 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-代码首先登录到**配置**中定义的 Azure 机器学习工作区（有关说明，请参阅[教程：开始使用 Python SDK 创建首个 ML 试验](tutorial-1st-experiment-sdk-setup.md)）。 如果没有名为`'titanic_ds'` "已注册" 的数据集，则会创建一个。 此代码从 Web 下载 CSV 数据，使用这些数据来实例化`TabularDataset` ，然后使用工作区注册该数据集。 最后，函数`Dataset.get_by_name()`将分配`Dataset`给。 `titanic_ds` 
+代码首先登录到 config.json 中定义的 Azure 机器学习工作区（有关说明，请参阅****[教程：开始使用 Python SDK 创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)）。 如果尚未注册名为 `'titanic_ds'` 的数据集，该 SDK 将创建它。 代码从 Web 下载 CSV 数据，使用这些数据实例化 `TabularDataset`，然后将数据集注册到工作区。 最后，函数 `Dataset.get_by_name()` 将 `Dataset` 分配给 `titanic_ds`。 
 
 ### <a name="configure-your-storage-and-compute-target"></a>配置存储和计算目标
 
-管道需要的其他资源为存储，通常是 Azure 机器学习计算资源。 
+管道需要的其他资源有存储资源，通常还有 Azure 机器学习计算资源。 
 
 ```python
 from azureml.core import Datastore
@@ -97,43 +98,52 @@ if not compute_name in ws.compute_targets :
 compute_target = ws.compute_targets[compute_name]
 ```
 
-数据准备和自动 ML 步骤之间的中间数据可以存储在工作区的默认数据存储中，因此，我们不需要对`get_default_datastore()` `Workspace`对象执行多个调用。 
+可将数据准备和自动化 ML 步骤之间的中间数据存储在工作区的默认数据存储中，因此我们只需要在 `Workspace` 对象上调用 `get_default_datastore()`。 
 
-之后，代码检查 AML 计算目标`'cpu-cluster'`是否已存在。 如果不是，我们会指定需要一个基于 CPU 的小型计算目标。 如果打算使用自动 ML 的深度学习功能（例如，使用 DNN 支持的文本特征化），应选择具有强 GPU 支持的计算，如[gpu 优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)中所述。 
+然后，代码会检查 AML 计算目标 `'cpu-cluster'` 是否已经存在。 如果不是，我们指定需要一个基于 CPU 的小型计算目标。 如果你打算使用自动化 ML 的深度学习功能（例如有 DNN 支持的文本特征化），则应选择具有强大 GPU 支持的计算，如 [GPU 优化虚拟机大小](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)中所述。 
 
-该代码将一直阻止到预配目标，然后打印刚刚创建的计算目标的某些详细信息。 最后，从工作区中检索命名的计算目标并将其`compute_target`分配给。 
+代码将一直阻止到目标预配完毕，然后打印刚创建的计算目标的某些详细信息。 最后，从工作区检索命名计算目标并将其分配给 `compute_target`。 
 
 ### <a name="configure-the-training-run"></a>配置训练运行
 
-下一步是确保远程定型运行包含定型步骤所需的所有依赖项。 依赖项和运行时上下文通过创建和配置`RunConfiguration`对象进行设置。 
+下一步是确保远程训练运行包含训练步骤所需的所有依赖项。 通过创建和配置 `RunConfiguration` 对象来设置依赖项和运行时上下文。 
 
 ```python
 from azureml.core.runconfig import RunConfiguration
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core import Environment 
 
 aml_run_config = RunConfiguration()
 # Use just-specified compute target ("cpu-cluster")
 aml_run_config.target = compute_target
-aml_run_config.environment.python.user_managed_dependencies = False
 
-# Add some packages relied on by data prep step
-aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
-    conda_packages=['pandas','scikit-learn'], 
-    pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
-    pin_sdk_version=False)
+USE_CURATED_ENV = True
+if USE_CURATED_ENV :
+    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    aml_run_config.environment = curated_environment
+else:
+    aml_run_config.environment.python.user_managed_dependencies = False
+    
+    # Add some packages relied on by data prep step
+    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+        conda_packages=['pandas','scikit-learn'], 
+        pip_packages=['azureml-sdk[automl,explain]', 'azureml-dataprep[fuse,pandas]'], 
+        pin_sdk_version=False)
 ```
 
-## <a name="prepare-data-for-automated-machine-learning"></a>为自动机器学习准备数据
+以上代码显示了处理依赖项的两个选项。 如前所述，当 `USE_CURATED_ENV = True`，配置基于特选环境。 特选环境中“预先准备”有常见的互依赖库，可以大大加快联机速度。 特选环境在 [Microsoft 容器注册表](https://hub.docker.com/publishers/microsoftowner)中具有预先生成的 Docker 映像。 将 `USE_CURATED_ENV` 更改为 `False` 所采用的路径显示了显式设置依赖项的模式。 在这种情况下，将在资源组内的 Azure 容器注册表中创建和注册新的自定义 Docker 映像（请参阅 [Azure 中的专用 Docker 容器注册表简介](https://docs.microsoft.com/azure/container-registry/container-registry-intro)）。 创建和注册此映像可能需要几分钟的时间。 
+
+## <a name="prepare-data-for-automated-machine-learning"></a>为自动化机器学习准备数据
 
 ### <a name="write-the-data-preparation-code"></a>编写数据准备代码
 
-基线 Titanic 数据集包含混合数字和文本数据，缺少某些值。 若要为自动化机器学习做好准备，数据准备管道步骤将：
+基线泰坦尼克号数据集由混合的数字和文本数据组成，且缺少一些值。 若要使其为自动化机器学习做好准备，数据准备管道步骤将：
 
-- 使用随机数据或与 "Unknown" 对应的类别填充缺少的数据
+- 使用随机数据或与“未知”对应的类别填充缺少的数据
 - 将分类数据转换为整数
-- 删除我们不打算使用的列
-- 将数据拆分为定型集和测试集
-- 将转换的数据写入`PipelineData`输出路径
+- 删除不打算使用的列
+- 将数据分为训练集和测试集
+- 将转换的数据写入 `PipelineData` 输出路径
 
 ```python
 %%writefile dataprep.py
@@ -199,19 +209,19 @@ pq.write_table(pa.Table.from_pandas(df), args.output_path)
 print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 ```
 
-上面的代码段是 Titanic 数据的完整、最少的数据准备示例。 代码段以 Jupyter "魔术 command" 开头，以将代码输出到文件中。 如果未使用 Jupyter 笔记本，请删除该行，并手动创建文件。
+上面的代码片段是对泰坦尼克号数据进行数据准备的完整的极简示例。 代码片段以 Jupyter“magic 命令”开头，该命令将代码输出到文件中。 如果未使用 Jupyter 笔记本，请删除该行并手动创建文件。
 
-上述代码`prepare_`段中的各种函数修改输入数据集中的相关列。 这些函数在数据更改为 Pandas `DataFrame`对象后处理数据。 在每种情况下，丢失的数据都是用代表的随机数据或分类数据填充的，表示 "未知"。 基于文本的分类数据映射到整数。 不再需要的列将被覆盖或删除。 
+上述代码片段中的各种 `prepare_` 函数修改输入数据集中的相关列。 将数据更改为 Pandas `DataFrame` 对象后，这些函数就会对其进行处理。 在每种情况下，缺少的数据要么用代表性随机数据填充，要么用表示“未知”的分类数据填充。 基于文本的分类数据映射到整数。 将覆盖或删除不再需要的列。 
 
-在代码定义数据准备函数后，代码分析输入参数，该参数是我们要将数据写入到的路径。 （这些值将由`PipelineData`将在下一步中讨论的对象决定。）此代码检索已注册`'titanic_cs'` `Dataset`的，将其转换为`DataFrame`Pandas，并调用各种数据准备函数。 
+代码定义了数据准备函数之后，会解析输入参数，这是我们要写入数据的路径。 （这些值将由 `PipelineData` 对象确定，并将在下一步中进行讨论。）代码会检索已注册的 `'titanic_cs'` `Dataset`，将其转换为 Pandas `DataFrame`，并调用各种数据准备函数。 
 
-由于是`output_path`完全限定的，因此该`os.makedirs()`函数用于准备目录结构。 此时，你可以使用`DataFrame.to_csv()`来写入输出数据，但 Parquet 文件的效率更高。 这种效率可能与此类小型数据集无关，但使用**PyArrow**包`from_pandas()`和`write_table()`函数只是比`to_csv()`更多的键击。
+由于 `output_path` 是完全限定的，因此使用函数 `os.makedirs()` 来准备目录结构。 此时，你可以使用 `DataFrame.to_csv()` 来写入输出数据，但 Parquet 文件的效率更高。 对于此类小型数据集，这种效率可能无关紧要，但使用 PyArrow 包的 `from_pandas()` 和 `write_table()` 函数与使用 `to_csv()` 相比只是多按几次键盘而已****。
 
-下面讨论的自动 ML 步骤本身支持 Parquet 文件，因此不需要进行任何特殊处理。 
+下面讨论的自动化 ML 步骤本机支持 Parquet 文件，因此不需要进行特殊处理即可使用它们。 
 
-### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>编写数据准备管道步骤（`PythonScriptStep`）
+### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>编写数据准备管道步骤 (`PythonScriptStep`)
 
-上面所述的数据准备代码必须与要用于`PythonScripStep`管道的对象相关联。 Parquet 数据准备输出所写入到的路径由`PipelineData`对象生成。 之前准备的资源（例如`ComputeTarget` `RunConfig`、和`'titanic_ds' Dataset` ）用于完成规范。
+上述数据准备代码必须与 `PythonScripStep` 对象相关联才能用于管道。 将 Parquet 数据准备输出写入到的路径由 `PipelineData` 对象生成。 前面准备的资源（如 `ComputeTarget`、`RunConfig` 和 `'titanic_ds' Dataset`）用于补全规范。
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -232,15 +242,15 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-`prepped_data_path`对象的类型`PipelineOutputFileDataset`为。 请注意，它是在`arguments`和`outputs`参数中指定的。 如果查看上一步，你会看到在数据准备代码中，参数`'--output_path'`的值为写入 Parquet 文件的文件路径。 
+`prepped_data_path` 对象的类型是 `PipelineOutputFileDataset`。 注意，`arguments` 和 `outputs` 参数中都指定了它。 如果回顾上一步，你将看到在数据准备代码中，参数 `'--output_path'` 的值即将 Parquet 文件写入到的文件路径。 
 
-## <a name="train-with-automlstep"></a>AutoMLStep 定型
+## <a name="train-with-automlstep"></a>通过 AutoMLStep 训练
 
-配置自动 ML 管道步骤是通过`AutoMLConfig`类完成的。 在[Python 中配置自动 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)中介绍了此灵活的类。 数据输入和输出是配置的唯一方面，需要在 ML 管道中特别注意。 下面将详细讨论`AutoMLConfig`中管道的输入和输出。 除了数据以外，ML 管道的优点是能够在不同步骤中使用不同的计算目标。 您可以选择仅为自动 ML 过程`ComputeTarget`使用更强大的功能。 这样做非常简单，就像将更强大`RunConfiguration`的`AutoMLConfig`对象赋给`run_configuration`对象的参数一样。
+使用 `AutoMLConfig` 类配置自动化 ML 管道步骤。 此灵活的类，如[使用 Python 配置自动化 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)中所述。 在 ML 管道中，配置时需要特别注意的只有数据输入和输出。 下面将详细讨论管道中 `AutoMLConfig` 的输入和输出。 除了数据之外，ML 管道的一个优点是能够为不同的步骤使用不同的计算目标。 你可以选择只对自动化 ML 进程使用更强大的 `ComputeTarget`。 这样做很简单，只需将功能更强大的 `RunConfiguration` 分配给 `AutoMLConfig` 对象的 `run_configuration` 参数即可。
 
-### <a name="send-data-to-automlstep"></a>将数据发送到`AutoMLStep`
+### <a name="send-data-to-automlstep"></a>将数据发送到 `AutoMLStep`
 
-在 ML 管道中，输入数据必须是`Dataset`对象。 最高性能的方法是以`PipelineOutputTabularDataset`对象的形式提供输入数据。 `parse_parquet_files()`您可以使用`parse_delimited_files()`或在`PipelineOutputFileDataset`中创建该类型的对象，例如`prepped_data_path`对象。
+在 ML 管道中，输入数据必须是 `Dataset` 对象。 性能最高的方法是以 `PipelineOutputTabularDataset` 对象的形式提供输入数据。 可以使用 `PipelineOutputFileDataset` 上的 `parse_parquet_files()` 或 `parse_delimited_files()` 创建该类型的对象，例如 `prepped_data_path` 对象。
 
 ```python
 # type(prepped_data_path) == PipelineOutputFileDataset
@@ -248,9 +258,9 @@ dataprep_step = PythonScriptStep(
 prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 ```
 
-上面的代码段从数据准备步骤`PipelineOutputTabularDataset`的`PipelineOutputFileDataset`输出中创建一个高性能的。
+以上代码片段会从数据准备步骤的 `PipelineOutputFileDataset` 输出创建一个高性能的 `PipelineOutputTabularDataset`。
 
-另一种方法是`Dataset`使用工作区中注册的对象：
+另一个选项是使用在工作区中注册的 `Dataset` 对象：
 
 ```python
 prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
@@ -261,17 +271,17 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 | 方法 |  | 
 |-|-|
 |`PipelineOutputTabularDataset`| 提高性能 | 
-|| 自然路由来源`PipelineData` | 
-|| 管道运行后数据不会保留 |
-|| [显示`PipelineOutputTabularDataset`技术的笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
-| 注册`Dataset` | 降低性能 |
+|| 从 `PipelineData` 自然路由 | 
+|| 管道运行后不会保留数据 |
+|| [显示 `PipelineOutputTabularDataset` 方法的笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb) |
+| 已注册 `Dataset` | 较低性能 |
 | | 可以通过多种方式生成 | 
-| | 数据在工作区中保持不变 |
-| | [显示注册`Dataset`方法的笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
+| | 数据持续存在并在整个工作区中可见 |
+| | [显示已注册 `Dataset` 方法的笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
 
-### <a name="specify-automated-ml-outputs"></a>指定自动 ML 输出
+### <a name="specify-automated-ml-outputs"></a>指定自动化 ML 输出
 
-的输出`AutoMLStep`是性能较高的模型的最终度量分数和该模型本身。 若要在后续管道中使用这些输出， `PipelineData`请准备要接收它们的对象。
+`AutoMLStep` 的输出是高性能模型和该模型本身的最终指标分数。 若要在后续管道步骤中使用这些输出，请准备 `PipelineData` 对象来接收它们。
 
 ```python
 from azureml.pipeline.core import TrainingOutput
@@ -286,11 +296,11 @@ model_data = PipelineData(name='best_model_data',
                            training_output=TrainingOutput(type='Model'))
 ```
 
-上面的代码片段为指标`PipelineData`和模型输出创建两个对象。 每个都命名为，并分配给之前检索到的默认数据存储， `type`并`TrainingOutput`与中`AutoMLStep`的特定数据关联。 由于我们将`pipeline_output_name`对这些`PipelineData`对象进行分配，因此，它们的值将不仅可用于单个管道步骤，还可以从整个管道中获得，这将在 "检查管道结果" 一节中讨论。 
+上面的代码片段为指标和模型输出创建了两个 `PipelineData` 对象。 为这两个对象命名，将其分配给先前检索到的默认数据存储，并与 `AutoMLStep` 中 `TrainingOutput` 的特定 `type` 相关联。 由于我们在这些 `PipelineData` 对象上分配 `pipeline_output_name`，因此它们的值不仅可用于单个管道步骤，还可用于整个管道，如以下“检查管道结果”部分中所述。 
 
-### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>配置和创建自动 ML 管道步骤
+### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>配置和创建自动化 ML 管道步骤
 
-定义输入和输出后，就可以创建`AutoMLConfig`和。 `AutoMLStep` 配置的详细信息将取决于你的任务，如在[Python 中配置自动 ML 试验中](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)所述。 对于 Titanic 生存分类任务，以下代码片段演示了一个简单的配置。
+定义输入和输出后，就可以创建 `AutoMLConfig` 和 `AutoMLStep` 了。 配置的详细信息将取决于你的任务，如[使用 Python 配置自动化 ML 试验](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)中所述。 对于泰坦尼克号幸存者分类任务，以下代码片段演示了一个简单的配置。
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -320,33 +330,33 @@ train_step = AutoMLStep(name='AutoML_Classification',
     outputs=[metrics_data,model_data],
     allow_reuse=True)
 ```
-此代码段显示了通常与`AutoMLConfig`一起使用的用法。 更流畅（超参数-路子）的参数在单独的字典中指定，而不太可能更改的值是直接在`AutoMLConfig`构造函数中指定的。 在这种情况下`automl_settings` ，指定 brief 运行：仅在2次迭代或15分钟后停止运行，以先达到的条件为准。
+此片段显示了通常与 `AutoMLConfig` 一起使用的习语。 在单独的字典中指定更灵活的参数（类似超参数），并直接在 `AutoMLConfig` 构造函数中指定不太可能更改的值。 在本例中，`automl_settings` 指定一个简短的运行：运行将在 2 次迭代或 15 分钟后停止，以先达到的条件为准。
 
-`automl_settings`字典将作为 kwargs 传递到`AutoMLConfig`构造函数。 其他参数不太复杂：
+`automl_settings` 字典作为 kwargs 传递给 `AutoMLConfig` 构造函数。 其他参数并不复杂：
 
-- `task`对于此示例`classification` ，设置为。 其他有效值为`regression`和`forecasting`
-- `path`和`debug_log`描述项目的路径和将写入调试信息的本地文件 
-- `compute_target`是之前定义`compute_target`的，在此示例中，是基于 CPU 的廉价计算机。 如果你使用的是 AutoML 的深度学习工具，则需要将计算目标更改为基于 GPU
-- `featurization` 设置为 `auto`。 有关更多详细信息，请参阅自动 ML 配置文档的[Data 特征化](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization)部分 
-- `training_data`设置为从数据`PipelineOutputTabularDataset`准备步骤的输出中进行的对象 
-- `label_column_name`指示要预测的列 
+- `task` 在本例中设置为 `classification`。 其他有效值为 `regression` 和 `forecasting`
+- `path` 以及 `debug_log` 描述项目的路径和要将调试信息写入的本地文件 
+- `compute_target` 是先前定义的 `compute_target`，在本例中，它是一个基于 CPU、价格便宜的计算机。 如果你使用 AutoML 的深度学习工具，则需要将计算目标更改为基于 GPU
+- `featurization` 设置为 `auto`。 可以在自动化 ML 配置文档的[数据特征化](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization)部分找到更多详细信息 
+- `training_data` 设置为从数据准备步骤的输出生成的 `PipelineOutputTabularDataset` 对象 
+- `label_column_name` 指示要预测的列 
 
-`AutoMLStep`本身采用`AutoMLConfig`和作为输出，创建用于保存指标和`PipelineData`模型数据的对象。 
+`AutoMLStep` 本身接受 `AutoMLConfig`，并创建用于保存指标和模型数据的 `PipelineData` 对象作为输出。 
 
 >[!Important]
-> 如果`AutoMLStep`正在使用`PipelineOutputTabularDataset`对象`False`进行输入，则必须将设置`passthru_automl_config`为。
+> 如果 `AutoMLStep` 使用 `PipelineOutputTabularDataset` 对象作为输入，则必须将 `passthru_automl_config` 设置为 `False`。
 
-在此示例中，自动 ML 进程将在上执行交叉验证`training_data`。 您可以控制`n_cross_validations`参数的交叉验证次数。 如果已将定型数据拆分为数据准备步骤的一部分，则可以将其设置`validation_data`为其自身。 `Dataset`
+在本例中，自动化 ML 进程将对 `training_data` 执行交叉验证。 可以使用 `n_cross_validations` 参数控制交叉验证次数。 如果已经在数据准备步骤中包含拆分训练数据的过程，可将 `validation_data` 设置为其自身的 `Dataset`。
 
-有时，你可能会看到`X`数据功能和`y`数据标签的使用。 此方法已弃用，你应将`training_data`其用于输入。 
+你可能偶尔会看到使用 `X` 指示数据功能，使用 `y` 指示数据标签的情况。 此方法已弃用，应使用 `training_data` 作为输入。 
 
-## <a name="register-the-model-generated-by-automated-ml"></a>注册由自动 ML 生成的模型 
+## <a name="register-the-model-generated-by-automated-ml"></a>注册由自动化 ML 生成的模型 
 
-基本 ML 管道中的最后一个步骤是注册创建的模型。 通过将模型添加到工作区的模型注册表中，它将在门户中提供，并且可以进行版本控制。 若要注册模型，请编写`PythonScriptStep`一个采用的`model_data`输出的另`AutoMLStep`一个。
+基本 ML 管道的最后一步是注册创建的模型。 将模型添加到工作区的模型注册表中，即可在门户中使用它们，并且可对其进行版本控制。 若要注册模型，请编写另一个采用 `AutoMLStep` 的 `model_data` 输出的 `PythonScriptStep`。
 
 ### <a name="write-the-code-to-register-the-model"></a>编写用于注册模型的代码
 
-模型在中注册`Workspace`。 您可能很熟悉如何使用`Workspace.from_config()`登录到本地计算机上的工作区，但有另一种方法可以从正在运行的 ML 管道中获取工作区。 `Run.get_context()`检索活动`Run`。 此`run`对象提供对许多重要对象（包括此处使用`Workspace`的）的访问权限。
+在 `Workspace` 中注册模型。 你可能熟悉如何在本地计算机上使用 `Workspace.from_config()` 登录工作区，但还可通过另一种方法从正在运行的 ML 管道获取工作区。 `Run.get_context()` 检索活动 `Run`。 此 `run` 对象提供对许多重要对象的访问，包括此处使用的 `Workspace`。
 
 ```python
 %%writefile register_model.py
@@ -375,7 +385,7 @@ print("Registered version {0} of model {1}".format(model.version, model.name))
 
 ### <a name="write-the-pythonscriptstep-code"></a>写入 PythonScriptStep 代码
 
-模型注册`PythonScriptStep`使用`PipelineParameter`作为其参数之一。 管道参数是可在运行时轻松设置的管道的参数。 声明后，它们将作为普通参数传递。 
+注册 `PythonScriptStep` 的模型使用 `PipelineParameter` 作为其参数之一。 管道参数即管道的参数，可以在运行提交时轻松设置。 声明后，它们将作为普通参数传递。 
 
 ```python
 
@@ -393,9 +403,9 @@ register_step = PythonScriptStep(script_name="register_model.py",
                                        runconfig=aml_run_config)
 ```
 
-## <a name="create-and-run-your-automated-ml-pipeline"></a>创建并运行自动 ML 管道
+## <a name="create-and-run-your-automated-ml-pipeline"></a>创建并运行自动化 ML 管道
 
-创建和运行包含的`AutoMLStep`管道与正常管道并无区别。 
+创建并运行包含 `AutoMLStep` 的管道与创建和运行普通管道相同。 
 
 ```python
 from azureml.pipeline.core import Pipeline
@@ -409,11 +419,11 @@ run = experiment.submit(pipeline, show_output=True)
 run.wait_for_completion()
 ```
 
-上面的代码将数据准备、自动 ML 和模型注册步骤结合到一个`Pipeline`对象中。 然后创建`Experiment`对象。 如果`Experiment`存在命名试验，则构造函数将检索它，如果需要，则创建它。 它将提交`Pipeline`到`Experiment`，从而创建一个`Run`将异步运行管道的对象。 `wait_for_completion()`函数会被阻止，直到运行完成。
+以上代码将数据准备、自动化 ML 和模型注册步骤组合到 `Pipeline` 对象中。 然后，创建一个 `Experiment` 对象。 `Experiment` 构造函数将检索已命名的试验是否存在，如果不存在则根据需要创建它。 它将 `Pipeline` 提交给 `Experiment`，创建 `Run` 对象，该对象将异步运行管道。 `wait_for_completion()` 函数将会阻止，直到运行完成。
 
 ### <a name="examine-pipeline-results"></a>检查管道结果 
 
-`run`完成后，您可以检索`PipelineData`已分配的`pipeline_output_name`对象。 您可以下载结果并加载它们以供进一步处理。  
+`run` 完成后，可检索分配到 `pipeline_output_name` 的 `PipelineData` 对象。 可下载并加载结果以便进一步处理。  
 
 ```python
 metrics_output_port = run.get_pipeline_output('metrics_output')
@@ -423,9 +433,9 @@ metrics_output_port.download('.', show_progress=True)
 model_output_port.download('.', show_progress=True)
 ```
 
-下载的文件将写入子目录`azureml/{run.id}/`。 度量值文件是 JSON 格式的文件，可以转换为 Pandas 数据帧以进行检查。
+下载的文件将写入子目录 `azureml/{run.id}/`。 指标文件是 JSON 格式的，可以转换为 Pandas 数据框帧进行检查。
 
-对于本地处理，可能需要安装相关程序包，如 Pandas、Pickle、AzureML SDK 等。 在此示例中，可能由自动 ML 找到的最佳模型将取决于 XGBoost。
+对于本地处理，可能需要安装相关的包，如 Pandas、Pickle、AzureML SDK 等。 在此示例中，自动化 ML 找到的最佳模型很可能依赖于 XGBoost。
 
 ```bash
 !pip install xgboost==0.90
@@ -445,9 +455,9 @@ df = pd.DataFrame(deserialized_metrics_output)
 df
 ```
 
-上面的代码片段显示了从 Azure 数据存储上的位置加载的指标文件。 你还可以从下载的文件中加载它，如注释中所示。 反序列化并将其转换为 Pandas 数据帧后，可以查看自动 ML 步骤的每个迭代的详细指标。
+以上代码片段显示了从 Azure 数据存储上的位置加载指标文件的情况。 你还可以从下载的文件加载它，如注释中所示。 将其反序列化并转换为 Pandas 数据帧后，就可以看到自动化 ML 步骤的每个迭代的详细指标。
 
-可以将模型文件反序列化为可`Model`用于推断的对象、进一步的指标分析等。 
+模型文件可以反序列化为 `Model` 对象，可将其用于推断和进一步的指标分析等。 
 
 ```python
 import pickle
@@ -461,13 +471,13 @@ with open(model_filename, "rb" ) as f:
 # ... inferencing code not shown ...
 ```
 
-有关加载和使用现有模型的详细信息，请参阅[将现有模型与 Azure 机器学习配合使用](how-to-deploy-existing-model.md)。
+有关加载和使用现有模型的详细信息，请参阅[将现有模型用于 Azure 机器学习](how-to-deploy-existing-model.md)。
 
-### <a name="download-the-results-of-an-automated-ml-run"></a>下载自动 ML 运行的结果
+### <a name="download-the-results-of-an-automated-ml-run"></a>下载自动化 ML 运行的结果
 
-如果已与文章结合使用，则会获得一个实例化`run`对象。 但您也可以通过`Run` `Workspace` `Experiment`对象的方式检索已完成的对象。
+如果你始终跟随文章进行操作，则你现在将拥有一个实例化的 `run` 对象。 但也可以通过 `Experiment` 对象从 `Workspace` 检索已完成的 `Run` 对象。
 
-工作区包含所有试验和运行的完整记录。 可以使用门户查找并下载试验的输出或使用代码。 若要从历史运行中访问记录，请使用 Azure 机器学习查找你感兴趣的运行 ID。 使用该 ID，你可以通过`run` `Workspace`和`Experiment`选择特定的。
+工作区包含所有试验和运行的完整记录。 可以使用门户来查找和下载试验的输出，也可以使用代码。 若要要访问来自历史运行的记录，请使用 Azure 机器学习查找你感兴趣的运行的 ID。 使用该 ID，可以通过 `Workspace` 和 `Experiment` 选择特定 `run`。
 
 ```python
 # Retrieved from Azure Machine Learning web UI
@@ -476,9 +486,9 @@ experiment = ws.experiments['titanic_automl']
 run = next(run for run in ex.get_runs() if run.id == run_id)
 ```
 
-您必须将以上代码中的字符串更改为历史运行的详细信息。 上面的代码段假定您已分配`ws`到与 normal `Workspace` `from_config()`相关的。 直接检索感兴趣的实验，然后代码通过匹配`Run` `run.id`值查找相关的。
+必须根据历史运行的具体情况更改上述代码中的字符串。 以上代码片段假设你已将 `ws` 分配给了具有普通 `from_config()` 的相关 `Workspace`。 直接检索感兴趣的试验，然后代码会通过匹配 `run.id` 值来查找你感兴趣的 `Run`。
 
-获得`Run`对象后，可以下载指标和模型。 
+有 `Run` 对象，就可以下载指标和模型了。 
 
 ```python
 automl_run = next(r for r in run.get_children() if r.name == 'AutoML_Classification')
@@ -490,13 +500,13 @@ metrics.get_port_data_reference().download('.')
 model.get_port_data_reference().download('.')
 ```
 
-每`Run`个对象`StepRun`都包含对象，这些对象包含有关各个管道步骤运行的信息。 `run`搜索的`StepRun`对象`AutoMLStep`。 使用其默认名称检索度量值和模型，即使未将对象传递`PipelineData`到的`outputs`参数，它们也可用。 `AutoMLStep` 
+每个 `Run` 对象都包含 `StepRun` 对象，这些对象包含有关单个管道步骤运行的信息。 在 `run` 中搜索 `AutoMLStep` 的 `StepRun` 对象。 使用指标和模型的默认名称检索它们，即使不将 `PipelineData` 对象传递给 `AutoMLStep` 的 `outputs` 参数，也可使用这些名称。 
 
-最后，实际指标和模型将下载到本地计算机，如上面的 "检查管道结果" 部分所述。
+最后，会将实际指标和模型下载到本地计算机，如上面“检查管道结果”部分所述。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 运行此 Jupyter 笔记本，其中显示了使用回归预测出租车费用的[管道中自动 ML 的完整示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)
-- [无需编写代码即可创建自动 ML 试验](how-to-use-automated-ml-for-ml-models.md)
-- 探索[演示自动 ML 的各种 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
-- 了解将管道集成到[端到端 MLOps](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle)或调查[MLOps GitHub 存储库](https://github.com/Microsoft/MLOpspython) 
+- 运行此 Jupyter 笔记本，它显示了[管道中自动化 ML 的完整示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)，该示例使用回归来预测出租车费用
+- [无需编写代码即可创建自动化 ML 试验](how-to-use-automated-ml-for-ml-models.md)
+- 浏览各种[演示自动化 ML 的 Jupyter 笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
+- 了解如何将管道集成到[端到端 MLOps](https://docs.microsoft.com/azure/machine-learning/concept-model-management-and-deployment#automate-the-ml-lifecycle) 或调查 [MLOps GitHub 存储库](https://github.com/Microsoft/MLOpspython) 

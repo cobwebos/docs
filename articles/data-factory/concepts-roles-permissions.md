@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 3955d3b9370a1cd2ee88c27e42b107f5ae0f87c2
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85263239"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure 数据工厂的角色和权限
 
@@ -82,9 +82,9 @@ Azure Repos 和 GitHub 上的权限独立于数据工厂权限。 因此，具�
   1. 在数据工厂级别分配内置的“参与者”角色。
   2. 创建权限为 **Microsoft.Resources/deployments/** 的自定义角色。 将此自定义角色分配给资源组级别的用户。
 
-- 让用户只能测试链接服务中的连接
+- 允许用户在链接的服务中测试连接或预览数据集中的数据
 
-    创建具有以下操作权限的自定义角色：Microsoft.DataFactory/factories/getFeatureValue/read 和 Microsoft.DataFactory/factories/getDataPlaneAccess/read 。 在数据工厂资源上为用户分配此自定义角色。
+    为以下操作创建具有权限的自定义角色： **DataFactory/工厂/getFeatureValue/read**和**DataFactory/工厂/getDataPlaneAccess/action**。 在数据工厂资源上为用户分配此自定义角色。
 
 - 允许用户通过 PowerShell 或 SDK 更新数据工厂，但不允许其在 Azure 门户中进行更新。
 
