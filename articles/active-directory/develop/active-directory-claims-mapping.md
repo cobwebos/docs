@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737497"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478393"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -325,6 +325,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | jobtitle | 职务 |
 | 用户 | employeeid | 员工 ID |
 | 用户 | facsimiletelephonenumber | 传真电话号码 |
+| 用户 | assignedroles | 分配给用户的应用角色列表|
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objected | ObjectID |
 | application、resource、audience | 标记 | 服务主体标记 |
@@ -384,7 +385,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|说明|
+|源|ID|描述|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|

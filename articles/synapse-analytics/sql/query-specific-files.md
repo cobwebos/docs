@@ -5,16 +5,16 @@ services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e8d7301799bfb4af9a0f5a6f242be929e8253d7c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744220"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478410"
 ---
 # <a name="using-file-metadata-in-queries"></a>在查询中使用文件元数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "83744220"
 
 有时，可能会需要知道哪个文件或文件夹源与结果集中的某个特定行相关。
 
-可以使用函数 `filepath` 和 `filename` 在结果集中返回文件名称和/或路径。 或者，可以使用它们根据文件名和/或文件夹路径来筛选数据。 语法部分 [filename 函数](develop-storage-files-overview.md#filename-function)和 [filepath 函数](develop-storage-files-overview.md#filepath-function)中对这些函数进行了介绍。 以下提供了简短说明和相关示例。
+可以使用函数 `filepath` 和 `filename` 在结果集中返回文件名称和/或路径。 或者，可以使用它们根据文件名和/或文件夹路径来筛选数据。 语法部分 [filename 函数](query-data-storage.md#filename-function)和 [filepath 函数](query-data-storage.md#filepath-function)中对这些函数进行了介绍。 以下提供了简短说明和相关示例。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -2,22 +2,22 @@
 title: 单一登录到应用程序 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure Active Directory (Azure AD) 中配置应用程序时选择单一登录方法。 使用单一登录，这样用户就无需记住个每应用程序的密码，而且简化了帐户管理。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f46bcf412403d8f911e484e12a9d1f421b1666f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366064"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479702"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>单一登录到 Azure Active Directory 中的应用程序
 
@@ -45,7 +45,7 @@ ms.locfileid: "79366064"
 | [OpenID Connect 和 OAuth](#openid-connect-and-oauth) | 仅限云 | 在开发新应用程序时使用 OpenID Connect 和 OAuth。 此协议简化应用程序配置，有易用的 SDK，并且允许应用程序使用 MS Graph。
 | [SAML](#saml-sso) | 云和本地 | 尽可能为不使用 OpenID Connect 或 OAuth 的现有应用程序选择 SAML。 SAML 适用于使用某个 SAML 协议进行身份验证的应用程序。|
 | [基于密码](#password-based-sso) | 云和本地 | 在应用程序使用用户名和密码进行身份验证时选择“基于密码”。 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 此方法使用应用程序提供的现有登录过程，但允许管理员管理密码。 |
-| [链接](#linked-sign-on) | 云和本地 | 当应用程序配置为另一标识提供者服务中的单一登录时，请选择 "链接登录"。 此选项不会向应用程序添加单一登录。 不过，应用程序可能已经使用其他服务（如 Active Directory 联合身份验证服务）实现了单一登录。|
+| [链表](#linked-sign-on) | 云和本地 | 当应用程序配置为另一标识提供者服务中的单一登录时，请选择 "链接登录"。 此选项不会向应用程序添加单一登录。 不过，应用程序可能已经使用其他服务（如 Active Directory 联合身份验证服务）实现了单一登录。|
 | [已禁用](#disabled-sso) | 云和本地 | 当应用尚未准备好配置为单一登录时，请使用已禁用的单一登录。 此模式是创建应用时的默认模式。|
 | [集成的 Windows 身份验证（IWA）](#integrated-windows-authentication-iwa-sso) | 仅限本地 | 对于使用[集成身份验证 (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) 的应用程序或声明感知型应用程序，请选择 IWA 单一登录。 对于 IWA，应用程序代理连接器使用 Kerberos 约束委派 (KCD) 对应用程序的用户进行身份验证。 |
 | [基于标头](#header-based-sso) | 仅限本地 | 当应用程序使用标头进行身份验证时，请使用基于标头的单一登录。 基于标头的单一登录需要适用于 Azure AD 的 PingAccess。 应用程序代理使用 Azure AD 对用户进行身份验证，然后通过连接器服务传递流量。  |
@@ -54,7 +54,7 @@ ms.locfileid: "79366064"
 
 开发新应用程序时，使用 OpenID Connect 和 OAuth 等新式协议，使应用在多个设备平台间实现最佳的单一登录体验。 OAuth 允许用户或管理员为[Microsoft Graph](/graph/overview)等受保护的资源[授予许可](configure-user-consent.md)。 我们为你的应用程序提供了易用的[sdk](../develop/reference-v2-libraries.md) ，并且你的应用程序将可以使用[Microsoft Graph](/graph/overview)。
 
-有关详细信息，请参见:
+有关详情，请参阅：
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -69,11 +69,11 @@ ms.locfileid: "79366064"
 使用以下任何协议的应用程序支持基于 SAML 的单一登录：
 
 - SAML 2.0
-- WS 联合身份验证
+- WS-Federation
 
 若要为基于 SAML 的单一登录配置 SaaS 应用程序，请参阅[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)。 此外，许多软件即服务 (SaaS) 应用程序都有[特定于应用程序的教程](../saas-apps/tutorial-list.md)，可以让用户详细了解基于 SAML 的单一登录的配置。
 
-若要为 WS 联合身份验证配置应用程序，请遵循相同的指导为基于 SAML 的单一登录配置应用程序，请参阅[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)。 在将应用程序配置为使用 Azure AD 的步骤中，需要替换 WS 联合身份验证终结点`https://login.microsoftonline.com/<tenant-ID>/wsfed`的 AZURE AD 登录 URL。
+若要为 WS 联合身份验证配置应用程序，请遵循相同的指导为基于 SAML 的单一登录配置应用程序，请参阅[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)。 在将应用程序配置为使用 Azure AD 的步骤中，需要替换 WS 联合身份验证终结点的 Azure AD 登录 URL `https://login.microsoftonline.com/<tenant-ID>/wsfed` 。
 
 若要为基于 SAML 的单一登录配置本地应用程序，请参阅[使用应用程序代理的本地应用程序的 SAML 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
 
@@ -189,7 +189,7 @@ Azure AD 管理员管理凭据时：
 
 由于本方案是通过 Azure AD 与 PingAccess 之间的合作提供的，因此需要获取这两个服务的许可证。 但是，Azure AD Premium 订阅包含一个 PingAccess 基本许可证，可涵盖多达 20 个应用程序。 如果需要发布超过 20 个基于标头的应用程序，则可以再从 PingAccess 获取一个许可证。
 
-有关详细信息，请参阅[Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
+有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
 ## <a name="related-articles"></a>相关文章
 * [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)

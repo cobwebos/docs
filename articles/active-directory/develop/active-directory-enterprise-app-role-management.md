@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8db27819b7eef6cdf05ea3f6645ae930ebc4ef58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478614"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -38,7 +38,7 @@ ms.locfileid: "80884743"
 
     ![Azure Active Directory 图标][1]
 
-2. 选择“企业应用程序”。**** 然后选择“所有应用程序”。****
+2. 选择“企业应用程序”。 然后选择“所有应用程序”。****
 
     ![“企业应用程序”窗格][2]
 
@@ -88,14 +88,14 @@ ms.locfileid: "80884743"
 
       ![用于获取需修改的服务主体的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    g. 从服务主体对象提取 **appRoles** 属性。
+    如， 从服务主体对象提取 **appRoles** 属性。
 
       ![appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
       > 如果使用自定义应用（而不是 Azure 市场应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
 
-    h. 为应用程序生成新角色。
+    h.如果该值不存在，请单击“添加行”。 为应用程序生成新角色。
 
       以下 JSON 是 **appRoles** 对象的示例。 创建类似的对象，以添加应用程序所需的角色。
 
@@ -148,9 +148,9 @@ ms.locfileid: "80884743"
 
 8. 更新“属性”表以定义角色声明的自定义映射****。
 
-9. 在 "用户**属性**" 对话框的 "**用户声明**" 部分中，执行以下步骤以添加 SAML 令牌属性，如下表所示：
+9. 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | 特性名 | 属性值 |
+    | 特性名 | 特性值 |
     | -------------- | ----------------|
     | 角色名称  | user.assignedroles |
 

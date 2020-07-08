@@ -6,17 +6,17 @@ services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cdcb5287434c72bf54337611d67de8d6f65d8d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886460"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479506"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 
@@ -55,6 +55,6 @@ Microsoft Graph 当前支持两个版本：1.0 版和 beta 版。 V1.0 版本包
 
 ## <a name="tools"></a>工具
 
-Microsoft Graph 资源管理器是一种基于 web 的工具，您可以使用它来生成和测试使用 Microsoft Graph Api 的请求。 可在以下位置访问 Microsoft Graph 资源`https://developer.microsoft.com/graph/graph-explorer`管理器：。
+Microsoft Graph 资源管理器是一种基于 web 的工具，您可以使用它来生成和测试使用 Microsoft Graph Api 的请求。 可在以下位置访问 Microsoft Graph 资源管理器： `https://developer.microsoft.com/graph/graph-explorer` 。
 
-Postman 是一种工具，你还可以使用它来生成和测试使用 Microsoft Graph Api 的请求。 可在以下位置下载 Postman `https://www.getpostman.com/`：。 若要在 Postman 中与 Microsoft Graph 进行交互，请使用 Postman 中的 Microsoft Graph 集合。 有关详细信息，请参阅[将 Postman 与 MICROSOFT GRAPH API 一起使用](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。
+Postman 是一种工具，你还可以使用它来生成和测试使用 Microsoft Graph Api 的请求。 可在以下位置下载 Postman： `https://www.getpostman.com/` 。 若要在 Postman 中与 Microsoft Graph 进行交互，请使用 Postman 中的 Microsoft Graph 集合。 有关详细信息，请参阅[将 Postman 与 MICROSOFT GRAPH API 一起使用](/graph/use-postman?context=graph%2Fapi%2Fbeta&view=graph-rest-beta)。

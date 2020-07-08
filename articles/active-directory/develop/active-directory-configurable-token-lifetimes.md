@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 3e66cd6a05a7c616b22eefffdd9d132aa0f4d36d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 23283a44f78522d2b589993c11b494092352cbb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853968"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478359"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory 中可配置的令牌生存期（预览版）
 
@@ -45,11 +45,11 @@ ms.locfileid: "82853968"
 
 ### <a name="saml-tokens"></a>SAML 令牌
 
-SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Active Directory 的 SAML2 协议终结点获得。 使用 WS 联合身份验证的应用程序也使用它们。 令牌的默认生存期为1小时。 从应用程序的角度来看，令牌的有效期由标记中`<conditions …>`元素的 NotOnOrAfter 值指定。 令牌的有效期结束后，客户端必须启动新的身份验证请求，此请求通常在未通过单一登录（SSO）会话令牌生成的交互式登录时得到满足。
+SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Active Directory 的 SAML2 协议终结点获得。 使用 WS 联合身份验证的应用程序也使用它们。 令牌的默认生存期为1小时。 从应用程序的角度来看，令牌的有效期由标记中元素的 NotOnOrAfter 值指定 `<conditions …>` 。 令牌的有效期结束后，客户端必须启动新的身份验证请求，此请求通常在未通过单一登录（SSO）会话令牌生成的交互式登录时得到满足。
 
-可以使用中的`AccessTokenLifetime`参数更改 NotOnOrAfter 的值。 `TokenLifetimePolicy` 它将设置为策略中配置的生存期（如果有）加上5分钟的时钟偏差系数。
+可以使用中的参数更改 NotOnOrAfter 的值 `AccessTokenLifetime` `TokenLifetimePolicy` 。 它将设置为策略中配置的生存期（如果有）加上5分钟的时钟偏差系数。
 
-请注意，在`<SubjectConfirmationData>`元素中指定的主题确认 NotOnOrAfter 不受令牌生存期配置的影响。 
+请注意，在元素中指定的主题确认 NotOnOrAfter `<SubjectConfirmationData>` 不受令牌生存期配置的影响。 
 
 ### <a name="refresh-tokens"></a>刷新令牌
 
@@ -62,7 +62,7 @@ SAML 令牌由许多基于 web 的 SAAS 应用程序使用，并使用 Azure Act
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>公共客户端刷新令牌的令牌生存期
 
-公共客户端无法安全地存储客户端密码（机密）。 例如，iOS/Android 应用不能对资源所有者的机密进行模糊处理，因此被视为公共客户端。 可以针对资源设置策略，防止使用公共客户端中超过指定期限的刷新令牌获取新的访问权限/刷新令牌对。 （为此，请使用 "刷新令牌最大非活动时间`MaxInactiveTime`" 属性（）。）你还可以使用策略设置一个时间段，超过该时间段后，刷新令牌不再被接受。 （为此，请使用 "刷新令牌最大期限" 属性。）可以调整刷新令牌的生存期，控制用户在使用公共客户端应用程序时需要重新输入凭据而不是以无提示方式重新进行身份验证的时间和频率。
+公共客户端无法安全地存储客户端密码（机密）。 例如，iOS/Android 应用不能对资源所有者的机密进行模糊处理，因此被视为公共客户端。 可以针对资源设置策略，防止使用公共客户端中超过指定期限的刷新令牌获取新的访问权限/刷新令牌对。 （为此，请使用 "刷新令牌最大非活动时间" 属性（ `MaxInactiveTime` ）。）你还可以使用策略设置一个时间段，超过该时间段后，刷新令牌不再被接受。 （为此，请使用 "刷新令牌最大期限" 属性。）可以调整刷新令牌的生存期，控制用户在使用公共客户端应用程序时需要重新输入凭据而不是以无提示方式重新进行身份验证的时间和频率。
 
 > [!NOTE]
 > "最大期限" 属性是可以使用单个令牌的时间长度。 
@@ -75,7 +75,7 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 
 Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。 浏览器将持久性会话令牌存储为持久性 Cookie， 将非持久性会话令牌存储为会话 Cookie。 （关闭浏览器后会销毁会话 cookie。）通常，存储非持久性会话令牌。 但如果用户在身份验证期间选择“使我保持登录状态”复选框，则存储的是持久性会话令牌****。
 
-非持久性会话令牌的生存期为 24 小时。 持久性令牌的生存期为 180 天。 只要在其有效期内使用 SSO 会话令牌，有效期就会延长24小时或180天，具体取决于标记类型。 如果 SSO 会话令牌在其有效期内未被使用，则将它视为过期，不再被系统接受。
+非持久性会话令牌的生存期为 24 小时。 持久性令牌的生存期为90天。 只要在其有效期内使用 SSO 会话令牌，有效期就会延长24小时或90天，具体取决于标记类型。 如果 SSO 会话令牌在其有效期内未被使用，则将它视为过期，不再被系统接受。
 
 颁发第一个会话令牌后，可以使用策略来设置一个时间段，超过该时间段后，该会话令牌不再被接受。 （为此，请使用 "会话令牌最大期限" 属性。）可以调整会话令牌的生存期，控制用户在使用 web 应用程序时需要重新输入凭据而不是以无提示方式进行身份验证的时间和频率。
 
@@ -83,7 +83,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 令牌生存期策略是一种策略对象，其中包含令牌生存期规则。 使用策略的属性控制指定的令牌生存期。 如果未设置策略，系统将强制实施默认生存期值。
 
 ### <a name="configurable-token-lifetime-properties"></a>可配置的令牌生存期属性
-| properties | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
+| Property | 策略属性字符串 | 影响 | 默认 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 访问令牌生存期 |AccessTokenLifetime<sup>2</sup> |访问令牌、ID 令牌、SAML2 令牌 |1 小时 |10 分钟 |1 天 |
 | 刷新令牌最大非活动时间 |MaxInactiveTime |刷新令牌 |90 天 |10 分钟 |90 天 |
@@ -95,8 +95,8 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * <sup>1</sup>365 天是可针对这些属性设置的最大显式时间长短。
 * <sup>2</sup>若要确保 Microsoft 团队 Web 客户端工作，建议将 AccessTokenLifetime 保留为大于15分钟的 Microsoft 团队。
 
-### <a name="exceptions"></a>异常
-| properties | 影响 | 默认 |
+### <a name="exceptions"></a>例外
+| Property | 影响 | 默认 |
 | --- | --- | --- |
 | 刷新令牌最大期限（针对吊销信息不足的联合用户颁发<sup>1</sup>） |刷新令牌（针对吊销信息不足的联合用户颁发<sup>1</sup>） |12 小时 |
 | 刷新令牌最大非活动时间（针对机密客户端颁发） |刷新令牌（针对机密客户端颁发） |90 天 |
@@ -208,12 +208,12 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
 * 为调用 Web API 的本机应用创建策略
 * 管理高级策略
 
-### <a name="prerequisites"></a>必备条件
-以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果是 Azure AD 新手，我们建议在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
+### <a name="prerequisites"></a>先决条件
+以下示例演示如何创建、更新、链接和删除应用、服务主体和整个组织的策略。 如果你不熟悉 Azure AD，我们建议你在继续学习这些示例之前，先了解[如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。  
 
 若要开始，请执行以下步骤：
 
-1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
+1. 下载最新的[PowerShell 模块公共预览版 Azure AD](https://www.powershellgallery.com/packages/AzureADPreview)。
 2. 运行 `Connect` 命令登录到 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
 
     ```powershell
@@ -283,7 +283,7 @@ Azure AD 使用两种 SSO 会话令牌：持久性和非持久性会话令牌。
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    1. 若要查看新策略并获取其 **ObjectId**，请运行以下命令：
+    1. 若要查看新策略并获取策略**ObjectId**，请运行以下命令：
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
@@ -545,3 +545,9 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 | --- | --- | --- |
 | <code>&#8209;Id</code> |应用程序的**ObjectId （ID）** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |策略的 **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
+
+## <a name="license-requirements"></a>许可要求
+
+使用此功能需要 Azure AD Premium P1 许可证。 若要根据需要查找正确的许可证，请参阅[比较免费版和高级版的通用功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+
+拥有 [Microsoft 365 商业版许可证](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。

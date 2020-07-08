@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: cd2217046a725f0bb0a05f1eb0afc5434bf3b6fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662715"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482405"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -52,15 +52,15 @@ ms.locfileid: "83662715"
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>步骤 2. 将 MediusFlow 配置为支持通过 Azure AD 进行预配
 
-### <a name="activate-the-office-365-app-within-mediusflow"></a>在 MediusFlow 中激活 Office 365 应用
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>激活 MediusFlow 中的 Microsoft 365 应用
 首先，在 MediusFlow 中启用 Azure AD 登录名的访问权限和 Azure AD 配置功能，具体步骤如下：
 
 #### <a name="user-login"></a>用户登录
-若要启用对 Office 365/Azure AD 的登录流，请参阅[这篇] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
+若要使登录流 Microsoft 365/Azure AD 请参阅 [this] （ https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
 
 #### <a name="user-transfer-configuration"></a>用户传输配置
-若要启用用户的配置门户，以便通过 Azure AD 进行预配，请参阅[这篇](
-https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)文章。
+若要启用用户的配置门户进行设置，请参阅[此](
+https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)文 Azure AD。
 
 #### <a name="configure-user-provisioning"></a>配置用户设置
 
@@ -94,7 +94,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
 
-8. 若要导入具有一组预定义的角色、公司和 MediusFlow 中其他常规配置的用户，需要先对其进行配置。 首先，通过单击“添加新配置”来添加配置。
+8. 若要使用预定义角色集、公司和 MediusFlow 中的其他常规配置来导入用户，需要先对其进行配置。 首先，通过单击“添加新配置”来添加配置。
 
     ![配置用户](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
 

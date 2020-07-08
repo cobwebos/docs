@@ -8,17 +8,17 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 43ed0bfed1dbe48c4f66a820ecad6fedf11115fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85478155"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>新的 Azure 门户应用注册体验
 
@@ -77,7 +77,7 @@ Azure 门户中的新体验在单独的页面中提供这些功能。 下面是�
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>平台/身份验证：回复 Url/重定向 Uri
 在过去的体验中，应用具有适用于 Web、本机和 Web API 的平台部分，用于配置重定向 Url、注销 URL 和隐式流。
 
-在新体验中，可以在 "应用程序\'身份验证" 部分找到 "回复 url"。 此外，它们也称为重定向 Uri，重定向 Uri 的格式已更改。 它们需要与应用类型（web 或公用客户端-移动和桌面）相关联。 [了解详细信息](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+在新体验中，可以在 "应用程序身份验证" 部分找到 "回复 Url" \' 。 此外，它们也称为重定向 Uri，重定向 Uri 的格式已更改。 它们需要与应用类型（web 或公用客户端-移动和桌面）相关联。 [了解详细信息](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
 Web Api 在公开 API 页中进行配置。
 
@@ -106,7 +106,7 @@ Web Api 在公开 API 页中进行配置。
 
 -   可以通过“公开 API”页配置“此 API 定义的范围”(oauth2Permissions) 和“已授权的客户端应用程序”(preAuthorizedApplications)。 有关如何将应用配置为 Web API 和公开权限/范围的详细信息，请参阅[此快速入门](quickstart-configure-app-expose-web-apis.md)。
 
--   发布者域（在[应用程序\'许可提示](application-consent-experience.md)中向用户显示）可以在 "品牌" 页中找到。 有关如何配置发布者域的详细信息，请参阅[此操作指南](howto-configure-publisher-domain.md)。
+-   发布者域（在[应用程序 \' 许可提示](application-consent-experience.md)中向用户显示）可以在 "品牌" 页中找到。 有关如何配置发布者域的详细信息，请参阅[此操作指南](howto-configure-publisher-domain.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -116,7 +116,7 @@ Web Api 在公开 API 页中进行配置。
 
 -   新体验尚不支持用个人 Microsoft 帐户创建的 Live SDK 应用。
 
--   不支持在 UI 中更改受支持帐户的值。 你需要使用应用程序清单，除非你\'在 Azure AD 单租户和多租户之间进行切换。
+-   不支持在 UI 中更改受支持帐户的值。 你需要使用应用程序清单，除非你在 \' Azure AD 单租户和多租户之间进行切换。
 
    > [!NOTE]
    > 如果你是 Azure AD 租户中的个人 Microsoft 帐户用户，并且租户管理员限制了对 Azure 门户的访问权限，则你可能会收到访问被拒绝的情况。 但是，如果通过在搜索栏中键入应用注册来浏览快捷方式，则可以访问新的体验。

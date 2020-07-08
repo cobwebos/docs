@@ -1,24 +1,24 @@
 ---
-title: 适用于 Functions 2.x 的 Azure Cosmos DB 绑定
+title: 函数的 Azure Cosmos DB 绑定2。 xd 和更高版本
 description: 了解如何在 Azure Functions 中使用 Azure Cosmos DB 触发器和绑定。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
-ms.openlocfilehash: f258a7aff52796a53540706bc8413575d63c9e7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77605755"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482167"
 ---
-# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-overview"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 触发器和绑定概述
+# <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Functions 2.x 和更高概述的 Azure Cosmos DB 触发器和绑定
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure Functions 运行时的版本： "]
 > * [版本 1](functions-bindings-cosmosdb.md)
-> * [第 2 版](functions-bindings-cosmosdb-v2.md)
+> * [版本2和更高版本](functions-bindings-cosmosdb-v2.md)
 
-此系列文章介绍如何在 Azure Functions 2.x 中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
+这一组文章介绍了如何在 Azure Functions 2.x 和更高版本中使用[Azure Cosmos DB](../cosmos-db/serverless-computing-database.md)绑定。 Azure Functions 支持 Azure Cosmos DB 的触发器、输入和输出绑定。
 
 | 操作 | 类型 |
 |---------|---------|
@@ -27,9 +27,9 @@ ms.locfileid: "77605755"
 | 保存对 Azure Cosmos DB 文档的更改  |[输出绑定](./functions-bindings-cosmosdb-v2-output.md) |
 
 > [!NOTE]
-> 此参考适用于 [Azure Functions 2.x](functions-versions.md)。  若要了解如何在 Functions 1.x 中使用这些绑定，请参阅[适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
+> 此参考适用于[Azure Functions 版本2.x 和更高版本](functions-versions.md)。  若要了解如何在 Functions 1.x 中使用这些绑定，请参阅[适用于 Azure Functions 1.x 的 Azure Cosmos DB 绑定](functions-bindings-cosmosdb.md)。
 >
-> 此绑定最初名为 DocumentDB。 在 Functions 2.x 版中，触发器、绑定和包均称为 Cosmos DB。
+> 此绑定最初名为 DocumentDB。 在函数版本2.x 和更高版本中，触发器、绑定和包都命名为 Cosmos DB。
 
 ## <a name="supported-apis"></a>受支持的 API
 

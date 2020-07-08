@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060326"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85480127"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>向虚拟机中添加网络接口或从中删除网络接口
 
@@ -28,17 +28,17 @@ ms.locfileid: "80060326"
 
 如果需要为网络接口添加、更改或删除 IP 地址，请参阅[管理网络接口 IP 地址](virtual-network-network-interface-addresses.md)。 若要创建、更改或删除网络接口，请参阅[管理网络接口](virtual-network-network-interface.md)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-如果没有，请使用有效的订阅设置一个 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 在开始本文的余下部分之前，请完成以下任务之一：
+如果你没有 Azure 帐户，请使用有效的订阅设置一个帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 在开始学习本文的余下内容之前，请完成以下任务之一：
 
-- **门户用户**：通过 Azure 帐户登录到[Azure 门户](https://portal.azure.com)。
+- **门户用户**：使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 - **PowerShell 用户**：运行[Azure Cloud Shell](https://shell.azure.com/powershell)中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 在 "Azure Cloud Shell 浏览器" 选项卡中，找到 "**选择环境**" 下拉列表，然后选择 " **PowerShell** " （如果尚未选择）。
 
-    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块版本1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 运行 `Connect-AzAccount`，创建与 Azure 的连接。
+    如果在本地运行 PowerShell，请使用 Azure PowerShell 模块版本1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az.Network` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 运行 `Connect-AzAccount`，创建与 Azure 的连接。
 
 - **Azure 命令行接口（CLI）用户**：运行[Azure Cloud Shell](https://shell.azure.com/bash)中的命令，或从计算机运行 CLI。 如果要在本地运行 Azure CLI，请使用 Azure CLI 版本2.0.26 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 运行 `az login`，创建与 Azure 的连接。
 
@@ -50,7 +50,7 @@ ms.locfileid: "80060326"
 
 创建 VM 之前，请先[创建一个网络接口](virtual-network-network-interface.md#create-a-network-interface)。
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -59,26 +59,26 @@ ms.locfileid: "80060326"
 
 若要将网络接口添加到虚拟机，请执行以下操作：
 
-1. 请参阅[Azure 门户](https://portal.azure.com)，查找现有的虚拟机。 搜索并选择“虚拟机”。 
+1. 请参阅[Azure 门户](https://portal.azure.com)，查找现有的虚拟机。 搜索并选择“虚拟机”。
 
 2. 选择 VM 的名称。 该 VM 必须支持要添加的网络接口的数量。 若要了解每个 VM 大小支持的网络接口数量，请参阅 Azure 中适用于[Linux vm](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[Windows vm](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的大小。
 
 3. 在 VM 命令栏中，选择 "**停止**"，然后在确认对话框中选择 **"确定"** 。 然后，等到 VM 的 "**状态**" 更改为 "**已停止（已解除分配）**"。
 
-4. 从 VM 菜单栏中，选择 "**网络** > **附加网络接口**"。 然后在 "**附加现有网络接口**" 中，选择要附加的网络接口，然后选择 **"确定"**。
+4. 从 VM 菜单栏中，选择 "**网络**  >  **附加网络接口**"。 然后在 "**附加现有网络接口**" 中，选择要附加的网络接口，然后选择 **"确定"**。
 
     >[!NOTE]
     >你选择的网络接口不能启用加速网络，不能分配有 IPv6 地址，并且必须与当前连接到 VM 的网络接口位于同一虚拟网络中。
 
     如果还没有网络接口，必须首先创建一个。 为此，请选择“创建网络接口”****。 若要详细了解如何创建网络接口，请参阅[创建网络接口](virtual-network-network-interface.md#create-a-network-interface)。 要详细了解向虚拟机添加网络接口时的其他约束，请参阅[约束](#constraints)。
 
-5. 从 VM 菜单栏中，选择 "**概述** > " "**启动**" 以重新启动虚拟机。
+5. 从 VM 菜单栏中，选择 "**概述**" "  >  **启动**" 以重新启动虚拟机。
 
 现在，你可以将 VM 操作系统配置为正确使用多个网络接口。 了解如何将 [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) 或 [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) 配置为使用多个网络接口。
 
 ### <a name="commands"></a>命令
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) （reference）;[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) （引用）;[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
@@ -87,7 +87,7 @@ ms.locfileid: "80060326"
 
 可以查看当前附加到 VM 的网络接口，了解每个网络接口的配置，以及分配给每个网络接口的 IP 地址。 
 
-1. 请参阅[Azure 门户](https://portal.azure.com)，查找现有的虚拟机。 搜索并选择“虚拟机”。 
+1. 请参阅[Azure 门户](https://portal.azure.com)，查找现有的虚拟机。 搜索并选择“虚拟机”。
 
     >[!NOTE]
     >使用向其分配了订阅的 "所有者"、"参与者" 或 "网络参与者" 角色的帐户登录。 若要详细了解如何向帐户分配角色，请参阅[针对 Azure 基于角色的访问控制的内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)。
@@ -100,14 +100,14 @@ ms.locfileid: "80060326"
 
 ### <a name="commands"></a>命令
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az vm nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-a-network-interface-from-a-vm"></a>从 VM 中删除网络接口
 
-1. 请参阅[Azure 门户](https://portal.azure.com)，查找现有的虚拟机。 搜索并选择“虚拟机”。 
+1. 请参阅[Azure 门户](https://portal.azure.com)，查找现有的虚拟机。 搜索并选择“虚拟机”。
 
 2. 选择要查看其附加网络接口的 VM 的名称。
 
@@ -115,16 +115,16 @@ ms.locfileid: "80060326"
 
 4. 等到 VM 的“状态”更改为“已停止(已解除分配)”********。
 
-5. 从 VM 菜单栏中，选择 "**网络** > **分离网络接口**"。
+5. 从 VM 菜单栏中，选择 "**网络**  >  **分离网络接口**"。
 
-6. 在 "**分离网络接口**" 对话框中，选择要分离的网络接口。 然后选择“确定”  。
+6. 在 "**分离网络接口**" 对话框中，选择要分离的网络接口。 然后选择“确定”。
 
     >[!NOTE]
     >如果只列出了一个网络接口，则无法将其分离，因为虚拟机必须始终至少有一个连接到它的网络接口。
 
 ### <a name="commands"></a>命令
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) （reference）;[详细步骤](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) （引用）;[详细步骤](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
@@ -151,7 +151,7 @@ ms.locfileid: "80060326"
 
 - 删除 VM 不会删除附加到其中的网络接口。 删除 VM 时，网络接口将与该 VM 分离。 可以将这些网络接口添加到不同的 Vm，也可以删除它们。
 
-- 与 IPv6 一样，在创建 VM 后，你无法将启用了加速网络的网络接口附加到该 VM。 此外，要利用加速网络，还必须完成 VM 操作系统中的步骤。 要详细了解加速网络和使用加速网络时的其他约束，请查看适用于 [Windows](create-vm-accelerated-networking-powershell.md) 或 [Linux](create-vm-accelerated-networking-cli.md) 虚拟机的加速网络。
+- 若要获得最佳性能，需要加速网络。 在某些情况下，必须显式启用适用于[Windows](create-vm-accelerated-networking-powershell.md)或[Linux](create-vm-accelerated-networking-cli.md)虚拟机的加速网络。
 
 ## <a name="next-steps"></a>后续步骤
 

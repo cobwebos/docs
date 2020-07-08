@@ -1,5 +1,5 @@
 ---
-title: 自定义令牌缓存序列化（MSAL Python） |Microsoft
+title: 自定义令牌缓存序列化 (MSAL Python) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何序列化适用于 Python 的 MSAL 的令牌缓存
 services: active-directory
@@ -7,18 +7,18 @@ author: rayluo
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 9c6edd0b3cfd6620f04553f9f6dfe89f1c7b7024
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 57efe11f0c44d7dfe6d35f2e56d512d6e2e2fa98
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85479277"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>适用于 Python 的 MSAL 中的自定义令牌缓存序列化
 
@@ -26,7 +26,7 @@ ms.locfileid: "81536193"
 
 将令牌缓存序列化，使应用的不同会话都可以访问它的功能不是现成提供的。 这是因为，MSAL Python 可以在无法访问文件系统的应用类型（例如 Web 应用）中使用。 若要在 MSAL Python 应用中使用持久性的令牌缓存，必须提供自定义令牌缓存序列化。
 
-序列化令牌缓存的策略会有所不同，这取决于你是要编写公共客户端应用程序（桌面），还是机密客户端应用程序（web 应用、web API 或后台程序应用）。
+用于序列化令牌缓存的策略各不相同，具体取决于是编写公共客户端应用程序（桌面）还是编写机密客户端应用程序（Web 应用、Web API 或守护程序应用）。
 
 ## <a name="token-cache-for-a-public-client-application"></a>公共客户端应用程序的令牌缓存
 
@@ -34,8 +34,8 @@ ms.locfileid: "81536193"
 
 ## <a name="token-cache-for-a-web-app-confidential-client-application"></a>Web 应用（机密客户端应用程序）的令牌缓存
 
-对于 web 应用或 web Api，你可以使用会话、Redis 缓存或数据库来存储令牌缓存。 每个用户（每个帐户）应有一个令牌缓存，因此请确保按帐户序列化令牌缓存。
+对于 Web 应用或 Web API，可以使用会话、Redis 缓存或数据库来存储令牌缓存。 每个用户（每个帐户）应有一个令牌缓存，因此请确保按帐户序列化令牌缓存。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何使用 Windows 或 Linux Web 应用或 web API 的令牌缓存的示例，请参阅[webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72) 。 该示例适用于调用 Microsoft Graph API 的 Web 应用。
+有关如何使用 Windows/Linux Web 应用或 Web API 的令牌缓存的示例，请参阅 [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py#L64-L72)。 该示例适用于调用 Microsoft Graph API 的 Web 应用。

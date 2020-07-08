@@ -4,13 +4,13 @@ description: Azure Monitor 与 Azure Functions 上运行的应用程序无缝集
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/20/2020
-ms.openlocfilehash: a936c77abb9aed5886fae8b2ec4a10bb076b7cb5
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.date: 06/26/2020
+ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776293"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85482099"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>使用 Azure Monitor Application Insights 监视 Azure Functions
 
@@ -20,11 +20,10 @@ Application Insights 收集日志、性能和错误数据，并自动检测性�
 
 Azure Functions 中内置了必需的 Application Insights 检测。 你只需提供有效的检测密钥便可将函数应用连接到 Application Insights 资源。 在 Azure 中创建函数应用资源时，应将检测密钥添加到应用程序设置中。 如果函数应用还没有此密钥，你可以手动设置此密钥。 有关详细信息，请参阅[监视 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)。
 
-## <a name="distributed-tracing-for-java-applications-public-preview"></a>针对 Java 应用程序的分布式跟踪（公共预览版）
-
+## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>针对 Windows 上的 Java 应用程序的分布式跟踪（公共预览版）
 
 > [!IMPORTANT]
-> 对于 Java Azure Functions，此功能目前为公共预览版。 对于消耗计划，该功能会进行 8-9 秒的冷启动。
+> 此功能目前处于 Windows 上的 Java Azure Functions 的公共预览版中，不支持对 Linux 上的 Java Azure Functions 进行分布式跟踪。 对于消耗计划，它的冷启动时间为8-9 秒。
 
 如果你的应用程序是以 Java 编写的，则你可以通过函数应用程序查看更丰富的数据，包括请求、依赖项、日志和指标。 借助更多数据，你还可以查看并诊断端到端事务，以及查看应用程序映射，该映射聚合了许多事务来显示一个拓扑视图，可以在其中了解各个系统如何交互，以及平均性能和错误率。
 
