@@ -2,14 +2,13 @@
 title: 监视 Azure 区块链服务（ABS）
 description: 通过 Azure Monitor 监视 Azure 区块链服务
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214037"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>通过 Azure Monitor 监视 Azure 区块链服务  
 
@@ -30,7 +29,7 @@ Azure 区块链服务会收集与其他 Azure 资源相同的监视数据，如�
 
 ## <a name="diagnostic-settings"></a>诊断设置  
 
-平台指标和活动日志会自动收集，但你必须创建诊断设置以收集资源日志，或将其转发到 Azure Monitor 之外。 有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)。
+平台指标和活动日志是自动收集的，但必须创建一个诊断设置才能收集资源日志，或在 Azure Monitor 外部转发这些日志。 有关使用 Azure 门户、CLI 或 PowerShell 创建诊断设置的详细过程，请参阅[创建诊断设置以收集 Azure 中的平台日志和指标](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)。
 
 创建诊断设置时，可指定要收集的日志类别。 下面列出了 Azure 区块链服务的类别。
 
@@ -79,7 +78,7 @@ BlockchainProxyLog
 下表列出了在 Azure Monitor 日志或 Azure 存储中收集 Azure 区块链代理日志时，这些日志的属性。  
 
 
-| 属性名称  | 描述 |
+| 属性名称  | 说明 |
 |:---|:---|
 | time | 操作发生时的日期和时间 (UTC)。 |
 | resourceID  | 为其启用了日志的 Azure 区块链服务资源。  |
@@ -105,7 +104,7 @@ BlockchainProxyLog
 下表列出了 Azure 区块链应用程序日志的属性。
 
 
-| 属性名称  | 描述 |
+| 属性名称  | 说明 |
 |:---|:---|
 | time | 操作发生时的日期和时间 (UTC)。 |
 | resourceID  | 为其启用了日志的 Azure 区块链服务资源。|
@@ -115,7 +114,7 @@ BlockchainProxyLog
 | NodeLocation  | 部署区块链成员的 Azure 区域。  |
 | BlockchainNodeName  | 在其上执行操作的 Azure 区块链服务成员的节点名称。   |
 | BlockchainMessage    | 此字段将包含作为数据普通日志的区块链应用程序日志。 对于 ABS 仲裁，这会有仲裁日志。 它包含有关 "信息"、"错误"、"警告" 和 "字符串" 的信息，其中提供了有关所执行操作的详细信息。   |
-| TenantID    | Azure 区块链服务的特定于区域的租户。 此字段的格式为https://westlake-rp-prod。<region>cloudapp.azure.com，其中区域指定部署的成员的 azure 区域。       |
+| TenantID    | Azure 区块链服务的特定于区域的租户。 此字段的格式为 https://westlake-rp-prod . <region> 。cloudapp.azure.com，其中区域指定部署的成员的 Azure 区域。       |
 | SourceSystem   | 系统将填充日志，在这种情况下，它是**Azure**。    |
 
 
@@ -131,24 +130,24 @@ BlockchainProxyLog
 下表指定为 Azure 区块链服务成员资源收集的区块链度量值的列表。
 
 
-| 指标名称 | 单位  |  聚合类型| 说明   |
+| 指标名称 | 计价单位  |  聚合类型| 说明   |
 |---|---|---|---|
 | 挂起的事务数   | 计数  |  平均值 | 正在等待挖掘的事务数。   |
-| 已处理的块数   | 计数  | SUM  |  每个时间间隔内处理的块数。 块大小当前为5秒，因此，每个节点将在5分钟内处理12个块和60块。   |
-|已处理的事务数    | 计数  | SUM  | 块中处理的事务数。    |
-|已排队的事务数    |  计数 | 平均值  | 无法立即挖掘的事务数。 这可能是因为它们未按顺序到达，而未来的事务正在等待前一个事务到达。 也可以是两个事务，其数字只使用一次（nonce），同一气体值为，因此第二个事务无法挖掘。   |
+| 已处理的块   | 计数  | SUM  |  每个时间间隔内处理的块数。 块大小当前为5秒，因此，每个节点将在5分钟内处理12个块和60块。   |
+|已处理事物数    | 计数  | SUM  | 块中处理的事务数。    |
+|已排队事务数    |  计数 | 平均值  | 无法立即挖掘的事务数。 这可能是因为它们未按顺序到达，而未来的事务正在等待前一个事务到达。 也可以是两个事务，其数字只使用一次（nonce），同一气体值为，因此第二个事务无法挖掘。   |
 
 ### <a name="connection-metrics"></a>连接指标  
 
 下表列出了为 Azure 区块链服务成员资源收集的不同连接指标。 这些是 NGINX 的代理指标。
 
 
-| 指标名称 | 单位  |  聚合类型| 说明 |
+| 指标名称 | 计价单位  |  聚合类型| 说明 |
 |---|---|---|---|
 | 已接受的连接数   | 计数  |  SUM | 接受的客户端连接总数。   |
 | 活动连接数  | 计数  | 平均值  |  当前活动客户端连接数，包括等待连接数。    |
-|已处理的连接数    | 计数  | SUM  | 已处理连接的总数。 通常，参数值与接受的连接相同，除非已达到某些资源的限制。     |
-|已处理的请求数     |  计数 | SUM  | 客户端请求总数。  |
+|已处理连接数    | 计数  | SUM  | 已处理连接的总数。 通常，参数值与接受的连接相同，除非已达到某些资源的限制。     |
+|已处理的请求数     |  Count | SUM  | 客户端请求总数。  |
 
 
 ### <a name="performance-metrics"></a>性能指标
@@ -156,13 +155,13 @@ BlockchainProxyLog
 下表列出了为 Azure 区块链成员资源的每个节点收集的性能度量值。  
 
 
-| 指标名称 | 单位  |  聚合类型| 说明   |
+| 指标名称 | 计价单位  |  聚合类型| 说明   |
 |---|---|---|---|
 | CPU 使用率百分比   | 百分比  |  Max | CPU 使用率的百分比。     |
 | IO 读取字节数   | 千字节   | SUM  |  区块链成员资源的所有节点之间 IO 读取字节数之和。      |
 |IO 写入字节数     | 千字节   | SUM  | IO 在区块链成员资源的所有节点之间写入字节数之和。     |
 |内存限制       |  字节   | 平均值    | 可用于每个节点的区块链进程的最大内存。 |
-|内存用量     | 字节  |  平均值 | 在所有节点上平均使用的内存量。  |
+|内存使用率     | 字节  |  平均值 | 在所有节点上平均使用的内存量。  |
 | 内存使用率百分比     | 百分比   | 平均值  |  在所有节点上平均使用的内存的百分比。       |
 |存储使用率      | 字节   | 平均值  | 在所有节点上平均使用的存储空间（GB）。       |
 

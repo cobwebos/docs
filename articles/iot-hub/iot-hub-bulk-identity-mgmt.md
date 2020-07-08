@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417933"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
@@ -27,8 +26,6 @@ ms.locfileid: "79371573"
 **RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 使用这些方法可导出、导入和同步整个 IoT 中心标识注册表。
 
 本主题讨论如何使用**RegistryManager**类和**作业**系统在 IoT 中心的标识注册表中执行设备的批量导入和导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/azure/iot-dps)。
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>什么是作业？
 
@@ -62,7 +59,7 @@ RegistryManager registryManager =
 
 - 导航到 IoT 中心。
 
-- 选择“共享访问策略”****。
+- 选择“共享访问策略”。
 
 - 选择一个策略（考虑到所需的权限）。
 
@@ -263,11 +260,11 @@ JobProperties importJob =
 
 在每个设备的导入序列化数据中使用可选 **importMode** 属性可控制每个设备的导入过程。 **ImportMode** 属性具有以下选项：
 
-| importMode | 说明 |
+| importMode | 描述 |
 | --- | --- |
 | **createOrUpdate** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果该设备已存在，则使用提供的输入数据覆盖现有信息，与 **ETag** 值无关。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
-| **创建** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
-| **时更新** |如果具有指定**ID**的设备已存在，则使用提供的输入数据覆盖现有信息，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
+| **create** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
+| **update** |如果具有指定**ID**的设备已存在，则使用提供的输入数据覆盖现有信息，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
 | **updateIfMatchETag** |如果具有指定**ID**的设备已存在，则只有当**ETag**匹配时，才会使用提供的输入数据覆盖现有信息。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则在日志文件中写入错误。 |
 | **createOrUpdateIfMatchETag** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则只有当 **ETag** 匹配时，才使用提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
 | **delete** |如果具有指定**ID**的设备已存在，则将其删除，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
@@ -433,7 +430,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 若要详细了解如何管理 Azure IoT 中心，请查看以下文章：
 
-* [IoT 中心度量值](iot-hub-metrics.md)
+* [IoT 中心指标](iot-hub-metrics.md)
 * [IoT 中心日志](iot-hub-monitor-resource-health.md)
 
 若要进一步探索 IoT 中心的功能，请参阅：

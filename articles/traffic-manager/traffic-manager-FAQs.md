@@ -11,12 +11,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731571"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84416998"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -306,7 +305,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 不能对 Azure Web 应用使用多个订阅中的终结点。 Web 应用要求其所用的任何自定义域名只能在单个订阅中使用。 无法对多个订阅中的 Web 应用使用同一个域名。
 
-对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure Resource Manager 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。
+对于其他终结点类型，可在多个订阅中结合使用流量管理器和终结点。 在 Resource Manager 中，只要配置流量管理器配置文件的人员具有终结点的读取访问权限，任何订阅的终结点就都可添加到流量管理器中。 可使用 [Azure Resource Manager 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 授予这些权限。 可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint)或[Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)添加其他订阅中的终结点。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
@@ -361,7 +360,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>添加终结点时是否使用 IP 地址或 DNS 名称？
 
-流量管理器支持使用三种方式添加终结点：DNS 名称、IPv4 地址和 IPv6 地址。 如果将终结点添加为 IPv4 或 IPv6 地址，查询响应将分别为记录类型 A 或 AAAA。 如果终结点已添加为 DNS 名称，则查询响应将为记录类型 CNAME。 仅在终结点的类型为“外部”时，才允许将终结点添加为 IPv4 或 IPv6 地址。 
+流量管理器支持使用三种方式添加终结点：DNS 名称、IPv4 地址和 IPv6 地址。 如果将终结点添加为 IPv4 或 IPv6 地址，查询响应将分别为记录类型 A 或 AAAA。 如果终结点已添加为 DNS 名称，则查询响应将为记录类型 CNAME。 仅在终结点的类型为“外部”时，才允许将终结点添加为 IPv4 或 IPv6 地址。
 三种终结点寻址类型支持所有路由方法和监视设置。
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>添加终结点时可以使用哪些类型的 IP 地址？
@@ -412,7 +411,7 @@ Azure Resource Manager 要求所有资源组指定一个位置，这决定了部
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>是否即使应用程序不支持 HTTP 或 HTTPS，我也可以使用流量管理器？
 
-可以。 可将 TCP 指定为监视协议，而流量管理器可以发起 TCP 连接，并等待终结点的响应。 如果终结点在超时期限内回复了连接请求并提供了用于建立连接的响应，则会将终结点标记为正常。
+是的。 可将 TCP 指定为监视协议，而流量管理器可以发起 TCP 连接，并等待终结点的响应。 如果终结点在超时期限内回复了连接请求并提供了用于建立连接的响应，则会将终结点标记为正常。
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 监视时，需要终结点发出的哪些特定响应？
 

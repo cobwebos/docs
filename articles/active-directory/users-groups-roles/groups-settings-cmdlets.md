@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: b91eb361d4bcae304734817ee7f57141d6f06415
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582792"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727851"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
@@ -154,13 +153,13 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>UsageGuidelinesUrl<li>键入：String<li>默认值："" |组使用准则链接。 |
 |  <ul><li>ClassificationDescriptions<li>键入：String<li>默认值："" | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>其中，Classification 与 ClassificationList 中的条目匹配。<br>当 EnableMIPLabels == True 时，此设置不适用。|
 |  <ul><li>DefaultClassification<li>键入：String<li>默认值："" | 如果未指定，则为要用作组的默认分类的分类。<br>当 EnableMIPLabels == True 时，此设置不适用。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>键入：String<li>默认值："" | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
-| <ul><li>CustomBlockedWordsList<li>键入：String<li>默认值："" | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
+|  <ul><li>PrefixSuffixNamingRequirement<li>键入：String<li>默认值："" | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅为[Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
+| <ul><li>CustomBlockedWordsList<li>键入：String<li>默认值："" | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅为[Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
 | <ul><li>EnableMSStandardBlockedWords<li>键入：布尔<li>默认值：“False” | 请勿使用
 |  <ul><li>AllowGuestsToBeGroupOwner<li>键入：布尔<li>默认值：False | 一个布尔值，该值指示来宾用户是否可以作为组的所有者。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>键入：布尔<li>默认值：True | 一个布尔值，指示来宾用户是否可以访问 Office 365 组的内容。  此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>键入：String<li>默认值："" | 指向来宾使用指南的链接的 URL。 |
-|  <ul><li>AllowToAddGuests<li>键入：布尔<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果 *EnableMIPLabels* 设置为 *True* 且某个来宾策略与分配给组的敏感性标签相关联，则此设置可能会被重写，变成只读。<br>如果在组织级别将 AllowToAddGuests 设置设置为 False，则将忽略组级别的任何 AllowToAddGuests 设置。 如果你只想为少数几个组启用来宾访问，则必须在组织级别将 AllowToAddGuests 设置为 true，然后有选择地对特定组禁用该访问权限。 |
+|  <ul><li>AllowToAddGuests<li>键入：布尔<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果 *EnableMIPLabels* 设置为 *True* 且某个来宾策略与分配给组的敏感性标签相关联，则此设置可能会被重写，变成只读。<br>如果在组织级别将 AllowToAddGuests 设置设为 False，则会忽略组级别的任何 AllowToAddGuests 设置。 如果希望仅对几个组启用来宾访问，则必须在组织级别将 AllowToAddGuests 设为 true，然后针对特定组有选择地禁用它。 |
 |  <ul><li>ClassificationList<li>键入：String<li>默认值："" | 一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 <br>当 EnableMIPLabels == True 时，此设置不适用。|
 |  <ul><li>EnableMIPLabels<li>键入：布尔<li>默认值：“False” |此标记表明在 Microsoft 365 合规中心发布的敏感性标签是否适用于 Office 365 组。 有关详细信息，请参阅为[Office 365 组分配敏感度标签](groups-assign-sensitivity-labels.md)。 |
 

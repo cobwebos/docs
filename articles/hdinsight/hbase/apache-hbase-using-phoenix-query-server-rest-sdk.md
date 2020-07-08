@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 84c2bad1004029fe61dcfc19321957a170284587
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fa94b7461907a2337ba448a91d67fe93c5ab2f8f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75612251"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957556"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix 查询服务器 REST SDK
 
@@ -27,7 +26,9 @@ ms.locfileid: "75612251"
 
 适用于 Apache Phoenix 查询服务器的 Microsoft .NET 驱动程序以 NuGet 包的形式提供，可以使用以下命令通过 Visual Studio **NuGet 包管理器控制台**进行安装：
 
-    Install-Package Microsoft.Phoenix.Client
+```console
+Install-Package Microsoft.Phoenix.Client
+```
 
 ## <a name="instantiate-new-phoenixclient-object"></a>实例化新的 PhoenixClient 对象
 
@@ -71,7 +72,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是一些相关属性：
 
-| properties | 说明 |
+| Property | 描述 |
 | -- | -- |
 | AutoCommit | 一个布尔值，表示是否为 Phoenix 事务启用 `autoCommit`。 |
 | ReadOnly | 一个布尔值，表示连接是否为只读。 |
@@ -82,7 +83,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 下面是 `TransactionIsolation` 值：
 
-| 隔离值 | 说明 |
+| 隔离值 | 描述 |
 | -- | -- |
 | 0 | 事务不受支持。 |
 | 1 | 可能出现脏读、不可重复读和幻读。 |
@@ -94,7 +95,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 HBase 与任何其他 RDBMS 一样，在表中存储数据。 Phoenix 使用标准的 SQL 查询来创建新表，同时定义主键和列类型。
 
-此示例和所有更高的示例使用实例`PhoenixClient`化[新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中定义的实例化对象。
+此示例和所有更高的示例使用实例化 `PhoenixClient` [新的 PhoenixClient 对象](#instantiate-new-phoenixclient-object)中定义的实例化对象。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -170,7 +171,7 @@ finally
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-该表的`StateProvince`列值将在以后的选择操作中使用。
+该表的 `StateProvince` 列值将在以后的选择操作中使用。
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,7 +278,7 @@ finally
 }
 ```
 
-执行插入语句的结构类似于创建新表。 在`try`块的末尾，将显式提交事务。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
+执行插入语句的结构类似于创建新表。 在块的末尾 `try` ，将显式提交事务。 此示例重复插入事务 300 次。 以下示例演示更有效的批插入过程。
 
 ## <a name="batch-insert-data"></a>批插入数据
 
@@ -494,7 +495,7 @@ finally
 
 `select` 语句的输出应该是以下结果：
 
-```
+```output
 id0 first0
 id1 first1
 id10 first10

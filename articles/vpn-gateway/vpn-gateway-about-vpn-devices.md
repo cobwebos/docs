@@ -7,12 +7,11 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dd73c6a388cde55db5437442492d53768eb03866
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279424"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343143"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>关于用于站点到站点 VPN 网关连接的 VPN 设备和 IPsec/IKE 参数
 
@@ -45,7 +44,7 @@ ms.locfileid: "79279424"
 | Cisco |ASR |PolicyBased：IOS 15.1<br>RouteBased：IOS 15.2 |支持 |支持 |
 | Cisco | CSR | RouteBased：IOS-XE 16.10 | （未测试） | [配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased：IOS 15.0<br>RouteBased*：IOS 15.1 |支持 |支持 |
-| Cisco |Meraki |不适用 |不兼容 |不兼容 |
+| Cisco |Meraki |空值 |不兼容 |不兼容 |
 | Cisco | vEdge (Viptela OS) | 18.4.0（主动/被动模式）<br><br>19.2（主动/主动模式） | 不兼容 |  [手动配置（主动/被动）](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onramp 配置（主动/主动）](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 及以上 |[配置指南](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |不兼容 |
 | F5 |BIG-IP 系列 |12.0 |[配置指南](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[配置指南](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -58,7 +57,7 @@ ms.locfileid: "79279424"
 | Juniper |SSG |ScreenOS 6.2 |支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12.x|支持 |[配置脚本](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |路由和远程访问服务 |Windows Server 2012 |不兼容 |支持 |
-| 打开系统 AG |任务控制安全网关 |不适用 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
+| 打开系统 AG |任务控制安全网关 |空值 |[配置指南](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |不兼容 |
 | Palo Alto Networks |运行 PAN-OS 的所有设备 |PAN-OS<br>PolicyBased：6.1.5 或更高版本<br>RouteBased：7.1.4 |支持 |[配置指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium（开发人员） | VyOS | VyOS 1.2.2 | （未测试） | [配置指南](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | Next Generation UTM（NU 系列） | 9.0.1.3 | 不兼容 | [配置指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -107,7 +106,7 @@ ms.locfileid: "79279424"
 | &lt;SP_AzureNetworkSubnetMask&gt; |指定子网掩码。 示例：255.255.0.0 |
 | &lt;SP_OnPremisesNetworkIpRange&gt; |指定本地范围。 示例：10.2.1.0 |
 | &lt;SP_OnPremisesNetworkSubnetMask&gt; |指定本地子网掩码。 示例：255.255.255.0 |
-| &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”  中。 |
+| &lt;SP_AzureGatewayIpAddress&gt; |此信息特定于虚拟网络，位于管理门户的“网关 IP 地址”中。 |
 | &lt;SP_PresharedKey&gt; |此信息特定于虚拟网络，位于管理门户的“管理密钥”中。 |
 
 ## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec/IKE 参数
@@ -141,7 +140,7 @@ ms.locfileid: "79279424"
 | SDK 版本                   |IKEv1          |IKEv1 和 IKEv2                              |
 | 加密和哈希算法 |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
 | SA 生存期（时间）            |3,600 秒  |27,000 秒                               |
-| SA 生存期（字节数）           |102,400,000 KB | -                                           |
+| SA 生存期（字节数）           |102,400,000 KB |102,400,000 KB                               |
 | 完全向前保密 (PFS) |否             |[RouteBased QM SA 产品/服务](#RouteBasedOffers) |
 | 死对等体检测 (DPD)     |不支持  |支持                                    |
 

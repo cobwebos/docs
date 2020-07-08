@@ -9,18 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728327"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -62,10 +61,10 @@ ms.locfileid: "80048253"
 
 以下角色可用于在 Azure AD 中为 Office 365 组配置和使用到期。
 
-Role | 权限
+角色 | 权限
 -------- | --------
 全局管理员、组管理员或用户管理员 | 可以创建、读取、更新或删除 Office 365 组到期策略设置<br>可以续订任何 Office 365 组
-User | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组<br>可以读取过期策略设置
+用户 | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的 Office 365 组<br>可以读取过期策略设置
 
 有关还原已删除组的权限的详细信息，请参阅[在 Azure Active Directory 中还原已删除的 Office 365 组](groups-restore-deleted.md)。
 
@@ -134,7 +133,7 @@ User | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的
    Connect-AzureAD
    ```
 
-1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Office 365 组的生存期设置为365天。 不包含所有者的 Office 365 组的续订通知将发送到emailaddress@contoso.com""
+1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Office 365 组的生存期设置为365天。 不包含所有者的 Office 365 组的续订通知将发送到 " emailaddress@contoso.com "
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +143,7 @@ User | 可以续订他们拥有的 Office 365 组<br>可以还原他们拥有的
 
    - 策略 ID
    - Azure AD 组织中所有 Office 365 组的生存期设置为365天
-   - 不包含所有者的 Office 365 组的续订通知将发送到emailaddress@contoso.com""。
+   - 不包含所有者的 Office 365 组的续订通知将发送到 "" emailaddress@contoso.com 。
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

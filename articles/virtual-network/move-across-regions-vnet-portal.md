@@ -3,15 +3,14 @@ title: 使用 Azure 门户将 Azure 虚拟网络移到另一个 Azure 区域。
 description: 使用资源管理器模板和 Azure 门户将 Azure 虚拟网络从一个 Azure 区域移到另一个区域。
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ed3da649ba65484a79b42ba5bb45431839e123d4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75640782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711436"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>使用 Azure 门户将 Azure 虚拟网络移到另一个区域
 
@@ -85,7 +84,7 @@ ms.locfileid: "75640782"
 
     ```
 
-1. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是区域名称，没有空格（例如，**美国** = 中部**centralus**）。
+1. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。 区域的代码是区域名称，没有空格（例如，**美国中部**  =  **centralus**）。
 
 1. （可选）还可以根据要求更改模板中的其他参数：
 

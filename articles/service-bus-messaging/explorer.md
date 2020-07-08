@@ -1,19 +1,13 @@
 ---
 title: 使用 Azure 服务总线资源管理器在服务总线上执行数据操作（预览版）
 description: 本文介绍如何使用基于门户的 Azure 服务总线资源管理器访问 Azure 服务总线数据。
-services: service-bus-messaging
-ms.service: service-bus
-documentationcenter: ''
-author: axisc
 ms.topic: conceptual
-ms.date: 03/04/2020
-ms.author: aschhab
-ms.openlocfilehash: 8f53b5e41c67ca1990edd011677b25f3a9a601d1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83776333"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340542"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>使用服务总线资源管理器在服务总线上执行数据操作（预览版）
 

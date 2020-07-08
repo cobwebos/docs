@@ -8,7 +8,7 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -16,12 +16,11 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 179ad1e552899f8fa92b8191fe78223458f87104
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025677"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727545"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>如何将具有单个许可证的用户迁移到组以获取许可
 
@@ -85,5 +84,5 @@ ms.locfileid: "74025677"
 - [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 - [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 - [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-- [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
+- [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
 - [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

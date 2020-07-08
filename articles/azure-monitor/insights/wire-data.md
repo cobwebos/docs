@@ -5,13 +5,12 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670638"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84424459"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案
 
@@ -19,14 +18,17 @@ ms.locfileid: "77670638"
 
 线路数据是通过 Log Analytics 代理（包括由环境中的 Operations Manager 监视的代理）从与 Windows 和 Linux 相连的计算机中收集的网络与性能整合数据。 网络数据与其他日志数据结合在一起，可帮助你将数据进行关联。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 除了 Log Analytics 代理之外，Wire Data 解决方案使用在 IT 基础结构中的计算机上安装的 Microsoft 依赖关系代理。 依赖关系代理将监视 [OSI 模型](https://en.wikipedia.org/wiki/OSI_model)中处于网络层 2-3 层中的计算机接收和发送的网络数据，包括使用的各种协议和端口。 然后，这些代理将数据发送到 Azure Monitor。  
 
 >[!NOTE]
->如果已部署服务映射或正在考虑服务映射或[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md)，则会在为传输数据提供类似信息的 Azure Monitor 中收集并存储新的连接度量值数据集。
+>已将有线数据解决方案替换为[服务映射解决方案](service-map.md)。  两者都使用 Log Analytics 代理和依赖项代理将网络连接数据收集到 Azure Monitor 中。 
+> 
+>使用线路数据解决方案的现有客户可继续使用该解决方案。 对于迁移到服务映射的迁移时间线，我们将发布相关指导。
+>
+>新客户应安装[服务映射解决方案](service-map.md)或[用于 VM 的 Azure Monitor](vminsights-overview.md)。  服务映射数据集相当于线路数据。  用于 VM 的 Azure Monitor 包括服务映射数据集，其中包含用于分析的其他性能数据和功能。 
 
-默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
+
+默认情况下，Azure Monitor 从 Windows 和 Linux 中内置的计数器以及可以指定的其他性能计算器记录 CPU、内存和磁盘数据以及网络性能数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。 该解决方案不会查看单个 ACK 和 SYN。 完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。 只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
 
 如果使用过 [sFlow](http://www.sflow.org/) 或其他包含 [Cisco 的 NetFlow 协议](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)的软件，则不会对来自线路数据的统计信息和数据感到陌生。
 
@@ -73,7 +75,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 如果 Windows 或 Linux 计算机无法直接连接到服务，则需要将 Log Analytics 代理配置为使用 Log Analytics 网关连接到 Azure Monitor。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
@@ -86,7 +88,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 #### <a name="windows-server"></a>Windows Server
 
-- Windows Server Standard 2012 R2
+- Windows Server 2019
 - Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
@@ -164,7 +166,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或者使用[从解决方案库中添加监视解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
+1. 从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或使用[从解决方案库添加监视解决方案](../../azure-monitor/insights/solutions.md)中所述的过程，启用 Activity Log Analytics 解决方案。
 2. 在希望从中获取数据的每台计算机上安装 Dependency Agent。 Dependency Agent 可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 > [!NOTE]
@@ -190,7 +192,7 @@ Dependency Agent 本身不传输任何数据，它不需要对防火墙或端口
 
 InstallDependencyAgent-Windows.exe /?
 
-| **标志** | **说明** |
+| **标记** | **说明** |
 | --- | --- |
 | <code>/?</code> | 获取命令行选项列表。 |
 | <code>/S</code> | 执行无提示安装，无用户提示。 |
@@ -215,7 +217,7 @@ InstallDependencyAgent-Windows.exe /?
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **标志** | **说明** |
+| **标记** | **说明** |
 | --- | --- |
 | <code>-help</code> | 获取命令行选项列表。 |
 | <code>-s</code> | 执行无提示安装，无用户提示。 |
@@ -381,9 +383,9 @@ rpm -e dependency-agent dependency-agent-connector
 
 将为每种输入数据创建 _WireData_ 类型的记录。 WireData 记录具有下表中所示的属性：
 
-| 属性 | 说明 |
+| Property | 说明 |
 |---|---|
-| 计算机 | 从中收集了数据的计算机名称 |
+| Computer | 从中收集了数据的计算机名称 |
 | TimeGenerated | 记录的时间 |
 | LocalIP | 本地计算机的 IP 地址 |
 | SessionState | 已连接或已断开连接 |
@@ -392,7 +394,7 @@ rpm -e dependency-agent dependency-agent-connector
 | IPVersion | IP 版本 |
 | 方向 | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
-| 严重性 | 可疑恶意软件的严重性 |
+| severity | 可疑恶意软件的严重性 |
 | RemoteIPCountry | 远程 IP 地址所在的国家/地区 |
 | ManagementGroupName | Operations Manager 管理组的名称 |
 | SourceSystem | 从中收集了数据的源 |

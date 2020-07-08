@@ -9,14 +9,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c86f98fb20af2cd5ac969867cabfdc5dcb62db54
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654661"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86039885"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -25,7 +24,7 @@ Azure Active Directory 域服务（Azure AD DS）安全审核允许 Azure 将安
 可以使用 Azure 事件中心将事件存档到 Azure 存储中，并将事件流式传输到安全信息和事件管理（SIEM）软件（或等效项），也可以执行自己的分析并使用 Azure 门户中的 Azure Log Analytics 工作区。
 
 > [!IMPORTANT]
-> Azure AD DS 安全审核仅适用于基于 Azure 资源管理器的实例。 有关如何迁移的信息，请参阅将[AZURE AD DS 从经典虚拟网络模型迁移到资源管理器][migrate-azure-adds]。
+> Azure AD DS 安全审核仅适用于基于 Azure 资源管理器的托管域。 有关如何迁移的信息，请参阅将[AZURE AD DS 从经典虚拟网络模型迁移到资源管理器][migrate-azure-adds]。
 
 ## <a name="security-audit-destinations"></a>安全审核目标
 
@@ -94,13 +93,13 @@ Azure Active Directory 域服务（Azure AD DS）安全审核允许 Azure 将安
 
 1. 创建安全审核事件的目标资源。
 
-    * **Azure 存储** - [使用 Azure PowerShell 创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Azure 事件中心** - [使用 Azure PowerShell 创建事件中心](../event-hubs/event-hubs-quickstart-powershell.md)。 你可能还需要使用[AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) cmdlet 来创建授权规则，该规则向事件中心*命名空间*授予 Azure AD DS 权限。 授权规则必须包括 "**管理**"、"**侦听**" 和 "**发送**" 权限。
+    * **Azure 存储**  - [使用 Azure PowerShell 创建存储帐户](../storage/common/storage-account-create.md?tabs=azure-powershell)
+    * **Azure 事件中心**  - [使用 Azure PowerShell 创建事件中心](../event-hubs/event-hubs-quickstart-powershell.md)。 你可能还需要使用[AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) cmdlet 来创建授权规则，该规则向事件中心*命名空间*授予 Azure AD DS 权限。 授权规则必须包括 "**管理**"、"**侦听**" 和 "**发送**" 权限。
 
         > [!IMPORTANT]
         > 请确保在事件中心命名空间而不是事件中心本身上设置授权规则。
 
-    * **Azure 日志分析工作区** - [使用 Azure PowerShell 创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace-posh.md)。
+    * **Azure 日志分析工作区**  - [使用 Azure PowerShell 创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace-posh.md)。
 
 1. 使用[AzResource](/powershell/module/Az.Resources/Get-AzResource) cmdlet 获取 Azure AD DS 托管域的资源 ID。 创建一个名为 *$aadds 的变量。ResourceId*保存值：
 
@@ -159,11 +158,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>示例查询2
 
-查看4740年2月 3 2020 日到上午9点之间的所有帐户锁定事件（*4740*）。 2月10日午夜2020，按日期和时间升序排序：
+查看2020上午9点之间的所有帐户锁定事件（*4740*）。 和2020年6月10日午夜按日期和时间升序排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
+| where TimeGenerated >= datetime(2020-06-03 09:00) and TimeGenerated <= datetime(2020-06-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
@@ -217,7 +216,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 以下审核事件类别可用：
 
-| 审核类别名称 | 说明 |
+| 审核类别名称 | 描述 |
 |:---|:---|
 | 帐户登录|审核尝试对域控制器或本地安全帐户管理器（SAM）上的帐户数据进行身份验证。</p>登录和注销策略设置和事件跟踪尝试访问特定的计算机。 此类别中的设置和事件侧重于所使用的帐户数据库。 此类别包括以下子类别：<ul><li>[审核凭据验证](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[审核 Kerberos 身份验证服务](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[审核 Kerberos 服务票证操作](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[审核其他登录/注销事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | 帐户管理|审核对用户和计算机帐户和组所做的更改。 此类别包括以下子类别：<ul><li>[审核应用程序组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[审核计算机帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[审核分发组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[审核其他帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[审核安全组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[审核用户帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -237,10 +236,10 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 |:---|:---|
 |帐户登录安全|4767、4774、4775、4776、4777|
 |帐户管理安全性|4720、4722、4723、4724、4725、4726、4727、4728、4729、4730、4731、4732、4733、4734、4735、4737、4738、4740、4741、4742、4743、4754、4755、4756、4757、4758、4764、4765、4766、4780、4781、4782、4793、4798、4799、5376、5377、、、|
-|详细信息跟踪安全性|无|
+|详细信息跟踪安全性|None|
 |DS 访问安全性|5136、5137、5138、5139、5141|
 |登录-注销安全性|4624、4625、4634、4647、4648、4672、4675、4964|
-|对象访问安全性|无|
+|对象访问安全性|None|
 |策略更改安全性|4670、4703、4704、4705、4706、4707、4713、4715、4716、4717、4718、4719、4739、4864、4865、4866、4867、4904、4906、4911、4912|
 |权限使用安全性|4985|
 |系统安全|4612、4621|

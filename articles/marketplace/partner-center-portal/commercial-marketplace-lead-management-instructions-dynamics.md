@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 65139e0842679f59733c34be838d4aad7f3c63e4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 555002284b2665a357a28319a400710d66be4604
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847934"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957233"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置潜在顾客管理
 
@@ -60,7 +59,7 @@ ms.locfileid: "83847934"
 使用以下步骤创建服务帐户并分配权限。 可以使用 Azure Active Directory 或 Office 365。
 
 >[!NOTE]
->基于所选的身份验证选项跳到对应的说明。 请参阅 [Azure Active Directory](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#azure-active-directory) 或 [Office 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics#office-365)。
+>基于所选的身份验证选项跳到对应的说明。 请参阅 [Azure Active Directory](#azure-active-directory) 或 [Office 365](#office-365)。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 

@@ -1,5 +1,5 @@
 ---
-title: 可视化创作
+title: 视觉对象创作
 description: 了解如何在 Azure 数据工厂中使用视觉对象创作
 services: data-factory
 ms.service: data-factory
@@ -10,12 +10,11 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84343101"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 
@@ -23,15 +22,15 @@ ms.locfileid: "83832770"
 
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。
 
-目前，只有 Microsoft Edge 和 Google Chrome 支持 Azure 数据工厂用户体验。
+目前，仅在 Microsoft Edge 和 Google Chrome 中支持 Azure 数据工厂 UX。
 
 ## <a name="authoring-canvas"></a>创作画布
 
-若要打开“创作画布”，请单击铅笔图标。 
+若要打开**创作画布**，请单击铅笔图标。 
 
 ![创作画布](media/author-visually/authoring-canvas.png)
 
-在创作画布中，创作组成工厂的管道、活动、数据集、链接服务、数据流、触发器和集成运行时。 若要开始使用创作画布来生成管道，请参阅[使用 Copy 活动复制数据](tutorial-copy-data-portal.md)。 
+在创作画布中，创作组成工厂的管道、活动、数据集、链接服务、数据流、触发器和集成运行时。 若要开始使用创作画布构建管道，请参阅[使用复制活动复制数据](tutorial-copy-data-portal.md)。 
 
 默认的可视化创作体验是直接使用数据工厂服务。 还支持 Azure Repos Git 或 GitHub 集成，这样可以在生成数据工厂管道时进行源代码管理和协作。 若要详细了解这些创作体验的区别，请参阅 [Azure 数据工厂中的源代码管理](source-control.md)。
 
@@ -43,19 +42,25 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 
 默认情况下，“属性”窗格只在创建资源时打开。 若要编辑它，请单击画布右上角的“属性”窗格图标。
 
+## <a name="management-hub"></a>管理中心
+
+通过 Azure 数据工厂 UX 中的“管理”选项卡访问的管理中心是一个门户，托管数据工厂的全局管理操作。 在此处，你可以管理到数据存储和外部计算、源控制配置和触发器设置的连接。 有关详细信息，请参阅[管理中心](author-management-hub.md)功能。
+
+![管理链接服务](media/author-management-hub/management-hub-linked-services.png)
+
 ## <a name="expressions-and-functions"></a>表达式和函数
 
-在 Azure 数据工厂中，可以使用表达式和函数（而不是静态值）来指定多个属性。
+可以使用表达式和函数代替静态值来指定 Azure 数据工厂中的许多属性。
 
-若要为属性值指定表达式，请选择“添加动态内容”，或在将光标移到字段时按“Alt + P”。
+若要指定属性值的表达式，请选择“添加动态内容”或在焦点在字段上时单击 **Alt + P**。
 
 ![添加动态内容](media/author-visually/dynamic-content-1.png)
 
-这会打开“数据工厂表达式生成器”，在其中可以通过支持的系统变量、活动输出、函数和用户指定的变量或参数来生成表达式。 
+这将打开**数据工厂表达式生成器**，你可以从支持的系统变量、活动输出、函数和用户指定的变量或参数构建表达式。 
 
 ![表达式生成器](media/author-visually/dynamic-content-2.png)
 
-若要了解表达式语言，请参阅 [Azure 数据工厂中的表达式和函数](control-flow-expression-language-functions.md)。
+有关表达式语言的信息，请参阅 [Azure 数据工厂中的表达式和函数](control-flow-expression-language-functions.md)。
 
 ## <a name="provide-feedback"></a>提供反馈
 

@@ -3,7 +3,6 @@ title: 快速入门：在 Azure 中创建 Linux SQL Server VM
 description: 本教程介绍如何在 Azure 门户中创建 Linux SQL Server 2017 虚拟机。
 services: virtual-machines-linux
 author: MashaMSFT
-manager: craigg
 ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: conceptual
@@ -11,14 +10,13 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
-ms.translationtype: HT
+ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259518"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669505"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>在 Azure 门户中预配 Linux SQL Server 虚拟机
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>预配在 Azure 门户中运行 SQL Server 的 Linux 虚拟机
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +26,7 @@ ms.locfileid: "84259518"
 在本快速入门教程中，你将使用 Azure 门户创建装有 SQL Server 2017 的 Linux 虚拟机。 学习以下内容： 
 
 
-* [从库创建 Linux SQL VM](#create)
+* [从库中创建 SQL Server 运行的 Linux VM](#create)
 * [使用 ssh 连接到新的 VM](#connect)
 * [更改 SA 密码](#password)
 * [针对远程连接进行配置](#remote)
@@ -125,7 +123,7 @@ ssh azureadmin@40.55.55.555
 
 若要详细了解如何连接到 Linux VM，请参阅[使用门户在 Azure 上创建 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)。
 
-> [!Note]
+> [!NOTE]
 > 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
 
 ## <a name="change-the-sa-password"></a><a id="password"></a> 更改 SA 密码

@@ -8,15 +8,14 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/25/2020
+ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f78ef7ddf48612728c0409b0f904c0964e2272b5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84415965"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
@@ -73,54 +72,36 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 完成恢复后，你可能会注意到，旧手机和新手机上的 Microsoft Authenticator 应用中的个人 Microsoft 帐户验证码不相同。 验证码之所以不相同，是因为每台设备都有自身唯一的凭据，而在使用相关的手机登录时，这两个凭据都是有效的。
 
-## <a name="recover-additional-accounts-requiring-more-verification"></a>恢复需要更多验证的其他帐户
+## <a name="recover-accounts-requiring-more-verification"></a>恢复需要更多验证的帐户
 
 如果通过个人、工作或学校帐户使用推送通知，屏幕上会显示一条警报，指出在恢复信息之前，必须先提供附加验证。 由于推送通知要求使用绑定到特定设备的凭据，而且永远不会通过网络发送，因此，在设备上创建凭据之前，必须先证明自己的身份。
 
 对于个人 Microsoft 帐户，可以通过输入密码以及备用电子邮件或电话号码来证明身份。 对于工作或学校帐户，必须扫描帐户提供商提供的 QR 码。
 
-### <a name="to-provide-additional-verification-for-personal-accounts"></a>为个人帐户提供附加验证
+### <a name="to-provide-more-verification-for-personal-accounts"></a>为个人帐户提供更多验证
 
-1. 在 Microsoft Authenticator 应用的“帐户”屏幕中，选择要恢复的帐户。 在 Android 设备上，选择要恢复的帐户旁边的箭头。
+1. 在 Microsoft Authenticator 应用程序的 "**帐户**" 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
-    ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示可用帐户磁贴" border="true":::
 
-    在 iOS 设备上，点击要恢复的帐户以打开该帐户的全屏视图。
+1. 点击要恢复的帐户的磁贴，然后点击 "登录" 选项以恢复。 输入密码，然后确认你的电子邮件地址或电话号码作为附加验证。
 
-    ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="身份验证器将一次性密码提供为验证码" border="true":::
 
-2. 登录以恢复帐户。 在 Android 设备上，选择“登录以恢复”。
+### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供更多验证
 
-    ![通过 Microsoft Authenticator 应用，可在 Android 上输入登录信息](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+1. 在 Microsoft Authenticator 应用程序的 "**帐户**" 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
-    在 iOS 设备上，点击要恢复的帐户磁贴，然后点击“登录并恢复”选项。 然后键入密码，确认用作附加验证方式的电子邮件地址或电话号码。
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示可用帐户磁贴" border="true":::
 
-    ![通过 Microsoft Authenticator 应用，可在 iOS 上输入登录信息](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
+1. 在全屏视图中，点击选项以扫描 QR 代码以完全恢复。
 
-### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供附加验证
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="身份验证器将一次性密码提供为验证码" border="true":::
 
-1. 登录以恢复帐户。 在 Android 设备上，选择“登录以恢复”。
-
-    ![Microsoft Authenticator 应用将在 Android 上恢复工作或学校帐户](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
-
-    在 iOS 设备上，点击要恢复的帐户以打开该帐户的全屏视图。
-
-    ![Microsoft Authenticator 应用将在 iOS 上恢复工作或学校帐户](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
-
-2. 可以使用 QR 码来恢复帐户。 选择“扫描 QR 码以恢复”，然后扫描 QR 码。
-
-    在 Android 上：
-
-    ![通过 Android 上的 Microsoft Authenticator 应用，可以扫描 QR 码](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
-
-    在 iOS 上：
-
-    ![通过 iOS 上的 Microsoft Authenticator 应用，可以扫描 QR 码](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
-
-    >[!NOTE]
-    >有关 QR 码以及如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用 Authenticator 应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)，具体取决于管理员是否已启用安全信息。
-    >
-    >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
+>[!NOTE]
+>有关 QR 码以及如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用 Authenticator 应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)，具体取决于管理员是否已启用安全信息。
+>
+>如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>对备份和恢复问题进行故障排除
 
@@ -136,7 +117,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 - **现有的 Microsoft Authenticator 帐户**：如果已在 Microsoft Authenticator 应用中设置了帐户，该应用将无法恢复备份的帐户。 阻止恢复有助于确保帐户详细信息不会被过期的信息覆盖。 在这种情况下，必须先从 Authenticator 应用中设置的现有帐户删除现有的帐户信息，然后才能恢复备份。
 
-- **备份已过期**：如果备份信息已过期，系统可能会要求你再次登录 Microsoft 恢复帐户以刷新信息。 恢复帐户是最初用于存储备份的个人 Microsoft 帐户。 如果需要登录，你会在菜单或操作栏上看到一个红点，或者你会看到一个感叹号，提示你登录以完成从备份中还原。 选择该图标后，系统将提示你再次登录以更新信息。
+- **备份已过期**：如果备份信息已过期，系统可能会要求你再次登录 Microsoft 恢复帐户以刷新信息。 恢复帐户是最初用于存储备份的个人 Microsoft 帐户。 如果需要登录，你会在菜单或操作栏上看到一个红点，或者你将看到一个惊叹号图标，提示你登录以完成从备份还原。 选择相应的图标后，系统将提示你再次登录以更新你的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

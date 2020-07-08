@@ -6,43 +6,42 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f4cf9e2d02030021d3092629731fcd8b77566907
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213935"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中设计表
 
-本文提供了有关在 SQL 池中设计表的关键介绍性概念。
+本文提供在 SQL 池中设计表时会遇到的重要简介性概念。
 
 ## <a name="determine-table-category"></a>确定表类别
 
 [星型架构](https://en.wikipedia.org/wiki/Star_schema)将数据组织成事实数据表和维度表。 某些表在转移到事实数据表或维度表之前已用于集成或暂存数据。 设计某个表时，请确定该表的数据是属于事实数据表、维度表还是集成表。 此项决策可以明确相应的表结构和分布方式。
 
-- **事实数据表**包含定量数据，这些数据通常在事务系统中生成，然后加载到 SQL 池中。 例如，零售企业每天会生成销售事务，然后将数据加载到 SQL 池事实数据表中进行分析。
+- 事实数据表包含定量数据，这些数据通常在事务系统中生成，然后加载到 SQL 池中  。 例如，零售企业每天会生成销售事务，然后将数据载入 SQL 池事实数据表进行分析。
 
-- **维度表**包含属性数据，这些数据可能会更改，但一般不会经常更改。 例如，客户的姓名和地址存储在维度表中，仅当客户的个人资料发生更改时，这些数据才会更新。 若要最大程度地减少大型事实数据表的大小，客户的名称和地址不需要位于事实数据表的每一行。 事实数据表和维度表可以共享一个客户 ID。 查询可以联接两个表，以关联客户的个人资料和事务。
+- **维度表**包含属性数据，这些数据可能会更改，但一般不会经常更改。 例如，客户的姓名和地址存储在维度表中，仅当客户的个人资料发生更改时，这些数据才会更新。 为了尽量缩小大型事实数据表的大小，不要求将客户的姓名和地址输入到事实数据表的每一行中。 事实数据表和维度表可以共享一个客户 ID。 查询可以联接两个表，以关联客户的个人资料和事务。
 
 - **集成表**为集成或暂存数据提供位置。 可以将集成表创建为常规表、外部表或临时表。 例如，可将数据加载到临时表，在暂存位置对数据执行转换，然后将数据插入生产表中。
 
 ## <a name="schema-and-table-names"></a>架构和表名称
 
-可通过架构将以相似方式使用的表组合在一起。  如果要将多个数据库从本地解决方案迁移到 SQL 池，最佳做法是将所有事实数据表、维度表和集成表迁移到 SQL 池中的一个架构。
+可通过架构将以相似方式使用的表组合在一起。  若要将多个数据库从本地解决方案迁移到 SQL 池，最好是将所有事实数据表、维度表和集成表迁移到 SQL 池中的一个架构内。
 
-例如，可以将[WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)示例 SQL 池中的所有表都存储在一个名为 wwi 的架构内。 以下代码创建名为 wwi 的[用户定义的架构](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+例如，可将所有表存储在 [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 示例 SQL 池中一个名为 wwi 的架构内。 以下代码创建名为 wwi 的[用户定义的架构](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-若要在 SQL 池中显示表的组织，可以使用事实、dim 和 int 作为表名称的前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。  
+若要在 SQL 池中显示表的组织方式，可以使用 fact、dim 和 int 作为表名前缀。 下表显示了 WideWorldImportersDW 的一些架构和表名称。  
 
 | WideWorldImportersDW 表  | 表类型 | SQL 池 |
 |:-----|:-----|:------|:-----|
@@ -51,11 +50,11 @@ CREATE SCHEMA wwi;
 
 ## <a name="table-persistence"></a>表暂留
 
-表将数据永久存储在 Azure 存储中，临时存储在 Azure 存储中，或存储在 SQL 池外部的数据存储中。
+表将数据永久或临时存储在 Azure 存储中，或者存储在 SQL 池外部的数据存储中。
 
 ### <a name="regular-table"></a>常规表
 
-常规表将 Azure 存储中的数据存储为 SQL 池的一部分。 不管是否打开了会话，表和数据都会持久保留。  下面的示例创建一个具有两列的正则表。
+常规表将 Azure 存储中的数据存储为 SQL 池的一部分。 不管是否打开了会话，表和数据都会持久保留。  以下示例创建一个包含两个列的常规表。
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -69,9 +68,9 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="external-table"></a>外部表
 
-外部表指向位于 Azure 存储 Blob 或 Azure Data Lake Store 中的数据。 与 CREATE TABLE 作为 SELECT 语句结合使用时，从外部表中进行选择会将数据导入到 SQL 池中。
+外部表指向位于 Azure 存储 Blob 或 Azure Data Lake Store 中的数据。 与 CREATE TABLE AS SELECT 语句结合使用时，从外部表中选择数据即可将数据导入 SQL 池。
 
-这种情况下，外部表对于加载数据非常有用。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
+因此，外部表可用于加载数据。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
 
 ## <a name="data-types"></a>数据类型
 
@@ -79,7 +78,7 @@ SQL 池支持最常用的数据类型。 有关受支持数据类型的列表，
 
 ## <a name="distributed-tables"></a>分布式表
 
-SQL 池的一项基本功能是它可以跨[分布](massively-parallel-processing-mpp-architecture.md#distributions)区存储和操作表。  SQL 池支持以下三种方法来分发数据：轮循机制（默认）、哈希和复制。
+SQL 池的一个基本功能是可以跨[分布区](massively-parallel-processing-mpp-architecture.md#distributions)以特定方式对表进行存储和运算。  SQL 池支持使用以下三种方法来分配数据：轮询机制（默认）、哈希和复制。
 
 ### <a name="hash-distributed-tables"></a>哈希分布表
 
@@ -89,13 +88,13 @@ SQL 池的一项基本功能是它可以跨[分布](massively-parallel-processin
 
 ### <a name="replicated-tables"></a>复制表
 
-复制表在每个计算节点上提供表的完整副本。 查询在复制的表上快速运行，因为复制表上的联接不需要移动数据。 但复制需要额外的存储空间，但对于大型表并不可行。
+复制表在每个计算节点上提供表的完整副本。 对复制表运行的查询速度较快，因为复制表中的联接不需要移动数据。 不过，复制需要额外的存储，并且对于大型表不可行。
 
 有关详细信息，请参阅[复制表的设计准则](design-guidance-for-replicated-tables.md)。
 
 ### <a name="round-robin-tables"></a>循环表
 
-循环表将表行均匀地分布到所有分布区中。 行将随机分布。 将数据加载到循环表中的速度很快。  请记住，查询可能需要比其他分发方法更多的数据移动。
+循环表将表行均匀地分布到所有分布区中。 行将随机分布。 将数据加载到循环表中的速度很快。  请记住，与其他分布方法相比，查询可能需要进行更多的数据移动。
 
 有关详细信息，请参阅[分布式表的设计准则](sql-data-warehouse-tables-distribute.md)。
 
@@ -134,11 +133,11 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 [创建统计信息](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic)的过程是自动发生的。  
 
-更新统计信息不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
+不会自动更新统计信息。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
 
 ## <a name="primary-key-and-unique-key"></a>主键和唯一键
 
-仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。  仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。  检查[SQL 池表约束](sql-data-warehouse-table-constraints.md)。
+仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。  仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。  检查 [SQL 池表约束](sql-data-warehouse-table-constraints.md)。
 
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 
@@ -147,19 +146,19 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 | T-SQL 语句 | 说明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 通过定义所有表列和选项来创建空表。 |
-| [创建外部表](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 创建外部表。 表的定义存储在 SQL 池中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Store 中。 |
+| [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 创建外部表。 表定义存储在 SQL 池中。 表数据存储在 Azure Blob 存储或 Azure Data Lake Store 中。 |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 在新表中填充 select 语句的结果。 表列和数据类型基于 select 语句的结果。 若要导入数据，此语句可从外部表中进行选择。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 通过将 select 语句的结果导出到外部位置，来创建新的外部表。  该位置为 Azure Blob 存储或 Azure Data Lake Store。 |
 
-## <a name="aligning-source-data-with-the-sql-pool"></a>将源数据与 SQL 池对齐
+## <a name="aligning-source-data-with-the-sql-pool"></a>使源数据与 SQL 池相符
 
-通过从另一个数据源加载数据来填充 SQL 池表。 若要成功执行加载，源数据中列的数目和数据类型必须与 SQL 池中的表定义一致。 使数据相符可能是设计表时的最难部分。
+从其他数据源加载数据可以填充 SQL 池表。 若要成功执行加载操作，源数据中列的数目和数据类型必须与 SQL 池中的表定义相符。 使数据相符可能是设计表时的最难部分。
 
-如果数据来自多个数据存储，请将数据加载到 SQL 池中，并将其存储在集成表中。 数据在集成表中后，可以使用 SQL 池的强大功能来执行转换操作。 准备好数据后，可以将其插入到生产表中。
+如果数据来自多个数据存储，可将数据载入 SQL 池，并将其存储在集成表中。 将数据存储到集成表中后，可以使用 SQL 池的功能来执行转换操作。 准备好数据后，可以将其插入到生产表中。
 
 ## <a name="unsupported-table-features"></a>不支持的表功能
 
-SQL 池支持许多（但不是全部）由其他数据库提供的表功能。  以下列表显示了 SQL 池不支持的某些表功能：
+SQL 池支持其他数据库提供的许多（但不是全部）表功能。  以下列表显示了 SQL 池不支持的一些表功能：
 
 - 外键，请查看[表约束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [计算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -180,7 +179,7 @@ SQL 池支持许多（但不是全部）由其他数据库提供的表功能。 
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-但是，使用 DBCC 命令可能会受到很大限制。  动态管理视图 (DMV) 显示的信息比 DBCC 命令更详细。 首先创建此视图：
+但是，使用 DBCC 命令可能会受到很大限制。  动态管理视图 (DMV) 显示的信息比 DBCC 命令更详细。 请先创建此视图：
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -375,4 +374,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>后续步骤
 
-为 SQL 池创建表后，下一步是将数据加载到表中。  有关加载教程，请参阅[将数据加载到 SQL 池中](load-data-wideworldimportersdw.md)。
+为 SQL 池创建表后，下一步是将数据加载到该表中。  有关加载的教程，请参阅[将数据加载到 SQL 池](load-data-wideworldimportersdw.md)。

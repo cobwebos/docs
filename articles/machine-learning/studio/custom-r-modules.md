@@ -1,21 +1,20 @@
 ---
-title: 创建 & 部署自定义 R 模块
+title: 创建和部署自定义 R 模块
 titleSuffix: ML Studio (classic) - Azure
-description: 了解如何在机器学习工作室（经典）中创作和部署自定义 R 模块。
+description: 了解如何在 ML 工作室（经典）中创作和部署自定义 R 模块。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208425"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957318"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定义 Azure 机器学习工作室（经典版）的自定义 R 模块
 
@@ -39,55 +38,58 @@ ms.locfileid: "82208425"
 ## <a name="the-source-file"></a>源文件
 以 **Custom Add Rows** 模块为例，该模块可修改 **Add Rows** 模块的标准实施，后者用于连接来自两个数据集（数据帧）的行（观察值）。 标准 **Add Rows** 模块会使用 `rbind` 算法将第二个输入数据集的行附加到第一个输入数据集的末尾。 自定义 `CustomAddRows` 函数同样会接受两个数据集，但它还会接受布尔交换参数作为一个额外的输入。 如果交换参数设置为 **FALSE**，函数会返回与标准实现相同的数据集。 但如果交换参数为 **TRUE**，则函数会转而将第一个输入数据集的行附加到第二个数据集的末尾。 CustomAddRows.R 文件包含 **Custom Add Rows** 模块公开的 R `CustomAddRows` 函数的实施，该文件的 R 代码如下。
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
+{
+    if (swap)
     {
-        if (swap)
-        {
-            return (rbind(dataset2, dataset1));
-        }
-        else
-        {
-            return (rbind(dataset1, dataset2));
-        } 
+        return (rbind(dataset2, dataset1));
+    }
+    else
+    {
+        return (rbind(dataset1, dataset2));
     } 
+} 
+```
 
 ### <a name="the-xml-definition-file"></a>XML 定义文件
 要将此 `CustomAddRows` 函数作为 Azure 机器学习工作室（经典版）模块公开，必须创建 XML 定义文件来指定“自定义添加行”模块的外观和行为****。 
 
-    <!-- Defined a module using an R Script -->
-    <Module name="Custom Add Rows">
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
+```xml
+<!-- Defined a module using an R Script -->
+<Module name="Custom Add Rows">
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another. Dataset 2 is concatenated to Dataset 1 when Swap is FALSE, and vice versa when Swap is TRUE.</Description>
 
-    <!-- Specify the base language, script file and R function to use for this module. -->        
-        <Language name="R" 
-         sourceFile="CustomAddRows.R" 
-         entryPoint="CustomAddRows" />  
+<!-- Specify the base language, script file and R function to use for this module. -->        
+    <Language name="R" 
+        sourceFile="CustomAddRows.R" 
+        entryPoint="CustomAddRows" />  
 
-    <!-- Define module input and output ports -->
-    <!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
-        <Ports>
-            <Input id="dataset1" name="Dataset 1" type="DataTable">
-                <Description>First input dataset</Description>
-            </Input>
-            <Input id="dataset2" name="Dataset 2" type="DataTable">
-                <Description>Second input dataset</Description>
-            </Input>
-            <Output id="dataset" name="Dataset" type="DataTable">
-                <Description>The combined dataset</Description>
-            </Output>
-        </Ports>
+<!-- Define module input and output ports -->
+<!-- Note: The values of the id attributes in the Input and Arg elements must match the parameter names in the R Function CustomAddRows defined in CustomAddRows.R. -->
+    <Ports>
+        <Input id="dataset1" name="Dataset 1" type="DataTable">
+            <Description>First input dataset</Description>
+        </Input>
+        <Input id="dataset2" name="Dataset 2" type="DataTable">
+            <Description>Second input dataset</Description>
+        </Input>
+        <Output id="dataset" name="Dataset" type="DataTable">
+            <Description>The combined dataset</Description>
+        </Output>
+    </Ports>
 
-    <!-- Define module parameters -->
-        <Arguments>
-            <Arg id="swap" name="Swap" type="bool" >
-                <Description>Swap input datasets.</Description>
-            </Arg>
-        </Arguments>
-    </Module>
+<!-- Define module parameters -->
+    <Arguments>
+        <Arg id="swap" name="Swap" type="bool" >
+            <Description>Swap input datasets.</Description>
+        </Arg>
+    </Arguments>
+</Module>
+```
 
-
-但要注意，XML 文件中 **Input** 和 **Arg** 元素的 **ID** 属性的值必须与 CustomAddRows.R 文件中 R 代码的函数参数名完全匹配：（示例中的 *dataset1*、*dataset2* 和 *swap*）。 同样，**Language** 元素的 **entryPoint** 属性值必须与 R 脚本中的函数名完全匹配：（示例中的 *CustomAddRows*）。 
+但要注意，XML 文件中 **Input** 和 **Arg** 元素的 **ID** 属性的值必须与 CustomAddRows.R 文件中 R 代码的函数参数名完全匹配：（示例中的 *dataset1*、*dataset2* 和 *swap*）。 同样，Language 元素的 entryPoint 属性值必须与 R 脚本中的函数名完全匹配**** ****：（示例中的 CustomAddRows）**。 
 
 与此相反，**Output** 元素的 **ID** 属性与 R 脚本中的任何变量都不相符。 需要多个输出时，只需从 R 函数返回一个列表，列表中的结果需与 XML 文件中公开的 **Outputs** 元素顺序相同**。
 
@@ -102,12 +104,13 @@ ms.locfileid: "82208425"
 
 ## <a name="elements-in-the-xml-definition-file"></a>XML 定义文件中的元素
 ### <a name="module-elements"></a>Module 元素
-**Module** 元素用于在 XML 文件中定义自定义模块。 可使用多个 **Module ** 元素在一个 XML 文件中定义多个模块。 工作区中的每个模块必须具有唯一的名称。 如果使用与现有自定义模块相同的名称注册自定义模块，新的模块会替代现有模块。 但自定义模块可使用与现有 Azure 机器学习工作室（经典版）模块相同的名称进行注册。 此时模块会出现在模块面板的“自定义”**** 类别中。
+**Module** 元素用于在 XML 文件中定义自定义模块。 可使用多个 **Module**  元素在一个 XML 文件中定义多个模块。 工作区中的每个模块必须具有唯一的名称。 如果使用与现有自定义模块相同的名称注册自定义模块，新的模块会替代现有模块。 但自定义模块可使用与现有 Azure 机器学习工作室（经典版）模块相同的名称进行注册。 此时模块会出现在模块面板的“自定义”**** 类别中。
 
-    <Module name="Custom Add Rows" isDeterministic="false"> 
-        <Owner>Microsoft Corporation</Owner>
-        <Description>Appends one dataset to another...</Description>/> 
-
+```xml
+<Module name="Custom Add Rows" isDeterministic="false"> 
+    <Owner>Microsoft Corporation</Owner>
+    <Description>Appends one dataset to another...</Description>/> 
+```
 
 可在 **Module** 元素中指定另外两个可选元素：
 
@@ -127,8 +130,9 @@ ms.locfileid: "82208425"
 ### <a name="language-definition"></a>语言定义
 XML 定义文件中的 **Language** 元素用于指定自定义模块的语言。 目前，R 是唯一受支持的语言。 **sourceFile** 属性的值必须是包含运行模块时要调用的函数的 R 文件的名称。 此文件必须是 zip 包的一部分。 **entryPoint** 属性的值是被调用的函数名，且必须与源文件中定义的一个有效函数相匹配。
 
-    <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
-
+```xml
+<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
+```
 
 ### <a name="ports"></a>端口
 自定义模块的输入和输出端口是在 XML 定义文件 **Ports** 部分的子元素中进行定义的。 这些元素的顺序决定了用户看到的布局 (UX)。 XML 文件 **Ports** 元素中列出的第一个子 **input** 或 **output** 会成为机器学习 UX 最左边的输入端口。
@@ -143,18 +147,22 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 
 **DataTable：** 此类数据会作为 data.frame 传送到 R 函数。 事实上，受机器学习支持并且与 **DataTable** 兼容的所有类型（例如，CSV 文件或 ARFF 文件）都将自动转换为 data.frame。 
 
-        <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
-            <Description>Input Dataset 1</Description>
-           </Input>
+```xml
+<Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
+    <Description>Input Dataset 1</Description>
+</Input>
+```
 
 与每个 **DataTable** 输入端口相关联的 **ID** 属性必须拥有一个唯一的值且此值必须与 R 函数中与之对应的命名参数相匹配。
 未在实验中作为输入传送的可选 **DataTable** 端口会向 R 函数传送 **NULL** 值，且如果未连接输入，则会忽略可选 zip 端口。 **isOptional** 属性为 **DataTable** 和 **ZIP** 类型的可选属性，默认为 FALSE**。
 
 **Zip：** 自定义模块可接受 zip 文件作为输入。 此输入会解压缩到函数的 R 工作目录中
 
-        <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
-            <Description>Zip files to be extracted to the R working directory.</Description>
-           </Input>
+```xml
+<Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
+    <Description>Zip files to be extracted to the R working directory.</Description>
+</Input>
+```
 
 对于自定义 R 模块，Zip 端口的 ID 无需与 R 函数的任何参数匹配。 这是因为 zip 文件会自动提取到 R 工作目录。
 
@@ -168,49 +176,56 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 * **Input** 元素的 **isOptional** 属性值并非必须指定（且未指定时，默认为 false **）；但如果指定，则属性值必须为 true ** 或 false**。
 
 ### <a name="output-elements"></a>输出元素
-**标准输出端口：** 输出端口被映射到 R 函数返回的值上，可用于后续模块。 DataTable** 是当前支持的唯一标准输出端口类型。 （即将提供对*学员*和*转换*的支持。）*DataTable*输出定义为：
+**标准输出端口：** 输出端口将映射到 R 函数返回的值上，可用于后续模块。 DataTable** 是当前支持的唯一标准输出端口类型。 （随后会支持 Learners ** 和 Transforms**。）*DataTable* 输出的定义为：
 
-    <Output id="dataset" name="Dataset" type="DataTable">
-        <Description>Combined dataset</Description>
-    </Output>
+```xml
+<Output id="dataset" name="Dataset" type="DataTable">
+    <Description>Combined dataset</Description>
+</Output>
+```
 
 对于自定义 R 模块中的输出而言，**ID** 属性值无需与 R 脚本中的任何内容相对应，但该值必须唯一。 对于单个模块输出，R 函数返回的值必须为 *data.frame*。 若要输出某个受支持数据类型的多个对象，需在 XML 定义文件中指定合适的端口且对象必须作为列表返回。 从左至右分配输出对象到输出端口，反映返回列表中对象的排列顺序。
 
 例如，如果想要修改 **Custom Add Rows** 模块，输出原始的两个数据集，*dataset1* 和 *dataset2*，以及新联接的数据集 *dataset*（排列顺序从左至右依次是：*dataset*，*dataset1*，*dataset2*），请按如下所示在 CustomAddRows.xml 文件中定义输出端口：
 
-    <Ports> 
-        <Output id="dataset" name="Dataset Out" type="DataTable"> 
-            <Description>New Dataset</Description> 
-        </Output> 
-        <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
-            <Description>First Dataset</Description> 
-        </Output> 
-        <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
-            <Description>Second Dataset</Description> 
-        </Output> 
-        <Input id="dataset1" name="Dataset 1" type="DataTable"> 
-            <Description>First Input Table</Description>
-        </Input> 
-        <Input id="dataset2" name="Dataset 2" type="DataTable"> 
-            <Description>Second Input Table</Description> 
-        </Input> 
-    </Ports> 
+```xml
+<Ports> 
+    <Output id="dataset" name="Dataset Out" type="DataTable"> 
+        <Description>New Dataset</Description> 
+    </Output> 
+    <Output id="dataset1_out" name="Dataset 1 Out" type="DataTable"> 
+        <Description>First Dataset</Description> 
+    </Output> 
+    <Output id="dataset2_out" name="Dataset 2 Out" type="DataTable"> 
+        <Description>Second Dataset</Description> 
+    </Output> 
+    <Input id="dataset1" name="Dataset 1" type="DataTable"> 
+        <Description>First Input Table</Description>
+    </Input> 
+    <Input id="dataset2" name="Dataset 2" type="DataTable"> 
+        <Description>Second Input Table</Description> 
+    </Input> 
+</Ports> 
+```
 
+在“CustomAddRows.R”中以列表形式按正确的顺序返回列出的对象：
 
-并按 "Customaddrows.xml" 中的正确顺序返回列表中的对象的列表：
-
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
-        if (swap) { dataset <- rbind(dataset2, dataset1)) } 
-        else { dataset <- rbind(dataset1, dataset2)) 
-        } 
-    return (list(dataset, dataset1, dataset2)) 
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
+    if (swap) { dataset <- rbind(dataset2, dataset1)) } 
+    else { dataset <- rbind(dataset1, dataset2)) 
     } 
+    return (list(dataset, dataset1, dataset2)) 
+} 
+```
 
-**可视化输出：** 还可以指定 *Visualization* 类型的输出端口，该端口可显示 R 图形设备输出和控制台输出。 此端口不包含在 R 函数输出中且不会干扰其他输出端口类型的顺序。 若要添加可视化端口到自定义模块，添加一个 **type** 属性的值为 *Visualization* 的 **Output** 元素：
+**可视化输出：** 还可以指定 Visualization 类型的输出端口，该端口可显示 R 图形设备输出和控制台输出**。 此端口不包含在 R 函数输出中且不会干扰其他输出端口类型的顺序。 若要添加可视化端口到自定义模块，添加一个 **type** 属性的值为 *Visualization* 的 **Output** 元素：
 
-    <Output id="deviceOutput" name="View Port" type="Visualization">
-      <Description>View the R console graphics device output.</Description>
-    </Output>
+```xml
+<Output id="deviceOutput" name="View Port" type="Visualization">
+    <Description>View the R console graphics device output.</Description>
+</Output>
+```
 
 **输出规则：**
 
@@ -229,64 +244,69 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 
 **int** – 整数（32 位）类型参数。
 
-    <Arg id="intValue1" name="Int Param" type="int">
-        <Properties min="0" max="100" default="0" />
-        <Description>Integer Parameter</Description>
-    </Arg>
-
+```xml
+<Arg id="intValue1" name="Int Param" type="int">
+    <Properties min="0" max="100" default="0" />
+    <Description>Integer Parameter</Description>
+</Arg>
+```
 
 * 可选属性**：**min**，**max**，**default** 和 **isOptional**
 
 **double** – 双精度浮点数类型参数。
 
-    <Arg id="doubleValue1" name="Double Param" type="double">
-        <Properties min="0.000" max="0.999" default="0.3" />
-        <Description>Double Parameter</Description>
-    </Arg>
+```xml
+<Arg id="doubleValue1" name="Double Param" type="double">
+    <Properties min="0.000" max="0.999" default="0.3" />
+    <Description>Double Parameter</Description>
+</Arg>
+```
 
-
-* 可选属性  ：**min**，**max**，**default** 和 **isOptional**
+* 可选属性**：**min**，**max**，**default** 和 **isOptional**
 
 **bool** – 由 UX 中复选框表示的布尔参数。
 
-    <Arg id="boolValue1" name="Boolean Param" type="bool">
-        <Properties default="true" />
-        <Description>Boolean Parameter</Description>
-    </Arg>
-
-
+```xml
+<Arg id="boolValue1" name="Boolean Param" type="bool">
+    <Properties default="true" />
+    <Description>Boolean Parameter</Description>
+</Arg>
+```
 
 * 可选属性**：**default** - 若未设置则为 false
 
 **string**：标准字符串
 
-    <Arg id="stringValue1" name="My string Param" type="string">
-        <Properties isOptional="true" />
-        <Description>String Parameter 1</Description>
-    </Arg>    
+```xml
+<Arg id="stringValue1" name="My string Param" type="string">
+    <Properties isOptional="true" />
+    <Description>String Parameter 1</Description>
+</Arg>    
+```
 
 * 可选属性**：**default** 和 **isOptional**
 
-**ColumnPicker**：列选择参数。 此类型在 UX 中显示为列选择器。 此处使用**属性**元素指定从中选择列的端口的 ID，其中目标端口类型必须为*DataTable*。 列选择结果以字符串列表的形式传送到 R 函数，其中包含选中的列的名称。 
+**ColumnPicker**：列选择参数。 此类型在 UX 中显示为列选择器。 此处的 **Property** 元素用于指定要从其中选择列的端口的 ID；目标端口类型必须为 *DataTable*。 列选择结果以字符串列表的形式传送到 R 函数，其中包含选中的列的名称。 
 
-        <Arg id="colset" name="Column set" type="ColumnPicker">      
-          <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
-          <Description>Column set</Description>
-        </Arg>
+```xml
+<Arg id="colset" name="Column set" type="ColumnPicker">      
+    <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
+    <Description>Column set</Description>
+</Arg>
+```
 
-
-* *必需属性*： **portId** -与类型为*DATATABLE*的输入元素的 ID 匹配。
+* 必需属性**：**portId** - 将 Input 元素 ID 与 *DataTable* 类型相匹配。
 * 可选属性**：
   
   * **allowedTypes** - 筛选可选的列类型。 有效值包括： 
     
     * Numeric
-    * 布尔值
+    * 布尔
     * 分类
-    * 字符串
+    * String
     * Label
     * 功能
-    * 分数
+    * Score
     * 全部
   * **default** - 列选择器的有效默认选择包括： 
     
@@ -314,55 +334,62 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
 
 **DropDown**：用户指定的枚举（下拉）列表。 使用 **Item** 元素在 **Properties** 元素中指定下拉列表项。 每个 **Item** 的 **ID** 必须是唯一的有效 R变量 **Item** 的 **name** 值既是显示的文本，也是传送到 R 函数的值。
 
-    <Arg id="color" name="Color" type="DropDown">
-      <Properties default="red">
+```xml
+<Arg id="color" name="Color" type="DropDown">
+    <Properties default="red">
         <Item id="red" name="Red Value"/>
         <Item id="green" name="Green Value"/>
         <Item id="blue" name="Blue Value"/>
-      </Properties>
-      <Description>Select a color.</Description>
-    </Arg>    
+    </Properties>
+    <Description>Select a color.</Description>
+</Arg>    
+```
 
 * 可选属性**：
-  * **默认**值-默认属性的值必须与某个**项**元素的 ID 值相对应。
+  * **default** - default 属性的值必须与一个 **Item** 元素中的 ID 值相对应。
 
 ### <a name="auxiliary-files"></a>辅助文件
 放置在自定义模块 ZIP 文件中的所有文件都可以在执行期间使用。 所有存在的目录结构都将保留。 这意味着本地和 Azure 机器学习工作室（经典版）执行中的文件寻源方式相同。 
 
 > [!NOTE]
-> 请注意，所有文件都提取到 "src" 目录中，因此所有路径都应具有 "src/" 前缀。
+> 请注意所有文件均将提取到了“src”目录，因此所有路径应有“src/”前缀。
 > 
 > 
 
-例如，假设你想要从数据集中删除包含 NAs 的任何行，还需要删除任何重复的行，然后将其输出到 Customaddrows.xml 中，并且已经编写了一个在 Removedupnarows.r 文件中执行该操作的 R 函数：
+例如，假设你要从数据集中删除所有带 NA 的行并删除所有重复的行，然后再将其输出到 CustomAddRows 中，而且你已在 RemoveDupNARows.R 文件中编写了一个 R 函数来执行此操作。
 
-    RemoveDupNARows <- function(dataFrame) {
-        #Remove Duplicate Rows:
-        dataFrame <- unique(dataFrame)
-        #Remove Rows with NAs:
-        finalDataFrame <- dataFrame[complete.cases(dataFrame),]
-        return(finalDataFrame)
-    }
+```r
+RemoveDupNARows <- function(dataFrame) {
+    #Remove Duplicate Rows:
+    dataFrame <- unique(dataFrame)
+    #Remove Rows with NAs:
+    finalDataFrame <- dataFrame[complete.cases(dataFrame),]
+    return(finalDataFrame)
+}
+```
+
 可在 CustomAddRows 函数中寻源 RemoveDupNARows.R 辅助文件：
 
-    CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
-        source("src/RemoveDupNARows.R")
-            if (swap) { 
-                dataset <- rbind(dataset2, dataset1))
-             } else { 
-                  dataset <- rbind(dataset1, dataset2)) 
-             } 
-        dataset <- removeDupNARows(dataset)
-        return (dataset)
-    }
+```r
+CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
+    source("src/RemoveDupNARows.R")
+        if (swap) { 
+            dataset <- rbind(dataset2, dataset1))
+        } else { 
+            dataset <- rbind(dataset1, dataset2)) 
+        } 
+    dataset <- removeDupNARows(dataset)
+    return (dataset)
+}
+```
 
-接下来，将包含 "Customaddrows.xml"、"Customaddrows.xml" 和 "Removedupnarows.r" 的 zip 文件上传为自定义 R 模块。
+接下来，上传一个包含“CustomAddRows.R”、“CustomAddRows.xml”和“RemoveDupNARows.R”的 zip 文件作为自定义 R 模块。
 
 ## <a name="execution-environment"></a>执行环境
 R 脚本的执行环境使用与**执行 R 脚本**模块相同的 R 版本，且可以使用相同的默认包。 还可以将 R 包加入自定义模块 zip 文件，将其添加到自定义模块。 只需像在自己的 R 环境中一样将其加载到 R 脚本中。 
 
 执行环境限制**** 包括：
 
-* 非持久文件系统：自定义模块运行的文件编写无法在相同模块的多个运行上持续进行。
+* 非永久文件系统：运行自定义模块时写入的文件不会在同一模块的多个运行中保留。
 * 无网络访问
 

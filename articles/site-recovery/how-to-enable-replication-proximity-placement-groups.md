@@ -5,12 +5,11 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 9fabf6cf4c8a3afc2d119fca2c8cdc2526ddbebb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847627"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84415859"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>将邻近放置组中运行的 Azure 虚拟机复制到另一个区域
 
@@ -27,6 +26,9 @@ ms.locfileid: "83847627"
 - 最佳做法是将虚拟机故障转移/故障恢复到邻近放置组。 但是，如果 VM 在故障转移/故障恢复期间无法在邻近放置组中调出，则故障转移/故障恢复仍将发生，并且系统将在邻近放置组之外创建虚拟机。
 -  如果将某个可用性集固定到邻近放置组，且可用性集中的 VM 在故障转移/故障恢复时具有分配约束，则系统将在可用性集和邻近放置组之外创建虚拟机。
 -  非托管磁盘不支持适用于邻近放置组的 Site Recovery。
+
+> [!Note]
+> Azure Site Recovery 不支持从适用于 Hyper-v 到 Azure 的托管磁盘的故障回复。 因此，不支持从 Azure 到 Hyper-v 的邻近位置组故障回复。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -58,7 +60,7 @@ $OSdiskId = $vm.StorageProfile.OsDisk.ManagedDisk.Id
 $RecoveryOSDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 $RecoveryReplicaDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 
-$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType -RecoveryProximityPlacementGroupId $recPpg.Id
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
 # Data disk
 $datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id

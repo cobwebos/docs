@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: fbc6d6fa8f9a3b424eaec1f04a61b5ca24fe14fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161777"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957369"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>设计带访问控制的多 DRM 内容保护系统 
 
@@ -222,8 +221,10 @@ DRM 子系统可能包含以下组件：
 
 * 颁发者 URL 必须以“/”结尾。 受众必须是播放器应用程序客户端 ID。 此外，必须在颁发者 URL 的末尾添加“/”。
 
-        <add key="ida:audience" value="[Application Client ID GUID]" />
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```xml
+    <add key="ida:audience" value="[Application Client ID GUID]" />
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
+    ```
 
     在 [JWT 解码器](http://jwt.calebb.net/)中，可以看到 JWT 中所示的 **aud** 和 **iss**：
 
@@ -235,11 +236,15 @@ DRM 子系统可能包含以下组件：
 
 * 设置动态 CENC 保护时，请使用正确的颁发者。
 
-        <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```xml
+    <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
+    ```
 
     以下代码无法运行：
 
-        <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```xml
+    <add key="ida:issuer" value="https://willzhanad.onmicrosoft.com/" />
+    ```
 
     GUID 是 Azure AD 租户 ID。 可以在 Azure 门户上的“终结点”弹出菜单中找到该 GUID。****
 
@@ -249,7 +254,7 @@ DRM 子系统可能包含以下组件：
 
 * 创建限制要求时，请设置适当的 TokenType。
 
-        objTokenRestrictionTemplate.TokenType = TokenType.JWT;
+    `objTokenRestrictionTemplate.TokenType = TokenType.JWT;`
 
     由于除了 JWT (ACS) 以外，还添加了对 SWT (Azure AD) 的支持，因此默认 TokenType 是 TokenType.JWT。 如果使用 SWT/ACS，则必须将令牌设置为 TokenType.SWT。
 
@@ -276,7 +281,7 @@ DRM 子系统可能包含以下组件：
 
 由于 Azure AD 信任 Microsoft 帐户域，因此可以将以下任何域的任何帐户添加到自定义 Azure AD 租户，并使用该帐户登录：
 
-| **域名** | **Domain** |
+| **域名** | **域** |
 | --- | --- |
 | **自定义 Azure AD 租户域** |somename.onmicrosoft.com |
 | **企业域** |microsoft.com |

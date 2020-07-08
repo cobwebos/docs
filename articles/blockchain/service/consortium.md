@@ -5,11 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712524"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure 区块链服务联盟
 
@@ -37,14 +36,14 @@ ms.locfileid: "79247613"
 | 邀请新成员 | 否 | 是 |
 | 设置或更改成员参与者角色 | 否 | 是 |
 | 更改成员显示名称 | 仅适用于自己的成员 | 仅适用于自己的成员 |
-| 删除成员 | 仅适用于自己的成员 | 是 |
+| 移除成员 | 仅适用于自己的成员 | 是 |
 | 参与区块链事务 | 是 | 是 |
 
 ### <a name="user-role"></a>用户角色
 
 用户是没有管理员功能的联盟参与者。 它们不能参与管理与联合会相关的成员。 用户可以更改其成员显示名称，并且可以从联合会删除自己。
 
-### <a name="administrator"></a>Administrator
+### <a name="administrator"></a>管理员
 
 管理员可以管理联盟中的成员。 管理员可以邀请成员、删除成员或更新联合会中的成员角色。
 至少必须有一个联盟中的管理员。 在离开联盟之前，最后一个管理员必须将另一个参与者指定为管理员角色。

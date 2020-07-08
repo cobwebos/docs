@@ -8,18 +8,17 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 0d0d83d3b981968949d558cb7ee5672094b00555
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582671"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727324"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
 
@@ -29,11 +28,11 @@ ms.locfileid: "82582671"
 > 开始运行 cmdlet 前，请先运行 `Connect-MsolService` cmdlet，确保连接到组织。
 
 > [!WARNING]
-> 此示例代码用于演示目的。 如果你想要在环境中使用它，请考虑先在小规模或单独的测试组织中进行测试。 可能需要根据具体的环境需求调整该代码。
+> 此示例代码用于演示目的。 如果想要在环境中使用，请考虑先进行小规模的测试，或者在单独的测试组织中测试。 可能需要根据具体的环境需求调整该代码。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>查看分配给组的产品许可证
 
-[Get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) cmdlet 可用于检索组对象并检查“许可证”  属性：它会列出当前分配给组的所有产品许可证。
+[Get-msolgroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) cmdlet 可用于检索组对象并检查“许可证”属性：它会列出当前分配给组的所有产品许可证。
 
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
@@ -251,12 +250,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>获取整个组织中具有许可证错误的所有用户
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>获取整个组织中许可证错误的所有用户
 
 可以使用以下脚本获取一个或多个组中具有许可证错误的所有用户。 此脚本将按每个用户、每个许可证错误输出一行，以便可以清楚地确定每个错误的源。
 
 > [!NOTE]
-> 此脚本枚举组织中的所有用户，这可能不是大型组织的最佳方式。
+> 此脚本将枚举组织中的所有用户，这对于大型组织来说可能不是最佳做法。
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,7 +363,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-此脚本使用 SKU ID 作为输入，在组织中的每个用户上执行这些功能-在本示例中，我们对*企业移动性 + 安全性*的许可证感兴趣，这在我们的组织中使用 ID *contoso： EMS*表示：
+此脚本使用 SKU ID 作为输入，对组织中的每位用户执行这些功能 - 在本示例中，用于“企业移动性 + 安全性”的许可证在组织中用 ID 表示为：contoso:EMS ：
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
@@ -628,5 +627,5 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 * [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
 * [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../users-groups-roles/licensing-groups-change-licenses.md)
-* [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
+* [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
 * [Azure Active Directory 中基于组的许可的 PowerShell 示例](../users-groups-roles/licensing-ps-examples.md)

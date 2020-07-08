@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66159152"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514642"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
@@ -165,7 +164,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
 
-1. 请转到“访问控制(IAM)”****。 在“访问控制”边栏选项卡上单击“+ 添加”****。
+1. 中转到 "**访问控制（IAM）**"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
 
     ![添加对 RBAC 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 

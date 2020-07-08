@@ -14,21 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747655"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84340668"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
 
-- [Cache-Key 重写](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [修改客户端请求标头](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [修改客户端响应标头](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL 重定向](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL 重写](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Cache-Key 重写](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [修改客户端请求标头](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [修改客户端响应标头](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL 重定向](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL 重写](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>定义
 下表介绍了受支持的 HTTP 变量。 如果某个特定请求无法使用 GEO 元数据（例如邮政编码），则会返回空值。

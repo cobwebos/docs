@@ -1,22 +1,14 @@
 ---
 title: 使用 Azure 服务总线的 .NET 多层应用程序 | Microsoft 文档
 description: 本 .NET 教程可帮助你在 Azure 中开发使用服务总线队列在各层之间进行通信的多层应用。
-services: service-bus-messaging
-documentationcenter: .net
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: aschhab
-ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60402936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340301"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -72,7 +64,7 @@ ms.locfileid: "60402936"
 1. 使用管理员特权启动 Visual Studio：右键单击“Visual Studio”  程序图标，并单击“以管理员身份运行”  。 Azure 计算模拟器（本文后面会讨论）要求使用管理员权限启动 Visual Studio。
    
    在 Visual Studio 的“文件”  菜单中，单击“新建”  ，并单击“项目”  。
-2. 从“Visual C#”  下的“已安装模板”  中，单击“云”  ，并单击“Azure 云服务”  。 **MultiTierApp**。 然后单击“确定”  。
+2. 从“Visual C#”下的“已安装模板”中，单击“云”，并单击“Azure 云服务”。 **MultiTierApp**。 然后单击“确定”  。
    
    ![][9]
 3.   在“角色”窗格中，双击“ASP.NET Web 角色”。
@@ -178,7 +170,7 @@ ms.locfileid: "60402936"
    
    ![][15]
 7. 单击“添加”  。
-8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”  中，双击“views/shared **_Layout.cshtml”\\** 文件以在 Visual Studio 编辑器中将其打开。
+8. 现在，请更改应用程序的显示名称。 在“解决方案资源管理器”中，双击“views/shared\\_Layout.cshtml”文件以在 Visual Studio 编辑器中将其打开。
 9. 将每一处 **My ASP.NET Application** 替换为 **Northwind Traders Products**。
 10. 删除“Home”  、“About”  和“Contact”  链接。 删除突出显示的代码：
     
@@ -309,7 +301,7 @@ ms.locfileid: "60402936"
 现在，将创建用于处理订单提交的辅助角色。 此示例使用“服务总线队列的辅助角色”  Visual Studio 项目模板。 已从门户中获取所需的凭据。
 
 1. 确保已将 Visual Studio 连接到 Azure 帐户。
-2. 在 Visual Studio 的“解决方案资源管理器”  中，右键单击“MultiTierApp”  项目下的“角色”  文件夹。
+2. 在 Visual Studio 的“解决方案资源管理器”中，右键单击“MultiTierApp”项目下的“角色”文件夹。
 3. 单击“添加”  ，并单击“新建辅助角色项目”  。 此时会显示“添加新角色项目”  对话框。
    
    ![][26]
@@ -318,8 +310,8 @@ ms.locfileid: "60402936"
    ![][23]
 5. 在“名称”  框中，将项目命名为“OrderProcessingRole”  。 然后单击“添加”  。
 6. 将在“创建服务总线命名空间”部分的步骤 9 中获取的连接字符串复制到剪贴板。
-7. 在“解决方案资源管理器”  中，右键单击在步骤 5 中创建的“OrderProcessingRole”  （确保右键单击“角色”  下的“OrderProcessingRole”  而不是类）。 然后单击“属性”  。
-8. 在“属性”  对话框的“设置”  选项卡中，在“Microsoft.ServiceBus.ConnectionString”  的“值”  框内单击，并粘贴在步骤 6 中复制的终结点值。
+7. 在“解决方案资源管理器”中，右键单击在步骤 5 中创建的“OrderProcessingRole”（确保右键单击“角色”下的“OrderProcessingRole”而不是类）。 然后单击“属性”  。
+8. 在“属性”对话框的“设置”选项卡中，在“Microsoft.ServiceBus.ConnectionString”的“值”框内单击，并粘贴在步骤 6 中复制的终结点值。
    
    ![][25]
 9. 从队列中处理订单时，创建一个 **OnlineOrder** 类来表示这些订单。 可以重用已创建的类。 在“解决方案资源管理器”  中，右键单击“OrderProcessingRole”  类（右键单击类图标，而不是角色）。 单击“添加”  ，并单击“现有项”  。

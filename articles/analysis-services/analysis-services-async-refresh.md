@@ -7,16 +7,15 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413376"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>使用 REST API 执行异步刷新
 
-通过使用支持 REST 调用的任何编程语言，你可以对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
+使用支持 REST 调用的任何编程语言，可以针对 Azure Analysis Services 表格模型执行异步数据刷新操作。 这包括同步只读副本以进行查询扩展。 
 
 数据刷新操作可能需要一段时间，具体取决于多种因素，包括数据卷、使用分区的优化级别，等等。在传统上，这些操作是使用现有方法调用的，例如，使用 [TOM](https://docs.microsoft.com/analysis-services/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)（表格对象模型）、[PowerShell](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) cmdlet，或 [TMSL](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)（表格模型脚本语言）。 但是，这些方法可能需要通常不可靠的且长时间运行的 HTTP 连接。
 
@@ -30,7 +29,7 @@ ms.locfileid: "81406284"
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-例如，在名为`myserver`"美国西部" Azure 区域的服务器上，请考虑名为 AdventureWorks 的模型。 此服务器名称为：
+例如，在名为 " `myserver` 美国西部" Azure 区域的服务器上，请考虑名为 AdventureWorks 的模型。 此服务器名称为：
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -121,7 +120,7 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 |`failed`     |   操作失败。      |
 |`succeeded`      |   操作成功。      |
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+## <a name="get-refreshesrefreshid"></a>获取/refreshes/\<refreshId>
 
 若要检查刷新操作的状态，可以在刷新 ID 中使用 GET 谓词。 下面是响应正文的示例。 如果操作正在进行，则会在状态中返回 `inProgress`。
 
@@ -158,20 +157,20 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 [
     {
         "refreshId": "1344a272-7893-4afa-a4b3-3fb87222fdac",
-        "startTime": "2017-12-09T01:58:04.76",
-        "endTime": "2017-12-09T01:58:12.607",
+        "startTime": "2017-12-07T02:06:57.1838734Z",
+        "endTime": "2017-12-07T02:07:00.4929675Z",
         "status": "succeeded"
     },
     {
         "refreshId": "474fc5a0-3d69-4c5d-adb4-8a846fa5580b",
-        "startTime": "2017-12-07T02:05:48.32",
-        "endTime": "2017-12-07T02:05:54.913",
+        "startTime": "2017-12-07T01:05:54.157324Z",
+        "endTime": "2017-12-07T01:05:57.353371Z",
         "status": "succeeded"
     }
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>DELETE /refreshes/\<refreshId>
+## <a name="delete-refreshesrefreshid"></a>删除/refreshes/\<refreshId>
 
 若要取消正在进行的刷新操作，可以在刷新 ID 中使用 DELETE 谓词。
 
@@ -218,13 +217,13 @@ CommitMode 等于 partialBatch。 针对大型数据集执行可能需要几个�
 有关如何在 Azure AS 中设置服务主体和分配必要权限的详细信息，请参阅[创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)和[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。 完成上述步骤后，请完成以下附加步骤：
 
 1.    在代码示例中，找到**字符串颁发机构 = ...**，将**common**替换为组织的租户 ID。
-2.    注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保以安全方式访问 \<App ID> 和 \<App Key> 值，或者对服务主体使用基于证书的身份验证。
+2.    注释/取消注释，以便使用 ClientCredential 类来实例化 cred 对象。 确保 \<App ID> \<App Key> 以安全方式访问和值，或对服务主体使用基于证书的身份验证。
 3.    运行该示例。
 
 
 ## <a name="see-also"></a>另请参阅
 
-[范例](analysis-services-samples.md)   
+[示例](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

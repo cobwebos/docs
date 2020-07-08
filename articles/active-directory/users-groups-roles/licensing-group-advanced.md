@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -15,12 +15,11 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727664"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -28,7 +27,7 @@ ms.locfileid: "82582781"
 
 ## <a name="usage-location"></a>使用位置
 
-某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。**** 在[Azure 门户](https://portal.azure.com)中，可以在 "**用户** &gt; **配置文件** &gt; **设置**" 中指定使用位置。
+某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为用户指定 "**使用位置**" 属性。 在[Azure 门户](https://portal.azure.com)中，可以在 "**用户** &gt; **配置文件** &gt; **设置**" 中指定使用位置。
 
 对于组许可证分配，任何没有指定使用位置的用户将继承该目录的位置。 如果用户位于多个位置，请确保在将用户添加到具有许可证的组之前，在用户资源中正确地反映了这些用户。
 
@@ -128,7 +127,7 @@ ms.locfileid: "82582781"
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>使用 PowerShell 查看谁拥有继承的许可证和直接许可证
 可以使用 PowerShell 脚本来检查用户是具有直接分配的许可证还是具有从组继承的许可证。
 
-1. 运行`connect-msolservice` cmdlet 进行身份验证并连接到你的组织。
+1. 运行 `connect-msolservice` cmdlet 进行身份验证并连接到你的组织。
 
 2. `Get-MsolAccountSku`可用于发现 Azure AD 组织中所有预配的产品许可证。
 

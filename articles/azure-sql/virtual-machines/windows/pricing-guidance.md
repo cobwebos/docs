@@ -15,20 +15,19 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9b9e98b4e1f5c286acb9089893f169f2c52b855c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84034288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84342589"
 ---
-# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM 的定价指南
+# <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure Vm 上的 SQL Server 的定价指南
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文提供 Azure 中 [SQL Server 虚拟机](sql-server-on-azure-vm-iaas-what-is-overview.md)的定价指南。 有几个选项会影响成本，请务必选取适当的映像来平衡成本与业务需求。
+本文提供了有关[Azure 虚拟机上 SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md)的定价指南。 有几个选项会影响成本，请务必选取适当的映像来平衡成本与业务需求。
 
 > [!TIP]
-> 如果只需了解特定 SQL Server 版本和虚拟机大小组合的估算成本，请参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的定价页。 从“OS/软件”列表中选择平台和 SQL Server 版本。
+> 如果只需要了解 SQL Server 版本与虚拟机（VM）大小的特定组合的成本估算，请参阅[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的定价页。 从“OS/软件”列表中选择平台和 SQL Server 版本。
 >
 > ![VM 定价页上的 UI](./media/pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -42,7 +41,7 @@ ms.locfileid: "84034288"
 
 对于这些开发/测试和轻型生产工作负荷，还可通过选择与这些工作负荷相匹配的较小的 VM 大小来节省资金。 在某些情况下 DS1v2 可能是不错的选择。
 
-若要使用上述某个映像创建 SQL Server 2017 Azure VM，请参阅以下链接：
+若要创建运行 SQL Server 2017 的 Azure VM，请参阅以下链接：
 
 | 平台 | 自由许可的映像 |
 |---|---|
@@ -55,7 +54,7 @@ ms.locfileid: "84034288"
 
 若拥有非轻型生产工作负荷，请使用以下 SQL Server 版本之一：
 
-| SQL Server 发行版 | 工作负荷 |
+| SQL Server 版本 | 工作负荷 |
 |-----|-----|
 | Web | 小型网站 |
 | Standard | 中小型工作负荷 |
@@ -65,7 +64,7 @@ ms.locfileid: "84034288"
 
 ## <a name="pay-per-usage"></a>按使用情况付费
 
-“按使用情况支付 SQL Server 许可证费用”（也称为“即付即用”）意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用 。 有关不同 SQL Server 版本（Web、Standard 和 Enterprise）的定价，可参阅适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) 的 Azure VM 定价页。
+“按使用情况支付 SQL Server 许可证费用”（也称为“即付即用”）意味着 Azure VM 的每秒运行成本包括 SQL Server 许可证的费用 。 可以在适用于[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虚拟机定价页中查看不同 SQL Server 版本（Web、Standard、Enterprise）的定价。
 
 所有版本的 SQL Server（2012 SP3 到 2017）的费用相同。 每秒许可成本取决于 VM vCPU 的数量。
 
@@ -75,7 +74,7 @@ ms.locfileid: "84034288"
 
 - **生存期或规模未知的工作负荷**。 例如，某应用可能在几个月内无需使用，或可能需要更多/更少的计算能力（具体取决于需求）。
 
-若要使用上述某个即用即付的映像创建 SQL Server 2017 Azure VM，请参阅以下链接：
+若要使用其中一种即用即付映像创建运行 SQL Server 2017 的 Azure VM，请参阅以下链接：
 
 | 平台 | 许可的映像 |
 |---|---|
@@ -85,14 +84,14 @@ ms.locfileid: "84034288"
 | Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> 在 Azure 门户中创建 SQL Server 虚拟机时，“选择大小”窗口显示估算成本。 请务必注意，此估算成本仅仅是运行 VM 所产生的计算成本，以及任意 OS 许可成本（Windows 或第三方 Linux 操作系统）。
+> 在 Azure 门户中创建 SQL Server 虚拟机时，"**选择大小**" 窗口将显示预估成本。 请务必注意，此估算成本仅仅是运行 VM 所产生的计算成本，以及任意 OS 许可成本（Windows 或第三方 Linux 操作系统）。
 >
 > ![“选择 VM 大小”边栏选项卡](./media/pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
 >而不包括 Web、Standard 和 Enterprise 版本的其他 SQL Server 许可成本。 若要获取最准确的估算定价，请在适用于 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 或 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的定价页上选择操作系统和 SQL Server 版本。
 
 > [!NOTE]
-> 现在可以在按用量付费和自带许可证 (BYOL) 的许可模型之间来回更改。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+> 现在可以在按用量付费和自带许可证 (BYOL) 的许可模型之间来回更改。 有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 ## <a name="bring-your-own-license-byol"></a><a id="byol"></a> 自带许可证 (BYOL)
 
@@ -102,9 +101,9 @@ ms.locfileid: "84034288"
 > BYOL 映像需要具有软件保障的企业协议。 目前，它们未作为 Azure 云解决方案合作伙伴 (CSP) 的一部分提供。 CSP 客户可以通过部署即用即付映像，然后启用 [Azure 混合权益](licensing-model-azure-hybrid-benefit-ahb-change.md)来自带许可证。
 
 > [!NOTE]
-> BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅 [Linux SQL VM 常见问题解答](../linux/frequently-asked-questions-faq.md)中的指导原则。
+> BYOL 映像目前仅适用于 Windows 虚拟机。 但是，可以在仅限 Linux 的 VM 上手动安装 SQL Server。 请参阅[LINUX VM 常见问题解答](../linux/frequently-asked-questions-faq.md)中的 "SQL Server 中的准则。
 
-建议在以下情况采用“通过许可移动性使用自己的 SQL Server 许可”：
+建议通过许可移动性向你提供自己的 SQL Server 许可：
 
 - **持续工作负荷**。 例如，需全天候支持业务运营的应用。
 
@@ -117,7 +116,7 @@ ms.locfileid: "84034288"
 | 节省费用 | [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)提供高达 55% 的节省额。 有关详细信息，请参阅[切换许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | 免费的被动辅助副本 | 自带许可证的另一项好处是每个 SQL Server [免费许可 1 个被动辅助副本](https://azure.microsoft.com/pricing/licensing-faq/)以实现高可用性。 这会高度可用的 SQL Server 部署（例如使用 Always On 可用性组）的许可成本减少了一半。 通过故障转移服务器软件保障权益，可享用被动辅助副本的运行权限。 |
 
-若要使用上述某个自带许可证映像创建 SQL Server 2017 Azure VM，请参阅前缀为“{BYOL}”的 VM：
+若要创建运行 SQL Server 2017 的 Azure VM，并使用以下自带许可证映像之一，请参阅以 "{BYOL}" 为前缀的 Vm：
 
 - [SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)
 - [SQL Server 2017 Standard Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016)
@@ -126,7 +125,7 @@ ms.locfileid: "84034288"
 > 请于 10 日内告知我们正在 Azure 中使用的 SQL Server 许可证数。 上述映像的链接具有如何执行此操作的说明。
 
 > [!NOTE]
-> 现在可以在按用量付费和自带许可证 (BYOL) 的许可模型之间来回更改。 有关详细信息，请参阅[如何更改 SQL VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+> 现在可以在按用量付费和自带许可证 (BYOL) 的许可模型之间来回更改。 有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 
 
@@ -140,7 +139,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 有一些新的计算机大小能够很好地适应特定类型的 SQL Server 工作负荷。 这些计算机大小保留较高级别的内存、存储和 I/O 带宽，但虚拟化核心数较少。 例如，考虑以下情况：
 
-| VM 大小 | vCPU | 内存 | 最大磁盘数 | 最大 I/O 吞吐量 | SQL 许可成本 | 总成本（计算 + 许可） |
+| VM 大小 | vCPU | 内存 | 最大磁盘数 | 最大 I/O 吞吐量 | SQL Server 许可成本 | 总成本（计算 + 许可） |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 IOPS 或 768 MB/秒 | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51,200 IOPS 或 768 MB/秒 | 低 75% | 低 57% |
@@ -156,7 +155,7 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 例如，如果只在 Azure VM 上试用 SQL Server，就不会希望因使其意外运行数周而滋生费用。 一种解决方案是使用[自动关闭功能](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)。
 
-![SQL VM 自动关闭](./media/pricing-guidance/sql-vm-auto-shutdown.png)
+![SQL Server VM 自动关闭](./media/pricing-guidance/sql-vm-auto-shutdown.png)
 
 [Azure 开发测试实验室](https://azure.microsoft.com/services/devtest-lab)提供了更多相似功能，自动关闭功能只是这一系列功能中的一部分。
 
@@ -167,9 +166,9 @@ SQL Server 的许可成本直接与 vCPU 数相关。 请选择与 CPU、内存�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/manage/getting-started.md)。 有关最新的虚拟机定价（包括 SQL Server），请参阅适用于 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 和 [Linux VM](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 的 Azure VM Azure 定价页。
+有关常规 Azure 定价指南，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../../cost-management-billing/manage/getting-started.md)。 有关最新的 Azure 虚拟机定价，包括 SQL Server，请参阅适用于[Windows vm](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)和[Linux Vm](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)的 azure 虚拟机定价页。
 
-有关 Azure 虚拟机上运行的 SQL Server 概述，请参阅以下文章：
+有关 Azure 虚拟机上 SQL Server 的概述，请参阅以下文章：
 
 - [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Linux VM 上的 SQL Server 概述](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)

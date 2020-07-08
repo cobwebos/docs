@@ -1,5 +1,5 @@
 ---
-title: 通过开放集线器从 SAP 业务仓库复制数据
+title: 通过 Open Hub 从 SAP Business Warehouse 中复制数据
 description: 了解如何在 Azure 数据工厂管道中使用复制活动，通过 Open Hub 将数据从 SAP Business Warehouse (BW) 复制到支持的接收器数据存储。
 services: data-factory
 documentationcenter: ''
@@ -11,13 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/12/2020
+ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84771013"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -105,11 +104,15 @@ ADF SAP BW Open Hub 连接器提供两种可选属性：`excludeLastRequest` 和
 
 SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**SapOpenHub** | 是 |
 | server | SAP BW 实例所驻留的服务器的名称。 | 是 |
 | systemNumber | SAP BW 系统的系统编号。<br/>允许值：用字符串表示的两位十进制数。 | 是 |
+| messageServer | SAP 消息服务器的主机名。<br/>用于连接到 SAP 消息服务器。 | 否 |
+| messageServerService | 消息服务器的服务名称或端口号。<br/>用于连接到 SAP 消息服务器。 | 否 |
+| systemId | 表所在的 SAP 系统的 ID。<br/>用于连接到 SAP 消息服务器。 | 否 |
+| logonGroup | SAP 系统的登录组。<br/>用于连接到 SAP 消息服务器。 | 否 |
 | clientId | SAP W 系统中的客户端的客户端 ID。<br/>允许值：用字符串表示的三位十进制数。 | 是 |
 | 语言 | SAP 系统使用的语言。 | 否（默认值为 **EN**）|
 | userName | 有权访问 SAP 服务器的用户名。 | 是 |
@@ -147,7 +150,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从/向 SAP BW Open Hub 复制数据，请将数据集的 type 属性设置为 **SapOpenHubTable**。 支持以下属性。
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SapOpenHubTable**。  | 是 |
 | openHubDestinationName | 要从其复制数据的 Open Hub Destination 的名称。 | 是 |
@@ -181,7 +184,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 若要从 SAP BW Open Hub 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 描述 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **SapOpenHubSource**。 | 是 |
 | excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |
@@ -231,12 +234,12 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 | SAP ABAP 类型 | 数据工厂临时数据类型 |
 |:--- |:--- |
-| C（字符串） | String |
-| I（整数） | Int32 |
-| F（浮点数） | Double |
-| D（日期） | String |
-| T（时间） | String |
-| P（BCD 打包，货币，小数，Qty） | 小数 |
+| C (String) | String |
+| I (integer) | Int32 |
+| F (Float) | Double |
+| D (Date) | String |
+| T (Time) | String |
+| P（BCD 打包，货币，小数，Qty） | Decimal |
 | N (Numc) | String |
 | X（二进制，原始） | String |
 
@@ -246,9 +249,9 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
-**症状：** 如果在 HANA 上运行 SAP BW 并仅观察使用 ADF 复制活动（1000000行）复制数据的子集，则可能的原因是在 DTP 中启用了 "SAP HANA 执行" 选项，在这种情况下，ADF 只能检索第一批数据。
+**症状**：如果你在 HANA 上运行 SAP BW 并观察到仅使用 ADF 复制活动复制了部分数据（1000000 行），则可能是因为在 DTP 中启用了“SAP HANA 执行”选项，在这种情况下，ADF 只能检索第一批数据。
 
-**解决方法：** 请在 DTP 中禁用 "SAP HANA 执行" 选项，重新处理数据，然后再次尝试执行复制活动。
+**解决方法：** 请在 DTP 中禁用“SAP HANA 执行”选项，重新处理数据，然后再次尝试执行复制活动。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中的复制活动支持作为源和接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

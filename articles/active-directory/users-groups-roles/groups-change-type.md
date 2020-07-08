@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff304b0866092badc515df7201fb4873acc298e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 05bcf589e685d0a35a58bb1e8069a6ce3699b61c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582928"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728378"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>在 Azure Active Directory 中将静态组成员资格更改为动态
 
@@ -35,7 +34,7 @@ ms.locfileid: "82582928"
 1. 使用 Azure AD 组织中的全局管理员或用户管理员帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 2. 选择**组**。
 3. 在“所有组”**** 列表中，打开要更改的组。
-4. 选择“属性”  。
+4. 选择“属性”。
 5. 在组的“属性”页中，选择“已分配(静态)”、“动态用户”或“动态设备”作为“成员身份类型”，具体取决于所需的成员身份类型。******** 对于动态成员资格，可以使用规则生成器来选择适用于简单规则的选项，也可以自行编写一项成员资格规则。 
 
 以下步骤以示例的方式说明了如何将某个组的用户从静态成员身份更改为动态成员身份。

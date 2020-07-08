@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
-ms.translationtype: MT
+ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582864"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728140"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 组上强制实施命名策略
 
@@ -77,8 +76,8 @@ ms.locfileid: "82582864"
 选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。
 
 - 全局管理员
-- 合作伙伴一线支持人员
-- 合作伙伴二线支持人员
+- 合作伙伴层 1 支持
+- 合作伙伴层 2 支持
 - 用户管理员
 - 目录写入者
 
@@ -174,7 +173,7 @@ ms.locfileid: "82582864"
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
-就这么简单。 现已设置了命名策略，并添加了阻止字词。
+分配过程如上所述。 现已设置了命名策略，并添加了阻止字词。
 
 ## <a name="export-or-import-custom-blocked-words"></a>导出或导入自定义阻止字词
 
@@ -236,7 +235,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 - 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
 - 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
 
-工作负载 | 合规性
+工作负荷 | 合规性
 ----------- | -------------------------------
 Azure Active Directory 门户 | 如果用户在创建或编辑组时键入组名，Azure AD 门户和访问面板门户会显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，会显示一错误消息以及阻止字词，以便用户删除它。
 Outlook Web Access (OWA) | 当用户键入组名或组别名时，Outlook Web Access 显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，UI 中会显示一条错误消息以及阻止字词，以便用户删除它。

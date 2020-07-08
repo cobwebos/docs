@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84345132"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>将 Azure 自动化 Runbook 添加到恢复计划
 
@@ -56,6 +55,9 @@ ms.locfileid: "79257480"
 | CloudServiceName |以其名义创建了 VM 的 Azure 云服务名称。 |
 | RoleName |Azure VM 的名称。 |
 | RecoveryPointId|VM 恢复的时间戳。 |
+
+>[!Note]
+>在故障转移时，变量 "FailoverDirection" 的值将为 "PrimaryToSecondary"，在故障转移时为 "SecondaryToPrimary"。
 
 下面的示例展示了上下文变量：
 
@@ -117,7 +119,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 
     ![单击“自定义”按钮](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. 单击 "**组1：开始** > **添加 post 操作**" 旁边的省略号（...）。
+2. 单击 "**组1：开始**  >  **添加 post 操作**" 旁边的省略号（...）。
 3. 在 "**插入操作**" 中，验证是否选择了 "**脚本**"，并指定脚本的名称（**Hello World**）。
 4. 指定自动化帐户并选择 runbook。 选择“确定”****，保存脚本。 此时，脚本添加到“组 1：后步骤”****。
 
@@ -251,7 +253,7 @@ Aman Sharma 在[收集云](http://harvestingclouds.com)上的博客提供了一�
 
 单击“部署到 Azure”**** 按钮，将示例脚本部署到自动化帐户。
 
-[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![“部署到 Azure”](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 此视频提供了其他示例。 它演示了如何将两层 WordPress 应用程序恢复到 Azure：
 

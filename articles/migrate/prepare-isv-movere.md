@@ -2,13 +2,12 @@
 title: 准备 Azure Migrate 来使用 ISV 工具/Movere
 description: 本文介绍了如何准备 Azure Migrate 以使用 ISV 工具或 Movere，然后介绍如何开始使用该工具。
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9513e783d4f9d7be83f1434d4dd9011844af8993
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.date: 06/10/2020
+ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682646"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84770367"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>准备使用 ISV 工具或 Movere
 
@@ -37,7 +36,19 @@ ms.locfileid: "83682646"
 2. 选择相关订阅。 如果看不到它，请选择“全局订阅筛选器”。 
 3. 选择“我的权限”。 然后，选择“单击此处查看此订阅的完整访问详细信息”。
 4. 在“角色分配” > “视图中查看权限” 。 如果你的帐户没有权限，请让订阅管理员将你添加到[用户访问管理员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)角色和[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)角色。
- 
+
+## <a name="allow-access-to-urls"></a>允许访问 URL
+
+对于 ISV 工具和 Azure 数据库迁移助手，允许访问表中汇总的公有云 Url。 如果使用基于 URL 的代理连接到 Internet，请确保代理在查找 URL 时会解析接收到的任何 CNAME 记录。 
+
+**URL** | **详细信息**
+--- | ---
+*.portal.azure.com  | 导航到 Azure 门户。 
+*.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | 登录到 Azure 订阅。 
+*.microsoftonline.com<br/> *.microsoftonline-p.com | 为设备创建 Azure Active Directory (AD) 应用，以便与 Azure Migrate 通信。 
+management.azure.com | 对 Azure Migrate 项目进行 Azure 资源管理器调用。
+*.servicebus.windows.net | 设备与 EventHub 之间用于发送消息的通信。
+
 
 ## <a name="start-using-the-tool"></a>开始使用该工具
 

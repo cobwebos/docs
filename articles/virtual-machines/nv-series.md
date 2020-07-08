@@ -1,18 +1,17 @@
 ---
 title: NV 系列-Azure 虚拟机
 description: NV 系列 Vm 的规格。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 7fd9fff87564b790915acf01373c078c2012371e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: e7fdc232d698e3eb2038bb6ec7a4c47a9c49944a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273870"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726577"
 ---
 # <a name="nv-series"></a>NV 系列
 
@@ -28,7 +27,7 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
 | Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |

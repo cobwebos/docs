@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: df9135c39c1ff27abe8915c221185fca517a5614
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849784"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85798147"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
 
@@ -41,7 +40,7 @@ Azure Cosmos DB 是一种架构不可知的数据库，你可用它来迭代应�
 
 它由以下树表示：
 
-![上一项以树的形式表示](./media/index-overview/item-as-tree.png)
+:::image type="content" source="./media/index-overview/item-as-tree.png" alt-text="上一项以树的形式表示" border="false":::
 
 请注意数组是如何在树中进行编码的：数组中的每个条目都获得一个中间节点，该节点标记了该数组中该条目的索引（0、1 等等）。
 
@@ -51,14 +50,14 @@ Azure Cosmos DB 将项转换为树的原因是，它允许通过这些树中属�
 
 下面是上述示例项中每个属性的路径：
 
-    /locations/0/country: "Germany"
-    /locations/0/city: "Berlin"
-    /locations/1/country: "France"
-    /locations/1/city: "Paris"
-    /headquarters/country: "Belgium"
-    /headquarters/employees: 250
-    /exports/0/city: "Moscow"
-    /exports/1/city: "Athens"
+- /locations/0/country： "德国"
+- /locations/0/city： "柏林"
+- /locations/1/country： "法国"
+- /locations/1/city： "巴黎"
+- /headquarters/country： "华南"
+- /headquarters/employees：250
+- /exports/0/city： "莫斯科"
+- /exports/1/city： "雅典"
 
 写入项时，Azure Cosmos DB 会有效地对每个属性的路径及其相应的值编制索引。
 
@@ -181,7 +180,7 @@ Azure Cosmos DB 目前支持三种类型的索引。
 
 例如，请看以下查询：`SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查询谓词（对项进行筛选，其中任何位置都采用“法国”作为其国家/地区）与下面用红色突出显示的路径相匹配：
 
-![匹配树中的特定路径](./media/index-overview/matching-path.png)
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="匹配树中的特定路径" border="false":::
 
 > [!NOTE]
 > 按单个属性排序的 `ORDER BY` 子句总是需要一个范围索引，如果它引用的路径没有范围索引，则会失败。 同样地，按多个属性排序的 `ORDER BY` 查询总是需要一个组合索引。

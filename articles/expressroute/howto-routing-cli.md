@@ -4,16 +4,15 @@ description: 本文介绍了如何创建和预配 ExpressRoute 线路的专用�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 91a1b6cc877b31fbcef638e34d3147d3377ce85c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84727035"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路的对等互连
 
@@ -69,7 +68,7 @@ ms.locfileid: "79476111"
    az network express-route list
    ```
 
-   响应类似于以下示例：
+   其响应类似于如下示例：
 
    ```output
    "allowClassicOperations": false,
@@ -125,9 +124,9 @@ ms.locfileid: "79476111"
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzureMicrosoftPeering
 ```
 > [!IMPORTANT]
-> Microsoft 会验证是否在 Internet 路由注册表中为你分配了指定的“播发公共前缀”和“对等 ASN”（或“客户 ASN”）。 如果要从另一个实体获取公共前缀，并且该分配没有记录在路由注册表中，则自动验证将不会完成，并且将需要手动验证。 如果自动验证失败，你将在上述命令的输出中看到“AdvertisedPublicPrefixesState”为“Validation needed”。 
+> Microsoft 会验证指定的“播发的公用前缀”和“对等 ASN”（或“客户 ASN”）是否已在 Internet 路由注册表中分配给你。 如果要从其他实体获取公用前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，你将在上述命令的输出中看到“AdvertisedPublicPrefixesState”为“Validation needed”。 
 > 
-> 如果看到消息“需要验证”，请收集显示公共前缀将由路由注册表中作为前缀所有者列出的实体分配给你组织的文档，并通过开具支持票证提交这些文档进行手动验证，如下所示。 
+> 如果看到消息“需要验证”，请收集相关文档，它们显示公用前缀已由在路由注册表中作为前缀所有者列出的实体分配给你的组织，然后通过开具支持票证来提交这些文档以进行手动验证，如下所示。 
 > 
 >
 
@@ -212,7 +211,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
    ```
 
-   响应类似于以下示例：
+   其响应类似于如下示例：
 
    ```output
    "allowClassicOperations": false,
@@ -264,7 +263,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
    ```
 
    > [!IMPORTANT]
-   > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+   > 请确保将 AS 编号指定为对等互连 ASN，而不是客户 ASN。
    > 
    > 
 

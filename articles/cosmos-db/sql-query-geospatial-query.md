@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 08b12bd9d35aaa61c79d35a55068983cdc0f1b83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77566317"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84764972"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 查询地理空间数据
 
@@ -36,7 +35,7 @@ ms.locfileid: "77566317"
 ```sql
     SELECT f.id
     FROM Families f
-    WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 30000
+    WHERE ST_DISTANCE(f.location, {"type": "Point", "coordinates":[31.9, -4.8]}) < 30000
 ```
 
 **结果**
@@ -59,8 +58,8 @@ ms.locfileid: "77566317"
     SELECT *
     FROM Families f
     WHERE ST_WITHIN(f.location, {
-        'type':'Polygon',
-        'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
+        "type":"Polygon",
+        "coordinates": [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]
     })
 ```
 
@@ -84,7 +83,7 @@ Azure Cosmos DB 还支持执行反向查询，即可在 Azure Cosmos DB 中索�
 ```sql
     SELECT *
     FROM Areas a
-    WHERE ST_WITHIN({'type': 'Point', 'coordinates':[31.9, -4.8]}, a.location)
+    WHERE ST_WITHIN({"type": "Point", "coordinates":[31.9, -4.8]}, a.location)
 ```
 
 **结果**

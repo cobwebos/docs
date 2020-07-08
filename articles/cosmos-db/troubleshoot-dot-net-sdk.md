@@ -3,17 +3,16 @@ title: 诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 description: 通过客户端日志记录等功能及其他第三方工具来识别、诊断和排查在使用 .NET SDK 时出现的 Azure Cosmos DB 问题。
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/06/2020
+ms.date: 06/16/2020
 ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 0eb5d9cd86be05e5ad69bc9543231987e3c1dd2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799259"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 
@@ -32,10 +31,10 @@ ms.locfileid: "84170352"
 *    使用最新的 [SDK](sql-api-sdk-dotnet-standard.md)。 不要将预览版 SDK 用于生产。 这样就可以避免遇到已更正的已知问题。
 *    查看[性能提示](performance-tips.md)并按照建议的做法进行操作。 这有助于避免缩放、延迟和其他性能问题。
 *    启用 SDK 日志记录以帮助排查问题。 启用日志记录可能会影响性能，因此，最好是只在排查问题时才启用日志记录。 可以启用以下日志：
-    *    使用 Azure 门户[记录指标](monitor-accounts.md)。 门户指标显示 Azure Cosmos DB 遥测数据，这有助于确定问题是否与 Azure Cosmos DB 相关，或者是否由客户端造成。
-    *    记录点操作响应中的[诊断字符串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)（在 V2 SDK 中）或[诊断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)（在 V3 SDK 中）。
-    *    记录所有查询响应中的 [SQL 查询指标](sql-api-query-metrics.md) 
-    *    遵循针对 [SDK 日志记录]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)的设置步骤
+*    使用 Azure 门户[记录指标](monitor-accounts.md)。 门户指标显示 Azure Cosmos DB 遥测数据，这有助于确定问题是否与 Azure Cosmos DB 相关，或者是否由客户端造成。
+*    记录点操作响应中的[诊断字符串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)（在 V2 SDK 中）或[诊断](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)（在 V3 SDK 中）。
+*    记录所有查询响应中的 [SQL 查询指标](sql-api-query-metrics.md) 
+*    遵循针对 [SDK 日志记录]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)的设置步骤
 
 请查看本文中的[常见问题和解决方法](#common-issues-workarounds)部分。
 
@@ -87,7 +86,7 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 
-如果应用部署在[没有公共 IP 地址的 Azure 虚拟机](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)将与 VM 外部的任何终结点建立连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。 这种情况可能会导致连接限制、连接关闭或上述[请求超时](#request-timeouts)。
+如果应用部署在[没有公共 IP 地址的 Azure 虚拟机](../load-balancer/load-balancer-outbound-connections.md)上，则默认情况下，[Azure SNAT 端口](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)将与 VM 外部的任何终结点建立连接。 从 VM 到 Azure Cosmos DB 终结点，允许的连接数受 [Azure SNAT 配置](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)的限制。 这种情况可能会导致连接限制、连接关闭或上述[请求超时](#request-timeouts)。
 
  仅当 VM 具有专用 IP 地址且连接到公共 IP 地址时，才会使用 Azure SNAT 端口。 有两种解决方法可以避免 Azure SNAT 限制（前提是已在整个应用程序中使用单个客户端实例）：
 
@@ -113,9 +112,11 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 
 1. 密钥已轮换，且未遵循[最佳做法](secure-access-to-data.md#key-rotation)。 这往往是问题所在。 完成 Cosmos DB 帐户密钥轮换可能需要几秒到几天的时间，具体取决于 Cosmos DB 帐户大小。
    1. 密钥轮换之后不久就会出现 401 MAC 签名问题，但无需进行任何更改，它最终会停止。 
-2. 应用程序上的密钥配置错误，导致密钥与帐户不匹配。
+1. 应用程序上的密钥配置错误，导致密钥与帐户不匹配。
    1. 401 MAC 签名问题持续出现并在所有调用中发生
-3. 创建容器时出现争用状况。 在完成容器创建之前，某个应用程序实例正在尝试访问容器。 出现此状况的最常见情况是，应用程序正在运行，就删除了容器，并在应用程序正在运行时重新创建了同名的容器。 SDK 将尝试使用新容器，但由于容器创建仍在进行，因此无法获得密钥。
+1. 应用程序正在使用[只读密钥](secure-access-to-data.md#master-keys)进行写入操作。
+   1. 401 仅当应用程序正在执行写入请求时，才会出现 MAC 签名问题，但读取请求将会成功。
+1. 创建容器时出现争用状况。 在完成容器创建之前，某个应用程序实例正在尝试访问容器。 出现此状况的最常见情况是，应用程序正在运行，就删除了容器，并在应用程序正在运行时重新创建了同名的容器。 SDK 将尝试使用新容器，但由于容器创建仍在进行，因此无法获得密钥。
    1. 创建容器后不久就会出现 401 MAC 签名问题，且只会在创建完容器之后才出现。
  
  ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP 错误 400。 请求标头的大小过长。

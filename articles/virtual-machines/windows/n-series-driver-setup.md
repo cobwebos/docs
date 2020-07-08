@@ -1,7 +1,7 @@
 ---
 title: 适用于 Windows 的 Azure N 系列 NVIDIA GPU 驱动程序设置
 description: 如何为 Azure 中运行 Windows Server 或 Windows 的 N 系列 VM 安装 NVIDIA GPU 驱动程序
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
 ms.service: virtual-machines-windows
 ms.topic: how-to
@@ -10,16 +10,15 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b00b2340445e7d103c78c1d8c1ea0e08ecabba5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 5dfcb4abc7a6859955bc36fad2cee893a78c79cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726559"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序 
 
-若要利用 NVIDIA Gpu 支持的 Azure N 系列 Vm 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。 [NVIDIA GPU 驱动程序扩展](../extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](../extensions/hpccompute-gpu-windows.md)。
+若要利用 NVIDIA GPU 支持的 Azure N 系列 VM 的 GPU 功能，必须安装 NVIDIA GPU 驱动程序。 [NVIDIA GPU 驱动程序扩展](../extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](../extensions/hpccompute-gpu-windows.md)。
 
 如果选择手动安装 NVIDIA GPU 驱动程序，本文将提供受支持的操作系统、驱动程序以及安装和验证步骤。 针对 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 也提供了驱动程序手动安装信息。
 
@@ -45,9 +44,9 @@ ms.locfileid: "82628106"
 
 若要查询 GPU 设备状态，请运行与驱动程序一起安装的 [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) 命令行实用工具。
 
-1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI**** 目录。
+1. 打开命令提示符，并更改为 C:\Program Files\NVIDIA Corporation\NVSMI  目录。
 
-2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%”********。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
+2. 运行 `nvidia-smi`。 如果安装了驱动程序，将看到如下输出。 除非当前正在 VM 上运行 GPU 工作负荷，否则“GPU-Util”将显示“0%”   。 驱动程序版本和 GPU 详细信息可能与所示的内容不同。
 
 ![NVIDIA 设备状态](./media/n-series-driver-setup/smi.png)  
 

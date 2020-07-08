@@ -6,24 +6,36 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 10/16/2019
+ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72433407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84417848"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery 部署规划器版本历史记录
 
 本文提供 Azure Site Recovery 部署规划器的所有版本历史记录和修复，以及每个版本的已知限制和发布日期。
 
+## <a name="version-252"></a>版本2.52
+
+**发布日期：2020年6月4日**
+
+**修复：**
+
+- 添加了对 vCenter 7.0 的支持
+- 添加了对以下操作系统的支持：
+
+    - SUSE Linux Enterprise 15 （适用于所有次要版本）
+    - Red Hat Enterprise Linux 8 （具有所有次要版本）
+
+
 ## <a name="version-251"></a>版本2.51
 
 **发布日期：2019年8月22日**
 
-**修复：**
+**纠正**
 
 - 修复了部署规划器版本2.5 的成本建议问题
 
@@ -54,7 +66,7 @@ ms.locfileid: "72433407"
 
 **发布日期：2018年12月3日**
 
-**修复：**
+**纠正**
 
 - 修复了阻止部署规划器使用提供的目标位置和订阅生成报告的问题。
 
@@ -93,7 +105,7 @@ ms.locfileid: "72433407"
 
 **发布日期：2017年12月7日**
 
-**修复：**
+**纠正**
 
 - 添加了有关优化网络带宽的建议。
 
@@ -116,7 +128,7 @@ ms.locfileid: "72433407"
 
 **发布日期：2017年7月19日** 
 
-**纠正**
+**修复：**
 
 - 添加了在报告生成中包含大型磁盘 (> 1TB) 的支持。 现在可以使用部署规划器来计划磁盘大小超出 1 TB（最大为 4095 GB）的虚拟机的复制。
 阅读有关 [Azure Site Recovery 中的大型磁盘支持](https://azure.microsoft.com/blog/azure-site-recovery-large-disks/)的更多内容

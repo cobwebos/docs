@@ -6,12 +6,11 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 041767474fbc56ee7a53bcbd54f27873d17dab77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632404"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85413631"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -46,16 +45,17 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-部署或更新群集后，使用 [az aks show][az-aks-show] 命令检索 DNS 区域名称。 将应用程序部署到 AKS 群集时，需要此名称。
+部署或更新群集后，使用 [az aks show][az-aks-show] 命令检索 DNS 区域名称。 
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-结果
+此名称是将应用程序部署到 AKS 群集所必需的，并显示在下面的示例输出中：
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>部署 HTTP 路由：门户
 
@@ -67,6 +67,22 @@ HTTP 应用程序路由加载项可以在部署 AKS 群集时通过 Azure 门户
 
 ![获取 DNS 区域名称](media/http-routing/dns.png)
 
+## <a name="connect-to-your-aks-cluster"></a>连接到 AKS 群集
+
+若要从本地计算机连接到 Kubernetes 群集，请使用 [kubectl][kubectl]（Kubernetes 命令行客户端）。
+
+如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 也可使用 [az aks install-cli][] 命令在本地安装它：
+
+```azurecli
+az aks install-cli
+```
+
+若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][] 命令。 以下示例获取*MyResourceGroup*中名为*MyAKSCluster*的 AKS 群集的凭据：
+
+```azurecli
+az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
+```
+
 ## <a name="use-http-routing"></a>使用 HTTP 路由
 
 只能在具有如下注释的入口资源上触发 HTTP 应用程序路由解决方案：
@@ -77,7 +93,6 @@ annotations:
 ```
 
 创建名为 **samples-http-application-routing.yaml** 的文件，并将其复制到以下 YAML 中。 在第 43 行，将 `<CLUSTER_SPECIFIC_DNS_ZONE>` 更新为在本文上一步中收集的 DNS 区域名称。
-
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -136,6 +151,12 @@ spec:
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令创建资源。
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+下面的示例显示了已创建的资源：
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -262,7 +283,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>清除
 
-删除在本文中创建的相关 Kubernetes 对象。
+使用删除在本文中创建的关联的 Kubernetes 对象 `kubectl delete` 。
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+示例输出显示已删除 Kubernetes 对象。
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml
@@ -281,11 +308,13 @@ ingress "party-clippy" deleted
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
-
+[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
+[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 
 <!-- LINKS - external -->
 [dns-pricing]: https://azure.microsoft.com/pricing/details/dns/
 [external-dns]: https://github.com/kubernetes-incubator/external-dns
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

@@ -9,12 +9,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 04/30/2020
-ms.openlocfilehash: a2e80b9320509144456663672ac5ae03f522459a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 1004f7fcc8ff93a170b724a6d8b1c2216b9c39b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726945"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -54,10 +53,10 @@ ms.locfileid: "82735379"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+properties | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
 数据流 | 对正在执行的数据流的引用 | DataFlowReference | 是
-integrationRuntime | 运行数据流的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时。 仅支持区域自动解析的集成运行时。 | IntegrationRuntimeReference | 否
+integrationRuntime | 运行数据流的计算环境。 如果未指定，将使用自动解析 Azure 集成运行时。 | IntegrationRuntimeReference | 否
 coreCount | Spark 群集中使用的内核数。 仅当使用自动解析 Azure 集成运行时，才能指定 | 8、16、32、48、80、144、272 | 否
 computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 Azure 集成运行时，才能指定 | "常规"、"ComputeOptimized"、"MemoryOptimized" | 否
 暂存。 linkedService | 如果使用的是 SQL DW 源或接收器，则用于 PolyBase 暂存的存储帐户 | LinkedServiceReference | 仅当数据流读取或写入 SQL DW 时
@@ -75,7 +74,7 @@ computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 A
 
 ### <a name="data-flow-integration-runtime"></a>数据流集成运行时
 
-选择要用于数据流活动执行的 Integration Runtime。 默认情况下，数据工厂将使用带有四个辅助角色的自动解析 Azure 集成运行时，而不提供生存时间（TTL）。 此 IR 具有常规用途计算类型，并与工厂在同一区域中运行。 你可以创建自己的 Azure 集成运行时，用于定义数据流活动执行的特定区域、计算类型、核心计数和 TTL。 此时，数据流活动只支持区域自动解析的集成运行时。
+选择要用于数据流活动执行的 Integration Runtime。 默认情况下，数据工厂将使用带有四个辅助角色的自动解析 Azure 集成运行时，而不提供生存时间（TTL）。 此 IR 具有常规用途计算类型，并与工厂在同一区域中运行。 你可以创建自己的 Azure 集成运行时，用于定义数据流活动执行的特定区域、计算类型、核心计数和 TTL。
 
 对于管道执行，群集是作业群集，在执行开始之前需要几分钟时间启动。 如果未指定 TTL，则每次运行管道时都需要此启动时间。 如果指定 TTL，则在上一次执行之后指定的时间，温群集池将保持活动状态，从而缩短启动时间。 例如，如果 TTL 为60分钟，并且一小时运行一次数据流，则群集池将保持活动状态。 有关详细信息，请参阅[Azure 集成运行时](concepts-integration-runtime.md)。
 
@@ -120,7 +119,7 @@ computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 A
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在后续活动中使用数据流活动结果
 
-数据流活动输出有关写入每个接收器的行数和从每个源读取的行数的指标。 在活动运行结果的`output`节中返回这些结果。 返回的度量值的格式为以下 json。
+数据流活动输出有关写入每个接收器的行数和从每个源读取的行数的指标。 在活动运行结果的节中返回这些结果 `output` 。 返回的度量值的格式为以下 json。
 
 ``` json
 {
@@ -148,12 +147,12 @@ computeType | Spark 群集中使用的计算类型。 仅当使用自动解析 A
 }
 ```
 
-例如，若要获取写入到名为 "dataflowActivity" 的活动中名为 "sink1" 的接收器的行数， `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`请使用。
+例如，若要获取写入到名为 "dataflowActivity" 的活动中名为 "sink1" 的接收器的行数，请使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` 。
 
-若要获取从该接收器中使用的名为 "source1" 的源中读取的行数， `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`请使用。
+若要获取从该接收器中使用的名为 "source1" 的源中读取的行数，请使用 `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` 。
 
 > [!NOTE]
-> 如果接收器写入的行数为零，则它不会显示在指标中。 可以使用`contains`函数来验证是否存在。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')`将检查是否有任何行写入 sink1。
+> 如果接收器写入的行数为零，则它不会显示在指标中。 可以使用函数来验证是否存在 `contains` 。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 将检查是否有任何行写入 sink1。
 
 ## <a name="next-steps"></a>后续步骤
 

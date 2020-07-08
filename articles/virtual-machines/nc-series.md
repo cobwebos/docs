@@ -1,18 +1,17 @@
 ---
 title: NC 系列-Azure 虚拟机
 description: NC 系列 Vm 的规格。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: eab7dfe79aa5cdf234c8bc9472387214f7df3563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: 9df68d76c9a06a8391c301fa13b6a0d1ac6529a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164519"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84726644"
 ---
 # <a name="nc-series"></a>NC 系列
 
@@ -26,7 +25,7 @@ NC 系列 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solu
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|
 | Standard_NC6    | 6  | 56  | 340  | 1 | 12 | 24 | 1 |
 | Standard_NC12   | 12 | 112 | 680  | 2 | 24 | 48 | 2 |

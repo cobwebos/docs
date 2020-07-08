@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: c115859c24b2c26ab2c221c4fdc35cb442d652b1
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848002"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957335"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表存储管理商业市场潜在顾客
 
@@ -26,11 +25,11 @@ ms.locfileid: "83848002"
 
     1. 选择左侧菜单中的“+ 创建资源”。 “新建”窗格随即在右侧显示。
     1. 在“新建”窗格中选择“存储” 。 “特别推荐”列表随即在右侧显示。
-    1. 选择“存储帐户”开始创建帐户。 按照[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)中的说明操作。
+    1. 选择“存储帐户”开始创建帐户。 按照[创建存储帐户](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)中的说明操作。
 
         ![创建 Azure 存储帐户的步骤](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-create.png)
 
-        有关存储帐户的详细信息，请参阅[快速入门教程](https://docs.microsoft.com/azure/storage/)。 有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+        有关存储帐户的详细信息，请参阅[快速入门教程](../../storage/index.yml)。 有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 1. 等待存储帐户预配完成。 此过程通常需要几分钟时间。 
 
@@ -107,7 +106,7 @@ ms.locfileid: "83848002"
 
    选择“创建”后，“获取实体”窗口随即显示 。 在此处，选择“显示高级选项”，并提供以下框的信息：
 
-   * **Table**：选择表的名称（从[创建表](#create-a-table-in-your-storage-account)中）。 下图显示了为本例选择“marketplaceleads”表时的提示。
+   * **Table**：选择表的名称（从[创建表](#create-a-table-in-your-storage-account)中）。 下图显示了在 `marketplaceleads` 此示例中选择了 "表" 时的提示。
 
      ![获取实体窗口](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 

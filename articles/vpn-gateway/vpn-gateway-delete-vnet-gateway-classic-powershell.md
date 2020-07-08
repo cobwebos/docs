@@ -5,15 +5,14 @@ titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ded1887248e7313c2a284388e8338af96ad7614c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77198643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84987415"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell 删除虚拟网络网关（经典）
 

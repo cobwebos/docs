@@ -5,20 +5,18 @@ description: 了解如何通过 PowerShell 使用 Azure 网络观察程序的排
 services: network-watcher
 documentationcenter: na
 author: damendo
-manager: twooley
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aa5d7efed1ce1f41ebb67e2ec377e862ad14ed7a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842829"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84725029"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>通过 PowerShell 使用 Azure 网络观察程序排查连接问题
 
@@ -64,7 +62,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>响应
 
-以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”  。 可以看到所有探测都发送失败。 由于用户配置的名为 `NetworkSecurityRule`UserRule_Port80**的** 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
+以下响应来自前面的示例。  在此响应中，`ConnectionStatus` 为“不可访问”  。 可以看到所有探测都发送失败。 由于用户配置的名为 **UserRule_Port80** 的 `NetworkSecurityRule` 已配置为阻止端口 80 上的传入流量，虚拟设备上的连接失败。 可以使用此信息来了解连接问题。
 
 ```
 ConnectionStatus : Unreachable

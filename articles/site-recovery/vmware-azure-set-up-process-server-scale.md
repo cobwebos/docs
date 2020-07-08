@@ -8,11 +8,10 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711946"
 ---
 # <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器进行扩展
 

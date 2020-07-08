@@ -8,22 +8,21 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206106"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728259"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>在 Azure Active Directory 中搜索组和成员（预览）
 
-本文介绍如何在 Azure Active Directory （Azure AD）门户中搜索组的成员和所有者，以及如何使用搜索筛选器作为组改善预览的一部分。 组经验中提供了许多改进，可帮助你快速、轻松地管理组，包括成员和所有者。 有关预览的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+本文介绍如何在 Azure Active Directory （Azure AD）门户中搜索组的成员和所有者，以及如何使用搜索筛选器作为组改善预览的一部分。 组经验中提供了许多改进，可帮助你快速、轻松地管理组，包括成员和所有者。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 此预览版中的更改包括：
 
@@ -45,7 +44,7 @@ ms.locfileid: "78206106"
 
 ## <a name="group-search-and-sorting"></a>组搜索和排序
 
-已对组列表搜索进行了增强，以便在可以输入搜索字符串时，搜索将自动对组`startswith`名称列表执行和子字符串搜索。 子字符串搜索仅对整个单词执行，不包含特殊字符。 子字符串搜索区分大小写。
+已对组列表搜索进行了增强，以便在可以输入搜索字符串时，搜索将自动对 `startswith` 组名称列表执行和子字符串搜索。 子字符串搜索仅对整个单词执行，不包含特殊字符。 子字符串搜索区分大小写。
 
 !["所有组" 页上的新子字符串搜索](./media/groups-members-owners-search/groups-search-preview.png)
 

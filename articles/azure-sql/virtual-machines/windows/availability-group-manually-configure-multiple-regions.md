@@ -1,10 +1,9 @@
 ---
-title: 跨不同区域配置可用性组
-description: 本文介绍如何在 Azure 虚拟机上配置副本位于不同区域的 SQL Server 可用性组。
+title: 在不同区域中配置 SQL Server Always On 可用性组
+description: 本文介绍如何在 Azure 虚拟机上使用不同区域中的副本配置 SQL Server Always On 可用性组。
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
@@ -15,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 996b5a59c5c79a045cd396a24778fe0928682c5a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 8ab62a93546719e172eec34168a0692daccf281a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84030028"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84669301"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>在位于不同区域的 Azure SQL Server 虚拟机上配置可用性组
+# <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>跨不同的 Azure 区域配置 SQL Server Always On 可用性组
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文介绍如何在位于远程 Azure 位置的 Azure 虚拟机上配置 SQL Server Always On 可用性组副本。 使用此配置以支持灾难恢复。
@@ -100,20 +99,20 @@ ms.locfileid: "84030028"
 
    ![群集属性](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
-   在“属性”对话框中，选择“IP 地址”下的“添加”，然后从远程网络区域添加群集名称的 IP 地址  。 在“IP 地址”对话框中选择“确定”，然后在“群集属性”对话框中再次选择“确定”，以保存新的 IP 地址   。 
+   在“属性”对话框中，选择“IP 地址”下的“添加”，然后从远程网络区域添加群集名称的 IP 地址  。 在 " **IP 地址**" 对话框中选择 **"确定"** ，然后在 "**群集属性**" 对话框中再次选择 **"确定"** 以保存新的 IP 地址。 
 
    ![添加群集 IP](./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png)
 
 
 1. 添加 IP 地址作为核心群集名称的依赖项。
 
-   再次打开群集属性，然后选择“依赖项”选项卡。为两个 IP 地址配置 OR 依赖项： 
+   再次打开群集属性，然后选择 "**依赖关系**" 选项卡。为这两个 IP 地址配置或依存关系： 
 
    ![群集属性](./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png)
 
 1. 将 IP 地址资源添加到群集中的可用性组角色。 
 
-   右键单击“故障转移群集管理器”中的可用性组角色，选择“添加资源”、“更多资源”，然后选择“IP 地址”  。
+   在故障转移群集管理器中右键单击可用性组角色，选择 "**添加资源**"、"**更多资源**"，然后选择 " **IP 地址**"。
 
    ![创建 IP 地址](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -133,7 +132,7 @@ ms.locfileid: "84030028"
 
 1. [在 PowerShell 中设置群集参数](availability-group-manually-configure-tutorial.md#setparam)。
 
-运行在新区域中的负载均衡器上配置的，且带有群集网络名称、IP 地址和探测端口的 PowerShell 脚本。
+   运行在新区域中的负载均衡器上配置的，且带有群集网络名称、IP 地址和探测端口的 PowerShell 脚本。
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -170,16 +169,16 @@ ms.locfileid: "84030028"
 要测到远程区域的试侦听器连接性，可将副本故障转移到远程区域。 副本异步时，故障转移容易出现潜在的数据丢失。 要故障转移且不丢失数据，请将可用性模式改为同步，并将故障转移模式设置为自动。 请使用以下步骤：
 
 1. 在“对象资源管理器”中连接到承载主副本的 SQL Server 实例。
-1. 在“AlwaysOn 可用性组”的“可用性组”下，右键单击可用性组，并单击“属性”。
+1. 在**AlwaysOn Availability Groups**"AlwaysOn 可用性组 **" 下**，右键单击可用性组，然后选择 "**属性**"。
 1. 在“常规”页上的“可用性副本”下，将灾难恢复站点中的辅助副本设置为使用“同步提交”可用性模式和“自动”故障转移模式。
 1. 如果辅助副本和主副本位于同一站点，且辅助副本具有高可用性，则将辅助副本设置为“异步提交”和“手动”。
-1. 单击“确定”。
-1. 在“对象资源管理器”中，右键单击可用性组中，并单击“显示仪表板”。
+1. 选择“确定”。
+1. 在**对象资源管理器**中，右键单击可用性组，然后选择 "**显示仪表板**"。
 1. 在仪表板上确认灾难恢复恢复上的副本为同步。
-1. 在“对象资源管理器”中，右键单击可用性组中，并单击“付账转移...”。SQL Server Management Studio 将打开向导对 SQL Server 进行故障转移。  
-1. 单击“下一步”，并选择灾难恢复站点中的 SQL Server 实例。 再次单击“下一步”。
-1. 连接到灾难恢复站点中的 SQL Server 实例，并单击“下一步”。
-1. 在“摘要”页上查看设置，并单击“完成”。
+1. 在**对象资源管理器**中，右键单击可用性组，然后选择 "**故障转移 ...**"。SQL Server Management studio 将打开一个向导来故障转移 SQL Server。  
+1. 选择 "**下一步**"，并选择 DR 站点中的 SQL Server 实例。 再次选择 "**下一步**"。
+1. 连接到 DR 站点中的 SQL Server 实例，然后选择 "**下一步**"。
+1. 在 "**摘要**" 页上，验证设置，然后选择 "**完成**"。
 
 测试连接性之后，将主副本移回主数据中心，并将可用性模式设置回其正常运行设置。 下表显示了本文档所述体系结构的正常运行设置：
 
@@ -197,7 +196,7 @@ ms.locfileid: "84030028"
 - [执行可用性组的计划手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [对可用性组执行强制的手动故障转移 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>其他链接
+## <a name="next-steps"></a>后续步骤
 
 * [Always On 可用性组](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/)
