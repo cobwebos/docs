@@ -3,15 +3,15 @@ title: 使用 Azure Cosmos DB 限制用户对数据操作的访问
 description: 了解如何使用 Azure Cosmos DB 限制对数据操作的访问
 author: voellm
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 03cad9e4c3752b5f35be785a6280bf18aaa14860
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74980369"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261216"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>将用户访问权限仅限于数据操作
 
@@ -19,7 +19,9 @@ ms.locfileid: "74980369"
 - 与 Azure 门户交互时使用 Azure Active Directory 标识；
 - 从 API 和 SDK 发出调用时使用 Azure Cosmos DB [密钥](secure-access-to-data.md#master-keys)或[资源令牌](secure-access-to-data.md#resource-tokens)。
 
-每种身份验证方法授予对不同操作集的访问权限，但存在某种重叠：![按身份验证类型拆分操作](./media/how-to-restrict-user-data/operations.png)
+每种身份验证方法授予对不同操作集的访问权限，但存在某种重叠：
+
+:::image type="content" source="./media/how-to-restrict-user-data/operations.png" alt-text="按身份验证类型拆分操作" border="false":::
 
 在某些情况下，你可能希望仅限组织中的某些用户执行数据操作（即 CRUD 请求和查询）。 不需要创建或删除资源，或者不需要更改所用容器的预配吞吐量的开发人员通常希望实施这种限制。
 
@@ -95,4 +97,4 @@ $cdba | Set-AzResource -Force
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解 [Cosmos DB 的基于角色的访问控制](role-based-access-control.md)
-- 获取[安全访问 Cosmos DB 中的数据](secure-access-to-data.md)的概述
+- 大致了解[Cosmos DB 中数据的安全访问](secure-access-to-data.md)

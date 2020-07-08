@@ -4,12 +4,12 @@ description: Azure 区块链工作台预览版中的智能协定集成模式概�
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254627"
 ---
 # <a name="smart-contract-integration-patterns"></a>智能合约集成模式
 
@@ -31,7 +31,7 @@ Azure Blockchain Workbench 生成的 Web 应用程序中的功能是通过 REST 
 
 REST API 主要用于 Web、移动和 bot 应用程序等交互式客户端。
 
-本节重点介绍将事务发送到分布式账本的 REST API 方面的模式，以及 Azure Blockchain Workbench 的链外 SQL 数据库查询事务数据的模式**。
+本部分介绍 REST API 侧重于将事务发送到分布式分类帐的模式，以及从 Azure 区块链工作台的 "*关链*" 数据库查询有关事务的数据的模式。
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>将事务从外部系统发送到分布式账本
 
@@ -204,7 +204,7 @@ Azure Blockchain Workbench REST API 将经过身份验证的请求发送到与�
 
 -   Azure Blockchain Workbench 在实施其正常的操作行为过程中存储有关应用程序、工作流、合同和事务的元数据。
 -   外部系统或工具提供一个或多个对话框用于简化有关数据库的信息（例如数据库服务器名称、数据库名称、身份验证类型、登录凭据，以及要使用的数据库视图）的收集。
--   针对 SQL 数据库视图编写查询，以便于外部系统、服务、报告、开发人员工具和企业生产力工具在下游的使用。
+-   查询是针对数据库视图编写的，有助于外部系统、服务、报告、开发人员工具和企业生产力工具的下游使用。
 
 ## <a name="storage-integration"></a>存储集成
 

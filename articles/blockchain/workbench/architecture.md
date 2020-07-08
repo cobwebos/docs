@@ -4,12 +4,12 @@ description: Azure 区块链工作台预览体系结构及其组件概述。
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253420"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 体系结构
 
@@ -43,12 +43,12 @@ Workbench 为可用于验证、测试和查看区块链应用程序的 Web 和�
 
 ## <a name="gateway-service-api"></a>网关服务 API
 
-Blockchain Workbench 包括基于 REST 的网关服务 API。 写入区块链时，该 API 会生成消息并将其传送到事件中转站。 当 API 请求数据时，会向链外 SQL 数据库发送查询。 SQL 数据库包含链中数据和元数据的副本，这些数据提供受支持智能合约的上下文和配置信息。 查询以合约元数据指定的格式从链外副本返回所需的数据。
+Blockchain Workbench 包括基于 REST 的网关服务 API。 写入区块链时，该 API 会生成消息并将其传送到事件中转站。 当 API 请求数据时，查询将发送到离链数据库。 数据库包含链上数据和元数据的副本，该副本提供支持的智能协定的上下文和配置信息。 查询以合约元数据指定的格式从链外副本返回所需的数据。
 
 开发人员可以访问网关服务 API 来生成或集成区块链解决方案，而无需依赖于 Blockchain Workbench 客户端应用。
 
 > [!NOTE]
-> 若要启用 API 的身份验证访问，必须在 Azure Active Directory 中注册两个客户端应用程序。 Azure Active Directory 要求对每种应用程序类型（本机和 Web）使用不同的应用程序注册。 
+> 若要启用 API 的身份验证访问，必须在 Azure Active Directory 中注册两个客户端应用程序。 Azure Active Directory 要求对每种应用程序类型（本机和 Web）使用不同的应用程序注册。
 
 ## <a name="message-broker-for-incoming-messages"></a>传入消息的消息中转站
 
@@ -70,7 +70,7 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 
 ### <a name="database-consumer"></a>数据库使用者
 
-数据库使用者从服务总线提取消息，并将数据推送到附加的数据库，例如 SQL 数据库。
+数据库使用者从服务总线接收消息，并将数据推送到附加的数据库，例如 Azure SQL 数据库中的数据库。
 
 ### <a name="storage-consumer"></a>存储使用者
 
@@ -91,11 +91,11 @@ Blockchain Workbench 自动部署两种类型的事件使用者。 一种使用�
 分布式账本技术 (DLT) 观察程序监视已附加到 Blockchain Workbench 的区块链上发生的事件。
 事件反映个人和系统相关的信息。 例如，新合约实例的创建、事务执行和状态更改。 系统会捕获事件并将其发送到出站消息中转站，使其可供下游使用者使用。
 
-例如，SQL 使用者会监视事件、使用事件，并在 SQL 数据库中填充包含的值。 使用复制可在链外存储中重新创建链中数据的副本。
+例如，SQL 使用者监视事件，使用事件，并用包含的值填充数据库。 使用复制可在链外存储中重新创建链中数据的副本。
 
-## <a name="azure-sql-database"></a>Azure SQL 数据库
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-附加到 Blockchain Workbench 的 Azure SQL 数据库存储合约定义、配置元数据，以及区块链中存储的数据的副本（可通过 SQL 访问）。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
+附加到区块链工作台的数据库存储协定定义、配置元数据和存储在区块链中的数据的 SQL 可访问副本。 直接访问数据库即可轻松查询、可视化或分析这些数据。 开发人员和其他用户可以使用该数据库进行报告、分析或其他以数据为中心的集成。 例如，用户可以使用 Power BI 将事务数据可视化。
 
 此链外存储可让企业组织查询 SQL 中的数据，但不允许查询区块链账本中的数据。 此外，通过将区块链技术堆栈不可知的架构标准化，链外存储可让用户跨项目、方案和组织重复使用报告和其他项目。
 

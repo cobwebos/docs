@@ -5,23 +5,23 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261760"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 
 Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理大规模图形。 容器可以在存储和吞吐量方面独立缩放。 可以在 Azure Cosmos DB 中创建自动缩放的容器以存储图形数据。 数据根据指定的分区键自动均衡  。
 
-如果容器预计存储的大小超过 20 GB，或者要分配超过10000个请求单位/秒（ru），**则需要进行分区**。 [Azure Cosmos DB 分区机制](partition-data.md)中的相同常规原则也适用，下面介绍了一些特定于图形的优化。
+如果预计容器的存储大小超过 20 GB，或者希望每秒分配超过 10,000 个请求单位 (RU)，则需要进行分区  。 [Azure Cosmos DB 分区机制](partition-data.md)中的相同常规原则也适用，下面介绍了一些特定于图形的优化。
 
-![图形分区。](./media/graph-partitioning/graph-partitioning.png)
+:::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="图形分区。" border="false":::
 
 ## <a name="graph-partitioning-mechanism"></a>图形分区机制
 

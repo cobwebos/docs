@@ -3,15 +3,16 @@ title: 管理 Azure Cosmos DB 中的索引策略
 description: 了解如何管理索引策略、在索引中包括或排除属性、如何使用不同的 Azure Cosmos DB SDK 定义索引
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869926"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261505"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -175,7 +176,7 @@ ms.locfileid: "82869926"
 除了包含或排除各属性的路径，还可以指定一个组合索引。 如果要执行具有针对多个属性的 `ORDER BY` 子句的查询，需要使用这些属性上的[组合索引](index-policy.md#composite-indexes)。 此外，对于具有筛选器且对不同属性使用 ORDER BY 子句的查询，组合索引将具有性能优势。
 
 > [!NOTE]
-> 复合路径具有隐式`/?` ，因为仅为该路径上的标量值编制索引。 复合`/*`路径中不支持通配符。 不应在`/?`复合`/*`路径中指定或。
+> 组合路径具有隐式 `/?`，因为仅索引该路径上的标量值。 组合路径中不支持使用 `/*` 通配符。 不应在组合路径中指定 `/?` 或 `/*`。
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>针对（name asc、age desc）定义的组合索引：
 
@@ -353,15 +354,15 @@ Azure Cosmos 容器将其索引策略存储为 JSON 文档，可以在 Azure 门
 
 1. 创建新的 Azure Cosmos 帐户或选择现有的帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。 
+1. 打开“数据资源管理器”窗格，选择要使用的容器。
 
-1. 单击“缩放设置”。 
+1. 单击“缩放设置”。
 
 1. 修改索引策略 JSON 文档（请参阅[下文](#indexing-policy-examples)中的示例）
 
-1. 完成后，单击“保存”。 
+1. 完成后，单击“保存”。
 
-![使用 Azure 门户管理索引编制](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="使用 Azure 门户管理索引编制":::
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 

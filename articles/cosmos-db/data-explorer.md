@@ -3,15 +3,15 @@ title: 使用 Azure Cosmos DB 资源管理器管理数据
 description: Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和管理存储在 Azure Cosmos DB 中的数据。
 author: deborahc
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: dech
-ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79096818"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261879"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 资源管理器处理数据 
 
@@ -41,7 +41,7 @@ Azure Cosmos DB 资源管理器是基于 Web 的独立界面，允许查看和�
 
    选择打开帐户时使用的访问权限类型，并单击“打开”****。 打开资源管理器后，体验与 Azure 门户中的“数据资源管理器”选项卡相同。   
 
-   ![打开 Azure Cosmos DB 资源管理器](./media/data-explorer/open-data-explorer-with-access-url.png)
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="打开 Azure Cosmos DB 资源管理器":::
 
 ## <a name="known-issues"></a>已知问题
 

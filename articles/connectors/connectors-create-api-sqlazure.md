@@ -1,108 +1,56 @@
 ---
-title: 连接到 SQL Server 或 Azure SQL 数据库
+title: 连接到 SQL Server、Azure SQL 数据库或 Azure SQL 托管实例
 description: 使用 Azure 逻辑应用为本地或云中的 SQL 数据库自动执行任务
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
-ms.translationtype: HT
+ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255494"
 ---
-# <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动执行 SQL Server 或 Azure SQL 数据库的工作流
+# <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用自动完成 SQL 数据库的工作流
 
-本文介绍如何通过逻辑应用使用 SQL Server 连接器访问 SQL 数据库中的数据。 这样，你便可以通过创建逻辑应用来自动执行任务、进程或工作流，以便管理你的 SQL 数据和资源。 SQL Server 连接器适用于[本地 SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) 和[基于云的 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)。
+本文介绍如何通过逻辑应用使用 SQL Server 连接器访问 SQL 数据库中的数据。 这样一来，便可通过创建逻辑应用来自动执行任务、进程或工作流，以便管理 SQL 数据和资源。 SQL Server 连接器适用于[SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation)以及[azure Sql 数据库](../azure-sql/database/sql-database-paas-overview.md)和[azure sql 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
 
-可以创建在受 SQL 数据库或其他系统（例如 Dynamics CRM Online）中的事件触发时运行的逻辑应用。 逻辑应用也可获取、插入和删除数据，以及运行 SQL 查询和存储过程。 例如，可以生成一个逻辑应用，让其自动检查 Dynamics CRM Online 中是否存在新记录，在存在新记录的情况下向 SQL 数据库添加相应的项，然后发送有关添加的项的电子邮件警报。
+可以创建在受 SQL 数据库或其他系统（例如 Dynamics CRM Online）中的事件触发时运行的逻辑应用。 逻辑应用也可获取、插入或删除数据，以及运行 SQL 查询或存储过程。 例如，可以生成一个逻辑应用，让其自动检查 Dynamics CRM Online 中是否存在新记录，在存在新记录的情况下向 SQL 数据库添加相应的项，然后发送有关已添加项的电子邮件警报。
 
-如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需了解特定于连接器的技术信息、限制和已知问题，请参阅 [SQL Server 连接器参考页](https://docs.microsoft.com/connectors/sql/)。
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 有关特定于连接器的技术信息、限制和已知问题，请参阅 [SQL Server 连接器参考页](https://docs.microsoft.com/connectors/sql/)。
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 一个 [SQL Server 数据库](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)或 [Azure SQL 数据库](../sql-database/sql-database-get-started-portal.md)
+* [SQL Server 数据库](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)、 [azure Sql 数据库](../azure-sql/database/single-database-create-quickstart.md)或[azure sql 托管实例](../azure-sql/managed-instance/instance-create-quickstart.md)。
 
-  表必须有数据，这样逻辑应用在调用操作时才能够返回结果。 如果创建 Azure SQL 数据库，可以使用随附的示例数据库。
+  表必须有数据，这样逻辑应用在调用操作时才能够返回结果。 如果使用 Azure SQL 数据库，则可以使用包含的示例数据库。
 
 * SQL Server 名称、数据库名称、用户名和密码。 需要提供这些凭据才能授权应用访问 SQL Server。
 
-  * 对于 SQL Server，可以在连接字符串中查找这些详细信息：
+  * 对于本地 SQL Server，可以在连接字符串中找到以下详细信息：
 
     `Server={your-server-address};Database={your-database-name};User Id={your-user-name};Password={your-password};`
 
-  * 对于 Azure SQL 数据库，可以在连接字符串中查找这些详细信息，也可以在 Azure 门户的 SQL 数据库属性下查找：
+  * 对于 Azure SQL 数据库，可以在连接字符串中找到这些详细信息。
+  
+    例如，若要在 Azure 门户中查找此字符串，请打开数据库。 在 "数据库" 菜单上，选择 "**连接字符串**" 或 "**属性**"：
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* 在下列情况下，需要使用本地计算机上安装的[本地数据网关](../logic-apps/logic-apps-gateway-install.md)，以及[在 Azure 门户中创建的 Azure 数据网关资源](../logic-apps/logic-apps-gateway-connection.md)：
+<a name="multi-tenant-or-ise"></a>
 
-  * 逻辑应用未在[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 中运行。
+* 根据你的逻辑应用是要在全球、多租户 Azure 还是[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中运行，以下是连接到本地 SQL Server 的其他要求：
 
-  * 逻辑应用在集成服务环境中运行，但你需要对 SQL Server 连接使用 Windows 身份验证。 对于这种情况，请将 SQL Server 连接器的非 ISE 版本与数据网关一起使用，因为 ISE 版本不支持 Windows 身份验证。
+  * 对于连接到本地 SQL Server 的全球多租户 Azure 中的逻辑应用，需要在本地计算机上安装本地[数据网关](../logic-apps/logic-apps-gateway-install.md)，并在[azure 中创建数据网关资源](../logic-apps/logic-apps-gateway-connection.md)。
+
+  * 对于连接到本地 SQL Server 并使用 Windows 身份验证的 ISE 中的逻辑应用，ISE 版本控制 SQL Server 连接器不支持 Windows 身份验证。 因此，你仍需要使用数据网关和非 ISE SQL Server 连接器。 对于其他身份验证类型，无需使用数据网关，而可以使用 ISE 版本控制连接器。
 
 * 需在其中访问 SQL 数据库的逻辑应用。 若要通过 SQL 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
-
-<a name="add-sql-trigger"></a>
-
-## <a name="add-a-sql-trigger"></a>添加 SQL 触发器
-
-在 Azure 逻辑应用中，每个逻辑应用都必须从[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，逻辑应用引擎就会创建一个逻辑应用实例并开始运行逻辑应用的工作流。
-
-1. 在 Azure 门户或 Visual Studio 中创建一个空白的逻辑应用，以便打开逻辑应用设计器。 此示例使用 Azure 门户。
-
-1. 在设计器上的搜索框中，输入“sql server”作为筛选器。 在触发器列表中，选择所需的 SQL 触发器。
-
-   此示例使用“当创建项时”触发器。
-
-   ![选择“当创建项时”触发器](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
-
-1. 如果系统提示你创建连接，请[立即创建 SQL 连接](#create-connection)。 如果连接存在，请选择一个表名称。
-
-   ![选择所需的表](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
-
-1. 设置“时间间隔”和“频率”属性，以便指定逻辑应用检查表的频率。 
-
-   此触发器仅从选定表返回一个行，不执行其他任务。 若要执行其他任务，请添加用于执行所需任务的其他操作。 例如，若要查看此行中的数据，可以添加其他操作，以创建一个包含返回行中的字段的文件，然后发送电子邮件警报。 若要了解有关此连接器的其他可用操作，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sql/)。
-
-1. 完成后，请在设计器工具栏上选择“保存”。
-
-   此步骤自动在 Azure 中实时启用和发布逻辑应用。
-
-<a name="add-sql-action"></a>
-
-## <a name="add-a-sql-action"></a>添加 SQL 操作
-
-在 Azure 逻辑应用中，[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)是指工作流中紧跟在某个触发器或另一操作后面执行的一个步骤。 在此示例中，逻辑应用一开始使用[定期触发器](../connectors/connectors-native-recurrence.md)，然后调用一个从 SQL 数据库获取行的操作。
-
-1. 在 Azure 门户或 Visual Studio 的逻辑应用设计器中打开逻辑应用。 此示例使用 Azure 门户。
-
-1. 在要添加 SQL 操作的触发器或操作下，选择“新建步骤”。
-
-   ![向逻辑应用添加新步骤](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
-
-   若要在现有步骤之间添加操作，请将鼠标移到连接箭头上方。 选择出现的加号 ( **+** )，然后选择“添加操作”。
-
-1. 在“选择操作”下的搜索框中，输入“sql server”作为筛选器。 从操作列表中，选择所需的 SQL 操作。
-
-   此示例使用“获取行”操作，该操作将获取单个记录。
-
-   ![查找并选择“获取行”SQL 操作](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
-
-   此操作仅从选定表返回一个行，不执行其他任务。 若要查看此行中的数据，可以添加其他操作，以创建一个包含返回行中的字段的文件，并将该文件存储在云存储帐户中。 若要了解有关此连接器的其他可用操作，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sql/)。
-
-1. 如果系统提示你创建连接，请[立即创建 SQL 连接](#create-connection)。 如果连接已存在，请选择一个表名称，然后输入你需要的记录对应的行 ID。
-
-   ![输入表名和行 ID](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
-
-1. 完成后，请在设计器工具栏上选择“保存”。
-
-   此步骤自动在 Azure 中实时启用和发布逻辑应用。
 
 <a name="create-connection"></a>
 
@@ -110,19 +58,166 @@ ms.locfileid: "83402596"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-[!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
+现在，请继续执行以下步骤：
+
+* [连接到基于云的 Azure SQL 数据库或托管实例](#connect-azure-sql-db)
+* [连接到本地 SQL Server](#connect-sql-server)
+
+<a name="connect-azure-sql-db"></a>
+
+### <a name="connect-to-azure-sql-database-or-managed-instance"></a>连接到 Azure SQL 数据库或托管实例
+
+首次添加[sql 触发器](#add-sql-trigger)或[sql 操作](#add-sql-action)时，如果尚未创建与数据库的连接，系统会提示完成以下步骤：
+
+1. 对于 "**身份验证类型**"，请选择 Azure sql 数据库或 azure sql 托管实例中的数据库所需和启用的身份验证：
+
+   | 身份验证 | 描述 |
+   |----------------|-------------|
+   | [**Azure AD 集成**](../azure-sql/database/authentication-aad-overview.md) | -支持非 ISE 和 ISE SQL Server 连接器。 <p><p>-要求 Azure Active Directory （Azure AD）中有权访问数据库的有效标识。 <p>有关详细信息，请参阅以下主题： <p>- [Azure SQL 安全概述-身份验证](../azure-sql/database/security-overview.md#authentication) <br>- [授权数据库访问 Azure SQL-身份验证和授权](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-Azure AD 集成身份验证](../azure-sql/database/authentication-aad-overview.md) |
+   | [**SQL Server 身份验证**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支持非 ISE 和 ISE SQL Server 连接器。 <p><p>-需要在数据库中创建和存储的有效用户名和强密码。 <p>有关详细信息，请参阅以下主题： <p>- [Azure SQL 安全概述-身份验证](../azure-sql/database/security-overview.md#authentication) <br>- [授权数据库访问 Azure SQL-身份验证和授权](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   |||
+
+   此示例将继续**Azure AD 集成**：
+
+   ![选择要使用的身份验证类型](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+
+1. 选择**Azure AD 集成**后，选择 "**登录**"。 根据你使用的是 Azure SQL 数据库还是 Azure SQL 托管实例，选择你的用户凭据进行身份验证。
+
+1. 为数据库选择以下值：
+
+   | properties | 必须 | 说明 |
+   |----------|----------|-------------|
+   | **服务器名称** | 是 | 你的 SQL server 的地址，例如`Fabrikam-Azure-SQL.database.windows.net` |
+   | **数据库名称** | 是 | 你的 SQL 数据库的名称，例如`Fabrikam-Azure-SQL-DB` |
+   | **表名** | 是 | 要使用的表，例如`SalesLT.Customer` |
+   ||||
+
+   > [!TIP]
+   > 您可以在数据库的连接字符串中找到此信息。 例如，在 Azure 门户中，找到并打开您的数据库。 在 "数据库" 菜单上，选择 "**连接字符串**" 或 "**属性**"，可以在其中找到此字符串：
+   >
+   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+
+   此示例显示了这些值的可能外观：
+
+   ![创建到 SQL 数据库的连接](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+
+1. 现在，继续执行 "[添加 sql 触发器](#add-sql-trigger)" 或 "[添加 sql" 操作](#add-sql-action)中尚未完成的步骤。
+
+<a name="connect-sql-server"></a>
+
+### <a name="connect-to-on-premises-sql-server"></a>连接到本地 SQL Server
+
+首次添加[sql 触发器](#add-sql-trigger)或[sql 操作](#add-sql-action)时，如果尚未创建与数据库的连接，系统会提示完成以下步骤：
+
+1. 若要连接到需要本地数据网关的本地 SQL server，请确保[已完成这些先决条件](#multi-tenant-or-ise)。
+
+   否则，你的数据网关资源将不会在创建连接时显示在 "**连接网关**" 列表中。
+
+1. 对于 "**身份验证类型**"，请选择 SQL Server 上必需和启用的身份验证：
+
+   | 身份验证 | 描述 |
+   |----------------|-------------|
+   | [**Windows 身份验证**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -仅支持非 ISE SQL Server 连接器，此连接器需要以前在 Azure 中为你的连接创建的数据网关资源，而不考虑你使用的是多租户 Azure 还是 ISE。 <p><p>-要求使用有效的 Windows 用户名和密码以通过 Windows 帐户确认你的标识。 <p>有关详细信息，请参阅[Windows 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
+   | [**SQL Server 身份验证**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支持非 ISE 和 ISE SQL Server 连接器。 <p><p>-需要在 SQL Server 中创建并存储的有效用户名和强密码。 <p>有关详细信息，请参阅[SQL Server Authentication](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
+   |||
+
+   此示例将继续执行**Windows 身份验证**：
+
+   ![选择要使用的身份验证类型](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
+
+1. 选择或提供 SQL 数据库的以下值：
+
+   | properties | 必须 | 描述 |
+   |----------|----------|-------------|
+   | **SQL server 名称** | 是 | 你的 SQL server 的地址，例如`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL 数据库名称** | 是 | SQL Server 数据库的名称，例如`Fabrikam-Azure-SQL-DB` |
+   | **用户名** | 是 | 你的 SQL server 和数据库的用户名 |
+   | **密码** | 是 | 你的 SQL server 和数据库的密码 |
+   | **订阅** |  是，用于 Windows 身份验证 | 你之前在 Azure 中创建的数据网关资源的 Azure 订阅 |
+   | **连接网关** | 是，用于 Windows 身份验证 | 你之前在 Azure 中创建的数据网关资源的名称 <p><p>**提示**：如果你的网关未显示在列表中，请检查你的[网关](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)是否已正确设置。 |
+   |||
+
+   > [!TIP]
+   > 您可以在数据库的连接字符串中找到此信息：
+   > 
+   > * `Server={your-server-address}`
+   > * `Database={your-database-name}`
+   > * `User ID={your-user-name}`
+   > * `Password={your-password}`
+
+   此示例显示了这些值的可能外观：
+
+   ![已完成创建 SQL Server 连接](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
+
+1. 准备就绪后，选择“创建”。
+
+1. 现在，继续执行 "[添加 sql 触发器](#add-sql-trigger)" 或 "[添加 sql" 操作](#add-sql-action)中尚未完成的步骤。
+
+<a name="add-sql-trigger"></a>
+
+## <a name="add-a-sql-trigger"></a>添加 SQL 触发器
+
+1. 在[Azure 门户](https://portal.azure.com)或 Visual Studio 中，创建一个空白逻辑应用，用于打开逻辑应用设计器。 此示例将继续 Azure 门户。
+
+1. 在设计器的搜索框中，输入 `sql server` 。 在触发器列表中，选择所需的 SQL 触发器。 此示例使用 "**创建项时**" 触发器。
+
+   ![选择“创建项时”触发器](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
+
+1. 如果是首次连接到 SQL 数据库，系统将提示您[立即创建 sql 数据库连接](#create-connection)。 创建此连接后，可以继续下一步。
+
+1. 在触发器中，指定触发器检查表的频率的间隔和频率。
+
+1. 若要为此触发器添加其他可用属性，请打开 "**添加新参数**" 列表。
+
+   此触发器仅返回所选表中的一行，而不返回任何其他行。 若要执行其他任务，请在逻辑应用工作流中添加[SQL 连接器操作](#add-sql-action)或执行所需的下一个任务的[其他操作](../connectors/apis-list.md)。
+   
+   例如，若要查看此行中的数据，可以添加其他操作（用于创建一个文件，其字段来自返回的行），然后发送电子邮件警报。 若要了解此连接器的其他可用操作，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sql/)。
+
+1. 在设计器工具栏上，选择“保存”。
+
+   尽管此步骤会自动启用并发布 Azure 中的逻辑应用，但逻辑应用当前所用的唯一操作是根据指定的时间间隔和频率检查数据库。
+
+<a name="add-sql-action"></a>
+
+## <a name="add-a-sql-action"></a>添加 SQL 操作
+
+在此示例中，逻辑应用一开始使用[定期触发器](../connectors/connectors-native-recurrence.md)，然后调用一个从 SQL 数据库获取行的操作。
+
+1. 在[Azure 门户](https://portal.azure.com)或 Visual Studio 中的逻辑应用设计器中打开逻辑应用。 此示例将继续 Azure 门户。
+
+1. 在要添加 SQL 操作的触发器或操作下，选择“新建步骤”。
+
+   ![向逻辑应用添加操作](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+
+   或者，若要在现有步骤之间添加操作，请将鼠标移到连接箭头上。 选择出现的加号 ( **+** )，然后选择“添加操作”。****
+
+1. 在“选择操作”**** 下的搜索框中输入 `sql server`。 从操作列表中，选择所需的 SQL 操作。 此示例使用“获取行”操作来获取单个记录。
+
+   ![选择 SQL "获取行" 操作](./media/connectors-create-api-sqlazure/select-sql-get-row-action.png)
+
+1. 如果是首次连接到 SQL 数据库，系统将提示您[立即创建 sql 数据库连接](#create-connection)。 创建此连接后，可以继续下一步。
+
+1. 选择**表名称**， `SalesLT.Customer` 此示例中为。 输入所需记录的**行 ID** 。
+
+   ![选择表名称并指定行 ID](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
+
+   此操作仅从选定表返回一个行，不返回其他内容。 因此，若要查看此行中的数据，您可以添加其他操作，以创建包含返回行中的字段的文件，并将该文件存储在云存储帐户中。 若要了解此连接器的其他可用操作，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sql/)。
+
+1. 完成后，请在设计器工具栏上选择“保存”。
+
+   此步骤自动在 Azure 中实时启用和发布逻辑应用。
 
 ## <a name="handle-bulk-data"></a>处理批量数据
 
-有时，你必须处理很大的结果集，以致于连接器无法同时返回所有结果，或者，你希望更好地控制结果集的大小和结构。 下面提供了一些可用于处理此类大型结果集的方法：
+有时，你必须处理大到连接器不能同时返回所有结果的结果集，或者你希望更好地控制结果集的大小和结构。 下面提供了一些可用于处理此类大型结果集的方法：
 
-* 为了帮助你将结果作为多个较小的集进行管理，请启用“分页”。 有关详细信息，请参阅[使用分页获取批量数据、记录和项](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。
+* 为了帮助你将结果作为较小的集进行管理，请启用“分页”。 有关详细信息，请参阅[使用分页获取批量数据、记录和项](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。
 
-* 创建一个按所需方式组织结果的存储过程。
+* 创建按所需方式组织结果的存储过程。
 
-  获取或插入多个行时，逻辑应用可以在这些[限制](../logic-apps/logic-apps-limits-and-config.md)内使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 循环访问这些行。 但是，当逻辑应用必须处理很大的记录集（例如，行的数目达到数千或数百万的地步）时，你需要最大限度地降低因调用数据库而产生的成本。
+  获取或插入多个行时，逻辑应用可以在这些[限制](../logic-apps/logic-apps-limits-and-config.md)中使用 [*until loop*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) 来循环访问这些行。 但是，当逻辑应用必须处理非常大的记录（例如，数千或数百万行）时，你希望将调用数据库的成本降到最低。
 
-  为了按所需方式组织结果，可以创建一个[*存储过程*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)，该过程在 SQL 实例中运行，并使用 **SELECT - ORDER BY** 语句。 此解决方案可以更好地控制结果的大小和结构。 逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。
+  若要按所需方式组织结果，可以创建在 SQL 实例中运行并使用 **SELECT - ORDER BY** 语句的[*存储过程*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)。 此解决方案可以更好地控制结果的大小和结构。 逻辑应用可以使用 SQL Server 连接器的“执行存储过程”操作调用存储过程。
 
   如需更多解决方案详细信息，请参阅以下文章：
 
@@ -132,21 +227,30 @@ ms.locfileid: "83402596"
 
 ### <a name="handle-dynamic-bulk-data"></a>处理动态批量数据
 
-在有些情况下，当你在 SQL Server 连接器中调用存储过程时，返回的输出是动态的。 在这种情况下，请执行以下步骤：
+使用 SQL Server 连接器调用存储过程时，返回的输出有时是动态的。 在这种情况下，请执行以下步骤：
 
-1. 打开“逻辑应用设计器”。
-1. 执行逻辑应用的测试运行以查看输出格式。 将示例输出复制下来。
+1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
+
+1. 通过执行测试运行来查看输出格式。 复制并保存示例输出。
+
 1. 在设计器中，选择你调用存储过程的操作下的“新建步骤”。
-1. 在“选择操作”下，搜索并选择[**分析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) 操作。
+
+1. 在 "**选择操作**" 下，找到并选择 "[**分析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) " 操作。
+
 1. 在“分析 JSON”操作中，选择“使用示例有效负载生成架构” 。
-1. 在“输入或粘贴示例 JSON 有效负载”窗口中，粘贴示例输出，然后选择“完成”。
-1. 如果出现逻辑应用无法生成架构的错误，请检查是否正确设置了示例输出的语法格式。 如果仍无法生成架构，请在“架构”框中手动输入一个。
+
+1. 在 "**输入或粘贴示例 JSON 负载**" 框中，粘贴示例输出，然后选择 "**完成**"。
+
+   > [!NOTE]
+   > 如果出现逻辑应用无法生成架构的错误，请检查是否正确设置了示例输出的语法格式。 如果仍无法生成架构，请在 "**架构**" 框中手动输入架构。
+
 1. 在设计器工具栏上，选择“保存”。
-1. 若要访问 JSON 内容属性，请使用[**分析 JSON** 操作](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)下的动态内容列表中显示的数据令牌。
+
+1. 若要引用 JSON 内容属性，请在要引用这些属性的编辑框中单击，以便显示动态内容列表。 在列表中的 "[**分析 json**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) " 标题下，为所需的 JSON 内容属性选择数据令牌。
 
 ## <a name="connector-specific-details"></a>特定于连接器的详细信息
 
-有关此连接器的触发器、操作和限制的技术信息，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sql/)。
+有关此连接器的触发器、操作和限制的技术信息，请参阅[连接器的 "参考" 页面](https://docs.microsoft.com/connectors/sql/)，该页面是根据 Swagger 说明生成的。
 
 ## <a name="next-steps"></a>后续步骤
 

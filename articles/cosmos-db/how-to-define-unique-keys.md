@@ -3,15 +3,16 @@ title: 为 Azure Cosmos 容器定义唯一键
 description: 了解如何使用 Azure 门户、PowerShell、.Net、Java 和各种其他 SDK 为 Azure Cosmos 容器定义唯一键。
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 056cd77104fe73f19588f3d13e11dc06fd93c3f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871007"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261539"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>为 Azure Cosmos 容器定义唯一键
 
@@ -19,21 +20,21 @@ ms.locfileid: "82871007"
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有帐户。
 
-1. 打开“数据资源管理器”窗格，选择要使用的容器。 
+1. 打开“数据资源管理器”窗格，选择要使用的容器。
 
-1. 单击“新建容器”  。
+1. 单击“新建容器”。
 
-1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目   。
+1. 在“添加容器”对话框中，单击“+ 添加唯一键”，添加唯一键条目 。
 
 1. 输入唯一键约束的路径
 
-1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目 
+1. 如果需要，可通过单击“+ 添加唯一键”，添加更多唯一键条目
 
-    ![Azure 门户中唯一键约束条目的屏幕截图](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure 门户中唯一键约束条目的屏幕截图":::
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
@@ -150,5 +151,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[分区](partition-data.md)
+- 了解有关[分区](partition-data.md)的详细信息
 - 探索[索引编制的工作原理](index-overview.md)

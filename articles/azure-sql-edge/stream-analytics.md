@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: e323c56f22c3a7d32bda5afe03a3462d3263f0d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233140"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254066"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>在 SQL Edge 中使用 Azure 流分析作业
 
@@ -52,7 +52,7 @@ Azure SQL Edge 具有流分析运行时的本机实现。 此实现允许你创�
     |字段      | 说明 |
     |---------------|-------------|
     |输出别名 | 输出的名称。|
-    |数据库 | SQL 数据库的名称。 它必须是 SQL Edge 实例上存在的数据库的有效名称。|
+    |数据库 | 数据库的名称。 它必须是 SQL Edge 实例上存在的数据库的有效名称。|
     |服务器名称 | SQL 实例的名称（或 IP 地址）和端口号详细信息。 对于 SQL Edge 部署，可以将“tcp:.,1433”用于服务器名称。|
     |用户名 | SQL 登录帐户，它对之前指定的数据库的数据具有读取和写入访问权限。|
     |密码 | 前面指定的 SQL 登录帐户的密码。|

@@ -4,15 +4,15 @@ description: 本文介绍如何创建和删除堡垒主机
 services: bastion
 author: mialdrid
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2020
 ms.author: mialdrid
-ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7f80bb7f9be2e01aa24090d7305b1a5d882da04
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255507"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 创建 Azure 堡垒主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "80619226"
 
 或者，你可以使用[Azure 门户](bastion-create-host-portal.md)或[Azure PowerShell](bastion-create-host-powershell.md)来创建 Azure 堡垒主机。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
@@ -30,16 +30,16 @@ ms.locfileid: "80619226"
 
 本部分帮助你使用 Azure CLI 创建新的 Azure 堡垒资源。
 
-1. 创建虚拟网络和 Azure 堡垒子网。 必须使用 name 值**AzureBastionSubnet**创建 Azure 堡垒子网。 此值允许 Azure 知道要将堡垒资源部署到哪个子网。 这不同于网关子网。 必须使用至少/27 或更大子网的子网（/27、/26 等）。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 如果在**AzureBastionSubnet**上使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)一文。
+1. 创建虚拟网络和 Azure 堡垒子网。 必须使用 name 值**AzureBastionSubnet**创建 Azure 堡垒子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 这不同于网关子网。 必须使用至少/27 或更大子网的子网（/27、/26 等）。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 如果在**AzureBastionSubnet**上使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)一文。
 
    ```azurecli-interactive
    az network vnet create -g MyResourceGroup -n MyVnet --address-prefix 10.0.0.0/16 --subnet-name AzureBastionSubnet  --subnet-prefix 10.0.0.0/24
    ```
 
-2. 为 Azure 堡垒创建公共 IP 地址。 公共 IP 是公共 IP 地址，将在其上访问 RDP/SSH 的堡垒资源（通过端口443）。 公共 IP 地址必须与要创建的堡垒资源位于同一区域。
+2. 为 Azure 堡垒创建公共 IP 地址。 公共 IP 是公共 IP 地址，将在其上访问 RDP/SSH 的堡垒资源（通过端口443）。 公共 IP 地址必须与要创建的 Bastion 资源位于同一区域。
 
    ```azurecli-interactive
-   az network public-ip create -g MyResourceGroup -n MyIp
+   az network public-ip create -g MyResourceGroup -n MyIp --sku Standard
    ```
 
 3. 在虚拟网络的 AzureBastionSubnet 中创建新的 Azure 堡垒资源。 创建和部署堡垒资源大约需要5分钟。
@@ -53,4 +53,4 @@ ms.locfileid: "80619226"
 
 * 有关其他信息，请参阅[堡垒常见问题解答](bastion-faq.md)。
 
-* 若要在 Azure 堡垒子网中使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)。
+* 若要在 Azure Bastion 子网中使用网络安全组，请参阅[使用 NSG](bastion-nsg.md)。

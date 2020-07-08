@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40266f1b340ebe0ab665c576ff3be0e62ba7c705
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798284"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260842"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>在 Azure Active Directory 中启用合并安全信息注册
 
@@ -48,6 +48,9 @@ ms.locfileid: "83798284"
 ## <a name="conditional-access-policies-for-combined-registration"></a>合并注册的条件访问策略
 
 现在，通过使用条件访问策略中的用户操作，可以保护用户何时以及如何注册 Azure 多重身份验证和自助式密码重置。 此功能适用于启用了[合并注册功能](../authentication/concept-registration-mfa-sspr-combined.md)的组织。 对于希望用户在 HR 入职期间从中心位置（例如受信任的网络位置）注册 Azure 多重身份验证和 SSPR 的组织，可以启用此功能。
+
+> [!NOTE]
+> 仅当用户访问组合注册页面时，此策略才适用。 当用户访问其他应用程序时，此策略不会强制进行 MFA 注册。 可以使用[Azure Identity Protection-配置 Mfa 策略](../identity-protection/howto-identity-protection-configure-mfa-policy.md)来创建 mfa 注册策略。
 
 有关在条件访问中创建受信任位置的详细信息，请参阅 [Azure Active Directory 条件访问中的位置条件是什么？](../conditional-access/location-condition.md#named-locations)一文
 

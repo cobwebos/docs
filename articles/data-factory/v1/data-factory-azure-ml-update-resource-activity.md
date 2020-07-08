@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 0204a2873b288dcb2082dbd5c9c984d29fa6d456
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930448"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254916"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新资源活动更新 Azure 机器学习模型
 
@@ -47,7 +47,7 @@ ms.locfileid: "82930448"
 下表介绍了本示例所用的 Web 服务。  有关详细信息，请参阅[以编程方式重新训练机器学习 Studio （经典）模型](../../machine-learning/studio/retrain-machine-learning-model.md)。
 
 - **定型 Web 服务** - 接收定型数据和生成定型模型。 重新定型的输出是 Azure Blob 存储中的 .ilearner 文件。 将训练实验作为 Web 服务发布时，会自动创建**默认终结点**。 还可创建更多终结点，但本示例仅使用默认终结点。
-- **评分 Web 服务** - 接收未标记的数据示例并进行预测。 预测输出可能采用多种形式，例如 .csv 文件或 Azure SQL 数据库中的行，具体取决于实验的配置。 将预测实验作为 Web 服务发布时，会自动创建默认终结点。 
+- **评分 Web 服务** - 接收未标记的数据示例并进行预测。 预测的输出可能具有各种形式，例如 .csv 文件或 Azure SQL 数据库中的行，具体取决于试验的配置。 将预测实验作为 Web 服务发布时，会自动创建默认终结点。 
 
 下图描述了 Azure 机器学习中定型和评分终结点之间的关系。
 
@@ -58,7 +58,7 @@ ms.locfileid: "82930448"
 使用 **Azure 机器学习更新资源活动**可调用**评分 Web 服务**，以通过新的定型模型更新 Web 服务。 以下示例提供了链接服务定义： 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>评分 Web 服务是经典 Web 服务
-如果评分 web 服务是**经典 web 服务**，请使用 Azure 门户创建第二个**非默认且可更新的终结点**。 请参阅[创建终结点](../../machine-learning/machine-learning-create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
+如果评分 web 服务是**经典 web 服务**，请使用 Azure 门户创建第二个**非默认且可更新的终结点**。 请参阅[创建终结点](../../machine-learning/studio/create-endpoint.md)一文以了解相关步骤。 创建非默认的可更新终结点之后，执行以下步骤：
 
 * 单击“批处理执行”**** 获取 **mlEndpoint** JSON 属性的 URI 值。
 * 单击“更新资源”**** 链接以获取 **updateResourceEndpoint** JSON 属性的 URI 值。 API 密钥就在终结点页面上（位于右下角）。

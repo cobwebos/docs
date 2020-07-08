@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: b1f11a1ff25117c07e61475e7e83fc0c170cd552
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414655"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254610"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure 数据工厂（旧版）中支持的文件格式和压缩编解码器
 
@@ -36,7 +36,7 @@ ms.locfileid: "81414655"
 | --- | --- | --- | --- |
 | columnDelimiter |用于分隔文件中的列的字符。 可以考虑使用数据中可能不存在的极少见的不可打印字符。 例如，指定“\u0001”表示标题开头 (SOH)。 |只能使用一个字符。 **默认**值为**逗号（“,”）** 。 <br/><br/>若要使用 Unicode 字符，请参阅 [Unicode 字符](https://en.wikipedia.org/wiki/List_of_Unicode_characters)获取相应的代码。 |否 |
 | rowDelimiter |用于分隔文件中的行的字符。 |只能使用一个字符。 **默认**值为以下任何一项： **[“\r\n”、“\r”、“\n”]** （读取时）和 **“\r\n”** （写入时）。 |否 |
-| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果你将逗号（"，"）作为列分隔符，但想要在文本中使用逗号字符（例如： "Hello，world"），则可以将 "$" 定义为转义符，并在源中使用字符串 "Hello $，world"。 |否 |
+| escapeChar |用于转义输入文件内容中的列分隔符的特殊字符。 <br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>示例：如果使用逗号 (',') 作为列分隔符，但希望在文本中包含逗号字符（例如：“Hello, world”），可以将“$”定义为转义字符，并在源代码中使用字符串“Hello$, world”。 |否 |
 | quoteChar |将字符串值用引号括起来的字符。 引号字符内的列和行分隔符将被视为字符串值的一部分。 此属性适用于输入和输出数据集。<br/><br/>不能同时指定表的 escapeChar 和 quoteChar。 |只能使用一个字符。 没有默认值。 <br/><br/>例如，如果以逗号（“,”）作为列分隔符，但想要在文本中使用逗号字符（例如：<Hello, world>），可以将 "（双引号）定义为引号字符，在源中使用字符串“Hello, world”。 |否 |
 | nullValue |用于表示 null 值的一个或多个字符。 |一个或多个字符。 **默认**值为 **“\N”和“NULL”** （读取时）及 **“\N”** （写入时）。 |否 |
 | encodingName |指定编码名称。 |有效的编码名称。 请参阅 [Encoding.EncodingName 属性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **默认**值为 **UTF-8**。 |否 |
@@ -445,7 +445,7 @@ ms.locfileid: "81414655"
 
 | 数据工厂临时数据类型 | Parquet 基元类型 | Parquet 原始类型（反序列化） | Parquet 原始类型（串行化） |
 |:--- |:--- |:--- |:--- |
-| 布尔 | 布尔 | 不适用 | 空值 |
+| 布尔 | 布尔 | 空值 | 空值 |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -454,17 +454,17 @@ ms.locfileid: "81414655"
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
 | UInt64 | Int64/二进制 | UInt64 | 小数 |
-| Single | Float | 不适用 | 空值 |
-| Double | Double | 不适用 | 不适用 |
+| Single | Float | 空值 | 空值 |
+| Double | Double | 空值 | 空值 |
 | 小数 | 二进制 | 小数 | 小数 |
 | String | 二进制 | Utf8 | Utf8 |
-| DateTime | Int96 | 不适用 | 不适用 |
-| TimeSpan | Int96 | 空值 | 不适用 |
-| DateTimeOffset | Int96 | 不适用 | 不适用 |
-| ByteArray | 二进制 | 不适用 | 空值 |
+| DateTime | Int96 | 空值 | 空值 |
+| TimeSpan | Int96 | 空值 | 空值 |
+| DateTimeOffset | Int96 | 空值 | 空值 |
+| ByteArray | 二进制 | 空值 | 空值 |
 | Guid | 二进制 | Utf8 | Utf8 |
 | Char | 二进制 | Utf8 | Utf8 |
-| CharArray | 不支持 | 空值 | 不适用 |
+| CharArray | 不支持 | 空值 | 空值 |
 
 ## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC 格式（旧版）
 
@@ -532,7 +532,7 @@ ms.locfileid: "81414655"
 }
 ```
 
-若要在 Hive 表中使用 Avro 格式，可以参考[Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
+若要在 Hive 表中使用 Avro 格式，可以参考 [Apache Hive 教程](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)。
 
 请注意以下几点：
 
@@ -542,10 +542,10 @@ ms.locfileid: "81414655"
 
 在复制期间，Azure 数据工厂支持压缩/解压缩数据。 在输入数据集中指定 `compression` 属性时，复制活动从源读取压缩的数据并对其进行解压缩；在输出数据集中指定属性时，复制活动将压缩数据并将其写入到接收器。 下面是一些示例方案：
 
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩，然后将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
+* 从 Azure blob 读取 GZIP 压缩的数据，将其解压缩，并将结果数据写入 Azure SQL 数据库。 使用值为 GZIP 的 `compression` `type` 属性定义输入 Azure Blob 数据集。
 * 从来自本地文件系统的纯文本文件读取数据、使用 GZip 格式进行压缩并将压缩的数据写入到 Azure Blob。 使用值为 GZip 的 `compression` `type` 属性定义输出 Azure Blob 数据集。
-* 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 定义输入 FTP 数据集`compression` `type`时，属性为 ZipDeflate。
-* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 定义输入 Azure Blob 数据集`compression` `type` ，并将其设置为 GZIP，并将`compression` `type`设置为 BZIP2 的输出数据集。
+* 从 FTP 服务器读取 .zip 文件，将它解压缩以获取文件内容，然后将这些文件加入 Azure Data Lake Store。 定义输入 FTP 数据集时， `compression` `type` 属性为 ZipDeflate。
+* 从 Azure Blob 读取 GZIP 压缩的数据，将其解压缩、使用 BZIP2 将其压缩，然后将结果数据写入 Azure Blob。 通过将 `compression` `type` 设为 GZIP 来定义输入 Azure Blob 数据集，通过将 `compression` `type` 设为 BZIP2 来定义输出数据集。
 
 若要为数据集指定压缩，请在数据集 JSON 中使用 **compression** 属性，如以下示例所示：
 
@@ -575,11 +575,11 @@ ms.locfileid: "81414655"
 
 **compression** 节包含两个属性：
 
-* **类型：** 压缩编解码器，可以是**GZIP**、 **Deflate**、 **BZIP2**或**ZipDeflate**。 请注意，使用复制活动解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到文件夹：`<path specified in dataset>/<folder named as source zip file>/`。
+* **Type：** 压缩编解码器，可以是 **GZIP**、**Deflate**、**BZIP2** 或 **ZipDeflate**。 请注意，使用复制活动解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到文件夹：`<path specified in dataset>/<folder named as source zip file>/`。
 * **Level：** 压缩比，可以是 **Optimal** 或 **Fastest**。
 
-  * **Fastest：** 尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。
-  * **Optimal：** 以最佳方式完成压缩操作，不过，需要耗费更长的时间。
+  * **最快：** 尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。
+  * **最佳**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。
 
     有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。
 

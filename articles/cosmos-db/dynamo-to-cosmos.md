@@ -3,19 +3,19 @@ title: 将应用程序从 Amazon DynamoDB 迁移到 Azure Cosmos DB
 description: 了解如何将 .NET 应用程序从 Amazon DynamoDB 迁移到 Azure Cosmos DB
 author: manishmsfte
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: b30ebf7dae1d43b5f841677f98831fc4817a9b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663585"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261862"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>将应用程序从 Amazon DynamoDB 迁移到 Azure Cosmos DB
 
-Azure Cosmos DB 是一种全球分布的可扩展的全托管式数据库。 它提供对数据的访问且保证访问延迟很低。 若要详细了解 Azure Cosmos DB，请参阅[概述](introduction.md)一文。 本文介绍如何在最低限度更改代码的情况下将 .NET 应用程序从 DynamoDB 迁移到 Azure Cosmos DB。
+Azure Cosmos DB 是一种全球分布的可扩展的全托管式数据库。 它能够确保数据访问延迟较低。 若要详细了解 Azure Cosmos DB，请参阅[概述](introduction.md)一文。 本文介绍如何在最低限度更改代码的情况下将 .NET 应用程序从 DynamoDB 迁移到 Azure Cosmos DB。
 
 ## <a name="conceptual-differences"></a>概念差异
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 是一种全球分布的可扩展的全托管式数据库。 它
 |---|---|
 |不适用|  数据库 |
 |表      |  集合 |
-|  项 |  文档 |
+|  项目 |  文档 |
 |属性|字段|
 |辅助索引|辅助索引|
 |主键 - 分区键|分区键|

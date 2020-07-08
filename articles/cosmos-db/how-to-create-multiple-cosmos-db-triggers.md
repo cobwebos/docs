@@ -3,21 +3,21 @@ title: 为 Cosmos DB 创建多个独立的 Azure Functions 触发器
 description: 了解如何配置多个独立的适用于 Cosmos DB 的 Azure Functions 触发器以创建事件驱动的体系结构。
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77604943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261590"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
 
 本文介绍如何配置多个适用于 Cosmos DB 的 Azure Functions 触发器，以并行工作并独立地对更改做出反应。
 
-![基于事件的无服务器 Functions 使用适用于 Cosmos DB 的 Azure Functions 触发器并共享租用容器](./media/change-feed-functions/multi-trigger.png)
+:::image type="content" source="./media/change-feed-functions/multi-trigger.png" alt-text="基于事件的无服务器 Functions 使用适用于 Cosmos DB 的 Azure Functions 触发器并共享租用容器" border="false":::
 
 ## <a name="event-based-architecture-requirements"></a>基于事件的体系结构要求
 

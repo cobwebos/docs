@@ -4,27 +4,27 @@ description: 了解如何为 Azure 通知中心配置 Apple Push Notification �
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 06/22/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: eb1122ba3de0002507589d3e607d1e39d905c308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c7e0c9569428b55420911f253deee52ce440cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127514"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255392"
 ---
-# <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>为通知中心配置 Apple Push Notification 服务设置 Azure 门户
+# <a name="configure-apple-push-notification-service-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中为通知中心配置 Apple Push Notification 服务设置
 
-本文介绍如何使用 Azure 门户为 Azure 通知中心配置 Apple Push Notification 服务 (APNS) 设置。 
+本文介绍如何使用 Azure 门户为 Azure 通知中心配置 Apple Push Notification 服务 (APNS) 设置。
 
 ## <a name="prerequisites"></a>先决条件
-如果你尚未创建通知中心，现在请创建一个。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。 
+
+如果你尚未创建通知中心，现在请创建一个。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。
 
 ## <a name="configure-apple-push-notification-service"></a>配置 Apple Push Notification 服务
 
@@ -34,19 +34,19 @@ ms.locfileid: "80127514"
 
 1. 对于“身份验证模式”，请选择“证书”或“令牌”。   
 
-   a. 如果选择“证书”： 
-   * 选择“文件”图标，然后选择要上传的“.p12”文件。 
-   * 输入密码。
-   * 选择“沙盒”  模式。 或者，若要将推送通知发送给从应用商店中购买了你的应用的用户，请选择“生产”模式。 
+   - 如果选择“证书”：
+      - 选择文件图标，再选择要上传的 .p12 文件。
+      - 输入密码。
+      - 选择“沙盒”模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式。
 
      ![Azure 门户中 APNS 证书配置的屏幕截图](./media/configure-apple-push-notification-service/notification-hubs-apple-config-cert.png)
 
-   b. 如果选择“令牌”： 
-
-   * 输入“密钥 ID”、“绑定 ID”、“团队 ID”和“令牌”的值     。
-   * 选择“沙盒”  模式。 或者，若要将推送通知发送给从应用商店中购买了你的应用的用户，请选择“生产”模式。 
+   - 如果选择“令牌”：
+      - 输入“密钥 ID”、“绑定 ID”、“团队 ID”和“令牌”的值   。
+      - 选择“沙盒”模式。 要将推送通知发送给从应用商店购买应用的用户，则选择“生产”模式。
 
      ![Azure 门户中 APNS 令牌配置的屏幕截图](./media/configure-apple-push-notification-service/notification-hubs-apple-config-token.png)
 
 ## <a name="next-steps"></a>后续步骤
-如需通过教程的 分步说明来了解如何将通知推送到 iOS 设备，请参阅以下文章：[使用通知中心和 APNS 将通知推送到 iOS 设备](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+
+有关将通知发送到 iOS 设备的分步说明的教程，请参阅以下文章：[使用 Azure 通知中心向 ios 应用程序发送推送通知](ios-sdk-get-started.md)。

@@ -8,22 +8,22 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732689"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254406"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>处理数据工厂映射数据流中的 SQL 截断错误行
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-数据工厂中的常见方案是在使用映射数据流时，将转换的数据写入 Azure SQL 数据库。 在此方案中，您必须阻止的常见错误条件是可能的列截断。 按照这些步骤来提供不适合目标字符串列的列日志记录，以便在这些情况下数据流继续。
+数据工厂中的常见方案是在使用映射数据流时，将转换的数据写入 Azure SQL 数据库中的数据库。 在此方案中，您必须阻止的常见错误条件是可能的列截断。 按照这些步骤来提供不适合目标字符串列的列日志记录，以便在这些情况下数据流继续。
 
 ## <a name="scenario"></a>方案
 
-1. 我们有一个具有名为```nvarchar(5)``` "name" 的列的目标 Azure SQL 数据库表。
+1. 我们有一个具有 ```nvarchar(5)``` 名为 "name" 的列的目标数据库表。
 
 2. 在我们的数据流中，我们想要将来自接收器的电影标题映射到该目标 "name" 列。
 
@@ -40,9 +40,9 @@ ms.locfileid: "81732689"
 
     ![有条件拆分 (conditional split)](media/data-flow/error1.png)
 
-2. 此有条件拆分转换将 "title" 的最大长度定义为5。 小于或等于5的任何行都将进入```GoodRows```流中。 大于五的任何行都将进入```BadRows```流中。
+2. 此有条件拆分转换将 "title" 的最大长度定义为5。 小于或等于5的任何行都将进入 ```GoodRows``` 流中。 大于五的任何行都将进入 ```BadRows``` 流中。
 
-3. 现在，我们需要记录失败的行。 将接收器转换添加到```BadRows```流以进行日志记录。 在这里，我们将 "自动映射" 所有字段，以便记录完整的事务记录。 这是一个以文本分隔的 CSV 文件输出到 Blob 存储中的单个文件。 我们将调用日志文件 "badrows"。
+3. 现在，我们需要记录失败的行。 将接收器转换添加到 ```BadRows``` 流以进行日志记录。 在这里，我们将 "自动映射" 所有字段，以便记录完整的事务记录。 这是一个以文本分隔的 CSV 文件输出到 Blob 存储中的单个文件。 我们将调用日志文件 "badrows.csv"。
 
     ![错误行](media/data-flow/error3.png)
     

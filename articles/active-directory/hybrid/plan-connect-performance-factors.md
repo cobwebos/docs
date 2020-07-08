@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76897053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253488"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影响 Azure AD Connect 性能的因素
 
@@ -96,7 +96,7 @@ Azure AD Connect 使用以下临时区域、规则和过程，以实现从 Activ
 > [!NOTE]
 > 对 Active Directory 或 Azure AD 中的许多对象执行批量更新时，需要仔细规划。 批量更新将导致增量同步过程在导入时花费更长时间，因为有大量对象发生了更改。 即使批量更新未影响同步过程，也可能出现导入时间长的情况。 例如，将许可证分配给 Azure AD 中的多个用户将导致从 Azure AD 导入的周期较长，但不会导致 Active Directory 中的任何属性发生更改。
 
-### <a name="synchronization"></a>Synchronization
+### <a name="synchronization"></a>同步
 
 同步过程运行时具有以下性能特征：
 
@@ -143,7 +143,7 @@ Active Directory CS 中存在大量持久的[断开连接器对象](concept-azur
 
 ## <a name="azure-ad-connect-dependency-factors"></a>Azure AD Connect 依赖项因素
 
-Azure AD Connect 的性能依赖于它导入和导出到的已连接目录的性能。 例如，它需要导入的 Active Directory 的大小或 Azure AD 服务的网络延迟。 预配引擎使用的 SQL 数据库也会影响同步周期的整体性能。
+Azure AD Connect 的性能依赖于它导入和导出到的已连接目录的性能。 例如，它需要导入的 Active Directory 的大小或 Azure AD 服务的网络延迟。 预配引擎使用的 SQL 数据库还会影响同步周期的总体性能。
 
 ### <a name="active-directory-factors"></a>Active Directory 因素
 
@@ -172,7 +172,7 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 
 - 拥有 10 万名以上用户的组织，可通过使 SQL 数据库和预配引擎位于同一服务器来减少网络延迟。
 - 鉴于同步过程的磁盘输入和输出 (I/O) 要求高，为获得最佳结果，请对预配引擎的 SQL 数据库使用固态硬盘 (SSD)；如果无法使用，则考虑使用 RAID 0 或 RAID 1 配置。
-- 请勿提前执行完全同步，这会造成不必要的改动和增加响应时间。
+- 请勿执行完全同步提前;这会导致不必要的变动和响应时间变慢。
 
 ## <a name="conclusion"></a>结束语
 
@@ -190,4 +190,4 @@ Azure AD 使用限制来防止云服务受到拒绝服务 (DoS) 攻击。 目前
 - 在 Azure AD 中监视 [Azure AD Connect 同步运行状况](how-to-connect-health-agent-install.md)。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

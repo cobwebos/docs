@@ -4,15 +4,15 @@ description: 了解如何为 Azure 应用程序网关配置 TLS 策略，并减�
 services: application gateway
 author: amsriva
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 871cb930e867002d8af1e7755de27d4873327543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80257370"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253624"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>应用程序网关 TLS 策略概述
 

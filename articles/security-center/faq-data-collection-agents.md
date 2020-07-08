@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 53f255c44cded714440f5d524387c4ea1a20d76a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 79b6d7f84cd54979421357efa94c5c6de38fb4f1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849036"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261386"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答 - 有关数据收集、代理和工作区的问题
 
@@ -39,6 +39,25 @@ ms.locfileid: "83849036"
 > 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+## <a name="what-is-the-log-analytics-agent"></a>什么是 Log Analytics 代理？
+
+为了监视安全漏洞和威胁，Azure 安全中心依赖于[Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)-这是 Azure Monitor 服务所使用的同一代理。 
+
+代理有时称为 Microsoft Monitoring Agent （或 "MMA"）。 
+
+代理从连接的计算机收集各种与安全相关的配置详细信息和事件日志，然后将数据复制到 Log Analytics 工作区以便进一步分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
+
+确保计算机运行的是代理支持的操作系统之一，如以下页面所述：
+
+* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)
+
+* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)
+
+详细了解[Log Analytics 代理收集的数据](security-center-enable-data-collection.md)。
+
+
 
 
 ## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>VM 需要满足哪些条件才能自动预配 Log Analytics 代理安装？
@@ -65,6 +84,14 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 - 对于日本的 VM，工作区位置为日本
 - 对于中国的 VM，工作区位置为中国
 - 对于澳大利亚的 VM，工作区位置为澳大利亚
+
+
+## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Log Analytics 代理收集哪些数据？
+
+有关代理所监视的应用程序和服务的完整列表，请参阅[什么是受 Azure Monitor？](https://docs.microsoft.com/azure/azure-monitor/monitor-reference#azure-services)。
+
+> [!IMPORTANT]
+> 请注意，对于某些服务（例如 Azure 防火墙），如果已启用日志记录，并选择要记录的使用中的资源（例如，将日志设置为 "*详细*"），则可能会对 Log Analytics 工作区存储需要产生严重影响。 
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>是否可以删除安全中心创建的默认工作区？
@@ -201,9 +228,17 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="how-do-i-disable-data-collection"></a>如何禁用数据收集？
 
-默认情况下自动设置处于关闭状态。 可以随时禁用安全策略中的此设置，禁用资源的自动设置。 强烈建议使用自动预配，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。
+强烈建议使用自动预配，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。 默认情况下，自动预配处于禁用状态。
 
-若要禁用数据收集，请[登录到 Azure 门户](https://portal.azure.com)，依次选择“浏览”、“安全中心”和“策略”  。 选择希望禁用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“关闭” 。
+如果已启用该功能，但现在想要将其禁用：
+
+1. 在[Azure 门户](https://portal.azure.com)中，打开 "**安全中心**" 并选择 "**安全策略**"。
+
+1. 选择要对其禁用自动设置的订阅。
+
+    **安全策略-** 将打开 "数据收集"。
+
+1. 在“自动设置”下，选择“关闭” 。
 
 
 ## <a name="how-do-i-enable-data-collection"></a>如何启用数据收集？
@@ -233,9 +268,6 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 代理使用系统资源的名义帐户，对性能的影响极小。 有关性能影响和代理及扩展的详细信息，请参阅[规划和操作指南](security-center-planning-and-operations-guide.md#data-collection-and-storage)。
 
 
-## <a name="where-is-my-data-stored"></a>我的数据存储在哪？
-
-通过此代理收集的数据存储在与订阅关联的现有 Log Analytics 工作区或新工作区中。 有关详细信息，请参阅[数据安全](security-center-data-security.md)。
 
 
 <!--Image references-->

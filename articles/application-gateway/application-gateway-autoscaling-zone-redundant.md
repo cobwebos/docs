@@ -4,16 +4,16 @@ description: 本文介绍 Azure 应用程序 Standard_v2 和 WAF_v2 SKU，其中
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 03/24/2020
+ms.topic: conceptual
+ms.date: 06/06/2020
 ms.author: victorh
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 18bcd57c804746da5cff2efe8713616174fc794d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.custom: fasttrack-edit, references_regions
+ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85254338"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -32,7 +32,7 @@ ms.locfileid: "83739475"
 - **性能增强**：与标准/WAF SKU 相比，v2 SKU 可提供高达 5 倍的 TLS 卸载性能。
 - 缩短部署和更新时间：与标准/WAF SKU 相比，v2 SKU 缩短了部署和更新时间。 这还包括 WAF 配置更改。
 
-![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
+![自动缩放区域的图示。](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -45,7 +45,7 @@ ms.locfileid: "83739475"
 - 固定价格 - 这是用于预配 Standard_v2 或 WAF_v2 网关的每小时（或部分小时）价格。 请注意，0 个额外最小实例仍可确保服务的高可用性，这始终包含在固定价格中。
 - 容量单位价格 - 这是用于基于消耗量的成本，计费时会在固定成本的基础上加上该成本。 容量单位费用也按每小时或部分每小时进行计算。 容量单位有三个维度：计算单位、持续连接数和吞吐量。 计算单位用于度量已使用的处理器容量。 影响计算单位的因素包括 TLS 连接数/秒、URL 重写计算以及 WAF 规则处理。 持续连接数用于度量在给定计费间隔内与应用程序网关之间已建立的 TCP 连接数。 吞吐量是在给定计费间隔内，平均每秒由系统处理的兆位数。  对于超出保留实例计数的任何内容，都会在容量单位级别进行计费。
 
-每个容量单位最多包括：1 个计算单位或 2500 个持续连接或 2.22 Mbps 吞吐量。
+每个容量单位最多包括：1个计算单元、2500持久连接和 2.22-Mbps 吞吐量。
 
 计算单位指南：
 

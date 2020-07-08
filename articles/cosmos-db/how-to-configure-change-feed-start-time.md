@@ -3,15 +3,15 @@ title: 如何配置更改源处理器的开始时间 - Azure Cosmos DB
 description: 了解如何将更改源处理器配置为从特定的日期和时间开始读取
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d3d9af1b8cbda3f0fa2ff4650fef4602f7812f79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77586268"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261709"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>如何配置更改源处理器的开始时间
 

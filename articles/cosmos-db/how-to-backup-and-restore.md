@@ -3,16 +3,16 @@ title: 如何从备份还原 Azure Cosmos DB 数据
 description: 本文介绍如何从备份还原 Azure Cosmos DB 数据，如何联系 Azure 支持人员还原数据，以及数据恢复后要执行的步骤。
 author: kanshiG
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 1a0075f9b4fc3ff919d4db4bd440a5435d711c83
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70240764"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261726"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中从备份还原数据 
 
@@ -43,7 +43,7 @@ ms.locfileid: "70240764"
 
 下面的屏幕截图说明如何为容器（集合/图/表）创建通过 Azure 门户还原数据的支持请求。 提供其他详细信息（例如数据类型、还原目的、删除数据的时间），以帮助我们设置请求的优先级。
 
-![使用 Azure 门户创建备份支持请求](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+:::image type="content" source="./media/how-to-backup-and-restore/backup-support-request-portal.png" alt-text="使用 Azure 门户创建备份支持请求":::
 
 ## <a name="post-restore-actions"></a>还原后的操作
 

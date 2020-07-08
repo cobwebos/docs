@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: php
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c4bf0569d6e2e595eb03c85abba7224b25b1864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263840"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85255443"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何通过 PHP 使用通知中心
 
@@ -32,7 +30,7 @@ ms.locfileid: "76263840"
 本主题中，我们将向你介绍如何：
 
 * 以 PHP 构建 REST 客户端以获取通知中心功能；
-* 请按照选定移动平台的[入门教程](notification-hubs-ios-apple-push-notification-apns-get-started.md)操作，用 PHP 实现后端部分。
+* 遵循[使用 Azure 通知中心将推送通知发送到](ios-sdk-get-started.md)适用于所选移动平台的 iOS 应用，实现 PHP 中的后端部分。
 
 ## <a name="client-interface"></a>客户端接口
 
@@ -55,7 +53,7 @@ ms.locfileid: "76263840"
 
 ## <a name="implementation"></a>实现
 
-如果尚未实现，按照[入门教程]学至最后一节，必须在此过程中实现后端。
+如果尚未实现，请按照[入门教程]学至最后一节，必须在此过程中实现后端。
 此外，如果希望可以使用 [PHP REST 包装器示例]中的代码并直接转到[完成本教程](#complete-tutorial)部分。
 
 有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)。 本部分介绍了访问通知中心 REST 终结点所需的主要步骤的 PHP 实现：
@@ -222,7 +220,7 @@ ms.locfileid: "76263840"
 
 现在，可以通过从 PHP 后端发送通知来完成该入门教程。
 
-初始化通知中心客户端（按[入门教程]中所述替换连接字符串和中心名称）：
+初始化通知中心客户端（如 [入门教程] 中所述，替代连接字符串和中心名称）：
 
     ```php
     $hub = new NotificationHub("connection string", "hubname");
@@ -282,7 +280,7 @@ ms.locfileid: "76263840"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 可以从此页执行下列操作：
+在本主题中，我们介绍了如何为通知中心创建简单的 Java REST 客户端。 此处你可以：
 
 * 下载完整的 [PHP REST 包装器示例]，其中包含上述所有代码。
 * 在 [突发新闻教程] 中继续学习通知中心标记功能
@@ -291,4 +289,5 @@ ms.locfileid: "76263840"
 有关详细信息，另请参阅 [PHP 开发人员中心](https://azure.microsoft.com/develop/php/)。
 
 [PHP REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
-[入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[使用 Azure 通知中心向 iOS 应用发送推送通知](ios-sdk-get-started.md))
+

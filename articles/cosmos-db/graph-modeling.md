@@ -4,15 +4,15 @@ description: 了解如何使用 Azure Cosmos DB Gremlin API 为图形数据库�
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3aab76c8d7eaad46ae1c20f6ddb4547b25b5b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898323"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261811"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的图形数据建模
 
@@ -73,11 +73,11 @@ ms.locfileid: "78898323"
 
 * **基于顶点属性**：在这种方法中，实体使用三个单独的顶点和两个边缘来描述其属性。 虽然这种方法可以减少冗余，但会增加模型复杂性。 模型复杂性的增加可能会导致延迟、查询复杂性和计算成本增加。 此模型还可能在分区方面带来挑战。
 
-![具有属性顶点的实体模型。](./media/graph-modeling/graph-modeling-1.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-1.png" alt-text="具有属性顶点的实体模型。" border="false":::
 
 * **属性嵌入式顶点**：这种方法利用键值对列表来表示顶点内实体的所有属性。 这种方法降低了模型复杂性，使查询更简单、遍历成本更低。
 
-![具有属性顶点的实体模型。](./media/graph-modeling/graph-modeling-2.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-2.png" alt-text="具有属性顶点的实体模型。" border="false":::
 
 > [!NOTE]
 > 上面的示例显示了一个简化的图形模型，仅对划分实体属性的两种方法进行了比较。
@@ -105,7 +105,7 @@ ms.locfileid: "78898323"
 * 使用非通用术语来标记关系。
 * 使用关系名称将源顶点的标签与目标顶点的标签相关联。
 
-![关系标签示例。](./media/graph-modeling/graph-modeling-3.png)
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="关系标签示例。" border="false":::
 
 遍历器用于筛选边缘的标签越具体越好。 此决定也会对查询成本产生显著影响。 可以 [使用 executionProfile 步骤](graph-execution-profile.md)随时评估查询成本。
 

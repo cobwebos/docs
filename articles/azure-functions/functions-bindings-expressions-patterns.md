@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 2d0cf18de09932c5d66e269a85919f4d85383c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca3e342d42e6baf2bc4caaed07dc196203d8a032
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277643"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85261063"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions 绑定表达式模式
 
@@ -37,7 +37,8 @@ ms.locfileid: "79277643"
 
 当函数在本地运行时，应用设置值来自 *local.settings.json* 文件。
 
-请注意，触发器和绑定的 `connection` 属性是一种特殊情况，该属性会自动将值解析为应用设置（不带百分比号）。 
+> [!NOTE]
+> `connection`触发器和绑定的属性是一种特殊情况，会自动将值解析为应用设置，而无需百分号。 
 
 以下示例是一个 Azure 队列存储触发器，该触发器使用应用设置 `%input-queue-name%` 定义要触发的队列。
 
@@ -115,7 +116,7 @@ public static void Run(Stream image, string filename, Stream imageSmall, ILogger
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
-类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 `path`function.json*示例中的* 值相同： 
+类库中的特性同样能够使用绑定表达式和模式。 在以下示例中，特性构造函数参数的值与前面 *function.json* 示例中的 `path` 值相同： 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -159,7 +160,7 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中  ，可在 blob `queueTrigger` 属性中使用 `path` 元数据属性，如下面的示例中所示：
+这些元数据值可在 function.json 文件属性中访问  。 例如，假设使用队列触发器，且队列消息中包含要读取的 blob 的名称。 在 function.json 文件中，可在 blob `path` 属性中使用 `queueTrigger` 元数据属性，如下面的示例中所示：
 
 ```json
   "bindings": [
@@ -268,7 +269,7 @@ module.exports = function (context, info) {
 }
 ```
 
-可以直接以 `FileName` 的形式引用 `BlobName.FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
+可以直接以 `BlobName.FileName` 的形式引用 `FileName`。 使用此 JSON 格式时，上述示例中的 `path` 属性如下所示：
 
 ```json
 "path": "strings/{BlobName.FileName}.{BlobName.Extension}",

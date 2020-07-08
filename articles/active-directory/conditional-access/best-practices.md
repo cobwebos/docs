@@ -4,19 +4,19 @@ description: 了解用户须知内容，以及在配置条件访问策略时应�
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4560a514ddb9949c8cc07864b2319a5878b245e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295361"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253369"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
 
@@ -27,7 +27,7 @@ ms.locfileid: "80295361"
 
 本文假定你熟悉 [Azure Active Directory 中的条件访问是什么？](../active-directory-conditional-access-azure-portal.md)中所述的概念和术语
 
-## <a name="whats-required-to-make-a-policy-work"></a>要使策略发挥作用，需要执行哪些操作？
+## <a name="whats-required-to-make-a-policy-work"></a>使策略发挥作用需要什么？
 
 新建策略时，未选择任何用户、组、应用或访问控制。
 
@@ -98,7 +98,7 @@ ms.locfileid: "80295361"
 
 常见的相互连接的应用程序包括 Microsoft Flow、Microsoft Planner、Microsoft Teams、Office 365 Exchange Online、Office 365 SharePoint Online 和 Office 365 Yammer。
 
-如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果不这样做，用户将无法在应用内完成一些任务。 例如，如果在非托管设备上需要多重身份验证来访问 SharePoint 而不是电子邮件，则使用电子邮件的用户将无法将 SharePoint 文件附加到邮件中。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
+如果访问权限是在会话或任务的开始时控制的，则这对需要用户交互（例如多重身份验证）的策略来说很重要。 如果你不这样做，用户将无法完成应用中的某些任务。 例如，如果你要求在非托管设备上访问 SharePoint 时进行多重身份验证，但不要求在访问电子邮件时这样做，则在电子邮件中工作的用户无法将 SharePoint 文件附加到邮件中。 有关详细信息，可参阅此文：[Azure Active Directory 条件访问中的服务依赖项是什么？](service-dependencies.md)。
 
 ## <a name="what-you-should-avoid-doing"></a>应避免的操作
 

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a6b84569fe0356267440e38b31ac738b2659d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731816"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260825"
 ---
 # <a name="step-3-validate-connectivity"></a>步骤3：验证连接性
 
 部署日志转发器（在步骤1中）并将安全解决方案配置为向其发送 CEF 消息（在步骤2中）后，请按照以下说明验证安全解决方案与 Azure Sentinel 之间的连接。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 你必须在日志转发器计算机上拥有提升的权限（sudo）。
 
 - 你必须在日志转发器计算机上安装 Python。<br>
-使用`python –version`命令检查。
+使用 `python –version` 命令检查。
 
 ## <a name="how-to-validate-connectivity"></a>如何验证连接
 
@@ -76,7 +76,7 @@ ms.locfileid: "81731816"
 
     - 配置文件：`/etc/rsyslog.d/security-config-omsagent.conf`
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. 检查 syslog 后台程序是否正在接收端口514上的数据

@@ -5,22 +5,22 @@ author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: conceptual
-ms.date: 05/28/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e283ff140e02d604fdf5e20d69fff96aab94f71
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985637"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85260587"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>使用 Bulk Executor Java 库针对 Azure Cosmos DB 数据执行批量操作
 
 本教程说明了如何使用 Azure Cosmos DB 的批量执行程序 Java 库导入和更新 Azure Cosmos DB 文档。 若要了解 Bulk Executor 库及它如何帮助你利用大量吞吐量和存储，请参阅 [Bulk Executor 库概述](bulk-executor-overview.md)一文。 在本教程中，我们将构建一个可生成随机文档的 Java 应用程序，然后将文档批量导入 Azure Cosmos 容器。 导入后，我们将批量更新文档的某些属性。 
 
-目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 Java 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。
+目前，批量执行程序库仅受 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持。 本文介绍如何配合使用 SQL API 帐户和批量执行程序 Java 库。 若要了解如何配合使用 Gremlin API 和批量执行程序 .NET 库，请参阅[在 Azure Cosmos DB Gremlin API 中执行批量操作](bulk-executor-graph-dotnet.md)。 所述的批量执行工具库仅适用于 [Azure Cosmos DB Java sync SDK v2](sql-api-sdk-java.md)，它是目前推荐的 Java 批量支持解决方案。 它目前不适用于 3.x、4.x 或更高版本的 SDK。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -105,7 +105,7 @@ ms.locfileid: "80985637"
 
    importAll 方法接受以下参数：
  
-   |**参数**  |**说明**  |
+   |**Parameter**  |**说明**  |
    |---------|---------|
    |isUpsert    |   用于启用文档更新插入的标志。 如果已存在具有给定 ID 的文档，则会更新该文档。  |
    |disableAutomaticIdGeneration     |   用于禁用自动生成 ID 的标志。 此值默认设置为 true。   |
@@ -113,7 +113,7 @@ ms.locfileid: "80985637"
 
    **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-   |**参数**  |**说明**  |
+   |**Parameter**  |**说明**  |
    |---------|---------|
    |int getNumberOfDocumentsImported()  |   从提供给批量导入 API 调用的文档中成功导入的文档总数。      |
    |double getTotalRequestUnitsConsumed()   |  批量导入 API 调用消耗的请求单位 (RU) 总数。       |
@@ -177,7 +177,7 @@ ms.locfileid: "80985637"
  
    **批量导入响应对象定义**批量导入 API 调用的结果包含以下 get 方法：
 
-   |**参数** |**说明**  |
+   |**Parameter** |**说明**  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated()  |   从提供给批量更新 API 调用的文档中成功更新的文档总数。      |
    |double getTotalRequestUnitsConsumed() |  批量更新 API 调用消耗的请求单位 (RU) 总数。       |
