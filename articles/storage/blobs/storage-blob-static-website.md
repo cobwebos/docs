@@ -3,26 +3,27 @@ title: Azure 存储中的静态网站托管
 description: Azure 存储静态网站托管提供经济高效、可缩放的解决方案用于托管新式 Web 应用程序。
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648506"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833340"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
 可以直接通过名为 $web 的存储容器提供静态内容（HTML、CSS、JavaScript 和图像文件）。 在 Azure 存储中托管内容，即可使用包含 [Azure Functions](/azure/azure-functions/functions-overview) 和其他平台即服务 (PaaS) 服务的无服务器体系结构。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!NOTE]
 > 如果站点依赖于服务器端代码，请改用 [Azure 应用服务](/azure/app-service/overview)。
+请确保创建常规用途 v2 标准存储帐户。 静态网站在任何其他类型的存储帐户中都不可用。
 
 ## <a name="setting-up-a-static-website"></a>设置静态网站
 
@@ -44,9 +45,9 @@ $web 容器中的文件区分大小写，通过匿名访问请求提供，并且
 > * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell 模块](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure 存储浏览器](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 扩展](/azure/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code 扩展](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>查看内容
 
@@ -63,11 +64,11 @@ $web 容器中的文件区分大小写，通过匿名访问请求提供，并且
 
 虽然 URL 中必须保留该代码，但它仅供内部使用，不需要在任何其他情况下使用该代码。
 
-当用户打开站点并且未指定特定文件（例如 `https://contosoblobaccount.z22.web.core.windows.net`）时，将出现你在启用静态网站托管时指定的索引文档。  
+当用户打开站点并且未指定特定文件（例如 `https://contosoblobaccount.z22.web.core.windows.net`）时，将出现你在启用静态网站托管时指定的索引文档。
 
 ### <a name="secondary-endpoints"></a>辅助终结点
 
-如果[在次要区域中设置冗余](../common/storage-redundancy.md#redundancy-in-a-secondary-region)，则还可以使用辅助终结点访问网站内容。 由于数据以异步方式复制到次要区域，因此辅助终结点上可用的文件并不总是与主终结点上可用的文件同步。 
+如果[在次要区域中设置冗余](../common/storage-redundancy.md#redundancy-in-a-secondary-region)，则还可以使用辅助终结点访问网站内容。 由于数据以异步方式复制到次要区域，因此辅助终结点上可用的文件并不总是与主终结点上可用的文件同步。
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>设置 Web 容器的公共访问级别的影响
 
@@ -85,11 +86,11 @@ $web 容器中的文件区分大小写，通过匿名访问请求提供，并且
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>将自定义域映射到静态网站 URL
 
-可以通过自定义域使用静态网站。 
+可以通过自定义域使用静态网站。
 
 为自定义域启用 HTTP 访问会更加容易，因为 Azure 存储本机支持该访问。 若要启用 HTTPS，必须使用 Azure CDN，因为 Azure 存储尚不提供对“自定义域使用 HTTPS”的本机支持。 有关分步指南，请参阅[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)。
 
-如果存储帐户配置为[需要通过 HTTPS 进行安全传输](../common/storage-require-secure-transfer.md)，则用户必须使用 HTTPS 终结点。 
+如果存储帐户配置为[需要通过 HTTPS 进行安全传输](../common/storage-require-secure-transfer.md)，则用户必须使用 HTTPS 终结点。
 
 > [!TIP]
 > 考虑在 Azure 上托管域。 有关详细信息，请参阅[在 Azure DNS 中托管域](../../dns/dns-delegate-domain-azure-dns.md)。

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 06/07/2019
+ms.topic: how-to
+ms.date: 07/01/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c15b13134f17cd2e1d0bf7b8d11a168dca5b2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829937"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -46,7 +46,7 @@ ms.locfileid: "79264240"
     ![Azure 门户 中的 B2C 租户、目录和订阅窗格](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”  。
-1. 在“策略”下选择“用户流(策略)”，然后选择“新建用户流”    。
+1. 在 "**策略**" 下，选择 "**用户流**"，然后选择 "**新建用户流**"。
 
     ![门户中的“用户流”页面，突出显示了“新建用户流”按钮](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "79264240"
 
     ![属性和声明选择页，有三个声明处于选中状态](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. 单击“创建”  以添加用户流。 名称中会自动追加前缀 *B2C_1*。
+1. 单击“创建”  以添加用户流。 *B2C_1*的前缀会自动预置名称。
 
 ### <a name="test-the-user-flow"></a>测试用户流
 
@@ -82,7 +82,7 @@ ms.locfileid: "79264240"
 
 如果希望用户能够在你的应用程序中编辑其个人资料，请使用个人资料编辑用户流。
 
-1. 在 Azure AD B2C 租户概览页的菜单中，选择“用户流(策略)”，然后选择“新建用户流”   。
+1. 在 Azure AD B2C 租户概述 "页的菜单中，选择"**用户流**"，然后选择"**新建用户流**"。
 1. 在“建议”选项卡上选择“个人资料编辑”用户流   。
 1. 输入该用户流的**名称**。 例如 *profileediting1*。
 1. 对于“标识提供者”  ，请选择“本地帐户登录”。 
@@ -100,7 +100,7 @@ ms.locfileid: "79264240"
 
 若要允许应用程序用户重置其密码，请使用密码重置用户流。
 
-1. 在 Azure AD B2C 租户概览菜单中，选择“用户流(策略)”，然后选择“新建用户流”   。
+1. 在 Azure AD B2C 租户概述 "菜单中，选择"**用户流**"，然后选择"**新建用户流**"。
 1. 在“建议”选项卡上选择“密码重置”用户流   。
 1. 输入该用户流的**名称**。 例如 *passwordreset1*。
 1. 对于“标识提供者”  ，请启用“使用电子邮件地址重置密码”。 

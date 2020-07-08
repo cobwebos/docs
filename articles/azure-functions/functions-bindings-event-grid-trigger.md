@@ -5,25 +5,25 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: c86a58c384c7356ecdaf668644f08c011a4c0a40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832995"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
-使用函数触发器响应发送到事件网格主题的事件。
+使用函数触发器来响应发送到事件网格主题的事件。
 
-有关设置和配置的详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
+若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-event-grid.md)。
 
 ## <a name="example"></a>示例
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有关 HTTP 触发器示例，请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。
+如需 HTTP 触发器示例，请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
@@ -207,7 +207,7 @@ def main(event: func.EventGridEvent):
 * [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter)
 * [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter)
 
-以下示例显示了 [Java](functions-reference-java.md) 中的触发器绑定，它们使用绑定并打印出事件，首先接收 `String` 形式的事件，第二个接收 POJO 形式的事件。
+以下示例显示了 [Java](functions-reference-java.md) 中的触发器绑定，这些函数使用绑定并打印出事件，首先接收 `String` 形式的事件，第二个接收 POJO 形式的事件。
 
 ### <a name="event-grid-trigger-string-parameter"></a>事件网格触发器、字符串参数
 
@@ -245,7 +245,7 @@ public class EventSchema {
 }
 ```
 
-到达后，事件的 JSON 有效负载被反序列化为 ```EventSchema``` POJO 以供函数使用。 此过程使函数可以通过面向对象的方式访问事件的属性。
+到达后，事件的 JSON 有效负载被反序列化为 ```EventSchema``` POJO 以供函数使用。 此过程允许函数以面向对象的方式访问事件的属性。
 
 ```java
   @FunctionName("eventGridMonitor")
@@ -299,7 +299,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 注释使你可以通过提供配置值，以声明方式配置事件网格绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
+使用 [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) 注释，可以通过提供配置值以声明方式配置事件网格绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
 
 ---
 
@@ -309,20 +309,20 @@ Python 不支持特性。
 
 |function.json 属性 |说明|
 |---------|---------|
-| type | 必需 - 必须设置为 `eventGridTrigger`。 |
-| direction | 必需 - 必须设置为 `in`。 |
-| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| **type** | 必需 - 必须设置为 `eventGridTrigger`。 |
+| **direction** | 必需 - 必须设置为 `in`。 |
+| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 Azure Functions 1.x中，可以为事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 中，可以为事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
 
-在 Azure Functions 2.x 及更高版本中，还可以选择为事件网格触发器使用以下参数类型：
+在 Azure Functions 2.x 及更高版本中，还可以选择对事件网格触发器使用以下参数类型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
@@ -331,12 +331,12 @@ Python 不支持特性。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
-在 Azure Functions 1.x中，可以为事件网格触发器使用以下参数类型：
+在 Azure Functions 1.x 中，可以为事件网格触发器使用以下参数类型：
 
 * `JObject`
 * `string`
 
-在 Azure Functions 2.x 及更高版本中，还可以选择为事件网格触发器使用以下参数类型：
+在 Azure Functions 2.x 及更高版本中，还可以选择对事件网格触发器使用以下参数类型：
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` - 定义所有事件类型通用的字段的属性。
 
@@ -353,7 +353,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-可以通过与 `EventGridTrigger` 特性关联的参数（类型为 `EventSchema`）来使用事件网格事件实例。 有关更多详细信息，请参阅[示例](#example)。
+事件网格事件实例可通过与类型为 `EventSchema` 的 `EventGridTrigger` 属性关联的参数提供。 请参阅[示例](#example)来了解更多详细信息。
 
 ---
 
@@ -417,19 +417,23 @@ Python 不支持特性。
 
 该命令需要可调用函数的终结点 URL。 以下示例显示特定于版本的 URL 模式：
 
-#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（和更高版本）运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
-    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+```
 
 #### <a name="version-1x-runtime"></a>1\.x 版运行时
 
-    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```http
+https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
+```
 
 系统密钥是必须包含在事件网格触发器终结点 URL 中的授权密钥。 以下部分介绍如何获取系统密钥。
 
 下面是一个订阅 Blob 存储帐户的示例（包含系统密钥的占位符）：
 
-#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（和更高版本）运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -457,7 +461,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 
 可以使用以下 API (HTTP GET) 获取系统密钥：
 
-#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（和更高版本）运行时
+#### <a name="version-2x-and-higher-runtime"></a>版本 2.x（及更高版本）运行时
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
@@ -544,7 +548,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 * 设置 `aeg-event-type: Notification` 标头。
 * 将 RequestBin 数据粘贴到请求正文。
 * 发布到事件网格触发器函数的 URL。
-  * 对于 2.x 和更高版本，请使用以下模式：
+  * 对于 2.x 及更高版本，请使用以下模式：
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}

@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276759"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846731"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
 
@@ -63,7 +63,7 @@ let Run(blob: string, output: byref<Item>) =
 
 F # Azure 函数采用一个或多个参数。 所谓 Azure 函数参数时，指的是 *输入* 参数和 *输出* 参数。 顾名思义，输入参数就是输入到 F # Azure 函数的参数。 *输出* 参数是可变的数据或 `byref<>` 参数就是*从*返回数据的参数。
 
-在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `byref<>`，请使用 `output` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
+在以上示例中，`blob` 是输入参数，`output` 是输出参数。 注意，针对 `output`，请使用 `byref<>` （无需添加 `[<Out>]` 批注）。 使用 `byref<>` 类型允许函数更改参数所引用的记录或对象。
 
 作为输入类型使用 F # 记录时，必须使用 `[<CLIMutable>]`标记的记录定义，以便在记录传递给函数之前让 Azure 功能框架设置相应字段。 实质上， `[<CLIMutable>]` 生成记录属性的 setter。 例如：
 
@@ -288,8 +288,8 @@ let mylog(log: ILogger, text: string) =
 有关更多信息，请参见以下资源：
 
 * [F# 指南](/dotnet/articles/fsharp/index)
-* [Azure Functions 的最佳实践](functions-best-practices.md)
-* [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
+* [Azure Functions 最佳实践](functions-best-practices.md)
+* [Azure Functions 开发人员参考](functions-reference.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)

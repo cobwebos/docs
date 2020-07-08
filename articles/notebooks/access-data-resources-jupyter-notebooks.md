@@ -3,22 +3,23 @@ title: 访问 Jupyter 笔记本中的数据-Azure Notebooks 预览
 description: 了解如何从 Jupyter 笔记本访问文件、REST Api、数据库和不同的 Azure 存储资源。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646341"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833479"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在 Jupyter Notebook 中进行一些有趣的工作需要数据。 实际上，数据是 Notebook 的命脉。
 
 当然可[将数据文件导入项目](work-with-project-data-files.md)，甚至可以使用 Notebook 中的 `curl` 等命令直接下载文件。 但极有可能需要使用非文件源（如 REST API、关系数据库和 Azure 存储（如 Azure 表））提供的更广泛的数据。
 
 本文简要概述了这些不同的选项。 由于在操作中最容易看到数据访问，因此可在 [Azure Notebooks 示例 -访问数据](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb)中找到可运行的代码。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="rest-apis"></a>REST API
 
@@ -41,11 +42,11 @@ if response.status_code == 200:
     print(dataframe_rest2)
 ```
 
-## <a name="azure-sql-databases"></a>Azure SQL 数据库
+## <a name="azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例
 
-可借助 pyodbc 或 pymssql 库访问 SQL Server 数据库。
+您可以使用 pyodbc 或 pymssql 库的帮助访问 SQL 数据库或 SQL 托管实例中的数据库。
 
-[使用 Python 查询 Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)介绍了如何创建包含 AdventureWorks 数据的数据库，并演示了如何查询该数据。 本文的示例 Notebook 中显示了相同的代码。
+[使用 Python 查询 AZURE sql 数据库](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-python)提供有关在 sql 数据库中创建包含 AdventureWorks 数据的数据库的说明，并演示如何查询这些数据。 本文的示例 Notebook 中显示了相同的代码。
 
 ## <a name="azure-storage"></a>Azure 存储
 
@@ -64,7 +65,7 @@ Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下�
 - [使用 Azure Cosmos DB 的 API for MongoDB 构建 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 创建图形数据库](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [使用 Python 和 Azure Cosmos DB 构建 Cassandra 应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [使用 Python 和 Azure Cosmos DB 构建表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [使用 Python 和 Azure Cosmos DB 生成表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 时，可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 库。
 

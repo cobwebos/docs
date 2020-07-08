@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79164873"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830020"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>将资源添加到 Azure 逻辑应用中的 integration service 环境（ISE）
 
 创建[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)后，添加逻辑应用、集成帐户和连接器等资源，以便它们可以访问 Azure 虚拟网络中的资源。 例如，在创建 ISE 后变为可用的托管 ISE 连接器不会自动显示在逻辑应用设计器中。 在可以使用这些 ISE 连接器之前，必须手动[将这些连接器添加并部署到 ISE](#add-ise-connectors-environment) ，使其显示在逻辑应用设计器中。
 
 > [!IMPORTANT]
-> 要使逻辑应用和集成帐户在 ISE 中协同工作，两者都必须使用*相同的 ise*作为其位置。
+> 要使逻辑应用和集成帐户在 ISE 中协同工作，两者都必须使用相同的 ISE 作为其位置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,7 +26,7 @@ ms.locfileid: "79164873"
 
 * 你创建的用于运行逻辑应用的 ISE。 如果没有 ISE，请[先创建 ise](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
-* 若要创建、添加或更新部署到 ISE 的资源，需要向 ise 分配 "所有者" 或 "参与者" 角色，或者拥有通过 Azure 订阅或与 ISE 关联的 Azure 资源组继承的权限。 对于没有所有者、参与者或继承权限的人员，可以为其分配集成服务环境参与者角色或集成服务环境开发人员角色。 有关基于角色的访问控制（RBAC）的详细信息，请参阅[什么是 Azure 资源的基于角色的访问控制（rbac）](../role-based-access-control/overview.md)？
+* 若要创建、添加或更新部署到 ISE 的资源，需要向 ise 分配 "所有者" 或 "参与者" 角色，或者拥有通过 Azure 订阅或与 ISE 关联的 Azure 资源组继承的权限。 对于没有所有者、参与者或继承权限的人员，可以为其分配集成服务环境参与者角色或集成服务环境开发人员角色。 有关详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)？
 
 <a name="create-logic-apps-environment"></a>
 
@@ -34,7 +34,7 @@ ms.locfileid: "79164873"
 
 若要生成在 integration service 环境（ISE）中运行的逻辑应用，请执行以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**逻辑应用** > **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**逻辑应用**  >  **添加**"。
 
    ![向 ISE 中添加新的逻辑应用](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "79164873"
 
    ![选择集成服务环境](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 描述 |
    |----------|----------|-------------|
    | **名称** | 是 | 要创建的逻辑应用的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
@@ -50,7 +50,7 @@ ms.locfileid: "79164873"
    | **位置** | 是 | 在 " **Integration service 环境**" 下，选择要使用的 ISE （如果尚未选择）。 <p><p> **重要提示**：若要将逻辑应用与集成帐户一起使用，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成操作后，选择“创建”  。
+1. 完成后，选择“创建”。
 
 1. 继续[以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "79164873"
 
 若要创建使用 ISE 的集成帐户，请遵循以下步骤：
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户** > " "**添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**集成帐户**" "  >  **添加**"。
 
    ![向 ISE 中添加新的集成帐户](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "79164873"
 
    ![选择集成服务环境](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 描述 |
    |----------|----------|-------------|
    | **名称** | 是 | 要创建的集成帐户的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
@@ -83,7 +83,7 @@ ms.locfileid: "79164873"
    | **位置** | 是 | 在 " **Integration service 环境**" 下，选择逻辑应用使用的相同 ISE （如果尚未选择）。 <p><p> **重要提示**：若要在逻辑应用中使用集成帐户，两者都必须使用相同的 ISE。 |
    ||||
 
-1. 完成操作后，选择“创建”  。
+1. 完成后，选择“创建”。
 
 1. [以常规方式将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "79164873"
 
    ![查看托管连接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”  。
+1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”。
 
    ![选择要在 ISE 中部署的 ISE 连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "79164873"
 
 若要在 ISE 中使用自定义连接器，请直接在 ISE 中创建这些自定义连接器。
 
-1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器** > **添加**"。
+1. 找到并打开 ISE （如果尚未打开）。 在 ISE 菜单的 "**设置**" 下，选择 "**自定义连接器**  >  **添加**"。
 
    ![创建自定义连接器](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

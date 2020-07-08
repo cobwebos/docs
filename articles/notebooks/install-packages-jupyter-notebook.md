@@ -3,20 +3,20 @@ title: 在 Jupyter 笔记本中安装包-Azure Notebooks 预览
 description: '了解如何在 Azure 上运行的 Jupyter 笔记本中安装 Python、R 和 F # 包。'
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: f6359b4c010834ffaee00b6208d309997339f36e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43d38c9f3a4b0095967ab3e103ea729ec86ea2bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646222"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831210"
 ---
 # <a name="install-packages-from-within-azure-notebooks-preview"></a>从 Azure Notebooks 预览中安装包
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 虽然可以在[项目级别为笔记本配置环境](configure-manage-azure-notebooks-projects.md#configure-the-project-environment)，但你可能希望直接在一个单独的笔记本内安装包。
 
 从笔记本中安装的包仅适用于当前服务器会话。 服务器关闭后，不保留包安装。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="python"></a>Python
 

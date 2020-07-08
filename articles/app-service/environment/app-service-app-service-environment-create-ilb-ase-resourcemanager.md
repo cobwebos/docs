@@ -1,18 +1,18 @@
 ---
 title: 创建 ILB ASE v1
-description: 创建具有内部负载均衡器（ILB ASE）的应用服务环境。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 创建具有内部负载均衡器（ILB ASE）的应用服务环境。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: stefsch
 ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e24e78d5661c2fbb60a96c2fb6d6192ffade9579
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2a03b791f37868010e107214ddcb7cf42174e4e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159688"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833547"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 ILB ASE
 
@@ -40,40 +40,44 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 * *dnsSuffix*：此参数定义要分配给 ASE 的默认根域。  在 Azure 应用服务的公共变体中，所有 Web 应用的默认根域均为 *azurewebsites.net*。  不过，ILB ASE 位于客户虚拟网络的内部，因此不适合使用公共服务的默认根域，  而应当具有适合在公司的内部虚拟网络中使用的默认根域。  例如，假定的 Contoso Corporation 可能会将 *internal-contoso.com* 的默认根域用于只能在 Contoso 虚拟网络内解析和访问的应用。 
 * *ipSslAddressCount*：在 *azuredeploy.json* 文件中，此参数的值自动默认为 0，因为 ILB ASE 只有一个 ILB 地址。  ILB ASE 没有显式 IP-SSL 地址，因此 ILB ASE 的 IP-SSL 地址池必须设置为零，否则会发生预配错误。 
 
-一旦针对 ILB ASE 填入 *azuredeploy.parameters.json* 文件，就可以使用以下 Powershell 代码片段创建 ILB ASE。  更改文件 PATH，以匹配 Azure 资源管理器模板文件在计算机上的位置。  此外，切记提供自己的 Azure 资源管理器部署名称值和资源组名称值。
+为 ILB ASE 填写文件中的*azuredeploy.parameters.js*后，可以使用以下 PowerShell 代码片段创建 ILB ase。  更改文件路径，以匹配 Azure 资源管理器模板文件位于计算机上的位置。  此外，切记提供自己的 Azure 资源管理器部署名称值和资源组名称值。
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```azurepowershell-interactive
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 提交 Azure 资源管理器模板后，需要数小时才能创建 ILB ASE。  创建完成后，ILB ASE 显示在触发部署的订阅的应用服务环境列表的门户 UX 中。
 
 ## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>上传和配置 "默认" TLS/SSL 证书
-创建 ILB ASE 后，TLS/SSL 证书应与 ASE 关联，作为用于建立到应用的 TLS/SSL 连接的 "默认" TLS/SSL 证书。  继续假设 Contoso Corporation 示例，如果 ASE 的默认 DNS 后缀是*internal-contoso.com*，则连接到*`https://some-random-app.internal-contoso.com`* 需要适用于 **. internal-contoso.com*的 TLS/SSL 证书。 
+创建 ILB ASE 后，TLS/SSL 证书应与 ASE 关联，作为用于建立到应用的 TLS/SSL 连接的 "默认" TLS/SSL 证书。  继续假设 Contoso Corporation 示例，如果 ASE 的默认 DNS 后缀是*internal-contoso.com*，则连接到 *`https://some-random-app.internal-contoso.com`* 需要适用于 **. INTERNAL-CONTOSO.COM*的 TLS/SSL 证书。 
 
 可以通过多种方式获取有效的 TLS/SSL 证书，包括内部 Ca、从外部颁发者购买证书，以及使用自签名证书。  无论 TLS/SSL 证书的来源如何，都需要正确配置以下证书属性：
 
-* *使用者*：此属性必须设置为 **.your-root-domain-here.com*
-* *使用者可选名称*：此属性必须同时包含 **.your-root-domain-here.com* 和 **scm.your-root-domain-here.com*。  第二个条目的原因是，与每个应用关联的 SCM/Kudu 站点的 TLS 连接将使用*your-app-name.scm.your-root-domain-here.com*形式的地址建立。
+* *Subject*：此属性必须设置为 **. your-root-domain-here.com*
+* *使用者可选名称*：此属性必须同时包含 **. your-root-domain-here.com*和 **. scm.your-root-domain-here.com*。  第二个条目的原因是，与每个应用关联的 SCM/Kudu 站点的 TLS 连接将使用*your-app-name.scm.your-root-domain-here.com*形式的地址建立。
 
-使用有效的 TLS/SSL 证书，需要执行两个额外的准备步骤。  TLS/SSL 证书需要转换/保存为 .pfx 文件。  记住，.pfx 文件必须包含所有中间证书和根证书，还必须使用密码保护。
+备妥有效的 TLS/SSL 证书以后，还需要两个额外的准备步骤。  TLS/SSL 证书需要转换/保存为 .pfx 文件。  记住，.pfx 文件必须包含所有中间证书和根证书，还必须使用密码保护。
 
 然后，需要将生成的 .pfx 文件转换为 base64 字符串，因为将使用 Azure 资源管理器模板上传 TLS/SSL 证书。  Azure 资源管理器模板是文本文件，因此必须将 .pfx 文件转换为 base64 字符串，才能纳入为模板的参数。
 
-以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，然后将 base64 编码字符串保存到一个单独文件的示例。  base64 编码的 Powershell 代码改写自 [Powershell 脚本博客][examplebase64encoding]。
+下面的 PowerShell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，然后将 base64 编码字符串保存到一个单独文件的示例。  Base64 编码的 PowerShell 代码是从[Powershell 脚本博客][examplebase64encoding]中改编而来的。
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
 
-    $fileContentBytes = get-content -encoding byte $fileName
-    $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
-    $fileContentEncoded | set-content ($fileName + ".b64")
+$fileContentBytes = get-content -encoding byte $fileName
+$fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
+$fileContentEncoded | set-content ($fileName + ".b64")
+```
 
 成功生成 TLS/SSL 证书并转换为 base64 编码字符串后，可以使用 GitHub 上的示例 Azure 资源管理器模板来[配置默认的 TLS/ssl 证书][configuringDefaultSSLCertificate]。
 
@@ -83,46 +87,50 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 * *existingAseLocation*：包含 ILB ASE 部署所在的 Azure 区域的文本字符串。  例如：“美国中南部”。
 * *pfxBlobString*：.pfx 文件的 based64 编码字符串表示形式。  使用前面所示的代码片段，复制并粘贴“exportedcert.pfx.b64”中包含的字符串，作为 *pfxBlobString* 属性的值。
 * *password*：用于保护 .Pfx 文件的密码。
-* *certificateThumbprint*：证书的指纹。  如果从 Powershell 检索到此值（例如先前代码片段中的 *$certificate.Thumbprint*），可以按原样使用此值。  不过，如果从 Windows 证书对话框复制此值，请记得去除多余的空格。  *certificateThumbprint* 应如下所示：AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*：用户自己选择的易记字符串标识符，用于标识证书。  此名称用作表示 TLS/SSL 证书的 " *Microsoft web.config/证书*" 实体的唯一 Azure 资源管理器标识符的一部分。  名称**必须**以下述后缀结尾：\_yourASENameHere_InternalLoadBalancingASE。  此后缀由门户使用，表示证书用于维护启用 ILB 的 ASE 的安全。
+* *certificateThumbprint*：证书的指纹。  如果从 PowerShell 检索此值（例如 *$certificate。指纹*），可以按原样使用该值。  不过，如果从 Windows 证书对话框复制此值，请记得去除多余的空格。  *CertificateThumbprint*应如下所示： AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateName*：自己选择用于标识证书的友好字符串标识符。  此名称用作表示 TLS/SSL 证书的 " *Microsoft web.config/证书*" 实体的唯一 Azure 资源管理器标识符的一部分。  名称**必须**以以下后缀结尾： \_ yourASENameHere_InternalLoadBalancingASE。  此后缀由门户使用，表示证书用于维护启用 ILB 的 ASE 的安全。
 
 *azuredeploy.parameters.json* 的缩写示例如下所示：
 
-    {
-         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-              "appServiceEnvironmentName": {
-                   "value": "yourASENameHere"
-              },
-              "existingAseLocation": {
-                   "value": "East US 2"
-              },
-              "pfxBlobString": {
-                   "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
-              },
-              "password": {
-                   "value": "PASSWORDGOESHERE"
-              },
-              "certificateThumbprint": {
-                   "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
-              },
-              "certificateName": {
-                   "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
-              }
-         }
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServiceEnvironmentName": {
+            "value": "yourASENameHere"
+        },
+        "existingAseLocation": {
+            "value": "East US 2"
+        },
+        "pfxBlobString": {
+            "value": "MIIKcAIBAz...snip...snip...pkCAgfQ"
+        },
+        "password": {
+            "value": "PASSWORDGOESHERE"
+        },
+        "certificateThumbprint": {
+            "value": "AF3143EB61D43F6727842115BB7F17BBCECAECAE"
+        },
+        "certificateName": {
+            "value": "DefaultCertificateFor_yourASENameHere_InternalLoadBalancingASE"
+        }
     }
+}
+```
 
-填写*azuredeploy.json*文件后，可以使用以下 Powershell 代码片段配置默认的 TLS/SSL 证书。  更改文件 PATH，以匹配 Azure 资源管理器模板文件在计算机上的位置。  此外，切记提供自己的 Azure 资源管理器部署名称值和资源组名称值。
+填充文件中的*azuredeploy.parameters.js*后，可以使用以下 PowerShell 代码片段配置默认的 TLS/SSL 证书。  更改文件路径，以匹配 Azure 资源管理器模板文件位于计算机上的位置。  此外，切记提供自己的 Azure 资源管理器部署名称值和资源组名称值。
 
-    $templatePath="PATH\azuredeploy.json"
-    $parameterPath="PATH\azuredeploy.parameters.json"
+```azurepowershell-interactive
+$templatePath="PATH\azuredeploy.json"
+$parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+```
 
 提交 Azure 资源管理器模板后，每个 ASE 前端需要大约 40 分钟来应用更改。  例如，有一个默认大小的 ASE 使用两个前端，则模板需要大约 1 小时 20 分钟才能完成。  运行模板时无法缩放 ASE。  
 
-完成模板后，可通过 HTTPS 访问 ILB ASE 上的应用，并使用默认的 TLS/SSL 证书保护连接。  当使用应用程序名称加上默认主机名的组合来寻址 ILB ASE 上的应用时，将使用默认的 TLS/SSL 证书。  例如*`https://mycustomapp.internal-contoso.com`* ，使用 **. INTERNAL-CONTOSO.COM*的默认 TLS/SSL 证书。
+完成模板后，可通过 HTTPS 访问 ILB ASE 上的应用，并使用默认的 TLS/SSL 证书保护连接。  当使用应用程序名称加上默认主机名的组合来寻址 ILB ASE 上的应用时，将使用默认的 TLS/SSL 证书。  例如， *`https://mycustomapp.internal-contoso.com`* 使用 **. internal-contoso.com*的默认 TLS/SSL 证书。
 
 但是，与在公共多租户服务上运行的应用一样，开发人员也可以为单个应用配置自定义主机名，并为单个应用配置唯一的 SNI TLS/SSL 证书绑定。  
 

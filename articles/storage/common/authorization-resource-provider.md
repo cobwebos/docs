@@ -7,14 +7,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73077b6b25c09c17deb4ad468c79fe6d5ddd648e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75972352"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833249"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 存储资源提供程序访问管理资源
 
@@ -36,7 +36,7 @@ Azure 存储支持使用 Azure AD 来授权对 Blob 和队列存储的请求。 
 
 向安全主体分配某个 RBAC 角色时，还需要指明该角色授予的权限在哪个范围生效。 对于管理操作，可以在订阅、资源组或存储帐户级别分配角色。 可以使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI 工具](../../cli-install-nodejs.md)、[PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 存储资源提供程序 REST API](/rest/api/storagerp) 向安全主体分配 RBAC 角色。
 
-有关 RBAC 的详细信息，请参阅 [Azure 资源的基于角色的访问控制 (RBAC) 是什么？](../../role-based-access-control/overview.md)和[经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
+有关详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）？](../../role-based-access-control/overview.md) 和[经典订阅管理员角色、AZURE RBAC 角色和 Azure AD 管理员角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 ### <a name="built-in-roles-for-management-operations"></a>用于管理操作的内置角色
 
@@ -44,11 +44,11 @@ Azure 提供用于授权调用管理操作的内置角色。 Azure 存储还提�
 
 授权调用存储管理操作的内置角色包括下表中所述的角色：
 
-|    RBAC 角色    |    说明    |    是否包括对帐户密钥的访问权限？    |
+|    RBAC 角色    |    描述    |    是否包括对帐户密钥的访问权限？    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **所有者** | 可以管理所有存储资源和访问资源。  | 是，提供查看和重新生成存储帐户密钥的权限。 |
 | **参与者**  | 可以管理所有存储资源，但不能管理资源分配。 | 是，提供查看和重新生成存储帐户密钥的权限。 |
-| **读取者** | 可以查看有关存储帐户的信息，但不能查看帐户密钥。 | 不是。 |
+| **读者** | 可以查看有关存储帐户的信息，但不能查看帐户密钥。 | 不能。 |
 | **存储帐户参与者** | 可以管理存储帐户、获取有关订阅的资源组和资源的信息，以及创建和管理订阅资源组部署。 | 是，提供查看和重新生成存储帐户密钥的权限。 |
 | **用户访问管理员** | 可以管理对存储帐户的访问权限。   | 是，允许安全主体将任何权限分配给自身和其他对象。 |
 | **虚拟机参与者** | 可以管理虚拟机，但不能管理虚拟机连接到的存储帐户。   | 是，提供查看和重新生成存储帐户密钥的权限。 |
@@ -70,12 +70,12 @@ Azure 还支持定义用于访问管理资源的自定义 RBAC 角色。 有关�
 
 ## <a name="azure-resource-manager-versus-classic-deployments"></a>Azure 资源管理器与经典部署
 
-Resource Manager 和经典部署模型表示部署和管理 Azure 解决方案的两种不同方式。 当你创建新的存储帐户时，Microsoft 建议使用 Azure 资源管理器部署模型。 如果可能，Microsoft 还建议你重新创建具有资源管理器模型的现有经典存储帐户。 尽管可以使用经典部署模型创建存储帐户，但经典模型较不灵活，且最终将被弃用。
+Resource Manager 部署模型和经典部署模型代表两种不同的 Azure 解决方案部署和管理方式。 当你创建新的存储帐户时，Microsoft 建议使用 Azure 资源管理器部署模型。 如果可能，Microsoft 还建议你重新创建具有资源管理器模型的现有经典存储帐户。 尽管可以使用经典部署模型创建存储帐户，但经典模型较不灵活，且最终将被弃用。
 
 有关 Azure 部署模型的详细信息，请参阅[资源管理器和经典部署](../../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 资源管理器概述](/azure/azure-resource-manager/resource-group-overview)
-- [什么是 Azure 资源的基于角色的访问控制 (RBAC)？](../../role-based-access-control/overview.md)
+- [Azure Resource Manager 概述](/azure/azure-resource-manager/resource-group-overview)
+- [什么是 Azure 基于角色的访问控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
 - [Azure 存储资源提供程序的可伸缩性目标](scalability-targets-resource-provider.md)

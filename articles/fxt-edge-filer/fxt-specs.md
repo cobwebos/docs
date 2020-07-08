@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846720"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer 规格
 
@@ -34,9 +34,9 @@ ms.locfileid: "79264721"
 
 ![FXT 机箱中一个硬盘槽的图片，其中显示了驱动器编号和容量标签](media/fxt-drives-photo.png)
 
-| 驱动器编号    |  使用   |  规范 |
+| 驱动器编号    |  用途   |  规格 |
 |------------------|--------|-----------------|
-| 0、1             | 操作系统     | 480 GB SATA SSD |
+| 0、1             | (OS)     | 480 GB SATA SSD |
 | 2、3、4、5、6、7、8、9 | 数据   | FXT 6600： 3.2 TB NVMe SSD <br> FXT 6400： 1.6 TB NVMe SSD |
 
 
@@ -148,13 +148,13 @@ Azure FXT Edge Filer 节点使用变速风扇，因此功率取决于温度和�
 
 ### <a name="airflow-shock-and-vibration"></a>气流、撞击和振动 
 
-| 特性         | 规范 |
+| 特性         | 规格 |
 |-------------------|---------------|
 | 气流                    | 系统气流的方向是从前到后。 系统必须以低压、后排气的安装方式运行。 |
 | 撞击，可运行         | 6 G/11 毫秒（以 6 个方向测试） |
 | 撞击，不可运行     | 71 G/2 毫秒（以 6 个方向测试） |
 | 震动，可运行     | 0.26 G<sub>RMS</sub> 5 Hz 到 350 Hz 随机         |
-| 震动，不可运行 | 1.88 G<sub>RMS</sub> 10 Hz 到 500 Hz 测试 15 分钟（对六个面都进行测试）  |
+| 震动，不可运行 | 1.88 G<sub>RMS</sub> 10 Hz 到 500 Hz，持续15分钟（所有六个端测试）  |
 
 ## <a name="safety-regulation-compliance"></a>遵守安全规范 
 

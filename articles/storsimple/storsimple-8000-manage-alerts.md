@@ -3,15 +3,15 @@ title: 查看和管理 StorSimple 8000 系列设备的警报
 description: 介绍了 StorSimple 警报条件和严重性、如何配置警报通知，以及如何使用 StorSimple 设备管理器服务管理警报。
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267815"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830037"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 设备管理器服务查看和管理 StorSimple 警报
 
@@ -48,11 +48,11 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 > [!NOTE]
 > 最多可为每个设备输入 20 个电子邮件地址。
 
-为设备启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 将从*storsimple-noreply\@mail.windowsazure.com*发送消息，并描述警报条件。 收件人可以单击“取消订阅”**** 将自己从电子邮件通知列表中删除。
+为设备启用电子邮件通知后，每次发生关键警报时，通知列表成员都将收到电子邮件消息。 将从*storsimple-noreply \@ mail.windowsazure.com*发送消息，并描述警报条件。 收件人可以单击“取消订阅”**** 将自己从电子邮件通知列表中删除。
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>为设备启用警报电子邮件通知
 1. 转到 StorSimple Device Manager 服务。 从设备列表中，选择并单击要配置的设备。
-2. 请参阅设备的**常规****设置** > 。
+2. 请参阅**Settings**  >  设备的**常规**设置。
 
    ![“警报”边栏选项卡](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
    
    1. 在“发送电子邮件通知”字段中选择“是”。********
    2. 若要让服务管理员和所有协同管理员接收警报通知，请在“电子邮件服务管理员”**** 字段中选择“是”****。
-   3. 在“其他电子邮件收件人”**** 字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以*\@somewhere.com*的格式输入名称。 使用分号分隔电子邮件地址。 对于每个设备，最多可以配置 20 个电子邮件地址。 
+   3. 在“其他电子邮件收件人”**** 字段中，输入应接收警报通知的所有其他收件人的电子邮件地址。 以* \@ somewhere.com*的格式输入名称。 使用分号分隔电子邮件地址。 对于每个设备，最多可以配置 20 个电子邮件地址。 
       
 3. 若要发送测试电子邮件通知，请单击“发送测试电子邮件”****。 StorSimple Device Manager 服务在转发测试通知时会显示状态消息。
 
@@ -120,6 +120,7 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 * [性能警报](#performance-alerts)
 * [安全警报](#security-alerts)
 * [支持包警报](#support-package-alerts)
+* [机箱环境警报](#enclosure-environment-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>云连接警报
 
@@ -192,9 +193,9 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 | 警报文本 | 事件 | 详细信息/建议的操作 |
 |:--- |:--- |:--- |
 | 无法启动 StorSimple 服务。 |数据路径错误 |如果问题持续出现，请联系 Microsoft 支持。 |
-| 检测到“Data0”的 IP 地址重复。 | |系统检测到 IP 地址“10.0.0.1”冲突。 设备* \<device1>* 上的网络资源 "Data0" 处于脱机状态。 确保此网络中的其他任何实体未使用此 IP 地址。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 请联系网络管理员帮助解决此问题。 如果问题持续出现，请联系 Microsoft 支持。 |
-| “Data0”的 IPv4（或 IPv6）地址已脱机。 | |设备 以及设备* \<device1*上前缀长度 "22">处于脱机状态。 确保此接口连接到的交换机端口运行正常。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
-| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关 Azure 门户中的 URL 模式的详细信息，请参阅 https\/：/aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府云，请参阅 https：\//aka.ms/ss8000-gov-network-reqs 中的 URL 模式。|
+| 检测到“Data0”的 IP 地址重复。 | |系统检测到 IP 地址“10.0.0.1”冲突。 设备上的网络资源 "Data0" *\<device1>* 处于脱机状态。 确保此网络中的其他任何实体未使用此 IP 地址。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 请联系网络管理员帮助解决此问题。 如果问题持续出现，请联系 Microsoft 支持。 |
+| “Data0”的 IPv4（或 IPv6）地址已脱机。 | |设备 设备上的前缀长度 "22" *\<device1>* 处于脱机状态。 确保此接口连接到的交换机端口运行正常。 若要排查网络问题，请转到[使用 Get-NetAdapter cmdlet 进行故障排除](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
+| 无法连接到身份验证服务。 |数据路径错误 |用于身份验证的 URL 不可访问。 请确保防火墙规则包括为 StorSimple 设备指定的 URL 模式。 有关 Azure 门户中的 URL 模式的详细信息，请参阅 https： \/ /aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府云，请参阅 https：/aka.ms/ss8000-gov-network-reqs 中的 URL 模式 \/ 。|
 
 ### <a name="performance-alerts"></a>性能警报
 
@@ -219,7 +220,12 @@ StorSimple 设备可在响应各种条件时生成警报。 以下是最常见�
 |:--- |:--- |:--- |
 | 创建支持包失败。 |StorSimple 无法生成包。 |重试此操作。 如果问题持续出现，请联系 Microsoft 支持。 解决问题之后，请从警报页中清除此警报。 |
 
+### <a name="enclosure-environment-alerts"></a>机箱环境警报
+
+| 警报文本 | 事件 | 详细信息/建议的操作 |
+|:--- |:--- |:--- |
+| 硬件组件环境温度传感器将状态报告为 "失败"。  | 机箱类型：主机箱 | 当 StorSimple 的温度超出了可接受的范围时，将触发此警报。 检查环境外部温度或数据中心内 AC 通风管的气流。 当温度恢复正常时，警报会在经过一段时间后自动清除。 如果问题持续出现，请联系 Microsoft 支持。   |
+
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 [StorSimple 错误以及如何排查设备部署问题](storsimple-8000-troubleshoot-deployment.md)。
-

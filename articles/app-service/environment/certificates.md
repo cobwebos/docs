@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dffa9571706c067834e47a656ec1d47cb884fb48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73ee2165b8750b79bc33c76604ffed295fd1ea48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128709"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831873"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>证书和应用服务环境 
 
@@ -22,12 +22,12 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE 证书 
 
-如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为了使应用程序支持 TLS，你需要上载证书。 使用内部证书颁发机构、从外部颁发者购买证书或使用自签名证书获取有效的 TLS/SSL 证书。 
+如果使用外部 ASE，则可以通过 [应用名称].[ASE 名称].p.azurewebsites.net 访问应用。 默认情况下，所有 ASE 甚至 ILB ASE，都是使用遵循该格式的证书创建的。 创建 ILB ASE 后，可以基于创建 ILB ASE 时指定的域名来访问应用。 为了使应用程序支持 TLS，你需要上载证书。 可通过三种方式获取有效的 TLS/SSL 证书：使用内部证书颁发机构、向外部颁发者购买证书或使用自签名证书。 
 
 可以使用两个选项配置 ILB ASE 的证书。  可为 ILB ASE 设置通配符默认证书，或者在 ASE 中的单个 Web 应用上设置证书。  无论做出哪种选择，都必须正确配置以下证书属性：
 
 - **使用者：** 对于通配符 ILB ASE 证书，此属性必须设置为 *.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域]
-- **使用者可选名称**：此属性必须同时通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
+- **使用者可选名称：** 此属性必须同时包括通配符 ILB ASE 证书的 *.[根域] 和 *.scm.[根域]。 如果为应用创建证书，则此属性应是 [应用名称].[根域] 和 [应用名称].scm.[根域]
 
 作为第三种变体，可以创建在证书 SAN 中包含所有应用名称的 ILB ASE 证书，而不使用通配符引用。 此方法的问题在于，需要事先知道要放入 ASE 的应用名称，或者需要不断更新 ILB ASE 证书。
 
@@ -41,13 +41,16 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 若要快速创建自签名证书用于测试，可以使用以下 PowerShell 代码：
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 创建自签名证书时，需确保使用者名称的格式为 CN={ASE_NAME_HERE}_InternalLoadBalancingASE。
 
 ## <a name="application-certificates"></a>应用程序证书 
@@ -80,15 +83,18 @@ ASE 是单租户系统。 由于它是单一租户，某些只能在 ASE 中使�
 
 配置了该设置的应用所在的同一个应用服务计划中的所有应用都可以使用该证书。 如果需要将该证书提供给不同应用服务计划中的应用使用，则需要在该应用服务计划中的应用上重复“应用设置”操作。 若要检查是否设置了证书，请转到 Kudu 控制台，并在 PowerShell 调试控制台中发出以下命令：
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 若要执行测试，可以创建自签名证书，并使用以下 PowerShell 命令生成 *.cer* 文件： 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

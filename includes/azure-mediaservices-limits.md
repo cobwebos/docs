@@ -1,18 +1,18 @@
 ---
 author: rothja
-ms.service: cost-management-billing
+ms.service: media-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 2fe091a4ff0295ecadfd69ba3f2d4ca59e9612e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: e24c345bfee216dd240f0c283402ad43c8f45c29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334859"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85838778"
 ---
 >[!NOTE]
->对于不固定的资源，请打开支持票证，要求增加配额。 不要创建其他 Azure 媒体服务帐户，尝试获得更高的限制。
+>对于不固定的资源，请开具支持票证，要求增加配额。 请不要尝试通过创建更多 Azure 媒体服务帐户来提高配额限制。
 
 | 资源 | 限制 | 
 | --- | --- | 
@@ -20,7 +20,7 @@ ms.locfileid: "80334859"
 | 每个媒体服务帐户的媒体保留单位数 |25 (S1)<br/>10（S2，S3）<sup>1</sup> | 
 | 每个媒体服务帐户的作业数 | 50,000<sup>2</sup> |
 | 每个作业的链接任务数 | 30（固定） |
-| 每个媒体服务帐户的资产 | 1,000,000|
+| 每个媒体服务帐户的资产数 | 1,000,000|
 | 每个任务的资产数 | 50 |
 | 每个作业的资产数 | 100 |
 | 一次与一个资产关联的唯一定位符数 | 5<sup>4</sup> |

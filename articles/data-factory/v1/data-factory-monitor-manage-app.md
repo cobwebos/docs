@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260366"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846911"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ ms.locfileid: "79260366"
 
 <table>
 <tr>
-    <th align="left">状态</th><th align="left">子状态</th><th align="left">说明</th>
+    <th align="left">状态</th><th align="left">Substatus</th><th align="left">描述</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行活动窗口的时间。</td>
@@ -193,7 +193,7 @@ ms.locfileid: "79260366"
 <td>正在处理活动窗口。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
+<td rowspan="4">已失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
 </tr>
 <tr>
 <td>已取消</td><td>用户操作已取消活动窗口。</td>
@@ -210,7 +210,7 @@ ms.locfileid: "79260366"
 <td>已跳过</td><td>-</td><td>未处理活动窗口。</td>
 </tr>
 <tr>
-<td>无</td><td>-</td><td>过去一直以不同状态存在但已被重置的活动窗口。</td>
+<td>None</td><td>-</td><td>过去一直以不同状态存在但已被重置的活动窗口。</td>
 </tr>
 </table>
 
@@ -286,7 +286,7 @@ ms.locfileid: "79260366"
 
 ## <a name="perform-batch-actions"></a>执行批处理操作
 ### <a name="rerun-selected-activity-windows"></a>重新运行选定的活动窗口
-选择一个活动窗口，单击第一个命令栏按钮的向下箭头，然后选择 "**重新运行** / **管道中的上游**"。 选择“与管道中的上游一起重新运行”**** 选项时，也将重新运行所有上游活动窗口。
+选择一个活动窗口，单击第一个命令栏按钮的向下箭头，然后选择 "**重新运行**  /  **管道中的上游**"。 选择“与管道中的上游一起重新运行”**** 选项时，也将重新运行所有上游活动窗口。
     ![重新运行活动窗口](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
 还可在列表中选择多个活动窗口，并同时重新运行它们。 可能希望基于状态筛选活动窗口（例如：**失败**），并在解决导致活动窗口失败的问题后重新运行失败的活动窗口。 有关在列表中筛选活动窗口的详细信息，请参阅以下部分。  

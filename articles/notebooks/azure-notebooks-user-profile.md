@@ -3,14 +3,16 @@ title: 与 Azure Notebooks 预览一起使用的用户配置文件和 ID
 description: 如何创建和管理 Azure Notebooks 的用户配置文件和用户 ID，该配置文件将成为共享笔记本的 URL 的一部分。
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: d90eebf1b7b463e038bc5e54f51df0eb6ca746c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646273"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831346"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>用于 Azure Notebooks 预览的个人资料和用户 ID
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 在 Azure Notebooks 强大的协作空间中，用户个人资料将向其他人提供公共图像：
 
@@ -23,8 +25,6 @@ ms.locfileid: "75646273"
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`：项目文件。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`：特定项目的克隆。
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`：特定笔记本或文件的 HTML 预览。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="your-user-id"></a>用户 ID
 
@@ -61,4 +61,4 @@ ms.locfileid: "75646273"
 ## <a name="next-steps"></a>后续步骤  
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter 笔记本以进行线性回归](tutorial-create-run-jupyter-notebook.md)

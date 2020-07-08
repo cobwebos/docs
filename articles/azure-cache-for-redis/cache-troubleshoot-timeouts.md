@@ -1,17 +1,17 @@
 ---
 title: 排查 Azure Cache for Redis 超时问题
-description: 了解如何解决 Redis 的 Azure 缓存常见的超时问题，例如 Redis 服务器修补和 Stackexchange.redis 的超时异常。
+description: 了解如何解决 Azure Cache for Redis 的常见超时问题，例如 Redis 服务器修补和 StackExchange.Redis 超时异常。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010811"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833751"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题
 
@@ -32,7 +32,9 @@ Azure Cache for Redis 定期更新其服务器软件，作为它提供的托管�
 
 StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作，该设置的默认值为 1000 毫秒。 如果同步调用未在此时间内完成，StackExchange.Redis 客户端会引发类似于以下示例的超时错误：
 
+```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
+```
 
 此错误消息中包含的指标可以指出问题的原因和可能的解决方法。 下表包含有关错误消息指标的详细信息。
 
@@ -40,12 +42,12 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 | --- | --- |
 | inst |在最后一个时间切片中：发出了 0 条命令 |
 | mgr |套接字管理器正在执行 `socket.select`，即，它正在请求 OS 指示一个需要执行某种操作的套接字。 读取器并未主动从网络读取数据，因为它认为不需执行任何操作 |
-| 队列 |总共有 73 个正在进行的操作 |
+| queue |总共有 73 个正在进行的操作 |
 | qu |正在进行的操作中，有 6 个操作位于未发送队列中，而尚未写入到出站网络 |
 | qs |正在进行的操作中，有 67 个操作已发送给服务器，但尚未得到响应。 响应可能为 `Not yet sent by the server` 或 `sent by the server but not yet processed by the client.` |
 | qc |正在进行的操作中，有 0 个操作已看到回复，但尚未标记为完成，因为它们正在完成循环中等待 |
 | wr |存在活动的写入器（这意味着系统不会忽略这 6 个尚未发送的请求）字节/活动写入器 |
-| 位于 |没有活动的读取器，NIC 字节/活动读取器上没有可供读取的字节 |
+| in |没有活动的读取器，NIC 字节/活动读取器上没有可供读取的字节 |
 
 可以使用以下步骤调查可能的根本原因。
 
@@ -69,11 +71,14 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 
     有关详细信息，请参阅[使用 StackExchange.Redis 连接到缓存](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)。
 
-1. 确保服务器和客户端应用程序位于 Azure 中的同一区域。 例如，你可能会在你的缓存位于美国东部但客户端在美国西部，但请求未在此`synctimeout`间隔内完成，或者当你从本地开发计算机进行调试时，你可能会遇到超时。 
+1. 确保服务器和客户端应用程序位于 Azure 中的同一区域。 例如，你可能会在你的缓存位于美国东部但客户端在美国西部，但请求未在此间隔内完成， `synctimeout` 或者当你从本地开发计算机进行调试时，你可能会遇到超时。 
 
     强烈建议将缓存和客户端置于同一 Azure 区域。 如果方案包括跨区域调用，则应将 `synctimeout` 时间间隔设置为比默认的 1000 毫秒时间间隔更高的值，方法是在连接字符串中增加一个 `synctimeout` 属性。 以下示例演示了 Azure Redis 缓存提供的 StackExchange.Redis 连接字符串代码片段，其中的 `synctimeout` 为 2000 毫秒。
 
-        synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```output
+    synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
+    ```
+
 1. 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
 1. 如果请求受服务器或客户端上的带宽限制的约束，则需要更长的时间才能完成，因此可能会导致超时。 若要了解超时是否是客户端网络带宽造成的，请参阅[服务器端带宽限制](cache-troubleshoot-server.md#server-side-bandwidth-limitation)。 若要了解超时是否是客户端网络带宽造成的，请参阅[客户端带宽限制](cache-troubleshoot-client.md#client-side-bandwidth-limitation)。
 1. 操作是否占用了服务器或客户端上的大量 CPU？
@@ -82,7 +87,7 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
    - 监视 CPU [缓存性能指标](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)，检查是否受到了服务器上的 CPU 消耗量的约束。 如果请求传入时 Redis 受到 CPU 消耗量的约束，则可能会导致这些请求超时。为了解决此问题，可以将负载分散到高级缓存的多个分片中，也可以升级缓存大小或定价层。 有关详细信息，请参阅[服务器端带宽限制](cache-troubleshoot-server.md#server-side-bandwidth-limitation)。
 1. 是否存在需要在服务器上进行长时间处理的命令？ 在 Redis 服务器上花费很长时间处理请求的命令可能会导致超时。 有关长时间运行的命令的详细信息，请参阅[长时间运行的命令](cache-troubleshoot-server.md#long-running-commands)。 可以使用 redis-cli 客户端或 [Redis 控制台](cache-configure.md#redis-console)连接到 Azure Redis 缓存实例。 然后，运行 [SLOWLOG](https://redis.io/commands/slowlog) 命令查看是否存在比预期速度更慢的请求。 Redis 服务器和 StackExchange.Redis 适合处理多个小型请求，而不适合处理寥寥数个大型请求。 将数据拆分成更小的块可能会解决问题。
 
-    有关使用 redis 和 stunnel 连接到缓存的 TLS/SSL 终结点的信息，请参阅博客文章[公告 ASP.NET 会话状态提供程序以获取 Redis 预览版](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)。
+    有关使用 redis-cli 和 stunnel 连接到缓存 TLS/SSL 终结点的信息，请参阅博客文章：[Announcing ASP.NET Session State Provider for Redis Preview Release](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)（宣布推出适用于 Redis 的 ASP.NET 会话状态提供程序预览版）。
 1. Redis 服务器负载过高可能会导致超时。 可以通过监视 `Redis Server Load` [缓存性能指标](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)来监视服务器负载。 服务器负载值为 100（最大值）表示 Redis 服务器正忙于处理请求，没有空闲时间。 若要查看某些请求是否占用了服务器的全部处理能力，请按上一段中的说明运行 SlowLog 命令。 有关详细信息，请参阅“CPU 使用率/服务器负载过高”。
 1. 客户端上是否存在其他可能导致网络故障的事件？ 常见事件包括：增加或减少客户端实例的数目、部署新的客户端版本，或启用自动缩放。 我们在测试中发现，自动缩放或扩展/缩减可能会导致出站网络连接断开几秒。 StackExchange.Redis 代码可以灵活应对此类事件，并且会重新连接。 重新连接时，队列中的所有请求可能超时。
 1. 在向缓存发出多个小型请求之前，是否存在导致超时的大型请求？ 错误消息中的参数 `qs` 会告知，有多少个请求已从客户端发送到服务器，但尚未处理响应。 此值可能会持续增加，因为 StackExchange.Redis 使用单个 TCP 连接，一次只能读取一个响应。 即使第一个操作超时，也不会阻止与服务器之间来回发送数据。 在完成大型请求之前，系统会阻止其他请求，从而可能导致超时。 降低超时概率的一种解决方案是确保缓存对于工作负荷来说足够大，并将大的值拆分成较小的块。 另一种可能的解决方案是使用客户端中的 `ConnectionMultiplexer` 对象池，在发送新请求时选择负载最小的 `ConnectionMultiplexer`。 通过多个连接对象进行加载应该可以防止单次超时导致其他请求也发生超时。

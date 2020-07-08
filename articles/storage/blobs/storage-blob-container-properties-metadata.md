@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833394"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>使用 .NET 管理容器属性和元数据
 
@@ -25,14 +25,27 @@ ms.locfileid: "79135915"
 
 - **用户定义的元数据**：用户定义元数据包含一个或多个你为 Blob 存储资源指定的名称/值对对。 可以使用元数据存储资源的其他值。 元数据值仅用于你自己的目的，不会影响资源的行为方式。
 
-检索 Blob 存储资源的属性和元数据值的过程分为两步。 必须先通过调用 FetchAttributes 或 FetchAttributesAsync 方法显式提取这些值，然后才能读取   。 此规则的例外是，**Exists** 和 **ExistsAsync** 方法以隐藏方式调用相应的 **FetchAttributes** 方法。 调用这其中的一个方法时，不需同时调用 **FetchAttributes**。
-
-> [!IMPORTANT]
-> 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法   。
-
 元数据名称/值对是有效的 HTTP 标头，因此应当遵循所有控制 HTTP 标头的限制。 元数据名称必须是有效的 HTTP 标头名称和有效的 C# 标识符，只能包含 ASCII 字符，并且应当区分大小写。 包含非 ASCII 字符的元数据值应当是 Base64 编码的或 URL 编码的。
 
 ## <a name="retrieve-container-properties"></a>检索容器属性
+
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+若要检索容器属性，请调用以下方法之一：
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)
+
+以下代码示例提取容器的系统属性并将一些属性值写入到控制台窗口：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+检索 Blob 存储资源的属性和元数据值的过程分为两步。 必须先通过调用 FetchAttributes 或 FetchAttributesAsync 方法显式提取这些值，然后才能读取********。 此规则的例外是，**Exists** 和 **ExistsAsync** 方法以隐藏方式调用相应的 **FetchAttributes** 方法。 调用这其中的一个方法时，不需同时调用 **FetchAttributes**。
+
+> [!IMPORTANT]
+> 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法********。
 
 若要检索容器属性，请调用以下方法之一：
 
@@ -63,14 +76,40 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 }
 ```
 
+---
+
 ## <a name="set-and-retrieve-metadata"></a>设置和检索元数据
 
-可将元数据指定为 Blob 或容器资源上的一个或多个名称/值对。 若要设置元数据，请将名称/值对添加到资源上的 Metadata  集合，然后调用下述方法之一来写入值：
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+
+可以在 Blob 或容器资源上指定元数据作为一个或多个名称/值对。 若要设置元数据，请向[IDictionary](/dotnet/api/system.collections.idictionary)对象添加名称/值对，然后调用以下方法之一来写入值：
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
+
+元数据的名称必须符合 C# 标识符命名约定。 元数据名称保留创建时使用的大小写，但在设置或读取时不区分大小写。 如果为资源提交了两个或更多个具有相同名称的元数据标头，则 Blob 存储以逗号分隔，并将两个值连接起来并返回 HTTP 响应代码200（OK）。
+
+以下代码示例在容器上设置元数据。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddContainerMetadata":::
+
+若要检索元数据，请调用以下方法之一：
+
+- [GetProperties](/dotnet/api/azure.storage.blobs.blobcontainerclient.getproperties)
+- [GetPropertiesAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getpropertiesasync)。
+
+然后，读取值，如下面的示例中所示。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+
+可以在 Blob 或容器资源上指定元数据作为一个或多个名称/值对。 若要设置元数据，请将名称/值对添加到资源上的 Metadata**** 集合，然后调用下述方法之一来写入值：
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-元数据的名称必须符合 C# 标识符命名约定。 元数据名称保留创建时使用的大小写，但在设置或读取时不区分大小写。 如果为资源提交了两个或更多个名称相同的元数据标头，Blob 存储会返回 HTTP 错误代码“400 (请求错误)”。
+元数据的名称必须符合 C# 标识符命名约定。 元数据名称保留创建时使用的大小写，但在设置或读取时不区分大小写。 如果为资源提交了两个或更多个具有相同名称的元数据标头，则 Blob 存储以逗号分隔，并将两个值连接起来并返回 HTTP 响应代码200（OK）。
 
 以下代码示例在容器上设置元数据。 一个值是使用集合的 **Add** 方法设置的。 另一个值是使用隐式键/值语法设置的。 这两种方法都有效。
 
@@ -97,7 +136,7 @@ public static async Task AddContainerMetadataAsync(CloudBlobContainer container)
 }
 ```
 
-要检索元数据，请对 blob 或容器调用 FetchAttributes 或 FetchAttributesAsync 方法以填充 Metadata 集合，然后读取值，如下面的示例所示    。
+要检索元数据，请对 blob 或容器调用 FetchAttributes 或 FetchAttributesAsync 方法以填充 Metadata 集合，然后读取值，如下面的示例所示************。
 
 ```csharp
 public static async Task ReadContainerMetadataAsync(CloudBlobContainer container)
@@ -126,10 +165,12 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [“获取容器属性”操作](/rest/api/storageservices/get-container-properties)
 - [“设置容器元数据”操作](/rest/api/storageservices/set-container-metadata)
-- [“获取容器元数据”操作](/rest/api/storageservices/set-container-metadata)
+- [“获取容器元数据”操作](/rest/api/storageservices/get-container-metadata)

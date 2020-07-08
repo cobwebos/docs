@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: HT
+ms.openlocfilehash: 7e78a8dfdf902c4c2548e0521a79d67716987791
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594774"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832077"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块以及对 Azure 使用本机模块的指南。
@@ -32,8 +32,8 @@ ms.locfileid: "82594774"
 
 > [!NOTE]
 > 本文不讨论 Azure 虚拟机，因为 VM 中的开发体验取决于虚拟机托管的操作系统。
-> 
-> 
+>
+>
 
 ## <a name="nodejs-modules"></a>Node.js 模块
 模块是可加载的 JavaScript 包，可为应用程序提供特定功能。 通常使用 npm 命令行工具安装模块，但一些模块（如 http 模块）作为核心 Node.js 包的一部分提供。
@@ -63,12 +63,12 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 
 > [!NOTE]
 > 部署到 Azure 应用服务时，如果 package.json 文件引用本机模块，在使用 Git 发布应用程序时可能会看到与以下示例类似的错误：<b></b>
-> 
+>
 > npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
-> 
+>
 > npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
-> 
-> 
+>
+>
 
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>使用 npm-shrinkwrap.json 文件
 **npm-shrinkwrap.json** 文件用于尝试消除 **package.json** 文件的模块版本控制限制。 虽然 package.json 文件仅包含顶级模块的版本，但 npm-shrinkwrap.json 文件包含所有模块依赖项链的版本要求。 
@@ -77,17 +77,17 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 
 > [!NOTE]
 > 部署到 Azure 应用服务时，如果 npm-shrinkwrap.json 文件引用本机模块，在使用 Git 发布应用程序时可能会看到与以下示例类似的错误：<b></b>
-> 
+>
 > npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
-> 
+>
 > npm ERR! 'cmd "/c" "node-gyp configure build"' failed with 1
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>后续步骤
 了解如何将 Node.js 模块与 Azure 一起使用后，请学习如何[指定 Node.js 版本](https://github.com/squillace/nodejs-microservice)、[生成和部署 Node.js Web 应用](app-service/app-service-web-get-started-nodejs.md)，以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)。
 
-有关详细信息，请参阅 [Node.js 开发人员中心](/azure/javascript/)。
+有关详细信息，请参阅 [Node.js 开发人员中心](/azure/developer/javascript/)。
 
 [specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md

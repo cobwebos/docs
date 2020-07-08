@@ -5,21 +5,22 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: ce40a46d4c1da627930ef8de8813936b71dcc281
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 14da272ce5ce7c078719909345961f6ddf57f37b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833785"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
 借助 HTTP 触发器，可以使用 HTTP 请求调用函数。 可以使用 HTTP 触发器生成无服务器 API 和响应 Webhook。
 
-HTTP 触发的函数的默认返回值为：
+HTTP 触发函数的默认返回值如下：
 
-- `HTTP 204 No Content`，在 Functions 2.x 和更高版本中正文为空
-- `HTTP 200 OK`，在 Functions 1.x 中正文为空
+- `HTTP 204 No Content`，在 Functions 2.x 及更高版本中为空主体
+- `HTTP 200 OK`，在 Functions 1.x 中为空主体
 
 若要修改 HTTP 响应，请配置[输出绑定](./functions-bindings-http-webhook-output.md)。
 
@@ -241,7 +242,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 * [从路由中读取参数](#read-parameter-from-a-route)
 * [从 POST 请求中读取 POJO 正文](#read-pojo-body-from-a-post-request)
 
-以下示例显示了 HTTP 触发器绑定。
+下面的示例演示 HTTP 触发器绑定。
 
 #### <a name="read-parameter-from-the-query-string"></a>从查询字符串中读取参数
 
@@ -430,7 +431,7 @@ public HttpResponseMessage run(
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-此示例演示了如何使用 [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 特性。
+此示例演示如何使用 [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 特性。
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -457,7 +458,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-此示例演示了如何使用 [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 特性。
+此示例演示如何使用 [HttpTrigger](https://github.com/Azure/azure-functions-java-library/blob/dev/src/main/java/com/microsoft/azure/functions/annotation/HttpTrigger.java) 特性。
 
 ```java
 @FunctionName("HttpTriggerJava")
@@ -481,9 +482,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
-| direction | 不适用| 必需 - 必须设置为 `in`。 |
-| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| **direction** | 不适用| 必需 - 必须设置为 `in`。 |
+| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
@@ -497,7 +498,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 默认情况下，创建 HTTP 触发器的函数时，可通过以下格式的路由对该函数进行寻址：
 
-    http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```http
+http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
+```
 
 在 HTTP 触发器的输入绑定中，可以使用可选 `route` 属性自定义此路由。 例如，以下 function.json 文件定义了 HTTP 触发器的 `route` 属性：
 
@@ -526,7 +529,7 @@ public HttpResponseMessage<String> HttpTrigger(
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-此配置使得函数代码在地址中支持两个参数：_category_ 和 _id_。
+此配置使得函数代码可以支持地址中的两个参数：“category”和“id” 。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -564,7 +567,7 @@ public static IActionResult Run(HttpRequest req, string category, int? id, ILogg
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-在 Node 中，Functions 运行时通过 `context` 对象提供请求正文。 有关详细信息，请参阅 [JavaScript 触发器示例](#example)。
+在 Node 中，Functions 运行时提供来自 `context` 对象的请求正文。 有关详细信息，请参阅 [JavaScript 触发器示例](#example)。
 
 以下示例显示了如何从 `context.bindingData` 读取路由参数。
 
@@ -605,9 +608,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-函数执行上下文是在 `HttpTrigger` 特性中声明的属性。 使用特性可以定义路由参数、授权级别、HTTP 谓词和传入请求实例。
+函数执行上下文是 `HttpTrigger` 特性中声明的属性。 使用特性可以定义路由参数、授权级别、HTTP 谓词和传入请求实例。
 
-路由参数是通过 `HttpTrigger` 特性定义的。
+路由参数通过 `HttpTrigger` 特性定义。
 
 ```java
 package com.function;
@@ -634,12 +637,14 @@ public class HttpTriggerJava {
 
 ---
 
-默认情况下，所有函数路由的前缀均为 api。 还可以使用 [host.json](functions-host-json.md) 文件中的 `http.routePrefix` 属性自定义或删除前缀。 以下示例通过将空字符串用于 host.json 文件中的前缀删除 api 路由前缀。
+默认情况下，所有函数路由的前缀均为 api。 还可以使用 [host.json](functions-host-json.md) 文件中的 `extensions.http.routePrefix` 属性自定义或删除前缀。 以下示例通过将空字符串用于 host.json 文件中的前缀删除 api 路由前缀。
 
 ```json
 {
-    "http": {
-    "routePrefix": ""
+    "extensions": {
+        "http": {
+            "routePrefix": ""
+        }
     }
 }
 ```
@@ -648,7 +653,7 @@ public class HttpTriggerJava {
 
 定义了函数的 `route` 模式的路由参数可用于每个绑定。 例如，如果将某个路由定义为 `"route": "products/{id}"`，则表存储绑定可以在绑定配置中使用 `{id}` 参数的值。
 
-以下配置展示了如何将 `{id}` 参数传递到绑定的 `rowKey`。
+下面的配置演示如何将 `{id}` 参数传递到绑定的 `rowKey`。
 
 ```json
 {
@@ -665,7 +670,7 @@ public class HttpTriggerJava {
 
 如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。 
 
-还可从绑定数据中读取此信息。 此功能仅适用于 2.x 和更高版本的 Functions 运行时。 而且它目前仅可用于 .NET 语言。
+还可从绑定数据中读取此信息。 此功能仅适用于 2.x 及更高版本的 Functions 运行时。 而且它目前仅可用于 .NET 语言。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -735,11 +740,11 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
 
 # <a name="python"></a>[Python](#tab/python)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -749,14 +754,11 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="function-access-keys"></a><a name="authorization-keys"></a>函数访问密钥
 
-> [!IMPORTANT]
-> 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
-
 [!INCLUDE [functions-authorization-keys](../../includes/functions-authorization-keys.md)]
 
 ## <a name="obtaining-keys"></a>获取密钥
 
-密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，导航到 [Azure 门户](https://portal.azure.com)中的某个 HTTP 触发函数并选择“管理”。
+密钥作为 Function App 的一部分存储在 Azure 中，并进行了静态加密。 若要查看密钥，请创建新的密钥或将密钥滚动到新值，在 [Azure 门户](https://portal.azure.com)中导航到某个 HTTP 触发的函数，然后选择“管理”。
 
 ![在门户中管理函数密钥。](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
@@ -764,16 +766,18 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="api-key-authorization"></a>API 密钥的授权
 
-大多数 HTTP 触发器模板都需要在请求中获取 API 密钥。 因此 HTTP 请求通常如以下 URL 所示：
+大多数 HTTP 触发器模板要求在请求中提供 API 密钥。 因此，HTTP 请求通常类似于以下 URL：
 
-    https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>
+```
 
-该密钥可以包含在名为 `code` 的查询字符串变量中（如上所示）。 也可以包含在 `x-functions-key` HTTP 头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
+可将该密钥包含在名为 `code` 的查询字符串变量中，如上所示。 也可以将它包含在 `x-functions-key` HTTP 标头中。 密钥的值可以为任意为函数定义的函数密钥，也可以为任意主机密钥。
 
-可以允许匿名请求，它不需要密钥。 你还可以要求使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#configuration)。
+可以允许匿名请求，它不需要密钥。 也可要求使用主密钥。 可使用绑定 JSON 中的 `authLevel` 属性更改默认授权级别。 有关详细信息，请参阅[触发器 - 配置](#configuration)。
 
 > [!NOTE]
-> 在本地运行函数时，将禁用授权，而不考虑指定的授权级别设置。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 在[容器中本地](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)运行时，仍然需要使用密钥。
+> 在本地运行函数时，不管指定的授权级别设置为何，都会禁用授权。 发布到 Azure 后，将强制执行触发器中的 `authLevel` 设置。 在[容器中本地](functions-create-function-linux-custom-image.md#build-the-container-image-and-test-locally)运行时，仍然需要使用密钥。
 
 
 ## <a name="secure-an-http-endpoint-in-production"></a>在生产环境中保护 HTTP 终结点
@@ -789,9 +793,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 ## <a name="webhooks"></a>Webhook
 
 > [!NOTE]
-> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 和更高版本中 HTTP 触发器的性能。
+> Webhook 模式仅适用于 1.x 版 Functions 运行时。 进行此更改是为了提高 2.x 及更高版本中 HTTP 触发器的性能。
 
-在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 和更高版本中，基本 HTTP 触发器仍正常工作，且是推荐用于 Webhook 的方法。 
+在 1.x 版中，Webhook 模板为 Webhook 有效负载提供了额外的验证。 在 2.x 及更高版本中，基本 HTTP 触发器仍正常工作，且是针对 Webhook 的推荐方法。 
 
 ### <a name="github-webhooks"></a>GitHub Webhook
 
@@ -810,11 +814,19 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 * **查询字符串**：提供程序通过 `clientid` 查询字符串参数（例如，`https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?clientid=<KEY_NAME>`）传递密钥名称。
 * **请求标头**：提供程序通过 `x-functions-clientid` 标头传递密钥名称。
 
+## <a name="content-types"></a>内容类型
+
+将二进制和窗体数据传递到非 C # 函数要求使用适当的 content-type 标头。 支持的内容类型包括 `octet-stream` 二进制数据和[多部分类型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+
+### <a name="known-issues"></a>已知问题
+
+在非 C # 函数中，使用 content 类型发送的请求会 `image/jpeg` 导致 `string` 传递到函数的值。 在这种情况下，可以手动将 `string` 值转换为字节数组，以访问原始二进制数据。
+
 ## <a name="limits"></a>限制
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数在 230 秒内未完成，则 [Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
+如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 
 
 ## <a name="next-steps"></a>后续步骤

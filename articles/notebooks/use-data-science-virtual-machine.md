@@ -6,21 +6,21 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830294"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>使用 Azure 数据科学虚拟机
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 默认情况下，项目在**免费计算**层上运行，其限制为 4 gb 的内存和 1 GB 的数据，以防止滥用。 可以使用在 Azure 订阅中预配的其他虚拟机来绕过这些限制。 为此，最佳选择是使用**Linux （Ubuntu）映像 Data Science Virtual Machine**的 Azure DATA SCIENCE VIRTUAL MACHINE （DSVM）。 此类 DSVM 预配置了 Azure Notebooks 所需的一切，并自动显示在 Azure Notebooks 的 "**运行**" 下拉列表中。
 
 > [!Note]
 > 仅在用 Linux Ubuntu 映像上创建的 Dsvm 支持 Azure Notebooks。 笔记本在 Windows 2012、Windows 2016 或 Linux CentOS 映像上不受支持。
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>创建 DSVM 实例
 
@@ -63,7 +63,7 @@ DSVM 版本19.06.15 或更高版本支持文件系统访问。 若要检查版�
 
 1. 在[Azure 门户](https://portal.azure.com)上，导航到你的虚拟机。
 1. 在左边距中的 "**支持 + 故障排除**" 下，选择 "**重置密码**"。
-1. 输入一个新**用户名**。 用户名必须是小写，才能将其用于 JupyterHub。 输入密码。 然后选择“更新”。**** （现有的用户名不受影响。）
+1. 输入一个新**用户名**。 用户名必须是小写，才能将其用于 JupyterHub。 输入密码。 然后选择“更新”。 （现有的用户名不受影响。）
 1. 对任何其他用户重复前面的步骤。
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657143"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833377"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>准备要部署到 Azure Spring Cloud 中的 Java Spring 应用程序
 
@@ -39,6 +39,7 @@ Spring Boot 版本 | Spring Cloud 版本
 ---|---
 2.1 | Greenwich.RELEASE
 2.2 | Hoxton.RELEASE
+2.3 | Hoxton.SR5
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 版本 2.1 的依赖项
 
@@ -91,7 +92,31 @@ Spring Boot 版本 | Spring Cloud 版本
         </dependencies>
     </dependencyManagement>
 ```
+### <a name="dependencies-for-spring-boot-version-23"></a>弹簧 Boot 版本2.3 的依赖项
 
+对于春季 Boot 版本2.3，请将以下依赖项添加到应用程序 POM 文件。
+
+```xml
+    <!-- Spring Boot dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+    </parent>
+
+    <!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+```
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 客户端依赖项
 
 Azure Spring Cloud 将会托管和管理 Spring Cloud 组件。 组件包括 Spring Cloud 服务注册表和 Spring Cloud 配置服务器。 在依赖项中包括 Azure Spring Cloud 客户端库，以便与 Azure Spring Cloud 服务实例通信。
@@ -102,6 +127,7 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 ---|---|---
 2.1 | Greenwich.RELEASE | 2.1
 2.2 | Hoxton.RELEASE | 2.2
+2.3 | Hoxton.SR5 | 2.3
 
 将以下依赖项之一包括到 pom.xml 文件中。 选择其 Azure Spring Cloud 版本与你自己的匹配的依赖项。
 
@@ -113,7 +139,7 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.1</version>
+        <version>2.1.2</version>
 </dependency>
 ```
 
@@ -125,7 +151,17 @@ Spring Boot 版本 | Spring Cloud 版本 | Azure Spring Cloud 版本
 <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.2.0</version>
+        <version>2.2.1</version>
+</dependency>
+```
+
+对于春季 Boot 版本2.3，请将以下依赖项添加到应用程序 POM 文件。
+
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.3.0</version>
 </dependency>
 ```
 
@@ -198,6 +234,9 @@ public class GatewayApplication {
 ```
 
  指标会定期从 JMX 终结点拉取。 可以通过 Azure 门户将指标可视化。
+
+ > [!WARNING]
+ > 请 `spring.jmx.enabled=true` 在配置属性中指定。 否则，无法在 Azure 门户中可视化度量值。
 
 ### <a name="distributed-tracing"></a>分布式跟踪
 

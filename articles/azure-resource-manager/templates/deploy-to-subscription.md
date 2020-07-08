@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 60f77d7bb29af8bcd1a0932a9ac93f5fe4b8e3ac
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
-ms.translationtype: HT
+ms.date: 07/01/2020
+ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299241"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85832808"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -17,7 +17,7 @@ ms.locfileid: "84299241"
 > [!NOTE]
 > 可在订阅级别部署中部署到 800 个不同的资源组。
 
-若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。 Azure 门户不支持在订阅级别部署。
+若要在订阅级别部署模板，请使用 Azure CLI、PowerShell 或 REST API。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -42,7 +42,7 @@ ms.locfileid: "84299241"
 
 ### <a name="schema"></a>架构
 
-用于订阅级别部署的架构与资源组部署的架构不同。
+用于订阅级别部署的架构不同于资源组部署的架构。
 
 对于模板，请使用：
 
@@ -50,7 +50,7 @@ ms.locfileid: "84299241"
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
 ```
 
-在所有部署范围内，参数文件的架构均相同。 对于参数文件，请使用：
+对于所有部署范围，参数文件的架构都相同。 对于参数文件，请使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
@@ -70,7 +70,7 @@ az deployment sub create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-对于 PowerShell 部署命令，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 New-AzSubscriptionDeployment。 以下示例会部署一个模板来创建资源组：
+对于 PowerShell 部署命令，请使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment**。 以下示例会部署一个模板来创建资源组：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -85,11 +85,11 @@ New-AzSubscriptionDeployment `
 
 ## <a name="deployment-location-and-name"></a>部署位置和名称
 
-对于订阅级别的部署，必须提供部署位置。 部署位置与你部署的资源的位置不同。 部署位置指定的是存储部署数据的位置。
+对于订阅级别部署，必须为部署提供位置。 部署位置独立于部署的资源的位置。 部署位置指定何处存储部署数据。
 
-可为部署提供名称，也可使用默认的部署名称。 默认名称就是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
+可以为部署提供一个名称，也可以使用默认部署名称。 默认名称是模板文件的名称。 例如，部署一个名为 **azuredeploy.json** 的模板将创建默认部署名称 **azuredeploy**。
 
-每个部署名称对应的位置必须相同。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
+每个部署名称的位置不可变。 当某个位置中已有某个部署时，无法在另一位置创建同名的部署。 如果出现错误代码 `InvalidDeploymentLocation`，请使用其他名称或使用与该名称的以前部署相同的位置。
 
 ## <a name="use-template-functions"></a>使用模板函数
 
@@ -97,9 +97,9 @@ New-AzSubscriptionDeployment `
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
-* 使用 [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 函数可获得在订阅级别部署的资源的 ID。
+* 使用 [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) 函数获取在订阅级别部署的资源的资源 ID。
 
-  例如，若要获取策略定义的资源 ID，可使用：
+  例如，若要获取策略定义的资源 ID，请使用：
 
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
@@ -209,8 +209,8 @@ New-AzSubscriptionDeployment `
     {
       "type": "Microsoft.Resources/resourceGroups",
       "apiVersion": "2019-10-01",
-      "location": "[parameters('rgLocation')]",
       "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
@@ -224,7 +224,7 @@ New-AzSubscriptionDeployment `
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {},
           "variables": {},
@@ -408,7 +408,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="template-samples"></a>模板示例
 
-* [创建资源组、将其锁定并向其授予权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
+* [创建资源组、将其锁定并授予其权限](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
 * [创建资源组、策略和策略分配](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>后续步骤

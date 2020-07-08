@@ -1,5 +1,5 @@
 ---
-title: Office 365 和 Azure AD 用户证书续订 | Microsoft 文档
+title: Office 365 和 Azure AD 用户证书续订 | Microsoft Docs
 description: 本文向 Office 365 用户说明了如何解决向其发送证书续订通知的电子邮件的问题。
 services: active-directory
 documentationcenter: ''
@@ -11,34 +11,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830445"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
-为使 Azure Active Directory (Azure AD) 与 Active Directory 联合身份验证服务 (AD FS) 之间能够成功联合，AD FS 用来为 Azure AD 签名安全令牌的证书应该匹配 Azure AD 中所配置的证书。 任何不匹配情况都可能导致信任破坏。 Azure AD 可确保此信息在部署 AD FS 和 Web 应用程序代理（用于 Extranet 访问）时保持同步。
+为使 Azure Active Directory (Azure AD) 与 Active Directory 联合身份验证服务 (AD FS) 之间能够成功联合，AD FS 用来为 Azure AD 签名安全令牌的证书应该与在 Azure AD 中所配置的证书相匹配。 任何不匹配情况都可能导致信任破坏。 Azure AD 可确保此信息在部署 AD FS 和 Web 应用程序代理（用于 Extranet 访问）时保持同步。
 
-本文提供一些附加信息，帮助你在以下情况下管理令牌签名证书，并使证书能够与 Azure AD 保持同步：
+本文提供了一些附加信息，帮助在以下情况下管理令牌签名证书，并使证书与 Azure AD 保持同步：
 
 * 未部署 Web 应用程序代理，因此无法在 Extranet 中获取联合元数据。
 * 未对令牌签名证书使用默认的 AD FS 配置。
 * 正在使用第三方标识提供者。
 
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>令牌签名证书的默认 AD FS 配置
-令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover** 的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Office 365 和 Azure AD 会在证书过期之前自动对其进行更新。
+令牌签名证书和令牌解密证书通常是自签名证书，有效期为一年。 默认情况下，AD FS 包含名为 **AutoCertificateRollover**的自动续订进程。 如果使用的是 AD FS 2.0 或更高版本，Office 365 和 Azure AD 会在证书过期之前自动对其进行更新。
 
 ### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>来自 Microsoft 365 管理中心或电子邮件的续订通知
 > [!NOTE]
-> 若收到电子邮件或门户通知，要求续订 Office 证书，请参阅[管理对令牌签名证书的更改](#managecerts)，检查是否需要采取任何操作。 Microsoft 已知可能有问题会导致发送证书续订通知，即使并不需要用户采取任何操作。
+> 如果收到电子邮件或门户通知，要求续订 Office 证书，请参阅[管理对令牌签名证书的更改](#managecerts)，检查是否需要采取任何操作。 Microsoft 已知可能有问题会导致发送证书续订通知，即使并不需要用户采取任何操作。
 >
 >
 
@@ -52,9 +52,9 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 > [!IMPORTANT]
 > 如果使用 AD FS，为确保业务连续性，请确认服务器具有以下更新，以免因已知问题而导致身份验证失败。 这可以减少在此续订期间和未来续订期间出现已知的 AD FS 代理服务器问题：
 >
-> Server 2012 R2 - [Windows Server 2014 年 5 月汇总](https://support.microsoft.com/kb/2955164)
+> Server 2012 R2 — [Windows Server 2014 年 5 月汇总](https://support.microsoft.com/kb/2955164)
 >
-> Server 2008 R2 and 2012 - [在 Windows Server 2012 或 Windows 2008 R2 SP1 中通过代理进行身份验证失败](https://support.microsoft.com/kb/3094446)
+> Server 2008 R2 和 2012 — [在 Windows Server 2012 或 Windows 2008 R2 SP1 中通过代理进行身份验证失败](https://support.microsoft.com/kb/3094446)
 >
 >
 
@@ -62,7 +62,9 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>步骤 1：检查 AutoCertificateRollover 状态
 在 AD FS 服务器上打开 PowerShell。 检查 AutoCertRollover 值是否设置为 True。
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 使用 MSOnline PowerShell-Module 连接到 Azure AD。
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 检查 AD FS 和 Azure AD 信任属性中针对指定域配置的证书。
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
@@ -96,25 +104,25 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 ### <a name="step-3-check-if-your-certificate-is-about-to-expire"></a>步骤 3：检查证书是否即将到期
 在 Get-MsolFederationProperty 或 Get-AdfsCertificate 输出中的“Not After”下面检查日期。 如果日期相隔不到 30 天，则应该采取操作。
 
-| AutoCertificateRollover | 证书与 Azure AD 同步 | 可公开访问联合元数据 | 有效期 | 操作 |
+| AutoCertificateRollover | 证书与 Azure AD 同步 | 可公开访问联盟元数据 | 有效期 | 操作 |
 |:---:|:---:|:---:|:---:|:---:|
-| 是 |是 |是 |- |无需操作。 请参阅[自动续订令牌签名证书](#autorenew)。 |
-| 是 |否 |- |小于 15 天 |立即续订。 请参阅[手动续订令牌签名证书](#manualrenew)。 |
-| 否 |- |- |小于 30 天 |立即续订。 请参阅[手动续订令牌签名证书](#manualrenew)。 |
+| 是 |是 |是 |- |无需执行任何操作。 请参阅 [自动续订令牌签名证书](#autorenew)。 |
+| 是 |否 |- |小于 15 天 |立即续订。 请参阅 [手动续订令牌签名证书](#manualrenew)。 |
+| 否 |- |- |小于 30 天 |立即续订。 请参阅 [手动续订令牌签名证书](#manualrenew)。 |
 
-\[-]  无关紧要
+\[-] 无关紧要
 
 ## <a name="renew-the-token-signing-certificate-automatically-recommended"></a>自动续订令牌签名证书（建议）<a name="autorenew"></a>
 如果同时满足以下两个条件，则不需要执行任何手动步骤：
 
 * 已部署 Web 应用程序代理，能够从 Extranet 访问联合元数据。
-* 使用的是 AD FS 默认配置（已启用 AutoCertificateRollover）。
+* 所使用的是 AD FS 默认配置（已启用 AutoCertificateRollover）。
 
 检查以下事项以确认能够自动更新证书。
 
 **1.AD FS 属性 AutoCertificateRollover 必须设置为 True。** 这表示 AD FS 会在旧证书到期之前，自动生成新的令牌签名证书和令牌解密证书。
 
-**2.可公开访问 AD FS 联盟元数据。** 从公共 Internet（企业网络之外）上的计算机导航到以下 URL，查看联合身份验证元数据是否可以公开访问：
+**2.可公开访问 AD FS 联合元数据。** 从公共 Internet（企业网络之外）上的计算机导航到以下 URL，查看你的联合元数据是否可以公开访问：
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
@@ -125,16 +133,16 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 可以选择手动续订令牌签名证书。 例如，在以下情况下，可能更合适手动续订：
 
 * 令牌签名证书不是自签名证书。 这种情况最常见的原因是，组织通过组织证书颁发机构来管理注册的 AD FS 证书。
-* 网络安全性不允许公开联合元数据。
+* 网络安全性不允许公开提供联合元数据。
 
 在这些案例中，每当更新令牌签名证书时，还必须使用 PowerShell 命令 Update-MsolFederatedDomain 更新 Office 365 域。
 
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>步骤 1：确保 AD FS 具有新的令牌签名证书
 **非默认配置**
 
-若使用 AD FS 的非默认配置（其中 **AutoCertificateRollover** 设置为 **False**），则很可能使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
+若使用 AD FS 的非默认配置（即 **AutoCertificateRollover** 设置为 **False**），则很有可能你使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
 
-**无法公开获取联合元数据**
+**无法公开获取联盟元数据**
 
 另一方面，如果 **AutoCertificateRollover** 设置为 **True**，但无法公开访问联合元数据，请先确保 AD FS 已生成新的令牌签名证书。 执行以下步骤，确认有新的令牌签名证书：
 
@@ -148,30 +156,30 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
    >
    >
 3. 查看命令输出中是否存在任何已列出的证书。 如果 AD FS 已生成新证书，则会在输出中看到两个证书：一个证书的 **IsPrimary** 值为 **True**，**NotAfter** 日期为 5 天内；另一个证书的 **IsPrimary** 为 **False**，**NotAfter** 大约为未来的 1 年。
-4. 若只看到一个证书，且 **NotAfter** 日期在 5 天内，则需要生成新的证书。
-5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令：`PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
+4. 如果只看到一个证书，且 **NotAfter** 日期在 5 天内，则需要生成新的证书。
+5. 若要生成新的证书，请在 PowerShell 命令提示符下执行以下命令： `PS C:\>Update-ADFSCertificate –CertificateType token-signing`。
 6. 通过再次运行以下命令来验证更新：PS C:\>Get-ADFSCertificate –CertificateType token-signing
 
 此时会列出两个证书，其中一个的 **NotAfter** 日期大约为未来的 1 年，其 **IsPrimary** 值为 **False**。
 
 ### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>步骤 2：更新 Office 365 信任的新令牌签名证书
-使用要用于信任的新令牌签名证书更新 Office 365。
+按如下方式，使用要用于信任的新令牌签名证书更新 Office 365。
 
 1. 打开用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块。
 2. 运行 $cred=Get-Credential。 当此 cmdlet 提示输入凭据时，键入云服务管理员帐户凭据。
 3. 运行 Connect-msolservice – Credential $cred。此 cmdlet 会将你连接到云服务。 通过工具运行任何其他已安装的 cmdlet 之前，必须创建你将连接到云服务的上下文。
-4. 如果在并非用作 AD FS 主联合服务器的计算机上运行这些命令，请运行 Set-MSOLAdfscontext -Computer &lt;AD FS primary server&gt;，其中 &lt;AD FS primary server&gt; 是主 AD FS 服务器的内部 FQDN 名称。 此 cmdlet 生成你将连接到 AD FS 的上下文。
-5. 运行 Update-MSOLFederatedDomain -DomainName &lt;domain&gt;。 此 cmdlet 会将 AD FS 中的设置更新到云服务中，并配置两者之间的信任关系。
+4. 如果在并非用作 AD FS 主联合服务器的计算机上运行这些命令，请运行 Set-MSOLAdfscontext -Computer &lt;AD FS primary server&gt;，其中 &lt;AD FS primary server&gt; 是主 AD FS 服务器的内部 FQDN 名称。 此 cmdlet 会创建你将连接到 AD FS 的上下文。
+5. 运行 Update-MSOLFederatedDomain -DomainName &lt;domain&gt;。 此 cmdlet 会将 AD FS 的设置更新到云服务中，并配置两者之间的信任关系。
 
 > [!NOTE]
-> 如果需要支持多个顶级域（例如 contoso.com 和 fabrikam.com），则必须在所有 cmdlet 中使用 **SupportMultipleDomain** 开关。 有关详细信息，请参阅[支持多个顶级域](how-to-connect-install-multiple-domains.md)。
+> 如果需要支持多个顶级域（例如 contoso.com 和 fabrikam.com），则必须将 **SupportMultipleDomain** 开关用于任何 cmdlet。 有关详细信息，请参阅[支持多个顶级域](how-to-connect-install-multiple-domains.md)。
 >
 
 
 ## <a name="repair-azure-ad-trust-by-using-azure-ad-connect"></a>使用 Azure AD Connect 修复 Azure AD 信任 <a name="connectrenew"></a>
 如果已使用 Azure AD Connect 配置了 AD FS 场和 Azure AD 信任，则可以使用 Azure AD Connect 来检测是否需要对令牌签名证书采取任何操作。 如果需要续订证书，可以使用 Azure AD Connect 来执行此操作。
 
-有关详细信息，请阅读[修复信任](how-to-connect-fed-management.md)。
+有关详细信息，请参阅[修复信任](how-to-connect-fed-management.md)。
 
 ## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>AD FS 和 Azure AD 证书更新步骤
 令牌签名证书是标准 X509 证书，用于安全地对联合服务器颁发的所有令牌进行签名。 令牌解密证书是标准 X509 证书，用于对任何传入令牌进行解密。 

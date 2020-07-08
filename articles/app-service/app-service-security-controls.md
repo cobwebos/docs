@@ -1,16 +1,16 @@
 ---
-title: 安全控件
+title: Azure 应用服务的安全控制
 description: 查找用于评估组织 Azure 应用服务的安全控制的清单。
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b0c336d9d9c463a7ed7acf42eaf292ecce4f1bb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74671455"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85831142"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure 应用服务的安全控制
 
@@ -39,8 +39,8 @@ ms.locfileid: "74671455"
 
 | 安全控制 | Yes/No | 注释 |  文档
 |---|---|--|
-| 身份验证| 是 | 客户可以构建基于应用服务的应用程序，这些应用程序自动集成 [Azure Active Directory (Azure AD)](../active-directory/index.yml) 以及其他与 OAuth 兼容的标识提供者 对应用服务资产进行管理访问时，所有访问都是通过组合使用 Azure AD 身份验证主体和 Azure 资源管理器 RBAC 角色来控制的。 | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
-| 授权| 是 | 对应用服务资产进行管理访问时，所有访问都可以通过组合使用经 Azure AD 验证的主体和 Azure 资源管理器 RBAC 角色进行控制。  | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
+| 身份验证| 是 | 客户可以在应用服务上构建应用程序，这些应用程序可自动与[Azure Active Directory （Azure AD）](../active-directory/index.yml)以及其他 OAuth 兼容标识提供程序集成，以便对应用服务资产进行管理访问，所有访问都由 Azure AD 身份验证的主体和 Azure RBAC 的组合控制。 | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
+| 授权| 是 | 对于应用服务资产的管理访问权限，所有访问都由 Azure AD 身份验证主体和 Azure RBAC 的组合控制。  | [Azure 应用服务中的身份验证和授权](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>数据保护
 
@@ -60,4 +60,4 @@ ms.locfileid: "74671455"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[Azure 服务中的内置安全控件](../security/fundamentals/security-controls.md)。
+- 详细了解[跨 Azure 服务的内置安全控制](../security/fundamentals/security-controls.md)。

@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846879"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>为私有云设置防火墙表和规则
 
@@ -49,7 +49,7 @@ ms.locfileid: "79244662"
     * 创建防火墙表时，单击 "**添加规则**"。
     * 在 "**网络 > 防火墙表**" 页上选择特定的防火墙表，然后单击 "新建**防火墙规则**"。
 2. 按如下所示设置规则：
-    * **名称**。 为规则指定名称。
+    * “名称”。 为规则指定名称。
     * **优先级**。 为规则分配优先级。 首先执行具有较小数字的规则。
     * **流量类型**。 选择规则是用于私有云、Internet 还是 VPN 流量（无状态），或用于公共 IP 地址（有状态）。
     * **协议**。 选择规则涵盖的协议（TCP、UDP 或任意协议）。
@@ -72,8 +72,8 @@ ms.locfileid: "79244662"
 
 定义防火墙表后，可以指定受表中规则制约的子网。
 
-1. 在 "**网络** > **防火墙表**" 页上，选择一个防火墙表。
+1. 在 "**网络**  >  **防火墙表**" 页上，选择一个防火墙表。
 2. 打开 "**附加的 vlan/子网**" 选项卡。
 3. 单击 "**附加到 VLAN/子网**"。
 4. 选择私有云和 VLAN。 显示关联的子网名称和 CIDR 块。
-5. 单击“提交”  。
+5. 单击“提交”。

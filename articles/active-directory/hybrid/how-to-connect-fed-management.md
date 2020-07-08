@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830921"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -72,7 +72,7 @@ ms.locfileid: "80331979"
 > Azure AD Connect 只能对自签名的证书进行修复或采取措施。 Azure AD Connect 无法修复第三方证书。
 
 ## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>使用 AlternateID 与 Azure AD 进行联合 
-建议使本地用户主体名称 (UPN) 和云用户主体名称保持相同。 如果本地 UPN 使用不可路由的域（例如 Contoso.local），或由于本地应用程序依赖关系而无法更改，建议设置备用登录 ID。 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。 用于 Azure AD Connect 中用户主体名称的属性默认为 Active Directory 中的 userPrincipalName 属性。 如果为用户主体名称选择任何其他属性，并使用 AD FS 进行联合，则 Azure AD Connect 将为备用登录 ID 配置 AD FS。 以下是为用户主体名称选择其他属性的一个示例：
+建议使本地用户主体名称 (UPN) 和云用户主体名称保持相同。 如果本地 UPN 使用不可路由的域（例如 Contoso.local），或由于本地应用程序依赖关系而无法更改，建议设置备用登录 ID。 备用登录 ID 允许配置登录体验，用户可以使用其 UPN 以外的属性（如邮件）登录。 用于 Azure AD Connect 中用户主体名称的属性默认为 Active Directory 中的 userPrincipalName 属性。 如果为用户主体名称选择任何其他属性，并使用 AD FS 进行联合，则 Azure AD Connect 为备用登录 ID 配置 AD FS。 以下是为用户主体名称选择其他属性的一个示例：
 
 ![备用 ID 属性选择](./media/how-to-connect-fed-management/attributeselection.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "80331979"
 
     ![警告：2012R2 上缺少知识库 (KB)](./media/how-to-connect-fed-management/kbwarning.png)
 
-    要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590)，并借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
+    若要纠正缺少知识库 (KB) 情况下的配置，请安装所需的 [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590)，并借助[修复 AAD 和 AD FS 信任](#repairthetrust)修复信任。
 
 > [!NOTE]
 > 有关 AlternateID 和手动配置步骤的详细信息，请阅读[配置备用登录 ID](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
@@ -104,7 +104,7 @@ ms.locfileid: "80331979"
 
    ![域管理员凭据](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
 
-4. Azure AD Connect 将要求提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”  提供 PFX 文件的密码。
+4. Azure AD Connect 会要求你提供在使用 Azure AD Connect 配置新的 AD FS 场时提供的 PFX 文件的密码。 单击“输入密码”  提供 PFX 文件的密码。
 
    ![证书密码](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
@@ -138,7 +138,7 @@ ms.locfileid: "80331979"
 
     ![指定 TLS/SSL 证书](./media/how-to-connect-fed-management/WapServer4.PNG)
 
-4. 添加要用作 WAP 服务器的服务器。 由于 WAP 服务器可能未加入域，因此向导将要求为要添加的服务器提供管理凭据。
+4. 添加要用作 WAP 服务器的服务器。 由于 WAP 服务器可能未加入域，因此向导会要求为要添加的服务器提供管理凭据。
 
    ![管理服务器凭据](./media/how-to-connect-fed-management/WapServer5.PNG)
 
@@ -146,17 +146,17 @@ ms.locfileid: "80331979"
 
    ![代理信任凭据](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. 在“已准备好配置  ”页上，向导显示将要执行的操作列表。
+6. 在“已准备好配置  ”页上，向导显示要执行的操作列表。
 
    ![已准备好配置](./media/how-to-connect-fed-management/WapServer7.PNG)
 
-7. 单击“安装”  完成配置。 完成配置后，向导将提供验证到服务器的连接性的选项。 单击“验证”  检查连接性。
+7. 单击“安装”  完成配置。 完成配置后，向导提供验证到服务器的连接性的选项。 单击“验证”  检查连接性。
 
    ![安装完成](./media/how-to-connect-fed-management/WapServer8.PNG)
 
 ## <a name="add-a-federated-domain"></a><a name="addfeddomain"></a>添加联合域 
 
-使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 将添加域用于联合身份验证，并修改声明规则，以便在有多个域与 Azure AD 联合时，正确反映发布者。
+使用 Azure AD Connect 可以轻松添加要与 Azure AD 联合的域。 Azure AD Connect 会添加域用于联合身份验证，并修改声明规则，以便在你有多个域与 Azure AD 联合时，正确反映发布者。
 
 1. 若要添加联合域，请选择任务“添加其他 Azure AD 域”  。
 
@@ -176,7 +176,7 @@ ms.locfileid: "80331979"
 
     选择域后，向导将提供有关向导将采取的进一步操作以及配置产生的影响的适当信息。 在某些情况下，如果选择的域尚未在 Azure AD 中进行验证，则向导将提供帮助验证域的信息。 有关更多详细信息，请参阅[将自定义域名添加到 Azure Active Directory](../active-directory-domains-add-azure-portal.md)。
 
-5. 单击“下一步”。  “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。  单击“安装”  完成配置。
+5. 单击“下一步”  。 “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。  单击“安装”  完成配置。
 
    ![已准备好配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
@@ -192,18 +192,22 @@ ms.locfileid: "80331979"
 > [!NOTE]
 > 建议徽标维度为 260 x 35 \@ 96 dpi，且文件大小不应超过 10 KB。
 
-    Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```azurepowershell-interactive
+Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```
 
 > [!NOTE]
-> *TargetName* 参数是必填参数。 随 AD FS 一起发布的默认主题名为“默认”。
+> *TargetName* 参数是必需参数。 随 AD FS 一起发布的默认主题名为“默认”。
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>添加登录说明 
-要将登录页说明添加到“登录”  页，请使用以下 Windows PowerShell cmdlet 和语法。
+若要将登录页说明添加到“登录”  页，请使用以下 Windows PowerShell cmdlet 和语法。
 
-    Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```azurepowershell-interactive
+Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>修改 AD FS 声明规则 
-AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有关详细信息，请参阅[声明规则语言的作用](https://technet.microsoft.com/library/dd807118.aspx)。
+AD FS 支持丰富的声明语言，让你用来创建自定义声明规则。 有关详细信息，请参阅[声明规则语言的作用](https://technet.microsoft.com/library/dd807118.aspx)。
 
 以下部分详细介绍了如何针对与 Azure AD 和 AD FS 联合身份验证有关的某些情况编写自定义规则。
 
@@ -214,8 +218,10 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 
 **规则 1：查询属性**
 
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
-    => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```claim-rule-language
+c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
+=> add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```
 
 在此规则中，将从 Active Directory 为用户查询 **ms-ds-consistencyguid** 和 **objectGuid** 的值。 请将应用商店名称更改为 AD FS 部署中可用的适当应用商店名称。 此外，根据对 **objectGuid** 和 **ms-ds-consistencyguid** 的定义，将声明类型更改为联合的正确声明类型。
 
@@ -223,23 +229,29 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 
 **规则 2：检查用户是否存在 ms-ds-consistencyguid**
 
-    NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
-    => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```claim-rule-language
+NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
+=> add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```
 
-此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 所以，当你在规则 1 中添加声明 `http://contoso.com/ws/2016/02/identity/claims/objectguid` 和 `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` 时，你最终会得到 msdsconsistencyguid  声明（除非为该用户填充该值）。 如果未填充该值，AD FS 发现该空值后会立即将它删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明将始终存在。
+此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 因此，在规则 1 中添加声明 `http://contoso.com/ws/2016/02/identity/claims/objectguid` 和 `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` 时，仅当填充了用户值时，才会获得 **msdsconsistencyguid** 声明。 如果未填充该值，在 AD FS 中它就会作为空值出现，并立即删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明始终存在。
 
 **规则 3：如果存在，将 ms-ds-consistencyguid 作为不可变 ID 发出**
 
-    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```claim-rule-language
+c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```
 
 这是隐式的 **Exist** 检查。 如果声明的值存在，则将其作为不可变 ID 发布。 之前的示例使用 **nameidentifier** 声明。 需要将其更改为环境中不可变 ID 的适当声明类型。
 
 **规则 4：如果 ms-ds-consistencyGuid 不存在，则将 objectGuid 作为不可变 ID 发出**
 
-    c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
-    && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```claim-rule-language
+c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
+&& c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```
 
 在此规则中，只检查临时标志 **idflag**。 根据该标志的值决定是否发出声明。
 

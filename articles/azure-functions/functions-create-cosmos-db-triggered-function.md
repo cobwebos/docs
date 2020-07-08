@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83123719"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829833"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>创建由 Azure Cosmos DB 触发的函数
 
@@ -115,11 +115,13 @@ ms.locfileid: "83123719"
 
 1. 将新项的内容替换为以下内容，然后选择“保存”。
 
-        {
-            "id": "task1",
-            "category": "general",
-            "description": "some task"
-        }
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
+    }
+    ```
 
 1. 切换到包含门户中的函数的第一个浏览器选项卡。 展开函数日志并验证新的文档已触发该函数。 会看到 `task1` 文档 ID 值已写入到日志。 
 

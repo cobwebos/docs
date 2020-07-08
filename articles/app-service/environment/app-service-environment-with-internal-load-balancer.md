@@ -1,18 +1,18 @@
 ---
 title: 创建 ILB ASE v1
-description: 创建和使用 ILB 的 ASE。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 创建和使用 ILB 的 ASE。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: ccompy
 ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0c03905017629e28e41cce2adaa65eac347b8185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294721"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85833097"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>搭配应用服务环境使用内部负载均衡器
 
@@ -68,7 +68,7 @@ ms.locfileid: "80294721"
 3. 选择订阅。
 4. 选择或创建资源组。
 5. 选择或创建应用服务计划 (ASP)。 如果创建新的 ASP，请选择 ASE 作为位置并选择希望在其中创建 ASP 的工作线程池。 创建该 ASP 时，请选择 ASE 作为位置并选择工作线程池。 指定应用的名称时，会看到应用名称下面的子域替换为 ASE 的子域。 
-6. 选择“创建”。  如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
+6. 选择“创建”。 如果希望应用显示在仪表板上，请确保选中“固定到仪表板”复选框。**** 
 
 ![][2]
 
@@ -118,9 +118,10 @@ ILB 的 IP 地址在“属性”中列为“虚拟 IP 地址”。
 #### <a name="dns-configuration"></a>DNS 配置
 使用外部 VIP 时，DNS 由 Azure 管理。 在 ASE 中创建的任何应用都会自动添加到 Azure DNS，这是一个公用 DNS。 在 ILB ASE 中，必须管理自己的 DNS。 针对指定的子域（例如 contoso.corp.net），必须为以下项创建指向 ILB 地址的 DNS A 记录：
 
-    * 
-    *.scm ftp publish 
-
+- \*
+- *.scm
+- ftp
+- 发布
 
 ## <a name="getting-started"></a>入门
 若要开始使用应用服务环境，请参阅[应用服务环境简介][WhatisASE]

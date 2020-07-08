@@ -4,11 +4,11 @@ description: 了解如何通过使用静态连接客户端来避免 Azure Functi
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276447"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846764"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -56,7 +56,7 @@ public static async Task Run(string input)
 
 ### <a name="http-agent-examples-javascript"></a>HTTP 代理示例 (JavaScript)
 
-由于它提供更好的连接管理选项，因此应使用[`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)本机类，而不是使用非本机方法， `node-fetch`如模块。 连接参数通过 `http.agent` 类上的选项配置。 有关 HTTP 代理的可用详细选项，请参阅 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
+由于它提供更好的连接管理选项，因此应使用本机 [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent) 类，而不是使用非本机方法，如 `node-fetch` 模块。 连接参数通过 `http.agent` 类上的选项配置。 有关 HTTP 代理的可用详细选项，请参阅 [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
 
 `http.request()` 使用的全局 `http.globalAgent` 类将这些值全部设置为各自的默认值。 在 Functions 中配置连接限制的建议方法是全局设置一个最大数量。 以下示例为函数应用设置最大 socket 数量：
 

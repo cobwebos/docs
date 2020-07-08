@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e452f03721551adada69a36b1ce69e57f1111f55
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78851367"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85834057"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
 
 Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 可以创建小型的反应式 Azure Functions，每当 Azure Cosmos 容器的更改源中出现新事件时，就会将其触发。
 
-![基于事件的无服务器 Functions 使用适用于 Cosmos DB 的 Azure Functions 触发器](./media/change-feed-functions/functions.png)
+:::image type="content" source="./media/change-feed-functions/functions.png" alt-text="基于事件的无服务器 Functions 使用适用于 Cosmos DB 的 Azure Functions 触发器" border="false":::
 
 有了[适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)，你就可以利用[更改源处理器](./change-feed-processor.md)的缩放与可靠事件检测功能，无需维护任何[辅助角色基础结构](./change-feed-processor.md)。 只需专注于 Azure 函数的逻辑，而无需考虑事件溯源管道的剩余。 甚至可以将触发器和任何其他 [Azure Functions 绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)搭配使用。
 
@@ -37,7 +37,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 现在支持在所有 Azure Functions IDE 和 CLI 集成中创建包含适用于 Cosmos DB 的 Azure Functions 触发器的 Azure 函数：
 
 * 面向 Visual Studio 用户的 [Visual Studio 扩展](../azure-functions/functions-develop-vs.md)。
-* Visual Studio Code 用户的[Visual Studio Code 扩展](/azure/javascript/tutorial-vscode-serverless-node-01)。
+* 面向 Visual Studio Code 用户的 [Visual Studio Code 扩展](/azure/developer/javascript/tutorial-vscode-serverless-node-01)。
 * 最后是适用于跨平台 IDE 不可知体验的 [Core CLI 工具](../azure-functions/functions-run-local.md#create-func)。
 
 ## <a name="run-your-trigger-locally"></a>在本地运行触发器
@@ -48,10 +48,10 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，请通过以下文章继续详细了解更改源：
+现在，可以通过以下文章继续详细了解更改源：
 
 * [更改源概述](change-feed.md)
 * [读取更改源的方式](read-change-feed.md)
 * [使用更改源处理器库](change-feed-processor.md)
 * [如何使用更改源处理器库](change-feed-processor.md)
-* [使用 Azure Cosmos DB 和 Azure Functions 的无服务器数据库计算](serverless-computing-database.md)
+* [使用 Azure Cosmos DB 和 Azure Functions 进行无服务器数据库计算](serverless-computing-database.md)
