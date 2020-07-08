@@ -7,7 +7,6 @@ ms.date: 03/30/2020
 ms.subservice: metrics
 ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83680686"

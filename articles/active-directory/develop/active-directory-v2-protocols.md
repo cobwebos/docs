@@ -15,7 +15,6 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 0bb7812d75fa3276b52a182f9184e28a21a910ae
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83737480"

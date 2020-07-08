@@ -11,7 +11,6 @@ ms.author: wesmc
 ms.custom: mqtt
 ms.openlocfilehash: 63fa7481b96f8a606893b76b66f8c414a54cdb82
 ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83714808"

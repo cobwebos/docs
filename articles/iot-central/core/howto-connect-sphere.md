@@ -9,7 +9,6 @@ author: sandeeppujar
 ms.date: 04/30/2020
 ms.openlocfilehash: a42b483a5ca4b4948f14c1ccbf0b7af6e49224bb
 ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83715048"

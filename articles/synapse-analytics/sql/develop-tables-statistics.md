@@ -13,7 +13,6 @@ ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83659229"

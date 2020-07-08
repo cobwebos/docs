@@ -15,7 +15,6 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
 ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/20/2020
 ms.locfileid: "83680263"

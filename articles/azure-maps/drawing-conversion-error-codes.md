@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682001"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>绘图转换错误和警告

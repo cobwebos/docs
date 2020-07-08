@@ -10,7 +10,6 @@ ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: eb97a2d848441a153db47b41644a6226e9d75782
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83747748"

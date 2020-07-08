@@ -12,7 +12,6 @@ ms.subservice: security-fundamentals
 ms.workload: identity
 ms.openlocfilehash: 3abd93e1699a701140e8b3558dcdf0161110ff6f
 ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83758123"

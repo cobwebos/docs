@@ -12,7 +12,6 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83658912"

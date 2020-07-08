@@ -12,7 +12,6 @@ ms.custom:
 - mqtt
 ms.openlocfilehash: c7c9371b76d8bd7b4afd3f54e30dcf652b8b33d4
 ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/19/2020
 ms.locfileid: "83656796"

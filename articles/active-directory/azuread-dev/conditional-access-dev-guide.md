@@ -15,7 +15,6 @@ ms.workload: identity
 ROBOTS: NOINDEX
 ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83738041"

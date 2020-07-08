@@ -7,7 +7,6 @@ ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 4f3889a0ba121cb9a3167c1f6ac95f0bed280539
 ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83759007"

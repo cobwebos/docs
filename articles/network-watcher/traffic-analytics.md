@@ -14,7 +14,6 @@ ms.author: damendo
 ms.reviewer: vinigam
 ms.openlocfilehash: 8deb3d81895629e817aeb9dbc1eb6520e1fb7aad
 ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/21/2020
 ms.locfileid: "83747533"
