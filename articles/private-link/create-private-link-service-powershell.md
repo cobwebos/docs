@@ -4,22 +4,22 @@ description: 了解如何使用 Azure PowerShell 创建 Azure 专用链接服务
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 225ae9d07cc6df2fa809e250083ee6007ab2f945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89269fe8c291a0c5303ff58cd728e02d4907be0a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76932085"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737302"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 创建专用链接服务
 本文介绍了如何使用 Azure PowerShell 在 Azure 中创建专用链接服务。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果你选择在本地安装和使用 PowerShell，则本文要求使用最新的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+如果你选择在本地安装和使用 PowerShell，则本文要求使用最新的 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -115,7 +115,7 @@ $pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
-使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 此示例在名为  *myResourceGroup* 的资源组中创建名为  vnetPE  的虚拟网络：
+使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 为专用终结点创建虚拟网络。 此示例在名为 *myResourceGroup* 的资源组中创建名为  *vnetPE*  的虚拟网络：
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"

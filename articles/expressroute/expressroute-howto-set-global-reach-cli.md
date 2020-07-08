@@ -4,15 +4,15 @@ description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以�
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/12/2018
 ms.author: jaredro
-ms.openlocfilehash: a39cf4e09a70ca2b1225d699c84abf0e7f1d2eab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df02213f1cba7c25cc77c06f1addcc04a2a4d27a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476400"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738390"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Global Reach
 

@@ -4,15 +4,15 @@ description: 使用此学习路径，开始委派 Azure DNS 子域。
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
-ms.openlocfilehash: cd1443a9ca8ccf7172072078734f21d789d36194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937436"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710875"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>委托 Azure DNS 子域
 
@@ -34,7 +34,7 @@ ms.locfileid: "76937436"
 1. 在 Azure 门户中，选择“创建资源”。 
 2. 在搜索框中键入 **DNS**，然后选择“DNS 区域”。 
 3. 选择“创建”  。
-4. 在“创建 DNS 区域”窗格中的“名称”文本框内，键入 **engineering.contoso.com**。  
+4. 在“创建 DNS 区域”窗格中的“名称”文本框内，键入 **engineering.contoso.com**。 
 5. 选择区域的资源组。 可以使用父区域所在的同一资源组将类似资源放到一起。
 6. 单击“创建”。 
 7. 部署成功后，转到新区域。
@@ -55,9 +55,9 @@ ms.locfileid: "76937436"
 
 1. 导航到父域的区域。
 2. 选择“+ 记录集”。 
-3. 在“添加记录集”窗格中的“名称”文本框内，键入 **engineering**。  
+3. 在“添加记录集”窗格中的“名称”文本框内，键入 **engineering**。 
 4. 对于“类型”，请选择“NS”。  
-5. 在“名称服务器”下，输入前面从 **engineering** 区域记录的四个名称服务器。 
+5. 在“名称服务器”下，输入前面从 **engineering** 区域记录的四个名称服务器。
 6. 单击“确定”。 
 
 ## <a name="test-the-delegation"></a>测试委托

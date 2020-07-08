@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259963"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707729"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
 

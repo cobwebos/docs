@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284026"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704516"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>在 Azure 逻辑应用中处理错误和异常
 
@@ -114,11 +114,11 @@ ms.locfileid: "79284026"
 
 ### <a name="none"></a>无
 
-要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为  `none`。
+要指定操作或触发器不重试失败的请求，请将 <retry-policy-type> 设置为 `none`。
 
 ### <a name="fixed-interval"></a>固定间隔
 
-要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为  `fixed`。
+要指定操作或触发器在等待指定的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `fixed`。
 
 *示例*
 
@@ -143,7 +143,7 @@ ms.locfileid: "79284026"
 
 ### <a name="exponential-interval"></a>指数间隔
 
-要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为  `exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
+要指定操作或触发器在等待随机的时间间隔后再发送下一个请求，请将 <retry-policy-type> 设置为 `exponential`。 随机时间间隔选自呈指数增长的范围。 此外，可通过自行指定最小时间间隔和最大时间间隔替代默认的最小和最大时间间隔。
 
 **随机变量范围**
 
@@ -249,13 +249,13 @@ ms.locfileid: "79284026"
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>评估具有作用域的操作及其结果
 
-与在使用`runAfter`属性执行单独操作后运行步骤类似，你可以将操作组合到一个[作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
+与在使用属性执行单独操作后运行步骤类似 `runAfter` ，你可以将操作组合到一个[作用域](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)内。 如果希望以逻辑方式将各个操作组合在一起，可以使用作用域，评估作用域的聚合状态，并基于该状态执行操作。 当某个作用域中的所有操作都完成运行后，该作用域本身也确定了其自己的状态。
 
 若要检查范围的状态，可以使用与用来检查逻辑应用运行状态（例如 `Succeeded`、`Failed` 等等）的条件相同的条件。
 
 默认情况下，当范围的所有操作都成功时，范围的状态将标记为 `Succeeded`。 如果范围内最后一个操作的状态为 `Failed` 或 `Aborted`，则范围的状态将标记为 `Failed`。
 
-若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `runAfter` 范围使用 `Failed` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了  *属性，则可以创建单个操作来捕获失败。* `runAfter`
+若要捕获 `Failed` 范围内的异常并运行用来处理这些错误的操作，可对该 `Failed` 范围使用 `runAfter` 属性。 这样，如果范围内的任何操作失败并且为该范围使用了 `runAfter` 属性，则可以创建单个操作来捕获失败。
 
 有关作用域的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。
 
@@ -314,19 +314,19 @@ ms.locfileid: "79284026"
 
 1. 要获取“My_Scope”中所有操作的结果，**筛选数组**操作将使用筛选表达式：`@result('My_Scope')`
 
-1. **筛选数组**的条件是状态等于`@result()`的任何项`Failed`。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
+1. **筛选数组**的条件是 `@result()` 状态等于的任何项 `Failed` 。 此条件将具有“My_Scope”中所有操作结果的数组筛选为仅包含失败操作结果的数组。
 
-1. 对筛选`For_each`的*数组*输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
+1. 对 `For_each` *筛选的数组*输出执行循环操作。 此步骤针对前面筛选的每个失败操作结果执行操作。
 
-   如果作用域中的单个操作失败，则`For_each`循环中的操作只运行一次。 如果存在多个失败的操作，则将对每个失败执行一次操作。
+   如果作用域中的单个操作失败，则循环中的操作 `For_each` 只运行一次。 如果存在多个失败的操作，则将对每个失败执行一次操作。
 
-1. 在`For_each`项响应正文中发送 HTTP POST，这是`@item()['outputs']['body']`表达式。
+1. 在 `For_each` 项响应正文中发送 HTTP POST，这是 `@item()['outputs']['body']` 表达式。
 
    `@result()` 项的形状与 `@actions()` 形状相同，可按相同的方式进行分析。
 
 1. 包括两个自定义标头，其中包含失败操作的名称 (`@item()['name']`) 和失败的运行客户端跟踪 ID (`@item()['clientTrackingId']`)。
 
-下面提供了单个 `@result()` 项的示例供参考，其中显示 `name`、`body` 和 `clientTrackingId` 属性已在前面的示例进行分析。 在`For_each`操作之外， `@result()`返回这些对象的数组。
+下面提供了单个 `@result()` 项的示例供参考，其中显示 `name`、`body` 和 `clientTrackingId` 属性已在前面的示例进行分析。 在 `For_each` 操作之外， `@result()` 返回这些对象的数组。
 
 ```json
 {
@@ -358,7 +358,7 @@ ms.locfileid: "79284026"
 }
 ```
 
-若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 您可以选择在接受整个筛选的故障数组的范围之外执行单个异常处理操作，并删除该`For_each`操作。 你还可以根据前面所述，将`\@result()`其他有用的属性包括在响应中。
+若要执行不同的异常处理模式，可以使用本文中前面所述的表达式。 您可以选择在接受整个筛选的故障数组的范围之外执行单个异常处理操作，并删除该 `For_each` 操作。 你还可以根据前面所述，将其他有用的属性包括在 `\@result()` 响应中。
 
 ## <a name="set-up-azure-monitor-logs"></a>设置 Azure Monitor 日志
 

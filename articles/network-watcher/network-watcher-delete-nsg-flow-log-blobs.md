@@ -8,21 +8,21 @@ manager: ''
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187964"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737948"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 
-如果需要从存储帐户手动删除流日志，可以使用以下 PowerShell 脚本。
+如果需要从存储帐户中手动删除流日志，可以使用下面的 PowerShell 脚本。
 此脚本仅删除比用户指定的现有保留策略旧的存储 blob。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>运行 PowerShell 脚本来删除 NSG 流日志
@@ -136,6 +136,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>后续步骤
-- 客户可使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[azure 自动化](https://azure.microsoft.com/services/automation/)自动运行脚本
+- 客户可以使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或 [Azure 自动化](https://azure.microsoft.com/services/automation/)自动运行脚本
 - 如需详细了解 NSG 日志记录，请参阅[网络安全组 (NSG) 的 Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

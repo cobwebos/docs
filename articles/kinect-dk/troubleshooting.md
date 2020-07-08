@@ -9,7 +9,7 @@ ms.topic: conceptual
 keywords: 故障排除, 更新, bug, kinect, 反馈, 恢复, 日志记录, 提示
 ms.openlocfilehash: 2db7b17ffc8b6595107dbc52fae719aa9f2d15db
 ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/11/2020
 ms.locfileid: "84707905"

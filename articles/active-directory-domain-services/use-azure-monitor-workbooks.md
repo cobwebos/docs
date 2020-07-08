@@ -9,14 +9,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/18/2020
 ms.author: iainfou
-ms.openlocfilehash: bdfc7d37d99dc5511f47e33d1848c3f142a9693e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84733392"
 ---
-# <a name="review-security-audit-events-in-azure-ad-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure AD 域服务中的安全审核事件
+# <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
 
 为了帮助您了解 Azure Active Directory 域服务（Azure AD DS）托管域的状态，您可以启用安全审核事件。 然后，可以使用将文本、分析查询和参数合并到丰富的交互式报表 Azure Monitor 工作簿来查看这些安全审核事件。 Azure AD DS 包括安全概述和帐户活动的工作簿模板，使你能够深入了解审核事件并管理你的环境。
 
@@ -24,14 +24,14 @@ ms.locfileid: "80654468"
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要完成本文，需要具备以下资源和权限：
+需要拥有以下资源和权限才能完成本文中的操作：
 
 * 一个有效的 Azure 订阅。
     * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请完成[创建和配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]的教程。
+    * 如果需要，请完成[创建和配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]的教程。
 * 为 Azure Active Directory 域服务托管域启用了将数据流式传输到 Log Analytics 工作区的安全审核事件。
     * 如果需要，[为 Azure Active Directory 域服务启用安全审核][enable-security-audits]。
 

@@ -4,20 +4,20 @@ description: 了解 Azure 专用链接
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0c6fc36be101679cea3a770f311005f63c3f0d66
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583770"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737370"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>使用 Azure PowerShell 创建专用终结点
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 
 
-本快速入门介绍如何使用 Azure PowerShell 在 Azure 虚拟网络中创建一个 VM，以及一个包含 Azure 专用终结点的 SQL 数据库服务器。 然后，你可以从该 VM 安全访问该 SQL 数据库服务器。
+在本快速入门中，你将了解如何在 Azure 虚拟网络上创建虚拟机，以及如何使用 Azure PowerShell 创建具有 Azure 专用终结点的逻辑 SQL server。 然后，可以从该 VM 安全访问 SQL 数据库。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>添加子网
 
-Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”  的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”  。
+Azure 将资源部署到虚拟网络中的子网，因此需要创建子网。 使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 创建名为“mySubnet”** 的子网配置。 以下示例创建一个名为 *mySubnet* 的子网，并将专用终结点网络策略标志设置为“禁用”****。
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -98,9 +98,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-## <a name="create-a-sql-database-server"></a>创建 SQL 数据库服务器 
+## <a name="create-a-logical-sql-server"></a>创建逻辑 SQL 服务器 
 
-使用 New-AzSqlServer 命令创建 SQL 数据库服务器。 请记住，你的 SQL 数据库服务器名称必须在 Azure 中是唯一的，因此请将括号中的占位符值替换为你自己的唯一值：
+使用 AzSqlServer 命令创建逻辑 SQL 服务器。 请记住，你的服务器名称必须在 Azure 中是唯一的，因此请将括号中的占位符值替换为你自己的唯一值：
 
 ```azurepowershell-interactive
 $adminSqlLogin = "SqlAdmin"
@@ -120,7 +120,7 @@ New-AzSqlDatabase  -ResourceGroupName "myResourceGroup" `
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 
-虚拟网络中的 SQL 数据库服务器的专用终结点，使用 [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection) 创建： 
+具有[AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)的虚拟网络中的服务器的专用终结点： 
 
 ```azurepowershell
 
@@ -142,7 +142,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
 ``` 
 
 ## <a name="configure-the-private-dns-zone"></a>配置专用 DNS 区域 
-为 SQL 数据库服务器域创建专用 DNS 区域，并创建一个与虚拟网络关联的链接： 
+创建 SQL 数据库域的专用 DNS 区域，创建与虚拟网络关联的链接，并创建 DNS 区域组以将专用终结点与专用 DNS 区域相关联。
 
 ```azurepowershell
 
@@ -153,24 +153,16 @@ $link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "myResourceGroup"
   -ZoneName "privatelink.database.windows.net"`
   -Name "mylink" `
   -VirtualNetworkId $virtualNetwork.Id  
- 
-$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.database.windows.net"  `
--ResourceGroupName "myResourceGroup" -Ttl 600 `
--PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
-} 
-} 
+
+$config = New-AzPrivateDnsZoneConfig -Name "privatelink.database.windows.net" -PrivateDnsZoneId $zone.ResourceId
+
+$privateDnsZoneGroup = New-AzPrivateDnsZoneGroup -ResourceGroupName "myResourceGroup" `
+ -PrivateEndpointName "myPrivateEndpoint" -name "MyZoneGroup" -PrivateDnsZoneConfig $config
 ``` 
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM  VM 的公共 IP 地址：
+使用 [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) 返回 VM 的公共 IP 地址。 此示例返回 myVM** VM 的公共 IP 地址：
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -187,18 +179,18 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-1. 出现提示时，选择“连接”  。 
+1. 出现提示时，选择“连接”****。 
 2. 输入在创建 VM 时指定的用户名和密码。
   > [!NOTE]
   > 可能需要选择“更多选择”>“使用其他帐户”，以指定在创建 VM 时输入的凭据。 
   
-3. 选择“确定”  。 
-4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”   。 
+3. 选择“确定” ****。 
+4. 可能会收到证书警告。 如果收到证书警告，选择“确定”或“继续”**** ****。 
 
-## <a name="access-sql-database-server-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库服务器
+## <a name="access-sql-database-privately-from-the-vm"></a>以私密方式从 VM 访问 SQL 数据库
 
 1. 在 myVM 的远程桌面中，打开 PowerShell。
-2. 输入 `nslookup myserver.database.windows.net`。 请记得将`myserver`替换为您的 SQL server 名称。
+2. 输入 `nslookup myserver.database.windows.net`。 切记将 `myserver` 替换为你的 SQL Server 名称。
 
     将收到类似于下面的消息：
     
@@ -211,24 +203,24 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
     
-3. 安装 SQL Server Management Studio。
-4. 在“连接服务器”中，输入或选择以下信息  ：
+3. 安装 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
+4. 在“连接服务器”中，输入或选择以下信息****：
 
-    | 设置 | 值 |
+    | 设置 | Value |
     | --- | --- |
     | 服务器类型 | 数据库引擎 |
     | 服务器名称 | myserver.database.windows.net |
-    | 用户名 | 输入创建过程中提供的用户名 |
-    | Password | 输入在创建过程中提供的密码 |
+    | 用户名 | 输入在创建过程中提供的用户名 |
+    | 密码 | 输入在创建过程中提供的密码 |
     | 记住密码 | 是 |
     
-5. 选择“连接”  。
-6. 浏览左侧菜单中的 "**数据库**"。 
+5. 选择“连接” ****。
+6. 浏览左侧菜单中的“数据库”****。 
 7. （可选）创建或查询 mydatabase 中的信息。
 8. 关闭与 *myVM* 的远程桌面连接。 
 
 ## <a name="clean-up-resources"></a>清理资源 
-使用专用终结点、SQL 数据库服务器和 VM 后，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组和组内所有资源：
+使用完专用终结点、SQL 数据库和 VM 后，请使用[AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除该资源组及其包含的所有资源：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

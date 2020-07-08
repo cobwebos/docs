@@ -4,20 +4,19 @@ description: 本文介绍如何配置流量管理器以将流量路由到 A/AAAA
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: rohink
-ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ac6d20acf32be9678818483e5929dee225501b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706811"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>在流量管理器中配置多值路由方法
 
@@ -38,7 +37,7 @@ ms.locfileid: "76938783"
 ## <a name="create-a-traffic-manager-profile"></a>创建流量管理器配置文件
 创建流量管理器配置文件，以便将用户流量定向到延迟最低的终结点。
 
-1. 在屏幕的左上方，选择 "**创建资源** > " "**网络** > " "**流量管理器配置文件** > " "**创建**"。
+1. 在屏幕的左上方，选择 "**创建资源**" "网络" "  >  **Networking**  >  **流量管理器配置文件**" "  >  **创建**"。
 2. 在“创建流量管理器配置文件”中输入或选择以下信息，接受其余设置的默认值，然后选择“创建”   ：
     
     | 设置                 | 值                                              |

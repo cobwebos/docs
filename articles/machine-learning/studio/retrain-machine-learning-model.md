@@ -5,21 +5,19 @@ description: 了解如何更新 Web 服务以在 Azure 机器学习工作室（�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 601717ce487f8564ed2d431db9b31a3b43fcee75
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706080"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 重新训练是确保机器学习模型保持准确的一种方法，该方法基于最相关的可用数据。 本文展示了如何在工作室（经典版）中重新训练机器学习模型并将其部署为新的 Web 服务。 如果要重新训练经典 Web 服务，请参阅[此操作说明文章](retrain-classic-web-service.md)。
 
@@ -80,7 +78,7 @@ ms.locfileid: "79217932"
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-在“使用”  页的“基本使用信息”  部分中，找到主密钥，并将其复制到 **apikey** 声明。
+在“使用”页的“基本使用信息”部分中，找到主密钥，并将其复制到 **apikey** 声明。
 
 ### <a name="update-the-azure-storage-information"></a>更新 Azure 存储信息
 

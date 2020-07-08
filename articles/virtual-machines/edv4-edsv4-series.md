@@ -1,27 +1,24 @@
 ---
-title: Edv4 和 Edsv4 系列 - Azure 虚拟机
+title: Edv4 和 Edsv4 系列
 description: 适用于 Ev4、Edv4、Esv4 和 Edsv4 系列 VM 的规格。
 author: brbell
 ms.author: brbell
-ms.reviewer: cynthn
+ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 795891f56985504a3584089d7377f753605ba4dd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: 7a21fb1c8da365176c27921bd58a5dffae468d2c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735942"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 和 Edsv4 系列
 
-Edv4 和 Edsv4 系列在超线程配置的 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合于各种占用大量内存的企业应用程序，配备高达 504 GiB 的 RAM、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 与 [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 的 [Ev3/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) 大小相比，这些新的 VM 大小有大 50% 的本地存储，同时有更好的读取与写入本地磁盘 IOPS
-
-
-> [!IMPORTANT]
-> 如果正在使用 Edv4 或 Edsv4 系列部署新的虚拟机，并且打算使用 Linux 映像，则需要使用 RHEL 8.x、CentOS 8.x 或 Oracle 7.x 或更新。 如果选择 RHEL 7.x、CentOS 7.x 或 Orcale 6.x，则存在内核 Panic 错误。 Microsoft 正在积极部署修复程序。 只有 RHEL、CentOS 和 Oracle 受到影响。
+Edv4 和 Edsv4 系列在超线程配置的 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合于各种占用大量内存的企业应用程序，配备高达 504 GiB 的 RAM、[Intel&reg; Turbo Boost Technology 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[Intel&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和 [Intel&reg; 高级矢量扩展 512 (intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持[Intel &reg; 深度学习提升](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与 [Gen2 VM](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) 的 [Ev3/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) 大小相比，这些新的 VM 大小有大 50% 的本地存储，同时有更好的读取与写入本地磁盘 IOPS
 
 ## <a name="edv4-series"></a>Edv4 系列
 
@@ -37,7 +34,7 @@ ACU：195 - 210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存: GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|
 | Standard_E2d_v4  | 2 | 16 | 75 | 4 | 19000/120 | 2/1000 |
 | Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38500/242 | 2/2000 |
@@ -63,7 +60,7 @@ ACU：195-210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存: GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19000/120(50) | 3200/48 | 2/1000 |
 | Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38500/242(100) | 6400/96 | 2/2000 |
@@ -90,4 +87,4 @@ ACU：195-210
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 47d927f9f17580767526ec6683e819256fc5e994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffbf37730d5064edcd067c3383fe18c342a2b053
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77619913"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738492"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
@@ -189,6 +189,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 请访问[使用弹性堆栈](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)、[使用 Grafana](network-watcher-nsg-grafana.md) 和[使用 Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) 详细了解查看 NSG 流日志的方法。 可以在此处找到直接使用 Blob 并发送给各种日志分析使用者的开源 Azure 函数方法：[Azure 网络观察程序 NSG 流日志连接器](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector)。
 
-可以使用[Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)获取流量流量的见解。 流量分析使用[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)使流量流可查询。
+可使用 [Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)获取有关流量流的见解。 流量分析使用 [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) 来使流量流可查询。
 
-若要了解有关存储 blob 的详细信息，请访问 [Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)
+若要详细了解存储 blob，请访问：[Azure Functions Blob 存储绑定](../azure-functions/functions-bindings-storage-blob.md)

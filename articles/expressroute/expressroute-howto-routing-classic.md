@@ -4,15 +4,15 @@ description: 本文指导完成创建和预配 ExpressRoute 线路的专用、�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cherylmc
-ms.openlocfilehash: 05602538f206032d924b39a7dd8f4325c48a5224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cad8a157121c0ccb53674301572b02410e030cc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931380"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736231"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>创建和修改 ExpressRoute 线路的对等互连（经典）
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ ms.locfileid: "74931380"
    * 辅助链路的 /30 子网。 它不能是保留给虚拟网络使用的任何地址空间的一部分。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 确认未使用 65515。
-   * MD5 哈希（如果选择使用）。 **可选**。
+   * MD5 哈希（如果选择使用）。 可选。
      
    可使用以下示例为线路配置 Azure 专用对等互连：
 
@@ -187,7 +187,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-4. **配置线路的 Azure 公共对等互连**
+4. **为线路配置 Azure 公共对等互连**
    
    在继续下一步之前，请确保已准备好以下信息：
    
@@ -195,7 +195,7 @@ Remove-AzureBGPPeering -AccessType Private -ServiceKey "************************
    * 辅助链路的 /30 子网。 这必须是有效的公共 IPv4 前缀。
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-   * MD5 哈希（如果选择使用）。 **可选**。
+   * MD5 哈希（如果选择使用）。 可选。
 
    > [!IMPORTANT]
    > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
@@ -300,7 +300,7 @@ Remove-AzureBGPPeering -AccessType Public -ServiceKey "*************************
    * 用于建立此对等互连的有效 VLAN ID。 确认线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
    * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。
-   * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 **可选**。
+   * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。 可选。
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
    * MD5 哈希（如果选择使用）。 **可选。**
      

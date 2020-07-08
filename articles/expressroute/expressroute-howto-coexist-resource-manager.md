@@ -4,16 +4,16 @@ description: 使用 PowerShell 为资源管理器模型配置可共存的 Expres
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 5a7ac1b6a9f75655f7e07cc8af89b676ec611421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52105cf351a45a233a5fb96c9ac8df689c575527
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76905476"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736282"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ ms.locfileid: "76905476"
   
     如果删除并重新创建网关，则跨界连接将会中断一段时间。 但是，在配置网关时，如果进行了相应配置，VM 和服务仍可以通过负载均衡器与外界通信。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 

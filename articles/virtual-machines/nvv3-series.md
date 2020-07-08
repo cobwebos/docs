@@ -2,17 +2,18 @@
 title: NVv3 系列-Azure 虚拟机
 description: NVv3 系列 Vm 的规格。
 services: virtual-machines
-author: vikancha
+ms.subservice: sizes
+author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: d74b00a4bade956d3a511a47b0a6b0011b9fb212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 9f5d5bd9775507a663a4171faa8b8892357f65b0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78267427"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736537"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
@@ -26,7 +27,7 @@ NVv3 实例中的每个 GPU 都附带了网格许可证。 使用此许可证，
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量： IOPS/MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20000/200 | 4 | 1 | 25  |
 | Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50  |

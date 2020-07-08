@@ -1,17 +1,17 @@
 ---
-title: 管理读取副本-Azure CLI、REST API-Azure Database for MariaDB
+title: 管理只读副本 - Azure CLI、REST API - Azure Database for MariaDB
 description: 本文介绍如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中设置和管理只读副本。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025044"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707985"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 在 Azure Database for MariaDB 中创建和管理只读副本
 
@@ -29,6 +29,9 @@ ms.locfileid: "82025044"
 > 只读副本功能仅适用于“常规用途”或“内存优化”定价层中的 Azure Database for MariaDB 服务器。 请确保主服务器位于其中一个定价层中。
 
 ### <a name="create-a-read-replica"></a>创建只读副本
+
+> [!IMPORTANT]
+> 如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
 
 可以使用以下命令创建只读副本服务器：
 

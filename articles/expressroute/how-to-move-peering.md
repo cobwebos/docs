@@ -4,15 +4,15 @@ description: 本文介绍了在 ExpressRoute 上将公共对等互连移动到 M
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f6b3ec93498ab58ba67a2ca08199feaa2da73ef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738356"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>将公共对等互连移动到 Microsoft 对等互连
 
@@ -33,7 +33,7 @@ Azure 公共对等互连有 1 个 NAT IP 地址与每个 BGP 会话相关联。 
 
 在配置 Microsoft 对等互连之前，请参阅[具有多个网络路径的非对称路由](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)了解非对称路由的注意事项。
 
-* 如果使用公共对等互连，并且当前为用于访问 [Azure 存储](../storage/common/storage-network-security.md)或 [Azure SQL 数据库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md)的公共 IP 地址设置了 IP 网络规则，则需要确保配置了 Microsoft 对等互连的 NAT IP 池包含在 Azure 存储帐户或 Azure SQL 帐户的公共 IP 地址列表中。<br>
+* 如果使用公共对等互连，并且当前为用于访问 [Azure 存储](../storage/common/storage-network-security.md)或 [Azure SQL 数据库](../azure-sql/database/vnet-service-endpoint-rule-overview.md)的公共 IP 地址设置了 IP 网络规则，则需要确保配置了 Microsoft 对等互连的 NAT IP 池包含在 Azure 存储帐户或 Azure SQL 帐户的公共 IP 地址列表中。<br>
 * 若要移动到 Microsoft 对等互连而不停机，则需按本文介绍的顺序使用这些步骤。
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. 创建 Microsoft 对等互连

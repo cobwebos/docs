@@ -13,11 +13,11 @@ ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cefa0c15dd50f95780034dcb63f888a2e1c6b65e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281244"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707355"
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>使用 Azure 数据工厂从 Sybase 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -63,7 +63,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了有关 Sybase 链接服务专属 JSON 元素的描述。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |“type”属性必须设置为：**OnPremisesSybase** |是 |
 | server |Sybase 服务器的名称。 |是 |
@@ -79,7 +79,7 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable**类型数据集（包括 Sybase 数据集）的 **typeProperties** 部分具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务指代的 Sybase 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -90,9 +90,9 @@ SAP Sybase SQL 随处 (ASA) 版本 16 和更高版本；不支持智能和 ASE�
 
 当源属于 **RelationalSource** 类型（包括 Sybase）时，以下属性可在 **typeProperties** 节中使用：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否（如果指定了**数据集**的 **tableName**） |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |否（如果指定了**数据集**的 **tableName**） |
 
 
 ## <a name="json-example-copy-data-from-sybase-to-azure-blob"></a>JSON 示例：将数据从 Sybase 复制到 Azure Blob

@@ -4,21 +4,21 @@ description: 本文介绍了如何将 ExpressRoute 线路链接到一起，以�
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf4625b8e638f7cb13999136ec5aa1afc99418a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738407"
 ---
 # <a name="configure-expressroute-global-reach"></a>配置 ExpressRoute Global Reach
 
 本文帮助你使用 PowerShell 配置 ExpressRoute Global Reach。 有关详细信息，请参阅 [ExpressRouteRoute Global Reach](expressroute-global-reach.md)。
 
- ## <a name="before-you-begin"></a>在开始之前
+ ## <a name="before-you-begin"></a>开始之前
 
 在开始配置之前，请确认以下事项：
 

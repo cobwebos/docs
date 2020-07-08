@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 2170a4d5f66cf6d1f699ae943f2a80b1b8127e39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc09cec1e6df9ec671fa98ae35562a639dce4cd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707610"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>将公共 IP 地址关联到虚拟机
 
@@ -28,7 +28,7 @@ ms.locfileid: "82146590"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 浏览或搜索要将公共 IP 地址添加到的虚拟机，然后将其选中。
 3. 在“设置”下选择“网络”，然后选择要将公共 IP 地址添加到的网络接口，如下图所示：  
 
@@ -62,10 +62,10 @@ ms.locfileid: "82146590"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-安装[Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 在随后的 CLI 命令中选择“尝试”按钮。**** 选择“尝试”会调用一个可用于登录到 Azure 帐户的 Cloud Shell。****
+安装 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 在随后的 CLI 命令中选择“试用”按钮。 选择“试用”会调用可用于登录到 Azure 帐户的 Cloud Shell。
 
 1. 如果在 Bash 本地使用 CLI，请使用 `az login` 登录到 Azure。
-2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令将公共 IP 地址关联到 IP 配置。 以下示例将现有公共 IP 地址 *myVMPublicIP* 关联到资源组 *myResourceGroup* 中现有网络接口 *myVMVMNic* 的 IP 配置 *ipconfigmyVM*。
+2. 公共 IP 地址与连接到 VM 的网络接口的 IP 配置相关联。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令将公共 IP 地址关联到 IP 配置。 以下示例将现有公共 IP 地址 *myVMPublicIP* 关联到资源组 *myResourceGroup* 中现有网络接口 *myVMVMNic* 的 IP 配置 *ipconfigmyVM*。
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -84,21 +84,21 @@ ms.locfileid: "82146590"
      > [!NOTE]
      > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-   - 如果你不知道附加到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
+   - 如果不知道连接到 VM 的网络接口的名称，请使用 [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) 命令进行查看。 例如，以下命令列出了连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM 的网络接口的名称：
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
      ```
 
-     输出中包含类似于以下示例的一个或多个行：
+     输出包括一个或多个类似以下示例的行：
   
      ```
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-     在以上示例中，*myVMVMNic* 是网络接口的名称。
+     在上一个示例中，myVMVMNic 是网络接口的名称。
 
-   - 如果你不知道网络接口的 IP 配置的名称，请使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) 命令检索名称。 例如，以下命令会列出资源组 *myResourceGroup* 中网络接口 *myVMVMNic* 的 IP 配置的名称：
+   - 如果你不知道网络接口的 IP 配置的名称，请使用 [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) 命令检索名称。 例如，以下命令列出了名为 myResourceGroup 的资源组中名为 myVMVMNic 的网络接口的 IP 配置的名称：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
@@ -117,7 +117,7 @@ ms.locfileid: "82146590"
 
 ## <a name="powershell"></a>PowerShell
 
-安装[PowerShell](/powershell/azure/install-az-ps)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 shell。 它预安装有 PowerShell，并配置为与帐户一起使用。 在随后的 PowerShell 命令中选择“尝试”按钮。**** 选择“尝试”会调用一个可用于登录到 Azure 帐户的 Cloud Shell。****
+安装 [PowerShell](/powershell/azure/install-az-ps)，或使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 shell。 它预安装有 PowerShell，并配置为与帐户一起使用。 在随后的 PowerShell 命令中选择“试用”按钮。 选择“试用”会调用可用于登录到 Azure 帐户的 Cloud Shell。
 
 1. 如果在本地使用 PowerShell，请使用 `Connect-AzAccount` 登录到 Azure。
 2. 公共 IP 地址将关联到 VM 上附加的网络接口的 IP 配置。 使用 [Get-AzVirtualNetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork) 和 [Get-AzVirtualNetworkSubnetConfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig) 命令获取网络接口所在的虚拟网络和子网。 接下来，使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令获取网络接口，并使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 命令获取现有的公共 IP 地址。 然后使用 [Set-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig) 命令将公共 IP 地址关联到 IP 配置，并使用 [Set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) 命令将新 IP 配置写入到网络接口。
@@ -142,7 +142,7 @@ ms.locfileid: "82146590"
      > [!NOTE]
      > 以上命令使用你可能想要自定义的多个设置的默认值创建一个公共 IP 地址。 若要详细了解所有的公共 IP 地址设置，请参阅[创建公共 IP 地址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 地址是从每个 Azure 区域使用的公共 IP 地址池分配的。 若要查看每个区域中使用的地址池列表，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
 
-   - 如果你不知道附加到 VM 的网络接口的名称，请使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令查看名称。 例如，以下命令会列出附加到资源组 *myResourceGroup* 中 VM *myVM* 的网络接口的名称：
+   - 如果不知道连接到 VM 的网络接口的名称，请使用 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) 命令进行查看。 例如，以下命令列出了连接到名为 myResourceGroup 的资源组中名为 myVM 的 VM 的网络接口的名称：
 
      ```azurepowershell-interactive
      $vm = Get-AzVM -name myVM -ResourceGroupName myResourceGroup
@@ -163,20 +163,20 @@ ms.locfileid: "82146590"
      $ipConfigs.Subnet | Select Id
      ```
 
-     输出中包含类似于以下示例的一个或多个行。 在示例输出中，*myVMVNET* 是虚拟网络的名称，*myVMSubnet* 是子网的名称。
+     输出包括一个或多个类似以下示例的行。 在示例输出中，*myVMVNET* 是虚拟网络的名称，*myVMSubnet* 是子网的名称。
   
      ```
      "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVMVNET/subnets/myVMSubnet",
      ```
 
-   - 如果你不知道网络接口的 IP 配置的名称，请使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令检索名称。 例如，以下命令会列出资源组 *myResourceGroup* 中网络接口 *myVMVMNic* 的 IP 配置的名称：
+   - 如果你不知道网络接口的 IP 配置的名称，请使用 [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令检索名称。 例如，以下命令列出了名为 myResourceGroup 的资源组中名为 myVMVMNic 的网络接口的 IP 配置的名称：
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
      $nic.IPConfigurations
      ```
 
-     输出中包含类似于以下示例的一个或多个行。 在示例输出中，*ipconfigmyVM* 是 IP 配置的名称。
+     输出包括一个或多个类似以下示例的行。 在示例输出中，*ipconfigmyVM* 是 IP 配置的名称。
   
      ```
      Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM

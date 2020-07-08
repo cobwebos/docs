@@ -13,11 +13,11 @@ ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707372"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure 数据工厂从 ODBC 数据存储移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -64,7 +64,7 @@ ms.locfileid: "79281387"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供特定于 ODBC 链接服务的 JSON 元素的描述。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**OnPremisesOdbc** |是 |
 | connectionString |连接字符串的非访问凭据部分和可选的加密凭据。 请参阅以下部分中的示例。 <br/><br/>可以使用类似 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 的模式指定连接字符串，也可以利用在网关计算机上使用 `"DSN=<name of the DSN>;"` 设置的系统 DSN（数据源名称）（仍需要相应地指定链接服务中的凭据部分）。 |是 |
@@ -136,7 +136,7 @@ ms.locfileid: "79281387"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **RelationalTable** 类型数据集（包括 ODBC 数据集）的 typeProperties 部分具有以下属性
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |ODBC 数据存储中表的名称。 |是 |
 
@@ -147,9 +147,9 @@ ms.locfileid: "79281387"
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 ODBC）时，以下属性可用于 typeProperties 部分：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |是 |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |是 |
 
 
 ## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON 示例：将数据从 ODBC 数据存储复制到 Azure Blob

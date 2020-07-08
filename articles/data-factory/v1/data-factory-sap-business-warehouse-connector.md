@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281049"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707270"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -37,7 +37,7 @@ ms.locfileid: "79281049"
 
 若要启用与 SAP BW 实例的连接，请安装以下组件：
 - **数据管理网关**：数据工厂服务支持使用称为“数据管理网关”的组件连接到本地数据存储（包括 SAP Business Warehouse）。 若要了解数据管理网关和设置网关的分步说明，请参阅[在本地数据存储与云数据存储之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。 即使 SAP Business Warehouse 托管在 Azure IaaS 虚拟机 (VM) 中，也需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
-- 网关计算机上的 **SAP NetWeaver 库**。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”**** 获取最新版本的下载位置。 确保 SAP NetWeaver 库（32 位或 64 位）的体系结构与安装的网关匹配。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
+- 网关计算机上的 **SAP NetWeaver 库**。 可以从 SAP 管理员处或直接从 [SAP 软件下载中心](https://support.sap.com/swdc)获取 SAP Netweaver 库。 搜索“SAP Note #1025361”  获取最新版本的下载位置。 确保 SAP NetWeaver 库（32 位或 64 位）的体系结构与安装的网关匹配。 然后，按照 SAP 说明安装 SAP NetWeaver RFC SDK 中包含的所有文件。 SAP NetWeaver 库也包括在 SAP 客户端工具安装中。
 
 > [!TIP]
 > 将从 NetWeaver RFC SDK 中提取的 dll 放入 system32 文件夹。
@@ -61,15 +61,15 @@ ms.locfileid: "79281049"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
 
-properties | 说明 | 允许的值 | 必选
+Property | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
-server | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
+server | SAP BW 实例所驻留的服务器的名称。 | string | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
 clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
-username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
-password | 用户密码。 | 字符串 | 是
-gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | 字符串 | 是
-encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
+username | 有权访问 SAP 服务器的用户名 | string | 是
+password | 用户密码。 | string | 是
+gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | string | 是
+encryptedCredential | 加密的凭据字符串。 | 字符串型 | 否
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -84,9 +84,9 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
+| 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob
@@ -290,28 +290,28 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 ABAP 字典中的数据类型 | .NET 数据类型
 -------------------------------- | --------------
-ACCP |  Int
+ACCP |  int
 CHAR | 字符串
-CLNT | 字符串
-CURR | Decimal
-CUKY | 字符串
-DEC | Decimal
+CLNT | String
+CURR | 小数
+CUKY | String
+DEC | 小数
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
-INT4 | Int
-LANG | 字符串
-LCHR | 字符串
+INT4 | int
+LANG | String
+LCHR | String
 LRAW | Byte[]
 PREC | Int16
-QUAN | Decimal
+QUAN | 小数
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | 字符串
-UNIT | 字符串
-DATS | 字符串
-NUMC | 字符串
-TIMS | 字符串
+STRING | String
+UNIT | String
+DATS | String
+NUMC | String
+TIMS | String
 
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

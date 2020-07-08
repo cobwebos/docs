@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
 ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251461"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708291"
 ---
 # <a name="filters"></a>筛选器
 
@@ -139,7 +139,7 @@ ms.locfileid: "79251461"
 
 ## <a name="associating-filters-with-streaming-locator"></a>将筛选器与流定位符相关联
 
-可以在[流定位符](filters-concept.md)中指定[资产或帐户筛选器](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
+可以在[流定位符](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定[资产或帐户筛选器](filters-concept.md)列表。 [动态打包器](dynamic-packaging-overview.md)将此筛选器列表与客户端在 URL 中指定的筛选器一起应用。 此组合将生成[动态清单](filters-dynamic-manifest-overview.md)，该清单基于你在流定位符上指定的“URL + 筛选器”中的筛选器。 
 
 请看以下示例：
 

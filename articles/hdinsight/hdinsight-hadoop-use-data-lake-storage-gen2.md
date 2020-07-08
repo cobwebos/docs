@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd41c162d44320fc19af904118f202423e68e96a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a9a3aaecc854ddb710f19bcb3d455c63b3a8bef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84706165"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -36,14 +36,14 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 创建用户分配的托管标识（如果还没有）。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，单击“创建资源”****。
 1. 在 "搜索" 框中，键入**user user** ，然后单击 "**用户分配的托管标识**"。
-1. 单击“创建”。 
+1. 单击“创建”。
 1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
-1. 单击“创建”。 
+1. 单击“创建”。
 
-有关 Azure HDInsight 中托管标识的工作方式的详细信息，请参阅[Azure hdinsight 中的托管标识](hdinsight-managed-identities.md)。
+有关 Azure HDInsight 中托管标识的工作原理的详细信息，请参阅 [Azure HDInsight 中的托管标识](hdinsight-managed-identities.md)。
 
 ![创建用户分配的托管标识](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
@@ -51,16 +51,16 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 创建 Azure Data Lake Storage Gen2 存储帐户。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，单击“创建资源”****。
 1. 在搜索框中，键入 **storage**，然后单击 **Storage account**。
-1. 单击“创建”。 
+1. 单击“创建”。
 1. 在“创建存储帐户”**** 屏幕上：
     1. 选择正确的订阅和资源组。
     1. 输入 Data Lake Storage Gen2 帐户的名称。
     1. 单击“高级”选项卡****。
     1. 单击 **Data Lake Storage Gen2** 下的“分层命名空间”**** 旁边的“启用”****。
-    1. 单击“查看 + 创建”  。
+    1. 单击“查看 + 创建”。
     1. 单击“创建” 
 
 有关存储帐户创建过程中的其他选项的详细信息，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 的存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
@@ -72,7 +72,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 将托管标识分配到存储帐户上的“存储 Blob 数据所有者”角色****。
 
 1. 在 [Azure 门户](https://portal.azure.com)中转到自己的存储帐户。
-1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置****。 选择“角色分配”  选项卡以查看角色分配列表。
+1. 选择存储帐户，然后选择“访问控制(IAM)”以显示该帐户的访问控制设置****。 选择“角色分配”选项卡以查看角色分配列表。
 
     ![显示存储访问控制设置的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
@@ -81,7 +81,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
     ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. 选择“保存”。  现在，选定的用户分配的标识会列在选定的角色下。
+1. 选择“保存”。 现在，选定的用户分配的标识会列在选定的角色下。
 1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在 "群集创建" 菜单的 "**存储**" 选项卡中，选择以下选项：
 
     * 对于“主要存储类型”，请选择“Azure Data Lake Storage Gen2”********。
@@ -169,7 +169,7 @@ HDInsight 群集在 Data Lake Storage Gen2 中访问文件的能力通过托管�
 
 Azure 服务有两种类型的托管标识：系统分配的托管标识和用户分配的托管标识。 HDInsight 使用用户分配的托管标识来访问 Data Lake Storage Gen2。 `user-assigned managed identity`作为独立的 Azure 资源创建。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。
 
-用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。 有关托管标识的详细信息，请参阅[Azure 资源的托管标识如何工作？](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。
+用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。 有关托管标识的详细信息，请参阅[Azure 资源的托管标识是什么？](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ### <a name="how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services"></a>如何设置 Azure AD 用户的权限，以使用 Hive 或其他服务在 Data Lake Storage Gen2 中查询数据？
 
@@ -179,7 +179,7 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 可以通过多种方式从 HDInsight 群集访问 Data Lake Storage Gen2 中的文件。
 
-* **使用完全限定的名称**。 使用此方法时，需要提供要访问的文件的完整路径。
+* **使用完全限定的名称**。 使用此方法时，需提供要访问的文件的完整路径。
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
@@ -201,9 +201,9 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 示例基于到群集的头节点的 [ssh 连接](./hdinsight-hadoop-linux-use-ssh-unix.md)。 示例使用所有三个 URI 方案。 将 `CONTAINERNAME` 和 `STORAGEACCOUNT` 替换为相关值
 
-#### <a name="a-few-hdfs-commands"></a>一些 hdfs 命令
+#### <a name="a-few-hdfs-commands"></a>几个 hdfs 命令
 
-1. 在本地存储中创建文件。
+1. 在本地存储上创建一个文件。
 
     ```bash
     touch testFile.txt
@@ -235,7 +235,7 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 #### <a name="creating-a-hive-table"></a>创建 Hive 表
 
-但为了便于说明，显示了三个文件位置。 实际执行时，仅使用 `LOCATION` 条目之一。
+但为了便于说明，显示了三个文件位置。 在实际执行中，只使用其中一个 `LOCATION` 条目。
 
 ```hql
 DROP TABLE myTable;

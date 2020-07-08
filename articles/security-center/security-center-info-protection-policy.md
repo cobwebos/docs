@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/29/2019
+ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abcdc903e1509c266b9ea6666c296a59183e83c5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75611060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711079"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 安全中心（预览版）中自定义 SQL 信息保护策略
  
@@ -29,7 +29,7 @@ ms.locfileid: "75611060"
 - 安全方案，如监视（审核）和对敏感数据的异常访问发出警报
 - 控制对包含高度敏感数据的数据存储的访问并增强其安全性
  
-[SQL 信息保护](../sql-database/sql-database-data-discovery-and-classification.md)为 SQL 数据存储实现此范例，目前 Azure SQL 数据库支持该范例。 SQL 信息保护自动发现和分类潜在的敏感数据，提供标记机制，用于通过分类属性永久标记敏感数据，并提供显示数据库分类状态的详细仪表板。 此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的详细信息，请参阅[AZURE SQL 数据库数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)。
+[SQL 信息保护](../azure-sql/database/data-discovery-and-classification-overview.md)为 SQL 数据存储实现此范例，目前 Azure SQL 数据库支持该范例。 SQL 信息保护自动发现和分类潜在的敏感数据，提供标记机制，用于通过分类属性永久标记敏感数据，并提供显示数据库分类状态的详细仪表板。 此外，它还会计算 SQL 查询的结果集敏感性，以便可以显式审核提取敏感数据的查询，并且可以保护数据。 有关 SQL 信息保护的详细信息，请参阅[AZURE SQL 数据库数据发现和分类](../azure-sql/database/data-discovery-and-classification-overview.md)。
  
 该分类机制基于构成分类的两个主要构造：标签和信息类型********。
 - **标签**-主要分类属性，用于定义列中存储数据的敏感度级别。 
@@ -50,7 +50,7 @@ ms.locfileid: "75611060"
  
 1. 可以编辑或删除任何现有标签，也可以添加新标签。 要编辑现有标签，请选择该标签，然后单击顶部或右侧上下文菜单中的“配置”****。 要添加新标签，请单击顶部菜单栏或标签表底部的“创建标签”****。
 2. 在“配置敏感度标签”屏幕中，可以创建或更改标签名称和描述****。 还可以通过打开或关闭“已启用”开关来设置标签的状态（活动或禁用）****。 最后，可以添加或删除与标签关联的信息类型。 若发现与该信息类型匹配的任何数据，该数据将自动在分类建议中包含关联的敏感度标签。
-3. 单击“确定”。 
+3. 单击“确定”。
  
    ![配置敏感度标签](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
@@ -75,11 +75,15 @@ ms.locfileid: "75611060"
 7. 请务必单击主“标签”边栏选项卡中的“保存”以应用所有更改********。
  
 完全定义并保存信息保护策略后，该策略将应用于租户中所有 Azure SQL 数据库的数据分类。
- 
+
+## <a name="manage-sql-information-protection-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 信息保护
+
+- [AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy)：检索有效的租户 SQL 信息保护策略。
+- [AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：设置有效的租户 SQL 信息保护策略。
  
 ## <a name="next-steps"></a>后续步骤
  
-本文介绍了如何在 Azure 安全中心中定义 SQL 信息保护策略。 若要详细了解如何使用 SQL 信息保护对 SQL 数据库中的敏感数据进行分类和保护，请参阅 [Azure SQL 数据库数据发现和分类](../sql-database/sql-database-data-discovery-and-classification.md)。 
+本文介绍了如何在 Azure 安全中心中定义 SQL 信息保护策略。 若要详细了解如何使用 SQL 信息保护对 SQL 数据库中的敏感数据进行分类和保护，请参阅 [Azure SQL 数据库数据发现和分类](../azure-sql/database/data-discovery-and-classification-overview.md)。 
 
 有关 Azure 安全中心中的安全策略和数据安全性的详细信息，请参阅以下文章：
  

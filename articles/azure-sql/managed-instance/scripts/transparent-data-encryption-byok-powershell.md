@@ -1,0 +1,50 @@
+---
+title: PowerShell：启用自带密钥（BYOK） TDE
+titleSuffix: Azure SQL Managed Instance
+description: 了解如何配置 Azure SQL 托管实例，开始使用 PowerShell 进行静态加密的自带密钥（BYOK）透明数据加密（TDE）。
+services: sql-database
+ms.service: sql-managed-instance
+ms.subservice: security
+ms.custom: sqldbrb=1
+ms.devlang: ''
+ms.topic: conceptual
+author: MladjoA
+ms.author: mlandzic
+ms.reviewer: vanto, carlrab
+ms.date: 11/05/2019
+ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708421"
+---
+# <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>在 SQL 中透明数据加密托管实例使用你自己的密钥 Azure Key Vault
+
+[!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
+
+此 PowerShell 脚本示例使用 Azure Key Vault 中的密钥将透明数据加密（TDE）配置为 Azure SQL 托管实例的客户托管密钥。 这通常称为 TDE 的自带密钥（BYOK）方案。 若要了解详细信息，请参阅[AZURE SQL 透明数据加密与客户托管的密钥](../../database/transparent-data-encryption-byok-overview.md)。
+
+## <a name="prerequisites"></a>先决条件
+
+- 现有的托管实例。 请参阅[使用 PowerShell 创建托管实例](create-configure-managed-instance-powershell.md)。
+
+[!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+
+在本地使用 PowerShell 或使用 Azure Cloud Shell 需要 Azure PowerShell 2.3.2 或更高版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)，或运行以下示例脚本，以便为当前用户安装该模块：
+
+`Install-Module -Name Az -AllowClobber -Scope CurrentUser`
+
+如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+
+## <a name="sample-scripts"></a>示例脚本
+
+[!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/transparent-data-encryption/setup-tde-byok-sqlmi.ps1 "Set up BYOK TDE for SQL Managed Instance")]
+
+## <a name="next-steps"></a>后续步骤
+
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+
+SQL 托管实例的其他 PowerShell 脚本示例可在[ Azure SQL 托管实例 PowerShell 脚本](../../database/powershell-script-content-guide.md)中找到。

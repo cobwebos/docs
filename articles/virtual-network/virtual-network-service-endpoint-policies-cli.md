@@ -11,18 +11,18 @@ Customer intent: I want only specific Azure Storage account to be allowed access
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: e01af052a936403162115965f2dc5b3ad46dd9cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271187"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708206"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>使用 Azure CLI 的虚拟网络服务终结点策略管理数据渗透到 Azure 存储帐户
 
@@ -45,7 +45,7 @@ ms.locfileid: "78271187"
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
+创建虚拟网络之前，必须为虚拟网络创建资源组以及本文中创建的所有其他资源。 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive
 az group create \
@@ -263,7 +263,7 @@ az network service-endpoint policy create \
   --location eastus
 ```
 
-在变量中保存允许的存储帐户的资源 URI。 执行下面的命令之前，请* \<将订阅 id>* 替换为订阅 id 的实际值。
+在变量中保存允许的存储帐户的资源 URI。 在执行下面的命令之前，请 *\<your-subscription-id>* 将替换为你的订阅 ID 的实际值。
 
 ```azurecli-interactive
 $serviceResourceId="/subscriptions/<your-subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/allowedstorageacc"
@@ -313,7 +313,7 @@ az vm create \
 
 ### <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将* \<publicIpAddress>* 替换为*myVmPrivate* VM 的公共 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 将替换 *\<publicIpAddress>* 为*myVmPrivate* VM 的公共 IP 地址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -325,7 +325,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare1
 ```
 
-将 Azure 文件共享装载到你创建的目录中。 执行下面的命令之前，请将* \<存储帐户密钥>* 替换为 **$saConnectionString 1**中的*AccountKey*值。
+将 Azure 文件共享装载到你创建的目录中。 执行下面的命令之前，请将替换 *\<storage-account-key>* **$saConnectionString 1**中*AccountKey*的值。
 
 ```bash
 sudo mount --types cifs //allowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare1 --options vers=3.0,username=allowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -343,13 +343,13 @@ sudo mkdir /mnt/MyAzureFileShare2
 
 尝试将 Azure 文件共享从存储帐户*notallowedstorageacc*装载到你创建的目录中。 本文假定你已部署了 Ubuntu 的最新版本。 如果使用的是 Ubuntu 的早期版本，请参阅[在 Linux 上装载](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来了解有关装载文件共享的其他说明。 
 
-执行下面的命令之前，请将* \<存储帐户密钥>* 替换为 **$saConnectionString 2**中的*AccountKey*值。
+在执行下面的命令之前，请将替换 *\<storage-account-key>* 为 **$saConnectionString 2**中的*AccountKey*值。
 
 ```bash
 sudo mount --types cifs //notallowedstorageacc.file.core.windows.net/my-file-share /mnt/MyAzureFileShare2 --options vers=3.0,username=notallowedstorageacc,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-拒绝访问，并收到`mount error(13): Permission denied`错误，因为此存储帐户不在应用于子网的服务终结点策略的允许列表中。 
+拒绝访问，并收到 `mount error(13): Permission denied` 错误，因为此存储帐户不在应用于子网的服务终结点策略的允许列表中。 
 
 退出与 *myVmPublic* VM 建立的 SSH 会话。
 

@@ -4,15 +4,15 @@ description: 在此学习路径中，了解如何对 Azure DNS 的常见问题�
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: 27d192a50a13437b755e7cc0db8a7dbcc4fee2f5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711181"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑难解答指南
 

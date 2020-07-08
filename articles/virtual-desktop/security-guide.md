@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5330c427088734b049b2cb4f7735ac0099a52b47
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966670"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736666"
 ---
 # <a name="security-best-practices"></a>安全最佳做法
 
@@ -101,7 +101,7 @@ Windows 虚拟桌面具有许多内置的安全控件。 在本部分中，你�
 
 会话主机是在 Azure 订阅和虚拟网络中运行的虚拟机。 Windows 虚拟桌面部署的总体安全性取决于你在会话主机上进行的安全控制。 本部分介绍使你的会话托管安全的最佳做法。
 
-### <a name="enable-endpoint-protection"></a>启用 endpoint protection
+### <a name="enable-endpoint-protection"></a>启用终结点保护
 
 为了保护你的部署免受已知的恶意软件的攻击，我们建议在所有会话主机上启用 endpoint protection。 可以使用 Windows Defender 防病毒或第三方程序。 若要了解详细信息，请参阅[VDI 环境中 Windows Defender 防病毒的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。 
 

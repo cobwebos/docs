@@ -6,17 +6,17 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
-ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840564"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737523"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>查看 Azure 虚拟网络的拓扑
 
@@ -28,7 +28,7 @@ ms.locfileid: "76840564"
 
 ## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>查看拓扑 - Azure 门户
 
-1. 使用具有必要[权限](https://portal.azure.com)的帐户登录到 [Azure 门户](required-rbac-permissions.md)。
+1. 使用具有必要[权限](required-rbac-permissions.md)的帐户登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户左上角选择“所有服务”  。
 3. 在“所有服务”筛选器框中，输入“网络观察程序”   。 结果中出现“网络观察程序”后，将其选中  。
 4. 选择“拓扑”。  生成拓扑要求在特定区域有网络观察程序，而该特定区域正是需要为其生成拓扑的虚拟网络所在的区域。 如果未在要为其生成拓扑的虚拟网络所在的区域启用网络观察程序，系统会在所有区域为你创建网络观察程序。 网络观察程序在名为 **NetworkWatcherRG** 的资源组中创建。
@@ -84,7 +84,7 @@ ms.locfileid: "76840564"
 
 可以运行后续步骤中的命令：
 - 在 Azure Cloud Shell 中选择任意命令右上角的“试用”。**** Azure Cloud Shell 是免费的交互式 Shell，它预安装有常用 Azure 工具并将其配置为与帐户一起使用。
-- 通过在计算机中运行 PowerShell。 如果从计算机运行 PowerShell，则本文需要 Azure PowerShell `Az`模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
+- 通过在计算机中运行 PowerShell。 如果从计算机运行 PowerShell，则本文需要 Azure PowerShell `Az` 模块。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 
 所用帐户必须拥有所需的[权限](required-rbac-permissions.md)。
 

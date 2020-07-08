@@ -4,16 +4,16 @@ description: 本文介绍如何使用 PowerShell 配置用于 Microsoft 对等�
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 3fa53258321b22e1683122edca1816f6d4c291b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5a294a051350c4b08b34356abcd883b7580164e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84729296"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>配置用于 Microsoft 对等互连的路由筛选器：PowerShell
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 
 如果在 ExpressRoute 线路中配置了 Microsoft 对等互连并附加了路由筛选器，则会通过建立的 BGP 会话播发为这些服务选择的所有前缀。 每个前缀附加有 BGP 团体值，以标识通过该前缀提供的服务。 有关 BGP 团体值及其映射到的服务的列表，请参阅 [BGP 团体](expressroute-routing.md#bgp)。
 
-如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 可以：
+如需连接所有服务，则应通过 BGP 播发大量前缀。 这会显著增加网络中路由器所维护路由表的大小。 如果打算仅使用通过 Microsoft 对等互连提供的一部分服务，可通过两种方式减少路由表大小。 你可以：
 
 - 通过在 BGP 团体上应用路由筛选器，筛选出不需要的前缀。 这是标准的网络做法，通常在多个网络中使用。
 
@@ -62,7 +62,7 @@ Office 365 服务（如 Exchange Online、SharePoint Online 和 Skype for Busine
 
 -  必须将路由筛选器附加到 ExpressRoute 线路。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 开始配置之前，请确保满足以下条件：
 

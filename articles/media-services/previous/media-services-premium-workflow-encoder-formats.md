@@ -15,11 +15,11 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705094"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>媒体编码器高级工作流格式和编解码器
 
@@ -137,9 +137,9 @@ Media Encoder Premium Workflow 输出格式和编解码器
 
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。 
 
-## <a name="need-help"></a>需要帮助吗?
+## <a name="need-help"></a>需要帮助？
 
-可以通过导航到 "[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)" 来打开支持票证
+可以通过导航到[新建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)来开具支持票证
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

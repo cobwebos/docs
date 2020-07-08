@@ -7,17 +7,17 @@ author: damendo
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191181"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737540"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -49,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在门户中创建网络观察程序
 
-导航到“所有服务”   > “网络”   > “网络观察程序”  。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
+导航到“所有服务” > “网络” > “网络观察程序”。 可以选择要为其启用网络观察程序的所有订阅。 此操作在每个可用的区域中创建网络观察程序。
 
 ![创建网络观察程序](./media/network-watcher-create/figure1.png)
 
@@ -103,7 +103,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
 
-导航到“所有服务”   > “网络”   > “网络观察程序”  。
+导航到“所有服务” > “网络” > “网络观察程序”。
 
 选择“概述”选项卡（如果尚未在该选项卡上）。 使用下拉列表选择要在其中禁用网络观察程序的订阅。
 通过单击箭头，展开所选订阅的区域列表。 对于任何给定区域，使用右侧的 3 个点访问上下文菜单。

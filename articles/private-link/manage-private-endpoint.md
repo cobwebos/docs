@@ -4,15 +4,15 @@ description: 了解如何管理 Azure 中的专用终结点连接
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20695d183ea8184f7ee2948b3897fa1f3a741411
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75452967"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737489"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>管理专用终结点连接
 Azure 专用链接基于一个审批调用流模型工作，其中，专用链接服务使用者可以请求连接到服务提供商以使用该服务。 然后，服务提供商可以决定是否允许使用者进行连接。 通过 Azure 专用链接，服务提供商可以管理其资源上的专用终结点连接。 本文提供了有关如何管理专用终结点连接的说明。

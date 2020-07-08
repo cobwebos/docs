@@ -4,15 +4,15 @@ description: 本文介绍如何使用 CLI 创建、预配、验证、更新、�
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: b967e1d8751a9c6a5214fef5241d57e954ad9f17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56af984ef83d2e237f0aa05af5cfef4dd6205256
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476145"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84738322"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
 
@@ -28,7 +28,7 @@ ms.locfileid: "79476145"
 > * [PowerShell （经典）](expressroute-howto-circuit-classic.md)
 >
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 * 在开始之前，请安装最新版本的 CLI 命令（2.0 或更高版本）。 有关安装 CLI 命令的信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 和 [Azure CLI 入门](/cli/azure/get-started-with-azure-cli)。
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
@@ -57,13 +57,13 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. 获取支持的提供商、位置和带宽的列表
 
-在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令`az network express-route list-service-providers`返回此信息，你将在后面的步骤中使用该信息：
+在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令 `az network express-route list-service-providers` 返回此信息，你将在后面的步骤中使用该信息：
 
 ```azurecli-interactive
 az network express-route list-service-providers
 ```
 
-响应类似于以下示例：
+其响应类似于如下示例：
 
 ```output
 [
@@ -118,7 +118,7 @@ az network express-route list-service-providers
 
 查看此响应以检查你的连接服务提供商是否已在此处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
-* 名称
+* “属性”
 * PeeringLocations
 * BandwidthsOffered
 
@@ -231,7 +231,7 @@ az network express-route list -h
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
 ```
 
-响应类似于以下示例：
+其响应类似于如下示例：
 
 ```output
 "allowClassicOperations": false,

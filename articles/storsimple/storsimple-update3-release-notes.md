@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254607"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712048"
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>适用于 StorSimple 8000 系列设备的 Update 3 发行说明
 
@@ -43,7 +43,7 @@ Update 3 中以下重大改进和 Bug 修复。
 
 | 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
-| 1 |主机端数据迁移 |在早期版本中，在主机端数据迁移期间，StorSimple 云工具会进入脱机状态。 在此版本中已修复了此问题。 |否 |是 |
+| 1 |主机端数据迁移 |在早期版本中，在主机端数据迁移期间，StorSimple 云工具会进入脱机状态。 在此版本中已修复了此问题。 |No |是 |
 | 2 |本地固定卷 |在以前的版本中，本地固定卷存在与 I/O 失败、卷转换失败和数据路径失败相关的问题。 在此版本中已找到这些问题的根本原因并进行了修复。 |是 |否 |
 | 3 |监视 |有多个与报告单位和监视以及设备仪表板图表相关的问题，其中针对本地固定卷显示了不正确的信息。 在此版本中已修复这些问题。 |是 |否 |
 | 4 |大量写入 I/O |使用 StorSimple 时处理涉及大量写入操作的工作负荷时，用户会遇到工作集被分层到云中罕见错误。 在此版本中已修复这一 bug。 |是 |是 |
@@ -84,6 +84,6 @@ Update 3 中以下重大改进和 Bug 修复。
 ## <a name="virtual-device-updates-in-update-3"></a>Update 3 中的虚拟设备更新
 此更新不能应用于 StorSimple 云工具（也称为虚拟设备）。 将需要新建虚拟设备。 
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 了解如何在 StorSimple 设备上[安装 Update 3](storsimple-install-update-3.md)。
 

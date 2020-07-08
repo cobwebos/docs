@@ -10,18 +10,16 @@ ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 1308f658b6ae7c8f46b989f8205568fa195fb4aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c274579e756b3c22920023d68501981d5b4a8b01
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705859"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 机器学习工作室（经典）Web 服务参数
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 发布包含可配置参数的模块的实验，创建 Azure 机器学习 Web 服务。 在某些情况下，当 Web 服务在运行时，可能会要更改模块行为。 *Web 服务参数*允许执行此任务。 
 
@@ -41,7 +39,7 @@ ms.locfileid: "82209343"
 Web 服务的 API 文档包括向 Web 服务用户提供的有关访问 Web 服务时如何以编程方式指定 Web 服务参数的信息。
 
 > [!NOTE]
-> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”  中的“API 帮助页”  链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”  和“Swagger API”  页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
+> 经典 Web 服务的 API 文档通过机器学习工作室（经典）的 Web 服务“仪表板”中的“API 帮助页”链接提供。 新 Web 服务的 API 文档通过 Web 服务“使用”和“Swagger API”页上的 [Azure 机器学习 Web 服务](https://services.azureml.net/Quickstart)门户提供。
 > 
 > 
 

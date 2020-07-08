@@ -4,11 +4,11 @@ description: 了解如何使用 REST API 从 Azure 备份创建的还原点还�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252501"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84710569"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>使用 REST API 还原 Azure 文件共享
 
@@ -20,7 +20,7 @@ ms.locfileid: "79252501"
 * 还原完整的 Azure 文件共享。
 * 还原单个文件或文件夹。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 假设你已有一个要还原的已备份文件共享。 如果不这样做，请[使用 REST API 选中 "备份 Azure 文件共享](backup-azure-file-share-rest-api.md)" 以了解如何创建一个。
 
@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 若要触发 Azure 文件共享的还原，以下是请求正文的组件：
 
-名称 |  类型   |   说明
+名称 |  类型   |   描述
 --- | ---- | ----
 属性 | AzureFileShareRestoreRequest | RestoreRequestResource 属性
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 若要触发 Azure 文件共享的还原，以下是请求正文的组件：
 
-名称 |  类型   |   说明
+名称 |  类型   |   描述
 --- | ---- | ----
 属性 | AzureFileShareRestoreRequest | RestoreRequestResource 属性
 
@@ -378,7 +378,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="restore-to-original-location"></a>还原到原始位置
 
-以下请求正文是在*afsaccount*存储帐户的*azurefiles*文件共享中还原*Restoretest*文件。
+以下请求正文用于在*afsaccount*存储帐户中还原*azurefiles*文件共享中的*Restoretest.txt*文件。
 
 创建请求正文
 
@@ -404,7 +404,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 ### <a name="restore-to-alternate-location"></a>还原到备用位置
 
-以下请求正文是将*afsaccount*存储帐户中*azurefiles*文件共享的*Restoretest*文件还原到*azurefiles1*存储帐户中*afaccount1*文件共享的*restoredata*文件夹中。
+以下请求正文是将*afsaccount*存储帐户中*azurefiles*文件共享中的*Restoretest.txt*文件还原到*afaccount1*存储帐户中*azurefiles1*文件共享的*restoredata*文件夹中。
 
 创建请求正文
 

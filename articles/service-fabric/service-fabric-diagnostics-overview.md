@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
 ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84712218"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric 的监视和诊断
 
@@ -41,7 +41,7 @@ Service Fabric 提供了一组现成的综合事件。 可以通过 EventStore �
 
 ![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
-诊断以一系列现成的全面的事件集的形式提供。 这些[Service Fabric 事件](service-fabric-diagnostics-events.md)阐明了平台在不同实体（如节点、应用程序、服务、分区等）上完成的操作。在上述最后一种方案中，如果节点已关闭，平台将发出`NodeDown`事件，你可以通过所选的监视工具立即通知你。 故障转移期间，其他常见示例包括 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 群集上都有相同的事件。**
+诊断以一系列现成的全面的事件集的形式提供。 这些[Service Fabric 事件](service-fabric-diagnostics-events.md)阐明了平台在不同实体（如节点、应用程序、服务、分区等）上完成的操作。在上述最后一种方案中，如果节点已关闭，平台将发出 `NodeDown` 事件，你可以通过所选的监视工具立即通知你。 故障转移期间，其他常见示例包括 `ApplicationUpgradeRollbackStarted` 或 `PartitionReconfigured`。 **Windows 和 Linux 群集上都有相同的事件。**
 
 事件通过 Windows 和 Linux 上的标准通道发送，并且可以由任何支持这些事件的监视工具读取。 Azure Monitor 解决方案是 Azure Monitor 日志。 请随时阅读有关[Azure Monitor 日志集成](service-fabric-diagnostics-event-analysis-oms.md)的详细信息，其中包括用于群集的自定义操作仪表板和一些可用于创建警报的示例查询。 [平台级别事件和日志生成](service-fabric-diagnostics-event-generation-infra.md)提供了更多群集监视概念。
 

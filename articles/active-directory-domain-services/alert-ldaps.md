@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735024"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>已知问题： Azure Active Directory 域服务中的安全 LDAP 警报
 
@@ -32,7 +32,7 @@ ms.locfileid: "71258053"
 
 ### <a name="resolution"></a>解决方法
 
-启用安全 LDAP 时，建议创建其他规则，以限制对特定 IP 地址的入站 LDAPS 访问。 这些规则保护 Azure AD DS 托管域免受暴力攻击。 若要更新网络安全组以限制安全 LDAP 的 TCP 端口636访问，请完成以下步骤：
+启用安全 LDAP 时，建议创建其他规则，以限制对特定 IP 地址的入站 LDAPS 访问。 这些规则保护托管域免受暴力攻击。 若要更新网络安全组以限制安全 LDAP 的 TCP 端口636访问，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择 "**网络安全组**"。
 1. 选择与托管域相关联的网络安全组，例如*AADDS-contoso.com-NSG*，然后选择 "**入站安全规则**"
@@ -43,7 +43,7 @@ ms.locfileid: "71258053"
 1. 指定规则的优先级，然后输入名称（如*RestrictLDAPS*）。
 1. 准备就绪后，选择 "**添加**" 创建规则。
 
-Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警报。
+托管域的运行状况在两小时内自动更新，并删除警报。
 
 > [!TIP]
 > TCP 端口636不是 Azure AD DS 平稳运行所需的唯一规则。 若要了解详细信息，请参阅[AZURE AD DS 网络安全组和所需端口](network-considerations.md#network-security-groups-and-required-ports)。
@@ -60,7 +60,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果仍有问题，请[提出 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+如果仍有问题，请[发起 Azure 支持请求][azure-support]以获得额外的疑难解答帮助。
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

@@ -7,23 +7,23 @@ documentationcenter: virtual-network
 author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77651129"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708172"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>使用 Azure 门户创建、更改或删除服务终结点策略
 
 借助服务终结点策略，可越过服务终结点筛选虚拟网络流量，将范围限制到特定的 Azure 资源。 如果不熟悉服务终结点策略，请参阅[服务终结点策略概述](virtual-network-service-endpoint-policies-overview.md)了解详细信息。
 
- 在本教程中，你将了解如何执行以下操作：
+ 在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 创建服务终结点策略
@@ -71,7 +71,7 @@ ms.locfileid: "77651129"
    - 密钥：选择策略的键。 例如 Dept     
    - 值：输入该键的值对。 例如 Finance
 
-6. 选择“查看 + 创建”  。 验证信息并单击“创建”****。 要做进一步的编辑，请单击“上一步”****。 
+6. 选择“查看 + 创建”。 验证信息并单击“创建”****。 要做进一步的编辑，请单击“上一步”****。 
 
    ![“创建服务终结点策略”最终验证](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   

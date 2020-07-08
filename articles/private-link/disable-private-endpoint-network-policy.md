@@ -4,15 +4,15 @@ description: 了解如何对专用终结点禁用网络策略。
 services: private-link
 author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: b5ab62e7ab57d32a11a45713519633034deb6a5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453019"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737506"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>对专用终结点禁用网络策略
 
@@ -20,7 +20,7 @@ ms.locfileid: "75453019"
  
 使用门户创建专用终结点时，会在创建过程中自动禁用此设置。 使用其他客户端进行的部署需要额外的步骤来更改此设置。 你可以从 Azure 门户中使用 cloud shell，或者 Azure PowerShell、Azure CLI 的本地安装或使用 Azure 资源管理器模板来禁用此设置。  
  
-以下示例介绍了如何对名为 `PrivateEndpointNetworkPolicies`myVirtualNetwork*的虚拟网络禁用*，此时*默认*子网托管在名为 *myResourceGroup* 的资源组中。
+以下示例介绍了如何对名为 *myVirtualNetwork* 的虚拟网络禁用 `PrivateEndpointNetworkPolicies`，此时*默认*子网托管在名为 *myResourceGroup* 的资源组中。
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
 本部分介绍如何使用 Azure PowerShell 禁用子网专用终结点策略。

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281192"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707304"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -61,7 +61,7 @@ ms.locfileid: "79281192"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Teradata 链接服务专属 JSON 元素的描述。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesTeradata** |是 |
 | server |Teradata 服务器的名称。 |是 |
@@ -82,9 +82,9 @@ ms.locfileid: "79281192"
 
 当源属于 **RelationalSource** 类型（包括 Teradata）时，以下属性可在 **typeProperties** 节中使用：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |是 |
+| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 |是 |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON 示例：将数据从 Teradata 复制到 Azure Blob
 下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据从 Teradata 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -284,25 +284,25 @@ ms.locfileid: "79281192"
 
 | Teradata 数据库类型 | .NET Framework 类型 |
 | --- | --- |
-| Char |字符串 |
-| Clob |字符串 |
-| Graphic |字符串 |
-| VarChar |字符串 |
-| VarGraphic |字符串 |
+| Char |String |
+| Clob |String |
+| Graphic |String |
+| VarChar |String |
+| VarGraphic |String |
 | Blob |Byte[] |
 | Byte |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Decimal |Decimal |
+| 小数 |小数 |
 | Double |Double |
 | Integer |Int32 |
-| 数字 |Double |
+| Number |Double |
 | SmallInt |Int16 |
-| 日期 |DateTime |
+| Date |DateTime |
 | 时间 |TimeSpan |
-| Time With Time Zone |字符串 |
-| 时间戳 |DateTime |
+| Time With Time Zone |String |
+| Timestamp |DateTime |
 | Timestamp With Time Zone |DateTimeOffset |
 | Interval Day |TimeSpan |
 | Interval Day To Hour |TimeSpan |
@@ -314,15 +314,15 @@ ms.locfileid: "79281192"
 | Interval Minute |TimeSpan |
 | Interval Minute To Second |TimeSpan |
 | Interval Second |TimeSpan |
-| Interval Year |字符串 |
-| Interval Year To Month |字符串 |
-| Interval Month |字符串 |
-| Period(Date) |字符串 |
-| Period(Time) |字符串 |
-| Period(Time With Time Zone) |字符串 |
-| Period(Timestamp) |字符串 |
-| Period(Timestamp With Time Zone) |字符串 |
-| Xml |字符串 |
+| Interval Year |String |
+| Interval Year To Month |String |
+| Interval Month |String |
+| Period(Date) |String |
+| Period(Time) |String |
+| Period(Time With Time Zone) |String |
+| Period(Timestamp) |String |
+| Period(Timestamp With Time Zone) |String |
+| Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

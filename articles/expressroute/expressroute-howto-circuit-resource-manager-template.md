@@ -4,15 +4,15 @@ description: 创建、预配、删除和取消预配 ExpressRoute 线路。
 services: expressroute
 author: charwen
 ms.service: expressroute
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: charwen
-ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 336337c0860ba19095665310d2c797cf10ba183f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80616495"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736299"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 ExpressRoute 线路
 
@@ -27,7 +27,7 @@ ms.locfileid: "80616495"
 
 了解如何使用 Azure PowerShell 部署 Azure 资源管理器模板，以便创建 ExpressRoute 线路。 有关开发资源管理器模板的详细信息，请参阅[资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.network/expressroutecircuits)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 * 在开始配置之前，请查看[先决条件](expressroute-prerequisites.md)和[工作流](expressroute-workflows.md)。
 * 确保有权创建新的网络资源。 如果没有适当的权限，请与帐户管理员联系。
@@ -43,7 +43,7 @@ ms.locfileid: "80616495"
 
 若要通过部署模板来创建 ExpressRoute 线路，请执行以下操作：
 
-1. 从后续代码块中选择“试用”，然后按说明登录到 Azure Cloud Shell。****
+1. 从以下代码块中选择 "**试用**"，然后按照说明登录到 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -72,8 +72,8 @@ ms.locfileid: "80616495"
 
     资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
-2. 选择“复制”以复制 PowerShell 脚本。****
-3. 右键单击 shell 控制台并选择“粘贴”****。
+2. 选择“复制”以复制 PowerShell 脚本。
+3. 右键单击 shell 控制台并选择“粘贴”。
 
 创建事件中心需要花费片刻时间。
 

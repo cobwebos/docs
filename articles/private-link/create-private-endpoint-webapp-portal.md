@@ -3,17 +3,17 @@ title: 使用 Azure 专用终结点以私密方式连接到 Web 应用
 description: 使用 Azure 专用终结点以私密方式连接到 Web 应用
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
-ms.topic: article
-ms.date: 03/12/2020
+ms.topic: how-to
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b3ac4c79ce92f591e74821a9f355717e4b22ea4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287809"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737387"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>使用 Azure 专用终结点以私密方式连接到 Web 应用（预览版）
 
@@ -23,7 +23,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 有关详细信息，请参阅[使用 Azure Web 应用的专用终结点][privatenedpointwebapp]。
 
 > [!Note]
->预览版适用于所有 PremiumV2 Windows 和 Linux Web 应用的美国东部和美国西部2区域。 
+>预览版适用于 PremiumV2 Windows 和 Linux Web 应用和弹性高级功能的公共区域。 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -37,7 +37,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 
 在本部分中，你将创建一个虚拟网络和子网。
 
-1. 在屏幕的左上方，选择 "**创建资源** > " "**网络** > " "**虚拟网络**"，或在搜索框中搜索 "**虚拟网络**"。
+1. 在屏幕的左上方，选择 "**创建资源**  >  **Networking**  >  " "网络" "**虚拟网络**"，或在搜索框中搜索 "**虚拟网络**"。
 
 1. 在 "**创建虚拟网络**" 中，在 "基本信息" 选项卡中输入或选择以下信息：
 
@@ -60,9 +60,9 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**计算** > " "**虚拟机**"
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "计算" "  >  **Compute**  >  **虚拟机**"
 
-1. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
+1. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
    > [!div class="mx-imgBorder"]
    >![虚拟机基本][4]
@@ -89,7 +89,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 
 ### <a name="web-app"></a>Web 应用
 
-1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > " "**web** > **应用**"
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源**" "  >  **web**  >  **应用**"
 
 1. 在 "创建 Web 应用-基本信息" 中，输入或选择以下信息：
 
@@ -102,7 +102,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 
 ### <a name="create-the-private-endpoint"></a>创建专用终结点
 
-1. 在 "Web 应用属性" 中，选择 "**设置** > " "**网络**"，然后单击 **"配置专用终结点连接"** 。
+1. 在 "Web 应用属性" 中，选择 "**设置**"  >  "**网络**"，然后单击 **"配置专用终结点连接"** 。
 
    > [!div class="mx-imgBorder"]
    >![Web 应用网络][7]
@@ -120,8 +120,8 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 1. 查看专用终结点的创建
 
    > [!div class="mx-imgBorder"]
-   >![查看][10]
-   >![专用终结点的最终视图][11]
+   >![查看 ][10]
+   > ![ 专用终结点的最终视图][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
@@ -136,9 +136,9 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
    > [!div class="mx-imgBorder"]
    >![下载 RDP 文件][13]
 
-1. 打开 downloaded.rdp  文件。
+1. 打开 downloaded.rdp 文件。
 
-- 出现提示时，选择“连接”  。
+- 出现提示时，选择“连接”。
 - 输入在创建 VM 时指定的用户名和密码。
 
 > [!Note]
@@ -146,7 +146,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 
 - 选择“确定”。
 
-1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
+1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
 1. VM 桌面出现后，将其最小化以返回到本地桌面。
 
@@ -203,7 +203,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它可以让你
 使用完专用终结点、Web 应用和 VM 后，请删除资源组及其包含的所有资源：
 
 1. 在门户顶部的搜索框中输入 "ready"，然后从搜索结果中选择 "就绪-rg"。
-1. 选择“删除资源组”  。
+1. 选择“删除资源组”。
 1. 输入就绪-rg 以键入资源组名称，然后选择 "删除"。
 
 ## <a name="next-steps"></a>后续步骤

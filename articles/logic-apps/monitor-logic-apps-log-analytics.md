@@ -7,11 +7,11 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270233"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708036"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "79270233"
 
       完成此步骤后，Azure 将创建逻辑应用，该应用现在与你的 Log Analytics 工作区相关联。 此外，此步骤还会在工作区中自动安装逻辑应用管理解决方案。
 
-1. 完成操作后，选择“创建”  。
+1. 完成后，选择“创建”。
 
 1. 运行逻辑应用后，若要查看逻辑应用运行，请[继续执行以下步骤](#view-logic-app-runs)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "79270233"
 
 如果在创建逻辑应用时启用 Log Analytics，请跳过此步骤。 已在 Log Analytics 工作区中安装逻辑应用管理解决方案。
 
-1. 在[Azure 门户](https://portal.azure.com)的 "搜索" 框中`log analytics workspaces`，输入，然后选择 " **Log Analytics 工作区**"。
+1. 在[Azure 门户](https://portal.azure.com)的 "搜索" 框中，输入 `log analytics workspaces` ，然后选择 " **Log Analytics 工作区**"。
 
    ![选择 "Log Analytics 工作区"](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "79270233"
 
    ![选择你的 Log Analytics 工作区](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
-1. 在 "**概述**" 窗格的 " **Log Analytics** > **配置监视解决方案**" 下面，选择 "**查看解决方案**"。
+1. 在 "**概述**" 窗格的 " **Log Analytics**  >  **配置监视解决方案**" 下面，选择 "**查看解决方案**"。
 
    ![在 "概述" 窗格上，选择 "查看解决方案"](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "79270233"
 
    ![在 "概述" 窗格中添加新的解决方案](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
-1. 打开**Marketplace**后，在 "搜索" 框中输入`logic apps management`，并选择 "**逻辑应用管理**"。
+1. 打开**Marketplace**后，在 "搜索" 框中输入 `logic apps management` ，并选择 "**逻辑应用管理**"。
 
    ![从 Marketplace 选择 "逻辑应用管理"](./media/monitor-logic-apps-log-analytics/select-logic-apps-management.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "79270233"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，查找并选择“逻辑应用”。
 
-1. 在逻辑应用菜单的 "**监视**" 下，选择 "**诊断设置** > " "**添加诊断设置**"。
+1. 在逻辑应用菜单的 "**监视**" 下，选择 "**诊断设置**" "  >  **添加诊断设置**"。
 
    ![在 "监视" 下，选择 "诊断设置" > "添加诊断设置"](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "79270233"
 
    1. 若要选择所有指标，请在 "**指标**" 下选择 " **AllMetrics**"。
 
-   1. 完成后，选择“保存”****。
+   1. 完成后，选择“保存”。
 
    例如：
 
@@ -123,7 +123,7 @@ ms.locfileid: "79270233"
 
 1. 在[Azure 门户](https://portal.azure.com)中，找到并打开 Log Analytics 工作区。
 
-1. 在工作区菜单中，选择 "**工作区摘要** > " "**逻辑应用管理**"。
+1. 在工作区菜单中，选择 "**工作区摘要**" "  >  **逻辑应用管理**"。
 
    ![逻辑应用运行状态和次数](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
 
@@ -192,11 +192,11 @@ ms.locfileid: "79270233"
 
 ## <a name="azure-monitor-diagnostics-events"></a>Azure Monitor 诊断事件
 
-每个诊断事件都有关于逻辑应用和该事件的详细信息，例如状态、开始时间、结束时间等。 若要以编程方式设置监视、跟踪和日志记录，可以将此信息与[适用于 Azure 逻辑应用的 REST API](https://docs.microsoft.com/rest/api/logic)和[Azure Monitor 的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)一起使用。 你还可以使用`clientTrackingId` `trackedProperties`出现在 
+每个诊断事件都有关于逻辑应用和该事件的详细信息，例如状态、开始时间、结束时间等。 若要以编程方式设置监视、跟踪和日志记录，可以将此信息与[适用于 Azure 逻辑应用的 REST API](https://docs.microsoft.com/rest/api/logic)和[Azure Monitor 的 REST API](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)一起使用。 你还可以使用 `clientTrackingId` `trackedProperties` 出现在 
 
-* `clientTrackingId`：如果未提供，Azure 会自动生成此 ID，并跨逻辑应用运行关联事件，包括从逻辑应用调用的任何嵌套工作流。 可以通过在触发器请求中传递包含自定义 ID 值`x-ms-client-tracking-id`的标头，在触发器中手动指定此 ID。 可以使用请求触发器、HTTP 触发器或 webhook 触发器。
+* `clientTrackingId`：如果未提供，Azure 会自动生成此 ID，并跨逻辑应用运行关联事件，包括从逻辑应用调用的任何嵌套工作流。 可以通过 `x-ms-client-tracking-id` 在触发器请求中传递包含自定义 ID 值的标头，在触发器中手动指定此 ID。 可以使用请求触发器、HTTP 触发器或 webhook 触发器。
 
-* `trackedProperties`：若要在诊断数据中跟踪输入或输出，可以使用`trackedProperties`逻辑应用设计器或直接在逻辑应用的 JSON 定义中向操作添加部分。 跟踪属性只能跟踪单个操作输入和输出，不过可以使用事件的 `correlation` 属性以便跨运行中的操作进行关联。 若要跟踪多个属性（一个或多个属性）， `trackedProperties`请将所需的部分和属性添加到操作定义。
+* `trackedProperties`：若要在诊断数据中跟踪输入或输出，可以 `trackedProperties` 使用逻辑应用设计器或直接在逻辑应用的 JSON 定义中向操作添加部分。 跟踪属性只能跟踪单个操作输入和输出，不过可以使用事件的 `correlation` 属性以便跨运行中的操作进行关联。 若要跟踪多个属性（一个或多个属性），请将所 `trackedProperties` 需的部分和属性添加到操作定义。
 
   下面的示例演示了**初始化变量**操作定义如何包含操作输入中的跟踪属性，其中输入是数组，而不是记录。
 
@@ -243,7 +243,7 @@ ms.locfileid: "79270233"
   }
   ```
 
-此示例演示`ActionCompleted`事件如何包括`clientTrackingId`和`trackedProperties`属性：
+此示例演示事件如何 `ActionCompleted` 包括 `clientTrackingId` 和 `trackedProperties` 属性：
 
 ```json
 {

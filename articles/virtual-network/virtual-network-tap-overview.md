@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
 ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707831"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 有关经验证可与虚拟网络 TAP 一起使用的合作伙伴解决方案列表，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)。
 
 > [!IMPORTANT]
-> 虚拟网络 TAP 目前正在所有 Azure 区域中以预览版提供。 若要使用虚拟网络点击，你必须通过将电子邮件发送到，并 <azurevnettap@microsoft.com>使用你的订阅 ID 发送电子邮件来注册预览。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 的补充使用条款。
+> 虚拟网络 TAP 目前正在所有 Azure 区域中以预览版提供。 若要使用虚拟网络点击，你必须通过将电子邮件发送到，  <azurevnettap@microsoft.com> 并使用你的订阅 ID 发送电子邮件来注册预览。 注册订阅后，你会收到电子邮件。 只有在收到确认电子邮件后，才能使用该功能。 此预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅  [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 。
 
 ## <a name="virtual-network-tap-partner-solutions"></a>虚拟网络 TAP 合作伙伴解决方案
 
@@ -56,7 +56,7 @@ ms.locfileid: "79279606"
 
 ![虚拟网络 TAP 的工作原理](./media/virtual-network-tap/architecture.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在创建虚拟网络 TAP 之前，必须已收到你注册预览版的确认邮件，并且已使用 [Azure 资源管理器](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)部署模型和合作伙伴解决方案创建了一个或多个虚拟机，以聚合同一 Azure 区域的 TAP 流量。 如果在虚拟网络中没有合作伙伴解决方案，请参阅[合作伙伴解决方案](#virtual-network-tap-partner-solutions)来部署一个解决方案。 你可以使用相同的虚拟网络 TAP 资源来聚合来自相同或不同订阅的多个网络接口的流量。 如果受监视的网络接口位于不同的订阅中，则订阅必须关联到同一 Azure Active Directory 租户。 此外，用于聚合 TAP 流量的受监视网络接口和目标终结点可以位于同一区域中的对等虚拟网络中。 如果你使用的是这种部署模型，请务必在配置虚拟网络 TAP 之前启用[虚拟网络对等互连](virtual-network-peering-overview.md)。
 

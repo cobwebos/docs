@@ -1,18 +1,18 @@
 ---
 title: NCv2 系列-Azure 虚拟机
 description: NCv2 系列 Vm 的规格。
-services: virtual-machines
-author: vikancha
+author: vikancha-MSFT
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 3643fbabef08d890ce121d41a9bc1eb40c88459d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: b1710d239d1aa6c75c83c23c247e22ab452f7ea9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735313"
 ---
 # <a name="ncv2-series"></a>NCv2 系列
 
@@ -31,7 +31,7 @@ NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的�
 > [!IMPORTANT]
 > 对于此 VM 系列，订阅中的 vCPU （核心）配额最初在每个区域中都设置为0。 在[可用区域](https://azure.microsoft.com/regions/services/)中请求此系列的[vCPU 配额增加](../azure-supportability/resource-manager-core-quotas-request.md)。
 >
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量： IOPS/MBps | 最大 NIC 数 |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|---|
 | Standard_NC6s_v2    | 6  | 112 | 736  | 1 | 16 | 12 | 20000/200 | 4 |
 | Standard_NC12s_v2   | 12 | 224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |

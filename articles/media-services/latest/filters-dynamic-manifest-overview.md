@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd955f97a2f26543f799d95b7dc0b1de235333c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186216"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84705196"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>使用动态打包器筛选清单
 
@@ -36,7 +36,7 @@ ms.locfileid: "74186216"
 
 ## <a name="overview-of-manifests"></a>清单概述
 
-Azure 媒体服务支持 HLS、MPEG DASH 和平滑流式处理协议。 作为[动态打包](dynamic-packaging-overview.md)的一部分，流式处理客户端清单（HLS Master 播放列表、DASH 媒体演播描述 [MPD] 和平滑流式处理）将会根据 URL 中的格式选择器动态生成。 有关详细信息，请参阅[常用按需工作流](dynamic-packaging-overview.md#delivery-protocols)中的传送协议。
+Azure 媒体服务支持 HLS、MPEG DASH 和平滑流式处理协议。 作为[动态打包](dynamic-packaging-overview.md)的一部分，流式处理客户端清单（HLS Master 播放列表、DASH 媒体演播描述 [MPD] 和平滑流式处理）将会根据 URL 中的格式选择器动态生成。 有关详细信息，请参阅[常用按需工作流](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery)中的传送协议。
 
 ### <a name="get-and-examine-manifest-files"></a>获取并检查清单文件
 

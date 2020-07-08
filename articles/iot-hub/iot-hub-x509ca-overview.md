@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cce3a0e6993ea91236a3ce8c8b14eb6c66f72ad1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84717794"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 证书进行设备身份验证
 
@@ -50,7 +50,7 @@ X.509 CA 证书的所有者能以加密方式为某个中间 CA 签名，而该 
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-设备证书（也称页证书）必须将“所有者名称”设置为  **设备 ID**，后者是在 Azure IoT 中心注册 IoT 设备时使用过的。 身份验证需要此设置。
+设备证书（也称为 "叶证书"）必须将 "*使用者名称*" 设置为在 Azure iot 中心注册 IoT 设备时使用的**设备 ID** （ `CN=deviceId` ）。 身份验证需要此设置。
 
 在此处了解如何像为设备签名时一样[创建证书链](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)。
 

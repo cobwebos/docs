@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735330"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
@@ -78,7 +78,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **TargetReplicaSelector** 这指定应当如何选择目标副本或实例。
   * 当目标服务为有状态服务时，TargetReplicaSelector 可以是下列其中一项：“PrimaryReplica”、“RandomSecondaryReplica”或“RandomReplica”。 如果未指定此参数，默认值为“PrimaryReplica”。
   * 当目标服务为无状态服务时，反向代理将选择服务分区的一个随机实例来将实例转发到其中。
-* **Timeout：** 此参数指定反向代理针对服务创建的 HTTP 请求（代表客户端请求）的超时。 默认值为 60 秒。 这是一个可选参数。
+* **Timeout：** 此参数指定反向代理针对服务创建的 HTTP 请求（代表客户端请求）的超时。 默认值为120秒。 这是一个可选参数。
 
 ### <a name="example-usage"></a>用法示例
 以 *fabric:/MyApp/MyService* 服务为例，该服务可针对以下 URL 打开一个 HTTP 侦听器：

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6aa1fc1e5978f59fc01dd41a89800629fa60ded
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611987"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735092"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企业版多会话常见问题解答
+# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
 本文回答了常见问题，并说明了 Windows 10 企业多会话的最佳实践。
  
@@ -53,7 +53,7 @@ Windows 10 企业多会话无法在本地生产环境中运行，因为它已针
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>在哪里可以找到 Windows 10 企业多会话映像？
 
-Windows 10 企业多会话位于 Azure 库中。 若要找到它，请导航到 Azure 门户并搜索 Windows 10 Enterprise for Virtual 台式电脑版本。 对于与 Office Pro Plus 集成的图像，请参阅 "Azure 门户"，然后搜索 "Microsoft Windows 10 + Office 365 ProPlus"。
+Windows 10 企业多会话位于 Azure 库中。 若要找到它，请导航到 Azure 门户并搜索 Windows 10 Enterprise for Virtual 台式电脑版本。 对于与适用于企业的 Microsoft 365 应用集成的映像，请参阅 Azure 门户并搜索适用**于企业的 Microsoft Windows 10 + Microsoft 365 应用**。
 
 ## <a name="which-windows-10-enterprise-multi-session-image-should-i-use"></a>我应该使用哪个 Windows 10 企业多会话映像？
 
@@ -92,11 +92,11 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 若要禁用应用商店应用：
 
 1. 创建新组策略。
-2. 选择 "**计算机配置** > "**管理模板** > **Windows 组件**"。
+2. 选择 "**计算机配置**"  >  **管理模板**  >  **Windows 组件**"。
 3. 选择“应用商店”。****
 4. 选择 "**应用商店应用程序**"。
 5. 选择 "**禁用**"，然后选择 **"确定"**。
-6. 选择“应用”。 
+6. 选择“应用”。
  
 ## <a name="next-steps"></a>后续步骤
 

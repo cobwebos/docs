@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 42b26911c12b1e7c62444a6fb2ee68720b02a56b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654604"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734276"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>了解运行状况状态和解决 Azure Active Directory 域服务中挂起的域
 
@@ -26,20 +26,20 @@ ms.locfileid: "80654604"
 
 ## <a name="overview-of-managed-domain-states"></a>托管域状态概述
 
-通过 Azure AD DS 托管域的生命周期，有不同的状态指示其运行状况。 如果托管域报告了问题，请快速解决导致停止状态的根本原因。
+通过托管域的生命周期，有不同的状态指示其运行状况。 如果托管域报告了问题，请快速解决导致停止状态的根本原因。
 
-![Azure AD DS 托管域的状态进展](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+![托管域接管挂起状态的进度](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-Azure AD DS 托管域可处于以下状态之一：
+托管域可处于以下状态之一：
 
 * [正在运行](#running-state)
 * [需要注意](#needs-attention-state)
 * [Suspended](#suspended-state)
-* [删除](#deleted-state)
+* [已删除](#deleted-state)
 
 ## <a name="running-state"></a>运行状态
 
-配置正确且运行不正常的 Azure AD DS 托管域处于*运行*状态。 这是托管域的所需状态。
+配置正确且运行不正常的托管域处于 "*正在运行*" 状态。 这是托管域的所需状态。
 
 ### <a name="what-to-expect"></a>期望
 
@@ -50,15 +50,15 @@ Azure AD DS 托管域可处于以下状态之一：
 
 ## <a name="needs-attention-state"></a>需要注意状态
 
-具有一个或多个需要解决的问题的 Azure AD DS 托管域位于 "*需要注意*" 状态。 托管域的 "运行状况" 页列出了警报，并指示出现问题的位置。 某些警报是暂时性的，由 Azure 平台自动解决。 对于其他警报，你可以按照提供的解决方法步骤来解决此问题。 这是一个严重警报，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
+具有一个或多个需要解决的问题的托管域处于 "*需要注意*" 状态。 托管域的 "运行状况" 页列出了警报，并指示出现问题的位置。 某些警报是暂时性的，由 Azure 平台自动解决。 对于其他警报，你可以按照提供的解决方法步骤来解决此问题。 这是一个严重警报，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
 警报的一个示例就是有一个限制的网络安全组。 在此配置中，Azure 平台可能无法更新和监视托管域。 生成警报后，状态会更改为 "*需要注意*"。
 
-有关详细信息，请参阅[如何对 AZURE AD DS 托管域的警报进行故障排除][resolve-alerts]。
+有关详细信息，请参阅[如何对托管域的警报进行故障排除][resolve-alerts]。
 
 ### <a name="what-to-expect"></a>期望
 
-当 Azure AD DS 托管域处于*需要注意*状态时，Azure 平台可能不会定期监视、修补、更新或备份数据。 在某些情况下（如使用无效网络配置），可能无法访问托管域的域控制器。
+当托管域处于*需要注意*状态时，Azure 平台可能不能定期监视、修补、更新或备份数据。 在某些情况下（如使用无效网络配置），可能无法访问托管域的域控制器。
 
 * 托管域处于不正常状态，并且在警报解决之前，正在进行的运行状况监视可能会停止。
 * 不能修补或更新托管域的域控制器。
@@ -69,7 +69,7 @@ Azure AD DS 托管域可处于以下状态之一：
 
 ## <a name="suspended-state"></a>挂起状态
 
-由于以下原因之一，Azure AD DS 托管域进入**挂起**状态：
+托管域将进入**挂起**状态，原因如下：
 
 * 一个或多个严重警报未在 15 天内得到解决。
     * 严重警报可能由阻止访问 Azure AD DS 所需资源的错误配置引起。 例如，如果托管域中的警报 [AADDS104: 网络错误][alert-nsg]超过 15 天未解决。
@@ -79,7 +79,7 @@ Azure AD DS 托管域可处于以下状态之一：
 
 ### <a name="what-to-expect"></a>期望
 
-当 Azure AD DS 托管域处于*挂起*状态时，将出现以下行为：
+当托管域处于*挂起*状态时，将出现以下行为：
 
 * 托管域的域控制器已取消预配，无法在虚拟网络中访问。
 * 安全 LDAP 通过 internet 访问托管域（如果已启用），将停止工作。
@@ -93,10 +93,10 @@ Azure AD DS 托管域可处于以下状态之一：
 
 ### <a name="restore-a-suspended-domain"></a>还原挂起的域
 
-若要还原处于*挂起*状态 Azure AD DS 托管域的运行状况，请完成以下步骤：
+若要还原处于*挂起*状态的托管域的运行状况，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择 "**域服务**"。
-1. 从列表中选择 Azure AD DS 托管域（如*aaddscontoso.com*），然后选择 "**运行状况**"。
+1. 从列表中选择托管域（如*aaddscontoso.com*），然后选择 "**运行状况**"。
 1. 选择警报，如*AADDS503*或*AADDS504*，具体取决于挂起的原因。
 1. 选择警报中提供的解决方法链接，然后按照步骤进行解决。
 
@@ -106,11 +106,11 @@ Azure AD DS 托管域可处于以下状态之一：
 
 ## <a name="deleted-state"></a>删除状态
 
-如果 Azure AD DS 托管域在15天内保持*挂起*状态，则会将其删除。 此进程不可恢复。
+如果托管域处于 "*挂起*" 状态15天，则将其删除。 此进程不可恢复。
 
 ### <a name="what-to-expect"></a>期望
 
-当 Azure AD DS 托管域进入*已删除*状态时，将出现以下行为：
+当托管域进入*已删除*状态时，将出现以下行为：
 
 * 将删除托管域的所有资源和备份。
 * 不能还原托管域，而需要创建替换托管域以重用 Azure AD DS。
@@ -118,7 +118,7 @@ Azure AD DS 托管域可处于以下状态之一：
 
 ## <a name="next-steps"></a>后续步骤
 
-若要保持 Azure AD DS 托管域的运行状况，并将其挂起的风险降到最低，请了解如何[解决托管域的警报][resolve-alerts]。
+若要使托管域保持正常运行，并将其挂起的风险降到最低，请了解如何[解决托管域的警报][resolve-alerts]。
 
 <!-- INTERNAL LINKS -->
 [alert-nsg]: alert-nsg.md

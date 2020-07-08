@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbbe37938249ee02c7deb4081a96aa1be2d8b7cb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728498"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>在 Azure Active Directory 中验证动态组成员身份规则（预览版）
 
@@ -27,7 +27,7 @@ Azure Active Directory （Azure AD）现在提供了验证动态组规则的方�
 
 ## <a name="step-by-step-walk-through"></a>循序渐进的演练
 
-若要开始，请转到**Azure Active Directory** > **组**。 选择现有动态组，或创建新的动态组，并单击 "动态成员身份规则"。 然后，你可以看到 "**验证规则**" 选项卡。
+若要开始，请转到**Azure Active Directory**  >  **组**。 选择现有动态组，或创建新的动态组，并单击 "动态成员身份规则"。 然后，你可以看到 "**验证规则**" 选项卡。
 
 ![找到 "验证规则" 选项卡，然后从现有规则开始](./media/groups-dynamic-rule-validation/validate-tab.png)
 

@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cbe080b4c2b6e73ae15fd186589bd43535bfc13d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 54515b347a95b9315ca9ba87568fb2104c3b2b45
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736996"
 ---
-# <a name="orchestration-mode-preview"></a>业务流程模式（预览版）
+# <a name="orchestration-modes-preview"></a>业务流程模式（预览版）
+
+> [!CAUTION]
+> 感谢所有参与此公共预览版的人。 我们能够从我们的社区收集有价值的反馈。 此预览版现在将对任何新参与者关闭，以便集成反馈。 我们会使用任何新信息更新此空间。
 
 虚拟机规模集提供平台管理的虚拟机的逻辑分组。 使用规模集可以创建虚拟机配置模型，根据 CPU 或内存负载自动添加或删除其他实例，并自动升级到最新的 OS 版本。 在传统上，规模集允许使用在创建规模集时提供的 VM 配置模型来创建虚拟机，并且规模集只能管理基于配置模型隐式创建的虚拟机。
 
@@ -39,16 +42,16 @@ ms.locfileid: "83198392"
 
 ## <a name="orchestration-modes"></a>业务流程模式
 
-|                             | "orchestrationMode"： "VM" （VirtualMachine） | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+|                             | “orchestrationMode”:“VM” (VirtualMachine) | “orchestrationMode”:“ScaleSetVM” (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | VM 配置模型      | 无                                       | 必须 |
 | 将新 VM 添加到规模集  | 创建 VM 时，会显式将 VM 添加到规模集。 | VM 是隐式创建的，将会根据 VM 配置模型、实例计数和自动缩放规则添加到规模集 | |
 | 删除 VM                   | 必须单独删除 VM；如果规模集中包含任何 VM，则不会删除规模集。 | 可以单独删除 VM，删除规模集会删除所有 VM 实例。  |
 | 附加/分离 VM           | 不支持                              | 不支持 |
 | 实例生命周期（创建到删除） | 可以单独管理 VM 及其项目（例如磁盘和 NIC）。 | 实例及其项目（例如磁盘和 NIC）对于创建它们的规模集实例而言是隐式的。 无法在规模集的外部单独对其进行分离或管理 |
-| 容错域               | 可定义容错域。 2或3，基于区域支持，5用于可用性区域。 | 可以定义从1到5的容错域 |
+| 容错域               | 可定义容错域。 该数目可以是 2 或 3，具体取决于地区性支持；也可以是 5，针对可用性区域。 | 可以定义从1到5的容错域 |
 | 更新域              | 更新域会自动映射到容错域 | 更新域会自动映射到容错域 |
-| 可用性区域          | 支持一个可用性区域中的区域部署或 Vm | 支持区域部署或多个可用性区域;可以定义区域平衡策略 |
+| 可用性区域          | 支持进行地区性部署，或者支持将 VM 置于一个可用性区域中 | 支持地区性部署或多个可用性区域；可以定义区域均衡策略 |
 | 自动缩放                   | 不支持                              | 支持 |
 | OS 升级                  | 不支持                              | 支持 |
 | 模型更新               | 不支持                              | 支持 |

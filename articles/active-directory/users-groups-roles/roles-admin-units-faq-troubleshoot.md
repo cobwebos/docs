@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 022658306d6e4d69174cc616d230cfe4892f1204
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0db710385448ed3cdd54e3cbe692ea8b610741af
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684860"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84732236"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理单元：故障排除和常见问题
 
 若要在 Azure Active Directory （Azure AD）中实现更精细的管理控制，可以将用户分配到一个范围限制为一个或多个管理单元（澳大利亚）的 Azure AD 角色。 有关常见任务的 PowerShell 脚本示例，请参阅[使用管理单元](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 **问：为什么无法创建管理单元？**
 
@@ -67,7 +67,7 @@ ms.locfileid: "81684860"
 
 **问： PowerShell 和图形 API 中是否支持管理单元？**
 
-**答：** 是的。 你将在[PowerShell cmdlet 文档](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview)和[示例脚本](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)中找到管理单元支持。 
+**答:** 是的。 你将在[PowerShell cmdlet 文档](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview)和[示例脚本](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)中找到管理单元支持。 
 
 在 Microsoft Graph 中查找对[administrativeUnit 资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit)的支持。
 

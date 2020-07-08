@@ -4,21 +4,21 @@ description: 本文介绍如何配置 MACsec 以保护边缘路由器与 Microso
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 572147ca43e9a4dea9d9601dfa1dac8ba1c97ed0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a73a99d1e6200faf9feb227f562f5b77b0461f1e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458226"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737047"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute 直接端口上配置 MACsec
 
 本文介绍如何使用 PowerShell 配置 MACsec，以保护边缘路由器与 Microsoft 边缘路由器之间的连接。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 在开始配置之前，请确认以下事项：
 

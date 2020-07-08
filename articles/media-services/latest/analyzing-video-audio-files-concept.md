@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/30/2020
 ms.author: juliako
 ms.openlocfilehash: 1d28fc37b98493322b9e201ac899b7911dd1d705
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269882"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708954"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒体服务分析视频和音频文件
 
@@ -67,14 +67,14 @@ ms.locfileid: "79269882"
 
 ### <a name="transcript"></a>脚本
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|行 ID。|
+|id|行 ID。|
 |text|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
-例如：
+示例：
 
 ```json
 "transcript": [
@@ -105,9 +105,9 @@ ms.locfileid: "79269882"
 
 ### <a name="ocr"></a>ocr
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|OCR 行 ID。|
+|id|OCR 行 ID。|
 |text|OCR 文本。|
 |confidence|识别置信度。|
 |语言|OCR 语言。|
@@ -148,9 +148,9 @@ ms.locfileid: "79269882"
 
 ### <a name="faces"></a>人脸
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|人脸 ID。|
+|id|人脸 ID。|
 |name|人脸姓名。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
 |confidence|人脸识别置信度。|
 |description|名人的说明。 |
@@ -193,9 +193,9 @@ ms.locfileid: "79269882"
 
 ### <a name="shots"></a>截图
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|截图 ID。|
+|id|截图 ID。|
 |keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
 |instances|此截图的时间范围列表（截图仅有 1 个实例）。|
 
@@ -250,7 +250,7 @@ ms.locfileid: "79269882"
 
 ### <a name="statistics"></a>statistics
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |WordCount|每个发言人的单词数。|
@@ -263,9 +263,9 @@ ms.locfileid: "79269882"
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|情绪 ID。|
+|id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
 |instances|出现此情绪的时间范围列表。|
 |sentimentType |类型可以是“Positive”、“Neutral”或“Negative”。|
@@ -298,9 +298,9 @@ ms.locfileid: "79269882"
 
 ### <a name="labels"></a>标签
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|标签 ID。|
+|id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
 |语言|标签名称语言（转换后）。 BCP-47|
 |instances|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
@@ -356,9 +356,9 @@ ms.locfileid: "79269882"
 
 ### <a name="keywords"></a>关键字
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|关键字 ID。|
+|id|关键字 ID。|
 |text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
@@ -407,9 +407,9 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以请求人工审查内容，在这种情况下，`IsAdult` 属性将包含人工审查的结果。
 
-|名称|说明|
+|“属性”|说明|
 |---|---|
-|ID|视觉内容审核 ID。|
+|id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
 |racyScore|不雅内容评分（由内容审核员提供）。|
 |instances|显示此视觉内容审核的时间范围列表。|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 44c86dae3c7df8293404c253b94164c37d574158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858613"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736928"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>排查 Azure Windows 虚拟机激活问题
 
@@ -92,7 +92,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 4. 使用 Psping 验证是否已连接到 KMS 服务器。 切换到将 Pstools.zip 下载内容提取到的文件夹，再运行以下命令：
   
     ```
-    \psping.exe kms.core.windows.net:1688
+    .\psping.exe kms.core.windows.net:1688
     ```
    确保输出的倒数第二行显示以下内容：Sent = 4, Received = 4, Lost = 0 (0% loss)。
 
@@ -102,7 +102,7 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
   
     另外，请确保到具有 1688 端口的 KMS 终结点的出站网络流量未被 VM 上的防火墙阻止。
 
-5. 验证使用 "[网络观察程序" 下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)，使下一个跃点类型从相关的 VM 指向目标 IP 23.102.135.246 （对于 kms.core.windows.net）或适用于你所在区域的相应 kms 终结点的 IP 是**Internet**。  如果结果为 "VirtualAppliance" 或 "VirtualNetworkGateway"，则可能存在默认路由。  请与网络管理员联系，并使用它们来确定正确的操作过程。  如果此解决方案与组织的策略一致，则这可能是[自定义路由](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
+5. 验证使用 "[网络观察程序" 下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)，使下一个跃点类型从相关的 VM 指向目标 IP 23.102.135.246 （对于 kms.core.windows.net）或适用于你所在区域的相应 kms 终结点的 IP 是**Internet**。  如果结果为“VirtualAppliance”或“VirtualNetworkGateway”，则可能存在默认路由。  请与网络管理员联系，并使用它们来确定正确的操作过程。  如果该解决方案与你组织的策略一致，则这可能是[自定义路由](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
 
 6. 验证成功连接到 kms.core.windows.net 后，在提升的 Windows PowerShell 提示符处运行以下命令。 此命令可多次尝试激活。
 
@@ -110,11 +110,11 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }
     ```
 
-    如果激活成功，将返回如下信息：
+    如果激活成功，会返回如下信息：
     
-    **正在激活 Windows （R），ServerDatacenter edition （12345678-1234-1234-1234-12345678） .。。 已成功激活产品。**
+    正在激活 Windows(R)，已成功激活服务器数据中心版本(12345678-1234-1234-1234-12345678) … 产品。 
 
-## <a name="faq"></a>常见问题解答 
+## <a name="faq"></a>常见问题 
 
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我从 Azure 市场创建了 Windows Server 2016。 是否需要配置用于激活 Windows Server 2016 的 KMS 密钥？ 
 
@@ -124,13 +124,13 @@ Azure 使用不同的终结点进行 KMS（密钥管理服务）激活，具体�
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>无论 VM 是否使用 Azure 混合使用权益 (HUB)，Windows 激活的工作方式是否都一样？ 
 
  
-可以。 
+是的。 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 激活已过期，会出现什么情况？ 
 
  
-如果宽限期已过期且 Windows 仍未激活，Windows Server 2008 R2 及更高版本的 Windows 将显示有关激活的其他通知。 桌面壁纸将保持黑色不变，并且 Windows 更新将仅安装安全更新程序和关键更新，而不安装可选更新。 请参阅[授权条件](https://technet.microsoft.com/library/ff793403.aspx)页底部的“通知”部分。   
+如果宽限期已过期且 Windows 仍未激活，Windows Server 2008 R2 及更高版本的 Windows 会显示有关激活的其他通知。 桌面壁纸会保持黑色不变，并且 Windows 更新会仅安装安全更新程序和关键更新，而不安装可选更新。 请参阅[授权条件](https://technet.microsoft.com/library/ff793403.aspx)页底部的“通知”部分。   
 
 ## <a name="need-help-contact-support"></a>需要帮助？ 请联系支持人员。
 

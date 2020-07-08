@@ -1,23 +1,23 @@
 ---
-title: 管理读取副本-Azure 门户-Azure Database for MariaDB
+title: 管理只读副本 - Azure 门户 - Azure Database for MariaDB
 description: 本文介绍如何使用门户在 Azure Database for MariaDB 中设置和管理只读副本
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/21/2020
-ms.openlocfilehash: 20d8e46d6fa6b031c809d629a6af41e8e682bcef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 703879ab2dba59327b9224781eb93ee106ae10d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707961"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中创建和管理只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for MariaDB 服务中创建和管理只读副本。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 将用作主服务器的 [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
@@ -26,15 +26,18 @@ ms.locfileid: "82025078"
 
 ## <a name="create-a-read-replica"></a>创建只读副本
 
+> [!IMPORTANT]
+> 如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
+
 可以使用以下步骤创建只读副本服务器：
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 选择要用作主服务器的现有 Azure Database for MariaDB 服务器。 此操作将打开“概述”  页。
+2. 选择要用作主服务器的现有 Azure Database for MariaDB 服务器。 此操作将打开“概述”页。
 
-3. 从菜单中的“设置”  下，选择“复制”  。
+3. 从菜单中的“设置”下，选择“复制”。
 
-4. 选择“添加副本”  。
+4. 选择“添加副本”。
 
    ![Azure Database for MariaDB - 复制](./media/howto-read-replica-portal/add-replica.png)
 
@@ -46,12 +49,12 @@ ms.locfileid: "82025078"
 
     ![Azure Database for MariaDB - 副本位置](./media/howto-read-replica-portal/replica-location.png)
 
-7. 选择“确定”以确认创建该副本。****
+7. 选择“确定”以确认创建该副本。
 
 > [!NOTE]
 > 只读副本使用与主服务器相同的服务器配置创建。 副本服务器配置在创建后可以更改。 建议副本服务器的配置应保持在与主服务器相同或更大的值，以确保副本能够跟上主服务器。
 
-一旦创建副本服务器，可以从“复制”**** 边栏选项卡中进行查看。
+一旦创建副本服务器，可以从“复制”边栏选项卡中进行查看。
 
    ![Azure Database for MariaDB - 列出副本](./media/howto-read-replica-portal/list-replica.png)
 
@@ -64,17 +67,17 @@ ms.locfileid: "82025078"
 
 1. 在 Azure 门户中，选择主 Azure Database for MariaDB 服务器。 
 
-2. 从菜单中的“设置”**** 下，选择“复制”****。
+2. 从菜单中的“设置”下，选择“复制”。
 
 3. 选择要停止复制的副本服务器。
 
    ![Azure Database for MariaDB - 停止复制选择服务器](./media/howto-read-replica-portal/stop-replication-select.png)
 
-4. 选择“停止复制”****。
+4. 选择“停止复制”。
 
    ![Azure Database for MariaDB - 停止复制](./media/howto-read-replica-portal/stop-replication.png)
 
-5. 通过单击“确定”****，确认要停止复制。
+5. 通过单击“确定”，确认要停止复制。
 
    ![Azure Database for MariaDB - 停止复制确认](./media/howto-read-replica-portal/stop-replication-confirm.png)
 
@@ -84,17 +87,17 @@ ms.locfileid: "82025078"
 
 1. 在 Azure 门户中，选择主 Azure Database for MariaDB 服务器。
 
-2. 从菜单中的“设置”**** 下，选择“复制”****。
+2. 从菜单中的“设置”下，选择“复制”。
 
 3. 选择要删除的副本服务器。
 
    ![Azure Database for MariaDB - 删除副本选择服务器](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. 选择“删除副本”****
+4. 选择“删除副本”
 
    ![Azure Database for MariaDB - 删除副本](./media/howto-read-replica-portal/delete-replica.png)
 
-5. 键入副本的名称，然后单击“删除”**** 以确认删除副本。  
+5. 键入副本的名称，然后单击“删除”以确认删除副本。  
 
    ![Azure Database for MariaDB - 删除副本确认](./media/howto-read-replica-portal/delete-replica-confirm.png)
 
@@ -107,11 +110,11 @@ ms.locfileid: "82025078"
 
 1. 在 Azure 门户中，选择主 Azure Database for MariaDB 服务器。
 
-2. 从“概览”**** 中，选择“删除”****。
+2. 从“概览”中，选择“删除”。
 
    ![Azure Database for MariaDB - 删除主服务器](./media/howto-read-replica-portal/delete-master-overview.png)
 
-3. 键入主服务器的名称，然后单击“删除”**** 以确认删除主服务器。  
+3. 键入主服务器的名称，然后单击“删除”以确认删除主服务器。  
 
    ![Azure Database for MariaDB - 删除主服务器](./media/howto-read-replica-portal/delete-master-confirm.png)
 
@@ -119,9 +122,9 @@ ms.locfileid: "82025078"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择要监视的副本 Azure Database for MariaDB 服务器。
 
-2. 在边栏的“监视”**** 部分，选择“指标”****：
+2. 在边栏的“监视”部分，选择“指标”：
 
-3. 从可用指标的下拉列表中选择“复制延迟(秒)”****。
+3. 从可用指标的下拉列表中选择“复制延迟(秒)”。
 
    ![选择复制延迟时间](./media/howto-read-replica-portal/monitor-select-replication-lag.png)
 

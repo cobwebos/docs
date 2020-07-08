@@ -4,15 +4,15 @@ description: 本文指导完成创建和预配 ExpressRoute 线路的专用、�
 services: expressroute
 author: jaredr80
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab20ae00fd9f275d21bc818e07bdc868944ee689
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84735262"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
@@ -83,7 +83,7 @@ ms.locfileid: "79264838"
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
 
-   响应类似于以下示例：
+   其响应类似于如下示例：
 
    ```
    Name                             : ExpressRouteARMCircuit
@@ -121,9 +121,9 @@ ms.locfileid: "79264838"
      * MD5 哈希（如果选择使用）。
 
 > [!IMPORTANT]
-> Microsoft 会验证是否在 Internet 路由注册表中为你分配了指定的“播发公共前缀”和“对等 ASN”（或“客户 ASN”）。 如果要从另一个实体获取公共前缀，并且该分配没有记录在路由注册表中，则自动验证将不会完成，并且将需要手动验证。 如果自动验证失败，则会在“Get-AzExpressRouteCircuitPeeringConfig”（请参阅下面的“获取 Microsoft 对等互连详细信息”）命令的输出中看到作为”需要验证”的“AdvertisedPublicPrefixesState”。 
+> Microsoft 会验证指定的“播发的公用前缀”和“对等 ASN”（或“客户 ASN”）是否已在 Internet 路由注册表中分配给你。 如果要从其他实体获取公用前缀，并且没有在路由注册表中记录分配，则自动验证不会完成，需要手动验证。 如果自动验证失败，则会在“Get-AzExpressRouteCircuitPeeringConfig”（请参阅下面的“获取 Microsoft 对等互连详细信息”）命令的输出中看到作为”需要验证”的“AdvertisedPublicPrefixesState”。 
 > 
-> 如果看到消息“需要验证”，请收集显示公共前缀将由路由注册表中作为前缀所有者列出的实体分配给你组织的文档，并通过开具支持票证提交这些文档进行手动验证，如下所示。 
+> 如果看到消息“需要验证”，请收集相关文档，它们显示公用前缀已由在路由注册表中作为前缀所有者列出的实体分配给你的组织，然后通过开具支持票证来提交这些文档以进行手动验证，如下所示。 
 > 
 >
 
@@ -216,7 +216,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
 
-   响应类似于以下示例：
+   其响应类似于如下示例：
 
    ```
    Name                             : ExpressRouteARMCircuit
@@ -265,7 +265,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
    > [!IMPORTANT]
-   > 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+   > 请确保将 AS 编号指定为对等互连 ASN，而不是客户 ASN。
    > 
    >
 

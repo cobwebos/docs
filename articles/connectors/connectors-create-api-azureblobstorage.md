@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247353"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84711283"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -194,7 +194,7 @@ ms.locfileid: "79247353"
 1. 在逻辑应用的工作流中，添加并设置 HTTP 操作或触发器，以访问存储帐户或实体。
 
    > [!IMPORTANT]
-   > 对于传出 HTTP 操作或触发对 Azure 存储帐户的调用，请确保请求标头包含要`x-ms-version`在存储帐户上运行的操作的属性和 API 版本。 有关详细信息，请参阅使用[Azure 存储服务](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)的托管标识和版本控制对[访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
+   > 对于传出 HTTP 操作或触发对 Azure 存储帐户的调用，请确保请求标头包含 `x-ms-version` 要在存储帐户上运行的操作的属性和 API 版本。 有关详细信息，请参阅使用[Azure 存储服务](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)的托管标识和版本控制对[访问进行身份验证](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
 
 1. 在该操作中，选择要用于身份验证的[托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。
 

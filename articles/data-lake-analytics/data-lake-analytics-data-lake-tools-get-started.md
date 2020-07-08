@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260340"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707780"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 
@@ -35,7 +35,7 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 >    - [适用于 Visual Studio 2017 和2019](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [对于 Visual Studio 2013 和 Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio：支持除 Express 以外的所有版本****。
 
@@ -55,11 +55,11 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 
 1. 打开 Visual Studio。
 
-1. 通过选择 "**查看** > **服务器资源管理器**" 打开**服务器资源管理器**。
+1. 通过**Server Explorer**选择 "**查看**  >  **服务器资源管理器**" 打开服务器资源管理器。
 
 1. 右键单击 " **Azure**"，然后选择 "**连接到 Microsoft Azure 订阅**"。 在 "**登录到你的帐户**" 中，按照说明进行操作。
 
-1. 在**服务器资源管理器**中，选择 " **Azure** > **Data Lake Analytics**"。 将看到 Data Lake Analytics 帐户列表。
+1. 在**服务器资源管理器**中，选择 " **Azure**  >  **Data Lake Analytics**"。 将看到 Data Lake Analytics 帐户列表。
 
 ## <a name="write-your-first-u-sql-script"></a>编写第一个 U-SQL 脚本
 
@@ -82,7 +82,7 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>提交 Data Lake Analytics 作业
 
-1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。
+1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
 
 1. 选择 " **"，然后**选择 "**下一步**"。 在 "**配置新项目**" 中，选择 "**创建**"。
 
@@ -112,7 +112,7 @@ OUTPUT @a
 
 ## <a name="check-job-status"></a>检查作业状态
 
-1. 在**服务器资源管理器**中，选择 " **Azure** > **Data Lake Analytics**"。
+1. 在**服务器资源管理器**中，选择 " **Azure**  >  **Data Lake Analytics**"。
 
 1. 展开 Data Lake Analytics 帐户名。
 

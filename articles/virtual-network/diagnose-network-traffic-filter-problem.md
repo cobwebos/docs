@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: 6939ea2497a9f12321e1a6dfb9bf9fbb353bc7db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84704941"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>诊断虚拟机网络流量筛选器问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "80240782"
 
 ## <a name="diagnose-using-azure-portal"></a>使用 Azure 门户诊断
 
-1. 使用拥有[所需权限](https://portal.azure.com)的 Azure 帐户登录到 Azure [门户](virtual-network-network-interface.md#permissions)。
+1. 使用拥有[所需权限](virtual-network-network-interface.md#permissions)的 Azure 帐户登录到 Azure [门户](https://portal.azure.com)。
 2. 在 Azure 门户顶部的搜索框中输入 VM 的名称。 当 VM 名称显示在搜索结果中时，请选择它。
 3. 如下图所示，在“设置”下选择“网络”：  
 
@@ -47,7 +47,7 @@ ms.locfileid: "80240782"
    - **mySubnetNSG**：已关联到网络接口所在的子网。
    - **myVMNSG**：已关联到 VM 中名为 **myVMVMNic** 的网络接口。
 
-   如**场景**中所述，名为 [DenyAllInBound](#scenario) 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 规则中为“源”列出了 *0.0.0.0/0*，其中包括 Internet。  其他更高优先级（较小的数字）的规则都不允许端口 80 入站通信。 若要允许通过端口 80 从 Internet 与 VM 进行入站通信，请参阅[解决问题](#resolve-a-problem)。 若要详细了解安全规则以及 Azure 如何应用这些规则，请参阅[网络安全组](security-overview.md)。
+   如[场景](#scenario)中所述，名为 **DenyAllInBound** 的规则阻止端口 80 从 Internet 与 VM 进行入站通信。 规则中为“源”列出了 *0.0.0.0/0*，其中包括 Internet。  其他更高优先级（较小的数字）的规则都不允许端口 80 入站通信。 若要允许通过端口 80 从 Internet 与 VM 进行入站通信，请参阅[解决问题](#resolve-a-problem)。 若要详细了解安全规则以及 Azure 如何应用这些规则，请参阅[网络安全组](security-overview.md)。
 
    在图片底部，还可以看到“出站端口规则”。  其下面是网络接口的出站端口规则。 尽管图片中仅显示了每个 NSG 的四个入站规则，但 NSG 包含的规则可能远远超过四个。 在图片中“源”和“目标”下面可以看到“VirtualNetwork”，在“源”下面可以看到“AzureLoadBalancer”。      **VirtualNetwork** 和 **AzureLoadBalancer** 是[服务标记](security-overview.md#service-tags)。 服务标记表示一组 IP 地址前缀，帮助最大程度地降低安全规则创建过程的复杂性。
 
@@ -79,7 +79,7 @@ ms.locfileid: "80240782"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需要运行 `Connect-AzAccount`，以使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
+可以在 [Azure Cloud Shell](https://shell.azure.com/powershell) 中运行以下命令，或者在计算机上运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 如果在计算机上运行 PowerShell，需要 Azure PowerShell 模块 1.0.0 或更高版本。 在计算机上运行 `Get-Module -ListAvailable Az`，找到已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需要运行 `Connect-AzAccount`，以使用拥有[所需权限](virtual-network-network-interface.md#permissions)的帐户登录到 Azure。
 
 使用 [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup) 获取网络接口的有效安全规则。 以下示例获取资源组 *myResourceGroup* 中名为 *myVMVMNic* 的网络接口的有效安全规则：
 
@@ -168,7 +168,7 @@ az vm show \
 
 无论使用 Azure [门户](#diagnose-using-azure-portal)、[PowerShell](#diagnose-using-powershell) 还是 [Azure CLI](#diagnose-using-azure-cli) 来诊断本文[场景](#scenario)中所述的问题，解决方法都是创建具有以下属性的网络安全规则：
 
-| 属性                | 值                                                                              |
+| Property                | 值                                                                              |
 |---------                |---------                                                                           |
 | 源                  | Any                                                                                |
 | 源端口范围      | Any                                                                                |
@@ -177,7 +177,7 @@ az vm show \
 | 协议                | TCP                                                                                |
 | 操作                  | Allow                                                                              |
 | 优先度                | 100                                                                                |
-| 名称                    | Allow-HTTP-All                                                                     |
+| “属性”                    | Allow-HTTP-All                                                                     |
 
 创建规则后，允许通过端口 80 从 Internet 进行入站通信，因为该规则的优先级高于名为 *DenyAllInBound* 的默认安全规则（拒绝流量）。 了解如何[创建安全规则](manage-network-security-group.md#create-a-security-rule)。 如果不同的 NSG 已关联到网络接口和子网，则必须在两个 NSG 中创建相同的规则。
 

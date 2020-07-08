@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 6992359bbef743bffba0ccbb7f5db3f865e7993b
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 06bb8f2005dae9e36fe55547a31c81c36d0c7068
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84737642"
 ---
-# <a name="memory-usage-optimization"></a>内存使用情况优化
+# <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark 的内存使用量优化
 
 本文介绍如何优化 Apache Spark 群集的内存管理，以在 Azure HDInsight 上获得最佳性能。
 

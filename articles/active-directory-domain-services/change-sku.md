@@ -10,33 +10,33 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 32f8f157abaf5076911c3908a83be4a644e09656
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8109b7b1f6cd8477d49bafd114be24b91530d123
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84734956"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>更改现有 Azure AD 域服务托管域的 SKU
+# <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>更改现有 Azure Active Directory 域服务托管域的 SKU
 
 在 Azure Active Directory 域服务（Azure AD DS）中，可用的性能和功能基于 SKU 类型。 这些功能差异包括备份频率或单向出站林信任的最大数量（当前为预览版）。 当你创建托管域时，你可以选择 SKU，你可以在部署托管域后，随着业务需求的变化向上或向下切换 Sku。 业务需求的变化可能包括需要更频繁的备份或创建更多的林信任。 有关不同 Sku 的限制和定价的详细信息，请参阅[AZURE AD DS SKU 的概念][concepts-sku]和[Azure AD ds 定价][pricing]页。
 
 本文说明如何使用 Azure 门户更改现有 Azure AD DS 托管域的 SKU。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
-若要完成本文，需要具备以下资源和权限：
+需要拥有以下资源和权限才能完成本文中的操作：
 
 * 一个有效的 Azure 订阅。
     * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请完成[创建和配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]的教程。
+    * 如果需要，请完成[创建和配置托管域][create-azure-ad-ds-instance]的教程。
 
 ## <a name="sku-change-limitations"></a>SKU 更改限制
 
-部署 Azure AD DS 托管域后，可以向上或向下更改 Sku。 但是，如果使用资源林（当前为预览版），并已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作有一些限制。 *高级版*和*企业版*sku 定义了可以创建的信任数量限制。 你无法更改到最大限制低于当前配置的 SKU。
+部署托管域后，可以向上或向下更改 Sku。 但是，如果使用资源林（当前为预览版），并已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作有一些限制。 *高级版*和*企业版*sku 定义了可以创建的信任数量限制。 你无法更改到最大限制低于当前配置的 SKU。
 
 例如：
 
@@ -47,14 +47,14 @@ ms.locfileid: "80655578"
 
 ## <a name="select-a-new-sku"></a>选择新的 SKU
 
-若要使用 Azure 门户更改 Azure AD DS 托管域的 SKU，请完成以下步骤：
+若要使用 Azure 门户更改托管域的 SKU，请完成以下步骤：
 
 1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 从列表中选择托管域，如*aaddscontoso.com*。
 1. 在 Azure AD DS "页左侧的菜单中，选择"**设置 "> SKU**"。
 
     ![在 Azure 门户中选择 Azure AD DS 托管域的 SKU 菜单选项](media/change-sku/overview-change-sku.png)
 
-1. 从下拉菜单中，选择要用于 Azure AD DS 托管域的 SKU。 如果有资源林，则不能选择*标准*SKU，因为林信任仅适用于*企业*SKU 或更高版本。
+1. 从下拉菜单中，选择想要用于托管域的 SKU。 如果有资源林，则不能选择*标准*SKU，因为林信任仅适用于*企业*SKU 或更高版本。
 
     从下拉菜单中选择所需的 SKU，然后选择 "**保存**"。
 

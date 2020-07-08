@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84707134"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -57,14 +57,14 @@ ms.locfileid: "79265813"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP HANA 链接服务专属 JSON 元素的说明。
 
-properties | 说明 | 允许的值 | 必选
+Property | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | --------
-server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | 字符串 | 是
+server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | string | 是
 authenticationType | 身份验证的类型。 | 字符串。 “基本”或“Windows” | 是 
-username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
-password | 用户密码。 | 字符串 | 是
-gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP HANA 实例。 | 字符串 | 是
-encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
+username | 有权访问 SAP 服务器的用户名 | string | 是
+password | 用户密码。 | string | 是
+gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP HANA 实例。 | string | 是
+encryptedCredential | 加密的凭据字符串。 | 字符串型 | 否
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -79,9 +79,9 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP HANA）时，以下属性在 typeProperties 节中可用：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
-| query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | SQL 查询。 | 是 |
+| 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | SQL 查询。 | 是 |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON 示例：将数据从 SAP HANA 复制到 Azure Blob
 下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 此示例演示如何将数据从本地 SAP HANA 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)列出的任何接收器。  
@@ -289,12 +289,12 @@ INT | Int32
 BIGINT | Int64
 real | Single
 DOUBLE | Single
-DECIMAL | Decimal
+DECIMAL | 小数
 BOOLEAN | Byte
-VARCHAR | 字符串
-NVARCHAR | 字符串
+VARCHAR | String
+NVARCHAR | String
 CLOB | Byte[]
-ALPHANUM | 字符串
+ALPHANUM | String
 BLOB | Byte[]
 DATE | DateTime
 TIME | TimeSpan

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 06/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 4560560b3677030a66e277e96eb552d39f5c82c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9dc2cee785b28db7446eb8ed8b89e27f4516aba2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736877"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure 数据工厂中的二进制格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "81416327"
 | type             | 数据集的 type 属性必须设置为 **Binary**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
 | compression | 用来配置文件压缩的属性组。 如果需要在活动执行期间进行压缩/解压缩，请配置此部分。 | 否 |
-| type | 用于读取/写入二进制文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**。 保存文件时使用。<br>请注意，使用复制活动解压缩 ZipDeflate 文件并写入到基于文件的接收器数据存储时，会将文件提取到文件夹：`<path specified in dataset>/<folder named as source zip file>/`。 | 否       |
+| type | 用于读取/写入二进制文件的压缩编解码器。 <br>允许的值为 **bzip2**、**gzip**、**deflate**、**ZipDeflate**。 保存文件时使用。<br>**注意**，使用复制活动解压缩 ZipDeflate 文件并将其写入基于文件的接收器数据存储时，默认情况下文件将提取到 `<path specified in dataset>/<folder named as source zip file>/` 文件夹，对[复制活动源](#binary-as-source)使用 `preserveZipFileNameAsFolder` 来控制是否以文件夹结构形式保留 zip 文件名。| 否       |
 | level | 压缩率。 在 Copy 活动接收器中使用数据集时应用。<br>允许的值为 **Optimal** 或 **Fastest**。<br>- **Fastest**：尽快完成压缩操作，不过，无法以最佳方式压缩生成的文件。<br>- **Optimal**：以最佳方式完成压缩操作，不过，需要耗费更长的时间。 有关详细信息，请参阅 [Compression Level](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx)（压缩级别）主题。 | 否       |
 
 下面是 Azure Blob 存储上的二进制数据集的示例：
@@ -77,7 +77,44 @@ ms.locfileid: "81416327"
 | 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **BinarySource**。 | 是      |
+| formatSettings | 一组属性。 请参阅下面的“二进制读取设置”表。 | 否       |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
+
+`formatSettings` 下支持的“二进制读取设置”：
+
+| 属性      | 说明                                                  | 必须 |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | formatSettings 的 type 必须设置为“BinaryReadSettings”。 | 是      |
+| compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
+| preserveZipFileNameAsFolder<br>（在 `compressionProperties` 下） | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。 当设置为 true（默认值）时，数据工厂将解压缩文件写入 `<path specified in dataset>/<folder named as source zip file>/`；当设置为 false 时，数据工厂将解压缩文件直接写入 `<path specified in dataset>`。  | 否 |
+
+```json
+"activities": [
+    {
+        "name": "CopyFromBinary",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "BinarySource",
+                "storeSettings": {
+                    "type": "AzureBlobStorageReadSettings",
+                    "recursive": true,
+                    "deleteFilesAfterCompletion": true
+                },
+                "formatSettings": {
+                    "type": "BinaryReadSettings",
+                    "compressionProperties": {
+                        "type": "ZipDeflateReadSettings",
+                        "preserveZipFileNameAsFolder": false
+                    }
+                }
+            },
+            ...
+        }
+        ...
+    }
+]
+```
 
 ### <a name="binary-as-sink"></a>二进制文件作为接收器
 

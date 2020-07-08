@@ -3,22 +3,20 @@ title: AMD GPU 驱动程序扩展 - Azure Windows VM
 description: 用于在运行 Windows 的 NVv4 系列 VM 上安装 AMD GPU 驱动程序的 Microsoft Azure 扩展。
 services: virtual-machines-windows
 documentationcenter: ''
-author: vikancha
+author: vikancha-MSFT
 manager: jkabat
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 0819eec5275fa9783fff363cabbd8c3ed22b7cd6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84736962"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>适用于 Windows 的 AMD GPU 驱动程序扩展
 

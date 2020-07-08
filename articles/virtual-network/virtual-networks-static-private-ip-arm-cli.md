@@ -1,26 +1,27 @@
 ---
-title: 为 Vm 配置专用 IP 地址-Azure CLI
+title: 为 VM 配置专用 IP 地址 - Azure CLI
 description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: kumud
-ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: allensu
+ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78199472"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84708155"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 
@@ -38,38 +39,7 @@ ms.locfileid: "78199472"
 
 1. 如果尚未这样做，请安装并配置最新的 [Azure CLI](/cli/azure/install-azure-cli)，并使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。
 
-2. 使用 [az network public-ip create](/cli/azure/network/public-ip) 命令，为该 VM 创建公共 IP。 在输出后显示的列表说明了所用的参数。
-
-    > [!NOTE]
-    > 可能想要或需要根据环境对此步骤和后续步骤中的变量使用不同的值。
-
-    ```azurecli
-    az network public-ip create \
-    --name TestPIP \
-    --resource-group TestRG \
-    --location centralus \
-    --allocation-method Static
-    ```
-
-    预期输出：
-
-   ```json
-   {
-        "publicIp": {
-            "idleTimeoutInMinutes": 4,
-            "ipAddress": "52.176.43.167",
-            "provisioningState": "Succeeded",
-            "publicIPAllocationMethod": "Static",
-            "resourceGuid": "79e8baa3-33ce-466a-846c-37af3c721ce1"
-        }
-    }
-    ```
-
-   * `--resource-group`：要在其中创建公共 IP 的资源组的名称。
-   * `--name`：公共 IP 的名称。
-   * `--location`：要在其中创建公共 IP 的 Azure 区域。
-
-3. 运行 [az network nic create](/cli/azure/network/nic) 命令，以创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所用的参数。 
+2. 运行 [az network nic create](/cli/azure/network/nic) 命令，创建具有静态专用 IP 的 NIC。 在输出后显示的列表说明了所使用的参数。 
    
     ```azurecli
     az network nic create \
@@ -121,7 +91,7 @@ ms.locfileid: "78199472"
     * `--vnet-name`：要在其中创建 NIC 的 VNet 的名称。
     * `--subnet`：要在其中创建 NIC 的子网的名称。
 
-4. 运行 [azure vm create](/cli/azure/vm/nic) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
+3. 运行 [azure vm create](/cli/azure/vm/nic) 命令，以使用前面创建的公共 IP 和 NIC 创建 VM。 在输出后显示的列表说明了所用的参数。
    
     ```azurecli
     az vm create \
@@ -149,11 +119,11 @@ ms.locfileid: "78199472"
     }
     ```
    
-   基本 [az vm create](/cli/azure/vm) 参数以外的参数。
+   基本 [az vm create](/cli/azure/vm) 参数之外的参数。
 
-   * `--nics`：VM 所附加到的 NIC 的名称。
+   * `--nics`：VM 附加到的 NIC 的名称。
    
-我们建议，除非有必要（例如，[为 Windows VM 分配多个 IP 地址](virtual-network-multiple-ip-addresses-cli.md)时），否则不要以静态方式在 VM 的操作系统中分配已分配给 Azure 虚拟机的专用 IP。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。
+建议你不要静态地在 VM 的操作系统中分配分配给 Azure 虚拟机的专用 IP，除非必要，例如，在[将多个 IP 地址分配给 WINDOWS VM](virtual-network-multiple-ip-addresses-cli.md)时。 如果确实需要在操作系统中手动设置该专用 IP 地址，请确保它与分配给 Azure [网络接口](virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](virtual-network-network-interface-addresses.md#private)设置。
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>检索 VM 的静态专用 IP 地址信息
 
@@ -169,7 +139,7 @@ az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
 "192.168.1.101"
 ```
 
-若要显示该 VM 的 NIC 的特定 IP 信息，请专门查询 NIC：
+若要显示该 VM 的 NIC 的具体 IP 信息，请具体查询 NIC：
 
 ```azurecli
 az network nic show \
@@ -179,7 +149,7 @@ az network nic show \
 rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 ```
 
-输出类似下面这样：
+输出类似于：
 
 ```json
 {
@@ -192,13 +162,13 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>从 VM 中删除静态专用 IP 地址
 
-无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须：
+无法在用于Azure 资源管理器部署的 Azure CLI 中删除 NIC 的静态专用 IP 地址。 必须具备以下条件：
 - 创建使用动态 IP 的新 NIC
-- 将 VM 上的 NIC 设置为新创建的 NIC。 
+- 在新建的 NIC 的 VM 上设置 NIC。 
 
 若要更改上述命令中使用的 VM 的 NIC，请完成以下步骤：
 
-1. 运行 **azure network nic create** 命令，以使用新 IP 地址通过动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”****。
+1. 运行 **azure network nic create** 命令，通过具有新 IP 地址的动态 IP 分配创建新 NIC。 由于未指定任何 IP 地址，因此分配方法为“动态”  。
 
     ```azurecli
     az network nic create     \
@@ -243,7 +213,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     }
     ```
 
-2. 运行 **azure vm set** 命令，以更改 VM 使用的 NIC。
+2. 运行 **azure vm set** 命令以更改 VM 使用的 NIC。
    
     ```azurecli
    az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
@@ -262,7 +232,7 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
     ```
 
     > [!NOTE]
-    > 如果 VM 大到足以安装多个 NIC，请运行 **azure network nic delete** 命令删除旧 NIC。
+    > 如果 VM 的空间足以拥有多个 NIC，请运行 **azure network nic delete** 命令删除旧版 NIC。
 
 ## <a name="next-steps"></a>后续步骤
 
