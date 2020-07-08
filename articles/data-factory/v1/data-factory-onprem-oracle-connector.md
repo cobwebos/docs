@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aa8708701af37834ae3b6cdc42de9c691ccacec
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265852"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084284"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -99,7 +99,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 下表描述了特定于 Oracle 链接服务的 JSON 元素：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | type |**Type**属性必须设置为**OnPremisesOracle**。 |是 |
 | driverType | 指定在 Oracle 数据库中复制或粘贴数据所使用的驱动程序。 允许的值为 **Microsoft** 和 **ODP**（默认值）。 请参阅[支持的版本和安装](#supported-versions-and-installation)以了解驱动程序详细信息。 | 否 |
@@ -150,7 +150,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息****。 **OracleTable**类型的数据集的**typeProperties**部分具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务引用的 Oracle 数据库中表的名称。 |否（如果指定了 **oracleReaderQuery** 或 **OracleSource**） |
 
@@ -169,7 +169,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 在复制活动中，如果源的类型为 **OracleSource**，则可以在 **typeProperties** 节中使用以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | oracleReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：“select \* from **MyTable**”。 <br/><br/>如果未指定，则执行此 SQL 语句：“select \* from **MyTable**” |否<br />（如果指定了**数据集**的 **tableName**） |
 
@@ -177,9 +177,9 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **OracleSink** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |超时前等待批插入操作完成的时间。 |**时间**<br/><br/> 示例：00:30:00（30 分钟） |否 |
+| writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |
 | sqlWriterCleanupScript |指定复制活动要执行的查询，以便清除特定切片的数据。 |查询语句。 |否 |
 | sliceIdentifierColumnName |指定要使用自动生成的切片标识符填充的复制活动列名称。 **sliceIdentifierColumnName** 的值用于在重新运行时清除特定切片的数据。 |数据类型为 **binary(32)** 的列的列名称。 |否 |
@@ -556,7 +556,9 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **错误消息**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```text
+Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
+```
 
 **可能的原因**
 
@@ -568,21 +570,25 @@ Oracle 连接器支持两个版本的驱动程序：
 * 如果未安装适用于 Oracle 的 .NET 提供程序，请先[安装](https://www.oracle.com/technetwork/topics/dotnet/downloads/)，再重试此方案。
 * 如果安装此提供程序后仍出现此错误消息，请完成以下步骤：
     1. 从文件夹 <system disk\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config 中打开 .NET 2.0 的计算机配置文件。
-    2. 搜索**用于 .NET 的 Oracle 数据提供程序**。 你应能找到一个条目，如以下示例**system.data** > 中的**DbProviderFactories**所示：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
-* 将此项复制到以下 .NET 4.0 文件夹中的 machine.config 文件： <系统磁盘\>： \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然后，将版本更改为采用2.x.x。。
+    2. 搜索**用于 .NET 的 Oracle 数据提供程序**。 你应能找到一个条目，如以下示例中的**system.data**  >  **DbProviderFactories**所示：`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* 将此项复制到以下 .NET 4.0 文件夹中的 machine.config 文件： <系统磁盘 \>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config。然后，将版本更改为采用2.x.x。。
 * 通过运行 **gacutil /i [provider path]**，在全局程序集缓存 (GAC) 中安装 <ODP.NET Installed Path\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll。
 
 ### <a name="problem-2-datetime-formatting"></a>问题 2：日期/时间格式设置
 
 **错误消息**
 
-    Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```text
+Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
+```
 
 **解决方法**
 
 可能需要根据 Oracle 数据库中日期的配置方式来调整复制活动中的查询字符串。 下面是使用 **to_date** 函数的示例：
 
-    "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```console   
+"oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
+```
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle 的类型映射
@@ -599,26 +605,26 @@ Oracle 连接器支持两个版本的驱动程序：
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>（使用 Microsoft 驱动程序时，仅在 Oracle 10g 及更高版本上受支持） |
 | CHAR |字符串 |
-| CLOB |字符串 |
+| CLOB |String |
 | DATE |DateTime |
-| FLOAT |十进制、字符串（如果精度 > 28） |
-| INTEGER |十进制、字符串（如果精度 > 28） |
+| FLOAT |Decimal、String（如果精度 > 28） |
+| INTEGER |Decimal、String（如果精度 > 28） |
 | INTERVAL YEAR TO MONTH |Int32 |
 | INTERVAL DAY TO SECOND |TimeSpan |
-| LONG |字符串 |
+| LONG |String |
 | LONG RAW |Byte[] |
-| NCHAR |字符串 |
-| NCLOB |字符串 |
-| NUMBER |十进制、字符串（如果精度 > 28） |
-| NVARCHAR2 |字符串 |
+| NCHAR |String |
+| NCLOB |String |
+| NUMBER |Decimal、String（如果精度 > 28） |
+| NVARCHAR2 |String |
 | RAW |Byte[] |
-| ROWID |字符串 |
+| ROWID |String |
 | TIMESTAMP |DateTime |
 | TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
 | TIMESTAMP WITH TIME ZONE |DateTime |
-| UNSIGNED INTEGER |数字 |
-| VARCHAR2 |字符串 |
-| XML |字符串 |
+| UNSIGNED INTEGER |Number |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > 使用 Microsoft 驱动程序时，不支持数据类型 **INTERVAL YEAR TO MONTH** 和 **INTERVAL DAY TO SECOND**。

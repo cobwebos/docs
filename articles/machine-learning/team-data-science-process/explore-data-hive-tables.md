@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 75dce2b5a83d13fe4a7d166595456e9a8d6324ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0dfa06e2ece2ba4631c0d5681b066ab0134daba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722163"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085661"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查询在 Hive 表中浏览数据
 
@@ -42,30 +43,32 @@ ms.locfileid: "76722163"
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. 从连接的两个表中提取记录
    
-        SELECT
-            a.<common_columnname1> as <new_name1>,
-            a.<common_columnname2> as <new_name2>,
-            a.<a_column_name1> as <new_name3>,
-            a.<a_column_name2> as <new_name4>,
-            b.<b_column_name1> as <new_name5>,
-            b.<b_column_name2> as <new_name6>
-        FROM
-            (
-            SELECT <common_columnname1>,
-                <common_columnname2>,
-                <a_column_name1>,
-                <a_column_name2>,
-            FROM <databasename>.<tablename1>
-            ) a
-            join
-            (
-            SELECT <common_columnname1>,
-                <common_columnname2>,
-                <b_column_name1>,
-                <b_column_name2>,
-            FROM <databasename>.<tablename2>
-            ) b
-            ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
+    ```hiveql
+    SELECT
+        a.<common_columnname1> as <new_name1>,
+        a.<common_columnname2> as <new_name2>,
+        a.<a_column_name1> as <new_name3>,
+        a.<a_column_name2> as <new_name4>,
+        b.<b_column_name1> as <new_name5>,
+        b.<b_column_name2> as <new_name6>
+    FROM
+        (
+        SELECT <common_columnname1>,
+            <common_columnname2>,
+            <a_column_name1>,
+            <a_column_name2>,
+        FROM <databasename>.<tablename1>
+        ) a
+        join
+        (
+        SELECT <common_columnname1>,
+            <common_columnname2>,
+            <b_column_name1>,
+            <b_column_name2>,
+        FROM <databasename>.<tablename2>
+        ) b
+        ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
+    ```
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>用于出租车行程数据方案的其他查询脚本
 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也提供了特定于 [NYC Taxi Trip Data](https://chriswhong.com/open-data/foil_nyc_taxi/)（纽约出租车行程数据）方案的查询示例。 这些查询已具有指定的数据架构，并准备好提交以运行。

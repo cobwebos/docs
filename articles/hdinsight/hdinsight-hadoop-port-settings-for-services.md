@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: c5f01a00d70869882d3d3398607ecfebbfd54417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f050bb25873e4b6ede234c800b00f2c34085d3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82209071"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085270"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上的 Apache Hadoop 服务所使用的端口
 
@@ -59,7 +59,7 @@ HDInsight 群集中的所有节点都位于 Azure 虚拟网络中。 不能从 I
 
 在 Internet 上公开的所有服务都必须经过身份验证：
 
-| 端口 | 凭据 |
+| Port | 凭据 |
 | --- | --- |
 | 22 或 23 |在创建群集期间指定的 SSH 用户凭据 |
 | 443 |在创建群集期间设置的登录名（默认为 admin）和密码 |

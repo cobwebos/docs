@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/31/2020
-ms.openlocfilehash: f7198aeff5e9ef6d37e29c2336dc38e4eec0dda1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3bfd430023330d3a399a0a760fd353b6ee60941
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023967"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085882"
 ---
 # <a name="migrate-hdinsight-cluster-to-a-newer-version"></a>将 HDInsight 群集迁移到较新版本
 
@@ -51,7 +51,7 @@ ms.locfileid: "77023967"
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份恢复 Azure SQL 数据库](../sql-database/sql-database-recovery-using-backups.md)。
+有关数据库备份和还原的详细信息，请参阅[使用自动数据库备份恢复 AZURE SQL 数据库中的数据库](../azure-sql/database/recovery-using-backups.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084386"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>排查 Linux VM 设备名更改问题
 
@@ -52,101 +52,115 @@ ms.locfileid: "71058205"
 
 应用程序使用 LUN 来查找所有附加的磁盘，并构造符号链接。 Azure Linux 代理包含一些 Udev 规则，用以设置从 LUN 到设备的符号链接：
 
-    $ tree /dev/disk/azure
+```console
+$ tree /dev/disk/azure
 
-    /dev/disk/azure
-    ├── resource -> ../../sdb
-    ├── resource-part1 -> ../../sdb1
-    ├── root -> ../../sda
-    ├── root-part1 -> ../../sda1
-    └── scsi1
-        ├── lun0 -> ../../../sdc
-        ├── lun0-part1 -> ../../../sdc1
-        ├── lun1 -> ../../../sdd
-        ├── lun1-part1 -> ../../../sdd1
-        ├── lun1-part2 -> ../../../sdd2
-        └── lun1-part3 -> ../../../sdd3
+/dev/disk/azure
+├── resource -> ../../sdb
+├── resource-part1 -> ../../sdb1
+├── root -> ../../sda
+├── root-part1 -> ../../sda1
+└── scsi1
+    ├── lun0 -> ../../../sdc
+    ├── lun0-part1 -> ../../../sdc1
+    ├── lun1 -> ../../../sdd
+    ├── lun1-part1 -> ../../../sdd1
+    ├── lun1-part2 -> ../../../sdd2
+    └── lun1-part3 -> ../../../sdd3
+```
 
 Linux 来宾帐户中的 LUN 信息通过使用 `lsscsi` 或类似工具进行检索：
 
-      $ sudo lsscsi
+```console
+$ sudo lsscsi
 
-      [1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
+[1:0:0:0] cd/dvd Msft Virtual CD/ROM 1.0 /dev/sr0
 
-      [2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
+[2:0:0:0] disk Msft Virtual Disk 1.0 /dev/sda
 
-      [3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
+[3:0:1:0] disk Msft Virtual Disk 1.0 /dev/sdb
 
-      [5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
+[5:0:0:0] disk Msft Virtual Disk 1.0 /dev/sdc
 
-      [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+[5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
+```
 
 来宾 LUN 信息与 Azure 订阅元数据一起用于在包含分区数据的 Azure 存储中查找 VHD。 例如，可以使用 `az` CLI：
 
-    $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
-    [
-    {
-    "caching": "None",
-      "createOption": "empty",
-    "diskSizeGb": 1023,
-      "image": null,
-    "lun": 0,
-    "managedDisk": null,
-    "name": "testVM-20170619-114353",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-    }
-    },
-    {
-    "caching": "None",
-    "createOption": "empty",
-    "diskSizeGb": 512,
-    "image": null,
-    "lun": 1,
-    "managedDisk": null,
-    "name": "testVM-20170619-121516",
-    "vhd": {
-      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-      }
-      }
-    ]
+```azurecli
+$ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
+[
+{
+"caching": "None",
+  "createOption": "empty",
+"diskSizeGb": 1023,
+  "image": null,
+"lun": 0,
+"managedDisk": null,
+"name": "testVM-20170619-114353",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+}
+},
+{
+"caching": "None",
+"createOption": "empty",
+"diskSizeGb": 512,
+"image": null,
+"lun": 1,
+"managedDisk": null,
+"name": "testVM-20170619-121516",
+"vhd": {
+  "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+  }
+  }
+]
+```
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>使用 blkid 发现文件系统 UUID
 
 应用程序和脚本读取 `blkid` 的输出或类似的信息源，以在 /dev 路径中构造符号链接。 该输出显示所有附加到 VM 的磁盘的 UUID 及与其关联的设备文件：
 
-    $ sudo blkid -s UUID
+```console
+$ sudo blkid -s UUID
 
-    /dev/sr0: UUID="120B021372645f72"
-    /dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
-    /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
-    /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+/dev/sr0: UUID="120B021372645f72"
+/dev/sda1: UUID="52c6959b-79b0-4bdd-8ed6-71e0ba782fb4"
+/dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
+/dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
+```
 
 Azure Linux 代理 Udev 规则在 /dev/disk/azure 路径下构造一组符号链接：
 
-    $ ls -l /dev/disk/azure
+```console
+$ ls -l /dev/disk/azure
 
-    total 0
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
-    lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
-    lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+total 0
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 resource -> ../../sdb
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 resource-part1 -> ../../sdb1
+lrwxrwxrwx 1 root root  9 Jun  2 23:17 root -> ../../sda
+lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
+```
 
 应用程序可使用此链接来识别启动盘设备和资源（临时）磁盘。 在 Azure 中，应用程序应搜索 /dev/disk/azure/root-part1 或 /dev/disk/azure-resource-part1 路径来发现这些分区。
 
 `blkid` 列表中的任何其他分区都驻留在数据磁盘上。 应用程序维护这些分区的 UUID，并在运行时使用路径来发现设备名：
 
-    $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
+```console
+$ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
-    lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
+```
 
 
 ### <a name="get-the-latest-azure-storage-rules"></a>获取最新的 Azure 存储规则
 
 若要获取最新的 Azure 存储规则，请运行以下命令：
 
-    # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
-    # sudo udevadm trigger --subsystem-match=block
+```console
+# sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
+# sudo udevadm trigger --subsystem-match=block
+```
 
 ## <a name="see-also"></a>另请参阅
 

@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: amqp
-ms.openlocfilehash: a9bc0564a69124618d0a7e3ff6bafb65b2be0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ab796ddd35ebe9b9c43509d8e3c2f4c41625c8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907476"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083979"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>通过内置终结点读取设备到云的消息
 
@@ -57,7 +57,7 @@ IoT 中心向后端服务公开 **messages/events** 内置终结点，让后端�
 | 主机名 | abcd1234namespace.servicebus.windows.net |
 | 命名空间 | abcd1234namespace |
 
-然后，可以使用具有 **ServiceConnect** 权限的任何共享访问策略连接到指定的事件中心。
+然后，你可以从下拉菜单中选择任何共享访问策略，如上面的屏幕截图中所示。 它仅显示具有连接到指定事件中心的**ServiceConnect**权限的策略。
 
 可用于连接到 IoT 中心公开的内置的与事件中心兼容的终结点的 SDK 包括：
 

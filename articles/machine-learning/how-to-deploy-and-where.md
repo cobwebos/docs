@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: bc9ab6ddf3a9032fd1919b70d830f0d65cdc06ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817981"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083073"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -545,6 +545,10 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
+> [!NOTE]
+> * ACI 仅适用于大小 <1GB 的小型模型。 
+> * 建议使用单节点 AKS 对大型模型进行开发测试。
+
 ### <a name="define-your-deployment-configuration"></a>定义部署配置
 
 在部署模型之前，必须定义部署配置。 部署配置特定于将托管 Web 服务的计算目标**。 例如，在本地部署模型时，必须指定服务接受请求的端口。 该部署配置不属于入口脚本。 它用于定义将托管模型和入口脚本的计算目标的特征。
@@ -996,7 +1000,7 @@ package.wait_for_creation(show_output=True)
 
 创建包后，可以使用 `package.pull()` 将映像拉取到本地 Docker 环境。 此命令的输出将显示映像的名称。 例如： 
 
-`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`。 
+`Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
 下载模型后，使用 `docker images` 命令列出本地映像：
 

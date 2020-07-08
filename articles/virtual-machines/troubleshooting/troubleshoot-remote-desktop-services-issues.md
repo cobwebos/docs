@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919458"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084321"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -46,7 +47,9 @@ ms.locfileid: "77919458"
 
     也可以使用串行访问控制台功能运行以下查询来查找这些错误： 
 
-        wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more 
+    ```console
+   wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
+    ```
 
 ## <a name="cause"></a>原因
  
@@ -178,22 +181,37 @@ ms.locfileid: "77919458"
 
 1. 如果此服务的启动帐户已更改，则会发生此问题。 将此帐户改回到默认设置： 
 
-        sc config TermService obj= 'NT Authority\NetworkService'
+    ```console
+    sc config TermService obj= 'NT Authority\NetworkService'
+    ```
+
 2. 启动服务：
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 3. 尝试使用远程桌面连接到 VM。
 
 #### <a name="termservice-service-crashes-or-hangs"></a>TermService 服务崩溃或挂起
 1. 如果服务陷于“正在启动”或“正在停止”状态，请尝试停止服务：******** 
 
-        sc stop TermService
+    ```console
+    sc stop TermService
+    ```
+
 2. 在服务自身的“svchost”容器中隔离该服务：
 
-        sc config TermService type= own
+    ```console
+    sc config TermService type= own
+    ```
+
 3. 启动服务：
 
-        sc start TermService
+    ```console
+    sc start TermService
+    ```
+
 4. 如果服务仍无法启动，请[请联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="repair-the-vm-offline"></a>修复 VM 脱机

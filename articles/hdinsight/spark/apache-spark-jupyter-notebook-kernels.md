@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 6c222ab15ba2ad2d06667b8549f4fb3e7cc8d216
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037930"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084709"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核
 
@@ -69,7 +70,7 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
     下表列出了可通过内核提供的不同 magic。
 
-   | Magic | 示例 | 描述 |
+   | Magic | 示例 | 说明 |
    | --- | --- | --- |
    | help |`%%help` |生成所有可用 magic 的表，其中包含示例和说明 |
    | info |`%%info` |输出当前 Livy 终结点的会话信息 |
@@ -89,7 +90,7 @@ HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDIns
 
 `%%sql` magic 支持不同的参数，可以使用这些参数控制运行查询时收到的输出类型。 下表列出了输出。
 
-| 参数 | 示例 | 描述 |
+| 参数 | 示例 | 说明 |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |使用此参数将查询结果以 [Pandas](https://pandas.pydata.org/) 数据帧的形式保存在 %%local Python 上下文中。 数据帧变量的名称是指定的变量名称。 |
 | -q |`-q` |使用此参数可关闭单元可视化。 如果不想自动将单元内容可视化，而只想将它作为数据帧捕获，可以使用 `-q -o <VARIABLE>`。 如果想要关闭可视化而不捕获结果（例如，运行诸如 `CREATE TABLE` 语句的 SQL 查询），请使用不带 `-o` 参数的 `-q`。 |
@@ -124,7 +125,7 @@ SELECT * FROM hivesampletable
 
 将笔记本保存到存储帐户的方式与 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 兼容。 如果通过 SSH 连接到群集，可以使用文件管理命令：
 
-| Command | 描述 |
+| Command | 说明 |
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # 列出根目录中的所有内容–此目录中的所有内容都可从主页查看 Jupyter |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # 下载 HdiNotebooks 文件夹的内容|

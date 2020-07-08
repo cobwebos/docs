@@ -1,5 +1,5 @@
 ---
-title: 教程：将 SQL Server 联机迁移到 SQL 托管实例
+title: 教程：将 SQL Server online 迁移到 SQL 托管实例
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 托管实例的联机迁移。
 services: dms
@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 817e1d740ce34704acb4b20a7c3f71807bfa66bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d462fa0fa2afe5937c60985938c8268991dfa41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187955"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084216"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 托管实例
 
@@ -77,11 +78,11 @@ ms.locfileid: "84187955"
 * 如果使用动态端口运行多个命名 SQL Server 实例，则可能需要启用 SQL Browser 服务并允许通过防火墙访问 UDP 端口 1434，以便 Azure 数据库迁移服务可连接到源服务器上的命名实例。
 * 如果在源数据库的前面使用了防火墙设备，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库，并通过 SMB 端口 445 访问文件。
 * 按照[在 Azure 门户中创建 SQL 托管实例](https://aka.ms/sqldbmi)一文中的详述创建 SQL 托管实例。
-* 确保用于连接源 SQL Server 和目标托管实例的登录名是 sysadmin 服务器角色的成员。
+* 确保用于连接源 SQL Server 和目标 SQL 托管实例的登录名是 sysadmin 服务器角色的成员。
 * 提供一个 SMB 网络共享，其中包含可由 Azure 数据库迁移服务用来执行数据库迁移的所有完整数据库备份文件和后续事务日志备份文件。
 * 确保运行源 SQL Server 实例的服务帐户对你创建的网络共享拥有写入权限，并且源服务器的计算机帐户具有对同一共享的读/写访问权限。
 * 请记下在前面创建的网络共享中拥有完全控制权限的 Windows 用户（和密码）。 Azure 数据库迁移服务可模拟用户凭据，将备份文件上传到 Azure 存储容器，以执行还原操作。
-* 创建一个 Azure Active Directory 应用程序 ID，用于生成可由 Azure 数据库迁移服务用来连接目标 Azure 数据库托管实例和 Azure 存储容器的应用程序 ID 密钥。 有关详细信息，请参阅[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
+* 创建一个 Azure Active Directory 应用程序 ID，该 ID 生成 Azure 数据库迁移服务可用于连接到目标 Azure 数据库托管实例和 Azure 存储容器的应用程序 ID 密钥。 有关详细信息，请参阅[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)一文。
 
   > [!NOTE]
   > Azure 数据库迁移服务需要对指定的应用程序 ID 的订阅具有参与者权限。 或者，你可以创建自定义角色，以授予 Azure 数据库迁移服务所需的特定权限。 有关使用自定义角色的分步指导，请参阅[用于 SQL Server 到 SQL 托管实例联机迁移的自定义角色](https://docs.microsoft.com/azure/dms/resource-custom-roles-sql-db-managed-instance)一文。
@@ -265,6 +266,6 @@ ms.locfileid: "84187955"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关介绍如何使用 T-SQL RESTORE 命令将数据库迁移到托管实例的教程，请参阅[使用 restore 命令将备份还原到托管实例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
-* 有关托管实例的信息，请参阅[什么是托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
-* 若要了解如何将应用连接到托管实例，请参阅[连接应用程序](../azure-sql/managed-instance/connect-application-instance.md)。
+* 有关演示如何使用 T-sql RESTORE 命令将数据库迁移到 SQL 托管实例的教程，请参阅[使用 restore 命令还原备份到 sql 托管实例](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)。
+* 有关 SQL 托管实例的信息，请参阅[什么是 sql 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
+* 有关将应用连接到 SQL 托管实例的信息，请参阅[连接应用程序](../azure-sql/managed-instance/connect-application-instance.md)。

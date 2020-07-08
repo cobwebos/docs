@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: a2a9b149bd76ed276f3210f27ea0f60bbc7b7662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083366"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
@@ -93,7 +94,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 在“安全性 + 网络”选项卡中提供以下信息：
 
-|属性 |描述 |
+|属性 |说明 |
 |---|---|
 |企业安全数据包|可选：选中此复选框可使用**企业安全性套餐**。 有关详细信息，请参阅[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。|
 |TLS|可选：从下拉列表中选择 TLS 版本。 有关详细信息，请参阅[传输层安全性](./transport-layer-security.md)。|
@@ -110,7 +111,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 在“配置 + 定价”选项卡中提供以下信息：
 
-|Property |描述 |
+|属性 |说明 |
 |---|---|
 |+ 添加应用程序|可选：选择所需的任何应用程序。 Microsoft、独立软件供应商 (ISV) 或你自己都可以开发这些应用程序。 有关详细信息，请参阅[在群集创建期间安装应用程序](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation)。|
 |节点大小|可选：选择不同大小的节点。|

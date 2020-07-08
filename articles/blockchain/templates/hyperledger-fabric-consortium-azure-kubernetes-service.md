@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
-ms.date: 06/04/2020
+ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209702"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085792"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 
@@ -19,6 +19,18 @@ ms.locfileid: "85209702"
 
 - 获取 Hyperledger Fabric 的工作知识和构成 Hyperledger Fabric 区块链网络构建基块的各种组件。
 - 了解如何在 Azure Kubernetes Service 上为生产方案部署和配置 Hyperledger Fabric 联合会。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
+
+## <a name="choose-an-azure-blockchain-solution"></a>选择 Azure 区块链解决方案
+
+选择使用解决方案模板之前，请将方案与可用 Azure 区块链选项的常见用例进行比较。
+
+选项 | 服务模型 | 常见用例
+-------|---------------|-----------------
+解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。
+[Azure 区块链服务](../service/overview.md) | PaaS | Azure 区块链服务预览版简化了联合会区块链网络的构成、管理和监管。 将 Azure 区块链服务用于需要 PaaS、联合会管理或合同和事务隐私的解决方案。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger 结构联合会体系结构
 
@@ -429,6 +441,6 @@ kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 与 Microsoft 工程师和 Azure 区块链社区专家交流。
 
-- [Microsoft Q&Azure 区块链服务的问题页](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
+- [Microsoft Q&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
 - [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

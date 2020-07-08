@@ -1,18 +1,18 @@
 ---
-title: 市场推广服务 - 商业市场权益 | Azure 市场
+title: 市场宣传服务-你的商业应用商店权益，Azure Marketplace
 description: 本部分介绍发布者可以使用的市场推广服务 - Microsoft 资源。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/23/2020
+ms.topic: article
+ms.date: 07/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 25753ce4c313a60b06147ab06dbf0b5e3e05865f
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7de2e36edbcd0b55facae89be477ac0d334dae49
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800499"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085678"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -26,7 +26,7 @@ Marketplace Rewards 旨在在特定的发展阶段为你提供支持，从知名
 
 该计划创建了一个积极的反馈循环：每个发展阶段的优势旨在为进入下一阶段提供推动力，使你能够利用商业市场作为平台，从而在 Microsoft 领域通过 Microsoft 渠道将业务拓展到 Microsoft 客户。 
 
-权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)。
+权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](determine-your-listing-type.md#choose-a-publishing-option)。
 
 Rewards 团队成员将在产品/服务上线时联系你，具体取决于你的资格。 
 
@@ -41,7 +41,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 入门步骤很简单：
 
 1. 在 Microsoft AppSource 或 Azure 市场中发布产品/服务。
-2. 转到合作伙伴中心[仪表板](https://partner.microsoft.com/dashboard/directory)，选择“Marketplace Rewards”页上的“销售和营销权益”选项卡，以查看权益列表。
+2. 访问合作伙伴中心[仪表板](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)，在左侧导航菜单中打开 "**商用 Marketplace** "，选择 " **Marketplace 奖励**"，然后选择 "**销售和市场营销权益**" 选项卡以查看福利列表。
 3. 若要激活销售和营销权益，必须先分配一名公司营销联系人。 此联系人将收到有关 Marketplace Rewards 的跟进信息。
 4. 若要添加或更新营销联系人信息，请转到“Marketplace Rewards”页顶部的“销售和营销权益”选项卡，然后选择“添加”、“更新”或“更改”。  接下来，请执行以下操作：
 
@@ -55,7 +55,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 1. 可以使用技术权益在云和混合解决方案的售前、设计、部署和应用开发阶段请求技术帮助。 若要请求帮助，请填写请求表单，然后选择“提交请求”。
 2. 在解锁这些权益时，Azure 赞助权益的使用方式将通过电子邮件与你共享。
 
->[!Note]
+>[!NOTE]
 >如果产品/服务已上线了四周以上，但没有收到消息，请查看合作伙伴中心，了解组织中相关产品/服务的所有者。 他们应该有跟进信息和后续步骤。 <br> <br> 如果无法确定所有者，或者所有者已离开公司，则可以在[帮助和支持](https://aka.ms/marketplacepublishersupport)上提出支持票证。
 
 随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有列表都会收到基本级别的优化建议和促销，这属于资源和最佳做法自助服务电子邮件的一部分。
@@ -74,7 +74,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 在 Azure 市场或 Microsoft AppSource 中使用可交易产品/服务时，你可以在结算销售额交易或通过商业市场销售的席位不断增长时获得其他权益。 
 
->[!Note]
+>[!NOTE]
 >销售的席位阈值仅适用于 Microsoft 365 应用（与 Microsoft Teams、Office、Outlook 或 SharePoint 集成的 SaaS 应用程序），权益必须在 2020 年 6 月 30 日前完成。
 
 这些权益旨在为你提供营销、销售和技术方面的支持，从而帮助你获得更多的访客、获得更多潜在客户和转变更多业务。
@@ -101,16 +101,16 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 ### <a name="cancellation-policy"></a>取消策略
 
-[列出和试用](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)发布者可选择加入或选择退出每个产品/服务发布的活动。 合作伙伴可随时选择退出任何参与活动。 
+[列出和试用](determine-your-listing-type.md)发布者可选择加入或选择退出每个产品/服务发布的活动。 合作伙伴可随时选择退出任何参与活动。 
 
 对于发布者的以下行为，Microsoft 保留撤销和终止 Marketplace Rewards 权益的权利： 
 
-* 利用其市场列表从事非法活动。
-* 从商业市场退市。 
-* 使用其产品/服务展示违反版权或商标法的营销或其他内容。
-* 违反 [Azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 Azure 赞助资金进行自己的内部运营或比特币挖掘。
+* 使用其 marketplace 列表参与非法活动。
+* 从商业应用商店中取消列出。 
+* 使用其产品/服务可显示违反版权或商标法律的营销或其他内容。
+* 违反[azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 azure 赞助资金进行其自己的内部操作或 Bitcoin 挖掘。
 
-### <a name="offer-availability"></a>产品/服务可用性
+### <a name="offer-availability"></a>产品可用性
 
 对于在 Azure 市场或 Microsoft AppSource 中拥有实时产品/服务的所有合作伙伴，此产品/服务以英文版提供。
 
@@ -123,5 +123,3 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 查看[可用的自助服务资源](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
 注册 [Microsoft AppSource 和 Azure 市场社区论坛](https://aka.ms/MarketplaceCommunity)，了解相关主题或加入讨论。
-
----

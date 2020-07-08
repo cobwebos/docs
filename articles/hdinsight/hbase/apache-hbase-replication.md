@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: e05cd861f899b700e68c151fcbaa6778dc43eb3a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: cf080f2a6173651fce8f306619dba60347067e0e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959188"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085605"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -65,7 +66,7 @@ ms.locfileid: "85959188"
 
 **VNet 1**
 
-| Property | “值” |
+| 属性 | 值 |
 |----------|-------|
 | 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
@@ -82,7 +83,7 @@ ms.locfileid: "85959188"
 
 **VNet 2**
 
-| Property | “值” |
+| 属性 | 值 |
 |----------|-------|
 | 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
@@ -308,7 +309,7 @@ sudo service bind9 status
 
 必需参数：
 
-|“属性”|描述|
+|名称|说明|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -317,7 +318,7 @@ sudo service bind9 status
 
 可选参数：
 
-|“属性”|描述|
+|名称|说明|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |

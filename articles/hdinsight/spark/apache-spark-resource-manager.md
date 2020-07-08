@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932107"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085185"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源
 
-了解如何访问与 [Apache Spark](https://ambari.apache.org/) 群集关联的界面（如 [Apache Ambari](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、[Apache Hadoop YARN](./apache-azure-spark-history-server.md) UI 和 [Spark History Server](https://spark.apache.org/)），以及如何优化群集配置以达到最佳性能。
+了解如何访问与 [Apache Spark](https://spark.apache.org/) 群集关联的界面（如 [Apache Ambari](https://ambari.apache.org/) UI、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI 和 [Spark History Server](./apache-azure-spark-history-server.md)），以及如何优化群集配置以达到最佳性能。
 
 ## <a name="open-the-spark-history-server"></a>打开 Spark History Server
 
@@ -44,7 +44,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>使用 Ambari UI 更改参数
 
-1. 在 Ambari UI 中，导航到“Spark2” **“配置”** “自定义 spark2-defaults”。 >    >  
+1. 在 Ambari UI 中，导航到“Spark2” > “配置” > “自定义 spark2-defaults”。
 
     ![使用 Ambari 自定义设置参数](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "使用 Ambari 自定义设置参数")
 
@@ -62,8 +62,10 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 
 以下代码片段演示如何更改 Jupyter 中运行的应用程序的配置。
 
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```scala
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+```
 
 配置参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。
 
@@ -71,13 +73,17 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 
 以下命令示范了如何更改使用 `spark-submit` 提交的批处理应用程序的配置参数。
 
-    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```scala
+spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+```
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>使用 cURL 更改已提交应用程序的参数
 
 以下命令示范了如何更改使用 cURL 提交的批处理应用程序的配置参数。
 
-    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```bash
+curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+```
 
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>在 Spark Thrift 服务器上更改这些参数
 
@@ -97,7 +103,7 @@ Spark Thrift 服务器使用 Spark 动态执行器分配，因此未使用 `spar
 
 Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，前提是头节点的 RAM 总大小大于 14 GB。 可以使用 Ambari UI 更改驱动程序内存配置，如以下屏幕截图所示：
 
-在 Ambari UI 中，导航到“Spark2” **“配置”** “高级 spark2-env”。 >    >   然后提供 **spark_thrift_cmd_opts** 的值。
+在 Ambari UI 中，导航到“Spark2” > “配置” > “高级 spark2-env”。 然后提供 **spark_thrift_cmd_opts** 的值。
 
 ## <a name="reclaim-spark-cluster-resources"></a>回收 Spark 群集资源
 

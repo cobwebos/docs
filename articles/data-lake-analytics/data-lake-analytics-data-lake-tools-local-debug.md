@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 0827311218202de447e5cf27356e00c4da020e94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4115518c71c3695797ac051910890d24723bae
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61472985"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085389"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>在本地调试 Azure Data Lake Analytics 代码
 
@@ -42,7 +42,9 @@ ms.locfileid: "61472985"
 1. 创建 C# 程序集项目，构建该项目以生成输出 DLL**** 文件。
 2. 使用 U-SQL 语句注册该 DLL**** 文件：
 
-        CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+   ```sql
+   CREATE ASSEMBLY assemblyname FROM @"..\..\path\to\output\.dll";
+   ```
         
 3. 在 C# 代码中设置断点。
 4. 选择 F5****，通过在本地引用 C# DLL**** 文件来调试脚本。
