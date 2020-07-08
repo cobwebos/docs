@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6a053b94813145f9ccd69158d18edb728d5dad61
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: HT
+ms.openlocfilehash: 95c553d26a3e79b53106b933c629c5884c3e004c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74795740"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466930"
 ---
 | 资源 | 目标 | 硬限制 |
 |----------|--------------|------------|
-| 每个区域的存储同步服务数 | 20 个存储同步服务 | 是 |
-| 每个存储同步服务的同步组数 | 100 个同步组 | 是 |
+| 每个区域的存储同步服务数 | 100存储同步服务 | 是 |
+| 每个存储同步服务的同步组数 | 200同步组 | 是 |
 | 每个存储同步服务的已注册服务器 | 99 台服务器 | 是 |
 | 每个同步组的云终结点数 | 1 个云终结点 | 是 |
 | 每个同步组的服务器终结点数 | 50 个服务器终结点 | 否 |

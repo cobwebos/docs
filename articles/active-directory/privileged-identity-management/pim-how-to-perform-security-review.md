@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aacf45bf33663c448aa21d63900d69d5d870e0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4096c65fa4375152f44891d4a0a5aac4b9077cf2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183392"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743841"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中评审对 Azure AD 角色的访问权限
 
@@ -31,23 +31,23 @@ Privileged Identity Management (PIM) 简化了企业管理以特权身份访问 
 
 ## <a name="add-a-pim-dashboard-tile"></a>添加 PIM 仪表板磁贴
 
-如果未将 Privileged Identity Management 服务固定到 Azure 门户中的仪表板，请按照以下步骤开始操作。
+如果未在 Azure 门户中将 Privileged Identity Management 服务固定到仪表板，请按以下步骤开始操作。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的右上角选择你的用户名，然后选择你将在其中运行的 Azure AD 组织。
-3. 选择“所有服务”  ，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”  。
-4. 选中“固定到仪表板”  ，并单击“创建”  。 Privileged Identity Management 应用程序会打开。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+2. 选择 Azure 门户右上角的用户名，并选择要操作的 Azure AD 组织。
+3. 选择“所有服务”，并使用“筛选器”文本框搜索“Azure AD Privileged Identity Management”。
+4. 选中“固定到仪表板”，并单击“创建”。 Privileged Identity Management 应用程序会打开。
 
 ## <a name="approve-or-deny-access"></a>批准或拒绝访问权限
 
-批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。   状态不会立即更改，只会在审查人应用结果之后才更改。
+批准或拒绝访问权限时，只是告诉审查人你是否仍要使用此角色。 如果想要继续充当此角色，请选择“批准”；如果不再需要此访问权限，请选择“拒绝”。  状态不会立即更改，只会在审查人应用结果之后才更改。
 请遵循以下步骤来查找并完成访问权限审查：
 
-1. 在 Privileged Identity Management 服务中，选择“审查特权访问”  。 如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”页中。 
+1. 在 Privileged Identity Management 服务中，选择“审查特权访问”。 如果有任何挂起的访问权限审查，它们会显示在 Azure AD 的“访问权限审查”页中。
 2. 选择想要完成的审查。
 3. 除非该审查是由你创建的，否则你会显示为该审查中的唯一用户。 选中姓名旁边的复选标记。
-4. 选择“批准”或“拒绝”。   可能需要在“提供原因”文本框中提供做出该决定的原因。   
-5. 关闭“审查 Azure AD 角色”边栏选项卡。 
+4. 选择“批准”或“拒绝”。  可能需要在“提供原因”文本框中提供做出该决定的原因。  
+5. 关闭“审查 Azure AD 角色”边栏选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 

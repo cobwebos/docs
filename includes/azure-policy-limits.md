@@ -8,7 +8,7 @@ ms.date: 04/23/2020
 ms.author: dacoulte
 ms.openlocfilehash: e9faea1d5913a19dfdeff662e26992529dc1b22d
 ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/05/2020
 ms.locfileid: "84466924"

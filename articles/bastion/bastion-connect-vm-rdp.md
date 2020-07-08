@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 堡垒连接到运行 Windows 的 Az
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6ec60dc313c8a4374637adf38ea0e5a7d4ed964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79eb09a005f62846fc2f7e3e7b493d5e366edabc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597332"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744317"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>使用 Azure 堡垒连接到 Windows 虚拟机
 
@@ -20,7 +20,7 @@ ms.locfileid: "77597332"
 
 Azure 堡垒提供与预配虚拟网络中的所有 Vm 的安全连接。 使用 Azure Bastion 可防止虚拟机向外部公开 RDP/SSH 端口，同时仍然使用 RDP/SSH 提供安全访问。 有关详细信息，请参阅[概述](bastion-overview.md)。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 请确保已为 VM 所在的虚拟网络设置了 Azure 堡垒主机。 在虚拟网络中设置并部署堡垒服务后，可以使用它连接到虚拟网络中的任何 VM。 若要设置 Azure 堡垒主机，请参阅[创建 Azure 堡垒主机](bastion-create-host-portal.md)。
 
@@ -46,7 +46,7 @@ Azure 堡垒提供与预配虚拟网络中的所有 Vm 的安全连接。 使用
 1. 单击 "堡垒" 后，会出现一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果你没有为虚拟网络预配堡垒，你可以单击该链接来配置堡垒。 有关配置说明，请参阅[配置堡垒](bastion-create-host-portal.md)。
 
    ![堡垒选项卡](./media/bastion-connect-vm-rdp/bastion.png)
-1. 在 "堡垒" 选项卡上，输入虚拟机的用户名和密码，并单击 "**连接**"。 通过堡垒连接到此虚拟机的 RDP 将直接在 Azure 门户（通过 HTML5）中使用端口443和堡垒服务打开。
+1. 在 "堡垒" 选项卡上，输入虚拟机的用户名和密码，并单击 "**连接**"。 通过 Bastion 连接到此虚拟机的 RDP 将使用端口 443 和 Bastion 服务在 Azure 门户中（通过 HTML5）直接打开。
 
    ![RDP 连接](./media/bastion-connect-vm-rdp/443rdp.png)
  

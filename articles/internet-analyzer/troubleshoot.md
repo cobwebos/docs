@@ -4,15 +4,15 @@ description: Azure Internet 分析器的故障排除参考。
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
-ms.topic: guide
+ms.topic: troubleshooting
 ms.date: 12/04/2019
 ms.author: dibotero
-ms.openlocfilehash: 0c9e203d7e8be7b24c711f73e2152a7745a57dac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: fe173ec4d4f28444d43739ea2ed51e43021916b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745470"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744351"
 ---
 # <a name="azure-internet-analyzer-troubleshooting"></a>Azure Internet 分析器故障排除
 
@@ -20,7 +20,7 @@ ms.locfileid: "83745470"
 
 ## <a name="things-to-keep-in-mind"></a>要点
 - 必须将客户端脚本嵌入到 HTTPS 网站中。 如果脚本在纯文本 (http://) 或本地 (file://) 网站中运行，则不会收集度量。
-- 仅当 Internet 分析器配置文件的客户端脚本已嵌入到接收真实用户流量的应用程序中时，才会收集度量数据。 综合流量（例如，Azure WebApp 性能测试）通常不执行嵌入的 Javascript 代码，因此该类型的流量不会生成度量。
+- 仅当 Internet 分析器配置文件的客户端脚本已嵌入到接收真实用户流量的应用程序中时，才会收集度量数据。 综合流量（例如，Azure WebApp 性能测试）通常不执行嵌入的 JavaScript 代码，因此不会通过该类型的流量生成度量。
 
 ## <a name="azure-portal"></a>Azure 门户
 “记分卡”部分中的“尚未为选定筛选器组合生成记分卡”

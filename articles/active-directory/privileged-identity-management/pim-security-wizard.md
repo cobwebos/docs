@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/21/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f12b2b31da4c7fe67eef9674d96b517d4e2bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1cc7aed1cc79a8c08a7ff11382a1c7a51455d5c3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867758"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743654"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management 中的 Azure AD 角色安全向导
 
@@ -35,34 +35,34 @@ ms.locfileid: "81867758"
 该向导的第二个步骤用于更改管理员的角色分配。  
 
 > [!WARNING]
-> 至少有一个全局管理员，并且有一个工作或学校帐户（而不是 Microsoft 帐户）的特权角色管理员，这一点非常重要。 如果只有一个特权角色管理员，一旦该帐户遭到删除，组织就无法管理 Privileged Identity Management。
+> 必须至少有一个全局管理员，并且要有多个具有工作或学校帐户（而不是 Microsoft 帐户）的特权角色管理员。 如果只有一个特权角色管理员，一旦该帐户遭到删除，组织就无法管理 Privileged Identity Management。
 > 此外，如果用户具有 Microsoft 帐户（即，用于登录 Skype 和 Outlook.com 等 Microsoft 服务的帐户），则永久保留角色分配。 如果打算要求执行多重身份验证以激活该角色，则该用户将被锁定。
 
 ## <a name="run-the-wizard"></a>运行向导
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开**Azure AD Privileged Identity Management**。
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure AD 角色”****，然后选择“向导”****。
+1. 选择“Azure AD 角色”，然后选择“向导”。
 
     ![“Azure AD 角色 - 向导”页，其中显示运行向导的 3 个步骤](./media/pim-security-wizard/wizard-start.png)
 
-1. 选择“1 发现特权角色”****。
+1. 选择“1 发现特权角色”。
 
 1. 查看特权角色列表以查看哪些用户是永久的或符合条件的。
 
     ![“发现特权角色 - 角色”窗格，其中显示永久和符合条件的成员](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
-1. 选择“下一步”**** 以选择要使其符合条件的用户或组。
+1. 选择“下一步”以选择要使其符合条件的用户或组。
 
     ![“将成员转换为符合条件成员”页，其中显示选择要使其符合角色条件的成员的选项](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. 选择用户或组后，选择“下一步”****。
+1. 选择用户或组后，选择“下一步”。
 
     ![“查看更改”页，显示将要转换的具有永久角色分配的成员](./media/pim-security-wizard/review-changes.png)
 
-1. 选择“确定”**** 以将永久分配转换为符合条件的分配。
+1. 选择“确定”以将永久分配转换为符合条件的分配。
 
     转换完成后，你将看到一条通知。
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78262195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84436015"
 ---
 Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定的客户方案。
 
@@ -26,7 +26,7 @@ Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定�
 |磁盘类型   |SSD   |SSD   |SSD   |HDD   |
 |方案   |IO 密集型工作负荷，如[SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、顶级数据库（例如 SQL、Oracle）和其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
 |最大磁盘大小   |65,536 GB (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|最大吞吐量   |2,000 MiB/秒    |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
+|最大吞吐量   |2,000 MB/秒    |900 MB/秒   |750 MB/秒   |500 MB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-disk"></a>超级磁盘

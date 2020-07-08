@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 72afa8ebea4cb9bf07cb3ce56583cbdf1849be9e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.openlocfilehash: e2540bceab17e6f37fd94b28df3814ccffa1c81e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778257"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84466901"
 ---
 下表描述了 Azure 常规用途 v1、v2、Blob 存储和块 blob 存储帐户的默认限制。 “流入量”限制是指针对发送到存储帐户的所有数据的限制。 “流出量”限制是指针对从存储帐户接收的所有数据的限制。
 
@@ -23,7 +23,7 @@ ms.locfileid: "83778257"
 | 最大存储帐户容量 | 5 PiB <sup>1</sup>|
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数目上限 | 无限制 |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
-| 每个存储帐户的最大流入量<sup>1</sup>（美国、欧洲区域） | 25 Gbps |
+| 每个存储帐户的最大流入量<sup>1</sup>（美国、欧洲区域） | 10 Gbps |
 | 每个存储帐户的最大流入量<sup>1</sup>（美国和欧洲之外的区域） | 如果已启用 RA-GRS/GRS，则为 5 Gbps；对于 LRS/ZRS，为 10 Gbps<sup>2</sup> |
 | 常规用途 v2 存储帐户和 Blob 存储帐户的最大流出量（所有区域） | 50 Gbps |
 | 常规用途 v1 存储帐户的最大流出量（美国区域） | 如果已启用 RA-GRS/GRS，则为 20 Gbps；对于 LRS/ZRS，为 30 Gbps<sup>2</sup> |

@@ -11,18 +11,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42d931206e99516e0320d0cbedd0812389ee41aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75932322"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742158"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>使用 Privileged Identity Management 所要满足的许可证要求
 
@@ -42,7 +42,7 @@ ms.locfileid: "75932322"
 - 已分配到访问评审的用户
 - 执行访问评审的用户
 
-对于以下任务，不需要**** 使用 Azure AD Premium P2 许可证：
+以下任务无需 Azure AD Premium P2 许可证：
 
 - 使用全局管理员或特权角色管理员角色（设置 PIM、配置策略、接收警报和设置访问评审）的用户不需要许可证。
 

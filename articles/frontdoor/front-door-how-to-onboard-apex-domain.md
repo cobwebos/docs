@@ -4,22 +4,22 @@ description: 了解如何使用 Azure 门户将根或顶点域载入现有前门
 services: front-door
 author: sharad4u
 ms.service: frontdoor
-ms.topic: article
+ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878878"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743586"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在前门中内置 root 或顶点域
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>在 Front Door 上载入根或顶点域
 Azure 前门使用 CNAME 记录来验证自定义域的加入的域所有权。 此外，前门并不公开与前门配置文件关联的前端 IP 地址，因此，如果要将顶点域载入 Azure 前门，则无法将其映射到 IP 地址。
 
-DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的域为`contoso.com`;您可以为`somelabel.contoso.com`创建 CNAME 记录;但不能为`contoso.com`自身创建 CNAME。 对于在 Azure 前门之后具有负载平衡应用程序的应用程序所有者，此限制会出现问题。 由于使用前门配置文件需要创建 CNAME 记录，因此无法指向区域顶点中的前门配置文件。
+DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的域为 `contoso.com` ; 你可以为创建 cname 记录 `somelabel.contoso.com` ; 但你无法为自身创建 cname `contoso.com` 。 对于在 Azure 前门之后具有负载平衡应用程序的应用程序所有者，此限制会出现问题。 由于使用前门配置文件需要创建 CNAME 记录，因此无法指向区域顶点中的前门配置文件。
 
-使用 Azure DNS 上的别名记录解决了此问题。 与 CNAME 记录不同，别名记录是在区域顶点创建的，应用程序所有者可以将其区域顶点记录指向具有公共终结点的前端配置文件。 应用程序所有者指向其 DNS 区域中的任何其他域使用的同一前门配置文件。 例如， `contoso.com`和`www.contoso.com`可指向同一前门配置文件。 
+使用 Azure DNS 上的别名记录解决了此问题。 与 CNAME 记录不同，别名记录是在区域顶点创建的，应用程序所有者可以将其区域顶点记录指向具有公共终结点的前端配置文件。 应用程序所有者指向其 DNS 区域中的任何其他域使用的同一前门配置文件。 例如， `contoso.com` 和 `www.contoso.com` 可指向同一前门配置文件。 
 
 将顶点或根域映射到前门配置文件基本上需要 CNAME 平展或 DNS 追踪，这是在 DNS 提供商中以递归方式解析 CNAME 条目，直到达到 IP 地址的一种机制。 对于前门终结点 Azure DNS 支持此功能。 
 
@@ -48,12 +48,12 @@ DNS 协议会阻止在区域顶点分配 CNAME 记录。 例如，如果你的�
 
     ![区域顶点的别名记录](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. 以上步骤将创建一个指向前门资源的区域顶点记录，还会创建一个用于在前门配置文件上加入域的 CNAME `afdverify.contosonews.com`记录映射`afdverify.<name>.azurefd.net` "afdverify" （示例-）。
+6. 以上步骤将创建一个指向前门资源的区域顶点记录，还会创建一个用于在 `afdverify.contosonews.com` `afdverify.<name>.azurefd.net` 前门配置文件上加入域的 CNAME 记录映射 "afdverify" （示例-）。
 
 ## <a name="onboard-the-custom-domain-on-your-front-door"></a>在前门上载入自定义域
 
 1. 在 "前门设计器" 选项卡上，单击 "前端主机" 部分的 "+" 图标以添加新的自定义域。
-2. 在 "自定义主机名" 字段中输入 root 或顶点域名， `contosonews.com`例如。
+2. 在 "自定义主机名" 字段中输入 root 或顶点域名，例如 `contosonews.com` 。
 3. 验证从域到前门的 CNAME 映射后，请单击 "**添加**" 以添加自定义域。
 4. 单击 "**保存**" 以提交更改。
 

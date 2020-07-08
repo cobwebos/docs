@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329562"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743144"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure 资源角色的活动和审核历史记录
 
@@ -32,9 +32,9 @@ ms.locfileid: "78329562"
 
 若要查看特定用户在各种资源中执行的操作，可以查看与给定激活时段关联的 Azure 资源活动。
 
-1. 打开**Azure AD Privileged Identity Management**。
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure 资源”****。
+1. 选择 " **Azure 资源**"。
 
 1. 选择要查看其活动和激活的资源。
 
@@ -54,13 +54,13 @@ ms.locfileid: "78329562"
 
 你可能具有合规性要求，必须向审核者提供角色分配的完整列表。 可以使用 Privileged Identity Management 查询特定资源上的角色分配，这包括针对所有子资源的角色分配。 以前，管理员很难获取某个订阅的角色分配完整列表，他们必须导出每个特定资源的角色分配。 使用 Privileged Identity Management，可以查询某个订阅中所有处于活动状态和符合条件的角色分配，包括针对所有资源组和资源的角色分配。
 
-1. 打开**Azure AD Privileged Identity Management**。
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure 资源”****。
+1. 选择 " **Azure 资源**"。
 
 1. 选择要为其导出角色分配的资源，例如订阅。
 
-1. 选择“成员”****。
+1. 选择“**成员**”。
 
 1. 选择 "**导出**" 以打开 "导出成员身份" 窗格。
 
@@ -74,9 +74,9 @@ ms.locfileid: "78329562"
 
 资源审核提供资源的所有角色活动的视图。
 
-1. 打开**Azure AD Privileged Identity Management**。
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure 资源”****。
+1. 选择 " **Azure 资源**"。
 
 1. 选择要查看其审核历史记录的资源。
 
@@ -88,7 +88,7 @@ ms.locfileid: "78329562"
 
 1. 对于“审核类型”****，选择“激活(已分配 + 已激活)”****。
 
-    按激活审核类型筛选的[![激活审核类型](media/azure-pim-resource-rbac/rbac-audit-activity.png "按激活筛选的资源审核列表")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![资源审核列表筛选的资源审核列表](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+    [![按激活审核类型筛选的资源审核列表](media/azure-pim-resource-rbac/rbac-audit-activity.png "按激活筛选的资源审核列表")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![按激活审核类型筛选的资源审核列表](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
 1. 在“操作”**** 下，单击某个用户的 **（活动）** 可查看该用户在 Azure 资源中的活动详细信息。
 
@@ -98,9 +98,9 @@ ms.locfileid: "78329562"
 
 使用“我的审核”，可以查看你的个人角色活动。
 
-1. 打开**Azure AD Privileged Identity Management**。
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure 资源”****。
+1. 选择 " **Azure 资源**"。
 
 1. 选择要查看其审核历史记录的资源。
 
@@ -116,7 +116,7 @@ ms.locfileid: "78329562"
 ## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>获取批准事件的原因、审批者和票证编号
 
 1. 以具有特权的角色管理员角色权限登录到[Azure 门户](https://aad.portal.azure.com)，并打开 Azure AD。
-1. 选择 "**审核日志**"。
+1. 选择“审核日志”。
 1. 使用**服务**筛选器仅显示特权标识管理服务的审核事件。 在 "**审核日志**" 页上，您可以：
 
     - 请参阅**状态原因**列中的审核事件的原因。

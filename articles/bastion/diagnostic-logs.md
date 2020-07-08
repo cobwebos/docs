@@ -4,15 +4,15 @@ description: 本文介绍如何启用和使用 Azure 堡垒诊断日志。
 services: bastion
 author: charwen
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131274"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744198"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>启用和使用堡垒资源日志
 
@@ -79,4 +79,4 @@ ms.locfileid: "82131274"
 
 ## <a name="next-steps"></a>后续步骤
 
-阅读[堡垒常见问题解答](bastion-faq.md)。
+阅读 [Bastion 常见问题解答](bastion-faq.md)。

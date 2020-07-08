@@ -9,15 +9,15 @@ ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743569"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>排查常见的路由问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "79471500"
 
 - 直接将请求发送到后端（无需通过前门），并查看后端响应所需的正常时间。
 - 通过前门发送请求，并查看是否看到了503响应。 如果不是，则这可能不是超时问题。 请联系支持人员。
-- 如果通过前门导致错误响应代码为503，则配置前门的 sendReceiveTimeout 字段，将默认超时值扩展到4分钟（240秒）。 该设置位于下`backendPoolSettings` ，并且将调用`sendRecvTimeoutSeconds`。 
+- 如果通过前门导致错误响应代码为503，则配置前门的 sendReceiveTimeout 字段，将默认超时值扩展到4分钟（240秒）。 该设置位于下 `backendPoolSettings` ，并且将调用 `sendRecvTimeoutSeconds` 。 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>发送到自定义域的请求将返回400状态代码
 

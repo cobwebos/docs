@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604879"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84488778"
 ---
 通过使用区域 VNet 集成，你的应用程序可以访问：
 
@@ -56,11 +56,7 @@ ms.locfileid: "81604879"
 
 如果你希望你的应用程序在另一个计划中连接到已连接到的 VNet，请选择与预先存在的 VNet 集成所使用的子网不同的子网。
 
-此功能在 Linux 中处于预览阶段。 此功能的 Linux 格式仅支持调用 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16）。
-
-### <a name="web-or-function-app-for-containers"></a>用于容器的 Web 或 Function App
-
-如果在 Linux 上托管内置映像的应用，则区域 VNet 集成无需进行其他更改即可工作。 如果为容器使用 Web 或 Function App，则必须修改 docker 映像才能使用 VNet 集成。 在 docker 映像中，使用端口环境变量作为主 web 服务器的侦听端口，而不是使用硬编码的端口号。 平台会在容器启动时自动设置端口环境变量。 如果使用 SSH，则必须将 SSH 守护程序配置为在使用区域 VNet 集成时侦听 SSH_PORT 环境变量指定的端口号。 在 Linux 上，不支持网关必需的 VNet 集成。
+Windows 和 Linux web 应用程序完全支持此功能。 所有行为在 Windows 应用和 Linux 应用之间起着相同的作用。
 
 ### <a name="service-endpoints"></a>服务终结点
 

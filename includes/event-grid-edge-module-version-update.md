@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: include
 ms.date: 01/16/2020
-ms.author: babanisa
+ms.author: femila
 ms.custom: include file
-ms.openlocfilehash: cca628a54d9ac84fbb8a798168f72adbaa24aa48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16272ffceea6db5ced839d3ed957d11aec580a91
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844527"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84562158"
 ---
 >[!NOTE]
-> 请始终检查映像的版本，确保其具有所需的 feautures。 如果已在计算机上安装了以前版本的容器映像，则需要指定所需的版本标记，或删除现有的映像，然后再使用`:latest`标记进行提取。 有关映像版本和标记的详细信息，请参阅[发行说明](../articles/event-grid/edge/release-notes.md)。
+> 请始终检查映像的版本，确保其具有所需的 feautures。 如果已在计算机上安装了以前版本的容器映像，则需要指定所需的版本标记，或删除现有的映像，然后再使用标记进行提取 `:latest` 。 有关映像版本和标记的详细信息，请参阅[发行说明](../articles/event-grid/edge/release-notes.md)。

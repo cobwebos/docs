@@ -4,15 +4,15 @@ description: 本文介绍如何使用门户创建 Azure 堡垒主机
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1fa4b6a33b055f2042c9bf941a33ae03ead6ebde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148336"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744266"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>使用门户创建 Azure 堡垒主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "82148336"
 
 可以通过手动指定所有设置或使用对应于现有 VM 的设置在门户中创建新的堡垒主机资源。 若要使用 VM 设置创建堡垒主机，请参阅[快速入门](quickstart-host-portal.md)文章。 或者，可以使用[Azure PowerShell](bastion-create-host-powershell.md)创建 Azure 堡垒主机。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 堡垒在以下 Azure 公共区域中提供：
 
@@ -30,7 +30,7 @@ ms.locfileid: "82148336"
 
 本部分可帮助你从 Azure 门户创建新的 Azure 堡垒资源。
 
-1. 在 [Azure 门户](https://portal.azure.com)菜单或“主页”中，选择“创建资源”。  
+1. 在 [Azure 门户](https://portal.azure.com)菜单或“主页”页上，选择“创建资源” 。
 
 1. 在 "**新建**" 页上的 "*搜索应用商店"* 字段中，键入**堡垒**，然后单击**Enter**转到搜索结果。
 
@@ -50,8 +50,8 @@ ms.locfileid: "82148336"
     * **子网**：虚拟网络中将在其中部署新堡垒主机的子网。 此子网将专用于堡垒主机并且必须命名为**AzureBastionSubnet**。 此子网必须至少为/27 或更大。
     
        **AzureBastionSubnet**不支持[用户定义的路由](../virtual-network/virtual-networks-udr-overview.md#custom-routes)，但支持[网络安全组](bastion-nsg.md)。
-    * **公共 ip 地址**：访问 RDP/SSH 的堡垒资源（通过端口443）的公共 ip。 创建新的公共 IP，或使用现有的公共 IP。 公共 IP 地址必须与要创建的堡垒资源位于同一区域。
-    * **公共 ip 地址名称**：公共 ip 地址资源的名称。
+    * **公共 ip 地址**：访问 RDP/SSH 的堡垒资源（通过端口443）的公共 ip。 新建公共 IP，或使用现有公共 IP。 公共 IP 地址必须与要创建的 Bastion 资源位于同一区域。
+    * **公共 IP 地址名称**：公共 IP 地址资源的名称。
     * **公共 IP 地址 SKU**：默认情况下，此设置预填充为 "**标准**"。 Azure 堡垒只使用/支持标准公共 IP SKU。
     * **赋值**：默认情况下，此设置预填充为**静态**。
 
@@ -63,4 +63,4 @@ ms.locfileid: "82148336"
 
 * 有关其他信息，请参阅[堡垒常见问题解答](bastion-faq.md)。
 
-* 若要在 Azure 堡垒子网中使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)。
+* 若要在 Azure Bastion 子网中使用网络安全组，请参阅[使用 NSG](bastion-nsg.md)。

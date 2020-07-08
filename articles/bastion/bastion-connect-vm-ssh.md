@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 堡垒连接到 Linux 虚拟机。
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f1f3d02d8433dd88fed844a587a961ea9f8c82
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77596821"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744283"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure 堡垒通过 SSH 连接到 Linux 虚拟机
 
@@ -23,9 +23,9 @@ ms.locfileid: "77596821"
 * 手动输入的私钥
 * 包含私钥信息的文件
 
-SSH 私钥的格式必须以开头`"-----BEGIN RSA PRIVATE KEY-----"` ，以结尾。 `"-----END RSA PRIVATE KEY-----"`
+SSH 私钥的格式必须以开头 `"-----BEGIN RSA PRIVATE KEY-----"` ，以结尾 `"-----END RSA PRIVATE KEY-----"` 。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 请确保已为 VM 所在的虚拟网络设置了 Azure 堡垒主机。 有关详细信息，请参阅[创建 Azure 堡垒主机](bastion-create-host-portal.md)。 在虚拟网络中设置并部署堡垒服务后，可以使用它连接到此虚拟网络中的任何 VM。 
 

@@ -7,7 +7,7 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2efcf77d65fa2f9e203ed805cd7d78b9802ee3aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046a0d61bb7a6d715a1d732790d2b472b3e83c13
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74021942"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84743773"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>邀请来宾用户并将 Azure 资源角色分配到 Privileged Identity Management
 
@@ -55,7 +55,7 @@ Azure Active Directory （Azure AD）来宾用户是 Azure AD 中企业到企业
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择**Azure Active Directory** > **用户设置**。
+1. 选择**Azure Active Directory**  >  **用户设置**。
 
 1. 选择 "**管理外部协作设置**"。
 
@@ -69,9 +69,9 @@ Azure Active Directory （Azure AD）来宾用户是 Azure AD 中企业到企业
 
 1. 使用 "[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)" 或 "[用户管理员](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)" 角色的成员用户身份登录到[Azure 门户](https://portal.azure.com/)。
 
-1. 打开**Azure AD Privileged Identity Management**。
+1. 打开“Azure AD Privileged Identity Management”。
 
-1. 选择“Azure 资源”****。
+1. 选择 " **Azure 资源**"。
 
 1. 使用资源筛选器**** 对托管资源的列表进行筛选。
 
@@ -157,7 +157,7 @@ Azure Active Directory （Azure AD）来宾用户是 Azure AD 中企业到企业
 
     ![Azure 资源-列出时间、请求者和操作的资源审核页](./media/pim-resource-roles-external-users/audit-resource.png)
 
-1. 若要查看来宾的活动，请选择 " **Azure Active Directory** > **用户** > " "*来宾名称*"。
+1. 若要查看来宾的活动，请选择 " **Azure Active Directory**  >  **用户**" "  >  *来宾名称*"。
 
 1. 选择 "**审核日志**" 以查看组织的审核日志。 可以根据需要指定筛选器。
 

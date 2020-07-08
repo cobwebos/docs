@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844567"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84485764"
 ---
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
 
@@ -52,9 +52,9 @@ ms.locfileid: "82844567"
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 来安装程序包和写入文件，或者配置用户和安全性。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
+[Cloud-init](https://cloudinit.readthedocs.io) 是一种广泛使用的方法，用于在首次启动 Linux VM 时对其进行自定义。 可使用 cloud-init 安装程序包和写入文件，或者配置用户和安全。 由于是在初始启动过程中调用 cloud-init，因此无需额外的步骤且无需代理来应用配置。  有关如何正确设置 `#cloud-config` 文件格式的详细信息，请参阅 [cloud-init 文档站点](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 文件是采用 base64 编码的文本文件。
 
-Cloud-init 还支持不同的发行版。 例如，不需使用  apt-get install 或  yum install 来安装包， 而是可定义要安装的程序包的列表。 Cloud-init 将对所选发行版自动使用本机包管理工具。
+Cloud-init 还支持不同的发行版。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 Cloud-init 将对所选发行版自动使用本机包管理工具。
 
 我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。
 了解有关 Azure 上的 cloud-init 的更多详细信息：
@@ -89,7 +89,7 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 ## <a name="packer"></a>Packer
 在 Azure 中创建自定义 VM 映像时，[Packer](https://www.packer.io) 会自动完成生成过程。 可以使用 Packer 来定义 OS 并运行配置后脚本，根据具体需求来自定义 VM。 配置完成后，会将 VM 作为托管磁盘映像捕获。 Packer 自动完成创建源 VM、网络和存储资源，运行配置脚本，然后创建 VM 映像这一过程。
 
-了解如何操作：
+了解如何：
 
 - [在 Azure 中使用 Packer 创建 Linux VM 映像](../articles/virtual-machines/linux/build-image-with-packer.md)。
 - [在 Azure 中使用 Packer 创建 Windows VM 映像](../articles/virtual-machines/windows/build-image-with-packer.md)。
@@ -100,7 +100,7 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 
 了解如何：
 
-- [使用 Azure 安装和配置 Terraform](/azure/developer/terraform/install-configure)。
+- [使用 Azure 安装和配置 Terraform](/azure/developer/terraform/getting-started-cloud-shell)。
 - [使用 Terraform 创建 Azure 基础结构](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure)。
 
 
@@ -111,7 +111,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [创建 PowerShell runbook](../articles/automation/automation-first-runbook-textual-powershell.md)。
+- [创建 PowerShell Runbook](../articles/automation/automation-first-runbook-textual-powershell.md)。
 - [使用混合 Runbook 辅助角色管理本地资源](../articles/automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure 自动化 DSC](../articles/automation/automation-dsc-getting-started.md)。
 
@@ -119,7 +119,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) 是一套工具，用于共享和跟踪代码、使用自动化生成，以及创建完整的持续集成和开发 (CI/CD) 管道。 Azure DevOps Services 集成了 Visual Studio 和其他编辑器，简化了使用过程。 Azure DevOps Services 还可以创建和配置 Azure VM，然后向其部署代码。
 
-了解有关以下方面的详细信息：
+了解以下内容的详细信息：
 
 - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
 
@@ -132,15 +132,15 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 - [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)。
 
 
-## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
-[Azure 资源管理器](../articles/azure-resource-manager/templates/overview.md)是 azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
+[Azure 资源管理器](../articles/azure-resource-manager/templates/overview.md)是 Azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
 
 了解如何：
 
 - [使用资源管理器模板部署专色 vm](../articles/virtual-machines/linux/spot-template.md)。
-- [使用 c # 和资源管理器模板部署 Azure 虚拟机](../articles/virtual-machines/windows/csharp-template.md)。
-- [从资源管理器模板创建 Windows 虚拟机](../articles/virtual-machines/windows/ps-template.md)。
-- [下载 VM 的模板](../articles/virtual-machines/windows/download-template.md)。
+- [使用 C# 和资源管理器模板部署 Azure 虚拟机](../articles/virtual-machines/windows/csharp-template.md)。
+- [通过资源管理器模板创建 Windows 虚拟机](../articles/virtual-machines/windows/ps-template.md)。
+- [下载 VM 模板](../articles/virtual-machines/windows/download-template.md)。
 - [创建 Azure 映像生成器模板](../articles/virtual-machines/linux/image-builder-json.md)。
 
 ## <a name="next-steps"></a>后续步骤

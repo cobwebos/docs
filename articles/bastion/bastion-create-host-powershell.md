@@ -4,15 +4,15 @@ description: 本文介绍如何创建 Azure 堡垒主机
 services: bastion
 author: cherylmc
 ms.service: bastion
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c62ac014513f3e93a04008af06ef8ffe5008ed2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80520502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84744249"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure 堡垒主机
 
@@ -20,7 +20,7 @@ ms.locfileid: "80520502"
 
 还可以选择使用[Azure 门户](bastion-create-host-portal.md)创建 Azure 堡垒主机。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>准备阶段
 
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "80520502"
 
 本部分帮助你使用 Azure PowerShell 创建新的 Azure 堡垒资源。
 
-1. 创建虚拟网络和 Azure 堡垒子网。 必须使用 name 值**AzureBastionSubnet**创建 Azure 堡垒子网。 此值允许 Azure 知道要将堡垒资源部署到哪个子网。 这不同于网关子网。 必须使用至少/27 或更大子网的子网（/27、/26 等）。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 如果在**AzureBastionSubnet**上使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)一文。
+1. 创建虚拟网络和 Azure 堡垒子网。 必须使用 name 值**AzureBastionSubnet**创建 Azure 堡垒子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 这不同于网关子网。 必须使用至少/27 或更大子网的子网（/27、/26 等）。 创建不包含任何路由表或委托的**AzureBastionSubnet** 。 如果在**AzureBastionSubnet**上使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)一文。
 
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
@@ -38,7 +38,7 @@ ms.locfileid: "80520502"
    $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
-2. 为 Azure 堡垒创建公共 IP 地址。 公共 IP 是公共 IP 地址，将在其上访问 RDP/SSH 的堡垒资源（通过端口443）。 公共 IP 地址必须与要创建的堡垒资源位于同一区域。
+2. 为 Azure 堡垒创建公共 IP 地址。 公共 IP 是公共 IP 地址，将在其上访问 RDP/SSH 的堡垒资源（通过端口443）。 公共 IP 地址必须与要创建的 Bastion 资源位于同一区域。
 
    ```azurepowershell-interactive
    $publicip = New-AzPublicIpAddress -ResourceGroupName "myBastionRG" -name "myPublicIP" -location "westeurope" -AllocationMethod Static -Sku Standard
@@ -54,4 +54,4 @@ ms.locfileid: "80520502"
 
 * 有关其他信息，请参阅[堡垒常见问题解答](bastion-faq.md)。
 
-* 若要在 Azure 堡垒子网中使用网络安全组，请参阅[使用 nsg](bastion-nsg.md)。
+* 若要在 Azure Bastion 子网中使用网络安全组，请参阅[使用 NSG](bastion-nsg.md)。

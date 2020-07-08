@@ -9,19 +9,19 @@ ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0303d37ef5bbbf266feb5456b0bc224ce272ee13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80a75664b977c7f37808de7ca68b332363886a4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499251"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84742975"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 自定义角色
 
@@ -74,7 +74,7 @@ Privileged Identity Management 可以管理可在 Azure Active Directory (Azure 
 1. 如果“永久”复选框已显示并且可选（具体取决于角色设置），可以指定该分配是否是永久性的。  选中该复选框可使分配永久符合条件或永久进行分配。 清除该复选框可指定分配持续时间。
 1. 若要创建新的角色分配，请依次单击“保存”、“添加”   。 此时将显示分配过程状态的通知。
 
-若要验证角色分配，请在打开的角色中选择“分配” **“分配”，然后检查角色分配是否正确标识为“符合条件”或“活动”。**  >  
+若要验证角色分配，请在打开的角色中选择“分配” > “分配”，然后检查角色分配是否正确标识为“符合条件”或“活动”。
 
  ![检查角色分配是否显示为“符合条件”或“活动”](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
