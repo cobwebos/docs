@@ -6,17 +6,17 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d680283250cc323c833f388f6b20d7fe6fa132d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631965"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211045"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 池中的计算资源
 
@@ -29,7 +29,7 @@ ms.locfileid: "80631965"
 若要部署该模板，需提供以下信息：
 
 - SQL 池实例所在的资源组的名称
-- SQL 池实例所在的逻辑服务器的名称
+- SQL 池实例所在的服务器的名称
 - SQL 池实例的名称
 - Azure Active Directory 的租户 ID（目录 ID）
 - 订阅 ID
@@ -97,11 +97,11 @@ ms.locfileid: "80631965"
 
 目前，模板中只包括两个缩放函数。 使用这些函数，在一天中只能纵向缩减和纵向扩展各一次。 若要进行更精细的控制，例如每天纵向缩减多次，或者在周末表现出不同的缩放行为，则需添加另一触发器。
 
-1. 创建新的空白函数。 选择函数*+* 位置附近的按钮以显示函数模板窗格。
+1. 创建新的空白函数。 选择 *+* 函数位置附近的按钮以显示函数模板窗格。
 
    ![创建新的函数](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 从“语言”中选择“Javascript”，然后选择“TimerTrigger”。****
+2. 在 "语言" 中，选择 " *JavaScript*"，然后选择 " *TimerTrigger*"。
 
    ![创建新的函数](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "80631965"
 
 5. 将操作变量设置为所需行为，如下所示：
 
-   ```javascript
+   ```JavaScript
    // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
@@ -141,7 +141,7 @@ ms.locfileid: "80631965"
 
 每日早晨 8 点纵向扩展到 DW600，晚上 8 点纵向缩减到 DW200。
 
-| 函数  | 计划     | Operation                                |
+| 函数  | 计划     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +150,7 @@ ms.locfileid: "80631965"
 
 每日早晨 8 点纵向扩展到 DW1000，下午 4 点纵向缩减到 DW600 一次，晚上 10 点纵向缩减到 DW200。
 
-| 函数  | 计划     | Operation                                |
+| 函数  | 计划     | 操作                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +160,7 @@ ms.locfileid: "80631965"
 
 在工作日的早晨 8 点纵向扩展到 DW1000，下午 4 点纵向缩减到 DW600 一次。 周五晚上 11 点暂停，周一早晨 7 点继续。
 
-| 函数  | 计划       | Operation                                |
+| 函数  | 计划       | 操作                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

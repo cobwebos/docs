@@ -1,51 +1,32 @@
 ---
-title: 使用 SQL 点播（预览版）查询文件夹和多个 CSV 文件
+title: 使用 SQL 点播（预览版）查询文件夹和多个文件
 description: SQL 点播（预览版）支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457359"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207625"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>查询文件夹和多个 CSV 文件  
+# <a name="query-folders-and-multiple-files"></a>查询文件夹和多个文件  
 
-本文介绍如何在 Azure Synapse Analytics 中使用 SQL 点播（预览版）编写查询。
+在本文中，你将了解如何在 Azure Synapse Analytics 中使用 SQL On-demand（预览版）编写查询。
 
 SQL 点播支持使用通配符读取多个文件/文件夹，这类似于 Windows 操作系统中使用的通配符。 但是，由于允许使用多个通配符，因此存在更大的灵活性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-阅读本文其余部分之前，请务必查看下面列出的文章：
+第一步是创建将在其中执行查询的数据库。 然后通过对该数据库执行[安装脚本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)来初始化这些对象。 此安装脚本将创建数据源、数据库范围的凭据以及在这些示例中使用的外部文件格式。
 
-- [首次设置](query-data-storage.md#first-time-setup)
-- [先决条件](query-data-storage.md#prerequisites)
-
-## <a name="read-multiple-files-in-folder"></a>读取文件夹中的多个文件
-
-你将使用文件夹*csv/出租车*来执行示例查询。 它包含 NYC 出租车-从7月2016日到6月 6 2018 日，记录数据。
-
-*Csv/出租车*中的文件按年份和月份命名：
-
-- yellow_tripdata_2016-07
-- yellow_tripdata_2016-08
-- yellow_tripdata_2016-09
-- ...
-- yellow_tripdata_2018-04
-- yellow_tripdata_2018-05
-- yellow_tripdata_2018-06-01.5。1
-
-每个文件都具有以下结构：
-        
-    [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
+你将使用文件夹*csv/出租车*来执行示例查询。 它包含 NYC 出租车-从7月2016日到6月 6 2018 日，记录数据。 *Csv/出租车*中的文件采用以下模式按年份和月份命名 <year> ： yellow_tripdata_ - <month>
 
 ## <a name="read-all-files-in-folder"></a>读取文件夹中的所有文件
     
@@ -57,28 +38,14 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/*.*',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-           trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-           payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        pickup_datetime DATETIME2 2, 
+        passenger_count INT 4
     ) AS nyc
 GROUP BY
     YEAR(pickup_datetime)
@@ -98,28 +65,14 @@ SELECT
     payment_type,  
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
-        vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
-        pickup_datetime DATETIME2, 
-        dropoff_datetime DATETIME2,
-        passenger_count INT,
-        trip_distance FLOAT,
-        rate_code INT,
-        store_and_fwd_flag VARCHAR(100) COLLATE Latin1_General_BIN2,
-        pickup_location_id INT,
-        dropoff_location_id INT,
-        payment_type INT,
-        fare_amount FLOAT,
-        extra FLOAT,
-        mta_tax FLOAT,
-        tip_amount FLOAT,
-        tolls_amount FLOAT,
-        improvement_surcharge FLOAT,
-        total_amount FLOAT
+        payment_type INT 10,
+        fare_amount FLOAT 11
     ) AS nyc
 GROUP BY payment_type
 ORDER BY payment_type;
@@ -147,8 +100,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/taxi/',
-        FORMAT = 'CSV', 
+        BULK 'csv/taxi/',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -184,7 +138,7 @@ ORDER BY
 可以通过使用通配符从多个文件夹读取文件。 下面的查询将从*csv*文件夹中的所有文件夹（名称以*t*开头并以*i*结尾）读取所有文件。
 
 > [!NOTE]
-> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将改为针对名为*t&ast;i*的文件。
+> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将改为针对名为*t &ast; i*的文件。
 
 ```sql
 SELECT
@@ -192,8 +146,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/', 
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/', 
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (
@@ -231,7 +186,7 @@ ORDER BY
 可以在不同的路径级别使用多个通配符。 例如，你可以将以前的查询扩充为仅读取包含2017数据的文件，从所有文件夹中的名称以*t*开头，并以*i*结尾。
 
 > [!NOTE]
-> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将改为针对名为*t&ast;i*的文件。
+> 请注意以下查询中路径的末尾是否存在/。 它表示文件夹。 如果省略/，则查询将改为针对名为*t &ast; i*的文件。
 > 每个查询的最大限制为10个通配符。
 
 ```sql
@@ -240,8 +195,9 @@ SELECT
     SUM(passenger_count) AS passengers_total,
     COUNT(*) AS [rides_total]
 FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/t*i/yellow_tripdata_2017-*.csv',
-        FORMAT = 'CSV', 
+        BULK 'csv/t*i/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2
     )
     WITH (

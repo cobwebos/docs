@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335912"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207883"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -35,22 +35,22 @@ ms.locfileid: "80335912"
 可通过两种方式构建开发人员门户：
 
 - **托管版本** - 通过编辑和自定义 API 管理实例中内置的、可通过 URL `<your-api-management-instance-name>.developer.azure-api.net` 访问的门户。 请参阅[此文档](api-management-howto-developer-portal-customize.md)了解如何访问和自定义托管门户。
-- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 此方法允许你编辑门户的基本代码并扩展提供的核心功能，例如，实现自定义小组件以便与第三方系统集成。 在此方案中，你是门户的 maintainer，负责将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库中的门户源代码][1]和[实现小组件教程][3]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍门户的管理面板，这对于托管版本和自承载版本很常见。
+- **自承载版本** - 通过在 API 管理实例外部部署和自承载门户。 此方法允许你编辑门户的基本代码并扩展提供的核心功能，例如，实现自定义小组件以便与第三方系统集成。 在此方案中，你是门户的 maintainer，负责将门户升级到最新版本。 有关详细信息和说明，请参阅[包含门户源代码的 GitHub 存储库][1]和[有关实现小组件的教程][3]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍门户的管理面板，这对于托管版本和自承载版本很常见。
 
 ## <a name="portal-architectural-concepts"></a>门户体系结构概念
 
-门户组件在逻辑上可以划分为两个类别：代码和内容。****
+门户组件在逻辑上可以划分为两个类别：代码和内容。  
 
-代码在 [GitHub 存储库][1]中维护，包括：**
+代码在 [GitHub 存储库][1]中维护，包括： 
 
 - 小组件 - 呈现视觉元素并组合了 HTML、JavaScript、样式功能、设置和内容映射。 例如，图像、文本段落、表单、API 列表等。
 - 样式定义 - 指定如何设置小组件的样式
 - 引擎 - 基于门户内容生成静态网页，是以 JavaScript 编写的
 - 视觉编辑器 - 用于浏览器内部的自定义和创作体验
 
-内容划分为两个子类别：门户内容和 API 管理内容。******
+内容划分为两个子类别：门户内容和 API 管理内容。   
 
-门户内容特定于门户，包括：**
+门户内容特定于门户，包括： 
 
 - 页面 - 例如登陆页、API 教程和博客文章
 - 媒体 - 图像、动画和其他基于文件的内容
@@ -58,21 +58,21 @@ ms.locfileid: "80335912"
 - 样式 - 样式定义值，例如字体、颜色和边框
 - 设置 - 网站图标、网站元数据等配置
 
-门户内容（媒体除外）以 JSON 文档的形式表示。**
+门户内容（媒体除外）以 JSON 文档的形式表示。 
 
-API 管理内容包括 API、操作、产品和订阅等实体。**
+API 管理内容包括 API、操作、产品和订阅等实体。 
 
 门户基于 [Paperbits 框架](https://paperbits.io/)的改编分叉。 原始 Paperbits 功能已经过扩展，提供特定于 API 管理的小组件（例如 API 列表、产品列表）以及与 API 管理服务之间的连接器，可以保存和检索内容。
 
-## <a name="frequently-asked-questions"></a><a name="faq"></a>常见问题
+## <a name="frequently-asked-questions"></a><a name="faq"></a> 常见问题
 
 在本部分中，我们回答了有关开发人员门户的常见问题，这些问题是一般的。 有关自承载版本的特定问题，请参阅 [GitHub 存储库的 wiki 部分](https://github.com/Azure/api-management-developer-portal/wiki)。
 
-### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> 如何从门户预览版迁移？
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"></a> 如何从门户预览版迁移？
 
 你已使用开发人员门户预览版在 API 管理服务中预配了预览内容。 为了提供更好的用户体验，默认内容已在正式版中进行重大修改。 正式版中还包括新的小组件。
 
-如果使用的是托管版本，请通过单击“操作”菜单部分中的“重置内容”来重置门户内容。******** 确认此操作会删除门户的所有内容并预配新的默认内容。 门户引擎已在 API 管理服务中自动更新。
+如果使用的是托管版本，请通过单击“操作”菜单部分中的“重置内容”来重置门户内容。   确认此操作会删除门户的所有内容并预配新的默认内容。 门户引擎已在 API 管理服务中自动更新。
 
 ![重置门户内容](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -94,11 +94,11 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 ### <a name="has-the-old-portal-been-deprecated"></a>旧门户是否已弃用？
 
-旧的开发人员和发布者门户现在属于旧版功能 - 它们只会接收安全更新。** 新功能只会在新开发人员门户中实现。
+旧的开发人员和发布者门户现在属于旧版功能 - 它们只会接收安全更新。  新功能只会在新开发人员门户中实现。
 
 旧门户弃用时，我们会另行通告。 若有问题、疑虑或意见，请提出[相关的 GitHub 问题](https://github.com/Azure/api-management-developer-portal/issues/121)。
 
-### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户中不支持我需要的功能
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户不支持我需要的功能
 
 您可以自行打开[功能请求](https://aka.ms/apimwish)或[实现缺少的功能][3]。 如果自行实现此功能，则可以自行承载开发人员门户，或在 GitHub 上打开拉取请求，以在托管版本中包含更改。
 
@@ -110,7 +110,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板，和/或是否与 API 管理 DevOps 资源工具包兼容？
 
-不能。
+否。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>是否需要为托管门户依赖项启用附加 VNet 连接？
 
@@ -150,14 +150,14 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 1. 单击 "在**全局级别上手动应用**" 链接以查看生成的策略代码。
 2. 在 Azure 门户中，导航到 API 管理服务的 " **api** " 部分中的**所有 api** 。
-3. 单击 " **</>** **入站处理**" 部分中的图标。
-4. 在 XML 文件的**<inbound>** 部分中插入策略。 请确保**<origin>** 该值与开发人员门户的域相匹配。
+3. 单击 **</>** "**入站处理**" 部分中的图标。
+4. 在 XML 文件的部分中插入策略 **<inbound>** 。 请确保 **<origin>** 该值与开发人员门户的域相匹配。
 
 > [!NOTE]
 > 
 > 如果在产品范围而不是 API 范围内应用 CORS 策略，并且 API 通过标头使用订阅密钥身份验证，则控制台无法正常工作。
 >
-> 浏览器自动发出 HTTP 请求选项，该请求不包含带有订阅密钥的标头。 由于缺少订阅密钥，API 管理无法将选项调用与产品相关联，因此不能应用 CORS 策略。
+> 浏览器会自动发出 OPTIONS HTTP 请求，但该请求不包含带有订阅密钥的标头。 由于缺少订阅密钥，API 管理无法将 OPTIONS 调用与产品相关联，因此也就无法应用 CORS 策略。
 >
 > 解决方法之一是在查询参数中传递订阅密钥。
 
@@ -169,7 +169,7 @@ API 管理内容包括 API、操作、产品和订阅等实体。**
 
 可以使用以下 PowerShell 脚本创建拥有所需权限的角色。 请记得更改 `<subscription-id>` 参数。 
 
-```PowerShell
+```powershell
 #New Portals Admin Role 
 Import-Module Az 
 Connect-AzAccount 
@@ -185,9 +185,9 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-创建角色后，可以通过 Azure 门户中的“访问控制(IAM)”部分将其授予任何用户。**** 将此角色分配给用户会在服务范围分配权限。 该用户可以代表服务中的任何用户生成 SAS 令牌。** 最起码需要将此角色分配给服务的管理员。 以下 PowerShell 命令演示如何在最低范围将角色分配给用户 `user1`，以避免向该用户授予不必要的权限： 
+创建角色后，可以通过 Azure 门户中的“访问控制(IAM)”部分将其授予任何用户。  将此角色分配给用户会在服务范围分配权限。 该用户可以代表服务中的任何用户生成 SAS 令牌。  最起码需要将此角色分配给服务的管理员。 以下 PowerShell 命令演示如何在最低范围将角色分配给用户 `user1`，以避免向该用户授予不必要的权限： 
 
-```PowerShell
+```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
 ```
 
@@ -201,9 +201,9 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 调用失败也可能由将分配给自定义域且不受浏览器信任的 TLS/SSL 证书引起。 作为缓解措施，可以删除管理终结点自定义域 - API 管理将回退到包含受信任证书的默认终结点。
 
-### <a name="whats-the-browser-support-for-the-portal"></a>门户的浏览器支持有哪些？
+### <a name="whats-the-browser-support-for-the-portal"></a>门户对浏览器的支持是什么？
 
-| 浏览器                     | 支持       |
+| 浏览者                     | 支持       |
 |-----------------------------|-----------------|
 | Apple Safari                | 是<sup>1</sup> |
 | Google Chrome               | 是<sup>1</sup> |
@@ -211,7 +211,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 | Microsoft Internet Explorer | 否              |
 | Mozilla Firefox             | 是<sup>1</sup> |
 
- <small><sup>1</sup>在两个最新的生产版本中受支持。</small>
+ <small><sup>1</sup> 在两个最新的生产版本中受支持。</small>
 
 ## <a name="next-steps"></a>后续步骤
 

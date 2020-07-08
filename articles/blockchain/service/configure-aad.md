@@ -2,14 +2,14 @@
 title: 配置 Azure Active Directory 访问-Azure 区块链服务
 description: 如何配置 Azure Active Directory 访问的 Azure 区块链服务
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455868"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208767"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>如何为 Azure 区块链服务配置 Azure Active Directory 访问权限
 
@@ -29,7 +29,7 @@ Azure AD 提供基于云的标识管理，使你能够跨整个企业使用单�
 
 在成员级别授予访问权限。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 导航到**访问控制（IAM） > 添加 > 添加角色分配**。
 1. 选择**区块链成员节点访问（预览版）** 角色，并添加要向其授予访问权限的 Azure AD ID 对象。 Azure AD ID 对象可以是：
 
@@ -41,7 +41,7 @@ Azure AD 提供基于云的标识管理，使你能够跨整个企业使用单�
 
     ![添加角色分配](./media/configure-aad/add-role-assignment.png)
 
-1. 选择“保存”。 
+1. 选择“保存”。
 
 ### <a name="grant-node-level-access"></a>授予节点级别访问权限
 
@@ -63,7 +63,7 @@ git clone https://github.com/Microsoft/azure-blockchain-connector.git
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>使用 Azure AD 用户帐户进行连接
 
-1. 运行以下命令，使用 Azure AD 的用户帐户进行身份验证。 将\<myAADDirectory\>替换为 Azure AD 域。 例如，`yourdomain.onmicrosoft.com` 。
+1. 运行以下命令，使用 Azure AD 的用户帐户进行身份验证。 替换 \<myAADDirectory\> 为 Azure AD 域。 例如 `yourdomain.onmicrosoft.com`。
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
@@ -87,10 +87,10 @@ git clone https://github.com/Microsoft/azure-blockchain-connector.git
 connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myClientID> -client-secret "<myClientSecret>" -tenant-id <myAADDirectory>
 ```
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |-----------|-------------|
 | 租户-id | Azure AD 域，例如`yourdomain.onmicrosoft.com`
-| 客户端-id | Azure AD 中已注册应用程序的客户端 ID
+| client-id | Azure AD 中已注册应用程序的客户端 ID
 | client-secret | Azure AD 中已注册应用程序的客户端机密
 
 有关如何在 Azure AD 中注册应用程序的详细信息，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)
@@ -99,7 +99,7 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 对于不可能 Azure AD 身份验证弹出窗口显示的移动设备或基于文本的浏览器，Azure AD 生成一次性密码。 你可以复制密码，并在另一个环境中继续进行 Azure AD 身份验证。
 
-若要生成密码，请将**aadauthcode**替换为**aaddevice**。 将\<myAADDirectory\>替换为 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
+若要生成密码，请将**aadauthcode**替换为**aaddevice**。 替换 \<myAADDirectory\> 为 Azure AD 域。 例如，`yourdomain.onmicrosoft.com`。
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

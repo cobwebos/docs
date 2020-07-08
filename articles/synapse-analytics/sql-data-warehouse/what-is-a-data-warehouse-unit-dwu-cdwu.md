@@ -6,17 +6,17 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408053"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210603"
 ---
 # <a name="data-warehouse-units-dwus"></a>数据仓库单位 (DWU)
 
@@ -24,7 +24,7 @@ ms.locfileid: "81408053"
 
 ## <a name="what-are-data-warehouse-units"></a>什么是数据仓库单位？
 
-[SYNAPSE SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示正在预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。
+[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示所预配的分析资源的集合。 分析资源定义为 CPU、内存和 IO 的组合。
 
 这三项资源捆绑到称为数据仓库单位 (DWU) 的计算规模单位中。 DWU 表示抽象、规范化的计算资源和性能度量值。
 
@@ -48,7 +48,7 @@ ms.locfileid: "81408053"
 
 服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代服务级别以计算数据仓库单位 (cDWU) 计量，例如 DW2000c。 第 1 代服务级别以 DWU 计量，例如 DW2000。
 
-服务级别目标（SLO）是确定 SQL 池的成本和性能级别的可伸缩性设置。 第 2 代 SQL 池的服务级别是以数据仓库单位 (DWU) 计量的，例如 DW2000c。
+服务级别目标 (SLO) 是确定 SQL 池的成本和性能级别的可伸缩性设置。 第 2 代 SQL 池的服务级别以数据仓库单位 (DWU) 计量，例如 DW2000c。
 
 > [!NOTE]
 > Azure SQL 数据仓库 Gen2 最近添加了额外的扩展功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
@@ -72,13 +72,13 @@ CREATE DATABASE mySQLDW
 
 DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库时暂停计算。 这些操作均可按需进行。 第 2 代还会在计算节点上使用基于本地磁盘的缓存以提高性能。 缩放或暂停系统时，缓存将失效，因此在达到最佳性能前，缓存需要预热一段时间。  
 
-每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
+每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](sql-data-warehouse-service-capacity-limits.md#workload-management)。
 
 ## <a name="capacity-limits"></a>容量限制
 
 每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)。
 
-## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位
+## <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少个数据仓库单位？
 
 合适的数据仓库单位数很大程度上取决于工作负荷及已加载到系统的数据量。
 
@@ -107,7 +107,7 @@ Azure 资源的内置角色（如 SQL DB 参与者和 SQL Server 参与者）可
 查看当前的 DWU 设置：
 
 1. 在 Visual Studio 中打开“SQL Server 对象资源管理器”。
-2. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+2. 连接到与逻辑 SQL 服务器关联的 master 数据库。
 3. 从 sys.database_service_objectives 动态管理视图中选择。 以下是示例：
 
 ```sql
@@ -123,13 +123,13 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="azure-portal"></a>Azure 门户
 
-若要更改 DWU，请执行以下操作：
+更改 DWU：
 
-1. 打开 [Azure 门户](https://portal.azure.com)，打开数据库，并单击“缩放”  。
+1. 打开 [Azure 门户](https://portal.azure.com)，打开数据库，并单击“缩放”。
 
-2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置  。
+2. 在“缩放”下，向左或向右移动滑块，以更改 DWU 设置。
 
-3. 单击“ **保存**”。 此时会显示确认消息。 单击“是”  以确认或“否”  以取消。
+3. 单击“保存” 。 此时会显示确认消息。 单击“是”确认，或者单击“否”取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -149,7 +149,7 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 
 若要更改 DWU，请执行以下操作：
 
-1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+1. 连接到与服务器关联的 master 数据库。
 2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 语句。 以下示例将数据库 MySQLDW 的服务级别目标设置为 DW1000c。
 
 ```Sql
@@ -185,7 +185,7 @@ DWU 更改可能需要几分钟才能完成。 如果要自动缩放，建议实
 
 检查 DWU 更改的状态：
 
-1. 连接到与逻辑 SQL 数据库服务器关联的 master 数据库。
+1. 连接到与服务器关联的 master 数据库。
 2. 提交以下查询以检查数据库状态。
 
 ```sql
@@ -210,8 +210,8 @@ FROM      sys.databases
 
 启动缩放操作时，系统首先终止所有打开的会话，回退所有打开的事务以确保状态一致。 对于缩放操作，缩放仅在此事务回退完成后才会发生。  
 
-- 对于纵向扩展操作，系统会拆离所有计算节点，预配额外的计算节点，然后将其重新附加到存储层。
-- 对于纵向缩减操作，系统会拆离所有计算节点，然后仅将所需的节点重新附加到存储层。
+- 对于增加操作，系统会分离所有计算节点，预配额外计算节点，然后重新附加到存储层。
+- 对于减少操作，系统会分离所有计算节点，然后仅将所需节点重新附加到存储层。
 
 ## <a name="next-steps"></a>后续步骤
 

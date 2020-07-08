@@ -1,30 +1,30 @@
 ---
 title: 分析工作负荷
-description: 用于在 Azure Synapse Analytics 中分析工作负荷的查询优先顺序的方法。
+description: 在 Azure Synapse Analytics 中分析工作负荷的查询优先级的技巧。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208393"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中分析工作负荷
 
-用于分析 Azure Synapse Analytics 中的 Synapse SQL 工作负荷的方法。
+在 Azure Synapse Analytics 中分析 Synapse SQL 工作负荷的技巧。 
 
 ## <a name="resource-classes"></a>资源类
 
-Synapse SQL 提供用于将系统资源分配给查询的资源类。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
+Synapse SQL 提供了资源类来将系统资源分配给查询。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
 
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-可以使用 `sys.database_principals` 来查看工作负荷管理角色。
+可以使用 `sys.database_principals`来查看工作负荷管理角色。
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -67,7 +67,7 @@ Synapse SQL 具有以下等待类型：
 
 * **LocalQueriesConcurrencyResourceType**：位于并发槽框架外部的查询。 DMV 查询和 `SELECT @@VERSION` 等系统函数是本地查询的示例。
 * **UserConcurrencyResourceType**：位于并发槽框架内部的查询。 针对最终用户表的查询代表使用此资源类型的示例。
-* **DmsConcurrencyResourceType**：数据移动操作生成的等待。
+* **DmsConcurrencyResourceType**：数据移动操作导致的等待。
 * **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。 通常情况下，建议连续快照的最小间隔时间为 10 分钟。
 
 可以使用 `sys.dm_pdw_waits` DMV 来查看请求所等待的具体资源。
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>后续步骤
 
-有关管理数据库用户和安全性的详细信息，请参阅[保护 SYNAPSE SQL 中的数据库](sql-data-warehouse-overview-manage-security.md)。 有关如何通过更大型资源类来改进聚集列存储索引质量的详细信息，请参阅[重新生成索引以提升段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+有关如何管理数据库用户和安全性的详细信息，请参阅[在 Synapse SQL 中保护数据库](sql-data-warehouse-overview-manage-security.md)。 有关更大的资源类如何提高聚集列存储索引质量的详细信息，请参阅重新[生成索引以提高段质量](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

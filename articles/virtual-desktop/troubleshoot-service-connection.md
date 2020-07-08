@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 05/20/2020
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7bf05fe039de2ab9e25495f9e2652fde8fac34e1
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 56a31caeefb3589527fdbbac118fa3a544a0d1a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85208887"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接
 
@@ -33,15 +33,17 @@ ms.locfileid: "83747696"
 
 用户可以启动远程桌面客户端，也可以进行身份验证，但在 Web 发现源中看不到任何图标。
 
-使用以下命令行确认已将报告问题的用户分配给应用程序组：
+1. 使用以下命令行确认已将报告问题的用户分配给应用程序组：
 
-```PowerShell
-Get-AzRoleAssignment -SignInName <userupn>
-```
+     ```powershell
+     Get-AzRoleAssignment -SignInName <userupn>
+     ```
 
-确认用户正在用正确的凭据登录。
+2. 确认用户正在用正确的凭据登录。
 
-如果正在使用 Web 客户端，请确认没有缓存的凭据问题。
+3. 如果正在使用 Web 客户端，请确认没有缓存的凭据问题。
+
+4. 如果用户是 Azure Active Directory （AD）用户组的一部分，请确保该用户组是安全组而不是通讯组。 Windows 虚拟桌面不支持 Azure AD 通讯组。
 
 ## <a name="next-steps"></a>后续步骤
 

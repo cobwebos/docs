@@ -4,23 +4,23 @@ description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面自定义 RD
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.topic: how-to
+ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 66b76fcdd9729b2a92ea2d561c740dbe148e0bbe
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611545"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207203"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>自定义主机池远程桌面协议属性
 
 >[!IMPORTANT]
->此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 >
-> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 通过自定义主机池的远程桌面协议（RDP）属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在**AzWvdHostPool** cmdlet 中使用 *-CustomRdpProperty*参数自定义 Windows 虚拟桌面中的 RDP 属性。
@@ -37,7 +37,7 @@ ms.locfileid: "82611545"
 
 |RDP 属性 | 台式机 | RemoteApps |
 |---|---| --- |
-| 多监视器模式 | 已启用 | 不可用 |
+| 多监视器模式 | Enabled | 不适用 |
 | 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 
@@ -53,10 +53,10 @@ ms.locfileid: "82611545"
 4. 在 Windows 虚拟桌面页面上，在屏幕左侧的菜单中选择 "**主机池**"。
 5. 选择要更新的**主机池的名称**。
 6. 在屏幕左侧的菜单中选择 "**属性**"。
-7. 选择 " **rdp 设置**" 开始编辑 rdp 属性。
+7. 在 "**属性**" 选项卡上，中转到 " **rdp 设置**" 开始编辑 rdp 属性。 属性应采用逗号分隔格式，如 PowerShell 示例。
 8. 完成后，选择 "**保存**" 以保存所做的更改。
 
-如果在 RDP 设置菜单中未看到要编辑的设置，则必须通过在 PowerShell 中运行 cmdlet 来手动编辑该设置。 后续部分将介绍如何在 PowerShell 中手动编辑自定义 RDP 属性。
+后续部分将介绍如何在 PowerShell 中手动编辑自定义 RDP 属性。
 
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>添加或编辑单个自定义 RDP 属性
 
@@ -89,14 +89,14 @@ CustomRdpProperty : audiocapturemode:i:1;
 若要添加或编辑多个自定义 RDP 属性，请运行以下 PowerShell cmdlet，方法是将自定义 RDP 属性提供为分号分隔的字符串：
 
 ```powershell
-$properties="<property1>;<property2>;<property3>" 
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties 
+$properties="<property1>;<property2>;<property3>"
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
 
 可以通过运行以下 cmdlet 进行检查，确保已添加 RDP 属性：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
 
 Name              : <hostpoolname>
 CustomRdpProperty : <customRDPpropertystring>
@@ -105,9 +105,9 @@ CustomRdpProperty : <customRDPpropertystring>
 根据前面的 cmdlet 示例，如果在0301HP 主机池上设置了多个 RDP 属性，则 cmdlet 将如下所示：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty
 
-Name              : 0301HP 
+Name              : 0301HP
 CustomRdpProperty : audiocapturemode:i:1;audiomode:i:0;
 ```
 
@@ -122,9 +122,9 @@ Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname>
 若要确保已成功删除设置，请输入以下 cmdlet：
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
 
-Name              : <hostpoolname> 
+Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 

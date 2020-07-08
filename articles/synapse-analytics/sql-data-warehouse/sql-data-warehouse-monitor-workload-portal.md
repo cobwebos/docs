@@ -6,25 +6,25 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 327174974affb3b2511eac60755aa1bf047b3b5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01a22aa5d2ec7ed54be62f0975b0fefbafd84cd8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133471"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211555"
 ---
 # <a name="monitor-workload---azure-portal"></a>监视工作负荷 - Azure 门户
 
-本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure Monitor 日志，使用 log analytics for [SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)来调查查询执行和工作负荷趋势。
+本文介绍如何使用 Azure 门户监视工作负荷。 这包括设置 Azure Monitor 日志，以使用适用于 [Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/) 的日志分析来调查查询执行和工作负荷趋势。
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅：如果没有 Azure 订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 sql 池](load-data-from-azure-blob-storage-using-polybase.md)中的说明。
+- Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- SQL 池：我们将收集 SQL 池的日志。 如果尚未预配 SQL 池，请参阅[创建 SQL 池](load-data-from-azure-blob-storage-using-polybase.md)中的说明。
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 
@@ -40,7 +40,7 @@ ms.locfileid: "82133471"
 
 ## <a name="turn-on-resource-logs"></a>启用资源日志
 
-配置诊断设置以从 SQL 池发出日志。 日志由与最常用的性能故障排除 Dmv 有关的遥测视图组成。 目前支持以下视图：
+配置诊断设置，以便从 SQL 池发出日志。 日志包含与最常用的性能故障排除 DMV 等效的遥测视图。 目前支持以下视图：
 
 - [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

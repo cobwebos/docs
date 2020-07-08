@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 1675d63fd3a65beda46042f4a78535bb4e066e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190232"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207492"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
@@ -22,11 +22,52 @@ Azure Maps Web SDK 将数据存储在数据源中。 使用数据源优化用于
 
 **GeoJSON 数据源**
 
-基于 GeoJSON 的数据源使用类在`DataSource`本地加载和存储数据。 可以使用[GeoJSON 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)中的帮助器类手动创建或创建数据。 `DataSource`类提供用于导入本地或远程 GeoJSON 文件的函数。 远程 GeoJSON 文件必须托管在已启用 CORs 的终结点上。 `DataSource`类为聚集点数据提供功能。 而且，可以通过`DataSource`类轻松地添加、删除和更新数据。
+基于 GeoJSON 的数据源使用类在本地加载和存储数据 `DataSource` 。 可以使用[GeoJSON 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)中的帮助器类手动创建或创建数据。 `DataSource`类提供用于导入本地或远程 GeoJSON 文件的函数。 远程 GeoJSON 文件必须托管在已启用 CORs 的终结点上。 `DataSource`类为聚集点数据提供功能。 而且，可以通过类轻松地添加、删除和更新数据 `DataSource` 。 下面的代码演示如何在 Azure Maps 中创建 GeoJSON 数据。
 
+```Javascript
+//Create raw GeoJSON object.
+var rawGeoJson = {
+     "type": "Feature",
+     "geometry": {
+         "type": "Point",
+         "coordinates": [-100, 45]
+     },
+     "properties": {
+         "custom-property": "value"
+     }
+};
+
+//Create GeoJSON using helper classes (less error prone).
+var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
+    "custom-property": "value"
+}); 
+```
+
+创建后，可以通过属性将数据源添加到地图 `map.sources` 中，这是一个[SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)。 下面的代码演示如何创建 `DataSource` 并将其添加到地图中。
+
+```javascript
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+```
+
+下面的代码演示 GeoJSON 数据可添加到的不同方式 `DataSource` 。
+
+```Javascript
+//GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
+
+//Add geoJSON object to data source. 
+dataSource.add(geoJsonData);
+
+//Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
+dataSource.importDataFromUrl(geoJsonUrl);
+
+//Overwrite all data in data source.
+dataSource.setShapes(geoJsonData);
+```
 
 > [!TIP]
-> 假设您希望覆盖中的`DataSource`所有数据。 如果对`clear` then `add`函数进行调用，则映射可能会重新呈现两次，这可能会导致一些延迟。 改为`setShapes`使用函数，该函数将移除并替换数据源中的所有数据，并且只触发地图的单次重新呈现。
+> 假设您希望覆盖中的所有数据 `DataSource` 。 如果对 then 函数进行调用 `clear` `add` ，则映射可能会重新呈现两次，这可能会导致一些延迟。 改为使用 `setShapes` 函数，该函数将移除并替换数据源中的所有数据，并且只触发地图的单次重新呈现。
 
 **矢量磁贴源**
 
@@ -37,15 +78,7 @@ Azure Maps Web SDK 将数据存储在数据源中。 使用数据源优化用于
  - 更改向量图中的数据样式不需要再次下载数据，因为新样式可应用于客户端。 与此相反，更改光栅图块层的样式通常需要从服务器加载磁贴，然后应用新样式。
  - 由于数据是以矢量形式传递的，因此，进行数据准备需要的服务器端处理就越少。 因此，可以更快地提供较新的数据。
 
-使用向量源的所有层都必须指定一个`sourceLayer`值。
-
-创建后，可以通过`map.sources`属性将数据源添加到地图中，这是一个[SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)。 下面的代码演示如何创建`DataSource`并将其添加到地图中。
-
-```javascript
-//Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
-```
+使用向量源的所有层都必须指定一个 `sourceLayer` 值。
 
 Azure Maps 遵循[Mapbox Vector 磁贴规范](https://github.com/mapbox/vector-tile-spec)，即开放标准。
 
@@ -124,7 +157,7 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
+> [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-maps-typescript-latest)

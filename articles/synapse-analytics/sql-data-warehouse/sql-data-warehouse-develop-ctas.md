@@ -1,26 +1,26 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: 用于开发解决方案的 Synapse SQL 中的 CREATE TABLE 为 SELECT （CTAS）语句的说明和示例。
+description: 用于开发解决方案的 Synapse SQL 中的 CREATE TABLE AS SELECT (CTAS) 语句的说明和示例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633552"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85213476"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
-本文介绍了在 Synapse SQL 中用于开发解决方案的 CREATE TABLE AS SELECT （CTAS） T-sql 语句。 本文还会提供代码示例。
+本文介绍了用于开发解决方案的 Synapse SQL 中的 CREATE TABLE AS SELECT (CTAS) T-SQL 语句。 本文还会提供代码示例。
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>使用 CTAS 解决不支持的功能
 
-还可以使用 CTAS 来解决下列多种不支持的功能。 此方法通常可以证明有用，因为您的代码不仅符合您的代码，而且在 Synapse SQL 上的运行速度通常更快。 这种性能提升是完全并行化设计的结果。 方案包括：
+还可以使用 CTAS 来解决下列多种不支持的功能。 此方法通常情况下很有用，因为不仅代码可以兼容，而且在 Synapse SQL 上通常可以更快地运行。 这种性能提升是完全并行化设计的结果。 方案包括：
 
 * UPDATE 中的 ANSI JOIN
 * DELETE 中的 ANSI JOIN
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-Synapse SQL 不支持在`FROM` `UPDATE`语句的子句中使用 ANSI 联接，因此不能使用前面的示例而不进行修改。
+Synapse SQL 不支持在 `UPDATE` 语句的 `FROM` 子句中使用 ANSI Join，因此，只有在修改上述示例之后才能使用它。
 
 可以使用 CTAS 和隐式联接的组合来替换上述示例：
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>替换 Delete 语句的 ANSI Join
 
-有时，删除数据的最佳方法是使用 CTAS，特别是对于使用 ANSI Join 语法的 `DELETE` 语句。 这是因为，Synapse SQL 在`FROM` `DELETE`语句的子句中不支持 ANSI 联接。 无需删除数据，可以选择要保留的数据。
+有时，删除数据的最佳方法是使用 CTAS，特别是对于使用 ANSI Join 语法的 `DELETE` 语句。 这是因为，Synapse SQL 不支持在 `DELETE` 语句的 `FROM` 子句中使用 ANSI Join。 无需删除数据，可以选择要保留的数据。
 
 下面是转换后的 `DELETE` 语句示例：
 

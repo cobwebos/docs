@@ -4,9 +4,7 @@ description: 了解如何使用 Azure 通知中心向特定用户推送通知。
 documentationcenter: ios
 author: sethm
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72387479"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248796"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送推送通知
 
@@ -42,14 +40,14 @@ ms.locfileid: "72387479"
 
 ## <a name="prerequisites"></a>先决条件
 
-本教程假设已根据[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 中所述创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
+本教程假定你已按照[使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)中所述创建并配置了通知中心。 此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) 教程。
 如果要使用移动应用作为后端服务，请参阅[移动应用中的推送通知入门](../app-service-mobile/app-service-mobile-ios-get-started-push.md)。
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>修改 iOS 应用
 
-1. 打开在[通知中心入门 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中创建的“单页视图”应用。
+1. 打开[使用 Azure 通知中心向 iOS 应用程序发送推送通知](ios-sdk-get-started.md)教程中创建的单页视图应用。
 
    > [!NOTE]
    > 本节假定项目配置了空的组织名称。 如果未配置，需要在所有类名前面追加组织名称。
@@ -66,7 +64,7 @@ ms.locfileid: "72387479"
    * **APNS**：标签和开关，用于启用将通知发送到 Apple 平台通知服务。
    * **收件人用户名**：包含占位符文本“收件人用户名标记”的 UITextField，直接位于 GCM 标签下，受左右边距限制**。
 
-     某些组件已在[通知中心入 (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) 教程中添加。
+     [使用 Azure 通知中心将推送通知发送到 iOS 应用](ios-sdk-get-started.md)教程中添加了一些组件。
 
 3. 按 **Ctrl** 的同时从视图中的组件拖至 `ViewController.h` 并添加这些新插座。
 
@@ -88,7 +86,7 @@ ms.locfileid: "72387479"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. 在 `ViewController.h` 中，在 import 语句后面添加以下 `#define`。 将 `<Enter Your Backend Endpoint>` 占位符替换为在上一部分中用于部署应用后端的目标 URL。 例如，`http://your_backend.azurewebsites.net` 。
+4. 在 `ViewController.h` 中，在 import 语句后面添加以下 `#define`。 将 `<Enter Your Backend Endpoint>` 占位符替换为在上一部分中用于部署应用后端的目标 URL。 例如 `http://your_backend.azurewebsites.net`。
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
@@ -343,9 +341,9 @@ ms.locfileid: "72387479"
     }
     ```
 
-    请注意设置设备令牌时如何启用登录按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 因此，在正确设置设备令牌前，系统不希望出现登录操作。 只要登录操作发生在推送注册前，即可分离这两个操作。
+    请注意设置设备令牌如何启用 "**登录**" 按钮。 这是因为在登录操作过程中，视图控制器将使用应用后端注册推送通知。 在正确设置设备令牌之前，你不想让**登录**操作可访问。 只要登录操作发生在推送注册前，即可分离这两个操作。
 
-11. 在 ViewController.m 中，使用以下代码段实现“**登录**”按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法。
+11. 在 ViewController 中，使用以下代码段实现 "**登录"** 按钮的操作方法以及使用 ASP.NET 后端发送通知消息的方法。
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -481,11 +479,11 @@ ms.locfileid: "72387479"
 ## <a name="test-the-application"></a>测试应用程序
 
 1. 在 XCode 中，在物理 iOS 设备上运行此应用（推送通知无法在模拟器中正常工作）。
-2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击“登录”****。
+2. 在 iOS 应用 UI 中，为用户名和密码输入相同的值。 然后单击 "**登录**"。
 
     ![iOS 测试应用程序][2]
 
-3. 应看到弹出窗口通知你注册成功。 单击“确定”。 
+3. 应看到弹出窗口通知你注册成功。 单击“确定”。
 
     ![显示的 iOS 测试通知][3]
 

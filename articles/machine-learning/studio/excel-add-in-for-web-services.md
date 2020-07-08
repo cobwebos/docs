@@ -5,17 +5,17 @@ description: 如何在 Excel 中直接使用 Azure 机器学习 Web 服务，而
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
-ms.translationtype: HT
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118450"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211317"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>适用于 Azure 机器学习工作室（经典）Web 服务的 Excel 加载项
 
@@ -83,4 +83,4 @@ Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。
 ## <a name="sharing-your-workbook"></a>共享工作簿
 如果保存工作簿，则会一并保存为 Web 服务添加的 API/主密钥。 这意味着只应与自己信任的人共享该工作簿。
 
-请在以下评论部分中或在我们[论坛](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)上提出任何问题。
+请在以下评论部分中或在我们[论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)上提出任何问题。

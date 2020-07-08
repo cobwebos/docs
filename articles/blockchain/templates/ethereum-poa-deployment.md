@@ -1,15 +1,15 @@
 ---
 title: 在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 description: 使用以太坊的证书颁发机构协会解决方案在 Azure 上部署和配置多成员协会以太坊网络
-ms.date: 12/18/2019
-ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75387422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210110"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -76,7 +76,7 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 在[Azure 门户](https://portal.azure.com)中，选择左上角的 "**创建资源**"。
 
-选择**区块链** > **以太坊证书颁发机构协会（预览版）**。
+选择**区块链**  >  **以太坊证书颁发机构协会（预览版）**。
 
 ### <a name="basics"></a>基础
 
@@ -84,9 +84,9 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 ![基础](./media/ethereum-poa-deployment/basic-blade.png)
 
-参数 | 说明 | 示例值
+参数 | 描述 | 示例值
 ----------|-------------|--------------
-创建新网络或加入现有网络 | 你可以创建新的联合会网络，或加入预先存在的联合会网络。 加入现有网络需要其他参数。 | 新建
+创建新网络或加入现有网络 | 你可以创建新的联合会网络，或加入预先存在的联合会网络。 加入现有网络需要其他参数。 | Create new
 电子邮件地址 | 部署完成时，将收到电子邮件通知，其中包含有关部署的信息。 | 有效的电子邮件地址
 VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字符
 身份验证类型 | 对虚拟机进行身份验证的方法。 | 密码
@@ -95,7 +95,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 资源组| 部署联盟网络的资源组。 | myResourceGroup
 位置 | 资源组的 Azure 区域。 | 美国西部 2
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="deployment-regions"></a>部署区域
 
@@ -103,13 +103,13 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 
 ![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
 
-参数 | 说明 | 示例值
+参数 | 描述 | 示例值
 ----------|-------------|--------------
 区域数量|部署联盟网络的区域数量| 2
 第一个区域 | 部署联盟网络的第一个区域 | 美国西部 2
 第二个区域 | 用于部署联合会网络的第二个区域。 当区域数为2或更大时，其他区域可见。 | 美国东部 2
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="network-size-and-performance"></a>网络规模和性能
 
@@ -117,7 +117,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 
 ![网络规模和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-参数 | 说明 | 示例值
+参数 | 描述 | 示例值
 ----------|-------------|--------------
 负载均衡验证程序节点数 | 要作为网络的一部分预配的验证程序节点数。 | 2
 验证程序节点存储性能 | 每个已部署的验证程序节点的托管磁盘的类型。 有关定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/managed-disks/) | 标准 SSD
@@ -129,9 +129,9 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 ---|---|---|---|---
 F1|标准 SSD|low|low|high
 D2_v3|标准 SSD|中|中|中
-F16s|高级 SSD|high|high|low
+F16s|高级·SSD|high|high|low
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="ethereum-settings"></a>Ethereum 设置
 
@@ -139,7 +139,7 @@ F16s|高级 SSD|high|high|low
 
 ![Ethereum 设置](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-参数 | 说明 | 示例值
+参数 | 描述 | 示例值
 ----------|-------------|--------------
 联盟成员 ID | 与参与联盟网络的每个成员关联的 ID。 它用于配置 IP 地址空间以避免冲突。 对于专用网络，同一网络中的不同组织成员 ID 应该是唯一的。  即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。 请记下此参数的值，因为需要与其他联接成员共享它，以确保不会发生冲突。 有效范围为0至255。 | 0
 网络 ID | 要部署的 Ethereum 联盟网络的网络 ID。 每个 Ethereum 网络都有自己的网络 ID，其中 1 是公共网络的 ID。 有效范围为5到999999999 | 10101010
@@ -150,7 +150,7 @@ F16s|高级 SSD|high|high|low
 区块重新封装时间段（秒） | 网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。 | 15
 事务权限协定 | 事务权限协定的字节码。 将智能协定部署和执行限制到以太坊帐户的允许列表。 |
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="monitoring"></a>监视
 
@@ -158,15 +158,15 @@ F16s|高级 SSD|high|high|low
 
 ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
-参数 | 说明 | 示例值
+参数 | 描述 | 示例值
 ----------|-------------|--------------
 监视 | 启用监视的选项 | 启用
-连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | 新建
+连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | Create new
 位置 | 部署新实例的区域 | 美国东部
-现有 log analytics 工作区 ID （连接到现有 Azure Monitor 日志 = 加入现有的）|现有 Azure Monitor 日志实例的工作区 ID||NA
-现有 log analytics 主密钥（连接到现有 Azure Monitor 日志 = 加入现有的日志）|用于连接到现有 Azure Monitor 日志实例的主键||NA
+现有 log analytics 工作区 ID （连接到现有 Azure Monitor 日志 = 加入现有的）|现有 Azure Monitor 日志实例的工作区 ID||不可用
+现有 log analytics 主密钥（连接到现有 Azure Monitor 日志 = 加入现有的日志）|用于连接到现有 Azure Monitor 日志实例的主键||不可用
 
-选择“确定”  。
+选择“确定”。
 
 ### <a name="summary"></a>总结
 
@@ -325,7 +325,7 @@ ParityLog_CL
 
     ![ssh 启用允许](./media/ethereum-poa-deployment/ssh-enable-allow.png)
 
-1. 选择“保存”。  应用更改可能需要几分钟时间。
+1. 选择“保存”。 应用更改可能需要几分钟时间。
 
 你可以通过 SSH 通过 SSH 与提供的管理员用户名和密码/SSH 密钥远程连接到虚拟机。 用于访问第一个验证器节点的 SSH 命令在模板部署输出中列出。 例如：
 
@@ -335,7 +335,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 若要转到其他事务节点，请将端口号递增1。
 
-如果部署到多个区域，请将命令更改为该区域中的负载均衡器的 DNS 名称或 IP 地址。 若要查找其他区域的 DNS 名称或 IP 地址，请查找命名约定** \* \* \* \* \*为 lbpip\# **的资源，并查看其 "DNS 名称" 和 "IP 地址" 属性。
+如果部署到多个区域，请将命令更改为该区域中的负载均衡器的 DNS 名称或 IP 地址。 若要查找其他区域的 DNS 名称或 IP 地址，请查找命名约定为** \* \* \* \* \* lbpip \# **的资源，并查看其 "DNS 名称" 和 "IP 地址" 属性。
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Azure 流量管理器负载均衡
 
@@ -558,7 +558,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 #### <a name="prerequisites"></a>先决条件
 
 * 安装 [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。 Truffle 和 Web3 需要 Python。 选择 "安装" 选项以在路径中包含 Python。
-* 安装 Truffle v 5.0.5 `npm install -g truffle@v5.0.5`。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/)。 有关详细信息，请参阅[Truffle 文档](https://github.com/trufflesuite/truffle)。
+* 安装 Truffle v 5.0.5 `npm install -g truffle@v5.0.5` 。 Truffle 要求安装多个工具，包括 [Node.js](https://nodejs.org)、[Git](https://git-scm.com/)。 有关详细信息，请参阅[Truffle 文档](https://github.com/trufflesuite/truffle)。
 
 ### <a name="create-truffle-project"></a>创建 Truffle 项目
 
@@ -566,8 +566,8 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 1. 打开命令提示符或 shell。
 1. 创建名为 `HelloWorld` 的文件夹。
-1. 将目录更改为新`HelloWorld`文件夹。
-1. 使用命令`truffle init`初始化新的 Truffle 项目。
+1. 将目录更改为新 `HelloWorld` 文件夹。
+1. 使用命令初始化新的 Truffle 项目 `truffle init` 。
 
     ![创建新的 Truffle 项目](./media/ethereum-poa-deployment/create-truffle-project.png)
 
@@ -575,7 +575,7 @@ Azure 流量管理器可通过路由不同区域中多个部署间的传入流�
 
 在 Truffle 项目的 "**协定**" 子目录中创建智能协定。
 
-1. 在 Truffle 项目的 " `postBox.sol` **协定**" 子目录中的指定文件中创建一个文件。
+1. 在 `postBox.sol` Truffle 项目的 "**协定**" 子目录中的指定文件中创建一个文件。
 1. 将以下 PostBox 代码添加到 " **postBox.sol**"。
 
     ```javascript
@@ -600,7 +600,7 @@ Truffle 项目包含区块链网络连接详细信息的配置文件。 修改�
 > 永远不要通过网络发送以太坊私钥。 首先确保在本地对每个事务进行签名，然后通过网络发送已签名的事务。
 
 1. 在[部署区块链网络时，需要使用以太坊管理员帐户](#ethereum-settings)的助记短语。 如果使用 MetaMask 创建了帐户，则可以从 MetaMask 检索助记键。 选择 MetaMask 扩展的右上方的 "管理员帐户" 图标，然后选择 "**设置" > 安全性 & 隐私 > 显示种子单词**"。
-1. 将 Truffle 项目中`truffle-config.js`的内容替换为以下内容。 替换占位符终结点和助记键值。
+1. 将 `truffle-config.js` Truffle 项目中的内容替换为以下内容。 替换占位符终结点和助记键值。
 
     ```javascript
     const HDWalletProvider = require("truffle-hdwallet-provider");
@@ -623,11 +623,11 @@ Truffle 项目包含区块链网络连接详细信息的配置文件。 修改�
     };
     ```
 
-1. 由于我们使用的是 Truffle HD 钱包提供程序，因此请使用命令`npm install truffle-hdwallet-provider --save`在项目中安装该模块。
+1. 由于我们使用的是 Truffle HD 钱包提供程序，因此请使用命令在项目中安装该模块 `npm install truffle-hdwallet-provider --save` 。
 
 Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使用迁移脚本来部署新的智能协定。
 
-1. 添加新的迁移以部署新的协定。 在 Truffle `2_deploy_contracts.js`项目的**迁移**子目录中创建文件。
+1. 添加新的迁移以部署新的协定。 `2_deploy_contracts.js`在 Truffle 项目的**迁移**子目录中创建文件。
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -647,8 +647,8 @@ Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使�
 
 部署智能协定后，可以发送事务来调用函数。
 
-1. 在 Truffle 项目目录中，创建一个名为`sendtransaction.js`的新文件。
-1. 将以下内容添加到**sendtransaction**。
+1. 在 Truffle 项目目录中，创建一个名为的新文件 `sendtransaction.js` 。
+1. 将以下内容添加到**sendtransaction.js**。
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -709,7 +709,7 @@ Ether 在权威证明联盟中没有用处。 因此，在 MetaMask 中提交事
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>公共 IP 部署是否与专用网络部署兼容？
 
-否。 对等互连需要双向通信，以便整个网络必须是公共的或私有的。
+不能。 对等互连需要双向通信，以便整个网络必须是公共的或私有的。
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>权威证明的预期事务吞吐量是多少？
 
@@ -718,6 +718,20 @@ Ether 在权威证明联盟中没有用处。 因此，在 MetaMask 中提交事
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>如何订阅智能合同事件？
 
 Ethereum 权威证明现在支持 Web 套接字。  检查部署输出，找到 web 套接字 URL 和端口。
+
+## <a name="support-and-feedback"></a>支持和反馈
+
+对于 Azure 区块链新闻，请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)，以随时了解 Azure 区块链工程团队提供的区块链服务产品和信息。
+
+若要提供产品反馈或请求新功能，请通过[区块链的 Azure 反馈论坛](https://aka.ms/blockchainuservoice)来发布想法或进行投票。
+
+### <a name="community-support"></a>社区支持
+
+与 Microsoft 工程师和 Azure 区块链社区专家交流。
+
+* [Microsoft Q&Azure 区块链服务的问题页](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
+* [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>后续步骤
 

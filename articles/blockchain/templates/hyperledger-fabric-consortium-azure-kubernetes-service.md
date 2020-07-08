@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
-ms.date: 01/08/2020
-ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 06/04/2020
+ms.topic: how-to
+ms.reviewer: ravastra
+ms.openlocfilehash: e85d8c196afa5535d4d36ffdc03078e2046e4ca1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85209702"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 
@@ -190,7 +190,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > 根据你的联盟中的对等组织的数量，你可能需要重复执行对等命令并相应地设置环境变量。
 
-**设置以下环境变量来设置 azure 存储帐户**
+**设置以下环境变量来设置 Azure 存储帐户**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -200,7 +200,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-按照以下步骤创建 Azure 存储帐户。 如果已创建 azure 存储帐户，请跳过以下步骤
+按照以下步骤创建 Azure 存储帐户。 如果已创建 Azure 存储帐户，请跳过以下步骤
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -208,7 +208,7 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-按照以下步骤在 azure 存储帐户中创建文件共享。 如果已创建文件共享，请跳过以下步骤
+按照以下步骤在 Azure 存储帐户中创建文件共享。 如果已创建文件共享，请跳过以下步骤
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -275,8 +275,8 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 `<anchorPeersList>`要设置为定位点对等节点的以空格分隔的对等节点的列表。 例如，
 
-  - 如果`<anchorPeersList>`只想将 peer1 节点设置为定位点对等节点，则设置为 "peer1"。
-  - 如果`<anchorPeersList>`要将 peer1 和 peer3 节点设置为锚点对等，则设置为 "peer1" "peer3"。
+  - `<anchorPeersList>`如果只想将 peer1 节点设置为定位点对等节点，则设置为 "peer1"。
+  - `<anchorPeersList>`如果要将 peer1 和 peer3 节点设置为锚点对等，则设置为 "peer1" "peer3"。
 
 ### <a name="consortium-management-commands"></a>联合会管理命令
 
@@ -284,12 +284,12 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 > 在开始进行任何联盟操作之前，请确保已完成客户端应用程序的初始设置。  
 
 按给定顺序执行以下命令，以在通道和联合会中添加对等组织
-1.  从对等组织客户端，上载 azure 存储上的对等组织 MSP
+1.  从对等组织客户端，上载 Azure 存储上的对等组织 MSP
 
       ```bash
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  从 orderer 组织客户端下载 azure 存储中的对等组织 MSP，然后发出命令以在通道/协会中添加对等组织。
+2.  从 orderer 组织客户端下载 Azure 存储中的对等组织 MSP，然后发出命令以在通道/协会中添加对等组织。
 
       ```bash
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -297,13 +297,13 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  在 orderer 组织客户端上，将 orderer 连接配置文件上传到 azure 存储，使对等组织可以使用此连接配置文件连接到 orderer 节点
+3.  在 orderer 组织客户端上，将 orderer 连接配置文件上传到 Azure 存储，使对等组织可以使用此连接配置文件连接到 orderer 节点
 
       ```bash
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  从对等组织客户端，从 azure 存储下载 orderer 连接配置文件，然后发出命令以在通道中添加对等节点
+4.  从对等组织客户端，从 Azure 存储下载 orderer 连接配置文件，然后发出命令以在通道中添加对等节点
 
       ```bash
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -358,8 +358,8 @@ CHANNEL_NAME=<channelName>
 
 请按照以下步骤操作：  
 
-1.  根据`ORGNAME` peerOrg1 `USER_IDENTITY`和发出`./azhlf chaincode install`命令设置和。  
-2.  根据`ORGNAME` peerOrg2 `USER_IDENTITY`和发出`./azhlf chaincode install`命令设置和。  
+1.  `ORGNAME` `USER_IDENTITY` 根据 peerOrg1 和发出命令设置和 `./azhlf chaincode install` 。  
+2.  `ORGNAME` `USER_IDENTITY` 根据 peerOrg2 和发出命令设置和 `./azhlf chaincode install` 。  
 
 ### <a name="instantiate-chaincode"></a>实例化 chaincode  
 
@@ -368,7 +368,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
-分别传递和`<instantiateFunc>` `<instantiateFuncArgs>`中的实例化函数名称和空格分隔的参数列表。 例如，在 chaincode_example02 chaincode 中，将 chaincode 设置为`<instantiateFunc>` `init`，并`<instantiateFuncArgs>`将设置为 "a" "2000" "b" "1000"。
+分别传递和中的实例化函数名称和空格分隔的参数列表 `<instantiateFunc>` `<instantiateFuncArgs>` 。 例如，在 chaincode_example02 chaincode 中，将 chaincode 设置为，并将设置为 " `<instantiateFunc>` `init` `<instantiateFuncArgs>` a" "2000" "b" "1000"。
 
 > [!NOTE]
 > 从通道中的任意一个对等组织执行命令一次。 成功将事务提交到 orderer 后，orderer 会将此事务分发给通道中的所有对等组织。 因此，chaincode 在通道中的所有对等节点上实例化。  
@@ -382,7 +382,7 @@ CHANNEL_NAME=<channelName>
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-分别 `<invokeFunction>` 在和 `<invokeFuncArgs>` 中传递调用函数名称和空格分隔的参数列表。 继续执行 chaincode_example02。 chaincode 示例，将调用操作设置为 `<invokeFunction>`  `invoke` ，并 `<invokeFuncArgs>` 将设置为 "a" "b" "10"。  
+分别在和中传递调用函数名称和空格分隔的参数列表  `<invokeFunction>`    `<invokeFuncArgs>`   。 继续执行 chaincode_example02。 chaincode 示例，将调用操作设置为，并将设置为 "  `<invokeFunction>`    `invoke`    `<invokeFuncArgs>`   a" "b" "10"。  
 
 >[!NOTE]
 > 从通道中的任意一个对等组织执行命令一次。 成功将事务提交到 orderer 后，orderer 会将此事务分发给通道中的所有对等组织。 因此，会在通道中的所有对等组织的所有对等节点上更新世界状态。  
@@ -395,7 +395,7 @@ CHANNEL_NAME=<channelName>
 ```bash
 ./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-分别 `<queryFunction>` 在和 `<queryFuncArgs>` 中传递查询函数名称和空格分隔的参数列表。 同样，将 chaincode_example02 "chaincode" 作为参考，将 "世界" 状态中的 "a" 的查询 `<queryFunction>` 值 `query`设置 `<queryArgs>`为和 "a"。  
+分别在和中传递查询函数名称和空格分隔的参数列表  `<queryFunction>`    `<queryFuncArgs>`   。 同样，将 chaincode_example02 "chaincode" 作为参考，将 "世界" 状态中的 "a" 的查询值设置  `<queryFunction>`   为  `query` 和  `<queryArgs>` "a"。  
 
 ## <a name="troubleshoot"></a>疑难解答
 
@@ -418,3 +418,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>支持和反馈
+
+对于 Azure 区块链新闻，请访问 [Azure 区块链博客](https://azure.microsoft.com/blog/topics/blockchain/)，以随时了解 Azure 区块链工程团队提供的区块链服务产品和信息。
+
+若要提供产品反馈或请求新功能，请通过[区块链的 Azure 反馈论坛](https://aka.ms/blockchainuservoice)来发布想法或进行投票。
+
+### <a name="community-support"></a>社区支持
+
+与 Microsoft 工程师和 Azure 区块链社区专家交流。
+
+- [Microsoft Q&Azure 区块链服务的问题页](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
+- [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

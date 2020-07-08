@@ -2,14 +2,14 @@
 title: 部署 Azure 区块链工作台预览版
 description: 如何部署 Azure 区块链工作台预览版
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85210756"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>部署 Azure 区块链工作台预览版
 
@@ -28,7 +28,7 @@ Azure 区块链工作台预览版是使用 Azure Marketplace 中的解决方案�
 * 事件网格
 * Azure Key Vault
 * 服务总线
-* SQL 数据库（标准 S0） + SQL 逻辑服务器
+* SQL 数据库（标准 S0）
 * Azure 存储帐户（标准 LRS）
 * 容量为1的虚拟机规模集
 * 虚拟网络资源组（包含负载均衡器、网络安全组、公共 IP 地址、虚拟网络）
@@ -40,7 +40,7 @@ Azure 区块链工作台预览版是使用 Azure Marketplace 中的解决方案�
 
 Blockchain Workbench 的成本是基础 Azure 服务成本的总和。 Azure 服务的定价信息可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)进行计算。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以选择在部署之前[手动配置](#azure-ad-configuration) Azure AD，或者在部署后运行一个脚本。 若要重新部署 Blockchain Workbench，请参阅 [Azure AD 配置](#azure-ad-configuration)以验证 Azure AD 配置。
 
@@ -51,21 +51,21 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
 完成先决条件步骤后，便可以部署 Blockchain Workbench。 以下部分概述了如何部署框架。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在右上角选择自己的帐户，然后切换到要在其中部署 Azure Blockchain Workbench 的所需 Azure AD 租户。
 1. 在 Azure 门户的左上角选择“创建资源”。 
-1. 选择 "**区块链** > **Azure 区块链工作台（预览版）**"。
+1. 选择 "**区块链**  >  **Azure 区块链工作台（预览版）**"。
 
     ![创建 Azure Blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
-    | 设置 | 说明  |
+    | 设置 | 描述  |
     |---------|--------------|
     | 资源前缀 | 部署的短唯一标识符。 此值用作资源命名的基础。 |
     | VM 用户名 | 该用户名用作所有虚拟机 (VM) 的管理员。 |
     | 身份验证类型 | 选择是要使用密码还是密钥连接到 VM。 |
-    | Password | 使用密码连接到 VM。 |
+    | 密码 | 使用密码连接到 VM。 |
     | SSH | 使用单行格式（以 **ssh-rsa** 开头）的 RSA 公钥，或使用多行 PEM 格式。 可以在 Linux 和 OS X 上使用 `ssh-keygen` 生成 SSH 密钥，或在 Windows 上使用 PuTTYGen 生成这些密钥。 有关 SSH 密钥的详细信息，请参阅[如何在 Azure 上的 Windows 中使用 SSH 密钥](../../virtual-machines/linux/ssh-from-windows.md)。 |
-    | Database 和区块链密码 | 指定密码，用于访问在部署过程中创建的数据库。 密码必须满足以下四个条件中的三个要求：长度需要介于 12 & 72 个字符、1个小写字符、1个大写字符、1个数字和1个不是数字符号（#）、百分号（%）、逗号（，）、星号（*）、后跟引号\`（）、双引号（"）、单引号（'）、破折号（-）和 semicolumn （;) |
+    | Database 和区块链密码 | 指定密码，用于访问在部署过程中创建的数据库。 密码必须满足以下四个条件中的三个要求：长度需要介于 12 & 72 个字符、1个小写字符、1个大写字符、1个数字和1个不是数字符号（#）、百分号（%）、逗号（，）、星号（*）、后跟引号（ \` ）、双引号（"）、单引号（'）、破折号（-）和 semicolumn （;) |
     | 部署区域 | 指定部署 Blockchain Workbench 资源的位置。 为了尽可能提高可用性，此位置应与“位置”**** 设置相符。 |
     | 订阅 | 指定要用于部署的 Azure 订阅。 |
     | 资源组 | 选择“新建”创建新资源组，并指定唯一的资源组名称。**** |
@@ -100,9 +100,9 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
      ![现有区块链网络的高级设置](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | 设置 | 说明  |
+     | 设置 | 描述  |
      |---------|--------------|
-     | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 https:// 或 http:// 开头，以端口号结尾。 例如： `http<s>://<network-url>:<port>` |
+     | Ethereum RPC 终结点 | 提供现有 PoA 区块链网络的 RPC 终结点。 终结点以 https:// 或 http:// 开头，以端口号结尾。 例如，`http<s>://<network-url>:<port>` |
      | Azure Active Directory 设置 | 选择“稍后添加”。****</br>注意：如果选择[预配置 Azure AD](#azure-ad-configuration) 或要重新部署，请选择“立即添加”。** |
      | VM 选择 | 选择区块链网络的首选存储性能和 VM 大小。 如果使用具有较低服务限制的订阅（如 Azure 免费层），请选择较小的 VM（如标准 DS1 v2**）。 |
 
@@ -110,7 +110,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
 1. 查看摘要，验证参数是否准确。
 
-    ![“摘要”](media/deploy/blockchain-workbench-summary.png)
+    ![总结](media/deploy/blockchain-workbench-summary.png)
 
 1. 选择“创建”并同意条款，以部署 Azure Blockchain Workbench。****
 
@@ -123,7 +123,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
 完成 Blockchain Workbench 的部署后，某个新资源组会包含你的 Blockchain Workbench 资源。 通过 Web URL 访问 Blockchain Workbench 服务。 以下步骤说明如何检索已部署框架的 Web URL。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择 "**资源组**"。
 1. 选择部署 Blockchain Workbench 时指定的资源组名称。
 1. 选择“类型”列标题，按类型的字母顺序将列表排序。****
@@ -177,10 +177,9 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
 Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Azure Active Directory (Azure AD) 来注册应用。 可以使用现有租户，也可以创建新租户。 如果使用现有的 Azure AD 租户，则需要拥有足够的权限才能在 Azure AD 租户中注册应用程序、授予图形 API 权限和允许来宾访问。 如果在现有的 Azure AD 租户中没有足够的权限，则创建一个新租户。
 
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在右上角选择自己的帐户，然后切换到所需的 Azure AD 租户。 租户应是订阅管理员的订阅管理员租户，其中部署了 Azure 区块链工作台，你有足够的权限来注册应用程序。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务****。 选择**应用注册** > "**新注册**"。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务****。 选择**应用注册**"  >  **新注册**"。
 
     ![应用注册](media/deploy/app-registration.png)
 
@@ -194,11 +193,9 @@ Blockchain Workbench 部署要求注册 Azure AD 应用程序。 需要使用 Az
 
 接下来，需将清单修改为使用 Azure AD 中的应用程序角色，以指定 Blockchain Workbench 管理员。  有关应用程序清单的详细信息，请参阅 [Azure Active Directory 应用程序清单](../../active-directory/develop/reference-app-manifest.md)。
 
-
-1. 清单需要 GUID。 可以使用 PowerShell 命令`[guid]::NewGuid()`或`New-GUID` cmdlet 生成 GUID。 还可以使用 GUID 生成器网站。
+1. 清单需要 GUID。 可以使用 PowerShell 命令 `[guid]::NewGuid()` 或 cmdlet 生成 GUID `New-GUID` 。 还可以使用 GUID 生成器网站。
 1. 对于注册的应用程序，请选择 "**管理**" 部分中的 "**清单**"。
-1. 接下来，更新清单的**appRoles**部分。 替换`"appRoles": []`为提供的 JSON。 请务必将 **id** 字段的值替换为生成的 GUID。 
-
+1. 接下来，更新清单的**appRoles**部分。 替换 `"appRoles": []` 为提供的 JSON。 请确保将该字段的值替换为 `id` 生成的 GUID。
     ![编辑清单](media/deploy/edit-manifest.png)
 
     ``` json
@@ -239,7 +236,7 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
     ![Azure AD 应用注册配置，其中显示添加 Microsoft Graph User.readbasic.all。所有委托权限](media/deploy/add-graph-user-permission.png)
 
-    选择“添加权限”  。
+    选择“添加权限”。
 
 1. 在 "*配置的权限*" 中，选择 "授予域的**管理员许可**"，然后在验证提示中选择 **"是"** 。
 
@@ -262,9 +259,9 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
 ### <a name="get-tenant-domain-name"></a>获取租户域名
 
-收集并存储要在其中注册应用程序的 Active Directory 租户域名。 
+收集并存储要在其中注册应用程序的 Active Directory 租户域名。
 
-在左侧导航窗格中，选择“Azure Active Directory”服务****。 选择“自定义域名”****。 复制并存储域名。
+在左侧导航窗格中，选择“Azure Active Directory”服务****。 选择“自定义域名”。 复制并存储域名。
 
 ![域名](media/deploy/domain-name.png)
 
@@ -280,12 +277,12 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
 部署 Azure Blockchain Workbench 之后，必须配置已部署的 Blockchain Workbench Web URL 的 Azure Active Directory (Azure AD) 客户端应用程序“回复 URL”。****
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 验证是否位于 Azure AD 客户端应用程序所注册到的租户中。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务****。 选择**应用注册**。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务****。 选择 **“应用注册”** 。
 1. 选择在先决条件部分中注册的 Azure AD 客户端应用程序。
-1. 选择“身份验证”****。
-1. 指定在[区块链工作台 WEB url](#blockchain-workbench-web-url)部分中检索到的 Azure 区块链工作台部署的主 web URL。 回复 URL 带有 `https://` 前缀。 例如： `https://myblockchain2-7v75.azurewebsites.net`
+1. 选择“身份验证”。
+1. 指定在[区块链工作台 WEB url](#blockchain-workbench-web-url)部分中检索到的 Azure 区块链工作台部署的主 web URL。 回复 URL 带有 `https://` 前缀。 例如，`https://myblockchain2-7v75.azurewebsites.net`
 
     ![身份验证回复 Url](media/deploy/configure-reply-url.png)
 
@@ -299,8 +296,8 @@ API 应用程序需要从用户请求目录访问权限。 为 API 应用程序�
 
 不再需要部署时，可以通过删除 Blockchain Workbench 资源组来删除部署。
 
-1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。 
-1. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
+1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”，然后选择要删除的资源组。
+1. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”。
 
     ![删除资源组](media/deploy/delete-resource-group.png)
 

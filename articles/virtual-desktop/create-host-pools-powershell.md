@@ -4,23 +4,23 @@ description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a4d0c22318399370b9ec11046c33a4eb5460eb3
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: HT
+ms.openlocfilehash: 6b064c6e4107da5695e2a9945240e4276ac795b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860114"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85211844"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
 >
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以与多个 RemoteApp 组、一个桌面应用组和多个会话主机关联。
@@ -34,10 +34,10 @@ ms.locfileid: "83860114"
 运行以下 cmdlet 登录到 Windows 虚拟桌面环境：
 
 ```powershell
-New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
+New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname>
 ```
 
-此 cmdlet 将创建主机池、工作区和桌面应用组。 此外，它还会将桌面应用组注册到工作区。 可以使用此 cmdlet 创建工作区，也可以使用现有的工作区。 
+此 cmdlet 将创建主机池、工作区和桌面应用组。 此外，它还会将桌面应用组注册到工作区。 可以使用此 cmdlet 创建工作区，也可以使用现有的工作区。
 
 运行下一个 cmdlet，创建注册令牌以授权会话主机加入主机池，并将其保存到本地计算机上的新文件。 可以使用 -ExpirationHours 参数指定注册令牌的有效时间。
 
@@ -48,16 +48,16 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 ```
 
-例如，如果想要创建一个在两小时后过期的令牌，请运行以下 cmdlet： 
+例如，如果想要创建一个在两小时后过期的令牌，请运行以下 cmdlet：
 
 ```powershell
-New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) 
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
 ```
 
 然后，运行此 cmdlet，将 Azure Active Directory 用户添加到主机池的默认桌面应用组。
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 接下来运行此 cmdlet，将 Azure Active Directory 用户组添加到主机池的默认桌面应用组：
@@ -69,7 +69,7 @@ New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop 
 运行以下 cmdlet，将注册令牌导出到变量，稍后[将虚拟机注册到 Windows 虚拟桌面主机池](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)时会用到它。
 
 ```powershell
-$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> 
+$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname>
 ```
 
 ## <a name="create-virtual-machines-for-the-host-pool"></a>为主机池创建虚拟机
@@ -85,7 +85,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 >[!NOTE]
 >如果使用 Windows 7 作为主机操作系统来部署虚拟机，创建和部署过程会稍有不同。 有关详细信息，请参阅[在 Windows 虚拟桌面上部署 Windows 7 虚拟机](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)。
 
-创建会话主机虚拟机后，[将 Windows 许可证应用到会话主机 VM](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm)以便运行 Windows 或 Windows Server 虚拟机而不用为其他许可证付费。 
+创建会话主机虚拟机后，[将 Windows 许可证应用到会话主机 VM](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm)以便运行 Windows 或 Windows Server 虚拟机而不用为其他许可证付费。
 
 ## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>为 Windows 虚拟桌面代理安装准备虚拟机
 
@@ -114,7 +114,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 1. 用创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下载并安装 Windows 虚拟桌面代理。
    - 下载 [Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
-   - 运行安装程序。 当安装程序要求你提供注册令牌时，请输入从 Export-AzWVDRegistrationInfo cmdlet 获取的值。
+   - 运行安装程序。 当安装程序要求你提供注册令牌时，请输入从**AzWvdRegistrationInfo** cmdlet 获取的值。
 3. 下载并安装 Windows 虚拟桌面代理引导加载程序。
    - 下载 [Windows 虚拟桌面代理引导加载程序](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)。
    - 运行安装程序。

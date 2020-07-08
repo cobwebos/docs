@@ -4,15 +4,15 @@ description: 本文提供有关如何排查应用程序网关入口控制器常�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/4/2019
+ms.topic: troubleshooting
+ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: a64a9ce5e080308674893273e90a0e83686e339e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795512"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85207849"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>排查入口控制器的常见问题
 
@@ -82,7 +82,7 @@ EOF
 
 成功部署上述应用后，AKS 群集中将包含新的 Pod、服务和入口。
 
-获取带有[Cloud Shell](https://shell.azure.com/)的 pod 的列表： `kubectl get pods -o wide`。
+获取带有[Cloud Shell](https://shell.azure.com/)的 pod 的列表： `kubectl get pods -o wide` 。
 预期已创建名为“test-agic-app-pod”的 Pod。 该 Pod 有一个 IP 地址。 此地址必须在 AKS 所用的应用程序网关的 VNET 中。
 
 ![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
@@ -102,7 +102,7 @@ I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied
 I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ```
 
-或者，可以从[Cloud Shell](https://shell.azure.com/)仅检索指示成功应用程序网关配置的行`kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'`，其中`<ingress-azure....>`应该是 AGIC pod 的确切名称。
+或者，可以从[Cloud Shell](https://shell.azure.com/)仅检索指示成功应用程序网关配置的行 `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'` ，其中 `<ingress-azure....>` 应该是 AGIC pod 的确切名称。
 
 将在应用程序网关中应用以下配置：
 
@@ -115,7 +115,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ![backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png) 观测到的 Pod IP 地址相匹配
 
 
-最后，我们可以使用`cURL` [Cloud Shell](https://shell.azure.com/)中的命令建立与新部署的应用的 HTTP 连接：
+最后，我们可以使用 `cURL` [Cloud Shell](https://shell.azure.com/)中的命令建立与新部署的应用的 HTTP 连接：
 
 1. 使用 `kubectl get ingress` 获取应用程序网关的公共 IP 地址
 2. 使用 `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>`
@@ -133,7 +133,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 
 必须符合以下要求才能让 AGIC 按预期正常工作：
   1. AKS 必须包含一个或多个正常的 **Pod**。
-     与`kubectl get pods -o wide --show-labels` `apsnetapp` [Cloud Shell](https://shell.azure.com/)验证此设置，如果你有一个带的 Pod，你的输出可能如下所示：
+     与[Cloud Shell](https://shell.azure.com/)验证此设置 `kubectl get pods -o wide --show-labels` ，如果你有一个带的 Pod `apsnetapp` ，你的输出可能如下所示：
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
 
@@ -150,7 +150,7 @@ I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Ingress**引用上述服务的`kubernetes.io/ingress.class: azure/application-gateway`入口（用来注释）验证此[Cloud Shell](https://shell.azure.com/)`kubectl get ingress -o wide --show-labels`
+  3. 引用上述服务的**入口**（用来注释 `kubernetes.io/ingress.class: azure/application-gateway` ）验证此[Cloud Shell](https://shell.azure.com/)`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -236,7 +236,7 @@ AGIC 提供 3 个日志记录级别。 第 1 级别是默认级别，显示的�
 Kubernetes 社区已经为 [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) 工具建立了 9 个日志记录级别。 在此存储库中，我们使用了其中 3 个语义类似的级别：
 
 
-| 详细程度 | 说明 |
+| 详细级别 | 描述 |
 |-----------|-------------|
 |  1        | 默认日志级别；显示启动详细信息、警告和错误 |
 |  3        | 有关事件和更改的扩展信息；创建的对象列表 |
@@ -249,55 +249,55 @@ Kubernetes 社区已经为 [kubectl](https://kubernetes.io/docs/reference/kubect
 
 ### <a name="sample-helm-config-file"></a>示例 Helm 配置文件
 ```yaml
-    # This file contains the essential configs for the ingress controller helm chart
+# This file contains the essential configs for the ingress controller helm chart
 
-    # Verbosity level of the App Gateway Ingress Controller
-    verbosityLevel: 3
-    
-    ################################################################################
-    # Specify which application gateway the ingress controller will manage
-    #
-    appgw:
-        subscriptionId: <subscriptionId>
-        resourceGroup: <resourceGroupName>
-        name: <applicationGatewayName>
-    
-        # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
-        # This prohibits AGIC from applying config for any host/path.
-        # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
-        shared: false
-    
-    ################################################################################
-    # Specify which kubernetes namespace the ingress controller will watch
-    # Default value is "default"
-    # Leaving this variable out or setting it to blank or empty string would
-    # result in Ingress Controller observing all acessible namespaces.
-    #
-    # kubernetes:
-    #   watchNamespace: <namespace>
-    
-    ################################################################################
-    # Specify the authentication with Azure Resource Manager
-    #
-    # Two authentication methods are available:
-    # - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
-    armAuth:
-        type: aadPodIdentity
-        identityResourceID: <identityResourceId>
-        identityClientID:  <identityClientId>
-    
-    ## Alternatively you can use Service Principal credentials
-    # armAuth:
-    #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
-    
-    ################################################################################
-    # Specify if the cluster is RBAC enabled or not
-    rbac:
-        enabled: false # true/false
-    
-    # Specify aks cluster related information. THIS IS BEING DEPRECATED.
-    aksClusterConfiguration:
-        apiServerAddress: <aks-api-server-address>
-    ```
+# Verbosity level of the App Gateway Ingress Controller
+verbosityLevel: 3
+
+################################################################################
+# Specify which application gateway the ingress controller will manage
+#
+appgw:
+    subscriptionId: <subscriptionId>
+    resourceGroup: <resourceGroupName>
+    name: <applicationGatewayName>
+
+    # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
+    # This prohibits AGIC from applying config for any host/path.
+    # Use "kubectl get AzureIngressProhibitedTargets" to view and change this.
+    shared: false
+
+################################################################################
+# Specify which kubernetes namespace the ingress controller will watch
+# Default value is "default"
+# Leaving this variable out or setting it to blank or empty string would
+# result in Ingress Controller observing all acessible namespaces.
+#
+# kubernetes:
+#   watchNamespace: <namespace>
+
+################################################################################
+# Specify the authentication with Azure Resource Manager
+#
+# Two authentication methods are available:
+# - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
+armAuth:
+    type: aadPodIdentity
+    identityResourceID: <identityResourceId>
+    identityClientID:  <identityClientId>
+
+## Alternatively you can use Service Principal credentials
+# armAuth:
+#    type: servicePrincipal
+#    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+
+################################################################################
+# Specify if the cluster is RBAC enabled or not
+rbac:
+    enabled: false # true/false
+
+# Specify aks cluster related information. THIS IS BEING DEPRECATED.
+aksClusterConfiguration:
+    apiServerAddress: <aks-api-server-address>
+```
 
