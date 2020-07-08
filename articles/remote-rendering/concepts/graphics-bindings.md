@@ -9,12 +9,12 @@ ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
-ms.openlocfilehash: 4854d5ff9d697a2bf082a788c0e761a2152b0294
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: d29500db5efd0abde4c9555fde9a7e3d5bbe070a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758701"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564983"
 ---
 # <a name="graphics-binding"></a>图形绑定
 
@@ -27,7 +27,7 @@ ms.locfileid: "83758701"
 在 Unity 中，整个绑定由传递到 `RemoteManagerUnity.InitializeManager` 中的 `RemoteUnityClientInit` 结构处理。 要设置图形模式，必须将 `GraphicsApiType` 字段设置为所选绑定。 该字段将根据是否存在 XRDevice 自动填充。 该行为可手动替代为以下行为：
 
 * HoloLens 2：始终使用 [Windows 混合现实](#windows-mixed-reality)图形绑定。
-* **平面 UWP 桌面应用**：始终使用[模拟](#simulation)。 要使用此模式，请务必按照下文中的步骤操作：[教程：Setting up a Unity project from scratch](../tutorials/unity/project-setup.md)（教程：从头开始设置 Unity 项目）。
+* **平面 UWP 桌面应用**：始终使用[模拟](#simulation)。
 * **Unity 编辑器**：始终使用[模拟](#simulation)，除非连接了 WMR VR 耳机，在这种情况下，将禁用 ARR，以便调试应用程序的非 ARR 相关部分。 另请参阅[全息远程处理](../how-tos/unity/holographic-remoting.md)。
 
 Unity 的唯一其他相关部分是访问[基本绑定](#access)，可跳过下面的所有其他部分。
@@ -233,4 +233,4 @@ else
 
 ## <a name="next-steps"></a>后续步骤
 
-* [教程：从头开始设置 Unity 项目](../tutorials/unity/project-setup.md)
+* [教程：查看远程呈现的模型](../tutorials/unity/view-remote-models/view-remote-models.md)

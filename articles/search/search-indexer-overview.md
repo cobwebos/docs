@@ -1,7 +1,7 @@
 ---
 title: 用于在导入期间抓取数据的索引器
 titleSuffix: Azure Cognitive Search
-description: 对 Azure SQL 数据库、Azure Cosmos DB 或 Azure 存储爬网，提取可搜索的数据并填充 Azure 认知搜索索引。
+description: 对 Azure SQL 数据库、SQL 托管实例、Azure Cosmos DB 或 Azure 存储进行爬网，提取可搜索的数据并填充 Azure 认知搜索索引。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a728eff7addc7f835f82e795457e722fd60d2e30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282986"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564595"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -50,9 +50,9 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 * [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md)（预览版）
 * [Azure 表存储](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL 数据库](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure SQL 数据库和 SQL 托管实例](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
-* [Azure 上的 SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
+* [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>基本配置步骤
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
@@ -77,7 +77,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 虽然通常会对索引操作进行计划，但也可使用 [Run 命令](https://docs.microsoft.com/rest/api/searchservice/run-indexer)按需调用索引器：
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 可以通过[“获取索引器状态”命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)检索索引器的状态和执行历史记录：
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
     api-key: [Search service admin key]
 
 响应包含总体索引器状态、最后一次（或正在进行的）索引器调用以及最近索引器调用的历史记录。
@@ -128,7 +128,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 ## <a name="next-steps"></a>后续步骤
 了解基本概念后，下一步是查看每种数据源特定的要求和任务。
 
-* [Azure SQL 数据库或 Azure 虚拟机上的 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure 虚拟机上的 azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)

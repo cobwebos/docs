@@ -8,14 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.topic: how-to
+ms.date: 06/27/2020
+ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681445"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601441"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,12 +49,14 @@ ms.locfileid: "83681445"
 1. 为文件命名。 
 1. 对于 Jupyter Notebook 文件，请选择“Python Notebook”作为文件类型。
 1. 选择文件目录。
-1. 选择“创建”。
+1. 选择“创建” 。
 
-> [!TIP]
-> 也可以创建文本文件。  选择“文本”作为文件类型，并向名称添加扩展名（例如 myfile.py 或 myfile.txt）  
+也可以创建文本文件。  选择“文本”作为文件类型，并向名称添加扩展名（例如 myfile.py 或 myfile.txt）  
 
 另外，还可以通过“笔记本”页顶部的工具上传文件夹和文件，包括笔记本。  笔记本和大多数文本文件类型可在“预览”部分显示。  其他大多数文件类型没有预览功能。
+
+> [!IMPORTANT]
+> 笔记本和脚本中的内容可能会从会话中读取数据，并在 Azure 中不在组织的情况下访问数据。  仅从受信任的源加载文件。 有关详细信息，请参阅[安全代码最佳实践](concept-secure-code-best-practice.md#azure-ml-studio-notebooks)。
 
 ### <a name="clone-samples"></a>克隆示例
 
@@ -95,15 +97,37 @@ ms.locfileid: "83681445"
 
 若要编辑笔记本，请打开位于工作区“用户文件”部分的任何笔记本。 单击要编辑的单元格。 
 
-如果计算实例正在运行，还可以在任何 Python Notebook 中使用由 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense) 提供支持的代码完成功能。
+你可以在不连接到计算实例的情况下编辑笔记本。  如果要在笔记本中运行单元，请选择或创建计算实例。  如果选择一个已停止的计算实例，则在运行第一个单元时，它将自动启动。
+
+计算实例运行时，还可以在任何 Python 笔记本中使用[Intellisense](https://code.visualstudio.com/docs/editor/intellisense)支持的代码完成功能。
 
 另外，还可以从笔记本工具栏中启动 Jupyter 或 JupyterLab。  Azure 机器学习不提供来自 Jupyter 或 JupyterLab 的更新，也不修复其中的 bug，因为这些开源产品不在 Microsoft 支持的范围内。
+
+### <a name="use-intellisense"></a>使用 IntelliSense
+
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense)是一项代码完成帮助，其中包含许多功能：列出成员、参数信息、快速信息和完成单词。 使用这些功能，可以详细了解使用的代码、跟踪键入的参数，还可通过轻敲几个按键来添加属性和方法调用。  
+
+键入代码时，请使用 Ctrl + Space 来触发 IntelliSense。
+
+### <a name="save-and-checkpoint-a-notebook"></a>保存和检查笔记本
+
+Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
+
+在笔记本工具栏中，选择菜单，然后选择 **" &gt; 保存并检查点**" 以手动保存笔记本，然后将添加与该笔记本关联的检查点文件。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="笔记本工具栏中保存工具的屏幕截图":::
+
+每个笔记本每隔30秒自动保存一次。自动保存仅更新初始 *ipynb*   文件，而不更新检查点文件。
+ 
+在 "笔记本" 菜单中选择 "**检查点**" 创建命名的检查点，并将笔记本恢复为已保存的检查点。
+
 
 ### <a name="useful-keyboard-shortcuts"></a>有用的键盘快捷方式
 
 |键盘  |操作  |
 |---------|---------|
 |Shift+Enter     |  运行单元格       |
+|Ctrl+空格键 | 激活 IntelliSense |
 |Ctrl+M(Windows)     |  启用/禁用笔记本中的 Tab 键捕获。       |
 |Ctrl+Shift+M（Mac 和 Linux）     |    启用/禁用笔记本中的 Tab 键捕获。     |
 |Tab（Tab 键捕获处于启用状态） | 添加“\t”字符（缩进）
@@ -174,17 +198,17 @@ ms.locfileid: "83681445"
 
 “计算”下拉列表旁的指示器显示计算的状态。  在计算的下拉列表中也会显示状态。  
 
-|Color |计算状态 |
+|颜色 |计算状态 |
 |---------|---------| 
 | 绿色 | 正在运行计算 |
-| Red |计算失败 | 
+| 红色 |计算失败 | 
 | 黑色 | 已停止计算 |
 |  浅蓝色 |正在创建、正在启动、正在重新启动、正在设置计算 |
 |  灰色 |正在删除、正在停止计算 |
 
 “内核”下拉列表旁的指示器显示内核的状态。
 
-|Color |内核状态 |
+|颜色 |内核状态 |
 |---------|---------|
 |  绿色 |内核已连接、空闲、繁忙|
 |  灰色 |内核未连接 |

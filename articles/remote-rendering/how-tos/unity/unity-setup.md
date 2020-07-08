@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3400d82a6aa184daabfa2ebbe6b775b8e4c1562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681137"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565459"
 ---
 # <a name="set-up-remote-rendering-for-unity"></a>为 Unity 设置远程渲染
 
@@ -18,7 +18,7 @@ ms.locfileid: "80681137"
 
 ## <a name="startup-and-shutdown"></a>启动和关闭
 
-若要初始化远程呈现， `RemoteManagerUnity`请使用。 此类调入到泛型`RemoteManager` ，但已经实现了 Unity 特定的详细信息。 例如，Unity 使用特定的坐标系统。 调用`RemoteManagerUnity.Initialize`时，将设置适当的约定。 调用还要求提供 Unity 摄像机，此照相机应用于显示远程呈现的内容。
+若要初始化远程呈现，请使用 `RemoteManagerUnity` 。 此类调入到泛型， `RemoteManager` 但已经实现了 Unity 特定的详细信息。 例如，Unity 使用特定的坐标系统。 调用时 `RemoteManagerUnity.Initialize` ，将设置适当的约定。 调用还要求提供 Unity 摄像机，此照相机应用于显示远程呈现的内容。
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,9 +27,9 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-对于关闭远程渲染，请调用`RemoteManagerStatic.ShutdownRemoteRendering()`。
+对于关闭远程渲染，请调用 `RemoteManagerStatic.ShutdownRemoteRendering()` 。
 
-`AzureSession`创建并选择作为主呈现会话之后，必须向注册它`RemoteManagerUnity`：
+`AzureSession`创建并选择作为主呈现会话之后，必须向注册它 `RemoteManagerUnity` ：
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
@@ -70,13 +70,13 @@ RemoteManagerStatic.ShutdownRemoteRendering();
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`是一个可选组件，用于简化设置和会话管理。 它包含一些选项，可用于在应用程序退出时自动停止其会话，或者在编辑器中退出播放模式，以及在需要时自动续订会话租约。 它会缓存数据（例如会话属性`LastProperties` ），并为会话状态更改和会话错误公开事件。
+`ARRServiceUnity`是一个可选组件，用于简化设置和会话管理。 它包含一些选项，可用于在应用程序退出时自动停止其会话，或者在编辑器中退出播放模式，以及在需要时自动续订会话租约。 它会缓存数据（例如会话属性 `LastProperties` ），并为会话状态更改和会话错误公开事件。
 
-一次不能有一个以上的`ARRServiceUnity`实例。 它旨在让你快速入门，因为它实现了一些通用功能。 对于更大的应用程序，可能更愿意自己执行这些操作。
+一次不能有一个以上的实例 `ARRServiceUnity` 。 它旨在让你快速入门，因为它实现了一些通用功能。 对于更大的应用程序，可能更愿意自己执行这些操作。
 
-有关如何设置和使用`ARRServiceUnity`的示例，请参阅[教程：从头开始设置 Unity 项目](../../tutorials/unity/project-setup.md)。
+有关如何设置和使用的示例， `ARRServiceUnity` 请参阅[教程：查看远程呈现的模型](../../tutorials/unity/view-remote-models/view-remote-models.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [安装 Unity 的远程渲染包](install-remote-rendering-unity-package.md)
-* [教程：从头开始设置 Unity 项目](../../tutorials/unity/project-setup.md)
+* [教程：查看远程呈现的模型](../../tutorials/unity/view-remote-models/view-remote-models.md)

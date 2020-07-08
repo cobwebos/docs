@@ -1,26 +1,24 @@
 ---
-title: 使用 PowerShell 将 Azure 防火墙配置迁移到 Azure 防火墙策略（预览版）
-description: 了解如何将 Azure 防火墙配置迁移到 Azure 防火墙策略（预览版）
+title: 使用 PowerShell 将 Azure 防火墙配置迁移到 Azure 防火墙策略
+description: 了解如何将 Azure 防火墙配置迁移到 Azure 防火墙策略
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: conceptual
-ms.date: 02/18/2020
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 498863c98f308a9fd9b47f80328d572187475901
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9dadc875e5e6d35a78930b4a02c48e9cbb6f6ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601320"
 ---
-# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-preview-using-powershell"></a>使用 Powershell 将 Azure 防火墙配置迁移到 Azure 防火墙策略（预览版）
-
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+# <a name="migrate-azure-firewall-configurations-to-azure-firewall-policy-using-powershell"></a>使用 Powershell 将 Azure 防火墙配置迁移到 Azure 防火墙策略
 
 可以使用 Azure PowerShell 脚本将现有 Azure 防火墙配置迁移到 Azure 防火墙策略资源。 然后，可以使用 Azure 防火墙管理器部署策略。
 
-此`AZFWMigrationScript.ps1`脚本分别为 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 创建一个具有三个 RuleCollectionGroup 对象的 FirewallPolicy。 
+此 `AZFWMigrationScript.ps1` 脚本分别为 ApplicationRuleCollections、NetworkRuleCollections 和 NatRuleCollections 创建一个具有三个 RuleCollectionGroup 对象的 FirewallPolicy。 
 
 RuleCollectionGroup 是规则集合的新的顶级分组，用于将来的扩展性。 建议使用以上默认值，并在门户中自动完成此操作。
 
@@ -161,4 +159,4 @@ If ($azfw.NatRuleCollections.Count -gt 0) {
 ```
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 防火墙管理器部署： [Azure 防火墙管理器预览版部署概述](deployment-overview.md)。
+详细了解 Azure 防火墙管理器部署： [Azure 防火墙管理器部署概述](deployment-overview.md)。

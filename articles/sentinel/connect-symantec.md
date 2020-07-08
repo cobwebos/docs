@@ -1,6 +1,6 @@
 ---
 title: 将 Symantec ICDx 数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 Symantec ICDx 数据连接到 Azure Sentinel。
+description: 了解如何通过 Azure Sentinel 使用 Symantec ICDx 连接器轻松连接所有 Symantec 安全解决方案日志。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fc80b5f34cf3a98fd39ddc352cb2dd9a5e7151
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588087"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564922"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>连接 Symantec ICDx 设备 
 
@@ -42,7 +42,7 @@ Symantec ICDx 可以将日志直接集成到 Azure Sentinel。
 4. 在 "**转发器**" 下的 "Microsoft Azure Sentinel （Log Analytics）" 旁边，单击 "**添加**"。 
 4. 在**Microsoft Azure Sentinel （Log Analytics）** 窗口中，单击 "**显示高级**"。 
 5. 在展开到 Microsoft Azure Sentinel （Log Analytics）窗口的顶部，执行以下操作：
-    -   **名称**：键入不超过30个字符的转发器的名称。 选择唯一的有意义的名称。 此名称显示在 "**配置**" 屏幕上的转发器列表和**仪表板**屏幕上的仪表板中。 例如： Log Analytics 东 Microsoft Azure。 此字段是必填的。
+    -   **名称**：键入不超过30个字符的转发器的名称。 选择唯一的有意义的名称。 此名称显示在 "**配置**" 屏幕上的转发器列表和**仪表板**屏幕上的仪表板中。 例如： Log Analytics 东 Microsoft Azure。 此字段为必需字段。
     -   **说明**：键入转发器的描述。 此说明也出现在 "**配置**" 屏幕上的转发器列表中。 包括详细信息，例如要转发的事件类型和需要检查数据的组。
     -   **启动类型**：为转发器配置选择启动方法。 选项为手动和自动。<br>默认为“自动”。 
 6. 在 "**事件**" 下，执行以下操作： 
@@ -50,7 +50,7 @@ Symantec ICDx 可以将日志直接集成到 Azure Sentinel。
       > [!NOTE]
       > ICDx 接收方存档按名称单独列出。 
  
-    - **筛选器**：添加指定要转发的事件子集的筛选器。 执行以下操作之一：
+    - **筛选器**：添加指定要转发的事件子集的筛选器。 执行下列操作之一：
         - 若要选择筛选条件，请单击类型、属性、运算符和值。 
         - 在 "筛选器" 字段中，查看筛选条件。 您可以在字段中直接编辑它或根据需要将其删除。
         - 单击 "AND" 或 "OR" 以添加到筛选条件。
@@ -60,9 +60,9 @@ Symantec ICDx 可以将日志直接集成到 Azure Sentinel。
     - **批大小**：选择每批要发送的事件数。 选项为10、50、100、500和1000。<br>默认值为 100。 
     - **速率限制**：选择转发事件的速率，以每秒事件数表示。 选项包括无限制、500、1000、5000、10000。 <br> 默认值为5000。 
 7. 在 " **Azure 目标**" 下，执行以下操作： 
-    - **工作区 id**：粘贴下面的工作区 id。 此字段是必填的。
-    - **主键**：粘贴下面的主键。 此字段是必填的。
-    - **自定义日志名称**：在要将事件转发到的 Microsoft Azure 门户 Log Analytics 工作区中键入自定义日志名称。 默认值为 SymantecICDx。 此字段是必填的。
+    - **工作区 id**：粘贴下面的工作区 id。 此字段为必需字段。
+    - **主键**：粘贴下面的主键。 此字段为必需字段。
+    - **自定义日志名称**：在要将事件转发到的 Microsoft Azure 门户 Log Analytics 工作区中键入自定义日志名称。 默认值为 SymantecICDx。 此字段为必需字段。
 8. 单击 "*保存*" 以完成转发器配置。 
 9. 要启动转发器，请在 "**选项**" 下单击 "**更多**"，然后单击 "**启动**"
 10. 若要在 Symantec ICDx 事件 Log Analytics 中使用相关架构，请搜索**SymantecICDx_CL**。

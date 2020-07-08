@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa9a4ebe64880ae136a8460d35200fb84abb6cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 737587ccf46d4af292dc11d37567249c13260f51
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565496"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 向 PostgreSQL 进行身份验证
 
@@ -66,8 +66,11 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 - 集成式 Azure Active Directory
 - 采用了 MFA 的通用 Azure Active Directory
 - 使用 Active Directory 应用程序证书或客户端密码
+- [托管标识](howto-connect-with-managed-identity.md)
 
 执行 Active Directory 身份验证后，就可以检索令牌了。 此令牌是用于登录的密码。
+
+请注意，此时仅支持对 Azure AD 用户角色执行管理操作，例如添加新用户。
 
 > [!NOTE]
 > 若要详细了解如何使用 Active Directory 令牌进行连接，请参阅[为 Azure Database for PostgreSQL 配置 Azure AD 并使用它登录](howto-configure-sign-in-aad-authentication.md)。

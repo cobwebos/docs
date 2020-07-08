@@ -5,19 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 06/23/2020
 ms.author: victorh
-ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757162"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565545"
 ---
-# <a name="ip-groups-preview-in-azure-firewall"></a>Azure 防火墙中的 IP 组（预览版）
-
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="ip-groups-in-azure-firewall"></a>Azure 防火墙中的 IP 组
 
 IP 组允许通过以下方式对 Azure 防火墙规则的 IP 地址进行分组和管理：
 
@@ -40,7 +37,7 @@ IP 组可以有单个 IP 地址、多个 IP 地址或一个或多个 IP 地址�
 
 ## <a name="create-an-ip-group"></a>创建 IP 组
 
-可以使用 Azure 门户、Azure CLI 或 REST API 创建 IP 组。 有关详细信息，请参阅[创建 IP 组（预览版）](create-ip-group.md)。
+可以使用 Azure 门户、Azure CLI 或 REST API 创建 IP 组。 有关详细信息，请参阅[创建 IP 组](create-ip-group.md)。
 
 ## <a name="browse-ip-groups"></a>浏览 IP 组
 1. 在 Azure 门户搜索栏中，键入 " **IP 组**" 并将其选中。 你可以看到 IP 组的列表，或者可以选择 "**添加**" 以创建新的 ip 组。
@@ -64,9 +61,6 @@ IP 组可以有单个 IP 地址、多个 IP 地址或一个或多个 IP 地址�
 ## <a name="use-an-ip-group"></a>使用 IP 组
 
 你现在可以在创建 Azure 防火墙 DNAT、应用程序或网络规则时选择**Ip 组**作为 ip 地址的**源类型**或**目标类型**。
-
-> [!NOTE]
-> 防火墙策略不支持 IP 组。 目前仅支持传统防火墙规则。
 
 ![防火墙中的 IP 组](media/ip-groups/fw-ipgroup.png)
 

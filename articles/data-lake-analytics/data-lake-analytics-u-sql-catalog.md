@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.topic: conceptual
 ms.date: 05/09/2017
-ms.openlocfilehash: f3b9f14be4422373fb30f8c3d4909fd9c9546fdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22a15750a353b88d5a9bbff96f9ed080116792db
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71672850"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564183"
 ---
 # <a name="get-started-with-the-u-sql-catalog-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 目录入门
 
@@ -24,7 +24,7 @@ ms.locfileid: "71672850"
 
 以下脚本在默认数据库和架构中创建名为 `Searchlog()` 的 TVF：
 
-```
+```usql
 DROP FUNCTION IF EXISTS Searchlog;
 
 CREATE FUNCTION Searchlog()
@@ -55,7 +55,7 @@ END;
 
 以下脚本演示如何使用在前面的脚本中定义的 TVF：
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -76,7 +76,7 @@ OUTPUT @res
 
 以下脚本在默认数据库和架构中创建名为 `SearchlogView` 的视图：
 
-```
+```usql
 DROP VIEW IF EXISTS SearchlogView;
 
 CREATE VIEW SearchlogView AS  
@@ -93,7 +93,7 @@ USING Extractors.Tsv();
 
 以下脚本演示如何使用定义的视图：
 
-```
+```usql
 @res =
     SELECT
         Region,
@@ -113,7 +113,7 @@ OUTPUT @res
 
 使用以下脚本创建一个数据库和两个表：
 
-```
+```usql
 DROP DATABASE IF EXISTS SearchLogDb;
 CREATE DATABASE SearchLogDb;
 USE DATABASE SearchLogDb;
@@ -147,7 +147,7 @@ CREATE TABLE SearchLog2(
 
 若要从表中读取，请修改前面使用的转换脚本：
 
-```
+```usql
 @rs1 =
     SELECT
         Region,

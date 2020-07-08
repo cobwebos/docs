@@ -5,25 +5,26 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564009"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题
 
-本文介绍如何排查 Azure Data Box Gateway 上的问题。 在本文中，学习如何：
+本文介绍如何排查 Azure Data Box Gateway 上的问题。
+在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 运行诊断
 > * 收集支持包
 > * 使用日志进行故障排除
-
 
 ## <a name="run-diagnostics"></a>运行诊断
 

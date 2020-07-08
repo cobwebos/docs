@@ -8,16 +8,18 @@ ms.author: heidist
 tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/24/2020
+ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282921"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565900"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
+
 > [!div class="op_single_selector"]
+>
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
@@ -26,38 +28,60 @@ ms.locfileid: "79282921"
 
 Azure 认知搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
-> [!div class="checklist"]
-> * 管理对用于服务读取或写入的 api-keys  的访问。
-> * 通过更改分区和副本的分配以调整服务容量。
-> * 根据服务层级的最大限制，监视资源使用情况。
+* 使用 "中页**使用情况**" 链接检查存储。
+* 使用中间页面**监视**链接检查查询量和延迟，以及是否限制请求。
+* 使用左侧的 "**密钥**" 页管理访问权限。
+* 使用左侧的 "**缩放**" 页调整容量。
 
-请注意，“升级”  未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 认知搜索服务](search-create-service-portal.md)。
+还可以通过[管理 api](https://docs.microsoft.com/rest/api/searchmanagement/)和[Az. 搜索 PowerShell 模块](search-manage-powershell.md)以编程方式处理在门户中执行的相同任务。 管理任务跨门户和编程接口完全表示。 没有特定的管理任务仅在一个模态中可用。
 
-可以监视查询量和其他指标，并根据这些见解调整自己的服务以缩短响应时间。 有关详细信息，请参阅[监视使用情况和查询度量值](search-monitor-usage.md)以及[性能和优化](search-performance-optimization.md)。
+Azure 认知搜索利用其他 Azure 服务进行更深入的监视和管理。 与搜索服务一起存储的唯一数据本身就是内容（索引、索引器和数据源定义以及其他对象）。 在滚动30天周期内，从内部日志请求报告给门户页面的指标。 对于用户控制的日志保留和其他事件，需要[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)。 
 
-<a id="admin-rights"></a>
+## <a name="fixed-service-properties"></a>固定服务属性
+
+搜索服务的几个方面是在预配服务时确定的，以后不能更改：
+
+* 服务名称（不能重命名服务）
+* 服务位置（目前无法将完整的服务移到另一个区域）
+* 最大副本数和分区计数（由层、基本或标准确定）
+
+如果使用基本版从最大分区开始，现在需要更多分区，则需要在更高的层上[创建新服务](search-create-service-portal.md)，并在新服务上重新创建内容。 
 
 ## <a name="administrator-rights"></a>管理员权限
+
 预配或解除对服务本身的授权可以通过 Azure 订阅管理员或协同管理员完成。
 
-在服务中，有权访问服务 URL 并拥有管理员 API 密钥的任何人都有对该服务的读写访问权限。 借助读写访问权限能够添加、删除或修改服务器对象（包括通过 [RBAC 定义的角色](search-security-rbac.md)实现的 API 密钥、索引、索引器、数据源、计划和角色分配）。
+对于对终结点的访问，有权访问服务 URL 和 api 密钥的任何人均可访问内容。 有关密钥的详细信息，请参阅[管理 api 密钥](search-security-api-keys.md)。
 
-Azure 认知搜索服务的所有用户交互属于下列模式之一：对服务的读写访问（管理员权限）或对服务的只读访问（查询权限）。 有关详细信息，请参阅[管理 API 密钥](search-security-api-keys.md)。
+* 对服务的只读访问是查询权限，通常通过为客户端应用程序提供 URL 和查询 api 密钥来授予客户端应用程序。
+* 读写访问权限提供了添加、删除或修改服务器对象的功能，包括 api 密钥、索引、索引器、数据源和计划。通过提供 URL，即管理员 API 密钥来授予读写访问权限。
 
-<a id="sys-info"></a>
+服务预配设备的权限是通过角色分配授予的。 [基于角色的访问（RBAC）](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 
+
+在 Azure 认知搜索环境中， [RBAC 角色分配](search-security-rbac.md)将确定谁可以执行任务，无论他们使用的是[门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
+
+* 创建或删除服务
+* 缩放服务
+* 删除或重新生成 API 密钥
+* 启用诊断日志记录（创建服务）
+* 启用流量分析（创建服务）
+
+> [!TIP]
+> 使用 Azure 范围的机制，可以锁定订阅或资源，以防止使用管理员权限的用户意外或未经授权地删除搜索服务。 有关详细信息，请参阅[锁定资源以防止意外删除](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="logging-and-system-information"></a>日志记录和系统信息
-Azure 认知搜索服务不会通过门户或程序设计界面公开单个服务的日志文件。 在基本层以及更高层上，Microsoft 会监视所有 Azure 认知搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
-根据服务的常规信息，可以通过以下方式获取信息：
+在基本层以及更高层上，Microsoft 会监视所有 Azure 认知搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
-* 在门户中、在服务仪表板上、通过通知、属性和状态消息。
-* 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 来[获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)，或索引资源使用状况的状态。
+Azure 认知搜索利用[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)收集和存储索引和查询活动。 搜索服务本身仅存储其内容（索引、索引器定义、数据源定义、技能组合定义、同义词映射）。 缓存和记录的信息通常存储在 Azure 存储帐户中。 有关记录索引和查询工作负荷的详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
 
+就服务的一般信息而言，仅使用 Azure 中内置的设施认知搜索自身，你可以通过以下方式获取信息：
 
-<a id="sub-5"></a>
+* 使用 "服务**概述**" 页，通过通知、属性和状态消息。
+* 使用[PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) [获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)。 编程层没有提供任何新的信息或操作。 接口存在，以便您可以编写脚本。
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
+
 在仪表板中，资源监视仅限于服务仪表板中显示的信息，以及一些可通过查询服务获得的度量值。 在服务仪表板的“使用量”部分中，可以快速确定分区资源级别是否适合应用程序。 如果你希望捕获并持久保存所记录的事件，可以预配外部资源，例如 Azure 监视。 有关详细信息，请参阅[监视 Azure 认知搜索](search-monitor-usage.md)。
 
 使用搜索服务 REST API，可以通过编程方式获取文档和索引的计数： 
@@ -71,56 +95,54 @@ Azure 认知搜索服务不会通过门户或程序设计界面公开单个服�
 
 如果在超出 Microsoft 控制的灾难性故障中需要连续性服务，可在其他区域[预配一个附加服务](search-create-service-portal.md)并实施异地复制策略，确保索引跨所有服务完全冗余。
 
-使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果从同样异地冗余的数据源进行索引，请注意 Azure 认知搜索索引器只能从主要副本执行增量索引（从新的、已修改的或已删除的文档合并更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
+使用[索引器](search-indexer-overview.md)来填充和刷新索引的客户可利用相同的数据源，通过特定于地区的索引器来处理灾难恢复。 不同区域的两个服务（每个都运行索引器）可对相同数据源进行索引，实现异地冗余。 如果要从也是异地冗余的数据源进行索引，请注意，Azure 认知搜索索引器只能执行增量索引（从新的、已修改或已删除的文档合并更新）。 在故障转移事件中，请确保将索引器重新指向到新的主要副本。 
 
 如果不使用索引器，也可使用应用程序代码将对象和数据并行推送到其他搜索服务。 有关详细信息，请参阅 [Azure 认知搜索中的性能和优化](search-performance-optimization.md)。
 
 ## <a name="backup-and-restore"></a>备份和还原
 
-由于 Azure 认知搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，你可以使用此 **Azure 认知搜索 .NET 示例存储库**中的 [index-backup-restore](https://github.com/Azure-Samples/azure-search-dotnet-samples) 示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件来还原索引。 还可以使用此工具在服务层级之间移动索引。
+由于 Azure 认知搜索不是主数据存储解决方案，因此，我们不提供正式的自助备份和还原机制。 但是，你可以使用此 [Azure 认知搜索 .NET 示例存储库](https://github.com/Azure-Samples/azure-search-dotnet-samples)中的 **index-backup-restore** 示例代码将索引定义和快照备份到一系列 JSON 文件，然后根据需要使用这些文件来还原索引。 还可以使用此工具在服务层级之间移动索引。
 
 在其他情况下，如果误删索引，用于创建和填充索引的应用程序代码是事实上的还原选项。 要重新生成索引，请删除它（假设其存在），在服务中重新创建该索引，并通过从主数据存储中检索数据来重新加载该索引。
 
-<a id="scale"></a>
-
 ## <a name="scale-up-or-down"></a>增加或减少
-每个搜索服务从至少一个副本和一个分区开始操作。 如果已注册[提供专用资源的层](search-limits-quotas-capacity.md)，请单击服务仪表板中的“规模”磁贴，调整资源使用情况  。
+
+每个搜索服务从至少一个副本和一个分区开始操作。 如果注册了[支持更多容量的层](search-limits-quotas-capacity.md)，请单击左侧导航窗格中的 "**缩放**" 以调整资源使用。
 
 如果通过任一资源添加容量，服务会自动使用它们。 无需执行任何进一步的操作，但在新资源产生作用之前，会有轻微延迟。 可能需要 15 分钟或更长的时间才能预配其他资源。
 
- ![][10]
-
 ### <a name="add-replicas"></a>添加副本
-增加每秒查询次数 (QPS) 或实现高可用性可通过添加副本来完成。 每个副本都有索引的副本，因此多添加一个副本将转换为可用于处理服务查询要求的多个索引。 高可用性至少需要 3 个副本（有关详细信息，请参阅[容量规划](search-capacity-planning.md)）。
+
+增加每秒查询次数 (QPS) 或实现高可用性可通过添加副本来完成。 每个副本都有索引的副本，因此多添加一个副本将转换为可用于处理服务查询要求的多个索引。 高可用性需要至少3个副本（有关详细信息，请参阅[调整容量](search-capacity-planning.md)）。
 
 具有许多副本的搜索服务可通过大量索引进行负载均衡查询请求。 在给定查询量级别的情况下，当有更多索引副本可用于为请求提供服务时，查询吞吐量的速度将更快。 如果出现查询延迟，会期望在附加副本联机后对性能产生积极的影响。
 
 尽管添加副本时查询吞吐量会提高，但不会按在将向服务添加副本时的恰好两倍或三倍来提高。 所有搜索应用程序都会因可能影响到查询性能的外部因素而受到约束。 复杂的查询和网络延迟是造成查询响应次数变化的两个因素。
 
 ### <a name="add-partitions"></a>添加分区
-大多数服务应用程序都有多个副本而非分区方面的内置需求。 如果已注册标准服务，则在需要增加文档计数的情况下，可以添加分区。 基本层不提供其他分区。
 
-在标准层中，分区按 12 的倍数进行添加（具体而言，1、2、3、4、6 或 12）。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
+添加副本更常见，但当存储受到限制时，可以添加分区以获得更多的容量。 预配服务的层确定是否可以添加分区。 基本层被锁定在一个分区中。 标准层和更高版本支持其他分区。
+
+分区添加为12的倍数（具体而言，为1、2、3、4、6或12）。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
 
 ### <a name="remove-replicas"></a>删除副本
+
 在高查询量期间过后，可以使用滑块在搜索查询负载正常后（例如，假日销售结束后）减少副本。 无须再执行其他步骤。 降低副本计数会消除数据中心内的虚拟机。 相较于之前的情况而言，现在会在较少的 VM 上执行查询和数据引入操作。 最低要求是一个副本。
 
 ### <a name="remove-partitions"></a>删除分区
+
 与无需执行额外工作即可删除副本相比，如果使用的存储大于可减少的存储，可能需要完成一些工作。 例如，如果解决方案使用三个分区，则在新存储空间小于承载索引所需空间时，缩减为一或两个分区将生成错误。 正如预期的那样，可以选择删除索引或相关索引内的文档来释放空间，或者保持目前配置。
 
 无法通过任何检测方法确定哪些索引分片存储在特定分区上。 每个分区提供大约 25 GB 的存储，因此需要将存储减少到可让所拥有分区数能容纳的大小。 如果要还原为一个分区，则所有 12 个分片都需要适合。
 
 为了帮助实现未来规划，可能需要检查存储（使用[获取索引统计信息](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)），了解实际使用了多少空间。 
 
-<a id="next-steps"></a>
-
 ## <a name="next-steps"></a>后续步骤
-了解服务管理的相关概念后，请考虑使用 [PowerShell](search-manage-powershell.md) 来自动执行任务。
 
-同时建议查看[性能和优化文章](search-performance-optimization.md)。
+* 通过[PowerShell](search-manage-powershell.md)自动执行
 
-<!--Image references-->
-[10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
+* 查看[性能和优化](search-performance-optimization.md)方法
 
+* 查看保护内容和操作的[安全功能](search-security-overview.md)
 
-
+* 启用[诊断日志记录](search-monitor-logs.md)以监视查询和索引工作负荷

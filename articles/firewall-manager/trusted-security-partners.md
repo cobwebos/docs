@@ -1,33 +1,30 @@
 ---
-title: 什么是 Azure 防火墙管理器可信安全合作伙伴（预览版）
-description: 了解 Azure 防火墙管理器信任的安全合作伙伴
+title: 什么是 Azure 防火墙管理器安全合作伙伴提供程序？
+description: 了解 Azure 防火墙管理器安全合作伙伴提供程序
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436777"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563607"
 ---
-# <a name="what-are-trusted-security-partners-preview"></a>什么是信任的安全合作伙伴（预览版）？
+# <a name="what-are-security-partner-providers"></a>什么是安全合作伙伴提供程序？
 
-> [!IMPORTANT]
-> 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+使用 Azure 防火墙管理器中的*安全合作伙伴提供程序*，可以使用熟悉的、同类最佳的第三方安全即服务（SECaaS）产品来保护用户对 Internet 的访问。
 
-Azure 防火墙管理器中的*受信任安全合作伙伴（预览版）* 可让你使用熟悉的、一流的第三方安全即服务（SECaaS）产品来保护用户的 Internet 访问。
-
-通过快速配置，你可以使用受支持的安全合作伙伴保护集线器，并从虚拟网络（Vnet）或区域中的分支机构路由和筛选 Internet 流量。 这是使用自动路由管理实现的，无需设置和管理用户定义的路由（Udr）。
+通过快速配置，你可以使用受支持的安全合作伙伴保护集线器，并从虚拟网络（Vnet）或区域中的分支机构路由和筛选 Internet 流量。 可以通过自动路由管理来实现此目的，无需设置和管理用户定义的路由（Udr）。
 
 你可以在多个 Azure 区域中部署配置有所选安全合作伙伴的安全中心，以便在这些区域中的任何位置获得用户的连接和安全。 由于能够使用安全合作伙伴提供的 Internet/SaaS 应用程序流量和 Azure Firewall，在受保护的中心获取专用流量，因此，你现在可以在 Azure 上开始构建接近全球分布式用户和应用程序的安全边缘。
 
-对于此预览版，支持的安全合作伙伴是**ZScaler**和**iboss**。 支持的区域包括： WestCentralUS、NorthCentralUS、WestUS、WestUS2 和 EastUS。
+受支持的安全合作伙伴是**ZScaler**、 **Check Point** （预览版）和**iboss** （预览版）。
 
-![信任的安全合作伙伴](media/trusted-security-partners/trusted-security-partners.png)
+![安全合作伙伴提供程序](media/trusted-security-partners/trusted-security-partners.png)
 
 ## <a name="key-scenarios"></a>密钥方案
 
@@ -42,18 +39,8 @@ Azure 防火墙管理器中的*受信任安全合作伙伴（预览版）* 可�
    利用 Azure 连接和全局分发功能，可以轻松地为分支到 Internet 方案添加第三方 NSaaS 筛选。 可以使用 Azure 虚拟广域网构建全球传输网络和安全边缘。
 
 支持以下方案：
--   通过第三方合作伙伴产品/服务将 VNet 连接到 Internet。
--   通过第三方合作伙伴产品分支到 Internet。
--   通过 Azure 防火墙通过第三方合作伙伴产品/服务（分支到辐射、分支到分支、分支到轮辐）分支到 Internet。
-
-不支持以下方案：
-
-- 通过合作伙伴产品/服务的 VNet 到 Internet 不能与用于专用流量的 Azure 防火墙结合使用。 请参阅以下限制。
-
-## <a name="current-limitations"></a>当前限制
-
-- 对于 VNet 到 Internet，你无法将添加用于专用流量的 Azure 防火墙和用于 Internet 流量的合作伙伴产品组合。 你可以将 Internet 流量发送到受保护虚拟中心中的 Azure 防火墙或第三方安全合作伙伴产品，但不能同时发送这两者。 
-- 每个虚拟中心最多可以部署一个安全伙伴。 如果需要更改提供程序，则必须删除现有伙伴并添加一个新伙伴。
+- 通过 Azure 防火墙通过安全合作伙伴提供商和其他流量（从辐射、分支到分支、分支到辐射）将 VNet/分支到 Internet。
+- 通过安全合作伙伴提供商对到 Internet 的 VNet/分支
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>安全虚拟中心 Internet 流量筛选的最佳实践
 
@@ -75,9 +62,8 @@ Internet 流量通常包含 web 流量。 但它还包括目标为 SaaS 应用�
 
 [Office 365 网络连接原则](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles)调用，将从用户分支或移动设备本地路由的关键 Office 365 网络连接，并直接通过 Internet 连接到最接近的 Microsoft 网络状态点。
 
-此外，出于性能方面的考虑，Office 365 连接出于隐私目的进行了强加密，并使用有效的专用协议。 这会使它不切实际，并有影响力这些与传统网络级别安全解决方案的连接。 出于此原因，我们强烈建议客户在通过 Azure 发送其他流量之前，直接从分支发送 Office 365 流量。 Microsoft 已与多个与 Azure 和 Office 365 集成的 SD WAN 解决方案提供商合作，使客户能够轻松实现 Office 365 的直接和本地 Internet 分类。 有关详细信息，请参阅[通过虚拟 WAN 设置我的 O365 策略如何实现？](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
-
+此外，出于性能方面的考虑，Office 365 连接出于隐私目的进行加密，并使用有效的专用协议。 这会使它不切实际，并有影响力这些与传统网络级别安全解决方案的连接。 出于此原因，我们强烈建议客户在通过 Azure 发送其他流量之前，直接从分支发送 Office 365 流量。 Microsoft 已与多个与 Azure 和 Office 365 集成的 SD WAN 解决方案提供商合作，使客户能够轻松实现 Office 365 的直接和本地 Internet 分类。 有关详细信息，请参阅[通过虚拟 WAN 设置我的 O365 策略如何实现？](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure 防火墙管理器在受保护的中心部署受信任的安全产品](deploy-trusted-security-partner.md)。
+[使用 Azure 防火墙管理器在受保护的中心部署安全合作伙伴产品](deploy-trusted-security-partner.md)。

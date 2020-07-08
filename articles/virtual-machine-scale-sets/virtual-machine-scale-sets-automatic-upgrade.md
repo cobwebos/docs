@@ -6,15 +6,15 @@ ms.author: avverma
 ms.topic: conceptual
 ms.service: virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 04/14/2020
+ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: c06ad5ab2688bd62fdf898950a8f64cd655a9fcc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124969"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601337"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虚拟机规模集自动 OS 映像升级
 
@@ -46,11 +46,11 @@ ms.locfileid: "83124969"
 规模集 OS 升级业务流程协调程序在升级每个批之前会检查规模集总体运行状况。 升级某一批时，可能有其他并发的计划内或计划外维护活动影响规模集实例的运行状况。 在这种情况下，如果超过 20% 的规模集实例不正常，则当前批结束时，规模集升级将会停止。
 
 ## <a name="supported-os-images"></a>支持的 OS 映像
-当前仅支持特定 OS 平台映像。 自定义映像支持通过[共享映像库](shared-image-galleries.md)在自定义映像的[预览中](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview)可用。
+当前仅支持特定 OS 平台映像。 如果规模集通过[共享映像库](shared-image-galleries.md)使用自定义映像，则[支持](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自定义映像。
 
 目前支持以下平台 Sku （并且更多是定期添加的）：
 
-| 发布者               | OS 产品/服务      |  SKU               |
+| Publisher               | OS 产品/服务      |  SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -77,90 +77,25 @@ ms.locfileid: "83124969"
 ### <a name="service-fabric-requirements"></a>Service Fabric 要求
 
 如果使用 Service Fabric，请确保满足以下条件：
--   Service Fabric[持久性级别](../service-fabric/service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)为银或黄金，而不是青铜。
+-   Service Fabric[持久性级别](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)为银或黄金，而不是青铜。
 -   规模集模型定义上的 Service Fabric 扩展必须具有 TypeHandlerVersion 1.1 或更高版本。
 -   持久性级别应在 Service Fabric 群集上相同，并在规模集模型定义上 Service Fabric 扩展。
+- 不需要额外的运行状况探测或使用应用程序运行状况扩展。
 
 请确保 Service Fabric 群集和 Service Fabric 扩展中的持续性设置不匹配，因为不匹配将导致升级错误。 可根据[本页中所](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)述的指导原则修改持久性级别。
 
 
-## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>自定义映像的自动 OS 映像升级（预览版）
+## <a name="automatic-os-image-upgrade-for-custom-images"></a>自定义映像的自动 OS 映像升级
 
-> [!IMPORTANT]
-> 自定义映像的自动 OS 映像升级目前为公共预览版。 使用下述公共预览功能需要使用选择过程。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-自动 OS 映像升级适用于通过[共享映像库](shared-image-galleries.md)部署的自定义映像。 自动 OS 映像升级不支持其他自定义映像。
-
-若要启用预览功能，只需为每个订阅*AutomaticOSUpgradeWithGalleryImage*功能一次，如下所述。
-
-### <a name="rest-api"></a>REST API
-下面的示例说明如何为订阅启用预览：
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
-```
-
-功能注册可能最多需要15分钟。 检查注册状态：
-
-```
-GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
-```
-
-为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。
-
-```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
-```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-使用[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) cmdlet 为你的订阅启用预览。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-功能注册可能最多需要15分钟。 检查注册状态：
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
-```
-
-为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用[az feature register](/cli/azure/feature#az-feature-register)为你的订阅启用预览。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-功能注册可能最多需要15分钟。 检查注册状态：
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
-```
-
-为订阅注册此功能后，通过将更改传播到计算资源提供程序来完成选择加入过程。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+自动 OS 映像升级支持通过[共享映像库](shared-image-galleries.md)部署的自定义映像。 自动 OS 映像升级不支持其他自定义映像。
 
 ### <a name="additional-requirements-for-custom-images"></a>自定义映像的其他要求
-- 上面所述的选择过程只需针对每个订阅完成一次。 选择完成后，可以为该订阅中的任何规模集启用自动 OS 升级。
-- 共享映像库可以位于任何订阅中，无需单独选择加入。 只有规模集订阅需要选择加入功能。
-- 对于所有规模集，自动 OS 映像升级的配置过程是相同的，如本页的 "[配置" 部分](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)中所述。
+- 对于所有规模集，自动 OS 映像升级的安装和配置过程都是相同的，如本页的 "[配置" 部分](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade)中所述。
 - 当新版本的映像发布并[复制](shared-image-galleries.md#replication)到该规模集的区域时，配置为自动 OS 映像升级的规模集实例将升级到最新版本的共享映像库映像。 如果未将新映像复制到部署规模的区域，则规模集实例将不会升级到最新版本。 区域映像复制允许您控制规模集的新映像的推出。
 - 不应从该库映像的最新版本中排除新的映像版本。 不是从库映像的最新版本中排除的映像版本不会通过自动 OS 映像升级向规模集推出。
 
 > [!NOTE]
->规模集为自动 OS 升级配置规模集后，最长可能需要3小时才能触发第一个映像升级推出。 这是每个规模集的一次性延迟。 在30分钟内，将在规模集上触发后续映像的部署。
+>在首次为自动 OS 升级配置规模集之后，规模集最多需要3小时才能触发第一个映像升级推出。 这是每个规模集的一次性延迟。 在30-60 分钟内，将在规模集上触发后续映像的部署。
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>配置自动 OS 映像升级
@@ -193,11 +128,14 @@ Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" 
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用[az vmss update](/cli/azure/vmss#az-vmss-update)为规模集配置自动 OS 映像升级。 使用 Azure CLI 2.0.47 或更高版本。 以下示例在名为*myResourceGroup*的资源组中配置名为*myScaleSet*的规模集的自动升级：
+用于 `[az vmss update](/cli/azure/vmss#az-vmss-update)` 配置规模集的自动 OS 映像升级。 使用 Azure CLI 2.0.47 或更高版本。 以下示例在名为*myResourceGroup*的资源组中配置名为*myScaleSet*的规模集的自动升级：
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
 ```
+
+> [!NOTE]
+>为规模集配置自动 OS 映像升级后，如果规模集使用 "手动"[升级策略](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)，还必须将规模集 vm 引入最新的规模集模型。
 
 ## <a name="using-application-health-probes"></a>使用应用程序运行状况探测
 

@@ -1,6 +1,6 @@
 ---
 title: 将 AWS CloudTrail 连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 AWS CloudTrail 数据连接到 Azure Sentinel。
+description: 使用 AWS 连接器将 Azure Sentinel 访问委托给 AWS 资源日志，并在 AWS CloudTrail 和 Sentinel 之间创建信任关系。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -9,23 +9,26 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588648"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564571"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>将 Azure Sentinel 连接到 AWS CloudTrail
 
 使用 AWS 连接器将所有 AWS CloudTrail 事件流式传输到 Azure Sentinel。 此连接过程会将 Azure Sentinel 的访问权限委派给 AWS 资源日志，从而在 AWS CloudTrail 和 Azure Sentinel 之间创建信任关系。 这是在 AWS 上完成的，方法是创建一个角色，该角色授予 Azure Sentinel 访问 AWS 日志的权限。
 
-## <a name="prerequisites"></a>必备条件
+> [!NOTE]
+> AWS CloudTrail 在其 LookupEvents API 中具有[内置限制](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)。 它允许每个帐户每秒的事务数（TPS）不超过两个，每个查询最多可返回50个记录。 因此，如果单个租户在一个区域中每秒持续生成的记录超过100，则将导致数据引入的积压和延迟。
+
+## <a name="prerequisites"></a>先决条件
 
 您必须对 Azure Sentinel 工作区具有写入权限。
 

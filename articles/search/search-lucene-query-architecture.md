@@ -8,14 +8,14 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282934"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565916"
 ---
-# <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure 认知搜索中全文搜索的工作原理
+# <a name="full-text-search-in-azure-cognitive-search"></a>Azure 认知搜索中的全文搜索
 
 本文面向需要更深入了解 Azure 认知搜索中 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 认知搜索都会无缝提供预期结果，但偶尔也会提供看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
 
@@ -52,7 +52,7 @@ ms.locfileid: "79282934"
 以下示例是可以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 发送到 Azure 认知搜索的一个搜索请求。  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2019-05-06
+POST /indexes/hotels/docs/search?api-version=2020-06-30
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -72,7 +72,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 本文的大部分内容介绍如何处理*搜索查询*：`"Spacious, air-condition* +\"Ocean view\""`。 筛选和排序不属于本文的介绍范畴。 有关详细信息，请参阅[搜索 API 参考文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>阶段 1：查询分析 
+## <a name="stage-1-query-parsing"></a>第 1 阶段：查询分析 
 
 如前所述，查询字符串是请求的第一行： 
 
@@ -84,11 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 + 针对独立字词（例如 spacious）的*字词查询*
 + 针对带引号字词（例如 ocean view）的*短语查询*
-+ 针对字词后接前缀运算符 *（例如 air-condition）的*前缀查询`*`
++ 针对字词后接前缀运算符 `*`（例如 air-condition）的*前缀查询*
 
 有关支持的查询类型的完整列表，请参阅 [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
-与子查询关联的运算符确定是“必须”还是“应该”满足该查询，才将某个文档视为匹配项。 例如，由于使用了 `+"Ocean view"` 运算符，`+` 表示“必须”满足查询。 
+与子查询关联的运算符确定是“必须”还是“应该”满足该查询，才将某个文档视为匹配项。 例如，由于使用了 `+` 运算符，`+"Ocean view"` 表示“必须”满足查询。 
 
 查询分析器将传递给搜索引擎的子查询重新构造成*查询树*（表示查询的内部结构）。 在查询分析的第一个阶段，查询树如下所示。  
 
@@ -108,7 +108,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-显式运算符（例如 `+` 中的 `+"Ocean view"`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
+显式运算符（例如 `+"Ocean view"` 中的 `+`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
 
 默认情况下 (`searchMode=any`)，搜索引擎采用更广泛的解释。 *应该*匹配任一字段，反映“or”的语义。 上面所示的初始查询树包含两个“should”运算符，显示了默认行为。  
 
@@ -126,7 +126,7 @@ Spacious,||air-condition*+"Ocean view"
 > 运行代表性查询时，选择 `searchMode=any` 而不选择 `searchMode=all` 是最明智的决定。 经常使用运算符（搜索文档存储时就经常这样做）的用户可能会发现，如果 `searchMode=all` 能够告知布尔查询构造，则结果会更直观。 有关 `searchMode` 与运算符之间的交互作用的详细信息，请参阅[简单查询语法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)。
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>阶段 2：词法分析 
+## <a name="stage-2-lexical-analysis"></a>第 2 阶段：词法分析 
 
 构造查询树之后，词法分析器将处理*字词查询*和*短语查询*。 分析器接受分析器提供给它的文本输入，处理文本，并发回标记化的字词，以便在查询树中整合。 
 
@@ -188,7 +188,7 @@ Spacious,||air-condition*+"Ocean view"
 
 <a name="stage3"></a>
 
-## <a name="stage-3-document-retrieval"></a>阶段 3：文档检索 
+## <a name="stage-3-document-retrieval"></a>第 3 阶段：文档检索 
 
 文档检索是否在索引中查找包含匹配词的文档。 最好是通过一个示例来理解此阶段。 我们从一个采用以下简单架构的酒店索引着手： 
 
@@ -239,7 +239,7 @@ Spacious,||air-condition*+"Ocean view"
 要在倒排索引中生成字词，搜索引擎将针对文档内容执行词法分析，这类似于查询处理期间执行的操作：
 
 1. 根据分析器的配置，执行将文本输入传递给分析器、转换为小写、去除标点等操作  。 
-2. 令牌是文本分析的输出  。
+2. *标记*是词法分析的输出。
 3. 将词语添加到索引  。
 
 我们经常（但不是非要这样做）使用相同的分析器来执行搜索和索引编制操作，使查询词看上去更像是索引中的字词。
@@ -261,7 +261,7 @@ Spacious,||air-condition*+"Ocean view"
 | resort | 3 |
 | retreat | 4 |
 
-在标题字段中，只有 *hotel* 显示在以下两个文档中：1 和 3。
+在标题字段中，只有“酒店”显示在以下两个文档中  ：1、3。
 
 对于**说明**字段，索引如下所示：
 
@@ -313,9 +313,9 @@ Spacious,||air-condition*+"Ocean view"
 
 总而言之，对于上述查询，匹配的文档为 1、2、3。 
 
-## <a name="stage-4-scoring"></a>阶段 4：评分  
+## <a name="stage-4-scoring"></a>阶段 4：计分  
 
-将为搜索结果集中的每个文档分配一个相关性评分。 相关性评分的作用是提高能够为搜索查询所表示的用户问题提供最佳答案的文档的排名。 评分是根据匹配的字词的统计属性计算的。 评分公式的核心是 [TF/IDF（字词频率-逆向文档频率）](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)。 在包含不常见和常见字词的查询中，TF/IDF 会提升包含不常见字词的结果。 例如，在包含所有 Wikipedia 文章的假想索引中，对于匹配查询 *the president* 的文档，匹配 *president* 的文档的相关性被视为高于匹配 *the* 的文档。
+将为搜索结果集中的每个文档分配一个相关性评分。 相关性评分的作用是提高能够为搜索查询所表示的用户问题提供最佳答案的文档的排名。 评分是根据匹配的字词的统计属性计算的。 评分公式的核心是[TF/IDF （术语 frequency-反转文档频率）](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)。 在包含不常见和常见字词的查询中，TF/IDF 会提升包含不常见字词的结果。 例如，在包含所有 Wikipedia 文章的假想索引中，对于匹配查询 *the president* 的文档，匹配 *president* 的文档的相关性被视为高于匹配 *the* 的文档。
 
 
 ### <a name="scoring-example"></a>评分示例
@@ -371,7 +371,7 @@ Azure 认知搜索中的所有索引会自动拆分成多个分片，使我们�
 
 一般而言，如果顺序稳定性非常重要，则文档评分并不是用于文档排序的最佳属性。 例如，假设两个文档具有相同的评分，则无法保证以后运行同一个查询时，会先显示哪个文档。 文档评分只能让你大致了解某个文档的相关性相对于结果集中其他文档的高低程度。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 Internet 搜索引擎取得的成功提高了人们对私有数据运行全文搜索的预期。 对于几乎所有类型的搜索体验，我们现在都会预期引擎理解我们的意图，即使搜索词拼写不当或者不完整。 我们甚至预期可以根据近似的字词或者我们从未实际指定的同义词执行匹配。
 

@@ -8,16 +8,16 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 4bc5897401a62d45e8b1c987d7ef50e0c8a6de08
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565364"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>将计分概要文件添加到 Azure 认知搜索索引
 
-*计分*为排名序结果集中的每个项计算搜索评分。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。
+计分对排序结果集中的每项计算搜索分数**。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。
 
  Azure 认知搜索使用默认计分计算初始分数，但可以通过“计分概要文件”自定义计算**。 借助计分概要文件，可以更好地控制搜索结果中的项排名。 例如，建议根据创收能力提升项、提升新项或提升库存时间太长的项。  
 
@@ -25,11 +25,11 @@ ms.locfileid: "82890183"
  
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
 
-## <a name="scoring-profile-definitions"></a>计分配置文件定义
+## <a name="scoring-profile-definitions"></a>计分概要文件定义
 
  计分概要文件属于索引定义的一部分，由加权字段、函数和参数组成。  
 
- 若要概览计分概要文件，请参阅下面的示例，其中展示了名为“geo”的简单概要文件。 此文件用于提升在“hotelName”字段中具有搜索词的项。  它还使用 `distance` 函数优先提升在当前位置十公里范围内的项。 如果有人搜索“inn”一词，而“inn”恰好是酒店名称的一部分，包含当前位置 10 公里范围内带有“inn”的酒店的文档会在搜索结果中的较高位置出现。  
+ 若要概览计分概要文件，请参阅下面的示例，其中展示了名为“geo”的简单概要文件。 此文件用于提升在“hotelName”字段中具有搜索词的项。**** 它还使用 `distance` 函数优先提升在当前位置十公里范围内的项。 如果有人搜索“inn”一词，而“inn”恰好是酒店名称的一部分，包含当前位置 10 公里范围内带有“inn”的酒店的文档会在搜索结果中的较高位置出现。  
 
 
 ```json
@@ -61,7 +61,7 @@ ms.locfileid: "82890183"
  若要使用此计分概要文件，查询要表述为对查询字符串指定此概要文件。 在下面的查询中，请注意请求中的查询参数 `scoringProfile=geo`。  
 
 ```  
-GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
+GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
  此查询对“inn”一词进行搜索，并在当前位置中传递。 请注意，此查询包含其他参数，如 `scoringParameter`。 有关查询参数的信息，请参阅[搜索文档（Azure 认知搜索 REST API）](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)。  
@@ -71,13 +71,13 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 ## <a name="what-is-default-scoring"></a>什么是默认计分？  
  计分对排序结果集中的每项计算搜索分数。 搜索结果集中的每项都分配到一个搜索分数，并从高到低排名。 分数较高的项返回应用程序。 默认返回前 50 个，但可以使用 `$top` 参数返回较少或较多的项（单个响应中最多 1000 个）。  
 
-根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种相关性计算方法的基础称为 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) 或词频-逆文档频率。  
+根据数据和查询的统计属性计算搜索分数。 Azure 认知搜索查找包含了查询字符串中搜索词的文档（部分或全部包含，具体取决于 `searchMode`），优先列出包含该搜索词多个实例的文档。 如果搜索词在数据索引中很少见，但在文档中很常见，搜索分数仍升至更高。 这种计算关联方法的基础称为[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)或术语 "频率-反转文档频率"。  
 
  假设没有自定义排序，结果在返回调用应用程序之前按搜索分数排名。 如果 $top 未指定，则返回具有最高搜索分数的 50 项。  
 
  搜索分数值可以在整个结果集中重复。 例如，可能有 10 个分数为 1.2 的项，20 个分数为 1.0 的项，20 个分数为 0.5 的项。 当多个命中具有相同的搜索分数时，得分相同项的顺序未定义，并且不稳定。 重新运行查询后，可能会看到项移位。 对于具有相同分数的两项，无法保证先显示哪一个。  
 
-## <a name="when-to-use-custom-scoring"></a>何时使用自定义计分  
+## <a name="when-to-add-scoring-logic"></a>何时添加评分逻辑 
  当默认排名行为不足以满足业务目标时，应创建一个或更多计分概要文件。 例如，可能会决定搜索相关性应更倾向于新添加的项。 同样，可能有一个包含利润率的字段，或其他某些指示营收潜力的字段。 提升为业务带来益处的命中可能是确定使用计分概要文件的一个重要因素。  
 
  基于相关性的排序也通过计分概要文件实现。 请考虑过去使用的可以按价格、日期、评分或相关性排序的搜索结果页。 在 Azure 认知搜索中，计分概要文件驱动“相关性”选项。 相关性定义由你控制，基于业务目标和希望提供的搜索体验类型断定。  
@@ -227,7 +227,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 > [!NOTE]  
 >  计分函数仅可应用于可筛选的字段。  
 
-|属性|说明|  
+|属性|描述|  
 |---------------|-----------------|  
 |`name`|必需。 这是计分概要文件的名称。 它遵循与字段相同的命名约定。 它必须以字母开头，不能包含点、冒号或 @ 符号，并且不能以短语“azureSearch”（区分大小写）开头。|  
 |`text`|包含 weights 属性。|  
@@ -237,7 +237,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`boost`|计分函数的必需项。 用作原始分数乘数的正数。 不得等于 1。|  
 |`fieldname`|计分函数的必需项。 计分函数仅可应用于作为索引字段集合一部分且可筛选的字段。 此外，每个函数类型都引入了其他限制（freshness 与 datetime 字段结合使用、magnitude 与 integer 或 double 字段结合使用、distance 与 location 字段结合使用。）。 仅可按函数定义指定单个字段。 例如，若要在同一概要文件中使用两次 magnitude，则需要包含两个定义 magnitude，每个字段一个。|  
 |`interpolation`|计分函数的必需项。 定义从范围起始至范围结束的分数提升增量的斜率。 有效值包括 Linear（默认值）、Constant、Quadratic 和 Logarithmic。 请参阅[设置插值](#bkmk_interpolation)获取详细信息。|  
-|`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   星级评分：  根据“星级评分”字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **利润：** 当两个文档相关时，零售商可能希望先提升具有较高利润的文档。<br />-   **点击次数：** 对于跟踪产品或页面点击行为的应用程序，可使用 magnitude 提升容易获得最多流量的项。<br />-   **下载次数：** 对于跟踪下载的应用程序，magnitude 函数可提升下载次数最多的项。|  
+|`magnitude`|magnitude 计分函数用于改变基于数值字段的值范围的排名。 一些最常见的用法示例如下：<br /><br /> -   星级评分：**** 根据“星级评分”字段中的值更改评分。 如果两个项相关，具有较高评分的项先显示。<br />-   **利润：** 当两个文档相关时，零售商可能希望先提升具有较高利润的文档。<br />-   **点击次数：** 对于跟踪产品或页面点击行为的应用程序，可使用 magnitude 提升容易获得最多流量的项。<br />-   **下载次数：** 对于跟踪下载的应用程序，magnitude 函数可提升下载次数最多的项。|  
 |`magnitude` &#124; `boostingRangeStart`|设置对其进行量值计分的范围的起始值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 1。 对于超过 50% 的利润率，这里应为 50。|  
 |`magnitude` &#124; `boostingRangeEnd`|设置对其进行量值计分的范围的结束值。 该值必须是整数或浮点数。 对于星级评分 1 到 4，这里应为 4。|  
 |`magnitude` &#124; `constantBoostBeyondRange`|有效值为 true 或 false（默认）。 设置为 true 时，完整的提升将继续应用到有一个目标字段值高于范围上限的文档。 如果为 false，此函数的提升不会应用到有一个目标字段值超出范围的文档。|  
@@ -281,6 +281,6 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 ## <a name="see-also"></a>另请参阅  
 
-+ [REST API 引用](https://docs.microsoft.com/rest/api/searchservice/)   
++ [REST API 参考](https://docs.microsoft.com/rest/api/searchservice/)   
 + [创建索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Azure 认知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

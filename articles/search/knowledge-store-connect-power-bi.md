@@ -1,24 +1,21 @@
 ---
-title: 使用 Power BI 连接知识存储（预览版）
+title: 使用 Power BI 连接知识存储
 titleSuffix: Azure Cognitive Search
-description: 使用 Power BI 连接 Azure 认知搜索知识存储（预览版）以进行分析和探索。
+description: 使用 Power BI 连接 Azure 认知搜索知识存储以进行分析和浏览。
 author: HeidiSteen
 ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 06/30/2020
+ms.openlocfilehash: 438d8cbc4bf03fa9e03d0d2e1920522768ba9127
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565338"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
-
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 本文介绍如何使用 Power BI Desktop 应用中的 Power Query 来连接和浏览知识存储。 使用模板可以更快地开始操作，也可以从头开始构建自定义仪表板。 下面的简短视频演示了如何使用 Azure 认知搜索结合 Power BI 来丰富数据的体验。
 
@@ -48,7 +45,7 @@ ms.locfileid: "82858822"
 
 1. 在“获取数据”窗口中，依次选择“Azure”、“Azure 表存储”。************
 
-1. 单击“连接”  。
+1. 单击“连接”。
 
 1. 对于“帐户名称或 URL”，请输入你的 Azure 存储帐户名称（系统将为你创建完整 URL）。****
 
@@ -115,7 +112,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。
 

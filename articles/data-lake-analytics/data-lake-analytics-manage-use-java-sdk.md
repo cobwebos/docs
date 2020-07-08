@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 883b2895966d71b91554e8978df6876b0edcef88
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70813633"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564761"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 应用管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -33,9 +33,9 @@ ms.locfileid: "70813633"
 ## <a name="create-a-java-application"></a>创建 Java 应用程序
 1. 打开 IntelliJ，使用“命令行应用”模板创建 Java 项目****。
 2. 右键单击屏幕左侧的项目并单击“添加框架支持”****。 选择 “Maven”****，并单击“确定”****。
-3. 打开新创建的 **"pom.xml"** 文件，并在 **\</版本>** 标记和 **\</项目>** 标记之间添加以下文本段：
+3. 打开新创建的 **"pom.xml"** 文件，并在 **\</version>** 标记和标记之间添加以下文本片段 **\</project>** ：
 
-```
+```xml
 <dependencies>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -78,7 +78,7 @@ ms.locfileid: "70813633"
 
 转到“文件”>“设置”>“生成”>“执行”>“部署”****。 选择“生成工具”>“Maven”>“导入”****。 然后选中“自动导入 Maven 项目”****。
 
-打开`Main.java`并将现有代码块替换为以下代码：
+打开 `Main.java` 并将现有代码块替换为以下代码：
 
 ```java
 import com.microsoft.azure.CloudException;

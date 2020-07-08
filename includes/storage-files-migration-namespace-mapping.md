@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 948090d0ee956ca1798d7b0f46bb33276c4d6354
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85570152"
 ---
 在此步骤中，你将评估你需要多少个 Azure 文件共享。 单个 Windows Server 实例（或群集）最多可以同步30个 Azure 文件共享。
 
@@ -58,7 +58,7 @@ Azure 文件同步的另一个重要方面以及平衡的性能和经验都是�
 > [!IMPORTANT]
 > Azure 文件同步的最重要缩放矢量是需要同步的项目（文件和文件夹）的数量。
 
-Azure 文件同步最多支持将100000项同步到单个 Azure 文件共享。 此限制可能会超出，并仅显示 Azure 文件同步团队定期测试的内容。
+Azure 文件同步最多支持将100000000项同步到单个 Azure 文件共享。 此限制可能会超出，并仅显示 Azure 文件同步团队定期测试的内容。
 
 最佳做法是保持每个同步范围内的项的数目较低。 这是在将文件夹映射到 Azure 文件共享时要考虑的重要因素。
 

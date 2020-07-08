@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: e522291bdf1982ff65a62f028107b15b3249898c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564355"
 ---
 # <a name="evaluate-model-module"></a>“评估模型”模块
 
@@ -122,7 +122,7 @@ ms.locfileid: "83847406"
   
      如果分配给聚类的数据点数量小于可用的数据点总数，则意味着无法将数据点分配给聚类。  
   
--   “到聚类中心的最大距离”列中的分数表示每个点与该点的聚类中心之间的距离之和。  
+-   此列中的分数（**与 Cluster 中心**之间的最大距离）表示每个点与该点的分类的质心之间的最大距离。  
   
      如果此数字较高，则可能表示该聚类相当分散。 你应该将统计信息与“到聚类中心的平均距离”一起查看，以确定聚类的分布情况。   
 

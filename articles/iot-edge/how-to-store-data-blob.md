@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b647515e9bd802673114de82089ede5f52f9016
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76509812"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562704"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>使用 IoT Edge 上的 Azure Blob 存储在边缘中存储数据
 
@@ -31,7 +31,7 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 
 此模块附带 **deviceToCloudUpload** 和 **deviceAutoDelete** 功能。
 
-**deviceToCloudUpload** 是一个可配置的功能。 此函数可将本地 Blob 存储中的数据自动上传到 Azure，并支持间歇性的 Internet 连接。 该功能允许：
+**deviceToCloudUpload** 是一个可配置的功能。 此函数可将本地 Blob 存储中的数据自动上传到 Azure，并支持间歇性的 Internet 连接。 这样便可以：
 
 * 启用/禁用 deviceToCloudUpload 功能。
 * 选择将数据复制到 Azure 的顺序，例如，NewestFirst 或 OldestFirst。
@@ -47,13 +47,13 @@ IoT Edge 上的 Azure Blob 存储在边缘提供了[块 blob](https://docs.micro
 
 如果在 Blob 上传期间发生意外的进程终止（例如电源故障），当模块重新联机后，将再次上传需要上传的所有块。
 
-**deviceAutoDelete** 是一个可配置的功能。 超过指定的持续时间（度量单位为分钟）时，此函数将自动从本地存储中删除 Blob。 该功能允许：
+**deviceAutoDelete** 是一个可配置的功能。 超过指定的持续时间（度量单位为分钟）时，此函数将自动从本地存储中删除 Blob。 这样便可以：
 
 * 启用/禁用 deviceAutoDelete 功能。
 * 指定以分钟为单位的时间 (deleteAfterMinutes)，该时间过后会自动删除这些 Blob。
 * 选择在 deleteAfterMinutes 值到期后保留上传的 Blob 的功能。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure IoT Edge 设备：
 
@@ -77,7 +77,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 
 此设置的名称为 `deviceToCloudUploadProperties`。 如果使用 IoT Edge 模拟器，请将这些属性的值设置为相关环境变量，可以在说明部分中找到它们。
 
-| properties | 可能的值 | 说明 |
+| Property | 可能的值 | 说明 |
 | ----- | ----- | ---- |
 | uploadOn | true、false | 默认设置为 `false`。 若要启用此功能，请将此字段设置为 `true`。 <br><br> 环境变量：`deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst、OldestFirst | 用于选择将数据复制到 Azure 的顺序。 默认设置为 `OldestFirst`。 顺序由 Blob 的上次修改时间确定。 <br><br> 环境变量：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
@@ -89,7 +89,7 @@ Azure 中的标准层 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)�
 
 此设置的名称为 `deviceAutoDeleteProperties`。 如果使用 IoT Edge 模拟器，请将这些属性的值设置为相关环境变量，可以在说明部分中找到它们。
 
-| properties | 可能的值 | 说明 |
+| Property | 可能的值 | 说明 |
 | ----- | ----- | ---- |
 | deleteOn | true、false | 默认设置为 `false`。 若要启用此功能，请将此字段设置为 `true`。 <br><br> 环境变量：`deviceAutoDeleteProperties__deleteOn={false,true}` |
 | deleteAfterMinutes | `<minutes>` | 以分钟为单位指定时间。 达到此值时，模块会自动删除本地存储中的 Blob。 <br><br> 环境变量：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
@@ -117,7 +117,7 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
 ```
 
-此命令使用凭据对远程 SMB 服务器进行身份验证。 然后，将远程共享路径映射到 G: 驱动器号（可以是任何其他可用的驱动器号）。 现在，IoT 设备的数据卷已映射到 G: 驱动器上的路径。
+此命令将使用凭据向远程 SMB 服务器进行身份验证。 然后，将远程共享路径映射到 G: 驱动器号（可以是任何其他可用的驱动器号）。 现在，IoT 设备的数据卷已映射到 G: 驱动器上的路径。
 
 确保 IoT 设备中的用户可以读取/写入远程 SMB 共享。
 
@@ -291,7 +291,7 @@ IoT Edge 模块上的 Azure Blob 存储现在提供与 IoT Edge 事件网格的�
 
 这是此模块[在 Docker 中心的发行说明](https://hub.docker.com/_/microsoft-azure-blob-storage)
 
-## <a name="feedback"></a>反馈
+## <a name="suggestions"></a>建议
 
 你的反馈对我们很重要，我们的目标是使此模块及其功能有用且易用。 请分享你的反馈并告诉我们该如何改进。
 

@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090945a8bedad4a3d39f3f7fb16cae83f4e3f5bd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454357"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564794"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令行接口 (CLI) 管理 Azure Data Lake Analytics
 
@@ -22,7 +22,7 @@ ms.locfileid: "79454357"
 了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 若要查看使用其他工具的管理主题，请单击上述选项卡选项。
 
 
-**必备条件**
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，必须有以下资源：
 
@@ -30,7 +30,7 @@ ms.locfileid: "79454357"
 
 * Azure CLI。 请参阅 [安装和配置 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-   * 若要完成此演示，请下载并安装 **预发行版** [Azure CLI 工具](https://github.com/MicrosoftBigData/AzureDataLake/releases) 。
+  * 若要完成此演示，请下载并安装 **预发行版** [Azure CLI 工具](https://github.com/MicrosoftBigData/AzureDataLake/releases) 。
 
 * 使用 `az login` 命令进行身份验证，并选择要使用的订阅。 有关使用公司或学校帐户进行身份验证的详细信息，请参阅 [从 Azure CLI 连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
 
@@ -111,7 +111,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 
 > [!NOTE]
 > 仅支持 Blob 存储短名称。 请勿使用 FQDN，例如“myblob.blob.core.windows.net”。
-> 
+>
 
 ### <a name="add-additional-data-lake-store-accounts"></a>添加其他 Data Lake Store 帐户
 
@@ -146,6 +146,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 ![Data Lake Analytics 列表数据源](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
 ### <a name="delete-data-sources"></a>删除数据源：
+
 删除 Data Lake Store 帐户：
 
    ```azurecli
@@ -159,6 +160,7 @@ Data Lake Analytics 目前支持以下两个数据源：
    ```
 
 ## <a name="manage-jobs"></a>管理作业
+
 必须拥有 Data Lake Analytics 帐户才可创建作业。  有关详细信息，请参阅[管理 Data Lake Analytics 帐户](#manage-accounts)。
 
 ### <a name="list-jobs"></a>列出作业
@@ -179,7 +181,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 
 > [!NOTE]
 > 作业的默认优先级为 1000，默认并行度为 1。
-> 
+>
 >    ```azurecli
 >    az dla job submit --account "<Data Lake Analytics account name>" --job-name "<Name of your job>" --script "<Script to submit>"
 >    ```
@@ -193,7 +195,7 @@ Data Lake Analytics 目前支持以下两个数据源：
 
 ## <a name="pipelines-and-recurrences"></a>管道和重复周期
 
-**获取关于管道和重复周期的相关信息**
+### <a name="get-information-about-pipelines-and-recurrences"></a>获取关于管道和重复周期的相关信息
 
 使用 `az dla job pipeline` 命令查看先前所提交作业的管道信息。
 
@@ -211,9 +213,8 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用 Azure 门户 Data Lake Analytics 入门](data-lake-analytics-get-started-portal.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
 * [使用 Azure 门户监视 Azure Data Lake Analytics 作业并对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
-

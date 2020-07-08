@@ -1,6 +1,6 @@
 ---
 title: 将 Cisco 数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 Cisco 数据连接到 Azure Sentinel。
+description: 了解如何将 Cisco ASA 设备连接到 Azure Sentinel 以查看仪表板、创建自定义警报和改进调查。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8a64dd3e47384ba2bf7579f8052177252634622
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588393"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566043"
 ---
 # <a name="connect-cisco-asa-to-azure-sentinel"></a>将 Cisco ASA 连接到 Azure Sentinel
 
@@ -38,9 +38,9 @@ Cisco ASA 不支持 CEF，因此会以 Syslog 的形式发送日志，Azure Sent
     - 将 "**端口**" 设置为 "514" 或在代理中设置的端口。
     - 将**syslog_ip**设置为代理的 ip 地址。
 
-1. 若要为 Cisco 事件使用 Log Analytics 中的相关架构，请搜索`CommonSecurityLog`。
+1. 若要为 Cisco 事件使用 Log Analytics 中的相关架构，请搜索 `CommonSecurityLog` 。
 
-1. 继续执行[步骤3：验证连接性](connect-cef-verify.md)。
+1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
 
 
 

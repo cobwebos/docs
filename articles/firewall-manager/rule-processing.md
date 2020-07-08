@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 74e58c316651a1604984ac14c70a3a65d46d6d9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70026173d1cb932d30a59ea2b876ef22217a81bc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73518198"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563672"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑
 
@@ -20,7 +20,7 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 规则�
 
 ## <a name="network-rules-and-applications-rules"></a>网络规则和应用程序规则
 
-首先将应用网络规则，然后应用应用程序规则。 规则将终止。 因此，如果在网络规则中找到匹配项，则不会处理应用程序规则。  如果没有网络规则匹配项，并且数据包协议是 HTTP/HTTPS，则会按应用程序规则评估数据包。 如果仍未找到匹配项，则会根据基础结构规则集合评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
+首先将应用网络规则，然后应用应用程序规则。 规则将终止。 因此，如果在网络规则中找到匹配项，则不会处理应用程序规则。  如果没有匹配的网络规则，并且如果数据包协议为 HTTP/HTTPS，则应用程序规则将评估该数据包。 如果仍未找到匹配项，则会根据基础结构规则集合评估数据包。 如果仍没有匹配项，则默认情况下会拒绝数据包。
 
 ## <a name="nat-rules"></a>NAT 规则
 
@@ -30,8 +30,8 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 规则�
 
 继承自父策略的网络规则集始终优先于定义为新策略的一部分的网络规则集合。 相同的逻辑也适用于应用程序规则集合。 但是，不管是否继承，网络规则集合始终在应用程序规则集合之前进行处理。
 
-默认情况下，策略会继承其父策略威胁智能模式。 可以通过在 "策略设置" 页中将威胁情报模式设置为其他值来覆盖此项。 只能用更严格的值进行重写。 例如，如果 "家长策略" 设置为 "*仅警报*"，则可以将此本地策略配置为 "*警报" 和 "拒绝*"，但无法将其关闭。
+默认情况下，策略会继承其父策略威胁智能模式。 可以通过在 "策略设置" 页中将威胁情报模式设置为其他值来覆盖此项。 只能使用更严格的值替代行为。 例如，如果 "家长策略" 设置为 "*仅警报*"，则可以将此本地策略配置为 "*警报" 和 "拒绝*"，但无法将其关闭。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解 Azure 防火墙管理器预览版](overview.md)
+- [了解有关 Azure 防火墙管理器的详细信息](overview.md)

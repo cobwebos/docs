@@ -9,20 +9,20 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73847525"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85562381"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>升级到 Azure 认知搜索 .NET SDK 版本 10
 
-如果你使用的是 9.0 或更低版本的 [Azure 搜索 .NET SDK](https://aka.ms/search-sdk)，本文可帮助你升级应用程序，以使用版本 10。
+如果使用的是版本9.0 或更早版本的[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文将帮助你将应用程序升级为使用版本10。
 
 Azure 搜索在版本 10 中重命名为 Azure 认知搜索，但命名空间和包名不变。 以前的 SDK 版本（9.0 及更低版本）仍使用以前的名称。 若要详细了解如何使用 SDK（包括示例），请参阅[如何从 .NET 应用程序使用 Azure 认知搜索](search-howto-dotnet-sdk.md)。
 
-版本 10 中增加了多项功能和 bug 修复，其功能级别与最新的 REST API 版本 `2019-05-06` 相同。 如果某项更改会中断现有的代码，我们将[逐步引导你解决相关的问题](#UpgradeSteps)。
+版本10添加了多个功能和 bug 修复，使其与 REST API 版本的功能级别相同 `2019-05-06` 。 如果某项更改会中断现有的代码，我们将[逐步引导你解决相关的问题](#UpgradeSteps)。
 
 > [!NOTE]
 > 如果你使用的是版本 8.0-preview 或更低版本，应先升级到版本 9，再升级到版本 10。 有关说明，请参阅[升级到 Azure 搜索 .NET SDK 版本 9](search-dotnet-sdk-migration-version-9.md)。
@@ -32,7 +32,7 @@ Azure 搜索在版本 10 中重命名为 Azure 认知搜索，但命名空间和
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>版本 10 中的新增功能
-Azure 认知搜索 .NET SDK 版本 10 面向 REST API 的最新正式版 (`2019-05-06`)，其中包含以下更新：
+Azure 认知搜索 .NET SDK 的第10版 REST API `2019-05-06` 具有以下更新：
 
 * 引入了两项新技能 - [条件技能](cognitive-search-skill-conditional.md)和[文本翻译技能](cognitive-search-skill-text-translation.md)。
 * 重新组织了[整形程序技能](cognitive-search-skill-shaper.md)输入的结构，以适应嵌套上下文的合并。 有关详细信息，请参阅此[示例 JSON 定义](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)。

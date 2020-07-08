@@ -5,26 +5,26 @@ description: 为虚拟 WAN 配置 Always On VPN 设备隧道的步骤
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 03/13/2020
+ms.topic: how-to
+ms.date: 06/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e3eea639eaa52c07e877476e9215144e916618d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7adeb9682336b19cc87d8c73a7f9ad8bda5e7828
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79502849"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564067"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>为虚拟 WAN 配置 Always On VPN 设备隧道
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-必须创建点到站点配置，并编辑虚拟中心分配。 有关说明，请参阅以下各节：
+必须创建点到站点配置并编辑虚拟中心分配。 有关说明，请参阅以下部分：
 
 * [创建 P2S 配置](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [编辑中心分配](virtual-wan-point-to-site-portal.md#edit)
+* [通过 P2S gateway 创建集线器](virtual-wan-point-to-site-portal.md#hub)
 
 ## <a name="configure-the-device-tunnel"></a>配置设备隧道
 

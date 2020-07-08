@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81450966"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601626"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
 
@@ -46,7 +46,7 @@ ms.locfileid: "81450966"
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>启用无密码手机登录身份验证方法
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 搜索并选择“Azure Active Directory”  。 选择**安全** > **身份验证** > 方法**身份验证方法策略（预览）**
+1. 搜索并选择“Azure Active Directory”。 选择**安全**  >  **身份验证**方法  >  **身份验证方法策略（预览）**
 1. 在**无密码手机登录**下，选择以下选项
    1. **启用**-是或否
    1. **目标**-所有用户或选择用户
@@ -78,13 +78,13 @@ ms.locfileid: "81450966"
 
 用户有可能在某个时间点在其当前 Microsoft Authenticator 应用或更早的设备上创建无密码手机登录凭据。 一旦管理员启用了身份验证方法策略以无密码手机登录，则任何已注册了凭据的用户都将开始体验新的登录提示，无论是否已启用它们来使用该策略。 如果尚未允许用户使用策略，则在完成身份验证流后，用户将看到一个错误。 
 
-管理员可以选择允许用户使用无密码 phone 登录，或用户必须删除该方法。 如果用户不再有已注册的设备，则可以跳到[https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)该用户并将其删除。 如果它们仍在使用用于 MFA 的身份验证器，则可以从 Microsoft Authenticator 中选择 "**禁用"** 。  
+管理员可以选择允许用户使用无密码 phone 登录，或用户必须删除该方法。 如果用户不再有已注册的设备，则可以跳到 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 该用户并将其删除。 如果它们仍在使用用于 MFA 的身份验证器，则可以从 Microsoft Authenticator 中选择 "**禁用"** 。  
 
 ### <a name="ad-fs-integration"></a>AD FS 集成
 
-用户启用 Microsoft Authenticator 无密码凭据后，该用户的身份验证始终默认为发送审批通知。 此逻辑可防止混合租户中的用户定向到 ADFS 进行登录验证，而无需用户执行额外的步骤来单击 "改用密码"。 此过程还会绕过任何本地条件访问策略和直通身份验证流。 
+用户启用 Microsoft Authenticator 无密码凭据后，该用户的身份验证始终默认为发送审批通知。 此逻辑可防止混合租户中的用户被定向到 AD FS 进行登录验证，而无需用户执行额外步骤来单击 "改用密码"。 此过程还会绕过任何本地条件访问策略和直通身份验证流。 
 
-如果用户已挂起无人参与的无密码手机登录验证，并尝试再次登录，则用户可能会转到 ADFS 来改为输入密码。  
+如果用户在未应答的无密码手机登录验证处于挂起状态时尝试再次登录，则用户可能会改为改为输入密码 AD FS。  
 
 ### <a name="azure-mfa-server"></a>Azure MFA 服务器
 
@@ -103,7 +103,7 @@ ms.locfileid: "81450966"
 
 ## <a name="next-steps"></a>后续步骤
 
-[什么是无密码？](concept-authentication-passwordless.md)
+[了解无密码 authentication 的工作原理](concept-authentication-passwordless.md)
 
 [了解设备注册](../devices/overview.md#getting-devices-in-azure-ad)
 

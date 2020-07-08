@@ -1,6 +1,6 @@
 ---
 title: 将 Azure 活动数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将 Azure 活动数据连接到 Azure Sentinel。
+description: 只单击一次即可将 Azure 活动日志流式传输到 Azure Sentinel。 活动日志记录和显示 Azure 中的订阅级别事件。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88f363406ec40dfa439a52ad351501d1c64dce95
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80124989"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564487"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>连接 Azure 活动日志中的数据
 
 只需要单击一次即可将日志从[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)流式传输到 azure Sentinel。 活动日志是一种订阅日志，用于记录和显示 Azure 中的订阅级别事件，从 Azure 资源管理器操作数据到服务运行状况事件更新。 使用活动日志，可以确定对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。 你还可以了解操作和其他相关属性的状态。 活动日志不包括读取（GET）操作或针对使用经典/"RDFE" 模型的资源的操作。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 你的用户必须具有 "Log Analytics" 工作区的 "参与者" 权限。
 - 用户必须对其日志要流式传输到 Azure Sentinel 的任何订阅具有 "读取者" 权限。
@@ -41,7 +41,7 @@ ms.locfileid: "80124989"
 
 4. 在右侧打开的 "订阅" 窗格中，单击 "**连接**"。
 
-5. 若要在 Azure 活动警报 Log Analytics 中使用相关架构，请`AzureActivity`在 "查询" 窗口中键入。
+5. 若要在 Azure 活动警报 Log Analytics 中使用相关架构，请 `AzureActivity` 在 "查询" 窗口中键入。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Azure 活动日志连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：

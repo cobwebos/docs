@@ -1,6 +1,6 @@
 ---
 title: 将 CEF 数据连接到 Azure Sentinel Preview |Microsoft Docs
-description: 了解如何将 CEF 数据连接到 Azure Sentinel。
+description: 使用 Linux 计算机作为代理，连接外部解决方案，以将通用事件格式（CEF）消息发送到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563929"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
 
@@ -49,7 +49,7 @@ ms.locfileid: "77588342"
 若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序（rsyslog 或 syslog-ng）配置为在 TLS 中进行通信：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用[tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 请确保用作代理的 Linux 计算机运行的是以下操作系统之一：
 
 - 64 位

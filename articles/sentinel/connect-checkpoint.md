@@ -1,6 +1,6 @@
 ---
 title: 将检查点数据连接到 Azure Sentinel |Microsoft Docs
-description: 了解如何将检查点数据连接到 Azure Sentinel。
+description: 将你的检查点设备配置为通过 Syslog 代理将 Syslog 消息以 CEF 格式转发到 Azure Sentinel 工作区。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 70836ec557eff1be035d92e8e7db30a882e05fc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566062"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>将检查点连接到 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "77588410"
      - 将 CLI 中的**名称**和**目标服务器 IP 地址**替换为 SYSLOG 代理名称和 IP 地址。
      - 将格式设置为**CEF**。
 1. 如果使用的是版本 R 77.30 或 R 80.10，请向上滚动到 "**安装**"，并按照说明安装版本的日志导出程序。
-1. 继续执行[步骤3：验证连接性](connect-cef-verify.md)。
+1. 继续执行[步骤 3：验证连接性](connect-cef-verify.md)。
  
 
 ## <a name="next-steps"></a>后续步骤

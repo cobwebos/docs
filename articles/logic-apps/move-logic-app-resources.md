@@ -1,21 +1,21 @@
 ---
-title: 跨订阅、资源组或区域迁移逻辑应用
+title: 跨订阅、资源组或区域移动逻辑应用
 description: 将逻辑应用或集成帐户迁移到其他 Azure 订阅、资源组或位置（区域）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564273"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>将逻辑应用资源移到其他 Azure 资源组、区域或订阅
 
-若要将逻辑应用或相关资源迁移到其他 Azure 资源组、区域或订阅，可通过多种方式完成这些任务，如 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
+若要将逻辑应用或相关资源迁移到另一个 Azure 资源组、区域或订阅，可以使用多种方式，例如使用 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
 
 * 只能在 Azure 资源组或订阅之间移动[特定的逻辑应用资源类型](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)。
 
@@ -23,7 +23,7 @@ ms.locfileid: "80878725"
 
 * 移动资源时，Azure 将创建新的资源 ID。 因此，请确保改用新的 ID，并更新与所要移动的资源关联的任何脚本或工具。
 
-* 在订阅、资源组或区域之间迁移逻辑应用后，必须重新创建或重新授权需要开放身份验证（OAuth）的任何连接。
+* 在订阅、资源组或区域之间迁移逻辑应用之后，必须重新创建或重新授权任何需要 Open Authentication (OAuth) 的连接。
 
 * 只能将[integration service 环境（ISE）](connect-virtual-network-vnet-isolated-environment-overview.md)转移到同一 azure 区域或 azure 订阅中的另一个资源组。 不能将 ISE 移到另一个 Azure 区域或 Azure 订阅中存在的资源组。 此外，在此类移动之后，必须在逻辑应用工作流、集成帐户、连接等中更新对 ISE 的所有引用。
 
@@ -41,15 +41,15 @@ ms.locfileid: "80878725"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择要移动的逻辑应用资源。
 
-1. 在该资源的“概述”页上的“订阅”旁边，选择“更改”链接。************
+1. 在该资源的“概述”页上的“订阅”旁边，选择“更改”链接。   
 
-1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。****
+1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。 
 
-1. 在“订阅”列表中选择目标订阅。****
+1. 在“订阅”列表中选择目标订阅。 
 
-1. 在“资源组”列表中选择目标资源组。**** 若要创建不同的资源组，请选择“创建新组”。****
+1. 在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新组”。 
 
-1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。****
+1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。 
 
 <a name="move-resource-group"></a>
 
@@ -61,13 +61,13 @@ ms.locfileid: "80878725"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并选择要移动的逻辑应用资源。
 
-1. 在该资源的“概述”页上的“资源组”旁边，选择“更改”链接。************
+1. 在该资源的“概述”页上的“资源组”旁边，选择“更改”链接。   
 
-1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。****
+1. 在“移动资源”页上，选择要移动的逻辑应用资源和任何相关资源。 
 
-1. 在“资源组”列表中选择目标资源组。**** 若要创建不同的资源组，请选择“创建新组”。****
+1. 在“资源组”列表中选择目标资源组。  若要创建不同的资源组，请选择“创建新组”。 
 
-1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。****
+1. 为了确认你已知道在使用新资源 ID 更新与所要移动的资源关联的任何脚本或工具之前，这些脚本或工具不会正常运行，请选中确认框，然后选择“确定”。 
 
 <a name="move-location"></a>
 
@@ -75,7 +75,7 @@ ms.locfileid: "80878725"
 
 若要将逻辑应用移到不同的区域，可用的选项取决于逻辑应用的创建方式。 根据选择的选项，必须在逻辑应用中重新创建或重新授权连接。
 
-* 在 Azure 门户中，在新区域中重新创建逻辑应用，并重新配置工作流设置。 为了节省时间，可将源应用中基础工作流定义和连接复制到目标应用。 若要查看逻辑应用附带的“代码”，请在逻辑应用设计器工具栏上选择“代码视图”。****
+* 在 Azure 门户中，在新区域中重新创建逻辑应用，并重新配置工作流设置。 为了节省时间，可将源应用中基础工作流定义和连接复制到目标应用。 若要查看逻辑应用附带的“代码”，请在逻辑应用设计器工具栏上选择“代码视图”。 
 
 * 使用 Visual Studio 和适用于 Visual Studio 的 Azure 逻辑应用工具，可以在 Azure 门户中以 [Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)的形式[打开和下载逻辑应用](../logic-apps/manage-logic-apps-with-visual-studio.md)。 此模板基本上已做好部署的准备，包含逻辑应用的资源定义（包括工作流本身和连接）。 该模板还声明了在部署时要使用的值的参数。 这样，你便可以根据自己的需求，更轻松地更改逻辑应用的部署位置和方式。 若要指定部署的位置和其他必要信息，可以使用单独的参数文件。
 
@@ -83,7 +83,7 @@ ms.locfileid: "80878725"
 
 有关逻辑应用部署模板的详细信息，请参阅以下主题：
 
-* [概述：使用 Azure 资源管理器模板自动部署 Azure 逻辑应用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [在 Azure 门户中查找、打开逻辑应用并将其下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
 * [为 Azure 逻辑应用创建 Azure 资源管理器模板](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [为 Azure 逻辑应用部署 Azure 资源管理器模板](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
@@ -102,9 +102,9 @@ ms.locfileid: "80878725"
 
 1. 在 [Azure 门户](https://portal.azure.com)中，找到并打开你的集成帐户。
 
-1. 在集成帐户菜单中的“设置”下，选择“导出模板”。********
+1. 在集成帐户菜单中的“设置”下，选择“导出模板”。  
 
-1. 在工具栏上选择“下载”，然后保存该模板。****
+1. 在工具栏上选择“下载”，然后保存该模板。 
 
 1. 打开并编辑该模板，以参数化所需的部署值。
 

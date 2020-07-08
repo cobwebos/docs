@@ -2,35 +2,32 @@
 title: 在知识存储中定义投影
 titleSuffix: Azure Cognitive Search
 description: 有关如何将扩充的文档投影到知识存储，以便在 Power BI 或 Azure ML 中使用的常见模式示例。
-manager: eladz
+manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943683"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85566003"
 ---
-# <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>知识存储投影：如何整形和导出扩充内容
+# <a name="how-to-shape-and-export-enrichments"></a>如何调整和导出根据
 
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+投影是在知识存储中丰富文档的物理表达式。 有效地使用已丰富的文档需要结构。 在本文中，你将浏览结构和关系，学习如何生成投影属性，以及如何在创建的投影类型之间关联数据。 
 
-投影是在知识存储中丰富文档的物理表达式。 有效地使用已扩充的文档需要结构。 在本文中，你将浏览结构和关系，学习如何构建出投影属性，以及如何跨你创建的投影类型建立数据关联。 
+若要创建投影，请使用[整形技术](cognitive-search-skill-shaper.md)创建自定义对象，或在投影定义内使用内联定形语法来创建数据。 
 
-若要创建投影，必须使用[整形技术](cognitive-search-skill-shaper.md)创建自定义对象，或在投影定义内使用内联定形语法来形成数据。 
-
-数据形状包含要投影的所有数据，这些数据构成为节点的层次结构。 本文介绍了几种用于调整数据的方法，以便将数据投影到有利于报告、分析或下游处理的物理结构。 
+数据形状包含所有用于项目的数据，其构成方式为节点的层次结构。 本文介绍了几种用于调整数据的方法，以便可以将数据投影到物理结构中，有利于报告、分析或下游处理。 
 
 本文中介绍的示例可在此[REST API 示例](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/projections/Projections%20Docs.postman_collection.json)中找到，可在 HTTP 客户端中下载并运行。
 
-## <a name="introduction-to-the-examples"></a>示例简介
+## <a name="introduction-to-projection-examples"></a>投影示例简介
 
-如果你熟悉[投影](knowledge-store-projection-overview.md)，你会想起以下三种类型：
+有三种类型的[投影](knowledge-store-projection-overview.md)：
 
 + 表
 + 对象
@@ -38,7 +35,7 @@ ms.locfileid: "78943683"
 
 表投影存储在 Azure 表存储中。 对象和文件投影将写入 blob 存储，在这种存储中，对象投影保存为 JSON 文件，并且可以包含源文档中的内容，以及任何技能输出或根据。 扩充管道还可以提取类似于映像的二进制文件，这些二进制文件投影为文件投影。 将二元对象投影为对象投影时，只会将与之关联的元数据保存为 JSON blob。 
 
-为了理解数据定形与投影之间的交集，我们将使用以下技能组合作为浏览各种配置的基础。 此技能组合处理原始图像和文本内容。 对于我们要支持的方案，将从文档的内容和技能的输出中定义投影。
+为了理解数据定形与投影之间的交集，我们将使用以下技能组合作为浏览各种配置的基础。 此技能组合处理原始图像和文本内容。 根据所需方案，将从文档内容和技能的输出中定义投影。
 
 > [!IMPORTANT] 
 > 当试验投影时，[设置索引器缓存属性](search-howto-incremental-index.md)以确保成本控制很有用。 如果未设置索引器缓存，编辑投影将导致重新生成整个文档。 设置缓存并仅更新投影后，以前已技能组合的文档的执行的执行不会导致任何新的认知服务费用。
@@ -200,27 +197,27 @@ ms.locfileid: "78943683"
 }
 ```
 
-使用此技能组合，并将其`knowledgeStore`设置为 null 作为基础，我们的第一个`knowledgeStore`示例将填充对象，并使用创建可以在其他方案中使用的表格数据结构的投影进行配置。 
+使用此技能组合，并将其 `knowledgeStore` 设置为 null 作为基础，我们的第一个示例将填充 `knowledgeStore` 对象，并使用创建可以在其他方案中使用的表格数据结构的投影进行配置。 
 
 ## <a name="projecting-to-tables"></a>投影到表
 
 在 Azure 存储中投影到表格对于使用 Power BI 等工具进行报告和分析非常有用。 Power BI 可以从表中读取，并基于在投影期间生成的键来发现关系。 如果你正在尝试构建仪表板，则具有相关数据将简化该任务。 
 
-假设我们要构建一个仪表板，以便可以将从文档中提取的关键短语可视化为 word cloud。 若要创建正确的数据结构，可以在技能组合中添加一个整形程序技能，以创建具有特定于文档的详细信息和关键短语的自定义形状。 将在`document`根节点上调用`pbiShape`自定义形状。
+让我们生成一个仪表板，以将从文档中提取的关键短语可视化为 word cloud。 若要创建正确的数据结构，请在技能组合中添加一个整形程序技能，以创建具有特定于文档的详细信息和关键短语的自定义形状。 将 `pbiShape` 在根节点上调用自定义形状 `document` 。
 
 > [!NOTE] 
 > 表预测是 Azure 存储表，受 Azure 存储施加的存储限制的制约。 有关详细信息，请参阅[表存储限制](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model)。 知道实体大小不能超过 1 MB，并且单个属性不能大于 64 KB，这会很有用。 这些约束使表成为存储大量小型实体的良好解决方案。
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>使用整形技能创建自定义形状
 
-创建可投影到表存储的自定义形状。 如果没有自定义形状，投影只能引用单个节点（每个输出一个投影）。 通过创建自定义形状，您可以将各种元素聚合为一个可以投影为单个表或在一组表中切片和分布的新的逻辑整体。 
+创建可投影到表存储的自定义形状。 如果没有自定义形状，投影只能引用单个节点（每个输出一个投影）。 创建自定义形状会将各种元素聚合为一个新的逻辑整体，该逻辑可投影为单个表，或在表的集合中进行切片和分布。 
 
-在此示例中，自定义形状组合了元数据和标识的实体和关键短语。 对象被调用`pbiShape` ，其父级为`/document`。 
+在此示例中，自定义形状组合了元数据和标识的实体和关键短语。 对象被调用 `pbiShape` ，其父级为 `/document` 。 
 
 > [!IMPORTANT] 
 > 调整的一个目的是确保所有扩充节点都用格式正确的 JSON 表示，这对于投影到知识库而言是必需的。 当扩充树包含不是格式正确的 JSON 的节点时（例如，当扩充为基元（如字符串）时，更是如此。
 >
-> 请注意最后两个节点`KeyPhrases` ： `Entities`和。 这些将使用打包到有效的 JSON 对象`sourceContext`。 这是必需的`keyphrases` ， `entities`它是对基元的根据，需要先转换为有效的 JSON，然后才能进行投影。
+> 请注意最后两个节点： `KeyPhrases` 和 `Entities` 。 这些将使用打包到有效的 JSON 对象 `sourceContext` 。 这是必需的 `keyphrases` ，它是 `entities` 对基元的根据，需要先转换为有效的 JSON，然后才能进行投影。
 >
 
 
@@ -304,7 +301,7 @@ ms.locfileid: "78943683"
 }  
 ```
 
-现在，我们已经拥有了投影到表所需的所有数据，请使用表定义更新 knowledgeStore 对象。 在此示例中，我们有三个表，通过设置`tableName` `source`和`generatedKeyName`属性来定义。
+现在，我们已经拥有了投影到表所需的所有数据，请使用表定义更新 knowledgeStore 对象。 在此示例中，我们有三个表，通过设置 `tableName` 和属性来定义 `source` `generatedKeyName` 。
 
 ```json
 "knowledgeStore" : {
@@ -337,7 +334,7 @@ ms.locfileid: "78943683"
 
 可以通过执行以下步骤来处理工作：
 
-1. 将```storageConnectionString```属性设置为有效的 V2 常规用途存储帐户连接字符串。  
+1. 将 ```storageConnectionString``` 属性设置为有效的 V2 常规用途存储帐户连接字符串。  
 
 1. 通过发出 PUT 请求来更新技能组合。
 
@@ -345,31 +342,31 @@ ms.locfileid: "78943683"
 
 现在，你有了一个包含三个表的工作投影。 将这些表导入到 Power BI 应导致 Power BI 自动发现关系。
 
-在继续下一个示例之前，让我们回顾一下表投影的各个方面，以了解切片和相关数据的机制。
+继续下一个示例之前，让我们回顾一下表投影的各个方面，以了解切片和相关数据的机制。
 
 ### <a name="slicing"></a>切片 
 
 切片是一种技术，它将整个合并的形状细分构成组成部分。 结果由可单独处理的单独但相关的表组成。
 
-在此示例中`pbiShape` ，是合并形状（或扩充节点）。 在投影定义中， `pbiShape`切片为其他表，这使您能够提取形状```keyPhrases```和```Entities```的各个部分。 在 Power BI 中，这种方法非常有用，因为多个实体和 keyPhrases 都与每个文档相关联，如果你可以看到实体和 keyPhrases 作为已分类数据，你将获得更多见解。
+在此示例中， `pbiShape` 是合并形状（或扩充节点）。 在投影定义中， `pbiShape` 切片为其他表，这使您能够提取形状和的各个部分 ```keyPhrases``` ```Entities``` 。 在 Power BI 中，这种方法非常有用，因为多个实体和 keyPhrases 都与每个文档相关联，如果你可以看到实体和 keyPhrases 作为已分类数据，你将获得更多见解。
 
-切片隐式生成父表和子表之间的关系，使用```generatedKeyName```父表中的在子表中创建具有相同名称的列。 
+切片隐式生成父表和子表之间的关系，使用 ```generatedKeyName``` 父表中的在子表中创建具有相同名称的列。 
 
 ### <a name="naming-relationships"></a>命名关系
 
-```generatedKeyName```和```referenceKeyName```属性用于跨表甚至跨投影类型建立数据关联。 子表/投影中的每一行都有一个返回父级的属性。 子中的列或属性的名称是来自父项```referenceKeyName```的。 ```referenceKeyName```如果未提供，服务会将其```generatedKeyName```从父项默认为。 
+```generatedKeyName```和 ```referenceKeyName``` 属性用于跨表甚至跨投影类型建立数据关联。 子表/投影中的每一行都有一个返回父级的属性。 子中的列或属性的名称是 ```referenceKeyName``` 来自父项的。 如果 ```referenceKeyName``` 未提供，服务会将其 ```generatedKeyName``` 从父项默认为。 
 
-Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要以不同方式命名的子表中的列，请```referenceKeyName```在父表上设置属性。 例如，将 pbiDocument 表中的```generatedKeyName``` ID 设置为，并```referenceKeyName```将设置为 DocumentID。 这将导致 pbiEntities 和 pbiKeyPhrases 表中包含名为 DocumentID 的文档 id 的列。
+Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要以不同方式命名的子表中的列，请 ```referenceKeyName``` 在父表上设置属性。 例如，将 ```generatedKeyName``` pbiDocument 表中的 ID 设置为，并将设置为 ```referenceKeyName``` DocumentID。 这将导致 pbiEntities 和 pbiKeyPhrases 表中包含名为 DocumentID 的文档 id 的列。
 
 ## <a name="projecting-to-objects"></a>投影到对象
 
-对象投影没有与表投影相同的限制，并且更适合用于投影大型文档。 在此示例中，我们将整个文档投影到对象投影。 对象投影限制为容器中的单个投影，并且无法切片。
+对象投影没有与表投影相同的限制，并且更适合用于投影大型文档。 在此示例中，整个文档以对象投影的形式进行发送。 对象投影限制为容器中的单个投影，并且无法切片。
 
-为了定义对象投影，我们将在投影中```objects```使用数组。 您可以使用整形技能或使用对象投影的内联造型来生成新的形状。 尽管 "表" 示例演示了创建形状和切片的方法，但此示例演示如何使用内联定形。 
+若要定义对象投影，请 ```objects``` 在投影中使用数组。 您可以使用整形技能或使用对象投影的内联造型来生成新的形状。 尽管 "表" 示例演示了创建形状和切片的方法，但此示例演示如何使用内联定形。 
 
-内联造型是指在投影的输入定义中创建新形状的功能。 内联定形创建的匿名对象与创建者的技能（在本例中为`pbiShape`）完全相同。 如果要定义一个不打算重复使用的形状，则内联造型非常有用。
+内联造型是指在投影的输入定义中创建新形状的功能。 内联定形创建的匿名对象与创建者的技能（在本例中为）完全相同 `pbiShape` 。 如果要定义一个不打算重复使用的形状，则内联造型非常有用。
 
-投影属性是一个数组。 在此示例中，我们将向数组中添加一个新的投影实例，其中 knowledgeStore 定义包含内联投影。 使用内联投影时，可以忽略整形能力的技能。
+投影属性是一个数组。 此示例向数组中添加一个新的投影实例，其中 knowledgeStore 定义包含内联投影。 使用内联投影时，可以忽略整形能力的技能。
 
 ```json
 "knowledgeStore" : {
@@ -426,7 +423,7 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 文件投影是从源文档中提取的图像，或者是可从扩充进程中提取的扩充的输出。 类似于对象投影的文件投影作为 Azure 存储中的 blob 实现，并包含映像。 
 
-若要生成文件投影，请在投影`files`对象中使用数组。 此示例将从文档中提取的所有图像投影到名`samplefile`为的容器。
+若要生成文件投影，请 `files` 在投影对象中使用数组。 此示例将从文档中提取的所有图像投影到名为的容器 `samplefile` 。
 
 ```json
 "knowledgeStore" : {
@@ -450,7 +447,7 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 更复杂的方案可能要求你跨投影类型投影内容。 例如，如果需要将关键短语和实体等一些数据投影到表，请将文本和布局文本的 OCR 结果保存为对象，然后将图像投影为文件。 
 
-在此示例中，技能组合的更新包括以下更改：
+此示例将更新技能组合，并进行以下更改：
 
 1. 为每个文档创建一个包含行的表。
 1. 创建与 "文档" 表相关的表，其中每个关键短语标识为此表中的一行。
@@ -463,7 +460,7 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 ### <a name="shape-data-for-cross-projection"></a>跨投影的形状数据
 
-若要获取这些预测所需的形状，请首先添加创建名`crossProjection`为的形状对象的新的整形程序技能。 
+若要获取这些投影所需的形状，请首先添加创建名为的形状对象的新的整形程序技能 `crossProjection` 。 
 
 ```json
 {
@@ -534,7 +531,7 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 ### <a name="define-table-object-and-file-projections"></a>定义表、对象和文件投影
 
-从合并的 crossProjection 对象中，我们可以将对象分割成多个表，将 OCR 输出捕获为 blob，然后将图像另存为文件（也在 Blob 存储中）。
+从合并的 crossProjection 对象将对象分割成多个表，将 OCR 输出捕获为 blob，然后将图像另存为文件（也在 Blob 存储中）。
 
 ```json
 "knowledgeStore" : {
@@ -595,7 +592,7 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 ### <a name="relationships-among-table-object-and-file-projections"></a>表、对象与文件投影之间的关系
 
-此示例还强调了投影的另一项功能。 通过在同一投影对象中定义多个类型的投影，可以在不同的类型（表、对象、文件）内部和之间表示一个关系，这样您就可以从文档的表行开始，并在对象投影中查找该文档内的图像的所有 OCR 文本。 
+此示例还强调了投影的另一项功能。 通过在同一投影对象中定义多个类型的投影，可在不同类型（表、对象、文件）的内部和之间表示一种关系。 这允许您从文档的表行开始，并在对象投影中查找该文档内的图像的所有 OCR 文本。 
 
 如果您不希望数据相关，请在不同投影对象中定义投影。 例如，以下代码片段将导致表相关，但不会在表和对象（OCR 文本）投影之间建立关系。 
 
@@ -661,9 +658,9 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 定义投影时，有几个常见问题会导致意外的结果。 如果知识存储中的输出与预期不符，请检查是否存在这些问题。
 
-+ 不将字符串根据为有效的 JSON。 如果对字符串进行了大量处理`merged_content` （例如，使用关键短语进行了丰富），则会将`merged_content`所丰富的属性表示为扩充树中的子元素。 默认表示形式不是格式正确的 JSON。 在投影时，请确保将扩充转换为有效的 JSON 对象，其中包含名称和值。
++ 不将字符串根据为有效的 JSON。 如果对字符串进行了大量处理（例如， `merged_content` 使用关键短语进行了丰富），则会将所丰富的属性表示为 `merged_content` 扩充树中的子元素。 默认表示形式不是格式正确的 JSON。 在投影时，请确保将扩充转换为有效的 JSON 对象，其中包含名称和值。
 
-+ ```/*```省略源路径末尾的。 如果投影的源为`/document/pbiShape/keyPhrases`，则将键短语数组投影为单个对象/行。 相反，请将源路径`/document/pbiShape/keyPhrases/*`设置为，以便为每个关键短语生成单个行或对象。
++ 省略 ```/*``` 源路径末尾的。 如果投影的源为，则将 `/document/pbiShape/keyPhrases` 键短语数组投影为单个对象/行。 相反，请将源路径设置为，以便为 `/document/pbiShape/keyPhrases/*` 每个关键短语生成单个行或对象。
 
 + 路径语法错误。 如果未对选择器使用确切的大小写，则路径选择器区分大小写，并且可能会导致缺少输入警告。
 

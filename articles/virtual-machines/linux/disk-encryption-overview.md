@@ -8,25 +8,25 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655844"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85601269"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
-Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与符合性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure 密钥保管库](../../key-vault/index.yml)集成，以帮助控制和管理磁盘加密密钥和机密。 
+Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与合规性方面作出的承诺。 它使用 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 Azure 虚拟机 (VM) 的 OS 和数据磁盘提供卷加密，并与 [Azure Key Vault](../../key-vault/index.yml) 集成，帮助你控制和管理磁盘加密密钥和机密。 
 
 如果使用 [Azure 安全中心](../../security-center/index.yml)，当 VM 未加密时，你会收到警报。 这些警报显示为“高严重性”，建议加密这些 VM。
 
 ![Azure 安全中心磁盘加密警报](media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
-> - 如果之前是结合使用 Azure 磁盘加密和 Azure AD 来加密 VM，必须继续使用这种方式来加密 VM。 有关详细信息，请参阅[结合使用 Azure 磁盘加密和 Azure AD（以前的版本）](disk-encryption-overview-aad.md)。 
-> - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
-> - 当前第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 中对第 2 代 VM 的支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
+> - 如果之前是使用 Azure 磁盘加密与 Azure AD 来加密 VM，则必须继续使用此选项来加密 VM。 有关详细信息，请参阅 [使用 Azure AD 进行 Azure 磁盘加密（以前版本）](disk-encryption-overview-aad.md)。 
+> - 某些建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。 必须具有有效的活动 Azure 订阅，才能在 Azure 的受支持区域中创建资源。
+> - 目前，第 2 代 VM 不支持 Azure 磁盘加密。 有关详细信息，请参阅 [Azure 中对第 2 代 VM 的支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
 
 只需花几分钟时间学习[使用 Azure CLI 创建 Linux VM 并对其进行加密快速入门](disk-encryption-cli-quickstart.md)或者[使用 Azure PowerShell 创建 Linux VM 并对其进行加密快速入门](disk-encryption-powershell-quickstart.md)，即可了解适用于 Linux 的 Azure 磁盘加密的基础知识。
 
@@ -34,13 +34,13 @@ Azure 磁盘加密有助于保护数据，使组织能够信守在安全性与�
 
 ### <a name="supported-vms"></a>支持的 VM
 
-Linux VM 具有[各种大小](sizes.md)。 在[基本、A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) 或不满足以下最低内存要求的虚拟机上，Azure 磁盘加密不可用：
+Linux VM 具有[各种大小](sizes.md)。 Azure 磁盘加密不适用于[基本的 A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)，也不适用于不符合以下最低内存要求的虚拟机：
 
 | 虚拟机 | 内存最低要求 |
 |--|--|
 | Linux VM（仅加密数据卷时）| 2 GB |
-| Linux VM（加密数据和 OS 卷，并且根 (/) 文件系统使用量为 4GB 或更低时） | 8 GB |
-| Linux VM（加密数据和 OS 卷，并且根 (/) 文件系统使用量大于 4GB 时） | 根文件系统使用量 * 2。 例如，根文件系统使用量为 16 GB，则至少需要 32GB 的 RAM |
+| Linux VM（加密数据卷和 OS 卷，并且根 (/) 文件系统占用的空间为 4GB 或更少） | 8 GB |
+| Linux VM（加密数据卷和 OS 卷，并且根 (/) 文件系统占用的空间大于 4GB） | 根文件系统空间占用量 * 2。 例如，如果根文件系统的空间占用量为 16 GB，则至少需要 32GB RAM |
 
 在 Linux 虚拟机上完成 OS 磁盘加密进程后，可将 VM 配置为以更少的内存运行。 
 
@@ -64,7 +64,6 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
 | Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | OS 和数据磁盘 |
 | Canonical | Ubuntu 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS 和数据磁盘 |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | OS 和数据磁盘（请参阅下面的注释） |
-| RedHat | RHEL 7.7 | 7-RAW | RedHat:RHEL:7-RAW:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | OS 和数据磁盘（请参阅下面的注释） |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | OS 和数据磁盘（请参阅下面的注释） |
@@ -94,7 +93,7 @@ Azure 磁盘加密在[第 2 代 VM](generation-2.md#generation-1-vs-generation-2
 
 ## <a name="additional-vm-requirements"></a>其他 VM 要求
 
-Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 从默认映像中删除或禁用 vfat 将阻止系统读取密钥卷，并阻止获取在后续重启时解锁磁盘所需的密钥。 从系统中删除 vfat 模块的系统强化步骤与 Azure 磁盘加密不兼容。 
+Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 在默认映像中删除或禁用 vfat 会阻止系统读取密钥卷，以及在后续重新启动时获取用于解锁磁盘的密钥。 从系统中删除 vfat 模块或强制扩展数据驱动器上的 OS 装载点/文件夹的系统强化步骤与 Azure 磁盘加密不兼容。 
 
 在启用加密之前，必须在 /etc/fstab 中正确列出要加密的数据磁盘。 创建条目时，请使用“nofail”选项，然后选择一个永久性的块设备名称（因为采用“/dev/sdX”格式的设备名称在重启期间可能不会与同一磁盘关联，尤其是在加密之后。有关此行为的更多详细信息，请参阅：[排查 Linux VM 设备名称更改问题](troubleshoot-device-names-problems.md)）。
 
@@ -102,7 +101,7 @@ Azure 磁盘加密要求系统上存在 dm-crypt 和 vfat 模块。 从默认映
 
 - 如果在启用加密之前 /etc/fstab 文件未正确装载该驱动器，则 Azure 磁盘加密无法将其正确装载。
 - 在加密过程中，Azure 磁盘加密进程会将装载信息移出 /etc/fstab，并移入其自身的配置文件中。 数据驱动器加密完成后，如果看到 /etc/fstab 中缺少条目，请不要担心。
-- 在开始加密之前，请务必停止所有可能正在写入已装载的数据磁盘的服务和进程并禁用它们，以使它们在重启后不会自动重启。 这可能会使文件在这些分区上保持打开状态，从而阻止加密过程重新装载它们，导致加密失败。 
+- 在开始加密之前，请务必停止可能正在向装载的数据磁盘写入数据的所有服务和进程并将其禁用，使其不会在重新引导后自动重启。 这可能会使文件在这些分区上保持打开状态，从而阻止加密过程重新装载这些分区，导致加密失败。 
 - 重新启动后，Azure 磁盘加密进程需要花费一段时间来装载新加密的磁盘。 重新启动后，这些磁盘并不是立即可用。 该进程需要一段时间来启动、解锁然后装载加密的驱动器，然后，这些驱动器才可供其他进程访问。 重新启动后，此进程可能需要一分钟以上的时间，具体时间取决于系统特征。
 
 下面是用于装载数据磁盘和创建必要的 /etc/fstab 条目的命令示例：
@@ -126,7 +125,7 @@ mount -a
 
 ## <a name="encryption-key-storage-requirements"></a>加密密钥存储要求  
 
-Azure 磁盘加密要求使用 Azure 密钥保管库来控制和管理磁盘加密密钥和机密。 密钥保管库和 VM 必须位于同一 Azure 区域和订阅中。
+Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和机密。 密钥保管库和 VM 必须位于同一 Azure 区域和订阅中。
 
 有关详细信息，请参阅[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。
 
@@ -135,7 +134,7 @@ Azure 磁盘加密要求使用 Azure 密钥保管库来控制和管理磁盘加�
 
 | 术语 | 定义 |
 | --- | --- |
-| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
+| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 经过了优化，可从命令行管理 Azure 资源。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux VM 上启用磁盘加密。 |
 | 密钥加密密钥 (KEK) | 可用于保护或包装机密的非对称密钥 (RSA 2048)。 可提供硬件安全模块 (HSM) 保护的密钥或软件保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
@@ -145,7 +144,7 @@ Azure 磁盘加密要求使用 Azure 密钥保管库来控制和管理磁盘加�
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门 - 使用 Azure CLI 创建和加密 Linux VM](disk-encryption-cli-quickstart.md)
-- [快速入门 - 使用 Azure Powershell 创建和加密 Linux VM](disk-encryption-powershell-quickstart.md)
+- [快速入门 - 使用 Azure PowerShell 创建和加密 Linux VM](disk-encryption-powershell-quickstart.md)
 - [Linux VM 上的 Azure 磁盘加密方案](disk-encryption-linux.md)
 - [Azure 磁盘加密先决条件 CLI 脚本](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure 磁盘加密先决条件 PowerShell 脚本](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

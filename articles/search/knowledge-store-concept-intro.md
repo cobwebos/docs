@@ -1,28 +1,25 @@
 ---
-title: 知识存储（预览版）简介
+title: 知识 store 概念
 titleSuffix: Azure Cognitive Search
-description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 认知搜索和其他应用中查看、整形和使用扩充文档。 此功能目前以公共预览版提供。
+description: 将扩充文档发送到 Azure 存储，随后可以在 Azure 认知搜索和其他应用中查看、整形和使用扩充文档。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.date: 06/30/2020
+ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858803"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565278"
 ---
-# <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
+# <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识库
 
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+知识存储是 Azure 认知搜索的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出供独立分析或进行下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 选择创建知识库将允许您保留已增加的文档。 
 
-知识存储是 Azure 认知搜索的一项功能，它可以保留 [AI 扩充管道](cognitive-search-concept-intro.md)的输出供独立分析或进行下游处理。 扩充文档是管道的输出，是基于使用 AI 流程提取、结构化和分析的内容创建的。 在标准的 AI 管道中，扩充文档是临时的，仅在编制索引期间使用，然后被丢弃。 扩充文档将通过知识存储保存起来。 
-
-如果过去使用过认知技能，你已知道技能集通过一系列扩充来迁移文档。 结果可以是搜索索引，也可以是知识存储中的投影（此预览版中新增的）。 两个输出（搜索索引和知识存储）是相同管道的产品；派生自相同输入，但会生成以非常不同的方式进行结构化、存储和使用的输出。
+如果过去使用过认知技能，你已知道技能集通过一系列扩充来迁移文档。 结果可以是搜索索引，也可以是知识存储中的投影。 两个输出（搜索索引和知识存储）是相同管道的产品；派生自相同输入，但会生成以非常不同的方式进行结构化、存储和使用的输出。
 
 在物理上，知识存储是一个 [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-account-overview)，可以是 Azure 表存储和/或 Azure Blob 存储。 任何可以连接到 Azure 存储的工具或进程都可以使用知识存储的内容。
 
@@ -103,7 +100,7 @@ ms.locfileid: "82858803"
 
 ## <a name="how-to-create-a-knowledge-store"></a>如何创建知识存储
 
-若要创建知识存储，请使用门户或预览版 REST API (`api-version=2019-05-06-Preview`)。
+若要创建知识库，请使用门户或 REST API （ `api-version=2020-06-30` ）。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -117,13 +114,11 @@ ms.locfileid: "82858803"
 
 1. 运行向导。 在最后一步中会进行提取、扩充和存储。
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>使用“创建技能组”和预览版 REST API
+### <a name="use-create-skillset-rest-api"></a>Use Create 技能组合（REST API）]
 
 `knowledgeStore` 在[技能组](cognitive-search-working-with-skillsets.md)中定义，后者又通过[索引器](search-indexer-overview.md)调用。 在扩充期间，Azure 认知搜索会在 Azure 存储帐户中创建一个空间，并根据配置将扩充文档投影为 Blob 或表。
 
-目前，预览版 REST API 是可用于以编程方式创建知识存储的唯一机制。 一种简单的探索方法是[使用 Postman 和 REST API 创建第一个知识存储](knowledge-store-create-rest.md)。
-
-此预览版功能的参考内容位于本文的 [API 参考](#kstore-rest-api)部分中。 
+REST API 是一种以编程方式创建知识存储的机制。 一种简单的探索方法是[使用 Postman 和 REST API 创建第一个知识存储](knowledge-store-create-rest.md)。
 
 <a name="tools-and-apps"></a>
 
@@ -141,17 +136,17 @@ ms.locfileid: "82858803"
 
 ## <a name="api-reference"></a>API 参考
 
-REST API 版本 `2019-05-06-Preview` 通过技能组上的其他定义提供知识存储。 除了引用之外，请参阅[使用 Postman 创建知识存储](knowledge-store-create-rest.md)以了解有关如何调用 API 的详细信息。
+REST API 版本 `2020-06-30` 通过技能组上的其他定义提供知识存储。 除了引用之外，请参阅[使用 Postman 创建知识存储](knowledge-store-create-rest.md)以了解有关如何调用 API 的详细信息。
 
-+ [创建技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [更新技能组 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [Create 技能组合（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
++ [Update 技能组合（api 版本 = 2020-06-30）](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
 
 
 ## <a name="next-steps"></a>后续步骤
 
 知识存储提供扩充文档的持久性，在设计技能集，或者在创建新的结构和内容供可访问 Azure 存储帐户的任何客户端应用程序使用时，知识存储非常有用。
 
-创建扩充文档的最简单方法是[通过门户](knowledge-store-create-portal.md)，但也可以使用 Postman 和 REST API，想要深入了解对象的创建和引用方式时，这两个工具更有用。
+最简单的方法是[通过门户](knowledge-store-create-portal.md)创建更丰富的文档，但您也可以使用 Postman 和 REST API，这在您希望深入了解如何创建和引用对象时更有用。
 
 > [!div class="nextstepaction"]
 > [使用 Postman 和 REST 创建知识存储](knowledge-store-create-rest.md)

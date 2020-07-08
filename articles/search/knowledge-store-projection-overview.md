@@ -1,24 +1,21 @@
 ---
-title: 知识存储（预览版）中的投影
+title: 投影概念
 titleSuffix: Azure Cognitive Search
-description: 将 AI 扩充索引编制管道中的扩充数据保存并整型到知识存储中，以便在除了全文搜索以外的方案中使用。 知识存储目前以公开预览版提供。
+description: 将 AI 扩充索引编制管道中的扩充数据保存并整型到知识存储中，以便在除了全文搜索以外的方案中使用。
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942976"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565190"
 ---
-# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储中的投影
-
-> [!IMPORTANT] 
-> 知识存储目前以公开预览版提供。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供预览版功能。 目前提供有限的门户支持，不提供 .NET SDK 支持。
+# <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储 "投影"
 
 Azure 认知搜索通过内置认知技能和自定义技能作为索引的一部分，扩充内容。 根据创建以前不存在的新信息：从图像中提取信息，检测情绪、关键短语和文本中的实体，只需对其进行命名。 根据还会将结构添加到无差别文本。 所有这些过程都将导致使全文搜索更有效的文档。 在许多情况下，对于除搜索以外的方案（例如用于知识挖掘），已丰富的文档很有用。
 
@@ -157,7 +154,7 @@ Azure 认知搜索通过内置认知技能和自定义技能作为索引的一�
 
 ## <a name="file-projection"></a>文件投影
 
-文件投影类似于对象投影，只对`normalized_images`集合进行操作。 与对象投影类似，文件投影保存在 blob 容器中，其文件夹前缀为文档 ID 的 base64 编码值。 文件投影不能与对象投影共享同一个容器，需要将其投影到不同的容器。
+文件投影类似于对象投影，只对集合进行操作 `normalized_images` 。 与对象投影类似，文件投影保存在 blob 容器中，其文件夹前缀为文档 ID 的 base64 编码值。 文件投影不能与对象投影共享同一个容器，需要将其投影到不同的容器。
 
 ```json
 {
@@ -212,7 +209,7 @@ Azure 认知搜索通过内置认知技能和自定义技能作为索引的一�
 > [!div class="nextstepaction"]
 > [在 REST 中创建知识库](knowledge-store-create-rest.md)。
 
-有关涉及切片、内联造型和关系等高级投影概念的教程，请从[在知识存储中定义投影](knowledge-store-projections-examples.md)开始
+有关涉及高级投影概念（如切片、内联整形和关系）的教程，请从[在知识存储中定义投影](knowledge-store-projections-examples.md)开始
 
 > [!div class="nextstepaction"]
-> [定义知识库中的投影](knowledge-store-projections-examples.md)
+> [在知识存储中定义投影](knowledge-store-projections-examples.md)

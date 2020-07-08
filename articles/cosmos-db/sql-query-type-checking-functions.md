@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cac8be4c39737ca209653532d00375c8c9bee48e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ffe8fa9286c8594dc72d78582f8c7b0a3d05c78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71349079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85563332"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>类型检查函数 (Azure Cosmos DB)
 
@@ -23,13 +23,15 @@ ms.locfileid: "71349079"
 下面是受支持的内置类型检查函数表：
 
 以下函数支持对输入值进行类型检查，并且每个都会返回一个布尔值。  
-  
-||||  
-|-|-|-|  
-|[IS_ARRAY](sql-query-is-array.md)|[IS_BOOL](sql-query-is-bool.md)|[IS_DEFINED](sql-query-is-defined.md)|  
-|[IS_NULL](sql-query-is-null.md)|[IS_NUMBER](sql-query-is-number.md)|[IS_OBJECT](sql-query-is-object.md)|  
-|[IS_PRIMITIVE](sql-query-is-primitive.md)|[IS_STRING](sql-query-is-string.md)||  
-  
+
+* [IS_ARRAY](sql-query-is-array.md)
+* [IS_BOOL](sql-query-is-bool.md)
+* [IS_DEFINED](sql-query-is-defined.md)
+* [IS_NULL](sql-query-is-null.md)
+* [IS_NUMBER](sql-query-is-number.md)
+* [IS_OBJECT](sql-query-is-object.md)
+* [IS_PRIMITIVE](sql-query-is-primitive.md)
+* [IS_STRING](sql-query-is-string.md)
 
 ## <a name="next-steps"></a>后续步骤
 

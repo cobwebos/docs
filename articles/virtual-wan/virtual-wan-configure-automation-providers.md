@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190419"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85565960"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>适用于虚拟 WAN 合作伙伴的自动化指南
 
@@ -54,7 +54,7 @@ ms.locfileid: "77190419"
 
 ###  <a name="access-control"></a><a name="access"></a>访问控制
 
-客户必须能够在设备 UI 中为虚拟 WAN 设置正确的访问控制。 建议使用 Azure 服务主体。 基于服务主体的访问为设备控制器提供正确的身份验证以上传分支信息。 有关详细信息，请参阅[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)。 虽然此功能不在 Azure 虚拟 WAN 套餐之中，但我们仍将在 Azure 中设置访问权限所需采取的典型步骤列在下面。相关详细信息随后会输入到设备管理仪表板中
+客户必须能够在设备 UI 中为虚拟 WAN 设置正确的访问控制。 建议使用 Azure 服务主体。 基于服务主体的访问为设备控制器提供正确的身份验证以上传分支信息。 有关详细信息，请参阅[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)。 虽然此功能不在 Azure 虚拟 WAN 套餐之中，但我们仍将在 Azure 中设置访问权限所需采取的典型步骤列在下面。相关详细信息随后会输入到设备管理仪表板中
 
 * 为本地设备控制器创建 Azure Active Directory 应用程序。
 * 获取应用程序 ID 和身份验证密钥

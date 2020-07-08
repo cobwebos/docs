@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 292ceccd5a3687488c0e8b03f4a8cd351d611dce
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71315813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85564892"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>调试失败 U-SQL 作业的用户定义 C# 代码
 
@@ -80,7 +80,7 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 2. 获取 **FailedVertexDebugHost** 项目的项目文件夹路径。 
 
-3. 右键单击添加的程序集源代码项目，选择“属性”，选择左侧的“生成”选项卡，将复制的以 \bin\debug 结尾的路径粘贴为“输出”中的“输出路径”。************ 最终输出路径类似于`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
+3. 右键单击添加的程序集源代码项目，选择“属性”，选择左侧的“生成”选项卡，将复制的以 \bin\debug 结尾的路径粘贴为“输出”中的“输出路径”。************ 最终输出路径类似于 `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` 。
 
     ![Azure Data Lake Analytics U-SQL调试设置 pdb 路径](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -93,7 +93,7 @@ U-SQL 使用 C# 提供扩展性模型。 在 U-SQL 脚本中，可以轻松调�
 
 调试后，如果项目成功完成，输出窗口中显示以下消息：
 
-    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
+`The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).`
 
 ![Azure Data Lake Analytics U-SQL 调试成功](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
