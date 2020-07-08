@@ -1,22 +1,22 @@
 ---
-title: Fsv2 系列 - Azure 虚拟机
+title: Fsv2 系列
 description: Fsv2 系列 VM 的规范。
-services: virtual-machines
 author: brbell
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 44f9261c8054ea0575f2fcab0dc8bb6c0d6f0ce4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164842"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058259"
 ---
 # <a name="fsv2-series"></a>Fsv2 系列
 
-Fsv2 系列基于 Intel® Xeon® Platinum 8168 处理器。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
+Fsv2 系列运行在 Intel®强®白金8272CL （级联 Lake）处理器和 Intel®强®白金8168（Skylake）处理器上。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
 
 Fsv2 系列 VM 采用了 Intel® 超线程技术。
 
@@ -50,8 +50,8 @@ ACU：195 - 210
 - RHEL 或 CentOS 版本7.3，其中安装了 Microsoft 提供的 .LIS 包4.2.1 （或更高版本）
 - RHEL 或 CentOS 版本7.6 或更高版本
 - UEK4 或更高版本的 Oracle Linux
-- Debian 9 precise-backports 内核，Debian 10 或更高版本
-- 使用4.14 内核或更高版本的 CoreOS
+- Debian 9，带有向后移植内核 Debian 10 或更高版本
+- 带有 4.14 内核或更高版本的 CoreOS
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 

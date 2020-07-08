@@ -4,15 +4,15 @@ description: 了解如何创建服务主体以自动完成 Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871171"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077365"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -20,7 +20,7 @@ ms.locfileid: "83871171"
 
 在 Analysis Services 中，服务主体可以与 Azure 自动化、PowerShell 无人参与模式、自定义客户端应用程序和 Web 应用配合使用，以便自动完成常见的任务。 例如，预配服务器、部署模型、数据刷新、垂直缩放、暂停/恢复等操作均可使用服务主体自动完成。 权限通过角色成员身份分配给服务主体，十分类似于常规的 Azure AD UPN 帐户。
 
-Analysis Services 还支持使用服务主体执行由托管标识执行的操作。 有关详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。  
+Analysis Services 还支持使用服务主体执行由托管标识执行的操作。 有关详细信息，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)和[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services)。    
 
 ## <a name="create-service-principals"></a>创建服务主体
  
@@ -38,7 +38,7 @@ Analysis Services 还支持使用服务主体执行由托管标识执行的操�
 
 ## <a name="add-service-principals-to-server-admin-role"></a>将服务主体添加到服务器管理员角色
 
-在使用服务主体进行 Analysis Services 服务器管理操作之前，必须将其添加到服务器管理员角色。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
+在使用服务主体进行 Analysis Services 服务器管理操作之前，必须将其添加到服务器管理员角色。 必须直接将服务主体添加到服务器管理员角色。 不支持将服务主体添加到安全组，然后将该安全组添加到服务器管理员角色。 有关详细信息，请参阅[将服务主体添加到服务器管理员角色](analysis-services-addservprinc-admins.md)。
 
 ## <a name="service-principals-in-connection-strings"></a>连接字符串中的服务主体
 
@@ -48,7 +48,7 @@ Analysis Services 还支持使用服务主体执行由托管标识执行的操�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />使用 Az.AnalysisServices 模块
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>使用 Az.AnalysisServices 模块
 
 将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用来执行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO 和 ADOMD 
 
-通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](analysis-services-data-providers.md) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
+通过客户端应用程序和 Web 应用进行连接时，由 NuGet 提供的 [AMO 和 ADOMD 客户端库](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current) 15.0.2 及更高版本的可安装包支持在连接字符串中使用服务主体，可以使用 `app:AppID` 语法以及密码或 `cert:thumbprint`。 
 
 以下示例使用 `appID` 和 `password` 执行模型数据库刷新操作：
 

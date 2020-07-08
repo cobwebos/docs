@@ -10,11 +10,11 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 0f5ee8b1f575c3caa8e1e2608444ea853c51d53f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a55f880398aa186ef2f2e7e2c66d731c1631b3f4
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372368"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86062699"
 ---
-在本文中，可以使用免费 [LUIS](../luis-concept-keys.md#starter-key) 帐户及其初学者密钥来创作 LUIS 应用程序。
+在本文中，可以使用免费 [LUIS](../luis-how-to-azure-subscription.md#starter-key) 帐户及其初学者密钥来创作 LUIS 应用程序。

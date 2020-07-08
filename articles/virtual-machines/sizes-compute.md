@@ -1,31 +1,25 @@
 ---
 title: Azure VM 大小-计算优化 |Microsoft Docs
 description: 列出了 Azure 中虚拟机可用的不同计算优化大小。 列出了有关此系列中各大小的 vCPU 数、数据磁盘数和 NIC 数以及存储吞吐量和网络带宽的信息。
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e08d593f641c42f9ad605fda013206e70a34e52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b945348f6fabfa698e45c111241fbfcef088d45e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269629"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058072"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>计算优化虚拟机大小
 
 计算优化 VM 大小具有较高的 CPU 与内存之比。 这些大小适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。 本文提供了有关 vCPU、数据磁盘和 NIC 的数量的信息。 它还介绍了此分组中每个大小的存储吞吐量和网络带宽。
 
-[Fsv2 系列](fsv2-series.md)基于 Intel® Xeon® Platinum 8168 处理器。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
+[Fsv2 系列](fsv2-series.md)在第2代 Intel®强®白金8272CL （级联 Lake）处理器和 Intel®强®白金8168（Skylake）处理器上运行。 它具有稳定的 3.4 GHz 的全核 Turbo 时钟速度和最大为 3.7 GHz 的单核 Turbo 频率。 Intel 可扩展处理器上提供了全新的 Intel® AVX-512 指令。 对于单精度和双精度浮点运算，这些指令可为向量处理工作负荷提供高达 2 倍的性能提升。 换而言之，对于任何计算工作负荷，它们的处理速度相当快。
 
 凭借较低的每小时定价，Fsv2 系列在基于每个 vCPU 的 Azure 计算单位 (ACU) 的 Azure 产品组合中具有最高性价比。
 

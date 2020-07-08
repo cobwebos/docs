@@ -5,11 +5,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的隔离的群集操
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80668341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077757"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
 
@@ -29,7 +30,7 @@ Kubernetes 提供所需的功能让你在同一个群集中逻辑隔离团队和
   * 更高级的计划程序功能包括排斥 (taint) 和容许 (toleration)、节点选择器，以及节点和 pod 关联与反关联。 有关这些功能的详细信息，请参阅[有关 AKS 中高级计划程序功能的最佳做法][aks-best-practices-advanced-scheduler]。
 * “网络”包括用于控制传入和传出 pod 的流量流的网络策略的用法。
 * “身份验证和授权”包括基于角色的访问控制 (RBAC) 和 Azure Active Directory (AD) 集成、pod 标识以及 Azure Key Vault 中的机密的用法。 有关这些功能的详细信息，请参阅[有关 AKS 中身份验证和授权的最佳做法][aks-best-practices-identity]。
-* “容器”包括 pod 安全策略、pod 安全上下文，以及扫描映像和运行时中的漏洞。 此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
+* **容器**包括适用于 AKS 的 Azure 策略外接程序，用于强制执行 pod 安全性、使用 pod 安全上下文，以及扫描映像和运行时中的漏洞。 此外，还涉及到使用 App Armor 或 Seccomp（安全计算）来限制容器对基础节点的访问。
 
 ## <a name="logically-isolate-clusters"></a>逻辑隔离群集
 

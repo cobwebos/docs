@@ -12,11 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 2ff3df74c4cf3175fbbec5097a98c51e7f97ac16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46b899b1891a6759ea2b9501f43c687990198f1f
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84190506"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078011"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>使用 Azure Key Vault 配置 Always Encrypted 
 
@@ -102,6 +103,8 @@ az keyvault create --name $vaultName --resource-group $resourceGroupName --locat
 az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
+
+---
 
 ## <a name="connect-with-ssms"></a>与 SSMS 连接
 
@@ -589,8 +592,9 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     现在，可以看到已加密列中的明文数据。
-     ![新建控制台应用程序](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
+   现在，可以看到已加密列中的明文数据。
+   
+   ![新建控制台应用程序](./media/always-encrypted-azure-key-vault-configure/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>后续步骤
 

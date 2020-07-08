@@ -5,13 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: victorh
-ms.openlocfilehash: cf896f6783cca0a61892c43860328d87ada56a9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27cdff24672f70407e8f8f89c6c49a8c2de87d0a
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791480"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078419"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -136,7 +137,7 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
-是的。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
+是。 防火墙、VNet 和公共 IP 地址都必须位于同一资源组中。
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
@@ -159,7 +160,7 @@ Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于�
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>防火墙名称是否存在字符限制？
 
-是的。 防火墙名称有 50 个字符的限制。
+是。 防火墙名称有 50 个字符的限制。
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>为何 Azure 防火墙需要 /26 子网大小？
 
@@ -218,3 +219,7 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火墙的 TCP 空闲超时是多少？
 
 网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有任何活动时立即将其关闭。 Azure 防火墙 TCP 空闲超时为4分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则无法保证已维护 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅[.net 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以部署没有公共 IP 地址的 Azure 防火墙？
+
+不可以。目前，你必须使用公共 IP 地址部署 Azure 防火墙。

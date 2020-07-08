@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686615"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058140"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
 适用于 Visual Studio Code 的 Azure 资源管理器工具提供语言支持、资源片段和资源自动完成。 这些工具可帮助创建和验证 Azure 资源管理器模板。 在本快速入门中，你将使用扩展从头开始创建 Azure 资源管理器模板。 在此过程中，你将体验 ARM 模板片段、验证、完成和参数文件支持等扩展功能。
 
-若要完成本快速入门，需要使用装有 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)的 [Visual Studio Code](https://code.visualstudio.com/)。 此外，需要安装 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 或 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0)并完成身份验证。
+若要完成本快速入门，需要使用装有 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)的 [Visual Studio Code](https://code.visualstudio.com/)。 此外，需要安装 [Azure CLI](/cli/azure/?view=azure-cli-latest) 或 [Azure PowerShell 模块](/powershell/azure/new-azureps-module-az?view=azps-3.7.0)并完成身份验证。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 

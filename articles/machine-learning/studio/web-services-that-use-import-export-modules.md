@@ -9,20 +9,20 @@ editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: aa8500e0e301de5f015d074646bf4da82e4de0a1
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: b844a18a5acbd7a631bfe3b650dfa155d0e064ba
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192558"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076651"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块的 Azure 机器学习工作室（经典）Web 服务
 
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 
-导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库、Azure 表存储、Azure Blob 存储、数据源提供或 SQL Server 数据库）中读取和写入数据。
+导入数据和导出数据模块可在各个数据位置（如通过 HTTP 的 Web URL、Hive 查询、Azure SQL 数据库中的数据库、Azure 表存储、Azure Blob 存储、数据源提供或 SQL Server 数据库）进行读取和写入。
 
 本主题使用“示例 5：二元分类的训练、测试、评估：成人数据集”示例并假设数据集已加载到名为 censusdata 的 Azure SQL 表中。
 
@@ -41,8 +41,8 @@ ms.locfileid: "84192558"
 6. 在“数据库服务器名称”、“数据库名称”、“用户名”和“密码”字段中，输入数据库的相应信息。
 7. 在“数据库查询”字段中，输入以下查询。
 
+    ```tsql
      select [age],
-
         [workclass],
         [fnlwgt],
         [education],
@@ -58,6 +58,7 @@ ms.locfileid: "84192558"
         [native-country],
         [income]
      from dbo.censusdata;
+    ```
 8. 在实验画布的底部，单击“**运行**”。
 
 ## <a name="create-the-predictive-experiment"></a>创建预测性实验
@@ -105,13 +106,15 @@ ms.locfileid: "84192558"
 8. 使用之前保存的 API 密钥更新 *apiKey* 变量的值。
 9. 找到请求声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
 
-        var request = new BatchExecutionRequest()
-        {
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable2" },
-            }
-        };
+    ```csharp
+    var request = new BatchExecutionRequest()
+    {
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable2" },
+        }
+    };
+    ```
 10. 运行应用程序。
 
 完成运行时，将新表添加到包含评分结果的数据库。
@@ -133,15 +136,17 @@ ms.locfileid: "84192558"
 8. 使用位于“基本使用信息”部分中的**主键**替换 *apiKey* 变量的值。
 9. 找到 *scoreRequest* 声明并更新传递到*导入数据*和*导出数据*模块的值。 在此示例中，将使用原始查询，但定义新的表名。
 
-        var scoreRequest = new
+    ```csharp
+    var scoreRequest = new
+    {
+        Inputs = new Dictionary<string, StringTable>()
         {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+        },
+        GlobalParameters = new Dictionary<string, string>() {
+            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+            { "Table", "dbo.ScoredTable3" },
+        }
+    };
+    ```
 10. 运行应用程序。
 

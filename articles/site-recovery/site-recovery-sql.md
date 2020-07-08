@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bdca30c82b31bda2e843b3712cfbe772952f3e8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84016468"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077297"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
@@ -37,7 +38,7 @@ Azure 基础结构即服务 (IaaS) 虚拟机 (VM) 上的或本地的 SQL Server�
 Azure IaaS VM 上的或本地的 SQL Server。| [故障转移群集 (Always On FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在节点之间进行故障转移所花费的时间。 | 由于 Always On FCI 使用共享存储，因此故障转移时会提供相同的存储实例视图。
 Azure IaaS VM 上的或本地的 SQL Server。| [数据库镜像（高性能模式）](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 强制服务所花费的时间，使用镜像服务器作为温备用服务器。 | 复制是异步的。 镜像数据库可能稍微滞后于主体数据库。 滞后时间通常很小。 但是，如果主体或镜像服务器的系统负载过大，则滞后时间可能很大。<br/><br/>日志传送可用作数据库镜像的补充。 它是异步数据库镜像的理想替代方案。
 Azure 上的 SQL 平台即服务 (PaaS)。<br/><br/>此部署类型包括单个数据库和弹性池。 | 活动异地复制 | 触发故障转移后持续 30 秒。<br/><br/>对一个辅助数据库激活故障转移后，所有其他辅助数据库将自动链接到新的主数据库。 | 5 秒 RPO。<br/><br/>活动异地复制使用 SQL Server 的 Always On 技术。 它使用快照隔离以异步方式将主数据库上已提交的事务复制到辅助数据库。<br/><br/>保证辅助数据永不包含部分事务。
-Azure 上配置了活动异地复制的 SQL as PaaS。<br/><br/>此部署类型包含 SQL 数据库托管实例、弹性池和单一数据库。 | 自动故障转移组 | 1 小时 RTO。 | 5 秒 RPO。<br/><br/>自动故障转移组在活动异地复制的顶层提供组语义。 但使用相同的异步复制机制。
+Azure 上配置了活动异地复制的 SQL as PaaS。<br/><br/>此部署类型包括托管实例、弹性池和单一数据库。 | 自动故障转移组 | 1 小时 RTO。 | 5 秒 RPO。<br/><br/>自动故障转移组在活动异地复制的顶层提供组语义。 但使用相同的异步复制机制。
 Azure IaaS VM 上的或本地的 SQL Server。| 使用 Azure Site Recovery 进行复制 | RTO 通常小于 15 分钟。 有关详细信息，请阅读 [Site Recovery 提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 为应用程序一致性提供 1 小时保证，为崩溃一致性提供 5 分钟保证。 若要寻求降低 RPO，请使用其他 BCDR 技术。
 
 > [!NOTE]

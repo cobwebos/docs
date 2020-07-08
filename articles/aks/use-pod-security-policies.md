@@ -3,25 +3,33 @@ title: 在 Azure Kubernetes Service （AKS）中使用 pod 安全策略
 description: 了解如何使用 Azure Kubernetes 服务（AKS）中的 PodSecurityPolicy 控制 pod 招生
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998355"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077620"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览-在 Azure Kubernetes Service （AKS）中使用 pod 安全策略保护群集
+
+<!--
+> [!WARNING]
+> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
+> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
+
+**This document and feature are set for deprecation.**
+-->
 
 若要提高 AKS 群集的安全性，可以限制可计划的 pod。 请求不允许的资源的 pod 无法在 AKS 群集中运行。 使用 pod 安全策略定义此访问权限。 本文介绍如何在 AKS 中使用 pod 安全策略来限制 pod 的部署。
 
 > [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
+> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能并不适合用于生产。 有关其他信息，请参阅以下支持文章：
 >
 > * [AKS 支持策略][aks-support-policies]
 > * [Azure 支持常见问题][aks-faq]
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -29,7 +37,7 @@ ms.locfileid: "80998355"
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
-若要使用 pod 安全策略，需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 *aks-preview* Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
+若要使用 pod 安全策略，需要*aks* CLI 扩展版本0.4.1 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展，然后使用 [az extension update][az-extension-update] 命令检查是否有任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -42,9 +50,6 @@ az extension update --name aks-preview
 ### <a name="register-pod-security-policy-feature-provider"></a>注册 pod 安全策略功能提供程序
 
 若要创建或更新 AKS 群集以使用 pod 安全策略，请先在订阅上启用功能标志。 若要注册*PodSecurityPolicyPreview*功能标志，请使用[az feature register][az-feature-register]命令，如以下示例中所示：
-
-> [!CAUTION]
-> 在订阅上注册功能时，当前无法注册该功能。 启用某些预览功能后，默认值可用于在订阅中创建的所有 AKS 群集。 不要对生产订阅启用预览功能。 使用单独的订阅来测试预览功能并收集反馈。
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
@@ -109,7 +114,7 @@ privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny  
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-如以下简洁输出所示， *psp：受限*的 ClusterRole 分配给任何*系统：经过身份验证*的用户。 此功能可以提供基本级别的限制，而不会定义你自己的策略。
+如以下简洁输出所示，可以将*psp：特权*ClusterRole 分配给任何*系统：经过身份验证*的用户。 此功能可以提供基本级别的特权，而不会定义你自己的策略。
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -132,7 +137,7 @@ subjects:
 
 ## <a name="create-a-test-user-in-an-aks-cluster"></a>在 AKS 群集中创建测试用户
 
-默认情况下，当你使用[az aks get 凭据][az-aks-get-credentials]命令时，aks 群集的*管理员*凭据将添加到你`kubectl`的配置中。管理员用户绕过 pod 安全策略的实施。 如果为 AKS 群集使用 Azure Active Directory 集成，则可以使用非管理员用户的凭据登录，以查看操作中的执行策略。 在本文中，我们将在 AKS 群集中创建一个可使用的测试用户帐户。
+默认情况下，当你使用[az aks get 凭据][az-aks-get-credentials]命令时，aks 群集的*管理员*凭据将添加到你的 `kubectl` 配置中。管理员用户绕过 pod 安全策略的实施。 如果为 AKS 群集使用 Azure Active Directory 集成，则可以使用非管理员用户的凭据登录，以查看操作中的执行策略。 在本文中，我们将在 AKS 群集中创建一个可使用的测试用户帐户。
 
 使用[kubectl create namespace][kubectl-create]命令为测试资源创建名为*aks*的示例命名空间。 然后，使用[kubectl create serviceaccount][kubectl-create]命令创建名为*nonadmin 的*服务帐户：
 
@@ -153,7 +158,7 @@ kubectl create rolebinding \
 
 ### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>为管理员和非管理员用户创建别名命令
 
-若要突出显示使用`kubectl`和在前面步骤中创建的非管理员用户时常规管理员用户之间的差异，请创建两个命令行别名：
+若要突出显示使用 `kubectl` 和在前面步骤中创建的非管理员用户时常规管理员用户之间的差异，请创建两个命令行别名：
 
 * **Kubectl**别名适用于常规管理员用户，其作用域为*psp-aks*命名空间。
 * **Kubectl-nonadminuser**别名适用于在上一步中创建的*nonadmin 用户*，其作用域为*psp-aks*命名空间。
@@ -167,7 +172,7 @@ alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-
 
 ## <a name="test-the-creation-of-a-privileged-pod"></a>测试特权 pod 的创建
 
-首先，请测试在使用的安全上下文来`privileged: true`计划 pod 时所发生的情况。 此安全上下文将升级 pod 的权限。 在上一部分中显示了默认 AKS pod 安全策略的情况下，*受限制*的策略应拒绝此请求。
+首先，请测试在使用的安全上下文来计划 pod 时所发生的情况 `privileged: true` 。 此安全上下文将升级 pod 的权限。 在上一部分中显示了默认 AKS pod 安全策略的情况下，*特权*策略应拒绝此请求。
 
 创建名为 `nginx-privileged.yaml` 的文件并粘贴以下 YAML 清单：
 
@@ -202,7 +207,7 @@ Pod 不会到达计划阶段，因此在继续操作之前，没有要删除的�
 
 ## <a name="test-creation-of-an-unprivileged-pod"></a>测试非特权 pod 的创建
 
-在上面的示例中，pod 规范请求了特权升级。 此请求被默认*限制*pod 安全策略拒绝，因此无法计划 pod。 现在，让我们尝试在没有权限提升请求的情况下运行相同的 NGINX pod。
+在上面的示例中，pod 规范请求了特权升级。 默认*权限*pod 安全策略拒绝了此请求，因此无法计划 pod。 现在，让我们尝试在没有权限提升请求的情况下运行相同的 NGINX pod。
 
 创建名为 `nginx-unprivileged.yaml` 的文件并粘贴以下 YAML 清单：
 
@@ -235,7 +240,7 @@ Pod 不会到达计划阶段，因此在继续操作之前，没有要删除的�
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>测试使用特定用户上下文创建 pod
 
-在上面的示例中，容器映像自动尝试使用根将 NGINX 绑定到端口80。 此请求已被默认*限制*pod 安全策略拒绝，因此无法启动 pod。 现在，让我们尝试使用特定的用户上下文（如）运行相同的 NGINX `runAsUser: 2000`pod。
+在上面的示例中，容器映像自动尝试使用根将 NGINX 绑定到端口80。 此请求已被默认*权限*pod 安全策略拒绝，因此无法启动 pod。 现在，让我们尝试使用特定的用户上下文（如）运行相同的 NGINX pod `runAsUser: 2000` 。
 
 创建名为 `nginx-unprivileged-nonroot.yaml` 的文件并粘贴以下 YAML 清单：
 
@@ -301,7 +306,7 @@ spec:
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-若要查看可用的策略，请使用[kubectl get psp][kubectl-get]命令，如以下示例中所示。 将*psp-拒绝特权*策略与在前面的示例中强制执行的默认*限制*策略进行比较，以创建 pod。 策略仅拒绝使用*特权*升级。 对于 " *psp 拒绝特权*" 策略，用户或组没有任何限制。
+若要查看可用的策略，请使用[kubectl get psp][kubectl-get]命令，如以下示例中所示。 使用在前面的示例中强制执行的默认*权限*策略来比较*psp 拒绝特权*策略，以创建 pod。 策略仅拒绝使用*特权*升级。 对于 " *psp 拒绝特权*" 策略，用户或组没有任何限制。
 
 ```console
 $ kubectl get psp
@@ -367,7 +372,7 @@ kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 
 ## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>再次测试创建无特权的 pod
 
-应用你的自定义 pod 安全策略，并使用该用户帐户的绑定来使用该策略时，让我们再次尝试创建无特权的 pod。 使用同一个`nginx-privileged.yaml`清单，使用[kubectl apply][kubectl-apply]命令创建 pod：
+应用你的自定义 pod 安全策略，并使用该用户帐户的绑定来使用该策略时，让我们再次尝试创建无特权的 pod。 使用同一个 `nginx-privileged.yaml` 清单，使用[kubectl apply][kubectl-apply]命令创建 pod：
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml

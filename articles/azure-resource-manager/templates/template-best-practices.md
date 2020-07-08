@@ -2,25 +2,21 @@
 title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156406"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058055"
 ---
 # <a name="arm-template-best-practices"></a>ARM 模板最佳实践
 
-本文提供了有关如何构造 Azure 资源管理器（ARM）模板的建议。 这些建议可帮助你避免使用 ARM 模板部署解决方案时遇到的常见问题。
-
-有关如何管理 Azure 订阅的建议，请参阅[azure 企业基架：规范性订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
-
-有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
+本文介绍如何在构造 ARM 模板时使用建议的做法。 这些建议可帮助你避免使用 ARM 模板部署解决方案时遇到的常见问题。
 
 ## <a name="template-limits"></a>模板限制
 
-将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。 
+将模板大小限制为 4 MB 以内，每个参数文件大小限制为 64 KB 以内。 4-MB 限制适用于模板使用迭代资源定义以及变量和参数值进行扩展后的最终状态。
 
 还将受限于：
 
@@ -36,7 +32,7 @@ ms.locfileid: "80156406"
 
 将资源部署到资源组时，资源组会存储与资源有关的元数据。 元数据存储在资源组的位置中。
 
-如果资源组的区域暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
+如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍可按预期运行，但你不能更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
 ## <a name="parameters"></a>参数
 
@@ -231,10 +227,10 @@ ms.locfileid: "80156406"
      有关连接到虚拟机的详细信息，请参阅：
    
    * [在 Azure 中运行用于 N 层体系结构的 VM](../../guidance/guidance-compute-n-tier-vm.md)
-   * [在 Azure 资源管理器中设置对 VM 的 WinRM 访问](../../virtual-machines/windows/winrm.md)
+   * [在 Azure Resource Manager 中设置对 VM 的 WinRM 访问](../../virtual-machines/windows/winrm.md)
    * [使用 Azure 门户实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [使用 PowerShell 实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [使用 Azure CLI 实现对 Linux VM 的外部访问](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [使用 Azure CLI 实现对 Linux VM 的外部访问](../../virtual-machines/linux/nsg-quickstart.md)
 
 * 公共 IP 地址的 **domainNameLabel** 属性必须唯一。 **domainNameLabel** 值的长度必须为 3 到 63 个字符，并遵循正则表达式 `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` 指定的规则。 由于 **uniqueString** 函数生成长度为 13 个字符的字符串，因此 **dnsPrefixString** 参数限制为不超过 50 个字符：
 
@@ -275,7 +271,12 @@ ms.locfileid: "80156406"
    > [!NOTE]
    > 为了确保机密内容作为参数传递给 VM 和扩展时经过加密，请使用相关扩展的 **protectedSettings** 属性。
    > 
-   > 
+
+## <a name="use-test-toolkit"></a>使用测试工具包
+
+ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议更改的警告列表。 测试工具包可帮助您了解如何在模板中实施最佳实践。
+
+完成模板后，请运行测试工具包，查看是否可以通过某种方式改善 it 实现。 有关详细信息，请参阅[ARM 模板测试工具包](test-toolkit.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

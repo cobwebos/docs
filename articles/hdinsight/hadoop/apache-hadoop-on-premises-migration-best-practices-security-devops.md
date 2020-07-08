@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75974407"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078368"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 安全性和 DevOps 最佳做法
 
@@ -41,7 +42,7 @@ ESP 适用于以下群集类型：Apache Hadoop、Apache Spark、Apache HBase、
 
 - 通过设置以下参数来部署 HDInsight ESP 群集：
 
-    |参数 |描述 |
+    |参数 |说明 |
     |---|---|
     |域名|与 Azure AD DS 关联的域名。|
     |域用户名|在前面的部分中创建的 Azure AD DS DC 托管域中的服务帐户，例如：`hdiadmin@contoso.onmicrosoft.com`。 此域用户将成为此 HDInsight 群集的管理员。|

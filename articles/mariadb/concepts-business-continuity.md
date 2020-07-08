@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c01e0df1f420c8489ca3445d9fa025b251a870f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532385"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076566"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 中的业务连续性
 
@@ -48,11 +48,12 @@ Azure 数据中心会罕见地发生中断。 发生中断时，可能仅导致�
 > [!IMPORTANT]
 > 只有当为服务器预配了异地冗余备份存储时，异地还原才是可行的。
 
+## <a name="cross-region-read-replicas"></a>跨区域只读副本
+
+可以使用跨区域只读副本来增强业务连续性和灾难恢复规划。 使用 MariaDB 的二进制日志复制技术异步更新读取副本。 从[只读副本概念文章](concepts-read-replicas.md)详细了解有关只读副本、可用区域以及如何进行故障转移的信息。 
+
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解自动备份，请参阅 [Azure Database for MariaDB 中的备份](concepts-backup.md)。
-- 若要使用 Azure 门户还原到某个时间点，请参阅 [使用 Azure 门户将数据库还原到某个时间点](howto-restore-server-portal.md)。
-
-<!--
-- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 
--->
+- 详细了解[Azure Database for MariaDB 中的自动备份](concepts-backup.md)。
+- 了解如何使用 [Azure 门户](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 进行还原。
+- 了解[Azure Database for MariaDB 中的读取副本](concepts-read-replicas.md)。

@@ -1,18 +1,18 @@
 ---
-title: 模板函数-日期
-description: 描述要在 Azure 资源管理器模板中使用的用于处理日期的函数。
+title: 模板函数 - 日期
+description: 介绍了可在 Azure 资源管理器模板中用来处理日期的函数。
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/22/2020
+ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192291"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058038"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM 模板的日期函数
 
-资源管理器提供了以下函数，用于处理 Azure 资源管理器（ARM）模板中的日期：
+资源管理器提供了以下可用于在 Azure 资源管理器 (ARM) 模板中处理日期的函数：
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
@@ -21,23 +21,23 @@ ms.locfileid: "82192291"
 
 `dateTimeAdd(base, duration, [format])`
 
-将持续时间添加到基数值。 需要 ISO 8601 格式。
+向基础值加上一个持续时间。 需要 ISO 8601 格式。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| base | 是 | 字符串 | 加法的开始日期时间值。 使用[ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
-| duration | 是 | 字符串 | 要添加到基的时间值。 该值可以为负值。 使用[ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
-| format | 否 | 字符串 | 日期时间结果的输出格式。 如果未提供，则使用基本值的格式。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| base | 是 | string | 用于相加的起始日期/时间值。 使用 [ISO 8601 时间戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
+| duration | 是 | string | 要与 base 相加的时间值。 它可以是负值。 使用 [ISO 8601 持续时间格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
+| format | 否 | string | 日期时间结果的输出格式。 如果未提供，则将使用 base 值的格式。 使用[标准格式字符串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="return-value"></a>返回值
 
-向基值添加 duration 值后得到的日期时间值。
+将 duration 值与 base 值相加后得到的日期/时间值。
 
 ### <a name="examples"></a>示例
 
-下面的示例模板显示了添加时间值的不同方法。
+以下示例模板展示了增加时间值的各种方式。
 
 ```json
 {
@@ -72,15 +72,15 @@ ms.locfileid: "82192291"
 }
 ```
 
-当使用的基本时间部署上述模板时`2020-04-07 14:53:14Z`，输出为：
+在 baseTime为 `2020-04-07 14:53:14Z` 的情况下部署上述模板时，输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| add3Years | 字符串 | 4/7/2023 2:53:14 PM |
-| subtract9Days | 字符串 | 3/29/2020 2:53:14 PM |
-| add1Hour | 字符串 | 4/7/2020 3:53:14 PM |
+| add3Years | String | 4/7/2023 2:53:14 PM |
+| subtract9Days | String | 3/29/2020 2:53:14 PM |
+| add1Hour | String | 4/7/2020 3:53:14 PM |
 
-下一个示例模板演示如何设置自动化计划的开始时间。
+下一示例模板展示了如何设置自动化计划的开始时间。
 
 ```json
 {
@@ -140,17 +140,17 @@ ms.locfileid: "82192291"
 
 以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| format |否 |字符串 |要转换为字符串的 URI 编码值。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| format |否 |string |要转换为字符串的 URI 编码值。 使用[标准格式字符串](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="remarks"></a>备注
 
 只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
 
-如果[使用相应的选项来重新部署以前已成功的部署](rollback-on-error.md)，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
+如果使用[选项将错误回滚](rollback-on-error.md)到之前的成功部署，并且以前的部署包含使用 utcNow 的参数，则不会重新评估参数。 而是在回滚部署中自动重复使用以前部署中的参数值。
 
 重新部署依赖于 utcNow 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
 
@@ -164,7 +164,7 @@ ms.locfileid: "82192291"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcValue": {
@@ -201,11 +201,11 @@ ms.locfileid: "82192291"
 
 上述示例的输出根据每个部署的不同而异，但类似于：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| utcOutput | 字符串 | 20190305T175318Z |
-| utcShortOutput | 字符串 | 03/05/2019 |
-| utcCustomOutput | 字符串 | 3 5 |
+| utcOutput | string | 20190305T175318Z |
+| utcShortOutput | string | 03/05/2019 |
+| utcCustomOutput | string | 3 5 |
 
 以下示例演示在设置标记值时如何使用函数中的值。
 

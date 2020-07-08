@@ -4,19 +4,23 @@ description: 了解如何将自动化服务主体添加到 Azure Analysis Servic
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697533"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077552"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
- 若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。 可以使用 SQL Server Management Studio 或资源管理器模板来执行此操作。
+ 若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。 可以使用 SQL Server Management Studio 或资源管理器模板来执行此操作。 
+
+> [!NOTE]
+> 必须直接将服务主体添加到服务器管理员角色。 不支持将服务主体添加到安全组，然后将该安全组添加到服务器管理员角色。 
 
 ## <a name="before-you-begin"></a>开始之前
 在完成此项任务之前，必须有一个在 Azure Active Directory 中注册的服务主体。

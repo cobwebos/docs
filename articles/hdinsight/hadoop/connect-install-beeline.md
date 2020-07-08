@@ -5,14 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 05/27/2020
-ms.openlocfilehash: fcd1c20ea2ecb5cbeb87fb8f703593453b5f85bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e93d750dd2feaa70692ab1077ee4333c835417db
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84122253"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86076770"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>连接到 Apache Beeline on HDInsight 或本地安装
 
