@@ -10,14 +10,13 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85098933"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
@@ -29,7 +28,9 @@ ms.locfileid: "83660542"
 
 * Oracle Database 12.1、12.2 和 18.3 Enterprise Edition 
 
-* Oracle Database 12.1、12.2 和 18.3 Standard Edition 
+* Oracle Database 12.1、12.2 和 18.3 Standard Edition
+
+* Oracle Database 19。3
 
 你还可以选择在 Azure 中提供的非 Oracle Linux 映像上安装 Oracle Database，解决方案要基于你在 Azure 中从头创建的自定义映像解决方案，或从本地环境上传自定义映像。
 
@@ -41,19 +42,19 @@ ms.locfileid: "83660542"
 
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Oracle Linux 和 WebLogic Server 上的应用程序
 
-在受支持的 Oracle 操作系统上运行 Azure 中的企业应用程序。 Azure 市场中提供以下虚拟机映像：
+在 Azure 上运行支持 Oracle Linux 映像的企业应用程序。 Azure 市场中提供以下虚拟机映像：
 
 * Oracle WebLogic Server 12.1.2
 
-* 具有 Unbreakable Enterprise Kernel (UEK) 6.8、6.9、6.10、7.3、7.4、7.5 和 7.6 的 Oracle Linux 
+* 使用 Unbreakable Enterprise 内核（UEK）6.8、6.9、6.10、7.3 到7.7、8.0、8.1 Oracle Linux。 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性和灾难恢复选项
 
 * 将 Azure 基础结构上的 [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)、[使用 FSFO 激活 Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[分片](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)或[Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) 配置为与[可用性区域](../../../availability-zones/az-overview.md)结合，以获得区域内高可用性。 你还可以跨多个 Azure 区域设置这些配置，以提高可用性和灾难恢复能力。
 
-* 使用 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) 在 Azure 中和本地或物理服务器上编排和管理 Oracle Linux VM 灾难恢复。 
+* 使用[Azure Site Recovery](../../../site-recovery/site-recovery-overview.md)来协调和管理 Azure 中的 Oracle Linux vm 和物理服务器的灾难恢复。 
 
-* 在 Azure 中使用 [Azure VMWare 解决方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或 [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) 启用 Oracle Real Application Clusters (RAC)。
+* 使用[Azure VMware 解决方案](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/)或[FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)在 Azure 中启用 Oracle 真正应用程序群集（RAC）。
 
 ## <a name="backup-oracle-workloads"></a>备份 Oracle 工作负载
 
@@ -72,8 +73,7 @@ ms.locfileid: "83660542"
 
 使用 Terraform 模板设置 Azure 基础结构并安装 Oracle 应用程序。 
 
-> [!IMPORTANT]
-> 在 2020 年 5 月之前，Oracle 将认证，在使用 Azure/Oracle 云互连解决方案时，这些应用程序可以在 Azure 中运行。
+当通过 Azure/Oracle 云互连解决方案连接到 Oracle 数据库时，oracle 已通过认证，可在 Azure 中运行这些应用程序：
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -85,7 +85,7 @@ ms.locfileid: "83660542"
 
 ### <a name="set-up-oracle-databases-in-oci"></a>在 OCI 中设置 Oracle 数据库
 
-将 Oracle 数据库云服务（自治数据库、RAC、Exadata、DBaaS、单一节点）与在 Azure 中运行的 Oracle 应用程序结合使用。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
+结合在 Azure 中运行的 Oracle 软件，使用 Oracle Database 云服务（自主数据库、RAC、Exadata、DBaaS、单一节点）。 详细了解 [OCI 数据库选项](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm)。 
  
 
 ## <a name="licensing"></a>授权

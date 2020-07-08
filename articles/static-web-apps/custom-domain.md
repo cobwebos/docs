@@ -7,12 +7,11 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655241"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960293"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
 
@@ -29,11 +28,11 @@ Azure 静态 Web 应用默认提供自动生成的域名。 本文介绍如何�
 
 有几种不同类型的 DNS 配置可用于应用程序。
 
-| 如果你想要                            | 则                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| 支持 `www.example.com`                 | [映射 CNAME 记录](#map-a-cname-record)           |
-| 支持 `example.com`                     | [配置根域](#configure-a-root-domain) |
-| 将所有子域指向 `www.example.com` | [映射通配符](#map-a-wildcard-domain)                   |
+| 如果你想要                                 | 则                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| 支持 `www.example.com` 或`blog.example.net`| [映射 CNAME 记录](#map-a-cname-record)           |
+| 支持 `example.com`                          | [配置根域](#configure-a-root-domain) |
+| 将所有子域指向 `www.example.com`      | [映射通配符](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>映射 CNAME 记录
 
@@ -80,7 +79,7 @@ CNAME 记录将一个域映射到另一个域。 可以使用 CNAME 记录将 `w
 
 1. 单击“验证”按钮。
 
-现在，自定义域已完成配置，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
+配置自定义域后，DNS 提供商可能需要几个小时才能传播所做的更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
 
 如果 DNS 更改已填充，则网站将返回静态 Web 应用的自动生成的 URL（例如 _random-name-123456789c.azurestaticapps.net_）。
 

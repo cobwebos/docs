@@ -7,12 +7,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: a19a1b6e7416667079ab07fc5440ee8828c26bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294365"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85081072"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>评估大量物理服务器以迁移到 Azure
 
@@ -47,7 +46,7 @@ ms.locfileid: "76294365"
 **规划** | **限制**
 --- | --- 
 **Azure Migrate 项目** | 在项目中评估最多35000服务器。
-**Azure Migrate 设备** | 设备最多可以发现250服务器。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
+**Azure Migrate 设备** | 设备最多可以发现1000服务器。<br/> 设备只能与单个 Azure Migrate 项目相关联。<br/> 可以将任意数量的设备与单个 Azure Migrate 项目相关联。 <br/><br/> 
 **组** | 最多可以在一个组中添加35000服务器。
 **Azure Migrate 评估** | 在单个评估中，最多可以评估35000服务器。
 
@@ -56,7 +55,7 @@ ms.locfileid: "76294365"
 
 - 若要从设备启动发现，你必须选择每个物理服务器。 
 
-## <a name="prepare-for-assessment"></a>准备评估
+## <a name="prepare-for-assessment"></a>准备进行评估
 
 为服务器评估准备 Azure 和物理服务器。 
 

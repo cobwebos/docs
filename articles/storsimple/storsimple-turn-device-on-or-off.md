@@ -4,16 +4,15 @@ description: 介绍如何打开新 StorSimple 设备，打开已关闭或断电�
 author: alkohli
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254620"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515266"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
 
@@ -86,12 +85,12 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 * [只有主机箱的设备](#8100)
 * [配有 EBOD 机箱的设备](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>只有主机箱的设备 <a name="8100">
+### <a name="device-with-primary-enclosure-only"></a>只有主机箱的设备 <a name="8100"></a>
 如果其中一个电源中断，系统仍可以继续正常运行。 但是，为了确保设备的高可用性，请尽早恢复电源供电。
 
 如果两个电源都发生停电或供电中断，则系统以有序且受控的方式关闭。 电源恢复时，系统会自动打开。
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>配有 EBOD 机箱的设备 <a name="8600">
+### <a name="device-with-ebod-enclosure"></a>配有 EBOD 机箱的设备 <a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>一个电源中断
 如果主机箱或 EBOD 机箱上的其中一个电源中断，系统仍可以继续正常运行。 但是，为了确保设备的高可用性，请尽早恢复电源供电。
 
@@ -140,21 +139,21 @@ StorSimple 8600 型号配有一个主机箱和一个 EBOD 机箱。 需要将这
 * [配有主机箱的设备](#8100a)
 * [配有 EBOD 机箱的设备](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>配有主机箱的设备 <a name="8100a">
+### <a name="device-with-primary-enclosure"></a>配有主机箱的设备 <a name="8100a"></a>
 若要以有序且受控的方式关闭设备，可以通过 Azure 门户或用于 StorSimple 的 Windows PowerShell 执行该任务。 
 
 > [!IMPORTANT]
 > 请勿使用设备背面的电源按钮来关闭正在运行的设备。
 > 
-> 关闭设备之前，确保所有的设备组件都运行正常。 在 Azure 门户中，导航到 "**设备** > " "**监视器** > " "**硬件运行状况**"，并确认所有组件的状态都为绿色。 此方法仅适用于正常运行的系统。 如果要关闭系统以更换工作异常的组件，则 **“硬件状态”** 中将显示相应组件的故障（红色）或降级（黄色）状态。
+> 关闭设备之前，确保所有的设备组件都运行正常。 在 Azure 门户中，导航到 "**设备**  >  " "**监视器**  >  " "**硬件运行状况**"，并确认所有组件的状态都为绿色。 此方法仅适用于正常运行的系统。 如果要关闭系统以更换工作异常的组件，则 **“硬件状态”** 中将显示相应组件的故障（红色）或降级（黄色）状态。
 > 
 > 
 
 访问用于 StorSimple 的 Windows PowerShell 或 Azure 门户之后，请按照[关闭 StorSimple 设备](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)中的步骤执行操作。 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>配有 EBOD 机箱的设备 <a name="8600a">
+### <a name="device-with-ebod-enclosure"></a>配有 EBOD 机箱的设备 <a name="8600a"></a>
 > [!IMPORTANT]
-> 在关闭主机箱和 EBOD 机箱之前，请确保所有的设备组件都正常工作。 在 Azure 门户中，导航到 "**设备** > " "**监视器** > " "**硬件运行状况**"，并确认所有组件都正常运行。
+> 在关闭主机箱和 EBOD 机箱之前，请确保所有的设备组件都正常工作。 在 Azure 门户中，导航到**Devices**  >  "设备" "**监视器**  >  " "**硬件运行状况**"，并确认所有组件都正常运行。
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>关闭正在运行的配有 EBOD 机箱的设备

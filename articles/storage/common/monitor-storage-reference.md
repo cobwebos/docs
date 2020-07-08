@@ -9,12 +9,11 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 481406b02d7d864dd16ac42918ae1aa2dea0b145
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
+ms.openlocfilehash: 12df9566dd3ddfedd1f4553ad8877258d840858c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195226"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960208"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 存储监视数据参考
 
@@ -32,36 +31,46 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 
 #### <a name="account-level"></a>帐户级别
 
+此表显示了[帐户级别的指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)。
+
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | UsedCapacity | 存储帐户使用的存储量。 对于标准存储帐户，该指标是 Blob、表、文件和队列使用的容量总和。 对于高级存储帐户和 Blob 存储帐户，它与 BlobCapacity 相同。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 #### <a name="blob-storage"></a>Blob 存储
 
+下表显示[Blob 存储指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)。
+
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | BlobCapacity | 存储帐户中使用的 Blob 存储总计。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 尺寸：**BlobType** 和 **BlobTier**（[定义](#metrics-dimensions)） |
-| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 尺寸：**BlobType** 和 **BlobTier**（[定义](#metrics-dimensions)） |
-| ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| BlobCount    | 在存储帐户中存储的 Blob 对象数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 <br/> 尺寸：**BlobType** 和 **BlobTier**（[定义](#metrics-dimensions)） |
+| ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | IndexCapacity     | ADLS Gen2 分层索引所使用的存储量 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 #### <a name="table-storage"></a>表存储
 
+此表显示了[表存储指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)。
+
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | TableCapacity | 存储帐户使用的表存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
-| TableCount   | 存储帐户中的表数目。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
-| TableEntityCount | 存储帐户中的表实体数目。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| TableCount   | 存储帐户中的表数目。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| TableEntityCount | 存储帐户中的表实体数目。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 #### <a name="queue-storage"></a>队列存储
+
+此表显示了[队列存储指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
 | QueueCapacity | 存储帐户使用的队列存储量。 <br/><br/> 单位：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
-| QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
-| QueueMessageCount | 存储帐户中未失效的队列消息数目。 <br/><br/>单位：Count <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| QueueCount   | 存储帐户中的队列数目。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
+| QueueMessageCount | 存储帐户的队列服务中的队列消息的大致数目。 <br/><br/>单元：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
 #### <a name="file-storage"></a>文件存储
+
+下表显示了[文件存储指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)。
 
 | 指标 | 说明 |
 | ------------------- | ----------------- |
@@ -128,7 +137,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 }
 ```
 
-| properties | 说明 |
+| Property | 描述 |
 |:--- |:---|
 |**time** | 存储收到请求时的协调世界时 (UTC) 时间。 例如：`2018/11/08 21:09:36.6900118`。|
 |**resourceId** | 存储帐户的资源 ID。 例如： `/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
@@ -142,7 +151,7 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 |**callerIpAddress** | 请求者的 IP 地址，包括端口号。 例如：`192.100.0.102:4362`。 |
 |**correlationId** | 用于跨资源关联日志的 ID。 例如：`b99ba45e-a01e-0042-4ea6-772bbb000000`。 |
 |**location** | 存储帐户的位置。 例如：`North Europe`。 |
-|**protocol**|操作中使用的协议。 例如：`HTTP`、`HTTPS`、`SMB` 或 `NFS`|
+|**protocol**|操作中使用的协议。 例如： `HTTP`、`HTTPS`、`SMB` 或 `NFS`|
 | **uri** | 所请求的统一资源标识符。 例如：`http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`。 |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>描述如何对操作进行身份验证的字段

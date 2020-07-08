@@ -13,15 +13,14 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
-ms.translationtype: HT
+ms.openlocfilehash: 58f2b1828bcc63ce11c234847bc20f90944aba18
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219310"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960378"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>在 Azure 中将多个 SQL 虚拟机注册到 SQL VM 资源提供程序
-[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 本文介绍如何在 Azure 中使用 `Register-SqlVMs` PowerShell cmdlet 将 SQL Server 虚拟机 (VM) 批量注册到 SQL VM 资源提供程序。
 
@@ -78,7 +77,7 @@ Register-SqlVMs -SubscriptionList SubscriptionId1,SubscriptionId2
 示例输出： 
 
 ```
-Number of Subscriptions registration failed for 
+Number of subscriptions registration failed for 
 because you do not have access or credentials are wrong: 1
 Total VMs Found: 10
 VMs Already registered: 1
@@ -155,7 +154,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-specific-vms-in-single-resource-group"></a>在单个资源组中注册特定 VM
+## <a name="register-specific-vms-in-a-single-resource-group"></a>在单个资源组中注册特定 Vm
 
 使用以下 cmdlet 在单个资源组中注册特定的 SQL Server 虚拟机：
 

@@ -6,12 +6,11 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532104"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099812"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -24,7 +23,7 @@ ms.locfileid: "79532104"
 > [!NOTE]
 > Azure 中的所有区域均提供此功能，其中 Azure Database for MariaDB 部署用于常规用途和内存优化服务器。
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>术语和说明
 
@@ -44,7 +43,7 @@ ms.locfileid: "79532104"
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>虚拟网络规则的优势
 
@@ -68,7 +67,7 @@ ms.locfileid: "79532104"
 
 但截至 2018 年 8 月，Azure Database for MariaDB 服务仍然无法直接分配给子网。
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>虚拟网络规则详细信息
 
@@ -101,7 +100,7 @@ ms.locfileid: "79532104"
 > 在某些情况下，Azure Database for MariaDB 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
 > - 两个订阅都必须属于同一 Azure Active Directory 租户。
 > - 用户具有启动操作所需的权限，例如启用服务终结点，以及向给定服务器添加 VNet-子网。
-> - 确保两个订阅都注册了 **Microsoft.Sql** 资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
+> - 请确保这两个订阅都注册**了** **DBforMariaDB**资源提供程序。 有关详细信息，请参阅[资源管理器注册][resource-manager-portal]
 
 ## <a name="limitations"></a>限制
 

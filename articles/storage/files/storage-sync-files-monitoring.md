@@ -3,16 +3,15 @@ title: 监视 Azure 文件同步 | Microsoft Docs
 description: 如何监视 Azure 文件同步。
 author: roygara
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515196"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -34,17 +33,17 @@ ms.locfileid: "68699288"
 
 Azure Monitor 提供了下列 Azure 文件同步指标：
 
-| 指标名称 | 说明 |
+| 指标名称 | 描述 |
 |-|-|
-| 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
-| 云分层回调 | 回调的数据大小。<br><br>**注意**：未来将删除此指标。 使用云分层撤回大小指标监视重新调用的数据的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称 |
-| 云分层重调大小 | 回调的数据大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称、同步组名称 |
-| 应用程序的云分层重调大小 | 应用程序撤回的数据的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：应用程序名称、服务器名称、同步组名称 |
-| 云分层重调吞吐量 | 数据回调吞吐量的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称、同步组名称 |
-| 未同步的文件 | 未能同步的文件数。<br><br>单位：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
-| 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单位：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
-| 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单位：计数<br>聚合类型：最大值<br>适用的维度：服务器名称 |
-| 同步会话结果 | 同步会话结果（1=成功同步会话；0=失败同步会话）<br><br>单位：计数<br>聚合类型：最大值<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单位：字节<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 云分层回调 | 回调的数据大小。<br><br>**注意**：未来将删除此指标。 使用云分层撤回大小指标监视重新调用的数据的大小。<br><br>单位：字节<br>聚合类型： Sum<br>适用的维度：服务器名称 |
+| 云分层回调大小 | 回调的数据大小。<br><br>单位：字节<br>聚合类型： Sum<br>适用的维度：服务器名称、同步组名称 |
+| 按应用程序计算的云分层回调大小 | 应用程序撤回的数据的大小。<br><br>单位：字节<br>聚合类型： Sum<br>适用的维度：应用程序名称、服务器名称、同步组名称 |
+| 云分层回调吞吐量 | 数据回调吞吐量的大小。<br><br>单位：字节<br>聚合类型： Sum<br>适用的维度：服务器名称、同步组名称 |
+| 未同步的文件 | 未能同步的文件数。<br><br>单元：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 同步的文件 | 已传输的文件数（上传和下载）。<br><br>单元：计数<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
+| 服务器联机状态 | 从服务器接收的检测信号数。<br><br>单元：计数<br>聚合类型：最大值<br>适用的维度：服务器名称 |
+| 同步会话结果 | 同步会话结果（1=成功同步会话；0=失败同步会话）<br><br>单元：计数<br>聚合类型：最大值<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
 
 ### <a name="alerts"></a>警报
 
@@ -57,7 +56,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 | 门户中的服务器终结点运行状况 = 错误 | 同步会话结果 |
 | 文件未能同步到服务器或云终结点 | 未同步的文件 |
 | 已注册的服务器未能与存储同步服务进行通信 | 服务器联机状态 |
-| 云分层撤回大小在一天内超过500GiB  | 云分层重调大小 |
+| 云分层撤回大小在一天内超过500GiB  | 云分层回调大小 |
 
 若要了解有关在 Azure Monitor 中配置警报的详细信息，请参阅[Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
 
@@ -68,7 +67,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 ### <a name="registered-server-health"></a>已注册的服务器运行状况
 
 - 如果**已注册的服务器**状态为 "**联机**"，则服务器将成功与服务进行通信。
-- 如果**已注册的服务器**状态**显示**为 "脱机"，请验证服务器上的存储同步监视器（AzureStorageSyncMonitor）进程是否正在运行。 如果服务器位于防火墙或代理之后，请参阅[此文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)配置防火墙和代理。
+- 如果**已注册的服务器**状态**显示**为 "脱机"，请验证服务器上的存储同步监视器（AzureStorageSyncMonitor.exe）进程是否正在运行。 如果服务器位于防火墙或代理之后，请参阅[此文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)配置防火墙和代理。
 
 ### <a name="server-endpoint-health"></a>服务器终结点运行状况
 
@@ -79,7 +78,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 - 可在存储同步服务门户中查看以下指标图表：
 
-  | 指标名称 | 说明 | 边栏选项卡名称 |
+  | 指标名称 | 描述 | 边栏选项卡名称 |
   |-|-|-|
   | 同步的字节数 | 已传输数据的大小（上传和下载） | 同步组，服务器终结点 |
   | 云分层回调 | 回调的数据的大小 | 已注册的服务器 |
@@ -132,11 +131,11 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 使用服务器上的 Azure 文件同步性能计数器来监视同步活动。
 
-若要在服务器上查看 Azure 文件同步性能计数器，请打开性能监视器（Perfmon）。 可以在 "已**传输的 Afs 字节**" 和 " **afs 同步操作**" 对象下找到计数器。
+若要在服务器上查看 Azure 文件同步性能计数器，请打开 "性能监视器" （Perfmon.exe）。 可以在 "已**传输的 Afs 字节**" 和 " **afs 同步操作**" 对象下找到计数器。
 
 性能监视器提供了下列 Azure 文件同步性能计数器：
 
-| 性能对象\计数器名称 | 说明 |
+| 性能对象\计数器名称 | 描述 |
 |-|-|
 | AFS 传输的字节数\下载的字节数/秒 | 每秒下载的字节数。 |
 | AFS 传输的字节数\上传的字节数/秒 | 每秒上传的字节数。 |
