@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 虚拟机规模集文档
-summary: 使用 Azure 虚拟机规模集可以创建并管理一组完全相同的、负载均衡的、自动缩放的虚拟机。
+summary: 使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的、自动缩放的虚拟机。
 metadata:
   title: 虚拟机规模集文档
   description: 使用我们的快速入门、教程和示例了解如何创建、配置、管理和自动缩放虚拟机规模集。
@@ -10,12 +10,12 @@ metadata:
   ms.author: jushiman
   ms.reviewer: mimckitt
   ms.date: 03/16/2020
-  ms.openlocfilehash: 8eff3979088aecf5ea8ed0383a1af8ad0d71c21d
-  ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+  ms.openlocfilehash: 96719159e3dd360554c795c5cd1f6436d05fbeeb
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/20/2020
-  ms.locfileid: "83701338"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027250"
 landingContent:
 - title: 关于虚拟机规模集
   linkLists:

@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 457ff90c21fee2b569fa24d90fffc6ce80cdf969
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658056"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027097"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 
@@ -56,7 +56,7 @@ Microsoft AppSource 应用程序属于业务线解决方案，基于 Azure 而�
 Azure 市场应用程序是技术性的“构建基块”式解决方案，基于 Azure 而构建或者针对 Azure 而构建，适用于 IT 或开发人员群体。 Azure 市场咨询服务是专业的服务套餐，可以帮助客户实现 Azure 使用入门或提高其使用速度。
 
 >[!Note]
->“跨商品”（仅针对 SaaS 应用）：当某个商品或基于试用的产品/服务同时符合技术用户受众和业务用户受众的标准时，产品/服务会在两个店面中同时上架。 详细了解下面的发布选项。
+>"交叉列表" （仅适用于 SaaS 应用）：如果 SaaS 产品/服务面向技术受众（Azure Marketplace）和业务受众（AppSource），则可以选择适用于这两个商店的类别和/或子类别。 请注意，根据您的产品/服务，您的产品/服务的 "交叉列表" 的目的应该是一种延伸到这两个受众的价值主张。 单击[此处](./gtm-offer-listing-best-practices.md#categories)查看适用于每个店面的类别。
 
 ## <a name="choose-a-publishing-option"></a>选择发布选项
 

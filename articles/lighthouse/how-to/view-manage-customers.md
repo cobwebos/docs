@@ -1,24 +1,24 @@
 ---
 title: 查看和管理客户及委派资源
-description: 作为使用 Azure 委派资源管理的服务提供商，你可以通过转到 Azure 门户中的“我的客户”，查看所有委派的客户资源和订阅。
-ms.date: 01/22/2020
-ms.topic: conceptual
-ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+description: 作为使用 Azure Lighthouse 的服务提供商，你可以通过转到 Azure 门户中的 "我的客户" 来查看所有委派的客户资源和订阅。
+ms.date: 07/06/2020
+ms.topic: how-to
+ms.openlocfilehash: a850dc8cfe7667a75ced64ef0bd0afc352b20daa
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76543420"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026264"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>查看和管理客户及委派资源
 
-使用 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)的服务提供商可以使用 [Azure 门户](https://portal.azure.com)中“我的客户”页来查看委派的客户资源和订阅****。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
+使用 Azure Lighthouse 的服务提供商可以使用[Azure 门户](https://portal.azure.com)中的 "**我的客户**" 页来查看委派的客户资源和订阅。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
 
 若要访问 Azure 门户中“我的客户”页，请选择“所有服务”，然后搜索“我的客户”并选择它************。 还可以通过在 Azure 门户顶部附近的搜索框中输入“我的客户”来找到它。
 
-请记住，"**我的客户**" 页的 "顶级**客户**" 部分仅显示有关已委派订阅或资源组的客户的信息。 如果你与其他客户（例如通过[云解决方案提供商计划](https://docs.microsoft.com/partner-center/csp-overview)）合作，则在 "**客户**" 部分中将不会显示有关这些客户的信息，除非你已将其资源载入 Azure 委派的资源管理。
+请记住，"**我的客户**" 页的 "顶级**客户**" 部分仅显示有关已委派订阅或资源组的客户的信息。 如果你与其他客户（例如通过[云解决方案提供商计划](/partner-center/csp-overview)）合作，则在 "**客户**" 部分中将看不到有关这些客户的信息，除非你已为[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)载入其资源。
 
-在此页上，名为 "**云解决方案提供商（预览版）** " 的单独部分会显示已[签署 Microsoft 客户协议（MCA）](https://docs.microsoft.com/partner-center/confirm-customer-agreement)且处于[Azure 计划下](https://docs.microsoft.com/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../billing/mpa-overview.md)。 请注意，此部分中将显示此类 CSP 客户，无论是否还载入它们进行 Azure 委派的资源管理。 同样，CSP 客户无需显示在 "**我的客户**的**云解决方案提供商（预览版）** " 部分中，即可将它们加入 Azure 委托资源管理。
+在此页上，名为 "**云解决方案提供商（预览版）** " 的单独部分会显示已[签署 Microsoft 客户协议（MCA）](/partner-center/confirm-customer-agreement)且处于[Azure 计划下](/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../billing/mpa-overview.md)。 请注意，此部分中将显示此类 CSP 客户，无论是否还载入它们进行 Azure 委派的资源管理。 同样，CSP 客户无需显示在 "**我的客户**的**云解决方案提供商（预览版）** " 部分中，即可将它们加入 Azure 委托资源管理。
 
 > [!NOTE]
 > 你的客户可以通过导航到 Azure 门户中的“我的客户”来查看有关服务提供商的信息****。 有关详细信息，请参阅[查看和管理服务提供商](view-manage-service-providers.md)。
@@ -53,7 +53,6 @@ ms.locfileid: "76543420"
 ### <a name="remove-delegations"></a>删除委派
 
 如果在为 Azure 委派的资源管理人员加入客户时包含具有[托管服务注册分配](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的用户，则这些用户可以通过选择在该委托的行中显示的 "垃圾桶" 图标来删除委派。 当他们执行此操作时，服务提供商的租户中的任何用户都将无法访问之前已委派的资源。
-
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>在委派订阅的上下文中操作
 

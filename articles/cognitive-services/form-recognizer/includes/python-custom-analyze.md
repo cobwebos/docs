@@ -5,16 +5,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 76b2b465354df5b06ecd93986aec71530d175fe6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 0644dad9e8e6f2999acfa24ea1088207f6d5e692
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562899"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028048"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>分析键值对和表的表单
 
-接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 在新的 Python 脚本中运行以下代码，以便调用[分析表单](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) API。 在运行该脚本之前，请进行以下更改：
+接下来，使用新的经过训练的模型分析文档并从中提取键值对和表。 在新的 Python 脚本中运行以下代码，以便调用[分析表单](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) API。 在运行该脚本之前，请进行以下更改：
 
 1. 将 `<file path>` 替换为表单的文件路径（例如，C:\temp\file.pdf）。 此项也可以是远程文件的 URL。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Test** 文件夹下的文件。
 1. 将 `<model_id>` 替换为在上一部分收到的模型 ID。

@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbf2039ad695f332b69bd5429ff527a4a2534e26
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366762"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026978"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>为 Azure 应用配置使用专用终结点
 
@@ -24,11 +24,11 @@ ms.locfileid: "79366762"
 - 使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)与专用对等互连连接到 VNet，从本地网络安全连接到应用配置存储。
 
 > [!NOTE]
-> Azure 应用配置提供专用终结点作为公共预览。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。
+> 私有终结点功能现已在除印度中部*以外*的所有区域公开发布。 在**印度中部**区域，Azure 应用配置提供专用终结点作为公共预览。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。
 
 ## <a name="conceptual-overview"></a>概念概述
 
-专用终结点是[虚拟网络](../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 为应用配置存储创建专用终结点时，它会在 VNet 中的客户端和配置存储之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。 专用终结点和配置存储之间的连接使用安全的专用链接。
+专用终结点是[虚拟网络](../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 为应用配置存储创建专用终结点时，它会在 VNet 中的客户端和配置存储之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点和配置存储之间的连接使用安全的专用链接。
 
 VNet 中的应用程序可以**使用相同的连接字符串和它们将使用的授权机制**，连接到专用终结点上的配置存储。 专用终结点可以与应用配置存储支持的所有协议一起使用。
 
@@ -36,7 +36,7 @@ VNet 中的应用程序可以**使用相同的连接字符串和它们将使用�
 
 在 VNet 中创建服务的专用终结点时，会将同意请求发送到服务帐户所有者进行审批。 如果请求创建专用终结点的用户也是该帐户的所有者，则会自动批准此同意请求。
 
-服务帐户所有者可以通过`Private Endpoints` [Azure 门户](https://portal.azure.com)中配置存储的选项卡来管理同意请求和专用终结点。
+服务帐户所有者可以通过 `Private Endpoints` [Azure 门户](https://portal.azure.com)中配置存储的选项卡来管理同意请求和专用终结点。
 
 ### <a name="private-endpoints-for-app-configuration"></a>应用配置的专用终结点 
 
@@ -44,25 +44,21 @@ VNet 中的应用程序可以**使用相同的连接字符串和它们将使用�
 
 ### <a name="connecting-to-private-endpoints"></a>连接到专用终结点
 
-Azure 依赖于 DNS 解析，通过专用链路将连接从 VNet 路由到配置存储。 通过选择应用配置存储，然后选择 "**设置** > " "**访问密钥**"，可以快速查找 Azure 门户中的连接字符串。  
+Azure 依赖于 DNS 解析，通过专用链路将连接从 VNet 路由到配置存储。 通过选择应用配置存储，然后选择 "**设置**" "  >  **访问密钥**"，可以快速查找 Azure 门户中的连接字符串。  
 
 > [!IMPORTANT]
-> 使用与用于公共终结点相同的连接字符串连接到应用配置存储。 请勿使用其`privatelink`子域 URL 连接到存储帐户。
+> 使用与用于公共终结点相同的连接字符串连接到应用配置存储。 不要使用其子域 URL 连接到应用商店 `privatelink` 。
 
 ## <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 
-创建专用终结点时，会将配置存储区的 DNS CNAME 资源记录更新为带有前缀`privatelink`的子域中的别名。 Azure 还会创建对应于`privatelink`子域的[专用 DNS 区域](../dns/private-dns-overview.md)，并将 dns 作为专用终结点的资源记录。
+创建专用终结点时，会将配置存储区的 DNS CNAME 资源记录更新为带有前缀的子域中的别名 `privatelink` 。 Azure 还会创建对应于子域的[专用 DNS 区域](../dns/private-dns-overview.md) `privatelink` ，并将 dns 作为专用终结点的资源记录。
 
-当你从 VNet 外部解析终结点 URL 时，它将解析为存储的公共终结点。 当从承载专用终结点的 VNet 中解析时，终结点 URL 解析为专用终结点。
+当你从承载专用终结点的 VNet 中解析终结点 URL 时，它将解析为存储的专用终结点。 当从 VNet 外部解析时，终结点 URL 解析为公共终结点。 创建专用终结点时，公共终结点处于禁用状态。
 
-可以使用 Azure 防火墙服务，通过公共终结点控制对 VNet 外部客户端的访问。
-
-利用此方法，可以对承载专用终结点的 VNet 中的客户端和 VNet 外部的客户端**使用相同的连接字符串**来访问应用商店。
-
-如果在网络上使用自定义 DNS 服务器，则客户端必须能够将服务终结点的完全限定的域名（FQDN）解析为专用终结点 IP 地址。 将你的 DNS 服务器配置为将专用链接子域委托给 VNet 的专用 DNS 区域，或`AppConfigInstanceA.privatelink.azconfig.io`使用专用终结点 IP 地址配置 A 记录。
+如果在网络上使用自定义 DNS 服务器，则客户端必须能够将服务终结点的完全限定的域名（FQDN）解析为专用终结点 IP 地址。 配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为 `AppConfigInstanceA.privatelink.azconfig.io` 配置 A 记录。
 
 > [!TIP]
-> 使用自定义或本地 DNS 服务器时，应将 DNS 服务器配置为将`privatelink`子域中的存储名称解析到专用终结点 IP 地址。 为此，可以将`privatelink`子域委托给 VNet 的专用 DNS 区域，或在 dns 服务器上配置 dns 区域并添加 dns A 记录。
+> 使用自定义或本地 DNS 服务器时，应将 DNS 服务器配置为将子域中的存储名称解析 `privatelink` 到专用终结点 IP 地址。 为此，可以将子域委托 `privatelink` 给 VNet 的专用 DNS 区域，或在 dns 服务器上配置 dns 区域并添加 Dns A 记录。
 
 ## <a name="pricing"></a>定价
 

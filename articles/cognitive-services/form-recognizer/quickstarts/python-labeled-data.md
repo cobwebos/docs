@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: tracking-python
-ms.openlocfilehash: d9bb6ef7629d236120660912daaad82ad18b8480
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b177063d4e50a310534ffa4c04557543c3354249
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563090"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028084"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "85563090"
 - 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
 > [!NOTE]
-> 此快速入门使用 URL 访问的远程文档。 要改用本地文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)。
+> 此快速入门使用 URL 访问的远程文档。 要改用本地文件，请参阅[参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)。
 
 ## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
 
@@ -65,8 +65,8 @@ ms.locfileid: "85563090"
 
 需要 OCR 结果文件，这样服务才会考虑使用相应的输入文件进行标记的训练。 若要获取给定源表单的 OCR 结果，请执行以下步骤：
 
-1. 在读取的布局容器上调用 **[分析布局](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API，使用输入文件作为请求正文的一部分。 保存在响应的 **Operation-Location** 标头中找到的 ID。
-1. 调用 **[获取分析布局结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API，使用上一步中的操作 ID。
+1. 在读取的布局容器上调用 **[分析布局](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync)** API，使用输入文件作为请求正文的一部分。 保存在响应的 **Operation-Location** 标头中找到的 ID。
+1. 调用 **[获取分析布局结果](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** API，使用上一步中的操作 ID。
 1. 获取响应并将内容写入文件。 就每个源表单来说，应该在相应的 OCR 文件的原始文件名中追加 `.ocr.json`。 OCR JSON 输出应采用以下格式。 如需完整示例，请参阅[示例 OCR 文件](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json)。 
 
     ```json
@@ -197,7 +197,7 @@ ms.locfileid: "85563090"
 
 ## <a name="train-a-model-using-labeled-data"></a>使用标记的数据训练模型
 
-若要使用标记的数据来训练模型，请运行下面的 python 代码来调用 **[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API。 运行该代码之前，请进行以下更改：
+若要使用标记的数据来训练模型，请运行下面的 python 代码来调用 **[训练自定义模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API。 运行该代码之前，请进行以下更改：
 
 1. 将 `<Endpoint>` 替换为表单识别器资源的终结点 URL。
 1. 将 `<SAS URL>` 替换为 Azure Blob 存储容器的共享访问签名 (SAS) URL。 若要检索 SAS URL，请打开 Microsoft Azure 存储资源管理器，右键单击容器，然后选择“获取共享访问签名”。 确保选中“读取”和“列表”权限，然后单击“创建”。 然后复制 **URL** 部分中的值。 它应当采用 `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` 形式。
@@ -561,4 +561,4 @@ print("Train operation did not complete within the allocated time.")
 在本快速入门中，你学习了如何使用表单识别器 REST API 和 Python 通过手动标记的数据来训练模型。 接下来，请参阅 API 参考文档来深入了解表单识别器 API。
 
 > [!div class="nextstepaction"]
-> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)
+> [REST API 参考文档](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

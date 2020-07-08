@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: a9528b31bfd1be40b478f3c47fd0a16047a7f6ff
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682704"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028122"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
@@ -45,13 +45,13 @@ Microsoft 在 Windows 和 Linux 上提供的数据科学虚拟机包含用于数
 - 适用于 Windows 的 Power BI Desktop
 - Windows/Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-它还包括 ML 和 AI 工具，例如 xgboost、mxnet 和 Vowpal Wabbit。
+它还包括 ML 和 AI 工具，例如 xgboost、mxnet 和 Vowpal Wabbit****。
 
 DSVM 目前可在 **Windows** 和 **Linux CentOS** 操作系统中使用。 根据计划在其上执行的数据科学项目的需求，选择 DSVM 的大小（CPU 核心数和内存量）。 
 
 有关 Windows 版 DSVM 的详细信息，请参阅 Azure 市场中的 [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)。 有关 Linux 版 DSVM，请参阅 [Linux 数据科学虚拟机](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。
 
-若要了解如何在 DSVM 上有效执行某些常见的数据科学任务，请参阅[Data Science Virtual Machine 的十大功能](../data-science-virtual-machine/vm-do-ten-things.md)
+若要了解如何在 DSVM 上有效执行某些常见的数据科学任务，请参阅 [Data Science Virtual Machine 的十大功能](../data-science-virtual-machine/vm-do-ten-things.md)
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark 群集
@@ -60,7 +60,7 @@ Apache Spark 是一种开源并行处理框架，支持使用内存中处理来�
 
 在 HDInsight 中创建 Spark 群集时，即会创建已安装并配置了 Spark 的 Azure 计算资源。 在 HDInsight 中创建 Spark 群集需要约 10 分钟。 将要处理的数据存储在 Azure Blob 存储中。 有关在群集中使用 Azure Blob 存储的信息，请参阅[将 HDFS 兼容的 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)。
 
-Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
+Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何使用 Azure HDInsight Spark 群集生成数据科学解决方案，其中一个解决方案使用 Python，另一个使用 Scala。 有关 Azure HDInsight“Spark 群集”的详细信息，请参阅[概述****：HDInsight Linux 上的 Apache Spark](../../hdinsight/spark/apache-spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Python** 生成数据科学解决方案，请参阅[有关在 Azure HDInsight 上使用 Spark 展开数据科学的概述](spark-overview.md)。 若要了解如何在 Azure HDInsight Spark 群集上使用 **Scala** 生成数据科学解决方案，请参阅[在 Azure 上使用 Scala 和 Spark 展开数据科学](scala-walkthrough.md)。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
@@ -81,7 +81,7 @@ Azure Data Lake 是在施加任何正式要求或架构之前，在单个位置�
 
 Apache Hive 是适用于 Hadoop 的数据仓库系统，可让你使用 HiveQL（类似于 SQL 的查询语言）来进行数据汇总、查询和数据分析。 使用 Hive 能够以交互方式浏览数据，或者创建可重用的批处理作业。
 
-Hive 允许在很大程度上未结构化的数据上投影结构。 定义结构后，可以使用 Hive 在 Hadoop 群集中查询这些数据，而无需使用甚至无需了解 Java 或 MapReduce。 借助 HiveQL（Hive 查询语言）可以使用类似于 T-SQL 的语句编写查询。
+Hive 可以实现将结构投影到很大程度上未结构化的数据上。 定义结构后，可以使用 Hive 在 Hadoop 群集中查询这些数据，而无需使用甚至无需了解 Java 或 MapReduce。 借助 HiveQL（Hive 查询语言）可以使用类似于 T-SQL 的语句编写查询。
 
 对于数据科学家而言，Hive 可以在 Hive 查询中运行 Python 用户定义的函数 (UDF) 来处理记录。 这种能力大大扩展了数据分析中的 Hive 查询功能。 具体而言，Hive 可让数据科学家使用他们最熟悉的语言（包括类似于 SQL 的 HiveQL 和 Python）开展可缩放的特征工程。 
 
@@ -97,7 +97,7 @@ Azure 文件存储是一种使用标准服务器消息块 (SMB) 协议在云中�
 
 ## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R 和 Python 服务
 
-R 服务（数据库内部）提供一个平台用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
+R 服务（数据库内部）提供一个平台，用于开发和部署可以发现新见解的智能应用程序。 可以使用丰富强大的 R 语言（包括 R 社区提供的许多包）来创建模型，基于 SQL Server 数据生成预测。 由于 R 服务（数据库内部）可将 R 语言与 SQL Server 集成，因此可以保持与数据接近的分析结果，同时消除与数据移动相关的成本和安全风险。
 
 R 服务（数据库内部）凭借一套综合性的 SQL Server 工具和技术来支持开放源代码 R 语言。 它们提供优异的性能、安全性、可靠性和可管理性。 可以使用便捷、熟悉的工具部署 R 解决方案。 生产应用程序可以使用 Transact-SQL 调用 R 运行时以及检索预测数据和视觉对象。 还可以使用 ScaleR 库来改善 R 解决方案的缩放性和性能。 有关详细信息，请参阅 [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
 
@@ -110,16 +110,18 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 如果在 **Windows** 上遵循 TDSP，需要安装 **Git 凭据管理器 (GCM)** 来与 Git 存储库通信。 若要安装 GCM，首先需要安装 **Chocolaty**。 若要安装 Chocolaty 和 GCM，请在 Windows PowerShell 中以**管理员**身份运行以下命令：  
 
-    iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
-    choco install git-credential-manager-for-windows -y
-    
+```powershell
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+choco install git-credential-manager-for-windows -y
+```  
 
 ### <a name="install-git-on-linux-centos-machines"></a>在 Linux (CentOS) 计算机上安装 Git
 
 运行以下 bash 命令，在 Linux (CentOS) 计算机上安装 Git：
 
-    sudo yum install git
-
+```powershell
+sudo yum install git
+```
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>在 Linux (CentOS) 计算机上生成公共 SSH 密钥
 
@@ -140,7 +142,7 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
     
    ![单击你的姓名，再单击“安全性”](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. 依次单击“SSH 公钥”、“+添加”。  
+1. 依次单击“SSH 公钥”、“+添加”。**** **** 
 
    ![单击 SSH 公钥，再单击“+ 添加”](./media/platforms-and-tools/resources-3-add-ssh.png)
 
@@ -151,4 +153,4 @@ Microsoft 的 TDSP 团队发布了两篇端到端演练，介绍如何在 SQL Se
 
 还提供了完整的、端到端的演练，演示**特定方案**处理过程中的所有步骤。 在[示例演练](walkthroughs.md)主题中，列出了相关步骤并链接了缩略图说明。 这些演练演示如何将云、本地工具和服务合并到工作流或管道中，以创建智能应用程序。 
 
-有关演示如何通过使用 Azure 机器学习工作室（经典）在 Team Data Science Process 中执行步骤的示例，请参阅[使用 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 学习路径。
+有关如何使用 Azure 机器学习工作室（经典）执行 Team Data Science Process 中的步骤的示例，请参见[使用 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 学习路径。

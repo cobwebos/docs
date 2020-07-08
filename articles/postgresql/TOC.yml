@@ -112,6 +112,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: 数据加密
               href: concepts-data-encryption-postgresql.md
+            - name: 基础结构双重加密
+              href: concepts-infrastructure-double-encryption.md
             - name: 安全基线
               href: security-baseline.md
         - name: 业务连续性
@@ -307,6 +309,10 @@
               href: howto-data-encryption-cli.md
             - name: 数据加密验证
               href: howto-data-encryption-validation.md
+        - name: 基础结构双重加密
+          items:
+            - name: 配置基础结构双加密
+              href: howto-double-encryption.md
         - name: 重新启动服务器
           items:
             - name: Azure 门户

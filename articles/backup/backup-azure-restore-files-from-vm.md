@@ -3,12 +3,13 @@ title: 从 Azure VM 备份恢复文件和文件夹
 description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件夹。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: c72794999abbbf5d29b376615015fb5778b7d9fe
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757970"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027158"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -228,7 +229,7 @@ mount [RAID Disk Path] [/mountpath]
 
 - `download.microsoft.com`
 - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
-  - `https://pod01-rec2.geo-name.backup.windowsazure.com`（适用于 Azure 公共地区）
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`（适用于 Azure 公共区域）
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn`（适用于 Azure 中国世纪互联）
   - `https://pod01-rec2.geo-name.backup.windowsazure.us`（适用于 Azure 美国政府）
   - `https://pod01-rec2.geo-name.backup.windowsazure.de`（适用于 Azure 德国）
@@ -236,7 +237,7 @@ mount [RAID Disk Path] [/mountpath]
 
 > [!NOTE]
 >
-> - 下载的脚本文件名将具有要在 URL 中填充的地区名称。 例如：下载的脚本名称以 \'VMname\'\_\'geoname\'_\'GUID\'开头，例如 ContosoVM_wcus_12345678
+> - 下载的脚本文件名将具有要在 URL 中填充的地区名称。 例如：下载的脚本名称以 \' VMname \' \_ \' geoname \' _ GUID 开头 \' \' ，如*ContosoVM_wcus_12345678*
 > - URL 则为“<https://pod01-rec2.wcus.backup.windowsazure.com>”
 >
 
@@ -246,9 +247,9 @@ mount [RAID Disk Path] [/mountpath]
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>从具有大磁盘的虚拟机备份恢复文件
 
-本部分介绍如何从包含 16 个以上磁盘（且每个磁盘大小均大于 32 TB）的 Azure 虚拟机的备份执行文件恢复。
+本部分介绍如何从包含16个以上磁盘的 Azure 虚拟机的备份执行文件恢复，或者每个磁盘大小大于 4 TB。
 
-由于文件恢复进程会附上备份中的所有磁盘，因此当使用大量磁盘（大于 16 个）或大型磁盘（每个磁盘大小大于 32 TB）时，建议使用以下操作点：
+由于文件恢复过程从备份中附加了所有磁盘，因此当使用大量磁盘（>16）或大磁盘（每个 > 4 TB）时，建议使用以下操作点：
 
 - 保留单独的还原服务器 (Azure VM D2v3 VM) 用于文件恢复。 只能将它用于文件恢复，并在不需要时将其关闭。 不建议在原始计算机上进行还原，因为它会对 VM 本身造成重大影响。
 - 然后运行该脚本一次，检查文件恢复操作是否成功。

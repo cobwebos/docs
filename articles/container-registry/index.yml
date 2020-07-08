@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: f73794898f00d78c5253c19f985f8ff531ae3c11
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 55ac9d470f85059bd8ebb6949da08f651fb2289b
+  ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74895527"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86027114"
 landingContent:
 - title: 关于 Azure 容器注册表
   linkLists:
@@ -35,6 +35,8 @@ landingContent:
       url: container-registry-get-started-azure-cli.md
     - text: 创建容器注册表 - 门户
       url: container-registry-get-started-portal.md
+    - text: 创建容器注册表 - ARM 模板
+      url: container-registry-get-started-geo-replication-template.md
     - text: 通过 Docker 推送和拉取映像
       url: container-registry-get-started-docker-cli.md
   - linkListType: concept
@@ -65,7 +67,7 @@ landingContent:
     links:
     - text: 异地复制
       url: container-registry-geo-replication.md
-    - text: Authentication
+    - text: 身份验证
       url: container-registry-authentication.md
     - text: 最佳做法
       url: container-registry-best-practices.md

@@ -3,12 +3,12 @@ title: 使用自己的模型分析实时视频 - Azure
 description: 在本快速入门中，你将应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b8f83b9e3c450612c742a831ac800343b3bbbc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: e19c5bd6b44f9a4dd225f6a849ee9aaf62fa6273
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816687"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027658"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>快速入门：使用自己的模型分析实时视频
 
@@ -190,7 +190,7 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished 事件
 
-实例化媒体图后，RTSP 源节点尝试连接到在 rtspsim-live55 容器上运行的 RTSP 服务器。 如果连接成功，则打印以下事件。 事件类型为 `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`。
+对媒体图进行实例化后，RTSP 源节点尝试连接到在 rtspsim-live555 容器上运行的 RTSP 服务器。 如果连接成功，则打印以下事件。 事件类型为 `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`。
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

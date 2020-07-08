@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: dapine
-ms.openlocfilehash: 7a00361581071ddf54893c42246b8c7ad4ac5722
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ae3a9583e4373a2c9b7dde91929cb8b809b442f
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656611"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86035832"
 ---
 ## <a name="sample-source-code"></a>示例源代码
 
 :::row:::
     :::column span="3":::
-        语音 SDK 积极维护开源存储库中的大量示例。 有关示例源代码存储库，请访问<a href="https://aka.ms/csspeech/samples" target="_blank">GitHub <span class="docon docon-navigate-external x-hidden-focus"></span>上的 Microsoft 认知服务语音 SDK </a>。 有一些示例适用于 c #、c + +、Java、Python、目标-C、Swift、JavaScript、UWP、Unity 和 Xamarin。
+        语音 SDK 团队积极维护开源存储库中的大量示例。 有关示例源代码存储库，请访问 GitHub 上的 <a href="https://aka.ms/csspeech/samples" target="_blank">Microsoft 认知服务语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。 其中有适用于 C#、C++、Java、Python、Objective-C、Swift、JavaScript、UWP、Unity 和 Xamarin 的示例。
     :::column-end:::
     :::column:::
         <br>

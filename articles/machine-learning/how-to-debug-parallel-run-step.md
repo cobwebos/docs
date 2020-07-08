@@ -5,22 +5,22 @@ description: 在适用于 Python 的 Azure 机器学习 SDK 中的机器学习�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.topic: troubleshooting
+ms.reviewer: trbye, jmartens, larryfr, vaidyas, laobri
 ms.author: trmccorm
 author: tmccrmck
-ms.date: 01/15/2020
-ms.openlocfilehash: c4e2777f59bab8d7d874019004bff2e30395ab1d
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.date: 07/06/2020
+ms.openlocfilehash: 870563a1a27ee00c2f14935e5200f722136011a1
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723470"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026995"
 ---
 # <a name="debug-and-troubleshoot-parallelrunstep"></a>对 ParallelRunStep 进行调试和故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 中对 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 类进行调试和故障排除。
+本文介绍如何在 [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 中对 [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) 类进行调试和故障排除。
 
 ## <a name="testing-scripts-locally"></a>在本地测试脚本
 
@@ -40,7 +40,7 @@ ms.locfileid: "83723470"
 
 使用 EntryScript 帮助程序和 print 语句，通过入口脚本生成的日志将显示在以下文件中：
 
-- `~/logs/user/<ip_address>/<node_name>.log.txt`：这些是使用 EntryScript 帮助程序从 entry_script 写入的日志。 还包含来自 entry_script 的 print 语句 (stdout)。
+- `~/logs/user/<ip_address>/<node_name>.log.txt`：这些文件是使用 EntryScript helper 从 entry_script 写入的日志。 还包含来自 entry_script 的 print 语句 (stdout)。
 
 要简要了解脚本中的错误，请参阅以下文件：
 
@@ -52,13 +52,13 @@ ms.locfileid: "83723470"
 
 如需全面了解每个节点如何执行评分脚本，请查看每个节点单独的进程日志。 进程日志位于 `sys/node` 文件夹中，按工作器节点分组：
 
-- `~/logs/sys/node/<node_name>.txt`：此文件提供有关每个微型批处理的详细信息，因为它是由工作器选取或完成的。 对于每个微型批处理，此文件包括以下内容：
+- `~/logs/sys/node/<node_name>.txt`：此文件提供了有关每个小型批处理的详细信息，因为它是由辅助角色选取或完成的。 对于每个微型批处理，此文件包括以下内容：
 
     - 工作进程的 IP 地址和 PID。 
     - 总项数、成功处理的项计数和失败的项计数。
     - 开始时间、持续时间、处理时间和运行方法时间。
 
-此外，还可以找到有关每个工作进程的资源使用情况的信息。 此信息采用 CSV 格式，并且位于 `~/logs/sys/perf/overview.csv` 中。 有关每个进程的信息，可在 `~logs/sys/processes.csv` 下获取。
+此外，还可以找到有关每个工作进程的资源使用情况的信息。 此信息采用 CSV 格式，并且位于 `~/logs/sys/perf/overview.csv` 中。 下提供了有关每个流程的信息 `~logs/sys/processes.csv` 。
 
 ### <a name="how-do-i-log-from-my-user-script-from-a-remote-context"></a>如何从远程上下文中的用户脚本记录？
 可从 EntryScript 获取记录器（如下面的示例代码所示），以使日志显示在门户的“日志/用户”文件夹中。
@@ -87,7 +87,7 @@ def run(mini_batch):
 
 ### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将端输入（如包含查找表的单个或多个文件）传递到所有工作器？
 
-构造包含端输入的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_input` 参数。 此外，还可以在 `arguments` 部分中添加其路径，以便轻松访问其已装载的路径：
+构造包含端输入的[数据集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)，并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_input` 参数。 此外，还可以在节中添加其路径 `arguments` ，以便轻松访问其装入的路径：
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -113,6 +113,6 @@ labels_path = args.labels_dir
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅 SDK 参考，获取有关 [azureml-contrib-pipeline-step](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps?view=azure-ml-py) 包的帮助以及 ParallelRunStep 类的相关[文档](https://docs.microsoft.com/python/api/azureml-contrib-pipeline-steps/azureml.contrib.pipeline.steps.parallelrunstep?view=azure-ml-py)。
+* 有关[azureml-管线-步骤](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)包的帮助，请参阅 SDK 参考。 查看 ParallelRunStep 类的参考[文档](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?view=azure-ml-py)。
 
-* 遵循[高级教程](tutorial-pipeline-batch-scoring-classification.md)，了解如何对 ParallelRunStep 使用管道，并获取将其他文件作为端输入传递的示例。 
+* 按照[高级教程](tutorial-pipeline-batch-scoring-classification.md)，使用 ParallelRunStep 的管道。 本教程介绍如何将另一个文件作为侧输入传递。 

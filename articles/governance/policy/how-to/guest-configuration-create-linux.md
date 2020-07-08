@@ -3,12 +3,12 @@ title: 如何创建适用于 Linux 的来宾配置策略
 description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a636b63c80799f8bfe3dfd3a0eb37d1367cdcf0d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654866"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86026706"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -81,7 +81,7 @@ ms.locfileid: "83654866"
 
 #### <a name="configuration-requirements"></a>配置要求
 
-自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件名、MOF 文件中的配置名称和资源管理器模板中的来宾分配名称必须相同。
+自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件的名称、MOF 文件中的配置名称以及 Azure 资源管理器模板（ARM 模板）中的来宾分配名称必须相同。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置
 
@@ -347,7 +347,7 @@ describe file(attr_path) do
 end
 ```
 
-cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包括名为“Parameters”的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
+Cmdlet `New-GuestConfigurationPolicy` 并 `Test-GuestConfigurationPolicyPackage` 包括一个名为**参数**的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
 
 下面的示例创建策略定义来审核文件路径，其中用户在策略分配时提供路径。
 
@@ -371,7 +371,7 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Linux file path.' `
     -Description 'Audit that a file path exists on a Linux machine.' `
     -Path './policies' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 

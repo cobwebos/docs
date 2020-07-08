@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: eb2a7d4f83b3d8bda0d06e14b4dab9bb4872885e
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414277"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027675"
 ---
 # <a name="set-up-web-endpoints"></a>设置 Web 终结点
 
@@ -41,19 +41,20 @@ ms.locfileid: "85414277"
    > [!div class="mx-imgBorder"]
    > ![新 web 终结点](media/custom-commands/setup-web-endpoint-new-endpoint.png)
 
-   | 设置 | 建议的值 | 说明 |
+   | 设置 | 建议的值 | 描述 |
    | ------- | --------------- | ----------- |
-   | 名称 | UpdateDeviceState | Web 终结点的名称。 |
+   | “属性” | UpdateDeviceState | Web 终结点的名称。 |
    | URL | https://webendpointexample.azurewebsites.net/api/DeviceState | 希望自定义命令应用与之通信的终结点的 URL。 |
    | 方法 | POST | 与终结点之间允许的交互（如 GET、POST）。|
-   | 头文件 | 注册表项：应用程序的值：应用程序的唯一名称 | 要包含在请求标头中的标头参数。|
+   | 头文件 | Key： app，Value：取 applicationId 的前8位 | 要包含在请求标头中的标头参数。|
 
     > [!NOTE]
     > - 使用[Azure Function](https://docs.microsoft.com/azure/azure-functions/)创建的示例 web 终结点，该终结点与保存电视和风扇的设备状态的数据库挂钩
     > - 建议的标头仅对示例终结点是必需的
+    > - 若要确保标头值在我们的示例终结点中是唯一的，请使用 applicationId 的前8位
     > - 在现实世界中，web 终结点可以是用于管理设备的[IOT 中心](https://docs.microsoft.com/azure/iot-hub/about-iot-hub)的终结点
 
-1. 单击“保存” ****。
+1. 单击“保存” 。
 
 ## <a name="call-web-endpoints"></a>调用 web 终结点
 
@@ -64,21 +65,23 @@ ms.locfileid: "85414277"
    > [!div class="mx-imgBorder"]
    > ![调用 web 终结点操作参数](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
-   | 设置 | 建议的值 | 说明 |
+   | 设置 | 建议的值 | 描述 |
    | ------- | --------------- | ----------- |
    | 终结点 | UpdateDeviceState | 要在此操作中调用的 web 终结点。 |
    | 查询参数 | item = {SubjectDevice} &&值 = {麦克风} | 要追加到 web 终结点 URL 的查询参数。  |
-   | 正文内容 | 空值 | 请求的正文内容。 |
+   | 正文内容 | 不适用 | 请求的正文内容。 |
 
     > [!NOTE]
     > - 建议的查询参数仅对示例终结点是必需的
 
 1. 在 **"成功时-要执行的操作**" 中，选择 "**发送语音响应**"。
+    
+    在**简单编辑器**中，输入 `{SubjectDevice} is {OnOff}` 。
    
    > [!div class="mx-imgBorder"]
    > ![成功时调用 web 终结点操作](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
-   | 设置 | 建议的值 | 说明 |
+   | 设置 | 建议的值 | 描述 |
    | ------- | --------------- | ----------- |
    | 要执行的操作 | 发送语音响应 | 对 web 终结点的请求成功时要执行的操作 |
    
@@ -86,10 +89,13 @@ ms.locfileid: "85414277"
    > - 还可以通过使用直接访问 http 响应中的字段 `{YourWebEndpointName.FieldName}` 。 例如： `{UpdateDeviceState.TV}`
 
 1. 在 **"失败时-要执行的操作**" 中，选择 "**发送语音响应**"
+
+    在**简单编辑器**中，输入 `Sorry, {WebEndpointErrorMessage}` 。
+
    > [!div class="mx-imgBorder"]
    > ![失败时调用 web 终结点操作](media/custom-commands/setup-web-endpoint-edit-action-on-fail.png)
 
-   | 设置 | 建议的值 | 说明 |
+   | 设置 | 建议的值 | 描述 |
    | ------- | --------------- | ----------- |
    | 要执行的操作 | 发送语音响应 | 对 web 终结点的请求失败时要执行的操作 |
 
