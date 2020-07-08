@@ -9,17 +9,17 @@ manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/10/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f96e70c6699fb7ce85bd1c01f72028f537f994f2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 84b5635d934b15c7ddd289e3a9deb014361d3c94
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680310"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850168"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect 的自定义安装
 如果希望有更多的安装选项，可以使用 Azure AD Connect“自定义设置”。 如果拥有多个林或希望配置未覆盖在快速安装中的可选功能，可以使用它。 它适用于[**快速安装**](how-to-connect-install-express.md)不能满足部署或拓扑的所有情况。
@@ -133,12 +133,12 @@ ms.locfileid: "83680310"
 | [邮件属性](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |如果邮件属性在不同的林中具有相同的值，则此选项将联接用户和联系人。 当已使用 GALSync 创建了联系人时，请使用此选项。 如果选择此选项，则不会将 Mail 属性尚未填充的 User 对象同步到 Azure AD。 |
 | [ObjectSID 和 msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |此选项将帐户林中的已启用用户与资源林中的已禁用用户进行联接。 在 Exchange 中，此配置称为链接邮箱。 如果只使用 Lync 并且资源林中没有 Exchange，则你也可以使用此选项。 |
 | sAMAccountName 和 MailNickName |此选项根据预期可以在其中找到用户登录 ID 的属性进行联接。 |
-| 特定的属性 |此选项允许选择自己的属性。 如果选择此选项，则不会将其选定属性尚未填充的 User 对象同步到 Azure AD。 **限制：** 确保选择已可在 Metaverse 中找到的属性。 如果选择自定义属性（不在 Metaverse 中），向导将无法完成。 |
+| 特定的属性 |此选项允许选择自己的属性。 如果选择此选项，则不会将其选定属性尚未填充的 User 对象同步到 Azure AD。 **限制：** 只有可在元节中找到的属性可用于此选项。 "。 |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>选择应如何使用 Azure AD 标识用户 - 源定位点
 sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属性。 它是链接本地用户与 Azure AD 中用户的主密钥。
 
-| 设置 | 说明 |
+| 设置 | 描述 |
 | --- | --- |
 | 让 Azure 为我管理源定位点 | 如果想要 Azure AD 选取属性，请选择此选项。 如果选择此选项，Azure AD Connect 向导会应用 sourceAnchor 属性选择逻辑，该逻辑详见相关文章的 [Azure AD Connect：设计概念 - 将 msDS-ConsistencyGuid 用作 sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) 部分。 自定义安装完成后，向导会通知你已选取哪个属性作为“源定位点”属性。 |
 | 特定的属性 | 如果希望指定现有的 AD 属性作为 sourceAnchor 属性，请选择此选项。 |
@@ -181,7 +181,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 | Azure AD 应用程序和属性筛选 |通过启用 Azure AD 应用和属性筛选，可以定制同步的属性集。 此选项会在向导中额外添加两个配置页。 有关详细信息，请参阅 [Azure AD 应用程序和属性筛选](#azure-ad-app-and-attribute-filtering)。 |
 | 密码哈希同步 |如果选择了联合作为登录解决方案，则可以启用此选项。 然后，可将密码哈希同步用作备份选项。 有关更多信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)。 </br></br>如果选择了“传递身份验证”，则也可以启用此选项来确保支持旧客户端并将其用作备份选项。 有关更多信息，请参阅[密码哈希同步](how-to-connect-password-hash-synchronization.md)。|
 | 密码写回 |通过启用密码写回，源自 Azure AD 的密码更改将写回到本地目录。 有关详细信息，请参阅[密码管理入门](../authentication/quickstart-sspr.md)。 |
-| 组写回 |如果使用了“Office 365 组”功能，则可以在本地 Active Directory 中呈现这些组。 仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。 |
+| 组写回 |如果使用了“Office 365 组”功能，则可以在本地 Active Directory 中呈现这些组。 仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。 有关详细信息，请参阅[Azure AD Connect 组写回](how-to-connect-group-writeback.md)|
 | 设备写回 |允许将 Azure AD 中的设备对象写回本地 Active Directory 以实现条件访问方案。 有关详细信息，请参阅[在 Azure AD Connect 中启用设备写回](how-to-connect-device-writeback.md)。 |
 | 目录扩展属性同步 |通过启用目录扩展属性同步，可将指定的属性同步到 Azure AD。 有关详细信息，请参阅[目录扩展](how-to-connect-sync-feature-directory-extensions.md)。 |
 
@@ -230,12 +230,7 @@ sourceAnchor 属性是一个在用户对象的生命周期内不会改变的属�
 1.  打开组策略管理工具
 2.  编辑要应用到所有用户的组策略。 例如默认的域策略。
 3.  导航到“用户配置\管理模板\Windows 组件\Internet Explorer\Internet 控制面板\安全性”页，并选择“区域分配列表的站点”，如下图所示。 
-4.  启用策略，并在对话框中输入以下项。
-
-        Value: `https://autologon.microsoftazuread-sso.com`  
-        Data: 1  
-
-
+4.  启用策略，并在对话框中输入的值名称 `https://autologon.microsoftazuread-sso.com` 和值 `1` 。
 5.  该属性应与下面类似：  
 ![Intranet 区域](./media/how-to-connect-install-custom/sitezone.png)
 

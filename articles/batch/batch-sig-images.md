@@ -1,18 +1,19 @@
 ---
-title: 使用共享映像库创建自定义池
-description: 自定义映像是配置计算节点以运行 Batch 工作负载的高效方法。
+title: 使用共享映像库创建自定义映像池
+description: 自定义映像池是一种用于配置计算节点以运行 Batch 工作负荷的有效方法。
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 07/01/2020
+ms.custom: tracking-python
+ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844482"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851715"
 ---
-# <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共享映像库创建自定义池
+# <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共享映像库创建自定义映像池
 
-使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 可以使用受支持的 Azure 市场映像创建虚拟机池，或者使用[共享映像库](../virtual-machines/windows/shared-image-galleries.md)创建自定义映像。
+使用虚拟机配置创建 Azure Batch 池时，需指定一个虚拟机 (VM) 映像，为池中每个计算节点提供操作系统。 你可以使用受支持的 Azure Marketplace 映像创建虚拟机池，或者使用[共享映像库映像](../virtual-machines/windows/shared-image-galleries.md)创建自定义映像。
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>共享映像库的优点
 
@@ -29,7 +30,7 @@ ms.locfileid: "83844482"
 - **预安装应用程序。** 在 OS 磁盘中预装应用程序，与使用启动任务预配计算节点后再安装应用程序相比，这种方法更加高效，且不容易出错。
 - 一次复制大量的数据。 将静态数据复制到托管映像的数据磁盘，使这些数据成为托管的共享映像的一部分。 只需执行此操作一次，然后，数据可供池的每个节点使用。
 - 扩大池的大小。 利用共享映像库，可以通过自定义映像和更多的共享映像副本创建更大的池。
-- 性能优于自定义映像。 使用共享映像，池达到稳定状态所用的时间最多可加快 25%，并且 VM 空闲延迟时间最多可缩短 30%。
+- **比只将托管映像用作自定义映像的性能更好。** 对于共享映像自定义映像池，达到稳定状态的时间最多可达 25% fasterm，VM 空闲延迟最多可达30%。
 - 对映像进行版本控制和分组，以便于管理。 映像分组定义包含有关创建映像的原因、其适用的 OS 以及有关使用映像的信息。 通过对映像进行分组，可以更轻松地管理映像。 有关详细信息，请参阅[映像定义](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>先决条件
@@ -44,9 +45,11 @@ ms.locfileid: "83844482"
 > [!NOTE]
 > 共享映像必须与 Batch 帐户位于同一订阅中。 只要映像的副本与 Batch 帐户位于同一区域，该映像就可以位于不同区域中。
 
-## <a name="prepare-a-custom-image"></a>准备自定义映像
+如果使用 Azure AD 应用程序创建包含共享映像库映像的自定义映像池，则必须向该应用程序授予[Azure 内置角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)，使其能够访问共享映像。 可以通过导航到共享的映像，选择 "**访问控制（IAM）** "，并为应用程序添加角色分配，在 Azure 门户中授予此访问权限。
 
-在 Azure 中，可以通过以下项来准备自定义映像：
+## <a name="prepare-a-shared-image"></a>准备共享映像
+
+在 Azure 中，可以从可通过以下内容创建的托管映像准备共享映像：
 
 - Azure VM 的 OS 和数据磁盘快照
 - 包含托管磁盘的通用 Azure VM

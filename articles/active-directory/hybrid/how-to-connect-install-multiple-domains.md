@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849945"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>与 Azure AD 联合的多域支持
 以下文档提供了有关与 Office 365 或 Azure AD 域联合时如何使用多个顶级域和子域的指导。
@@ -73,7 +73,9 @@ ms.locfileid: "82201034"
 
 以下是实现此逻辑的自定义声明规则：
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)", "http://${domain}/adfs/services/trust/"));
+```
 
 
 > [!IMPORTANT]
@@ -100,9 +102,9 @@ ms.locfileid: "82201034"
 
 请使用以下步骤来删除 Microsoft Online 信任，并更新原始域。
 
-1. 在 AD FS 联合身份验证服务器上，打开“AD FS 管理”  。
-2. 展开左侧的“信任关系”和“信赖方信任”  
-3. 删除右侧的“Microsoft Office 365 标识平台”项。 
+1. 在 AD FS 联合身份验证服务器上，打开“AD FS 管理”。
+2. 展开左侧的“信任关系”和“信赖方信任” 
+3. 删除右侧的“Microsoft Office 365 标识平台”项。
    ![删除 Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
 4. 在已安装[适用于 Windows PowerShell 的 Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
 5. 输入要联合的 Azure AD 域的全局管理员用户名和密码。
@@ -137,14 +139,16 @@ ms.locfileid: "82201034"
 ## <a name="support-for-subdomains"></a>对子域的支持
 添加子域时，因为 Azure AD 处理域的方式，导致子域继承父项的设置。  因此，IssuerUri 需要与父项匹配。
 
-例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  Corp.bmcontoso.com 中用户的 IssuerUri 需要为**`http://bmcontoso.com/adfs/services/trust`**。  不过，上述 Azure AD 的标准规则将生成一个带有颁发者的令牌**`http://corp.bmcontoso.com/adfs/services/trust`**。 这与域的所需值不匹配，身份验证将失败。
+例如，假设我有 bmcontoso.com，后来又添加了 corp.bmcontoso.com。  corp.bmcontoso.com 中用户的 IssuerUri 必须是 `http://bmcontoso.com/adfs/services/trust`。  但是，针对 Azure AD 执行的上述标准规则将生成颁发者为 `http://corp.bmcontoso.com/adfs/services/trust` 的令牌。 这与域的所需值不匹配，身份验证将失败。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何启用对子域的支持
 若要避免此行为，需要更新 Microsoft Online 的 AD FS 信赖方信任。  为此，必须配置自定义声明规则，使其在构造自定义 Issuer 值时能够从用户的 UPN 后缀中删除任何子域。
 
 以下声明将执行此操作：
 
-    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```    
+c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+```
 
 [!NOTE]
 正则表达式中的最后一个数字设置根域中有多少个父域。 此处使用的是 bmcontoso.com，因此必须有两个父域。 如果保留三个父域（即：corp.bmcontoso.com），则该数字为 3。 最终可以指示一个范围，并且始终会以匹配方式来匹配最大域数。 “{2,3}”将匹配两到三个域（即：bmfabrikam.com 和 corp.bmcontoso.com）。
@@ -156,11 +160,14 @@ ms.locfileid: "82201034"
 3. 选择第三个声明规则并替换![编辑声明](./media/how-to-connect-install-multiple-domains/sub1.png)
 4. 替换当前声明：
 
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
+   ```
+    替换为
 
-       with
-
-        c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
+   c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
+   ```
 
     ![替换声明](./media/how-to-connect-install-multiple-domains/sub2.png)
 
@@ -173,4 +180,4 @@ ms.locfileid: "82201034"
 
 若要了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](how-to-connect-sync-feature-scheduler.md)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

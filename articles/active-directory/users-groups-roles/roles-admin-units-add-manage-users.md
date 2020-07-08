@@ -6,7 +6,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.date: 04/16/2020
@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c2c5c083115440e1e4da203f39f2b32734458c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850936"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 中的管理单元中添加和管理用户
 
 在 Azure Active Directory （Azure AD）中，你可以将用户添加到管理单元（AU）以获得更精细控制的管理作用域。
 
-有关准备使用 PowerShell 和 Microsoft Graph 管理单元管理的步骤，请参阅[开始](roles-admin-units-manage.md#get-started)使用。
+有关将 PowerShell 和 Microsoft Graph 用于管理单元的管理的准备步骤，请参阅[入门](roles-admin-units-manage.md#get-started)。
 
 ## <a name="add-users-to-an-au"></a>将用户添加到 AU
 
@@ -41,7 +41,7 @@ ms.locfileid: "81684970"
 
     1. 可以在门户中转到 Azure AD，并在左窗格中选择 "管理单元"，然后选择要在其中分配用户的管理单元。 在左侧窗格中选择 "所有用户"，然后选择 "添加成员"。 然后，可以从右窗格中选择一个或多个要分配到管理单元的用户。
 
-        ![选择管理单元，然后选择 "添加成员"](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
+        ![选择一个管理单元，然后选择“添加成员”](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
 1. 批量分配
 
@@ -51,26 +51,32 @@ ms.locfileid: "81684970"
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-    $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```powershell
+$administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+$UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
+Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
+```
 
-在上面的示例中，使用 cmdlet Add-azureadadministrativeunitmember 将用户添加到管理单元。 要添加用户的管理单元的对象 ID 和要添加的用户的对象 ID 作为参数。 突出显示部分可能根据特定环境的需要进行更改。
+在上面的示例中，使用 cmdlet Add-azureadadministrativeunitmember 将用户添加到管理单元。 要添加用户的管理单元的对象 ID 和要添加的用户的对象 ID 作为参数。 可以根据特定环境的需要更改突出显示的部分。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    Http request
-    POST /administrativeUnits/{Admin Unit id}/members/$ref
-    Request body
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
-    }
+```http
+Http request
+POST /administrativeUnits/{Admin Unit id}/members/$ref
+Request body
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/{id}"
+}
+```
 
-例如：
+示例：
 
-    {
-      "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
-    }
+```http
+{
+  "@odata.id":"https://graph.microsoft.com/beta/users/johndoe@fabidentity.com"
+}
+```
 
 ## <a name="list-administrative-units-for-a-user"></a>列出用户的管理单元
 
@@ -86,27 +92,33 @@ ms.locfileid: "81684970"
 
 ### <a name="powershell"></a>PowerShell
 
-    Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```powershell
+Get-AzureADAdministrativeUnit | where { Get-AzureADAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $userObjId} }
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
-    https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```http
+https://graph.microsoft.com/beta/users//memberOf/$/Microsoft.Graph.AdministrativeUnit
+```
 
 ## <a name="remove-a-single-user-from-an-au"></a>从 AU 删除单个用户
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可以通过两种方式从管理单元中删除用户。 在 Azure 门户可以通过转到**Azure AD** > **用户**来打开用户的配置文件。 选择用户以打开用户的配置文件。 选择要从中删除用户的管理单元，然后选择 "**从管理单元中删除**"。
+可以通过两种方式从管理单元中删除用户。 在 Azure 门户可以通过转到**Azure AD**用户来打开用户的配置文件  >  **Users**。 选择用户以打开用户的配置文件。 选择要从中删除用户的管理单元，然后选择 "**从管理单元中删除**"。
 
 ![从用户配置文件中的管理单元中删除用户](./media/roles-admin-units-add-manage-users/user-remove-admin-units.png)
 
-还可以通过选择要从中删除用户的管理单元，在**Azure AD** > **管理单元**中删除用户。 选择用户，然后选择 "**删除成员**"。
+还可以**Azure AD**  >  通过选择要从中删除用户的管理单元，在 Azure AD**管理单元**中删除用户。 选择用户，然后选择 "**删除成员**"。
   
 ![删除管理单元级别的用户](./media/roles-admin-units-add-manage-users/admin-units-remove-user.png)
 
 ### <a name="powershell"></a>PowerShell
 
-    Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```powershell
+Remove-AzureADAdministrativeUnitMember -ObjectId $auId -MemberId $memberUserObjId
+```
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

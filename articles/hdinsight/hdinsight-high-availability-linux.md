@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849661"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 群集的可用性和可靠性
 
@@ -129,7 +129,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 | Spark2 Thrift 服务器                     | 如果无法确定 Custom-spark2-defaults 的 Thrift 服务器，则会触发此主机级别的警报。                                                                                                |
 | 历史记录服务器进程                   | 如果无法建立在网络上启动和侦听的历史记录服务器进程，则会触发此主机级别的警报。                                                                |
 | 历史记录服务器 Web UI                    | 如果无法访问历史记录服务器 Web UI，则会触发此主机级别的警报。                                                                                                              |
-| `ResourceManager`Web UI                   | 如果无法访问`ResourceManager` Web UI，则会触发此主机级别的警报。                                                                                                             |
+| `ResourceManager`Web UI                   | 如果无法访问 Web UI，则会触发此主机级别的警报 `ResourceManager` 。                                                                                                             |
 | NodeManager 运行状况摘要               | 如果存在不正常的 NodeManager，则会触发此服务级别的警报                                                                                                                    |
 | App Timeline Web UI                      | 如果无法访问 App Timeline 服务器 Web UI，则会触发此主机级别的警报。                                                                                                         |
 | DataNode 运行状况摘要                  | 如果存在不正常的 DataNode，则会触发此服务级别的警报                                                                                                                       |
@@ -139,7 +139,7 @@ curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters
 | Oozie 服务器状态                      | 如果无法确定 Oozie 服务器是否已启动并响应客户端请求，则会触发此主机级别的警报。                                                                      |
 | Hive 元存储进程                   | 如果在网络上无法确定 Hive 元存储进程的启动和侦听，则会触发此主机级别的警报。                                                                 |
 | HiveServer2 进程                      | 如果无法确定 HiveServer 是否已启动并响应客户端请求，则会触发此主机级别的警报。                                                                        |
-| WebHCat 服务器状态                    | 如果`templeton`服务器状态不正常，则会触发此主机级别的警报。                                                                                                            |
+| WebHCat 服务器状态                    | 如果服务器状态不正常，则会触发此主机级别的警报 `templeton` 。                                                                                                            |
 | 可用 ZooKeeper 服务器百分比      | 如果群集中已关闭的 ZooKeeper 服务器数目大于配置的“严重”阈值，则会触发此警报。 此值聚合了 ZooKeeper 进程检查的结果。     |
 | Spark2 Livy 服务器                       | 如果无法确定 Livy2 服务器的状态，则会触发此主机级别的警报。                                                                                                        |
 | Spark2 历史记录服务器                    | 如果无法确定 Custom-spark2-defaults 历史记录服务器，则会触发此主机级别的警报。                                                                                               |
@@ -243,10 +243,12 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
 与使用 SSH 客户端一样，在连接到群集时，必须提供 SSH 用户帐户名和群集的 SSH 地址。 例如，`sftp username@mycluster-ssh.azurehdinsight.net`。 在出现提示时，提供帐户密码或使用 `-i` 参数提供公钥。
 
-连接后，会显示一`sftp>`条提示。 在此提示符下，可以更改目录以及上传和下载文件。 例如：以下命令将目录切换到 **/var/log/hadoop/hdfs** 目录，并下载该目录中的所有文件。
+连接后，会显示一条 `sftp>` 提示。 在此提示符下，可以更改目录以及上传和下载文件。 例如：以下命令将目录切换到 **/var/log/hadoop/hdfs** 目录，并下载该目录中的所有文件。
 
-    cd /var/log/hadoop/hdfs
-    get *
+```bash
+cd /var/log/hadoop/hdfs
+get *
+```
 
 有关可用命令的列表，请在 `sftp>` 提示符下输入 `help`。
 
@@ -272,7 +274,7 @@ curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CL
 
     ![群集创建向导的图像，其中包含节点大小选项](./media/hdinsight-high-availability-linux/azure-portal-cluster-configuration-pricing-hadoop.png)
 
-* **Azure CLI**：使用[`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)命令时，可以使用`--headnode-size`、 `--workernode-size`和`--zookeepernode-size`参数设置头节点、辅助角色节点和 ZooKeeper 节点的大小。
+* **Azure CLI**：使用命令时， [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 可以使用 `--headnode-size` 、 `--workernode-size` 和参数设置头节点、辅助角色节点和 ZooKeeper 节点的大小 `--zookeepernode-size` 。
 
 * **Azure PowerShell**：使用 [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) cmdlet 时，可以使用 `-HeadNodeSize`、`-WorkerNodeSize` 和 `-ZookeeperNodeSize` 参数设置头节点、辅助角色节点与 ZooKeeper 节点的大小。
 

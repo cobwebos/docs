@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850969"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
 以下文档提供了 Azure AD Connect 附带的 ADSyncConfig.psm1 PowerShell 模块的参考信息。
@@ -59,19 +59,19 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ### <a name="examples"></a>示例
 
 #### <a name="example-1"></a>示例 1
-使用 "Contoso" 域中的已禁用继承查找对象（默认情况下，仅返回 "organizationalUnit" 对象）
+在“Contoso”域中查找已禁用继承的对象（默认情况下仅返回“organizationalUnit”对象）
 ```
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 ```
 
 #### <a name="example-2"></a>示例 2
-在 "Contoso" 域中查找 "用户" 对象并禁用继承
+在“Contoso”域中查找具有禁用继承的“user”对象
 ```
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
 ```
 
 #### <a name="example-3"></a>示例 3
-在 OU 中查找具有禁用的继承的所有类型的对象
+在 OU 中查找具有禁用继承的所有类型的对象
 ```
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
@@ -1080,28 +1080,19 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ### <a name="description"></a>说明
 Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 限制权限操作包括以下步骤：
-1.
-禁用指定对象上的继承
-2.
-删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
+1. 禁用指定对象上的继承
+2. 删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
 我们希望在处理 SELF 时默认权限保持不变。
-3.
-分配以下特定权限：
+3. 分配以下特定权限：
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | 类型 | 名称 | 访问 | 应用于 |
+   |------|------|--------|------------|
+   | Allow | SYSTEM | 完全控制 | 此对象 |
+   | Allow | 企业管理员 | 完全控制 | 此对象 |
+   | Allow | 域管理员 | 完全控制 | 此对象 | 
+   | Allow | 管理员 | 完全控制 | 此对象 |
+   | Allow | 企业域控制器 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
+   | Allow | 经过身份验证的用户 | 列出内容 <br> 读取所有属性 <br> 读取权限 | 此对象 |
 
 ### <a name="examples"></a>示例
 
@@ -1213,7 +1204,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>DESCRIPTION
+### <a name="description"></a>说明
 Set-ADSyncUnifiedGroupWritebackPermissions 函数将为 AD 同步帐户提供所需的权限，其中包括以下内容：
 1.
 针对所有组对象类型和子对象的一般读取/写入、删除、删除树和创建\删除子级
@@ -1322,8 +1313,8 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-whatif"></a>-WhatIf
-显示在此 cmdlet 运行的情况下将会发生什么。
-此 cmdlet 未运行。
+显示运行该 cmdlet 时会发生什么情况。
+cmdlet 未运行。
 
 ```yaml
 Type: SwitchParameter
@@ -1354,7 +1345,7 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。
 
 ## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
@@ -1397,4 +1388,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 此 cmdlet 支持以下常见参数：-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction 和 -WarningVariable。
-有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216) 。

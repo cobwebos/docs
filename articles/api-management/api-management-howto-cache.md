@@ -1,6 +1,6 @@
 ---
 title: 添加缓存以提高 Azure API 管理中的性能 | Microsoft Docs
-description: 了解如何改善滞后时间、带宽消耗和 API 管理服务调用的 web 服务负载。
+description: 了解如何改善 API 管理服务调用的延迟、带宽消耗和 web 服务负载。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4113205b47b4c6cab8b133d89c35520aa8505c1
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75708349"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851205"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 
@@ -41,9 +41,9 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 
 ## <a name="prerequisites"></a>先决条件
 
-为完成此教程：
+完成本教程：
 
-+ [创建 Azure API 管理实例](get-started-create-service-instance.md)
++ [创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 + [导入和发布 API](import-and-publish.md)
 
 ## <a name="add-the-caching-policies"></a><a name="caching-policies"> </a>添加缓存策略
@@ -53,24 +53,28 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 浏览到自己的 APIM 实例。
 3. 选择 " **API** " 选项卡。
-4. 在 API 列表中单击“演示会议 API”。 
+4. 在 API 列表中单击“演示会议 API”。
 5. 选择“GetSpeakers”****。
-6. 选择屏幕顶部的“设计”选项卡。 
-7. 在“入站处理”  部分中，单击 **</>** 图标。
+6. 选择屏幕顶部的“设计”选项卡。
+7. 在“入站处理”部分中，单击 **</>** 图标。
 
     ![代码编辑器](media/api-management-howto-cache/code-editor.png)
 
 8. 在 **inbound** 元素中添加以下策略：
 
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
-            <vary-by-header>Accept</vary-by-header>
-            <vary-by-header>Accept-Charset</vary-by-header>
-            <vary-by-header>Authorization</vary-by-header>
-        </cache-lookup>
+   ```
+   <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
+       <vary-by-header>Accept</vary-by-header>
+       <vary-by-header>Accept-Charset</vary-by-header>
+       <vary-by-header>Authorization</vary-by-header>
+   </cache-lookup>
+   ```
 
 9. 在 **outbound** 元素中添加以下策略：
 
-        <cache-store duration="20" />
+   ```
+   <cache-store duration="20" />
+   ```
 
     **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
@@ -83,9 +87,9 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 1. 在 Azure 门户中浏览到自己的 APIM 实例。
 2. 选择 " **api** " 选项卡。
 3. 选择向其添加了缓存策略的 API。
-4. 选择“GetSpeakers”操作。 
+4. 选择“GetSpeakers”操作。
 5. 单击右上方菜单中的“测试”选项卡。****
-6. 按“发送”。 
+6. 按“发送”。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 * 有关缓存策略的详细信息，请参阅 [API 管理策略参考][API Management policy reference]中的[缓存策略][Caching policies]。

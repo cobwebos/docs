@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5d977fe0b7459af35f678e77681d3b27c31431cc
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67148343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849181"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的数据复制问题
 
@@ -32,7 +32,9 @@ ms.locfileid: "67148343"
 
 将驱动器重新装载为读写不适用于 Data Box Disk。 dislocker 解密的驱动器不支持此方案。 你可能已使用以下命令成功重新装载设备：
 
-    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
+```
+# mount -o remount, rw /mnt/DataBoxDisk/mountVol1
+```
 
 虽然重新装载成功，但不会保留数据。
 
@@ -91,7 +93,7 @@ ms.locfileid: "67148343"
 |---------|---------|
 |[信息] 正在检索卷: m 的 BitLocker 密码 <br>[错误] 检索卷 m: 的 BitLocker 密钥时捕获到异常<br> 序列未包含任何元素。|如果目标 Data Box 磁盘处于脱机状态，则会引发此错误。 <br> 使用 `diskmgmt.msc` 工具将磁盘联机。|
 |[错误] 引发异常：WMI 操作失败：<br> Method=UnlockWithNumericalPassword，ReturnValue=2150694965， <br>Win32Message=所提供的恢复密码的格式无效。 <br>BitLocker 恢复密码有 48 位。 <br>请验证恢复密码的格式是否正确，然后重试。|使用 Data Box 磁盘解锁工具首先解锁磁盘，然后重试该命令。 有关详细信息，请转到 <li> [为 Windows 客户端解锁 Data Box 磁盘。](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) </li><li> [为 Linux 客户端解锁 Data Box 磁盘。](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client) </li>|
-|[错误] 引发了异常：目标驱动器上存在 DriveManifest.xml 文件。 <br> 这表明可能已使用不同的日志文件准备了目标驱动器。 <br>若要向同一驱动器添加更多数据，请使用之前的日志文件。 若要删除现有数据并将目标驱动器重新用于新的导入作业，请在驱动器上删除*DriveManifest* 。 使用新的日志文件重新运行此命令。| 当尝试将同一组驱动器用于多个导入会话时会收到此错误。 <br> 将一组驱动器仅用于一个拆分和复制会话。|
+|[错误] 引发了异常：目标驱动器上存在 DriveManifest.xml 文件。 <br> 这表明可能已使用不同的日志文件准备了目标驱动器。 <br>若要向同一驱动器添加更多数据，请使用之前的日志文件。 若要删除现有数据并将目标驱动器重新用于新的导入作业，请删除该驱动器上的*DriveManifest.xml* 。 使用新的日志文件重新运行此命令。| 当尝试将同一组驱动器用于多个导入会话时会收到此错误。 <br> 将一组驱动器仅用于一个拆分和复制会话。|
 |[错误] 引发了异常：CopySessionId importdata-sept-test-1 引用了以前的复制会话，无法将其重复用于新的复制会话。|当尝试为新作业使用与以前成功完成的作业相同的名称时，会报告此错误。<br> 为新作业分配唯一的名称。|
 |[信息] 目标文件或目录名称超出了 NTFS 长度限制。 |当目标文件因为文件路径太长而被重命名时，会报告此消息。<br> 修改 `config.json` 文件中的 disposition 选项来控制此行为。|
 |[错误] 引发了异常：JSON 转义序列不正确。 |当 Config.json 具有无效格式时，会报告此消息。 <br> 在保存文件之前使用 [JSONlint](https://jsonlint.com/) 验证 `config.json`。|

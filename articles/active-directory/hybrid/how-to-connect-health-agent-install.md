@@ -12,16 +12,16 @@ ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9b3857a5ae845f5cc48464152bb6ca600444c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136696"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849972"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -40,7 +40,7 @@ ms.locfileid: "82136696"
 |基于 IP 地址的出站连接 | 若要了解如何基于 IP 地址在防火墙上进行筛选，请参阅 [Azure IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653)（Azure IP 范围）。|
 | 筛选或禁用出站流量的 TLS 检查 | 如果网络层上的出站流量存在 TLS 检查或终止，则代理注册步骤或数据上传操作可能会失败。 阅读有关[如何设置 TLS 检查的](https://technet.microsoft.com/library/ee796230.aspx)详细信息 |
 | 运行代理的服务器上的防火墙端口 |为了使代理能够与 Azure AD Health 服务终结点通信，代理要求打开以下防火墙端口。<br /><br /><li>TCP 端口 443</li><li>TCP 端口 5671</li> <br />请注意，代理的最新版本不再需要端口 5671。 升级到最新版本，此时仅需要端口 443。 了解有关[启用防火墙端口](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)的更多信息 |
-| 如果启用了 IE 增强安全性，请允许以下网站 |如果在要安装代理的服务器上启用了“IE 增强的安全性”，则必须允许访问以下网站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https：\//aadcdn.msftauth.net</li><li>Azure Active Directory 信任的组织联合服务器。 例如：https:\//sts.contoso.com</li> 阅读有关[如何配置 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)的详细信息。 如果网络中有一个代理，请参阅下面的说明。|
+| 如果启用了 IE 增强安全性，请允许以下网站 |如果在要安装代理的服务器上启用了“IE 增强的安全性”，则必须允许访问以下网站。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https： \/ /aadcdn.msftauth.net</li><li>Azure Active Directory 信任的组织联合服务器。 例如：https:\//sts.contoso.com</li> 阅读有关[如何配置 IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)的详细信息。 如果网络中有一个代理，请参阅下面的说明。|
 | 确保已安装 PowerShell v4.0 或更高版本 | <li>Windows Server 2008 R2 附带 PowerShell v2.0，后者对代理来说不够用。 根据下面[在 Windows Server 2008 R2 服务器上的代理安装](#agent-installation-on-windows-server-2008-r2-servers)下的说明更新 PowerShell。</li><li>Windows Server 2012 附带 PowerShell v3.0，后者对代理来说不够用。  [更新](https://www.microsoft.com/download/details.aspx?id=40855) Windows Management Framework。</li><li>Windows Server 2012 R2 和更高版本附带足够使用的 PowerShell 最新版本。</li>|
 |禁用 FIPS|Azure AD Connect Health 代理不支持 FIPS。|
 
@@ -140,7 +140,7 @@ ms.locfileid: "82136696"
 7. 在“操作”**** 窗格中，单击“编辑联合身份验证服务属性”****。
 8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
 9. 选中 **“成功审核”** 和 **“失败审核”** 复选框。
-10. 单击" **确定**"。
+10. 单击“确定”。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 
@@ -174,7 +174,7 @@ ms.locfileid: "82136696"
 
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>查找 AD FS 审核日志的步骤
 
-1. 打开“事件查看器”。****
+1. 打开“**事件查看器**”。
 2. 转到“Windows 日志”，并选择“安全”。****
 3. 在右侧单击“筛选当前日志”。****
 4. 在“事件源”下选择“AD FS 审核”。****
@@ -318,7 +318,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 可以使用以下选项将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
 > [!NOTE]
-> 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行以下命令：<br />
+> 必须重新启动所有 Azure AD Connect Health 代理服务才能更新代理设置。 运行下面的命令：<br />
 > Restart-Service AzureADConnectHealth *
 >
 >
@@ -329,19 +329,25 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 可以导入 Internet Explorer HTTP 代理设置供 Azure AD Connect Health 代理使用。 在运行 Health 代理的每台服务器上执行以下 PowerShell 命令：
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromInternetSettings
+```
 
 ##### <a name="import-from-winhttp"></a>从 WinHTTP 导入
 
 可以导入 WinHTTP 代理设置供 Azure AD Connect Health 代理使用。 在运行 Health 代理的每台服务器上执行以下 PowerShell 命令：
 
-    Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```powershell
+Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
+```
 
 #### <a name="specify-proxy-addresses-manually"></a>手动指定代理地址
 
 可以执行以下 PowerShell 命令，在运行 Health 代理的每台服务器上手动指定代理服务器：
 
-    Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```powershell
+Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
+```
 
 示例： *Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443*
 
@@ -352,15 +358,17 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 可以运行以下命令清除现有的代理配置：
 
-    Set-AzureAdConnectHealthProxySettings -NoProxy
-
+```powershell
+Set-AzureAdConnectHealthProxySettings -NoProxy
+```
 
 ### <a name="read-current-proxy-settings"></a>读取当前的代理设置
 
 可以运行以下命令读取当前配置的代理设置：
 
-    Get-AzureAdConnectHealthProxySettings
-
+```powershell
+Get-AzureAdConnectHealthProxySettings
+```
 
 ## <a name="test-connectivity-to-azure-ad-connect-health-service"></a>测试与 Azure AD Connect Health 服务的连接
 
@@ -368,7 +376,9 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 
 如果代理无法将数据发送到 Azure AD Connect Health 服务达 2 小时以上，门户中会出现以下警报：“Health 服务数据不是最新的”。 可以运行以下 PowerShell 命令，确认受影响的 Azure AD Connect Health 代理是否能够将数据上传到 Azure AD Connect Health 服务：
 
-    Test-AzureADConnectHealthConnectivity -Role ADFS
+```powershell
+Test-AzureADConnectHealthConnectivity -Role ADFS
+```
 
 role 参数目前可接受以下值：
 

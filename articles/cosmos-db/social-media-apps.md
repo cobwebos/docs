@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73827301"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85850696"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 进行社交
 
@@ -25,7 +25,7 @@ ms.locfileid: "73827301"
 
 你可能有使用 SQL 数据库的经验，或者了解[数据的关系模型](https://en.wikipedia.org/wiki/Relational_model)。 可开始绘制如下内容：
 
-![说明相对关系模型的关系图](./media/social-media-apps/social-media-apps-sql.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-sql.png" alt-text="说明相对关系模型的关系图" border="false":::
 
 非常标准且美观的数据结构，但却不可扩展。
 
@@ -39,22 +39,24 @@ ms.locfileid: "73827301"
 
 本文将指导你使用 Azure 的 NoSQL 数据库 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 经济高效地对社交平台的数据进行建模。 还将介绍如何使用其他 Azure Cosmos DB 功能，如 [Gremlin API](../cosmos-db/graph-introduction.md)。 使用 [NoSQL](https://en.wikipedia.org/wiki/NoSQL) 方法以 JSON 格式存储数据并应用[非规范化](https://en.wikipedia.org/wiki/Denormalization)，就可以将以前的复杂帖子转换为单个[文档](https://en.wikipedia.org/wiki/Document-oriented_database)：
 
-    {
-        "id":"ew12-res2-234e-544f",
-        "title":"post title",
-        "date":"2016-01-01",
-        "body":"this is an awesome post stored on NoSQL",
-        "createdBy":User,
-        "images":["https://myfirstimage.png","https://mysecondimage.png"],
-        "videos":[
-            {"url":"https://myfirstvideo.mp4", "title":"The first video"},
-            {"url":"https://mysecondvideo.mp4", "title":"The second video"}
-        ],
-        "audios":[
-            {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
-            {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
-        ]
-    }
+```json
+{
+    "id":"ew12-res2-234e-544f",
+    "title":"post title",
+    "date":"2016-01-01",
+    "body":"this is an awesome post stored on NoSQL",
+    "createdBy":User,
+    "images":["https://myfirstimage.png","https://mysecondimage.png"],
+    "videos":[
+        {"url":"https://myfirstvideo.mp4", "title":"The first video"},
+        {"url":"https://mysecondvideo.mp4", "title":"The second video"}
+    ],
+    "audios":[
+        {"url":"https://myfirstaudio.mp3", "title":"The first audio"},
+        {"url":"https://mysecondaudio.mp3", "title":"The second audio"}
+    ]
+}
+```
 
 可以使用单个查询获得，且无需联接。 此查询非常简单直观，且在预算方面，它所需要的资源更少，但得到的结果更好。
 
@@ -62,39 +64,45 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 可以将对帖子的评论视为具有父属性的其他帖子。 （这可以简化对象映射。）
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":User2,
-        "parent":"ew12-res2-234e-544f"
-    }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":User2,
+    "parent":"ew12-res2-234e-544f"
+}
 
-    {
-        "id":"asd2-fee4-23gc-jh67",
-        "title":"Ditto!",
-        "date":"2016-01-03",
-        "createdBy":User3,
-        "parent":"ew12-res2-234e-544f"
-    }
+{
+    "id":"asd2-fee4-23gc-jh67",
+    "title":"Ditto!",
+    "date":"2016-01-03",
+    "createdBy":User3,
+    "parent":"ew12-res2-234e-544f"
+}
+```
 
 并且所有社交互动都可以作为计数器存储在单个对象上：
 
-    {
-        "id":"dfe3-thf5-232s-dse4",
-        "post":"ew12-res2-234e-544f",
-        "comments":2,
-        "likes":10,
-        "points":200
-    }
+```json
+{
+    "id":"dfe3-thf5-232s-dse4",
+    "post":"ew12-res2-234e-544f",
+    "comments":2,
+    "likes":10,
+    "points":200
+}
+```
 
 创建源只不过是创建文档的问题，文档可按给定的相关顺序保留帖子 ID 列表：
 
-    [
-        {"relevance":9, "post":"ew12-res2-234e-544f"},
-        {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
-        {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
-    ]
+```json
+[
+    {"relevance":9, "post":"ew12-res2-234e-544f"},
+    {"relevance":8, "post":"fer7-mnb6-fgh9-2344"},
+    {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
+]
+```
 
 可拥有“最新”的流，其中包含按创建日期排序的帖子。 或者可拥有一个“最热门”的流，其中包含过去 24 小时内点赞数较多的帖子。 甚至可以根据关注者和兴趣等逻辑为每个用户实现自定义流。 它仍然是一个帖子列表。 虽然如何生成这些列表还是一个问题，但读取性能不会受到阻碍。 在获得其中一个列表之后，使用 [IN 关键字](sql-query-keywords.md#in)向 Cosmos DB 发出单个查询以一次获取帖子页面。
 
@@ -104,28 +112,32 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 至于关注者，则需要有更多的技巧来处理。 Cosmos DB 具有文档大小限制，而且读取/写入大型文档会影响应用程序的可伸缩性。 因此，可考虑使用以下结构，以文档形式存储关注者：
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "followersOf": "dse4-qwe2-ert4-aad2",
-        "followers":[
-            "ewr5-232d-tyrg-iuo2",
-            "qejh-2345-sdf1-ytg5",
-            //...
-            "uie0-4tyg-3456-rwjh"
-        ]
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "followersOf": "dse4-qwe2-ert4-aad2",
+    "followers":[
+        "ewr5-232d-tyrg-iuo2",
+        "qejh-2345-sdf1-ytg5",
+        //...
+        "uie0-4tyg-3456-rwjh"
+    ]
+}
+```
 
 此结构可能适用于拥有数千位关注者的用户。 但如果有名人加入排名，此方法会生成大型文档，并可能最终达到文档大小上限。
 
 为了解决此问题，可以使用一种混合方法。 可以在用户统计信息文档中存储关注者人数：
 
-    {
-        "id":"234d-sd23-rrf2-552d",
-        "user": "dse4-qwe2-ert4-aad2",
-        "followers":55230,
-        "totalPosts":452,
-        "totalPoints":11342
-    }
+```json
+{
+    "id":"234d-sd23-rrf2-552d",
+    "user": "dse4-qwe2-ert4-aad2",
+    "followers":55230,
+    "totalPosts":452,
+    "totalPoints":11342
+}
+```
 
 可以使用 Azure Cosmos DB [Gremlin API](../cosmos-db/graph-introduction.md) 存储实际的关注者图形，以创建每位用户的[顶点](http://mathworld.wolfram.com/GraphVertex.html)和[边缘](http://mathworld.wolfram.com/GraphEdge.html)，从中反映出“A 关注 B”关系。 使用 Gremlin API 不仅可以获取某位用户的关注者，而且还能创建更复杂的查询以推荐具有共同点的用户。 如果在图形中添加用户喜欢或感兴趣的内容类别，就可以开始布置智能内容发现、推荐关注用户感兴趣的内容和查找具有共同点的用户等体验。
 
@@ -141,23 +153,25 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 我们以用户信息为例：
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "address":"742 Evergreen Terrace",
-        "birthday":"1983-05-07",
-        "email":"john@doe.com",
-        "twitterHandle":"\@john",
-        "username":"johndoe",
-        "password":"some_encrypted_phrase",
-        "totalPoints":100,
-        "totalPosts":24
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "address":"742 Evergreen Terrace",
+    "birthday":"1983-05-07",
+    "email":"john@doe.com",
+    "twitterHandle":"\@john",
+    "username":"johndoe",
+    "password":"some_encrypted_phrase",
+    "totalPoints":100,
+    "totalPosts":24
+}
+```
 
 通过查看此信息，可以快速检测出哪些是重要的信息，哪些不是，从而就会创建一个“阶梯”：
 
-![阶梯模式关系图](./media/social-media-apps/social-media-apps-ladder.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="阶梯模式关系图" border="false":::
 
 最简单的一步称为 UserChunk，这是标识用户的最小信息块并可用于数据重复。 通过减少重复数据的大小直到只留下要“显示”的信息，可以降低大规模更新的可能性。
 
@@ -167,26 +181,30 @@ Azure Cosmos DB 的自动索引功能可确保为所有属性都编制索引。 
 
 为什么要拆分用户，甚至将此信息存储在不同的位置？ 因为，从性能角度考虑，文档越大，查询成本将越高。 保持文档精简，使其包含为社交网络执行所有依赖性能的查询的正确信息。 存储最终方案的其他额外信息，例如用于使用情况分析和大数据计划的完整配置文件编辑、登录和数据挖掘。 不必关心数据挖掘的数据收集过程是否较慢，因为它在 Azure SQL 数据库上运行。 尽管你的用户拥有快速而精简的体验，但你仍会感到担心。 Cosmos DB 中存储的用户如下列代码所示：
 
-    {
-        "id":"dse4-qwe2-ert4-aad2",
-        "name":"John",
-        "surname":"Doe",
-        "username":"johndoe"
-        "email":"john@doe.com",
-        "twitterHandle":"\@john"
-    }
+```json
+{
+    "id":"dse4-qwe2-ert4-aad2",
+    "name":"John",
+    "surname":"Doe",
+    "username":"johndoe"
+    "email":"john@doe.com",
+    "twitterHandle":"\@john"
+}
+```
 
 贴子内容如下所示：
 
-    {
-        "id":"1234-asd3-54ts-199a",
-        "title":"Awesome post!",
-        "date":"2016-01-02",
-        "createdBy":{
-            "id":"dse4-qwe2-ert4-aad2",
-            "username":"johndoe"
-        }
+```json
+{
+    "id":"1234-asd3-54ts-199a",
+    "title":"Awesome post!",
+    "date":"2016-01-02",
+    "createdBy":{
+        "id":"dse4-qwe2-ert4-aad2",
+        "username":"johndoe"
     }
+}
+```
 
 当区块属性受影响需要进行编辑时，可轻松找到受影响的文档。 只需使用指向编制索引属性的查询，例如 `SELECT * FROM posts p WHERE p.createdBy.id == "edited_user_id"`，然后更新区块。
 
@@ -212,7 +230,7 @@ Azure 认知搜索实现其调用[索引器](https://msdn.microsoft.com/library/
 
 由于想要深入了解，可能会认为自己需要更多数学科学方面的知识才能提取出简单数据库和文件之外的这些模式和信息，其实不然。
 
-[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（[Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx) 的一部分）是一项全面托管的云服务，使你可以在简单的拖放界面中使用算法创建工作流、为 [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) 中自己的算法编码，或使用一些已生成或现成的 API，如：[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查器或[建议](https://gallery.azure.ai/Solution/Recommendations-Solution)。
+[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)是[Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx)的一部分，它是一项完全托管的云服务，可让你在简单的拖放界面中使用算法创建工作流、在[R](https://en.wikipedia.org/wiki/R_\(programming_language\))中编写自己的算法，或者使用已构建并可使用的某些 api，例如：[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、内容审查器或[建议](https://gallery.azure.ai/Solution/Recommendations-Solution)。
 
 若要完成上述任何一种机器学习方案，可使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 从不同源获取信息。 还可使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 来处理信息并生成可由 Azure 机器学习处理的输出。
 
@@ -228,9 +246,9 @@ Cosmos DB 支持现成的动态分区。 它会根据给定的分区键自动创
 
 Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/)），因此无需在数据增长过程中添加任何逻辑。
 
-一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要****。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](https://docs.microsoft.com/rest/api/cosmos-db/replace-an-offer)来实现。
+一段时间后，最终流量会增加，资源消耗（通过 [RU](request-units.md) 即“请求单位”进行度量）也会增加。 随着用户群体的增长，你将更频繁地进行读取和写入操作。 用户群体将开始创建和阅读更多内容。 因此，缩放吞吐量的能力至关重要****。 增加 RU 非常容易。 可以通过在 Azure 门户中单击几次或[通过 API 发出命令](/rest/api/cosmos-db/replace-an-offer)来实现。
 
-![扩展和定义分区键](./media/social-media-apps/social-media-apps-scaling.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="扩展和定义分区键":::
 
 如果情况不断好转会怎样？ 假设来自其他区域、国家/地区或大洲的用户注意到你的平台并开始使用。 真是太棒了！
 
@@ -240,13 +258,13 @@ Cosmos DB 以透明方式在所有分区中运行查询（包括[聚合](https:/
 
 全局复制数据时，需确保客户端可以利用该数据。 如果正在使用 Web 前端或从移动客户端访问 API，则可以部署 [Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)并在所有所需区域克隆 Azure 应用服务（方法是通过使用性能配置支持扩展的全球覆盖范围）。 客户端访问前端或 API 时，将被路由到最近的应用服务，而该应用服务将连接到本地的 Cosmos DB 副本。
 
-![将全球覆盖范围添加到社交平台](./media/social-media-apps/social-media-apps-global-replicate.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="将全球覆盖范围添加到社交平台" border="false":::
 
 ## <a name="conclusion"></a>结束语
 
 本文阐述了使用低成本服务完全在 Azure 上创建社交网络的替代方案。 它通过鼓励使用多层存储解决方案和称为“阶梯”的数据分发来提供结果。
 
-![社交网络中各 Azure 服务之间的交互关系图](./media/social-media-apps/social-media-apps-azure-solution.png)
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="社交网络中各 Azure 服务之间的交互关系图" border="false":::
 
 事实上，对于此类方案并没有万能方法。 这是通过结合强大服务创建的协作，使我们能够构建出色的体验： Azure Cosmos DB 提供强大的社交应用程序的速度和自由，它是一种面向 Azure 认知搜索之类的第一类搜索解决方案的智能，Azure 应用服务的灵活性，不仅是语言无关的应用程序，而且还具有强大的后台进程，以及可扩展的 Azure 存储和 Azure SQL 数据库（用于存储大量数据和 Azure 计算机的分析能力）了解如何创建可向你的流程提供反馈的知识和智能，并帮助我们向适当的用户提供适当的内容。
 

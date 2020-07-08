@@ -1,21 +1,23 @@
 ---
-title: 从托管映像预配自定义池
-description: 从托管映像资源创建 Batch 池，以使用软件和数据为应用程序预配计算节点。
+title: 使用托管映像创建自定义映像池
+description: 从托管映像创建批处理自定义映像池，以便使用应用程序的软件和数据预配计算节点。
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fbb336ff9d3d53cc53004c577e291afdba7702f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 07/01/2020
+ms.openlocfilehash: 45bf0f8b3cb335b7025ff06189bf6bc4e0a896ad
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847984"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851294"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>使用托管映像创建虚拟机池
+# <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>使用托管映像创建自定义映像池
 
-若要为 Batch 池的虚拟机 (VM) 创建自定义映像，可以使用托管映像创建[共享映像库](batch-sig-images.md)。 还支持只使用托管映像，但仅适用于最高 2019-08-01（含）的 API 版本。
+若要为 Batch 池的虚拟机（Vm）创建自定义映像池，可以使用托管映像创建[共享映像库映像](batch-sig-images.md)。 还支持只使用托管映像，但仅适用于最高 2019-08-01（含）的 API 版本。 
 
 > [!IMPORTANT]
 > 在大多数情况下，应使用共享映像库创建自定义映像。 使用共享映像库可以更快地预配池、缩放更大数量的 VM 以及在预配 VM 时提高可靠性。 若要了解详细信息，请参阅[使用共享映像库创建自定义池](batch-sig-images.md)。
+
+本主题说明如何只使用托管映像创建自定义映像池。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,9 +28,9 @@ ms.locfileid: "83847984"
 
 - Azure Active Directory (Azure AD) 身份验证。 Batch 客户端 API 必须使用 Azure AD 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。
 
-## <a name="prepare-a-custom-image"></a>准备自定义映像
+## <a name="prepare-a-managed-image"></a>准备托管映像
 
-在 Azure 中，可以通过以下项来准备托管映像：
+在 Azure 中，可以通过以下项准备托管映像：
 
 - Azure VM 的 OS 和数据磁盘快照
 - 包含托管磁盘的通用 Azure VM
@@ -57,7 +59,7 @@ ms.locfileid: "83847984"
 
 若要基于快照创建托管映像，请使用 Azure 命令行工具，例如 [az image create](/cli/azure/image) 命令。 可以通过指定 OS 磁盘快照并选择性地指定一个或多个数据磁盘快照来创建映像。
 
-## <a name="create-a-pool-from-a-custom-image"></a>通过自定义映像创建池
+## <a name="create-a-pool-from-a-managed-image"></a>从托管映像创建池
 
 找到托管映像的资源 ID 后，便可通过该映像创建自定义映像池。 以下步骤演示如何使用 Batch 服务或 Batch 管理创建自定义映像池。
 

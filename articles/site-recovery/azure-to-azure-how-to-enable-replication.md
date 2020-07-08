@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75973692"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851170"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>将 Azure VM 复制到另一个 Azure 区域
 
@@ -113,12 +113,13 @@ ms.locfileid: "75973692"
     - 如果想要 Linux VM 成为复制组的一部分，请确保按照特定 Linux 版本的指南手动打开端口 20004 上的出站流量。
 ![启用复制](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
-5. 单击 "**创建目标资源** > " "**启用复制**"。
+5. 单击 "**创建目标资源**" "  >  **启用复制**"。
 6. 为 VM 启用复制后，可以在“复制的项”下检查 VM 的运行状况****
 
 >[!NOTE]
->在初始复制期间，VM 状态刷新可能需要一段时间，但不显示进度。 单击“刷新”按钮可获取最新状态。****
 >
+> - 在初始复制期间，VM 状态刷新可能需要一段时间，但不显示进度。 单击“刷新”按钮可获取最新状态。****
+> - 如果在过去60分钟内未生成恢复点，则虚拟机的复制运行状况将变为 "严重"。
 
 ## <a name="next-steps"></a>后续步骤
 

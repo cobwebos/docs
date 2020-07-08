@@ -3,15 +3,15 @@ title: 在 Azure Cosmos DB 中预配容器吞吐量
 description: 了解如何使用 Azure 门户、CLI、PowerShell 以及各种其他 SDK 在 Azure Cosmos DB 中预配容器级别的吞吐量。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0e7a2e9e5feb848971c4858415510f98a7bdaf78
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 9167df9c763f4004324a3435ba1a2b0fd0171ac4
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655347"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851679"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>在 Azure Cosmos 容器上预配标准（手动）吞吐量
 
@@ -19,7 +19,7 @@ ms.locfileid: "83655347"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
@@ -29,9 +29,9 @@ ms.locfileid: "83655347"
    * 输入容器（或表或图）ID。
    * 输入分区键值（例如 `/userid`）。
    * 输入要预配的吞吐量（例如，1000 RU）
-   * 选择“确定”。
+   * 选择“确定” 。
 
-    ![数据资源管理器的屏幕截图，突出显示“新建集合”](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="数据资源管理器的屏幕截图，突出显示“新建集合”":::
 
 ## <a name="azure-cli-or-powershell"></a>Azure CLI 或 PowerShell
 
@@ -46,9 +46,9 @@ ms.locfileid: "83655347"
 ## <a name="net-sdk"></a>.NET SDK
 
 > [!Note]
-> 使用适用于 SQL API 的 Cosmos SDK 为除 Cassandra API 之外的所有 Cosmos DB API 预配吞吐量。
+> 使用适用于 SQL API 的 Cosmos SDK 为除 Cassandra 和 MongoDB API 之外的所有 Cosmos DB API 预配吞吐量。
 
-### <a name="sql-mongodb-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL、MongoDB、Gremlin 和表 API
+### <a name="sql-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL、Gremlin 和表 API
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
@@ -99,9 +99,30 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
+### <a name="mongodb-api"></a><a id="dotnet-mongodb"></a>MongoDB API
+
+```csharp
+// refer to MongoDB .NET Driver
+// https://docs.mongodb.com/drivers/csharp
+
+// Create a new Client
+String mongoConnectionString = "mongodb://DBAccountName:Password@DBAccountName.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+mongoUrl = new MongoUrl(mongoConnectionString);
+mongoClientSettings = MongoClientSettings.FromUrl(mongoUrl);
+mongoClient = new MongoClient(mongoClientSettings);
+
+// Change the database name
+mongoDatabase = mongoClient.GetDatabase("testdb");
+
+// Change the collection name, throughput value then update via MongoDB extension commands
+// https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-custom-commands#update-collection
+
+var result = mongoDatabase.RunCommand<BsonDocument>(@"{customAction: ""UpdateCollection"", collection: ""testcollection"", offerThroughput: 400}");
+```
+
 ### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra API
 
-类似命令可以通过任何符合 CQL 标准的驱动程序发出。
+类似的命令可以通过任何 CQL 兼容的驱动程序发出。
 
 ```csharp
 // Create a Cassandra table with a partition (primary) key and provision throughput of 400 RU/s
@@ -111,7 +132,7 @@ session.Execute("CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=400");
 
 ```
-### <a name="alter-or-change-throughput-for-cassandra-table"></a>改变或更改 Cassandra 表的吞吐量
+### <a name="alter-or-change-throughput-for-cassandra-table"></a>修改或更改 Cassandra 表的吞吐量
 
 ```csharp
 // Altering the throughput too can be done through code by issuing following command

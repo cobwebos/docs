@@ -1,6 +1,6 @@
 ---
 title: Azure 网络服务概述
-description: 了解 Azure 中的网络服务及其功能-连接服务、应用程序保护服务、应用程序交付服务和网络监视。
+description: 了解 Azure 中的网络服务及其功能 - 连接服务、应用程序保护服务、应用程序交付服务和网络监视。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,20 +10,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133624"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85851647"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
 Azure 中的网络服务提供可以搭配使用或单独使用的各种网络功能。 请单击以下任一重要功能了解更多相关信息：
 - [**连接服务**](#connect)：使用 Azure 虚拟网络（VNet）、虚拟 WAN、EXPRESSROUTE、VPN 网关、虚拟网络 NAT 网关、Azure DNS、对等互连服务和 Azure 堡垒中的任何或一系列网络服务来连接 azure 资源和本地资源。
-- [**应用程序保护服务**](#protect)使用 Azure 私有链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点中的任何或一组网络服务来保护你的应用程序。
-- [**应用程序交付服务**](#deliver)使用 Azure 内容交付网络（CDN）、Azure 前门服务、流量管理器、应用程序网关、Internet 分析器和负载均衡器中的任何或一系列网络服务来提供 Azure 网络中的应用程序。
-- [**网络监视**](#monitor)–使用 Azure 中的这些网络服务的任意或组合监视网络资源-网络观察程序、ExpressRoute 监视器、Azure Monitor 或 VNet 终端访问点（点击）。
+- [**应用程序保护服务**](#protect)：使用 Azure 中的这些网络服务的任意或组合保护应用程序-私有链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
+- [**应用程序传递服务**](#deliver)：使用 azure 中的这些网络服务的任意或组合在 azure 网络中提供应用程序-内容交付网络（CDN）、Azure 前门服务、流量管理器、应用程序网关、Internet 分析器和负载均衡器。
+- [**网络监视**](#monitor)：使用 Azure 中的这些网络服务的任意或组合监视网络资源-网络观察程序、ExpressRoute 监视器、Azure Monitor 或 VNet 终端访问点（点击）。
 
 ## <a name="connectivity-services"></a><a name="connect"></a>连接服务
  
@@ -45,10 +45,10 @@ Azure 中的网络服务提供可以搭配使用或单独使用的各种网络�
 ### <a name="virtual-network"></a><a name="vnet"></a>虚拟网络
 
 Azure 虚拟网络 (VNet) 是 Azure 中专用网络的基本构建块。 使用 VNet 可以：
-- **Azure 资源之间的通信**：可以将 vm 和其他几种类型的 Azure 资源部署到虚拟网络，例如 Azure App Service 环境、Azure Kubernetes SERVICE （AKS）和 Azure 虚拟机规模集。 若要查看可部署到虚拟网络的 Azure 资源的完整列表，请参阅[虚拟网络服务集成](../virtual-network/virtual-network-for-azure-services.md)。
-- 相互**通信**：可以将虚拟网络彼此连接，使虚拟网络中的资源能够使用虚拟网络对等互连相互进行通信。 连接的虚拟网络可以在相同或不同的 Azure 区域中。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
-- **与 Internet 通信**：默认情况下，VNet 中的所有资源都可以与 internet 进行出站通信。 可以通过分配公共 IP 地址或公共负载均衡器来与资源进行入站通信。 还可以使用[公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)或公共[负载均衡器](../load-balancer/load-balancer-overview.md)来管理出站连接。
-- **与本地网络通信**：可以使用[VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoute](../expressroute/expressroute-introduction.md)将本地计算机和网络连接到虚拟网络。
+- **在 Azure 资源之间通信**：可以将 VM 和多个其他类型的 Azure 资源部署到虚拟网络，如 Azure 应用服务环境、Azure Kubernetes 服务 (AKS) 和 Azure 虚拟机规模集。 若要查看可部署到虚拟网络的 Azure 资源的完整列表，请参阅[虚拟网络服务集成](../virtual-network/virtual-network-for-azure-services.md)。
+- **相互通信**：可以互相连接虚拟网络，使虚拟网络中的资源能够通过虚拟网络对等互连相互进行通信。 连接的虚拟网络可以在相同或不同的 Azure 区域中。 有关详细信息，请参阅[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
+- **与 Internet 通信**：默认情况下，VNet 中的所有资源都可以与 Internet 进行出站通信。 可以通过分配公共 IP 地址或公共负载均衡器来与资源进行入站通信。 还可以使用[公共 IP 地址](../virtual-network/virtual-network-public-ip-address.md)或公共[负载均衡器](../load-balancer/load-balancer-overview.md)来管理出站连接。
+- **与本地网络通信**：可以使用 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md) 将本地计算机和网络连接到虚拟网络。
 
 有关详细信息，请参阅[什么是 Azure 虚拟网络？](../virtual-network/virtual-networks-overview.md)
 
@@ -66,7 +66,7 @@ VPN 网关可帮助你创建从本地位置到虚拟网络的加密跨界连接�
 有关不同类型的 VPN 连接的详细信息，请参阅 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 
 ### <a name="virtual-wan"></a><a name="virtualwan"></a>虚拟 WAN
-Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的经优化的自动分支连接。 Azure 区域充当可以选择将分支连接到的中心。 还可以利用 Azure 主干连接分支，享用分支到 VNet 的连接。 Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN、ExpressRoute、点到站点用户 VPN）汇集到一个操作界面中。 通过使用虚拟网络连接建立与 Azure VNet 的连接。 有关详细信息，请参阅[什么是 Azure 虚拟 WAN？](../virtual-wan/virtual-wan-about.md)。
+Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的经优化的自动分支连接。 Azure 区域充当可以选择将分支连接到的中心。 利用 Azure 主干网还可以连接分支并享用分支到 VNet 的连接。 Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN、ExpressRoute、点到站点用户 VPN）汇集到一个操作界面中。 通过使用虚拟网络连接建立与 Azure VNet 的连接。 有关详细信息，请参阅[什么是 Azure 虚拟 WAN？](../virtual-wan/virtual-wan-about.md)。
 
 ![虚拟 WAN 示意图](./media/networking-overview/virtualwan1.png)
 
@@ -93,7 +93,7 @@ Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365�
 |服务|为何使用此类服务？|方案|
 |---|---|---|
 |[DDoS 保护](#ddosprotection) |针对额外的 IP 流量收费提供保护的应用程序的高可用性|[管理 Azure DDoS 保护](../virtual-network/manage-ddos-protection.md)|
-|[Web 应用程序防火墙](#waf)|<p>[具有应用程序网关的 AZURE WAF](../web-application-firewall/ag/ag-overview.md)为公用和专用地址空间中的实体提供区域保护</p><p>[带有前门的 AZURE WAF](../web-application-firewall/afds/afds-overview.md)提供网络边缘到公共终结点的保护。</p>|<p>[配置机器人保护规则](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[配置自定义响应代码](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[配置 IP 限制规则](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[配置速率限制规则](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
+|[Web 应用程序防火墙](#waf)|<p>[具有应用程序网关的 Azure WAF](../web-application-firewall/ag/ag-overview.md) 为公共和专用地址空间中的实体提供区域性保护</p><p>[带有前门的 AZURE WAF](../web-application-firewall/afds/afds-overview.md)提供网络边缘到公共终结点的保护。</p>|<p>[配置机器人保护规则](../frontdoor/waf-front-door-policy-configure-bot-protection.md)</p> <p>[配置自定义响应代码](../frontdoor/waf-front-door-configure-custom-response-code.md)</p> <p>[配置 IP 限制规则](../frontdoor/waf-front-door-configure-ip-restriction.md)</p> <p>[配置速率限制规则](../frontdoor/waf-front-door-rate-limit-powershell.md)</p> |
 |[Azure 防火墙](#firewall)|Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。|<p>[在 Vnet 中部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[- 在混合网络中部署 Azure 防火墙](../firewall/tutorial-hybrid-ps.md)</p> <p>[使用 Azure 防火墙 DNAT 筛选入站流量](../firewall/tutorial-firewall-dnat.md)</p>|
 |[网络安全组](#nsg)|在 VM/子网中对所有网络流量进行完全粒度的分布式终端节点控制|[使用网络安全组筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)|
 |[虚拟网络服务终结点](#serviceendpoints)|使你可以将对某些 Azure 服务资源的网络访问限制到虚拟网络子网|[限制 PaaS 资源的网络访问](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
@@ -106,22 +106,22 @@ Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365�
 
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web 应用程序防火墙
 
-[Azure Web 应用程序防火墙](../web-application-firewall/overview.md)（WAF）为 web 应用程序提供保护，使其免受常见 web 攻击和漏洞（如 SQL 注入和跨站点脚本编写）的攻击。 Azure WAF 提供了通过托管规则 OWASP 前10个漏洞的现成保护。 此外，客户还可以配置自定义规则，这些规则是客户托管规则，用于根据源 IP 范围提供额外的保护，以及请求属性（如标头、cookie、表单数据字段或查询字符串参数）。
+[Azure Web 应用程序防火墙](../web-application-firewall/overview.md) (WAF) 为 Web 应用程序提供保护，使其免受 SQL 注入、跨站点脚本等常见 Web 攻击和漏洞的影响。 Azure WAF 通过托管的规则针对 OWASP 识别出的 10 大漏洞提供现成保护。 此外，客户还可以配置自定义规则（客户管理的规则），用于根据源 IP 范围，以及标头、Cookie、表单数据字段或查询字符串参数等请求属性提供额外的保护。
 
-客户可以选择部署[AZURE WAF 应用程序网关](../application-gateway/waf-overview.md)，为公用和专用地址空间中的实体提供区域保护。 客户还可以选择部署[具有前门的 AZURE WAF](../frontdoor/waf-overview.md) ，它提供网络边缘到公共终结点的保护。
+客户可以选择部署[具有应用程序网关的 Azure WAF](../application-gateway/waf-overview.md)，以便为公共和专用地址空间中的实体提供区域性保护。 客户还可以选择部署[具有前门的 AZURE WAF](../frontdoor/waf-overview.md) ，它提供网络边缘到公共终结点的保护。
 
 ![Web 应用程序防火墙](./media/networking-overview/waf-overview.png)
 
 
 ### <a name="azure-firewall"></a><a name="firewall"></a>Azure 防火墙
-Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 使用 Azure 防火墙，可以跨订阅和虚拟网络集中创建、强制和记录应用程序和网络连接策略。 Azure 防火墙对虚拟网络资源使用静态公共 IP 地址，使外部防火墙能够识别来自你的虚拟网络的流量。 
+Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 使用 Azure 防火墙可以跨订阅和虚拟网络集中创建、实施和记录应用程序与网络连接策略。 Azure 防火墙对虚拟网络资源使用静态公共 IP 地址，使外部防火墙能够识别来自你的虚拟网络的流量。 
 
-有关 Azure 防火墙的详细信息，请参阅[Azure 防火墙文档](../firewall/overview.md)。
+有关 Azure 防火墙的详细信息，请参阅 [Azure 防火墙文档](../firewall/overview.md)。
 
 ![防火墙概述](./media/networking-overview/firewall-threat.png)
 
 ### <a name="network-security-groups"></a><a name="nsg"></a>网络安全组
-可以使用网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 有关详细信息，请参阅[安全概述](../virtual-network/security-overview.md)。
+可以使用网络安全组来筛选 Azure 虚拟网络中出入 Azure 资源的网络流量。 有关详细信息，请参阅[安全性概述](../virtual-network/security-overview.md)。
 
 ### <a name="service-endpoints"></a><a name="serviceendpoints"></a>服务终结点
 虚拟网络 (VNet) 服务终结点可通过直接连接将 VNet 的虚拟网络专用地址空间和标识扩展到 Azure 服务。 使用终结点可以保护关键的 Azure 服务资源，只允许在客户自己的虚拟网络中对其进行访问。 从 VNet 发往 Azure 服务的流量始终保留在 Microsoft Azure 主干网络中。 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
@@ -137,19 +137,19 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>应用程序分发服务
 
-本部分介绍 Azure 中的网络服务，它们可帮助提供应用程序-网络观察程序、ExpressRoute 监视器、Azure Monitor 或 VNet 终端访问点（点击）。
+本部分介绍 Azure 中的网络服务，该服务可帮助提供应用程序-内容交付网络、Azure 前门服务、流量管理器、负载均衡器和应用程序网关。
 
 |服务|为何使用此类服务？|方案|
 |---|---|---|
-|[内容分发网络](#cdn)|向用户提供高带宽内容。 Cdn 将缓存的内容存储在靠近最终用户的存在点（POP）位置中的边缘服务器上，以最大程度地减少延迟|<p>[向 web 应用添加 CDN](../cdn/cdn-add-to-web-app.md)</p> <p>[-通过 HTTPS 使用 Azure CDN 自定义域访问存储 blob](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[将自定义域添加到 Azure CDN 终结点](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[在 Azure CDN 自定义域上配置 HTTPS](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
+|[内容分发网络](#cdn)|向用户传送高带宽内容。 CDN 将缓存的内容存储在接入点 (POP) 位置（靠近最终用户的边缘服务器），以最大程度地降低延迟。|<p>[向 Web 应用添加 CDN](../cdn/cdn-add-to-web-app.md)</p> <p>[- 通过 HTTPS 使用 Azure CDN 自定义域访问存储 Blob](..//cdn/cdn-storage-custom-domain-https.md)</p> <p>[将自定义域添加到 Azure CDN 终结点](../cdn/cdn-map-content-to-custom-domain.md)</p> <p>[在 Azure CDN 自定义域中配置 HTTPS](../cdn/cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)</p>|
 |[Azure Front Door 服务](#frontdoor)|使你能够通过优化以实现最佳性能和用于实现高可用性的即时全局故障转移来定义、管理和监视你的 web 流量的全局路由。|<p>[将自定义域添加到 Azure Front Door 服务](../frontdoor/front-door-custom-domain.md)</p> <p>[在 Front Door 自定义域中配置 HTTPS](../frontdoor/front-door-custom-domain-https.md)</p><p>[设置异地筛选 Web 应用程序防火墙策略](../frontdoor/front-door-tutorial-geo-filtering.md)|
 |[流量管理器](#trafficmanager)|基于 DNS 将流量分发到全球 Azure 区域中的服务，同时提供高可用性和响应度。|<p> [路由流量以降低延迟](../traffic-manager/tutorial-traffic-manager-improve-website-response.md)</p><p>[将流量路由到优先终结点](../traffic-manager/traffic-manager-configure-priority-routing-method.md)</p><p> [使用加权的终结点控制流量](../traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing.md)</p><p>[基于终结点的地理位置路由流量](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)</p> <p> [根据用户的子网路由流量](../traffic-manager/tutorial-traffic-manager-subnet-routing.md)</p>|
-|[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 Vm 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-basic-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
-|[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关引导 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[教程：使用 Azure 门户配置带有 TLS 终止的应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
+|[负载均衡器](#loadbalancer)|通过将流量路由到不同的可用性区域和你的 VNet 来提供区域负载均衡。 通过在资源中和资源之间路由流量来提供内部负载均衡，以构建区域性应用程序。|<p> [对传入 VM 的 Internet 流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)</p> <p>[对虚拟网络中 VM 之间的流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-internal-portal.md)<p>[通过端口转发将流量发送到特定 VM 上的特定端口](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)</p><p> [配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)</p>|
+|[应用程序网关](#applicationgateway)|Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。|<p>[使用 Azure 应用程序网关定向 Web 流量](../application-gateway/quick-create-portal.md)</p><p>[教程：通过 Azure 门户使用 TLS 终端配置应用程序网关](../application-gateway/create-ssl-portal.md)</p><p>[创建支持基于 URL 路径进行重定向的应用程序网关](../application-gateway/create-url-route-portal.md) </p>|
 |
 
 ### <a name="content-delivery-network"></a><a name="cdn"></a>内容分发网络
-Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速分发高带宽内容。 有关 Azure CDN 的详细信息，请参阅[Azure 内容分发网络](../cdn/cdn-overview.md)
+Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速分发高带宽内容。 有关 Azure CDN 的详细信息，请参阅 [Azure 内容分发网络](../cdn/cdn-overview.md)
 
 ![Azure CDN](./media/networking-overview/cdn-overview.png)
 
@@ -189,17 +189,17 @@ Azure 应用程序网关是一种 Web 流量负载均衡器，可用于管理 We
 |---|---|---|
 |[网络观察程序](#networkwatcher)|帮助监视和排查连接问题，帮助诊断 VPN、NSG 和路由问题，捕获 VM 上的数据包，使用 Azure Functions 和逻辑应用自动触发诊断工具|<p>[诊断 VM 流量筛选器问题](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)</p><p>[诊断 VM 路由问题](../network-watcher/diagnose-vm-network-routing-problem.md)</p><p>[监视 VM 之间的通信](../network-watcher/connection-monitor.md)</p><p>[诊断网络之间的通信问题](../network-watcher/diagnose-communication-problem-between-networks.md)</p><p>[记录传入和传出 VM 的网络流量](../network-watcher/network-watcher-nsg-flow-logging-portal.md)</p>|
 |[ExpressRoute 监视器](#expressroutemonitor)|提供网络性能、可用性和利用率的实时监视，帮助自动发现网络拓扑，提供更快的故障隔离，检测暂时性网络问题，帮助分析历史网络性能特征，支持多订阅|<p>[为 ExpressRoute 配置网络性能监视器](../expressroute/how-to-npm.md)</p><p>[ExpressRoute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md)</p>|
-|[Azure Monitor](#azuremonitor)|帮助你了解应用程序的执行方式，并主动识别影响它们的问题及其依赖的资源。|<p>[流量管理器指标和警报](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[适用于标准负载均衡器的 Azure monitor 诊断](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[监视 Azure 防火墙日志和指标](../firewall/tutorial-diagnostics.md)</p><p>[Azure web application firewall monitoring and logging](../frontdoor/waf-front-door-monitor.md)（Azure Web 应用程序防火墙监视和日志记录）</p>|
-|[虚拟网络点击](#vnettap)|提供对数据包收集器的虚拟机网络流量的连续流式处理，启用网络和应用程序性能管理解决方案和安全分析工具|[创建 VNet 点击资源](../virtual-network/tutorial-tap-virtual-network-cli.md)|
+|[Azure Monitor](#azuremonitor)|帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。|<p>[流量管理器指标和警报](../traffic-manager/traffic-manager-metrics-alerts.md)</p><p>[针对标准负载均衡器的 Azure Monitor 诊断](../load-balancer/load-balancer-standard-diagnostics.md)</p><p>[监视 Azure 防火墙日志和指标](../firewall/tutorial-diagnostics.md)</p><p>[Azure web application firewall monitoring and logging](../frontdoor/waf-front-door-monitor.md)（Azure Web 应用程序防火墙监视和日志记录）</p>|
+|[虚拟网络 TAP](#vnettap)|提供对数据包收集器的虚拟机网络流量的连续流式处理，启用网络和应用程序性能管理解决方案和安全分析工具|[创建 VNet 点击资源](../virtual-network/tutorial-tap-virtual-network-cli.md)|
 |
 
 ### <a name="network-watcher"></a><a name="networkwatcher"></a>网络观察程序
 Azure 网络观察程序提供所需的工具用于监视、诊断 Azure 虚拟网络中的资源、查看其指标，以及为其启用或禁用日志。 有关详细信息，请参阅[什么是网络观察程序？](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute 监视器
-若要了解如何查看 ExpressRoute 线路指标、资源日志和警报，请参阅[expressroute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。
+### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute Monitor
+若要了解如何查看 ExpressRoute 线路指标、资源日志和警报，请参阅 [ExpressRoute 监视、指标和警报](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
-Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥测数据的综合解决方案，可将应用程序的可用性和性能最大化。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。 有关详细信息，请参阅[Azure Monitor 概述](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
-### <a name="virtual-network-tap"></a><a name="vnettap"></a>虚拟网络点击
+Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥测数据的综合解决方案，可将应用程序的可用性和性能最大化。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。 有关详细信息，请参阅 [Azure Monitor 概述](../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
+### <a name="virtual-network-tap"></a><a name="vnettap"></a>虚拟网络 TAP
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。 
 
 下图显示虚拟网络 TAP 的工作原理。 
@@ -210,8 +210,8 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 
 ## <a name="next-steps"></a>后续步骤
 
-- 完成[创建首个虚拟网络](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，创建自己的首个虚拟网络，并将几个 VM 连接到此网络。
-- 完成[配置点到站点连接一文](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)中的步骤，将计算机连接到 VNet。
+- 完成[创建首个虚拟网络](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，创建自己的首个 VNet，并将几个 VM 连接到此网络。
+- 完成[配置点到站点连接](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，将计算机连接到 VNet。
 - 完成[创建面向 Internet 的负载均衡器](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)一文中的步骤，对发往公共服务器的 Internet 流量进行负载均衡。
  
  
