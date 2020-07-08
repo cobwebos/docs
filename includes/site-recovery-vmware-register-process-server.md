@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67534562"
 ---
 1. 与运行进程服务器的计算机建立远程桌面连接。 
@@ -19,7 +19,7 @@ ms.locfileid: "67534562"
 3. 在“配置服务器 FQDN 或 IP”  中，指定用于注册进程服务器的配置服务器的名称或 IP 地址。
 4. 在“配置服务器端口”  中，确保指定了 443。 这是配置服务器侦听请求的端口。
 5. 在“连接密码”  中，指定你在设置配置服务器时指定的密码。 查找密码的步骤：
-    -  在配置服务器上，导航到 Site Recovery 安装文件夹 **\home\svssystems\bin\**：
+    -  在配置服务器上，导航到 Site Recovery 安装文件夹 **\home\svssystems\bin \* *：
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```

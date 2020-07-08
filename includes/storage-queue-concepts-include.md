@@ -6,10 +6,10 @@ ms.date: 10/26/2018
 ms.author: tamram
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 23b93f507ef6abe19a0202b28afa31d28490b2b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80150989"
 ---
 ## <a name="what-is-queue-storage"></a>什么是队列存储？
@@ -22,7 +22,7 @@ Azure 队列服务包含以下组件：
 
 ![Azure 队列服务组件](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **URL 格式：** 可以使用以下 URL 格式对队列进行寻址：`<storage account>`http://. queue.core.windows.net/`<queue>`
+* **URL 格式：** 可以使用以下 URL 格式对队列进行寻址： http:// `<storage account>` . queue.core.windows.net/`<queue>`
   
     可使用以下 URL 访问示意图中的某个队列：  
   

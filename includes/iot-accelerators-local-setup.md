@@ -9,10 +9,10 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67173383"
 ---
 ## <a name="download-the-source-code"></a>下载源代码
@@ -62,7 +62,7 @@ git submodule foreach git pull origin master
      此脚本还向本地计算机添加一组前缀为 **PCS** 的环境变量。 这些环境变量提供了远程监视的详细信息，使其能够从 Azure Key Vault 资源中进行读取。 此 Key Vault 资源是远程监视从中读取其配置值的位置。
 
      > [!TIP]
-     > 当脚本完成时，它还会将环境变量保存到名** \<为主文件夹\>\\的文件中。\\\<pc 解决方案\>名称. env**。 可以将它们用于将来的解决方案加速器部署。 请注意，运行 **docker-compose** 时，在本地计算机上设置的任何环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+     > 脚本完成后，它还会将环境变量保存到名为 " ** \<your home folder\> \\ pc \\ \<solution name\> **" 的文件中。 可以将它们用于将来的解决方案加速器部署。 请注意，运行 **docker-compose** 时，在本地计算机上设置的任何环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
 1. 退出命令行环境。
 
@@ -74,6 +74,6 @@ git submodule foreach git pull origin master
 * **PCS_AAD_APPID** -AAD 应用程序 ID
 * **PCS_AAD_APPSECRET** -AAD 应用程序密钥
 
-将从此 Azure Key Vault 资源读取配置值。 这些环境变量可保存在** \<主文件夹\>\\中。 pc\\\<解决方案名称\>。** 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
+将从此 Azure Key Vault 资源读取配置值。 这些环境变量可保存在部署中的 " ** \<your home folder\> \\ pc \\ \<solution name\> ** " 文件中。 请注意，运行 **docker-compose** 时，在本地计算机上设置的环境变量将覆盖 **services\\scripts\\local\\.env** 文件中的值。
 
 微服务所需的某些配置存储在最初部署时创建的**Key Vault**实例中。 应根据需要修改 keyvault 中的相应变量。

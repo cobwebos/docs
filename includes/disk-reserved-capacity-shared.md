@@ -9,10 +9,10 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cb959b94807678187363d3132ece273584f13a0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77590708"
 ---
 使用保留容量节省 Azure 磁盘存储使用量。 与 Azure 保留虚拟机实例结合 Azure 磁盘存储保留，可降低总虚拟机（VM）的成本。 预订折扣将自动应用于所选预订范围内的匹配磁盘。 由于这种自动应用程序，你无需为托管磁盘分配预留来获取折扣。
@@ -68,13 +68,13 @@ ms.locfileid: "77590708"
 
    |元素  |说明  |
    |---------|---------|
-   |**Scope**   |  多少订阅可以使用与预订相关的计费权益。 此值还指定如何将预订应用到特定订阅。 <br/><br/> 如果选择 "**共享**"，预订折扣将应用到计费上下文中每个订阅的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包含由帐户管理员创建的即用即付费率的所有订阅。  <br/><br/>  如果选择 "**单个订阅**"，则预订折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择 "**单个资源组**"，则预订折扣将应用到所选订阅和该订阅所选资源组中的 Azure 存储容量。 <br/><br/> 你可以在购买预订后更改保留范围。  |
+   |**范围**   |  多少订阅可以使用与预订相关的计费权益。 此值还指定如何将预订应用到特定订阅。 <br/><br/> 如果选择 "**共享**"，预订折扣将应用到计费上下文中每个订阅的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包含由帐户管理员创建的即用即付费率的所有订阅。  <br/><br/>  如果选择 "**单个订阅**"，则预订折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择 "**单个资源组**"，则预订折扣将应用到所选订阅和该订阅所选资源组中的 Azure 存储容量。 <br/><br/> 你可以在购买预订后更改保留范围。  |
    |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一：<br/><ul><li> 企业协议（BC-OP-NT-AZR-Ms-azr-0017p 和 BC-OP-NT-AZR-Ms-azr-0148p）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。</li><br/><li>按现用现付费率（产品/服务-BC-OP-NT-AZR-Ms-azr-0003p 和 BC-OP-NT-AZR-0023P）的单个订阅。 对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。</li></ul>    |
    | **磁盘** | 要创建的 SKU。 |
    | **区域** | 预订有效的区域。 |
    | **计费频率** | 帐户按预订计费的频率。 选项包括**每月**和**前期**。 |
 
-    ![用于选择要购买的产品的窗格。 png](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
+    ![用于选择要 purchase.png 的产品的窗格](media/disks-reserved-capacity/premium-ssd-reserved-purchase-selection.png)
 
 1. 指定预订值后，Azure 门户将显示成本。 该门户还显示 "即用即付" 计费的折扣百分比。 选择 "**下一步**" 以继续转到 "**购买预订**" 窗格。
 
@@ -88,7 +88,7 @@ ms.locfileid: "77590708"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
-您可以在某些限制条件下取消、交换或退款。 有关详细信息，请参阅[Azure 预订的自助服务交换和退款](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
+您可以在某些限制条件下取消、交换或退款。 有关详细信息，请参阅 [Azure 预留的自助交换和退款](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
 
 ## <a name="expiration-of-a-reservation"></a>保留的过期时间
 
@@ -102,5 +102,5 @@ ms.locfileid: "77590708"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure 保留？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [了解预留折扣如何应用于 Azure 磁盘存储](../articles/cost-management-billing/reservations/understand-disk-reservations.md)
