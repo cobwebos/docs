@@ -9,10 +9,10 @@ ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70032350"
 ---
 ## <a name="create-a-service-principal"></a>创建服务主体
@@ -21,7 +21,7 @@ ms.locfileid: "70032350"
 
 运行脚本之前，请将 `ACR_NAME` 变量更新为容器注册表的名称。 `SERVICE_PRINCIPAL_NAME` 值必须在 Azure Active Directory 租户中唯一。 如果收到“`'http://acr-service-principal' already exists.`”错误，请为服务主体指定另一名称。
 
-如果需要授予其他权限，可以选择修改 `--role`az ad sp create-for-rbac[ 命令中的 ][az-ad-sp-create-for-rbac] 值。 有关角色的完整列表，请参阅 [ACR 角色和权限](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md)。
+如果需要授予其他权限，可以选择修改 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令中的 `--role` 值。 有关角色的完整列表，请参阅 [ACR 角色和权限](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md)。
 
 运行脚本后，请记下服务主体的 **ID** 和**密码**。 获得其凭据后，可以配置应用程序和服务使其作为服务主体对容器注册表进行身份验证。
 

@@ -9,10 +9,10 @@ ms.date: 08/06/2019
 ms.author: mbullwin
 ms.custom: include file
 ms.openlocfilehash: 14e2bd4af2616e9dd33fe8267de132ab6c0f1cfe
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "69982615"
 ---
 每个应用程序（即每个检测密钥）的指标和事件数都有一些限制。 限制取决于选择的[定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
@@ -30,6 +30,6 @@ ms.locfileid: "69982615"
 | 跟踪和异常消息长度 | 32,768  | 请参阅[类型架构](https://github.com/microsoft/ApplicationInsights-Home/tree/master/EndpointSpecs/Schemas/Bond)。
 | 每个应用的[可用性测试](../articles/azure-monitor/app/monitor-web-app-availability.md)计数 | 100 |
 | [探查器](../articles/azure-monitor/app/profiler.md)数据保留期 | 5 天 |
-| 每天发送的[探查器](../articles/azure-monitor/app/profiler.md)数据量 | 10 GB |
+| 每天发送的[探查器](../articles/azure-monitor/app/profiler.md)数据量 | 10GB |
 
 有关详细信息，请参阅[关于 Application Insights 中的定价和配额](../articles/azure-monitor/app/pricing.md)。

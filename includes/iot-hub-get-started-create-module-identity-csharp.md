@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "68883749"
 ---
 ## <a name="create-a-module-identity"></a>创建模块标识
@@ -29,13 +29,13 @@ ms.locfileid: "68883749"
 
     ![输入 Visual Studio 解决方案的名称和框架](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. 在 Visual Studio 中，打开“工具” **“NuGet 包管理器”** “管理解决方案的 NuGet 包”。 >    >   选择“浏览”按钮  。
+1. 在 Visual Studio 中，打开“工具” > “NuGet 包管理器” > “管理解决方案的 NuGet 包”。 选择“浏览”按钮  。
 
 1. 搜索 **Microsoft.Azure.Devices**。 选择它，然后选择“安装”。 
 
     ![安装 Azure IoT 中心 .NET 服务 SDK 当前版本](./media/iot-hub-get-started-create-module-identity-csharp/install-service-sdk.png)
 
-1. 在 Program.cs`using`**文件顶部添加以下** 语句：
+1. 在 Program.cs 文件顶部添加以下 `using` 语句：
 
    ```csharp
    using Microsoft.Azure.Devices;
