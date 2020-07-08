@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 44f1f7ae3b290e1dbf01877f3881e1d95a238446
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70208143"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959137"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>在数据科学虚拟机上设置通用标识
 
@@ -41,17 +41,17 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
     
    1. 在“用户和组”中，选择“所有用户”，然后选择“新建用户”    。
    
-           The **User** pane opens:
+        此时将打开**用户**窗格：
       
-      ![“用户”窗格](./media/add-user.png)
+        ![“用户”窗格](./media/add-user.png)
     
    1. 输入用户的详细信息，如**名称**和**用户名**。 用户名的域名部分必须是初始默认域名“[domain name].onmicrosoft.com”，或已验证的非联合[自定义域名](../../active-directory/add-custom-domain.md)（例如“contoso.com”）。
     
    1. 复制或以其他方式记下生成的用户密码，以便在此过程完成后可以提供给用户。
     
-   1. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息    。 
+   1. （可选）可以打开“个人资料”、“组”或“目录角色”并在其中填写用户信息************。 
     
-   1. 在“用户”下，选择“创建”   。
+   1. 在“用户”下，选择“创建”********。
     
    1. 以安全方式将生成的密码分发给新用户，以便用户可以登录。
 
@@ -64,13 +64,13 @@ Azure AD DS 在 Azure 上提供完全托管的服务，简化了标识管理。 
 
    1. [创建 Azure 文件共享](../../storage/files/storage-how-to-create-file-share.md)。
     
-   2.  在 Linux DSVM 上装载此共享。 在 Azure 门户的存储帐户中选择 Azure 文件共享所对应的“连接”  时，将会显示可以在 Linux DSVM 的 Bash Shell 中运行的命令。 命令如下所示：
+   2.  在 Linux DSVM 上装载此共享。 在 Azure 门户的存储帐户中选择 Azure 文件共享所对应的“连接”**** 时，将会显示可以在 Linux DSVM 的 Bash Shell 中运行的命令。 命令如下所示：
    
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
 1. 例如，假设已将共享 Azure 文件装载在 /data/workspace 中。 现在，为共享中的每个用户创建目录：/data/workspace/user1、/data/workspace/user2，依次类推。 在每个用户的工作区中创建 `notebooks` 目录。 
-1. 在 `notebooks` 中为 `$HOME/userx/notebooks/remote` 创建符号链接。   
+1. 在 `$HOME/userx/notebooks/remote` 中为 `notebooks` 创建符号链接。   
 
 现在，这些用户已在 Azure 中托管的 Active Directory 实例中。 通过使用 Active Directory 凭据，用户可以登录到已加入 Azure AD DS 的任何 DSVM（SSH 或 JupyterHub）。 由于用户工作区位于共享 Azure 文件上，因此用户在使用 JupyterHub 时，可以访问其笔记本以及 DSVM 中的任何其他工作。
 

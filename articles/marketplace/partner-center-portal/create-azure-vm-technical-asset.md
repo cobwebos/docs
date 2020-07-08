@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: e126ee2bd4133281195d4a86c5cb6f1c47bbd6ac
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: d43015c86976594e8d5077a11cbdad27668b343c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266910"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957693"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>创建 Azure 虚拟机技术资产
 
@@ -48,7 +48,7 @@ ms.locfileid: "84266910"
 
 此外，考虑将以下工具添加到开发环境：
 
-* [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure 存储浏览器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
   * 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   * 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -63,10 +63,10 @@ ms.locfileid: "84266910"
 
 此部分还介绍使用批准的基础映像的各个方面，例如，使用远程桌面协议 (RDP)、选择 VM 大小、安装最新的 Windows 更新，以及通用化 VHD 映像。
 
-以下部分主要介绍基于 Windows 的 VHD。 有关创建基于 Linux 的 VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。
+以下部分主要介绍基于 Windows 的 VHD。 有关创建基于 Linux 的 VHD 的详细信息，请参阅 [Azure 认可的 Linux 发行版](../../virtual-machines/linux/endorsed-distros.md)。
 
 > [!WARNING]
-> 请遵照本主题中的指导，使用 Azure 创建包含预配置的认可操作系统的 VM。 如果此内容不符合你的解决方案，可以使用批准的操作系统来创建并配置本地 VM。 然后可以根据[准备好要上传到 Azure 的 Windows VHD 或 VHDX](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，对此 VM 进行配置并准备好上传。
+> 请遵照本主题中的指导，使用 Azure 创建包含预配置的认可操作系统的 VM。 如果此内容不符合你的解决方案，可以使用批准的操作系统来创建并配置本地 VM。 然后可以根据[准备好要上传到 Azure 的 Windows VHD 或 VHDX](../../virtual-machines/windows/prepare-for-upload-vhd-image.md) 中所述，对此 VM 进行配置并准备好上传。
 
 ### <a name="select-an-approved-base"></a>选择批准的基础映像
 
@@ -77,22 +77,22 @@ ms.locfileid: "84266910"
 用于基于 Windows 的 VM 映像的操作系统 VHD 必须基于 Azure 批准的基础映像（包含 Windows Server 或 SQL Server）。 若要开始，请从 Azure 门户中的以下映像创建 VM：
 
 * Windows Server（[2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2012 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)）
-* [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)（Enterprise、Standard、Web）
-* [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance)（Enterprise、Standard、Web）
+* [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md)（Enterprise、Standard、Web）
+* [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md)（Enterprise、Standard、Web）
 
 > [!NOTE]
 > 如果使用最新 Azure 门户或 Azure PowerShell，则在 2014 年 9 月 8 日及以后发布的 Windows Server 映像已得到批准。
 
 #### <a name="linux"></a>Linux
 
-Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参阅 [Azure 认可的 Linux 分发版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。
+Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参阅 [Azure 认可的 Linux 分发版](../../virtual-machines/linux/endorsed-distros.md)。
 
 ### <a name="create-vm-in-the-azure-portal"></a>在 Azure 门户中创建 VM
 
 请按照下列步骤在 [Azure 门户](https://ms.portal.azure.com/)中创建基础 VM 映像。
 
 1. 使用要用于发布 VM 产品/服务的 Azure 订阅关联的 Microsoft 帐户登录到 [Azure 门户](https://ms.portal.azure.com/)。
-2. 创建新资源组，并提供**资源组名称**、**订阅**和**资源组位置**。 有关详细信息，请参阅[管理资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)。
+2. 创建新资源组，并提供**资源组名称**、**订阅**和**资源组位置**。 有关详细信息，请参阅[管理资源](../../azure-resource-manager/resource-group-portal.md)。
 3. 选择左侧的“虚拟机”，显示“虚拟机详细信息”页。
 4. 选择“+ 添加”以打开“创建虚拟机体验” 。
 5. 从下拉列表中选择映像，或单击“浏览所有公共和专用映像”来搜索或浏览所有可用的虚拟机映像。
@@ -106,7 +106,7 @@ Azure 提供一系列已批准的 Linux 发行版。 有关最新列表，请参
 
 Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟机”选项卡来跟踪预配进度。 创建虚拟机后，状态将更改为“正在运行”。
 
-如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅[在创建 VHD 期间出现的常见问题（常见问题解答）](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-issues-during-vhd-creation)。
+如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅[在创建 VHD 期间出现的常见问题（常见问题解答）](common-issues-during-vhd-creation.md)。
 
 ### <a name="connect-to-your-azure-vm"></a>连接到 Azure VM
 
@@ -116,7 +116,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
 使用远程桌面客户端连接到托管在 Azure 上的基于 Windows 的 VM。 大多数 Windows 版本原生包含对远程桌面协议 (RDP) 的支持。 对于其他操作系统，可在[远程桌面客户端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)中找到有关客户端的详细信息。
 
-本文详细介绍如何使用内置的 Windows RDP 支持来连接到 VM：[如何连接并登录到运行 Windows 的 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon)。
+本文详细介绍如何使用内置的 Windows RDP 支持来连接到 VM：[如何连接并登录到运行 Windows 的 Azure 虚拟机](../../virtual-machines/windows/connect-logon.md)。
 
 > [!TIP]
 > 此过程中可能会出现安全警告。 例如，“.rdp 文件来自未知的发布者”或“无法验证你的用户凭据”等警告。 可以放心忽略这些警告。
@@ -130,7 +130,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 3. 选择要连接到的 VM。
 4. 如果该 VM 尚未运行，请将它启动。
 5. 选择 VM 的名称打开其“概述”页。
-6. 请注意 VM 的公共 IP 地址和 DNS 名称（如果未设置这些值，则必须[创建网络接口](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface)）。
+6. 请注意 VM 的公共 IP 地址和 DNS 名称（如果未设置这些值，则必须[创建网络接口](../../virtual-network/virtual-network-network-interface.md#create-a-network-interface)）。
 7. 打开 PuTTY 应用程序。
 8. 在 PuTTY 的“配置”对话框中，输入 VM 的 IP 地址或 DNS 名称。
 
@@ -141,7 +141,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
 如果遇到连接问题，请参阅 SSH 客户端的文档。 例如，[第 10 章：常见错误消息](https://www.ssh.com/ssh/putty/putty-manuals)。
 
-有关详细信息，包括如何将桌面添加到预配的 Linux VM，请参阅[安装并配置远程桌面以连接到 Azure 中的 Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop)。
+有关详细信息，包括如何将桌面添加到预配的 Linux VM，请参阅[安装并配置远程桌面以连接到 Azure 中的 Linux VM](../../virtual-machines/linux/use-remote-desktop.md)。
 
 ## <a name="create-a-vm-using-your-own-image"></a>使用自己的映像创建 VM
 
@@ -170,7 +170,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
 
     :::image type="content" source="media/avm-custom-deployment.png" alt-text="“自定义部署”页。":::
 
-3. 将此 [JSON 模板](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-deploy-json-template)粘贴到编辑器中，然后选择“保存”。
+3. 将此 [JSON 模板](../partner-center-portal/azure-vm-image-certification.md)粘贴到编辑器中，然后选择“保存”。
 4. 提供显示的“自定义部署”属性页的参数值。
 
     | 参数 | 说明 |
@@ -183,7 +183,7 @@ Azure 随即开始预配所指定的虚拟机。 可以选择左侧的“虚拟�
     | 操作系统类型 | VM 操作系统：Windows 或 Linux |
     | 订阅 ID | 所选订阅的标识符 |
     | 位置 | 部署的地理位置 |
-    | VM 大小 | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如 Standard_A2 |
+    | VM 大小 | [Azure VM 大小](../../virtual-machines/windows/sizes.md)，例如 Standard_A2 |
     | 公共 IP 地址名称 | 公共 IP 地址的名称 |
     | VM 名称 | 新 VM 的名称 |
     | 虚拟网络名称 | VM 使用的虚拟网络的名称 |
@@ -209,8 +209,8 @@ Azure 将开始部署。 它将使用指定的非托管 VHD 在指定的存储�
 
 使用与你的方法相对应的以下说明：
 
-* Azure PowerShell：[如何从 Azure VM 创建非托管 VM 映像](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
-* Azure CLI：[如何创建虚拟机或 VHD 的映像](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
+* Azure PowerShell：[如何从 Azure VM 创建非托管 VM 映像](../../virtual-machines/windows/capture-image-resource.md)
+* Azure CLI：[如何创建虚拟机或 VHD 的映像](../../virtual-machines/linux/capture-image.md)
 * API：[虚拟机 - 捕获](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 ## <a name="configure-the-virtual-machine"></a>配置虚拟机
@@ -238,7 +238,7 @@ Azure 将开始部署。 它将使用指定的非托管 VHD 在指定的存储�
 
 ### <a name="perform-additional-security-checks"></a>执行附加的安全检查
 
-为 Azure 市场中的解决方案映像保持高级别的安全性。 以下文章提供了有助于实现此目标的安全配置和过程的清单：[适用于 Azure 市场映像的安全建议](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)。 其中的某些建议特定于基于 Linux 的映像，但大部分建议适用于任何 VM 映像。
+为 Azure 市场中的解决方案映像保持高级别的安全性。 以下文章提供了有助于实现此目标的安全配置和过程的清单：[适用于 Azure 市场映像的安全建议](../../security/security-recommendations-azure-marketplace-images.md)。 其中的某些建议特定于基于 Linux 的映像，但大部分建议适用于任何 VM 映像。
 
 ### <a name="perform-custom-configuration-and-scheduled-tasks"></a>执行自定义配置和计划任务
 
@@ -247,7 +247,7 @@ Azure 将开始部署。 它将使用指定的非托管 VHD 在指定的存储�
 * 对于一次性运行的任务，在成功完成该任务后，它应自行删除。
 * 配置不应依赖于 C 或 D 以外的驱动器，因为只有这两个驱动器始终存在（驱动器 C 是操作系统磁盘，驱动器 D 是临时本地磁盘）。
 
-有关 Linux 自定义项的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)。
+有关 Linux 自定义项的详细信息，请参阅[适用于 Linux 的虚拟机扩展和功能](../../virtual-machines/extensions/features-linux.md)。
 
 ## <a name="generalize-the-image"></a>通用化映像
 
@@ -258,11 +258,11 @@ Azure 市场中的所有映像必须可采用一般形式重复使用。 若要�
 Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)通用化。 如果后来更新或重新配置了 OS，则必须重新运行 sysprep。
 
 > [!WARNING]
-> 由于运行 sysprep 后更新可能自动运行，因此，请在部署 VM 之前将其关闭。 此关闭操作可避免后续更新对操作系统或安装的服务做出特定于实例的更改。 有关运行 sysprep 的详细信息，请参阅[通用化 VHD 的步骤](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep)。
+> 由于运行 sysprep 后更新可能自动运行，因此，请在部署 VM 之前将其关闭。 此关闭操作可避免后续更新对操作系统或安装的服务做出特定于实例的更改。 有关运行 sysprep 的详细信息，请参阅[通用化 VHD 的步骤](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)。
 
 ### <a name="linux"></a>Linux
 
-以下过程将通用化 Linux VM，并将其重新部署为单独的 VM。 有关详细信息，请参阅[如何创建虚拟机或 VHD 的映像](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)。 当到达“从捕获的映像创建 VM”部分时，可以停止。
+以下过程将通用化 Linux VM，并将其重新部署为单独的 VM。 有关详细信息，请参阅[如何创建虚拟机或 VHD 的映像](../../virtual-machines/linux/capture-image.md)。 当到达“从捕获的映像创建 VM”部分时，可以停止。
 
 1. **删除 Azure Linux 代理**
 
@@ -278,8 +278,8 @@ Windows OS 磁盘已使用 [sysprep 工具](https://docs.microsoft.com/windows-h
 
 ## <a name="next-steps"></a>后续步骤
 
-如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅[在创建 VHD 期间出现的常见问题](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)。
+如果在创建基于 Azure 的新 VHD 时遇到问题，请参阅[在创建 VHD 期间出现的常见问题](common-issues-during-vhd-creation.md)。
 
 否则：
 
-* [验证 VM 映像](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri)说明了如何测试和提交 VM 映像进行 Azure 市场认证，包括从何处获取用于 Azure 认证的认证测试工具，以及如何使用它来验证 VM 映像。
+* [验证 VM 映像](get-sas-uri.md)说明了如何测试和提交 VM 映像进行 Azure 市场认证，包括从何处获取用于 Azure 认证的认证测试工具，以及如何使用它来验证 VM 映像。

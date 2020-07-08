@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 62d4e26d5a0d3d86cc58421dab4167d5d9d2562d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727237"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961773"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player 完全设置 #
 
@@ -20,20 +20,23 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>步骤1：在页面页眉中包含 JavaScript 和 CSS 文件 ##
 
-使用 Azure Media Player，你可以访问 CDN 托管版本中的脚本。 通常建议在结束正文标记`<body>`之前放置 JavaScript `<head>`，而不是将其放在结尾处，但 Azure Media Player 包含 "HTML5 Shiv"，它需要位于旧版 IE 版本的开头，才能将视频标记视为有效元素。
+使用 Azure Media Player，你可以访问 CDN 托管版本中的脚本。 通常建议在结束正文标记之前放置 JavaScript `<body>` ，而不是将其放 `<head>` 在结尾处，但 Azure Media Player 包含 "HTML5 Shiv"，它需要位于旧版 IE 版本的开头，才能将视频标记视为有效元素。
 
 > [!NOTE]
-> 如果已在使用 HTML5 shiv （如[Modernizr](http://modernizr.com/) ），则可以在任意位置包含 Azure Media Player JavaScript。 但请确保 Modernizr 的版本包含视频的 shiv。
+> 如果已在使用 HTML5 shiv （如[Modernizr](https://modernizr.com/) ），则可以在任意位置包含 Azure Media Player JavaScript。 但请确保 Modernizr 的版本包含视频的 shiv。
 
 ### <a name="cdn-version"></a>CDN 版本 ###
+
+```html
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+```
 
 > [!IMPORTANT]
->  不应当在生产中使用`latest`版本，因为此版本可能会根据需要进行更改。 替换`latest`为 Azure Media Player 的版本。 例如，将 `latest` 替换为 `2.1.1`。 可以从[此处](azure-media-player-changelog.md)查询 Azure Media Player 版本。
+>  不应当在生产中使用`latest`版本，因为此版本可能会根据需要进行更改。 替换 `latest` 为 Azure Media Player 的版本。 例如，将 `latest` 替换为 `2.1.1`。 可以从[此处](azure-media-player-changelog.md)查询 Azure Media Player 版本。
 
 > [!NOTE]
-> 自`1.2.0`发布后，不再需要将该位置包括在回退方面中（它会自动从 azuremediaplayer 文件的相对路径中选取位置）。 您可以通过在上述脚本后面的`<head>`中添加以下脚本来修改回退方面的位置。
+> 自 `1.2.0` 发布后，不再需要将位置包括到回退方面（它会自动从 azuremediaplayer.min.js 文件的相对路径中选取位置）。 您可以通过在上述脚本后面的中添加以下脚本来修改回退方面的位置 `<head>` 。
 
 > [!NOTE]
 > 由于 Flash 和 Silverlight 插件的性质，swf 和 xap 文件应在域中托管，而不包含任何敏感信息或数据，这会自动为你处理 Azure CDN 托管版本。
@@ -49,15 +52,15 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
 
 使用 Azure Media Player，可以使用 HTML5 视频标记嵌入视频。 然后，Azure Media Player 将读取标记并使其在所有浏览器中工作，而不只是支持 HTML5 视频的浏览器。 除了基本标记外，Azure Media Player 需要一些额外的部分。
 
-1. 上`<data-setup>`的属性`<video>`指示 Azure Media Player 在页面准备就绪时自动设置视频，并从属性读取任何（JSON 格式）。
-1. 对于`id`同一页面上的每个视频，都应使用属性：。
-1. 该`class`属性包含两个类：
+1. `<data-setup>`上的属性 `<video>` 指示 Azure Media Player 在页面准备就绪时自动设置视频，并从属性读取任何（JSON 格式）。
+1. `id`对于同一页面上的每个视频，都应使用属性：。
+1. 该 `class` 属性包含两个类：
     - `azuremediaplayer`应用 Azure Media Player UI 功能所需的样式
     - `amp-default-skin`将默认外观应用于 HTML5 控件
 1. `<source>`包含两个必需的属性
     - `src`属性可以包括从 Azure 媒体服务中添加的 **. ism/清单*文件，Azure Media Player 自动向播放机添加破折号、光滑和 HLS 的 url
     - `type`特性是所需的流 MIME 类型。 与 *". ism/manifest"* 关联的 MIME 类型是 *"application/vnd.apple.mpegurl. vnd.ms-sstr + xml"*
-1. 上的*可选* `<data-setup>`属性会`<source>`告诉 Azure Media Player 是否有来自 Azure 媒体服务的流的任何唯一传递策略，包括但不限于加密类型（AES 或 PlayReady、Widevine 或 FairPlay）和令牌。
+1. 上的*可选* `<data-setup>` 属性 `<source>` 会告诉 Azure Media Player 是否有来自 Azure 媒体服务的流的任何唯一传递策略，包括但不限于加密类型（AES 或 PlayReady、Widevine 或 FairPlay）和令牌。
 
 包含/排除属性、设置、源和跟踪，与 HTML5 视频完全相同。
 
@@ -70,7 +73,7 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
     </video>
 ```
 
-默认情况下，较大的 "播放" 按钮位于左上角，因此它不会涵盖海报中感兴趣的部分。 如果希望将大容量游戏居中，可以向`amp-big-play-centered` `class` `<video>`元素添加其他。
+默认情况下，较大的 "播放" 按钮位于左上角，因此它不会涵盖海报中感兴趣的部分。 如果希望将大容量游戏居中，可以向元素添加其他 `amp-big-play-centered` `class` `<video>` 。
 
 ### <a name="alternative-setup-for-dynamically-loaded-html"></a>动态加载的 HTML 的替代设置 ###
 
@@ -99,7 +102,7 @@ Azure Media Player 易于设置。 只需几分钟即可直接从 Azure 媒体�
     }]);
 ```
 
-`amp`函数中的第一个参数是视频标记的 ID。 将其替换为你自己的。
+函数中的第一个参数 `amp` 是视频标记的 ID。 将其替换为你自己的。
 
 第二个参数是选项对象。 它允许你设置其他选项，例如，可以对数据安装属性进行设置。
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 9ac7640dd8b63c72bac83c98e07cf861fb26c870
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 471675de58161fc0c0110e2968089da062c6da87
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845777"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960556"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 存储管理商业市场潜在顾客
 
@@ -33,11 +33,11 @@ ms.locfileid: "83845777"
 3. 在 Azure 门户中，使用以下过程创建存储帐户。  
     1. 选择左侧菜单栏中的“+ 创建资源”。  右侧将显示“新建”窗格（边栏选项卡）。
     2. 在“新建”窗格中选择“存储” 。  右侧将显示“精选”列表。
-    3. 选择“存储帐户”开始创建帐户。  按照[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)一文中的说明进行操作。
+    3. 选择“存储帐户”开始创建帐户。  按照[创建存储帐户](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)一文中的说明进行操作。
 
     ![创建 Azure 存储帐户的步骤](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
-    有关存储帐户的详细信息，请选择[快速入门教程](https://docs.microsoft.com/azure/storage/)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
+    有关存储帐户的详细信息，请参阅此[快速入门](../../storage/blobs/storage-quickstart-blobs-portal.md)。  有关存储定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 4. 等待存储帐户预配完成，该过程通常需要几分钟时间。  然后从 Azure 门户的“主页”页面访问你的存储帐户，方法是选择“查看所有资源”或选择 Azure 门户左侧导航菜单栏中的“所有资源”  。
 

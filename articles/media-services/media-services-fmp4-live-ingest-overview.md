@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74888047"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958556"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure 媒体服务分片 MP4 实时引入规范 
 
@@ -56,7 +56,7 @@ ms.locfileid: "74888047"
 ## <a name="4-protocol-format--http"></a>4.协议格式 – HTTP
 媒体服务基于 ISO 分片 MP4 的实时引入使用长时间运行的标准 HTTP POST 请求，以将分片 MP4 格式打包的编码媒体数据传输到服务。 每个 HTTP POST 发送一个完整的分片 MP4 位流（“流”），其开头为标头框（“ftyp”  、“实时服务器清单框”  及“moov”框  ），后接一系列片段（“moof”  与“mdat”  框）。 有关 HTTP POST 请求的 URL 语法，请参阅 [1] 中的第 9.2 节。 以下是 POST URL 的示例： 
 
-    http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)
+`http://customer.channel.mediaservices.windows.net/ingest.isml/streams(720p)`
 
 ### <a name="requirements"></a>要求
 详细要求如下：

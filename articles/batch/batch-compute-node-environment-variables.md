@@ -3,22 +3,22 @@ title: 任务运行时环境变量
 description: Azure Batch Analytics 的任务运行时环境变量指南和参考。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 0b3f00bcae50b0913432b122c85a3725a489679a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745329"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960905"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 运行时环境变量
 
 [Azure Batch 服务](https://azure.microsoft.com/services/batch/)在计算节点上设置以下环境变量。 可以在任务命令行中引用这些环境变量，也可在命令行运行的程序和脚本中引用它们。
 
-要详细了解如何将环境变量和 Batch 结合使用，请参阅[任务环境设置](https://docs.microsoft.com/azure/batch/batch-api-basics#environment-settings-for-tasks)。
+要详细了解如何将环境变量和 Batch 结合使用，请参阅[任务环境设置](./jobs-and-tasks.md#environment-settings-for-tasks)。
 
 ## <a name="environment-variable-visibility"></a>环境变量的可见性
 
-这些环境变量仅在**任务用户**（即执行任务的节点上的用户帐户）的上下文中可见。 如果通过远程桌面协议 (RDP) 或安全外壳 (SSH) [远程连接](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes)到计算节点并列出环境变量，将*看不到*这些变量。 这是因为，用于远程连接的用户帐户与任务使用的帐户不同。
+这些环境变量仅在**任务用户**（即执行任务的节点上的用户帐户）的上下文中可见。 如果通过远程桌面协议 (RDP) 或安全外壳 (SSH) [远程连接](./error-handling.md#connect-to-compute-nodes)到计算节点并列出环境变量，将*看不到*这些变量。 这是因为，用于远程连接的用户帐户与任务使用的帐户不同。
 
 要获取环境变量的当前值，请在 Windows 计算节点上启动 `cmd.exe`，或在 Linux 节点上启动 `/bin/sh`：
 
@@ -40,8 +40,8 @@ ms.locfileid: "83745329"
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | 任务所属的 Batch 帐户名。                  | 所有任务。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch 帐户的 URL。 | 所有任务。 | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | 所有应用包环境变量的前缀。 例如，如果应用程序“FOO”版本 1 已安装到池上，则环境变量为 AZ_BATCH_APP_PACKAGE_FOO_1（Linux 上）或 AZ_BATCH_APP_PACKAGE_FOO#1（Windows 上）。 AZ_BATCH_APP_PACKAGE_FOO_1 指向将包下载到的位置（文件夹）。 使用应用包的默认版本时，使用不带版本号的 AZ_BATCH_APP_PACKAGE 环境变量。 如果在 Linux 中，应用程序包名称为“Agent-linux-x64”且版本为“1.1.46.0”，则环境变量实际为：AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0（使用下划线和小写）。 请参阅[此处](https://docs.microsoft.com/azure/batch/batch-application-packages#execute-the-installed-applications)了解详细信息。 | 包含关联应用包的任何任务。 如果节点本身拥有应用程序包，则还可用于所有任务。 | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) 或 AZ_BATCH_APP_PACKAGE_FOO#1 (Windows) |
-| AZ_BATCH_AUTHENTICATION_TOKEN   | 一种身份验证令牌，用于授予对一组有限的 Batch 服务操作的访问权限。 仅当[添加任务](/rest/api/batchservice/task/add#request-body)时设置 [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) 时，才会显示此环境变量。 令牌值在 Batch API 中用作凭据以创建 Batch 客户端，例如在 [BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) 中。 | 所有任务。 | OAuth2 访问令牌 |
+| AZ_BATCH_APP_PACKAGE            | 所有应用包环境变量的前缀。 例如，如果应用程序“FOO”版本 1 已安装到池上，则环境变量为 AZ_BATCH_APP_PACKAGE_FOO_1（Linux 上）或 AZ_BATCH_APP_PACKAGE_FOO#1（Windows 上）。 AZ_BATCH_APP_PACKAGE_FOO_1 指向将包下载到的位置（文件夹）。 使用应用包的默认版本时，使用不带版本号的 AZ_BATCH_APP_PACKAGE 环境变量。 如果在 Linux 中，应用程序包名称为“Agent-linux-x64”且版本为“1.1.46.0”，则环境变量实际为：AZ_BATCH_APP_PACKAGE_agent_linux_x64_1_1_46_0（使用下划线和小写）。 请参阅[此处](./batch-application-packages.md#execute-the-installed-applications)了解详细信息。 | 包含关联应用包的任何任务。 如果节点本身拥有应用程序包，则还可用于所有任务。 | AZ_BATCH_APP_PACKAGE_FOO_1 (Linux) 或 AZ_BATCH_APP_PACKAGE_FOO#1 (Windows) |
+| AZ_BATCH_AUTHENTICATION_TOKEN   | 一种身份验证令牌，用于授予对一组有限的 Batch 服务操作的访问权限。 仅当[添加任务](/rest/api/batchservice/task/add#request-body)时设置 [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) 时，才会显示此环境变量。 令牌值在 Batch API 中用作凭据以创建 Batch 客户端，例如在 [BatchClient.Open() .NET API](/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) 中。 | 所有任务。 | OAuth2 访问令牌 |
 | AZ_BATCH_CERTIFICATES_DIR       | [任务工作目录][files_dirs]内的目录，在其中存储用于 Linux 计算节点的证书。 此环境变量不适用于 Windows 计算节点。                                                  | 所有任务。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | 分配给[多实例任务][multi_instance]的节点列表，采用 `nodeIP,nodeIP` 格式。 | 多实例主要和子任务。 | `10.0.0.4,10.0.0.5` |
 | AZ_BATCH_IS_CURRENT_NODE_MASTER | 指定当前节点是否为[多实例任务][multi_instance]的主节点。 可能值为 `true` 和 `false`。| 多实例主要和子任务。 | `true` |
@@ -63,7 +63,7 @@ ms.locfileid: "83745329"
 | AZ_BATCH_TASK_WORKING_DIR       | 节点上的[任务工作目录][files_dirs]的完整路径。 当前正在运行的任务具有对此目录的读取/写入权限。 | 所有任务。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
 | CCP_NODES                       | 分配给[多实例任务][multi_instance]的节点和每节点内核数的列表。 使用 `numNodes<space>node1IP<space>node1Cores<space>` 格式列出了节点和内核<br/>`node2IP<space>node2Cores<space> ...`，其中节点数后跟一个或多个节点 IP 地址和每个节点的内核数。 |  多实例主要和子任务。 |`2 10.0.0.4 1 10.0.0.5 1` |
 
-[files_dirs]: https://azure.microsoft.com/documentation/articles/batch-api-basics/#files-and-directories
-[multi_instance]: https://azure.microsoft.com/documentation/articles/batch-mpi/
-[coord_cmd]: https://azure.microsoft.com/documentation/articles/batch-mpi/#coordination-command
-[app_cmd]: https://azure.microsoft.com/documentation/articles/batch-mpi/#application-command
+[files_dirs]: ./files-and-directories.md
+[multi_instance]: ./batch-mpi.md
+[coord_cmd]: ./batch-mpi.md#coordination-command
+[app_cmd]: ./batch-mpi.md#application-command

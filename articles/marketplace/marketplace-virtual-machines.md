@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: e0f0f0fdb75961f3ea9ed90e1684ff5ecd2a792d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858312"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961534"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>虚拟机产品/服务的发布指南
 
@@ -54,16 +54,16 @@ ms.locfileid: "82858312"
 | 要求 | 详细信息 |  
 |:--- |:--- | 
 | 计费和计量 | VM 必须支持 BYOL 或即用即付每月计费。 |  
-| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关创建 VHD 的详细信息，请参阅： <ul> <li>[Azure 上的 linux 分发](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)版（适用于 linux vhd）。</li> <li>[创建与 Azure 兼容的 VHD](./partner-center-portal/azure-vm-create-offer.md) （适用于 Windows vhd）。</li> </ul> |  
+| 与 Azure 兼容的虚拟硬盘 (VHD) | 必须基于 Windows 或 Linux 构建 VM。 有关创建 VHD 的详细信息，请参阅： <ul> <li>[Azure 上的 linux 分发](../virtual-machines/linux/endorsed-distros.md)版（适用于 linux vhd）。</li> <li>[创建与 Azure 兼容的 VHD](./partner-center-portal/azure-vm-create-offer.md) （适用于 Windows vhd）。</li> </ul> |  
 
 >[!Note]
 >现在提供了云解决方案提供商（CSP）合作伙伴渠道选择。 有关通过 Microsoft CSP 合作伙伴渠道营销产品/服务的详细信息，请参阅[云解决方案提供商](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未执行此操作，请了解如何[通过 Azure Marketplace 拓展云业务](https://azuremarketplace.microsoft.com/sell)。
+如果尚未执行此操作，请了解如何[使用 Azure 市场发展云业务](https://azuremarketplace.microsoft.com/sell)。
 
 若要注册并开始使用合作伙伴中心，请执行以下操作：
 
-- [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，创建或完成产品/服务。
+- [登录合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
 - 有关详细信息，请参阅[创建虚拟机产品/服务](./partner-center-portal/azure-vm-create-offer.md)。

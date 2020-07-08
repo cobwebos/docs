@@ -4,12 +4,12 @@ description: 对云池启用自动缩放功能可以动态调整池中计算节�
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: cb40ea72dad2313618fb3c38bf73bf822f4b4433
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780247"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960837"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中计算节点的自动公式
 
@@ -127,6 +127,9 @@ $NodeDeallocationOption = taskcompletion;
 | $CurrentLowPriorityNodes |当前的低优先级计算节点数，包括所有已预占的节点。 |
 | $PreemptedNodeCount | 池中处于预占状态的节点数。 |
 
+> [!IMPORTANT]
+> 作业释放任务当前不包含在提供任务计数的上述变量中，如 $ActiveTasks 和 $PendingTasks。 根据您的自动缩放公式，这可能会导致删除节点，并且没有节点可用于运行作业释放任务。
+
 > [!TIP]
 > 上表中所示的服务定义的只读变量是一些对象，它们提供各种方法来访问与其相关的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#getsampledata)。
 >
@@ -166,7 +169,7 @@ $NodeDeallocationOption = taskcompletion;
 
 上一部分中列出的类型允许以下操作。
 
-| Operation | 支持的运算符 | 结果类型 |
+| 操作 | 支持的运算符 | 结果类型 |
 | --- | --- | --- |
 | double *operator* double |+, -, *, / |double |
 | double *operator* timeinterval |* |timeinterval |
@@ -313,7 +316,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
       <li>$NetworkInBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>任务</b></td>
+    <td><b>Task</b></td>
     <td><p>任务指标基于任务的状态（例如活动、挂起和已完成）。 以下服务定义的变量可用于根据任务指标调整池大小：</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -372,17 +375,17 @@ $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 
 ## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>使用 Batch SDK 创建启用自动缩放的池
 
-可以使用任意 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](https://docs.microsoft.com/rest/api/batchservice/) [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md) 和 [Batch CLI](batch-cli-get-started.md) 配置池自动缩放。 本部分提供了 .NET 和 Python 示例。
+可以使用任意 [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development)、[Batch REST API](/rest/api/batchservice/) [Batch PowerShell cmdlet](batch-powershell-cmdlets-get-started.md) 和 [Batch CLI](batch-cli-get-started.md) 配置池自动缩放。 本部分提供了 .NET 和 Python 示例。
 
 ### <a name="net"></a>.NET
 
 若要在 .NET 中创建启用自动缩放的池，请遵循以下步骤：
 
-1. 使用 [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 创建池。
-1. 将 [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) 属性设置为 `true`。
-1. 使用自动缩放公式设置 [ CloudPool.AutoScaleFormula ](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) 属性。
-1. （可选）设置 [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) 属性（默认值为 15 分钟）。
-1. 使用 [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) 或 [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 提交池。
+1. 使用 [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) 创建池。
+1. 将 [CloudPool.AutoScaleEnabled](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) 属性设置为 `true`。
+1. 使用自动缩放公式设置 [ CloudPool.AutoScaleFormula ](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) 属性。
+1. （可选）设置 [CloudPool.AutoScaleEvaluationInterval](/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) 属性（默认值为 15 分钟）。
+1. 使用 [CloudPool.Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) 或 [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) 提交池。
 
 以下代码片段在 .NET 中创建启用自动缩放的池。 该池的自动缩放公式在星期一将专用节点的目标数设置为 5，在其他星期日期将该目标数设置为 1。 [自动缩放间隔](#automatic-scaling-interval)设置为 30 分钟。 在本代码片段以及本文中的其他 C# 代码片段中，`myBatchClient` 是 [BatchClient][net_batchclient] 类的适当初始化的实例。
 
@@ -519,11 +522,11 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 若要评估自动缩放公式，必须先通过有效的公式对池启用自动缩放。 若要在尚未启用自动缩放的池上测试公式，请在首次启用自动缩放时使用单行公式 `$TargetDedicatedNodes = 0`。 然后使用以下方法之一来评估要测试的公式：
 
-* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) 或 [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient.PoolOperations.EvaluateAutoScale](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) 或 [EvaluateAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     这些 Batch.NET 方法需要现有池的 ID 和包含要评估的自动缩放公式的字符串。
 
-* [评估自动缩放公式](https://docs.microsoft.com/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
+* [评估自动缩放公式](/rest/api/batchservice/evaluate-an-automatic-scaling-formula)
 
     在此 REST API 请求中，在 URI 中指定池 ID，并在请求正文的 autoScaleFormula 元素中指定自动缩放公式。 操作的响应包含任何可能与该公式相关的错误信息。
 
@@ -609,13 +612,13 @@ AutoScaleRun.Results:
 
 为确保公式按预期执行，建议定期检查 Batch 在池上执行的自动缩放运行的结果。 为此，获取（或刷新）对池的引用，并检查上一次自动缩放运行的属性。
 
-在 Batch .NET 中，[CloudPool.AutoScaleRun ](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) 属性具有多个属性，其提供了有关在池上执行的最新自动缩放运行的信息：
+在 Batch .NET 中，[CloudPool.AutoScaleRun ](/dotnet/api/microsoft.azure.batch.cloudpool.autoscalerun) 属性具有多个属性，其提供了有关在池上执行的最新自动缩放运行的信息：
 
-* [AutoScaleRun.Timestamp](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
-* [AutoScaleRun.Results](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.results)
-* [AutoScaleRun.Error](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.autoscalerun.error)
+* [AutoScaleRun.Timestamp](/dotnet/api/microsoft.azure.batch.autoscalerun.timestamp)
+* [AutoScaleRun.Results](/dotnet/api/microsoft.azure.batch.autoscalerun.results)
+* [AutoScaleRun.Error](/dotnet/api/microsoft.azure.batch.autoscalerun.error)
 
-在 REST API 中，[获取有关池的信息](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool)请求返回有关池的信息，其中包括 [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-pool) 属性中最新自动缩放运行的信息。
+在 REST API 中，[获取有关池的信息](/rest/api/batchservice/get-information-about-a-pool)请求返回有关池的信息，其中包括 [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) 属性中最新自动缩放运行的信息。
 
 以下 C# 代码片段使用 Batch .NET 库来打印有关池 _myPool_ 上的最新自动缩放运行的信息：
 
@@ -732,15 +735,15 @@ string formula = string.Format(@"
 * [通过并发节点任务最大限度地提高 Azure Batch 计算资源的利用率](batch-parallel-node-tasks.md)详细说明了如何在池中的计算节点上同时执行多个任务。 除了自动缩放以外，此功能还可帮助降低某些工作负荷的作业持续时间，从而节省资金。
 * 为了进一步提升效率，请确保 Batch 应用程序以最佳的方式查询 Batch 服务。 请参阅[有效地查询 Azure Batch 服务](batch-efficient-list-queries.md)，了解在查询数千个计算节点或任务的状态时，如何限制跨线数据量。
 
-[net_api]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
-[net_batchclient]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient
-[net_cloudpool_autoscaleformula]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
-[net_cloudpool_autoscaleevalinterval]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
-[net_enableautoscaleasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
-[net_maxtasks]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
-[net_poolops_resizepoolasync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
+[net_api]: /dotnet/api/microsoft.azure.batch
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudpool_autoscaleformula]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula
+[net_cloudpool_autoscaleevalinterval]: /dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval
+[net_enableautoscaleasync]: /dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync
+[net_maxtasks]: /dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode
+[net_poolops_resizepoolasync]: /dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync
 
-[rest_api]: https://docs.microsoft.com/rest/api/batchservice/
-[rest_autoscaleformula]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_autoscaleinterval]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
-[rest_enableautoscale]: https://docs.microsoft.com/rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_api]: /rest/api/batchservice/
+[rest_autoscaleformula]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_autoscaleinterval]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool
+[rest_enableautoscale]: /rest/api/batchservice/enable-automatic-scaling-on-a-pool

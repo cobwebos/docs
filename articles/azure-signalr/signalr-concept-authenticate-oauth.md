@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: cb99a0690e1d07f058572b188ae0b76995f48504
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194595"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85961789"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服务身份验证
 
@@ -67,8 +67,10 @@ ms.locfileid: "82194595"
 
 4. 新的 OAuth 应用注册完成后，使用以下命令将客户端 ID 和客户端密码添加到机密管理器 。 将 Your_GitHub_Client_Id 和 Your_GitHub_Client_Secret 替换为 OAuth 应用的值 。
 
-        dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
-        dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```dotnetcli
+    dotnet user-secrets set GitHubClientId Your_GitHub_Client_Id
+    dotnet user-secrets set GitHubClientSecret Your_GitHub_Client_Secret
+    ```
 
 ## <a name="implement-the-oauth-flow"></a>实现 OAuth 流
 
@@ -76,9 +78,11 @@ ms.locfileid: "82194595"
 
 1. 添加对最新 *Microsoft.AspNetCore.Authentication.Cookies* 和 *AspNet.Security.OAuth.GitHub* 包的引用并还原所有包。
 
-        dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
-        dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
-        dotnet restore
+    ```dotnetcli
+    dotnet add package Microsoft.AspNetCore.Authentication.Cookies -v 2.1.0-rc1-30656
+    dotnet add package AspNet.Security.OAuth.GitHub -v 2.0.0-rc2-final
+    dotnet restore
+    ```
 
 1. 打开 Startup.cs，并为以下命名空间添加 `using` 语句：
 
@@ -345,19 +349,25 @@ ms.locfileid: "82194595"
 
 2. 使用 .NET Core CLI 生成应用，在命令行界面中执行以下命令：
 
-        dotnet build
+    ```dotnetcli
+    dotnet build
+    ```
 
 3. 成功完成应用生成后，执行以下命令，在本地运行 Web 应用：
 
-        dotnet run
+    ```dotnetcli
+    dotnet run
+    ```
 
     默认情况下，应用将本地托管在端口 5000 上：
 
-        E:\Testing\chattest>dotnet run
-        Hosting environment: Production
-        Content root path: E:\Testing\chattest
-        Now listening on: http://localhost:5000
-        Application started. Press Ctrl+C to shut down.
+    ```output
+    E:\Testing\chattest>dotnet run
+    Hosting environment: Production
+    Content root path: E:\Testing\chattest
+    Now listening on: http://localhost:5000
+                    Application started. Press Ctrl+C to shut down.
+    ```
 
 4. 启动浏览器窗口并导航到 `http://localhost:5000`。 单击顶部的“此处”链接，使用 GitHub 进行登录。
 
