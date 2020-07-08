@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75680241"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight 中的 Apache Hadoop 索引故障排除文章

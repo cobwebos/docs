@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 91aac279a264d64ace5988d147c4caf8c52e9656
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864139"
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>在 Azure 上使用 PySpark 和 Scala 进行 HDInsight Spark 数据科学演练
@@ -47,5 +46,5 @@ ms.locfileid: "75864139"
 
 有关团队数据科学过程的概述，请参阅[团队数据科学过程概述](overview.md)。
 
-有关团队数据科学过程生命周期的讨论，请参阅[团队数据科学过程生命周期](lifecycle.md)。 此生命周期概述了在执行项目时通常遵循的步骤。 
+有关 Team Data Science Process 生命周期的讨论，请参阅 [Team Data Science Process 生命周期](lifecycle.md)。 此生命周期概述了执行项目时，其从开始到结束所遵循的步骤。 
 

@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772612"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>排查 Linux 或 Windows 上的 Azure 虚拟机性能问题
@@ -139,7 +138,7 @@ ms.locfileid: "75772612"
 
 持续增长的消耗–可能的应用程序的 "预热"，这种消耗是在启动数据库引擎的情况下进行的。 然而，这也可能是应用程序内存泄漏的迹象。 确定应用程序并了解行为是否正常。
 
-页面或交换文件使用情况–检查是否正在使用 Windows 分页文件（位于 D：\)或 Linux 交换文件（位于`/dev/sdb`）上，是否正在使用很大程度。 如果这些文件以外的卷上没有内容，请检查这些磁盘上的读/写是否较高。 此问题表示内存不足的情况。
+页面或交换文件使用情况–检查是否正在使用 Windows 分页文件（位于 D： \) 或 Linux 交换文件（位于）上，是否 `/dev/sdb` 正在使用很大程度。 如果这些文件以外的卷上没有内容，请检查这些磁盘上的读/写是否较高。 此问题表示内存不足的情况。
 
 ### <a name="high-memory-utilization-remediation"></a>高内存利用率修正
 
@@ -252,4 +251,4 @@ AverageE2ELatency 表示客户端延迟。 验证应用程序执行 IOPS 的方�
 
 如果在本文的任何位置需要更多帮助，请联系 MSDN Azure 上的 Azure 专家[并 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)。
 
-或者，提交 Azure 支持事件。 转到[Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 "**获取支持**"。
+或者，提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

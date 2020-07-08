@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
 ms.openlocfilehash: 872dad95fc5b536c51e251612f40439da020a059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75779631"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>配置 Postman 以进行媒体服务 v3 REST API 调用
@@ -32,7 +31,7 @@ ms.locfileid: "75779631"
 - 获取[访问 API](access-api-cli-how-to.md) 所需的信息
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler   。 
 
 > [!IMPORTANT]
 > 查看[命名约定](media-services-apis-overview.md#naming-conventions)。
@@ -50,19 +49,19 @@ ms.locfileid: "75779631"
 ### <a name="configure-the-environment"></a>配置环境 
 
 1. 打开 **Postman** 应用。
-2. 在屏幕的右侧，选择“管理环境”  选项。
+2. 在屏幕的右侧，选择“管理环境”选项。
 
     ![管理环境](./media/develop-with-postman/postman-import-env.png)
-4. 从“管理环境”  对话框中，单击“导入”  。
+4. 从“管理环境”对话框中，单击“导入”。
 2. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Azure Media Service v3 Environment.postman_environment.json` 文件。
 6. **Azure Media Service v3 Environment** 环境已添加。
 
     > [!Note]
-    > 使用从上面的“访问媒体服务 API”  部分获得的值更新访问权限变量。
+    > 使用从上面的“访问媒体服务 API”部分获得的值更新访问权限变量。
 
 7. 双击所选的文件，并输入通过执行访问 API 步骤获得的值。
 8. 关闭对话框。
-9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。 
+9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。
 
     ![选择环境](./media/develop-with-postman/choose-env.png)
    
@@ -80,7 +79,7 @@ ms.locfileid: "75779631"
 
 1. 在 Postman 应用的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
 2. 然后，选择“获取适用于服务主体身份验证的 Azure AD 令牌”。
-3. 按“发送”。 
+3. 按“发送”。
 
     将会发送以下 **POST** 操作。
 
@@ -92,12 +91,12 @@ ms.locfileid: "75779631"
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
-## <a name="troubleshooting"></a>故障排除 
+## <a name="troubleshooting"></a>疑难解答 
 
-* 如果应用程序失败并显示“HTTP 504:网关超时”，请确保没有将位置变量显式设置为媒体服务帐户的预期位置以外的值。 
+* 如果你的应用程序失败并显示 "HTTP 504： Gateway Timeout"，请确保位置变量未显式设置为媒体服务帐户预期位置之外的值。 
 * 如果收到“找不到帐户”错误，还请检查以确保将正文 JSON 消息中的 location 属性设置为媒体服务帐户所在的位置。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [将文件上传到媒体服务帐户 - REST](upload-files-rest-how-to.md)
 - [使用媒体服务创建筛选器 - REST](filters-dynamic-manifest-rest-howto.md)

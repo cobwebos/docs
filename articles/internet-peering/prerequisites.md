@@ -1,7 +1,7 @@
 ---
-title: 设置与 Microsoft 之间的对等互连的先决条件
+title: 设置与 Microsoft 进行对等互连的先决条件
 titleSuffix: Azure
-description: 设置与 Microsoft 之间的对等互连的先决条件
+description: 设置与 Microsoft 进行对等互连的先决条件
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,13 +9,12 @@ ms.topic: conceptual
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 3c820a7be561aeef9b7e50fd0ac0cf4dee721af8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75775402"
 ---
-# <a name="prerequisites-to-set-up-peering-with-microsoft"></a>设置与 Microsoft 之间的对等互连的先决条件
+# <a name="prerequisites-to-set-up-peering-with-microsoft"></a>设置与 Microsoft 进行对等互连的先决条件
 
 在请求新的对等互连或将旧对等互连转换为 Azure 资源之前，请确保满足以下先决条件。
 

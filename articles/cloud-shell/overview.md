@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
 ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75832474"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
@@ -73,7 +72,7 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * [Visual Studio Code Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>连接 Microsoft Azure 文件存储
-Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已`clouddrive`装载文件共享。  首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
+Cloud Shell 计算机是临时的，但文件通过以下两种方式持久保存：通过磁盘映像，并通过名为的已装载文件共享 `clouddrive` 。  首次启动时，Cloud Shell 将提示它会代你创建资源组、存储帐户和 Azure 文件共享。 这是一个一次性步骤，将来会针对所有会话自动附加。 单个文件共享可以映射，将由 Cloud Shell 中的 Bash 和 PowerShell 使用。
 
 详细了解如何装载[新的或现有的存储帐户](persisting-shell-storage.md)，或了解[Cloud Shell 中使用的持久性机制](persisting-shell-storage.md#how-cloud-shell-storage-works)。
 

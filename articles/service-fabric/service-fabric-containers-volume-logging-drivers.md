@@ -4,10 +4,9 @@ description: Service Fabric 支持使用 Azure 文件备份容器中的卷。
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750037"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>适用于 Service Fabric 的 Azure 文件存储卷驱动程序

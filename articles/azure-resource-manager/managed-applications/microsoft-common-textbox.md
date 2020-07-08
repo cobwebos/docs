@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652276"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素
@@ -49,7 +48,7 @@ ms.locfileid: "75652276"
 - 如果 `constraints.required` 设置为 true，则文本框必须包含值才能成功通过验证  。 默认值是 **false**秒。
 - `constraints.regex` 是一个 JavaScript 正则表达式模式。 如果指定，则文本框的值必须与模式完全匹配才能成功通过验证。 默认值为 **null**。
 - `constraints.validationMessage` 是当文本框的值未通过验证时会显示的一个字符串。 如果未指定，则会使用文本框的内置验证消息。 默认值为 **null**。
-- 当 `constraints.regex` 设置为 `constraints.required`false**时可以为** 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
+- 当 `constraints.required` 设置为 **false** 时可以为 `constraints.regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
 
 ## <a name="next-steps"></a>后续步骤
 

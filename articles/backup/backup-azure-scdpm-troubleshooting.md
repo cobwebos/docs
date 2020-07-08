@@ -4,10 +4,9 @@ description: 在本文中，了解使用 System Center Data Protection Manager �
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75664751"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>排查 System Center Data Protection Manager 问题
@@ -58,7 +57,7 @@ ms.locfileid: "75664751"
 
 - 确保使用最新版本的 Azure 备份代理。
 - 确保在 Data Protection Manager 服务器与受保护服务器之间建立连接（网络/防火墙/代理）。
-- 若要保护 SQL 服务器，请确保“登录属性” **“NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。**  >   
+- 若要保护 SQL 服务器，请确保“登录属性” > “NT AUTHORITY\SYSTEM”属性显示已启用“sysadmin”设置。
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>错误：未根据保管库凭据文件中的指定注册服务器
 

@@ -12,10 +12,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864088"
 ---
 # <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-sql SQL Server 数据科学演练
@@ -27,7 +26,7 @@ ms.locfileid: "75864088"
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>在 SQL Server 中使用 Python 和 SQL 查询预测出租车小费 
 
-[使用 SQL Server](sql-walkthrough.md)演练显示了如何生成和部署机器学习分类和回归模型。  数据是公开提供的 NYC 出租车行程和费用数据集。
+[使用 SQL Server](sql-walkthrough.md)演练显示了如何生成和部署机器学习分类和回归模型。  所用数据是公开提供的纽约市出租车行程和费用数据集。
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>在 SQL Server 中使用 Microsoft R 预测出租车小费 

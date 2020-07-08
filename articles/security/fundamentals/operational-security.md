@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749961"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
@@ -140,7 +139,7 @@ Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集�
 
 - 网络流量：使用从 Microsoft 基础结构中采样的网络流量元数据，例如源/目标 IP/端口、数据包大小以及网络协议。
 
--   合作伙伴解决方案：使用来自集成合作伙伴解决方案（例如防火墙和防恶意软件解决方案）的安全警报。
+-   合作伙伴解决方案：使用来自集成合作伙伴解决方案（例如防火墙和反恶意软件解决方案）的安全警报。
 
 -   用户的虚拟机：使用用户虚拟机中的配置信息，以及有关安全事件的信息，例如 Windows 事件和审核日志、IIS 日志、系统日志消息和故障转储文件。
 
@@ -148,11 +147,11 @@ Azure 安全中心可帮助保护 Azure 资源。 它为 Azure 订阅提供集�
 
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
 
--   **数据隔离**：服务的每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
+-   **数据隔离**：服务中每个组件的数据都保持逻辑隔离。 所有数据均按组织进行标记。 此标记方式贯穿数据的整个生命周期，在服务的每个层强制实施。
 
 -   数据访问****：为提供安全建议和调查潜在的安全威胁，Microsoft 人员可能访问 Azure 服务收集或分析的信息，包括故障转储文件、进程创建事件、VM 磁盘快照和项目，因此可能意外地包括了虚拟机中的客户数据或个人数据。 我们遵守 [Microsoft Online Services 条款和隐私声明](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，其中指出，Microsoft 不会出于广告或类似的商业目的利用客户数据，或者从客户数据衍生信息。
 
--   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强用户预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
+-   **数据使用**：Microsoft 使用多个租户所使用的模式和威胁情报增强预防和检测威胁的能力；执行过程中遵循[隐私声明](https://www.microsoft.com/en-us/privacystatement/OnlineServices/)中所述的隐私承诺。
 
 ### <a name="data-location"></a>数据位置
 
@@ -199,7 +198,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 ### <a name="metrics"></a>指标
 
-在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](../../monitoring/monitoring-data-collection.md)，以便进行监视与故障排除。 指标是重要的遥测来源，允许执行以下任务：
+在 Azure 监视器中可以使用遥测来查看 Azure 上的工作负荷的性能与运行状况。 最重要的 Azure 遥测数据类型是大多数 Azure 资源发出的指标（也称为性能计数器）。 Azure Monitor 提供多种方式来配置和使用这些[指标](../../monitoring/monitoring-data-collection.md)，以便进行监视和故障排除。 指标是重要的遥测来源，允许执行以下任务：
 
 -   通过在门户图表上绘制资源（例如 VM、网站或逻辑应用）的指标并将该图表固定到仪表板，来**跟踪资源的性能**。
 
@@ -240,7 +239,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 [存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)可存储一些指标，这些指标包括有关存储服务请求的聚合事务统计信息和容量数据。 在 API 操作级别以及存储服务级别报告事务，并在存储服务级别报告容量。 度量值数据可用于分析存储服务使用情况，诊断对存储服务所发出请求的问题以及提高使用服务的应用程序的性能。
 
-[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。 存储分析日志记录可用于 [Blob、队列和表服务](../../storage/common/storage-introduction.md)。 存储分析记录成功和失败的存储服务请求的详细信息。
+[Azure 存储分析](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)执行日志记录并为存储帐户提供指标数据。 可以使用此数据为存储帐户跟踪请求、分析使用趋势和诊断问题。 存储分析日志记录可用于 [Blob、队列和表服务](../../storage/common/storage-introduction.md)。 存储分析记录成功和失败的存储服务请求的详细信息。
 
 可以使用该信息监视各个请求和诊断存储服务问题。 将最大程度地记录请求。 仅在针对服务终结点发出请求时才会创建日志条目。 例如，如果存储帐户的 Blob 终结点中存在活动，而表或队列终结点中没有该活动，则仅创建与 Blob 服务有关的日志。
 

@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75660233"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML 服务的 azure 存储解决方案
@@ -20,7 +19,7 @@ ms.locfileid: "75660233"
 HDInsight 上的机器学习服务可以使用不同的存储解决方案来保存数据、代码或包含分析结果的对象。 这些解决方案包括以下选项：
 
 - [Azure Blob](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
+- [Azure Data Lake 存储](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure 文件存储](https://azure.microsoft.com/services/storage/files/)
 
 还可以使用 HDInsight 群集访问多个 Azure 存储帐户或容器。 Azure 文件存储是在边缘节点上使用的便利数据存储选项，可用于将 Azure 存储文件共享装载到 Linux 文件系统。 任何具有受支持操作系统（如 Windows 或 Linux）的系统，都可以装载和使用 Azure 文件共享。
@@ -100,7 +99,7 @@ inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 
 所有目录和文件引用现在都指向存储帐户 `wasbs://container2@storage2.blob.core.windows.net`。 这是已指定的**名称节点**。
 
-配置 storage2 `/user/RevoShare/<SSH username>`上的**storage2**目录，如下所示：
+配置 `/user/RevoShare/<SSH username>` **storage2**上的目录，如下所示：
 
 ```bash
 hadoop fs -mkdir wasbs://container2@storage2.blob.core.windows.net/user
@@ -169,7 +168,7 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 还有一个方便的数据存储选项，可用于名为[Azure 文件](https://azure.microsoft.com/services/storage/files/)的边缘节点。 使用该选项可将 Azure 存储的文件共享装载到 Linux 文件系统。 对比 HDFS，如果可以在边缘节点上使用本机文件系统，则存储数据文件、R 脚本以及随后可能需要的结果对象将更方便。
 
-使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。 例如，自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。 有关详细信息，请参见:
+使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。 例如，自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。 有关详情，请参阅：
 
 - [如何将 Azure 文件存储与 Linux 配合使用](../../storage/files/storage-how-to-use-files-linux.md)
 - [如何配合使用 Azure 文件存储与 Windows ](../../storage/files/storage-dotnet-how-to-use-files.md)

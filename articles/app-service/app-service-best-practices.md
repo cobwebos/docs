@@ -8,10 +8,9 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768480"
 ---
 # <a name="best-practices-for-azure-app-service"></a>有关 Azure 应用服务的最佳实践
@@ -74,4 +73,4 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 - 选择**最佳方案**主页磁贴。
 - 若要查看应用的当前状态，请单击 "**可用性最佳实践 & 性能**" 或 "**最佳实践**" 以查看应用的当前状态。
 
-你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。
+你还可以使用此链接为你的资源直接打开应用服务诊断： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` 。

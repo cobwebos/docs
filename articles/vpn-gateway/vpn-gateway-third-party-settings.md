@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75862707"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>适用于 Azure VPN 网关的社区建议第三方 VPN 或防火墙设备设置
@@ -31,9 +30,9 @@ ms.locfileid: "75862707"
 |Cisco ASA  |[适用于 Azure VPN 上的 Cisco ASA 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[适用于 Azure VPN 上的 Cisco ISR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[适用于 Azure VPN 上的 Cisco ASR 的社区建议解决方案](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
-|Sonicwall |在 **Sonicwall 站点**上搜索 [Azure VPN](https://www.sonicwall.com/en-us/support) |
-| Checkpoint    |在 **Checkpoint 站点**上搜索 [Azure VPN](https://supportcenter.checkpoint.com/supportcenter/portal) |
-|Juniper |在 **Juniper 站点**上搜索 [Azure VPN]( https://www.juniper.net/search/public/)|
+|Sonicwall |在 [Sonicwall 站点](https://www.sonicwall.com/en-us/support)上搜索 **Azure VPN** |
+| Checkpoint    |在 [Checkpoint 站点](https://supportcenter.checkpoint.com/supportcenter/portal)上搜索 **Azure VPN** |
+|Juniper |在 [Juniper 站点]( https://www.juniper.net/search/public/)上搜索 **Azure VPN**|
 |Barracuda  |[适用于 Azure VPN 上的 Barracuda 的社区建议解决方案](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[适用于 Azure VPN 上的 F5 的社区建议解决方案](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
 |Palo       |[适用于 Azure VPN 上的 Palo 的社区建议解决方案](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |

@@ -8,10 +8,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666663"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>在 Azure 逻辑应用中的贸易合作伙伴之间以批或组的形式交换 EDI 消息
@@ -167,7 +166,7 @@ ms.locfileid: "75666663"
 
       ![选择“批接收方”逻辑应用](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. 选择此操作：“Batch_messages - <批接收方 **”  >**
+   4. 选择此操作：“Batch_messages - <批接收方>”
 
       ![选择“Batch_messages”操作](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

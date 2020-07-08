@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864275"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Team Data Science Process 团队主管的任务
@@ -77,7 +76,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 - 没有多个数据科学团队的小型数据科学小组。 
 - 具有多个数据科学团队的较大型数据科学小组，不过，该科学小组希望通过小组级冲刺规划等活动来优化团队间协作。 
 
-如果团队选择将其团队特定的存储库置于单个组项目下，则团队主管应使用类似* \<TeamName*的名称创建存储库，>模板和* \<TeamName>实用工具*。 例如： *TeamATemplate*和*TeamAUtilities*。 
+如果团队选择将团队特定的存储库置于单个组项目下，则团队主管应使用类似于* \<TeamName> 模板*和* \<TeamName> 实用工具*的名称创建存储库。 例如： *TeamATemplate*和*TeamAUtilities*。 
 
 在任何情况下，团队主管都需要让其团队成员知道要设置和克隆哪个模板和实用工具存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的项目下或者在单个项目下创建项目存储库。 
 
@@ -85,17 +84,17 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
 
 为团队创建单独的项目：
 
-1. 在 web 浏览器中，在 URL *https\//\<： server name>/\<组织名称>* 上，中转到组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
+1. 在 web 浏览器中，在 URL *https： \/ / \<server name> / \<organization name> *，中转到你的组的 Azure DevOps 组织主页，然后选择 "**新建项目**"。 
    
    ![选择“新建项目”](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
 1. 在“创建项目”对话框中的“项目名称”下输入团队名称（例如 *MyTeam*），然后选择“高级”。************ 
    
-1. 在“版本控制”下选择“Git”，然后在“工作项流程”下选择“敏捷”。**************** 然后选择“创建”  。 
+1. 在“版本控制”下选择“Git”，然后在“工作项流程”下选择“敏捷”。**************** 然后选择“创建”。 
    
    ![创建项目](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-此时将打开 "团队项目**摘要**" 页，其中包含页 URL *\//\<https：\<server name>/\<组织名称>/团队名称>*。
+此时将打开 "团队项目**摘要**" 页，其中包含页 URL *https： \/ / \<server name> / \<organization name> / \<team name> *。
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>将 MyTeam 默认存储库重命名为 TeamUtilities
 
@@ -140,9 +139,9 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
    ![选择“导入”](./media/team-lead-tasks/import-repo.png)
    
-1. 在“导入 Git 存储库”对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入小组通用模板存储库的 URL。**************** URL 为*https：\//\<server name\<>/组织名称>/_git/\<存储库名称>*。 例如：*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
+1. 在“导入 Git 存储库”对话框中，选择“Git”作为“源类型”，然后在“克隆 URL”下输入小组通用模板存储库的 URL。**************** URL 为*https： \/ / \<server name> / \<organization name> /_git/ \<repository name> *。 例如：*https:\//dev.azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*。 
    
-1. 选择“导入”  。 小组模板存储库的内容随即会导入到团队模板存储库中。 
+1. 选择“导入”。 小组模板存储库的内容随即会导入到团队模板存储库中。 
    
    ![导入小组通用模板存储库](./media/team-lead-tasks/import-repo-2.png)
    
@@ -199,7 +198,7 @@ TDSP 是一种敏捷的迭代式数据科学方法，可有效交付预测分析
    
 1. 切换到创建的目录。
    
-1. 在 Git Bash 中运行命令 `git clone <clone URL>`，其中 \<clone URL> 是从“克隆”对话框复制的 URL。****
+1. 在 Git Bash 中运行命令 `git clone <clone URL>` ，其中 \<clone URL> 是从**克隆**对话框中复制的 URL。
    
    例如，使用以下命令之一将 **TeamUtilities** 存储库克隆到本地计算机上的 *MyTeam* 目录。 
    

@@ -9,7 +9,6 @@ ms.topic: conceptual
 keywords: kinect, 固件, 更新, 恢复
 ms.openlocfilehash: eb60003a4233110cb33208bcb8e9784737bb2a8b
 ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2020
 ms.locfileid: "75771590"

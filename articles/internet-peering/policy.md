@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: a683ad71f5e80c91728262dc7bbabf36e9d68deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75775220"
 ---
 # <a name="peering-policy"></a>对等互连策略
@@ -65,7 +64,7 @@ Microsoft 对网络的一般要求在以下各节中进行了介绍。 它们适
     | 欧洲                   |   2 Gbps                       |
     | LATAM                    |   2 Gbps                       |
     | 中东              | 500 Mbps                       |
-    | NA                       |   2 Gbps                       |
+    | 不可用                       |   2 Gbps                       |
 
 * **多样性**
     * 在 NA、欧洲、APAC 和 LATAM 中，在至少三个地理位置相同的位置进行互连，并维护不同的容量，以允许流量在每地铁范围内进行故障转移。

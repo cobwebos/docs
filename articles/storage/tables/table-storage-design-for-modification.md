@@ -9,10 +9,9 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75771540"
 ---
 # <a name="design-for-data-modification"></a>针对数据修改的设计
@@ -48,4 +47,4 @@ ms.locfileid: "75771540"
 [表设计模式](table-storage-design-patterns.md)一文中的以下模式针对的是设计实现高效查询和设计实现高效数据修改之间的折衷方案：  
 
 * [复合键模式](table-storage-design-patterns.md#compound-key-pattern) - 通过复合 **RowKey** 值，客户端可使用单个点查询查找相关数据。  
-* [日志结尾模式](table-storage-design-patterns.md#log-tail-pattern) - 利用按日期和时间倒序方式排序的 *RowKey* 值，检索最近添加到分区中的 **n** 个实体。  
+* [日志结尾模式](table-storage-design-patterns.md#log-tail-pattern) - 利用按日期和时间倒序方式排序的 **RowKey** 值，检索最近添加到分区中的 *n* 个实体。  

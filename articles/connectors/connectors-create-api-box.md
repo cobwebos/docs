@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666765"
 ---
 # <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Box 中创建和管理文件
@@ -36,7 +35,7 @@ ms.locfileid: "75666765"
 * 要在其中访问 Box 帐户的逻辑应用。 若要通过 Box 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识。
-如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
+如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="connector-reference"></a>连接器参考
 

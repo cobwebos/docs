@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: 803453291b5cab2c51fec6641f8b096f62336325
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75665796"
 ---
 # <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Facebook 时间线和页面
@@ -22,7 +21,7 @@ ms.locfileid: "75665796"
 * 在收到新发布时使用触发器。
 * 使用发布到时间线、获取页面源等操作。 这些操作可获得响应，并使输出可用于其他操作。 例如，当时间线上有新发布时，可以获取该发布并将其推送到 Twitter 源。 
 
-你可以立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+若要立即开始创建逻辑应用，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-facebook"></a>创建到 Facebook 的连接
 

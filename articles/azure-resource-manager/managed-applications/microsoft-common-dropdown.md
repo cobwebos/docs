@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652380"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 元素
@@ -57,7 +56,7 @@ ms.locfileid: "75652380"
 - `constraints.allowedValues` 的标签是项的显示文本，并且当选中时，其值是元素的输出值。
 - 如果已指定，则默认值必须是 `constraints.allowedValues` 中存在的一个标签。 如果未指定，则将选择 `constraints.allowedValues` 中的第一个项。 默认值为 **null**。
 - `constraints.allowedValues` 必须至少有一项。
-- 若要模拟一个不需要的值，请向 `""` 添加一个具有标签且值为 `constraints.allowedValues`（空字符串）的项。
+- 若要模拟一个不需要的值，请向 `constraints.allowedValues` 添加一个具有标签且值为 `""`（空字符串）的项。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -14,15 +14,14 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750873"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
-[Azure Monitor](../../azure-monitor/overview.md)使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并为收集的指标和日志创建警报和通知。 可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
+[Azure Monitor](../../azure-monitor/overview.md)使你能够监视指标和诊断日志，以帮助你了解应用程序的执行情况。 可以监视媒体服务诊断日志，并针对收集的指标和日志创建警报与通知。 可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到[azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，然后将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)或使用第三方服务。
 
 有关详细信息，请参阅[Azure Monitor 度量值](../../azure-monitor/platform/data-platform.md)和[Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)。
 
@@ -38,7 +37,7 @@ ms.locfileid: "75750873"
 
 这些属性特定于密钥传送日志架构。
 
-|名称|说明|
+|“属性”|描述|
 |---|---|
 |keyId|请求的密钥的 ID。|
 |keyType|可以是以下值之一： "Clear" （无加密）、"FairPlay"、"PlayReady" 或 "Widevine"。|
