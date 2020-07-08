@@ -1,5 +1,5 @@
 ---
-title: 将数据库迁移到 Azure SQL 数据库中的单个或共用数据库 SQL Server
+title: 将 SQL Server 数据库迁移到 Azure SQL 数据库
 description: 了解 SQL Server 数据库迁移到 Azure SQL Database。
 keywords: 数据库迁移, SQL Server 数据库迁移, 数据库迁移工具, 迁移数据库, 迁移 SQL 数据库
 services: sql-database
@@ -12,20 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 861c6749c7843d64a39376366544668c77883c9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338339"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86081904"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>将 SQL Server 数据库迁移到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库的主要方法。 有关迁移到 Azure SQL 托管实例的信息，请参阅将[SQL Server 实例迁移到 AZURE sql 托管实例](../managed-instance/migrate-to-instance-from-sql-server.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
+本文介绍将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库的主要方法。 有关迁移到 Azure SQL 托管实例的信息，请参阅将[SQL Server 实例迁移到 AZURE sql 托管实例](../managed-instance/migrate-to-instance-from-sql-server.md)。 有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>迁移到单一数据库或共用数据库
 
-将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
+将 SQL Server 2005 或更高版本的数据库迁移到 Azure SQL 数据库有两种主要方法。 第一种方法相对简单，但需要在迁移过程中进行一定时间（可能较长）的停机。 第二种方法更复杂些，但在迁移过程中的停机时间大大缩短。
 
 两种方法均需使用 [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) 确保源数据库与 Azure SQL 数据库兼容。 除了与服务器级别和跨数据库操作相关的问题之外，SQL 数据库与 SQL Server 接近[功能奇偶校验](features-comparison.md)。 依赖[部分支持或不受支持的函数](transact-sql-tsql-differences-sql-server.md)的数据库和应用程序需要进行某种程度的[重新设计来修复这些不兼容性](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues)，才能迁移 SQL Server 数据库。
 

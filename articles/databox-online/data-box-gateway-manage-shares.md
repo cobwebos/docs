@@ -8,11 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5ca8f5d629a110d2a4d3b35cb357af2c723ec312
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2b26016ec67f0eecd785e3bfb951fe5fd607545
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339189"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079135"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
@@ -91,23 +92,23 @@ ms.locfileid: "84339189"
 
 在 Azure 门户中执行以下步骤，以刷新共享。
 
-1.   在 Azure 门户中转到“共享”。**** 选择并单击要刷新的共享。
+1. 在 Azure 门户中转到“共享”。**** 选择并单击要刷新的共享。
 
-    ![选择共享](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![选择共享](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.   单击“刷新”。 
+2. 单击“刷新”。 
 
-    ![单击“刷新”](media/data-box-gateway-manage-shares/refresh-2.png)
+   ![单击“刷新”](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.   当系统提示你进行确认时，单击 **“是”**。 此时会启动一个作业来刷新本地共享的内容。 
+3. 当系统提示你进行确认时，单击 **“是”**。 此时会启动一个作业来刷新本地共享的内容。 
 
-    ![确认刷新](media/data-box-gateway-manage-shares/refresh-3.png)
+   ![确认刷新](media/data-box-gateway-manage-shares/refresh-3.png)
  
 4.   刷新正在进行时，上下文菜单中的刷新选项会灰显。 单击作业通知以查看刷新作业的状态。
 
-5.   刷新所需的时间取决于 Azure 容器中的文件数以及设备上的文件数。 成功完成刷新后，共享时间戳将会更新。 即使刷新已部分失败，刷新操作也被视为成功，并时间戳会更新。 
+5. 刷新所需的时间取决于 Azure 容器中的文件数以及设备上的文件数。 成功完成刷新后，共享时间戳将会更新。 即使刷新已部分失败，刷新操作也被视为成功，并时间戳会更新。 
 
-    ![更新的时间戳](media/data-box-gateway-manage-shares/refresh-4.png)
+   ![更新的时间戳](media/data-box-gateway-manage-shares/refresh-4.png)
  
 失败时会引发警报。 警报中详细描述了原因，以及问题的建议解决方法。 警报中还会提供某个文件的链接，该文件包含失败的完整摘要，其中指出了无法更新或删除哪些文件。
 

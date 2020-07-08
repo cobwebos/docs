@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130392"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079881"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -277,8 +277,6 @@ ms.locfileid: "85130392"
 错误消息：正在对所选项执行其他操作。
 
 等待其他正在进行的操作完成，稍后重试。
-
-从文件： troubleshoot-azure-files.md
 
 ## <a name="common-soft-delete-related-errors"></a>常见软删除相关错误
 

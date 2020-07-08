@@ -5,14 +5,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767551"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86082244"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 进行脚本操作开发
 
@@ -226,7 +226,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>自定义脚本的帮助器方法
 
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh)脚本中。 使用以下命令下载这些方法并在脚本中使用：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。 这些方法包含在脚本中 [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) 。 使用以下命令下载这些方法并在脚本中使用：
 
 ```bash
 # Import the helper method module.
@@ -264,11 +264,15 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 以下语句设置环境变量：
 
-    VARIABLENAME=value
+```bash
+VARIABLENAME=value
+```
 
 其中，VARIABLENAME 是变量的名称。 若要访问变量，请使用 `$VARIABLENAME`。 例如，若要将位置参数提供的值指定为名为 PASSWORD 的环境变量，请使用以下语句：
 
-    PASSWORD=$1
+```bash
+PASSWORD=$1
+```
 
 对信息进行后续访问时可以使用 `$PASSWORD`。
 
@@ -328,7 +332,7 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参�
 
 使用已开发的脚本时，可能会遇到以下错误：
 
-**错误**： `$'\r': command not found`。 有时后面会接着出现“`syntax error: unexpected end of file`”。
+**错误**： `$'\r': command not found` 。 有时后面会接着出现“`syntax error: unexpected end of file`”。
 
 *原因*：此错误的原因是脚本中以 CRLF 作为行尾。 Unix 系统只允许使用 LF 作为行尾。
 
@@ -346,13 +350,15 @@ Microsoft 提供了在 HDInsight 群集上安装组件的示例脚本。 请参�
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | 直接修改文件 |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE 包含只带 LF 行尾的版本 |
 
-**错误**： `line 1: #!/usr/bin/env: No such file or directory`。
+**错误**： `line 1: #!/usr/bin/env: No such file or directory` 。
 
 *原因*：将脚本另存为包含字节顺序标记 (BOM) 的 UTF-8 时会发生此错误。
 
 *解决方法*：将文件另存为 ASCII，或者不带 BOM 的 UTF-8。 也可以在 Linux 或 Unix 系统上使用以下命令来创建不带 BOM 的文件：
 
-    awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```bash
+awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
+```
 
 将 `INFILE` 替换为包含 BOM 的文件。 `OUTFILE` 应是新文件名，该文件包含不带 BOM 的脚本。
 

@@ -13,11 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ad7dc2452cdc2756413db1a07da74e2a1dc3fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344622"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080170"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -58,7 +59,7 @@ Azure 会持续监视你的数据是否受到威胁。 借助 Azure SQL，你可
 有多个因素可能会影响你在不同数据产品/服务之间所做的选择：
 
 - [成本](#cost)： PaaS 和 IaaS 选项都包括涵盖底层基础结构和许可的基本价格。 但是，通过 IaaS 选项，你需要花费额外的时间和资源来管理你的数据库，而在 PaaS 中，你将获得这些管理功能。 IaaS 使你可以在不使用资源的情况下关闭资源来降低成本，而 PaaS 始终运行，除非需要在需要时删除和重新创建资源。
-- [管理](#administration)： PaaS 选项可减少管理数据库所需投入的时间。 但是，它还会限制你可以执行或运行的自定义管理任务和脚本的范围。 例如，单个或共用数据库不支持 CLR，但是 SQL 托管实例的实例支持。 此外，PaaS 中没有部署选项支持使用跟踪标志。
+- [管理](#administration)： PaaS 选项可减少管理数据库所需投入的时间。 但是，它还会限制你可以执行或运行的自定义管理任务和脚本的范围。 例如，SQL 数据库不支持 CLR，但是 SQL 托管实例的实例支持。 此外，PaaS 中没有部署选项支持使用跟踪标志。
 - [服务级别协议](#service-level-agreement-sla)： IaaS 和 PaaS 都提供高、行业标准 SLA。 在基础结构方面，PaaS 选项保证 99.99% 的 SLA，而 IaaS 保证 99.95% 的 SLA，这意味着，需要实施附加的机制才能确保数据库的可用性。 可以通过创建附加的 SQL 虚拟机并实现 SQL Server Always On 可用性组高可用性解决方案来获得99.99% 的 SLA。 
 - 迁移[到 azure 的时间](#market)： azure vm 上的 SQL Server 与你的环境完全匹配，因此从本地迁移到 Azure VM 与将数据库从本地服务器移到另一台服务器没有什么不同。 SQL 托管实例还实现了简单的迁移;但是，在迁移之前可能需要应用一些更改。 
 

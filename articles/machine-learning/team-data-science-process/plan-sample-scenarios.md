@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d462f146f3f094602835d88e48815d5537c58665
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078776"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>用于 Azure 机器学习中高级分析的方案
 本文概述了各种示例数据源和可通过[团队数据科学过程 (TDSP)](overview.md) 处理的目标场景。 TDSP 为团队提供了一个系统性方法，可协作构建智能应用程序。 此处介绍的情景说明了数据处理工作流中的可用选项，具体取决于 Azure 中的数据特征、源位置和目标存储库。
@@ -193,9 +194,7 @@ ms.locfileid: "84687440"
 1. 创建 Azure HDInsight Hadoop 群集。
 1. （可选）预处理并清理数据。
    
-   a.  预处理并清理 IPython Notebook 中的数据，从 Azure 访问数据
-   
-       blobs.
+   a.  访问 Azure blob 中的数据，预处理并清理 IPython Notebook 中的数据。
    
    b.  如果需要，将数据转换为已清除的表格格式。
    

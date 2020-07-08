@@ -4,19 +4,19 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 author: davidsmatlak
 ms.author: v-dasmat
-ms.date: 04/21/2020
-ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.date: 06/04/2020
+ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584068"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080969"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。
 
-若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../billing/billing-getting-started.md)。
+若要详细了解 Azure 定价，请参阅 [Azure 定价概述](https://azure.microsoft.com/pricing/)。 在那里，可以使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)来估算成本。 你还可以转到特定服务的定价详细信息页，例如 [Windows VM](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](../../cost-management-billing/manage/getting-started.md)。
 
 ## <a name="managing-limits"></a>管理限制
 
@@ -29,7 +29,7 @@ ms.locfileid: "82584068"
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 
-[免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将[Azure 免费试用版订阅升级到即用即付订阅](../../billing/billing-upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+[免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将[Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
 某些限制在区域级别进行管理。
 
@@ -127,6 +127,8 @@ ms.locfileid: "82584068"
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
+有关详细信息，请参阅[函数宿主计划比较](../../azure-functions/functions-scale.md#hosting-plans-comparison)。
+
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 
 [!INCLUDE [container-service-limits](../../../includes/container-service-limits.md)]
@@ -217,6 +219,13 @@ ms.locfileid: "82584068"
 
 [!INCLUDE [database-migration-service-limits](../../../includes/database-migration-service-limits.md)]
 
+## <a name="digital-twins-limits"></a>数字孪生限制
+
+> [!NOTE]
+> 此服务的某些区域具有可调整的限制，而其他区域则不具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可*调整*的值为*Yes*。
+
+[!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
+
 ## <a name="event-grid-limits"></a>事件网格限制
 
 [!INCLUDE [event-grid-limits](../../../includes/event-grid-limits.md)]
@@ -250,7 +259,7 @@ ms.locfileid: "82584068"
 
 ### <a name="media-services-v2-legacy"></a>媒体服务 v2（旧版）
 
-若要了解特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
+若要了解特定于媒体服务 v2（旧版）的限制，请参阅[媒体服务 v2（旧版）](../../media-services/previous/media-services-quotas-and-limitations.md)
 
 ## <a name="mobile-services-limits"></a>移动服务限制
 
@@ -323,11 +332,11 @@ ms.locfileid: "82584068"
 
 ## <a name="sql-database-limits"></a>SQL 数据库限制
 
-有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)以及[托管实例的 SQL 数据库资源限制](../../sql-database/sql-database-managed-instance-resource-limits.md)。
+有关 SQL 数据库限制，请参阅[单一数据库的 Sql 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池的 sql 数据库资源限制和共](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)用的数据库以及 Sql[托管实例的 sql 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
 
-## <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
+## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
 
-有关 SQL 数据仓库限制，请参阅 [SQL 数据仓库资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 Azure Synapse Analytics 限制，请参阅[Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>存储限制
 

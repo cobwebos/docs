@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bce1616ce0c7f7e42810a551acb2f02165ccf93
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918234"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078623"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>无法通过远程桌面连接到 VM，因为网络接口被禁用
 
@@ -39,21 +40,29 @@ ms.locfileid: "77918234"
 )。 如果未在 VM 上启用串行控制台，请参阅[重置网络接口](#reset-network-interface)。
 2. 检查网络接口的状态：
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     记下被禁用的网络接口的名称。
 
 3. 启用网络接口：
 
-        netsh interface set interface name="interface Name" admin=enabled
+    ```console
+    netsh interface set interface name="interface Name" admin=enabled
+    ```
 
     例如，如果网络接口名为“以太网 2”，请运行以下命令：
 
-        netsh interface set interface name="Ethernet 2" admin=enabled
+    ```console
+    netsh interface set interface name="Ethernet 2" admin=enabled
+    ```
 
 4.  再次检查该网络接口的状态以确保该网络接口已启用。
 
-        netsh interface show interface
+    ```console
+    netsh interface show interface
+    ```
 
     此时无需重启 VM。 VM 将恢复为可访问的。
 

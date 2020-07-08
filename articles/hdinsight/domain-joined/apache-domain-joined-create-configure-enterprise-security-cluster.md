@@ -6,14 +6,14 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437634"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080153"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>在 Azure HDInsight 中创建和配置企业安全性套餐群集
 
@@ -40,7 +40,7 @@ Azure HDInsight 企业安全性套餐（ESP）允许访问 Azure 中的 Apache H
 1. 请参阅快速入门部署模板，以[使用新的 Active Directory 林创建 AZURE VM](https://azure.microsoft.com/resources/templates/active-directory-new-domain/)。
 
 1. 选择“部署到 Azure”****。
-1. 登录到 Azure 订阅。
+1. 登录到你的 Azure 订阅。
 1. 在 "**使用新的 AD 林创建 AZURE VM** " 页上，提供以下信息：
 
     |属性 | 值 |

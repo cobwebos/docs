@@ -5,17 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 66138fb04b1053215a2c2ec07cec1b56e38fed0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800641"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86078717"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>从天气合作伙伴获取天气数据
 
 Azure FarmBeats 可帮助你使用基于 docker 的连接器框架从天气数据提供商处引入天气数据。 使用此框架，天气数据提供程序实现了可与 FarmBeats 集成的 docker。 目前支持以下天气数据提供程序：
 
-[DTN](https://www.dtn.com/dtn-content-integration/)
+  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+
+  [DTN](https://www.dtn.com/dtn-content-integration/)
 
 天气数据可用于在 FarmBeats 上生成可操作的见解并构建 AI/ML 模型。
 
@@ -59,6 +62,9 @@ Azure FarmBeats 可帮助你使用基于 docker 的连接器框架从天气数�
    ```
 
    例如，若要从 DTN 获取天气数据，请使用下面的负载。 您可以根据自己的喜好修改名称和描述。
+
+   > [!NOTE]
+   > 下面的步骤需要 API 密钥，请联系 DTN，为 DTN 订阅获取相同的信息。
 
    ```json
    {

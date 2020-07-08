@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74559342"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080867"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍如何通过将安全策略应用到链接到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
@@ -73,7 +74,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 3. 在“Azure 资源的访问管理”下，将开关设置为“是” 。
 
-   ![全局管理员可管理 Azure 订阅和管理组 - 屏幕截图](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
+   ![Azure 资源的访问管理 - 屏幕截图](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
    - 将开关设为“是”时，将分配到 Azure RBAC 中根范围 (/) 的用户访问管理员角色。 这将授予你在与此 Azure AD 目录关联的所有 Azure 订阅和管理组中分配角色的权限。 此开关仅适用于分配到 Azure AD 中全局管理员角色的用户。
 
@@ -160,7 +161,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 2. 在导航列表中，单击“Azure Active Directory”，然后单击“属性” 。
 
-3. 在“全局管理员可管理 Azure 订阅和管理组”下，将开关设置为“否”。
+3. 在 " **Azure 资源的访问管理**" 下，将开关设置为 "**否**"。
 
 4. 单击“保存”，保存设置。
 

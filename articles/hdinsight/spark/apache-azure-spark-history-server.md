@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76548928"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86079286"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>使用 Apache Spark History Server 的扩展功能调试和诊断 Spark 应用程序
 
@@ -32,7 +32,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>按 URL 打开 Spark History Server web UI
 
-通过浏览到`https://CLUSTERNAME.azurehdinsight.net/sparkhistory`打开 Spark 历史记录服务器，其中**CLUSTERNAME**是 Spark 群集的名称。
+通过浏览到打开 Spark 历史记录服务器 `https://CLUSTERNAME.azurehdinsight.net/sparkhistory` ，其中**CLUSTERNAME**是 Spark 群集的名称。
 
 Spark History Server Web UI 可能类似于下图：
 
@@ -328,6 +328,6 @@ Spark History Server Web UI 可能类似于下图：
 + [管理 HDInsight 上 Apache Spark 群集的资源](apache-spark-resource-manager.md)
 + [配置 Apache Spark 设置](apache-spark-settings.md)
 
-## <a name="feedback"></a>反馈
+## <a name="suggestions"></a>建议
 
 如有任何反馈，或使用此工具时遇到任何问题，请向 [hdivstool@microsoft.com](mailto:hdivstool@microsoft.com) 发送电子邮件。

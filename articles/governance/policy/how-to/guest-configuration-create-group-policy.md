@@ -3,12 +3,12 @@ title: 如何从 Windows 组策略基准创建来宾配置策略定义
 description: 了解如何在策略定义中将组策略从 Windows Server 2019 安全基线转换为。
 ms.date: 06/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 021e8cc4aa34a21f980363e71de1a4b9afbf3ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268618"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86080663"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>如何从 Windows 组策略基准创建来宾配置策略定义
 
@@ -92,7 +92,7 @@ DSC 社区已发布[BaselineManagement 模块](https://github.com/microsoft/Base
 1. 下面的脚本包含可用于自动执行此任务的函数。 请注意，函数中使用的命令 `publish` 需要 `Az.Storage` 模块。
 
    ```azurepowershell-interactive
-    function publish {
+    function Publish-Configuration {
         param(
         [Parameter(Mandatory=$true)]
         $resourceGroup,
@@ -147,25 +147,29 @@ DSC 社区已发布[BaselineManagement 模块](https://github.com/microsoft/Base
 
 1. 将 publish 函数与已分配参数一起使用，以将来宾配置包发布到公共 blob 存储。
 
-   ```azurepowershell-interactive
-   $uri = publish `
-    -resourceGroup $resourceGroup `
-    -storageAccountName $storageAccount `
-    -storageContainerName $storageContainer `
-    -filePath $path `
-    -blobName $blob
-    -FullUri
-    ```
 
+   ```azurepowershell-interactive
+   $PublishConfigurationSplat = @{
+       resourceGroup = $resourceGroup
+       storageAccountName = $storageAccount
+       storageContainerName = $storageContainer
+       filePath = $path
+       blobName = $blob
+       FullUri = $true
+   }
+   $uri = Publish-Configuration @PublishConfigurationSplat
+    ```
 1. 在创建并上传来宾配置自定义策略包后，创建来宾配置策略定义。 使用 `New-GuestConfigurationPolicy` cmdlet 创建来宾配置。
 
    ```azurepowershell-interactive
-   New-GuestConfigurationPolicy `
-    -ContentUri $Uri `
-    -DisplayName 'Server 2019 Configuration Baseline' `
-    -Description 'Validation of using a completely custom baseline configuration for Windows VMs' `
-    -Path C:\git\policyfiles\policy  `
-    -Platform Windows 
+    $NewGuestConfigurationPolicySplat = @{
+        ContentUri = $Uri 
+        DisplayName = 'Server 2019 Configuration Baseline' 
+        Description 'Validation of using a completely custom baseline configuration for Windows VMs' 
+        Path = 'C:\git\policyfiles\policy'  
+        Platform = Windows 
+        }
+   New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
 1. 使用 cmdlet 发布策略定义 `Publish-GuestConfigurationPolicy` 。 cmdlet 只有 Path 参数，此参数指向 `New-GuestConfigurationPolicy` 创建的 JSON 文件的位置。 若要运行 "发布" 命令，需要具有在 Azure 中创建策略定义的访问权限。 [Azure Policy 概述](../overview.md#getting-started)页中收录了具体的授权要求。 最合适的内置角色是“资源策略参与者”。
