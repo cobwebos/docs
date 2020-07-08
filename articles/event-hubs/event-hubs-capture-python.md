@@ -1,20 +1,14 @@
 ---
 title: 快速入门：从 Python 应用读取捕获的数据 - Azure 事件中心
 description: 快速入门：使用 Azure Python SDK 演示事件中心捕获功能的脚本。
-services: event-hubs
-author: spelluru
-ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
-ms.service: event-hubs
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.author: spelluru
-ms.reviewer: shvija
-ms.openlocfilehash: 658bfc95e9d7ef2954d245ac9bd7eafb56ebaaa1
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 8e6174970a6821f7541387f91b226cdebe555625
+ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/24/2020
-ms.locfileid: "85296587"
+ms.locfileid: "85323050"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>快速入门：事件中心捕获演练：Python（azure-eventhub 版本 1）
 

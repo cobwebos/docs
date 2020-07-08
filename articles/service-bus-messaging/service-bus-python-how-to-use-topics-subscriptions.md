@@ -1,25 +1,19 @@
 ---
 title: 快速入门：通过 Python 使用 Azure 服务总线主题和订阅
 description: 本文介绍如何创建 Azure 服务总线主题、订阅、向主题发送消息以及从订阅接收消息。
-services: service-bus-messaging
 documentationcenter: python
-author: axisc
-editor: spelluru
-ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
+author: spelluru
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: aschhab
+ms.date: 06/23/2020
+ms.author: spelluru
 ms.custom: tracking-python
-ms.openlocfilehash: ed2bf757762beafda3d4b2958438672c03d8d234
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
+ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560045"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85341027"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅
 

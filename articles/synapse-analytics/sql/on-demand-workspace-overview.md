@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
+ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206387"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85480433"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 按需版本（预览版） 
 
@@ -89,21 +89,21 @@ SQL 按需版本没有本地存储，只有元数据对象才存储在数据库�
 
 为了使就地查询 Data Lake 文件中驻留的数据的体验顺畅，SQL 按需版本添加了以下功能，以此扩展了现有的 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函数：
 
-[查询多个文件或文件夹](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[查询多个文件或文件夹](query-data-storage.md#query-multiple-files-or-folders)
 
-[PARQUET 文件格式](develop-storage-files-overview.md#parquet-file-format)
+[PARQUET 文件格式](query-data-storage.md#query-parquet-files)
 
-[用于处理分隔文本的其他选项（字段终止符、行终止符、转义字符）](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[用于处理分隔文本的其他选项（字段终止符、行终止符、转义字符）](query-data-storage.md#query-csv-files)
 
-[读取选定的列子集](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[读取选定的列子集](query-data-storage.md#read-a-chosen-subset-of-columns)
 
-[架构推理](develop-storage-files-overview.md#schema-inference)
+[架构推理](query-data-storage.md#schema-inference)
 
-[filename 函数](develop-storage-files-overview.md#filename-function)
+[filename 函数](query-data-storage.md#filename-function)
 
-[filepath 函数](develop-storage-files-overview.md#filepath-function)
+[filepath 函数](query-data-storage.md#filepath-function)
 
-[处理复杂类型以及嵌套或重复的数据结构](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
+[处理复杂类型以及嵌套或重复的数据结构](query-data-storage.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>安全性
 

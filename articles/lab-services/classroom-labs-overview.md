@@ -1,24 +1,14 @@
 ---
 title: 关于 Azure 实验室服务中的教室实验室 | Microsoft Docs
 description: 了解如何在云中快速设置课堂实验室环境，使用班级需要的软件配置模板 VM 和实验室，并为班级中的每位学生提供 VM 副本。
-services: lab-services
-documentationcenter: na
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
-ms.author: spelluru
-ms.openlocfilehash: bbbea0c943758c2682f7b166e461807d2914f790
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.date: 06/26/2020
+ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
+ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84899410"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85445621"
 ---
 # <a name="introduction-to-classroom-labs"></a>教室实验室简介
 使用 Azure 实验室服务，可在云中快速设置教室实验室环境。 教师创建教室实验室、预配 Windows 或 Linux 虚拟机、在课堂上安装必要的软件和工具实验室，并将其提供给学生使用。 课堂上的学生连接到实验室中的虚拟机 (VM)，并使用虚拟机完成项目、作业和课堂练习。 
