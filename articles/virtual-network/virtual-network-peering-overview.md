@@ -4,20 +4,19 @@ titlesuffix: Azure Virtual Network
 description: 了解 Azure 中的虚拟网络对等互连。
 services: virtual-network
 documentationcenter: na
-author: anavinahar
+author: altambaw
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
-ms.author: anavin
-ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: e1a2babef17e23457e1f41d8ec0a20a442452c23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279541"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84232954"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -62,36 +61,36 @@ Azure 支持以下类型的对等互连：
 
 ## <a name="gateways-and-on-premises-connectivity"></a>网关和本地连接
 
-每个虚拟网络（包括对等互连虚拟网络）都可以有自己的网关。 虚拟网络可以使用它的网关连接到本地网络。 你还可以使用网关配置[虚拟网络到虚拟网络连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，即使对于对等互连虚拟网络也是如此。
+每个虚拟网络（包括对等互连的虚拟网络）都可以有自身的网关。 虚拟网络可以使用其网关连接到本地网络。 即使是对于对等互连的虚拟网络，也可以使用网关配置[虚拟网络到虚拟网络的连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-如果为虚拟网络互连配置这两个选项，则虚拟网络之间的流量将流经对等互连配置。 流量使用 Azure 主干。
+为虚拟网络互连配置这两个选项时，虚拟网络之间的流量将通过对等互连配置流动。 该流量使用 Azure 主干网络。
 
-你还可以在对等互连虚拟网络中将网关配置为本地网络的传输点。 在这种情况下，使用远程网关的虚拟网络不能有自己的网关。 虚拟网络只有一个网关。 网关是对等互连虚拟网络中的本地或远程网关，如下图所示：
+还可以将对等互连的虚拟网络中的网关配置为本地网络的传输点。 在这种情况下，使用远程网关的虚拟网络不能有自身的网关。 一个虚拟网络只能有一个网关。 网关是对等互连虚拟网络中的本地网关或远程网关，如下图所示：
 
 ![虚拟网络对等互连传输](./media/virtual-networks-peering-overview/local-or-remote-gateway-in-peered-virual-network.png)
 
 虚拟网络对等互连和全局虚拟网络对等互连都支持网关传输。
 
-支持在通过不同部署模型创建的虚拟网络之间进行网关传输。 网关必须位于资源管理器型号的虚拟网络中。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+支持在通过不同部署模型创建的虚拟网络之间进行网关传输。 网关必须位于资源管理器模型中的虚拟网络内。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-当对等互连共享单个 Azure ExpressRoute 连接的虚拟网络时，它们之间的流量会通过对等关系进行。 该流量使用 Azure 主干网络。 仍可在各个虚拟网络中使用本地网关连接到本地线路。 否则，可以使用共享网关，并为本地连接配置传输。
+对等互连共享单个 Azure ExpressRoute 连接的虚拟网络时，这些虚拟网络之间的流量将通过对等互连关系流动。 该流量使用 Azure 主干网络。 仍可在各个虚拟网络中使用本地网关连接到本地线路。 否则，可以使用共享网关，并为本地连接配置传输。
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 
-若要确认虚拟网络是对等互连的，可以检查有效路由。 检查虚拟网络中任何子网中的网络接口的路由。 如果虚拟网络对等互连存在，则虚拟网络中的所有子网都会有下一跃点类型为“VNet 对等互连”的路由，这适用于每个对等互连的虚拟网络中的每个地址空间。** 有关详细信息，请参阅[诊断虚拟机路由问题](diagnose-network-routing-problem.md)。
+若要确认虚拟网络是否已对等互连，可以检查有效路由。 检查虚拟网络中任一子网内的某个网络接口的路由。 如果虚拟网络对等互连存在，则虚拟网络中的所有子网都会有下一跃点类型为“VNet 对等互连”的路由，这适用于每个对等互连的虚拟网络中的每个地址空间。  有关详细信息，请参阅[诊断虚拟机路由问题](diagnose-network-routing-problem.md)。
 
-还可以使用 Azure 网络观察程序对对等互连虚拟网络中虚拟机的连接进行故障排除。 连接性检查使你可以查看流量如何从源虚拟机的网络接口路由到目标虚拟机的网络接口。 有关详细信息，请参阅[使用 Azure 门户对 Azure 网络观察程序的连接进行故障排除](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine)。
+还可以使用 Azure 网络观察程序来排查与对等互连虚拟网络中某个虚拟机之间的连接问题。 可以通过连接性检查来确定流量如何从源虚拟机的网络接口路由到目标虚拟机的网络接口。 有关详细信息，请参阅[通过 Azure 门户使用 Azure 网络观察程序排查连接问题](../network-watcher/network-watcher-connectivity-portal.md#check-connectivity-to-a-virtual-machine)。
 
-你还可以尝试[排查虚拟网络对等互连问题](virtual-network-troubleshoot-peering-issues.md)。
+也可尝试[排查虚拟网络对等互连问题](virtual-network-troubleshoot-peering-issues.md)。
 
 ## <a name="constraints-for-peered-virtual-networks"></a>对等互连虚拟网络的约束<a name="requirements-and-constraints"></a>
 
 仅当虚拟网络全局对等互连时，以下约束适用：
 
-* 一个虚拟网络中的资源无法与全局对等互连虚拟网络中的基本内部负载均衡器（ILB）的前端 IP 地址通信。
-* 使用基本负载均衡器的某些服务不能通过全局虚拟网络对等互连。 有关详细信息，请参阅与[全局 VNet 对等互连和负载均衡器相关的约束是什么？](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+* 一个虚拟网络中的资源无法与全局对等互连虚拟网络中基本内部负载均衡器 (ILB) 的前端 IP 地址通信。
+* 使用基本负载均衡器的某些服务无法通过全局虚拟网络对等互连正常工作。 有关详细信息，请参阅[与全局 VNet 对等互连和负载均衡器相关的约束有哪些？](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
-有关详细信息，请参阅[要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解有关支持的对等互连数量的详细信息，请参阅[网络限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+有关详细信息，请参阅[要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要详细了解支持的对等互连数，请参阅[网络限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="permissions"></a>权限
 
@@ -99,16 +98,16 @@ Azure 支持以下类型的对等互连：
 
 ## <a name="pricing"></a>定价
 
-使用虚拟网络对等互连连接的入口和出口流量需要支付极少的费用。 有关详细信息，请参阅[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network)。
+使用虚拟网络对等互连的传入和传出流量会产生少许费用。 有关详细信息，请参阅[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-网关传输是一种对等互连属性，使虚拟网络能够在对等互连虚拟网络中使用 VPN/ExpressRoute 网关。 网关传输适用于跨界连接和网络到网络连接。 到对等互连虚拟网络中的网关（入站或出站）的流量会在辐射 VNet （或非网关 VNet）上产生虚拟网络对等互连费用。 有关详细信息，请参阅 vpn 网关[定价](https://azure.microsoft.com/pricing/details/vpn-gateway/)和 expressroute 网关定价以获得 expressroute 网关费用。
+网关传输是一种对等互连属性，可以让虚拟网络利用对等互连虚拟网络中的 VPN/ExpressRoute 网关。 网关传输适用于跨界连接和网络间的连接。 传入或传出对等互连虚拟网络中的网关的流量会在分支 VNet（或非网关 VNet）上产生虚拟网络对等互连费用。 请参阅 [VPN 网关定价](https://azure.microsoft.com/pricing/details/vpn-gateway/)来详细了解 VPN 网关费用，以及 ExpressRoute 网关的定价和费用。
 
 >[!NOTE]
-> 本文档的以前版本指出，在使用网关传输时，不会在辐射 VNet （或非网关 VNet）上应用虚拟网络对等互连费用。 它现在按定价页反映准确的定价。
+> 本文档的旧版中已指出，虚拟网络对等互连费用不适用于具有网关传输功能的分支 VNet（或非网关 VNet）。 本文档现在根据定价页反映准确的定价。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 可以在两个虚拟网络之间创建对等互连。 网络可以属于同一订阅、同一订阅中的不同部署模型或不同的订阅。 完成适用于以下方案之一的教程：
+* 可在两个虚拟网络之间创建对等互连。 网络可以属于同一订阅、同一订阅中的不同部署模型，或不同的订阅。 完成适用于以下方案之一的教程：
 
     |Azure 部署模型             | 订阅  |
     |---------                          |---------|
@@ -118,5 +117,5 @@ Azure 支持以下类型的对等互连：
     |                                   |[不同](create-peering-different-deployment-models-subscriptions.md)|
 
 * 若要了解如何创建中心和分支网络拓扑，请参阅[Azure 中的中心辐射型网络拓扑](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-* 若要了解有关所有虚拟网络对等互连设置的信息，请参阅[创建、更改或删除虚拟网络对等互连](virtual-network-manage-peering.md)。
-* 有关常见虚拟网络对等互连和全局虚拟网络对等互连问题的解答，请参阅[VNet 对等互连](virtual-networks-faq.md#vnet-peering)。
+* 若要了解所有虚拟网络对等互连设置，请参阅[创建、更改或删除虚拟网络对等互连](virtual-network-manage-peering.md)。
+* 有关常见虚拟网络对等互连和全局虚拟网络对等互连问题的解答，请参阅 [VNet 对等互连](virtual-networks-faq.md#vnet-peering)。

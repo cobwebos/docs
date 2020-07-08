@@ -9,12 +9,11 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726037"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220292"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
 
@@ -101,4 +100,4 @@ deployment show-metric 命令采用以下参数：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[使用内置直接方法与 EdgeAgent 通信](how-to-edgeagent-direct-method.md)。
+了解如何[监视模块孪生](how-to-monitor-module-twins.md)，其中主要 IoT Edge 代理和 IoT Edge 中心运行时模块，用于实现 IoT Edge 部署的连接和运行状况。

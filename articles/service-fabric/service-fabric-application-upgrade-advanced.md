@@ -3,12 +3,11 @@ title: 高级应用程序升级主题
 description: 本文介绍有关升级 Service Fabric 应用程序的一些高级主题。
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84263085"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric 应用程序升级：高级主题
 
@@ -18,11 +17,11 @@ ms.locfileid: "81414500"
 
 类似地，在升级过程中还可以从应用程序中删除服务类型。 但是，必须删除待删除服务类型的所有服务实例，然后才能继续进行升级（请参阅 [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)）。
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免无状态服务计划停机期间的连接中断
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>避免在无状态服务计划内停机期间断开连接
 
-对于计划的无状态实例停机时间（例如应用程序/群集升级或节点停用），连接可能会被删除，因为在实例关闭后，会删除公开的终结点，从而导致强制连接闭包。
+对于计划的无状态实例停机时间（例如应用程序/群集升级或节点停用），连接可能会在实例关闭后删除公开的终结点，从而导致强制连接闭包。
 
-若要避免这种情况，请通过在服务配置中添加*实例关闭延迟持续时间*来配置*RequestDrain* （预览版）功能，以便在从群集内接收来自其他服务的请求时允许排出，并使用反向代理或将解析 API 与通知模型结合使用来更新终结点。 这可确保在关闭实例之前延迟启动*之前*，将删除无状态实例公布的终结点。 此延迟可使现有请求在实例实际关闭之前正常排空。 在启动延迟时回调函数会通知客户端终结点的更改，因此，它们可以重新解析终结点，并避免将新请求发送到即将关闭的实例。
+若要避免这种情况，请通过在服务配置中添加*实例关闭延迟持续时间*来配置*RequestDrain*功能，以允许来自群集内的现有请求排出公开的终结点。 这是因为，在关闭实例之前，无状态实例所公布的终结点在延迟启动*之前*会被删除。 此延迟可使现有请求在实例实际关闭之前正常排空。 在开始延迟时，客户端通过回调函数获取有关终结点发生更改的通知，因此它们可以重新解析终结点，并避免向正在停止的实例发送新请求。 这些请求可能源自使用[反向代理](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy)的客户端，或者将服务终结点解析 api 与通知模型（[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)）配合使用来更新终结点。
 
 ### <a name="service-configuration"></a>服务配置
 
@@ -31,7 +30,7 @@ ms.locfileid: "81414500"
  * **创建新服务时**指定 `-InstanceCloseDelayDuration`：
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * **在应用程序清单的 defaults 节中定义服务**时分配 `InstanceCloseDelayDurationSeconds` 属性：
@@ -48,10 +47,37 @@ ms.locfileid: "81414500"
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
+ * **通过 ARM 模板创建或更新现有服务时**，请指定 `InstanceCloseDelayDuration` 值（支持的最低 API 版本： 2019-11-01-preview）：
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
+    ```
+
 ### <a name="client-configuration"></a>客户端配置
 
-若要在终结点发生更改时接收通知，客户端应注册回调，请参阅[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)。
-更改通知表示终结点已更改，客户端应重新解析终结点，而不使用不再播发的终结点，因为它们将很快关闭。
+若要在终结点更改后收到通知，应让客户端注册回调，详见 [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)。
+如果收到更改通知，则表明终结点已更改，客户端应重新解析终结点，而不要使用不再播发的终结点，因为这些终结点即将关闭。
 
 ### <a name="optional-upgrade-overrides"></a>可选的升级替代方法
 
@@ -63,15 +89,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-延迟持续时间仅应用于调用的升级实例，而不会更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
+重写的延迟持续时间仅适用于调用的升级实例，不以其他方式更改单个服务延迟配置。 例如，可以使用此方法指定 `0` 延迟，以跳过任何预配置的升级延迟。
 
 > [!NOTE]
-> 用于排出请求的设置不适用于来自 Azure 负载均衡器的请求。 如果调用服务使用基于投诉的解析，则此设置不起作用。
+> * 用于排出请求的设置将无法阻止 Azure 负载均衡器将新请求发送到即将排出的终结点。
+> * 基于投诉的解决机制不会导致正常排出请求，因为它在发生故障后会触发服务解析。 如前文所述，这应改为使用[ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)订阅终结点更改通知。
+> * 当升级是 impactless 时，设置不起作用，即 在升级过程中不会关闭副本。
 >
 >
 
 > [!NOTE]
-> 当群集代码版本为7.1.XXX 或更高版本时，可以使用上述 Get-servicefabricservice cmdlet 在现有服务中配置此功能。
+> 当群集代码版本为7.1.XXX 或更高版本时，可以使用 Get-servicefabricservice cmdlet 或 ARM 模板在现有服务中配置此功能。
 >
 >
 
@@ -98,7 +126,7 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 使用差异包的方案有：
 
 * 拥有一个引用了多个服务清单文件和/或多个代码包、配置包或数据包的大型应用程序包时。
-* 当部署系统直接在应用程序生成过程中产生生成布局时。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 若要使用完整的应用程序包，需要更新所有代码包上的版本。 使用差异包时，只提供更改的文件和其中的版本已更改的清单文件。
+* 当部署系统直接在应用程序生成过程中产生生成布局时。 在这种情况下，即使代码未发生任何更改，新生成的程序集也会获得不同的校验和。 使用完整的应用程序包要求更新所有代码包上的版本。 使用差异包时，只需提供更改的文件和其中的版本已更改的清单文件。
 
 如果应用程序是使用 Visual Studio 升级的，则会自动发布差异包。 若要手动创建差异包，必须更新应用程序清单和服务清单，只在最终应用程序包中包含更改的包。
 
@@ -126,7 +154,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-在本例中，你将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单来反映代码包更新。 应用程序包的文件夹使用以下结构：
+在本例中，你将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单来反映代码包更新。 应用程序包的文件夹具有以下结构：
 
 ```text
 app1/
@@ -183,9 +211,9 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 在回滚期间，可以随时使用 [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) 更改 *UpgradeReplicaSetCheckTimeout* 的值和模式。
 
 ## <a name="next-steps"></a>后续步骤
-[使用 Visual Studio 升级应用程序](service-fabric-application-upgrade-tutorial.md)逐步讲解了如何使用 Visual Studio 进行应用程序升级。
+[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) （使用 Visual Studio 升级应用程序）逐步讲解了如何使用 Visual Studio 进行应用程序升级。
 
-[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解如何使用 powershell 进行应用程序升级。
+[使用 Powershell 升级应用程序](service-fabric-application-upgrade-tutorial-powershell.md)逐步讲解了如何使用 PowerShell 进行应用程序升级。
 
 使用[升级参数](service-fabric-application-upgrade-parameters.md)来控制应用程序的升级方式。
 

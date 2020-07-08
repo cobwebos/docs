@@ -7,12 +7,11 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: HT
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124068"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196422"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用参考数据在流分析中查找
 
@@ -96,13 +95,13 @@ Azure SQL 数据库参考数据由流分析作业进行检索并作为快照存�
 
 若要配置 SQL 数据库参考数据，首先需要创建**参考数据**输入。 下表介绍了在创建参考数据输入时需要提供的每个属性及其说明。 有关详细信息，请参阅[将 SQL 数据库中的参考数据用于 Azure 流分析作业](sql-reference-data.md)。
 
-可以使用 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作为参考数据输入。 必须[在 Azure SQL 数据库托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 如果手动配置以下设置，则还支持其运行的 SQL Server 附加了数据库的 Azure 虚拟机。
+可以使用[AZURE SQL 托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance)作为引用数据输入。 你必须[在 SQL 托管实例中配置公共终结点](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)，然后在 Azure 流分析中手动配置以下设置。 如果手动配置以下设置，则还支持其运行的 SQL Server 附加了数据库的 Azure 虚拟机。
 
 |**属性名称**|**说明**  |
 |---------|---------|
 |输入别名|一个友好名称会用于作业查询，以便引用此输入。|
 |订阅|选择自己的订阅|
-|数据库|包含参考数据的 Azure SQL 数据库。 对于 Azure SQL 数据库托管实例，需要指定端口 3342。 例如，“sampleserver.public.database.windows.net,3342”|
+|数据库|包含参考数据的 Azure SQL 数据库。 对于 SQL 托管实例，需要指定端口3342。 例如，“sampleserver.public.database.windows.net,3342”|
 |用户名|与 Azure SQL 数据库关联的用户名。|
 |密码|与 Azure SQL 数据库关联的密码。|
 |定期刷新|此选项用来选择刷新率。 选择“开启”将允许你以 DD:HH:MM 格式指定刷新率。|

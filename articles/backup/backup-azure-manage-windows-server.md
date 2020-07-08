@@ -3,16 +3,15 @@ title: 管理 Azure 恢复服务保管库和服务器
 description: 本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131970"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234608"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
-本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 其中的磁贴显示：严重和警告性警报的状态、正在进行的和失败的备份作业，以及本地冗余存储 (LRS) 和异地冗余存储 (GRS) 使用量。  如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项 **。** ](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status) 下图是 **Contoso-vault** 的“概述”仪表板。  “备份项”磁贴显示有九个项已注册到保管库。 
+本文介绍如何使用恢复服务保管库的“概述”仪表板来监视和管理恢复服务保管库。  从列表中打开恢复服务保管库时，将打开所选保管库的“概述”仪表板。  仪表板提供有关该保管库的各种详细信息。 有一些*磁贴*显示：严重警报和警告性警报、正在进行和失败的备份作业的状态，以及使用的本地冗余存储（LRS）和异地冗余存储（GRS）的数量。 如果将 Azure VM 备份到保管库，则[“备份预检查状态”磁贴将显示所有严重或警告项](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status)。 下图是 **Contoso-vault** 的“概述”仪表板。 “备份项”磁贴显示有九个项已注册到保管库。 
 
 ![恢复服务保管库仪表板](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -97,7 +96,7 @@ ms.locfileid: "80131970"
 | ----------- | ----------- |
 | 严重 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
 | 警告 | 出现以下情况时，会收到警告性警报：备份作业完成但出现警告，例如，由于出现损坏问题，有 100 个以下的文件未备份；或者成功备份了 1,000,000 个以上的文件。 |
-| 信息 | 目前未使用信息性警报。 |
+| 信息性 | 目前未使用信息性警报。 |
 
 ### <a name="viewing-alert-details"></a>查看警报详细信息
 
@@ -110,8 +109,8 @@ ms.locfileid: "80131970"
 * 警报
 * 备份项
 * 受保护的服务器
-* 严重性
-* Duration
+* severity
+* 持续时间
 * 创建时间
 * 状态
 * 最近发生时间
@@ -226,7 +225,7 @@ ms.locfileid: "80131970"
 * Azure 存储
 * Azure 工作负荷
 
-#### <a name="operation"></a>Operation
+#### <a name="operation"></a>操作
 
 可以查看一个操作或所有操作。 不能选择两个或三个操作。 可用的操作包括：
 
@@ -245,7 +244,7 @@ ms.locfileid: "80131970"
 * 所有状态
 * 已完成
 * 正在进行
-* Failed
+* 已失败
 * 已取消
 * 已完成但出现警告
 

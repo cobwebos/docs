@@ -7,12 +7,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836407"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197037"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>解决 VMware VM 和物理服务器的复制问题
 
@@ -77,7 +76,7 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
     - 导航到受影响的复制计算机的“磁盘”边栏选项卡，并复制副本磁盘名称
     - 导航到此副本托管磁盘
     - 可能会在“概述”边栏选项卡上看到一个横幅，指出已生成 SAS URL。 单击此横幅并取消导出。 如果看不到横幅，请忽略此步骤。
-    - 撤销 SAS URL 后，请转到托管磁盘的“配置”边栏选项卡并增加大小，以便 ASR 支持源磁盘上观察到的改动率
+    - 一旦将 SAS URL 吊销，请在托管磁盘中转到 "配置" 边栏选项卡，增加大小，以便 Azure Site Recovery 支持在源磁盘上观察到的变动率
 - 如果观测到的改动率是暂时性的，请等待几个小时，让等待中的数据跟上上传进度并创建恢复点。
 - 如果磁盘包含非关键数据（如临时日志、测试数据等），请考虑将此数据移到其他位置，或者从复制中完全排除此磁盘
 - 如果问题持续出现，请使用 Site Recovery [部署规划器](site-recovery-deployment-planner.md#overview)来帮助规划复制。
@@ -146,6 +145,8 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>原因 3：SQL Server 2016 和 2017 中的已知问题
 **如何解决**：请参阅知识库[文章](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>原因4：在 Linux 服务器上未启用应用一致性
+**如何修复**：针对 Linux 操作系统的 Azure Site Recovery 支持应用程序自定义脚本以实现应用程序一致性。 使用 pre 和 post 选项的自定义脚本将由 Azure Site Recovery 移动代理用于应用程序一致性。 [下面](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication)是启用该方法的步骤。
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS 相关问题的更多原因：
 
@@ -162,12 +163,12 @@ Site Recovery 使用[进程服务器](vmware-physical-azure-config-process-serve
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS 编写器未安装 - 错误 2147221164
 
-*如何解决*：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务未安装，则应用程序一致性快照创建会失败，并出现 ID 为 0x80040154 的错误“类未注册”。 </br>
+*如何解决*：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果未安装 VSS 提供程序服务，应用程序一致性快照创建将失败，并出现错误 ID 0x80040154 "类未注册"。 </br>
 请参阅[有关 VSS 编写器安装故障排除的文章](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS 编写器已禁用 - 错误 2147943458
 
-**如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务已禁用，则应用程序一致性快照创建会失败，并出现错误 ID“指定的服务已禁用且无法启动(0x80070422)”。 </br>
+**如何解决**：为了生成应用程序一致性标记，Azure Site Recovery 会使用 Microsoft 卷影复制服务 (VSS)。 它安装适用于其操作的 VSS 提供程序，以便拍摄应用一致性快照。 此 VSS 提供程序作为服务安装。 如果 VSS 提供程序服务处于禁用状态，则应用程序一致性快照创建将失败，并出现错误 ID "指定的服务已禁用且无法启动（0x80070422）"。 </br>
 
 - 如果已禁用 VSS，
     - 验证 VSS 提供程序服务的启动类型是否设置为“自动”。

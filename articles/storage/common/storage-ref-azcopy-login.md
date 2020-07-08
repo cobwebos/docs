@@ -8,12 +8,11 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295412"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84219967"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,7 +100,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 |选项|说明|
 |--|--|
-|--aad-endpoint|要使用的 Azure Active Directory 终结点。 对于公有 Azure`https://login.microsoftonline.com`云，默认值（）是正确的。 在国家云中进行身份验证时设置此参数。 请参阅 [Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+|--aad-endpoint|要使用的 Azure Active Directory 终结点。 `https://login.microsoftonline.com`对于公有 Azure 云，默认值（）是正确的。 在国家云中进行身份验证时设置此参数。 请参阅 [Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
 托管服务标识不需要此标志。|
 |--application-id string|用户分配标识的应用程序 ID。 服务主体身份验证所需。|
 |--certificate-path string|用于 SPN 身份验证的证书的路径。 基于证书的服务主体身份验证所需。|
@@ -119,6 +118,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 |---|---|
 |--cap-mbps uint32|以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。|
 |--output-type string|命令输出的格式。 选项包括：text、json。 默认值为“text”。|
+|--trusted-microsoft-suffixes 字符串   |指定可在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。|
 
 ## <a name="see-also"></a>另请参阅
 

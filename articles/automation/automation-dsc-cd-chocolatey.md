@@ -8,7 +8,6 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.openlocfilehash: 1bab503004876a2680286204de28631ce26b9069
 ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/29/2020
 ms.locfileid: "84197102"

@@ -3,12 +3,11 @@ title: 在 Azure Migrate 中添加迁移工具
 description: 了解如何在 Azure Migrate 中添加迁移工具。
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901478"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195823"
 ---
 # <a name="add-migration-tools"></a>添加迁移工具
 
@@ -19,11 +18,11 @@ ms.locfileid: "82901478"
 
 ## <a name="select-a-migration-scenario"></a>选择迁移方案
 
-1. 在 Azure Migrate 项目中，单击“概述”。 
+1. 在 Azure Migrate 项目中，单击“概述”。
 2. 选择要使用的迁移方案：
 
     - 若要将计算机和工作负荷迁移到 Azure，请选择 "**评估和迁移服务器**"。
-    - 若要迁移本地 SQL 计算机，请选择 "**评估和迁移数据库**"。
+    - 若要迁移本地 SQL Server 数据库，请选择 "**评估和迁移数据库**"。
     - 若要迁移本地 web 应用，请选择 "**评估和迁移 web 应用**"。
     - 若要在脱机模式下将大量本地数据迁移到 Azure，请选择 "对**Data Box 排序**"。
 

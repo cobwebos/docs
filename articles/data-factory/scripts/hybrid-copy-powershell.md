@@ -1,6 +1,6 @@
 ---
 title: 使用 PowerShell 将数据从本地复制到 Azure
-description: 此 PowerShell 脚本将数据从本地 SQL Server 数据库复制到其他 Azure Blob 存储。
+description: 此 PowerShell 脚本将数据从 SQL Server 数据库复制到其他 Azure Blob 存储。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,29 +10,28 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75974693"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194631"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>使用 PowerShell 创建用于将数据从本地复制到 Azure 的数据工厂管道
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>使用 PowerShell 创建用于将数据从 SQL Server 复制到 Azure 的数据工厂管道
 
-本 PowerShell 脚本示例在 Azure 数据工厂中创建管道，该管道将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。
+本 PowerShell 脚本示例在 Azure 数据工厂中创建管道，该管道将数据从 SQL Server 数据库复制到 Azure Blob 存储。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- **SQL Server**。 在本示例中，将本地 SQL Server 数据库用作源数据存储。 
-- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。  如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
-- 自承载集成运行时。  从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
+- **SQL Server**。 在本示例中，需将 SQL Server 数据库用作“源”数据存储。
+- **Azure 存储帐户**。 本示例使用 Azure Blob 存储作为“目标/接收器”数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
+- 自承载集成运行时。 从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载并运行 MSI 文件，在计算机上安装自承载集成运行时。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中创建示例数据库
-1. 在本地 SQL Server 数据库中，使用以下 SQL 脚本创建名为“emp”的表： 
+1. 在 SQL Server 数据库中，使用以下 SQL 脚本创建名为“emp”的表：
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -57,7 +56,7 @@ ms.locfileid: "75974693"
 > [!IMPORTANT]
 > 此脚本在硬盘驱动器上的 c:\ 文件夹中创建 JSON 文件，用于定义数据工厂实体（链接服务、数据集和管道）。
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>清理部署
@@ -77,7 +76,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令：
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

@@ -4,12 +4,11 @@ description: 获取指标警报功能的概述，以及它们在 Azure Monitor �
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855038"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248815"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -26,7 +25,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：静态
-- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#changing-aggregation)是最小值、最大值、平均值、总计、计数）：平均值
+- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#changing-aggregation)为最小值、最大值、平均值、总计、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -34,7 +33,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 从创建警报规则的时间开始，监视器将每隔 1 分钟运行，查看过去 5 分钟的指标值，并检查这些值的平均值是否超过 70。 如果符合条件（即，过去 5 分钟的平均 CPU 百分比超过 70），则警报规则将激发激活的通知。 如果在与警报规则关联的操作组中配置了电子邮件或 Webhook，则两者都会收到激活的通知。
 
-在一条规则中使用多个条件时，该规则会将这些条件使用“and”连接在一起。  也就是说，当警报中的所有条件均评估为 true 时触发警报，并在其中一个条件不再为 true 时解除警报。 此类警报的一个示例是，当“CPU 高于 90%”且“队列长度超过 300 项”时触发警报。 
+在一条规则中使用多个条件时，该规则会将这些条件使用“and”连接在一起。 也就是说，当警报规则中的所有条件的评估结果为 true 时，将触发警报，并在其中一个条件不再为 true 时进行解析。 这种类型的警报规则的一个示例是监视 Azure 虚拟机，并在 "CPU 百分比高于 90%" 和 "队列长度超过300个项目" 时发出警报。
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>使用动态条件类型的警报规则
 
@@ -43,7 +42,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 - 目标资源（要监视的 Azure 资源）：myVM
 - 指标：CPU 百分比
 - 条件类型：动态
-- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#changing-aggregation)是最小值、最大值、平均值、总计、计数）：平均值
+- 时间聚合（基于原始指标值运行的统计信息。 [支持的时间聚合](metrics-charts.md#changing-aggregation)为最小值、最大值、平均值、总计、计数）：平均值
 - 期限（检查指标值时所依据的回溯时段）：过去 5 分钟
 - 频率（指标警报检查是否符合条件的频率）：1 分钟
 - 运算符：大于
@@ -57,7 +56,7 @@ Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些�
 
 ### <a name="view-and-resolution-of-fired-alerts"></a>查看并解决已激发的警报
 
-也可以在 Azure 门户的“所有警报”边栏选项卡中查看上述警报规则激发示例。 
+也可以在 Azure 门户的“所有警报”边栏选项卡中查看上述警报规则激发示例。
 
 假设在后续的检查中，“myVM”上的用量持续超过阈值，则在解决这种状况之前，警报规则不会再次激发。
 
@@ -124,26 +123,26 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 对于存在于同一 Azure 区域中的资源，Azure Monitor 还支持使用一个指标警报规则监视多个资源（属于同一类型）。 
 
-目前，以下 Azure 云中的以下服务的平台指标（而非自定义指标）支持此功能：
+目前，以下 Azure 云中的以下服务的平台指标（非自定义指标）支持此功能：
 
 | 服务 | 公共 Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
 | 虚拟机  | **是** | 否 | 否 |
-| SQL server 数据库 | **是** | **是** | 否 |
-| SQL server 弹性池 | **是** | **是** | 否 |
-| 数据 box 边缘设备 | **是** | **是** | 否 |
+| SQL 服务器数据库 | **是** | **是** | 否 |
+| SQL 服务器弹性池 | **是** | **是** | 否 |
+| Data Box Edge 设备 | **是** | **是** | 否 |
 
-您可以通过以下三种方式之一来指定通过单个指标警报规则监视的作用域。 例如，对于虚拟机，可以将范围指定为：  
+可以通过以下三种方式之一指定单个指标警报规则的监视范围。 例如，对于虚拟机，可以将范围指定为：  
 
-- 订阅内一个 Azure 区域中的虚拟机列表
+- 单个订阅中单个 Azure 区域中的虚拟机列表
 - 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
 - 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
 
-创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 你将收到每个被监视资源的单个通知。
+创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每个受监视资源，你将收到单独的通知。
 
 > [!NOTE]
 >
-> 在监视多个资源的指标警报规则中，只允许一个条件。
+> 在监视多个资源的指标警报规则中，仅允许包含一个条件。
 
 ## <a name="typical-latency"></a>典型延迟
 
@@ -158,5 +157,5 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 - [了解如何在 Azure 中创建、查看和管理指标警报](alerts-metric.md)
 - [了解如何使用 Azure 资源管理器模板部署指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [了解有关操作组的详细信息](action-groups.md)
+- [详细了解操作组](action-groups.md)
 - [详细了解动态阈值条件类型](alerts-dynamic-thresholds.md)

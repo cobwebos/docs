@@ -2,13 +2,12 @@
 title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259212"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -20,51 +19,62 @@ ms.locfileid: "79257428"
 
 对于 Site Recovery 组件，我们支持 N-4 版本，其中 N 是最新发布的版本。 下表汇总了这些更新。
 
-**Update** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
+**更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
-[汇总45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
-[汇总43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
+[汇总46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
+[汇总 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
+[汇总 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [汇总 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [汇总 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
-[汇总 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
 
 > [!NOTE]
-> 表中未显示更新汇总44，因为它不包括 Site Recovery 提供程序和代理的更新。
+> 该表中未显示更新汇总 44，因为它不包括对 Site Recovery 提供程序和代理的更新。
 
-## <a name="updates-march-2020"></a>更新（2020年3月）
+## <a name="updates-june-2020"></a>更新（2020年6月）
 
-### <a name="update-rollup-45"></a>更新汇总45
+### <a name="update-rollup-46"></a>更新汇总46
 
-[更新汇总 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery)提供以下更新：
+[更新汇总 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery)提供以下更新：
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
-**提供程序和代理** | 更新 Site Recovery 代理和提供程序，如汇总中所述。
-**问题修复/改进** | 汇总中详细介绍了许多修补程序和改进功能。
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
-## <a name="updates-january-2020"></a>更新（2020年1月）
+## <a name="updates-march-2020"></a>更新（2020 年 3 月）
 
-### <a name="update-rollup-44"></a>更新汇总44
+### <a name="update-rollup-45"></a>更新汇总 45
 
-[更新汇总 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery)提供了以下更新。
+[更新汇总 45](https://support.microsoft.com/help/4550047/update-rollup-45-for-azure-site-recovery) 提供以下更新：
 
-**Update** | **详细信息**
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
+
+## <a name="updates-january-2020"></a>更新（2020 年 1 月）
+
+### <a name="update-rollup-44"></a>更新汇总 44
+
+[更新汇总 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) 提供以下更新。
+
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 没有针对 Site Recovery 提供程序和代理的更新。
-**问题修复/改进** | 汇总中详细介绍了许多修补程序和改进功能。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware 灾难恢复
 
 Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了解详细信息](azure-to-azure-how-to-enable-replication-cmk-disks.md)。
 
 
-### <a name="update-rollup-43"></a>更新汇总43
+### <a name="update-rollup-43"></a>更新汇总 43
 
-[更新汇总 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery)提供了以下更新。
+[更新汇总 43](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -76,7 +86,7 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 
 [更新汇总 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -109,11 +119,11 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 - 请根据链接的知识库安装该更新和 SHA-2。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。
 - 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 
-**操作系统** | **Azure VM** | **VMware VM/物理计算机**
+**操作系统** | Azure VM  | **VMware VM/物理计算机**
 --- | --- | ---
-**Windows 2008 R2 SP1** | [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-1](https://support.microsoft.com/help/4474419)
+**Windows 2008 R2 SP1** | [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
 **Windows 2008 SP2** | [服务堆栈更新](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 7 SP1** | [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [Sha-1](https://support.microsoft.com/help/4474419)。
+**Windows 7 SP1** | [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [服务堆栈更新](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
 
 
 
@@ -123,7 +133,7 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 
 [更新汇总 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -154,7 +164,7 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 
 [更新汇总 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -194,7 +204,7 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 
 [更新汇总 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -215,7 +225,7 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 
 [更新汇总 38](https://support.microsoft.com/help/4513507/) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -236,7 +246,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 37](https://support.microsoft.com/help/4508614/) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -258,7 +268,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 36](https://support.microsoft.com/help/4503156) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -291,7 +301,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 35](https://support.microsoft.com/en-us/help/4494485/update-rollup-35-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）
@@ -312,7 +322,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -322,7 +332,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -362,7 +372,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -389,7 +399,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 [更新汇总 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -403,7 +413,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 **Linux 支持** |  添加了对具有 Red Hat 兼容内核的 Oracle Linux 6.8、Oracle Linux 6.9 和 Oracle Linux 7.0 的支持以及对 Unbreakable Enterprise Kernel (UEK) 第 5 版的支持。
 **LVM** | 添加了对 LVM 和 LVM2 卷的支持。<br/><br/> 现在支持磁盘分区和 LVM 卷上的 /boot 目录。
 **Directories** | 添加了对这些设置为独立分区的目录，或不在同一系统磁盘中的文件系统的支持：<br/><br/> /(root)、/boot、/usr、/usr/local、/var、/etc。
-**Windows 2008 Server** | 添加了对动态磁盘的支持。
+**Windows Server 2008** | 添加了对动态磁盘的支持。
 **故障转移** | 改进了 storvsc 和 vsbus 不是启动驱动程序的 VMware VM 的故障转移时间。
 **UEFI 支持** | Azure VM 不支持 UEFI 启动类型。 现在可以通过 Site Recovery 将使用 UEFI 的本地物理服务器迁移到 Azure。 Site Recovery 在迁移服务器之前会将启动类型转换为 BIOS。 Site Recovery 以前仅支持对 VM 执行此转换。 该项支持适用于运行 Windows Server 2012 或更高版本的物理服务器。
 
@@ -444,7 +454,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 [更新汇总 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -464,7 +474,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 [更新汇总 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -476,7 +486,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 [更新汇总 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。
@@ -497,7 +507,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 --- | ---
 **Linux 支持** | 为 RedHat Enterprise Linux 6.10、CentOS 6.10 添加的支持。<br/><br/> 现在支持基于 Linux 且在旧式 BIOS 兼容模式下使用 GUID 分区表 (GPT) 分区样式的 VM。 有关详细信息，请查看 [Azure VM 常见问题解答](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks)。
 **迁移后的 VM 灾难恢复** | 支持将已迁移到 Azure 的本地 VMware VM 灾难恢复到次要区域，启用复制之前无需在 VM 上卸载移动服务。
-**Windows 2008 Server** | 支持迁移运行 Windows Server 2008 R2/2008 64 位和 32 位的计算机。<br/><br/> 仅限迁移（复制和故障转移）。 不支持故障回复。
+**Windows Server 2008** | 支持迁移运行 Windows Server 2008 R2/2008 64 位和 32 位的计算机。<br/><br/> 仅限迁移（复制和故障转移）。 不支持故障回复。
 
 ## <a name="updates-july-2018"></a>更新（2018 年 7 月）
 
@@ -505,7 +515,7 @@ Site Recovery 增加了一个选项，可以针对移动服务扩展进行自动
 
 [更新汇总 27](https://support.microsoft.com/help/4055712/update-rollup-27-for-azure-site-recovery) 提供以下更新。
 
-**Update** | **详细信息**
+**更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（参阅汇总中的详述）。
 **问题修复/改进** | 已做出多项修复和改进（参阅汇总中的详述）。

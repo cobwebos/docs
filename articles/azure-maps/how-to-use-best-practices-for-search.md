@@ -8,23 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742756"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84264360"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps 搜索服务的最佳做法
 
-Azure Maps [搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括提供各种功能的 API。 例如，地址搜索 API 可以查找涉及特定位置的兴趣点 (POI) 或数据。 
+Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括提供各种功能的 api，可帮助开发人员按名称或类别搜索地址、位置、业务列表和其他地理信息。 例如，"[模糊搜索" API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)允许用户搜索地址或兴趣点（POI）。
 
 本文介绍如何在调用 Azure Maps 搜索服务中的数据时应用最佳做法。 将了解如何执行以下操作：
 
-* 生成查询以返回相关的匹配项。
-* 限定搜索结果。
-* 了解结果类型之间的差异。
-* 阅读地址搜索-响应结构。
+* 生成查询以返回相关的匹配项
+* 限定搜索结果
+* 了解结果类型之间的差异
+* 阅读地址搜索-响应结构
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +32,7 @@ Azure Maps [搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括
 有关 Azure Maps 中身份验证的信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 > [!TIP]
-> 若要查询搜索服务，可以使用 [Postman 应用](https://www.getpostman.com/apps)生成 REST 调用。 也可使用你喜欢的任何 API 开发环境。
+> 若要查询搜索服务，可以使用[Postman 应用程序](https://www.getpostman.com/apps)来生成 REST API 调用。 也可使用你喜欢的任何 API 开发环境。
 
 ## <a name="best-practices-to-geocode-addresses"></a>地理编码地址的最佳做法
 
@@ -61,7 +60,7 @@ Azure Maps [搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括
 
 #### <a name="fuzzy-search-parameters"></a>模糊搜索参数
 
-如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
+如果不知道某个搜索查询的用户输入，我们建议使用 Azure Maps [模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。 例如，用户的输入可以是地址，也可以是感兴趣点的类型（POI），如*购物购物中心*。 该 API 可将 POI 搜索和地理编码组合成规范的“单行搜索”。 
 
 * 即使查询参数与用户需要的信息不完全匹配，`minFuzzyLevel` 和 `maxFuzzyLevel` 参数也有助于返回相关的匹配项。 可以将搜索查询设定为默认值 `minFuzzyLevel=1` 和 `maxFuzzyLevel=2`，以提高性能并减少不正常的结果。 
 
@@ -85,7 +84,7 @@ Azure Maps [搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>地理实体类型的反向地理编码和筛选
 
-在[地址搜索反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
+在[地址搜索反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 中执行反向地理编码搜索时，该服务可以返回多边形来表示行政区域。 例如，yoi 可能需要提取城市的区域多边形。 若要将搜索范围缩小到特定地理实体类型，请在请求中包含 `entityType` 参数。 
 
 生成的响应包含地域 ID 和匹配的实体类型。 如果提供了多个实体，则终结点将返回可用的最小实体。 可使用返回的几何图形 ID 通过 [Polygon 搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来获取地理位置的几何图形。
 

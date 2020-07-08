@@ -6,12 +6,11 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648116"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197067"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>将 GitHub 存储库同步到应用程序配置
 
@@ -92,7 +91,7 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>在一个操作中同步多个文件 
 
-如果配置位于多个文件中，可以使用下面的模式，以在任何一个文件被修改时触发同步。 此模式使用 glob 库 https://www.npmjs.com/package/glob 
+如果配置位于多个文件中，可以使用下面的模式，以在任何一个文件被修改时触发同步。 此模式使用 glob 库 https://www.npmjs.com/package/glob 。 请注意，如果您的配置文件名称包含逗号，则可以使用反斜杠来转义逗号。 
 
 ```json
 on:
@@ -252,7 +251,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度限制 GitHub 操作
 嵌套 JSON 特性的默认行为是平展整个对象。  下面的 JSON 定义了此键值对：
 
-| 密钥 | 值 |
+| 键 | “值” |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 
@@ -295,7 +294,7 @@ jobs:
 
 假设 depth 值为 2，上面的示例现在返回以下键值对：
 
-| 密钥 | 值 |
+| 密钥 | “值” |
 | --- | --- |
 | Object:Inner | {"InnerKey":"InnerValue"} |
 

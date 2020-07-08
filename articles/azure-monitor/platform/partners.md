@@ -3,13 +3,12 @@ title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.date: 05/29/2020
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248965"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -37,7 +36,7 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 
 ![Atlassian 徽标](./media/partners/atlassian.png)
 
-可以在 Azure 监视器警报上创建 JIRA 票证。
+可针对 Azure Monitor 警报创建 JIRA 票证。
 
 [查看相关文档。][atlassian-doc]
 
@@ -49,7 +48,7 @@ AppDynamics Application Performance Management (APM) 可让应用程序所有者
 
 ![Circonus 徽标](./media/partners/circonus.png)
 
-Circonus 是计算机数据智能专家，提供唯一能够实时处理数十亿指标流的计算机数据智能平台，以促进空前的商业洞察力和价值。 使用 Circonus 收集、跟踪和可视化与 Microsoft Azure 安装程序相关的关键指标。 在整个系统范围内查看 Azure 的资源利用率、应用程序性能和操作运行状况。
+Circonus 是机器数据智能专家，提供唯一一个能够实时处理数十亿指标流的机器数据智能平台，以促进前所未有的业务洞察力和价值。 使用 Circonus 收集、跟踪和可视化与 Microsoft Azure 安装程序相关的关键指标。 可在系统范围内了解 Azure 的资源利用率、应用程序性能和运行状况。
 
 [查看相关文档。][circonus-doc]
 
@@ -106,7 +105,8 @@ Grafana 是一个开源应用程序，用于可视化时序指标数据。
 
 ![InfluxData 徽标](./media/partners/Influxdata.png)
 
-InfluxDB 是 InfluxDB 的创建者，它提供了一个从头开始构建的新式开源平台，用于分析 DevOps 和 IoT 应用程序的指标和事件（时间序列数据）。 无论数据来自人类、传感器还是机器，InfluxData 都使开发人员能够更快、更轻松地构建下一代监视应用程序、分析应用程序和 IoT 应用程序，并能够快速地按比例交付实际业务价值。 InfluxData 总部位于旧金山，拥有 420 多家客户，包括 Cisco、eBay、IBM 和 Siemens。
+InfluxData 是 InfluxDB （开源时序数据库）的创建者。 我们的技术专门用于处理 IoT 设备、应用程序、网络、容器和计算机生成的大量时间戳数据。 我们负责帮助开发人员和组织（如 IBM、签证、Siemens、Tesla 和 NASA）存储和分析实时数据，使他们能够更快、更快速地构建转换监视、分析和 IoT 应用程序。 可以使用 InfluxData 的 Telegraf 代理展开 Microsoft Azure 监视器的指标和事件收集功能，使 Microsoft 用户能够受益于领先的时序数据库解决方案，并可利用不断增长的开源贡献给 Telegraf。
+
 
 [查看相关文档。][influxdata-doc]
 
@@ -115,7 +115,7 @@ InfluxDB 是 InfluxDB 的创建者，它提供了一个从头开始构建的新�
 
 ![Logic Monitor 徽标](./media/partners/logicmonitor.png)
 
-LogicMonitor&reg;是用于复杂 IT 基础结构的领先的基于 SaaS 的性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 LM Cloud 的综合性 Azure 监视功能可让用户通过单个平台来关联 Azure 云、本地资源和混合云资源的性能。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
+LogicMonitor&reg; 是适用于复杂 IT 基础结构的、基于 SaaS 的、领先的性能监视平台。 LogicMonitor 集数千种技术于一身，提供基础结构和应用程序性能的精细洞察数据。 LM Cloud 的综合性 Azure 监视功能可让用户通过单个平台来关联 Azure 云、本地资源和混合云资源的性能。 自动资源发现、内置监视模板、预配置的警报阈值和可自定义的仪表板相辅相成，可为 IT 人员带来速度优势、灵活性和可见性，让他们获得成功。
 
 [查看相关文档。][logicmonitor-doc]
 
@@ -123,7 +123,7 @@ LogicMonitor&reg;是用于复杂 IT 基础结构的领先的基于 SaaS 的性�
 
 ![LogRhythm 徽标](./media/partners/logrhythm.png)
 
-LogRhythm 是 NextGen SIEM 的领导者，通过快速检测、响应和 neutralizing 以来自2200，使六个大洲的组织能够显著降低风险。 LogRhythm 的威胁生命周期管理（TLM）工作流是安全运营中心的基础，帮助客户保护其云、物理和虚拟基础结构，使其适用于环境。 如果你是 LogRhythm 客户，并且已准备好开始 Azure 旅程，则需要安装并配置 LogRhythm 开放收集器和 EventHub 集成。 可在[此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)找到更多详细信息，包括配置 Azure Monitor 和开放收集器的文档。 
+LogRhythm 是下一代 SIEM 的领导者，它使六大洲的组织能够通过快速检测、响应和消除网络威胁来显著降低风险。 LogRhythm 的威胁生命周期管理 (TLM) 工作流是安全运营中心的基础，可帮助客户保护其 IT 和 OT 环境的云、物理和虚拟基础设施。 如果你是 LogRhythm 客户，并已准备好开始 Azure 用户旅程，则需要安装并配置 LogRhythm 开放收集器和 EventHub 集成。 有关详细信息（包括配置 Azure Monitor 和开放收集器的文档），可参阅[此文](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)。 
 
 
 
@@ -131,16 +131,16 @@ LogRhythm 是 NextGen SIEM 的领导者，通过快速检测、响应和 neutral
 
 ![Microfocus 徽标](./media/partners/microfocus.png)     
 
-Microfocus **ArcSight**具有智能连接器，适用于 Azure Monitor 事件中心。
+Microfocus ArcSight 为 Azure Monitor 事件中心提供了一个智能连接器。
 
 [了解详细信息](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852 "ArcSight 文档。")
 
-Microfocus**操作桥**会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供服务监视质量的独特组合，与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 使用操作桥，客户可以在任何设备上使用浏览器提供单一界面，在任何设备上都能理解。
+Microfocus**操作桥**会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供服务监视质量的独特组合，与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 Operations Bridge 使客户能够以业务和 IT 利益干系人都能理解的方式提供一个单一虚拟管理平台，可在任何具有浏览器的设备上使用。
 
 了解详细信息
 - [OB 套件概述](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [下载](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
-- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope 是操作桥套件中的一个组件。
+- [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) - SiteScope 是 Operations Bridge 套件中的一个组件。
 
 
 
@@ -187,13 +187,13 @@ PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提
 
 ![QRadar 徽标](./media/partners/qradar.png)
 
-Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可[在此处详细了解如何与 Azure 集成][qradar-doc]。
+Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以[在此处了解 Azure 集成][qradar-doc]。
 
 ## <a name="sciencelogic"></a>ScienceLogic
 
 ![ScienceLogic 徽标](./media/partners/sciencelogic.png)
 
-ScienceLogic 提供下一代 IT 服务保证平台，用于随时随地管理任何技术。 ScienceLogic 提供必要的规模、安全性、自动化和复原性，简化管理任务（管理 IT 资源、服务和应用程序）。 ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。 可以通过 ScienceLogic 实时了解 Azure 服务和资源， 以便了解何时会出现问题并进行快速修正。 还可将 Azure 与其他云、数据中心系统以及服务一起管理。
+ScienceLogic 提供了下一代 IT 服务保证平台，以便在任何位置管理任何技术。 ScienceLogic 提供必要的规模、安全性、自动化和复原性，简化管理任务（管理 IT 资源、服务和应用程序）。 ScienceLogic 平台通过 Azure API 与 Microsoft Azure 配合。 可以通过 ScienceLogic 实时了解 Azure 服务和资源， 以便了解何时会出现问题并进行快速修正。 还可以将 Azure 与其他云、数据中心系统和服务一起进行管理。
 
 [了解详细信息。][sciencelogic-doc]
 
@@ -209,7 +209,7 @@ Serverless360 是一个平台工具，用于运行、管理和监视 Azure 无�
 
 ![ServiceNow 徽标](./media/partners/servicenow.png)
 
-使用 AIOps 平台减少事件和 MTTR，消除干扰、确定优先级、确定使用 ML 的根本原因检测，并使用 ITX 工作流进行修正。  了解 Azure 中 Iaas/PaaS/FaaS 服务的当前状态，并从标记生成服务映射，以生成应用程序服务上下文，以实现业务影响分析。    
+使用 NOW AIOps 平台减少事件和 MTTR，以消除干扰、确定优先级、确定使用 ML 进行的根本原因检测，并采用 ITX 工作流进行修正。  从 Azure 了解 Iaas/PaaS/FaaS 服务的当前状态，并从标记构建服务映射，以生成用于业务影响分析的应用程序服务上下文。    
 
 [了解详细信息。](https://www.servicenow.com/solutions/aiops.html)
 
@@ -217,7 +217,7 @@ Serverless360 是一个平台工具，用于运行、管理和监视 Azure 无�
 
 ![SignalFX 徽标](./media/partners/signalfx.png)
 
-SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，实时了解当前的动态环境。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 SignalFx 直接与 Azure Monitor 和*Telegraf*、 *statsD*和*collectd*等开源连接器集成，为 Azure 提供最佳的类仪表板、分析和警报。
+SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。 该服务可以发现并收集云中每个组件的指标， 取代传统的点选工具，实时了解当前的动态环境。 利用可大规模缩放的 SignalFx 平台，可以根据体系结构针对容器和微服务优化 SaaS 平台，并在各种规模的组织中提供强大的可视化、主动警报和协作会审功能。 还可以通过 Telegraf、statsD 和 collectd 等开源连接器直接将 SignalFx 与 Azure Monitor 集成，以便为 Azure 提供一流的仪表板、分析和警报  。
 
 [查看相关文档。][signalfx-doc]
 
@@ -245,7 +245,7 @@ SignalFx 是领先的面向数据驱动型 DevOps 的实时操作智能服务。
 
 ![SquaredUp 徽标](./media/partners/squaredup.png)
 
-SquaredUp for Azure 使你的 Azure 应用程序完美简单。 它提供实时的交互式仪表板。 你可以向下钻取到订阅、资源组、标记和单个资源，以查看指标，如 CPU、大多数入站连接、Application Insights 响应时间、总成本和汇总运行状况状态，以及钻取以查看相关数据（如警报、Log Analytics 事件、更详细的指标），或查看你使用的其他工具（如 ServiceNow）中的相关数据。例如，Dynatrace、PagerDuty 或 Pingdom。  你可以自定义你自己的仪表板、发布和共享你的仪表板，也可以在 intranet 页面上共享它们。 
+SquaredUp for Azure 使 Azure 应用程序的可视化变得非常简单。 它提供了实时交互式仪表板。 你可以向下钻取到订阅、资源组、标记和单个资源，以查看指标，如 CPU、大多数入站连接、Application Insights 响应时间、总成本和汇总运行状况状态，以及钻取以查看相关数据（如警报、Log Analytics 事件、更详细的指标），或查看你使用的其他工具（如 ServiceNow）中的相关数据。例如，Dynatrace、PagerDuty 或 Pingdom。  你可以自定义自己的仪表板，将其发布，并与个人共享或在 Intranet 页上共享。 
 
 [了解详细信息。](https://squaredup.com/)
 
@@ -267,7 +267,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 
 ## <a name="next-steps"></a>后续步骤
 
-- [详细了解 Azure Monitor](../../azure-monitor/overview.md)
+- [了解有关 Azure Monitor 的详细信息](../../azure-monitor/overview.md)
 - [使用 REST API 访问指标](rest-api-walkthrough.md)
 - [将活动日志流式传输给非 Microsoft 服务](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 - [将资源日志流式传输到非 Microsoft 服务](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
@@ -286,7 +286,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文档。"
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic 文档。"
 [grafana-doc]: ./grafana-plugin.md "Azure Monitor Grafana 集成。"
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor 流入 data Telegraf integration。"
+[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure Monitor Influxdata Telegraf 集成。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor 文档。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文档。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"

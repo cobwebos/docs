@@ -5,15 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/01/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ba54736abe335b53a3b8c6733063efcb34ea29a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856822"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259195"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -35,7 +34,7 @@ Azure 存储预留容量可显著降低块 blob 和 Azure Data Lake Storage Gen2
 
 Azure 存储预留容量适用于单个订阅或多个订阅（共享范围）。 仅将预订折扣应用于单个订阅，才将预订折扣应用于所选订阅。 当限定为多个订阅时，预订折扣在客户的计费上下文中跨这些订阅共享。
 
-当你购买 Azure 存储预留容量时，你可以将保留用于块 blob 和 Azure Data Lake Storage Gen2 数据。 预订适用于你在购买范围内的使用情况，并且不能限制为订阅中的特定存储帐户、容器或对象。 不能跨多个订阅拆分保留。
+当你购买 Azure 存储预留容量时，你可以将保留用于块 blob 和 Azure Data Lake Storage Gen2 数据。 预订适用于你在购买范围内的使用情况，并且不能限制为订阅中的特定存储帐户、容器或对象。
 
 Azure 存储预留只包含订阅或共享资源组中存储的数据量。 保留中不包含早期删除、操作、带宽和数据传输费用。 购买预订后，与预订属性匹配的容量费用将按折扣费率收费，而不是按即用即付费率收费。 有关 Azure 预留的详细信息，请参阅[什么是 Azure 保留？](/azure/billing/billing-save-compute-costs-reservations)。
 
@@ -78,9 +77,9 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
     ![显示如何购买保留容量的屏幕截图](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |字段  |说明  |
+   |字段  |描述  |
    |---------|---------|
-   |**Scope**   |  指示可以使用与预订关联的计费权益的订阅数。 它还控制将预留应用于特定订阅的方式。 <br/><br/> 如果选择 "**共享**"，则预订折扣将应用到计费上下文中任何订阅的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包含由帐户管理员创建的即用即付费率的所有订阅。  <br/><br/>  如果选择 "**单个订阅**"，则预订折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择 "**单个资源组**"，则预订折扣将应用到所选订阅中的 Azure 存储容量和该订阅内的所选资源组。 <br/><br/> 你可以在购买预订后更改保留范围。  |
+   |**范围**   |  指示可以使用与预订关联的计费权益的订阅数。 它还控制将预留应用于特定订阅的方式。 <br/><br/> 如果选择 "**共享**"，则预订折扣将应用到计费上下文中任何订阅的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包含由帐户管理员创建的即用即付费率的所有订阅。  <br/><br/>  如果选择 "**单个订阅**"，则预订折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择 "**单个资源组**"，则预订折扣将应用到所选订阅中的 Azure 存储容量和该订阅内的所选资源组。 <br/><br/> 你可以在购买预订后更改保留范围。  |
    |**订阅**  | 用于支付 Azure 存储预留的订阅。 所选订阅的付款方式用于对成本进行收费。 订阅必须是以下类型之一： <br/><br/>  企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）：对于企业订阅，将从注册的货币承诺余额中扣除费用，或将其收费为超额。 <br/><br/> 使用即用即付费率的单个订阅（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P）：对于使用即用即付费率的单个订阅，将对订阅上的信用卡或发票付款方式收取费用。    |
    | **区域** | 预订有效的区域。 |
    | **访问层** | 其中的预订生效的访问层。 选项包括 "*热*"、"*冷*" 或 "*存档*"。 有关访问层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](storage-blob-storage-tiers.md)。 |
@@ -129,5 +128,5 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure 预留项？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [什么是 Azure 预订？](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [了解如何将预留折扣应用于 Azure 存储](../../cost-management-billing/reservations/understand-storage-charges.md)

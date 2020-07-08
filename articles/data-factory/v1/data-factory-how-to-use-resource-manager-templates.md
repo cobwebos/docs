@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460726"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194455"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用模板来创建 Azure 数据工厂实体
 > [!NOTE]
@@ -25,7 +24,7 @@ ms.locfileid: "81460726"
 ## <a name="overview"></a>概述
 使用 Azure 数据工厂实现数据集成需求时，可能发现自己在不同环境中重复使用同一模式，或在同一解决方案内重复执行相同任务。 使用模板可轻松实现和管理这些方案。 Azure 数据工厂中的模板非常适合于涉及可重用性和重复的情况。
 
-请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志均存储在单独的本地 SQL Server 数据库中。 公司希望在云中构建单个数据仓库用于即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
+请考虑此情况：某组织在世界各地拥有 10 个制造工厂。 每个工厂的日志存储在单独的 SQL Server 数据库中。 公司希望在云中构建单个数据仓库用于即席分析。 还希望开发、测试和生产环境具有相同逻辑但具有不同配置。
 
 在此情况下，需在相同环境中重复同一任务，但 10 个制造工厂的每个数据工厂具有不同值。 总之，存在**重复**。 模板化允许将此泛型流抽象化（即，管道在每个数据工厂中具有相同活动），但对每个制造工厂使用单独的参数文件。
 
@@ -41,14 +40,14 @@ ms.locfileid: "81460726"
 * [教程：使用 Azure 资源管理器模板创建处理数据的管道](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>GitHub 上的数据工厂模板
-请查看 GitHub 上的以下 Azure 快速入门模板：
+查看 GitHub 上的以下 Azure 快速入门模板：
 
 * [创建数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [创建包含 Azure HDInsight 群集上的 Hive 活动的数据工厂](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
 * [创建数据工厂，将数据从 Salesforce 复制到 Azure Blob](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [创建可链接活动的数据工厂：将数据从 FTP 服务器复制到 Azure Blob，调用按需 HDInsight 群集上的 Hive 脚本来转换数据，并将结果复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-随意共享 [Azure 快速启动](https://azure.microsoft.com/documentation/templates/)处的 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
+可以在[azure 快速入门](https://azure.microsoft.com/documentation/templates/)中随意共享 Azure 数据工厂模板。 开发可通过此存储库共享的模板时，请参考 [contribution guide](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)（贡献指南）。
 
 下面部分详细介绍了如何定义 Resource Manager 模板中的数据工厂资源。
 

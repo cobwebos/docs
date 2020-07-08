@@ -2,17 +2,19 @@
 title: 使用模板进行条件部署
 description: 介绍如何在 Azure 资源管理器模板中有条件地部署资源。
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/01/2020
+ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153414"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259314"
 ---
-# <a name="conditional-deployment-in-arm-templates"></a>ARM 模板中的条件部署
+# <a name="conditional-deployment-in-arm-templates"></a>使用 ARM 模板进行条件部署
 
-有时，你需要根据需要在 Azure 资源管理器（ARM）模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+有时，需要选择在 Azure 资源管理器 (ARM) 模板中部署资源。 使用 `condition` 元素指定是否部署资源。 此元素的值将解析为 true 或 false。 如果值为 true，则创建了该资源。 如果值为 false，则未创建该资源。 值只能应用到整个资源。
+
+> [!NOTE]
+> 条件部署不会级联到[子资源](child-resource-name-type.md)。 如果要有条件地部署资源及其子资源，需要对每种资源类型应用相同的条件。
 
 ## <a name="new-or-existing-resource"></a>新资源或现有资源
 
@@ -81,11 +83,11 @@ ms.locfileid: "80153414"
 
 [将资源设置为依赖于](define-resource-dependency.md)条件资源，这与设置任何其他资源完全一样。 条件资源未部署时，Azure 资源管理器会自动将其从所需依赖项中删除。
 
-## <a name="condition-with-complete-mode"></a>完整模式条件
+## <a name="complete-mode"></a>完整模式
 
 如果以[完整模式](deployment-modes.md)部署模板并且由于条件的计算结果为 false 而未部署资源，则结果取决于用于部署模板的 REST API 版本。 如果使用 2019-05-10 之前的版本，则**不会删除**该资源。 如果使用 2019-05-10 或更高版本，则**会删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 在条件为 false 时会删除该资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关创建模板的建议，请参阅[ARM 模板最佳实践](template-best-practices.md)。
-* 若要创建资源的多个实例，请参阅[ARM 模板中的资源迭代](copy-resources.md)。
+* 有关创建模板的建议，请参阅 [ARM 模板的最佳做法](template-best-practices.md)。
+* 要创建资源的多个实例，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。

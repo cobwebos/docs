@@ -7,12 +7,11 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe7d6d4e70bc55a6a91d3c1a1b910db4b5469fe6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77067391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197074"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Ambari 的用法
 
@@ -56,7 +55,7 @@ ps -ef | grep failover
 
 ## <a name="ambari-database"></a>Ambari 数据库
 
-HDInsight 幕后会创建 SQL Azure 数据库用作 Ambari 服务器的数据库。 默认的[服务层级是 S0](../sql-database/sql-database-elastic-pool-scale.md)。
+HDInsight 将在 SQL 数据库中创建一个数据库，该数据库的作用是充当 Ambari 服务器的数据库。 默认的[服务层级是 S0](../azure-sql/database/elastic-pool-scale.md)。
 
 对于在创建时其工作器节点数超过 16 个的任何群集，数据库服务层级为 S2。
 
@@ -75,6 +74,6 @@ HDInsight 幕后会创建 SQL Azure 数据库用作 Ambari 服务器的数据库
 
 * 通过 [Azure 社区支持](https://azure.microsoft.com/support/community/)获取 Azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帐户来改善客户体验。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 联系 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 它可以将 Azure 社区成员连接到适当的资源，为他们提供解答、支持和专家建议。
 
 * 如果需要更多帮助，可以从 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择“支持”****，或打开“帮助 + 支持”**** 中心。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅包含对订阅管理和计费支持的访问权限，并且通过 [Azure 支持计划](https://azure.microsoft.com/support/plans/)之一提供技术支持。

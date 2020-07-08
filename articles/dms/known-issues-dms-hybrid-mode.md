@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196280"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>使用混合模式时的已知问题/迁移限制
 
@@ -24,7 +23,7 @@ ms.locfileid: "77649596"
 
 ## <a name="installer-fails-to-authenticate"></a>安装程序无法进行身份验证
 
-将证书上传到 AdApp 后，最多需要几分钟的时间才能使用 Azure 进行身份验证。 安装程序将尝试重试一段延迟，但传播延迟可能比重试长，你会看到一条**FailedToGetAccessTokenException**消息。 如果已将证书上传到正确的 AdApp，并在 dmsSettings 中提供了正确的 AppId，请尝试再次运行安装命令。
+将证书上传到 AdApp 后，最多需要几分钟的时间才能使用 Azure 进行身份验证。 安装程序将尝试重试一段延迟，但传播延迟可能比重试长，你会看到一条**FailedToGetAccessTokenException**消息。 如果证书已上传到正确的 AdApp 并且 dmsSettings.js中提供了正确的 AppId，请尝试再次运行安装命令。
 
 ## <a name="service-offline-after-successful-installation"></a>成功安装后，服务 "脱机"
 
@@ -55,7 +54,7 @@ ms.locfileid: "77649596"
 
 ## <a name="using-your-own-signed-certificate"></a>使用你自己的签名证书
 
-操作 GenerateCert 生成的证书是自签名证书，根据内部安全策略，这可能是不可接受的。 你可以提供自己的证书，并在 dmsSettings 中提供指纹，而不是使用此证书。 需要将此证书上传到 AdApp，并将其安装在要安装 Azure 数据库迁移服务混合辅助角色的计算机上。 然后，将具有私钥的证书安装到本地计算机证书存储中。
+操作 GenerateCert 生成的证书是自签名证书，根据内部安全策略，这可能是不可接受的。 你可以提供自己的证书，并 dmsSettings.js上的中提供指纹，而不是使用此证书。 需要将此证书上传到 AdApp，并将其安装在要安装 Azure 数据库迁移服务混合辅助角色的计算机上。 然后，将具有私钥的证书安装到本地计算机证书存储中。
 
 ## <a name="running-the-worker-service-as-a-low-privilege-account"></a>作为低特权帐户运行辅助角色服务
 
@@ -93,10 +92,10 @@ ms.locfileid: "77649596"
 
 以下部分介绍与使用 Azure 数据库迁移服务混合模式执行联机迁移相关的特定于方案的问题。
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>联机迁移到 Azure SQL 数据库托管实例
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>联机迁移到 Azure SQL 托管实例
 
 **CPU 使用率高**
 
-**问题**：对于到 SQL 数据库托管实例的联机迁移，运行混合辅助角色的计算机在有太多备份或备份太大的情况下，运行混合辅助角色的计算机将遇到较高的 CPU 使用率。
+**问题**：对于到 SQL 托管实例的联机迁移，运行混合辅助角色的计算机在有太多备份或备份太大时将会遇到高 CPU 使用率。
 
 **缓解**：若要缓解此问题，请使用压缩的备份，拆分迁移以便使用多个共享，或纵向扩展运行混合辅助角色的计算机。

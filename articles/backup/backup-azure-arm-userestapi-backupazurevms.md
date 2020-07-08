@@ -4,12 +4,11 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248159"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248679"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -29,7 +28,7 @@ ms.locfileid: "79248159"
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-POST URI 包含参数 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}`。 `{fabricName}` 是“Azure”。 根据示例，`{vaultName}` 是“testVault”，`{vaultresourceGroupName}` 是“testVaultRG”。 由于 URI 中给出了所有必需的参数，因此不需要单独的请求正文。
+POST URI 包含参数 `{subscriptionId}`、`{vaultName}`、`{vaultresourceGroupName}`、`{fabricName}`。 `{fabricName}` 是“Azure”。 根据我们的示例， `{vaultName}` 为 "testVault"， `{vaultresourceGroupName}` 为 "testVaultRG"。 由于 URI 中给出了所有必需的参数，因此不需要单独的请求正文。
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
@@ -272,11 +271,11 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-这可确认已为 VM 启用了保护，并且将根据策略计划触发第一次备份。
+这会确认已为 VM 启用保护，并根据策略计划触发首个备份。
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>为受保护的 Azure VM 触发按需备份
 
-配置 Azure VM 以进行备份后，将根据策略计划执行备份。 可以等待第一次计划备份或随时触发按需备份。 按需备份的保留期与备份策略的保留期是不同的，并且可以指定为特定的日期时间。 如果未指定，则假定为触发按需备份之日后的 30 天。
+将 Azure VM 配置为进行备份后，会根据策略计划进行备份。 可以等待第一次计划备份或随时触发按需备份。 按需备份的保留期与备份策略的保留期是不同的，并且可以指定为特定的日期时间。 如果未指定，则假定为触发按需备份之日后的 30 天。
 
 触发按需备份是一种 POST 操作  。
 

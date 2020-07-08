@@ -5,12 +5,11 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cab114e50852f293a3d1caf5bdc9a341f75f2557
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743961"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204899"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>从 Azure VM 启用“更新管理”
 
@@ -29,7 +28,7 @@ ms.locfileid: "83743961"
 
 通过 https://portal.azure.com 登录到 Azure 门户。
 
-## <a name="enable-update-management"></a>启用更新管理
+## <a name="enable-the-feature-for-deployment"></a>启用部署功能
 
 1. 在 [Azure 门户](https://portal.azure.com)中，选择“虚拟机”，或在“主页”页上搜索并选择“虚拟机” 。
 
@@ -43,16 +42,9 @@ ms.locfileid: "83743961"
 
     ![启用更新管理](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="check-the-scope-configuration"></a><a name="scope-configuration"></a>检查作用域配置
-
-更新管理在工作区中使用作用域配置来确定要启用该功能的计算机。 作用域配置是包含一个或多个已保存搜索的组，该组用来将功能的作用域限制为特定计算机。 有关详细信息，请参阅[使用更新管理的作用域配置](automation-scope-configurations-update-management.md)。
-
 ## <a name="next-steps"></a>后续步骤
 
 * 若要将更新管理用于 VM，请参阅[管理 Azure VM 的更新和修补程序](automation-tutorial-update-management.md)。
-* 有关作用域配置，请参阅[使用更新管理的作用域配置](automation-scope-configurations-update-management.md)。
-* 如果不再需要 Log Analytics 工作区，请参阅[为更新管理取消工作区与自动化帐户的链接](automation-unlink-workspace-update-management.md)中的说明。
-* 若要从更新管理中删除 VM，请参阅[从更新管理中删除 VM](automation-remove-vms-from-update-management.md)。
 * 若要对常规更新管理错误进行故障排除，请参阅[排查更新管理问题](troubleshoot/update-management.md)。
 * 若要对 Windows 更新代理的问题进行故障排除，请参阅[排查 Windows 更新代理问题](troubleshoot/update-agent-issues.md)。
-* 若要对 Linux 更新代理的问题进行故障排除，请参阅[排查 Linux 更新代理问题](troubleshoot/update-agent-issues-linux.md)。
+* 若要排查 Linux 更新代理的问题，请参阅[排查 Linux 更新代理问题](troubleshoot/update-agent-issues-linux.md)。

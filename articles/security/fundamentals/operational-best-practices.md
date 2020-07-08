@@ -1,7 +1,7 @@
 ---
-title: Azure 资产的最佳安全方案
+title: 针对 Azure 资产的安全性最佳做法
 titleSuffix: Azure security
-description: 本文提供了一系列操作最佳实践，用于保护 Azure 中的数据、应用程序和其他资产。
+description: 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,26 +16,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188580"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84204729"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
-本文提供了一系列操作最佳实践，用于保护 Azure 中的数据、应用程序和其他资产。
+本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
 
 最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术将随着时间改变，本文会定期更新以反映这些更改。
 
-## <a name="define-and-deploy-strong-operational-security-practices"></a>定义和部署强大的操作安全做法
+## <a name="define-and-deploy-strong-operational-security-practices"></a>定义并部署强大的操作安全做法
 Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用程序和其他资产的服务、控件和功能。 Azure 操作安全性建立在一个框架上，该框架融合了通过 Microsoft 独有的功能获得的知识，包括 [安全开发生命周期 (SDL)](https://www.microsoft.com/sdl)、[Microsoft 安全响应中心](https://www.microsoft.com/msrc?rtc=1)计划以及对网络安全威胁形态的深刻认识。
 
 ## <a name="manage-and-monitor-user-passwords"></a>管理和监视用户密码
-下表列出了一些与管理用户密码相关的最佳实践：
+下表列出了与管理用户密码相关的一些最佳做法：
 
-**最佳做法**：确保在云中拥有适当级别的密码保护。   
-**详细信息**：按照[microsoft 密码指南](https://www.microsoft.com/research/publication/password-guidance/)中的指导进行操作，该指南的作用域为 microsoft 标识平台（Azure Active Directory、Active Directory 和 Microsoft 帐户）的用户。
+**最佳做法**：确保你在云中具有适当级别的密码保护。   
+**详细信息**：按照 [Microsoft 密码指南](https://www.microsoft.com/research/publication/password-guidance/)中的指南进行操作，该指南的适用范围是 Microsoft 标识平台（Azure Active Directory、Active Directory 和 Microsoft 帐户）的用户。
 
 **最佳做法**：监视与用户帐户相关的可疑操作。   
 **详细信息**：使用 Azure AD 安全报告监视具有[风险的用户](/azure/active-directory/reports-monitoring/concept-user-at-risk)和有风险的[登录](../../active-directory/reports-monitoring/concept-risk-events.md)。
@@ -45,39 +44,39 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 - 检测影响组织标识的潜在漏洞
 - 配置自动响应，可检测与组织标识相关的可以操作
-- 调查可疑事件，并采取适当的措施解决这些问题
+- 调查可疑事件，并采取适当的措施进行解决
 
 ## <a name="receive-incident-notifications-from-microsoft"></a>接收来自 Microsoft 的事件通知
-确保安全操作团队从 Microsoft 收到 Azure 事件通知。 事件通知使你的安全团队了解你的 Azure 资源受到了影响，因此他们可以快速响应并修正潜在安全风险。
+确保你的安全运营团队接收来自 Microsoft 的 Azure 事件通知。 事件通知让你的安全团队知道你已经破坏了某个 Azure 资源，目的是让他们可以快速响应并修正潜在的安全风险。
 
-在 Azure 注册门户中，你可以确保管理员联系信息包含通知安全操作的详细信息。 联系人详细信息为电子邮件地址和电话号码。
+在 Azure 注册门户中，你可以确保管理员联系信息包含用来进行安全操作通知的详细信息。 联系人详细信息为电子邮件地址和电话号码。
 
-## <a name="organize-azure-subscriptions-into-management-groups"></a>将 Azure 订阅组织到管理组
-如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/governance/management-groups/create)提供了高于订阅的范围级别。 将订阅组织到名为 "管理组" 的容器中，并将管理条件应用于管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。
+## <a name="organize-azure-subscriptions-into-management-groups"></a>将 Azure 订阅组织到管理组中
+如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/governance/management-groups/create)提供了高于订阅的范围级别。 可将订阅组织到名为“管理组”的容器中，并将治理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。
 
-可以在目录中构建管理组和订阅的灵活结构。 每个目录都有一个名为根管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 根管理组允许在目录级别应用全局策略和 RBAC 分配。
+可以在目录中构建管理组和订阅的灵活结构。 为每个目录指定了一个称为根管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 根管理组允许在目录级别应用全局策略和 RBAC 分配。
 
-下面是使用管理组的一些最佳做法：
+下面是管理组使用方面的一些最佳做法：
 
-**最佳做法**：确保在添加新订阅时对其进行应用，如策略和权限。   
+**最佳做法**：确保在添加新订阅时，它们会应用治理元素，例如策略和权限。   
 **详细信息**：使用根管理组分配适用于所有 Azure 资产的企业范围的安全元素。 策略和权限是元素的示例。
 
-**最佳做法**：将管理组的顶级与分段策略相匹配，为每个段中的控制和策略一致性提供一个点。   
-**详细信息**：为根管理组下的每个段创建一个管理组。 请勿在根下创建其他任何管理组。
+**最佳做法**：将顶级管理组与分段策略匹配，以便在每个段中实现控制和策略一致性。   
+**详细信息**：在根管理组下为每个段创建一个管理组。 请勿在根下创建其他任何管理组。
 
-**最佳做法**：限制管理组深度，以避免影响操作和安全性的混淆。   
-**详细信息**：将层次结构限制为三个级别，包括根。
+**最佳做法**：限制管理组深度，以避免出现影响操作和安全性的混乱。   
+**详细信息**：将层次结构限制为三个级别（包括根在内）。
 
-**最佳做法**：使用根管理组仔细选择要应用于整个企业的项目。   
+**最佳做法**：使用根管理组，仔细选择要应用于整个企业的项。   
 **详细信息**：确保根管理组元素清楚地需要跨每个资源应用，并且不会对其造成影响。
 
-好的候选项包括：
+典型的候选项包括：
 
-- 对业务有明显影响的法规要求（例如，与数据主权相关的限制）
-- 具有接近零的潜在负面影响操作的要求，例如已认真查看的具有审核效果或 RBAC 权限分配的策略
+- 具有明确业务影响的法规要求（例如，与数据主权相关的限制）
+- 对操作几乎没有潜在负面影响的要求，例如，其审核效果或 RBAC 权限分配已经过仔细审查的策略
 
-**最佳做法**：在应用根管理组之前，请仔细规划和测试所有企业范围的更改（策略、RBAC 模型等）。   
-**详细信息**：根管理组中的更改可能会影响 Azure 上的每个资源。 尽管它们提供了一种强大的方法来确保企业之间的一致性，但错误或不正确的使用可能会对生产操作产生负面影响。 在测试实验室或生产试验中测试对根管理组所做的所有更改。
+**最佳做法**：在根管理组上应用所有企业范围的更改（策略、RBAC 模型等）之前，请仔细规划并测试它们。   
+**详细信息**：根管理组中的更改可能会影响 Azure 上的每个资源。 尽管它们提供了一种强大的方法来确保整个企业中的一致性，但错误或不正确的使用可能会对生产操作产生负面影响。 请在测试实验室或生产试点中测试对根管理组的所有更改。
 
 ## <a name="streamline-environment-creation-with-blueprints"></a>利用蓝图简化环境创建
 [Azure 蓝图](/azure/governance/blueprints/overview)服务使云架构师和中心信息技术小组能够定义可实现并符合组织标准、模式和要求的一组可重复的 azure 资源。 使用 Azure 蓝图，开发团队可以快速生成新的环境并将其放在新的环境中，并提供一套内置组件，并确保他们在组织符合性中创建这些环境。
@@ -90,39 +89,39 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 [Azure 存储分析](../../storage/common/storage-analytics.md)执行日志记录并为 Azure 存储帐户提供指标数据。 建议使用此数据跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。
 
 ## <a name="prevent-detect-and-respond-to-threats"></a>防范、检测和应对威胁
-[Azure 安全中心](../../security-center/security-center-intro.md)通过提供对 Azure 资源安全性的更多可见性，帮助防止、检测和应对威胁。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于各种安全解决方案。
+[Azure 安全中心](../../security-center/security-center-intro.md)增强了对 Azure 资源安全的可见性和可控性，可帮助你预防、检测和响应威胁。 它提供对 Azure 订阅的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于各种安全解决方案。
 
-安全中心的免费层为仅提供 Azure 资源的有限安全性。 标准层将这些功能扩展到本地和其他云中。 安全中心标准可帮助你查找和修复安全漏洞，应用访问和应用程序控制来阻止恶意活动、使用分析和智能检测威胁，以及在受到攻击时迅速响应。 可以尝试安全中心标准版，头 60 天免费。 建议将[Azure 订阅升级到安全中心标准版](../../security-center/security-center-get-started.md)。
+安全中心的免费层仅为 Azure 资源提供有限的安全性。 标准层将这些功能扩展到本地和其他云中。 借助安全中心标准层，可以查找和修复安全漏洞、应用访问控制和应用程序控制来阻止恶意活动、使用分析和智能功能检测威胁，以及在受到攻击时迅速做出响应。 可以尝试安全中心标准版，头 60 天免费。 建议[将 Azure 订阅升级到安全中心标准层](../../security-center/security-center-get-started.md)。
 
-使用安全中心来获得所有 Azure 资源的安全状态的中心视图。 一眼就可验证适当的安全控件是否配置到位且配置正确，还可快速确认任何需要注意的资源。
+使用安全中心，可以通过一个集中化视图查看所有 Azure 资源的安全状态。 一眼就可验证适当的安全控件是否配置到位且配置正确，还可快速确认任何需要注意的资源。
 
-安全中心还与[Microsoft Defender 高级威胁防护（ATP）](../../security-center/security-center-wdatp.md)集成，提供全面的终结点检测和响应（EDR）功能。 利用 Microsoft Defender ATP 集成，你可以发现异常。 你还可以检测和响应安全中心监视的服务器终结点上的高级攻击。
+安全中心还集成了 [Microsoft Defender 高级威胁防护 (ATP)](../../security-center/security-center-wdatp.md)，后者提供了完善的终结点检测和响应 (EDR) 功能。 使用 Microsoft Defender ATP 集成可以查明异常。 你还可以检测和响应安全中心所监视的服务器终结点上出现的高级攻击。
 
-几乎所有企业组织都有安全信息和事件管理（SIEM）系统，它通过整合来自各种信号收集设备的日志信息来帮助识别新兴的威胁。 然后，数据分析系统会分析日志，以帮助确定所有日志收集和分析解决方案中不可避免的噪音的 "有趣"。
+几乎所有的企业组织都有一个安全信息和事件管理 (SIEM) 系统，它可以整合来自不同信号收集设备的日志信息，因此可以识别新出现的威胁。 然后，数据分析系统会分析日志，以帮助确定所有日志收集和分析解决方案中不可避免的噪音的 "有趣"。
 
 [Azure Sentinel](/azure/sentinel/overview)是一个可缩放的云本机、安全信息和事件管理（SIEM）和安全业务流程自动响应（之忠诚度）解决方案。 Azure Sentinel 通过警报检测、威胁可见性、主动搜寻和自动威胁响应提供智能安全分析和威胁智能。
 
-下面是一些用于预防、检测和响应威胁的最佳方案：
+下面是一些用于预防、检测和响应威胁的最佳做法：
 
 **最佳做法**：使用基于云的 SIEM 提高 SIEM 解决方案的速度和可伸缩性。   
 **详细信息**：调查[Azure Sentinel](/azure/sentinel/overview)的特性和功能，并将其与你当前在本地使用的功能进行比较。 如果符合组织的 SIEM 要求，请考虑采用 Azure Sentinel。
 
-**最佳做法**：查找最严重的安全漏洞，以便确定调查的优先级。   
-**详细信息**：查看[azure 安全分数](../../security-center/secure-score-security-controls.md)，查看 azure 安全中心内置的 azure 策略和计划的建议。 这些建议可帮助解决重要的风险，例如安全更新、endpoint protection、加密、安全配置、丢失 WAF、连接 internet 的 Vm，等等。
+**最佳做法**：找到最严重的安全漏洞，以便确定调查优先级。   
+**详细信息**：查看你的 [Azure 安全评分](../../security-center/secure-score-security-controls.md)，了解 Azure 安全中心内置的 Azure 策略和计划所产生的建议。 这些建议有助于解决顶级风险，例如安全更新、终结点保护、加密、安全配置、WAF 缺失、VM 连接到 Internet 等方面的风险。
 
 基于 Internet 安全（CIS）控制中心的安全分数使你可以基于外部源对组织的 Azure 安全进行基准测试。 外部验证有助于验证和丰富团队的安全策略。
 
-**最佳做法**：监视计算机、网络、存储和数据服务以及应用程序的安全状况，以发现潜在的安全问题并确定其优先级。  
-**详细信息**：按照安全中心中的[安全建议](../../security-center/security-center-recommendations.md)，以最高优先级项开始。
+**最佳做法**：监视计算机、网络、存储和数据服务以及应用程序的安全状况，发现潜在的安全问题并确定其优先级。  
+**详细信息**：按照安全中心的[安全建议](../../security-center/security-center-recommendations.md)操作，并从优先级最高的项开始。
 
 **最佳做法**：将安全中心警报集成到你的安全信息和事件管理（SIEM）解决方案中。   
 **详细信息**：使用 SIEM 的大多数组织都将其用作需要分析程序响应的安全警报的中央 clearinghouse。 安全中心生成的已处理事件会发布到 Azure 活动日志中，其中一个日志通过 Azure Monitor 提供。 Azure Monitor 提供了一个综合管道，可将任何监视数据路由到 SIEM 工具。 有关说明，请参阅[导出安全警报和建议](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs)。 如果使用的是 Azure Sentinel，请参阅[连接 Azure 安全中心](../../sentinel/connect-azure-security-center.md)。
 
 **最佳做法**：将 Azure 日志与你的 SIEM 集成。   
-**详细信息**：使用[Azure Monitor 收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 这种做法对于启用安全事件调查至关重要，并限制联机日志保留。 如果使用的是 Azure Sentinel，请参阅[连接数据源](../../sentinel/connect-data-sources.md)。
+**详细信息**：[使用 Azure Monitor 收集和导出数据](/azure/azure-monitor/overview#integrate-and-export-data)。 此做法对于启用安全事件调查至关重要，而在线日志保留期是有限的。 如果使用的是 Azure Sentinel，请参阅[连接数据源](../../sentinel/connect-data-sources.md)。
 
-**最佳做法**：通过将端点检测和响应（EDR）功能集成到攻击调查中，加速调查和搜寻过程，并减少误报。   
-**详细信息**：通过安全中心安全策略[启用 Microsoft Defender ATP 集成](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration)。 请考虑使用 Azure Sentinel 进行威胁搜寻和事件响应。
+**最佳做法**：通过将终结点检测和响应 (EDR) 功能集成到攻击调查中，加快调查和搜寻过程，并减少误报。   
+**详细信息**：通过安全中心安全策略[启用 Microsoft Defender ATP 集成](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration)。 考虑使用 Azure Sentinel 进行威胁搜寻和事件响应。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>监视基于端到端方案的网络监视
 客户在 Azure 中通过合并虚拟网络、ExpressRoute、应用程序网关和负载均衡器等网络资源来构建端到端网络。 监视适用于每个网络资源。
@@ -131,14 +130,14 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 
 以下是网络监视和可用工具的最佳做法。
 
-**** 最佳做法：使用数据包捕获实现远程网络监视的自动化。  
-**** 详细信息：使用网络观察程序监视和诊断网络问题，无需登录 VM。 通过设置警报触发[数据包捕获](../../network-watcher/network-watcher-alert-triggered-packet-capture.md)，并获取数据包级别上的实时性能信息访问权限。 如果遇到问题，可进行详细调查，获得更精确的诊断。
+**最佳做法**：使用数据包捕获实现远程网络监视的自动化。  
+**详细信息**：使用网络观察程序监视和诊断网络问题，无需登录 VM。 通过设置警报触发[数据包捕获](../../network-watcher/network-watcher-alert-triggered-packet-capture.md)，并获取数据包级别上的实时性能信息访问权限。 如果遇到问题，可进行详细调查，获得更精确的诊断。
 
-**** 最佳做法：使用流日志深入了解网络流量。  
-**** 详细信息：使用[网络安全组流日志](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)更深入地了解网络流量模式。 流日志中的信息可帮助收集符合性数据、审核和监视网络安全配置文件。
+**最佳做法**：使用流日志深入了解网络流量。  
+**详细信息**：使用[网络安全组流日志](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)更深入地了解网络流量模式。 流日志中的信息可帮助收集符合性数据、审核和监视网络安全配置文件。
 
-**** 最佳做法：诊断 VPN 连接问题。  
-**** 详细信息：使用网络观察程序来[诊断最常见的 VPN 网关和连接问题](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 不仅可以确定问题，还可以使用详细日志进一步调查。
+**最佳做法**：诊断 VPN 连接问题。  
+**详细信息**：使用网络观察程序来[诊断最常见的 VPN 网关和连接问题](../../network-watcher/network-watcher-diagnose-on-premises-connectivity.md)。 不仅可以确定问题，还可以使用详细日志进一步调查。
 
 ## <a name="secure-deployment-by-using-proven-devops-tools"></a>使用经验证的 DevOps 工具确保安全部署
 使用以下 DevOps 最佳做法来确保企业和团队多产且高效。
@@ -200,23 +199,23 @@ Azure 具有两个 DDoS [服务产品](../../virtual-network/ddos-protection-ove
 - 基本防护默认已集成到 Azure 中，不收取额外的费用。 全球部署的 Azure 网络的规模和容量通过始终开启的监视和实时缓解措施，来防御公用网络层攻击。 基本防护无需用户配置或应用程序更改，并帮助保护所有 Azure 服务，包括 Azure DNS 等 PaaS 服务。
 - 标准防护提供针对网络攻击的高级 DDoS 缓解功能。 这些功能自动经过优化，可保护特定的 Azure 资源。 在创建虚拟网络期间，可以轻松启用保护。 也可以在创建之后启用它，而不需要对应用程序或资源做出任何更改。
 
-## <a name="enable-azure-policy"></a>启用 Azure 策略
-[Azure 策略](/azure/governance/policy/overview)是 azure 中的一项服务，可用于创建、分配和管理策略。 这些策略将对资源强制实施规则和影响，使这些资源符合公司标准和服务级别协议。 Azure Policy 通过评估资源是否符合指定策略来满足此需求。
+## <a name="enable-azure-policy"></a>启用 Azure Policy
+[Azure Policy](/azure/governance/policy/overview) 是 Azure 中的一项服务，用于创建、分配和管理策略。 这些策略将在整个资源中强制实施规则和效果，使这些资源符合公司标准和服务级别协议。 Azure Policy 通过评估资源是否符合指定策略来满足此需求。
 
-启用 Azure 策略来监视和强制实施组织的书面政策。 这将通过集中管理混合云工作负载中的安全策略，确保符合公司或法规安全要求。 了解如何[创建和管理策略以强制实施符合性](../../governance/policy/tutorials/create-and-manage.md)。 有关策略元素的概述，请参阅[Azure 策略定义结构](../../governance/policy/concepts/definition-structure.md)。
+启用 Azure 策略来监视和强制实施组织的书面政策。 这样就可以集中管理混合云工作负荷中的安全策略，确保符合公司或法规安全要求。 了解如何[创建和管理策略以强制实施合规性](../../governance/policy/tutorials/create-and-manage.md)。 有关策略元素的概述，请参阅 [Azure Policy 定义结构](../../governance/policy/concepts/definition-structure.md)。
 
-下面是在采用 Azure 策略后要遵循的一些最佳安全做法：
+下面是在采用 Azure Policy 后要遵循的一些安全性最佳做法：
 
-**最佳做法**：策略支持多种类型的影响。 可以在[Azure 策略定义结构](../../governance/policy/concepts/definition-structure.md#policy-rule)中了解相关信息。 业务运营可能会受到**拒绝**效果和**修正**影响的负面影响，因此请从**审核**效果开始，以限制策略的负面影响的风险。   
-**详细信息**：[在审核模式下启动策略部署](../../governance/policy/concepts/definition-structure.md#policy-rule)，稍后再进行**拒绝**或**修正**。 在移动到**deny**或**修正**之前，测试并查看审核效果的结果。
+**最佳做法**：Azure Policy 支持多种类型的效果。 可以在 [Azure Policy 定义结构](../../governance/policy/concepts/definition-structure.md#policy-rule)中了解相关信息。 **拒绝**效果和**修正**效果可能会给业务运营带来负面影响，因此请从**审核**效果开始以限制策略带来的负面影响风险。   
+**详细信息**：[以审核模式开始策略部署](../../governance/policy/concepts/definition-structure.md#policy-rule)，然后推进到**拒绝**或**修正**。 在推进到**拒绝**或**修正**之前，请测试并查看审核效果的结果。
 
 有关详细信息，请参阅[创建和管理策略以强制实施符合性](../../governance/policy/tutorials/create-and-manage.md)。
 
-**最佳做法**：标识负责监视策略违规的角色，并确保快速执行正确的修正操作。   
-**详细信息**：通过[Azure 门户](../../governance/policy/how-to/get-compliance-data.md#portal)或通过[命令行](../../governance/policy/how-to/get-compliance-data.md#command-line)分配角色监视符合性。
+**最佳做法**：确定负责监视策略违规的角色，并确保快速执行正确的修正操作。   
+**详细信息**：让已分配的角色通过 [Azure 门户](../../governance/policy/how-to/get-compliance-data.md#portal)或[命令行](../../governance/policy/how-to/get-compliance-data.md#command-line)来监视符合性。
 
-**最佳做法**： Azure 策略是组织的书面策略的技术表示。 将所有 Azure 策略映射到组织策略，以减少混乱并增加一致性。   
-**详细信息**：在你的组织的文档或 azure 策略定义中，通过在[azure 策略定义](../../governance/policy/concepts/definition-structure.md#display-name-and-description)或[azure 策略计划](../../governance/policy/concepts/definition-structure.md#initiatives)说明中添加对组织策略的引用，来文档映射。
+**最佳做法**：Azure Policy 是组织的书面策略的技术表示形式。 将所有 Azure 策略定义映射到组织策略，以减少混乱并增加一致性。   
+**详细信息**：在组织的文档或 Azure 策略定义中，通过在[策略定义](../../governance/policy/concepts/definition-structure.md#display-name-and-description)或[计划定义](../../governance/policy/concepts/initiative-definition-structure.md#metadata)说明中添加对组织策略的引用来记录映射。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>监视 Azure AD 风险报告
 大多数安全违规出现在当攻击者通过窃取用户的标识来获取环境的访问权限时。 发现标识是否遭到入侵并不容易。 Azure AD 使用自适应机器学习算法和试探法来检测与用户帐户相关的可疑操作。 每个检测到的可疑操作都存储在称为[风险检测](../../active-directory/reports-monitoring/concept-risk-events.md)的记录中。 风险检测记录在 Azure AD 安全报表中。 有关详细信息，请参阅[风险安全报表](../../active-directory/reports-monitoring/concept-user-at-risk.md)中的用户和有风险的[登录安全报告](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)。
@@ -226,4 +225,4 @@ Azure 具有两个 DDoS [服务产品](../../virtual-network/ddos-protection-ove
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
-* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)-可报告 microsoft 安全漏洞（包括 Azure 问题）或通过电子邮件发送到secure@microsoft.com
+* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 secure@microsoft.com

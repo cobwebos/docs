@@ -5,12 +5,11 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609972"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259365"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>跨可用性区域部署 Azure Service Fabric 群集
 Azure 中的可用性区域是一种高可用性产品，可保护应用程序和数据免受数据中心故障的影响。 可用性区域是一种独特的物理位置，它在 Azure 区域内配有独立的电源、冷却和网络。
@@ -140,6 +139,10 @@ Service Fabric 通过部署固定到特定区域的节点类型来支持跨可�
 
 >[!NOTE]
 > 标准模板引用了默认情况下允许所有出站流量的 NSG。 入站流量仅限于 Service Fabric 管理操作所需的端口。 可对 NSG 规则进行修改以满足你的要求。
+
+>[!NOTE]
+> 使用标准 SKU SLB 的任何 Service Fabric 群集都需要确保每个节点类型都有一个允许端口443上的出站流量的规则。 这是完成群集设置所必需的，没有此类规则的任何部署都将失败。
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>在虚拟机规模集上启用区域
 若要在虚拟机规模集上启用区域，必须在虚拟机规模集资源中包含以下三个值：

@@ -8,12 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76292852"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84236300"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自定义目标 Azure VM 的网络配置
 
@@ -28,7 +27,7 @@ ms.locfileid: "76292852"
 复制 Azure VM 时，可以为故障转移 VM 提供以下关键资源配置：
 
 - [内部负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-- [公共 IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
+- [公共 IP](../virtual-network/public-ip-addresses.md)
 - 子网和 NIC 的[网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
 
 ## <a name="prerequisites"></a>必备条件

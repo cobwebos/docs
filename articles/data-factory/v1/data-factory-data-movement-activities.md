@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281881"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195963"
 ---
 # <a name="move-data-by-using-copy-activity"></a>使用复制活动移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -81,7 +80,7 @@ ms.locfileid: "79281881"
 
 例如，可执行以下复制活动：
 
-* 从本地 SQL Server 中复制数据，并将其以 ORC 格式写入 Azure Data Lake Store。
+* 复制 SQL Server 数据库中的数据，并以 ORC 格式写入 Azure Data Lake Store。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
 * 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
 * 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
@@ -94,7 +93,7 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 
 | 目标数据存储的地域 | 目标数据存储的区域 | 用于数据移动的区域 |
 |:--- |:--- |:--- |
-| United States | 美国东部 | 美国东部 |
+| 美国 | 美国东部 | 美国东部 |
 | &nbsp; | 美国东部 2 | 美国东部 2 |
 | &nbsp; | 美国中部 | 美国中部 |
 | &nbsp; | 美国中北部 | 美国中北部 |
@@ -102,12 +101,12 @@ Azure 数据工厂仅在美国西部、美国东部和北欧区域内可用。 �
 | &nbsp; | 美国中西部 | 美国中西部 |
 | &nbsp; | 美国西部 | 美国西部 |
 | &nbsp; | 美国西部 2 | 美国西部 2 |
-| Canada | 加拿大东部 | 加拿大中部 |
+| 加拿大 | 加拿大东部 | 加拿大中部 |
 | &nbsp; | 加拿大中部 | 加拿大中部 |
 | 巴西 | 巴西南部 | 巴西南部 |
 | 欧洲 | 北欧 | 北欧 |
 | &nbsp; | 西欧 | 西欧 |
-| United Kingdom | 英国西部 | 英国南部 |
+| 英国 | 英国西部 | 英国南部 |
 | &nbsp; | 英国南部 | 英国南部 |
 | 亚太区 | 东南亚 | 东南亚 |
 | &nbsp; | 东亚 | 东南亚 |

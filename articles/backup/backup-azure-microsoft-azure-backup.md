@@ -3,12 +3,11 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735865"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247268"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -174,7 +173,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![Azure 备份服务器 - SQL 检查](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    如果发生故障并且系统建议重新启动计算机，请按说明操作，并单击“**再次检查**”。 如果遇到任何 SQL 配置问题，请根据 SQL 准则重新配置 SQL，然后使用现有的 SQL 实例重试安装/升级 MABS。
+    如果发生故障并且系统建议重新启动计算机，请按说明操作，并单击“**再次检查**”。 如果有任何 SQL 配置问题，请根据 SQL 准则重新配置 SQL，并使用现有的 SQL 实例重试安装/升级 MABS。
 
    **手动配置**
 
@@ -186,9 +185,9 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     对 SSRS 配置使用以下值：
     * 服务帐户：“使用内置帐户”应是“网络服务”
-    * Web 服务 URL：“虚拟目录”应是 ReportServer_\<SQLInstanceName>
-    * 数据库：“数据库名称”应是 ReportServer$\<SQLInstanceName>
-    * Web 门户 URL：“虚拟目录”应是 Reports_\<SQLInstanceName>
+    * Web 服务 URL：应 ReportServer_ "虚拟目录"\<SQLInstanceName>
+    * 数据库： DatabaseName 应为 ReportServer $\<SQLInstanceName>
+    * Web 门户 URL：应 Reports_ "虚拟目录"\<SQLInstanceName>
 
     [详细了解](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) SSRS 配置。
 
@@ -343,7 +342,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
    > [!NOTE]
    >
-   > 升级 SQL 实例期间请不要退出，否则会卸载 SQL 报告实例，导致重新升级 MABS 的尝试失败。
+   > 请勿在升级 SQL 实例时退出，退出将卸载 SQL reporting 实例，因此尝试重新升级 MABS 将失败。
 
    > [!IMPORTANT]
    >

@@ -8,12 +8,11 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ba403c8d823b7ead0414521ebd51dc6f6601ccd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 9f544e479dd21b4c1f7f2e289e91b506aab7eff2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74034160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220049"
 ---
 # <a name="azcopy-jobs-remove"></a>azcopy jobs remove
 
@@ -48,6 +47,8 @@ azcopy jobs remove [jobID] [flags]
 **--cap-mbps uint32**      以兆位/秒为单位限制传输速率。 瞬间吞吐量可能与上限略有不同。 如果此选项设置为零，或者省略，则吞吐量不受限制。
 
 **--output-type** 字符串   命令输出的格式。 选项包括：text、json。 默认值为“text”。 （默认值为“text”）
+
+**--trusted-microsoft 后缀**string 指定可以在其中发送 Azure Active Directory 登录令牌的其他域后缀。  默认值为“.core.windows.net;.core.chinacloudapi.cn;.core.cloudapi.de;.core.usgovcloudapi.net” 。 此处列出的任何内容都会添加到默认值。 为安全，你只应在此处放置 Microsoft Azure 域。 用分号分隔多个条目。
 
 ## <a name="see-also"></a>另请参阅
 

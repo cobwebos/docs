@@ -4,12 +4,11 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247704"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84248254"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -35,7 +34,7 @@ ms.locfileid: "79247704"
 - 在 SQL Server 实例上的 *C:\Program Files\Azure Workload Backup\bin* 文件夹中，创建或编辑 **ExtensionSettingsOverrides.json** 文件。
 - 在 **ExtensionSettingsOverrides.json** 中，设置 *{"EnableAutoHealer": false}* 。
 - 保存更改并关闭该文件。
-- 在 SQL Server 实例上打开“管理任务”，然后重启 **AzureWLBackupCoordinatorSvc** 服务。 
+- 在 SQL Server 实例上打开“管理任务”，然后重启 **AzureWLBackupCoordinatorSvc** 服务。
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>是否可以控制 SQL Server 上运行的并发备份数？
 
@@ -52,7 +51,7 @@ DefaultBackupTasksThreshold 的默认值为 **20**。
  尽管在备份应用程序消耗大量资源时此方法有所帮助，但使用 SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) 可通过更常规的方式来指定传入应用程序请求可以使用的 CPU、物理 IO 和内存量限制。
 
 > [!NOTE]
-> 在 UX 中，仍可随时继续计划任意数量的备份，但是，这些备份将按某个滑动窗口进行处理，例如，在上述示例中，滑动窗口为 5。
+> 在 UX 中，你仍可以在任何给定时间继续执行并计划任意数量的备份，但是，根据上面的示例，它们将在如5的滑动窗口中进行处理。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以从次要副本运行完整备份？
 
@@ -82,7 +81,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 如果从自动保护的实例中删除某个数据库，仍会尝试数据库备份。 这意味着，已删除的数据库会开始在“备份项”下面显示为不正常状态，但它仍受保护。 
 
-停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。   
+停止保护此数据库的正确方法是针对此数据库执行“停止备份”并**删除数据**。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果停止受保护数据库的备份操作，将出现怎样的备份行为？
 
@@ -92,7 +91,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>如果在保护数据库后更改其名称，会出现怎样的行为？
 
-已重命名的数据库被视为新数据库。 因此，服务将此情况视为找不到数据库，同时会使备份失败。
+已重命名的数据库被视为新数据库。 因此，该服务将处理此情况，就好像找不到数据库，备份失败。
 
 可以选择现在已重命名的数据库并对其配置保护。 如果对实例启用了自动保护，则会自动检测并保护已重命名的数据库。
 

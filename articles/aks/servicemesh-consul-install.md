@@ -6,12 +6,11 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84197233"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装并使用 Consul
 
@@ -22,7 +21,7 @@ ms.locfileid: "78273737"
 > [!NOTE]
 > 这些说明引用 Consul 版本 `1.6.0`，并至少使用 Helm 版本 `2.14.2`。
 >
-> 可针对 Kubernetes 版本 `1.6.x` 运行 Consul `1.13+` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
+> 可针对 Kubernetes 版本 `1.13+` 运行 Consul `1.6.x` 版本。 可以在 [GitHub - Consul 版本][consul-github-releases]中找到其他 Consul 版本，并可以在 [Consul - 发行说明][consul-release-notes]中找到有关每个版本的信息。
 
 在本文中，学习如何：
 
@@ -166,6 +165,8 @@ kubectl delete namespace consul
 也可以使用以下示例应用程序按照其他方案操作：
 
 - [Consul 示例应用程序][consul-app-example]
+- [Consul Kubernetes 参考体系结构][consul-reference]
+- [Consul 网格网关][consul-mesh-gateways]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com
@@ -177,9 +178,11 @@ kubectl delete namespace consul
 [consul-github-releases]: https://github.com/hashicorp/consul/releases
 [consul-release-notes]: https://github.com/hashicorp/consul/blob/master/CHANGELOG.md
 [consul-install-download]: https://www.consul.io/downloads.html
-[consul-install-k8]: https://www.consul.io/docs/platform/k8s/run.html
+[consul-install-k8]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-deployment-guide
 [consul-install-helm-options]: https://www.consul.io/docs/platform/k8s/helm.html#configuration-values-
-[consul-app-example]: https://github.com/hashicorp/demo-consul-101/tree/master/k8s
+[consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
+[consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
+[consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

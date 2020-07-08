@@ -10,15 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366576"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84220162"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>使用媒体服务编码视频和音频
 
@@ -98,7 +97,10 @@ ms.locfileid: "80366576"
 
 - **EncoderNamedPreset.AACGoodQualityAudio**：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
 - **EncoderNamedPreset.AdaptiveStreaming**（推荐）：有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
-- **EncoderNamedPreset.ContentAwareEncodingExperimental**：公开内容感知编码的试验性预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码的试验性预设](content-aware-encoding.md)。
+- **EncoderNamedPreset. ContentAwareEncoding**：为内容感知编码公开预设。 在提供任何输入内容的情况下，服务将尝试自动确定最佳层数，以及自适应流式处理适合使用的比特率和分辨率设置。 底层算法将不断演进。 输出将包含带有交错式视频和音频的 MP4 文件。 有关详细信息，请参阅[内容感知编码](content-aware-encoding.md)。
+
+  > [!NOTE]
+  > 请确保使用**ContentAwareEncoding** not ContentAwareEncodingExperimental。
 - **EncoderNamedPreset.H264MultipleBitrate1080p**：生成一组 8 GOP 对齐的 MP4 文件（范围从 6000 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 1080p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrate720p**：生成一组 6 GOP 对齐的 MP4 文件（范围从 3400 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 720p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrateSD**：生成一组 5 GOP 对齐的 MP4 文件（范围从 1600 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 480p，之后下降到 360p。
@@ -133,7 +135,7 @@ ms.locfileid: "80366576"
 
 ## <a name="preset-schema"></a>预设架构
 
-在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的“架构”定义。 也可以在 [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)（或其他媒体服务 v3 SDK 参考文档）中查看预设定义（例如 **StandardEncoderPreset**）。
+在媒体服务 v3 中，预设是 API 本身中的强类型化实体。 可以在[开放 API 规范（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到这些对象的 "架构" 定义。 你还可以在[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)， [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) （或其他媒体服务 v3 SDK 参考文档）中查看预设定义（如**StandardEncoderPreset**）。
 
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 
@@ -141,7 +143,7 @@ ms.locfileid: "80366576"
 
 ## <a name="billing"></a>计费
 
-媒体服务不会对已取消或已出错的作业计费。 例如，进度已达到 50% 而被取消的作业不会按作业时间的 50% 计费。 你仅为已完成作业付费。
+媒体服务不会对已取消或误码的作业计费。 例如，已达到50% 进度且已取消的作业不会按作业分钟数50% 计费。 只需为已完成的作业付费。
 
 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)。
 

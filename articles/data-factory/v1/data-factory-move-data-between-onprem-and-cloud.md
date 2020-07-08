@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982196"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195981"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
 > [!NOTE]
@@ -47,7 +46,7 @@ ms.locfileid: "75982196"
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](https://azure.microsoft.com/pricing/free-trial/)一文。
 * **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**目标/接收器**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
-* **SQL Server**。 在本教程中，将本地 SQL Server 数据库用作**源**数据存储。
+* **SQL Server**。 本教程中使用 SQL Server 数据库作为**源**数据存储。
 
 ## <a name="create-data-factory"></a>创建数据工厂
 本步骤使用 Azure 门户创建名为 **ADFTutorialOnPremDF** 的 Azure 数据工厂实例。
@@ -71,7 +70,7 @@ ms.locfileid: "75982196"
 6. 在“新建数据工厂”页中单击“创建”********。
 
    > [!IMPORTANT]
-   > 若要创建数据工厂实例，你必须是订阅/资源组级别的[数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色的成员。
+   > 只有订阅/资源组级别的 [数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。
    >
    >
 7. 完成创建后，将看到如下图所示的“数据工厂”页****：
@@ -104,7 +103,7 @@ ms.locfileid: "75982196"
 
     ![网关 -“配置”页](./media/data-factory-move-data-between-onprem-and-cloud/OnPremGatewayConfigureBlade.png)
 
-    此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 还可以在文件夹中找到可执行文件**ConfigManager** ： **C:\Program Files\Microsoft 数据管理 Gateway\2.0\Shared**。
+    此方法是执行以下操作最简单的方法（一键式操作）：下载、安装、配置和注册网关，只需一步操作即可完成。 可以看到计算机上已安装了 **Microsoft 数据管理网关配置管理器**应用程序。 你还可以在以下文件夹中找到可执行文件**ConfigManager.exe** ： **C:\Program Files\Microsoft 数据管理 Gateway\2.0\Shared**。
 
     此外，还可使用此页中的链接手动下载和安装网关，并使用“新建密钥文”本框中显示的密钥对其进行注册****。
 
@@ -152,9 +151,9 @@ ms.locfileid: "75982196"
 12. 左侧树视图中的“数据网关”**** 下应会显示 **adftutorialgateway**。  单击此项可看到相关联的 JSON。
 
 ## <a name="create-linked-services"></a>创建链接服务
-本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService** 用于链接本地 SQL Server 数据库，而 **AzureStorageLinkedService** 链接服务用于将 Azure blob 存储链接到数据工厂。 本演练稍后介绍如何创建管道，将数据从本地 SQL Server 数据库复制到 Azure blob 存储。
+本步骤创建两个链接服务：**AzureStorageLinkedService** 和 **SqlServerLinkedService**。 **SqlServerLinkedService**链接 SQL Server 数据库， **AzureStorageLinkedService**链接服务将 Azure blob 存储链接到数据工厂。 稍后在本演练中创建管道，将数据从 SQL Server 数据库复制到 Azure blob 存储。
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>将链接服务添加到本地 SQL Server 数据库
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>将链接服务添加到 SQL Server 数据库
 1. 在“数据工厂编辑器”**** 中，单击工具栏上的“新建数据存储”****，并选择“SQL Server”****。
 
    ![新建 SQL Server 链接服务](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +188,7 @@ ms.locfileid: "75982196"
 * 在作为链接服务添加到数据工厂的 Azure blob 存储帐户中，创建一个名为 **adftutorial** 的 blob 容器。
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>为本教程准备本地 SQL Server
-1. 在为本地 SQL Server 链接服务 (**SqlServerLinkedService**) 指定的数据库中，使用以下 SQL 脚本在数据库中创建 **emp** 表。
+1. 在为 SQL Server 链接服务（**SqlServerLinkedService**）指定的数据库中，使用以下 SQL 脚本在数据库中创建**emp**表。
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -279,7 +278,7 @@ ms.locfileid: "75982196"
    * **folderPath** 设置为 **adftutorial/outfromonpremdf**，其中 outfromonpremdf 为 adftutorial 容器中的文件夹。 如果不存在 **adftutorial** 容器，则创建该容器。
    * **可用性**设置为**每小时**（**frequency**设置为**hour** ， **interval**设置为**1**）。  数据工厂服务每小时在 Azure SQL 数据库的 **emp** 表中生成输出数据切片。
 
-   如果未指定**输出表**的**文件名**，则**folderPath**中生成的文件将按以下格式命名： `Data.<Guid>.txt` （例如：0a405f8a-93ff-4c6f-b3be-f69616f1df7a）。
+   如果未指定**输出表**的**文件名**，则**folderPath**中生成的文件将按以下格式命名： `Data.<Guid>.txt` （例如：： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。）。
 
    若要根据 **SliceStart** 时间动态设置 **folderPath** 和 **fileName**，请使用 partitionedBy 属性。 在以下示例中，folderPath 使用 SliceStart（所处理的切片的开始时间）中的年、月和日，fileName 使用 SliceStart 中的小时。 例如，如果切片生成于 2014-10-20T08:00:00，folderName 将设置为 wikidatagateway/wikisampledataout/2014/10/20，fileName 设置为 08.csv。
 
@@ -371,7 +370,7 @@ ms.locfileid: "75982196"
 3. 单击命令栏上的“部署”**** 来部署数据集（表为矩形数据集）。 确认“管道”**** 节点下的树视图中显示管道。  
 4. 现在，单击 X 两次，关闭页面，以返回到 ADFTutorialOnPremDF 的“数据工厂”页************。
 
-祝贺你！  现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
+**祝贺你！** 现已成功创建 Azure 数据工厂、链接服务、数据集和管道，并已计划好管道。
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>在图示视图中查看数据工厂
 1. 在“Azure 门户”**** 中，单击主页上 **ADFTutorialOnPremDF** 数据工厂的“关系图”**** 磁贴。 :

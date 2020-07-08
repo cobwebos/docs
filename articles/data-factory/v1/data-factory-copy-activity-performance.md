@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527378"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84196111"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -183,9 +182,9 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="staged-copy"></a>暂存复制
 将数据从源数据存储复制到接收器数据存储时，可能会选择使用 Blob 存储作为过渡暂存存储。 暂存在以下情况下特别有用：
 
-1. **通过 PolyBase 从各种数据存储将数据引入 SQL 数据仓库**。 SQL 数据仓库使用 PolyBase 作为高吞吐量机制，将大量数据加载到 SQL 数据仓库中。 但是，源数据必须位于 Blob 存储中，并且它必须满足其他条件。 从 Blob 存储以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据加载到 SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
+1. **需要通过 PolyBase 将数据从各种数据存储引入 SQL 数据仓库**。 SQL 数据仓库使用 PolyBase 作为高吞吐量机制，将大量数据加载到 SQL 数据仓库中。 但是，源数据必须位于 Blob 存储中，并且它必须满足其他条件。 从 Blob 存储以外的数据存储加载数据时，可通过过渡暂存 Blob 存储激活数据复制。 在这种情况下，数据工厂会执行所需的数据转换，确保其满足 PolyBase 的要求。 然后，它使用 PolyBase 将数据加载到 SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse)。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](data-factory-load-sql-data-warehouse.md)。
 2. **有时，通过速度慢的网络连接执行混合数据移动（即在本地数据存储和云数据存储之间进行复制）需要一段时间**。 为了提高性能，可压缩本地数据，缩短将数据移动到云中的暂存数据存储的时间。 然后，可先在暂存存储中解压缩数据，再将它们加载到目标数据存储。
-3. **由于企业 IT 策略，不希望在防火墙中打开除端口 80 和端口 443 以外的端口**。 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器时，需要对 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，利用网关首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，将数据从 Blob 存储暂存加载到 SQL 数据库或 SQL 数据仓库。 在此流中，不需要启用端口 1433。
+3. **你不想在防火墙中打开端口80和端口443以外的端口，因为企业 IT 策略**。 例如，将数据从本地数据存储复制到 Azure SQL 数据库接收器或 Azure SQL 数据仓库接收器时，需要对 Windows 防火墙和公司防火墙激活端口 1433 上的出站 TCP 通信。 在这种情况下，利用网关首先在端口 443 上通过 HTTP 或 HTTPS 将数据复制到 Blob 存储暂存实例。 然后，将数据从 Blob 存储暂存加载到 SQL 数据库或 SQL 数据仓库。 在此流中，不需要启用端口 1433。
 
 ### <a name="how-staged-copy-works"></a>暂存复制的工作原理
 激活暂存功能时，首先将数据从源数据存储复制到暂存数据存储（自带）。 然后，将数据从暂存数据存储复制到接收器数据存储。 数据工厂自动管理两阶段流。 数据移动完成后，数据工厂还将清除暂存存储中的临时数据。
@@ -205,11 +204,11 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ### <a name="configuration"></a>配置
 在复制活动中配置 **enableStaging** 设置，指定在将数据加载到目标数据存储之前是否要在 Blob 存储中暂存。 将 **enableStaging** 设置为 TRUE 时，指定下一个表中列出的其他属性。 如果未指定，则还需要创建 Azure 存储或存储共享访问签名链接服务供暂存用。
 
-| properties | 说明 | 默认值 | 必须 |
+| Property | 描述 | 默认值 | 必须 |
 | --- | --- | --- | --- |
 | **enableStaging** |指定是否要通过过渡暂存存储复制数据。 |False |否 |
-| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |不适用 |将 **enableStaging** 设置为 TRUE 时，则为是 |
-| **path** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |不适用 |否 |
+| **linkedServiceName** |指定 [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas ](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 链接服务的名称，这指用作过渡暂存存储的存储实例。 <br/><br/> 不能使用具有共享访问签名的存储通过 PolyBase 将数据加载到 SQL 数据仓库。 可在其他任何情况下使用它。 |空值 |将 **enableStaging** 设置为 TRUE 时，则为是 |
+| **path** |指定要包含此暂存数据的 Blob 存储路径。 如果不提供路径，该服务将创建容器以存储临时数据。 <br/><br/> 只在使用具有共享访问签名的存储时，或者要求临时数据位于特定位置时才指定路径。 |空值 |否 |
 | **enableCompression** |指定是否应先压缩数据，再将数据复制到目标。 此设置可减少传输的数据量。 |False |否 |
 
 以下是具有上表所述属性的复制活动的示例定义：
@@ -366,8 +365,8 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 请谨慎对待需要数据工厂同时连接到同一数据存储的数据集数和复制活动数。 许多并发复制作业可能会限制数据存储，并导致性能下降，复制作业内部重试，甚至在某些情况下导致执行失败。
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>示例方案：从本地 SQL Server 复制到 Blob 存储
-**方案**：构建管道，以 CSV 格式将数据从本地 SQL Server 复制到 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>示例方案：从 SQL Server 数据库复制到 Blob 存储
+**方案**：生成管道以将数据从 SQL Server 数据库复制到 CSV 格式的 Blob 存储。 要使复制作业更快，应将 CSV 文件压缩为 bzip2 格式。
 
 **测试和分析**：复制活动的吞吐量小于 2 MBps，这比性能基准慢得多。
 
@@ -385,7 +384,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 * **源**：SQL Server 本身由于负载过重而吞吐量低。
 * **数据管理网关**：
-  * **LAN**：网关的位置离 SQL Server 计算机很远，且带宽连接低。
+  * **LAN**：网关位于 SQL Server 计算机之外，且具有低带宽连接。
   * **网关**：网关已达到其执行以下操作的负载限制：
     * **序列化**：将数据流序列化为 CSV 格式时吞吐量缓慢。
     * **压缩**：选择慢速压缩编解码器（例如，bzip2，其采用 Core i7，速度为 2.8 MBps）。
@@ -416,10 +415,10 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 ## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
-* Azure Blob 存储： [blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)，以及[Blob 存储的性能和可伸缩性清单](../../storage/blobs/storage-performance-checklist.md)。
-* Azure 表存储：表存储[的可伸缩性和性能目标](../../storage/tables/scalability-targets.md)，以及[表存储的性能和可伸缩性清单](../../storage/tables/storage-performance-checklist.md)。
-* Azure SQL 数据库：可[监视性能](../../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位 (DTU) 百分比
+* Azure Blob 存储：[Blob 存储的可伸缩性和性能目标](../../storage/blobs/scalability-targets.md)和 [Blob 存储的性能与可伸缩性查检表](../../storage/blobs/storage-performance-checklist.md)。
+* Azure 表存储：[表存储的可伸缩性和性能目标](../../storage/tables/scalability-targets.md)和[表存储的性能与可伸缩性查检表](../../storage/tables/storage-performance-checklist.md)。
+* Azure SQL 数据库：可以[监视性能](../../sql-database/sql-database-single-database-monitor.md)并检查数据库事务单位（DTU）百分比
 * Azure SQL 数据仓库：其功能以数据仓库单位 (DWU) 衡量；请参阅[管理 Azure SQL 数据仓库中的计算能力（概述）](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
-* Azure Cosmos DB：[Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
+* Azure Cosmos DB： [Azure Cosmos DB 中的性能级别](../../cosmos-db/performance-levels.md)
 * 本地 SQL Server：[监视和优化性能](https://msdn.microsoft.com/library/ms189081.aspx)
-* 本地文件服务器：[Performance tuning for file servers](https://msdn.microsoft.com/library/dn567661.aspx)（文件服务器性能优化）
+* 本地文件服务器：[文件服务器的性能优化](https://msdn.microsoft.com/library/dn567661.aspx)

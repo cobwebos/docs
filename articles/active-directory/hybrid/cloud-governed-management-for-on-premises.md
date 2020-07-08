@@ -9,16 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67109524"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234078"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何为本地工作负荷提供云管控管理
 
@@ -93,7 +92,7 @@ Azure AD 可以根据需要[自动为来宾用户创建 ad 中的帐户](https:/
 
 ![Azure AD 进化](media/cloud-governed-management-for-on-premises/image5.png)
 
-若要开始将联合应用程序迁移到 Azure AD 作为标识提供程序https://aka.ms/migrateapps ，请参阅，其中包含指向以下内容的链接：
+若要开始将联合应用程序迁移到 Azure AD 作为标识提供程序，请参阅 https://aka.ms/migrateapps ，其中包含指向以下内容的链接：
 
 * 这篇文章将[应用程序迁移到 Azure Active Directory](https://aka.ms/migrateapps/whitepaper)，这带来了迁移的好处，并介绍了如何在四个清晰概括的阶段规划迁移：发现、分类、迁移和持续管理。 你将指导你了解过程，并将项目分解为易于使用的部分。 整个文档为指向重要资源的链接，可全程为你提供帮助。
 
@@ -117,4 +116,4 @@ Azure AD 可以根据需要[自动为来宾用户创建 ad 中的帐户](https:/
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何开始此旅程的详细信息，请参阅中的 Azure AD 部署计划<https://aka.ms/deploymentplans> 。 它们提供了有关如何部署 Azure Active Directory （Azure AD）功能的端到端指导。 每个计划都说明了成功推出常见 Azure AD 功能所需的业务价值、规划注意事项、设计和操作过程。 当我们添加新功能以通过 Azure AD 在云中进行管理时，Microsoft 会持续更新部署计划并提供从客户部署中获得的最佳实践和其他反馈。
+有关如何开始此旅程的详细信息，请参阅中的 Azure AD 部署计划 <https://aka.ms/deploymentplans> 。 它们提供了有关如何部署 Azure Active Directory （Azure AD）功能的端到端指导。 每个计划都说明了成功推出常见 Azure AD 功能所需的业务价值、规划注意事项、设计和操作过程。 当我们添加新功能以通过 Azure AD 在云中进行管理时，Microsoft 会持续更新部署计划并提供从客户部署中获得的最佳实践和其他反馈。

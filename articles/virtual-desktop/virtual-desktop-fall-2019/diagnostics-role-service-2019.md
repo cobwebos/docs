@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657243"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84235549"
 ---
 # <a name="identify-and-diagnose-issues"></a>识别和诊断问题
 
@@ -161,7 +160,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 |数字代码|错误代码|建议的解决方案|
 |---|---|---|
-|-2147467259|ConnectionFailedAdErrorNoSuchMember|用户不是 Azure Active Directory 的成员。 按照 [Active Directory 管理中心](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)中的说明进行添加。|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|用户不是 Active Directory 的成员。 按照 [Active Directory 管理中心](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)中的说明进行添加。|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|会话主机未正确加入到 Active Directory。|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|由于会话主机不可用，连接失败。 请检查会话主机的运行状况。|
 |-2146233088|ConnectionFailedClientDisconnect|如果经常看到此错误，请确保用户的计算机已连接到网络。|
@@ -172,6 +171,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 |8|ConnectionBroken|客户端和网关或服务器之间的连接已断开。 除非意外发生，否则不需要执行任何操作。|
 |14|UnexpectedNetworkDisconnect|断开与网络的连接。 要求用户再次连接。|
 |24|ReverseConnectFailed|主机虚拟机没有直通 RD 网关。 请确保可以解析网关 IP 地址。|
+|1322|ConnectionFailedNoMappingOfSIDinAD|用户不是 Active Directory 的成员。 按照 [Active Directory 管理中心](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center)中的说明进行添加。|
 
 ## <a name="next-steps"></a>后续步骤
 

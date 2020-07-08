@@ -9,15 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76772078"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84234898"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>使用内容感知编码预设来查找给定分辨率的最佳比特率值
 
@@ -55,9 +54,10 @@ Microsoft 的[自适应流式处理](autogen-bitrate-ladder.md)预设部分寻�
 
 可按如下所示创建使用此预设的转换。 
 
-> [!TIP]
-> 有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
+有关使用转换输出的教程，请参阅[后续步骤](#next-steps)部分。 可以在 MPEG-DASH 和 HLS 等协议中通过媒体服务流式处理终结点传送输出资产（如教程中所述）。
 
+> [!NOTE]
+> 请确保使用**ContentAwareEncoding**预设 not ContentAwareEncodingExperimental。
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -76,12 +76,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> 使用 `ContentAwareEncoding` 预设的编码作业按输出分钟数计费。 
-
+> 使用预设的编码作业 `ContentAwareEncoding` 将根据输出分钟数计费。 
+  
 ## <a name="next-steps"></a>后续步骤
 
 * [教程：使用媒体服务 v3 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
 * [教程：基于 URL 对远程文件进行编码并流式传输视频 - REST](stream-files-tutorial-with-rest.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - CLI](stream-files-cli-quickstart.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET](stream-files-dotnet-quickstart.md)
-* [教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js](stream-files-nodejs-quickstart.md)
+* [教程：根据 URL 编码远程文件并流式传输视频-CLI](stream-files-cli-quickstart.md)
+* [教程：根据 URL 编码远程文件并流式传输视频-.NET](stream-files-dotnet-quickstart.md)
+* [教程：根据 URL 编码远程文件并流式传输视频 Node.js](stream-files-nodejs-quickstart.md)

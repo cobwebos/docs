@@ -3,12 +3,11 @@ title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747480"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84259399"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -205,7 +204,7 @@ az account management-group show --name 'Contoso' -e -r
 如果执行移动操作，你需要： 
 
 - 在子订阅或管理组上的管理组写入权限和角色分配写入权限。
-  - 内置角色示例：**所有者**
+  - 内置角色示例**所有者**
 - 目标父管理组中的管理组写入访问权限。
   - 内置角色示例：**所有者**、**参与者**、**管理组参与者**
 - 现有父管理组中的管理组写入访问权限。

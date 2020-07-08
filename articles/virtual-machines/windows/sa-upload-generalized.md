@@ -11,7 +11,6 @@ ROBOTS: NOINDEX
 ms.custom: storage-accounts
 ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
 ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/31/2020
 ms.locfileid: "84234621"

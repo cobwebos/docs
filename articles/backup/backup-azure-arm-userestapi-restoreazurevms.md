@@ -4,12 +4,11 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 87e3d75d925968b6521324f5b776cf8df1f6af11
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84247793"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -117,7 +116,7 @@ X-Powered-By: ASP.NET
 
 ## <a name="restore-disks"></a>还原磁盘
 
-如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，并且不应采用区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。
+如果需要自定义从备份数据创建 VM 的过程，可以只将磁盘还原到所选存储帐户，并根据其要求从这些磁盘创建 VM。 存储帐户应与恢复服务保管库位于同一区域，并且不应采用区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。
 
 触发磁盘还原是一个 *POST* 请求。 若要详细了解“还原磁盘”操作，请参阅[“触发还原”REST API](https://docs.microsoft.com/rest/api/backup/restores/trigger)。
 
@@ -125,7 +124,7 @@ X-Powered-By: ASP.NET
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是`{name}`上述[恢复点的 ](#example-response) 字段。
+`{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是[上述](#example-response)恢复点的 `{name}` 字段。
 
 ### <a name="create-request-body"></a>创建请求正文
 

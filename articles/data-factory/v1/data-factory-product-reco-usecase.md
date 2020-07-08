@@ -12,12 +12,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 02d6c11e3880f69f5020fb51f90a72c3233e2f25
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84195884"
 ---
 # <a name="use-case---product-recommendations"></a>使用案例 - 产品建议
 Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence 套件的许多服务之一。  有关此套件的详细信息，请参阅 [Cortana Intelligence 套件](https://www.microsoft.com/cortanaanalytics) 页面。 在本文档中，我们介绍了 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务已解决和实现的常见用例。
@@ -41,7 +40,7 @@ Azure 数据工厂是用于实现解决方案加速器的 Cortana Intelligence �
 ## <a name="solution-overview"></a>解决方案概述
 在此示例中，实际 Azure 用户通过使用 Azure 数据工厂和其他 Cortana Intelligence 组件服务解决和实现使用案例，包括 [HDInsight](https://azure.microsoft.com/services/hdinsight/) 和 [Power BI](https://powerbi.microsoft.com/)。
 
-在线零售商在整个工作流中将 Azure Blob 存储、本地 SQL server、Azure SQL DB 和关系数据市场用作其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息以及以本地方式存储于 SQL 数据仓库中的产品目录。 
+在线零售商在整个工作流中使用 Azure Blob 存储、本地 SQL Server、Azure SQL 数据库和关系数据市场作为其数据存储选项。  Blob 存储包含客户信息、客户行为数据和产品信息数据。 产品信息数据包括产品品牌信息以及以本地方式存储于 SQL 数据仓库中的产品目录。 
 
 用户在网站上浏览目录中的产品时，所有数据会汇总起来并输送到产品建议系统以基于客户兴趣和行为提供个性化的建议。 客户还会看到另外一种与寻找的产品相关的产品，这种产品以网站整体使用模式为基础，并不是以一个用户为基础。
 
