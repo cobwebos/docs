@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703156"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>从数据工厂调用 MapReduce 程序
@@ -181,9 +180,9 @@ Azure 数据工厂中的管道通过使用链接计算服务来处理链接存�
 ### <a name="pipeline"></a>管道
 此示例中的管道仅具有一个 HDInsightMapReduce 类型的活动。 JSON 中的一些重要属性有： 
 
-| properties | 说明 |
+| 属性 | 注释 |
 |:--- |:--- |
-| type |类型必须设置为 **HDInsightMapReduce**。 |
+| 类型 |类型必须设置为 **HDInsightMapReduce**。 |
 | className |类名为：**wordcount** |
 | jarFilePath |包含该类的 jar 文件的路径。 如果要复制/粘贴下面的代码，请不要忘记更改群集的名称。 |
 | jarLinkedService |包含 jar 文件的 Azure 存储链接服务。 此链接服务指与 HDInsight 群集关联的存储。 |

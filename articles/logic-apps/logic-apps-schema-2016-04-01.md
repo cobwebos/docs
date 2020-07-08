@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792876"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure 逻辑应用的架构更新 - 2016 年 6 月 1 日
@@ -175,7 +174,7 @@ ms.locfileid: "74792876"
 ## <a name="next-steps"></a>后续步骤
 
 * [为逻辑应用创建工作流定义](../logic-apps/logic-apps-author-definitions.md)
-* [自动完成逻辑应用部署](logic-apps-azure-resource-manager-templates-overview.md)
+* [自动执行逻辑应用部署](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

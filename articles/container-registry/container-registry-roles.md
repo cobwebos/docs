@@ -4,10 +4,9 @@ description: 使用 Azure 基于角色的访问控制 (RBAC) 以及标识和访�
 ms.topic: article
 ms.date: 12/02/2019
 ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74893478"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
@@ -66,7 +65,7 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azur
 
 ## <a name="sign-images"></a>对映像签名
 
-对映像签名的功能，通常分配给某个自动化过程，该过程会使用服务主体。 此权限通常与[推送映像](#push-image)功能配合使用，以便将受信任的映像推送到注册表。 有关详细信息，请参阅 [Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
+对映像签名的功能，通常分配给某个自动化过程，该过程会使用服务主体。 此权限通常与[推送映像](#push-image)功能配合使用，以便将受信任的映像推送到注册表。 有关详细信息，请参阅[Azure 容器注册表中的内容信任](container-registry-content-trust.md)。
 
 ## <a name="custom-roles"></a>自定义角色
 
@@ -81,7 +80,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 若要定义自定义角色，请参阅[创建自定义角色的步骤](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
 
 > [!IMPORTANT]
-> 在自定义角色中，Azure 容器注册表当前不支持使用通配符`Microsoft.ContainerRegistry/*` （ `Microsoft.ContainerRegistry/registries/*`如或）来授予对所有匹配操作的访问权限。 在角色中单独指定任何所需的操作。
+> 在自定义角色中，Azure 容器注册表当前不支持使用通配符（如 `Microsoft.ContainerRegistry/*` 或） `Microsoft.ContainerRegistry/registries/*` 来授予对所有匹配操作的访问权限。 在角色中单独指定任何所需的操作。
 
 ## <a name="next-steps"></a>后续步骤
 

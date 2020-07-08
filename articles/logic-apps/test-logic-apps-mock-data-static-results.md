@@ -9,10 +9,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74790280"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>通过设置静态结果来使用模拟数据测试逻辑应用
@@ -54,7 +53,7 @@ ms.locfileid: "74790280"
 
       ![选择“启用静态结果”](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      若要以 JavaScript 对象表示法 (JSON) 格式输入模拟数据，请选择“切换到 JSON 模式”（![选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)）。 
+      若要以 JavaScript 对象表示法 (JSON) 格式输入模拟数据，请选择“切换到 JSON 模式”（![选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)）。
 
    1. 对于可选属性，请打开“选择可选字段”列表，然后选择要模拟的属性。 
 
@@ -86,11 +85,11 @@ ms.locfileid: "74790280"
 
 1. 复制所需的完整 JavaScript 对象表示法 (JSON) 对象或特定的子节，例如 outputs 节，或者只是 headers 节。
 
-1. 遵循[设置静态结果](#set-up-static-results)中的步骤打开操作的“静态结果”框。 
+1. 遵循[设置静态结果](#set-up-static-results)中的步骤打开操作的“静态结果”框。
 
 1. “静态结果”框打开后，选择以下任一步骤： 
 
-   * 若要粘贴完整的 JSON 对象，请选择“切换到 JSON 模式”（![选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)）： 
+   * 若要粘贴完整的 JSON 对象，请选择“切换到 JSON 模式”（![选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)）：
 
      ![为完整对象选择“切换到 JSON 模式”](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
@@ -102,7 +101,7 @@ ms.locfileid: "74790280"
 
    ![JSON 模式](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. 完成后，选择“完成”  。 或者，若要返回设计器，请选择“切换编辑器模式”（![选择“切换编辑器模式”](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)）。 
+1. 完成后，选择“完成”  。 或者，若要返回设计器，请选择“切换编辑器模式”（![选择“切换编辑器模式”](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)）。
 
 <a name="find-runs-mock-data"></a>
 
@@ -132,7 +131,7 @@ ms.locfileid: "74790280"
 
    ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. 选择“禁用静态结果” > “完成”。  
+1. 选择“禁用静态结果” > “完成”。
 
    ![禁用静态结果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232346"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory 标识保护术语表
@@ -59,7 +58,7 @@ Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示�
 ### <a name="leaked-credentials"></a>已泄漏凭据
 研究人员发现当前用户凭据（用户名和密码）公开发布在黑暗网络 (Dark Web) 时触发的风险检测。
 
-### <a name="mitigation"></a>缓解
+### <a name="mitigation"></a>缓解操作
 限制或消除攻击者利用遭到入侵的标识或设备的能力，且无需将标识或设备还原到安全状态。 缓解措施不能解决以前与标识或设备关联的风险检测。
 
 ### <a name="multi-factor-authentication"></a>多重身份验证
@@ -158,6 +157,6 @@ Azure AD 由 Identity Protection 标记为异常的事件，并且可能表示�
 ### <a name="vulnerability"></a>漏洞
 Azure Active Directory 中导致目录容易遭到入侵或威胁的配置或状态。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure Active Directory 标识保护](../active-directory-identityprotection.md)

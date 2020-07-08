@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74408737"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>对 Azure Linux 虚拟机启动错误进行故障排除
@@ -37,7 +36,7 @@ ms.locfileid: "74408737"
 
  磁盘交换–可以使用以下任一方法自动执行此操作：
 - [Power Shell 恢复脚本](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
-- [bash 恢复脚本](https://github.com/sribs/azure-support-scripts)
+- [Bash 恢复脚本](https://github.com/sribs/azure-support-scripts)
 
 - [CLI](troubleshoot-recovery-disks-linux.md)
 - [Azure 门户](troubleshoot-recovery-disks-portal-linux.md)
@@ -45,7 +44,7 @@ ms.locfileid: "74408737"
 
 ## <a name="disk-swap-video"></a>磁盘交换视频：
 
-如果你无权访问 GRUB 观看[此](https://youtu.be/m5t0GZ5oGAc)视频，请参阅如何轻松地自动执行磁盘交换过程以恢复 VM
+如果你无法访问 GRUB，请观看[此](https://youtu.be/m5t0GZ5oGAc)视频，了解如何轻松地自动执行磁盘交换过程以恢复 VM
 
 ## <a name="unofficial-solution"></a>非正式解决方案
 

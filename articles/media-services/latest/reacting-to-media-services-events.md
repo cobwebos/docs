@@ -12,10 +12,9 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
 ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887878"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
@@ -26,7 +25,7 @@ ms.locfileid: "74887878"
 
 ## <a name="media-services-events-and-schemas"></a>媒体服务事件和架构
 
-事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
+事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅服务器。 媒体服务事件包含响应数据中的更改所需的所有信息。 可以识别媒体服务事件，因为 eventType 属性以“Microsoft.Media”开头。
 
 有关详细信息，请参阅[媒体服务事件架构](media-services-event-schemas.md)。
 

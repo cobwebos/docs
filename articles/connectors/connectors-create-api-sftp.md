@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74789267"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 SFTP 文件
@@ -57,8 +56,8 @@ SFTP 触发器的工作原理是轮询 SFTP 文件系统并查找自上次轮询
 
 | SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到“选项” **“首选项”** “传输” > “编辑” **“保留时间戳”** “禁用” >    >    >    >   |
-| FileZilla | 转到“传输” **“保留已传输文件的时间戳”** “禁用” >    >   |
+| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
+| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。

@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74267326"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 动机和权益
@@ -53,7 +52,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 - **自定义工具或第三方应用程序的可扩展性** - HDInsight 群集可使用已安装的组件进行扩展，也可以通过 Azure 市场中的[一键式](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署与其他大数据解决方案进行集成。
 
-- **易于管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 集成，提供单个界面，可用于监视所有群集。
+- **易于管理、管理和监视**-Azure HDInsight 与 [Azure Monitor 日志](../hdinsight-hadoop-oms-log-analytics-tutorial.md)集成，   提供单个界面，可用于监视所有群集。
 
 - **与其他 Azure 服务集成** - HDInsight 可轻松地与其他常用 Azure 服务进行集成，例如：
 
@@ -87,7 +86,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 ### <a name="on-premises-deployment-questionnaire"></a>本地部署调查表
 
-| **问** | **示例** | **答案** |
+| **问题** | **示例** | **答案** |
 |---|---|---|
 |**主题**：环境****|||
 |群集分发版本|HDP 2.6.5、CDH 5.7|
@@ -119,7 +118,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 ### <a name="project-details-questionnaire"></a>项目详细信息问卷
 
-|**问**|**示例**|**答案**|
+|**问题**|**示例**|**答案**|
 |---|---|---|
 |**主题**：工作负载和频率****|||
 |MapReduce 作业|10 个作业 -- 每天两次||
@@ -165,7 +164,7 @@ Azure HDInsight 是 Hadoop 组件的云分发版。 可以通过 Azure HDInsight
 
 |**主题**：基础结构**** |||
 |---|---|---|
-|**问**|**示例**|**答案**|
+|**问题**|**示例**|**答案**|
 | 首选区域|美国东部||
 |首选 VNet？|是||
 |需要 HA/DR？|是||

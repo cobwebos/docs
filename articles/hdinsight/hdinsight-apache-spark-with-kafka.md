@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74327397"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Apache Kafka on HDInsight 的 Apache Spark 流式处理 (DStream) 示例
@@ -20,9 +19,9 @@ ms.locfileid: "74327397"
 了解如何[Apache Spark](https://spark.apache.org/)使用 DStreams 在 HDInsight 上使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)将数据流入或流出[Apache Kafka](https://kafka.apache.org/) 。 本示例使用在 Spark 群集上运行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
-> 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于 Azure 虚拟网络中，允许 Spark 群集直接与 Kafka 群集进行通信。
+> 本文档中的步骤创建了一个包含 Spark on HDInsight 和 Kafka on HDInsight 群集的 Azure 资源组。 这些群集都位于一个 Azure 虚拟网络中，这样 Spark 群集便可与 Kafka 群集直接通信。
 >
-> 完成本文档中的步骤后，请记得删除这些群集，避免支付额外费用。
+> 完成本文档中的步骤后，请记得删除这些群集，避免产生额外费用。
 
 > [!IMPORTANT]  
 > 此示例使用 DStreams，这是较旧的 Spark 流式处理技术。 有关使用较新的 Spark 流式处理功能的示例，请参阅[使用 Apache Kafka 的 Spark 结构化流式处理](hdinsight-apache-kafka-spark-structured-streaming.md)文档。
@@ -31,7 +30,7 @@ ms.locfileid: "74327397"
 
 HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的访问权限。 与 Kafka 对话的任何内容都必须与 Kafka 群集中的节点位于同一 Azure 虚拟网络中。 对于此示例，Kafka 和 Spark 群集都位于 Azure 虚拟网络中。 下图显示通信在群集之间的流动方式：
 
-![Azure 虚拟网络中的 Spark 和 Kafka 群集图表](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
+![Azure 虚拟网络中的 Spark 和 Kafka 群集的关系图](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
 > [!NOTE]  
 > 虽然 Kafka 本身受限于虚拟网络中的通信，但可以通过 Internet 访问群集上的其他服务（例如 SSH 和 Ambari）。 有关可用于 HDInsight 的公共端口的详细信息，请参阅 [HDInsight 使用的端口和 URI](hdinsight-hadoop-port-settings-for-services.md)。
@@ -42,7 +41,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure 资源管理器模板位于**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**。
+    Azure 资源管理器模板位于 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** 。
 
     > [!WARNING]  
     > 若要确保 Kafka on HDInsight 的可用性，群集必须至少包含 3 个辅助节点。 此模板创建的 Kafka 群集包含三个辅助角色节点。
@@ -51,7 +50,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
 1. 使用以下信息填充“自定义部署”部分中的条目****：
 
-    |properties |值 |
+    |Property |值 |
     |---|---|
     |资源组|创建一个组或选择有个现有的组。|
     |位置|选择在地理上邻近的位置。|
@@ -76,7 +75,7 @@ HDInsight 上的 Apache Kafka 不通过公共 internet 提供对 Kafka 代理的
 
 ## <a name="use-the-notebooks"></a>使用笔记本
 
-本文档中所述示例的代码在[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)中提供。
+本文档中所述示例的代码在中提供 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) 。
 
 ## <a name="delete-the-cluster"></a>删除群集
 

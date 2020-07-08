@@ -15,16 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74887061"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒体服务错误代码
 使用 Microsoft Azure 媒体服务时，可能会收到来自服务的 HTTP 错误代码，这取决于具体的问题，例如身份验证令牌对于媒体服务不支持的操作过期。 以下是媒体服务可能返回的 **HTTP 错误代码**及可能的错误原因的列表。  
 
-## <a name="400-bad-request"></a>400 错误请求
+## <a name="400-bad-request"></a>400 错误的请求
 请求包含无效信息，并因以下可能的原因之一被拒绝：
 
 * 指定了不支持的 API 版本。 有关最新版本，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use.md)。
@@ -52,7 +51,7 @@ ms.locfileid: "74887061"
   * 令牌包含无效签名。
 
 ## <a name="403-forbidden"></a>403 禁止访问
-出于以下原因之一，未允许该请求：
+出于以下原因之一，不允许该请求：
 
 * 找不到或已删除媒体服务帐户。
 * 已禁用媒体服务帐户，且请求类型不是 HTTP GET。 服务操作也将返回 403 响应。
@@ -75,7 +74,7 @@ ms.locfileid: "74887061"
 * 曾尝试指定未与媒体服务帐户关联的存储帐户。  
 
 ## <a name="409-conflict"></a>409 冲突
-出于以下原因之一，未允许该请求：
+出于以下原因之一，不允许该请求：
 
 * 资产内的多个 AssetFile 具有指定名称。
 * 曾尝试在资产中创建第二个主 AssetFile。
@@ -89,17 +88,17 @@ ms.locfileid: "74887061"
 * 将资产的存储帐户链接到 IngestManifestAsset 与父 IngestManifest 所使用的存储帐户的情况不同。  
 
 ## <a name="500-internal-server-error"></a>500 内部服务器错误
-在处理请求期间，媒体服务遇到了某种错误，从而阻止继续处理请求。 这可能是以下原因之一造成的：
+在处理请求期间，媒体服务会遇到一些阻止处理继续执行的错误。 这可能是以下原因之一造成的：
 
 * 创建资产或作业失败，因为媒体服务帐户的服务配额信息暂不可用。
 * 创建资产或 IngestManifest blob 存储容器失败，因为帐户的存储帐户信息暂不可用。
 * 其他意外错误。
 
 ## <a name="503-service-unavailable"></a>503 服务不可用
-服务器当前无法接收请求。 服务请求过多可能引发此错误。 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。
+服务器当前无法接收请求。 导致此错误的可能原因是向服务发出了过多的请求。 对于发出过多服务请求的应用程序，媒体服务限制机制将限制其资源使用量。
 
 > [!NOTE]
-> 检查错误消息和错误代码字符串以获取有关收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
+> 查看错误消息和错误代码字符串，获取收到 503 错误的原因的更多详细信息。 此错误并不始终意味着限制。
 > 
 > 
 

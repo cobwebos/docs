@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74895779"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测  
@@ -51,7 +50,7 @@ ms.locfileid: "74895779"
 
 可通过以下方式之一使用遥测数据：
 
-- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅**此**主题中的[使用遥测信息](https://msdn.microsoft.com/library/mt742089.aspx)。
+- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅[此](https://msdn.microsoft.com/library/mt742089.aspx)主题中的**使用遥测信息**。
 
 或
 

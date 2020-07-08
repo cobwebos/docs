@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870558"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查询示例
@@ -366,7 +365,7 @@ SELECT EXISTS (SELECT VALUE undefined)
 SELECT EXISTS (SELECT undefined) 
 ```
 
-该子查询在对象中的选定列表内括住值列表。 如果选定的列表没有值，子查询将返回单个值 "{}"。 此值已定义，因此 EXISTS 求值为 true。
+该子查询在对象中的选定列表内括住值列表。 如果选定的列表没有值，子查询将返回单个值 " {} "。 此值已定义，因此 EXISTS 求值为 true。
 
 ### <a name="example-rewriting-array_contains-and-join-as-exists"></a>示例：将 ARRAY_CONTAINS 和 JOIN 重写为 EXISTS
 

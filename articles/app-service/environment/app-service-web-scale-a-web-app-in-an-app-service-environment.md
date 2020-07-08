@@ -1,6 +1,6 @@
 ---
 title: 缩放 ASE v1 中的应用
-description: 在应用服务环境中缩放应用。 此文档仅为使用旧版 v1 ASE 的客户提供。
+description: 在应用服务环境中缩放应用。 本文档仅供使用旧版 v1 ASE 的用户使用。
 author: ccompy
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.topic: article
@@ -8,10 +8,9 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74688684"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>缩放应用服务环境 v1 中的应用

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232755"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions 中的版本控制 (Azure Functions)
@@ -87,7 +86,7 @@ public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext conte
 > [!NOTE]
 > 前面的 C# 示例以 Durable Functions 2.x 为目标。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-此更改会向“Foo”  和“Bar”  之间的“SendNotification”  添加新的函数调用。 不存在签名更改。 在从对“Bar”  的调用中恢复现有实例时，将出现问题。 在重播过程中，如果对“Foo”  的原始调用返回 `true`，则业务流程协调程序重播将调用不在其执行历史记录中的“SendNotification”  。 因此，Durable Task Framework 将失败，并且出现 `NonDeterministicOrchestrationException`，因为在它希望出现对“Bar”  的调用时出现了对“SendNotification”  的调用。 添加对“durable”API 的任何调用（包括 `CreateTimer`、`WaitForExternalEvent` 等）时可能会出现相同类型的问题。
+此更改会向“Foo”和“Bar”之间的“SendNotification”添加新的函数调用。 不存在签名更改。 在从对“Bar”  的调用中恢复现有实例时，将出现问题。 在重播过程中，如果对“Foo”  的原始调用返回 `true`，则业务流程协调程序重播将调用不在其执行历史记录中的“SendNotification”  。 因此，Durable Task Framework 将失败，并且出现 `NonDeterministicOrchestrationException`，因为在它希望出现对“Bar”的调用时出现了对“SendNotification”的调用。 添加对“durable”API 的任何调用（包括 `CreateTimer`、`WaitForExternalEvent` 等）时可能会出现相同类型的问题。
 
 ## <a name="mitigation-strategies"></a>缓解策略
 

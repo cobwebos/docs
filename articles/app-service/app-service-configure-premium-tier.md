@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
 ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74672208"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>为 Azure 应用服务配置 PremiumV2 层
@@ -83,11 +82,11 @@ az appservice list-locations --sku P1V2
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。 
+    在“克隆应用”页中，可以在所需的区域中创建使用 **PremiumV2** 的应用服务计划，并指定要克隆的应用设置和配置。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
-可以使用 **Azure CLI** 或 [Azure PowerShell](/cli/azure/install-azure-cli) 通过脚本在 [PremiumV2](/powershell/azure/overview) 层中自动执行应用创建。
+可以使用 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/overview) 通过脚本在 **PremiumV2** 层中自动执行应用创建。
 
 ### <a name="azure-cli"></a>Azure CLI
 

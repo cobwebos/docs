@@ -13,10 +13,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 5b8e7201a6239ef1fe83fb89d4b361995e305bbf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74703196"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Pig 活动转换数据
@@ -36,7 +35,7 @@ ms.locfileid: "74703196"
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅[在数据工厂中使用 Pig 活动转换数据](../transform-data-using-hadoop-pig.md)。
 
 
-数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Pig 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
+数据工厂[管道](data-factory-create-pipelines.md)中的 HDInsight Pig 活动会在[自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或基于 Windows/Linux 的[按需](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)HDInsight 群集上执行 Pig 查询。 本文基于[数据转换活动](data-factory-data-transformation-activities.md)一文，它概述了数据转换和受支持的转换活动。
 
 > [!NOTE] 
 > 如果是刚开始接触 Azure 数据工厂，请仔细阅读 [Azure 数据工厂简介](data-factory-introduction.md)，并学习[教程：生成首个数据管道](data-factory-build-your-first-pipeline.md)，然后再阅读本文。 
@@ -82,7 +81,7 @@ ms.locfileid: "74703196"
 
 ## <a name="syntax-details"></a>语法详细信息
 
-| properties | 说明 | 必需 |
+| properties | 描述 | 必需 |
 | --- | --- | --- |
 | name |活动名称 |是 |
 | description |描述活动用途的文本 |否 |

@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: c815256e60e5ca6582220d247d587a4488c4a55a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535309"
 ---
 # <a name="azure-active-directory-operations-reference-guide"></a>Azure Active Directory 操作参考指南
@@ -36,7 +35,7 @@ ms.locfileid: "74535309"
 
 本参考指南中的每个部分都建议分配利益干系人成功计划和实现关键任务。 下表概述了本指南中所有利益干系人的列表：
 
-| 利益干系人 | 说明 |
+| 利益干系人 | 描述 |
 | :- | :- |
 | IAM 操作团队 | 此团队处理标识和访问管理系统的日常操作 |
 | 生产力团队 | 此团队拥有和管理工作效率应用程序，如电子邮件、文件共享和协作、即时消息和会议。 |

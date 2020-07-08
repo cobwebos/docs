@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74847843"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密码保护代理版本历史记录
@@ -42,9 +41,9 @@ ms.locfileid: "74847843"
   * 在服务器核心系统上，可能需要将/q 标志传递到 .NET 4.7 安装程序以使其成功。
 * 代理服务现在支持自动升级。 自动升级使用与代理服务并行安装的 Microsoft Azure AD 连接代理更新程序服务。 默认情况下启用自动升级。
 * 使用 AzureADPasswordProtectionProxyConfiguration cmdlet 可以启用或禁用自动升级。 可以使用 AzureADPasswordProtectionProxyConfiguration cmdlet 查询当前设置。
-* DC 代理服务的服务二进制文件已重命名为 AzureADPasswordProtectionDCAgent。
-* 代理服务的服务二进制文件已重命名为 AzureADPasswordProtectionProxy。 如果使用第三方防火墙，可能需要相应地修改防火墙规则。
-  * 注意：如果在以前的代理安装中使用 http 代理配置文件，则在此升级之后需要将它重命名（从*proxyservice*到*AzureADPasswordProtectionProxy*）。
+* DC 代理服务的服务二进制文件已重命名为 AzureADPasswordProtectionDCAgent.exe。
+* 代理服务的服务二进制文件已重命名为 AzureADPasswordProtectionProxy.exe。 如果使用第三方防火墙，可能需要相应地修改防火墙规则。
+  * 注意：如果在以前的代理安装中使用 http 代理配置文件，则在此升级之后需要将其重命名（从*proxyservice.exe.config*到*AzureADPasswordProtectionProxy.exe.config*）。
 * 所有受时间限制的功能检查已从 DC 代理中删除。
 * 次要 bug 修复和日志记录改进。
 

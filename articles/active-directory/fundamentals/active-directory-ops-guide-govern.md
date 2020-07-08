@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74535452"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 调控操作参考指南
@@ -31,7 +30,7 @@ ms.locfileid: "74535452"
 
 管理 Azure Active Directory 需要持续执行关键操作任务和进程，这可能不是一个部署项目的一部分。 设置这些任务以优化环境仍非常重要。 关键任务及其建议所有者包括：
 
-| 任务 | “所有者” |
+| 任务 | 所有者 |
 | :- | :- |
 | 存档 Azure AD SIEM 系统中的审核日志 | InfoSec 运营团队 |
 | 发现管理不合规的应用程序 | IAM 操作团队 |
@@ -76,7 +75,7 @@ ms.locfileid: "74535452"
 
 随着时间的推移，当用户在不同的团队和位置移动时，用户可能会积累对资源的访问权限。 资源所有者需要定期审查对应用程序的访问权限，并删除在用户生命周期内不再需要的特权，这一点非常重要。 Azure AD[访问评审](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)使组织能够有效地管理组成员身份、访问企业应用程序和角色分配。 资源所有者应定期查看用户的访问权限，以确保只有正确的人继续访问。 理想情况下，应考虑对此任务使用 Azure AD 访问评审。
 
-![访问评审启动页](./media/active-directory-ops-guide/active-directory-ops-img15.png)
+![访问评审起始页](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
 > [!NOTE]
 > 与访问评审交互的每个用户都必须拥有付费 Azure AD Premium P2 许可证。

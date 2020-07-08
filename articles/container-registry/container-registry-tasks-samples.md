@@ -4,15 +4,14 @@ description: 用于生成、运行和修补容器映像的示例 Azure 容器注
 ms.topic: article
 ms.date: 11/14/2019
 ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74456081"
 ---
 # <a name="acr-tasks-samples"></a>ACR 任务示例
 
-本文链接到几个 `task.yaml`Azure 容器注册表任务[（ACR 任务）方案的示例 ](container-registry-tasks-overview.md) 文件和关联的 Dockerfile。 
+本文链接到几个 [Azure 容器注册表任务](container-registry-tasks-overview.md)（ACR 任务）方案的示例 `task.yaml` 文件和关联的 Dockerfile。 
 
 有关其他示例，请参阅 [Azure 示例][task-examples]存储库。
 

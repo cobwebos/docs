@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74871255"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL 查询执行
@@ -241,9 +240,9 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Az
     }
 ```
 
-.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#REST-API) 部分介绍的查询选项也适用于在 `FeedOptions` 方法中使用 `FeedResponse` 和 `CreateDocumentQuery` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
+.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#REST-API) 部分介绍的查询选项也适用于在 `CreateDocumentQuery` 方法中使用 `FeedOptions` 和 `FeedResponse` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
 
-还可以通过使用 `IDocumentQueryable` 对象创建 `IQueryable`，并读取 `ResponseContinuationToken` 值并将它们作为 `RequestContinuationToken` 中的 `FeedOptions` 向回传递，从而显式控制分页。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
+还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，并读取 `ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
 
 有关更多包含查询的 .NET 示例，请参阅 GitHub 中的 [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)。
 

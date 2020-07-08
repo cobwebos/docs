@@ -14,10 +14,9 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74206777"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 进行强身份验证的四个步骤
@@ -166,7 +165,7 @@ Azure AD 提供使用安全组和 Office 365 组管理资源访问权限的功�
 * 我的租户中是否有任何可疑或恶意的情况？
 * 安全事件期间，谁受到了影响？
 
-安全日志和报告提供可疑活动的电子记录，并帮助检测可能指示试图或已成功的外部网络渗透以及内部攻击的模式。 您可以使用审核来监视用户活动、记录法规遵从性、进行鉴证分析等。 警报提供安全事件的通知。
+安全日志和报告提供可疑活动的电子记录，并帮助检测可能指示试图或已成功的外部网络渗透以及内部攻击的模式。 可以使用审核来监控用户活动、记录法规遵从性以及进行取证分析等。 警报提供安全事件的通知。
 
 ### <a name="assign-least-privileged-admin-roles-for-operations"></a>为操作分配最少特权管理员角色
 

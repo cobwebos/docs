@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74871136"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联接
@@ -35,7 +34,7 @@ ms.locfileid: "74871136"
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 {3}，表示集 `input_alias1 = B,`  
+    若 `input_alias1 = B,`，表示集 {3}  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
@@ -53,7 +52,7 @@ ms.locfileid: "74871136"
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 {3}，表示集 `input_alias1 = B,`  
+    若 `input_alias1 = B,`，表示集 {3}  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
@@ -61,7 +60,7 @@ ms.locfileid: "74871136"
   
     若 `input_alias2 = 1,`，表示集 {100, 200}  
   
-    若 {300}，表示集 `input_alias2 = 3,`  
+    若 `input_alias2 = 3,`，表示集 {300}  
   
 - FROM 子句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` 将产生以下元组：  
   
@@ -82,7 +81,7 @@ ms.locfileid: "74871136"
   
     若 `input_alias1 = A,`，表示集 {1, 2}  
   
-    若 {3}，表示集 `input_alias1 = B,`  
+    若 `input_alias1 = B,`，表示集 {3}  
   
     若 `input_alias1 = C,`，表示集 {4, 5}  
   
@@ -90,7 +89,7 @@ ms.locfileid: "74871136"
   
     若 `input_alias2 = A,`，表示集 {100, 200}  
   
-    若 {300}，表示集 `input_alias2 = C,`  
+    若 `input_alias2 = C,`，表示集 {300}  
   
 - FROM 子句 `<from_source1> JOIN <from_source2> JOIN <from_source3>` 将产生以下元组：  
   

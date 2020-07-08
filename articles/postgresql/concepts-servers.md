@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768157"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器
@@ -39,7 +38,7 @@ Azure Database for PostgreSQL 服务器：
 |||
 |:--|:--|
 | **身份验证和授权** | Azure Database for PostgreSQL 服务器支持本机 PostgreSQL 身份验证。 可使用服务器的管理员登录名连接到服务器并进行身份验证。 |
-| 协议  | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
+| **协议** | 该服务支持 PostgreSQL 使用的基于消息的协议。 |
 | **TCP/IP** | 通过 TCP/IP 和 Unix 域套接字支持该协议。 |
 | **防火墙** | 为帮助保护数据，在用户指定具有访问权限的计算机之前，防火墙规则将禁止所有对服务器及其数据库的访问。 请参阅  [Azure Database for PostgreSQL 服务器防火墙规则](concepts-firewall-rules.md)。 |
 

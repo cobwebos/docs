@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74689247"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中还原应用
@@ -50,7 +49,7 @@ ms.locfileid: "74689247"
    
     可选择“现有应用”将应用备份还原到同一资源组中的其他应用****。 使用此选项之前，应已使用应用备份中定义的镜像数据库配置在资源组中创建了其他应用。 还可以创建“新”**** 应用来将内容还原到其中。
 
-4. 单击“确定”。 
+4. 单击“确定”。
 
 <a name="StorageAccount"></a>
 

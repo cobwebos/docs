@@ -7,23 +7,22 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 3da48a9b6d3acb1f2811bc279de7963fa1d83918
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74763680"
 ---
 # <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-from-the-azure-portal"></a>从 Azure 门户配置和访问 Azure Database for PostgreSQL（单一服务器）日志
 
 可以从 Azure 门户配置、列出和下载 [Azure Database for PostgreSQL 日志](concepts-server-logs.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 本文中的步骤要求具备 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="configure-logging"></a>配置日志记录
 配置对查询日志和错误日志的访问权限。 
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 选择你的 Azure Database for PostgreSQL 服务器。
 
@@ -35,7 +34,7 @@ ms.locfileid: "74763680"
 
 5. 更改需要调整的参数。 在此会话中所做的更改都突出显示为紫色。
 
-   更改参数之后，请选择“保存”。  也可以放弃所做的更改。 
+   更改参数之后，请选择“保存”。**** 也可以放弃所做的更改。 
 
    ![“服务器参数”选项的屏幕截图](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
@@ -64,7 +63,7 @@ ms.locfileid: "74763680"
    ![“服务器日志”页的屏幕截图，其中突出显示了向下箭头图标](./media/howto-configure-server-logs-in-portal/6-download.png)
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解如何以编程方式下载日志，请参阅[在 CLI 中访问服务器日志](howto-configure-server-logs-using-cli.md)。
+- 请参阅[在 CLI 中访问服务器日志](howto-configure-server-logs-using-cli.md)以了解如何以编程方式下载日志。
 - 详细了解 Azure Database for PostgreSQL 中的[服务器日志](concepts-server-logs.md)。 
-- 有关参数定义和 PostgreSQL 日志记录的详细信息，请参阅有关[错误报告和日志记录](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)的 PostgreSQL 文档。
+- 有关参数定义和 PostgreSQL 日志记录的详细信息，请参阅[错误报告和日志记录](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)上的 PostgreSQL 文档。
 

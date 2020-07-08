@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74870728"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查询中的标量表达式
@@ -54,7 +53,7 @@ ms.locfileid: "74870728"
   
 - `input_alias`  
   
-   表示由 `input_alias` 子句引入，由 `FROM` 定义的值。  
+   表示由 `FROM` 子句引入，由 `input_alias` 定义的值。  
   该值不得是“未定义”****–输入中的“未定义”值将被跳过****。  
   
 - `<scalar_expression>.property_name`  

@@ -1,5 +1,5 @@
 ---
-title: B2B 协作用户的条件性访问-Azure AD
+title: B2B 协作用户的条件访问 - Azure AD
 description: Azure Active Directory B2B 协作支持多重身份验证 (MFA)，以便对公司应用程序进行选择性访问
 services: active-directory
 ms.service: active-directory
@@ -12,21 +12,20 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74273000"
 ---
-# <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件性访问
+# <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件访问
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户的多重身份验证
 通过 Azure AD B2B 协作，组织可以针对 B2B 用户强制实施多重身份验证 (MFA) 策略。 可以在租户、应用或个人用户级别强制实施这些策略，与针对全职员工和组织成员启用这些策略的方式相同。 资源组织中强制实施 MFA 策略。
 
 示例：
-1. 公司 A 中的管理员或信息工作者邀请公司 B 中的用户加入公司 A 中的应用程序 Foo**。
+1. 公司 A 中的管理员或信息工作者邀请公司 B 中的用户加入公司 A 中的应用程序 Foo  。
 2. 公司 A 中的应用程序 *Foo* 配置为在访问时需要进行 MFA。
-3. 公司 B 中的用户尝试访问公司 A 租户中的应用 Foo 时，会要求其完成 MFA 质询**。
+3. 公司 B 中的用户尝试访问公司 A 租户中的应用 Foo 时，会要求其完成 MFA 质询  。
 4. 用户可设置公司 A 对其的 MFA，并选择 MFA 选项。
 5. 此方案适用于任何标识（Azure AD 或 MSA，例如，如果公司 B 中的用户使用社交 ID 进行身份验证）
 6. 公司 A 必须具有足够的支持 MFA 的高级 Azure AD 许可证。 公司 B 中的用户使用公司 A 提供的此许可证。
@@ -85,7 +84,7 @@ ms.locfileid: "74273000"
 
 最后，资源租户 MFA 还适用于 MSA 和社交 ID，以及尚未设置 MFA 的合作伙伴组织。
 
-因此，在针对 B2B 用户进行 MFA 方面，建议始终需要在邀请方租户中进行 MFA。 此要求可能会导致有些时候需要进行两次 MFA，但是无论在什么时候访问邀请方租户，最终用户体验都是可以预测的：Sally 必须注册邀请方租户的 MFA。
+因此，在针对 B2B 用户进行 MFA 方面，建议始终需要在邀请方租户中进行 MFA。 此要求可能会导致有些情况下需要进行两次 MFA，但是无论在什么时候访问邀请方租户，最终用户体验都是可以预测的：Sally 必须注册邀请方租户的 MFA。
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>B2B 用户基于设备、位置和风险的条件性访问
 
@@ -95,13 +94,13 @@ ms.locfileid: "74273000"
 
 #### <a name="mobile-application-management-policies-for-b2b"></a>B2B 的移动应用程序管理策略
 
-由于邀请的组织无法查看 B2B 用户的本组织，因此无法将条件访问应用保护策略应用于 B2B 用户。
+条件访问应用保护策略无法应用于 B2B 用户，因为邀请组织无法查看 B2B 用户的本组织。
 
-#### <a name="location-based-conditional-access-for-b2b"></a>针对 B2B 的基于位置的条件性访问
+#### <a name="location-based-conditional-access-for-b2b"></a>针对 B2B 的基于位置的条件访问
 
-如果邀请的组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可以对 B2B 用户强制实施基于位置的条件性访问策略。
+如果邀请组织能够创建定义其合作伙伴组织的受信任 IP 地址范围，则可针对 B2B 用户强制实施基于位置的条件访问策略。
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>针对 B2B 的基于风险的条件性访问
+#### <a name="risk-based-conditional-access-for-b2b"></a>针对 B2B 的基于风险的条件访问
 
 目前是在 B2B 用户的本组织中进行风险评估，因此不能对 B2B 用户应用基于风险的登录策略。
 

@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 3d86c76472580567c95d285924761e1714465d6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74768735"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的高级威胁防护-单服务器
@@ -41,6 +40,6 @@ Azure Database for PostgreSQL 高级威胁防护可检测异常活动，指出�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
 * 有关定价的详细信息，请参阅 [Azure Database for PostgreSQL 定价页](https://azure.microsoft.com/pricing/details/postgresql/) 
 * 使用 Azure 门户配置 [Azure Database for PostgreSQL 高级威胁防护](howto-database-threat-protection-portal.md)  

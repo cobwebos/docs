@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74671610"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure 应用服务上的操作系统功能
@@ -76,7 +75,7 @@ ms.locfileid: "74671610"
 
 说明应用服务如何使用临时本地存储的两个示例是针对临时 ASP.NET 文件的目录和针对 IIS 压缩文件的目录。 ASP.NET 编译系统使用“临时 ASP.NET 文件”目录作为临时编译缓存位置。 IIS 使用“IIS 临时压缩文件”目录存储压缩的响应输出。 在应用服务中，这两种类型的文件使用（以及其他使用）都重新映射到按应用临时本地存储。 此重新映射确保该功能按预期延续。
 
-应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为 "应用程序池标识" [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities)，此处对此进行了进一步说明：。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
+应用服务中的每个应用作为随机的唯一低权限辅助进程标识运行，该标识名为 "应用程序池标识"，此处对此进行了进一步说明： [https://www.iis.net/learn/manage/configuring-security/application-pool-identities](https://www.iis.net/learn/manage/configuring-security/application-pool-identities) 。 应用程序代码将此标识由于对操作系统驱动器（D:\ 驱动器）的基本的只读访问。 这意味着应用程序代码可以列出公共目录结构并且读取操作系统驱动器上的公共文件。 尽管这可能看上去就好像是一种较为广泛的访问级别，但在 Azure 托管服务中设置某一辅助角色并且读取驱动器内容时，相同的目录和文件是可访问的。 
 
 <a name="multipleinstances"></a>
 

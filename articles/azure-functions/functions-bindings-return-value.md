@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74480580"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
@@ -20,7 +19,7 @@ ms.locfileid: "74480580"
 
 * 在 C# 类库，请将输出绑定特性应用到方法返回值。
 * 在 Java 中，将输出绑定注释应用于函数方法。
-* 在其他语言中，请将 `name`function.json*中的* 属性设置为 `$return`。
+* 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 

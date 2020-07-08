@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74684135"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>当无权访问 Azure 串行控制台且磁盘布局使用 LVM （逻辑卷管理器）时，Linux VM 的故障排除
@@ -252,15 +251,15 @@ umount /rescue
 
 从救援 VM 中分离磁盘，并执行磁盘交换。
 
-从门户**磁盘**中选择 VM，并选择 "**分离**
-![分离磁盘"](./media/chroot-logical-volume-manager/detach-disk.png) 
+从门户**磁盘**中选择 VM，并选择 "**分离** 
+ ![ 分离磁盘"](./media/chroot-logical-volume-manager/detach-disk.png) 
 
 保存更改![保存分离结果](./media/chroot-logical-volume-manager/save-detach.png) 
 
 磁盘现在可用，并可与受影响 VM 的原始 OS 磁盘交换。
 
-在 Azure 门户中导航到出现故障的 VM，并选择 "**磁盘** -> " "**交换 OS 磁盘**
-![交换磁盘"](./media/chroot-logical-volume-manager/swap-disk.png) 
+在 Azure 门户中导航到出现故障的 VM，并选择 "**磁盘**" "  ->  **交换 OS 磁盘** 
+ ![ 交换磁盘"](./media/chroot-logical-volume-manager/swap-disk.png) 
 
 填写字段。在“选择磁盘”中选择刚刚在上一步骤中分离的快照磁盘。**** 受影响 VM 的名称也是必填的。然后选择“确定”****
 

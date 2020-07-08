@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74706366"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>使用 Azure Site Recovery 为多层 SharePoint 应用程序设置灾难恢复
@@ -65,7 +64,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure** | NA | 是
+**Azure** | 不可用 | 是
 
 
 ### <a name="things-to-keep-in-mind"></a>要点
@@ -102,7 +101,7 @@ Site Recovery 与应用程序无关，应与在受支持的计算机上运行的
 用于面向 Internet 的站点，请在 Azure 订阅中[创建“优先级”类型的流量管理器配置文件](../traffic-manager/traffic-manager-create-profile.md)。 然后按以下方式配置 DNS 和流量管理器配置文件。
 
 
-| **其中** | **源** | **目标**|
+| **其中** | **源** | **Target**|
 | --- | --- | --- |
 | 公共 DNS | SharePoint 站点的公共 DNS <br/><br/> 例如：sharepoint.contoso.com | 流量管理器 <br/><br/> contososharepoint.trafficmanager.net |
 | 本地 DNS | sharepointonprem.contoso.com | 本地场中的公共 IP |

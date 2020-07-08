@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74666369"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
@@ -116,8 +115,8 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | L7Protocol_s  | 协议名称 | 派生自目标端口 |
 | FlowDirection_s | * I = 出站<br> * O = 出站 | 根据流日志流入/流出 NSG 的方向 |
 | FlowStatus_s  | * A = 由 NSG 规则允许 <br> * D = 由 NSG 规则拒绝  | 根据流日志由 NSG 允许/阻止的流的状态 |
-| NSGList_s | \<订阅 ID>\/<资源组名称>\/<NSG 名称> | 与流关联的网络安全组 (NSG) |
-| NSGRules_s | \<索引值 0)>\|\<NSG 规则名称>\|\<流方向>\|\<流状态>\|\<规则处理的流数> |  允许或拒绝此流的 NSG 规则 |
+| NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | 与流关联的网络安全组 (NSG) |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  允许或拒绝此流的 NSG 规则 |
 | NSGRule_s | NSG_RULENAME |  允许或拒绝此流的 NSG 规则 |
 | NSGRuleType_s | * 用户定义 * 默认值 |   流使用的 NSG 规则类型 |
 | MACAddress_s | MAC 地址 | 捕获流的 NIC 的 MAC 地址 |
@@ -127,23 +126,23 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | Region_s | 流中的 IP 所属的虚拟网络/网络接口/虚拟机的 Azure 区域 | 仅适用于 FlowType = S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow 和 UnknownPrivate 流类型（只有一端的流类型是 Azure） |
 | Region1_s | Azure 区域 | 流中的源 IP 所属的虚拟网络/网络接口/虚拟机的 Azure 区域 |
 | Region2_s | Azure 区域 | 流中的目标 IP 所属的虚拟网络的 Azure 区域 |
-| NIC_s | \<资源组名称>\/\<网络接口名称> |  与发送或接收流量的 VM 关联的 NIC |
-| NIC1_s | <资源组名称>/\<网络接口名称> | 与流中的源 IP 关联的 NIC |
-| NIC2_s | <资源组名称>/\<网络接口名称> | 与流中的目标 IP 关联的 NIC |
-| VM_s | <资源组名称>\/\<网络接口名称> | 与网络接口 NIC_s 关联的虚拟机 |
-| VM1_s | <资源组名称>/\<虚拟机名称> | 与流中的源 IP 关联的虚拟机 |
-| VM2_s | <资源组名称>/\<虚拟机名称> | 与流中的目标 IP 关联的虚拟机 |
-| Subnet_s | <资源组名称>/<VNET 名称>/\<子网名称> | 与 NIC_s 关联的子网 |
-| Subnet1_s | <资源组名称>/<VNET 名称>/\<子网名称> | 与流中的源 IP 关联的子网 |
-| Subnet2_s | <资源组名称>/<VNET 名称>/\<子网名称>    | 与流中的目标 IP 关联的子网 |
-| ApplicationGateway1_s | \<订阅 ID>/\<资源组名称>/\<应用程序网关名称> | 与流中的源 IP 关联的应用程序网关 |
-| ApplicationGateway2_s | \<订阅 ID>/\<资源组名称>/\<应用程序网关名称> | 与流中的目标 IP 关联的应用程序网关 |
-| LoadBalancer1_s | \<订阅 ID>/\<资源组名称>/\<负载均衡器名称> | 与流中的源 IP 关联的负载均衡器 |
-| LoadBalancer2_s | \<订阅 ID>/\<资源组名称>/\<负载均衡器名称> | 与流中的目标 IP 关联的负载均衡器 |
-| LocalNetworkGateway1_s | \<订阅 ID>/\<资源组名称>/\<本地网络网关名称> | 与流中的源 IP 关联的本地网络网关 |
-| LocalNetworkGateway2_s | \<订阅 ID>/\<资源组名称>/\<本地网络网关名称> | 与流中的目标 IP 关联的本地网络网关 |
+| NIC_s | \<resourcegroup_Name>\/\<NetworkInterfaceName> |  与发送或接收流量的 VM 关联的 NIC |
+| NIC1_s | <resourcegroup_Name>/\<NetworkInterfaceName> | 与流中的源 IP 关联的 NIC |
+| NIC2_s | <resourcegroup_Name>/\<NetworkInterfaceName> | 与流中的目标 IP 关联的 NIC |
+| VM_s | <resourcegroup_Name>\/\<NetworkInterfaceName> | 与网络接口 NIC_s 关联的虚拟机 |
+| VM1_s | <resourcegroup_Name>/\<VirtualMachineName> | 与流中的源 IP 关联的虚拟机 |
+| VM2_s | <resourcegroup_Name>/\<VirtualMachineName> | 与流中的目标 IP 关联的虚拟机 |
+| Subnet_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | 与 NIC_s 关联的子网 |
+| Subnet1_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName> | 与流中的源 IP 关联的子网 |
+| Subnet2_s | <ResourceGroup_Name>/<VNET_Name>/\<SubnetName>    | 与流中的目标 IP 关联的子网 |
+| ApplicationGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | 与流中的源 IP 关联的应用程序网关 |
+| ApplicationGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<ApplicationGatewayName> | 与流中的目标 IP 关联的应用程序网关 |
+| LoadBalancer1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | 与流中的源 IP 关联的负载均衡器 |
+| LoadBalancer2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LoadBalancerName> | 与流中的目标 IP 关联的负载均衡器 |
+| LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | 与流中的源 IP 关联的本地网络网关 |
+| LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | 与流中的目标 IP 关联的本地网络网关 |
 | ConnectionType_s | 可能的值为 VNetPeering、VpnGateway 和 ExpressRoute |    连接类型 |
-| ConnectionName_s | \<订阅 ID>/\<资源组名称>/\<连接名称> | 连接名称。 对于 flowtype P2S，此项的格式将设为 <gateway name>_<VPN Client IP> |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 连接名称。 对于 flowtype P2S，此项的格式将设为 <gateway name>_<VPN Client IP> |
 | ConnectingVNets_s | 虚拟网络名称的空格分隔列表 | 对于中心辐射型拓扑，此处将会填充中心虚拟网络 |
 | Country_s | 双字母国家/地区代码 (ISO 3166-1 alpha-2) | 为流类型 ExternalPublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享同一个国家/地区代码 |
 | AzureRegion_s | Azure 区域位置 | 为流类型 AzurePublic 填充此字段。 PublicIPs_s 字段中的所有 IP 地址将共享该 Azure 区域 |
@@ -157,9 +156,9 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | InboundBytes_d |  在应用 NSG 规则的网络接口上捕获的已接收字节数 | 仅为 NSG 流日志架构版本 2 填充此字段 |
 | OutboundBytes_d | 在应用 NSG 规则的网络接口上捕获的已发送字节数 | 仅为 NSG 流日志架构版本 2 填充此字段 |
 | CompletedFlows_d  |  | 仅为 NSG 流日志架构版本 2 在此字段中填充非零值 |
-| PublicIPs_s | <公共 IP>\|\<启动的流计数>\|\<结束的流计数>\|\<出站数据包数>\|\<入站数据包数>\|\<出站字节数>\|\<入站字节数> | 条形分隔的条目 |
-| SrcPublicIPs_s | <源公共 IP>\|\<启动的流计数>\|\<结束的流计数>\|\<出站数据包数>\|\<入站数据包数>\|\<出站字节数>\|\<入站字节数> | 条形分隔的条目 |
-| DestPublicIPs_s | <目标公共 IP>\|\<启动的流计数>\|\<结束的流计数>\|\<出站数据包数>\|\<入站数据包数>\|\<出站字节数>\|\<入站字节数> | 条形分隔的条目 |
+| PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 条形分隔的条目 |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 条形分隔的条目 |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 条形分隔的条目 |
 
 ### <a name="notes"></a>注释
 

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74888489"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>连接到媒体服务 v3 API - Java
@@ -81,7 +80,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 
 ## <a name="connect-to-the-java-client"></a>连接到 Java 客户端
 
-1. 打开 `App.java` 下的 `src\main\java\com\azure\ams` 文件，确保包包括在顶部：
+1. 打开 `src\main\java\com\azure\ams` 下的 `App.java` 文件，确保包包括在顶部：
 
     ```java
     package com.azure.ams;

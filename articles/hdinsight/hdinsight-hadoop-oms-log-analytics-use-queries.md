@@ -9,13 +9,12 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: 65e85548420116bdfcab87fe9f81a20e66226beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74803767"
 ---
-# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查询 Azure Monitor 日志以监视 HDInsight 群集
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a> Azure Monitor 日志以监视 HDInsight 群集
 
 了解有关如何使用 Azure Monitor 日志来监视 Azure HDInsight 群集的一些基本方案：
 
@@ -127,7 +126,7 @@ search in (metrics_resourcemanager_queue_root_default_CL) *
 
 有关详细信息，请参阅[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/platform/alerts-metric.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
 * [在 Azure Monitor 中使用视图设计器创建自定义视图](../azure-monitor/platform/view-designer.md)

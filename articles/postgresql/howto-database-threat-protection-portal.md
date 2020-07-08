@@ -7,10 +7,9 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74776137"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 单服务器的高级威胁防护
@@ -27,7 +26,7 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 > Azure 中的所有区域均提供此功能，其中 Azure Database for PostgreSQL 部署用于常规用途和内存优化服务器。
 
 ## <a name="set-up-threat-detection"></a>设置威胁检测
-1. 启动 Azure 门户[https://portal.azure.com](https://portal.azure.com)。
+1. 启动 Azure 门户 [https://portal.azure.com](https://portal.azure.com) 。
 2. 导航到要保护的 Azure Database for PostgreSQL 服务器的配置页。 在安全设置中，选择“高级威胁防护(预览版)”****。
 3. 在“高级威胁防护(预览版)”配置页上****：
 
@@ -62,5 +61,5 @@ Azure Database for PostgreSQL 的高级威胁防护可检测异常活动，指�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
+* 了解有关 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)的详细信息
 * 有关定价的详细信息，请参阅 [Azure Database for PostgreSQL 定价页](https://azure.microsoft.com/pricing/details/postgresql/)  

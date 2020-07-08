@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74792393"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中创建用于在格式之间转换 XML 的映射
@@ -39,7 +38,7 @@ ms.locfileid: "74792393"
 1. 创建一个逻辑应用并[将其链接到包含映射的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。
 2. 将“请求”  触发器添加到逻辑应用  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. 通过首先选择“添加操作”  来添加“转换 XML”  操作   
+3. 通过首先选择“添加操作”来添加“转换 XML”操作   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. 在搜索框中输入“转换”  一词，以便在所有操作中筛选出要使用的操作  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
@@ -111,7 +110,7 @@ ms.locfileid: "74792393"
 
 
 ### <a name="byte-order-mark"></a>字节顺序标记
-默认情况下，转换的响应会以字节顺序标记 (BOM) 开头。 仅在“代码视图”编辑器中工作时，才可访问此功能。 若要禁用此功能，请为 `disableByteOrderMark` 属性指定 `transformOptions`：
+默认情况下，转换的响应会以字节顺序标记 (BOM) 开头。 仅在“代码视图”编辑器中工作时，才可访问此功能。 若要禁用此功能，请为 `transformOptions` 属性指定 `disableByteOrderMark`：
 
 ```json
 "Transform_XML": {

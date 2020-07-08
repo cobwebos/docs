@@ -13,10 +13,9 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "74232108"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>规划 Azure Active Directory 报告和监视部署
@@ -73,11 +72,11 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 ### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
 
-当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任，充分了解项目中的利益干系人角色。
+如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 还要确保通过记录利益干系人及其项目输入和责任，充分了解项目中的利益干系人角色。
 
-### <a name="plan-communications"></a>计划通信
+### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
+沟通对于任何新服务的成功都至关重要。 主动与用户交流他们的体验将如何变化、何时会变化以及在遇到问题时如何获取支持。
 
 ### <a name="document-your-current-infrastructure-and-policies"></a>记录你当前的基础结构和策略
 
@@ -127,7 +126,7 @@ Azure AD 报表提供环境中 Azure AD 活动的综合视图和日志，包括�
 
 你还可以为 Azure AD 活动日志安装预生成的视图，以监视涉及登录和审核事件的常见方案。
 
-了解如何[为 Azure AD 活动日志安装和使用 log analytics 视图](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)。
+了解如何[安装和使用用于 Azure AD 活动日志的 Log Analytics 视图](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views)。
 
 #### <a name="stream-logs-to-your-azure-event-hub"></a>将日志流式传输到 Azure 事件中心
 
@@ -149,7 +148,7 @@ Azure AD 角色使你能够根据你的角色委托配置和查看 Azure AD 报�
 
 * 安全读取者
 
-* 报表读者
+* 报表读取者
 
 详细了解[Azure AD 管理角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)。
 
