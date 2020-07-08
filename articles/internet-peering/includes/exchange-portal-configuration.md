@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 268703081a2a40e8bcc665889eaeaf8edd673bfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81680963"
 ---
 1. 在 "**创建对等互连**" 页上的 "**配置**" 选项卡上，填写所示的框。
@@ -35,7 +35,7 @@ ms.locfileid: "81680963"
         > [!div class="mx-imgBorder"]
         > ![编辑按钮](../media/setup-exchange-conf-tab-edit.png)
 
-    * 若要删除行，请选择 **...** > **删除**。
+    * 若要删除行，请选择 **...**  > **删除**。
 
         > [!div class="mx-imgBorder"]
         > ![“删除”按钮](../media/setup-exchange-conf-tab-delete.png)
@@ -67,7 +67,7 @@ ms.locfileid: "81680963"
     > [!div class="mx-imgBorder"]
     > ![对等互连](../media/setup-exchange-review-tab-submit.png)
 
-1. 提交请求后，等待部署完成。 如果部署失败，请联系[Microsoft 对等互连](mailto:peering@microsoft.com)。 此时会显示成功的部署，如下所示。
+1. 提交请求后，等待部署完成。 如果部署失败，请联系 [Microsoft 对等互连](mailto:peering@microsoft.com)。 此时会显示成功的部署，如下所示。
 
     > [!div class="mx-imgBorder"]
     > ![对等互连成功](../media/setup-direct-success.png)

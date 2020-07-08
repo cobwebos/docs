@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81678819"
 ---
 1. 在 "**创建对等互连**" 页上的 "**配置**" 选项卡上，填写框，如下所示。
@@ -37,7 +37,7 @@ ms.locfileid: "81678819"
     > 如果要在所选**地铁**位置添加与 Microsoft 的其他对等互连连接，请选择 "**新建**"。 有关详细信息，请参阅[使用门户创建或修改直接对等互连](../howto-direct-portal.md)。
     >
 
-1. 选择“查看 + 创建”  。 请注意，门户会对所输入的信息运行基本验证。 顶部的功能区显示*运行最终验证*的消息 ...。
+1. 选择“查看 + 创建”。 请注意，门户会对所输入的信息运行基本验证。 顶部的功能区显示*运行最终验证*的消息 ...。
 
     > [!div class="mx-imgBorder"]
     > ![对等验证选项卡](../media/setup-direct-review-tab-validation.png)
@@ -47,7 +47,7 @@ ms.locfileid: "81678819"
     > [!div class="mx-imgBorder"]
     > ![对等互连](../media/setup-direct-review-tab-submit.png)
 
-1. 提交请求后，等待部署完成。 如果部署失败，请联系[Microsoft 对等互连](mailto:peering@microsoft.com)。 此时会显示成功的部署，如下所示。
+1. 提交请求后，等待部署完成。 如果部署失败，请联系 [Microsoft 对等互连](mailto:peering@microsoft.com)。 此时会显示成功的部署，如下所示。
 
     > [!div class="mx-imgBorder"]
     > ![对等互连成功](../media/setup-direct-success.png)

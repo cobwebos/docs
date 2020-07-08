@@ -9,10 +9,10 @@ ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792967"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2为标识分配访问权限
@@ -39,7 +39,7 @@ ms.locfileid: "82792967"
 若要将 RBAC 角色分配到 Azure AD 标识，请使用[Azure 门户](https://portal.azure.com)，请执行以下步骤：
 
 1. 在 Azure 门户中，请切换到文件共享，或[创建文件共享](../articles/storage/files/storage-how-to-create-file-share.md)。
-2. 选择 "**访问控制（IAM）**"。
+2. 选择“访问控制 (IAM)”。
 3. 选择 "**添加角色分配**"
 4. 在 "**添加角色分配**" 边栏选项卡中，从 "**角色**" 列表中选择适当的内置角色（存储文件数据 smb 共享读取器、存储文件数据 smb 共享参与者）。 将 "**分配访问权限**" 设置为默认设置： **Azure AD 用户、组或服务主体**。 按名称或电子邮件地址选择目标 Azure AD 标识。
 5. 选择 "**保存**" 以完成角色分配操作。
@@ -106,9 +106,9 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 3. 选择 "**编辑"。** 更改权限。
 4. 您可以更改现有用户的权限，也可以选择 "**添加 ...** " 向新用户授予权限。
 5. 在添加新用户的提示窗口中，在 "**输入要选择的对象名称**" 框中输入要向其授予权限的目标用户名，然后选择 "**检查名称**" 以查找目标用户的完整 UPN 名称。
-7.    选择“确定”  。
+7.    选择“确定”。
 8.    在 "**安全**" 选项卡中，选择要授予新用户的所有权限。
-9.    选择“应用”。 
+9.    选择“应用”。
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>使用 icacls 配置 NTFS 权限
 使用以下 Windows 命令为文件共享（包括根目录）下的所有目录和文件授予完全权限。 请务必将示例中的占位符值替换为你自己的值。

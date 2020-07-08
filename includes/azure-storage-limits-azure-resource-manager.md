@@ -9,10 +9,10 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 32f972b177e004612856db91e790c5c2781a2b44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81536416"
 ---
 仅当使用 Azure 资源管理器对 Azure 存储执行管理操作时，以下限制才适用。
@@ -20,5 +20,5 @@ ms.locfileid: "81536416"
 | 资源 | 限制 |
 | --- | --- |
 | 存储帐户管理操作数（读取） |每 5 分钟 800 次 |
-| 存储帐户管理操作数（写入） |每小时 10/1200/ |
+| 存储帐户管理操作数（写入） |每秒 10 次/每小时 1200 次 |
 | 存储帐户管理操作数（列出） |每 5 分钟 100 次 |

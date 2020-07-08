@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
 ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79504321"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>启用单一登录的步骤
@@ -37,13 +37,13 @@ ms.locfileid: "79504321"
 1. 调用 `Enable-AzureADSSOForest`。 出现提示时，输入目标 Active Directory 林的域管理员凭据。
 
    > [!NOTE]
-   >必须以 SAM 帐户名称格式（contoso\johndoe 或 com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分通过 DNS 查找域管理员的域控制器。
+   >必须以 SAM 帐户名称格式（contoso\johndoe 或 contoso.com\johndoe）输入域管理员凭据用户名。 我们使用用户名的域部分查找使用 DNS 的域管理员的域控制器。
 
    >[!NOTE]
-   >使用的域管理员帐户不得是受保护用户组的成员。 如果是这样，则操作将失败。
+   >使用的域管理员帐户不得是受保护用户组的成员。 如果是，则操作将失败。
 
 2. 为你要在其中设置该功能的每个 Active Directory 林重复上述步骤。
 
-### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5。 在租户上启用此功能
+### <a name="step-5-enable-the-feature-on-your-tenant"></a>步骤 5. 在租户上启用此功能
 
 若要在租户上启用此功能，请调用 `Enable-AzureADSSO -Enable $true`。

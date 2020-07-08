@@ -9,10 +9,10 @@ ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82096073"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>网络限制 - Azure 资源管理器
@@ -52,9 +52,9 @@ ms.locfileid: "82096073"
 #### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>公共 IP 地址限制
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
-| 静态公共 IP 地址<sup>1</sup> | 基本版为 10。 | 请联系支持人员。 |
-| 标准公共 IP 地址<sup>1</sup> | 10 个 | 请联系支持人员。 |
+| 公共 IP 地址<sup>1</sup> | 基本版为 10。 | 联系支持人员。 |
+| 静态公共 IP 地址<sup>1</sup> | 基本版为 10。 | 联系支持人员。 |
+| 标准公共 IP 地址<sup>1</sup> | 10 | 联系支持人员。 |
 | 公共 IP 前缀 | 受订阅中的标准公共 IP 数限制 | 请联系支持人员。 |
 | 公共 IP 前缀长度 | /28 | 请联系支持人员。 |
 
@@ -96,7 +96,7 @@ ms.locfileid: "82096073"
 | --- | --- | --- |
 | 虚拟网络 |100 |100 |
 | 本地网络站点 |20 个 |50 |
-| 每个虚拟网络的 DNS 服务器数 |20 个 |20 个 |
+| 每个虚拟网络的 DNS 服务器数 |20 |20 |
 | 每个虚拟网络的专用 IP 地址数 |4,096 |4,096 |
 | 虚拟机或角色实例的单 NIC 并发 TCP 或 UDP 流数 |如果 NIC 至少有两个，则为 500,000（至多 1,000,000）。 |如果 NIC 至少有两个，则为 500,000（至多 1,000,000）。 |
 | 网络安全组 (NSG) |200 |200 |

@@ -10,17 +10,17 @@ ms.date: 08/16/2019
 ms.author: dsindona
 ms.custom: include file
 ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82131106"
 ---
 将产品/服务发布到 marketplace 后，需将产品/服务连接到 CRM 系统。 通过这种方式，你可以在客户提出兴趣或部署产品后立即收到客户联系信息。
 
 1. 选择希望我们向其发送潜在客户的潜在客户目标。 支持以下 CRM 系统：
 
-    * 适用于客户参与的[Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md)
+    * [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
     * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 

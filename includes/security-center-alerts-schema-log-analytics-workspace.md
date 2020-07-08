@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 7d81799f7fbdb2b41db421daa1a85ec8cde511eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79538826"
 ---
 ### <a name="the-data-model-of-the-schema"></a>架构的数据模型
@@ -43,7 +43,7 @@ ms.locfileid: "79538826"
 |**SystemAlertId**|此安全警报实例的唯一标识符|
 |**TenantId**|扫描的资源所在的订阅的父 Azure Active directory 租户的标识符|
 |**TimeGenerated**|发生评估的 UTC 时间戳（安全中心扫描时间）（等同于 DiscoveredTimeUTC）|
-|**类型**|常量（"SecurityAlert"）|
+|**Type**|常量（"SecurityAlert"）|
 |**VendorName**|提供警报的供应商的名称（例如 "Microsoft"）|
 |**VendorOriginalId**|unused|
 |**WorkspaceResourceGroup**|如果在向工作区报告的 VM、服务器、虚拟机规模集或应用服务实例上生成警报，则包含该工作区资源组名称|

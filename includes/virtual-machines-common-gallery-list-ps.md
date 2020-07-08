@@ -9,10 +9,10 @@ ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: fc60d1266f4aad4c337611f0fa32fe8293744559
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82792269"
 ---
 ## <a name="list-information"></a>列出信息
@@ -38,7 +38,7 @@ $imageVersions = Get-AzResource -ResourceType Microsoft.Compute/galleries/images
 $imageVersions.Name
 ```
 
-删除映像版本。 此示例将删除名为“1.0.0”的映像版本**。
+删除映像版本。 此示例将删除名为“1.0.0”的映像版本。
 
 ```azurepowershell-interactive
 Remove-AzGalleryImageVersion `
