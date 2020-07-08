@@ -4,21 +4,20 @@ description: 使用 PowerShell 查看在 Azure 中运行的虚拟机的维护通
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 79ef649502af8962253121ea18804966b1fa043e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77916076"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677927"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 
 **本文适用于同时运行 Linux 和 Windows 的虚拟机。**
 
-你可以使用 Azure PowerShell 来查看何时计划[维护](maintenance-notifications.md)vm。 使用 [ 参数时可通过 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` cmdlet 获得计划内维护信息。
+可以使用 Azure PowerShell 查看何时安排 VM 进行[维护](maintenance-notifications.md)。 使用 `-status` 参数时可通过 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) cmdlet 获得计划内维护信息。
   
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
@@ -29,7 +28,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 
 在 MaintenanceRedeployStatus 下返回以下属性： 
 
-| 值 | 说明   |
+| Value | 说明   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | 指示此时是否可以在 VM 上启动维护 |
 | PreMaintenanceWindowStartTime         | 可以在 VM 上启动维护的自助式维护时段的起点 |

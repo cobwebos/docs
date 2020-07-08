@@ -13,12 +13,11 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7ea74c85af062ce00dbccf8a486ce39cbd524bb0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648535"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515066"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒体服务 v3 API 进行开发
 
@@ -41,7 +40,7 @@ ms.locfileid: "83648535"
 
 如果你要创建 Azure AD 应用和服务主体，必须使应用位于其自己的租户中。 创建应用后，向应用授予对媒体服务帐户的“参与者”或“所有者”角色访问权限 。
 
-如果不确定自己是否有权创建 Azure AD 应用，请查看[需要的权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+如果不确定自己是否有权创建 Azure AD 应用，请查看[需要的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 在下图中，数字表示按时间顺序的请求流：
 

@@ -6,12 +6,11 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 83b223ab2195516492d55ac85be6e7db0dffbd98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 57850b45820ec259337a8ad5b67bfebfd6762c24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176781"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790579"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -49,7 +48,7 @@ ms.locfileid: "82176781"
     * **发送到 Log Analytics**
 
 1. 选择要监视的日志类别和指标类别，然后指定保留时间（以天为单位）。 保留时间仅适用于存储帐户。
-1. 选择“保存”。 
+1. 选择“保存”。
 
 > [!NOTE]
 > 1. 发出日志或指标后，或在存储帐户、事件中心或 Log Analytics 中出现日志或指标时，可能会出现长达15分钟的间隔。
@@ -105,7 +104,7 @@ ms.locfileid: "82176781"
     | limit 50
     ```
 > [!NOTE]
-> `==`区分大小写，但`=~`不区分大小写。
+> `==`区分大小写，但不区分大小写 `=~` 。
 
 若要详细了解 Log Analytics 中使用的查询语言，请参阅[Azure Monitor 日志查询](../azure-monitor/log-query/query-language.md)。
 
@@ -174,3 +173,31 @@ AppPlatformLogsforSpring
 ### <a name="learn-more-about-querying-application-logs"></a>了解有关查询应用程序日志的详细信息
 
 Azure Monitor 通过使用 Log Analytics 为查询应用程序日志提供广泛支持。 若要了解有关此服务的详细信息，请参阅[Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)。 有关生成查询以分析应用程序日志的详细信息，请参阅[Azure Monitor 中的日志查询概述](../azure-monitor/log-query/log-query-overview.md)。
+
+## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
+
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>如何将多行 Java stack 跟踪转换为一行？
+
+有一种解决方法是将多行堆栈跟踪转换为一行。 您可以修改 Java 日志输出，以重新设置堆栈跟踪消息的格式，并将换行符替换为标记。 如果使用 Java Logback 库，可以通过添加来重新设置堆栈跟踪消息的格式，如下所示 `%replace(%ex){'[\r\n]+', '\\n'}%nopex` ：
+
+```xml
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                level: %level, message: "%logger{36}: %msg", exceptions: "%replace(%ex){'[\r\n]+', '\\n'}%nopex"%n
+            </pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+```
+然后，你可以在 Log Analytics 中再次将该标记替换为换行符，如下所示：
+
+```sql
+AppPlatformLogsforSpring
+| extend Log = array_strcat(split(Log, '\\n'), '\n')
+```
+您可以对其他 Java 日志库使用相同的策略。

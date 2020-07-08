@@ -1,5 +1,5 @@
 ---
-title: Azure 数据工厂的 Azure PowerShell 示例
+title: 适用于 Azure 数据工厂的 Azure PowerShell 示例
 description: Azure PowerShell 示例 - 这些脚本可帮助你创建和管理数据工厂。
 services: data-factory
 ms.service: data-factory
@@ -10,12 +10,11 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 705b2464285b747ea7999b112733b7e99f761f22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c640adb0758c8dfd9dcdae3e26fd023afd5499f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419079"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252264"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>适用于 Azure 数据工厂的 Azure PowerShell 示例
 
@@ -27,8 +26,8 @@ ms.locfileid: "81419079"
 |---|---|
 |**复制数据**||
 |[将 blob 从 Azure Blob 存储中的一个文件夹复制到另一个文件夹](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将 blob 从 Azure Blob 存储中的一个文件夹复制到同一 Blob 存储中的另一个文件夹。 |
-|[将数据从本地 SQL Server 复制到 Azure Blob 存储](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本可从本地 SQL Server 数据库将数据复制到 Azure Blob 存储。 |
-|[大容量复制](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 示例脚本将数据从 Azure SQL 数据库中的多个表复制到 Azure SQL 数据仓库。 |
+|[将数据从 SQL Server 复制到 Azure Blob 存储](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本将数据从 SQL Server 数据库复制到 Azure Blob 存储。 |
+|[大容量复制](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此示例 PowerShell 脚本将数据从 Azure SQL 数据库中的数据库的多个表复制到 Azure SQL 数据仓库。 |
 |[增量复制](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 将源中的数据初始完全复制到接收器后，此示例 PowerShell 脚本仅从源数据存储将新的或已更新记录加载到接收器数据存储。 |
 |**转换数据**||
 |[使用 Spark 群集转换数据](scripts/transform-data-spark-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 此 PowerShell 脚本通过在 Spark 群集上运行程序来转换数据。 |

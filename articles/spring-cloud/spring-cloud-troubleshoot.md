@@ -6,12 +6,11 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76277583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791650"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>排查常见的 Azure 春季云问题
 
@@ -35,7 +34,7 @@ ms.locfileid: "76277583"
 
 > "SQLException：服务器时区值" 协调世界时 "无法识别或表示多个时区。"
 
-若要修复此错误，请转`server parameters`到 MySQL 实例的，并将值`time_zone`从 "*系统*" 更改为 *+ 0:00*。
+若要修复此错误，请转到 `server parameters` MySQL 实例的，并将 `time_zone` 值从 "*系统*" 更改为 *+ 0:00*。
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>我的应用程序崩溃或引发意外错误
@@ -49,7 +48,7 @@ ms.locfileid: "76277583"
 
   - `TomcatErrorCount`（_tomcat. 错误_）：在此处计算所有弹簧应用程序异常。 如果此数字很大，请转到“Azure Log Analytics”检查应用程序日志。
 
-  - `AppMemoryMax`（_jvm_）：可用于应用程序的最大内存量。 数量可能未定义，或者如果定义，则可能会随时间更改。 如果已定义，则所用和已提交的内存量始终小于或等于最大值。但是，如果分配尝试增加已使用的`OutOfMemoryError`内存（即使 *<使用*的内存已 *> 提交*），则内存分配可能会失败并返回一条消息。 在这种情况下，请尝试使用`-Xmx`参数增加最大堆大小。
+  - `AppMemoryMax`（_jvm_）：可用于应用程序的最大内存量。 数量可能未定义，或者如果定义，则可能会随时间更改。 如果已定义，则所用和已提交的内存量始终小于或等于最大值。但是， `OutOfMemoryError` 如果分配尝试增加已使用的内存（即使 *<使用*的内存已 *> 提交*），则内存分配可能会失败并返回一条消息。 在这种情况下，请尝试使用参数增加最大堆大小 `-Xmx` 。
 
   - `AppMemoryUsed`（_jvm_）：应用程序当前使用的内存量（以字节为单位）。 对于普通的 load Java 应用程序，此指标系列形成了一种*呈现锯齿*模式，其中内存使用持续增加并减小，并突然降低，然后模式重复出现。 之所以发生此指标系列，是因为在 Java 虚拟机内进行了垃圾回收，其中集合操作代表呈现锯齿模式下的删除。
     
@@ -111,7 +110,7 @@ ms.locfileid: "76277583"
 
 如果要使用资源管理器模板设置 Azure 春季云服务实例，请首先参阅[了解 Azure 资源管理器模板的结构和语法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)。
 
-Azure 春季云服务实例的名称将用于请求下`azureapps.io`的子域名称，因此，如果该名称与现有名称冲突，则安装将失败。 你可能会在活动日志中找到更多详细信息。
+Azure 春季云服务实例的名称将用于请求下的子域名称 `azureapps.io` ，因此，如果该名称与现有名称冲突，则安装将失败。 你可能会在活动日志中找到更多详细信息。
 
 ### <a name="i-cant-deploy-a-jar-package"></a>无法部署 JAR 包
 
@@ -160,7 +159,7 @@ Azure 春季云服务实例的名称将用于请求下`azureapps.io`的子域名
 
 1. 转到  `https://<your application test endpoint>/actuator/health` 。  
     - 类似于 `{"status":"UP"}` 的响应表明终结点已启用。
-    - 如果响应为负数，请在*POM*文件中包含以下依赖项：
+    - 如果响应为负数，请在*POM.xml*文件中包含以下依赖项：
 
         ```xml
             <dependency>
@@ -169,11 +168,11 @@ Azure 春季云服务实例的名称将用于请求下`azureapps.io`的子域名
             </dependency>
         ```
 
-1. 启用春季 Boot 传动终结点后，请跳到 Azure 门户，并查找应用程序的配置页。  添加一个具有名称`MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`和值`*`的环境变量。 
+1. 启用春季 Boot 传动终结点后，请跳到 Azure 门户，并查找应用程序的配置页。  添加一个具有名称和值的环境变量 `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` `*` 。 
 
 1. 重启应用程序。
 
-1. 请参阅`https://<your application test endpoint>/actuator/env`并检查响应。  它看起来应该如下所示：
+1. 请参阅 `https://<your application test endpoint>/actuator/env` 并检查响应。  应如下所示：
 
     ```json
     {
@@ -189,16 +188,18 @@ Azure 春季云服务实例的名称将用于请求下`azureapps.io`的子域名
     }
     ```
 
-查找名为`systemEnvironment`的子节点。  此节点包含应用程序的环境变量。
+查找名为的子节点 `systemEnvironment` 。  此节点包含应用程序的环境变量。
 
 > [!IMPORTANT]
-> 在使应用程序可以公共访问之前，请记得反转公开环境变量的操作。  请参阅 Azure 门户，查找应用程序的 "配置" 页，并删除此环境变量： `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`。
+> 在使应用程序可以公共访问之前，请记得反转公开环境变量的操作。  请参阅 Azure 门户，查找应用程序的 "配置" 页，并删除此环境变量： `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE` 。
 
 ### <a name="i-cant-find-metrics-or-logs-for-my-application"></a>找不到应用程序的指标或日志
 
 请中转到 "**应用管理** _"，以_确保应用程序状态为 "_正在运行_" 和 "运行"。
 
-如果你可以看到来自_JVM_的指标，但你可以看到来自_Tomcat_的指标， `spring-boot-actuator`请检查你的应用程序包中是否启用了依赖关系，以及它是否已成功启动。
+检查以查看应用程序包中是否启用了天气_JMX_ 。 此功能可以通过配置属性启用 `spring.jmx.enabled=true` 。  
+
+检查是否 `spring-boot-actuator` 在应用程序包中启用了依赖关系，并检查是否成功启动。
 
 ```xml
 <dependency>

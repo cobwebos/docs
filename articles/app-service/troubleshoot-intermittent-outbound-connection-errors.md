@@ -7,12 +7,11 @@ ms.topic: troubleshooting
 ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80367546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252434"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -111,7 +110,7 @@ HTTP 连接池
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>使用 keepalive 重置出站空闲超时
 
-* 若要实现 node.js 应用的 keepalive，请查看[节点应用程序是否发出过多出站呼叫](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
+* 若要为 Node.js 应用实现 keepalive，请查看[节点应用程序是否发出过多出站呼叫](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
 
 ### <a name="additional-guidance-specific-to-app-service"></a>特定于应用服务的其他指导：
 
@@ -122,7 +121,7 @@ HTTP 连接池
 
 避免出站 TCP 限制更易于解决，因为限制是由辅助角色的大小设置的。 可以查看[沙盒跨 VM 数字限制-TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)的限制
 
-|限制名称|说明|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
 |---|---|---|---|---|---|
 |连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
 
@@ -154,13 +153,13 @@ TCP 连接和 SNAT 端口不是直接相关的。 TCP 连接使用检测程序�
 * TCP 连接限制发生在辅助实例级别。 对于 SNAT 端口限制，Azure 网络出站负载平衡不使用 TCP 连接指标。
 * [沙盒跨 VM 数字限制-Tcp 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中描述了 tcp 连接限制
 
-|限制名称|说明|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
 |---|---|---|---|---|---|
 |连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
 
 ### <a name="webjobs-and-database-connections"></a>Web 作业和数据库连接
  
-如果 SNAT 端口耗尽，在这种情况下，Web 作业无法连接到 Azure SQL 数据库，则没有任何指标显示每个单独的 web 应用程序进程打开的连接数。 若要查找有问题的 WebJob，请将多个 Web 作业移出到另一个应用服务计划，以查看该情况是否提高，或者是否在某个计划中仍有问题。 重复此过程，直到找到有问题的 Web 作业。
+如果 SNAT 端口耗尽，在这种情况下，Web 作业无法连接到 SQL 数据库，则没有用于显示每个单独的 web 应用程序进程打开的连接数的指标。 若要查找有问题的 WebJob，请将多个 Web 作业移出到另一个应用服务计划，以查看该情况是否提高，或者是否在某个计划中仍有问题。 重复此过程，直到找到有问题的 Web 作业。
 
 ### <a name="using-snat-ports-sooner"></a>更快地使用 SNAT 端口
 

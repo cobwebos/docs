@@ -5,17 +5,16 @@ description: 了解如何使用 Azure 机器学习大规模运行 TensorFlow 训
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 679e44a8949f283c0e01c47ca3e602ae6fc0eacf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78228306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433800"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -311,7 +310,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
-除了传统的部署路由，还可以使用 Tensorflow 的非代码部署功能（预览版）。 通过如上所示使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型，可以简单地使用 `deploy()` 静态函数来部署模型。
+除了传统的部署路线之外，还可以为 Tensorflow 使用无代码部署功能（预览版）。 通过如上所示使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型，可以简单地使用 `deploy()` 静态函数来部署模型。
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])

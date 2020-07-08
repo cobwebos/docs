@@ -3,12 +3,11 @@ title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458260"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677859"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -92,7 +91,7 @@ Set-AzKeyVaultAccessPolicy `
 若要详细了解如何创建密钥保管库和添加机密，请参阅：
 
 - [使用 CLI 设置和检索机密](../../key-vault/secrets/quick-create-cli.md)
-- [使用 Powershell 设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)
+- [使用 PowerShell 设置和检索机密](../../key-vault/secrets/quick-create-powershell.md)
 - [使用门户设置和检索机密](../../key-vault/secrets/quick-create-portal.md)
 - [使用 .NET 设置和检索机密](../../key-vault/secrets/quick-create-net.md)
 - [使用 Node.js 设置和检索机密](../../key-vault/secrets/quick-create-node.md)
@@ -149,7 +148,7 @@ Set-AzKeyVaultAccessPolicy `
 
     此示例在资源组级别为用户分配自定义角色。
 
-使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序  服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
+使用 Key Vault 部署[托管应用程序](../managed-applications/overview.md)的模板时，必须授予对设备资源提供程序**** 服务主体的访问权限。 有关详细信息，请参阅[部署 Azure 托管应用程序时访问 Key Vault 机密](../managed-applications/key-vault-access.md)。
 
 ## <a name="reference-secrets-with-static-id"></a>通过静态 ID 引用机密
 
@@ -163,7 +162,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminLogin": {
@@ -201,7 +200,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "adminLogin": {
@@ -267,7 +266,7 @@ New-AzResourceGroupDeployment `
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "location": {
@@ -314,7 +313,7 @@ New-AzResourceGroupDeployment `
           "scope": "inner"
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {

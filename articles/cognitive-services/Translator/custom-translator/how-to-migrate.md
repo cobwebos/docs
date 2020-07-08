@@ -9,12 +9,11 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: face605d756d2107c04b3df0c072602ac91d147d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 02e6d776dbb47ee8e30409f6b8adc5a61fc5fe52
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992889"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958916"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>将 Hub 工作区和项目迁移到自定义翻译
 
@@ -141,7 +140,7 @@ Microsoft Translator Hub 允许有选择性地迁移项目。
 
 ## <a name="new-languages"></a>新语言
 
-如果你是致力于创建 Microsoft Translator 的新语言系统的社区或组织，请访问以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 获取详细信息。
+如果你是致力于创建新的翻译语言系统的社区或组织，请访问以 [custommt@microsoft.com](mailto:custommt@microsoft.com) 获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

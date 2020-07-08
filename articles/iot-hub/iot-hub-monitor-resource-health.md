@@ -1,20 +1,18 @@
 ---
 title: 监视 Azure IoT 中心的运行状况 | Microsoft Docs
 description: 使用 Azure Monitor 和 Azure 资源运行状况监视 IoT 中心并快速诊断问题
-author: kgremban
-manager: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: kgremban
+ms.date: 04/21/2020
+ms.author: robinsh
 ms.custom: amqp
-ms.openlocfilehash: a1d74085090a3e20764d7b6fee84ffca52d5cb74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d00e3dc5e43eb6978f6835ac4b7d101e4a42a226
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732428"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84792009"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
 
@@ -32,8 +30,6 @@ IoT 中心还提供了其自己的指标，可使用这些指标了解 IoT 资�
 ## <a name="use-azure-monitor"></a>使用 Azure Monitor
 
 Azure Monitor 提供 Azure 资源的诊断信息，这意味着，你可以监视在 IoT 中心内部发生的操作。
-
-Azure Monitor 的诊断设置会取代 IoT 中心操作监视功能。 如果当前正在使用操作监视，应迁移工作流。 有关详细信息，请参阅[从操作监视迁移到诊断设置](iot-hub-migrate-to-diagnostics-settings.md)。
 
 若要详细了解 Azure Monitor 监视的具体指标和事件，请参阅 [Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)和 [Azure 诊断日志支持的服务、架构和类别](../azure-monitor/platform/diagnostic-logs-schema.md)。
 
@@ -121,11 +117,11 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="routes"></a>路由
 
-消息路由类别跟踪消息路由评估期间发生的错误以及 IoT 中心感知到的终结点运行状况。 此类别包括诸如下列项的事件：
+[消息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)类别跟踪消息路由评估期间发生的错误以及 IoT 中心感知到的终结点运行状况。 此类别包括诸如下列项的事件：
 
 * 规则评估结果为“未定义”，
 * IoT 中心将某个终结点标记为死终结点，或者
-* 从终结点收到的任何错误。 
+* 从终结点收到的任何错误。
 
 此类别不包含有关消息本身的特定错误（例如设备限制错误），这些错误在“设备遥测”类别下报告。
 
@@ -134,21 +130,28 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
     "records":
     [
         {
-            "time": "UTC timestamp",
-            "resourceId": "Resource Id",
-            "operationName": "endpointUnhealthy",
-            "category": "Routes",
-            "level": "Error",
-            "properties": "{\"deviceId\": \"<deviceId>\",\"endpointName\":\"<endpointName>\",\"messageId\":<messageId>,\"details\":\"<errorDetails>\",\"routeName\": \"<routeName>\"}",
-            "location": "Resource location"
+            "time":"2019-12-12T03:25:14Z",
+            "resourceId":"/SUBSCRIPTIONS/91R34780-3DEC-123A-BE2A-213B5500DFF0/RESOURCEGROUPS/ANON-TEST/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/ANONHUB1",
+            "operationName":"endpointUnhealthy",
+            "category":"Routes",
+            "level":"Error",
+            "resultType":"403004",
+            "resultDescription":"DeviceMaximumQueueDepthExceeded",
+            "properties":"{\"deviceId\":null,\"endpointName\":\"anon-sb-1\",\"messageId\":null,\"details\":\"DeviceMaximumQueueDepthExceeded\",\"routeName\":null,\"statusCode\":\"403\"}",
+            "location":"westus"
         }
     ]
 }
 ```
 
+下面是有关路由诊断日志的详细信息：
+
+* [路由诊断日志错误代码列表](troubleshoot-message-routing.md#diagnostics-error-codes)
+* [路由诊断日志 operationNames 的列表](troubleshoot-message-routing.md#diagnostics-operation-names)
+
 #### <a name="device-telemetry"></a>设备遥测
 
-设备遥测类别跟踪在 IoT 中心发生的、与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
+设备遥测类别跟踪在 IoT 中心发生且与遥测管道相关的错误。 此类别包括发送遥测事件（例如限制）和接收遥测事件（例如未经授权的读取者）时发生的错误。 此类别无法捕捉设备本身运行的代码所造成的错误。
 
 ```json
 {
@@ -171,11 +174,11 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 #### <a name="file-upload-operations"></a>文件上传操作
 
-文件上传类别跟踪在 IoT 中心发生的、与文件上传功能相关的错误。 此类别包括：
+文件上传类别跟踪在 IoT 中心发生且与文件上传功能相关的错误。 此类别包括：
 
-* SAS URI 发生的错误，例如，它在设备向中心通知某个完成的上传前失效。
+* SAS URI 发生的错误，例如它在设备就上传完毕通知中心之前到期。
 
-* 由设备报告的失败上传。
+* 设备报告的失败上传。
 
 * 创建 IoT 中心通知消息期间在存储中找不到文件时发生的错误。
 
@@ -315,7 +318,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 分布式跟踪类别跟踪执行跟踪上下文标头的消息的相关 ID。 若要完全启用这些日志，必须通过以下方法来更新客户端代码：[使用 Iot 中心分布式跟踪（预览版）分析和诊断 iot 应用程序端到端](iot-hub-distributed-tracing.md)。
 
-请注意`correlationId` ，符合[W3C 跟踪上下文](https://github.com/w3c/trace-context)提议，其中包含`trace-id`和。 `span-id`
+请注意， `correlationId` 符合[W3C 跟踪上下文](https://github.com/w3c/trace-context)提议，其中包含 `trace-id` 和 `span-id` 。
 
 ##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT 中心 D2C（设备到云）日志
 
@@ -344,7 +347,7 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 
 此时不会计算 `durationMs`，因为 IoT 中心的时钟可能不会与设备时钟同步，所以持续时间计算可能产生误导。 我们建议使用 `properties` 部分中的时间戳编写逻辑，以捕获设备到云延迟的峰值。
 
-| 属性 | 类型 | 说明 |
+| Property | 类型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Integer | 以字节为单位的设备到云消息的大小 |
 | **deviceId** | ASCII 7 位字母数字字符字符串 | 设备的标识 |
@@ -376,12 +379,12 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 }
 ```
 
-在`properties`部分中，此日志包含有关消息入口的其他信息。
+在 `properties` 部分中，此日志包含有关消息入口的其他信息。
 
-| 属性 | 类型 | 说明 |
+| Property | 类型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | 字符串 | True 或 false，指示 IoT 中心是否启用了消息路由 |
-| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
+| **isRoutingEnabled** | String | True 或 false，指示 IoT 中心是否启用了消息路由 |
+| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 D2C 消息跟踪 |
 
 ##### <a name="iot-hub-egress-logs"></a>IoT 中心流出日志
 
@@ -408,13 +411,13 @@ Azure Monitor 跟踪 IoT 中心内发生的不同操作。 每个类别都有一
 }
 ```
 
-在`properties`部分中，此日志包含有关消息入口的其他信息。
+在 `properties` 部分中，此日志包含有关消息入口的其他信息。
 
-| 属性 | 类型 | 说明 |
+| Property | 类型 | 描述 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **点** | 字符串 | 路由终结点的名称 |
-| **endpointType** | 字符串 | 路由终结点的类型 |
-| **parentSpanId** | 字符串 | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
+| **点** | String | 路由终结点的名称 |
+| **endpointType** | String | 路由终结点的类型 |
+| **parentSpanId** | String | 父消息的 [span-id](https://w3c.github.io/trace-context/#parent-id)，在这种情况下为 IoT 中心流入消息跟踪 |
 
 #### <a name="configurations"></a>配置
 
@@ -537,17 +540,17 @@ class Program
 
 使用 Azure 资源运行状况可以监视 IoT 中心是否已启动并正在运行。 此外，还可以了解是否发生了影响 IoT 中心运行状况的区域性服务中断。 若要了解有关 Azure IoT 中心运行状态的具体详细信息，我们建议[使用 Azure Monitor](#use-azure-monitor)。
 
-Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断影响了你的 IoT 中心，则运行状态显示为“未知”。**** 若要了解详细信息，请参阅[Azure 资源运行状况中的资源类型和运行状况检查](../service-health/resource-health-checks-resource-types.md)。
+Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断影响了你的 IoT 中心，则运行状态显示为“未知”。 若要了解详细信息，请参阅 [Azure 资源运行状况中的资源类型和运行状况检查](../service-health/resource-health-checks-resource-types.md)。
 
 若要检查 IoT 中心的运行状况，请遵循以下步骤：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到**服务运行状况** > **资源运行状况**。
+2. 导航到“服务运行状况” > “资源运行状况”。 
 
-3. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”**** 作为资源类型。
+3. 从下拉列表框中，选择你的订阅，然后选择“IoT 中心”作为资源类型。
 
-若要了解有关如何解释运行状况数据的详细信息，请参阅[Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
+要详细了解如何解释运行状况数据，请参阅 [Azure 资源运行状况概述](../service-health/resource-health-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

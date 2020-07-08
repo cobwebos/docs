@@ -4,19 +4,18 @@ description: 了解如何从 Azure Active Directory 中的已注册设备的数�
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788869"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252689"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
 

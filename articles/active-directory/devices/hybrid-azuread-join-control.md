@@ -4,19 +4,18 @@ description: 在整个组织中同时启用混合 Azure AD 联接之前，如何
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "80049982"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252706"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -42,7 +41,7 @@ ms.locfileid: "80049982"
 
 1. 以企业管理员身份从和管理工作站或域控制器启动**ADSI 编辑器**桌面应用程序。
 1. 连接到域的**配置命名上下文**。
-1. 浏览到**CN = Configuration，dc = contoso，dc = com** > **CN = Services** > **CN = 设备注册配置**
+1. 浏览到**CN = Configuration，dc = contoso，dc = com**  >  **CN = Services**  >  **CN = 设备注册配置**
 1. 右键单击叶对象**CN = 62a0ff2e-97b9-4513-943f-0d221bd30080** ，然后选择 "**属性**"
    1. 从 "**属性编辑器**" 窗口中选择**关键字**，然后单击 "**编辑**"
    1. 选择**azureADId**和**azureADName**的值（一次一个）并单击 "**删除**"
@@ -55,24 +54,24 @@ ms.locfileid: "80049982"
 
 1. 打开组策略管理控制台并在你的域中创建新的组策略对象。
    1. 为新创建的 GPO 提供一个名称（例如，ClientSideSCP）。
-1. 编辑 GPO 并找到以下路径：**计算机配置** > **首选项** > **Windows Settings** > **Registry**
-1. 右键单击注册表，然后选择 "**新建** > **注册表项**"
+1. 编辑 GPO 并找到以下路径：**计算机配置**  >  **首选项**  >  **Windows Settings**  >  **Registry**
+1. 右键单击注册表，然后选择 "**新建**  >  **注册表项**"
    1. 在 "**常规**" 选项卡上，配置以下各项
       1. 操作：**更新**
       1. Hive： **HKEY_LOCAL_MACHINE**
       1. 密钥路径： **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. 值名称： **TenantId**
       1. 值类型： **REG_SZ**
-      1. 值数据： Azure AD 实例的 GUID 或**目录 id** （此值可在**Azure 门户** > **Azure Active Directory** > **属性** > **目录 ID**）中找到
+      1. 值数据： Azure AD 实例的 GUID 或**目录 id** （此值可在**Azure 门户**  >  **Azure Active Directory**  >  **属性**  >  **目录 ID**）中找到
    1. 单击 **“确定”**
-1. 右键单击注册表，然后选择 "**新建** > **注册表项**"
+1. 右键单击注册表，然后选择 "**新建**  >  **注册表项**"
    1. 在 "**常规**" 选项卡上，配置以下各项
       1. 操作：**更新**
       1. Hive： **HKEY_LOCAL_MACHINE**
       1. 密钥路径： **SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD**
       1. 值名称： **TenantName**
       1. 值类型： **REG_SZ**
-      1. 值数据：如果你使用的是联合环境（如 AD FS），则已验证的**域名**。 已验证的**域名**或你的 onmicrosoft.com 域名例如， `contoso.onmicrosoft.com`如果你使用的是托管环境
+      1. 值数据：如果你使用的是联合环境（如 AD FS），则已验证的**域名**。 已验证的**域名**或你的 onmicrosoft.com 域名例如， `contoso.onmicrosoft.com` 如果你使用的是托管环境
    1. 单击 **“确定”**
 1. 关闭新创建的 GPO 的编辑器
 1. 将新创建的 GPO 链接到包含已加入域的计算机的所需 OU，该 OU 属于你的受控推出群体
@@ -102,4 +101,4 @@ ms.locfileid: "80049982"
 
 ## <a name="next-steps"></a>后续步骤
 
-[计划混合 Azure Active Directory 加入实现](hybrid-azuread-join-plan.md)
+[规划混合 Azure Active Directory 联接实现](hybrid-azuread-join-plan.md)

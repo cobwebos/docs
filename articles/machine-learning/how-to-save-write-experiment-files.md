@@ -10,14 +10,13 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433265"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>保存和写入 Azure 机器学习试验文件的位置
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,9 +33,9 @@ Azure 机器学习通过将整个脚本文件夹复制到目标计算上下文�
 
 因此，我们建议：
 
-* 将文件存储在 Azure 机器学习[数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)中  。 这样能防止出现试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载工作都由 Azure 机器学习管理。 请参阅[访问数据存储中的数据](how-to-access-data.md)一文，详细了解如何将数据存储指定为源目录，以及如何将文件上传到数据存储。
+* 将文件存储在 Azure 机器学习[数据存储](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)中。 这样能防止出现试验延迟问题，并具有从远程计算目标访问数据的优点，这意味着身份验证和装载工作都由 Azure 机器学习管理。 请参阅[访问数据存储中的数据](how-to-access-data.md)一文，详细了解如何将数据存储指定为源目录，以及如何将文件上传到数据存储。
 
-* 如果只需要几个数据文件和依赖项脚本且无法使用数据存储，请将文件放在与训练脚本相同的文件夹目录中  。 在训练脚本或者调用训练脚本的代码中直接将此文件夹指定为 `source_directory`。
+* 如果只需要几个数据文件和依赖项脚本且无法使用数据存储，请将文件放在与训练脚本相同的文件夹目录中。 在训练脚本或者调用训练脚本的代码中直接将此文件夹指定为 `source_directory`。
 
 <a name="limits"></a>
 
@@ -67,11 +66,11 @@ Jupyter 笔记本| 创建 `.amlignore` 文件或将笔记本移动到新的空�
 如果不需要使用数据存储，请将文件写入 `./outputs` 和/或 `./logs` 文件夹。
 
 >[!Important]
-> “outputs”和“logs”两个文件夹接收 Azure 机器学习的特殊处理****。 在训练期间，如果将文件写入 `./outputs` 和 `./logs` 文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
+> “outputs”和“logs”两个文件夹接收 Azure 机器学习的特殊处理 。 在训练期间，如果将文件写入 `./outputs` 和 `./logs` 文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
 
-* 对于诸如状态消息或评分结果这样的输出，请将文件写入 `./outputs` 文件夹，以便将它们作为项目持久保存在运行历史记录中****。 请注意写入到此文件夹中的文件数量和文件大小，因为在将内容上传到运行历史记录时可能会出现延迟。 如果需要考虑延迟，则建议将文件写入数据存储。
+* 对于诸如状态消息或评分结果这样的输出，请将文件写入 `./outputs` 文件夹，以便将它们作为项目持久保存在运行历史记录中。 请注意写入到此文件夹中的文件数量和文件大小，因为在将内容上传到运行历史记录时可能会出现延迟。 如果需要考虑延迟，则建议将文件写入数据存储。
 
-* 若要将写入的文件以日志形式保存在运行历史记录中，请将文件写入 `./logs` 文件夹****。 日志是实时上传的，所以此方法适用于从远程运行流式传输实时更新。
+* 若要将写入的文件以日志形式保存在运行历史记录中，请将文件写入 `./logs` 文件夹。 日志是实时上传的，所以此方法适用于从远程运行流式传输实时更新。
 
 ## <a name="next-steps"></a>后续步骤
 

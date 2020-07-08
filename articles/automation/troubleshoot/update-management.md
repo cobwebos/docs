@@ -2,27 +2,23 @@
 title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/17/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
-ms.translationtype: HT
+ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170250"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801880"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
 本文讨论在计算机上部署更新管理功能时可能遇到的问题。 对于混合 Runbook 辅助角色代理，可使用代理故障排除程序来确定底层问题。 若要了解有关故障排除程序的详细信息，请参阅[排查 Windows 更新代理问题](update-agent-issues.md)和[排查 Linux 更新代理问题](update-agent-issues-linux.md)。 有关其他功能部署问题，请参阅[排查功能部署问题](onboarding.md)。
 
 >[!NOTE]
->如果在 VM 上部署更新管理功能时遇到问题，请查看本地计算机上“应用程序和服务日志”下的 Operations Manager 日志 。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
+>如果在 Windows 计算机上部署更新管理时遇到问题，请打开 Windows 事件查看器，然后在本地计算机上的**应用程序和服务日志**下检查**Operations Manager**事件日志。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
 
-## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>方案：收到“未能启用更新解决方案”错误
+## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>方案：收到“未能启用更新解决方案”错误
 
 ### <a name="issue"></a>问题
 
@@ -48,9 +44,7 @@ Error details: Failed to enable the Update solution
 
 * 转到[网络配置](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理功能正常工作。  
 
-* 转到[网络配置](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)，了解需要允许哪些地址和端口才能使 Log Analytics 代理正常工作。
-
-* 检查作用域配置问题。 [作用域配置](../automation-scope-configurations-update-management.md)决定为更新管理配置哪些计算机。 如果工作区中显示了计算机，但更新管理门户中未显示，则需要将作用域配置设置为面向计算机。 若要了解作用域配置，请参阅[在工作区中启用计算机](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
+* 检查作用域配置问题。 [作用域配置](../automation-scope-configurations-update-management.md)决定为更新管理配置哪些计算机。 如果计算机显示在工作区中，但未显示在更新管理中，则必须将作用域配置设置为以计算机为目标。 若要了解作用域配置，请参阅[在工作区中启用计算机](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
 
 * 按照[从本地 Windows 计算机删除混合 Runbook 辅助角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[从本地 Linux 计算机删除混合 Runbook 辅助角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步骤删除辅助角色配置。 
 

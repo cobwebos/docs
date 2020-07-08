@@ -15,7 +15,6 @@ ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5acfa98636f54f87facf9771beb7d94dbd2b324
 ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 06/12/2020
 ms.locfileid: "84731726"

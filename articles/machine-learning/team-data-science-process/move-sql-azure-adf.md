@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂将 SQL Server 数据移动到 SQL Azure - Team Data Science Process
+title: 通过 Azure 数据工厂将数据 SQL Server 到 SQL 数据库-团队数据科学流程
 description: 设置一个 ADF 管道，它由两个数据迁移活动组成，这两个活动每天共同在本地和云中的数据库之间移动数据。
 services: machine-learning
 author: marktab
@@ -11,16 +11,15 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722486"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194405"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从本地 SQL 服务器移到 SQL Azure
+# <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 SQL Server 数据库移动到 SQL 数据库
 
-本文介绍如何使用 Azure 数据工厂（ADF）通过 Azure Blob 存储将数据从本地 SQL Server 数据库移动到 SQL Azure 数据库：此方法是受支持的旧版方法，该方法具有已复制的暂存副本的优点，但[我们建议查看数据迁移页获取最新的选项](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
+本文介绍如何使用 Azure 数据工厂（ADF）通过 Azure Blob 存储将数据从 SQL Server 数据库移至 Azure SQL 数据库：此方法是受支持的旧版方法，该方法具有复制的暂存副本的优点，但[建议查看数据迁移页面获取最新的选项](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
 
 有关汇总了用于将数据移到 Azure SQL 数据库的各种选项的表格，请参阅[将数据移到 Azure SQL 数据库进行 Azure 机器学习](move-sql-azure.md)。
 
@@ -37,13 +36,13 @@ Azure 数据工厂是一项完全托管、基于云的数据集成服务，可�
 ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定期管理数据移动。 ADF 还具有其他功能，例如支持复杂操作。 有关 ADF 的详细信息，请参阅 [Azure 数据工厂 (ADF)](https://azure.microsoft.com/services/data-factory/) 中的文档。
 
 ## <a name="the-scenario"></a><a name="scenario"></a>方案
-我们设置了一个由两个数据迁移活动组成的 ADF 管道。 它们共同在本地 SQL 数据库和云中的 Azure SQL 数据库之间每天移动数据。 这两个活动是：
+我们设置了一个由两个数据迁移活动组成的 ADF 管道。 它们一起在 SQL Server 数据库和 Azure SQL 数据库之间每天移动数据。 这两个活动是：
 
-* 从本地 SQL Server 数据库将数据复制到 Azure Blob 存储帐户
-* 从 Azure Blob 存储帐户将数据复制到 Azure SQL 数据库。
+* 将数据从 SQL Server 数据库复制到 Azure Blob 存储帐户
+* 将数据从 Azure Blob 存储帐户复制到 Azure SQL 数据库。
 
 > [!NOTE]
-> 此处所示的步骤改编自 ADF 团队提供的更详细教程：[将数据从本地 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) 在适当时候提供了对该主题相关部分的引用。
+> 此处所示的步骤已从 ADF 团队提供的更详细教程中进行了修改：[将数据从 SQL Server 数据库复制到 Azure Blob 存储](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)，将在适当的时候提供该主题的相关部分。
 >
 >
 
@@ -60,10 +59,10 @@ ADF 允许使用简单的 JSON 脚本计划和监视作业，JSON 脚本可定�
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>将数据上传到本地 SQL Server
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>将数据上传到 SQL Server 实例
 将使用 [NYC 出租车数据集](https://chriswhong.com/open-data/foil_nyc_taxi/)来演示迁移过程。 该文章所述的 NYC 出租车数据集在 Azure Blob 存储 [NYC 出租车数据](https://www.andresmh.com/nyctaxitrips/)上可用。 该数据具有两个文件，trip_data.csv 文件（包含行程详情）和 trip_far.csv 文件（包含每次行程的费用详情）。 [NYC 出租车行程数据集说明](sql-walkthrough.md#dataset)中介绍了这些文件的示例和说明。
 
-可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到本地 SQL Server 数据库，请按照[将数据批量导入 SQL Server 数据库](sql-walkthrough.md#dbload)中概述的过程进行操作。 这些说明适用于 Azure 虚拟机上的 SQL Server，但是上传到本地 SQL Server 的过程是相同的。
+可将此处提供的流程调整为自己的一组数据，或者使用 NYC 出租车数据集遵循所述的步骤进行操作。 若要将 NYC 出租车数据集上传到 SQL Server 数据库，请按照将[数据批量导入到 SQL Server 数据库](sql-walkthrough.md#dbload)中所述的过程进行操作。
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>创建 Azure 数据工厂
 [创建 Azure 数据工厂](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)中提供了在 [Azure 门户](https://portal.azure.com/)中创建新的 Azure 数据工厂和资源组的相关说明。 将新的 ADF 实例命名为 *adfdsp*，将创建的资源组命名为 *adfdsprg*。
@@ -93,8 +92,8 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 
 表中基于 JSON 的定义使用以下名称：
 
-* 本地 SQL server 中的“表名”  为 nyctaxi_data 
-* Azure Blob 存储帐户中的**容器名**为 containername 
+* SQL Server 中的**表名**为*nyctaxi_data*
+* Azure Blob 存储帐户中的**容器名**为 containername**
 
 此 ADF 管道所需的表定义有 3 个：
 
@@ -108,7 +107,7 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 >
 
 ### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>SQL 本地表
-本地 SQL Server 的表定义指定在以下的 JSON 文件中：
+SQL Server 的表定义在以下 JSON 文件中指定：
 
 ```json
 {
@@ -138,7 +137,7 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 
 此处不包括列名称。 可以通过在列名称中包含它们来对其进行选择（有关详细信息，请参阅[ADF 文档](../../data-factory/copy-activity-overview.md)主题）。
 
-将表的 JSON 定义复制到名为 onpremtabledef.json  的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 onpremtabledef.json** 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\onpremtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
@@ -171,7 +170,7 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 }
 ```
 
-将表的 JSON 定义复制到名为 bloboutputtabledef.json  的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 bloboutputtabledef.json** 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\bloboutputtabledef.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
@@ -203,7 +202,7 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 }
 ```
 
-将表的 JSON 定义复制到名为 AzureSqlTable.json  的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
+将表的 JSON 定义复制到名为 AzureSqlTable.json** 的文件中，并将其保存到已知位置（此处假定为 *C:\temp\AzureSqlTable.json*）。 使用以下 Azure PowerShell cmdlet 在 ADF 中创建表：
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
@@ -211,7 +210,7 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
 ## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>定义和创建管道
 使用以下基于脚本的过程，指定属于管道的活动并创建管道。 可使用 JSON 文件定义管道属性。
 
-* 该脚本假设管道名称  是 AMLDSProcessPipeline  。
+* 该脚本假设管道名称**** 是 AMLDSProcessPipeline**。
 * 另请注意：我们将管道的周期设置为每天执行，并且为作业使用默认的执行时间（UTC 的凌晨 12 点）。
 
 > [!NOTE]
@@ -226,12 +225,12 @@ Integration Runtime 是由 Azure 数据工厂用于在不同的网络环境之�
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
         "activities":
         [
             {
                 "name": "CopyFromSQLtoBlob",
-                "description": "Copy data from on-premises SQL server to blob",
+                "description": "Copy data from SQL Server to blob",
                 "type": "CopyActivity",
                 "inputs": [ {"name": "OnPremSQLTable"} ],
                 "outputs": [ {"name": "OutputBlobTable"} ],

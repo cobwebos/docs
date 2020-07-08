@@ -4,19 +4,18 @@ description: 企业状态漫游的管理设置
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672368"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252927"
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
 
@@ -32,7 +31,7 @@ ms.locfileid: "78672368"
 
 MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移动版支持仅适用于通过用户的 OneDrive 帐户进行的基于 Microsoft 帐户的漫游。 有关支持 Azure AD 的同步的设备的详细信息，请参阅[设备和终结点](enterprise-state-roaming-windows-settings-reference.md)。
 
-| 名称 | 说明 |
+| “属性” | 描述 |
 | --- | --- |
 | 允许 Microsoft 帐户连接 |允许用户使用设备上的 Microsoft 帐户进行身份验证 |
 | 允许同步我的设置 |允许用户漫游 Windows 设置和应用数据；停用此政策会停用移动设备上的同步和备份 |
@@ -43,7 +42,7 @@ MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移
 
 这些设置位于以下位置：`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| 名称 | 说明 |
+| “属性” | 描述 |
 | --- | --- |
 | 帐户：阻止 Microsoft 帐户 |此策略设置阻止用户在此计算机上添加新的 Microsoft 帐户 |
 | 不同步 |防止用户漫游 Windows 设置和应用数据 |

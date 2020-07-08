@@ -9,14 +9,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417838"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85249680"
 ---
 # <a name="monitor-copy-activity"></a>监视复制活动
 
@@ -58,8 +57,8 @@ ms.locfileid: "81417838"
 | filesWritten | 写入/提交到基于文件的接收器的文件数。 | Int64 值（未指定单位） |
 | sourcePeakConnections | 复制活动运行期间与源数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
 | sinkPeakConnections | 复制活动运行期间与接收器数据存储建立的并发连接峰值数量。 | Int64 值（未指定单位） |
-| rowsRead | 从源读取的行数（不适用于二进制副本）。 | Int64 值（未指定单位） |
-| rowsCopied | 复制到接收器的行数（不适用于二进制副本）。 | Int64 值（未指定单位） |
+| rowsRead | 从源中读取的行数。 此指标不适用于原样复制文件而不分析文件，例如，当源和接收器数据集为二进制格式类型时，或具有相同设置的其他格式类型时。 | Int64 值（未指定单位） |
+| rowsCopied | 复制到接收器的行数。 此指标不适用于原样复制文件而不分析文件，例如，当源和接收器数据集为二进制格式类型时，或具有相同设置的其他格式类型时。  | Int64 值（未指定单位） |
 | rowsSkipped | 跳过的不兼容行数。 可通过将 `enableSkipIncompatibleRow` 设置为 true 来跳过不兼容的行。 | Int64 值（未指定单位） |
 | copyDuration | 复制运行的持续时间。 | Int32 值，以秒为单位 |
 | throughput | 数据传输速率。 | 浮点数，以 KBps 为单位 |
@@ -72,8 +71,8 @@ ms.locfileid: "81417838"
 | usedDataIntegrationUnits | 复制期间的有效数据集成单位。 | Int32 值 |
 | usedParallelCopies | 复制期间的有效 parallelCopies。 | Int32 值 |
 | redirectRowPath | 在 `redirectIncompatibleRowSettings` 中配置的 Blob 存储中已跳过的不兼容行的日志路径。 请参阅[容错](copy-activity-overview.md#fault-tolerance)。 | 文本（字符串） |
-| executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、配置等的更多详细信息。 不建议分析此节，因为它有可能发生更改。 若要更好地了解如何通过它来了解复制性能并排查其问题，请参阅[以视觉方式进行监视](#monitor-visually)部分。 | Array |
-| perfRecommendation | 复制性能优化提示。 有关详细信息，请参阅[性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。 | Array |
+| executionDetails | 有关复制活动经历的各个阶段、相应步骤、持续时间、配置等的更多详细信息。 不建议分析此节，因为它有可能发生更改。 为了更好地了解它如何帮助你了解和排查复制性能问题，请参阅 "[直观监视](#monitor-visually)" 部分。 | 数组 |
+| perfRecommendation | 复制性能优化提示。 有关详细信息，请参阅[性能优化提示](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。 | 数组 |
 
 **示例：**
 
@@ -153,6 +152,6 @@ ms.locfileid: "81417838"
 ## <a name="next-steps"></a>后续步骤
 请参阅其他复制活动文章：
 
-\-[“复制活动”概述](copy-activity-overview.md)
+\- [复制活动概述](copy-activity-overview.md)
 
 \- [复制活动性能](copy-activity-performance.md)

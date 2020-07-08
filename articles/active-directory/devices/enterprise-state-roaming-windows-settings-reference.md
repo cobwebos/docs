@@ -4,19 +4,18 @@ description: 将通过 ESR 在 Windows 10 中漫游或备份的设置
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: troubleshooting
+ms.topic: reference
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672623"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252961"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 
@@ -26,9 +25,9 @@ ms.locfileid: "78672623"
 
 请参阅下表大概了解 Windows 10 中同步、备份和还原框架支持的设备和帐户类型。
 
-| 帐户类型和操作 | 桌面 | 移动型 |
+| 帐户类型和操作 | 桌面型 | 移动 |
 | --- | --- | --- |
-| Azure Active Directory：同步 |是 |否 |
+| Azure Active Directory：同步 |是 |No |
 | Azure Active Directory：备份/还原 |否 |否 |
 | Microsoft 帐户：同步 |是 |是 |
 | Microsoft 帐户：备份/还原 |否 |是 |
@@ -69,13 +68,13 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 “设置组”列中的“内部”项是指设置和应用，它们只能通过应用本身内的同步进行禁用，或使用移动设备管理 (MDM) 或“组策略”设置来禁用整个设备的同步进行禁用。
 不漫游或同步的设置不属于某个组。
 
-| 设置 | 桌面 | 移动型 | 组 |
+| 设置 | 桌面型 | 移动 | 组 |
 | --- | --- | --- | --- |
 | **帐户**：帐户图片 |sync |X |主题 |
 | **帐户**：其他帐户设置 |X |X | |
 | **高级移动宽带**： Internet 连接共享网络名称（允许通过蓝牙自动发现移动 wi-fi 热点） |X |X |密码 |
 | **应用数据**：单个应用可同步数据 |同步备份 |同步备份 |internal |
-| **应用列表**：已安装应用的列表 |X |备份 (backup) |其他 |
+| **应用列表**：已安装应用的列表 |X |backup |其他 |
 | **蓝牙**：所有蓝牙设置 |X |X | |
 | **命令提示符**：命令提示符“Defaults”设置 |sync |X |internal |
 | **凭据**：凭据保险箱 |sync |sync |password |
@@ -94,7 +93,7 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **桌面个性化**：桌面主题（背景、系统颜色、默认系统声音、屏幕保护） |sync |X |主题 |
 | **桌面个性化**：幻灯片放映壁纸 |sync |X |主题 |
 | **桌面个性化**：任务栏设置（位置、自动隐藏等） |sync |X |主题 |
-| **桌面个性化**：启动屏幕布局 |X |备份 (backup) | |
+| **桌面个性化**：启动屏幕布局 |X |backup | |
 | **设备**：已连接的共享打印机 |X |X |其他 |
 | **Microsoft Edge 浏览器**：读取列表 |sync |sync |internal |
 | **Microsoft Edge 浏览器**：收藏夹 |sync |sync |internal |
@@ -129,8 +128,8 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **语言**：CHS 标准键盘 - 启用动态候选项排名 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 字符集简体中文 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 字符集繁体中文 |sync |X |语言 |
-| **语言**：CHS 标准键盘 - 模糊拼音 |sync |备份 (backup) |语言 |
-| **语言**：CHS 标准键盘 - 模糊配对 |sync |备份 (backup) |语言 |
+| **语言**：CHS 标准键盘 - 模糊拼音 |sync |backup |语言 |
+| **语言**：CHS 标准键盘 - 模糊配对 |sync |backup |语言 |
 | **语言**：CHS 标准键盘 - 完整拼音 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 双拼音 |sync |X |语言 |
 | **语言**：CHS 标准键盘 - 读取自动更正 |sync |X |语言 |
@@ -143,9 +142,9 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **语言**：日语输入法 - 预测键入和自定义词语 |sync |sync |语言 |
 | **语言**：韩文 (KOR) 输入法 |X |X |语言 |
 | **语言**：手写识别 |X |X |语言 |
-| **语言**：语言配置文件 |sync |备份 (backup) |语言 |
-| **语言**：拼写检查功能 - 自动更正并突出显示拼写错误 |sync |备份 (backup) |语言 |
-| **语言**：键盘列表 |sync |备份 (backup) |语言 |
+| **语言**：语言配置文件 |sync |backup |语言 |
+| **语言**：拼写检查功能 - 自动更正并突出显示拼写错误 |sync |backup |语言 |
+| **语言**：键盘列表 |sync |backup |语言 |
 | **屏幕锁定**：所有屏幕锁定设置 |X |X | |
 | **放大镜**：打开或关闭（主切换） |X |X |轻松访问 |
 | **放大镜**：打开或关闭反转颜色（默认为关闭） |sync |X |轻松访问 |
@@ -168,16 +167,16 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **轻松访问**：删除背景图像（默认为关闭） |sync |X |轻松访问 |
 | **电源和睡眠**：所有设置 |X |X | |
 | **启动屏幕个性化**：主题色（仅限电话） |X |sync |主题 |
-| **键入**：拼写字典 |sync |备份 (backup) |语言 |
-| **键入**：自动更正拼写错误的单词 |sync |备份 (backup) |语言 |
-| **键入**：突出显示拼写错误的单词 |sync |备份 (backup) |语言 |
-| **键入**：键入时显示文本建议 |sync |备份 (backup) |语言 |
-| **键入**：选择文本建议后添加一个空格 |sync |备份 (backup) |语言 |
-| **键入**：双击空格键时添加一个句点 |sync |备份 (backup) |语言 |
-| **键入**：大写每个句子的首字母 |sync |备份 (backup) |语言 |
-| **键入**：双击 shift 键时全部使用大写字母 |sync |备份 (backup) |语言 |
-| **键入**：键入时播放键的声音 |sync |备份 (backup) |语言 |
-| **键入**：触摸键盘的个性化数据 |sync |备份 (backup) |语言 |
+| **键入**：拼写字典 |sync |backup |语言 |
+| **键入**：自动更正拼写错误的单词 |sync |backup |语言 |
+| **键入**：突出显示拼写错误的单词 |sync |backup |语言 |
+| **键入**：键入时显示文本建议 |sync |backup |语言 |
+| **键入**：选择文本建议后添加一个空格 |sync |backup |语言 |
+| **键入**：双击空格键时添加一个句点 |sync |backup |语言 |
+| **键入**：大写每个句子的首字母 |sync |backup |语言 |
+| **键入**：双击 shift 键时全部使用大写字母 |sync |backup |语言 |
+| **键入**：键入时播放键的声音 |sync |backup |语言 |
+| **键入**：触摸键盘的个性化数据 |sync |backup |语言 |
 | **Wi-Fi**：Wi-Fi 配置文件（仅 WPA） |sync |sync |密码 |
 
 ###### <a name="footnote-1"></a>脚注 1

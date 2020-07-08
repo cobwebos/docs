@@ -1,5 +1,5 @@
 ---
-title: 在训练运行中使用机密
+title: 培训中的身份验证机密
 titleSuffix: Azure Machine Learning
 description: 使用工作区密钥保管库将机密安全传递到训练运行
 services: machine-learning
@@ -8,16 +8,15 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: d877794abf12b8b412cd1ecf4efd72fd1179d768
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8fefeb162dd6f036c21485715dd680972823fbaa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942252"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677468"
 ---
-# <a name="use-secrets-in-training-runs"></a>在训练运行中使用机密
+# <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>在 Azure 机器学习训练运行中使用身份验证凭据机密
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何在训练运行中安全使用机密。 身份验证信息（例如用户名和密码）是机密。 例如，如果连接到外部数据库来查询训练数据，则需要将用户名和密码传递到远程运行上下文。 将此类值编码为明文中的训练脚本是不安全的，因为该过程会暴露机密。 

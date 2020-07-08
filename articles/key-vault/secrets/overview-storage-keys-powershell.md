@@ -8,16 +8,15 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121110"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84449299"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
-Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 可以通过将存储帐户密钥存储为 Key Vault 机密来对其进行管理。 
+Azure 存储帐户使用由帐户名和密钥构成的凭据。 密钥是自动生成的，充当密码而不是加密密钥。 Key Vault 通过在存储帐户中定期重新生成存储帐户密钥来管理存储帐户密钥，并提供共享访问签名令牌，以便对存储帐户中的资源进行委托访问。
 
 可以使用 Key Vault 托管的存储帐户密钥功能列出（同步） Azure 存储帐户中的密钥，并定期重新生成（轮换）密钥。 可以管理存储帐户和经典存储帐户的密钥。
 
@@ -45,7 +44,7 @@ Key Vault 是已在所有 Azure AD 租户中预先注册的 Microsoft 应用程�
 
 | 租户 | 云 | 应用程序 ID |
 | --- | --- | --- |
-| Azure AD | Azure Government  | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公有云 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
@@ -94,12 +93,12 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ```
 >[!Note]
-> 对于经典存储帐户，请使用 "主要" 和 "辅助" 作为 $storageAccountKey <br>
-> 对于经典存储帐户，请使用 "AzResource-Name" ClassicStorageAccountName "-ResourceGroupName $resourceGroupName" 改为 "of'Get-AzStorageAccount"
+> 对于经典存储帐户，请使用“primary”和“secondary”作为 $storageAccountKey <br>
+> 对于经典存储帐户，请使用 'Get-AzResource -Name "ClassicStorageAccountName" -ResourceGroupName $resourceGroupName' 而不是 'Get-AzStorageAccount'
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限
 
-只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出  和重新生成  存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
+只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可通过内置的 RBAC 角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
 
 使用 Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 将此角色分配到 Key Vault 服务主体，以将范围限定为你的存储帐户。
 
@@ -122,7 +121,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在”  ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
+如果 Key Vault 已添加到存储帐户中的角色，则你会收到“角色分配已存在” ”错误。 还可以使用 Azure 门户中存储帐户的“访问控制(IAM)”页验证角色分配。  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>向托管存储帐户授予用户帐户权限
 

@@ -2,18 +2,14 @@
 title: 排查 Azure 自动化功能部署问题
 description: 本文介绍如何排查和解决部署 Azure 自动化功能时出现的问题。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 05/22/2019
+ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
-ms.openlocfilehash: 4c4c43d8522c6f507d458c56abc445e2da35fa6d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: ca2f866dc882e003469163a22d32d3d72031443a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739373"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801023"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>排查功能部署问题
 
@@ -71,7 +67,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 #### <a name="resolution"></a>解决方法
 
-请确保你有适当的[功能部署权限](../automation-role-based-access-control.md#feature-setup-permissions)，然后尝试再次部署该功能。 如果收到错误消息“`The solution cannot be enabled on this VM because the permission to read the workspace is missing`”，则请确保你具有 `Microsoft.OperationalInsights/workspaces/read` 权限，可查看是否已为工作区启用 VM。
+请确保你有适当的[功能部署权限](../automation-role-based-access-control.md#feature-setup-permissions)，然后尝试再次部署该功能。 如果收到错误消息 `The solution cannot be enabled on this VM because the permission to read the workspace is missing` ，请参阅以下[疑难解答信息](update-management.md#failed-to-enable-error)。
 
 ### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>场景：功能部署失败，显示“未能配置自动化帐户进行诊断日志记录”
 

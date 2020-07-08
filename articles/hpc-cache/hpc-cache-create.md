@@ -4,20 +4,23 @@ description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195003"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84434097"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
 使用 Azure 门户创建缓存。
 
 ![Azure 门户中的缓存概述的屏幕截图，底部带有“创建”按钮](media/hpc-cache-home-page.png)
+
+单击下面的图像，观看有关创建缓存和添加存储目标的[视频演示](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)。
+
+[![视频缩略图： Azure HPC 缓存：设置（单击以访问视频页）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="define-basic-details"></a>定义基本详细信息
 

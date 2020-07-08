@@ -9,14 +9,13 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 361199bd380b126ec41fb8a5587a2ebd78cd6f24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84447605"
 ---
-# <a name="score-model-module"></a>“评分模型”模块
+# <a name="score-model"></a>评分模型
 
 本文介绍 Azure 机器学习设计器（预览版）中的一个模块。
 
@@ -24,7 +23,7 @@ ms.locfileid: "80364171"
 
 ## <a name="how-to-use"></a>如何使用
 
-1. 将“评分模型”模块添加到管道  。
+1. 将“评分模型”模块添加到管道。
 
 2. 连接经训练的模型和包含新输入数据的数据集。 
 
@@ -36,8 +35,8 @@ ms.locfileid: "80364171"
 
 使用[评分模型](./score-model.md)生成一组分数后：
 
-+ 若要生成一组用于评估模型准确性（性能）的指标，可将评分数据集连接到 "[评估模型](./evaluate-model.md)"。 
-+ 右键单击模块并选择“可视化”可查看结果的示例****。
++ 若要生成一组用于评估模型准确性（性能）的指标，可将评分数据集连接到[评估模型](./evaluate-model.md)模块。 
++ 右键单击模块并选择“可视化”可查看结果的示例。
 <!-- + To Save the results to a dataset. -->
 
 分数（或预测值）可以采用多种不同的格式，具体取决于模型和输入数据：
@@ -48,8 +47,8 @@ ms.locfileid: "80364171"
 
 ## <a name="publish-scores-as-a-web-service"></a>将评分发布为 Web 服务
 
-评分的一个常见用途是在预测 Web 服务中返回输出。 有关详细信息，请参阅[本教程](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)，了解如何在 Azure 机器学习设计器中基于管道部署实时终结点。
+评分的一个常见用途是在预测 Web 服务中返回输出。 有关详细信息，请参阅[此教程](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy)，了解如何在 Azure 机器学习设计器中基于管道部署实时终结点。
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

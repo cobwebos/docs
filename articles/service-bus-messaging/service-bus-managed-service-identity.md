@@ -1,24 +1,13 @@
 ---
 title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
-services: service-bus-messaging
-documentationcenter: na
-author: axisc
-editor: spelluru
-ms.assetid: ''
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 62c00c92ddd8265b1174cc195bfa83d533ec20d0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85341410"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -55,7 +44,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 以下列表描述了可将服务总线资源访问权限限定到哪些级别，从最小的范围开始：
 
-- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 RBAC 角色分配用户/组/托管标识。 下面是使用 Azure CLI 命令的示例： [az-role-create-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) To a SERVICE Bus RBAC role： 
+- **队列**、**主题**或**订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 RBAC 角色分配用户/组/托管标识。 下面是使用 Azure CLI 命令 [az-role-assignment-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) 为服务总线 RBAC 角色分配标识的示例： 
 
     ```azurecli
     az role assignment create \
@@ -63,9 +52,9 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
         --assignee $assignee_id \
         --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
     ```
-- **服务总线命名空间**：角色分配跨越命名空间和与其关联的使用者组的整个服务总线拓扑。
+- **服务总线命名空间**：角色分配横跨命名空间中服务总线的整个拓扑，并延伸至与之关联的使用者组。
 - **资源组**：角色分配适用于资源组下的所有服务总线资源。
-- **订阅**：角色分配适用于订阅中所有资源组中的所有服务总线资源。
+- **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。
 
 > [!NOTE]
 > 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。 
@@ -84,7 +73,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向 Azure AD 中的托管标识授予权限
 若要通过应用程序中的托管标识授权对服务总线服务的请求，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 服务总线定义 RBAC 角色，这些角色涵盖了从服务总线进行发送和读取操作所需的权限。 将 RBAC 角色分配到某个托管标识后，将在适当的范围授予该托管标识访问服务总线实体的权限。
 
-有关分配 RBAC 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证和授权，以访问服务总线资源](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)。
+若要详细了解如何分配 RBAC 角色，请参阅[使用 Azure Active Directory 进行身份验证和授权以访问服务总线资源](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>结合使用服务总线与 Azure 资源的托管标识
 若要将服务总线与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问服务总线资源。
@@ -93,9 +82,9 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 创建应用程序后，请执行以下步骤： 
 
-1. 转到“设置”，然后选择“标识”****。**** 
-1. 选择“状态”****，将其切换到“启用”****。 
-1. 选择“保存”****，保存设置。 
+1. 转到“设置”，然后选择“标识”。 
+1. 选择“状态”，将其切换到“启用”。 
+1. 选择“保存”，保存设置。 
 
     ![Web 应用的托管标识](./media/service-bus-managed-service-identity/identity-web-app.png)
 
@@ -111,20 +100,20 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 > 
 > [创建服务总线消息传递命名空间](service-bus-create-namespace-portal.md)（如果没有该空间）。 
 
-1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。**** 
-1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示服务总线命名空间的访问控制设置****。
+1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。  
+1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示服务总线命名空间的访问控制设置  。
 1.  选择“角色分配”  选项卡以查看角色分配列表。
-3.  选择“添加”以添加新角色。****
-4.  在“添加角色分配”页上，选择要分配的 Azure 服务总线角色****。 然后通过搜索找到已注册的服务标识，以便分配该角色。
+3.  选择“添加”以添加新角色。 
+4.  在“添加角色分配”页上，选择要分配的 Azure 服务总线角色  。 然后通过搜索找到已注册的服务标识，以便分配该角色。
     
     ![“添加角色分配”页](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  选择“保存”  。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有 Azure 服务总线数据所有者。
+5.  选择“保存” 。 分配有该角色的标识列出在该角色下。 例如，下图显示服务标识有 Azure 服务总线数据所有者。
     
     ![分配给角色的标识](./media/service-bus-managed-service-identity/role-assigned.png)
 
 分配此角色后，Web 应用程序即可访问已定义范围内的服务总线实体。 
 
-### <a name="run-the-app"></a>运行应用
+### <a name="run-the-app"></a>运行应用程序
 
 现在，修改你创建的 ASP.NET 应用程序的默认页面。 可以使用[此 GitHub 存储库](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)中的 Web 应用程序代码。  
 
@@ -136,7 +125,7 @@ Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代�
 
 ![获取发布配置文件](./media/service-bus-managed-service-identity/msi3.png)
  
-若要发送或接收消息，请输入所创建的命名空间和实体的名称。 然后，单击“发送”**** 或“接收”****。
+若要发送或接收消息，请输入所创建的命名空间和实体的名称。 然后，单击“发送”  或“接收”  。
 
 
 > [!NOTE]

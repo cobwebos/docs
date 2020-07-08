@@ -2,18 +2,17 @@
 title: B 系列可突增 - Azure 虚拟机
 description: 描述 B 系列可突增 Azure VM 大小。
 services: virtual-machines
+ms.subservice: sizes
 author: ayshakeen
-manager: gwallace
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678539"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -90,7 +89,7 @@ B16 特征：
 
 对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936/小时（每月 $673.92），对于 B16ms 为16个 vcpu，64 GiB 内存为每小时 $0.794 （每月 $547.86）。 <b>这会节省15% 的费用！</b>
 
-## <a name="q--a"></a>问与答
+## <a name="q--a"></a>问题解答
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>问：如何从 VM 获得 135% 的基线性能？
 

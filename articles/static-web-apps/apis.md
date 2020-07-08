@@ -7,12 +7,11 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4fa3acf0e6cc767aeee4504bbc4df382a75e256b
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: f5f40a615bc5faab6265f42d0728403e2735aa0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758752"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791616"
 ---
 # <a name="api-support-in-azure-static-web-apps-preview-with-azure-functions"></a>Azure 静态 Web 应用预览中通过 Azure Functions 提供 API 支持
 
@@ -33,6 +32,7 @@ Azure 静态 Web 应用通过 Azure Functions 提供 API。 Azure Functions 的�
 
 - API 路由前缀必须是 api。
 - API 函数应用必须采用 JavaScript。
+- API 函数的路由规则仅支持[重定向](routes.md#redirects)和[保护具有角色的路由](routes.md#securing-routes-with-roles)。
 - 触发器和绑定仅限于 [HTTP](../azure-functions/functions-bindings-http-webhook.md)。
   - 除输出绑定外，所有其他 [Azure Functions 触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)都受到限制。
 - 仅当将 [Application Insights](../azure-functions/functions-monitoring.md) 添加到 Functions 应用中时，才能使用日志。

@@ -3,26 +3,26 @@ title: Azure 文件共享备份的支持矩阵
 description: 汇总了备份 Azure 文件共享时的支持设置和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 42578cc83ef193801fa700ec7d136385411e5f79
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: 5670f4702a8e8d199b9762d87793a053cf6e53b1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806865"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 文件共享备份的支持矩阵
 
 可以使用 [Azure 备份服务](https://docs.microsoft.com/azure/backup/backup-overview)来备份 Azure 文件共享。 本文汇总了通过 Azure 备份来备份 Azure 文件共享时的支持设置。
 
-## <a name="supported-geos"></a>支持的地理区域
+## <a name="supported-regions"></a>支持的区域
 
-以下地理区域提供了 Azure 文件共享备份功能：
+### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure 文件共享备份的 GA 区域
 
-**正式发布区域**：<br>
-澳大利亚东南部 (ASE)、加拿大中部 (CNC)、美国中西部 (WCUS)、美国中南部 (SCUS)、美国西部 2 (WUS 2)、印度南部 (INS)、美国中北部 (NCUS)、日本东部 (JPE)、巴西南部 (BRS)、东南亚 (SEA)、瑞士西部 (SZW)、阿联酋中部 (UAC)、挪威东部 (NWE)、印度西部 (INW)、澳大利亚中部 (ACL)、韩国中部 (KRC)、日本西部 (JPW)、南非北部 (SAN)、英国南部 (UKS)、英国西部 (UKW)、韩国南部 (KRS)、北欧 (NE)、德国北部 (GN)、挪威西部 (NWW)、南非西部 (SAW)、瑞士北部 (SZN)、德国中西部 (GWC)、阿联酋北部 (UAN)、法国中部 (FRC)、印度中部 (INC)、加拿大东部 (CNE)、东亚 (EA)、澳大利亚东部 (AE)、美国中部 (CUS)、美国西部 (WUS)、美国亚利桑那州 (UGA)，美国德克萨斯州 (UGT)、美国弗吉尼亚州 (UGV)、美国国防部中央 (UDC)、美国国防部东部 (UDE)
+Azure 文件共享备份在除以下项**之外**的所有地区提供：德国中部（主权）、德国东北部（主权）、中国东部、中国东部2、中国北部、中国北部2、US Gov 爱荷华州
 
-**（作为预览版的一部分）支持的但未正式发布的区域**：<br>
-美国东部 (EUS)、美国东部 2 (EUS2)、西欧 (WE)
+### <a name="supported-regions-for-accidental-delete-protection"></a>意外删除保护的支持区域
+
+美国中部、澳大利亚东南部、加拿大中部
 
 ## <a name="supported-storage-accounts"></a>支持的存储帐户
 
@@ -31,6 +31,7 @@ ms.locfileid: "83684626"
 | 帐户种类            | Azure 备份支持常规用途 v1、常规用途 v2 和文件存储类型存储帐户中存在的 Azure 文件共享 |
 | 性能              | Azure 备份同时支持标准存储帐户和高级存储帐户中的文件共享 |
 | 复制              | 支持具有任何复制类型的存储帐户中的 Azure 文件共享 |
+| 防火墙已启用         | 支持支持 Microsoft Azure 服务访问存储帐户的存储帐户中的 Azure 文件共享|
 
 ## <a name="supported-file-shares"></a>支持的文件共享
 
@@ -45,14 +46,16 @@ ms.locfileid: "83684626"
 
 | 设置                                                      | 限制 |
 | ------------------------------------------------------------ | ----- |
-| 每个保管库每天可保护的文件共享数上限 | 200   |
+| 每个保管库每天可保护的文件共享的最大数目| 200   |
 | 每个保管库每天可以注册的存储帐户数上限 | 50    |
+| 每个保管库可保护的文件共享的最大数目 | 2000   |
+| 每个保管库可以注册的最大存储帐户数 | 200   |
 
 ## <a name="backup-limits"></a>备份限制
 
 | 设置                                      | 限制 |
 | -------------------------------------------- | ----- |
-| 每天的按需备份数上限 | 4     |
+| 每天的按需备份数上限 | 10   |
 | 每天的计划内备份数上限 | 1     |
 
 ## <a name="restore-limits"></a>还原限制

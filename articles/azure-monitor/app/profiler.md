@@ -6,12 +6,11 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778563"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678574"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -25,9 +24,9 @@ ms.locfileid: "83778563"
 
 Application Insights Profiler 是作为应用服务运行时的一部分预先安装的。 下面的步骤将说明如何为应用服务启用它。 即使在生成时已在应用程序中包含了 App Insights SDK，也应该执行这些步骤。
 
-1. 为应用服务启用“Always On”设置。 可以在应用服务的“配置”页中的“常规设置”下更新此设置。
-1. 转到 Azure 门户中的“应用服务”窗格。
-1. 导航到“设置”>“Application Insights”窗格。
+1. 导航到应用服务的 Azure 控制面板。
+1. 为应用服务启用“Always On”设置。 可以在 "**设置**"、"**配置**" 页（请参阅下一步中的屏幕截图）下找到此设置，然后单击 "**常规设置**" 选项卡。
+1. 导航到 "**设置" > Application Insights** "页。
 
    ![在应用服务门户上启用 App Insights](./media/profiler/AppInsights-AppServices.png)
 
@@ -50,7 +49,7 @@ Application Insights Profiler 是作为应用服务运行时的一部分预先�
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-可以使用 [Azure 资源管理器模板](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure Powershell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)、[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest) 设置这些值。
+可以使用[Azure 资源管理器模板](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp) [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest)设置这些值。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>手动为其他云启用 Profiler
 

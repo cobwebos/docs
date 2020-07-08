@@ -8,12 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d10744f2536cdf89115cdccd0bea6f1e5155774c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 18a37731171be5894a1481fb35569c9c7cf307f2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370451"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84790511"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -35,11 +34,19 @@ IoT 中心有一个默认的内置终结点（消息/事件），此终结点与
 
 每条消息都路由到与它的路由查询匹配的所有终结点。 换句话说，消息可以路由到多个终结点。
 
-IoT 中心目前支持将以下服务作为自定义终结点：
+
+如果你的自定义终结点具有防火墙配置，请考虑使用 Microsoft 受信任的第一方例外，为你的 IoT 中心提供对特定终结点（ [Azure 存储](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、 [azure 事件中心](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)和[azure 服务总线](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)）的访问权限。 这适用于使用[托管服务标识](./virtual-network-support.md)的 IoT 中心的选择区域。
+
+IoT 中心目前支持以下终结点：
+
+ - 内置终结点
+ - Azure 存储
+ - 服务总线队列和服务总线主题
+ - 事件中心
 
 ### <a name="built-in-endpoint"></a>内置终结点
 
-可以使用标准[事件中心集成和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收来自内置终结点（消息/事件）的设备到云的消息  。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。
+可以使用标准[事件中心集成和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收来自内置终结点（消息/事件）的设备到云的消息****。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。
 
 ### <a name="azure-storage"></a>Azure 存储
 
@@ -75,29 +82,18 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-> [!NOTE]
-> 如果存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
-
-若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”  选项卡的“分层命名空间”  字段上选择“启用”  ，如下图所示：
+若要创建与 Azure Data Lake Gen2 兼容的存储帐户，请创建新的 V2 存储帐户，并在“高级”**** 选项卡的“分层命名空间”** 字段上选择“启用”**，如下图所示：
 
 ![选择 Azure Date Lake Gen2 存储](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>服务总线队列和服务总线主题
 
-用作 IoT 中心终结点的服务总线队列和主题不能启用“会话”  或“重复项检测”  。 如果启用了其中任一选项，该终结点将在 Azure 门户中显示为“无法访问”  。
-
-> [!NOTE]
-> 如果服务总线资源具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
-
+用作 IoT 中心终结点的服务总线队列和主题不得启用**会话**或**重复检测**选项。 如果启用了其中任一选项，该终结点会在 Azure 门户中显示为**无法访问**。
 
 ### <a name="event-hubs"></a>事件中心
 
 除了与事件中心兼容的内置终结点外，还可以将数据路由到事件中心类型的自定义终结点。 
-
-> [!NOTE]
-> 如果事件中心资源具有限制 IoT 中心连接的防火墙配置，请考虑使用 [Microsoft 信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)（在具有托管服务标识的 IoT 中心的选定区域中可用）。
-
 
 ## <a name="reading-data-that-has-been-routed"></a>读取已路由的数据
 
@@ -118,13 +114,13 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="fallback-route"></a>回退路由
 
-回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](/azure/event-hubs/)兼容的内置事件中心（消息/事件）  。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。
+回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](/azure/event-hubs/)兼容的内置事件中心（消息/事件）****。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。
 
 可以在 "Azure 门户 >消息路由" 边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
 
 ## <a name="non-telemetry-events"></a>非遥测事件
 
-除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生更改事件（在公共预览版中）。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”  ，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为**数字克隆更改事件**，IoT 中心会在数据源[属性](../iot-pnp/iot-plug-and-play-glossary.md)设置或更改时发送消息，[并在基础](../iot-pnp/iot-plug-and-play-glossary.md)设备克隆发生更改事件时发送消息。
+除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生更改事件（在公共预览版中）。 例如，如果使用数据源创建一个设置为到**设备孪生更改事件**的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”****，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，作为[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)的一部分，开发人员可以创建路由，并将数据源设置为**数字克隆更改事件**，IoT 中心会在数据源[属性](../iot-pnp/iot-plug-and-play-glossary.md)设置或更改时发送消息，[并在基础](../iot-pnp/iot-plug-and-play-glossary.md)设备克隆发生更改事件时发送消息。
 
 [IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布设备事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
 
@@ -146,11 +142,9 @@ IoT 中心消息路由可保证按顺序至少将消息传送到终结点一次�
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
-IoT 中心提供了多个与路由和终结点相关的指标，使你能够大致了解你的中心的运行状况和已发送的消息数。 你可以组合来自多项指标的信息来确定问题的根本原因。 例如，使用度量**路由：丢弃的遥测消息**数或**d2c** ，用于识别在禁用了任何路由和回退路由上的查询时丢弃的消息数。 [IoT 中心指标](iot-hub-metrics.md)列出了默认为 IoT 中心启用的所有指标。
+IoT 中心提供了多个与路由和终结点相关的指标，使你能够大致了解你的中心的运行状况和已发送的消息数。 [IoT 中心指标](iot-hub-metrics.md)列出了默认为 IoT 中心启用的所有指标。 使用**路由**诊断日志 Azure Monitor[诊断设置](../iot-hub/iot-hub-monitor-resource-health.md)，你可以跟踪在评估路由查询期间发生的错误以及 IoT 中心感知到的终结点运行状况。 你可以使用 REST API[获取终结点运行状况](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)，以获取终结点的[运行状况状态](iot-hub-devguide-endpoints.md#custom-endpoints)。 
 
-你可以使用 REST API[获取终结点运行状况](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)，以获取终结点的[运行状况状态](iot-hub-devguide-endpoints.md#custom-endpoints)。 当终结点运行状况为故障或不正常时，建议使用与路由消息延迟相关的 [IoT 中心指标](iot-hub-metrics.md)来标识并调试错误。 例如，对于终结点类型“事件中心”，可以监视 **d2c.endpoints.latency.eventHubs**。 当 IoT 中心建立了最终一致的运行状况状态以后，系统会将不正常终结点的状态更新为正常。
-
-通过使用 Azure Monitor [诊断设置](../iot-hub/iot-hub-monitor-resource-health.md)中的**路由**诊断日志，可以跟踪发生在路由查询和终结点运行状况的评估期间、由 IoT 中心所察觉到的错误，例如某个终结点已失效。 可以将这些诊断日志发送到 Azure Monitor 日志、事件中心或 Azure 存储进行自定义处理。
+使用用于[路由的故障排除指南](troubleshoot-message-routing.md)以获取更多详细信息，并支持路由故障排除。
 
 ## <a name="next-steps"></a>后续步骤
 

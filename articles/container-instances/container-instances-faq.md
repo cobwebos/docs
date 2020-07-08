@@ -3,13 +3,12 @@ title: 常见问题
 description: 有关 Azure 容器实例服务的常见问题解答
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/02/2020
+ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85806595"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>有关 Azure 容器实例的常见问题解答
 
@@ -27,25 +26,28 @@ ms.locfileid: "82115221"
 
 由于部署速度的主要决定因素之一是映像大小，因此请找到减小大小的办法。 删除不需要的层，或者减小映像中的层大小（选择较精简的基础 OS 映像）。 例如，如果运行 Linux 容器，请考虑使用 Alpine 作为基础映像，而不是使用完整的 Ubuntu Server。 同样，对于 Windows 容器，请尽可能地使用 Nano Server 基础映像。 
 
-还应查看 Azure 容器映像中预缓存映像的列表（通过[列出缓存的映像](/rest/api/container-instances/listcachedimages) API 获取）。 也许可以换出某个预缓存映像的映像层。 
+还应查看 Azure 容器映像中预缓存映像的列表（通过[列出缓存的映像](/rest/api/container-instances/location/listcachedimages) API 获取）。 也许可以换出某个预缓存映像的映像层。 
 
 有关如何减少容器启动时间，请参阅[更详细的指南](container-instances-troubleshooting.md#container-takes-a-long-time-to-start)。
 
 ### <a name="what-windows-base-os-images-are-supported"></a>支持哪些 Windows 基础 OS 映像？
 
+> [!NOTE]
+> 由于在2020中的 Windows 更新后向后兼容性出现问题，下面的映像版本包含我们建议在基础映像中使用的最小版本号。 使用较旧映像版本的当前部署不受影响，但新的部署应遵循以下基本映像。 
+
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 基础映像
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `10.0.14393.x`，`sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016`，`10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `sac2016` `10.0.14393.3506` 或更高版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2016` `10.0.14393.3506` 或更高版本
 
 > [!NOTE]
 > 不支持基于半年频道版本 1709 或 1803 的 Windows 映像。
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 和客户端基础映像（预览版）
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `1809` `10.0.17763.914`或更早版本
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019`、 `1809` `10.0.17763.914`或更早版本
-* [Windows](https://hub.docker.com/_/microsoft-windows)： `1809` `10.0.17763.914`或更早版本
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver)： `1809` `10.0.17763.1040` 或更高版本
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore)： `ltsc2019` 、 `1809` `10.0.17763.1040` 或更高版本
+* [Windows](https://hub.docker.com/_/microsoft-windows)： `1809` `10.0.17763.1040` 或更高版本
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>应在容器中使用哪个 .NET 或 .NET Core 映像层？ 
 
@@ -60,7 +62,7 @@ ms.locfileid: "82115221"
 另外，请务必检查所部署到的区域的[资源可用性](container-instances-region-availability.md#availability---general)，以确定每个容器组的可用 CPU 核心数和内存上限。 
 
 > [!NOTE]
-> 容器组的资源由服务的底层基础结构使用。 你的容器将能够访问最多（而不是分配给组的所有资源）。 出于此原因，在为组中的容器请求资源时，请规划小型资源缓冲区。
+> 服务的底层基础结构使用了容器组的少量资源。 容器将能够访问分配给该组的大部分而不是全部资源。 因此，为组中的容器请求资源时，请规划一个小型资源缓冲区。
 
 ### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI 在哪个底层基础结构上运行？
 
@@ -101,4 +103,4 @@ Azure 容器实例旨在用作无服务器按需容器服务，因此，我们�
 ## <a name="next-steps"></a>后续步骤
 
 * [详细了解](container-instances-overview.md) Azure 容器实例。
-* [排查](container-instances-troubleshooting.md)Azure 容器实例中的常见问题。
+* [排查 Azure 容器实例中的常见问题](container-instances-troubleshooting.md)

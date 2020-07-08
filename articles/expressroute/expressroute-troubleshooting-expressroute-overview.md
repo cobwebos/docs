@@ -4,16 +4,15 @@ description: 本页说明如何对 ExpressRoute 线路的端到端连接进行�
 services: expressroute
 author: rambk
 ms.service: expressroute
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 827d68a5f0f35e42acae1fa225646eb509f69c89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78330951"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84729313"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 可以通过往往已由连接服务提供商优化的专用连接，将本地网络扩展到 Microsoft 云中。 在传统上，ExpressRoute 连接涉及到三个不同的网络区域，如下所述：

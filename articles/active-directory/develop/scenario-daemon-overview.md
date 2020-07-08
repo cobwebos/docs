@@ -11,12 +11,11 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: df06c4c55941f4424d6b90d2846af17bf055b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: df5755c585d99333bf0c64ca08705309b4d4fc58
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885457"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253114"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>方案：用于调用 Web API 的守护程序应用程序
 
@@ -38,7 +37,7 @@ ms.locfileid: "80885457"
 - 执行批处理作业的桌面应用程序（例如 Windows 上的 Windows 服务，或 Linux 上的守护程序进程），或者在后台运行的操作系统服务
 - 需操作目录而非特定用户的 Web API
 
-非守护程序应用程序使用客户端凭据的另一种常见情况是：即使它们代表用户进行操作，出于技术原因，它们也需要以自己的标识访问 Web API 或资源。 例如，访问 Azure Key Vault 或用于缓存的 Azure SQL 数据库中的机密。
+非守护程序应用程序使用客户端凭据的另一种常见情况是：即使它们代表用户进行操作，出于技术原因，它们也需要以自己的标识访问 Web API 或资源。 例如，访问 Azure Key Vault 或 Azure SQL 数据库中用于缓存的机密。
 
 获取其自身标识的令牌的应用程序具有以下特点：
 

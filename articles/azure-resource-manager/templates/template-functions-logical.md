@@ -3,16 +3,15 @@ title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板中用于确定逻辑值的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192308"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677383"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
-资源管理器提供了几个用于在 Azure 资源管理器（ARM）模板中进行比较的函数。
+资源管理器提供了多个用于在 Azure 资源管理器 (ARM) 模板中进行比较的函数。
 
 * [and](#and)
 * [bool](#bool)
@@ -28,15 +27,15 @@ ms.locfileid: "82192308"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
+| arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
+| arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
 | 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果所有值均为 true，则返回 True；否则返回 False   。
+如果所有值均为 true，则返回 True；否则返回 False**** ****。
 
 ### <a name="examples"></a>示例
 
@@ -44,7 +43,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -66,7 +65,7 @@ ms.locfileid: "82192308"
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -80,7 +79,7 @@ ms.locfileid: "82192308"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -93,7 +92,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -117,9 +116,9 @@ ms.locfileid: "82192308"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -134,15 +133,15 @@ ms.locfileid: "82192308"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 条件 (condition) |是 |boolean |要检查是为 true 还是为 false 的值。 |
+| condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
 | falseValue |是 | 字符串、int、对象或数组 |条件为 false 时返回的值。 |
 
 ### <a name="return-value"></a>返回值
 
-如果第一个参数为 True，则返回第二个参数；否则返回第三个参数  。
+如果第一个参数为 True，则返回第二个参数；否则返回第三个参数****。
 
 ### <a name="remarks"></a>备注
 
@@ -154,7 +153,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -177,7 +176,7 @@ ms.locfileid: "82192308"
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | yesOutput | String | 是 |
 | noOutput | String | 否 |
@@ -187,7 +186,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -239,13 +238,13 @@ ms.locfileid: "82192308"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
 ### <a name="return-value"></a>返回值
 
-参数为 False 时返回 True   。 参数为 True 时返回 False   。
+参数为 False 时返回 True**** ****。 参数为 True 时返回 False**** ****。
 
 ### <a name="examples"></a>示例
 
@@ -253,7 +252,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -275,7 +274,7 @@ ms.locfileid: "82192308"
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -285,7 +284,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -300,7 +299,7 @@ ms.locfileid: "82192308"
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -312,15 +311,15 @@ ms.locfileid: "82192308"
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |boolean |第一个值，需检查其是否为 true。 |
-| arg2 |是 |boolean |第二个值，需检查其是否为 true。 |
+| arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
+| arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
 | 其他参数 |否 |boolean |用于检查是否为 true 的其他参数。 |
 
 ### <a name="return-value"></a>返回值
 
-如果任何值为 true，则返回 True；否则返回 False   。
+如果任何值为 true，则返回 True；否则返回 False**** ****。
 
 ### <a name="examples"></a>示例
 
@@ -328,7 +327,7 @@ ms.locfileid: "82192308"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -350,7 +349,7 @@ ms.locfileid: "82192308"
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

@@ -7,12 +7,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: f8b466dca9f3af55e3c11b39b3fbdac315af3675
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 0d16a2fa91b498888ae5dafd1b254b51eca94ebc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798591"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801404"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>商业市场的潜在顾客管理
 
@@ -91,7 +90,7 @@ ms.locfileid: "83798591"
 **是否必须在配置潜在顾客目标后，才能在市场上发布产品/服务？**
 
 是的，如果要发布“与我联系”SaaS 应用程序或咨询服务。  
- 
+
 **如何确认潜在顾客配置是否正确？**
 
 设置产品/服务和潜在顾客目标后，发布产品/服务。 在潜在顾客验证步骤中，市场会将测试潜在顾客发送到产品/服务中配置的潜在顾客目标。 
@@ -100,6 +99,7 @@ ms.locfileid: "83798591"
 
 在潜在顾客目标中搜索“MSFT_TEST”，以下是测试潜在顾客数据示例： 
 
+```text
 company = MSFT_TEST_636573304831318844 
 
 country = US 
@@ -116,64 +116,50 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<产品/服务名称> 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|\<Offer Name> 
 
 oid = 00Do0000000ZHog 
 
 phone = 1234567890 
 
 title = MSFT_TEST_636573304831318844 
+```
 
 **我有实时产品/服务，但是看不到任何潜在顾客？**
 
-每个潜在顾客都会在所选潜在顾客目标的字段中传递数据，潜在顾客将采用以下格式：**源 - 操作|产品/服务** 
+每个潜在顾客都会在所选潜在顾客目标的字段中传递数据，潜在顾客将采用以下格式：**源 - 操作|产品/服务**
 
-  源：
+- 源：
+  - AzureMarketplace
+  - Azure 门户
+  - TestDrive  
+  - SPZA （AppSource 的首字母缩写）
 
-    "AzureMarketplace", 
-    "AzurePortal", 
-    "TestDrive",  
-    "SPZA" (acronym for AppSource) 
+- 操作：
+  - "INS"-表示安装。 这在 Azure 市场或 AppSource 中每当客户点击按钮来购买产品时发生。
+  - "PLT"-代表合作伙伴 Led 试验。 这在 AppSource 中每当客户点击“与我联系”按钮时发生。
+  - "DNC"-表示 "不联系"。 这在 AppSource 中每当请求与在应用页面上交叉列出的合作伙伴进行联系时发生。 我们共享以下提醒：此客户已在应用上交叉列出，但他们不需要取得联系。
+  - "创建"-这仅适用于 Azure 门户，且每当客户向其帐户购买产品/服务时都是如此。
+  - "StartTestDrive"-这仅适用于测试驱动器，并在客户启动其测试驱动器时提供。
 
-  操作：
+- 产品/服务：
+  - "r77-10sg-byol"，
+  - "bitnami. openedxcypress"，
+  - "docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a"
 
-    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+以下为客户信息示例数据
 
-    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
-
-    "Create" - This is inside Azure portal only and is whenever a customer purchases your offer to their account. 
-
-    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
-
-
-  产品/服务：
-
-    "checkpoint.check-point-r77-10sg-byol", 
-    "bitnami.openedxcypress", 
-    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
-
- 
-
-  以下为客户信息示例数据
-
-    { 
-
-    "FirstName":"John", 
-
-    "LastName":"Smith", 
-
-    "Email":"jsmith@microsoft.com", 
-
-    "Phone":"1234567890", 
-
-    "Country":"US", 
-
-    "Company":"Microsoft", 
-
-    "Title":"CTO" 
-
-    } 
+```json
+{ 
+"FirstName":"John",
+"LastName":"Smith",
+"Email":"jsmith@microsoft.com",
+"Phone":"1234567890",
+"Country":"US",
+"Company":"Microsoft",
+"Title":"CTO"
+}
+```
 
 在[潜在顾客信息](./partner-center-portal/commercial-marketplace-get-customer-leads.md)下了解详细信息。 
 

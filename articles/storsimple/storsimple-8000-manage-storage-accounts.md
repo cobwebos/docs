@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 65aa83731be97b59a36a5baf60ea308690a0dcf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 306d3a14d759ac73e78626a4c2ec6abc69d3df85
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297749"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515039"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 设备管理器服务管理存储帐户凭据
 
@@ -77,7 +76,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”**** 部分提�
 
 1. 导航到 StorSimple 设备管理器服务，选择并双击它。 这会打开“概述”**** 边栏选项卡。
 2. 在“配置”**** 部分中，选择“存储帐户凭据”****。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
-3. 单击“添加”  。
+3. 单击“添加” 。
 4. 在“添加存储帐户凭据”**** 边栏选项卡中，执行以下步骤：
    
     1. 对于“订阅”****，选择“其他”****。
@@ -88,7 +87,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”**** 部分提�
    
     4. 若要启用 TLS，请单击 "**启用**" 按钮，为 StorSimple 设备管理器服务与云之间的网络通信创建一个安全通道。 仅当要在私有云中操作时，才单击“禁用”**** 按钮。
    
-    5. 单击“添加”  。 成功创建存储帐户凭据后，将收到通知。
+    5. 单击“添加” 。 成功创建存储帐户凭据后，将收到通知。
 
 5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”**** 下。
    

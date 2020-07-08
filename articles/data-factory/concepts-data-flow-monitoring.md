@@ -7,13 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/17/2020
-ms.openlocfilehash: 9594a2ddfaa0103e171618925ba6974bf9ad7f00
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.date: 07/03/2020
+ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833959"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958884"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -56,12 +55,31 @@ ms.locfileid: "83833959"
   * 群集启动时间：为数据流执行获取 JIT Spark 计算环境所需的时间量
   * 转换次数：在流中执行的转换步骤数
   
-![数据流监视](media/data-flow/monitornew.png "数据流监视（新）")  
+![数据流监视](media/data-flow/monitornew.png "数据流监视（新）")
+
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>总接收器处理时间与转换处理时间
+
+每个转换阶段都包括在每个分区执行时间汇总后完成该阶段的总时间。 单击接收器时，将显示 "接收器处理时间"。 此时间包括转换时间*和*将数据写入目标存储所需的 i/o 时间的总和。 接收器处理时间与转换总数之间的差异是写入数据的 i/o 时间。
+
+如果在 ADF 管道监视视图中打开数据流活动的 JSON 输出，还可以查看每个分区转换步骤的详细计时。 JSON 包含每个分区的毫秒计时，而 UX 监视视图是添加分区的聚合计时：
+
+```
+ {
+     "stage": 4,
+     "partitionTimes": [
+          14353,
+          14914,
+          14246,
+          14912,
+          ...
+         ]
+}
+```
   
 ## <a name="monitor-icons"></a>监视图标
 
 此图标表示转换数据已在群集中缓存，因此计时和执行路径已考虑到这种情况：
 
-![数据流监视](media/data-flow/mon004.png "数据流监视")
+![数据流监视](media/data-flow/mon005.png "数据流监视")
 
 在转换中还会看到绿色的圆圈图标。 它们表示数据流入的接收器数目。

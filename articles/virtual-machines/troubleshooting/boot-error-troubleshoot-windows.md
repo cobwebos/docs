@@ -12,12 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371358"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678760"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关机停滞在 "正在重新启动"、"正在关闭" 或 "正在停止服务"
 
@@ -43,25 +42,25 @@ Windows 使用关闭进程来执行系统维护操作，并处理更新、角色
 
 使用[串行控制台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)完成以下步骤：
 
-1. 打开管理 Powershell 并检查停止时挂起的服务。
+1. 打开管理 Powershell 并检查在停止时停止响应的服务。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. 在管理 CMD 上，获取挂起服务的 PID。
+2. 在管理 CMD 上，获取无响应服务的 PID。
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. 从挂起的进程<STOPPING SERVICE>获取内存转储示例。
+3. 从无响应进程获取内存转储示例 <STOPPING SERVICE> 。
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. 现在终止挂起的进程以解锁关闭进程。
+4. 现在终止无响应的进程来解锁关闭进程。
 
    ``
    taskkill /PID <PID> /t /f
@@ -105,7 +104,7 @@ dism /online /cleanup-image /restorehealth
 
 2. 运行以下脚本：
 
-   在此脚本中，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将其替换为 VM 中的相应值。
+   在此脚本中，假定分配给附加 OS 磁盘的驱动器号为 F。将其替换为 VM 中的相应值。
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +128,9 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. 验证磁盘上是否有足够的空间来分配尽可能多的内存作为 RAM，具体取决于为此 VM 选择的大小。
+3. 确认磁盘上有足够的空间来分配与 RAM 一样多的内存，具体取决于为此 VM 选择的大小。
 
-4. 如果空间不足或 VM 太大（G、GS 或 E 系列），可以更改创建此文件的位置，并将其指向附加到 VM 的任何其他数据磁盘。 若要更改位置，必须更改以下项：
+4. 如果没有足够的空间或者 VM 较大（G、GS 或 E 系列），则可随后更改创建此文件时所在的位置，将该位置指向任何其他附加到 VM 的数据磁盘。 若要更改位置，必须更改以下注册表项：
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,13 +141,13 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [分离 os 磁盘，然后将 os 磁盘重新连接到受影响的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
+5. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
 
 6. 启动 VM 并访问串行控制台。
 
-7. 选择 "发送不可屏蔽中断（NMI）" 以触发内存转储。
+7. 选择“发送不可屏蔽中断(NMI)”以触发内存转储。
 
-   ![发送不可屏蔽中断](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![发送不可屏蔽的中断](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
 8. 再次将 OS 磁盘附加到恢复 VM，收集转储文件。
 

@@ -3,12 +3,11 @@ title: Azure Application Insights IP 地址收集 | Microsoft Docs
 description: 了解如何使用 Azure Application Insights 处理 IP 地址和地理位置
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 969061ec89ddd0f13caa675bc324207c6c5d8843
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656511"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807122"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -20,20 +19,20 @@ ms.locfileid: "77656511"
 
 IP 地址作为遥测数据的一部分发送到 Application Insights。 IP 地址抵达 Azure 中的引入终结点后，将用于通过 [MaxMind 中的 GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 执行地理位置查找。 此查找的结果用于填充 `client_City`、`client_StateOrProvince` 和 `client_CountryOrRegion` 字段。 此时，将丢弃 IP 地址，并将 `0.0.0.0` 写入 `client_IP` 字段。
 
-* 浏览器遥测：我们暂时收集发件人的 IP 地址。 IP 地址由引入终结点计算。
-* 服务器遥测： Application Insights 模块暂时收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
+* 浏览器遥测：我们会暂时收集发送方的 IP 地址。 IP 地址由引入终结点计算。
+* 服务器遥测：Application Insights 模块暂时收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
 
 此行为是有意设计的，目的是帮助避免不必要地收集个人数据。 我们建议尽量避免收集个人数据。 
 
 ## <a name="overriding-default-behavior"></a>重写默认行为
 
-尽管默认行为是尽量避免收集个人数据，但我们仍然可以让用户灵活收集和存储 IP 地址数据。 在存储任何个人数据（例如 IP 地址）之前，我们强烈建议确认此行为不会违反任何需要遵守的合规要求或当地法规。 若要详细了解 Application Insights 中的个人数据处理，请参阅[有关个人数据的指南](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
+尽管默认行为是尽量避免收集个人数据，但我们仍然可以让用户灵活收集和存储 IP 地址数据。 在存储任何个人数据（例如 IP 地址）之前，我们强烈建议确认此行为不会违反任何需要遵守的合规要求或当地法规。 若要详细了解 Application Insights 中的个人数据处理，请参阅[个人数据指南](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
 
 ## <a name="storing-ip-address-data"></a>存储 IP 地址数据
 
 若要启用 IP 收集和存储，必须将 Application Insights 组件的 `DisableIpMasking` 属性设置为 `true`。 可以通过 Azure 资源管理器模板或调用 REST API 来设置此属性。 
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 ```json
 {
@@ -59,26 +58,26 @@ IP 地址作为遥测数据的一部分发送到 Application Insights。 IP 地�
 
 如果只需修改单个 Application Insights 资源的行为，最简单的方法是使用 Azure 门户。  
 
-1. 开始 Application Insights 资源 >**设置** > **导出模板** 
+1. 转到你的 Application Insights 资源并选择“设置” > “导出模板”  
 
     ![导出模板](media/ip-collection/export-template.png)
 
-2. 选择**部署**
+2. 选择“部署”
 
     ![以红色突出显示的“部署”按钮](media/ip-collection/deploy.png)
 
-3. 选择“编辑模板”。**** （如果你的模板包含未显示在此示例模板中的其他属性或资源，请小心地继续操作，确保所有资源接受模板部署作为增量更改/更新。）
+3. 选择“编辑模板”。 （如果你的模板包含未显示在此示例模板中的其他属性或资源，请小心地继续操作，确保所有资源接受模板部署作为增量更改/更新。）
 
     ![编辑模板](media/ip-collection/edit-template.png)
 
-4. 对资源的 json 进行以下更改，然后单击“保存”：****
+4. 对资源的 json 进行以下更改，然后单击“保存”：
 
     ![在屏幕截图中，“IbizaAIExtension”的后面添加了一个逗号，并在下面添加了包含 "DisableIpMasking": true 的新行](media/ip-collection/save.png)
 
     > [!WARNING]
-    > 如果遇到错误，指出： **_资源组所在的位置不受模板中的一个或多个资源支持。请选择其他资源组。_** 请从下拉列表中暂时选择另一个资源组，然后重新选择原始资源组来解决此错误。
+    > 如果遇到了包含以下消息的错误：“资源组所在的位置不受模板中的一个或多个资源支持。请选择其他资源组。” 请从下拉列表中暂时选择另一个资源组，然后重新选择原始资源组来解决此错误。
 
-5. 选择 "**我同意** > **购买**"。 
+5. 选择“我同意” > “购买”。  
 
     ![编辑模板](media/ip-collection/purchase.png)
 
@@ -86,7 +85,7 @@ IP 地址作为遥测数据的一部分发送到 Application Insights。 IP 地�
 
 6. 部署完成后，将会记录新的遥测数据。
 
-    如果再次选择并编辑模板，只会看到默认模板，而看不到新添加的属性及其关联值。 如果未看到 IP 地址数据并希望确认是否已设置 `"DisableIpMasking": true`， 运行以下 PowerShell：（替换`Fabrikam-dev`为适当的资源和资源组名称。）
+    如果再次选择并编辑模板，只会看到默认模板，而看不到新添加的属性及其关联值。 如果未看到 IP 地址数据并希望确认是否已设置 `"DisableIpMasking": true`， 请运行以下 PowerShell：（请将 `Fabrikam-dev` 替换为相应的资源和资源组名称。）
     
     ```powershell
     # If you aren't using the cloud shell you will need to connect to your Azure account
@@ -150,7 +149,7 @@ namespace MyWebApp
 > [!NOTE]
 > 如果无法访问 `ISupportProperties`，请检查并确保运行最新稳定版本的 Application Insights SDK。 `ISupportProperties` 适合用于高基数值，而 `GlobalProperties` 更适合用于低基数值，如区域名称、环境名称等。 
 
-### <a name="enable-telemetry-initializer-for-aspnet"></a>为 ASP.NET 启用遥测初始值设定项
+### <a name="enable-telemetry-initializer-for-aspnet"></a>为 ASP.NET 启用遥测初始化表达式
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -235,4 +234,4 @@ requests
 
 * 详细了解 Application Insights 中的[个人数据收集](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)。
 
-* 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/blog/2016/07/05/client-ip-address/)的工作原理。 （这是我们的某位工程师在较早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）
+* 详细了解 Application Insights 中 [IP 地址收集](https://apmtips.com/posts/2016-07-05-client-ip-address/)的工作原理。 （这是我们的某位工程师在较早前撰写的一篇外部博客文章。 其中所述的机制不同当前的默认行为，现在，IP 地址将记录为 `0.0.0.0`，不过此文更深入地描述了内置 `ClientIpHeaderTelemetryInitializer` 的机制。）

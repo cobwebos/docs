@@ -3,22 +3,21 @@ title: 模板函数 - 比较
 description: 介绍可在 Azure 资源管理器模板中使用的用于比较值的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203771"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677825"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
-资源管理器提供了几个用于在 Azure 资源管理器（ARM）模板中进行比较的函数。
+资源管理器提供了多个用于在 Azure 资源管理器 (ARM) 模板中进行比较的函数。
 
-* [接合](#coalesce)
+* [coalesce](#coalesce)
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [量](#less)
+* [less](#less)
 * [lessOrEquals](#lessorequals)
 
 ## <a name="coalesce"></a>coalesce
@@ -27,9 +26,9 @@ ms.locfileid: "82203771"
 
 从参数中返回第一个非 null 值。 空字符串、空数组和空对象不为 null。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
@@ -44,7 +43,7 @@ ms.locfileid: "82203771"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -86,14 +85,14 @@ ms.locfileid: "82203771"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| stringOutput | 字符串 | default |
-| intOutput | Int | 1 |
-| objectOutput | 对象 | {"first": "default"} |
-| arrayOutput | 数组 | [1] |
+| stringOutput | String | 默认值 |
+| intOutput | int | 1 |
+| objectOutput | Object | {"first": "default"} |
+| arrayOutput | Array | [1] |
 | emptyOutput | Bool | True |
 
 ## <a name="equals"></a>equals
@@ -102,9 +101,9 @@ ms.locfileid: "82203771"
 
 检查两个值是否相等。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
 | arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
@@ -115,7 +114,7 @@ ms.locfileid: "82203771"
 
 ### <a name="remarks"></a>备注
 
-Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源。
+equals 函数通常与 `condition` 元素一起使用来测试资源是否已部署。
 
 ```json
 {
@@ -138,7 +137,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -197,9 +196,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | True |
@@ -210,7 +209,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -225,7 +224,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 前述示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -235,9 +234,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 检查第一个值是否大于第二个值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于比较的第二个值。 |
@@ -252,7 +251,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -287,9 +286,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -300,9 +299,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 检查第一个值是否大于或等于第二个值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
@@ -317,7 +316,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -352,9 +351,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
@@ -365,9 +364,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 检查第一个值是否小于第二个值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于比较的第二个值。 |
@@ -382,7 +381,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -417,9 +416,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
@@ -430,9 +429,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 检查第一个值是否小于或等于第二个值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
@@ -447,7 +446,7 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -482,9 +481,9 @@ Equals 函数通常与 `condition` 元素配合使用来测试是否部署资源
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | checkInts | Bool | True |
 | checkStrings | Bool | False |

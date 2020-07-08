@@ -1,5 +1,5 @@
 ---
-title: 委托应用程序管理员管理权限 - Azure AD | Microsoft Docs
+title: 委派应用程序管理管理员权限-Azure AD |Microsoft Docs
 description: 在 Azure Active Directory 中授予应用程序访问管理权限
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2527e4e630e7bf9cce0c68261bfa1c1797fbf795
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253034"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731811"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -46,7 +45,7 @@ ms.locfileid: "79253034"
 
 ### <a name="grant-individual-permissions-to-create-and-consent-to-applications-when-the-default-ability-is-disabled"></a>禁用默认权限时授予创建和许可应用程序的单个权限
 
-分配“应用程序开发人员”角色，以便在“用户可以注册应用程序”设置为“否”时，授予创建应用程序注册的权限。**** 当“用户可以许可代表其访问公司数据的应用”设置设为“否”时，此角色还能够代表自己授权许可权限。**** 作为一种系统行为，当用户创建新的应用程序注册时，他们将自动添加为第一个所有者。 所有权权限可让用户全方面管理其拥有的应用程序注册或企业应用程序。
+分配“应用程序开发人员”角色，以便在“用户可以注册应用程序”设置为“否”时，授予创建应用程序注册的权限。**** 如果**用户可以同意应用代表他们访问公司数据的应用**将设置为 "否"，则此角色还会代表自己授予许可。 作为一种系统行为，当用户创建新的应用程序注册时，他们将自动添加为第一个所有者。 所有权权限可让用户全方面管理其拥有的应用程序注册或企业应用程序。
 
 ## <a name="assign-application-owners"></a>分配应用程序所有者
 
@@ -60,8 +59,8 @@ ms.locfileid: "79253034"
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>向企业应用程序分配所有者
 
-1. 使用有资格用于组织的应用程序管理员或云应用程序管理员的帐户登录到[Azure AD 组织](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
-1. 在组织的 " [应用注册" 页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) 上，选择一个应用以打开该应用的 "概述" 页。
+1. [your Azure AD organization](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)   使用有资格用于组织的应用程序管理员或云应用程序管理员的帐户登录到 Azure AD 组织。
+1. 在组织的 " [应用注册" 页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)上   ，选择一个应用以打开该应用的 "概述" 页。
 1. 选择“所有者”****，以查看应用所有者列表。
 1. 选择“添加”****，以选择一个或多个要添加到应用的所有者。
 

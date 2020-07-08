@@ -8,16 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 06/05/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 232b166d667996f2138224dc6ecbbc925d0ebe9e
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 9e2f4eccb725bfac2229fa1471673a121c77f648
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84448404"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft 标识平台视频
 
@@ -32,38 +31,38 @@ ___
 
 :::row:::
     :::column:::
-        1 - 面向开发人员的 Microsoft 标识平台概述 (33:55)
+        1-面向<a href="https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1" target="_blank">开发人员 <span class="docon docon-navigate-external x-hidden-focus"></span> 的 Microsoft 标识平台概述</a>（33:55）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/zjezqZPPOfc]
+        <a href="https://www.youtube.com/watch?v=zjezqZPPOfc" target="_blank"> <img src="./media/identity-videos/id-for-devs-01.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
      :::column:::
-        2 - 如何使用 Microsoft 标识平台对应用用户进行身份验证 (29:09)
+        2-<a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2" target="_blank">如何通过 Microsoft 标识 <span class="docon docon-navigate-external x-hidden-focus"></span> 平台对你的应用程序的用户进行身份验证</a>（29:09）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/Mtpx_lpfRLs]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        3 - Microsoft 标识平台的权限和许可框架 (45:08)
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/toAWRNqqDL4]
-    :::column-end:::
-    :::column:::
-        4 - 如何使用 Microsoft 标识平台保护 API (33:17)
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/IIQ7QW4bYqA]
+        <a href="https://www.youtube.com/watch?v=Mtpx_lpfRLs" target="_blank"> <img src="./media/identity-videos/id-for-devs-02.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        5 - Microsoft 标识平台上的应用程序角色和安全组 (15:52)
+        3- <a href="https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3" target="_blank">Microsoft 标识平台的权限和同意框架 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> （45:08）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/-BK2iBDrmNo]
+        <a href="https://www.youtube.com/watch?v=toAWRNqqDL4" target="_blank"> <img src="./media/identity-videos/id-for-devs-03.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        4-<a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4" target="_blank">如何使用 Microsoft 标识 <span class="docon docon-navigate-external x-hidden-focus"></span> 平台保护 api</a> （33:17）
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=IIQ7QW4bYqA" target="_blank"> <img src="./media/identity-videos/id-for-devs-04.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5- <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5" target="_blank">Microsoft 标识平台 <span class="docon docon-navigate-external x-hidden-focus"></span> 上的应用程序角色和安全组</a>（15:52）
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo" target="_blank"> <img src="./media/identity-videos/id-for-devs-05.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
         <!-- BLANK TITLE CELL -->
@@ -73,6 +72,20 @@ ___
     :::column-end:::
 :::row-end:::
 
+<!-- IMAGES -->
+[id-plat-01-img]: ./media/identity-videos/id-for-devs-01.jpg
+[id-plat-02-img]: ./media/identity-videos/id-for-devs-02.jpg
+[id-plat-03-img]: ./media/identity-videos/id-for-devs-03.jpg
+[id-plat-04-img]: ./media/identity-videos/id-for-devs-04.jpg
+[id-plat-05-img]: ./media/identity-videos/id-for-devs-05.jpg
+
+<!-- VIDEOS -->
+[id-plat-01-vid]: https://www.youtube.com/watch?v=zjezqZPPOfc&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=1
+[id-plat-02-vid]: https://www.youtube.com/watch?v=Mtpx_lpfRLs&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=2
+[id-plat-03-vid]: https://www.youtube.com/watch?v=toAWRNqqDL4&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=3
+[id-plat-04-vid]: https://www.youtube.com/watch?v=IIQ7QW4bYqA&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=4
+[id-plat-05-vid]: https://www.youtube.com/watch?v=-BK2iBDrmNo&list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX&index=5
+
 ## <a name="authentication-fundamentals"></a>身份验证基础知识
 
 如果你对诸如标识提供者、安全令牌、声明和受众等概念还不熟悉，可借助本视频系列清楚了解新式身份验证中的概念和组件。
@@ -80,46 +93,62 @@ ___
 
 :::row:::
     :::column:::
-        1 - 基本信息：新式身份验证的概念 (4:33)
+        1-<a href="https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1" target="_blank">基础知识：新式身份验证 <span class="docon docon-navigate-external x-hidden-focus"></span> 的概念</a>（4:33）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=fbSVgC8nGz4" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-01.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
      :::column:::
-        2 - web 应用程序的新式身份验证 (6:02)
+        2- <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2" target="_blank">web 应用程序 <span class="docon docon-navigate-external x-hidden-focus"></span> 的新式身份验证</a>（6:02）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=tCNcG1lcCHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-02.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        3 - Web 单一登录 (4:13)
+        3- <a href="https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3" target="_blank">Web 单一登录 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> （4:13）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=51B-jSOBF8U" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-03.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        4 - 联合 web 身份验证 (6:19)
+        4-<a href="https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4" target="_blank">联合 web 身份 <span class="docon docon-navigate-external x-hidden-focus"></span> 验证</a>（6:19）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=CjarTgjKcX8" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-04.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        5 - 本机客户端应用程序 - 第 1 部分 (8:12)
+        5- <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5" target="_blank">Native client 应用程序-第 <span class="docon docon-navigate-external x-hidden-focus"></span> 1 部分</a>（8:12）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=OGMDnuDrAcQ" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-05.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        6 - 本机客户端应用程序 - 第 2 部分 (5:33)
+        6- <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6" target="_blank">Native client 应用程序-第 <span class="docon docon-navigate-external x-hidden-focus"></span> 2 部分</a>（5:33）
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+        <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-06.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
+
+<!-- IMAGES -->
+[auth-fund-01-img]: ./media/identity-videos/aad-auth-fund-01.jpg
+[auth-fund-02-img]: ./media/identity-videos/aad-auth-fund-02.jpg
+[auth-fund-03-img]: ./media/identity-videos/aad-auth-fund-03.jpg
+[auth-fund-04-img]: ./media/identity-videos/aad-auth-fund-04.jpg
+[auth-fund-05-img]: ./media/identity-videos/aad-auth-fund-05.jpg
+[auth-fund-06-img]: ./media/identity-videos/aad-auth-fund-06.jpg
+
+<!-- VIDEOS -->
+[auth-fund-01-vid]: https://www.youtube.com/watch?v=fbSVgC8nGz4&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=1
+[auth-fund-02-vid]: https://www.youtube.com/watch?v=tCNcG1lcCHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=2
+[auth-fund-03-vid]: https://www.youtube.com/watch?v=51B-jSOBF8U&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=3
+[auth-fund-04-vid]: https://www.youtube.com/watch?v=CjarTgjKcX8&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=4
+[auth-fund-05-vid]: https://www.youtube.com/watch?v=OGMDnuDrAcQ&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=5
+[auth-fund-06-vid]: https://www.youtube.com/watch?v=2RE6IhXfmHY&list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy&index=6
 
 ## <a name="microsoft-identity-platform-basics"></a>Microsoft 标识平台基础知识
 
@@ -128,84 +157,84 @@ ___
 
 :::row:::
     :::column:::
-        Microsoft 标识平台概述
+        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank">Microsoft 标识平台概述<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
+        <a href="https://www.youtube.com/watch?v=bNlcFuIo3r8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
     :::column-end:::
     :::column:::
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        MSAL 库简介
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
-    :::column-end:::
-    :::column:::
-        MSAL 如何简化身份验证
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        范围说明
+        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank">Microsoft Graph 和 Microsoft 身份验证库（MSAL）<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
+        <a href="https://www.youtube.com/watch?v=apbbx2n4tnU" target="_blank"> <img src="./media/identity-videos/graph-and-msal.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        什么是代理
+        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank">什么是 MSAL 系列的库？<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        重定向 URI 的用途
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
-    :::column-end:::
-    :::column:::
-        租户说明
-    :::column-end:::
-    :::column:::
-        >[!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
+        <a href="https://www.youtube.com/watch?v=yLVEBU9Z96Q" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        Azure AD 的角色
+        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank">范围说明<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
+        <a href="https://www.youtube.com/watch?v=eiPHOoLmGJs" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        Azure AD 应用对象的角色
+        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank">什么是代理<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/HEpq_YSmuWw]
+        <a href="https://www.youtube.com/watch?v=Zd_Uubnu0U0" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        组织和个人 Microsoft 帐户的差异
+        <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank">重定向 Uri 的用途<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
+        <a href="https://www.youtube.com/watch?v=znSN_3JAuoU" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        SPA 和 Web 应用的差异
+        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank">租户说明<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
+        <a href="https://www.youtube.com/watch?v=mDhT4Zv1fZU" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank">Azure AD 的角色<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=zDEC7A5ZS2Q" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank">Azure AD 应用对象的角色<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=HEpq_YSmuWw" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank">组织和个人 Microsoft 帐户差异<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=E2OUluQQKSk" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank">SPA 和 web 应用之间的差异<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 
@@ -216,29 +245,29 @@ ___
 
 :::row:::
     :::column:::
-        终结点及迁移到 v2.0 的优势
+        <a href="https://www.youtube.com/watch?v=qpdC45tZYDg" target="_blank">为什么从 ADAL 迁移到 MSAL<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
+        <a href="https://www.youtube.com/watch?v=qpdC45tZYDg" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
      :::column:::
-        将 ADAL 基本代码迁移到 MSAL
+        <a href="https://www.youtube.com/watch?v=xgL_z9yCnrE" target="_blank">将 ADAL 基本代码迁移到 MSAL<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
+        <a href="https://www.youtube.com/watch?v=xgL_z9yCnrE" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        为什么从 ADAL 迁移到 MSAL
+        <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank">MSAL 优于 ADAL 的优点<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
+        <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        MSAL 相较于 ADAL 的优势
+        <!-- BLANK TITLE CELL -->
     :::column-end:::
     :::column:::
-        >[!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]
+        <!-- BLANK VIDEO CELL -->
     :::column-end:::
 :::row-end:::

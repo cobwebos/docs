@@ -4,19 +4,19 @@ description: 有关 Windows 设备中的企业状态漫游设置的常见问题�
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672397"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85252995"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 
@@ -95,4 +95,4 @@ ms.locfileid: "78672397"
 * [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.md)
 * [设置同步的组策略和 MDM 设置](enterprise-state-roaming-group-policy-settings.md)
 * [Windows 10 漫游设置参考](enterprise-state-roaming-windows-settings-reference.md)
-* [故障排除](enterprise-state-roaming-troubleshooting.md)
+* [疑难解答](enterprise-state-roaming-troubleshooting.md)

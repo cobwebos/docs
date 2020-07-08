@@ -8,12 +8,11 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b24e0487aef73ed7852cb4a64766a1f8d92aff94
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887327"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677419"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口
 
@@ -29,7 +28,7 @@ ms.locfileid: "80887327"
 可通过三种方式在 VM 上配置 JIT 策略：
 
 - [在 Azure 安全中心配置 JIT 访问](#jit-asc)
-- [在 Azure VM 页面中配置 JIT access](#jit-vm)
+- [在 Azure VM 页中配置 JIT 访问](#jit-vm)
 - [以编程方式在 VM 上配置 JIT 策略](#jit-program)
 
 ## <a name="configure-jit-in-azure-security-center"></a>在 Azure 安全中心配置 JIT
@@ -38,13 +37,13 @@ ms.locfileid: "80887327"
 
 ### <a name="configure-jit-access-on-a-vm-in-security-center"></a>在安全中心的 VM 上配置 JIT 访问 <a name="jit-asc"></a>
 
-1. 打开“安全中心”**** 仪表板。
+1. 打开“安全中心”仪表板。
 
-1. 在左侧窗格中，选择“实时 VM 访问”****。
+1. 在左侧窗格中，选择“实时 VM 访问”。
 
     ![实时 VM 访问磁贴](./media/security-center-just-in-time/just-in-time.png)
 
-    此时将打开 "**实时 VM 访问**" 窗口，并显示有关 vm 状态的信息：
+    此时将打开“实时 VM 访问”窗口，并显示有关 VM 状态的信息：
 
     - **已配置** - 已配置为支持实时 VM 访问的 VM。 提供的数据是针对过去一周的，并且针对每个 VM 包括了已批准的请求数、上次访问日期和时间以及上一个用户。
     - **推荐** - 可以支持实时 VM 访问但尚未配置此功能的 VM。 建议为这些 VM 启用实时 VM 访问控制。
@@ -53,28 +52,28 @@ ms.locfileid: "80887327"
       - 经典 VM - 安全中心实时 VM 访问当前仅支持通过 Azure 资源管理器部署的 VM。 实时解决方案不支持经典部署。 
       - 其他 - 如果在订阅或资源组的安全策略中未开启实时解决方案，或者 VM 缺少公共 IP 且没有已准备就绪的 NSG，则该 VM 将位于此类别中。
 
-1. 选择“建议”选项卡。****
+1. 选择“建议”选项卡。
 
-1. 在“虚拟机”**** 下，单击要启用的 VM。 这会在 VM 旁边放置一个复选标记。
+1. 在“虚拟机”下，单击要启用的 VM。 这会在 VM 旁边放置一个复选标记。
 
       ![启用实时访问](./media/security-center-just-in-time/enable-just-in-time.png)
 
-1. 单击“在 VM 上启用 JIT”。**** 此时会打开一个窗格，其中显示了 Azure 安全中心推荐的默认端口：
+1. 单击“在 VM 上启用 JIT”。 此时会打开一个窗格，其中显示 Azure 安全中心建议的默认端口：
     - 22 - SSH
     - 3389 - RDP
     - 5985 - WinRM 
     - 5986 - WinRM
-1. 或者，你可以将自定义端口添加到列表中：
+1. 或者，可以将自定义端口添加到列表中：
 
-      1. 单击“添加”  。 此时会打开“添加端口配置”窗口****。
+      1. 单击“添加” 。 此时会打开“添加端口配置”窗口。
       1. 对于选择配置的每个端口，无论是默认端口还是自定义端口，都可以自定义下列设置：
             - **协议类型** - 批准某个请求时，此端口允许的协议。
             - **允许的源 IP 地址** - 批准某个请求时，此端口允许的 IP 范围。
             - **最大请求时间** - 可以打开特定端口的最大时间范围。
 
-     1. 单击" **确定**"。
+     1. 单击 **“确定”** 。
 
-1. 单击 **“保存”** 。
+1. 单击“保存” 。
 
 > [!NOTE]
 >如果为 VM 启用 JIT VM 访问，Azure 安全中心将在与所选端口关联的网络安全组和 Azure 防火墙中为该端口创建“拒绝所有入站流量”规则。 如果为所选端口创建了其他规则，则现有规则优先于新的 "拒绝所有入站流量" 规则。 如果所选端口上没有现有规则，则新的 "拒绝所有入站流量" 规则优先于网络安全组和 Azure 防火墙。
@@ -84,26 +83,26 @@ ms.locfileid: "80887327"
 
 若要通过安全中心请求访问 VM，请执行以下操作：
 
-1. 在“实时 VM 访问”下，选择“已配置”选项卡********。
+1. 在“实时 VM 访问”下，选择“已配置”选项卡 。
 
-1. 在“虚拟机”**** 下，单击要请求访问的 VM。 这会勾选该 VM。
+1. 在“虚拟机”下，单击要请求访问的 VM。 这会勾选该 VM。
 
-    - “连接详细信息”列中的图标指示是在 NSG 还是 FW 中启用了 JIT****。 如果同时启用这两个，则只会显示防火墙图标。
+    - “连接详细信息”列中的图标指示是在 NSG 还是 FW 中启用了 JIT。 如果同时启用这两个，则只会显示防火墙图标。
 
-    - “连接详细信息”列提供连接 VM 所需的信息，及其打开的端口****。
+    - “连接详细信息”列提供连接 VM 所需的信息，及其打开的端口。
 
       ![请求实时访问](./media/security-center-just-in-time/request-just-in-time-access.png)
 
-1. 单击“请求访问”。**** 此时会打开“请求访问”窗口。****
+1. 单击“请求访问”。 此时会打开“请求访问”窗口。
 
       ![JIT 详细信息](./media/security-center-just-in-time/just-in-time-details.png)
 
-1. 在“请求访问”下，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 地址以及将打开该端口的时间范围****。 只能请求访问在实时策略中配置的端口。 每个端口都有一个从实时策略派生的最大允许时间。
+1. 在“请求访问”下，为每个 VM 配置要打开的端口、要为其打开该端口的源 IP 地址以及将打开该端口的时间范围。 只能请求访问在实时策略中配置的端口。 每个端口都有一个从实时策略派生的最大允许时间。
 
-1. 单击“打开端口”。****
+1. 单击“打开端口”。
 
 > [!NOTE]
-> 如果请求访问的用户使用代理，则“我的 IP”选项可能无法使用****。 可能需要定义组织的完整 IP 地址范围。
+> 如果请求访问的用户使用代理，则“我的 IP”选项可能无法使用。 可能需要定义组织的完整 IP 地址范围。
 
 
 
@@ -113,11 +112,11 @@ ms.locfileid: "80887327"
 
 编辑现有的 VM 实时策略：
 
-1. 在“已配置”选项卡中，在“VM”下，通过单击 VM 对应的行内的三个点来选择要为其添加端口的 VM********。 
+1. 在“已配置”选项卡中，在“VM”下，通过单击 VM 对应的行内的三个点来选择要为其添加端口的 VM 。 
 
-1. 选择“编辑”  。
+1. 选择“编辑”。
 
-1. 在“JIT VM 访问配置”下，可以编辑已保护的端口的现有设置，也可以添加新的自定义端口****。 
+1. 在“JIT VM 访问配置”下，可以编辑已保护的端口的现有设置，也可以添加新的自定义端口。 
   ![jit vm 访问](./media/security-center-just-in-time/edit-policy.png)
 
 
@@ -126,16 +125,16 @@ ms.locfileid: "80887327"
 
 可以使用日志搜索深入了解 VM 活动。 若要查看日志，请执行以下操作：
 
-1. 在“实时 VM 访问”下，选择“已配置”选项卡********。
-2. 在 " **vm**" 下，选择要查看其相关信息的 vm，方法是单击该 vm 行内的三个点，并从菜单中选择 "**活动日志**"。 此时会打开“活动日志”。****
+1. 在“实时 VM 访问”下，选择“已配置”选项卡 。
+2. 在“VM”下，选择一个 VM，通过单击该 VM 对应的行中的三个点来查看其相关信息，并从菜单中选择“活动日志”。 此时会打开“活动日志”。
 
    ![选择“活动日志”](./media/security-center-just-in-time/select-activity-log.png)
 
-   “活动日志”**** 提供了该 VM 的以前操作的经筛选视图以及时间、日期和订阅。
+   “活动日志”提供了该 VM 的以前操作的经筛选视图以及时间、日期和订阅。
 
-可以通过选择“单击此处将所有项下载为 CSV”来下载日志信息。****
+可以通过选择“单击此处将所有项下载为 CSV”来下载日志信息。
 
-修改筛选器并单击“应用”来创建搜索和日志。****
+修改筛选器并单击“应用”来创建搜索和日志。
 
 
 
@@ -147,10 +146,10 @@ ms.locfileid: "80887327"
 
 若要轻松地在 VM 间进行实时访问，可以将 VM 设置为仅允许从 VM 内直接进行实时访问。
 
-1. 在 [Azure 门户](https://ms.portal.azure.com)中，搜索并选择“虚拟机”****。 
+1. 在 [Azure 门户](https://ms.portal.azure.com)中，搜索并选择“虚拟机”。 
 2. 选择要实行实时访问限制的虚拟机。
-3. 在菜单中选择“配置”****。
-4. 在 "**实时访问**" 下，选择 "**启用**实时"。 
+3. 在菜单中选择“配置”。
+4. 在“实时访问”下，选择“启用实时” 。 
 
 此操作可为使用以下设置的 VM 启用实时访问：
 
@@ -167,24 +166,24 @@ ms.locfileid: "80887327"
 
 ![VM 中的 JIT 配置](./media/security-center-just-in-time/jit-vm-config.png)
 
-### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>通过 Azure VM 页面请求对 VM 的 JIT 访问
+### <a name="request-jit-access-to-a-vm-via-an-azure-vms-page"></a>通过 Azure VM 页请求对 VM 的 JIT 访问权限
 
 在 Azure 门户中，尝试连接到 VM 时，Azure 会检查是否在该 VM 上配置实时访问策略。
 
-- 如果在 VM 上配置了 JIT 策略，则可以单击 "**请求访问权限**"，根据为 VM 设置的 jit 策略授予访问权限。 
+- 如果在 VM 上配置了 JIT 策略，则可以单击“请求访问权限”以根据为 VM 设置的 JIT 策略授予访问权限。 
 
   >![jit 请求](./media/security-center-just-in-time/jit-request.png)
 
-  使用以下默认参数请求访问：
+  使用以下默认参数请求访问权限：
 
   - **源 IP**： "Any" （*）（不能更改）
-  - **时间范围**：三个小时（不能更改） <!--Isn't this set in the policy-->
+  - **时间范围**：3 小时（无法更改） <!--Isn't this set in the policy-->
   - **端口号**：在 Windows 中为 RDP 端口 3389/在 Linux 中为端口 22（可更改）
 
     > [!NOTE]
     > 批准对受 Azure 防火墙保护的 VM 的请求后，安全中心将为用户提供正确的连接详细信息（来自 DNAT 表的端口映射）用于连接 VM。
 
-- 如果未在 VM 上配置 JIT，系统将提示你在 VM 上配置 JIT 策略。
+- 如果未在 VM 上配置 JIT，将提示你在其上配置 JIT 策略。
 
   ![jit 提示](./media/security-center-just-in-time/jit-prompt.png)
 
@@ -211,7 +210,7 @@ ms.locfileid: "80887327"
 
 1.    分配变量，保存 VM 的实时 VM 访问策略：
 
-        $JitPolicy = （@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" 端口 = （@ {number = 22;       protocol = "\*";       allowedSourceAddressPrefix = @ （"\*"）;       maxRequestAccessDuration = "PT3H"}，@ {number = 3389;       protocol = "\*";       allowedSourceAddressPrefix = @ （"\*"）;       maxRequestAccessDuration = "PT3H"}）}）
+        $JitPolicy = （@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";  端口 = （@ {number = 22;       protocol = " \* ";       allowedSourceAddressPrefix = @ （" \* "）;       maxRequestAccessDuration = "PT3H"}，@ {number = 3389;       protocol = " \* ";       allowedSourceAddressPrefix = @ （" \* "）;       maxRequestAccessDuration = "PT3H"}）}）
 
 2.    将 VM 实时 VM 访问策略插入数组：
     
@@ -228,7 +227,7 @@ ms.locfileid: "80887327"
 在 PowerShell 中运行以下命令：
 1.    配置 VM 请求访问属性
 
-        $JitPolicyVm 1 = （@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" 端口 = （@ {number = 22;     endTimeUtc = "2018-09-17T17：00： 00.3658798 Z";     allowedSourceAddressPrefix = @ （"IPV4ADDRESS"）}）}）
+        $JitPolicyVm 1 = （@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";  端口 = （@ {number = 22;     endTimeUtc = "2018-09-17T17：00： 00.3658798 Z";     allowedSourceAddressPrefix = @ （"IPV4ADDRESS"）}）}）
 2.    在数组中插入 VM 访问请求参数：
 
         $JitPolicyArr = @ （$JitPolicyVm 1）
@@ -241,7 +240,7 @@ ms.locfileid: "80887327"
 
 ## <a name="automatic-cleanup-of-redundant-jit-rules"></a>自动清除冗余 JIT 规则 
 
-每当更新 JIT 策略时，清理工具会自动运行，以检查整个规则集的有效性。 该工具查找策略中的规则与 NSG 中的规则之间的不匹配。 如果清理工具发现不匹配，则会确定原因，并在安全的情况下删除不需要的内置规则。 清除从不删除已创建的规则。
+每当更新 JIT 策略时，清理工具会自动运行，以检查整个规则集的有效性。 该工具还将查看你策略中的规则与 NSG 中的规则之间是否存在不匹配的情况。 如果清理工具发现不匹配，则会确定原因，并在安全的情况下删除不需要的内置规则。 清理工具绝不会删除你创建的规则。
 
 清理程序可能删除内置规则时的示例方案：
 
@@ -256,6 +255,6 @@ ms.locfileid: "80887327"
 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 - Microsoft Learn 模块[通过 Azure 安全中心保护你的服务器和 vm 免受暴力攻击和恶意软件攻击](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)
-- [设置安全策略](tutorial-security-policy.md)-了解如何配置 Azure 订阅和资源组的安全策略。
-- [管理安全建议](security-center-recommendations.md)-了解建议如何帮助你保护 Azure 资源。
+- [设置安全策略](tutorial-security-policy.md) — 了解如何为 Azure 订阅和资源组配置安全策略。
+- [管理安全建议](security-center-recommendations.md) — 了解建议如何帮助你保护 Azure 资源。
 - [安全运行状况监视](security-center-monitoring.md) — 了解如何监视 Azure 资源的运行状况。

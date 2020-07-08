@@ -3,16 +3,15 @@ title: 模板函数 - 数值
 description: 介绍可在 Azure Resource Manager 模板中使用的用于处理数值的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: dc15ade453fc5ea4dc031ced0377892f4f8cf27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192342"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677910"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 模板的数值函数
 
-资源管理器提供了以下用于在 Azure 资源管理器（ARM）模板中处理整数的函数：
+资源管理器提供了以下可用于在 Azure 资源管理器 (ARM) 模板中处理整数的函数：
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -48,7 +47,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -87,20 +86,20 @@ ms.locfileid: "82192342"
 
 `copyIndex(loopName, offset)`
 
-返回一个迭代循环的索引。
+返回迭代循环的索引。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| loopName | 否 | 字符串 | 用于获取迭代的循环的名称。 |
-| offset |否 |int |要添加到从零开始的迭代值的数。 |
+| loopName | 否 | string | 用于获取迭代的循环的名称。 |
+| offset |否 |int |要添加到的从零开始的迭代值的数字。 |
 
 ### <a name="remarks"></a>备注
 
-此函数始终用于 **copy** 对象。 如果没有提供**偏移量**的值，则返回当前迭代值。 从零开始的迭代值。
+此函数始终用于 **copy** 对象。 如果没有提供任何值作为 **偏移量**，则返回当前迭代值。 迭代值从零开始。
 
-**loopName** 可用于指定 copyIndex 是引用资源迭代还是引用属性迭代。 如果没有为 **loopName** 提供值，则将使用当前的资源类型迭代。 当在属性上迭代时，请为 **loopName** 提供值。
+**loopName** 属性可用于指定 copyIndex 是引用资源迭代还是引用属性迭代。 如果没有为 **loopName** 提供值，则将使用当前的资源类型迭代。 在属性上迭代时，请为 **loopName** 提供值。
 
 有关使用 copy 的详细信息，请参阅：
 
@@ -159,7 +158,7 @@ ms.locfileid: "82192342"
 | 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
-| operand2 |是 |int |除数。 不能为0。 |
+| operand2 |是 |int |除数。 不能为 0。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -171,7 +170,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -206,15 +205,15 @@ ms.locfileid: "82192342"
 | ---- | ---- | ----- |
 | divResult | int | 2 |
 
-## <a name="float"></a>FLOAT
+## <a name="float"></a>float
 
 `float(arg1)`
 
 将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为浮点数的值。 |
 
@@ -246,15 +245,15 @@ ms.locfileid: "82192342"
 
 将指定的值转换为整数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
 ### <a name="return-value"></a>返回值
 
-转换后的值的整数值。
+转换后的值的整数。
 
 ### <a name="example"></a>示例
 
@@ -262,7 +261,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToConvert": {
@@ -281,11 +280,11 @@ ms.locfileid: "82192342"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| intResult | Int | 4 |
+| intResult | int | 4 |
 
 ## <a name="max"></a>max
 
@@ -293,9 +292,9 @@ ms.locfileid: "82192342"
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -309,7 +308,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -331,12 +330,12 @@ ms.locfileid: "82192342"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
-| intOutput | Int | 5 |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 ## <a name="min"></a>min
 
@@ -344,9 +343,9 @@ ms.locfileid: "82192342"
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -360,7 +359,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -382,12 +381,12 @@ ms.locfileid: "82192342"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
-| intOutput | Int | 0 |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 ## <a name="mod"></a>mod
 
@@ -395,12 +394,12 @@ ms.locfileid: "82192342"
 
 返回使用提供的两个整数整除后的余数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
-| operand2 |是 |int |用于相除的数字不能为0。 |
+| operand2 |是 |int |除数，不能为 0。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -412,7 +411,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -441,11 +440,11 @@ ms.locfileid: "82192342"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| modResult | Int | 1 |
+| modResult | int | 1 |
 
 ## <a name="mul"></a>mul
 
@@ -453,12 +452,12 @@ ms.locfileid: "82192342"
 
 返回提供的两个整数的积。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| operand1 |是 |int |要乘以的第一个数。 |
-| operand2 |是 |int |要乘以的第二个数。 |
+| operand1 |是 |int |被乘数。 |
+| operand2 |是 |int |乘数。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -470,7 +469,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -499,11 +498,11 @@ ms.locfileid: "82192342"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| mulResult | Int | 15 |
+| mulResult | int | 15 |
 
 ## <a name="sub"></a>sub
 
@@ -511,9 +510,9 @@ ms.locfileid: "82192342"
 
 返回提供的两个整数在相减后的结果。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被减数。 |
 | operand2 |是 |int |减数。 |
@@ -528,7 +527,7 @@ ms.locfileid: "82192342"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -557,13 +556,13 @@ ms.locfileid: "82192342"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| subResult | Int | 4 |
+| subResult | int | 4 |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 中创建多个资源实例资源管理器](copy-resources.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。

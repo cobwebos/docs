@@ -4,19 +4,18 @@ description: 了解如何使用 Azure 门户管理设备。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
-ms.topic: conceptual
-ms.date: 06/04/2019
+ms.topic: how-to
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bf3f6455be992502182fb942f0e6db089051ab1a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262238"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253148"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>使用 Azure 门户管理设备标识
 
@@ -27,12 +26,14 @@ ms.locfileid: "79262238"
 - 假设你熟悉[中的设备标识管理简介 Azure Active Directory](overview.md)
 - 提供有关使用 Azure AD 门户管理设备标识的信息
 
+![Azure 门户中的 "所有设备" 视图](./media/device-management-azure-portal/all-devices-azure-portal.png)
+
 ## <a name="manage-device-identities"></a>管理设备标识
 
 Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以通过使用[直接链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)或以下方法来转到此位置：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory** > **设备**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 浏览到**Azure Active Directory**  >  **设备**"。
 
 可在“设备”**** 页上完成以下操作：
 
@@ -47,7 +48,7 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 通过 "设备设置" 页，您可以配置与设备标识相关的设置：
 
-![管理 Intune 设备](./media/device-management-azure-portal/21.png)
+![与 Azure AD 相关的设备设置](./media/device-management-azure-portal/device-settings-azure-portal.png)
 
 - **用户可以将设备加入到 Azure AD** -此设置使你能够选择可将其设备注册为 Azure AD 加入设备的用户。 默认值是 **All**。
 
@@ -55,7 +56,7 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 > **用户可以将设备加入到 Azure AD**设置仅适用于 Windows 10 上的 Azure AD 加入。
 
 - **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 此处添加的用户会添加到 Azure AD 中的“设备管理员”角色**。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
-- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOs 设备。 如果选择 "**无**"，则不允许设备注册 Azure AD。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用********。
+- **用户可能将其设备注册到 Azure AD** -需要配置此设置，以允许向 Azure AD 注册 Windows 10 个人、IOS、Android 和 macOS 设备。 如果选择 "**无**"，则不允许设备注册 Azure AD。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用********。
 - **需要多重身份验证才能加入设备**-可以选择是否要求用户提供附加身份验证因素，以将其设备加入 Azure AD。 默认值为 No****。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 
 
 > [!NOTE]
@@ -82,13 +83,9 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 - 提供有关已注册和已加入设备的详细概述
 - 支持执行常见的设备管理任务
 
-![所有设备](./media/device-management-azure-portal/51.png)
-
 >[!TIP]
 >
 >* 如果在 "已注册" 列下看到 "混合 Azure AD 联接" 状态为 "挂起" 的设备，则表示设备已从 Azure AD 连接同步，并正在等待客户端完成注册。 阅读有关如何[计划混合 Azure AD 联接实现](hybrid-azuread-join-plan.md)的详细信息。 有关详细信息，请参阅[设备常见问题解答](faq.md)。
->
->   ![挂起的设备](./media/device-management-azure-portal/75.png)
 >
 >* 对于某些 iOS 设备，包含单引号的设备名可能会使用看起来像单引号的不同字符。 因此搜索此类设备有点棘手：如果您不能正确地看到搜索结果，请确保搜索字符串包含匹配的撇号字符。
 
@@ -96,14 +93,14 @@ Azure AD 门户提供了一个用于管理设备标识的中心位置。 可以�
 
 作为全局管理员或云设备管理员，你可以管理已注册或已加入的设备。 Intune 服务管理员可执行以下操作：
 
-- 更新设备 - 例如启用/禁用设备等日常操作
-- 删除设备 - 设备停用且应在 Azure AD 中将其删除时
+- 更新设备-示例是启用/禁用设备等日常操作
+- 删除设备-设备在停用时应删除，Azure AD
 
 本部分提供有关常见设备标识管理任务的信息。
 
 ### <a name="manage-an-intune-device"></a>管理 Intune 设备
 
-Intune 管理员可以管理标记为“Microsoft Intune”的设备****。 如果设备未向注册 Microsoft Intune "管理" 选项将灰显。
+Intune 管理员可以管理标记为“Microsoft Intune”的设备****。 如果设备未注册到 Microsoft Intune，则 "管理" 选项将灰显。
 
 ![管理 Intune 设备](./media/device-management-azure-portal/31.png)
 
@@ -145,7 +142,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备****。 如�
    - 可删除附加到设备的所有详细信息，例如适用于 Windows 设备的 BitLocker 密钥。  
    - 表示一个不可恢复的活动，除非必需，否则不建议。
 
-如果设备由另一管理机构（例如 Microsoft Intune）管理，请确保在 Azure AD 中删除设备之前已擦除/停用设备。 删除任何设备之前，请查看如何[管理过时设备](device-management-azure-portal.md)。
+如果设备由另一管理机构（例如 Microsoft Intune）管理，请确保在 Azure AD 中删除设备之前已擦除/停用设备。 删除任何设备之前，请查看如何[管理过时设备](manage-stale-devices.md)。
 
 ### <a name="view-or-copy-device-id"></a>查看或复制设备 ID
 
@@ -171,6 +168,27 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备****。 如�
 > [!NOTE]
 > 加入混合 Azure AD 的 Windows 10 设备没有所有者。 因此，如果按所有者查找设备未找到它，请按设备 ID 搜索。
 
+### <a name="device-list-filtering-preview"></a>设备列表筛选（预览）
+
+以前，只能按活动和已启用状态筛选设备列表。 此预览版现在允许你按设备上的下列属性筛选设备列表：
+
+- 启用状态
+- 相容状态
+- 联接类型（Azure AD 联接、混合 Azure AD 联接、Azure AD 注册）
+- 活动时间戳
+- (OS)
+- 设备类型（打印机、安全 Vm、共享设备、已注册的设备）
+
+若要在 "**所有设备**" 视图中启用预览筛选功能：
+
+![启用筛选预览功能](./media/device-management-azure-portal/device-filter-preview-enable.png)
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 浏览到**Azure Active Directory**  >  **设备**"。
+1. 选择显示的标题，**尝试新的设备筛选改进。单击以启用预览。**
+
+你现在可以**将筛选器添加**到 "**所有设备**" 视图。
+
 ## <a name="audit-logs"></a>审核日志
 
 设备活动通过活动日志提供。 这些日志包括设备注册服务和用户触发的活动：
@@ -190,7 +208,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备****。 如�
 
 ![审核日志](./media/device-management-azure-portal/63.png)
 
-您可以通过单击工具栏中的 "**列**" 自定义列表视图。
+单击工具栏中的“列”即可自定义列表视图。 
 
 ![审核日志](./media/device-management-azure-portal/64.png)
 

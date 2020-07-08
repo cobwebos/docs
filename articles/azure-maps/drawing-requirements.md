@@ -3,17 +3,16 @@ title: Azure Maps Creator 中的绘图包要求
 description: 了解绘图包要求，以便使用 Azure Maps 转换服务将设施设计文件转换为定位数据
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791565"
 ---
 # <a name="drawing-package-requirements"></a>绘图包要求
 
@@ -169,12 +168,13 @@ Azure Maps 数据集中的门开口表示为，与多个单元边界重叠的单
 
 zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清单文件。 它描述了 DWG 文件，以便 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)能够分析其内容。 只有由清单标识的文件才会被引入。 zip 文件夹中有、但在清单中没有正确列出的文件会被忽略。
 
-清单文件的 buildingLevels 对象中的文件路径必须相对于 zip 文件夹的根。 DWG 文件名必须与设施楼层的名称完全匹配。 例如，“Basement”楼层的 DWG 文件为“Basement.dwg”。 “Level 2”的 DWG 文件命名为“level_2.dwg”。 如果楼层名称中有空格，请使用下划线字符。 
+清单文件的 buildingLevels 对象中的文件路径必须相对于 zip 文件夹的根。 DWG 文件名必须与设施楼层的名称完全匹配。 例如，“Basement”楼层的 DWG 文件为“Basement.dwg”。 “Level 2”的 DWG 文件命名为“level_2.dwg”。 如果楼层名称中有空格，请使用下划线字符。
 
 尽管有使用清单对象的要求，但并非所有对象都是必需的。 下表列出了 [Azure Maps 转换服务](https://docs.microsoft.com/rest/api/maps/conversion)版本 1.1 的必需和可选对象。
 
 | 对象 | 必选 | 说明 |
 | :----- | :------- | :------- |
+| 版本 | true |清单架构版本。 目前仅支持版本1.1。|
 | directoryInfo | true | 概述设施地理位置和联系人信息。 它还可用于概述居用者的地理位置和联系人信息。 |
 | buildingLevels | true | 指定建筑物的楼层，以及包含各楼层的设计的文件。 |
 | georeference | true | 包含设施绘图的数值地理信息。 |
@@ -186,16 +186,16 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="directoryinfo"></a>directoryInfo
 
-| properties  | type | 必选 | 说明 |
+| properties  | type | 必需 | 描述 |
 |-----------|------|----------|-------------|
-| name      | string/int | true   |  建筑物名称。 |
-| streetAddress|    string/int |    false    | 建筑物地址。 |
-|单位     | string/int    |  false    |  建筑物中的单元。 |
-| 产地 |    string/int |    false |    区域、居住区或地区的名称。 例如，“Overlake”或“Central District”。 locality 不是通讯地址的一部分。 |
+| name      | string | true   |  建筑物名称。 |
+| streetAddress|    字符串 |    false    | 建筑物地址。 |
+|单位     | 字符串    |  false    |  建筑物中的单元。 |
+| 产地 |    字符串 |    false |    区域、居住区或地区的名称。 例如，“Overlake”或“Central District”。 locality 不是通讯地址的一部分。 |
 | adminDivisions |    string 的 JSON 数组 |    false     | 包含地址标记的数组 (Country, State, City) 或 (Country, Prefecture, City, Town)。 使用 ISO 3166 国家/地区代码和 ISO 3166-2 州/省/区域代码。 |
-| postalCode |    string/int    | false    | 邮件分拣代码。 |
+| postalCode |    字符串    | false    | 邮件分拣代码。 |
 | hoursOfOperation |    字符串 |     false | 遵循 [OSM 开放时间](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification)格式。 |
-| phone    | string/int |    false |    与建筑物关联的电话号码。 必须包含国家/地区代码。 |
+| phone    | 字符串 |    false |    与建筑物关联的电话号码。 必须包含国家/地区代码。 |
 | 网站 (website)    | 字符串 |    false    | 与建筑物关联的网站。 必须以 http 或 https 开头。 |
 | nonPublic |    bool    | false | 指定建筑物是否向公众开放的标志。 |
 | anchorLatitude | numeric |    false | 设施定位点（图钉）的纬度。 |
@@ -207,17 +207,17 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 `buildingLevels` 对象包含建筑物楼层的 JSON 数组。
 
-| properties  | 类型 | 必选 | 说明 |
+| Property  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
-|levelName    |string/int    |true |    楼层的描述性名称。 例如：Floor 1、Lobby、Blue Parking、Basement 等。|
+|levelName    |字符串    |true |    楼层的描述性名称。 例如：Floor 1、Lobby、Blue Parking、Basement 等。|
 |序号 | integer |    true | 序号用于确定楼层的垂直顺序。 每个设施都必须有序号为 0 的楼层。 |
-|heightAboveFacilityAnchor | numeric |    false |    底层以上的楼层高度（以米为单位）。 |
+|heightAboveFacilityAnchor | numeric | false |    定位点上方的高度（以米为单位）。 |
 | verticalExtent | numeric | false | 楼层的地板到天花板高度（厚度，以米为单位）。 |
-|filename |    string/int |    true |    建筑物楼层的 CAD 绘图的文件系统路径。 它必须相对于建筑物的 zip 文件的根。 |
+|filename |    字符串 |    true |    建筑物楼层的 CAD 绘图的文件系统路径。 它必须相对于建筑物的 zip 文件的根。 |
 
 ### <a name="georeference"></a>georeference
 
-| properties  | 类型 | 必选 | 说明 |
+| Property  | 类型 | 必需 | 描述 |
 |-----------|------|----------|-------------|
 |lat    | numeric |    true |    设施绘图的原点的纬度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。|
 |lon    |numeric|    true|    设施绘图的原点的经度（用十进制表示）。 坐标原点必须位于 WGS84 Web Mercator (`EPSG:3857`)。 |
@@ -225,46 +225,47 @@ zip 文件夹必须在目录的根级别包含命名为“manifest.json”的清
 
 ### <a name="dwglayers"></a>dwgLayers
 
-| properties  | 类型 | 必选 | 说明 |
+| Property  | 类型 | 必需 | 描述 |
 |-----------|------|----------|-------------|
-|exterior    |string/int 数组|    true|    定义建筑物外表面轮廓的一个或多个图层的名称。|
-|单位|    string/int 数组|    true|    定义单元的一个或多个图层的名称。|
-|wall|    string/int 数组    |false|    定义墙的一个或多个图层的名称。|
-|door    |string/int 数组|    false   | 定义门的一个或多个图层的名称。|
-|unitLabel    |string/int 数组|    false    |定义单元名称的一个或多个图层的名称。|
-|区域 | string/int 数组    | false    | 定义区域的一个或多个图层的名称。|
-|zoneLabel | string/int 数组 |     false |    定义区域名称的一个或多个图层的名称。|
+|exterior    |字符串数组|    true|    定义建筑物外表面轮廓的一个或多个图层的名称。|
+|单位|    字符串数组|    true|    定义单元的一个或多个图层的名称。|
+|wall|    字符串数组    |false|    定义墙的一个或多个图层的名称。|
+|door    |字符串数组|    false   | 定义门的一个或多个图层的名称。|
+|unitLabel    |字符串数组|    false    |定义单元名称的一个或多个图层的名称。|
+|区域 | 字符串数组    | false    | 定义区域的一个或多个图层的名称。|
+|zoneLabel | 字符串数组 |     false |    定义区域名称的一个或多个图层的名称。|
 
 ### <a name="unitproperties"></a>unitProperties
 
 `unitProperties` 对象包含 unit 属性的 JSON 数组。
 
-| properties  | 类型 | 必选 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
-|unitName    |string/int    |true    |要与此 `unitProperty` 记录关联的单元的名称。 只有当在一个或多个 `unitLabel` 图层中找到与 `unitName` 匹配的标签时，此记录才有效。 |
-|categoryName|    string/int|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
+|unitName    |字符串    |true    |要与此 `unitProperty` 记录关联的单元的名称。 只有当在一个或多个 `unitLabel` 图层中找到与 `unitName` 匹配的标签时，此记录才有效。 |
+|categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
 |navigableBy| 字符串数组 |    false    |指明可遍历单元的导航代理的类型。 例如，“pedestrian”。 此属性将指明寻路功能。  允许的值为 `pedestrian`、`wheelchair`、`machine`、`bicycle`、`automobile`、`hiredAuto`、`bus`、`railcar`、`emergency`、`ferry`、`boat` 和 `disallowed`。|
 |routeThroughBehavior|    字符串|    false    |单元的穿过行为。 允许的值为 `disallowed`、`allowed` 和 `preferred`。 默认值为 `allowed`。|
 |occupants    |directoryInfo 对象的数组 |false    |单元的居用者列表。 |
-|nameAlt|    string/int|    false|    单元的备用名称。 |
-|nameSubtitle|    string/int    |false|    单元的副标题。 |
-|addressRoomNumber|    string/int|    false|    单元的房间/单间/公寓/套房编号。|
-|verticalPenetrationCategory|    string/int|    false| 如果定义了此属性，则生成的特征是 Vertical Penetration (VRT)，而不是 unit。 VRT 可用于导航到它上面或下面的楼层中的其他 VRT 特征。 Vertical Penetration 是[类别](https://aka.ms/pa-indoor-spacecategories)名称。 如果定义了此属性，则会使用 verticalPenetrationCategory 重写 categoryName 属性。 |
+|nameAlt|    字符串|    false|    单元的备用名称。 |
+|nameSubtitle|    字符串    |false|    单元的副标题。 |
+|addressRoomNumber|    字符串|    false|    单元的房间/单间/公寓/套房编号。|
+|verticalPenetrationCategory|    字符串|    false| 如果定义了此属性，则生成的特征是 Vertical Penetration (VRT)，而不是 unit。 VRT 可用于导航到它上面或下面的楼层中的其他 VRT 特征。 Vertical Penetration 是[类别](https://aka.ms/pa-indoor-spacecategories)名称。 如果定义了此属性，则会使用 verticalPenetrationCategory 重写 categoryName 属性。 |
 |verticalPenetrationDirection|    字符串|    false    |如果定义了 `verticalPenetrationCategory`，则可以视需要选择定义有效的行进方向。 允许的值为 `lowToHigh`、`highToLow`、`both` 和 `closed`。 默认值为 `both`。|
 | nonPublic | bool | false | 指明单元是否向公众开放。 |
 | isRoutable | bool | false | 如果设置为 `false`，表明单元无法导航到或穿过。 默认值为 `true`。 |
-| isOpenArea | bool | false | 允许导航代理进入单元，而无需将开口附加到单元。 默认情况下，此值设置为 `true`，除非单元有开口。 |
+| isOpenArea | bool | false | 允许导航代理输入单位，而无需连接到设备。 默认情况下，此值设置为 " `true` 对于没有开口的单元"; `false`  如果 `isOpenArea` `false` 在没有打开的单元上手动设置为，则会出现警告。 这是因为导航代理无法访问结果单元。|
 
 ### <a name="the-zoneproperties-object"></a>zoneProperties 对象
 
 `zoneProperties` 对象包含 zone 属性的 JSON 数组。
 
-| properties  | 类型 | 必选 | 说明 |
+| properties  | 类型 | 必需 | 说明 |
 |-----------|------|----------|-------------|
-|zoneName        |string/int    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
-|categoryName|    string/int|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
-|zoneNameAlt|    string/int|    false    |区域的备用名称。  |
-|zoneNameSubtitle|    string/int |    false    |区域的副标题。 |
+|zoneName        |字符串    |true    |要与 `zoneProperty` 记录关联的区域的名称。 只有当在区域的 `zoneLabel` 图层中找到与 `zoneName` 匹配的标签时，此记录才有效。  |
+|categoryName|    字符串|    false    |类别名称。 有关完整的类别列表，请参阅[类别](https://aka.ms/pa-indoor-spacecategories)。 |
+|zoneNameAlt|    字符串|    false    |区域的备用名称。  |
+|zoneNameSubtitle|    字符串 |    false    |区域的副标题。 |
+|zoneSetId|    字符串 |    false    | 设置 ID 以在多个区域之间建立关系，以便可以将它们作为一个组来查询或选择。 例如，跨越多个级别的区域。 |
 
 ### <a name="sample-drawing-package-manifest"></a>示例绘图包清单
 

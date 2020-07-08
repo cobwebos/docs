@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 列出 Azure 角色分配-Azure RBAC
-description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制（Azure RBAC）确定用户、组、服务主体或托管标识有权访问哪些资源。
+title: 使用 Azure PowerShell 列出 Azure 角色分配 - Azure RBAC
+description: 了解如何使用 Azure PowerShell 和 Azure 基于角色的访问控制 (Azure RBAC) 来确定用户、组、服务主体和托管标识有权访问的资源。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,18 +8,17 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1bdf703ac29ce11749de70fa0ef5972ee284401b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: MT
+ms.openlocfilehash: 4ee6a3c09d24d6968227ef4215000888c5f4af05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735702"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791004"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
@@ -70,7 +69,7 @@ CanDelegate        : False
 
 ## <a name="list-role-assignments-for-a-subscription"></a>列出订阅的角色分配
 
-若要列出订阅范围内的所有角色分配，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”**** 边栏选项卡上找到它，也可以使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)。
+若要列出订阅范围内的所有角色分配，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”边栏选项卡上找到它，也可以使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription)。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
@@ -80,7 +79,7 @@ Get-AzRoleAssignment -Scope /subscriptions/<subscription_id>
 PS C:\> Get-AzRoleAssignment -Scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="list-role-assignments-for-a-user"></a>为用户列出角色分配
+## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
 
 若要列出分配给指定用户的所有角色，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)。
 
@@ -132,7 +131,7 @@ Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourc
 
 ## <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
 
-若要列出管理组范围内的所有角色分配，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”**** 边栏选项卡上找到它，也可以使用 [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)。
+若要列出管理组范围内的所有角色分配，请使用 [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”边栏选项卡上找到它，也可以使用 [Get-AzManagementGroup](/powershell/module/az.resources/get-azmanagementgroup)。
 
 ```azurepowershell
 Get-AzRoleAssignment -Scope /providers/Microsoft.Management/managementGroups/<group_id>

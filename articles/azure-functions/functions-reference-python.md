@@ -3,12 +3,12 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84730741"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -262,7 +262,7 @@ def main(req):
 
 ## <a name="http-trigger-and-bindings"></a>HTTP 触发器和绑定
 
-HTTP 触发器在函数.jon 文件中定义。 绑定的 `name` 必须与函数中的命名参数匹配。
+HTTP 触发器是在文件的 function.js中定义的。 绑定的 `name` 必须与函数中的命名参数匹配。
 前面的示例中使用了绑定名称 `req`。 此参数是 [HttpRequest] 对象，并返回 [HttpResponse] 对象。
 
 从 [HttpRequest] 对象中，可以获取请求标头、查询参数、路由参数和消息正文。
@@ -629,6 +629,45 @@ from os import listdir
 
 建议你在独立于项目文件夹的文件夹中维护测试。 这样可防止对应用部署测试代码。
 
+## <a name="preinstalled-libraries"></a>预安装库
+
+Python 函数运行时有几个库。
+
+### <a name="python-standard-library"></a>Python 标准库
+
+Python 标准库包含每个 Python 分发附带的内置 Python 模块列表。 其中的大多数库可帮助你访问系统功能，如文件 i/o。 在 Windows 系统中，这些库随 Python 一起安装。 在基于 Unix 的系统上，它们由包集合提供。
+
+若要查看这些库的列表的完整详细信息，请访问以下链接：
+
+* [Python 3.6 标准库](https://docs.python.org/3.6/library/)
+* [Python 3.7 标准库](https://docs.python.org/3.7/library/)
+* [Python 3.8 标准库](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python 辅助角色依赖项
+
+功能 Python 辅助角色需要一组特定的库。 你还可以在函数中使用这些库，但它们并不是 Python 标准的一部分。 如果函数依赖于其中的任何库，则在 Azure Functions 之外运行时，它们可能无法用于代码。 可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)文件中的**安装 \_ 需要**部分找到依赖项的详细列表。
+
+### <a name="azure-functions-python-library"></a>Azure Functions Python 库
+
+每个 Python 辅助角色更新包括新版本的[Azure Functions Python 库（函数）](https://github.com/Azure/azure-functions-python-library)。 由于每个更新都是向后兼容的，因此这种方法可以更轻松地持续更新 Python 函数应用。 可以在[azure 功能 PyPi](https://pypi.org/project/azure-functions/#history)中找到此库的版本列表。
+
+运行时库版本由 Azure 修复，不能通过 requirements.txt 重写。 `azure-functions`requirements.txt 中的条目仅适用于 linting 和客户认知。 
+
+使用以下代码在运行时中跟踪 Python 函数库的实际版本：
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>运行时系统库
+
+有关 Python 辅助角色 Docker 映像中预安装的系统库的列表，请访问以下链接：
+
+|  Functions 运行时  | Debian 版本 | Python 版本 |
+|------------|------------|------------|
+| 版本 2.x | 拉伸  | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3\.x 版 | Buster | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -637,7 +676,7 @@ Python 函数应用完全支持 CORS。
 
 ## <a name="known-issues-and-faq"></a>已知问题和常见问题解答
 
-根据你提供的宝贵反馈，我们才能够维护常见问题故障排除指南的列表：
+下面列出了常见问题的疑难解答指南：
 
 * [ModuleNotFoundError 和 ImportError](recover-module-not-found.md)
 

@@ -1,52 +1,51 @@
 ---
-title: 模板函数-数组
-description: 介绍用于在 Azure 资源管理器模板中使用数组的函数。
+title: 模板函数 - 数组
+description: 介绍可在 Azure 资源管理器模板中用来处理数组的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f34ba74847ac394e37e6ef33f859304128daacde
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 4d4ee96888aee5421d88b5371ac25a69c0af4fd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677842"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM 模板的数组函数
 
-资源管理器提供了几个函数，以便在 Azure 资源管理器（ARM）模板中使用数组。
+资源管理器提供了多个用于处理 Azure 资源管理器 (ARM) 模板中的数组的函数。
 
 * [array](#array)
 * [concat](#concat)
 * [contains](#contains)
 * [createArray](#createarray)
 * [empty](#empty)
-* [1](#first)
-* [交集](#intersection)
-* [时间](#last)
+* [first](#first)
+* [intersection](#intersection)
+* [last](#last)
 * [length](#length)
-* max 
+* [max](#max)
 * [min](#min)
-* [内](#range)
+* [range](#range)
 * [skip](#skip)
-* [长](#take)
-* [交集](#union)
+* [take](#take)
+* [union](#union)
 
 若要获取由某个值分隔的字符串值数组，请参阅 [split](template-functions-string.md#split)。
 
-## <a name="array"></a>数组
+## <a name="array"></a>array
 
 `array(convertToArray)`
 
 将值转换为数组。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| convertToArray |是 |int、string、array 或 object |要转换为数组的值。 |
+| convertToArray |是 |整数、字符串、数组或对象 |要转换为数组的值。 |
 
 ### <a name="return-value"></a>返回值
 
-一个 数组。
+一个数组。
 
 ### <a name="example"></a>示例
 
@@ -54,7 +53,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "intToConvert": {
@@ -89,13 +88,13 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| intOutput | 数组 | [1] |
-| stringOutput | 数组 | ["efgh"] |
-| objectOutput | 数组 | [{"a": "b", "c": "d"}] |
+| intOutput | Array | [1] |
+| stringOutput | Array | ["efgh"] |
+| objectOutput | Array | [{"a": "b", "c": "d"}] |
 
 ## <a name="concat"></a>concat
 
@@ -103,9 +102,9 @@ ms.locfileid: "82203805"
 
 合并多个数组并返回串联的数组，或合并多个字符串值并返回串联的字符串。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要串联的第一个数组或字符串。 |
 | 其他参数 |否 |数组或字符串 |按顺序排列的串联的其他数组或字符串。 |
@@ -114,7 +113,7 @@ ms.locfileid: "82203805"
 
 ### <a name="return-value"></a>返回值
 
-串联值的字符串或数组。
+由串联值构成的字符串或数组。
 
 ### <a name="example"></a>示例
 
@@ -122,7 +121,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstArray": {
@@ -153,17 +152,17 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| return | 数组 | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)演示如何组合两个字符串值并返回串联的字符串。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "prefix": {
@@ -181,11 +180,11 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| concatOutput | 字符串 | prefix-5yj4yjf5mbg72 |
+| concatOutput | String | prefix-5yj4yjf5mbg72 |
 
 ## <a name="contains"></a>contains
 
@@ -193,11 +192,11 @@ ms.locfileid: "82203805"
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 容器 (container) |是 |数组、对象或字符串 |包含要查找的值的值。 |
+| container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
 
 ### <a name="return-value"></a>返回值
@@ -210,7 +209,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -257,9 +256,9 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -274,16 +273,16 @@ ms.locfileid: "82203805"
 
 从参数创建数组。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串、整数、数组或对象 |数组中的第一个值。 |
 | 其他参数 |否 |字符串、整数、数组或对象 |数组中的其他值。 |
 
 ### <a name="return-value"></a>返回值
 
-一个 数组。
+一个数组。
 
 ### <a name="example"></a>示例
 
@@ -291,7 +290,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -326,14 +325,14 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| stringArray | 数组 | ["a", "b", "c"] |
-| intArray | 数组 | [1, 2, 3] |
-| objectArray | 数组 | [{"one": "a", "two": "b", "three": "c"}] |
-| arrayArray | 数组 | [["one", "two", "three"]] |
+| stringArray | Array | ["a", "b", "c"] |
+| intArray | Array | [1, 2, 3] |
+| objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | Array | [["one", "two", "three"]] |
 
 ## <a name="empty"></a>empty
 
@@ -341,15 +340,15 @@ ms.locfileid: "82203805"
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
 ### <a name="return-value"></a>返回值
 
-如果该值为空，返回 **True**；否则返回 **False**。
+如果该值为空，则返回 **True**；否则返回 **False**。
 
 ### <a name="example"></a>示例
 
@@ -357,7 +356,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -392,9 +391,9 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -406,15 +405,15 @@ ms.locfileid: "82203805"
 
 返回数组的第一个元素，或字符串的第一个字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
 ### <a name="return-value"></a>返回值
 
-数组中第一个元素的类型（字符串、整数、数组或对象），或字符串的第一个字符。
+数组中第一个元素的类型（字符串、整数、数组或对象），或者字符串的第一个字符。
 
 ### <a name="example"></a>示例
 
@@ -422,7 +421,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -445,22 +444,22 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | 字符串 | one |
-| stringOutput | 字符串 | O |
+| arrayOutput | String | one |
+| stringOutput | String | O |
 
-## <a name="intersection"></a>交集
+## <a name="intersection"></a>intersection
 
 `intersection(arg1, arg2, arg3, ...)`
 
 返回包含参数中通用元素的单个数组或对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -476,7 +475,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -511,12 +510,12 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
-| arrayOutput | 数组 | ["two", "three"] |
+| arrayOutput | Array | ["two", "three"] |
 
 ## <a name="last"></a>last
 
@@ -524,15 +523,15 @@ ms.locfileid: "82203805"
 
 返回数组的最后一个元素，或字符串的最后一个字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
 ### <a name="return-value"></a>返回值
 
-数组中最后一个元素的类型（字符串、整数、数组或对象），或字符串的最后一个字符。
+数组中最后一个元素的类型（字符串、整数、数组或对象），或者字符串的最后一个字符。
 
 ### <a name="example"></a>示例
 
@@ -540,7 +539,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -563,14 +562,14 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | 字符串 | three |
-| stringOutput | 字符串 | e |
+| arrayOutput | String | three |
+| stringOutput | String | e |
 
-## <a name="length"></a>长度
+## <a name="length"></a>length
 
 `length(arg1)`
 
@@ -592,7 +591,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -638,13 +637,13 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+| objectLength | int | 4 |
 
 创建资源时，可在数组中使用此函数指定迭代数。 在以下示例中，参数 **siteNames** 引用创建网站时要使用的名称数组。
 
@@ -655,7 +654,7 @@ ms.locfileid: "82203805"
 }
 ```
 
-有关在数组中使用此函数的详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
+有关在数组中使用此函数的详细信息，请参阅 [Create multiple instances of resources in Azure Resource Manager](copy-resources.md)（在 Azure Resource Manager 中创建多个资源实例）。
 
 ## <a name="max"></a>max
 
@@ -663,9 +662,9 @@ ms.locfileid: "82203805"
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -679,7 +678,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -701,12 +700,12 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 5 |
-| intOutput | Int | 5 |
+| arrayOutput | int | 5 |
+| intOutput | int | 5 |
 
 ## <a name="min"></a>min
 
@@ -714,9 +713,9 @@ ms.locfileid: "82203805"
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -730,7 +729,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -752,12 +751,12 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | Int | 0 |
-| intOutput | Int | 0 |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
 
 ## <a name="range"></a>range
 
@@ -765,12 +764,12 @@ ms.locfileid: "82203805"
 
 从起始整数创建整数数组并包含一些项。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| startIndex |是 |int |数组中的第一个整数。 StartIndex 和计数的总和不得大于2147483647。 |
-| count |是 |int |数组中的整数个数。 必须为非负整数，最大为10000。 |
+| startIndex |是 |int |数组中的第一个整数。 startIndex 和 count 的总和不得大于 2147483647。 |
+| count |是 |int |数组中的整数个数。 必须为非负整数，最大为 10000。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -782,7 +781,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "startingInt": {
@@ -804,11 +803,11 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| rangeOutput | 数组 | [5, 6, 7] |
+| rangeOutput | Array | [5, 6, 7] |
 
 ## <a name="skip"></a>skip
 
@@ -816,12 +815,12 @@ ms.locfileid: "82203805"
 
 返回一个数组，其中包含数组中指定数字后面的所有元素；或返回一个字符串，其中包含字符串中指定数后面的所有字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
-| numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
+| numberToSkip |是 |int |要跳过的元素数或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -833,7 +832,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -871,12 +870,12 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | 数组 | ["three"] |
-| stringOutput | 字符串 | two three |
+| arrayOutput | Array | ["three"] |
+| stringOutput | String | two three |
 
 ## <a name="take"></a>take
 
@@ -884,12 +883,12 @@ ms.locfileid: "82203805"
 
 返回一个数组，其中包含从数组开头位置算起的指定数目的元素；或返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
-| numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
+| numberToTake |是 |int |要提取的元素或字符数。 如果此值为 0 或更小，则返回一个空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -901,7 +900,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -939,12 +938,12 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayOutput | 数组 | ["one", "two"] |
-| stringOutput | 字符串 | on |
+| arrayOutput | Array | ["one", "two"] |
+| stringOutput | String | on |
 
 ## <a name="union"></a>union
 
@@ -952,9 +951,9 @@ ms.locfileid: "82203805"
 
 返回包含参数中所有元素的单个数组或对象。 重复的值或键仅包含一次。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -970,7 +969,7 @@ ms.locfileid: "82203805"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -1005,12 +1004,12 @@ ms.locfileid: "82203805"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| objectOutput | 对象 | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
-| arrayOutput | 数组 | ["one", "two", "three", "four"] |
+| objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>后续步骤
 

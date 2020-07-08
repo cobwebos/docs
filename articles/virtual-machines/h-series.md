@@ -1,18 +1,17 @@
 ---
 title: H 系列-Azure 虚拟机
 description: H 系列 Vm 的规格。
-services: virtual-machines
-author: jonbeck7
+author: ju-shim
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/10/2020
-ms.author: lahugh
-ms.openlocfilehash: 6e0257f8a32d05f49dd67195f22d387319358ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.author: jushiman
+ms.openlocfilehash: f79dcb8886985d60a1ed82e1a77d231cf7d3ad24
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314134"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678675"
 ---
 # <a name="h-series"></a>H 系列
 

@@ -1,6 +1,6 @@
 ---
 title: 将数据移动到 SQL Server 虚拟机 - Team Data Science Process
-description: 将数据从平面文件或本地 SQL Server 移到 Azure 虚拟机上的 SQL Server。
+description: 将数据从平面文件或本地 SQL Server 移到 Azure VM SQL Server。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194374"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>将数据移到 Azure 虚拟机上的 SQL Server
 
@@ -174,12 +173,12 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 下面介绍其中的每个选项：
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导
-**将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导**非常简单，建议采用这种方法将数据从本地 SQL Server 实例移到 Azure 虚拟机上的 SQL Server。 有关详细的步骤以及其他备选方法的讨论，请参阅[将数据库迁移到 Azure 虚拟机上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)。
+**将 SQL Server 数据库部署到 Microsoft Azure 虚拟机向导**非常简单，建议采用这种方法将数据从本地 SQL Server 实例移到 Azure 虚拟机上的 SQL Server。 有关详细的步骤以及其他备选方法的讨论，请参阅[将数据库迁移到 Azure 虚拟机上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)。
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>导出到平面文件
 可以使用各种方法从本地 SQL Server 批量导出数据（如[批量导入和导出数据 (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) 主题中所述）。 本文档将举例说明“大容量复制程序 (BCP)”。 一旦数据导出到平面文件，就可以使用批量导入将其导入到另一个 SQL Server。
 
-1. 使用 bcp 实用程序将数据从本地 SQL Server 导出到文件，如下所示
+1. 使用 bcp 实用工具将数据从本地 SQL Server 导出到文件，如下所示
 
     `bcp dbname..tablename out datafile.tsv -S    servername\sqlinstancename -T -t \t -t \n -c`
 2. 使用步骤 1 中导出的表架构的 `create database` 和 `create table` 在 Azure 上的 SQL Server 虚拟机上创建数据库和表。
@@ -203,16 +202,16 @@ SSIS 在两个 Studio 环境中可用。 有关详细信息，请参阅[集成�
 SQL Server 支持：
 
 1. [数据库备份和还原功能](https://msdn.microsoft.com/library/ms187048.aspx)（至本地文件或 bacpac 导出到 blob）和[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)（使用 bacpac）。
-2. 能够使用复制的数据库直接在 Azure 上创建 SQL Server 虚拟机或复制到现有 SQL Azure 数据库。 有关详细信息，请参阅 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)。
+2. 能够使用复制的数据库直接在 Azure 上创建 SQL Server Vm，或将其复制到 SQL 数据库中的现有数据库。 有关详细信息，请参阅 [Use the Copy Database Wizard](https://msdn.microsoft.com/library/ms188664.aspx)。
 
 SQL Server Management Studio 中的数据库备份/还原选项的屏幕快照如下所示。
 
 ![SQL Server 导入工具][1]
 
 ## <a name="resources"></a>资源
-[将数据库迁移到 Azure VM 上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[将数据库迁移到 Azure VM 上的 SQL Server](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[Azure 虚拟机上的 SQL Server 概述](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[Azure 虚拟机上的 SQL Server 概述](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

@@ -12,12 +12,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281556"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194918"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 认知搜索索引
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -47,7 +46,7 @@ ms.locfileid: "79281556"
 2. 创建用于表示复制操作的输入和输出数据的**数据集**。
 3. 创建包含复制活动的**管道**，该活动将数据集作为输入，并将数据集作为输出。
 
-使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的[json 示例：将数据从本地 SQL Server 复制到 Azure 认知搜索索引](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index)部分。
+使用向导时，会自动创建这些数据工厂实体（链接服务、数据集和管道）的 JSON 定义。 使用工具/API（.NET API 除外）时，使用 JSON 格式定义这些数据工厂实体。  有关用于将数据复制到搜索索引的数据工厂实体的 JSON 定义示例，请参阅本文的[json 示例：将数据从 SQL Server 复制到 Azure 认知搜索索引](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index)部分。
 
 以下部分提供有关用于定义特定于搜索索引的数据工厂实体的 JSON 属性的详细信息：
 
@@ -55,7 +54,7 @@ ms.locfileid: "79281556"
 
 下表提供了特定于 Azure 认知搜索链接服务的 JSON 元素的说明。
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | -------- | ----------- | -------- |
 | type | Type 属性必须设置为： **AzureSearch**。 | 是 |
 | url | 搜索服务的 URL。 | 是 |
@@ -65,7 +64,7 @@ ms.locfileid: "79281556"
 
 有关可用于定义数据集的各节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 数据集 JSON 的结构、可用性和策略等节类似于所有数据集类型。 每个数据集类型的 **typeProperties** 节都不同。 **AzureSearchIndex** 数据集类型的 typeProperties 节具有以下属性：
 
-| properties | 说明 | 必需 |
+| Property | 描述 | 必需 |
 | -------- | ----------- | -------- |
 | type | type 属性必须设置为 **AzureSearchIndex**。| 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
@@ -76,7 +75,7 @@ ms.locfileid: "79281556"
 
 对于复制活动，如果接收器类型为 **AzureSearchIndexSink**，则可在 typeProperties 节中使用以下属性：
 
-| properties | 说明 | 允许的值 | 必选 |
+| Property | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| 否 |
 | WriteBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据上传到搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。 | 1 到 1,000。 默认值为 1000。 | 否 |
@@ -99,16 +98,16 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 | Azure 认知搜索数据类型 | 在 Azure 认知搜索接收器中受支持 |
 | ---------------------- | ------------------------------ |
-| 字符串 | Y |
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| Boolean | Y |
+| 布尔 | Y |
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>JSON 示例：将数据从本地 SQL Server 复制到 Azure 认知搜索索引
+## <a name="json-example-copy-data-from-sql-server-to-azure-cognitive-search-index"></a>JSON 示例：将数据从 SQL Server 复制到 Azure 认知搜索索引
 
 以下示例显示：
 
@@ -118,7 +117,7 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 4. [AzureSearchIndex](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
 4. 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) 和 [AzureSearchIndexSink](#copy-activity-properties)。
 
-此示例将时间序列数据从本地 SQL Server 数据库复制到每小时搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。
+此示例将时间序列数据从 SQL Server 数据库复制到每小时搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。
 
 第一步，在本地计算机上设置数据管理网关。 有关说明，请参考[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
@@ -255,7 +254,7 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 }
 ```
 
-如果要将数据从云数据存储复制到 Azure 认知搜索中， `executionLocation`属性是必需的。 以下 JSON 片段显示复制活动 `typeProperties`（作为示例）下所需的更改。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
+如果要将数据从云数据存储复制到 Azure 认知搜索中， `executionLocation` 属性是必需的。 以下 JSON 片段显示复制活动 `typeProperties`（作为示例）下所需的更改。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
 
 ```JSON
 "typeProperties": {
@@ -271,7 +270,7 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 
 ## <a name="copy-from-a-cloud-source"></a>从云源复制
-如果要将数据从云数据存储复制到 Azure 认知搜索中， `executionLocation`属性是必需的。 以下 JSON 片段显示复制活动 `typeProperties`（作为示例）下所需的更改。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
+如果要将数据从云数据存储复制到 Azure 认知搜索中， `executionLocation` 属性是必需的。 以下 JSON 片段显示复制活动 `typeProperties`（作为示例）下所需的更改。 查看[在云数据存储之间复制数据](data-factory-data-movement-activities.md#global)部分以了解支持的值和详细信息。
 
 ```JSON
 "typeProperties": {

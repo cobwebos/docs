@@ -10,12 +10,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536150"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193678"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 满足大数据要求
 
@@ -38,7 +37,7 @@ ms.locfileid: "79536150"
 ### <a name="ad-hoc-data"></a>临时数据
 这表示可用于形成大数据应用程序原型的较小数据集。 存在数种不同的引入临时数据的方式，具体取决于数据源。
 
-| “数据源” | 引入方式 |
+| 数据源 | 引入方式 |
 | --- | --- |
 | 本地计算机 |<ul> <li>[Azure 门户](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
@@ -108,7 +107,7 @@ ms.locfileid: "79536150"
 ## <a name="download-data-from-data-lake-storage-gen1"></a>从 Data Lake Storage Gen1 下载数据
 用户可能还希望为一些方案从 Azure Data Lake Storage Gen1 下载或移动数据，例如：
 
-* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，用户可能希望从 Data Lake Storage Gen1 将数据移动到 Azure SQL 数据库或本地 SQL 服务器。
+* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，你可能想要将数据从 Data Lake Storage Gen1 移到 Azure SQL 数据库或 SQL Server。
 * 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
 
 ![Data Lake Storage Gen1 传出数据](./media/data-lake-store-data-scenarios/egress-data.png "Data Lake Storage Gen1 传出数据")

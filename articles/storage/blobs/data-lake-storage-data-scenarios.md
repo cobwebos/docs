@@ -8,12 +8,11 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77369712"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84193511"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen2 满足大数据需求
 
@@ -48,13 +47,13 @@ ms.locfileid: "77369712"
 
 ### <a name="streamed-data"></a>流数据
 
-这表示可由各种源（如应用程序、设备、传感器等）生成的数据。此数据可通过各种工具引入到 Data Lake Storage Gen2 中。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen2，以便这些事件可以得到进一步处理。
+这表示可由应用程序、设备、传感器等多种源生成的数据。此数据可通过各种工具引入 Data Lake Storage Gen2。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen2，以便这些事件可以得到进一步处理。
 
 下面是一个列表，其中包含可以用来引入流式处理的数据的工具。
 
 |工具 | 指南 |
 |---|--|
-|Azure 流分析|[快速入门：使用 Azure 门户创建流分析作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [出口到 Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
+|Azure 流分析|[快速入门：使用 Azure 门户创建流分析作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 流出量](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Azure HDInsight Storm | [从 Apache Storm on HDInsight 写入到 Apache Hadoop HDFS](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
 ### <a name="relational-data"></a>关系数据
@@ -123,13 +122,13 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 
 ## <a name="visualize-the-data"></a>可视化数据
 
-使用 Power BI 连接器可以创建 Data Lake Storage Gen2 中存储的数据的可视表示形式。 请参阅[使用 Power BI 分析 Azure Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/power-query/connectors/datalakestorage)。
+使用 Power BI 连接器创建 Data Lake Storage Gen2 中存储的数据的可视化表示形式。 请参阅[使用 Power BI 分析 Azure Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/power-query/connectors/datalakestorage)。
 
 ## <a name="download-the-data"></a>下载数据
 
 用户可能还希望为一些方案从 Azure Data Lake Storage Gen2 下载或移动数据，例如：
 
-* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，用户可能希望从 Data Lake Storage Gen2 将数据移动到 Azure SQL 数据库或本地 SQL 服务器。
+* 将数据移动到其他存储库以便连接现有数据处理管道。 例如，你可能想要将数据从 Data Lake Storage Gen2 移到 Azure SQL 数据库或 SQL Server 实例。
 
 * 构建应用程序原型时，下载数据到本地计算机以在 IDE 中进行处理。
 
@@ -142,4 +141,4 @@ Azure ExpressRoute 允许在 Azure 数据中心与本地中的基础结构之间
 |Azure 数据工厂 | [Azure 数据工厂中的 Copy 活动](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |Azure 存储资源管理器|[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 ACL](data-lake-storage-explorer.md)|
-|AzCopy 工具|[用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)|
+|AzCopy 工具|[使用 AzCopy 和 Blob 存储传输数据](../common/storage-use-azcopy-blobs.md)|

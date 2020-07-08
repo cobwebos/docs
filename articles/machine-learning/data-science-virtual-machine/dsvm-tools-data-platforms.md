@@ -10,12 +10,11 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282318"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958729"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -28,7 +27,7 @@ DSVM 支持以下数据平台工具。
 | | |
 | ------------- | ------------- |
 | 它是什么？   | 本地关系数据库实例      |
-| 支持的 DSVM 版本      | Windows 2016： SQL Server 2017，Windows 2019： SQL Server 2019      |
+| 支持的 DSVM 版本      | Windows 2016：SQL Server 2017、Windows 2019：SQL Server 2019      |
 | 典型用途      | 使用小型数据集在本地进行快速开发 <br/> 运行数据库内 R   |
 | 指向示例的链接      |    将 New York City 数据集加载进 SQL 数据库的小型示例：<br/>  `nyctaxi` <br/> 可在以下位置找到显示 Microsoft Machine Learning Server 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | DSVM 上的相关工具       | SQL Server Management Studio <br/> ODBC/JDBC 驱动程序<br/> pyodbc, RODBC<br />Apache Drill      |
@@ -41,11 +40,13 @@ DSVM 支持以下数据平台工具。
 
 数据库服务器已预先配置，与 SQL Server 相关的 Windows 服务（例如 `SQL Server (MSSQLSERVER)`）设置为自动运行。 唯一的手动步骤涉及使用 Microsoft Machine Learning Server 启用数据库内分析。 要启用分析，可在 SQL Server Management Studio (SSMS) 中一次性运行以下命令。 先以计算机管理员身份登录，然后运行此命令，在 SSMS 中打开一个新查询，并确保选择的是 `master` 数据库：
 
-        CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```sql
+CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
+```
 
-        (Replace %COMPUTERNAME% with your VM name.)
-       
-若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost```  。
+（将% COMPUTERNAME% 替换为 VM 名称。）
+
+若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost``` 。
 
 ### <a name="how-to-use-and-run-it"></a>如何使用和运行它
 
@@ -76,13 +77,15 @@ ODBC 驱动程序和 JDBC 驱动程序随附的 DSVM 还会通过使用多种语
 ### <a name="setup"></a>设置
 在 Ubuntu Linux DSVM 版本的 Microsoft Machine Learning Server 的 Spark 上下文中运行前，必须执行一次性设置步骤来启用本地单节点 Hadoop HDFS 和 Yarn 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用它们，需要首次以 root 身份运行以下命令：
 
-    echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-    cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-    chmod 0600 ~hadoop/.ssh/authorized_keys
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-    chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-    chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-    systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```bash
+echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
+cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
+chmod 0600 ~hadoop/.ssh/authorized_keys
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa
+chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
+chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
+systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
+```
 
 不再需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 来停止这些服务。
 

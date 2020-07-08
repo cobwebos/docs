@@ -1,22 +1,21 @@
 ---
 title: 模板函数 - 部署
-description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
+description: 介绍可在 Azure Resource Manager 模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203788"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677808"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
-资源管理器提供了以下用于获取与 Azure 资源管理器（ARM）模板的当前部署相关的值的函数：
+资源管理器提供了以下函数，用于获取与 Azure 资源管理器 (ARM) 模板的当前部署相关的值：
 
-* [deployment](#deployment)
+* [部署](#deployment)
 * [环境](#environment)
-* [参数](#parameters)
+* [parameters](#parameters)
 * [variables](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](template-functions-resource.md)（资源函数）。
@@ -29,12 +28,12 @@ ms.locfileid: "82203788"
 
 ### <a name="return-value"></a>返回值
 
-此函数返回部署期间传递的对象。 返回的对象中的属性根据您是否是：
+此函数返回部署期间传递的对象。 返回的对象中的属性因以下情况而异：
 
-* 部署一个模板，该模板是本地文件，或部署一个模板，该模板是通过 URI 访问的远程文件。
+* 你部署的模板是本地文件，还是通过 URI 访问的远程文件。
 * 部署到资源组或部署到其他作用域（[Azure 订阅](deploy-to-subscription.md)、[管理组](deploy-to-management-group.md)或[租户](deploy-to-tenant.md)）之一。
 
-将本地模板部署到资源组时：该函数返回以下格式：
+将本地模板部署到资源组时，该函数返回以下格式：
 
 ```json
 {
@@ -57,7 +56,7 @@ ms.locfileid: "82203788"
 }
 ```
 
-将远程模板部署到资源组时：该函数返回以下格式：
+将远程模板部署到资源组时，该函数返回以下格式：
 
 ```json
 {
@@ -82,7 +81,7 @@ ms.locfileid: "82203788"
 }
 ```
 
-部署到 Azure 订阅、管理组或租户后，返回对象将包含`location`属性。 部署本地模板或外部模板时包含 location 属性。 格式为：
+当部署到 Azure 订阅、管理组或租户时，返回对象包含 `location` 属性。 部署本地模板或外部模板时包含 location 属性。 格式为：
 
 ```json
 {
@@ -105,13 +104,13 @@ ms.locfileid: "82203788"
 
 ### <a name="remarks"></a>备注
 
-可以根据父模板的 URI，使用 deployment() 链接到另一个模板。
+如何根据父模板的 URI，使用 deployment() 链接到另一个模板。
 
 ```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+"variables": {
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
-```  
+```
 
 如果从门户中的部署历史记录重新部署模板，则该模板将部署为本地文件。 部署函数不返回 `templateLink` 属性。 如果模板依赖于 `templateLink` 来构建指向另一个模板的链接，请不要使用门户进行重新部署， 而是使用最初部署模板时使用的命令。
 
@@ -121,7 +120,7 @@ ms.locfileid: "82203788"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -133,14 +132,14 @@ ms.locfileid: "82203788"
 }
 ```
 
-上面的示例返回下列对象：
+前面的示例返回以下对象：
 
 ```json
 {
   "name": "deployment",
   "properties": {
     "template": {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
@@ -256,17 +255,17 @@ ms.locfileid: "82203788"
 }
 ```
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 `parameters(parameterName)`
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| parameterName |是 |字符串 |要返回的参数名称。 |
+| parameterName |是 |string |要返回的参数名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -274,10 +273,10 @@ ms.locfileid: "82203788"
 
 ### <a name="remarks"></a>备注
 
-通常情况下，使用参数来设置资源值。 下面的示例将网站的名称设置为部署过程中传递的参数值。
+通常，使用参数设置资源值。 以下示例将 Web 站点的名称设置为在部署过程中传递的参数值。
 
 ```json
-"parameters": { 
+"parameters": {
   "siteName": {
       "type": "string"
   }
@@ -298,7 +297,7 @@ ms.locfileid: "82203788"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringParameter": {
@@ -349,15 +348,15 @@ ms.locfileid: "82203788"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| stringOutput | 字符串 | option 1 |
-| intOutput | Int | 1 |
-| objectOutput | 对象 | {"one": "a", "two": "b"} |
-| arrayOutput | 数组 | [1, 2, 3] |
-| crossOutput | 字符串 | option 1 |
+| stringOutput | String | 选项 1 |
+| intOutput | int | 1 |
+| objectOutput | Object | {"one": "a", "two": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
+| crossOutput | String | 选项 1 |
 
 如需详细了解如何使用参数，请参阅 [Azure 资源管理器模板中的参数](template-parameters.md)。
 
@@ -367,11 +366,11 @@ ms.locfileid: "82203788"
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| variableName |是 |字符串 |要返回的变量名称。 |
+| variableName |是 |String |要返回的变量名称。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -379,7 +378,7 @@ ms.locfileid: "82203788"
 
 ### <a name="remarks"></a>备注
 
-通常情况下，使用变量通过仅构造一次复杂值来简化模板。 下面的示例为存储帐户构造唯一的名称。
+通常，使用变量通过只构造一次复杂值来简化模板。 以下示例构造存储帐户的唯一名称。
 
 ```json
 "variables": {
@@ -407,7 +406,7 @@ ms.locfileid: "82203788"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {
@@ -441,14 +440,14 @@ ms.locfileid: "82203788"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| exampleOutput1 | 字符串 | myVariable |
-| exampleOutput2 | 数组 | [1, 2, 3, 4] |
-| exampleOutput3 | 字符串 | myVariable |
-| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
+| exampleOutput1 | String | myVariable |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput3 | String | myVariable |
+| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
 如需详细了解如何使用变量，请参阅 [Azure 资源管理器模板中的变量](template-variables.md)。
 

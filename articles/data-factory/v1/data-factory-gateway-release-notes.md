@@ -11,12 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84194473"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>数据管理网关的发行说明
 > [!NOTE]
@@ -49,8 +48,8 @@ ms.locfileid: "80064997"
 -   可将 DNS 条目添加到允许列表服务总线，而不是将防火墙中的所有 Azure IP 地址列入允许列表（如果需要）。 在此处了解更多详情。
 -   现在可以向/从最大 4.75 TB（这是块 Blob 支持的最大大小）的单块 Blob 复制数据。 （早期的限制为 195 GB）。
 -   已修复：在复制活动期间解压缩多个小文件时出现的内存不足问题。
--   已修复：使用幂等性功能从 Document DB 复制到本地 SQL Server 时发生的索引超出范围问题。
--   已修复：SQL 清理脚本对“复制向导”中的本地 SQL Server 不起作用。
+-   已修复：从 Document DB 复制到 SQL Server 时，索引超出范围问题。
+-   已修复： SQL 清理脚本不适用于从复制向导 SQL Server。
 -   已修复：末尾有空格的列名称在复制活动中不起作用。
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +110,7 @@ ms.locfileid: "80064997"
 *  DB2 现支持 z/OS、DB2 for i (AS/400) 以及已支持的平台（Linux、Unix 和 Windows）。
 *  支持使用 Azure Cosmos DB 作为本地数据存储的源或目标
 *  支持从/向冷/热 Blob 存储以及已支持的通用存储帐户复制数据。
-*  允许通过具有远程登录权限的网关连接到本地 SQL Server。  
+*  允许通过远程登录权限通过网关连接到 SQL Server。  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,7 +125,7 @@ ms.locfileid: "80064997"
     *  已重新组织和简化控件。
 
     *  可使用[无代码复制工具](data-factory-copy-data-wizard-tutorial.md)从存储中复制数据。 有关此功能的大体详细信息，请参阅[暂存复制](data-factory-copy-activity-performance.md#staged-copy)。
-*  可使用数据管理网关将数据从本地 SQL Server 数据库直接传入 Azure 机器学习。
+*  您可以使用数据管理网关直接将数据从 SQL Server 数据库传入 Azure 机器学习中。
 
 *  性能改进
 

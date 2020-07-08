@@ -1,23 +1,22 @@
 ---
-title: Python
+title: 在设计器中执行 Python 脚本
 titleSuffix: Azure Machine Learning
 description: 了解如何在 Azure 机器学习设计器中使用 Python 来转换数据。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.custom: designer
-ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.custom: designer, tracking-python
+ms.openlocfilehash: 31028ba0417f312aa0caaf49cb4b2d432f89979f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644474"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041007"
 ---
-# <a name="execute-python-code-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中执行 Python 代码
+# <a name="run-python-code-in-azure-machine-learning-designer"></a>在 Azure 机器学习设计器中运行 Python 代码
 
 本文介绍了如何使用[“执行 Python 脚本”](algorithm-module-reference/execute-python-script.md)模块将自定义逻辑添加到 Azure 机器学习设计器中。 在下面的操作指南中，你将使用 Pandas 库来执行简单的特征工程。
 

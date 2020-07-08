@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 8f32313529da965573a6c9884daee678e3bc64cc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700977"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958593"
 ---
 # <a name="create-an-azure-container-offer"></a>创建 Azure 容器产品/服务
 
@@ -20,7 +19,7 @@ ms.locfileid: "83700977"
 
 ## <a name="before-you-begin"></a>开始之前
 
-有关快速入门、教程和示例的信息，请参阅 [Azure 容器实例文档](https://docs.microsoft.com/azure/container-instances)。
+有关快速入门、教程和示例的信息，请参阅 [Azure 容器实例文档](../../container-instances/index.yml)。
 
 ## <a name="fundamental-technical-knowledge"></a>基础技术知识
 
@@ -43,7 +42,7 @@ ms.locfileid: "83700977"
 
 我们建议将以下工具添加到开发环境：
 
-- [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)
+- [Azure 存储浏览器](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +54,9 @@ ms.locfileid: "83700977"
 
 有关详细信息，请参阅以下教程：
 
-- [教程：创建要部署到 Azure 容器实例的容器映像](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
-- [教程：使用 Azure 容器注册表任务在云中生成并部署容器映像](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task)。
+- [教程：创建要部署到 Azure 容器实例的容器映像](../../container-instances/container-instances-tutorial-prepare-app.md)
+- [教程：使用 Azure 容器注册表任务在云中生成并部署容器映像](../../container-registry/container-registry-tutorial-quick-task.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建容器产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer)。
+- [创建容器产品/服务](create-azure-container-offer.md)。

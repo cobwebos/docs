@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04bd7788a9cc9657e14aedfb153182d6e53eb95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 20e566a450768fca81e29692f7c8d2da3ccf5201
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259703"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84731556"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>在 Azure Active Directory 中查看自定义角色分配
 
@@ -31,7 +30,7 @@ ms.locfileid: "79259703"
 
 此过程介绍如何查看组织范围的角色分配。
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到  [Azure AD 管理中心](https://aad.portal.azure.com) 。
 1. 依次选择“Azure Active Directory”、“角色和管理员”，然后选择一个角色，将其打开并查看其属性。  
 1. 选择“分配”，查看角色的分配  。
 
@@ -104,7 +103,7 @@ HTTP/1.1 200 OK
 
 此部分介绍如何查看单应用程序范围的角色分配。 此功能目前处于公开预览状态。
 
-1. 在 Azure AD 组织中，以特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com) 。
+1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到  [Azure AD 管理中心](https://aad.portal.azure.com) 。
 1. 选择“应用注册”，然后选择要查看其属性的应用注册。  可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。 
 
     ![在“应用注册”页中创建或编辑应用注册](./media/roles-create-custom/appreg-all-apps.png)

@@ -8,16 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80157587"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678165"
 ---
 # <a name="export-your-application"></a>导出应用程序
-
-
 
 本文为解决方案经理介绍如何导出 IoT Central 应用程序，以便能够重复使用它。
 
@@ -61,36 +58,35 @@ ms.locfileid: "80157587"
 
 - 设备
 - 用户
-- 作业定义
 - 连续数据导出定义
 
 需手动将这些项添加到从应用程序模板创建的任何应用程序。
 
 若要从现有的 IoT Central 应用程序创建应用程序模板：
 
-1. 在应用程序中转到“管理”部分。 
-1. 选择“应用程序模板导出”。 
-1. 在“应用程序模板导出”页上，输入模板的名称和说明。 
-1. 选择“导出”按钮创建应用程序模板。  现在可以复制“可共享的链接”，使用户能够从该模板创建新应用程序： 
+1. 在应用程序中转到“管理”部分。****
+1. 选择“应用程序模板导出”。****
+1. 在“应用程序模板导出”页上，输入模板的名称和说明。****
+1. 选择“导出”按钮创建应用程序模板。**** 现在可以复制“可共享的链接”，使用户能够从该模板创建新应用程序：****
 
 ![创建应用程序模板](media/howto-use-app-templates/create-template.png)
 
 ### <a name="use-an-application-template"></a>使用应用程序模板
 
-若要使用应用程序模板创建新的 IoT Central 应用程序，需要事先创建一个**可共享的链接**。 将该**可共享的链接**粘贴到浏览器的地址栏中。 随后会显示“创建应用程序”页，其中已选择你的自定义应用程序模板： 
+若要使用应用程序模板创建新的 IoT Central 应用程序，需要事先创建一个**可共享的链接**。 将该**可共享的链接**粘贴到浏览器的地址栏中。 随后会显示“创建应用程序”页，其中已选择你的自定义应用程序模板：****
 
 ![从模板创建应用程序](media/howto-use-app-templates/create-app.png)
 
-选择定价计划，并填写窗体中的其他字段。 然后选择“创建”，从应用程序模板创建新的 IoT Central 应用程序。 
+选择定价计划，并填写窗体上的其他字段。 然后选择“创建”，从应用程序模板创建新的 IoT Central 应用程序。****
 
 ### <a name="manage-application-templates"></a>管理应用程序模板
 
-在“应用程序模板导出”页上，可以删除或更新应用程序模板。 
+在“应用程序模板导出”页上，可以删除或更新应用程序模板。****
 
 如果删除应用程序模板，则不再可以使用事先生成的可共享链接来创建新应用程序。
 
-若要更新应用程序模板，请在“应用程序模板导出”页上更改模板名称或说明。  然后再次选择“导出”按钮。  此操作会生成新的**可共享链接**，并使以前的任何**可共享链接** URL 失效。
+若要更新应用程序模板，请在“应用程序模板导出”页上更改模板名称或说明。**** 然后再次选择“导出”按钮。**** 此操作会生成新的**可共享链接**，并使以前的任何**可共享链接** URL 失效。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用应用程序模板后，建议接下来了解如何[在 Azure 门户中管理 IoT Central](howto-manage-iot-central-from-portal.md)
+现在，你已了解如何使用应用程序模板，接下来是了解如何[监视连接到 IoT Central 应用程序的设备的总体运行状况](howto-monitor-application-health.md)。

@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e05cd861f899b700e68c151fcbaa6778dc43eb3a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75435666"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959188"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -66,7 +65,7 @@ ms.locfileid: "75435666"
 
 **VNet 1**
 
-| properties | 值 |
+| Property | “值” |
 |----------|-------|
 | 位置 | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
@@ -78,12 +77,12 @@ ms.locfileid: "75435666"
 | 网关名称 | vnet1gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | 基本 |
+| 网关 SKU | Basic |
 | 网关 IP | vnet1gwip |
 
 **VNet 2**
 
-| properties | 值 |
+| Property | “值” |
 |----------|-------|
 | 位置 | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
@@ -95,7 +94,7 @@ ms.locfileid: "75435666"
 | 网关名称 | vnet2gw |
 | 网关类型 | Vpn |
 | 网关 VPN 类型 | RouteBased |
-| 网关 SKU | 基本 |
+| 网关 SKU | Basic |
 | 网关 IP | vnet1gwip |
 
 ## <a name="setup-dns"></a>设置 DNS
@@ -124,7 +123,7 @@ ms.locfileid: "75435666"
     > 可通过多种方法获取 `ssh` 实用工具。 在 Linux、Unix 和 macOS 上，操作系统会附带此实用工具。 如果使用的是 Windows，请考虑以下选项之一：
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
-    > * [Windows 10 版 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Windows 10 上的 Bash on Ubuntu](https://msdn.microsoft.com/commandline/wsl/about)
     > * [Githttps://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
@@ -178,9 +177,11 @@ ms.locfileid: "75435666"
     hostname -f
     ```
 
-    此命令会返回类似于以下文本的值：
+    此命令返回类似于以下文本的值：
 
-        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```output
+    vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+    ```
 
     `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀____。 请保存该值，因为稍后会使用它。
 
@@ -227,7 +228,7 @@ ms.locfileid: "75435666"
 
     显示的响应如下文所示：
 
-    ```
+    ```output
     Server:         10.2.0.4
     Address:        10.2.0.4#53
     
@@ -285,7 +286,7 @@ sudo service bind9 status
 
 **从 Azure 门户启用 HBase 复制**
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 打开源 HBase 群集。
 3. 在群集菜单中，选择“脚本操作”。****
 4. 在页面顶部，选择“提交新项”。****
@@ -296,18 +297,18 @@ sudo service bind9 status
    3. **头**：确保已选定。 清除其他节点类型。
    4. **参数**：以下示例参数将对所有现有表启用复制，并将源群集中的所有数据复制到目标群集：
 
-          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+    `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
       > [!NOTE]
       > 对源和目标群集 DNS 名称使用主机名而不是 FQDN。
       >
       > 本演练假设 hn1 为活动头节点。 请检查群集以确定活动头节点。
 
-6. 选择“创建”  。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
+6. 选择“创建”。 该脚本可能会运行一段时间，尤其是在使用 **-copydata** 参数的情况下。
 
 必需参数：
 
-|名称|说明|
+|“属性”|描述|
 |----|-----------|
 |-s、--src-cluster | 指定源 HBase 群集的 DNS 名称。 例如：-s hbsrccluster、--src-cluster=hbsrccluster |
 |-d、--dst-cluster | 指定目标（副本）HBase 群集的 DNS 名称。 例如：-s dsthbcluster、--src-cluster=dsthbcluster |
@@ -316,7 +317,7 @@ sudo service bind9 status
 
 可选参数：
 
-|名称|说明|
+|“属性”|描述|
 |----|-----------|
 |-su、--src-ambari-user | 指定源 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
 |-du、--dst-ambari-user | 指定目标 HBase 群集的 Ambari 管理员用户名。 默认值为 **admin**。 |
@@ -336,19 +337,19 @@ sudo service bind9 status
 
 - **针对两个群集之间的所有表启用复制**。 此方案不需要复制或迁移表中的现有数据，也不使用 Phoenix 表。 使用以下参数：
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
 - **针对特定的表启用复制**。 若要针对 table1、table2 和 table3 启用复制，请使用以下参数：
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
 - **对特定表启用复制并复制现有数据**。 若要针对 table1、table2 和 table3 启用复制，请使用以下参数：
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
 - **针对所有表启用复制，并将 Phoenix 元数据从源复制到目标**。 Phoenix 元数据复制并不完善， 请谨慎使用。 使用以下参数：
 
-        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+  `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
 ## <a name="copy-and-migrate-data"></a>复制并迁移数据
 
@@ -360,7 +361,7 @@ sudo service bind9 status
 
 可以遵循[启用复制](#enable-replication)中所述的相同过程来调用脚本操作。 使用以下参数：
 
-    -m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]
+`-m hn1 -t <table1:start_timestamp:end_timestamp;table2:start_timestamp:end_timestamp;...> -p <replication_peer> [-everythingTillNow]`
 
 该[脚本](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_copy_table.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
@@ -368,22 +369,21 @@ sudo service bind9 status
 
 - **复制特定表（test1、test2 和 test3）中到目前（当前时间戳）为止编辑的所有行**：
 
-        -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
+  `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
+
   或：
 
-        -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-
+  `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
 - **复制指定时间范围内的特定表**：
 
-        -m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"
-
+  `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
 ## <a name="disable-replication"></a>禁用复制
 
 若要禁用复制，可以使用 [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) 中的另一个脚本操作脚本。 可以遵循[启用复制](#enable-replication)中所述的相同过程来调用脚本操作。 使用以下参数：
 
-    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+`-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">`
 
 该[脚本](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh)的 `print_usage()` 节中提供了详细的参数说明。
 
@@ -391,14 +391,15 @@ sudo service bind9 status
 
 - **对所有表禁用复制**：
 
-        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
+  `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
+
   或
 
-        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+  `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
 - **对指定的表（table1、table2 和 table3）禁用复制**：
 
-        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+  `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 
 > [!NOTE]
 > 如果要删除目标群集，请确保将其从源群集的对等列表中删除。 可以通过在源群集上的 hbase shell 中运行命令 remove_peer '1' 来完成此操作。 如果不这样做，源群集可能无法正常运行。

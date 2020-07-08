@@ -1,21 +1,18 @@
 ---
 title: 我们将于2023年3月1日停用 Azure 经典 Vm
 description: 本文概述了经典 VM 停用
-services: virtual-machines
 author: tanmaygore
 manager: vashan
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668805"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84678369"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -23,7 +20,7 @@ ms.locfileid: "80668805"
 
 目前，大约有 90% 的 IaaS VM 在使用 Azure 资源管理器。 如果你通过 Azure Service Manager (ASM) 使用 IaaS 资源，现在请开始规划迁移，并在 2023 年 3 月 1 日之前完成迁移，以利用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/)。
 
-经典 Vm 将遵循[现代化生命周期策略](https://support.microsoft.com/help/30881/modern-lifecycle-policy)。
+经典 VM 将按照[新式生命周期策略](https://support.microsoft.com/help/30881/modern-lifecycle-policy)进行停用。
 
 ## <a name="how-does-this-affect-me"></a>这对我有何影响？ 
 
@@ -45,6 +42,6 @@ ms.locfileid: "80668805"
 
 - 有关详细信息，请参阅[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
 
-- 有关技术问题、问题和订阅允许列表，[请联系支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)人员。
+- 有关技术问题、问题和订阅允许列表，请[与支持人员联系](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 - 对于不属于 FAQ 和反馈的其他问题，请查看下面的注释。

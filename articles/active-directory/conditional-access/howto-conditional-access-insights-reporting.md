@@ -4,19 +4,18 @@ description: 使用 Azure AD 条件访问见解和报告工作簿来排除策略
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 678c32703501c4d0b66321cfc3518631ffa28c0c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641606"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85253267"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>条件访问见解和报告
 
@@ -98,6 +97,23 @@ ms.locfileid: "83641606"
 也可以通过在仪表板底部搜索登录来调查特定用户的登录。 左侧的查询显示最常登录的用户。 选择用户会向右筛选查询。  
 
 ## <a name="troubleshooting"></a>疑难解答
+
+### <a name="why-are-queries-failing-due-to-a-permissions-error"></a>由于权限错误导致查询失败的原因是什么？
+
+若要访问工作簿，需要具有正确的 Azure AD 权限以及 Log Analytics 工作区权限。 若要通过运行示例 log analytics 查询来测试是否具有适当的工作区权限：
+
+1. 登录到 **Azure 门户**。
+1. 浏览到**Azure Active Directory**  >  **日志**。
+1. 在 `SigninLogs` "查询" 框中键入，然后选择 "**运行**"。
+1. 如果查询没有返回任何结果，则您的工作区可能配置不正确。 
+
+![排查失败的查询问题](./media/howto-conditional-access-insights-reporting/query-troubleshoot-sign-in-logs.png)
+
+有关如何将 Azure AD 登录日志流式传输到 Log Analytics 工作区的详细信息，请参阅将[Azure AD 日志与 Azure Monitor 日志集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)一文。
+
+### <a name="why-is-the-conditional-access-policies-parameter-is-empty"></a>为什么条件性访问策略参数为空？
+
+策略列表通过查看为最近登录事件评估的策略来生成。 如果租户中没有最近登录，则可能需要等待几分钟，使工作簿加载条件访问策略列表。 这可能会在配置 Log Analytics 之后立即发生，也可能需要更长时间，前提是租户没有最近的登录活动。
 
 ### <a name="why-is-the-workbook-taking-a-long-time-to-load"></a>为什么工作簿需要很长时间才能加载？  
 

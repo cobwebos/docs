@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245299"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791378"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
@@ -38,29 +37,29 @@ ms.locfileid: "79245299"
 - 建议的简短说明。
 - 为实施建议而要执行的补救步骤。 <!-- In some cases, Quick Fix remediation is available. -->
 - 哪些资源需要你对其执行建议的操作。
-- **安全分数影响**，即，如果实现此建议，安全分数将会达到的程度。
+- 安全功能分数影响，这是如果你实施此建议，安全功能分数将增加的数量。
 
 ## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 
-安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”  下的“建议”  磁贴显示了安全中心列出的建议总数。
+安全中心将分析资源的安全状态，以识别潜在的漏洞。 “概述”下的“建议”磁贴显示了安全中心列出的建议总数。
 
 ![安全中心概述](./media/security-center-recommendations/asc-overview.png)
 
-1. 选择“概述”  下的“建议”  磁贴。 这会打开“建议”  列表。
+1. 选择“概述”下的“建议”磁贴。 这会打开“建议”列表。
 
       ![查看建议](./media/security-center-recommendations/view-recommendations.png)
 
-    可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。   此时会打开“筛选器”  边栏选项卡，选择要查看严重性和状态值。
+    可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。  此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
 
    * **建议**：建议。
-   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息，请参阅[安全分数计算](security-center-secure-score.md#secure-score-calculation)。
+   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息，请参阅[安全功能分数计算](secure-score-security-controls.md#how-your-secure-score-is-calculated)。
    * **资源**：列出了此建议适用的资源。
    * **状态栏**：描述该特定建议的严重性：
-       * **高（红色）**：有意义的资源（例如应用程序、VM 或网络安全组）存在漏洞，需要引起注意。
-       * **中（橙色）**：存在漏洞，需要执行非关键或附加步骤以消除它或完成一个过程。
-       * **Low （蓝色）**：应该解决的漏洞，但不需要立即引起注意。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。） 
-       * **正常（绿色）**：
-       * **不可用（灰色）**：
+       * **高（红色）** ：重要资源（如应用程序、VM 或网络安全组）存在漏洞，需要提请注意。
+       * **中等（橙色）** ：存在漏洞，需要采取非关键步骤或额外步骤来消除它或完成某个过程。
+       * **低（蓝色）** ：存在需要解决的漏洞，但不需立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。） 
+       * **正常（绿色）** ：
+       * **不可用（灰色）** ：
 
 1. 若要查看每个建议的详细信息，请单击该建议。
 

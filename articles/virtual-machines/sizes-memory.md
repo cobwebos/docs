@@ -1,6 +1,6 @@
 ---
 title: Azure VM 大小 - 内存 | Microsoft Docs
-description: 列出 Azure 中适用于虚拟机的各种内存优化大小。 针对此系列中的大小列出了 vCPU、数据磁盘和 NIC 的数量，以及存储吞吐量和网络带宽。
+description: 列出 Azure 中适用于虚拟机的各种内存优化大小。 列出了有关此系列中各大小的 vCPU 数、数据磁盘数和 NIC 数以及存储吞吐量和网络带宽的信息。
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
@@ -15,16 +15,15 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ab4c95e3525caa42b979b15fa8118e9dd21bb74a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: HT
+ms.openlocfilehash: 5e920f165232ec79dcced1de632d90f463ff58d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84791463"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>内存优化虚拟机大小
 
-内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
+内存优化 VM 大小提供高内存到 CPU 的比率，这对于关系数据库服务器、大中型缓存和内存中分析非常有用。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。
 
 - [Dv2 和 DSv2 系列](dv2-dsv2-series-memory.md)是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列比 D 系列快大约 35%。 它在英特尔&reg; Xeon&reg; 8171M 2.1 GHz (Skylake)、英特尔&reg; Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) 或英特尔&reg; Xeon&reg; E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，使用英特尔睿频加速技术 2.0。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
@@ -34,7 +33,9 @@ ms.locfileid: "84248288"
 
 - [Ev3 和 Esv3 系列](ev3-esv3-series.md)在超线程配置中使用英特尔&reg; Xeon&reg; 8171M 2.1 GHz (Skylake) 或英特尔&reg; Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) 处理器，为最常规用途的工作负载提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。 Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
-- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)在第 2 代英特尔&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 处理器上运行，非常适合特别大的数据库或者其他受益于 vCPU 数多和内存丰富的应用程序。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔 AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 
+- [Ev4 和 Esv4 系列](ev4-esv4-series.md)在 &reg; 超线程配置中第2代 Intel 强 &reg; 白金白金8272CL （级联 Lake）处理器上运行，非常适合于各种内存密集型企业应用程序和功能，最高可达 504 GiB 的 RAM。 它具有[intel &reg; Turbo 提升技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、 [intel &reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[INTEL &reg; 高级矢量扩展512（intel AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
+
+- [Edv4 和 Edsv4 系列](edv4-edsv4-series.md)在第2代 Intel &reg; 强 &reg; 白金白金8272CL （级联 Lake）处理器上运行，非常适合极大型数据库或其他应用程序，这些应用程序受益于高 vCPU 计数和大量内存。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔 AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。
 
 - [M 系列](m-series.md)提供许多 vCPU（最多 128 个 vCPU）和大量内存（最大 3.8 TiB）。 它也非常适用于极大型数据库或受益于 vCPU 数量多和内存大的其他应用程序。
 
@@ -53,4 +54,4 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

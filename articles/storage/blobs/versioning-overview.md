@@ -1,5 +1,5 @@
 ---
-title: Blob 版本控制（预览）
+title: Blob 版本控制（预览版）
 titleSuffix: Azure Storage
 description: Blob 存储版本控制（预览版）可自动维护对象的以前版本，并使用时间戳标识它们。 如果错误地修改或删除了数据，则可以还原以前版本的 blob 以恢复数据。
 services: storage
@@ -9,14 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123830"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84433585"
 ---
-# <a name="blob-versioning-preview"></a>Blob 版本控制（预览）
+# <a name="blob-versioning-preview"></a>Blob 版本控制（预览版）
 
 可以启用 Blob 存储版本控制（预览版）来自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
 
@@ -176,10 +175,10 @@ Blob 版本控制用于保护数据免遭意外或恶意删除。 若要增强�
 
 下表显示了哪些 RBAC 操作支持删除 blob 或 blob 版本。
 
-| 说明 | Blob 服务操作 | 需要 RBAC 数据操作 | RBAC 内置角色支持 |
+| 描述 | Blob 服务操作 | 需要 RBAC 数据操作 | RBAC 内置角色支持 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| 正在删除 blob 的当前版本 | 删除 Blob | **StorageAccounts/blobServices/容器/blob/删除/actionDeleting** | 存储 Blob 数据参与者 |
-| 删除版本 | 删除 Blob | **StorageAccounts/blobServices/容器/blob/deleteBlobVersion/** | 存储 Blob 数据所有者 |
+| 正在删除 blob 的当前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 存储 Blob 数据参与者 |
+| 删除版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a>共享访问签名（SAS）参数
 
@@ -211,7 +210,7 @@ Blob 版本控制可用于以下类型的存储帐户：
 - 块 Blob 存储帐户
 - Blob 存储帐户
 
-如果你的存储帐户是常规用途 v1 帐户，请使用 Azure 门户升级到常规用途 v2 帐户。 有关存储帐户的详细信息，请参阅[Azure 存储帐户概述](../common/storage-account-overview.md)。
+如果你的存储帐户是常规用途 v1 帐户，请使用 Azure 门户升级到常规用途 v2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。
 
 当前不支持启用了层次结构命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
 
@@ -269,7 +268,7 @@ az feature show --namespace Microsoft.Storage \
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-启用 blob 版本控制可能会导致帐户产生额外的数据存储费用。 在设计应用程序时，务必要注意在哪些情况下会产生这些费用，以便能最大限度地降低成本。
+启用 blob 版本控制可能会导致帐户产生额外的数据存储费用。 在设计应用程序时，有必要了解在哪些情况下会产生这些费用，以便最大程度地减少费用。
 
 Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。 如果某个版本共享块或页与其基 blob，则只需为不在版本和基本 blob 之间共享的任何其他块或页面付费。
 
@@ -281,7 +280,7 @@ Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。
 启用 blob 版本控制时，请确保考虑以下几点：
 
 - 存储帐户会对唯一的块或页产生费用，无论它们是在 blob 中还是在 blob 的以前版本中都是如此。 你的帐户在更新其所基于的 blob 之前，不会向与 blob 关联的版本收取额外费用。 更新 blob 后，它将从其以前的版本与其分离。 发生这种情况时，需要为每个 blob 或版本中的唯一块或页付费。
-- 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与版本中的相同，也是如此。 再次提交块后，它将从任何版本的对应与其分离，并向你收取其数据的费用。 对于使用相同的数据更新的页 Blob 中的页面，也是如此。
+- 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与版本中的相同，也是如此。 再次提交块后，它将从任何版本的对应与其分离，并向你收取其数据的费用。 对于使用相同数据更新的页 Blob 中的页面来说，情况也是如此。
 - Blob 存储无法确定两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此请务必考虑在启用版本控制时更新 blob 将导致附加的唯一块和额外费用。
 - 启用 blob 版本控制后，在块 blob 上设计更新操作，以使它们更新的块数量越少。 允许对块进行精细控制的写入操作是[put](/rest/api/storageservices/put-block)块和[put 块列表](/rest/api/storageservices/put-block-list)。 另一方面， [Put Blob](/rest/api/storageservices/put-blob)操作将替换 Blob 的全部内容，因此可能会导致额外的费用。
 
@@ -313,7 +312,7 @@ Blob 版本（如 blob 快照）按与活动数据相同的费率进行计费。
 
 ![Azure 存储资源](./media/versioning-overview/versions-billing-scenario-4.png)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [启用 Blob 版本控制](versioning-enable.md)
 - [创建 blob 的快照](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
