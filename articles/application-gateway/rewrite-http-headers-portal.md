@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 门户配置应用程序网关，重写通
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74012863"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807894"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 Azure 应用程序网关中的 HTTP 请求和响应标头 - Azure 门户
 

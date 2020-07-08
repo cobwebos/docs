@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 135c58a665779ffaad8750ffe618bdbe38639b66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db05c7a5a45221485ecb62c2c90d56be52d5ef48
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808612"
 ---
 # <a name="convert-models"></a>转换模型
 
@@ -38,6 +38,11 @@ Azure 远程呈现允许您呈现非常复杂的模型。 若要获得最大性�
     - 或通过提供*共享访问签名（SAS）*。
 
 所有模型数据（输入和输出）都存储在用户提供的 Azure blob 存储中。 Azure 远程呈现使你可以完全控制资产管理。
+
+## <a name="pricing"></a>定价
+
+有关转换定价的信息，请参阅[远程呈现定价](https://azure.microsoft.com/pricing/details/remote-rendering)页。
+
 
 ## <a name="conversion-parameters"></a>转换参数
 

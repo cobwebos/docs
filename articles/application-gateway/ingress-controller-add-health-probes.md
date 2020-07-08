@@ -4,15 +4,15 @@ description: 本文介绍如何使用应用程序网关向 AKS Pod 添加运行�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795600"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807995"
 ---
 # <a name="add-health-probes-to-your-service"></a>向服务添加运行状况探测
 默认情况下，入口控制器将为公开的 Pod 预配 HTTP GET 探测。
@@ -47,15 +47,15 @@ spec:
 
 Kubernetes API 参考：
 * [容器探测](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
-* [HttpGet 操作](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+* [HttpGet 操作](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * 配置了 `readinessProbe` 时，支持 `livenessProbe` 和 `httpGet`。
+> * 配置了 `httpGet` 时，支持 `readinessProbe` 和 `livenessProbe`。
 > * 当前不支持对 Pod 上公开的端口以外的端口进行探测。
 > * 不支持 `HttpHeaders`、`InitialDelaySeconds`、`SuccessThreshold`。
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>不使用 `readinessProbe` 或 `livenessProbe`
-如果未提供上述探测，则入口控制器假设在为 `Path` 注释指定的 `backend-path-prefix` 上或在服务的 `path` 定义中指定的 `ingress` 上可以访问该服务。
+如果未提供上述探测，则入口控制器假设在为 `backend-path-prefix` 注释指定的 `Path` 上或在服务的 `ingress` 定义中指定的 `path` 上可以访问该服务。
 
 ## <a name="default-values-for-health-probe"></a>运行状况探测的默认值
 对于就绪情况/运行情况探测无法推断的任何属性，将设置默认值。

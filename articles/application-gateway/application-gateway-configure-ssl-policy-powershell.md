@@ -5,19 +5,19 @@ description: 本文介绍如何在 Azure 应用程序网关上配置 TLS 策略
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 3804059fdd818f10663d14bde72da2c6773fa53f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3109ada2c905a9f11169a462284d22b9e9604494
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312675"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808245"
 ---
 # <a name="configure-tls-policy-versions-and-cipher-suites-on-application-gateway"></a>在应用程序网关上配置 TLS 策略版本和密码套件
 
-了解如何在应用程序网关上配置 TLS/SSL 策略版本和密码套件。 你可以从包含 TLS 策略版本和已启用密码套件的不同配置的预定义策略列表中进行选择。 你还可以根据需要定义[自定义 TLS 策略](#configure-a-custom-tls-policy)。
+了解如何在应用程序网关上配置 TLS/SSL 策略版本和密码套件。 预定义策略列表中包含各种配置的 TLS 策略版本和启用的密码套件，你可以从中进行选择。 此外，还可以根据你自己的需求定义[自定义 TLS 策略](#configure-a-custom-tls-policy)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,7 +73,7 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-tls-policies"></a>列出预定义的 TLS 策略
 
-应用程序网关包含 3 个可使用的预定义策略。 `Get-AzApplicationGatewaySslPredefinedPolicy` cmdlet 会检索这些策略。 每个策略启用不同的协议版本和密码套件。 这些预定义策略可用于快速配置应用程序网关上的 TLS 策略。 默认情况下，如果未定义任何特定的 TLS 策略，则选择**AppGwSslPolicy20150501** 。
+应用程序网关包含 3 个可使用的预定义策略。 `Get-AzApplicationGatewaySslPredefinedPolicy` cmdlet 会检索这些策略。 每个策略启用不同的协议版本和密码套件。 可以使用这些预定义策略在应用程序网关上快速配置 TLS 策略。 如果未定义具体的 TLS 策略，则会默认选择 AppGwSslPolicy20150501  。
 
 以下输出为运行 `Get-AzApplicationGatewaySslPredefinedPolicy` 的示例。
 
@@ -108,7 +108,7 @@ CipherSuites:
 
 ## <a name="configure-a-custom-tls-policy"></a>配置自定义 TLS 策略
 
-配置自定义 TLS 策略时，传递以下参数： PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。 
+在配置自定义 TLS 策略时，需要传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway。 如果尝试传递其他参数，则在创建或更新应用程序网关时会出错。 
 
 以下示例在应用程序网关上设置自定义 TLS 策略。 它将最低协议版本设置为 `TLSv1_1`，并启用以下密码套件：
 
@@ -116,7 +116,7 @@ CipherSuites:
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> 配置自定义 TLS 策略时，必须选择 TLS_RSA_WITH_AES_256_CBC_SHA256。 应用程序网关使用此密码套件进行后端管理。 可以将此密码套件与任何其他套件结合使用，但也必须选择此选项。 
+> 配置自定义 TLS 策略时，必须选择“TLS_RSA_WITH_AES_256_CBC_SHA256”。 应用程序网关使用此密码套件进行后端管理。 可以将此密码套件与任何其他套件结合使用，但也必须选择此选项。 
 
 ```powershell
 # get an application gateway resource
@@ -132,11 +132,11 @@ Get-AzApplicationGatewaySslPolicy -ApplicationGateway $gw
 Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
-## <a name="create-an-application-gateway-with-a-pre-defined-tls-policy"></a>使用预定义的 TLS 策略创建应用程序网关
+## <a name="create-an-application-gateway-with-a-pre-defined-tls-policy"></a>使用预定义 TLS 策略创建应用程序网关
 
-配置预定义的 TLS 策略时，传递以下参数： PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
+配置预定义 TLS 策略时，需要传递以下参数：PolicyType、PolicyName 和 ApplicationGateway。 如果尝试传递其他参数，则在创建或更新应用程序网关时会出错。
 
-以下示例使用预定义的 TLS 策略创建新的应用程序网关。
+以下示例使用预定义 TLS 策略创建一个新的应用程序网关。
 
 ```powershell
 # Create a resource group
@@ -189,11 +189,11 @@ $policy = New-AzApplicationGatewaySslPolicy -PolicyType Predefined -PolicyName A
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.ResourceGroupName -Location "East US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SslCertificates $cert -SslPolicy $policy
 ```
 
-## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>使用预定义的 TLS 策略更新现有应用程序网关
+## <a name="update-an-existing-application-gateway-with-a-pre-defined-tls-policy"></a>使用预定义 TLS 策略更新现有应用程序网关
 
-若要设置自定义 TLS 策略，请传递以下参数： **PolicyType**、 **MinProtocolVersion**、 **CipherSuite**和**ApplicationGateway**。 若要设置预定义的 TLS 策略，请传递以下参数： **PolicyType**、 **PolicyName**和**ApplicationGateway**。 如果尝试传递其他参数，则会在创建或更新应用程序网关时出错。
+若要设置自定义 TLS 策略，请传递以下参数：PolicyType、MinProtocolVersion、CipherSuite 和 ApplicationGateway     。 若要设置预定义 TLS 策略，请传递以下参数：PolicyType、PolicyName 和 ApplicationGateway    。 如果尝试传递其他参数，则在创建或更新应用程序网关时会出错。
 
-以下示例中提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
+下面的示例同时提供了自定义策略和预定义策略的代码示例。 取消注释要使用的策略。
 
 ```powershell
 # You have to change these parameters to match your environment.

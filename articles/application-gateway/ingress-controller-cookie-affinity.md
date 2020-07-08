@@ -4,15 +4,15 @@ description: 本文介绍如何使用应用程序网关启用基于 Cookie 的�
 services: application-gateway
 author: caya
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: adacd805e736524fd7956c4bbc0ad402980b4cd0
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 3af2705fedbb9c19d4f128e8e997d3fa73f8b5a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795979"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807973"
 ---
 # <a name="enable-cookie-based-affinity-with-an-application-gateway"></a>使用应用程序网关启用基于 Cookie 的相关性
 如 [Azure 应用程序网关文档](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#http-settings)中所述，应用程序网关支持基于 Cookie 的相关性，这意味着它可以将后续流量从用户会话定向到同一服务器进行处理。

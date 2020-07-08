@@ -5,21 +5,21 @@ description: 本文提供有关如何使用专用前端 IP 地址配置应用程
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7a0022c5cff405a993f30cdf2ab5900485c84a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535581"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808114"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
 
 可以在 Azure 应用程序网关上配置面向 Internet 的 VIP 或不向 Internet 公开的内部终结点。 内部终结点使用前端（也称为内部负载均衡器 (ILB) 终结点）的专用 IP 地址。 
 
-对于不向 Internet 公开的内部业务线应用程序，使用前端专用 IP 地址配置网关的做法非常有效。 对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务和层也很有用，但仍需要轮循机制负载分配、会话粘性或传输层安全性（TLS），以前称为安全套接字层（SSL）终止。
+对于不向 Internet 公开的内部业务线应用程序，使用前端专用 IP 地址配置网关的做法非常有效。 它还适用于多层应用程序中的某些服务和层，这些服务和层位于不向 Internet 公开的安全边界内，但仍需要循环负载分配、会话粘性或传输层安全性 (TLS)（以前称为“安全套接字层 (SSL)”）终止。
 
 本文引导你完成在 Azure 门户中使用前端专用 IP 地址配置应用程序网关的步骤。
 
@@ -95,17 +95,17 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
    - 对于“资源组”，请选择“myResourceGroupAG”。  
    - *myVM* - 作为**虚拟机名称**。
    - 对于“映像”，请选择“Windows Server 2019 Datacenter”。  
-   - 有效的**用户名**。
-   - 有效的**密码**。
-5. 接受剩余的默认值并选择 "**下一步：磁盘**"。
-6. 接受默认值并选择 "**下一步：网络**"。
+   - 有效的用户名  。
+   - 有效的密码  。
+5. 接受剩余的默认值，然后选择“下一步:**磁盘”** 。
+6. 接受默认值，然后选择“下一步:  网络”。
 7. 请确保选择 **myVNet** 作为虚拟网络，子网是 **myBackendSubnet**。
-8. 接受剩余的默认值，然后选择 "**下一步：管理**"。
+8. 接受剩余的默认值，然后选择“下一步:**管理”** 。
 9. 选择“关闭”  以禁用启动诊断。
-10. 接受剩余的默认值，然后选择 "**下一步：高级**"。
-11. 选择 "**下一步：标记**"。
-12. 选择**下一步：查看 + 创建**。
-13. 检查摘要页上的设置，然后选择“创建”。**** 创建 VM 可能需要几分钟时间。 请等待部署成功完成，然后再前进到下一部分。
+10. 接受剩余的默认值，然后选择“下一步:  高级”。
+11. **选择“下一步:** 标记”。
+12. **选择“下一步:** 查看 + 创建”。
+13. 检查摘要页上的设置，然后选择“创建”。  创建 VM 可能需要几分钟时间。 请等待部署成功完成，然后再前进到下一部分。
 
 ### <a name="install-iis"></a>安装 IIS
 

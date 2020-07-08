@@ -5,17 +5,17 @@ description: 了解如何使用 Azure CLI 创建具有 Azure Active Directory �
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bad97f9bc9eaa3aad02dfcb5e82d2171e93f2dac
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "75371983"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809012"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>为具有 Azure CLI 的容器或 blob 创建用户委托 SAS
 
@@ -29,7 +29,7 @@ ms.locfileid: "75371983"
 
 若要使用 Azure CLI 使用 Azure AD 凭据来保护 SAS，首先请确保已安装最新版本的 Azure CLI。 有关安装 Azure CLI 的详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-若要使用 Azure CLI 创建用户委托 SAS，请确保已安装2.0.78 或更高版本。 若要查看已安装的版本， `az --version`请使用命令。
+若要使用 Azure CLI 创建用户委托 SAS，请确保已安装2.0.78 或更高版本。 若要查看已安装的版本，请使用 `az --version` 命令。
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>用 Azure AD 凭据登录
 
@@ -60,7 +60,7 @@ az role assignment create \
 
 由于用户委托密钥的有效最大时间间隔是从开始日期起的7天，因此，你应为开始时间在7天内的 SAS 指定到期时间。 此 SA 在用户委托密钥过期后无效，因此过期时间超过7天的 SAS 仍将仅适用于7天。
 
-创建用户委托 SAS 时，和`--auth-mode login` `--as-user parameters`是必需的。 指定`--auth-mode`参数的*登录名*，以便向 Azure 存储空间发出的请求授权 Azure AD 凭据。 指定`--as-user`参数以指示返回的 sas 应为用户委托 sas。
+创建用户委托 SAS 时， `--auth-mode login` 和 `--as-user parameters` 是必需的。 指定参数的*登录名*， `--auth-mode` 以便向 Azure 存储空间发出的请求授权 Azure AD 凭据。 指定 `--as-user` 参数以指示返回的 sas 应为用户委托 sas。
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>为容器创建用户委托 SAS
 
@@ -92,7 +92,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 Blob 上的用户委托 SAS 支持的权限包括添加、创建、删除、读取和写入。 权限可以单独指定或组合指定。 有关这些权限的详细信息，请参阅[创建用户委托 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
-以下语法返回 blob 的用户委托 SAS。 该示例指定`--full-uri`参数，该参数返回附加 SAS 令牌的 blob URI。 请记住，用自己的值替换括号中的占位符值：
+以下语法返回 blob 的用户委托 SAS。 该示例指定 `--full-uri` 参数，该参数返回附加 SAS 令牌的 BLOB URI。 请记住，用自己的值替换括号中的占位符值：
 
 ```azurecli-interactive
 az storage blob generate-sas \

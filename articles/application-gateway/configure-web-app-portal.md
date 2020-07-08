@@ -5,15 +5,15 @@ description: 本文提供有关如何在现有或新的应用程序网关上将 
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
-ms.date: 11/14/2019
+ms.topic: how-to
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1109dae90790c9667b3c60afb6416c20061a95fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075161"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808107"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>使用应用程序网关配置应用服务
 
@@ -59,7 +59,7 @@ ms.locfileid: "74075161"
 3. 根据用例选择“HTTP”或“HTTPS”作为协议。 
 
    > [!NOTE]
-   > 如果选择“HTTPS”，则无需上传任何身份验证证书或受信任的根证书即可将应用服务后端加入允许列表，因为应用服务是受信任的 Azure 服务。
+   > 如果你选择 HTTPS，则无需上传任何身份验证证书或受信任的根证书即可允许应用服务后端，因为应用服务是受信任的 Azure 服务。
 
 4. 选中“用于应用服务”对应的框。  请注意，开关 `Create a probe with pick host name from backend address` 和 `Pick host name from backend address` 会自动启用。`Pick host name from backend address` 会在将请求从应用程序网关路由到后端时，使用后端的主机名来替代请求中的主机标头。  
 

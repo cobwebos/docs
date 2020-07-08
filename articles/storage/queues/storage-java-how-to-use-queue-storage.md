@@ -6,25 +6,23 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.reviewer: cbrooks
-ms.openlocfilehash: 7658b8541e7a79a5e547a6649b35681446e34b0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.reviewer: dineshm
+ms.openlocfilehash: a0c94f3c9af9220bb3cf6476c50799d1f3313ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067135"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84809243"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
-
 本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 介绍的方案包括插入  、扫视  、获取  和删除  队列消息以及创建  和删除  队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
-> [!NOTE]
-> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
+> [!IMPORTANT]
+> 本文介绍适用于 Java 的 Azure 存储客户端库的旧版本。 若要开始学习最新版本，请参阅[快速入门：适用于 Java 的 Azure 队列存储客户端库](storage-quickstart-queues-java.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -48,7 +46,7 @@ import com.microsoft.azure.storage.queue.*;
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName  和 AccountKey  值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的主访问密钥。 此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。 在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用 [Azure 门户](https://portal.azure.com)中列出的存储帐户的名称和存储帐户的主访问密钥。 此示例演示如何声明一个静态字段以保存连接字符串：
 
 ```java
 // Define the connection-string with your values.
@@ -58,7 +56,7 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-在 Microsoft Azure 的角色内运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 **StorageConnectionString** 的 *Setting* 元素中获取连接字符串的示例：
+在 Microsoft Azure 的角色内运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。 下面是从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素中获取连接字符串的示例：
 
 ```java
 // Retrieve storage account from connection-string.
@@ -69,7 +67,7 @@ String storageConnectionString =
 下面的示例假定使用了这两个方法之一来获取存储连接字符串。
 
 ## <a name="how-to-create-a-queue"></a>如何：创建队列
-利用 CloudQueueClient  对象，可以获取队列的引用对象。 以下代码将创建 CloudQueueClient  对象。 （注意：还有其他方式来创建 CloudStorageAccount 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 CloudStorageAccount   。
+利用 CloudQueueClient  对象，可以获取队列的引用对象。 以下代码将创建 CloudQueueClient  对象。 （注意：还有其他方式可创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudStorageAccount**。）
 
 使用 **CloudQueueClient** 对象获取对要使用的队列的引用。 如果队列不存在，可以创建它。
 
@@ -366,7 +364,7 @@ catch (Exception e)
 ```
 
 ## <a name="how-to-delete-a-queue"></a>如何：删除队列
-若要删除队列及其包含的所有消息，请对 CloudQueue  对象调用 deleteIfExists  方法。
+若要删除队列及其包含的所有消息，请对 **CloudQueue** 对象调用 **deleteIfExists** 方法。
 
 ```java
 try
@@ -391,12 +389,17 @@ catch (Exception e)
 }
 ```
 
-## <a name="next-steps"></a>后续步骤
-现在，了解了有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+[!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-* [Azure Storage SDK for Java][Azure Storage SDK for Java]
+> [!NOTE]
+> SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[适用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
+
+## <a name="next-steps"></a>后续步骤
+现在，已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
+
+* [适用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]
 * [Azure 存储客户端 SDK 参考][Azure Storage Client SDK Reference]
-* [Azure Storage Services REST API（Azure 存储服务 REST API）][Azure Storage Services REST API]
+* [Azure 存储空间服务 REST API][Azure Storage Services REST API]
 * [Azure 存储团队博客][Azure Storage Team Blog]
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671

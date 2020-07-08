@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6a1a51ee09422607ae1392704add4d49d3367d57
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808545"
 ---
 # <a name="limitations"></a>限制
 
@@ -26,9 +26,10 @@ ms.locfileid: "83759041"
 * 单个类型允许的对象总数（Entity、CutPlaneComponent 等）：16,777,215。
 * 允许的活动剪切平面总数：8.
 
-## <a name="materials"></a>材料
+## <a name="geometry"></a>Geometry
 
 * 资产中允许的材料总数：65,535。
+* 单个纹理的最大尺寸： 16384 x 16384。 转换过程会缩减更大的源纹理。
 
 ## <a name="overall-number-of-polygons"></a>多边形总数
 
@@ -39,12 +40,14 @@ ms.locfileid: "83759041"
 |standard| 2000 万 |
 |高级| 无限制 |
 
+有关此限制的更多详细信息，请参阅[VM 大小](../reference/vm-sizes.md)章节。
 
 ## <a name="platform-limitations"></a>平台限制
 
 **Windows 10 桌面**
 
 * UWP/x86 是唯一受支持的 UWP 平台。 不支持 UWP/x64。
+* Win32/x64 是唯一受支持的 Win32 平台。 Win32/x86 不受支持。
 
 **Hololens 2**
 

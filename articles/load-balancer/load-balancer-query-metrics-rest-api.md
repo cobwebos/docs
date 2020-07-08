@@ -7,19 +7,19 @@ author: asudbring
 manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b5aedb20bc7a8d2aa6f3aa3d8691a71af4cd3a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74225256"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808374"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 获取负载均衡器使用情况指标
 
-使用 [Azure REST API](/azure/load-balancer/load-balancer-standard-overview) 收集[标准负载均衡器](/rest/api/azure/)在一段时间内处理的字节数。
+使用 [Azure REST API](/rest/api/azure/) 收集[标准负载均衡器](/azure/load-balancer/load-balancer-standard-overview)在一段时间内处理的字节数。
 
 [Azure Monitor REST 参考](/rest/api/monitor)中提供了完整的参考文档和 REST API 的其他示例。 
 

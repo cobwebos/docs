@@ -4,15 +4,15 @@ description: 介绍如何排查 Azure 应用程序网关的后端运行状况问
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
-ms.topic: article
-ms.date: 08/30/2019
+ms.topic: troubleshooting
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b5524d0612bf8f5d69979a8392f664e417c5f98d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648443"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808193"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>排查应用程序网关中的后端运行状况问题
 ==================================================
@@ -81,7 +81,7 @@ BackendAddressPoolsText : [
 “详细信息”列中所示的消息提供了关于问题的更详细见解，你可以基于这些见解排查问题。
 
 > [!NOTE]
-> 默认探测请求以 \<protocol\>://127.0.0.1:\<port\>/ 格式发送。 例如， http://127.0.0.1:80 表示端口 80 上的 http 探测。 仅 200 到 399 的 HTTP 状态代码被视为正常。 协议和目标端口继承自 HTTP 设置。 如果希望应用程序网关探测其他协议、主机名或路径，并将其他状态代码识别为“正常”，请配置自定义探测并将其与 HTTP 设置相关联。
+> 将以 \<protocol\> ：//127.0.0.1：/格式发送默认探测请求 \<port\> 。 例如， http://127.0.0.1:80 表示端口 80 上的 http 探测。 仅 200 到 399 的 HTTP 状态代码被视为正常。 协议和目标端口继承自 HTTP 设置。 如果希望应用程序网关探测其他协议、主机名或路径，并将其他状态代码识别为“正常”，请配置自定义探测并将其与 HTTP 设置相关联。
 
 <a name="error-messages"></a>Error messages
 ------------------------
@@ -170,7 +170,7 @@ BackendAddressPoolsText : [
 
 **消息：** 后端的 HTTP 响应状态代码与探测设置不匹配。 预期：{HTTPStatusCode0} 收到：{HTTPStatusCode1}。
 
-原因：建立 TCP 连接并完成 TLS 握手（如果启用了 TLS）后，应用程序网关会将探测作为 HTTP GET 请求发送到后端服务器。 如前文所述，默认探测将发送到 \<protocol\>://127.0.0.1:\<port\>/，并且它会将 200 至 399 范围内的响应状态代码视为“正常”。 如果服务器返回其他任何状态代码，则在此消息中其将被标记为“不正常”。
+原因：建立 TCP 连接并完成 TLS 握手（如果启用了 TLS）后，应用程序网关会将探测作为 HTTP GET 请求发送到后端服务器。 如前文所述，默认探测为 \<protocol\> ：//127.0.0.1： \<port\> /，并将风行一时200到399中的响应状态代码视为正常。 如果服务器返回其他任何状态代码，则在此消息中其将被标记为“不正常”。
 
 **解决方案：** 根据后端服务器的响应代码，可以执行以下步骤。 以下列出了一些常见状态代码：
 
@@ -209,7 +209,7 @@ BackendAddressPoolsText : [
 
 #### <a name="backend-server-certificate-invalid-ca"></a>后端服务器证书无效的 CA
 
-**消息：** 后端使用的服务器证书不是由已知证书颁发机构 (CA) 签署的。 通过上传后端所使用的服务器证书的根证书，将应用程序网关上的后端列入白名单。
+**消息：** 后端使用的服务器证书不是由已知证书颁发机构 (CA) 签署的。 通过上传后端使用的服务器证书的根证书，允许应用程序网关上的后端。
 
 原因：带应用程序网关 v2 的端到端 SSL 必须验证后端服务器的证书，才能断定服务器是否正常运行。
 为了使 TLS/SSL 证书受信任，后端服务器的证书必须由应用程序网关的受信任存储区中包含的 CA 颁发。 如果证书不是由受信任的 CA 颁发的（例如，使用自签名证书），则用户应将证书颁发者的证书上传到应用程序网关。

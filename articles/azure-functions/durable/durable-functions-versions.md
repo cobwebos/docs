@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ba190f40d3b9451aec6e86ea69b7d0fe6e66aa3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152884"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84807844"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
-Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数  。 该扩展可用于管理状态、检查点和重启。 如果你不熟悉 Durable Functions，请参阅[概述文档](durable-functions-overview.md)。
+Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的扩展，可用于在无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。 如果你不熟悉 Durable Functions，请参阅[概述文档](durable-functions-overview.md)。
 
 ## <a name="new-features-in-2x"></a>2\.x 中的新功能
 
@@ -82,3 +82,7 @@ Durable Functions 2.x 使用新的 host.json 架构。 基于 1.x 的主要更�
 #### <a name="functionjson-changes-javascript-and-c-script"></a>function.json 更改（JavaScript 和 C# Script）
 
 在 Durable Functions 1.x 中，业务流程客户端使用的 `type` 为 `orchestrationClient`。 2\.x 版改用 `durableClient`。
+
+#### <a name="raise-event-changes"></a>引发事件更改
+
+在 Durable Functions 1.x 中，调用[引发事件](durable-functions-external-events.md#send-events)API 并指定不存在的实例导致了缄默失败。 从1.x 开始，将事件引发到不存在的业务流程将导致异常。

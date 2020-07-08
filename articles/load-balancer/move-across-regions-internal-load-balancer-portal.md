@@ -3,15 +3,15 @@ title: 使用 Azure 门户将 Azure 内部负载均衡器移到另一个 Azure �
 description: 使用 Azure 资源管理器模板，通过 Azure 门户将 Azure 内部负载均衡器从一个 Azure 区域移到另一个 Azure 区域
 author: asudbring
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb3605249578b15d67bdd9764490d61812b21c18
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638799"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84808445"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>使用 Azure 门户将 Azure 内部负载均衡器移到另一个区域
 
@@ -87,7 +87,7 @@ ms.locfileid: "75638799"
 
     ```
 
-11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+11. 若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 12. 还可以选择更改 **template.json** 中的其他参数，这些参数是可选的，具体取决于你的要求：
 
@@ -255,7 +255,7 @@ ms.locfileid: "75638799"
                 },
     ```
 
-9.  若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国** = 中部**centralus**的区域名称。
+9.  若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 10. 也可选择更改模板中的其他参数，这些参数是可选的，具体取决于你的要求：
 
