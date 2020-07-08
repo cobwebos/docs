@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 78623f738285e781cb561a3844db8fbf37226929
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645015"
 ---
 # <a name="run-custom-mapreduce-programs"></a>运行自定义 MapReduce 程序
@@ -48,7 +47,7 @@ ms.locfileid: "75645015"
 
 最常见的 MapReduce 程序以 Java 编写，并会编译成 jar 文件。
 
-1. 开发、编译和测试 MapReduce 程序之后，使用`scp`命令将 jar 文件上传到头节点。
+1. 开发、编译和测试 MapReduce 程序之后，使用 `scp` 命令将 jar 文件上传到头节点。
 
     ```cmd
     scp mycustomprogram.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net

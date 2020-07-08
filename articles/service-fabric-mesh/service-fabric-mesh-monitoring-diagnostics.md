@@ -7,10 +7,9 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75498144"
 ---
 # <a name="monitoring-and-diagnostics"></a>监视和诊断
@@ -43,7 +42,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 网格环境公开了一些指标，用于指示容器的执行方式。 以下指标可通过 Azure 门户和 Azure monitor CLI 获得：
 
-| 指标 | 说明 | 单位|
+| 指标 | 说明 | Units|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu 作为百分比 | % |
 | MemoryUtilization | ActualMem/AllocatedMem 作为百分比 | % |

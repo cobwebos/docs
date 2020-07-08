@@ -4,10 +4,9 @@ description: 通过 Visual Studio 使用 Azure Service Fabric 群集来托管现
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: 9153fc4cd60cb892532db49bf4339b517320b1a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75614836"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>在 Azure Service Fabric 上托管 Node.js 应用程序
@@ -97,7 +96,7 @@ Visual Studio 会创建应用程序项目和执行组件服务项目，并在解
 
 选择要将内容部署到其中的 Azure 帐户（如果尚未这样做）。 如果还没有该帐户，请[注册一个][create-account]。
 
-在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“**新建群集...&lt;”&gt;** ，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
+在“连接终结点”下，选择要将内容部署到其中的 Service Fabric 群集。  如果没有该群集，请选择“&lt;新建群集...&gt;”，此时会打开通往 Azure 门户的 Web 浏览器窗口。 有关详细信息，请参阅[在门户中创建群集](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)。 
 
 创建 Service Fabric 群集时，请确保将“自定义终结点”设置设为“80”。  
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75609921"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>为群集设置 Azure Monitor 日志
@@ -32,7 +31,7 @@ ms.locfileid: "75609921"
 
 2. 搜索“Service Fabric 分析”。**** 选择显示的资源。
 
-3. 选择“创建”  。
+3. 选择“创建”。
 
     ![市场中的 Service Fabric 分析](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -47,13 +46,13 @@ ms.locfileid: "75609921"
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 
-1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择 **ServiceFabric\<nameOfWorkspace\>**，然后转到其概述页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
+1. 需要将工作区连接到来自群集的诊断数据。 转到在其中创建 Service Fabric 分析解决方案的资源组。 选择**ServiceFabric \<nameOfWorkspace\> **并中转到其 "概述" 页。 可在此处更改解决方案设置和工作区设置，还可访问 Log Analytics 工作区。
 
 2. 在左侧导航菜单的“工作区数据源”下，选择“存储帐户日志”********。
 
 3. 在“存储帐户日志”页面顶部选择“添加”，将群集的日志添加到工作区********。
 
-4. 选择“存储帐户”，添加在群集中创建的相应帐户****。 若使用的是默认名称，存储帐户为 sfdg\<resourceGroupName\>****。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称****。 如果不显示名称，请向下滚动并选择“加载更多”****。 选择存储帐户名称。
+4. 选择“存储帐户”，添加在群集中创建的相应帐户****。 如果使用了默认名称，则存储帐户为**sfdg \<resourceGroupName\> **。 还可检查 applicationDiagnosticsStorageAccountName 所使用的值，进而通过部署群集时所用的 Azure 资源管理器模板确认此名称****。 如果不显示名称，请向下滚动并选择“加载更多”****。 选择存储帐户名称。
 
 5. 指定数据类型。 将其设置为“Service Fabric 事件”****。
 
@@ -81,7 +80,7 @@ ms.locfileid: "75609921"
 * 配置 Log Analytics 工作区以从这些表中读取事件
 
 
-可以通过使用 Azure PowerShell 模块中的`New-AzResourceGroupDeployment` API 将模板作为资源管理器升级部署到群集。 示例命令如下：
+可以通过使用 Azure PowerShell 模块中的 API 将模板作为资源管理器升级部署到群集 `New-AzResourceGroupDeployment` 。 示例命令如下：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
@@ -91,7 +90,7 @@ Azure 资源管理器可检测出此命令要更新到现有资源。 它仅处�
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>部署 Azure Monitor 日志 Azure PowerShell
 
-还可以使用`New-AzOperationalInsightsWorkspace`命令通过 PowerShell 部署 log analytics 资源。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
+还可以使用命令通过 PowerShell 部署 log analytics 资源 `New-AzOperationalInsightsWorkspace` 。 要使用此方法，请确保已安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 使用此脚本新建 Log Analytics 工作区，并向其添加 Service Fabric 解决方案： 
 
 ```powershell
 
@@ -123,5 +122,5 @@ Set-AzOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -Wor
 
 ## <a name="next-steps"></a>后续步骤
 * 将[Log Analytics 代理部署](service-fabric-diagnostics-oms-agent.md)到节点上，以收集性能计数器并收集容器的 docker 统计信息和日志
-* 获取熟悉，其中包含作为 Azure Monitor 日志一部分提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能
 * [使用视图设计器在 Azure Monitor 日志中创建自定义视图](../azure-monitor/platform/view-designer.md)

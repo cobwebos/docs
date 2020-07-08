@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75639626"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services 中的 ASP.NET Core
@@ -58,7 +57,7 @@ Reliable Service 实例由派生自 `StatelessService` 或 `StatefulService` 的
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`** ：这是实现的 lambda，在其中创建和返回 `IWebHost`。 它允许按平时一样在 ASP.NET Core 应用程序中使用的方法配置 `IWebHost`。 lambda 提供生成的 URL，具体取决于使用的 Service Fabric 集成选项和你提供的 `Endpoint` 配置。 然后，可以修改 URL 或使用它来启动 Web 服务器。
 
 ## <a name="service-fabric-integration-middleware"></a>Service Fabric 集成中间件
-`Microsoft.ServiceFabric.AspNetCore` NuGet 包包含添加 Service Fabric `UseServiceFabricIntegration`感知中间件`IWebHostBuilder`的扩展方法。 此中间件将 Kestrel 或 HTTP.sys `ICommunicationListener` 配置为向 Service Fabric 命名服务注册唯一的服务 URL。 然后，它验证客户端请求，以确保客户端连接到适当的服务。 
+`Microsoft.ServiceFabric.AspNetCore`NuGet 包包含 `UseServiceFabricIntegration` `IWebHostBuilder` 添加 Service Fabric 感知中间件的扩展方法。 此中间件将 Kestrel 或 HTTP.sys `ICommunicationListener` 配置为向 Service Fabric 命名服务注册唯一的服务 URL。 然后，它验证客户端请求，以确保客户端连接到适当的服务。 
 
 为了防止客户端错误地连接到错误的服务，必须执行此步骤。 这是因为，在 Service Fabric 等共享主机环境中，多个 Web 应用程序可在同一物理机或虚拟机上运行，但不使用唯一的主机名。 后续部分对此方案进行详细说明。
 

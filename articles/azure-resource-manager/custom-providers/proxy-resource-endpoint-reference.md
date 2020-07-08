@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 46b38686b39836f3d4bfb80686d514f932a79bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650456"
 ---
 # <a name="custom-resource-proxy-reference"></a>自定义资源代理引用
@@ -42,10 +41,10 @@ ms.locfileid: "75650456"
 
 ## <a name="building-proxy-resource-endpoint"></a>生成代理资源终结点
 
-实现 "代理" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType**将为`PUT`、 `GET`和生成新的 Azure 资源 API `DELETE` ，以便在单个资源上执行 CRUD， `GET`并检索所有现有资源。
+实现 "代理" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType**将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源。
 
 > [!NOTE]
-> 、 `id` `name`和`type`字段不是必需的，但需要将自定义资源与现有的 Azure 生态系统相集成。
+> `id`、 `name` 和 `type` 字段不是必需的，但需要将自定义资源与现有的 Azure 生态系统相集成。
 
 示例资源：
 
@@ -65,10 +64,10 @@ ms.locfileid: "75650456"
 
 参数引用：
 
-properties | 示例 | 说明
+Property | 示例 | 说明
 ---|---|---
 name | '{myCustomResourceName}' | 自定义资源的名称。
-type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | 资源类型命名空间。
+类型 | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | 资源类型命名空间。
 id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{myCustomResourceName}' | 资源 ID。
 
 ### <a name="create-a-custom-resource"></a>创建自定义资源
@@ -270,7 +269,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
-- 资源列表应置于顶级`value`属性下。
+- 资源列表应置于顶级 `value` 属性下。
 
 **终结点**回复
 

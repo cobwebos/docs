@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75610040"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 开发 Java Service Fabric 应用程序
@@ -65,7 +64,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
    ![浏览器中的投票应用程序](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. 若要从群集中删除应用程序，请在**命令面板**中选择“Service Fabric: 删除应用程序”命令。  卸载过程的输出将发送到集成式终端。 可以使用 Service Fabric Explorer 来验证是否已从本地群集中删除该应用程序。
+5. 若要从群集中删除应用程序，请在**命令面板**中选择“Service Fabric: 删除应用程序”命令。 卸载过程的输出将发送到集成式终端。 可以使用 Service Fabric Explorer 来验证是否已从本地群集中删除该应用程序。
 
 ## <a name="debug-the-application"></a>调试应用程序
 在 VS Code 中调试应用程序时，该应用程序必须在本地群集上运行。 然后，可将断点添加到代码中。
@@ -100,7 +99,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 若要设置断点，请完成以下步骤：
 
-1. 在 Explorer 中，打开 */Voting/VotingDataService/src/statefulservice/VotingDataService.java* 文件。 在 `try` 方法中 `addItem` 块内的第一个代码行（第 80 行）上设置一个断点。
+1. 在 Explorer 中，打开 */Voting/VotingDataService/src/statefulservice/VotingDataService.java* 文件。 在 `addItem` 方法中 `try` 块内的第一个代码行（第 80 行）上设置一个断点。
    
    ![在投票数据服务中设置断点](./media/service-fabric-develop-java-applications-with-vs-code/breakpoint-set.png)
 

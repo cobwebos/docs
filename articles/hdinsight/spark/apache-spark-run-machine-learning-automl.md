@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.openlocfilehash: 6fc0d4cfe29e0fb189c44b307576bd08d2da8a31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75638873"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>在 HDInsight 中的 Apache Spark 上使用自动化机器学习运行 Azure 机器学习工作负载
@@ -71,7 +70,7 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>试验提交
 
-在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应将`spark_context`属性设置为在分布式模式下运行包。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
+在[自动机器学习配置](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中，应将属性 `spark_context` 设置为在分布式模式下运行包。 属性 `concurrent_iterations` 表示并行执行的最大迭代数，应设置为小于 Spark 应用的执行器核心数。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650404"
 ---
 # <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure 自定义提供程序资源加入概述
@@ -54,7 +53,7 @@ Azure 自定义提供程序资源载入是适用于 Azure 资源类型的扩展�
 }
 ```
 
-properties | 必需？ | 说明
+Property | 必需？ | 说明
 ---|---|---
 name | 是 | 终结点定义的名称。 对于资源加入，此名称必须是 "关联"。
 routingType | 是 | 确定与终结点的协定的类型。 对于资源加入，有效的**routingTypes**为 "代理、缓存、扩展" 和 "Webhook，缓存，扩展"。
@@ -76,7 +75,7 @@ endpoint | 是 | 终结点，可向其路由请求。 这将处理请求的响�
 }
 ```
 
-properties | 必需？ | 说明
+Property | 必需？ | 说明
 ---|---|---
 targetResourceId | 是 | CustomProviders/resourceProviders 或 Microsoft 应用程序的资源 ID。
 
@@ -146,7 +145,7 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-终结点应使用 application/json `Content-Type`和有效的 json 响应正文进行响应。 JSON 的**properties**对象下返回的字段将添加到关联返回响应中。
+终结点应使用 application/json `Content-Type` 和有效的 json 响应正文进行响应。 JSON 的**properties**对象下返回的字段将添加到关联返回响应中。
 
 ## <a name="getting-help"></a>获取帮助
 

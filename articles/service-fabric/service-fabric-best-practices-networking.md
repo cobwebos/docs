@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: de2a74ad2d61de18d2150b72be3251e5b5583f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75551788"
 ---
 # <a name="networking"></a>网络
@@ -51,7 +50,7 @@ ms.locfileid: "75551788"
 
 * Service Fabric 群集可以部署到现有的虚拟网络中，只需执行 [Service Fabric 网络模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)中介绍的步骤即可。
 
-* 对于限制群集的入站和出站流量的节点类型，建议使用网络安全组 (NSG)。 确保在 NSG 中打开所需的端口。 例如： ![Service Fabric NSG 规则][NSGSetup]
+* 对于限制群集的入站和出站流量的节点类型，建议使用网络安全组 (NSG)。 确保在 NSG 中打开所需的端口。 例如： ![ SERVICE FABRIC NSG 规则][NSGSetup]
 
 * Service Fabric 系统服务所在的主节点类型不需通过外部负载均衡器公开，可以通过[内部负载均衡器](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking#internal-only-load-balancer)公开
 
@@ -69,6 +68,6 @@ ms.locfileid: "75551788"
 
 * 在运行 Windows Server 的 VM 或计算机上创建群集：[创建适用于 Windows Server 的 Service Fabric 群集](service-fabric-cluster-creation-for-windows-server.md)
 * 在运行 Linux 的 VM 或计算机上创建群集：[创建 Linux 群集](service-fabric-cluster-creation-via-portal.md)
-* 了解[Service Fabric 支持选项](service-fabric-support.md)
+* 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 [NSGSetup]: ./media/service-fabric-best-practices/service-fabric-nsg-rules.png

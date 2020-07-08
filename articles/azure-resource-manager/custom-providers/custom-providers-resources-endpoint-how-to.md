@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650521"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>向 Azure REST API 添加自定义资源
@@ -18,7 +17,7 @@ ms.locfileid: "75650521"
 
 ## <a name="how-to-define-a-resource-endpoint"></a>如何定义资源终结点
 
-**终结点**是指向服务的 URL，该服务在其和 Azure 之间实现基础协定。 终结点在自定义资源提供程序中定义，可以是任何可公开访问的 URL。 下面的示例具有一个**resourceType**名`myCustomResource`为的由`endpointURL`实现的 resourceType。
+**终结点**是指向服务的 URL，该服务在其和 Azure 之间实现基础协定。 终结点在自定义资源提供程序中定义，可以是任何可公开访问的 URL。 下面的示例具有一个**resourceType**名为 `myCustomResource` 的由实现的 resourceType `endpointURL` 。
 
 示例**ResourceProvider**：
 
@@ -42,46 +41,46 @@ ms.locfileid: "75650521"
 
 ## <a name="building-a-resource-endpoint"></a>构建资源终结点
 
-实现**resourceType**的**终结点**必须处理 Azure 中新 API 的请求和响应。 创建具有**resourceType**的自定义资源提供程序时，它将在 Azure 中生成一组新的 api。 在这种情况下， **resourceType**将为`PUT`、和生成新的 Azure `GET`资源 API `DELETE` ，以便在单个资源`GET`上执行 CRUD，并检索所有现有资源：
+实现**resourceType**的**终结点**必须处理 Azure 中新 API 的请求和响应。 创建具有**resourceType**的自定义资源提供程序时，它将在 Azure 中生成一组新的 api。 在这种情况下， **resourceType**将为、和生成新的 AZURE 资源 API `PUT` ， `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源：
 
-操作单个资源（`PUT`、 `GET`和`DELETE`）：
+操作单个资源（ `PUT` 、 `GET` 和 `DELETE` ）：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource/{myCustomResourceName}
 ```
 
-检索所有资源（`GET`）：
+检索所有资源（ `GET` ）：
 
 ``` JSON
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-对于自定义资源，自定义资源提供程序提供**routingTypes**了两种`Proxy`类型的 routingTypes`Proxy, Cache`： "" 和 ""。
+对于自定义资源，自定义资源提供程序提供了两种类型的**routingTypes**： " `Proxy` " 和 " `Proxy, Cache` "。
 
 ### <a name="proxy-routing-type"></a>代理路由类型
 
-"`Proxy`" **RoutingType**将所有请求方法代理到自定义资源提供程序中指定的**终结点**。 何时使用 "`Proxy`"：
+" `Proxy` " **RoutingType**将所有请求方法代理到自定义资源提供程序中指定的**终结点**。 何时使用 " `Proxy` "：
 
 - 需要完全控制响应。
 - 将系统与现有资源集成。
 
-若要了解有关 "`Proxy`" 资源的详细信息，请参阅[自定义资源代理引用](proxy-resource-endpoint-reference.md)
+若要了解有关 " `Proxy` " 资源的详细信息，请参阅[自定义资源代理引用](proxy-resource-endpoint-reference.md)
 
 ### <a name="proxy-cache-routing-type"></a>代理缓存路由类型
 
-`PUT`仅将`Proxy, Cache`"" **routingType**代理并`DELETE`请求方法到自定义资源提供程序中指定的**终结点**。 自定义资源提供程序将根据`GET`其在缓存中存储的内容自动返回请求。 如果将自定义资源标记为缓存，则自定义资源提供程序还会在响应中添加/覆盖字段，使 Api 符合 Azure。 何时使用 "`Proxy, Cache`"：
+仅将 " `Proxy, Cache` " **routingType**代理 `PUT` 并 `DELETE` 请求方法到自定义资源提供程序中指定的**终结点**。 自定义资源提供程序将根据其 `GET` 在缓存中存储的内容自动返回请求。 如果将自定义资源标记为缓存，则自定义资源提供程序还会在响应中添加/覆盖字段，使 Api 符合 Azure。 何时使用 " `Proxy, Cache` "：
 
 - 创建没有现有资源的新系统。
 - 使用现有的 Azure 生态系统。
 
-若要了解有关 "`Proxy, Cache`" 资源的详细信息，请参阅[自定义资源缓存引用](proxy-cache-resource-endpoint-reference.md)
+若要了解有关 " `Proxy, Cache` " 资源的详细信息，请参阅[自定义资源缓存引用](proxy-cache-resource-endpoint-reference.md)
 
 ## <a name="creating-a-custom-resource"></a>创建自定义资源
 
 创建自定义资源提供程序的自定义资源有两种主要方法：
 
 - Azure CLI
-- Azure 资源管理器模板
+- Azure Resource Manager 模板
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -102,7 +101,7 @@ az resource create --is-full-object \
                     }'
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 描述
 ---|---|---
 is-full-object | *是的* | 指示属性对象包含其他选项，例如位置、标记、sku 和/或计划。
 id | *是的* | 自定义资源的资源 ID。 这应该存在于**ResourceProvider**中。
@@ -114,9 +113,9 @@ properties | *是的* | 将发送到**终结点**的请求正文。
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
-ID | *是的* | 自定义资源的资源 ID。 这应该存在于**ResourceProvider**中。
+id | *是的* | 自定义资源的资源 ID。 这应该存在于**ResourceProvider**中。
 
 检索 Azure 自定义资源：
 
@@ -124,16 +123,16 @@ ID | *是的* | 自定义资源的资源 ID。 这应该存在于**ResourceProvi
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{resourceTypeName}/{customResourceName}
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 说明
 ---|---|---
-ID | *是的* | 自定义资源的资源 ID。 这应该存在于**ResourceProvider**中。
+id | *是的* | 自定义资源的资源 ID。 这应该存在于**ResourceProvider**中。
 
-### <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+### <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 > [!NOTE]
-> `id`资源要求响应包含相应的、 `name`和`type`来自**终结点**的。
+> 资源要求响应包含相应的 `id` 、 `name` 和 `type` 来自**终结点**的。
 
-Azure 资源管理器模板要求从`id`下游`name`终结点`type`正确返回、和。 返回的资源响应的形式应为：
+Azure 资源管理器模板要求 `id` `name` `type` 从下游终结点正确返回、和。 返回的资源响应的形式应为：
 
 示例**终结点**响应：
 
@@ -174,7 +173,7 @@ Azure 资源管理器模板要求从`id`下游`name`终结点`type`正确返回�
 }
 ```
 
-参数 | 必选 | 说明
+参数 | 必需 | 描述
 ---|---|---
 resourceTypeName | *是的* | 在自定义提供程序中定义的**resourceType**的**名称**。
 resourceProviderName | *是的* | 自定义资源提供程序实例名称。

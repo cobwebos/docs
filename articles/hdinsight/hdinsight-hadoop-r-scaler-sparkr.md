@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
 ms.openlocfilehash: 5989692aeb59c7394299b4cb2474b244818895b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75500069"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
@@ -29,7 +28,7 @@ ms.locfileid: "75500069"
 
 ## <a name="the-airline-and-weather-datasets"></a>航班和天气数据集
 
-航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为从[airontimecsv.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)压缩的 zip。
+航班数据是从[美国政府存档](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236)获取的。 它还可作为[AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip)的 zip。
 
 可以从[美国海洋与大气管理存储库](https://www.ncdc.noaa.gov/orders/qclcd/)下载原始格式的每月天气数据 zip 文件。 就此示例来说，请下载 2007 年 5 月 – 2012 年 12 月期间的数据。 使用每个 zip 中的每小时数据文件和 `YYYYMMMstation.txt` 文件。
 

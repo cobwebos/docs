@@ -9,10 +9,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.openlocfilehash: 1903c2faab865152d1f3666f3c9dadd745058b56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75612285"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
@@ -49,7 +48,7 @@ HDInsight 上的 Apache Storm 群集。 请参阅[使用 Azure 门户创建 Apac
 
 2. 将 `JAVA_HOME` 环境变量设置为包含 Java 的目录。
 
-3. 设置`PATH`环境变量以包含`%JAVA_HOME%\bin`目录。
+3. 设置 `PATH` 环境变量以包含 `%JAVA_HOME%\bin` 目录。
 
 可以生成并运行以下 C# 控制台应用程序来验证 Java 和 JDK 是否已正确安装：
 
@@ -443,7 +442,7 @@ return topologyBuilder;
 
   `this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), lastSeqId);`
 
-  此代码使用中`lastSeqId`包含的序列 ID 值向默认流发出包含句子的元组。 在此示例中`lastSeqId` ，为发出的每个元组递增。
+  此代码使用中包含的序列 ID 值向默认流发出包含句子的元组 `lastSeqId` 。 在此示例中，为 `lastSeqId` 发出的每个元组递增。
 
 如“Storm 示例”  项目所示，在运行时，可以根据配置来设置组件是否为事务性。
 
@@ -538,7 +537,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到新版本：
 >
 > 1. 在“解决方案资源管理器”  中，右键单击项目，然后选择“管理 NuGet 包”  。
-> 2. 使用**搜索**字段，搜索并添加`Microsoft.SCP.Net.SDK`到项目。
+> 2. 使用**搜索**字段，搜索并添加 `Microsoft.SCP.Net.SDK` 到项目。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>排查拓扑常见问题
 
@@ -686,7 +685,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 1. 保存更改，然后按 **F5**，或选择“调试”   > “开始调试”  以启动项目。 此时会出现一个控制台窗口，该窗口会在测试进行过程中记录状态。 显示 `Tests finished` 时，请按任意键以关闭窗口。
 
-1. 使用 Windows 资源管理器  找到包含项目的目录。 （例如：*C:\\Users\\\<用户名>\\source\\repos\\WordCount\\WordCount*。）在此目录中打开 *Bin*，然后选择“调试”  。 应可看到运行测试时生成的文本文件：*sentences.txt*、*counter.txt* 和 *splitter.txt*。 打开每个文本文件并检查数据。
+1. 使用 Windows 资源管理器  找到包含项目的目录。 （例如： *C： \\ Users \\ \<your_user_name> \\ source \\ 存储库 \\ WordCount \\ WordCount*。）然后在此目录中打开*Bin*，然后选择 "*调试*"。 应可看到运行测试时生成的文本文件：*sentences.txt*、*counter.txt* 和 *splitter.txt*。 打开每个文本文件并检查数据。
 
    > [!NOTE]  
    > 字符串数据在这些文件中持久保存为十进制值数组。 例如，**splitter.txt** 文件中的 `[[97,103,111]]` 代表单词 *ago*。

@@ -6,10 +6,9 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75650378"
 ---
 # <a name="custom-resource-cache-reference"></a>自定义资源缓存引用
@@ -42,11 +41,11 @@ ms.locfileid: "75650378"
 
 ## <a name="building-proxy-resource-endpoint"></a>生成代理资源终结点
 
-实现 "代理、缓存" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType**将为`PUT`、 `GET`和生成新的 Azure 资源 API `DELETE` ，以便在单个资源上执行 CRUD， `GET`并检索所有现有资源：
+实现 "代理、缓存" 资源**终结**点的**终结点**必须处理 Azure 中新 API 的请求和响应。 在这种情况下， **resourceType**将为、和生成新的 AZURE 资源 API， `PUT` `GET` `DELETE` 以便在单个资源上执行 CRUD，并 `GET` 检索所有现有资源：
 
 > [!NOTE]
-> Azure API 会`PUT`生成请求方法、 `GET`和`DELETE`，但缓存**终结点**只需处理`PUT`和。 `DELETE`
-> 建议**端点**也实现`GET`。
+> Azure API 会生成请求方法 `PUT` 、和， `GET` `DELETE` 但缓存**终结点**只需处理 `PUT` 和 `DELETE` 。
+> 建议**端点**也实现 `GET` 。
 
 ### <a name="create-a-custom-resource"></a>创建自定义资源
 
@@ -88,8 +87,8 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 - 有效的 JSON 对象文档。 所有数组和字符串都应嵌套在 top 对象下。
 - `Content-Type`标头应设置为 "application/json;字符集 = utf-8 "。
-- 自定义资源提供程序将覆盖`name`请求`type`的、 `id`和字段。
-- 自定义资源提供程序将仅在缓存终结`properties`点的对象下返回字段。
+- 自定义资源提供程序将覆盖 `name` 请求的、 `type` 和 `id` 字段。
+- 自定义资源提供程序将仅在 `properties` 缓存终结点的对象下返回字段。
 
 **终结点**回复
 
@@ -107,7 +106,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-自`name`定义`id`资源提供`type`程序会自动为自定义资源生成、和字段。
+`name` `id` `type` 自定义资源提供程序会自动为自定义资源生成、和字段。
 
 Azure 自定义资源提供程序响应：
 
