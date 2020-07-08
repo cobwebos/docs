@@ -1,10 +1,9 @@
 ---
 title: 注册到 SQL VM 资源提供程序
-description: 将 Azure SQL Server 虚拟机注册到 SQL VM 资源提供程序，以便为在 Azure 市场外部署的 SQL Server Vm 启用功能，并提供符合性和改进的可管理性。
+description: 向 SQL VM 资源提供程序注册 Azure SQL Server 虚拟机，以便为在 Azure Marketplace 外部部署的 SQL Server 虚拟机启用功能，并提供相容性和改进的可管理性。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -14,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: af2d23104f07991fc9833951bb4e2395d39be9b3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
+ms.openlocfilehash: 60d184b3739d05063a0cddd108a2b2d7d49b57d7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84039828"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962741"
 ---
-# <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>在 Azure 中将 SQL Server 虚拟机注册到 SQL VM 资源提供程序
+# <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>使用 SQL VM 资源提供程序（RP）在 Azure 中注册 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本文介绍如何在 Azure 中将 SQL Server 虚拟机 (VM) 注册到 SQL VM 资源提供程序。 注册到资源提供程序会在订阅中创建 SQL 虚拟机资源，这是与虚拟机资源不同的资源。 从资源提供程序中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
+本文介绍如何在 Azure 中通过 SQL VM 资源提供程序（RP）注册 SQL Server 的虚拟机（VM）。 注册到资源提供程序会在订阅中创建 SQL 虚拟机资源，这是与虚拟机资源不同的资源。 从资源提供程序中取消注册 SQL Server VM 会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
 
 通过 Azure 门户部署 SQL Server VM Azure 市场映像会自动将 SQL Server VM 注册到资源提供程序。 但是，如果选择在 Azure 虚拟机上自行安装 SQL Server，或通过自定义 VHD 预配 Azure 虚拟机，则应将 SQL Server VM 注册到资源提供程序以实现以下目的：
 
@@ -32,7 +31,7 @@ ms.locfileid: "84039828"
 
 - **符合性**：注册到 SQL VM 资源提供程序提供了一种简化方法，用于满足在产品条款中指定的向 Microsoft 通知 Azure 混合权益已启用这一要求。 此过程无需为每个资源管理许可注册表单。  
 
-- 免费管理：在所有三个可管理性模式下注册到 SQL VM 资源提供程序都是完全免费的。 资源提供程序或更改管理模式不会产生相关联的额外成本。 
+- **免费管理**：在所有三个可管理性模式下注册 SQL VM 资源提供程序完全免费。 资源提供程序或更改管理模式不会产生相关联的额外成本。 
 
 - 简化的许可证管理：注册到 SQL VM 资源提供程序可简化 SQL Server 许可证管理，并使你能够使用 [Azure 门户](manage-sql-vm-portal.md)、Azure CLI 或 PowerShell 快速识别启用了 Azure 混合权益的 SQL Server VM： 
 
@@ -51,7 +50,7 @@ ms.locfileid: "84039828"
 
    ---
 
-若要利用 SQL VM 资源提供程序，必须首先[将订阅注册到资源提供程序](#register-subscription-with-rp)，这使资源提供程序能够在该特定订阅中创建资源。
+若要利用 SQL VM 资源提供程序，必须先向[资源提供程序注册订阅](#register-subscription-with-rp)，这使资源提供程序能够在特定订阅中创建资源。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -95,14 +94,14 @@ ms.locfileid: "84039828"
 1. 在筛选器中输入“sql”，以便显示与 SQL 相关的资源提供程序。 
 1. 根据所需操作为“Microsoft.SqlVirtualMachine”提供程序选择“注册”、“重新注册”或“取消注册”   。 
 
-![修改提供程序](./media/sql-vm-resource-provider-register/select-resource-provider-sql.png)
+   ![修改提供程序](./media/sql-vm-resource-provider-register/select-resource-provider-sql.png)
 
 
 ### <a name="command-line"></a>命令行
 
 使用 Azure CLI 或 PowerShell 将 SQL VM 资源提供程序注册到 Azure 订阅。 
 
-# <a name="az-cli"></a>[AZ CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
@@ -118,17 +117,17 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ---
 
-## <a name="register-sql-vm-with-rp"></a>将 SQL VM 注册到 RP 
+## <a name="register-with-rp"></a>向 RP 注册
 
 ### <a name="lightweight-management-mode"></a>轻型管理模式
 
-如果未在 VM 上安装 [SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)，则建议在轻型模式下注册到 SQL VM 资源提供程序。 这会在[轻型模式](#management-modes)下安装 SQL IaaS 扩展并防止 SQL Server 服务重启。 随后可以随时升级到完整模式，但这样做会重启 SQL Server 服务，因此建议等到计划性维护时段。 
+如果未在虚拟机上安装[SQL Server IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)，则建议在轻型模式下向 SQL VM 资源提供程序注册。 这会在[轻型模式](#management-modes)下安装 SQL IaaS 扩展并防止 SQL Server 服务重启。 随后可以随时升级到完整模式，但这样做会重启 SQL Server 服务，因此建议等到计划性维护时段。 
 
 提供 SQL Server 许可证类型，形式为即用即付（`PAYG`，用于按使用情况付费）、Azure 混合权益（`AHUB`，用于使用自己的许可证）或灾难恢复（`DR`，用于激活[免费 DR 副本许可证](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)）。
 
-故障转移群集实例和多实例部署只能在轻型模式下注册到 SQL VM 资源提供程序。 
+故障转移群集实例和多实例部署只能在轻型模式下的 SQL VM 资源提供程序中注册。 
 
-# <a name="az-cli"></a>[AZ CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 使用 Azure CLI 在轻型模式下注册 SQL Server VM： 
 
@@ -157,7 +156,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ### <a name="full-management-mode"></a>完整管理模式
 
 
-如果已手动将 SQL IaaS 扩展安装到 VM，则可以在完整模式下注册 SQL Server VM，而无需重启 SQL Server 服务。 但是，如果尚未安装 SQL IaaS 扩展，则在完整模式下注册将在完整模式下安装 SQL IaaS 扩展，并重启 SQL Server 服务。请谨慎继续。
+如果已将 SQL IaaS 扩展手动安装到虚拟机，则可以在完整模式下注册 SQL Server VM，而无需重新启动 SQL Server 服务。 但是，如果尚未安装 SQL IaaS 扩展，则在完整模式下注册将在完整模式下安装 SQL IaaS 扩展，并重启 SQL Server 服务。请谨慎继续。
 
 
 若要在完整模式下直接注册 SQL Server VM（并可能重启 SQL Server 服务），请使用以下 PowerShell 命令： 
@@ -179,9 +178,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 若要在 Windows Server 2008 实例上注册 SQL Server 2008 或 2008 R2，请使用以下 Azure CLI 或 PowerShell 代码片段： 
 
 
-# <a name="az-cli"></a>[AZ CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
-使用 Azure CLI 在无代理模式下注册 SQL Server 2008 VM： 
+在 NoAgent 模式下向 Azure CLI 注册 SQL Server 2008 虚拟机： 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
@@ -190,7 +189,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
  ```
  
  
-使用 Azure CLI 在无代理模式下注册 SQL Server 2008 R2： 
+在 NoAgent 模式下向 Azure CLI 注册 SQL Server 2008 R2 虚拟机： 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
@@ -200,7 +199,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-使用 PowerShell 在无代理模式下注册 SQL Server 2008 VM： 
+在 NoAgent 模式下将 SQL Server 2008 虚拟机注册到 PowerShell： 
 
 
   ```powershell-interactive
@@ -211,7 +210,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
     -LicenseType PAYG -SqlManagementType NoAgent -Sku Standard -Offer SQL2008-WS2008
   ```
   
-  使用 PowerShell 在无代理模式下注册 SQL Server 2008 R2 VM： 
+  在 NoAgent 模式下将 SQL Server 2008 R2 虚拟机注册到 PowerShell： 
 
 
   ```powershell-interactive
@@ -224,9 +223,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ---
 
-## <a name="upgrade-to-full-management-mode"></a>升级到完整管理模式 
+## <a name="upgrade-to-full"></a>升级到完整  
 
-安装了轻型 IaaS 扩展的 SQL Server VM 可以使用 Azure 门户、Azure CLI 或 PowerShell 将模式升级为完整模式。 在 OS 升级到 Windows 2008 R2 及更高版本之后，无代理模式下的 SQL Server VM 可以升级到完整模式 。 无法进行降级 - 若要执行此操作，需要 从 SQL VM 资源提供程序[取消注册](#unregister-vm-from-rp) SQL Server VM。 这样做会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
+安装了轻型 IaaS 扩展的 SQL Server VM 可以使用 Azure 门户、Azure CLI 或 PowerShell 将模式升级为完整模式。 在 OS 升级到 Windows 2008 R2 及更高版本之后，无代理模式下的 SQL Server VM 可以升级到完整模式 。 无法进行降级 - 若要执行此操作，需要 从 SQL VM 资源提供程序[取消注册](#unregister-from-rp) SQL Server VM。 这样做会删除 SQL 虚拟机资源，但不会删除实际虚拟机。 
 
 可以使用 PowerShell 查看 SQL Server IaaS 代理的当前模式： 
 
@@ -243,7 +242,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)资源。 
-1. 选择 SQL Server 虚拟机，然后选择“概述”。 
+1. 选择 SQL Server VM，然后选择 "**概述**"。 
 1. 对于具有无代理或轻型 IaaS 模式的 SQL Server VM，请选择“SQL IaaS 扩展仅提供许可证类型和版本更新”消息。
 
    ![用于从门户更改模式的选项](./media/sql-vm-resource-provider-register/change-sql-iaas-mode-portal.png)
@@ -254,7 +253,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="command-line"></a>命令行
 
-# <a name="az-cli"></a>[AZ CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 运行以下 Azure CLI 代码片段：
 
@@ -283,17 +282,17 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ### <a name="azure-portal"></a>Azure 门户 
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 
-1. 转到 [SQL Server 虚拟机](manage-sql-vm-portal.md)。
+1. 中转到[SQL Server vm](manage-sql-vm-portal.md)。
 1. 从列表中选择 SQL Server VM。 如果 SQL Server VM 未在此处列出，则可能尚未注册到 SQL VM 资源提供程序。 
 1. 查看“状态”下的值。 如果“状态”为“成功”，则 SQL Server VM 已成功注册到 SQL VM 资源提供程序 。 
 
-![通过 SQL RP 注册验证状态](./media/sql-vm-resource-provider-register/verify-registration-status.png)
+   ![通过 SQL RP 注册验证状态](./media/sql-vm-resource-provider-register/verify-registration-status.png)
 
 ### <a name="command-line"></a>命令行
 
 使用 Azure CLI 或 PowerShell 验证当前 SQL Server VM 注册状态。 如果注册成功，`ProvisioningState` 将显示 `Succeeded`。 
 
-# <a name="az-cli"></a>[AZ CLI](#tab/bash)
+# <a name="azure-cli"></a>[Azure CLI](#tab/bash)
 
 
   ```azurecli-interactive
@@ -311,18 +310,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 错误表明 SQL Server VM 尚未注册到资源提供程序。 
 
 
-## <a name="unregister-vm-from-rp"></a>从 RP 取消注册 VM
+## <a name="unregister-from-rp"></a>从 RP 注销
 
-若要从 SQL VM 资源提供程序取消注册 SQL Server VM，请使用 Azure 门户或 Azure CLI 删除 SQL 虚拟机资源。 删除 SQL 虚拟机资源会删除 SQL Server VM不。 但是，请小心谨慎并仔细执行以下步骤，因为在尝试删除资源时，可能会意外删除虚拟机。 
+若要使用 SQL VM 资源提供程序取消注册 SQL Server VM，请使用 Azure 门户或 Azure CLI 删除 SQL 虚拟机*资源*。 删除 SQL 虚拟机*资源*不会删除 SQL Server VM。 但是，请小心谨慎并仔细执行以下步骤，因为在尝试删除资源时，可能会意外删除虚拟机。 
 
-若要将管理模式从完整模式降级，需要从 SQL VM 资源提供程序取消注册 SQL VM。 
+需要在 SQL VM 资源提供程序中注销 SQL 虚拟机，以使管理模式完全降级。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
 若要使用 Azure 门户从资源提供程序取消注册 SQL Server VM，请执行以下步骤：
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 导航到 SQL Server VM 资源。 
+1. 导航到 SQL VM 资源。 
   
    ![SQL 虚拟机资源](./media/sql-vm-resource-provider-register/sql-vm-manage.png)
 
@@ -330,19 +329,19 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
    ![删除 SQL VM 资源提供程序](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
-1. 键入 SQL 虚拟机的名称，并清除虚拟机旁的复选框。
+1. 键入 SQL 虚拟机的名称，并**清除该虚拟机旁边的复选框**。
 
    ![删除 SQL VM 资源提供程序](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > 如果未能清除虚拟机名称的复选框，会导致彻底删除虚拟机。 清除该复选框可从资源提供程序取消注册 SQL Server VM，但不会删除实际虚拟机。 
 
-1. 选择“删除”以确认 SQL 虚拟机资源的删除，而不是 SQL Server 虚拟机。 
+1. 选择 "**删除**" 以确认删除 SQL 虚拟机*资源*，而不是 SQL Server VM。 
 
 ### <a name="command-line"></a>命令行
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-若要使用 Azure CLI 从资源提供程序取消注册 SQL Server 虚拟机，请使用 [az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) 命令。 这会删除 SQL Server 虚拟机资源，但不会删除虚拟机。 
+若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用[az SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete)命令。 这会删除 SQL Server VM*资源*，但不会删除虚拟机。 
 
 
 ```azurecli-interactive
@@ -353,7 +352,7 @@ az sql vm delete
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-若要使用 Azure CLI 从资源提供程序取消注册 SQL Server 虚拟机，请使用 [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 这会删除 SQL Server 虚拟机资源，但不会删除虚拟机。 
+若要使用 Azure CLI 从资源提供程序中注销 SQL Server VM，请使用[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 这会删除 SQL Server VM*资源*，但不会删除虚拟机。 
 
 ```powershell-interactive
 Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
@@ -380,7 +379,7 @@ SQL VM 资源提供程序仅支持：
 
 如果 SQL Server VM 已安装了 SQL Server IaaS 扩展，我是否应注册到 SQL VM 资源提供程序？
 
-如果 SQL Server VM 是自行安装，并且不是从 Azure 市场中的 SQL Server 映像进行预配，则应注册到 SQL VM 资源提供程序，即使安装了 SQL Server IaaS 扩展也是如此。 注册到 SQL VM 资源提供程序会创建 Microsoft.SqlVirtualMachines 类型的新资源。 安装 SQL Server IaaS 扩展不会创建该资源。
+如果 SQL Server VM 是自行安装，并且不是从 Azure 市场中的 SQL Server 映像进行预配，则应注册到 SQL VM 资源提供程序，即使安装了 SQL Server IaaS 扩展也是如此。 使用 SQL VM 资源提供程序注册会创建 SqlVirtualMachine 类型的新资源。 安装 SQL Server IaaS 扩展不会创建该资源。
 
 注册到 SQL VM 资源提供程序时，默认管理模式是什么？
 
@@ -402,7 +401,7 @@ SQL VM 资源提供程序仅支持：
 
 仅在启用完整可管理性时，才需要 SQL Server IaaS 扩展。 将可管理性模式从轻型升级到完整会安装 SQL Server IaaS 扩展，并且会重启 SQL Server。
 
-注册到 SQL Server VM 资源提供程序是否会在 VM 上重启 SQL Server？
+**是否向 VM 上的 SQL VM 资源提供程序重启 SQL Server 注册？**
 
 这取决于在注册期间指定的模式。 如果指定了轻型模式或无代理模式，则 SQL Server 服务不会重启。 但是，将管理模式指定为完整模式，或将管理模式留空会在完整管理模式下安装 SQL IaaS 扩展，这会导致 SQL Server 服务重启。 
 
@@ -428,7 +427,7 @@ SQL VM 资源提供程序仅支持：
 
 不是。 不支持降级 SQL Server IaaS 扩展可管理性模式。 可管理性模式无法从完整模式降级到轻型模式或无代理模式，并且无法从轻型模式降级到无代理模式。 
 
-若要从完整可管理性更改可管理性模式，请从 SQL Server 资源提供程序[取消注册](#unregister-vm-from-rp) SQL Server 虚拟机，具体方法是删除 SQL Server 资源并在不同管理模式下再次将 SQL Server VM 重新注册到 SQL VM 资源提供程序。
+若要从完全可管理性更改可管理性模式，请通过删除 SQL Server*资源*从 sql vm 资源提供程序中[注销](#unregister-from-rp)SQL Server VM，然后在不同的管理模式下再次向 sql vm 资源提供程序重新注册 SQL Server VM。
 
 是否可以从 Azure 门户注册到 SQL VM 资源提供程序？
 

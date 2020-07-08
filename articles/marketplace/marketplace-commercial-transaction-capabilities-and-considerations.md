@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: c7b13f74e63b9e74924efb70e7c9a70f6fda2d3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800048"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964458"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "83800048"
 
 ### <a name="billing-infrastructure-costs"></a>计费基础结构成本
 
-对于虚拟机和 Azure 应用程序，将向客户的 Azure 订阅收取 Azure 基础结构使用费。 在客户的发票上，基础结构使用费与软件提供商的许可费分开计价和显示。
+对于**虚拟机**和**azure 应用程序**，azure 基础结构使用费用会按客户的 azure 订阅计费。 在客户的发票上，基础结构使用费与软件提供商的许可费分开计价和显示。
 
 对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为客户的固定费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。 客户将无法看到实际的基础结构使用费。 发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。 不计量软件许可费，它也不基于消耗量。
 
@@ -53,7 +53,7 @@ ms.locfileid: "83800048"
 - **免费** - 不收取软件许可证费用。
 - **自带许可 (BYOL)** - 直接在发布者和客户之间管理所有适用的软件许可证费用。 Microsoft 仅收取 Azure 基础结构使用费。 这仅适用于虚拟机和 Azure 应用程序。
 - **即用即付** - 软件许可证费用将根据所用的 Azure 基础结构显示为每小时每个核心 (vCPU) 定价费率。 这仅适用于虚拟机和 Azure 应用程序。
-- **订阅定价** - 软件许可证费用显示为每月或每年的周期性费用，采用固定费率或按席位收取。 这仅适用于 SaaS 应用和 Azure 应用程序 - 托管应用。
+- **订阅定价** - 软件许可证费用显示为每月或每年的周期性费用，采用固定费率或按席位收取。 这适用于 SaaS 应用（每月或每年）和 Azure 应用程序-托管应用（每月）。
 - **免费软件试用版** - 免费使用软件许可证 30 天或 90 天。
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>免费和自带许可 (BYOL) 定价
@@ -136,7 +136,7 @@ BYOL 的成本构成如下：
 |Microsoft 将许可证费用的 80% 支付给你 <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 将为你垫付许可证费用的 90%   |   80.00 美元/月 <br> \* 90.00 美元/月    |
 |Microsoft 保留许可证费用的 20% <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 保留许可证费用的 10%。  |  20.00 美元/月 <br> \* 10.00 美元     |
 
-对于在我们的商业市场中发布的特定 SaaS 产品，Microsoft 会将其市场服务费从 20%（如 Microsoft 发布者协议中所述）降低到 10%。 若要让产品/服务符合资格，Microsoft 必须已将至少一个产品/服务指定为 IP 联合销售就绪或 IP 联合销售优先。 必须在上一个日历月结束前至少五个工作日获得资格，才能减少当月的市场服务费。 市场服务费减少不适用于通过商业市场提供的 VM、托管应用或任何其他产品。 此项费用减少仅适用于 Microsoft 在 2019 年 5 月 1 日至 2020 年 6 月 30 日之间收取许可证费用的符合资格的产品/服务。 此时间点过后，此项费用将恢复为正常价格。
+对于在商业市场上发布的某些 SaaS 产品，Microsoft 将其**Marketplace 服务费用**从20% 降低到10%。 若要让产品/服务符合资格，Microsoft 必须已将至少一个产品/服务指定为 IP 联合销售就绪或 IP 联合销售优先。 必须在上一个日历月结束前至少五个工作日获得资格，才能减少当月的市场服务费。 降低 Marketplace 服务费用不适用于 Vm、托管应用或通过商业市场提供的任何其他产品。 此项费用减少仅适用于 Microsoft 在 2019 年 5 月 1 日至 2020 年 6 月 30 日之间收取许可证费用的符合资格的产品/服务。 此时间点过后，此项费用将恢复为正常价格。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
@@ -176,14 +176,17 @@ Microsoft 作为代理收集的所有软件许可费用将收取 20% 的手续�
 - 无论产品/服务采用怎样的定价模型，交易发布选项都需要使用 Microsoft 帐户和财务信息。
 - 必需的财务信息包括支出帐户和计税配置文件。
 
-若要详细了解如何设置这些帐户，请参阅[在合作伙伴中心管理商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)。
+有关设置这些帐户的详细信息，请参阅[在合作伙伴中心管理商业 marketplace 帐户](partner-center-portal/manage-account.md)。
 
 ### <a name="requirements-for-specific-offer-types"></a>特定产品/服务类型的要求
 
 交易发布选项仅适用于以下市场产品/服务类型：
 
-- **虚拟机** - 从免费、自带许可或即用即付定价模型中选择，并显示为在套餐级别定义的 SKU。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
-- **Azure 应用程序：解决方案模板或托管应用** - 必须通过虚拟机定价的总和预配一个或多个虚拟机和拉取。 对于单个计划的托管应用，可以选择固定费率每月订阅作为定价模型，而不是虚拟机定价。 在部分情况下，Azure 基础结构使用费将与软件许可证费用分开，单独传递给客户，但位于相同的账单上。 但是，如果为 ISV 基础结构费用配置了托管应用产品/服务，则会向发布者收取 Azure 资源的费用，并且客户要支付包含基础结构费用、软件许可证费用和管理服务费用的固定费用。
+- **虚拟机**–选择免费、自带许可证或即用即付定价模型，并在服务级别定义为 sku。 在客户的 Azure 帐单上，Microsoft 将发布者软件许可证费用与隐含的 Azure 基础结构费用分开显示。 Azure 基础结构费用取决于发布者软件使用情况。
+
+- **Azure 应用程序：解决方案模板或托管应用**–必须预配一个或多个虚拟机，并提取虚拟机定价的总和。 对于单个计划的托管应用，可以选择固定费率每月订阅作为定价模型，而不是虚拟机定价。 在部分情况下，Azure 基础结构使用费将与软件许可证费用分开，单独传递给客户，但位于相同的账单上。 但是，如果你配置了托管应用产品/服务以实现 ISV 基础结构费用，则会向发布者计费 Azure 资源，并且客户会收到包含基础结构、软件许可证和管理服务成本的固定费用。
+
+- **Saas 应用程序**-必须是多租户解决方案，使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)进行身份验证，并与[SaaS 履单 api](partner-center-portal/pc-saas-fulfillment-api-v2.md)集成。 Azure 基础结构的使用情况是直接对你（合作伙伴）进行管理和计费的，因此，你必须将 Azure 基础结构使用费用和软件许可费用视为单个成本项。 有关详细指南，请参阅[在商业应用商店中创建新的 SaaS 产品/服务](partner-center-portal/create-new-saas-offer.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

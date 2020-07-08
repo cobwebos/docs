@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670553"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963234"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -34,16 +34,16 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 ### <a name="authentication-file-format"></a>身份验证文件格式
 下面是 MySQL OMI 身份验证文件的格式
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [端口] = [绑定地址]，[username]，[Base64 编码的密码]  
+> （端口） = （绑定地址）、（用户名）、（Base64 编码的密码）  
+> （端口） = （绑定地址）、（用户名）、（Base64 编码的密码）  
+> 自动更新 = [true | false]  
 
 下表描述了身份验证文件中的条目。
 
-| properties | 说明 |
+| Property | 描述 |
 |:--|:--|
-| 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
+| Port | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | 绑定地址| 当前 MySQL 绑定地址。 |
 | username| 用来监视 MySQL 服务器实例的 MySQL 用户。 |
 | Base64 编码的密码| MySQL 监视用户的密码（采用 Base64 编码）。 |
@@ -54,7 +54,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了示例实例设置 
 
-| 说明 | 文件 |
+| 描述 | 文件 |
 |:--|:--|
 | 默认实例和端口为 3308 的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 默认实例和端口为 3308 且采用不同用户名和密码的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -63,14 +63,14 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 ### <a name="mysql-omi-authentication-file-program"></a>MySQL OMI 身份验证文件程序
 随 MySQL OMI 提供程序安装了一个 MySQL OMI 身份验证文件程序，可以使用该程序来编辑 MySQL OMI 身份验证文件。 可以在以下位置找到该身份验证文件程序。
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > 凭据文件必须可供 omsagent 帐户读取。 建议以 omsgent 身份运行 mycimprovauth 命令。
 
 下表提供了有关 mycimprovauth 的使用语法的详细信息。
 
-| Operation | 示例 | 说明
+| 操作 | 示例 | 说明
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |
@@ -81,15 +81,18 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 以下示例命令为 localhost 上的 MySQL 服务器定义了一个默认用户帐户。  应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>MySQL 性能计数器所需的数据库权限
 MySQL 用户需要访问以下查询来收集 MySQL 服务器性能数据。 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
@@ -98,9 +101,10 @@ MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
 可以通过运行以下授予命令来授予这些特权。
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > 要向 MySQL 监视用户授予权限，执行授权的用户必须具有 'GRANT option' 特权以及要授予的特权。
@@ -132,12 +136,14 @@ MySQL 用户还需要对以下默认表具有 SELECT 访问权限。
 
 ## <a name="apache-http-server"></a>Apache HTTP Server 
 如果安装 omsagent 捆绑包时在计算机上检测到 Apache HTTP Server，则会自动安装 Apache HTTP Server 的性能监视提供程序。 此提供程序依赖于必须加载到 Apache HTTP Server 才能访问性能数据的一个 Apache 模块。 可以使用以下命令加载该模块：
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 要卸载 Apache 监视模块，请运行以下命令︰
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

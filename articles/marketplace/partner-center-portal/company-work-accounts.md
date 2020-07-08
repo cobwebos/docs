@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262360"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964424"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>公司工作帐户和合作伙伴中心
 
@@ -23,7 +23,7 @@ ms.locfileid: "81262360"
 如果你的公司已订阅 Azure、Microsoft Intune 或 Office 365 等 Microsoft 云服务，则你已具有可与合作伙伴中心一起使用的工作电子邮件帐户域（也称为 Azure Active Directory 租户）。
 
 请按照以下步骤检查：
-1. 登录到 Azure 管理门户，网址https://portal.azure.com为。
+1. 登录到 Azure 管理门户，网址为 https://portal.azure.com 。
 2. 从左侧导航菜单中选择 " **Azure Active Directory** "，然后选择 "**自定义域名**"。
 3. 如果你已有工作帐户，门户将列出你的域名。
 
@@ -37,14 +37,14 @@ ms.locfileid: "81262360"
 
 若要为你的公司创建新的工作帐户，请按照以下步骤操作。 你可能需要请求对你的公司的 Microsoft Azure 帐户具有管理权限的人员的帮助。
 
-1. 登录到[Microsoft Azure 门户](https://portal.azure.com)。
-2. 从左侧导航菜单中，选择 " **Azure Active Directory** -> **用户**"。
+1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
+2. 从左侧导航菜单中，选择 " **Azure Active Directory**  ->  **用户**"。
 3. 通过输入名称和电子邮件地址，选择 "**新建用户**" 并创建新的 Azure 工作帐户。 确保将 "**目录角色**" 设置为 "**用户**"，并选择底部的 "**显示密码**" 复选框，以查看并记下自动生成的密码。
 4. 选择 "**创建**" 以保存新用户。
 
-用户帐户的电子邮件地址必须是目录中已验证的域名。 可以通过在左侧导航菜单中选择 " **Azure Active Directory** -> **自定义域名**" 来列出目录中所有已验证的域。
+用户帐户的电子邮件地址必须是目录中已验证的域名。 可以通过**Azure Active Directory**  ->  在左侧导航菜单中选择 "Azure Active Directory**自定义域名**" 来列出目录中所有已验证的域。
 
-若要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅[在 Azure AD 中添加或关联域](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain)。
+若要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅[在 Azure AD 中添加或关联域](../../active-directory/active-directory-add-domain.md)。
 
 ## <a name="troubleshoot-work-email-sign-in"></a>排查工作电子邮件登录问题
 
@@ -54,4 +54,4 @@ ms.locfileid: "81262360"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在合作伙伴中心管理你的商业应用商店帐户](./manage-account.md) 
+- [在合作伙伴中心管理商业市场帐户](./manage-account.md) 

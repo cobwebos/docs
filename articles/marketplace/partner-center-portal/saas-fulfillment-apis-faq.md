@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792898"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963744"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>有关 SaaS 履单 Api 的常见问题
 
@@ -46,11 +46,11 @@ ms.locfileid: "82792898"
 
 ![客户订阅流](media/saas-metering-service-integration-flow-a.png)
 
-有关用于处理 SaaS 产品生命周期中的事务的 API 协定的详细信息，请参阅[saas 履单 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2)。
+有关用于处理 SaaS 产品生命周期中的事务的 API 协定的详细信息，请参阅[saas 履单 API](pc-saas-fulfillment-api-v2.md)。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>如何知道用户在 Azure 中订阅的 SaaS 产品/服务？
 
-对`Resolve` API 的响应包括与 SaaS 订阅相关联的产品/服务和计划信息。
+对 API 的响应 `Resolve` 包括与 SaaS 订阅相关联的产品/服务和计划信息。
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Azure 用户如何更改与此 Azure 订阅关联的计划？
 

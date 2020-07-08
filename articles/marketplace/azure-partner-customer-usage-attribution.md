@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 7a48da25c60eb2db3b918ebe9523440c49ed9693
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800792"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963795"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商业市场合作伙伴和客户使用情况归因
 
@@ -59,11 +59,14 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 将 GUID 添加到模板或用户代理并在合作伙伴中心注册 GUID 后，系统将跟踪未来的部署。
 
+> [!NOTE]
+> 如果你正在通过合作伙伴中心向 Azure Marketplace 发布你的[Azure 应用程序](./partner-center-portal/create-new-azure-apps-offer.md)产品/服务，则在上载模板时，模板内使用的任何新 GUID 都将自动注册到你的合作伙伴中心配置文件。  
+
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard)。
 
 1. 注册为[商业市场发布者](https://aka.ms/JoinMarketplace)。
 
-   * 要求合作伙伴[在合作伙伴中心中拥有个人资料](https://docs.microsoft.com/azure/marketplace/become-publisher)。 我们建议在 Azure 市场或 AppSource 中列出产品/服务。
+   * 要求合作伙伴[在合作伙伴中心中拥有个人资料](become-publisher.md)。 我们建议在 Azure 市场或 AppSource 中列出产品/服务。
    * 合作伙伴可以注册多个 GUID。
    * 合作伙伴可为非市场解决方案模板和产品/服务注册 GUID。
 
@@ -71,7 +74,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 1. 在“帐户设置”页上，选择“添加跟踪 GUID”。 
 
-1. 在“GUID”框中，输入跟踪 GUID。 只输入 GUID，不要包括 **pid-** 前缀。 在“描述”框中，输入产品/服务名称或描述。
+1. 在“GUID”框中，输入跟踪 GUID。 仅输入不带前缀的 GUID `pid-` 。 在“描述”框中，输入产品/服务名称或描述。
 
 1. 若要注册多个 GUID，请再次选择“添加跟踪 GUID”。 页面上会显示其他框。
 
@@ -82,7 +85,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 > [!NOTE]
 > 有关创建和发布解决方案模板的详细信息，请参阅
-> * [创建和部署第一个资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+> * [创建和部署第一个资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure 应用程序产品/服务](./partner-center-portal/create-new-azure-apps-offer.md)。
 >* 视频：[为 Azure 市场构建解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
@@ -95,7 +98,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 1. 在主模板文件中添加新资源。 资源只需位于 **mainTemplate.json** 或 **azuredeploy.json** 文件中，而不需要位于任何嵌套的或链接的模板中。
 
-1. 在 pid- 前缀的后面输入 GUID 值（例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 在前缀后面输入 GUID 值 `pid-` （例如，pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
 
 1. 检查模板是否存在任何错误。
 
@@ -134,12 +137,12 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>使用资源管理器 API 标记部署
 
-要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含 GUID。 为每个产品/服务或 SKU 添加 GUID。 使用 **pid-** 前缀设置字符串的格式，并包含合作伙伴生成的 GUID。 下面是要插入到用户代理的 GUID 格式的示例：
+要启用客户使用情况归因，在设计 API 调用时，请在请求的用户代理标头中包含 GUID。 为每个产品/服务或 SKU 添加 GUID。 格式化带有前缀的字符串 `pid-` ，并包括合作伙伴生成的 GUID。 下面是要插入到用户代理的 GUID 格式的示例：
 
 ![示例 GUID 格式](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> 字符串的格式很重要。 如果未包含 **pid-** 前缀，我们将无法查询数据。 以不同的方式跟踪不同的 SDK。 若要实现此方法，请查看适用于首选 Azure SDK 的支持和跟踪方法。
+> 字符串的格式很重要。 如果不 `pid-` 包含前缀，则不可能查询数据。 以不同的方式跟踪不同的 SDK。 若要实现此方法，请查看适用于首选 Azure SDK 的支持和跟踪方法。
 
 #### <a name="example-the-python-sdk"></a>示例：Python SDK
 
@@ -165,7 +168,7 @@ GUID 是由 32 位十六进制数字组成的唯一参考标识符。 若要创�
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-有关详细信息，请参阅 [Azure SDK for Go](https://docs.microsoft.com/azure/go/)。
+有关详细信息，请参阅 [Azure SDK for Go](https://docs.microsoft.com/azure/developer/go/)。
 
 ## <a name="use-terraform"></a>使用 Terraform
 
@@ -238,15 +241,15 @@ foreach ($deployment in $deployments){
 
 ## <a name="notify-your-customers"></a>通知客户
 
-合作伙伴应告知客户有关使用客户使用情况归因的部署情况。 Microsoft 将向合作伙伴报告与这些部署关联的 Azure 使用情况。 以下示例包含可用于向客户告知这些部署的内容。 请将示例中的 \<PARTNER> 替换为自己的公司名称。 合作伙伴应确保通知与其数据隐私和收集政策保持一致，包括供客户选择将自己从跟踪中排除的选项。
+合作伙伴应告知客户有关使用客户使用情况归因的部署情况。 Microsoft 将向合作伙伴报告与这些部署关联的 Azure 使用情况。 以下示例包含可用于向客户告知这些部署的内容。 在示例中，将替换 \<PARTNER> 为公司名称。 合作伙伴应确保通知与其数据隐私和收集政策保持一致，包括供客户选择将自己从跟踪中排除的选项。
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>有关资源管理器模板部署的通知
 
-部署此模板时，Microsoft 将能够根据部署的 Azure 资源识别 \<PARTNER> 软件的安装。 Microsoft 能够关联用于支持该软件的 Azure 资源。 Microsoft 收集此信息的目的在于提供其产品的最佳体验及运营其业务。 此数据将根据 Microsoft 的隐私政策进行收集和管理，隐私政策可在 https://www.microsoft.com/trustcenter 中找到。
+部署此模板时，Microsoft 能够识别软件的安装 \<PARTNER> 和部署的 Azure 资源。 Microsoft 能够关联用于支持该软件的 Azure 资源。 Microsoft 收集此信息的目的在于提供其产品的最佳体验及运营其业务。 此数据将根据 Microsoft 的隐私政策进行收集和管理，隐私政策可在 https://www.microsoft.com/trustcenter 中找到。
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>有关 SDK 或 API 部署的通知
 
-部署 \<PARTNER> 软件时，Microsoft 能够根据部署的 Azure 资源识别 \<PARTNER> 软件的安装。 Microsoft 能够关联用于支持该软件的 Azure 资源。 Microsoft 收集此信息的目的在于提供其产品的最佳体验及运营其业务。 此数据将根据 Microsoft 的隐私政策进行收集和管理，隐私政策可在 https://www.microsoft.com/trustcenter 中找到。
+部署软件时 \<PARTNER> ，Microsoft 能够识别软件的安装 \<PARTNER> 和部署的 Azure 资源。 Microsoft 能够关联用于支持该软件的 Azure 资源。 Microsoft 收集此信息的目的在于提供其产品的最佳体验及运营其业务。 此数据将根据 Microsoft 的隐私政策进行收集和管理，隐私政策可在 https://www.microsoft.com/trustcenter 中找到。
 
 ## <a name="get-support"></a>获取支持
 
@@ -254,7 +257,7 @@ foreach ($deployment in $deployments){
 
 如果在合作伙伴中心遇到任何问题，如查看客户使用情况归因报告或登录问题，请在此处创建面向合作伙伴中心支持团队的支持请求：[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![获取支持页的屏幕截图](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 如果你需要有关市场加入和/或客户使用情况归因的常规帮助（例如，如何设置客户使用情况归因），请遵循以下步骤：
 
@@ -329,7 +332,7 @@ Azure 存储的 GUID 生成器窗体可确保生成所需格式的 GUID。 此�
 
 **能否对 Azure 市场中的解决方案模板产品/服务使用专用自定义 VHD？**
 
-否，不能。 虚拟机映像必须来自 Azure 市场，请参阅：[https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)。
+否，不能。 虚拟机映像必须来自 Azure Marketplace，请参阅： [Azure marketplace 上虚拟机产品/服务的发布指南](marketplace-virtual-machines.md)。
 
 你可以使用自定义 VHD 在市场中创建 VM 产品/服务，并将其标记为“专用”，使任何人都看不到它， 然后在解决方案模板中引用此 VM。
 

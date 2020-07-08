@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725867"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964662"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
@@ -124,6 +124,6 @@ ms.locfileid: "83725867"
 
 ## <a name="next-step"></a>后续步骤
 
-如果在创建 SAS URI 时遇到困难，请参阅[常见 SAS URL 问题](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues)。 否则，请将 SAS URI 保存到安全位置供将来使用。 你需要它才能在合作伙伴中心发布 VM 套餐。
+如果在创建 SAS URI 时遇到困难，请参阅[常见 SAS URL 问题](common-sas-uri-issues.md)。 否则，请将 SAS URI 保存到安全位置供将来使用。 你需要它才能在合作伙伴中心发布 VM 套餐。
 
-* [创建 Azure 虚拟机套餐](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [创建 Azure 虚拟机套餐](azure-vm-create-offer.md)

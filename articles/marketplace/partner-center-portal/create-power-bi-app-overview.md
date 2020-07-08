@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837832"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964645"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 应用创建概述
 
@@ -20,11 +20,11 @@ ms.locfileid: "82837832"
 
 ## <a name="publishing-benefits"></a>发布的好处
 
-发布到商业应用商店的好处：
+发布到商业市场的好处：
 
-- 使用 Microsoft 品牌提升你的公司。
-- 通过 Azure Marketplace 200000，可能会超过100000000个 Office 365 和 Dynamics 365 AppSource 多个组织的用户。
-- 从这些市场接收高质量的潜在顾客。
+- 使用 Microsoft 品牌推广你的公司。
+- 有机会与 AppSource 中的 1 亿多个 Office 365 和 Dynamics 365 用户接触，并通过 Azure 市场与 20 多万家组织接触。
+- 从这些市场获得优质的潜在客户。
 - 由 Microsoft 现场和电话销售团队推广你的服务。
 
 ## <a name="overview"></a>概述
@@ -42,7 +42,7 @@ ms.locfileid: "82837832"
 7. 经过认证后，请在其测试环境中查看应用并将其发布。 这会在 AppSource （它是 "上线"）上列出。
 8. 在 Power BI 中，将包发送到生产。 有关详细信息，请参阅[管理 Power BI 应用版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 查看下面的链接，这些链接提供了模板、提示和示例。
 
@@ -66,16 +66,16 @@ ms.locfileid: "82837832"
 2. 在 Power BI 中创建并测试应用程序。
 3. 收到应用安装 web 地址后，将其添加到合作伙伴中心的 "**技术配置**" 页。
 
-在 Power BI 中创建并测试了应用后，请保存应用程序安装 web 地址，因为你将需要它来[创建 Power BI 应用程序产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)。
+在 Power BI 中创建并测试了应用后，请保存应用程序安装 web 地址，因为你将需要它来[创建 Power BI 应用程序产品/服务](create-power-bi-app-offer.md)。
 
 ### <a name="business-requirements"></a>业务要求
 
-业务要求包括过程、合同和法律义务。 必须具备以下条件：
+业务要求包括过程、合同和法律义务。 必须：
 
-- 是注册的商用 marketplace 发布者。 如果你尚未注册，请按照[成为商用 Marketplace 发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)中的步骤操作。
+- 是注册的商用 marketplace 发布者。 如果你尚未注册，请按照在[合作伙伴中心创建商业 marketplace 帐户](create-account.md)中的步骤进行操作。
 - 提供满足在 AppSource 上列出的产品/服务的条件的内容。 有关详细信息，请参阅[AppSource 上的应用程序列表？下面是操作方法](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)。
 - 同意并遵循[Microsoft 隐私声明](https://privacy.microsoft.com/privacystatement)。
 
 ## <a name="next-step"></a>后续步骤
 
-- [在合作伙伴中心创建 Power BI 应用产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [在合作伙伴中心创建 Power BI 应用产品/服务](create-power-bi-app-offer.md)

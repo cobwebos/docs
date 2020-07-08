@@ -7,13 +7,13 @@ author: jonfancey
 ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/25/2020
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536227"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964628"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -47,9 +47,9 @@ ms.locfileid: "81536227"
 
 * **高级**ISE：此 SKU 的基本单元具有固定容量，但如果需要更大的吞吐量，则可以在 ISE 创建过程中或之后[添加更多缩放单位](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 有关 ISE 限制，请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md#integration-service-environment-ise)。
 
-* **开发人员**ISE：此 SKU 不能扩展、不提供服务级别协议（SLA）和未发布的限制。 仅将此 SKU 用于试验、开发和测试，而不是生产或性能测试。
+* **开发人员**ISE：此 SKU 不能扩展、不提供服务级别协议（SLA）和未发布的限制。 此 SKU 仅可用于试验、开发和测试，不可用于生产和性能测试。
 
-对于在 ISE 中创建和运行的逻辑应用，为这些功能支付[固定的每月价格](https://azure.microsoft.com/pricing/details/logic-apps)：
+对于在 ISE 中创建和运行的逻辑应用，可以为这些功能支付[固定价格](https://azure.microsoft.com/pricing/details/logic-apps)（与按使用付费）：
 
 * [内置](../connectors/apis-list.md#built-in)触发器和操作
 
@@ -57,7 +57,7 @@ ms.locfileid: "81536227"
 
 * [标准](../connectors/apis-list.md#managed-connectors)连接器和[企业](../connectors/apis-list.md#enterprise-connectors)连接器，可让你拥有任意数量的企业连接
 
-   显示**ise**标签的标准和企业连接器与逻辑应用在同一 ISE 中运行。 不显示 ISE 标签的连接器在公共、"全局"、多租户逻辑应用服务中运行。 固定的每月价格还适用于在使用在 ISE 中运行的逻辑应用时在多租户服务中运行的连接器。
+   显示**ise**标签的标准和企业连接器与逻辑应用在同一 ISE 中运行。 不显示 ISE 标签的连接器在公共、"全局"、多租户逻辑应用服务中运行。 当你将固定定价用于在 ISE 中运行的逻辑应用时，它还适用于在多租户服务中运行的连接器。
 
 * 基于[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，无需额外付费即可使用[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)：
 
@@ -116,13 +116,13 @@ Azure 逻辑应用将所有成功和不成功的操作作为执行进行计量�
 
 [固定定价模型](https://azure.microsoft.com/pricing/details/logic-apps)适用于[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)，可在其中浏览、开发和测试 Azure 逻辑应用中的[B2B 和 EDI](logic-apps-enterprise-integration-b2b.md)和[XML 处理](logic-apps-enterprise-integration-xml.md)功能，无需额外付费。 每个 Azure 订阅最多可以有[特定的集成帐户限制](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 每个集成帐户最多可存储[项目](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)的特定限制，包括贸易合作伙伴、协议、地图、架构、程序集、证书、批配置等。
 
-Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服务级别协议（SLA）支持 "基本" 和 "标准" 级别，而 "免费" 级别不受 SLA 支持，并具有吞吐量和使用限制。 除了免费层集成帐户之外，每个 Azure 区域中可以有多个集成帐户。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
+Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服务级别协议（SLA）支持 "基本" 和 "标准" 级别，而 "免费" 层不受 SLA 支持，并对区域可用性、吞吐量和使用情况有限制。 除了免费层集成帐户之外，每个 Azure 区域中可以有多个集成帐户。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 如果有[ *integration service 环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)（[高级或开发人员](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)），ISE 可以有5个集成帐户。 若要了解如何为 ISE 使用固定定价模型，请参阅本主题前面的[固定定价模型](#fixed-pricing)部分。 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 若要在免费、基本或标准集成帐户之间进行选择，请查看这些用例说明：
 
-* **免费**：要尝试探索方案，而不是生产方案
+* **免费**：要尝试探索方案，而不是生产方案。 此级别仅适用于 Azure 中的公共区域，例如 "美国西部" 或 "东南亚"，但不适用于[Azure 中国世纪互联](https://docs.microsoft.com/azure/china/overview-operations)或[azure 政府](../azure-government/documentation-government-welcome.md)版。
 
 * **基本**：仅当你只希望消息处理或充当与较大业务实体的贸易合作伙伴关系的小型企业合作伙伴时，
 
@@ -157,7 +157,7 @@ Azure 逻辑应用提供免费、基本和标准集成帐户。 逻辑应用服�
 
 1. 在 Azure 门户中，查找并打开逻辑应用。
 
-1. 在逻辑应用的菜单中，选择“概述”****。
+1. 在逻辑应用的菜单中，选择“概述”。
 
 1. 在右侧窗格的“运行历史记录”**** 下，选择具有要检查的输入和输出的运行。
 

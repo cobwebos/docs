@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892438"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963407"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>使用 Application Insights 中的用户流分析用户导航模式
 
-![Application Insights 用户流工具](./media/usage-flows/00001-flows.png)
+![Application Insights 用户流工具](./media/usage-flows/flows.png)
 
 用户流工具可视化显示用户在网站的页面和功能之间导航的方式。 它非常适合解释以下问题，例如：
 
@@ -33,7 +33,7 @@ ms.locfileid: "80892438"
 
 ## <a name="start-by-choosing-an-initial-event"></a>首先，选择初始事件
 
-![为用户流选择初始事件](./media/usage-flows/00002-flows-initial-event.png)
+![为用户流选择初始事件](./media/usage-flows/initial-event.png)
 
 若要使用用户流工具开始回答问题，请选择初始页面视图、自定义事件或异常作为可视化的起点：
 
@@ -49,7 +49,7 @@ ms.locfileid: "80892438"
 
 如果预期在可视化中看到的页面视图或自定义事件丢失：
 
-* 检查“编辑”  菜单中的“已排除事件”  部分。
+* 检查“编辑”菜单中的“已排除事件”部分。
 * 使用“其他”  节点上的加号按钮在可视化中包括不太频繁发生的事件。
 * 如果用户未频繁发送你预期的页面视图或自定义事件，请尝试在“编辑”  菜单中增加可视化的时间范围。
 * 确保将预期的页面视图、自定义事件或异常设置为由站点源代码中的 Application Insights SDK 收集。 [详细了解如何收集自定义事件。](../../azure-monitor/app/api-custom-events-metrics.md)
@@ -58,7 +58,7 @@ ms.locfileid: "80892438"
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>用户访问页面或功能后去了哪里，又单击了什么？
 
-![使用用户流，了解用户单击的位置](./media/usage-flows/00003-flows-one-step.png)
+![使用用户流，了解用户单击的位置](./media/usage-flows/one-step.png)
 
 如果初始事件是页面视图，则可以通过可视化的第一列（“步骤 1”）快速了解用户在访问页面后紧接着执行了哪些操作。 尝试在用户流可视化旁的窗口中打开你的网站。 将你对用户如何与页面进行交互的期望与“步骤 1”列中的事件列表进行比较。 通常，页面上对你的团队来说看似无关紧要的 UI 元素可能会是页面中最常用的。 这对于对网站进行设计改进而言可能是一个很好的起点。
 
@@ -82,7 +82,7 @@ ms.locfileid: "80892438"
 
 ### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>我的可视化中的某些节点太粗略。 例如，仅显示“已单击按钮”节点。 如何将其细分为更详细的节点？
 
-使用“编辑”  菜单中的“拆分依据”  选项：
+使用“编辑”菜单中的“拆分依据”选项：
 
 1. 在“事件”  菜单中选择要细分的事件。
 2. 在“维度”  菜单中选择维度。 例如，如果已有一个名为“已单击按钮”的事件，请尝试使用一个名为“按钮名称”的自定义属性。

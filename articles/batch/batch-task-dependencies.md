@@ -4,21 +4,21 @@ description: 在 Azure Batch 中创建依赖于其他任务的完成的任务，
 ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42cf24758c64f107723ae0907db08bd4b757a15a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 4aad67b4537befd251798aac7601bc4efcc276f2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726377"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965223"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 
 可以定义任务依赖关系，以便仅在完成父任务后，才运行一个或一组任务。 任务依赖关系可发挥作用的部分方案包括：
 
-* 云中的 MapReduce 样式工作负荷。
-* 数据处理任务可以表示为有向无环图 (DAG) 的作业。
-* 渲染前和渲染后过程，其中只有在完成每个任务后，其后续任务才能开始。
-* 下游任务依赖于上游任务输出的任何其他作业。
+- 云中的 MapReduce 样式工作负荷。
+- 数据处理任务可以表示为有向无环图 (DAG) 的作业。
+- 渲染前和渲染后过程，其中只有在完成每个任务后，其后续任务才能开始。
+- 下游任务依赖于上游任务输出的任何其他作业。
 
 使用批处理任务依赖关系，可以创建在完成一个或多个父任务后在计算节点上按计划执行的任务。 例如，可以创建一个作业，使用单独的并行任务渲染 3D 影片的每个帧。 最后一个任务为“合并任务”，仅在所有帧已成功呈现后，才将呈现的帧合并为完整影片。
 
@@ -27,9 +27,11 @@ ms.locfileid: "83726377"
 用户可以创建依赖于一对一或一对多关系中其他任务的任务。 甚至可以创建一个范围依赖关系，使其中一项任务依赖于特定任务 ID 范围内一组任务的完成。 可以组合这三种基本方案，以创建多对多关系。
 
 ## <a name="task-dependencies-with-batch-net"></a>Batch .NET 的任务依赖关系
+
 本文讨论如何使用 [Batch .NET][net_msdn] 库配置任务依赖关系。 本文首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 本文还介绍如何指定一个依赖关系操作，以便在父任务失败时运行依赖任务。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
 
 ## <a name="enable-task-dependencies"></a>启用任务依赖关系
+
 要在批处理应用程序中使用任务依赖关系，必须先将作业配置为使用任务依赖关系。 在 Batch .NET 中，为 [CloudJob][net_cloudjob] 启用任务依赖关系的方法是将其 [UsesTaskDependencies][net_usestaskdependencies] 属性设置为 `true`：
 
 ```csharp
@@ -43,6 +45,7 @@ unboundJob.UsesTaskDependencies = true;
 在以上代码片段中，“batchClient”是 [BatchClient][net_batchclient] 类的一个实例。
 
 ## <a name="create-dependent-tasks"></a>创建依赖任务
+
 若要创建一个依赖于一个或多个父任务的完成的任务，可以指定该任务必须“依赖于”其他任务。 在 Batch .NET 中，为 [CloudTask][net_cloudtask].[DependsOn][net_dependson] 属性配置 [TaskDependencies][net_taskdependencies] 类的一个实例：
 
 ```csharp
@@ -58,13 +61,12 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 
 > [!NOTE]
 > 默认情况下，当任务处于“已完成”状态并且其“退出代码”为 `0` 时，该任务视为已成功完成。 在 Batch .NET 中，这意味着 [CloudTask][net_cloudtask].[State][net_taskstate] 属性值为 `Completed`，CloudTask 的 [TaskExecutionInformation][net_taskexecutioninformation].[ExitCode][net_exitcode] 属性值为 `0`。 有关如何更改此设置，请参阅[依赖项操作](#dependency-actions)部分。
-> 
-> 
 
 ## <a name="dependency-scenarios"></a>依赖关系方案
+
 可以在 Azure Batch 中使用三种基本任务依赖关系方案：一对一、一对多和任务 ID 范围依赖关系。 可以组合这些方案以提供第四种方案：多对多。
 
-| 方案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 示例 |  |
+| 方案&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 示例 | 图示 |
 |:---:| --- | --- |
 |  [一对一](#one-to-one) |*taskB* 取决于 *taskA* <p/> *taskA* 成功完成后，*taskB* 才会按计划执行 |![关系图：一对一任务依赖关系][1] |
 |  [一对多](#one-to-many) |*taskC* 同时取决于 *taskA* 和 *taskB* <p/> *taskA* 和 *taskB* 成功完成后，*taskC* 才会按计划执行 |![关系图：一对多任务依赖关系][2] |
@@ -76,6 +78,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 > 在本部分的示例中，仅在父任务成功完成时才运行依赖任务。 此行为是依赖任务的默认行为。 可以通过指定一个依赖关系操作来重写默认行为，在父任务失败后运行依赖任务。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
 
 ### <a name="one-to-one"></a>一对一
+
 在一对一关系中，任务依赖于一个父任务的成功完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnId][net_onid] 静态方法提供单个任务 ID。
 
 ```csharp
@@ -90,6 +93,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>一对多
+
 在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIds][net_onids] 静态方法提供任务 ID 的集合。
 
 ```csharp
@@ -106,17 +110,16 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 ``` 
 
 ### <a name="task-id-range"></a>任务 ID 范围
+
 在依赖于一系列父任务的关系中，任务依赖于其 ID 位于某个范围内的任务的完成。
 若要创建该依赖关系，请在填充 [CloudTask][net_cloudtask] 的 [DependsOn][net_dependson] 属性时，为 [TaskDependencies][net_taskdependencies].[OnIdRange][net_onidrange] 静态方法提供该范围内的第一个和最后一个任务 ID。
 
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 因此范围 `1..10` 将选择任务 `3` 和 `7`，而不是 `5flamingoes`。 
-> 
+>
 > 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项。
-> 
+>
 > 范围内的每个任务必须通过成功完成或者已完成但出现了映射到设置为 **Satisfy** 的某个依赖关系操作的失败，来满足该依赖关系。 有关详细信息，请参阅[依赖关系操作](#dependency-actions)部分。
->
->
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -193,6 +196,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>代码示例
+
 [TaskDependencies][github_taskdependencies] 示例项目是 GitHub 上的 [Azure Batch 代码示例][github_samples]之一。 此 Visual Studio 解决方案演示了：
 
 - 如何在作业中启用任务依赖关系
@@ -200,31 +204,29 @@ new CloudTask("B", "cmd.exe /c echo B")
 - 如何在计算节点池中执行这些任务。
 
 ## <a name="next-steps"></a>后续步骤
-### <a name="application-deployment"></a>应用程序部署
-使用 Batch 的[应用程序包](batch-application-packages.md)功能，可以轻松地部署任务在计算节点上执行的应用程序并对其进行版本控制。
 
-### <a name="installing-applications-and-staging-data"></a>安装应用程序和暂存数据
-有关准备节点以运行任务的方法概述，请参阅 Azure Batch 论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在批处理计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
+- 使用 Batch 的[应用程序包](batch-application-packages.md)功能，可以轻松地部署任务在计算节点上执行的应用程序并对其进行版本控制。
+- 有关准备节点以运行任务的方法概述，请参阅 Azure Batch 论坛中的 [Installing applications and staging data on Batch compute nodes][forum_post]（在批处理计算节点上安装应用程序和暂存数据）。 此帖子由某个 Azure Batch 团队成员编写，是一篇很好的入门教程，介绍如何使用不同的方法将应用程序、任务输入数据和其他文件复制到计算节点。
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_dependson]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.dependson.aspx
-[net_exitcode]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.exitcode.aspx
-[net_exitconditions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitconditions
-[net_exitoptions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_onid]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onid.aspx
-[net_onids]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onids.aspx
-[net_onidrange]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onidrange.aspx
-[net_taskexecutioninformation]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.aspx
-[net_taskstate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.common.taskstate.aspx
-[net_usestaskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.usestaskdependencies.aspx
-[net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_dependson]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_exitcode]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
+[net_exitconditions]: /dotnet/api/microsoft.azure.batch.exitconditions
+[net_exitoptions]: /dotnet/api/microsoft.azure.batch.exitoptions
+[net_dependencyaction]: /dotnet/api/microsoft.azure.batch.exitoptions
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_onid]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_onids]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_onidrange]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_taskexecutioninformation]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
+[net_taskstate]: /dotnet/api/microsoft.azure.batch.common.taskstate
+[net_usestaskdependencies]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_taskdependencies]: /dotnet/api/microsoft.azure.batch.taskdependencies
 
 [1]: ./media/batch-task-dependency/01_one_to_one.png "关系图：一对一依赖关系"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "关系图：一对多依赖关系"

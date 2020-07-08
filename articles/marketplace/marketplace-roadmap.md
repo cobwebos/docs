@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ae482a4c7b656a4bc84895501c49bf0a98517acc
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 89a60016f8f4496e44c138a79a3864782791d1db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800640"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963285"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Microsoft 商业市场资源
 
@@ -28,9 +28,8 @@ ms.locfileid: "83800640"
 * [合作伙伴中心内的商业市场分析](./partner-center-portal/analytics.md)
 * [Microsoft Build 市场博客](https://aka.ms/marketplacebuildblog)
 * [市场可能会更新博客](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* 合作伙伴中心：[创建帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) / [管理帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account) / [从 CPP 迁移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* 合作伙伴中心：[创建 SaaS 产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) / [发布状态](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-) / [更新现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer) / [产品/服务分析](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [在合作伙伴中心获取市场支持](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* 合作伙伴中心：[创建帐户](partner-center-portal/create-account.md) / [管理帐户](partner-center-portal/manage-account.md) / [从 CPP 迁移](partner-center-portal/account-migration-from-cpp-to-pc.md)
+* 合作伙伴中心：[创建 SaaS 产品](partner-center-portal/create-new-saas-offer.md)  /  [发布状态](partner-center-portal/publishing-status.md)）/[更新现有产品](partner-center-portal/update-existing-offer.md)/服务  /  [分析](partner-center-portal/analytics.md)
+* [在合作伙伴中心获取市场支持](partner-center-portal/support.md)
 
 欢迎提供建议！ 加入 [Microsoft 合作伙伴社区](https://www.microsoftpartnercommunity.com/)中的对话，获取新功能、计划和事件的最新更新。

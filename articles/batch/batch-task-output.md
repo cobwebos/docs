@@ -4,12 +4,12 @@ description: 了解用于保存批处理任务和作业的输出数据的不同�
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 492de237acdf2d6d42f27638bac3adc0f6549828
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726292"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965104"
 ---
 # <a name="persist-job-and-task-output"></a>持久性作业和任务输出
 
@@ -35,7 +35,7 @@ ms.locfileid: "83726292"
 
 ### <a name="use-the-batch-service-api"></a>使用批处理服务 API
 
-Batch 服务支持在[向作业添加任务](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job)或在[向作业添加任务集合](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)时指定任务数据在 Azure 存储中的输出文件。
+Batch 服务支持在[向作业添加任务](/rest/api/batchservice/add-a-task-to-a-job)或在[向作业添加任务集合](/rest/api/batchservice/add-a-collection-of-tasks-to-a-job)时指定任务数据在 Azure 存储中的输出文件。
 
 有关使用批处理服务 API 保存任务输出的详细信息，请参阅[使用批处理服务 API 将任务数据保存到 Azure 存储](batch-task-output-files.md)。
 

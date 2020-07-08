@@ -3,12 +3,12 @@ title: Azure Batch 中的错误处理和检测
 description: 从开发角度了解 Batch 服务工作流中的错误处理。
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 07b9d43ea9bdf21fe3188c4481e6dd0c86374607
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: 3bd460598dae08fa18415e1c9865249f3ca4c9c2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790824"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964271"
 ---
 # <a name="error-handling-and-detection-in-azure-batch"></a>Azure Batch 中的错误处理和检测
 
@@ -23,13 +23,13 @@ ms.locfileid: "83790824"
 - 与限制相关的错误，如带有 Retry-after 标头的 429 或 503 状态代码 HTTP 响应。
 - 4xx 错误，如 AlreadyExists 和 InvalidOperation。 这意味着资源未处于状态转换所需的正确状态。
 
-有关特定错误代码的详细信息（包括 REST API、Batch 服务和作业任务/调度的错误代码），请参阅 [Batch 状态和错误代码](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)。
+有关特定错误代码的详细信息（包括 REST API、Batch 服务和作业任务/调度的错误代码），请参阅 [Batch 状态和错误代码](/rest/api/batchservice/batch-status-and-error-codes)。
 
 ## <a name="application-failures"></a>应用程序失败
 
 在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。 如[文件和目录](files-and-directories.md)中所述，Batch 服务会将标准输出和标准错误输出发送到计算节点上任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。
 
-可以使用 Azure 门户或 Batch SDK 之一下载这些文件。 例如，可以使用 Batch .NET 库中的 [ComputeNode.GetNodeFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) 和 [CloudTask.GetNodeFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask) 检索这些文件和其他文件来进行故障排除。
+可以使用 Azure 门户或 Batch SDK 之一下载这些文件。 例如，可以使用 Batch .NET 库中的 [ComputeNode.GetNodeFile](/dotnet/api/microsoft.azure.batch.computenode) 和 [CloudTask.GetNodeFile](/dotnet/api/microsoft.azure.batch.cloudtask) 检索这些文件和其他文件来进行故障排除。
 
 ## <a name="task-errors"></a>任务错误
 
@@ -73,10 +73,10 @@ ms.locfileid: "83790824"
 
 ## <a name="connect-to-compute-nodes"></a>连接到计算节点
 
-可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)）来执行此操作。
+可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET](/dotnet/api/microsoft.azure.batch.computenode) 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)）来执行此操作。
 
 > [!IMPORTANT]
-> 若要通过 RDP 或 SSH 连接到某个节点，必须先在该节点上创建一个用户。 为此，可以使用 Azure 门户通过 Batch REST API [将用户帐户添加到节点](https://docs.microsoft.com/rest/api/batchservice/computenode/adduser)、在 Batch .NET 中调用 [ComputeNode.CreateComputeNodeUser](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode) 方法，或在 Batch Python 模块中调用 [add_user](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) 方法。
+> 若要通过 RDP 或 SSH 连接到某个节点，必须先在该节点上创建一个用户。 为此，可以使用 Azure 门户通过 Batch REST API [将用户帐户添加到节点](/rest/api/batchservice/computenode/adduser)、在 Batch .NET 中调用 [ComputeNode.CreateComputeNodeUser](/dotnet/api/microsoft.azure.batch.computenode) 方法，或在 Batch Python 模块中调用 [add_user](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh) 方法。
 
 如需限制或禁用通过 RDP 或 SSH 访问计算节点的功能，请参阅[在 Azure Batch 池中配置或禁用到计算节点的远程访问](pool-endpoint-configuration.md)。
 
@@ -84,21 +84,21 @@ ms.locfileid: "83790824"
 
 在部分任务失败的情况下，Batch 客户端应用程序或服务可以检查失败任务的元数据来找出行为异常的节点。 池中的每个节点都有一个唯一 ID，运行任务的节点包含在任务元数据中。 识别出“有问题的节点”后，可对其执行多种操作：
 
-- **重新启动节点** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/reboot) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.reboot))
+- **重新启动节点** ([REST](/rest/api/batchservice/computenode/reboot) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.reboot))
 
     重新启动节点有时可以清除潜在的问题，例如进程停滞或崩溃。 如果池使用启动任务或作业使用作业准备任务，节点重新启动时将执行这些任务。
-- **重置映像节点** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.reimage))
+- **重置映像节点** ([REST](/rest/api/batchservice/computenode/reimage) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.reimage))
 
     这会在节点上重新安装操作系统。 和重新启动节点一样，在重置映像节点后，便重新执行启动任务和作业准备任务。
-- **从池中删除节点** ([REST](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations))
+- **从池中删除节点** ([REST](/rest/api/batchservice/pool/removenodes) | [.NET](/dotnet/api/microsoft.azure.batch.pooloperations))
 
     有时必须从池中完全删除节点。
-- **禁用节点上的任务调度** ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/disablescheduling) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.disablescheduling))
+- **禁用节点上的任务调度** ([REST](/rest/api/batchservice/computenode/disablescheduling) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.disablescheduling))
 
-    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务调度，并从远程登录以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以启用任务调度 ([REST](https://docs.microsoft.com/rest/api/batchservice/computenode/enablescheduling) | [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.computenode.enablescheduling)) 使节点重新联机，或者执行上述其中一个其他操作。
+    这实际上是使节点脱机，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。 这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。 例如，可以禁用节点上的任务调度，并从远程登录以检查节点的事件日志，或执行其他故障排除操作。 完成调查后，可以启用任务调度 ([REST](/rest/api/batchservice/computenode/enablescheduling) | [.NET](/dotnet/api/microsoft.azure.batch.computenode.enablescheduling)) 使节点重新联机，或者执行上述其中一个其他操作。
 
 > [!IMPORTANT]
-> 通过上述操作，你可以指定在执行该操作时如何处理当前正在节点上运行的任务。 例如，在使用 Batch .NET 客户端库的节点上禁用任务调度时，可以指定 [DisableComputeNodeSchedulingOption](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.disablecomputenodeschedulingoption) 枚举值，以指定是要终止正在运行的任务、重新将任务列入队列以在其他节点上调度，还是允许正在运行的任务先完成再执行操作 (TaskCompletion)  。
+> 通过上述操作，你可以指定在执行该操作时如何处理当前正在节点上运行的任务。 例如，在使用 Batch .NET 客户端库的节点上禁用任务调度时，可以指定 [DisableComputeNodeSchedulingOption](/dotnet/api/microsoft.azure.batch.common.disablecomputenodeschedulingoption) 枚举值，以指定是要终止正在运行的任务、重新将任务列入队列以在其他节点上调度，还是允许正在运行的任务先完成再执行操作 (TaskCompletion)  。
 
 ## <a name="retry-after-errors"></a>出错后重试
 
@@ -110,4 +110,4 @@ ms.locfileid: "83790824"
 
 - 了解如何[检查池和节点错误](batch-pool-node-error-checking.md)。
 - 了解如何[检查作业和任务错误](batch-job-task-error-checking.md)。
-- 查看 [Batch 状态和错误代码](https://docs.microsoft.com/rest/api/batchservice/batch-status-and-error-codes)列表。
+- 查看 [Batch 状态和错误代码](/rest/api/batchservice/batch-status-and-error-codes)列表。

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 180015a6bab576c02dcfaaea589628e40c6adde4
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 5a867243e57790bf72cef6991d6d8ac06639be49
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736170"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963914"
 ---
 # <a name="managed-application-metered-billing"></a>托管应用程序计费计费 
 
@@ -67,7 +67,7 @@ ms.locfileid: "82736170"
 定义维度本身的属性在产品/服务的所有计划中共享。 在发布产品/服务之前，从任何计划的上下文中对这些属性所做的更改将影响所有计划的维度定义。 发布产品/服务后，将无法再编辑这些属性。 这些属性为：
 
 * 标识符
-* 名称
+* “属性”
 * 度量单位
 
 维度的其他属性特定于每个计划，并且可以有不同于计划的值。  在发布计划之前，你可以编辑这些值，只有此计划会受到影响。 发布计划后，这些属性将不再可编辑。 这些属性为：
@@ -93,7 +93,7 @@ ms.locfileid: "82736170"
 使用维度发布产品/服务后，将无法再更改该维度的产品/服务详细信息：
 
 * 标识符
-* 名称
+* “属性”
 * 度量单位
 
 发布计划后，将无法再更改计划级别的详细信息：
@@ -125,7 +125,7 @@ ms.locfileid: "82736170"
 4. 在 "选择最能描述此问题的问题" 下，选择 "**按流量计费**"。
 5. 通过选择 "**下一步**" 按钮，你将被定向到 "**问题详细信息**" 页，你可以在其中输入有关问题的更多详细信息。
 
-有关发布者支持选项的详细信息，请参阅[合作伙伴中心的商业市场计划支持](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)。
+有关发布者支持选项的详细信息，请参阅[合作伙伴中心的商业市场计划支持](support.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

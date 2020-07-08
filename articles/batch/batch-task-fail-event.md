@@ -3,12 +3,12 @@ title: Azure Batch 任务失败事件
 description: 批处理任务失败事件参考。 除了任务完成事件，还会发出此事件，此事件可用于检测任务何时已失败。
 ms.topic: reference
 ms.date: 08/15/2019
-ms.openlocfilehash: 54a6965fbefeaf502372c611c2b3152dc43b0efe
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: fbd0e5f2397fffce654d64a0e95a115b861db680
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726343"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965155"
 ---
 # <a name="task-fail-event"></a>任务失败事件
 
@@ -50,7 +50,7 @@ ms.locfileid: "83726343"
 |`taskType`|String|任务的类型。 它可以是“JobManager”（指示它是作业管理器任务），也可以是“User”（指示它并非作业管理器任务）。 对于作业准备任务、作业释放任务或开始任务，不会发出此事件。|
 |`systemTaskVersion`|Int32|这是任务上的内部重试计数器。 批处理服务可能会在内部重试任务来解决暂时性问题。 这些问题可能包括内部计划错误或尝试恢复处于错误状态的计算节点。|
 |[`nodeInfo`](#nodeInfo)|复杂类型|包含有关运行任务的计算节点的信息。|
-|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  有关详细信息，请参阅 [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)。|
+|[`multiInstanceSettings`](#multiInstanceSettings)|复杂类型|指定任务是需要多个计算节点的多实例任务。  有关详细信息，请参阅 [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)。|
 |[`constraints`](#constraints)|复杂类型|应用到此任务的执行约束。|
 |[`executionInfo`](#executionInfo)|复杂类型|包含有关任务执行的信息。|
 

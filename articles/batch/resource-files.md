@@ -3,12 +3,12 @@ title: 创建和使用资源文件
 description: 了解如何从各种输入源创建 Batch 资源文件。 本文介绍有关如何创建这些文件并将其置于 VM 上的一些常用方法。
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723453"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964016"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > 若要访问容器，必须同时拥有 `Read` 和 `List` 权限；而如果要访问 blob，只需要 `Read` 权限即可。
 
-配置权限后，创建 SAS 令牌并格式化 SAS URL 以访问存储容器。 使用存储容器的格式化 SAS URL，通过 [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 生成资源文件。
+配置权限后，创建 SAS 令牌并格式化 SAS URL 以访问存储容器。 使用存储容器的格式化 SAS URL，通过 [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) 生成资源文件。
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ Batch 作业可能包含多个任务，这些任务都使用相同的公共文�
 
 如果在任务上指定了几百个资源文件，Batch 可能会因为任务太大而拒绝该任务。 最好是将任务本身的资源文件数量减到最小，从而使任务保持较小规模。
 
-如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
+如果无法最大程度地减少任务所需的文件数，可以通过创建可引用资源文件存储容器的单个资源文件来优化任务。 为此，请将资源文件置于 Azure 存储容器中，并对资源文件使用不同的“container”[方法](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods)。 使用 blob 前缀选项指定要为任务下载的文件集合。
 
 ## <a name="next-steps"></a>后续步骤
 

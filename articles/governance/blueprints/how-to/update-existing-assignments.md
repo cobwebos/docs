@@ -3,12 +3,12 @@ title: 从门户更新现有分配
 description: 了解在 Azure 蓝图中通过门户更新现有蓝图分配的机制。
 ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03c954517662c1f54fcca9fbb96ebdf48afdedef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381791"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969458"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -20,7 +20,7 @@ ms.locfileid: "81381791"
 
 ## <a name="updating-assignments"></a>更新分配
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面选择“分配的蓝图”  。
 
@@ -50,18 +50,18 @@ ms.locfileid: "81381791"
   - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。
     以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。
-- Azure 资源管理器模板
+- Azure 资源管理器模板（ARM 模板）
   - 该模板通过资源管理器作为 PUT**** 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误
 
-更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [Azure 资源管理器](../../../azure-resource-manager/management/overview.md)支持的任何更改都可以进行，但是任何会在 Azure 资源管理器中导致错误的更改也将导致分配失败。
+更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [资源管理器](../../../azure-resource-manager/management/overview.md)支持的任何更改都可以进行，但通过资源管理器导致错误的任何更改也会导致分配失败。
 
 可以更新分配的次数没有限制。 如果发生错误，请确定该错误并对分配进行其他更新。  示例错误场景：
 
 - 不正确的参数
 - 已经存在的对象
-- Azure 资源管理器不支持的更改
+- 资源管理器不支持的更改
 
 ## <a name="next-steps"></a>后续步骤
 

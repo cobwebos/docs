@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 05/20/2020
-ms.openlocfilehash: 037edb8af6e04a2ff65977a92a66482c9f4f880f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 07/05/2020
+ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845092"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85969596"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -29,7 +29,7 @@ Azure Monitor 进行加密的操作与 [Azure 存储加密](https://docs.micros
 
 CMK 允许你控制对数据的访问，并允许随时撤消访问。 Azure Monitor 存储始终会在一小时内遵从关键权限更改。 过去 14 天内引入的数据也保存在热缓存（受 SSD 支持）中，以实现高效的查询引擎操作。 此数据使用 Microsoft 密钥进行加密，而不考虑 CMK 配置，但你对 SSD 数据的控制将遵循 [密钥吊销](#cmk-kek-revocation)。 我们正致力于在 2020 的下半年使用 CMK 加密 SSD 数据。
 
-CMK 功能是在专用 Log Analytics 群集上提供的。 为验证我们在你所在区域具有所需的容量，我们要求你的订阅已事先列入白名单。 开始配置 CMK 之前，请使用 Microsoft 联系人获取已加入白名单的订阅。
+CMK 功能是在专用 Log Analytics 群集上提供的。 若要验证在你的区域中是否有所需的容量，我们需要事先允许你的订阅。 开始配置 CMK 之前，请使用你的 Microsoft 联系人获取订阅。
 
  [Log Analytics 群集定价模型](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)使用 1000 GB/天起的容量预留。
 
@@ -40,7 +40,7 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 CMK 配置完成后，与群集资源关联的工作区中引入的所有数据都将使用 Key Vault 中的密钥进行加密。 你可以随时取消工作区与群集资源的关联。 新数据将引入到 Log Analytics 存储，并使用 Microsoft 密钥进行加密，同时你可以无缝查询新旧数据。
 
 
-![CMK 概述](media/customer-managed-keys/cmk-overview-8bit.png)
+![CMK 概述](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics 群集资源具有拥有 Key Vault 权限的托管标识，此标识可传播到基础专用 Log Analytics 群集存储
@@ -69,16 +69,16 @@ CMK 配置完成后，与群集资源关联的工作区中引入的所有数据�
 
 ## <a name="cmk-provisioning-procedure"></a>CMK 预配过程
 
-1. 订阅白名单 -- CMK 功能是在专用 Log Analytics 群集上提供的。 为验证我们在你所在区域具有所需的容量，我们要求你的订阅已事先列入白名单。 使用 Microsoft 联系人获取已加入白名单的订阅
+1. 允许订阅--CMK 功能在专用 Log Analytics 群集上传递。 若要验证在你的区域中是否有所需的容量，我们需要事先允许你的订阅。 使用你的 Microsoft 联系人获取允许的订阅。
 2. 创建 Azure Key Vault 和存储密钥
 3. 创建群集资源
 4. 向 Key Vault 授予权限
 5. 关联 Log Analytics 工作区
 
-当前 UI 中不支持此过程，并且预配流程是通过 REST API 执行的。
+此过程在 Azure 门户不受支持，并且预配是通过 PowerShell 或 REST 请求执行的。
 
 > [!IMPORTANT]
-> 任何 API 请求都必须在请求标头中包含持有者授权令牌。
+> 任何 REST 请求都必须在请求标头中包含持有者授权令牌。
 
 例如：
 
@@ -100,12 +100,12 @@ Authorization: Bearer eyJ0eXAiO....
 
 ### <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
-此配置过程中的某些操作是异步运行的，因为它们无法快速完成。 接受时，异步操作的响应最初返回 HTTP 状态代码 200 (OK) 和具有 Azure-AsyncOperation 属性的标头：
+此配置过程中的某些操作是异步运行的，因为它们无法快速完成。 在配置中使用 REST 请求时，响应最初在接受时返回 HTTP 状态代码200（OK）和标头*AsyncOperation*属性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
-若要查看异步操作的状态，请向 Azure-AsyncOperation 标头值发送 GET 请求：
+然后，可以通过将 GET 请求发送到*AsyncOperation*标头值来检查异步操作的状态：
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
@@ -172,9 +172,9 @@ Authorization: Bearer <token>
 }
 ```
 
-### <a name="subscription-whitelisting"></a>订阅白名单
+### <a name="allowing-subscription-for-cmk-deployment"></a>允许 CMK 部署的订阅
 
-CMK 功能是在专用 Log Analytics 群集上提供的。 为验证我们在你所在区域具有所需的容量，我们要求你的订阅已事先列入白名单。 在 Microsoft 中使用联系人提供订阅 ID。
+CMK 功能是在专用 Log Analytics 群集上提供的。若要验证在你的区域中是否有所需的容量，我们需要事先允许你的订阅。 在 Microsoft 中使用联系人提供订阅 ID。
 
 > [!IMPORTANT]
 > CMK 功能是区域性的。 Azure Key Vault、群集资源和关联的 Log Analytics 工作区必须位于同一区域，但可以位于不同订阅。
@@ -191,20 +191,27 @@ CMK 功能是在专用 Log Analytics 群集上提供的。 为验证我们在�
 
 ### <a name="create-cluster-resource"></a>创建群集资源
 
-此资源用作 Key Vault 与 Log Analytics 工作区之间的中间标识连接。 收到订阅已添加到白名单的确认信息后，请在工作区所在的区域创建 Log Analytics 群集资源。
+此资源用作 Key Vault 与 Log Analytics 工作区之间的中间标识连接。 收到允许订阅的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。
 
 创建群集资源时，必须指定容量预留级别 (sku) 。 容量预留级别可以在每天 1,000 到 2,000 GB 范围内，后续你可以以 100 为幅度对其进行更新。 如果你需要的容量预留级别高于每天 2,000 GB，请通过 LAIngestionRate@microsoft.com 与我们联系。 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
 
 billingType 属性可确定群集资源及其数据的计费归属 ：
-- 群集（默认）-- 计费归属于承载群集资源的订阅 
-- 工作区 -- 计费按比例归属于承载工作区的订阅
+- *群集*（默认值）-群集的容量保留成本属于*群集*资源。
+- *工作区*-群集的容量保留成本与群集中的工作区按比例进行了分类，如果一天的总引入数据低于容量预留，则会对该*群集资源进行*计费。 请参阅[Log Analytics 专用群集](manage-cost-storage.md#log-analytics-dedicated-clusters)，了解群集定价模型的详细信息。 
 
 > [!NOTE]
-> 创建群集资源后，可以使用 PATCH REST 请求为其更新 sku、keyVaultProperties 或 billingType   。
+> * 创建群集资源后，可以使用 PATCH REST 请求为其更新 sku、keyVaultProperties 或 billingType   。
+> * 你可以使用 REST 请求更新*billingType* ，这在 PowerShell 中不受支持
 
-**创建**
+此操作是异步操作，可能需要一段时间才能完成。
 
-此资源管理器请求是异步操作。
+> [!IMPORTANT]
+> 复制并保存响应，因为你在后续步骤中需要详细信息。
+> 
+
+```powershell
+New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" 
+```
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -242,9 +249,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-> [!IMPORTANT]
-> 复制并保存响应，因为你在后续步骤中需要详细信息。
-
 **响应**
 
 ```json
@@ -261,7 +265,6 @@ Authorization: Bearer <token>
     },
   "properties": {
     "provisioningState": "ProvisioningAccount",
-    "clusterType": "LogAnalytics",
     "billingType": "cluster",
     "clusterId": "cluster-id"
     },
@@ -276,10 +279,10 @@ Authorization: Bearer <token>
 
 ### <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
-使用新的访问策略更新 Key Vault，该策略会向群集资源授予权限。 基础 Azure Monitor 存储使用这些权限进行数据加密。 在 Azure 门户中打开 Key Vault，单击“访问策略”，然后单击“+ 添加访问策略”以使用以下设置创建策略：
+使用新的访问策略更新 Key Vault，将权限授予*群集*资源。 基础 Azure Monitor 存储使用这些权限进行数据加密。 在 Azure 门户中打开 Key Vault，单击“访问策略”，然后单击“+ 添加访问策略”以使用以下设置创建策略：
 
 - 密钥权限：选择“获取”、“包装密钥”和“解包密钥”权限。
-- 选择主体：输入在上一步的响应中返回的主体 id 值。
+- 选择主体：输入在上一步的响应中返回的*群集*资源名称或主体 id 值。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -295,12 +298,14 @@ Authorization: Bearer <token>
 
 为群集资源 KeyVaultProperties 更新密钥标识符详细信息。
 
-**Update**
+此操作是异步操作，在更新密钥标识符详细信息时，可能需要一段时间才能完成。 这是更新容量值时的同步。
 
-此资源管理器请求在更新密钥标识符详细信息时是异步操作，在更新容量值时是同步操作。
+```powershell
+Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
+```
 
 > [!NOTE]
-> 可以在群集资源中提供部分正文以更新 sku，keyVaultProperties 或 billingType   。
+> 可以使用 PATCH 更新*群集*资源*sku*、 *keyVaultProperties*或*billingType* 。
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -357,7 +362,6 @@ Content-type: application/json
       "keyVersion": "current-version"
       },
     "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
     "billingType": "cluster",
     "clusterId": "cluster-id"
   },
@@ -378,9 +382,12 @@ Content-type: application/json
 > [!IMPORTANT]
 > 完成 Log Analytics 群集的预配后才应执行此步骤。 如果在预配前关联工作区并引入数据，则引入的数据将被删除，并且无法恢复。
 
-**关联工作区**
+此操作是异步操作，可能需要一段时间才能完成。
 
-此资源管理器请求是异步操作。
+```powershell
+$clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name").id
+Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId
+```
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -454,9 +461,84 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
-## <a name="cmk-manage"></a>CMK 管理
+## <a name="saving-queries-protected-with-cmk"></a>保存受 CMK 保护的查询
+
+Log Analytics 中使用的查询语言是有意义的，可以在添加到查询或查询语法中的注释中包含敏感信息。 某些组织要求将此类信息作为 CMK 策略的一部分进行保护，并且需要保存用密钥加密的查询。 Azure Monitor 使你能够将*保存的搜索*和*日志警报*查询存储到你自己的存储帐户中，并将其连接到工作区。 
+
+> 请注意，尚不支持用于工作簿和 Azure 仪表板中的查询的 CMK。 这些查询仍将通过 Microsoft 密钥进行加密。  
+
+利用自带存储（BYOS），服务会将查询上传到你控制的存储帐户。 这意味着，你可以使用与加密 Log Analytics 群集中的数据相同的密钥或不同的密钥来控制[静态加密策略](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys)。 但是，你将负责与该存储帐户关联的成本。 
+
+**为查询设置 CMK 前的注意事项**
+* 你需要对工作区和存储帐户具有 "写入" 权限
+* 请确保在 Log Analytics 工作区所在的同一区域中创建存储帐户
+* 存储中的*保存搜索*被视为服务项目，其格式可能会更改
+* 现有的*保存搜索*将从工作区中删除。 复制并在配置之前保存所需的任何*搜索*。 你可以使用此[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0)查看*已保存的搜索*
+* 查询历史记录不受支持，您将无法看到您运行的查询
+* 出于保存查询的目的，可以将单个存储帐户关联到工作区，但可用于*保存的搜索*和*日志警报*查询
+* 不支持固定到仪表板
+
+**查询的 BYOS 配置**
+
+将存储帐户与*查询*dataSourceType 关联到工作区。 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Query", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+配置完成后，任何新*保存的搜索*查询都将保存在存储中。
+
+**日志的 BYOS 配置-警报**
+
+将包含*警报*dataSourceType 的存储帐户与工作区关联。 
+
+```powershell
+$storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
+New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
+```
+
+```rst
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-03-01-preview
+Authorization: Bearer <token> 
+Content-type: application/json
+ 
+{
+  "properties": {
+    "dataSourceType": "Alerts", 
+    "storageAccountIds": 
+    [
+      "/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"
+    ]
+  }
+}
+```
+
+配置后，任何新的警报查询都将保存在存储中。
+
+## <a name="cmk-management"></a>CMK 管理
 
 - 获取资源组的所有群集资源
+  
+  ```powershell
+  Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
+  ```
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -486,7 +568,6 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
               "keyVersion": "current-version"
               },
           "provisioningState": "Succeeded",
-          "clusterType": "LogAnalytics", 
           "billingType": "cluster",
           "clusterId": "cluster-id"
         },
@@ -500,6 +581,10 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
   ```
 
 - 获取订阅的所有群集资源
+  
+  ```powershell
+  Get-AzOperationalInsightsCluster
+  ```
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -514,8 +599,15 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 
   关联工作区的数据量随时间变化时，建议适当地更新容量预留级别。 按照[更新群集资源](#update-cluster-resource-with-key-identifier-details)中的步骤进行操作，并提供新的容量值。 它可以在每天 1,000 到 2,000 GB 范围内，并以 100 为度。 如果级别高于每日 2,000 GB，请联系 Microsoft 联系人实现该级别。 请注意，无需提供完整的 REST 请求正文，但应包含 sku：
 
-  **body**
-  ```json
+  ```powershell
+  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
+  ```
+
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "sku": {
       "name": "capacityReservation",
@@ -532,8 +624,11 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
   
   按照[更新群集资源](#update-cluster-resource-with-key-identifier-details)中的步骤进行操作，并提供新的 billingType 值。 请注意，无需提供完整的 REST 请求正文，但应包含 billingType：
 
-  **body**
-  ```json
+  ```rst
+  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
+  Authorization: Bearer <token>
+  Content-type: application/json
+
   {
     "properties": {
       "billingType": "cluster",
@@ -545,7 +640,11 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 
   你需要对工作区具有“写入”权限，并且需要群集资源才能执行此操作。 你可以随时取消工作区与群集资源的关联。 进行解除关联操作后的新引入数据存储在 Log Analytics 存储中，并使用 Microsoft 密钥进行加密。 只要使用有效的 Key Vault 密钥预配和配置了群集资源，就可以在解除关联前后无缝查询工作区中引入的数据。
 
-  此资源管理器请求是异步操作。
+  此操作是异步操作，可能需要一段时间才能完成。
+
+  ```powershell
+  Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
+  ```
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview
@@ -561,9 +660,23 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
   1. 从响应中复制 Azure-AsyncOperation URL 值，并进行[异步操作状态检查](#asynchronous-operations-and-status-check)。
   2. 发送 [Workspaces – Get](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) 请求并观察响应，解除关联的工作区的“功能”下方将不会具有 clusterResourceId 。
 
+- **检查工作区关联状态**
+  
+  对工作区执行 Get 操作，并观察 "*功能*" 下的响应中是否存在*clusterResourceId*属性。 关联的工作区将具有*clusterResourceId*属性。
+
+  ```powershell
+  Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
+  ```
+
 - 删除群集资源
 
-  你需要对群集资源具有“写入”权限才能执行此操作。 如果执行的是软删除操作，则不管该删除操作是有意还是无意，均可在 14 天内恢复群集资源及其 14 天内的数据。 软删除期间，群集资源名称保持为预留，并且无法新建同名群集。 软删除结束后将释放群集资源名称，并将永久删除群集资源和数据，不可恢复 。 删除操作结束后，所有关联工作区都将与群集资源解除关联。 新引入数据存储在 Log Analytics 存储中，并使用 Microsoft 密钥进行加密。 工作区解除关联操作是异步操作，可能需要长达 90 分钟才能完成。
+  你需要对群集资源具有“写入”权限才能执行此操作。 如果执行的是软删除操作，则不管该删除操作是有意还是无意，均可在 14 天内恢复群集资源及其 14 天内的数据。 软删除期间，群集资源名称保持为预留，并且无法新建同名群集。 软删除结束后将释放群集资源名称，并将永久删除群集资源和数据，不可恢复 。 删除操作结束后，所有关联工作区都将与群集资源解除关联。 新引入数据存储在 Log Analytics 存储中，并使用 Microsoft 密钥进行加密。 
+  
+  工作区解除关联操作是异步操作，可能需要长达 90 分钟才能完成。
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -590,8 +703,10 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 
 \- CMK 加密适用于 CMK 配置后的新引入数据。 CMK 配置之前引入的数据仍将使用 Microsoft 密钥进行加密。 你可以无缝查询 CMK 配置前后的数据。
 
-\- Azure Key Vault 必须配置为可恢复。 默认情况下，这些属性不会启用，并且应使用 CLI 或 PowerShell 对其进行配置：- 必须打开 [软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- 应打开 [清除保护](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)以防软删除后强行删除机密/保险库。
+\- Azure Key Vault 必须配置为可恢复。默认情况下，这些属性不会启用，应该使用 CLI 或 PowerShell 进行配置：
+
+  - [软删除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) 
+        -  [Purge protection](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)   若要防止在软删除后强行删除机密/保管库，则必须启用清除保护。
 
 - 目前不支持将群集资源移动到另一个资源组或订阅 ** 。
 
@@ -614,8 +729,6 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 
 - 如果使用 KeyVaultProperties 更新现有的群集资源，并且 Key Vault 中缺少“Get”密钥访问策略，则该操作将失败。
 
-- 如果尝试删除与工作区关联的群集资源，则删除操作将失败。
-
 - 如果创建群集资源时出现冲突错误，原因可能是你在过去 14 天内删除了群集资源，并且它处于软删除期间 。 软删除期间，群集资源名称保持为预留，并且无法新建同名群集。 永久删除群集资源时，名称将在软删除期结束后释放。
 
 - 如果在操作过程中更新群集资源，则该操作将失败。
@@ -623,5 +736,9 @@ CMK 的轮换需要使用 Azure Key Vault 中的新密钥版本对群集资源�
 - 如果无法部署群集资源，请验证 Azure Key Vault、群集资源和关联的 Log Analytics 工作区是否位于同一区域 ** 。 可以位于不同的订阅。
 
 - 如果在 Key Vault 中更新密钥版本，但未更新群集资源中的新密钥标识符详细信息，则 Log Analytics 群集将继续使用之前的密钥，并且数据将变得不可访问。 更新群集资源中的新密钥标识符详细信息以恢复数据引入和数据查询功能。
+
+- 某些操作很长，可能需要一段时间才能完成，这些操作包括*群集*创建、*群集*密钥更新和*群集*删除。 可以通过两种方式检查操作状态：
+  1. 使用 REST 时，从响应中复制 "AsyncOperation URL" 值并按照[异步操作状态检查](#asynchronous-operations-and-status-check)操作。
+  2. 向*群集*或工作区发送 GET 请求并观察响应。 例如，解除关联的工作区在*功能*下将不具有*clusterResourceId* 。
 
 - 与客户管理的密钥相关的支持和帮助，请在 Microsoft 中使用你的联系人信息。

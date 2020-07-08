@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657960"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963370"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "83657960"
 
 ## <a name="what-is-an-iot-edge-module"></a>IoT Edge 模块是什么？
 
-通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)。
+通过 Azure IoT Edge，可让你以模块的形式来部署和管理 Edge 上的业务逻辑。 Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](../iot-edge/iot-edge-modules.md)。
 
 **容器套餐类型和 IoT Edge 模块套餐类型之间的区别是什么？**
 
@@ -40,7 +40,7 @@ IoT Edge 模块套餐类型是在 IoT Edge 设备上运行的一种特定类型�
 
 **选择正确的店面**
 
-IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面差异和目标受众的详细信息，请参阅[确定解决方案的发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
+IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面差异和目标受众的详细信息，请参阅[确定解决方案的发布选项](determine-your-listing-type.md)。
  
 **计费选项**
 
@@ -48,7 +48,7 @@ IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面�
  
 **发布选项**
 
-在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
+在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](determine-your-listing-type.md)。  
 
 ## <a name="eligibility-criteria"></a>资格条件
 
@@ -58,7 +58,7 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 若要将 IoT Edge 模块发布到 Azure 市场，需满足以下先决条件：
 
-- 访问合作伙伴中心。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+- 访问合作伙伴中心。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](marketplace-publishers-guide.md)。
 - 在 Azure 容器注册表中托管 IoT Edge 模块。 
 - 准备好 IoT Edge 模块元数据，比如（非详尽列表）： 
     - 标题

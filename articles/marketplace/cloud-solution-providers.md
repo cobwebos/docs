@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798147"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964203"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
-本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过[商业市场 Web 店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)发布产品/服务以外，还可以通过 CSP 计划，向该计划所服务的数百万符合条件的 Microsoft 客户销售产品/服务。
+本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过[商业市场 Web 店面](comparing-appsource-azure-marketplace.md)发布产品/服务以外，还可以通过 CSP 计划，向该计划所服务的数百万符合条件的 Microsoft 客户销售产品/服务。
 
 可以按照“选择加入”的原则配置要在 CSP 计划中提供的新的或现有的产品/服务，以允许 CSP 合作伙伴销售你的产品并为客户创建捆绑式解决方案。
 
@@ -191,7 +191,7 @@ ms.locfileid: "83798147"
 
 ## <a name="next-steps"></a>后续步骤
 
-访问 [Azure 市场和 AppSource 发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+访问 [Azure 市场和 AppSource 发布者指南](marketplace-publishers-guide.md)。
 
 若要详细了解市场 GTM 服务，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
 

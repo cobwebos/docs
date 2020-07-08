@@ -1,5 +1,5 @@
 ---
-title: Microsoft Business Applications 独立软件供应商（ISV）连接计划指南
+title: Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 description: 下面介绍如何载入 Business Applications ISV Connect Program。
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: dsindona
-ms.openlocfilehash: f7fd3f43c7faddb5481411dc9c4c94864b6dc0b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f312fad8e4cbdbfae6bd17f293f65fc3bb637a3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80288965"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964883"
 ---
-# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商（ISV）连接计划指南
+# <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications 独立软件供应商 (ISV) Connect 计划加入指南
 
 [BUSINESS APPLICATIONS ISV Connect Program](https://partner.microsoft.com/solutions/business-applications/isv-overview)旨在利用*Dynamics 365 客户参与和 PowerApps* （"dynamics CE 产品/服务"）或*dynamics 365 财务和运营*（"dynamics Ops 产品/服务"），加速独立软件供应商（isv）构建现代的基于云的业务线（LOB）解决方案的增长和总体成功。 下面是它的一部分。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80288965"
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)中的**发布者配置文件**页面。
 2. 如果出现显示你的帐户设置已迁移到合作伙伴中心的横幅，请继续阅读下一节。 否则，请选择标题提示你激活合作伙伴中心帐户。
 
-有关详细信息，请参阅[从云合作伙伴门户到合作伙伴中心的帐户迁移](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)。
+有关详细信息，请参阅[从云合作伙伴门户到合作伙伴中心的帐户迁移](../partner-center-portal/account-migration-from-cpp-to-pc.md)。
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>接受 Business Applications ISV 计划附录
 
@@ -67,7 +67,7 @@ ms.locfileid: "80288965"
 > [!NOTE]
 > 此步骤要求合作伙伴中心的 "*所有者*" 或 "*经理*" 角色更新计费信息。
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard)。
+1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
 
 2. 选择 "*设置*" （齿轮）图标，然后选择 "**开发人员设置**"。
 
@@ -77,7 +77,7 @@ ms.locfileid: "80288965"
 
 5. 提供税务 ID/VAT ID 设置（如果适用）。
 
-6. 选择“保存”  以保存更改。
+6. 选择“保存”以保存更改。
 
 你可以随时更新计费配置文件，但不能在以后更改*公司名称*和帐单地址*国家/地区*。
 
@@ -88,7 +88,7 @@ ms.locfileid: "80288965"
 在 Business Applications ISV Connect program 中注册的最后一步是将现有应用程序 recertifying。
 
 1. [请按照以下步骤](https://partner.microsoft.com/solutions/business-applications/isv-publish)将你的应用程序再次验证到 AppSource。
-2. [创建并发布新产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)。 此产品/服务将是全新的产品/服务，不会替换现有产品/服务。
+2. [创建并发布新产品/服务](../partner-center-portal/create-new-customer-engagement-offer.md)。 此产品/服务将是全新的产品/服务，不会替换现有产品/服务。
 
 ## <a name="further-info"></a>详细信息
 

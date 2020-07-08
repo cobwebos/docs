@@ -2,13 +2,13 @@
 title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.date: 06/16/2020
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83790914"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964036"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -27,6 +27,8 @@ Batch 中的所有计算节点还包括：
 - 任务可引用的标准[文件夹结构](files-and-directories.md)和关联的[环境变量](jobs-and-tasks.md)。
 - **防火墙** 设置。
 - [远程访问](error-handling.md#connect-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点。
+
+默认情况下，节点可以彼此通信，但它们无法与不属于同一池的虚拟机进行通信。 若要允许节点与其他虚拟机或本地网络进行安全通信，可以[在 Azure 虚拟网络（VNet）的子网中](batch-virtual-network.md)预配该池。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址是通过 Batch 创建的，并且可能会在池的生存期内更改。 你还可以[创建一个包含你控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
 
 ## <a name="pools"></a>池
 
@@ -78,7 +80,7 @@ Batch 中提供了两种类型的池配置。
 
 ### <a name="node-agent-skus"></a>节点代理 SKU
 
-创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可通过调用[列出支持的节点代理 SKU](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) 操作获得可用节点代理 SKU ID 到其 OS 映像引用的映射。
+创建池时，需要选择适当的 **nodeAgentSkuId**，具体取决于 VHD 基本映像的 OS。 可通过调用[列出支持的节点代理 SKU](/rest/api/batchservice/list-supported-node-agent-skus) 操作获得可用节点代理 SKU ID 到其 OS 映像引用的映射。
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>虚拟机池的自定义映像
 
@@ -127,7 +129,7 @@ Batch 中提供了两种类型的池配置。
 - **资源度量值** 基于 CPU 使用率、带宽使用率、内存使用率和节点的数目。
 - **任务指标**基于任务状态，例如“活动”（已排队）、“正在运行”或“已完成”。  
 
-如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的[节点解除分配选项](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。 请注意，在所有任务都已完成，或者所有任务保留期都已过期之前，将节点解除选项设置为 `taskcompletion` 或 `retaineddata` 会阻止池调整大小操作。
+如果自动缩放会减少池中的计算节点数，则必须考虑如何处理在执行减少操作时运行的任务。 为了满足这一点，Batch 提供可包含在公式中的[节点解除分配选项](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，可以指定运行中的任务立即停止，然后重新排入队列，以便在另一个节点上运行，或允许先完成再从池中删除节点。 请注意，在所有任务都已完成，或者所有任务保留期都已过期之前，将节点解除选项设置为 `taskcompletion` 或 `retaineddata` 会阻止池调整大小操作。
 
 有关自动缩放应用程序的详细信息，请参阅 [自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
 
@@ -162,13 +164,16 @@ Batch 中提供了两种类型的池配置。
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>虚拟网络 (VNet) 和防火墙配置
 
-在 Batch 中预配计算节点池时，可以将池与 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网相关联。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。  
+在 Batch 中预配计算节点池时，可以将池与 Azure [虚拟网络 (VNet)](../virtual-network/virtual-networks-overview.md) 的子网相关联。 若要使用 Azure VNet，Batch 客户端 API 必须使用 Azure Active Directory (AD) 身份验证。 有关 Azure AD 的 Azure Batch 支持，请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。
 
 ### <a name="vnet-requirements"></a>VNet 要求
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 若要详细了解如何在 VNet 中设置 Batch 池，请参阅[通过虚拟网络创建虚拟机池](batch-virtual-network.md)。
+
+> [!TIP]
+> 若要确保用于访问节点的公共 IP 地址不会更改，可以[使用指定的公共 ip 地址来创建池](create-pool-public-ip.md)。
 
 ## <a name="pool-and-compute-node-lifetime"></a>池和计算节点生存期
 
@@ -184,7 +189,7 @@ Batch 中提供了两种类型的池配置。
 
 在加密或解密任务的敏感信息（例如 [Azure 存储帐户](accounts.md#azure-storage-accounts)的密钥）时，通常需要使用证书。 为此，可以在节点上安装证书。 加密的机密通过命令行参数或内嵌在某个任务资源中来传递给任务，已安装的证书可用于解密机密。
 
-可以使用[添加证书](https://docs.microsoft.com/rest/api/batchservice/certificate/add)操作 (Batch REST) 或 [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) 方法 (Batch .NET) 将证书添加到 Batch 帐户。 然后，可以将该证书与新池或现有池相关联。
+可以使用[添加证书](/rest/api/batchservice/certificate/add)操作 (Batch REST) 或 [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) 方法 (Batch .NET) 将证书添加到 Batch 帐户。 然后，可以将该证书与新池或现有池相关联。
 
 将证书与池关联后，Batch 服务将在池中的每个节点上安装该证书。 在启动节点之后、启动任何任务（包括[启动任务](jobs-and-tasks.md#start-task)和[作业管理器任务](jobs-and-tasks.md#job-manager-task)）之前，Batch 服务将安装相应的证书。
 

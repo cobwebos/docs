@@ -3,12 +3,12 @@ title: 在 Batch 中使用计算密集型 Azure VM
 description: 如何在 Azure Batch 池中利用 HPC 和 GPU 虚拟机大小 了解 OS 依赖关系并查看几个方案示例。
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 7abe3c9bd689b20f608ad40105c1bb4d7108dbc6
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.openlocfilehash: acc56679d8be157541b0d7c056e57659584645be
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779744"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962503"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 池中使用 RDMA 或 GPU 实例
 
@@ -127,7 +127,7 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>示例：Windows H16r VM 池上的 Microsoft MPI
 
-要在 Azure H16r VM 节点的池上运行 Windows MPI 应用程序，需要配置 HpcVmDrivers 扩展并安装 [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi)。 以下是使用必要的驱动程序和软件部署自定义 Windows Server 2016 映像的示例步骤：
+要在 Azure H16r VM 节点的池上运行 Windows MPI 应用程序，需要配置 HpcVmDrivers 扩展并安装 [Microsoft MPI](/message-passing-interface/microsoft-mpi)。 以下是使用必要的驱动程序和软件部署自定义 Windows Server 2016 映像的示例步骤：
 
 1. 部署运行 Windows Server 2016 的 Azure H16r VM。 例如，在美国西部区域创建 VM。 
 2. 通过从连接到 Azure 订阅的客户端计算机[运行 Azure PowerShell 命令](../virtual-machines/sizes-hpc.md)或使用 Azure Cloud Shell，将 HpcVmDrivers 扩展添加到 VM。 
@@ -163,6 +163,6 @@ Batch 中计算密集型大小的 RDMA 或 GPU 功能仅在某些操作系统中
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要在 Azure Batch 池上运行 MPI 作业，请参阅 [Windows](batch-mpi.md) 或 [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) 示例。
+* 若要在 Azure Batch 池上运行 MPI 作业，请参阅 [Windows](batch-mpi.md) 或 [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) 示例。
 
 * 有关 Batch 上的 GPU 工作负荷示例，请参阅 [Batch Shipyard](https://github.com/Azure/batch-shipyard/) 配方。

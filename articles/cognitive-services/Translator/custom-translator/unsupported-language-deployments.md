@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996357"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964679"
 ---
 # <a name="unsupported-language-deployments"></a>不支持的语言部署
 
@@ -32,7 +32,7 @@ ms.locfileid: "83996357"
 * 迁移发生时，模型必须处于 "已部署" 状态。  
 * 模型的语言对必须是自定义转换器中不支持的语言对。  一种语言对，其中一种语言支持英语，但它本身不包含英语，这是不受支持的语言部署的候选项。  例如，法语到德语语言对的集线器模型被视为不受支持的语言对，即使法语到英语和英语到德语也是受支持的语言对。
 
-## <a name="process"></a>进程
+## <a name="process"></a>过程
 在迁移适用于部署的中心的模型后，可以转到工作区的 "**设置**" 页，滚动到页面末尾，其中显示了**不受支持的翻译人员中心培训**部分。  仅当你的项目满足上述先决条件时才会显示此部分。
 
 ![如何从 Hub 迁移](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
@@ -45,9 +45,9 @@ ms.locfileid: "83996357"
 
 ![如何从 Hub 迁移](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
-## <a name="whats-next"></a>下一步是什么？
+## <a name="whats-next"></a>后续步骤
 
-在停止集线器并取消部署所有模型后，将保存选择用于部署的模型。  在5月24日前提交请求以部署不受支持的模型。  我们将于6月15日部署这些模型，此时可通过转换器 V3 API 访问这些模型。  此外，在7月1日前，它们将通过 V2 API 提供。  
+在停止集线器并取消部署所有模型后，将保存选择用于部署的模型。  在5月24日前提交请求以部署不受支持的模型。  我们将于6月15日部署这些模型，此时可通过转换器 V3 进行访问。  此外，在7月1日前，它们将通过转换器 V2 获得。  
 
 若要深入了解在 "中心" 中弃用的重要日期，请在[此处](https://www.microsoft.com/translator/business/hub/)查看。
 部署完成后，将应用正常的托管费用。  有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)。  

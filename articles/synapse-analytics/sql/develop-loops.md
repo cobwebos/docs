@@ -6,18 +6,18 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429949"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964985"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 循环
+# <a name="use-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 循环
 本文提供了有关在 Synapse SQL 中使用 T-sql 循环、替换游标和开发相关解决方案的重要提示。
 
 ## <a name="purpose-of-while-loops"></a>WHILE 循环的用途
@@ -28,9 +28,9 @@ SQL 池中的循环用于替换 SQL 代码中定义的游标。 幸运的是，�
 
 ## <a name="replacing-cursors-in-sql-pool"></a>替换 SQL 池中的游标
 
-在开始使用之前，应考虑以下问题： "此游标是否可重写以使用基于集的操作？" 在许多情况下，答案是肯定的，通常是最佳方法。 基于集的操作的执行速度通常比迭代的逐行方法要快。
+在开始使用之前，应考虑以下问题： "此游标是否可重写以使用基于集的操作？" 在许多情况下，答案是肯定的，通常这也是最佳方法。 基于集的操作的执行速度通常比迭代的逐行方法要快。
 
-可以轻松地使用循环构造来替换快进只读游标。 下面的代码是一个简单的示例。 此代码示例将更新数据库中每个表的统计信息。 通过迭代循环中的表，每个命令将依次执行。
+可以轻松地使用循环构造来替换快进只读游标。 下面的代码是一个简单的示例。 此代码示例更新数据库中每个表的统计信息。 通过迭代循环中的表，每个命令将依次执行。
 
 首先，创建一个临时表，其中包含用于标识各个语句的唯一行号：
 
@@ -74,4 +74,4 @@ DROP TABLE #tbl;
 
 ## <a name="next-steps"></a>后续步骤
 
-有关更多开发技巧，请参阅[开发概述](develop-overview.md)。
+有关更多开发技巧，请参阅 [开发概述](develop-overview.md)。

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 50bff8e55d1b125f56696ac485bc1e05193dea55
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992940"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962945"
 ---
 # <a name="how-to-manage-settings"></a>如何管理设置
 
@@ -27,7 +27,7 @@ ms.locfileid: "83992940"
 
     ![“设置”链接](media/how-to/how-to-settings.png)
 
-## <a name="associating-microsoft-translator-subscription"></a>关联 Microsoft Translator 订阅
+## <a name="associating-translator-subscription"></a>关联转换器订阅
 
 需要有与工作区关联的转换器订阅密钥来定型或部署模型。
 
