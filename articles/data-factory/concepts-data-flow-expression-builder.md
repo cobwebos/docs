@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/20/2020
+ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605382"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126155"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>映射数据流中的生成表达式
 
@@ -76,24 +76,20 @@ Azure 数据工厂用户体验中的表达式编辑接口称为 "表达式生成
 
 使用单行和多行注释语法向表达式添加注释。
 
-![单行和多行注释语法](media/data-flow/comments.png "说明")
-
 下面的示例是有效的注释：
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 如果在表达式的顶部放置注释，则该注释将显示在 "转换" 文本框中以记录转换表达式。
 
-!["转换" 文本框中的注释](media/data-flow/comments2.png "说明")
+!["转换" 文本框中的注释](media/data-flow/comments2.png "注释")
 
 ## <a name="regular-expressions"></a>正则表达式
 
-许多表达式语言函数使用正则表达式语法。 使用正则表达式函数时，表达式生成器会尝试将反斜杠（\\）解释为转义字符序列。 如果在正则表达式中使用反斜杠，请将整个正则表达式括\`在反撇号（）中，或使用双反斜杠。
+许多表达式语言函数使用正则表达式语法。 使用正则表达式函数时，表达式生成器会尝试将反斜杠（ \\ ）解释为转义字符序列。 如果在正则表达式中使用反斜杠，请将整个正则表达式括在反撇号（）中， \` 或使用双反斜杠。
 
 使用反撇号的示例：
 
@@ -124,15 +120,19 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ## <a name="convert-to-dates-or-timestamps"></a>转换为日期或时间戳
 
-若要在时间戳输出中包含字符串文本，请在```toString()```中包装转换。
+若要在时间戳输出中包含字符串文本，请在中包装转换 ```toString()``` 。
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-若要将毫秒数从 epoch 转换为日期或时间`toTimestamp(<number of milliseconds>)`戳，请使用。 如果时间以秒为单位，乘以1000。
+若要将毫秒数从 epoch 转换为日期或时间戳，请使用 `toTimestamp(<number of milliseconds>)` 。 如果时间以秒为单位，乘以1000。
 
 ```toTimestamp(1574127407*1000l)```
 
 前面表达式末尾的尾部 "l" 表示转换为 long 类型作为内联语法。
+
+## <a name="find-time-from-epoch-or-unix-time"></a>查找来自 epoch 或 Unix 时间的时间
+
+toLong （currentTimestamp （）-toTimestamp （' 1970-01-01 00：00： 00.000 '，' yyyy-mm-dd HH： MM： ss。SSS '）） * 1000l
 
 ## <a name="next-steps"></a>后续步骤
 

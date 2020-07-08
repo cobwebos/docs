@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: fd5617af2da9aa00cb75deb82f83be29db78d79d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.custom: references_regions
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873507"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981959"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>应用程序网关常见问题
 
@@ -72,7 +73,13 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 “保持活动状态超时”控制应用程序网关在重新使用或关闭持久连接之前等待客户端在持久连接上发送其他 HTTP 请求的时间长度。 “TCP 空闲超时”控制在没有活动的情况下 TCP 连接保持打开状态的时间。 
 
-在应用程序网关 v1 SKU 中，“保持活动状态超时”为 120 秒，在 v2 SKU 中为 75 秒。 在应用程序网关 v1 和 v2 SKU 的前端虚拟 IP (VIP) 上，“TCP 空闲超时”默认值为 4 分钟。 你不能更改这些值。
+在应用程序网关 v1 SKU 中，“保持活动状态超时”为 120 秒，在 v2 SKU 中为 75 秒。 在应用程序网关 v1 和 v2 SKU 的前端虚拟 IP (VIP) 上，“TCP 空闲超时”默认值为 4 分钟。 可以在4分钟到30分钟之间的任何位置配置 v1 和 v2 应用程序网关上的 TCP 空闲超时值。 对于 v1 和 v2 应用程序网关，需要导航到应用程序网关的公共 IP，并更改门户上公共 IP 的 "配置" 边栏选项卡下的 TCP 空闲超时。 可以通过运行以下命令，通过 PowerShell 设置公共 IP 的 TCP 空闲超时值： 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>在应用程序网关的生存期内，其 IP 或 DNS 名称是否会更改？
 
@@ -112,7 +119,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>是否可以使用 Exchange Server 作为应用程序网关的后端？
 
-不是。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。
+不能。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否提供了从 v1 SKU 迁移到 v2 SKU 的指南？
 
@@ -124,7 +131,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器 (ADC)�
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>应用程序网关 V2 是否支持通过 NTLM 身份验证代理请求？
 
-不是。 应用程序网关 V2 尚不支持通过 NTLM 身份验证代理请求。
+否。 应用程序网关 V2 尚不支持通过 NTLM 身份验证代理请求。
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 Cookie 是否支持 SameSite 属性？
 是的，[Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP Cookie 的强制要求，不会将 SameSite 属性视为 SameSite = Lax。 这意味着，浏览器不会将应用程序网关关联 Cookie 发送到第三方上下文中。 
@@ -149,7 +156,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手动或自动缩放或纵向缩减是否会导致停机？
 
-不是。 实例将跨升级域和容错域分布。
+不能。 实例将跨升级域和容错域分布。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
@@ -203,7 +210,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自定义探测是否支持对响应数据使用通配符或正则表达式？
 
-不是。 
+不能。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>如何在应用程序网关上处理路由规则？
 
@@ -211,7 +218,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="for-custom-probes-what-does-the-host-field-signify"></a>对于自定义探测，“主机”字段指的是什么意思？
 
-“主机”字段指定在应用程序网关上配置了多站点时将探测发送到的名称。 否则使用“127.0.0.1”。 此值与虚拟机主机名不同。 其格式为 \<协议\>://\<主机\>:\<端口\>\<路径\>。
+“主机”字段指定在应用程序网关上配置了多站点时将探测发送到的名称。 否则使用“127.0.0.1”。 此值与虚拟机主机名不同。 其格式为 \<protocol\> ：// \<host\> ： \<port\> \<path\> 。
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>是否可以允许应用程序网关仅访问几个源 IP 地址？
 
@@ -219,7 +226,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>能否对面向公共和面向私人的侦听器使用相同的端口？
 
-不是。
+否。
 
 ### <a name="does-application-gateway-support-ipv6"></a>应用程序网关是否支持 IPv6？
 
@@ -337,11 +344,31 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内部公开一组 pod。 为了向外公开同一服务，定义了一个 [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) 资源，该资源提供负载均衡、TLS 终止和基于名称的虚拟承载。
 为了满足此 `Ingress` 资源，需要一个入口控制器来侦听对 `Ingress` 资源进行的任何更改并配置负载均衡器策略。
 
-应用程序网关入口控制器允许 [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)用作 [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service/)（也称为 AKS 群集）的入口。
+应用程序网关入口控制器（AGIC）允许[Azure 应用程序的网关](https://azure.microsoft.com/services/application-gateway/)用作[Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service/)（也称为 AKS 群集）的入口。
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>单个入口控制器实例是否可以管理多个应用程序网关？
 
 目前，一个入口控制器实例只能关联到一个应用程序网关。
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>为什么 AKS 群集的 kubenet 不能与 AGIC 一起使用？
+
+AGIC 尝试自动将路由表资源关联到应用程序网关子网，但由于缺少 AGIC 的权限，因此可能无法执行此操作。 如果 AGIC 无法将路由表关联到应用程序网关子网，则 AGIC 日志中会出现一个错误，指出这样，在这种情况下，你必须手动将 AKS 群集创建的路由表关联到应用程序网关的子网。 有关详细信息，请参阅[此处](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)的说明。
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>是否可以将我的 AKS 群集和应用程序网关连接到不同的虚拟网络中？ 
+
+可以，但前提是虚拟网络是对等互连的，它们没有重叠的地址空间。 如果正在使用 kubenet 运行 AKS，请确保将 AKS 生成的路由表关联到应用程序网关子网。 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>AGIC 外接程序不支持哪些功能？ 
+
+请参阅[此处](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)的通过 Helm 部署的 AGIC 与部署为 AKS 外接程序之间的差异
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>何时应使用外接程序与 Helm 部署？ 
+
+请参阅[此处](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)的 "通过 Helm 部署的 AGIC 之间的差异" 和 "部署为 AKS 外接程序"，尤其是记录通过 Helm 部署的 AGIC （而不是 AKS 外接程序）所支持的方案的表。 一般情况下，通过 Helm 进行部署后，你可以在正式发布之前测试 beta 功能和候选发布版本。 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>能否控制将与外接程序一起部署哪个版本的 AGIC？
+
+不，AGIC 外接程序是一种托管服务，这意味着 Microsoft 会自动将该外接程序更新到最新的稳定版本。 
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 
@@ -411,8 +438,6 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 仅适用于专用 IP 的访问的 NSG 配置示例：![仅适用于专用 IP 访问的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 
-### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 Cookie 是否支持 SameSite 属性？
-是的，[Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP Cookie 的强制要求，不会将 SameSite 属性视为 SameSite = Lax。 这意味着，浏览器不会将应用程序网关关联 Cookie 发送到第三方上下文中。 为了支持此方案，除了现有的“ApplicationGatewayAffinity”Cookie 外，应用程序网关还会注入另一个名为“ApplicationGatewayAffinityCORS”的 Cookie。  这些 Cookie 类似，但“ApplicationGatewayAffinityCORS”Cookie 中添加了两个附加的属性：SameSite=None; Secure。 即使对于跨域请求，这些属性也会保留粘滞会话。 有关详细信息，请参阅[基于 Cookie 的关联部分](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>后续步骤
 

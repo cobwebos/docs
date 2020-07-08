@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73479665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981942"
 ---
 # <a name="text-split-cognitive-skill"></a>文本拆分认知技能
 
@@ -31,23 +31,23 @@ Microsoft.Skills.Text.SplitSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| textSplitMode      | “pages”或“sentences” | 
-| maximumPageLength | 如果将 textSplitMode 设置为“pages”，它指的是由 `String.Length` 测量的最大页面长度。 最小值是 100。  如果 textSplitMode 设置为“pages”，则该算法将尝试将文本拆分为大小最多为“maximumPageLength”的区块。 在这种情况下，该算法将尽力断开句子边界上的句子，因此区块的大小可能略小于“maximumPageLength”。 | 
-| defaultLanguageCode   | （可选）以下语言代码之一：`da, de, en, es, fi, fr, it, ko, pt` 默认为英语 (en)。 注意事项：<ul><li>如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。</li><li>如果语言不在上述列表中，拆分技能会在字符边界分解文本。</li><li>提供语言代码有助于避免将非空格的语言（例如，中文、日语和韩语）的单词一分为二。</li><li>如果你不知道语言（例如，需要将输入的文本拆分为 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则默认的英语 (en) 应该已足够。 </li></ul>  |
+| `textSplitMode`    | “pages”或“sentences” | 
+| `maximumPageLength` | 如果将 textSplitMode 设置为“pages”，它指的是由 `String.Length` 测量的最大页面长度。 最小值为300。  如果 textSplitMode 设置为“pages”，则该算法将尝试将文本拆分为大小最多为“maximumPageLength”的区块。 在这种情况下，该算法将尽力断开句子边界上的句子，因此区块的大小可能略小于“maximumPageLength”。 | 
+| `defaultLanguageCode` | （可选）以下语言代码之一：`da, de, en, es, fi, fr, it, ko, pt` 默认为英语 (en)。 注意事项：<ul><li>如果你传递的是 languagecode-countrycode 格式，只会使用格式的 languagecode 部分。</li><li>如果语言不在上述列表中，拆分技能会在字符边界分解文本。</li><li>提供语言代码有助于避免在非空白语言（例如中文、日语和朝鲜语）的情况下将单词减少一半。</li><li>如果你不知道语言（例如，需要将输入的文本拆分为[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则默认的英语（en）应该已足够。 </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
 | 参数名称       | 说明      |
 |----------------------|------------------|
-| text  | 要拆分为子字符串的文本。 |
-| languageCode  | （可选）文档的语言代码。 如果你不知道语言（例如，需要将输入的文本拆分为 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则可以放心地删除此输入。  |
+| `text`    | 要拆分为子字符串的文本。 |
+| `languageCode`    | （可选）文档的语言代码。 如果你不知道语言（例如，需要将输入的文本拆分为[LanguageDetectionSkill](cognitive-search-skill-language-detection.md)），则可以安全地删除此输入。  |
 
 ## <a name="skill-outputs"></a>技能输出 
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| textItems | 提取的子字符串数组。 |
+| `textItems`   | 提取的子字符串数组。 |
 
 
 ##  <a name="sample-definition"></a>示例定义

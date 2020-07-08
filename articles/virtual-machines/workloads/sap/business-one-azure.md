@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101415"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193492"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
 本文档提供在 Azure 虚拟机上部署 SAP Business One 的指南。 本文档不能替代 SAP Business One 的安装文档。 本文档涵盖运行 Business One 应用程序所在的 Azure 基础结构的基本规划和部署指南。
@@ -67,17 +67,17 @@ Business One 是一个具有两层的应用程序：
 - 具有“fat”客户端的客户端层
 - 包含租户数据库架构的数据库层
 
-[SAP Business One 管理员指南](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf)中更详尽地概述了哪些组件在客户端部分运行，哪些部分在服务器部分运行 
+[SAP Business One 管理员指南](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf)中更详尽地概述了哪些组件在客户端部分运行，哪些部分在服务器部分运行 
 
 由于客户端层和 DBMS 层之间存在严重的延迟关键交互，因此在 Azure 中部署时，这两个层都需要位于 Azure 中。 通常，用户随后将通过 RDS 进入为 Business One 客户端组件运行 RDS 服务的一个或多个 VM。
 
 ### <a name="sizing-vms-for-sap-business-one"></a>为 SAP Business One 调整 VM 大小
 
-有关客户端 VM 的大小调整，资源要求由 SAP 记录在文档 [SAP Business One 硬件要求指南](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)中。 对于 Azure，需要关注文档第 2.4 章中所述的要求并按照这些要求计算。
+有关客户端 VM 的大小调整，资源要求由 SAP 记录在文档 [SAP Business One 硬件要求指南](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)中。 对于 Azure，需要关注文档第 2.4 章中所述的要求并按照这些要求计算。
 
 作为用于托管 Business One 客户端组件和 DBMS 主机的 Azure 虚拟机，只允许使用支持 SAP NetWeaver 的 VM。 若要查找支持 SAP NetWeaver 的 Azure VM 列表，请阅读 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。
 
-若将 SAP HANA 作为 Business One 的 DBMS 后端运行，则 HANA 仅支持在 [HANA 认证的 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One)中针对 HANA 上的 Business 列出的 VM。 Business One 客户端组件不受 SAP HANA 作为 DBMS 系统的这一更强限制的影响。
+作为 DBMS 后端的运行 SAP HANA 作为业务单一的 DBMS 后端，hana 仅支持在 hana 已[认证 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One)中的 hana 上为 business 列出的 vm。 Business One 客户端组件不受 SAP HANA 作为 DBMS 系统的这一更强限制的影响。
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>用于 SAP Business One 的操作系统版本
 
@@ -107,7 +107,7 @@ Business One 是一个具有两层的应用程序：
 对于用户通过 Internet 连接而没有任何专用连接进入 Azure 的情况，Azure 中的网络设计应符合 Azure 参考体系结构中记录的 [Azure 和 Internet 之间的 DMZ](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz) 原则。
 
 ### <a name="business-one-database-server"></a>Business One 数据库服务器
-对于数据库类型，可以使用 SQL Server 和 SAP HANA。 除了解 DBMS 外，应阅读[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)文档，大致了解 Azure VM 中的 DBMS 部署以及相关的网络和存储主题。
+对于数据库类型，可以使用 SQL Server 和 SAP HANA。 与 DBMS 无关，你应该阅读[有关 SAP 工作负荷的 Azure 虚拟机 DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)的文档注意事项，以大致了解 azure vm 中的 dbms 部署以及相关的网络和存储主题。
 
 已在特定和通用的数据库文档中强调过，你需要熟悉：
 
@@ -136,7 +136,7 @@ SQL Server 的 DBMS 端的粗略大小估算值为：
 | 最多 80 个 | 16 | 64 GB | D16s_v3、E16s_v3 |
 | 最多 150 个 | 32 | 128 GB | D32s_v3、E32s_v3 |
 
-通过上面列出的大小，你应该对从何处开始有了一些概念。 你可能需要更少或更多的资源，取决于在哪种情况下可在 Azure 上轻松进行调整。 只需重启 VM，便可在 VM 类型之间进行更改。
+通过上面列出的大小，你应该对从何处开始有了一些概念。 可能需要更少或更多的资源，在这种情况下，Azure 上的原声很简单。 只需重启 VM，便可在 VM 类型之间进行更改。
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA 作为 DBMS
 若将 SAP HANA 用作 DBMS，则应该在以下各节遵循文档 [Azure 上的 SAP HANA 操作指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)中的注意事项。

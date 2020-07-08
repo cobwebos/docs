@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d848b92da5d4181832adff8499b3531d020c30c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78155502"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112088"
 ---
 临时 OS 磁盘在本地虚拟机 (VM) 存储中创建，不保存到远程 Azure 存储。 临时 OS 磁盘适用于无状态工作负荷，在此类工作负荷中，应用程序可以容忍单个 VM 故障，但受 VM 部署时间或单个 VM 实例的映像重置的影响更大。 使用临时 OS 磁盘时，通过 OS 磁盘进行读取/写入的延迟更低，VM 重置映像速度会更快。 
  
@@ -47,6 +47,9 @@ ms.locfileid: "78155502"
 部署 VM 和实例的映像时，其大小上限取决于 VM 缓存的大小。 例如，市场中的标准 Windows Server 映像大约为 127 GiB，这意味着所需 VM 大小的缓存大于 127 GiB。 在此示例中，[Standard_DS2_v2](~/articles/virtual-machines/dv2-dsv2-series.md) 的缓存大小为 86 GiB，不够大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 在此示例中，Standard_DS3_v2 是 DSv2 系列中能够用于此映像的最小大小。 市场中的基本 Linux 映像以及 `[smallsize]` 所表示的 Windows Server 映像通常为大约 30 GiB，可以使用大多数可用的 VM 大小。
 
 临时磁盘还要求 VM 大小支持高级存储。 大小通常（但并非总是）在名称中包含 `s`，例如 DSv2 和 EsV3。 有关详细信息，请参阅 [Azure VM 大小](../articles/virtual-machines/linux/sizes.md)，其中详述了哪些大小支持高级存储。
+
+## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>预览-暂时的 OS 磁盘现在可以存储在临时磁盘上
+暂时的 OS 磁盘除了 VM 缓存外，还可以存储在 VM temp/资源磁盘上。 因此，现在你可以使用不具有缓存或缓存不足的虚拟机磁盘，但具有用于存储临时 OS 磁盘的临时/资源磁盘，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 具有足够的缓存和临时空间，你现在还可以使用名为[DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement)的新属性指定要存储临时 OS 磁盘的位置。 此功能目前以预览版提供。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 若要开始，请[请求访问](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -82,13 +85,13 @@ az vm create \
 
 ## <a name="portal"></a>门户   
 
-在 Azure 门户中，可以选择在部署 VM 时使用临时磁盘，方法是：打开“磁盘”选项卡的“高级”部分。   对于“使用临时 OS 磁盘”选项，请选择“是”。  
+在 Azure 门户中，通过打开 "**磁盘**" 选项卡的 "**高级**" 部分，可以选择在部署 VM 时使用临时磁盘。对于 "**使用临时 OS 磁盘**"，请选择 **"是"**。
 
 ![显示单选按钮的屏幕截图，该按钮选中后即可使用临时 OS 磁盘](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
-如果使用临时磁盘的选项灰显，则可能是因为选择的 VM 大小没有大于 OS 映像的缓存大小，或者不支持高级存储。 返回到“基本信息”页，尝试选择另一 VM 大小。 
+如果使用临时磁盘的选项灰显，则可能是因为选择的 VM 大小没有大于 OS 映像的缓存大小，或者不支持高级存储。 返回到“基本信息”页，尝试选择另一 VM 大小。****
 
-也可通过门户创建使用临时 OS 磁盘的规模集。 只需确保所选 VM 大小具有足够大的缓存大小，然后在“使用临时 OS 磁盘”中选择“是”即可。  
+也可通过门户创建使用临时 OS 磁盘的规模集。 只需确保所选 VM 大小具有足够大的缓存大小，然后在“使用临时 OS 磁盘”中选择“是”即可。********
 
 ![显示单选按钮的屏幕截图，该按钮选中后即可使用规模集的临时 OS 磁盘](./media/virtual-machines-common-ephemeral/scale-set.png)
 
@@ -186,35 +189,52 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **问：本地 OS 磁盘的大小是多少？**
 
-A:我们支持的平台和自定义映像的大小上限取决于 VM 缓存大小，其中的 OS 磁盘的所有读取/写入操作都将在本地进行，使用与虚拟机相同的节点。 
+答：我们支持平台和自定义映像，最高可达 VM 缓存大小，在这种情况下，操作系统磁盘的所有读/写将在虚拟机所在的同一节点上都是本地的。 
 
-**问：可以重设临时 OS 磁盘的大小吗？**
+**问：是否可以调整临时 OS 磁盘的大小？**
 
-A:不可以。预配临时 OS 磁盘以后，就不能重设其大小。 
+答：不能，一旦预配了临时 OS 磁盘，操作系统磁盘就无法调整大小。 
 
 **问：是否可以将托管磁盘附加到临时 VM？**
 
-A:是的，可以将托管数据磁盘附加到使用临时 OS 磁盘的 VM。 
+答：是的，你可以将托管数据磁盘附加到使用临时 OS 磁盘的虚拟机。 
 
-**问：临时 OS 磁盘是否支持所有 VM 大小？**
+**问：是否支持临时 OS 磁盘的所有 VM 大小？**
 
-答：不可以，除了 B 系列、N 系列和 H 系列大小以外，所有高级存储 VM 大小均受支持（DS、ES、FS、GS 和 M）。  
+答：不可以，支持大多数高级存储 VM 大小（DS、ES、FS、GS、M 等）。 若要了解特定 VM 大小是否支持临时 OS 磁盘，可以：
+
+调用 `Get-AzComputeResourceSku` PowerShell cmdlet
+```azurepowershell-interactive
  
-**问：是否可以对现有的 VM 和规模集应用临时 OS 磁盘？**
+$vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
 
-A:否。只能在 VM 和规模集创建期间使用临时 OS 磁盘。 
+foreach($vmSize in $vmSizes)
+{
+   foreach($capability in $vmSize.capabilities)
+   {
+       if($capability.Name -eq 'EphemeralOSDiskSupported' -and $capability.Value -eq 'true')
+       {
+           $vmSize
+       }
+   }
+}
+```
+ 
+**问：是否可以将临时 OS 磁盘应用于现有 Vm 和规模集？**
 
-**问：是否可以在规模集中混合使用临时 OS 磁盘和常规 OS 磁盘？**
+答：不能，只能在创建 VM 和规模集期间使用临时 OS 磁盘。 
 
-A:否。不能在同一规模集中混合使用临时 OS 磁盘实例和持久 OS 磁盘实例。 
+**问：是否可以在规模集中混合使用暂时和普通 OS 磁盘？**
 
-**问：是否可以通过 Powershell 或 CLI 创建临时 OS 磁盘？**
+答：不能，同一规模集内不能混合使用暂时和永久性的 OS 磁盘实例。 
 
-A:是的，可以通过 REST、模板、PowerShell 或 CLI 创建使用临时 OS 磁盘的 VM。
+**问：是否可以使用 Powershell 或 CLI 创建临时 OS 磁盘？**
+
+答：是的，可以使用 REST、模板、PowerShell 和 CLI 创建具有临时 OS 磁盘的虚拟机。
 
 **问：临时 OS 磁盘不支持哪些功能？**
 
-A:临时磁盘不支持：
+答：临时磁盘不支持：
 - 捕获 VM 映像
 - 磁盘快照 
 - Azure 磁盘加密 

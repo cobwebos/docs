@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42421f745759d9aee75b285c3fbc6ea7217ba5c0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152578"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85112695"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>规划和管理 Azure Cosmos DB 的成本
 
@@ -30,7 +30,7 @@ ms.locfileid: "77152578"
 
 以下屏幕截图显示了使用容量计算器的吞吐量和成本估计：
 
-![Azure Cosmos DB 容量计算器中的成本估算](./media/plan-manage-costs/capacity-calculator-cost-estimate.png)
+:::image type="content" source="./media/plan-manage-costs/capacity-calculator-cost-estimate.png" alt-text="Azure Cosmos DB 容量计算器中的成本估算":::
 
 ## <a name="review-estimated-costs-from-the-azure-portal"></a>查看 Azure 门户的预估成本
 
@@ -41,7 +41,7 @@ ms.locfileid: "77152578"
 1. 创建新的容器，如图形容器。
 1. 输入工作负载所需的吞吐量，例如 400 RU/秒。 输入吞吐量值后，可以看到价格估算，如以下屏幕截图所示：
 
-   ![Azure 门户中的成本估算](./media/plan-manage-costs/cost-estimate-portal.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure 门户中的成本估算":::
 
 如果你的 Azure 订阅有支出限制，Azure 将阻止你支出支出。 创建和使用 Azure 资源时，将使用信用额度。 达到信用额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改信用额度，但可以将其删除。 有关支出限制的详细信息，请参阅[Azure 支出限制](../billing/billing-spending-limit.md)。
 
@@ -53,9 +53,9 @@ ms.locfileid: "77152578"
 
 在 Azure Cosmos DB 中使用资源时，会产生成本。 资源使用情况单位成本因时间间隔（秒、分钟、小时和天）或请求单位使用情况而异。 一旦开始使用 Azure Cosmos DB，就会产生成本，你可以在 Azure 门户的 "[成本分析](../cost-management/quick-acm-cost-analysis.md)" 窗格中看到它们。
 
-使用成本分析时，可以在关系图和表中查看不同时间间隔的 Azure Cosmos DB 成本。 一些示例如下：日、当前、上个月和年。 你还可以查看预算和预测成本的成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势并了解超支可能发生的位置。 如果您已经创建了预算，还可以轻松地查看他们超出的位置。查看成本分析中的 Azure Cosmos DB 成本：
+使用成本分析时，可以在关系图和表中查看不同时间间隔的 Azure Cosmos DB 成本。 一些示例如下：日、当前、上个月和年。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势并了解超支可能发生的位置。 如果您已经创建了预算，还可以轻松地查看他们超出的位置。查看成本分析中的 Azure Cosmos DB 成本：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 打开 "**成本管理 + 计费**" 窗口，从菜单中选择 "**成本管理**"，然后选择 "**成本分析**"。 然后，可以从 "**作用域**" 下拉列表中更改特定订阅的作用域。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77152578"
 
 1. 若要降低单个服务（如 Azure Cosmos DB）的成本，请选择 "**添加筛选器**"，然后选择 "**服务名称**"。 然后从列表中选择 " **Azure Cosmos DB** "。 下面是一个示例，显示只是 Azure Cosmos DB 的成本：
  
-   ![通过成本分析窗格监视成本](./media/plan-manage-costs/cost-analysis-pane.png)
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="通过成本分析窗格监视成本":::
 
 在前面的示例中，你将看到2月 Azure Cosmos DB 的当前成本。此图表还包含按位置和按资源组 Azure Cosmos DB 成本。
 

@@ -7,28 +7,28 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 95b9a9804fe1a9473d226912f178284f701a1547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f02c07932c6a058ba4fa27289640b7efd56169
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72753234"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113664"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB 的区域可用性
 
 Azure Cosmos DB 是 Azure 中的一项基础服务，默认情况下，在所有提供 Azure 的区域均可使用。 目前，Azure 在全球的 [54 个地区](https://azure.microsoft.com/global-infrastructure/regions/)提供。 
 
-[![Azure Cosmos DB 可用的区域](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
+:::image type="content" source="./media/regional-presence/regional-presence.png" alt-text="Azure Cosmos DB 可用的区域" lightbox="./media/regional-presence/regional-presence.png" border="false":::
 
 Cosmos DB 在提供给客户的所有五种不同的 Azure 云环境中均可使用：
 
-* Azure 公有云，全球通用****。
+* Azure 公有云，全球通用。
 
 * **Azure 中国世纪互联**是通过 Microsoft 和世纪互联，其中一个全国最大的 internet 供应商（中国）之一提供的。
 
-* Azure 德国以数据受托人模式提供服务，这可确保客户数据仍保留在德国，由 Deutsche Telecom 的子公司 T-Systems International GmbH 充当德国数据受托人，对这些数据进行管控****。
+* Azure 德国以数据受托人模式提供服务，这可确保客户数据仍保留在德国，由 Deutsche Telecom 的子公司 T-Systems International GmbH 充当德国数据受托人，对这些数据进行管控。
 
-* Azure 政府在美国的四个区域向美国政府机构及其合作伙伴提供服务****。 
+* Azure 政府在美国的四个区域向美国政府机构及其合作伙伴提供服务。 
 
 * 适用于美国国防部的**Azure 政府版（DoD）** 在美国国防部的美国的两个区域中提供。
 

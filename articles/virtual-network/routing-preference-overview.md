@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83595546"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193356"
 ---
 # <a name="what-is-routing-preference-preview"></a>什么是路由首选项（预览版）？
 
@@ -88,7 +88,7 @@ Azure 路由首选项允许你选择流量在 Azure 和 Internet 之间的路由
 
 针对虚拟机和面向 Internet 的负载均衡器等服务（这些服务使用公共 IP 来实现 Internet 出口）的路由首选项支持在以下区域提供：北欧、西欧、法国南部、英国南部、美国东部、美国中北部、美国中南部、美国西部、美国中西部、东南亚、德国中西部、瑞士西部、日本东部和日本西部。
 
-针对存储帐户的路由首选项支持在以下 Azure 区域提供：法国南部、美国中北部和美国中西部。
+适用于存储帐户的路由首选项支持在以下 Azure 区域中提供：法国南部、美国中北部、美国西部、日本东部、日本西部、德国中西部和瑞士西部。
 ## <a name="limitations"></a>限制
 
 * 路由首选项仅与公共 IP 地址的标准 SKU 兼容。 不支持公共 IP 地址的基本 SKU。

@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0b37f9be5eb3313cc451e65f90d7f2713c68806d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845978"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119263"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>针对 Azure Cosmos DB 的高级威胁防护（预览版）
 
@@ -48,7 +48,7 @@ ms.locfileid: "83845978"
 
 2. 从 Azure Cosmos DB 帐户的“设置”菜单中，选择“高级安全”。
 
-    ![设置 ATP](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp.png" alt-text="设置 ATP":::
 
 3. 在“高级安全”配置边栏选项卡中：
 
@@ -81,16 +81,16 @@ ms.locfileid: "83845978"
 
 1. 启动“Azure Policy - 定义”页面，然后搜索“部署针对 Cosmos DB 的高级威胁防护”策略。
 
-    ![搜索策略](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="搜索策略"::: 
 
 1. 单击“部署针对 CosmosDB 的高级威胁防护”策略，然后单击“分配”。
 
-    ![选择订阅或组](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="选择订阅或组":::
 
 
 1. 在“范围”字段中，单击三个点，选择 Azure 订阅或资源组，然后单击“选择”。
 
-    ![策略定义页](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="策略定义页":::
 
 
 1. 输入其他参数，然后单击“分配”。
@@ -104,11 +104,11 @@ ms.locfileid: "83845978"
 
  可从 Azure 安全中心查看和管理当前[安全警报](../security-center/security-center-alerts-overview.md)。  单击[安全中心](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0)内的特定警报以查看可能的原因以及用于调查和缓解潜在威胁的建议操作。 下图显示了安全中心提供的警报详细信息的示例。
 
- ![威胁详细信息](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png)
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="威胁详细信息":::
 
 电子邮件通知还会随警报详细信息和建议的操作一起发送。 下图显示了警报电子邮件的示例。
 
- ![警报详细信息](./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png)
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="警报详细信息":::
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警报
 

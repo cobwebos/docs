@@ -4,15 +4,16 @@ description: 本文介绍如何在 Azure Synapse 工作区中配置托管标识�
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
+ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193458"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限（预览）
 
@@ -73,7 +74,7 @@ ms.locfileid: "82983289"
 
 #### <a name="step-3-navigate-to-access-control"></a>步骤3：导航到访问控制
 
-选择 "**访问控制（IAM）**"。
+选择“访问控制 (IAM)”。
 
 ![访问控制（IAM）](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-8.png)
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/24/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3874bbe7a5830b0a80b658ac32952fe8985c1c3
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 257d7a2e374867f6ff14aeaa633d95521b7ca39e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161684"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85114752"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数据库、容器和项
 
@@ -20,7 +20,7 @@ ms.locfileid: "82161684"
 
 下图显示 Azure Cosmos DB 帐户中不同实体的层次结构：
 
-![Azure Cosmos 帐户实体](./media/databases-containers-items/cosmos-entities.png)
+:::image type="content" source="./media/databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos 帐户实体" border="false":::
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos 数据库
 
@@ -60,7 +60,7 @@ Azure Cosmos 容器是预配的吞吐量和存储的缩放单元。 容器会进
 
 无论是使用专用还是共享预配吞吐量模式创建容器，Azure Cosmos 容器都可以弹性缩放。
 
-Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以采用任意架构。 例如，可以在同一个容器中放置一个表示人员的项，以及一个表示汽车的项。  默认情况下，添加到容器的所有项会自动编制索引，不需要进行显式的索引或架构管理。 通过在容器上配置的[索引策略](index-overview.md)，可以自定义索引行为。 
+Azure Cosmos 容器是与架构无关的项容器。 容器中的项可以采用任意架构。 例如，可以在同一个容器中放置一个表示人员的项，以及一个表示汽车的项。** 默认情况下，添加到容器的所有项会自动编制索引，不需要进行显式的索引或架构管理。 通过在容器上配置的[索引策略](index-overview.md)，可以自定义索引行为。 
 
 可以针对 Azure Cosmos 容器中的所选项或整个容器设置[生存时间 (TTL)](time-to-live.md)，以正常从系统中清除这些项。 Azure Cosmos DB 会在这些项过期时自动将其删除。 这样还能保证对这些容器执行的查询不会返回固定边界内已过期的项。 有关详细信息，请参阅[对容器配置 TTL](how-to-time-to-live.md)。
 
@@ -77,7 +77,7 @@ Azure Cosmos 容器专用于 API 特定的实体，如下表所示：
 |Azure Cosmos 容器 | 容器 | 表 | 集合 | Graph | 表 |
 
 > [!NOTE]
-> 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为，Azure 平台的某些部分不区分大小写，这可能会导致对具有此类名称的容器的遥测数据和操作产生混乱和冲突。
+> 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Azure Cosmos 容器的属性
 
@@ -91,7 +91,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 |\_self | 由系统生成 | 容器的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
 |id | 用户可配置 | 用户定义的容器唯一名称 | 是 | 是 | 是 | 是 | 是 |
 |indexingPolicy | 用户可配置 | 提供更改索引路径、索引类型和索引模型的功能 | 是 | 否 | 否 | 否 | 是 |
-|timeToLive | 用户可配置 | 提供在设置的时间段后从容器自动删除项的功能 有关详细信息，请参阅[生存时间](time-to-live.md)。 | 是 | 否 | 否 | 否 | 是 |
+|TimeToLive | 用户可配置 | 提供在设置的时间段后从容器自动删除项的功能 有关详细信息，请参阅[生存时间](time-to-live.md)。 | 是 | 否 | 否 | 否 | 是 |
 |changeFeedPolicy | 用户可配置 | 用于读取对容器中的项所做的更改。 有关详细信息，请参阅[更改源](change-feed.md)。 | 是 | 否 | 否 | 否 | 是 |
 |uniqueKeyPolicy | 用户可配置 | 用于确保逻辑分区中一个或多个值的唯一性。 有关详细信息，请参阅[唯一键约束](unique-keys.md)。 | 是 | 否 | 否 | 否 | 是 |
 
@@ -99,13 +99,13 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 使用任一 Azure Cosmos API 时，Azure Cosmos 容器支持以下操作：
 
-| Operation | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
+| 操作 | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- |
-| 枚举数据库中的容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 读取容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 创建新容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 更新容器 | 是 | 是 | 是 | 是 | NA | NA |
-| 删除容器 | 是 | 是 | 是 | 是 | NA | NA |
+| 枚举数据库中的容器 | 是 | 是 | 是 | 是 | 不可用 | 不可用 |
+| 读取容器 | 是 | 是 | 是 | 是 | 不可用 | 不可用 |
+| 创建新容器 | 是 | 是 | 是 | 是 | 不可用 | 不可用 |
+| 更新容器 | 是 | 是 | 是 | 是 | 不可用 | 不可用 |
+| 删除容器 | 是 | 是 | 是 | 是 | 不可用 | 不可用 |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos 项
 
@@ -113,7 +113,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 | Cosmos 实体 | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos 项 | 文档 | 行 | Document | 节点或边缘 | 项 |
+|Azure Cosmos 项 | 文档 | 行 | 文档 | 节点或边缘 | 项目 |
 
 ### <a name="properties-of-an-item"></a>项的属性
 
@@ -125,7 +125,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 |\_etag | 由系统生成 | 用于乐观并发控制的实体标记 | 是 | 否 | 否 | 否 | 否 |
 |\_ts | 由系统生成 | 项上次更新的时间戳 | 是 | 否 | 否 | 否 | 否 |
 |\_self | 由系统生成 | 项的可寻址 URI | 是 | 否 | 否 | 否 | 否 |
-|id | 之前或之后 | 逻辑分区中用户定义的唯一名称。 | 是 | 是 | 是 | 是 | 是 |
+|id | 任一个 | 逻辑分区中用户定义的唯一名称。 | 是 | 是 | 是 | 是 | 是 |
 |任意用户定义的属性 | 用户定义 | 用户定义的属性以 API 本机表示形式表示（包括 JSON、BSON 和 CQL） | 是 | 是 | 是 | 是 | 是 |
 
 > [!NOTE]
@@ -135,7 +135,7 @@ Azure Cosmos 容器具备一组系统定义的属性。 根据所用的 API，�
 
 Azure Cosmos 项支持以下操作。 可以使用任一 Azure Cosmos API 来执行这些操作。
 
-| Operation | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
+| 操作 | Azure CLI | SQL API | Cassandra API | 用于 MongoDB 的 Azure Cosmos DB API | Gremlin API | 表 API |
 | --- | --- | --- | --- | --- | --- | --- |
 | 插入、替换、删除、Upsert、读取 | 否 | 是 | 是 | 是 | 是 | 是 |
 
@@ -143,8 +143,8 @@ Azure Cosmos 项支持以下操作。 可以使用任一 Azure Cosmos API 来执
 
 了解以下任务和概念：
 
-* [在 Azure Cosmos 数据库上预配吞吐量](how-to-provision-database-throughput.md)
-* [在 Azure Cosmos 容器上预配吞吐量](how-to-provision-container-throughput.md)
+* [对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)
+* [对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)
 * [使用逻辑分区](partition-data.md)
 * [对 Azure Cosmos 容器配置 TTL](how-to-time-to-live.md)
 * [使用更改源生成被动式应用程序](change-feed.md)

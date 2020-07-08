@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84982010"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
@@ -31,8 +31,8 @@ Microsoft.Skills.Text.MergeSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| insertPreTag  | 每次插入之前要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
-| insertPostTag | 每次插入后要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| `insertPreTag`    | 每次插入之前要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| `insertPostTag`   | 每次插入后要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
 
 
 ##  <a name="sample-input"></a>示例输入
@@ -55,7 +55,7 @@ Microsoft.Skills.Text.MergeSkill
 ```
 
 ##  <a name="sample-output"></a>示例输出
-此示例显示之前输入的输出，假设将 insertPreTag  设置为 `" "`并将 insertPostTag  设置为 `""`。 
+此示例显示之前输入的输出，假设将 insertPreTag** 设置为 `" "`并将 insertPostTag** 设置为 `""`。 
 
 ```json
 {
@@ -75,7 +75,7 @@ Microsoft.Skills.Text.MergeSkill
 
 使用文本合并的一个常见场景是将图像的文本表示形式（OCR 技能中的文本或图像的描述文字）合并到文档的内容字段中。 
 
-以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text  字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
+以下示例技能使用 OCR 技能从文档中嵌入的图像中提取文本。 接下来，它会创建 merged_text** 字段以包含每个图像的原始和 OCRed 文本。 可在[此处](https://docs.microsoft.com/azure/search/cognitive-search-skill-ocr)了解有关 OCR 技能的详细信息。
 
 ```json
 {
@@ -108,25 +108,29 @@ Microsoft.Skills.Text.MergeSkill
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }
   ]
 }
 ```
-以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction  配置设置为 generateNormalizedImages  ，如下所示：
+以上示例假设存在规范化的图像字段。 要获取规范化的图像字段，请将索引器定义中的 imageAction** 配置设置为 generateNormalizedImages**，如下所示：
 
 ```json
 {

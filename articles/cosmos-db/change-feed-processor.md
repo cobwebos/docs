@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119403"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
@@ -35,7 +35,7 @@ ms.locfileid: "83655305"
 
 若要进一步了解更改源处理器的四个元素是如何协同工作的，请看下图中的一个示例。 受监视的容器会存储文档，并将“City”用作分区键。 我们发现分区键值分布在包含项的范围内。 有两个主机实例，更改源处理器向每个实例分配不同范围的分区键值，以最大程度地提高计算分布率。 每个范围都是并行读取的，其进程的维护独立于租用容器中的其他范围。
 
-![更改源处理器示例](./media/change-feed-processor/changefeedprocessor.png)
+:::image type="content" source="./media/change-feed-processor/changefeedprocessor.png" alt-text="更改源处理器示例" border="false":::
 
 ## <a name="implementing-the-change-feed-processor"></a>实现更改源处理器
 

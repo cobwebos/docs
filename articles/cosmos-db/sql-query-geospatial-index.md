@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: b06a8737c1ceb538417f966a989ccb39069f4d4c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116292"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 为地理空间数据编制索引
 
@@ -28,19 +28,19 @@ ms.locfileid: "82839193"
 
 ## <a name="modifying-geospatial-data-type"></a>修改地理空间数据类型
 
-在容器中，**地理空间配置**指定如何为空间数据编制索引。 为每个容器指定一个**地理空间配置**：地理或几何图形。
+在容器中，“地理空间配置”指定如何为空间数据编制索引。 为每个容器指定一个地理空间配置：“地理”或“几何”。
 
-可以在 Azure 门户中的 "**地域**" 和 "**几何**" 空间类型之间切换。 必须先[使用边界框创建有效的空间几何索引编制策略](#geometry-data-indexing-examples)，然后才能切换到几何空间类型。
+在 Azure 门户中，可以在“地理”和“几何”空间类型之间进行切换。 在切换到几何空间类型之前，请务必[使用边界框创建一个有效的空间几何索引策略](#geometry-data-indexing-examples)。
 
-下面介绍如何在 Azure 门户中的**数据资源管理器**中设置**地理空间配置**：
+下面介绍如何在 Azure 门户的“数据资源管理器”中设置“地理空间配置”：
 
-![设置地理空间配置](./media/sql-query-geospatial-index/geospatial-configuration.png)
+:::image type="content" source="./media/sql-query-geospatial-index/geospatial-configuration.png" alt-text="设置地理空间配置":::
 
-你还可以`geospatialConfig`在 .net SDK 中修改来调整**地理空间配置**：
+还可通过修改 .NET SDK 中的 `geospatialConfig` 来调整“地理空间配置”：
 
 如果未指定，则 `geospatialConfig` 将默认为 geography 数据类型。 修改 `geospatialConfig` 时，容器中所有现有地理空间数据都将重新编制索引。
 
-下面是一个示例，它通过设置 `geospatialConfig` 属性并添加一个 boundingBox  ，将地理空间数据类型修改为 `geometry`：
+下面是一个示例，它通过设置 `geospatialConfig` 属性并添加一个 boundingBox，将地理空间数据类型修改为 `geometry`：
 
 ```csharp
     //Retrieve the container's details
@@ -107,7 +107,7 @@ ms.locfileid: "82839193"
 
 ## <a name="geometry-data-indexing-examples"></a>地理数据索引编制示例
 
-使用 geometry  数据类型时，与 geography 数据类型一样，必须指定用于编制索引的相关路径和类型。 此外，还必须在索引编制策略中指定 `boundingBox`，以指示需要针对该特定路径进行索引编制的区域。 每个地理空间路径都需要其自己的 `boundingBox`。
+使用 geometry 数据类型时，与 geography 数据类型一样，必须指定用于编制索引的相关路径和类型。 此外，还必须在索引编制策略中指定 `boundingBox`，以指示需要针对该特定路径进行索引编制的区域。 每个地理空间路径都需要其自己的 `boundingBox`。
 
 边界框包括以下属性：
 
@@ -116,11 +116,11 @@ ms.locfileid: "82839193"
 - **xmax**：编制索引的最大 x 坐标
 - **ymax**：编制索引的最大 y 坐标
 
-边界框是必需的，因为几何图形数据占有的平面可以是无限的。 但是，空间索引需要有限空间。 对于 geography  数据类型，地球是边界，你无需设置边界框。
+边界框是必需的，因为几何图形数据占有的平面可以是无限的。 但是，空间索引需要有限空间。 对于 geography 数据类型，地球是边界，你无需设置边界框。
 
-创建包含所有（或大部分）数据的边界框。 只有针对完全位于边界框内的对象进行计算的运算才能使用空间索引。 使边界框大于必要会对查询性能产生负面影响。
+创建包含你的所有（或大部分）数据的边界框。 只有针对完全位于边界框内的对象进行计算的运算才能使用空间索引。 使边界框大于需要会对查询性能产生负面影响。
 
-以下索引编制策略示例在 geospatialConfig  设置为 `geometry` 的情况下为 geometry  数据编制索引：
+以下索引编制策略示例在 geospatialConfig 设置为 `geometry` 的情况下为 geometry 数据编制索引：
 
 ```json
  {
@@ -156,10 +156,10 @@ ms.locfileid: "82839193"
 }
 ```
 
-上面的索引编制策略有一个 boundingBox  ，其 x 坐标为 (-10, 10)，y 坐标为 (-20, 20)。 具有上述索引编制策略的容器将为完全在此区域内的所有 Point、Polygon、MultiPolygon 和 LineString 编制索引。
+上面的索引编制策略有一个 boundingBox，其 x 坐标为 (-10, 10)，y 坐标为 (-20, 20)。 具有上述索引编制策略的容器将为完全在此区域内的所有 Point、Polygon、MultiPolygon 和 LineString 编制索引。
 
 > [!NOTE]
-> 如果尝试将具有 boundingBox  的索引编制策略添加到具有 `geography` 数据类型的容器中，则会失败。 在添加 boundingBox  之前，应将容器的 geospatialConfig  修改为 `geometry`。 你可以添加数据并修改索引编制策略的其余部分（例如路径和类型），这可以在为容器选择地理空间数据类型之前或之后进行。
+> 如果尝试将具有 boundingBox 的索引编制策略添加到具有 `geography` 数据类型的容器中，则会失败。 在添加 boundingBox 之前，应将容器的 geospatialConfig 修改为 `geometry`。 你可以添加数据并修改索引编制策略的其余部分（例如路径和类型），这可以在为容器选择地理空间数据类型之前或之后进行。
 
 ## <a name="next-steps"></a>后续步骤
 

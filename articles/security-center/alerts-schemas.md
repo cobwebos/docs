@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 19ca17f66f6818ed4c3ef532e2030cc03f0e73ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b8d7f241f79b087f318c9c416dcadf92838b084
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062949"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85126206"
 ---
 # <a name="security-alerts-schemas"></a>安全警报架构
 
@@ -140,17 +140,17 @@ Azure 安全中心审核在 Azure 活动日志中生成作为事件的安全警�
 
 ### <a name="the-data-model-of-the-schema"></a>架构的数据模型
 
-|字段|说明|
+|字段|描述|
 |----|----|
 |**通道**|常量、"Operation"|
 |**correlationId**|Azure 安全中心警报 ID|
-|**2008**|警报说明|
+|**2008**|警报的描述|
 |**eventDataId**|请参阅 correlationId|
 |**名**|值和 localizedValue 子字段包含警报显示名称|
 |**category**|值和 localizedValue 子字段是常量-"Security"|
 |**eventTimestamp**|生成警报时的 UTC 时间戳|
 |**id**|完全限定的警报 ID|
-|**调配**|常量、"信息性"|
+|**level**|常量、"信息性"|
 |**operationId**|请参阅 correlationId|
 |**operationName**|值字段是常量-"Microsoft. Security/位置/警报/激活/操作"，本地化值将是 "激活警报" （可能已本地化为与用户区域设置相同）|
 |**resourceGroupName**|将包括资源组名称|
@@ -158,9 +158,9 @@ Azure 安全中心审核在 Azure 活动日志中生成作为事件的安全警�
 |**resourceType**|值和 localizedValue 子字段是常量-"Microsoft. Security/位置/警报"|
 |**resourceId**|完全限定的 Azure 资源 ID|
 |**status**|值和 localizedValue 子字段固定为 "活动"|
-|**subStatus**|值和 localizedValue 子字段为空|
+|**种子**|值和 localizedValue 子字段为空|
 |**submissionTimestamp**|事件提交到活动日志的 UTC 时间戳|
-|**订阅**|已泄露资源的订阅 ID|
+|**subscriptionId**|已泄露资源的订阅 ID|
 |**properties**|与警报相关的其他属性的 JSON 包。 它们可能会从一条警报更改为另一种，但会在所有警报中显示以下字段：<br>-严重性：攻击的严重性<br>-compromisedEntity：已泄露资源的名称<br>-remediationSteps：要采取的补救步骤数组<br>-意向：警报的终止链意向。 可能的意向记录在[意向表](alerts-reference.md#intentions)中|
 |**relatedEvents**|常量-空数组|
 |||
@@ -171,7 +171,7 @@ Azure 安全中心审核在 Azure 活动日志中生成作为事件的安全警�
 
 ### <a name="ms-graph-api"></a>[MS 图形 API](#tab/schema-graphapi)
 
-Microsoft Graph 是 Microsoft 365 中的数据和智能的网关。 它提供了一个统一的可编程性模型，可用于访问 Office 365、Windows 10 和企业移动性 + 安全性中的大量数据。 在 Microsoft Graph 中使用丰富的数据来构建与数百万用户交互的组织和使用者的应用程序。
+Microsoft Graph 是 Microsoft 365 中的数据和智能的网关。 它提供了一个统一的可编程性模型，可用于访问 Microsoft 365、Windows 10 和企业移动性 + 安全性中的大量数据。 在 Microsoft Graph 中使用丰富的数据来构建与数百万用户交互的组织和使用者的应用程序。
 
 [Microsoft Graph 文档](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0)中提供了发送到 MS Graph 的安全警报的架构和 JSON 表示形式。
 

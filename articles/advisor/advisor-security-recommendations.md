@@ -3,12 +3,12 @@ title: 使用 Azure 顾问提高资源的安全性
 description: 使用 Azure 顾问提高 Azure 部署的安全性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a4b7e9a9d9a7919155db361fd2c96ed98e6e5a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443041"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113851"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>使用 Azure 顾问提高资源的安全性
 
@@ -31,7 +31,7 @@ Azure 顾问针对所有 Azure 资源提供一个一致且统一的建议视图�
 * [顾问入门](advisor-get-started.md)
 * [顾问成本建议](advisor-cost-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
-* [顾问高可用性建议](advisor-high-availability-recommendations.md)
+* [顾问可靠性建议](advisor-high-availability-recommendations.md)
 * [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)
-
+* [顾问 REST API](https://docs.microsoft.com/rest/api/advisor/)
  

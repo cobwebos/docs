@@ -4,29 +4,24 @@ description: 本文介绍如何为调用 Azure 时序见解 API 的自定义应�
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
-ms.author: dpalled
-manager: cshankar
+ms.author: shresha
+manager: dpalled
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612276"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85099229"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
 本文档介绍如何使用新的 Azure Active Directory 边栏选项卡在 Azure Active Directory 中注册应用。 在 Azure Active Directory 中注册的应用可让用户进行身份验证，并有权使用与时序见解环境关联的 Azure 时序见解 API。
-
-> [!IMPORTANT]
-> Azure 时序见解支持以下两种身份验证库：
-> * 最新的 [Microsoft 身份验证库 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
-> * [Azure Active Directory 身份验证库 (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="service-principal"></a>服务主体
 
@@ -81,9 +76,9 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ### <a name="client-app-initialization"></a>客户端应用初始化
 
-* 开发人员可以使用 [Microsoft 身份验证库 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) 或 [Azure Active Directory 身份验证库 (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) 通过 Azure 时序见解进行身份验证。
+* 开发人员可以使用 [Microsoft 身份验证库（MSAL）对 Azure 时序见解进行身份验证。
 
-* 例如，使用 ADAL 进行身份验证：
+* 使用 ADAL 进行身份验证：
 
    1. 使用来自 Azure Active Directory 应用注册部分的“应用程序 ID”和“客户端密码”（应用程序密钥）来代表应用程序获取令牌。
 
@@ -93,7 +88,10 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
    1. 随后可在应用程序调用时序见解 API 时，将令牌传入 `Authorization` 标头。
 
-* 开发人员也可以选择使用 MSAL 进行身份验证。 阅读[迁移到 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)，并参阅我们的[使用 C# 管理 Azure 时序见解环境的 GA 参考数据](time-series-insights-manage-reference-data-csharp.md)一文以了解详细信息。
+> [!IMPORTANT]
+> 如果使用[Azure Active Directory 身份验证库（ADAL）](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) ，请阅读有关[迁移到 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的信息。
+
+    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
 
 ## <a name="common-headers-and-parameters"></a>常见标头和参数
 
@@ -113,13 +111,13 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 必需的请求标头如下所述。
 
-| 必需的请求标头 | 说明 |
+| 必需的请求标头 | 描述 |
 | --- | --- |
 | 授权 | 若要使用时序见解进行身份验证，必须在 Authorization 标头中传递有效的 OAuth 2.0 持有者令牌。 |
 
 > [!IMPORTANT]
 > 令牌必须严格颁发给 `https://api.timeseries.azure.com/` 资源（也称为令牌的“受众”）。
-> * 因此，[Postman](https://www.getpostman.com/) **AuthURL** 将为：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+> * 因此，[Postman](https://www.getpostman.com/) **AuthURL** 将为：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
 > * `https://api.timeseries.azure.com/` 有效，但 `https://api.timeseries.azure.com` 无效。
 
 可选请求标头如下所述。
@@ -161,10 +159,10 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关调用 GA 时序见解 API 的示例代码，请阅读[使用 C# 查询数据](./time-series-insights-query-data-csharp.md)。
+* 有关调用 GA 时序见解 API 的示例代码，请阅读[使用 C# 查询数据](./time-series-insights-query-data-csharp.md)。
 
-- 有关预览版时序见解 API 代码示例，请阅读[使用 C# 查询预览版数据](./time-series-insights-update-query-data-csharp.md)。
+* 有关预览版时序见解 API 代码示例，请阅读[使用 C# 查询预览版数据](./time-series-insights-update-query-data-csharp.md)。
 
-- 有关 API 参考信息，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
+* 有关 API 参考信息，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
 
-- 了解如何[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+* 了解如何[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。

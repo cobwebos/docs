@@ -5,17 +5,17 @@ description: 了解如何使用 WhiteNoise 包将有关差分隐私的最佳做�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 47497f23da94e529826b8dddb05b869727fb528e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663665"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84981840"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>在 Azure 机器学习中使用差分隐私
 
@@ -24,6 +24,9 @@ ms.locfileid: "83663665"
 了解如何使用 WhiteNoise Python 包将有关差分隐私的最佳做法应用于 Azure 机器学习模型。
 
 差分隐私是隐私的最高标准定义。 遵守此隐私定义的系统可针对各种数据重建和重新识别攻击（包括拥有辅助信息的攻击者发起的攻击）提供强大的防护保障。 详细了解[差分隐私的工作原理](./concept-differential-privacy.md)。
+
+> [!NOTE]
+> 请注意，我们将重命名该工具包，并将在未来几周引入新名称。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -145,7 +148,7 @@ Privacy usage: approximate {
 
 | 统计信息    | 机制 | 实用程序  |
 | ------------- |------------|------------|
-| Count         | 高斯   | 强制转换       |
+| 计数         | 高斯   | 强制转换       |
 | 直方图     | 几何  | 钳位   |
 | 平均值          | 拉普拉斯    | 数字化   |
 | 分位数     |            | 筛选器     |
@@ -181,7 +184,7 @@ print("Age accuracy is: {0}".format(age_mean.get_accuracy(0.05)))
 Age accuracy is: 0.2995732273553991
 ```
 
-此示例按上面所述计算平均值，并使用 `get_accuracy` 函数请求 `alpha` 为 0.05 时的准确度。 `alpha` 为 0.05 表示 95% 的间隔，因为在大约 95% 的时间内，发布的值都处于报告的准确度边界内。  在此示例中，报告的准确度为 0.3，即，在大约 95% 的时间内，发布的值将在宽度为 0.6 的间隔内。  不要将此值视为误差线，因为发布的值会按照 `alpha` 指定的几率超出报告的准确度范围，而超出范围的值可能会在任一方向超出范围。
+此示例按上面所述计算平均值，并使用 `get_accuracy` 函数请求 `alpha` 为 0.05 时的准确度。 `alpha` 为 0.05 表示 95% 的间隔，因为在大约 95% 的时间内，发布的值都处于报告的准确度边界内。  在此示例中，报告的准确度为 0.3，即，在大约 95% 的时间内，发布的值将在宽度为 0.6 的间隔内。  不要将此值视为误差线，因为发布的值会按 `alpha` 指定的几率超出报告的准确度范围，而超出范围的值可能会在任一方向超出范围。
 
 分析师可以在 `get_accuracy` 中查询 `alpha` 的不同值，以获取更窄或更宽的置信度间隔，且不会产生额外的隐私成本。
 

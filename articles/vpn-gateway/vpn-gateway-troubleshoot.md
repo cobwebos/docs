@@ -4,15 +4,15 @@ description: 本文有助于将你链接到文章以对 VPN 网关配置、连�
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 01/31/2018
 ms.author: cherylmc
-ms.openlocfilehash: d73bc8e9c39c14a254e8f7bae1d7b1a96a6c3225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0718a1b211fe6365af30a330fe6a3742cff2ff63
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780158"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84984434"
 ---
 # <a name="troubleshoot-vpn-gateway"></a>VPN 网关疑难解答
 

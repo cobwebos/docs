@@ -3,12 +3,12 @@ title: Azure Service Fabric 的网络模式
 description: 介绍 Service Fabric 的常见网络模式以及如何使用 Azure 网络功能创建群集。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 065c311fffe409b20e02a3fddf1e9e7e6a82a2a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75466289"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106622"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 网络模式
 可将 Azure Service Fabric 群集与其他 Azure 网络功能集成。 本文说明如何创建使用以下功能的群集：
@@ -100,7 +100,7 @@ DnsSettings              : {
             },*/
     ```
 
-2. 注释掉 `nicPrefixOverride` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
+2. 注释掉 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 属性，因为你使用的是现有子网，并且已在步骤 1 中禁用了此变量。
 
     ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
@@ -143,7 +143,7 @@ DnsSettings              : {
     },*/
     ```
 
-5. 从 `dependsOn` 的 `Microsoft.Compute/virtualMachineScaleSets` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
+5. 从 `Microsoft.Compute/virtualMachineScaleSets` 的 `dependsOn` 属性中注释掉虚拟网络，避免非得要创建新的虚拟网络：
 
     ```json
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -171,7 +171,7 @@ DnsSettings              : {
     C:>\Users\users>ping NOde1000000 -n 1
     ```
 
-请参阅[并非特定于 Service Fabric 的另一个示例](https://github.com/gbowerman/azure-myriad/tree/master/existing-vnet)。
+请参阅[并非特定于 Service Fabric 的另一个示例](https://github.com/gbowerman/azure-myriad/tree/main/existing-vnet)。
 
 
 <a id="staticpublicip"></a>
@@ -229,7 +229,7 @@ DnsSettings              : {
     }, */
     ```
 
-5. 从 `dependsOn` 的 `Microsoft.Network/loadBalancers` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
+5. 从 `Microsoft.Network/loadBalancers` 的 `dependsOn` 属性中注释掉 IP 地址，避免非得要创建新的 IP 地址：
 
     ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
@@ -243,7 +243,7 @@ DnsSettings              : {
     "properties": {
     ```
 
-6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `publicIPAddress` 的 `frontendIPConfigurations` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
+6. 在 `Microsoft.Network/loadBalancers` 资源中，将 `frontendIPConfigurations` 的 `publicIPAddress` 元素更改为引用现有的静态 IP 地址而不是新建的 IP 地址：
 
     ```json
                 "frontendIPConfigurations": [
@@ -327,7 +327,7 @@ DnsSettings              : {
     }, */
     ```
 
-4. 删除 `dependsOn` 的 IP 地址 `Microsoft.Network/loadBalancers` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
+4. 删除 `Microsoft.Network/loadBalancers` 的 IP 地址 `dependsOn` 属性，避免非得要创建新的 IP 地址。 添加虚拟网络 `dependsOn` 属性，因为负载均衡器现在依赖于虚拟网络中的子网：
 
     ```json
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -572,7 +572,7 @@ DnsSettings              : {
             },
     ```
 
-6. 在 `networkProfile` 资源的 `Microsoft.Compute/virtualMachineScaleSets` 中，添加内部后端地址池：
+6. 在 `Microsoft.Compute/virtualMachineScaleSets` 资源的 `networkProfile` 中，添加内部后端地址池：
 
     ```json
     "loadBalancerBackendAddressPools": [

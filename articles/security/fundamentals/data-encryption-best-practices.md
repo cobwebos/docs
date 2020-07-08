@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b6fcf38f9f69976e6ed8d64040cfbcf44f090e1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243492"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124045"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
 本文介绍了针对数据安全和加密的最佳做法。
@@ -88,8 +88,8 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 
 Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许多服务都将加密作为选项提供。 可以使用 Azure Key Vault 来持续控制用于访问和加密数据的密钥。 有关详细信息，请参阅 [Azure 资源提供程序加密模型支持](encryption-atrest.md#azure-resource-providers-encryption-model-support)。
 
-最佳做法：使用加密来帮助降低与未经授权访问数据相关的风险****。   
-详细信息：在将敏感数据写入驱动器之前先将驱动器加密****。
+**最佳做法**：使用加密来帮助降低与未经授权访问数据相关的风险。   
+**详细信息**：在将敏感数据写入驱动器之前先将驱动器加密。
 
 未实施数据加密的组织面临的数据保密性问题风险更大。 例如，未经授权的用户或恶意用户可能会窃取已入侵帐户中的数据，或者未经授权访问以明文格式编码的数据。 公司还必须证明，为了遵守行业法规，他们在不断作出相应努力并使用正确的安全控件来增强其数据安全性。
 
@@ -101,17 +101,17 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 以下是特定于使用 Azure VPN 网关、SSL/TLS 和 HTTPS 的最佳做法。
 
-最佳做法：从位于本地的多个工作站安全访问 Azure 虚拟网络****。   
-详细信息：使用[站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)****。
+**最佳做法**：从位于本地的多个工作站安全访问 Azure 虚拟网络。   
+**详细信息**：使用[站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)。
 
-最佳做法：从位于本地的单个工作站安全访问 Azure 虚拟网络****。   
-详细信息：使用[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)****。
+**最佳做法**：从位于本地的单个工作站安全访问 Azure 虚拟网络。   
+**详细信息**：使用[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
 
-最佳做法：通过专用高速 WAN 链路移动大型数据集****。   
-详细信息：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)****。 如果选择使用 ExpressRoute，则还可以使用 SSL/TLS 或其他协议在应用程序级别加密数据，以提供额外的保护。
+**最佳做法**：通过专用高速 WAN 链路移动大型数据集。   
+**详细信息**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 SSL/TLS 或其他协议在应用程序级别加密数据，以提供额外的保护。
 
-最佳做法：通过 Azure 门户与 Azure 存储交互****。   
-详细信息：所有事务都通过 HTTPS 进行****。 还可以通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)来与[Azure 存储](https://azure.microsoft.com/services/storage/)交互。
+**最佳做法**：通过 Azure 门户与 Azure 存储交互。   
+**详细信息**：所有事务都通过 HTTPS 进行。 也可通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 与 [Azure 存储](https://azure.microsoft.com/services/storage/)进行交互。
 
 无法保护传输中数据的组织更容易遭受[中间人攻击](https://technet.microsoft.com/library/gg195821.aspx)、[窃听](https://technet.microsoft.com/library/gg195641.aspx)和会话劫持。 这些攻击可能是获取机密数据访问权限的第一步。
 
@@ -121,11 +121,11 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 分类始终是可标识的，而无论数据的存储位置或数据的共享人员。 标签包括视觉标记，如页眉、页脚或水印。 元数据以明文形式添加到文件和电子邮件标题中。 明文形式确保其他服务（如防止数据丢失的解决方案）可以识别分类并采取相应的操作。
 
-保护技术使用 Azure Rights Management (Azure RMS)。 此技术与其他 Microsoft 云服务和应用程序（如 Office 365 和 Azure Active Directory）集成。 此保护技术使用加密、标识和授权策略。 通过 Azure RMS 应用的保护与文档和电子邮件保留在一起，不受位置影响，也无论是在组织、网络、文件服务器和应用程序内部还是外部。
+保护技术使用 Azure Rights Management (Azure RMS)。 此技术与其他 Microsoft 云服务和应用程序（如 Microsoft 365 和 Azure Active Directory）相集成。 此保护技术使用加密、标识和授权策略。 通过 Azure RMS 应用的保护与文档和电子邮件保留在一起，不受位置影响，也无论是在组织、网络、文件服务器和应用程序内部还是外部。
 
 此信息保护解决方案可用于控制数据，即使是与他人共享的数据，也可控制。 还可以将 Azure RMS 用于自己的业务线应用程序和软件供应商提供的信息保护解决方案，而无论这些应用程序和解决方案是在本地还是在云中。
 
-我们建议：
+建议：
 
 - 为组织[部署 Azure 信息保护](/azure/information-protection/deployment-roadmap)。
 - 应用可反映业务需求的标签。 例如：将名为“高度机密”的标签应用于包含绝密数据的所有文档和电子邮件，以对这些数据进行分类和保护。 然后，只有授权的用户才能访问此数据，并具有指定的任何限制。
@@ -139,4 +139,4 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 
 以下资源提供了有关 Azure 安全性及相关 Microsoft 服务的更多常规信息：
 * [Azure 安全团队博客](https://blogs.msdn.microsoft.com/azuresecurity/) - 随时掌握 Azure 安全性的最新信息
-* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)-可报告 microsoft 安全漏洞（包括 Azure 问题）或通过电子邮件发送到secure@microsoft.com
+* [Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx) - 可在其中报告 Microsoft 安全漏洞（包括 Azure 问题）或将其通过电子邮件发送到 secure@microsoft.com

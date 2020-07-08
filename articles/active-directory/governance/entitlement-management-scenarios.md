@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/28/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d259c6e2a6ac9ced5f9a1c29d4aec08010f4dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a9dc504edac01654fb21ec3386a596e03492c9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190545"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85077797"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 授权管理的常见方案
 
@@ -61,7 +61,7 @@ ms.locfileid: "78190545"
 
 1. [登录到“我的访问权限”门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. 查找访问包
-1. [请求访问](entitlement-management-request-access.md#request-an-access-package)
+1. [请求访问权限](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>审批者：批准对资源的请求
 
@@ -94,7 +94,7 @@ ms.locfileid: "78190545"
 
 1. 查找从联系人收到的访问包链接
 1. [登录到“我的访问权限”门户](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [请求访问](entitlement-management-request-access.md#request-an-access-package)
+1. [请求访问权限](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>审批者：批准对资源的请求
 
@@ -154,7 +154,7 @@ ms.locfileid: "78190545"
 
 ## <a name="programmatic-administration"></a>编程管理
 
-你还可以使用 Microsoft Graph 管理访问包、目录、策略、请求和分配。  具有具有委托`EntitlementManagement.ReadWrite.All`权限的应用程序的相应角色中的用户可以调用[权限管理 API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 管理访问包、目录、策略、请求和分配。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用[权限管理 API](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 

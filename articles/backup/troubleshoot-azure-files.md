@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 15cea28ee6c6a969b56e34242e2631b0aa760331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562077"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130392"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -25,6 +25,7 @@ ms.locfileid: "82562077"
   >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 您可以使用[此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md)查找您的存储帐户注册到的恢复服务保管库。
 
 - 确保文件共享不在任何不受支持的存储帐户中。 可以参考[Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
+- 请确保存储帐户名称和资源组名称的组合长度不超过84个字符，以防在经典存储帐户的情况下出现新存储帐户和77个字符。 
 - 检查存储帐户的防火墙设置，以确保启用 "允许受信任的 Microsoft 服务访问存储帐户" 选项。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>门户中的错误指出无法发现存储帐户
@@ -50,7 +51,7 @@ ms.locfileid: "82562077"
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>取消保护文件共享后无法删除恢复服务保管库
 
-在 Azure 门户中，打开**保管库** > **备份基础结构** > **存储帐户**，然后单击 "**注销**" 以从恢复服务保管库中删除存储帐户。
+在 Azure 门户中，打开**保管库**  >  **备份基础结构**  >  **存储帐户**，然后单击 "**注销**" 以从恢复服务保管库中删除存储帐户。
 
 >[!NOTE]
 >只有注销已注册到保管库的所有存储帐户后，才能删除恢复服务保管库。
@@ -276,6 +277,45 @@ ms.locfileid: "82562077"
 错误消息：正在对所选项执行其他操作。
 
 等待其他正在进行的操作完成，稍后重试。
+
+从文件： troubleshoot-azure-files.md
+
+## <a name="common-soft-delete-related-errors"></a>常见软删除相关错误
+
+### <a name="usererrorrestoreafsinsoftdeletestate--this-restore-point-is-not-available-as-the-snapshot-associated-with-this-point-is-in-a-file-share-that-is-in-soft-deleted-state"></a>UserErrorRestoreAFSInSoftDeleteState-此还原点不可用，因为与此点相关联的快照位于处于软删除状态的文件共享中
+
+错误代码： UserErrorRestoreAFSInSoftDeleteState
+
+错误消息：此还原点不可用，因为与此点关联的快照位于处于软删除状态的文件共享中。
+
+如果文件共享处于软删除状态，则无法执行还原操作。 从文件门户撤消删除文件共享或使用[撤消删除脚本](scripts/backup-powershell-script-undelete-file-share.md)，然后尝试还原。
+
+### <a name="usererrorrestoreafsindeletestate--listed-restore-points-are-not-available-as-the-associated-file-share-containing-the-restore-point-snapshots-has-been-deleted-permanently"></a>UserErrorRestoreAFSInDeleteState 列出的还原点不可用，因为包含还原点快照的关联文件共享已永久删除
+
+错误代码： UserErrorRestoreAFSInDeleteState
+
+错误消息： "列出的还原点" 不可用，因为包含还原点快照的关联文件共享已被永久删除。
+
+检查是否删除了备份的文件共享。 如果它处于软删除状态，请检查软删除保留期是否已过，并且未恢复。 在这两种情况下，都将永久丢失所有快照，并且无法恢复数据。
+
+>[!NOTE]
+> 建议你不要删除已备份的文件共享，或者如果它处于软删除状态，则在软删除保留期结束前删除删除，以避免丢失你的所有还原点。
+
+### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-备份失败，因为 Azure 文件共享处于软删除状态
+
+错误代码： UserErrorBackupAFSInSoftDeleteState
+
+错误消息：备份失败，因为 Azure 文件共享处于软删除状态
+
+从**文件门户**撤消删除文件共享，或使用取消[删除脚本](scripts/backup-powershell-script-undelete-file-share.md)继续备份，并防止永久删除数据。
+
+### <a name="usererrorbackupafsindeletestate--backup-failed-as-the-associated-azure-file-share-is-permanently-deleted"></a>UserErrorBackupAFSInDeleteState-备份失败，因为关联的 Azure 文件共享已永久删除
+
+错误代码： UserErrorBackupAFSInDeleteState
+
+错误消息：备份失败，因为关联的 Azure 文件共享已永久删除
+
+检查是否永久删除了备份的文件共享。 如果是，请停止该文件共享的备份，以避免重复的备份失败。 若要了解如何停止保护，请参阅[停止保护 Azure 文件共享](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
 
 ## <a name="next-steps"></a>后续步骤
 

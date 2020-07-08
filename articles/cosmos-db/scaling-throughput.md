@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cc8f2c90e74b5b3ab6df3169df0524f1134b66e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873499"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85113596"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>全局缩放预配的吞吐量 
 
 在 Azure Cosmos DB 中，预配吞吐量以“请求单位数/秒 (RU/s 或复数形式 RUs)”表示。 RU 度量针对 Cosmos 容器执行的读取和写入操作的成本，如下图所示：
 
-![请求单位](./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png)
+:::image type="content" source="./media/scaling-throughput/request-unit-charge-of-read-and-write-operations.png" alt-text="请求单位" border="false":::
 
 可以针对 Cosmos 容器或 Cosmos 数据库预配 RU。 针对容器预配的 RU 专门适用于针对该容器执行的操作。 针对数据库预配的 RU 在该数据库中的所有容器之间共享（具有专用分配 RU 的任何容器除外）
 
@@ -34,7 +34,7 @@ ms.locfileid: "74873499"
 
 - 如果 Cosmos 帐户配置有多个写入区域，则容器上全局可用的总 ru 数 = *R* x （*N*+ 1）。 将自动预配附加的 R  个 RU，以处理区域之间的更新冲突和反熵流量。
 
-所选的[一致性模型](consistency-levels.md)也会影响吞吐量。 与更强的一致性级别（例如，“有限过期”  或“强”  一致性）相比，更宽松的一致性级别（例如“会话”  、“一致前缀”  和“最终”  一致性）可以获得约 2 倍的读取吞吐量。
+所选的[一致性模型](consistency-levels.md)也会影响吞吐量。 与更强的一致性级别（例如，“有限过期”或“强”一致性）相比，更宽松的一致性级别（例如“会话”、“一致前缀”和“最终”一致性）可以获得约 2 倍的读取吞吐量。
 
 ## <a name="next-steps"></a>后续步骤
 

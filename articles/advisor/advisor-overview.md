@@ -3,30 +3,30 @@ title: Azure 顾问简介
 description: 使用 Azure 顾问优化 Azure 部署。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854430"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117771"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 顾问简介
 
 了解 Azure 顾问的主要功能，获取常见问题的答案。
 
 ## <a name="what-is-advisor"></a>顾问是什么？
-顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和遥测使用情况，并推荐解决方案，有助于提高 Azure 资源的经济效益、性能、高可用性和安全性。
+顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它可分析资源配置和使用情况遥测，并提供可帮助你提高成本效益、性能、可靠性（以前称为高可用性）的解决方案，以及 Azure 资源的安全性。
 
 使用顾问可以：
 * 获取主动的、可操作的以及个性化的最佳做法建议。 
-* 提高资源的性能、安全性和高可用性，同时确定机会减少总体 Azure 支出。
+* 提高资源的性能、安全性和可靠性，因为这样可以减少总体 Azure 支出。
 * 通过提议的内联操作获取建议。
 
 可通过 [Azure 门户](https://aka.ms/azureadvisordashboard)访问顾问。 登录到[门户](https://portal.azure.com)，在导航菜单中查找“顾问”，或在“所有服务”菜单中搜索它   。
 
 顾问仪表板显示针对所有订阅的个性化建议。  可为特定的订阅和资源类型应用筛选器，以显示相关建议。  建议分为五类： 
 
-* **高可用性**：确保并提高关键业务应用程序的连续性。 有关详细信息，请参阅[顾问高可用性建议](advisor-high-availability-recommendations.md)。
+* **可靠性（以前称为高可用性）**：确保并提高关键业务应用程序的连续性。 有关详细信息，请参阅[Advisor 可靠性建议](advisor-high-availability-recommendations.md)。
 * **安全性**：检测可能引起安全问题的威胁和漏洞。 有关详细信息，请参阅[顾问安全性建议](advisor-security-recommendations.md)。
 * **性能**：提高应用程序的速度。 有关详细信息，请参阅[顾问性能建议](advisor-performance-recommendations.md)。
 * 成本：优化并降低 Azure 总支出  。 有关详细信息，请参阅[顾问成本建议](advisor-cost-recommendations.md)。
@@ -68,7 +68,7 @@ Azure 顾问还包括来自 [Azure 安全中心](https://docs.microsoft.com/azur
 若要了解有关顾问建议的详细信息，请参阅以下资源：
 
 * [顾问入门](advisor-get-started.md)
-* [顾问高可用性建议](advisor-high-availability-recommendations.md)
+* [顾问可靠性建议](advisor-high-availability-recommendations.md)
 * [顾问安全性建议](advisor-security-recommendations.md)
 * [顾问性能建议](advisor-performance-recommendations.md)
 * [顾问成本建议](advisor-cost-recommendations.md)

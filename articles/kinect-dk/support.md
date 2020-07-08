@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure, kinect, rgb, IR, 录制, 传感器, sdk, 访问, 深度, 视频, 相机, imu, 运动, 传感器, 音频, 麦克风, matroska, 传感器 sdk, 下载, 人体, 跟踪, 支持
-ms.openlocfilehash: f2a5aa43c31a0d75e8ced1662de0bdac62ac9b58
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
-ms.translationtype: HT
+ms.openlocfilehash: 61d29284bc2ed9e574e8a19561f19ad6f4259908
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73931694"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125524"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect 支持选项和资源
 
@@ -29,6 +29,12 @@ ms.locfileid: "73931694"
 ## <a name="assisted-support"></a>辅助支持
 
 可通过多种方式获取 Azure Kinect 的支持。
+
+### <a name="microsoft-qa"></a>Microsoft 问答
+
+要快速从 Microsoft 工程师、Azure 最有价值专家 (MVP) 或我们的专家社区那里获得技术产品问题的可靠答案，请在 [Microsoft 问答](https://aka.ms/azureqa)上与我们联系 - 这是 Azure 的首选社区支持位置。
+
+- [Microsoft Q&适用于 Azure Kinect](https://docs.microsoft.com/answers/topics/azure-kinect-dk.html)，你可以在其中提问或搜索现有的问题库。
 
 ### <a name="development-azure-kinect-on-azure"></a>Azure 上的开发 Azure Kinect
 

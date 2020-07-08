@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7656b60c31e7da7841f9afb723167eb061fe3401
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655793"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124463"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>将来宾 OS 指标发送到适用于 Windows 虚拟机（经典）的 Azure Monitor 指标数据库
 
@@ -30,7 +30,7 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 - 你必须是 Azure 订阅的[服务管理员或共同管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 
 
-- 你的订阅必须已注册到[Microsoft。](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) 
+- 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。 
 
 - 需要安装 [Azure PowerShell](/powershell/azure) 或 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
 
@@ -48,7 +48,7 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-使用[创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建一个服务主体。 在完成此过程时记下以下内容： 
+按照[创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)中的说明在 Azure Active Directory 租户中创建服务主体。 在完成此过程时记下以下内容： 
 - 为此应用创建新的客户端机密。
 - 请保存密钥和客户端 ID，以便在后面的步骤中使用。
 
@@ -196,7 +196,7 @@ Azure Monitor [诊断扩展](https://docs.microsoft.com/azure/monitoring-and-dia
 
 1. 在资源下拉菜单中，选择你的经典 VM。
 
-1. 在 "命名空间" 下拉菜单中，选择 " **azure**"。
+1. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”。
 
 1. 在 "指标" 下拉菜单中，选择 " **Memory\committed bytes Bytes In Use**"。
    ![绘制指标图表](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)

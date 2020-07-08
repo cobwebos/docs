@@ -8,12 +8,12 @@ ms.date: 04/22/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 977b2fa40e2ce27a2711e5a44f5fb487433c9462
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
-ms.translationtype: HT
+ms.openlocfilehash: 80e966bf190dcbe4490269ef28a95babadda68d8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714553"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117907"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 
@@ -47,7 +47,7 @@ ms.locfileid: "83714553"
 
 在 Azure Cosmos DB 中优化查询时，第一步始终是[获取查询的查询指标](profile-sql-api-query.md)。 也可以通过 Azure 门户获取这些指标。 在数据资源管理器中运行查询后，可在“结果”选项卡旁边看到查询指标：
 
-[ ![获取查询指标](./media/troubleshoot-query-performance/obtain-query-metrics.png) ](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+:::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="获取查询指标" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
 获取查询指标后，将查询的“已检索文档计数”与“输出文档计数”进行比较 。 使用这种比较可以确定要在本文中查看的相关部分。
 
@@ -476,7 +476,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 在非 Azure Cosmos DB 帐户的区域中运行的查询，比在同一区域中运行的查询的延迟更高。 例如，如果在台式机上运行代码，则延迟比从 Azure Cosmos DB 所在的同一 Azure 区域中的某个虚拟机上运行查询要高出几十或几百毫秒（或更高）。 可以轻松[在 Azure Cosmos DB 中全局分发数据](distribute-data-globally.md)，以确保将数据置于更靠近应用的位置。
 
-### <a name="increase-provisioned-throughput"></a>增加预配的吞吐量
+### <a name="increase-provisioned-throughput"></a>增大预配吞吐量
 
 在 Azure Cosmos DB 中，预配的吞吐量以请求单位 (RU) 计量。 假设某个查询消耗 5 RU 吞吐量。 如果预配 1000 RU，则每秒可以运行该查询 200 次。 如果在没有足够可用吞吐量的情况下尝试运行查询，Azure Cosmos DB 将返回 HTTP 429 错误。 任何当前核心 (SQL) API SDK 在等待一小段时间后，都将自动重试该查询。 受限制的请求需要花费更长的时间，因此增加预配的吞吐量可以改进查询延迟。 可以在 Azure 门户的“指标”边栏选项卡上观察[受限制的请求总数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
 

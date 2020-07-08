@@ -1,52 +1,52 @@
 ---
-title: 在 Azure Cosmos DB 中弹性缩放 Cassandra API
-description: 了解可用于缩放 Azure Cosmos DB Cassandra API 帐户的选项及其优缺点
+title: Azure Cosmos DB 中 Cassandra API 的弹性缩放
+description: 了解可用于缩放 Azure Cosmos DB Cassandra API 帐户的选项及其优点/缺点
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 8f84d611ecdf3fc0f86273498753e550315cd878
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
-ms.translationtype: HT
+ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85119148"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>弹性缩放 Azure Cosmos DB Cassandra API 帐户
 
-有多种选项可用于探索 Azure Cosmos DB Cassandra API 的弹性特性。 若要了解如何在 Azure Cosmos DB 中有效地进行缩放，必须了解如何预配合适数量的请求单位（RU/秒），以考虑系统的性能需求。 若要了解请求单位的详细信息，请参阅[请求单位](request-units.md)一文。 
+有多种不同的选项可以探索 Azure Cosmos DB API for Cassandra 的弹性。 若要了解如何在 Azure Cosmos DB 中有效地进行缩放，必须了解如何预配合适数量的请求单位（RU/秒），以考虑系统的性能需求。 若要了解请求单位的详细信息，请参阅[请求单位](request-units.md)一文。 
 
-对于 Cassandra API，可以使用 [.NET 和 Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api) 检索各个查询的请求单位费用。 这有助于确定需要在服务中预配的 RU/秒的量。
+对于 Cassandra API，可以使用 [.NET 和 Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api) 检索单个查询的请求单位费用。 这有助于确定你在服务中需要预配的 RU 数/秒。
 
-![数据库操作消耗请求单位](./media/request-units/request-units.png)
+:::image type="content" source="./media/request-units/request-units.png" alt-text="数据库操作消耗请求单位" border="false":::
 
 ## <a name="handling-rate-limiting-429-errors"></a>处理速率限制（429 错误）
 
-如果客户端消耗的资源超过预配数量（RU/秒），Azure Cosmos DB 将返回速率限制 (429) 错误。 Azure Cosmos DB 中的 Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误。 
+如果客户端消耗的资源（RU/秒）超过了预配的量，Azure Cosmos DB 将返回速率限制 (429) 错误。 Azure Cosmos DB 中的 Cassandra API 在 Cassandra 本机协议中将这些异常解释为过载错误。 
 
-如果系统对延迟不敏感，那么通过使用重试来处理吞吐量速率限制就足够了。 请参阅 [Java 代码示例](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)，了解如何通过在 Java 中为 [ Cassandra 重试策略](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/)使用 [Azure Cosmos DB 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions)，以便以透明方式处理速率限制。 还可以使用 [Spark 扩展](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper)来处理速率限制。
+如果系统对延迟不敏感，使用重试可能就足以应对吞吐量速率限制。 请参阅 [Java 代码示例](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample)，了解如何通过 Java 使用用于 [Cassandra 重试策略](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/)的 [Azure Cosmos DB 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions)，从而以透明方式处理速率限制。 还可以使用 [Spark 扩展](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper)来处理速率限制。
 
 ## <a name="manage-scaling"></a>管理缩放
 
-如果需要最大程度地减少延迟，可以使用一系列选项来管理 Cassandra API 中的缩放和预配吞吐量 (RU)：
+如果需要最大程度地降低延迟，可以在 Cassandra API 中使用多种选项来管理缩放和预配吞吐量 (RU)：
 
 * [使用 Azure 门户手动管理](#use-azure-portal)
 * [使用控制平面功能以编程方式管理](#use-control-plane)
 * [通过将 CQL 命令与特定 SDK 结合使用以编程方式管理](#use-cql-queries)
 * [使用自动缩放动态管理](#use-autoscale)
 
-下面的几节介绍了这些方法的优缺点。 然后，可以确定最佳策略来平衡系统的缩放需求、整体成本和解决方案的效率需求。
+下面的几节介绍了这些方法的优缺点。 然后，可以确定最佳的策略，以便在系统的缩放需求、整体成本以及解决方案的效率需求之间做出平衡。
 
 ## <a name="use-the-azure-portal"></a><a id="use-azure-portal"></a>使用 Azure 门户
 
-可以使用 Azure 门户对 Azure Cosmos DB Cassandra API 帐户中的资源进行缩放。 若要了解详细信息，请参阅[在容器和数据库上预配吞吐量](set-throughput.md)一文。 本文介绍了在 Azure 门户中在[数据库](set-throughput.md#set-throughput-on-a-database)或[容器](set-throughput.md#set-throughput-on-a-container)级别设置吞吐量的相对权益。 这些文章中提到的“数据库”和“容器”术语分别映射到 Cassandra API 的“密钥空间”和“表”。
+可以使用 Azure 门户缩放 Azure Cosmos DB Cassandra API 帐户中的资源。 有关详细信息，请参阅有关[对容器和数据库预配吞吐量](set-throughput.md)的文章。 此文解释了通过 Azure 门户在[数据库](set-throughput.md#set-throughput-on-a-database)或[容器](set-throughput.md#set-throughput-on-a-container)级别设置吞吐量的相对优势。 这些文章中提到的术语“数据库”和“容器”分别对应于 Cassandra API 的“密钥空间”和“表”。
 
-此方法的优点是，它是管理数据库的吞吐容量的直接全包式方式。 不过，缺点在于，在许多情况下，缩放方法可能需要一定级别的自动化，以便既具有成本效益又具有高性能。 以下各节介绍相关的场景和方法。
+此方法的优点是能够以直截了当的统包方式管理数据库的吞吐量。 但缺点是，在许多情况下，缩放方法可能要求实现某些程度的自动化，它既要确保经济高效，同时又要具备高性能。 后续部分将介绍相关的方案和方法。
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>使用控制面板
 
-Azure Cosmos DB 的 Cassandra API 提供了使用各种控制平面功能以编程方式调整吞吐量的功能。 有关指导和示例，请参阅 [Azure 资源管理器](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples-cassandra.md) 和 [Azure CLI](cli-samples-cassandra.md) 文章。
+用于 Cassandra 的 Azure Cosmos DB API 提供使用各种控制平面功能以编程方式调整吞吐量的功能。 有关指导和示例，请参阅 [Azure 资源管理器](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples-cassandra.md) 和 [Azure CLI](cli-samples-cassandra.md) 文章。
 
 此方法的优点是可以根据计时器自动扩展或缩减资源，以反映活动的高峰或低活动期。 请参阅[此处](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)的示例，了解如何使用 Azure Functions 和 PowerShell 实现此目的。
 
@@ -54,9 +54,9 @@ Azure Cosmos DB 的 Cassandra API 提供了使用各种控制平面功能以编�
 
 ## <a name="use-cql-queries-with-a-specific-sdk"></a><a id="use-cql-queries"></a>将 CQL 查询与特定 SDK 配合使用
 
-可以通过对给定的数据库或容器执行 [CQL ALTER 命令](cassandra-support.md#keyspace-and-table-options)来使用代码动态缩放系统。
+可以针对给定的数据库或容器执行 [CQL ALTER 命令](cassandra-support.md#keyspace-and-table-options)，通过代码动态缩放系统。
 
-此方法的优点是，它使你能够以一种适合应用程序的自定义方式对缩放需求进行动态响应。 使用此方法，仍可利用标准 RU/秒的费用和速率。 如果系统的缩放需求大部分是可预测的（大约 70% 或更多），那么将 SDK 与 CQL 配合使用可能是一种比使用自动缩放更为经济高效的自动缩放方法。 此方法的缺点是，在速率限制可能会增加延迟的情况下，实现重试会相当复杂。
+此方法的优点在于，能够以适合应用程序的自定义方式动态应对缩放需求。 使用此方法，仍可利用标准 RU/秒的费用和速率。 如果系统的缩放需求大部分是可预测的（大约 70% 或更多），那么将 SDK 与 CQL 配合使用可能是一种比使用自动缩放更为经济高效的自动缩放方法。 此方法的缺点是，实现重试可能会很复杂，同时，速率限制可能会增大延迟。
 
 ## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>使用自动缩放预配吞吐量
 

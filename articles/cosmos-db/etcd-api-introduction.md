@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 16aac5c765c36c49919685ee58e8034786ddf1ae
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 208f0d73b4c8bb11adc9c73796ebc6a622f5ed50
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797364"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85118162"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB etcd API 简介（预览）
 
@@ -31,7 +31,7 @@ Azure Cosmos DB 实现 etcd 版本 3 的线路协议，并允许[主节点的](h
 
 下图显示了 Kubernetes 群集的组件。 在主群集中，API 服务器使用 Azure Cosmos DB etcd API，而不是本地安装的 etcd。 
 
-![Azure Cosmos DB 实现 etcd 线路协议](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+:::image type="content" source="./media/etcd-api-introduction/etcd-api-wire-protocol.png" alt-text="Azure Cosmos DB 实现 etcd 线路协议" border="false":::
 
 ## <a name="key-benefits"></a>主要优点
 

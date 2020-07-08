@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656629"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85116020"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB 分析存储（预览版）是什么？
 
@@ -44,7 +44,7 @@ Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延�
 
 例如，操作表采用下面的格式时：
 
-![示例操作表](./media/analytical-store-introduction/sample-operational-data-table.png)
+:::image type="content" source="./media/analytical-store-introduction/sample-operational-data-table.png" alt-text="示例操作表" border="false":::
 
 行存储会采用序列化格式将上面的数据按行保存到磁盘中。 此格式可以加快事务性读写和操作查询，如“返回产品 1 的相关信息”。 不过，随着数据集增大，如果你想要对数据运行复杂的分析查询，它的成本可能会很高。 例如，如果想要获取“‘设备’类别下的某个产品在不同业务单位和月份的销量趋势”，则需要运行复杂查询。 就预配的吞吐量而言，对此数据集执行大型扫描的成本可能会变得很高，这还可能会影响支持实时应用程序和服务的事务性工作负荷的性能。
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延�
 
 下图说明了 Azure Cosmos DB 中的事务性行存储与分析列存储：
 
-![Azure Cosmos DB 中的事务性行存储与分析列存储](./media/analytical-store-introduction/transactional-analytical-data-stores.png)
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 中的事务性行存储与分析列存储" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>分析工作负荷性能已分离
 

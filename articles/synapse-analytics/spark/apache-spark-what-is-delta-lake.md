@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85193373"
 ---
 # <a name="what-is-delta-lake"></a>什么是 Delta Lake？
 
@@ -22,7 +22,7 @@ Azure Synapse Analytics 与 Linux Foundation Delta Lake 兼容。 Delta Lake 是
 
 ## <a name="key-features"></a>主要功能
 
-| Feature | 说明 |
+| 功能 | 描述 |
 | --- | --- |
 | **ACID 事务** | 通常，数据 lake 是通过多个进程和管道填充的，其中一些是与读取并发编写的数据。 在增量 Lake 和事务添加之前，数据工程师必须经历手动错误的过程来确保数据完整性。 Delta Lake 将常见的 ACID 事务引入到数据 lake。 它提供 serializability，这是最强大的隔离级别。 [深入了解增量 Lake：解包事务日志](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html)。|
 | **可缩放的元数据处理** | 在大数据中，即使元数据本身也可以是 "大数据"。 Delta Lake 像数据一样处理元数据，利用 Spark 的分布式处理能力来处理其所有元数据。 因此，Delta Lake 可以轻松处理包含数十亿分区和文件的 pb 级表。 |

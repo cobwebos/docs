@@ -3,12 +3,12 @@ title: Azure 顾问入门
 description: Azure 顾问入门。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e91049077502a6c0eedf0a4f979c073690c214da
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259625"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117856"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 
@@ -27,7 +27,7 @@ ms.locfileid: "79259625"
 
 1. 顾问仪表板将显示针对所有所选订阅的建议的摘要。  可通过订阅筛选器下拉列表，选择要显示建议的订阅。
 
-1. 若要获取特定类别的建议，请单击其中一个选项卡：“高可用性”、“安全性”、“性能”或“成本”     。 
+1. 若要获取特定类别的建议，请单击其中一个选项卡：**可靠性**、**安全性**、**性能**或**成本**。 
 
    ![Azure 顾问仪表板](./media/advisor-overview/advisor-dashboard.png)
 
@@ -124,7 +124,8 @@ ms.locfileid: "79259625"
 若要详细了解顾问，请参阅以下资源：
 
 - [Azure 顾问简介](advisor-overview.md)
-- [顾问高可用性建议](advisor-high-availability-recommendations.md)
+- [顾问可靠性建议](advisor-high-availability-recommendations.md)
 - [顾问安全性建议](advisor-security-recommendations.md)
 - [顾问性能建议](advisor-performance-recommendations.md)
-- [顾问成本建议](advisor-performance-recommendations.md)
+- [顾问成本建议](advisor-cost-recommendations.md)
+- [顾问操作优秀建议](advisor-operational-excellence-recommendations.md)

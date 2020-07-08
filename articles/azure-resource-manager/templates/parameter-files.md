@@ -2,13 +2,13 @@
 title: 创建参数文件
 description: 创建用于在 Azure 资源管理器模板部署过程中传入值的参数文件
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: a9845bbb9e14288a01fb7836db260a2baf484395
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.date: 06/19/2020
+ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873091"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85117499"
 ---
 # <a name="create-resource-manager-parameter-file"></a>创建资源管理器参数文件
 
@@ -182,12 +182,18 @@ ms.locfileid: "83873091"
 }
 ```
 
+## <a name="deploy-template-with-parameter-file"></a>用参数文件部署模板
+
+请参阅：
+
+- [通过 ARM 模板和 Azure CLI 来部署资源](./deploy-powershell.md#pass-parameter-values)
+- [使用 ARM 模板和 Azure PowerShell 部署资源](./deploy-cli.md#parameters)
+
 ## <a name="file-name"></a>文件名
 
 命名参数文件的一般约定是将 .parameters 添加到模板名称。 例如，如果模板名为 azuredeploy.json，则参数文件名为 azuredeploy.parameters.json。 此命名约定可帮助你了解模板与参数之间的连接。
 
 若要部署到不同的环境，请创建多个参数文件。 命名参数文件时，可添加标识其用途的方式。 例如，使用 azuredeploy.parameters-dev.json 和 azuredeploy.parameters-prod.json
-
 
 ## <a name="parameter-precedence"></a>参数优先级
 
@@ -198,6 +204,7 @@ ms.locfileid: "83873091"
 ## <a name="parameter-name-conflicts"></a>参数名冲突
 
 如果模板包括的一个参数与 PowerShell 命令中的某个参数同名，PowerShell 使用后缀 **FromTemplate** 显示模板的参数。 例如，模板中名为 **ResourceGroupName** 的参数与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的 **ResourceGroupName** 参数冲突。 系统会提示你提供 **ResourceGroupNameFromTemplate** 的值。 可以使用不用于部署命令的参数命令来避免这种混乱。
+
 
 ## <a name="next-steps"></a>后续步骤
 

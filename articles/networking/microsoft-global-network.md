@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982796"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85125815"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全球网络
 
@@ -38,7 +38,7 @@ Microsoft 拥有并操作世界上最大的主干网络之一。 这种全球复
 
 例如，如果伦敦的用户尝试访问东京中的服务，则 Internet 流量将进入伦敦的一个边缘，通过 Microsoft WAN 通过法国，在欧洲和印度之间进行交易，并将其用于托管服务的位置。 响应流量是对称的。 这有时称为[冷刷路由](https://en.wikipedia.org/wiki/Hot-potato_and_cold-potato_routing)，这意味着在将流量移交之前，流量将在 Microsoft 网络上保持不变。  
   
-那么，在使用 Microsoft 服务时，这是否意味着任何流量？ 是的，数据中心之间的任何流量 Microsoft Azure 或 Microsoft 服务（例如虚拟机、Office 365、XBox、SQL 数据库、存储和虚拟网络）之间的任何流量都将在全球网络中进行路由，并从不通过公共 Internet 进行路由，以确保最佳的性能和完整性。  
+那么，在使用 Microsoft 服务时，这是否意味着任何流量？ 是的，数据中心之间的任何流量 Microsoft Azure 或 Microsoft 服务（例如虚拟机、Microsoft 365、XBox、SQL 数据库、存储和虚拟网络）之间的任何流量都在全球网络内路由，并从不通过公共 Internet 进行路由，以确保最佳的性能和完整性。  
  
 在大都市、地面和海底路径之间实现巨大的大规模投资，在加油站云和联机服务的极端增长时，这对我们来说是保持一致和高的服务级别。 全局网络的最新新增功能是我们的[MAREA](https://www.submarinecablemap.com/#/submarine-cable/marea)海底缆线、行业的第一个开源系统（OLS） over Subsea、Bilbao、西班牙和弗吉尼亚海滩、弗吉尼亚州、美国、美国和美国纽约、美国和都柏林之间、爱尔兰和新[的北京](https://www.submarinecablemap.com/#/submarine-cable/aeconnect-1) [（](https://www.submarinecablemap.com/#/submarine-cable/new-cross-pacific-ncp-cable-system) 
  

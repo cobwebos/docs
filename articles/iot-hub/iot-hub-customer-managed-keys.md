@@ -6,20 +6,21 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 06/17/2020
 ms.author: asrastog
-ms.openlocfilehash: 609f68c79159c4ce17468fc1df13c0c9eae7f211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83d2fa59654e038586a7f23eedbe7c656873f35c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370570"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84976568"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-iot-hub"></a>通过 IoT 中心的客户托管密钥加密静态数据
 
-IoT 中心支持静态数据和客户管理的密钥（CMK）（也称为自带密钥（BYOK））支持 Azure IoT 中心。 Azure IoT 中心提供静态数据和传输中的数据加密。 默认情况下，IoT 中心使用 Microsoft 托管的密钥来加密数据。 使用 CMK 支持，客户现在可以选择使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)的客户管理的密钥加密密钥来加密静态数据。
+IoT 中心支持静态数据加密与客户托管的密钥（CMK），也称为自带密钥（BYOK）。 Azure IoT 中心提供静态数据和传输中的数据加密，因为它是在我们的数据中心编写的，在你访问数据时对数据进行解密。 默认情况下，IoT 中心使用 Microsoft 托管的密钥来加密静态数据。 使用 CMK，可以根据默认加密获取另一层加密，还可以选择使用密钥加密密钥加密静态数据，并通过[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)进行管理。 这使你可以灵活地创建、轮换、禁用和撤消访问控制。 如果为 IoT 中心配置 BYOK，我们还提供双加密，这提供了另一层保护，同时允许你通过 Azure Key Vault 控制加密密钥。
 
-此功能需要在以下区域之一创建新的 IoT 中心（基本或标准层）：美国东部、美国西部2、美国中南部或 US Gov。 若要尝试此功能，请通过[Microsoft 支持](https://azure.microsoft.com/support/create-ticket/)联系我们。 联系 Microsoft 支持部门时，共享公司名称和订阅 ID。
+此功能需要创建新的 IoT 中心（"基本" 或 "标准" 层）。 若要尝试此功能，请通过[Microsoft 支持](https://azure.microsoft.com/support/create-ticket/)联系我们。 联系 Microsoft 支持部门时，共享公司名称和订阅 ID。
+
 
 ## <a name="next-steps"></a>后续步骤
 

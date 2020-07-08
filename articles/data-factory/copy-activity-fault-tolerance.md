@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: a44703aabc35131cf040892999409173638437a7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 6b172a6e15cbb22c3a0a16cb1e238ddfe45048bf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85130766"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -70,7 +70,7 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
      } 
 } 
 ```
-properties | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | 一组属性，用于指定在数据移动过程中要跳过的失败类型。 | | 否
 fileMissing | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过在复制 ADF 时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
@@ -78,7 +78,22 @@ fileForbidden | SkipErrorFile 属性包中的一个键值对，用来确定当�
 dataInconsistency | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过源和目标存储之间不一致的数据。 <br/> -True：要通过跳过不一致的数据来复制其余内容。 <br/> -False：找到不一致的数据后要中止复制活动。 <br/>请注意，仅当你将 validateDataConsistency 设置为 True 时，此属性才有效。 | True <br/>False（默认值） | 否
 logStorageSettings  | 当要记录跳过的对象名称时可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的链接服务，用于存储会话日志文件。 | `AzureBlobStorage` 或 `AzureBlobFS` 类型链接服务的名称，指代用于存储日志文件的实例。 | 否
-路径 | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
+path | 日志文件的路径。 | 指定用于存储日志文件的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
+
+> [!NOTE]
+> 下面是在复制二进制文件时，在复制活动中启用容错的先决条件。
+> 用于在从源存储中删除特定文件时跳过这些文件：
+> - 源数据集和接收器数据集必须是二进制格式，且无法指定压缩类型。 
+> - 支持的数据存储类型为 Azure Blob 存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure 文件存储、文件系统、FTP、SFTP、Amazon S3、Google Cloud Storage 和 HDFS。
+> - 仅当你在源数据集中指定多个文件（可以是文件夹、通配符或文件列表）时，复制活动才能跳过特定错误文件。 如果要将源数据集中的单个文件指定为复制到目标，则如果出现任何错误，复制活动会失败。
+>
+> 用于从源存储禁止访问特定文件时跳过这些文件：
+> - 源数据集和接收器数据集必须是二进制格式，且无法指定压缩类型。 
+> - 支持的数据存储类型为 Azure Blob 存储、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure 文件存储、SFTP、Amazon S3 和 HDFS。
+> - 仅当你在源数据集中指定多个文件（可以是文件夹、通配符或文件列表）时，复制活动才能跳过特定错误文件。 如果要将源数据集中的单个文件指定为复制到目标，则如果出现任何错误，复制活动会失败。
+>
+> 用于在源和目标存储之间验证不一致时跳过特定文件：
+> - 可从[此处](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency)获取数据一致性文档的更多详细信息。
 
 ### <a name="monitoring"></a>监视 
 
@@ -111,9 +126,9 @@ linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-s
 
 列 | 说明 
 -------- | -----------  
-时间戳 | ADF 跳过文件时的时间戳。
-级别 | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
-OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”以指定要跳过的文件。
+Timestamp | ADF 跳过文件时的时间戳。
+Level | 此项的日志级别。 对于显示文件跳过的项，它将处于“警告”级别。
+OperationName | 每个文件上的 ADF 复制活动操作行为。 它将为“FileSkip”，以指定要跳过的文件。
 OperationItem | 要跳过的文件名。
 消息 | 说明为何要跳过文件的详细信息。
 
@@ -137,7 +152,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 
 - **源与接收器之间的列数不匹配**。
 
-    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含多于六个列的 CSV 文件行会被检测为不兼容，并被跳过。
+    例如：使用包含六个列的架构定义，将数据从 Blob 存储中的 CSV 文件复制到 SQL 数据库。 包含六个列的 CSV 文件行会成功复制到接收器存储。 包含多于六列的 CSV 文件行将检测为不兼容，并被跳过。
 
 - 写入 SQL Server/Azure SQL 数据库/Azure Cosmos DB 时发生主键冲突。
 
@@ -146,7 +161,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 >[!NOTE]
 >- 若要使用 PolyBase 将数据加载到 SQL 数据仓库中，请配置 PolyBase 的本机容错设置，方法是在复制活动中通过“[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)”指定拒绝策略。 同时，仍然可以正常启用将 PolyBase 不兼容行重定向到 Blob 或 ADLS，如下所示。
 >- 将复制活动配置为调用 [AmazonRedShift 卸载](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)时，此功能不适用。
->- 将复制活动配置为调用 [SQL 接收器的存储过程](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)时，此功能不适用。
+>- 当复制活动配置为调用 [SQL 接收器中的存储过程](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)时，此功能不适用。
 
 ### <a name="configuration"></a>配置
 下面的 JSON 定义示例用于配置在复制活动中跳过不兼容行：
@@ -170,12 +185,12 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-properties | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 logStorageSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) 的链接服务，用于存储包含已跳过行的日志。 | `AzureBlobStorage` 或 `AzureBlobFS` 类型链接服务的名称，指代用于存储日志文件的实例。 | 否
-路径 | 包含已跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
+path | 包含已跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
 
 ### <a name="monitor-skipped-rows"></a>监视跳过的行
 复制活动运行完成后，可以在复制活动输出中看到跳过的行数：
@@ -200,8 +215,8 @@ linkedServiceName | [Azure Blob 存储](connector-azure-blob-storage.md#linked-s
 
 列 | 说明 
 -------- | -----------  
-时间戳 | ADF 跳过不兼容行时的时间戳
-级别 | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
+Timestamp | ADF 跳过不兼容行时的时间戳
+Level | 此项的日志级别。 如果此项显示跳过的行，它将处于“警告”级别
 OperationName | 每个行上的 ADF 复制活动操作行为。 它将为“TabularRowSkip”以指定已跳过特定不兼容行
 OperationItem | 源数据存储中的已跳过行。
 消息 | 说明此特定行不兼容性的详细信息。
@@ -244,12 +259,12 @@ Timestamp, Level, OperationName, OperationItem, Message
 }
 ```
 
-properties | 说明 | 允许的值 | 必选
+properties | 描述 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
 linkedServiceName | [Azure 存储](connector-azure-blob-storage.md#linked-service-properties)或 [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) 的链接服务，用于存储包含跳过的行的记录。 | `AzureStorage` 或 `AzureDataLakeStore` 类型链接服务的名称，指代要用于存储日志文件的实例。 | 否
-路径 | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
+path | 包含跳过行的日志文件的路径。 | 指定要用于记录不兼容数据的路径。 如果未提供路径，服务会为用户创建一个容器。 | 否
 
 ### <a name="monitor-skipped-rows"></a>监视跳过的行
 复制活动运行完成后，可以在复制活动输出中看到跳过的行数：

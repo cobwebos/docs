@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3b390ffa20cf3cf79b8fb6311ad05b2978bd5d24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655782"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85124436"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>将来宾 OS 指标发送到 Azure Monitor 指标存储经典云服务 
 
@@ -46,7 +46,7 @@ ms.locfileid: "77655782"
 
 ## <a name="create-a-service-principal"></a>创建服务主体 
 
-遵照[使用门户创建可访问资源的 Azure Active Directory 应用程序和服务主体](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)中的说明，在 Azure Active Directory 租户中创建服务主体。 在完成此过程时请注意以下几点： 
+按照使用门户中的说明创建[可访问资源的 Azure Active Directory 应用程序和服务主体，](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)在 Azure Active Directory 租户中创建服务主体。 在完成此过程时请注意以下几点： 
 
 - 可以输入任何 URL 作为登录 URL。  
 - 为此应用创建新的客户端机密。  

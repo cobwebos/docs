@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/27/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261718"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078090"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
 
@@ -43,7 +43,7 @@ ms.locfileid: "79261718"
 
 如果没有电子邮件，可以通过以下步骤来查找待审批的访问请求。
 
-1. 在上[https://myaccess.microsoft.com](https://myaccess.microsoft.com)登录到 "我的访问门户"。  （对于美国政府版，"我的 Access 门户" 链接中的`myaccess.microsoft.us`域将为。）
+1. 在上登录到 "我的访问门户" [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。  （对于美国政府版，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。）
 
 1. 在左侧菜单中，单击“审批”即可看到待审批的访问请求列表。****
 
@@ -61,7 +61,7 @@ ms.locfileid: "79261718"
 
     详细信息包括用户的姓名、组织、访问开始和结束日期（如果已提供）、业务理由、提交请求时间以及请求过期时间。
 
-1. 单击“批准”或“拒绝”。********
+1. 单击“批准”或“拒绝”。 
 
 1. 必要时输入原因。
 

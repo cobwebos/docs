@@ -8,24 +8,24 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: fa899764e4e80e7eba849e02d617c8c1ca2ae410
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 587e339f2c2d91792ef1c342f7a1f8363da63626
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792694"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85106016"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
-Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
+Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可以包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。
 
 > [!NOTE]
-> Azure 现在有一个服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器建立在 Packer 的基础之上，因此你甚至可以使用现有的 Packer shell 配置程序脚本。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 LINUX VM](image-builder.md)。
+> Azure 现推出一项服务，即 Azure 映像生成器（预览版），用于定义和创建自己的自定义映像。 Azure 映像生成器基于 Packer 构建，因此你可以将现有 Packer shell 配置程序脚本与之配合使用。 若要开始使用 Azure 映像生成器，请参阅[使用 Azure 映像生成器创建 LINUX VM](image-builder.md)。
 
 
 ## <a name="create-azure-resource-group"></a>创建 Azure 资源组
-在生成过程中，Packer 会在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
+生成过程中，Packer 将在生成源 VM 时创建临时 Azure 资源。 要捕获该源 VM 用作映像，必须定义资源组。 Packer 生成过程的输出存储在此资源组中。
 
-使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：  
+使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -33,7 +33,7 @@ az group create -n myResourceGroup -l eastus
 
 
 ## <a name="create-azure-credentials"></a>创建 Azure 凭据
-Packer 使用服务主体向 Azure 进行身份验证。 Azure 服务主体是可用于应用、服务和 Packer 等自动化工具的安全标识。 控制和定义服务主体可在 Azure 中执行哪些操作的权限。
+使用服务主体通过 Azure 对 Packer 进行身份验证。 Azure 服务主体是可与应用、服务和自动化工具（如 Packer）结合使用的安全性标识。 用户控制和定义服务主体可在 Azure 中执行的操作的权限。
 
 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp) 创建服务主体并输出 Packer 需要的凭据：
 
@@ -41,7 +41,7 @@ Packer 使用服务主体向 Azure 进行身份验证。 Azure 服务主体是�
 az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, tenant_id: tenant }"
 ```
 
-前述命令的输出示例如下所示：
+前面命令的输出示例如下所示：
 
 ```output
 {
@@ -61,18 +61,18 @@ az account show --query "{ subscription_id: id }"
 
 
 ## <a name="define-packer-template"></a>定义 Packer 模板
-若要生成映像，需创建一个模板作为 JSON 文件。 在模板中，定义执行实际生成过程的生成器和配置器。 Packer 具有[用于 Azure 的配置器](https://www.packer.io/docs/builders/azure.html)，可用于定义 Azure 资源，如在前面创建的服务主体凭据。
+若要生成映像，请创建一个模板作为 JSON 文件。 在模板中，定义执行实际生成过程的生成器和设置程序。 Packer 具有[用于 Azure 的配置器](https://www.packer.io/docs/builders/azure.html)，可用于定义 Azure 资源，如在前面创建的服务主体凭据。
 
 创建名为 ubuntu.json** 的文件并粘贴以下内容。 为以下内容输入自己的值：
 
 | 参数                           | 获取位置 |
 |-------------------------------------|----------------------------------------------------|
-| *client_id*                         | `az ad sp` 创建命令的第一行输出 - appId** |
-| *client_secret*                     | `az ad sp` 创建命令的第二行输出 - password** |
-| *tenant_id*                         | `az ad sp` 创建命令的第三行输出 - tenant** |
-| *subscription_id*                   | `az account show` 命令的输出 |
-| managed_image_resource_group_name** | 在第一步中创建的资源组的名称 |
-| managed_image_name**                | 创建的托管磁盘映像的名称 |
+| client_id                         | `az ad sp` 创建命令的第一行输出 - appId** |
+| client_secret                     | `az ad sp` 创建命令的第二行输出 - password** |
+| tenant_id                         | `az ad sp` 创建命令的第三行输出 - tenant** |
+| subscription_id                   | `az account show` 命令的输出 |
+| *managed_image_resource_group_name* | 在第一步中创建的资源组的名称 |
+| *managed_image_name*                | 创建的托管磁盘映像的名称 |
 
 
 ```json
@@ -124,7 +124,7 @@ az account show --query "{ subscription_id: id }"
 
 
 ## <a name="build-packer-image"></a>生成 Packer 映像
-如果尚未在本地计算机上安装 Packer，[请按照 Packer 安装说明进行安装](https://www.packer.io/docs/install/index.html)。
+如果本地计算机上尚未安装 Packer，请[按照 Packer 安装说明](https://www.packer.io/docs/install)进行安装。
 
 通过指定 Packer 模板文件生成映像，如下所示：
 
@@ -132,7 +132,7 @@ az account show --query "{ subscription_id: id }"
 ./packer build ubuntu.json
 ```
 
-前述命令的输出示例如下所示：
+前面命令的输出示例如下所示：
 
 ```output
 azure-arm output will be in this color.
@@ -193,7 +193,7 @@ ManagedImageName: myPackerImage
 ManagedImageLocation: eastus
 ```
 
-Packer 生成 VM、运行配置程序以及清理部署需要几分钟时间。
+Packer 需要几分钟时间来生成 VM、运行设置程序并清理部署。
 
 
 ## <a name="create-vm-from-azure-image"></a>从 Azure 映像创建 VM
@@ -222,10 +222,10 @@ az vm open-port \
 ```
 
 ## <a name="test-vm-and-nginx"></a>测试 VM 和 NGINX
-现可打开 Web 浏览器，并在地址栏中输入 `http://publicIpAddress`。 在 VM 创建过程中提供自己的公共 IP 地址。 默认 NGINX 页如以下示例所示：
+现可打开 Web 浏览器，并在地址栏中输入 `http://publicIpAddress` 。 在 VM 创建过程中提供自己的公共 IP 地址。 默认 NGINX 页如以下示例所示：
 
 ![NGINX 默认站点](./media/build-image-with-packer/nginx.png) 
 
 
 ## <a name="next-steps"></a>后续步骤
-还可以将现有的 Packer 配置程序脚本用于[Azure 映像生成器](image-builder.md)。
+你还可以将现有的 Packer 配置程序脚本与 [Azure 映像生成器](image-builder.md)配合使用。
