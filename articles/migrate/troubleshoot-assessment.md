@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127676"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611367"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -47,18 +47,27 @@ ms.locfileid: "80127676"
 由于内部错误，无法确定 VM 适用性 | 请尝试为组创建一个新评估。
 由于出现内部错误，无法确定一个或多个磁盘的适用性 | 请尝试为组创建一个新评估。
 由于出现内部错误，无法确定一个或多个网络适配器的适用性 | 请尝试为组创建一个新评估。
+找不到产品/服务币种预订实例的 VM 大小 | 标记为 "不适用" 的计算机，原因是找不到所选 RI、产品/服务和货币组合的 VM 大小。 编辑评估属性以选择有效的组合，并重新计算评估。 
+有条件地准备好 Internet 协议 | 仅适用于 Azure VMware 解决方案（AVS）评估。 AVS 不支持 IPv6 internet 地址因素。如果检测到你的计算机有 IPv6，请联系 AVS 团队以获取补救指导。
 
-## <a name="linux-vms-are-conditionally-ready"></a>Linux Vm 的 "有条件准备"
+## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>在基于导入的 AVS 评估中标记为未知的建议迁移工具
 
-服务器评估将 Linux Vm 标记为 "有条件就绪"，因为服务器评估中有一个已知的间隔。
+对于通过 CSV 文件导入的计算机，和 AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+
+## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux Vm 在 Azure VM 评估中 "有条件地就绪"
+
+对于 VMware 和 Hyper-v Vm，服务器评估会将 Linux Vm 标记为 "有条件就绪"，因为服务器评估中有一个已知的间隔。 
 
 - 该间隔使其无法检测本地 Vm 上安装的 Linux 操作系统的次版本。
-- 例如，对于 RHEL 6.10，当前服务器评估只检测到 RHEL 6 作为操作系统版本。
+- 例如，对于 RHEL 6.10，当前服务器评估只检测到 RHEL 6 作为操作系统版本。 这是因为 vCenter Server ar，Hyper-v 主机不提供 Linux VM 操作系统的内核版本。
 -  由于 Azure 予以认可仅特定版本的 Linux，因此 Linux Vm 当前在服务器评估中被标记为有条件准备就绪。
 - 可以通过查看[Azure Linux 支持](https://aka.ms/migrate/selfhost/azureendorseddistros)来确定本地 VM 上运行的 Linux 操作系统是否已在 azure 中认可。
 -  验证了认可的分发后，可以忽略此警告。
 
-## <a name="azure-skus-bigger-than-on-premises"></a>Azure Sku 大于本地
+可以通过在 VMware Vm 上启用[应用程序发现](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)来解决这种缺口。 服务器评估使用提供的来宾凭据从虚拟机中检测到的操作系统。 在 Windows 和 Linux Vm 情况下，此操作系统数据会标识正确的操作系统信息。
+
+
+## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Sku 大于本地的 Azure VM 评估
 
 基于评估类型，Azure Migrate Server 评估可能会推荐 Azure VM Sku，其中包含的内核和内存比当前本地分配更多：
 
@@ -76,7 +85,7 @@ ms.locfileid: "80127676"
 - 如果评估基于性能，则建议使用有效的 CPU 和内存利用率（4个内核的 50% * 1.3 = 2.6 个核心和 8 GB 内存的 50% * 1.3 = 5.3 =），建议使用四个核心的最便宜的 VM SKU （最接近受支持的核心计数）和 8 GB 内存（最近支持的内存大小）。
 - [详细了解](concepts-assessment-calculation.md#types-of-assessments)评估大小。
 
-## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure 磁盘 Sku 大于本地
+## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure 磁盘 Sku 大于在 Azure VM 评估中本地
 
 Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 - 服务器评估中的磁盘大小调整取决于两个评估属性：大小调整条件和存储类型。
@@ -94,14 +103,37 @@ Azure Migrate Server 评估可能会根据评估类型建议更大的磁盘。
 - 如果缺少任何性能计数器，Azure Migrate 服务器评估将回退到分配的内核和内存，并建议相应的 VM 大小。
 - 如果所有性能计数器都丢失，请确保满足评估的端口访问要求。 详细了解[VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access)、 [hyper-v](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access)和[物理](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access)服务器评估的端口访问要求。
 
-## <a name="is-the-operating-system-license-included"></a>是否包含操作系统许可证？
+## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Azure VM 评估中是否包含操作系统许可证？
 
 Azure Migrate Server 评估目前只考虑 Windows 计算机的操作系统许可成本。 目前未考虑 Linux 计算机的许可成本。
 
-## <a name="how-does-performance-based-sizing-work"></a>基于性能的大小调整如何工作？
+## <a name="how-does-performance-based-sizing-work-in-an-azure-vm-assessment"></a>基于性能的大小调整如何在 Azure VM 评估中工作？
 
 服务器评估不断收集本地计算机的性能数据，并使用它来针对 Azure 中的 VM SKU 和磁盘 SKU 提出建议。 [了解如何](concepts-assessment-calculation.md#calculate-sizing-performance-based)收集基于性能的数据。
 
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>为什么我的评估显示某个警告，指出它是通过无效的保留实例、VM 运行时间和折扣（%）组合创建的
+选择 "保留实例" 时，"折扣（%）""VM 运行时间" 属性不适用。 当你的评估创建时使用了这些属性的无效组合时，"编辑" 和 "重新计算" 按钮会被禁用。 请创建新的评估。 [了解详细信息](https://go.microsoft.com/fwlink/?linkid=2131554)。
+
+## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>我看不到物理服务器上的某些网络适配器的性能数据
+
+如果物理服务器启用了 Hyper-v 虚拟化，则会发生这种情况。 在这些服务器上，由于产品缺口，Azure Migrate 当前同时发现物理和虚拟网络适配器。 仅捕获虚拟网络适配器上的网络吞吐量。
+
+## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>物理服务器的建议 Azure VM SKU 太大
+
+如果物理服务器启用了 Hyper-v 虚拟化，则会发生这种情况。 在这些服务器上，Azure Migrate 当前同时发现物理和虚拟网络适配器。 因此，不会。 发现的网络适配器的数量高于实际值。 服务器评估选择的 Azure VM 可支持所需数量的网络适配器，这可能会导致超大 VM。 [了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing)有关 "否" 的影响的详细信息。 大小上的网络适配器。 这是未来将解决的产品缺口。
+
+## <a name="readiness-category-not-ready-for-my-physical-server"></a>适用于物理服务器的准备情况类别 "未就绪"
+
+如果启用了 Hyper-v 虚拟化的物理服务器，则准备情况类别可能会错误地标记为 "未就绪"。 在这些服务器上，由于产品缺口，Azure Migrate 当前同时发现物理适配器和虚拟适配器。 因此，不会。 发现的网络适配器的数量高于实际值。 在本地和基于性能的评估中，服务器评估将选择可支持所需数量的网络适配器的 Azure VM。 如果发现的网络适配器数量大于32，则最大值为 "否"。 对于 Azure Vm 支持的 Nic，该计算机将被标记为 "未就绪"。  [了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing)有关 "否" 的影响的详细信息。 大小的 Nic。
+
+
+## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>已发现的 Nic 数高于物理服务器的实际 Nic 数
+
+如果物理服务器启用了 Hyper-v 虚拟化，则会发生这种情况。 在这些服务器上，Azure Migrate 当前同时发现物理适配器和虚拟适配器。 因此，不会。 发现的 Nic 比实际数量高。
+
+
+## <a name="low-confidence-rating-on-physical-server-assessments"></a>对物理服务器评估的置信度较低
+根据计算评估所需的数据点的可用性来分配评级。 如果物理服务器启用了 Hyper-v 虚拟化，则会出现一个已知的产品缺口，因为可能会错误地将低置信度级别分配给物理服务器评估。 在这些服务器上，Azure Migrate 当前同时发现物理适配器和虚拟适配器。 网络吞吐量是在发现的虚拟网络适配器上捕获的，而不是在物理网络适配器上。 由于物理网络适配器上缺少数据点，置信度可能会受到影响，从而降低评级。 这是未来将解决的产品缺口。
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure 政府版中的依赖项可视化
 
@@ -113,7 +145,7 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 
 对于 Windows VM：
 1. 在控制面板中，启动 MMA。
-2. 在**Microsoft Monitoring Agent properties** > **Azure Log Analytics （OMS）** 中，确保工作区的**状态**为绿色。
+2. 在**Microsoft Monitoring Agent properties**  >  **Azure Log Analytics （OMS）** 中，确保工作区的**状态**为绿色。
 3. 如果状态不是绿色，请尝试删除工作区，并再次将其添加到 MMA。
 
     ![MMA 状态](./media/troubleshoot-assessment/mma-properties.png)
@@ -127,15 +159,14 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 
 ## <a name="visualize-dependencies-for--hour"></a>可视化 > 小时的依赖项
 
-尽管 Azure Migrate 允许您返回到上个月的特定日期，但您可以对依赖项进行可视化的最长持续时间为一小时。
+使用无代理依赖项分析时，可以可视化依赖项或将其导出到地图中，持续时间最长为30天。
 
-例如，你可以使用 "依赖关系映射" 中的 "持续时间" 功能来查看昨天的依赖项，但你可以仅查看一小时的时间段。
-
-但是，可以使用 Azure Monitor 日志来查询更长时间[的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+使用基于代理的依赖项分析时，尽管 Azure Migrate 允许您返回到上个月的特定日期，但您可以可视化依赖项的最长持续时间为一小时。 例如，你可以使用 "依赖关系映射" 中的 "持续时间" 功能来查看昨天的依赖项，但你可以仅查看一小时的时间段。 但是，可以使用 Azure Monitor 日志来查询更长时间[的依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
 
 ## <a name="visualized-dependencies-for--10-machines"></a>可视化 > 10 计算机的依赖项
 
-在 Azure Migrate 服务器评估中，可以可视化最多包含10个 Vm[的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 对于更大的组，我们建议将 Vm 拆分为较小的组，以可视化依赖项。
+在 Azure Migrate 服务器评估中，通过基于代理的依赖项分析，可以可视化最多包含10个 Vm[的组的依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 对于更大的组，我们建议将 Vm 拆分为较小的组，以可视化依赖项。
+
 
 ## <a name="machines-show-install-agent"></a>计算机显示 "安装代理"
 
@@ -147,12 +178,15 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 - 如果 MAC 和 IP 地址与本地不同，Azure Migrate 不会将本地计算机与任何服务映射的依赖关系数据相关联。 在这种情况下，它将显示安装代理的选项，而不是查看依赖项。
 - 在测试迁移到 Azure 后，本地计算机仍按预期方式开启。 在 Azure 中启动的等效计算机获取不同的 MAC 地址，并可能获取不同的 IP 地址。 除非您阻止来自这些计算机的传出 Azure Monitor 日志流量，否则 Azure Migrate 不会将本地计算机与任何服务映射依赖关系数据相关联，因此将显示安装代理的选项，而不是查看依赖项。
 
+## <a name="dependencies-export-csv-shows-unknown-process"></a>依赖项导出 CSV 显示 "未知进程"
+在无代理依赖项分析中，会尽力地捕获进程名称。 在某些情况下，尽管将捕获源和目标服务器名称以及目标端口，但在依赖项的两端确定进程名称是不可行的。 在这种情况下，该过程将被标记为 "未知进程"。
+
 
 ## <a name="capture-network-traffic"></a>捕获网络流量
 
 收集网络流量日志，如下所示：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 按 F12 开始开发人员工具。 如果需要，请清除 "**在导航上清除条目**" 设置。
 3. 选择 "**网络**" 选项卡，开始捕获网络流量：
    - 在 Chrome 中，选择“保留日志”****。 记录应自动启动。 红色圆圈表示正在捕获流量。 如果未显示红色圆圈，请选择要开始的黑色圆圈。
@@ -165,6 +199,15 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
    - 在 Chrome 中，右键单击控制台日志中的任意位置。 选择 "**另存为**"、"导出" 和 "压缩日志"。
    - 在 Microsoft Edge 或 Internet Explorer 中，右键单击错误并选择 "**全部复制**"。
 7. 关闭“开发人员工具”。
+
+
+## <a name="where-is-the-operating-system-data-in-my-assessment-discovered-from"></a>从何处发现我的评估中的操作系统数据？
+
+- 对于 VMware Vm，默认情况下，它是 vCenter 提供的操作系统数据。 
+   - 对于 VMware linux Vm，如果启用了应用程序发现，则从来宾 VM 提取 OS 详细信息。 若要检查评估中的哪些 OS 详细信息，请前往 "发现的服务器" 视图，然后将鼠标悬停在 "操作系统" 列中的值上。 在弹出的文本中，你将能够看到你看到的 OS 数据是从 vCenter 服务器还是使用 VM 凭据从来宾 VM 中收集的。 
+   - 对于 Windows Vm，将始终从 vCenter Server 获取操作系统详细信息。
+- 对于 Hyper-v Vm，操作系统数据是从 Hyper-v 主机上收集的
+- 对于物理服务器，它是从服务器中提取的。
 
 ## <a name="next-steps"></a>后续步骤
 

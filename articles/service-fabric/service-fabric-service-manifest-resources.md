@@ -3,23 +3,23 @@ title: 指定 Service Fabric 服务终结点
 description: 如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 458a10ca118bbb14f22ad9b1ae127c2036573db9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417596"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610738"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
-服务清单允许声明或更改服务使用的资源，而无需更改已编译的代码。 Service Fabric 支持对服务的终结点资源进行配置。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。 资源的声明允许在部署时更改这些资源，这意味着服务不需要引入新的配置机制。 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+服务清单允许声明或更改服务要使用的资源而无需更改已编译的代码。 Service Fabric 支持对服务的终结点资源进行配置。 可以通过应用程序清单中的 SecurityGroup 控制对服务清单中指定资源的访问。 资源的声明允许在部署时更改这些资源，这意味着服务不需要引入新的配置机制。 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 ## <a name="endpoints"></a>终结点
 在服务清单中定义了终结点资源时，如果未显式指定端口，则 Service Fabric 从保留的应用程序端口范围中分配端口。 例如，可以查看本段落后面提供的清单代码段中指定的终结点 *ServiceEndpoint1* 。 此外，服务还可以请求在资源中使用特定端口。 在不同群集节点上运行的服务副本可以分配不同的端口号，而运行在同一节点上的服务副本共享同一个端口。 之后服务副本可根据需要将这些端口用于复制和侦听客户端请求。
 
-激活指定 https 终结点的服务后，Service Fabric 将设置该端口的访问控制项，将指定的服务器证书绑定到该端口，还会将该服务正在运行的标识授予该证书的私钥的权限。 Service Fabric 每次启动时或者在应用程序的证书声明通过升级进行更改时，将调用激活流程。 还会监视端点证书的更改/续订，并根据需要定期重新应用权限。
+激活指定 https 终结点的服务后，Service Fabric 将设置端口的访问控制项，将指定的服务器证书绑定到端口，还会向证书的私钥授予该服务作为权限运行的标识。 每次启动 Service Fabric 时，或通过升级更改应用程序的证书声明时，都会调用激活流。 还会监视终结点证书的更改/续订，并根据需要定期重新应用相应的权限。
 
-服务终止后，Service Fabric 会清理终结点访问控制项，并删除证书绑定。 但是，任何应用于证书私钥的权限都不会被清除。
+服务终止后，Service Fabric 会清理终结点访问控制条目，并删除证书绑定。 但是，任何应用于证书私钥的权限都不会被清除。
 
 > [!WARNING] 
 > 根据设计，静态端口不应与 ClusterManifest 中指定的应用程序端口范围重叠。 如果指定静态端口，请将其分配到应用程序端口范围外，否则会导致端口冲突。 对于版本 6.5CU2，当我们检测到此类冲突时，我们将发出**运行状况警告**，但让部署继续与已发布的 6.5 行为同步。 但是，我们可能会在下一个主要版本中阻止应用程序部署。
@@ -37,7 +37,7 @@ ms.locfileid: "81417596"
 </Resources>
 ```
 
-如果在单个服务包中有多个代码包，则还需要在“终结点”**** 部分中引用代码包。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是同一个服务包中引用不同代码包的终结点，则对应于每个终结点的代码包按如下所示说明：
+如果在单个服务包中有多个代码包，则还需要在“终结点”部分中引用代码包。  例如，如果 **ServiceEndpoint2a** 和 **ServiceEndpoint2b** 是同一个服务包中引用不同代码包的终结点，则对应于每个终结点的代码包按如下所示说明：
 
 ```xml
 <Resources>
@@ -52,8 +52,6 @@ ms.locfileid: "81417596"
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>示例：为服务指定 HTTP 终结点
 以下服务清单在 &lt;Resources&gt; 元素中定义了 1 个 TCP 终结点资源和 2 个 HTTP 终结点资源。
-
-HTTP 终结点由 Service Fabric 自动建立 ACL。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,14 +102,14 @@ HTTP 终结点由 Service Fabric 自动建立 ACL。
 HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进行加密。 若要在 Service Fabric 服务上启用 HTTPS，请在服务清单的“*资源 -> 终结点 -> 终结点*”部分中指定该协议，如前面针对终结点 *ServiceEndpoint3* 的操作所示。
 
 > [!NOTE]
-> 在应用程序升级期间不能更改服务的协议。 如果在升级期间进行了更改，那将是一项重大的更改。
+> 在应用程序升级期间不能更改服务的协议。 如果在升级期间进行了更改，那会是一项重大的更改。
 > 
 
 > [!WARNING] 
 > 使用 HTTPS 时，请勿将同一端口和证书用于已部署到同一节点的不同服务实例（独立于应用程序）。 在不同的应用程序实例中使用相同的端口升级两个不同的服务将导致升级失败。 有关详细信息，请参阅[使用 HTTPS 终结点升级多个应用程序](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)。
 >
 
-下面是演示 HTTPS 终结点所需配置的示例 Applicationmanifest.xml。 服务器/终结点证书可能由指纹或使用者公用名声明，必须提供一个值。 EndpointRef 是对 Servicemanifest.xml 中 EndpointResource 的引用，其协议必须设置为 "https" 协议。 可以添加多个 EndpointCertificate。  
+下面是演示 HTTPS 终结点所需配置的示例 ApplicationManifest。 服务器/终结点证书可以通过指纹或主题公用名声明，且必须提供一个值。 EndpointRef 是对 ServiceManifest 中 EndpointResource 的引用，其协议必须设置为“https”协议。 可以添加多个 EndpointCertificate。  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,6 +155,8 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 
 对于 Linux 群集，**MY** 存储默认为文件夹 **/var/lib/sfcerts**。
 
+## <a name="port-acling-for-http-endpoints"></a>HTTP 终结点的端口 Acl
+默认情况下，Service Fabric 将自动使用指定的 ACL HTTP （S）终结点。 如果终结点没有关联的[SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，且 Service Fabric 配置为使用具有管理员权限的帐户运行，则**不**会执行自动 acl。
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>重写 ServiceManifest.xml 中的终结点
 
@@ -182,7 +182,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
   </ServiceManifestImport>
 ```
 
-在参数中添加以下内容：
+在 Parameters 中添加以下内容：
 
 ```xml
   <Parameters>
@@ -200,11 +200,11 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注意：如果针对 ApplicationParameter 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
+注意：如果为 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应 EndPointName 提供的默认值。
 
 例如：
 
-如果在你指定的 ServiceManifest 中
+如果在指定的 ServiceManifest 中
 
 ```xml
   <Resources>
@@ -214,6 +214,6 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
   </Resources>
 ```
 
-并且应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 仍由 ServiceFabric 决定端口。 而协议将 TCP。
+并且应用程序参数的 Port1 和 Protocol1 值为 null 或为空。 仍由 ServiceFabric 决定端口。 而协议将为 TCP。
 
-假设指定了错误值。 与用于端口一样，指定了字符串值 "Foo" 而不是 int。 Get-servicefabricapplication 命令将失败并出现错误： "ResourceOverrides" 部分中名为 "ServiceEndpoint1" 特性 "Port1" 的 override 参数无效。 指定的值为“Foo”，而要求的值为“int”。
+假设指定了错误值。 例如，对于“端口”，指定了字符串值“Foo”而不是 int。New-ServiceFabricApplication 命令将失败并返回错误：“ResourceOverrides”节中名为“ServiceEndpoint1”的替代参数的属性“Port1”无效。 指定的值为“Foo”，而要求的值为“int”。

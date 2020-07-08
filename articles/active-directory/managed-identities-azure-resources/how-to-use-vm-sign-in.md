@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure VM 上的托管标识进行登录 - Azure AD
-description: 有关使用 Azure 资源服务主体的 Azure VM 托管标识进行脚本客户端登录和资源访问的逐步说明与示例。
+title: 在 Azure VM 上使用托管标识进行登录-Azure 高级
+description: 使用 azure 资源服务主体的 Azure VM 托管标识进行脚本客户端登录和资源访问的分步说明和示例。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -9,20 +9,20 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 1380562cfc073d906ea4cfc0d6d849e9ca2a70d3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547386"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608409"
 ---
-# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 资源的托管标识进行登录 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure 虚拟机上使用 Azure 资源的托管标识进行登录 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 本文提供有关使用 Azure 资源服务主体的托管标识进行登录的 PowerShell 和 CLI 脚本示例，以及有关错误处理等重要主题的指导。
@@ -41,7 +41,7 @@ ms.locfileid: "74547386"
 
 ## <a name="overview"></a>概述
 
-Azure 资源的托管标识提供一个[服务主体对象](../develop/developer-glossary.md#service-principal-object)，此对象是在 VM 上[启用 Azure 资源的托管标识时创建的](overview.md#how-does-the-managed-identities-for-azure-resources-work)。 可向此服务主体授予对 Azure 资源的访问权限；脚本/命令行客户端可将此服务主体用作标识进行登录和资源访问。 传统上，若要使用自身的标识访问受保护资源，脚本客户端需要：  
+Azure 资源的托管标识提供一个[服务主体对象](../develop/developer-glossary.md#service-principal-object)，该对象是在 VM 上[启用 Azure 资源的托管标识时创建](overview.md)的。 可向此服务主体授予对 Azure 资源的访问权限；脚本/命令行客户端可将此服务主体用作标识进行登录和资源访问。 传统上，若要使用自身的标识访问受保护资源，脚本客户端需要：  
 
    - 注册到 Azure AD，并同意将 Azure AD 用作机密/Web 客户端应用程序
    - 使用应用的凭据（可能会嵌入在脚本中）以自身的服务主体登录

@@ -4,25 +4,25 @@ description: 了解如何使用 Azure 防火墙来保护 Windows 虚拟桌面部
 author: vhorne
 ms.service: firewall
 services: firewall
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: 86b30b644da929f10f5d7c9642d5f89fbd29a7fa
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611129"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>使用 Azure 防火墙保护 Windows 虚拟桌面部署
 
 Windows 虚拟桌面是在 Azure 上运行的桌面和应用虚拟化服务。 当最终用户连接到 Windows 虚拟桌面环境时，其会话由主机池运行。 主机池是注册到 Windows 虚拟桌面作为会话主机的 Azure 虚拟机的集合。 这些虚拟机在虚拟网络中运行，并受虚拟网络安全控制的限制。 它们需要对 Windows 虚拟桌面服务的出站 Internet 访问权限才能正常运行，并且可能还需要最终用户的出站 Internet 访问权限。 Azure 防火墙可以帮助你锁定环境并筛选出站流量。
 
-[![Windows 虚拟桌面体系](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)结构](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
+[![Windows 虚拟桌面体系结构 ](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png)](media/protect-windows-virtual-desktop/windows-virtual-desktop-architecture-diagram.png#lightbox)
 
 遵循本文中的指导原则，使用 Azure 防火墙为 Windows 虚拟桌面主机池提供额外的保护。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 
  - 已部署的 Windows 虚拟桌面环境和主机池。

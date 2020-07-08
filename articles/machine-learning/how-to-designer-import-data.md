@@ -1,23 +1,23 @@
 ---
 title: 导入数据
 titleSuffix: Azure Machine Learning
-description: 了解如何将数据从各种数据源导入 Azure 机器学习设计器。
+description: 了解如何将数据从各种数据源导入 Azure 机器学习设计器中。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644565"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610942"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>将数据导入 Azure 机器学习设计器（预览版）
+# <a name="import-data-into-azure-machine-learning-designer-preview"></a>将数据导入 Azure 机器学习设计器（预览）
 
 在本文中，你将了解如何在设计器中导入自己的数据，以创建自定义解决方案。 可以通过以下两种方式将数据导入设计器： 
 
@@ -89,6 +89,10 @@ ms.locfileid: "83644565"
 ## <a name="data-constraints"></a>数据约束
 
 设计器中的模块受计算目标的大小限制。 对于较大的数据集，应使用较大的 Azure 机器学习计算资源。 有关 Azure 机器学习计算的详细信息，请参阅[什么是 Azure 机器学习中的计算目标？](concept-compute-target.md#azure-machine-learning-compute-managed)
+
+## <a name="access-data-in-a-virtual-network"></a>访问虚拟网络中的数据
+
+如果工作区位于虚拟网络中，则必须执行其他配置步骤，以便在设计器中实现数据的可视化。 有关如何在虚拟网络中使用数据存储和数据集的详细信息，请参阅[使用专用虚拟网络进行定型 & 推理中的网络隔离](how-to-enable-virtual-network.md#machine-learning-studio)。
 
 ## <a name="next-steps"></a>后续步骤
 

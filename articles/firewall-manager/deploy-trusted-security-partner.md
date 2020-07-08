@@ -1,60 +1,49 @@
 ---
-title: 部署 Azure 防火墙管理器可信安全合作伙伴
-description: 了解如何使用 Azure 门户部署 Azure 防火墙管理器信任的安全。
+title: 部署 Azure 防火墙管理器安全合作伙伴提供程序
+description: 了解如何使用 Azure 门户部署 Azure 防火墙管理器安全合作伙伴提供程序。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
-ms.topic: conceptual
-ms.date: 10/25/2019
+ms.topic: how-to
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73931305"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611571"
 ---
-# <a name="deploy-a-trusted-security-partner-preview"></a>部署信任的安全合作伙伴（预览版）
+# <a name="deploy-a-security-partner-provider"></a>部署安全合作伙伴提供程序
 
-[!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
+使用 Azure 防火墙管理器中的*安全合作伙伴提供程序*，可以使用熟悉的、同类最佳的第三方安全即服务（SECaaS）产品来保护用户对 Internet 的访问。
 
-Azure 防火墙管理器中的*受信任安全合作伙伴*允许使用熟悉的、同类最佳的第三方安全即服务（SECaaS）产品来保护用户对 Internet 的访问。
+若要详细了解受支持的方案和最佳实践指南，请参阅[什么是安全合作伙伴提供商？](trusted-security-partners.md)
 
-若要详细了解受支持的方案和最佳实践指南，请参阅[什么是可信安全合作伙伴（预览版）？](trusted-security-partners.md)。
 
-此预览版支持的安全合作伙伴是**ZScaler**和**iboss** 。 支持的区域包括： WestCentralUS、NorthCentralUS、WestUS、WestUS2 和 EastUS。
-
-## <a name="prerequisites"></a>先决条件
-
-> [!IMPORTANT]
-> 必须使用 `Register-AzProviderFeature` PowerShell 命令显式启用 Azure 防火墙管理器预览版。
-
-在 PowerShell 命令提示符下，运行以下命令：
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-功能注册最多需要 30 分钟即可完成。 运行以下命令来检查注册状态：
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+集成的第三方安全即服务（SECaaS）合作伙伴现已在所有 Azure 公有云区域中提供。 **Zscaler**集成将在2020年7月3日正式发布。 "**检查点**" 是受支持的 SECaaS 合作伙伴，将在2020年7月3日作为预览。 **iboss**集成将于2020年7月31日正式发布。
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>在新的中心部署第三方安全提供程序
 
+如果要将第三方提供程序部署到现有中心，请跳过此部分。
+
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 2. 在 "**搜索**" 中，键入**防火墙管理器**，然后在 "**服务**" 下选择它。
-3. 导航到**入门**。 选择 "**创建受保护的虚拟中心**"。 
-4. 输入 "订阅" 和 "资源组"，选择受支持的区域，并添加中心和虚拟 WAN 信息。 
-5. 默认情况下，已启用**部署 VPN 网关**。 需要使用 VPN 网关，才能在中心部署受信任的安全合作伙伴。 
-6. 选择**下一步： Azure 防火墙**
+3. 导航到**入门**。 选择 "**查看受保护的虚拟中心**"。
+4. 选择 "**创建新的安全虚拟中心**"。
+5. 输入 "订阅" 和 "资源组"，选择受支持的区域，并添加中心和虚拟 WAN 信息。 
+6. 选择 "**包含 VPN 网关"，启用安全合作伙伴提供程序**。
+7. 选择适合你的要求的**网关缩放单位**。
+8. 选择**下一步： Azure 防火墙**
    > [!NOTE]
-   > 受信任的安全合作伙伴使用 VPN 网关隧道连接到你的中心。 如果删除 VPN 网关，与受信任的安全合作伙伴的连接将丢失。
-7. 如果要部署 Azure 防火墙来筛选专用流量以及第三方服务提供商来筛选 Internet 流量，请选择 Azure 防火墙的策略。 请参阅[支持的方案](trusted-security-partners.md#key-scenarios)。
-8. 如果只想在中心部署第三方安全提供程序，请选择 " **Azure 防火墙：启用/禁用**"，将其设置为 "**已禁用**"。 
-9. 选择**下一步：受信任的安全合作伙伴**。
-10. 选择 "**受信任的安全合作伙伴**"，将其设置为 "**启用**"。 选择合作伙伴。 
-11. 选择“**下一页**”。 
-12. 查看内容，然后选择 "**创建**"。
+   > 安全合作伙伴提供商使用 VPN 网关隧道连接到你的中心。 如果删除 VPN 网关，与安全合作伙伴提供商的连接将丢失。
+9. 如果要部署 Azure 防火墙来筛选专用流量以及第三方服务提供商来筛选 Internet 流量，请选择 Azure 防火墙的策略。 请参阅[支持的方案](trusted-security-partners.md#key-scenarios)。
+10. 如果只想在中心部署第三方安全提供程序，请选择 " **Azure 防火墙：启用/禁用**"，将其设置为 "**已禁用**"。 
+11. 选择 "**下一步：安全合作伙伴提供程序**"。
+12. 将 "**安全合作伙伴提供程序**" 设置为 "**已启用**"。 
+13. 选择合作伙伴。 
+14. 在完成时选择“下一步:查看 + 创建”。 
+15. 查看内容，然后选择 "**创建**"。
 
 VPN 网关部署可能需要30多分钟。
 
@@ -66,8 +55,9 @@ VPN 网关部署可能需要30多分钟。
 
 还可以选择虚拟 WAN 中的现有中心，并将其转换为*受保护的虚拟中心*。
 
-1. 在**入门**中，选择 "**转换现有中心**"。
-2. 选择订阅和现有中心。 按照其余步骤，在新的中心部署第三方提供商。
+1. 在**入门**中，选择 "**查看受保护的虚拟中心**"。
+2. 选择 "**转换现有中心**"。
+3. 选择订阅和现有中心。 按照其余步骤，在新的中心部署第三方提供商。
 
 请记住，必须部署 VPN 网关，才能使用第三方提供程序将现有的集线器转换为安全中心。
 
@@ -75,20 +65,26 @@ VPN 网关部署可能需要30多分钟。
 
 若要设置虚拟中心 VPN 网关的隧道，第三方提供商需要访问中心的权限。 为此，请将服务主体与订阅或资源组相关联，并授予访问权限。 然后，必须使用其门户将这些凭据分配给第三方。
 
+### <a name="create-and-authorize-a-service-principal"></a>创建和授权服务主体
+
 1. 创建 Azure Active Directory （AD）服务主体：可以跳过重定向 URL。 
 
-   [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 2. 添加服务主体的访问权限和作用域。
-   [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
 
    > [!NOTE]
    > 可以限制对资源组的访问，以便进行更精细的控制。
-3. 按照[ZScaler：配置 Microsoft Azure 虚拟 WAN 集成](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)说明：
 
-   - 登录到合作伙伴门户并添加凭据，以授予受信任的合作伙伴访问受保护的中心的权限。
-   - 在合作伙伴门户中同步虚拟中心，并设置虚拟中心的隧道。 验证 Azure AD 身份验证凭据后，可以执行此操作。
+### <a name="visit-partner-portal"></a>访问合作伙伴门户
+
+1. 按照合作伙伴提供的说明完成安装。 这包括提交 AAD 信息以检测并连接到中心、更新出口策略以及检查连接状态和日志。
+
+   - [Zscaler：配置 Microsoft Azure 虚拟 WAN 集成](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)。
+   - [检查点（预览）：配置 Microsoft Azure 虚拟 WAN 集成](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
+   - [iboss （预览版）：配置 Microsoft Azure 虚拟 WAN 集成](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security)。 
    
-4. 可以在 azure 中的 Azure 虚拟 WAN 门户上查看隧道创建状态。 隧道显示**连接**到 Azure 和合作伙伴门户后，继续执行后续步骤，设置路由，以选择哪些分支和 vnet 应将 Internet 流量发送到合作伙伴。
+2. 可以在 azure 中的 Azure 虚拟 WAN 门户上查看隧道创建状态。 隧道显示**连接**到 Azure 和合作伙伴门户后，继续执行后续步骤，设置路由，以选择哪些分支和 vnet 应将 Internet 流量发送到合作伙伴。
 
 ## <a name="configure-route-settings"></a>配置路由设置
 
@@ -105,7 +101,7 @@ VPN 网关部署可能需要30多分钟。
 5. 你必须选择 "**安全连接**"，并选择要在其上设置这些路由的连接。 这表示可以开始向第三方提供商发送 Internet 流量的 Vnet/分支。
 6. 在 "**路由设置**" 中，选择 "Internet 流量" 下的 "**安全连接**"，然后选择要保护的 VNet 或分支（虚拟 WAN 中的*站点*）。 选择 "**安全 Internet 流量**"。
    ![保护 Internet 流量](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. 向后导航到 "中心" 页。 现在，中心的**受信任安全合作伙伴**状态应**为 "安全"**。
+7. 向后导航到 "中心" 页。 现在中心的**安全合作伙伴提供商****状态应为**"安全"。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>通过第三方服务的分支或 VNet Internet 流量
 
@@ -115,8 +111,4 @@ VPN 网关部署可能需要30多分钟。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：使用 Azure 防火墙管理器预览保护云网络使用 Azure 门户](secure-cloud-network.md)
-
-
-
-
+- [教程：使用 Azure 防火墙管理器保护云网络使用 Azure 门户](secure-cloud-network.md)

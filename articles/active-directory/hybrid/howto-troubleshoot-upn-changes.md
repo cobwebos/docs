@@ -11,21 +11,22 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743331"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608511"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>在 Azure Active Directory 中规划用户主体名称更改并进行故障排除
 
-用户主体名称（UPN）是一个属性，该属性是用户帐户的 internet 通信标准。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀使用 "@" 符号联接后缀。 例如，someone@example.com 。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
-
-> [!NOTE]
-> 对于开发人员，我们建议使用用户 objectID 作为不可变标识符，而不是 UPN。 如果你的应用程序当前正在使用 UPN，则建议将 UPN 设置为与用户的主要电子邮件地址相匹配，以改善其体验。<br> **在混合环境中，用户的 UPN 在本地目录和 Azure Active Directory 中的 UPN 是相同**的。
+用户主体名称（UPN）是一个属性，该属性是用户帐户的 internet 通信标准。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀使用 "@" 符号联接后缀。 例如 someone@example.com。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
 **本文假设你使用 UPN 作为用户标识符。它用于规划 UPN 更改，并从可能由 UPN 更改引起的问题进行恢复。**
+
+> [!NOTE]
+> 对于开发人员，我们建议使用用户 objectID 作为不可变标识符，而不是 UPN 或电子邮件地址，因为它们的值可能会更改。
+
 
 ## <a name="learn-about-upns-and-upn-changes"></a>了解 Upn 和 UPN 更改
 当所需的值实际上是其 UPN 时，登录页通常会提示用户输入其电子邮件地址。 因此，应确保在用户的主电子邮件地址发生更改时更改用户的 UPN。
@@ -56,11 +57,11 @@ Bsimon@contoso.com到Britta.Simon@contoso.com
 
     例如，如果某个人更改了部门，则可以更改其域： 
 
-   * Britta.Simon@contoso.com 到 Britta.Simon@contosolabs.com <br>
+   * Britta.Simon@contoso.com 至 Britta.Simon@contosolabs.com <br>
      或<br>
-    * Britta.Simon@corp.contoso.com 到 Britta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.com 至 Britta.Simon@labs.contoso.com 
 
-每次更新用户的主要电子邮件地址时，更改用户的 UPN。 无论电子邮件更改的原因是什么，都必须始终更新 UPN 以使其匹配。
+建议在每次更新用户的主要电子邮件地址时更改用户的 UPN。
 
 在从 Active Directory 到 Azure AD 的初始同步过程中，请确保用户的电子邮件与其 Upn 完全相同。
 
@@ -77,7 +78,7 @@ username@contoso.com
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> 如果 Active directory 和 Azure Active Directory 中的 Upn 不匹配，则会出现问题。 如果在[Active Directory 中更改后缀](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)，则必须确保已[在 Azure AD 中添加并验证](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)了匹配的自定义域名。 
+> 如果在[Active Directory 中更改后缀](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)，则必须确保已[在 Azure AD 中添加并验证](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)了匹配的自定义域名。 
 
 ![经验证的域的屏幕截图](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -112,7 +113,7 @@ username@labs.contoso.com.
 
 [软件即服务（SaaS）](https://azure.microsoft.com/overview/what-is-saas/)和业务线（LoB）应用程序通常依赖于 upn 查找用户并存储用户配置文件信息，包括角色。 当用户首次登录到应用时，使用实时[预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)创建用户配置文件的应用程序可能会受到 UPN 更改的影响。
 
- 已知问题<br>
+**已知问题**<br>
 更改用户的 UPN 可能会破坏 Azure AD 用户与在应用程序上创建的用户配置文件之间的关系。 如果应用程序使用实时[预配](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)，则它可能会创建全新的用户配置文件。 这将要求应用程序管理员进行手动更改来修复此关系。
 
 **解决方法**<br>
@@ -131,9 +132,13 @@ username@labs.contoso.com.
 用户可能会遇到依赖于身份验证 Azure AD 的应用程序的单一登录问题。
 
 **解决方法** <br>
+此部分中提到的问题已在 Windows 10 2020 更新（2004）上得到解决。
+
+**解决方法** <br>
 留出足够的时间让 UPN 更改同步到 Azure AD。 验证新 UPN 是否反映在 Azure AD 门户上之后，要求用户选择 "其他用户" 磁贴，以通过其新 UPN 进行登录。 还可以通过[PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)进行验证。 使用新的 UPN 登录后，对旧 UPN 的引用可能仍会显示在 "访问工作或学校" Windows 设置上。
 
 ![已验证域的屏幕截图](./media/howto-troubleshoot-upn-changes/other-user.png)
+
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>混合 Azure AD 加入设备
 
@@ -149,6 +154,9 @@ Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动�
 
 "你的电脑将在一分钟内自动重新启动。 Windows 遇到问题，需要重新启动。 应该立即关闭此消息，并保存工作。
 
+**解决方法** <br>
+此部分中提到的问题已在 Windows 10 2020 更新（2004）上得到解决。
+
 **解决方法** 
 
 设备必须脱离 Azure AD 并重新启动。 重新启动后，设备将再次自动 Azure AD 加入，用户必须通过选择 "其他用户" 磁贴，使用新的 UPN 登录。 若要从 Azure AD 中脱离设备，请在命令提示符下运行以下命令：
@@ -156,6 +164,7 @@ Windows 10 混合 Azure AD 联接的设备可能会遇到意外的重新启动�
 **dsregcmd.exe/leave**
 
 如果使用 Windows Hello 企业版，用户将需要[重新注册](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision)。 在 UPN 更改后，Windows 7 和8.1 设备不受此问题的影响。
+
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator 已知问题和解决方法
 

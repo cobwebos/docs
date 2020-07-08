@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/19/2020
+ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b165741f9f7a4eb7af8424b9175aa5ec9261fbcc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77482168"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85602714"
 ---
 # <a name="azure-firewall-certifications"></a>Azure 防火墙认证
 
@@ -25,8 +25,8 @@ Azure 防火墙是支付卡行业（PCI）、服务组织控制（SOC）、国�
 以下 Azure 防火墙认证适用于全球 Azure：
 
 - 23 NYCRR 500
-- AFM 和 DNB （荷兰）
-- AMF 和 ACPR （法国）
+- AFM 和 DNB（荷兰）
+- AMF 和 ACPR（法国）
 - APRA （澳大利亚）
 - 阿根廷 PDPA
 - 澳大利亚 IRAP
@@ -38,16 +38,18 @@ Azure 防火墙是支付卡行业（PCI）、服务组织控制（SOC）、国�
 - 加拿大隐私法律
 - DPP （英国）
 - 欧盟 ENISA IAF
-- 欧盟示范条款
+- 欧盟模式条款
 - 欧洲银行机构
-- FCA 和 PRA （英国）
-- FERPA （US）
+- FCA 和 PRA（英国）
+- FERPA（美国）
 - FFIEC （US）
-- FINMA （瑞士）
-- FSA （丹麦）
-- GLBA （US）
+- FINMA（瑞士）
+- FSA（丹麦）
+- GLBA（美国）
 - 德国 C5
 - GxP（FDA 21 CFR 第 11 部分）
+- HIPPA
+- 高科技法案（US）
 - HITRUST
 - ISO 20000-1:2011
 - ISO 22301:2012
@@ -58,19 +60,19 @@ Azure 防火墙是支付卡行业（PCI）、服务组织控制（SOC）、国�
 - 日本我的数字 Act
 - K-ISM
 - KNF （波兰）
-- MA 和 ABS （新加坡）
+- MA 和 ABS（新加坡）
 - MPAA （US）
-- NBB 和 FSMA （比利时）
+- NBB 和 FSMA（比利时）
 - NEN 7510:2011 （荷兰）
 - NHS IG 工具包（英国）
 - 荷兰 BIR 2012
 - OSFI （加拿大）
-- PCI DSS 级别 1
-- POWE 和 IRDAI （印度）
+- PCI DSS 1 级
+- POWE 和 IRDAI（印度）
 - SOC 1 类型2
 - SOC 2 类型2
 - SOC 3
-- SOX （US）
+- SOX（美国）
 - 西班牙 DPA
 - TISAX
 - TruSight
@@ -91,18 +93,20 @@ Azure 政府版的 Azure 防火墙认证如下：
 - EAR
 - FIPS 140-2
 - FedRAMP 高
+- HIPAA
+- 高科技法案（US）
 - HITRUST
 - IRS 1075
 - ITAR
-- MARS-E （US）
+- MARS-E（美国）
 - NERC
 - NIST 网络安全框架
 - NIST SP 800-171
 - SOC 1 类型2
 - SOC 2 类型2
 - SOC 3
-- SOX （US）
-- 第508节 Vpat
+- SOX（美国）
+- 第 508 节 VPATS
 
 ## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs 企业防火墙认证
 

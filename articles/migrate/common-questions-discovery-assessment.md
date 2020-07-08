@@ -2,13 +2,13 @@
 title: Azure Migrate 中的发现、评估和依赖项分析问题
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 9374330044bcd0c0c5f2be44688c2b35760d4418
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 06/09/2020
+ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996744"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610296"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -22,17 +22,41 @@ ms.locfileid: "82996744"
 
 ## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Azure Migrate 的发现和评估支持哪些地区？
 
-查看[公有](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
+查看[公有云](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府云](migrate-support-matrix.md#supported-geographies-azure-government)支持的地理位置。
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>可以使用一个设备发现多少个 Vm？
 
-使用单个设备，最多可以发现10000个 VMware Vm，最多可达5000个 Hyper-v Vm，最多可达250个物理服务器。 如果有更多计算机，请阅读[扩展 hyper-v 评估](scale-hyper-v-assessment.md)、[扩展 VMware 评估](scale-vmware-assessment.md)或[缩放物理服务器评估](scale-physical-assessment.md)。
+使用单个设备，最多可以发现10000个 VMware Vm，最多可达5000个 Hyper-v Vm，最多可达1000个物理服务器。 如果有更多计算机，请阅读[扩展 hyper-v 评估](scale-hyper-v-assessment.md)、[扩展 VMware 评估](scale-vmware-assessment.md)或[缩放物理服务器评估](scale-physical-assessment.md)。
+
+## <a name="how-do-i-choose-the-assessment-type"></a>如何实现选择评估类型？
+
+- 若要评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)以迁移到 AZURE vm，请使用**Azure VM 评估**。 [了解详细信息](concepts-assessment-calculation.md)
+
+- 若要评估使用此评估类型迁移到[Azure VMware 解决方案（AVS）](https://docs.microsoft.com/azure/azure-vmware/introduction)的本地[VMware vm](how-to-set-up-appliance-vmware.md) ，请使用**Azure VMware 解决方案（avs）** 评估。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+
+- 仅可将一个公用组用于 VMware 计算机来运行这两种类型的评估。 请注意，如果你是首次在 Azure Migrate 中运行 AVS 评估，则建议创建一组新的 VMware 虚拟机。
+
+## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>创建 Azure VMware 解决方案（AVS）评估时，无法看到某些组
+
+- 可以在只有 VMware 计算机的组上完成 AVS 评估。 如果要执行 AVS 评估，请从组中删除任何非 VMware 计算机。
+- 如果你是第一次在 Azure Migrate 中运行 AVS 评估，则建议创建一组新的 VMware 虚拟机。
+
+## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>如何实现选择 FTT-在 AVS 评估中的 RAID 级别？
+
+AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的存储要求。 这些策略保证 Vm 所需的服务级别，因为它们确定如何将存储分配给 VM。 以下是可用的 FTT-Raid 组合： 
+
+**容错故障（FTT）** | **RAID 配置** | **需要的最低主机** | **大小调整注意事项**
+--- | --- | --- | --- 
+1 | RAID-1 （镜像） | 3 | 100GB VM 将使用200GB。
+1 | RAID-5 （擦除编码） | 4 | 100GB VM 将使用 133.33 GB
+2 | RAID-1 （镜像） | 5 | 100GB VM 将使用300GB。
+2 | RAID-1 （擦除编码） | 6 | 100GB VM 将使用 150 GB。
+3 | RAID-1 （镜像） | 7 | 100GB VM 将使用400GB。
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure 政府版中看不到一些 VM 类型
 
 支持评估和迁移的 VM 类型取决于 Azure 政府版中的可用性。 可以[查看和比较](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)Azure 政府版中的 VM 类型。
-
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM 的大小已更改。 能否再次运行评估？
 
@@ -47,7 +71,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 
 是的，Azure Migrate 需要 VMware 环境中 vCenter Server 来执行发现。 Azure Migrate 不支持发现不受 vCenter Server 管理的 ESXi 主机。
 
-## <a name="what-are-the-sizing-options"></a>调整大小选项有哪些？
+## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Azure VM 评估中的调整大小选项有哪些？
 
 利用按本地大小调整，Azure Migrate 不会考虑 VM 性能数据以进行评估。 Azure Migrate 根据本地配置评估 VM 大小。 通过基于性能的大小调整，大小基于利用率数据。
 
@@ -59,20 +83,20 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 - 如果大小调整条件基于性能并且存储类型为 "自动"，则在标识目标磁盘类型（标准或高级）时，Azure Migrate 将使用该磁盘的 IOPS 和吞吐量值。
 - 如果大小调整条件基于性能并且存储类型为 "高级"，则 Azure Migrate 建议基于本地磁盘大小的高级磁盘 SKU。 当调整大小为 "本地" 并且存储类型为 "标准" 或 "高级" 时，将对磁盘大小应用相同的逻辑。
 
-## <a name="does-performance-history-and-utilization-affect-sizing"></a>性能历史记录和利用率是否会影响大小？
+## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>性能历史记录和利用率是否会影响 Azure VM 评估的大小？
 
-是的，性能历史记录和利用率会影响 Azure Migrate 的大小。
+是的，性能历史记录和利用率会影响 Azure VM 评估中的大小。
 
 ### <a name="performance-history"></a>性能历史记录
 
 对于基于性能的大小调整，Azure Migrate 会收集本地计算机的性能历史记录，并使用它在 Azure 中建议 VM 大小和磁盘类型：
 
 1. 设备会持续分析本地环境，每隔20秒收集一次实时利用率数据。
-1. 设备将汇总收集的20秒样本，并使用它们每15分钟创建一个数据点。
-1. 若要创建数据点，设备将从所有20秒的示例中选择峰值值。
-1. 设备会将数据点发送到 Azure。
+2. 设备将汇总收集的20秒样本，并使用它们每15分钟创建一个数据点。
+3. 若要创建数据点，设备将从所有20秒的示例中选择峰值值。
+4. 设备会将数据点发送到 Azure。
 
-### <a name="utilization"></a>百分比
+### <a name="utilization"></a>使用率
 
 当你在 Azure 中创建评估时，根据性能持续时间和设置的性能历史记录百分比值，Azure Migrate 计算有效利用率值，然后将其用于调整大小。
 
@@ -80,11 +104,17 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 
 使用第95百分位值可确保忽略离群值。 如果 Azure Migrate 使用99% 百分点值，则可能会包含离群值。 若要在不丢失任何离群值的情况下选取高峰用量，请将 Azure Migrate 设置为使用99% 百分点值。
 
+
 ## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>与发现源作为设备相比，基于导入的评估与评估有何不同？
 
-基于导入的评估是使用 CSV 文件导入到 Azure Migrate 中的计算机创建的评估。 导入只需要四个字段：服务器名称、内核、内存和操作系统。 下面是一些要注意的事项： 
+基于导入的 Azure VM 评估是使用 CSV 文件导入到 Azure Migrate 中的计算机创建的评估。 导入只需要四个字段：服务器名称、内核、内存和操作系统。 下面是一些要注意的事项： 
  - 对于启动类型参数上基于导入的评估，准备情况条件不太严格。 如果未提供启动类型，则假定计算机具有 BIOS 启动类型，并且计算机未标记为有**条件就绪**。 在 "将发现源作为设备进行评估" 中，如果缺少启动类型，则就绪标记将被标记为有**条件就绪**。 准备情况计算的这一差异是因为在完成基于导入的评估时，用户可能不会在迁移规划的早期阶段中包含所有信息。 
  - 基于性能的导入评估使用用户提供的使用值进行适当大小的计算。 由于用户提供了利用率值，因此在 "评估属性" 中禁用了 "**性能历史记录**" 和 "**百分比利用率**" 选项。 在 "使用发现源作为设备进行评估" 中，从设备收集的性能数据中选取所选的百分位值。
+
+## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>为什么基于导入的 AVS 评估中建议的迁移工具标记为未知？
+
+对于通过 CSV 文件导入的计算机，AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)。
+
 
 ## <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 
@@ -97,16 +127,16 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 
 无代理可视化和基于代理的可视化对象之间的差异在表中进行了总结。
 
-**要求** | **无代理** | **基于代理**
+要求 | **无代理** | **基于代理**
 --- | --- | ---
-支持 | 此选项目前为预览版，仅适用于 VMware Vm。 [查看](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)支持的操作系统。 | 公开上市（GA）。
+支持 | 此选项目前为预览版，仅适用于 VMware Vm。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 公开上市（GA）。
 Agent | 无需在要交叉检查的计算机上安装代理。 | 要在要分析的每台本地计算机上安装的代理： [Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)和[依赖项代理](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
 先决条件 | [查看](concepts-dependency-visualization.md#agentless-analysis)先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis)先决条件和部署要求。
-Log Analytics | 不要求。 | Azure Migrate 使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
+Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中使用[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案来进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
 工作原理 | 捕获启用了依赖关系可视化的计算机上的 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关每个进程的 TCP 进程和入站/出站连接的数据。
 数据 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
 可视化 | 可在一小时到30天内查看单服务器的依赖关系图。 | 单个服务器的依赖关系图。<br/><br/> 仅可在一小时内查看地图。<br/><br/> 一组服务器的依赖关系图。<br/><br/> 在映射视图中添加和删除组中的服务器。
-数据导出 | 当前无法以表格格式下载。 | 可以通过 Log Analytics 查询数据。
+数据导出 | 过去30天的数据可以下载 CSV 格式。 | 可以通过 Log Analytics 查询数据。
 
 
 ## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>是否需要为无代理依赖项分析部署设备？
@@ -115,7 +145,7 @@ Log Analytics | 不要求。 | Azure Migrate 使用[Azure Monitor 日志](https:
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我是否需要为依赖关系可视化付费？
 
-否。 了解有关[Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
+不能。 了解有关[Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>对于基于代理的依赖项可视化，我应该安装什么？
 

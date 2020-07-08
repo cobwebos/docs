@@ -4,15 +4,15 @@ description: 可将 Azure 防火墙集成到使用 Azure 标准负载均衡器�
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 008274c86944b06b168bf52ca501c655bbe78434
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78196685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610619"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>将 Azure 防火墙与 Azure 标准负载均衡器相集成
 
@@ -28,7 +28,7 @@ ms.locfileid: "78196685"
 
 ### <a name="asymmetric-routing"></a>非对称路由
 
-非对称路由是指数据包采用一条路径发往目标，并采用另一条路径返回到源。 如果子网的默认路由转到防火墙的专用 IP 地址，并且使用的是公共负载均衡器，则会出现非对称路由问题。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，因此它会删除返回的数据包，因为防火墙无法识别此类已建立的会话。
+非对称路由是指数据包采用一条路径发往目标，并采用另一条路径返回到源。 如果子网的默认路由转到防火墙的专用 IP 地址，并且使用的是公共负载均衡器，则会出现非对称路由问题。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，并且无法识别此类已建立的会话，因此会丢弃返回的数据包。
 
 ### <a name="fix-the-routing-issue"></a>解决路由问题
 
@@ -41,21 +41,21 @@ ms.locfileid: "78196685"
 
 ### <a name="route-table-example"></a>路由表示例
 
-例如，以下路由用于公共 IP 地址20.185.97.136 和专用 IP 地址10.0.1.4 的防火墙。
+例如，以下路由适用于公共 IP 地址为 20.185.97.136、专用 IP 地址为 10.0.1.4 的防火墙。
 
 > [!div class="mx-imgBorder"]
 > ![路由表](media/integrate-lb/route-table.png)
 
 ### <a name="nat-rule-example"></a>NAT 规则示例
 
-在下面的示例中，NAT 规则会将20.185.97.136 的 RDP 流量转换为20.42.98.220 上的负载均衡器：
+在下面的示例中，NAT 规则会对 RDP 流量进行网络地址转换，使之在到达防火墙 (20.185.97.136) 后再发往负载均衡器 (20.42.98.220)：
 
 > [!div class="mx-imgBorder"]
 > ![NAT 规则](media/integrate-lb/nat-rule-02.png)
 
 ### <a name="health-probes"></a>运行状况探测
 
-请记住，如果使用 TCP 运行状况探测到端口80或 HTTP/HTTPS 探测，则需要在负载均衡器池中的主机上运行 web 服务。
+请记住，如果你对端口 80 使用 TCP 运行状况探测，或者使用 HTTP/HTTPS 探测，则需要在负载均衡器池中的主机上运行 Web 服务。
 
 ## <a name="internal-load-balancer"></a>内部负载均衡器
 
@@ -73,7 +73,7 @@ ms.locfileid: "78196685"
 
 ![网络安全组](media/integrate-lb/nsg-01.png)
 
-有关 Nsg 的详细信息，请参阅[安全组](../virtual-network/security-overview.md)。
+有关 NSG 的详细信息，请参阅[安全组](../virtual-network/security-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

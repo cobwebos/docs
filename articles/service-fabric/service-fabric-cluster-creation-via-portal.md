@@ -3,12 +3,12 @@ title: 在 Azure 门户中创建 Service Fabric 群集
 description: 了解如何使用 Azure 门户和 Azure Key Vault 在 Azure 中设置安全的 Service Fabric 群集。
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792473"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611146"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>使用 Azure 门户在 Azure 中创建 Service Fabric 群集
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "82792473"
 ## <a name="cluster-security"></a>群集安全性 
 证书在 Service Fabric 中用于提供身份验证和加密，为群集及其应用程序提供全方位的保护。 若要详细了解如何在 Service Fabric 中使用证书，请参阅 [Service Fabric 群集安全方案][service-fabric-cluster-security]。
 
-如果这是你首次创建 Service Fabric 群集或要为测试工作负荷部署群集，可跳到下一节（在 Azure 门户中创建群集）并使系统生成运行测试工作负荷所需的证书  。 如果要为生产工作负荷设置群集，请继续阅读。
+如果这是你第一次创建 service fabric 群集或要为测试工作负荷部署群集，则可以跳到下一节（**在 Azure 门户中创建群集**），并让系统生成运行测试工作负荷的群集所需的证书。 如果要为生产工作负荷设置群集，请继续阅读。
 
 #### <a name="cluster-and-server-certificate-required"></a>群集和服务器证书（必需）
 需要使用此证书来保护群集以及防止未经授权访问群集。 此证书通过多种方式保护群集：
@@ -42,7 +42,7 @@ ms.locfileid: "82792473"
 
 * 证书必须包含私钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与访问 Service Fabric 群集使用的域相匹配  。 若要为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS，这是必需的。 无法从证书颁发机构（CA）获取`.cloudapp.azure.com`域的 TLS/SSL 证书。 获取群集的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
+* 证书的使用者名称必须与访问 Service Fabric 群集使用的域相匹配。 只有符合此要求，才能为群集的 HTTPS 管理终结点和 Service Fabric Explorer 提供 TLS。 无法从证书颁发机构 (CA) 获取 `.cloudapp.azure.com` 域的 TLS/SSL 证书。 获取群集的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于群集的自定义域名匹配。
 
 #### <a name="client-authentication-certificates"></a>客户端身份验证证书
 其他客户端证书可对执行群集管理任务的管理员进行身份验证。 Service Fabric 有两个访问级别：**管理员**和**只读用户**。 至少应使用一个证书进行管理访问。 若要进行其他用户级别的访问，必须提供单独的证书。 有关访问角色的详细信息，请参阅 [role-based access control for Service Fabric clients][service-fabric-cluster-security-roles]（适用于 Service Fabric 客户端的基于角色的访问控制）。
@@ -69,14 +69,14 @@ ms.locfileid: "82792473"
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>搜索 Service Fabric 群集资源
 
 登录到 [Azure 门户][azure-portal]。
-单击“创建资源”以添加新的资源模板  。 在“  全部”下面的“  市场”中搜索 Service Fabric 群集模板。
+单击“创建资源”以添加新的资源模板。 在“全部”下面的“市场”中搜索 Service Fabric 群集模板。
 从列表中选择“**Service Fabric 群集**”。
 
 ![在 Azure 门户中搜索 Service Fabric 群集模板。][SearchforServiceFabricClusterTemplate]
 
-导航到“Service Fabric 群集”  边栏选项卡，单击“创建”  。
+导航到“Service Fabric 群集”边栏选项卡，单击“创建”。
 
-“创建 Service Fabric 群集”边栏选项卡包含以下四个步骤  ：
+“创建 Service Fabric 群集”边栏选项卡包含以下四个步骤：
 
 ### <a name="1-basics"></a>1.基础知识
 ![创建新资源组的屏幕截图。][CreateRG]
@@ -107,21 +107,21 @@ ms.locfileid: "82792473"
 2. 主节点类型的 VM **大小**下限取决于为群集选择的**持久性**层。 持久性层的默认值为 bronze。 有关持久性的详细信息，请参阅[如何选择 Service Fabric 群集持久性][service-fabric-cluster-durability]。
 3. 选择**虚拟机大小**。 D 系列 VM 具有 SSD 驱动器，强烈建议用于有状态应用程序。 不要使用任何具有部分核心或可用磁盘容量小于 10 GB 的 VM SKU。 如需选择 VM 大小的帮助，请参阅 [Service Fabric 群集规划注意事项文档][service-fabric-cluster-capacity]。
 4.  **单节点群集和三节点群集**仅供用于测试。 它们不支持任何正在运行的生产工作负荷。
-5. 为节点类型选择**初始 VM 规模集容量**。 稍后，可以在节点类型中扩大或缩小 Vm 的数量，但在主节点类型上，生产工作负荷的最小值为5。 其他节点类型可以具有最少一台 VM。 主节点类型的 VM **数目**下限决定了群集的**可靠性**。  
+5. 选择节点类型的**初始虚拟机规模集容量**。 可在以后横向缩减或扩展节点类型中的 VM 数目，但对主节点类型，生产工作负载的最小值是 5。 其他节点类型可以具有最少一台 VM。 主节点类型的 VM **数目**下限决定了群集的**可靠性**。  
 6. 配置**自定义终结点**。 可在此字段中输入以逗号分隔的端口列表，可以通过 Azure 负载均衡器针对应用程序向公共 Internet 公开这些端口。 例如，如果计划在群集中部署 Web 应用程序，请在此处输入“80”，允许端口 80 的流量进入群集。 有关终结点的详细信息，请参阅[与应用程序进行通信][service-fabric-connect-and-communicate-with-services]
 7. **启用反向代理**。  借助 [Service Fabric 反向代理](service-fabric-reverseproxy.md)，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
-8. 返回“群集配置”  边栏选项卡，在“+显示可选设置”  下，配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 若要禁用诊断，请将其“状态”  切换为“关”  。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。
+8. 返回“群集配置”边栏选项卡，在“+显示可选设置”下，配置群集**诊断**。 默认情况下，已在群集上启用诊断，以帮助排查问题。 若要禁用诊断，请将其“状态”切换为“关”。 **不**建议关闭诊断。 如果已创建 Application Insights 项目，则提供该项目密钥，以便向其路由应用程序跟踪。
 9. **包括 DNS 服务**。  [DNS 服务](service-fabric-dnsservice.md)是一项可选服务，可用于查找使用 DNS 协议的其他服务。
-10. 选择要将群集设置为的**结构升级模式**。 如果希望系统自动选取最新可用版本并尝试将群集升级到该最新版本，则选择“自动”  。 如果想要选择受支持的版本，则将模式设置为“手动”  。 有关 Fabric 升级模式的详细信息，请参阅 [Service Fabric 群集升级文档][service-fabric-cluster-upgrade]。
+10. 选择要将群集设置为的**结构升级模式**。 如果希望系统自动选取最新可用版本并尝试将群集升级到该最新版本，则选择“自动”。 如果想要选择受支持的版本，则将模式设置为“手动”。 有关 Fabric 升级模式的详细信息，请参阅 [Service Fabric 群集升级文档][service-fabric-cluster-upgrade]。
 
 > [!NOTE]
-> 我们仅支持那些运行受支持的 Service Fabric 版本的群集。 选择“手动”  模式，即表示由你负责将群集升级到受支持的版本。
+> 我们仅支持那些运行受支持的 Service Fabric 版本的群集。 选择“手动”模式，即表示由你负责将群集升级到受支持的版本。
 > 
 
 ### <a name="3-security"></a>3.安全性
 ![Azure 门户上安全配置的屏幕截图。][BasicSecurityConfigs]
 
-为轻松设置安全测试群集，我们提供了“基本”选项  。 如果已有证书且已将其上传到 [Key Vault](/azure/key-vault/)（并为部署启用了 Key Vault），则使用“自定义”选项 
+为轻松设置安全测试群集，我们提供了“基本”选项。 如果已有证书且已将其上传到 [Key Vault](/azure/key-vault/)（并为部署启用了 Key Vault），则使用“自定义”选项
 
 #### <a name="basic-option"></a>“基本”选项
 按照屏幕进行操作，以添加或重复使用现有 Key Vault 并添加证书。 添加证书是一个同步过程，因此必须等待证书创建完成。
@@ -134,16 +134,16 @@ ms.locfileid: "82792473"
 
 ![CreateKeyVault2]
 
-单击“编辑访问策略”并为部署启用对虚拟机的访问权限。   建议同时启用模板部署。 完成选择后，不要忘记单击“保存”按钮并关闭“访问策略”窗格   。
+单击“编辑访问策略”并为部署启用对虚拟机的访问权限。  建议同时启用模板部署。 完成选择后，不要忘记单击“保存”按钮并关闭“访问策略”窗格 。
 
 ![CreateKeyVault3]
 
-输入证书的名称并单击“确定”。 
+输入证书的名称并单击“确定”。
 
 ![CreateKeyVault4]
 
 #### <a name="custom-option"></a>“自定义”选项
-如果你已执行“基本”选项中的步骤，请跳过本节内容  。
+如果你已执行“基本”选项中的步骤，请跳过本节内容。
 
 ![SecurityCustomOption]
 
@@ -171,20 +171,20 @@ ms.locfileid: "82792473"
 
 现在可开始部署群集了。 执行此操作前，请下载证书，查找较大蓝色信息框内的链接。 请确保将证书保存在安全的位置。 连接到群集时需要此证书。 由于下载的证书没有密码，因此建议添加一个。
 
-若要完成群集创建，请单击“创建”  。 还可以选择性下载模板。
+若要完成群集创建，请单击“创建”。 还可以选择性下载模板。
 
 ![摘要]
 
-可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。    此过程将需要一些时间才能完成。 
+可以在通知栏中查看群集创建进度。 （单击屏幕右上角状态栏附近的铃铛图标）。如果在创建群集时曾经单击“固定到启动板”，则会看到“部署 Service Fabric 群集”已固定到“启动”板。   此过程将需要一些时间才能完成。 
 
-若要使用 Powershell 或 CLI 对群集执行管理操作，需要连接群集，请参阅[连接群集](service-fabric-connect-to-secure-cluster.md)，了解有关如何连接的详细信息。
+若要使用 PowerShell 或 CLI 在群集上执行管理操作，需要连接到群集，有关如何[连接到群集](service-fabric-connect-to-secure-cluster.md)的详细信息，请参阅。
 
 ## <a name="view-your-cluster-status"></a>查看群集状态
 ![仪表板中群集详细信息的屏幕截图。][ClusterDashboard]
 
 创建群集后，可以在门户检查群集：
 
-1. 转到“浏览”  ，然后单击“Service Fabric 群集”  。
+1. 转到“浏览”，然后单击“Service Fabric 群集”。
 2. 找到该群集并单击它。
 3. 现在，仪表板会显示群集的详细信息，包括群集的公共终结点和 Service Fabric Explorer 的链接。
 
@@ -209,7 +209,7 @@ ms.locfileid: "82792473"
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md
 [service-fabric-cluster-capacity]: service-fabric-cluster-capacity.md
-[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[service-fabric-cluster-durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md

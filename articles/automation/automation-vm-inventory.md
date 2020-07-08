@@ -4,14 +4,14 @@ description: 本文介绍如何管理 VM 上的清单收集。
 services: automation
 ms.subservice: change-inventory-management
 keywords: 清单, 自动化, 更改, 跟踪
-ms.date: 01/28/2020
+ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: d237b016b8f3430ed0b28becd2712bd0c41d17b4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830610"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603105"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>管理 VM 上的清单收集
 
@@ -87,7 +87,7 @@ Azure 自动化更改跟踪和清单提供基于浏览器的用户界面，可�
 |输入路径     | 用于查看文件的路径，例如，/etc/*.conf。       |
 |路径类型     | 要跟踪的项的类型。 值为“文件”和“目录”。        |
 |递归     | 在查找要跟踪的项时，如果使用了递归，则为 True，否则为 False。        |
-|使用 Sudo     | 如果在查看项时使用了 sudo，则为 True，否则为 False。         |
+|使用 sudo     | 如果在查看项时使用了 sudo，则为 True，否则为 False。         |
 |链接     | 指示在遍历目录时如何处理符号链接的值。 可能的值包括： <br> 忽略 - 忽略符号链接，不包括引用的文件/目录<br>追随 - 在递归期间追随符号链接，并且包含引用的文件/目录<br>管理 - 追随符号链接并允许修改对返回内容的处置方式      |
 
 ## <a name="manage-machine-groups"></a>管理计算机组
@@ -100,7 +100,7 @@ Azure 自动化更改跟踪和清单提供基于浏览器的用户界面，可�
 
 ![在库存页面上查看计算机组](./media/automation-vm-inventory/inventory-machine-groups.png)
 
-从列表中选择一个计算机组将打开“计算机组”页面。 此页面显示有关计算机组的详细信息。 这些详细信息包括用来定义组的 Log Analytics 查询。 此页面的底部显示了属于该组的计算机的分页列表。
+从列表中选择一个计算机组将打开“计算机组”页面。 此页面显示有关计算机组的详细信息。 这些详细信息包括用于定义组的 Azure Monitor 日志查询。 此页面的底部显示了属于该组的计算机的分页列表。
 
 ![查看计算机组页面](./media/automation-vm-inventory/machine-group-page.png)
 
@@ -115,15 +115,18 @@ Azure 自动化更改跟踪和清单提供基于浏览器的用户界面，可�
 若要从更改跟踪和清单管理界面中删除 VM，请执行以下操作：
 
 1. 在 Azure 门户的左窗格中选择“Log Analytics”，然后选择为 VM 启用更改跟踪和清单功能时使用过的工作区。
-2. 在“Log Analytics”页，打开“资源”菜单。
+2. 在 " **Log Analytics** " 页上，打开 "**资源**" 菜单。
 3. 在“工作区数据源”下选择“虚拟机”。
 4. 在列表中选择要断开连接的 VM。 该计算机有一个绿色复选标记，位于“OMS 连接”列中“此工作区”的旁边 。
 
    >[!NOTE]
    >Operations Management Suite (OMS) 现在称为 Azure Monitor 日志。
-   
+
 5. 在下一页的顶部，单击“断开连接”。
 6. 在确认窗口中，单击“是”断开计算机与管理界面的连接。
+
+>[!NOTE]
+>在取消注册这些计算机后，仍会显示计算机，因为我们会报告最近24小时内列出清单的所有计算机。 断开计算机的连接后，需要等待24小时，然后再再列出。
 
 ## <a name="next-steps"></a>后续步骤
 

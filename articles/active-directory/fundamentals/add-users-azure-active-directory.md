@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30730f685945d129ababb27040f34bf8ab2f790
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85603853"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
@@ -44,7 +44,7 @@ ms.locfileid: "79262108"
 
    - **用户名**。 必需。 新用户的用户名。 例如，`mary@contoso.com`。
 
-     用户名的域部分必须使用初始默认域名 " * \<yourdomainname*"、">" 或 "onmicrosoft.com" （例如 " *contoso.com*"）。 若要详细了解如何创建自定义域名，请参阅[使用 Azure Active Directory 门户添加自定义域名](add-custom-domain.md)。
+     用户名的域部分必须使用初始默认域名（ * \<yourdomainname> onmicrosoft.com*）或自定义域名（例如*contoso.com*）。 若要详细了解如何创建自定义域名，请参阅[使用 Azure Active Directory 门户添加自定义域名](add-custom-domain.md)。
 
    - **组**。 （可选）可以将用户添加到一个或多个现有组。 也可以在以后将用户添加到组中。 有关将用户添加到组的详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
@@ -66,9 +66,9 @@ ms.locfileid: "79262108"
 
 某些情况下，可能需要在 Azure Active Directory B2C (Azure AD B2C) 目录中手动创建所有者帐户。 有关创建使用者帐户的详细信息，请参阅[在 Azure AD B2C 中创建和删除使用者用户](../../active-directory-b2c/manage-users-portal.md)。
 
-## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合环境中添加新用户
+## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合环境内添加新用户
 
-若环境同时具有 Azure Active Directory（云）和 Windows Server Active Directory（内部部署），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 进行集成](../hybrid/whatis-hybrid-identity.md)。
+如果你的环境中同时包含 Azure Active Directory（云）和 Windows Server Active Directory（本地），则可以通过同步现有用户帐户数据来添加新用户。 有关混合环境和用户的详细信息，请参阅[将本地目录与 Azure Active Directory 集成](../hybrid/whatis-hybrid-identity.md)。
 
 ## <a name="delete-a-user"></a>删除用户
 
@@ -78,26 +78,26 @@ ms.locfileid: "79262108"
 
 1. 使用组织的用户管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 在任意页面中搜索并选择“Azure Active Directory”。**
+1. 在任意页面中搜索并选择“Azure Active Directory”。 
 
-1. 搜索并选择要从 Azure AD 租户中删除的用户。 例如， _Mary Parker_。
+1. 搜索并选择要从 Azure AD 租户中删除的用户。 例如，_Mary Parker_。
 
-1. 选择“删除用户”****。
+1. 选择“删除用户”  。
 
-    ![用户 - 突出显示删除用户的所有用户页面](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
+    ![“用户 - 所有用户”页，其中突出显示了“删除用户”](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-该用户已删除并不再显示在“用户 - 所有用户”页上****。 可在接下来的 30 天内于“已删除用户”页查看该用户，在此期间可将其还原****。 有关还原用户的详细信息，请参阅[使用 Azure Active Directory 还原或永久删除最近删除的用户](active-directory-users-restore.md)。
+用户将被删除并且不再显示在“用户 - 所有用户”页上。  可在接下来的 30 天内于“已删除用户”页查看该用户，在此期间可将其还原  。 有关还原用户的详细信息，请参阅[使用 Azure Active Directory 还原或永久删除最近删除的用户](active-directory-users-restore.md)。
 
 删除某个用户后，该用户使用的任何许可证可供其他用户使用。
 
 >[!Note]
->必须使用 Windows Server Active Directory 更新其授权来源为 Windows Server Active Directory 的用户的标识、联系信息或工作信息。 完成更新后，必须等待下一个同步周期完成才能看到更改。
+>必须使用 Windows Server Active Directory 更新其授权来源为 Windows Server Active Directory 的用户的标识、联系信息或工作信息。 完成更新后，必须等待下一个同步循环完成，然后才能看到所做的更改。
 
 ## <a name="next-steps"></a>后续步骤
 
 添加用户后，可以执行以下基本流程：
 
-- [添加或更改配置文件信息](active-directory-users-profile-azure-portal.md)
+- [添加或更改个人资料信息](active-directory-users-profile-azure-portal.md)
 
 - [向用户分配角色](active-directory-users-assign-role-azure-portal.md)
 
@@ -105,4 +105,4 @@ ms.locfileid: "79262108"
 
 - [使用动态组和用户](../users-groups-roles/groups-create-rule.md)
 
-也可以执行其他用户管理任务，例如，[从另一个目录添加来宾用户](../b2b/what-is-b2b.md)或[还原已删除的用户](active-directory-users-restore.md)。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理文档](../users-groups-roles/index.yml)。
+也可以执行其他用户管理任务，例如，[从另一个目录添加来宾用户](../b2b/what-is-b2b.md)或[还原已删除的用户](active-directory-users-restore.md)。 有关其他可用操作的详细信息，请参阅 [Azure Active Directory 用户管理和文档](../users-groups-roles/index.yml)。

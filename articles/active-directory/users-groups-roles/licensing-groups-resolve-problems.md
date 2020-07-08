@@ -8,19 +8,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582690"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611282"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 ### <a name="to-find-users-in-an-error-state-in-a-group"></a>在组中查找处于错误状态的用户
 
-1. 打开该组的概述页，然后选择“许可证”  。 如果有任何用户处于错误状态，则会显示通知。
+1. 打开该组的概述页，然后选择“许可证”。 如果有任何用户处于错误状态，则会显示通知。
 
    ![组和错误通知消息](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
    ![处于组许可错误状态的用户列表](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-1. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”  边栏选项卡上，选择“许可证”  ，再选择“概述”  。 如果有一些组需要关注，则会显示信息框。
+1. 若要查找包含至少一个错误的所有组，请在“Azure Active Directory”边栏选项卡上，选择“许可证”，再选择“概述”。 如果有一些组需要关注，则会显示信息框。
 
    ![有关处于错误状态的组的概述和信息](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -56,9 +56,9 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 **问题：** 组中指定的某个产品没有足够的可用许可证。 需要为该产品购买更多的许可证，或者释放其他用户或组中未使用的许可证。
 
-若要查看可用的许可证数量，请转到“Azure Active Directory”   > “许可证”   > “所有产品”  。
+若要查看可用的许可证数量，请转到“Azure Active Directory” > “许可证” > “所有产品”。
 
-若要查看哪些用户和组正在使用许可证，请选择某个产品。 在“许可的用户”下面，可以看到直接或者通过一个或多个组向其分配许可证的所有用户的列表。  在“许可的组”下面，可以看到该产品已分配到的所有组。 
+若要查看哪些用户和组正在使用许可证，请选择某个产品。 在“许可的用户”下面，可以看到直接或者通过一个或多个组向其分配许可证的所有用户的列表。 在“许可的组”下面，可以看到该产品已分配到的所有组。
 
 **PowerShell：** PowerShell cmdlet 将此错误报告为 _CountViolation_。
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 ## <a name="usage-location-isnt-allowed"></a>不允许的使用位置
 
-**问题：** 由于当地法律和法规方面的原因，某些 Microsoft 服务不能在所有位置使用。 必须先为用户指定“使用位置”属性，才能将许可证分配给用户。  可以在 Azure 门户中的“用户”   > “配置文件”   > “设置”  部分下指定位置。
+**问题：** 由于当地法律和法规方面的原因，某些 Microsoft 服务不能在所有位置使用。 必须先为用户指定“使用位置”属性，才能将许可证分配给用户。 可以在 Azure 门户中的“用户” > “配置文件” > “设置”部分下指定位置。
 
 当 Azure AD 尝试向使用位置不受支持的用户分配组许可证时，该操作会失败，并且会记录用户发生的此项错误。
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 
 ## <a name="duplicate-proxy-addresses"></a>重复的代理地址
 
-如果你使用 Exchange Online，则组织中的某些用户可能会使用相同的代理地址值错误地配置。 当基于组的许可尝试为此类用户分配许可证时，此操作会失败并显示“代理地址已被使用”。
+如果使用的是 Exchange Online，可能会使用相同的代理地址值错误地配置组织中的某些用户。 当基于组的许可尝试为此类用户分配许可证时，此操作会失败并显示“代理地址已被使用”。
 
 > [!TIP]
 > 若要查看是否有重复的代理地址，请针对 Exchange Online 执行以下 PowerShell cmdlet：
@@ -138,7 +138,7 @@ Azure AD 会尝试将该组中指定的所有许可证分配给每个用户。 �
 
 ## <a name="manage-licenses-for-products-with-prerequisites"></a>有先决条件的产品管理许可证
 
-你拥有的某些 Microsoft Online 产品可能是“附加产品”。  附加产品要求先为用户或组启用先决服务计划，才能向其分配许可证。 要使用基于组的许可，系统要求先决条件和附加产品服务计划存在于同一组中。 这是为了确保添加到组的任何用户都能收到功能齐全的产品。 请考虑以下示例：
+你拥有的某些 Microsoft Online 产品可能是“附加产品”。 附加产品要求先为用户或组启用先决服务计划，才能向其分配许可证。 要使用基于组的许可，系统要求先决条件和附加产品服务计划存在于同一组中。 这是为了确保添加到组的任何用户都能收到功能齐全的产品。 请考虑以下示例：
 
 Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服务计划。 仅当同时分配了以下必备产品之一时，才能将此服务计划分配到用户或组：
 
@@ -165,13 +165,13 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 
 根据解决错误时采取的措施，可能需要手动触发组的处理来更新用户状态。
 
-例如，如果通过删除用户的直接许可证分配来释放某些许可证，则需要触发以前无法完全为所有用户成员提供许可证的组的处理。 若要重新处理某个组，请转到组窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。  
+例如，如果通过删除用户的直接许可证分配来释放某些许可证，则需要触发以前无法完全为所有用户成员提供许可证的组的处理。 若要重新处理某个组，请转到组窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。 
 
 ## <a name="force-user-license-processing-to-resolve-errors"></a>强制执行用户许可证处理以解决错误
 
 根据解决错误时采取的措施，可能需要手动触发用户的处理来更新用户状态。
 
-例如，解决受影响用户的重复代理地址问题后，需要触发用户的处理。 若要重新处理某个用户，请转到用户窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。  
+例如，解决受影响用户的重复代理地址问题后，需要触发用户的处理。 若要重新处理某个用户，请转到用户窗格，打开“许可证”，并在工具栏中选择“重新处理”按钮。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -181,5 +181,5 @@ Microsoft Workplace Analytics 是一个附加产品。 它包含同名单一服�
 * [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
 * [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-* [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
+* [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
 * [Azure Active Directory 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

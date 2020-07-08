@@ -1,22 +1,22 @@
 ---
 title: 了解 Azure IoT 中心模块孪生 | Microsoft Docs
 description: 开发人员指南 - 使用模块孪生在 IoT 中心与设备之间同步状态和配置数据
-author: chrissie926
+author: ash2017
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/01/2020
-ms.author: menchi
-ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/29/2020
+ms.author: asrastog
+ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303590"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610143"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
-本文假设读者事先已阅读[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。 在 IoT 中心的每个设备标识下，最多可以创建 20 个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
+本文假设读者事先已阅读[了解并在 IoT 中心内使用设备孪生](iot-hub-devguide-device-twins.md)。 在 IoT 中心的每个设备标识下，可创建多达50个模块标识。 每个模块标识隐式生成模块孪生。 模块孪生与设备孪生类似，是存储模块状态信息（例如元数据、配置和条件）的 JSON 文档。 Azure IoT 中心为连接到 IoT 中心的每个模块保留一个模块孪生。 
 
 在设备端，可以使用 IoT 中心设备 SDK 创建模块，其中每个模块与 IoT 中心建立独立连接。 通过此功能，可对设备上的不同组件使用不同的命名空间。 例如，某个自动贩卖机包含三个不同的传感器。 每个传感器由公司的不同部门控制。 可为每个传感器创建一个模块。 这样，每个部门只能向他们控制的传感器发送作业或直接方法，避免发生冲突和用户失误。
 
@@ -236,35 +236,45 @@ ms.locfileid: "78303590"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* 密钥  ：JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
+* **密钥**：JSON 对象中的所有键都是 UTF-8 编码、区分大小写且长度不超过 1 KB。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、`$` 和 SP。
 
 * **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
 
     * 整数的最小值可以为 -4503599627370496，最大值可以为 4503599627370495。
 
-    * 字符串值已进行 UTF-8 编码，最大长度为 512 字节。
+    * 字符串值是 UTF-8 编码的，最大长度为 4 KB。
 
-* 深度  ：标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
+* **深度**：标记、所需属性和报告属性中的 JSON 对象的最大深度为 10 层。 例如，以下对象是有效的：
 
-    ```json
-    {
-        ...
-        "tags": {
-            "one": {
-                "two": {
-                    "three": {
-                        "four": {
-                            "five": {
-                                "property": "value"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        ...
-    }
-    ```
+   ```json
+   {
+       ...
+       "tags": {
+           "one": {
+               "two": {
+                   "three": {
+                       "four": {
+                           "five": {
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       },
+       ...
+   }
+   ```
 
 ## <a name="module-twin-size"></a>模块孪生大小
 

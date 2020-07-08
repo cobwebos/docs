@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 3aa0a0d31e70300814f35c337197b383877fe7be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864379"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610211"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
-在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 VHD 允许的最大大小为 2 TB。
+在将 Windows 虚拟机 (VM) 从本地上传到 Azure 之前，必须准备好虚拟硬盘（VHD 或 VHDX）。 Azure 支持采用 VHD 文件格式且具有固定大小磁盘的第 1 代和第 2 代 VM。 第1代 VM 上的操作系统 VHD 允许的最大大小为 2 TB。
 
-在第 1 代 VM 中，可将 VHDX 文件系统转换成 VHD。 还可以将动态扩展磁盘转换为固定大小的磁盘。 但无法更改 VM 的代次。 有关详细信息，请参阅[应在 hyper-v 中创建第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，并[支持 Azure 上的第2代 vm](generation-2.md)。
+可以将 VHDX 文件转换为 VHD，将动态扩展磁盘转换为固定大小的磁盘，但无法更改 VM 的代。 有关详细信息，请参阅[应在 hyper-v 中创建第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，并[支持 Azure 上的第2代 vm](generation-2.md)。
 
 有关 Azure VM 的支持策略的信息，请参阅 [Microsoft 服务器软件支持 Azure VM](https://support.microsoft.com/help/2721672/)。
 
@@ -28,6 +28,73 @@ ms.locfileid: "82864379"
 >
 > - 64 位版本的 Windows Server 2008 R2 以及更高版本的 Windows Server 操作系统。 若要了解如何在 Azure 中运行 32 位操作系统，请参阅 [Azure VM 中的 32 位操作系统支持](https://support.microsoft.com/help/4021388/)。
 > - 如果将使用任何灾难恢复工具来迁移工作负荷（如 Azure Site Recovery 或 Azure Migrate），则来宾操作系统仍需要此过程，以便在迁移之前准备映像。
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>将虚拟磁盘转换为固定大小的 VHD
+
+使用此部分中的方法之一，将虚拟磁盘转换为 Azure 所需的格式，并调整其大小：
+
+1. 在运行虚拟磁盘转换或调整进程之前备份 VM。
+
+1. 确保 Windows VHD 在本地服务器上正常工作。 尝试转换磁盘或将其上传到 Azure 之前，先解决 VM 本身内部的所有错误。
+
+1. 将虚拟磁盘转换为固定类型。
+
+1. 调整虚拟磁盘的大小以满足 Azure 要求：
+
+   1. Azure 中的磁盘必须将虚拟大小调整为 1 MiB。 如果 VHD 是 1 MiB 的一小部分，则需要将磁盘大小调整为 1 MiB 的倍数。 在从已上传的 VHD 中创建映像时，MiB 分数的磁盘会导致错误。 若要验证这一点，可以使用[PowerShell set-sprsdatabase](/powershell/module/hyper-v/get-vhd)来显示 "size"，该大小必须是 Azure 中 1 MiB 的倍数，"FileSize" 将等于 VHD 页脚的 "size" 加上512字节。
+   
+   1. 与第1代 VM 的 OS VHD 允许的最大大小为 2048 GiB （2 TiB）， 
+   1. 数据磁盘的最大大小为 32767 GiB （32 TiB）。
+
+> [!NOTE]
+> - 如果在转换为固定磁盘并根据需要调整大小后准备 Windows OS 磁盘，请创建使用该磁盘的虚拟机。 启动并登录到该 VM，然后继续阅读本文中的部分，以完成准备上传。  
+> - 如果准备数据磁盘，则可能会停止此部分并继续上传磁盘。
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘
+
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。 
+1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
+1. 在“选择操作”页上选择“转换” > “下一步”。  
+1. 若要从 VHDX 进行转换，请选择 " **VHD**"  >  **Next**。
+1. 若要从动态扩展磁盘进行转换，请选择 "**固定大小**"  >  **Next**。
+1. 找到并选择保存新 VHD 文件的路径。
+1. 选择“完成”。
+
+### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘
+
+可以在 PowerShell 中使用[转换 VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。 如果需要有关安装此 cmdlet 的信息，请单击[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+
+下面的示例将磁盘从 VHDX 转换为 VHD。 它还会将磁盘从动态扩展磁盘转换为固定大小磁盘。
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+在此示例中，将**path**的值替换为要转换的虚拟硬盘的路径。 将**DestinationPath**的值替换为转换后磁盘的新路径和名称。
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
+
+如果你的 Windows VM 映像采用 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)，请使用 [Microsoft 虚拟机转换器](https://www.microsoft.com/download/details.aspx?id=42497)将其转换为 VHD 格式。 有关详细信息，请参阅[如何将 VMware VMDK 转换为 Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)。
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>使用 Hyper-v 管理器调整磁盘大小
+
+1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择“操作” > “编辑磁盘”。 
+1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。
+1. 在 "**选择操作**" 页上，选择 "**展开**  >  **下一步**"。
+1. 在 "**查找虚拟硬盘**" 页面上，在 GiB 中输入新大小 > "**下一步**"。
+1. 选择“完成”。
+
+### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 调整磁盘大小
+
+可以使用 PowerShell 中的重[设大小-VHD](/powershell/module/hyper-v/resize-vhd) cmdlet 调整虚拟磁盘的大小。 如果需要有关安装此 cmdlet 的信息，请单击[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+
+下面的示例将磁盘从 100.5 MiB 调整到 101 MiB，以满足 Azure 对齐要求。
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+在此示例中，将**path**的值替换为要调整大小的虚拟硬盘的路径。 将**SizeBytes**的值替换为磁盘的新大小（以字节为单位）。
 
 ## <a name="system-file-checker"></a>系统文件检查器
 
@@ -55,57 +122,14 @@ Windows Resource Protection did not find any integrity violations.
 
 在 SFC 扫描完成后，安装 Windows 更新并重新启动计算机。
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>将虚拟磁盘转换为固定大小的 VHD
-
-使用此部分中的方法之一，将虚拟磁盘转换为 Azure 所需的格式：
-
-1. 在运行虚拟磁盘转换过程之前备份 VM。
-
-1. 确保 Windows VHD 在本地服务器上正常工作。 在尝试转换磁盘或将其上传到 Azure 之前，请解决 VM 本身内部的所有错误。
-
-1. VHD 大小：
-
-   1. Azure 上的所有 VHD 必须已将虚拟大小调整为 1 MB。 将原始磁盘转换为 VHD 时，必须确保原始磁盘大小为 1 MB 的倍数，然后转换。
-      从上传的 VHD 创建映像时，mb 的小数部分会导致错误。
-
-   1. 操作系统 VHD 允许的最大大小为 2 TB。
-
-转换磁盘后，创建一个使用该磁盘的 VM。 启动并登录到 VM，以完成其上传准备工作。
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>使用 Hyper-V 管理器转换磁盘
-
-1. 打开 Hyper-V 管理器，在左侧选择本地计算机。 在计算机列表上方的菜单中，选择 "**操作** > " "**编辑磁盘**"。
-1. 在“查找虚拟硬盘”页上，选择你的虚拟磁盘。****
-1. 在“选择操作”页上选择“转换” > “下一步”。************
-1. 若要从 VHDX 进行转换，请选择 " **VHD** > **"。**
-1. 若要从动态扩展磁盘进行转换，请选择 "**固定大小** > **"。**
-1. 找到并选择保存新 VHD 文件的路径。
-1. 选择“完成”  。
-
-### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 转换磁盘
-
-可以在 PowerShell 中使用[转换 VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 转换虚拟磁盘。
-
-下面的示例将磁盘从 VHDX 转换为 VHD。 它还会将磁盘从动态扩展磁盘转换为固定大小磁盘。
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-在此示例中，将**path**的值替换为要转换的虚拟硬盘的路径。 将**DestinationPath**的值替换为转换后磁盘的新路径和名称。
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>从 VMware VMDK 磁盘格式转换
-
-如果你的 Windows VM 映像采用 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)，请使用 [Microsoft 虚拟机转换器](https://www.microsoft.com/download/details.aspx?id=42497)将其转换为 VHD 格式。 有关详细信息，请参阅[如何将 VMware VMDK 转换为 Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)。
-
 ## <a name="set-windows-configurations-for-azure"></a>设置 Azure 的 Windows 配置
 
 > [!NOTE]
-> 当使用一般化映像创建 Windows VM 时，Azure 平台会将 ISO 文件装载到 DVD-ROM。 出于此原因，必须在通用化映像的 OS 中启用 DVD-ROM。 如果它被禁用，Windows VM 将停留在全新体验（OOBE）。
+> 使用通用化映像创建 Windows VM 时，Azure 平台会将 ISO 文件装载到 DVD-ROM。 出于这个原因，必须在通用化映像的 OS 中启用 DVD-ROM。 如果它被禁用，Windows VM 将停留在全新体验（OOBE）。
 
 1. 删除路由表中的所有静态持久路由：
 
-   - 若要查看路由表，请`route.exe print`运行。
+   - 若要查看路由表，请运行 `route.exe print` 。
    - 查看**持久性路由**部分。 如果有持久性路由，请使用 `route.exe delete` 命令将其删除。
 
 1. 删除 WinHTTP 代理：
@@ -128,7 +152,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
    diskpart.exe
    ```
 
-   将磁盘 SAN 策略设置为[`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11))：
+   将磁盘 SAN 策略设置为 [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11))：
 
    ```DiskPart
    DISKPART> san policy=onlineall
@@ -174,7 +198,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 确保正确配置以下设置以进行远程访问：
 
 > [!NOTE]
-> 如果在运行`Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>`时收到错误消息，可以放心地忽略该错误消息。 这意味着域未通过组策略对象设置该配置。
+> 如果在运行时收到错误消息 `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>` ，可以放心地忽略该错误消息。 这意味着域未通过组策略对象设置该配置。
 
 1. 已启用远程桌面协议 (RDP)：
 
@@ -240,7 +264,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 1. 如果 VM 是域的一部分，请检查以下策略，以确保不会还原以前的设置。
 
-    |                 目标                  |                                                                            策略                                                                            |                           值                            |
+    |                 目标                  |                                                                            策略                                                                            |                           Value                            |
     | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
     | RDP 已启用                        | 计算机配置\策略\Windows 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\连接         | 允许用户使用远程桌面进行远程连接    |
     | NLA 组策略                      | 设置\管理模板\组件\远程桌面服务\远程桌面会话主机\安全性                                                    | 需要完成用户身份验证才能使用 NLA 进行远程访问 |
@@ -284,7 +308,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 1. 如果 VM 是域的一部分，请检查以下 Azure AD 策略，以确保不会还原以前的设置。
 
-    |                 目标                 |                                                                         策略                                                                          |                  值                  |
+    |                 目标                 |                                                                         策略                                                                          |                  Value                  |
     | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
     | 启用 Windows 防火墙配置文件 | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 保护所有网络连接         |
     | 启用 RDP                           | 计算机配置\策略\Windows 设置\管理模板\网络\网络连接\Windows 防火墙\域配置文件\Windows 防火墙   | 允许入站远程桌面异常 |
@@ -345,7 +369,7 @@ Get-Service -Name Netlogon, Netman, TermService |
    winmgmt.exe /verifyrepository
    ```
 
-   如果存储库已损坏，请参阅[WMI：存储库损坏](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)。
+   如果存储库已损坏，请参阅 [WMI：存储库是否损坏](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)。
 
 1. 确保没有其他应用程序正在使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 若要查看 VM 上使用的端口，请运行 `netstat.exe -anob`：
 
@@ -379,7 +403,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    - 管理员
 
-   - Backup Operators
+   - 备份操作员
 
    - 所有人
 
@@ -393,11 +417,11 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 ### <a name="install-windows-updates"></a>安装 Windows 更新
 
-最好是在*修补程序级别*保持更新计算机。 如果无法做到这一点，请确保安装以下更新。 若要获取最新的更新，请参阅 Windows 更新历史记录页： [windows 10 和 Windows server 2019](https://support.microsoft.com/help/4000825)、 [Windows 8.1 以及 Windows server 2012 r2](https://support.microsoft.com/help/4009470)和[Windows 7 SP1 和 windows server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
+最好是在*修补程序级别*保持更新计算机。 如果这不可能，请确保安装以下更新。 若要获取最新的更新，请查看 Windows 更新历史记录页：[Windows 10 和 Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 和 Windows Server 2012 R2](https://support.microsoft.com/help/4009470)，以及 [Windows 7 SP1 和 Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 <br />
 
-|        组件        |     Binary     | Windows 7 SP1、Windows Server 2008 R2 SP1 |       Windows 8、Windows Server 2012        | Windows 8.1、Windows Server 2012 R2 | Windows 10 v1607、Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709、Windows Server 2016 v1709 | Windows 10 v1803、Windows Server 2016 v1803 |
+|        组件        |     二进制     | Windows 7 SP1、Windows Server 2008 R2 SP1 |       Windows 8、Windows Server 2012        | Windows 8.1、Windows Server 2012 R2 | Windows 10 v1607、Windows Server 2016 v1607 |      Windows 10 v1703      | Windows 10 v1709、Windows Server 2016 v1709 | Windows 10 v1803、Windows Server 2016 v1803 |
 | ----------------------- | -------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- | ------------------------------------------- | -------------------------- | ------------------------------------------- | ------------------------------------------- |
 | 存储                 | disk.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061          | -                                           | -                          | -                                           | -                                           |
 |                         | storport.sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.332             | -                                           | -                                           |
@@ -436,23 +460,26 @@ Get-Service -Name Netlogon, Netman, TermService |
 |                         |                | KB4103712                                 | KB4103726                                   | KB4103715                           |                                             |                            |                                             |                                             |
 
 > [!NOTE]
-> 为避免在 VM 预配期间意外重新启动，我们建议确保所有 Windows 更新安装均已完成，并且没有任何更新待处理。 执行此操作的一种方法是在运行`sysprep.exe`命令之前安装所有可能的 Windows 更新并重新启动一次。
+> 为避免在 VM 预配期间意外重新启动，我们建议确保所有 Windows 更新安装均已完成，并且没有任何更新待处理。 执行此操作的一种方法是在运行命令之前安装所有可能的 Windows 更新并重新启动一次 `sysprep.exe` 。
 
 ### <a name="determine-when-to-use-sysprep"></a>确定何时使用 sysprep 
 
-系统准备工具（`sysprep.exe`）是可用于重置 Windows 安装的进程。
+系统准备工具（ `sysprep.exe` ）是可用于重置 Windows 安装的进程。
 Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“全新安装”体验。
 
-你通常会`sysprep.exe`运行来创建一个模板，你可以从该模板部署多个具有特定配置的其他 vm。 该模板称为“通用化映像”**。
+你通常 `sysprep.exe` 会运行来创建一个模板，你可以从该模板部署多个具有特定配置的其他 vm。 该模板称为“通用化映像”。
 
-若要仅从一个磁盘创建一个 VM，则无需使用 Sysprep。 可以从专用化映像创建 VM**。 有关如何从专用化磁盘创建 VM 的信息，请参阅：
+若要仅从一个磁盘创建一个 VM，则无需使用 Sysprep。 可以从专用化映像创建 VM。 有关如何从专用化磁盘创建 VM 的信息，请参阅：
 
 - [从专用磁盘创建 VM](create-vm-specialized.md)
 - [Create a VM from a specialized VHD disk](/azure/virtual-machines/windows/create-vm-specialized-portal)（从专用 VHD 磁盘创建 VM）
 
 若要创建通用化映像，需要运行 Sysprep。 有关详细信息，请参阅[如何使用 Sysprep：简介](/previous-versions/windows/it-pro/windows-xp/bb457073(v=technet.10))。
 
-并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 使用此过程之前，请确保 Sysprep 支持计算机的角色。 有关详细信息，请参阅[Sysprep 对服务器角色的支持](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)。
+并非每个安装在基于 Windows 的计算机上的角色或应用程序都支持通用化映像。 使用此过程之前，请确保 Sysprep 支持计算机的角色。 有关详细信息，请参阅 [Sysprep 对服务器角色的支持](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)。
+
+特别是，Sysprep 要求在执行之前完全解密驱动器。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
+
 
 ### <a name="generalize-a-vhd"></a>通用化 VHD
 
@@ -465,9 +492,9 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 1. 在 "**系统准备工具**" 对话框中，选择 "**进入系统全新体验（OOBE）**"，并确保已选中 "**通用化**" 复选框。
 
     ![系统准备工具](media/prepare-for-upload-vhd-image/syspre.png)
-1. 在 **“关机选项”** 中选择 **“关机”**。
-1. 选择“确定”  。
-1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。****
+1. 在“关机选项”中选择“关机”。 
+1. 选择“确定” 。
+1. 当 Sysprep 完成后，关闭 VM。 请勿使用“重启”来关闭 VM。
 
 现在，VHD 已准备就绪，可以上传了。 有关如何从通用化磁盘创建 VM 的详细信息，请参阅[上传通用化 VHD 并使用它在 Azure 中创建新的 VM](sa-upload-generalized.md)。
 
@@ -476,16 +503,16 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 
 ## <a name="complete-the-recommended-configurations"></a>完成建议的配置
 
-以下设置不影响 VHD 上传。 但是，我们强烈建议配置这些设置。
+以下设置不影响 VHD 上传。 但是，强烈建议配置这些设置。
 
 - 安装 [Azure 虚拟机代理](https://go.microsoft.com/fwlink/?LinkID=394789)。 然后即可启用 VM 扩展。 VM 扩展实现了可能需要用于 VM 的大多数关键功能。 例如，需要使用这些扩展来重置密码或配置 RDP。 有关详细信息，请参阅[Azure 虚拟机代理概述](../extensions/agent-windows.md)。
-- 在 Azure 中创建 VM 后，建议将 pagefile 置于临时驱动器卷以改进性能**。 可按如下所示设置文件位置：
+- 在 Azure 中创建 VM 后，建议将 pagefile 置于临时驱动器卷以改进性能。 可按如下所示设置文件位置：
 
   ```powershell
   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name PagingFiles -Value 'D:\pagefile.sys' -Type MultiString -Force
   ```
 
-  如果数据磁盘已附加到 VM，则临时驱动器卷的驱动器号通常为*D*。此指定可能会不同，具体取决于你的设置和可用驱动器的数量。
+  如果某个数据磁盘已附加到 VM，则临时驱动器卷的驱动器号通常为 *D*。此驱动器号可能有所不同，具体取决于你的设置，以及可用驱动器的数目。
 
   - 建议禁用防病毒软件可能提供的脚本阻止程序。 这些阻止程序可能会干扰并阻止从映像部署新 VM 时执行的 Windows 预配代理脚本。
 

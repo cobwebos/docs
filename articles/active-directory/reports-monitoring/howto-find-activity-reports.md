@@ -7,19 +7,19 @@ author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33c4eeda7f7df1a8238f54fa1afd1bc069f64e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74008212"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608205"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>在 Azure 门户中查找活动报告
 
@@ -29,7 +29,7 @@ ms.locfileid: "74008212"
 
 审核日志报告将关于应用程序活动的多个报告组合到单个视图中以提供基于上下文的报告。 若要访问审核日志报告，请执行以下操作：
 
-1. 导航到[Azure 门户](https://portal.azure.com)。
+1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。****
 3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“审核日志”。******** 
 
@@ -37,7 +37,7 @@ ms.locfileid: "74008212"
 
 审核日志报告合并了以下报告：
 
-* 审核报表
+* 审核报告
 * 密码重置活动
 * 密码重置注册活动
 * 自助服务组活动
@@ -52,7 +52,7 @@ ms.locfileid: "74008212"
 
 类别包括：
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - 身份验证
@@ -73,7 +73,7 @@ ms.locfileid: "74008212"
 
 服务包括：
 
-- 全部
+- All
 - 访问评审
 - 帐户预配 
 - 应用程序 SSO
@@ -95,7 +95,7 @@ ms.locfileid: "74008212"
 
 若要访问登录报告，请执行以下操作：
 
-1. 导航到[Azure 门户](https://portal.azure.com)。
+1. 导航到 [Azure 门户](https://portal.azure.com)。
 2. 从右上角选择你的目录，然后从左侧导航窗格中选择“Azure Active Directory”边栏选项卡。****
 3. 从“Azure Active Directory”边栏选项卡的“活动”部分中选择“登录”。******** 
 
@@ -149,7 +149,7 @@ ms.locfileid: "74008212"
 
 我下载了活动日志（审核日志或登录日志），但发现所选时间范围内的记录不全。 为什么？ 
 
- ![报告](./media/troubleshoot-missing-data-download/01.png)
+ ![报表](./media/troubleshoot-missing-data-download/01.png)
  
 #### <a name="cause"></a>原因
 
@@ -165,16 +165,16 @@ ms.locfileid: "74008212"
 
 我在 Azure 门户中执行了一些操作，本应在`Activity logs > Audit Logs`边栏选项卡中看到这些操作的审核日志，但却找不到。
 
- ![报告](./media/troubleshoot-missing-audit-data/01.png)
+ ![报表](./media/troubleshoot-missing-audit-data/01.png)
  
 #### <a name="cause"></a>原因
 
 操作不会立即显示在活动日志中。 下表枚举了活动日志的延迟数字。 
 
-| 报表 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
-|--------|--------|---------------|---------------|
-| 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
-| 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
+| 报表 | 延迟 (P95) | 延迟 (P99) |
+|--------|---------------|---------------|
+| 目录审核 | 2 分钟 | 5 分钟 |
+| 登录活动 | 2 分钟 | 5 分钟 |
 
 #### <a name="resolution"></a>解决方法
 
@@ -186,16 +186,16 @@ ms.locfileid: "74008212"
 
 我最近登录了 Azure 门户，本应在`Activity logs > Sign-ins`边栏选项卡中看到这些操作的登录日志，但却找不到。
 
- ![报告](./media/troubleshoot-missing-audit-data/02.png)
+ ![报表](./media/troubleshoot-missing-audit-data/02.png)
  
 #### <a name="cause"></a>原因
 
 操作不会立即显示在活动日志中。 下表枚举了活动日志的延迟数字。 
 
-| 报表 | &nbsp; | 延迟 (P95) | 延迟 (P99) |
-|--------|--------|---------------|---------------|
-| 目录审核 | &nbsp; | 2 分钟 | 5 分钟 |
-| 登录活动 | &nbsp; | 2 分钟 | 5 分钟 | 
+| 报表 | 延迟 (P95) | 延迟 (P99) |
+|--------|---------------|---------------|
+| 目录审核 | 2 分钟 | 5 分钟 |
+| 登录活动 | 2 分钟 | 5 分钟 |
 
 #### <a name="resolution"></a>解决方法
 
@@ -207,16 +207,16 @@ ms.locfileid: "74008212"
 
 无法在 Azure 门户中查看 30 天以上的登录和审核数据。 为什么？ 
 
- ![报告](./media/troubleshoot-missing-audit-data/03.png)
+ ![报表](./media/troubleshoot-missing-audit-data/03.png)
 
 #### <a name="cause"></a>原因
 
 根据你持有的许可证，Azure Active Directory 操作会按以下持续时间存储活动报告：
 
-| 报表           | &nbsp; |  Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| ---              | ----   |  ---           | ---                 | ---                 |
-| 目录审核  | &nbsp; |   7 天     | 30 天             | 30 天             |
-| 登录活动 | &nbsp; | 不可用。 可以在单个用户配置文件边栏选项卡中访问自己在 7 天内的登录活动 | 30 天 | 30 天             |
+| 报表           | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
+| ---              | ---           | ---                 | ---
+| 目录审核  | 7 天        | 30 天             | 30 天             |
+| 登录活动 | 不可用。 可以在单个用户配置文件边栏选项卡中访问自己在 7 天内的登录活动 | 30 天 | 30 天             |
 
 有关详细信息，请参阅 [Azure Active Directory 报告保留策略](reference-reports-data-retention.md)。  
 

@@ -3,22 +3,19 @@ title: 纵向扩展 Azure Service Fabric 节点类型
 description: 了解如何通过添加虚拟机规模集缩放 Service Fabric 群集。
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674221"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610687"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>纵向扩展 Service Fabric 群集主节点类型
 本文介绍如何通过增加虚拟机资源来纵向扩展 Service Fabric 群集主节点类型。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集后，可以纵向缩放群集节点类型（更改节点的资源）或升级节点类型 VM 的操作系统。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
 
 > [!WARNING]
-> 如果群集运行状况不正常，请勿开始更改主节点类型 VM SKU。 群集运行状况不正常时，如果尝试更改 VM SKU，只会进一步破坏群集的稳定性。
+> 如果群集状态为 "不正常"，则不要尝试使用主节点类型 "向上缩放" 过程，因为这将仅进一步破坏群集的稳定性。
 >
-> 我们建议不要更改规模集/节点类型的 VM SKU，除非它在[银级持久性或更高的级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)运行。 更改 VM SKU 大小是一种破坏数据的就地基础结构操作。 由于无法延迟或监视此更改，此操作可能会导致有状态服务的数据丢失或其他意外操作问题（甚至可能影响无状态工作负载）。 这表示运行有状态 Service Fabric 系统服务的主节点类型，或运行有状态应用程序工作负载的任何节点类型。
->
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -159,6 +156,8 @@ Get-ServiceFabricClusterHealth
 ## <a name="migrate-nodes-to-the-new-scale-set"></a>将节点迁移到新规模集
 
 现在，我们准备开始禁用原始规模集的节点。 禁用这些节点后，系统服务和种子节点将迁移到新规模集的 VM，因为新规模集也被标记为主节点类型。
+
+对于向上缩放非主节点类型，在此步骤中，你将修改服务放置约束以包括新的虚拟机规模集/节点类型，然后将旧的虚拟机规模集实例计数减少到零，一次一个节点（以确保删除节点不会影响群集的可靠性）。
 
 ```powershell
 # Disable the nodes in the original scale set.

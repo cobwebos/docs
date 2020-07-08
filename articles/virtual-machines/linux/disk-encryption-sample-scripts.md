@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585956"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85610347"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
@@ -320,7 +320,7 @@ ms.locfileid: "80585956"
 
 6. 现在可以解除配置 VM，并将 VHD 上传到 Azure 中。
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 和 RHEL 8。1
+### <a name="centos-7-and-rhel-7"></a>CentOS 7 和 RHEL 7
 
 若要在分发版安装期间配置加密，请执行以下步骤：
 1. 对磁盘进行分区时，选择“加密我的数据”  。
