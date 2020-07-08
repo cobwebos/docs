@@ -278,6 +278,8 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: 按需备份分区
               href: service-fabric-backup-restore-service-ondemand-backup.md
+            - name: 脱机查看和编辑可靠集合备份
+              href: backup-explorer.md
         - name: Initializer CodePackage
           href: initializer-codepackages.md
         - name: RunToCompletion

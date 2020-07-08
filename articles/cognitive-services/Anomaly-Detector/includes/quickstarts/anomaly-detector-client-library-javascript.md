@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: dca07f37377880008160fa3521d66ed4f6afc084
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: a4e8fc18ab7abfee483f36adef083bfb08a4a27f
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81759809"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986088"
 ---
 适用于 JavaScript 的异常检测器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -28,13 +28,13 @@ ms.locfileid: "81759809"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Node.js](https://nodejs.org/)
-* 异常检测器密钥和终结点
+* 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
+    * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
+    可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="setting-up"></a>设置
 
-### <a name="create-an-anomaly-detector-azure-resource"></a>创建异常检测器 Azure 资源
-
-[!INCLUDE [anomaly-detector-resource-creation](../../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
+[!INCLUDE [anomaly-detector-environment-variables](../environment-variables.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 

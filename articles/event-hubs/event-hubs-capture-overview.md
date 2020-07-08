@@ -1,26 +1,14 @@
 ---
 title: 捕获流式处理事件 - Azure 事件中心 | Microsoft Docs
 description: 本文概述了捕获功能，该功能可以捕获通过 Azure 事件中心流式处理的事件。
-services: event-hubs
-documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562
-ms.service: event-hubs
-ms.workload: na
-ms.custom: seodec18
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2020
-ms.author: shvija
-ms.openlocfilehash: b3411b3e138778ca7ca1ffcfe14d8d6e84d76d4e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: HT
+ms.date: 06/23/2020
+ms.openlocfilehash: be5a8bed06f5df0ffcee66c277f8ba5fa1a1bf74
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726088"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985252"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 Azure 事件中心，可以按指定的时间间隔或大小差异在所选的 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)或者 [Azure Data Lake Storage Gen 1 或 Gen 2](https://azure.microsoft.com/services/data-lake-store/) 帐户中自动捕获事件中心的流式处理数据。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
@@ -161,7 +149,7 @@ Apache Avro 针对 [Java][Java] 和 [Python][Python] 提供了完整的快速入
 [support request]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [Azure Storage Explorer]: https://azurestorageexplorer.codeplex.com/
 [3]: ./media/event-hubs-capture-overview/event-hubs-capture3.png
-[Avro Tools]: https://www.apache.org/dist/avro/stable/java/avro-tools-1.9.2.jar
+[Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md

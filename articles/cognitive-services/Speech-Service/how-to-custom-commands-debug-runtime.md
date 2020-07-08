@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307465"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023017"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>运行自定义命令应用程序时调试错误
 
@@ -27,9 +27,8 @@ ms.locfileid: "85307465"
 
 | 错误代码 | 详细信息 |
 | ------- | -------- |
-| 401 | AuthenticationFailure： WebSocket 升级失败，出现身份验证错误 |
-| 1000 | 超出最大 websocket 连接空闲持续时间（> 300000 ms） |
-| 1002 | 当需要状态代码 "101" 时，服务器返回了状态代码 "404"。 |
+| [401](#error-401) | AuthenticationFailure： WebSocket 升级失败，出现身份验证错误 |
+| [1002](#error-1002)] | 当需要状态代码 "101" 时，服务器返回了状态代码 "404"。 |
 
 ### <a name="error-401"></a>错误 401
 - 客户端应用程序中指定的区域与自定义命令应用程序的区域不匹配
@@ -37,9 +36,6 @@ ms.locfileid: "85307465"
 - 语音资源密钥无效
     
     请确保语音资源键正确。
-
-### <a name="error-1000"></a>错误 1000 
-服务器在5分钟后终止了空闲连接。 尝试重新连接。
 
 ### <a name="error-1002"></a>错误1002 
 - 自定义命令应用程序未发布
@@ -49,10 +45,12 @@ ms.locfileid: "85307465"
 - 自定义命令 applicationId 无效
 
     请确保自定义命令应用程序 ID 是正确的。
-
-- 你正在尝试访问语音资源之外的自定义命令应用程序
+ 语音资源外的自定义命令应用程序
 
     请确保在语音资源下创建自定义命令应用程序。
+
+有关排查连接问题的详细信息，请参阅[Windows 语音助手客户端故障排除](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting)
+
 
 ## <a name="dialog-is-canceled"></a>对话框已取消
 
@@ -70,14 +68,14 @@ CancelledDialog 事件由取消代码和说明组成，如下所示：
 
 | 取消代码 | 取消说明 |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | 超出允许的最大数目后未进行任何进度 |
-| RecognizerQuotaExceeded | 超出了识别器使用配额 |
-| RecognizerConnectionFailed | 与识别器的连接失败 |
-| RecognizerUnauthorized | 无法通过当前订阅访问此应用程序 |
-| RecognizerInputExceededAllowedLength | 输入超出了识别器支持的最大长度 |
-| RecognizerNotFound | 找不到识别器 |
-| RecognizerInvalidQuery | 识别器的查询无效 |
-| RecognizerError | 识别器返回错误 |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | 超出允许的最大数目后未进行任何进度 |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | 超出了识别器使用配额 |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | 与识别器的连接失败 |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | 无法通过当前订阅访问此应用程序 |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | 输入超出了识别器支持的最大长度 |
+| [RecognizerNotFound](#recognizer-not-found) | 找不到识别器 |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | 识别器的查询无效 |
+| [RecognizerError](#recognizer-return-an-error) | 识别器返回错误 |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>超出允许的最大数目后未进行任何进度
 当所需的槽在一定数量的时间之后未成功更新时，将取消该对话框。 最大内部版本号为3。

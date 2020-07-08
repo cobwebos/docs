@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382187"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024071"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory 标识保护 - 安全概览
 
@@ -56,7 +56,7 @@ Azure 门户中的[安全性概述](https://aka.ms/IdentityProtectionRefresh)使
 
 ### <a name="legacy-authentication"></a>旧式身份验证
 
-“旧身份验证”磁贴显示上周组织中的旧身份验证数。 旧身份验证协议不支持 MFA 等新式安全方法。 为了防止使用旧身份验证，可以应用条件访问策略。 单击“旧身份验证”磁贴会重定向到“标识安全功能分数”。
+"旧身份验证" 磁贴显示你的组织中有风险的旧身份验证的最后一周的计数。 旧身份验证协议不支持 MFA 等新式安全方法。 为了防止使用旧身份验证，可以应用条件访问策略。 单击“旧身份验证”磁贴会重定向到“标识安全功能分数”。
 
 ### <a name="identity-secure-score"></a>标识安全评分
 

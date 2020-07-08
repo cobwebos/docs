@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: f6e75eb1-d0ae-47cf-bdb8-06684b7c0a94
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60878670"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985058"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>访问 Azure Data Lake Storage Gen1 的诊断日志
 了解如何启用 Azure Data Lake Storage Gen1 帐户诊断日志记录以及如何查看为帐户收集的日志。
@@ -25,7 +25,7 @@ ms.locfileid: "60878670"
 组织可以为其 Azure Data Lake Storage Gen1 帐户启用诊断日志记录，以收集数据访问审核跟踪，以提供信息，如访问数据的用户列表、访问数据的频率、存储在帐户中的数据量等。启用后，会尽力记录诊断和/或请求。 仅在针对服务终结点发出请求时才会创建请求和诊断日志条目。
 
 ## <a name="prerequisites"></a>先决条件
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 按照[使用 Azure 门户中的 Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)中的说明进行操作。
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>对 Data Lake Storage Gen1 帐户启用诊断日志记录
@@ -50,7 +50,7 @@ ms.locfileid: "60878670"
      
    * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
-   * 单击“ **保存**”。
+   * 单击“保存” 。
 
 启用诊断设置后，可在“诊断日志”**** 选项卡中查看日志。
 
@@ -91,91 +91,95 @@ ms.locfileid: "60878670"
 ### <a name="request-logs"></a>请求日志
 此处是 JSON 格式的请求日志中的一个示例条目。 每个 blob 都有一个名为 "**记录**" 的根对象，其中包含一组日志对象。
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-07T21:02:53.456Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Requests",
+        "operationName": "GETCustomerIngressEgress",
+        "resultType": "200",
+        "callerIpAddress": "::ffff:1.1.1.1",
+        "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+        "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>请求日志架构
 | 名称 | 类型 | 说明 |
 | --- | --- | --- |
-| time |字符串 |日志时间戳（采用 UTC） |
-| resourceId |字符串 |操作发生所在的资源的 ID |
-| category |字符串 |日志类别。 例如，“请求”****。 |
-| operationName |字符串 |被记录的操作的名称。 例如 getfilestatus。 |
-| resultType |字符串 |操作状态，例如，200。 |
-| callerIpAddress |字符串 |作出请求的客户端 的IP 地址 |
-| correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
-| identity |对象 |生成日志的标识 |
+| time |String |日志时间戳（采用 UTC） |
+| ResourceId |String |操作发生所在的资源的 ID |
+| category |String |日志类别。 例如，“请求”。 |
+| operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
+| resultType |String |操作状态，例如，200。 |
+| callerIpAddress |String |作出请求的客户端 的IP 地址 |
+| correlationId |String |可用于将一组相关日志条目组合在一起的日志的 ID |
+| 标识 |Object |生成日志的标识 |
 | properties |JSON |详细信息参见以下内容 |
 
 #### <a name="request-log-properties-schema"></a>请求日志属性架构
-| 名称 | 类型 | 说明 |
+| 名称 | 类型 | 描述 |
 | --- | --- | --- |
-| HttpMethod |字符串 |用于此操作的 HTTP 方法。 例如 GET。 |
-| 路径 |字符串 |操作执行所在的路径 |
+| HttpMethod |String |用于此操作的 HTTP 方法。 例如 GET。 |
+| 路径 |String |操作执行所在的路径 |
 | RequestContentLength |int |HTTP 请求的内容长度 |
-| ClientRequestId |字符串 |唯一标识此请求的 ID |
-| StartTime |字符串 |服务器接收请求的时间 |
-| EndTime |字符串 |服务器发送响应的时间 |
+| ClientRequestId |String |唯一标识此请求的 ID |
+| StartTime |String |服务器接收请求的时间 |
+| EndTime |String |服务器发送响应的时间 |
 
 ### <a name="audit-logs"></a>审核日志
 此处是 JSON 格式的审核日志中的一个示例条目。 每个 Blob 具有一个名为 **records** 的根对象，该对象包含一组日志对象
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "resultSignature": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-08T19:08:59.359Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Audit",
+        "operationName": "SeOpenStream",
+        "resultType": "0",
+        "resultSignature": "0",
+        "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+        "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+        "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>审核日志架构
 | 名称 | 类型 | 说明 |
 | --- | --- | --- |
-| time |字符串 |日志时间戳（采用 UTC） |
-| resourceId |字符串 |操作发生所在的资源的 ID |
-| category |字符串 |日志类别。 例如，“审核”****。 |
-| operationName |字符串 |被记录的操作的名称。 例如 getfilestatus。 |
-| resultType |字符串 |操作状态，例如，200。 |
-| resultSignature |字符串 |有关操作的其他详细信息。 |
-| correlationId |字符串 |可用于将一组相关日志条目组合在一起的日志的 ID |
-| identity |对象 |生成日志的标识 |
+| time |String |日志时间戳（采用 UTC） |
+| ResourceId |String |操作发生所在的资源的 ID |
+| category |String |日志类别。 例如，“审核”****。 |
+| operationName |String |被记录的操作的名称。 例如 getfilestatus。 |
+| resultType |String |操作状态，例如，200。 |
+| resultSignature |String |有关操作的其他详细信息。 |
+| correlationId |String |可用于将一组相关日志条目组合在一起的日志的 ID |
+| 标识 |Object |生成日志的标识 |
 | properties |JSON |详细信息参见以下内容 |
 
 #### <a name="audit-log-properties-schema"></a>审核日志属性架构
-| 名称 | 类型 | 说明 |
+| 名称 | 类型 | 描述 |
 | --- | --- | --- |
-| StreamName |字符串 |操作执行所在的路径 |
+| StreamName |String |操作执行所在的路径 |
 
 ## <a name="samples-to-process-the-log-data"></a>日志数据处理示例
 当将日志从 Azure Data Lake Storage Gen1 发送到 Azure Monitor 日志时（请参阅使用[Azure Monitor 日志 Azure Monitor 搜索收集的数据](../azure-monitor/learn/tutorial-viewdata.md)），以下查询将返回一个表，其中包含一个用户显示名称列表、事件时间以及事件时间与可视化图的事件的计数。 可轻松修改该查询，以显示用户 GUID 或其他属性：
@@ -187,9 +191,9 @@ search *
 ```
 
 
-Azure Data Lake Storage Gen1 提供如何处理和分析日志数据的示例。 可以在[https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)中找到该示例。 
+Azure Data Lake Storage Gen1 提供如何处理和分析日志数据的示例。 可以在中找到该示例 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 。 
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 

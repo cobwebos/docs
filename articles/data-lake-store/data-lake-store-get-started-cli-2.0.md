@@ -3,22 +3,22 @@ title: 管理 Azure Data Lake Storage Gen1 帐户-Azure CLI
 description: 使用 Azure CLI 创建 Data Lake Storage Gen1 帐户并执行基本操作。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e278981ce7647a53d2e80c5b835c8ed666db541
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 92fd681d05b8e5bd7cf07ecd735acd87698935ef
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688174"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985783"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-cli"></a>使用 Azure CLI 开始使用 Azure Data Lake Storage Gen1
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
 > [!div class="op_single_selector"]
-> * [门户](data-lake-store-get-started-portal.md)
+> * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
 > * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 >
@@ -32,7 +32,7 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以�
 ## <a name="prerequisites"></a>先决条件
 在开始阅读本文前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **Azure CLI**：请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以获取说明。
 
@@ -110,23 +110,25 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
 
 命令的输出如下所示：
 
-    [
-        {
-            "accessTime": 1491323529542,
-            "aclBit": false,
-            "blockSize": 268435456,
-            "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-            "length": 1589881,
-            "modificationTime": 1491323531638,
-            "msExpirationTime": 0,
-            "name": "mynewfolder/vehicle1_09142014.csv",
-            "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-            "pathSuffix": "vehicle1_09142014.csv",
-            "permission": "770",
-            "replication": 1,
-            "type": "FILE"
-        }
-    ]
+```output
+[
+    {
+        "accessTime": 1491323529542,
+        "aclBit": false,
+        "blockSize": 268435456,
+        "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "length": 1589881,
+        "modificationTime": 1491323531638,
+        "msExpirationTime": 0,
+        "name": "mynewfolder/vehicle1_09142014.csv",
+        "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "pathSuffix": "vehicle1_09142014.csv",
+        "permission": "770",
+        "replication": 1,
+        "type": "FILE"
+    }
+]
+```
 
 ## <a name="rename-download-and-delete-data-from-a-data-lake-storage-gen1-account"></a>重命名、下载以及删除 Data Lake Storage Gen1 帐户中的数据 
 
@@ -181,19 +183,21 @@ az dls fs list --account mydatalakestoragegen1 --path /mynewfolder
     az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
     ```
 
-    输出应与以下内容类似：
+    输出应如下所示：
 
-        {
-            "entries": [
-            "user::rwx",
-            "group::rwx",
-            "other::---"
-          ],
-          "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-          "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
-          "permission": "770",
-          "stickyBit": false
-        }
+    ```output
+    {
+        "entries": [
+        "user::rwx",
+        "group::rwx",
+        "other::---"
+        ],
+        "group": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "owner": "1808bd5f-62af-45f4-89d8-03c5e81bac20",
+        "permission": "770",
+        "stickyBit": false
+    }
+    ```
 
 * **若要设置 ACL 的条目**，请使用以下命令：
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77664688"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984618"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor 中的容器监视解决方案
 
@@ -45,7 +45,7 @@ ms.locfileid: "77664688"
 
 下表概括了 Azure Monitor 中容器清单、性能和日志的 Docker 业务流程和操作系统监视支持。   
 
-| | ACS | Linux | Windows | 容器<br>清单 | 映像<br>清单 | 节点<br>清单 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
+| | ACS | Linux | Windows | 容器<br>清单 | 图像<br>清单 | 节点<br>库存 | 容器<br>性能 | 容器<br>事件 | 事件<br>日志 | 容器<br>日志 |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -116,7 +116,7 @@ ms.locfileid: "77664688"
 
 ### <a name="install-and-configure-linux-container-hosts"></a>安装和配置 Linux 容器主机
 
-安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 Log Analytics 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击 "**快速入门** > **计算机**" 查看**工作区 ID**和**主密钥**。  将它们复制并粘贴到喜爱的编辑器中。
+安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 Log Analytics 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击 "**快速入门**  >  **计算机**"**查看工作区 ID**和**主密钥**。  将它们复制并粘贴到喜爱的编辑器中。
 
 对于除了 CoreOS 之外的所有 Linux 容器主机：****
 
@@ -618,7 +618,6 @@ Log Analytics 将打开，显示有关容器状态的信息。
 - KubeEvents_CL- 使用此类型可查看 Kubernetes 事件****。
 - KubePodInventory_CL- 如果想要了解群集层次结构信息，请使用此类型****。
 
-
 ### <a name="to-query-logs-for-container-data"></a>在日志中查询容器数据的步骤
 
 * 选择一个最近失败的映像，并找到它的错误日志。 首先，通过使用 **ContainerInventory** 搜索查找运行该映像的容器名称。 例如，搜索 `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
@@ -628,7 +627,7 @@ Log Analytics 将打开，显示有关容器状态的信息。
 
 ## <a name="example-log-queries"></a>示例日志查询
 
-从一或两个示例开始生成查询，并修改它们以适应环境，这通常很有用。 可以首先尝试使用“示例查询”区域，它可以帮助你构建更高级的查询****。
+从一或两个示例开始生成查询，并修改它们以适应环境，这通常很有用。 作为起点，你可以尝试使用解决方案页最右侧的 "**示例查询**" 区域，以帮助你生成更高级的查询。
 
 ![容器查询](./media/containers/containers-queries.png)
 

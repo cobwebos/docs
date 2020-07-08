@@ -6,19 +6,19 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: ace85727680ecf6d62860ac2239a8c0b68ae6e0e
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: cf44e50f7d8cc0dbf94c5313373bbd8080baa176
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848781"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984351"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
 本文说明在商业市场中创建新 Azure 应用程序产品/服务的步骤和注意事项。 创建新 Azure 应用程序产品/服务之前，你应熟悉这些概念。
 
-需要首先[在合作伙伴中心创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，并确保你的帐户已在商业市场计划中注册，然后才能发布新 Azure 应用程序产品/服务。
+需要首先[在合作伙伴中心创建商业市场帐户](create-account.md)，并确保你的帐户已在商业市场计划中注册，然后才能发布新 Azure 应用程序产品/服务。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -34,25 +34,25 @@ ms.locfileid: "83848781"
 
 为商业市场准备 Azure 应用程序产品/服务时，请查看以下资源。
 
-* [了解 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
+* [了解 Azure 资源管理器模板](../../azure-resource-manager/resource-group-authoring-templates.md)
 
 * 快速入门：
 
     * [Azure 快速启动模板](https://azure.microsoft.com/documentation/templates/)
-    * [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
-    * [发布应用程序定义](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-    * [部署服务目录应用](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
+    * [Azure 模板最佳实践指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
+    * [发布应用程序定义](../../managed-applications/publish-service-catalog-app.md)
+    * [部署服务目录应用](../../managed-applications/deploy-service-catalog-quickstart.md)
 
 * 教程：
 
-    * [创建定义文件](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
-    * [发布市场应用程序](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
+    * [创建定义文件](../../managed-applications/publish-service-catalog-app.md)
+    * [发布市场应用程序](../../managed-applications/publish-marketplace-app.md)
 
 * 示例：
 
-    * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-    * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-    * [托管应用程序解决方案](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    * [Azure CLI](../../managed-applications/cli-samples.md)
+    * [Azure PowerShell](../../managed-applications/powershell-samples.md)
+    * [托管应用程序解决方案](../../managed-applications/sample-projects.md)
 
 视频[为 Azure 市场生成解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)全面介绍了 Azure 应用程序产品/服务类型：
 
@@ -72,7 +72,7 @@ ms.locfileid: "83848781"
 
 我们建议将以下工具添加到开发环境：
 
-* [Azure 存储浏览器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure 存储浏览器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * 扩展：[Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * 扩展：[Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -84,19 +84,19 @@ ms.locfileid: "83848781"
 
 有两种类型的 Azure 应用程序计划：解决方案模板和托管应用程序。
 
-* 解决方案模板是在市场中发布解决方案的主要方式之一。 当解决方案需要在单个虚拟机 (VM) 以外实现附加的部署和配置自动化时，可使用此计划类型。 使用解决方案模板时，可以自动提供多个资源（包括 VM、网络和存储资源），以提供复杂的 IaaS 解决方案。  有关生成解决方案模板的详细信息，请参阅 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+* 解决方案模板是在市场中发布解决方案的主要方式之一。 当解决方案需要在单个虚拟机 (VM) 以外实现附加的部署和配置自动化时，可使用此计划类型。 使用解决方案模板时，可以自动提供多个资源（包括 VM、网络和存储资源），以提供复杂的 IaaS 解决方案。  有关生成解决方案模板的详细信息，请参阅 [Azure 资源管理器](../../azure-resource-manager/resource-group-overview.md)。
 
-* 托管应用程序类似于解决方案模板，但有一个重大差异。 在托管应用程序中，资源将部署到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 发布者指定解决方案的持续支持费用。 使用托管应用程序可轻松生成完全托管的统包应用程序并交付给客户。  有关托管应用程序的优点和类型的详细信息，请参阅 [Azure 托管应用程序概述](https://docs.microsoft.com/azure/managed-applications/overview)。
+* 托管应用程序类似于解决方案模板，但有一个重大差异。 在托管应用程序中，资源将部署到由应用发布者管理的资源组。 资源组在使用者的订阅中，但发布者租户中的标识有权访问该资源组。 发布者指定解决方案的持续支持费用。 使用托管应用程序可轻松生成完全托管的统包应用程序并交付给客户。  有关托管应用程序的优点和类型的详细信息，请参阅 [Azure 托管应用程序概述](../../managed-applications/overview.md)。
 
 ## <a name="technical-requirements"></a>技术要求
 
 所有 Azure 应用程序都在 `.zip` 存档的根文件夹中至少包含两个文件：
 
-* 资源管理器模板文件，名为 [mainTemplate.json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。  此模板定义要部署到客户的 Azure 订阅中的资源。  有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/resources/templates/)或对应的 [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)存储库。
+* 资源管理器模板文件，名为 [mainTemplate.json](../../azure-resource-manager/resource-group-overview.md)。  此模板定义要部署到客户的 Azure 订阅中的资源。 有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/resources/templates/)或对应的 [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)存储库。
 
-* 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview)。  在用户界面中，可以指定让使用者能够提供参数值的元素。
+* 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](../../managed-applications/create-uidefinition-overview.md)。  在用户界面中，可以指定让使用者能够提供参数值的元素。
 
-所有新 Azure 应用程序产品/服务都必须包含一个 [Azure 合作伙伴客户使用情况属性 GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)。 
+所有新 Azure 应用程序产品/服务都必须包含一个 [Azure 合作伙伴客户使用情况属性 GUID](../azure-partner-customer-usage-attribution.md)。 
 
 若要了解每个应用程序计划的发布要求，请参阅[解决方案模板产品/服务发布要求](../marketplace-solution-templates.md)和[托管应用程序产品/服务发布要求](../marketplace-managed-apps.md)。
 
@@ -132,14 +132,14 @@ ms.locfileid: "83848781"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 [详细了解体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
+体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 [详细了解体验版](../what-is-test-drive.md)。
 
 若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。 在本主题后面的[体验版技术配置](#test-drive-technical-configuration)部分中配置体验版环境。
 
-有关其他信息，请参阅[在商业市场中为你的产品/服务提供体验版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。 还可以阅读[体验版最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)并下载[体验版概述 PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（确保弹出窗口阻止程序处于关闭状态）
+有关其他信息，请参阅[在商业市场中为你的产品/服务提供体验版](test-drive.md)。 还可以阅读[体验版最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)并下载[体验版概述 PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（确保弹出窗口阻止程序处于关闭状态）
 
 >[!Note]
->由于所有 Azure 应用程序都使用 Azure 资源管理器模板来实现，因此，唯一可用于 Azure 应用程序的体验版类型是[基于 Azure 资源管理器的体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
+>由于所有 Azure 应用程序都使用 Azure 资源管理器模板来实现，因此，唯一可用于 Azure 应用程序的体验版类型是[基于 Azure 资源管理器的体验版](../azure-resource-manager-test-drive.md)。
 
 ### <a name="customer-leads"></a>潜在顾客
 
@@ -151,9 +151,16 @@ ms.locfileid: "83848781"
 
 ## <a name="properties"></a>属性
 
-可在“属性”页中定义用于对市场上的产品/服务进行分组的类别和行业、应用版本以及支持产品/服务的法律合同。
+在 "**属性**" 页上，可以定义用于对应用商店、应用版本以及支持产品/服务的法律合同进行分组的类别。
 
-选择至少一个且最多三个类别，将产品/服务置于适当的市场搜索区域中。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。
+### <a name="category"></a>类别
+
+选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
+
+- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+
+请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="legal"></a>合法
 
@@ -161,16 +168,43 @@ ms.locfileid: "83848781"
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-在此页中可管理商业市场产品/服务的副本和图像。 
+在此页中可管理商业市场产品/服务的副本和图像。
 
 ### <a name="marketplace-details"></a>市场详细信息
 
 > [!NOTE]
-> 只要产品/服务说明的开头是短语“此应用程序仅以 [非英语语言] 推出”，产品/服务内容（如说明、文档、屏幕截图和使用条款）便不必是英语。 还可以提供一个*有用的链接 URL*，来使用产品/服务列表内容中所使用的语言以外的语言来提供内容。
+> 只要产品/服务说明的开头是短语“此应用程序仅以 [非英语语言] 推出”，产品/服务内容（如说明、文档、屏幕截图和使用条款）便不必是英语。 还可以提供一个有用链接 URL，使用与产品/服务列表内容中所使用的语言不同的语言提供内容。
+
+下面是一个示例，说明如何在 Azure Marketplace 中显示提供信息（任何列出的价格仅用于举例目的，而不打算反映实际成本）：
+
+:::image type="content" source="media/example-azure-marketplace-app.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 徽标
+2. 类别
+3. 支持地址（链接）
+4. 使用条款
+5. 隐私策略地址（链接）
+6. 产品名称
+7. 总结
+8. 描述
+9. 屏幕截图/视频
+
+<br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
+
+:::image type="content" source="media/example-virtual-machine-container-iot-edge-saas.png" alt-text="说明了此产品/服务在 Azure 门户中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. Title
+2. 描述
+3. 有用链接
+4. 屏幕截图
 
 #### <a name="name"></a>名称
 
-在此处输入的名称将向客户显示为你的产品/服务列表的标题。 此字段预填充了在创建产品/服务时为“产品/服务别名”输入的文本，不过可以更改此值。 此名称可以是商标字（可以包括商标或版权符号）。 此名称长度不能超过 50 个字符，并且不能包含任何表情符号。
+在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预先填充了创建产品/服务时为“产品/服务别名”输入的文本，但可更改此值。 此名称可以是商标字（可以包括商标或版权符号）。 此名称长度不能超过 50 个字符，并且不能包含任何表情符号。
 
 #### <a name="search-results-summary"></a>搜索结果摘要
 
@@ -194,7 +228,7 @@ ms.locfileid: "83848781"
 
 #### <a name="privacy-policy-link"></a>隐私策略链接
 
-输入组织的隐私策略的 URL。 你负责确保你的应用符合隐私法律和法规，以及提供有效的隐私策略。
+输入组织的隐私策略的 URL。 你负责确保你的应用符合隐私法律和法规，并负责提供有效的隐私策略。
 
 ### <a name="useful-links"></a>有用链接
 
@@ -232,9 +266,9 @@ ms.locfileid: "83848781"
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
 
-- [市场产品/服务列表的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="preview-audience"></a>预览受众
 
@@ -250,7 +284,7 @@ ms.locfileid: "83848781"
 > [!NOTE]
 > 预览受众不同于专用受众。 预览受众可以在向市场发布产品/服务之前来访问它。 他们可以查看和验证所有计划，包括仅在将产品/服务完整发布到市场之后才向专用受众提供的计划。 专用受众（在计划“定价和可用性”选项卡中定义）具有对特定计划的独占访问权限。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -265,14 +299,14 @@ ms.locfileid: "83848781"
 
 技术配置定义用于标识服务的详细信息（租户 ID 和应用 ID），服务将使用[市场计量服务 API](./marketplace-metering-service-apis.md) 为托管应用程序发出计量事件。  输入发出计量事件时服务将使用的标识。
 
-* Azure AD 租户 ID（必需）：在 Azure 门户中，我们要求[创建一个 Azure Active Directory (AD) 应用](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)，以便可以验证两个服务之间的连接是否属于经过身份验证的通信。 若要找到[租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，请转到 Azure Active Directory 并选择“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
-* Azure AD 应用 ID（必需）：还需要[应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) 和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory 并选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 若要找到身份验证密钥，请转到“设置”并选择“密钥”。 你将需要提供说明和持续时间，然后系统将向你提供一个数值。
+* **Azure AD 租户 ID** （必需）：在 Azure 门户中，必须[创建 Azure Active Directory （AD）应用](../../active-directory/develop/howto-create-service-principal-portal.md)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请前往 Azure Active Directory，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
+* **Azure AD 应用 id** （必需）：还需要[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory 并选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 若要找到身份验证密钥，请转到“设置”并选择“密钥”。 你将需要提供说明和持续时间，然后系统将向你提供一个数值。
 
 >[!Note]
 >Azure 应用程序 ID 将与你的发布者 ID 相关联，只能在此发布者帐户中重复使用。
 
 >[!Note]
->如果要使用 [Batch 使用情况事件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis#batch-usage-event)，则此配置是必需的。  如果要提交[使用情况事件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis#usage-event)，则还可以使用[实例元数据服务](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)获取 [JSON Web 令牌 (JWT) 持有者令牌](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app)。
+>如果要使用[Batch 用量事件](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)，则需要此配置。  如果要提交[使用情况事件](marketplace-metering-service-apis.md#metered-billing-single-usage-event)，还可以使用[实例元数据服务](../../active-directory/managed-identities-azure-resources/overview.md)获取[JSON web 令牌（JWT）持有者令牌](pc-saas-registration.md#how-to-get-the-publishers-authorization-token)。
 
 ## <a name="plan-overview"></a>计划概述
 
@@ -309,11 +343,11 @@ ms.locfileid: "83848781"
 
 你的计划必须至少在一个 Azure 区域中提供。
 
-选择“Azure 全球”选项可向具有商业市场集成的所有 Azure 全球区域中的客户提供你的计划。 有关详细信息，请参阅[地域可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+选择“Azure 全球”选项可向具有商业市场集成的所有 Azure 全球区域中的客户提供你的计划。 有关详细信息，请参阅[地域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
 
-选择“Azure 政府”选项可在 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)区域中提供你的计划。 此区域为来自美国联邦、州、地方或部落实体以及有资格为其提供服务的合作伙伴的客户提供受控访问权限。 作为发布者，你负责任何符合性控制、安全措施和最佳做法。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。
+选择“Azure 政府”选项可在 [Azure 政府](../../azure-government/documentation-government-welcome.md)区域中提供你的计划。 此区域为来自美国联邦、州、地方或部落实体以及有资格为其提供服务的合作伙伴的客户提供受控访问权限。 作为发布者，你负责任何符合性控制、安全措施和最佳做法。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。
 
-在发布到 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)中请求试用帐户。
+在发布到 [Azure 政府](../../azure-government/documentation-government-manage-marketplace-partners.md)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)中请求试用帐户。
 
 >[!NOTE]
 >在计划已发布并在特定 Azure 区域中可用后，无法删除该区域。
@@ -324,7 +358,7 @@ ms.locfileid: "83848781"
 
 Azure 政府服务处理受特定政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 若要了解这些计划的认证，可以提供多达 100 个链接来描述它们。 这些链接可以直接链接到计划上的列表，也可以是你自己网站上关于这些认证的符合性说明的链接。 这些链接仅对 Azure 政府客户可见。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ### <a name="plan-listing"></a>计划列表
 
@@ -342,7 +376,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 描述此软件计划的独特之处，以及产品/服务内的计划之间的差异。 不要描述产品/服务，仅描述计划。 计划说明最多可以包含 2,000 个字符。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ### <a name="availability-solution-template-plans-only"></a>可用性（仅限解决方案模板计划）
 
@@ -363,7 +397,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 如果你的解决方案模板旨在仅当通过其他解决方案模板或托管应用程序引用时才间接部署，请选中此复选框以发布你的解决方案模板，但是会使它向客户隐藏，从而无法直接搜索和浏览它。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ### <a name="pricing-and-availability-managed-application-plans-only"></a>定价和可用性（仅限托管应用程序计划）
 
@@ -399,10 +433,14 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 选择“这是专用计划”可使计划成为专用计划，仅对所选择的受限受众可见。 作为专用计划发布后，可以更新受众或选择使计划对每个人都可用。 将计划发布为对每个人都可见后，它便必须保持对每个人都可见；无法重新配置为专用计划。
 
+>[!Note]
+>专用或受限受众与在“预览”选项卡上定义的预览受众不同。预览受众可以在向市场发布产品/服务之前来访问它。 专用受众选项仅适用于特定计划，而预览受众可以查看所有计划（专用或非专用）以进行验证。
+
 如果将计划设为专用，请输入“Azure 订阅 ID”及其说明。 每个 ID 都是有权访问此专用计划的受众。 通过用于包含所分配的每个 Azure 订阅 ID 的说明的选项，使用 Azure 订阅 ID 分配访问权限。 可单独添加最多 10 个客户订阅 ID，或是通过导入 CSV 文件最多添加 20,000 个。 Azure 订阅 ID 表示为 GUID，字母必须为小写。
 
 >[!Note]
->专用或受限受众与在“预览”选项卡上定义的预览受众不同。预览受众可以在向市场发布产品/服务之前来访问它。 专用受众选项仅适用于特定计划，而预览受众可以查看所有计划（专用或非专用）以进行验证。
+>通过云解决方案提供商计划（CSP）的分销商建立的 Azure 订阅不支持专用产品/服务。
+
 
 ### <a name="technical-configuration"></a>技术配置 
 
@@ -421,15 +459,15 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 所有 Azure 应用程序计划包都必须在 `.zip` 存档的根文件夹中包含以下两个文件：
 
-* 资源管理器模板文件，名为 [mainTemplate.json](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 此模板自动将资源部署到客户 Azure 订阅中。  有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/)或对应的 [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)存储库。
-* 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)。
+* 资源管理器模板文件，名为 [mainTemplate.json](../../azure-resource-manager/resource-group-overview.md)。 此模板自动将资源部署到客户 Azure 订阅中。  有关资源管理器模板的示例，请参阅 [Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/)或对应的 [GitHub：Azure 资源管理器快速入门模板](https://github.com/azure/azure-quickstart-templates)存储库。
+* 用于 Azure 应用程序创建体验的用户界面定义，名为 [createUiDefinition.json](../../azure-resource-manager/managed-application-createuidefinition-overview.md)。
 
 支持的最大文件大小为：
 
 * 压缩 `.zip` 存档总大小最大为 1 Gb
 * `.zip` 存档中任何单个未压缩文件最大为 1 Gb  
 
-所有新 Azure 应用程序产品/服务还必须包含一个 [Azure 合作伙伴客户使用情况属性 GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)。
+所有新 Azure 应用程序产品/服务还必须包含一个 [Azure 合作伙伴客户使用情况属性 GUID](../azure-partner-customer-usage-attribution.md)。
 
 >[!Note]
 >如果上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
@@ -442,7 +480,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 #### <a name="enable-just-in-time-jit-access"></a>启用实时 (JIT) 访问
 
-选择此选项可为此计划启用实时 (JIT) 访问。  通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。  有关详细信息，请参阅[对 Azure 托管应用程序启用和请求实时访问](https://docs.microsoft.com/azure/managed-applications/request-just-in-time-access)。  若要要求托管应用程序的使用者向你的帐户授予永久访问权限，请将此选项保留为未选中状态。
+选择此选项可为此计划启用实时 (JIT) 访问。  通过 JIT 访问可以对托管应用程序的资源请求提升的访问权限，以便进行故障排除或维护。 你始终对资源拥有只读访问权限，但在特定时间段内，可以获得更高访问权限。  有关详细信息，请参阅[对 Azure 托管应用程序启用和请求实时访问](../../managed-applications/request-just-in-time-access.md)。  若要要求托管应用程序的使用者向你的帐户授予永久访问权限，请将此选项保留为未选中状态。
 
 >[!Note]
 >请确保更新 `createUiDefinition.json` 文件，以便支持此功能。  
@@ -454,7 +492,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 * 在“完整模式”下，客户重新部署应用程序会导致删除托管资源组中未在 `mainTemplate.json` 中定义的资源。 
 * 在“增量模式”下，重新部署应用程序会使现有资源保持不变。
 
-若要详细了解部署模式，请参阅 [Azure 资源管理器部署模式](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes)。
+若要详细了解部署模式，请参阅 [Azure 资源管理器部署模式](../../azure-resource-manager/deployment-modes.md)。
 
 #### <a name="notification-endpoint-url"></a>通知终结点 URL
 
@@ -464,7 +502,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 选择此选项可指定除了默认提供的“`*/read`”操作外，客户可以对托管资源执行的操作。 
 
-在此处列出要使客户可以执行的其他操作（用分号分隔）。  有关详细信息，请参阅[了解 Azure 资源的拒绝分配](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)。  有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。
+在此处列出要使客户可以执行的其他操作（用分号分隔）。  有关详细信息，请参阅[了解 Azure 资源的拒绝分配](../../role-based-access-control/deny-assignments.md)。  有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。
 
 #### <a name="global-azure--azure-government-cloud"></a>全球 Azure/Azure 政府云
 
@@ -474,14 +512,14 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 
 授权 – 添加要向其授予托管资源组权限的用户、组或应用程序的 Azure Active Directory 对象 ID。 通过其主体 ID 标识用户，该 ID 可在 [Azure 门户上的 Azure Active Directory 用户边栏选项卡](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到。
 
-对于每个主体，从列表中选择一个 Azure AD 内置角色（“所有者”或“参与者”）。 选择的角色将描述主体对客户订阅中的资源所拥有的权限。 有关详细信息，请参阅 [Azure 资源的内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure 门户中的 RBAC 入门](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+对于每个主体，从列表中选择一个 Azure AD 内置角色（“所有者”或“参与者”）。 选择的角色将描述主体对客户订阅中的资源所拥有的权限。 有关详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。 有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure 门户中的 RBAC 入门](../../role-based-access-control/overview.md)。
 
 >[!Note]
 >尽管最多可对每个云添加 100 个授权，但通常创建 Active Directory 的用户组并在“主体 ID”中指定其 ID 会更加轻松。 这会使你可以在部署计划之后向管理组添加更多用户，并减少只是为了添加更多授权而更新计划的需求。
 
 #### <a name="policy-settings"></a>策略设置
 
-向托管应用程序应用 [Azure 策略](https://docs.microsoft.com/azure/governance/policy/overview)以便为所部署的解决方案指定符合性要求。 有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](https://docs.microsoft.com/azure/governance/policy/samples/index)。 最多可以配置五个策略，每个策略选项只有一个实例。 某些策略需要附加参数。 审核策略需选择标准 SKU。 策略名称限制为 50 个字符。
+向托管应用程序应用 [Azure 策略](../../governance/policy/overview.md)以便为所部署的解决方案指定符合性要求。 有关策略定义和参数值的格式，请参阅 [Azure Policy 示例](../../governance/policy/samples/index.md)。 最多可以配置五个策略，每个策略选项只有一个实例。 某些策略需要附加参数。 审核策略需选择标准 SKU。 策略名称限制为 50 个字符。
 
 选择“保存草稿”，然后继续。
 
@@ -489,7 +527,7 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 
 对于发布产品/服务，在“联合销售”选项卡上提供信息完全是可选的。 需要实现联合销售就绪和 IP 联合销售就绪状态。 Microsoft 销售团队在评估你的解决方案是否满足客户需求时，将使用你提供的信息详细了解你的解决方案。 它不会直接提供给客户。
 
-有关此选项卡的详细信息，请参阅[合作伙伴中心的联合销售选项](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)。
+有关此选项卡的详细信息，请参阅[合作伙伴中心的联合销售选项](commercial-marketplace-co-sell.md)。
 
 ## <a name="resell-through-csps"></a>通过 CSP 转售
 
@@ -499,23 +537,23 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 
 ## <a name="test-drive"></a>体验版
 
-设置演示（体验版），让客户可在购买之前试用你的产品/服务。 若要创建使客户可以在固定时间段内试用产品/服务的演示环境，请参阅[在商业市场中为你的产品/服务提供体验版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
+设置演示（体验版），让客户可在购买之前试用你的产品/服务。 若要创建使客户可以在固定时间段内试用产品/服务的演示环境，请参阅[在商业市场中为你的产品/服务提供体验版](test-drive.md)。
 
 若要启用体验版，请在[产品/服务设置](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请清除此复选框。
 
 ### <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-- Azure AD 应用 ID（必需）：输入 Azure Active Directory (AD) [应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 应用 id** （必需）：输入 AZURE ACTIVE DIRECTORY （AD）[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**应用注册**"，然后查找列出的**应用程序 ID**号（如50c464d3-4930-494c-963c-1e951d15360e）。
 
 #### <a name="deployment-subscription-details"></a>部署订阅详细信息
 
 若要允许代表你部署体验版，请创建并提供单独的唯一 Azure 订阅（Power BI 体验版不需要）。
 
-* Azure 订阅 ID（Azure 资源管理器和逻辑应用需要）– 输入订阅 ID 以授予对 Azure 帐户服务的访问权限，以便进行资源使用情况报告和计费。 建议考虑[创建单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)以用于体验版（如果尚未创建）。 登录 [Azure 门户](https://portal.azure.com/)并导航到左侧菜单的“订阅”选项卡，即可找到 Azure 订阅 ID。 选择该选项卡将显示订阅 ID （例如“a83645ac-1234-5ab6-6789-1h234g764ghty”）。
-* Azure AD 租户 ID（必需）– 输入 Azure Active Directory (AD) [租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 你还可以在以下位置使用域名 URL 查找组织的租户 ID：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
+* Azure 订阅 ID（Azure 资源管理器和逻辑应用需要）– 输入订阅 ID 以授予对 Azure 帐户服务的访问权限，以便进行资源使用情况报告和计费。 建议考虑[创建单独的 Azure 订阅](../../billing/billing-create-subscription.md)以用于体验版（如果尚未创建）。 登录 [Azure 门户](https://portal.azure.com/)并导航到左侧菜单的“订阅”选项卡，即可找到 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID （例如 "a83645ac-1234-5ab6-6789-1h234g764ghty"）。
+* **Azure AD 租户 id** （必需）–输入 AZURE ACTIVE DIRECTORY （AD）[租户 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 你还可以在以下位置使用域名 URL 查找组织的租户 ID：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 * Azure AD 租户名称（Dynamic 365 需要）– 输入 Azure Active Directory (AD) 名称。 若要找到此名称，请登录 [Azure 门户](https://portal.azure.com/)，租户名称将在右上角的帐户名称下列出。
-* Azure AD 应用 ID（必需）– 输入 Azure Active Directory (AD) [应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧导航菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
-* Azure Active Directory 应用程序客户端密码（必需）– 输入 Azure AD 应用程序[客户端密码](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧导航菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请确保在离开此页之前复制值。）
+* **Azure AD 应用 id** （必需）–输入 AZURE ACTIVE DIRECTORY （AD）[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧导航菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
+* **Azure Active Directory 应用程序客户端机密**（必需）–输入 Azure AD 应用程序[客户端机密](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)）。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧导航菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请确保在离开此页之前复制值。）
 
 选择“保存草稿”，然后继续。
 
@@ -531,9 +569,9 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 * 视频:添加视频（可选）– 可以将视频上传到 YouTube 或 Vimeo，并在此处使用链接和缩略图（533 x 324 像素）进行引用，以便客户可以查看信息演练，来帮助他们更好地了解体验版，包括如何成功使用产品/服务的功能并了解突出其优势的方案。
   * 名称（必需）
   * 地址（仅限 YouTube 或 Vimeo；必需）
-  * 缩略图（图像文件必须采用 PNG 格式，并且为 533 x 324 像素）。
+  * **缩略图**（图像文件必须采用 PNG 格式，533 x 324 像素）。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="publish"></a>发布
 

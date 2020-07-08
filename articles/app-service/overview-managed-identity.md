@@ -3,15 +3,16 @@ title: 托管标识
 description: 了解托管标识在 Azure 应用服务和 Azure Functions 中的工作原理，如何配置托管标识，以及如何为后端资源生成令牌。
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779972"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985746"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -42,7 +43,7 @@ ms.locfileid: "83779972"
 
 
 > [!NOTE] 
-> 若要在 Azure 门户中查找 Web 应用或槽应用的托管标识，请转到“企业应用程序”下的“用户设置”部分。
+> 若要在 Azure 门户中的 "**企业应用程序**" 下查找 web 应用或槽应用的托管标识，请在 "**用户设置**" 部分中查看。 通常，槽名称类似于 `<app name>/slots/<slot name>` 。
 
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
@@ -79,7 +80,9 @@ ms.locfileid: "83779972"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-以下步骤将指导你完成使用 Azure PowerShell 创建 Web 应用并为其分配标识的操作：
+以下步骤将引导你创建应用，并使用 Azure PowerShell 向其分配标识。 用于创建 web 应用和 function app 的说明有所不同。
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>对 web 应用使用 Azure PowerShell
 
 1. 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzAccount` 创建与 Azure 的连接。
 
@@ -87,20 +90,39 @@ ms.locfileid: "83779972"
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. 运行 `Set-AzWebApp -AssignIdentity` 命令为此应用程序创建标识：
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>使用函数应用 Azure PowerShell
+
+1. 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzAccount` 创建与 Azure 的连接。
+
+2. 使用 Azure PowerShell 创建函数应用。 有关如何在 Azure Functions 中使用 Azure PowerShell 的更多示例，请参阅[Az. 函数引用](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)：
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+你还可以改为使用更新现有函数应用 `Update-AzFunctionApp` 。
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
@@ -173,9 +195,38 @@ tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用
 
 5. 在“用户分配”选项卡中，单击“添加” 。
 
-6. 搜索之前创建的标识并选择它。 单击“添加”。
+6. 搜索之前创建的标识并选择它。 单击“添加” 。
 
     ![应用服务中的托管标识](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>使用 Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+以下步骤将引导你创建应用，并使用 Azure PowerShell 向其分配标识。
+
+> [!NOTE]
+> Azure App Service 的 Azure PowerShell commandlet 的当前版本不支持用户分配的标识。 以下说明适用于 Azure Functions。
+
+1. 必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Login-AzAccount` 创建与 Azure 的连接。
+
+2. 使用 Azure PowerShell 创建函数应用。 有关如何在 Azure Functions 中使用 Azure PowerShell 的更多示例，请参阅[Az. 函数引用](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)。 下面的脚本还利用了如何使用 `New-AzUserAssignedIdentity` [Azure PowerShell 按 "创建"、"列出或删除用户分配的托管标识"](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)单独安装。
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+你还可以改为使用更新现有函数应用 `Update-AzFunctionApp` 。
 
 ### <a name="using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板
 
@@ -428,7 +479,11 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>删除标识
 
-可以使用门户、PowerShell 或 CLI 以与创建时相同的方式禁用此功能，从而删除系统分配的标识。 可以单独删除用户分配的标识。 若要删除所有标识，请在 [ARM 模板](#using-an-azure-resource-manager-template)中将类型设置为“None”：
+可以使用门户、PowerShell 或 CLI 以与创建时相同的方式禁用此功能，从而删除系统分配的标识。 可以单独删除用户分配的标识。 若要删除所有标识，请将标识类型设置为 "None"。
+
+以这种方式删除系统分配的标识也会将它从 Azure AD 中删除。 删除应用资源时，也会自动从 Azure AD 中删除系统分配的标识。
+
+删除[ARM 模板](#using-an-azure-resource-manager-template)中的所有标识：
 
 ```json
 "identity": {
@@ -436,7 +491,12 @@ $accessToken = $tokenResponse.access_token
 }
 ```
 
-以这种方式删除系统分配的标识也会将它从 Azure AD 中删除。 删除应用资源时，也会自动从 Azure AD 中删除系统分配的标识。
+删除 Azure PowerShell 中的所有标识（仅 Azure Functions）：
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > 还可以设置一个应用程序设置 (WEBSITE_DISABLE_MSI)，它只禁用本地令牌服务。 但是，它会原地保留标识，工具仍然会将托管标识显示为“打开”或“启用”。 因此，建议不要使用此设置。

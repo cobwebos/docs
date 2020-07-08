@@ -6,15 +6,18 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32c4fe3e542135201a7bf4a23aeff94a0e2f902e
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457427"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023561"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客户托管的密钥对应用配置数据进行加密
 Azure 应用配置对[静态敏感信息进行加密](../security/fundamentals/encryption-atrest.md)。 通过使用客户管理的密钥，可以管理加密密钥，从而提供增强的数据保护。  使用托管密钥加密时，将使用用户提供 Azure Key Vault 密钥对应用配置中的所有敏感信息进行加密。  这样就可以根据需要轮换加密密钥。  它还可以通过撤消应用配置实例对密钥的访问权限来撤消 Azure 应用配置对敏感信息的访问。
+
+> [!NOTE]
+> 客户托管的密钥现在已在*除*印度中部的所有地区正式发布。 在**印度中部**区域，Azure 应用配置提供客户管理的密钥作为公共预览。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。
 
 ## <a name="overview"></a>概述 
 Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静态的敏感信息。 每个应用配置实例都有其自己的加密密钥，该密钥由服务管理并用于加密敏感信息。 敏感信息包括在键值对中找到的值。  启用客户托管的密钥功能后，应用配置将使用分配给应用配置实例的托管标识对 Azure Active Directory 进行身份验证。 然后，托管标识调用 Azure Key Vault 并包装应用配置实例的加密密钥。 然后存储已包装的加密密钥，并在应用配置中将已包装的加密密钥缓存一小时。 应用配置每小时刷新已包装版本的应用配置实例的加密密钥。 这可确保在正常操作情况下的可用性。 
@@ -36,7 +39,7 @@ Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静�
 
 配置这些资源后，两个步骤仍可允许 Azure 应用配置使用 Key Vault 密钥：
 1. 将托管标识分配到 Azure 应用配置实例
-2. 授予目标 Key Vault `GET`访问`WRAP`策略中`UNWRAP`的标识、和权限。
+2. 授予 `GET` `WRAP` `UNWRAP` 目标 Key Vault 访问策略中的标识、和权限。
 
 ## <a name="enable-customer-managed-key-encryption-for-your-azure-app-configuration-instance"></a>为 Azure 应用配置实例启用客户管理的密钥加密
 若要开始，需要正确配置 Azure 应用配置实例。 如果还没有可用的应用配置实例，请按照以下快速入门中的一项进行设置：
@@ -49,33 +52,33 @@ Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静�
 > Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的命令行指令。  它预安装了常用的 Azure 工具，其中包括 .NET Core SDK。 如果你已登录到 Azure 订阅，请从 shell.azure.com 启动 [Azure Cloud Shell](https://shell.azure.com)。  若要详细了解 Azure Cloud Shell，请[阅读我们的文档](../cloud-shell/overview.md)
 
 ### <a name="create-and-configure-an-azure-key-vault"></a>创建和配置 Azure Key Vault
-1. 使用 Azure CLI 创建 Azure Key Vault。  请注意， `vault-name`和`resource-group-name`均为用户提供的，并且必须是唯一的。  在这些`contoso-vault`示例`contoso-resource-group`中，我们使用和。
+1. 使用 Azure CLI 创建 Azure Key Vault。  请注意， `vault-name` 和 `resource-group-name` 均为用户提供的，并且必须是唯一的。  `contoso-vault` `contoso-resource-group` 在这些示例中，我们使用和。
 
     ```azurecli
     az keyvault create --name contoso-vault --resource-group contoso-resource-group
     ```
     
-1. 为 Key Vault 启用软删除和清除保护。 替换在步骤1中创建的`contoso-vault`Key Vault （）和资源`contoso-resource-group`组（）的名称。
+1. 为 Key Vault 启用软删除和清除保护。 替换 `contoso-vault` `contoso-resource-group` 在步骤1中创建的 Key Vault （）和资源组（）的名称。
 
     ```azurecli
     az keyvault update --name contoso-vault --resource-group contoso-resource-group --enable-purge-protection --enable-soft-delete
     ```
     
-1. 创建 Key Vault 键。 提供此密钥`key-name`的唯一，并替换步骤1中创建的 Key Vault （`contoso-vault`）的名称。 指定您是否喜欢`RSA`或`RSA-HSM`加密。
+1. 创建 Key Vault 键。 提供 `key-name` 此密钥的唯一，并替换 `contoso-vault` 步骤1中创建的 Key Vault （）的名称。 指定您是否喜欢 `RSA` 或 `RSA-HSM` 加密。
 
     ```azurecli
     az keyvault key create --name key-name --kty {RSA or RSA-HSM} --vault-name contoso-vault
     ```
     
-    此命令的输出显示生成的密钥的密钥 ID （"孩子"）。  记下要在本练习后面使用的密钥 ID。  密钥 ID 的格式为： `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}`。  密钥 ID 包含三个重要组件：
+    此命令的输出显示生成的密钥的密钥 ID （"孩子"）。  记下要在本练习后面使用的密钥 ID。  密钥 ID 的格式为： `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}` 。  密钥 ID 包含三个重要组件：
     1. Key Vault URI： "https：//{我的密钥保管库
     1. Key Vault 项名称： {密钥名称}
     1. Key Vault 密钥版本： {密钥版本}
 
-1. 使用 Azure CLI 创建系统分配的托管标识，替换前面步骤中使用的应用配置实例和资源组的名称。 托管标识将用于访问托管密钥。 我们使用`contoso-app-config`来说明应用配置实例的名称：
+1. 使用 Azure CLI 创建系统分配的托管标识，替换前面步骤中使用的应用配置实例和资源组的名称。 托管标识将用于访问托管密钥。 我们使用 `contoso-app-config` 来说明应用配置实例的名称：
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     此命令的输出包含系统分配的标识的主体 ID （"principalId"）和租户 ID （"tenandId"）。  这将用于向标识授予对托管密钥的访问权限。
@@ -89,13 +92,13 @@ Azure 应用配置使用 Microsoft 提供的256位 AES 加密密钥来加密静�
     }
     ```
 
-1. Azure 应用配置实例的托管标识需要访问密钥才能执行密钥验证、加密和解密。 它需要访问的特定操作集包括： `GET`、 `WRAP`和`UNWRAP`键的。  授予访问权限需要应用配置实例的托管标识的主体 ID。 此值是在上一步中获得的。 如下所示`contoso-principalId`。 使用命令行向托管密钥授予权限：
+1. Azure 应用配置实例的托管标识需要访问密钥才能执行密钥验证、加密和解密。 它需要访问的特定操作集包括： `GET` 、 `WRAP` 和 `UNWRAP` 键的。  授予访问权限需要应用配置实例的托管标识的主体 ID。 此值是在上一步中获得的。 如下所示 `contoso-principalId` 。 使用命令行向托管密钥授予权限：
 
     ```azurecli
     az keyvault set-policy -n contoso-vault --object-id contoso-principalId --key-permissions get wrapKey unwrapKey
     ```
 
-1. Azure 应用配置实例可以访问托管密钥后，便可以使用 Azure CLI 在服务中启用客户托管的密钥功能。 重新调用在关键创建步骤中记录的以下属性`key name` `key vault URI`：。
+1. Azure 应用配置实例可以访问托管密钥后，便可以使用 Azure CLI 在服务中启用客户托管的密钥功能。 重新调用在关键创建步骤中记录的以下属性： `key name` `key vault URI` 。
 
     ```azurecli
     az appconfig update -g contoso-resource-group -n contoso-app-config --encryption-key-name key-name --encryption-key-version key-version --encryption-key-vault key-vault-Uri

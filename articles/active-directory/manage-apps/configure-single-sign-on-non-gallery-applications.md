@@ -2,22 +2,22 @@
 title: SAML 单一登录 - 非库应用程序 - Microsoft 标识平台 | Microsoft Docs
 description: 在 Microsoft 标识平台 (Azure AD) 中配置单一登录 (SSO) 到非库应用程序
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
-ms.date: 07/19/2019
-ms.author: celested
+ms.date: 06/08/2020
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
-ms.translationtype: HT
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758361"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024225"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>配置非库应用程序的基于 SAML 的单一登录
 
@@ -42,6 +42,8 @@ ms.locfileid: "83758361"
 
 3. 在“管理”部分选择“单一登录”。  
 
+   - 请注意，在某些情况下，将不会出现 "**单一登录**" 选项。 例如，如果使用**应用注册**注册了应用程序，则默认情况下，单一登录功能设置为使用 OIDC OAuth。 在这种情况下，"**企业应用程序**" 下的导航中将不会显示 "**单一登录**" 选项。 使用**应用注册**添加自定义应用时，将在清单文件中配置选项。 若要了解有关清单文件的详细信息，请参阅（ https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) 。 若要了解有关 SSO 标准的详细信息，请参阅（ https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) 。 当应用程序托管在另一个租户中，或者如果你的帐户不具有所需的权限（全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者）时，导航中将缺少**单一登录**。 权限还可能会导致出现这样的情况：你可以打开**单一登录**但无法保存。 若要详细了解 Azure AD 管理角色，请参阅（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
+
 4. 选择“SAML”。 此时会显示“设置 SAML 单一登录 - 预览”页。
 
    ![步骤 1 编辑基本 SAML 配置](media/configure-single-sign-on-non-gallery-applications/step-one-basic-saml-config.png)
@@ -53,7 +55,7 @@ ms.locfileid: "83758361"
     | 基本 SAML 配置设置 | SP 启动 | idP 启动 | 说明 |
     |:--|:--|:--|:--|
     | **标识符(实体 ID)** | 某些应用所需 | 某些应用所需 | 唯一标识应用程序。 Azure AD 将该标识符作为 SAML 令牌的 Audience 参数发送回应用程序。 应用程序应当对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为实体 ID。 输入使用以下模式的 URL：“https://<subdomain>.contoso.com”，可以在应用程序发送的 AuthnRequest（SAML 请求）中找到此值（Issuer 元素）* *。 |
-    | 回复 URL | 必选 | 必选 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 可以使用其他回复 URL 字段来指定多个回复 URL。 例如，你可能需要多个子域的其他回复 URL。 或者，出于测试目的，可以一次指定多个回复 URL（本地主机和公共 URL）。 |
+    | 回复 URL | 必需 | 必需 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 可以使用其他回复 URL 字段来指定多个回复 URL。 例如，你可能需要多个子域的其他回复 URL。 或者，出于测试目的，可以一次指定多个回复 URL（本地主机和公共 URL）。 |
     | **登录 URL** | 必选 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用此 URL 从 Office 365 或 Azure AD 访问面板启动应用程序。 如果此项为空白，则当用户从 Office 365、Azure AD 访问面板或 Azure AD SSO URL 启动应用程序时，Azure AD 会执行 idP 启动的登录。|
     | **中继状态** | 可选 | 可选 | 指定应用程序在完成身份验证以后将用户重定向到何处。 通常，该值是应用程序的有效 URL。 但是，某些应用程序以不同的方式使用此字段。 有关详细信息，请询问应用程序供应商。
     | **注销 URL** | 可选 | 可选 | 用于将 SAML 注销响应发回到应用程序。
@@ -122,9 +124,9 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>步骤 4. 将应用程序设置为使用 Azure AD
 
-“设置 \<应用程序名称>”部分列出了需要在应用程序中配置的值，以便应用程序将 Azure AD 用作 SAML 标识提供者。 所需值根据应用程序的不同而异。 有关详细信息，请参阅应用程序的 SAML 文档。 若要查找文档，请转到“设置”\<应用程序名称>”标题，并选择“查看分步说明” 。 该文档显示在“配置登录”页中。 该页将指导你在“设置\<应用程序名称>”标题中填写“登录 URL”、“Azure AD 标识符”和“注销 URL”值   。
+"**设置 \<applicationName> ** " 部分列出了需要在应用程序中配置的值，因此它将使用 Azure AD 作为 SAML 标识提供者。 所需值根据应用程序的不同而异。 有关详细信息，请参阅应用程序的 SAML 文档。 若要查找文档，请参阅**设置 \<application name> **标题，并选择**查看分步说明**。 该文档显示在“配置登录”页中。 该页指导你填写 " ** \<application name> 设置**" 标题中的**登录 url**、 **Azure AD 标识符**和**注销 URL**值。
 
-1. 向下滚动到“设置 \<applicationName>”部分。 
+1. 向下滚动到“设置 \<applicationName>”部分。**** 
    
    ![步骤 4 设置应用程序](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

@@ -6,25 +6,27 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 1a027eb4cb3351934738319f342afac8d8407e6f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: c3cd5ed952ddb40157ee16246d4d1669d47ed6b9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848798"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984497"
 ---
-# <a name="create-an-azure-container-offer"></a>创建 Azure 容器产品/服务
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中创建 Azure 容器服务
 
-本文介绍如何为 Azure 市场创建和发布容器产品/服务。 开始前，请先[在合作伙伴中心内创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未创建的话）。 确保帐户已注册加入商业市场计划。
+本文介绍如何为 Azure 市场创建和发布容器产品/服务。 开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 确保帐户已注册加入商业市场计划。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+
 2. 在左侧导航菜单中，选择“商业市场” > “概述” 。
+
 3. 在“概述”页上，选择“+ 新建产品/服务” > “Azure 容器” 。
 
-    ![左侧导航菜单图示。](./media/new-offer-azure-container.png)
+   ![左侧导航菜单图示。](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > 发布产品/服务后，在合作伙伴中心内对它进行的编辑只会在重新发布产品/服务后才会显示在店面中。 请确保在进行更改后始终重新发布。
@@ -50,10 +52,10 @@ ms.locfileid: "83848798"
 
 此页显示基于产品/服务当前状态的不同链接。 例如：
 
-- 如果产品/服务是草稿 - [删除草稿产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- 如果产品/服务已上线 - [停止销售产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- 如果产品/服务为预览版 - [投入使用](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果尚未完成发布服务器注销 - [取消发布](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果产品/服务是草稿 - [删除草稿产品/服务](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务已上线 - [停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果产品/服务为预览版 - [投入使用](publishing-status.md#publisher-approval)
+- 如果尚未完成发布服务器注销 - [取消发布](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -65,12 +67,12 @@ ms.locfileid: "83848798"
 
 1. 选择希望我们向其发送潜在客户的潜在客户目标。 合作伙伴中心支持以下 CRM 系统：
 
-   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+   - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+   - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
    > [!NOTE]
-   > 如果你的 CRM 系统没有在上面列出，请使用 [Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)存储潜在客户数据，然后将数据导出到你的 CRM 系统。
+   > 如果你的 CRM 系统没有在上面列出，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 终结点](commercial-marketplace-lead-management-instructions-https.md)存储潜在客户数据，然后将数据导出到你的 CRM 系统。
 
 2. 在合作伙伴中心内发布时，将产品/服务连接到潜在客户目标。
 3. 确认是否正确配置了与潜在客户目标的连接。 当你在合作伙伴中心内发布它后，我们会验证连接，并向你发送测试潜在客户。 若要在上线前预览产品/服务，也可以通过亲自尝试在预览环境中购买产品/服务来测试潜在客户连接。
@@ -78,9 +80,9 @@ ms.locfileid: "83848798"
 
 下面是其他一些潜在客户管理资源：
 
-- [潜在客户管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潜在顾客管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
+- [潜在顾客管理常见问题解答](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
+- [常见的潜在顾客配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -91,7 +93,12 @@ ms.locfileid: "83848798"
 
 #### <a name="category"></a>类别
 
-最少选择一个类别，最多选择五个类别。 这些类别用于将产品/服务放入相应的市场搜索区域中，并显示在产品/服务详细信息页上。 在产品/服务说明中，介绍产品/服务如何支持这些类别。 容器显示在“容器”下，随后显示在“容器映像”类别中 。
+选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
+
+- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+
+请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 容器始终**显示在 "容器"** 下，然后显示 "**容器映像**" 类别。
 
 #### <a name="legal"></a>合法
 
@@ -100,13 +107,13 @@ ms.locfileid: "83848798"
 - 使用 Microsoft 商业市场标准协定。
 - 提供你自己的条款和条件。
 
-##### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场标准协定
+#### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场标准协定
 
 我们提供了标准协定模板，以帮助促进商业市场中的交易。 可以选择根据标准协定提供解决方案，这样客户只需要查看并接受一次。 如果你不想创建自定义条款和条件，不妨考虑使用这种方式。
 
-若要详细了解标准协定，请参阅 [Microsoft 商业市场的标准协定](https://docs.microsoft.com/azure/marketplace/standard-contract)。 你还可以下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178) PDF（确保弹出窗口阻止程序处于禁用状态）。
+若要详细了解标准协定，请参阅 [Microsoft 商业市场的标准协定](../standard-contract.md)。 你还可以下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
-若要使用标准协定，请选中“使用 Microsoft 商业市场的标准协定”复选框，然后单击“接受”。
+若要使用标准协定，请选择 "使用 Microsoft 商业应用商店的标准合同" （。/standard-contract.md）
 
 > [!NOTE]
 > 使用 Microsoft 商业市场的标准协定发布产品/服务后，你将无法使用自己的自定义条款和条件。 要么根据标准协定提供解决方案，要么根据你自己的条款和条件提供解决方案。
@@ -177,7 +184,7 @@ ms.locfileid: "83848798"
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市场一览资源
 
-若要详细了解如何创建产品/服务一览，请参阅[产品/服务一览最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+若要详细了解如何创建产品/服务一览，请参阅[产品/服务一览最佳做法](../gtm-offer-listing-best-practices.md)。
 
 ### <a name="marketplace-images"></a>市场映像
 
@@ -239,9 +246,6 @@ ms.locfileid: "83848798"
 
 添加至少一个 Azure 订阅 ID，可以单独添加（最多 10 个），也可以通过上传 CSV 文件来添加（最多 100 个）。 通过添加这些订阅 ID，可以确定在产品/服务发布上线前谁能预览它。 如果产品/服务已上线，可以选择预览受众来测试产品/服务的更改或更新。
 
-> [!NOTE]
-> 预览受众不同于私人受众。 预览受众可以查看和确认在市场中上线前的所有产品/服务计划，包括只发布给私人受众的产品/服务计划（在“可用性”选项卡上设置）。
-
 选择“保存草稿”，然后继续。
 
 ### <a name="plan-overview"></a>计划概述
@@ -276,22 +280,20 @@ ms.locfileid: "83848798"
 
 使用此选项卡可以选择计划在哪些云中可用。 你在此选项卡上的设置会影响在其他选项卡上显示的字段。
 
-#### <a name="cloud-availability"></a>云可用性
+#### <a name="azure-regions"></a>Azure 区域
 
-计划必须至少在一个云中提供。
+Azure 容器产品/服务的所有计划都将自动提供给**Azure Global**。  所有使用商业应用商店的全球 Azure 区域的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
 
-如果选择“Azure 全球”选项，计划可供全球所有使用商业市场的 Azure 区域中的客户使用。 有关详细信息，请参阅[地理区域可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+选择[**Azure 政府**](../../azure-government/documentation-government-welcome.md)版选项，使解决方案显示在此处。 这是一个政府社区云，其中包含美国联邦、S] （.。。/marketplace-geo-availability-currencies.md） em。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。
 
-选择“[Azure 政府云](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)”选项可以让解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。
-
-在[发布](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要创建和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
+在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要创建和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
 
 > [!NOTE]
-> 在计划发布并在特定云中可用后，便无法删除相应的云。
+> 在您的计划发布并在特定区域中可用后，您将无法删除该区域。
 
-#### <a name="azure-government-cloud-certifications"></a>Azure 政府云认证
+#### <a name="azure-government-certifications"></a>Azure 政府认证
 
-仅当在“云可用性”下选择“Azure 政府云”时，才能看到此选项。
+仅当在**云可用性**下选择了**Azure 政府**时，才能显示此选项。
 
 Azure 政府服务处理符合特定政府法规和要求的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。
 
@@ -333,7 +335,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 此字段用于以下情况：
 
-- 产品/服务供通过其他应用引用来间接使用。
+- 此产品/服务旨在通过其他应用程序引用时间接使用。
 - 产品/服务不得单独购买。
 - 计划用于初始测试，已不再相关。
 - 计划用于临时或季节性产品/服务，不得再提供。
@@ -342,7 +344,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 容器映像必须托管在私有 [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)中。 在“技术配置”选项卡上，提供 Azure 容器注册表内的容器映像存储库的引用信息。
 
-在产品/服务发布后，容器映像会复制到 Azure 市场中的特定公共容器注册表。 所有使用容器映像的请求均由 Azure 市场公共容器注册表（而不是专用容器注册表）提供服务。 有关详细信息，请参阅[准备 Azure 容器技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+在产品/服务发布后，容器映像会复制到 Azure 市场中的特定公共容器注册表。 所有使用容器映像的请求均由 Azure 市场公共容器注册表（而不是专用容器注册表）提供服务。 有关详细信息，请参阅[准备 Azure 容器技术资产](create-azure-container-technical-assets.md)。
 
 ### <a name="image-repository-details"></a>映像存储库详细信息
 
@@ -350,11 +352,11 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 Azure 订阅 ID - 提供用于报告使用情况，并为包含容器映像的 Azure 容器注册表进行服务计费的订阅 ID。 可以在 Azure 门户的[“订阅”页](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上找到此 ID。
 
-Azure 资源组名称 - 提供包含具有容器映像的 Azure 容器注册表的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)名称。 资源组必须可以通过上面的订阅 ID 访问。 可以在 Azure 门户的[“资源组”](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)页上找到此名称。
+Azure 资源组名称 - 提供包含具有容器映像的 Azure 容器注册表的[资源组](../../azure-resource-manager/management/manage-resource-groups-portal.md)名称。 资源组必须可以通过上面的订阅 ID 访问。 可以在 Azure 门户的[“资源组”](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups)页上找到此名称。
 
-Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表](https://docs.microsoft.com/azure/container-registry/container-registry-intro)的名称。 容器注册表必须位于你之前提供的 Azure 资源组中。 仅包括注册表名称，而不包括完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
+Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你之前提供的 Azure 资源组中。 仅包括注册表名称，而不包括完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-Azure 容器注册表的管理员用户名 - 提供与包含容器映像的 Azure 容器注册表关联的[管理员用户名](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名**–提供[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)）与包含容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="“更新容器注册表”对话框的图示。":::
 
@@ -362,7 +364,7 @@ Azure 容器注册表的密码 - 提供与包含容器映像的 Azure 容器注�
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="“访问密钥”菜单的图示。":::
 
-Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时包含存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](https://docs.microsoft.com/azure/container-registry/container-registry-repositories)。
+Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器注册表存储库的名称。 可以在将映像推送到注册表时包含存储库名称。 若要查找存储库名称，可以依次转到[容器注册表](https://azure.microsoft.com/services/container-registry/) > “存储库”页。 有关详细信息，请参阅[在 Azure 门户中查看容器注册表存储库](../../container-registry/container-registry-repositories.md)。
 
 > [!NOTE]
 > 请注意，名称一经设置便不可更改。 请对你帐户中的每个产品/服务使用唯一名称。
@@ -375,7 +377,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 此字段必须包含指向所有受支持平台上最新版映像的最新标记。 它还必须包含版本标记（例如，以 xx.xx.xx 开头，其中 xx 是数字）。 客户应使用[清单标记](https://github.com/estesp/manifest-tool)来将多个平台作为目标。 还必须添加清单标记引用的所有标记，使我们能够上传这些映像。
 
-所有清单标记（最新标记除外）必须以 X.Y- 或 X.Y.Z- 开头，其中，X、Y 和 Z 为整数。 例如，如果最新标记指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32，必须将这六个标记添加到此字段。 有关详细信息，请参阅[准备 Azure 容器技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+所有清单标记（最新标记除外）必须以 X.Y- 或 X.Y.Z- 开头，其中，X、Y 和 Z 为整数。 例如，如果最新标记指向 1.0.1-linux-x64、1.0.1-linux-arm32 和 1.0.1-windows-arm32，必须将这六个标记添加到此字段。 有关详细信息，请参阅[准备 Azure 容器技术资产](create-azure-container-technical-assets.md)。
 
 > [!NOTE]
 > 请记得向你的映像添加一个测试标记，以便在测试期间可以标识该映像。
@@ -398,8 +400,8 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。
 
-若要向公众（或私人受众，如果是专用产品/服务的话）发布产品/服务，请转到合作伙伴中心，然后选择“上线”。
+若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
 
 ## <a name="next-step"></a>后续步骤
 
-- [更新商业市场中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商业市场中的现有产品/服务](update-existing-offer.md)

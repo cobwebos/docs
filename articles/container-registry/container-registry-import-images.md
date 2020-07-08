@@ -3,12 +3,12 @@ title: 导入容器映像
 description: 使用 Azure API 将容器映像导入到 Azure 容器注册表中，无需运行 Docker 命令。
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80051923"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023510"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>向容器注册表导入容器映像
 
@@ -72,13 +72,13 @@ az acr import \
 
 ### <a name="import-from-microsoft-container-registry"></a>从 Microsoft 容器注册表导入
 
-例如，从 Microsoft 容器注册表中的 `windows` 存储库导入最新的 Windows Server Core 映像。
+例如， `ltsc2019` 从 `windows` Microsoft 容器注册表中的存储库导入 Windows Server Core 映像。
 
 ```azurecli
 az acr import \
 --name myregistry \
---source mcr.microsoft.com/windows/servercore:latest \
---image servercore:latest
+--source mcr.microsoft.com/windows/servercore:ltsc2019 \
+--image servercore:ltsc2019
 ```
 
 ## <a name="import-from-another-azure-container-registry"></a>从另一 Azure 容器注册表导入

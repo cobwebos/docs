@@ -9,15 +9,15 @@ editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60878862"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985401"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>从 Azure VNET 中的 VM 访问 Azure Data Lake Storage Gen1
 Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 PaaS 服务。 可以连接到公共 Internet 的服务器通常也可连接到 Azure Data Lake Storage Gen1 终结点。 默认情况下，Azure VNET 中的所有 VM 都可以访问 Internet，因此可以访问 Azure Data Lake Storage Gen1。 但是，可以将 VNET 中的 VM 配置为无法访问 Internet。 对于此类 VM，对 Azure Data Lake Storage Gen1 的访问也受到限制。 可以使用以下任何方法在 Azure VNET 中阻止 VM 的公共 Internet 访问：
@@ -31,14 +31,18 @@ Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 P
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>从连接受限的 VM 启用与 Azure Data Lake Storage Gen1 的连接
 若要从此类 VM 访问 Azure Data Lake Storage Gen1，必须将其配置为访问 Azure Data Lake Storage Gen1 帐户可用的区域的 IP 地址。 可通过解析帐户的 DNS 名称 (`<account>.azuredatalakestore.net`) 来识别 Data Lake Storage Gen1 帐户区域的 IP 地址。 可以使用如 nslookup**** 等工具解析帐户的 DNS 名称。 在计算机上打开命令提示符并运行以下命令：
 
-    nslookup mydatastore.azuredatalakestore.net
+```console
+nslookup mydatastore.azuredatalakestore.net
+```
 
 输出如下所示。 **Address** 属性的值是与 Data Lake Storage Gen1 帐户关联的 IP 地址。
 
-    Non-authoritative answer:
-    Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
-    Address:  104.44.88.112
-    Aliases:  mydatastore.azuredatalakestore.net
+```output
+Non-authoritative answer:
+Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
+Address:  104.44.88.112
+Aliases:  mydatastore.azuredatalakestore.net
+```
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>使用 NSG 启用受限 VM 的连接
@@ -50,7 +54,7 @@ Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 P
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>使用 ExpressRoute 启用受限 VM 的连接
 配置 ExpressRoute 线路后，本地服务器可以通过公共对等互连访问 Data Lake Storage Gen1。 有关为公共对等互连配置 ExpressRoute 的详细信息，请参阅[ ExpressRoute 常见问题解答](../expressroute/expressroute-faqs.md)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
 * [保护 Azure Data Lake Storage Gen1 中存储的数据](data-lake-store-security-overview.md)
 

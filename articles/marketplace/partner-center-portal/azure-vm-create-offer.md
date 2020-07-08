@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: a64908eb639a44c6bc9d742e84ebb4d01082d49d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: 499c7e9e4ca4ab5db02c566830738f0ceb07e40d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847916"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984643"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
 本文介绍如何在 [Azure 市场](https://azuremarketplace.microsoft.com/)创建 Azure 虚拟机产品/服务并将其发布到 Azure 市场上。 它介绍基于 Windows 和基于 Linux 的虚拟机（包含操作系统、虚拟硬盘 (VHD) 以及多达 16 个数据磁盘）。 
 
-开始前，首先[在合作伙伴中心创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。 确保帐户已注册加入商业市场计划。
+开始前，首先[在合作伙伴中心创建商业市场帐户](create-account.md)。 确保帐户已注册加入商业市场计划。
 
 ## <a name="introduction"></a>简介
 
@@ -33,19 +33,19 @@ ms.locfileid: "83847916"
 
 ### <a name="before-you-begin"></a>开始之前
 
-如果尚未这样做，请查看[虚拟机产品/服务发布指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)和这篇 Azure 虚拟机资料：
+如果尚未这样做，请查看[虚拟机产品/服务发布指南](../marketplace-virtual-machines.md)和这篇 Azure 虚拟机资料：
 
 - 快速入门指南
   - [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure 快速入门模板](https://github.com/azure/azure-quickstart-templates)
 - 教程
-  - [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-  - [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+  - [Linux VM](../../virtual-machines/linux/tutorial-manage-vm.md)
+  - [Windows VM](../../virtual-machines/windows/tutorial-manage-vm.md)
 - 示例
-  - [适用于 Linux VM 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
-  - [适用于 Linux VM 的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
-  - [适用于 Windows VM 的 Azure CLI 示例](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
-  - [适用于 Windows VM 的 Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
+  - [适用于 Linux VM 的 Azure CLI 示例](../../virtual-machines/linux/cli-samples.md)
+  - [适用于 Linux VM 的 Azure PowerShell](../../virtual-machines/linux/powershell-samples.md)
+  - [适用于 Windows VM 的 Azure CLI 示例](../../virtual-machines/windows/cli-samples.md)
+  - [适用于 Windows VM 的 Azure PowerShell](../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>技术基础知识
 
@@ -63,7 +63,7 @@ ms.locfileid: "83847916"
 2. 在左侧窗格中，选择“商业市场” > “概述”。
 3. 在“概述”页上，选择“新建产品/服务”  > “Azure 虚拟机”。
 
-    ![显示左窗格菜单选项和“新建产品/服务”按钮的屏幕截图。](./media/new-offer-azure-vm.png)
+    ![显示左窗格菜单选项和“新建产品/服务”按钮的屏幕截图。](./media/new-offer-azure-virtual-machine.png)
 
 > [!NOTE]
 > 发布产品/服务后，在合作伙伴中心对其进行的任何编辑仅会在重新发布该产品/服务后出现在 Azure 市场中。 确保对其进行更改后始终重新发布产品/服务。
@@ -86,14 +86,14 @@ ms.locfileid: "83847916"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是向潜在客户展示产品/服务的一种很好的方式。 它为客户提供“购买前试用”选项，有助于提升购买转换率并催生高度合格的潜在顾客。 有关详细信息，请参阅[什么是体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
+体验版是向潜在客户展示产品/服务的一种很好的方式。 它为客户提供“购买前试用”选项，有助于提升购买转换率并催生高度合格的潜在顾客。 有关详细信息，请参阅[什么是体验版](../what-is-test-drive.md)。
 
 若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
 
 其他体验版资源：
 
 - [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [市场营销最佳做法](../what-is-test-drive.md)
 - [下载体验版概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)的 PDF 文件（确保弹出窗口阻止程序处于关闭状态）。
 
 ### <a name="customer-leads"></a>潜在顾客
@@ -101,12 +101,12 @@ ms.locfileid: "83847916"
 将产品/服务发布到合作伙伴中心的商业市场时，将其连接到客户关系管理 (CRM) 系统。 这样，只要有人对你的产品表示兴趣或使用你的产品，你就可以收到客户的联系信息。 如果要启用体验版，连接到 CRM（参阅上一节）是必选项。 否则，连接到 CRM 是可选的选项。
 
 1. 选择希望我们向其发送潜在客户的潜在客户目标。 合作伙伴中心支持以下 CRM 系统：
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果此处未列出你的 CRM 系统，请使用 [Azure 表存储](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [ 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)存储潜在顾客数据。 然后将数据导出到你的 CRM 系统。
+    > 如果此处未列出你的 CRM 系统，请使用 [Azure 表存储](commercial-marketplace-lead-management-instructions-azure-table.md)或 [ 终结点](commercial-marketplace-lead-management-instructions-https.md)存储潜在顾客数据。 然后将数据导出到你的 CRM 系统。
 
 1. 在合作伙伴中心内发布时，将产品/服务连接到潜在客户目标。
 1. 确认是否正确配置了与潜在客户目标的连接。 当你在合作伙伴中心内发布它后，Microsoft 会验证连接，并向你发送测试潜在客户。 若要在上线前预览产品/服务，也可以通过亲自尝试在预览环境中部署产品/服务来测试潜在客户连接。
@@ -116,11 +116,16 @@ ms.locfileid: "83847916"
 
 ## <a name="properties"></a>属性
 
-可使用“属性”页定义用于对 Azure 市场上的产品/服务进行分组的类别和行业、应用程序版本以及支持产品/服务的法律合同。
+在 "**属性**" 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
-### <a name="categories"></a>类别
+### <a name="category"></a>类别
 
-最少选择一个类别，最多选择五个类别。 使用这些类别将产品/服务放入相应的 Azure 市场搜索区域。 在产品/服务说明中，说明产品/服务是如何支持这些类别的。 虚拟机产品/服务显示在 Azure 市场上的“计算”类别下。
+选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
+
+- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+
+请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 虚拟机产品/服务始终显示在 Azure Marketplace 上的**计算**类别下。
 
 ### <a name="legal"></a>合法
 
@@ -143,7 +148,7 @@ ms.locfileid: "83847916"
   > [!NOTE]
   > 使用商业市场的标准协定发布产品/服务后，就无法使用你自己的自定义条款和条件了。 要么根据标准协定提供解决方案，要么根据自己的条款和条件提供解决方案。
 
-  有关详细信息，请参阅 [Microsoft 商业市场的标准协定](https://docs.microsoft.com/azure/marketplace/standard-contract)。 下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178)的 PDF 文件（确保弹出窗口阻止程序处于关闭状态）。
+  有关详细信息，请参阅 [Microsoft 商业市场的标准协定](../standard-contract.md)。 下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178)的 PDF 文件（确保弹出窗口阻止程序处于关闭状态）。
 
   **标准协定修订**
 
@@ -171,11 +176,11 @@ ms.locfileid: "83847916"
 在“产品/服务列表”页上定义产品/服务详细信息，例如产品/服务名称、说明、链接和联系人。
 
 > [!NOTE]
-> 只要产品/服务说明使用以下短语开头：“此应用程序仅以\<非英语语言>提供”，产品/服务列表内容（例如说明、文档、屏幕截图和使用条款）就不需要是英语。 还可以提供一个 URL，链接到使用与产品/服务列表内容中所用语言不同的语言提供内容的站点。
+> 你的产品/服务列表内容（如说明、文档、屏幕截图和使用条款）不一定要使用英语，只要产品/服务说明以短语开头，"此应用程序仅在中可用 \<non-English language> "。 还可以提供一个 URL，链接到使用与产品/服务列表内容中所用语言不同的语言提供内容的站点。
 
 ### <a name="marketplace-details"></a>市场详细信息
 
-#### <a name="name"></a>名称
+#### <a name="name"></a>“属性”
 
 在此处输入的名称作为产品/服务列表的标题向客户显示。 此字段自动填充了在创建产品/服务时在“产品/服务别名”框中输入的名称。 可以稍后更改此名称。 名称：
 
@@ -237,7 +242,7 @@ ms.locfileid: "83847916"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
 
->[!Note]
+>[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
 
 #### <a name="azure-marketplace-logos"></a>Azure 市场徽标
@@ -259,7 +264,7 @@ ms.locfileid: "83847916"
 
 最多添加五个视频来演示产品/服务。 这些视频应在外部视频服务上进行托管。 输入每个视频的名称、Web 地址和视频的缩略图 PNG 图像（为 1280 &times; 720 像素）。
 
-有关其他市场列表资源，请参阅[市场产品/服务列表最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+有关其他市场列表资源，请参阅[市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)。
 
 选择“保存草稿”，然后继续。
 
@@ -303,7 +308,7 @@ ms.locfileid: "83847916"
 在“计划 ID”框中，创建此产品/服务中的每个计划的唯一计划 ID。 客户可以在产品 Web 地址中看到此 ID。 只使用小写字母和数字、破折号或下划线字符，最多包含 50 个字符。
 
 > [!NOTE]
-> 在选择“创建”后，就无法更改计划 ID 了。
+> 选择“创建”后，便无法更改计划 ID。
 
 在“计划名称”框中，输入此计划的名称。 客户在确定要在产品/服务中选择哪个计划时会看到此名称。 创建明确指出计划之间差异的唯一名称。    例如，可以输入具有即用即付、BYOL、高级和企业计划的 Windows Server。
 
@@ -324,11 +329,11 @@ ms.locfileid: "83847916"
 
 你的计划必须至少在一个 Azure 区域中提供。
 
-选择“Azure 全球”选项可向具有商业市场集成的所有 Azure 全球区域中的客户提供你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)。
+选择“Azure 全球”选项可向具有商业市场集成的所有 Azure 全球区域中的客户提供你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
 
-选择“Azure 政府”选项可在 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)区域中提供你的计划。 此区域为来自美国联邦、州、地方或部落实体的客户，以及有资格为其提供服务的合作伙伴提供受控访问权限。 作为发布者，你负责任何符合性控制、安全措施和最佳做法。 Azure 政府使用物理隔离的数据中心和网络（只位于美国）。
+选择“Azure 政府”选项可在 [Azure 政府](../../azure-government/documentation-government-welcome.md)区域中提供你的计划。 此区域为来自美国联邦、州、地方或部落实体的客户，以及有资格为其提供服务的合作伙伴提供受控访问权限。 作为发布者，你负责任何符合性控制、安全措施和最佳做法。 Azure 政府使用物理隔离的数据中心和网络（只位于美国）。
 
-在发布到 [Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)页面中请求试用帐户。
+在发布到 [Azure 政府](../../azure-government/documentation-government-manage-marketplace-partners.md)之前，请在环境中测试和验证计划，因为某些终结点可能会有所不同。 若要设置和测试计划，请从 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)页面中请求试用帐户。
 
 > [!NOTE]
 > 在计划已发布并在特定 Azure 区域中可用后，无法删除该区域。
@@ -400,10 +405,14 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 **专用受众**：使计划仅对预选受众可见。 将其发布为专用计划后，可以更新受众或将其更改为公共。 使计划为公众所见后，该计划必须保持公共状态。 不能将其更改回专用计划。
 
-**受限受众（Azure 订阅 ID）** ：使用 Azure 订阅 ID 分配将有权访问此专用计划的受众。 根据需要，提供已分配的每个 Azure 订阅 ID 的说明。 如果导入 CSV 电子表格，手动添加最多 10 个订阅 ID 或最多 20,000 个 ID。 Azure 订阅 ID 表示为 GUID，所有字母必须为小写。
-
 > [!NOTE]
 > 专用或受限受众与在“预览”窗格上定义的预览受众不同。 预览受众可以在向 Azure 市场实时发布产品/服务之前来访问它。 尽管专用受众选项仅适用于特定计划，但预览受众可以查看所有专用或公共计划以进行验证。
+
+**受限受众（Azure 订阅 ID）** ：使用 Azure 订阅 ID 分配将有权访问此专用计划的受众。 根据需要，提供已分配的每个 Azure 订阅 ID 的说明。 如果导入 CSV 电子表格，手动添加最多 10 个订阅 ID 或最多 20,000 个 ID。 Azure 订阅 ID 表示为 GUID，所有字母必须为小写。
+
+>[!Note]
+>通过云解决方案提供商计划（CSP）的分销商建立的 Azure 订阅不支持专用产品/服务。
+
 
 #### <a name="hide-a-plan"></a>隐藏计划
 
@@ -416,7 +425,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 ### <a name="technical-configuration"></a>技术配置
 
-提供与此计划关联的映像和其他技术属性。 有关详细信息，请参阅[创建 Azure VM 技术资产](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)。
+提供与此计划关联的映像和其他技术属性。 有关详细信息，请参阅[创建 Azure VM 技术资产](create-azure-container-technical-assets.md)。
 
 > [!NOTE]
 >  如果已在“计划设置”选项卡上将此计划配置为重新使用其他计划中的包，则不显示“技术配置”选项卡。
@@ -450,7 +459,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 为虚拟机映像提供磁盘版本和共享访问签名 (SAS) URI。 为每个 VM 映像添加多达 16 个数据磁盘。 在指定的提交中，每个计划仅提供一个新的映像版本。 映像发布后，无法对其进行编辑，但可以将其删除。 删除版本会阻止新用户和现有用户部署已删除版本的新实例。
 
 - **光盘版本**：正在提供的映像的版本。
-- **SAS URI**：Azure 存储帐户中存储操作系统 VHD 的位置。
+- **SAS URI**：Azure 存储帐户中存储操作系统 VHD 的位置。 若要了解如何获取 SAS URI，请参阅[获取 VM 映像的共享访问签名 URI](get-sas-uri.md)。
 - 数据磁盘映像也是存储在其 Azure 存储帐户中的 VHD 共享访问签名 URI。
 - 计划中的每次提交只添加一个映像。
 
@@ -466,13 +475,13 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 ## <a name="test-drive"></a>体验版
 
-设置演示或体验版，让客户在购买产品之前先试用产品/服务固定时段。 若要为客户创建演示环境，请参阅[商业市场中的体验版产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
+设置演示或体验版，让客户在购买产品之前先试用产品/服务固定时段。 若要为客户创建演示环境，请参阅[商业市场中的体验版产品/服务](test-drive.md)。
 
  若要启用体验版，请在“产品/服务设置”窗格上选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
 
 其他体验版资源：
 
-- [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [市场营销最佳做法](../what-is-test-drive.md)
 - [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [体验版概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)的 PDF 文件（确保弹出窗口阻止程序处于关闭状态）
 
@@ -507,39 +516,80 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 此页还包含有助于处理产品/服务的链接（具体取决于其状态）：
 
-- 如果产品/服务是草稿：[删除产品/服务草稿](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- 如果产品/服务已上线：[停止销售产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- 如果产品/服务处于预览状态：[上线](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果尚未完成发布者注销：[取消发布](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果产品/服务是草稿：[删除草稿提议](update-existing-offer.md#delete-a-draft-offer)）
+- 如果产品/服务有效：[停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)）
+- 如果产品/服务为[预览版：上线](publishing-status.md#publisher-approval)）
+- 如果尚未完成发布服务器注销：[取消发布](update-existing-offer.md#cancel-publishing)）
 
 ## <a name="marketplace-examples"></a>市场示例
 
-以下示例说明产品/服务在 Azure 市场中的显示方式。
+下面是有关如何在 Azure Marketplace 中显示产品/服务的示例：
 
-### <a name="azure-marketplace-offer-details"></a>Azure 市场产品/服务详细信息
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
-![Azure 市场产品/服务详细信息页示例](media/avm-create1.png)
+#### <a name="call-out-descriptions"></a>拨出说明
 
-### <a name="azure-marketplace-search-results"></a>Azure 市场搜索结果
+1. 大徽标
+2. 价格
+3. 类别
+4. 条款和条件
+5. 隐私策略地址（链接）
+6. 产品名称
+7. 描述
+8. 有用链接
+9. 屏幕截图/视频
 
-![Azure 市场搜索详细信息页示例](media/avm-create2.png)
+<br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
 
-### <a name="azure-marketplace-plan-details"></a>Azure 市场计划详细信息
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="说明此产品/服务在 Azure Marketplace 搜索结果中的显示方式。":::
 
-![Azure 市场计划详细信息页示例](media/avm-create3.png)
+#### <a name="call-out-descriptions"></a>拨出说明
 
-### <a name="azure-portal-offer-details"></a>Azure 门户产品/服务详细信息
+1. 小徽标
+2. 产品名称
+3. 搜索结果摘要
+4. 试用
 
-![Azure 门户产品/服务详细信息页示例](media/avm-create4.png)
+<br>下面是 Azure Marketplace 计划详细信息的示例：
 
-### <a name="azure-portal-search-results"></a>Azure 门户搜索结果
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="说明 Azure Marketplace 计划详细信息。":::
 
-![Azure 门户搜索结果页示例](media/avm-create5.png)
+#### <a name="call-out-descriptions"></a>拨出说明
 
-### <a name="azure-portal-plan-details"></a>Azure 门户计划详细信息
+1. 计划名称和摘要
+2. 建议 VM 大小
+3. 计划定价
 
-![Azure 门户计划详细信息页示例](media/avm-create6.png)
+<br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
 
-## <a name="next-steps"></a>后续步骤
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="说明了此产品/服务在 Azure 门户中的显示方式。":::
 
-- [更新商业市场中的现有产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. “属性”
+2. 描述
+3. 有用链接
+4. 屏幕截图/视频
+
+<br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="说明此产品/服务在 Azure 门户搜索结果中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 小徽标
+2. 产品名称
+3. 搜索结果摘要
+
+<br>下面是 Azure 门户计划详细信息的示例：
+
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="说明 Azure 门户计划详细信息。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 计划名称
+2. 计划说明
+
+## <a name="next-step"></a>后续步骤
+
+- [更新商业市场中的现有产品/服务](update-existing-offer.md)

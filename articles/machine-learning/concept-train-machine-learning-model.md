@@ -9,12 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.custom: tracking-python
+ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683009"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985729"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -29,7 +30,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
     | [估算器](#estimators) | 利用估算器类，可以轻松地根据常用机器学习框架来训练模型。 有用于 Scikit-learn、PyTorch、TensorFlow、Chainer 和 Ray RLlib 的估算器类。 还有一个泛型估算器，可用于尚无专用估算器类的框架。 使用估算器时，无需担心定义运行配置。 |
     | [机器学习管道](#machine-learning-pipeline) | 管道不是一种不同的训练方法，而是一种使用模块化、可重复使用的步骤定义工作流的方法，该方法可以将训练作为工作流的一部分包含在内。 机器学习管道支持使用自动化机器学习、估算器和运行配置来训练模型。 由于管道并非专门针对训练，因此使用管道的原因比其他训练方法更多样。 通常，可以在以下情况下使用管道：<br>* 你需要计划无人参与的进程，如长时间运行的训练作业或数据准备。<br>* 使用多个步骤跨异类计算资源和存储位置进行协调。<br>* 将管道用作针对特定场景的可重复使用的模板，如重新训练或批处理评分。<br>* 对工作流的数据源、输入和输出进行跟踪和版本控制。<br>* 工作流由不同的团队实现，这些团队单独执行特定步骤。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
 
-+ [适用于 Python 的 Azure 机器学习 SDK](#r-sdk)：SDK 使用网状包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
++ [适用于 r 的 AZURE 机器学习 sdk](#r-sdk)：适用于 r 的 sdk 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
 
 + 设计器：Azure 机器学习设计器（预览版）为机器学习提供了一个简单的入门点，用于构建概念证明，或者为几乎没有编码经验的用户提供入门指导。 它允许你使用拖放基于 Web 的 UI 来训练模型。 可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下训练模型。
 

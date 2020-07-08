@@ -6,19 +6,19 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.openlocfilehash: 04de89624dd0e6857e96327bb408cf8700a1f6a2
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: 498b5935d1170fdce7da76ca475c816f1fb8d136
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848873"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984236"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
 本文介绍如何创建新的 Dynamics 365 Business Central 产品/服务。 [Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) 是一个企业资源规划 (ERP) 系统，可处理财务、运营、供应链、客户关系管理 (CRM)、项目管理和电子商务等各种业务流程。 高级包还支持经典部署模型和制造。 Dynamics 365 Business Central 的所有产品/服务都必须完成我们的认证过程。
 
-开始前，请先[在合作伙伴中心内创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未创建）。 确保你的帐户已注册加入商业市场计划。
+开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建）。 确保你的帐户已注册加入商业市场计划。
 
 ## <a name="create-a-new-offer"></a>创建新产品/服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "83848873"
 2. 在左侧导航菜单中，依次选择“商业市场” > “概述” 。
 3. 在“概述”页面上，依次选择“+新建产品/服务” > “Dynamics 365 Business Central” 。
 
-    ![左侧导航菜单图示。](./media/new-offer-dynamics-365-bc.png)
+    ![左侧导航菜单图示。](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
 > 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 确保在进行更改后始终重新发布。
@@ -60,7 +60,7 @@ ms.locfileid: "83848873"
 
 #### <a name="free-trial-listing"></a>免费试用版（列出）
 
-通过提供有效的 URL（以 http 或 https 开头）使用免费试用版的链接向客户提供产品/服务列表，用户可以通过 URL 获取试用版。   例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，并提供有效的 URL （从或开始， `http` `https` 用户可以在其中获取试用版）。  例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用程序将通过试用链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户不支持使用此令牌进行身份验证。
@@ -71,36 +71,17 @@ ms.locfileid: "83848873"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 [详细了解体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)。
+体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从[什么是测试驱动器](../what-is-test-drive.md)开始。
 
-若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。 在本主题后面的[体验版技术配置](#test-drive-technical-configuration)部分中配置体验版环境。
+若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
 
-有关其他信息，请参阅[在商业市场中为你的产品/服务提供体验版](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive)。
-
-#### <a name="type-of-test-drive"></a>体验版类型
-
-从下列选项中进行选择：
-
-- [Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive) - 一个部署模板，其中包含了组成解决方案的所有 Azure 资源。 适合此方案的产品是仅使用 Azure 资源。
-- [Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer) - Microsoft 托管并维护 Business Central 企业资源规划系统（财务、运营、供应链、CRM 等）的体验版服务，包括预配和部署。  
-- [Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer) - Microsoft 托管并维护 Customer Engagement 系统（销售、服务、项目服务、现场服务等）的体验版服务（包括预配和部署）。  
-- [Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) - Microsoft 托管并维护 Finance and Operations 企业资源规划系统（财务、运营、制造、供应链等）的体验版服务（包括预配和部署）。 
-- [逻辑应用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive) - 包含所有复杂解决方案体系结构的部署模板。 所有自定义产品都应当使用此类型的体验版。
-- [Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview) - 指向某个定制的仪表板的嵌入式链接。 希望演示交互式 Power BI 视觉对象的产品都应使用此类型的体验版。 此处只需要上传你的嵌入式 Power BI URL。
-
-#### <a name="additional-test-drive-resources"></a>其他体验版资源
-
-- [体验版技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [体验版营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [体验版概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF（确保弹出窗口阻止程序已关闭）
-
-### <a name="customer-leads"></a>潜在客户
+### <a name="customer-leads"></a>潜在顾客
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-有关详细信息，请参阅[潜在客户管理概述](./commercial-marketplace-get-customer-leads.md)。
+有关详细信息，请参阅[潜在顾客管理概述](./commercial-marketplace-get-customer-leads.md)。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="properties"></a>属性
 
@@ -108,7 +89,12 @@ ms.locfileid: "83848873"
 
 ### <a name="category"></a>类别
 
-选择类别（最少 1 个，最多 3 个），用于将产品/服务放入适当的市场搜索区域。 确保在产品/服务说明中强调产品/服务如何支持这些类别。 
+选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
+
+- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+
+请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -116,13 +102,13 @@ ms.locfileid: "83848873"
 
 ### <a name="app-version"></a>应用版本
 
-输入产品/服务的版本号。 客户将在产品/服务的详细信息页上看到此列出的版本。
+输入产品/服务的版本号。 客户将在产品/服务的详细信息页上看到此版本列出。
 
 ### <a name="terms-and-conditions"></a>条款和条件
 
-在“条款和条件”字段中提供自己的法律条款和条件。 还可以提供可在其中找到条款和条件的 URL。 客户将需要接受这些条款才能试用产品/服务。
+在“条款和条件”字段中，提供你自己的法律条款和条件。 还可以提供能够在其中找到条款和条件的 URL。 客户必须接受这些条款，才能试用产品/服务。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
@@ -130,6 +116,23 @@ ms.locfileid: "83848873"
 
 > [!NOTE]
 > 仅可用一种语言提供产品/服务列表的详细信息。 如果不要求用英语，则只要产品/服务描述的开头是短语“此应用程序只提供[非英语语言]版本”就可以。 还可提供一个帮助链接 URL，使用与产品/服务列表内容中所用语言以外的语言提供内容。
+
+以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+
+:::image type="content" source="media/example-d365-business-central.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 徽标
+2. 产品
+3. 类别
+4. 支持地址（链接）
+5. 使用条款
+6. 隐私策略
+7. 产品名称
+8. 总结
+9. 说明
+10. 屏幕截图/视频
 
 ### <a name="name"></a>名称
 
@@ -193,11 +196,11 @@ ms.locfileid: "83848873"
 
 #### <a name="videos"></a>视频
 
-可选择添加最多 5 个视频来演示产品/服务。 这些视频应在 YouTube 和/或 Vimeo 上托管。 对于每个视频，请输入视频的名称、URL 和视频的缩略图（1280 x 720 像素）
+可选择添加最多 5 个视频来演示产品/服务。 这些视频应在 YouTube 和/或 Vimeo 上托管。 对于每个视频，输入视频的名称、URL 和视频的缩略图（1280 x 720 像素）。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
 
-[市场产品/服务列表最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+[市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
 选择“保存草稿”，然后继续。
 
@@ -261,110 +264,15 @@ ms.locfileid: "83848873"
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-在此页中可以设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 在[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)一文中了解详细信息。
+在此页中可以设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息[，请参阅什么是测试驱动器](../what-is-test-drive.md)。
 
 若要启用体验版，请在[产品/服务设置](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请清除此复选框。
 
-可以使用以下类型的体验版，每种都有其自己的技术配置要求。
-
-- [Azure 资源管理器](#technical-configuration-for-azure-resource-manager-test-drive)
-- [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
-- [逻辑应用](#technical-configuration-for-logic-app-test-drive)
-- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives)（不需要技术配置）
-
-其他体验版资源：
-
-- [市场营销最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF；确保弹出窗口阻止程序处于关闭状态）
-
-### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure 资源管理器体验版的技术配置
-
-一个部署模板，其中包含了组成解决方案的所有 Azure 资源。 适合此方案的产品是仅使用 Azure 资源。 详细了解如何设置 [Azure 资源管理器体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
-
-- **区域**（必需）- 当前存在 26 个 Azure 支持的区域，可在其中提供你的体验版。 通常情况下，你希望在预计客户数最多的区域中提供你的体验版，以便他们可以选择最接近的区域以获得最佳性能。 需确保允许订阅在所选的各个区域中部署所有所需的资源。
-
-- **实例** - 选择类型（热或冷）和可用实例的数量，将其乘以提供产品/服务的区域数量。
-
-    **热** - 部署此类型的实例并等待每个所选区域的访问权限。 客户无需等待部署，就能立即访问体验版的热实例。 弊端在于这些实例始终在 Azure 订阅上运行，因此，它们会产生较高的运行时间成本。 强烈建议拥有至少一个热实例，因为多数客户不想等待完整部署，因此，如果没有热实例可用，则会导致客户使用量下降。 
-
-    **冷** - 此类型的实例表示每个区域可能部署的实例总数。 冷实例要求在客户请求体验版时部署整个体验版资源管理器模板，因此，冷实例的加载速度比热实例要慢得多。  弊端在于你只需为体验版的持续时间付费，因为具有热实例，它并不始终在 Azure 订阅上运行。 
-
-- **体验版 Azure 资源管理器模板** - 上传包含 Azure 资源管理器模板的 .zip。  若要详细了解如何创建 Azure 资源管理器模板，请参阅快速入门文章[使用 Azure 门户创建和部署 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
-
-- **体验版持续时间**（必需）- 输入体验版保持活动状态的时间长度，以小时为单位。 此时间段结束后，体验版会自动终止。 仅使用整数（例如，2 小时有效，1.5 小时无效）。
-
-### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 体验版技术配置
-
-Microsoft 通过使用此类型的体验版来托管和维护服务预配和部署，可简化体验版的设置。 无论体验版面向的是 Business Central、Customer Engagement 还是 Operations 受众，此类型的托管体验版的配置都相同。
-
-- **最大并发体验版**（必需）- 设置可同时使用体验版的最大用户数。 体验版处于活动状态时，每个并发用户都将使用一个 Dynamics 365 许可证，因此你需要确保有足够的空闲许可证来支持所设置的最大限制。 建议的值为 3-5。
-
-- **体验版持续时间**（必需）- 通过定义小时数，输入体验版保持活动状态的时间长度。 超出此时间后，会话将结束且不再使用你的许可证。 建议根据产品/服务的复杂度将值设为 2-24 小时。 此持续时间仅可设置为整小时数（例如设为 2 小时，而 1.5 小时无效）。  如果用户已耗尽时间，但想再次访问体验版，该用户可请求新会话。
-
-- **实例 URL**（必需）- 客户将在其中开始体验版的 URL。 通常，这是正在运行你的应用且安装了示例数据的 Dynamics 365 实例的 URL（例如 `https://testdrive.crm.dynamics.com`）。
-
-- **实例 Web API URL**（必需）- 可登录 Microsoft 365 帐户，再导航到“设置”\&gt;“自定义”\&gt;“开发人员资源”\&gt; “实例 Web API (服务根 URL)”来检索 Dynamics 365 实例的 Web API URL，然后复制在此处找到的 URL（例如 `https://testdrive.crm.dynamics.com/api/data/v9.0`）   。
-
-- **角色名称**（必需）- 提供你在自定义 Dynamics 365 体验版中定义的安全角色名称，该名称将在用户体验版分配给用户（例如，名称为 test-drive-role）。
-
-### <a name="technical-configuration-for-logic-app-test-drive"></a>逻辑应用体验版技术配置
-
-所有自定义产品都应使用此类型的体验版部署模板，该模板包含各种复杂的解决方案体系结构。 要详细了解如何设置逻辑应用体验版，请访问 GitHub 上的 [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)和 [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
-
-- **区域**（必需，单选下拉列表）- 当前存在 26 个 Azure 支持的区域，可在其中提供你的体验版。 逻辑应用的资源将在你选择的区域中部署。 如果逻辑应用在特定区域中存储了任何自定义资源，请务必在此处选择该区域。 最佳方式是在作出此选择之前，先在门户中将逻辑应用完全部署到 Azure 订阅本地，并验证它是否正常工作。
-
-- **最大并发体验版**（必需）- 设置可同时使用体验版的最大用户数。 这些体验版已部署，客户无需等待部署就可立即访问它们。
-
-- **Azure体验版持续时间**（必需）- 输入体验版保持活动状态的时间长度，以小时为单位。 此时间段结束后，体验版会自动终止。
-
-- **Azure 资源组名称**（必需）- 输入保存逻辑应用体验版的 [Azure 资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名称。
-
-- **Azure 逻辑应用名称**（必需）- 输入将体验版分配给用户的逻辑应用的名称。 此逻辑应用必须保存在上面的 Azure 资源组中。
-
-- **取消预配逻辑应用名称**（必需）- 输入在客户完成后取消预配体验版的逻辑应用的名称。 此逻辑应用必须保存在上面的 Azure 资源组中。
-
-### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI 体验版不需要技术配置
-
-希望演示交互式 Power BI 视觉对象的产品可使用嵌入的链接来共享自定义构建的仪表板作为其体验版，无需进一步的技术配置。 详细了解如何设置 [Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview) 模板应用。
-
-### <a name="deployment-subscription-details"></a>部署订阅详细信息
-
-若要代表你部署体验版，请创建和提供单独且唯一的 Azure 订阅。 （Power BI 体验版无需此操作）。
-
-- **Azure 订阅 ID**（是 Azure 资源管理器和逻辑应用的必需项）- 输入订阅 ID 以授予对 Azure 帐户服务的访问权限，从而对资源使用情况进行报告和计费。 建议考虑[创建单独的 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)以用于体验版（如果尚未创建）。 登录 [Azure 门户](https://portal.azure.com/)并导航到左侧菜单的“订阅”选项卡，即可找到 Azure 订阅 ID。 选择该选项卡将显示订阅 ID（例如“a83645ac-1234-5ab6-6789-1h234g764ghty”）。
-
-- **Azure AD 租户 ID**（必需）- 输入 Azure Active Directory (AD) [租户 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择**“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 还可使用域名地址在以下位置查找组织的租户 ID：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
-
-- **Azure AD 租户名称**（是 Dynamic 365 的必需项）- 输入 Azure Active Directory (AD) 名称。 若要找到此名称，请登录 [Azure 门户](https://portal.azure.com/)，租户名称将在右上角的帐户名称下列出。
-
-- **Azure AD 应用 ID**（必需）- 输入 Azure Active Directory (AD) [应用程序 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
-
-- **Azure AD 应用客户端密码**（必需）- 输入 Azure AD 应用程序[客户端密码](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用 。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请务必复制值。 （在执行此操作之前，请不要退出此页面，否则你将无法访问此值。）
-
-### <a name="test-drive-marketplace-listings"></a>体验版市场列表
-
-可通过“体验版”选项卡下的“市场列表”选项定义体验版体验的详细信息 。
-
-> [!NOTE]
-> 仅可用一种语言提供体验版列表的详细信息。 如果不要求用英语，则只要产品/服务描述的开头是短语“此应用程序只提供[非英语语言]版本”就可以。 还可提供一个帮助链接 URL，使用与体验版列表内容中所用语言以外的语言提供内容。
-
-- **说明**（必需）- 介绍体验版、要演示的内容、用户要体验的目标、要浏览的功能，以及帮助用户确定是否要获取产品/服务的任何相关信息。 最多可在此字段中输入 3,000 个字符的文本。 
-
-- **访问信息**（Azure 资源管理器和逻辑体验版需要）- 说明客户需要了解哪些内容才能访问和使用此体验版。 演练使用产品/服务的方案，以及客户在整个体验版中访问功能时应了解的确切内容。 最多可在此字段中输入 10,000 个字符的文本。
-
-- **用户手册**（必需）- 体验版体验的深入演练。 用户手册应确切地涵盖希望客户通过体验体验版而获得的好处，并用作他们可能遇到的任何问题的参考。 该文件必须采用 PDF 格式，并在上传之后命名（最多 255 个字符）。
-
-- **视频**（可选）- 可将视频上传到 YouTube 或 Vimeo，并在此处使用链接和缩略图（533 x 324 像素）进行引用，以便客户可查看信息演练，来帮助他们更好地了解体验版，包括如何成功使用产品/服务的功能并了解突出其优势的方案。
-  - **名称**（必需）
-  - **地址**（仅限 YouTube 或 Vimeo；必需）
-  - **缩略图**（图像文件必须采用 PNG 格式，并且为 533 x 324 像素）
-
-选择“保存草稿”，然后继续。
+完成设置测试驱动器后，请选择 "**保存草稿**"，然后继续。
 
 ## <a name="supplemental-content"></a>补充内容
 
-本页面要求你提供有关你的产品/服务的其他信息，以帮助我们验证你的产品/服务。 此信息不显示给客户，也不在市场上发布。
+可使用此页提供有关产品/服务的其他信息，以帮助我们验证你的产品/服务。 此信息不显示给客户，也不在市场上发布。
 
 ### <a name="target-release"></a>目标版本
 
@@ -399,7 +307,7 @@ Microsoft 通过使用此类型的体验版来托管和维护服务预配和部�
     - 未完成 - 表示该部分包含需要修复的错误或需要提供更多信息。 返回到相应部分并进行更新。
     - 完成 - 表示该部分已完成，所有必需数据都已提供并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
 - 在“认证说明”部分，除了有助于理解应用的任何补充说明之外，还可以向认证团队提供测试说明，以确保应用得到正确测试。
-- 通过选择“提交”来提交要发布的产品/服务。 当产品/服务的预览版本可供评审和审批时，我们将向你发送一封电子邮件。 返回合作伙伴中心并为产品/服务选择“上线”，以将产品/服务发布给公众（或者，如果是专用产品/服务，则发布给专用受众）。
+- 通过选择“提交”来提交要发布的产品/服务。 当产品/服务的预览版本可供评审和审批时，我们将向你发送一封电子邮件。 返回到 "合作伙伴中心"，并选择 "产品 **/** 服务"，将产品/服务发布到公共产品/服务。
 
 ## <a name="next-steps"></a>后续步骤
 

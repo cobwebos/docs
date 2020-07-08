@@ -3,15 +3,15 @@ title: 使用 .NET 管理 Azure Data Lake Storage Gen1 帐户
 description: 了解如何使用 .NET SDK 进行 Azure Data Lake Storage Gen1 帐户管理操作。
 author: twooley
 ms.service: data-lake-store
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d7ea2b7fffc4edff6cae895e08b955d2e21ff5f2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 379f0c5418c2e15786b16cf1e4f67487432fa905
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692122"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985924"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "82692122"
 ## <a name="prerequisites"></a>先决条件
 * **Visual Studio 2013 或更高**版本。 以下说明使用 Visual Studio 2019。
 
-* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 1. 在 Visual Studio 中，选择 "**文件**" 菜单，选择 "**新建**"，然后选择 "**项目**"。
@@ -48,42 +48,46 @@ ms.locfileid: "82692122"
    4. 关闭**NuGet 包管理器**。
 5. 打开“Program.cs” ****，删除现有代码，并包含以下语句，添加对命名空间的引用。
 
-        using System;
-        using System.IO;
-        using System.Linq;
-        using System.Text;
-        using System.Threading;
-        using System.Collections.Generic;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+    ```csharp
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading;
+    using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
                 
-        using Microsoft.Rest;
-        using Microsoft.Rest.Azure.Authentication;
-        using Microsoft.Azure.Management.DataLake.Store;
-        using Microsoft.Azure.Management.DataLake.Store.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using Microsoft.Rest;
+    using Microsoft.Rest.Azure.Authentication;
+    using Microsoft.Azure.Management.DataLake.Store;
+    using Microsoft.Azure.Management.DataLake.Store.Models;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    ```
 
 6. 声明变量，并提供占位符的值。 此外，确保计算机中存在所提供的本地路径和文件名。
 
-        namespace SdkSample
+    ```csharp
+    namespace SdkSample
+    {
+        class Program
         {
-            class Program
-            {
-                private static DataLakeStoreAccountManagementClient _adlsClient;
+            private static DataLakeStoreAccountManagementClient _adlsClient;
                 
-                private static string _adlsAccountName;
-                private static string _resourceGroupName;
-                private static string _location;
-                private static string _subId;
+            private static string _adlsAccountName;
+            private static string _resourceGroupName;
+            private static string _location;
+            private static string _subId;
 
-                private static void Main(string[] args)
-                {
-                    _adlsAccountName = "<DATA-LAKE-STORAGE-GEN1-NAME>.azuredatalakestore.net"; 
-                    _resourceGroupName = "<RESOURCE-GROUP-NAME>"; 
-                    _location = "East US 2";
-                    _subId = "<SUBSCRIPTION-ID>";                    
-                }
+            private static void Main(string[] args)
+            {
+                _adlsAccountName = "<DATA-LAKE-STORAGE-GEN1-NAME>.azuredatalakestore.net"; 
+                _resourceGroupName = "<RESOURCE-GROUP-NAME>"; 
+                _location = "East US 2";
+                _subId = "<SUBSCRIPTION-ID>";                    
             }
         }
+    }
+    ```
 
 本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
@@ -95,41 +99,49 @@ ms.locfileid: "82692122"
 ## <a name="create-client-object"></a>创建客户端对象
 以下代码片段创建 Data Lake Storage Gen1 帐户客户端对象，该对象用于向服务发出帐户管理请求，例如创建帐户、删除帐户，等等。
 
-    // Create client objects and set the subscription ID
-    _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
+```csharp
+// Create client objects and set the subscription ID
+_adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
+```
     
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 以下代码片段在 Azure 订阅中创建 Data Lake Storage Gen1 帐户，该订阅是在创建 Data Lake Storage Gen1 帐户客户端对象时提供的。
 
-    // Create Data Lake Storage Gen1 account
-    var adlsParameters = new DataLakeStoreAccount(location: _location);
-    _adlsClient.Account.Create(_resourceGroupName, _adlsAccountName, adlsParameters);
+```csharp
+// Create Data Lake Storage Gen1 account
+var adlsParameters = new DataLakeStoreAccount(location: _location);
+_adlsClient.Account.Create(_resourceGroupName, _adlsAccountName, adlsParameters);
+```
 
 ## <a name="list-all-data-lake-storage-gen1-accounts-within-a-subscription"></a>列出订阅中的所有 Data Lake Storage Gen1 帐户
 向类定义添加以下方法。 以下代码片段列出了给定 Azure 订阅中的所有 Data Lake Storage Gen1 帐户。
 
-    // List all Data Lake Storage Gen1 accounts within the subscription
-    public static List<DataLakeStoreAccountBasic> ListAdlStoreAccounts()
+```csharp
+// List all Data Lake Storage Gen1 accounts within the subscription
+public static List<DataLakeStoreAccountBasic> ListAdlStoreAccounts()
+{
+    var response = _adlsClient.Account.List(_adlsAccountName);
+    var accounts = new List<DataLakeStoreAccountBasic>(response);
+
+    while (response.NextPageLink != null)
     {
-        var response = _adlsClient.Account.List(_adlsAccountName);
-        var accounts = new List<DataLakeStoreAccountBasic>(response);
-
-        while (response.NextPageLink != null)
-        {
-            response = _adlsClient.Account.ListNext(response.NextPageLink);
-            accounts.AddRange(response);
-        }
-
-        return accounts;
+        response = _adlsClient.Account.ListNext(response.NextPageLink);
+        accounts.AddRange(response);
     }
+
+    return accounts;
+}
+```
 
 ## <a name="delete-a-data-lake-storage-gen1-account"></a>删除 Data Lake Storage Gen1 帐户
 以下代码片段删除此前创建的 Data Lake Storage Gen1 帐户。
 
-    // Delete Data Lake Storage Gen1 account
-    _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
+```csharp
+// Delete Data Lake Storage Gen1 account
+_adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
+```
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 * [在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)
 * [Data Lake Storage Gen1 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 

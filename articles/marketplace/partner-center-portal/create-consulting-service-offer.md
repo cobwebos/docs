@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700950"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984264"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
-本文介绍如何将咨询服务产品/服务发布到 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure 市场](https://azuremarketplace.microsoft.com/)。 基于 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/) 和 Power Platform 列出咨询服务产品/服务。 基于 Azure 市场上的 Microsoft Azure 列出咨询服务产品/服务。 在开始之前，[在合作伙伴中心创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
+本文介绍如何将咨询服务产品/服务发布到 [Microsoft AppSource](https://appsource.microsoft.com/) 或 [Azure 市场](https://azuremarketplace.microsoft.com/)。 基于 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/) 和 Power Platform 列出咨询服务产品/服务。 基于 Azure 市场上的 Microsoft Azure 列出咨询服务产品/服务。 在开始之前，[在合作伙伴中心创建商业市场帐户](create-account.md)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
 
-在创建产品/服务之前，请先查看[咨询服务先决条件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)中的先决条件。
+在创建产品/服务之前，请先查看[咨询服务先决条件](consulting-service-prerequisites.md)中的先决条件。
 
 ## <a name="publishing-benefits"></a>发布的好处
 
@@ -63,12 +63,12 @@ ms.locfileid: "83700950"
 
 1. 选择“连接”以指定希望我们将潜在客户发送到的位置。 合作伙伴中心支持以下系统：
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果前面未列出 CRM 系统，请使用 [Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)存储潜在客户数据，然后将数据导出到 CRM 系统。
+    > 如果前面未列出 CRM 系统，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 终结点](commercial-marketplace-lead-management-instructions-https.md)存储潜在客户数据，然后将数据导出到 CRM 系统。
 
 2. 在合作伙伴中心发布时，将产品/服务连接到潜在客户目标。
 3. 确认正确配置了到潜在客户目标的连接。 在合作伙伴中心发布后，我们将验证连接，并向你发送一个测试潜在客户。 如果要在投入使用前预览产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试潜在客户连接。
@@ -76,9 +76,9 @@ ms.locfileid: "83700950"
 
 下面是一些其他潜在客户管理资源：
 
-- [潜在客户管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潜在顾客管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -96,33 +96,73 @@ ms.locfileid: "83700950"
     - **概念证明**：进行有限范围的实施，以确定解决方案是否满足客户的要求。
     - **研讨会**：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。
 
-3. 如果选择了 Azure 的主产品，则最多选择三个解决方案区域 。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
-4. 如果选择了除 Azure 之外的主产品，则最多选择三个适用的产品。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
-5. 最多选择六个你的产品/服务可应用的行业。 这样会使客户更轻松地找到你的产品/服务。
-6. 最多添加贵公司已赢得的三个资格，以显示在咨询服务产品列表中。 至少需要一个资格，Azure 专家 MSP 和 Azure 网络 MSP 除外。
+3. 如果选择了 " **Azure**作为主要产品"，请选择最多三个**解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
+
+    | 解决方案领域 | | | |
+    | --- | --- | --- | --- |
+    | Analytics | 备份 | DevOps | 迁移 |
+    | 应用现代化 | 大数据 | 灾难恢复 | 网络 |
+    | Archive | 数据平台 | 标识 | 安全性 |
+    | AI + 机器学习 | 数据中心管理 | 物联网 | 存储 |
+
+1. 如果选择了 " **Azure**作为主要产品"，则可以选择最多六个**行业**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业完整列表。 如果未选择 "Azure"，请跳过此步骤。
+1. 如果选择了除 Azure 之外的主产品，则最多选择三个适用的产品。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
+1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
+1. 最多添加贵公司已赢得的三个资格，以显示在咨询服务产品列表中。 至少需要一个资格，Azure 专家 MSP 和 Azure 网络 MSP 除外。
 
 选择“保存草稿”，然后继续。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-在此处将定义显示在市场中的产品/服务详细信息。 其中包括产品/服务名称、说明、图像等。 配置此产品/服务时，请务必遵循[商业市场认证策略页](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)上详细说明的策略。
+在此处将定义在市场中显示的产品/服务详细信息。 其中包括产品/服务名称、说明、图像等。 配置此产品/服务时，请务必遵循[商业市场认证策略页](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)上详细说明的策略。
 
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。&quot;&quot;还可以提供一个有用的链接，来使用与产品/服务列表详细信息中所使用的语言不同的语言提供内容。
 
+下面是一个示例，说明如何在 Azure Marketplace 中显示提供信息（任何列出的价格仅用于举例目的，而不打算反映实际成本）：
+
+:::image type="content" source="media/example-consulting-service-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 徽标
+2. 价格
+3. 解决方案领域
+4. 行业
+5. 产品名称
+6. 总结
+7. 描述
+8. 屏幕截图/视频
+
+<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 徽标
+2. 价格
+3. 产品
+4. 行业
+5. 产品名称
+6. 总结
+7. 描述
+8. 屏幕截图/视频
+9. 文档
+
 ### <a name="name"></a>名称
 
-在此处输入的名称将显示为你的产品/服务的标题。 此字段预填充了在创建产品/服务时在“产品/服务别名”框中输入的文本。 你以后可以更改此名称。
+在此处输入的名称将显示为你的产品/服务的标题。 此字段预填充了在创建产品/服务时在“产品/服务别名”框中输入的文本。 可以稍后更改此名称。
 
 名称：
 
 - 可以是商标字（可以包括商标或版权符号）。
-- 长度不能超过 50 个字符。
-- 不能包含表情符号。
+- 长度不得超过 50 个字符。
+- 不得包含表情符号。
 
 ### <a name="search-results-summary"></a>搜索结果摘要
 
-提供产品/服务的简短说明。 此说明最多可包含 100 个字符，并在市场搜索结果中使用。
+提供对产品/服务的简短说明。 此说明最多可包含 100 个字符，并在市场搜索结果中使用。
 
 ### <a name="description"></a>说明
 
@@ -153,7 +193,7 @@ ms.locfileid: "83700950"
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 .png 格式。 模糊图像将被拒绝。
 
 >[!Note]
->如果上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
+>如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
 #### <a name="store-logos"></a>Store 徽标
 
@@ -166,13 +206,13 @@ ms.locfileid: "83700950"
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 
-最多添加五个显示了产品/服务的工作方式的屏幕截图。 每个屏幕截图大小必须为 1280 x 720 像素并采用 PNG 格式。
+最多添加五张显示产品/服务工作方式的屏幕截图。 每张屏幕截图大小必须为 1280 x 720 像素并采用 PNG 格式。
 
 #### <a name="videos-optional"></a>视频（可选）
 
 最多添加四个演示产品/服务的视频。 输入视频的名称及其 Web 地址 (URL) 和视频的缩略图 PNG 图像（大小为 1280 x 720 像素）。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="pricing-and-availability"></a>定价和可用性
 
@@ -199,8 +239,8 @@ ms.locfileid: "83700950"
 4. 准备就绪后，请选择“提交”。
 5. “产品/服务概述”页显示了产品/服务所处的发布阶段。
 
-若要详细了解你的产品/服务在每个发布阶段中所需的预计时间，请参阅[检查商业市场产品/服务的发布状态](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)。
+若要详细了解你的产品/服务在每个发布阶段中所需的预计时间，请参阅[检查商业市场产品/服务的发布状态](publishing-status.md)。
 
 ## <a name="update-your-existing-consulting-service-offers"></a>更新现有的咨询服务产品/服务
 
-- [在商业市场中更新现有的产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [在商业市场中更新现有的产品/服务](update-existing-offer.md)

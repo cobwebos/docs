@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604686"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023119"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>创作自定义命令应用程序时调试错误
 
@@ -35,17 +35,17 @@ ms.locfileid: "85604686"
 如果删除 LUIS 应用程序失败，请切换到你的[LUIS](https://www.luis.ai/)帐户以手动删除它们。
 
 ### <a name="toomanyrequests"></a>TooManyRequests
-尝试同时删除大量应用程序时，可能会看到 "TooManyRequests" 错误。 这意味着 Azure 会限制你的删除请求。 
+尝试同时删除大量应用程序时，可能会看到 "TooManyRequests" 错误。 这些错误表示删除请求由 Azure 限制。 
 
-请刷新页面，尝试删除更少的应用程序。
+刷新页面，尝试删除更少的应用程序。
 
 ## <a name="errors-when-modifying-an-application"></a>修改应用程序时出错
 
 ### <a name="cant-delete-a-parameter-or-a-web-endpoint"></a>无法删除参数或 Web 终结点
-不允许在使用参数时将其删除。 请删除任何语音响应中的任何参数引用、示例句子、条件和操作，然后重试。
+不允许在使用参数时将其删除。 删除任何语音响应中的任何参数引用、示例句子、条件和操作，然后重试。
 
 ### <a name="cant-delete-a-web-endpoint"></a>无法删除 Web 终结点
-不允许删除正在使用的 Web 终结点。 请在删除 Web 终结点之前删除使用此 Web 终结点的任何**调用 Web 终结点**操作。
+不允许删除正在使用的 Web 终结点。 删除 Web 终结点之前，请删除使用此 Web 终结点的任何**调用 Web 终结点**操作。
 
 ## <a name="errors-when-training-an-application"></a>培训应用程序时出现的错误
 ### <a name="built-in-intents"></a>内置意向
@@ -64,7 +64,7 @@ LUIS 内置了 "是/否"。 只有 "是"、"否" 的示例句子将无法进行�
 若要获得跨不同命令均衡示例句子的最佳实践，请参阅[LUIS 最佳实践](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)。
 
 ### <a name="empty-sample-sentences"></a>空示例句子
-每个命令都必须至少有1个示例句子。
+每个命令都必须至少有一个示例句。
 
 ### <a name="undefined-parameter-in-sample-sentences"></a>示例句子中未定义的参数
 在示例句子中使用了一个或多个参数，但未定义。
@@ -88,7 +88,9 @@ LUIS 培训旨在快速了解更少的示例。 不要添加太多示例句子�
 ### <a name="reassign-to-e0-authoring-resource"></a>重新分配给 E0 创作资源
 LUIS 不支持将 LUIS 应用程序重新分配给 E0 创作资源。
 
-如果需要将创作资源从 F0 更改为 E0，或更改为其他 E0 资源，请重新创建应用程序。
+如果需要将创作资源从 F0 更改为 E0，或更改为其他 E0 资源，请重新创建应用程序。 
+
+若要快速导出现有应用程序并将其导入新应用程序，请参阅[使用 Azure DevOps 进行持续部署](./how-to-custom-commands-deploy-cicd.md)。
 
 ### <a name="save-button-is-disabled"></a>已禁用 "保存" 按钮
 如果永远不向应用程序分配 LUIS 预测资源，则当你尝试更改创作资源而不添加预测资源时，将禁用 "保存" 按钮。

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295307"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024377"
 ---
 # <a name="common-conditional-access-policies"></a>常用条件访问策略
 
@@ -38,11 +38,12 @@ ms.locfileid: "80295307"
 * [要求将 MFA 用于 Azure 管理](howto-conditional-access-policy-azure-management.md)\*
 * [要求对所有用户进行 MFA](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*这四个策略一起配置时，将模拟[安全默认](../fundamentals/concept-fundamentals-security-defaults.md)启用的功能。
+\*这四个策略一起配置时，会模拟[安全默认设置](../fundamentals/concept-fundamentals-security-defaults.md)启用的功能。
 
 ## <a name="additional-policies"></a>其他策略
 
-* [基于风险的条件访问（需要 Azure AD Premium P2）](howto-conditional-access-policy-risk.md)
+* [基于风险的登录条件访问（需要 Azure AD Premium P2）](howto-conditional-access-policy-risk.md)
+* [基于用户风险的条件性访问（需要 Azure AD Premium P2）](howto-conditional-access-policy-risk-user.md)
 * [要求在进行 MFA 注册时处于受信任的位置](howto-conditional-access-policy-registration.md)
 * [按位置阻止访问](howto-conditional-access-policy-location.md)
 * [需要兼容设备](howto-conditional-access-policy-compliant-device.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058005"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985800"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>排查 Azure VM 的常规 RDP 错误
 
@@ -60,7 +60,7 @@ RDP 侦听器配置不当。
 
 ## <a name="solution"></a>解决方案
 
-若要解决此问题，请[备份操作系统磁盘](../windows/snapshot-copy-managed-disk.md)，[将操作系统磁盘附加到救援 VM](troubleshoot-recovery-disks-portal-windows.md)，然后按步骤操作。
+在执行这些步骤之前，请创建受影响 VM 的 OS 磁盘的快照作为备份。 若要解决此问题，请使用串行控制或脱机修复 VM。
 
 ### <a name="serial-console"></a>串行控制台
 
@@ -78,29 +78,37 @@ RDP 侦听器配置不当。
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>步骤 2：检查 RDP 注册表项的值：
 
-1. 检查策略是否禁用 RDP。
+1. 检查是否已由组策略禁用 RDP。
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    如果组策略指出禁用了 RDP （fDenyTSConnections 值为0x1），请运行以下命令启用 TermService 服务。 如果找不到注册表项，则没有将组策略配置为禁用 RDP。 您可以转到下一步。
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > 此步骤暂时启用 TermService 服务。 刷新组策略设置时，将重置更改。 若要解决此问题，需要检查本地组策略或域组策略是否已禁用 TermService 服务，然后相应地更新策略设置。
+    
+2. 检查当前远程连接配置。
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    如果此命令返回0x1，则该 VM 不允许远程连接。 然后，使用以下命令允许远程连接：
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. 检查终端服务器的当前配置。
 
-      - 如果存在域策略，则会覆盖本地策略中的设置。
-      - 如果域策略指出 RDP 已禁用 (1)，请从域控制器更新 AD 策略。
-      - 如果域策略指出 RDP 已启用 (0)，则无需更新。
-      - 如果域策略不存在，并且本地策略指出 RDP 已禁用 (1)，请使用以下命令启用 RDP： 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. 检查终端服务器的当前配置。
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       如果该命令返回 0，则表示终端服务器已禁用。 在这种情况下，请按如下所示启用终端服务器：
 
@@ -177,9 +185,9 @@ RDP 侦听器配置不当。
 
 1. [将 OS 磁盘附加到恢复 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 开始与恢复 VM 建立远程桌面连接。
-3. 确保磁盘在磁盘管理控制台中标记为“联机”。**** 请注意分配给附加的 OS 磁盘的驱动器号。
+3. 确保磁盘在磁盘管理控制台中标记为“联机”。  请注意分配给附加的 OS 磁盘的驱动器号。
 4. 开始与恢复 VM 建立远程桌面连接。
-5. 打开提升的命令提示符会话（**以管理员身份运行**）。 运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
+5. 打开权限提升的命令提示符会话（“以管理员身份运行”）。  运行以下脚本。 对于此脚本，我们假设分配给附加 OS 磁盘的驱动器号为 F。请将此驱动器号替换为 VM 中的相应值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 
