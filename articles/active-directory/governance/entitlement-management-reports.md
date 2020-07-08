@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128417"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078137"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>查看 Azure AD 权利管理中的报告和日志
 
@@ -85,7 +84,7 @@ Azure AD 的权利管理报表和 Azure AD 审核日志提供了用户有权访�
 
 1. 在顶部将“类别”更改为****`EntitlementManagement` 或 `UserManagement`，具体取决于要查找的审核记录。  
 
-1. 单击“应用”  。
+1. 单击“应用”。
 
 1. 若要下载日志，请单击“下载”。****
 

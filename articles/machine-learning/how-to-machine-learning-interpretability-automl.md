@@ -1,28 +1,27 @@
 ---
-title: 自动 ML 中的 Explainability
+title: 自动化 ML 中的可说明性
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解自动化 ML 模型如何确定特征重要性并做出预测。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691219"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430534"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretability：自动机器学习中的模型说明
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>可解释性：自动化机器学习中的模型说明
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在 Azure 机器学习中获取自动机器学习（ML）的说明。 自动化 ML 可帮助你了解工程特征重要性。 
+本文介绍如何在 Azure 机器学习中获取自动机器学习 (ML) 的说明。 自动化 ML 可帮助你了解工程特征重要性。 
 
-默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `model_explainability=True` 对象中设置 `AutoMLConfig`，才能使用模型可解释性。 
+默认情况下，1.0.85 之后的所有 SDK 版本设置 `model_explainability=True`。 在 SDK 版本 1.0.85 及更早版本中，用户需要在 `AutoMLConfig` 对象中设置 `model_explainability=True`，才能使用模型可解释性。 
 
 在本文中，学习如何：
 
@@ -30,7 +29,7 @@ ms.locfileid: "82691219"
 - 启用可视化效果，以帮助查看数据和解释中的模式。
 - 在推理或评分过程中实现可解释性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 可解释性特征。 运行 `pip install azureml-interpret azureml-contrib-interpret` 获取所需的包。
 - 生成自动化 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或参阅如何[配置自动化 ML 试验](how-to-configure-auto-train.md)。
@@ -85,7 +84,7 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 - 解释器设置对象
 - 工作区
-- 用于解释`fitted_model`自动 ML 模型的代理项模型
+- 用于解释 `fitted_model` 自动化 ML 模型的代理项模型
 
 MimicWrapper 还获取 `automl_run` 对象，工程解释将上传到该对象。
 
@@ -208,7 +207,7 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>在训练时进行可视化以发现数据和解释中的模式
 
-可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 自动化 ML 运行完成后，选择“查看模型详细信息”以查看特定的运行。  选择“解释”选项卡以查看解释可视化仪表板。 
+可以在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区内可视化特征重要性图表。 自动化 ML 运行完成后，选择“查看模型详细信息”以查看特定的运行。 选择“解释”选项卡以查看解释可视化仪表板。
 
 [![机器学习可解释性体系结构](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
 

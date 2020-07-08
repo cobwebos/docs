@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919475"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782806"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全中心的跨租户管理
 
@@ -46,7 +45,7 @@ ms.locfileid: "77919475"
 视图和操作基本上相同。 下面是一些示例：
 
 - **管理安全策略**：从一个视图中，使用[策略](tutorial-security-policy.md)管理多个资源的安全状况，采取安全建议的操作，以及收集和管理与安全相关的数据。
-- **提高安全分数和符合性状况**：跨租户可见性使你可以查看所有租户的总体安全状态，以及如何最好地提高每个租户的[安全分数](security-center-secure-score.md)和[符合性](security-center-compliance-dashboard.md)状态。
+- **提高安全分数和符合性状况**：跨租户可见性使你可以查看所有租户的总体安全状态，以及如何最好地提高每个租户的[安全分数](secure-score-security-controls.md)和[符合性](security-center-compliance-dashboard.md)状态。
 - **修正建议**：一次监视和修正来自不同租户的多个资源的[建议](security-center-recommendations.md)。 然后，你可以立即解决所有租户面临的风险最高的漏洞。
 - **管理警报**：在不同租户中检测[警报](security-center-alerts-overview.md)。 对不符合可操作[更正步骤](security-center-managing-and-responding-alerts.md)的资源执行操作。
 
@@ -56,5 +55,5 @@ ms.locfileid: "77919475"
 本文介绍了如何在安全中心进行跨租户管理。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [通过 Azure 安全中心增强安全状况](security-center-monitoring.md)-了解如何监视 azure 资源的运行状况。
-* [Azure 安全中心常见问题](faq-general.md) - 查找有关如何使用服务的常见问题。
+* [Azure 安全中心常见问题解答](faq-general.md)-查找有关使用服务的常见问题。
 * [了解企业方案中的 Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) -了解 azure Lighthouse 如何简化使用多 Azure AD 租户的企业内的跨租户管理。

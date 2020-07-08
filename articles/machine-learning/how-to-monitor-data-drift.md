@@ -5,17 +5,16 @@ description: 在 Azure 机器学习中检测 Azure Kubernetes 服务部署的模
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: d1da7309b296b57db0c28d5b52fe91efa86709c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0f56ab853983ebf9b3e27f38ae1737c0c2bce4ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75537001"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430300"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>在部署到 Azure Kubernetes 服务 (AKS) 的模型中检测数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -134,7 +133,7 @@ datadrift_contribution|导致偏移的特征的重要性。|
 
 * 使用 `RunDetails`[Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)。
 * 针对任何 `datadrift` 运行对象使用 [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) 函数。
-* 在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“模型”部分查看指标。 
+* 在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“模型”部分查看指标。****
 
 以下 Python 示例演示如何绘制相关数据偏移指标的图形。 可以使用返回的指标生成自定义可视化效果：
 
@@ -159,13 +158,13 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“详细信息”选项卡上的“模型”下，可以看到数据偏移检测器的配置。  
+在 [Azure 机器学习工作室](https://ml.azure.com)中工作区的“详细信息”选项卡上的“模型”下，可以看到数据偏移检测器的配置。**** ****
 
 [![Azure 机器学习工作室数据偏移](./media/how-to-monitor-data-drift/drift-config.png)](media/how-to-monitor-data-drift/drift-config-expanded.png)
 
 ## <a name="view-results-in-your-azure-machine-learning-studio"></a>在 Azure 机器学习工作室中查看结果
 
-若要在 [Azure 机器学习工作室](https://ml.azure.com)的工作区中查看结果，请导航到模型页。 在模型的详细信息选项卡上，将显示数据偏移配置。 现在，可以使用“数据偏移”选项卡可视化数据偏移指标。  
+若要在 [Azure 机器学习工作室](https://ml.azure.com)的工作区中查看结果，请导航到模型页。 在模型的详细信息选项卡上，将显示数据偏移配置。 现在，可以使用“数据偏移”选项卡可视化数据偏移指标。**** 
 
 [![Azure 机器学习工作室数据偏移](./media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 

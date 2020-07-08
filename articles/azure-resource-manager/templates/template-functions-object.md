@@ -1,25 +1,24 @@
 ---
-title: 模板函数-对象
-description: 描述在 Azure 资源管理器模板中用于处理对象的函数。
+title: 模板函数 - 对象
+description: 介绍可在 Azure 资源管理器模板中用来处理对象的函数。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2f77cd85802a2ecb3670cfc6d6b36e5e852fb2a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676788"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 模板的对象函数
 
-资源管理器提供了几个函数，用于处理 Azure 资源管理器（ARM）模板中的对象。
+资源管理器提供了多个函数，用于处理 Azure 资源管理器 (ARM) 模板中的对象。
 
 * [contains](#contains)
 * [empty](#empty)
-* [交集](#intersection)
+* [intersection](#intersection)
 * [json](#json)
 * [length](#length)
-* [交集](#union)
+* [union](#union)
 
 ## <a name="contains"></a>contains
 
@@ -27,11 +26,11 @@ ms.locfileid: "82231316"
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| 容器 (container) |是 |数组、对象或字符串 |包含要查找的值的值。 |
+| container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
 
 ### <a name="return-value"></a>返回值
@@ -44,7 +43,7 @@ ms.locfileid: "82231316"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -91,9 +90,9 @@ ms.locfileid: "82231316"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -108,15 +107,15 @@ ms.locfileid: "82231316"
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
 ### <a name="return-value"></a>返回值
 
-如果该值为空，返回 **True**；否则返回 **False**。
+如果该值为空，则返回 **True**；否则返回 **False**。
 
 ### <a name="example"></a>示例
 
@@ -124,7 +123,7 @@ ms.locfileid: "82231316"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -159,23 +158,23 @@ ms.locfileid: "82231316"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
 | stringEmpty | Bool | True |
 
-## <a name="intersection"></a>交集
+## <a name="intersection"></a>intersection
 
 `intersection(arg1, arg2, arg3, ...)`
 
 返回包含参数中通用元素的单个数组或对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -191,7 +190,7 @@ ms.locfileid: "82231316"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -226,12 +225,12 @@ ms.locfileid: "82231316"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
-| arrayOutput | 数组 | ["two", "three"] |
+| arrayOutput | Array | ["two", "three"] |
 
 ## <a name="json"></a>json
 
@@ -239,11 +238,11 @@ ms.locfileid: "82231316"
 
 返回一个 JSON 对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |字符串 |要转换为 JSON 的值。 |
+| arg1 |是 |string |要转换为 JSON 的值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -255,11 +254,11 @@ ms.locfileid: "82231316"
 
 ### <a name="example"></a>示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)演示如何使用 json 函数。 请注意，可以传入表示对象的字符串，也可以在不需要任何值时使用**null** 。
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)演示如何使用 json 函数。 请注意，可以传入表示对象的字符串，也可以在不需要任何值时使用“null”****。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "jsonObject1": {
@@ -294,23 +293,23 @@ ms.locfileid: "82231316"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| jsonOutput1 | 布尔值 | True |
-| jsonOutput2 | 对象 | {"a": "b"} |
-| paramOutput | 对象 | {"a": "demo value"}
+| jsonOutput1 | 布尔 | True |
+| jsonOutput2 | Object | {"a": "b"} |
+| paramOutput | Object | {"a": "demo value"}
 
-## <a name="length"></a>长度
+## <a name="length"></a>length
 
 `length(arg1)`
 
 返回数组中的元素数、字符串中的字符数或对象中的根级属性数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -324,7 +323,7 @@ ms.locfileid: "82231316"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -370,13 +369,13 @@ ms.locfileid: "82231316"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+| objectLength | int | 4 |
 
 ## <a name="union"></a>union
 
@@ -384,9 +383,9 @@ ms.locfileid: "82231316"
 
 返回包含参数中所有元素的单个数组或对象。 重复的值或键仅包含一次。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必选 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -402,7 +401,7 @@ ms.locfileid: "82231316"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -437,12 +436,12 @@ ms.locfileid: "82231316"
 }
 ```
 
-上面具有默认值的示例的输出为：
+上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| objectOutput | 对象 | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
-| arrayOutput | 数组 | ["one", "two", "three", "four"] |
+| objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,11 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59409c428aba938c49fc37647db82f30d783a629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052015"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -40,7 +39,10 @@ WAF 可针对以下 Web 漏洞提供保护：
 
 CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|说明|
+> [!NOTE]
+> CRS 3.1 仅适用于 WAF_v2 SKU。
+
+|规则组|描述|
 |---|---|
 |**[常规](#general-31)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|锁定方法（PUT、PATCH）|
@@ -60,7 +62,7 @@ CRS 3.1 包含下表中所示的 13 个规则组。 每个组包含多个可以�
 
 CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|说明|
+|规则组|描述|
 |---|---|
 |**[常规](#general-30)**|常规组|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|锁定方法（PUT、PATCH）|
@@ -79,7 +81,7 @@ CRS 3.0 包含下表中所示的 12 个规则组。 每个组包含多个可以�
 
 CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可以禁用的规则。
 
-|规则组|说明|
+|规则组|描述|
 |---|---|
 |**[crs_20_protocol_violations](#crs20)**|防范协议违规（例如无效字符，或使用请求正文执行 GET）|
 |**[crs_21_protocol_anomalies](#crs21)**|防范错误的标头信息|
@@ -235,9 +237,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |933120|PHP 注入攻击 = 找到配置指令|
 |933130|PHP 注入攻击 = 找到变量|
 |933131|PHP 注入攻击：找到变量|
-|933140|PHP 注入攻击：发现 i/o 流|
+|933140|PHP 注入攻击：找到 I/O 流|
 |933150|PHP 注入攻击 = 找到高风险的 PHP 函数名称|
-|933151|PHP 注入攻击：找到了中等风险的 PHP 函数名称|
+|933151|PHP 注入攻击：找到中等风险的 PHP 函数名称|
 |933160|PHP 注入攻击 = 找到高风险的 PHP 函数调用|
 |933161|PHP 注入攻击：找到低值 PHP 函数调用|
 |933170|PHP 注入攻击：序列化对象注入|
@@ -254,7 +256,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941130|XSS 筛选器 - 类别 3 = 属性向量|
 |941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
-|941160|NoScript XSS InjectionChecker： HTML 注入|
+|941160|NoScript XSS InjectionChecker：HTML 注入|
 |941170|NoScript XSS InjectionChecker：属性注入|
 |941180|节点验证器方块列表关键字|
 |941190|使用样式表的 XSS|
@@ -281,9 +283,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
-|942110|SQL 注入式攻击：检测到常见注入测试|
+|942110|SQL 注入攻击：检测到常见注入测试|
 |942120|SQL 注入攻击：检测到 SQL 运算符|
-|942130|SQL 注入攻击：检测到 SQL Tautology。|
+|942130|SQL 注入攻击：检测到 SQL 同义反复。|
 |942140|SQL 注入攻击 = 检测到常用 DB 名称|
 |942150|SQL 注入攻击|
 |942160|检测到使用 sleep() 或 benchmark() 的盲注 sqli 测试。|
@@ -344,7 +346,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-30"></a>[OWASP 3.0](#tab/owasp30)
 
-## <a name="rule-sets"></a><a name="owasp30"></a>规则集
+## <a name="rule-sets"></a><a name="owasp30"></a> 规则集
 
 ### <a name="p-x-ms-format-detectionnonegeneralp"></a><a name="general-30"></a> <p x-ms-format-detection="none">常规</p>
 
@@ -381,15 +383,15 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920180|POST 请求缺少 Content-Length 标头。|
 |920190|范围 = 最后一个字节值无效。|
 |920210|找到了多个/有冲突的连接标头数据。|
-|920220|URL 编码滥用攻击企图|
-|920240|URL 编码滥用攻击企图|
+|920220|URL 编码滥用攻击尝试|
+|920240|URL 编码滥用攻击尝试|
 |920250|UTF8 编码滥用攻击企图|
 |920260|Unicode 全角/半角滥用攻击企图|
 |920270|请求中的字符无效（null 字符）|
 |920280|请求缺少 Host 标头|
 |920290|Host 标头为空|
-|920310|请求包含空 Accept 标头|
-|920311|请求包含空 Accept 标头|
+|920310|请求包含空的 Accept 标头|
+|920311|请求包含空的 Accept 标头|
 |920330|用户代理标头为空|
 |920340|请求包含内容但缺少 Content-Type 标头|
 |920350|Host 标头是数字 IP 地址|
@@ -507,8 +509,8 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |RuleId|说明|
 |---|---|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
-|942110|SQL 注入式攻击：检测到常见注入测试|
-|942130|SQL 注入攻击：检测到 SQL Tautology。|
+|942110|SQL 注入攻击：检测到常见注入测试|
+|942130|SQL 注入攻击：检测到 SQL 同义反复。|
 |942140|SQL 注入攻击 = 检测到常用 DB 名称|
 |942160|检测到使用 sleep() 或 benchmark() 的盲注 sqli 测试。|
 |942170|检测到包含条件查询的 SQL 基准和休眠注入企图|
@@ -544,9 +546,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="rule-sets"></a><a name="owasp229"></a>规则集
+## <a name="rule-sets"></a><a name="owasp229"></a> 规则集
 
-### <a name="crs_20_protocol_violations"></a><a name="crs20"></a>crs_20_protocol_violations
+### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 
 |RuleId|说明|
 |---|---|
@@ -566,26 +568,26 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |958295|找到了多个/有冲突的连接标头数据。|
 |950107|URL 编码滥用攻击尝试|
 |950109|检测到多个 URL 编码|
-|950108|URL 编码滥用攻击企图|
+|950108|URL 编码滥用攻击尝试|
 |950801|UTF8 编码滥用攻击企图|
 |950116|Unicode 全角/半角滥用攻击企图|
 |960901|请求中的字符无效|
 |960018|请求中的字符无效|
 
-### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a>crs_21_protocol_anomalies
+### <a name="crs_21_protocol_anomalies"></a><a name="crs21"></a> crs_21_protocol_anomalies
 
 |RuleId|说明|
 |---|---|
 |960008|请求缺少 Host 标头|
 |960007|Host 标头为空|
 |960015|请求缺少 Accept 标头|
-|960021|请求包含空 Accept 标头|
+|960021|请求包含空的 Accept 标头|
 |960009|请求缺少用户代理标头|
 |960006|用户代理标头为空|
 |960904|请求包含内容但缺少 Content-Type 标头|
 |960017|Host 标头是数字 IP 地址|
 
-### <a name="crs_23_request_limits"></a><a name="crs23"></a>crs_23_request_limits
+### <a name="crs_23_request_limits"></a><a name="crs23"></a> crs_23_request_limits
 
 |RuleId|说明|
 |---|---|
@@ -596,7 +598,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |960342|上传的文件太大|
 |960343|上传的文件总大小太大|
 
-### <a name="crs_30_http_policy"></a><a name="crs30"></a>crs_30_http_policy
+### <a name="crs_30_http_policy"></a><a name="crs30"></a> crs_30_http_policy
 
 |RuleId|说明|
 |---|---|
@@ -606,7 +608,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |960035|策略限制了 URL 文件扩展名|
 |960038|策略限制了 HTTP 标头|
 
-### <a name="crs_35_bad_robots"></a><a name="crs35"></a>crs_35_bad_robots
+### <a name="crs_35_bad_robots"></a><a name="crs35"></a> crs_35_bad_robots
 
 |RuleId|说明|
 |---|---|
@@ -681,7 +683,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |981253|检测 MySQL 和 PostgreSQL 存储过程/函数注入|
 |981251|检测 MySQL UDF 注入和其他数据/结构操作企图|
 
-### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a>crs_41_xss_attacks
+### <a name="crs_41_xss_attacks"></a><a name="crs41xss"></a> crs_41_xss_attacks
 
 |RuleId|说明|
 |---|---|

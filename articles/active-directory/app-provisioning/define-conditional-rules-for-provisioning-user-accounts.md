@@ -2,20 +2,19 @@
 title: 使用范围筛选器预配应用 | Microsoft Docs
 description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/11/2018
-ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.topic: how-to
+ms.date: 06/08/2020
+ms.author: kenwith
+ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593738"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781950"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -29,7 +28,7 @@ ms.locfileid: "82593738"
 * **从 Azure AD 到 SaaS 应用程序的出站预配**。 当 Azure AD 是源系统时，[用户和组分配](../manage-apps/assign-user-or-group-access-portal.md)是确定预配范围内用户的最常用方法。 这些分配也用于启用单一登录，它们提供单一方法来管理访问权限和预配。 除分配外，还可选择性地使用范围筛选器，根据属性值筛选用户。
 
     >[!TIP]
-    > 可将预配设置下的[范围](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。**** 使用此选项及基于属性的范围筛选器比使用基于组的分配速度更快。  
+    > 可将预配设置下的[范围](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application)菜单中的设置更改为“同步所有用户和组”，根据企业应用程序的分配禁用预配。**** 
 
 * **从 HCM 应用程序到 Azure AD 和 Active Directory 的入站预配**。 当 [Workday 等 HCM 应用程序](../saas-apps/workday-tutorial.md)是源系统时，范围筛选器是确定应从 HCM 应用程序预配到 Active Directory 或 Azure AD 的用户的主要方法。
 
@@ -64,7 +63,7 @@ ms.locfileid: "82593738"
 
 2. 选择已为其配置自动预配的应用程序，例如“ServiceNow”。
 
-3. 选择“预配”**** 选项卡。
+3. 选择“预配”选项卡。
 
 4. 在“映射”部分，选择要为其预配范围筛选器的映射，例如“将 Azure Active Directory 用户同步到 ServiceNow”。****
 
@@ -86,9 +85,9 @@ ms.locfileid: "82593738"
 
    f. **不为 NULL**。 如果评估的属性不为空，则子句返回“true”。
 
-   g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
+   如， **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
 
-   h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
+   h.如果该值不存在，请单击“添加行”。 **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
    
    i. **Greater_Than。** 如果计算的属性大于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
@@ -105,7 +104,7 @@ ms.locfileid: "82593738"
 
 10. 在“范围筛选器标题”中，为范围筛选器添加名称****。
 
-11. 选择“确定”  。
+11. 选择“确定”。
 
 12. 在“范围筛选器”屏幕上再次选择“确定”。******** （可选）重复步骤 6-11 添加另一范围筛选器。
 
@@ -116,10 +115,10 @@ ms.locfileid: "82593738"
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 运算符 | 值 | 说明|
+| 目标属性| 操作员 | 值 | 描述|
 |----|----|----|----|
-|userPrincipalName|正则表达式匹配|.\*@domain.com |具有域@domain.com的 userPrincipal 的所有用户将处于预配范围内|
-|userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域@domain.com的 userPrincipal 的所有用户将不在预配范围内|
+|userPrincipalName|正则表达式匹配|.\*@domain.com |具有域的 userPrincipal 的所有用户 @domain.com 将处于预配范围内|
+|userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域的 userPrincipal 的所有用户将不在 @domain.com 预配范围内|
 |department|EQUALS|销售额|销售部门的所有用户都处于预配范围内|
 |workerID|正则表达式匹配|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 介于1000000和2000000之间的 workerIDs 的所有员工都处于预配的范围内。|
 

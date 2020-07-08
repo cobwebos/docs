@@ -2,21 +2,20 @@
 title: 使用 Microsoft Graph Api 配置预配-Azure Active Directory |Microsoft Docs
 description: 需要为应用程序的多个实例设置预配？ 了解如何通过使用 Microsoft Graph Api 来自动完成自动预配配置来节省时间。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 585cafc548b3458c6e9cc0ef91c44f163fb7fa2f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84782052"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 配置预配
 
@@ -34,21 +33,21 @@ Azure 门户是一种简单的方法，用于一次配置单个应用的预配�
 |[步骤5。监视预配](#step-5-monitor-provisioning)     |检查设置作业的状态 <br> 检索预配日志         |
 
 > [!NOTE]
-> 为了便于阅读，本文中显示的响应对象可能会缩短。 所有属性都将从实际调用返回。
+> 为便于阅读，本文中显示的响应对象可能会缩短。 所有属性都将从实际的调用中返回。
 
-## <a name="step-1-create-the-gallery-application"></a>步骤1：创建库应用程序
+## <a name="step-1-create-the-gallery-application"></a>步骤 1：创建库应用程序
 
-### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>登录到 Microsoft Graph 资源管理器（推荐）、Postman 或使用的任何其他 API 客户端
+### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>登录 Microsoft Graph 浏览器（推荐）、Postman 或你使用的其他任意 API 客户端
 
-1. 启动[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)
+1. 启动 [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)
 1. 选择 "使用 Microsoft 登录" 按钮，并使用 Azure AD 全局管理员或应用管理员凭据进行登录。
 
     ![Graph 登录](./media/application-provisioning-configure-api/wd_export_02.png)
 
-1. 成功登录后，左侧窗格中会显示用户帐户的详细信息。
+1. 成功登录后，你将在左侧窗格中看到用户帐户详细信息。
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>检索库应用程序模板标识符
-每个应用程序库中 Azure AD 的应用程序都有一个描述该应用程序的元数据的[应用程序模板](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)。 使用此模板，可以在租户中创建应用程序和服务主体的实例，以进行管理。
+Azure AD 应用程序库中的每个应用程序都有一个[应用程序模板](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http)，它描述了该应用程序的元数据。 通过此模板，可在租户中创建应用程序和服务主体的实例以进行管理。
 
 #### <a name="request"></a>*请求*
 

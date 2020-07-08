@@ -2,20 +2,19 @@
 title: 为映射将特性同步到 Azure AD
 description: 了解如何将本地 Active Directory 的属性同步到 Azure AD。 配置 SaaS 应用的用户预配时，请使用目录扩展功能添加默认情况下不同步的源属性。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/13/2019
-ms.author: mimart
-ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.author: kenwith
+ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593142"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781067"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序
 
@@ -45,7 +44,7 @@ ms.locfileid: "82593142"
 
 5. 完成 Azure AD Connect 向导并允许运行完全同步周期。 周期结束后，将扩展架构，并在本地 AD 与 Azure AD 之间同步新值。
  
-6. 在 Azure 门户中，当您[编辑用户属性映射](customize-application-attributes.md)时，"**源属性**" 列表中现在将包含格式`<attributename> (extension_<appID>_<attributename>)`为的已添加属性。 选择属性，并将其映射到目标应用程序进行设置。
+6. 在 Azure 门户中，当您[编辑用户属性映射](customize-application-attributes.md)时，"**源属性**" 列表中现在将包含格式为的已添加属性 `<attributename> (extension_<appID>_<attributename>)` 。 选择属性，并将其映射到目标应用程序进行设置。
 
    ![Azure Active Directory Connect 向导目录扩展选择页](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 

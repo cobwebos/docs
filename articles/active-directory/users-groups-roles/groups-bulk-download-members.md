@@ -6,19 +6,18 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3faca8d1a2538ed03a917d6db8d54323fe626369
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 65a6a622a0d3fac7b28cc699d860068f12b780fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533662"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728599"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中批量下载组的成员
 
@@ -26,8 +25,8 @@ ms.locfileid: "81533662"
 
 ## <a name="to-bulk-download-group-membership"></a>大容量下载组成员身份
 
-1. 使用组织中的用户管理员帐户登录到[Azure 门户](https://portal.azure.com)。 组所有者还可以批量下载它们所拥有的组的成员。
-1. 在 Azure AD 中，选择 "**组** > " "**所有组**"。
+1. 使用组织中的用户管理员帐户登录到 [Azure 门户](https://portal.azure.com)。 组所有者还可以批量下载它们所拥有的组的成员。
+1. 在 Azure AD 中，选择“组” > “所有组” 。
 1. 打开要下载其成员身份的组，然后选择 "**成员**"。
 1. 在 "**成员**" 页上，选择 "**下载成员**" 以下载列出组成员的 CSV 文件。
 
@@ -35,7 +34,7 @@ ms.locfileid: "81533662"
 
 ## <a name="check-download-status"></a>检查下载状态
 
-你可以在 "**批量操作结果**" 页中查看所有挂起的批量请求的状态。
+可在“批量操作结果”页中查看所有挂起的批量请求的状态。
 
 [![](media/groups-bulk-download-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download-members/bulk-center.png#lightbox)
 
@@ -45,5 +44,5 @@ ms.locfileid: "81533662"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [大容量导入组成员](groups-bulk-import-members.md)
+- [批量导入组成员](groups-bulk-import-members.md)
 - [批量删除组成员](groups-bulk-download-members.md)

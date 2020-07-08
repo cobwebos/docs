@@ -6,14 +6,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 60fde4ca1d8aaf47367fcdb4b5dc7c73753b7496
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834758"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040769"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
@@ -159,7 +158,7 @@ ms.locfileid: "83834758"
    |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名| *TwitterStream* | 输入输入的别名。 |
-   |订阅  | 用户的订阅\<\> |  选择要使用的 Azure 订阅。 |
+   |订阅  | \<Your subscription\> |  选择要使用的 Azure 订阅。 |
    |事件中心命名空间 | *asa-twitter-eventhub* |
    |事件中心名称 | *socialtwitter-eh* | 选择“使用现有”。 然后，选择已创建的事件中心。|
    |事件压缩类型| GZip | 数据压缩类型。|
@@ -225,7 +224,7 @@ ms.locfileid: "83834758"
 3. 在“启动作业”页中，为“作业输出开始时间”选择“现在”，然后选择“开始”   。
 
 ## <a name="get-support"></a>获取支持
-若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)

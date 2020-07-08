@@ -10,15 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/20/2020
+ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616886"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84677298"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA（大型实例）存储体系结构
 
@@ -36,8 +35,6 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S192xm |  11,520 GB |  1,536 GB |  1,792 GB |  1,536 GB |
-| S224 |  4224 GB |  512 GB |  1,024 GB |  512 GB |
-| S224m |  8448 GB |  512 GB |  1,024 GB |  512 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
 | S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,040 GB |
@@ -47,6 +44,35 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 | S768m | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S768xm | 40,960 GB | 6,144 GB | 4,096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |
+| S896m | 33792 GB | 512 GB | 1,024 GB | 512 GB |
+
+使用如下所示的存储配置提供了 HANA 大型实例的更新 Sku：
+
+| HANA 大型实例 SKU | hana/data | hana/log | hana/shared | hana/logbackups |
+| --- | --- | --- | --- | --- |
+| S224 | 4224 GB | 512 GB | 1,024 GB | 512 GB |
+| S224oo | 6336 GB | 512 GB | 1,024 GB | 512 GB |
+| S224m | 8448 GB | 512 GB | 1,024 GB | 512 GB |
+| S224om | 8448 GB | 512 GB | 1,024 GB | 512 GB |
+| S224ooo | 10560 GB | 512 GB | 1,024 GB | 512 GB |
+| S224oom | 12672 GB | 512 GB | 1,024 GB | 512 GB |
+| S448 | 8448 GB | 512 GB | 1,024 GB | 512 GB |
+| S448oo | 12672 GB | 512 GB | 1,024 GB | 512 GB |
+| S448m | 16896 GB | 512 GB | 1,024 GB | 512 GB |
+| S448om | 16896 GB | 512 GB | 1,024 GB | 512 GB |
+| S448ooo | 21120 GB | 512 GB | 1,024 GB | 512 GB |
+| S448oom | 25344 GB | 512 GB | 1,024 GB | 512 GB |
+| S672 | 12672 GB | 512 GB | 1,024 GB | 512 GB |
+| S672oo | 19008 GB | 512 GB | 1,024 GB | 512 GB |
+| S672m | 25344 GB | 512 GB | 1,024 GB | 512 GB |
+| S672om | 25344 GB | 512 GB | 1,024 GB | 512 GB |
+| S672ooo | 31680 GB | 512 GB | 1,024 GB | 512 GB |
+| S672oom | 38016 GB | 512 GB | 1,024 GB | 512 GB |
+| S896 | 16896 GB | 512 GB | 1,024 GB | 512 GB |
+| S896oo | 25344 GB | 512 GB | 1,024 GB | 512 GB |
+| S896om | 33792 GB | 512 GB | 1,024 GB | 512 GB |
+| S896ooo | 42240 GB | 512 GB | 1,024 GB | 512 GB |
+| S896oom | 50688 GB | 512 GB | 1,024 GB | 512 GB |
 
 
 实际部署的卷可能会稍有不同，具体取决于部署以及用来显示卷大小的工具。
@@ -96,10 +122,10 @@ I 类 HANA 大型实例附带有四倍内存卷作为存储卷。 对于 II 类 
 使用 I 类 SKU 时，会加密存储启动 LUN 的卷。 在修订版 3 HANA 大型实例标记中，使用 HANA 大型实例 Sku 的类型 II 类，需要使用 OS 方法加密启动 LUN。 在版本4中，HANA 大型实例戳，使用类型 II 单位存储启动 LUN 的卷，默认情况下加密为静态。 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>HANA 大型实例上较大 HANA 实例的必需设置
-HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每个文件 16 TB。 不同于 EXT3 文件系统中的文件大小限制，HANA 不会隐式识别 HANA 大型实例存储所强制执行的存储限制。 因此，当达到16TB 的文件大小限制时，HANA 不会自动创建新的数据文件。 由于 HANA 尝试将文件增长到超过 16 TB，因此，HANA 将报告错误，并且索引服务器将在结尾崩溃。
+HANA 大型实例中使用的存储具有文件大小限制。 [大小限制为](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html)每个文件 16 TB。 不同于 EXT3 文件系统中的文件大小限制，HANA 不会隐式识别 HANA 大型实例存储所强制执行的存储限制。 因此，当达到 16 TB 的文件大小限制时，HANA 不会自动创建新的数据文件。 由于 HANA 尝试将文件增长到超过 16 TB，因此，HANA 将报告错误，并且索引服务器将在结尾崩溃。
 
 > [!IMPORTANT]
-> 为了防止 HANA 尝试将数据文件增长到 HANA 大型实例存储的 16 TB 文件大小限制之外，你需要在 HANA 的全局 .ini 配置文件中设置以下参数
+> 为了防止 HANA 尝试将数据文件增长到 HANA 大型实例存储的 16 TB 文件大小限制之外，需要在 HANA 的 global.ini 配置文件中设置以下参数
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000

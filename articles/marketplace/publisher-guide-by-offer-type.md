@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 6e889fef16d8ad80d52810207f0328a765ca9cfe
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982677"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958491"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
 本文介绍了商业应用商店中提供的产品/服务类型。 “产品/服务类型”定义商品结构，其中包括元数据、项目和其他用于在市场中呈现产品/服务的内容**。
 
-在你创建产品/服务并[决定发布选项](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)之后，你必须选择用于提供产品/服务的产品/服务类型，然后才能创建产品/服务。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。
+在你创建产品/服务并[决定发布选项](determine-your-listing-type.md)之后，你必须选择用于提供产品/服务的产品/服务类型，然后才能创建产品/服务。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。
 
 可以采用不同的方式配置单个产品/服务类型，以启用不同的发布选项、操作调用、预配或定价。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。
 
@@ -28,7 +27,7 @@ ms.locfileid: "82982677"
 
 下表列出了 Azure 市场产品/服务类型。
 
-| **产品类型**    | **说明**  |
+| **产品/服务类型**    | **说明**  |
 | :------------------- | :-------------------|
 | [**虚拟机**](./marketplace-virtual-machines.md) | 将虚拟设备部署到与客户关联的订阅时，请使用“虚拟机”产品/服务类型。 |
 | [**解决方案模板**](./marketplace-solution-templates.md) | 当解决方案需要在单个 VM 之外额外部署和配置自动化时，可使用解决方案模板（也称为 Azure 应用程序）产品/服务类型。 解决方案模板可以使用多种不同类型的 Azure 资源，包括但不限于 Vm。  |

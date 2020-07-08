@@ -3,12 +3,11 @@ title: 在 Azure 政府版中设置 Azure Migrate 设备
 description: 了解如何在 Azure 政府版中设置 Azure Migrate 设备
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: fd97161ffa075a6165ea963ef80bfabf8904576e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726730"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052480"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>在 Azure 政府版中设置设备 
 
@@ -19,7 +18,7 @@ ms.locfileid: "81726730"
 > Azure 政府版不支持使用模板（适用于 VMware Vm 和 Hyper-v Vm）部署设备的选项。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 此脚本在现有物理计算机或 VM 上设置 Azure Migrate 设备。
 
@@ -33,8 +32,8 @@ ms.locfileid: "81726730"
 
 ### <a name="download-the-script"></a>下载脚本
 
-1.  在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，单击“发现”。 
-2.  在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMWare vSphere 虚拟机监控程序”。   
+1.  在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
+2.  在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 VMWare vSphere 虚拟机监控程序”。  
 3.  单击 "**下载**" 以下载压缩的文件。 
 
 
@@ -45,14 +44,14 @@ ms.locfileid: "81726730"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
+    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip SHA256```
 
-3. 验证生成的哈希值。 对于最新的设备版本：
+3. 验证最新的设备版本和哈希值：
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
+    **算法** | **下载** | **SHA256**
+    --- | --- | ---
+    VMware (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="run-the-script"></a>运行脚本
 
@@ -71,7 +70,7 @@ ms.locfileid: "81726730"
 1. 将压缩的文件提取到将托管设备的计算机上的文件夹中。 请确保不要在现有 Azure Migrate 设备上的计算机中运行该脚本。
 2. 在计算机上启动 PowerShell，同时提供管理员（提升）权限。
 3. 将 PowerShell 目录更改为包含从已下载的压缩文件中提取的内容的文件夹。
-4. 运行脚本**AzureMigrateInstaller**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+4. 运行脚本**AzureMigrateInstaller.ps1**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
 5. 脚本成功运行后，将启动设备 web 应用程序，以便你可以设置设备。 如果遇到任何问题，请查看 C:\ProgramData\Microsoft Azure\Logs\ 上的脚本日志 AzureMigrateScenarioInstaller_<em>时间戳</em>。
 
 ### <a name="verify-access"></a>验证访问
@@ -85,8 +84,8 @@ ms.locfileid: "81726730"
 
 ### <a name="download-the-script"></a>下载脚本
 
-1.  在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，单击“发现”。 
-2.  在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 Hyper-V”。   
+1.  在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
+2.  在“发现计算机” > “计算机是否已虚拟化?”中，选择“是，使用 Hyper-V”。  
 3.  单击 "**下载**" 以下载压缩的文件。 
 
 
@@ -97,13 +96,14 @@ ms.locfileid: "81726730"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip SHA256```
 
-3. 验证生成的哈希值。 对于最新的设备版本：
+3. 验证最新的设备版本和哈希值：
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | 717f8b9185f565006b5aff0215ecadac
+    **方案** | **下载** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
           
 
 ### <a name="run-the-script"></a>运行脚本
@@ -123,7 +123,7 @@ ms.locfileid: "81726730"
 1. 将压缩的文件提取到将托管设备的计算机上的文件夹中。 请确保不要在现有 Azure Migrate 设备上的计算机中运行该脚本。
 2. 在计算机上启动 PowerShell，同时提供管理员（提升）权限。
 3. 将 PowerShell 目录更改为包含从已下载的压缩文件中提取的内容的文件夹。
-4. 运行脚本**AzureMigrateInstaller**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
+4. 运行脚本**AzureMigrateInstaller.ps1**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ``` 
 5. 脚本成功运行后，将启动设备 web 应用程序，以便你可以设置设备。 如果遇到任何问题，请查看 C:\ProgramData\Microsoft Azure\Logs\ 上的脚本日志 AzureMigrateScenarioInstaller_<em>时间戳</em>。
 
 ### <a name="verify-access"></a>验证访问
@@ -137,8 +137,8 @@ ms.locfileid: "81726730"
 
 ### <a name="download-the-script"></a>下载脚本
 
-1.  在“迁移目标” > “服务器” > “Azure Migrate:    服务器评估”中，单击“发现”。 
-2.  在 "**发现计算机** > **已虚拟化"** 中，选择 "**未虚拟化/其他**"。
+1.  在“迁移目标” > “服务器” > “Azure Migrate:  服务器评估”中，单击“发现”。
+2.  在 "**发现计算机**  >  **已虚拟化"** 中，选择 "**未虚拟化/其他**"。
 3.  单击 "**下载**" 以下载压缩的文件。 
 
 
@@ -149,13 +149,13 @@ ms.locfileid: "81726730"
 1. 在下载文件的计算机上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
+    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256```
 
-3. 验证生成的哈希值。 对于最新的设备版本：
+3. 验证最新的设备版本和哈希值：
 
-    **算法** | **哈希值**
-    --- | ---
-    MD5 | f81c155fc4a1409901caea948713913f
+    **方案** | **下载*** | **哈希值**
+    --- | --- | ---
+    Physical (63.1 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>运行脚本
@@ -175,7 +175,7 @@ ms.locfileid: "81726730"
 1. 将压缩的文件提取到将托管设备的计算机上的文件夹中。 请确保不要在现有 Azure Migrate 设备上的计算机中运行该脚本。
 2. 在计算机上启动 PowerShell，同时提供管理员（提升）权限。
 3. 将 PowerShell 目录更改为包含从已下载的压缩文件中提取的内容的文件夹。
-4. 运行脚本**AzureMigrateInstaller**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+4. 运行脚本**AzureMigrateInstaller.ps1**，如下所示：``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 5. 脚本成功运行后，将启动设备 web 应用程序，以便你可以设置设备。 如果遇到任何问题，请查看 C:\ProgramData\Microsoft Azure\Logs\ 上的脚本日志 AzureMigrateScenarioInstaller_<em>时间戳</em>。
 
 ### <a name="verify-access"></a>验证访问

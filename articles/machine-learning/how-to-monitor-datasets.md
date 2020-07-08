@@ -5,17 +5,16 @@ description: 创建 Azure 机器学习数据集监视器（预览版）、监视
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 15cfa56f718290af3ae5fb87aadab70016cc8594
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682724"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430240"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>检测数据集中的数据偏移（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -115,7 +114,7 @@ dset = dset.register(ws, 'target')
 
 [![分区格式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-在“架构”设置中，通过指定的数据集中的虚拟列或实际列指定时间戳列： 
+在“架构”设置中，通过指定的数据集中的虚拟列或实际列指定时间戳列：
 
 ![Timestamp](./media/how-to-monitor-datasets/timestamp.png)
 
@@ -171,7 +170,7 @@ dset = dset.register(ws, 'target')
 
 ![监视器列表](./media/how-to-monitor-datasets/monitor-list.png)
 
-单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。  
+单击“+创建监视器”按钮，然后单击“下一步”继续完成向导。 
 
 ![奇才](./media/how-to-monitor-datasets/wizard.png)
 
@@ -237,20 +236,20 @@ monitor = monitor.enable_schedule()
 
 ### <a name="drift-overview"></a>偏移概述
 
-“偏差概述”部分包含数据偏移幅度的顶级见解，并指出应该对哪些特征做进一步的调查。  
+“偏差概述”部分包含数据偏移幅度的顶级见解，并指出应该对哪些特征做进一步的调查。 
 
 | 指标 | 说明 | 提示 | 
 | ------ | ----------- | ---- | 
 | 数据偏移幅度 | 以介于基线与一段时间内的目标数据集之间的百分比表示。 范围为 0 到 100，其中 0 表示数据集相同，100 表示 Azure 机器学习数据偏移功能可以完全区分两个数据集。 | 由于这种幅度是使用机器学习技术生成的，预期度量的精确百分比中存在干扰。 | 
 | 按特征显示的偏移贡献 | 目标数据集中每个特征对度量的偏移幅度的贡献。 |  由于共变偏移，特征的基础分布不一定需要改变即可获得相对较高的特征重要性。 | 
 
-下图是 Azure 机器学习工作室的“偏移概述”中显示的图表示例，它是回填 [NOAA 集成式图面数据](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)后生成的。  数据已按 `stationName contains 'FLORIDA'` 采样，其中“2019 年 1 月”用作基线数据集，2019 年的所有数据用作目标。
+下图是 Azure 机器学习工作室的“偏移概述”中显示的图表示例，它是回填 [NOAA 集成式图面数据](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)后生成的。 数据已按 `stationName contains 'FLORIDA'` 采样，其中“2019 年 1 月”用作基线数据集，2019 年的所有数据用作目标。
  
 ![偏移概述](./media/how-to-monitor-datasets/drift-overview.png)
 
 ### <a name="feature-details"></a>特征详细信息
 
-“特征详细信息”部分包含所选特征的分布变化的特征级见解，以及一段时间内的其他统计信息。  
+“特征详细信息”部分包含所选特征的分布变化的特征级见解，以及一段时间内的其他统计信息。 
 
 此外，将分析一段时间内的目标数据集。 每个特征的基线分布之间的统计距离将与一段时间内的目标数据集进行比较，这在概念上类似于数据偏移幅度，只是统计距离适用于单个特征。 还可以使用最小值、最大值和平均值。 
 
@@ -287,7 +286,7 @@ monitor = monitor.enable_schedule()
 
 可以在与机器学习工作区关联的 [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 资源中查询指标。 可以访问 Application Insights 的所有功能，包括设置自定义警报规则和操作组，以触发电子邮件/短信/推送/语音或 Azure 函数等操作。 有关详细信息，请参阅完整的 Application Insights 文档。 
 
-若要开始，请导航到 Azure 门户并选择工作区的“概述”页。   关联的 Application Insights 资源位于最右侧：
+若要开始，请导航到 Azure 门户并选择工作区的“概述”页。  关联的 Application Insights 资源位于最右侧：
 
 [![Azure 门户概述](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 

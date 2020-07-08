@@ -7,18 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d9bfc7f194730545469e7d17d46c47f7293f016e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74900906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84728888"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中查看和分配管理员角色
 
@@ -34,7 +33,7 @@ ms.locfileid: "74900906"
 
 ## <a name="view-my-roles"></a>查看我的角色
 
-也可轻松查看自己的权限。 在“角色和管理员”  页上选择“你的角色”  ，可查看当前分配给你的角色。
+也可轻松查看自己的权限。 在“角色和管理员”页上选择“你的角色”，可查看当前分配给你的角色。
 
 ## <a name="view-assignments-for-a-role"></a>查看角色分配
 
@@ -49,7 +48,6 @@ ms.locfileid: "74900906"
 查看某个角色的成员时，选择“说明”可以查看角色分配授予的权限的完整列表  。 该页包含相关文档的链接，引导你对目录角色进行管理。
 
 ![管理员角色的权限列表](./media/directory-manage-roles-portal/role-description.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 

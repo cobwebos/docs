@@ -9,25 +9,19 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2019
+ms.date: 06/14/2020
 ms.author: yelevin
-ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582120"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783157"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>使用 Azure Sentinel 中的搜寻 livestream 检测威胁
-
-> [!IMPORTANT]
-> Azure Sentinel 中的搜寻 livestream 目前为公共预览版，并逐渐推出到租户。
-> 此功能在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 使用搜索 livestream 创建交互式会话，使您可以在事件发生时测试新创建的查询，在找到匹配项时从会话中获取通知，并根据需要启动调查。 可以使用任何 Log Analytics 查询快速创建 livestream 会话。
 
@@ -48,42 +42,42 @@ ms.locfileid: "77582120"
 
 你可以从现有的搜寻查询创建 livestream 会话，或者从头开始创建你的会话。
 
-1. 在 Azure 门户中，导航到 " **Sentinel** > **威胁管理** > **搜寻**"。
+1. 在 Azure 门户中，导航到 " **Sentinel**  >  **威胁管理**  >  **搜寻**"。
 
-2. 通过搜寻查询创建 livestream 会话：
+1. 通过搜寻查询创建 livestream 会话：
     
     1. 从 "**查询**" 选项卡中，找到要使用的搜寻查询。
-    2. 右键单击该查询，然后选择 "**添加到 livestream**"。 例如：
+    1. 右键单击该查询，然后选择 "**添加到 livestream**"。 例如：
     
     > [!div class="mx-imgBorder"]
     > ![从 Azure Sentinel 搜寻查询创建 Livestream 会话](./media/livestream/livestream-from-query.png)
 
-3. 若要从头开始创建 livestream 会话： 
+1. 若要从头开始创建 livestream 会话： 
     
     1. 选择**Livestream**选项卡
-    2. 选择 "**中转到 livestream**"。
+    1. 单击 " **+ 新 livestream**"。
     
-4. 在 " **Livestream** " 窗格中：
+1. 在 " **Livestream** " 窗格中：
     
     - 如果从查询启动了 livestream，请查看查询，并进行所需的任何更改。
     - 如果从头开始 livestream，请创建查询。 
 
-5. 从命令栏中选择 "**播放**"。
+1. 从命令栏中选择 "**播放**"。
     
     命令栏下的状态栏指示 livestream 会话是正在运行还是已暂停。 在下面的示例中，该会话正在运行：
     
     > [!div class="mx-imgBorder"]
     > ![从 Azure Sentinel 搜寻创建 livestream 会话](./media/livestream/livestream-session.png)
 
-6. 从命令栏中选择 "**保存**"。
+1. 从命令栏中选择 "**保存**"。
     
     除非你选择 "**暂停**"，否则该会话将继续运行，直到你从 Azure 门户中注销为止。
 
 ## <a name="view-your-livestream-sessions"></a>查看你的 livestream 会话
 
-1. 在 Azure 门户中，导航到 " **Sentinel** > **威胁 management** > **搜寻** > **Livestream** " 选项卡。
+1. 在 Azure 门户中，导航到 " **Sentinel**  >  **威胁 management**  >  **搜寻**  >  **Livestream** " 选项卡。
 
-2. 选择要查看或编辑的 livestream 会话。 例如：
+1. 选择要查看或编辑的 livestream 会话。 例如：
     
     > [!div class="mx-imgBorder"]
     > ![从 Azure Sentinel 搜寻查询创建 livestream 会话](./media/livestream/livestream-tab.png)
@@ -111,5 +105,5 @@ ms.locfileid: "77582120"
 
 本文介绍了如何在 Azure livestream 中使用搜寻。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- [主动寻找威胁](hunting.md)
+- [主动搜寻威胁](hunting.md)
 - [使用笔记本运行自动搜寻活动](notebooks.md)

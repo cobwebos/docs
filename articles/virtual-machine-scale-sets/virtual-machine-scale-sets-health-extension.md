@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虚拟机规模集的应用程序运行状况扩展
+title: 配合使用 Azure 虚拟机规模集和应用程序运行状况扩展
 description: 了解如何使用应用程序运行状况扩展监视部署在虚拟机规模集上的应用程序的运行状况。
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,11 @@ ms.subservice: extensions
 ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124102"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84783038"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
 监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。 你还可以使用运行状况扩展来监视规模集中每个实例的应用程序运行状况，并使用[自动实例修复](virtual-machine-scale-sets-automatic-instance-repairs.md)执行实例修复。
@@ -33,7 +32,7 @@ ms.locfileid: "83124102"
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示应用程序运行状况扩展的架构。 扩展至少需要 "tcp"、"http" 或 "https" 请求，分别具有关联的端口或请求路径。
+以下 JSON 显示应用程序运行状况扩展的架构。 扩展至少需要“tcp”、“http”或“https”请求，且各自具有相关的端口或请求路径。
 
 ```json
 {
@@ -60,17 +59,17 @@ ms.locfileid: "83124102"
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
+| publisher | `Microsoft.ManagedServices` | 字符串 |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| protocol | `http` 或 `https` 或 `tcp` | string |
-| port | 如果协议为 `http` 或 `https` ，则为可选，协议为时是必需的`tcp` | int |
-| requestPath | 当协议为 `http` 或时 `https` ，不允许使用`tcp` | string |
+| 协议 | `http` 或 `https` 或 `tcp` | 字符串 |
+| port | 协议为 `http` 或 `https` 时为可选，协议为 `tcp` 时为必需 | int |
+| requestPath | 协议为 `http` 或 `https` 时为必需，协议为 `tcp` 时为不允许 | string |
 
 ## <a name="deploy-the-application-health-extension"></a>部署应用程序运行状况扩展
 可以使用多种方法将应用程序运行状况扩展部署到规模集，如下面的示例所示。
@@ -165,7 +164,7 @@ extension.json 文件内容。
 ```
 
 
-## <a name="troubleshoot"></a>疑难解答
+## <a name="troubleshoot"></a>故障排除
 扩展执行输出将记录到在以下目录中发现的文件：
 
 ```Windows
@@ -173,7 +172,8 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 ```
 
 ```Linux
-/var/lib/waagent/apphealth
+/var/lib/waagent/Microsoft.ManagedServices.ApplicationHealthLinux-<extension_version>/status
+/var/log/azure/applicationhealth-extension
 ```
 
 日志还会定期捕获应用程序运行状况状态。

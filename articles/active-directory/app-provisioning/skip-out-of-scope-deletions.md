@@ -2,31 +2,30 @@
 title: 跳过删除超出范围用户的操作
 description: 了解如何重写取消预配超出作用域用户的默认行为。
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2019
-ms.author: chmutali
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 719258933dfadf34b8678bf03ee07ee6cc76e331
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84789899"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>跳过删除超出范围的用户帐户
 
 默认情况下，Azure AD 预配引擎软删除或禁用超出范围的用户。 但是，在某些情况下，对于 Workday 到 AD 用户的入站预配，此行为可能不是预期的，你可能想要重写此默认行为。  
 
-本指南介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器来设置标志***SkipOutOfScopeDeletions*** ，以控制超出作用域的帐户的处理。 
-* 如果将***SkipOutOfScopeDeletions***设置为0（false），则将在目标中禁用超出范围的帐户
-* 如果将***SkipOutOfScopeDeletions***设置为1（true），则不会在目标中禁用超出范围的帐户，此标志在*预配应用*级别设置，可以使用图形 API 进行配置。 
+本文介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器来设置标志***SkipOutOfScopeDeletions*** ，以控制超出作用域的帐户的处理。 
+* 如果将***SkipOutOfScopeDeletions***设置为0（false），则将在目标中禁用超出作用域的帐户。
+* 如果***SkipOutOfScopeDeletions***设置为1（true），则不会在目标中禁用超出作用域的帐户。 此标志在*预配应用*级别设置，可以使用图形 API 进行配置。 
 
-由于此配置广泛用于*workday Active Directory 用户预配*应用，下面的步骤包括 Workday 应用程序的屏幕截图。 但这也可用于**所有其他应用**，如 ServiceNow、Salesforce、Dropbox 等。
+由于此配置广泛与 Workday 一起用于*Active Directory 用户预配*应用程序，因此以下步骤包括 Workday 应用程序的屏幕截图。 但是，还可以将该配置用于*所有其他应用*，如 ServiceNow、Salesforce 和 Dropbox。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID （对象 ID）
 

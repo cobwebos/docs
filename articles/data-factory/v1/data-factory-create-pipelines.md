@@ -11,12 +11,11 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 62da43879b581d6737eee1310cf642e9692051de
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281517"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248439"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,9 +33,9 @@ ms.locfileid: "79281517"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
-数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可使用复制活动将数据从本地 SQL Server 复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建紧商业智能 (BI) 报告解决方案。
+数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 管道中的活动定义对数据执行的操作。 例如，可以使用复制活动将数据从 SQL Server 数据库复制到 Azure Blob 存储。 然后，使用在 Azure HDInsight 群集上运行 Hive 脚本的 Hive 活动，将 Blob 存储中的数据处理/转换为生成输出数据。 最后，再使用一个复制活动将输出数据复制到 Azure SQL 数据仓库，基于该仓库构建紧商业智能 (BI) 报告解决方案。
 
-活动可以接受零个或多个输入[数据集](data-factory-create-datasets.md)并生成一个或多个输出[数据集](data-factory-create-datasets.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
+每个活动可获取零个或多个输入[数据集](data-factory-create-datasets.md)，并生成一个或多个输出[数据集](data-factory-create-datasets.md)。 下图显示了数据工厂中管道、活动和数据集之间的关系：
 
 ![管道、活动和数据集之间的关系](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
 
@@ -94,7 +93,7 @@ ms.locfileid: "79281517"
 
 | 标记 | 说明 | 必需 |
 | --- | --- | --- |
-| name |管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、"\*"、"%"、"&"、"："、"\\"</li></ul> |是 |
+| name |管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：260</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符： "."、"+"、"？"、"/"、"<"、">"、" \* "、"%"、"&"、"："、" \\ "</li></ul> |是 |
 | description | 指定描述管道用途的文本。 |是 |
 | 活动 | **activities** 节中可定义有一个或多个活动。 请参阅下一节，了解有关活动 JSON 元素的详细信息。 | 是 |
 | start | 管道的开始日期-时间。 必须为 [ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：`2016-10-14T16:32:41Z`。 <br/><br/>可指定本地时间，如 EST 时间。 示例如下：`2016-02-27T06:00:00-05:00`" 东部标准时间早上 6 点。<br/><br/>start 和 end 属性共同指定管道的活动期限。 仅在此活动期限内生成输出切片。 |否<br/><br/>如果要指定 end 属性值，必须指定 start 属性值。<br/><br/>创建管道时，开始和结束时间均可为空。 必须指定这两个值，才能设置管道运行的活动期限。 如果在创建管道时未指定开始和结束时间，则可以在以后使用 AzDataFactoryPipelineActivePeriod cmdlet 设置它们。 |
@@ -145,7 +144,7 @@ ms.locfileid: "79281517"
 ### <a name="policies"></a>策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| properties | 允许的值 | 默认值 | 说明 |
+| Property | 允许的值 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |
@@ -156,7 +155,7 @@ ms.locfileid: "79281517"
 | longRetryInterval |TimeSpan |00:00:00 |长重试尝试之间的延迟 |
 
 ## <a name="sample-copy-pipeline"></a>复制管道示例
-在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](data-factory-data-movement-activities.md)将 Azure Blob 存储中的数据复制到 Azure SQL 数据库。
+在以下示例管道中，**activities** 节有一个 **Copy** 类型的活动。 在此示例中，[复制活动](data-factory-data-movement-activities.md)将数据从 azure Blob 存储复制到 Azure SQL 数据库。
 
 ```json
 {
@@ -263,7 +262,7 @@ ms.locfileid: "79281517"
 * Hive 脚本文件 **partitionweblogs.hql** 存储在 Azure 存储帐户（由 scriptLinkedService 指定，名为 **AzureStorageLinkedService**）中，以及 **adfgetstarted** 容器的 **script** 文件夹中。
 * `defines` 节用于指定运行时设置，这些设置将作为 Hive 配置值（例如 `${hiveconf:inputtable}`、`${hiveconf:partitionedtable}`）传递给 Hive 脚本。
 
-每个转换活动的 typeProperties **** 节都不同。 要了解转换活动支持的类型属性，请单击[数据转换活动](#data-transformation-activities)表中的转换活动。
+每个转换活动的 typeProperties 节都不同。 要了解转换活动支持的类型属性，请单击[数据转换活动](#data-transformation-activities)表中的转换活动。
 
 有关创建此管道的完整演练，请参阅[教程：生成首个管道以使用 Hadoop 群集处理数据](data-factory-build-your-first-pipeline.md)。
 

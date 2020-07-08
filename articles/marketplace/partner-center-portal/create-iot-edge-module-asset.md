@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: MT
+ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856727"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958576"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
@@ -22,8 +21,8 @@ ms.locfileid: "82856727"
 
 IoT Edge 模块是在 IoT Edge 设备上运行的 Docker 兼容容器。
 
-- 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)。
-- 若要开始开发 IoT Edge 模块，请参阅[开发自己的 IoT Edge 模块](https://docs.microsoft.com/azure/iot-edge/module-development)。
+- 若要了解有关 IoT Edge 模块的详细信息，请参阅[了解 Azure IoT Edge 模块](../../iot-edge/iot-edge-modules.md)。
+- 若要开始开发 IoT Edge 模块，请参阅[开发自己的 IoT Edge 模块](../../iot-edge/module-development.md)。
 
 ## <a name="technical-requirements"></a>技术要求
 
@@ -35,7 +34,7 @@ IoT Edge 模块必须支持以下平台选项之一：
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支持的第 1 层平台
 
-模块必须支持 IoT Edge 支持的所有第1层平台（如[Azure IoT Edge 支持](https://docs.microsoft.com/azure/iot-edge/support)中所述）。 我们之所以推荐此选项，是因为它提供更好的客户体验。 满足此条件的模块将为展示。 使用此平台选项的模块必须：
+模块必须支持 IoT Edge 支持的所有第1层平台（如[Azure IoT Edge 支持](../../iot-edge/support.md)中所述）。 我们之所以推荐此选项，是因为它提供更好的客户体验。 满足此条件的模块将为展示。 使用此平台选项的模块必须：
 
 - 提供使用[GitHub 清单工具](https://github.com/estesp/manifest-tool)生成的清单标记的最新标记和版本标记（例如1.0.1）。
 
@@ -43,7 +42,7 @@ IoT Edge 模块必须支持以下平台选项之一：
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge 支持的一部分第 1 层平台
 
-模块必须支持 IoT Edge 支持的第1层平台（如[Azure IoT Edge 支持](https://docs.microsoft.com/azure/iot-edge/support)中所述）的一个子集（至少一个）。 使用此平台选项的模块必须：
+模块必须支持 IoT Edge 支持的第1层平台（如[Azure IoT Edge 支持](../../iot-edge/support.md)中所述）的一个子集（至少一个）。 使用此平台选项的模块必须：
 
 - 提供一个新标记和一个版本标记（例如1.0.1），该标记是使用 GitHub 清单生成的清单标记[-](https://github.com/estesp/manifest-tool)如果支持多个平台，则为。 仅当只支持一个平台时，清单标记才是可选的。
 - 使用 "[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)" 中的 "产品列表" 选项卡，从[Azure IoT Edge 认证设备目录](https://catalog.azureiotsolutions.com/)中的至少一个 IoT Edge 设备添加到 "**有用链接**" 部分下的链接。
@@ -139,8 +138,8 @@ IoT Edge 模块必须避免具有[特权的模块](https://docs.docker.com/engin
 
 ## <a name="host-module-in-azure-container-registry"></a>Azure 容器注册表中的主机模块
 
-若要将 IoT Edge 模块上传到 Azure Marketplace，首先需要将其托管在[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)（ACR）中。 该模块必须包含你要发布的所有标记，包括清单标记所引用的图像标记。 有关详细信息，请参阅教程[创建 Azure 容器注册表和推送容器映像](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)。
+若要将 IoT Edge 模块上传到 Azure Marketplace，首先需要将其托管在[Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)（ACR）中。 该模块必须包含你要发布的所有标记，包括清单标记所引用的图像标记。 有关详细信息，请参阅教程[创建 Azure 容器注册表和推送容器映像](../../container-instances/container-instances-tutorial-prepare-acr.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 IoT Edge 模块产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)
+- [创建 IoT Edge 模块产品/服务](azure-iot-edge-module-creation.md)

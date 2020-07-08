@@ -4,15 +4,14 @@ description: 本文概述如何重写 Azure 应用程序网关中的 HTTP 标头
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562230"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248664"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
@@ -64,26 +63,26 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | X-Forwarded-For 客户端请求标头字段，其中追加了 IP1、IP2、IP3 等格式的 `client_ip` 变量（请参阅此表后面的解释）。 如果 X-Forwarded-For 字段不在客户端请求标头中，则 `add_x_forwarded_for_proxy` 变量等于 `$client_ip` 变量。 若要重写应用程序网关设置的 X-Forwarded-For 标头，使该标头仅包含 IP 地址而不包含端口信息，则此变量特别有用。 |
 | ciphers_supported          | 客户端支持的加密法列表。          |
-| ciphers_used               | 用于建立的 TLS 连接的密码字符串。 |
+| ciphers_used               | 用于已建立 TLS 连接的加密法字符串。 |
 | client_ip                  | 客户端的 IP 地址，应用程序网关从中接收请求。 如果应用程序网关和发起方客户端的前面有反向代理，则 *client_ip* 将返回该反向代理的 IP 地址。 |
 | client_port                | 客户端端口。                                                  |
 | client_tcp_rtt             | 有关客户端 TCP 连接的信息。 在支持 TCP_INFO 套接字选项的系统上可用。 |
 | client_user                | 使用 HTTP 身份验证时提供用于身份验证的用户名。 |
-| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，主机值将为*contoso.com* |
+| host                       | 按此优先顺序排列：请求行中的主机名、Host 请求标头字段中的主机名，或与请求匹配的服务器名称。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，主机值将为 contoso.com  |
 | cookie_*name*              | *name* Cookie。                                            |
 | http_method                | 用于发出 URL 请求的方法。 例如 GET 或 POST。 |
 | http_status                | 会话状态。 例如 200、400 或 403。                       |
 | http_version               | 请求协议。 通常为 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，query_string 值将为*id = 123&title = fabrikam* |
+| query_string               | 请求的 URL 中“?”后面的变量/值对列表。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，query_string 值将为 id=123&title=fabrikam  |
 | received_bytes             | 请求的长度（包括请求行、标头和请求正文）。 |
 | request_query              | 请求行中的参数。                                |
 | request_scheme             | 请求方案：http 或 https。                            |
-| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，request_uri 值将为 */article.aspx？ id = 123&title = fabrikam*   |
+| request_uri                | 完整的原始请求 URI（带参数）。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，request_uri 值将为 /article.aspx?id=123&title=fabrikam    |
 | sent_bytes                 | 发送到客户端的字节数。                             |
 | server_port                | 接受请求的服务器端口。                 |
-| ssl_connection_protocol    | 已建立 TLS 连接的协议。        |
-| ssl_enabled                | 如果连接在 TLS 模式下运行，则为 "开"。 否则为空字符串。 |
-| uri_path                   | 标识宿主中 web 客户端要访问的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求*http://contoso.com:8080/article.aspx?id=123&title=fabrikam*中，uri_path 值将为 */article.aspx*  |
+| ssl_connection_protocol    | 已建立的 TLS 连接的协议。        |
+| ssl_enabled                | 如果连接在 TLS 模式下建立，则为“On”。 否则为空字符串。 |
+| uri_path                   | 标识 Web 客户端要访问的主机中的特定资源。 这是请求 URI 中没有参数的部分。 示例：在请求 http://contoso.com:8080/article.aspx?id=123&title=fabrikam 中，uri_path 值将为 /article.aspx   |
 
 ## <a name="rewrite-configuration"></a>重写配置
 
@@ -93,15 +92,15 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
    - **重写操作**：用于指定要重写的请求和请求标头字段，以及标头的新值。 可将一个或多个重写条件关联到一个重写操作。
 
-   - **重写条件**：可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
+   - **重写条件**：一个可选配置。 重写条件评估 HTTP(S) 请求和响应的内容。 如果 HTTP(S) 请求或响应与重写条件匹配，则会发生重写操作。
 
      如果将多个条件关联到一个操作，仅当满足所有条件时，才会发生该操作。 换言之，操作属于逻辑 AND 运算。
 
-   - **重写规则**：包含多个重写操作/重写条件组合。
+   - **重写规则**：包含多个重写操作/重写条件的组合。
 
-   - **规则序列**：帮助确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序，则执行顺序是不确定的。
+   - **规则顺序**：帮助确定重写规则的执行顺序。 在一个重写集中使用多个重写规则时，此配置非常有用。 规则顺序值较小的重写规则最先运行。 如果为两个重写规则分配了相同的规则顺序，则执行顺序是不确定的。
 
-   - **重写集**：包含将与请求路由规则关联的多个重写规则。
+   - **重写集**：包含要与请求路由规则关联的多个重写规则。
 
 2. 将重写集 (*rewriteRuleSet*) 附加到路由规则。 重写配置将通过路由规则附加到源侦听器。 使用基本路由规则时，标头重写配置与源侦听器相关联，并且是全局标头重写。 使用基于路径的路由规则时，将在 URL 路径映射中定义标头重写配置。 在这种情况下，该规则只会应用到站点的特定路径区域。
    > [!NOTE]
@@ -158,7 +157,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - 如果响应中包含多个同名的标头，则重写其中某个标头的值会导致删除该响应中的其他标头。 这种情况往往出现于 Set-Cookie 标头，因为在一个响应中可以包含多个 Set-Cookie 标头。 例如，如果将应用服务与应用程序网关一起使用，并在应用程序网关上配置了基于 Cookie 的会话关联，则就会出现此类情况。 在这种情况下，响应将包含两个 Set-Cookie 标头：一个用于应用服务（例如 `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`），另一个用于应用程序网关关联（例如 `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`）。 在此情况下重写其中一个 Set-Cookie 标头可能会导致从响应中删除另一个 Set-Cookie 标头。
 
-- 当应用程序网关配置为重定向请求或显示自定义错误页面时，不支持重写。
+- 当应用程序网关配置为重定向请求或显示自定义错误页时，不支持重写。
 
 - 目前不支持重写 Connection、Upgrade 和 Host 标头。
 

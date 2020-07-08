@@ -13,12 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75979727"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85248354"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -33,7 +32,7 @@ ms.locfileid: "75979727"
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用的是数据工厂服务的当前版本，请参阅[复制活动教程](../quickstart-create-data-factory-dot-net.md)。
 
-此教程介绍如何创建包含管道的数据工厂，以将数据从 Blob 存储复制到 SQL 数据库。
+在本教程中，将创建一个包含管道的数据工厂，用于将数据从 Blob 存储复制到 SQL 数据库。
 
 复制活动在 Azure 数据工厂中执行数据移动。 该活动由全球可用的服务提供支持，能以安全、可靠、可缩放的方式在各种数据存储之间复制数据。 有关复制活动的详细信息，请参阅 [Data Movement Activities](data-factory-data-movement-activities.md) （数据移动活动）。  
 
@@ -47,7 +46,7 @@ ms.locfileid: "75979727"
 
 * **Azure 订阅**。  如果没有订阅，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅[免费使用](https://azure.microsoft.com/pricing/free-trial/)一文。
 * **Azure 存储帐户**。 在本教程中，将 Blob 存储用作**源**数据存储。 如果没有 Azure 存储帐户，请参阅[创建存储帐户](../../storage/common/storage-account-create.md)一文获取创建步骤。
-* **Azure SQL 数据库**。 在本教程中，将 Azure SQL 数据库用作**目标**数据存储。 如果没有可在本教程中使用的 Azure SQL 数据库，请参阅[如何创建和配置 Azure SQL 数据库](../../sql-database/sql-database-get-started.md)进行创建。
+* **Azure SQL 数据库**。 在本教程中，使用 Azure SQL 数据库作为**目标**数据存储。 如果 Azure SQL 数据库中没有可在本教程中使用的数据库，请参阅如何在[AZURE Sql 数据库中创建和配置数据库](../../sql-database/sql-database-get-started.md)以创建数据库。
 * **SQL Server 2012/2014 或 Visual Studio 2013**。 可使用 SQL Server Management Studio 或 Visual Studio 创建示例数据库和查看数据库中的结果数据。  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>收集 Blob 存储帐户名和密钥
@@ -66,7 +65,7 @@ ms.locfileid: "75979727"
 7. 单击“X”**** 关闭所有边栏选项卡。
 
 ## <a name="collect-sql-server-database-user-names"></a>收集 SQL Server、数据库和用户的名称
-要完成本教程，需提供 Azure SQL Server、数据库和用户的名称。 记下用于 Azure SQL 数据库的**服务器**、**数据库**和**用户**的名称。
+要完成本教程，您需要逻辑 SQL server、数据库和用户的名称。 记下 "Azure SQL 数据库" 的**服务器**、**数据库**和**用户**的名称。
 
 1. 在 **Azure 门户**中，单击左侧的“所有服务”****，并选择“SQL 数据库”****。
 2. 在“SQL 数据库”**** 边栏选项卡中，选择要在本教程中使用的“数据库”****。 记下**数据库名称**。  
@@ -75,15 +74,15 @@ ms.locfileid: "75979727"
 5. 单击“X”**** 关闭所有边栏选项卡。
 
 ## <a name="allow-azure-services-to-access-sql-server"></a>允许 Azure 服务访问 SQL Server
-确保 Azure SQL Server 的“允许访问 Azure 服务”**** 设置处于“打开”**** 状态，以便数据工厂服务可以访问 Azure SQL Server。 若要验证并启用此设置，请执行以下步骤：
+确保为服务器启用了 "**允许访问 Azure 服务** **"** 设置，以便数据工厂服务可以访问服务器。 若要验证并启用此设置，请执行以下步骤：
 
 1. 单击左侧的“所有服务”**** 中心，然后单击“SQL Server”****。
-2. 选择服务器，并单击“设置”**** 下的“防火墙”****。
-3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。************
+2. 选择服务器，并单击“设置”下的“防火墙”。
+3. 在“防火墙设置”边栏选项卡中，单击“允许访问 Azure 服务”旁边的“打开”。  
 4. 单击“X”**** 关闭所有边栏选项卡。
 
 ## <a name="prepare-blob-storage-and-sql-database"></a>准备 Blob 存储和 SQL 数据库
-现在，执行以下步骤来准备本教程所需的 Azure Blob 存储和 Azure SQL 数据库：  
+现在，通过执行以下步骤，为本教程准备 Azure blob 存储和 Azure SQL 数据库：  
 
 1. 启动记事本。 复制以下文本，将文件命名为 **emp.txt**，然后将其保存到硬盘上的 **C:\ADFGetStarted** 文件夹。
 
@@ -91,7 +90,7 @@ ms.locfileid: "75979727"
     John, Doe
     Jane, Doe
     ```
-2. 使用[Azure 存储资源管理器](https://storageexplorer.com/)等工具创建**adftutorial**容器，并将**emp**文件上传到该容器。
+2. 使用[Azure 存储资源管理器](https://storageexplorer.com/)等工具创建**adftutorial**容器，并将**emp.txt**文件上传到该容器。
 
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  
 
@@ -107,9 +106,9 @@ ms.locfileid: "75979727"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **如果计算机上已安装 SQL Server 2012/2014：** 请遵循[使用 SQL Server Management Studio 管理 Azure SQL 数据库](../../sql-database/sql-database-manage-azure-ssms.md)一文中的说明连接到 Azure SQL Server，并运行 SQL 脚本。
+    **如果计算机上安装了 SQL Server 2012/2014：** 按照[使用 SQL SERVER MANAGEMENT STUDIO 管理 Azure SQL 数据库](../../sql-database/sql-database-manage-azure-ssms.md)中的说明连接到服务器并运行 SQL 脚本。
 
-    如果不允许客户端访问 Azure SQL Server，则需要将 Azure SQL Server 的防火墙配置为允许从计算机（IP 地址）访问。 请参阅 [此文](../../sql-database/sql-database-configure-firewall-settings.md) 中的步骤，为 Azure SQL Server 配置防火墙。
+    如果不允许客户端访问逻辑 SQL server，则需要为服务器配置防火墙以允许从计算机（IP 地址）进行访问。 有关为服务器配置防火墙的步骤，请参阅[此文](../../sql-database/sql-database-configure-firewall-settings.md)。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 已完成此先决条件。 可使用以下方法之一来创建数据工厂。 单击顶部下拉列表中的其中一个选项或以下链接来执行此教程。     

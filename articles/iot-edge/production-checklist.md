@@ -11,24 +11,23 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: MT
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780736"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84431927"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>准备在生产环境中部署 IoT Edge 解决方案
 
 如果已准备好将 IoT Edge 解决方案从开发环境转移到生产环境，请确保对其进行适当的配置，使其持续保持良好的性能。
 
-本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。  
+本文中提供的信息并非面面俱到。 为帮助你优先处理某些任务，每个部分首先会提供一些列表，将准备工作划分为两个部分：转移到生产环境之前要实施的“重要说明”，以及需要知道的“有用提示”。 
 
 ## <a name="device-configuration"></a>设备配置
 
 IoT Edge 设备的类型多种多样，其中包括 Raspberry Pi、便携式计算机、服务器上运行的虚拟机，等等。 可通过物理方式或虚拟连接来访问设备，而设备也有可能长时间处于隔离状态。 不管通过什么方式进行访问，都需要确保它在配置后能够正常使用。
 
-* 重要说明 
+* 重要说明
   * 安装生产证书
   * 创建设备管理计划
   * 使用 Moby 作为容器引擎
@@ -107,7 +106,7 @@ IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的�
 
 当 **OptimizeForPerformance** 设置为 **true** 时，MQTT 协议标头将使用 PooledByteBufferAllocator（具有更佳性能，但会分配更多内存）。 分配器在 32 位操作系统或内存不足的设备上不能很好地工作。 此外，如果针对性能进行了优化，RocksDb 会为其作为本地存储提供程序的角色分配更多内存。
 
-有关详细信息，请参阅[小型设备上的稳定性问题](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)。
+有关详细信息，请参阅[小型设备的稳定性问题](troubleshoot-common-errors.md#stability-issues-on-smaller-devices)。
 
 #### <a name="disable-unused-protocols"></a>禁用未使用的协议
 
@@ -119,7 +118,7 @@ IoT Edge 中心默认已进行性能优化，因此它会尝试分配较大的�
 * **mqttSettings__enabled**
 * **httpSettings__enabled**
 
-所有三个变量都带有两条下划线，可设置为 true 或 false。 
+所有三个变量都带有两条下划线，可设置为 true 或 false。
 
 #### <a name="reduce-storage-time-for-messages"></a>减少消息的存储时间
 
@@ -133,7 +132,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 ## <a name="container-management"></a>容器管理
 
-* 重要说明 
+* 重要说明
   * 管理对容器注册表的访问
   * 使用标记管理版本
 * **有用提示**
@@ -145,26 +144,26 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 
 教程和其他文档会指导你在 IoT Edge 设备上使用开发计算机上所用的相同容器注册表凭据。 这些说明旨在帮助你更轻松地设置测试和开发环境，在生产方案中请勿遵照这些说明。
 
-对于更安全的注册表访问权限，你可以选择[身份验证选项](../container-registry/container-registry-authentication.md)。 常见的推荐身份验证是使用一种 Active Directory 的服务主体，该服务主体非常适合应用程序或服务以自动或无人参与（无外设）的方式（如 IoT Edge 设备）提取容器映像。
+为了更安全地访问注册表，可以使用[身份验证选项](../container-registry/container-registry-authentication.md)。 一种建议使用的常用身份验证方法是使用 Active Directory 服务主体，该方法非常适用于应用程序或服务，它以自动或无人值守（无头）方式拉取容器映像，就像 IoT Edge 设备所做的那样。
 
-若要创建服务主体，请运行 "[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)" 中所述的两个脚本。 这些脚本执行以下任务：
+若要创建服务主体，请按[创建服务主体](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)中所述运行两个脚本。 这些脚本执行以下任务：
 
-* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 安全地将这些值存储在记录中。
+* 第一个脚本创建服务主体。 它输出服务主体 ID 和服务主体密码。 将这些值安全地存储在记录中。
 
-* 第二个脚本创建角色分配，以授予服务主体，以后可以根据需要运行。 建议为`role`参数应用**acrPull**用户角色。 有关角色的列表，请参阅[Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
+* 第二个脚本创建要向服务主体授予的角色分配，以后可以根据需要运行这些角色分配。 对于 `role` 参数，建议应用 acrPull 用户角色。 有关角色列表，请参阅 [Azure 容器注册表角色和权限](../container-registry/container-registry-roles.md)。
 
-若要使用服务主体进行身份验证，请提供从第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
+若要使用服务主体进行身份验证，请提供你通过第一个脚本获取的服务主体 ID 和密码。 在部署清单中指定这些凭据。
 
-* 对于 "用户名" 或 "客户端 ID"，请指定服务主体 ID。
+* 对于用户名或客户端 ID，请指定服务主体 ID。
 
-* 对于密码或客户端密码，指定服务主体密码。
+* 对于密码或客户端机密，请指定服务主体密码。
 
 > [!NOTE]
-> 实现增强的安全身份验证后，禁用**管理员用户**设置，以使默认的用户名/密码访问不再可用。 在容器注册表中的 Azure 门户 "**设置**" 下的左窗格菜单中，选择 "**访问密钥**"。
+> 实现增强的安全身份验证后，请禁用“管理员用户”设置，以便不再提供默认的用户名/密码访问权限。 在 Azure 门户的容器注册表中，从左窗格菜单的“设置”下选择“访问密钥”。
 
 ### <a name="use-tags-to-manage-versions"></a>使用标记管理版本
 
-标记是一个 docker 概念，可用于区分 docker 容器的各个版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。
+标记是一个 Docker 概念，可用于区分 Docker 容器的版本。 标记是附加在容器存储库末尾的后缀（如 **1.0**）。 例如 **mcr.microsoft.com/azureiotedge-agent:1.0**。 标记是可变的，随时可能更改为指向另一容器，因此，团队应该议定一种约定，以便今后在更新模块映像时遵循。
 
 标记还可帮助你针对 IoT Edge 设备强制实施更新。 将模块的更新版本推送到容器注册表时，请递增标记。 然后，使用递增的标记将新部署推送到设备。 容器引擎将递增的标记识别为新版本，并将最新模块版本提取到设备。
 
@@ -181,7 +180,7 @@ timeToLiveSecs 参数的默认值为 7200 秒，即 2 小时。
 | [Azure IoT Edge 代理](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge 中心](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-接下来，请确保在 edgeAgent 和 edgeHub 系统模块的 deployment 文件中更新映像引用。 将`mcr.microsoft.com`替换为这两个模块的注册表名称和服务器。
+接下来，请确保在 edgeAgent 和 edgeHub 系统模块的文件的 deployment.template.js中更新映像引用。 将替换为 `mcr.microsoft.com` 这两个模块的注册表名称和服务器。
 
 * EdgeAgent
 
@@ -216,7 +215,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 此清单可作为防火墙规则的入手点：
 
-   | URL（\* = 通配符） | 出站 TCP 端口 | 用法 |
+   | URL（\* = 通配符） | 出站 TCP 端口 | 使用情况 |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft 容器注册表 |
    | global.azure-devices-provisioning.net  | 443 | DPS 访问（可选） |
@@ -226,6 +225,10 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
    | \*.docker.io  | 443 | Docker 中心访问（可选） |
 
 其中的某些防火墙规则继承自 Azure 容器注册表。 有关详细信息，请参阅[配置规则以访问防火墙后面的 Azure 容器注册表](../container-registry/container-registry-firewall-access-rules.md)。
+
+> [!NOTE]
+> 若要在剩余和数据终结点之间提供一致的 FQDN （从**2020 年6月15日**开始），Microsoft 容器注册表数据终结点将从更改 `*.cdn.mscr.io` 为`*.data.mcr.microsoft.com`  
+> 有关详细信息，请参阅[Microsoft 容器注册表客户端防火墙规则配置](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)
 
 如果你不想将防火墙配置为允许访问公共容器注册表，则可以在专用容器注册表中存储图像，如[专用注册表中的存储运行时容器](#store-runtime-containers-in-your-private-registry)中所述。
 
@@ -253,7 +256,7 @@ Azure IoT 中心与 IoT Edge 之间的信道始终配置为出站。 对于大�
 
 默认情况下，Moby 容器引擎不会设置容器日志大小限制。 一段时间后，这可能会导致设备中填满了日志，因此出现磁盘空间不足的情况。 请考虑采用以下选项来防止这种情况：
 
-#### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>选项：设置适用于所有容器模块的全局限制
+#### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>选项：设置应用到所有容器模块的全局限制
 
 可以在容器引擎日志选项中限制所有容器日志文件的大小。 以下示例将日志驱动程序设置为 `json-file`（建议），并对文件的大小和数量施加限制：
 

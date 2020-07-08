@@ -4,16 +4,15 @@ description: 创建测试证书，并了解如何将其安装在 Azure IoT Edge 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9540913cd86b74fd51e96aa9d1d1dd34c5d60631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129795"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84430659"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>创建演示证书用于测试 IoT Edge 设备功能
 
@@ -25,7 +24,7 @@ IoT Edge 设备需要使用证书来保护运行时、模块和任何下游设�
 
 可以在任何计算机上创建证书，然后将其复制到 IoT Edge 设备。
 使用主计算机创建证书比在 IoT Edge 设备本身上生成证书要方便一些。
-使用主计算机可以设置脚本一次，然后重复该过程以创建多个设备的证书。
+通过使用主计算机，你可以设置一次脚本，然后使用这些脚本为多个设备创建证书。
 
 按照以下步骤创建用于测试 IoT Edge 方案的演示证书：
 
@@ -84,7 +83,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    git clone https://github.com/Azure/iotedge.git
    ```
 
-3. 导航到要在其中工作的目录。 整篇文章将此目录称为 *\<WRKDIR>* 。 所有证书和密钥将此工作目录中创建。
+3. 导航到要在其中工作的目录。 整篇文章将此目录称为 \<WRKDIR>。 所有证书和密钥将此工作目录中创建。
 
 4. 将克隆的存储库中的配置文件和脚本文件复制到该工作目录。
 
@@ -125,7 +124,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    git clone https://github.com/Azure/iotedge.git
    ```
 
-2. 导航到要在其中工作的目录。 在整篇文章中，此目录称为 *\<WRKDIR>* 。 所有证书和密钥文件都将在此目录中创建。
+2. 导航到要在其中工作的目录。 在整篇文章中，此目录称为 \<WRKDIR>。 所有证书和密钥文件都将在此目录中创建。
   
 3. 将克隆的 IoT Edge 存储库中的配置文件和脚本文件复制到该工作目录。
 
@@ -181,54 +180,6 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
 
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
 
-## <a name="create-iot-edge-device-ca-certificates"></a>创建 IoT Edge 设备 CA 证书
-
-投放到生产环境的每个 IoT Edge 设备都需要一个从 config.yaml 文件引用的设备 CA 证书。
-设备 CA 证书负责为设备上运行的模块创建证书。
-IoT Edge 设备在连接到下游设备时，也要通过此证书验证自身的身份。
-
-设备 CA 证书位于 IoT Edge 设备上的 config.yaml 文件的 **Certificate** 节。
-
-在继续执行本部分所述的步骤之前，请执行[设置脚本](#set-up-scripts)和[创建根 CA 证书](#create-root-ca-certificate)部分所述的步骤。
-
-### <a name="windows"></a>Windows
-
-1. 导航到包含证书生成脚本和根 CA 证书的工作目录。
-
-2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供 CA 证书的名称（例如 **MyEdgeDeviceCA**），用于对输出文件命名。
-
-   ```powershell
-   New-CACertsEdgeDevice "MyEdgeDeviceCA"
-   ```
-
-   此脚本命令将创建多个证书和密钥文件。 以下证书和密钥对需要复制到 IoT Edge 设备，并在 config.yaml 文件中引用：
-
-   * `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-
-传递到这些脚本中的网关设备名称不应与 config.yaml 中的“hostname”参数相同，也不应与 IoT 中心的设备 ID 相同。
-脚本将“.ca”字符串追加到 网关设备名称 以防止用户在两个位置使用相同的名称来设置 IoT Edge 时出现名称冲突，从而帮助避免产生任何问题。
-但是，最好避免使用相同的名称
-
-### <a name="linux"></a>Linux
-
-1. 导航到包含证书生成脚本和根 CA 证书的工作目录。
-
-2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供 CA 证书的名称（例如 **MyEdgeDeviceCA**），用于对输出文件命名。
-
-   ```bash
-   ./certGen.sh create_edge_device_certificate "MyEdgeDeviceCA"
-   ```
-
-   此脚本命令将创建多个证书和密钥文件。 以下证书和密钥对需要复制到 IoT Edge 设备，并在 config.yaml 文件中引用：
-
-   * `<WRKDIR>/certs/iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-MyEdgeDeviceCA.key.pem`
-
-传递到这些脚本中的网关设备名称不应与 config.yaml 中的“hostname”参数相同，也不应与 IoT 中心的设备 ID 相同。
-脚本将“.ca”字符串追加到 网关设备名称 以防止用户在两个位置使用相同的名称来设置 IoT Edge 时出现名称冲突，从而帮助避免产生任何问题。
-但是，最好避免使用相同的名称
-
 ## <a name="create-iot-edge-device-identity-certificates"></a>创建 IoT Edge 设备标识证书
 
 设备标识证书用于通过 [Azure IoT 中心设备预配服务 (DPS)](../iot-dps/index.yml) 来预配 IoT Edge 设备。
@@ -247,7 +198,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 传递给此命令的名称将是 IoT 中心的 IoT Edge 设备的设备 ID。
 
-新的设备标识命令会创建多个证书和密钥文件，其中包括在 DPS 中创建单个注册和安装 IoT Edge 运行时将使用的三个证书和密钥文件：
+新的设备标识命令会创建多个证书和密钥文件，其中包括在 DPS 中创建单个注册以及安装 IoT Edge 运行时时会使用的三个证书和密钥文件：
 
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
@@ -263,15 +214,64 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 传递给此命令的名称将是 IoT 中心的 IoT Edge 设备的设备 ID。
 
-此脚本会创建多个证书和密钥文件，其中包括在 DPS 中创建单个注册和安装 IoT Edge 运行时将使用的三个证书和密钥文件：
+此脚本会创建多个证书和密钥文件，其中包括在 DPS 中创建单个注册以及安装 IoT Edge 运行时时会使用的三个证书和密钥文件：
 
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
+## <a name="create-iot-edge-device-ca-certificates"></a>创建 IoT Edge 设备 CA 证书
+
+投放到生产环境的每个 IoT Edge 设备都需要一个从 config.yaml 文件引用的设备 CA 证书。
+设备 CA 证书负责为设备上运行的模块创建证书。
+这对于网关方案也是必需的，因为设备 CA 证书是 IoT Edge 设备向下游设备验证其身份的方式。
+
+设备 CA 证书位于 IoT Edge 设备上的 config.yaml 文件的 **Certificate** 节。
+
+在继续执行本部分所述的步骤之前，请执行[设置脚本](#set-up-scripts)和[创建根 CA 证书](#create-root-ca-certificate)部分所述的步骤。
+
+### <a name="windows"></a>Windows
+
+1. 导航到包含证书生成脚本和根 CA 证书的工作目录。
+
+2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供 CA 证书的名称。
+
+   ```powershell
+   New-CACertsEdgeDevice "<CA cert name>"
+   ```
+
+   此命令创建多个证书和密钥文件。 以下证书和密钥对需要复制到 IoT Edge 设备，并在 config.yaml 文件中引用：
+
+   * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
+
+传递给**CACertsEdgeDevice**命令的名称不应与 yaml 中的 hostname 参数或 IoT 中心内设备的 ID 相同。
+此脚本可通过将 "ca" 字符串附加到证书名称来防止名称冲突，以防用户在这两个位置使用同一名称进行设置 IoT Edge。
+但是，最好避免使用相同的名称
+
+### <a name="linux"></a>Linux
+
+1. 导航到包含证书生成脚本和根 CA 证书的工作目录。
+
+2. 使用以下命令创建 IoT Edge 设备 CA 证书和私钥。 提供 CA 证书的名称。
+
+   ```bash
+   ./certGen.sh create_edge_device_certificate "<CA cert name>"
+   ```
+
+   此脚本命令将创建多个证书和密钥文件。 以下证书和密钥对需要复制到 IoT Edge 设备，并在 config.yaml 文件中引用：
+
+   * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
+
+传递给**create_edge_device_certificate**命令的名称不应与 yaml 中的 hostname 参数或 IoT 中心内设备的 ID 相同。
+此脚本可通过将 "ca" 字符串附加到证书名称来防止名称冲突，以防用户在这两个位置使用同一名称进行设置 IoT Edge。
+但是，最好避免使用相同的名称
+
 ## <a name="create-downstream-device-certificates"></a>创建下游设备证书
 
-为网关方案设置下游 IoT 设备时，可以生成用于 X.509 身份验证的演示证书。
+如果要为网关方案设置下游 IoT 设备并想要使用 x.509 authentication，可以为下游设备生成演示证书。
+如果要使用对称密钥身份验证，则无需为下游设备创建其他证书。
 可通过两种方式使用 X.509 证书对 IoT 设备进行身份验证：使用自签名证书，或使用证书颁发机构 (CA) 签名的证书。
 对于 X.509 自签名身份验证（有时称为指纹身份验证），需要创建新证书并将其放在 IoT 设备上。
 这些证书包含一个指纹，你可以与 IoT 中心共享该指纹以完成身份验证。
