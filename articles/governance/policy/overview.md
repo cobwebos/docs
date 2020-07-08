@@ -3,12 +3,12 @@ title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
 ms.date: 06/17/2020
 ms.topic: overview
-ms.openlocfilehash: e204a4eeff547877a48789eba6f1b8cac017d08e
-ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
+ms.openlocfilehash: 2ac8c175f586d9649e35328a483be918276c115d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84944655"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044186"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -82,7 +82,7 @@ Azure Policy 在两个资源提供程序中具有多个权限（称为操作）�
 
 ### <a name="resources-covered-by-azure-policy"></a>Azure Policy 涵盖的资源
 
-Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/key-vault-overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
+Azure Policy 评估 Azure 中的所有资源。 对于某些资源提供程序（例如 [Guest Configuration](./concepts/guest-configuration.md)、[Azure Kubernetes 服务](../../aks/intro-kubernetes.md)和 [Azure Key Vault](../../key-vault/general/overview.md)），可以使用一个更深度的集成来管理设置和对象。 有关详细信息，请参阅[资源提供程序模式](./concepts/definition-structure.md)。
 
 ### <a name="recommendations-for-managing-policies"></a>管理策略的建议
 

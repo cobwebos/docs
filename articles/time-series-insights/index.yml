@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 02/12/2020
-  ms.openlocfilehash: 34d7e9ad4f312576eb1e51961feb8364b99a967e
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 1119c4ec7c0b57f1b3707708ecb9227d737e2898
+  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77651315"
+  ms.lasthandoff: 07/07/2020
+  ms.locfileid: "86043115"
 landingContent:
 - title: 关于 Azure 时序见解
   linkLists:
@@ -34,7 +34,7 @@ landingContent:
     - text: 在时序见解资源管理器预览版中将数据可视化
       url: time-series-insights-update-explorer.md
     - text: 时序模型
-      url: time-series-insights-update-tsm.md
+      url: concepts-model-overview.md
   - linkListType: video
     links:
     - text: 适用于 IoT 应用的时序见解。 (13:31)
@@ -57,21 +57,19 @@ landingContent:
       url: time-series-insights-how-to-add-an-event-source-iothub.md
     - text: 规划环境
       url: time-series-insights-update-plan.md
-    - text: 数据存储和入口
-      url: time-series-insights-update-storage-ingress.md
+    - text: 数据引入概述
+      url: concepts-ingestion-overview.md
   - linkListType: how-to-guide
     links:
     - text: 预配和管理
       url: time-series-insights-update-how-to-manage.md
     - text: 授予数据访问权限
       url: time-series-insights-data-access.md
-    - text: 针对传入和查询调整 JSON
-      url: time-series-insights-update-how-to-shape-events.md
 - title: API 参考
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Time Series Insights
+    - text: Azure 时序见解
       url: /rest/api/time-series-insights/
     - text: 数据访问概念预览版
       url: /rest/api/time-series-insights/preview

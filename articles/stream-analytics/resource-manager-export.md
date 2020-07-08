@@ -5,14 +5,14 @@ services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76c2cf7164c3e2d683a9294cb500ed05381811b6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968942"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043523"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>导出 Azure 流分析作业 Azure 资源管理器模板
 
@@ -42,13 +42,13 @@ ms.locfileid: "78968942"
 
 1. 请注意，**部署**文件夹出现在流分析作业工作区中。
 
-1. 浏览*JobTemplate*文件，该文件是用于部署的 Azure 资源管理模板。
+1. 浏览文件*上的JobTemplate.js* ，它是用于部署的 Azure 资源管理模板。
 
 ## <a name="complete-the-parameters-file"></a>完成参数文件
 
 接下来，完成 Azure 资源管理模板参数文件。
 
-1. 在 Visual Studio Code 中打开流分析作业工作区的 "**部署**" 文件夹中的*JobTemplate*文件。
+1. 在 Visual Studio Code 中打开位于流分析作业工作区的 "**部署**" 文件夹中的*JobTemplate.parameters.js*文件。
 
 1. 请注意，输入和输出密钥为 null。 将空值替换为输入和输出资源的实际访问密钥。
 
@@ -58,7 +58,7 @@ ms.locfileid: "78968942"
 
 你已准备好使用上一节中生成的 Azure 资源管理器模板部署 Azure 流分析作业。
 
-在 PowerShell 窗口中运行以下命令。 请确保将*ResourceGroupName*、 *TemplateFile*和*TemplateParameterFile*与实际的资源组名称 reaplce，并将完整的文件路径包含到作业工作区的 "**部署" 文件夹**中的*JobTemplate*和*JobTemplate*文件。
+在 PowerShell 窗口中运行以下命令。 请确保将*ResourceGroupName*、 *TemplateFile*和*TemplateParameterFile*与实际资源组名称 reaplce，并将完整的文件路径放到*JobTemplate.js上*的，并*JobTemplate.parameters.js*作业工作区的 "**部署" 文件夹**中的文件。
 
 如果尚未配置 Azure PowerShell，请按照[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)中的步骤进行操作。
 

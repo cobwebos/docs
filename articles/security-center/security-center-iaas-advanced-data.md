@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心中 IaaS 的高级数据安全性 |Microsoft Docs
-description: " 了解如何在 Azure 安全中心为 IaaS 启用高级数据安全性。 "
+title: Azure 安全中心的 SQL 计算机高级数据安全性（预览版）
+description: 了解如何在 Azure 安全中心为 SQL 计算机启用高级数据安全性
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,155 +11,127 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
+ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282726"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043863"
 ---
-# <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 虚拟机上 SQL server 的高级数据安全性（预览版）
-Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全功能的统一包。 此预览功能包含用于识别和缓解潜在的数据库漏洞并检测可能指示数据库威胁的异常活动的功能。 
+# <a name="advanced-data-security-for-sql-machines-preview"></a>SQL 计算机的高级数据安全性（预览版）
 
-此适用于 Azure Vm 的安全产品/服务基于[AZURE Sql 数据库高级数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)中使用的相同基础技术。
+适用于 SQL 计算机的 azure 安全中心高级数据安全保护在 Azure 中托管的 SQL Server、其他云环境，甚至是本地计算机。 这会扩展 Azure 本机 SQL Server 的保护，以完全支持混合环境。
 
+此预览功能包含用于识别和缓解潜在的数据库漏洞并检测可能指示数据库威胁的异常活动的功能： 
 
-## <a name="overview"></a>概述
+* **漏洞评估**-扫描服务，用于发现、跟踪和帮助您修正潜在的数据库漏洞。 评估扫描概述了 SQL 计算机的安全状态以及任何安全发现的详细信息。
 
-高级数据安全性提供一组高级 SQL 安全功能，其中包括漏洞评估和高级威胁防护。
+* [高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)-用于持续监视 sql 服务器是否受到威胁（例如 sql 注入、暴力攻击和权限滥用）的检测服务。 此服务在 Azure 安全中心提供面向操作的安全警报，并提供可疑活动的详细信息、有关如何缓解威胁的指导，以及用于继续调查 Azure Sentinel 的选项。
 
-* [漏洞评估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 它提供安全状态的可见性，并包括用于解决安全问题并增强数据库 fortifications 的步骤。
-* [高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)可检测异常活动，这些活动表明访问或利用 SQL server 的异常和潜在有害尝试。 它会持续监视你的数据库中是否存在可疑活动，并针对异常数据库访问模式提供面向操作的安全警报。 这些警报提供可疑活动的详细信息和建议的操作来调查和缓解威胁。
-
-## <a name="get-started-with-advanced-data-security-for-sql-on-azure-vms"></a>Azure Vm 上的 SQL 高级数据安全入门
-
-以下步骤使你开始了解 Azure Vm 公共预览版中的 SQL 高级数据安全。
-
-### <a name="set-up-advanced-data-security-for-sql-on-azure-vms"></a>在 Azure Vm 上设置 SQL 高级数据安全性
-
-在订阅/工作区级别为虚拟机上的 SQL Server 启用高级数据安全：
- 
-1. 从安全中心边栏打开**定价 & 设置**"页。
-
-1. 选择要为 Azure Vm 上的 SQL 启用高级数据安全的订阅或工作区。
-
-1. 将**虚拟机上的 SQL server**的选项切换为 "已启用"。 
-
-    （单击屏幕快照展开）
-
-    [![Windows 管理中心中显示的安全中心建议和警报](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
-
-    将在连接到所选工作区的所有 SQL Server 或所选订阅的默认工作区中启用 SQL Server 高级数据安全。
-
-    >[!NOTE]
-    > 在首次重新启动 SQL Server 后，解决方案将处于完全活动状态。 
-
-若要创建新的工作区，请按照[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)中的说明进行操作。
-
-若要将 SQL Server 的主机连接到工作区，请按照[将 Windows 计算机连接到 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)中的说明进行操作。
+>[!TIP]
+> SQL 虚拟机的高级数据安全是 Azure 安全中心的[高级数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)的扩展，适用于 Azure SQL 数据库、azure SYNAPSE 和 SQL 托管实例。
 
 
-## <a name="set-up-email-notification-for-security-alerts"></a>设置安全警报的电子邮件通知 
+## <a name="set-up-advanced-data-security-for-sql-machines"></a>为 SQL 计算机设置高级数据安全性 
 
-可以设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心中的警报的直接链接，其中包含所有相关的详细信息。 
+为 SQL 计算机设置 Azure 安全中心的高级数据安全性涉及两个步骤：
 
-1. 请参阅**安全中心** > **定价 & 设置**，并单击相关订阅
+* 在 SQL server 的主机上预配 Log Analytics 代理。 这可提供到 Azure 的连接。
 
-    ![订阅设置](./media/security-center-advanced-iaas-data/subscription-settings.png)
+* 在安全中心的 "定价和设置" 页中启用可选捆绑。
 
-1. 从 "设置" 菜单中单击 "**电子邮件通知**"。 
-1. 在 "**电子邮件地址**" 文本框中，输入接收通知的电子邮件地址。 您可以输入多个电子邮件地址，方法是使用逗号（，）分隔电子邮件地址。  例如admin1@mycompany.comadmin2@mycompany.com，admin3@mycompany.com
+下面描述了这两种方法。
 
-    ![电子邮件设置](./media/security-center-advanced-iaas-data/email-settings.png)
+### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL server 的主机上预配 Log Analytics 代理：
 
-1. 在**电子邮件通知**设置中，设置以下选项：
-  
-    * **发送电子邮件通知中的高严重性警报**：不发送所有警报的电子邮件，只发送高严重性警报。
-    * **同时向订阅所有者发送电子邮件通知：也**将通知发送给订阅所有者。
+- **在 AZURE vm 上 SQL Server** -如果 SQL 计算机托管在 azure vm 上，则可[自动预配 Log Analytics 代理](security-center-enable-data-collection.md#workspace-configuration)。 或者，可以按照手动步骤[添加 AZURE VM](quick-onboard-azure-stack.md#add-the-virtual-machine-extension-to-your-existing-azure-stack-virtual-machines)。
 
-1. 在**电子邮件通知**屏幕的顶部，单击 "**保存**"。
+- **SQL Server 在 Azure arc**上-如果你的 SQL Server 托管在[azure arc](https://docs.microsoft.com/azure/azure-arc/)计算机上，则可以使用安全中心建议部署 Log Analytics 代理 "Log Analytics 将代理安装在基于 Windows 的 Azure arc 计算机（预览版）"。 或者，可以遵循[Azure Arc 文档](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)中的手动过程。
 
-  > [!NOTE]
-  > 在关闭该窗口之前，请务必单击 "**保存**"，否则将不会保存新的**电子邮件通知**设置。
-
-## <a name="explore-vulnerability-assessment-reports"></a>探索漏洞评估报告
-
-漏洞评估仪表板概述了你的所有数据库中的评估结果。 您可以根据 SQL Server 版本来查看数据库的分布情况，还可以查看失败与传递数据库的摘要，以及根据风险分布的失败检查的总体摘要。
-
-你可以直接从安全中心查看漏洞评估结果。
-
-1. 在安全中心边栏下的 "资源安全" 下，选择 "**数据 & 存储**"。
-
-1. 选择**应修正 vm 中的 SQL 数据库的建议漏洞（预览）**。 有关详细信息，请参阅[安全中心建议](security-center-recommendations.md)。 
-
-    [![* * Vm 中的 SQL 数据库上的漏洞应修正（预览版） * * 建议](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
-
-    此建议的详细视图随即出现。
-
-    [![应修正 Vm 中 SQL 数据库的 * * 漏洞的详细视图（预览版） * * 建议](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
-
-1. 若要深入了解更多详细信息：
-
-    * 有关扫描的资源（数据库）和已测试的安全检查列表的概述，请单击相关服务器。
-    [![按 SQL server 分组的漏洞](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
-
-    * 有关按特定 SQL 数据库分组的漏洞的概述，请单击相关数据库。
-    [![按 SQL server 分组的漏洞](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
-
-    在每个视图中，安全检查按**严重性**排序。 单击特定安全检查可查看详细信息窗格，其中包含**说明**、**纠正**方法和其他相关信息（如**影响**或**基准**）。
-
-## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>针对 Azure Vm 上的 SQL server 的高级威胁防护警报
-警报由异常和可能有害的访问或利用 SQL Server 的尝试生成。 这些事件可以触发以下警报：
-
-### <a name="anomalous-access-pattern-alerts-preview"></a>异常访问模式警报（预览）
-
-* **从异常位置访问：** 如果对 SQL server 的访问模式发生更改，而该用户在不正常的地理位置登录到 SQL server，则会触发此警报。 可能的原因：
-    * 攻击者或以前的恶意使用已访问你的 SQL Server。
-    * 合法用户已从新位置访问了你的 SQL Server。
-* **来自可能有害的应用程序的访问**：当使用可能有害的应用程序访问数据库时，会触发此警报。 可能的原因：
-    * 攻击者尝试使用常见攻击工具破坏您的 SQL。
-    * 合法的渗透测试。
-* **来自陌生主体的访问**：当 SQL Server 的访问模式发生更改，有人使用异常的主体（SQL 用户）登录到 SQL Server 时，会触发此警报。 可能的原因：
-    * 攻击者或以前的恶意使用已访问你的 SQL Server。 
-    * 合法用户已使用新主体从访问了你的 SQL Server。
-* **暴力破解 SQL 凭据**：当有人使用不同的凭据异常登录并失败很多次时，会触发此警报。 可能的原因：
-    * 攻击者尝试使用暴力破解来破坏您的 SQL。
-    * 合法的渗透测试。
-
-### <a name="potential-sql-injection-attacks-supported-in-sql-server-2019"></a>潜在的 SQL 注入攻击（SQL Server 2019 中支持）
-
-* **存在易受 SQL 注入攻击的漏洞**：当某个应用程序在数据库中生成错误的 SQL 语句时，会触发此警报。 此警报会指示可能存在易受 SQL 注入攻击的漏洞。 可能的原因：
-    * 应用程序代码中的缺陷导致构造出错误的 SQL 语句
-    * 应用程序代码或存储过程在构造错误的 SQL 语句时无法清理用户输入，使该语句被 SQL 注入攻击利用
-* **潜在 SQL 注入**：当 SQL 攻击有效利用已识别到的应用程序漏洞时，会触发此警报。 这意味着，攻击者正在尝试使用有漏洞的应用程序代码或存储过程注入恶意 SQL 语句。
+- **SQL Server 本地**-如果你的 SQL Server 托管在不带 Azure Arc 的本地 Windows 计算机上，则有两个选项可用于将其连接到 azure：
+    
+    - **部署 Azure Arc** -可以将任何 Windows 计算机连接到安全中心。 但是，Azure Arc 在*所有*Azure 环境中提供更深入的集成。 如果设置了 Azure Arc，你会在门户中看到 " **SQL Server – Azure Arc** " 页，并且安全警报将显示在该页面上的 "专用**安全**" 选项卡上。 因此，第一个和推荐的选项是[在主机上设置 Azure arc](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows)并按照上面的**azure arc 上 SQL Server**的说明进行操作。
+        
+    - **不使用 azure Arc 连接 windows 计算机**-如果你选择在不使用 azure arc 的情况下连接在 windows 计算机上运行的 SQL Server，请按照[将 windows 计算机连接到 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)中的说明进行操作。
 
 
-### <a name="unsafe-command-supported-in-sql-server-2019"></a>Unsafe 命令（在 SQL Server 2019 中受支持）
+### <a name="step-2-enable-the-optional-bundle-in-security-centers-pricing-and-settings-page"></a>步骤 2。 在安全中心的 "定价和设置" 页中启用可选捆绑：
 
-* **可能不安全的操作**：执行具有高特权且可能不安全的命令时，将触发此警报。 可能的原因：
-    * 建议禁用此命令以获得更好的安全状况。
-    * 攻击者尝试利用 SQL 访问或提升权限。   
+1. 在安全中心边栏中，打开“定价和设置”页。
+
+    - 如果使用的是**Azure 安全中心的默认工作区**（名为 "形式 defaultworkspace-[订阅 id]-[region]"），请选择相关**订阅**。
+
+    - 如果要使用**非默认工作区**，请选择相关**工作区**（如果需要，请在筛选器中输入工作区的名称）：
+
+        ![title](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
 
-## <a name="explore-and-investigate-security-alerts"></a>探索并调查安全警报
+1. 将**计算机上的 SQL server （预览版）** 的选项切换为 "已启用"。 
 
-可以在安全中心的 "警报" 页、资源的 "安全" 选项卡或通过警报电子邮件中的直接链接获取数据安全警报。
+    [![包含可选捆绑包的安全中心定价页](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-1. 查看警报：
+    将在连接到所选工作区的所有 SQL server 上启用对计算机上的 SQL server 的高级数据安全性。 SQL Server 首次重新启动后，保护将处于完全活动状态。 
 
-    * 在 "安全中心" 中，单击侧栏中的 "**安全警报**"，然后选择一个警报。
-    * 在资源范围中-打开相关资源页，并从侧栏中单击 "**安全性**"。 
+    >[!TIP] 
+    > 若要新建工作区，请按照[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)中的说明进行操作。
 
-1. 警报被设计为自包含，其中每个警报都有详细的补救步骤和调查信息。 可以使用其他 Azure 安全中心和 Azure Sentinel 功能进一步进行调查，以获得更广泛的视图：
 
-    * 启用 SQL Server 的审核功能以进行进一步调查。 如果你是 Azure Sentinel 用户，则可以将 SQL 审核日志从 Windows 安全日志事件上传到 Sentinel，并享受丰富的调查体验。
-    * 若要改善安全状况，请使用安全中心针对每个警报中所指示的主机的建议。 这将降低未来攻击的风险。 
+1. 还可以配置安全警报的电子邮件通知。 
+    可设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心警报的直接链接，以及所有的相关详细信息。 有关详细信息，请参阅[设置安全警报的电子邮件通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)。
+
+
+
+## <a name="explore-vulnerability-assessment-reports"></a>浏览漏洞评估报告
+
+漏洞评估服务每周扫描一次数据库。 扫描在启用服务的一周中的同一天运行。
+
+漏洞评估仪表板概述了所有数据库中的评估结果，以及正常和不正常的数据库的摘要，以及根据风险分布的失败检查的总体摘要。
+
+可以直接在安全中心查看漏洞评估结果。
+
+1. 在安全中心的边栏下，打开 "**建议**" 页，然后选择 "**计算机上的 SQL server 上的建议漏洞" （预览版）**。 有关详细信息，请参阅[安全中心建议](security-center-recommendations.md)。 
+
+
+    [![* * 计算机上的 SQL server 上的漏洞应修正（预览版） * * 建议](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
+
+    此时显示此建议的详细视图。
+
+    [![应修正计算机上的 SQL server 上的 * * 漏洞的详细视图（预览版） * * 建议](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
+
+1. 有关更多详细信息，请向下钻取：
+
+    * 有关扫描的资源（数据库）和已测试的安全检查列表的概述，请选择相关服务器。
+
+    * 若要大致了解按特定 SQL 数据库分组的漏洞，请选择相关数据库。
+
+    在每个视图中，安全检查按照严重性排序。 单击特定安全检查即可查看详细信息窗格，其中包含说明、修正方法以及影响或基准等其他相关信息   。
+
+## <a name="advanced-threat-protection-for-sql-servers-on-machines-alerts"></a>针对计算机上的 SQL server 的高级威胁防护警报
+警报由异常和可能有害的访问或利用 SQL 计算机的尝试生成。 这些事件可触发警报[引用页的 Sql 数据库和 Sql 数据仓库的警报部分](alerts-reference.md#alerts-sql-db-and-warehouse)中显示的警报。
+
+
+
+## <a name="explore-and-investigate-security-alerts"></a>浏览并调查安全警报
+
+安全警报在安全中心的 "警报" 页、资源的 "安全" 选项卡或通过警报电子邮件的直接链接中提供。
+
+1. 若要查看警报，请从安全中心的边栏中选择 "**安全警报**"，然后选择一个警报。
+
+1. 警报各自独立，每个警报都包含详细的修正步骤和调查信息。 可以使用其他 Azure 安全中心和 Azure Sentinel 功能进一步调查，从而更深入地了解：
+
+    * 启用 SQL Server 的审核功能以进一步调查。 如果你是 Azure Sentinel 用户，则可以将 SQL 审核日志从 Windows 安全日志事件上传到 Sentinel，并享受内容丰富的调查体验。 [了解 SQL Server 审核的详细信息](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15)。
+    * 若要改善安全状况，请采纳每个警报中针对主机的安全中心建议。 这将降低未来攻击的风险。 
+
+    [详细了解如何管理和响应警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 有关相关材料，请参阅以下文章：
 
-- [如何修正建议](security-center-remediate-recommendations.md)
+- [SQL 数据库和 SQL 数据仓库的安全警报](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [为安全警报设置电子邮件通知](security-center-provide-security-contact-details.md)
+- [了解有关 Azure Sentinel 的详细信息](https://docs.microsoft.com/azure/sentinel/)
+- [Azure 安全中心的高级数据安全包](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)

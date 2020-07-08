@@ -49,16 +49,26 @@
               href: time-series-insights-parameterized-urls.md
     - name: Azure 时序见解预览版
       items:
-        - name: 规划环境
-          href: time-series-insights-update-plan.md
-        - name: 数据存储和入口
-          href: time-series-insights-update-storage-ingress.md
         - name: 用例
           href: time-series-insights-update-use-cases.md
+        - name: 规划环境
+          href: time-series-insights-update-plan.md
+        - name: 引入概述
+          href: concepts-ingestion-overview.md
+        - name: 支持的数据类型
+          href: concepts-supported-data-types.md
+        - name: 流式引入事件源
+          href: concepts-streaming-ingestion-event-sources.md
+        - name: JSON 平展和转义规则
+          href: concepts-json-flattening-escaping-rules.md
+        - name: 流入吞吐量限制
+          href: concepts-streaming-throughput-limitations.md
+        - name: 存储
+          href: concepts-storage.md
         - name: 时序模型
-          href: time-series-insights-update-tsm.md
+          href: concepts-model-overview.md
         - name: 时序查询
-          href: time-series-insights-update-tsq.md
+          href: concepts-query-overview.md
         - name: 在资源管理器预览版中实现数据可视化
           href: time-series-insights-update-explorer.md
         - name: 开发
