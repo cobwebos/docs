@@ -10,7 +10,7 @@ ms.author: jenhayes
 ms.custom: include file
 ms.openlocfilehash: eaa76153fe96b5fd41166b20770e0a969aa9260d
 ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83797152"
