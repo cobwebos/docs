@@ -11,12 +11,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80130843"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021494"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure 数据工厂 - 数据移动的安全注意事项
 
@@ -55,7 +54,7 @@ Azure 数据工厂使用由 Microsoft 管理的证书**** 对数据存储凭据�
 如果云数据存储支持 HTTPS 或 TLS，则数据工厂中数据移动服务与云数据存储之间的所有数据传输均通过安全通道 HTTPS 或 TLS 进行。
 
 > [!NOTE]
-> 在与数据库相互传输数据时，与 Azure SQL 数据库**** 和 Azure SQL 数据仓库**** 的所有连接始终需要经过加密 (SSL/TLS)。 在使用 JSON 编辑器创作管道时，请在“连接字符串”**** 中添加“加密”**** 属性并将其设置为“true”****。 使用[复制向导](data-factory-azure-copy-wizard.md)时，向导会默认设置此属性。 对于 Azure 存储****，可以在连接字符串中使用“HTTPS”****。
+> 在与数据库相互传输数据时，与 Azure SQL 数据库**** 和 Azure SQL 数据仓库**** 的所有连接始终需要经过加密 (SSL/TLS)。 在使用 JSON 编辑器创作管道时，请在“连接字符串”**** 中添加“加密”**** 属性并将其设置为“true”****。 使用[复制向导](data-factory-azure-copy-wizard.md)时，向导会默认设置此属性。 对于**Azure 存储**，可以在连接字符串中使用**HTTPS** 。
 
 ### <a name="data-encryption-at-rest"></a>静态数据加密
 某些数据存储支持静态数据加密。 我们建议为这些数据存储启用数据加密机制。 
@@ -63,7 +62,7 @@ Azure 数据工厂使用由 Microsoft 管理的证书**** 对数据存储凭据�
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL 数据仓库
 Azure SQL 数据仓库中的透明数据加密 (TDE) 可对静态数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[保护 SQL 数据仓库中的数据库](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL 数据库
 Azure SQL 数据库还支持透明数据加密 (TDE)，它无需更改应用程序，即可对数据执行实时加密和解密，从而帮助防止恶意活动的威胁。 此行为对客户端透明。 有关详细信息，请参阅[使用 Azure SQL 数据库进行透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -118,7 +117,7 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
   
 
 ### <a name="encryption-in-transit"></a>传输中加密
-所有数据传输都是通过 HTTPS **** 和 TLS over TCP **** 安全通道进行的，可防止与 Azure 服务通信期间发生中间人攻击。
+所有数据传输都通过**TCP 上**的安全通道**HTTPS**和 TLS 进行，以防止与 Azure 服务通信期间发生中间人攻击。
  
 还可以使用 [IPSec VPN](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) 或 [快速路由](../../expressroute/expressroute-introduction.md) 进一步保护本地网络和 Azure 之间的通信信道。
 
@@ -134,18 +133,18 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件、
 
 下图显示了如何使用数据管理网关通过快速路由和 IPSec VPN（具有虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
-快速路由：****
+**快速路由：**
  
 ![将快速路由与网关配合使用](media/data-factory-data-movement-security-considerations/express-route-for-gateway.png) 
 
-IPSec VPN：****
+**IPSec VPN：**
 
 ![将 IPSec VPN 与网关配合使用](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
 ### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>网关的防火墙配置和允许列表 IP 地址
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>本地/专用网络的防火墙要求  
-在企业中，企业防火墙**** 在组织的中央路由器上运行。 并且，Windows 防火墙**** 在安装网关的本地计算机上作为守护程序运行。 
+在企业中，企业**防火墙**在组织的中央路由器上运行。 并且，Windows 防火墙**** 在安装网关的本地计算机上作为守护程序运行。 
 
 下表提供了企业防火墙**** 的出站端口**** 和域要求。
 
@@ -162,7 +161,7 @@ IPSec VPN：****
 
 下表提供了**windows 防火墙**的**入站端口**要求。
 
-| 入站端口 | 说明 | 
+| 入站端口 | 描述 | 
 | ------------- | ----------- | 
 | 8050 (TCP) | 由凭据管理器应用程序用于为网关上的本地数据存储安全地设置凭据。 | 
 
@@ -173,7 +172,7 @@ IPSec VPN：****
 
 以下云数据存储需要网关计算机的 IP 地址允许列表。 默认情况下，某些这类数据存储可能不需要 IP 地址允许列表。 
 
-- [Azure SQL 数据库](../../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL 数据库](../../azure-sql/database/firewall-configure.md) 
 - [Azure SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)

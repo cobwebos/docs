@@ -10,12 +10,11 @@ ms.workload: cloud-services
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
-ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d4f869c8b4ae6e90cfe64a2bf3d13839d72727be
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77157500"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84015293"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>发生影响 Azure 云服务的 Azure 服务中断时该怎么办
 Microsoft 的同仁兢兢业业，只为确保在任何时候都能提供需要的服务。 但有时候会因为不可抗力的影响，造成服务意外中断。
@@ -47,7 +46,7 @@ Azure 已在平台中内置多种功能，用于支持高度可用的应用程�
 根据应用程序数据源，可能需要检查应用程序数据源的恢复过程。
 
 * 对于 Azure 存储数据源，请参阅 [Azure 存储冗余](../storage/common/storage-redundancy.md)，以根据为应用程序选择的冗余模型检查可用的选项。
-* 对于 SQL 数据库源，请阅读[概述：云业务连续性与使用 SQL 数据库进行数据库灾难恢复](../sql-database/sql-database-business-continuity.md)以了解基于所选复制模型而可用于应用程序的选项。
+* 对于 SQL 数据库源，请阅读[概述：云业务连续性与使用 SQL 数据库进行数据库灾难恢复](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)以了解基于所选复制模型而可用于应用程序的选项。
 
 
 ## <a name="option-3-wait-for-recovery"></a>选项 3：等待恢复

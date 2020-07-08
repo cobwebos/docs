@@ -8,12 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74424002"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016944"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>了解适用于 SQL 开发人员的 Apache Spark 代码
 
@@ -42,9 +41,9 @@ Spark 是一种在 Scala、Java、Python、.NET 等中提供多种语言绑定�
 
 U-SQL 脚本遵循以下处理模式：
 
-1. 数据从非结构化文件中读取、使用`EXTRACT`语句、位置或文件集规范以及内置或用户定义的提取器和所需的架构，或来自 U SQL 表（托管表或外部表）。 它表示为一个行集。
+1. 数据从非结构化文件中读取、使用 `EXTRACT` 语句、位置或文件集规范以及内置或用户定义的提取器和所需的架构，或来自 U SQL 表（托管表或外部表）。 它表示为一个行集。
 2. 在将 U SQL 表达式应用于行集并生成新行集的多个 U SQL 语句中转换行集。
-3. 最后，生成的行集使用指定位置和内置或`OUTPUT`用户定义的输出器或在 U SQL 表中的语句输出到任一文件中。
+3. 最后，生成的行集使用 `OUTPUT` 指定位置和内置或用户定义的输出器或在 U SQL 表中的语句输出到任一文件中。
 
 此脚本将延迟计算，这意味着每个提取和转换步骤均组成一个表达式树，并进行全局计算（数据流）。
 
@@ -100,7 +99,7 @@ Spark 分别提供自己的 Python 和 R 集成、pySpark 和 SparkR，并提供
 
 ## <a name="transform-typed-values"></a>转换类型化值
 
-由于 U 型系统基于 .NET 类型系统并且 Spark 具有其自己的类型系统（受主机语言绑定的影响），因此您必须确保您正在操作的类型已关闭，并且对于某些类型，类型范围、精度和/或小数位数可能略有不同。 此外，U SQL 和 Spark 会以`null`不同的方式对待值。
+由于 U 型系统基于 .NET 类型系统并且 Spark 具有其自己的类型系统（受主机语言绑定的影响），因此您必须确保您正在操作的类型已关闭，并且对于某些类型，类型范围、精度和/或小数位数可能略有不同。 此外，U SQL 和 Spark 会 `null` 以不同的方式对待值。
 
 ### <a name="data-types"></a>数据类型
 
@@ -128,7 +127,7 @@ Spark 分别提供自己的 Python 和 R 集成、pySpark 和 SparkR，并提供
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-有关详细信息，请参见:
+有关详情，请参阅：
 
 - [org. .sql. 类型](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Spark SQL 和 DataFrames 类型](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
@@ -141,9 +140,9 @@ Spark 分别提供自己的 Python 和 R 集成、pySpark 和 SparkR，并提供
 
 在 Spark 中，NULL 指示值未知。 Spark NULL 值不同于任何值，包括自身。 两个 Spark NULL 值之间或 NULL 值与任何其他值之间的比较返回未知，因为每个 NULL 的值都是未知的。  
 
-此行为与 c # 语义不同，后者遵循 c # 语义， `null`其中不同于任何值，但等于其自身。  
+此行为与 c # 语义不同，后者遵循 c # 语义，其中 `null` 不同于任何值，但等于其自身。  
 
-因此`column_name`，即使`SELECT`在中存在`WHERE column_name = NULL` NULL 值，使用的 SparkSQL 语句也将返回零行，而在 U SQL 中，它将返回设置`column_name`为`null`的行。 同样，即使在`SELECT`中有非`WHERE column_name != NULL` null 值`column_name`，使用的 Spark 语句也返回零行，而在 U SQL 中，它将返回具有非 null 值的行。 因此，如果你想要使用 U-SQL null check 语义，则应该分别使用[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)和[isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) （或其 DSL 等效项）。
+因此 `SELECT` ，即使在中存在 NULL 值，使用的 SparkSQL 语句也将 `WHERE column_name = NULL` 返回零行， `column_name` 而在 U SQL 中，它将返回 `column_name` 设置为的行 `null` 。 同样，即使在中 `SELECT` `WHERE column_name != NULL` 有非 null 值，使用的 Spark 语句也返回零行， `column_name` 而在 U SQL 中，它将返回具有非 null 值的行。 因此，如果你想要使用 U-SQL null check 语义，则应该分别使用[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)和[isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) （或其 DSL 等效项）。
 
 ## <a name="transform-u-sql-catalog-objects"></a>转换 U SQL 目录对象
 
@@ -170,33 +169,33 @@ U 型核心语言正在转换行集，并基于 SQL。 下面是在 U SQL 中提
 此外，U SQL 还提供各种基于 SQL 的标量表达式，如
 
 - `OVER`窗口表达式
-- 各种内置聚合函数和排名函数（`SUM` `FIRST`等）
-- 一些最熟悉`CASE`的 SQL 标量表达式：、 `LIKE`、（`NOT`） `IN`、 `AND` `OR`等。
+- 各种内置聚合函数和排名函数（等 `SUM` `FIRST` ）
+- 一些最熟悉的 SQL 标量表达式： `CASE` 、 `LIKE` 、（ `NOT` ）、等 `IN` `AND` `OR` 。
 
-Spark 在其 DSL 和 SparkSQL 形式提供等效的表达式，适用于大多数这类表达式。 必须使用本机 Spark 表达式和语义等效模式的组合来重新编写某些 Spark 中不支持的表达式。 例如， `OUTER UNION`必须将转换为等效的投影和联合组合。
+Spark 在其 DSL 和 SparkSQL 形式提供等效的表达式，适用于大多数这类表达式。 必须使用本机 Spark 表达式和语义等效模式的组合来重新编写某些 Spark 中不支持的表达式。 例如， `OUTER UNION` 必须将转换为等效的投影和联合组合。
 
 由于对 NULL 值进行了不同的处理，因此，如果两个比较的列都包含 NULL 值，则在 Spark 中的联接将始终匹配行，除非添加显式 NULL 检查。
 
 ## <a name="transform-other-u-sql-concepts"></a>转换其他的 U SQL 概念
 
-U SQL 还提供各种其他功能和概念，如针对 SQL Server 数据库、参数、标量和 lambda 表达式变量、系统变量和`OPTION`提示的联合查询。
+U SQL 还提供各种其他功能和概念，如针对 SQL Server 数据库、参数、标量和 lambda 表达式变量、系统变量和提示的联合查询 `OPTION` 。
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>针对 SQL Server 数据库/外部表的联合查询
 
-U SQL 提供数据源和外部表以及对 Azure SQL 数据库的直接查询。 虽然 Spark 不提供相同的对象抽象，但它为可用于查询 SQL 数据库的[AZURE SQL 数据库提供 Spark 连接器](../sql-database/sql-database-spark-connector.md)。
+U SQL 提供数据源和外部表以及对 Azure SQL 数据库的直接查询。 虽然 Spark 不提供相同的对象抽象，但它为可用于查询 SQL 数据库的[AZURE SQL 数据库提供 Spark 连接器](../azure-sql/database/spark-connector.md)。
 
 ### <a name="u-sql-parameters-and-variables"></a>U-SQL 参数和变量
 
 参数和用户变量在 Spark 及其托管语言中具有等效的概念。
 
-例如，在 Scala 中，可以使用`var`关键字定义一个变量：
+例如，在 Scala 中，可以使用关键字定义一个变量 `var` ：
 
 ```
 var x = 2 * 3;
 println(x)
 ```
 
-U SQL 系统变量（以开头的`@@`变量）可以分为两类：
+U SQL 系统变量（以开头的变量 `@@` ）可以分为两类：
 
 - 可设置的系统变量，可将其设置为特定值以影响脚本行为
 - 查询系统和作业级别信息的信息系统变量
@@ -208,8 +207,8 @@ U SQL 系统变量（以开头的`@@`变量）可以分为两类：
 U-SQL 提供多种语义方法来向查询优化器和执行引擎提供提示：  
 
 - 设置 U SQL 系统变量
-- 与`OPTION`用于提供数据或计划提示的行集表达式关联的子句
-- 联接表达式语法中的联接提示（例如， `BROADCASTLEFT`）
+- `OPTION`与用于提供数据或计划提示的行集表达式关联的子句
+- 联接表达式语法中的联接提示（例如， `BROADCASTLEFT` ）
 
 Spark 的基于成本的查询优化器具有其自己的功能，可提供提示并优化查询性能。 请参阅相应的文档。
 

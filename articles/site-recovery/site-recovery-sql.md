@@ -8,12 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4146553d59607e1512d8f15391d143d44815cea9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74084737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016468"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
@@ -37,8 +36,8 @@ ms.locfileid: "74084737"
 Azure 基础结构即服务 (IaaS) 虚拟机 (VM) 上的或本地的 SQL Server。| [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | 将次要副本设为主要副本所花费的时间。 | 由于复制到次要副本是一种异步操作，因此会有一定的数据丢失。
 Azure IaaS VM 上的或本地的 SQL Server。| [故障转移群集 (Always On FCI)](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在节点之间进行故障转移所花费的时间。 | 由于 Always On FCI 使用共享存储，因此故障转移时会提供相同的存储实例视图。
 Azure IaaS VM 上的或本地的 SQL Server。| [数据库镜像（高性能模式）](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 强制服务所花费的时间，使用镜像服务器作为温备用服务器。 | 复制是异步的。 镜像数据库可能稍微滞后于主体数据库。 滞后时间通常很小。 但是，如果主体或镜像服务器的系统负载过大，则滞后时间可能很大。<br/><br/>日志传送可用作数据库镜像的补充。 它是异步数据库镜像的理想替代方案。
-Azure 上的 SQL 平台即服务 (PaaS)。<br/><br/>此部署类型包括弹性池和 Azure SQL 数据库服务器。 | 活动异地复制 | 触发故障转移后持续 30 秒。<br/><br/>对一个辅助数据库激活故障转移后，所有其他辅助数据库将自动链接到新的主数据库。 | 5 秒 RPO。<br/><br/>活动异地复制使用 SQL Server 的 Always On 技术。 它使用快照隔离以异步方式将主数据库上已提交的事务复制到辅助数据库。<br/><br/>保证辅助数据永不包含部分事务。
-Azure 上配置了活动异地复制的 SQL as PaaS。<br/><br/>此部署类型包括 SQL 数据库托管实例、弹性池和 SQL 数据库服务器。 | 自动故障转移组 | 1 小时 RTO。 | 5 秒 RPO。<br/><br/>自动故障转移组在活动异地复制的顶层提供组语义。 但使用相同的异步复制机制。
+Azure 上的 SQL 平台即服务 (PaaS)。<br/><br/>此部署类型包括单个数据库和弹性池。 | 活动异地复制 | 触发故障转移后持续 30 秒。<br/><br/>对一个辅助数据库激活故障转移后，所有其他辅助数据库将自动链接到新的主数据库。 | 5 秒 RPO。<br/><br/>活动异地复制使用 SQL Server 的 Always On 技术。 它使用快照隔离以异步方式将主数据库上已提交的事务复制到辅助数据库。<br/><br/>保证辅助数据永不包含部分事务。
+Azure 上配置了活动异地复制的 SQL as PaaS。<br/><br/>此部署类型包含 SQL 数据库托管实例、弹性池和单一数据库。 | 自动故障转移组 | 1 小时 RTO。 | 5 秒 RPO。<br/><br/>自动故障转移组在活动异地复制的顶层提供组语义。 但使用相同的异步复制机制。
 Azure IaaS VM 上的或本地的 SQL Server。| 使用 Azure Site Recovery 进行复制 | RTO 通常小于 15 分钟。 有关详细信息，请阅读 [Site Recovery 提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 为应用程序一致性提供 1 小时保证，为崩溃一致性提供 5 分钟保证。 若要寻求降低 RPO，请使用其他 BCDR 技术。
 
 > [!NOTE]
@@ -71,8 +70,8 @@ Site Recovery 借助恢复计划来协调整个应用程序的测试故障转移
 
 通过以下示例了解如何根据连接注意事项设计应用程序：
 
-* [根据云灾难恢复设计应用程序](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-* [弹性池灾难恢复策略](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+* [根据云灾难恢复设计应用程序](../azure-sql/database/designing-cloud-solutions-for-disaster-recovery.md)
+* [弹性池灾难恢复策略](../azure-sql/database/disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
 ### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>步骤 3：与 Always On、活动异地复制和自动故障转移组互操作
 
@@ -162,6 +161,6 @@ Site Recovery 是应用程序不可知的。 Azure Site Recovery 可帮助保护
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解[Site Recovery 的体系结构](site-recovery-components.md)。
-* 对于 Azure 中的 SQL 服务器，请详细了解适用于次要 Azure 区域中的恢复的[高可用性解决方案](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)。
-* 对于 SQL 数据库，请详细了解适用于次要 Azure 区域中的恢复的[业务连续性](../sql-database/sql-database-business-continuity.md)和[高可用性](../sql-database/sql-database-high-availability.md)选项。
-* 对于本地的 SQL Server 计算机，请详细了解适用于 Azure 虚拟机中的恢复的[高可用性选项](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md#hybrid-it-disaster-recovery-solutions)。
+* 对于 Azure 中的 SQL 服务器，请详细了解适用于次要 Azure 区域中的恢复的[高可用性解决方案](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#azure-only-high-availability-solutions)。
+* 对于 SQL 数据库，请详细了解适用于次要 Azure 区域中的恢复的[业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)和[高可用性](../azure-sql/database/high-availability-sla.md)选项。
+* 对于本地的 SQL Server 计算机，请详细了解适用于 Azure 虚拟机中的恢复的[高可用性选项](../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions)。

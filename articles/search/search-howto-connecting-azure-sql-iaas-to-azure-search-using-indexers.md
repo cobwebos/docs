@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1ab2b7860e8a75da5f8acef2fc4fa54d4b73a30d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: bf25c74f0190bc67e7da703e242d5d4bb3e299f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80256957"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020636"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>配置从 Azure 认知搜索索引器到 Azure VM 上 SQL Server 的连接
 
@@ -21,7 +20,7 @@ ms.locfileid: "80256957"
 
 从 Azure 认知搜索到 VM 上的 SQL Server 的连接是公共 Internet 连接。 对于这些连接通常会遵循的所有安全措施在此处也适用：
 
-+ 对于 Azure VM 上 SQL Server 实例的完全限定的域名，从[证书颁发机构提供程序](https://en.wikipedia.org/wiki/Certificate_authority#Providers)获取证书。
++ 获取[证书颁发机构提供商提供](https://en.wikipedia.org/wiki/Certificate_authority#Providers)的证书，了解 Azure VM 上 SQL Server 实例的完全限定域名。
 + 将该证书安装在 VM 上，然后使用本文中的说明在 VM 上启用并配置加密连接。
 
 ## <a name="enable-encrypted-connections"></a>启用加密连接
@@ -39,20 +38,20 @@ ms.locfileid: "80256957"
    * 在 regedit 中，浏览到此注册表项：`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`。
      
      `[MSSQL13.MSSQLSERVER]` 部分因版本和实例名称而异。 
-   * 将**证书**密钥的值设置为导入到 VM 的 TLS/SSL 证书的**指纹**。
+   * 将证书  密钥的值设置为已导入到 VM 的 TLS/SSL 证书的指纹  。
      
      可通过多种方式获取指纹，有些方式十分有效。 如果从 MMC 的**证书**管理单元中复制指纹，可能会[如此支持文章中所述](https://support.microsoft.com/kb/2023869/)选取不可见的前导字符，这会导致在尝试连接时出错。 提供了几种更正此问题的解决方法。 最简单的方法是按 Backspace 键退格，并重新键入指纹的第一个字符，以在 regedit 中删除密钥值字段中的前导字符。 此外，也可以使用其他工具复制指纹。
 
 3. 向服务帐户授予权限。 
    
-    请确保为 SQL Server 的服务帐户授予对 TLS/SSL 证书的私钥的适当权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
+    请确保向 SQL Server 服务帐户授予 TLS/SSL 证书私钥的相应权限。 如果忽略此步骤，SQL Server 将不会启动。 可使用**证书**管理单元或 **CertUtils** 执行此任务。
     
 4. 重新启动 SQL Server 服务。
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>在 VM 中配置 SQL Server 连接
 设置 Azure 认知搜索所需的加密连接后，Azure VM 上的 SQL Server 内还有一些其他配置步骤。 如果尚未执行这些步骤，下一步是使用以下文章之一完成配置：
 
-* 有关 **Resource Manager** VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md)。 
+* 有关 **Resource Manager** VM，请参阅[使用 Resource Manager 连接到 Azure 上的 SQL Server 虚拟机](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)。 
 * 有关**经典** VM，请参阅[连接到 Azure 上的 SQL Server 虚拟机（经典）](../virtual-machines/windows/classic/sql-connect.md)。
 
 具体而言，查看每个文章中的“通过 Internet 连接”部分。

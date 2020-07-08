@@ -17,7 +17,6 @@ ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6de80278aa6919fecf67c28356c0917bd6b159d3
 ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84014870"

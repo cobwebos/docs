@@ -12,12 +12,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265722"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020126"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -42,14 +41,14 @@ ms.locfileid: "79265722"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 * Visual Studio 2012/2013/2015/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
 在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch**是一种平台服务，用于在云中高效运行大规模并行和高性能计算（HPC）应用程序。 Azure Batch 计划要在托管**的虚拟机集合**上运行的计算密集型工作，并且可以自动缩放计算资源以符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅 [Azure Batch 基础知识][batch-technical-overview]一文。
 
-本教程会创建一个包含 VM 池的 Azure Batch 帐户。 以下是具体步骤：
+本教程会创建一个包含 VM 池的 Azure Batch 帐户。 步骤如下：
 
 1. 使用[Azure 门户](https://portal.azure.com)创建**Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户][batch-create-account]一文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
@@ -63,7 +62,7 @@ ms.locfileid: "79265722"
    3. 单击“池”**** 磁贴。
    4. 在“池”**** 边栏选项卡中，单击工具栏上的“添加”按钮以添加池。
       1. 输入池的 ID（池 ID）。 请记下“池的 ID”****；创建数据工厂解决方案时需要使用。
-      2. 为操作系统系列设置指定 **Windows Server 2012 R2**。
+      2. 为操作系统系列设置指定**Windows Server 2012 R2** 。
       3. 选择**节点定价层**。
       4. 输入 **2** 作为“目标专用”**** 设置的值。
       5. 输入 **2** 作为“每个节点最大任务”**** 设置的值。
@@ -89,7 +88,7 @@ public IDictionary<string, string> Execute(
 
 该方法采用四个参数：
 
-- **linkedservices.json**。 此属性是活动的输入/输出数据集引用的“数据存储”链接服务的可枚举列表。
+- **linkedServices**。 此属性是活动的输入/输出数据集引用的“数据存储”链接服务的可枚举列表。
 - **数据集**。 此属性是活动的输入/输出数据集的可枚举列表。 可使用此参数获取输入和输出数据集定义的位置和架构。
 - **活动**。 此属性表示当前活动。 可以使用它来访问与自定义活动关联的扩展属性。 有关详细信息，请参阅[访问扩展属性](#access-extended-properties)。
 - **记录器**。 使用此对象可以编写会在管道用户日志中显示的调试注释。
@@ -100,15 +99,15 @@ public IDictionary<string, string> Execute(
 1. 创建 **.NET 类库**项目。
    <ol type="a">
      <li>启动 Visual Studio。</li>
-     <li>单击 "<b>文件</b>"，指向 "<b>新建</b>"，然后单击 "<b>项目</b>"。</li>
-     <li>展开“模板”，并选择“Visual C#”。<b></b><b></b> 此演练中使用的是 C#，但也可使用任何 .NET 语言开发自定义活动。</li>
-     <li>从右侧项目类型列表中选择“类库”<b></b>。 在 Visual Studio 中，选择 "<b>类库（.NET Framework）</b> " </li>
-     <li>对于“名称”<b></b>，输入 <b>MyDotNetActivity</b>。</li>
-     <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
-     <li>单击“确定”<b></b>以创建项目。</li>
+     <li>单击“文件”，指向“新建”并单击“项目”。  </li>
+     <li>展开“模板”，并选择“Visual C#”。  此演练中使用的是 C#，但也可使用任何 .NET 语言开发自定义活动。</li>
+     <li>从右侧项目类型列表中选择“类库”。 在 Visual Studio 中，选择 "<b>类库（.NET Framework）</b> " </li>
+     <li>对于“名称”，输入 <b>MyDotNetActivity</b>。</li>
+     <li>为 "<b>位置</b>" 选择<b>C:\ADFGetStarted</b> 。</li>
+     <li>单击“确定”以创建该项目  。</li>
    </ol>
 
-2. 单击 "**工具**"，指向 " **NuGet 程序包管理器**"，然后单击 "**程序包管理器控制台**"。
+2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
 
 3. 在 "包管理器控制台" 中，执行以下命令以导入**microsoft.azure.management.datafactories**。
 
@@ -148,7 +147,7 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. 将**命名空间**名称更改为 **MyDotNetActivityNS**。
+6. 将**命名空间**的名称更改为**mydotnetactivityns.mydotnetactivity**。
 
     ```csharp
     namespace MyDotNetActivityNS
@@ -372,7 +371,7 @@ public IDictionary<string, string> Execute(
     > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，然后单击“属性”**** 设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
 
 11. 启动**Windows 资源管理器**，然后导航到**bin\debug**或**bin\release**文件夹，具体取决于生成的类型。
-12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 \<project folder\>\bin\Debug 文件夹中的所有二进制文件****。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
+12. 创建一个 zip 文件**MyDotNetActivity.zip** ，其中包含 \bin\Debug 文件夹中的所有二进制文件 \<project folder\> 。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
     > [!IMPORTANT]
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
@@ -555,7 +554,7 @@ test custom activity Microsoft test custom activity Microsoft
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则每小时切片的输出文件中有三行： 2016-11-16-00.txt，2016-11：01：00： 00 .txt，等等。
+    请记住，输入文件夹中的所有文件都是具有上述开始时间的切片的一部分。 处理此切片时，自定义活动将扫描每个文件，并在输出文件中生成具有搜索词（“Microsoft”）出现次数的行。 如果输入文件夹中有三个文件，则每小时切片的输出文件中有三行： 2016-11-16-00.txt、2016-11-16:01:00:00.txt 等。
 3. 若要部署 **OutputDataset**，请在命令栏上单击“部署”。****
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>创建并运行使用自定义活动的管道
@@ -611,7 +610,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    * 将**并发**设置为 **2**以便在 Azure Batch 池通过 2 个 VM 并行处理 2 个切片。
    * 在活动部分中包含一个活动，其类型为：**DotNetActivity**。
-   * **AssemblyName** 设置为 DLL 的名称：**MyDotnetActivity.dll**。
+   * **AssemblyName**设置为 DLL 的名称： **MyDotnetActivity.dll**。
    * **EntryPoint** 设置为 **MyDotNetActivityNS.MyDotNetActivity**。
    * **PackageLinkedService** 设置为 **AzureStorageLinkedService**，它指向包含自定义活动 zip 文件的 blob 存储。 如果对输入/输出文件和自定义活动 zip 文件使用不同的 Azure 存储帐户，则需创建另一个 Azure 存储链接服务。 本文假定使用相同的 Azure 存储帐户。
    * **PackageFile** 设置为 **customactivitycontainer/MyDotNetActivity.zip**。 采用以下格式：containerforthezip/nameofthezip.zip。
@@ -671,7 +670,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 ![数据工厂和 Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
 
-## <a name="troubleshoot-failures"></a>排除故障
+## <a name="troubleshoot-failures"></a>排查失败
 故障排除包括一些基本技巧：
 
 1. 如果看到以下错误，表示可能使用了热/冷 Blob 存储，而不是通用 Azure Blob 存储。 请将 zip 文件上传到**通用 Azure 存储帐户**。
@@ -686,7 +685,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
 
    如果名称匹配，请确认是否所有二进制文件都在 zip 文件的**根文件夹**中。 也就是说，打开 zip 文件时，应看到所有文件均在根文件夹中，而非在任何子文件夹中。
-3. 如果输入切片未设置为**就绪**，请确认输入文件夹结构正确，并且**文件 .txt**存在于输入文件夹中。
+3. 如果输入切片未设置为**就绪**，请确认输入文件夹结构正确并**file.txt**存在于输入文件夹中。
 3. 在自定义活动的 **Execute** 方法中，使用 **IActivityLogger** 对象记录可帮助解决问题的信息。 记录的消息会显示在用户日志文件（一个或多个文件，命名为 user-0.log、user-1.log、user-2.log 等）中。
 
    在“OutputDataset”**** 边栏选项卡中，单击切片以查看该切片的“数据切片”**** 边栏选项卡。 可看到该切片的**活动运行**。 应看到该切片的一个活动运行。 如果在命令栏中单击“运行”，将启动同一切片的另一个活动运行。
@@ -696,7 +695,7 @@ test custom activity Microsoft test custom activity Microsoft
    在日志文件列表中，单击“user-0.log”****。 右侧面板中是使用 **IActivityLogger.Write** 方法的结果。 如果看不到所有消息，请检查是否有更多名为的日志文件： user_1 日志记录、user_2 日志等。否则，在上次记录消息后，代码可能已失败。
 
    此外，检查 **system-0.log** 中是否包含任何系统错误消息和异常。
-4. 将 **PDB** 文件包含在 zip 文件中，这样，在发生错误时，错误详细信息中会提供**调用堆栈**等信息。
+4. 将**PDB**文件包含在 zip 文件中，以便在发生错误时，错误详细信息包含**调用堆栈**等信息。
 5. 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
 6. 确保 **assemblyName** (MyDotNetActivity.dll)、**entryPoint** (MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip) 和 **packageLinkedService**（应指向包含 zip 文件的**通用** Azure Blob 存储）已设置为正确的值。
 7. 如果解决了错误并想要重新处理切片，请在“OutputDataset”边栏选项卡中右键单击该切片，然后单击“运行”。********
@@ -760,7 +759,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。
 
-此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+此处的示例公式可实现以下行为：最初创建池之后，它开始时包含 1 个 VM。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。  该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
 
 自动缩放公式：
 
@@ -1031,7 +1030,7 @@ GitHub 上的 [Azure 数据工厂 - 本地环境](https://github.com/gbrueckl/Az
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

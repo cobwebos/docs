@@ -1,16 +1,15 @@
 ---
-title: 管理标识的最佳实践
+title: 管理身份的最佳做法
 titleSuffix: Azure Kubernetes Service
 description: 了解有关为 Azure Kubernetes 服务 (AKS) 中的群集管理身份验证和授权的群集操作员最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668316"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84020041"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -19,6 +18,7 @@ ms.locfileid: "80668316"
 本最佳做法文章重点介绍群集操作员如何管理 AKS 群集的访问和标识。 在本文中，学习如何：
 
 > [!div class="checklist"]
+>
 > * 使用 Azure Active Directory 对 AKS 群集用户进行身份验证
 > * 使用基于角色的访问控制 (RBAC) 来控制对资源的访问
 > * 使用托管标识在其他服务中进行自我身份验证
@@ -29,7 +29,7 @@ ms.locfileid: "80668316"
 
 Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资源。 Kubernetes 不提供标识管理解决方案来控制哪些用户可与哪些资源交互。 通常，你会将群集与现有的标识解决方案相集成。 Azure Active Directory (AD) 提供企业就绪的标识管理解决方案，并可与 AKS 群集相集成。
 
-使用 AKS 中与 Azure AD 集成的群集，创建角色或群集角色用于定义对资源的访问权限。   然后，从 Azure AD 将角色绑定到用户或组。  下一部分将介绍这些 Kubernetes 基于角色的访问控制 (RBAC)。 下图显示了 Azure AD 集成，以及如何控制对资源的访问：
+使用 AKS 中与 Azure AD 集成的群集，创建角色或群集角色用于定义对资源的访问权限。  然后，从 Azure AD 将角色绑定到用户或组。 下一部分将介绍这些 Kubernetes 基于角色的访问控制 (RBAC)。 下图显示了 Azure AD 集成，以及如何控制对资源的访问：
 
 ![与 AKS 集成的 Azure Active Directory 的群集级身份验证](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
@@ -46,7 +46,7 @@ Kubernetes 群集的开发人员和应用程序所有者需要访问不同的资
 
 **最佳做法指导** - 使用 Kubernetes RBAC 定义用户或组对群集中的资源拥有的权限。 创建角色和绑定，用于分配所需的最少量权限。 与 Azure AD 集成，使用户状态或组成员身份的任何更改可自动更新，并使群集资源访问权限保持最新状态。
 
-在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 然后，将这些角色通过绑定应用于用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。   
+在 Kubernetes 中，可以针对群集中的资源提供精细访问控制。 可在群集级别或者针对特定的命名空间定义权限。 可以定义能够使用哪些权限管理哪些资源。 然后，将这些角色通过绑定应用于用户或组。 有关角色、群集角色和绑定的详细信息，请参阅 [Azure Kubernetes 服务 (AKS) 的访问和标识选项][aks-concepts-identity]。******
 
 例如，可以创建一个角色，用于授予对名为 *finance-app* 的命名空间中的资源的完全访问权限，如以下示例 YAML 清单中所示：
 
@@ -97,14 +97,14 @@ roleRef:
 
 当 pod 请求 Azure 服务访问权限时，网络规则会将流量重定向到节点管理标识 (NMI) 服务器。 NMI 服务器根据远程地址识别请求 Azure 服务访问权限的 pod，并查询托管标识控制器 (MIC)。 MIC 检查 AKS 群集中的 Azure 标识映射，然后，NMI 服务器根据 pod 的标识映射从 Azure Active Directory (AD) 请求访问令牌。 Azure AD 提供对 NMI 服务器的访问权限，该访问权限将返回给 pod。 然后，pod 可以使用此访问令牌请求对 Azure 中服务的访问权限。
 
-在以下示例中，开发人员创建了一个使用托管标识请求 Azure SQL Server 实例访问权限的 pod：
+在下面的示例中，开发人员创建一个使用托管标识请求对 Azure SQL 数据库的访问权限的 pod：
 
 ![pod 标识可让 pod 自动请求对其他服务的访问权限](media/operator-best-practices-identity/pod-identities.png)
 
 1. 群集操作员首先创建一个服务帐户，当 pod 请求服务访问权限时，可以使用该帐户来映射标识。
 1. 部署 NMI 服务器和 MIC，以便将访问令牌的任何 pod 请求中继到 Azure AD。
 1. 开发人员使用托管标识部署一个 pod，该 pod 可通过 NMI 服务器请求访问令牌。
-1. 该令牌将返回给 pod，并用于访问 Azure SQL Server 实例。
+1. 该令牌将返回到 pod 并用于访问 Azure SQL 数据库
 
 > [!NOTE]
 > 托管 Pod 标识是开源项目，Azure 技术支持部门不为其提供支持。

@@ -18,7 +18,6 @@ ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
 ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84021120"

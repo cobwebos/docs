@@ -18,7 +18,6 @@ experimental: true
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
 ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84017643"

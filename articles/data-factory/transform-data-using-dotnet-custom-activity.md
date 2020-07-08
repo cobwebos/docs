@@ -11,11 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418943"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84019956"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -26,7 +25,7 @@ ms.locfileid: "81418943"
 
 在 Azure 数据工厂管道中可使用两类活动。
 
-- 用于在[支持的源和接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据的[数据移动活动](copy-activity-overview.md)。
+- [数据移动活动](copy-activity-overview.md)：在[支持的源与接收器数据存储](copy-activity-overview.md#supported-data-stores-and-formats)之间移动数据。
 - 使用计算服务（例如 Azure HDInsight、Azure Batch 和 Azure 机器学习）来转换数据的[数据转换活动](transform-data.md)。
 
 若要将数据移入/移出数据工厂不支持的数据存储，或者要以数据工厂不支持的方式转换/处理数据，可以使用你自己的数据移动或转换逻辑创建**自定义活动**，并在管道中使用该活动。 自定义活动在虚拟机的 **Azure Batch** 池上运行自定义代码逻辑。
@@ -100,7 +99,7 @@ ms.locfileid: "81418943"
 
 下表描述了此活动特有的属性的名称和描述。
 
-| 属性              | 说明                              | 必需 |
+| properties              | 描述                              | 必需 |
 | :-------------------- | :--------------------------------------- | :------- |
 | name                  | 管道中活动的名称     | 是      |
 | description           | 描述活动用途的文本。  | 否       |
@@ -120,7 +119,7 @@ ms.locfileid: "81418943"
 
 ## <a name="custom-activity-permissions"></a>自定义活动权限
 
-自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”**（默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
+自定义活动将 Azure Batch 自动用户帐户设置为“任务范围内非管理员访问权限”  （默认自动用户规范）。 无论更改自动用户帐户的权限级别。 有关详细信息，请参阅[在 Batch 中的用户帐户下运行任务 | 自动用户帐户](../batch/batch-user-accounts.md#auto-user-accounts)。
 
 ## <a name="executing-commands"></a>执行命令
 
@@ -306,7 +305,7 @@ Activity Error section:
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
 
-可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为2MB。）如果要`outputs.json`在下游活动中使用的内容，则可以通过使用表达式`@activity('<MyCustomActivity>').output.customOutput`来获取值。
+可以通过自定义活动中的代码将自定义值发送回 Azure 数据工厂。 可以通过从应用程序将自定义值写入 `outputs.json` 来完成此操作。 数据工厂复制 `outputs.json` 的内容，并将其作为 `customOutput` 属性的值追加到活动输出中。 （大小限制为 2 MB。）若要在下游活动中使用 `outputs.json` 的内容，可以使用表达式 `@activity('<MyCustomActivity>').output.customOutput` 获取值。
 
 ## <a name="retrieve-securestring-outputs"></a>检索 SecureString 输出
 
@@ -327,7 +326,7 @@ Activity Error section:
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>比较 v2 自定义活动和版本 1（自定义）DotNet 活动
 
-在 Azure 数据工厂版本1中，通过使用实现`Execute` `IDotNetActivity`接口的方法的类创建 .net 类库项目来实现（自定义） DotNet 活动。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动代码必须以 .NET Framework 4.5.2 为目标。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
+在 Azure 数据工厂版本1中，通过使用实现 `Execute` 接口的方法的类创建 .Net 类库项目来实现（自定义） DotNet 活动 `IDotNetActivity` 。 （自定义）DotNet 活动的 JSON 负载中的链接服务、数据集和扩展属性作为强类型对象传递到执行方法。 有关版本 1 行为的详细信息，请参阅[版本 1 中的（自定义）DotNet](v1/data-factory-use-custom-activities.md)。 由于此实现，版本 1 DotNet 活动代码必须以 .NET Framework 4.5.2 为目标。 版本 1 DotNet 活动还必须在基于 Windows 的 Azure Batch 池节点上执行。
 
 在 Azure 数据工厂 V2 自定义活动中，不需要实现 .NET 接口。 现在可以直接运行命令、脚本和自己的已编译为可执行文件的自定义代码。 要配置该实现，请指定 `Command` 属性和 `folderPath` 属性。 自定义活动会将可执行文件及其依赖项上传到 `folderpath`，并执行命令。
 
@@ -345,7 +344,7 @@ Activity Error section:
 |所需数据集      |可选      |需要链接活动并传递信息      |
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
 |在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过 .NET SDK （.NET framework 4.5.2）      |
-|日志记录      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
+|Logging      |直接写入到 STDOUT      |在 .NET DLL 中实现记录器      |
 
 如果现有的 .NET 代码是针对版本1（自定义） DotNet 活动编写的，则需要修改代码，使其适用于自定义活动的当前版本。 按照以下高级准则更新代码：
 
@@ -362,7 +361,7 @@ Activity Error section:
 
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。
 
-此处的示例公式实现以下行为：最初创建池时，它从 1 个 VM 开始。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。 该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
+此处的示例公式可实现以下行为：最初创建池之后，它开始时包含 1 个 VM。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。 该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。
 
 自动缩放公式：
 
@@ -387,5 +386,5 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
-* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
+* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

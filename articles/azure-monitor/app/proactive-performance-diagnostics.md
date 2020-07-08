@@ -4,18 +4,17 @@ description: Application Insights 执行应用遥测的智能分析，并在有�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: HT
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697178"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84016842"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可自动分析 Web 应用程序的性能，并在出现潜在问题时发出警告。 我们会通过邮件将智能检测通知发送给你。
 
-不需要对此功能进行任何特殊设置，只需在应用中配置 Application Insights 即可（在 [ASP.NET](../../azure-monitor/app/asp-net.md)、[Java](../../azure-monitor/app/java-get-started.md) 或 [Node.js](../../azure-monitor/app/nodejs.md) 和[网页代码](../../azure-monitor/app/javascript.md)中）。 在应用生成足够多的遥测数据后，此功能会激活。
+除为你[支持的语言](../../azure-monitor/app/platforms.md)配置 Application Insights 应用外，此功能不需要特殊设置。 在应用生成足够多的遥测数据后，此功能会激活。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>我何时会收到智能检测通知？
 

@@ -5,12 +5,11 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e4ee6abe7481fef4d56c980da80e319624975384
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80680253"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021307"
 ---
 # <a name="pbr-materials"></a>PBR 材料
 
@@ -26,7 +25,7 @@ ms.locfileid: "80680253"
 
 这些属性是所有材料共有的：
 
-* **albedoColor：** 此颜色与其他颜色（如*albedoMap*或*顶点颜色*）相乘。 如果对材料启用了*透明度*，则使用 alpha 通道调整不透明度， `1`这意味着完全不透明并`0`表示完全透明。 默认值为白色。
+* **albedoColor：** 此颜色与其他颜色（如*albedoMap*或* :::no-loc text="vertex "::: 颜色*）相乘。 如果对材料启用了*透明度*，则使用 alpha 通道调整不透明度， `1` 这意味着完全不透明并 `0` 表示完全透明。 默认值为白色。
 
   > [!NOTE]
   > 当某个 .PBR 材料完全透明（如完全透明的玻璃部分）时，它仍会反映该环境。 类似于 sun 的亮点仍在反射中可见。 这不同于[颜色材料](color-materials.md)。
@@ -37,9 +36,9 @@ ms.locfileid: "80680253"
 
 * **textureCoordinateScale**和**textureCoordinateOffset：** 将刻度与 UV 纹理坐标相乘，并向其添加偏移量。 可用于拉伸和移动纹理。 默认小数位数为（1，1），偏移量为（0，0）。
 
-* **useVertexColor：** 如果网格包含顶点颜色，并且已启用此选项，则网格的顶点颜色将被相乘到*albedoColor*和*albedoMap*中。 默认情况下，顶点颜色处于禁用状态。
+* **useVertexColor：** 如果网格包含 :::no-loc text="vertex"::: 颜色且已启用此选项，则网格的 :::no-loc text="vertex"::: 颜色将被相乘到*albedoColor*和*albedoMap*中。 默认情况下， *useVertexColor*处于禁用状态。
 
-* **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 对于 .PBR 材料，也可以为背面正确计算。 默认情况下，此选项处于禁用状态。 另请参阅[单面渲染](single-sided-rendering.md)。
+* **isDoubleSided：** 如果将 sidedness 设置为 true，则即使相机正在查看背景面，也会呈现带有此材料的三角形。 对于 .PBR 材料，也可以为背面正确计算。 默认情况下，此选项处于禁用状态。 另请参阅[ :::no-loc text="Single-sided"::: 呈现](single-sided-rendering.md)。
 
 ## <a name="pbr-material-properties"></a>.PBR 材料属性
 
@@ -47,11 +46,11 @@ ms.locfileid: "80680253"
 
 * **baseColor：** 在 .PBR 材料中， *albedo 颜色*称为*基准颜色*。 在 Azure 远程呈现中， *albedo 颜色*属性已经通过公共材料属性提供，因此没有其他基本颜色属性。
 
-* **粗糙度**和**roughnessMap：** 粗糙度定义图面的大致程度或平滑程度。 粗糙面使光源的显示方向大于平滑曲面，这使反射模糊而不是清晰。 值范围从`0.0`到`1.0`。 当`roughness`等于`0.0`时，反射将会清晰。 当`roughness`等于`0.5`时，反射将变得模糊。
+* **粗糙度**和**roughnessMap：** 粗糙度定义图面的大致程度或平滑程度。 粗糙面使光源的显示方向大于平滑曲面，这使反射模糊而不是清晰。 值范围从 `0.0` 到 `1.0` 。 当 `roughness` 等于时 `0.0` ，反射将会清晰。 当 `roughness` 等于时 `0.5` ，反射将变得模糊。
 
   如果同时提供了粗糙度值和粗糙度映射，最终值将为这两个值的乘积。
 
-* **metalness**和**metalnessMap：** 在物理学中，此属性对应于 surface 是导电还是 dielectric。 导电材料具有不同的反射属性，它们往往在无 albedo 颜色的情况下反射。 在 .PBR 材料中，此属性会影响表面反映周围环境的程度。 值的范围`0.0`从`1.0`到。 当 metalness 为`0.0`时，albedo 颜色会完全可见，而材料看起来像塑料或 ceramics。 当 metalness 为`0.5`时，它看起来像是着色的金属。 当 metalness 为`1.0`时，表面几乎完全丢失了其 albedo 颜色，只反映了周围面。 `metalness`例如，如果`1.0`为，并且`roughness`为`0.0` ，则表面看起来像真实的镜像。
+* **metalness**和**metalnessMap：** 在物理学中，此属性对应于 surface 是导电还是 dielectric。 导电材料具有不同的反射属性，它们往往在无 albedo 颜色的情况下反射。 在 .PBR 材料中，此属性会影响表面反映周围环境的程度。 值的范围从 `0.0` 到 `1.0` 。 当 metalness 为时 `0.0` ，albedo 颜色会完全可见，而材料看起来像塑料或 ceramics。 当 metalness 为时 `0.5` ，它看起来像是着色的金属。 当 metalness 为时 `1.0` ，表面几乎完全丢失了其 albedo 颜色，只反映了周围面。 例如，如果 `metalness` 为 `1.0` ，并且为，则 `roughness` `0.0` 表面看起来像真实的镜像。
 
   如果同时提供了 metalness 值和 metalness 映射，最终值将是这两个值的乘积。
 
@@ -61,7 +60,7 @@ ms.locfileid: "80680253"
 
 * **normalMap：** 若要模拟精细的详细信息，可以提供[普通地图](https://en.wikipedia.org/wiki/Normal_mapping)。
 
-* **occlusionMap**和**aoScale：** 通过向封闭像素区域添加阴影，[环境封闭](https://en.wikipedia.org/wiki/Ambient_occlusion)使对象 crevices 看起来更逼真。 封闭`0.0`值的范围为`1.0`到， `0.0`其中，表示暗度（封闭像素`1.0` ），表示无 occlusions。 如果二维纹理作为封闭图提供，则将启用该效果， *aoScale*将作为乘数。
+* **occlusionMap**和**aoScale：** 通过向封闭像素区域添加阴影，[环境封闭](https://en.wikipedia.org/wiki/Ambient_occlusion)使对象 crevices 看起来更逼真。 封闭值的范围 `0.0` 为到 `1.0` ，其中， `0.0` 表示暗度（封闭像素）， `1.0` 表示无 occlusions。 如果二维纹理作为封闭图提供，则将启用该效果， *aoScale*将作为乘数。
 
   ![封闭映射](./media/boom-box-ao2.gif)
 
@@ -69,7 +68,7 @@ ms.locfileid: "80680253"
 
   透明的几何呈现成本高昂。 如果在表面上只需要孔洞，例如，对于树的叶，最好改为使用 alpha 剪辑。
 
-  ![上](./media/transparency.png)图中的透明度通知，最右侧的球是完全透明的，但反射仍可见。
+  ![](./media/transparency.png)上图中的透明度通知，最右侧的球是完全透明的，但反射仍可见。
 
   > [!IMPORTANT]
   > 如果在运行时应将任何材料从不透明切换到透明，则呈现器必须使用*TileBasedComposition* [呈现模式](../../concepts/rendering-modes.md)。 此限制不适用于转换为透明材料开头的材料。

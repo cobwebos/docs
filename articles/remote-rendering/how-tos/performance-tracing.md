@@ -5,22 +5,21 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681306"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021154"
 ---
 # <a name="create-client-side-performance-traces"></a>创建客户端性能跟踪
 
 出于许多原因，Azure 远程呈现的性能可能并不符合需要。 除了云服务器上的纯呈现性能之外，尤其是网络连接的质量对体验有重大影响。 若要分析服务器的性能，请参阅[服务器端性能查询](../overview/features/performance-queries.md)章节。
 
-本章重点介绍如何通过*性能跟踪*识别潜在的客户端瓶颈。
+本章重点介绍如何通过识别潜在的客户端瓶颈 *:::no-loc text="performance traces":::* 。
 
 ## <a name="getting-started"></a>入门
 
-如果您不熟悉 Windows 性能跟踪功能，本部分会提到最基本的术语和应用程序。
+如果您不熟悉 Windows :::no-loc text="performance tracing"::: 功能，本部分会提到最基本的术语和应用程序。
 
 ### <a name="installation"></a>安装
 
@@ -37,11 +36,11 @@ ms.locfileid: "80681306"
 
 **ETW**代表[ **W**windows 的**E**通风管**T**比赛](https://docs.microsoft.com/windows/win32/etw/about-event-tracing)。 它只是 Windows 中内置的高效内核级跟踪工具的顶级名称。 它被称为*事件*跟踪，因为支持 ETW 的应用程序会将事件发送到日志操作，这些操作有助于跟踪性能问题。 默认情况下，操作系统已发出事件，如磁盘访问、任务开关等。 像 ARR 这样的应用程序还会发出自定义事件，例如有关删除的帧、网络延迟等。
 
-**ETL**代表**E**通风管**T**种族**L**ogging。 它只是表示已收集（记录）跟踪，因此它通常用作存储跟踪数据的文件的文件扩展名。 因此，当您执行跟踪时，通常会有一个\*.etl 文件。
+**ETL**代表**E**通风管**T**种族**L**ogging。 它只是表示已收集（记录）跟踪，因此它通常用作存储跟踪数据的文件的文件扩展名。 因此，当您执行跟踪时，通常会有一个 \* .etl 文件。
 
-**"** 代表[ **W**windows **P**性能**R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) ，是启动和停止事件跟踪记录的应用程序的名称。 "使用配置文件（\*. wprp）来配置要记录的确切事件。 此类`wprp`文件随 ARR SDK 一起提供。 在台式计算机上进行跟踪时，可以直接启动 "。 在 HoloLens 上进行跟踪时，通常会通过 web 界面。
+**"** 代表[ **W**windows **P**性能**R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) ，是启动和停止事件跟踪记录的应用程序的名称。 "使用配置文件（ \* . wprp）来配置要记录的确切事件。 此类 `wprp` 文件随 ARR SDK 一起提供。 在台式计算机上进行跟踪时，可以直接启动 "。 在 HoloLens 上进行跟踪时，通常会通过 web 界面。
 
-**WPA**代表[ **W**windows **P**性能**A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) ，是用于打开\*.ETL 文件和通过数据进行浏览以识别性能问题的 GUI 应用程序的名称。 WPA 允许你按不同的条件对数据进行排序，以多种方式显示数据，深入了解详细信息并关联信息。
+**WPA**代表[ **W**windows **P**性能**A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) ，是用于打开 \* .etl 文件和通过数据进行浏览以识别性能问题的 GUI 应用程序的名称。 WPA 允许你按不同的条件对数据进行排序，以多种方式显示数据，深入了解详细信息并关联信息。
 
 尽管可以在任何 Windows 设备（本地电脑、HoloLens、云服务器等）上创建 ETL 跟踪，但通常会将其保存到磁盘，并在台式计算机上使用 WPA 进行分析。 可以向其他开发人员发送 ETL 文件，使其具有外观。 但请注意，可在 ETL 跟踪中捕获敏感信息（如文件路径和 IP 地址）。 可以通过两种方式使用 ETW：记录跟踪或分析跟踪。 录制跟踪是直接的，需要最少的设置。 另一方面，分析跟踪需要对 WPA 工具和正在调查的问题有很好的了解。 下面给出了用于学习 WPA 的一般资料，以及如何解释 ARR 特定跟踪的指导原则。
 
@@ -51,7 +50,7 @@ ms.locfileid: "80681306"
 
 ### <a name="wpr-configuration"></a>"配置
 
-1. 从 "*开始" 菜单*启动[Windows 性能记录器](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder)。
+1. [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder)从 "开始"*菜单*启动。
 1. 展开**更多选项**
 1. 单击 "**添加配置文件 ...** "
 1. 选择 AzureRemoteRenderingNetworkProfiling 文件*wprp*。 可以在 "*工具"/"ETLProfiles*" 下的 ARR SDK 中找到此文件。
@@ -65,7 +64,7 @@ ms.locfileid: "80681306"
 
 !["配置](./media/wpr.png)
 
-### <a name="recording"></a>记录
+### <a name="recording"></a>录制
 
 单击 "**开始**" 开始记录跟踪。 你可以随时启动和停止记录;在执行此操作之前，无需关闭应用程序。 正如您所看到的，无需指定要跟踪的应用程序，因为 ETW 将始终为整个系统记录跟踪。 `wprp`文件指定要记录的事件类型。
 
@@ -81,7 +80,7 @@ ms.locfileid: "80681306"
 
 1. 在左侧，导航到 "*性能 > 性能跟踪*"。
 1. 选择**自定义配置文件**
-1. 单击 "**浏览 ...** "
+1. 依次**:::no-loc text="Browse...":::**
 1. 选择 AzureRemoteRenderingNetworkProfiling 文件*wprp*。 可以在 "*工具"/"ETLProfiles*" 下的 ARR SDK 中找到此文件。
 1. 单击**开始跟踪**
 1. HoloLens 现在正在记录跟踪。 请确保触发要调查的性能问题。 然后单击 "**停止跟踪**"。

@@ -1,5 +1,5 @@
 ---
-title: CLI 示例-Enable BYOK TDE-Azure SQL 数据库托管实例
+title: CLI 示例-Enable BYOK TDE-Azure SQL 托管实例
 description: 了解如何配置 Azure SQL 托管实例，以开始使用 BYOK 透明数据加密 (TDE) 通过 PowerShell 进行静态加密。
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061737"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84019342"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>使用 Azure Key Vault 中自己的密钥管理托管实例中的透明数据加密
 
-此 Azure CLI 脚本示例使用 Azure Key Vault 中的密钥，为 Azure SQL 托管实例的客户托管密钥配置透明数据加密（TDE）。 这通常称为 TDE 的自带密钥方案。 若要详细了解使用客户托管密钥的 TDE，请参阅[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](../transparent-data-encryption-byok-azure-sql.md)。
+此 Azure CLI 脚本示例使用 Azure Key Vault 中的密钥为 Azure SQL 托管实例配置使用客户托管密钥的透明数据加密 (TDE)。 这通常称为 TDE 的自带密钥方案。 若要详细了解使用客户托管密钥的 TDE，请参阅[适用于 Azure SQL 的支持“创建自己的密钥”的 TDE](../../azure-sql/database/transparent-data-encryption-byok-overview.md)。
 
 如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -28,7 +27,7 @@ ms.locfileid: "80061737"
 
 ### <a name="prerequisites"></a>先决条件
 
-现有托管实例，请参阅[使用 Azure CLI 创建 AZURE SQL 数据库托管实例](sql-database-create-configure-managed-instance-cli.md)。
+现有托管实例，请参阅[使用 Azure CLI 创建 AZURE SQL 托管实例](sql-database-create-configure-managed-instance-cli.md)。
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -65,4 +64,4 @@ az group delete --name $resource
 
 有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
-其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../sql-database-cli-samples.md)中找到。
+其他 SQL 数据库 CLI 脚本示例可以在 [Azure SQL 数据库文档](../../azure-sql/database/az-cli-script-samples-content-guide.md)中找到。

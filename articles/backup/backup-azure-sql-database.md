@@ -3,12 +3,11 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e0a555125e50a974ae51a08d7870cdc3ec12fd39
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408754"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84021086"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -39,7 +38,7 @@ ms.locfileid: "79408754"
 
 在开始之前，请验证以下条件：
 
-1. 确保有一个 SQL Server 实例在 Azure 中运行。 可以在市场中[快速创建 SQL Server 实例](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md)。
+1. 确保有一个 SQL Server 实例在 Azure 中运行。 可以在市场中[快速创建 SQL Server 实例](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)。
 2. 查看[功能注意事项](sql-support-matrix.md#feature-consideration-and-limitations)和[方案支持](sql-support-matrix.md#scenario-support)。
 3. 查看有关此方案的[常见问题解答](faq-backup-sql-server.md)。
 
@@ -66,11 +65,11 @@ ms.locfileid: "79408754"
 
       ![在“登录名 - 新建”对话框中选择“搜索”](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc****。 输入“输入要选择的对象名称”中显示的帐户名。**** 选择“检查名称”以解析名称。**** 单击" **确定**"。
+  4. 在虚拟机注册和 SQL 发现阶段已创建 Windows 虚拟服务帐户 NT SSERVICE\AzureWLBackupPluginSvc****。 输入“输入要选择的对象名称”中显示的帐户名。**** 选择“检查名称”以解析名称。**** 单击“确定”。
 
       ![选择“检查名称”以解析未知的服务名称](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在“服务器角色”中，确保“sysadmin”角色已选中。******** 单击" **确定**"。 现在，所需的权限应会存在。
+  5. 在“服务器角色”中，确保“sysadmin”角色已选中。******** 单击“确定”。 现在，所需的权限应会存在。
 
       ![确保 sysadmin 服务器角色已选中](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
@@ -109,7 +108,7 @@ ms.locfileid: "79408754"
 
 7. 单击“确定”。
 8. 重复相同的步骤序列（上述步骤 1-7），将 NT Service\AzureWLBackupPluginSvc 登录名添加到 SQL Server 实例。 如果该登录名已存在，请确保它具有 sysadmin 服务器角色并处于这种状态：已授予连接到数据库引擎的权限，且“登录名”设置为“已启用”。
-9. 在授予权限后，在门户中重新**发现**数据库**->** ： Azure **->** VM 中的保管库备份基础结构工作负荷：
+9. 在授予权限后，在门户中重新**发现**数据库： **->** Azure VM 中的保管库备份基础结构 **->** 工作负荷：
 
     ![在 Azure 门户中重新发现数据库](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
