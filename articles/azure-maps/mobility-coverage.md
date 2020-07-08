@@ -1,28 +1,26 @@
 ---
-title: 移动（传输）范围 |Microsoft Azure 映射
-description: 在本文中，你将了解 Microsoft Azure Maps 中的移动性覆盖
-author: philmea
-ms.author: philmea
-ms.date: 06/05/2019
+title: 移动（传输）范围
+description: 在本文中，你将了解 Microsoft Azure Maps 移动服务中的公共转口覆盖面。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 2959a930ef2b3683cbd822eaee61a037fa0e9e29
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334385"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84673636"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps 移动性覆盖范围
 
-Azure Maps 提供了一个[移动服务](https://aka.ms/AzureMapsMobilityService)。 移动服务可提高具有公共传输、自行车共享和 scooter 共享功能的应用程序的开发时间。 公共交通功能包括搜索附近的电台、搜索 "停止"、搜索交通行、检索计划信息、检索实时公共交通到达、列表停止和列表路线指南。 该服务会将实时和静态可用性信息返回给共享车辆，如汽车、自行车和 scooters。 此外，移动服务还提供了具有多种模行程计划选项的路由功能。 多模行程规划包含 bicycling、hailing 和中转选项，所有这些都是一次行程。 用户凸轮访问详细和分模分步路线和服务警报。
+Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提高具有公共传输功能的应用程序的开发时间，如中转路由和搜索附近的公共传输停止。 用户可以检索有关传输停止、线路和计划的详细信息。 移动服务还允许用户检索停止和行几何、停止、行和服务区域的警报，以及实时公共传输到达和服务警报。 此外，移动服务还提供了具有多种模行程计划选项的路由功能。 多模行程计划合并了步行、bicycling 和公共交通选项，所有这些都是一次行程。 用户还可以访问详细的分步骤路线。 
 
-Azure Maps 没有与所有城市和国家/地区相同的信息和准确性。 调用传输数据的能力取决于市县。 而且，数据可能不包括所有公共传输选项和服务于该城市的机构。
+Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性。 调用公共传输数据的能力取决于大都市区。 此外，地图数据可能不包括为地铁区域提供服务的所有公共传输选项和机构。
 
 下表提供了 Azure Maps 移动服务的覆盖范围信息。
-
 
 | 符号 | 含义 |
 |--------|---------|
@@ -35,7 +33,7 @@ Azure Maps 没有与所有城市和国家/地区相同的信息和准确性。 �
 | 阿根廷       | <p>Bahía Blanca，布宜诺斯艾利斯，Caleta Olivia，Chivilcoy，Comodoro Rivadavia，Córdoba，Corrientes，General Pico，La 奥，三月 del Plata，门多萨，Miramar，Neuquén，Oberá，Olavarría，Paraná，Posadas，Rio Tercero，Rosario，Salta，San Carlos de Bariloche，Luis，Pedro，</p>|
 | 巴巴多斯       |  岛 |
 | 巴西         | <p>Angra dos Reis、Anápolis、Apucarana、Aracaju、Araraquara、Araxa、Araçatuba、Bage、Barretos、Bauru、贝伦、Belo Horizonte、Blumenau、博阿维斯塔 Vista、巴西利亚、Caldas Novas、Campina 坎普、Campinas、大 Belo、大坎普、Caraguatatuba、Cascavel、Cataguases、Caxias、Leopoldina、Região、Catalão、Caxias、格兰德、Chapecó、Cianorte、Conselheiro、Lafaiete、Corumbá、Criciúma、Cruzeiro、格兰德、Cuiabá、Curitiba、Curitibanos、Curvelo、Diamantina、Divinópolis、Dourados、Estrela、Feira、Santana、Fernando、诺罗尼亚 Florianópolis、Fortaleza、Foz do Iguaçu、语言、Garanhuns、Goiania、Governador Valadares、Guarapuava、Imperatriz、Ipatinga、Irati、Itabira、Itabuna、Itajaí、Ituiutaba、Jaraguá、格兰德、Joao Pessoa、Joinville、Juazeiro do 格兰德、Juiz de 针对、Jundiaí、Lages、Londrina、Macapa、Macaé、Maceió、Mafra e Rio Negro、马瑙斯、Manhuacu、Maringá、Marília、Monte Carmelo、Montes Claros、Mossoró、Natal、Osorio、Ourinhos、Ouro Preto、Palmas、Paracatu、Paranaguá、Parnaíba、Passo、Fundo、、、、、、、、，Passos，Patos de 米，Patrocínio、Pelotas、Piracicaba、Poco de Caldas、Ponta Grossa、韦 Alegre、韦 Ferreira、韦 Seguro、韦柳港、Praia 坎普、Recife、Ribeirão Preto、Rio、Rio 布朗库、Rondonópolis、Salinas、Cruz、格兰德、Rita、Sapucaí、Santarem、Santos、Gabriel、Oeste、Joao、Rei、Tiradentes、Regiao、e、圣保罗 Do Rio Preto，圣多美 Mateus，圣保罗，Sorocaba，圣多美，圣保罗，圣保罗，圣保罗，圣保罗 Carlos，圣保罗，北京格兰德，圣多美 José，Campos，Lourenço Luís，Taubaté Telemaco，Borba，Teofilo，Otoni，Teresina，吧，Três，Lagoas，Tucurui，Ubatuba，Uberaba，Uberlândia，Ubá，Uruguaiana，Varginha，Vicosa，Videira，Fraiburgo，Vitória Vitória，Conquista & </p>|
-| Canada | Banff （AB）、Brandon （MB）、卡尔加里（AB）、Comox 低谷（BC）、Cowichan 低谷（BC）、埃德蒙顿（AB）、Fort 圣彼得堡、Fredericton （NB）、更大的 Sudbury （ON）、更高的范 Kelowna （BC），Kingston （ON），伦敦（ON），Moncton （NB），蒙特利尔（QC），Nanaimo （BC），渥太华（ON），Prince George （BC），Québec City （QC），红色 Deer （AB），里贾纳（sk），Rimouski （qc），Saskatoon （BC），圣 John （NL）、阳光海岸、大图标托架（ON）、多伦多（ON）、维多利亚（BC）、Whistler （BC）、Windsor （ON）、温尼伯（MB）、Woodstock</p>|
+| 加拿大 | Banff （AB）、Brandon （MB）、卡尔加里（AB）、Comox 低谷（BC）、Cowichan 低谷（BC）、埃德蒙顿（AB）、Fort 圣彼得堡、Fredericton （NB）、更大的 Sudbury （ON）、更高的范 Kelowna （BC），Kingston （ON），伦敦（ON），Moncton （NB），蒙特利尔（QC），Nanaimo （BC），渥太华（ON），Prince George （BC），Québec City （QC），红色 Deer （AB），里贾纳（sk），Rimouski （qc），Saskatoon （BC），圣 John （NL）、阳光海岸、大图标托架（ON）、多伦多（ON）、维多利亚（BC）、Whistler （BC）、Windsor （ON）、温尼伯（MB）、Woodstock</p>|
 | 智利  | <p>Antofagasta，Arica，Aysén，Chillán，Concepción，Constitución，Copiapó，Curicó，Iquique，La Serena y Coquimbo，Linares，洛杉矶（智利），洛杉矶拉各斯，蓬纳斯，Rancagua，圣地亚哥，Talca，Temuco，Valdivia，Valparaíso，Viña del 三月</p>|
 | 哥伦比亚 | <p>Barranquilla、Bogotá、Bucaramanga、Cali、Cartagena、Ibagué、Medellín、Pasto、Popayán、圣诞老人 Marta、Sincelejo、Valledupar</p>|  
 | 哥斯达黎加 | San José|
@@ -66,7 +64,7 @@ Azure Maps 没有与所有城市和国家/地区相同的信息和准确性。 �
 | 菲律宾 | 马尼拉 |
 | 新加坡 | 新加坡 |
 | 韩国 | 釜山、首尔 |
-| 中国台湾 | Changhua 县，台北 | 
+| 台湾 | Changhua 县，台北 | 
 | 泰国 | 曼谷，Chiang Mai | 
 | 越南 | 河内，Ho Chi 胡志明市 City | 
 
@@ -118,7 +116,7 @@ Azure Maps 没有与所有城市和国家/地区相同的信息和准确性。 �
 | 瑞典 | Goteborg/Gothenburg/Jonkoping、Malmö kommun-Malmö、Norrköping och Linköping、斯德哥尔摩、Sundsvall |
 | 瑞士 | Basel、Geneva、Yverdon-les-Bains、苏黎世 | 
 | 土耳其 | Adana-Mersin，Ankara，Antalya，Balıkesir，Bilecik，Bolu，Bursa，Denizli，Duzce，Elazig，Eskisehir，伊斯坦布尔，Izmir，Aydin，Kahramanmaras，Kayseri，Konya，Malatya，Muğla，Samsun，Şanlıurfa |    
-| United Kingdom | 东 Anglia，东 Midlands，伦敦和东，东东，西北，北爱尔兰，苏格兰，西南，威尔士，西 Midlands，Yorkshire |
+| 英国 | 东 Anglia，东 Midlands，伦敦和东，东东，西北，北爱尔兰，苏格兰，西南，威尔士，西 Midlands，Yorkshire |
 | 乌克兰 | Kharkiv、Zhytomyr、基辅、Lviv、Chernivtsi |
 
 
@@ -127,7 +125,7 @@ Azure Maps 没有与所有城市和国家/地区相同的信息和准确性。 �
 | 国家/地区 |  城市（地铁区域） |
 |---------|---------|
 | 巴林 | 巴林 |
-| 埃及 | 开罗    |
+| 埃及 | Cairo    |
 | 以色列| 以色列  |
 | 肯尼亚 | 内罗毕  | 
 | 马达加斯加 | Antananarivo |

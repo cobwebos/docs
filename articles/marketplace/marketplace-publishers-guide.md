@@ -7,19 +7,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657852"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85958168"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>商业市场发布指南
 
 本发布指南旨在帮助新发布者和现有发布者了解如何列出商业市场店面、[Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 中的应用程序和服务，从而在与 Microsoft 的合作中发展自己的业务。
 
 >[!Note]
->此处的市场是指 Azure 市场和 AppSource。  有关详细信息，请参阅[一个市场，两个店面](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)。
+>此处的市场是指 Azure 市场和 AppSource。  有关详细信息，请参阅[一个市场，两个店面](comparing-appsource-azure-marketplace.md)。
 
 本指南涵盖以下主题： 
 *   什么是市场及其工作原理 
@@ -62,7 +61,7 @@ ms.locfileid: "83657852"
 
 *   联合销售：通过市场开始或加速与 Microsoft 的合作销售。 访问程序和支持，促进与 Microsoft 团队之间的联合销售。
 
-在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息，请参阅[如何创建合作伙伴中心帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+在向市场[提交解决方案](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)之后，我们的加入团队会联系你，为你的发布体验提供支持。  有关详细信息，请参阅[如何创建合作伙伴中心帐户](partner-center-portal/create-account.md)。
 
 详细了解[商业市场权益](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)。
 

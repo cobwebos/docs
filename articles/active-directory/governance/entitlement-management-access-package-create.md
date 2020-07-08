@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078945"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 
@@ -57,7 +56,7 @@ ms.locfileid: "79262004"
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 
 1. 依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -83,7 +82,7 @@ ms.locfileid: "79262004"
 
     正在创建的访问包及其包含的所有资源将添加到新目录中。 也可以稍后添加其他目录所有者。
 
-1. 单击“下一步”。 
+1. 单击“下一步” 。
 
 ## <a name="resource-roles"></a>资源角色
 
@@ -105,7 +104,7 @@ ms.locfileid: "79262004"
 
     ![访问包 - 资源角色选择](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 单击“下一步”。 
+1. 单击“下一步” 。
 
 ## <a name="requests"></a>Requests
 
@@ -133,7 +132,7 @@ ms.locfileid: "79262004"
 
 ## <a name="creating-an-access-package-programmatically"></a>以编程方式创建访问包
 
-你还可以使用 Microsoft Graph 创建访问包。  具有委托`EntitlementManagement.ReadWrite.All`权限的应用程序的相应角色中的用户可以调用 API 来
+你还可以使用 Microsoft Graph 创建访问包。  具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来
 
 1. [列出目录中的 accessPackageResources](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresources?view=graph-rest-beta) ，并为未在目录中的任何资源[创建 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta) 。
 1. [列出](https://docs.microsoft.com/graph/api/accesspackagecatalog-list-accesspackageresourceroles?view=graph-rest-beta)accessPackageCatalog 中每个 AccessPackageResource 的 accessPackageResourceRoles。 然后，在创建 accessPackageResourceRoleScope 时，此角色列表将用于选择角色。

@@ -3,15 +3,14 @@ title: 使用 .NET SDK Microsoft Azure StorSimple 数据管理器作业
 description: 了解如何使用 .NET SDK 启动 StorSimple Data Manager 作业
 author: alkohli
 ms.service: storsimple
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76270725"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514897"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 启动数据转换
 
@@ -44,7 +43,7 @@ ms.locfileid: "76270725"
 
 1. 若要检索配置参数，请执行以下步骤：
     1. 在 `C:\DataTransformation` 位置通过 GitHub 存储库脚本下载 `Get-ConfigurationParams.ps1`。
-    1. 运行 GitHub 存储库中的 `Get-ConfigurationParams.ps1` 脚本。 键入下列命令：
+    1. 运行 GitHub 存储库中的 `Get-ConfigurationParams.ps1` 脚本。 键入以下命令：
 
         ```
         C:\DataTransformation\Get-ConfigurationParams.ps1 -SubscriptionName "AzureSubscriptionName" -ActiveDirectoryKey "AnyRandomPassword" -AppName "ApplicationName"
@@ -62,13 +61,13 @@ ms.locfileid: "76270725"
 3. 使用 Visual Studio 2012、2013 或 2015 创建 C# .NET 控制台应用程序。
 
     1. 启动**Visual Studio 2012/2013/2015**。
-    1. 选择“文件”>“新建”>“项目”****。
+    1. 选择“文件”>“新建”>“项目”。
 
         ![创建项目 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
     2. 选择“已安装”>“模板”>“Visual C#”>“控制台应用程序”****。
     3. 对于**名称**，输入“DataTransformationApp”****。
     4. 对于**位置**，选择 **C:\DataTransformation**。
-    6. 单击“确定”**** 以创建项目。
+    6. 单击“确定”以创建该项目  。
 
         ![创建项目 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
@@ -83,7 +82,7 @@ ms.locfileid: "76270725"
 
        ![添加 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
-5. 将以下**using**语句添加到项目中的源文件（Program.cs）。
+5. 将以下 **using** 语句添加到项目中的源文件 (Program.cs)。
 
     ```
     using System;

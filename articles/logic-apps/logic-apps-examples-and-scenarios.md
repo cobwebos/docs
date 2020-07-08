@@ -6,16 +6,15 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144160"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84190737"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure 逻辑应用的常见方案、示例、教程和演练
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)（范围从本地 SQL Server 或 SAP 到 Azure 认知服务），帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用对于需要跨多个系统和服务协调操作的用例和方案特别有用。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)通过提供[数百个随时可用的连接器](../connectors/apis-list.md)（范围从 SQL Server 或 SAP 到 Azure 认知服务），帮助你安排和集成不同的服务。 逻辑应用服务“无服务器”，因此无需担心规模或实例。 只需定义带有触发器的工作流和工作流执行的操作。 基础平台处理缩放、可用性和性能。 逻辑应用对于需要跨多个系统和服务协调操作的用例和方案特别有用。
 
 为帮助你了解 Azure 逻辑应用支持的功能和模式，本文介绍了一些常见的起点、示例和方案。
 
@@ -39,7 +38,7 @@ ms.locfileid: "82144160"
   * **收到电子邮件时**，触发器允许逻辑应用检查逻辑应用支持的任何邮件提供商提供的新电子邮件，例如[Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md)、 [Gmail](https://docs.microsoft.com/connectors/gmail/)、 [Outlook.com](https://docs.microsoft.com/connectors/outlook/)等。
 
     > [!IMPORTANT]
-    > 如果要使用 Gmail 连接器，则只有 G Suite 业务帐户才能在逻辑应用中使用此连接器而不进行限制。 如果你有 Gmail 使用者帐户，则只能将此连接器与特定的 Google 批准服务一起使用，也可以[创建 google 客户端应用以用于通过 Gmail 连接器进行身份验证](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅[Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+    > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
     有关详细信息，请参阅以下主题：<p>
 
@@ -86,7 +85,7 @@ ms.locfileid: "82144160"
 对于企业集成解决方案和组织之间的无缝通信，可以通过将 Enterprise Integration Pack （EIP）与 Azure 逻辑应用配合使用，为这些方案生成自动化的可缩放工作流。 尽管组织使用不同的协议和格式，但它们仍可以通过电子方式交换消息。 EIP 将不同的格式转换为你的组织的系统可以处理并支持行业标准协议（包括 AS2、X12、EDIFACT 和 RosettaNet）的格式。 若要生成这些解决方案，请创建一个集成帐户，该帐户是一个单独的 Azure 资源，为你定义的项目提供安全、可缩放且可管理的容器，并可用于你的逻辑应用工作流。 例如，项目包括贸易合作伙伴、协议、地图、架构、证书和批配置。
 
 * [概述： Azure 逻辑应用和 Enterprise Integration Pack B2B 企业集成解决方案](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* [在 Azure 逻辑应用中创建和管理 B2B 企业集成的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+* [使用 Azure 逻辑应用创建和管理 B2B 企业集成的集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
 ## <a name="access-azure-virtual-network-resources"></a>访问 Azure 虚拟网络资源
 
@@ -103,7 +102,7 @@ ms.locfileid: "82144160"
 
 * [快速入门：使用 Azure 逻辑应用创建自动化任务、进程和工作流-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [概述：自动化逻辑应用部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
-* [创建 Azure 资源管理器模板以自动化 Azure 逻辑应用的部署](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+* [创建 Azure 资源管理器模板以自动化部署 Azure 逻辑应用](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [为 Azure 逻辑应用部署 Azure 资源管理器模板](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 * [示例：从 azure 逻辑应用连接到 Azure 服务总线队列，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [示例：从 azure 逻辑应用连接到 azure 存储帐户，并通过 Azure DevOps 中的 Azure Pipelines 进行部署](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
@@ -119,17 +118,17 @@ ms.locfileid: "82144160"
 
 ### <a name="monitor"></a>监视
 
-* [监视运行状态，查看触发器历史记录，并设置 Azure 逻辑应用的警报](../logic-apps/monitor-logic-apps.md)
+* [监视运行状态、查看触发器历史记录，并设置 Azure 逻辑应用的警报](../logic-apps/monitor-logic-apps.md)
 * [设置 Azure Monitor 日志并收集 Azure 逻辑应用的诊断数据](../logic-apps/monitor-logic-apps-log-analytics.md)
-* [设置在 Azure 逻辑应用中为 B2B 消息 Azure Monitor 日志和收集诊断数据](../logic-apps/monitor-b2b-messages-log-analytics.md)
+* [为 Azure 逻辑应用中的 B2B 消息设置 Azure Monitor 日志并收集诊断数据](../logic-apps/monitor-b2b-messages-log-analytics.md)
 * [查看并创建用于在 Azure 逻辑应用 Azure Monitor 日志中监视和跟踪的查询](../logic-apps/create-monitoring-tracking-queries.md)
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>处理内容类型、转换和转换
 
 可以使用 Azure 逻辑应用[工作流定义语言](https://aka.ms/logicappsdocs)中的多个函数访问、转换和变换多个内容类型。 例如，可以使用 `@json()` 和 `@xml()` 工作流表达式在字符串、JSON 和 XML 之间转换。 逻辑应用引擎通过保留内容类型，来支持在服务之间以无损方式进行内容传输。
 
-* [在 Azure 逻辑应用中处理内容类型](../logic-apps/logic-apps-content-type.md)，如`application/`、 `application/octet-stream`和`multipart/formdata`
-* [在 Azure 逻辑应用和电源自动化的表达式中使用函数的参考指南](../logic-apps/workflow-definition-language-functions-reference.md)
+* [在 Azure 逻辑应用中处理内容类型](../logic-apps/logic-apps-content-type.md)，如 `application/` 、 `application/octet-stream` 和`multipart/formdata`
+* [关于如何使用 Azure 逻辑应用和 Power Automate 的表达式中的函数的参考指南](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Azure 逻辑应用的工作流定义语言架构](../logic-apps/logic-apps-workflow-definition-language.md)
 
 ## <a name="other-integrations-and-capabilities"></a>其他集成和功能
@@ -141,7 +140,7 @@ Azure 逻辑应用集成了许多服务，例如 Azure Functions、Azure API 管
 * [教程：使用 Azure 逻辑应用和 Azure Functions 创建流式处理客户见解仪表板](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [教程：创建与 Azure 逻辑应用和 Azure 认知服务集成的函数以分析 Twitter post 情绪](../azure-functions/functions-twitter-email.md)
 * [教程：使用 Power BI 和 Azure 逻辑应用构建支持 AI 的社交仪表板](https://aka.ms/logicappsdemo)
-* [教程：使用 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [教程：通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [博客：使用 Azure 逻辑应用调用 SOAP 服务](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 

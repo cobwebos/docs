@@ -2,21 +2,20 @@
 title: Workday 属性参考
 description: 了解 SuccessFactors-HR 驱动的预配支持 SuccessFactors 中的哪些属性
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: reference
 ms.workload: identity
-ms.date: 05/21/2020
-ms.author: chmutali
+ms.date: 05/25/2020
+ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 1ac45d88c0af33114106f36798fd56473d18ea28
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 8c508e65ef2c6d62716454af151feb0a1c80bba0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798048"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781102"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性参考
 
@@ -30,7 +29,7 @@ ms.locfileid: "83798048"
 :::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-no-version-info.png" alt-text="Workday 无版本信息":::
 
 
-| \# | 名称                                  | Workday API 表达式                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Workday 属性名称                                  | Workday XPATH API 表达式                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | 活动                                | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Status\_Data/wd:Active/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Position\_Data/wd:Business\_Site\_Summary\_Data/wd:Address\_Data/wd:Address\_Line\_Data\[@wd:Type='ADDRESS\_LINE\_2'\]/text\(\)                                                                                                                                                                                                                             |
@@ -125,7 +124,7 @@ ms.locfileid: "83798048"
 若要配置其他 XPATH，请参阅[教程：管理配置](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)。 
 
 
-| \# | 名称                                  | Workday XPATH API 表达式                                                                                                                                                                                                                                                                                                                                                |
+| \# | Workday 属性名称                                  | Workday XPATH API 表达式                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | 活动                                | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Status\_Data/wd:Active/text\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Business\_Site\_Summary\_Data/wd:Address\_Data/wd:Address\_Line\_Data\[@wd:Type='ADDRESS\_LINE\_2'\]/text\(\)                                                                                                                                                            |
@@ -208,4 +207,44 @@ ms.locfileid: "83798048"
 | 79 | WorkerType                            | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Worker\_Type\_Reference/wd:ID\[@wd:type="Employee\_Type\_ID"\]/text\(\)                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Work\_Space\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
+## <a name="custom-xpath-values"></a>自定义 XPATH 值
+下表提供了在将工作线程从 Workday 预配到 Active Directory 或 Azure AD 时的其他常用自定义 XPATH API 表达式的列表。 请测试此处提供的与 Workday 版本相关的 XPATH API 表达式，这些表达式引用在[教程：管理配置](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)部分中捕获的说明。
+
+若要将更多属性添加到 XPATH 表以获得实现此集成的客户权益，请在下面留下评论或直接[参与](https://docs.microsoft.com/contribute)本文。 
+
+> [!div class="mx-tdBreakAll"]
+> | \# | Workday 属性名称  | Workday API 版本 | Workday XPATH API 表达式   |
+> |----|-------------------------|---------------------|--------------------------------|
+> | 1  | 通用 ID  | v 30.0 +   | wd： Worker/wd： Worker_Data/wd： Universal_ID/text （）      |
+> | 2  | 用户名     | v 30.0 +   | wd： Worker/wd： Worker_Data/wd： User_Account_Data/wd： User_Name/text （） |
+> | 3  | 管理级别 ID  | v 30.0 +  | wd： Worker/wd： Worker_Data/wd： Employment_Data/wd： Worker_Job_Data [ @wd:Primary_Job = 1]/wd： Position_Data/wd： Job_Profile_Summary_Data/wd： Management_Level_Reference/wd： ID [ @wd:type = "Management_Level_ID"]/text （）  |
+> | 4 | 雇用撤消 | v 30.0 + | wd： Worker/wd： Worker_Data/wd： Employment_Data/wd： Worker_Status_Data/wd： Hire_Rescinded/text （） |
+> | 5 | 已分配预配组 | v 21.1 + | wd： Worker/wd： Worker_Data/wd： Account_Provisioning_Data/wd： Provisioning_Group_Assignment_Data [wd： Status = ' 已分配 ']/wd： Provisioning_Group/text （） | 
+
+
+## <a name="supported-xpath-functions"></a>支持的 XPATH 函数
+下面给出了[MICROSOFT .NET xpath 库](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100))支持的 xpath 函数的列表，你可以在创建 xpath API 表达式时使用这些函数。 
+
+* name
+* last
+* position
+* 字符串
+* substring
+* concat
+* substring-after
+* starts-with
+* string-length
+* 包含
+* translate
+* normalize-space
+* substring-before
+* boolean
+* 是
+* not
+* false
+* number
+* ceiling
+* sum
+* round
+* floor
 

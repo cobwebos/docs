@@ -5,12 +5,11 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610057"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079348"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>规划和准备 Service Fabric 独立群集部署
 
@@ -51,7 +50,7 @@ ms.locfileid: "75610057"
 
 ## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>准备将充当节点的计算机
 
-对于要添加到群集的每台计算机，下面提供了建议要满足的一些规格：
+下面是 Service Fabric 群集中的计算机的建议规范：
 
 * 至少 16 GB RAM
 * 至少 40 GB 可用磁盘空间
@@ -61,24 +60,26 @@ ms.locfileid: "75610057"
 * [.NET Framework 4.5.1 或更高版本](https://www.microsoft.com/download/details.aspx?id=40773)的完整安装版
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * 应在所有计算机上运行 [RemoteRegistry 服务](https://technet.microsoft.com/library/cc754820)
-* Service Fabric 安装驱动器必须是 NTFS 文件系统
+* **Service Fabric 安装驱动器必须是 NTFS 文件系统**
+* **必须[启用](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))Windows 服务*性能日志 & 警报*和*windows 事件日志***。
 
-部署和配置群集的群集管理员必须拥有每台计算机的 [管理员权限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) 。 不能在域控制器上安装 Service Fabric。
+> [!IMPORTANT]
+> 部署和配置群集的群集管理员必须拥有每台计算机的[管理员权限](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx)。 不能在域控制器上安装 Service Fabric。
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>下载适用于 Windows Server 的 Service Fabric 独立包
-[下载链接 - Service Fabric 独立包 - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) ，将包解压缩到群集外的一台部署计算机中或解压缩到群集内的其中一台计算机中。
+[下载链接 - Service Fabric 独立包 - Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)，并将包解压缩到群集外的一台部署计算机中或解压缩到群集内的其中一台计算机中。
 
 ## <a name="modify-cluster-configuration"></a>修改群集配置
-若要创建独立群集，必须创建独立群集配置 ClusterConfig.json 文件，其中描述群集的规范。 可以基于在以下链接中找到的模板创建配置文件。 <br>
+若要创建一个独立群集，则必须创建一个独立群集配置 ClusterConfig.json 文件，并在其中说明该群集的规范。 可根据以下链接中的模板创建配置文件。 <br>
 [独立群集配置](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-有关此文件中各个节的详细信息，请参阅 [Windows 独立群集的配置设置](service-fabric-cluster-manifest.md)。
+有关此文件中相关部分的详细信息，请参阅 [Windows 独立群集的配置设置](service-fabric-cluster-manifest.md)。
 
-从已下载的包中打开某个 ClusterConfig.json 文件，并修改以下设置：
+从已下载的程序包中打开某个 ClusterConfig.json 文件，并修改以下设置：
 
 | **配置设置** | **说明** |
 | --- | --- |
-| **NodeTypes** |节点类型可让你将群集节点划分到不同的组中。 一个群集必须至少有一个节点类型。 组中的所有节点具有以下共同特征： <br> 名称 - 即节点类型名称。  <br>终结点端口 - 即与此节点类型关联的各种命名终结点（端口）。  可以使用任何端口号，只要它们不会与此清单中的其他部分发生冲突，并且未被计算机/VM 上运行的其他应用程序使用。 <br> 放置属性 - 即此节点类型的相应属性，可用作系统服务或你拥有的服务的放置约束。  这些属性是用户定义的键/值对，可为指定节点提供额外的元数据。 节点属性的示例包括节点是否有硬盘或图形卡、其硬盘的轴数、内核数和其他物理属性。 <br> 容量 - 节点容量，定义特定节点提供的特定资源的名称和数量。  例如，节点可以定义名为“MemoryInMb”的指标容量，而且默认有 2048 MB 的可用内存。 这些容量在运行时使用，以确保将需要特定资源量的服务放在具有所需数量的可用资源的节点上。<br>IsPrimary - 如果定义了多个 NodeType，请确保只有一个设置为主节点（值为 true），系统服务将在该主节点上运行。   应将所有其他节点类型设置为 false 值  |
+| **NodeTypes** |节点类型可让你将群集节点划分到不同的组中。 一个群集必须至少有一个节点类型。 组中的所有节点具有以下共同特征： <br> **名称** - 即节点类型名称。 <br>**终结点端口** - 即与此节点类型关联的各种命名终结点（端口）。 可以使用任何端口号，只要它们不会与此清单中的其他部分发生冲突，并且未被计算机/VM 上运行的其他应用程序使用。 <br> **放置属性** - 即此节点类型的相应属性，可用作系统服务或你的服务的放置约束。 这些属性是用户定义的键/值对，可为指定节点提供额外的元数据。 节点属性的示例包括节点是否有硬盘或图形卡、其硬盘的轴数、内核数和其他物理属性。 <br> **容量** - 节点容量，定义特定节点提供的特定资源的名称和数量。 例如，节点可以定义名为“MemoryInMb”的指标容量，而且默认有 2048 MB 的可用内存。 这些容量在运行时使用，以确保将需要特定资源量的服务放在具有所需数量的可用资源的节点上。<br>**IsPrimary** - 如果定义了多个 NodeType，请确保只有一个设置为主节点（值为 *true*），系统服务会在该主节点上运行。 应将所有其他节点类型设置为 *false* 值 |
 | **Nodes** |这些是群集内的每个节点的详细信息（节点类型、节点名称、IP 地址、节点的容错域和升级域）。 要在其上创建群集的计算机必须与其 IP 地址一起列在此处。 <br> 如果对所有节点使用相同的 IP 地址，则会创建一个可用于测试的单机群集。 不要将单机群集用于部署生产工作负荷。 |
 
 群集配置将所有设置配置到环境后，可针对群集环境对其进行测试（步骤 7）。
@@ -88,32 +89,32 @@ ms.locfileid: "75610057"
 ## <a name="environment-setup"></a>环境设置
 
 群集管理员配置 Service Fabric 独立群集时，需按照以下准则设置环境： <br>
-1. 创建群集的用户应对群集配置文件中作为节点列出的所有计算机具有管理员级别的安全特权。
-2. 从中创建群集的计算机以及每个群集节点计算机必须：
+1. 对于群集配置文件中列出的所有计算机，创建群集的用户应对它们具有管理员级别的安全特权。
+2. 从中创建群集的计算机和每个群集节点计算机必须：
    * 已卸载 Service Fabric SDK
    * 已卸载 Service Fabric 运行时
    * 已启用 Windows 防火墙服务 (mpssvc)
    * 已启用远程注册表服务（远程注册表）
    * 已启用文件共享 (SMB)
-   * 已基于群集配置端口打开了必要的端口
-   * 已为 Windows SMB 和远程注册表服务打开了必要的端口：135、137、138、139 和 445
-   * 已将网络彼此互连
-3. 群集节点计算机不应为域控制器。
-4. 如果要部署的群集是安全群集，请验证是否已具备必需的安全先决条件，以及是否已根据配置进行正确配置。
-5. 如果群集计算机无法访问 Internet，请在群集配置中设置以下项：
+   * 已基于群集配置端口打开所需的端口
+   * 已打开 Windows SMB 和远程注册表服务所需的端口：135、137、138、139 和 445
+   * 已相互建立网络连接
+3. 所有群集节点计算机均不是域控制器。
+4. 如果要部署的群集是安全群集，需确保存在所需的安全先决条件，且已针对配置进行了正确配置。
+5. 如果群集计算机无法访问 Internet，请在群集配置中进行以下设置：
    * 禁用遥测：在 "*属性*" 下，设置 *"enableTelemetry"： false*
    * 禁用自动构造版本下载 & 通知当前群集版本已接近支持：在 "*属性*" 下，设置 *"fabricClusterAutoupgradeEnabled"： false*
    * 或者，如果网络 Internet 访问仅限于允许列表中的域，则需要自动升级以下域：go.microsoft.com download.microsoft.com
 
 6. 设置适当的 Service Fabric 防病毒排除项：
 
-| **防病毒排除目录** |
+| **防病毒排除的目录** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot（从群集配置中） |
 | FabricLogRoot（从群集配置中） |
 
-| **防病毒排除进程** |
+| **防病毒排除的进程** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
@@ -129,7 +130,7 @@ ms.locfileid: "75610057"
 | FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>使用 TestConfiguration 脚本验证环境
-可以在独立包中找到 TestConfiguration.ps1 脚本。 它作为最佳做法分析器，可验证上述某些条件，并应该用作健全性检查来验证是否可以在给定环境上部署群集。 如果出现任何故障，请参阅[环境设置](service-fabric-cluster-standalone-deployment-preparation.md)下的列表进行故障排除。
+TestConfiguration.ps1 脚本位于独立包中。 该脚本可用作最佳做法分析器，验证上述部分标准，并应用作健全性检查，验证是否可在给定环境中部署群集。 如果出现任何故障，请参阅[环境设置](service-fabric-cluster-standalone-deployment-preparation.md)下的列表进行故障排除。
 
 可以在对群集配置文件中列为节点的所有计算机具有管理员访问权限的任何计算机上运行此脚本。 运行此脚本的计算机不必要是群集的一部分。
 
@@ -152,7 +153,7 @@ FabricInstallable          : True
 Passed                     : True
 ```
 
-当前此配置测试模块不验证安全配置，因此这必须独立完成。
+目前，此配置测试模块不会验证安全配置，因此必须单独执行验证。
 
 > [!NOTE]
 > 我们正在不断改进，旨在使此模块更加可靠，因此如果遇到了可能由 TestConfiguration 导致的故障或丢失情况，请通过我们的[支持通道](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)告知我们。

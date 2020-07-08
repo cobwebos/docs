@@ -7,12 +7,11 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 87a8291387d50fae7027d007eedf49fa55b39b74
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85052776"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -85,7 +84,7 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 
 ### <a name="access-restrictions"></a>访问限制 
 
-使用访问限制功能可以基于来源 IP 地址筛选**入站**请求。 筛选操作在前端角色上发生，这些前端角色位于运行应用的辅助角色的上游。 由于前端角色位于辅助角色的上游，因此可将访问限制功能视为应用的网络级保护机制。 使用该功能可以生成按优先顺序评估的允许和拒绝地址块列表。 它类似于 Azure 网络中的网络安全组 (NSG) 功能。  可以在 ASE 或多租户服务中使用此功能。 在 ILB ASE 中使用时，可以限制从专用地址块进行的访问。
+访问限制功能使你可以基于原始 IP 地址筛选**入站**请求。 筛选操作在前端角色上发生，这些前端角色位于运行应用的辅助角色的上游。 由于前端角色位于辅助角色的上游，因此可将访问限制功能视为应用的网络级保护机制。 使用该功能可以生成按优先顺序评估的允许和拒绝地址块列表。 它类似于 Azure 网络中的网络安全组 (NSG) 功能。  可以在 ASE 或多租户服务中使用此功能。 在 ILB ASE 中使用时，可以限制从专用地址块进行的访问。
 
 ![访问限制](media/networking-features/access-restrictions.png)
 
@@ -114,7 +113,7 @@ Azure 应用服务缩放单元为每个部署中的多个客户提供支持。 �
 ### <a name="private-endpoint-preview"></a>专用终结点（预览）
 
 专用终结点是一个网络接口，可通过 Azure 专用链接将你私下安全地连接到你的 Web 应用。 专用终结点使用 VNet 中的专用 IP 地址，从而有效地将 Web 应用引入 VNet。 此功能仅适用于**入站**流到 Web 应用。
-[使用 Azure Web 应用的专用终结点（预览）][privateendpoints]
+[为 Azure Web 应用使用专用终结点（预览版）][privateendpoints]
  
 ### <a name="hybrid-connections"></a>混合连接
 

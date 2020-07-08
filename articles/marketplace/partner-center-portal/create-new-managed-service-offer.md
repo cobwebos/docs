@@ -8,16 +8,15 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 9ab2122fe1dd71a06127cad5ecc064fc42845390
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: 3099c73849a63ebf490d026db95cedfd1278d735
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847713"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957573"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
-托管服务产品/服务有助于实现 [Azure Lighthouse](../../lighthouse/overview.md) 方案。 如果客户接受托管服务产品/服务，则可以为 [Azure 委派资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)载入资源。 在开始之前，[在合作伙伴中心创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
+托管服务产品/服务有助于实现 [Azure Lighthouse](../../lighthouse/overview.md) 方案。 如果客户接受托管服务产品/服务，则可以为 [Azure 委派资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)载入资源。 在开始之前，[在合作伙伴中心创建商业市场帐户](create-account.md)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
 
 若要发布托管服务产品/服务，你必须具有[白银级或黄金级云平台资格级别](https://partner.microsoft.com/membership/cloud-platform-competency)或 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp)。
 
@@ -80,9 +79,20 @@ ms.locfileid: "83847713"
 > [!NOTE]
 > 只要产品/服务说明使用以下短语开头：“此应用程序仅以[非英语语言]提供”，产品/服务列表内容（例如说明、文档、屏幕截图和使用条款）就不需要是英语。 还可以提供一个有用链接 URL，使用与产品/服务列表内容中所使用的语言不同的语言提供内容。
 
+下面是有关如何在 Azure 门户中显示产品/服务的示例：
+
+:::image type="content" source="media/example-managed-services.png" alt-text="说明了此产品/服务在 Azure 门户中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. Title
+2. 描述
+3. 有用链接
+4. 屏幕截图
+
 ### <a name="name"></a>名称
 
-在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预先填充了创建产品/服务时为“产品/服务别名”输入的文本，但可以更改此值。 此名称可以是商标字（可以包括商标或版权符号）。 此名称长度不能超过 50 个字符，并且不能包含任何表情符号。
+在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预先填充了创建产品/服务时为“产品/服务别名”输入的文本，但可更改此值。 此名称可以是商标字（可以包括商标或版权符号）。 此名称长度不能超过 50 个字符，并且不能包含任何表情符号。
 
 ### <a name="search-results-summary"></a>搜索结果摘要
 
@@ -118,7 +128,7 @@ ms.locfileid: "83847713"
 
 ### <a name="marketplace-images"></a>市场映像
 
-在本部分中，可以提供在向客户展示你的产品/服务时将使用的徽标和图像。 所有图像都必须为 .png 格式。
+在此部分中，可以提供在向客户展示你的产品/服务时使用的徽标和图像。 所有图像都必须采用 .png 格式。
 
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
@@ -127,10 +137,10 @@ ms.locfileid: "83847713"
 
 提供以下四个像素大小的产品/服务徽标：
 
-- **小** (40 x 40)
-- **中** (90 x 90)
-- **大** (115 x 115)
-- **宽** (255 x 115)
+- 小图 (48 x 48)
+- 中图 (90 x 90)
+- 大图 (216 x 216)
+- 宽图 (255 x 115)
 
 请遵守徽标适用的下述准则：
 
@@ -147,13 +157,13 @@ ms.locfileid: "83847713"
 
 #### <a name="videos"></a>视频
 
-可以选择添加最多五个演示产品/服务的视频。 这些视频应在 YouTube 和/或 Vimeo 上托管。 对于每个视频，输入视频的名称、URL 和视频的缩略图（1280 x 720 像素）。
+可选择添加最多 5 个视频来演示产品/服务。 这些视频应在 YouTube 和/或 Vimeo 上托管。 对于每个视频，输入视频的名称、URL 和视频的缩略图（1280 x 720 像素）。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
 
-- [市场产品/服务列表最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="preview"></a>预览
 

@@ -5,14 +5,13 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
+ms.openlocfilehash: 1267225f6b8557efc7ce36a973daef0a46aaba2d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799863"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957981"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 
@@ -22,20 +21,11 @@ ms.locfileid: "83799863"
 
 ## <a name="compare-consulting-services"></a>比较咨询服务
 
-商业市场店面、Microsoft AppSource 和 Azure 市场与受众需求和云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 下表汇总了这些选项：
-
-|         |Azure 市场  |Microsoft AppSource |
-|---------|---------|---------|
-|读者      |IT 专业人员和云开发人员|业务用户和业务线决策者|
-|解决方案相关性      |为 Azure 构建或在其上构建的技术应用|可利用或扩展 Dynamics 365、Power BI、Office 365、Azure 的商业应用程序（已完成了外接程序或附加设备的应用）|
-|发布选项      |联系我、试用、事务处理或 Azure 服务|联系我、试用或 Dynamics 365 和 Power BI 服务|
-|产品内体验      |Azure 门户|Dynamics 365、Office 365、Office 客户端应用| 
-|其他      |通过 Azure Stack 本地发布、Azure 咨询服务、Azure 托管服务|针对 Dynamics 365 和 Power BI 的咨询服务|
-||
+商业市场店面、Microsoft AppSource 和 Azure 市场与受众需求和云产品的特点相匹配，从而帮助客户找到所需产品。 每个店面都提供专门的发布选项来帮助你最大程度地优化发布投资。 若要详细了解两个商店之间的差异，请参阅[比较 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
 
 基于 Dynamics 365、Power Apps 和 Power BI 的咨询服务产品可以列在 AppSource 中。 有关详细信息，请下载 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 文件。
 
-基于 Microsoft Azure 的咨询服务和托管服务产品可以可以列在 Azure 市场中。 有关详细信息，请参阅[发布 Azure 咨询服务产品](./partner-center-portal/create-consulting-service-offer.md)和[将托管服务产品发布到 Azure 市场](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)。
+基于 Microsoft Azure 的咨询服务和托管服务产品可以可以列在 Azure 市场中。 有关详细信息，请参阅[发布 Azure 咨询服务产品](./partner-center-portal/create-consulting-service-offer.md)和[将托管服务产品发布到 Azure 市场](../lighthouse/how-to/publish-managed-services-offers.md)。
 
 > [!Note]
 > Azure 市场中的咨询服务应主要为面向技术人员提供的产品，并侧重于 Azure 技术解决方案和服务。
@@ -79,21 +69,20 @@ ms.locfileid: "83799863"
 
 有关资质的详细信息，请转到 [Microsoft 合作伙伴网络资质](https://partner.microsoft.com/membership/competencies)页。
 
-系统集成商合作伙伴可针对以下 21 个国家/地区提交咨询服务产品：
+系统集成商合作伙伴可以为以下20个国家/地区提交咨询服务产品/服务：
 
-|   |   |   |   |
+| 国家/地区  | （续）   | （续）  | （续）  |
 |---------|----------|----------|----------|
 | 澳大利亚 | 比利时 | Canada | 丹麦 |
 | 芬兰  | 法国 | 德国  | 印度   |
 | 意大利    | 日本  |  墨西哥  |  荷兰  |
 |  新西兰  |  挪威  |  波兰  | 南非 |
-|  西班牙  | 瑞典  | 瑞士  |  United States  |
-| United Kingdom  |
+|  瑞典  | 瑞士  |  United States  | United Kingdom  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>在商业市场注册咨询服务
 
-首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](https://docs.microsoft.com/azure/marketplace/become-publisher)。 
+首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](become-publisher.md)。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>准备发布项目
 在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。 

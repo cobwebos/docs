@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631746"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078826"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看、添加和删除访问包的分配
 
@@ -58,7 +57,7 @@ ms.locfileid: "80631746"
 
 ### <a name="viewing-assignments-programmatically"></a>以编程方式查看分配
 
-你还可以使用 Microsoft Graph 在访问包中检索分配。  具有具有委托`EntitlementManagement.ReadWrite.All`权限的应用程序的相应角色中的用户可以调用 API 来[列出 accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 在访问包中检索分配。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[列出 accessPackageAssignments](https://docs.microsoft.com/graph/api/accesspackageassignment-list?view=graph-rest-beta)。
 
 ## <a name="directly-assign-a-user"></a>直接分配用户
 
@@ -90,7 +89,7 @@ ms.locfileid: "80631746"
 
 ### <a name="directly-assigning-users-programmatically"></a>直接以编程方式分配用户
 
-你还可以使用 Microsoft Graph 直接将用户分配到访问包。  具有具有委托`EntitlementManagement.ReadWrite.All`权限的应用程序的相应角色中的用户可以调用 API 来[创建 accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 直接将用户分配到访问包。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[创建 accessPackageAssignmentRequest](https://docs.microsoft.com/graph/api/accesspackageassignmentrequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-an-assignment"></a>删除分配
 

@@ -9,17 +9,16 @@ editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 650798fdb884e6494990efb533335a1dd8b4d89f
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 0c54b4e3015e255a6948202a6c3ea7a83362032f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67875393"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514919"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
 
@@ -91,9 +90,9 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
          > [!NOTE]
          > 根据具体的版本，文件名可能有所不同。
       
-1. 单击“下一步”  。
+1. 单击“下一步” 。
 1. 接受**协议条款**，并单击“下一步”。****
-1. 单击“完成”  。
+1. 单击“完成”。
 1. 使用从 StorSimple 存储中划分出来的卷创建文件共享。 有关详细信息，请参阅 [Use the StorSimple Manager service to manage volumes](storsimple-manage-volumes.md)（使用 StorSimple Manager 服务管理卷）。
    
    1. 在本地 VM 上，按 Windows 键 + Q 并搜索 **iSCSI**。
@@ -177,7 +176,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    - RecoveryPlanName__-DeviceIpAddress****：设备的 IP 地址（可以“StorSimple 设备管理器”部分“设置”&gt; **“网络”** &gt; **“DNS 设置”** &gt; **** 组下的“设备”**** 选项卡中找到）。
    - _RecoveryPlanName_**-VolumeContainers**：需要进行故障转移的设备上出现的卷容器的逗号分隔字符串;例如： volcon1、volcon2、volcon3。
    - _RecoveryPlanName_**-TargetDeviceName**：要对其进行故障转移的 StorSimple 云设备。
-   - _RecoveryPlanName_**-TargetDeviceIpAddress**：目标设备的 IP 地址（可在 "**虚拟机**" &gt;部分的 "**设置** &gt; " "**网络**" 选项卡中找到）。
+   - _RecoveryPlanName_**-TargetDeviceIpAddress**：目标设备的 IP 地址（可在 "**虚拟机**" 部分的 " &gt; **设置**" " &gt; **网络**" 选项卡中找到）。
    - _RecoveryPlanName_**-StorageAccountName**：存储脚本（必须在已故障转移的 VM 上运行）的存储帐户名。 可以是具有一些空间暂时存储脚本的任何存储帐户。
    - _RecoveryPlanName_**-StorageAccountKey**：上述存储帐户的访问密钥。
    - _RecoveryPlanName_**-VMGUIDS**：保护 VM 时，Azure Site Recovery 将为每个 VM分配唯一 ID，该 ID 可提供已故障转移的 VM 的详细信息。 若要获取 VMGUID，请选择“恢复服务”**** 选项卡，然后依次单击“受保护的项”**“保护组”** &gt; **“计算机”** &gt; **“属性”** &gt; ****。 如果有多个 VM，请以逗号分隔字符串的形式添加 GUID。
@@ -321,7 +320,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
    ![启动故障回复](./media/storsimple-disaster-recovery-using-azure-site-recovery/image10.png)
 
-## <a name="best-practices"></a>最佳方案
+## <a name="best-practices"></a>最佳实践
 ### <a name="capacity-planning-and-readiness-assessment"></a>容量规划和准备情况评估
 #### <a name="hyper-v-site"></a>Hyper-V 站点
 使用 [User Capacity Planner 工具](https://www.microsoft.com/download/details.aspx?id=39057)为 Hyper-V 副本环境设计服务器、存储和网络基础结构。
@@ -361,5 +360,5 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
   > 请在设备故障转移完成后重新运行恢复计划。
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 使用 Azure Site Recovery，可以针对在 StorSimple 存储中托管文件共享的文件服务器 VM 创建完整的自动化灾难恢复计划。 发生服务中断时，可以在数秒内从任何位置启动故障转移，在数分钟内启动和运行应用程序。

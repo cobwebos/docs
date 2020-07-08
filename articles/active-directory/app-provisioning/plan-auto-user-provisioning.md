@@ -2,21 +2,20 @@
 title: 规划 Azure Active Directory 的自动用户预配部署
 description: 用于计划和执行自动用户预配的指南
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593533"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781627"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -26,7 +25,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)，以更好地了解功能。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。
 
@@ -42,7 +41,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 * **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
-### <a name="licensing"></a>授权
+### <a name="licensing"></a>许可
 
 Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提供自助集成。 有关许可证要求的完整列表，请参阅[Azure AD 授权 "页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -123,7 +122,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 6.  **AD**更新与 Azure AD 同步。 
 7.  **Azure AD 预配服务**回写电子邮件属性和用户名从 Azure AD 到云 HR 应用租户。
 
-## <a name="plan-the-deployment-project"></a>规划部署项目
+## <a name="plan-the-deployment-project"></a>计划部署项目
 
 考虑你的组织需要确定在你的环境中部署用户设置的策略。
 
@@ -133,7 +132,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动与用户交流他们的体验将如何更改，何时会发生更改，以及在遇到问题时如何获取支持。
+沟通对于任何新服务的成功都至关重要。 主动与用户交流他们的体验将如何变化、何时会变化以及在遇到问题时如何获取支持。
 
 ### <a name="plan-a-pilot"></a>规划试点
 
@@ -171,7 +170,7 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 
 下图显示了所需的管理员凭据的一个版本：
 
-![用于管理用户帐户预配设置的 "设置" 屏幕](./media/plan-auto-user-provisioning/userprovisioning-admincredentials.png)
+![用于管理用户帐户预配设置的“预配”屏幕](./media/plan-auto-user-provisioning/userprovisioning-admincredentials.png)
 
 虽然某些应用程序需要管理员用户名和密码，但其他应用程序可能需要持有人令牌。
 
@@ -217,7 +216,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或[为属性映�
 
 * 应用程序可能具有特定的限制和/或要求，用户预配需要满足这些要求才能正常工作。 例如，可宽延时间截断某些属性的值。 请参阅特定于每个应用程序的[自动用户预配教程](../saas-apps/tutorial-list.md)。
 
-* 确认源系统和目标系统之间的架构一致性。 常见问题包括 UPN 或邮件不匹配之类的属性。 例如，在应用程序中，UPN *john_smith@contoso.com* Azure AD 设置为，它是*jsmith@contoso.com*。 有关详细信息，请参阅[用户和组架构参考](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
+* 确认源系统和目标系统之间的架构一致性。 常见问题包括 UPN 或邮件不匹配之类的属性。 例如，在应用程序中，UPN Azure AD 设置为， *john_smith@contoso.com* 它是 *jsmith@contoso.com* 。 有关详细信息，请参阅[用户和组架构参考](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
 
 ## <a name="plan-testing-and-security"></a>规划测试和安全
 
@@ -308,7 +307,7 @@ Azure AD 可以通过审核日志和报告，[进一步深入](../app-provisioni
 
 * [预配到 Azure AD 库应用程序的用户组错误](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
 
-### <a name="helpful-documentation"></a>有用的文档
+### <a name="helpful-documentation"></a>可提供帮助的文档
 
 * [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
 

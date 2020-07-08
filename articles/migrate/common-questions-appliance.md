@@ -2,13 +2,12 @@
 title: Azure Migrate 设备常见问题
 description: 获取有关 Azure Migrate 设备的常见问题的解答。
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/03/2020
+ms.openlocfilehash: afdede99fa4485ba7e5494e844d795c2d5d3deee
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81529682"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078990"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -37,7 +36,7 @@ Azure Migrate 设备是一个轻型设备，Azure Migrate 服务器评估工具�
 
 - 使用用于 VMware Vm 和 Hyper-v Vm 的模板（适用于 VMware 的 .OVA 模板或 Hyper-v 的 VHD）。
 - 如果不想使用模板，或者在 Azure 政府版中，则可以使用 PowerShell 脚本部署适用于 VMware 或 Hyper-v 的设备。
-- 对于物理服务器，你始终使用脚本来部署该设备。
+- 对于物理服务器，应始终使用脚本部署设备。
 
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>设备如何连接到 Azure？
@@ -107,7 +106,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>可以通过设备发现多少 Vm 或服务器？
 
-你最多可以发现10000个 VMware Vm （最多5000个 Hyper-v Vm），并且最多可使用单个设备来250物理服务器。 如果你在本地环境中有更多计算机，请阅读[扩展 hyper-v 评估](scale-hyper-v-assessment.md)、[扩展 VMware 评估](scale-vmware-assessment.md)和[缩放物理服务器评估](scale-physical-assessment.md)。
+你最多可以发现10000个 VMware Vm （最多5000个 Hyper-v Vm），并且最多可使用单个设备来1000物理服务器。 如果你在本地环境中有更多计算机，请阅读[扩展 hyper-v 评估](scale-hyper-v-assessment.md)、[扩展 VMware 评估](scale-vmware-assessment.md)和[缩放物理服务器评估](scale-physical-assessment.md)。
 
 ## <a name="can-i-delete-an-appliance"></a>能否删除设备？
 

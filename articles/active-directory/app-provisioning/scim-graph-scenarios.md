@@ -2,21 +2,20 @@
 title: 使用 SCIM、Microsoft Graph 和 Azure AD 预配用户，并使用数据丰富应用
 description: 同时使用 SCIM 和 Microsoft Graph 来预配用户，并使用所需的数据来丰富应用程序。
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 04/26/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 0b2c8e6bb71e00ccb6eda33ecb1b087d09ce5de7
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781678"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>同时使用 SCIM 和 Microsoft Graph 来预配用户，并使用所需的数据来丰富应用程序
 

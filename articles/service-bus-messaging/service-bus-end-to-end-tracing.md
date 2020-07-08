@@ -1,24 +1,13 @@
 ---
 title: Azure 服务总线端到端跟踪和诊断 | Microsoft Docs
 description: 服务总线客户端诊断和端到端跟踪概述（涉及处理的所有服务均经由的客户端）。
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
-ms.author: aschhab
-ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294171"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340729"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>通过服务总线消息传递进行分布式跟踪和关联
 
@@ -35,7 +24,7 @@ Microsoft Azure 服务总线消息传递已定义生成者与使用者应该用�
 |  Diagnostic-Id       | 生成者针对队列发出的外部调用的唯一标识符。 请参阅 [HTTP 协议中的 Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) 了解事实依据、注意事项和格式 |
 |  Correlation-Context | 操作上下文，将传播到操作处理流程涉及到的所有服务。 有关详细信息，请参阅 [HTTP 协议中的 Correlation-Context](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
 
-## <a name="service-bus-net-client-autotracing"></a>Service Bus .NET 客户端 autotracing
+## <a name="service-bus-net-client-autotracing"></a>服务总线 .NET 客户端自动跟踪
 
 从版本 3.0.0 开始，[适用于 .NET 的 Microsoft Azure 服务总线客户端](/dotnet/api/microsoft.azure.servicebus.queueclient)提供可由跟踪系统或客户端代码片段挂接的跟踪检测点。
 使用检测可以从客户端跟踪对服务总线消息传递服务发出的所有调用。 如果消息处理是通过[消息处理程序模式](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)完成的，则还会检测消息处理
@@ -85,11 +74,11 @@ async Task ProcessAsync(Message message)
 
 如果在消息处理期间对支持的外部组件发出调用，则会自动跟踪和关联这些调用。 请参阅[使用 Application Insights .NET SDK 跟踪自定义操作](../azure-monitor/app/custom-operations-tracking.md)来了解手动跟踪和关联。
 
-如果除 Application Insights SDK 外，还在运行任何外部代码，则查看 Application Insights 日志时应会看到较长的**持续时间**。 
+如果除了 Application Insights SDK 之外，还运行了任何外部代码，则在查看 Application Insights 日志时，会看到更长的持续时间。 
 
-![Application Insights 日志的持续时间长](./media/service-bus-end-to-end-tracing/longer-duration.png)
+![Application Insights 日志中更长的持续时间](./media/service-bus-end-to-end-tracing/longer-duration.png)
 
-这并不意味着收到消息时存在延迟。 在此方案中，由于将消息作为参数传入 SDK 代码，因此已收到消息。 而且，App Insights 日志（**进程**）中的**名称**标记指示消息现在正在由外部事件处理代码处理。 此问题不与 Azure 相关。 相反，这些指标指的是外部代码的效率，因为已从服务总线接收了该消息。 请参阅[GitHub 上的此文件](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)，查看从服务总线收到消息后，生成和分配**进程**标记的位置。 
+这并不意味着接收消息时存在延迟。 在这种情况下，消息已经被接收，因为消息以参数的形式传递给 SDK 代码。 而且，App Insights 日志（进程）中的“名称”标记指示消息正在由外部事件处理代码处理 。 此问题与 Azure 无关。 相反，这些指标指示的是外部代码的效率，前提是已从服务总线接收到消息。 请参阅 [GitHub 上的此文件](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs)，了解从服务总线接收到消息后，生成和分配“进程”标记的位置。 
 
 ### <a name="tracking-without-tracing-system"></a>在没有跟踪系统的情况下进行跟踪
 如果跟踪系统不支持自动服务总线调用跟踪，可以考虑将此类支持添加到跟踪系统或应用程序中。 本部分介绍服务总线 .NET 客户端发送的诊断事件。  

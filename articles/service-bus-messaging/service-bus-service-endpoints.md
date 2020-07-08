@@ -1,21 +1,13 @@
 ---
 title: 为 Azure 服务总线配置虚拟网络服务终结点
 description: 本文提供了有关如何向虚拟网络中添加 Microsoft.ServiceBus 服务终结点的信息。
-services: service-bus
-documentationcenter: ''
-author: axisc
-editor: spelluru
-ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
-ms.author: aschhab
-ms.openlocfilehash: d1766ffb579bb1a86da91ac73a396ce0d008f89e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/23/2020
+ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117618"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340988"
 ---
 # <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>为 Azure 服务总线配置虚拟网络服务终结点
 
@@ -30,7 +22,7 @@ ms.locfileid: "82117618"
 >
 > 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
 >
-> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）  -
+> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - 与 Azure 事件网格的集成
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
@@ -42,7 +34,7 @@ ms.locfileid: "82117618"
 > [!IMPORTANT]
 > 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。
 > 
-> 将 VNet 服务终结点与 Service Bus 一起使用时，不应在混合标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 因为标准层不支持 Vnet。 此终结点仅限为高级层命名空间。
+> 在服务总线中使用 VNet 服务终结点时，不应在将标准层服务总线命名空间和高级层服务总线命名空间混合使用的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 
@@ -54,34 +46,34 @@ ms.locfileid: "82117618"
 
 ## <a name="binding-service-bus-to-virtual-networks"></a>将服务总线绑定到虚拟网络
 
-虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 服务总线服务器接受来自特定虚拟网络子网的连接**。
+虚拟网络规则是一种防火墙安全功能，用于控制是否允许 Azure 服务总线服务器接受来自特定虚拟网络子网的连接。
 
-将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网中创建一个**虚拟网络服务终结点**，**并为其**启用该终结点，如[服务终结点概述][vnet-sep]中所述。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点****。
+将服务总线命名空间绑定到虚拟网络的过程分为两步。 首先需要在虚拟网络子网上创建“虚拟网络服务终结点”，并按照[服务终结点概述][vnet-sep]中的说明为“Microsoft.ServiceBus”启用该终结点 。 添加服务终结点后，使用虚拟网络规则将服务总线命名空间绑定到该终结点。
 
 虚拟网络规则是服务总线命名空间与虚拟网络子网的关联。 存在此规则时，绑定到子网的所有工作负荷都有权访问服务总线命名空间。 服务总线本身永远不会建立出站连接，不需要获得访问权限，因此永远不会通过启用此规则来授予对子网的访问权限。
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 本部分演示如何使用 Azure 门户添加虚拟网络服务终结点。 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
-1. 在[Azure 门户](https://portal.azure.com)中导航到**服务总线命名空间**。
-2. 在左侧菜单中，选择 "**网络**" 选项。 默认情况下，选择 "**所有网络**" 选项。 命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到“服务总线命名空间”。
+2. 在左侧菜单中选择“网络”选项。 默认情况下，“所有网络”选项处于选中状态。 命名空间接受来自任何 IP 地址的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    !["防火墙-所有网络" 选项已选中](./media/service-endpoints/firewall-all-networks-selected.png)
-1. 选择页面顶部的 "**所选网络**" 选项。
-2. 在页面的 "**虚拟网络**" 部分中，选择 " **+ 添加现有虚拟网络**"。 
+    ![防火墙 - 选中了“所有网络”选项](./media/service-endpoints/firewall-all-networks-selected.png)
+1. 在页面顶部，选择“选定的网络”选项。
+2. 在页面的“虚拟网络”部分，选择“+添加现有虚拟网络” 。 
 
     ![添加现有虚拟网络](./media/service-endpoints/add-vnet-menu.png)
-3. 从虚拟网络列表中选择虚拟网络，然后选择**子网**。 在将虚拟网络添加到列表之前，必须先启用服务终结点。 如果未启用服务终结点，门户将提示你启用它。
+3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。
    
    ![选择子网](./media/service-endpoints/select-subnet.png)
 
-4. 为子网启用服务终结点后，应看到以下成功**消息。** 选择页面底部的 "**添加**"，添加网络。 
+4. 为 Microsoft.ServiceBus 启用子网的服务终结点后，应显示指示启用成功的以下消息。 选择页面底部的“添加”，添加网络。 
 
     ![选择子网并启用终结点](./media/service-endpoints/subnet-service-endpoint-enabled.png)
 
     > [!NOTE]
-    > 如果无法启用服务终结点，则可以使用资源管理器模板忽略缺少的虚拟网络服务终结点。 此功能在门户中不可用。
-6. 在工具栏上选择 "**保存**"，保存设置。 等待几分钟，让确认显示在门户通知中。 应禁用 "**保存**" 按钮。 
+    > 如果无法使用资源管理器模板启用服务终结点，可以忽略有关缺少虚拟网络服务终结点的消息。 此功能在门户中不可用。
+6. 在工具栏上选择“保存”，保存这些设置。 等待几分钟，直到门户通知中显示确认消息。 应禁用“保存”按钮。 
 
     ![保存网络](./media/service-endpoints/save-vnet.png)
 
@@ -94,10 +86,10 @@ ms.locfileid: "82117618"
 * **virtualNetworkingSubnetId**：虚拟网络子网的完全限定的资源管理器路径；例如，虚拟网络默认子网的 `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default`。
 
 > [!NOTE]
-> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接****。
-> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”******
+> 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
+> 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> 从
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

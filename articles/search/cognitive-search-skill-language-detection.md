@@ -7,13 +7,12 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: bac2f86f4134cc8d22e9f388b46bc76ab2d0e5ff
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080801"
 ---
 #   <a name="language-detection-cognitive-skill"></a>语言检测认知技能
 
@@ -26,7 +25,7 @@ ms.locfileid: "76045013"
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -41,15 +40,15 @@ Microsoft.Skills.Text.LanguageDetectionSkill
 
 | 输入     | 说明 |
 |--------------------|-------------|
-| text | 要分析的文本。|
+| `text` | 要分析的文本。|
 
 ## <a name="skill-outputs"></a>技能输出
 
-| 输出名称    | 说明 |
+| 输出名称    | 描述 |
 |--------------------|-------------|
-| languageCode | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
-| languageName | 语言的名称。 例如，“英语”。 |
-| score | 一个介于 0 和 1 之间的值。 正确标识语言的可能性。 如果句子中有混合语言，得分可能会低于 1。  |
+| `languageCode` | 标识语言的 ISO 6391 语言代码。 例如，“en”。 |
+| `languageName` | 语言的名称。 例如，“英语”。 |
+| `score` | 一个介于 0 和 1 之间的值。 正确标识语言的可能性。 如果句子中有混合语言，得分可能会低于 1。  |
 
 ##  <a name="sample-definition"></a>示例定义
 

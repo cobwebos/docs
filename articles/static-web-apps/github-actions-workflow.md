@@ -2,17 +2,16 @@
 title: Azure 静态 Web 应用的 GitHub Actions 工作流
 description: 了解如何使用 GitHub 存储库来设置对 Azure 静态 Web 应用的持续部署。
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.author: cshoe
+ms.openlocfilehash: 92d445991aa8b90a343ad7d015787cff35ddf183
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655203"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340932"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用的 GitHub Actions 工作流预览版
 
@@ -50,7 +49,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
@@ -105,7 +106,7 @@ on:
 | 名称  | 说明 |
 |---------|---------|
 |`build_and_deploy_job` | 当对 `on` 属性中列出的分支推送提交或打开拉取请求时执行。 |
-|`close_pull_request_job` | 仅在关闭拉取请求时执行。 |
+|`close_pull_request_job` | 仅在关闭拉取请求时执行，该请求将删除从拉取请求创建的过渡环境。 |
 
 ## <a name="steps"></a>步骤
 

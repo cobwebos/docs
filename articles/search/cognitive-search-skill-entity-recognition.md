@@ -7,13 +7,12 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 06/17/2020
+ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297813"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85080849"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>实体识别认知技能
 
@@ -22,7 +21,7 @@ ms.locfileid: "80297813"
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要[附加可计费的认知服务资源](cognitive-search-attach-cognitive-services.md)。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
+> 内置技能执行按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://azure.microsoft.com/pricing/details/search/)所述。
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -37,18 +36,18 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| categories    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
-|defaultLanguageCode |    输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
-|minimumPrecision | 一个介于 0 和 1 之间的值。 如果置信度分数（在 `namedEntities` 输出中）低于此值，则不会返回该实体。 默认值为 0。 |
-|includeTypelessEntities | 如果要识别不符合当前类别的已知实体，请设置为 `true`。 识别出的实体将在 `entities` 复杂输出字段中返回。 例如，“Windows 10”是一个众所周知的实体（产品），但由于“产品”不是受支持的类别，因此，此实体将包含在实体输出字段中。 默认为 `false` |
+| `categories`    | 应提取的类别的数组。  可能的类别类型有：`"Person"`、`"Location"`、`"Organization"`、`"Quantity"`、`"Datetime"`、`"URL"`、`"Email"`。 如果不提供类别，则返回所有类型。|
+| `defaultLanguageCode` |    输入文本的语言代码。 支持以下语言：`ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`。 并非所有实体类别都支持所有语言；请参阅下文中的说明。|
+| `minimumPrecision` | 一个介于 0 和 1 之间的值。 如果置信度分数（在 `namedEntities` 输出中）低于此值，则不会返回该实体。 默认值为 0。 |
+| `includeTypelessEntities` | 如果要识别不符合当前类别的已知实体，请设置为 `true`。 识别出的实体将在 `entities` 复杂输出字段中返回。 例如，“Windows 10”是一个众所周知的实体（产品），但由于“产品”不是受支持的类别，因此，此实体将包含在实体输出字段中。 默认为 `false` |
 
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 说明                   |
+| 输入名称      | 描述                   |
 |---------------|-------------------------------|
-| languageCode    | 可选。 默认为 `"en"`。  |
-| text          | 要分析的文本。          |
+| `languageCode`    | 可选。 默认值为 `"en"`。  |
+| `text`          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出
 
@@ -57,15 +56,15 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 
 | 输出名称      | 说明                   |
 |---------------|-------------------------------|
-| 人员       | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
-| 位置  | 一个字符串数组，其中，一个字符串表示一个位置。 |
-| 组织  | 一个字符串数组，其中，一个字符串表示一个组织。 |
-| quantities  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
-| dateTimes  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
-| urls | 一个字符串数组，其中，每个字符串都表示一个 URL |
-| emails | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
-| namedEntities | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>value（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（值越高意味着它越有可能是一个真实的实体）</li></ul> |
-| 实体 | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
+| `persons`       | 一个字符串数组，其中，一个字符串表示一个人员名称。 |
+| `locations`  | 一个字符串数组，其中，一个字符串表示一个位置。 |
+| `organizations`  | 一个字符串数组，其中，一个字符串表示一个组织。 |
+| `quantities`  | 一个字符串数组，其中，每个字符串都表示一个数量。 |
+| `dateTimes`  | 一个字符串数组，其中，每个字符串都表示一个日期时间（因为它以文本形式显示）值。 |
+| `urls` | 一个字符串数组，其中，每个字符串都表示一个 URL |
+| `emails` | 一个字符串数组，其中，每个字符串都表示一个电子邮件地址 |
+| `namedEntities` | 复杂类型的数组，包含以下字段： <ul><li>category</li> <li>值（实际实体名称）</li><li>偏移（在文本中找到它的位置）</li><li>置信度（值越高意味着它越有可能是一个真实的实体）</li></ul> |
+| `entities` | 一个复杂类型数组，包含有关从文本提取的实体的丰富信息，具有以下字段 <ul><li> name（实际实体名称。 这表示一个“规范化”窗体）</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl（实体的 Wikipedia 页面的链接）</li><li>bingId</li><li>type（识别的实体的类别）</li><li>subType（仅适用于某些类别，这提供实体类型的更精细视图）</li><li> matches（包含的复杂集合）<ul><li>text（实体的原始文本）</li><li>offset（找到它的位置）</li><li>length（原始实体文本的长度）</li></ul></li></ul> |
 
 ##    <a name="sample-definition"></a>示例定义
 
@@ -187,7 +186,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-请注意，为此技能的输出中的实体返回的偏移量直接从[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)返回，这意味着，如果您使用它们来索引原始字符串，则应使用 .net 中的[system.globalization.stringinfo>](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)类来提取正确的内容。  [可在此处找到更多详细信息。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+请注意，在此技能的输出中，针对实体返回的偏移量是直接从[文本分析 API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) 返回的，这意味着如果使用这些偏移量为原始字符串编制索引，则应使用 .NET 中的 [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) 类来提取正确的内容。  [可在此处找到更多详细信息。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
 ## <a name="error-cases"></a>错误案例
 如果文档的语言代码不受支持，则返回错误，并且不提取任何实体。

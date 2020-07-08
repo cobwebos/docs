@@ -1,24 +1,23 @@
 ---
 title: M 系列 - Azure 虚拟机
 description: M 系列 VM 的规范。
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
-ms.translationtype: MT
+ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744685"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675938"
 ---
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 &reg;在 intel&reg; E7-8890 v3 @ 2.50 ghz 和 intel&reg;强&reg;白金8280M （Cascade Lake）上，支持 M 系列大小。
+M 系列提供高 vCPU 计数（最多 128 个vCPU）和大量内存（最高 3.8 TiB）。 它也非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。 在 Intel &reg; &reg; E7-8890 v3 @ 2.50 Ghz 和 intel &reg; 强 &reg; 白金8280M （Cascade Lake）上，支持 M 系列大小。
 
-M 系列 VM 的 Intel&reg;超线程技术功能。
+M 系列 VM 采用 Intel&reg; 超线程技术。
 
 ACU：160-180
 

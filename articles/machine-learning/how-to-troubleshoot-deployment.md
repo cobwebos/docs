@@ -1,40 +1,25 @@
 ---
-title: 部署故障排除指南
+title: Docker 部署故障排除
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习规避、解决或排查 Azure Kubernetes 服务和 Azure 容器实例的常见 Docker 部署错误。
+description: 了解如何使用 Azure 机器学习使用 Azure Kubernetes 服务和 Azure 容器实例解决、解决常见的 Docker 部署错误，并对其进行故障排除。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: HT
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 13ce9204ad09d2ecb4b149cf50696aa73d927314
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873387"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214360"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>排除 Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署故障
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>排查通过 Azure Kubernetes 服务和 Azure 容器实例进行的模型 Docker 部署 
 
-了解如何使用 Azure 机器学习规避或解决 Azure 容器实例 (ACI) 和 Azure Kubernetes 服务 (AKS) 的常见 Docker 部署错误。
-
-在 Azure 机器学习中部署模型时，系统将执行大量任务。
-
-推荐使用且最新的模型部署方法是使用 [Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 并将 [Environment](how-to-use-environments.md) 对象作为输入参数。 在这种情况下，我们的服务将在部署阶段为你创建一个基础 docker 映像，并在一次调用中装载所需的全部模型。 基本部署任务包括：
-
-1. 在工作区模型注册表中注册模型。
-
-2. 定义推理配置：
-    1. 根据你在环境 yaml 文件中指定的依赖项创建一个 [Environment](how-to-use-environments.md) 对象，或者使用我们获得的环境之一。
-    2. 基于环境和评分脚本创建推理配置（InferenceConfig 对象）。
-
-3. 将模型部署到 Azure 容器实例 (ACI) 服务或 Azure Kubernetes 服务 (AKS)。
-
-请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
+了解如何使用 Azure 机器学习对 Azure 容器实例（ACI）和 Azure Kubernetes 服务（AKS）进行常见的 Docker 部署错误的疑难解答和解决。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,6 +30,22 @@ ms.locfileid: "83873387"
 * 若要在本地调试，则必须在本地系统上安装一个有效的 Docker。
 
     若要验证 Docker 安装，请从终端或命令提示符使用命令 `docker run hello-world`。 有关安装 Docker 或排除 Docker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>适用于 Docker 部署机器学习模型的步骤
+
+在 Azure 机器学习中部署模型时，系统将执行大量任务。
+
+建议模型部署的方法是通过使用[环境](how-to-use-environments.md)对象作为输入参数的[deploy （） API。](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 在这种情况下，服务会在部署阶段创建基本的 docker 映像，并在一次调用中装载所需的模型。 基本部署任务包括：
+
+1. 在工作区模型注册表中注册模型。
+
+2. 定义推理配置：
+    1. 根据你在环境 yaml 文件中指定的依赖项创建一个 [Environment](how-to-use-environments.md) 对象，或者使用我们获得的环境之一。
+    2. 基于环境和评分脚本创建推理配置（InferenceConfig 对象）。
+
+3. 将模型部署到 Azure 容器实例 (ACI) 服务或 Azure Kubernetes 服务 (AKS)。
+
+请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -124,7 +125,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-请注意，如果要定义自己的 Conda 规范 YAML，则必须使用版本 1.0.45 或更高版本将 azureml-defaults 列为 pip 依赖项。 此包包含将模型托管为 Web 服务所需的功能。
+如果要定义自己的 conda 规范 YAML，必须使用版本 >= 1.0.45 作为 pip 依赖项列出 azureml 默认值。 此包包含将模型托管为 Web 服务所需的功能。
 
 此时，你可以正常使用该服务。 例如，以下代码演示了将数据发送到该服务的过程：
 
@@ -182,9 +183,9 @@ print(ws.webservices['mysvc'].get_logs())
 ```
 ## <a name="container-cannot-be-scheduled"></a>无法计划容器
 
-将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在 5 分钟后，群集中未提供具有相应可用资源量的节点，则部署将失败，并显示消息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00`。 可通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 
+将服务部署到 Azure Kubernetes Service 计算目标时，Azure 机器学习将尝试使用请求的资源量来计划服务。 如果在5分钟后，群集中没有可用的可用资源量的节点，则部署将失败，并显示消息 `Couldn't Schedule because the kubernetes cluster didn't have available resources after trying for 00:05:00` 。 可通过添加更多节点、更改节点的 SKU 或更改服务的资源要求来解决此错误。 
 
-该错误消息通常会指示你更需要哪一种资源 - 例如，如果看到一条指示 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 的错误消息，则意味着该服务需要 GPU，且群集中有 3 个节点没有可用的 GPU。 如果使用的是 GPU SKU，则可以通过添加更多节点来解决此问题；如果使用的不是 GPU SKU，则可以通过切换到启用 GPU 的 SKU，或将环境更改为不需要 GPU 来解决此问题。  
+例如，如果看到一条错误消息，指出该 `0/3 nodes are available: 3 Insufficient nvidia.com/gpu` 服务需要 gpu，并且群集中有三个节点没有可用 gpu，则该错误消息通常会指示需要更多的资源。 如果使用的是 GPU SKU，则可以通过添加更多节点来解决此问题；如果使用的不是 GPU SKU，则可以通过切换到启用 GPU 的 SKU，或将环境更改为不需要 GPU 来解决此问题。  
 
 ## <a name="service-launch-fails"></a>服务启动失败
 
@@ -275,7 +276,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 504 状态代码指示请求已超时。默认超时值为 1 分钟。
 
-可通过修改 score.py，删除不必要的调用来增加超时值或尝试加快服务速度。 如果这些操作不能解决问题，请使用本文中的信息调试 score.py 文件。 代码可能处于挂起状态或为无限循环。
+可通过修改 score.py，删除不必要的调用来增加超时值或尝试加快服务速度。 如果这些操作不能解决问题，请使用本文中的信息调试 score.py 文件。 代码可能处于无响应状态或无限循环。
 
 ## <a name="advanced-debugging"></a>高级调试
 

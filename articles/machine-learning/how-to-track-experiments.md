@@ -1,7 +1,7 @@
 ---
 title: 记录 ML 试验和指标
 titleSuffix: Azure Machine Learning
-description: 监视 Azure ML 试验并监视运行指标来增强模型创建过程。 将日志记录添加到训练脚本并查看运行的记录结果。  使用 run.log、Run.start_logging 或 ScriptRunConfig.
+description: 监视 Azure ML 试验和运行指标，以便改进模型创建过程。 将日志记录添加到训练脚本并查看运行的记录结果。  使用 run.log、Run.start_logging 或 ScriptRunConfig。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -9,32 +9,31 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9613b74b727d27bd47a05fadc1398bf898f667a5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835711"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675196"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-通过跟踪试验和监视运行指标来增强模型创建过程。 在本文中，了解如何将日志记录代码添加到训练脚本，提交试验运行，监视该运行并在 Azure 机器学习中检查结果。
+通过跟踪试验并监视运行指标来改进模型创建过程。 本文介绍如何将日志记录代码添加到训练脚本、提交试验运行、监视运行以及在 Azure 机器学习中检查结果。
 
 > [!NOTE]
-> Azure 机器学习还可以在训练期间记录来自其他源的信息，例如自动化机器学习运行或运行训练作业的 Docker 容器。 未记录这些日志。 如果遇到问题，请联系 Microsoft 支持部门，他们可以在故障排除过程中使用这些日志。
+> Azure 机器学习还可以在训练期间记录其他来源的信息，例如自动化机器学习运行或运行训练作业的 Docker 容器。 本文不介绍此类日志。 如果遇到问题且联系了 Microsoft 支持部门，他们可以在排除故障时使用这些日志。
 
 > [!TIP]
-> 本文档中的信息主要面向需要监视模型训练过程的数据科学家与开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
+> 本文档中的信息主要是为希望监视模型训练过程的数据科学家和开发人员提供的。 如果你是一名管理员，希望监视 Azure 机器学习的资源使用情况和事件，例如配额、已完成的训练运行或已完成的模型部署，请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。
 
-## <a name="available-metrics-to-track"></a>要跟踪的可用指标
+## <a name="available-metrics-to-track"></a>可跟踪的指标
 
 训练实验时可将以下指标添加到运行中。 若要查看可在运行中跟踪的内容的更详细列表，请参阅 [Run 类参考文档](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)。
 
-|类型| Python 函数 | 说明|
+|类型| Python 函数 | 注释|
 |----|:----|:----|
 |标量值 |函数：<br>`run.log(name, value, description='')`<br><br>示例：<br>run.log("accuracy", 0.95) |使用给定名称将数值或字符串值记录到运行中。 在运行中记录某个指标会导致在试验中的运行记录中存储该指标。  可在一次运行中多次记录同一指标，其结果被视为该指标的一个矢量。|
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
@@ -70,7 +69,7 @@ ms.locfileid: "83835711"
 
 ### <a name="load-the-data"></a>加载数据
 
-此示例使用 scikit-learn 提供的糖尿病数据集，这是一个众所周知的小型数据集。 此单元会加载数据集，并将其拆分为随机训练集和测试集。
+本示例使用 scikit-learn 附带的糖尿病数据集（一个众所周知的小型数据集）。 此单元会加载数据集，并将其拆分为随机训练集和测试集。
 
 [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb?name=load_data)]
 
@@ -83,7 +82,7 @@ ms.locfileid: "83835711"
 
 ## <a name="option-2-use-scriptrunconfig"></a>选项 2：使用 ScriptRunConfig
 
-[**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 是用于设置脚本运行配置的一个类。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
+[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) 是用于设置脚本运行配置的一个类。 使用此选项，可添加监视代码，在运行完成时发出通知，或让视觉小组件执行监视操作。
 
 此示例在上面的基本 sklearn 岭模型的基础上进行扩展。 它会对模型的 alpha 值执行简单的参数扫描以捕获指标，并通过在实验中运行来训练模型。 该示例在一个用户管理的环境中执行本地运行。 
 
@@ -127,6 +126,8 @@ ms.locfileid: "83835711"
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -134,28 +135,28 @@ ms.locfileid: "83835711"
 
 ## <a name="manage-a-run"></a>管理运行
 
-[启动、监视和取消训练运行](how-to-manage-runs.md)文章重点介绍了用于管理试验的特定 Azure 机器学习工作流。
+[启动、监视和取消训练运行](how-to-manage-runs.md)一文重点介绍了关于管理试验的特定 Azure 机器学习工作流。
 
 ## <a name="view-run-details"></a>查看运行详细信息
 
-### <a name="view-activequeued-runs-from-the-browser"></a>查看浏览器中处于活动/排队状态的运行
+### <a name="view-activequeued-runs-from-the-browser"></a>在浏览器中查看活动/已排队运行
 
-用于训练模型的计算目标是共享资源。 因此它们可能在给定时间让多个运行处于排队或活动状态。 若要从浏览器查看特定计算目标的运行，请执行以下步骤：
+用于训练模型的计算目标是共享资源。 所以在某些时间点，它们可能会有多个排队或活动的运行。 若要在浏览器中查看特定计算目标的运行，请执行以下步骤：
 
-1. 在 [Azure 机器学习工作室](https://ml.azure.com/)中，选择工作区，然后在页面左侧选择“计算”。
+1. 在 [Azure 机器学习工作室](https://ml.azure.com/)中选择自己的工作区，然后在页面左侧选择“计算”。
 
-1. 选择“训练群集”以显示用于训练的计算目标列表。 然后选择群集。
+1. 选择“正在训练群集”，显示用于训练的计算目标列表。 然后选择群集。
 
     ![选择训练群集](./media/how-to-track-experiments/select-training-compute.png)
 
-1. 选择“运行”。 此时将显示使用此群集的运行列表。 若要查看特定运行的详细信息，请使用“运行”列中的链接。 若要查看试验的详细信息，请使用“试验”列中的链接。
+1. 选择“运行”。 此时显示使用此群集的运行列表。 若要查看某个特定运行的详细信息，请点击“运行”列中的链接。 若要查看试验的详细信息，请点击“试验”列中的链接。
 
-    ![选择用于训练群集的运行](./media/how-to-track-experiments/show-runs-for-compute.png)
+    ![选择训练群集的运行](./media/how-to-track-experiments/show-runs-for-compute.png)
     
     > [!TIP]
-    > 一个运行可以包含多个子运行，因此，一个训练作业可能会产生多个条目。
+    > 一个运行可以包含多个子级运行，所以一个训练作业可能会产生多个条目。
 
-运行完成后，它将不再显示在此页上。 若要查看已完成运行的信息，请访问工作室的“试验”部分，然后选择“试验”和“运行”。 有关详细信息，请参阅[查询运行指标](#queryrunmetrics)部分。
+完成的运行将不再显示在此页上。 若要查看已完成运行的信息，请访问工作室的“试验”部分，然后选择试验和运行。 有关详细信息，请参阅[查询运行指标](#queryrunmetrics)部分。
 
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>使用 Jupyter 笔记本小组件监视运行
 使用 ScriptRunConfig 方法提交运行时，可使用 [Jupyter 小组件](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)监视运行的进度。 和运行提交一样，该小组件采用异步方式，并每隔 10-15 秒提供实时更新，直到作业完成。
@@ -169,13 +170,13 @@ ms.locfileid: "83835711"
 
    ![Jupyter 笔记本小组件的屏幕截图](./media/how-to-track-experiments/run-details-widget.png)
 
-   还可以获取工作区中相同显示的链接。
+   也可以在工作区中找到指向此画面的链接。
 
    ```python
    print(run.get_portal_url())
    ```
 
-2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 将 `<<experiment_name>>` 替换为适当的试验名称：
+2. **[适用于自动化机器学习运行]** 从以前的运行访问图表。 将 `<<experiment_name>>` 替换为相应的试验名称：
 
    ``` 
    from azureml.widgets import RunDetails
@@ -190,7 +191,7 @@ ms.locfileid: "83835711"
    ![自动化机器学习的 Jupyter Notebook 小组件](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-若要查看某个管道的其他详细信息，请在表中单击要探索的管道，随后，图表将在 Azure 机器学习的弹出窗口中呈现。
+若要查看某个管道的其他详细信息，请在表中单击要探索的管道，随后，图表将在 Azure 机器学习工作室的弹出窗口中呈现。
 
 ### <a name="get-log-results-upon-completion"></a>完成时获取日志结果
 
@@ -203,15 +204,17 @@ ms.locfileid: "83835711"
 可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 现在可以获取上面示例中记录的所有指标以确定最佳模型。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studio"></a>在 [Azure 机器学习工作室](https://ml.azure.com)中的工作区中查看此试验
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studio"></a>在 [Azure 机器学习工作室](https://ml.azure.com)中查看工作区中的试验
 
-当实验完成运行时，可浏览到试验运行记录。 可以从 [Azure 机器学习工作室](https://ml.azure.com)访问历史记录。
+当实验完成运行时，可浏览到试验运行记录。 可在 [Azure 机器学习工作室](https://ml.azure.com)中访问历史记录。
 
-导航到“试验”选项卡并选择试验。 此时会转到试验运行仪表板，可在其中查看每次运行记录的跟踪指标和图表。 在本例中，记录了 MSE 和 alpha 值。
+导航到“试验”选项卡并选择自己的试验。 此时会转到试验运行仪表板，可在其中查看为每个运行记录的跟踪指标和图表。 
 
-  ![Azure 机器学习工作室中的运行详细信息](./media/how-to-track-experiments/experiment-dashboard.png)
+可以编辑“运行列表”表，以显示运行的最新记录值、最小记录值或最大记录值。 可以在运行列表中选中或取消选中多个运行，而选中的运行将使用数据填充图表。 还可以添加新图表或编辑图表，以比较多个运行中记录的指标（最小值、最大值、最近的值或所有值）。 为了更有效地浏览数据，还可以将图表最大化。
 
-可向下钻取到特定运行以查看其输出或日志，或下载提交的试验的快照，以便与他人共享试验文件夹。
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Azure 机器学习工作室中的运行详细信息":::
+
+还可以向下钻取至特定运行以查看其输出或日志，或下载提交的试验的快照，以便与其他人共享试验文件夹。
 
 ### <a name="viewing-charts-in-run-details"></a>在运行详细信息中查看图表
 

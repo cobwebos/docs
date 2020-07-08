@@ -9,33 +9,32 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 5955f52cda73630f371a46f83ac0fb9a252b80e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655489"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040242"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>在 Azure AD 域服务中创建组托管服务帐户（gMSA）
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中创建组托管服务帐户（gMSA）
 
 应用程序和服务通常需要使用标识对其他资源进行身份验证。 例如，web 服务可能需要使用数据库服务进行身份验证。 如果某个应用程序或服务有多个实例（如 web 服务器场），则手动创建和配置这些资源的标识会耗费时间。
 
 相反，可以在 Azure Active Directory 域服务（Azure AD DS）托管域中创建组托管服务帐户（gMSA）。 Windows OS 自动管理 gMSA 的凭据，这简化了大量资源组的管理。
 
-本文说明如何使用 Azure PowerShell 在 Azure AD DS 托管域中创建 gMSA。
+本文介绍如何使用 Azure PowerShell 在托管域中创建 gMSA。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
-若要完成本文，需要具备以下资源和权限：
+需要拥有以下资源和权限才能完成本文中的操作：
 
 * 一个有效的 Azure 订阅。
     * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请完成[创建和配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]的教程。
+    * 如果需要，请完成[创建和配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]的教程。
 * 已加入到 Azure AD DS 托管域的 Windows Server 管理 VM。
     * 如果需要，请完成[创建管理 VM][tutorial-create-management-vm]教程。
 
@@ -49,11 +48,11 @@ ms.locfileid: "80655489"
 
 ## <a name="using-service-accounts-in-azure-ad-ds"></a>使用 Azure AD DS 中的服务帐户
 
-由于 Azure AD DS 托管域被 Microsoft 锁定并由 Microsoft 管理，因此，在使用服务帐户时，需要注意以下事项：
+当托管域被 Microsoft 锁定并管理时，使用服务帐户时需要注意以下事项：
 
 * 在托管域上的自定义组织单位（OU）中创建服务帐户。
     * 无法在内置*AADDC Users*或*AADDC 计算机*ou 中创建服务帐户。
-    * 请改为在 Azure AD DS 托管域中[创建自定义 ou][create-custom-ou] ，然后在该自定义 OU 中创建服务帐户。
+    * 请改为在托管域中[创建自定义 ou][create-custom-ou] ，然后在该自定义 ou 中创建服务帐户。
 * 已预先创建密钥分发服务（KDS）根密钥。
     * KDS 根密钥用于生成和检索 Gmsa 的密码。 在 Azure AD DS 中，将为你创建 KDS 根。
     * 你没有权限创建另一个，或查看默认的 KDS 根密钥。
@@ -65,7 +64,7 @@ ms.locfileid: "80655489"
 > [!TIP]
 > 若要完成这些步骤以创建 gMSA，请[使用管理 VM][tutorial-create-management-vm]。 此管理 VM 应已具有所需的 AD PowerShell cmdlet 并连接到托管域。
 
-以下示例在名为*aaddscontoso.com*的 Azure AD DS 托管域中创建名为*myNewOU*的自定义 OU。 使用你自己的 OU 和托管域名：
+以下示例在名为*aaddscontoso.com*的托管域中创建名为*myNewOU*的自定义 OU。 使用你自己的 OU 和托管域名：
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"

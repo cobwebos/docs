@@ -1,22 +1,22 @@
 ---
-title: 块 blob 的时间点还原（预览）
+title: 块 blob 的时间点还原（预览版）
 titleSuffix: Azure Storage
 description: 块 blob 的时间点还原通过使你能够在给定的时间点将存储帐户还原到其以前的状态，来防止意外删除或损坏。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.custom: references_regions
+ms.openlocfilehash: 60f83fae6e7e685a1065d1c01327a004d9bb2864
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195217"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84675646"
 ---
-# <a name="point-in-time-restore-for-block-blobs-preview"></a>块 blob 的时间点还原（预览）
+# <a name="point-in-time-restore-for-block-blobs-preview"></a>块 blob 的时间点还原（预览版）
 
 时间点还原通过使你能够将块 blob 数据还原到更早的状态来防止意外删除或损坏。 当用户或应用程序意外删除数据或应用程序错误损坏数据的情况下，时间点还原非常有用。 时间点还原还支持测试方案，这些方案需要在运行其他测试之前将数据集还原到已知状态。
 
@@ -26,15 +26,13 @@ ms.locfileid: "83195217"
 
 若要启用时间点还原，请创建存储帐户的管理策略并指定保持期。 在保留期内，可以将块 blob 从当前状态还原到上一个时间点的状态。
 
-若要启动时间点还原，请调用[还原 Blob 范围](/rest/api/storagerp/storageaccounts/restoreblobranges)操作并指定 UTC 时间的还原点。 可以指定要还原的容器和 blob 名称的字典范围，或省略存储帐户中所有容器的还原范围。 "**还原 Blob 范围**" 操作返回唯一标识操作的还原 ID。
+若要启动时间点还原，请调用[还原 Blob 范围](/rest/api/storagerp/storageaccounts/restoreblobranges)操作并指定 UTC 时间的还原点。 您可以指定要还原的容器和 blob 名称的字典范围，或省略存储帐户中所有容器的还原范围。 每个还原操作最多支持10个字典范围。
 
 Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段内指定的 blob 所做的所有更改。 还原操作是原子操作，因此要么完全还原所有更改，要么失败。 如果存在无法还原的 blob，则操作将失败，并且会恢复受影响的容器的读取和写入操作。
 
-请求还原操作时，Azure 存储会阻止在操作期间还原的 blob 中的 blob 上的数据操作。 读取、写入和删除操作在主位置中被阻止。 如果存储帐户是异地复制的，则在还原操作期间，从辅助位置读取操作可能会继续。
-
 一次只能在一个存储帐户上运行一个还原操作。 还原操作在执行后将无法取消，但可以执行第二个还原操作来撤消第一个操作。
 
-若要检查时间点还原的状态，请使用**还原 Blob 范围**操作返回的还原 ID 调用 "**获取还原状态**" 操作。
+"**还原 Blob 范围**" 操作返回唯一标识操作的还原 ID。 若要检查时间点还原的状态，请使用**还原 Blob 范围**操作返回的还原 ID 调用 "**获取还原状态**" 操作。
 
 请记住以下有关还原操作的限制：
 
@@ -43,18 +41,23 @@ Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段�
 - 在还原操作过程中，不会创建或删除快照。 只有基本 blob 还原到其以前的状态。
 - 如果在当前时间与还原点之间的时间段内，blob 已移动到热层和冷层之间，则会将 blob 还原到其以前的层。 但是，将不会还原已移动到 "存档" 层的 blob。
 
+> [!IMPORTANT]
+> 执行还原操作时，Azure 存储会阻止在操作期间还原的范围内的 blob 上的数据操作。 读取、写入和删除操作在主位置中被阻止。 出于此原因，在执行还原操作时，Azure 门户中的操作（如列出容器）可能不会按预期执行。
+>
+> 如果存储帐户是异地复制的，则在还原操作期间，从辅助位置读取操作可能会继续。
+
 > [!CAUTION]
-> 时间点还原仅支持对块 blob 还原操作。 无法还原容器上的操作。 如果从存储帐户中删除容器，方法是在时间点还原预览期间调用 "[删除容器](/rest/api/storageservices/delete-container)" 操作，则不能使用还原操作来还原该容器。 在预览期间，如果你可能想要还原某个容器，则请删除该容器，而不是删除它。
+> 时间点还原仅支持对块 blob 执行还原操作。 无法还原对容器的操作。 在时间点还原预览版期间，如果你通过调用[删除容器](/rest/api/storageservices/delete-container)操作从存储帐户中删除了容器，将无法使用还原操作来还原该容器。 在预览版期间，如果希望能够还原，请不要删除容器，而是删除各个 blob。
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>时间点还原的先决条件
 
 时间点还原需要启用以下 Azure 存储功能：
 
 - [软删除](soft-delete-overview.md)
-- [更改源（预览）](storage-blob-change-feed.md)
-- [Blob 版本控制（预览）](versioning-overview.md)
+- [更改源（预览版）](storage-blob-change-feed.md)
+- [Blob 版本控制（预览版）](versioning-overview.md)
 
-启用时间点还原之前，为存储帐户启用这些功能。 在启用更改源和 blob 版本控制之前，请务必注册这些预览。
+启用时间点还原之前，为存储帐户启用这些功能。 在启用更改源和 blob 版本控制预览版之前，请务必注册这些预览版。
 
 ### <a name="retention-period-for-point-in-time-restore"></a>时间点还原的保留期
 
@@ -81,16 +84,18 @@ Azure 存储会分析在所请求的还原点（UTC 时间）和当前时间段�
 预览包含以下限制：
 
 - 不支持还原高级块 blob。
-- 不支持还原存档层中的 blob。 例如，如果热层中的 blob 在两天前移到了存档层，并且还原操作在三天前还原，则 blob 不会还原到热层。
+- 不支持还原存档层中的 blob。 例如，如果热层中的某一 blob 在两天前已移至存档层，而还原操作还原至三天前的某个时间点，则该 blob 不会被还原至热层。
 - 不支持还原 Azure Data Lake Storage Gen2 平面和分层命名空间。
 - 不支持使用客户提供的密钥还原存储帐户。
 
 > [!IMPORTANT]
-> 时间点还原预览版仅适用于非生产。 生产服务级别协议 (SLA) 当前不可用。
+> 此时间点还原预览版仅适用于非生产用途。 生产服务级别协议 (SLA) 当前不可用。
 
 ### <a name="register-for-the-preview"></a>注册预览版
 
-若要注册预览版，请从 Azure PowerShell 运行以下命令：
+若要注册预览版，请运行以下命令：
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 # Register for the point-in-time restore preview
@@ -100,16 +105,28 @@ Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Mic
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
 # Register for blob versioning (preview)
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName Versioning
+Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
+az feature register --namespace Microsoft.Storage --name Changefeed
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
+```
+
+---
+
 ### <a name="check-registration-status"></a>检查注册状态
 
-若要检查注册状态，请运行以下命令：
+时间点还原的注册是自动进行的，并且应不超过10分钟。 若要检查注册状态，请运行以下命令：
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -117,7 +134,20 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Changefeed
+
+Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
+    -FeatureName Versioning
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/RestoreBlobRanges')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Changefeed')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning')].{Name:name,State:properties.state}"
+```
+
+---
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
@@ -127,13 +157,13 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 
 有关时点还原的定价的详细信息，请参阅[阻止 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="ask-questions-or-provide-feedback"></a>提出问题或提供反馈
+## <a name="ask-questions-or-provide-feedback"></a>提问或提供反馈
 
 若要提问有关时间点还原预览的问题或提供反馈，请联系 Microsoft pitrdiscussion@microsoft.com 。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [启用和管理块 blob 的时间点还原（预览）](point-in-time-restore-manage.md)
-- [Azure Blob 存储中的更改源支持（预览版）](storage-blob-change-feed.md)
+- [为块 blob 启用和管理时间点还原（预览版）](point-in-time-restore-manage.md)
+- [Azure Blob 存储中的更改源支持（预览）](storage-blob-change-feed.md)
 - [为 blob 启用软删除](soft-delete-enable.md)
 - [启用和管理 blob 版本控制](versioning-enable.md)

@@ -5,16 +5,15 @@ services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f264a62428f919fe23797171926ddf63c585c42b
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
-ms.translationtype: HT
+ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234131"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214445"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
@@ -179,6 +178,37 @@ WHERE
 
 > [!NOTE]
 > 如果未指定 ESCAPECHAR，此查询将失败，因为 "Slov,enia" 中的逗号将被视为字段分隔符，而不是国家/地区名称的一部分。 "Slov,enia" 将被视为两个列。 因此，该特定行将比其他行多一列，并且比 WITH 子句中定义的列数多一列。
+
+### <a name="escaping-quoting-characters"></a>转义引用字符
+
+下面的查询显示了如何读取带有标题行的文件，其中包含 Unix 样式的新行、逗号分隔的列和值中的转义双引号字符。 请注意文件位置，相较其他示例中有何不同。
+
+文件预览：
+
+![下面的查询显示了如何读取带有标题行的文件，其中包含 Unix 样式的新行、逗号分隔的列和值中的转义双引号字符。](./media/query-single-csv-file/population-unix-hdr-escape-quoted.png)
+
+```sql
+SELECT *
+FROM OPENROWSET(
+        BULK 'csv/population-unix-hdr-escape-quoted/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIELDTERMINATOR =',',
+        ROWTERMINATOR = '0x0a',
+        FIRSTROW = 2
+    )
+    WITH (
+        [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
+        [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
+        [year] smallint,
+        [population] bigint
+    ) AS [r]
+WHERE
+    country_name = 'Slovenia';
+```
+
+> [!NOTE]
+> 必须使用其他引号字符来转义引号字符。 要让引号字符出现在列值内，必须将值放在引号中。
 
 ## <a name="tab-delimited-files"></a>制表符分隔的文件
 

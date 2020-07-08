@@ -7,7 +7,7 @@ author: msaburnley
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.subservice: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
@@ -15,15 +15,14 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049936"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85799355"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
-Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和在线计费支持以更多的语言提供。 
+Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和联机帐单支持可使用其他语言。 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>无需开具支持票证即可获得帮助
 
@@ -46,30 +45,29 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后打开“Azure Active Directory”。****
    
-2. 向下滚动到“故障排除 + 支持”并选择“新建支持请求”。********
+1. 向下滚动到“故障排除 + 支持”并选择“新建支持请求”。********
    
-3. 在“基本信息”边栏选项卡上，请为“问题类型”选择“技术”。************
+1. 在“基本信息”边栏选项卡上，请为“问题类型”选择“技术”。************
 
-4. 选择**订阅**。
+1. 选择**订阅**。
 
-5. 对于 "**服务**"，选择**Azure Active Directory**。
+1. 对于 "**服务**"，选择**Azure Active Directory**。
 
-6. 为请求创建**摘要**。 摘要的长度必须为140个字符。
+1. 为请求创建**摘要**。 摘要的长度必须为140个字符。
   
-7. 选择 "**问题类型**"，然后选择该类型的类别。 此时，屏幕上还会针对问题类别提供自助信息。
+1. 选择 "**问题类型**"，然后选择该类型的类别。 此时，屏幕上还会针对问题类别提供自助信息。
   
-7. 添加剩余的问题信息，然后单击“下一步”。**** 
+1. 添加剩余的问题信息，然后单击“下一步”。**** 
 
-8. 此时，你将在 "**解决方案**" 边栏选项卡中提供自助解决方案和文档。 如果没有解决方案解决问题，请单击 "**下一步**"。 
+1. 此时，你将在 "**解决方案**" 边栏选项卡中提供自助解决方案和文档。 如果没有解决方案解决问题，请单击 "**下一步**"。 
 
-9. 在 "**详细信息**" 边栏选项卡上，填写所需的详细信息并选择一个[严重性](https://azure.microsoft.com/support/plans/response/)。 
+1. 在 "**详细信息**" 边栏选项卡上，填写所需的详细信息并选择一个[严重性](https://azure.microsoft.com/support/plans/response/)。 
  
-![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
-10. 提供联系信息，然后选择 "**下一步**"。 
+1. 提供联系信息，然后选择 "**下一步**"。 
 
-
-8. 提供联系信息，然后选择“创建”。****
+1. 提供联系信息，然后选择“创建”。****
   ![问题类别自助屏幕截图](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 
 ### <a name="how-to-open-a-support-ticket-for-azure-ad-in-the-microsoft-365-admin-center"></a>如何在 Microsoft 365 管理中心为 Azure AD 打开支持票证
@@ -79,19 +77,19 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 1. 使用具有企业移动性 + 安全性（EMS）许可证的帐户登录到[Microsoft 365 管理中心](https://admin.microsoft.com)。
 
-2. 在“支持”磁贴上，选择“新建服务请求”********：
+1. 在“支持”磁贴上，选择“新建服务请求”********：
 
-3. 在“支持概述”页上，选择“标识管理”或“用户和域管理”************：
+1. 在“支持概述”页上，选择“标识管理”或“用户和域管理”************：
 
-4. 对于“功能”，请选择需要获得相关支持的 Azure AD 功能。****
+1. 对于“功能”，请选择需要获得相关支持的 Azure AD 功能。****
 
-5. 对于“症状”，请选择适当的症状，概述问题并提供相关详细信息，然后选择“下一步”。********
+1. 对于“症状”，请选择适当的症状，概述问题并提供相关详细信息，然后选择“下一步”。********
 
-6. 选择提供的自助资源之一，或者选择“是，继续”或“否，取消请求”。********
+1. 选择提供的自助资源之一，或者选择“是，继续”或“否，取消请求”。********
 
-7. 如果继续，系统会要求提供更多详细信息。 可以附加现有的任何文件来陈述问题，然后选择“下一步”。****
+1. 如果继续，系统会要求提供更多详细信息。 可以附加现有的任何文件来陈述问题，然后选择“下一步”。****
 
-8. 提供联系信息，然后选择“提交请求”。****
+1. 提供联系信息，然后选择“提交请求”。****
 
 ## <a name="get-phone-support"></a>获取电话支持
 

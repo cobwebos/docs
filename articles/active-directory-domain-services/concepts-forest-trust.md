@@ -8,14 +8,13 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476438"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040327"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中的资源林的信任关系的工作原理
 
@@ -26,6 +25,10 @@ Active Directory 域服务（AD DS）通过域和林信任关系提供跨多个�
 AD DS 和 Windows 分布式安全模型提供的访问控制机制为域和林信任的操作提供了一个环境。 为了使这些信任能够正常运行，每个资源或计算机必须对其所在的域中的 DC 具有直接信任路径。
 
 使用经过身份验证的远程过程调用（RPC）与受信任的域颁发机构的连接，由 Net Logon 服务实现此信任路径。 安全通道还通过域间信任关系扩展到其他 AD DS 域。 此安全通道用于获取和验证安全信息，包括用户和组的安全标识符（Sid）。
+
+有关信任如何应用于 Azure AD DS 的概述，请参阅[资源林概念和功能][create-forest-trust]。
+
+若要开始在 Azure AD DS 中使用信任，请[创建使用林信任的托管域][tutorial-create-advanced]。
 
 ## <a name="trust-relationship-flows"></a>信任关系流
 
@@ -70,7 +73,7 @@ AD DS 林中的所有域信任都是双向可传递信任。 创建新的子域�
 
 下图显示了一个组织中三个 AD DS 林之间的两个单独的林信任关系。
 
-![单个组织内的林信任关系示意图](./media/concepts-forest-trust/forest-trusts.png)
+![单个组织内的林信任关系示意图](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 此示例配置提供以下访问权限：
 
@@ -128,7 +131,7 @@ Kerberos 协议还使用信任来实现跨领域票证授予服务（TGS），�
 
 2. 当前域与信任路径上的下一个域之间是否存在可传递信任关系？
     * 如果是，则向客户端发送对信任路径上的下一个域的引用。
-    * 如果不是，则向客户端发送拒绝登录消息。
+    * 如果不是，则向客户端发送登录拒绝的消息。
 
 ### <a name="ntlm-referral-processing"></a>NTLM 引用处理
 
@@ -152,7 +155,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
 第一次建立林信任时，每个林都收集其伙伴林中的所有受信任命名空间，并将信息存储在[受信任的域对象](#trusted-domain-object)中。 受信任的命名空间包括域树名称、用户主体名称（UPN）后缀、服务主体名称（SPN）后缀和在其他林中使用的安全 ID （SID）命名空间。 TDO 对象将被复制到全局编录。
 
-在身份验证协议可以遵循林信任路径之前，必须将资源计算机的服务主体名称（SPN）解析为其他林中的某个位置。 SPN 可以是以下项之一：
+在身份验证协议可以遵循林信任路径之前，必须将资源计算机的服务主体名称（SPN）解析为其他林中的某个位置。 SPN 可以是以下名称之一：
 
 * 主机的 DNS 名称。
 * 域的 DNS 名称。
@@ -162,7 +165,7 @@ NTLM 身份验证协议依赖于域控制器上的 Net Logon 服务来获取客�
 
 以下关系图和步骤提供了在运行 Windows 的计算机尝试从位于另一个林中的计算机访问资源时使用的 Kerberos 身份验证过程的详细说明。
 
-![通过林信任的 Kerberos 进程示意图](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![通过林信任的 Kerberos 进程示意图](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. *User1*使用*europe.tailspintoys.com*域中的凭据登录到*Workstation1* 。 然后，用户尝试访问位于*usa.wingtiptoys.com*林中的*FileServer1*上的共享资源。
 
@@ -228,7 +231,7 @@ TDO 中包含的信息取决于是否由域信任或林信任创建的 TDO。
 
 如果使用新密码进行的身份验证失败，因为密码无效，则信任域控制器会尝试使用旧密码进行身份验证。 如果它通过旧密码成功进行身份验证，则会在15分钟内恢复密码更改过程。
 
-信任密码更新需要在30天内复制到信任双方的域控制器。 如果在30天后更改了信任密码，并且域控制器只包含 N-2 个密码，则它不能使用信任端的信任，也不能在受信任端创建安全通道。
+信任密码更新需要在30天内复制到信任双方的域控制器。 如果在30天后更改了信任密码，并且域控制器只包含 N-2 个密码，则它无法使用信任端的信任，因而无法在受信任端创建安全通道。
 
 ## <a name="network-ports-used-by-trusts"></a>信任使用的网络端口
 
@@ -276,7 +279,7 @@ LSA 安全子系统在内核模式和用户模式下提供服务，用于验证�
 
 若要了解有关资源林的详细信息，请参阅[林信任如何在 AZURE AD DS 中工作？][concepts-trust]
 
-若要开始使用资源林创建 Azure AD DS 托管域，请参阅[创建和配置 AZURE AD ds 托管域][tutorial-create-advanced]。 然后，你可以[创建到本地域的出站林信任（预览）][create-forest-trust]。
+若要开始使用资源林创建托管域，请参阅[创建和配置 AZURE AD DS 托管域][tutorial-create-advanced]。 随后可以[创建到本地域的出站林信任（预览）][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

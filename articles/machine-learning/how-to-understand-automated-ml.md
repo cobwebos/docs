@@ -3,19 +3,18 @@ title: 了解自动化 ML 的结果
 titleSuffix: Azure Machine Learning
 description: 了解如何查看和理解每个自动机器学习运行的图表与指标。
 services: machine-learning
-author: RachelKellam
-ms.author: rakellam
-ms.reviewer: sgilley
+author: aniththa
+ms.author: anumamah
+ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 119f26f8d5a425462382a873d7ca4bcfdd6f3d03
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283454"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85214496"
 ---
 # <a name="understand-automated-machine-learning-results"></a>了解自动化机器学习的结果
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +41,7 @@ ms.locfileid: "79283454"
 
 1. 转到你的工作区。
 
-1. 在工作区的左侧面板中，选择“试验”。 
+1. 在工作区的左侧面板中，选择“试验”。
 
    ![试验菜单的屏幕截图](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-menu.png)
 
@@ -50,11 +49,11 @@ ms.locfileid: "79283454"
 
    [![试验列表](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-list-expanded.png)
 
-1. 在底部的表中，选择“运行”。 
+1. 在底部的表中，选择“运行”。
 
    [![试验运行](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-run-expanded.png))
 
-1. 在“模型”中，选择要进一步探索的模型的“算法名称”。 
+1. 在“模型”中，选择要进一步探索的模型的“算法名称”。
 
    [![试验模型](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-experiment-model-expanded.png)
 
@@ -89,7 +88,7 @@ balanced_accuracy|平衡准确度是每个类的召回率算术平均值。|[计
 f1_score_macro|F1 评分是精度和召回率的调和平均值。 Macro 是每个类的 F1 评分算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|F1 评分是精度和召回率的调和平均值。 通过统计真报率、漏报率和误报率总值来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|F1 评分是精度和召回率的调和平均值。 按每个类的 F1 评分类频率计算的加权平均值|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|这是在中使用的丢失函数，例如神经网络，它在给定概率分类器预测的情况下，将其（多项式）逻辑回归和扩展（如神经网络）定义为负对数。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
+log_loss|这是（多项式） 逻辑回归及其扩展（例如神经网络）中使用的损失函数，在给定概率分类器的预测的情况下，定义为真实标签的负对数可能性。 对于在 {0,1} 中包含真实标签 yt，且包含 yt=1 的估计概率 yp 的单个样本，对数损失为 -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp))。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|无|
 norm_macro_recall|规范化宏召回率是已规范化的宏召回率，因此，随机性能的评分为 0，完美性能的评分为 1。 可以通过公式 norm_macro_recall := (recall_score_macro - R)/(1 - R) 来计算此值，其中，R 是随机预测的 recall_score_macro 预期值（例如，对于二元分类，R=0.5；对于 C 类分类问题，R=(1/C)）。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro" |
 precision_score_macro|Precision 是正确标记的积极预测元素的百分比。 Macro 是每个类的精度算术平均值。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
 precision_score_micro|Precision 是正确标记的积极预测元素的百分比。 通过统计真报率和误报率总值来全局计算 Micro。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
@@ -265,6 +264,9 @@ normalized_root_mean_squared_log_error|规范化均方根对数误差指均方�
 ## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> 模型可解释性和特征重要性
 自动化 ML 为运行提供机器学习可解释性仪表板。
 有关启用可解释性功能的详细信息，请参阅有关在自动化 ML 试验中启用可解释性的[操作指南](how-to-machine-learning-interpretability-automl.md)。
+
+> [!NOTE]
+> 说明客户端当前不支持 ForecastTCN 模型。 如果此模型作为最佳模型返回，则不会返回 "说明" 仪表板，并且不支持按需说明运行。
 
 ## <a name="next-steps"></a>后续步骤
 

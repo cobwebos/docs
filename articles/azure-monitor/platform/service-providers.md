@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3adb94709d089e2f1d106680acc00c08d2203a4d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658874"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85340883"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>面向服务提供商的 Azure Monitor 日志
 
@@ -19,7 +18,7 @@ Azure Monitor 中的 Log Analytics 工作区可以帮助托管服务提供商 (M
 
 大型企业与服务提供商有许多相似之处，特别是当有一个集中式 IT 团队负责管理许多不同业务部门的 IT 时。 为了简单起见，本文档使用术语*服务提供商*，但同样的功能也可用于企业和其他客户。
 
-对于属于[云解决方案提供商（CSP）](https://partner.microsoft.com/Solutions/cloud-reseller-overview)计划的合作伙伴和服务提供商，Azure Monitor 中 Log Analytics 是 azure CSP 订阅中可用的 azure 服务之一。
+对于属于[云解决方案提供商（CSP）](https://partner.microsoft.com/en-US/membership/cloud-solution-provider)计划的合作伙伴和服务提供商，Azure Monitor 中 Log Analytics 是 azure CSP 订阅中可用的 azure 服务之一。
 
 Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)中的 azure 委托资源管理功能来管理客户资源。
 
@@ -64,7 +63,7 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Light
 集中式体系结构的缺点是：
 
 * 此体系结构仅适用于基于代理的 VM 数据，不涵盖 PaaS、SaaS 和 Azure 结构数据源。
-* 将客户合并到单个工作区时，可能很难分隔客户之间的数据。 唯一效果不错的方法是使用计算机的完全限定域名 (FQDN) 或通过 Azure 订阅 ID 进行分隔。 
+* 将客户合并到单个工作区时，可能很难分隔客户之间的数据。 唯一效果不错的方法是使用计算机的完全限定域名 (FQDN) 或通过 Azure 订阅 ID 进行分隔。
 * 来自所有客户的全部数据都将存储在具有单独帐单和相同保留期及配置设置的同一区域中。
 * Azure 结构及 Azure 诊断和 Azure 审核日志等 PaaS 服务要求工作区与资源位于同一租户中，因此它们无法将日志发送到中心工作区。
 * 来自所有客户的全部 VM 代理都将使用相同的工作区 ID 和密钥对中心工作区进行身份验证。 无法在不干扰其他客户的情况下阻止来自特定客户的日志。
@@ -77,13 +76,13 @@ Log Analytics 在 Azure Monitor 中，服务提供商还可以通过[Azure Light
 
 1. 中心工作区：服务提供商可以在其租户中创建工作区，并使用利用[查询 API](https://dev.loganalytics.io/) 和[数据收集 API](../../azure-monitor/platform/data-collector-api.md) 的脚本将来自各个工作区的数据提取到此中心位置。 脚本之外的另一种选择是使用 [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
 
-2. 作为中心位置 Power BI：当不同工作区使用 Log Analytics 工作区和[Power BI](../../azure-monitor/platform/powerbi.md)之间的集成将数据导出到其中时，Power BI 可充当中心位置。 
+2. 作为中心位置 Power BI：当不同工作区使用 Log Analytics 工作区和[Power BI](../../azure-monitor/platform/powerbi.md)之间的集成将数据导出到其中时，Power BI 可充当中心位置。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 使用[Resource Manager 模板](template-workspace-configuration.md)自动执行创建和配置工作区
 
-* 使用 [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 自动创建工作区 
+* 使用 [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) 自动创建工作区
 
 * 使用[警报](../../azure-monitor/platform/alerts-overview.md)以便与现有系统集成
 

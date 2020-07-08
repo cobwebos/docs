@@ -7,18 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: aac3f87c642559b0dfa13c38da448e425df3ffa2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684604"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85957794"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何在 AppSource 和 Azure 市场中推广
 
 Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应用：****
 
-* 首先，如果你有试用版或事务产品/服务，则可以通过[商业 marketplace 权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)来使用 "类别促销" 权益。
+* 首先，如果你有试用版或事务产品/服务，则可以通过[商业 marketplace 权益](gtm-your-marketplace-benefits.md)来使用 "类别促销" 权益。
 * 其次，查看最佳做法列表和以下条件，以获得一个位置。
 
 "特色应用选择" 算法会向 Microsoft 的应用生成评分，就像我们在美国的信用评分。  特色应用的每周选择基于应用和服务性能的计算。
@@ -31,7 +30,7 @@ Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应
 2. Azure 市场应用：增加每月的 Azure 消费。** 如果每月能够使用 Azure 1,000 个小时，则获得推广的机会就会大大增加。
 3. AppSource 应用：增加套餐的购买量。** 如果每月能够实现 10 笔购买，则获得推广的机会就会大大增加。 
 4. 实现“联合销售就绪”状态：完成“联合销售就绪”的要求。**
-5. 改进套餐质量：有关如何修改套餐的信息，请参阅[内容列出准则](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation)**
+5. 改进套餐质量：有关如何修改套餐的信息，请参阅[内容列出准则](marketplace-criteria-content-validation.md)**
 6. 在市场中发布多个套餐：所有核心应用和服务是否都已列出？ 是否提供试用体验？
 7. 鼓励客户编写评论。
 
@@ -44,8 +43,8 @@ GTM 支持还包括完整的自助服务模板、Web 内容、培训和工具库
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解你的[商业应用商店权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。
+详细了解[商业市场权益](gtm-your-marketplace-benefits.md)。
 
-登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)来创建和配置你的产品/服务。
+登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。
 
 ---

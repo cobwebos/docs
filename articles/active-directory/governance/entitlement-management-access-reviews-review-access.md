@@ -10,18 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: compliance
-ms.date: 11/01/2019
+ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968750"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85078581"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中查看访问包的访问权限
 
@@ -47,7 +46,7 @@ Azure AD 的权利管理简化了企业如何管理对组、应用程序和 Shar
 
 1. 单击 "**查看用户访问权限**" 链接以打开访问评审。 
 
-1. 如果没有电子邮件，可以直接导航到来https://myaccess.microsoft.com查找待定的访问评审。  （对于美国政府版， `https://myaccess.microsoft.us`请改用。）
+1. 如果没有电子邮件，可以直接导航到来查找待定的访问评审 https://myaccess.microsoft.com 。  （对于美国政府版，请改用 `https://myaccess.microsoft.us` 。）
 
 1. 单击左侧导航栏上的 "**访问评审**" 可查看分配给你的待定访问评审的列表。
     

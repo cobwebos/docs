@@ -4,15 +4,14 @@ description: 概述从 StorSimple 8000 系列迁移数据的选项。
 services: storsimple
 author: priestlg
 ms.service: storsimple
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 39c78e1dc579f74207ba828f2f6a49ad44dd4a43
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767060"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85514704"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>用于从 StorSimple 8000 系列迁移数据的选项
 
@@ -41,6 +40,12 @@ StorSimple 5000-7000 系列和 StorSimple 8000 系列客户可以选择迁移到
 
 Panzura 支持此迁移，客户可以通过在 [Panzura 网站](https://panzura.com/migrate-storsimple-panzura/)请求迁移支持来开始。
 
+#### <a name="migrate-to-nasuni"></a>迁移到 Nasuni
+
+使用 Nasuni 可以轻松地将整个 StorSimple 环境迁移到稳定、安全、高性能的文件服务平台。 Nasuni 提供本地文件存储的安全性和性能，同时将其与 Azure 的可伸缩性和持久性相结合。  作为一家领先的 Azure 独立软件供应商（ISV），Nasuni 提供了将 StorSimple 数据迁移到现代平台所需的所有工具，使您可以跨多个位置共享和协作处理您的文件。
+
+立即开始： [Nasuni 网站](https://info.nasuni.com/storsimple8000-webinar)。
+
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity
 
@@ -63,23 +68,23 @@ Learn more about how to evolve to a cloud-consolidated enterprise at https://www
 
 ## <a name="migration---frequently-asked-questions"></a>迁移 - 常见问题解答
 
-### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>Q. StorSimple 8000 系列设备何时到达服务结束？
+### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>问： StorSimple 8000 系列设备何时到达服务结束？
 
 A. StorSimple 8000 系列在12月 2022[结束支持](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。 支持结束表示在2022年12月之后，Microsoft 将不再能够为这些设备的硬件和软件提供支持。 我们强烈建议立即开始制定计划，以从这些设备迁移数据。
 
-### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Q. 在 Azure 中存储的数据会发生什么情况？  
+### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>问： 在 Azure 中存储的数据会发生什么情况？  
 
 A. 迁移到新服务后，可以继续使用 Azure 中的数据。
 
-### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>Q. StorSimple 设备本地存储的数据会发生什么情况？
+### <a name="q-what-happens-to-the-data-i-have-stored-locally-on-my-storsimple-device"></a>问： StorSimple 设备本地存储的数据会发生什么情况？
 
 A. 可根据迁移文档中所述，将本地设备上的数据复制到新服务。
 
-### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>Q. 如果要保留我的 StorSimple 8000 系列设备，会发生什么情况？
+### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>问： 如果要保留我的 StorSimple 8000 系列设备，会发生什么情况？
 
 A. 尽管服务可以继续工作，但 Microsoft 不再能够提供硬件和软件支持。 为实现业务连续性，我们强烈建议迁移。
 
-### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>Q. 哪些选项可用于从 StorSimple 8000 系列设备迁移数据？
+### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>问： 哪些选项可用于从 StorSimple 8000 系列设备迁移数据？
 
 A. 基于其方案，StorSimple 8000 系列用户具有以下迁移选项：
 
@@ -87,19 +92,19 @@ A. 基于其方案，StorSimple 8000 系列用户具有以下迁移选项：
 
 * **其他选项**：你可以联系 Microsoft 支持部门来讨论此处未列出的迁移选项。
 
-### <a name="q-is-migration-to-other-storage-solutions-supported"></a>Q. 是否支持迁移到其他存储解决方案？
+### <a name="q-is-migration-to-other-storage-solutions-supported"></a>问： 是否支持迁移到其他存储解决方案？
 
 A. 是的。 支持迁移到使用数据主机复制的其他存储解决方案。
 
-### <a name="q-is-migration-supported-by-microsoft"></a>Q. Microsoft 是否为迁移提供支持？
+### <a name="q-is-migration-supported-by-microsoft"></a>问： Microsoft 是否为迁移提供支持？
 
 A. 从8000系列迁移是完全受支持的操作。 事实上，Microsoft 建议在开始迁移之前联系支持人员。 迁移当前是一项辅助的操作。 如果要从 StorSimple 8000 系列设备迁移数据，请[联系 storsimple 支持](mailto:storsimp@microsoft.com)部门。
 
-### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>Q. 迁移到 Azure 文件同步的定价模型是什么？
+### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>问： 迁移到 Azure 文件同步的定价模型是什么？
 
 A. 使用 Azure 文件同步时，服务的订阅费用可能适用。 客户还需要支付持续的存储成本。 请参阅[AFS 定价]( https://azure.microsoft.com/pricing/details/storage/files/)了解估算值。
 
-### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>Q. 完成迁移需要多长时间？
+### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>问： 完成迁移需要多长时间？
 
 A. 迁移数据所需的时间取决于数据量和选择的升级选项。
 

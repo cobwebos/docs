@@ -2,21 +2,20 @@
 title: 规划云 HR 应用程序以 Azure Active Directory 用户预配
 description: 本文介绍将 cloud HR 系统（如 Workday 和 SuccessFactors）与 Azure Active Directory 集成的部署过程。 将 Azure AD 与云 HR 系统集成，会生成一个完整的标识生命周期管理系统。
 services: active-directory
-author: martincoetzer
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: martinco
+ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593295"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84781593"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
@@ -52,7 +51,7 @@ Cloud HR 应用与 Azure AD 用户预配的集成非常适合于以下组织：
 - 需要根据在云 HR 应用中检测到的更改信息，加入、移动和离开用户以同步到一个或多个 Active Directory 林、域和 Ou。
 - 使用 Office 365 发送电子邮件。
 
-## <a name="learn"></a>了解
+## <a name="learn"></a>Learn
 
 用户预配为正在进行的标识管理创建基础。 它增强了依赖于权威标识数据的业务流程的质量。
 
@@ -73,7 +72,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 - **解决合规性和监管：** Azure AD 支持由源系统和目标系统的应用执行的用户预配请求的本地审核日志。 通过审核，您可以在单个屏幕上跟踪谁有权访问应用程序。
 - **管理成本：** 通过避免与手动预配相关的低效和人为错误，自动预配可降低成本。 它通过使用旧版和过时的平台减少了随时间而构建的自定义开发用户预配解决方案的需求。
 
-### <a name="licensing"></a>授权
+### <a name="licensing"></a>许可
 
 若要将云 HR 应用配置为 Azure AD 用户预配集成，需要一个有效的[Azure AD Premium 许可证](https://azure.microsoft.com/pricing/details/active-directory/)和一个云 HR 应用的许可证，如 Workday 或 SuccessFactors。
 
@@ -81,20 +80,21 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ### <a name="prerequisites"></a>先决条件
 
-- Azure AD 全局管理员访问权限来配置 Azure AD Connect 预配代理。
+- Azure AD[混合标识管理员](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)配置 Azure AD Connect 预配代理。
+- Azure AD[应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)角色在 Azure 门户中配置预配应用
 - Cloud HR 应用的测试和生产实例。
 - Cloud HR 应用中的管理员权限，用于创建系统集成用户并进行更改，以供测试之用。
-- 要 Active Directory 的用户预配，需要运行 Windows Server 2012 或更高版本的服务器来承载[Azure AD Connect 预配代理](https://go.microsoft.com/fwlink/?linkid=847801)。
+- 要 Active Directory 的用户预配，需要运行 Windows Server 2012 或更高版本的服务器来承载 Azure AD Connect 预配代理
 - 用于在 Active Directory 和 Azure AD 之间同步用户的[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) 。
 
-### <a name="training-resources"></a>培训资源
+### <a name="training-resources"></a>训练资源
 
 | **资源** | **链接和说明** |
 |:-|:-|
 | 视频 | [什么是活动 Azure 目录中的用户预配？](https://youtu.be/_ZjARPpI6NI) |
 | | [如何在 Active Azure Directory 中部署用户预配](https://youtu.be/pKzyts6kfrw) |
 | 教程 | [有关如何将 SaaS 应用与 Azure AD 集成的教程列表](../saas-apps/tutorial-list.md) |
-| | [教程：为 Workday 配置自动用户预配](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| | [教程：针对自动用户预配来配置 Workday](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 | 常见问题解答 | [自动用户预配](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [从 Workday 预配到 Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
@@ -107,7 +107,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ![工作流关系图](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img1.png)
 
-#### <a name="description-of-workflow"></a>工作流的说明
+#### <a name="description-of-workflow"></a>工作流说明
 
 图中指示了以下关键步骤：  
 
@@ -119,9 +119,9 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 6. **Active Directory**更新与 Azure AD 同步。
 7. **Azure AD 预配服务**，将电子邮件属性和用户名从 Azure AD 部署到云 HR 应用租户。
 
-## <a name="plan-the-deployment-project"></a>规划部署项目
+## <a name="plan-the-deployment-project"></a>计划部署项目
 
-在环境中确定此部署的策略时，请考虑组织的需求。
+在环境中确定此部署的策略时，请考虑你的组织需求。
 
 ### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
 
@@ -131,7 +131,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ### <a name="plan-communications"></a>规划沟通
 
-沟通对于任何新服务的成功至关重要。 主动与用户交流其体验的发生时间和方式。 如果遇到问题，请让他们知道如何获得支持。
+沟通对于任何新服务的成功都至关重要。 主动与用户交流其体验的发生时间和方式。 如果遇到问题，请让他们知道如何获得支持。
 
 ### <a name="plan-a-pilot"></a>规划试点
 
@@ -248,7 +248,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 你可以设置多个匹配属性并分配匹配的优先级。 它们按匹配优先级计算。 一旦找到匹配，就不会进一步评估其他匹配属性。
 
-您还可以[自定义默认属性映射](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)，例如更改或删除现有属性映射。 你还可以根据业务需求创建新的属性映射。 有关详细信息，请参阅 cloud HR app 教程（如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），了解要映射的自定义属性列表。
+您还可以[自定义默认属性映射](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)，例如更改或删除现有属性映射。 你还可以根据业务需求创建新的属性映射。 有关详细信息，请参阅 cloud HR app 教程（如[Workday](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)），了解要映射的自定义属性列表。
 
 ### <a name="determine-user-account-status"></a>确定用户帐户状态
 
@@ -256,7 +256,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 进程 | 要求 |
+| 过程 | 要求 |
 | - | - |
 | **Joiners** | 从标识生命周期角度看，如何处理 rehires？ Rehires 是否保留其旧的员工 Id？ |
 | | 您是否会提前处理日后招聘的员工并提前为他们创建 Active Directory 帐户？ 这些帐户是否创建为启用或禁用状态？ |
@@ -275,7 +275,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 进程 | 要求 |
+| 过程 | 要求 |
 | - | - |
 | **Joiners** | Active Directory 帐户创建过程是手动、自动还是部分自动？ |
 | | 你是否打算将自定义属性从 cloud HR 应用传播到 Active Directory？ |
@@ -285,7 +285,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 | | 处理用户终止会考虑哪些生效日期？ |
 | | 员工和临时工作人员转换如何影响现有 Active Directory 帐户？ |
 
-根据你的要求，你可以修改映射以满足你的集成目标。 有关详细信息，请参阅特定云 HR 应用教程（如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），了解要映射的自定义属性列表。
+根据你的要求，你可以修改映射以满足你的集成目标。 有关详细信息，请参阅特定云 HR 应用教程（如[Workday](../saas-apps/workday-inbound-tutorial.md#part-4-configure-attribute-mappings)），了解要映射的自定义属性列表。
 
 ### <a name="generate-a-unique-attribute-value"></a>生成唯一属性值
 
@@ -365,7 +365,9 @@ SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方�
 
 选择符合解决方案要求的云 HR 应用。
 
-**Workday**：若要将工作线程配置文件从 Workday 导入 Active Directory 和 Azure AD，请参阅[教程：为自动用户预配配置 Workday](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)。 您也可以将电子邮件地址和用户名写回到 Workday。
+**Workday**：若要将工作线程配置文件从 Workday 导入 Active Directory 和 Azure AD，请参阅[教程：为自动用户预配配置 Workday](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)。 也可以将电子邮件地址、用户名和电话号码写回 Workday。
+
+**SAP SuccessFactors**：若要将辅助角色配置文件从 SuccessFactors 导入 Active Directory 和 Azure AD，请参阅[教程：为自动用户预配配置 SAP SuccessFactors](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)。 也可以将电子邮件地址和用户名写回 SuccessFactors。
 
 ## <a name="manage-your-configuration"></a>管理配置
 
@@ -408,7 +410,7 @@ Azure AD 预配服务不会生成报表、执行分析，也不会在30天内提
 - [设置 Windows 事件查看器来排查代理方面的问题](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [设置 Azure 门户审核日志来排查服务方面的问题](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [了解 AD 用户帐户创建操作的日志](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
-- [了解管理器更新操作的日志](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [了解经理更新操作的日志](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
 - [解决常见错误](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>后续步骤

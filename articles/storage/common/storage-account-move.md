@@ -5,16 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.subservice: common
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198488"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85515019"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>将 Azure 存储帐户移到另一个区域
 
@@ -37,7 +36,7 @@ ms.locfileid: "83198488"
 
 - 对于预览版功能，请确保你的订阅已列入目标区域的允许列表。
 
-<a id="prepare" />
+<a id="prepare"></a>
 
 ## <a name="prepare"></a>准备
 
@@ -53,11 +52,11 @@ ms.locfileid: "83198488"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 选择“所有资源”，然后选择你的存储帐户  。
+2. 选择“所有资源”，然后选择你的存储帐户。
 
-3. 选择“设置” > “导出模板”。  
+3. 选择“设置” > “导出模板”。 
 
-4. 选择“导出模板”边栏选项卡中的“下载”。  
+4. 选择“导出模板”边栏选项卡中的“下载”。 
 
 5. 找到从门户下载的 .zip 文件，并将该文件解压缩到所选的文件夹。
 
@@ -101,19 +100,19 @@ ms.locfileid: "83198488"
 
 若要使用 Azure 门户部署模板：
 
-1. 在 Azure 门户中，选择“创建资源”  。
+1. 在 Azure 门户中，选择“创建资源”。
 
-2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。  
+2. 在“搜索市场”中键入“模板部署”，然后按 **ENTER**。 
 
-3. 选择“模板部署”  。
+3. 选择“模板部署”。
 
     ![Azure 资源管理器模板库](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. 选择“创建”  。
+4. 选择“创建” 。
 
-5. 选择“在编辑器中生成自己的模板”  。
+5. 选择“在编辑器中生成自己的模板”。
 
-6. 选择“加载文件”，然后按说明加载在上一部分下载的 **template.json** 文件。 
+6. 选择“加载文件”，然后按说明加载在上一部分下载的 **template.json** 文件。
 
 7. 在 **template.json** 文件中，通过设置存储帐户名称的默认值来为目标存储帐户命名。 此示例将存储帐户名称的默认值设置为 `mytargetaccount`。
     
@@ -137,7 +136,7 @@ ms.locfileid: "83198488"
          "location": "centralus"
          }]          
     ```
-    若要获取区域位置代码，请参阅 [Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
+    若要获取地区位置代码，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  区域的代码是不包含空格、**美国中部**  =  **centralus**的区域名称。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -174,13 +173,13 @@ ms.locfileid: "83198488"
     ```
 ---
 
-<a id="move" />
+<a id="move"></a>
 
 ## <a name="move"></a>移动
 
 部署该模板，以在目标区域中创建新的存储帐户。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 保存 **template.json** 文件。
 
@@ -188,11 +187,11 @@ ms.locfileid: "83198488"
 
 - **订阅**：选择 Azure 订阅。
 
-- **资源组**：选择“新建”****，为资源组指定名称。
+- **资源组**：选择“新建”  并为资源组指定名称。
 
 - **位置**：选择 Azure 位置。
 
-3. 单击“我同意上述条款和条件”复选框，然后单击“选择购买”按钮。********
+3. 单击“我同意上述条款和条件”复选框，然后单击“选择购买”按钮。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -215,7 +214,7 @@ ms.locfileid: "83198488"
 
 ### <a name="configure-the-new-storage-account"></a>配置新的存储帐户
 
-某些功能不会导出到模板，因此必须将其添加到新的存储帐户。 
+某些功能不会导出到模板，因此你必须将其添加到新的存储帐户。 
 
 下表列出了这些功能，以及有关将其添加到新存储帐户的指导。
 
@@ -232,11 +231,11 @@ ms.locfileid: "83198488"
 
 ### <a name="move-data-to-the-new-storage-account"></a>将数据移到新的存储帐户
 
-AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。  速度较快的原因之一是数据直接在存储服务器之间复制。因此，AzCopy 不会占用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。 请参阅 [AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。  一种更快的方法是直接在存储服务器之间复制数据，因此 AzCopy 不使用计算机的网络带宽。 可在命令行或自定义脚本中使用 AzCopy。 请参阅 [AzCopy 入门](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-你还可以使用 Azure 数据工厂移动数据。 它提供直观的用户界面。 若要使用 Azure 数据工厂，请参阅以下任意链接：。 
+你还可以使用 Azure 数据工厂来移动数据。 它提供了直观的用户界面。 要使用 Azure 数据工厂，请参阅以下任意链接： 
 
-  - [使用 Azure 数据工厂将数据复制到 Azure Blob 存储或从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+  - [使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [使用 Azure 数据工厂向/从 Azure Data Lake Storage Gen2 复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [使用 Azure 数据工厂从/向 Azure 文件存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
   - [使用 Azure 数据工厂向/从 Azure 表存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
@@ -249,15 +248,15 @@ AzCopy 是移动数据的首选工具。 此方法已针对性能进行优化。
 
 若要提交更改并完成存储帐户的移动，请删除源存储帐户。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户删除存储帐户：
 
-1. 在 Azure 门户中展开左侧的菜单打开服务菜单，然后选择“存储帐户”以显示存储帐户的列表。****
+1. 在 Azure 门户中展开左侧的菜单打开服务菜单，然后选择“存储帐户”以显示存储帐户的列表。
 
-2. 找到要删除的目标存储帐户，并右键单击列表右侧的“更多”按钮 (**...**)。****
+2. 找到要删除的目标存储帐户，并右键单击列表右侧的“更多”按钮 ( **...** )。
 
-3. 选择“删除”并确认。****
+3. 选择“删除”并确认。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

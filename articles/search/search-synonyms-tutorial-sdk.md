@@ -8,12 +8,11 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794240"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85079446"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>示例：使用 C# 为 Azure 认知搜索添加同义词
 
@@ -38,7 +37,7 @@ ms.locfileid: "72794240"
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 认知搜索服务](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET 库](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search .NET 库](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 * [如何通过 .NET 应用程序使用 Azure 认知搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概述

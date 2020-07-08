@@ -5,12 +5,11 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561861"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84676125"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠事件处理
 
@@ -91,7 +90,7 @@ Azure Functions 在循环执行以下步骤的同时使用事件中心事件：
 
 实现详细信息可能有所不同，但对于实例之间的共享状态，需要使用一个存储机制。 可以选择将状态存储在 Azure 存储、Redis 缓存或者可由函数集合访问的任何其他帐户中。
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久实体](./durable/durable-functions-overview.md)原生就很适合用于管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
+[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[持久功能](./durable/durable-functions-overview.md)适用于管理工作流和线路状态。 其他服务可能也适用，不过，本示例使用逻辑应用。 使用逻辑应用时，可以暂停和重启函数的执行，以便能够控制断路器模式的实现。
 
 ### <a name="define-a-failure-threshold-across-instances"></a>定义实例之间的故障阈值
 
@@ -123,7 +122,7 @@ Azure 逻辑应用随附了不同服务的内置连接器，提供有状态业�
 ## <a name="resources"></a>资源
 
 - [可靠事件处理的示例](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Azure Durable Functions 断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Azure 持久性实体断路器](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>后续步骤
 
