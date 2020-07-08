@@ -3,16 +3,16 @@ title: 使用参数创建动态蓝图
 description: 了解静态和动态参数，以及如何使用它们创建安全、动态的蓝图。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458482"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970631"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
-具有各种项目（如资源组、资源管理器模板、策略或角色分配）的完全定义蓝图可在 Azure 中快速一致地创建对象。 为灵活使用这些可重复使用的设计模式和容器，Azure 蓝图支持参数。 参数在定义和分配期间均创建灵活性，以更改蓝图部署的项目的属性。
+具有各种项目的完全定义的蓝图，如资源组、Azure 资源管理器模板（ARM 模板）、策略或角色分配，可在 Azure 中快速创建和一致地创建对象。 为灵活使用这些可重复使用的设计模式和容器，Azure 蓝图支持参数。 参数在定义和分配期间均创建灵活性，以更改蓝图部署的项目的属性。
 
 一个简单的示例是资源组项目。 创建资源组后，必须向其提供两个所需值：名称和位置。 将资源组添加到蓝图时，如果参数不存在，则会定义该蓝图每次使用的名称和位置。 这种重复会导致每次使用蓝图时都在同一资源组中创建项目。 资源组内的资源会重复并产生冲突。
 
@@ -28,7 +28,7 @@ ms.locfileid: "81458482"
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>使用 secureString 和 secureObject 参数
 
-虽然资源管理器模板项目支持“secureString”和“secureObject”类型的参数，但 Azure 蓝图要求每个参数与 Azure Key Vault 连接__********。 此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持此安全措施，它可以检测是否在资源管理器模板项目中包含了任一安全参数。__ 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
+虽然 ARM 模板_项目_支持**secureString**和**secureObject**类型的参数，但 Azure 蓝图要求每个参数都与 Azure Key Vault 进行连接。 此安全措施可防止将机密与蓝图一起存储的不安全做法，并有利于采用安全模式。 Azure 蓝图支持这种安全措施，检测 ARM 模板_项目_中是否包含任一安全参数。 然后，该服务会在分配期间提示输入每个检测到的安全参数的以下 Key Vault 属性：
 
 - Key Vault 资源 ID
 - Key Vault 机密名称
@@ -51,7 +51,7 @@ ms.locfileid: "81458482"
 
 #### <a name="setting-static-parameters-in-the-portal"></a>在门户中设置静态参数
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面中选择“蓝图定义”  。
 
@@ -168,7 +168,7 @@ ms.locfileid: "81458482"
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
-1. 在左侧窗格中，选择“所有服务”  。 搜索并选择“蓝图”  。
+1. 在左侧窗格中，选择“所有服务”。 搜索并选择“蓝图”。
 
 1. 从左侧页面中选择“蓝图定义”  。
 
@@ -180,7 +180,7 @@ ms.locfileid: "81458482"
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>从 REST API 设置动态参数
 
-在分配期间设置**动态参数**是通过直接输入值完成的。 提供的值不是使用函数[（如参数（））](../reference/blueprint-functions.md#parameters)，而是提供一个合适的字符串。 资源组的项目是使用“模板名称”、**name** 和 **location** 属性定义的。 包含的项目的其他所有参数在 **parameters** 下使用 **\<名称\>** 和**值**键对进行定义。 如果为分配期间未提供的动态参数配置了蓝图，则分配将会失败。
+在分配期间设置**动态参数**是通过直接输入值完成的。 提供的值不是使用函数[（如参数（））](../reference/blueprint-functions.md#parameters)，而是提供一个合适的字符串。 资源组的项目是使用“模板名称”、**name** 和 **location** 属性定义的。 所包含项目的所有其他参数都在**parameters**具有 **\<name\>** 和**值**键对的参数下定义。 如果为分配期间未提供的动态参数配置了蓝图，则分配将会失败。
 
 - REST API URI
 

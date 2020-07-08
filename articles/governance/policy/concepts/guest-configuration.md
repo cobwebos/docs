@@ -3,16 +3,17 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684293"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971090"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
-除了审核与[修正](../how-to/remediate-resources.md) Azure 资源之外，Azure Policy 还能够审核计算机内部的设置。 验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如：
+Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都适用于在 Azure 和[Arc 连接的计算机](../../../azure-arc/servers/overview.md)中运行的计算机
+验证由来宾配置扩展和客户端执行。 扩展通过客户端验证设置，例如：
 
 - 操作系统的配置
 - 应用程序配置或状态
@@ -21,13 +22,17 @@ ms.locfileid: "83684293"
 目前，大多数 Azure Policy 来宾配置策略仅审核计算机内的设置。
 它们不会应用配置。 例外情况是[下面引用的一个内置策略](#applying-configurations-using-guest-configuration)。
 
+## <a name="enable-guest-configuration"></a>启用来宾配置
+
+若要审核环境中计算机的状态，包括在 Azure 和 Arc 连接的计算机中的计算机，请查看以下详细信息。
+
 ## <a name="resource-provider"></a>资源提供程序
 
 必须注册资源提供程序，之后才能使用来宾配置。 如果来宾配置策略的分配是通过门户完成的，则会自动注册资源提供程序。 可以通过[门户](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) 或 [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) 手动注册。
 
-## <a name="extension-and-client"></a>扩展和客户端
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>部署 Azure 虚拟机的要求
 
-为审核计算机内部的设置，已启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)。 该扩展下载适用的策略分配和相应的配置定义。
+若要审核计算机中的设置，请启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)，并且该计算机必须具有系统管理的标识。 该扩展下载适用的策略分配和相应的配置定义。 标识用于在计算机读取和写入来宾配置服务时对计算机进行身份验证。 对于 Arc 连接的计算机，不需要扩展，因为它包含在连接了 Arc 的计算机代理中。
 
 > [!IMPORTANT]
 > 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要大规模部署此扩展，请分配以下策略定义： 
@@ -36,18 +41,18 @@ ms.locfileid: "83684293"
 
 ### <a name="limits-set-on-the-extension"></a>对扩展设置的限制
 
-为了限制扩展对计算机内运行的应用程序的影响，来宾配置不得超过 CPU 的5%。 对于内置和自定义的定义都存在此限制。
+为了限制扩展对计算机内运行的应用程序的影响，来宾配置不得超过 CPU 的5%。 对于内置和自定义的定义都存在此限制。 对于 Arc 连接的计算机代理中的来宾配置服务也是如此。
 
 ### <a name="validation-tools"></a>验证工具
 
 在计算机内，来宾配置客户端使用本地工具运行审核。
 
-下表显示了每个受支持操作系统上本地工具的列表：
+下表显示了在每个受支持的操作系统上使用的本地工具的列表。 对于内置内容，来宾配置会自动处理这些工具。
 
 |操作系统|验证工具|说明|
 |-|-|-|
-|Windows|[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 如果 Ruby 和 Python 不在计算机上，则它们由来宾配置扩展安装。 |
+|Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 将加载到仅由 Azure 策略使用的文件夹。 不会与 Windows PowerShell DSC 冲突。 PowerShell Core 不会添加到系统路径。|
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 在默认位置安装 Chef InSpec 版本2.2.61，并将其添加到系统路径。 还会安装 InSpec 包的依赖项，包括 Ruby 和 Python。 |
 
 ### <a name="validation-frequency"></a>验证频率
 
@@ -65,14 +70,10 @@ ms.locfileid: "83684293"
 |Microsoft|Windows Server|2012 及更高版本|
 |Microsoft|Windows 客户端|Windows 10|
 |OpenLogic|CentOS|7.3 及更高版本|
-|Red Hat|Red Hat Enterprise Linux|7.4 及更高版本|
+|Red Hat|Red Hat Enterprise Linux|7.4-7.8、9.0 及更高版本|
 |Suse|SLES|12 SP3 及更高版本|
 
 来宾配置策略支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
-
-### <a name="unsupported-client-types"></a>不支持的客户端类型
-
-不支持任何版本的 Windows Server Nano Server。
 
 ## <a name="guest-configuration-extension-network-requirements"></a>来宾配置扩展网络要求
 
@@ -87,7 +88,7 @@ ms.locfileid: "83684293"
 
 ## <a name="guest-configuration-definition-requirements"></a>来宾配置定义要求
 
-来宾配置运行的每个审核都需要两个策略定义：“DeployIfNotExists”定义和“AuditIfNotExists”定义 。
+来宾配置运行的每个审核都需要两个策略定义：“DeployIfNotExists”定义和“AuditIfNotExists”定义 。 **DeployIfNotExists**策略定义管理在每台计算机上执行审核的依赖项。
 
 “DeployIfNotExists”策略定义验证并更正以下项目：
 
@@ -116,7 +117,7 @@ Azure Policy 中的一个计划提供了按照“基线”审核操作系统设�
 
 某些参数支持整数值范围。 例如，“密码最长期限”设置可以审核有效组策略设置。 “1,70”范围将确认用户必须至少每 70 天更改一次密码，但不得少于一天。
 
-如果使用 Azure 资源管理器部署模板分配策略，请使用参数文件管理异常。 将文件签入到版本控制系统（如 Git）。 有关文件更改的注释证明了赋值为何是预期值的例外情况。
+如果使用 Azure 资源管理器模板（ARM 模板）分配策略，请使用参数文件管理异常。 将文件签入到版本控制系统（如 Git）。 有关文件更改的注释证明了赋值为何是预期值的例外情况。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用来宾配置应用配置
 

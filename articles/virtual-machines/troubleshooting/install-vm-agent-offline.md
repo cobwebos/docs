@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 07/06/2020
 ms.author: genli
-ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77920852"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983211"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -63,27 +63,24 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
     2. 导出以下注册表：
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  将故障排除 VM 上的现有文件用作 VM 代理安装的存储库。 请完成下列步骤：
 
     1. 从故障排除 VM 中，以注册表格式 (.reg) 导出以下子项： 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\RdAgent
 
           ![导出注册表子项](./media/install-vm-agent-offline/backup-reg.png)
 
-    2. 编辑注册表文件。 在每个文件中，将项值 SYSTEM  改为 BROKENSYSTEM  （如下图所示）并保存该文件。 请记住当前 VM 代理的 **ImagePath**。 我们将需要将相应的文件夹复制到附加的 OS 磁盘。 
+    2. 编辑注册表文件。 在每个文件中，将项值 SYSTEM**** 改为 BROKENSYSTEM****（如下图所示）并保存该文件。 请记住当前 VM 代理的 **ImagePath**。 我们将需要将相应的文件夹复制到附加的 OS 磁盘。 
 
         ![更改注册表子项值](./media/install-vm-agent-offline/change-reg.png)
 
     3. 双击每个注册表文件，将注册表文件导入存储库。
 
-    4. 确认将以下三个子项成功导入 BROKENSYSTEM  配置单元：
+    4. 确认以下两个子项是否已成功导入到**BROKENSYSTEM** hive 中：
         - WindowsAzureGuestAgent
-        - WindowsAzureTelemetryService
         - RdAgent
 
     5. 将当前的 VM 代理的安装文件夹复制到附加的 OS 磁盘： 
@@ -96,7 +93,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 9.  选择“BROKENSYSTEM”  。 在菜单上，选择“文件”   > “卸载配置单元” 
 
-10.  选择“BROKENSOFTWARE”  。 在菜单上，选择“文件”   > “卸载配置单元” 
+10.  选择“BROKENSOFTWARE”****。 在菜单上，选择“文件”   > “卸载配置单元” 
 
 11.  分离 OS 磁盘，然后[更改受影响 VM 的 OS 磁盘](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm)。 对于经典 VM，请使用修复的 OS 磁盘创建新的 VM。
 
@@ -108,9 +105,9 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent  属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
+如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent**** 属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
 
-若要设置 ProvisionGuestAgent  属性，请在 Azure PowerShell 中运行以下命令：
+若要设置 ProvisionGuestAgent**** 属性，请在 Azure PowerShell 中运行以下命令：
 
    ```powershell
    $vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>
@@ -118,7 +115,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
    Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>
    ```
 
-然后运行 `Get-AzureVM` 命令。 请注意，GuestAgentStatus  属性现已得到数据填充：
+然后运行 `Get-AzureVM` 命令。 请注意，GuestAgentStatus**** 属性现已得到数据填充：
 
    ```powershell
    Get-AzureVM –ServiceName <cloud service name> –Name <VM name>

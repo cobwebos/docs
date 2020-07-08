@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746749"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983299"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>更改双重验证方法和设置
 
@@ -88,7 +88,7 @@ ms.locfileid: "83746749"
 
 1. 在“其他安全验证”页的“你希望如何响应?”部分 ，更新“身份验证电话”（你的主要移动设备）和“办公电话”的电话号码信息 。
 
-1. 选中“备用身份验证电话”选项旁边的框，然后输入备用电话号码（如果你无法访问主要设备，则可以通过该号码接收短信或电话）。
+1. 选中 "**备用身份验证电话**" 选项旁边的框，然后键入一个辅助电话号码，如果无法访问主要设备，则可以在该号码接收电话呼叫。
 
 1. 选择“保存”。
 

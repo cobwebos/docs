@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845540"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971175"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL
 本文介绍了在 Azure Database for MySQL 中备份和还原数据库的两种常见方式
@@ -67,7 +67,11 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 - [backupfile.sql] 数据库备份的文件名 
 - [--opt] mysqldump 选项 
 
-例如，若要将 MySQL 服务器上名为“testdb”的数据库（用户名为“testuser”且无密码）备份到文件 testdb_backup.sql，请使用以下命令。 该命令将 `testdb` 数据库备份到名为 `testdb_backup.sql` 的文件中，该文件包含重新创建数据库所需的所有 SQL 语句。 
+例如，若要将 MySQL 服务器上名为“testdb”的数据库（用户名为“testuser”且无密码）备份到文件 testdb_backup.sql，请使用以下命令。 该命令将 `testdb` 数据库备份到名为 `testdb_backup.sql` 的文件中，该文件包含重新创建数据库所需的所有 SQL 语句。 如果未使用--single transaction 选项，请确保用户名 "testuser" 至少对已转储的表具有 SELECT 权限、显示转储的视图的视图、转储触发器的触发器和锁定表。
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql
@@ -96,9 +100,10 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 若要准备目标 Azure Database for MySQL 服务器以实现快速数据加载，需要更改以下服务器参数和配置。
 - max_allowed_packet – 设置为 1073741824（即 1 GB），以防止由于长行而引起的溢出问题。
 - slow_query_log – 设置为“关闭”以关闭慢速查询日志。 这将消除数据加载过程中由慢速查询日志记录导致的开销。
-- query_store_capture_mode – 设置为“无”以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
+- query_store_capture_mode –设置为 "无" 以关闭查询存储。 这将消除由查询存储的采样活动导致的开销。
 - innodb_buffer_pool_size – 在迁移期间从门户的定价层纵向扩展服务器到 32 vCore 内存优化 SKU，以增大 innodb_buffer_pool_size。 只能通过纵向扩展 Azure Database for MySQL 服务器的计算来增大 innodb_buffer_pool_size。
-- innodb_write_io_threads 和 innodb_write_io_threads - 从 Azure 门户中的服务器参数更改为 16 以加快迁移速度。
+- innodb_io_capacity & innodb_io_capacity_max-从 Azure 门户中的服务器参数更改为9000，以提高用于优化迁移速度的 IO 利用率。
+- innodb_write_io_threads & innodb_write_io_threads-从 Azure 门户中的服务器参数更改为4以提高迁移速度。
 - 纵向扩展存储层 – 随着存储层的增加，Azure Database for MySQL 服务器的 IOP 会逐渐增加。 为了更快地加载，可能需要增加存储层以增加预配的 IOP。 请记住，存储只能纵向扩展，而不能横向扩展。
 
 迁移完成后，可以将服务器参数和计算层配置还原为以前的值。 

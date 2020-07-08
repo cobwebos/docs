@@ -1,22 +1,21 @@
 ---
 title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
-ms.date: 05/20/2020
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: HT
+ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684238"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970767"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
 当 Azure 资源被确定为不符合策略规则时，了解该资源的哪一部分不符合规则很有用。 这也有助于了解哪些更改内容更改了以前符合的资源，使其变得不符合。 可通过两种方法查找此信息：
 
-> [!div class="checklist"]
-> - [符合性详细系信息](#compliance-details)
-> - [更改历史记录（预览）](#change-history)
+- [符合性详细系信息](#compliance-details)
+- [更改历史记录（预览）](#change-history)
 
 ## <a name="compliance-details"></a>符合性详细信息
 
@@ -188,9 +187,9 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="change-history-preview"></a><a name="change-history"/>更改历史记录（预览版）
+## <a name="change-history-preview"></a><a name="change-history"></a>更改历史记录（预览版）
 
-作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或修改资源管理器属性时，就会触发更改检测。
+作为新公开预览版的一部分，前 14 天的更改历史记录适用于所有支持[完整模式删除](../../../azure-resource-manager/templates/complete-mode-deletion.md)的 Azure 资源。 更改历史记录提供有关何时检测到更改的详细信息，以及每个更改的_视觉差异_。 添加、删除或更改 Azure 资源管理器属性时会触发更改检测。
 
 1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。 
 

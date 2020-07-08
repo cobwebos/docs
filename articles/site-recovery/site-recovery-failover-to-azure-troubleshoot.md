@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834724"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971073"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -73,6 +73,10 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
         This system is now no-hydration compatible. 
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>由于虚拟机上的“连接”按钮已灰显，无法连接/通过 RDP/SSH 连接到已故障转移的虚拟机
+
+有关 RDP 问题的详细故障排除说明，请参阅[此处](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)的文档。
+
+有关 SSH 问题的详细故障排除说明，请参阅[此处](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)的文档。
 
 如果 Azure 中已故障转移的 VM 的“连接”按钮灰显，并且你未通过快速路由或站点到站点 VPN 连接来连接到 Azure，则执行以下操作：
 

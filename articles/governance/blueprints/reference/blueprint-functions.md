@@ -3,16 +3,16 @@ title: Azure 蓝图函数
 description: 介绍可用于 Azure 蓝图定义和分配中的蓝图项目的函数。
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
+ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834775"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970869"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>与 Azure 蓝图一起使用的函数
 
-Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于蓝图定义和蓝图项目。 除了通过蓝图参数获取动态值之外，资源管理器模板项目还支持充分利用资源管理器功能。
+Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于蓝图定义和蓝图项目。 除了通过蓝图参数获取动态值外，Azure 资源管理器模板（ARM 模板）项目还支持资源管理器函数的全部使用。
 
 支持以下函数：
 
@@ -30,7 +30,7 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 返回由蓝图项目输出填充的属性对象。
 
 > [!NOTE]
-> 无法从资源管理器模板内部使用 `artifacts()` 函数。 当使用 Azure PowerShell 或 REST API 作为 [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分来管理蓝图时，此函数只能在蓝图定义 JSON 或项目 JSON 中使用。
+> `artifacts()`不能从 ARM 模板内使用该函数。 当使用 Azure PowerShell 或 REST API 作为 [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) 的一部分来管理蓝图时，此函数只能在蓝图定义 JSON 或项目 JSON 中使用。
 
 ### <a name="parameters"></a>参数
 
@@ -60,9 +60,9 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>资源管理器模板项目
+#### <a name="arm-template-artifact"></a>ARM 模板项目
 
-返回对象的“输出”属性在资源管理器模板中定义，并由部署返回。
+返回对象的**输出**属性是在 ARM 模板内定义的，由部署返回。
 
 #### <a name="role-assignment-artifact"></a>角色分配项目
 
@@ -78,7 +78,7 @@ Azure 蓝图提供了使蓝图定义更加动态的函数。 这些函数用于�
 
 ### <a name="example"></a>示例
 
-ID 为“myTemplateArtifact”的资源管理器模板项目，包含以下示例输出属性：
+带有 ID _myTemplateArtifact_的 ARM 模板项目，其中包含以下示例输出属性：
 
 ```json
 {
@@ -134,7 +134,7 @@ ID 为“myTemplateArtifact”的资源管理器模板项目，包含以下示�
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数与 Azure 资源管理器模板函数的不同之处在于，它只处理字符串。
+Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于字符串。
 
 ### <a name="example"></a>示例
 
@@ -158,7 +158,7 @@ Azure 蓝图函数与 Azure 资源管理器模板函数的不同之处在于，�
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数与 Azure 资源管理器模板函数的不同之处在于，它只处理蓝图参数。
+Azure 蓝图函数不同于 ARM 模板功能，因为它仅适用于蓝图参数。
 
 ### <a name="example"></a>示例
 
@@ -218,7 +218,7 @@ Azure 蓝图函数与 Azure 资源管理器模板函数的不同之处在于，�
 
 ### <a name="remarks"></a>备注
 
-Azure 蓝图函数与 Azure 资源管理器模板函数不同。 `resourceGroup()` 函数不能在订阅级项目或蓝图定义中使用。 它只能在作为资源组项目一部分的蓝图项目中使用。
+Azure 蓝图函数不同于 ARM 模板功能。 `resourceGroup()` 函数不能在订阅级项目或蓝图定义中使用。 它只能在作为资源组项目一部分的蓝图项目中使用。
 
 `resourceGroup()` 函数的一个常见用途是在与资源组项目相同的位置中创建资源。
 

@@ -1,17 +1,17 @@
 ---
-title: Azure 中的 Office 365 管理解决方案 | Microsoft Docs
+title: Azure 中的 Office 365 管理解决方案
 description: 本文详细介绍如何配置和使用 Azure 中的 Office 365 解决方案。  它还详细介绍了在 Azure Monitor 中创建的 Office 365 记录。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023599"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971039"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023599"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解决方案更新
-> 此解决方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)常规可用性解决方案取代，并提供[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)。 它们共同提供了以前 Azure Monitor Office 365 解决方案的更新版本，并提供了更好的配置体验。 在2020年7月30日前，你可以继续使用现有解决方案。
+> 此解决方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)常规可用性解决方案取代，并提供[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)。 它们共同提供了以前 Azure Monitor Office 365 解决方案的更新版本，并提供了更好的配置体验。 你可以继续使用现有解决方案，直到2020年10月31日为止。
 > 
 > Azure Sentinel 是云本机安全信息和事件管理解决方案，引入记录并提供附加的 SIEM 功能，包括检测、调查、搜寻和机器学习驱动见解。 使用 Azure Sentinel 后，将提供 Office 365 SharePoint 活动和 Exchange 管理日志的引入。
 > 
@@ -33,10 +33,10 @@ ms.locfileid: "82023599"
 > 3. 在工作区中[启用 Azure Sentinel 解决方案](../../sentinel/quickstart-onboard.md)。
 > 4. 请在 Azure Sentinel 中转到 "**数据连接器**" 页，并启用**Office 365**连接器。
 >
-> ## <a name="frequently-asked-questions"></a>常见问题解答
+> ## <a name="frequently-asked-questions"></a>常见问题
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>问：是否可以在现在到7月30日之间的 Office 365 Azure Monitor 解决方案？
-> 不是，Azure Monitor Office 365 解决方案载入脚本不再可用。 解决方案将于7月30日删除。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>问：是否可以在现在和十月31之间的 Office 365 Azure Monitor 解决方案？
+> 不是，Azure Monitor Office 365 解决方案载入脚本不再可用。 解决方案将于10月31日删除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>问：表和架构是否会更改？
 > **OfficeActivity**表名称和架构将保持与当前解决方案中的相同。 你可以继续在新的解决方案中使用相同的查询，但不包括引用 Azure AD 数据的查询。
@@ -102,11 +102,11 @@ ms.locfileid: "82023599"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>问： Azure Sentinel 是否提供额外的连接器作为解决方案的一部分？
 > 是，请参阅[Azure Sentinel connect 数据源](../../sentinel/connect-data-sources.md)。
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>问：7月30日会出现什么情况？ 我是否需要预先下架？
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>问：10月31日将发生什么情况？ 我是否需要预先下架？
 > 
 > - 你将无法从**Office365**解决方案接收数据。 解决方案将不再在 Marketplace 中提供
 > - 对于 Azure Sentinel 客户，Log Analytics 工作区解决方案**Office365**将包含在 Azure sentinel **SecurityInsights**解决方案中。
-> - 如果未手动下架解决方案，数据将在7月30日自动断开连接。
+> - 如果你没有手动下架解决方案，你的数据将在10月31日自动断开连接。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>问：我的数据是否会传输到新的解决方案？
 > 是的。 从工作区中删除**Office 365**解决方案时，其数据将暂时不可用，因为架构被删除。 如果在 Sentinel 中启用了新的**Office 365**连接器，则会将该架构还原到工作区，并且已收集的任何数据都将变为可用。 
@@ -218,7 +218,7 @@ ms.locfileid: "82023599"
     .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
     ```
 
-    例如：
+    示例：
 
     ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
@@ -243,7 +243,7 @@ ms.locfileid: "82023599"
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 列 | 说明 |
+| 列 | 描述 |
 |:--|:--|
 | 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
 | Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
@@ -261,25 +261,25 @@ ms.locfileid: "82023599"
 
 以下属性对于所有 Office 365 记录通用。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | 类型 | *OfficeActivity* |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
 | OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Operation | 用户或管理员活动的名称。  |
+| 操作 | 用户或管理员活动的名称。  |
 | OrganizationId | 组织的 Office 365 租户的 GUID。 无论发生在哪种 Office 365 服务中，组织中的此值均保持不变。 |
 | RecordType | 所执行操作的类型。 |
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
 | UserId | 执行使系统记下记录的操作的用户的 UPN（用户主体名称），例如 my_name@my_domain_name。 请注意，还包括系统帐户（例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM）执行的活动的记录。 | 
 | UserKey | UserId 属性中标识的用户的备用 ID。  例如，此属性由 SharePoint、OneDrive for Business 和 Exchange 中用户执行的事件的 Passport 唯一 ID (PUID) 进行填充。 此属性还可为其他服务中发生的事件以及系统帐户执行的事件指定与 UserID 属性相同的值|
-| UserType | 执行操作的用户的类型。<br><br>管理<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>System (系统) |
+| UserType | 执行操作的用户的类型。<br><br>管理员<br>应用程序<br>DcAdmin<br>常规<br>保留<br>服务主体<br>系统 |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -291,7 +291,7 @@ ms.locfileid: "82023599"
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -305,7 +305,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -323,7 +323,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -339,7 +339,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -354,7 +354,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -377,7 +377,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -392,7 +392,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -403,7 +403,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 | DestMailboxOwnerSid | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定目标邮箱的 SID。 |
 | DestMailboxOwnerUPN | 仅在 CrossMailboxOperations 参数为 True 时设置。 指定的目标邮箱所有者的 UPN。 |
 | DestFolder | 针对“移动”等操作的目标文件夹。 |
-| Folder | 一组项所在的文件夹。 |
+| 文件夹 | 一组项所在的文件夹。 |
 | 文件夹 |     操作中涉及的源文件夹相关信息；例如如果文件夹已选中且随后删除。 |
 
 
@@ -411,7 +411,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 这些属性对于所有 SharePoint 记录通用。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -428,7 +428,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -441,7 +441,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| 属性 | 说明 |
+| Property | 描述 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |

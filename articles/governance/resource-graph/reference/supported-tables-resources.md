@@ -1,14 +1,15 @@
 ---
-title: 支持的资源管理器资源类型
-description: 提供 Azure Resource Graph 和更改历史记录支持的资源管理器资源类型的列表。
-ms.date: 05/21/2020
+title: 支持的 Azure 资源管理器资源类型
+description: 提供 Azure 资源关系图支持的 Azure 资源管理器资源类型列表和更改历史记录。
+ms.date: 06/04/2020
 ms.topic: reference
-ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
-ms.translationtype: HT
+ms.custom: generated
+ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770578"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970563"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph 表格和资源类型参考
 
@@ -484,13 +485,6 @@ Azure Resource Graph 支持 [Azure 资源管理器](../../../azure-resource-mana
 - microsoft.security/regulatorycompliancestandards
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols
 - microsoft.security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
-- microsoft.security/securitystatuses
-- microsoft.security/securitystatuses/containerhosts
-- microsoft.security/securitystatuses/onpremisemachines
-- microsoft.security/securitystatuses/servers
-- microsoft.security/securitystatuses/subnets
-- microsoft.security/securitystatuses/virtualmachines
-- microsoft.security/securitystatusessummaries
 
 ## <a name="next-steps"></a>后续步骤
 

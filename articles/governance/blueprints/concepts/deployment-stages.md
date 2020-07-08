@@ -3,12 +3,12 @@ title: 蓝图部署的阶段
 description: 了解 Azure 蓝图服务在创建蓝图分配时所经历的与安全和项目相关的步骤。
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9efc66baa262e004a8beea5295e8567f4ab119dd
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d3ccba6645e1b14fffc543af2a6ad40e3634e2ed
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863988"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970648"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>蓝图部署的阶段
 
@@ -27,7 +27,7 @@ ms.locfileid: "82863988"
 
 使用[系统分配的托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)托管标识时，将向 Azure 蓝图服务主体授予对分配的订阅或订阅的所有者权限。 授予的角色允许 Azure 蓝图创建并稍后撤消**系统分配**的托管标识。 如果使用**用户分配**的托管标识，Azure 蓝图服务主体不会获得订阅的所有者权限，也不需要对订阅拥有所有者权限。
 
-如果分配是通过门户完成的，则会自动授予权限。 但是，如果通过 REST API 完成分配，则需要使用单独的 API 调用来授予权限。 Azure 蓝图 AppId 为`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`，但服务主体因租户而异。 使用[Azure Active Directory 图形 API](../../../active-directory/develop/active-directory-graph-api.md)和 REST 终结点[服务主体](/graph/api/resources/serviceprincipal)以获取服务主体。 然后，通过[门户](../../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、 [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、 [REST API](../../../role-based-access-control/role-assignments-rest.md)或[资源管理器模板](../../../role-based-access-control/role-assignments-template.md)授予 Azure 蓝图_所有者_角色。
+如果分配是通过门户完成的，则会自动授予权限。 但是，如果通过 REST API 完成分配，则需要使用单独的 API 调用来授予权限。 Azure 蓝图 AppId 为 `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ，但服务主体因租户而异。 使用[Azure Active Directory 图形 API](../../../active-directory/develop/active-directory-graph-api.md)和 REST 终结点[服务主体](/graph/api/resources/serviceprincipal)以获取服务主体。 然后，通过[门户](../../../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、 [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、 [REST API](../../../role-based-access-control/role-assignments-rest.md)或[Azure 资源管理器模板](../../../role-based-access-control/role-assignments-template.md)授予 azure 蓝图_所有者_角色。
 
 Azure 蓝图服务不会直接部署资源。
 
@@ -35,7 +35,7 @@ Azure 蓝图服务不会直接部署资源。
 
 用户、组或服务主体将蓝图分配给订阅。 分配对象存在于指定了蓝图的订阅级别。 部署创建的资源不在部署实体的上下文中完成。
 
-创建蓝图分配时，将选择[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)的类型。 默认值为**系统分配**的托管标识。 可以选择**用户分配**的托管标识。 使用**用户分配**的托管标识时，必须在创建蓝图分配之前定义和授予权限。 [所有者](../../../role-based-access-control/built-in-roles.md#owner)和[蓝图运算符](../../../role-based-access-control/built-in-roles.md#blueprint-operator)内置角色都具有创建使用**用户分配**的`blueprintAssignment/write`托管标识的分配所必需的权限。
+创建蓝图分配时，将选择[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)的类型。 默认值为**系统分配**的托管标识。 可以选择**用户分配**的托管标识。 使用**用户分配**的托管标识时，必须在创建蓝图分配之前定义和授予权限。 [所有者](../../../role-based-access-control/built-in-roles.md#owner)和[蓝图运算符](../../../role-based-access-control/built-in-roles.md#blueprint-operator)内置角色都具有 `blueprintAssignment/write` 创建使用**用户分配**的托管标识的分配所必需的权限。
 
 ## <a name="optional---azure-blueprints-creates-system-assigned-managed-identity"></a>可选-Azure 蓝图创建系统分配的托管标识
 

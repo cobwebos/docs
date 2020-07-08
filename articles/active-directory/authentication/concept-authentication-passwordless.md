@@ -11,30 +11,30 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201714"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981849"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
 多重身份验证（MFA）是保护组织的一种好方法，但用户通常会在必须记住其密码的情况下使用额外的安全层。 无密码身份验证方法更为方便，因为密码会被删除并替换为你拥有的内容，以及你或你知道的内容。
 
-|   | 你拥有的东西 | 你或知道的内容 |
+| 身份验证  | 你拥有的东西 | 你或知道的内容 |
 | --- | --- | --- |
 | 无密码 | Windows 10 设备、电话号码或安全密钥 | 生物识别或 PIN |
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供了以下三个无密码 authentication 选项，这些选项与 Azure Active Directory （Azure AD）集成：
 
-- Windows Hello 企业版
+- Windows Hello for Business
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello 企业版
+## <a name="windows-hello-for-business"></a>Windows Hello for Business
 
 Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构（PKI）集成和单一登录（SSO）的内置支持，Windows Hello 企业版提供了一种方便的方法，可在本地和云中无缝访问公司资源。
 
@@ -116,7 +116,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
+| TrustKey 解决方案 | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto 身份（Thales 组） | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc。 | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
@@ -125,7 +125,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 > [!NOTE]
 > 如果你购买并计划使用基于 NFC 的安全密钥，则需要为安全密钥提供支持的 NFC 读卡器。 NFC 读卡器不是 Azure 要求或限制。 有关支持的 NFC 读卡器的列表，请与供应商联系以获取基于 NFC 的安全密钥。
 
-如果你是供应商，并且想要在此支持的设备列表上获取设备， [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)请联系。
+如果你是供应商，并且想要在此支持的设备列表上获取设备，请联系 [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) 。
 
 ## <a name="what-scenarios-work-with-the-preview"></a>使用预览版的情况如何？
 
@@ -142,7 +142,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 下面是在选择 Microsoft 无密码技术时要考虑的一些因素：
 
-||**Windows Hello 企业版**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
+||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
 |**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>手机（运行 Android 6.0 或更高版本的 iOS 和 Android 设备。）|Windows 10 版本 1809 或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|
@@ -154,8 +154,8 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 |增添|方案|环境|无密码技术|
 |:-|:-|:-|:-|
-|**管理**|安全访问设备以执行管理任务|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
-|**管理**|非 Windows 设备上的管理任务| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
+|**管理员**|安全访问设备以执行管理任务|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
+|**管理员**|非 Windows 设备上的管理任务| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
 |**信息工作者**|工作效率|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
 |**信息工作者**|工作效率| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
 |**前端工作线程**|工厂、植物、零售或数据输入中的网亭|共享 Windows 10 设备|FIDO2 安全密钥|

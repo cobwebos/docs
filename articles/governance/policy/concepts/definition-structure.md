@@ -1,30 +1,31 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.date: 04/03/2020
+ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746986"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971107"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
 Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性[条件](#conditions)，以及在符合某个条件时要采取的效果。 条件会将资源属性[字段](#fields)与所需值进行比较。 资源属性字段是通过[别名](#aliases)进行访问的。 资源属性字段可为单值字段，也可为包含多值的[数组](#understanding-the--alias)。 数组上的条件评估会有所不同。
 如需了解更多，请参见[条件](#conditions)。
 
-通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
+通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，你可以要求资源具有特定标记。 策略分配由子资源继承。 如果将策略分配应用于资源组，则该资源组适用于该资源组中的所有资源。
 
-有关策略定义架构的描述，请参阅此处：[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+有关策略定义架构的描述，请参阅此处：[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
-- mode
-- parameters
 - 显示名称
 - description
+- mode
+- metadata
+- 参数
 - 策略规则
   - 逻辑评估
   - 效果
@@ -34,7 +35,13 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 ```json
 {
     "properties": {
-        "mode": "all",
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
+        "mode": "Indexed",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -46,8 +53,6 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -63,15 +68,30 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 }
 ```
 
-所有 Azure Policy 示例均位于 [Azure Policy 示例](../samples/index.md)内。
+Azure 策略内置和模式位于[Azure 策略示例](../samples/index.md)中。
 
-## <a name="mode"></a>模式
+## <a name="display-name-and-description"></a>显示名称和说明
+
+请使用“displayName”和“description”来标识策略定义，并提供其使用上下文 。 **displayName** 的最大长度为 128 个字符，**description** 的最大长度为 512 个字符。
+
+> [!NOTE]
+> 在创建或更新策略定义期间，“ID”、“类型”和“名称”是由 JSON 外部属性定义，不需要在 JSON 文件中进行定义。 通过 SDK 获取策略定义将返回“ID”、“类型”和“名称”属性作为 JSON 的一部分，但每个属性都是与策略定义相关的只读信息。
+
+## <a name="type"></a>类型
+
+尽管无法设置**type**属性，但 SDK 返回了三个值并在门户中可见：
+
+- `Builtin`： Microsoft 提供并维护这些策略定义。
+- `Custom`：客户创建的所有策略定义都具有此值。
+- `Static`：表示具有 Microsoft**所有权**的[法规遵从性](./regulatory-compliance.md)策略定义。 这些策略定义的符合性结果是 Microsoft 基础结构上的第三方审核的结果。 在 Azure 门户中，此值有时显示为 " **Microsoft 托管**"。 有关详细信息，请参阅[云中的共享责任](../../../security/fundamentals/shared-responsibility.md)。
+
+## <a name="mode"></a>Mode
 
 “模式”的配置要取决于策略是针对 Azure 资源管理器属性还是资源提供程序属性。
 
 ### <a name="resource-manager-modes"></a>资源管理器模式
 
-“模式”确定将对策略评估哪些资源类型。 支持的模式包括：
+**模式**确定要为策略定义评估哪些资源类型。 支持的模式包括：
 
 - `all`：评估资源组、订阅和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
@@ -82,16 +102,30 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 
 在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 有一个例外情况，就是资源组和订阅。 策略定义若在资源组或订阅上强制执行位置或标记，则应将“模式”设为 `all`，并明确以 `Microsoft.Resources/subscriptions/resourceGroups` 或 `Microsoft.Resources/subscriptions` 类型为目标。 有关示例，请参阅[模式：标记 - 示例 #1](../samples/pattern-tags.md)。 有关支持标记的资源列表，请参阅[有关 Azure 资源的标记支持](../../../azure-resource-manager/management/tag-support.md)。
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />资源提供程序模式（预览版）
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>资源提供程序模式（预览版）
 
 在预览版期间，目前支持以下资源提供程序模式：
 
-- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的策略必须使用 [EnforceRegoPolicy](./effects.md#enforceregopolicy) 效果。 此模式将被弃用。
-- `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用此资源提供程序模式的策略必须使用 [EnforceOPAConstraint](./effects.md#enforceopaconstraint) 效果。
+- `Microsoft.ContainerService.Data`，用于管理 [Azure Kubernetes 服务](../../../aks/intro-kubernetes.md)上的许可控制器规则。 使用此资源提供程序模式的定义**必须**使用[EnforceRegoPolicy](./effects.md#enforceregopolicy)效果。 此模式将被弃用。
+- `Microsoft.Kubernetes.Data`，用于在 Azure 上或外部管理 Kubernetes 群集。 使用此资源提供程序模式的定义使用效果_审核_、_拒绝_和_禁用_。 不_推荐_使用[EnforceOPAConstraint](./effects.md#enforceopaconstraint)效果。
 - `Microsoft.KeyVault.Data`，用于管理 [Azure Key Vault](../../../key-vault/general/overview.md) 中的保管库和证书。
 
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，且在预览版期间暂不支持计划。
+
+## <a name="metadata"></a>元数据
+
+可选 `metadata` 属性存储有关策略定义的信息。 客户可在中定义对其组织有用的任何属性和值 `metadata` 。 但是，Azure 策略和内置内置了一些_常用_属性。
+
+### <a name="common-metadata-properties"></a>常见元数据属性
+
+- `version`（string）：跟踪有关策略定义的内容版本的详细信息。
+- `category`（string）：确定在哪个类别中显示策略定义 Azure 门户。
+- `preview`（布尔值）：如果策略定义为_预览版_，则为 True 或 false 标志。
+- `deprecated`（布尔值）：如果策略定义已标记为不_推荐使用_，则为 True 或 false 标志。
+
+> [!NOTE]
+> Azure Policy 服务会使用 `version`、`preview` 和 `deprecated` 属性，将变更级别传达给内置策略定义或计划和状态。 `version` 的格式为：`{Major}.{Minor}.{Patch}`。 特定状态（例如“弃用”或“预览版”）会附加至 `version` 属性，或另一个属性中附加为“布尔值”。 有关 Azure 策略版本内置方式的详细信息，请参阅[内置版本控制](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)。
 
 ## <a name="parameters"></a>参数
 
@@ -105,17 +139,11 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 
 参数有下述可以在策略定义中使用的属性：
 
-- **名称**：参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
+- `name`：参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
 - `type`：确定参数是“字符串”、“数组”、“对象”、“布尔值”、“整数”、“浮点数”，还是“日期/时间”。
 - `metadata`：定义主要由 Azure 门户用来显示用户友好信息的子属性：
   - `description`：说明参数的用途。 可以用来提供可接受值的示例。
   - `displayName`：在门户中显示的用于参数的友好名称。
-  - `version`：（可选）跟踪有关策略定义内容版本的详细信息。
-
-    > [!NOTE]
-    > Azure Policy 服务会使用 `version`、`preview` 和 `deprecated` 属性，将变更级别传达给内置策略定义或计划和状态。 `version` 的格式为：`{Major}.{Minor}.{Patch}`。 特定状态（例如“弃用”或“预览版”）会附加至 `version` 属性，或另一个属性中附加为“布尔值”。
-
-  - `category`：（可选）确定在 Azure 门户的哪个类别下显示策略定义。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
   - `assignPermissions`：（可选）设置为“true”，使 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性会很有用。 策略中每个角色定义（或计划中所有策略中的每个角色定义）都有一个角色分配。 参数值必须是有效的资源或范围。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。
@@ -179,14 +207,7 @@ strongType 的非资源类型允许值包括：
 如果定义位置是：
 
 - **订阅** - 只能将该订阅中的资源分配给策略。
-- **管理组** - 只能将子管理组和子订阅中的资源分配给策略。 如果计划将策略定义应用于多个订阅，则位置必须是包含那些订阅的管理组。
-
-## <a name="display-name-and-description"></a>显示名称和说明
-
-请使用“displayName”和“description”来标识策略定义，并提供其使用上下文 。 **displayName** 的最大长度为 128 个字符，**description** 的最大长度为 512 个字符。
-
-> [!NOTE]
-> 在创建或更新策略定义期间，“ID”、“类型”和“名称”是由 JSON 外部属性定义，不需要在 JSON 文件中进行定义。 通过 SDK 获取策略定义将返回“ID”、“类型”和“名称”属性作为 JSON 的一部分，但每个属性都是与策略定义相关的只读信息。
+- **管理组** - 只能将子管理组和子订阅中的资源分配给策略。 如果计划将策略定义应用于多个订阅，则该位置必须是包含订阅的管理组。
 
 ## <a name="policy-rule"></a>策略规则
 
@@ -233,7 +254,7 @@ strongType 的非资源类型允许值包括：
 },
 ```
 
-### <a name="conditions"></a>条件
+### <a name="conditions"></a>Conditions
 
 条件用于评估 **field** 或 **value** 访问器是否符合特定标准。 支持的条件有：
 
@@ -262,7 +283,7 @@ strongType 的非资源类型允许值包括：
 使用 like 和 notLike 条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
 
-当使用 match 和 notMatch 条件时，请提供 `#` 来匹配数字、`?` 来匹配字母、`.` 来匹配所有字符，以及提供任何其他字符来匹配该实际字符。 尽管 match 和 notMatch 区分大小写，但计算 stringValue 的所有其他条件都不会区分大小写。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案 。
+当使用 match 和 notMatch 条件时，请提供 `#` 来匹配数字、`?` 来匹配字母、`.` 来匹配所有字符，以及提供任何其他字符来匹配该实际字符。 虽然**match**和**notMatch**区分大小写，但计算_stringValue_的所有其他条件都是不区分大小写的。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案 。
 
 在 \[\*\] 别名数组字段值中，数组中的每个元素都会使用元素间的逻辑 and 进行单独计算。 有关详细信息，请参阅[评估 \[\*\] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
@@ -284,12 +305,12 @@ strongType 的非资源类型允许值包括：
 - `tags`
 - `tags['<tagName>']`
   - 此括号语法支持具有标点符号的标记名称，例如连字符、句点或空格。
-  - 其中 **\<tagName\>** 是要验证其条件的标记的名称。
+  - 其中的 \<tagName\> 是要验证其条件的标记的名称。
   - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称。
 - `tags['''<tagName>''']`
   - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
-  - 其中“\<tagName\>”是要验证其条件的标记的名称。
-  - 示例：`tags['''My.Apostrophe.Tag''']`，其中“My.Apostrophe.Tag”是标记的名称。
+  - 其中的“\<tagName\>”是要验证其条件的标记的名称。
+  - 示例：`tags['''My.Apostrophe.Tag''']`，其中 'My.Apostrophe.Tag' 是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 > [!NOTE]
@@ -409,9 +430,9 @@ strongType 的非资源类型允许值包括：
 
 使用修订后的策略规则，`if()` 会先检查名称的长度，然后尝试在少于三个字符的值上获取 `substring()`。 如果名称太短，则会改为返回“不是以 abc 开头”的值，并将其与 abc 进行比较。 短名称不是以 abc 开头的资源仍会导致策略规则失败，但在评估过程中不会再造成错误。
 
-### <a name="count"></a>Count
+### <a name="count"></a>计数
 
-计算资源有效负载中陈列有多少成员符合条件表达式的条件，可以使用 Count 表达式来构成。 常见的方案是检查“其中至少一个”、“只有一个”、“全部”或“没有”数组成员符合条件。 Count 会计算条件表达式每个 [\[\*\] 别名](#understanding-the--alias)数组成员，并加总 true 结果，然后将结果与表达式运算符进行比较。 Count 表达式最多可添加 3 次到单个 policyRule 定义。
+计算资源有效负载中陈列有多少成员符合条件表达式的条件，可以使用 Count 表达式来构成。 常见的方案是检查“其中至少一个”、“只有一个”、“全部”或“没有”数组成员符合条件。 Count 会计算条件表达式每个 [\[\*\] 别名](#understanding-the--alias)数组成员，并加总 true 结果，然后将结果与表达式运算符进行比较。 最多可以向单个**policyRule**定义添加三次**计数**表达式。
 
 Count 表达式的结构如下：
 
@@ -430,9 +451,9 @@ Count 表达式的结构如下：
 以下属性与 count 搭配使用：
 
 - count.field（必需）：包含数组路径，且必须为数组别名。 如果缺少数组，则表达式的计算结果为 false，而不考虑条件表达式。
-- count.where（可选）：此条件表达式会单独计算 count.field 的每个 [\[\*\] 别名](#understanding-the--alias)数据成员。 如果未提供此属性，则计算路径为“field”的所有数组成员的计算结果均为 true。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。
-  [逻辑运算符](#logical-operators)可以在此属性内使用，以创建复杂的评估需求。
-- \<condition\>（必需）：该值与符合 count.where 条件表达式的项数进行比较。 应使用数值[条件](../concepts/definition-structure.md#conditions)。
+- count.where（可选）：此条件表达式会单独计算 count.field 的每个 [\[\*\] 别名](#understanding-the--alias)数据成员。 如果未提供此属性，则将路径为 "field" 的所有数组成员均计算为_true_。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。
+  可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。
+- **\<condition\>** （必需）：该值将与满足 **count.where** 条件表达式的项数进行比较。 应使用数字[条件](../concepts/definition-structure.md#conditions)。
 
 #### <a name="count-examples"></a>计数示例
 
@@ -582,9 +603,9 @@ Azure Policy 支持以下类型的效果：
 > [!NOTE]
 > 在 deployIfNotExists 策略定义中，仍可在其模板部署的 `details.deployment.properties.template` 部分中使用这些函数。
 
-以下函数可在策略规则中使用，但与 Azure 资源管理器模板中的用法不同：
+以下函数可在策略规则中使用，但不同于 Azure 资源管理器模板中的使用：
 
-- `utcNow()` - 与资源管理器模板不同，此函数可在 defaultValue 之外使用。
+- `utcNow()`-与 ARM 模板不同，此属性可在_defaultValue_之外使用。
   - 以通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.fffffffZ”返回一个设置为当前日期和时间的字符串
 
 以下函数仅适用于策略规则：
@@ -598,7 +619,7 @@ Azure Policy 支持以下类型的效果：
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 - `requestContext().apiVersion`
   - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。
-    这将是用于 PUT/PATCH 请求中的 API 版本，会在创建/更新资源时进行评估。 在对现有资源进行符合性评估时，将会一律使用最新的 API 版本。
+    此值是在 PUT/PATCH 请求中使用的 API 版本，用于在资源创建/更新时进行评估。 在对现有资源进行符合性评估时，将会一律使用最新的 API 版本。
   
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -713,88 +734,9 @@ Azure Policy 支持以下类型的效果：
 
 有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="initiatives"></a>计划
-
-使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
-
-> [!NOTE]
-> 一旦分配计划后，就不能再更改计划级别参数。 因此，建议在定义参数时设置 defaultValue。
-
-下面的示例演示如何创建用于处理 `costCenter` 和 `productName` 这两个标记的计划。 它使用两个内置策略来应用默认标记值。
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                },
-                "defaultValue": "DefaultCostCenter"
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                },
-                "defaultValue": "DefaultProduct"
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    }
-}
-```
-
 ## <a name="next-steps"></a>后续步骤
 
+- 请参阅[计划定义结构](./initiative-definition-structure.md)
 - 在 [Azure Policy 示例](../samples/index.md)中查看示例。
 - 查看[了解策略效果](effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。

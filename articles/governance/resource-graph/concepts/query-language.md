@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654452"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970444"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -17,12 +17,13 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个运算�
 本文介绍 Resource Graph 支持的语言组件：
 
 - [Resource Graph 表](#resource-graph-tables)
+- [资源关系图自定义语言元素](#resource-graph-custom-language-elements)
 - [支持的 KQL 语言元素](#supported-kql-language-elements)
 - [转义字符](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph 表
 
-Resource Graph 为其存储的有关资源管理器资源类型及其属性的数据提供了多个表。 这些表可以与 `join` 或 `union` 运算符一起使用，以从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
+资源图为其存储的有关 Azure 资源管理器资源类型及其属性的数据提供多个表。 这些表可以与 `join` 或 `union` 运算符一起使用，以从相关资源类型获取属性。 下面是 Resource Graph 中可用表的列表：
 
 |Resource Graph 表 |说明 |
 |---|---|
@@ -61,6 +62,33 @@ Resources
 
 > [!NOTE]
 > 限制具有 `project` 的 `join` 结果时，`join` 用于关联两个表的属性（在上述示例中为 subscriptionId）必须包含在 `project` 中。
+
+## <a name="resource-graph-custom-language-elements"></a>资源关系图自定义语言元素
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共享查询语法（预览）
+
+作为预览功能，可以直接在资源关系图查询中访问[共享查询](../tutorials/create-share-query.md)。 这种情况下，可以创建标准查询作为共享查询并重用它们。 若要在资源关系图查询中调用共享查询，请使用 `{{shared-query-uri}}` 语法。 共享查询的 URI 是该查询的 "**设置**" 页上共享查询的_资源 ID_ 。 在此示例中，我们的共享查询 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
+此 URI 指向要在另一个查询中引用的共享查询的订阅、资源组和完整名称。 此查询与在[教程：创建和共享查询](../tutorials/create-share-query.md)中创建的查询相同。
+
+> [!NOTE]
+> 不能将引用共享查询的查询另存为共享查询。
+
+示例1：只使用共享查询
+
+此资源图表查询的结果与共享查询中存储的查询的结果相同。
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+示例2：在较大查询中包含共享查询
+
+此查询首先使用共享查询，然后使用 `limit` 进一步限制结果。
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
 
 ## <a name="supported-kql-language-elements"></a>支持的 KQL 语言元素
 

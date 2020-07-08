@@ -3,12 +3,12 @@ title: 了解部署排序顺序
 description: 了解在蓝图分配过程中部署蓝图项目的默认顺序，以及如何自定义部署顺序。
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864515"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970614"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -28,21 +28,21 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 - 订阅级别“角色分配”项目按项目名称排序****
 - 订阅级别“策略分配”项目按项目名称排序****
-- 订阅级别“Azure 资源管理器模板”项目按项目名称排序****
+- 订阅级别**Azure 资源管理器模板**（ARM 模板）项目按项目名称排序
 - “资源组”项目（包括子项目）按占位符名称排序****
 
 在每个**资源组**项目中，将按照以下顺序排列在该资源组中创建的项目：
 
 - 资源组子“角色分配”项目按项目名称排序****
 - 资源组子“策略分配”项目按项目名称排序****
-- 资源组子“Azure 资源管理器模板”项目按项目名称排序****
+- 资源组子**Azure 资源管理器模板**（ARM 模板）项目按项目名称排序
 
 > [!NOTE]
 > 使用[伪像（）](../reference/blueprint-functions.md#artifacts)可对所引用的项目创建隐式依赖项。
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 
-编写大型蓝图定义时，可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 Azure 资源管理器模板。 Azure 蓝图通过允许定义序列顺序来处理此模式。
+编写大型蓝图定义时，可能需要按特定顺序创建资源。 此方案的最常见使用模式是蓝图定义包含多个 ARM 模板。 Azure 蓝图通过允许定义序列顺序来处理此模式。
 
 排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 资源组和项目对象的蓝图定义支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
 
@@ -51,7 +51,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 ### <a name="example---ordered-resource-group"></a>示例-有序资源组
 
-此示例蓝图定义具有一个资源组，该资源组通过声明的值`dependsOn`以及标准资源组定义了自定义的排序顺序。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理********。
+此示例蓝图定义具有一个资源组，该资源组通过声明的值以及标准资源组定义了自定义的排序顺序 `dependsOn` 。 在这种情况下，名为“assignPolicyTags”的项目将在“ordered-rg”资源组之前进行处理********。
 standard-rg 将按默认排序顺序进行处理****。
 
 ```json
@@ -81,7 +81,7 @@ standard-rg 将按默认排序顺序进行处理****。
 
 ### <a name="example---artifact-with-custom-order"></a>示例 - 使用自定义顺序的项目
 
-此示例是一个策略项目，它依赖于一个 Azure 资源管理器模板。 根据默认排序，策略项目将先于 Azure 资源管理器模板创建。 此排序允许策略项目等待 Azure 资源管理器模板完成创建。
+此示例是依赖于 ARM 模板的策略项目。 默认情况下，会在 ARM 模板之前创建策略项目。 此顺序允许策略项目等待 ARM 模板创建完毕。
 
 ```json
 {
@@ -100,7 +100,7 @@ standard-rg 将按默认排序顺序进行处理****。
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>示例-根据资源组的订阅级别模板项目
 
-此示例适用于在订阅级别部署的资源管理器模板，以依赖于资源组。 默认排序中，将在这些资源组中的任何资源组和子项目之前创建订阅级别项目。 资源组在蓝图定义中定义，如下所示：
+此示例适用于在订阅级别部署的 ARM 模板，以依赖于资源组。 默认排序中，将在这些资源组中的任何资源组和子项目之前创建订阅级别项目。 资源组在蓝图定义中定义，如下所示：
 
 ```json
 "resourceGroups": {

@@ -2,33 +2,33 @@
 title: 获取默认的答案 QnA Maker
 description: 如果与问题没有匹配项，将返回默认的答案。 你可能需要更改标准默认值答案的默认应答。
 ms.topic: how-to
-ms.date: 04/22/2020
-ms.openlocfilehash: db5a79ec612a73066ac37365a1815841fafb3862
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/02/2020
+ms.openlocfilehash: 005442938167c1bf7927603c44d6f870795cbeee
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097092"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979958"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>更改 QnA Maker 资源的默认答案
 
-如果与问题没有匹配项，将返回默认的答案。 你可能需要更改标准默认值答案的默认应答。
+当找不到答案时，将返回知识库的默认回答。 如果你使用的是客户端应用程序，如[Azure 机器人服务](https://docs.microsoft.com/azure/bot-service/bot-builder-howto-qna?view=azure-bot-service-4.0&tabs=cs#calling-qna-maker-from-your-bot)，则可能还会有一个单独的默认应答，指示没有符合分数阈值的答案。
 
-## <a name="change-default-answer-in-the-azure-portal"></a>更改 Azure 门户中的默认答案
+## <a name="set-default-answer-when-you-create-knowledge-base"></a>设置创建知识库时的默认答案
 
-1. 转到 [Azure 门户](https://portal.azure.com)并导航到表示所创建的 QnA Maker 服务的资源组。
+创建新的知识库时，默认的答案文本是设置之一。 如果选择不在创建过程中对其进行设置，则可以稍后通过以下过程进行更改。
 
-2. 单击以打开“应用服务”****。
+## <a name="change-default-answer-in-qna-maker-portal"></a>在 QnA Maker 门户中更改默认答案
 
-    ![在 Azure 门户中访问 QnA Maker 的应用服务](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+当 QnA Maker 服务未返回任何答案时，将返回知识库默认值答案。
 
-3. 单击“应用程序设置”****，然后将 **DefaultAnswer** 字段编辑为所需的默认响应。 单击“ **保存**”。
+1. 登录到[QnA Maker 门户](https://www.qnamaker.ai/)，并从列表中选择知识库。
+1. 从导航栏中选择 "**设置**"。
+1. 更改 "**管理知识库**" 部分的 "**默认回答文本**" 的值。
 
-    ![选择“应用程序设置”，然后编辑 QnA Maker 的 DefaultAnswer](../media/qnamaker-concepts-confidencescore/change-response.png)
+    :::image type="content" source="../media/qnamaker-concepts-confidencescore/change-default-answer.png" alt-text="突出显示默认答案文本框的 QnA Maker 门户的屏幕截图。":::
 
-4. 重启应用服务
-
-    ![更改 DefaultAnswer 后，重启 QnA Maker 应用服务](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+1. 选择 "**保存并训练**" 保存更改。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份 Azure 文件共享
 description: 本文介绍如何使用 Azure 备份服务和 PowerShell 备份 Azure 文件文件共享。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 53187152802908e94ee4a8a231d3b7874cf42422
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199338"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971022"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>使用 PowerShell 备份 Azure 文件共享
 
@@ -60,7 +60,7 @@ ms.locfileid: "83199338"
 5. 在出现的网页上，系统会提示输入帐户凭据。
 
     或者，可以使用 **-Credential**将帐户凭据作为参数包含在**AzAccount** cmdlet 中。
-   
+
     如果你是代表租户的 CSP 合作伙伴，请将该客户指定为租户。 使用其租户 ID 或租户主域名。 例如**AzAccount-租户 "fabrikam.com"**。
 
 6. 将想要使用的订阅与帐户相关联，因为一个帐户可以有多个订阅：
@@ -95,24 +95,15 @@ ms.locfileid: "83199338"
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. 使用 [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet 创建保管库。 指定与用于资源组的保管库相同的位置。
+1. 使用 [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet 创建保管库。 指定与用于资源组的保管库相同的位置。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. 指定保管库存储使用的冗余类型。 可以使用[本地冗余存储](../storage/common/storage-redundancy-lrs.md)或[异地冗余存储](../storage/common/storage-redundancy-grs.md)。
-   
-   下面的示例将**testvault**设置为**GeoRedundant**的[AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmdlet 的 **-BackupStorageRedundancy**选项设置为：
-
-   ```powershell
-   $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
-   Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
-   ```
-
 ### <a name="view-the-vaults-in-a-subscription"></a>在订阅中查看保管库
 
-若要查看订阅中的所有保管库，请使用[AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)：
+若要查看订阅中的所有保管库，请使用 [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0)：
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -246,20 +237,22 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+有关如何获取存储帐户的文件共享列表的详细信息，请参阅[此文](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)。
+
 ## <a name="important-notice-backup-item-identification"></a>重要说明：备份项标识
 
 本部分概述了对 Azure 文件共享的备份的重要更改，以便为正式发布做准备。
 
-为 Azure 文件共享启用备份时，用户为客户提供了一个文件共享名称作为实体名称，并且创建了一个备份项。 备份项的名称是 Azure 备份服务创建的唯一标识符。 标识符通常是用户友好名称。 但是，若要处理软删除的情况，可以删除文件共享，并使用同一名称创建另一个文件共享，Azure 文件共享的唯一标识现在为 ID。 
+为 Azure 文件共享启用备份时，用户为客户提供了一个文件共享名称作为实体名称，并且创建了一个备份项。 备份项的名称是 Azure 备份服务创建的唯一标识符。 标识符通常是用户友好名称。 但是，若要处理软删除的情况，可以删除文件共享，并使用同一名称创建另一个文件共享，Azure 文件共享的唯一标识现在为 ID。
 
-若要了解每个项的唯一 ID，请运行带有适用于**backupManagementType**和**WorkloadType**的相关筛选器的**AzRecoveryServicesBackupItem**命令，以获取所有相关项。 然后观察返回的 PowerShell 对象/响应中的名称字段。 
+若要了解每个项的唯一 ID，请运行带有适用于**backupManagementType**和**WorkloadType**的相关筛选器的**AzRecoveryServicesBackupItem**命令，以获取所有相关项。 然后观察返回的 PowerShell 对象/响应中的名称字段。
 
 建议列出项，然后从响应的 "名称" 字段中检索它们的唯一名称。 使用此值可以筛选*名称*参数为的项。 否则，请使用*FriendlyName*参数检索具有其 ID 的项。
 
 > [!IMPORTANT]
-> 请确保将 PowerShell 升级到 Azure 文件共享备份的最低版本（Microsoft.recoveryservices 2.6.0）。 在此版本中， *FriendlyName*筛选器可用于**AzRecoveryServicesBackupItem**命令。 
+> 请确保将 PowerShell 升级到 Azure 文件共享备份的最低版本（Microsoft.recoveryservices 2.6.0）。 在此版本中， *FriendlyName*筛选器可用于**AzRecoveryServicesBackupItem**命令。
 >
-> 将 Azure 文件共享的名称传递给*FriendlyName*参数。 如果将文件共享的名称传递给*name*参数，此版本将引发警告以将名称传递到*FriendlyName*参数。 
+> 将 Azure 文件共享的名称传递给*FriendlyName*参数。 如果将文件共享的名称传递给*name*参数，此版本将引发警告以将名称传递到*FriendlyName*参数。
 >
 > 如果未安装最小版本，则可能导致现有脚本失败。 使用以下命令安装 PowerShell 的最低版本：
 >
@@ -295,5 +288,5 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[在 Azure 门户中备份 Azure 文件](backup-afs.md)。
-- 请参阅[GitHub 上的示例脚本](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)，使用 Azure 自动化 runbook 来计划备份。
+* 了解如何[在 Azure 门户中备份 Azure 文件](backup-afs.md)。
+* 请参阅[GitHub 上的示例脚本](https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)，使用 Azure 自动化 runbook 来计划备份。

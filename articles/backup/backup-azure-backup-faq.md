@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: c82942c17d330eb5f632ef3ce43f00b338ba85f8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196263"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970478"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -22,16 +22,16 @@ ms.locfileid: "83196263"
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>可针对每个保管库注册的服务器/计算机数量是否有限制？
 
-每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果你使用的是 Microsoft Azure 备份代理，则每个保管库最多可以注册 50 MARS 代理。 并且可以向保管库注册 50 MABS server/DPM 服务器。
+每个保管库最多可以注册 1000 个 Azure 虚拟机。 如果你使用的是 Microsoft Azure 备份代理，则每个保管库最多可以注册 50 MARS 代理。 并且，可以将 50 个 MABS 服务器/DPM 服务器注册到一个保管库。
 
-### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>可以在保管库中保护多少数据源/项？
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>在保管库中可以保护多少个数据源/项？
 
-可以在保管库中跨所有工作负荷（IaaS VM、SQL、AFS 等）保护多达 2000 个数据源/项。
-例如，如果已在保管库中保护 500 个 VM 和 400 个 Azure 文件共享，则最多还能在其中保护 1100 个 SQL 数据库。
+在一个保管库中，可以跨所有工作负荷（IaaS VM、SQL、AFS 等）保护多达 2000 个数据源/项。
+例如，如果你已经在保管库中保护了 500 Vm 和 400 Azure 文件共享，则只能1100保护其中的 SQL 数据库。
 
-### <a name="how-many-policies-can-i-create-per-vault"></a>每个保管库可以创建多少项策略？
+### <a name="how-many-policies-can-i-create-per-vault"></a>每个保管库可以创建多少个策略？
 
-每个保管库最多只能有 200 项策略。
+每个保管库最多只能有 200 个策略。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>如果本组织有一个保管库，如何在还原数据时将数据与保管库中的其他服务器隔离？
 
@@ -43,16 +43,20 @@ ms.locfileid: "83196263"
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 
-不是。 保管库中存储的备份数据无法移动到不同的保管库。
+否。 保管库中存储的备份数据无法移动到不同的保管库。
 
-### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>能否在备份后从 GRS 更改为 LRS？
+### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>备份后是否可以从 GRS 更改为 LRS？
 
-不是。 仅在存储任何备份之后，恢复服务保管库才可更改存储选项。
+默认情况下，存储复制类型设置为异地冗余存储（GRS）。 配置备份后，将禁用修改的选项，并且无法更改。
+
+![存储复制类型](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+如果已配置备份，并且必须从 GRS 移动到 LRS，请参阅[配置备份后如何从 GRS 更改为 LRS](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup)。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
 
 - 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息，请参阅相关[文章](backup-azure-restore-files-from-vm.md)
-- Azure 备份服务器或 System Center DPM 备份的本地 VM 的联机恢复点不支持 ILR。
+- Azure 备份服务器或 System Center DPM 备份的本地 Vm 的在线恢复点不支持 ILR。
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
 
@@ -82,7 +86,7 @@ Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包�
 Windows 8.1 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 8 64 位 | Enterprise、Pro | 计算机应运行最新服务包和更新。
 Windows 7 64 位 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 计算机应运行最新服务包和更新。
-Server (服务器) | |
+服务器 | |
 Windows Server 2019 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2016 64 位 | Standard、Datacenter、Essentials | 使用最新服务包/更新。
 Windows Server 2012 R2 64 位 | Standard、Datacenter、Foundation | 使用最新服务包/更新。
@@ -107,7 +111,7 @@ Windows 8 或更高版本 | 54,400 GB
 Windows 7 |1700 GB
 Windows Server 2012 或更高版本 | 54,400 GB
 Windows Server 2008、Windows Server 2008 R2 | 1700 GB
-Azure VM | 请参阅[AZURE VM 备份的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
+Azure VM | 请参阅 [Azure VM 备份的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)
 
 ### <a name="how-is-the-data-source-size-determined"></a>如何确定数据源大小？
 
@@ -116,14 +120,14 @@ Azure VM | 请参阅[AZURE VM 备份的支持矩阵](https://docs.microsoft.com/
 **数据源** | **详细信息**
 --- | ---
 数据量(Volume) |从正在备份的单个卷 VM 备份的数据量。
-SQL Server 数据库 |正在备份的单个 SQL 数据库的大小。
+SQL Server 数据库 |正在备份的单一数据库大小的大小。
 SharePoint | 正在备份的 SharePoint 场中内容和配置数据库的总和。
 Exchange |正在备份 Exchange 服务器中所有 Exchange 数据库的总和。
 BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用恢复服务保管库备份的数据量是否有限制？
 
-可以使用恢复服务保管库备份的总数据量没有限制。 单个数据源（Azure Vm 除外）的大小最大可为 54400 GB。 有关限制的详细信息，请参阅[支持矩阵中的保管库限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
+对可以使用恢复服务保管库进行备份的总数据量没有限制。 单个数据源（Azure VM 除外）大小最大可为 54,400 GB。 有关限制的详细信息，请参阅[支持矩阵中的保管库限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>为什么传输到恢复服务保管库的数据的大小小于选择进行备份的数据？
 
@@ -135,13 +139,13 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
 
-不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
+不能。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
-- 下一次备份作业将是以前备份的数据的增量。 增量备份仅传输新增或更改的数据，这相当于更好地利用带宽。
+- 下一备份作业会在已备份数据的基础上进行增量备份。 增量备份仅传输新的或已更改的数据，这相当于更好地利用带宽。
 
-如果取消了 Azure VM 的备份作业，则已传输的数据会被忽略。 下次备份作业将传输上次成功的备份作业之后的增量数据。
+如果取消 Azure VM 的备份作业，则会忽略任何已传输的数据。 下次备份作业将传输上次成功的备份作业之后的增量数据。
 
 ## <a name="retention-and-recovery"></a>保留和恢复
 
@@ -155,22 +159,22 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>是否可以对备份计划和保留策略使用不同时间？
 
-不是。 只能在备份时间点应用保留策略。 例如，此图显示了午夜 12 点和下午 6 点创建的备份的保留策略。
+否。 只能在备份时间点应用保留策略。 例如，此图显示了中午 12 点和下午 6 点创建的备份保留策略。
 
 ![计划备份和保持](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果备份保留了很长一段时间，是否需要更多时间才能恢复较旧的数据点？
 
-不是。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
+不能。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？
 
 典型的长期保留点产品将备份数据存储为完整的点。
 
 - 完整点的存储 *效率不高* ，但能使还原变得更方便和快速。
-- 增量复制是*高效*存储，但要求你还原数据链，这会影响恢复时间
+- 增量复制为高效** 存储，但要求还原数据链，这会影响恢复时间
 
-Azure 备份存储体系结构提供这两个领域的最佳产品，它以最佳方式用于快速恢复的数据存储中，产生较低的存储成本。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
+Azure 备份存储体系结构在这两方面都能提供最佳性能，它以最佳方式存储数据，以便快速还原，且产生的存储成本低。 这种方法可确保提高（入口和出口）带宽使用效率。 数据存储量和恢复数据所需的时间都会尽量减少。 了解有关[增量备份](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/)的更多信息。
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>可创建的恢复点数量是否有限制？
 
@@ -178,22 +182,22 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 - 了解有关[备份和保留](./backup-support-matrix.md)的更多信息。
 
-### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>我可以将备份到 Azure 的数据恢复多少次？
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>我可以恢复多少次备份到 Azure 的数据？
 
 从 Azure 备份执行恢复的次数没有限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>还原数据时，Azure 的出口流量是否需要付费？
 
-不是。 恢复是免费的，不收取传出流量费。
+否。 恢复是免费的，不收取传出流量费。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>如果更改备份策略，会发生什么情况？
 
 应用新策略时，将遵循新策略的计划和保留期。
 
-- 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求保留它们。
+- 如果延长保留期，则会对现有的恢复点进行标记，使其根据新策略保留下来。
 - 如果缩短保留期，则会将其标记为在下一清理作业中删除，随后会将其删除。
 
-## <a name="encryption"></a>加密
+## <a name="encryption"></a>Encryption
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>发送到 Azure 的数据会加密吗？
 
@@ -208,7 +212,7 @@ Azure 备份存储体系结构提供这两个领域的最佳产品，它以最�
 
 Microsoft 不会解密任何位置的备份数据。
 
-### <a name="what-is-the-minimum-length-of-encryption-the-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？
+### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？
 
 使用 Azure 备份代理时，加密密钥至少应该为 16 个字符。 就 Azure VM 来说，Azure KeyVault 所使用的密钥没有长度限制。
 

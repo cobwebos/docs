@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: HT
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849087"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980335"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>为 Microsoft AppSource 创建 Power BI 应用
 
 本文介绍如何创建 Power BI 应用程序产品/服务并发布到 Microsoft [AppSource](https://appsource.microsoft.com/)。
 
-在开始之前，[在合作伙伴中心创建商业市场帐户](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
+在开始之前，[在合作伙伴中心创建商业市场帐户](create-account.md)（如果尚未这样做）。 确保你的帐户已在商业市场计划中注册。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
@@ -26,7 +26,7 @@ ms.locfileid: "83849087"
 2. 在左侧导航菜单中，选择“商业市场” > “概述”。
 3. 在“概述”页上，选择“+ 新建产品/服务” > “Power BI 服务应用”。
 
-   ![阐释左侧导航菜单。](./media/new-offer-pbi-app.png)
+   ![阐释左侧导航菜单。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > 发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
@@ -55,10 +55,10 @@ ms.locfileid: "83849087"
 
 它包含用于根据你所做的选择对此产品/服务执行操作的链接。 例如：
 
-- 如果产品/服务是草稿 - [删除草稿产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- 如果产品/服务已上线 - [停止销售产品/服务](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan)
-- 如果产品/服务为预览版 - [投入使用](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- 如果尚未完成发布服务器注销 - [取消发布](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- 如果产品/服务是草稿版/草稿版[产品](update-existing-offer.md#delete-a-draft-offer)/服务
+- 如果产品/服务是实时的，则[停止销售产品](update-existing-offer.md#stop-selling-an-offer-or-plan)/服务）
+- 如果[产品/服务是预览版）](publishing-status.md#publisher-approval)
+- 如果尚未完成发布服务器注销-[取消发布](update-existing-offer.md#cancel-publishing)）
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -68,12 +68,12 @@ ms.locfileid: "83849087"
 
 1. 选择希望我们向其发送潜在客户的潜在客户目标。 合作伙伴中心支持以下 CRM 系统：
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) for Customer Engagement
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) for Customer Engagement
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > 如果前面未列出你的 CRM 系统，请使用 [Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或 [Https 终结点](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)存储潜在顾客数据。 然后将数据导出到你的 CRM 系统。
+    > 如果前面未列出你的 CRM 系统，请使用 [Azure 表](commercial-marketplace-lead-management-instructions-azure-table.md)或 [Https 终结点](commercial-marketplace-lead-management-instructions-https.md)存储潜在顾客数据。 然后将数据导出到你的 CRM 系统。
 
 2. 在合作伙伴中心发布时，将产品/服务连接到潜在顾客目标。
 3. 确认正确配置了到潜在顾客目标的连接。 在合作伙伴中心发布后，我们将验证连接，并向你发送一个测试潜在顾客。 如果要在投入使用前预览产品/服务，还可以通过亲自尝试在预览环境中购买产品/服务来测试潜在顾客连接。
@@ -81,9 +81,9 @@ ms.locfileid: "83849087"
 
 下面是一些其他顾客连接管理资源：
 
-- [顾客连接管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [潜在顾客管理常见问题解答](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [常见的潜在顾客配置错误](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [顾客连接管理概述](commercial-marketplace-get-customer-leads.md)
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [顾客连接管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -94,33 +94,16 @@ ms.locfileid: "83849087"
 
 ### <a name="category"></a>类别
 
-最少选择一个类别，最多选择三个类别。 这些类别用于将产品/服务置于相应的市场搜索区域中，并显示在“产品/服务详细信息”页上。 在产品/服务说明中，介绍产品/服务如何支持这些类别。
+选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
+
+- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+
+请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
-（可选）在每个行业下最多选择两个行业和两个纵向。 类别用于显示你的产品/服务，而行业和纵向在搜索筛选器中使用，并应用于店面。 如果产品/服务面向特定行业和/或纵向，请使用产品/服务说明来解释产品/服务如何支持所选行业或纵向。 如果产品/服务不特定于行业，请将此部分留空。
-
-> [!NOTE]
-> 因为我们努力引入新的行业和纵向来改善产品/服务发现体验，所以某些行业或纵向可能尚未显示在店面中。 标有 (*) 的行业和纵向将在某个将来日期可用。 所有发布的产品/服务都可以通过关键字搜索来发现。
-<p>&nbsp;
-
-| 行业 | 子行业 |
-| --- | --- |
-| *汽车 | *汽车 |
-| 农业 | *其他 - 未划分 |
-| 分发 | *批发<br>包裹和包装运送 |
-| 教育 | 高等教育<br>中小学教育/K-12<br>*图书馆和博物馆 |
-| 金融服务 | 银行和资本市场<br>保险 |
-| Government | 国防和情报（过去称为国家和公共安全）<br>公共安全和司法<br>*平民政府 |
-| 医疗保健（过去称为健康） | 健康支付者<br>健康提供方<br>*制药 |
-| 制造和资源（过去称为制造） | 化学制品和农药<br>离散制造<br>*能源 |
-| 零售和消费品（过去称为零售） | 消费品<br>零售商 |
-| *媒体和通信（过去称为媒体和娱乐） | 媒体和娱乐<br>电信 |
-| 专业服务 | 法律<br>合作伙伴专业服务 |
-| *建筑和施工（过去称为建筑工程） | *其他 - 未划分 |
-| *酒店餐饮和旅游 | 酒店和休闲<br>旅游和运输<br>*餐馆和餐饮服务 |
-| *其他公共部门行业 | 林业和渔业<br>非营利组织 |
-| *房地产 | *其他 - 未划分 |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>合法
 
@@ -130,11 +113,11 @@ ms.locfileid: "83849087"
 
 客户必须接受这些条款才能试用产品/服务。
 
-选择“保存草稿”，然后继续进行到下一部分“产品/服务列表”。
+选择“保存草稿”，然后转到下一部分“产品/服务一览”继续操作。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
-在此处将定义显示在市场中的产品/服务详细信息。 其中包括产品/服务名称、说明、图像等。
+在此处将定义在市场中显示的产品/服务详细信息。 其中包括产品/服务名称、说明、图像等。
 
 ### <a name="language"></a>语言
 
@@ -145,19 +128,37 @@ ms.locfileid: "83849087"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。 还可以提供一个有用的链接，来使用与产品/服务列表中所使用的语言不同的语言提供内容。
 
+以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
+
+#### <a name="call-out-descriptions"></a>拨出说明
+
+1. 徽标
+2. 产品
+3. 类别
+4. 行业
+5. 支持地址（链接）
+6. 使用条款
+7. 隐私策略
+8. 产品名称
+9. 总结
+10. 说明
+11. 屏幕截图/视频
+
 ### <a name="name"></a>名称
 
-在此处输入的名称将显示为你的产品/服务的标题。 此字段预填充了在创建产品/服务时在“产品/服务别名”框中输入的文本。 你以后可以更改此名称。
+在此处输入的名称显示为产品/服务的标题。 此字段预填充了你在创建产品/服务时在“产品/服务别名”框中输入的文本。 可以稍后更改此名称。
 
 名称：
 
 - 可以是商标字（可以包括商标或版权符号）。
-- 长度不能超过 50 个字符。
-- 不能包含表情符号。
+- 长度不得超过 50 个字符。
+- 不得包含表情符号。
 
 ### <a name="search-results-summary"></a>搜索结果摘要
 
-提供产品/服务的简短说明。 此说明最多可包含 100 个字符，并在市场搜索结果中使用。
+提供对产品/服务的简短说明。 此说明最多可包含 100 个字符，并在市场搜索结果中使用。
 
 ### <a name="description"></a>说明
 
@@ -187,8 +188,8 @@ ms.locfileid: "83849087"
 
 必须提供支持联系人和工程联系人的姓名、电子邮件和电话号码 。 此信息不会向客户显示。 它可供 Microsoft 使用，并且可提供给云解决方案提供商 (CSP) 合作伙伴。
 
-- 支持联系人（必需）：解决常规支持问题。
-- 工程联系人（必需）：解决技术问题和认证问题。
+- 支持联系人（必需）：用于解决常规支持问题。
+- 工程联系人（必填）：用于解决技术问题和认证问题。
 - CSP 计划联系人（可选）：解决与 CSP 计划相关的经销商问题。
 
 在“支持联系人”部分中，提供“支持网站”的 Web 地址，合作伙伴可以在该网站中找到对产品/服务的支持 。
@@ -199,30 +200,30 @@ ms.locfileid: "83849087"
 
 ### <a name="marketplace-images"></a>市场映像
 
-提供要用于产品/服务的徽标和图像。 所有图像都必须为 .png 格式。 模糊图像将被拒绝。
+提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
 >[!NOTE]
->如果上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
+>如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
 
-#### <a name="store-logos"></a>Microsoft Store 徽标
+#### <a name="store-logos"></a>应用商店徽标
 
-按以下两个像素大小提供产品/服务徽标的 .png 文件：
-- 小图 (48 x 48)
+提供两个像素大小的产品/服务徽标的 PNG 文件：
+- 小 (48 x 48)
 - 大图 (216 x 216)
 
 两种徽标都是必需的，并且在市场列表的不同位置上使用。
 
 #### <a name="screenshots"></a>屏幕截图
 
-添加至少一个并且最多五个显示产品/服务的工作方式的屏幕截图。 每个屏幕截图大小必须为 1280 x 720 像素并采用 .png 格式。
+添加至少一个并且最多五个显示产品/服务的工作方式的屏幕截图。 每张屏幕截图大小必须为 1280 x 720 像素并采用 PNG 格式。
 
 #### <a name="videos-optional"></a>视频（可选）
 
-最多添加五个演示产品/服务的视频。 输入视频的名称、其 Web 地址和视频的缩略图 .png 图像（大小为 1280 x 720 像素）。
+最多添加五个视频来演示产品/服务。 以 1280 x 720 像素的大小输入视频的名称、其 web 地址和缩略图 PNG 图像。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市场列表资源
 
-若要详细了解如何创建产品/服务列表，请参阅[产品/服务列表最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)。
+若要详细了解如何创建产品/服务列表，请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -244,12 +245,12 @@ ms.locfileid: "83849087"
 
 在查看页上，你可以：
 
-- 查看产品/服务的每个部分的完成状态。 在产品/服务的所有部分标记为“已完成”之前，无法发布。
-  - 未开始 - 该部分尚未开始，需要完成。
-  - 未完成 - 该部分包含需要修复的错误或需要提供详细信息。 有关指南，请参阅本文档前面的部分。
-  - 完成 - 该部分包含所有必需的数据，并且没有错误。 必须先完成产品/服务的所有部分，然后才能提交产品/服务。
+- 查看产品/服务的每个部分的完成状态。 除非产品/服务的所有部分都标记为“已完成”，否则无法发布。
+  - 未启动 - 部分尚未启动，需要完成。
+  - 未完成 - 部分有错误需要修复，或需要你提供更多信息。 有关指南，请参阅本文档前面的部分。
+  - 完成 - 部分包含所有必需数据，并且没有错误。 必须先完成产品/服务的所有部分，然后才能提交产品/服务。
 - 向认证团队提供测试说明，以确保应用已正确测试。 同时，提供有助于了解产品/服务的补充说明。
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们将向你发送一封电子邮件，告知你产品/服务的预览版本可供评审和审批。 若要将你的产品/服务发布给公众（如果是专用产品/服务，则发布给专用受众），请访问合作伙伴中心，并选择“投入使用”。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
