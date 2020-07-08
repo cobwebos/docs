@@ -4,10 +4,9 @@ description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78193368"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
@@ -104,19 +103,19 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”  列表中。
 
 #### <a name="solution"></a>解决方案
-在群集的 "Azure AD 应用注册" 页上，选择 "**身份验证**"，然后在 "**重定向 uri** " 部分下，将 Service Fabric Explorer URL 添加到列表。 保存所做更改。
+在群集的“Azure AD 应用注册”页上，选择“身份验证”  ，然后在“重定向 URI”  部分下，将 Service Fabric Explorer URL 添加到列表中。 保存所做更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
 
-### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>在登录时，通过 PowerShell 使用 Azure AD 身份验证连接到群集时，会出现错误： "AADSTS50011"
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>登录时，通过 PowerShell 使用 Azure AD 身份验证连接到群集会生成错误：“AADSTS50011”
 #### <a name="problem"></a>问题
-尝试通过 PowerShell 连接到使用 Azure AD 的 Service Fabric 群集时，登录页返回失败： "AADSTS50011：请求中指定的回复 url 与为应用程序&lt;guid&gt;配置的回复 url 不匹配。"
+尝试通过 PowerShell 使用 Azure AD 连接到 Service Fabric 群集时，登录页会返回故障：“AADSTS50011：在请求中指定的回复 URL 与为应用程序 &lt;guid&gt; 配置的回复 URL 不匹配。”
 
-#### <a name="reason"></a>原因
-与前面的问题类似，PowerShell 尝试对 Azure AD 进行身份验证，该 URL 提供 Azure AD 应用程序**答复 url**列表中未列出的重定向 URL。  
+#### <a name="reason"></a>Reason
+与前面的问题类似，PowerShell 尝试针对 Azure AD 进行身份验证，而 Azure AD 提供 Azure AD 应用程序的“回复 URL”  列表中未列出的重定向 URL。  
 
 #### <a name="solution"></a>解决方案
-使用与上述问题相同的过程，但 URL 必须设置为`urn:ietf:wg:oauth:2.0:oob`，这是命令行身份验证的特殊重定向。
+使用与上述问题相同的过程，但 URL 必须设置为 `urn:ietf:wg:oauth:2.0:oob`，这是命令行身份验证的特殊重定向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>使用 Azure AD 身份验证通过 PowerShell 连接群集
 若要连接 Service Fabric 群集，请使用以下 PowerShell 命令示例：

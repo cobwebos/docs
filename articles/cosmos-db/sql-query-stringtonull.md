@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296433"
 ---
 # <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
@@ -47,7 +46,7 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"n1": null, "n2": null, "n3": true}]
@@ -63,7 +62,7 @@ SELECT
     StringToNull("Null")
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{}]
@@ -79,7 +78,7 @@ SELECT
     StringToNull(NaN) 
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{}]

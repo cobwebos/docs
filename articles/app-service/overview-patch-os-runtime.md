@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78273633"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
@@ -31,7 +30,7 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure 如何处理重大漏洞？
 
-严重的漏洞（例如[零日漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）需要立即修补，将会根据案例以高优先级处理更新。
+当严重漏洞需要立即修补（如[零天漏洞](https://wikipedia.org/wiki/Zero-day_(computing))）时，将根据具体情况来处理高优先级更新。
 
 访问 [Azure 安全博客](https://azure.microsoft.com/blog/topics/security/)，及时了解 Azure 中的关键安全公告。 
 

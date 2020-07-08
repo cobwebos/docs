@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/19/2020
 ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921158"
 ---
 # <a name="module-k-means-clustering"></a>模块：K 平均值聚类
@@ -145,4 +144,4 @@ K-means 是最简单、最常见的非监督式学习算法之一  。 可以将
 
 ## <a name="next-steps"></a>后续步骤
 
-参阅 Azure 机器学习[可用的模块集](module-reference.md)。 
+请参阅 Azure 机器学习的[可用模块集](module-reference.md)。 

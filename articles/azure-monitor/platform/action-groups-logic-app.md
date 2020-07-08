@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78206230"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
@@ -43,7 +42,7 @@ ms.locfileid: "78206230"
 
     ![创建逻辑应用](media/action-groups-logic-app/create-logic-app-dialog.png "创建逻辑应用")
 
-4.  选择“创建”以创建逻辑应用。**** 此时会弹出一条消息，指出已创建逻辑应用。 选择“启动资源”打开“逻辑应用设计器”。********
+4.  选择“创建”以创建逻辑应用。 此时会弹出一条消息，指出已创建逻辑应用。 选择“启动资源”打开“逻辑应用设计器”。********
 
 5.  选择触发器：“当收到 HTTP 请求时”****。
 
@@ -100,7 +99,7 @@ ms.locfileid: "78206230"
 
     ![设置 Content-Type 标头](media/action-groups-logic-app/content-type-header.png "设置 Content-Type 标头")
 
-10. 选择**+** "**新建步骤**"，然后选择 "**添加操作**"。
+10. 选择 " **+** **新建步骤**"，然后选择 "**添加操作**"。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 
@@ -110,7 +109,7 @@ ms.locfileid: "78206230"
 
 12. 配置 Microsoft Teams 操作。 “逻辑应用设计器”将要求对 Office 365 帐户进行身份验证。**** 选择要向其发送消息的“团队 ID”和“通道 ID”********。
 
-13. 结合使用静态文本和对动态内容中 \<fields\> 的引用来配置消息。 将以下文本复制并粘贴到“消息”字段：****
+13. 使用静态文本的组合和对动态内容中的的引用来配置消息 \<fields\> 。 将以下文本复制并粘贴到“消息”字段：****
 
     ```text
       Activity Log Alert: <eventSource>
@@ -119,7 +118,7 @@ ms.locfileid: "78206230"
       resourceId: <resourceId>
     ```
 
-    然后，搜索 \<fields\> 并将其替换为使用相同名称的动态内容标记。
+    然后搜索并将替换为 \<fields\> 具有相同名称的动态内容标记。
 
     > [!NOTE]
     > 有两个名为 **status** 的动态字段。 将这两个字段添加到消息。 使用 **activityLog** 属性包中的字段，并删除另一个字段。 将鼠标悬停在 **status** 字段上以查看完全限定的字段引用，如以下屏幕截图所示：
@@ -186,7 +185,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 -  步骤 9 和 10 相同。
 -  对于步骤 11 到 14，请使用以下过程：
 
-   1. 选择**+** "**新建步骤**"，然后选择 "**添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
+   1. 选择 " **+** **新建步骤**"，然后选择 "**添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。  在文本框中输入版本值时，请在其周围加上引号 ("0.1.1") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
@@ -274,7 +273,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 - 步骤 9 和 10 相同。
 - 对于步骤 11 到 14，请使用以下过程：
 
-  1. 选择**+** "**新建步骤**"，然后选择 "**添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
+  1. 选择 " **+** **新建步骤**"，然后选择 "**添加条件**"。 设置以下条件，以便逻辑应用仅在输入数据与下面的值匹配时执行。 在文本框中输入版本值时，请在其周围加上引号 ("2.0") 以确保它被评估为字符串而不是数字类型。  如果返回到该页，系统不会显示引号，但底层代码仍然保持字符串类型。 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
@@ -296,5 +295,5 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 ## <a name="next-steps"></a>后续步骤
 * 参阅 [Azure 活动日志警报概述](../../azure-monitor/platform/alerts-overview.md)，了解如何接收警报。  
 * 了解如何[配置发布 Azure 服务运行状况通知时的警报](../../azure-monitor/platform/alerts-activity-log-service-notifications.md)。
-* 了解有关[操作组](../../azure-monitor/platform/action-groups.md)的详细信息。
+* 详细了解[操作组](../../azure-monitor/platform/action-groups.md)。
 

@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196973"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>管理多个环境的应用程序
@@ -42,7 +41,7 @@ ms.locfileid: "78196973"
 
   - 在 PowerShell 中，[`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet 将应用程序参数作为哈希表。
   - 借助 sfctl，[`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) 命令将参数作为 JSON 字符串。 Install.sh 脚本使用 sfctl。
-  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 从 Visual Studio 发布时，使用 Azure DevOps Services 或 Azure DevOps Server 时，将使用这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
+  - Visual Studio 在应用程序项目的参数文件夹中提供一组参数文件。 使用 Azure DevOps Services 或 Azure DevOps Server 从 Visual Studio 发布时会使用这些参数文件。 在 Visual Studio 中，参数文件会传递给 Deploy-FabricApplication.ps1 脚本。
 
 ## <a name="next-steps"></a>后续步骤
 以下文章演示如何使用此处所述的某些概念：

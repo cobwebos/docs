@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77921447"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝色屏幕上显示“关键服务失败”
@@ -25,14 +24,14 @@ ms.locfileid: "77921447"
 
 ## <a name="symptom"></a>症状 
 
-Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动屏幕截图时，在蓝色屏幕中看到以下错误消息之一：
+Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动屏幕截图时，在蓝色屏幕上看到以下错误消息之一：
 
-- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 https://windows.com/stopcode。 如果你呼叫支持人员，请向其提供以下信息: 停止代码: 关键服务失败” 
-- “你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后我们将为你重启。 如果想了解更多信息，稍后可以联机搜索以下错误: CRITICAL_SERVICE_FAILED”
+- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修补程序的详细信息，请访问 https://windows.com/stopcode 。 如果致电支持人员，请向他们提供以下信息：“终止代码: 关键服务失败” 
+- “你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后为你重启电脑。 如果想了解更多信息，可以稍后联机搜索以下错误：CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>原因
 
-有多种原因会导致产生停止错误。 最常见原因是：
+有多种原因会导致停止错误。 最常见原因是：
 - 驱动程序存在问题
 - 系统文件或内存损坏
 - 应用程序访问了内存的禁止扇区
@@ -56,7 +55,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 1. 打开提升的命令提示符会话（以管理员身份运行）。
 2. 运行以下脚本：
 
-    在此脚本中，我们假定分配给附加 OS 磁盘的驱动器号为 F。你应将其替换为适用于你的 VM 的相应值。
+    在此脚本中，我们假定分配给附加 OS 磁盘的驱动器号为 F。应将其替换为 VM 的相应值。
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -86,14 +85,14 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
         bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
 
-    例如，如果你附加的 OS 磁盘是驱动器 F，则运行以下命令：
+    例如，如果附加的 OS 磁盘是驱动器 F，则运行以下命令：
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [分离 os 磁盘，然后将 os 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 将以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
-3. 打开“运行”**** 框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
-4. 选择“自动选择未经签名的驱动程序”****，然后单击“下一步”****。
-5. 此时将显示未经签名的驱动程序文件的列表。 请记住这些文件名。
+2. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 会以安全模式启动。 如果仍然遇到错误，请转到可选步骤。
+3. 打开“运行”  框，运行 **verifier** 来启动驱动程序验证程序管理器工具。
+4. 选择“自动选择未经签名的驱动程序”  ，然后单击“下一步”  。
+5. 此时会显示未经签名的驱动程序文件的列表。 请记住这些文件名。
 6. 从正常工作的 VM 复制这些文件的相同版本，然后替换这些未签名的文件。 
 
 7. 删除安全启动设置：
@@ -106,16 +105,16 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 若要自己分析转储日志，请执行以下步骤：
 
 1. 将 OS 磁盘附加到恢复 VM。
-2. 在附加的 OS 磁盘上，浏览到**\windows\system32\config**。如果需要回滚，请将所有文件复制为备份。
+2. 在附加的 OS 磁盘上，浏览到 **\windows\system32\config**。将所有文件复制为一个备份，以备回退之需。
 3. 启动**注册表编辑器** (regedit.exe)。
-4. 选择“HKEY_LOCAL_MACHINE”**** 项。 在菜单上，选择 "**文件** > " "**加载配置单元**"。
-5. 浏览到已附加 OS 磁盘上的**\windows\system32\config\SYSTEM**文件夹。 输入“BROKENSYSTEM”**** 作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”**** 项之下。
+4. 选择“HKEY_LOCAL_MACHINE”  项。 在菜单上，选择“文件” > “加载配置单元”。  
+5. 浏览到已附加 OS 磁盘上的 **\windows\system32\config\SYSTEM** 文件夹。 输入“BROKENSYSTEM”  作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”  项之下。
 6. 浏览到 **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** 并进行以下更改：
 
     Autoreboot = 0
 
     CrashDumpEnabled = 2
-7.  选择“BROKENSYSTEM”****。 从菜单中选择 "**文件** > " "**卸载配置单元**"。
+7.  选择“BROKENSYSTEM”  。 在菜单上，选择“文件”   > “卸载配置单元” 
 8.  修改 BCD 设置以在调试模式下启动。 在提升的命令提示符下运行以下命令：
 
     ```cmd
@@ -132,10 +131,10 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} recoveryenabled no
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} integrityservices disable
     ```
-9. [分离 os 磁盘，然后将 os 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。
+9. [分离 OS 磁盘，然后将 OS 磁盘重新附加到受影响的 VM](troubleshoot-recovery-disks-portal-windows.md)。
 10. 启动 VM 以查看它是否显示了转储分析。 找到无法加载的文件。 需要使用正常工作的 VM 中的文件替换此文件。 
 
-    下面是转储分析的示例。 可以看到 **FAILURE** 在 filecrypt.sys 中：“FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys”。
+    下面是转储分析的示例。 可以看到 **FAILURE** 位于 filecrypt.sys 上：“FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys”。
 
     ```
     kd> !analyze -v 

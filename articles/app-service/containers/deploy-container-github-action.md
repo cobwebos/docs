@@ -7,21 +7,20 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.openlocfilehash: d5f175d887cec1d5b5e567d3f716e6492f4516dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78246968"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub 操作将自定义容器部署到应用服务
 
-可以通过 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 灵活地生成自动化软件开发生命周期工作流。 [对于容器的 Azure App Service 操作](https://github.com/Azure/webapps-container-deploy)，可以使用 GitHub 操作自动化工作流，以便将应用作为[自定义容器部署到应用服务](https://azure.microsoft.com/services/app-service/containers/)。
+使用 [GitHub Actions](https://help.github.com/en/articles/about-github-actions)，你可以灵活地生成自动化软件开发生命周期工作流。 [对于容器的 Azure App Service 操作](https://github.com/Azure/webapps-container-deploy)，可以使用 GitHub 操作自动化工作流，以便将应用作为[自定义容器部署到应用服务](https://azure.microsoft.com/services/app-service/containers/)。
 
 > [!IMPORTANT]
-> GitHub Actions 目前为 Beta 版。 必须先使用 GitHub 帐户[注册加入预览版](https://github.com/features/actions)。
+> GitHub Actions 当前为 beta 版本。 必须首先使用 GitHub 帐户[注册才能加入预览](https://github.com/features/actions)。
 > 
 
-工作流通过存储库的 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义。 此定义包含组成工作流的各种步骤和参数。
+工作流是由存储库中 `/.github/workflows/` 路径中的 YAML (.yml) 文件定义的。 此定义包含组成工作流的各种步骤和参数。
 
 对于 Azure App Service 容器工作流，文件包含三个部分：
 
@@ -33,7 +32,7 @@ ms.locfileid: "78246968"
 
 ## <a name="create-a-service-principal"></a>创建服务主体
 
-可以在 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中使用 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 你可以使用 Azure 门户中[Azure Cloud Shell](https://shell.azure.com/)或通过选择 "**试用**" 按钮来运行此命令。
+可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -62,9 +61,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 下面的示例使用用户级凭据，即用于部署的 Azure 服务主体。 按照以下步骤配置机密：
 
-1. 在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 "> 添加新密钥**
+1. 在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”
 
-2. 将以下`az cli`命令的内容粘贴为机密变量的值。 例如，`AZURE_CREDENTIALS` 。
+2. 将以下命令的内容粘贴 `az cli` 为机密变量的值。 例如 `AZURE_CREDENTIALS`。
 
     
     ```azurecli
@@ -75,7 +74,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
     # Replace {subscription-id}, {resource-group} with the subscription, resource group details
     ```
 
-3. 现在，在你的分支中的工作`.github/workflows/workflow.yml`流文件中：将 Azure 登录操作中的密码替换为你的机密。
+3. 现在，在你的分支中的工作流文件中：将 `.github/workflows/workflow.yml` Azure 登录操作中的密码替换为你的机密。
 
 4. 同样，为容器注册表凭据定义以下附加机密，并在 Docker 登录操作中设置它们。 
 
@@ -121,17 +120,17 @@ jobs:
 
 ## <a name="deploy-to-an-app-service-container"></a>部署到应用服务容器
 
-若要将映像部署到应用服务中的自定义容器， `azure/webapps-container-deploy@v1`请使用操作。 该操作有五个参数：
+若要将映像部署到应用服务中的自定义容器，请使用 `azure/webapps-container-deploy@v1` 操作。 该操作有五个参数：
 
-| **参数**  | **说明**  |
+| **Parameter**  | **解释**  |
 |---------|---------|
-| **应用名称** | 请求应用服务应用的名称 | 
-| **槽名称** | 可有可无输入生产槽以外的现有槽 |
+| **app-name** | （必需）应用服务应用的名称 | 
+| **slot-name** | （可选）输入生产槽以外的现有槽 |
 | **images** | 请求指定完全限定的容器映像名称。 例如，"myregistry.azurecr.io/nginx:latest" 或 "python： 3.7.2-alpine/"。 对于多容器应用程序，可以提供多个容器映像名称（多行分隔） |
 | **配置-文件** | 可有可无Docker 合成文件的路径。 应为完全限定的路径或相对于默认工作目录。 对于多容器应用是必需的。 |
-| **容器-命令** | 可有可无输入启动命令。 例如， dotnet run 或 dotnet filename .dll |
+| **容器-命令** | 可有可无输入启动命令。 例如， dotnet run 或 dotnet filename.dll |
 
-下面是用于生成 node.js 应用并将其部署到应用服务中的自定义容器的示例工作流。
+下面是用于构建 Node.js 应用并将其部署到应用服务中的自定义容器的示例工作流。
 
 ```yaml
 on: [push]
@@ -173,13 +172,13 @@ jobs:
 
 ## <a name="next-steps"></a>后续步骤
 
-可在 GitHub 上找到一组分组到不同存储库中的操作，其中每个操作都包含文档和示例，帮助你将 GitHub 用于 CI/CD 并将你的应用部署到 Azure。
+可在 GitHub 上找到分组到不同存储库中的操作集，其中每一个都包含文档和示例，帮助你将 GitHub 用于 CI/CD 并将应用部署到 Azure。
 
 - [Azure 登录](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 
-- [Azure WebApp for 容器](https://github.com/Azure/webapps-container-deploy)
+- [用于容器的 Azure WebApp](https://github.com/Azure/webapps-container-deploy)
 
 - [Docker 登录/注销](https://github.com/Azure/docker-login)
 

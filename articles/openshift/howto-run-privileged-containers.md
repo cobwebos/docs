@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
 ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271374"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中运行特权容器
@@ -24,14 +23,14 @@ ms.locfileid: "78271374"
 请在遵循供应商说明之前通读这些说明。
 以下特定于产品的步骤中的章节标题直接引用供应商文档中的章节标题。
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 
 大多数安全产品的文档假定你具有群集管理员权限。
 客户管理员不具备 Azure Red Hat OpenShift 的所有权限。 修改群集范围内的资源所需的权限受到限制。
 
-首先，通过运行`oc get scc`确保用户以客户管理员身份登录到群集。 作为 customer 管理员组成员的所有用户都有权查看群集上的安全上下文约束（Scc）。
+首先，通过运行确保用户以客户管理员身份登录到群集 `oc get scc` 。 作为 customer 管理员组成员的所有用户都有权查看群集上的安全上下文约束（Scc）。
 
-接下来，请确保`oc`二进制文件的`3.11.154`版本为。
+接下来，请确保 `oc` 二进制文件的版本为 `3.11.154` 。
 ```
 oc version
 oc v3.11.154
@@ -74,9 +73,9 @@ oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua-security:aqu
 ### <a name="step-2-deploy-the-aqua-server-database-and-gateway"></a>步骤2：部署浅绿色服务器、数据库和网关
 按照水绿色文档中提供的步骤来安装 yaml。
 
-修改提供`aqua-console.yaml`的。  删除标记为`kind: ClusterRole`和`kind: ClusterRoleBinding`的前两个对象。  由于客户管理员此时无权修改`ClusterRole`和`ClusterRoleBinding`对象，因此不会创建这些资源。
+修改提供的 `aqua-console.yaml` 。  删除标记为和的前两个对象 `kind: ClusterRole` `kind: ClusterRoleBinding` 。  由于客户管理员此时无权修改和对象，因此不会创建这些资源 `ClusterRole` `ClusterRoleBinding` 。
 
-第二个修改将针对的`kind: Route`部分`aqua-console.yaml`。 在`kind: Route` `aqua-console.yaml`文件中替换对象的以下 yaml。
+第二个修改将针对的 `kind: Route` 部分 `aqua-console.yaml` 。 `kind: Route`在文件中替换对象的以下 yaml `aqua-console.yaml` 。
 ```
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -115,13 +114,13 @@ oc get route aqua-web -n aqua-security
 | -------------- | ------------- |
 | 业务流程协调程序   | OpenShift     |
 | ServiceAccount | 浅绿-帐户  |
-| 项目        | 浅绿色-安全性 |
+| Project        | 浅绿色-安全性 |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的特定于产品的步骤
 
 我们要修改的基本说明可在[Prisma Cloud 部署文档](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)中找到
 
-首先安装该`twistcli`工具，如 "安装 Prisma cloud" 和 "下载 Prisma cloud software" 部分所述。
+首先安装该 `twistcli` 工具，如 "安装 Prisma cloud" 和 "下载 Prisma cloud software" 部分所述。
 
 创建新的 OpenShift 项目
 ```
@@ -136,9 +135,9 @@ oc new-project twistlock
 ### <a name="install-console"></a>安装控制台
 
 `oc create -f twistlock_console.yaml`在步骤2中，您将在创建命名空间时收到错误。
-您可以放心地忽略该命名空间，该命名空间是先前`oc new-project`通过命令创建的。
+您可以放心地忽略该命名空间，该命名空间是先前通过命令创建的 `oc new-project` 。
 
-`azure-disk`用于存储类型。
+用于 `azure-disk` 存储类型。
 
 ### <a name="create-an-external-route-to-console"></a>创建到控制台的外部路由
 

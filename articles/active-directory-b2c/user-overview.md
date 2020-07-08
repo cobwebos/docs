@@ -11,10 +11,9 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78185652"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户帐户概述
@@ -23,8 +22,8 @@ ms.locfileid: "78185652"
 
 可以使用以下类型的帐户：
 
-- 工作帐户  - 工作帐户可以访问租户中的资源，并且通过管理员角色可以管理租户。
-- 来宾帐户  - 来宾帐户只能是一个 Microsoft 帐户或可用于访问应用程序或管理租户的 Azure Active Directory 用户。
+- 工作帐户**** - 工作帐户可以访问租户中的资源，并且通过管理员角色可以管理租户。
+- 来宾帐户**** - 来宾帐户只能是一个 Microsoft 帐户或可用于访问应用程序或管理租户的 Azure Active Directory 用户。
 - **使用者帐户** - 使用者帐户由已向 Azure AD B2C 注册的应用程序的用户使用。 可以通过以下方式创建使用者帐户：
   - 在 Azure AD B2C 应用程序中通过注册用户流程的用户
   - 使用 Microsoft Graph API
@@ -32,18 +31,18 @@ ms.locfileid: "78185652"
 
 ## <a name="work-account"></a>工作帐户
 
-基于 Azure AD 的所有租户以相同的方式创建工作帐户。 若要创建工作帐户，可以使用[快速入门：向 Azure Active Directory 添加新用户](../active-directory/fundamentals/add-users-azure-active-directory.md)中的信息。 使用 Azure 门户中的“新建用户”  选项创建工作帐户。
+基于 Azure AD 的所有租户以相同的方式创建工作帐户。 若要创建工作帐户，可以使用[快速入门：向 Azure Active Directory 添加新用户](../active-directory/fundamentals/add-users-azure-active-directory.md)中的信息。 使用 Azure 门户中的“新建用户”**** 选项创建工作帐户。
 
 添加新工作帐户时，需要考虑以下配置设置：
 
-- “名称”  和“用户名”  - Name  属性包含用户的名和姓。 用户名  是用户登录时输入的标识符。 用户名包括完整域。 用户名的域名部分必须是初始默认域名“your-domain.onmicrosoft.com”**，或已验证的非联合[自定义域名](../active-directory/fundamentals/add-custom-domain.md)（例如“contoso.com”**）。
-- 配置文件  - 通过用户数据的配置文件设置帐户。 可以输入名字、姓氏、职务和部门名称。 可以在创建帐户后编辑配置文件。
-- 组  - 使用组执行管理任务，例如一次为多个用户或设备分配许可证或权限。 可以将新帐户放入租户现有的[组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)中。
-- 目录角色  - 需要指定用户帐户对租户中资源的访问级别。 可以使用以下权限级别：
+- “名称”**** 和“用户名”**** - Name**** 属性包含用户的名和姓。 用户名**** 是用户登录时输入的标识符。 用户名包括完整域。 用户名的域名部分必须是初始默认域名“your-domain.onmicrosoft.com”**，或已验证的非联合[自定义域名](../active-directory/fundamentals/add-custom-domain.md)（例如“contoso.com”**）。
+- 配置文件**** - 通过用户数据的配置文件设置帐户。 可以输入名字、姓氏、职务和部门名称。 可以在创建帐户后编辑配置文件。
+- 组**** - 使用组执行管理任务，例如一次为多个用户或设备分配许可证或权限。 可以将新帐户放入租户现有的[组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)中。
+- 目录角色**** - 需要指定用户帐户对租户中资源的访问级别。 可以使用以下权限级别：
 
-    - 用户  - 用户可以访问分配的资源，但不能管理大多数租户资源。
-    - 全局管理员  - 全局管理员可以完全控制所有租户资源。
-    - 受限的管理员  - 为用户选择一个或多个管理角色。 有关可以选择的角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+    - 用户**** - 用户可以访问分配的资源，但不能管理大多数租户资源。
+    - 全局管理员**** - 全局管理员可以完全控制所有租户资源。
+    - 受限的管理员**** - 为用户选择一个或多个管理角色。 有关可以选择的角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ### <a name="create-a-work-account"></a>创建工作帐户
 

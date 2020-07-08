@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78295872"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
@@ -30,17 +29,17 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
   
 ## <a name="return-types"></a>返回类型
   
-  返回数组表达式。  
+  返回一个数组表达式。  
   
 ## <a name="examples"></a>示例
   
-  以下示例介绍了如何连接两个数组。  
+  以下示例演示了如何连接两个数组。  
   
 ```sql
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat 
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"arrayConcat": ["apples", "strawberries", "bananas"]}]  

@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78271389"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>文件级别的 SAP HANA Azure 备份
@@ -65,7 +64,7 @@ Azure 中的不同 VM 类型允许附加不同数量的 VHD。 确切的详细�
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>将 SAP HANA 备份文件复制到 Azure Blob 存储
 提到的性能号、备份持续时间号和复制持续时间数可能不代表 Azure 技术的最新状态。 Microsoft 不断改进 Azure 存储，以提供更高的吞吐量和更低的延迟。 因此，数字仅用于演示目的。 你需要在所选的 Azure 区域中测试你的个人需求，才能通过方法判断最适合你的方法。
 
-快速存储 SAP HANA 备份文件的另一个选项是 Azure Blob 存储。 单个 blob 容器的限制为大约 500 TB （对于 SAP HANA 系统而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 类型的 Azure）可以保持足够的 SAP HANA 备份。 &quot;客户可选择 "热&quot; " 和&quot;"&quot;冷" blob 存储（请参阅[Azure blob 存储： "热"、"冷" 和 "存档" 访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)）。
+快速存储 SAP HANA 备份文件的另一个选项是 Azure Blob 存储。 单个 blob 容器的限制为大约 500 TB （对于 SAP HANA 系统而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 类型的 Azure）可以保持足够的 SAP HANA 备份。 客户可选择 " &quot; 热" &quot; 和 "冷" &quot; &quot; blob 存储（请参阅[Azure blob 存储： "热"、"冷" 和 "存档" 访问层](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)）。
 
 使用 blobxfer 工具可以轻松地将 SAP HANA 备份文件直接复制到 Azure Blob 存储。
 

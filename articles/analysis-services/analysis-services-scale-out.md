@@ -8,10 +8,9 @@ ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78247995"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
@@ -172,7 +171,7 @@ ms.locfileid: "78247995"
 
 ## <a name="troubleshoot"></a>故障排除
 
-**问题：** 用户收到错误“在连接模式 "ReadOnly" 下找不到服务器“\<服务器名称>”实例”  。
+**问题：** 用户获取错误找**不到 \<Name of the server> 处于连接模式 "ReadOnly" 的服务器 "" 实例。**
 
 **解决方案：** 选择“从查询池隔离处理服务器”选项时，使用默认连接字符串（不带 `:rw`）的客户端连接将重定向到查询池副本。  如果查询池中的副本因尚未完成同步而尚未联机，则重定向的客户端连接可能会失败。 若要防止连接失败，执行同步时查询池中必须至少有两个服务器。 每个服务器单独同步，而其他服务器保持联机。 如果在处理期间选择在查询池中没有处理服务器，则可以选择将其从池中删除以进行处理，然后在处理完成后但在同步之前将其添加回池中。 可以使用内存和 QPU 指标来监视同步状态。
 

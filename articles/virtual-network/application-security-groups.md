@@ -1,7 +1,7 @@
 ---
 title: Azure 应用程序安全组概述
 titlesuffix: Azure Virtual Network
-description: 了解应用程序安全组的使用情况。
+description: 了解应用程序安全组的使用。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,10 +14,9 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 775ef92a0ca486d1f8a6c44c78a4df04cd5ef467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78274705"
 ---
 # <a name="application-security-groups"></a>应用程序安全组
@@ -32,25 +31,25 @@ ms.locfileid: "78274705"
 
 若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 **DenyAllInbound** 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
 
-|Priority|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|优先级|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
+| 100 | Internet | * | AsgWeb | 80 | TCP | 允许 |
 
 ## <a name="deny-database-all"></a>Deny-Database-All
 
 由于 **AllowVNetInBound** 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
 
-|Priority|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|优先级|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Any | 拒绝 |
+| 120 | * | * | AsgDb | 1433 | 任意 | 拒绝 |
 
 ## <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
 此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
 
-|Priority|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
+|优先级|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允许 |
 
 将应用程序安全组指定为源或目标的规则只会应用到属于应用程序安全组成员的网络接口。 如果网络接口不是应用程序安全组的成员，则规则不会应用到网络接口，即使网络安全组关联到子网。
 

@@ -8,10 +8,9 @@ ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302213"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
@@ -25,11 +24,11 @@ RAND ()
 
 ## <a name="return-types"></a>返回类型
 
-  返回数值表达式。
+  返回一个数值表达式。
 
 ## <a name="remarks"></a>备注
 
-  `RAND` 是非确定性函数。 重复调用 `RAND` 不会返回相同的结果。
+  `RAND` 是非确定性的函数。 重复调用 `RAND` 不会返回相同的结果。
 
 ## <a name="examples"></a>示例
   
@@ -39,7 +38,7 @@ RAND ()
 SELECT RAND() AS rand 
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{"rand": 0.87860053195618093}]  

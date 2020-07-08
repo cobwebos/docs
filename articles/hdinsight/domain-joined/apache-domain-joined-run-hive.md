@@ -9,17 +9,16 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78196920"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置策略后，使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](apache-domain-joined-configure.md)。
 * 装有 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
@@ -27,7 +26,7 @@ ms.locfileid: "78196920"
 ## <a name="connect-to-apache-ranger-admin-ui"></a>连接到 Apache Ranger 管理 UI
 **连接到 Ranger 管理 UI**
 
-1. 在浏览器中，导航到 Ranger 管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/`其中 CLUSTERNAME 是群集的名称。
+1. 在浏览器中，导航到 Ranger 管理 UI， `https://CLUSTERNAME.azurehdinsight.net/Ranger/` 其中 CLUSTERNAME 是群集的名称。
 
    > [!NOTE]  
    > Ranger 使用的凭据与 Apache Hadoop 群集不同。 若要防止浏览器使用缓存的 Hadoop 凭据，请使用新的 InPrivate 浏览器窗口连接到 Ranger 管理 UI。
@@ -52,10 +51,10 @@ ms.locfileid: "78196920"
 2. 选择 " **CLUSTERNAME_Hive**"，然后单击 " **Hive**"。 应会看到两个预配置策略。
 3. 选择 "**添加新策略**"，然后输入以下值：
 
-    |属性 |值 |
+    |Property |“值” |
     |---|---|
     |策略名称|hivesampletable-all|
-    |Hive 数据库|default|
+    |Hive 数据库|默认值|
     |表|hivesampletable|
     |Hive 列|*|
     |选择用户|hiveuser1|
@@ -66,14 +65,14 @@ ms.locfileid: "78196920"
     > [!NOTE]  
     > 如果“选择用户”中未填充域用户，请等待片刻时间让 Ranger 与 AAD 同步。
 
-4. 选择“添加”以保存策略。****
+4. 选择“添加”以保存策略。
 
 5. 重复最后两个步骤，创建具有以下属性的另一个策略：
 
-    |属性 |值 |
+    |Property |“值” |
     |---|---|
     |策略名称|hivesampletable-devicemake|
-    |Hive 数据库|default|
+    |Hive 数据库|默认值|
     |表|hivesampletable|
     |Hive 列|clientid，devicemake|
     |选择用户|hiveuser2|
@@ -83,7 +82,7 @@ ms.locfileid: "78196920"
 
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | 属性  |说明 |
+ | Property  |说明 |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
@@ -93,17 +92,17 @@ ms.locfileid: "78196920"
  | 机制 | 选择“Azure HDInsight 服务”**** |
  | HTTP 路径 | 将此字段留空。 |
  | 用户名 | 输入 hiveuser1@contoso158.onmicrosoft.com。 如果域名不同，请更新域名。 |
- | Password | 输入 hiveuser1 的密码。 |
+ | 密码 | 输入 hiveuser1 的密码。 |
 
 在保存数据源之前，请务必单击“测试”。****
 
-## <a name="import-data-into-excel-from-hdinsight"></a>将数据从 HDInsight 导入 Excel
+## <a name="import-data-into-excel-from-hdinsight"></a>将 HDInsight 中的数据导入到 Excel 中
 
 在上一部分中，你配置了两个策略。  hiveuser1 对所有列拥有 select 权限，hiveuser2 对两个列拥有 select 权限。 在本部分中，会模拟两个用户将数据导入 Excel。
 
 1. 在 Excel 中打开新工作簿或现有工作簿。
 
-1. 在“数据”选项卡中，导航到“获取数据” > “从其他源” > “从 ODBC”来启动“从 ODBC”窗口********************。
+1. 在“数据”选项卡中，导航到“获取数据” > “从其他源” > “从 ODBC”来启动“从 ODBC”窗口**** **** **** **** ****。
 
     ![打开数据连接向导](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
@@ -115,7 +114,7 @@ ms.locfileid: "78196920"
 
 1. 选择 " **hivesampletable**"，然后选择 "**下一步**"。
 
-1. 选择“完成”  。
+1. 选择“完成”。
 
 1. 在“导入数据”**** 对话框中，可更改或指定查询。 为此，请选择 "**属性**"。 这可能需要几秒钟时间。
 
@@ -142,7 +141,7 @@ ms.locfileid: "78196920"
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    to:
+    更改为：
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 

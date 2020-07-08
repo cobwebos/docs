@@ -16,10 +16,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78299323"
 ---
 # <a name="understand-the-azure-ad-schema"></a>了解 Azure AD 架构
@@ -42,7 +41,7 @@ Azure AD 具有两种类型的属性：
 
 属性同步可能是直接的，其中 Azure AD 中的值会直接设置为本地属性的值。 或者，编程表达式可能会处理同步。 在必须进行一些逻辑或确定来填充值的情况下，需要编程表达式。
 
-例如，如果您具有 mail 属性 "john.smith@contoso.com"，并且需要去除 "@contoso.com" 部分并仅流式传输值 "john smith"，则可以使用如下所示的内容：
+例如，如果您具有 mail 属性 " john.smith@contoso.com "，并且需要去除 " @contoso.com " 部分并仅流式传输值 "john smith"，则可以使用如下所示的内容：
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
@@ -61,22 +60,22 @@ Azure AD 具有两种类型的属性：
 |cn|直接|commonName
 |countryCode|直接|countryCode|
 |displayName|直接|displayName|
-|givenName|表达式|givenName|
+|givenName|Expression|givenName|
 |objectGUID|直接|sourceAnchorBinary|  
 |userprincipalName|直接|userPrincipalName|
 |ProxyAdress|直接|ProxyAddress|
 
 ## <a name="view-the-schema"></a>查看架构
 > [!WARNING]
-> 云预配配置将创建服务主体。 服务主体在 Azure 门户中可见。 不应使用 Azure 门户中的服务主体体验来修改属性映射。  不支持此设置。
+> 云预配配置将创建服务主体。 服务主体在 Azure 门户中可见。 不应使用 Azure 门户中的服务主体体验来修改属性映射。  此操作不受支持。
 
 若要查看并验证架构，请执行以下步骤。
 
 1.  请参阅[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 1.  用全局管理员帐户登录。
 1.  在左侧，选择 "**修改权限**"，并确保 "**所有**" 都*同意*。
-1.  运行查询`https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`。 此查询返回已筛选的服务主体列表。
-1.  找到`"appDisplayName": "Active Directory to Azure Active Directory Provisioning"`并记下的值`"id"`。
+1.  运行查询 `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')` 。 此查询返回已筛选的服务主体列表。
+1.  找到 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 并记下的值 `"id"` 。
     ```
     "value": [
             {
@@ -149,8 +148,8 @@ Azure AD 具有两种类型的属性：
                 "passwordCredentials": []
             },
     ```
-1. 将`{Service Principal id}`替换为你的值，然后运行`https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`查询。
-1. 找到`"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"`并记下的值`"id"`。
+1. `{Service Principal id}`将替换为你的值，然后运行查询 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/` 。
+1. 找到 `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` 并记下的值 `"id"` 。
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -241,11 +240,11 @@ Azure AD 具有两种类型的属性：
                 ]
             }
     ```
-1. 现在运行查询`https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema`。
+1. 现在运行查询 `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal Id}/synchronization/jobs/{AD2AAD Provisioning id}/schema` 。
  
     示例：https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   将`{Service Principal Id}`和`{AD2ADD Provisioning Id}`替换为你的值。
+   `{Service Principal Id}`将和替换 `{AD2ADD Provisioning Id}` 为你的值。
 
 1. 此查询将返回架构。
 

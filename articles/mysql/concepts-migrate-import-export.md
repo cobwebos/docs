@@ -7,16 +7,15 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78163720"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 
 
-## <a name="before-you-begin"></a>在开始之前
+## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要：
 - 按照[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)所述创建的 Azure Database for MySQL 服务器。
 - MySQL 工作台[Mysql 工作台下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 mysql 工具来执行导入/导出。
@@ -31,7 +30,7 @@ ms.locfileid: "78163720"
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器上创建数据库
 在要迁移数据的 Azure Database for MySQL 服务器上创建空数据库。 使用 MySQL Workbench、Toad 或 Navicat 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
-若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息****。
+若要获取连接，请在 Azure Database for MySQL 的“概述”中找到连接信息。
 
 ![在 Azure 门户中找到连接信息](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
@@ -83,7 +82,7 @@ ms.locfileid: "78163720"
 下面的示例将从 CSV 文件导入表：
 1. 右键单击要导入的数据库的表。 
 2. 浏览要导入的 CSV 文件并选择它，然后单击“下一步” ****。 
-3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” **** 复选框。 单击“下一步”。 
+3. 选择目标表（新的或现有的），然后选择或取消选择“导入前截断表” **** 复选框。 单击“下一步” 。
 4. 选择编码和要导入的列，然后单击“下一步”****。 
 5. 在“导入数据”**** 页上，单击“下一步”****。 向导相应地导入数据。
 

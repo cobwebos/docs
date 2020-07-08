@@ -8,14 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296110"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
- 返回一个布尔表达式，指示第一个参数中指定的 GeoJSON 对象（点、多边形或 LineString）是否在第二个参数中的 GeoJSON（点、多边形或 LineString）内。  
+ 返回一个布尔表达式，指示在第一个参数中指定的 GeoJSON 对象（点、多边形或 LineString）是否位于第二个参数中的 GeoJSON（点、多边形或 LineString）内。  
   
 ## <a name="syntax"></a>语法
   
@@ -45,7 +44,7 @@ WHERE ST_WITHIN(f.location, {
 })  
 ```  
   
- 下面是结果集：  
+ 下面是结果集。  
   
 ```json
 [{ "id": "WakefieldFamily" }]  
@@ -53,7 +52,7 @@ WHERE ST_WITHIN(f.location, {
 
 ## <a name="remarks"></a>备注
 
-此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中受益。
+此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中获益。
 
 ## <a name="next-steps"></a>后续步骤
 

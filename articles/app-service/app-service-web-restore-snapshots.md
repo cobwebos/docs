@@ -7,10 +7,9 @@ ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255147"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>在 Azure 中从快照还原应用
@@ -35,7 +34,7 @@ ms.locfileid: "78255147"
 
 ## <a name="restore-an-app-from-a-snapshot"></a>从快照还原应用
 
-1. 在 [Azure 门户](https://portal.azure.com)中应用的“设置”页上，单击“备份”以显示“备份”页    。 然后，在“快照(预览)”部分下单击“还原”。  
+1. 在 [Azure 门户](https://portal.azure.com)中应用的“设置”页上，单击“备份”以显示“备份”页  。 然后，在“快照(预览)”部分下单击“还原”。  
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 

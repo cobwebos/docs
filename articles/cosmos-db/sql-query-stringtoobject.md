@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78296375"
 ---
 # <a name="stringtoobject-azure-cosmos-db"></a>StringToObject (Azure Cosmos DB)
@@ -46,7 +45,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
-下面是结果集：
+下面是结果集。
 
 ```json
 [{"obj1": {}, 
@@ -65,7 +64,7 @@ SELECT
     StringToObject("{'a':[1,2,3]}")
 ```
 
-下面是结果集：
+下面是结果集。
 
 ```json
 [{}]
@@ -78,7 +77,7 @@ SELECT
     StringToObject("{a:[1,2,3]}")
 ```
 
-下面是结果集：
+下面是结果集。
 
 ```json
 [{}]
@@ -98,7 +97,7 @@ SELECT
     StringToObject(undefined)
 ``` 
  
- 下面是结果集：
+ 下面是结果集。
 
 ```json
 [{}]

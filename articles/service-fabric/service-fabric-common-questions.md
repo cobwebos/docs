@@ -5,10 +5,9 @@ ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78254882"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
@@ -97,7 +96,7 @@ ms.locfileid: "78254882"
 是的。  有关详细信息，请参阅[创建具有附加数据磁盘的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[用于虚拟机规模集的 Azure 磁盘加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>是否可以在群集节点类型（虚拟机规模集）中使用低优先级 VM？
-否。 不支持低优先级 VM。 
+不能。 不支持低优先级 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>在群集中运行防病毒程序时需要排除哪些目录和进程？
 

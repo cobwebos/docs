@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 08fa94dbe71299a6653df0b40aa5083375526172
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255589"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB 的用于 MongoDB 的 API
@@ -64,7 +63,7 @@ ms.locfileid: "78255589"
 
     ![显示资源提供程序](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
 
-3. 搜索 "迁移"，然后在 " **microsoft.datamigration**" 右侧选择 "**注册**"。
+3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
 
     ![注册资源提供程序](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
 

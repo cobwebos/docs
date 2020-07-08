@@ -13,10 +13,9 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78255565"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
@@ -221,7 +220,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
     ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 如果需要将源表名称映射到名称不同的表，请发送电子[dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com)邮件，我们可以提供一个脚本来自动执行此过程。
+> 如果需要将源表名称映射到名称不同的表，请发送电子邮件， [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) 我们可以提供一个脚本来自动执行此过程。
 
 ### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>如果不存在 PostgreSQL 表架构
 
@@ -249,19 +248,19 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
     | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
     | HR | targetHR.Hr | *无法映射混合大小写 |
 
-    * 若要在目标 PostgreSQL 中创建混合大小写架构和表[dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)名，请联系。 我们可以提供一个脚本，用于在目标 PostgreSQL 数据库中设置混合大小写表架构。
+    * 若要在目标 PostgreSQL 中创建混合大小写架构和表名，请联系 [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) 。 我们可以提供一个脚本，用于在目标 PostgreSQL 数据库中设置混合大小写表架构。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
 
-1. 登录到 Azure 门户，选择“所有服务”****，然后选择“订阅”****。
+1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
 
    ![显示门户订阅](media/tutorial-oracle-azure-postgresql-online/portal-select-subscriptions.png)
 
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”****。
+2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
 
     ![显示资源提供程序](media/tutorial-oracle-azure-postgresql-online/portal-select-resource-provider.png)
 
-3. 搜索 "迁移"，然后在 " **microsoft.datamigration**" 右侧选择 "**注册**"。
+3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
 
     ![注册资源提供程序](media/tutorial-oracle-azure-postgresql-online/portal-register-resource-provider.png)
 
@@ -271,11 +270,11 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
     ![Azure 市场](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，选择“创建”********。
+2. 在“Azure 数据库迁移服务”屏幕上，选择“创建” 。
 
     ![创建 Azure 数据库迁移服务实例](media/tutorial-oracle-azure-postgresql-online/dms-create2.png)
   
-3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称****。
+3. 在“创建迁移服务”屏幕上，为服务、订阅以及新的或现有资源组指定名称。
 
 4. 选择现有虚拟网络或新建一个。
 
@@ -289,28 +288,28 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
     ![配置 Azure 数据库迁移服务实例设置](media/tutorial-oracle-azure-postgresql-online/dms-settings5.png)
 
-6. 选择“创建”**** 来创建服务。
+6. 选择“创建”来创建服务。
 
 ## <a name="create-a-migration-project"></a>创建迁移项目
 
 创建服务后，在 Azure 门户中找到并打开它，然后创建一个新的迁移项目。
 
-1. 在 Azure 门户中，选择“所有服务”****，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”****。
+1. 在 Azure 门户中，选择“所有服务”，搜索 Azure 数据库迁移服务，然后选择“Azure 数据库迁移服务”。
 
     ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-oracle-azure-postgresql-online/dms-search.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例****。
+2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例。
 
     ![查找 Azure 数据库迁移服务实例](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
-3. 选择 "+**新建迁移项目**"。
+3. 选择“+ 新建迁移项目”。
 4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“Oracle”，在“目标服务器类型”文本框中选择“Azure Database for PostgreSQL”。********************
-5. 在“选择活动类型”部分选择“联机数据迁移”。********
+5. 在“选择活动类型”部分选择“联机数据迁移”。 
 
    ![创建数据库迁移服务项目](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
 
    > [!NOTE]
-   > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。****
+   > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
 6. 选择“保存”，注意成功使用 Azure 数据库迁移服务执行联机迁移所要满足的要求，然后选择“创建并运行活动”。********
 
@@ -322,7 +321,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="upload-oracle-oci-driver"></a>上传 Oracle OCI 驱动程序
 
-1. 选择 "**保存**"，然后在 "**安装 OCI 驱动程序**" 屏幕上，登录到你的 Oracle 帐户，并从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下载驱动程序**instantclient-basiclite-windows. X64-12.2.0.1.0** （37128586字节）（SHA1 校验和：865082268）。
+1. 选择 "**保存**"，然后在 "**安装 OCI 驱动程序**" 屏幕上，登录到你的 Oracle 帐户，并从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下载驱动程序**instantclient-basiclite-windows.x64-12.2.0.1.0.zip** （37128586字节（s））（SHA1 校验和：865082268）。
 2. 将该驱动程序下载到某个共享文件夹中。
 
    确保该文件夹已与使用最低只读访问权限指定的用户名共享。 Azure 数据库迁移服务将访问并读取该共享，以通过模拟指定的用户名将 OCI 驱动程序上传到 Azure。
@@ -337,25 +336,25 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
     ![“目标详细信息”屏幕](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
-2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。********
+2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。 
 
     如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务默认会选择目标数据库。
 
     ![映射到目标数据库](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
-3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符************。
+3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符  。
 
     ![迁移摘要](media/tutorial-oracle-azure-postgresql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>运行迁移
 
-* 选择“运行迁移”****。
+* 选择“运行迁移”。
 
-  迁移活动窗口随即出现，活动的“状态”为“正在初始化”********。
+  此时将显示 "迁移活动" 窗口，并且会**初始化**活动的**状态**。
 
 ## <a name="monitor-the-migration"></a>监视迁移
 
-1. 在迁移活动屏幕上选择“刷新”****，以便更新显示，直到迁移的“状态”**** 显示为“正在运行”****。
+1. 在迁移活动屏幕上选择“刷新”，以便更新显示，直到迁移的“状态”显示为“正在运行”。
 
      ![活动状态 - 正在运行](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 
@@ -369,15 +368,15 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="perform-migration-cutover"></a>执行迁移直接转换
 
-完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。****
+完成初始的完整加载以后，数据库会被标记为“直接转换可供执行”。
 
-1. 如果准备完成数据库迁移，请选择“启动直接转换”。****
+1. 如果准备完成数据库迁移，请选择“启动直接转换”。
 
-2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。****
+2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。
 
    ![启动直接转换](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
-3. 依次选择“确认”、“应用”********。
+3. 依次选择“确认”、“应用” 。
 4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for PostgreSQL 实例。****
 
  > [!NOTE]
