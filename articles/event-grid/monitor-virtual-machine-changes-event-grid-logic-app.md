@@ -1,20 +1,20 @@
 ---
 title: 监视虚拟机更改 - Azure 事件网格和逻辑应用
 description: 通过使用 Azure 事件网格和逻辑应用检查虚拟机 (VM) 中的更改
-services: logic-apps
+services: logic-apps, event-grid
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 10/11/2019
-ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/07/2020
+ms.openlocfilehash: 4edac3237f2eefaa98a6463bb0e720c0d884f0ca
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144080"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119406"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
@@ -58,11 +58,11 @@ ms.locfileid: "82144080"
 
 1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
+1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。  
 
    ![创建逻辑应用](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 
-1. 在“逻辑应用”下，提供有关逻辑应用资源的信息  。 完成操作后，选择“创建”  。
+1. 在“逻辑应用”下，提供有关逻辑应用资源的信息。 完成操作后，选择“创建”。
 
    ![提供逻辑应用的详细信息](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
@@ -70,32 +70,32 @@ ms.locfileid: "82144080"
    |----------|----------|-------|-------------|
    | **名称** | 是 | <*logic-app-name*> | 提供逻辑应用的唯一名称。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | 在本教程中，选择同一 Azure 订阅用于所有服务。 |
-   | **资源组** | 是 | <Azure-resource-group>  | 逻辑应用的 Azure 资源组名称，可以在本教程中选择用于所有服务。 |
+   | **资源组** | 是 | <Azure-resource-group> | 逻辑应用的 Azure 资源组名称，可以在本教程中选择用于所有服务。 |
    | **位置** | 是 | <*Azure-region*> | 在本教程中，选择同一区域用于所有服务。 |
    |||
 
 1. 在 Azure 部署逻辑应用以后，逻辑应用设计器会显示一个包含简介视频和常用触发器的页面。 滚动浏览视频和触发器。
 
-1.   在“模板”下选择“空白逻辑应用”。
+1.  在“模板”下选择“空白逻辑应用”。
 
    ![选择逻辑应用模板](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   逻辑应用设计器现在显示可用于启动逻辑应用的[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)  。 每个逻辑应用都必须从触发器开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，Azure 逻辑应用都会创建一个运行逻辑应用的工作流实例。
+   逻辑应用设计器现在显示可用于启动逻辑应用的[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts)。 每个逻辑应用都必须从触发器开始，该触发器在发生特定事件或特定条件得到满足的情况下触发。 每当触发器触发时，Azure 逻辑应用都会创建一个运行逻辑应用的工作流实例。
 
 ## <a name="add-an-event-grid-trigger"></a>添加事件网格触发器
 
 现在，请添加事件网格触发器，用于监视虚拟机的资源组。
 
-1. 在设计器上的搜索框中，输入 `event grid` 作为筛选器。 从触发器列表中选择“当资源事件发生时”触发器。 
+1. 在设计器上的搜索框中，输入 `event grid` 作为筛选器。 从触发器列表中选择“当资源事件发生时”触发器。
 
    ![选择此触发器：“发生资源事件时”](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
-1. 出现提示时，请使用 Azure 帐户凭据登录到 Azure 事件网格。 在“租户”列表（其中显示与 Azure 订阅关联的 Azure Active Directory 租户）中，检查是否显示了正确的租户，例如： 
+1. 出现提示时，请使用 Azure 帐户凭据登录到 Azure 事件网格。 在“租户”列表（其中显示与 Azure 订阅关联的 Azure Active Directory 租户）中，检查是否显示了正确的租户，例如：
 
    ![使用 Azure 凭据登录](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > 如果使用个人 Microsoft 帐户登录，如 @outlook.com 或 @hotmail.com，事件网格触发器可能不会正确显示。 作为一种解决方法，选择[与服务主体连接](../active-directory/develop/howto-create-service-principal-portal.md)，或作为与 Azure 订阅关联的 Azure Active Directory 成员进行身份验证，例如，user-name  @emailoutlook.onmicrosoft.com。
+   > 如果使用个人 Microsoft 帐户登录，如 @outlook.com 或 @hotmail.com，事件网格触发器可能不会正确显示。 作为一种解决方法，选择[与服务主体连接](../active-directory/develop/howto-create-service-principal-portal.md)，或作为与 Azure 订阅关联的 Azure Active Directory 成员进行身份验证，例如，user-name@emailoutlook.onmicrosoft.com。
 
 1. 现在，通过逻辑应用订阅发布者的事件。 提供下表所述事件订阅的详细信息，例如：
 
@@ -103,14 +103,14 @@ ms.locfileid: "82144080"
 
    | properties | 必选 | 值 | 说明 |
    | -------- | -------- | ----- | ----------- |
-   | **订阅** | 是 | <*event-publisher-Azure-subscription-name*> | 选择与事件发布者关联的 Azure 订阅名称。  对于本教程，请选择用于虚拟机的 Azure 订阅名称。 |
+   | **订阅** | 是 | <*event-publisher-Azure-subscription-name*> | 选择与事件发布者关联的 Azure 订阅名称。 对于本教程，请选择用于虚拟机的 Azure 订阅名称。 |
    | **资源类型** | 是 | <*event-publisher-Azure-resource-type*> | 选择事件发布者的 Azure 资源类型。 有关 Azure 资源类型的详细信息，请参阅 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md)。 对于本教程，请选择 `Microsoft.Resources.ResourceGroups` 值以监视 Azure 资源组。 |
-   | 资源名称  |  是 | <*event-publisher-Azure-resource-name*> | 选择事件发布者的 Azure 资源名称。 此列表依据所选择的资源类型而异。 对于本教程，请选择虚拟机所在的 Azure 资源组的名称。 |
+   | 资源名称 |  是 | <*event-publisher-Azure-resource-name*> | 选择事件发布者的 Azure 资源名称。 此列表依据所选择的资源类型而异。 对于本教程，请选择虚拟机所在的 Azure 资源组的名称。 |
    | **事件类型项** |  否 | <*event-types*> | 选择一个或多个特定事件类型以筛选并发送到事件网格。 例如，可选择添加这些事件类型以检测何时更改或删除了资源： <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>有关详细信息，请参阅以下主题： <p><p>- [资源组的 Azure 事件网格事件架构](../event-grid/event-schema-resource-groups.md) <br>- [了解事件筛选](../event-grid/event-filtering.md) <br>- [筛选事件网格的事件](../event-grid/how-to-filter-events.md) |
-   | 若要添加可选属性，请选择“添加新参数”，  然后选择所需属性。 | 否 | {参阅说明} | * **前缀筛选器**：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，你可以指定一个前缀字符串作为筛选器，例如，特定资源的路径和参数。 <p>* **后缀筛选器**：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，当你仅需要特定文件类型，可以指定一个后缀字符串作为筛选器，例如，文件扩展名。 <p>* **订阅名称**：在本教程中，可提供事件订阅的唯一名称。 |
+   | 若要添加可选属性，请选择“添加新参数”，然后选择所需属性。 | 否 | {参阅说明} | * **前缀筛选器**：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，你可以指定一个前缀字符串作为筛选器，例如，特定资源的路径和参数。 <p>* **后缀筛选器**：对于本教程，请将此属性留空。 默认行为与所有值匹配。 但是，当你仅需要特定文件类型，可以指定一个后缀字符串作为筛选器，例如，文件扩展名。 <p>* **订阅名称**：在本教程中，可提供事件订阅的唯一名称。 |
    |||
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。 若要折叠和隐藏逻辑应用中操作的详细信息，请选择操作的标题栏。
+1. 保存逻辑应用。 在设计器工具栏上，选择“保存”。 若要折叠和隐藏逻辑应用中操作的详细信息，请选择操作的标题栏。
 
    ![保存逻辑应用](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
 
@@ -122,11 +122,11 @@ ms.locfileid: "82144080"
 
 如果希望逻辑应用仅在特定事件或操作发生时运行，请添加一个检查是否存在 `Microsoft.Compute/virtualMachines/write` 操作的条件。 如果此条件为 true，你的逻辑应用会向你发送包含已更新虚拟机详细信息的电子邮件。
 
-1. 在“逻辑应用设计器”的事件网格触发器下，选择“新步骤”  。
+1. 在“逻辑应用设计器”的事件网格触发器下，选择“新步骤”。
 
    ![选择“新步骤”](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
-1. 在“选择操作”  下的搜索框中，输入 `condition` 作为筛选器。 从操作列表中选择“条件”操作。 
+1. 在“选择操作”下的搜索框中，输入 `condition` 作为筛选器。 从操作列表中选择“条件”操作。
 
    ![添加条件](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
@@ -134,17 +134,17 @@ ms.locfileid: "82144080"
 
    ![出现一个空条件](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
-1. 将条件标题重命名为 `If a virtual machine in your resource group has changed`。 在条件的标题栏中，选择省略号 (...) 按钮，然后选择“重命名”   。
+1. 将条件标题重命名为 `If a virtual machine in your resource group has changed`。 在条件的标题栏中，选择省略号 (...) 按钮，然后选择“重命名” 。
 
    ![将条件重命名](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
 1. 创建一个条件，用于检查事件 `body` 的 `data` 对象中的 `operationName` 属性是否等于 `Microsoft.Compute/virtualMachines/write` 操作。 详细了解[事件网格事件架构](../event-grid/event-schema.md)。
 
-   1. 在“和”下面的第一行中，单击左侧框的内部。  在显示的“动态内容”中，选择“表达式”  。
+   1. 在“和”下面的第一行中，单击左侧框的内部。 在显示的“动态内容”中，选择“表达式”。
 
       ![选择“表达式”，打开表达式编辑器](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
 
-   1. 在表达式编辑器中输入此表达式（用于从触发器返回操作名称），然后选择“确定”  ：
+   1. 在表达式编辑器中输入此表达式（用于从触发器返回操作名称），然后选择“确定”：
 
       `triggerBody()?['data']['operationName']`
 
@@ -152,7 +152,7 @@ ms.locfileid: "82144080"
 
       ![输入用于提取操作名称的表达式](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
-   1. 在中间框中，保留运算符“等于”。 
+   1. 在中间框中，保留运算符“等于”。
 
    1. 在右框中输入此值（要监视的具体操作）：
 
@@ -162,7 +162,7 @@ ms.locfileid: "82144080"
 
    ![已完成的条件，用于比较操作](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
-   如果从设计视图切换到代码视图并返回到设计视图，则在条件中指定的表达式将解析为 data.operationName 标记： 
+   如果从设计视图切换到代码视图并返回到设计视图，则在条件中指定的表达式将解析为 data.operationName 标记：
 
    ![条件中已解析的令牌](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
 
@@ -170,13 +170,13 @@ ms.locfileid: "82144080"
 
 ## <a name="send-email-notifications"></a>发送电子邮件通知
 
-现在添加[操作  ](../logic-apps/logic-apps-overview.md#logic-app-concepts)，以便在指定条件为 true 时接收电子邮件。
+现在添加[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)，以便在指定条件为 true 时接收电子邮件。
 
-1. 在条件的 **If true** 框中，选择“添加操作”。 
+1. 在条件的 **If true** 框中，选择“添加操作”。
 
    ![在条件为 true 时添加操作](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. 在“选择操作”  下的搜索框中，输入 `send an email` 作为筛选器。 根据你的电子邮件提供程序，找到并选择匹配的连接器。 然后选择连接器的“发送电子邮件”操作。 例如：
+1. 在“选择操作”下的搜索框中，输入 `send an email` 作为筛选器。 根据你的电子邮件提供程序，找到并选择匹配的连接器。 然后选择连接器的“发送电子邮件”操作。 例如：
 
    * 对于 Azure 工作或学校帐户，请选择 Office 365 Outlook 连接器。
 
@@ -197,17 +197,17 @@ ms.locfileid: "82144080"
    ![提供关于电子邮件操作的信息](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
 
    > [!TIP]
-   > 若要选择工作流中的前述步骤的输出，请单击编辑框以显示动态内容列表，或选择“添加动态内容”  。 对于多个结果，请选择列表中每个部分的“查看更多”  。 若要关闭“动态内容”列表，请再次选择“添加动态内容”  。
+   > 若要选择工作流中的前述步骤的输出，请单击编辑框以显示动态内容列表，或选择“添加动态内容”。 对于多个结果，请选择列表中每个部分的“查看更多”。 若要关闭“动态内容”列表，请再次选择“添加动态内容”。
 
    | properties | 必选 | 值 | 说明 |
    | -------- | -------- | ----- | ----------- |
    | **收件人** | 是 | <*接收方\@域*> | 输入收件人的电子邮件地址。 为进行测试，可以使用自己的电子邮件地址。 |
-   | **主题** | 是 | `Resource updated:` **主题** | 输入电子邮件的主题内容。 对于本教程，请输入指定的文本并选择该事件的“主题”字段  。 此处，电子邮件主题包含更新资源（虚拟机）的名称。 |
-   | **正文** | 是 | `Resource:` **主题** <p>`Event type:` **事件类型**<p>`Event ID:` **ID**<p>`Time:` **事件时间** | 输入电子邮件的正文内容。 对于本教程，请输入指定的文本并选择事件的“主题”、“活动类型”、“ID”和“事件时间”字段，以便电子邮件包含触发事件的资源、事件类型、事件时间戳和更新的事件 ID     。 对于本教程，资源是在触发器中选择的 Azure 资源组。 <p>若要在内容中添加空行，请按 Shift + Enter。 |
+   | **主题** | 是 | `Resource updated:` **主题** | 输入电子邮件的主题内容。 对于本教程，请输入指定的文本并选择该事件的“主题”字段。 此处，电子邮件主题包含更新资源（虚拟机）的名称。 |
+   | **正文** | 是 | `Resource:` **主题** <p>`Event type:` **事件类型**<p>`Event ID:` **ID**<p>`Time:` **事件时间** | 输入电子邮件的正文内容。 对于本教程，请输入指定的文本并选择事件的“主题”、“活动类型”、“ID”和“事件时间”字段，以便电子邮件包含触发事件的资源、事件类型、事件时间戳和更新的事件 ID   。 对于本教程，资源是在触发器中选择的 Azure 资源组。 <p>若要在内容中添加空行，请按 Shift + Enter。 |
    ||||
 
    > [!NOTE]
-   > 如果你选择表示数组的字段，设计器会围绕引用数组的操作自动添加“For each”  循环。 这样一来，逻辑应用会对每个数组项执行该操作。
+   > 如果你选择表示数组的字段，设计器会围绕引用数组的操作自动添加“For each”循环。 这样一来，逻辑应用会对每个数组项执行该操作。
 
    现在，电子邮件操作可能如下例所示：
 
@@ -231,7 +231,7 @@ ms.locfileid: "82144080"
 
    ![有关虚拟机更新的电子邮件](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
-1. 若要查看逻辑应用的运行与触发历史记录，请在逻辑应用菜单中选择“概览”  。 若要查看有关运行的更多详细信息，请选择运行所在的行。
+1. 若要查看逻辑应用的运行与触发历史记录，请在逻辑应用菜单中选择“概览”。 若要查看有关运行的更多详细信息，请选择运行所在的行。
 
    ![逻辑应用运行历史记录](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history.png)
 
@@ -252,14 +252,14 @@ ms.locfileid: "82144080"
 
 本教程使用的资源和执行的操作将会在你的 Azure 订阅上产生费用。 因此，完成本教程和测试后，请确保禁用或删除你不希望产生费用的任何资源。
 
-* 若要在不删除所做工作的情况下停止运行逻辑应用，请禁用应用。 在逻辑应用菜单中，选择“概述”  。 在工具栏中选择“禁用”。 
+* 若要在不删除所做工作的情况下停止运行逻辑应用，请禁用应用。 在逻辑应用菜单中，选择“概述”。 在工具栏中选择“禁用”。
 
   ![关闭逻辑应用](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
   > 如果看不到逻辑应用菜单，请尝试返回到 Azure 仪表板，然后重新打开逻辑应用。
 
-* 若要永久删除逻辑应用，请在逻辑应用菜单上选择“概览”  。 在工具栏中选择“删除”。  确认要删除逻辑应用，然后选择“删除”  。
+* 若要永久删除逻辑应用，请在逻辑应用菜单上选择“概览”。 在工具栏中选择“删除”。 确认要删除逻辑应用，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

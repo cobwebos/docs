@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行基于代理的 VMware VM �
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: b01665e6ddb78ff95714004f4dbe5c97574aa5fb
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84769738"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119253"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -34,7 +34,7 @@ ms.locfileid: "84769738"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始本教程之前，[查看](migrate-architecture.md)基于 VMware 代理的迁移体系结构。
+在开始本教程之前，[查看](./agent-based-migration-architecture.md)基于 VMware 代理的迁移体系结构。
 
 ## <a name="prepare-azure"></a>准备 Azure
 
@@ -150,7 +150,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
 3. 在“概述”中，单击“评估和迁移服务器”。 
 4. 在“发现、评估和迁移服务器”下，单击“评估和迁移服务器”。 
 
-    ![发现和评估服务器](./media/tutorial-migrate-vmware-agent/assess-migrate.png
+    ![发现和评估服务器](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
 
 1. 在“发现、评估和迁移服务器”中，单击“添加工具”。 
 2. 在“迁移项目”中选择你的 Azure 订阅，并创建一个资源组（如果没有）。
@@ -355,7 +355,7 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - 停止本地计算机的复制。
     - 从 Azure Migrate 的“复制服务器”计数中删除该计算机：服务器迁移。
     - 清除 VM 的复制状态信息。
-2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
+2. 在已迁移的计算机上安装 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 5. 将流量交接到已迁移的 Azure VM 实例。
@@ -381,16 +381,16 @@ Azure Migrate 服务器迁移需要有权访问 VMware 服务器，以发现要�
     - 使用 Azure 备份服务备份 Azure VM 以保证数据安全。 [了解详细信息](../backup/quick-backup-vm-portal.md)。
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 为提高安全性，请执行以下操作：
-    - 使用 [Azure 安全中心 - 适时管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)锁定和限制入站流量访问。
-    - 使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)限制流入管理终结点的网络流量。
-    - 部署[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
+    - 使用 [Azure 安全中心 - 适时管理](../security-center/security-center-just-in-time.md)锁定和限制入站流量访问。
+    - 使用[网络安全组](../virtual-network/security-overview.md)限制流入管理终结点的网络流量。
+    - 部署[Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：
-    - 考虑部署[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)以监视资源使用率和支出。
+    - 考虑部署[Azure 成本管理](../cost-management-billing/cloudyn/overview.md)以监视资源使用率和支出。
 
 
 
 
  ## <a name="next-steps"></a>后续步骤
 
-在 Azure 云采用框架中调查[云迁移旅程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)。
+在 Azure 云采用框架中调查[云迁移旅程](/azure/architecture/cloud-adoption/getting-started/migrate)。

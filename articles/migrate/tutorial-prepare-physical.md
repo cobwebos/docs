@@ -4,18 +4,18 @@ description: 了解如何准备好要通过 Azure Migrate 进行评估/迁移的
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ed648458416bacb091212bb569a27ecdf13fe8ee
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771268"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113245"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>准备评估物理服务器并将其迁移到 Azure
 
 本文介绍如何使用 [Azure Migrate](migrate-services-overview.md) 准备评估本地物理服务器。
 
-[Azure Migrate](migrate-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
+[Azure Migrate](./migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。 
 
 本教程是介绍如何使用 Azure Migrate 评估物理服务器的教程系列中的第一篇文章。 在本教程中，你将了解如何执行以下操作：
 
@@ -75,11 +75,11 @@ ms.locfileid: "84771268"
     ![Azure AD 权限](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> 这是不受影响的默认设置。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> 这是不受影响的默认设置。 [了解详细信息](../active-directory/develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 #### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色
 
-租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 
 ## <a name="prepare-azure-for-physical-server-migration"></a>准备 Azure 进行物理服务器迁移

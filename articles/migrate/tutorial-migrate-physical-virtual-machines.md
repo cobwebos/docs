@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将物理计算机迁移到 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 38f1c67bdd3b280640e9be54fd677e2b403eb78b
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: dbb7737d59f48cadc645be990634bb5cb0cda251
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771387"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116091"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -44,7 +44,7 @@ ms.locfileid: "84771387"
 
 开始学习本教程之前，应做好以下准备：
 
-[查看](migrate-architecture.md)迁移体系结构。
+[查看](./agent-based-migration-architecture.md)迁移体系结构。
 
 ## <a name="prepare-azure"></a>准备 Azure
 
@@ -172,7 +172,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
 
 1. 登录到复制设备。
 2. 导航到 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**。
-3. 找到适用于计算机操作系统和版本的安装程序。 查看[支持的操作系统](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines)。 
+3. 找到适用于计算机操作系统和版本的安装程序。 查看[支持的操作系统](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。 
 4. 将安装程序文件复制到要迁移的计算机。
 5. 确保已准备好在部署设备时生成的通行短语。
     - 将该通行短语存储在计算机上的某个临时文本文件中。
@@ -334,7 +334,7 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
     - 停止本地计算机的复制。
     - 从 Azure Migrate 的“复制服务器”计数中删除该计算机：服务器迁移。
     - 清除计算机的复制状态信息。
-2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
+2. 在已迁移的计算机上安装 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 5. 将流量交接到已迁移的 Azure VM 实例。
@@ -348,14 +348,14 @@ Azure Migrate:服务器迁移使用复制设备将计算机复制到 Azure。 �
     - 使用 Azure 备份服务备份 Azure VM 以保证数据安全。 [了解详细信息](../backup/quick-backup-vm-portal.md)。
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 为提高安全性，请执行以下操作：
-    - 使用 [Azure 安全中心 - 适时管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)锁定和限制入站流量访问。
-    - 使用[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)限制流入管理终结点的网络流量。
-    - 部署[Azure 磁盘加密](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
+    - 使用 [Azure 安全中心 - 适时管理](../security-center/security-center-just-in-time.md)锁定和限制入站流量访问。
+    - 使用[网络安全组](../virtual-network/security-overview.md)限制流入管理终结点的网络流量。
+    - 部署[Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：
-    - 考虑部署[Azure 成本管理](https://docs.microsoft.com/azure/cost-management/overview)以监视资源使用率和支出。
+    - 考虑部署[Azure 成本管理](../cost-management-billing/cloudyn/overview.md)以监视资源使用率和支出。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure 云采用框架中调查[云迁移旅程](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)。
+在 Azure 云采用框架中调查[云迁移旅程](/azure/architecture/cloud-adoption/getting-started/migrate)。

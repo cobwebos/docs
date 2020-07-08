@@ -4,12 +4,12 @@ description: 介绍如何使用 Azure Migrate 服务器评估工具评估要迁�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 53cf4eea4bfe61951be9975bacf9adb2b3fcf435
-ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
+ms.openlocfilehash: 4c95916bf5f92f8a82b9dfae50aa311891857e7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85106487"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114238"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -130,7 +130,7 @@ Azure Migrate:服务器评估使用轻型 Azure Migrate 设备。 此设备执�
 2. 在“选择导入类型”中，单击“复制虚拟机(创建新的唯一 ID)”。  然后单击“下一步”。
 3. 在“选择目标”中保留默认设置。 单击“下一步”。
 4. 在“存储文件夹”中保留默认设置。 单击“下一步”。
-5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。 [了解](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何创建虚拟交换机。
+5. 在“选择网络”中，指定 VM 要使用的虚拟交换机。 该交换机需要与 Internet 建立连接才能向 Azure 发送数据。 [了解](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)如何创建虚拟交换机。
 6. 在“摘要”中检查设置。 然后单击“完成”。
 7. 在“Hyper-V 管理器”>“虚拟机”中启动 VM。
 
