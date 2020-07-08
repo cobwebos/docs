@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b94240431026020d3de793d56853a7d92a6f14
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61463820"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057970"
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>如何：获取媒体处理器实例
 > [!div class="op_single_selector"]
@@ -42,16 +42,18 @@ ms.locfileid: "61463820"
 
 以下方法演示了如何获取媒体处理器实例。 该代码示例假设使用名为 _context 的模块级变量引用服务器上下文，如[如何：  以编程方式连接到媒体服务](media-services-use-aad-auth-to-access-ams-api.md)一节所述。
 
-    private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-    {
-        var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-        ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+```csharp
+private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+{
+    var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+    ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
-        if (processor == null)
-        throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+    if (processor == null)
+    throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
-        return processor;
-    }
+    return processor;
+}
+```
 
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

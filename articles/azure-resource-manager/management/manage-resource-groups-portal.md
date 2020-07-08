@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: 622c0cb8d58dddcdb13c7dc9412ada3f2e2d93e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632989"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057545"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 门户管理 Azure 资源管理器资源组
 
@@ -86,7 +86,7 @@ ms.locfileid: "80632989"
 
 锁定可以防止组织中的其他用户意外删除或修改关键资源，例如 Azure 订阅、资源组或资源。 
 
-1. 打开要删除的资源组。  参阅[打开资源组](#open-resource-groups)。
+1. 打开要锁定的资源组。  参阅[打开资源组](#open-resource-groups)。
 2. 在左窗格中选择“锁定”  。
 3. 若要将锁添加到资源组，请选择“添加”。 
 4. 输入“锁定名”、“锁类型”和“备注”。    锁类型包括“只读”和“删除”。  
@@ -111,5 +111,5 @@ ms.locfileid: "80632989"
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
-- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](../index.yml)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

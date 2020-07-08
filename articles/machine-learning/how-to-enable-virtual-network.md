@@ -5,40 +5,25 @@ description: 结合使用独立的 Azure 虚拟网络与 Azure 机器学习来�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/11/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 17c6e10b213cb1f3d2b20433a5511c27960cdb06
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
-ms.translationtype: HT
+ms.date: 06/30/2020
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816295"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057783"
 ---
-# <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>使用专用虚拟网络保护机器学习生命周期
+# <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>在定型过程中进行网络隔离 & 专用虚拟网络的推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，你将了解如何在 Azure 虚拟网络 (VNet) 中隔离 Azure 机器学习中的试验/训练作业和推理/评分作业。 你还将了解一些高级安全设置，这些信息对于基本或试验用例来说不是必需的。
-
-> [!WARNING]
-> 如果基础存储位于虚拟网络中，用户将无法使用 Azure 机器学习工作室 Web 体验，具体包括：
-> - 拖放设计器
-> - 用于自动化机器学习的 UI
-> - 用于数据标签的 UI
-> - 用于数据集的 UI
-> - 笔记本
-> 
-> 如果你尝试，则会看到类似于以下错误的消息：`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
-
-## <a name="what-is-a-vnet"></a>什么是 VNet？
+本文介绍如何通过在 Azure 虚拟网络（vnet）中隔离 Azure 机器学习定型和推理作业来保护机器学习生命周期。 Azure 机器学习依赖于用于计算资源的其他 Azure 服务（也称为[计算目标](concept-compute-target.md)）来定型和部署模型。 可以在虚拟网络中创建这些目标。 例如，可以使用 Azure 机器学习计算来训练模型，然后将模型部署到 Azure Kubernetes 服务 (AKS)。 
 
 虚拟网络起到安全边界的作用，将你的 Azure 资源与公共 Internet 隔离开来。 你也可以将 Azure 虚拟网络加入本地网络。 通过联接网络，可以安全地训练模型，并访问已部署的模型来进行推理。
-
-Azure 机器学习依赖其他 Azure 服务，以便计算资源（亦称为[“计算目标”](concept-compute-target.md)）可以训练和部署模型。 可以在虚拟网络中创建这些目标。 例如，可以使用 Azure 机器学习计算来训练模型，然后将模型部署到 Azure Kubernetes 服务 (AKS)。 
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -70,14 +55,174 @@ Azure 机器学习依赖其他 Azure 服务，以便计算资源（亦称为[“
 > 
 
 > [!WARNING]
-> 在已启用专用链接的工作区中，不支持 Azure 机器学习计算实例预览。
 > 
+> 在已启用专用链接的工作区中，不支持 Azure 机器学习计算实例预览。
+>
 > Azure 机器学习不支持使用已启用专用链接的 Azure Kubernetes 服务。 相反，可以在虚拟网络中使用 Azure Kubernetes 服务。 有关详细信息，请参阅[在 Azure 虚拟网络中保护 Azure ML 试验和推理作业](how-to-enable-virtual-network.md)。
 
 
 <a id="amlcompute"></a>
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>计算群集和实例
+## <a name="machine-learning-studio"></a>机器学习工作室
+
+如果你的数据存储在虚拟网络中，则必须使用工作区[托管标识](../active-directory/managed-identities-azure-resources/overview.md)授予工作室对你的数据的访问权限。
+
+如果无法授予 studio 访问权限，你将收到此错误， `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` 并禁用以下操作：
+
+* 预览 studio 中的数据。
+* 可视化设计器中的数据。
+* 提交 AutoML 试验。
+* 启动标记项目。
+
+Studio 支持从虚拟网络中的以下数据存储类型读取数据：
+
+* Azure Blob
+* Azure Data Lake Storage Gen1
+* Azure Data Lake Storage Gen2
+* Azure SQL Database
+
+### <a name="add-resources-to-the-virtual-network"></a>向虚拟网络添加资源 
+
+将你的工作区和存储帐户添加到相同的虚拟网络，以便它们可以相互访问。
+
+1. 若要将工作区连接到虚拟网络，请[启用 Azure Private Link](how-to-configure-private-link.md)。
+
+1. 若要将存储帐户连接到虚拟网络，请[配置防火墙和虚拟网络设置](#use-a-storage-account-for-your-workspace)。
+
+### <a name="configure-a-datastore-to-use-managed-identity"></a>将数据存储配置为使用托管标识
+
+将工作区和存储服务帐户添加到虚拟网络后，需要将数据存储配置为使用托管标识访问数据。 这些步骤使用 Azure 基于资源的访问控制（RBAC）将工作区托管标识作为__读取器__添加到存储服务。 __读取__者访问权限允许工作区检索防火墙设置，并确保数据不会离开虚拟网络。
+
+1. 在工作室中，选择 "__数据存储__"。
+
+1. 若要创建新的数据存储，请选择 " __+ 新建数据存储__"。 若要更新现有的数据存储，请选择 "数据存储" 并选择 "__更新凭据__"。
+
+1. 在 "数据存储" 设置中，选择 __"是"__ 以__允许 Azure 机器学习服务使用工作区托管标识访问存储__。
+
+> [!NOTE]
+> 这些更改可能需要长达10分钟的时间才能生效。
+
+### <a name="azure-blob-storage-blob-data-reader"></a>Azure Blob 存储 Blob 数据读取器
+
+对于__Azure Blob 存储__，还会将工作区托管标识作为[Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)添加，以便它能够从 blob 存储中读取数据。
+
+
+### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 访问控制
+
+可以使用 RBAC 和 POSIX 样式的访问控制列表（Acl）来控制虚拟网络内的数据访问。
+
+若要使用 RBAC，请将工作区托管标识添加到[Blob 数据读取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色。 有关详细信息，请参阅[基于角色的访问控制](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control)。
+
+若要使用 Acl，可以向工作区托管标识分配访问权限，就像其他任何安全原则一样。 有关详细信息，请参阅对[文件和目录的访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)。
+
+
+### <a name="azure-data-lake-storage-gen1-access-control"></a>Azure Data Lake Storage Gen1 访问控制
+
+Azure Data Lake Storage Gen1 仅支持 POSIX 样式的访问控制列表。 可以像其他任何安全原则一样，将工作区托管标识访问权限分配给资源。 有关详细信息，请参阅[Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
+
+
+### <a name="azure-sql-database-contained-user"></a>Azure SQL Database 包含的用户
+
+若要使用托管标识访问存储在 Azure SQL 数据库中的数据，必须创建一个映射到托管标识的 SQL 包含的用户。 有关从外部提供程序创建用户的详细信息，请参阅[创建映射到 Azure AD 标识的包含用户](../azure-sql/database/authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)。
+
+创建 SQL 包含的用户后，请使用[Grant t-sql 命令](https://docs.microsoft.com/sql/t-sql/statements/grant-object-permissions-transact-sql)向其授予权限。
+
+### <a name="connect-to-the-studio"></a>连接到工作室
+
+如果要从虚拟网络内部的资源（例如，计算实例或虚拟机）访问 studio，则必须允许从虚拟网络到工作室的出站流量。 
+
+例如，如果使用网络安全组（NSG）来限制出站流量，请将规则添加到__AzureFrontDoor__的__服务标记__目标。
+
+## <a name="use-a-storage-account-for-your-workspace"></a>使用工作区的存储帐户
+
+> [!IMPORTANT]
+> 可以将用于 Azure 机器学习的默认存储帐户和/或非默认存储帐户置于虚拟网络中。
+>
+> 默认存储帐户是在你创建工作区时自动预配的。
+>
+> 对于非默认存储帐户，使用 [`Workspace.create()` 函数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)中的 `storage_account` 参数，可以按 Azure 资源 ID 指定自定义存储帐户。
+
+若要为虚拟网络中的工作区使用 Azure 存储服务，请执行以下步骤：
+
+1. 在虚拟网络后面创建计算资源（例如，机器学习计算实例或群集），或将计算资源附加到工作区（例如，HDInsight 群集、虚拟机或 Azure Kubernetes 服务群集）。 计算资源可用于试验或模型部署。
+
+   有关详细信息，请参阅本文中的[使用机器学习计算](#amlcompute)、[使用虚拟机或 HDInsight 群集](#vmorhdi)和[使用 Azure Kubernetes 服务](#aksvnet)部分。
+
+1. 在 Azure 门户中，请在工作区中转到要使用的存储服务。
+
+   [![附加到 Azure 机器学习工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
+
+1. 在 "存储服务帐户" 页上，选择 "__防火墙和虚拟网络__"。
+
+   ![Azure 门户中“Azure 存储”页上的“防火墙和虚拟网络”区域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
+
+1. 在“防火墙和虚拟网络”页上，执行以下操作：
+    - 选择“所选网络”。
+    - 在“虚拟网络”下，选择“添加现有虚拟网络”链接。 此操作将添加计算所在的虚拟网络（请参阅步骤1）。
+
+        > [!IMPORTANT]
+        > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
+
+    - 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。
+
+    > [!IMPORTANT]
+    > 使用 Azure 机器学习 SDK 时，开发环境必须能够连接到 Azure 存储帐户。 当存储帐户位于虚拟网络中时，防火墙必须允许从开发环境的 IP 地址进行访问。
+    >
+    > 若要启用对存储帐户的访问，请在开发客户端的 Web 浏览器中访问存储帐户的“防火墙和虚拟网络”。 然后，使用“添加客户端 IP 地址”复选框将客户端的 IP 地址添加到“地址范围”。 也可以使用“地址范围”字段手动输入开发环境的 IP 地址。 在客户端的 IP 地址已添加后，它就可以使用 SDK 访问存储帐户了。
+
+   [![Azure 门户中的“防火墙和虚拟网络”窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
+
+## <a name="use-datastores-and-datasets"></a>使用数据存储和数据集
+
+本部分介绍 SDK 体验的数据存储和数据集用法。 有关 studio 体验的详细信息，请参阅[机器学习 studio](#machine-learning-studio)的部分。
+
+默认情况下，当你尝试使用 SDK 访问数据时，Azure 机器学习会执行数据有效性和凭据检查。 如果数据位于虚拟网络后面，则 Azure 机器学习无法访问数据，也无法检查数据。 若要避免这种情况，必须创建跳过验证的数据存储和数据集。
+
+### <a name="use-a-datastore"></a>使用数据存储
+
+ Azure Data Lake Store Gen1 和 Azure Data Lake Store Gen2 默认跳过验证，因此无需进一步操作。 但是，对于以下服务，可以使用类似的语法来跳过数据存储验证：
+
+- Azure Blob 存储
+- Azure 文件共享
+- PostgreSQL
+- Azure SQL Database
+
+下面的代码示例创建一个新的 Azure Blob 数据存储和集 `skip_validation=True` 。
+
+```python
+blob_datastore = Datastore.register_azure_blob_container(workspace=ws,  
+
+                                                         datastore_name=blob_datastore_name,  
+
+                                                         container_name=container_name,  
+
+                                                         account_name=account_name, 
+
+                                                         account_key=account_key, 
+
+                                                         skip_validation=True ) // Set skip_validation to true
+```
+
+### <a name="use-a-dataset"></a>使用数据集
+
+用于跳过数据集验证的语法类似于以下数据集类型：
+- 分隔文件
+- JSON 
+- Parquet
+- SQL
+- 文件
+
+下面的代码将创建一个新的 JSON 数据集和集 `validate=False` 。
+
+```python
+json_ds = Dataset.Tabular.from_json_lines_files(path=datastore_paths, 
+
+validate=False) 
+
+```
+
+
+## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>计算群集和实例 
 
 若要在虚拟网络中使用[托管 Azure 机器学习计算目标](concept-compute-target.md#azure-machine-learning-compute-managed)或 [Azure 机器学习计算实例](concept-compute-instance.md)，必须满足以下网络要求：
 
@@ -102,7 +247,9 @@ Azure 机器学习依赖其他 Azure 服务，以便计算资源（亦称为[“
 
 ### <a name="required-ports"></a><a id="mlcports"></a>所需的端口
 
-机器学习计算目前使用 Azure Batch 服务在指定的虚拟网络中预配 VM。 子网必须允许来自 Batch 服务的入站通信。 使用这种通信，可以计划机器学习计算节点上的运行，并能与 Azure 存储和其他资源进行通信。 Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (NSG)。 这些 NSG 自动配置允许以下流量的入站和出站规则：
+如果你计划通过限制进出公共 internet 的网络流量来保护虚拟网络，则必须允许来自 Azure Batch 服务的入站通信。
+
+Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (NSG)。 这些 NSG 自动配置允许以下流量的入站和出站规则：
 
 - 端口 29876 和 29877 上来自服务标记 BatchNodeManagement 的入站 TCP 流量。
 
@@ -116,9 +263,10 @@ Azure 机器学习依赖其他 Azure 服务，以便计算资源（亦称为[“
 
 - 对于计算实例，端口 44224 上来自服务标记 AzureMachineLearning 的入站 TCP 流量。
 
-在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 阻止与计算节点通信，那么计算服务会将计算节点的状态设置为“不可用”。
-
-你不需要在子网级别指定 NSG，因为 Azure Batch 服务会配置它自己的 NSG。 不过，如果指定的子网有关联的 NSG 或防火墙，请按照前面所述来配置入站和出站安全规则。
+> [!IMPORTANT]
+> 在 Batch 配置的 NSG 中修改或添加入站或出站规则时，请务必小心。 如果 NSG 阻止与计算节点通信，那么计算服务会将计算节点的状态设置为“不可用”。
+>
+> 你不需要在子网级别指定 NSG，因为 Azure Batch 服务会配置它自己的 NSG。 但是，如果包含 Azure 机器学习计算的子网具有关联的 Nsg 或防火墙，则还必须允许前面列出的流量。
 
 下面两个图展示了 Azure 门户中的 NSG 规则配置：
 
@@ -146,7 +294,10 @@ Azure 机器学习依赖其他 Azure 服务，以便计算资源（亦称为[“
 [![用于机器学习计算的出站 NSG 规则](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> 如果你打算使用 Microsoft 提供的默认 Docker 映像，并启用用户托管的依赖项，那么还必须使用服务标记 MicrosoftContainerRegistry.Region_Name（例如，MicrosoftContainerRegistry.EastUS）。
+> 如果你计划使用 Microsoft 提供的默认 Docker 映像并启用用户托管依赖项，则还必须使用以下__服务标记__：
+>
+> * __MicrosoftContainerRegistry__
+> * __AzureFrontDoor.FirstParty__
 >
 > 如果训练脚本中有类似于以下代码片段的代码，就需要此配置：
 >
@@ -253,45 +404,11 @@ except ComputeTargetException:
 
 创建过程完成后，通过在试验中使用群集来训练模型。 有关详细信息，请参阅[选择并使用用于训练的计算目标](how-to-set-up-training-targets.md)。
 
-## <a name="use-a-storage-account-for-your-workspace"></a>使用工作区的存储帐户
+### <a name="access-data-in-a-compute-instance-notebook"></a>访问计算实例笔记本中的数据
 
-若要在虚拟网络中使用工作区的 Azure 存储帐户，请按照以下步骤操作：
+如果要在 Azure 计算实例上使用笔记本，则必须确保笔记本在与数据相同的虚拟网络和子网后的计算资源上运行。 
 
-1. 在虚拟网络后面创建计算资源（例如，机器学习计算实例或群集），或将计算资源附加到工作区（例如，HDInsight 群集、虚拟机或 Azure Kubernetes 服务群集）。 计算资源可用于试验或模型部署。
-
-   有关详细信息，请参阅本文中的[使用机器学习计算](#amlcompute)、[使用虚拟机或 HDInsight 群集](#vmorhdi)和[使用 Azure Kubernetes 服务](#aksvnet)部分。
-
-1. 在 Azure 门户中，转到附加到工作区的存储。
-
-   [![附加到 Azure 机器学习工作区的存储](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
-
-1. 在“Azure 存储”页上，选择“防火墙和虚拟网络”。
-
-   ![Azure 门户中“Azure 存储”页上的“防火墙和虚拟网络”区域](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
-
-1. 在“防火墙和虚拟网络”页上，执行以下操作：
-    - 选择“所选网络”。
-    - 在“虚拟网络”下，选择“添加现有虚拟网络”链接。 此操作会添加计算所在的虚拟网络（见第 1 步）。
-
-        > [!IMPORTANT]
-        > 存储帐户必须与用于训练或推理的计算实例或群集位于同一虚拟网络和子网中。
-
-    - 选中“允许受信任的 Microsoft 服务访问此存储帐户”复选框。
-
-    > [!IMPORTANT]
-    > 使用 Azure 机器学习 SDK 时，开发环境必须能够连接到 Azure 存储帐户。 当存储帐户位于虚拟网络中时，防火墙必须允许从开发环境的 IP 地址进行访问。
-    >
-    > 若要启用对存储帐户的访问，请在开发客户端的 Web 浏览器中访问存储帐户的“防火墙和虚拟网络”。 然后，使用“添加客户端 IP 地址”复选框将客户端的 IP 地址添加到“地址范围”。 也可以使用“地址范围”字段手动输入开发环境的 IP 地址。 在客户端的 IP 地址已添加后，它就可以使用 SDK 访问存储帐户了。
-
-   [![Azure 门户中的“防火墙和虚拟网络”窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
-
-> [!IMPORTANT]
-> 可以将用于 Azure 机器学习的默认存储帐户和/或非默认存储帐户置于虚拟网络中。
->
-> 默认存储帐户是在你创建工作区时自动预配的。
->
-> 对于非默认存储帐户，使用 [`Workspace.create()` 函数](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)中的 `storage_account` 参数，可以按 Azure 资源 ID 指定自定义存储帐户。
-
+你必须在 "高级设置" 下的 "**高级设置**" "  >  **配置虚拟网络**" 中将计算实例配置为位于同一虚拟网络。 不能将现有的计算实例添加到虚拟网络。
 
 <a id="aksvnet"></a>
 
@@ -427,14 +544,69 @@ az rest --method put --uri https://management.azure.com/subscriptions/<subscript
 } 
 ```
 
-> [!NOTE]
-> 目前，无法在现有群集上执行附加操作时配置负载均衡器。 必须先附加群集，再执行更新操作来更改负载均衡器。
+将__现有群集附加__到工作区时，必须等到附加操作完成后，才能配置负载均衡器。
 
+有关附加群集的信息，请参阅[附加现有的 AKS 群集](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster)。
+
+附加现有群集后，你可以更新群集以使用专用 IP。
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute
+
+# ws = workspace object. Creation not shown in this snippet
+aks_target = AksCompute(ws,"myaks")
+
+# Change to the name of the subnet that contains AKS
+subnet_name = "default"
+# Update AKS configuration to use an internal load balancer
+update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+aks_target.update(update_config)
+# Wait for the operation to complete
+aks_target.wait_for_completion(show_output = True)
+```
+
+__网络参与者角色__
+
+> [!IMPORTANT]
+> 如果通过提供先前创建的虚拟网络来创建或附加 AKS 群集，则_必须将 AKS 群集的服务_主体（SP）或托管标识授予包含虚拟网络的资源组。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
+>
+> 若要将标识作为网络参与者添加，请执行以下步骤：
+
+1. 若要查找 AKS 的服务主体或托管标识 ID，请使用以下 Azure CLI 命令。 将 `<aks-cluster-name>` 替换为群集的名称。 将替换 `<resource-group-name>` 为_包含 AKS 群集_的资源组的名称：
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    如果此命令返回的值 `msi` ，则使用以下命令来标识托管标识的主体 ID：
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. 若要查找包含虚拟网络的资源组的 ID，请使用以下命令。 将替换 `<resource-group-name>` 为_包含虚拟网络_的资源组的名称：
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. 若要将服务主体或托管标识作为网络参与者添加，请使用以下命令。 替换为 `<SP-or-managed-identity>` 服务主体或托管标识返回的 ID。 `<resource-group-id>`将替换为包含虚拟网络的资源组返回的 ID：
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
 若要详细了解如何结合使用内部负载均衡器与 AKS，请参阅[结合使用内部负载均衡器与 Azure Kubernetes 服务](/azure/aks/internal-lb)。
 
 ## <a name="use-azure-container-instances-aci"></a>使用 Azure 容器实例 (ACI)
 
 Azure 容器实例在部署模型时动态创建。 你必须为部署使用的子网启用子网委派，Azure 机器学习才能在虚拟网络中创建 ACI。
+
+> [!WARNING]
+> 在虚拟网络中使用 Azure 容器实例时，虚拟网络必须与 Azure 机器学习工作区位于同一资源组中。
+>
+> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表（ACR）也不能在虚拟网络中。
 
 若要将虚拟网络中的 ACI 用于工作区，请按照以下步骤操作：
 
@@ -547,22 +719,6 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
     ]
     }
     ```
-    
-## <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
-
-Azure Data Lake Storage Gen2 是一组基于 Azure Blob 存储的大数据分析功能。 它可以用来存储用于使用 Azure 机器学习训练模型的数据。 
-
-若要在 Azure 机器学习工作区的虚拟网络中使用 Data Lake Storage Gen2，请按照以下步骤操作：
-
-1. 创建 Azure Data Lake Storage Gen2 帐户。 有关详细信息，请参阅[创建 Azure Data Lake Storage Gen2 存储帐户](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
-
-1. 按照前面部分[使用工作区的存储帐户](#use-a-storage-account-for-your-workspace)中的第 2-4 步操作，将帐户置于虚拟网络中。
-
-在虚拟网络中结合使用 Azure 机器学习与 Data Lake Storage Gen2 时，请遵循以下指南：
-
-* 如果使用 SDK 创建数据集，且运行代码的系统不在虚拟网络中，请使用 `validate=False` 参数。 此参数会跳过验证（如果系统与存储帐户不在同一虚拟网络中，验证会失败）。 有关详细信息，请参阅 [from_files()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 方法。
-
-* 如果你使用 Azure 机器学习计算实例或计算群集来通过数据集训练模型，它必须与存储帐户位于同一虚拟网络中。
 
 ## <a name="key-vault-instance"></a>密钥保管库实例 
 

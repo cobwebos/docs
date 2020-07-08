@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 765c73a3ab8d5fa8939abe597d0141b24b59ac52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c7b74d31bc3c4e2276cd52c8e6450630dc99bcd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76152471"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86058021"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>教程：在 Azure 部署管理器（公共预览版）中使用运行状况检查
 
@@ -35,7 +35,7 @@ ms.locfileid: "76152471"
 
 其他资源：
 
-* [Azure 部署管理器 REST API 参考](https://docs.microsoft.com/rest/api/deploymentmanager/)。
+* [Azure 部署管理器 REST API 参考](/rest/api/deploymentmanager/)。
 * [Azure 部署管理器示例](https://github.com/Azure-Samples/adm-quickstart)。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
@@ -58,7 +58,7 @@ ms.locfileid: "76152471"
 
 ## <a name="create-a-health-check-service-simulator"></a>创建运行状况检查服务模拟器
 
-在生产环境中，通常会使用一个或多个监视提供程序。 为了尽量简化运行状况集成，Microsoft 一直与某些顶级服务运行状况监视公司合作，以便为客户提供简单的复制/粘贴解决方案，用于将运行状况检查与部署相集成。 有关公司列表，请参阅[运行状况监视提供商](./deployment-manager-health-check.md#health-monitoring-providers)。 在本教程中，你将创建一个 [Azure 函数](/azure/azure-functions/)来模拟运行状况监视服务。 此函数提取一个状态代码，并返回相同的代码。 Azure 部署管理器模板使用该状态代码来确定如何继续部署。
+在生产环境中，通常会使用一个或多个监视提供程序。 为了尽量简化运行状况集成，Microsoft 一直与某些顶级服务运行状况监视公司合作，以便为客户提供简单的复制/粘贴解决方案，用于将运行状况检查与部署相集成。 有关公司列表，请参阅[运行状况监视提供商](./deployment-manager-health-check.md#health-monitoring-providers)。 在本教程中，你将创建一个 [Azure 函数](../../azure-functions/index.yml)来模拟运行状况监视服务。 此函数提取一个状态代码，并返回相同的代码。 Azure 部署管理器模板使用该状态代码来确定如何继续部署。
 
 以下两个文件用于部署 Azure 函数。 无需下载这些文件即可完成本教程。
 
@@ -369,4 +369,4 @@ Tags                    :
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 Azure 部署管理器的运行状况检查功能。 若要了解更多信息，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)。
+本教程已介绍如何使用 Azure 部署管理器的运行状况检查功能。 若要了解更多信息，请参阅 [Azure 资源管理器文档](../index.yml)。

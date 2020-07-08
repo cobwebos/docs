@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
-ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67d3591a22ba68c0ddb5c4e2b467e133ef20102b
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251006"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057460"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -187,7 +187,7 @@ ms.locfileid: "79251006"
 
 表达式编辑器允许输入任何文本值以及一个或多个变量。 以货币符号开头的变量。 按 $ 键时，编辑器会显示一个下拉框，其中包含一系列可用变量。 在此例中，我们使用输出目录变量与基本输入文件名变量的组合：
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}.MP4`
 
 ![填充的表达式编辑器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-expression-editor.png)
 
@@ -265,16 +265,16 @@ ms.locfileid: "79251006"
 
 文件输出命名可以通过设计器中的表达式来控制。 打开其中一个“文件输出”组件的属性窗格，并打开“文件属性”的表达式编辑器。 第一个输出文件是通过以下表达式配置的（请参阅有关[从 MXF 转为单比特率 MP4 输出](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)的教程）：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4`
 
 这意味着我们的文件名由两个变量决定：要写入的输出目录和源文件基本名称。 前者在工作流根目录上公开为属性，后者则由传入的文件决定。 输出目录是用于本地测试的目录；当 Azure 媒体服务中基于云的媒体处理器执行工作流时，此属性由工作流引擎重写。
 要提供这两个输出文件一致的输出命名，请将第一个文件命名表达式更改为：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 将第二个文件命名表达式更改为：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 执行临时测试回合，以确保正确生成这两个 MP4 输出文件。
 
@@ -287,7 +287,7 @@ ms.locfileid: "79251006"
 
 创建第三个“文件输出”组件，以从多路复用器输出出站流，并将文件命名表达式配置为：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_128kbps_audio.MP4`
 
 ![用于创建输出文件的音频多路复用器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-audio-muxer-creating-file-output.png)
 
@@ -319,7 +319,7 @@ ms.locfileid: "79251006"
 
 如同对我们的其他文件输出组件，使用表达式来配置 .ism 文件输出名称：
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_manifest.ism`
 
 完成的工作流如下所示：
 
@@ -342,11 +342,11 @@ ms.locfileid: "79251006"
 
 例如，我们的第一个视频文件的文件输出组件使用了此表达式配置：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4`
 
 对于第二个输出视频，我们使用了如下所示的表达式：
 
-    ${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4
+`${ROOT_outputWriteDirectory}\\${ROOT_sourceFileBaseName}_960x540_2.MP4`
 
 如果我们可以删除某些重复项目，并改为使得项目更易于配置，是不是更清楚、更不容易出错且更方便？ 幸好我们可以做到这一点：设计器的表达式功能结合能够在我们的工作流根目录上创建自定义属性，让我们多了一层便利性。
 
@@ -391,7 +391,7 @@ ms.locfileid: "79251006"
 ### <a name="have-generated-output-file-names-rely-on-published-property-values"></a><a id="MXF_to__multibitrate_MP4_output_files"></a>使生成的输出文件名依赖于发布的属性值
 不要对我们生成的文件名进行硬编码，我们现在可以在每个“文件输出”组件上更改文件名，以依赖我们在图形根目录上发布的表达式属性。 从第一个文件输出开始，查找文件属性，并编辑表达式，如下所示：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video1bitrate}kbps.MP4`
 
 可以通过在表达式窗口中点击键盘上的货币符号来访问及输入此表达式中的不同参数。 其中一个可用的参数是前面发布的 video1bitrate 属性。
 
@@ -401,11 +401,11 @@ ms.locfileid: "79251006"
 
 对第二个视频的文件输出执行相同的操作：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_video2bitrate}kbps.MP4`
 
 针对仅含音频文件的输出：
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_${ROOT_audio1bitrate}bps_audio.MP4`
 
 如果我们现在更改任何视频或音频文件的比特率，将重新配置单个编码器，并对所有项目自动使用基于比特率的文件名约定。
 
@@ -462,11 +462,11 @@ ms.locfileid: "79251006"
 
 *引入场景搜索 JPG 文件写入器*
 
-使用以下表达式配置输出文件夹路径属性：${ROOT_outputWriteDirectory}
+用以下表达式配置 "输出文件夹路径" 属性：`${ROOT_outputWriteDirectory}`
 
 配置文件名前缀属性：
 
-    ${ROOT_sourceFileBaseName}_thumb_
+`${ROOT_sourceFileBaseName}_thumb_`
 
 前缀确定了缩略图文件的命名方式。 它们的前面带有数字前缀，指示缩略图在流中的位置。
 
@@ -551,11 +551,11 @@ ms.locfileid: "79251006"
 
 针对音频修剪开始时间：
 
-    ${ROOT_TrimmingStartTime}
+`${ROOT_TrimmingStartTime}`
 
 针对结束时间：
 
-    ${ROOT_TrimmingEndTime}
+`${ROOT_TrimmingEndTime}`
 
 ### <a name="finished-workflow"></a><a id="time_based_trim_finish"></a>已完成的工作流
 ![已完成的工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-finished-workflow-time-base-trimming.png)
@@ -591,7 +591,7 @@ ms.locfileid: "79251006"
 
 让我们在 realizeScript 的上下文中编写一个简单的 Hello World Groovy 脚本。 在编辑器中输入以下命令：
 
-    node.log("hello world");
+`node.log("hello world");`
 
 现在执行本地测试回合。 完成此回合后，（通过“脚本组件”上的“系统”选项卡）检查“日志”属性。
 

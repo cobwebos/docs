@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 7face572f545153ea92efbdb345bbaabda5dd126
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 205f96a6ce9b730f98a0c676c3c0a289680e36f2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248328"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057528"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源管理器资源组
 
@@ -27,7 +27,7 @@ ms.locfileid: "79248328"
 
 ” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
-” 资源组存储有关资源的元数据。 当指定资源组的位置时，也就指定了元数据的存储位置。
+” 资源组存储与资源有关的元数据。 指定资源组的位置时，也会指定元数据的存储位置。
 
 ## <a name="create-resource-groups"></a>创建资源组
 
@@ -115,7 +115,7 @@ read lockName &&
 az lock delete --name $lockName --resource-group $resourceGroupName
 ```
 
-有关详细信息，请参阅[通过 Azure 资源管理器锁定资源](lock-resources.md)。
+更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
 
 ## <a name="tag-resource-groups"></a>标记资源组
 
@@ -150,5 +150,5 @@ az group export --name $resourceGroupName
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
-- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](../index.yml)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

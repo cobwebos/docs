@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 25e001927d5c06b4a7e5639faaa054ae18b12bb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f18eea697e875cc926e8fbaa0f61cf2d4639be0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248354"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057511"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure 资源管理器资源组
 
@@ -27,7 +27,7 @@ ms.locfileid: "79248354"
 
 ” 资源组存储有关资源的元数据。 因此，当指定资源组的位置时，也就指定了元数据的存储位置。 出于合规性原因，可能需要确保数据存储在某一特定区域。
 
-” 资源组存储有关资源的元数据。 当指定资源组的位置时，也就指定了元数据的存储位置。
+” 资源组存储与资源有关的元数据。 指定资源组的位置时，也会指定元数据的存储位置。
 
 ## <a name="create-resource-groups"></a>创建资源组
 
@@ -74,7 +74,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 请参阅[将资源部署到现有的资源组](manage-resources-powershell.md#deploy-resources-to-an-existing-resource-group)。
 
-若要验证资源组部署，请参阅 [Test-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
+若要验证资源组部署，请参阅 [Test-AzResourceGroupDeployment](/powershell/module/Az.Resources/Test-AzResourceGroupDeployment?view=azps-1.3.0)。
 
 ## <a name="deploy-a-resource-group-and-resources"></a>部署资源组和资源
 
@@ -108,7 +108,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Get-AzResourceLock -ResourceGroupName $resourceGroupName 
 ```
 
-有关详细信息，请参阅[通过 Azure 资源管理器锁定资源](lock-resources.md)。
+更多信息请参阅 [使用 Azure Resource Manager 锁定资源](lock-resources.md)。
 
 ## <a name="tag-resource-groups"></a>标记资源组
 
@@ -223,5 +223,5 @@ Export-AzResourceGroup `
 
 - 若要了解 Azure 资源管理器，请参阅 [Azure 资源管理器概述](overview.md)。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](../templates/template-syntax.md)。
-- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](../index.yml)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

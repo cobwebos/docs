@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/06/2020
 ms.author: diberry
-ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 560a7d9106b9eaef0f82766615253715deb9238a
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683115"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057868"
 ---
 # <a name="iterative-app-design-for-luis"></a>LUIS 的迭代应用设计
 
@@ -35,13 +35,13 @@ ms.locfileid: "83683115"
 
 ## <a name="building-a-luis-schema"></a>生成 LUIS 架构
 
-应用的架构定义用户的需求是什么（意图或意向），以及意向的哪些部分提供有助于确定答案的详细信息（称为实体）。   
+应用的架构定义用户的需求是什么（意图或意向），以及意向的哪些部分提供有助于确定答案的详细信息（称为实体）。  
 
 应用架构必须特定于应用域，以此确定相关的单词和短语，并确定典型的单词顺序。
 
 示例言语表示应用在运行时所需的用户输入，例如识别的语音或文本。
 
-架构需要意向，并且应该包含实体。 
+架构需要意向，并且应该包含实体。
 
 ### <a name="example-schema-of-intents"></a>意向的示例架构
 
@@ -51,7 +51,7 @@ ms.locfileid: "83683115"
 
 ### <a name="example-schema-of-entities"></a>实体的示例架构
 
-实体架构侧重于实体，是从用户言语中提取的数据。 例如，如果用户说“我想要订三份披萨”。 将会提取两个实体：“三份”和“披萨”。   这些实体有助于实现意图，即订餐。
+实体架构侧重于实体，是从用户言语中提取的数据。 例如，如果用户说“我想要订三份披萨”。 将会提取两个实体：“三份”和“披萨”。  这些实体有助于实现意图，即订餐。
 
 在实体架构方面，言语的意图对于客户端应用程序而言不太重要。
 
@@ -105,13 +105,24 @@ LUIS 需要在每个**意向**中添加几个示例言语。 示例言语需要�
 
 可以发布到过渡槽和/或生产槽。 每个槽可以具有不同的版本或相同的版本。 这样，在将更改发布到可供机器人或其他 LUIS 调用应用使用的生产槽之前，可以方便地验证这些更改。
 
-训练的版本在 LUIS 应用的[终结点](luis-glossary.md#endpoint)中不会自动可用。 要使其在 LUIS 应用终结点上可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“过渡”和“生产”槽，从而提供两个在终结点中可用的应用版本。******** 如果需要更多应用版本在终结点上可用，应导出版本并将其重新导入到新的应用。 新的应用具有不同的应用 ID。
+训练的版本在 LUIS 应用的[终结点](luis-glossary.md#endpoint)中不会自动可用。 要使其在 LUIS 应用终结点上可用，必须[发布](luis-how-to-publish-app.md)或重新发布版本。 可以发布到“过渡”和“生产”槽，从而提供两个在终结点中可用的应用版本。  如果需要更多应用版本在终结点上可用，应导出版本并将其重新导入到新的应用。 新的应用具有不同的应用 ID。
 
-### <a name="import-and-export-a-version"></a>导入和导出版本
+### <a name="import-a-version"></a>导入版本
 
-可以在应用级别导入版本。 该版本将成为活动版本，并使用应用文件的 `versionId` 属性中的版本 ID。 也可以在版本级别导入到现有应用。 新版本将成为活动版本。
+版本可以作为新的**导入**：
+* 应用，具有新的应用 ID
+* 现有应用的版本
 
-也可以在应用或版本级别导出版本。 唯一的区别是应用级别导出的版本是当前活动版本，而在版本级别，可以在“[设置](luis-how-to-manage-versions.md)”页上选择任意要导出的版本****。
+该版本将成为活动版本，并使用应用文件的 `versionId` 属性中的版本 ID。
+
+### <a name="export-a-version"></a>导出版本
+
+可以从 LUIS 门户中的应用级别或版本级别**导出**版本：
+
+* 应用级别-在 **"我的应用**" 页上选择 "应用"，然后选择 "**导出**"
+* 版本级别-选择应用**程序页面上的 "应用**" 链接，选择 "**管理**"，选择 "**版本**"
+
+唯一的差别在于，在版本级别，应用级、导出版本是当前处于活动状态的版本，你可以在 "**[设置](luis-how-to-manage-versions.md)**" 页上选择要导出的任何版本。
 
 导出的文件**不**包含：
 
@@ -128,11 +139,11 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>在同一应用中管理多个版本
 
-从每个作者的基本版本中开始[克隆](luis-how-to-manage-versions.md#clone-a-version)。
+首先，每个创建者基于基础版进行[克隆](luis-how-to-manage-versions.md#clone-a-version)。
 
 每个创建者对自己的应用版本进行更改。 创建者对模型感到满意后，将新版本导出到 JSON 文件中。
 
-可以比较导出的应用、.json 或 .lu 文件的差异。 合并这些文件，创建一个新版本的文件。 更改 `versionId` 属性以指示新的合并版本。 将该版本导入原始应用。
+可对导出 `.json` 的应用或 `.lu` 文件进行比较以进行更改。 合并这些文件，创建一个新版本的文件。 更改 `versionId` 属性以指示新的合并版本。 将该版本导入原始应用。
 
 通过此方法可获得一个活动版本、阶段版本和已发布版本的应用。 可以在[交互式测试窗格](luis-interactive-test.md)中将活动版本与发布版本（阶段或生产）的结果进行比较。
 
@@ -140,7 +151,7 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 [导出](luis-how-to-manage-versions.md#export-version)基础版本。 各创建者导入该版本。 导入应用的创建者即为该版本的所有者。 修改应用后，导出该版本。
 
-导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本****。 将该版本导入原始应用。
+导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。
 
 详细了解来自[协作者](luis-how-to-collaborate.md)的创作贡献。
 
@@ -150,4 +161,4 @@ LUIS 通过提供 Azure 资源级权限来使用应用参与者的概念。 将�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[协作](luis-concept-keys.md)的概念。
+了解有关[协作](luis-how-to-azure-subscription.md)的概念。

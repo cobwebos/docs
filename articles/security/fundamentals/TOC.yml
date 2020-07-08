@@ -60,8 +60,6 @@
       href: ddos-best-practices.md
     - name: 无关联的 DNS 和子域接管
       href: subdomain-takeover.md
-    - name: DDoS 防护安全基线
-      href: ddos-protection-security-baseline.md
     - name: 安全混合网络体系结构
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
 - name: IaaS 安全

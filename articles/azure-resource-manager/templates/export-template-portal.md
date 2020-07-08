@@ -3,12 +3,12 @@ title: 在 Azure 门户中导出模板
 description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理器模板。
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273730"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057698"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>在 Azure 门户中将单资源和多资源导出到模板
 
@@ -121,5 +121,5 @@ ms.locfileid: "79273730"
 
 - 了解如何使用 [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates)、[Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates) 或 [REST API](/rest/api/resources/resourcegroups/exporttemplate) 导出模板。
 - 若要了解资源管理器模板语法，请参阅[了解 Azure 资源管理器模板的结构和语法](template-syntax.md)。
-- 若要了解如何开发模板，请参阅[分步教程](/azure/azure-resource-manager/)。
+- 若要了解如何开发模板，请参阅[分步教程](../index.yml)。
 - 若要查看 Azure 资源管理器模板架构，请参阅[模板参考](/azure/templates/)。

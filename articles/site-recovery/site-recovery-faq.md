@@ -4,12 +4,12 @@ description: 本文讨论有关 Azure Site Recovery 的常见问题。
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744118"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057426"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -22,11 +22,16 @@ ms.locfileid: "83744118"
 ## <a name="general"></a>常规
 
 ### <a name="what-does-site-recovery-do"></a>站点恢复的功能是什么？
+
 通过协调和自动化 Azure VM 复制（本地区域虚拟机和物理服务器到 Azure；本地计算机到辅助数据中心），Site Recovery 可帮助实现业务连续性与灾难恢复 (BCDR) 策略。 [了解详细信息](site-recovery-overview.md)。
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>是否可以保护具有 Docker 磁盘的虚拟机？
 
 否，此方案不受支持。
+
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Site Recovery 如何确保数据完整性？
+
+Site Recovery 采取各种措施来确保数据完整性。 使用 HTTPS 协议在所有服务之间建立安全连接。 这可确保任何恶意软件或外部实体都无法篡改数据。 采用的另一个度量值是使用校验和。 源和目标之间的数据传输通过计算它们之间数据的校验和来执行。 这可确保传输的数据是一致的。
 
 ## <a name="service-providers"></a>服务提供商
 
@@ -34,7 +39,7 @@ ms.locfileid: "83744118"
 是的，站点恢复同时支持专用与共享的基础结构模型。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>对于服务提供商而言，我的租户标识是否与 Site Recovery 服务共享？
-不是。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
+不能。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>租户应用程序数据是否会发往 Azure？
 在服务提供商拥有的站点之间进行复制时，永远不会将应用程序数据发送到 Azure。 数据进行传输中加密并直接在服务提供商站点之间复制。
@@ -128,7 +133,7 @@ Azure Site Recovery 的微服务之间的所有通信均通过 TLS 1.2 协议进
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure VM 是否支持灾难恢复？
 
-是，Site Recovery 支持 Azure 区域之间的 Azure VM 灾难恢复。 [查看有关 Azure VM 灾难恢复的常见问题](azure-to-azure-common-questions.md)。
+是，Site Recovery 支持 Azure 区域之间的 Azure VM 灾难恢复。 [查看有关 Azure VM 灾难恢复的常见问题](azure-to-azure-common-questions.md)。 如果要在同一大洲的两个 Azure 区域之间进行复制，请使用 Azure 到 Azure DR 产品/服务。 无需设置配置服务器/进程服务器和 ExpressRoute 连接。
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>VMware VM 是否支持灾难恢复？
 
@@ -195,7 +200,40 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 * [复制 VMware VM 和物理服务器的容量规划](site-recovery-plan-capacity-vmware.md)
 * [将 Hyper-V VM 复制到 Azure 的容量规划](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>能否在 Linux 服务器中使用应用一致性启用复制？ 
+是的。 Linux 操作系统的 Azure Site Recovery 支持应用程序的自定义脚本，以实现应用程序一致性。 在应用程序一致性期间 Azure Site Recovery 移动代理将使用带有 pre 和 post 选项的自定义脚本。 下面是启用该方法的步骤。
 
+1. 以 root 身份登录计算机。
+2. 将目录更改为 Azure Site Recovery 移动代理安装位置。 默认值为 "/usr/local/ASR"<br>
+    `# cd /usr/local/ASR`
+3. 将目录更改为安装位置下的 "VX/scripts"<br>
+    `# cd VX/scripts`
+4. 使用 root 用户的 execute 权限创建名为 "customscript.sh" 的 bash shell 脚本。<br>
+    a. 脚本应支持 "--pre" 和 "--post" （请注意双短划线）命令行选项<br>
+    b. 当用预选项调用脚本时，它应冻结应用程序的输入/输出，并在通过 post 选项调用时，它应解冻应用程序的输入/输出。<br>
+    c. 示例模板-<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. 在需要应用一致性的应用程序的前和后步骤中，添加冻结和解冻输入/输出命令。 您可以选择添加另一个脚本，并将其从 "customscript.sh" 和 pre 和 post 选项中调用。
+
+>[!Note]
+>Site Recovery 代理版本应为9.24 或更高版本才能支持自定义脚本。
 
 ## <a name="failover"></a>故障转移
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>如果故障转移到 Azure，则在故障转移后如何访问 Azure VM？
