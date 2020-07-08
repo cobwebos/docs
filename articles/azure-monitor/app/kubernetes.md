@@ -7,7 +7,6 @@ ms.author: alkaplan
 ms.date: 04/25/2019
 ms.openlocfilehash: a5e73039db541023b1fd4a9b75e7c14030c8e219
 ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83797884"

@@ -9,7 +9,6 @@ ms.date: 11/01/2019
 tags: connectors
 ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83831919"

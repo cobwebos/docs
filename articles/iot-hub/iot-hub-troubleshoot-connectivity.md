@@ -11,7 +11,6 @@ ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: abce9387d4c23cd6cb5ecf73e3d5c8428d83d459
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83833653"

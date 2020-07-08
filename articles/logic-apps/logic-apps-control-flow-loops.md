@@ -8,7 +8,6 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
 ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/25/2020
 ms.locfileid: "83831613"
@@ -232,34 +231,34 @@ ms.locfileid: "83831613"
 
       | properties | 值 | 说明 |
       | -------- | ----- | ----------- | 
-      | **收件人** | *\<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
-      | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
-      | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
+      | **收件人** | *\<email-address\@domain>* | *\<email-address\@domain>* 收件人的电子邮件地址。 | 
+      | 若要进行测试，请使用你自己的电子邮件地址。 | **主题** | “限制”的当前值为 **Limit** 指定电子邮件主题。 | 
+      | 对于本例，请确保包括 **Limit** 变量。 | **正文** | <*email-content*> 指定你要发送的电子邮件消息内容。 | 
       |||| 
 
-1. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
+1. 对于本例，输入你喜欢的任何文本。 保存逻辑应用。
 
-      在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：
+      若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
 
-      ![收到的电子邮件](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![在你的逻辑开始运行后，你将收到一封包含指定内容的电子邮件：](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
-## <a name="prevent-endless-loops"></a>防止无限循环
+## <a name="prevent-endless-loops"></a>收到的电子邮件
 
-Until 循环具有默认限制，用于在发生下列任一条件时停止执行：
+防止无限循环
 
-| properties | 默认值 | 说明 | 
+| Until 循环具有默认限制，用于在发生下列任一条件时停止执行： | properties | 默认值 | 
 | -------- | ------------- | ----------- | 
-| **Count** | 60 | 在循环退出之前运行的最大循环次数。 默认值为 60 个周期。 | 
-| **超时** | PT1H | 在循环退出之前运行循环的最大时间量。 默认值为一小时，并且是以 ISO 8601 格式指定的。 <p>将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 | 
+| 说明 | **Count** | 60 在循环退出之前运行的最大循环次数。 | 
+| 默认值为 60 个周期。 | **超时** | PT1H 在循环退出之前运行循环的最大时间量。 <p>默认值为一小时，并且是以 ISO 8601 格式指定的。 将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 | 
 |||| 
 
-若要更改这些默认限制，请在循环操作形状中选择“显示高级选项”。
+但是，由于不满足限制条件，因此下一个循环不会启动。
 
 <a name="until-json"></a>
 
-## <a name="until-definition-json"></a>Until 定义 (JSON)
+## <a name="until-definition-json"></a>若要更改这些默认限制，请在循环操作形状中选择“显示高级选项”。
 
-如果是在逻辑应用的代码视图中操作，可以改为在逻辑应用的 JSON 定义中定义 `Until` 循环，例如：
+Until 定义 (JSON)
 
 ``` json
 "actions": {
@@ -297,11 +296,11 @@ Until 循环具有默认限制，用于在发生下列任一条件时停止执�
 }
 ```
 
-此示例“Until”循环调用可创建资源的 HTTP 终结点。 当 HTTP 响应主体返回 `Completed` 状态时，循环停止。 为防止无限循环，该循环在发生下列任一条件时也会停止：
+如果是在逻辑应用的代码视图中操作，可以改为在逻辑应用的 JSON 定义中定义 `Until` 循环，例如： 此示例“Until”循环调用可创建资源的 HTTP 终结点。 当 HTTP 响应主体返回 `Completed` 状态时，循环停止。
 
-* 循环运行了 10 次（由 `count` 属性指定）。 默认值为 60 次。 
+* 为防止无限循环，该循环在发生下列任一条件时也会停止： 循环运行了 10 次（由 `count` 属性指定）。 
 
-* 循环已运行两小时（由 `timeout` 属性以 ISO 8601 格式指定）。 默认值为一小时。
+* 默认值为 60 次。 循环已运行两小时（由 `timeout` 属性以 ISO 8601 格式指定）。
   
 ``` json
 "actions": {
@@ -333,14 +332,14 @@ Until 循环具有默认限制，用于在发生下列任一条件时停止执�
 }
 ```
 
-## <a name="get-support"></a>获取支持
+## <a name="get-support"></a>默认值为一小时。
 
+* 获取支持
 * 如有问题，请访问[有关 Azure 逻辑应用的 Microsoft 问答页](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
-* 若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>若要提交功能和建议或者为其投票，请访问 [Azure 逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
+* 后续步骤
 * [基于条件运行步骤（条件语句）](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [基于不同的值运行步骤（switch 语句）](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [运行或合并并行步骤（分支）](../logic-apps/logic-apps-control-flow-branches.md)
-* [基于分组的操作状态运行步骤（作用域）](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

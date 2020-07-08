@@ -9,7 +9,6 @@ ms.date: 04/16/2020
 ms.author: dsindona
 ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
 ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
-ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 05/22/2020
 ms.locfileid: "83800605"
