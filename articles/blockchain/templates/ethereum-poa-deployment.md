@@ -1,15 +1,15 @@
 ---
 title: 在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 description: 使用以太坊的证书颁发机构协会解决方案在 Azure 上部署和配置多成员协会以太坊网络
-ms.date: 06/04/2020
+ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86085916"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -17,15 +17,17 @@ ms.locfileid: "85210110"
 
 每个联合会成员均可使用解决方案模板，通过 Microsoft Azure 计算、网络和存储服务来预配区块链网络需求量。 每个联合会成员的网络需求量包含一组负载均衡的验证程序节点，应用程序或用户可与这些节点进行交互，以提交以太坊事务。
 
+[!INCLUDE [Preview note](./includes/preview.md)]
+
 ## <a name="choose-an-azure-blockchain-solution"></a>选择 Azure 区块链解决方案
 
 在选择使用 "以太坊认证证书协会" 解决方案模板之前，请将方案与可用 Azure 区块链选项的常见用例进行比较。
 
 选项 | 服务模型 | 常见用例
 -------|---------------|-----------------
-解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。
+解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。
 [Azure 区块链服务](../service/overview.md) | PaaS | Azure 区块链服务预览版简化了联合会区块链网络的构成、管理和监管。 将 Azure 区块链服务用于需要 PaaS、联合会管理或合同和事务隐私的解决方案。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用[Microsoft 问答&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)获取支持。
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 
@@ -84,7 +86,7 @@ Docker 容器用于可靠性和模块化。 Azure 容器注册表用于作为每
 
 ![基础](./media/ethereum-poa-deployment/basic-blade.png)
 
-参数 | 描述 | 示例值
+参数 | 说明 | 示例值
 ----------|-------------|--------------
 创建新网络或加入现有网络 | 你可以创建新的联合会网络，或加入预先存在的联合会网络。 加入现有网络需要其他参数。 | Create new
 电子邮件地址 | 部署完成时，将收到电子邮件通知，其中包含有关部署的信息。 | 有效的电子邮件地址
@@ -103,7 +105,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 
 ![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
 
-参数 | 描述 | 示例值
+参数 | 说明 | 示例值
 ----------|-------------|--------------
 区域数量|部署联盟网络的区域数量| 2
 第一个区域 | 部署联盟网络的第一个区域 | 美国西部 2
@@ -117,7 +119,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 
 ![网络规模和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-参数 | 描述 | 示例值
+参数 | 说明 | 示例值
 ----------|-------------|--------------
 负载均衡验证程序节点数 | 要作为网络的一部分预配的验证程序节点数。 | 2
 验证程序节点存储性能 | 每个已部署的验证程序节点的托管磁盘的类型。 有关定价的详细信息，请参阅[存储定价](https://azure.microsoft.com/pricing/details/managed-disks/) | 标准 SSD
@@ -139,7 +141,7 @@ F16s|高级·SSD|high|high|low
 
 ![Ethereum 设置](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-参数 | 描述 | 示例值
+参数 | 说明 | 示例值
 ----------|-------------|--------------
 联盟成员 ID | 与参与联盟网络的每个成员关联的 ID。 它用于配置 IP 地址空间以避免冲突。 对于专用网络，同一网络中的不同组织成员 ID 应该是唯一的。  即使同一个组织部署到多个区域，也需要一个唯一的成员 ID。 请记下此参数的值，因为需要与其他联接成员共享它，以确保不会发生冲突。 有效范围为0至255。 | 0
 网络 ID | 要部署的 Ethereum 联盟网络的网络 ID。 每个 Ethereum 网络都有自己的网络 ID，其中 1 是公共网络的 ID。 有效范围为5到999999999 | 10101010
@@ -158,7 +160,7 @@ F16s|高级·SSD|high|high|low
 
 ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
-参数 | 描述 | 示例值
+参数 | 说明 | 示例值
 ----------|-------------|--------------
 监视 | 启用监视的选项 | 启用
 连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | Create new
@@ -729,7 +731,7 @@ Ethereum 权威证明现在支持 Web 套接字。  检查部署输出，找到 
 
 与 Microsoft 工程师和 Azure 区块链社区专家交流。
 
-* [Microsoft Q&Azure 区块链服务的问题页](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
+* [Microsoft Q&问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 针对区块链模板的工程支持仅限于部署问题。
 * [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
