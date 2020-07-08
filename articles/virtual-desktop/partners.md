@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 06/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692203"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038049"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -33,12 +33,12 @@ Citrix 扩展了 Windows 虚拟桌面的价值和强大的企业工具，以提�
 
 ![VMware 徽标](./media/partners/vmware.png)
 
-Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft Azure 实例连接到简单的直观横向云控制平面，从而创建一个安全、全面的云托管解决方案，用于提供虚拟化的 Windows 应用程序和桌面。 随着 Windows 虚拟桌面版的发布，VMware 已与 Microsoft 合作，将 Windows 虚拟桌面的功能扩展到在 Microsoft Azure 上使用地平线 Cloud 的客户。 此功能将在2019年底的技术预览版中提供。
- 
-作为已批准的提供商，Windows 虚拟桌面的优势将扩展到 Microsoft Azure 客户上的 VMware 横向云，包括适用于多会话的 Windows 10 企业版、带有免费扩展安全更新的 Windows 7 和 FSLogix。 此外，客户还将收到地平线云的企业级功能，如广泛的终结点支持;全球云优化协调;灵活的桌面选项和配置;用户-环境管理;和对混合环境的支持。
+Microsoft Azure 上的 VMware 范围云是一种本机云服务，可让组织从现有 Microsoft Azure 订阅快速部署远程桌面和应用程序，同时利用 VMware 范围的所有功能。 范围云使用水平范围控制平面为本地或云中的所有横向环境提供单一管理界面。 这会启用混合桌面虚拟化，并使客户能够按自己的节奏将其工作负荷移动到 Azure。
 
-- [在 Microsoft Azure 上注册适用于地平线云的技术预览版](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)。
+作为 Windows 虚拟桌面批准的提供程序，VMware 可以帮助希望使用 Windows 虚拟桌面的客户，同时还享有 VMware 范围随附的其他功能，例如集成和易用的电源管理、基于云的监视和群发极限协议。 这些功能可适应动态变化的网络条件，提供一致的用户体验。 VMware 地平线云还附带了 VMware 应用程序卷和动态环境管理器，它添加了适用于 .MSIX 应用连接和 FSLogix 的高级应用程序和用户环境管理功能。
+
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
+- [阅读 VMWare 地平线云技术文档](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 
@@ -102,6 +102,28 @@ deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 d
 
 - [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
 
+## <a name="ekran-system"></a>Ekran 系统
+
+![Ekran 系统徽标](./media/partners/ekran.png)
+
+Ekran System 是一个 Windows 虚拟桌面增值合作伙伴，使 IT 团队能够监视 Microsoft Azure 虚拟机上的所有远程用户活动。 对于 Ekran 系统，可以在发布的应用程序或虚拟机中记录每个用户会话的屏幕活动，同时收集各种上下文丰富的元数据，例如应用程序名称、活动窗口标题、访问的 Url 和击键。 高级功能提供深入的可见性和快速事件响应时间，使 Ekran 系统成为高效的内部威胁管理和合规性解决方案。  
+
+Ekran 系统客户端的唯一浮动终结点授权自动支持动态变化的虚拟机。 Ekran 系统允许你从已删除的非永久性虚拟桌面自动取消分配许可证，并从数据库中删除它们。 Ekran 系统与 Azure Active Directory 和 Azure Sentinel 无缝集成。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)。
+- [请中转到 "合作伙伴" 页](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
+
+## <a name="flexxible-it"></a>Flexxible
+
+![Flexxible IT 徽标](./media/partners/flexxible.png)
+
+Flexxible 是一个 Windows 虚拟桌面增值合作伙伴，它使组织能够快速缩放、监视和高效管理 Windows 虚拟桌面和 Citrix 工作区基础结构。 Flexxible |套件允许 IT 管理员智能地预配和管理本地 Windows 虚拟桌面工作负载，并托管在 Azure 中。
+ 
+Flexxible，它通过自动执行常见过程以简化基础结构配置、桌面预配和日常管理，来扩展本机 Windows 虚拟桌面和 Citrix 工作区的价值。 由于无需复杂的 PowerShell 脚本或耗时的手动过程，套件提供了可伸缩的桌面部署、广泛的监视和报告以及安全委托管理。 利用这些功能，你可以将重点放在提供增强的服务级别，并为用户提供优质的 Windows 虚拟桌面体验。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A)。
+- [请参阅合作伙伴网站](https://www.flexxible.com/suite-for-windows-virtual-desktop)。
+
 ## <a name="hp"></a>HP
 
 ![HP 徽标](./media/partners/hp.png)
@@ -127,7 +149,7 @@ IGEL OS 支持 Citrix、Microsoft 和 VMware 中的所有常用虚拟应用、�
 
 ![Ivanti 徽标](./media/partners/ivanti.png)
 
-Ivanti 用户工作区管理器是一个 Windows 虚拟桌面增值服务，它通过将用户数据与台式机分离以便无缝便携性，简化桌面部署和管理。 借助 Ivanti，用户可以提供复杂的项目，例如迁移到 Windows 10、采用 Office 365，或更快地将服务迁移到云。 
+Ivanti 用户工作区管理器是一个 Windows 虚拟桌面增值服务，它通过将用户数据与台式机分离以便无缝便携性，简化桌面部署和管理。 借助 Ivanti，用户可以提供复杂的项目，例如迁移到 Windows 10、采用 Microsoft 365 或更快地将服务迁移到云。 
 
 与 Windows 虚拟桌面一起使用时，Ivanti 用户工作区管理器提供用户桌面体验的简单上下文管理，消除长登录时间和 eradicating 组策略恶梦。 Ivanti 用户工作区管理器现成的模板通过代理和现有控制台简化了用户的安装。 Ivanti 用户工作区经理提供用户喜爱的响应安全的安全桌面，节省服务器上的资金，更有效地管理用户，降低终结点安全风险。 
 
@@ -163,6 +185,7 @@ Liquit 应用程序聚合和交付软件使企业和服务提供商能够连接�
 
 作为认证的集成合作伙伴，Liquit 可帮助加速过渡到云，而无需延迟和替换延迟。 Windows 虚拟桌面可以轻松连接到现有环境，创建工作区，并交付桌面。 然后，你可以将时间从旧的平台迁移，并在不需要用户注意的情况下在后端进行更改。 无论在何处，都可以获得一致的最终用户体验、灵活的基础结构，并保持对应用程序的控制。
 
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yol8)。
 - [请参阅合作伙伴网站](https://www.liquit.com/wvd/)。
 
 ## <a name="login-vsi"></a>登录 .VSI
@@ -236,6 +259,17 @@ RDPSoft 的远程桌面指挥解决方案增强了 Windows 虚拟桌面管理。
 
 - [请参阅合作伙伴网站](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)。
 
+## <a name="rimo3"></a>Rimo3
+
+![Rimo3 徽标](./media/partners/rimo3.png)
+
+Rimo3 通过加快部署并改善正在进行的更改管理，增强了 Windows 虚拟桌面体验。 Rimo3 为 IT 团队提供支持应用程序工作负载的 Azure 迁移准备情况所需的知识。 用户可以将应用程序载入，并快速轻松地在其目标 Windows 虚拟桌面工作区中测试这些应用程序。 用户还可以主动了解任何更改的影响，因为其组织推出了新的应用程序和更新。 最后，IT 管理员可以利用 Rimo3's 智能冒烟测试功能并自动执行功能测试，而无需中断用户会话。
+
+Rimo3 提供了一个易于使用、可缩放、自动的应用程序测试平台。 此平台包括适用于所有三个应用程序测试基础的功能：兼容性、功能和性能。 它使组织、领导和团队能够改善业务连续性、更快地进行更改，并优化用户体验。
+
+- [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7B)。
+- [请参阅合作伙伴网站](https://rimo3.com/outcomes/)。
+
 ## <a name="sepago"></a>sepago
 
 ![sepago 徽标](./media/partners/sepago.png)
@@ -245,7 +279,7 @@ sepago 由 Cologne 中的四个朋友构建在2002中。 如今，sepago 是一�
 sepago 的创新和开发实验室使用大数据和 AI 技术构建智能解决方案。 这些解决方案侧重于提高企业虚拟桌面等合作伙伴产品的业务、用户体验和管理中心。
 
 - [请参阅联合解决方案简述](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm)。
-- [请参阅合作伙伴网站](https://www.sepago.de/wvd-value-add-tools/)。
+- [请参阅合作伙伴网站](https://www.sepago.de/en/)。
 
 ## <a name="thinprint"></a>ThinPrint
 

@@ -1,72 +1,68 @@
 ---
 title: 查看虚拟中心的有效路由： Azure 虚拟 WAN |Microsoft Docs
-description: 查看 Azure 虚拟 WAN 中的虚拟中心的有效路由
+description: 如何在 Azure 虚拟 WAN 中查看虚拟中心的有效路由
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515845"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037760"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>查看虚拟中心的有效路由
+# <a name="view-virtual-hub-effective-routes"></a>查看虚拟中心有效路由
 
-可以在 Azure 门户中查看虚拟 WAN 中心的所有路由。 若要查看路由，请导航到虚拟中心，然后选择“路由”>“查看有效路由”  。
+可以在 Azure 门户中查看虚拟 WAN 集线器的所有路由。 本文将指导你完成查看有效路由的步骤。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
-## <a name="understanding-routes"></a><a name="understand"></a>了解路由
-
-以下示例可帮助你更好地了解虚拟 WAN 路由的显示方式。
-
-在此示例中，我们有一个具有三个中心的虚拟 WAN。 第一个中心位于 "美国东部" 区域，第二个中心位于 "西欧" 区域中，第三个中心位于 "美国西部" 区域。 在虚拟 WAN 中，所有中心都是互联的。 在此示例中，我们假定美国东部和西欧中心与本地分支（轮辐）和 Azure 虚拟网络（轮辐）建立连接。
-
-包含网络虚拟设备 (10.4.0.6) 的 Azure VNet 辐射 (10.4.0.0/16) 进一步对等互连到一个 VNet (10.5.0.0/16)。 有关中心路由表的详细信息，请参阅本文下文中的[其他信息](#abouthubroute)。
-
-在此示例中，我们还假定西欧分支1连接到美国东部中心和西欧中心。 美国东部的 ExpressRoute 线路将分支2连接到美国东部中心。
-
-![示意图](./media/effective-routes-virtual-hub/diagram.png)
-
-## <a name="view-effective-routes"></a><a name="view"></a>查看有效路由
-
-当你在门户中选择 "查看有效路由" 时，它将生成在美国东部中心的[中心路由表](#routetable)中显示的输出。
-
-若要将其放在透视中，第一行意味着美国东部中心已经了解 10.20.1.0/24 （Branch 1）的路线，因为 VPN*下一跃点类型*连接（"下一跃点" Vpn 网关 Instance0 ip 10.1.0.6，Instance1 IP 10.1.0.7）。 “路由原点”  指向资源 ID。 “AS 路径”  表示分支 1 的 AS 路径。
-
-### <a name="hub-route-table"></a><a name="routetable"></a>中心路由表
-
-可以使用表底部的滚动条查看“AS 路径”。
-
-| **Prefix** |  **下一跃点类型** | **下一跃点** |  **路由原点** |**AS 路径** |
-| ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6、10.1.0.7| /subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10、10.1.0.11|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6、10.1.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
-|10.4.0.0/16|虚拟网络连接| 在链路上 |  |  |
-|10.5.0.0/16| IP 地址| 10.4.0.6|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|0.0.0.0/0| IP 地址| `<Azure Firewall IP>` |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualHubs/easthub_1/routeTables/table_1| |
-|10.22.1.0/16| 远程中心|10.8.0.6、10.8.0.7|/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/microsoft.network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| 远程中心|  在链路上 |/subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/microsoft.network/virtualhubs/westhub_1| |
-
->[!NOTE]
-> 如果美国东部和西欧中心未在示例拓扑中相互通信，则获知的路由（10.9.0.0/16）不存在。 中心仅播发直接连接到它们的网络。
+> [!NOTE]
+> 在 Azure 门户上，其中的某些功能可能仍在推出，在8月3日前仍不可用。 
 >
 
-## <a name="additional-information"></a><a name="additional"></a>其他信息
+## <a name="select-connections-or-route-tables"></a><a name="routing"></a>选择连接或路由表
 
-### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>关于中心路由表
+1. 导航到虚拟中心，然后选择 "**路由**"。 在 "路由" 页上，选择 "**有效路由**"。
+1. 从下拉列表中，可以选择 "**连接类型**" 或 "**路由表**"。 如果看不到路由表选项，这意味着在此虚拟中心中没有设置自定义路由表或默认路由表。
+1. 从**连接/路由表**的下拉列表中，可以从以下项中进行选择：
 
-可以创建一个虚拟中心路由，并将该路由应用于虚拟中心路由表。 可以将多个路由应用于虚拟中心路由表。 这允许你通过 IP 地址（通常是辐射 VNet 中的网络虚拟设备 (NVA)）设置目标 VNet 的路由。 有关 NVA 的详细信息，请参阅[将流量从虚拟中心路由到 NVA](virtual-wan-route-table-portal.md)。
+   * 虚拟网络连接
+   * VPN 站点连接
+   * ExpressRoute 连接
+   * 点到站点连接
+   * 路由表
 
-### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>关于默认路由（0.0.0.0/0）
+   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="路由":::
 
-如果连接上的标志为 "Enabled"，则虚拟中心能够将已获知的默认路由传播到虚拟网络、站点到站点 VPN 和 ExpressRoute 连接。 当你编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，将显示此标志。 默认情况下，“EnableInternetSecurity”在中心 VNet、ExpressRoute 和 VPN 连接上始终为 false。
+## <a name="view-output"></a><a name="output"></a>查看输出
 
-默认路由并非源自虚拟 WAN 中心。 当虚拟 WAN 中心由于在中心部署防火墙而获知了默认路由或另一个已连接的站点已启用强制隧道时，将会传播默认路由。
+页面输出显示以下字段：
+
+* **Prefix**：当前实体已知的地址前缀。
+* **下一跃点类型**：可以是虚拟网络连接、VPN_S2S_Gateway、ExpressRouteGateway、远程集线器或 Azure 防火墙。
+* **下一个跃点**：这是 IP，或者只显示链接以表示当前中心。
+* **源**：路由源的资源 ID。
+* **As Path**： BGP 属性为（自治系统）路径列出了需要遍历以到达路径附加到的前缀的位置的所有 AS 编号，从该位置播发。
+
+### <a name="example"></a><a name="example"></a>示例
+
+以下示例表中的值表示虚拟中心连接或路由表已获知 10.2.0.0/24 （分支前缀）的路由。 由于**Vpn 下一跃点类型**与**下一个跃点**VPN 网关资源 ID VPN_S2S_Gateway，它已获知路由。 **路由源**指向起始 VPN 网关/路由表/连接的资源 ID。 **As path**指示分支的 as 路径。
+
+使用表底部的滚动条查看 "AS Path"。
+
+| **作为** |  **下一跃点类型** | **下一跃点** |  **路由源** |**作为路径** |
+| ---        | ---                | ---          | ---               | ---         |
+| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
+
+**注意事项：**
+
+* 如果在**获取有效路由**输出中看到 0.0.0.0/0，则表示该路由存在于某个路由表中。 但是，如果此路由是为 internet 设置的，则连接上需要一个附加标志 **"enableInternetSecurity"： true** 。 如果连接上的 "enableInternetSecurity" 标志为 "false"，则 VM NIC 上的有效路由不会显示路由。
+
+* 编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，会在 Azure 虚拟 WAN 门户中查看 "**传播默认路由**" 字段。 此字段指示**enableInternetSecurity**标志，该标志对于 EXPRESSROUTE 和 VPN 连接始终默认为 "false"，对于虚拟网络连接始终为 "true"。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
+* 有关虚拟 WAN 的详细信息，请参阅[虚拟 Wan 概述](virtual-wan-about.md)。
+* 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
