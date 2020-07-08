@@ -1,19 +1,18 @@
 ---
 title: 身份验证和授权
 description: 了解应用或服务向 Azure 空间定位点进行身份验证的各种方式，以及在限制访问 Azure 空间定位点时可以采用的控制级别。
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: HT
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456498"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空间定位点身份验证和授权
 
@@ -39,7 +38,6 @@ ms.locfileid: "83653377"
 使用帐户密钥访问 Azure 空间定位点帐户是最简单的入手方法。 可以在 Azure 门户上找到你的帐户密钥。 导航到你的帐户，然后选择“密钥”选项卡。
 
 ![Azure 空间定位点身份验证概述](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 提供了两个密钥，两者都可用于访问空间定位点帐户。 建议定期更新用于访问该帐户的密钥；准备好两个不同的有效密钥可以实现此类更新且不会造成停机；只需交替更新主密钥和辅助密钥即可。
 
@@ -175,13 +173,14 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
         1.  在 Azure 门户中，导航到“Azure Active Directory”并选择“应用注册” 
         2.  选择“新建应用程序注册”
         3.  输入应用程序的名称，选择“Web 应用/API”作为应用程序类型，然后输入服务的身份验证 URL。 点击“创建”。
-        4.  在该应用程序中点击“设置”，然后选择“密钥”选项卡。 输入密钥的名称，选择持续时间，然后点击“保存”。 请确保保存当时显示的密钥值，因为稍后需要将其包含在 Web 服务的代码中。
+        4.  在该应用程序上，点击 "**设置**"，然后选择 "**证书和密钥**" 选项卡。创建新的客户端密码，选择一个持续时间，然后单击 "**添加**"。 请确保保存机密值，因为需要将其包含在 web 服务的代码中。
     2.  向应用程序和/或用户授予对你的资源的访问权限：
         1.  在 Azure 门户中导航到你的空间定位点资源
         2.  切换到“访问控制(标识和访问管理)”选项卡
         3.  点击“添加角色分配”
         1.  [选择一个角色](#role-based-access-control)
         2.  在“选择”字段中，输入你创建的且要向其分配访问权限的应用程序的名称。 如果你希望应用的用户对空间定位点帐户拥有不同的角色，应在 Azure AD 中注册多个应用程序，并为每个应用程序单独分配角色。 然后实现授权逻辑，以便为用户使用适当的角色。
+        3.  注意-在 "**添加角色分配**" 选择中，你希望将 "**分配访问权限**" 设置为 "Azure AD 用户、组或服务主体"。
     3.  点击“保存”。
 2.  在代码中（注意：可以使用 GitHub 上包含的服务示例）：
     1.  确保使用自己的 Azure AD 应用程序的应用程序 ID、应用程序机密和重定向 URI 作为 MSAL 中的 client ID、secret 和 RedirectUri 参数

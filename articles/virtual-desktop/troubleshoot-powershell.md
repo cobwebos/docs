@@ -5,22 +5,21 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612004"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456957"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
 
 >[!IMPORTANT]
->此内容适用于带有 Azure 资源管理器 Windows 虚拟桌面对象的弹簧2020更新。 如果使用的是不带 Azure 资源管理器对象的 Windows 虚拟桌面2019版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
 >
-> Windows 虚拟桌面春季2020更新目前为公共预览版。 此预览版本在提供时没有服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
+> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅[Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
@@ -36,7 +35,7 @@ ms.locfileid: "82612004"
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>错误： AzRoleAssignment：提供的信息未映射到 AD 对象 ID
 
 ```powershell
-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 **原因：** 在绑定到 Windows 虚拟桌面环境的 Azure Active Directory 中找不到由 *-SignInName*参数指定的用户。 
@@ -73,15 +72,15 @@ New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not a
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**原因：** 位置不匹配。 所有主机池、应用程序组和工作区都有一个存储服务元数据的位置。 你创建的与彼此关联的任何对象都必须位于同一位置。 例如，如果主机池处于中`eastus`，则还需要在中`eastus`创建应用程序组。 如果创建工作区以便将这些应用程序组注册到，则该工作区也`eastus`需要位于中。
+**原因：** 位置不匹配。 所有主机池、应用程序组和工作区都有一个存储服务元数据的位置。 你创建的与彼此关联的任何对象都必须位于同一位置。 例如，如果主机池处于中，则 `eastus` 还需要在中创建应用程序组 `eastus` 。 如果创建工作区以便将这些应用程序组注册到，则该工作区也需要位于中 `eastus` 。
 
 **修复：** 检索创建主机池的位置，然后将创建的应用程序组分配到该位置。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关 Windows 虚拟桌面故障排除和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
 - 若要解决设置 Windows 虚拟桌面环境和主机池时遇到的问题，请参阅[环境和主机池创建](troubleshoot-set-up-issues.md)。
-- 若要解决在 Windows 虚拟桌面中配置虚拟机（VM）时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
 - 若要解决 Windows 虚拟桌面客户端连接问题，请参阅[Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
 - 若要解决远程桌面客户端的问题，请参阅[排查远程桌面客户端](troubleshoot-client.md)问题
 - 若要了解有关该服务的详细信息，请参阅[Windows 虚拟桌面环境](environment-setup.md)。

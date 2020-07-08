@@ -7,12 +7,11 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888783"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456840"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -59,7 +58,7 @@ ms.locfileid: "82888783"
 
 * 运算符类型 - 比较的类型。
 * 键 - 用于筛选的事件数据中的字段。 它可以是数字、布尔值或字符串。
-* values-要与该键进行比较的值。
+* 值 - 要与键进行比较的值。
 
 如果指定具有多个值的单个筛选器，则将执行 **OR** 操作，因此键字段的值必须是这些值之一。 以下是示例：
 
@@ -99,7 +98,7 @@ ms.locfileid: "82888783"
 
 ### <a name="operators"></a>运算符
 
-适用于**数字**的运算符包括：
+可用的数字**** 运算符为：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -108,10 +107,10 @@ ms.locfileid: "82888783"
 * NumberIn
 * NumberNotIn
 
-**布尔**值的可用运算符为： 
+可用的布尔值**** 运算符为： 
 - BoolEquals
 
-**字符串**的可用运算符包括：
+可用的字符串**** 运算符为：
 
 * StringContains
 * StringBeginsWith
@@ -119,9 +118,9 @@ ms.locfileid: "82888783"
 * StringIn
 * StringNotIn
 
-所有字符串比较都**不**区分大小写。
+所有字符串比较均不**** 区分大小写。
 
-### <a name="key"></a>Key
+### <a name="key"></a>键
 
 对于事件网格架构中的事件，请使用以下键值：
 
@@ -135,7 +134,7 @@ ms.locfileid: "82888783"
 对于云事件架构中的事件，请使用以下键值：
 
 * EventId
-* 源
+* Source
 * EventType
 * EventTypeVersion
 * 事件数据（如 Data.key1）
@@ -155,10 +154,10 @@ ms.locfileid: "82888783"
 
 高级筛选具有以下限制：
 
-* 每个事件网格订阅有五个高级筛选器
+* 5每个事件网格订阅的所有筛选器中的高级筛选器和25个筛选器值
 * 每个字符串值有 512 个字符
-* “in”和“not in”运算符有 5 个值********
-* 其中包含** `.` （点）** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 当前不支持密钥中的转义符。 
+* “in”和“not in”运算符有 5 个值**** ****
+* 具有 `.`（点）**** 字符的键。 例如： `http://schemas.microsoft.com/claims/authnclassreference` 或 `john.doe@contoso.com` 。 目前不支持键中使用转义字符。 
 
 可以在多个筛选器中使用相同的键。
 

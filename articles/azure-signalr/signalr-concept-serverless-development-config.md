@@ -6,12 +6,11 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523164"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84457127"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR 服务进行 Azure Functions 开发和配置
 
@@ -32,7 +31,7 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 使用 Azure Functions 和 Azure SignalR 服务构建的无服务器实时应用程序通常需要两个 Azure Functions：
 
 * 一个“negotiate”函数，客户端调用该函数可获取有效的 SignalR 服务访问令牌和服务终结点 URL
-* 一个或多个用于发送消息或管理组成员身份的函数
+* 处理来自 SignalR 服务的消息并发送消息或管理组成员身份的一个或多个函数
 
 ### <a name="negotiate-function"></a>negotiate 函数
 
@@ -40,9 +39,17 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 使用 HTTP 触发的 Azure 函数和 *SignalRConnectionInfo* 输入绑定生成连接信息对象。 该函数必须包含以 `/negotiate` 结尾的 HTTP 路由。
 
+对于 c # 中的[基于类的模型](#class-based-model)，不需要*SignalRConnectionInfo*输入绑定，因此可以更轻松地添加自定义声明。 请参阅[基于类的模型中的协商体验](#negotiate-experience-in-class-based-model)
+
 有关如何创建 negotiate 函数的详细信息，请参阅 [*SignalRConnectionInfo* 输入绑定参考](../azure-functions/functions-bindings-signalr-service-input.md)。
 
 若要了解如何创建经过身份验证的令牌，请参阅[使用应用服务身份验证](#using-app-service-authentication)。
+
+### <a name="handle-messages-sent-from-signalr-service"></a>处理从 SignalR 服务发送的消息
+
+使用*SignalR 触发器*绑定处理从 SignalR 服务发送的消息。 当客户端发送消息或客户端连接或断开连接时，可以触发。
+
+有关详细信息，请参阅[ *SignalR 触发器*绑定引用](../azure-functions/functions-bindings-signalr-service-trigger.md)
 
 ### <a name="sending-messages-and-managing-group-membership"></a>发送消息和管理组成员身份
 
@@ -56,6 +63,111 @@ Azure Functions 应用程序可以利用 [Azure SignalR 服务绑定](../azure-f
 
 SignalR 具有“中心”的概念。 每个客户端连接以及从 Azure Functions 发送的每个消息的范围限定为特定的中心。 可以使用中心将连接和消息划分到逻辑命名空间。
 
+## <a name="class-based-model"></a>基于类的模型
+
+基于类的模型专用于 c #。 使用基于类的模型可以拥有一致的 SignalR 服务器端编程体验。 它具有以下功能。
+
+* 更少的配置工作：类名称用作 `HubName` ，方法名称用作， `Event` 并 `Category` 根据方法名称自动确定。
+* 自动参数绑定： `ParameterNames` 和属性都不 `[SignalRParameter]` 需要。 参数按顺序自动绑定到 Azure Function 方法的参数。
+* 方便的输出和协商体验。
+
+以下代码演示了这些功能：
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+要利用基于类的模型的所有函数都需要是继承自**ServerlessHub**的类的方法。 示例中的类名称 `SignalRTestHub` 是中心名称。
+
+### <a name="define-hub-method"></a>定义集线器方法
+
+所有集线器方法都**必须**具有 `[SignalRTrigger]` 属性，并且**必须**使用无参数的构造函数。 然后将**方法名称**视为参数**事件**。
+
+默认情况下， `category=messages` 方法名称是以下名称之一：
+
+* **OnConnected**：被视为`category=connections, event=connected`
+* **OnDisconnected**：被视为`category=connections, event=disconnected`
+
+### <a name="parameter-binding-experience"></a>参数绑定体验
+
+在基于类的模型中， `[SignalRParameter]` 是不必要的，因为默认情况下所有自变量都标记为， `[SignalRParameter]` 但它是以下情况之一：
+
+* 自变量由绑定特性修饰。
+* 参数的类型为 `ILogger` 或`CancellationToken`
+* 参数由特性修饰`[SignalRIgnore]`
+
+### <a name="negotiate-experience-in-class-based-model"></a>基于类的模型中的协商体验
+
+`[SignalR]`基于类的模型中的协商可以更灵活地使用，而不是使用 SignalR 输入绑定。 基类 `ServerlessHub` 具有方法
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+此功能用户自定义 `userId` 或 `claims` 在函数执行期间。
+
+## <a name="use-signalrfilterattribute"></a>使用 `SignalRFilterAttribute`
+
+用户可以继承和实现抽象类 `SignalRFilterAttribute` 。 如果在中引发异常 `FilterAsync` ， `403 Forbidden` 则将被发送回客户端。
+
+下面的示例演示如何实现仅允许调用的客户筛选器 `admin` `broadcast` 。
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+利用特性来授权函数。
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
+
 ## <a name="client-development"></a>客户端开发
 
 SignalR 客户端应用程序可利用以多种语言之一编写的 SignalR 客户端 SDK 轻松连接到 Azure SignalR 服务并从中接收消息。
@@ -64,8 +176,8 @@ SignalR 客户端应用程序可利用以多种语言之一编写的 SignalR 客
 
 若要连接到 SignalR 服务，客户端必须成功完成连接协商，具体包括以下步骤：
 
-1. 向上述 HTTP 协商终结点发出请求，以获取有效的连接信息 
-1. 使用服务终结点 URL 以及从协商终结点获取的访问令牌连接到 SignalR 服务 
+1. 向上述 HTTP 协商终结点发出请求，以获取有效的连接信息**
+1. 使用服务终结点 URL 以及从协商终结点获取的访问令牌连接到 SignalR 服务**
 
 SignalR 客户端 SDK 已包含执行协商握手所需的逻辑。 将协商终结点的 URL（不包括 `negotiate` 段）传递给 SDK 的 `HubConnectionBuilder`。 下面是一个 JavaScript 示例：
 
@@ -124,7 +236,7 @@ JavaScript/TypeScript 客户端向 negotiate 函数发出 HTTP 请求，以启�
 
 #### <a name="cloud---azure-functions-cors"></a>云 - Azure Functions CORS
 
-若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。 
+若要在 Azure 函数应用中启用 CORS，请在 Azure 门户中函数应用的“平台功能”选项卡下，转到 CORS 配置屏幕。**
 
 > [!NOTE]
 > CORS 配置在 Azure Functions Linux 消耗计划中尚不可用。 使用[AZURE API 管理](#cloud---azure-api-management)启用 CORS。

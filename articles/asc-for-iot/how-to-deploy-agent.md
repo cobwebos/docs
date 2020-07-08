@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311204"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "84456787"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>在 IoT 设备上选择并部署安全代理
 
@@ -44,12 +43,12 @@ ms.locfileid: "81311204"
 
 |     | 基于 C 的安全代理 | 基于 c # 的安全代理 |
 | --- | ----------- | --------- |
-| 开源 | [GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 | [GitHub](https://aka.ms/iot-security-github-c)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 |
+| 开源 | [GitHub](https://aka.ms/iot-security-github-c)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 | [GitHub](https://aka.ms/iot-security-github-cs)中的[MIT 许可证](https://en.wikipedia.org/wiki/MIT_License)下提供 |
 | 开发语言    | C | C# |
 | 支持的 Windows 平台？ | 否 | 是 |
 | Windows 先决条件 | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | 支持的 Linux 平台？ | 是、x64 和 x86 | 是，仅 x64 |
-| Linux 系统先决条件 | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
+| Linux 先决条件 | libunwind8、libcurl3、uuid-runtime、审核、audispd-插件 | libunwind8，libcurl3，uuid-runtime，审核，audispd-插件，sudo，netstat，iptables |
 | 磁盘占用量 | 10.5 MB | 90 MB |
 | 内存占用量（平均） | 5.5 MB | 33 MB |
 | 向 IoT 中心进行[身份验证](concept-security-agent-authentication-methods.md) | 是 | 是 |
@@ -60,7 +59,7 @@ ms.locfileid: "81311204"
 
 ## <a name="security-agent-installation-guidelines"></a>安全代理安装指南
 
-对于**Windows**： Install SecurityAgent 脚本必须从管理员 PowerShell 窗口执行。
+对于**Windows**：必须从管理员 PowerShell 窗口执行安装 SecurityAgent.ps1 脚本。
 
 对于**Linux**： InstallSecurityAgent.sh 必须以超级用户身份运行。 建议在安装命令前面加上 "sudo"。
 
